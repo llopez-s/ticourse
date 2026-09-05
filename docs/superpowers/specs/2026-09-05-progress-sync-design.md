@@ -65,7 +65,7 @@ Study progress is almost entirely monotonic, which is what makes a safe merge po
 | `track` | keep local | UI preference, not progress |
 | `xp` | `max` | monotonic; avoids double-counting on repeated syncs |
 | `streak.best` | `max` | a record, never decreases |
-| `streak` (rest) | from the side with the later `lastDay`; tie → greater `current`, then greater `freezes` | the more recent device knows the live streak |
+| `streak` (rest) | from the side with the later `lastDay`, **except** that when the two `lastDay`s are consecutive the older side's `current + 1` is carried forward (`current` takes the max of the two); tie on `lastDay` → greater `current`, then greater `freezes` | the more recent device knows the live streak, but it may have reset its own counter while offline — see below |
 | `activity` | union of days, `max` per day | **never sums** — re-syncing must not inflate the heatmap |
 | `lessons`, `labs` | union (`true` wins) | completion is irreversible |
 | `quizBest`, `bosses` | union, `max` per key | best score is a record |
@@ -75,6 +75,14 @@ Study progress is almost entirely monotonic, which is what makes a safe merge po
 | `totals` | `max` per field | all are counters or records |
 | `achievements` | union, keep the **earliest** unlock date | an achievement cannot be un-earned |
 | `day` | later `date` wins wholesale; same date → `max` per counter, union `questsAwarded` | daily counters reset at midnight |
+
+**Why the streak rule is not simply "later date wins".** An earlier draft of this design took the
+later-`lastDay` streak wholesale. That loses data in the ordinary case: a phone that has not synced
+for a week is used offline, resets its own `current` to 1 because it cannot see the laptop's
+activity, and then wins the merge on date — turning a 57-day streak into 1, irreversibly, in both
+merge orders. Carrying the older side forward when the days are consecutive fixes that while still
+breaking the streak on a genuine gap. `dayDiff` is pure arithmetic over two date strings, so the
+merge stays clock-free.
 
 **Accepted trade-offs, stated explicitly:**
 

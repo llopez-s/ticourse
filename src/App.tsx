@@ -13,6 +13,7 @@ import CardsPage from './pages/CardsPage';
 import GlossaryPage from './pages/GlossaryPage';
 import AchievementsPage from './pages/AchievementsPage';
 import ProfilePage from './pages/ProfilePage';
+import { useSync } from './lib/useSync';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -23,6 +24,7 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  useSync();
   return (
     <HashRouter>
       <ScrollToTop />

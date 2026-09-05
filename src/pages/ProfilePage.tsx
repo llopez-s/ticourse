@@ -6,6 +6,7 @@ import { contentSections, modulesOf, sectionMastery } from '../data/course';
 import { useTrack } from '../components/Layout';
 import type { Conf } from '../lib/types';
 import { Bar, PageTitle, Panel, StatBox } from '../components/Bits';
+import SyncPanel from '../components/SyncPanel';
 
 function Heatmap() {
   const activity = useStore((s) => s.activity);
@@ -167,6 +168,8 @@ export default function ProfilePage() {
           </div>
         </Panel>
       </div>
+
+      <SyncPanel />
 
       <Panel className="border-rose-900/50">
         <h2 className="mb-2 font-bold text-rose-300">⚠️ Zona de peligro</h2>
