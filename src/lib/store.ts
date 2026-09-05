@@ -121,7 +121,14 @@ export interface Store extends ProgressSnapshot {
   recordAnswer: (
     correct: boolean,
     conf: Conf,
-    opts?: { combo?: number; stakes?: boolean },
+    opts?: {
+      combo?: number;
+      stakes?: boolean;
+      /** false = do not touch calibration (no confidence bet was placed) */
+      calibrated?: boolean;
+      /** false = the answer pays no XP (placement test) */
+      xp?: boolean;
+    },
   ) => number;
   awardCheckpoint: () => void;
   completeLesson: (id: string) => void;
@@ -135,24 +142,26 @@ export interface Store extends ProgressSnapshot {
 }
 
 /**
- * Persist migrations. v1 (single GCTI track) → v2: add the active `track` and
- * stamp every stored exam with the track it belonged to.
+ * Persist migrations, applied cumulatively so an old blob passes through every
+ * step. v1 (single GCTI track) → v2: add the active `track` and stamp every
+ * stored exam. v2 → v3: add the placement test's `exempt` and `placement`.
  */
 export function migrateProgress(
   persisted: unknown,
   version: number,
 ): Partial<ProgressSnapshot> {
-  const p = (persisted ?? {}) as Partial<ProgressSnapshot> & {
+  let p = (persisted ?? {}) as Partial<ProgressSnapshot> & {
     exams?: Partial<ExamResult>[];
   };
   if (version < 2) {
-    return {
+    p = {
       ...p,
       track: 'gcti',
-      exams: (p.exams ?? []).map(
-        (e) => ({ ...e, track: 'gcti' }) as ExamResult,
-      ),
+      exams: (p.exams ?? []).map((e) => ({ ...e, track: 'gcti' }) as ExamResult),
     };
+  }
+  if (version < 3) {
+    p = { ...p, exempt: p.exempt ?? {}, placement: p.placement ?? [] };
   }
   return p;
 }
@@ -216,7 +225,7 @@ export const useStore = create<Store>()(
       },
 
       recordAnswer: (correct, conf, opts = {}) => {
-        const { combo = 0, stakes = true } = opts;
+        const { combo = 0, stakes = true, calibrated = true, xp = true } = opts;
         const s = get();
         const t = todayStr();
         const day0 = s.day.date === t ? s.day : freshDay(t);
@@ -227,13 +236,15 @@ export const useStore = create<Store>()(
           highConfCorrect:
             day0.highConfCorrect + (correct && conf === 'high' ? 1 : 0),
         };
-        const calibration = {
-          ...s.calibration,
-          [conf]: {
-            n: s.calibration[conf].n + 1,
-            c: s.calibration[conf].c + (correct ? 1 : 0),
-          },
-        };
+        const calibration = calibrated
+          ? {
+              ...s.calibration,
+              [conf]: {
+                n: s.calibration[conf].n + 1,
+                c: s.calibration[conf].c + (correct ? 1 : 0),
+              },
+            }
+          : s.calibration;
         const totals = {
           ...s.totals,
           questions: s.totals.questions + 1,
@@ -245,14 +256,16 @@ export const useStore = create<Store>()(
         set({ day, calibration, totals });
 
         let delta: number;
-        if (stakes) {
+        if (!xp) {
+          delta = 0; // placement: measured, not paid
+        } else if (stakes) {
           delta = correct ? STAKES[conf].win : -STAKES[conf].lose;
           if (correct && combo >= 5) delta += 10;
           else if (correct && combo >= 3) delta += 5;
         } else {
           delta = correct ? 5 : 0; // exam mode: flat, no losses
         }
-        get().addXp(delta, null);
+        get().addXp(delta, null); // addXp(0) still keeps the streak alive
         return delta;
       },
 
@@ -430,7 +443,7 @@ export const useStore = create<Store>()(
     }),
     {
       name: 'intelforge-v1',
-      version: 2,
+      version: 3,
       migrate: (persisted, version) =>
         migrateProgress(persisted, version) as Store,
       partialize: (s) => ({
@@ -447,6 +460,8 @@ export const useStore = create<Store>()(
         calibration: s.calibration,
         totals: s.totals,
         achievements: s.achievements,
+        exempt: s.exempt,
+        placement: s.placement,
         day: s.day,
       }),
     },
