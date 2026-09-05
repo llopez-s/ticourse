@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { emptySnapshot, mergeProgress } from './sync';
+import { emptySnapshot, generateCode, hashCode, isWeakCode, mergeProgress } from './sync';
 import type { CardState, ProgressSnapshot } from './types';
 
 const snap = (over: Partial<ProgressSnapshot> = {}): ProgressSnapshot => ({
@@ -278,5 +278,36 @@ describe('mergeProgress — algebraic properties', () => {
     for (const level of ['low', 'med', 'high'] as const) {
       expect(m.calibration[level].c).toBeLessThanOrEqual(m.calibration[level].n);
     }
+  });
+});
+
+describe('sync codes', () => {
+  it('hashes to 64 lowercase hex characters', async () => {
+    expect(await hashCode('lidia-lopez-alumna')).toMatch(/^[0-9a-f]{64}$/);
+  });
+
+  it('is stable for the same code', async () => {
+    expect(await hashCode('mi-codigo')).toBe(await hashCode('mi-codigo'));
+  });
+
+  it('normalizes case and surrounding whitespace so one code is one bucket', async () => {
+    const base = await hashCode('mi-codigo');
+    expect(await hashCode('  MI-Codigo  ')).toBe(base);
+  });
+
+  it('gives different codes different buckets', async () => {
+    expect(await hashCode('codigo-a')).not.toBe(await hashCode('codigo-b'));
+  });
+
+  it('generates codes that are long and not flagged as weak', () => {
+    const c = generateCode();
+    expect(c.length).toBeGreaterThanOrEqual(20);
+    expect(isWeakCode(c)).toBe(false);
+    expect(generateCode()).not.toBe(c);
+  });
+
+  it('flags short codes as weak', () => {
+    expect(isWeakCode('lidia')).toBe(true);
+    expect(isWeakCode('lidia-lopez-alumna-7k2m9x')).toBe(false);
   });
 });

@@ -222,3 +222,70 @@ export function mergeProgress(
     day: mergeDay(a, b),
   };
 }
+
+/**
+ * Base URL of the sync Worker. Public, not a secret. Empty disables the whole
+ * feature: no network call is ever attempted and the UI says so.
+ */
+export const SYNC_URL = '';
+
+/** Stored blob schema version. Bump when the snapshot shape changes. */
+export const SYNC_SCHEMA = 1;
+
+/** Codes shorter than this are guessable enough to warn about. */
+const MIN_CODE_LENGTH = 16;
+
+export const normalizeCode = (code: string) => code.trim().toLowerCase();
+
+/**
+ * SHA-256 of the normalized code, hex encoded. Runs in the browser, so the
+ * code itself never reaches the network — the server only ever sees a digest.
+ */
+export async function hashCode(code: string): Promise<string> {
+  const bytes = new TextEncoder().encode(normalizeCode(code));
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  return Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
+}
+
+export const isWeakCode = (code: string) =>
+  normalizeCode(code).length < MIN_CODE_LENGTH;
+
+const WORDS = [
+  'ancla', 'faro', 'muelle', 'grua', 'marea', 'proa', 'brisa', 'dique',
+  'norte', 'calma', 'niebla', 'rumbo', 'quilla', 'popa', 'costa', 'vela',
+];
+
+/** A memorable, high-entropy code: three words plus six random base-36 chars. */
+export function generateCode(): string {
+  const rnd = new Uint32Array(4);
+  crypto.getRandomValues(rnd);
+  const words = Array.from(rnd.slice(0, 3), (n) => WORDS[n % WORDS.length]);
+  const tail = rnd[3].toString(36).padStart(6, '0').slice(-6);
+  return [...words, tail].join('-');
+}
+
+const endpoint = (hash: string) => `${SYNC_URL}/p/${hash}`;
+
+/** Fetch the remote snapshot. Returns null when the bucket does not exist yet. */
+export async function pull(hash: string): Promise<ProgressSnapshot | null> {
+  const res = await fetch(endpoint(hash), { headers: { accept: 'application/json' } });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`Sync pull failed (${res.status})`);
+  const body = (await res.json()) as { v?: number; data?: ProgressSnapshot };
+  if (body.v !== SYNC_SCHEMA || !body.data) {
+    throw new Error('Datos de sincronización de una versión desconocida');
+  }
+  return body.data;
+}
+
+export async function push(hash: string, data: ProgressSnapshot): Promise<void> {
+  const res = await fetch(endpoint(hash), {
+    method: 'PUT',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ v: SYNC_SCHEMA, data }),
+    keepalive: true,
+  });
+  if (!res.ok) throw new Error(`Sync push failed (${res.status})`);
+}
