@@ -100,7 +100,20 @@ function mergeExams(
 ): ProgressSnapshot['exams'] {
   const byKey = new Map<string, ProgressSnapshot['exams'][number]>();
   for (const e of [...a.exams, ...b.exams]) {
-    if (!byKey.has(examKey(e))) byKey.set(examKey(e), e);
+    const key = examKey(e);
+    const existing = byKey.get(key);
+    if (!existing) {
+      byKey.set(key, e);
+      continue;
+    }
+    // Two exams can collide on examKey (it deliberately excludes `domains`)
+    // while carrying different per-domain breakdowns — e.g. two 30-question
+    // exams on the same day both scoring 24/30. The survivor must be decided
+    // from the entries' own content, never from which snapshot is `a` vs
+    // `b`, or mergeProgress(a, b) and mergeProgress(b, a) could disagree.
+    if (JSON.stringify(e.domains) < JSON.stringify(existing.domains)) {
+      byKey.set(key, e);
+    }
   }
   return Array.from(byKey.values()).sort((x, y) =>
     x.date === y.date ? examKey(x).localeCompare(examKey(y)) : x.date < y.date ? -1 : 1,

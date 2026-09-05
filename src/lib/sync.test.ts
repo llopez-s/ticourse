@@ -152,4 +152,30 @@ describe('mergeProgress — streak, day and exams', () => {
     expect(m.exams).toHaveLength(2);
     expect(m.exams.map((e) => e.date)).toEqual(['2026-09-01', '2026-09-03']);
   });
+
+  it('resolves an exam-key collision the same way regardless of merge order', () => {
+    // Same composite key (date|track|pct|correct|total) but different
+    // `domains` breakdowns — the key deliberately excludes `domains`, and
+    // this is reachable in real use: two 30-question practice exams on the
+    // same day both scoring 24/30 with different per-domain splits.
+    const examX = {
+      date: '2026-09-01',
+      track: 'secplus' as const,
+      pct: 80,
+      correct: 24,
+      total: 30,
+      domains: { d1: { n: 10, c: 8 }, d2: { n: 20, c: 16 } },
+    };
+    const examY = {
+      date: '2026-09-01',
+      track: 'secplus' as const,
+      pct: 80,
+      correct: 24,
+      total: 30,
+      domains: { d1: { n: 20, c: 16 }, d2: { n: 10, c: 8 } },
+    };
+    const a = snap({ exams: [examX] });
+    const b = snap({ exams: [examY] });
+    expect(mergeProgress(a, b).exams).toEqual(mergeProgress(b, a).exams);
+  });
 });
