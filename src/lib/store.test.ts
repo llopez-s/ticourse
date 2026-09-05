@@ -1,5 +1,42 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { migrateProgress, useStore } from './store';
+import { modulesOf } from '../data/course';
+import type { PlacementBlock } from './types';
+
+/**
+ * `placementBlockById` only returns real data once Task 9+ lands the
+ * Security+ placement content (see
+ * docs/superpowers/plans/2026-09-05-placement-test.md, Task 4: "Both tracks
+ * get placement: [] ... arrays stop being empty in Tasks 9-13"). Task 3
+ * wires the store actions to that lookup, so its own tests need *a* block to
+ * exercise now — this stubs just `placementBlockById` with two fixtures;
+ * every other export of '../data/course' (modulesOf, trackOf, ...) is real.
+ */
+vi.mock('../data/course', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../data/course')>();
+  const fixtures: Record<string, PlacementBlock> = {
+    'pl-sp1': {
+      id: 'pl-sp1',
+      sectionId: 'sp1',
+      domain: 'General Security Concepts',
+      title: 'Fixture block',
+      blurb: 'Fixture placement block for store action tests',
+      questions: [],
+    },
+    'pl-sp2': {
+      id: 'pl-sp2',
+      sectionId: 'sp2',
+      domain: 'Threats, Vulnerabilities & Mitigations',
+      title: 'Fixture block',
+      blurb: 'Fixture placement block for store action tests',
+      questions: [],
+    },
+  };
+  return {
+    ...actual,
+    placementBlockById: (id: string) => fixtures[id],
+  };
+});
 
 const reset = () => useStore.getState().resetAll();
 
@@ -83,5 +120,64 @@ describe('recordAnswer scoring flags', () => {
     expect(useStore.getState().totals.questions).toBe(1);
     expect(useStore.getState().totals.correct).toBe(1);
     expect(useStore.getState().streak.current).toBe(1);
+  });
+});
+
+describe('placement actions', () => {
+  it('records a passed attempt but grants no exemption on its own', () => {
+    reset();
+    const r = useStore.getState().finishPlacement('pl-sp1', 10, 12);
+    expect(r.passed).toBe(true);
+    expect(useStore.getState().placement).toHaveLength(1);
+    expect(useStore.getState().exempt).toEqual({});
+  });
+
+  it('pays for the first block of a track and nothing for the second', () => {
+    reset();
+    useStore.getState().finishPlacement('pl-sp1', 10, 12);
+    // 50 for the block + 25 for the pl-tested achievement it unlocks
+    const afterFirst = useStore.getState().xp;
+    expect(afterFirst).toBe(75);
+    useStore.getState().finishPlacement('pl-sp2', 10, 12);
+    expect(useStore.getState().xp).toBe(afterFirst);
+  });
+
+  it('grantExemption convalidates the unstudied modules of the section', () => {
+    reset();
+    const ids = modulesOf('sp1').map((m) => m.id);
+    useStore.setState({ lessons: { [ids[0]]: true } });
+    useStore.getState().finishPlacement('pl-sp1', 11, 12);
+    useStore.getState().grantExemption('pl-sp1');
+    const { exempt } = useStore.getState();
+    expect(exempt[ids[0]]).toBeUndefined(); // already studied
+    expect(exempt[ids[1]].status).toBe('exempt');
+    expect(exempt[ids[1]].score).toBe(92);
+    expect(exempt[ids[1]].via).toBe('pl-sp1');
+  });
+
+  it('grantExemption is a no-op after a failed attempt', () => {
+    reset();
+    useStore.getState().finishPlacement('pl-sp1', 9, 12);
+    useStore.getState().grantExemption('pl-sp1');
+    expect(useStore.getState().exempt).toEqual({});
+  });
+
+  it('grantExemption pays no lesson XP', () => {
+    reset();
+    useStore.getState().finishPlacement('pl-sp1', 12, 12);
+    const before = useStore.getState().xp;
+    useStore.getState().grantExemption('pl-sp1');
+    expect(useStore.getState().xp).toBe(before);
+  });
+
+  it('revokeExemption leaves tombstones, not deletions', () => {
+    reset();
+    const ids = modulesOf('sp1').map((m) => m.id);
+    useStore.getState().finishPlacement('pl-sp1', 12, 12);
+    useStore.getState().grantExemption('pl-sp1');
+    useStore.getState().revokeExemption('sp1');
+    const { exempt } = useStore.getState();
+    expect(exempt[ids[0]].status).toBe('revoked');
+    expect(Object.keys(exempt).length).toBe(ids.length);
   });
 });

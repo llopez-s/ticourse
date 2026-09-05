@@ -3,6 +3,7 @@ import type {
   Flashcard,
   GlossaryEntry,
   Module,
+  PlacementBlock,
   SectionMeta,
   TrackId,
 } from '../lib/types';
@@ -47,6 +48,7 @@ export interface TrackMeta {
   domainWeights: Record<string, number>;
   sections: SectionMeta[];
   modules: Module[];
+  placement: PlacementBlock[];
   flashcards: Flashcard[];
   glossary: GlossaryEntry[];
   labs: LabMeta[];
@@ -90,6 +92,7 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
       ...S5_MODULES,
       ...S6_MODULES,
     ],
+    placement: [],
     flashcards: GCTI_FLASHCARDS,
     glossary: GCTI_GLOSSARY,
     labs: GCTI_LABS,
@@ -128,6 +131,7 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
       ...SP5_MODULES,
       ...SP6_MODULES,
     ],
+    placement: [],
     flashcards: SP_FLASHCARDS,
     glossary: SP_GLOSSARY,
     labs: SP_LABS,

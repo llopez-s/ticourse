@@ -1,5 +1,6 @@
 import type {
   Module,
+  PlacementBlock,
   ProgressSnapshot,
   Question,
   SectionMeta,
@@ -13,6 +14,9 @@ import { TRACKS, TRACK_IDS } from './tracks';
 export const SECTIONS: SectionMeta[] = TRACK_IDS.flatMap((t) => TRACKS[t].sections);
 export const ALL_MODULES: Module[] = TRACK_IDS.flatMap((t) => TRACKS[t].modules);
 export const ALL_QUESTIONS: Question[] = ALL_MODULES.flatMap((m) => m.quiz);
+export const ALL_PLACEMENT: PlacementBlock[] = TRACK_IDS.flatMap(
+  (t) => TRACKS[t].placement,
+);
 
 // ---- global lookups ---------------------------------------------------------
 export const sectionById = (id: string) => SECTIONS.find((s) => s.id === id);
@@ -23,6 +27,8 @@ export const labsOf = (sectionId: string) =>
   LABS.filter((l) => l.sectionId === sectionId);
 export const questionsOf = (sectionId: string): Question[] =>
   modulesOf(sectionId).flatMap((m) => m.quiz);
+export const placementBlockById = (id: string) =>
+  ALL_PLACEMENT.find((b) => b.id === id);
 
 // ---- track scoping ----------------------------------------------------------
 export const trackOf = (sectionId: string): TrackId =>
@@ -32,6 +38,7 @@ export const sectionsOf = (track: TrackId) => TRACKS[track].sections;
 export const contentSections = (track: TrackId) =>
   TRACKS[track].sections.filter((s) => s.boss !== null);
 export const modulesOfTrack = (track: TrackId) => TRACKS[track].modules;
+export const placementBlocks = (track: TrackId) => TRACKS[track].placement;
 export const questionsOfTrack = (track: TrackId): Question[] =>
   TRACKS[track].modules.flatMap((m) => m.quiz);
 export const nextModule = (track: TrackId, s: Pick<ProgressSnapshot, 'lessons'>) =>

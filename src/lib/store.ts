@@ -5,13 +5,16 @@ import type {
   DayState,
   ExamResult,
   Grade,
+  PlacementResult,
   ProgressSnapshot,
   TrackId,
 } from './types';
 import { levelInfo, STAKES, XP } from './xp';
 import { review } from './srs';
 import { dayDiff, todayStr } from './util';
+import { exemptionsFor, gradePlacement, revocationsFor } from './placement';
 import { ACHIEVEMENTS } from '../data/achievements';
+import { modulesOf, placementBlockById, trackOf } from '../data/course';
 import { DAILY_ALL_BONUS, questsForDate } from '../data/quests';
 
 // ---------------------------------------------------------------------------
@@ -136,6 +139,12 @@ export interface Store extends ProgressSnapshot {
   completeLab: (id: string, xp: number) => void;
   finishBoss: (sectionId: string, scorePct: number) => boolean;
   recordExam: (r: ExamResult) => void;
+  /** Record a placement attempt. Grants nothing — cashing in is a separate step. */
+  finishPlacement: (blockId: string, correct: number, total: number) => PlacementResult;
+  /** Cash in a passed block: convalidate the section's unstudied theory. */
+  grantExemption: (blockId: string) => void;
+  /** Undo a section's convalidation, leaving tombstones so sync respects it. */
+  revokeExemption: (sectionId: string) => void;
   gradeCard: (id: string, grade: Grade) => void;
   resetAll: () => void;
   _check: () => void;
@@ -353,6 +362,63 @@ export const useStore = create<Store>()(
           r.pct >= 75 ? XP.examPass : XP.examTry,
           'Examen de práctica',
         );
+      },
+
+      finishPlacement: (blockId, correct, total) => {
+        const s = get();
+        const block = placementBlockById(blockId);
+        if (!block) {
+          throw new Error(`unknown placement block: ${blockId}`);
+        }
+        const track = trackOf(block.sectionId);
+        const r = gradePlacement(
+          blockId,
+          block.sectionId,
+          track,
+          correct,
+          total,
+          new Date().toISOString(),
+        );
+        const first = !s.placement.some((p) => p.track === track);
+        set({ placement: [...s.placement, r] });
+        if (first) get().addXp(XP.placement, 'Prueba de nivel');
+        else get()._check();
+        return r;
+      },
+
+      grantExemption: (blockId) => {
+        const s = get();
+        const block = placementBlockById(blockId);
+        if (!block) return;
+        const last = [...s.placement]
+          .reverse()
+          .find((p) => p.blockId === blockId);
+        if (!last?.passed) return;
+        const ids = modulesOf(block.sectionId).map((m) => m.id);
+        const added = exemptionsFor(
+          ids,
+          s.lessons,
+          blockId,
+          last.pct,
+          new Date().toISOString(),
+        );
+        if (Object.keys(added).length === 0) return;
+        set({ exempt: { ...s.exempt, ...added } });
+        toast({
+          kind: 'info',
+          icon: '⏩',
+          title: 'Sección convalidada',
+          sub: `${Object.keys(added).length} lecciones dadas por vistas`,
+        });
+        get()._check();
+      },
+
+      revokeExemption: (sectionId) => {
+        const s = get();
+        const ids = modulesOf(sectionId).map((m) => m.id);
+        const undone = revocationsFor(s.exempt, ids, new Date().toISOString());
+        if (Object.keys(undone).length === 0) return;
+        set({ exempt: { ...s.exempt, ...undone } });
       },
 
       gradeCard: (id, grade) => {
