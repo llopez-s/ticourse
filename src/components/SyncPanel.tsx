@@ -35,10 +35,10 @@ export default function SyncPanel() {
       <h2 className="mb-2 font-bold text-slate-100">🔄 Sincronización</h2>
       <p className="mb-3 text-xs leading-relaxed text-slate-400">
         Escribe el mismo código en cada dispositivo y tu progreso se combinará
-        entre ellos. El código se cifra en tu navegador antes de enviarse: el
-        servidor nunca lo ve, solo guarda tu progreso de estudio. Quien conozca
-        el código puede leer y modificar ese progreso, así que trátalo como una
-        contraseña.
+        entre ellos. Tu navegador nunca envía el código: envía solo un hash
+        SHA-256 del que no se puede recuperar. El servidor no ve el código,
+        solo guarda tu progreso de estudio. Quien conozca el código puede leer
+        y modificar ese progreso, así que trátalo como una contraseña.
       </p>
 
       {code ? (
@@ -79,11 +79,14 @@ export default function SyncPanel() {
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
               placeholder="tu-código-de-sincronización"
-              className="min-w-56 flex-1 rounded-lg border border-ink-600 bg-ink-900 px-3 py-2 font-mono text-sm text-slate-200 placeholder-slate-500 outline-none focus:border-cyan-400"
+              aria-label="Código de sincronización"
+              disabled={confirming}
+              className="min-w-56 flex-1 rounded-lg border border-ink-600 bg-ink-900 px-3 py-2 font-mono text-sm text-slate-200 placeholder-slate-500 outline-none focus:border-cyan-400 disabled:cursor-not-allowed disabled:opacity-60"
             />
             <button
               onClick={() => setDraft(generateCode())}
-              className="rounded-lg border border-ink-600 px-3 py-2 text-xs font-semibold text-slate-300 hover:bg-ink-800"
+              disabled={confirming}
+              className="rounded-lg border border-ink-600 px-3 py-2 text-xs font-semibold text-slate-300 hover:bg-ink-800 disabled:cursor-not-allowed disabled:opacity-60"
             >
               Generar
             </button>
@@ -108,6 +111,9 @@ export default function SyncPanel() {
                 Se combinará el progreso de este navegador con el guardado en ese
                 código. Si el código es nuevo, se creará con tu progreso actual.
                 Guárdalo: sin él no podrás recuperar la sincronización.
+              </p>
+              <p className="mb-2 text-xs text-slate-300">
+                Código: <span className="font-mono text-slate-100">{draft.trim()}</span>
               </p>
               <div className="flex gap-2">
                 <button
