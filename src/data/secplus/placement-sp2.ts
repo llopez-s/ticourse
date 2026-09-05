@@ -16,8 +16,8 @@ import type { PlacementBlock } from '../../lib/types';
 //
 // Keyed index is spread across 0-3 (three each) so option position/length
 // cannot be used to guess the answer without the material. See
-// docs/.superpowers/sdd/2026-09-05-placement-test/task-10-report.md for the
-// table mapping each question to its final index.
+// docs/superpowers/plans/2026-09-05-placement-test.md for the plan this
+// block implements.
 // ---------------------------------------------------------------------------
 export const SP2_PLACEMENT: PlacementBlock = {
   id: 'pl-sp2',
@@ -52,20 +52,20 @@ export const SP2_PLACEMENT: PlacementBlock = {
       domain: 'Threats, Vulnerabilities & Mitigations',
       prompt:
         "A logistics technician's Bluetooth-enabled asset tag is left in discoverable mode at all times. During an audit, investigators find that someone nearby used a laptop to pull the tag's stored maintenance history without ever completing a pairing request and without any prompt appearing on the tag's companion app. Which threat vector was exploited?",
-      choices: ['RFID card cloning', 'Bluesnarfing', 'Evil twin', 'Bluejacking'],
+      choices: ['Bluetooth device spoofing', 'Bluesnarfing', 'Bluebugging', 'Bluejacking'],
       answer: 1,
       explain:
-        'Pulling data off a Bluetooth device by taking advantage of permissive visibility and weak pairing, without the owner ever noticing, is bluesnarfing. Bluejacking is the tempting distractor because it targets the same discoverable devices, but bluejacking only pushes unsolicited messages to a device — it never extracts data from it.',
+        "Pulling data off a Bluetooth device by taking advantage of permissive visibility and weak pairing, without the owner ever noticing, is bluesnarfing. Bluetooth device spoofing is the tempting distractor because it also abuses a discoverable device, but spoofing means impersonating a trusted device's identity to trick another device into connecting, not reading data out of the tag itself. Bluebugging is a deeper compromise that hands the attacker ongoing control of the device — placing calls, sending messages — well beyond the one-time data pull described here. Bluejacking is Bluetooth-specific too, but it only pushes unsolicited messages to a device; it never extracts data from it.",
     },
     {
       id: 'pl-sp2q4',
       domain: 'Threats, Vulnerabilities & Mitigations',
       prompt:
         'An unfamiliar visitor wearing a badge that reads "Corporate IT — Onsite Support" tells a machine operator on a manufacturing floor that she needs to quickly check the operator\'s login on a shop-floor terminal. The operator steps aside and lets her type on the keyboard, and the visitor leaves minutes later. Which social engineering technique does this describe?',
-      choices: ['Watering hole', 'Brand impersonation', 'Impersonation', 'Typosquatting'],
+      choices: ['Vishing', 'Brand impersonation', 'Impersonation', 'Tailgating'],
       answer: 2,
       explain:
-        "Claiming a specific role — an IT support technician — to gain hands-on access to a system in person is impersonation. Brand impersonation is the tempting distractor because both borrow someone else's credibility, but brand impersonation copies an organization's logos and messaging in emails, texts, or fake sites, not one person adopting a role face to face.",
+        "Claiming a specific role — an IT support technician — to gain hands-on access to a system in person is impersonation. Brand impersonation is the tempting distractor because both borrow someone else's credibility, but brand impersonation copies an organization's logos and messaging in emails, texts, or fake sites, not one person adopting a role face to face. Vishing is also social engineering aimed directly at a person, but the deception happens over a live phone call, not in front of the operator on the shop floor. Tailgating is a physical-access technique for slipping through a secured door behind someone else; it has nothing to do with a visitor already on the floor who simply talks her way onto a keyboard.",
     },
     {
       id: 'pl-sp2q5',
@@ -102,10 +102,10 @@ export const SP2_PLACEMENT: PlacementBlock = {
       domain: 'Threats, Vulnerabilities & Mitigations',
       prompt:
         "A threat intelligence vendor notifies a bank that a criminal marketplace is selling a dataset of the bank's customer account numbers and passwords, three weeks before the bank's own security tools flag any unusual login activity. Which indicator of malicious activity does this represent?",
-      choices: ['Missing logs', 'Published or documented', 'Resource consumption', 'Concurrent session usage'],
+      choices: ['Missing logs', 'Published or documented', 'Out-of-cycle logging', 'Resource inaccessibility'],
       answer: 1,
       explain:
-        'Stolen data surfacing for sale on a criminal marketplace is the published/documented indicator, and it is often the first sign of a breach that internal monitoring never caught. Missing logs is the tempting distractor because both describe something monitoring failed to catch, but missing logs specifically means a log source has gone silent, not that data has turned up outside the organization.',
+        'Stolen data surfacing for sale on a criminal marketplace is the published/documented indicator, and it is often the first sign of a breach that internal monitoring never caught. Missing logs is the tempting distractor because both describe something monitoring failed to catch, but missing logs specifically means a log source has gone silent, not that data has turned up outside the organization. Out-of-cycle logging is also something a SIEM should flag, but it means events appearing at an unusual time in an otherwise normal log, not stolen records for sale on the open market. Resource inaccessibility means files or services have stopped responding — the signature of ransomware or a denial-of-service attack — not data that has already left and resurfaced elsewhere.',
     },
     {
       id: 'pl-sp2q8',
@@ -136,11 +136,11 @@ export const SP2_PLACEMENT: PlacementBlock = {
       id: 'pl-sp2q10',
       domain: 'Threats, Vulnerabilities & Mitigations',
       prompt:
-        'A vulnerability scan flags a specific, publicly known CVE in the web application framework running in production. The vendor published a fix for that exact CVE two months ago, but the production environment has not been updated since. Which mitigation MOST directly addresses this finding?',
-      choices: ['Application allow listing', 'Configuration enforcement', 'Isolation', 'Patching'],
+        "A regional ISP's edge routers, all the same make and model, are compromised repeatedly over several months through the same exploitable flaw in the routers' own firmware, even though every router's configuration already matches the company's approved baseline and each one already sits behind correctly configured network ACLs. Which mitigation would MOST directly stop this exploit from working?",
+      choices: ['Configuration enforcement', 'Segmentation', 'Isolation', 'Patching'],
       answer: 3,
       explain:
-        "A known vulnerability with a fix already available calls for patching, which removes the flaw at its source instead of working around it. Configuration enforcement is the tempting distractor because it also keeps systems aligned to a standard, but it corrects drift away from an approved baseline — it does not supply the vendor's fix for one specific CVE.",
+        "The routers' configuration already matches the approved baseline and their network placement is already correct, which rules out configuration enforcement and segmentation — the exploit keeps working despite both being in good order because the flaw lives in the routers' own firmware code, not in how they are configured or where they sit on the network. Isolation is the tempting distractor because it also targets code-level risk, but isolation contains untrusted code in a sandbox; it cannot be applied to routers that must keep carrying live production traffic. Only patching the firmware removes the vulnerable code itself.",
     },
     {
       id: 'pl-sp2q11',
@@ -156,11 +156,11 @@ export const SP2_PLACEMENT: PlacementBlock = {
       id: 'pl-sp2q12',
       domain: 'Threats, Vulnerabilities & Mitigations',
       prompt:
-        "During incident response, investigators determine that an attacker held valid access to a company's file servers for nearly eight months before anyone noticed, because none of the affected systems forwarded their authentication or file-access events anywhere for review. Which mitigation MOST directly addresses the gap that let the intrusion go unnoticed for so long?",
-      choices: ['Least privilege', 'Patching', 'Monitoring', 'Segmentation'],
+        "During incident response, investigators find that a VPN concentrator, a file server, and a domain controller had each correctly logged an intruder's activity, in full, on their own local systems throughout a two-month compromise — but nobody reviewed any of those three logs until a customer reported stolen data. Every account the intruder used already had access limited to its normal duties, each system already sat in its properly assigned network zone, and a recent audit had confirmed all three systems' configurations still matched the approved baseline. Which mitigation would MOST directly have shortened the time it took to notice the intrusion?",
+      choices: ['Least privilege', 'Segmentation', 'Monitoring', 'Configuration enforcement'],
       answer: 2,
       explain:
-        "Centralizing and reviewing logs — the core of monitoring — is what shortens dwell time by surfacing suspicious access instead of letting it run unseen for months. Segmentation is the tempting distractor because it also limits an intrusion's impact, but it would not have made anyone notice the activity sooner; it only would have limited where the attacker could go once inside.",
+        "Access was already least-privilege, network placement was already correct, and configuration already matched the baseline, which rules out least privilege, segmentation, and configuration enforcement — none of those three gaps existed here. What was missing is a process to centralize and review the logs each system was already correctly keeping, which is exactly what monitoring supplies; without it, activity all three systems recorded accurately could still go unnoticed for months.",
     },
   ],
 };
