@@ -34,8 +34,27 @@ tests, construye y despliega. El HashRouter evita reglas de reescritura en el
 servidor. El build asume la ruta `/ticourse/`; para servir desde la raíz de un
 dominio, usa `BASE_PATH=/ npm run build`.
 
-Tu progreso se guarda **en el navegador** (`localStorage`): sin cuentas, sin
-servidor, 100% privado. Puedes resetearlo desde *Perfil → Zona de peligro*.
+Tu progreso se guarda **en el navegador** (`localStorage`): sin cuentas y sin
+registro. Puedes resetearlo desde *Perfil → Zona de peligro*.
+
+### 🔄 Sincronizar entre dispositivos (opcional)
+
+Por defecto **no sale nada de tu navegador**. Si quieres seguir estudiando en
+otro dispositivo, en *Perfil → Sincronización* escribe un código privado; con el
+mismo código en el otro dispositivo, ambos combinan su progreso.
+
+- El código **no se envía nunca**: tu navegador calcula un hash SHA-256 y solo
+  manda ese hash. El servidor no ve el código y guarda únicamente tu progreso de
+  estudio (lecciones, puntuaciones, XP, racha, flashcards). Sin nombre, sin
+  correo.
+- **Trátalo como una contraseña**: quien lo conozca puede leer y sobrescribir ese
+  progreso. Usa el botón *Generar* en lugar de inventarte uno corto.
+- La combinación **nunca resta**: las lecciones y labs completados se unen, y las
+  mejores puntuaciones, el XP y la racha se quedan con el valor más alto, así que
+  sincronizar en cualquier orden no puede perder lo que ya habías ganado.
+- El almacenamiento es **eventualmente consistente**: al conectar por primera vez
+  en un dispositivo nuevo, dale unos segundos y pulsa *Sincronizar ahora* otra
+  vez si aún no ves tu progreso.
 
 ## 📚 Qué incluye
 
@@ -115,7 +134,9 @@ npm test         # vitest: integridad de contenido, muestreo de examen, migraci�
 ## 🛠️ Stack
 
 Vite 7 · React 19 · TypeScript (strict) · Tailwind CSS 4 · Zustand (persist) ·
-react-router 7 (HashRouter). Sin backend.
+react-router 7 (HashRouter). El curso funciona **sin backend**; la sincronización
+opcional usa un Worker de Cloudflare de ~100 líneas (`worker/`) que solo guarda
+un blob de progreso por hash de código.
 
 ```
 src/

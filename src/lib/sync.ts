@@ -237,7 +237,8 @@ export function mergeProgress(
  * Base URL of the sync Worker. Public, not a secret. Empty disables the whole
  * feature: no network call is ever attempted and the UI says so.
  */
-export const SYNC_URL = '';
+export const SYNC_URL: string =
+  'https://ticourse-sync.ojamajo.workers.dev';
 
 /** Stored blob schema version. Bump when the snapshot shape changes. */
 export const SYNC_SCHEMA = 1;
