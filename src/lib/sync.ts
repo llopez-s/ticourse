@@ -1,4 +1,4 @@
-import type { Conf, ProgressSnapshot } from './types';
+import type { CardState, Conf, ProgressSnapshot } from './types';
 
 /** A zero-valued snapshot. Mirrors initialState() in store.ts. */
 export function emptySnapshot(): ProgressSnapshot {
@@ -120,8 +120,30 @@ function mergeExams(
   );
 }
 
-function mergeSrs(a: ProgressSnapshot, b: ProgressSnapshot) {
-  return { ...b.srs, ...a.srs };
+/**
+ * Pick the better-established of two schedules for the same card. The
+ * comparison is total and decided purely by content, which is what keeps
+ * mergeProgress commutative.
+ */
+function betterCard(x: CardState, y: CardState): CardState {
+  if (x.reps !== y.reps) return x.reps > y.reps ? x : y;
+  if (x.interval !== y.interval) return x.interval > y.interval ? x : y;
+  if (x.due !== y.due) return x.due > y.due ? x : y;
+  if (x.lapses !== y.lapses) return x.lapses < y.lapses ? x : y;
+  return x.ease >= y.ease ? x : y;
+}
+
+function mergeSrs(
+  a: ProgressSnapshot,
+  b: ProgressSnapshot,
+): ProgressSnapshot['srs'] {
+  const out: ProgressSnapshot['srs'] = {};
+  for (const k of keysOf(a.srs, b.srs)) {
+    const x = a.srs[k];
+    const y = b.srs[k];
+    out[k] = x && y ? { ...betterCard(x, y) } : { ...(x ?? y) };
+  }
+  return out;
 }
 
 function mergeDay(

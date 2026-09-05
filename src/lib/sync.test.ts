@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { emptySnapshot, mergeProgress } from './sync';
-import type { ProgressSnapshot } from './types';
+import type { CardState, ProgressSnapshot } from './types';
 
 const snap = (over: Partial<ProgressSnapshot> = {}): ProgressSnapshot => ({
   ...emptySnapshot(),
@@ -177,5 +177,106 @@ describe('mergeProgress — streak, day and exams', () => {
     const a = snap({ exams: [examX] });
     const b = snap({ exams: [examY] });
     expect(mergeProgress(a, b).exams).toEqual(mergeProgress(b, a).exams);
+  });
+});
+
+const card = (over: Partial<CardState> = {}): CardState => ({
+  ease: 2.5,
+  interval: 1,
+  due: '2026-09-05',
+  reps: 1,
+  lapses: 0,
+  ...over,
+});
+
+describe('mergeProgress — flashcard schedules', () => {
+  it('keeps the more-reviewed card', () => {
+    const a = snap({ srs: { fcp101: card({ reps: 5, interval: 21 }) } });
+    const b = snap({ srs: { fcp101: card({ reps: 2, interval: 3 }) } });
+    expect(mergeProgress(a, b).srs.fcp101.reps).toBe(5);
+    expect(mergeProgress(a, b).srs.fcp101.interval).toBe(21);
+  });
+
+  it('breaks a reps tie on the longer interval, then the later due date', () => {
+    const a = snap({ srs: { x: card({ reps: 3, interval: 10, due: '2026-09-10' }) } });
+    const b = snap({ srs: { x: card({ reps: 3, interval: 30, due: '2026-09-30' }) } });
+    expect(mergeProgress(a, b).srs.x.interval).toBe(30);
+  });
+
+  it('keeps cards that exist on only one side', () => {
+    const a = snap({ srs: { one: card() } });
+    const b = snap({ srs: { two: card() } });
+    expect(Object.keys(mergeProgress(a, b).srs).sort()).toEqual(['one', 'two']);
+  });
+});
+
+describe('mergeProgress — algebraic properties', () => {
+  const rich = (): ProgressSnapshot =>
+    snap({
+      xp: 4200,
+      streak: { current: 6, best: 11, lastDay: '2026-09-04', freezes: 2 },
+      activity: { '2026-09-03': 90, '2026-09-04': 140 },
+      lessons: { s1m1: true, sp2m3: true },
+      quizBest: { s1m1: 88, sp2m3: 100 },
+      labs: { spl1a: true },
+      bosses: { sp1: 92 },
+      exams: [{ date: '2026-09-04', track: 'secplus', pct: 84, correct: 76, total: 90, domains: {} }],
+      srs: { fcp101: card({ reps: 4, interval: 25 }) },
+      calibration: { low: { n: 10, c: 8 }, med: { n: 40, c: 31 }, high: { n: 20, c: 18 } },
+      totals: { questions: 410, correct: 330, cards: 220, maxCombo: 12, highConfCorrect: 60, perfectQuizzes: 5, questsDone: 14, checkpoints: 40 },
+      achievements: { 'first-lesson': '2026-08-20T09:00:00.000Z' },
+      day: { ...emptySnapshot().day, date: '2026-09-04', questions: 30 },
+    });
+
+  const other = (): ProgressSnapshot =>
+    snap({
+      track: 'gcti',
+      xp: 3100,
+      streak: { current: 2, best: 14, lastDay: '2026-09-05', freezes: 0 },
+      activity: { '2026-09-04': 60, '2026-09-05': 200 },
+      lessons: { sp3m1: true },
+      quizBest: { s1m1: 95 },
+      labs: { spl2a: true },
+      bosses: { sp1: 80, sp2: 88 },
+      exams: [{ date: '2026-09-05', track: 'secplus', pct: 88, correct: 79, total: 90, domains: {} }],
+      srs: { fcp101: card({ reps: 9, interval: 60 }), fcp202: card() },
+      calibration: { low: { n: 4, c: 4 }, med: { n: 55, c: 40 }, high: { n: 12, c: 12 } },
+      totals: { questions: 500, correct: 300, cards: 180, maxCombo: 8, highConfCorrect: 44, perfectQuizzes: 9, questsDone: 10, checkpoints: 61 },
+      achievements: { 'first-lesson': '2026-09-01T09:00:00.000Z', scholar: '2026-09-02T09:00:00.000Z' },
+      day: { ...emptySnapshot().day, date: '2026-09-05', questions: 8 },
+    });
+
+  it('is idempotent', () => {
+    expect(mergeProgress(rich(), rich())).toEqual(rich());
+  });
+
+  it('is commutative apart from the local track preference', () => {
+    const ab = mergeProgress(rich(), other());
+    const ba = mergeProgress(other(), rich());
+    expect({ ...ab, track: 'x' }).toEqual({ ...ba, track: 'x' });
+  });
+
+  it('never loses completed work', () => {
+    const m = mergeProgress(rich(), other());
+    expect(Object.keys(m.lessons).sort()).toEqual(['s1m1', 'sp2m3', 'sp3m1']);
+    expect(Object.keys(m.labs).sort()).toEqual(['spl1a', 'spl2a']);
+    expect(Object.keys(m.achievements).sort()).toEqual(['first-lesson', 'scholar']);
+  });
+
+  it('never lets a counter go backwards', () => {
+    const [a, b] = [rich(), other()];
+    const m = mergeProgress(a, b);
+    expect(m.xp).toBeGreaterThanOrEqual(Math.max(a.xp, b.xp));
+    expect(m.streak.best).toBeGreaterThanOrEqual(Math.max(a.streak.best, b.streak.best));
+    for (const k of Object.keys(m.totals) as (keyof typeof m.totals)[]) {
+      expect(m.totals[k], k).toBeGreaterThanOrEqual(Math.max(a.totals[k], b.totals[k]));
+    }
+  });
+
+  it('never produces more correct answers than answers in calibration', () => {
+    const m = mergeProgress(rich(), other());
+    for (const level of ['low', 'med', 'high'] as const) {
+      expect(m.calibration[level].c).toBeLessThanOrEqual(m.calibration[level].n);
+    }
   });
 });
