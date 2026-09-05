@@ -30,6 +30,8 @@ const base = (): ProgressSnapshot => ({
     checkpoints: 0,
   },
   achievements: {},
+  exempt: {},
+  placement: [],
   day: {
     date: '2026-01-01',
     lessons: 0,

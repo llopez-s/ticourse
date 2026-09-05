@@ -21,6 +21,8 @@ function snapshot(): ProgressSnapshot {
     calibration: s.calibration,
     totals: s.totals,
     achievements: s.achievements,
+    exempt: s.exempt,
+    placement: s.placement,
     day: s.day,
   };
 }

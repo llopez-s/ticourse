@@ -107,6 +107,8 @@ function initialState(): ProgressSnapshot {
       checkpoints: 0,
     },
     achievements: {},
+    exempt: {},
+    placement: [],
     day: freshDay(todayStr()),
   };
 }

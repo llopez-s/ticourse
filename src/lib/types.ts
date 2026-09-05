@@ -28,6 +28,40 @@ export interface Question {
   domain: Domain;
 }
 
+/** One placement-test block: a whole exam domain, worth one section. */
+export interface PlacementBlock {
+  id: string; // "pl-sp1"
+  sectionId: string; // "sp1"
+  domain: Domain;
+  title: string; // Spanish, shown on the block card
+  blurb: string; // Spanish, one line describing what it covers
+  questions: Question[]; // exactly PLACEMENT_BLOCK_N
+}
+
+export type ExemptStatus = 'exempt' | 'revoked';
+
+/**
+ * One module exempted (or un-exempted) by a placement block. Revocation writes
+ * a tombstone rather than deleting, so it can win a sync merge.
+ */
+export interface ExemptEntry {
+  status: ExemptStatus;
+  at: string; // ISO timestamp — drives the merge
+  via: string; // placement block id that granted it
+  score: number; // block percentage at grant time, 0-100
+}
+
+export interface PlacementResult {
+  date: string; // ISO timestamp
+  track: TrackId;
+  blockId: string;
+  sectionId: string;
+  correct: number;
+  total: number;
+  pct: number;
+  passed: boolean;
+}
+
 export interface CheckQ {
   q: string;
   choices: string[];
@@ -162,6 +196,8 @@ export interface ProgressSnapshot {
   calibration: Record<Conf, { n: number; c: number }>;
   totals: Totals;
   achievements: Record<string, string>; // id -> ISO date unlocked
+  exempt: Record<string, ExemptEntry>; // moduleId -> entry
+  placement: PlacementResult[]; // full attempt history
   day: DayState;
 }
 
