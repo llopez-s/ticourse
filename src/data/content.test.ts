@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { ALL_MODULES, ALL_QUESTIONS, sectionById } from './course';
+import { ALL_MODULES, ALL_PLACEMENT, ALL_QUESTIONS, sectionById } from './course';
 import { CLASSIFY_DATA, LABS, ORDER_DATA, SELECT_DATA } from './labs';
 import { TRACKS } from './tracks';
+import { PLACEMENT_BLOCK_N } from '../lib/placement';
+
+const norm = (s: string) => s.toLowerCase().replace(/\s+/g, ' ').trim();
 
 describe('content integrity', () => {
   it('questions have 4 choices, a valid answer and an explanation', () => {
@@ -168,6 +171,47 @@ describe('content integrity', () => {
   it('every track section id carries its track', () => {
     for (const t of Object.values(TRACKS)) {
       for (const s of t.sections) expect(s.track).toBe(t.id);
+    }
+  });
+});
+
+describe('placement blocks', () => {
+  it('hold exactly 12 well-formed questions in their own domain', () => {
+    for (const b of ALL_PLACEMENT) {
+      expect(b.questions, b.id).toHaveLength(PLACEMENT_BLOCK_N);
+      for (const q of b.questions) {
+        expect(q.choices, q.id).toHaveLength(4);
+        expect(q.answer, q.id).toBeGreaterThanOrEqual(0);
+        expect(q.answer, q.id).toBeLessThan(4);
+        expect(q.explain.length, q.id).toBeGreaterThan(20);
+        expect(q.domain, q.id).toBe(b.domain);
+      }
+    }
+  });
+
+  it('use the pl- id family and are globally unique', () => {
+    const ids = ALL_PLACEMENT.flatMap((b) => [b.id, ...b.questions.map((q) => q.id)]);
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const id of ids) expect(id.startsWith('pl-'), id).toBe(true);
+    const lesson = new Set([
+      ...ALL_QUESTIONS.map((q) => q.id),
+      ...ALL_MODULES.map((m) => m.id),
+    ]);
+    for (const id of ids) expect(lesson.has(id), id).toBe(false);
+  });
+
+  it('never reuse a lesson question', () => {
+    const lesson = new Set(ALL_QUESTIONS.map((q) => norm(q.prompt)));
+    for (const b of ALL_PLACEMENT) {
+      for (const q of b.questions) {
+        expect(lesson.has(norm(q.prompt)), q.id).toBe(false);
+      }
+    }
+  });
+
+  it('point at a section that exists', () => {
+    for (const b of ALL_PLACEMENT) {
+      expect(sectionById(b.sectionId), b.id).toBeDefined();
     }
   });
 });

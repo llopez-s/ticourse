@@ -33,6 +33,7 @@ import { SP6_MODULES } from './secplus/sp6';
 import { SP_FLASHCARDS } from './secplus/flashcards';
 import { SP_GLOSSARY } from './secplus/glossary';
 import { SP_LABS } from './secplus/labs';
+import { SP_PLACEMENT } from './secplus/placement';
 
 export type { TrackId };
 
@@ -131,7 +132,7 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
       ...SP5_MODULES,
       ...SP6_MODULES,
     ],
-    placement: [],
+    placement: SP_PLACEMENT,
     flashcards: SP_FLASHCARDS,
     glossary: SP_GLOSSARY,
     labs: SP_LABS,
