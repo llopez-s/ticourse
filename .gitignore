@@ -5,3 +5,7 @@ dist
 .DS_Store
 worker/node_modules
 worker/.wrangler
+
+# Never commit local secrets — this repo is public
+.env
+.env.*
