@@ -18,7 +18,9 @@ const MAX_BODY_BYTES = 512 * 1024;
 const HASH_RE = /^[0-9a-f]{64}$/;
 
 function corsHeaders(origin: string | null): Record<string, string> {
-  if (!origin || !ALLOWED_ORIGINS.includes(origin)) return {};
+  // `vary: origin` must be sent on every response, allowed or not, so a
+  // shared cache never serves a stored no-CORS response to an allowed origin.
+  if (!origin || !ALLOWED_ORIGINS.includes(origin)) return { vary: 'origin' };
   return {
     'access-control-allow-origin': origin,
     'access-control-allow-methods': 'GET,PUT,OPTIONS',
@@ -61,6 +63,16 @@ export default {
     }
 
     if (request.method === 'PUT') {
+      // Fast path: reject on the declared Content-Length before buffering the
+      // body at all. This can be absent or wrong, so it's a supplement to —
+      // not a replacement for — the post-read length check below.
+      const contentLength = request.headers.get('content-length');
+      if (contentLength !== null) {
+        const declaredLength = Number(contentLength);
+        if (!Number.isNaN(declaredLength) && declaredLength > MAX_BODY_BYTES) {
+          return json({ error: 'too large' }, 413, cors);
+        }
+      }
       const raw = await request.text();
       if (raw.length > MAX_BODY_BYTES) {
         return json({ error: 'too large' }, 413, cors);
@@ -71,7 +83,12 @@ export default {
       } catch {
         return json({ error: 'invalid json' }, 400, cors);
       }
-      if (typeof parsed.v !== 'number' || typeof parsed.data !== 'object' || parsed.data === null) {
+      if (
+        typeof parsed.v !== 'number' ||
+        typeof parsed.data !== 'object' ||
+        parsed.data === null ||
+        Array.isArray(parsed.data)
+      ) {
         return json({ error: 'invalid body' }, 400, cors);
       }
       const updatedAt = new Date().toISOString();
