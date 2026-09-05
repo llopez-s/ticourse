@@ -1,0 +1,140 @@
+import type { Conf, ProgressSnapshot } from './types';
+
+/** A zero-valued snapshot. Mirrors initialState() in store.ts. */
+export function emptySnapshot(): ProgressSnapshot {
+  return {
+    track: 'gcti',
+    xp: 0,
+    streak: { current: 0, best: 0, lastDay: null, freezes: 1 },
+    activity: {},
+    lessons: {},
+    quizBest: {},
+    labs: {},
+    bosses: {},
+    exams: [],
+    srs: {},
+    calibration: {
+      low: { n: 0, c: 0 },
+      med: { n: 0, c: 0 },
+      high: { n: 0, c: 0 },
+    },
+    totals: {
+      questions: 0,
+      correct: 0,
+      cards: 0,
+      maxCombo: 0,
+      highConfCorrect: 0,
+      perfectQuizzes: 0,
+      questsDone: 0,
+      checkpoints: 0,
+    },
+    achievements: {},
+    day: {
+      date: '1970-01-01',
+      lessons: 0,
+      questions: 0,
+      correct: 0,
+      cards: 0,
+      labs: 0,
+      highConfCorrect: 0,
+      xpEarned: 0,
+      newCards: 0,
+      questsAwarded: [],
+    },
+  };
+}
+
+const keysOf = <T>(a: Record<string, T>, b: Record<string, T>) =>
+  Array.from(new Set([...Object.keys(a), ...Object.keys(b)]));
+
+/** Union of two boolean maps: present-and-true on either side wins. */
+function unionFlags(
+  a: Record<string, boolean>,
+  b: Record<string, boolean>,
+): Record<string, boolean> {
+  const out: Record<string, boolean> = {};
+  for (const k of keysOf(a, b)) if (a[k] || b[k]) out[k] = true;
+  return out;
+}
+
+/** Union of two numeric maps, keeping the larger value per key. */
+function maxNumbers(
+  a: Record<string, number>,
+  b: Record<string, number>,
+): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const k of keysOf(a, b)) out[k] = Math.max(a[k] ?? 0, b[k] ?? 0);
+  return out;
+}
+
+function mergeStreak(a: ProgressSnapshot, b: ProgressSnapshot) {
+  return { ...a.streak, best: Math.max(a.streak.best, b.streak.best) };
+}
+
+function mergeExams(a: ProgressSnapshot, b: ProgressSnapshot) {
+  return [...a.exams, ...b.exams];
+}
+
+function mergeSrs(a: ProgressSnapshot, b: ProgressSnapshot) {
+  return { ...b.srs, ...a.srs };
+}
+
+function mergeDay(a: ProgressSnapshot, b: ProgressSnapshot) {
+  return a.day.date >= b.day.date ? a.day : b.day;
+}
+
+/**
+ * Merge two progress snapshots. Commutative, idempotent and monotonic: no
+ * counter decreases and no completed work is lost, so merge order never
+ * matters and repeating a sync changes nothing.
+ *
+ * `a` is treated as the local snapshot: its `track` (a UI preference, not
+ * progress) is preserved.
+ */
+export function mergeProgress(
+  a: ProgressSnapshot,
+  b: ProgressSnapshot,
+): ProgressSnapshot {
+  const achievements: Record<string, string> = {};
+  for (const k of keysOf(a.achievements, b.achievements)) {
+    const x = a.achievements[k];
+    const y = b.achievements[k];
+    // earliest unlock wins — an achievement cannot be un-earned
+    achievements[k] = x && y ? (x < y ? x : y) : (x ?? y);
+  }
+
+  const calibration = {} as ProgressSnapshot['calibration'];
+  for (const level of ['low', 'med', 'high'] as Conf[]) {
+    const x = a.calibration[level];
+    const y = b.calibration[level];
+    // take one side wholesale: field-wise maxima could yield c > n
+    calibration[level] =
+      y.n > x.n || (y.n === x.n && y.c > x.c) ? { ...y } : { ...x };
+  }
+
+  return {
+    track: a.track,
+    xp: Math.max(a.xp, b.xp),
+    streak: mergeStreak(a, b),
+    activity: maxNumbers(a.activity, b.activity),
+    lessons: unionFlags(a.lessons, b.lessons),
+    quizBest: maxNumbers(a.quizBest, b.quizBest),
+    labs: unionFlags(a.labs, b.labs),
+    bosses: maxNumbers(a.bosses, b.bosses),
+    exams: mergeExams(a, b),
+    srs: mergeSrs(a, b),
+    calibration,
+    totals: {
+      questions: Math.max(a.totals.questions, b.totals.questions),
+      correct: Math.max(a.totals.correct, b.totals.correct),
+      cards: Math.max(a.totals.cards, b.totals.cards),
+      maxCombo: Math.max(a.totals.maxCombo, b.totals.maxCombo),
+      highConfCorrect: Math.max(a.totals.highConfCorrect, b.totals.highConfCorrect),
+      perfectQuizzes: Math.max(a.totals.perfectQuizzes, b.totals.perfectQuizzes),
+      questsDone: Math.max(a.totals.questsDone, b.totals.questsDone),
+      checkpoints: Math.max(a.totals.checkpoints, b.totals.checkpoints),
+    },
+    achievements,
+    day: mergeDay(a, b),
+  };
+}
