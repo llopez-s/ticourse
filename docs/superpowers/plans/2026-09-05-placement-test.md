@@ -1719,10 +1719,12 @@ with this derived state inside `ProfilePage`:
 ```tsx
   const placement = useStore((st) => st.placement);
   const revokeExemption = useStore((st) => st.revokeExemption);
-  const exemptSections = useStore((st) =>
-    SECTIONS.filter((sec) =>
-      sectionExempt(st, modulesOf(sec.id).map((m) => m.id)),
-    ),
+  const exempt = useStore((st) => st.exempt);
+  // Derived OUTSIDE the selector on purpose: a selector that builds a new array
+  // on every call returns a fresh reference each time, which makes zustand v5's
+  // useSyncExternalStore treat the snapshot as perpetually changed.
+  const exemptSections = SECTIONS.filter((sec) =>
+    sectionExempt({ exempt }, modulesOf(sec.id).map((m) => m.id)),
   );
 ```
 
