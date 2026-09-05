@@ -1,42 +1,6 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { migrateProgress, useStore } from './store';
 import { modulesOf } from '../data/course';
-import type { PlacementBlock } from './types';
-
-/**
- * `placementBlockById` only returns real data once Task 9+ lands the
- * Security+ placement content (see
- * docs/superpowers/plans/2026-09-05-placement-test.md, Task 4: "Both tracks
- * get placement: [] ... arrays stop being empty in Tasks 9-13"). Task 3
- * wires the store actions to that lookup, so its own tests need *a* block to
- * exercise now — this stubs just `placementBlockById` with two fixtures;
- * every other export of '../data/course' (modulesOf, trackOf, ...) is real.
- */
-vi.mock('../data/course', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('../data/course')>();
-  const fixtures: Record<string, PlacementBlock> = {
-    'pl-sp1': {
-      id: 'pl-sp1',
-      sectionId: 'sp1',
-      domain: 'General Security Concepts',
-      title: 'Fixture block',
-      blurb: 'Fixture placement block for store action tests',
-      questions: [],
-    },
-    'pl-sp2': {
-      id: 'pl-sp2',
-      sectionId: 'sp2',
-      domain: 'Threats, Vulnerabilities & Mitigations',
-      title: 'Fixture block',
-      blurb: 'Fixture placement block for store action tests',
-      questions: [],
-    },
-  };
-  return {
-    ...actual,
-    placementBlockById: (id: string) => fixtures[id],
-  };
-});
 
 const reset = () => useStore.getState().resetAll();
 
