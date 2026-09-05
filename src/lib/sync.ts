@@ -1,5 +1,5 @@
 import { dayDiff } from './util';
-import type { CardState, Conf, ProgressSnapshot } from './types';
+import type { CardState, Conf, ExemptEntry, PlacementResult, ProgressSnapshot } from './types';
 
 /** A zero-valued snapshot. Mirrors initialState() in store.ts. */
 export function emptySnapshot(): ProgressSnapshot {
@@ -133,6 +133,54 @@ function mergeExams(
 }
 
 /**
+ * Pick the surviving exemption entry. The order is total and decided purely by
+ * content, which is what keeps mergeProgress commutative: later `at` wins;
+ * on a tie `revoked` wins (a stale device must never re-grant); then the higher
+ * score; then the lexicographically smaller `via`.
+ */
+function laterEntry(x: ExemptEntry, y: ExemptEntry): ExemptEntry {
+  if (x.at !== y.at) return x.at > y.at ? x : y;
+  if (x.status !== y.status) return x.status === 'revoked' ? x : y;
+  if (x.score !== y.score) return x.score > y.score ? x : y;
+  return x.via <= y.via ? x : y;
+}
+
+function mergeExempt(
+  a: ProgressSnapshot,
+  b: ProgressSnapshot,
+): ProgressSnapshot['exempt'] {
+  const ae = a.exempt ?? {};
+  const be = b.exempt ?? {};
+  const out: ProgressSnapshot['exempt'] = {};
+  for (const k of keysOf(ae, be)) {
+    const x = ae[k];
+    const y = be[k];
+    out[k] = x && y ? { ...laterEntry(x, y) } : { ...(x ?? y) };
+  }
+  return out;
+}
+
+const placementKey = (p: PlacementResult) =>
+  `${p.date}|${p.blockId}|${p.pct}|${p.correct}|${p.total}`;
+
+function mergePlacement(
+  a: ProgressSnapshot,
+  b: ProgressSnapshot,
+): PlacementResult[] {
+  const byKey = new Map<string, PlacementResult>();
+  for (const p of [...(a.placement ?? []), ...(b.placement ?? [])]) {
+    byKey.set(placementKey(p), p);
+  }
+  return Array.from(byKey.values()).sort((x, y) =>
+    x.date === y.date
+      ? placementKey(x).localeCompare(placementKey(y))
+      : x.date < y.date
+        ? -1
+        : 1,
+  );
+}
+
+/**
  * Pick the better-established of two schedules for the same card. The
  * comparison is total and decided purely by content, which is what keeps
  * mergeProgress commutative.
@@ -180,9 +228,13 @@ function mergeDay(
 }
 
 /**
- * Merge two progress snapshots. Commutative, idempotent and monotonic: no
- * counter decreases and no completed work is lost, so merge order never
+ * Merge two progress snapshots. Commutative and idempotent: merge order never
  * matters and repeating a sync changes nothing.
+ *
+ * Monotonic for every field but one — no counter decreases and no completed
+ * work is lost. The exception is `exempt`, where the most recent decision wins,
+ * because a placement exemption can be revoked and that revocation must not be
+ * undone by an older grant arriving from another device.
  *
  * `a` is treated as the local snapshot: its `track` (a UI preference, not
  * progress) is preserved.
@@ -231,9 +283,8 @@ export function mergeProgress(
       checkpoints: Math.max(a.totals.checkpoints, b.totals.checkpoints),
     },
     achievements,
-    // Placeholder: Task 5 implements the exempt/placement merge rules.
-    exempt: {},
-    placement: [],
+    exempt: mergeExempt(a, b),
+    placement: mergePlacement(a, b),
     day: mergeDay(a, b),
   };
 }
