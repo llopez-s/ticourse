@@ -9,6 +9,7 @@ import QuizPage from './pages/QuizPage';
 import LabPage from './pages/LabPage';
 import BossPage from './pages/BossPage';
 import ExamPage from './pages/ExamPage';
+import PlacementPage from './pages/PlacementPage';
 import CardsPage from './pages/CardsPage';
 import GlossaryPage from './pages/GlossaryPage';
 import AchievementsPage from './pages/AchievementsPage';
@@ -37,6 +38,8 @@ export default function App() {
           <Route path="/lab/:labId" element={<LabPage />} />
           <Route path="/boss/:sectionId" element={<BossPage />} />
           <Route path="/exam" element={<ExamPage />} />
+          <Route path="/placement" element={<PlacementPage />} />
+          <Route path="/placement/:blockId" element={<PlacementPage />} />
           <Route path="/cards" element={<CardsPage />} />
           <Route path="/glossary" element={<GlossaryPage />} />
           <Route path="/achievements" element={<AchievementsPage />} />
