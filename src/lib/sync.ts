@@ -179,40 +179,6 @@ function mergeDay(
   };
 }
 
-function mergeExempt(
-  a: ProgressSnapshot,
-  b: ProgressSnapshot,
-): ProgressSnapshot['exempt'] {
-  const out: ProgressSnapshot['exempt'] = {};
-  for (const k of keysOf(a.exempt, b.exempt)) {
-    const x = a.exempt[k];
-    const y = b.exempt[k];
-    // later timestamp wins (more recent information)
-    out[k] = x && y ? (x.at >= y.at ? { ...x } : { ...y }) : { ...(x ?? y) };
-  }
-  return out;
-}
-
-/** Identity of a placement result attempt. */
-const placementKey = (p: ProgressSnapshot['placement'][number]) =>
-  `${p.date}|${p.track}|${p.blockId}|${p.pct}|${p.correct}|${p.total}`;
-
-function mergePlacement(
-  a: ProgressSnapshot,
-  b: ProgressSnapshot,
-): ProgressSnapshot['placement'] {
-  const byKey = new Map<string, ProgressSnapshot['placement'][number]>();
-  for (const p of [...a.placement, ...b.placement]) {
-    const key = placementKey(p);
-    if (!byKey.has(key)) {
-      byKey.set(key, p);
-    }
-  }
-  return Array.from(byKey.values()).sort((x, y) =>
-    x.date === y.date ? placementKey(x).localeCompare(placementKey(y)) : x.date < y.date ? -1 : 1,
-  );
-}
-
 /**
  * Merge two progress snapshots. Commutative, idempotent and monotonic: no
  * counter decreases and no completed work is lost, so merge order never
@@ -265,8 +231,9 @@ export function mergeProgress(
       checkpoints: Math.max(a.totals.checkpoints, b.totals.checkpoints),
     },
     achievements,
-    exempt: mergeExempt(a, b),
-    placement: mergePlacement(a, b),
+    // Placeholder: Task 5 implements the exempt/placement merge rules.
+    exempt: {},
+    placement: [],
     day: mergeDay(a, b),
   };
 }
