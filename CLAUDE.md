@@ -120,6 +120,18 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   build present. The weighted 90-question mock samples 11/20/16/25/18 across the five SY0-701
   domains, matching the official 12/22/18/28/20 weights exactly.
 - **Git repo** initialized 2026-09-05, remote `llopez-s/ticourse` (public), default branch `main`.
+- **Progress sync (opt-in, currently OFF).** `src/lib/sync.ts` (pure merge + hashing + HTTP client),
+  `syncStore.ts` (code + status under `intelforge-sync`, never uploaded), `useSync.ts` (mount /
+  debounce / tab-hide triggers), `components/SyncPanel.tsx` (Profile UI), `worker/` (Cloudflare
+  Worker + KV, deployed manually with `wrangler deploy`, **not** in CI). The code is SHA-256'd in
+  the browser; only the digest reaches the Worker. Conflicts resolve via `mergeProgress`, which is
+  commutative, idempotent and monotonic — 28 tests in `sync.test.ts`. Spec:
+  `docs/superpowers/specs/2026-09-05-progress-sync-design.md`.
+  **`SYNC_URL` in `sync.ts` is `''`, which disables the whole feature** (the panel renders "no
+  disponible" and no network path runs). The Worker uploads fine and its KV namespace exists, but
+  the account has no `workers.dev` subdomain yet, so there is no public URL to put there. Register
+  one (see `worker/README.md`), then set `SYNC_URL` to the published URL — that single line turns
+  sync on.
 - **Tests:** vitest, `npm test` (32 tests in `src/**/*.test.ts`). Content tests assert Domain 1–5
   completeness, that every Security+ boss section has ≥12 questions, 4 choices + valid answer per question, ids unique, lab data present.
 - **Bash gotcha in this harness:** commands containing backticks fail to parse before running —

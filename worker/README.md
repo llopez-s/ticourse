@@ -14,8 +14,17 @@ npm install
 npx wrangler login                       # opens a browser, needs a free Cloudflare account
 npx wrangler kv namespace create PROGRESS
 # paste the printed id into wrangler.toml, replacing REPLACE_WITH_KV_NAMESPACE_ID
-npx wrangler deploy
+npx wrangler deploy                      # run this one in a real terminal, see below
 ```
+
+**Run `wrangler deploy` interactively the first time.** A brand-new Cloudflare account has no
+`workers.dev` subdomain, and the Worker cannot be published without one. The first deploy asks
+"Would you like to register a workers.dev subdomain now?" — answer yes and choose a name. That name
+is account-wide and hard to change afterwards, and it becomes part of the public URL:
+`https://ticourse-sync.<subdomain>.workers.dev`. A non-interactive shell answers "no" to that
+prompt, so the upload succeeds but publishing fails with a link to the account's onboarding page.
+The subdomain can also be registered from the Cloudflare dashboard under Workers & Pages, after
+which `wrangler deploy` works non-interactively.
 
 `deploy` prints the public URL, e.g. `https://ticourse-sync.<subdomain>.workers.dev`.
 Put that value in `SYNC_URL` in `src/lib/sync.ts` and push, so the app starts using it.
