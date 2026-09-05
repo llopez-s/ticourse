@@ -28,10 +28,11 @@ npm install
 npm run dev      # → http://localhost:5173
 ```
 
-Producción: `npm run build` (salida estática en `dist/`, desplegable en
-cualquier hosting estático — Vercel, Netlify, GitHub Pages — sin configuración
-gracias al HashRouter). El build asume la ruta `/ticourse/` de GitHub Pages;
-para desplegar en la raíz de otro hosting usa `BASE_PATH=/ npm run build`.
+Producción: `npm run build` (salida estática en `dist/`). Se publica en **GitHub
+Pages** desde `.github/workflows/deploy.yml`: cada push a `main` ejecuta los
+tests, construye y despliega. El HashRouter evita reglas de reescritura en el
+servidor. El build asume la ruta `/ticourse/`; para servir desde la raíz de un
+dominio, usa `BASE_PATH=/ npm run build`.
 
 Tu progreso se guarda **en el navegador** (`localStorage`): sin cuentas, sin
 servidor, 100% privado. Puedes resetearlo desde *Perfil → Zona de peligro*.
