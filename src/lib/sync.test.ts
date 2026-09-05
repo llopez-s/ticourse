@@ -250,6 +250,18 @@ describe('mergeProgress — algebraic properties', () => {
     expect(mergeProgress(rich(), rich())).toEqual(rich());
   });
 
+  it('merging a snapshot with itself is stringify-identical, which the sync loop guard depends on', () => {
+    // useSync's infinite-loop guard compares JSON.stringify(merged) !== JSON.stringify(local).
+    // This guard is correct only if field order is preserved across snapshot(), mergeProgress's
+    // return object, and store.ts' partialize. This test pins that invariant at the string level:
+    // stringify is key-order sensitive, so if someone reorders fields in mergeProgress's return
+    // object or elsewhere, the two strings will differ despite deep equality, and the loop
+    // guard will fail silently. This test will catch that regression.
+    const fixture = rich();
+    const merged = mergeProgress(fixture, fixture);
+    expect(JSON.stringify(merged)).toBe(JSON.stringify(fixture));
+  });
+
   it('is commutative apart from the local track preference', () => {
     const ab = mergeProgress(rich(), other());
     const ba = mergeProgress(other(), rich());
