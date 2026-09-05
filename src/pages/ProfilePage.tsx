@@ -1,8 +1,16 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useStore } from '../lib/store';
 import { levelInfo, nextRank, rankFor, STAKES, CONF_LABEL } from '../lib/xp';
 import { lastNDays } from '../lib/util';
-import { contentSections, modulesOf, sectionMastery } from '../data/course';
+import {
+  contentSections,
+  modulesOf,
+  sectionById,
+  sectionMastery,
+  SECTIONS,
+} from '../data/course';
+import { sectionExempt } from '../lib/placement';
 import { useTrack } from '../components/Layout';
 import type { Conf } from '../lib/types';
 import { Bar, PageTitle, Panel, StatBox } from '../components/Bits';
@@ -104,6 +112,15 @@ export default function ProfilePage() {
     s.totals.questions === 0
       ? 0
       : Math.round((s.totals.correct / s.totals.questions) * 100);
+  const placement = useStore((st) => st.placement);
+  const revokeExemption = useStore((st) => st.revokeExemption);
+  const exempt = useStore((st) => st.exempt);
+  // Derived OUTSIDE the selector on purpose: a selector that builds a new array
+  // on every call returns a fresh reference each time, which makes zustand v5's
+  // useSyncExternalStore treat the snapshot as perpetually changed.
+  const exemptSections = SECTIONS.filter((sec) =>
+    sectionExempt({ exempt }, modulesOf(sec.id).map((m) => m.id)),
+  );
 
   return (
     <div>
@@ -168,6 +185,50 @@ export default function ProfilePage() {
           </div>
         </Panel>
       </div>
+
+      <Panel className="mb-5">
+        <h2 className="mb-3 font-bold text-slate-100">🎯 Prueba de nivel</h2>
+        {placement.length === 0 ? (
+          <p className="text-xs text-slate-400">
+            Todavía no has hecho ningún bloque.{' '}
+            <Link to="/placement" className="text-cyan-300 hover:text-cyan-200">
+              Hacerla ahora →
+            </Link>
+          </p>
+        ) : (
+          <div className="space-y-2">
+            {placement.map((p, i) => (
+              <div key={i} className="flex items-center gap-3 text-xs">
+                <span className="font-mono text-slate-500">{p.date.slice(0, 10)}</span>
+                <span className="flex-1 text-slate-300">
+                  {sectionById(p.sectionId)?.title ?? p.sectionId}
+                </span>
+                <span className={p.passed ? 'text-emerald-300' : 'text-amber-300'}>
+                  {p.pct}%
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+        {exemptSections.length > 0 && (
+          <div className="mt-4 border-t border-ink-700 pt-3">
+            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+              Convalidaciones activas
+            </div>
+            {exemptSections.map((sec) => (
+              <div key={sec.id} className="flex items-center gap-3 py-1 text-xs">
+                <span className="flex-1 text-cyan-200">⏩ {sec.title}</span>
+                <button
+                  onClick={() => revokeExemption(sec.id)}
+                  className="rounded border border-ink-600 px-2 py-1 font-semibold text-slate-300 hover:bg-ink-800"
+                >
+                  Anular
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+      </Panel>
 
       <SyncPanel />
 

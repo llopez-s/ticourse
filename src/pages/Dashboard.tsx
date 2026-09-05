@@ -6,6 +6,7 @@ import {
   labsOf,
   modulesOf,
   nextModule,
+  placementBlocks,
   sectionMastery,
   sectionsOf,
 } from '../data/course';
@@ -13,6 +14,7 @@ import { questsForDate, DAILY_ALL_BONUS } from '../data/quests';
 import { useTrack } from '../components/Layout';
 import { todayStr } from '../lib/util';
 import { levelInfo, rankFor } from '../lib/xp';
+import { isDone } from '../lib/placement';
 import { Bar, Panel, Ring } from '../components/Bits';
 
 function QuestsPanel() {
@@ -166,6 +168,28 @@ export default function Dashboard() {
         </p>
       </div>
 
+      {placementBlocks(track.id).length > 0 &&
+        (s.placement.some((p) => p.track === track.id) ? (
+          <Link
+            to="/placement"
+            className="mb-5 block text-xs font-semibold text-cyan-300 hover:text-cyan-200"
+          >
+            🎯 Prueba de nivel · revisa qué puedes convalidar →
+          </Link>
+        ) : (
+          <Link
+            to="/placement"
+            className="mb-5 block rounded-xl border border-cyan-500/40 bg-cyan-950/20 p-4 transition-colors hover:border-cyan-400"
+          >
+            <div className="text-sm font-bold text-cyan-100">
+              🎯 ¿Ya sabes algo de esto?
+            </div>
+            <div className="mt-1 text-xs text-cyan-200/80">
+              Haz la prueba de nivel y sáltate lo que ya dominas.
+            </div>
+          </Link>
+        ))}
+
       {/* top row: continue + readiness */}
       <div className="mb-5 grid gap-4 md:grid-cols-3">
         <Link
@@ -236,7 +260,7 @@ export default function Dashboard() {
               </div>
             );
           }
-          const lessonsDone = mods.filter((m) => s.lessons[m.id]).length;
+          const lessonsDone = mods.filter((m) => isDone(s, m.id)).length;
           const labsDone = labs.filter((l) => s.labs[l.id]).length;
           const mastery = sectionMastery(sec.id, s);
           const bossDown = (s.bosses[sec.id] ?? 0) >= 80;
