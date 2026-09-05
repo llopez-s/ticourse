@@ -13,6 +13,7 @@ import { useSyncTrack } from '../components/Layout';
 export default function SectionPage() {
   const { id } = useParams();
   const s = useStore();
+  const revokeExemption = useStore((st) => st.revokeExemption);
   const section = sectionById(id ?? '');
   useSyncTrack(section?.id);
   if (!section) return <p className="text-slate-400">Sección no encontrada.</p>;
@@ -26,7 +27,6 @@ export default function SectionPage() {
   const moduleIds = mods.map((m) => m.id);
   const exempt = sectionExempt(s, moduleIds);
   const exemptPct = sectionExemptScore(s, moduleIds);
-  const revokeExemption = useStore((st) => st.revokeExemption);
 
   return (
     <div>
