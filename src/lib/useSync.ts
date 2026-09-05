@@ -28,6 +28,12 @@ function snapshot(): ProgressSnapshot {
 export const syncEnabled = () => SYNC_URL !== '';
 
 /**
+ * Digest of the code, cached the first time syncNow computes it. hashCode is
+ * async, and the tab-hide path has no time to await it — see onHide below.
+ */
+let cachedHash: string | null = null;
+
+/**
  * One full sync: pull the remote snapshot, merge it into the local one, apply
  * the result locally, then push it back. Idempotent — running it twice in a
  * row changes nothing.
@@ -38,6 +44,7 @@ export async function syncNow(): Promise<void> {
   _set({ status: 'syncing', error: null });
   try {
     const hash = await hashCode(code);
+    cachedHash = hash;
     const remote = await pull(hash);
     const local = snapshot();
     // A missing bucket is not an error: this is the first sync for this code.
@@ -49,7 +56,13 @@ export async function syncNow(): Promise<void> {
     if (JSON.stringify(merged) !== JSON.stringify(local)) {
       useStore.setState(merged);
     }
-    await push(hash, merged);
+    // Skip the KV write when the bucket already holds exactly this snapshot —
+    // every device polls on a timer, so an unconditional push means a write
+    // per device per sync even when nothing changed anywhere. A null `remote`
+    // is the bucket-creating first push and must never be skipped.
+    if (!remote || JSON.stringify(merged) !== JSON.stringify(remote)) {
+      await push(hash, merged);
+    }
     _set({ status: 'ok', lastSyncedAt: new Date().toISOString(), error: null });
   } catch (e) {
     _set({ status: 'error', error: e instanceof Error ? e.message : 'Error de sincronización' });
@@ -74,10 +87,29 @@ export function useSync(): void {
     });
 
     const onHide = () => {
-      if (document.visibilityState === 'hidden') {
-        clearTimeout(timer);
+      if (document.visibilityState !== 'hidden') return;
+      clearTimeout(timer);
+      if (!cachedHash) {
+        // No digest yet: the first syncNow has not resolved, so there is
+        // nothing to push to. Fall back to the full path.
         void syncNow();
+        return;
       }
+      // Push straight from local state with no pull. syncNow() awaits a pull
+      // round trip first, and on a real tab close the document is torn down
+      // long before that resolves, so nothing would ever be pushed —
+      // `keepalive` only protects a request that is already in flight.
+      //
+      // Tradeoff, stated plainly: skipping the pull means skipping the merge,
+      // so remote-only changes another device made since our last pull are
+      // overwritten in the bucket. This is self-healing — that device still
+      // holds those changes in its own localStorage and re-pushes them on its
+      // next sync, where the monotonic merge folds them back in — so the
+      // window is temporary and nothing is lost permanently.
+      //
+      // Errors are swallowed: the tab is going away, there is no UI left to
+      // show them in, and an unhandled rejection would just noise the console.
+      void push(cachedHash, snapshot(), { keepalive: true }).catch(() => {});
     };
     document.addEventListener('visibilitychange', onHide);
 

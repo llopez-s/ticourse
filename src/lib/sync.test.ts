@@ -1,5 +1,14 @@
-import { describe, expect, it } from 'vitest';
-import { emptySnapshot, generateCode, hashCode, isWeakCode, mergeProgress } from './sync';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import {
+  emptySnapshot,
+  generateCode,
+  hashCode,
+  isWeakCode,
+  mergeProgress,
+  pull,
+  push,
+  SYNC_SCHEMA,
+} from './sync';
 import type { CardState, ProgressSnapshot } from './types';
 
 const snap = (over: Partial<ProgressSnapshot> = {}): ProgressSnapshot => ({
@@ -121,6 +130,34 @@ describe('mergeProgress — streak, day and exams', () => {
     expect(m.streak.lastDay).toBe('2026-09-04');
     expect(m.streak.freezes).toBe(2);
     expect(m.streak.best).toBe(9); // best is always the max
+  });
+
+  it('carries a live streak forward when the two lastDays are contiguous', () => {
+    // The regression this pins: the laptop is on a 57-day streak through
+    // 2026-09-04. The phone, last synced a week ago, is opened offline on
+    // 2026-09-05; addXp sees a 7-day gap and resets its own `current` to 1.
+    // "Later lastDay wins wholesale" would let that 1 destroy the 57 — in
+    // both merge orders, irreversibly. Contiguous days mean the user studied
+    // on both, so the streak is 57 + 1 = 58.
+    const laptop = snap({ streak: { current: 57, best: 57, lastDay: '2026-09-04', freezes: 1 } });
+    const phone = snap({ streak: { current: 1, best: 12, lastDay: '2026-09-05', freezes: 0 } });
+    for (const m of [mergeProgress(laptop, phone), mergeProgress(phone, laptop)]) {
+      expect(m.streak.current).toBe(58);
+      expect(m.streak.lastDay).toBe('2026-09-05'); // still the live side
+      expect(m.streak.best).toBe(57);
+    }
+  });
+
+  it('does not carry a streak across a genuine break', () => {
+    // Four days apart: the streak really was broken, so the live side's
+    // count stands on its own and nothing is invented.
+    const stale = snap({ streak: { current: 57, best: 57, lastDay: '2026-09-01', freezes: 1 } });
+    const live = snap({ streak: { current: 1, best: 12, lastDay: '2026-09-05', freezes: 0 } });
+    for (const m of [mergeProgress(stale, live), mergeProgress(live, stale)]) {
+      expect(m.streak.current).toBe(1);
+      expect(m.streak.lastDay).toBe('2026-09-05');
+      expect(m.streak.best).toBe(57); // best still survives
+    }
   });
 
   it('treats a null lastDay as older than any date', () => {
@@ -280,6 +317,13 @@ describe('mergeProgress — algebraic properties', () => {
     const m = mergeProgress(a, b);
     expect(m.xp).toBeGreaterThanOrEqual(Math.max(a.xp, b.xp));
     expect(m.streak.best).toBeGreaterThanOrEqual(Math.max(a.streak.best, b.streak.best));
+    // rich() ends 2026-09-04 on 6 and other() ends 2026-09-05 on 2 — contiguous
+    // days, so the streak must carry forward rather than collapse to the live
+    // side's 2. Outside the contiguous case `current` legitimately drops (the
+    // streak was genuinely broken), which is why this bound is asserted here,
+    // on a fixture pair that is contiguous by construction.
+    expect(m.streak.current).toBeGreaterThanOrEqual(Math.max(a.streak.current, b.streak.current));
+    expect(m.streak.current).toBe(7);
     for (const k of Object.keys(m.totals) as (keyof typeof m.totals)[]) {
       expect(m.totals[k], k).toBeGreaterThanOrEqual(Math.max(a.totals[k], b.totals[k]));
     }
@@ -321,5 +365,98 @@ describe('sync codes', () => {
   it('flags short codes as weak', () => {
     expect(isWeakCode('lidia')).toBe(true);
     expect(isWeakCode('lidia-lopez-alumna-7k2m9x')).toBe(false);
+  });
+});
+
+describe('pull — remote blob validation', () => {
+  const HASH = 'a'.repeat(64);
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  /** Minimal stand-in for the fields of Response that pull() actually touches. */
+  const respond = (body: unknown, status = 200) => {
+    const fetchMock = vi.fn(async () => ({
+      ok: status >= 200 && status < 300,
+      status,
+      json: async () => body,
+    }));
+    vi.stubGlobal('fetch', fetchMock);
+    return fetchMock;
+  };
+
+  const good = () => ({ v: SYNC_SCHEMA, data: emptySnapshot() });
+
+  it('returns the snapshot for a well-formed blob', async () => {
+    respond(good());
+    expect(await pull(HASH)).toEqual(emptySnapshot());
+  });
+
+  it('returns null for a bucket that does not exist yet', async () => {
+    respond({ error: 'not found' }, 404);
+    expect(await pull(HASH)).toBeNull();
+  });
+
+  it('rejects a blob missing a top-level key instead of writing NaN into local state', async () => {
+    // mergeProgress does Math.max(local.totals.questions, remote.totals.questions).
+    // With `totals` absent that is Math.max(n, undefined) === NaN, which used to
+    // be applied to the store and persisted — the user's XP reads NaN forever.
+    // Throwing here means syncNow's catch runs: local state is untouched and
+    // the bad blob is never pushed back.
+    const { totals: _dropped, ...withoutTotals } = emptySnapshot();
+    respond({ v: SYNC_SCHEMA, data: withoutTotals });
+    await expect(pull(HASH)).rejects.toThrow('Datos de sincronización incompletos');
+
+    respond({ v: SYNC_SCHEMA, data: { ...emptySnapshot(), xp: 'mucho' } });
+    await expect(pull(HASH)).rejects.toThrow('Datos de sincronización incompletos');
+
+    respond({ v: SYNC_SCHEMA, data: { ...emptySnapshot(), exams: null } });
+    await expect(pull(HASH)).rejects.toThrow('Datos de sincronización incompletos');
+  });
+
+  it('accepts an OLDER schema version so a bump can migrate existing buckets', async () => {
+    respond({ ...good(), v: SYNC_SCHEMA - 1 });
+    expect(await pull(HASH)).toEqual(emptySnapshot());
+  });
+
+  it('rejects a NEWER schema version it cannot understand', async () => {
+    respond({ ...good(), v: SYNC_SCHEMA + 1 });
+    await expect(pull(HASH)).rejects.toThrow('versión desconocida');
+
+    respond({ data: emptySnapshot() }); // no `v` at all
+    await expect(pull(HASH)).rejects.toThrow('versión desconocida');
+  });
+});
+
+describe('push — keepalive', () => {
+  const HASH = 'b'.repeat(64);
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  const stubOk = () => {
+    const fetchMock = vi.fn(async (_url: string, _init?: RequestInit) => ({
+      ok: true,
+      status: 200,
+    }));
+    vi.stubGlobal('fetch', fetchMock);
+    return fetchMock;
+  };
+
+  it('does not set keepalive by default', async () => {
+    // Per the Fetch standard a keepalive request with a body over 64 KiB fails
+    // with a TypeError before it is sent. Snapshots pass 64 KiB as `activity`
+    // grows, and the Worker accepts 512 KB, so the normal path must not opt in.
+    const fetchMock = stubOk();
+    await push(HASH, emptySnapshot());
+    expect(fetchMock.mock.calls[0]?.[1]?.keepalive).toBe(false);
+  });
+
+  it('sets keepalive only when the caller asks for it', async () => {
+    const fetchMock = stubOk();
+    await push(HASH, emptySnapshot(), { keepalive: true });
+    expect(fetchMock.mock.calls[0]?.[1]?.keepalive).toBe(true);
   });
 });

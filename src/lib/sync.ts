@@ -1,3 +1,4 @@
+import { dayDiff } from './util';
 import type { CardState, Conf, ProgressSnapshot } from './types';
 
 /** A zero-valued snapshot. Mirrors initialState() in store.ts. */
@@ -86,8 +87,17 @@ function mergeStreak(
       freezes: Math.max(a.streak.freezes, b.streak.freezes),
     };
   }
-  const live = ka > kb ? a.streak : b.streak;
-  return { ...live, best };
+  // Different days: the later-dated side is "live", but it is NOT automatically
+  // better informed. A device that has been offline for a week sees a gap on
+  // its next study day and resets `current` to 1 with today's date; taking it
+  // wholesale would destroy a 57-day streak still recorded on the other
+  // device. So when the two days are contiguous, carry the stale streak
+  // forward one day instead of dropping it. `dayDiff` is pure (it reads no
+  // clock), which is what keeps this merge deterministic and commutative.
+  const [live, stale] = ka > kb ? [a.streak, b.streak] : [b.streak, a.streak];
+  const gap = stale.lastDay && live.lastDay ? dayDiff(stale.lastDay, live.lastDay) : Infinity;
+  const carried = gap === 1 ? stale.current + 1 : 0;
+  return { ...live, best, current: Math.max(live.current, carried) };
 }
 
 /** Identity of a stored exam attempt; ExamResult has no id field. */
@@ -235,7 +245,13 @@ export const SYNC_SCHEMA = 1;
 /** Codes shorter than this are guessable enough to warn about. */
 const MIN_CODE_LENGTH = 16;
 
-export const normalizeCode = (code: string) => code.trim().toLowerCase();
+/**
+ * NFC first: an accented code typed on one device may arrive decomposed (NFD)
+ * and on another composed (NFC). Those are different byte strings and would
+ * hash to two different buckets for what the user typed as one code.
+ */
+export const normalizeCode = (code: string) =>
+  code.normalize('NFC').trim().toLowerCase();
 
 /**
  * SHA-256 of the normalized code, hex encoded. Runs in the browser, so the
@@ -257,12 +273,21 @@ const WORDS = [
   'norte', 'calma', 'niebla', 'rumbo', 'quilla', 'popa', 'costa', 'vela',
 ];
 
-/** A memorable, high-entropy code: three words plus six random base-36 chars. */
+/**
+ * A memorable, high-entropy code: three words plus twelve random base-36 chars.
+ *
+ * Each 32-bit draw is truncated to its low six base-36 digits (36^6 < 2^32), so
+ * one draw carries ~31 bits, not 32. Two draws plus the three word picks
+ * (4 bits each) put the code at roughly 74 bits — well past anything a bucket
+ * scan could reach, and the digest stored server-side is unsalted, so the code
+ * itself has to carry all the strength.
+ */
 export function generateCode(): string {
-  const rnd = new Uint32Array(4);
+  const rnd = new Uint32Array(5);
   crypto.getRandomValues(rnd);
   const words = Array.from(rnd.slice(0, 3), (n) => WORDS[n % WORDS.length]);
-  const tail = rnd[3].toString(36).padStart(6, '0').slice(-6);
+  const chunk = (n: number) => n.toString(36).padStart(6, '0').slice(-6);
+  const tail = chunk(rnd[3]) + chunk(rnd[4]);
   return [...words, tail].join('-');
 }
 
@@ -274,18 +299,46 @@ export async function pull(hash: string): Promise<ProgressSnapshot | null> {
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(`Sync pull failed (${res.status})`);
   const body = (await res.json()) as { v?: number; data?: ProgressSnapshot };
-  if (body.v !== SYNC_SCHEMA || !body.data) {
+  // Reject only blobs NEWER than this client understands. An older `v` is
+  // still readable, and rejecting it would strand every existing bucket the
+  // moment SYNC_SCHEMA is bumped: the throw happens before the push, so the
+  // client could never rewrite the blob at the new version. When SYNC_SCHEMA
+  // is bumped, add the upgrade for each older `v` right here, before the
+  // shape guard below.
+  if (typeof body.v !== 'number' || body.v > SYNC_SCHEMA || !body.data) {
     throw new Error('Datos de sincronización de una versión desconocida');
+  }
+  // Runtime shape guard. The blob is public and writable by anyone who knows
+  // the code, and mergeProgress trusts its inputs: a snapshot missing `totals`
+  // would make Math.max(x, undefined) === NaN, which then gets written into
+  // local state and persisted. Throwing here leaves local progress untouched
+  // (syncNow catches, and neither applies the merge nor pushes).
+  const d = body.data as Partial<ProgressSnapshot>;
+  if (typeof d.xp !== 'number' || !d.streak || !d.totals || !d.calibration || !d.day || !Array.isArray(d.exams)) {
+    throw new Error('Datos de sincronización incompletos');
   }
   return body.data;
 }
 
-export async function push(hash: string, data: ProgressSnapshot): Promise<void> {
+/**
+ * Write the snapshot to the bucket.
+ *
+ * `keepalive` is opt-in and off by default: per the Fetch standard a keepalive
+ * request whose body exceeds 64 KiB fails with a TypeError before it is even
+ * sent, and a heavy user's snapshot grows past that (activity gains an entry
+ * every day, forever) while the Worker itself accepts 512 KB. Only the
+ * tab-hide path — where the document may be torn down mid-flight — asks for it.
+ */
+export async function push(
+  hash: string,
+  data: ProgressSnapshot,
+  opts: { keepalive?: boolean } = {},
+): Promise<void> {
   const res = await fetch(endpoint(hash), {
     method: 'PUT',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ v: SYNC_SCHEMA, data }),
-    keepalive: true,
+    keepalive: opts.keepalive ?? false,
   });
   if (!res.ok) throw new Error(`Sync push failed (${res.status})`);
 }

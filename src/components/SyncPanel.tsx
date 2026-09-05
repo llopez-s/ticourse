@@ -36,9 +36,9 @@ export default function SyncPanel() {
       <p className="mb-3 text-xs leading-relaxed text-slate-400">
         Escribe el mismo código en cada dispositivo y tu progreso se combinará
         entre ellos. Tu navegador nunca envía el código: envía solo un hash
-        SHA-256 del que no se puede recuperar. El servidor no ve el código,
-        solo guarda tu progreso de estudio. Quien conozca el código puede leer
-        y modificar ese progreso, así que trátalo como una contraseña.
+        SHA-256 de ese código. El servidor no ve el código, solo guarda tu
+        progreso de estudio. Quien conozca el código puede leer y modificar ese
+        progreso, así que trátalo como una contraseña.
       </p>
 
       {code ? (
@@ -81,6 +81,9 @@ export default function SyncPanel() {
               placeholder="tu-código-de-sincronización"
               aria-label="Código de sincronización"
               disabled={confirming}
+              autoCapitalize="off"
+              autoCorrect="off"
+              spellCheck={false}
               className="min-w-56 flex-1 rounded-lg border border-ink-600 bg-ink-900 px-3 py-2 font-mono text-sm text-slate-200 placeholder-slate-500 outline-none focus:border-cyan-400 disabled:cursor-not-allowed disabled:opacity-60"
             />
             <button
@@ -118,10 +121,13 @@ export default function SyncPanel() {
               <div className="flex gap-2">
                 <button
                   onClick={() => {
+                    // No syncNow() here: setCode changes the store's `code`,
+                    // which is useSync's effect dependency, so the effect
+                    // re-runs and syncs. Calling it here too fired two
+                    // concurrent syncs — two pulls and two pushes — on connect.
                     setCode(draft);
                     setConfirming(false);
                     setDraft('');
-                    void syncNow();
                   }}
                   className="rounded-lg bg-emerald-500 px-4 py-2 text-sm font-bold text-ink-950 hover:bg-emerald-400"
                 >
