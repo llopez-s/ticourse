@@ -76,16 +76,16 @@ export const SP3_PLACEMENT: PlacementBlock = {
       ],
       answer: 0,
       explain:
-        "A stored disk copy holds the machine exactly as it was when the copy was taken, so putting it back reinstates every condition of that moment, including updates applied afterwards — which is how one long-lived, well-managed guest regresses on its own. The stale build template is the tempting distractor because it really is out of date, but a template only shapes guests cloned from it and this machine has been in service for three years, and the hypervisors' own patch level does not change what is installed inside a guest.",
+        "A stored disk copy holds the machine exactly as it was when the copy was taken, so putting it back reinstates every condition of that moment and discards everything applied since, including the fix the team rolled out in March — which is how one long-lived, well-managed guest regresses on its own. The stale build template is the tempting distractor because it really is out of date, but a template only shapes guests cloned from it and this machine has been in service for three years, and the hypervisors' own patch level does not change what is installed inside a guest.",
     },
     {
       id: 'pl-sp3q4',
       domain: 'Security Architecture',
       prompt:
-        'A ticketing platform runs as one deployable application on eight servers behind a load balancer. A memory leak in its loyalty-points code has twice exhausted the process and taken card payments down with it. Adding capacity for the loyalty code means copying the whole application onto more servers, and a fix to the payment code cannot ship until the loyalty team finishes its testing, because every release contains all of the modules. Which change addresses all three complaints MOST directly?',
+        'A ticketing platform keeps its loyalty-points code, its seat inventory and its card payments in one codebase and starts as a single process, eight copies of which sit behind a load balancer. A memory leak in the loyalty code has twice exhausted that process and taken card payments down with it. Giving the loyalty code more room means standing up more copies of the whole thing, and a fix to the payment code cannot ship until the loyalty team finishes testing, because everything travels on one release train. Which change addresses all three complaints MOST directly?',
       choices: [
         'Adding more servers behind the existing load balancer',
-        'Repackaging the application as containers on a cluster',
+        'Repackaging the platform as containers on a cluster',
         'Clustering the eight servers for automatic failover',
         'Splitting it into independently deployed services',
       ],
@@ -97,11 +97,11 @@ export const SP3_PLACEMENT: PlacementBlock = {
       id: 'pl-sp3q5',
       domain: 'Security Architecture',
       prompt:
-        "An ambulance service is installing an inline inspection appliance on the link that carries dispatch messages from the control room to the terminals in its vehicles. Those messages name the patient and describe the emergency, and the service's privacy policy asks for outbound traffic to be inspected for that content. Operations points out that a dispatch message that does not arrive costs minutes on a cardiac arrest. How should the appliance be configured to behave when it fails?",
+        "A brokerage runs an inline appliance on the link that carries client orders from its trading floor to the exchange. Compliance policy has it inspect the free-text notes attached to those orders for the market-abuse phrases on its watch list, though the exchange archives every order it accepts and compliance reads that archive the same evening. A firmware fault last quarter left the appliance holding traffic for nine minutes, during which the firm could not close positions it had already opened. What should the replacement do when it fails?",
       choices: ['Fail-open', 'Fail-closed', 'Fail-safe', 'Fail-secure'],
       answer: 0,
       explain:
-        'A dispatch message that never arrives can cost a life, so on this link availability outranks inspection: when the appliance dies it must keep passing traffic, and the uninspected window is covered with segmentation and monitoring instead. Fail-closed is the tempting choice — it is the right answer where letting regulated data pass uninspected is worse than an outage — and fail-secure is simply another name for that same blocking behaviour. Fail-safe belongs to the physical door-lock pair, where a fail-safe lock releases so people can leave and a fail-secure lock stays engaged, prioritising the asset over convenient entry.',
+        'Nine minutes of held orders cost money the firm cannot get back, while the notes it could not inspect still reach the exchange archive that compliance reads that evening, so on this link availability outranks inspection and the appliance must keep passing traffic when it dies. Fail-closed is the tempting choice — it is the right answer where letting regulated data pass uninspected is worse than an outage — and fail-secure is simply another name for that same blocking behaviour. Fail-safe belongs to the physical door-lock pair, where a fail-safe lock releases so people can leave and a fail-secure lock stays engaged, prioritising the asset over convenient entry.',
     },
     {
       id: 'pl-sp3q6',
@@ -122,16 +122,16 @@ export const SP3_PLACEMENT: PlacementBlock = {
       id: 'pl-sp3q7',
       domain: 'Security Architecture',
       prompt:
-        "A distribution company wants to stop unapproved devices from using the wall jacks in its offices and warehouse. Its asset inventory holds the hardware address of every company laptop, printer and handheld scanner; its DHCP service assigns addresses from a table the network team maintains; every company laptop already carries a certificate issued by the company's own certificate authority; and the meeting-room jacks are used only a few days a month. Which change would MOST directly stop an unapproved device from being admitted to the network?",
+        "A distribution company finds that a machine nobody owns has been communicating on its office network for three weeks. It sits on a jack in a records store room that has held nothing but boxes since the finance team moved out two years ago. Its network settings were typed in by hand rather than requested, and the identity its adapter reports matches nothing in the company's asset inventory. The company already runs a RADIUS service for its wireless network, and the network team is reviewing four wired measures it had costed and never implemented. Which one would have left this machine communicating exactly as it did?",
       choices: [
         'Filtering by hardware address on each access switch',
-        '802.1X port authentication using those certificates',
-        'Disabling the meeting-room jacks when they are unused',
-        'Reserving an address for every device in the DHCP table',
+        'Reserving an address for each device in the DHCP table',
+        '802.1X authentication on the wired access ports',
+        'Shutting off switch ports that carry no traffic for a month',
       ],
       answer: 1,
       explain:
-        'With 802.1X the switch port stays closed to everything except authentication traffic until the device proves who it is, and the certificates the laptops already hold supply the strongest EAP method for that exchange. Hardware-address filtering is the tempting distractor because the inventory makes the list easy to build, but an address is read off a label or off the wire and set on any laptop in seconds. DHCP reservations decide which address a device receives rather than whether it belongs on the network, and a statically configured address ignores them entirely.',
+        'A reservation only fixes which address a device is handed when it asks for one, and this machine never asked, so the reservation table would never have seen it and it would have sat on that jack exactly as it did. Hardware-address filtering is the tempting distractor because it is the weakest of the four in general, defeated by any adapter told to report a known identity, but this one reported an identity the inventory has never seen, so the switch would have dropped its frames. Extending the RADIUS service to the wired ports would have kept each port unauthorised until a device proved who it was, and a port disabled for want of traffic would have been dead in a room empty for two years.',
     },
     {
       id: 'pl-sp3q8',
@@ -177,16 +177,16 @@ export const SP3_PLACEMENT: PlacementBlock = {
       id: 'pl-sp3q11',
       domain: 'Security Architecture',
       prompt:
-        'A payments company can afford to lose at most five minutes of transactions and must be processing again within an hour of losing its primary data centre. It already rents a second site in another region with servers installed and ready to start. Today it takes one full backup each night to an appliance in the same building as production, and copies that backup to a vault in the second region the following morning. Which change BEST meets both targets?',
+        'A payments company can afford to lose at most five minutes of transactions and must be processing again within an hour of losing its primary data centre. Its database sits on a storage array in that data centre, and it already rents a second site in another region with servers installed and ready to start. Today it takes one full backup each night to an appliance in the same building as production and copies that backup to a vault in the second region the following morning. Which change BEST meets both targets?',
       choices: [
-        'Hourly snapshots of the database volume on the same array',
-        'A second full backup taken at midday to the offsite vault',
-        'Continuous replication to that site with journaling',
-        "Restoring last night's backup onto the standby servers each morning",
+        'Snapshots of the database volume on the production array',
+        'An additional full backup sent to the offsite vault',
+        'Replication to the standby site with a change journal',
+        'Pre-loading the standby servers with the latest backup',
       ],
       answer: 2,
       explain:
-        'A five-minute recovery point cannot be met by copies taken hourly or twice a day, so changes have to leave for the second region continuously, and the journal of those changes is what allows a replay up to an exact moment when the primary is lost. Hourly snapshots are the tempting distractor because they are the largest jump in frequency on offer, but they still lose up to an hour and they sit on the array that disappears with the site. The vault copy is still kept alongside the replica, because replication copies deletion and corruption just as faithfully as it copies good data.',
+        'Only a copy that leaves for the second region as the changes happen can hold the loss to five minutes, and the journal of those changes is what lets the standby be replayed to the exact moment the primary was lost, on servers that are already installed and ready to start. Pre-loading those servers is the tempting distractor because it aims squarely at the one-hour restart, but the newest backup the company holds was taken last night, so it would come back with a day of transactions missing. Snapshots revert a volume quickly yet sit on the array that disappears with the data centre, an extra full backup still measures its loss in hours, and the vault copy is kept alongside the replica because replication copies deletion and corruption just as faithfully as good data.',
     },
     {
       id: 'pl-sp3q12',
