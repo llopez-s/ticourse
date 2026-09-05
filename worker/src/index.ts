@@ -17,6 +17,9 @@ const ALLOWED_ORIGINS = [
 const MAX_BODY_BYTES = 512 * 1024;
 const HASH_RE = /^[0-9a-f]{64}$/;
 
+/** The only envelope version this Worker stores. See README.md. */
+const SCHEMA_VERSION = 1;
+
 function corsHeaders(origin: string | null): Record<string, string> {
   // `vary: origin` must be sent on every response, allowed or not, so a
   // shared cache never serves a stored no-CORS response to an allowed origin.
@@ -58,7 +61,14 @@ export default {
       if (stored === null) return json({ error: 'not found' }, 404, cors);
       return new Response(stored, {
         status: 200,
-        headers: { 'content-type': 'application/json', ...cors },
+        // The client merges whatever this returns into local progress, so a
+        // stale copy served by a browser or intermediary cache would silently
+        // resurrect old state. Never cache it.
+        headers: {
+          'content-type': 'application/json',
+          'cache-control': 'no-store',
+          ...cors,
+        },
       });
     }
 
@@ -83,8 +93,11 @@ export default {
       } catch {
         return json({ error: 'invalid json' }, 400, cors);
       }
+      // Exactly 1, not "any number": accepting an arbitrary `v` lets one bad
+      // client store an envelope every reader rejects as "from the future",
+      // permanently bricking that bucket with no way to overwrite it.
       if (
-        typeof parsed.v !== 'number' ||
+        parsed.v !== SCHEMA_VERSION ||
         typeof parsed.data !== 'object' ||
         parsed.data === null ||
         Array.isArray(parsed.data)
