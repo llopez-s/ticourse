@@ -1760,7 +1760,17 @@ All five content tasks write to the same shape and the same bar. These rules are
 - The three wrong choices must each be plausible to someone with partial knowledge. No filler options.
 - The explanation says why the right answer wins **and** why the most tempting wrong one loses.
 - Never reuse a prompt from the corresponding lesson files (`src/data/secplus/spN-part*.ts`). The disjointness test in Task 9 compares normalized prompts and will catch it.
+- **Nor reuse a lesson's worked example.** The test only compares prompts, so it cannot see a stem rebuilt from a scenario the lesson body already walks through. Read the lesson's tables and callouts, not just its questions, and pick a different situation.
 - Every question carries its block's `domain`, and ids run `pl-spNq1` … `pl-spNq12` with no gaps.
+
+**Do not leak the answer through the shape of the options.** Learned from the Domain 1 block, whose first draft keyed index 1 seven times out of twelve and index 3 never, with the correct option also being the longest in seven items. At a 10/12 pass bar that hands a test-wise candidate with partial knowledge a free lift — and a pass here skips a whole section. So:
+
+- Spread the keyed index roughly evenly across 0-3 over the twelve questions. Never leave an index unused.
+- Keep the four options about the same length. If the right answer needs a "because…" clause, either give the distractors one too or move the reasoning into `explain`, where it belongs.
+- Every distractor must be a real candidate. Options nobody would pick turn a four-way item into a two-way one; the Domain 1 draft did this with Steganography and Key escrow in a de-identification question.
+- Do not let the stem echo the key's wording. A stem saying "logical volumes" whose answer is "volume-level encryption" tests reading, not knowledge.
+
+**Explanations must be mechanically true, not just directionally right.** A study product teaches by its explanations. The Domain 1 draft described a SHA-1 collision as letting an attacker match the hash of an existing legitimate file — that is a second preimage, which is still infeasible; a collision means the attacker crafts *both* files. An explanation that lands on the correct answer through a mechanism that does not exist is a defect, even when the key is right.
 
 Worked example of the required shape and difficulty:
 
