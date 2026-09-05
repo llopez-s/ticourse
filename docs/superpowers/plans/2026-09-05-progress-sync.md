@@ -289,7 +289,7 @@ function mergeDay(a: ProgressSnapshot, b: ProgressSnapshot) {
 - [ ] **Step 4: Run the test to verify it passes**
 
 Run: `npx vitest run src/lib/sync.test.ts`
-Expected: PASS, 6 tests.
+Expected: PASS, 7 tests.
 
 - [ ] **Step 5: Typecheck and commit**
 
@@ -437,7 +437,7 @@ function mergeDay(
 - [ ] **Step 4: Run the test to verify it passes**
 
 Run: `npx vitest run src/lib/sync.test.ts`
-Expected: PASS, 11 tests.
+Expected: PASS, 12 tests.
 
 - [ ] **Step 5: Typecheck and commit**
 
@@ -621,11 +621,11 @@ import type { CardState, Conf, ProgressSnapshot } from './types';
 - [ ] **Step 4: Run the test to verify it passes**
 
 Run: `npx vitest run src/lib/sync.test.ts`
-Expected: PASS, 19 tests.
+Expected: PASS, 20 tests.
 
 - [ ] **Step 5: Run the whole suite, typecheck and commit**
 
-Run: `npm test` → 6 files, 51 tests, all green (32 existing + 19 new).
+Run: `npm test` → 6 files, 52 tests, all green (32 existing + 20 new).
 Run: `npx tsc --noEmit` → clean.
 
 ```bash
@@ -774,7 +774,7 @@ export async function push(hash: string, data: ProgressSnapshot): Promise<void> 
 - [ ] **Step 4: Run the test to verify it passes**
 
 Run: `npx vitest run src/lib/sync.test.ts`
-Expected: PASS, 25 tests.
+Expected: PASS, 26 tests.
 
 Note: `crypto.subtle` and `crypto.getRandomValues` exist in vitest's default `node` environment on Node 20+, so no jsdom is needed.
 
@@ -959,7 +959,7 @@ export default function App() {
 
 - [ ] **Step 4: Verify nothing changed for a user without a code**
 
-Run: `npm test` → still 51 tests green.
+Run: `npm test` → still 58 tests green.
 Run: `npx tsc --noEmit` → clean.
 Start the dev server (`.claude/launch.json` → `intelforge-dev`), open the app, confirm the Dashboard still renders and the browser console has no errors. With `SYNC_URL` empty and no code set, `useSync` returns immediately.
 
@@ -1146,7 +1146,7 @@ and render it immediately **before** the danger-zone `<Panel className="border-r
 
 - [ ] **Step 3: Verify in the browser**
 
-Run: `npx tsc --noEmit` → clean. Run: `npm test` → 51 green.
+Run: `npx tsc --noEmit` → clean. Run: `npm test` → 58 green.
 Start the dev server and open `#/profile`. With `SYNC_URL` empty the panel must show "No disponible en esta versión" and no input. Confirm no console errors.
 
 - [ ] **Step 4: Commit**
@@ -1377,7 +1377,7 @@ cd worker && npm install && npm run typecheck
 ```
 Expected: clean. Then `cd ..`.
 
-Confirm the app is unaffected: `npx tsc --noEmit` and `npm test` from the repo root are still clean and 51 tests green (the root tsconfig and vitest both scope to `src`, so `worker/` is invisible to them).
+Confirm the app is unaffected: `npx tsc --noEmit` and `npm test` from the repo root are still clean and 58 tests green (the root tsconfig and vitest both scope to `src`, so `worker/` is invisible to them).
 
 - [ ] **Step 6: Commit**
 
@@ -1454,7 +1454,7 @@ In the "State & gotchas" section of `CLAUDE.md`, add:
 - [ ] **Step 5: Full verification**
 
 ```bash
-npm test          # 51 green
+npm test          # 58 green
 npm run build     # succeeds
 ```
 
