@@ -5,7 +5,7 @@ import { PageTitle, Panel } from '../components/Bits';
 import { useTrack } from '../components/Layout';
 import { modulesOf, placementBlockById, placementBlocks, sectionById } from '../data/course';
 import { useStore } from '../lib/store';
-import { PLACEMENT_PASS_PCT, sectionExempt, sectionExemptScore } from '../lib/placement';
+import { PLACEMENT_PASS_PCT, isDone, sectionExempt, sectionExemptScore } from '../lib/placement';
 import type { PlacementBlock } from '../lib/types';
 
 /** Latest attempt at a block, or null. */
@@ -85,12 +85,14 @@ function BlockRun({ block }: { block: PlacementBlock }) {
   const finishPlacement = useStore((s) => s.finishPlacement);
   const grantExemption = useStore((s) => s.grantExemption);
   const lessons = useStore((s) => s.lessons);
+  const exempt = useStore((s) => s.exempt);
   const [attempt, setAttempt] = useState(0);
   const [granted, setGranted] = useState(false);
 
   const section = sectionById(block.sectionId);
   const ids = modulesOf(block.sectionId).map((m) => m.id);
-  const nothingToExempt = ids.every((id) => lessons[id]);
+  const nothingToExempt = ids.every((id) => isDone({ lessons, exempt }, id));
+  const alreadyExempt = sectionExempt({ exempt }, ids);
 
   return (
     <div>
@@ -104,7 +106,10 @@ function BlockRun({ block }: { block: PlacementBlock }) {
         questions={block.questions}
         mode="placement"
         onFinish={(r) => finishPlacement(block.id, r.correct, r.total)}
-        onRetry={() => setAttempt((n) => n + 1)}
+        onRetry={() => {
+          setAttempt((n) => n + 1);
+          setGranted(false);
+        }}
         resultExtra={(r) => {
           if (!r.pct || r.pct < PLACEMENT_PASS_PCT) {
             return (
@@ -114,7 +119,7 @@ function BlockRun({ block }: { block: PlacementBlock }) {
               </Panel>
             );
           }
-          if (granted) {
+          if (granted || alreadyExempt) {
             return (
               <Panel className="mb-4 text-sm text-cyan-200">
                 ✅ {section?.title} convalidada. Puedes anularlo cuando quieras desde la
