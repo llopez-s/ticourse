@@ -6,6 +6,7 @@ import type {
   SectionMeta,
   TrackId,
 } from '../lib/types';
+import { exemptScore, isDone } from '../lib/placement';
 import { pct, sample, shuffle } from '../lib/util';
 import { LABS } from './labs';
 import { TRACKS, TRACK_IDS } from './tracks';
@@ -41,10 +42,15 @@ export const modulesOfTrack = (track: TrackId) => TRACKS[track].modules;
 export const placementBlocks = (track: TrackId) => TRACKS[track].placement;
 export const questionsOfTrack = (track: TrackId): Question[] =>
   TRACKS[track].modules.flatMap((m) => m.quiz);
-export const nextModule = (track: TrackId, s: Pick<ProgressSnapshot, 'lessons'>) =>
-  TRACKS[track].modules.find((m) => !s.lessons[m.id]);
+export const nextModule = (
+  track: TrackId,
+  s: Pick<ProgressSnapshot, 'lessons' | 'exempt'>,
+) => TRACKS[track].modules.find((m) => !isDone(s, m.id));
 
-type Prog = Pick<ProgressSnapshot, 'lessons' | 'quizBest' | 'labs' | 'bosses'>;
+type Prog = Pick<
+  ProgressSnapshot,
+  'lessons' | 'quizBest' | 'labs' | 'bosses' | 'exempt'
+>;
 
 /**
  * Section mastery 0-100: lessons 40%, best quiz scores 30%, labs 15%, boss 15%.
@@ -59,17 +65,17 @@ export function sectionMastery(
   const section = sectionById(sectionId);
   if (mods.length === 0) return 0;
 
-  const lessonPct = pct(
-    mods.filter((m) => s.lessons[m.id]).length,
-    mods.length,
-  );
+  const lessonPct = pct(mods.filter((m) => isDone(s, m.id)).length, mods.length);
   const quizMods = mods.filter((m) => m.quiz.length > 0);
   const quizPct =
     quizMods.length === 0
       ? null
       : Math.round(
-          quizMods.reduce((acc, m) => acc + (s.quizBest[m.id] ?? 0), 0) /
-            quizMods.length,
+          quizMods.reduce(
+            (acc, m) =>
+              acc + Math.max(s.quizBest[m.id] ?? 0, exemptScore(s, m.id) ?? 0),
+            0,
+          ) / quizMods.length,
         );
   const labPct =
     labs.length === 0

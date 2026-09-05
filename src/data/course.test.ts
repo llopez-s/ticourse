@@ -6,7 +6,10 @@ import {
   examReadiness,
   modulesOfTrack,
   nextModule,
+  placementBlockById,
+  placementBlocks,
   sampleExam,
+  sectionMastery,
   sectionsOf,
   trackOf,
 } from './course';
@@ -47,15 +50,15 @@ describe('track scoping', () => {
   });
 
   it('nextModule respects the track', () => {
-    const s = { lessons: { s1m1: true } };
+    const s = { lessons: { s1m1: true }, exempt: {} };
     expect(nextModule('gcti', s)?.id).toBe('s1m2');
-    expect(nextModule('secplus', { lessons: {} })?.id.startsWith('sp')).toBe(
-      true,
-    );
+    expect(
+      nextModule('secplus', { lessons: {}, exempt: {} })?.id.startsWith('sp'),
+    ).toBe(true);
   });
 
   it('examReadiness ignores sections without modules', () => {
-    const empty = { lessons: {}, quizBest: {}, labs: {}, bosses: {} };
+    const empty = { lessons: {}, quizBest: {}, labs: {}, bosses: {}, exempt: {} };
     expect(examReadiness('gcti', empty)).toBe(0);
     // Master every Security+ section that has modules; empty ones must not
     // drag the mean down.
@@ -68,6 +71,7 @@ describe('track scoping', () => {
         LABS.filter((l) => withContent.has(l.sectionId)).map((l) => [l.id, true]),
       ),
       bosses: Object.fromEntries([...withContent].map((id) => [id, 100])),
+      exempt: {},
     };
     expect(examReadiness('secplus', done)).toBe(100);
   });
@@ -102,5 +106,80 @@ describe('sampleExam', () => {
     expect(sampleExam('gcti', 10, 'x').map((q) => q.id)).toEqual(
       sampleExam('gcti', 10, 'x').map((q) => q.id),
     );
+  });
+});
+
+const emptyProg = {
+  lessons: {} as Record<string, boolean>,
+  quizBest: {} as Record<string, number>,
+  labs: {} as Record<string, boolean>,
+  bosses: {} as Record<string, number>,
+  exempt: {} as Record<string, import('../lib/types').ExemptEntry>,
+};
+
+describe('placement lookups', () => {
+  it('every placement block points at a real section of its own track', () => {
+    for (const t of TRACK_IDS) {
+      for (const b of placementBlocks(t)) {
+        expect(trackOf(b.sectionId), b.id).toBe(t);
+        expect(placementBlockById(b.id), b.id).toBe(b);
+      }
+    }
+  });
+
+  it('returns undefined for an unknown block', () => {
+    expect(placementBlockById('pl-nope')).toBeUndefined();
+  });
+});
+
+describe('mastery with exemptions', () => {
+  const ids = modulesOfTrack('secplus')
+    .filter((m) => m.sectionId === 'sp1')
+    .map((m) => m.id);
+
+  const exemptAll = (score: number) => {
+    const exempt: Record<string, import('../lib/types').ExemptEntry> = {};
+    for (const id of ids) {
+      exempt[id] = { status: 'exempt', at: '2026-09-05T10:00:00.000Z', via: 'pl-sp1', score };
+    }
+    return { ...emptyProg, exempt };
+  };
+
+  it('a fully exempted section scores above nothing and below full mastery', () => {
+    const before = sectionMastery('sp1', emptyProg);
+    const after = sectionMastery('sp1', exemptAll(83));
+    expect(before).toBe(0);
+    expect(after).toBeGreaterThan(before);
+    expect(after).toBeLessThan(100);
+  });
+
+  it('credits the quiz with the block score, not with 100', () => {
+    expect(sectionMastery('sp1', exemptAll(100))).toBeGreaterThan(
+      sectionMastery('sp1', exemptAll(83)),
+    );
+  });
+
+  it('a revoked exemption counts for nothing', () => {
+    const revoked = exemptAll(83);
+    for (const id of ids) revoked.exempt[id].status = 'revoked';
+    expect(sectionMastery('sp1', revoked)).toBe(0);
+  });
+});
+
+describe('nextModule skips convalidated theory', () => {
+  it('lands on the first module that is neither studied nor exempt', () => {
+    const ids = modulesOfTrack('secplus').map((m) => m.id);
+    const s = {
+      lessons: { [ids[0]]: true },
+      exempt: {
+        [ids[1]]: {
+          status: 'exempt' as const,
+          at: '2026-09-05T10:00:00.000Z',
+          via: 'pl-sp1',
+          score: 90,
+        },
+      },
+    };
+    expect(nextModule('secplus', s)?.id).toBe(ids[2]);
   });
 });
