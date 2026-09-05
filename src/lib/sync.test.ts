@@ -111,3 +111,45 @@ describe('mergeProgress — completion and records', () => {
     expect(mergeProgress(c2, d2).calibration.low).toEqual({ n: 10, c: 2 });
   });
 });
+
+describe('mergeProgress — streak, day and exams', () => {
+  it('takes the live streak from the side with the later lastDay', () => {
+    const a = snap({ streak: { current: 3, best: 9, lastDay: '2026-09-01', freezes: 1 } });
+    const b = snap({ streak: { current: 7, best: 4, lastDay: '2026-09-04', freezes: 2 } });
+    const m = mergeProgress(a, b);
+    expect(m.streak.current).toBe(7);
+    expect(m.streak.lastDay).toBe('2026-09-04');
+    expect(m.streak.freezes).toBe(2);
+    expect(m.streak.best).toBe(9); // best is always the max
+  });
+
+  it('treats a null lastDay as older than any date', () => {
+    const a = snap({ streak: { current: 0, best: 0, lastDay: null, freezes: 1 } });
+    const b = snap({ streak: { current: 5, best: 5, lastDay: '2026-09-02', freezes: 0 } });
+    expect(mergeProgress(a, b).streak.lastDay).toBe('2026-09-02');
+  });
+
+  it('takes the later day wholesale', () => {
+    const a = snap({ day: { ...emptySnapshot().day, date: '2026-09-04', questions: 12 } });
+    const b = snap({ day: { ...emptySnapshot().day, date: '2026-09-05', questions: 3 } });
+    expect(mergeProgress(a, b).day.date).toBe('2026-09-05');
+    expect(mergeProgress(a, b).day.questions).toBe(3);
+  });
+
+  it('maxes counters and unions quests when the day is the same', () => {
+    const a = snap({ day: { ...emptySnapshot().day, date: '2026-09-05', questions: 12, cards: 2, questsAwarded: ['q-lesson'] } });
+    const b = snap({ day: { ...emptySnapshot().day, date: '2026-09-05', questions: 4, cards: 20, questsAwarded: ['q-cards'] } });
+    const m = mergeProgress(a, b);
+    expect(m.day.questions).toBe(12);
+    expect(m.day.cards).toBe(20);
+    expect(m.day.questsAwarded.sort()).toEqual(['q-cards', 'q-lesson']);
+  });
+
+  it('concatenates exams, de-duplicates identical ones and sorts by date', () => {
+    const e1 = { date: '2026-09-01', track: 'secplus' as const, pct: 80, correct: 24, total: 30, domains: {} };
+    const e2 = { date: '2026-09-03', track: 'secplus' as const, pct: 90, correct: 27, total: 30, domains: {} };
+    const m = mergeProgress(snap({ exams: [e2, e1] }), snap({ exams: [e1] }));
+    expect(m.exams).toHaveLength(2);
+    expect(m.exams.map((e) => e.date)).toEqual(['2026-09-01', '2026-09-03']);
+  });
+});

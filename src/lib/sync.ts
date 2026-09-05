@@ -67,20 +67,69 @@ function maxNumbers(
   return out;
 }
 
-function mergeStreak(a: ProgressSnapshot, b: ProgressSnapshot) {
-  return { ...a.streak, best: Math.max(a.streak.best, b.streak.best) };
+/** '' sorts before any 'YYYY-MM-DD', so a null lastDay is treated as oldest. */
+const dayKey = (d: string | null) => d ?? '';
+
+function mergeStreak(
+  a: ProgressSnapshot,
+  b: ProgressSnapshot,
+): ProgressSnapshot['streak'] {
+  const best = Math.max(a.streak.best, b.streak.best);
+  const ka = dayKey(a.streak.lastDay);
+  const kb = dayKey(b.streak.lastDay);
+  if (ka === kb) {
+    // same day on both sides: keep the strongest state
+    return {
+      current: Math.max(a.streak.current, b.streak.current),
+      best,
+      lastDay: a.streak.lastDay,
+      freezes: Math.max(a.streak.freezes, b.streak.freezes),
+    };
+  }
+  const live = ka > kb ? a.streak : b.streak;
+  return { ...live, best };
 }
 
-function mergeExams(a: ProgressSnapshot, b: ProgressSnapshot) {
-  return [...a.exams, ...b.exams];
+/** Identity of a stored exam attempt; ExamResult has no id field. */
+const examKey = (e: ProgressSnapshot['exams'][number]) =>
+  `${e.date}|${e.track}|${e.pct}|${e.correct}|${e.total}`;
+
+function mergeExams(
+  a: ProgressSnapshot,
+  b: ProgressSnapshot,
+): ProgressSnapshot['exams'] {
+  const byKey = new Map<string, ProgressSnapshot['exams'][number]>();
+  for (const e of [...a.exams, ...b.exams]) {
+    if (!byKey.has(examKey(e))) byKey.set(examKey(e), e);
+  }
+  return Array.from(byKey.values()).sort((x, y) =>
+    x.date === y.date ? examKey(x).localeCompare(examKey(y)) : x.date < y.date ? -1 : 1,
+  );
 }
 
 function mergeSrs(a: ProgressSnapshot, b: ProgressSnapshot) {
   return { ...b.srs, ...a.srs };
 }
 
-function mergeDay(a: ProgressSnapshot, b: ProgressSnapshot) {
-  return a.day.date >= b.day.date ? a.day : b.day;
+function mergeDay(
+  a: ProgressSnapshot,
+  b: ProgressSnapshot,
+): ProgressSnapshot['day'] {
+  if (a.day.date !== b.day.date) return a.day.date > b.day.date ? a.day : b.day;
+  return {
+    date: a.day.date,
+    lessons: Math.max(a.day.lessons, b.day.lessons),
+    questions: Math.max(a.day.questions, b.day.questions),
+    correct: Math.max(a.day.correct, b.day.correct),
+    cards: Math.max(a.day.cards, b.day.cards),
+    labs: Math.max(a.day.labs, b.day.labs),
+    highConfCorrect: Math.max(a.day.highConfCorrect, b.day.highConfCorrect),
+    xpEarned: Math.max(a.day.xpEarned, b.day.xpEarned),
+    newCards: Math.max(a.day.newCards, b.day.newCards),
+    questsAwarded: Array.from(
+      new Set([...a.day.questsAwarded, ...b.day.questsAwarded]),
+    ).sort(),
+  };
 }
 
 /**
