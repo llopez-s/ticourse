@@ -56,6 +56,12 @@ function BlockCard({ block }: { block: PlacementBlock }) {
         <span className="text-xs font-bold text-emerald-300">
           Superado · {bestPass}%
         </span>
+        {/* This is the one card that acts rather than navigates, so it also
+            needs the way back in: someone who passed at 83% and held off on
+            convalidating can still retake the block for a better score. */}
+        <Link to={`/placement/${block.id}`} className={`${CTA} hover:border-ink-400 hover:text-slate-100`}>
+          Repetir bloque
+        </Link>
         <button
           onClick={() => grantExemption(block.id)}
           className="rounded-lg bg-cyan-500 px-3 py-1.5 text-xs font-bold text-ink-950 hover:bg-cyan-400"
