@@ -8,6 +8,7 @@ import {
   pull,
   push,
   SYNC_SCHEMA,
+  stableStringify,
 } from './sync';
 import type { CardState, ExemptEntry, PlacementResult, ProgressSnapshot } from './types';
 
@@ -560,5 +561,80 @@ describe('mergeProgress — placement history', () => {
     const once = mergeProgress(a, b);
     expect(mergeProgress(once, once).placement).toEqual(once.placement);
     expect(mergeProgress(once, b).placement).toEqual(once.placement);
+  });
+});
+
+describe('stableStringify — the guard the KV write budget rests on', () => {
+  /** Same data, built in the order device A happened to complete things. */
+  const deviceA = () =>
+    snap({
+      lessons: { s1m1: true, sp2m3: true },
+      activity: { '2026-09-04': 90, '2026-09-05': 140 },
+    });
+
+  /** The same data, built in the order device B happened to complete it. */
+  const deviceB = () => {
+    const s = snap();
+    s.lessons = {};
+    s.lessons.sp2m3 = true;
+    s.lessons.s1m1 = true;
+    s.activity = {};
+    s.activity['2026-09-05'] = 140;
+    s.activity['2026-09-04'] = 90;
+    return s;
+  };
+
+  it('is blind to key order, where JSON.stringify is not', () => {
+    expect(JSON.stringify(deviceA())).not.toBe(JSON.stringify(deviceB()));
+    expect(stableStringify(deviceA())).toBe(stableStringify(deviceB()));
+  });
+
+  it('does not write when the bucket already holds this snapshot', () => {
+    // syncNow decides whether to spend a KV write with exactly this
+    // expression. Before stableStringify it compared raw JSON, so two devices
+    // whose maps were built in different orders each wrote on every single
+    // sync while pushing byte-identical data — which is what exhausted the
+    // 1,000-write daily free tier.
+    const local = deviceA();
+    const remote = deviceB();
+    const merged = mergeProgress(local, remote);
+    expect(merged).toEqual(remote);
+    expect(stableStringify(merged) !== stableStringify(remote)).toBe(false);
+  });
+
+  it('still distinguishes snapshots that genuinely differ', () => {
+    const before = deviceA();
+    const after = snap({ ...before, xp: before.xp + 10 });
+    expect(stableStringify(before)).not.toBe(stableStringify(after));
+  });
+
+  it('keeps array order, which the merges make meaningful', () => {
+    expect(stableStringify([3, 1, 2])).toBe('[3,1,2]');
+    expect(stableStringify([{ b: 1, a: 2 }])).toBe('[{"a":2,"b":1}]');
+  });
+
+  it('handles nesting, primitives and null the way JSON.stringify does', () => {
+    expect(stableStringify({ b: { d: 1, c: 2 }, a: null })).toBe(
+      '{"a":null,"b":{"c":2,"d":1}}',
+    );
+    expect(stableStringify('x')).toBe('"x"');
+    expect(stableStringify(7)).toBe('7');
+    expect(stableStringify(null)).toBe('null');
+  });
+
+  it('drops undefined-valued keys, as JSON.stringify does', () => {
+    // The two must agree on what a snapshot contains, or a blob that survives
+    // a JSON round trip would compare unequal to the object it came from.
+    const value = { a: 1, b: undefined };
+    expect(stableStringify(value)).toBe('{"a":1}');
+    expect(stableStringify(JSON.parse(JSON.stringify(value)))).toBe(
+      stableStringify(value),
+    );
+  });
+
+  it('survives a JSON round trip, which is what pull returns', () => {
+    const local = deviceA();
+    const overTheWire = JSON.parse(JSON.stringify(local)) as ProgressSnapshot;
+    expect(stableStringify(overTheWire)).toBe(stableStringify(local));
   });
 });

@@ -130,18 +130,28 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   domains, matching the official 12/22/18/28/20 weights exactly.
 - **Git repo** initialized 2026-09-05, remote `llopez-s/ticourse` (public), default branch `main`.
 - **Progress sync (opt-in, currently OFF).** `src/lib/sync.ts` (pure merge + hashing + HTTP client),
-  `syncStore.ts` (code + status under `intelforge-sync`, never uploaded), `useSync.ts` (mount /
-  debounce / tab-hide triggers), `components/SyncPanel.tsx` (Profile UI), `worker/` (Cloudflare
+  scheduler / tab-hide triggers), `syncSchedule.ts` (the write-rate policy),
+  `components/SyncPanel.tsx` (Profile UI), `worker/` (Cloudflare Worker + KV, deployed manually
+  with `wrangler deploy`, **not** in CI). The code is SHA-256'd in
   Worker + KV, deployed manually with `wrangler deploy`, **not** in CI). The code is SHA-256'd in
   the browser; only the digest reaches the Worker. Conflicts resolve via `mergeProgress`, which is
   commutative and idempotent, and monotonic for every field **except `exempt`**: a placement
   exemption can be revoked, so that field is last-write-wins by `at` instead — otherwise an older
-  grant synced in from another device could resurrect a revocation. 47 tests in `sync.test.ts`.
+  grant synced in from another device could resurrect a revocation. 54 tests in `sync.test.ts`,
+  7 in `syncSchedule.test.ts`.
   Spec: `docs/superpowers/specs/2026-09-05-progress-sync-design.md`.
   **Live** at `https://ticourse-sync.ojamajo.workers.dev` (KV namespace
   `4bf63897857f4ee1af821e0f756a2857`, account subdomain `ojamajo`). `SYNC_URL` in `sync.ts` holds
   that URL and is typed `string` so `syncEnabled()` stays meaningful; setting it back to `''`
   disables the whole feature cleanly.
+  **Writes, not reads, are the free-tier constraint:** Cloudflare KV allows 1,000 writes a day
+  against 100,000 reads. The original 5 s debounce spent roughly one write per answered question
+  and tripped a quota alert on 2026-09-06; `syncSchedule.ts` now floors the gap between syncs at
+  3 minutes, the tab-hide push only fires when the snapshot actually differs from the last one
+  pushed, and both "did anything change?" guards use `stableStringify` (key-order blind) rather
+  than `JSON.stringify`, which reported a change on every sync between two devices.
+  The Worker endpoint is **public, unauthenticated and unrate-limited** — anyone who learns the
+  URL can spend the quota or fill the 1 GB with 512 KB `PUT`s that have no TTL and no DELETE path.
   **Cloudflare KV is eventually consistent and caches misses for up to ~60 s**, so a first `pull()`
   on a new device can return 404 even though the bucket exists. `syncNow` then treats it as a new
   bucket and pushes local state, overwriting the remote until the other device re-pushes. It
@@ -149,7 +159,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   and each device keeps its own copy locally, but it is the one place where a device whose
   `localStorage` was cleared *before* its next push can lose data. Retrying once after a 404 on
   the first sync for a code would shrink the window.
-- **Tests:** vitest, `npm test` (115 tests in `src/**/*.test.ts`, 8 files). Content tests assert
+- **Tests:** vitest, `npm test` (131 tests in `src/**/*.test.ts`, 9 files). Content tests assert
   Domain 1–5 completeness, that every Security+ boss section has ≥12 questions, 4 choices + valid
   answer per question, ids unique, lab data present, and (placement blocks) that every content
   section has exactly one 12-question block with contiguous ids and non-empty text — a track with
