@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ALL_MODULES, ALL_PLACEMENT, ALL_QUESTIONS, sectionById } from './course';
+import { ALL_MODULES, ALL_PLACEMENT, ALL_QUESTIONS, contentSections, sectionById } from './course';
 import { CLASSIFY_DATA, LABS, ORDER_DATA, SELECT_DATA } from './labs';
 import { TRACKS } from './tracks';
 import { PLACEMENT_BLOCK_N } from '../lib/placement';
@@ -178,14 +178,25 @@ describe('content integrity', () => {
 describe('placement blocks', () => {
   it('hold exactly 12 well-formed questions in their own domain', () => {
     for (const b of ALL_PLACEMENT) {
+      expect(b.title.length, b.id).toBeGreaterThan(0);
+      expect(b.blurb.length, b.id).toBeGreaterThan(0);
       expect(b.questions, b.id).toHaveLength(PLACEMENT_BLOCK_N);
       for (const q of b.questions) {
         expect(q.choices, q.id).toHaveLength(4);
+        expect(Number.isInteger(q.answer), q.id).toBe(true);
         expect(q.answer, q.id).toBeGreaterThanOrEqual(0);
         expect(q.answer, q.id).toBeLessThan(4);
         expect(q.explain.length, q.id).toBeGreaterThan(20);
+        expect(q.prompt.length, q.id).toBeGreaterThan(0);
         expect(q.domain, q.id).toBe(b.domain);
       }
+    }
+  });
+
+  it('question ids run contiguously from q1 to q12 with no gaps or extras', () => {
+    for (const b of ALL_PLACEMENT) {
+      const expected = Array.from({ length: PLACEMENT_BLOCK_N }, (_, i) => `${b.id}q${i + 1}`);
+      expect(b.questions.map((q) => q.id), b.id).toEqual(expected);
     }
   });
 
@@ -212,6 +223,18 @@ describe('placement blocks', () => {
   it('point at a section that exists', () => {
     for (const b of ALL_PLACEMENT) {
       expect(sectionById(b.sectionId), b.id).toBeDefined();
+    }
+  });
+
+  it('secplus has exactly one block per content section, in order', () => {
+    const secs = contentSections('secplus').map((s) => s.id);
+    expect(TRACKS.secplus.placement.map((b) => b.sectionId)).toEqual(secs);
+  });
+
+  it('a track with no placement test is allowed', () => {
+    for (const t of Object.values(TRACKS)) {
+      const ids = t.placement.map((b) => b.sectionId);
+      expect(ids.length === 0 || ids.length === contentSections(t.id).length).toBe(true);
     }
   });
 });

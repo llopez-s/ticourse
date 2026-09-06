@@ -11,8 +11,8 @@ import type { PlacementBlock } from '../../lib/types';
 //
 // Keyed index is spread across 0-3 (three each) so option position/length
 // cannot be used to guess the answer without the material. See
-// docs/.superpowers/sdd/2026-09-05-placement-test/task-9-report.md for the
-// fix-report table mapping each question to its final index.
+// docs/superpowers/plans/2026-09-05-placement-test.md for the plan this
+// block implements.
 // ---------------------------------------------------------------------------
 export const SP1_PLACEMENT: PlacementBlock = {
   id: 'pl-sp1',
