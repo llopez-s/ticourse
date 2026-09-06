@@ -159,6 +159,17 @@ describe('mastery with exemptions', () => {
     );
   });
 
+  it('a real quiz score beats a lower exemption instead of being dragged down', () => {
+    const quizBest: Record<string, number> = {};
+    for (const id of ids) quizBest[id] = 100;
+    // 100% quizzes under an 83% exemption must score exactly as 100% quizzes
+    // do: sectionMastery takes the max, so convalidating never demotes work
+    // the learner genuinely earned.
+    expect(sectionMastery('sp1', { ...exemptAll(83), quizBest })).toBe(
+      sectionMastery('sp1', { ...exemptAll(100), quizBest }),
+    );
+  });
+
   it('a revoked exemption counts for nothing', () => {
     const revoked = exemptAll(83);
     for (const id of ids) revoked.exempt[id].status = 'revoked';

@@ -169,7 +169,20 @@ function mergePlacement(
 ): PlacementResult[] {
   const byKey = new Map<string, PlacementResult>();
   for (const p of [...(a.placement ?? []), ...(b.placement ?? [])]) {
-    byKey.set(placementKey(p), p);
+    const key = placementKey(p);
+    const existing = byKey.get(key);
+    if (!existing) {
+      byKey.set(key, p);
+      continue;
+    }
+    // placementKey leaves out `track`, `sectionId` and `passed`; all three are
+    // functions of `blockId` and `pct`, so today a collision means the entries
+    // are identical and last-write is harmless. Decide it from content anyway,
+    // exactly as mergeExams does: commutativity is the load-bearing property
+    // of this whole module and it should hold by construction, not by luck.
+    if (JSON.stringify(p) < JSON.stringify(existing)) {
+      byKey.set(key, p);
+    }
   }
   return Array.from(byKey.values()).sort((x, y) =>
     x.date === y.date
@@ -235,6 +248,14 @@ function mergeDay(
  * work is lost. The exception is `exempt`, where the most recent decision wins,
  * because a placement exemption can be revoked and that revocation must not be
  * undone by an older grant arriving from another device.
+ *
+ * That last-write-wins on `exempt` trusts each device's own clock: a device
+ * whose clock runs fast stamps a later `at` than reality, so a grant it holds
+ * can survive — and so resurrect — a revocation made afterwards on a correct
+ * clock. This is inherent to LWW without a server timestamp or a vector clock,
+ * and it is the same trust `todayStr()` already places in the local clock for
+ * streaks and SRS due dates. The blast radius is one section's theory being
+ * marked convalidated again, which the learner can revoke a second time.
  *
  * `a` is treated as the local snapshot: its `track` (a UI preference, not
  * progress) is preserved.

@@ -108,7 +108,8 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
     **ICD 203 estimative-language calibration** training.
   - XP with **7 analyst ranks**; narrative campaign ("Operación VELVET CICADA") where each
     section's **boss battle** unlocks a dossier fragment.
-  - Daily **streaks** with freezes; rotating daily **quests**; **26 achievements** (23 + 3 Security+);
+  - Daily **streaks** with freezes; rotating daily **quests**; **28 achievements**
+    (23 general + 3 Security+ `sp-*` + 2 placement `pl-*`);
     per-section exam-readiness meters.
 - **Placement test.** `TRACKS[t].placement` holds one `PlacementBlock` (12 dedicated questions,
   never reused from the lesson bank) per content section. Passing at ≥80% lets the learner

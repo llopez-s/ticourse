@@ -104,7 +104,8 @@ preguntas de quiz y las flashcards van en inglés, como en el examen real.
   *streak freeze*.
 - **Racha diaria** con freezes, heatmap de actividad de 28 días.
 - **Misiones diarias** rotatorias (3/día + bonus por completarlas todas).
-- **26 logros** y medidor de **exam readiness** por sección.
+- **28 logros** (23 generales + 3 de Security+ + 2 de la prueba de nivel) y medidor de
+  **exam readiness** por sección.
 - **Campaña "Operación GLASS HARBOR"** en el track Security+: eres la primera
   analista de seguridad de la Autoridad Portuaria de Halden; 5 misiones y 5
   bosses (NULL CIPHER → RED MARROW → BLIND ARCHITECT → SILENT PAGER → PAPER
