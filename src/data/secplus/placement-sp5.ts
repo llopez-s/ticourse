@@ -13,14 +13,16 @@ import type { PlacementBlock } from '../../lib/types';
 // vocabulary rather than judgement; every stem here therefore describes a
 // situation and asks for a decision, and no stem names the concept its key
 // stands for. The second is the near-synonym set keyed ambiguously — policy
-// vs standard vs procedure vs guideline, MOU vs MSA vs SLA vs BPA,
-// transference vs sharing, RTO vs RPO vs MTTR vs MTBF, SLE vs ALE vs ARO.
-// Where such a set is used, the stem is written so that exactly one member
-// survives: q1 fixes technology-specific mandatory requirements under an
-// approved technology-neutral document; q5 reports one commitment met and
-// the other missed so only the data-loss lever applies. The MOU/MOA/MSA/BPA
-// family is deliberately not keyed anywhere in this block, because mutual-aid
-// wording can be defended as more than one of them.
+// vs standard vs procedure vs guideline, MOA vs MSA vs SLA vs BPA,
+// RTO vs RPO vs MTTR vs MTBF, SLE vs ALE vs ARO. Where such a set is used,
+// the stem is written so that exactly one member survives: q1 fixes
+// technology-specific mandatory requirements under an approved
+// technology-neutral document; q5 reports one commitment met and the other
+// missed so only the data-loss lever applies; q6 has two companies dividing
+// what one shared operation earns and loses, which is the single thing an
+// umbrella contract, a memorandum or a service-level document does not
+// govern, and its stem never uses the words partner, service level or
+// confidentiality.
 //
 // Every prompt is original. Each item was checked by hand against the tables,
 // callouts, worked examples, inline checks and quiz items of sp5-part1..4.ts,
@@ -28,10 +30,10 @@ import type { PlacementBlock } from '../../lib/types';
 // row or a memorisation callout is answerable by recall alone. Several items
 // deliberately invert a drilled reflex so that recall without reasoning gives
 // a wrong answer: q2 keys the steward where the lesson trains "the owner
-// decides"; q6 keys an active test over the independent report the lessons
-// call the strongest evidence; q8 keys automated coverage where the lessons
-// train "independent beats self-assessed"; q12 keys risky behaviour after a
-// baseline deviation the lessons train as "unexpected, investigate".
+// decides"; q8 keys automated coverage over an outside firm where the lessons
+// train "independent beats self-assessed"; q12 keys risky behaviour and a
+// proportionate consequence where the drilled reflex for anything anomalous
+// is "unexpected, investigate".
 //
 // Design rule this block is built on: every stem supplies triggering facts
 // for two or more of its options, so the candidate must decide which concept
@@ -132,16 +134,16 @@ export const SP5_PLACEMENT: PlacementBlock = {
       id: 'pl-sp5q6',
       domain: 'Security Program Management & Oversight',
       prompt:
-        "A port is about to give a customs-analytics provider a live connection into the database holding its cargo manifests. Before approving it, the board wants to know what somebody who had compromised the provider's service would be able to do through that connection. The provider offers any of the following: the security questionnaire it has completed for the port, the reports its own audit function produces every six months, an assessment by an independent firm covering the twelve months to last September, and written permission for the port to test, inside an agreed window, the tenant the provider would operate for the port. Which of the four answers the board's question?",
+        'A river port has awarded the north quay to two container-handling companies that will run it as one terminal for the next five years. One of them puts in the cranes and the yard, the other the gate staff and the planning system, and neither invoices the other for what it puts in: every euro the terminal takes is divided sixty-forty between them, and a bad year is absorbed in the same proportions. Before they start they have to fix in writing who answers to a shipping line whose container is damaged, whose national law governs a dispute between the two of them, and how the forty-minute truck turnaround the terminal advertises will be delivered by two sets of employees. Which document do the two companies need between them?',
       choices: [
-        "The half-yearly reports from the provider's own audit function",
-        "The independent firm's assessment of the last twelve months",
-        'The security questionnaire the provider has completed',
-        'A test of the tenant and its connection to the port',
+        'A master service agreement covering the whole five-year period',
+        'A memorandum of agreement between the two companies',
+        'A business partner agreement between the two companies',
+        'A service level agreement for the quay operation',
       ],
-      answer: 3,
+      answer: 2,
       explain:
-        "The board asked what an attacker inside the provider could reach through the connection, and a question about what is reachable is only answered by authorised attempts to reach it, which demonstrate exploitability along the specific path that this integration opens. The independent assessment is the tempting answer, and it is the strongest of the three documents, because a firm with no stake in the result examined whether the described controls were in place and operating over a period. But it reports conformity, it covers the provider's platform in general rather than the tenant and the link the port is about to create, and its period ended months before the connection exists. The half-yearly reports are written by the party being examined, and the questionnaire is that same party answering the port in its own words.",
+        "Two companies that each put their own assets and people into one operation and then divide what it earns and what it loses are not buying from one another, and the document written for that arrangement is the one that allocates responsibilities, resources, returns and risk across two sides of a joint operation. An umbrella contract is the tempting alternative, because liability, governing law and invoicing are exactly what an umbrella settles once for a long relationship, but it settles them between a buyer and a recurring supplier, and here neither company is buying. A memorandum records who has undertaken to provide and to do what, which covers the cranes and the gate staff but not the sixty-forty split, and a service-level document fixes what one party owes another and what follows when it falls short, which is the terminal's promise to its customers rather than the basis on which the two of them run it.",
     },
     {
       id: 'pl-sp5q7',
@@ -162,16 +164,16 @@ export const SP5_PLACEMENT: PlacementBlock = {
       id: 'pl-sp5q8',
       domain: 'Security Program Management & Oversight',
       prompt:
-        "An annual review by an outside firm finds that on three of a haulier's 900 servers a required configuration setting has been switched off since the previous November, eleven months earlier. In each quarter of those eleven months the team worked through its control checklist on a sample of twelve servers and filed the result; every January the whole company signs the security policy; and once a year the IT director signs a statement to the board that the required controls are in place. Which change would MOST likely have caught those three servers before the outside firm did?",
+        "A haulier's contract with its largest customer requires every change to a delivery record to be logged, on all 900 servers that hold those records. Once a quarter a technician picks twelve of the servers at random and confirms by hand that the logging is on, and the February round found nothing wrong. In March the customer disputes what was delivered and the log that would settle it does not exist: on the three servers involved, logging had been off since late January, when the depot administrators who look after them rebuilt the machines from an old image. Which change would MOST likely have caught those three servers before the customer asked?",
       choices: [
-        'Ask the IT director for that statement to the board four times each year',
-        'Widen the quarterly checklist to cover more of the 900 servers',
-        'Test every server against the requirement automatically, all the time',
-        'Have staff sign the security policy at six-month intervals',
+        'Have an outside firm run that check every six months in place of the technician',
+        'Have the technician cover fifty of the 900 servers instead of twelve',
+        'Have each depot sign a quarterly statement that its servers are logging',
+        'Check every server against the requirement automatically and continuously',
       ],
-      answer: 2,
+      answer: 3,
       explain:
-        'Three machines in nine hundred will not turn up in a sample of twelve, which is why the deviation survived every one of those reviews; widening the sample raises the odds a little and leaves the outcome mostly to luck. An automated comparison of each server against the requirement covers all nine hundred every time it runs, so the three appear the first time it runs after the change rather than eleven months later. Signing a statement to the board more often is the tempting alternative because it looks like tighter oversight, but such a statement is a declaration that something is true and produces no evidence of its own: a director signing quarterly would have signed four times without learning about the three servers. The staff signature records that people were told the rules, which says nothing about how a server is configured.',
+        'Three machines in nine hundred will not turn up in a sample of twelve, which is why the February round passed; lifting that sample to fifty still leaves better than an eight-in-ten chance of missing all three again. Only a check that evaluates all nine hundred against the requirement every time it runs turns a rebuild in late January into an alert in late January, and moving the same twelve-machine check to an outside firm changes who performs it rather than how much of the estate it sees. The quarterly signed statement is the tempting alternative, because unlike the sample it does cover every depot, but a signature asserts that a condition holds instead of finding out whether it does, and administrators who never noticed the image was old would sign it in good faith.',
     },
     {
       id: 'pl-sp5q9',
@@ -222,16 +224,16 @@ export const SP5_PLACEMENT: PlacementBlock = {
       id: 'pl-sp5q12',
       domain: 'Security Program Management & Oversight',
       prompt:
-        "A monitoring rule fires because an engineer's account has been copying project folders to an external address at around three in the morning, three nights a week, for two months. The investigation is now finished: he set the transfers up himself, to a storage service he pays for at home, and he uses them to work at weekends because the approved remote desktop is slow over his connection. The folders include design drawings marked confidential. Nothing suggests he passed anything to anyone, and he described the arrangement to the investigators without hesitation. How should this be handled?",
+        "A weekly scan of a cargo terminal's engineering network turns up a consumer mobile router plugged into a spare port in the crane workshop cabinet. The segment it sits on also carries crane control traffic, and the router gives that segment a way out to the internet around the terminal's filtering. The router carries the maintenance planner's name in marker pen; nothing records who opens that cabinet, so how long it has been there is not known. He says the workshop has never had wireless coverage, that he asked for it twice and was told the cabling would wait for next year's budget, and that he bought the router himself so his tablet could reach the maintenance system at the crane; he did not mention it to the network team, since as he saw it the router and its data plan are his own. The tablet is the terminal's own, and its connection log shows the maintenance system and nothing else. How should the terminal handle this?",
       choices: [
-        'As unexpected behaviour: investigate the account before drawing conclusions',
-        'As unintentional behaviour: cover it in the next awareness refresher',
-        'As a malicious insider: open a formal investigation with HR and legal',
-        'As risky behaviour: block the route and apply a proportionate consequence',
+        'Unintentional behaviour: change the design so the mistake cannot recur',
+        'Unexpected behaviour: investigate before attributing the activity to anyone',
+        'Malicious insider activity: open a formal case with human resources and legal',
+        'Risky behaviour: block the route and apply a proportionate consequence',
       ],
       answer: 3,
       explain:
-        'The category follows what the person chose, not how serious the consequence looks: he decided to route work around a control he found slow, which is the conscious shortcut taken for convenience, so the response is to make that route impossible, restate what is expected and apply a consequence in proportion rather than treat him as an adversary. The account did depart sharply from its own pattern, which is what put the alert in front of an analyst, but that category describes activity still waiting to be explained and this one has been explained. Treating it as an honest mistake is the closest wrong answer, because he intended no harm to the drawings, yet a mistake means nobody decided to bypass anything, and here somebody did.',
+        'The category follows what the person decided rather than how bad the exposure turned out to be: he knew the workshop had no sanctioned coverage, had been told when it would arrive, and connected his own equipment anyway because it made the job easier, so the answer is to take that route away, restate what is expected and let the consequence match what he did. Reading it as an honest mistake is the closest wrong answer, since he did not realise the cabinet shared a segment with the cranes, but failing to foresee a consequence is not the same as making no decision, and the decision not to wait was his. Nothing here is waiting to be attributed either, because the device carries his name, its purpose is accounted for and the tablet reached one system and no other, and the one thing still unknown, how long it sat in that cabinet, changes neither who put it there nor why; an outcome this serious is still not evidence that anyone set out to harm the terminal.',
     },
   ],
 };
