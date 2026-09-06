@@ -32,7 +32,7 @@ export const S5_PLACEMENT: PlacementBlock = {
   id: 'pl-s5',
   sectionId: 's5',
   domain: 'Dissemination',
-  title: 'Sección 5 · Diseminación y atribución',
+  title: 'Sección 5 · Diseminación y Atribución',
   blurb:
     'Productos por audiencia, BLUF y lenguaje estimativo, IOCs, reglas y TLP, casos históricos y métricas.',
   questions: [

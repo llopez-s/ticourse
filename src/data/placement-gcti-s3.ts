@@ -42,7 +42,7 @@ export const S3_PLACEMENT: PlacementBlock = {
   id: 'pl-s3',
   sectionId: 's3',
   domain: 'Collection',
-  title: 'Sección 3 · Fuentes de colección',
+  title: 'Sección 3 · Fuentes de Colección',
   blurb:
     'CMF y gaps de colección, malware, pivoteo de infraestructura, TLP, IOCs, STIX/TAXII y YARA.',
   questions: [
