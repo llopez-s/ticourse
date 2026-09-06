@@ -82,6 +82,12 @@ preguntas de quiz y las flashcards van en inglés, como en el examen real.
 - **Examen de práctica**: cronometrado, sin feedback hasta el final, con
   muestreo por dominio (los pesos **oficiales** 12/22/18/28/20 en Security+),
   desglose de resultados por dominio e historial.
+- **Prueba de nivel** (Security+, opcional): un bloque de 12 preguntas propias
+  por dominio, nunca repetidas del temario. Supera el 80% y puedes convalidar
+  la teoría de esa sección entera de un golpe — los labs y el boss siguen
+  esperándote igual, nunca se dan por hechos. Es totalmente reversible: puedes
+  anular una convalidación cuando quieras desde el perfil o desde la propia
+  sección.
 
 ## 🎮 Gamificación
 
@@ -98,7 +104,8 @@ preguntas de quiz y las flashcards van en inglés, como en el examen real.
   *streak freeze*.
 - **Racha diaria** con freezes, heatmap de actividad de 28 días.
 - **Misiones diarias** rotatorias (3/día + bonus por completarlas todas).
-- **26 logros** y medidor de **exam readiness** por sección.
+- **28 logros** (23 generales + 3 de Security+ + 2 de la prueba de nivel) y medidor de
+  **exam readiness** por sección.
 - **Campaña "Operación GLASS HARBOR"** en el track Security+: eres la primera
   analista de seguridad de la Autoridad Portuaria de Halden; 5 misiones y 5
   bosses (NULL CIPHER → RED MARROW → BLIND ARCHITECT → SILENT PAGER → PAPER
@@ -140,7 +147,7 @@ un blob de progreso por hash de código.
 
 ```
 src/
-  lib/         motor: tipos, XP/rangos, SRS SM-2, store persistente (v2, con track activo), markdown-lite
+  lib/         motor: tipos, XP/rangos, SRS SM-2, store persistente (v3, con track activo y prueba de nivel), markdown-lite
   data/        tracks.ts (registro de tracks), course.ts (helpers), course-gcti.ts + s1–s6 (GCTI),
                secplus/ (sections, sp1–sp6 en ficheros spN-partK, cards, glossary, labs por dominio),
                labs, achievements, quests

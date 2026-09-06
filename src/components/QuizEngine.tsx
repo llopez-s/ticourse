@@ -18,7 +18,7 @@ export interface QuizResult {
 
 interface Props {
   questions: Question[];
-  mode: 'quiz' | 'boss' | 'exam';
+  mode: 'quiz' | 'boss' | 'exam' | 'placement';
   adversary?: string;
   timeLimitSec?: number;
   onFinish: (r: QuizResult) => void;
@@ -208,7 +208,8 @@ export default function QuizEngine({
 
   // ---------------------------------------------------------------- question
   const order = choiceOrders.get(q.id)!;
-  const stakes = mode !== 'exam';
+  const placement = mode === 'placement';
+  const stakes = mode !== 'exam' && !placement;
 
   const submit = () => {
     if (chosen === null || submitted) return;
@@ -216,12 +217,17 @@ export default function QuizEngine({
     const newCombo = ok ? combo + 1 : 0;
     setCombo(newCombo);
     setMaxCombo((m) => Math.max(m, newCombo));
-    const delta = recordAnswer(ok, conf, { combo: newCombo, stakes });
+    const delta = recordAnswer(ok, conf, {
+      combo: newCombo,
+      stakes,
+      calibrated: !placement,
+      xp: !placement,
+    });
     setLastDelta(delta);
     const rev = [...review, { q, chosen, ok }];
     setReview(rev);
-    if (mode === 'exam') {
-      // no per-question reveal in exam mode
+    if (mode === 'exam' || placement) {
+      // no per-question reveal: the whole review comes at the end
       if (idx + 1 >= total) finish(rev);
       else {
         setIdx(idx + 1);
@@ -332,7 +338,7 @@ export default function QuizEngine({
         </div>
 
         {/* confidence bet */}
-        {!submitted && (
+        {!submitted && !placement && (
           <div className="mt-5">
             <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
               {stakes ? '🎲 Apuesta tu confianza' : 'Confianza (calibración)'}
@@ -394,7 +400,9 @@ export default function QuizEngine({
               disabled={chosen === null}
               className="rounded-lg bg-cyan-500 px-5 py-2 text-sm font-bold text-ink-950 transition-colors hover:bg-cyan-400 disabled:cursor-not-allowed disabled:bg-ink-700 disabled:text-slate-500"
             >
-              {mode === 'exam' && idx + 1 >= total ? 'Terminar' : 'Responder'}
+              {(mode === 'exam' || placement) && idx + 1 >= total
+                ? 'Terminar'
+                : 'Responder'}
             </button>
           ) : (
             <button

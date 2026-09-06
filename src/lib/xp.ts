@@ -9,6 +9,7 @@ export const XP = {
   quizPass: 30,
   examPass: 100,
   examTry: 40,
+  placement: 50,
 } as const;
 
 /** Confidence-bet stakes: the signature mechanic. Win/lose XP per answer. */

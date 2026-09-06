@@ -5,13 +5,16 @@ import type {
   DayState,
   ExamResult,
   Grade,
+  PlacementResult,
   ProgressSnapshot,
   TrackId,
 } from './types';
 import { levelInfo, STAKES, XP } from './xp';
 import { review } from './srs';
 import { dayDiff, todayStr } from './util';
+import { exemptionsFor, gradePlacement, revocationsFor } from './placement';
 import { ACHIEVEMENTS } from '../data/achievements';
+import { modulesOf, placementBlockById, trackOf } from '../data/course';
 import { DAILY_ALL_BONUS, questsForDate } from '../data/quests';
 
 // ---------------------------------------------------------------------------
@@ -107,6 +110,8 @@ function initialState(): ProgressSnapshot {
       checkpoints: 0,
     },
     achievements: {},
+    exempt: {},
+    placement: [],
     day: freshDay(todayStr()),
   };
 }
@@ -119,7 +124,14 @@ export interface Store extends ProgressSnapshot {
   recordAnswer: (
     correct: boolean,
     conf: Conf,
-    opts?: { combo?: number; stakes?: boolean },
+    opts?: {
+      combo?: number;
+      stakes?: boolean;
+      /** false = do not touch calibration (no confidence bet was placed) */
+      calibrated?: boolean;
+      /** false = the answer pays no XP (placement test) */
+      xp?: boolean;
+    },
   ) => number;
   awardCheckpoint: () => void;
   completeLesson: (id: string) => void;
@@ -127,30 +139,38 @@ export interface Store extends ProgressSnapshot {
   completeLab: (id: string, xp: number) => void;
   finishBoss: (sectionId: string, scorePct: number) => boolean;
   recordExam: (r: ExamResult) => void;
+  /** Record a placement attempt. Grants nothing — cashing in is a separate step. */
+  finishPlacement: (blockId: string, correct: number, total: number) => PlacementResult;
+  /** Cash in a passed block: convalidate the section's unstudied theory. */
+  grantExemption: (blockId: string) => void;
+  /** Undo a section's convalidation, leaving tombstones so sync respects it. */
+  revokeExemption: (sectionId: string) => void;
   gradeCard: (id: string, grade: Grade) => void;
   resetAll: () => void;
   _check: () => void;
 }
 
 /**
- * Persist migrations. v1 (single GCTI track) → v2: add the active `track` and
- * stamp every stored exam with the track it belonged to.
+ * Persist migrations, applied cumulatively so an old blob passes through every
+ * step. v1 (single GCTI track) → v2: add the active `track` and stamp every
+ * stored exam. v2 → v3: add the placement test's `exempt` and `placement`.
  */
 export function migrateProgress(
   persisted: unknown,
   version: number,
 ): Partial<ProgressSnapshot> {
-  const p = (persisted ?? {}) as Partial<ProgressSnapshot> & {
+  let p = (persisted ?? {}) as Partial<ProgressSnapshot> & {
     exams?: Partial<ExamResult>[];
   };
   if (version < 2) {
-    return {
+    p = {
       ...p,
       track: 'gcti',
-      exams: (p.exams ?? []).map(
-        (e) => ({ ...e, track: 'gcti' }) as ExamResult,
-      ),
+      exams: (p.exams ?? []).map((e) => ({ ...e, track: 'gcti' }) as ExamResult),
     };
+  }
+  if (version < 3) {
+    p = { ...p, exempt: p.exempt ?? {}, placement: p.placement ?? [] };
   }
   return p;
 }
@@ -214,7 +234,7 @@ export const useStore = create<Store>()(
       },
 
       recordAnswer: (correct, conf, opts = {}) => {
-        const { combo = 0, stakes = true } = opts;
+        const { combo = 0, stakes = true, calibrated = true, xp = true } = opts;
         const s = get();
         const t = todayStr();
         const day0 = s.day.date === t ? s.day : freshDay(t);
@@ -225,13 +245,15 @@ export const useStore = create<Store>()(
           highConfCorrect:
             day0.highConfCorrect + (correct && conf === 'high' ? 1 : 0),
         };
-        const calibration = {
-          ...s.calibration,
-          [conf]: {
-            n: s.calibration[conf].n + 1,
-            c: s.calibration[conf].c + (correct ? 1 : 0),
-          },
-        };
+        const calibration = calibrated
+          ? {
+              ...s.calibration,
+              [conf]: {
+                n: s.calibration[conf].n + 1,
+                c: s.calibration[conf].c + (correct ? 1 : 0),
+              },
+            }
+          : s.calibration;
         const totals = {
           ...s.totals,
           questions: s.totals.questions + 1,
@@ -243,14 +265,16 @@ export const useStore = create<Store>()(
         set({ day, calibration, totals });
 
         let delta: number;
-        if (stakes) {
+        if (!xp) {
+          delta = 0; // placement: measured, not paid
+        } else if (stakes) {
           delta = correct ? STAKES[conf].win : -STAKES[conf].lose;
           if (correct && combo >= 5) delta += 10;
           else if (correct && combo >= 3) delta += 5;
         } else {
           delta = correct ? 5 : 0; // exam mode: flat, no losses
         }
-        get().addXp(delta, null);
+        get().addXp(delta, null); // addXp(0) still keeps the streak alive
         return delta;
       },
 
@@ -338,6 +362,72 @@ export const useStore = create<Store>()(
           r.pct >= 75 ? XP.examPass : XP.examTry,
           'Examen de práctica',
         );
+      },
+
+      finishPlacement: (blockId, correct, total) => {
+        const s = get();
+        const block = placementBlockById(blockId);
+        if (!block) {
+          throw new Error(`unknown placement block: ${blockId}`);
+        }
+        const track = trackOf(block.sectionId);
+        const r = gradePlacement(
+          blockId,
+          block.sectionId,
+          track,
+          correct,
+          total,
+          new Date().toISOString(),
+        );
+        const first = !s.placement.some((p) => p.track === track);
+        set({ placement: [...s.placement, r] });
+        if (first) get().addXp(XP.placement, 'Prueba de nivel');
+        else get()._check();
+        return r;
+      },
+
+      grantExemption: (blockId) => {
+        const s = get();
+        const block = placementBlockById(blockId);
+        if (!block) return;
+        // Any passing attempt can be cashed in, not only the most recent one.
+        // The spec lets a learner pass and then choose to study the section
+        // anyway; if they change their mind and retake the block worse, the
+        // pass they already earned must still be spendable. The best pass wins,
+        // so a later, weaker retake never drags the exemption score down.
+        const best = s.placement.reduce<PlacementResult | null>(
+          (acc, p) =>
+            p.blockId === blockId && p.passed && (!acc || p.pct > acc.pct)
+              ? p
+              : acc,
+          null,
+        );
+        if (!best) return;
+        const ids = modulesOf(block.sectionId).map((m) => m.id);
+        const added = exemptionsFor(
+          ids,
+          s.lessons,
+          blockId,
+          best.pct,
+          new Date().toISOString(),
+        );
+        if (Object.keys(added).length === 0) return;
+        set({ exempt: { ...s.exempt, ...added } });
+        toast({
+          kind: 'info',
+          icon: '⏩',
+          title: 'Sección convalidada',
+          sub: `${Object.keys(added).length} lecciones dadas por vistas`,
+        });
+        get()._check();
+      },
+
+      revokeExemption: (sectionId) => {
+        const s = get();
+        const ids = modulesOf(sectionId).map((m) => m.id);
+        const undone = revocationsFor(s.exempt, ids, new Date().toISOString());
+        if (Object.keys(undone).length === 0) return;
+        set({ exempt: { ...s.exempt, ...undone } });
       },
 
       gradeCard: (id, grade) => {
@@ -428,7 +518,7 @@ export const useStore = create<Store>()(
     }),
     {
       name: 'intelforge-v1',
-      version: 2,
+      version: 3,
       migrate: (persisted, version) =>
         migrateProgress(persisted, version) as Store,
       partialize: (s) => ({
@@ -445,6 +535,8 @@ export const useStore = create<Store>()(
         calibration: s.calibration,
         totals: s.totals,
         achievements: s.achievements,
+        exempt: s.exempt,
+        placement: s.placement,
         day: s.day,
       }),
     },

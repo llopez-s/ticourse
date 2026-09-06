@@ -1,10 +1,12 @@
 import type {
   Module,
+  PlacementBlock,
   ProgressSnapshot,
   Question,
   SectionMeta,
   TrackId,
 } from '../lib/types';
+import { exemptScore, isDone } from '../lib/placement';
 import { pct, sample, shuffle } from '../lib/util';
 import { LABS } from './labs';
 import { TRACKS, TRACK_IDS } from './tracks';
@@ -13,6 +15,9 @@ import { TRACKS, TRACK_IDS } from './tracks';
 export const SECTIONS: SectionMeta[] = TRACK_IDS.flatMap((t) => TRACKS[t].sections);
 export const ALL_MODULES: Module[] = TRACK_IDS.flatMap((t) => TRACKS[t].modules);
 export const ALL_QUESTIONS: Question[] = ALL_MODULES.flatMap((m) => m.quiz);
+export const ALL_PLACEMENT: PlacementBlock[] = TRACK_IDS.flatMap(
+  (t) => TRACKS[t].placement,
+);
 
 // ---- global lookups ---------------------------------------------------------
 export const sectionById = (id: string) => SECTIONS.find((s) => s.id === id);
@@ -23,6 +28,8 @@ export const labsOf = (sectionId: string) =>
   LABS.filter((l) => l.sectionId === sectionId);
 export const questionsOf = (sectionId: string): Question[] =>
   modulesOf(sectionId).flatMap((m) => m.quiz);
+export const placementBlockById = (id: string) =>
+  ALL_PLACEMENT.find((b) => b.id === id);
 
 // ---- track scoping ----------------------------------------------------------
 export const trackOf = (sectionId: string): TrackId =>
@@ -32,12 +39,18 @@ export const sectionsOf = (track: TrackId) => TRACKS[track].sections;
 export const contentSections = (track: TrackId) =>
   TRACKS[track].sections.filter((s) => s.boss !== null);
 export const modulesOfTrack = (track: TrackId) => TRACKS[track].modules;
+export const placementBlocks = (track: TrackId) => TRACKS[track].placement;
 export const questionsOfTrack = (track: TrackId): Question[] =>
   TRACKS[track].modules.flatMap((m) => m.quiz);
-export const nextModule = (track: TrackId, s: Pick<ProgressSnapshot, 'lessons'>) =>
-  TRACKS[track].modules.find((m) => !s.lessons[m.id]);
+export const nextModule = (
+  track: TrackId,
+  s: Pick<ProgressSnapshot, 'lessons' | 'exempt'>,
+) => TRACKS[track].modules.find((m) => !isDone(s, m.id));
 
-type Prog = Pick<ProgressSnapshot, 'lessons' | 'quizBest' | 'labs' | 'bosses'>;
+type Prog = Pick<
+  ProgressSnapshot,
+  'lessons' | 'quizBest' | 'labs' | 'bosses' | 'exempt'
+>;
 
 /**
  * Section mastery 0-100: lessons 40%, best quiz scores 30%, labs 15%, boss 15%.
@@ -52,17 +65,17 @@ export function sectionMastery(
   const section = sectionById(sectionId);
   if (mods.length === 0) return 0;
 
-  const lessonPct = pct(
-    mods.filter((m) => s.lessons[m.id]).length,
-    mods.length,
-  );
+  const lessonPct = pct(mods.filter((m) => isDone(s, m.id)).length, mods.length);
   const quizMods = mods.filter((m) => m.quiz.length > 0);
   const quizPct =
     quizMods.length === 0
       ? null
       : Math.round(
-          quizMods.reduce((acc, m) => acc + (s.quizBest[m.id] ?? 0), 0) /
-            quizMods.length,
+          quizMods.reduce(
+            (acc, m) =>
+              acc + Math.max(s.quizBest[m.id] ?? 0, exemptScore(s, m.id) ?? 0),
+            0,
+          ) / quizMods.length,
         );
   const labPct =
     labs.length === 0

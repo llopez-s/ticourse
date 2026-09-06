@@ -9,7 +9,7 @@ import {
   push,
   SYNC_SCHEMA,
 } from './sync';
-import type { CardState, ProgressSnapshot } from './types';
+import type { CardState, ExemptEntry, PlacementResult, ProgressSnapshot } from './types';
 
 const snap = (over: Partial<ProgressSnapshot> = {}): ProgressSnapshot => ({
   ...emptySnapshot(),
@@ -458,5 +458,107 @@ describe('push — keepalive', () => {
     const fetchMock = stubOk();
     await push(HASH, emptySnapshot(), { keepalive: true });
     expect(fetchMock.mock.calls[0]?.[1]?.keepalive).toBe(true);
+  });
+});
+
+const entry = (over: Partial<ExemptEntry> = {}): ExemptEntry => ({
+  status: 'exempt',
+  at: '2026-09-05T10:00:00.000Z',
+  via: 'pl-sp1',
+  score: 92,
+  ...over,
+});
+
+const attempt = (over: Partial<PlacementResult> = {}): PlacementResult => ({
+  date: '2026-09-05T10:00:00.000Z',
+  track: 'secplus',
+  blockId: 'pl-sp1',
+  sectionId: 'sp1',
+  correct: 10,
+  total: 12,
+  pct: 83,
+  passed: true,
+  ...over,
+});
+
+describe('mergeProgress — exemptions', () => {
+  it('unions entries that only one side has', () => {
+    const a = snap({ exempt: { sp1m1: entry() } });
+    const b = snap({ exempt: { sp2m1: entry({ via: 'pl-sp2' }) } });
+    expect(Object.keys(mergeProgress(a, b).exempt).sort()).toEqual(['sp1m1', 'sp2m1']);
+  });
+
+  it('a newer revocation beats an older grant, in both directions', () => {
+    const a = snap({ exempt: { sp1m1: entry({ at: '2026-09-05T10:00:00.000Z' }) } });
+    const b = snap({
+      exempt: { sp1m1: entry({ status: 'revoked', at: '2026-09-06T10:00:00.000Z' }) },
+    });
+    expect(mergeProgress(a, b).exempt.sp1m1.status).toBe('revoked');
+    expect(mergeProgress(b, a).exempt.sp1m1.status).toBe('revoked');
+  });
+
+  it('a newer grant beats an older revocation — re-taking the test works', () => {
+    const a = snap({
+      exempt: { sp1m1: entry({ status: 'revoked', at: '2026-09-05T10:00:00.000Z' }) },
+    });
+    const b = snap({ exempt: { sp1m1: entry({ at: '2026-09-07T10:00:00.000Z' }) } });
+    expect(mergeProgress(a, b).exempt.sp1m1.status).toBe('exempt');
+    expect(mergeProgress(b, a).exempt.sp1m1.status).toBe('exempt');
+  });
+
+  it('on an identical timestamp, revoked wins in both directions', () => {
+    const a = snap({ exempt: { sp1m1: entry() } });
+    const b = snap({ exempt: { sp1m1: entry({ status: 'revoked' }) } });
+    expect(mergeProgress(a, b).exempt.sp1m1.status).toBe('revoked');
+    expect(mergeProgress(b, a).exempt.sp1m1.status).toBe('revoked');
+  });
+
+  it('is idempotent', () => {
+    const a = snap({ exempt: { sp1m1: entry() } });
+    const b = snap({ exempt: { sp1m1: entry({ status: 'revoked', at: '2026-09-06T10:00:00.000Z' }) } });
+    const once = mergeProgress(a, b);
+    expect(mergeProgress(once, once)).toEqual(once);
+    expect(mergeProgress(once, b)).toEqual(once);
+  });
+
+  it('survives a snapshot from an older build with no exempt field', () => {
+    const old = { ...emptySnapshot() } as ProgressSnapshot;
+    delete (old as Partial<ProgressSnapshot>).exempt;
+    delete (old as Partial<ProgressSnapshot>).placement;
+    const b = snap({ exempt: { sp1m1: entry() }, placement: [attempt()] });
+    expect(() => mergeProgress(old, b)).not.toThrow();
+    expect(mergeProgress(old, b).exempt.sp1m1.status).toBe('exempt');
+    expect(mergeProgress(old, b).placement).toHaveLength(1);
+  });
+
+  it('on an identical timestamp and status, higher score wins in both directions', () => {
+    const a = snap({ exempt: { sp1m1: entry({ score: 85 }) } });
+    const b = snap({ exempt: { sp1m1: entry({ score: 92 }) } });
+    expect(mergeProgress(a, b).exempt.sp1m1.score).toBe(92);
+    expect(mergeProgress(b, a).exempt.sp1m1.score).toBe(92);
+  });
+
+  it('on an identical timestamp, status and score, lexicographically smaller via wins in both directions', () => {
+    const a = snap({ exempt: { sp1m1: entry({ via: 'pl-sp1' }) } });
+    const b = snap({ exempt: { sp1m1: entry({ via: 'pl-sp2' }) } });
+    expect(mergeProgress(a, b).exempt.sp1m1.via).toBe('pl-sp1');
+    expect(mergeProgress(b, a).exempt.sp1m1.via).toBe('pl-sp1');
+  });
+});
+
+describe('mergeProgress — placement history', () => {
+  it('dedupes identical attempts and is order-independent', () => {
+    const a = snap({ placement: [attempt()] });
+    const b = snap({ placement: [attempt(), attempt({ blockId: 'pl-sp2', sectionId: 'sp2' })] });
+    expect(mergeProgress(a, b).placement).toHaveLength(2);
+    expect(mergeProgress(a, b).placement).toEqual(mergeProgress(b, a).placement);
+  });
+
+  it('is idempotent', () => {
+    const a = snap({ placement: [attempt()] });
+    const b = snap({ placement: [attempt(), attempt({ blockId: 'pl-sp2', sectionId: 'sp2' })] });
+    const once = mergeProgress(a, b);
+    expect(mergeProgress(once, once).placement).toEqual(once.placement);
+    expect(mergeProgress(once, b).placement).toEqual(once.placement);
   });
 });

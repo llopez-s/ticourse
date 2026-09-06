@@ -4,6 +4,7 @@ import { useStore } from '../lib/store';
 import { levelInfo, nextRank, rankFor } from '../lib/xp';
 import { buildQueue, NEW_PER_DAY } from '../lib/srs';
 import { todayStr } from '../lib/util';
+import { isDone } from '../lib/placement';
 import { modulesOf, sectionsOf, trackOf } from '../data/course';
 import { TRACKS, TRACK_IDS, type TrackMeta } from '../data/tracks';
 import { Bar } from './Bits';
@@ -96,13 +97,16 @@ function TrackSwitcher({ compact = false }: { compact?: boolean }) {
 
 function SectionLinks() {
   const lessons = useStore((s) => s.lessons);
+  const exempt = useStore((s) => s.exempt);
   const bosses = useStore((s) => s.bosses);
   const track = useTrack();
   return (
     <>
       {sectionsOf(track.id).map((sec) => {
         const mods = modulesOf(sec.id);
-        const done = mods.filter((m) => lessons[m.id]).length;
+        // Convalidated theory counts as done here too, or the permanent nav
+        // contradicts the Dashboard card for the very same section.
+        const done = mods.filter((m) => isDone({ lessons, exempt }, m.id)).length;
         const bossDown = (bosses[sec.id] ?? 0) >= 80;
         return (
           <NavLink key={sec.id} to={`/section/${sec.id}`} className={navLink}>

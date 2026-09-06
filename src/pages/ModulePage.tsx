@@ -8,12 +8,14 @@ import {
   trackOf,
 } from '../data/course';
 import { useStore } from '../lib/store';
+import { exemptActive } from '../lib/placement';
 import BlockRenderer from '../components/BlockRenderer';
 import { Panel } from '../components/Bits';
 import { useSyncTrack } from '../components/Layout';
 
 function LessonView({ mod }: { mod: Module }) {
   const lessons = useStore((s) => s.lessons);
+  const exempt = useStore((s) => s.exempt);
   const completeLesson = useStore((s) => s.completeLesson);
   const [answered, setAnswered] = useState(0);
   useSyncTrack(mod.sectionId);
@@ -25,6 +27,7 @@ function LessonView({ mod }: { mod: Module }) {
 
   const section = sectionById(mod.sectionId);
   const completed = !!lessons[mod.id];
+  const convalidated = !completed && exemptActive({ exempt }, mod.id);
   const canComplete = answered >= totalChecks;
   const trackMods = modulesOfTrack(trackOf(mod.sectionId));
   const globalIdx = trackMods.findIndex((m) => m.id === mod.id);
@@ -60,6 +63,13 @@ function LessonView({ mod }: { mod: Module }) {
           ))}
         </ul>
       </Panel>
+
+      {convalidated && (
+        <Panel className="mb-6 border-cyan-500/40 bg-cyan-950/20 text-sm text-cyan-100">
+          ⏩ Convalidada por tu prueba de nivel. Puedes leerla igualmente — al terminarla
+          contará como estudiada.
+        </Panel>
+      )}
 
       <BlockRenderer
         blocks={mod.blocks}

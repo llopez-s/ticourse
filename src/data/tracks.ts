@@ -3,6 +3,7 @@ import type {
   Flashcard,
   GlossaryEntry,
   Module,
+  PlacementBlock,
   SectionMeta,
   TrackId,
 } from '../lib/types';
@@ -32,6 +33,7 @@ import { SP6_MODULES } from './secplus/sp6';
 import { SP_FLASHCARDS } from './secplus/flashcards';
 import { SP_GLOSSARY } from './secplus/glossary';
 import { SP_LABS } from './secplus/labs';
+import { SP_PLACEMENT } from './secplus/placement';
 
 export type { TrackId };
 
@@ -47,6 +49,7 @@ export interface TrackMeta {
   domainWeights: Record<string, number>;
   sections: SectionMeta[];
   modules: Module[];
+  placement: PlacementBlock[];
   flashcards: Flashcard[];
   glossary: GlossaryEntry[];
   labs: LabMeta[];
@@ -90,6 +93,7 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
       ...S5_MODULES,
       ...S6_MODULES,
     ],
+    placement: [],
     flashcards: GCTI_FLASHCARDS,
     glossary: GCTI_GLOSSARY,
     labs: GCTI_LABS,
@@ -128,6 +132,7 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
       ...SP5_MODULES,
       ...SP6_MODULES,
     ],
+    placement: SP_PLACEMENT,
     flashcards: SP_FLASHCARDS,
     glossary: SP_GLOSSARY,
     labs: SP_LABS,

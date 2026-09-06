@@ -27,8 +27,9 @@ Content is Spanish with English exam terminology; quiz questions/flashcards in E
 > disclaimers intact (see `README.md` and `TRACKS[*].disclaimer`).
 
 Fully **client-side**, static-deployable. **No backend** — all user progress persists in browser
-`localStorage` under the store key `intelforge-v1` (persist **version 2**; `migrateProgress` in
-`lib/store.ts` upgrades v1 data by adding `track` and stamping exams).
+`localStorage` under the store key `intelforge-v1` (persist **version 3**; `migrateProgress` in
+`lib/store.ts` upgrades v1 data by adding `track` and stamping exams, and v2 data by adding the
+placement test's `exempt` and `placement` fields).
 
 ## Stack & layout
 
@@ -107,8 +108,16 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
     **ICD 203 estimative-language calibration** training.
   - XP with **7 analyst ranks**; narrative campaign ("Operación VELVET CICADA") where each
     section's **boss battle** unlocks a dossier fragment.
-  - Daily **streaks** with freezes; rotating daily **quests**; **26 achievements** (23 + 3 Security+);
+  - Daily **streaks** with freezes; rotating daily **quests**; **28 achievements**
+    (23 general + 3 Security+ `sp-*` + 2 placement `pl-*`);
     per-section exam-readiness meters.
+- **Placement test.** `TRACKS[t].placement` holds one `PlacementBlock` (12 dedicated questions,
+  never reused from the lesson bank) per content section. Passing at ≥80% lets the learner
+  *convalidate* that section's theory: `store.exempt` maps moduleId → `ExemptEntry`, read
+  everywhere through `isDone`/`exemptScore` in `lib/placement.ts`. Labs and bosses are never
+  exempted. Exemption is revocable, which is why `mergeProgress` is **no longer monotonic for
+  `exempt`** — that field is last-write-wins by `at`. Persist version **3**. GCTI's `placement`
+  is still `[]` and the UI degrades cleanly.
 - **SM-2 spaced repetition** (`lib/srs.ts`) drives flashcards (10 new cards/day).
 - State shape and persistence live in `lib/store.ts` (Zustand + `persist`, key `intelforge-v1`).
   Changing the store shape can invalidate a user's saved progress — migrate carefully.
@@ -125,8 +134,10 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   debounce / tab-hide triggers), `components/SyncPanel.tsx` (Profile UI), `worker/` (Cloudflare
   Worker + KV, deployed manually with `wrangler deploy`, **not** in CI). The code is SHA-256'd in
   the browser; only the digest reaches the Worker. Conflicts resolve via `mergeProgress`, which is
-  commutative, idempotent and monotonic — 28 tests in `sync.test.ts`. Spec:
-  `docs/superpowers/specs/2026-09-05-progress-sync-design.md`.
+  commutative and idempotent, and monotonic for every field **except `exempt`**: a placement
+  exemption can be revoked, so that field is last-write-wins by `at` instead — otherwise an older
+  grant synced in from another device could resurrect a revocation. 47 tests in `sync.test.ts`.
+  Spec: `docs/superpowers/specs/2026-09-05-progress-sync-design.md`.
   **Live** at `https://ticourse-sync.ojamajo.workers.dev` (KV namespace
   `4bf63897857f4ee1af821e0f756a2857`, account subdomain `ojamajo`). `SYNC_URL` in `sync.ts` holds
   that URL and is typed `string` so `syncEnabled()` stays meaningful; setting it back to `''`
@@ -134,11 +145,15 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   **Cloudflare KV is eventually consistent and caches misses for up to ~60 s**, so a first `pull()`
   on a new device can return 404 even though the bucket exists. `syncNow` then treats it as a new
   bucket and pushes local state, overwriting the remote until the other device re-pushes. It
-  converges, because `mergeProgress` is monotonic and each device keeps its own copy locally, but it
-  is the one place where a device whose `localStorage` was cleared *before* its next push can lose
-  data. Retrying once after a 404 on the first sync for a code would shrink the window.
-- **Tests:** vitest, `npm test` (32 tests in `src/**/*.test.ts`). Content tests assert Domain 1–5
-  completeness, that every Security+ boss section has ≥12 questions, 4 choices + valid answer per question, ids unique, lab data present.
+  converges, because `mergeProgress` is commutative/idempotent (and monotonic outside `exempt`)
+  and each device keeps its own copy locally, but it is the one place where a device whose
+  `localStorage` was cleared *before* its next push can lose data. Retrying once after a 404 on
+  the first sync for a code would shrink the window.
+- **Tests:** vitest, `npm test` (115 tests in `src/**/*.test.ts`, 8 files). Content tests assert
+  Domain 1–5 completeness, that every Security+ boss section has ≥12 questions, 4 choices + valid
+  answer per question, ids unique, lab data present, and (placement blocks) that every content
+  section has exactly one 12-question block with contiguous ids and non-empty text — a track with
+  no placement test (GCTI, for now) is explicitly allowed.
 - **Bash gotcha in this harness:** commands containing backticks fail to parse before running —
   write patch scripts to a file (or use Edit/Write) instead of inline heredocs with backticks.
 - `.claude/settings.local.json` has **stale hardcoded Bash paths** from a previous location

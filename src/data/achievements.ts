@@ -232,4 +232,28 @@ export const ACHIEVEMENTS: AchievementDef[] = [
     xp: 150,
     test: (s) => s.exams.some((e) => e.track === 'secplus' && e.pct >= 83),
   },
+
+  // ---- Placement test -------------------------------------------------------
+  {
+    id: 'pl-tested',
+    icon: '🎯',
+    title: 'Autoevaluado',
+    desc: 'Completa un bloque de la prueba de nivel',
+    xp: 25,
+    test: (s) => s.placement.length > 0,
+  },
+  {
+    id: 'pl-shortcut',
+    icon: '⏩',
+    title: 'Atajo ganado',
+    desc: 'Ten convalidaciones activas en 3 secciones',
+    xp: 100,
+    test: (s) =>
+      new Set(
+        Object.entries(s.exempt)
+          .filter(([, e]) => e.status === 'exempt')
+          .map(([id]) => moduleById(id)?.sectionId)
+          .filter(Boolean),
+      ).size >= 3,
+  },
 ];

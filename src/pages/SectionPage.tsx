@@ -6,12 +6,14 @@ import {
   sectionById,
   sectionMastery,
 } from '../data/course';
+import { exemptActive, sectionExempt, sectionExemptScore } from '../lib/placement';
 import { Bar, PageTitle, Panel, Ring } from '../components/Bits';
 import { useSyncTrack } from '../components/Layout';
 
 export default function SectionPage() {
   const { id } = useParams();
   const s = useStore();
+  const revokeExemption = useStore((st) => st.revokeExemption);
   const section = sectionById(id ?? '');
   useSyncTrack(section?.id);
   if (!section) return <p className="text-slate-400">Sección no encontrada.</p>;
@@ -21,6 +23,10 @@ export default function SectionPage() {
   const mastery = sectionMastery(section.id, s);
   const bossBest = s.bosses[section.id] ?? 0;
   const bossDown = bossBest >= 80;
+
+  const moduleIds = mods.map((m) => m.id);
+  const exempt = sectionExempt(s, moduleIds);
+  const exemptPct = sectionExemptScore(s, moduleIds);
 
   return (
     <div>
@@ -41,6 +47,25 @@ export default function SectionPage() {
         </div>
       </Panel>
 
+      {exempt && (
+        <Panel className="mb-5 border-cyan-500/40 bg-cyan-950/20">
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="flex-1 text-sm text-cyan-100">
+              ⏩ Sección convalidada por tu prueba de nivel · {exemptPct}%
+              <div className="mt-1 text-xs text-cyan-200/70">
+                La teoría cuenta como vista. Los labs y el boss siguen pendientes.
+              </div>
+            </div>
+            <button
+              onClick={() => revokeExemption(section.id)}
+              className="rounded-lg border border-cyan-500/40 px-3 py-1.5 text-xs font-semibold text-cyan-200 hover:bg-cyan-950/50"
+            >
+              Anular convalidación
+            </button>
+          </div>
+        </Panel>
+      )}
+
       {/* lessons */}
       <h2 className="mb-2 text-sm font-bold uppercase tracking-wider text-slate-400">
         📖 Teoría
@@ -59,6 +84,7 @@ export default function SectionPage() {
       <div className="mb-6 space-y-2">
         {mods.map((m, i) => {
           const done = !!s.lessons[m.id];
+          const conv = !done && exemptActive(s, m.id);
           const best = s.quizBest[m.id];
           return (
             <div
@@ -69,10 +95,12 @@ export default function SectionPage() {
                 className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-mono text-xs font-bold ${
                   done
                     ? 'bg-emerald-500 text-ink-950'
-                    : 'bg-ink-700 text-slate-400'
+                    : conv
+                      ? 'bg-cyan-600 text-ink-950'
+                      : 'bg-ink-700 text-slate-400'
                 }`}
               >
-                {done ? '✓' : i + 1}
+                {done ? '✓' : conv ? '⏩' : i + 1}
               </span>
               <div className="min-w-0 flex-1">
                 <Link
@@ -81,13 +109,16 @@ export default function SectionPage() {
                 >
                   {m.title}
                 </Link>
-                <span className="text-xs text-slate-500">{m.minutes} min</span>
+                <span className="text-xs text-slate-500">
+                  {m.minutes} min
+                  {conv && <span className="ml-2 text-cyan-300">⏩ convalidada</span>}
+                </span>
               </div>
               <Link
                 to={`/learn/${m.id}`}
                 className="rounded-lg border border-ink-600 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:bg-ink-800"
               >
-                {done ? 'Repasar' : 'Estudiar'}
+                {done || conv ? 'Repasar' : 'Estudiar'}
               </Link>
               {m.quiz.length > 0 && (
                 <Link
