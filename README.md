@@ -5,7 +5,7 @@ comparten el mismo motor (XP, rachas, flashcards SM-2, bosses, simulacros):
 
 | Track | Certificación | Estado |
 |---|---|---|
-| **CTI · GCTI** | GIAC GCTI (asociada a SANS FOR578: Cyber Threat Intelligence) | Completo: 27 lecciones, 174 preguntas, 12 labs, 80 flashcards |
+| **CTI · GCTI** | GIAC GCTI (asociada a SANS FOR578: Cyber Threat Intelligence) | Completo: 27 lecciones, 174 preguntas, 12 labs, 80 flashcards, prueba de nivel |
 | **Security+** | CompTIA Security+ (SY0-701) | **Completo: los 5 dominios** — 41 lecciones + exam prep, 305 preguntas, 132 checkpoints, 15 labs, 152 flashcards, 233 términos |
 
 **▶ En vivo: https://llopez-s.github.io/ticourse/** — se despliega solo en cada
@@ -70,6 +70,7 @@ preguntas de quiz y las flashcards van en inglés, como en el examen real.
 | **Flashcards (SM-2)** | 80 | 152 |
 | **Glosario** | ~95 términos | 233 términos |
 | **Boss battles** | 5 | 5 |
+| **Prueba de nivel** | 5 bloques · 60 preguntas | 5 bloques · 60 preguntas |
 
 - **Labs GCTI**: kill chain mapping, Diamond, Courses of Action, Pivot Hunt
   (grafo de infraestructura), YARA Forge, CMF, caza de sesgos, matriz ACH,
@@ -82,8 +83,8 @@ preguntas de quiz y las flashcards van en inglés, como en el examen real.
 - **Examen de práctica**: cronometrado, sin feedback hasta el final, con
   muestreo por dominio (los pesos **oficiales** 12/22/18/28/20 en Security+),
   desglose de resultados por dominio e historial.
-- **Prueba de nivel** (Security+, opcional): un bloque de 12 preguntas propias
-  por dominio, nunca repetidas del temario. Supera el 80% y puedes convalidar
+- **Prueba de nivel** (los dos tracks, opcional): un bloque de 12 preguntas
+  propias por sección, nunca repetidas del temario. Supera el 80% y puedes convalidar
   la teoría de esa sección entera de un golpe — los labs y el boss siguen
   esperándote igual, nunca se dan por hechos. Es totalmente reversible: puedes
   anular una convalidación cuando quieras desde el perfil o desde la propia

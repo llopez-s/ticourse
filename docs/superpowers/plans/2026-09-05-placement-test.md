@@ -2215,6 +2215,8 @@ Phase 2 (the five GCTI blocks) gets its own plan and needs no engine work: creat
 
 ## Follow-ups left open when this plan closed
 
+**Update 2026-09-06 — Phase 2 shipped on branch `placement-gcti`.** The five GCTI blocks now exist (`src/data/placement-gcti-sN.ts` plus a `GCTI_PLACEMENT` aggregator), so `TRACKS.gcti.placement` is no longer empty and the completeness test covers both tracks. Three of the follow-ups below were closed in the same branch: the missing «Repetir bloque» link, and the two content items whose keys were not sourced from their material (`pl-sp3q7` now keys IPSec transport mode with ESP from `sp3m5`; `pl-sp5q12` now keys the estate-wide step of the `sp5m8` reporting flow). The rest are still open.
+
 All 14 tasks shipped and the final whole-branch review returned **no Critical findings** and a merge-ready verdict. These were consciously deferred rather than forgotten.
 
 **One regression introduced by the final fix wave.** The «Convalidar sección» card is now a button rather than a link into the runner — which is the point, it used to start a fresh test — but that state's card no longer offers any way back into the block. A learner who passed at 83%, declined to convalidate, and later wants a better score before cashing in has no in-app route to retake it. Every other state still links to the runner. Fix: add a secondary «Repetir bloque» link beside the button.

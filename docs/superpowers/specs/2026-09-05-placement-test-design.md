@@ -60,7 +60,10 @@ Blocks map to the sections that carry a domain and a boss — `contentSections(t
 
 - `src/data/secplus/placement-sp1.ts` … `placement-sp5.ts`, each exporting one `PlacementBlock`.
 - `src/data/secplus/placement.ts` — aggregator, `SP_PLACEMENT: PlacementBlock[]`.
-- `src/data/placement-gcti.ts` — the five GCTI blocks plus `GCTI_PLACEMENT`.
+- `src/data/placement-gcti-s1.ts` … `placement-gcti-s5.ts`, each exporting one `PlacementBlock`,
+  and `src/data/placement-gcti.ts` — aggregator, `GCTI_PLACEMENT: PlacementBlock[]`. (Shipped as
+  six files rather than the single one planned here, mirroring the Security+ layout so each block
+  could be authored independently.)
 - Both wired into `TRACKS` in `src/data/tracks.ts`.
 
 ### Disjointness rule
