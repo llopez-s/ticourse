@@ -311,6 +311,39 @@ export function mergeProgress(
 }
 
 /**
+ * JSON with object keys sorted, recursively.
+ *
+ * `JSON.stringify` is key-order sensitive, and two devices build the same maps
+ * in whatever order the learner happened to complete things — `activity`,
+ * `lessons`, `srs` and the rest. So two snapshots holding *identical* data
+ * routinely serialise to different strings. Answering "did anything change?"
+ * with raw stringify therefore answers "yes" on every sync, and syncNow writes
+ * to KV every time even when the bucket already holds exactly this snapshot.
+ * On the free tier that is the difference between a handful of writes a day
+ * and the 1,000-write daily cap.
+ *
+ * Arrays keep their order: `mergeExams`, `mergePlacement` and `mergeDay`
+ * already sort every array they produce, so order there is meaningful, not
+ * incidental. Keys whose value is `undefined` are dropped, matching
+ * `JSON.stringify`, so the two agree on what a snapshot contains.
+ */
+export function stableStringify(value: unknown): string {
+  if (value === null || typeof value !== 'object') {
+    return JSON.stringify(value) ?? 'null';
+  }
+  if (Array.isArray(value)) {
+    return `[${value.map((v) => stableStringify(v)).join(',')}]`;
+  }
+  const obj = value as Record<string, unknown>;
+  const fields: string[] = [];
+  for (const key of Object.keys(obj).sort()) {
+    if (obj[key] === undefined) continue;
+    fields.push(`${JSON.stringify(key)}:${stableStringify(obj[key])}`);
+  }
+  return `{${fields.join(',')}}`;
+}
+
+/**
  * Base URL of the sync Worker. Public, not a secret. Empty disables the whole
  * feature: no network call is ever attempted and the UI says so.
  */
