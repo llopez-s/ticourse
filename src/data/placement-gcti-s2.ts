@@ -5,7 +5,9 @@ import type { PlacementBlock } from '../lib/types';
 //
 // Coverage: s2m1 Cyber Kill Chain (3), s2m2 Courses of Action matrix (2),
 // s2m3 Diamond Model (3), s2m4 activity threads y agrupación de intrusiones
-// (2), s2m5 MITRE ATT&CK y la Pyramid of Pain (2).
+// (2), s2m5 MITRE ATT&CK — escalera tactic/technique/procedure y lectura de un
+// mapa de cobertura (2). La Pyramid of Pain no se evalúa aquí: la durabilidad
+// de indicadores se mide en el bloque pl-s3.
 //
 // Every prompt below is original to this block: none reuses a prompt, an
 // inline checkpoint, a table row or a worked example from s2.ts. The scenarios
@@ -40,7 +42,7 @@ export const S2_PLACEMENT: PlacementBlock = {
       id: 'pl-s2q2',
       domain: 'Intrusion Analysis',
       prompt:
-        "Ardent Polymers installs a routine update for a licensed engineering plug-in, obtained from the vendor's own update service and signed with the vendor's certificate. The installer writes an extra library that the plug-in loads at every start, and that library begins contacting a rented server. Investigators establish that the actor had held access to the vendor's build system for two months and added the library there. Within the kill chain of the intrusion against Ardent Polymers, the actor's work on that build system corresponds to which phase?",
+        "Ardent Polymers installs a routine update for a licensed engineering plug-in, obtained from the vendor's own update service and signed with the vendor's certificate. The installer writes an extra library that the plug-in loads at every start, and that library begins contacting a rented server. Investigators establish that the actor had held privileged access to the vendor's build system for two months and used it as their own staging environment, adding the library there. Within the kill chain of the intrusion against Ardent Polymers, the actor's work on that build system corresponds to which phase?",
       choices: ['Reconnaissance', 'Weaponization', 'Delivery', 'Installation'],
       answer: 1,
       explain:
@@ -65,26 +67,26 @@ export const S2_PLACEMENT: PlacementBlock = {
       id: 'pl-s2q4',
       domain: 'Intrusion Analysis',
       prompt:
-        "A sector information-sharing group warns Bellweather Water that a set of intrusions has been running since at least last autumn, and offers one distinguishing detail: the intruders' remote-access tool always creates a named pipe following a fixed pattern. Bellweather keeps a year of process and named-pipe records on its endpoints, its analytics tier can raise an alert within minutes of a new match, and its egress proxy can block destinations on request. Before anything else, the incident commander wants to establish whether this activity has been present in the estate since last autumn. Which course of action does that call for?",
-      choices: ['Detect', 'Discover', 'Deny', 'Disrupt'],
+        "A supplier alert tells Kelbrook Pharmaceuticals that a group working its sector reaches file shares through a signed remote-support agent, always launched by a scripting host and always between 01:00 and 04:00. Kelbrook's helpdesk runs that same agent daily under a support contract, its egress proxy can throttle any destination on request, and the company keeps an unused administrative account it could seed as bait. Nothing indicates the group is inside the estate yet. Which course of action fits this behaviour BEST?",
+      choices: ['Deny', 'Detect', 'Deceive', 'Degrade'],
       answer: 1,
       explain:
-        'Establishing whether the pattern is already sitting in a year of stored telemetry is a retrospective search, which is Discover. Detect is the tempting choice, and the pattern should indeed become an alert as well, but an alert only covers matches from the moment it is written and says nothing about the months already elapsed.',
+        "The group's use of the agent is separable from the helpdesk's by its parent process and its hour, so a rule that raises an alert on that combination is the action actually available here, and nothing has to be broken to get it. Deny is the tempting choice because the agent is the group's route to the shares, but the same signed tool carries contracted helpdesk work every day and cannot be denied to one party only.",
     },
     {
       id: 'pl-s2q5',
       domain: 'Intrusion Analysis',
       prompt:
-        "Calder Rail's threat team has watched an intrusion for eleven days, mapping four compromised hosts, two rented servers and the actor's working hours, and now judges that little more will be learned by waiting. Continuing leaves the actor with access to signalling maintenance records for at least another fortnight; acting almost certainly ends the collection line, because this actor has rotated its infrastructure within hours of being touched before. The team has written up both options with the gain and the loss of each. Who should make the call to shut the intrusion down?",
+        "Ashgrove Health's board sponsor for clinical systems approved a further week of monitored access after the threat team priced both options for her: what continued collection would add, against the exposure of leaving the actor in place. Four days in, the actor authenticates into a regional laboratory network that formed no part of the picture the sponsor approved, and begins listing its file shares. Visibility is intact and nothing has been taken. What should the threat team do FIRST?",
       choices: [
-        'The SOC shift lead, who owns the alerting and the containment tooling',
-        'The threat intelligence team, which owns the collection plan and its priorities',
-        'The executive accountable for risk to the affected business service',
-        'The incident response manager, because ending an intrusion is a containment task',
+        "Contain the laboratory's hosts now, since the approved scope no longer describes the intrusion",
+        'Continue to the end of the approved week, then report the laboratory access in the wrap-up',
+        "Pass the decision to the laboratory's own IT manager, who owns the newly affected systems",
+        'Put the changed exposure back to the sponsor with a revised gain-and-loss statement',
       ],
-      answer: 2,
+      answer: 3,
       explain:
-        "Choosing between more collection and immediate containment trades an operational risk to the railway against future visibility, so the call belongs to whoever is accountable for accepting that risk; the analysts' job is to price both sides of it, which they have done. The incident response manager is the tempting answer because containment is carried out there, but executing a decision is not the same as owning the exposure it creates.",
+        "The sponsor accepted a risk priced against a set of facts, and those facts have changed materially, so re-pricing them and handing the decision back is the analysts' half of that arrangement — and nothing irreversible has happened yet, so there is time to do it. Containing at once is the tempting move and would be right if data were leaving, but it substitutes the team's own risk appetite for that of the person accountable for the service.",
     },
     {
       id: 'pl-s2q6',
@@ -102,12 +104,12 @@ export const S2_PLACEMENT: PlacementBlock = {
       prompt:
         "Investigators image a server the actor used to stage stolen files and find, beside the collected documents, a spreadsheet listing document titles and part numbers to look for at three named engineering firms. It is dated three weeks before the first of the intrusions and written in a language that appears nowhere in the implant's build artifacts. Which element of the Diamond Model does the spreadsheet MOST directly inform?",
       choices: [
-        'The operator role within the Adversary vertex',
-        'The customer role within the Adversary vertex',
-        'The Capability vertex',
-        'The Infrastructure vertex',
+        'The Capability vertex, since the list defines what the tooling was built to collect',
+        'The Infrastructure vertex, since the server was staging the collected files for the actor',
+        'The customer role in the Adversary vertex, since the list records a tasking',
+        'The operator role in the Adversary vertex, since the file sat on their own server',
       ],
-      answer: 1,
+      answer: 2,
       explain:
         'A collection requirement written before the intrusions began, in a language foreign to whoever built the implant, points at the party that tasked the operation and stands to benefit from it — the customer inside the Adversary vertex. The operator is the tempting answer because the file sat on a machine the operator ran, but the operator is the entity at the keyboard, and this artifact records what somebody else asked for.',
     },
@@ -130,16 +132,16 @@ export const S2_PLACEMENT: PlacementBlock = {
       id: 'pl-s2q9',
       domain: 'Intrusion Analysis',
       prompt:
-        "Two intrusions six weeks apart, one at a ferry operator and one at a port authority, are being considered for grouping. Four things are shared: both victims are mid-sized operators in the same regulated sector; both intrusions opened with password spraying against an internet-facing webmail portal; both actors' servers were rented from the same large hosting provider; and both implants derive their configuration key from the same misspelled string constant. If only one of the four survived scrutiny, which one alone would still justify the grouping?",
+        'A grouping memo at Corbray Analytics argues that two intrusions eleven days apart belong to one activity group, and rests that argument on four shared observations. A reviewer is told to strike whichever of them the grouping cannot rest any weight on. Which observation should be struck?',
       choices: [
-        'The two victims being mid-sized operators in the same regulated sector',
-        'The password spraying against an internet-facing webmail portal',
-        'The servers rented from the same large hosting provider',
-        'The misspelled string constant both implants use to derive a key',
+        'Both loaders derive their mutex name from the same misspelled English word',
+        'Both intrusions opened with a password spray against the same VPN brand',
+        'Both victims are the only two licensed pilotage operators for that estuary',
+        'Both C2 servers presented self-signed certificates with the same subject string',
       ],
-      answer: 3,
+      answer: 1,
       explain:
-        "A misspelling carried inside both implants comes from the actor's own source code: it is rare, and removing it means touching the build the actor depends on, which is what makes a link strong enough to stand alone. Shared sector targeting is the next best of the four and would support a hypothesis, but plenty of unrelated actors work the same sector, while password spraying and a large hosting provider are shared by thousands of unrelated intrusions.",
+        'Password spraying is a universal technique and the appliance brand is a choice the two victims made, not anything the actor controls, so unrelated intrusions would share that observation just as readily — it carries no weight of its own. The targeting observation is the tempting strike, because sector overlap alone is weak, but two victims out of a licensed pair hit within eleven days is a specific tasking pattern, which the memo may legitimately count as support.',
     },
     {
       id: 'pl-s2q10',
@@ -160,7 +162,7 @@ export const S2_PLACEMENT: PlacementBlock = {
       id: 'pl-s2q11',
       domain: 'Intrusion Analysis',
       prompt:
-        "A campaign report says of a group that it steals credentials by loading a signed driver of its own and reading the memory of the process that holds them, then reuses those credentials to reach file servers. An analyst is asked to place two parts of that sentence on ATT&CK's ladder of abstraction: 'steals credentials', and 'loads a signed driver of its own and reads the memory of the process that holds them'. Respectively, these are:",
+        "A campaign report says of a group that 'it steals credentials by dropping its own signed driver hvsvc64.sys into System32\\drivers, opening a handle to lsass.exe through that driver and writing the dump to C:\\ProgramData\\hv.log', and then reuses those credentials to reach file servers. An analyst is asked to place two parts of that sentence on ATT&CK's ladder of abstraction: 'steals credentials', and the description of the driver, the handle and the dump file. Respectively, these are:",
       choices: [
         'A technique and a procedure',
         'A tactic and a technique',
@@ -169,22 +171,22 @@ export const S2_PLACEMENT: PlacementBlock = {
       ],
       answer: 2,
       explain:
-        "'Steals credentials' names the adversary's goal for that step, and goals are tactics; the particular driver this group loads and the exact way it reads that process memory is one group's implementation, which is a procedure. 'A tactic and a technique' is the near miss — the technique level would be the general method, dumping credentials from operating-system memory, stated without this group's own driver.",
+        "'Steals credentials' names the adversary's goal for that step, and goals are tactics; a named driver file, the handle it opens and the path it writes to are this one group's implementation of that step, which is a procedure. 'A tactic and a technique' is the near miss — the technique level would be the general method, dumping credentials from operating-system memory, stated without this group's driver name, handle route and output path.",
     },
     {
       id: 'pl-s2q12',
       domain: 'Intrusion Analysis',
       prompt:
-        "One incident leaves a team four things it could write a detection on: the SHA-256 of the packed loader, the two domains the loader resolves at start-up, the mutex name it creates on every host it runs on, and the routine it uses to decode its own configuration, which the team has seen in this group's loaders for two years. Detecting on which of the four would cost the group the MOST to work around?",
+        'Tarnwick Logistics turns a cell of its ATT&CK coverage map green as soon as one deployed rule cites that technique. Most of those rules were written after a single incident last year and match the file paths, the service names and the command strings recorded in it, and the map itself was last rebuilt against an older ATT&CK release. Intelligence now reports that the group most likely to hit freight operators uses a technique whose cell is already green, and the detection lead closes the request for new work on that basis. What should happen before that request is closed?',
       choices: [
-        'The SHA-256 of the packed loader binary',
-        'The two domains the loader resolves at start-up',
-        'The mutex name it creates on every infected host',
-        'The routine that decodes its configuration',
+        "Confirm the technique appears on the group's public ATT&CK page before spending effort on it",
+        'Rebuild the map against the current ATT&CK release so its cells match the report',
+        "Recount the green cells and report the quarter's coverage growth to the board",
+        'Test the existing rule against an implementation that uses none of the recorded strings',
       ],
       answer: 3,
       explain:
-        "The decoding routine identifies the tool itself, so evading a detection built on it means re-developing the loader rather than rebuilding it — the most expensive of the four adaptations. The mutex name is the tempting answer because it is equally under the group's control, but a mutex is a host artifact: renaming a string is an annoyance, not a redevelopment, and a new build or a new domain costs the group less still.",
+        "A green cell records that a rule exists, not that the technique would be caught in another form, and these rules were built around one incident's paths and strings — so the only thing that answers the request is whether the rule still fires when those change. Checking the group's ATT&CK page is the tempting step, but a group page reports only what has been publicly reported and says nothing about whether Tarnwick's rule covers the technique or just that one implementation.",
     },
   ],
 };

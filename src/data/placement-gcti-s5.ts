@@ -3,10 +3,10 @@ import type { PlacementBlock } from '../lib/types';
 // ---------------------------------------------------------------------------
 // pl-s5 — Placement block for GCTI section s5: Diseminación y Atribución
 //
-// Coverage: s5m1 products by audience (2), s5m2 BLUF and ICD 203 estimative
-// language (3), s5m3 technical dissemination — indicators, rules and TLP in
-// practice (3), s5m4 historical cases (2), s5m5 feedback, metrics and team
-// maturity (2).
+// Coverage: s5m1 audience fit and the product catalogue (2), s5m2 written
+// judgements and ICD 203 estimative language (3), s5m3 technical
+// dissemination — indicator context, rules and TLP in practice (3), s5m4
+// historical cases (2), s5m5 feedback, metrics and team maturity (2).
 //
 // Every prompt is original to this block. None reuses a prompt from s5.ts,
 // and each item was checked by hand against that section's tables, callouts,
@@ -14,10 +14,11 @@ import type { PlacementBlock } from '../lib/types';
 // most exposed to pure recall here are the ICD 203 band table and the
 // audience -> product / SLA tables. No stem asks a candidate to convert a
 // percentage into a band or to name the product a table row already pairs
-// with an audience; the estimative items instead give an evidence picture and
-// ask which probability/confidence pairing it supports, and the product items
-// give a live situation in which two products are genuinely in play. The
-// stems use organisations and situations unrelated to the section's
+// with an audience: the estimative item asks how a published pairing should
+// move when the sourcing changes, its companion asks which drafted line a
+// decision-maker can act on, and the audience items turn on a dated request
+// and on a team whose consumers cannot tell what to ask for. The stems use
+// organisations and situations unrelated to the section's
 // "Operación VELVET CICADA" / Meridian Dynamics narrative so that nothing
 // reads back as campaign recall; the two historical items are the deliberate
 // exception, since those cases are real and are named as such.
@@ -55,16 +56,16 @@ export const S5_PLACEMENT: PlacementBlock = {
       id: 'pl-s5q2',
       domain: 'Dissemination',
       prompt:
-        'A quarterly assessment of espionage trends — twelve pages of judgements and their implications, with no technical annex — goes out at the end of each quarter to the executive committee and, on the same distribution list, to the SOC shift leads. The executive committee books a follow-up discussion every quarter. In two years no shift lead has referenced the document in a hunt, a ticket or a detection change. Which change would MOST directly make the material useful to the shift leads?',
+        'Requests reach an intelligence team by email, by chat and in corridor conversations. Each requester negotiates length and timing individually: two of them expect anything they ask for the same day, while a third waited eleven days for an answer an analyst had drafted in an afternoon. During the last incident the team spent its first hour arguing about what the alert should contain before anyone wrote a line of it. Which single change would MOST reduce this friction?',
       choices: [
-        'Attach the raw indicator export that the assessment judgements were built from',
-        'Compress the assessment to two pages and send that version to every recipient',
-        'Derive a separate product naming the behaviours to hunt and the detections to build',
-        'Send the assessment at the start of the quarter rather than at the end of it',
+        'Agree one turnaround time that every incoming request will be answered within',
+        'Route all requests through a single ticket queue so nothing is agreed by email',
+        'Publish the products the team makes, who each is for, and when each one lands',
+        'Write a house style guide setting headings, tone and citation format for reports',
       ],
       answer: 2,
       explain:
-        'The executives act on the document, so the analysis and the format already fit the decision they face; the shift leads need a different product built from the same analysis, in the verb they can act on. Attaching the indicator export is the tempting fix because the assessment carries no technical content, but an export with no prioritisation and no behaviour attached is precisely the uncontextualised dump operators learn to ignore.',
+        'Published products with named audiences, templates and turnaround times answer all three symptoms at once: requesters learn what they can ask for and what to expect, and the team stops designing a format under incident pressure. A single turnaround time is the tempting fix because the timing complaints are the loudest, but one number across every product either makes the urgent alert late or promises an assessment nobody can research that fast.',
     },
     {
       id: 'pl-s5q3',
@@ -75,7 +76,7 @@ export const S5_PLACEMENT: PlacementBlock = {
         'State the reasoning and the sources each judgement rests on alongside it',
         'Replace the likelihood wording with explicit numeric probability ranges',
         'Move the technical annexes ahead of the analytic section of the report',
-        'Circulate the assessment a week before the meeting instead of on the day',
+        'Book a standing briefing with the committee chair before every monthly meeting',
       ],
       answer: 0,
       explain:
@@ -85,16 +86,16 @@ export const S5_PLACEMENT: PlacementBlock = {
       id: 'pl-s5q4',
       domain: 'Dissemination',
       prompt:
-        'A manufacturer asks whether the intrusion set that has been inside its network for a year is going to deploy destructive malware against it in the coming quarter. The team has four years of well-sourced visibility into the group: every operation on record has been collection-focused, the tooling has no destructive component, and the sponsor state has declared economic priorities. Last month a firm in the same sector was wiped by an unrelated actor. Which formulation BEST expresses the team judgement?',
+        'A committee decides this month whether to fund a second authentication factor on the supplier-facing payment platform, and it sent the previous draft back saying it could not tell what the team actually thought. The analyst has one solid finding — two supplier accounts were phished last month, and one of those suppliers administers that platform — and nothing showing the group has touched the platform itself. Which line BEST serves the committee?',
       choices: [
-        'Likely, with low confidence',
-        'Unlikely, with high confidence',
-        'Roughly an even chance, with high confidence',
-        'Unlikely, with low confidence',
+        'Two of the suppliers were phished last month and one administers the payment platform',
+        'We assess the platform is likely to be targeted this quarter, at moderate confidence',
+        'The group could conceivably move against the payment platform at some point this year',
+        'It is believed across the industry that the payment platform is the most probable target',
       ],
       answer: 1,
       explain:
-        'Confidence reports the strength of the analytic basis, not the direction of the judgement, so four years of consistent, well-sourced visibility supports high confidence even though the assessed probability of the event is low. Hedging the confidence down because the event cannot be ruled out is the most tempting error, and lifting the band because a comparable firm was hit by somebody else is the same mistake from the other side: both collapse two independent axes into one dial.',
+        'A line a committee can spend against names the event, commits to a probability band and marks how strong the analytic basis is — and that confidence marker reports the basis, never the size of the claim, so the two move independently. Restating the two findings is the tempting alternative because every word of it is defensible, but it hands the judging back to the reader; a line built on could and at some point is true of almost anything, so no decision can turn on it.',
     },
     {
       id: 'pl-s5q5',
@@ -115,16 +116,16 @@ export const S5_PLACEMENT: PlacementBlock = {
       id: 'pl-s5q6',
       domain: 'Dissemination',
       prompt:
-        "Two hours after confirming an intrusion, a team publishes its indicator set to the sector's shared platform. One entry is the address of the front end the actor used; it belongs to a large hosting provider that also fronts several members' own customer portals. Within a day three members have blocked traffic to their own services and a fourth has stopped ingesting the team's feed. Which practice on the producing side would MOST directly have prevented this?",
+        "Two hours after confirming an intrusion, a team publishes forty indicators to the sector's shared platform as a flat list of values, each carrying a first-seen date and nothing else. One of them is the address of a front end the actor used; it belongs to a large hosting provider that also fronts several members' own customer portals. Within a day three members had blocked traffic to their own services and a fourth had stopped ingesting the feed. Which change to how the set is published would MOST directly prevent a repeat?",
       choices: [
-        'Shortening the validity window applied to every indicator in the set',
-        'Restricting the set to a narrower handling marking before publishing it',
-        'Publishing the set as structured objects rather than as a flat export',
-        'Judging each indicator for specificity and holding back shared hosting addresses',
+        'Attach an explicit expiry to each entry so that recipients retire it on time',
+        'Hold the set back until a second analyst has reviewed it against the case notes',
+        'Restrict the whole set to a smaller circle of members under a stricter handling marking',
+        'Ship each entry with the actor it belongs to, its phase and a confidence value',
       ],
       answer: 3,
       explain:
-        'The damage came from an indicator that cannot separate the actor from the legitimate tenants of the same infrastructure, so the control belongs at selection time: decide what a hit would actually mean before the entry leaves the building. A shorter validity window is the tempting answer because ageing is the other way indicators turn into false-positive generators, but this one was harmful the moment it shipped and would have caused the same self-inflicted outage well inside any expiry.',
+        'An indicator travels with the context that tells a defender what a hit would mean: whose it is, where in the intrusion it sits, and how sure the producer is. That same address, shipped at low confidence as actor infrastructure sharing a host with third parties, gets hunted; shipped as a bare value it reads as a blocking instruction, which is how the members used it. A shorter expiry is the tempting fix because ageing is the other way an indicator set turns into a false-positive generator, but this entry did its damage the hour it shipped, well inside any validity window.',
     },
     {
       id: 'pl-s5q7',
@@ -139,7 +140,7 @@ export const S5_PLACEMENT: PlacementBlock = {
       ],
       answer: 0,
       explain:
-        'The request is a content scan over files sitting on disk, which is what YARA examines, and because the loader is rebuilt for each operation a rule keyed on build artefacts also catches the builds nobody has collected. The hash set is the tempting answer because it is exact and trivial to run, but it can only find the three samples already in hand — here that exactness is the limitation, not the strength.',
+        'The request is a content scan over files sitting on disk, which is what YARA examines, and because the loader is rebuilt for each operation a rule keyed on artefacts that survive a rebuild — the section layout, the constant stubs — also catches the builds nobody has collected, which a rule keyed on a hash cannot. The hash set is the tempting answer because it is exact and trivial to run, but it can only find the three samples already in hand — here that exactness is the limitation, not the strength.',
     },
     {
       id: 'pl-s5q8',
@@ -160,11 +161,11 @@ export const S5_PLACEMENT: PlacementBlock = {
       id: 'pl-s5q9',
       domain: 'Dissemination',
       prompt:
-        'A vendor is deciding whether to publish an intrusion-set report that names a specific foreign military unit and puts the infrastructure ranges, operator personas, working-hour patterns and victimology in the body of the document rather than in a private annex. The intrusion it describes reached several victims through the firms that manage their infrastructure, and at one victim it destroyed data on the way out. Counsel asks which case in the public record is the closest precedent for the publication decision itself.',
+        'A private security firm is ready to name a foreign military unit as the operator of an intrusion set it has tracked for years, and counsel puts two questions to the board at once: whether a company rather than a government can make that call in public at all, and whether to publish the material the judgement rests on or state the conclusion and keep the basis in a closed annex. Part of the investigation was worked alongside a national law-enforcement agency, some of what convinced the analysts came from a partner that forbids republication, and a government contact has said its own conclusion may not be publishable for years. Which case in the public record is the closest precedent for the decision in front of the board?',
       choices: ['MOONLIGHT MAZE', 'Sony Pictures / Lazarus', 'APT1', 'APT10 / Cloud Hopper'],
       answer: 2,
       explain:
-        'APT1 is the case that set the standard the vendor is weighing: a private company attributing state espionage to a named military unit by publishing the evidence — infrastructure, operator detail, working patterns and victimology — instead of asserting the conclusion. Cloud Hopper is the tempting pick because this intrusion also reached victims through their providers, but that case is remembered for the supplier vector and the joint public-private investigation that followed, not for the publication standard.',
+        'APT1 is the precedent for this decision: a private company attributed state espionage to a named military unit and published the evidence the attribution rested on, rather than asserting the conclusion and keeping its basis private. Sony is the tempting pick once counsel weighs the material that cannot be republished, but there the attribution came from a government and rested on sources the public never saw; Cloud Hopper came out of a joint public-private investigation followed by an indictment, and MOONLIGHT MAZE was a multi-agency investigation whose attribution arrived years later.',
     },
     {
       id: 'pl-s5q10',
@@ -187,14 +188,14 @@ export const S5_PLACEMENT: PlacementBlock = {
       prompt:
         'A CISO must justify keeping a five-person intelligence team through a budget freeze, and can put one line of evidence in front of the finance committee. Which of the following, if true of the team, is the STRONGEST evidence that the programme has matured?',
       choices: [
-        'It maintains five commercial feed subscriptions and a platform that stores them',
+        'Its analysts sit on the change-advisory board and review every supplier onboarding',
         'Its analysts hold seats in three sector sharing groups and speak at their meetings',
         'It has published a campaign report every month for two years without missing one',
         "Two of last quarter's spending decisions record its assessments as their basis",
       ],
       answer: 3,
       explain:
-        'Maturity is integration: a programme has matured when the organisation decides differently because of it, and a spending decision that records an assessment as its basis is that integration on the record. Unbroken monthly output is the tempting answer because it demonstrates a repeatable process, but regular production that no decision depends on is what a developing programme produces, not what a mature one delivers.',
+        'Maturity is integration: a programme has matured when the organisation decides differently because of it, and a spending decision that records an assessment as its basis is that integration on the record, in the form a finance committee can check. The change-advisory seat is the harder call, because sitting where decisions are made looks like the same thing, but presence with no outcome traceable to an assessment is participation — and unbroken monthly output is the same failure in another guise, since production no decision depends on is what a developing programme delivers.',
     },
     {
       id: 'pl-s5q12',

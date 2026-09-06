@@ -10,12 +10,16 @@ import type { PlacementBlock } from '../lib/types';
 // (2), s4m5 attribution levels and campaign vs intrusion set (3).
 //
 // Every prompt below is original to this block: none reuses a lesson prompt,
-// checkpoint, table row, callout or worked example from s4.ts, and no stem
-// borrows the VELVET CICADA / Meridian Dynamics campaign material the lesson
-// narrates. The keyed index is spread across 0-3 (three each) and the four
-// options of every item stay in one category, so neither position nor length
-// leaks the answer. See docs/superpowers/plans/2026-09-05-placement-test.md
-// for the authoring rules this block implements.
+// checkpoint, table row, callout or worked example from s4.ts, none rebuilds a
+// lesson item's answer text into a scenario, and no stem borrows the VELVET
+// CICADA / Meridian Dynamics campaign material the lesson narrates. The s4m2
+// pair covers false dilemma (q3) and ad hominem vs source evaluation (q4);
+// circular reasoning is left to the lesson bank, which already drills it in
+// s4m2q2, its checkpoint and the feed-echo callout. The keyed index is spread
+// across 0-3 (three each) and the four options of every item stay in one
+// category, so neither position nor length leaks the answer. See
+// docs/superpowers/plans/2026-09-05-placement-test.md for the authoring rules
+// this block implements.
 // ---------------------------------------------------------------------------
 export const S4_PLACEMENT: PlacementBlock = {
   id: 'pl-s4',
@@ -48,16 +52,16 @@ export const S4_PLACEMENT: PlacementBlock = {
       id: 'pl-s4q3',
       domain: 'Analysis',
       prompt:
-        "A detection engineer derives a rule from the registry keys and service names observed in the four incidents a team has labelled Cluster-K. The rule is deployed, and from then on the SOC labels an incident Cluster-K when the rule fires on it. The quarterly report cites the rule's perfect hit rate against Cluster-K incidents as evidence that it characterises the cluster precisely. Which reasoning failure MOST directly undermines that claim?",
+        'A team assesses that an intrusion at Dunmore Rail in February and one at Larkfield Pharma in September were run by the same actor, since both deployed the same bespoke backdoor and the same unusual command-and-control URI convention. A sample of that backdoor had been publicly catalogued by a sandbox service before either intrusion. The assessment puts the finding as a choice between one actor and an improbable coincidence, rejects coincidence, and adds, from these two cases, the general rule that the actor deploys the backdoor within a day of entry. Which reasoning failure MOST directly undermines the same-actor conclusion?',
       choices: [
-        'Circular reasoning',
+        'False dilemma',
         'Hasty generalization',
+        'Circular reasoning',
         'Post hoc ergo propter hoc',
-        'Appeal to authority',
       ],
       answer: 0,
       explain:
-        'The hit rate is guaranteed by construction: cluster membership is now decided by the rule that was derived from the cluster, so the conclusion is already inside the premise. Hasty generalization is the closest competitor, since four incidents is a thin basis for any general claim — but a hundred incidents labelled this way would still produce a perfect hit rate, which is what makes the reasoning circular rather than merely under-sampled.',
+        'One actor and coincidence are not the only readings available: a backdoor sitting in a public sandbox corpus can be picked up by anyone, so a second actor copying a catalogued tool and its URI convention is a third possibility the assessment never puts on the table. Hasty generalization is the tempting pick, and the one-day rule drawn from two cases is genuinely that — but it is a separate claim, and twenty intrusions framed as one actor or coincidence would leave the linkage argument just as broken.',
     },
     {
       id: 'pl-s4q4',
@@ -153,7 +157,7 @@ export const S4_PLACEMENT: PlacementBlock = {
       id: 'pl-s4q10',
       domain: 'Analysis',
       prompt:
-        "Two operations two years apart share a bespoke downloader and a domain-registration pattern seen nowhere else. The address used to register three of those domains also opened a criminal-forum account in 2019 under a handle whose posts describe an uncommon technique used in both operations, and that handle has posted from the same self-managed hosting account used to stage the second operation. Both victim sets sit in a sector named as a national priority in one government's published industrial strategy. Which is the STRONGEST claim this evidence supports?",
+        "Two intrusions eleven months apart, at Kestrel Foundry and at Alverton Ceramics, were staged from the same two rented servers and used the same private downloader build, seen in no other activity. During the second, responders captured a hands-on session in which a pasted command block still carried, above the commands, the tail of a planning note listing the internal host names of the first intrusion. Both victims hold bid and pricing files for the same programme, and both sit in a sector named as a national priority in one government's published industrial strategy. How far up the attribution ladder does this evidence reach?",
       choices: [
         'A single operator or small operator team ran both of these operations',
         'Both operations were run from a common set of hosts and tooling',
@@ -162,7 +166,7 @@ export const S4_PLACEMENT: PlacementBlock = {
       ],
       answer: 0,
       explain:
-        'Alias reuse that ties a forum account to the hosting account used to stage the operation is a human opsec failure, and that is the kind of evidence that carries an assessment up from "the same machines and tools" to "the same people". The tooling and registration overlap is also true but is the weaker of the two statements, and a sector matching a published priority is consistent with state tasking without showing it — direction and funding leave no trace in defender telemetry.',
+        'A planning note from the first intrusion sitting in the workspace of whoever was typing during the second is a human slip, and human slips are what carry an assessment up from "the same machines and tools" to "the same people", which is the rung the question asks for. The shared servers and shared private build are evidenced just as well but sit one rung lower, since tooling and infrastructure can be sold, stolen or handed on; and a sector matching a published national priority is consistent with state tasking, or with a competitor paying for the material, without showing either — direction, tasking and funding leave no trace in defender telemetry.',
     },
     {
       id: 'pl-s4q11',

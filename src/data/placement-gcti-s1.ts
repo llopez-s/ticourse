@@ -39,16 +39,16 @@ export const S1_PLACEMENT: PlacementBlock = {
       id: 'pl-s1q2',
       domain: 'Requirements',
       prompt:
-        "Thornbury Retail pays for a subscription sold to it as threat intelligence. Every morning it delivers a list of newly seen malicious domains, each with a first-seen timestamp, the malware family it has been observed serving, and a confidence score. The CISO asks whether the subscription settles his continuing worry about the chain's store payment terminals being targeted. The analyst says it does not, on its own. Which statement BEST explains why?",
+        "Thornbury Retail buys a subscription that arrives every morning as a list of newly seen malicious domains, each carrying a first-seen timestamp, the malware family observed serving it and a confidence score. The CISO's standing worry is whether the chain's store payment terminals are being targeted, and he asks the CTI team to build him something out of the subscription that speaks to it. Which output would be intelligence rather than more information?",
       choices: [
-        "The feed is information: nothing in it has been analysed against the retailer's own requirement",
-        'The feed is raw data: a timestamp and a family label are not correlated facts',
-        'The feed is intelligence, but payment-sector coverage sits in a higher tier',
-        'The feed cannot be intelligence because a commercial vendor produced it, not the team',
+        'A nightly count of how many of the listed domains resolved inside the store network',
+        'An answer to whether those families could reach the terminals as segmented today',
+        'A view of the list filtered to families known to target payment software',
+        'A weekly firewall push blocking every listed domain across the store estate',
       ],
-      answer: 0,
+      answer: 1,
       explain:
-        "Each entry is already correlated — a domain tied to a family and a date — which is what makes it information rather than raw data; what is missing is analysis against this retailer's own question and a judgment the CISO can act on. Calling it raw data is the tempting error, but raw data would be the uncorrelated observations those entries were built from, and who collected it is irrelevant: analysis against a requirement is what makes intelligence.",
+        "Intelligence is the analysed product that ends in a judgment the consumer can act on, and whether anything on that list could actually reach a terminal is what he is uncertain about. Filtering the list to payment-targeting families is the tempting answer because it is finally aimed at his requirement, but selecting rows is not analysing them — the output is still a list of domains, just as the count of which ones resolved on the store network is still a correlated fact, which is what makes both of them information.",
     },
     {
       id: 'pl-s1q3',
@@ -68,7 +68,7 @@ export const S1_PLACEMENT: PlacementBlock = {
       choices: [
         'It ranks the severity of the new appliance flaw against the findings already open',
         'It shows which of the two exposures comparable firms are currently being entered through',
-        'It estimates what the business would lose if the shipment files were taken',
+        'It compares how prominently each exposure has been covered in the security press this month',
         'It checks whether the reused staff credentials breach the company password policy',
       ],
       answer: 1,
@@ -79,11 +79,11 @@ export const S1_PLACEMENT: PlacementBlock = {
       id: 'pl-s1q5',
       domain: 'Requirements',
       prompt:
-        "Kestrel Mutual's hunt team is planning its next two months of work. It already ingests a daily list of malicious indicators straight into the SIEM, and it has the annual sector risk briefing the board commissioned last quarter. What it still cannot answer is which groups have been getting into insurers lately, the entry paths they favour, and what they do in the first hours inside. Which level of intelligence would fill that gap?",
-      choices: ['Tactical', 'Operational', 'Strategic', 'Technical'],
-      answer: 1,
+        'A detection engineer at Wrenfield Utilities turns a vendor indicator list into SIEM blocks the same morning it arrives. Over three months the blocks she has written against one intrusion set keep going dead within a fortnight, because the group registers fresh domains and moves hosting faster than she can publish. She now wants rules that fire on what the group does once it is inside, whatever infrastructure it is renting that week. Which level of intelligence would she need?',
+      choices: ['Technical', 'Strategic', 'Operational', 'Tactical'],
+      answer: 2,
       explain:
-        'Group behaviour, entry paths and campaign patterns over a horizon of weeks to months are operational intelligence, produced for hunters and incident responders. Tactical is the tempting answer because hunters eventually turn it into detections, but tactical output is the indicator and rule material the team already receives daily, and it cannot describe how a group operates.',
+        "The level is fixed by the question being answered and its horizon, not by the consumer's team: how a group behaves once inside, tracked across months, is operational intelligence, and it is the only material behaviour-based rules can be written from. Tactical is the tempting answer because she is a detection engineer shipping SIEM content, but tactical product is the indicator list she already receives every morning — the thing whose shelf life is the problem.",
     },
     {
       id: 'pl-s1q6',
@@ -124,7 +124,7 @@ export const S1_PLACEMENT: PlacementBlock = {
       id: 'pl-s1q9',
       domain: 'Requirements',
       prompt:
-        "At the start of the quarter a CTI team agreed a written requirement with a fraud director: which account-takeover methods are being used against mid-sized lenders. Collection ran as planned, and the judgments in the finished assessment were confirmed a month later by an industry report. The assessment reached the director eleven days after he had already committed next year's budget to a set of controls. Which phase of the lifecycle failed?",
+        "At the start of the quarter a CTI team agreed a written requirement with a fraud director — which account-takeover methods are being used against mid-sized lenders — for delivery two weeks ahead of the meeting where he would set next year's control budget. Collection ran as planned, and the judgments in the finished assessment were confirmed a month later by an industry report. The finished assessment then sat unsent in the team's publication queue, and reached the director eleven days after he had already committed the budget. Which phase of the lifecycle failed?",
       choices: ['Planning & Direction', 'Collection', 'Analysis & Production', 'Dissemination'],
       answer: 3,
       explain:
@@ -136,12 +136,12 @@ export const S1_PLACEMENT: PlacementBlock = {
       prompt:
         'For six months a CTI team has sent a nine-page monthly ransomware report to the head of manufacturing operations, and nobody has ever replied to one. Asking around, the analyst learns he stopped opening them after the second month: he had settled his shutdown criteria by then, and what occupies him now is whether suppliers can still be reached during an outage. Which action would MOST directly repair the cycle?',
       choices: [
+        'Meet him to establish what the reports missed and re-scope the requirement',
         'Cut the report to a one-page summary and keep sending it every month',
         'Extend collection to the supplier networks and keep the monthly report going',
-        'Meet him to establish what the reports missed and re-scope the requirement',
-        'Redirect the report to the CISO, who reads it, and drop the operations copy',
+        'Add a read receipt to each report and track his open rate every month',
       ],
-      answer: 2,
+      answer: 0,
       explain:
         'Feedback is the phase that asks the consumer whether the product met the need and rewrites the requirement when it did not, which is exactly what a consumer who quietly stopped reading is signalling. Extending collection is tempting because his new worry is a real one, but collecting against a question nobody has agreed repeats the mistake that produced six unread reports.',
     },
@@ -158,22 +158,22 @@ export const S1_PLACEMENT: PlacementBlock = {
       ],
       answer: 3,
       explain:
-        "A PIR is a single specific question whose answer changes a named decision maker's pending decision, and only the last one tells her what the move would expose her to and how the entry would be attempted. The disclosure count is the tempting distractor because it is specific and about the very platform under consideration, but a historical tally of advisories supports neither of the two options in front of her.",
+        "A PIR is a single specific question whose answer changes a named decision maker's pending decision, and only the last one tells her what the move would expose her to and how the entry would be attempted. The unsupported-software question is the genuine competitor, since it is specific and does bear on keeping the work in house, but it asks which of her own systems are weak — a vulnerability-management question her platform team answers without any intelligence at all.",
     },
     {
       id: 'pl-s1q12',
       domain: 'Requirements',
       prompt:
-        'A CTI team carries a PIR on which crews are reaching regional banks through their outsourced IT providers. Its funded collection is two commodity malware feeds and an open-source vulnerability tracker; a year of reporting from them has never once touched provider-borne access, and the feeds map to no requirement on the current list. Which step MOST directly serves the PIR?',
+        "Cranmore Regional's CTI team has carried one PIR since January, agreed with the chief operating officer ahead of an outsourcing renewal four months from now: which crews are reaching community banks through their outsourced IT providers. The team funds two commodity malware feeds and an open-source vulnerability tracker, and a year of reporting off them has produced a great deal on commodity loaders and nothing on how anyone reached a bank through a provider. Which step MOST directly serves the PIR?",
       choices: [
-        'Task or buy sources that can see provider access, and map them to the PIR',
-        'Retire both feeds, since no requirement on the list is being served by them',
-        'Lower the PIR priority until the sources the team already funds can support it',
-        'Answer the PIR from what the feeds hold and label the judgment low confidence',
+        'Buy or task sources that can see provider-borne access into banks',
+        'Answer the PIR from what the funded sources hold, at low confidence',
+        'Re-scope the PIR to the malware families the funded feeds do report on',
+        'Lower the PIR below the requirements the current sources already support',
       ],
       answer: 0,
       explain:
-        'Requirements drive collection: a requirement with no source behind it is a collection gap, and the only step that moves it toward an answer is obtaining or tasking sources that can see the activity. Retiring the unused feeds is tempting and is genuinely correct housekeeping — a source serving no requirement is waste — but it frees budget without bringing the PIR any closer to an answer.',
+        "Requirements drive collection, not the other way round: a PIR the funded sources cannot see is a collection gap, and the only step that brings an answer closer before the renewal is obtaining or tasking sources that can observe the activity. Re-scoping onto what the feeds already report is the tempting move because it produces reporting immediately, but it quietly swaps the decision maker's question for one nobody needed answered.",
     },
   ],
 };

@@ -7,12 +7,14 @@ import type { PlacementBlock } from '../lib/types';
 // requirement to the source that actually answers it, and judging a source by
 // coverage/timeliness/accuracy/completeness; s3m2 malware as a collection
 // source (2) — static extraction when detonation yields nothing, and the OPSEC
-// price of publishing a targeted sample; s3m3 infrastructure (3) — tenancy as
-// the test of a pivot, temporal scoping of passive DNS, and the registration
-// stage of the malicious domain lifecycle; s3m4 OSINT, TLP and communities (2)
+// price of publishing a targeted sample; s3m3 infrastructure (3) — tenancy
+// density as the test of a pivot, temporal scoping of passive DNS, and reading
+// which stage of its life a look-alike domain has reached before spending
+// detection effort on it; s3m4 OSINT, TLP and communities (2)
 // — choosing a marking for material you produce, and vendor visibility bias;
-// s3m5 IOCs, STIX/TAXII and YARA (3) — what a YARA rule can and cannot see,
-// what STIX carries versus what TAXII moves, and indicator durability.
+// s3m5 IOCs, STIX/TAXII and YARA (3) — which artifact is both file-resident
+// and rare enough to key a rule on, what STIX carries versus what TAXII moves,
+// and indicator durability.
 //
 // Every prompt is original. Each item was checked by hand against the lesson
 // bodies of s3.ts, not just its question bank: the CMF extract for Meridian
@@ -24,6 +26,9 @@ import type { PlacementBlock } from '../lib/types';
 // where the lesson trains "IP pivots are noisy" (the address has three
 // tenants, and the alternatives are the mass-shared ones); q1 keys the mail
 // gateway, which the CMF table never lists, against the proxy row it does.
+// q5 and q6 both start from an IP but test different judgments: q5 turns on
+// tenancy density alone, with no temporal qualifier anywhere in it, while q6
+// turns on scoping the observations to the window under investigation.
 //
 // Design rule this block is built on: every stem supplies triggering facts for
 // two or more of its options, so the candidate must decide which one applies
@@ -105,16 +110,16 @@ export const S3_PLACEMENT: PlacementBlock = {
       id: 'pl-s3q5',
       domain: 'Collection',
       prompt:
-        "A credential-harvesting domain used against a university has been taken out of service, and investigators want the actor's remaining staging domains before the next wave. The domain resolved to an address in a hosting provider's range on which passive DNS recorded only two other domains during the same period; its registrant is a privacy proxy service; its certificate came from an automated free CA; and it used the registrar's default nameservers. Which pivot is MOST likely to surface further infrastructure the actor controls?",
+        "A credential-harvesting domain used against a university has been taken out of service, and investigators want the actor's remaining staging domains before the next wave. The domain resolved to an address in a hosting provider's range on which passive DNS has recorded only two other domains in the whole of its history; its registrant is a privacy proxy service; its certificate came from an automated free CA; and it used the registrar's default nameservers. Which pivot is MOST likely to surface further infrastructure the actor controls?",
       choices: [
         'Other domains registered behind the same privacy proxy service',
-        'The two other domains resolving to that address in that period',
+        'The two other domains recorded on that same address',
         'Other certificates issued by that automated certificate authority',
         "Other domains that use the same registrar's default nameservers",
       ],
       answer: 1,
       explain:
-        "Whether a shared resource discriminates depends on how many tenants it has, and an address carrying three domains in the relevant window is effectively dedicated, so co-residency there is a real link. The privacy proxy, the free CA and the default nameservers each cover millions of unrelated domains, so a pivot on any of them returns a crowd rather than the actor's estate.",
+        "Whether a shared resource discriminates depends on how many tenants it has, and an address with three domains in its entire history is effectively dedicated, so co-residency there is a real link. The privacy proxy, the free CA and the default nameservers each cover millions of unrelated domains, so a pivot on any of them returns a crowd rather than the actor's estate.",
     },
     {
       id: 'pl-s3q6',
@@ -135,16 +140,16 @@ export const S3_PLACEMENT: PlacementBlock = {
       id: 'pl-s3q7',
       domain: 'Collection',
       prompt:
-        "A grocery chain's team finds eleven domains combining its brand with delivery-related words. All eleven were created inside a four-minute window at one registrar six weeks ago, point at the same parking nameservers, and have never resolved to a live host. Yesterday one of them delivered phishing to a competitor's staff. What is the MOST useful action for the remaining ten?",
+        "A bank's brand-monitoring service returns four look-alike domains, and the cell has capacity to put one of them into blocking and hunting today. The first has sat on the registrar's parking nameservers since it was registered eleven months ago and has never resolved anywhere. The second was registered six days ago, has a mail record configured and a certificate issued for it in a Certificate Transparency log last night, and serves no content. The third was registered three days ago and resolves to a bulk-hosting address shared with thousands of unrelated sites, where it shows a generic advertising page. The fourth carried a phishing wave against the bank ten months ago and has not resolved since it was taken down. Which one should get today's capacity?",
       choices: [
-        'Add all ten to blocking and detection now, ahead of any observed use',
-        'Wait until each one resolves to a live host before adding it',
-        "Act only on the domain used in yesterday's phishing, the one with observed activity",
-        'Refer the batch to the registrar for abuse handling and take no detection action',
+        'The one with a mail record and a fresh certificate',
+        'The one parked at the registrar for eleven months',
+        'The one on bulk hosting showing an advertising page',
+        'The one that carried a phishing wave ten months ago',
       ],
       answer: 0,
       explain:
-        "Creation inside one window at one registrar followed by parking is the aging stage of a malicious domain's life, and the confirmed use of one member makes the batch one operation's inventory, which is exactly why registration patterns are worth watching. Waiting for each domain to resolve concedes the head start the actor bought by parking them, and an abuse referral protects nobody while it is pending.",
+        'A mail record and a certificate issued for a name that still serves nothing are the marks of infrastructure being finished rather than aged, which places that domain at the activation stage, where a block still lands ahead of the first message. The name that carried the wave ten months ago is the tempting pick, being the only one with proven malicious use, but a burned domain has already been abandoned or resold and blocking it now protects nobody; the aged parked name may yet be activated, and nothing about it says that is happening this week.',
     },
     {
       id: 'pl-s3q8',
@@ -175,16 +180,16 @@ export const S3_PLACEMENT: PlacementBlock = {
       id: 'pl-s3q10',
       domain: 'Collection',
       prompt:
-        "After an intrusion at a brewery the team holds four artifacts of the implant: the interval and jitter of its beacon, the certificate its C2 server presented, the name of the scheduled task it creates, which it assembles at run time from the host name, and a decoding stub whose bytes are identical in every build recovered so far. The team wants a YARA rule that finds further copies of the implant on the fleet's disks. Which artifact is the BEST basis for that rule?",
+        'After an intrusion at a brewery the team holds four artifacts of the implant: the interval and jitter of its beacon, a user-agent string compiled into every build, Mozilla/5.0 (Windows NT 10.0; Win64; x64), which it sends with each request, the name of the scheduled task it creates, which it assembles at run time from the host name, and a decoding stub that is unchanged in every build recovered so far. The team wants a YARA rule that will find further copies of the implant on hosts across the estate. Which artifact is the BEST basis for that rule?',
       choices: [
         'The beacon interval and jitter seen in its network traffic',
-        'The certificate presented by its command-and-control server',
+        'The user-agent string compiled into the binary',
         'The name of the scheduled task it creates on each host',
-        'The decoding stub whose bytes are identical across builds',
+        'The decoding stub common to every recovered build',
       ],
       answer: 3,
       explain:
-        'A YARA rule matches patterns in the contents of a file or of memory, so it can only use something actually present in the sample; the constant decoding stub is, and its stability across builds means it survives recompilation. Beacon timing and the certificate exist on the wire and on the C2 host rather than in the file, and the task name is assembled at run time, so no fixed byte sequence for it exists on disk to match.',
+        "A YARA rule matches only what is inside a file or in memory, which rules out beacon timing observed on the wire and a task name the implant assembles at run time. Of the two artifacts that do sit in the sample, the user-agent line is the tempting one, but that exact string ships in an enormous amount of legitimate software and the rule would fire on all of it; the decoding stub is the implant's own code, rare enough to discriminate and stable enough to survive recompilation.",
     },
     {
       id: 'pl-s3q11',
@@ -193,13 +198,13 @@ export const S3_PLACEMENT: PlacementBlock = {
         "An ISAC member publishes indicators that its partners' platforms poll and ingest without trouble, and every entry carries the same confidence value. Partners raise two problems: when an indicator fires they cannot tell what activity it belongs to, and old entries keep firing long after the infrastructure behind them has moved on. Which change to what is published MOST directly addresses both?",
       choices: [
         'Attach a relationship to the intrusion set and an expiry to each indicator',
-        'Move the content from a polled collection onto a publish-subscribe channel',
-        'Raise the confidence value carried on every indicator the feed publishes',
+        'Move the content onto a publish-subscribe channel and stamp each push with a delivery timestamp',
+        'Vary the confidence value per entry and re-publish the whole feed each week',
         'Publish the same indicators as YARA rules alongside the existing feed',
       ],
       answer: 0,
       explain:
-        "Both complaints are about what the objects carry rather than how they travel: a relationship ties an indicator to the malware or intrusion set it belongs to, and an expiry tells the consumer when to stop acting on it. Switching to a publish-subscribe channel is the tempting fix, but transport is already delivering everything on time — that is TAXII's job, while the missing context and lifetime are fields of the STIX objects themselves.",
+        "Both complaints are about what the objects carry rather than how they travel: a relationship ties an indicator to the malware or intrusion set it belongs to, and an expiry tells the consumer when to stop acting on it. A publish-subscribe channel with stamped pushes is the tempting fix, but transport is already delivering everything — that is TAXII's job — and a delivery stamp records when an entry was sent rather than when it stops being true, while the missing context and lifetime are fields of the STIX objects themselves.",
     },
     {
       id: 'pl-s3q12',
@@ -214,7 +219,7 @@ export const S3_PLACEMENT: PlacementBlock = {
       ],
       answer: 2,
       explain:
-        "One recompilation changes the file hash, and domains and addresses are registered, burned and reassigned continuously, so within a year all three will have decayed and may well point at whoever inherited them. The pipe naming belongs to the implant's own design, which the actor gives up only by reworking and retesting code — capability artifacts outlive infrastructure and file identity.",
+        'One recompilation changes the file hash, and domains and addresses are registered, burned and reassigned continuously, so within a year all three will have decayed and may well point at whoever inherited them. The pipe naming is an artifact of the implant itself rather than of rented infrastructure or of one particular build, so it survives both recompiles and infrastructure rotation; changing it still costs the actor a code change and a retest, which is more than re-registering a domain.',
     },
   ],
 };
