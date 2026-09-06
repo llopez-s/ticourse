@@ -126,6 +126,18 @@ describe('placement actions', () => {
     expect(useStore.getState().exempt).toEqual({});
   });
 
+  it('grantExemption still honours an earlier pass after a failed retake', () => {
+    reset();
+    const ids = modulesOf('sp1').map((m) => m.id);
+    useStore.getState().finishPlacement('pl-sp1', 11, 12); // 92% — passed
+    useStore.getState().finishPlacement('pl-sp1', 9, 12); // 75% — failed
+    useStore.getState().grantExemption('pl-sp1');
+    // The pass is spendable, and at the best passing score — a worse retake
+    // must not cost the learner the exemption they already earned.
+    expect(useStore.getState().exempt[ids[0]].status).toBe('exempt');
+    expect(useStore.getState().exempt[ids[0]].score).toBe(92);
+  });
+
   it('grantExemption pays no lesson XP', () => {
     reset();
     useStore.getState().finishPlacement('pl-sp1', 12, 12);

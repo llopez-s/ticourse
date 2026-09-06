@@ -390,16 +390,25 @@ export const useStore = create<Store>()(
         const s = get();
         const block = placementBlockById(blockId);
         if (!block) return;
-        const last = [...s.placement]
-          .reverse()
-          .find((p) => p.blockId === blockId);
-        if (!last?.passed) return;
+        // Any passing attempt can be cashed in, not only the most recent one.
+        // The spec lets a learner pass and then choose to study the section
+        // anyway; if they change their mind and retake the block worse, the
+        // pass they already earned must still be spendable. The best pass wins,
+        // so a later, weaker retake never drags the exemption score down.
+        const best = s.placement.reduce<PlacementResult | null>(
+          (acc, p) =>
+            p.blockId === blockId && p.passed && (!acc || p.pct > acc.pct)
+              ? p
+              : acc,
+          null,
+        );
+        if (!best) return;
         const ids = modulesOf(block.sectionId).map((m) => m.id);
         const added = exemptionsFor(
           ids,
           s.lessons,
           blockId,
-          last.pct,
+          best.pct,
           new Date().toISOString(),
         );
         if (Object.keys(added).length === 0) return;
