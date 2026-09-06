@@ -2212,3 +2212,15 @@ git commit -m "test: placement completeness, and document the feature"
 The branch `placement-test` is then ready for `superpowers:requesting-code-review` and, once reviewed, `superpowers:finishing-a-development-branch`. Note that merging to `main` triggers `.github/workflows/deploy.yml`, which runs `npm ci`, `npm test` and `npm run build` before publishing to GitHub Pages — a red test blocks the deploy, which is the intended safety net.
 
 Phase 2 (the five GCTI blocks) gets its own plan and needs no engine work: create `src/data/placement-gcti.ts` following Tasks 9-13, set `gcti.placement`, and the completeness test in Task 14 Step 1 starts covering it automatically.
+
+## Follow-ups left open when this plan closed
+
+All 14 tasks shipped and the final whole-branch review returned **no Critical findings** and a merge-ready verdict. These were consciously deferred rather than forgotten.
+
+**One regression introduced by the final fix wave.** The «Convalidar sección» card is now a button rather than a link into the runner — which is the point, it used to start a fresh test — but that state's card no longer offers any way back into the block. A learner who passed at 83%, declined to convalidate, and later wants a better score before cashing in has no in-app route to retake it. Every other state still links to the runner. Fix: add a secondary «Repetir bloque» link beside the button.
+
+**Two content items whose keys are not sourced from the material they gate.** `pl-sp3q7` turns on DHCP-reservation semantics, MAC filtering and port-inactivity shutdown, none of which Domain 3 teaches. `pl-sp5q12` was the awareness block's weakest gate before its rewrite and still carries three separate review notes. Both should be revisited alongside the Phase 2 content work, when a content author is loaded on this material anyway.
+
+**A pre-existing UI hazard worth confirming.** `components/Toasts.tsx` renders each toast card with `pointer-events-auto` inside a `fixed bottom-4 right-4 z-50` stack for 3.8 s. On a short viewport a toast can sit over a control and swallow one click. This is the best mechanical explanation for a "first click did not register" anomaly seen twice during this plan's browser verification, and it is unrelated to the placement feature — it would affect any button in that corner.
+
+**Smaller, all optional.** No test covers `mergePlacement`'s collision tie-break. An exemption's score cannot be improved by a later better retake, because the runner's result screen shows the already-convalidated message with no re-grant button. `sectionExempt` is a `.some()`, so a partially exempt section — reachable only through a divergent sync merge — displays as fully convalidated. Placement answers advance the daily question quests, which the spec's XP ceiling arithmetic does not account for. The bundle is a single 1.79 MB chunk; placement adds about 6% to a file that was already oversized, so code-splitting `src/data` is worth its own task.
