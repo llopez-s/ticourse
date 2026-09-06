@@ -18,6 +18,7 @@ import { S3_MODULES } from './s3';
 import { S4_MODULES } from './s4';
 import { S5_MODULES } from './s5';
 import { S6_MODULES } from './s6';
+import { GCTI_PLACEMENT } from './placement-gcti';
 import {
   SP_DOMAIN_WEIGHTS,
   SP_DOMAINS,
@@ -93,7 +94,7 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
       ...S5_MODULES,
       ...S6_MODULES,
     ],
-    placement: [],
+    placement: GCTI_PLACEMENT,
     flashcards: GCTI_FLASHCARDS,
     glossary: GCTI_GLOSSARY,
     labs: GCTI_LABS,

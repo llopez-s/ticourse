@@ -226,15 +226,20 @@ describe('placement blocks', () => {
     }
   });
 
-  it('secplus has exactly one block per content section, in order', () => {
-    const secs = contentSections('secplus').map((s) => s.id);
-    expect(TRACKS.secplus.placement.map((b) => b.sectionId)).toEqual(secs);
+  // A track may ship with no placement test at all — the Dashboard, Profile and
+  // /placement all check for that and degrade — but a half-covered one would
+  // silently leave a section unskippable, so partial coverage is the failure.
+  it('a track with a placement test has one block per content section, in order', () => {
+    for (const t of Object.values(TRACKS)) {
+      if (t.placement.length === 0) continue;
+      const secs = contentSections(t.id).map((s) => s.id);
+      expect(t.placement.map((b) => b.sectionId), t.id).toEqual(secs);
+    }
   });
 
-  it('a track with no placement test is allowed', () => {
+  it('both shipped tracks have one', () => {
     for (const t of Object.values(TRACKS)) {
-      const ids = t.placement.map((b) => b.sectionId);
-      expect(ids.length === 0 || ids.length === contentSections(t.id).length).toBe(true);
+      expect(t.placement.length, t.id).toBeGreaterThan(0);
     }
   });
 });
