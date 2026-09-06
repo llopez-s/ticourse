@@ -46,16 +46,16 @@ export const SP4_PLACEMENT: PlacementBlock = {
       id: 'pl-sp4q1',
       domain: 'Security Operations',
       prompt:
-        'An insurer builds every new application server from an approved image and re-applies its configuration policy across all servers each night. A quarterly review finds four servers accepting administrative logons over an unencrypted protocol. All four predate the current image, all four are inventoried with named owners, and all four have passed every nightly run since they were commissioned. The reviewer asks what would stop a fifth server turning up the same way. Which action does that?',
+        "A regional airline has run a purchased crew-rostering platform for four years. In June the vendor issued an advisory for a component it embeds, rated critical, and told the airline that same week that its own installation was affected. The corrected build reached the airline in November, because the vendor gathers security work into a release it ships every six months; it has delivered every one of those releases on schedule since installation, still sells the platform, and would not discuss how it schedules that work. The airline held the flaw behind extra access restrictions for five months. Which requirement in the original contract would MOST directly have shortened those five months?",
       choices: [
-        'Add the setting to the nightly configuration policy',
-        'Rebuild the four servers from the current image',
-        'Reconfigure the four servers and close the finding as fixed',
-        'Record an exception owned by the application team',
+        'Correction of top-severity flaws within a fixed number of days',
+        'A right to audit how the vendor builds and releases its software',
+        'Security updates guaranteed for a stated number of years',
+        'A list of the third-party components in each release',
       ],
       answer: 0,
       explain:
-        'Passing every nightly run while still accepting cleartext administrative logons means the policy being enforced says nothing about that setting, so nothing imposes it and nothing reports its absence; putting it in the policy is the only action here that reaches every host, including the next one built or drifted into the same state. Rebuilding the four from the current image is the tempting distractor because they predate it, but that corrects four hosts and leaves the enforced policy exactly as silent as before.',
+        "A fixed correction window is the only term here that bounds how long the airline can be left exposed, because it turns the vendor's release calendar into an obligation with a date attached rather than a habit the customer has to absorb. The audit right is the tempting distractor, since the refusal to explain the release schedule is the most visible failure in the story, but an audit reveals what a practice is without obliging the vendor to change it. Guaranteed years of updates was already being met, as the releases arrived on schedule throughout, and a component list would only have restated what the vendor confirmed in the first week.",
     },
     {
       id: 'pl-sp4q2',
@@ -106,16 +106,16 @@ export const SP4_PLACEMENT: PlacementBlock = {
       id: 'pl-sp4q5',
       domain: 'Security Operations',
       prompt:
-        'A conveyancing firm forwards to its monitoring platform the logons, process starts and service failures from its servers, and the permitted and denied connections and configuration changes from its network devices. Over four months a paralegal used her own account, from her own desk, during office hours, to open and export three hundred client files belonging to matters she has never been assigned — a volume nobody in her role has ever handled. Nothing in those four months reached the SOC. Which addition would MOST likely have made this visible?',
+        'Over four months a paralegal at a conveyancing firm opened and exported around three hundred client files belonging to matters she has never been assigned. She worked from her own desk under her own account during office hours, took a handful of files on any given day, and never went above what her own caseload has her handling. Nothing reached the firm SOC, and she was found only when a client queried an unfamiliar name on a call note. Which addition to the monitoring would MOST likely have raised an alert while this was going on?',
       choices: [
-        'Extend endpoint agent coverage to every workstation',
+        'A daily report of the users exporting the most client files',
         "Forward the case system's own access log to the platform",
-        'Capture packets on the network segment serving the legal floor',
-        'Collect authentication events from the identity service',
+        'Alerting when client files are copied to mail or USB devices',
+        'Endpoint agents on every workstation on the legal floor',
       ],
       answer: 1,
       explain:
-        'The application is the only layer that knows which client matters were opened and exported, because everywhere else this is a legitimate account on its own machine doing ordinary work at an ordinary hour; once that record reaches the platform, three hundred files across matters she is not assigned to becomes something a rule or a baseline can catch. Endpoint coverage is the tempting distractor because the exports happened on her workstation, but an agent watches processes and files on the host rather than the business transactions an application authorised, and authentication events would show nothing but a user signing in normally as herself.',
+        'Only the case management system knows which matter each file belongs to and which matters the paralegal is assigned, so once its access records reach the platform a rule can compare the two and fire the first time she opens a file outside her own caseload. A report of the heaviest exporters is the tempting distractor, because three hundred files sounds like a volume anomaly, but she took a few files a day and never rose above what her own caseload has her handling. Watching mail and removable devices records how data leaves rather than which records were opened, and an endpoint agent sees an ordinary application session on a machine its user is entitled to use.',
     },
     {
       id: 'pl-sp4q6',
