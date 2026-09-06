@@ -134,8 +134,25 @@ from the progress store: `{ code, status, lastSyncedAt, error }` where
 status, last-synced time, "Sincronizar ahora", and "Desconectar" (clears the code, keeps local
 progress).
 
-**Triggers.** Full sync on app mount when a code is set. After that, a debounced push 5 s after
-progress stops changing, and a `keepalive` push when the tab is hidden. Manual sync any time.
+**Triggers.** Full sync on app mount when a code is set. After that, `src/lib/syncSchedule.ts`
+coalesces store changes into **at most one sync every 3 minutes** (`MIN_SYNC_INTERVAL_MS`), with a
+5 s debounce floor, and a `keepalive` push when the tab is hidden. Manual sync any time.
+
+**Write budget — revised 2026-09-06.** This originally read "a debounced push 5 s after progress
+stops changing", which turned out to spend roughly **one KV write per answered question**: a
+learner pauses longer than 5 s to read the next question, so the debounce elapses between every
+pair of answers. Cloudflare's free tier allows 1,000 KV writes a day against 100,000 reads, so
+writes are the binding constraint by two orders of magnitude, and a few hours of study exhausted
+the day — which is what raised the quota alert on 2026-09-06. Two further leaks fed the same
+problem: the tab-hide push fired unconditionally, spending a write on every tab switch and screen
+lock, and both "has anything changed?" guards compared raw `JSON.stringify`, which is key-order
+sensitive, so two devices whose maps were built in different orders each wrote on every sync while
+pushing byte-identical data. The fixes are the 3-minute floor, a tab-hide push conditional on the
+snapshot differing from the last one pushed, and `stableStringify` for both guards.
+
+The trade is that progress can take up to 3 minutes to reach another device. That is acceptable
+here: the tab-hide push already covers the "closed the laptop, picked up the phone" handover, and
+`mergeProgress` is monotonic, so a late arrival never loses work.
 
 **Failure behaviour.** Network errors surface as a visible `error` status with the message; local
 progress is never modified by a failed pull, and a failed push is retried on the next trigger.
