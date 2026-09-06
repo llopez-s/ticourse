@@ -122,16 +122,16 @@ export const SP3_PLACEMENT: PlacementBlock = {
       id: 'pl-sp3q7',
       domain: 'Security Architecture',
       prompt:
-        "A distribution company finds that a machine nobody owns has been communicating on its office network for three weeks. It sits on a jack in a records store room that has held nothing but boxes since the finance team moved out two years ago. Its network settings were typed in by hand rather than requested, and the identity its adapter reports matches nothing in the company's asset inventory. The company already runs a RADIUS service for its wireless network, and the network team is reviewing four wired measures it had costed and never implemented. Which one would have left this machine communicating exactly as it did?",
+        "A hospital's laboratory analyser writes each night's result batches to a reporting server standing in the same rack, over a vendor protocol that carries no protection of its own and that the vendor will not alter. The two machines sit on one subnet and nothing routes between them. Pathology's stated worry is that a result could be altered on the way across, and the network team has separately been told that a capture taken on that subnet must not reveal a patient result. The hospital already runs IPSec in tunnel mode between its two campuses and would rather reuse that configuration than write a new one. Which configuration BEST meets both requirements?",
       choices: [
-        'Filtering by hardware address on each access switch',
-        'Reserving an address for each device in the DHCP table',
-        '802.1X authentication on the wired access ports',
-        'Shutting off switch ports that carry no traffic for a month',
+        'IPSec in tunnel mode with AH',
+        'IPSec in transport mode with ESP',
+        'IPSec in tunnel mode with ESP',
+        'IPSec in transport mode with AH',
       ],
       answer: 1,
       explain:
-        'A reservation only fixes which address a device is handed when it asks for one, and this machine never asked, so the reservation table would never have seen it and it would have sat on that jack exactly as it did. Hardware-address filtering is the tempting distractor because it is the weakest of the four in general, defeated by any adapter told to report a known identity, but this one reported an identity the inventory has never seen, so the switch would have dropped its frames. Extending the RADIUS service to the wired ports would have kept each port unauthorised until a device proved who it was, and a port disabled for want of traffic would have been dead in a room empty for two years.',
+        "ESP is the IPSec protocol that encrypts what it carries, and it can authenticate what it encrypts as well, so it is the only one of the two that answers both the capture requirement and pathology's worry about alteration; transport mode is the host-to-host case, protecting the payload and leaving the original header in place between two machines on the same subnet. AH is the tempting choice because it exists precisely to show that a packet arrived unaltered from the sender it claims, but it does not encrypt, so a capture on that subnet would still show the result in clear. Tunnel mode is what the campus link uses because it wraps each packet inside a new one for a gateway to carry, and between these two hosts it would add that outer header while carrying the traffic no further than transport mode already does.",
     },
     {
       id: 'pl-sp3q8',

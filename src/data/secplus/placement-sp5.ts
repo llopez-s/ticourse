@@ -31,9 +31,9 @@ import type { PlacementBlock } from '../../lib/types';
 // deliberately invert a drilled reflex so that recall without reasoning gives
 // a wrong answer: q2 keys the steward where the lesson trains "the owner
 // decides"; q8 keys automated coverage over an outside firm where the lessons
-// train "independent beats self-assessed"; q12 keys risky behaviour and a
-// proportionate consequence where the drilled reflex for anything anomalous
-// is "unexpected, investigate".
+// train "independent beats self-assessed"; q12 keys acting on the copies of a
+// confirmed phish that are already sitting in other mailboxes, where the
+// drilled reflex is "the decisive step is going back to the reporter".
 //
 // Design rule this block is built on: every stem supplies triggering facts
 // for two or more of its options, so the candidate must decide which concept
@@ -220,20 +220,22 @@ export const SP5_PLACEMENT: PlacementBlock = {
       explain:
         "Permission to test comes from the party that owns the system, never from the address block the system happens to sit in, so the moment ownership is in doubt the authorisation is too and any further probing reaches a company that has agreed to nothing. Stopping and taking it back to the client is the only step that re-establishes a lawful basis before anything else is touched. Limiting the work to checks that only read is the tempting compromise, because harmless-looking traffic feels defensible, but the tester would still be interacting with another company's system without its permission, and authorisation does not turn on whether a request reads or writes. Recording the question and carrying on defers the decision until well past the point where the harm would already be done.",
     },
+    // Gates the 5.6 reporting circuit: a confirmed report has to reach the rest
+    // of the estate, not only the person who sent it in.
     {
       id: 'pl-sp5q12',
       domain: 'Security Program Management & Oversight',
       prompt:
-        "A weekly scan of a cargo terminal's engineering network turns up a consumer mobile router plugged into a spare port in the crane workshop cabinet. The segment it sits on also carries crane control traffic, and the router gives that segment a way out to the internet around the terminal's filtering. The router carries the maintenance planner's name in marker pen; nothing records who opens that cabinet, so how long it has been there is not known. He says the workshop has never had wireless coverage, that he asked for it twice and was told the cabling would wait for next year's budget, and that he bought the router himself so his tablet could reach the maintenance system at the crane; he did not mention it to the network team, since as he saw it the router and its data plan are his own. The tablet is the terminal's own, and its connection log shows the maintenance system and nothing else. How should the terminal handle this?",
+        "At 08:10 on a Monday a dispatcher at a haulage group uses the button in her mail client to flag a message asking her to reconfirm her payroll details on a page at a domain registered the previous Friday. The security team triages it, establishes by 08:25 that it is real, and finds that the same message was delivered that morning to 215 other people; the dispatcher is thanked for reporting it at 11:40. Three of the other recipients enter their credentials on the page at around 09:30. The reporting button is on every mail client in the group, the awareness module is repeated every quarter, and the share of staff who report a simulated lure has risen for three quarters running. Which change would MOST directly have prevented those three sets of credentials from reaching the page?",
       choices: [
-        'Unintentional behaviour: change the design so the mistake cannot recur',
-        'Unexpected behaviour: investigate before attributing the activity to anyone',
-        'Malicious insider activity: open a formal case with human resources and legal',
-        'Risky behaviour: block the route and apply a proportionate consequence',
+        'Add a warning banner to messages that come from outside the group',
+        'Block the domain the message was sent from at the mail gateway',
+        'Return a verdict to the person who reported within minutes, not hours',
+        'Take the message out of the mailboxes it had already reached',
       ],
       answer: 3,
       explain:
-        'The category follows what the person decided rather than how bad the exposure turned out to be: he knew the workshop had no sanctioned coverage, had been told when it would arrive, and connected his own equipment anyway because it made the job easier, so the answer is to take that route away, restate what is expected and let the consequence match what he did. Reading it as an honest mistake is the closest wrong answer, since he did not realise the cabinet shared a segment with the cranes, but failing to foresee a consequence is not the same as making no decision, and the decision not to wait was his. Nothing here is waiting to be attributed either, because the device carries his name, its purpose is accounted for and the tablet reached one system and no other, and the one thing still unknown, how long it sat in that cabinet, changes neither who put it there nor why; an outcome this serious is still not evidence that anyone set out to harm the terminal.',
+        'Triage had established by 08:25 that the message was real, which left more than an hour in which the copies sitting unopened in 215 mailboxes were the live part of the attack, and taking them out is the one change here that acts on those copies. Returning the verdict within minutes is the tempting change, because feedback is what keeps a reporting channel alive at all and this group waited until 11:40, but it reaches the one person who had already recognised the message and leaves every other copy where it is. Blocking the sending domain stops the next message from arriving rather than the 215 that already have, and a banner marking outside mail would have sat on this message exactly as it sits on the ordinary outside mail those three read all day.',
     },
   ],
 };

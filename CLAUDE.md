@@ -10,7 +10,7 @@ content/feature doc.
 sharing one engine:
 
 - **`gcti`** — GIAC GCTI (SANS FOR578 Cyber Threat Intelligence). Complete: 27 lessons, 174
-  questions, 12 labs, 80 flashcards. Campaign "Operación VELVET CICADA".
+  questions, 12 labs, 80 flashcards, 60 placement questions. Campaign "Operación VELVET CICADA".
 - **`secplus`** — CompTIA Security+ SY0-701. Skeleton for all 5 domains (`sp1`–`sp5`) + exam
   prep (`sp6`). **COMPLETE — all five domains** (2026-09-05): 41 content lessons + 1 exam-prep,
   305 questions, 132 checkpoints, 15 labs, 152 flashcards, 233 glossary terms.
@@ -116,8 +116,10 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   *convalidate* that section's theory: `store.exempt` maps moduleId → `ExemptEntry`, read
   everywhere through `isDone`/`exemptScore` in `lib/placement.ts`. Labs and bosses are never
   exempted. Exemption is revocable, which is why `mergeProgress` is **no longer monotonic for
-  `exempt`** — that field is last-write-wins by `at`. Persist version **3**. GCTI's `placement`
-  is still `[]` and the UI degrades cleanly.
+  `exempt`** — that field is last-write-wins by `at`. Persist version **3**. Both tracks now
+  ship one: `SP_PLACEMENT` (`secplus/placement.ts`) and `GCTI_PLACEMENT` (`placement-gcti.ts`,
+  spreading `placement-gcti-sN.ts`). A track with an empty `placement` still degrades cleanly —
+  the Dashboard, Profile and `/placement` all check for it.
 - **SM-2 spaced repetition** (`lib/srs.ts`) drives flashcards (10 new cards/day).
 - State shape and persistence live in `lib/store.ts` (Zustand + `persist`, key `intelforge-v1`).
   Changing the store shape can invalidate a user's saved progress — migrate carefully.
@@ -162,8 +164,8 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
 - **Tests:** vitest, `npm test` (131 tests in `src/**/*.test.ts`, 9 files). Content tests assert
   Domain 1–5 completeness, that every Security+ boss section has ≥12 questions, 4 choices + valid
   answer per question, ids unique, lab data present, and (placement blocks) that every content
-  section has exactly one 12-question block with contiguous ids and non-empty text — a track with
-  no placement test (GCTI, for now) is explicitly allowed.
+  section has exactly one 12-question block with contiguous ids and non-empty text. Partial
+  placement coverage fails for **every** track; shipping none at all is still allowed.
 - **Bash gotcha in this harness:** commands containing backticks fail to parse before running —
   write patch scripts to a file (or use Edit/Write) instead of inline heredocs with backticks.
 - `.claude/settings.local.json` has **stale hardcoded Bash paths** from a previous location
