@@ -9,3 +9,5 @@ worker/.wrangler
 # Never commit local secrets — this repo is public
 .env
 .env.*
+# Cross-device sync code: whoever holds it can read and overwrite the progress bucket
+ticourse-sync-code.txt
