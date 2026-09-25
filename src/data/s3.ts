@@ -307,7 +307,7 @@ PIR-3 (proveedores)  | -- SIN FUENTE --     |    --      |    --     |  --      
         t: 'callout',
         kind: 'example',
         title: 'Pivote desde la muestra',
-        md: 'Del loader de VELVET CICADA extraes: C2 `update-svc-cdn.com` (→ pivote de infraestructura), PDB `...\\ldr\\bin\\ldr.pdb` (→ link fuerte entre variantes) y un mutex único (→ regla de detección host). Una muestra alimenta tres vértices del diamante.',
+        md: 'Del loader de VELVET CICADA extraes: C2 `update-svc-cdn.com` (→ pivote de infraestructura), PDB `...\\loader\\Release\\ldr.pdb` (→ link fuerte entre variantes) y un mutex único (→ regla de detección host). Una muestra alimenta tres vértices del diamante.',
       },
       {
         t: 'callout',
@@ -338,14 +338,14 @@ Named pipe   : \\\\.\\pipe\\vc_pipe_4f8a1c9e     (formato propio del actor)
 Persistencia : schtasks /create /tn WindowsUpdateCheck
 Hosts contactados:
   update-svc-cdn.com:443        → C2 (beacon HTTPS, jitter 60s)
-  cdn-sync-status.example:443   → segundo C2 (fallback)
+  ocsp-verify-node.example:443  → segundo C2 (fallback)
   time.windows.com:123          → NTP legítimo del SO
   ctldl.windowsupdate.com:80    → CRL/CTL legítimo de Windows
   www.msftconnecttest.com:80    → prueba de conectividad de Windows`,
       },
       {
         t: 'p',
-        md: 'El triaje empieza separando **infraestructura del actor** de **ruido del sistema**. De los cinco hosts, solo dos son del actor (`update-svc-cdn.com`, `cdn-sync-status.example`); los otros tres son telemetría normal de Windows que cualquier proceso genera. Bloquear los cinco a ciegas rompería la resolución de hora y las comprobaciones de conectividad de toda la flota — un autogol clásico. Después vienen los pivotes: el **imphash** te lleva a la familia por toolchain (mismo compilador/estructura, aunque el SHA-256 difiera); el **ssdeep** al 94% confirma que es una variante recompilada; el **PDB path** es el link fuerte hacia el entorno del desarrollador; y cada C2 alimenta el vértice Infrastructure del diamante. Nota también el certificado: estar *firmado* no lo hace benigno — un firmante desconocido con nombre plausible es una bandera, no un salvoconducto.',
+        md: 'El triaje empieza separando **infraestructura del actor** de **ruido del sistema**. De los cinco hosts, solo dos son del actor (`update-svc-cdn.com`, `ocsp-verify-node.example`); los otros tres son telemetría normal de Windows que cualquier proceso genera. Bloquear los cinco a ciegas rompería la resolución de hora y las comprobaciones de conectividad de toda la flota — un autogol clásico. Después vienen los pivotes: el **imphash** te lleva a la familia por toolchain (mismo compilador/estructura, aunque el SHA-256 difiera); el **ssdeep** al 94% confirma que es una variante recompilada; el **PDB path** es el link fuerte hacia el entorno del desarrollador; y cada C2 alimenta el vértice Infrastructure del diamante. Nota también el certificado: estar *firmado* no lo hace benigno — un firmante desconocido con nombre plausible es una bandera, no un salvoconducto.',
       },
       {
         t: 'check',
@@ -353,7 +353,7 @@ Hosts contactados:
           q: 'Of the five contacted hosts, which should be actioned as C2 — and what is the risk of blocking all five?',
           choices: [
             'All five; there is no risk in blocking more',
-            'Only update-svc-cdn.com and cdn-sync-status.example; blocking the three Windows hosts breaks time sync and connectivity checks fleet-wide',
+            'Only update-svc-cdn.com and ocsp-verify-node.example; blocking the three Windows hosts breaks time sync and connectivity checks fleet-wide',
             'Only time.windows.com, because NTP is abused',
             'None; sandbox output is never actionable',
           ],
