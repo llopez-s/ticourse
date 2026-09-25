@@ -14,6 +14,7 @@ import CardsPage from './pages/CardsPage';
 import GlossaryPage from './pages/GlossaryPage';
 import AchievementsPage from './pages/AchievementsPage';
 import ProfilePage from './pages/ProfilePage';
+import SearchPage from './pages/SearchPage';
 import { useSync } from './lib/useSync';
 
 function ScrollToTop() {
@@ -42,6 +43,7 @@ export default function App() {
           <Route path="/placement/:blockId" element={<PlacementPage />} />
           <Route path="/cards" element={<CardsPage />} />
           <Route path="/glossary" element={<GlossaryPage />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="/achievements" element={<AchievementsPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="*" element={<Dashboard />} />

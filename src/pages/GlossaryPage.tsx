@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { contentSections, sectionById } from '../data/course';
 import { PageTitle } from '../components/Bits';
 import { useTrack } from '../components/Layout';
 
 export default function GlossaryPage() {
-  const [query, setQuery] = useState('');
+  const [params, setParams] = useSearchParams();
+  const query = params.get('q') ?? '';
   const [filter, setFilter] = useState<string | null>(null);
   const track = useTrack();
 
@@ -34,8 +36,9 @@ export default function GlossaryPage() {
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <input
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => setParams(e.target.value ? { q: e.target.value } : {}, { replace: true })}
             placeholder="Buscar término…"
+            aria-label="Buscar término en el glosario"
             className="w-56 rounded-lg border border-ink-600 bg-ink-900 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 outline-none focus:border-cyan-400"
           />
           <button

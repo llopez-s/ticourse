@@ -87,6 +87,12 @@ body {
   transition: width 0.5s ease-out;
 }
 
+.search-target {
+  border-radius: 6px;
+  outline: 2px solid rgba(34, 211, 238, 0.75);
+  outline-offset: 6px;
+}
+
 @media print {
   body {
     background: #fff !important;

@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import type { Module } from '../lib/types';
 import {
   moduleById,
@@ -14,6 +14,9 @@ import { Panel } from '../components/Bits';
 import { useSyncTrack } from '../components/Layout';
 
 function LessonView({ mod }: { mod: Module }) {
+  const [params] = useSearchParams();
+  const blockParam = params.get('block');
+  const focusedBlock = blockParam !== null && /^\d+$/.test(blockParam) ? Number(blockParam) : null;
   const lessons = useStore((s) => s.lessons);
   const exempt = useStore((s) => s.exempt);
   const completeLesson = useStore((s) => s.completeLesson);
@@ -73,6 +76,7 @@ function LessonView({ mod }: { mod: Module }) {
 
       <BlockRenderer
         blocks={mod.blocks}
+        focusedBlock={focusedBlock}
         rewardEnabled={!completed}
         onCheckAnswered={() => setAnswered((a) => a + 1)}
       />
