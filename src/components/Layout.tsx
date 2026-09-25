@@ -160,6 +160,13 @@ function TopBar() {
         </div>
 
         <div className="ml-auto flex items-center gap-2">
+          <NavLink
+            to="/search"
+            className={({ isActive }) => `rounded-lg border px-2.5 py-1 text-xs font-semibold transition-colors ${isActive ? 'border-cyan-500 bg-cyan-950 text-cyan-300' : 'border-ink-600 bg-ink-800 text-slate-200 hover:border-cyan-500/60 hover:text-cyan-300'}`}
+            aria-label="Buscar en el curso"
+          >
+            ⌕ <span className="hidden sm:inline">Buscar</span>
+          </NavLink>
           <span
             className="rounded-full border border-ink-600 bg-ink-800 px-2.5 py-1 text-xs font-semibold text-amber-300"
             title={`Racha: ${streak.current} día(s) · Mejor: ${streak.best}`}
@@ -196,6 +203,7 @@ function TopBar() {
           ),
           ['/exam', 'Examen'],
           ['/cards', 'Cards'],
+          ['/search', 'Buscar'],
           ['/glossary', 'Glosario'],
           ['/achievements', 'Logros'],
           ['/profile', 'Perfil'],
@@ -244,6 +252,9 @@ export default function Layout({ children }: { children: ReactNode }) {
           </NavLink>
 
           <GroupLabel>Curso</GroupLabel>
+          <NavLink to="/search" className={navLink}>
+            <span className="text-base leading-none">⌕</span> Buscar en el curso
+          </NavLink>
           <SectionLinks />
           <NavLink to="/exam" className={navLink}>
             <span className="text-base leading-none">⏱️</span> Examen de práctica

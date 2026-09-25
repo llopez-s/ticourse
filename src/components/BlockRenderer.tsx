@@ -240,15 +240,31 @@ function CheckBlock({
 
 export default function BlockRenderer({
   blocks,
+  focusedBlock,
   rewardEnabled,
   onCheckAnswered,
 }: {
   blocks: Block[];
+  focusedBlock?: number | null;
   rewardEnabled: boolean;
   onCheckAnswered: () => void;
 }) {
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (focusedBlock === null || focusedBlock === undefined) return;
+    const target = rootRef.current?.children.item(focusedBlock);
+    if (!(target instanceof HTMLElement)) return;
+    target.classList.add('search-target');
+    const frame = requestAnimationFrame(() => target.scrollIntoView({ block: 'center' }));
+    return () => {
+      cancelAnimationFrame(frame);
+      target.classList.remove('search-target');
+    };
+  }, [focusedBlock, blocks]);
+
   return (
-    <div className="space-y-1">
+    <div ref={rootRef} className="space-y-1">
       {blocks.map((b, i) => {
         switch (b.t) {
           case 'p':
