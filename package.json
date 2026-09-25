@@ -6,9 +6,15 @@
   "description": "IntelForge Academy — gamified, unofficial study companion for FOR578/GCTI cyber threat intelligence topics",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && node video/edr/prune-build-audio.mjs",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "video:audio": "node video/edr/generate-audio.mjs",
+    "video:audio:prepare": "node video/edr/prepare-local-audio.mjs",
+    "video:audio:elevenlabs": "node video/edr/generate-elevenlabs.mjs",
+    "video:audio:import": "node video/edr/import-audio.mjs",
+    "video:check": "tsc --noEmit -p video/tsconfig.json",
+    "video:render": "npm run video:check && node video/edr/render.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",

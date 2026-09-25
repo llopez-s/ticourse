@@ -1,0 +1,31 @@
+En Puerto de Halden, aparece una alerta en el portátil de Lucía, del equipo de operaciones.
+
+El Blue Team abre el EDR: una herramienta para detectar, investigar y responder a amenazas en equipos finales.
+
+Un sensor instalado en cada equipo incorporado observa la actividad y envía telemetría a una consola central.
+
+Relaciona procesos, cambios en archivos y conexiones de red para ayudar a reconstruir lo ocurrido.
+
+Aquí, una aplicación ofimática inició un intérprete de comandos y luego intentó contactar con un dominio inusual.
+
+La alerta señala un comportamiento sospechoso; por sí sola no demuestra un compromiso. Primero revisamos contexto y gravedad.
+
+En el árbol de procesos seguimos la secuencia: documento, aplicación, proceso hijo y conexión.
+
+Comprobamos usuario, hora, ruta del archivo, firma del programa y acciones previas del sensor.
+
+Lucía confirma que no esperaba esa ejecución. La secuencia refuerza la sospecha y registramos las evidencias.
+
+Buscamos el mismo archivo, dominio y patrón de procesos en los demás equipos incorporados.
+
+Encontramos actividad semejante en dos estaciones. El alcance ya no parece limitado al portátil de Lucía.
+
+Con esa evidencia y según el procedimiento, aislamos los equipos afectados para cortar comunicaciones mientras investigamos.
+
+El aislamiento puede interrumpir trabajo legítimo. Documentamos motivo, hora y responsable de la decisión.
+
+Después retiramos el artefacto, corregimos la causa de entrada y verificamos que el patrón no reaparece.
+
+Cerramos el incidente con cronología, acciones y lecciones para mejorar las reglas y la respuesta futura.
+
+Recuerda: el EDR depende de equipos incorporados y sensores operativos. Correlaciona sus hallazgos con otras fuentes.

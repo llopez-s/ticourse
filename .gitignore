@@ -11,3 +11,12 @@ worker/.wrangler
 .env.*
 # Cross-device sync code: whoever holds it can read and overwrite the progress bucket
 ticourse-sync-code.txt
+
+# EDR render inputs and local previews
+video/edr/elevenlabs-samples/
+video/edr/elevenlabs-master/
+video/edr/elevenlabs-clips/
+video/edr/elevenlabs-segmented/
+video/edr/elevenlabs-preview.mp4
+video/edr/preview-frames/
+public/videos/edr/voice/

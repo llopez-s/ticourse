@@ -1,0 +1,129 @@
+WEBVTT
+
+01-intro-1
+00:00:00.067 --> 00:00:02.600
+En Puerto de Halden, aparece una alerta
+
+01-intro-2
+00:00:02.600 --> 00:00:05.600
+en el portátil de Lucía, del equipo de operaciones.
+
+02-definition-1
+00:00:06.100 --> 00:00:10.733
+El Blue Team abre el EDR: una herramienta para detectar,
+
+02-definition-2
+00:00:10.733 --> 00:00:13.800
+investigar y responder a amenazas en equipos finales.
+
+03-sensor-1
+00:00:14.467 --> 00:00:17.400
+Un sensor instalado en cada equipo incorporado
+
+03-sensor-2
+00:00:17.400 --> 00:00:21.067
+observa la actividad y envía telemetría a una consola central.
+
+04-signals-1
+00:00:21.700 --> 00:00:24.433
+Relaciona procesos, cambios en archivos
+
+04-signals-2
+00:00:24.433 --> 00:00:27.500
+y conexiones de red para ayudar a reconstruir lo ocurrido.
+
+05-detection-1
+00:00:28.900 --> 00:00:32.833
+Aquí, una aplicación ofimática inició un intérprete de comandos
+
+05-detection-2
+00:00:32.833 --> 00:00:35.500
+y luego intentó contactar con un dominio inusual.
+
+06-uncertainty-1
+00:00:36.467 --> 00:00:39.533
+La alerta señala un comportamiento sospechoso;
+
+06-uncertainty-2
+00:00:39.533 --> 00:00:44.400
+por sí sola no demuestra un compromiso. Primero revisamos contexto y gravedad.
+
+07-tree-1
+00:00:44.700 --> 00:00:47.667
+En el árbol de procesos seguimos la secuencia:
+
+07-tree-2
+00:00:47.667 --> 00:00:51.900
+documento, aplicación, proceso hijo y conexión.
+
+08-context-1
+00:00:52.167 --> 00:00:56.067
+Comprobamos usuario, hora, ruta del archivo,
+
+08-context-2
+00:00:56.067 --> 00:00:59.300
+firma del programa y acciones previas del sensor.
+
+09-evidence-1
+00:00:59.833 --> 00:01:02.600
+Lucía confirma que no esperaba esa ejecución.
+
+09-evidence-2
+00:01:02.600 --> 00:01:06.567
+La secuencia refuerza la sospecha y registramos las evidencias.
+
+10-hunt-1
+00:01:06.833 --> 00:01:09.533
+Buscamos el mismo archivo, dominio
+
+10-hunt-2
+00:01:09.533 --> 00:01:12.333
+y patrón de procesos en los demás equipos incorporados.
+
+11-scope-1
+00:01:12.633 --> 00:01:16.067
+Encontramos actividad semejante en dos estaciones.
+
+11-scope-2
+00:01:16.067 --> 00:01:19.267
+El alcance ya no parece limitado al portátil de Lucía.
+
+12-isolate-1
+00:01:20.300 --> 00:01:23.000
+Con esa evidencia y según el procedimiento,
+
+12-isolate-2
+00:01:23.000 --> 00:01:27.567
+aislamos los equipos afectados para cortar comunicaciones mientras investigamos.
+
+13-tradeoff-1
+00:01:27.900 --> 00:01:31.233
+El aislamiento puede interrumpir trabajo legítimo.
+
+13-tradeoff-2
+00:01:31.233 --> 00:01:35.567
+Documentamos motivo, hora y responsable de la decisión.
+
+14-remediate-1
+00:01:36.000 --> 00:01:39.867
+Después retiramos el artefacto, corregimos la causa de entrada
+
+14-remediate-2
+00:01:39.867 --> 00:01:42.200
+y verificamos que el patrón no reaparece.
+
+15-learnings-1
+00:01:42.800 --> 00:01:45.833
+Cerramos el incidente con cronología, acciones
+
+15-learnings-2
+00:01:45.833 --> 00:01:49.000
+y lecciones para mejorar las reglas y la respuesta futura.
+
+16-limit-1
+00:01:50.000 --> 00:01:55.467
+Recuerda: el EDR depende de equipos incorporados y sensores operativos.
+
+16-limit-2
+00:01:55.467 --> 00:01:57.900
+Correlaciona sus hallazgos con otras fuentes.

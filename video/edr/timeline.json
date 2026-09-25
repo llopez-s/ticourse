@@ -1,0 +1,150 @@
+{
+  "fps": 30,
+  "segments": [
+    {
+      "id": "01-intro",
+      "scene": "intro",
+      "text": "En Puerto de Halden, aparece una alerta en el portátil de Lucía, del equipo de operaciones.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/01-intro.wav",
+      "startFrame": 0,
+      "durationFrames": 176,
+      "audioFrames": 176
+    },
+    {
+      "id": "02-definition",
+      "scene": "intro",
+      "text": "El Blue Team abre el EDR: una herramienta para detectar, investigar y responder a amenazas en equipos finales.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/02-definition.wav",
+      "startFrame": 176,
+      "durationFrames": 248,
+      "audioFrames": 248
+    },
+    {
+      "id": "03-sensor",
+      "scene": "telemetry",
+      "text": "Un sensor instalado en cada equipo incorporado observa la actividad y envía telemetría a una consola central.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/03-sensor.wav",
+      "startFrame": 424,
+      "durationFrames": 218,
+      "audioFrames": 218
+    },
+    {
+      "id": "04-signals",
+      "scene": "telemetry",
+      "text": "Relaciona procesos, cambios en archivos y conexiones de red para ayudar a reconstruir lo ocurrido.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/04-signals.wav",
+      "startFrame": 642,
+      "durationFrames": 204,
+      "audioFrames": 204
+    },
+    {
+      "id": "05-detection",
+      "scene": "alert",
+      "text": "Aquí, una aplicación ofimática inició un intérprete de comandos y luego intentó contactar con un dominio inusual.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/05-detection.wav",
+      "startFrame": 846,
+      "durationFrames": 234,
+      "audioFrames": 234
+    },
+    {
+      "id": "06-uncertainty",
+      "scene": "alert",
+      "text": "La alerta señala un comportamiento sospechoso; por sí sola no demuestra un compromiso. Primero revisamos contexto y gravedad.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/06-uncertainty.wav",
+      "startFrame": 1080,
+      "durationFrames": 257,
+      "audioFrames": 257
+    },
+    {
+      "id": "07-tree",
+      "scene": "triage",
+      "text": "En el árbol de procesos seguimos la secuencia: documento, aplicación, proceso hijo y conexión.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/07-tree.wav",
+      "startFrame": 1337,
+      "durationFrames": 224,
+      "audioFrames": 224
+    },
+    {
+      "id": "08-context",
+      "scene": "triage",
+      "text": "Comprobamos usuario, hora, ruta del archivo, firma del programa y acciones previas del sensor.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/08-context.wav",
+      "startFrame": 1561,
+      "durationFrames": 226,
+      "audioFrames": 226
+    },
+    {
+      "id": "09-evidence",
+      "scene": "triage",
+      "text": "Lucía confirma que no esperaba esa ejecución. La secuencia refuerza la sospecha y registramos las evidencias.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/09-evidence.wav",
+      "startFrame": 1787,
+      "durationFrames": 214,
+      "audioFrames": 214
+    },
+    {
+      "id": "10-hunt",
+      "scene": "scope",
+      "text": "Buscamos el mismo archivo, dominio y patrón de procesos en los demás equipos incorporados.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/10-hunt.wav",
+      "startFrame": 2001,
+      "durationFrames": 174,
+      "audioFrames": 174
+    },
+    {
+      "id": "11-scope",
+      "scene": "scope",
+      "text": "Encontramos actividad semejante en dos estaciones. El alcance ya no parece limitado al portátil de Lucía.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/11-scope.wav",
+      "startFrame": 2175,
+      "durationFrames": 219,
+      "audioFrames": 219
+    },
+    {
+      "id": "12-isolate",
+      "scene": "contain",
+      "text": "Con esa evidencia y según el procedimiento, aislamos los equipos afectados para cortar comunicaciones mientras investigamos.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/12-isolate.wav",
+      "startFrame": 2394,
+      "durationFrames": 238,
+      "audioFrames": 238
+    },
+    {
+      "id": "13-tradeoff",
+      "scene": "contain",
+      "text": "El aislamiento puede interrumpir trabajo legítimo. Documentamos motivo, hora y responsable de la decisión.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/13-tradeoff.wav",
+      "startFrame": 2632,
+      "durationFrames": 242,
+      "audioFrames": 242
+    },
+    {
+      "id": "14-remediate",
+      "scene": "close",
+      "text": "Después retiramos el artefacto, corregimos la causa de entrada y verificamos que el patrón no reaparece.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/14-remediate.wav",
+      "startFrame": 2874,
+      "durationFrames": 201,
+      "audioFrames": 201
+    },
+    {
+      "id": "15-learnings",
+      "scene": "close",
+      "text": "Cerramos el incidente con cronología, acciones y lecciones para mejorar las reglas y la respuesta futura.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/15-learnings.wav",
+      "startFrame": 3075,
+      "durationFrames": 210,
+      "audioFrames": 210
+    },
+    {
+      "id": "16-limit",
+      "scene": "close",
+      "text": "Recuerda: el EDR depende de equipos incorporados y sensores operativos. Correlaciona sus hallazgos con otras fuentes.",
+      "audio": "videos/edr/voice/natural/0fae315f04df/16-limit.wav",
+      "startFrame": 3285,
+      "durationFrames": 252,
+      "audioFrames": 252
+    }
+  ],
+  "durationFrames": 3537
+}
