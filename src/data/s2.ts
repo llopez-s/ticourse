@@ -568,14 +568,14 @@ KC phase    : Command & Control                 (meta-feature)
 Result      : success                           (meta-feature)
 Direction   : victim → infrastructure           (meta-feature)
 Methodology : beacon HTTPS, jitter 60s          (meta-feature)
-Resources   : VPS, dominio, cert TLS            (meta-feature)
+Resources   : hosting, dominio, cert TLS        (meta-feature)
 
 ADVERSARY      : UNKNOWN
   └─ pivote pendiente: WHOIS histórico del dominio →
      registrante 2025: kazuo.tanji@protonmail.com
 CAPABILITY     : implante GLASS VIPER (stage-1 loader)
   └─ SHA-256 9f3a...e1 | named pipe vc_pipe_%08x
-INFRASTRUCTURE : update-svc-cdn.com → 141.98.6.10 (VPS)
+INFRASTRUCTURE : update-svc-cdn.com → 185.220.x.x (shared hosting)
   └─ cert TLS autofirmado CN=updatesvc,
      visto en 2 IPs más (pivote de alto valor)
 VICTIM         : Meridian Dynamics / ENG-WS-041
@@ -588,7 +588,7 @@ Eje tecnológico    : Capability ↔ Infrastructure
       },
       {
         t: 'p',
-        md: 'Fíjate en dos decisiones de tradecraft. Primera: **Adversary se queda en UNKNOWN** — el diamante no te obliga a rellenar lo que no sabes; te obliga a *saber qué te falta* y qué pivote podría llenarlo. Segunda: no todos los pivotes valen igual. El cert TLS **autofirmado** reutilizado en tres servidores es oro — solo el actor lo despliega. Una IP de shared hosting con 400 dominios de terceros es ruido. Y la distinción **operator vs. customer** vive dentro del vértice Adversary: `kazuo.tanji@` (si el pivote confirma) sería el *operator* que registró el dominio; quién encarga y recibe los diseños de propulsión — el *customer* — sigue siendo otra incógnita.',
+        md: 'Fíjate en dos decisiones de tradecraft. Primera: **Adversary se queda en UNKNOWN** — el diamante no te obliga a rellenar lo que no sabes; te obliga a *saber qué te falta* y qué pivote podría llenarlo. Segunda: no todos los pivotes valen igual. El cert TLS **autofirmado** reutilizado en tres servidores es oro — solo el actor lo despliega. La IP del propio E7, un shared hosting con ~14.000 dominios de terceros, es ruido. Y la distinción **operator vs. customer** vive dentro del vértice Adversary: `kazuo.tanji@` (si el pivote confirma) sería el *operator* que registró el dominio; quién encarga y recibe los diseños de propulsión — el *customer* — sigue siendo otra incógnita.',
       },
       {
         t: 'callout',
@@ -864,15 +864,15 @@ Eje tecnológico    : Capability ↔ Infrastructure
         text: `[Victim 1 — Meridian Dynamics]
 2026-03-02 09:14  email "PO revision" -> j.alvarez@meridian.example
 2026-03-02 09:31  attachment runs; drops C:\\Users\\..\\winhlp.exe
-                  linker artifact: D:\\proj\\cicada\\loader\\ldr.pdb
-2026-03-02 09:32  winhlp.exe beacons -> cdn-sync-status.example:443
+                  linker artifact: D:\\proj\\cicada\\loader\\Release\\ldr.pdb
+2026-03-02 09:32  winhlp.exe beacons -> update-svc-cdn.com:443
 2026-03-04 22:10  archive staged: C:\\Windows\\Temp\\~tmp4421.cab
 2026-03-05 01:47  1.2 GB out -> transfer-cdn-eu.example
 
 [Victim 2 — Orbital Components (Meridian supplier)]
 2026-03-09 08:05  email "PO revision" -> finance@orbital.example
 2026-03-09 08:22  attachment runs; drops C:\\Users\\..\\msdtcs.exe
-                  linker artifact: D:\\proj\\cicada\\loader\\ldr.pdb
+                  linker artifact: D:\\proj\\cicada\\loader\\Release\\ldr.pdb
 2026-03-09 08:23  msdtcs.exe beacons -> portal-auth-check.example:443`,
       },
       {
@@ -884,7 +884,7 @@ Eje tecnológico    : Capability ↔ Infrastructure
         headers: ['Observación compartida', 'Tipo', 'Veredicto'],
         rows: [
           ['Mismo lure «PO revision» en ambas', 'Tema de targeting', '**Medio** — sugiere el mismo tasking, no lo prueba'],
-          ['Mismo PDB path `cicada\\loader\\ldr.pdb`', 'Artefacto de desarrollo', '**Fuerte** — mismo entorno de build del actor'],
+          ['Mismo PDB path `cicada\\loader\\Release\\ldr.pdb`','Artefacto de desarrollo', '**Fuerte** — mismo entorno de build del actor'],
           ['Dominios C2 distintos', 'Infraestructura rotada', '**Neutro** — rotar dominios es barato; su ausencia no rompe el grupo'],
           ['Ambos beacons por HTTPS/443', 'Técnica universal', '**Muy débil** — descártalo como criterio'],
           ['Victim 2 es proveedor de Victim 1', 'Eje socio-político', '**Medio** — coherente con una campaña contra la cadena de suministro'],
