@@ -1,71 +1,88 @@
 {
- "key": "be23377d2431e08f3d67d63ffe612c2930f6fab0d4518466edfe976a94a08de2",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "5955ea81ae3a09fbcc5e81ee67d284286b2730426e8f96ad649eba2324d47100",
+ "sceneKey": "fb6351f91753cfc7bd89883a2ac6a89bfd5229d526291e73e4cfdf0e779442c7",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Ahora te toca: aplica lo visto en las preguntas de esta lección.",
- "bytes": 27504,
- "durationMs": 4584.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[cheerful] Ahora te toca: aplica lo visto en las preguntas de esta lección.",
+ "bytes": 46656,
+ "bitrateKbps": 96,
+ "durationMs": 3840,
+ "clipInSceneMs": [
+  22240,
+  26080
+ ],
+ "requestId": "gLkBhKVMmowZvDAcO0wH",
  "words": [
   {
    "text": "Ahora",
-   "offsetMs": 100.0,
-   "durationMs": 325.0
+   "offsetMs": 60,
+   "durationMs": 187
   },
   {
    "text": "te",
-   "offsetMs": 425.0,
-   "durationMs": 137.5
+   "offsetMs": 300,
+   "durationMs": 107
   },
   {
-   "text": "toca",
-   "offsetMs": 562.5,
-   "durationMs": 350.0
+   "text": "toca:",
+   "offsetMs": 460,
+   "durationMs": 827
   },
   {
    "text": "aplica",
-   "offsetMs": 1212.5,
-   "durationMs": 412.5
+   "offsetMs": 1367,
+   "durationMs": 400
   },
   {
    "text": "lo",
-   "offsetMs": 1650.0,
-   "durationMs": 112.5
+   "offsetMs": 1794,
+   "durationMs": 53
   },
   {
    "text": "visto",
-   "offsetMs": 1762.5,
-   "durationMs": 312.5
+   "offsetMs": 1900,
+   "durationMs": 267
   },
   {
    "text": "en",
-   "offsetMs": 2087.5,
-   "durationMs": 50.0
+   "offsetMs": 2194,
+   "durationMs": 53
   },
   {
    "text": "las",
-   "offsetMs": 2137.5,
-   "durationMs": 162.5
+   "offsetMs": 2287,
+   "durationMs": 120
   },
   {
    "text": "preguntas",
-   "offsetMs": 2300.0,
-   "durationMs": 537.5
+   "offsetMs": 2455,
+   "durationMs": 432
   },
   {
    "text": "de",
-   "offsetMs": 2837.5,
-   "durationMs": 112.5
+   "offsetMs": 2940,
+   "durationMs": 107
   },
   {
    "text": "esta",
-   "offsetMs": 2950.0,
-   "durationMs": 237.5
+   "offsetMs": 3079,
+   "durationMs": 128
   },
   {
-   "text": "lección",
-   "offsetMs": 3187.5,
-   "durationMs": 437.5
+   "text": "lección.",
+   "offsetMs": 3260,
+   "durationMs": 587
   }
  ]
 }

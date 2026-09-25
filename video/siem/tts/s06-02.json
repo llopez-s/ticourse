@@ -1,141 +1,158 @@
 {
- "key": "3c579bb27f8ee4f0cf2eeb902ca7703114b7c9439efb1e35302645c0aab7bfcd",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "6341316dbf4864e0a0d05585d431cc451444e761c8bdbc541991f87741b2b330",
+ "sceneKey": "87c026a80357990142b86623e8776effc7c2fae7c59b0df6296afeba63e7e2c7",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Es alert fatíg, la fatiga de alertas. Tres reglas generan el setenta y ocho por ciento del volumen, y ninguna ha producido nunca un incidente real.",
- "bytes": 60624,
- "durationMs": 10104.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[sighs] Es alert fatigue, la fatiga de alertas. Tres reglas generan el setenta y ocho por ciento del volumen, y ninguna ha producido nunca un incidente real.",
+ "bytes": 130752,
+ "bitrateKbps": 96,
+ "durationMs": 10833,
+ "clipInSceneMs": [
+  7548,
+  18381
+ ],
+ "requestId": "wjd8BgNMY9Ygl93T4ozA",
  "words": [
   {
    "text": "Es",
-   "offsetMs": 100.0,
-   "durationMs": 200.0
+   "offsetMs": 900,
+   "durationMs": 32
   },
   {
    "text": "alert",
-   "offsetMs": 300.0,
-   "durationMs": 275.0
+   "offsetMs": 1025,
+   "durationMs": 467
   },
   {
-   "text": "fatíg",
-   "offsetMs": 575.0,
-   "durationMs": 400.0
+   "text": "fatigue,",
+   "offsetMs": 1552,
+   "durationMs": 900
   },
   {
    "text": "la",
-   "offsetMs": 1150.0,
-   "durationMs": 175.0
+   "offsetMs": 2479,
+   "durationMs": 53
   },
   {
    "text": "fatiga",
-   "offsetMs": 1325.0,
-   "durationMs": 400.0
+   "offsetMs": 2592,
+   "durationMs": 340
   },
   {
    "text": "de",
-   "offsetMs": 1737.5,
-   "durationMs": 125.0
+   "offsetMs": 2959,
+   "durationMs": 53
   },
   {
-   "text": "alertas",
-   "offsetMs": 1862.5,
-   "durationMs": 500.0
+   "text": "alertas.",
+   "offsetMs": 3065,
+   "durationMs": 587
   },
   {
    "text": "Tres",
-   "offsetMs": 3387.5,
-   "durationMs": 212.5
+   "offsetMs": 4092,
+   "durationMs": 600
   },
   {
    "text": "reglas",
-   "offsetMs": 3600.0,
-   "durationMs": 400.0
+   "offsetMs": 4752,
+   "durationMs": 420
   },
   {
    "text": "generan",
-   "offsetMs": 4000.0,
-   "durationMs": 412.5
+   "offsetMs": 5212,
+   "durationMs": 360
   },
   {
    "text": "el",
-   "offsetMs": 4412.5,
-   "durationMs": 112.5
+   "offsetMs": 5599,
+   "durationMs": 53
   },
   {
    "text": "setenta",
-   "offsetMs": 4525.0,
-   "durationMs": 412.5
+   "offsetMs": 5692,
+   "durationMs": 360
   },
   {
    "text": "y",
-   "offsetMs": 4937.5,
-   "durationMs": 75.0
+   "offsetMs": 6092,
+   "durationMs": 40
   },
   {
    "text": "ocho",
-   "offsetMs": 5012.5,
-   "durationMs": 237.5
+   "offsetMs": 6212,
+   "durationMs": 82
   },
   {
    "text": "por",
-   "offsetMs": 5250.0,
-   "durationMs": 175.0
+   "offsetMs": 6353,
+   "durationMs": 180
   },
   {
    "text": "ciento",
-   "offsetMs": 5425.0,
-   "durationMs": 350.0
+   "offsetMs": 6573,
+   "durationMs": 280
   },
   {
    "text": "del",
-   "offsetMs": 5775.0,
-   "durationMs": 125.0
+   "offsetMs": 6893,
+   "durationMs": 120
   },
   {
-   "text": "volumen",
-   "offsetMs": 5900.0,
-   "durationMs": 487.5
+   "text": "volumen,",
+   "offsetMs": 7066,
+   "durationMs": 827
   },
   {
    "text": "y",
-   "offsetMs": 6650.0,
-   "durationMs": 62.5
+   "offsetMs": 7933,
+   "durationMs": 40
   },
   {
    "text": "ninguna",
-   "offsetMs": 6725.0,
-   "durationMs": 425.0
+   "offsetMs": 8023,
+   "durationMs": 350
   },
   {
    "text": "ha",
-   "offsetMs": 7150.0,
-   "durationMs": 125.0
+   "offsetMs": 8400,
+   "durationMs": 53
   },
   {
    "text": "producido",
-   "offsetMs": 7275.0,
-   "durationMs": 562.5
+   "offsetMs": 8506,
+   "durationMs": 507
   },
   {
    "text": "nunca",
-   "offsetMs": 7837.5,
-   "durationMs": 300.0
+   "offsetMs": 9080,
+   "durationMs": 333
   },
   {
    "text": "un",
-   "offsetMs": 8137.5,
-   "durationMs": 125.0
+   "offsetMs": 9440,
+   "durationMs": 53
   },
   {
    "text": "incidente",
-   "offsetMs": 8262.5,
-   "durationMs": 537.5
+   "offsetMs": 9546,
+   "durationMs": 507
   },
   {
-   "text": "real",
-   "offsetMs": 8800.0,
-   "durationMs": 387.5
+   "text": "real.",
+   "offsetMs": 10133,
+   "durationMs": 400
   }
  ]
 }

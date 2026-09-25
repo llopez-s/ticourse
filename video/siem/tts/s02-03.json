@@ -1,81 +1,98 @@
 {
- "key": "be675f1771f5c7a39fa77b3cf9d29d3f69cb59611b79146d53c1ff9aba16d8c8",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "d1200c215e5b5b2de10376fa2416a3c7d81e573641469674c7a54113a6252e01",
+ "sceneKey": "dcef2b6ec475be7b278892dca27c483d6ebd8d4ab58ee731c194f0a68ef66638",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
  "spoken": "Todo converge en un punto central, con la hora sincronizada por ene te pe.",
- "bytes": 29664,
- "durationMs": 4944.0,
+ "bytes": 62496,
+ "bitrateKbps": 96,
+ "durationMs": 5144,
+ "clipInSceneMs": [
+  20196,
+  25340
+ ],
+ "requestId": "DtedSJdJCPt3CugL6Lnn",
  "words": [
   {
    "text": "Todo",
-   "offsetMs": 100.0,
-   "durationMs": 225.0
+   "offsetMs": 60,
+   "durationMs": 704
   },
   {
    "text": "converge",
-   "offsetMs": 325.0,
-   "durationMs": 487.5
+   "offsetMs": 817,
+   "durationMs": 427
   },
   {
    "text": "en",
-   "offsetMs": 812.5,
-   "durationMs": 100.0
+   "offsetMs": 1271,
+   "durationMs": 53
   },
   {
    "text": "un",
-   "offsetMs": 912.5,
-   "durationMs": 175.0
+   "offsetMs": 1377,
+   "durationMs": 107
   },
   {
    "text": "punto",
-   "offsetMs": 1087.5,
-   "durationMs": 250.0
+   "offsetMs": 1537,
+   "durationMs": 267
   },
   {
-   "text": "central",
-   "offsetMs": 1337.5,
-   "durationMs": 487.5
+   "text": "central,",
+   "offsetMs": 1864,
+   "durationMs": 740
   },
   {
    "text": "con",
-   "offsetMs": 2075.0,
-   "durationMs": 162.5
+   "offsetMs": 2644,
+   "durationMs": 120
   },
   {
    "text": "la",
-   "offsetMs": 2275.0,
-   "durationMs": 100.0
+   "offsetMs": 2817,
+   "durationMs": 107
   },
   {
    "text": "hora",
-   "offsetMs": 2387.5,
-   "durationMs": 212.5
+   "offsetMs": 2972,
+   "durationMs": 192
   },
   {
    "text": "sincronizada",
-   "offsetMs": 2600.0,
-   "durationMs": 687.5
+   "offsetMs": 3212,
+   "durationMs": 672
   },
   {
    "text": "por",
-   "offsetMs": 3287.5,
-   "durationMs": 187.5
+   "offsetMs": 3944,
+   "durationMs": 180
   },
   {
    "text": "ene",
-   "offsetMs": 3475.0,
-   "durationMs": 175.0
+   "offsetMs": 4177,
+   "durationMs": 187
   },
   {
    "text": "te",
-   "offsetMs": 3650.0,
-   "durationMs": 137.5
+   "offsetMs": 4417,
+   "durationMs": 107
   },
   {
-   "text": "pe",
-   "offsetMs": 3787.5,
-   "durationMs": 162.5
+   "text": "pe.",
+   "offsetMs": 4604,
+   "durationMs": 240
   }
  ]
 }

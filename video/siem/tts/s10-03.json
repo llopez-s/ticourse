@@ -1,106 +1,123 @@
 {
- "key": "cf64e40f6acb68bec72572f4feaa30bff8dd650f33bd50e78241ea0f170c79dd",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "8906043c8906db490123e42bac7d8a181e95595caed6a2408ba9350c306d80fd",
+ "sceneKey": "c12cef15f23a2071be2f4dd98f48d24f20f794b84ef61f48cec6dd5db6c1836f",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Un pléibuk de sóar, que automatiza la respuesta, propuso esa cuarentena. Solo se ejecutó cuando la analista la aprobó.",
- "bytes": 51552,
- "durationMs": 8592.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[calm] Un playbook de sóar, que automatiza la respuesta, propuso esa cuarentena. Solo se ejecutó cuando la analista la aprobó.",
+ "bytes": 94464,
+ "bitrateKbps": 96,
+ "durationMs": 7813,
+ "clipInSceneMs": [
+  16087,
+  23900
+ ],
+ "requestId": "ePfnPcOnfSy476dDHlq5",
  "words": [
   {
    "text": "Un",
-   "offsetMs": 100.0,
-   "durationMs": 162.5
+   "offsetMs": 60,
+   "durationMs": 13
   },
   {
-   "text": "pléibuk",
-   "offsetMs": 262.5,
-   "durationMs": 462.5
+   "text": "playbook",
+   "offsetMs": 126,
+   "durationMs": 427
   },
   {
    "text": "de",
-   "offsetMs": 725.0,
-   "durationMs": 125.0
+   "offsetMs": 606,
+   "durationMs": 107
   },
   {
-   "text": "sóar",
-   "offsetMs": 850.0,
-   "durationMs": 362.5
+   "text": "sóar,",
+   "offsetMs": 793,
+   "durationMs": 480
   },
   {
    "text": "que",
-   "offsetMs": 1300.0,
-   "durationMs": 62.5
+   "offsetMs": 1353,
+   "durationMs": 240
   },
   {
    "text": "automatiza",
-   "offsetMs": 1412.5,
-   "durationMs": 637.5
+   "offsetMs": 1643,
+   "durationMs": 510
   },
   {
    "text": "la",
-   "offsetMs": 2050.0,
-   "durationMs": 100.0
+   "offsetMs": 2206,
+   "durationMs": 107
   },
   {
-   "text": "respuesta",
-   "offsetMs": 2150.0,
-   "durationMs": 575.0
+   "text": "respuesta,",
+   "offsetMs": 2361,
+   "durationMs": 512
   },
   {
    "text": "propuso",
-   "offsetMs": 2800.0,
-   "durationMs": 525.0
+   "offsetMs": 2921,
+   "durationMs": 432
   },
   {
    "text": "esa",
-   "offsetMs": 3325.0,
-   "durationMs": 225.0
+   "offsetMs": 3413,
+   "durationMs": 180
   },
   {
-   "text": "cuarentena",
-   "offsetMs": 3550.0,
-   "durationMs": 575.0
+   "text": "cuarentena.",
+   "offsetMs": 3646,
+   "durationMs": 667
   },
   {
    "text": "Solo",
-   "offsetMs": 5087.5,
-   "durationMs": 350.0
+   "offsetMs": 4489,
+   "durationMs": 704
   },
   {
    "text": "se",
-   "offsetMs": 5437.5,
-   "durationMs": 150.0
+   "offsetMs": 5246,
+   "durationMs": 107
   },
   {
    "text": "ejecutó",
-   "offsetMs": 5587.5,
-   "durationMs": 500.0
+   "offsetMs": 5417,
+   "durationMs": 496
   },
   {
    "text": "cuando",
-   "offsetMs": 6087.5,
-   "durationMs": 312.5
+   "offsetMs": 5959,
+   "durationMs": 274
   },
   {
    "text": "la",
-   "offsetMs": 6400.0,
-   "durationMs": 100.0
+   "offsetMs": 6260,
+   "durationMs": 53
   },
   {
    "text": "analista",
-   "offsetMs": 6500.0,
-   "durationMs": 587.5
+   "offsetMs": 6377,
+   "durationMs": 496
   },
   {
    "text": "la",
-   "offsetMs": 7087.5,
-   "durationMs": 100.0
+   "offsetMs": 6900,
+   "durationMs": 53
   },
   {
-   "text": "aprobó",
-   "offsetMs": 7187.5,
-   "durationMs": 425.0
+   "text": "aprobó.",
+   "offsetMs": 6993,
+   "durationMs": 520
   }
  ]
 }

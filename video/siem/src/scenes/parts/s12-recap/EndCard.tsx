@@ -114,6 +114,8 @@ export function EndCard({ frame, fps, at }: { frame: number; fps: number; at: nu
         }}
       >
         Simulación educativa con datos ficticios. Material independiente, no afiliado a CompTIA.
+        <br />
+        Voz: ElevenLabs.
       </div>
     </div>
   );

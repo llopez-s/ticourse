@@ -15,7 +15,7 @@ import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { alignSpokenTokens, displayTimes, normalizeToken } from './lib/align.mjs';
 import { paginate } from './lib/captions.mjs';
-import { analyzeNarration, loadSources, parseJsonText, reportOrThrow, sourceHash, ttsKey } from './lib/narration.mjs';
+import { analyzeNarration, isElevenLabsVoice, loadSources, parseJsonText, reportOrThrow, sourceHash, spokenForVoice, ttsKey } from './lib/narration.mjs';
 import { PATHS, isMainModule } from './lib/paths.mjs';
 import { probeDurationsMs, writeFileAtomic } from './lib/remotion.mjs';
 import { SCENE_IDS, validateTimeline } from './lib/validate-timeline.mjs';
@@ -41,6 +41,8 @@ const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 export const TRANSCRIPT_TITLE = 'SIEM en acción: del ruido a la evidencia';
 export const TRANSCRIPT_NOTICE =
   'Simulación educativa con datos ficticios · IntelForge Academy — material independiente, no afiliado a CompTIA';
+/** Credit line added to the transcript when the narration is voiced by ElevenLabs. */
+export const ELEVENLABS_CREDIT = 'Voz: ElevenLabs (elevenlabs.io)';
 
 const mmss = (frames, fps) => {
   const s = Math.floor(frames / fps);
@@ -71,13 +73,14 @@ async function loadAudio(segments, voice, opts, errors, warnings) {
       continue;
     }
     const tts = parseJsonText(readFileSync(jsonPath, 'utf8'), jsonPath);
-    const want = ttsKey(voice.voice, voice.rate, voice.pitch, seg.parsed.spoken);
+    const spoken = spokenForVoice(voice.voice, seg.parsed);
+    const want = ttsKey(voice.voice, voice.rate, voice.pitch, spoken);
     if (tts.key !== want) {
       const why = [];
       if (tts.voice !== voice.voice) why.push(`voice ${tts.voice} vs ${voice.voice}`);
       if (tts.rate !== voice.rate) why.push(`rate ${tts.rate} vs ${voice.rate}`);
       if (tts.pitch !== voice.pitch) why.push(`pitch ${tts.pitch} vs ${voice.pitch}`);
-      if (tts.spoken !== seg.parsed.spoken) why.push('spoken text changed');
+      if (tts.spoken !== spoken) why.push('spoken text changed');
       errors.push(`${seg.id}: TTS is stale (${why.join('; ') || 'key mismatch'}) — run: node video/siem/scripts/audio.mjs`);
       continue;
     }
@@ -106,10 +109,11 @@ async function loadAudio(segments, voice, opts, errors, warnings) {
   const trailing = [];
   for (const { seg, tts, mp3Path, bytes } of entries) {
     const probeMs = probed.get(mp3Path);
-    const cbrMs = bytes / 6; // audio-24khz-48kbitrate-mono-mp3: 6000 bytes per second
+    // CBR MP3: edge-tts writes 48 kbps (6000 bytes/s); other providers record their bitrate.
+    const cbrMs = (bytes * 8) / (tts.bitrateKbps ?? 48);
     const lastEnd = Math.max(...tts.words.map((w) => w.offsetMs + w.durationMs));
     if (Math.abs(probeMs - cbrMs) > TIMING.probeToleranceMs) {
-      errors.push(`${seg.id}: ffprobe says ${probeMs.toFixed(0)} ms, bytes/6 says ${cbrMs.toFixed(0)} ms`);
+      errors.push(`${seg.id}: ffprobe says ${probeMs.toFixed(0)} ms, the file size says ${cbrMs.toFixed(0)} ms`);
       continue;
     }
     if (lastEnd > probeMs + TIMING.probeToleranceMs) {
@@ -128,7 +132,7 @@ async function loadAudio(segments, voice, opts, errors, warnings) {
   }
   if (trailing.length) {
     const avg = trailing.reduce((a, b) => a + b, 0) / trailing.length;
-    audio.trailingNote = `edge-tts trailing silence: avg ${avg.toFixed(0)} ms per clip — ${opts.fullAudio ? 'kept (--full-audio)' : `trimmed to last word + ${opts.tailMs} ms`}`;
+    audio.trailingNote = `${isElevenLabsVoice(voice.voice) ? 'elevenlabs' : 'edge-tts'} trailing silence: avg ${avg.toFixed(0)} ms per clip — ${opts.fullAudio ? 'kept (--full-audio)' : `trimmed to last word + ${opts.tailMs} ms`}`;
   }
   return audio;
 }
@@ -303,7 +307,7 @@ export async function buildTimeline(options = {}) {
 
   let hash;
   if (mode === 'audio') {
-    const keys = analysis.segments.map((seg) => [seg.id, ttsKey(voice.voice, voice.rate, voice.pitch, seg.parsed.spoken)]);
+    const keys = analysis.segments.map((seg) => [seg.id, ttsKey(voice.voice, voice.rate, voice.pitch, spokenForVoice(voice.voice, seg.parsed))]);
     hash = sourceHash(sources, keys);
   } else {
     hash = sourceHash(sources);
@@ -366,7 +370,7 @@ export function buildVtt(timeline) {
 }
 
 export function buildTranscript(timeline, analysis) {
-  const lines = [TRANSCRIPT_TITLE, TRANSCRIPT_NOTICE, ''];
+  const lines = [TRANSCRIPT_TITLE, TRANSCRIPT_NOTICE, ...(isElevenLabsVoice(timeline.voice) ? [ELEVENLABS_CREDIT] : []), ''];
   timeline.scenes.forEach((s, k) => {
     const text = timeline.segments
       .filter((seg) => seg.scene === s.id)

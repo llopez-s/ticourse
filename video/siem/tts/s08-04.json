@@ -1,131 +1,143 @@
 {
- "key": "0cec422db78ad344297a615c5fe64b942d4d447218f0e796ce0be51fee537618",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "a3c8629ad60079afeaa52ded60c7bce52d6bb8662b6fd5e09480e5e03b9a9c24",
+ "sceneKey": "743649b9e9439afcbb3a8246b5a394ee9072099b22c549e2aae7abb3232cb515",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "No. net flou es metadato: quién habló con quién, cuándo y cuánto. Solo una captura de paquetes guarda el contenido, si no iba cifrado.",
- "bytes": 54576,
- "durationMs": 9096.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[firm] No. NetFlow es metadato: quién habló con quién, cuándo y cuánto. Solo una captura de paquetes guarda el contenido, si no iba cifrado.",
+ "bytes": 115200,
+ "bitrateKbps": 96,
+ "durationMs": 9536,
+ "clipInSceneMs": [
+  21184,
+  30720
+ ],
+ "requestId": "Oim3NIKVwySv8rn9EziA",
  "words": [
   {
    "text": "No.",
-   "offsetMs": 100.0,
-   "durationMs": 200.0
+   "offsetMs": 60,
+   "durationMs": 196
   },
   {
-   "text": "net",
-   "offsetMs": 300.0,
-   "durationMs": 162.5
-  },
-  {
-   "text": "flou",
-   "offsetMs": 462.5,
-   "durationMs": 325.0
+   "text": "NetFlow",
+   "offsetMs": 476,
+   "durationMs": 980
   },
   {
    "text": "es",
-   "offsetMs": 787.5,
-   "durationMs": 125.0
+   "offsetMs": 1536,
+   "durationMs": 160
   },
   {
-   "text": "metadato",
-   "offsetMs": 912.5,
-   "durationMs": 562.5
+   "text": "metadato:",
+   "offsetMs": 1756,
+   "durationMs": 1060
   },
   {
    "text": "quién",
-   "offsetMs": 1787.5,
-   "durationMs": 212.5
+   "offsetMs": 2836,
+   "durationMs": 140
   },
   {
    "text": "habló",
-   "offsetMs": 2000.0,
-   "durationMs": 237.5
+   "offsetMs": 2996,
+   "durationMs": 220
   },
   {
    "text": "con",
-   "offsetMs": 2237.5,
-   "durationMs": 187.5
+   "offsetMs": 3256,
+   "durationMs": 120
   },
   {
-   "text": "quién",
-   "offsetMs": 2437.5,
-   "durationMs": 262.5
+   "text": "quién,",
+   "offsetMs": 3416,
+   "durationMs": 360
   },
   {
    "text": "cuándo",
-   "offsetMs": 2737.5,
-   "durationMs": 312.5
+   "offsetMs": 3829,
+   "durationMs": 427
   },
   {
    "text": "y",
-   "offsetMs": 3050.0,
-   "durationMs": 50.0
+   "offsetMs": 4336,
+   "durationMs": 80
   },
   {
-   "text": "cuánto",
-   "offsetMs": 3100.0,
-   "durationMs": 387.5
+   "text": "cuánto.",
+   "offsetMs": 4496,
+   "durationMs": 560
   },
   {
    "text": "Solo",
-   "offsetMs": 4462.5,
-   "durationMs": 362.5
+   "offsetMs": 5200,
+   "durationMs": 576
   },
   {
    "text": "una",
-   "offsetMs": 4825.0,
-   "durationMs": 162.5
+   "offsetMs": 5816,
+   "durationMs": 120
   },
   {
    "text": "captura",
-   "offsetMs": 4987.5,
-   "durationMs": 450.0
+   "offsetMs": 6000,
+   "durationMs": 336
   },
   {
    "text": "de",
-   "offsetMs": 5437.5,
-   "durationMs": 100.0
+   "offsetMs": 6389,
+   "durationMs": 107
   },
   {
    "text": "paquetes",
-   "offsetMs": 5537.5,
-   "durationMs": 462.5
+   "offsetMs": 6549,
+   "durationMs": 427
   },
   {
    "text": "guarda",
-   "offsetMs": 6000.0,
-   "durationMs": 300.0
+   "offsetMs": 7022,
+   "durationMs": 274
   },
   {
    "text": "el",
-   "offsetMs": 6300.0,
-   "durationMs": 62.5
+   "offsetMs": 7323,
+   "durationMs": 53
   },
   {
-   "text": "contenido",
-   "offsetMs": 6362.5,
-   "durationMs": 562.5
+   "text": "contenido,",
+   "offsetMs": 7432,
+   "durationMs": 824
   },
   {
    "text": "si",
-   "offsetMs": 7087.5,
-   "durationMs": 200.0
+   "offsetMs": 8283,
+   "durationMs": 53
   },
   {
    "text": "no",
-   "offsetMs": 7287.5,
-   "durationMs": 162.5
+   "offsetMs": 8389,
+   "durationMs": 107
   },
   {
    "text": "iba",
-   "offsetMs": 7450.0,
-   "durationMs": 187.5
+   "offsetMs": 8549,
+   "durationMs": 187
   },
   {
-   "text": "cifrado",
-   "offsetMs": 7637.5,
-   "durationMs": 487.5
+   "text": "cifrado.",
+   "offsetMs": 8776,
+   "durationMs": 760
   }
  ]
 }

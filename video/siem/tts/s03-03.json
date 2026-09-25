@@ -1,106 +1,123 @@
 {
- "key": "c380f1d931602903dc44519868c5b2fcf60e01191dcb89271aa9a2b6d54fb6ae",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "d803754e88d9af69f7eab12108faf757e4dd123c86dbce7019e1528efda92a6f",
+ "sceneKey": "749a7396039b9722e9bf527bfc5e2f80316ab26e974d35f360f56c544658f5f4",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "También la hora: las diez y catorce de jálden se guardan como las nueve y catorce u te ce.",
- "bytes": 36000,
- "durationMs": 6000.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "También la hora: las diez y catorce de Halden se guardan como las nueve y catorce u te ce.",
+ "bytes": 81792,
+ "bitrateKbps": 96,
+ "durationMs": 6750,
+ "clipInSceneMs": [
+  15090,
+  21840
+ ],
+ "requestId": "yIsZ3OVsaA8DGK2GjROJ",
  "words": [
   {
    "text": "También",
-   "offsetMs": 100.0,
-   "durationMs": 362.5
+   "offsetMs": 50,
+   "durationMs": 700
   },
   {
    "text": "la",
-   "offsetMs": 462.5,
-   "durationMs": 137.5
+   "offsetMs": 777,
+   "durationMs": 53
   },
   {
-   "text": "hora",
-   "offsetMs": 600.0,
-   "durationMs": 262.5
+   "text": "hora:",
+   "offsetMs": 894,
+   "durationMs": 336
   },
   {
    "text": "las",
-   "offsetMs": 1187.5,
-   "durationMs": 212.5
+   "offsetMs": 1370,
+   "durationMs": 420
   },
   {
    "text": "diez",
-   "offsetMs": 1400.0,
-   "durationMs": 250.0
+   "offsetMs": 1830,
+   "durationMs": 200
   },
   {
    "text": "y",
-   "offsetMs": 1662.5,
-   "durationMs": 50.0
+   "offsetMs": 2110,
+   "durationMs": 80
   },
   {
    "text": "catorce",
-   "offsetMs": 1712.5,
-   "durationMs": 475.0
+   "offsetMs": 2230,
+   "durationMs": 360
   },
   {
    "text": "de",
-   "offsetMs": 2187.5,
-   "durationMs": 112.5
+   "offsetMs": 2617,
+   "durationMs": 53
   },
   {
-   "text": "jálden",
-   "offsetMs": 2300.0,
-   "durationMs": 400.0
+   "text": "Halden",
+   "offsetMs": 2710,
+   "durationMs": 440
   },
   {
    "text": "se",
-   "offsetMs": 2700.0,
-   "durationMs": 137.5
+   "offsetMs": 3310,
+   "durationMs": 320
   },
   {
    "text": "guardan",
-   "offsetMs": 2837.5,
-   "durationMs": 375.0
+   "offsetMs": 3670,
+   "durationMs": 280
   },
   {
    "text": "como",
-   "offsetMs": 3212.5,
-   "durationMs": 237.5
+   "offsetMs": 4014,
+   "durationMs": 256
   },
   {
    "text": "las",
-   "offsetMs": 3450.0,
-   "durationMs": 150.0
+   "offsetMs": 4350,
+   "durationMs": 240
   },
   {
    "text": "nueve",
-   "offsetMs": 3600.0,
-   "durationMs": 337.5
+   "offsetMs": 4650,
+   "durationMs": 260
   },
   {
    "text": "y",
-   "offsetMs": 3937.5,
-   "durationMs": 37.5
+   "offsetMs": 4990,
+   "durationMs": 80
   },
   {
    "text": "catorce",
-   "offsetMs": 3975.0,
-   "durationMs": 537.5
+   "offsetMs": 5110,
+   "durationMs": 440
   },
   {
    "text": "u",
-   "offsetMs": 4512.5,
-   "durationMs": 75.0
+   "offsetMs": 5750,
+   "durationMs": 200
   },
   {
    "text": "te",
-   "offsetMs": 4587.5,
-   "durationMs": 150.0
+   "offsetMs": 6057,
+   "durationMs": 213
   },
   {
-   "text": "ce",
-   "offsetMs": 4737.5,
-   "durationMs": 287.5
+   "text": "ce.",
+   "offsetMs": 6377,
+   "durationMs": 373
   }
  ]
 }

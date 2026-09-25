@@ -1,131 +1,138 @@
 {
- "key": "8544ad61ece6eede74a90b97db856048af822b4ae0c699f407a34e014abd10f1",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "a9cf1fb6daee300f05eb7320cae0549eb301e8389a93f8dec94edce415b75b9d",
+ "sceneKey": "dcef2b6ec475be7b278892dca27c483d6ebd8d4ab58ee731c194f0a68ef66638",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Servidores y estaciones envían por agente; fáieruols y suíches, por sis log; la nube, por a pe i; y los rúters exportan net flou.",
- "bytes": 52704,
- "durationMs": 8784.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "Servidores y estaciones envían por agente; firewalls y switches, por syslog; la nube, por a pe i; y los routers exportan NetFlow.",
+ "bytes": 118944,
+ "bitrateKbps": 96,
+ "durationMs": 9860,
+ "clipInSceneMs": [
+  10308,
+  20168
+ ],
+ "requestId": "DtedSJdJCPt3CugL6Lnn",
  "words": [
   {
    "text": "Servidores",
-   "offsetMs": 100.0,
-   "durationMs": 637.5
+   "offsetMs": 60,
+   "durationMs": 912
   },
   {
    "text": "y",
-   "offsetMs": 737.5,
-   "durationMs": 75.0
+   "offsetMs": 1012,
+   "durationMs": 40
   },
   {
    "text": "estaciones",
-   "offsetMs": 812.5,
-   "durationMs": 600.0
+   "offsetMs": 1092,
+   "durationMs": 520
   },
   {
    "text": "envían",
-   "offsetMs": 1412.5,
-   "durationMs": 375.0
+   "offsetMs": 1672,
+   "durationMs": 420
   },
   {
    "text": "por",
-   "offsetMs": 1787.5,
-   "durationMs": 137.5
+   "offsetMs": 2132,
+   "durationMs": 120
   },
   {
-   "text": "agente",
-   "offsetMs": 1925.0,
-   "durationMs": 450.0
+   "text": "agente;",
+   "offsetMs": 2305,
+   "durationMs": 507
   },
   {
-   "text": "fáieruols",
-   "offsetMs": 2600.0,
-   "durationMs": 675.0
+   "text": "firewalls",
+   "offsetMs": 2972,
+   "durationMs": 880
   },
   {
    "text": "y",
-   "offsetMs": 3275.0,
-   "durationMs": 62.5
+   "offsetMs": 3892,
+   "durationMs": 40
   },
   {
-   "text": "suíches",
-   "offsetMs": 3337.5,
-   "durationMs": 512.5
+   "text": "switches,",
+   "offsetMs": 3994,
+   "durationMs": 578
   },
   {
    "text": "por",
-   "offsetMs": 4075.0,
-   "durationMs": 100.0
+   "offsetMs": 4612,
+   "durationMs": 120
   },
   {
-   "text": "sis",
-   "offsetMs": 4175.0,
-   "durationMs": 225.0
-  },
-  {
-   "text": "log",
-   "offsetMs": 4400.0,
-   "durationMs": 237.5
+   "text": "syslog;",
+   "offsetMs": 4812,
+   "durationMs": 560
   },
   {
    "text": "la",
-   "offsetMs": 4837.5,
-   "durationMs": 175.0
+   "offsetMs": 5532,
+   "durationMs": 320
   },
   {
-   "text": "nube",
-   "offsetMs": 5012.5,
-   "durationMs": 300.0
+   "text": "nube,",
+   "offsetMs": 5892,
+   "durationMs": 360
   },
   {
    "text": "por",
-   "offsetMs": 5312.5,
-   "durationMs": 175.0
+   "offsetMs": 6332,
+   "durationMs": 240
   },
   {
    "text": "a",
-   "offsetMs": 5487.5,
-   "durationMs": 75.0
+   "offsetMs": 6692,
+   "durationMs": 120
   },
   {
    "text": "pe",
-   "offsetMs": 5562.5,
-   "durationMs": 187.5
+   "offsetMs": 6865,
+   "durationMs": 107
   },
   {
-   "text": "i",
-   "offsetMs": 5762.5,
-   "durationMs": 137.5
+   "text": "i;",
+   "offsetMs": 7052,
+   "durationMs": 240
   },
   {
    "text": "y",
-   "offsetMs": 6225.0,
-   "durationMs": 75.0
+   "offsetMs": 7532,
+   "durationMs": 240
   },
   {
    "text": "los",
-   "offsetMs": 6337.5,
-   "durationMs": 175.0
+   "offsetMs": 7812,
+   "durationMs": 120
   },
   {
-   "text": "rúters",
-   "offsetMs": 6512.5,
-   "durationMs": 375.0
+   "text": "routers",
+   "offsetMs": 7992,
+   "durationMs": 420
   },
   {
    "text": "exportan",
-   "offsetMs": 6887.5,
-   "durationMs": 500.0
+   "offsetMs": 8481,
+   "durationMs": 571
   },
   {
-   "text": "net",
-   "offsetMs": 7387.5,
-   "durationMs": 162.5
-  },
-  {
-   "text": "flou",
-   "offsetMs": 7550.0,
-   "durationMs": 325.0
+   "text": "NetFlow.",
+   "offsetMs": 9132,
+   "durationMs": 640
   }
  ]
 }

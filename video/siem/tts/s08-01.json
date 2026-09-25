@@ -1,56 +1,73 @@
 {
- "key": "d967a635f59b4b40a72c1b6bf378ffad6a1f461e6e251e3bee65579add110e50",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "c8c2948c60d52af48ac65c4584e4969657061a442a307455093efc2d74950b29",
+ "sceneKey": "743649b9e9439afcbb3a8246b5a394ee9072099b22c549e2aae7abb3232cb515",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Dos semanas después, gracias al ajuste, destaca una alerta.",
- "bytes": 27216,
- "durationMs": 4536.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[tense] Dos semanas después, gracias al ajuste, destaca una alerta.",
+ "bytes": 52128,
+ "bitrateKbps": 96,
+ "durationMs": 4280,
+ "clipInSceneMs": [
+  80,
+  4360
+ ],
+ "requestId": "Oim3NIKVwySv8rn9EziA",
  "words": [
   {
    "text": "Dos",
-   "offsetMs": 100.0,
-   "durationMs": 225.0
+   "offsetMs": 60,
+   "durationMs": 20
   },
   {
    "text": "semanas",
-   "offsetMs": 325.0,
-   "durationMs": 462.5
+   "offsetMs": 140,
+   "durationMs": 420
   },
   {
-   "text": "después",
-   "offsetMs": 787.5,
-   "durationMs": 475.0
+   "text": "después,",
+   "offsetMs": 620,
+   "durationMs": 500
   },
   {
    "text": "gracias",
-   "offsetMs": 1325.0,
-   "durationMs": 500.0
+   "offsetMs": 1220,
+   "durationMs": 700
   },
   {
    "text": "al",
-   "offsetMs": 1825.0,
-   "durationMs": 100.0
+   "offsetMs": 1973,
+   "durationMs": 107
   },
   {
-   "text": "ajuste",
-   "offsetMs": 1925.0,
-   "durationMs": 462.5
+   "text": "ajuste,",
+   "offsetMs": 2147,
+   "durationMs": 653
   },
   {
    "text": "destaca",
-   "offsetMs": 2412.5,
-   "durationMs": 462.5
+   "offsetMs": 2864,
+   "durationMs": 416
   },
   {
    "text": "una",
-   "offsetMs": 2887.5,
-   "durationMs": 187.5
+   "offsetMs": 3340,
+   "durationMs": 180
   },
   {
-   "text": "alerta",
-   "offsetMs": 3075.0,
-   "durationMs": 487.5
+   "text": "alerta.",
+   "offsetMs": 3573,
+   "durationMs": 507
   }
  ]
 }

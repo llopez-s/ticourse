@@ -1,81 +1,98 @@
 {
- "key": "b8e42dc41df590b87e266f2309097504acd0e3415608ff60c7898b135990f548",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "f1c2ea0860cf12fd57697e295c4bd3908ea8916f3e1779a565340db462e85bcb",
+ "sceneKey": "dcef2b6ec475be7b278892dca27c483d6ebd8d4ab58ee731c194f0a68ef66638",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Si un intruso borra el registro local, la evidencia sobrevive en la copia central.",
- "bytes": 33552,
- "durationMs": 5592.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[mischievously] Si un intruso borra el registro local, [reassuring] la evidencia sobrevive en la copia central.",
+ "bytes": 63936,
+ "bitrateKbps": 96,
+ "durationMs": 5270,
+ "clipInSceneMs": [
+  25850,
+  31120
+ ],
+ "requestId": "DtedSJdJCPt3CugL6Lnn",
  "words": [
   {
    "text": "Si",
-   "offsetMs": 100.0,
-   "durationMs": 187.5
+   "offsetMs": 60,
+   "durationMs": 11
   },
   {
    "text": "un",
-   "offsetMs": 287.5,
-   "durationMs": 137.5
+   "offsetMs": 124,
+   "durationMs": 107
   },
   {
    "text": "intruso",
-   "offsetMs": 437.5,
-   "durationMs": 450.0
+   "offsetMs": 279,
+   "durationMs": 432
   },
   {
    "text": "borra",
-   "offsetMs": 887.5,
-   "durationMs": 300.0
+   "offsetMs": 751,
+   "durationMs": 200
   },
   {
    "text": "el",
-   "offsetMs": 1187.5,
-   "durationMs": 87.5
+   "offsetMs": 978,
+   "durationMs": 53
   },
   {
    "text": "registro",
-   "offsetMs": 1275.0,
-   "durationMs": 512.5
+   "offsetMs": 1084,
+   "durationMs": 427
   },
   {
-   "text": "local",
-   "offsetMs": 1787.5,
-   "durationMs": 387.5
+   "text": "local,",
+   "offsetMs": 1578,
+   "durationMs": 733
   },
   {
    "text": "la",
-   "offsetMs": 2437.5,
-   "durationMs": 150.0
+   "offsetMs": 2382,
+   "durationMs": 9
   },
   {
    "text": "evidencia",
-   "offsetMs": 2587.5,
-   "durationMs": 562.5
+   "offsetMs": 2439,
+   "durationMs": 512
   },
   {
    "text": "sobrevive",
-   "offsetMs": 3150.0,
-   "durationMs": 512.5
+   "offsetMs": 3011,
+   "durationMs": 580
   },
   {
    "text": "en",
-   "offsetMs": 3662.5,
-   "durationMs": 75.0
+   "offsetMs": 3618,
+   "durationMs": 53
   },
   {
    "text": "la",
-   "offsetMs": 3737.5,
-   "durationMs": 112.5
+   "offsetMs": 3724,
+   "durationMs": 107
   },
   {
    "text": "copia",
-   "offsetMs": 3850.0,
-   "durationMs": 337.5
+   "offsetMs": 3891,
+   "durationMs": 500
   },
   {
-   "text": "central",
-   "offsetMs": 4187.5,
-   "durationMs": 475.0
+   "text": "central.",
+   "offsetMs": 4431,
+   "durationMs": 840
   }
  ]
 }

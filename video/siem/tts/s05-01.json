@@ -1,76 +1,93 @@
 {
- "key": "76b64a3d25d5ac66d1b2f79a0fcf3e2e16ea0d9c213c43a26ee0993316b648c8",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "8671c1fb38b327ded52bb9b5bf31a1eea39429f53ab09f203a8da4e25b0f07a3",
+ "sceneKey": "739ff197527dbcbf135704d292d7e3682dde6f3481f39b6e3838b333741eb3ce",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Ahora sí, correlacionar. Tres inicios de sesión fallidos pueden ser un simple despiste.",
- "bytes": 41184,
- "durationMs": 6864.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[casual] Ahora sí, correlacionar. Tres inicios de sesión fallidos pueden ser un simple despiste.",
+ "bytes": 78912,
+ "bitrateKbps": 96,
+ "durationMs": 6518,
+ "clipInSceneMs": [
+  9,
+  6527
+ ],
+ "requestId": "sjFCZlziSeCnOvkjDeuC",
  "words": [
   {
    "text": "Ahora",
-   "offsetMs": 100.0,
-   "durationMs": 375.0
+   "offsetMs": 60,
+   "durationMs": 171
   },
   {
-   "text": "sí",
-   "offsetMs": 475.0,
-   "durationMs": 212.5
+   "text": "sí,",
+   "offsetMs": 311,
+   "durationMs": 400
   },
   {
-   "text": "correlacionar",
-   "offsetMs": 737.5,
-   "durationMs": 862.5
+   "text": "correlacionar.",
+   "offsetMs": 768,
+   "durationMs": 823
   },
   {
    "text": "Tres",
-   "offsetMs": 2562.5,
-   "durationMs": 250.0
+   "offsetMs": 1951,
+   "durationMs": 520
   },
   {
    "text": "inicios",
-   "offsetMs": 2812.5,
-   "durationMs": 462.5
+   "offsetMs": 2524,
+   "durationMs": 507
   },
   {
    "text": "de",
-   "offsetMs": 3275.0,
-   "durationMs": 87.5
+   "offsetMs": 3058,
+   "durationMs": 53
   },
   {
    "text": "sesión",
-   "offsetMs": 3362.5,
-   "durationMs": 375.0
+   "offsetMs": 3168,
+   "durationMs": 343
   },
   {
    "text": "fallidos",
-   "offsetMs": 3737.5,
-   "durationMs": 512.5
+   "offsetMs": 3559,
+   "durationMs": 512
   },
   {
    "text": "pueden",
-   "offsetMs": 4250.0,
-   "durationMs": 362.5
+   "offsetMs": 4151,
+   "durationMs": 480
   },
   {
    "text": "ser",
-   "offsetMs": 4612.5,
-   "durationMs": 187.5
+   "offsetMs": 4671,
+   "durationMs": 120
   },
   {
    "text": "un",
-   "offsetMs": 4800.0,
-   "durationMs": 137.5
+   "offsetMs": 4844,
+   "durationMs": 107
   },
   {
    "text": "simple",
-   "offsetMs": 4937.5,
-   "durationMs": 362.5
+   "offsetMs": 4997,
+   "durationMs": 274
   },
   {
-   "text": "despiste",
-   "offsetMs": 5300.0,
-   "durationMs": 562.5
+   "text": "despiste.",
+   "offsetMs": 5319,
+   "durationMs": 952
   }
  ]
 }

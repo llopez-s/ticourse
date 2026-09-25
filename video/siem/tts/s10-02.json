@@ -1,136 +1,153 @@
 {
- "key": "e39a94eb93cef6e5151cb735d2abf5bb802139d49fdccb1f31eac657c523c3dd",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "77cdabb5dbf523117da4a5ccd8b241eae977626c5cc71632029c0478e4ec96db",
+ "sceneKey": "c12cef15f23a2071be2f4dd98f48d24f20f794b84ef61f48cec6dd5db6c1836f",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Aislarlo: cuarentena en una uve lan restringida, sin apagarlo, porque la memoria también es evidencia. Una captura de paquetes graba el resto de la sesión.",
- "bytes": 61344,
- "durationMs": 10224.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[firm] Aislarlo: cuarentena en una uve lan restringida, sin apagarlo, porque la memoria también es evidencia. Una captura de paquetes graba el resto de la sesión.",
+ "bytes": 127008,
+ "bitrateKbps": 96,
+ "durationMs": 10533,
+ "clipInSceneMs": [
+  5207,
+  15740
+ ],
+ "requestId": "ePfnPcOnfSy476dDHlq5",
  "words": [
   {
-   "text": "Aislarlo",
-   "offsetMs": 100.0,
-   "durationMs": 625.0
+   "text": "Aislarlo:",
+   "offsetMs": 60,
+   "durationMs": 653
   },
   {
    "text": "cuarentena",
-   "offsetMs": 762.5,
-   "durationMs": 600.0
+   "offsetMs": 873,
+   "durationMs": 720
   },
   {
    "text": "en",
-   "offsetMs": 1362.5,
-   "durationMs": 112.5
+   "offsetMs": 1646,
+   "durationMs": 107
   },
   {
    "text": "una",
-   "offsetMs": 1475.0,
-   "durationMs": 200.0
+   "offsetMs": 1813,
+   "durationMs": 180
   },
   {
    "text": "uve",
-   "offsetMs": 1675.0,
-   "durationMs": 200.0
+   "offsetMs": 2113,
+   "durationMs": 280
   },
   {
    "text": "lan",
-   "offsetMs": 1875.0,
-   "durationMs": 175.0
+   "offsetMs": 2433,
+   "durationMs": 120
   },
   {
-   "text": "restringida",
-   "offsetMs": 2050.0,
-   "durationMs": 700.0
+   "text": "restringida,",
+   "offsetMs": 2633,
+   "durationMs": 920
   },
   {
    "text": "sin",
-   "offsetMs": 2962.5,
-   "durationMs": 212.5
+   "offsetMs": 3603,
+   "durationMs": 150
   },
   {
-   "text": "apagarlo",
-   "offsetMs": 3175.0,
-   "durationMs": 525.0
+   "text": "apagarlo,",
+   "offsetMs": 3806,
+   "durationMs": 907
   },
   {
    "text": "porque",
-   "offsetMs": 3725.0,
-   "durationMs": 287.5
+   "offsetMs": 4747,
+   "durationMs": 206
   },
   {
    "text": "la",
-   "offsetMs": 4012.5,
-   "durationMs": 75.0
+   "offsetMs": 4980,
+   "durationMs": 53
   },
   {
    "text": "memoria",
-   "offsetMs": 4087.5,
-   "durationMs": 412.5
+   "offsetMs": 5093,
+   "durationMs": 420
   },
   {
    "text": "también",
-   "offsetMs": 4500.0,
-   "durationMs": 387.5
+   "offsetMs": 5563,
+   "durationMs": 350
   },
   {
    "text": "es",
-   "offsetMs": 4887.5,
-   "durationMs": 150.0
+   "offsetMs": 5940,
+   "durationMs": 53
   },
   {
-   "text": "evidencia",
-   "offsetMs": 5037.5,
-   "durationMs": 525.0
+   "text": "evidencia.",
+   "offsetMs": 6057,
+   "durationMs": 1056
   },
   {
    "text": "Una",
-   "offsetMs": 6512.5,
-   "durationMs": 237.5
+   "offsetMs": 7213,
+   "durationMs": 300
   },
   {
    "text": "captura",
-   "offsetMs": 6750.0,
-   "durationMs": 487.5
+   "offsetMs": 7561,
+   "durationMs": 352
   },
   {
    "text": "de",
-   "offsetMs": 7237.5,
-   "durationMs": 100.0
+   "offsetMs": 7940,
+   "durationMs": 53
   },
   {
    "text": "paquetes",
-   "offsetMs": 7337.5,
-   "durationMs": 512.5
+   "offsetMs": 8046,
+   "durationMs": 587
   },
   {
    "text": "graba",
-   "offsetMs": 7850.0,
-   "durationMs": 312.5
+   "offsetMs": 8681,
+   "durationMs": 272
   },
   {
    "text": "el",
-   "offsetMs": 8162.5,
-   "durationMs": 137.5
+   "offsetMs": 9006,
+   "durationMs": 107
   },
   {
    "text": "resto",
-   "offsetMs": 8300.0,
-   "durationMs": 337.5
+   "offsetMs": 9166,
+   "durationMs": 267
   },
   {
    "text": "de",
-   "offsetMs": 8637.5,
-   "durationMs": 100.0
+   "offsetMs": 9460,
+   "durationMs": 53
   },
   {
    "text": "la",
-   "offsetMs": 8737.5,
-   "durationMs": 112.5
+   "offsetMs": 9540,
+   "durationMs": 53
   },
   {
-   "text": "sesión",
-   "offsetMs": 8850.0,
-   "durationMs": 412.5
+   "text": "sesión.",
+   "offsetMs": 9673,
+   "durationMs": 560
   }
  ]
 }

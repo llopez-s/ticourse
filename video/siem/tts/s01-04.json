@@ -1,76 +1,93 @@
 {
- "key": "43e6df30fd47f03ed5b8d96ab620caa4d5c09f234fdf2ea7eb0c907e72195156",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "02802598bd3b1ad297ef12e9691801a36d7d0279c5b76704886b3a32e7f848d9",
+ "sceneKey": "3798efe0e33e13a3aa6c852d89c5085f68c5d9f8bf6b21d42fd943e1e840a8f9",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Al fundirse, su trabajo cabe en cuatro verbos: agregar, normalizar, correlacionar y alertar.",
- "bytes": 37152,
- "durationMs": 6192.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[enthusiastic] Al fundirse, su trabajo cabe en cuatro verbos: agregar, normalizar, correlacionar y alertar.",
+ "bytes": 85824,
+ "bitrateKbps": 96,
+ "durationMs": 7097,
+ "clipInSceneMs": [
+  23783,
+  30880
+ ],
+ "requestId": "mFoxrePPYtvokaHj7TLx",
  "words": [
   {
    "text": "Al",
-   "offsetMs": 100.0,
-   "durationMs": 137.5
+   "offsetMs": 60,
+   "durationMs": 11
   },
   {
-   "text": "fundirse",
-   "offsetMs": 237.5,
-   "durationMs": 600.0
+   "text": "fundirse,",
+   "offsetMs": 135,
+   "durationMs": 976
   },
   {
    "text": "su",
-   "offsetMs": 837.5,
-   "durationMs": 150.0
+   "offsetMs": 1164,
+   "durationMs": 107
   },
   {
    "text": "trabajo",
-   "offsetMs": 987.5,
-   "durationMs": 400.0
+   "offsetMs": 1311,
+   "durationMs": 280
   },
   {
    "text": "cabe",
-   "offsetMs": 1387.5,
-   "durationMs": 275.0
+   "offsetMs": 1655,
+   "durationMs": 256
   },
   {
    "text": "en",
-   "offsetMs": 1662.5,
-   "durationMs": 112.5
+   "offsetMs": 1938,
+   "durationMs": 53
   },
   {
    "text": "cuatro",
-   "offsetMs": 1775.0,
-   "durationMs": 325.0
+   "offsetMs": 2037,
+   "durationMs": 274
   },
   {
-   "text": "verbos",
-   "offsetMs": 2100.0,
-   "durationMs": 412.5
+   "text": "verbos:",
+   "offsetMs": 2359,
+   "durationMs": 512
   },
   {
-   "text": "agregar",
-   "offsetMs": 2700.0,
-   "durationMs": 450.0
+   "text": "agregar,",
+   "offsetMs": 2981,
+   "durationMs": 1130
   },
   {
-   "text": "normalizar",
-   "offsetMs": 3200.0,
-   "durationMs": 662.5
+   "text": "normalizar,",
+   "offsetMs": 4162,
+   "durationMs": 709
   },
   {
    "text": "correlacionar",
-   "offsetMs": 3925.0,
-   "durationMs": 750.0
+   "offsetMs": 4974,
+   "durationMs": 1017
   },
   {
    "text": "y",
-   "offsetMs": 4675.0,
-   "durationMs": 87.5
+   "offsetMs": 6151,
+   "durationMs": 160
   },
   {
-   "text": "alertar",
-   "offsetMs": 4775.0,
-   "durationMs": 450.0
+   "text": "alertar.",
+   "offsetMs": 6391,
+   "durationMs": 720
   }
  ]
 }

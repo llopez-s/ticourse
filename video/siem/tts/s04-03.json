@@ -1,111 +1,128 @@
 {
- "key": "d43c92d0fe577c056ef7c18833569eda48ae6a36a9f5b9aa0593f297acebe861",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "4c7b91b8ebb27f38932152de75f16885a41ae58aeb6306f9b6244ff048f50a07",
+ "sceneKey": "45e349be0f79b2f4707e9cd24624154d5ba0f751f5981aadb2a40fc5e520992a",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "El contexto decide la gravedad: el mismo aviso no pesa igual en un portátil que en la terminal de contenedores.",
- "bytes": 41184,
- "durationMs": 6864.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[serious] El contexto decide la gravedad: el mismo aviso no pesa igual en un portátil que en la terminal de contenedores.",
+ "bytes": 80352,
+ "bitrateKbps": 96,
+ "durationMs": 6638,
+ "clipInSceneMs": [
+  13442,
+  20080
+ ],
+ "requestId": "FXf3VaiuEhRrQYwer0wL",
  "words": [
   {
    "text": "El",
-   "offsetMs": 100.0,
-   "durationMs": 112.5
+   "offsetMs": 60,
+   "durationMs": 18
   },
   {
    "text": "contexto",
-   "offsetMs": 212.5,
-   "durationMs": 562.5
+   "offsetMs": 149,
+   "durationMs": 569
   },
   {
    "text": "decide",
-   "offsetMs": 775.0,
-   "durationMs": 400.0
+   "offsetMs": 775,
+   "durationMs": 343
   },
   {
    "text": "la",
-   "offsetMs": 1175.0,
-   "durationMs": 100.0
+   "offsetMs": 1145,
+   "durationMs": 53
   },
   {
-   "text": "gravedad",
-   "offsetMs": 1275.0,
-   "durationMs": 487.5
+   "text": "gravedad:",
+   "offsetMs": 1251,
+   "durationMs": 1067
   },
   {
    "text": "el",
-   "offsetMs": 2062.5,
-   "durationMs": 112.5
+   "offsetMs": 2371,
+   "durationMs": 107
   },
   {
    "text": "mismo",
-   "offsetMs": 2225.0,
-   "durationMs": 350.0
+   "offsetMs": 2531,
+   "durationMs": 267
   },
   {
    "text": "aviso",
-   "offsetMs": 2575.0,
-   "durationMs": 325.0
+   "offsetMs": 2851,
+   "durationMs": 347
   },
   {
    "text": "no",
-   "offsetMs": 2900.0,
-   "durationMs": 112.5
+   "offsetMs": 3251,
+   "durationMs": 107
   },
   {
    "text": "pesa",
-   "offsetMs": 3012.5,
-   "durationMs": 275.0
+   "offsetMs": 3418,
+   "durationMs": 260
   },
   {
    "text": "igual",
-   "offsetMs": 3287.5,
-   "durationMs": 312.5
+   "offsetMs": 3731,
+   "durationMs": 267
   },
   {
    "text": "en",
-   "offsetMs": 3600.0,
-   "durationMs": 100.0
+   "offsetMs": 4025,
+   "durationMs": 53
   },
   {
    "text": "un",
-   "offsetMs": 3700.0,
-   "durationMs": 150.0
+   "offsetMs": 4131,
+   "durationMs": 107
   },
   {
    "text": "portátil",
-   "offsetMs": 3850.0,
-   "durationMs": 450.0
+   "offsetMs": 4286,
+   "durationMs": 512
   },
   {
    "text": "que",
-   "offsetMs": 4300.0,
-   "durationMs": 125.0
+   "offsetMs": 4838,
+   "durationMs": 120
   },
   {
    "text": "en",
-   "offsetMs": 4425.0,
-   "durationMs": 62.5
+   "offsetMs": 4985,
+   "durationMs": 53
   },
   {
    "text": "la",
-   "offsetMs": 4487.5,
-   "durationMs": 112.5
+   "offsetMs": 5065,
+   "durationMs": 53
   },
   {
    "text": "terminal",
-   "offsetMs": 4600.0,
-   "durationMs": 450.0
+   "offsetMs": 5171,
+   "durationMs": 427
   },
   {
    "text": "de",
-   "offsetMs": 5050.0,
-   "durationMs": 87.5
+   "offsetMs": 5625,
+   "durationMs": 53
   },
   {
-   "text": "contenedores",
-   "offsetMs": 5137.5,
-   "durationMs": 750.0
+   "text": "contenedores.",
+   "offsetMs": 5726,
+   "durationMs": 912
   }
  ]
 }

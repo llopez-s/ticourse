@@ -1,61 +1,78 @@
 {
- "key": "f63811d3a2e127c991de32081a959330473c4ae7f2721c5001dc17d08c6d6506",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "6a118547a535a6bf723ea3076289ac97651722e41ea132ffc24f6dfdb4ebfe59",
+ "sceneKey": "c12cef15f23a2071be2f4dd98f48d24f20f794b84ef61f48cec6dd5db6c1836f",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Primera decisión de contención: ¿apagas el servidor o lo aíslas?",
- "bytes": 30528,
- "durationMs": 5088.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[urgent] Primera decisión de contención: ¿apagas el servidor o lo aíslas?",
+ "bytes": 54432,
+ "bitrateKbps": 96,
+ "durationMs": 4488,
+ "clipInSceneMs": [
+  132,
+  4620
+ ],
+ "requestId": "ePfnPcOnfSy476dDHlq5",
  "words": [
   {
    "text": "Primera",
-   "offsetMs": 100.0,
-   "durationMs": 387.5
+   "offsetMs": 60,
+   "durationMs": 128
   },
   {
    "text": "decisión",
-   "offsetMs": 487.5,
-   "durationMs": 525.0
+   "offsetMs": 255,
+   "durationMs": 413
   },
   {
    "text": "de",
-   "offsetMs": 1012.5,
-   "durationMs": 75.0
+   "offsetMs": 721,
+   "durationMs": 107
   },
   {
-   "text": "contención",
-   "offsetMs": 1087.5,
-   "durationMs": 675.0
+   "text": "contención:",
+   "offsetMs": 876,
+   "durationMs": 752
   },
   {
-   "text": "apagas",
-   "offsetMs": 2075.0,
-   "durationMs": 462.5
+   "text": "¿apagas",
+   "offsetMs": 1788,
+   "durationMs": 640
   },
   {
    "text": "el",
-   "offsetMs": 2537.5,
-   "durationMs": 100.0
+   "offsetMs": 2455,
+   "durationMs": 53
   },
   {
    "text": "servidor",
-   "offsetMs": 2637.5,
-   "durationMs": 500.0
+   "offsetMs": 2570,
+   "durationMs": 498
   },
   {
    "text": "o",
-   "offsetMs": 3337.5,
-   "durationMs": 100.0
+   "offsetMs": 3228,
+   "durationMs": 160
   },
   {
    "text": "lo",
-   "offsetMs": 3437.5,
-   "durationMs": 125.0
+   "offsetMs": 3441,
+   "durationMs": 107
   },
   {
-   "text": "aíslas",
-   "offsetMs": 3562.5,
-   "durationMs": 512.5
+   "text": "aíslas?",
+   "offsetMs": 3588,
+   "durationMs": 600
   }
  ]
 }
