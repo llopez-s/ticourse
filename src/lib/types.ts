@@ -75,6 +75,7 @@ export type Block =
   | { t: 'list'; items: string[]; ordered?: boolean }
   | { t: 'table'; headers: string[]; rows: string[][] }
   | { t: 'code'; lang?: string; title?: string; text: string }
+  | { t: 'video'; title: string; src: string; poster: string; transcript: string; captions: string }
   | {
       t: 'callout';
       kind: 'tip' | 'warn' | 'example' | 'exam' | 'story';

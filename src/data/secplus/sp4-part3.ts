@@ -448,6 +448,14 @@ const sp4m6: Module = {
       md: 'El SOC del puerto recibe 6.000 alertas al día y el turno de noche cierra el 90 % sin abrirlas: **alert fatigue** de manual. La revisión encuentra que tres reglas generan el 78 % del volumen —el agente de copias de seguridad, el escáner de vulnerabilidades corporativo y un balanceador que reinicia sesiones cada hora— y que ninguna ha producido nunca un incidente real. Se **afinan** con exclusiones documentadas y aprobadas, y la cola baja a 400 avisos diarios. Dos semanas después salta una alerta de volumen saliente inusual en un servidor de la terminal de contenedores: **NetFlow** confirma 38 GB hacia una IP desconocida entre las 02:00 y las 04:30; el **SIEM** correlaciona ese flujo con un inicio de sesión de una cuenta de servicio a las 01:52 desde una estación de administración; el equipo pasa la máquina a **quarantine** en una VLAN restringida sin apagarla y activa una captura para el resto de la sesión. Sin el ajuste previo, esa alerta habría estado en la misma cola de 6.000 que nadie leía.',
     },
     {
+      t: 'video',
+      title: 'SIEM en acción: del ruido a la evidencia',
+      src: 'videos/siem-blue-team.mp4',
+      poster: 'videos/siem-blue-team-poster.png',
+      transcript: 'videos/siem-blue-team-transcript.txt',
+      captions: 'videos/siem-blue-team-captions.vtt',
+    },
+    {
       t: 'p',
       md: 'Ya sabes qué vigilar, con qué actividades y con qué herramientas. La siguiente lección da el paso natural: si la monitorización te dice **qué está pasando**, el objetivo 4.5 se ocupa de **impedir que pase** —firewalls y sus listas de acceso, **IDS/IPS**, filtrado web y de **DNS**, protocolos seguros, seguridad del correo con **SPF**, **DKIM** y **DMARC**, **FIM**, **DLP**, **NAC** y **EDR/XDR**—, es decir, todas las capacidades técnicas que se endurecen para que la consola tenga menos que contarte.',
     },

@@ -1,0 +1,2861 @@
+{
+  "mode": "audio",
+  "sourceHash": "5fca3594b9ddb5802a7b2ba6678223d5a4a07ac86e2c7f55738a4c9ce6ff468c",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "durationInFrames": 9751,
+  "voice": "es-ES-ElviraNeural",
+  "scenes": [
+    {"id":"s01-hook","chapter":1,"chapterTitle":"Qué es","title":"Seis mil avisos, uno importa","from":0,"durationInFrames":864},
+    {"id":"s02-collect","chapter":2,"chapterTitle":"Cómo funciona","title":"Recoger","from":864,"durationInFrames":883},
+    {"id":"s03-normalize","chapter":2,"chapterTitle":"Cómo funciona","title":"Normalizar","from":1747,"durationInFrames":626},
+    {"id":"s04-enrich","chapter":2,"chapterTitle":"Cómo funciona","title":"Enriquecer","from":2373,"durationInFrames":550},
+    {"id":"s05-correlate","chapter":2,"chapterTitle":"Cómo funciona","title":"Correlacionar y alertar","from":2923,"durationInFrames":737},
+    {"id":"s06-fatigue","chapter":3,"chapterTitle":"Operar el SIEM","title":"Alert fatigue","from":3660,"durationInFrames":775},
+    {"id":"s07-tuning","chapter":3,"chapterTitle":"Operar el SIEM","title":"Alert tuning","from":4435,"durationInFrames":928},
+    {"id":"s08-triage","chapter":4,"chapterTitle":"El caso de Halden","title":"Triaje","from":5363,"durationInFrames":926},
+    {"id":"s09-pivot","chapter":4,"chapterTitle":"El caso de Halden","title":"Pivotar y correlacionar","from":6289,"durationInFrames":847},
+    {"id":"s10-contain","chapter":4,"chapterTitle":"El caso de Halden","title":"Contener y validar","from":7136,"durationInFrames":1035},
+    {"id":"s11-limits","chapter":5,"chapterTitle":"Límites y examen","title":"Lo que el SIEM no ve","from":8171,"durationInFrames":795},
+    {"id":"s12-recap","chapter":5,"chapterTitle":"Límites y examen","title":"Para el examen","from":8966,"durationInFrames":785}
+  ],
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "Madrugada en la Autoridad Portuaria de Halden: al SOC llegan 6.000 alertas al día, y solo una importa.",
+      "from": 45,
+      "audioFrames": 190,
+      "durationInFrames": 204,
+      "audio": "voice/s01-01.mp3",
+      "words": [
+        {"text":"Madrugada","from":48,"to":64},
+        {"text":"en","from":64,"to":66},
+        {"text":"la","from":66,"to":69},
+        {"text":"Autoridad","from":69,"to":84},
+        {"text":"Portuaria","from":84,"to":101},
+        {"text":"de","from":101,"to":103},
+        {"text":"Halden:","from":103,"to":118},
+        {"text":"al","from":127,"to":131},
+        {"text":"SOC","from":131,"to":137},
+        {"text":"llegan","from":138,"to":147},
+        {"text":"6.000","from":147,"to":161},
+        {"text":"alertas","from":161,"to":174},
+        {"text":"al","from":174,"to":178},
+        {"text":"día,","from":178,"to":187},
+        {"text":"y","from":194,"to":197},
+        {"text":"solo","from":197,"to":207},
+        {"text":"una","from":207,"to":213},
+        {"text":"importa.","from":213,"to":227}
+      ]
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "Encontrarla es trabajo del equipo defensivo, el Blue Team, con su SIEM: Security Information and Event Management.",
+      "from": 249,
+      "audioFrames": 209,
+      "durationInFrames": 220,
+      "audio": "voice/s01-02.mp3",
+      "words": [
+        {"text":"Encontrarla","from":252,"to":273},
+        {"text":"es","from":273,"to":276},
+        {"text":"trabajo","from":276,"to":290},
+        {"text":"del","from":290,"to":294},
+        {"text":"equipo","from":294,"to":304},
+        {"text":"defensivo,","from":304,"to":323},
+        {"text":"el","from":323,"to":327},
+        {"text":"Blue","from":327,"to":332},
+        {"text":"Team,","from":332,"to":341},
+        {"text":"con","from":351,"to":354},
+        {"text":"su","from":354,"to":359},
+        {"text":"SIEM:","from":359,"to":370},
+        {"text":"Security","from":377,"to":395},
+        {"text":"Information","from":395,"to":415},
+        {"text":"and","from":415,"to":421},
+        {"text":"Event","from":422,"to":430},
+        {"text":"Management.","from":430,"to":450}
+      ]
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "Une SIM, que guarda, busca e informa a largo plazo, y SEM, que vigila eventos en tiempo real.",
+      "from": 469,
+      "audioFrames": 182,
+      "durationInFrames": 193,
+      "audio": "voice/s01-03.mp3",
+      "words": [
+        {"text":"Une","from":472,"to":480},
+        {"text":"SIM,","from":480,"to":489},
+        {"text":"que","from":494,"to":496},
+        {"text":"guarda,","from":501,"to":513},
+        {"text":"busca","from":516,"to":527},
+        {"text":"e","from":528,"to":530},
+        {"text":"informa","from":529,"to":542},
+        {"text":"a","from":542,"to":545},
+        {"text":"largo","from":545,"to":554},
+        {"text":"plazo,","from":554,"to":566},
+        {"text":"y","from":568,"to":571},
+        {"text":"SEM,","from":571,"to":580},
+        {"text":"que","from":588,"to":590},
+        {"text":"vigila","from":592,"to":604},
+        {"text":"eventos","from":604,"to":618},
+        {"text":"en","from":618,"to":622},
+        {"text":"tiempo","from":622,"to":631},
+        {"text":"real.","from":631,"to":643}
+      ]
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "Al fundirse, su trabajo cabe en cuatro verbos: agregar, normalizar, correlacionar y alertar.",
+      "from": 662,
+      "audioFrames": 165,
+      "durationInFrames": 182,
+      "audio": "voice/s01-04.mp3",
+      "words": [
+        {"text":"Al","from":665,"to":669},
+        {"text":"fundirse,","from":669,"to":687},
+        {"text":"su","from":687,"to":692},
+        {"text":"trabajo","from":692,"to":704},
+        {"text":"cabe","from":704,"to":712},
+        {"text":"en","from":712,"to":715},
+        {"text":"cuatro","from":715,"to":725},
+        {"text":"verbos:","from":725,"to":737},
+        {"text":"agregar,","from":743,"to":757},
+        {"text":"normalizar,","from":758,"to":778},
+        {"text":"correlacionar","from":780,"to":802},
+        {"text":"y","from":802,"to":805},
+        {"text":"alertar.","from":805,"to":819}
+      ]
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-collect",
+      "text": "Primero, recoger: log aggregation. Los sistemas cuentan quién entró; las aplicaciones, qué hizo; la infraestructura, por dónde se movió.",
+      "from": 876,
+      "audioFrames": 283,
+      "durationInFrames": 294,
+      "audio": "voice/s02-01.mp3",
+      "words": [
+        {"text":"Primero,","from":879,"to":892},
+        {"text":"recoger:","from":898,"to":917},
+        {"text":"log","from":924,"to":931},
+        {"text":"aggregation.","from":931,"to":953},
+        {"text":"Los","from":982,"to":988},
+        {"text":"sistemas","from":988,"to":1003},
+        {"text":"cuentan","from":1003,"to":1014},
+        {"text":"quién","from":1014,"to":1020},
+        {"text":"entró;","from":1020,"to":1030},
+        {"text":"las","from":1035,"to":1042},
+        {"text":"aplicaciones,","from":1042,"to":1064},
+        {"text":"qué","from":1072,"to":1075},
+        {"text":"hizo;","from":1075,"to":1084},
+        {"text":"la","from":1093,"to":1097},
+        {"text":"infraestructura,","from":1097,"to":1122},
+        {"text":"por","from":1125,"to":1130},
+        {"text":"dónde","from":1130,"to":1138},
+        {"text":"se","from":1138,"to":1142},
+        {"text":"movió.","from":1142,"to":1151}
+      ]
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-collect",
+      "text": "Servidores y estaciones envían por agente; firewalls y switches, por syslog; la nube, por API; y los routers exportan NetFlow.",
+      "from": 1170,
+      "audioFrames": 244,
+      "durationInFrames": 255,
+      "audio": "voice/s02-02.mp3",
+      "words": [
+        {"text":"Servidores","from":1173,"to":1192},
+        {"text":"y","from":1192,"to":1194},
+        {"text":"estaciones","from":1194,"to":1212},
+        {"text":"envían","from":1212,"to":1224},
+        {"text":"por","from":1224,"to":1228},
+        {"text":"agente;","from":1228,"to":1241},
+        {"text":"firewalls","from":1248,"to":1268},
+        {"text":"y","from":1268,"to":1270},
+        {"text":"switches,","from":1270,"to":1286},
+        {"text":"por","from":1292,"to":1295},
+        {"text":"syslog;","from":1295,"to":1309},
+        {"text":"la","from":1315,"to":1320},
+        {"text":"nube,","from":1320,"to":1329},
+        {"text":"por","from":1329,"to":1335},
+        {"text":"API;","from":1335,"to":1347},
+        {"text":"y","from":1357,"to":1359},
+        {"text":"los","from":1360,"to":1365},
+        {"text":"routers","from":1365,"to":1377},
+        {"text":"exportan","from":1377,"to":1392},
+        {"text":"NetFlow.","from":1392,"to":1406}
+      ]
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-collect",
+      "text": "Todo converge en un punto central, con la hora sincronizada por NTP.",
+      "from": 1425,
+      "audioFrames": 126,
+      "durationInFrames": 137,
+      "audio": "voice/s02-03.mp3",
+      "words": [
+        {"text":"Todo","from":1428,"to":1435},
+        {"text":"converge","from":1435,"to":1449},
+        {"text":"en","from":1449,"to":1452},
+        {"text":"un","from":1452,"to":1458},
+        {"text":"punto","from":1458,"to":1465},
+        {"text":"central,","from":1465,"to":1480},
+        {"text":"con","from":1487,"to":1492},
+        {"text":"la","from":1493,"to":1496},
+        {"text":"hora","from":1497,"to":1503},
+        {"text":"sincronizada","from":1503,"to":1524},
+        {"text":"por","from":1524,"to":1529},
+        {"text":"NTP.","from":1529,"to":1544}
+      ]
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-collect",
+      "text": "Si un intruso borra el registro local, la evidencia sobrevive en la copia central.",
+      "from": 1562,
+      "audioFrames": 148,
+      "durationInFrames": 165,
+      "audio": "voice/s02-04.mp3",
+      "words": [
+        {"text":"Si","from":1565,"to":1571},
+        {"text":"un","from":1571,"to":1575},
+        {"text":"intruso","from":1575,"to":1589},
+        {"text":"borra","from":1589,"to":1598},
+        {"text":"el","from":1598,"to":1600},
+        {"text":"registro","from":1600,"to":1616},
+        {"text":"local,","from":1616,"to":1627},
+        {"text":"la","from":1635,"to":1640},
+        {"text":"evidencia","from":1640,"to":1657},
+        {"text":"sobrevive","from":1657,"to":1672},
+        {"text":"en","from":1672,"to":1674},
+        {"text":"la","from":1674,"to":1678},
+        {"text":"copia","from":1678,"to":1688},
+        {"text":"central.","from":1688,"to":1702}
+      ]
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-normalize",
+      "text": "Después, normalizar, porque cada fuente habla su propio dialecto.",
+      "from": 1759,
+      "audioFrames": 112,
+      "durationInFrames": 123,
+      "audio": "voice/s03-01.mp3",
+      "words": [
+        {"text":"Después,","from":1762,"to":1778},
+        {"text":"normalizar,","from":1779,"to":1799},
+        {"text":"porque","from":1800,"to":1809},
+        {"text":"cada","from":1809,"to":1816},
+        {"text":"fuente","from":1816,"to":1827},
+        {"text":"habla","from":1827,"to":1834},
+        {"text":"su","from":1834,"to":1839},
+        {"text":"propio","from":1839,"to":1849},
+        {"text":"dialecto.","from":1849,"to":1863}
+      ]
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-normalize",
+      "text": "El SIEM parsea cada línea: extrae sus campos. Y los normaliza a un esquema común, donde usuario, IP de origen y acción se llaman igual.",
+      "from": 1882,
+      "audioFrames": 284,
+      "durationInFrames": 295,
+      "audio": "voice/s03-02.mp3",
+      "words": [
+        {"text":"El","from":1885,"to":1890},
+        {"text":"SIEM","from":1890,"to":1900},
+        {"text":"parsea","from":1900,"to":1914},
+        {"text":"cada","from":1915,"to":1922},
+        {"text":"línea:","from":1922,"to":1934},
+        {"text":"extrae","from":1941,"to":1957},
+        {"text":"sus","from":1957,"to":1964},
+        {"text":"campos.","from":1964,"to":1978},
+        {"text":"Y","from":2007,"to":2009},
+        {"text":"los","from":2010,"to":2015},
+        {"text":"normaliza","from":2015,"to":2032},
+        {"text":"a","from":2032,"to":2035},
+        {"text":"un","from":2035,"to":2039},
+        {"text":"esquema","from":2039,"to":2050},
+        {"text":"común,","from":2050,"to":2061},
+        {"text":"donde","from":2064,"to":2073},
+        {"text":"usuario,","from":2073,"to":2090},
+        {"text":"IP","from":2096,"to":2103},
+        {"text":"de","from":2104,"to":2107},
+        {"text":"origen","from":2107,"to":2119},
+        {"text":"y","from":2119,"to":2121},
+        {"text":"acción","from":2121,"to":2133},
+        {"text":"se","from":2133,"to":2138},
+        {"text":"llaman","from":2138,"to":2147},
+        {"text":"igual.","from":2147,"to":2158}
+      ]
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-normalize",
+      "text": "También la hora: las 10:14 de Halden se guardan como las 09:14 UTC.",
+      "from": 2177,
+      "audioFrames": 159,
+      "durationInFrames": 176,
+      "audio": "voice/s03-03.mp3",
+      "words": [
+        {"text":"También","from":2180,"to":2191},
+        {"text":"la","from":2191,"to":2195},
+        {"text":"hora:","from":2195,"to":2203},
+        {"text":"las","from":2213,"to":2219},
+        {"text":"10:14","from":2219,"to":2243},
+        {"text":"de","from":2243,"to":2246},
+        {"text":"Halden","from":2246,"to":2258},
+        {"text":"se","from":2258,"to":2262},
+        {"text":"guardan","from":2262,"to":2273},
+        {"text":"como","from":2273,"to":2281},
+        {"text":"las","from":2281,"to":2285},
+        {"text":"09:14","from":2285,"to":2312},
+        {"text":"UTC.","from":2312,"to":2328}
+      ]
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-enrich",
+      "text": "Antes de correlacionar, el SIEM enriquece: añade qué activo es, cuánto importa y quién es el usuario.",
+      "from": 2385,
+      "audioFrames": 176,
+      "durationInFrames": 187,
+      "audio": "voice/s04-01.mp3",
+      "words": [
+        {"text":"Antes","from":2388,"to":2399},
+        {"text":"de","from":2399,"to":2401},
+        {"text":"correlacionar,","from":2401,"to":2424},
+        {"text":"el","from":2427,"to":2432},
+        {"text":"SIEM","from":2432,"to":2441},
+        {"text":"enriquece:","from":2441,"to":2459},
+        {"text":"añade","from":2468,"to":2479},
+        {"text":"qué","from":2479,"to":2482},
+        {"text":"activo","from":2482,"to":2493},
+        {"text":"es,","from":2493,"to":2499},
+        {"text":"cuánto","from":2500,"to":2509},
+        {"text":"importa","from":2509,"to":2521},
+        {"text":"y","from":2521,"to":2523},
+        {"text":"quién","from":2523,"to":2531},
+        {"text":"es","from":2531,"to":2535},
+        {"text":"el","from":2535,"to":2537},
+        {"text":"usuario.","from":2537,"to":2553}
+      ]
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-enrich",
+      "text": "También de dónde viene la IP y si figura en inteligencia de amenazas.",
+      "from": 2572,
+      "audioFrames": 118,
+      "durationInFrames": 129,
+      "audio": "voice/s04-02.mp3",
+      "words": [
+        {"text":"También","from":2575,"to":2587},
+        {"text":"de","from":2587,"to":2590},
+        {"text":"dónde","from":2590,"to":2599},
+        {"text":"viene","from":2599,"to":2607},
+        {"text":"la","from":2607,"to":2611},
+        {"text":"IP","from":2611,"to":2619},
+        {"text":"y","from":2620,"to":2622},
+        {"text":"si","from":2622,"to":2626},
+        {"text":"figura","from":2626,"to":2637},
+        {"text":"en","from":2637,"to":2641},
+        {"text":"inteligencia","from":2641,"to":2661},
+        {"text":"de","from":2661,"to":2664},
+        {"text":"amenazas.","from":2664,"to":2682}
+      ]
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-enrich",
+      "text": "El contexto decide la gravedad: el mismo aviso no pesa igual en un portátil que en la terminal de contenedores.",
+      "from": 2701,
+      "audioFrames": 185,
+      "durationInFrames": 202,
+      "audio": "voice/s04-03.mp3",
+      "words": [
+        {"text":"El","from":2704,"to":2707},
+        {"text":"contexto","from":2707,"to":2724},
+        {"text":"decide","from":2724,"to":2736},
+        {"text":"la","from":2736,"to":2739},
+        {"text":"gravedad:","from":2739,"to":2754},
+        {"text":"el","from":2763,"to":2766},
+        {"text":"mismo","from":2768,"to":2778},
+        {"text":"aviso","from":2778,"to":2788},
+        {"text":"no","from":2788,"to":2791},
+        {"text":"pesa","from":2791,"to":2800},
+        {"text":"igual","from":2800,"to":2809},
+        {"text":"en","from":2809,"to":2812},
+        {"text":"un","from":2812,"to":2817},
+        {"text":"portátil","from":2817,"to":2830},
+        {"text":"que","from":2830,"to":2834},
+        {"text":"en","from":2834,"to":2836},
+        {"text":"la","from":2836,"to":2839},
+        {"text":"terminal","from":2839,"to":2853},
+        {"text":"de","from":2853,"to":2855},
+        {"text":"contenedores.","from":2855,"to":2878}
+      ]
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-correlate",
+      "text": "Ahora sí, correlacionar. Tres inicios de sesión fallidos pueden ser un simple despiste.",
+      "from": 2935,
+      "audioFrames": 184,
+      "durationInFrames": 195,
+      "audio": "voice/s05-01.mp3",
+      "words": [
+        {"text":"Ahora","from":2938,"to":2949},
+        {"text":"sí,","from":2949,"to":2956},
+        {"text":"correlacionar.","from":2957,"to":2983},
+        {"text":"Tres","from":3012,"to":3019},
+        {"text":"inicios","from":3019,"to":3033},
+        {"text":"de","from":3033,"to":3036},
+        {"text":"sesión","from":3036,"to":3047},
+        {"text":"fallidos","from":3047,"to":3063},
+        {"text":"pueden","from":3063,"to":3073},
+        {"text":"ser","from":3073,"to":3079},
+        {"text":"un","from":3079,"to":3083},
+        {"text":"simple","from":3083,"to":3094},
+        {"text":"despiste.","from":3094,"to":3111}
+      ]
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-correlate",
+      "text": "Pero luego entra la misma cuenta, y diez minutos después aparece un usuario nuevo.",
+      "from": 3130,
+      "audioFrames": 144,
+      "durationInFrames": 156,
+      "audio": "voice/s05-02.mp3",
+      "words": [
+        {"text":"Pero","from":3133,"to":3139},
+        {"text":"luego","from":3139,"to":3148},
+        {"text":"entra","from":3148,"to":3156},
+        {"text":"la","from":3156,"to":3160},
+        {"text":"misma","from":3160,"to":3169},
+        {"text":"cuenta,","from":3169,"to":3181},
+        {"text":"y","from":3189,"to":3191},
+        {"text":"diez","from":3192,"to":3199},
+        {"text":"minutos","from":3199,"to":3213},
+        {"text":"después","from":3213,"to":3224},
+        {"text":"aparece","from":3224,"to":3238},
+        {"text":"un","from":3238,"to":3242},
+        {"text":"usuario","from":3242,"to":3256},
+        {"text":"nuevo.","from":3256,"to":3266}
+      ]
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-correlate",
+      "text": "Aunque vengan de fuentes distintas, si caen en la misma ventana de tiempo, una regla de correlación une las piezas.",
+      "from": 3286,
+      "audioFrames": 196,
+      "durationInFrames": 207,
+      "audio": "voice/s05-03.mp3",
+      "words": [
+        {"text":"Aunque","from":3289,"to":3298},
+        {"text":"vengan","from":3298,"to":3309},
+        {"text":"de","from":3309,"to":3312},
+        {"text":"fuentes","from":3312,"to":3323},
+        {"text":"distintas,","from":3323,"to":3341},
+        {"text":"si","from":3347,"to":3352},
+        {"text":"caen","from":3352,"to":3361},
+        {"text":"en","from":3361,"to":3363},
+        {"text":"la","from":3363,"to":3366},
+        {"text":"misma","from":3367,"to":3375},
+        {"text":"ventana","from":3375,"to":3388},
+        {"text":"de","from":3388,"to":3391},
+        {"text":"tiempo,","from":3392,"to":3404},
+        {"text":"una","from":3411,"to":3417},
+        {"text":"regla","from":3417,"to":3427},
+        {"text":"de","from":3427,"to":3430},
+        {"text":"correlación","from":3430,"to":3449},
+        {"text":"une","from":3449,"to":3455},
+        {"text":"las","from":3455,"to":3460},
+        {"text":"piezas.","from":3460,"to":3474}
+      ]
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-correlate",
+      "text": "Y salta la alerta, que debe decir qué pasó, dónde, con qué gravedad y qué hacer.",
+      "from": 3493,
+      "audioFrames": 130,
+      "durationInFrames": 147,
+      "audio": "voice/s05-04.mp3",
+      "words": [
+        {"text":"Y","from":3496,"to":3498},
+        {"text":"salta","from":3499,"to":3510},
+        {"text":"la","from":3511,"to":3514},
+        {"text":"alerta,","from":3514,"to":3527},
+        {"text":"que","from":3528,"to":3532},
+        {"text":"debe","from":3533,"to":3540},
+        {"text":"decir","from":3540,"to":3550},
+        {"text":"qué","from":3550,"to":3553},
+        {"text":"pasó,","from":3553,"to":3564},
+        {"text":"dónde,","from":3566,"to":3577},
+        {"text":"con","from":3577,"to":3583},
+        {"text":"qué","from":3583,"to":3586},
+        {"text":"gravedad","from":3586,"to":3600},
+        {"text":"y","from":3601,"to":3603},
+        {"text":"qué","from":3603,"to":3606},
+        {"text":"hacer.","from":3606,"to":3615}
+      ]
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-fatigue",
+      "text": "En Halden, la consola escupe 6.000 alertas diarias y el turno de noche cierra el 90 % sin abrirlas.",
+      "from": 3672,
+      "audioFrames": 190,
+      "durationInFrames": 202,
+      "audio": "voice/s06-01.mp3",
+      "words": [
+        {"text":"En","from":3675,"to":3679},
+        {"text":"Halden,","from":3679,"to":3693},
+        {"text":"la","from":3696,"to":3700},
+        {"text":"consola","from":3700,"to":3713},
+        {"text":"escupe","from":3713,"to":3725},
+        {"text":"6.000","from":3725,"to":3738},
+        {"text":"alertas","from":3738,"to":3750},
+        {"text":"diarias","from":3750,"to":3764},
+        {"text":"y","from":3764,"to":3766},
+        {"text":"el","from":3766,"to":3770},
+        {"text":"turno","from":3770,"to":3782},
+        {"text":"de","from":3782,"to":3785},
+        {"text":"noche","from":3785,"to":3793},
+        {"text":"cierra","from":3793,"to":3804},
+        {"text":"el","from":3804,"to":3806},
+        {"text":"90","from":3806,"to":3818},
+        {"text":"%","from":3818,"to":3833},
+        {"text":"sin","from":3833,"to":3839},
+        {"text":"abrirlas.","from":3839,"to":3854}
+      ]
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-fatigue",
+      "text": "Es alert fatigue, la fatiga de alertas. Tres reglas generan el 78 % del volumen, y ninguna ha producido nunca un incidente real.",
+      "from": 3874,
+      "audioFrames": 284,
+      "durationInFrames": 296,
+      "audio": "voice/s06-02.mp3",
+      "words": [
+        {"text":"Es","from":3877,"to":3883},
+        {"text":"alert","from":3883,"to":3891},
+        {"text":"fatigue,","from":3891,"to":3903},
+        {"text":"la","from":3909,"to":3914},
+        {"text":"fatiga","from":3914,"to":3926},
+        {"text":"de","from":3926,"to":3930},
+        {"text":"alertas.","from":3930,"to":3945},
+        {"text":"Tres","from":3976,"to":3982},
+        {"text":"reglas","from":3982,"to":3994},
+        {"text":"generan","from":3994,"to":4006},
+        {"text":"el","from":4006,"to":4010},
+        {"text":"78","from":4010,"to":4024},
+        {"text":"%","from":4024,"to":4047},
+        {"text":"del","from":4047,"to":4051},
+        {"text":"volumen,","from":4051,"to":4066},
+        {"text":"y","from":4074,"to":4076},
+        {"text":"ninguna","from":4076,"to":4089},
+        {"text":"ha","from":4089,"to":4092},
+        {"text":"producido","from":4092,"to":4109},
+        {"text":"nunca","from":4109,"to":4118},
+        {"text":"un","from":4118,"to":4122},
+        {"text":"incidente","from":4122,"to":4138},
+        {"text":"real.","from":4138,"to":4150}
+      ]
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-fatigue",
+      "text": "Las disparan el agente de copias de seguridad, el escáner de vulnerabilidades corporativo y un balanceador que reinicia sesiones cada hora.",
+      "from": 4170,
+      "audioFrames": 228,
+      "durationInFrames": 245,
+      "audio": "voice/s06-03.mp3",
+      "words": [
+        {"text":"Las","from":4173,"to":4179},
+        {"text":"disparan","from":4179,"to":4193},
+        {"text":"el","from":4193,"to":4196},
+        {"text":"agente","from":4196,"to":4206},
+        {"text":"de","from":4206,"to":4209},
+        {"text":"copias","from":4209,"to":4220},
+        {"text":"de","from":4220,"to":4223},
+        {"text":"seguridad,","from":4223,"to":4239},
+        {"text":"el","from":4249,"to":4253},
+        {"text":"escáner","from":4253,"to":4266},
+        {"text":"de","from":4266,"to":4269},
+        {"text":"vulnerabilidades","from":4269,"to":4295},
+        {"text":"corporativo","from":4295,"to":4316},
+        {"text":"y","from":4316,"to":4319},
+        {"text":"un","from":4319,"to":4323},
+        {"text":"balanceador","from":4323,"to":4340},
+        {"text":"que","from":4340,"to":4344},
+        {"text":"reinicia","from":4344,"to":4361},
+        {"text":"sesiones","from":4361,"to":4376},
+        {"text":"cada","from":4376,"to":4383},
+        {"text":"hora.","from":4383,"to":4390}
+      ]
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-tuning",
+      "text": "La cura no es más gente ni otra herramienta: es afinar, alert tuning.",
+      "from": 4447,
+      "audioFrames": 131,
+      "durationInFrames": 142,
+      "audio": "voice/s07-01.mp3",
+      "words": [
+        {"text":"La","from":4450,"to":4455},
+        {"text":"cura","from":4455,"to":4464},
+        {"text":"no","from":4464,"to":4468},
+        {"text":"es","from":4468,"to":4472},
+        {"text":"más","from":4472,"to":4479},
+        {"text":"gente","from":4479,"to":4488},
+        {"text":"ni","from":4488,"to":4492},
+        {"text":"otra","from":4492,"to":4499},
+        {"text":"herramienta:","from":4499,"to":4518},
+        {"text":"es","from":4525,"to":4531},
+        {"text":"afinar,","from":4531,"to":4543},
+        {"text":"alert","from":4546,"to":4556},
+        {"text":"tuning.","from":4557,"to":4570}
+      ]
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-tuning",
+      "text": "Se excluye el patrón benigno conocido; la regla sigue activa. Cada exclusión se documenta: qué, por qué y quién la aprobó.",
+      "from": 4589,
+      "audioFrames": 244,
+      "durationInFrames": 256,
+      "audio": "voice/s07-02.mp3",
+      "words": [
+        {"text":"Se","from":4592,"to":4597},
+        {"text":"excluye","from":4597,"to":4613},
+        {"text":"el","from":4613,"to":4615},
+        {"text":"patrón","from":4615,"to":4626},
+        {"text":"benigno","from":4626,"to":4639},
+        {"text":"conocido;","from":4639,"to":4655},
+        {"text":"la","from":4662,"to":4668},
+        {"text":"regla","from":4668,"to":4678},
+        {"text":"sigue","from":4678,"to":4687},
+        {"text":"activa.","from":4687,"to":4699},
+        {"text":"Cada","from":4728,"to":4735},
+        {"text":"exclusión","from":4735,"to":4753},
+        {"text":"se","from":4753,"to":4757},
+        {"text":"documenta:","from":4757,"to":4775},
+        {"text":"qué,","from":4784,"to":4787},
+        {"text":"por","from":4788,"to":4794},
+        {"text":"qué","from":4794,"to":4799},
+        {"text":"y","from":4800,"to":4802},
+        {"text":"quién","from":4803,"to":4810},
+        {"text":"la","from":4810,"to":4813},
+        {"text":"aprobó.","from":4813,"to":4825}
+      ]
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-tuning",
+      "text": "Excluidos los tres patrones, quedan 1.320. Deduplicar y agrupar eventos relacionados deja la cola en 400 al día.",
+      "from": 4845,
+      "audioFrames": 265,
+      "durationInFrames": 277,
+      "audio": "voice/s07-03.mp3",
+      "words": [
+        {"text":"Excluidos","from":4848,"to":4868},
+        {"text":"los","from":4868,"to":4873},
+        {"text":"tres","from":4873,"to":4880},
+        {"text":"patrones,","from":4880,"to":4898},
+        {"text":"quedan","from":4904,"to":4912},
+        {"text":"1.320.","from":4912,"to":4949},
+        {"text":"Deduplicar","from":4979,"to":4998},
+        {"text":"y","from":4998,"to":5001},
+        {"text":"agrupar","from":5001,"to":5013},
+        {"text":"eventos","from":5013,"to":5025},
+        {"text":"relacionados","from":5025,"to":5047},
+        {"text":"deja","from":5047,"to":5055},
+        {"text":"la","from":5055,"to":5058},
+        {"text":"cola","from":5058,"to":5066},
+        {"text":"en","from":5066,"to":5069},
+        {"text":"400","from":5069,"to":5091},
+        {"text":"al","from":5091,"to":5094},
+        {"text":"día.","from":5094,"to":5102}
+      ]
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-tuning",
+      "text": "Ojo: una exclusión demasiado amplia crea falsos negativos, false negatives, justo por donde entrará el atacante.",
+      "from": 5122,
+      "audioFrames": 204,
+      "durationInFrames": 221,
+      "audio": "voice/s07-04.mp3",
+      "words": [
+        {"text":"Ojo:","from":5125,"to":5135},
+        {"text":"una","from":5137,"to":5143},
+        {"text":"exclusión","from":5143,"to":5161},
+        {"text":"demasiado","from":5161,"to":5177},
+        {"text":"amplia","from":5177,"to":5188},
+        {"text":"crea","from":5188,"to":5195},
+        {"text":"falsos","from":5195,"to":5207},
+        {"text":"negativos,","from":5207,"to":5225},
+        {"text":"false","from":5228,"to":5236},
+        {"text":"negatives,","from":5236,"to":5253},
+        {"text":"justo","from":5260,"to":5273},
+        {"text":"por","from":5273,"to":5278},
+        {"text":"donde","from":5278,"to":5286},
+        {"text":"entrará","from":5286,"to":5297},
+        {"text":"el","from":5297,"to":5302},
+        {"text":"atacante.","from":5302,"to":5318}
+      ]
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-triage",
+      "text": "Dos semanas después, gracias al ajuste, destaca una alerta.",
+      "from": 5375,
+      "audioFrames": 115,
+      "durationInFrames": 124,
+      "audio": "voice/s08-01.mp3",
+      "words": [
+        {"text":"Dos","from":5378,"to":5385},
+        {"text":"semanas","from":5385,"to":5399},
+        {"text":"después,","from":5399,"to":5413},
+        {"text":"gracias","from":5415,"to":5430},
+        {"text":"al","from":5430,"to":5433},
+        {"text":"ajuste,","from":5433,"to":5447},
+        {"text":"destaca","from":5447,"to":5461},
+        {"text":"una","from":5462,"to":5467},
+        {"text":"alerta.","from":5467,"to":5482}
+      ]
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-triage",
+      "text": "Volumen saliente inusual en un servidor de la terminal de contenedores. La analista se la asigna y empieza el triaje.",
+      "from": 5499,
+      "audioFrames": 225,
+      "durationInFrames": 236,
+      "audio": "voice/s08-02.mp3",
+      "words": [
+        {"text":"Volumen","from":5502,"to":5516},
+        {"text":"saliente","from":5516,"to":5531},
+        {"text":"inusual","from":5531,"to":5546},
+        {"text":"en","from":5546,"to":5549},
+        {"text":"un","from":5549,"to":5552},
+        {"text":"servidor","from":5552,"to":5566},
+        {"text":"de","from":5566,"to":5569},
+        {"text":"la","from":5569,"to":5572},
+        {"text":"terminal","from":5573,"to":5586},
+        {"text":"de","from":5586,"to":5589},
+        {"text":"contenedores.","from":5589,"to":5612},
+        {"text":"La","from":5642,"to":5646},
+        {"text":"analista","from":5646,"to":5664},
+        {"text":"se","from":5664,"to":5668},
+        {"text":"la","from":5668,"to":5671},
+        {"text":"asigna","from":5671,"to":5685},
+        {"text":"y","from":5685,"to":5687},
+        {"text":"empieza","from":5687,"to":5700},
+        {"text":"el","from":5700,"to":5703},
+        {"text":"triaje.","from":5703,"to":5716}
+      ]
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-triage",
+      "text": "NetFlow lo confirma: 38 GB hacia una IP desconocida, entre las 02:00 y las 04:30.",
+      "from": 5735,
+      "audioFrames": 196,
+      "durationInFrames": 265,
+      "audio": "voice/s08-03.mp3",
+      "words": [
+        {"text":"NetFlow","from":5738,"to":5755},
+        {"text":"lo","from":5755,"to":5758},
+        {"text":"confirma:","from":5758,"to":5775},
+        {"text":"38","from":5785,"to":5799},
+        {"text":"GB","from":5799,"to":5824},
+        {"text":"hacia","from":5824,"to":5831},
+        {"text":"una","from":5831,"to":5837},
+        {"text":"IP","from":5837,"to":5842},
+        {"text":"desconocida,","from":5842,"to":5862},
+        {"text":"entre","from":5871,"to":5880},
+        {"text":"las","from":5880,"to":5885},
+        {"text":"02:00","from":5885,"to":5893},
+        {"text":"y","from":5893,"to":5895},
+        {"text":"las","from":5894,"to":5900},
+        {"text":"04:30.","from":5900,"to":5923}
+      ]
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-triage",
+      "text": "No. NetFlow es metadato: quién habló con quién, cuándo y cuánto. Solo una captura de paquetes guarda el contenido, si no iba cifrado.",
+      "from": 6000,
+      "audioFrames": 252,
+      "durationInFrames": 269,
+      "audio": "voice/s08-04.mp3",
+      "words": [
+        {"text":"No.","from":6003,"to":6009},
+        {"text":"NetFlow","from":6009,"to":6024},
+        {"text":"es","from":6024,"to":6027},
+        {"text":"metadato:","from":6027,"to":6044},
+        {"text":"quién","from":6054,"to":6060},
+        {"text":"habló","from":6060,"to":6067},
+        {"text":"con","from":6067,"to":6073},
+        {"text":"quién,","from":6073,"to":6081},
+        {"text":"cuándo","from":6082,"to":6092},
+        {"text":"y","from":6092,"to":6094},
+        {"text":"cuánto.","from":6093,"to":6105},
+        {"text":"Solo","from":6134,"to":6145},
+        {"text":"una","from":6145,"to":6150},
+        {"text":"captura","from":6150,"to":6163},
+        {"text":"de","from":6163,"to":6166},
+        {"text":"paquetes","from":6166,"to":6180},
+        {"text":"guarda","from":6180,"to":6189},
+        {"text":"el","from":6189,"to":6191},
+        {"text":"contenido,","from":6191,"to":6208},
+        {"text":"si","from":6213,"to":6219},
+        {"text":"no","from":6219,"to":6224},
+        {"text":"iba","from":6224,"to":6229},
+        {"text":"cifrado.","from":6229,"to":6244}
+      ]
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-pivot",
+      "text": "¿Y si fuera una copia legítima? La analista pivota: revisa ese servidor desde las 01:30.",
+      "from": 6301,
+      "audioFrames": 201,
+      "durationInFrames": 212,
+      "audio": "voice/s09-01.mp3",
+      "words": [
+        {"text":"¿Y","from":6304,"to":6306},
+        {"text":"si","from":6307,"to":6312},
+        {"text":"fuera","from":6312,"to":6323},
+        {"text":"una","from":6323,"to":6328},
+        {"text":"copia","from":6328,"to":6339},
+        {"text":"legítima?","from":6339,"to":6355},
+        {"text":"La","from":6385,"to":6389},
+        {"text":"analista","from":6389,"to":6406},
+        {"text":"pivota:","from":6406,"to":6420},
+        {"text":"revisa","from":6429,"to":6442},
+        {"text":"ese","from":6442,"to":6449},
+        {"text":"servidor","from":6449,"to":6463},
+        {"text":"desde","from":6463,"to":6471},
+        {"text":"las","from":6471,"to":6481},
+        {"text":"01:30.","from":6481,"to":6494}
+      ]
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-pivot",
+      "text": "El SIEM correlaciona el flujo con un inicio de sesión a las 01:52 de una cuenta de servicio.",
+      "from": 6513,
+      "audioFrames": 169,
+      "durationInFrames": 178,
+      "audio": "voice/s09-02.mp3",
+      "words": [
+        {"text":"El","from":6516,"to":6521},
+        {"text":"SIEM","from":6521,"to":6530},
+        {"text":"correlaciona","from":6530,"to":6550},
+        {"text":"el","from":6550,"to":6553},
+        {"text":"flujo","from":6553,"to":6564},
+        {"text":"con","from":6564,"to":6569},
+        {"text":"un","from":6569,"to":6573},
+        {"text":"inicio","from":6573,"to":6584},
+        {"text":"de","from":6584,"to":6587},
+        {"text":"sesión","from":6587,"to":6600},
+        {"text":"a","from":6600,"to":6605},
+        {"text":"las","from":6606,"to":6614},
+        {"text":"01:52","from":6614,"to":6636},
+        {"text":"de","from":6636,"to":6640},
+        {"text":"una","from":6640,"to":6646},
+        {"text":"cuenta","from":6646,"to":6656},
+        {"text":"de","from":6656,"to":6659},
+        {"text":"servicio.","from":6659,"to":6674}
+      ]
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-pivot",
+      "text": "Viene de una estación de administración, ocho minutos antes de la transferencia, y ninguna copia programada lo explica.",
+      "from": 6691,
+      "audioFrames": 207,
+      "durationInFrames": 219,
+      "audio": "voice/s09-03.mp3",
+      "words": [
+        {"text":"Viene","from":6694,"to":6704},
+        {"text":"de","from":6704,"to":6708},
+        {"text":"una","from":6708,"to":6713},
+        {"text":"estación","from":6713,"to":6727},
+        {"text":"de","from":6727,"to":6730},
+        {"text":"administración,","from":6730,"to":6753},
+        {"text":"ocho","from":6766,"to":6774},
+        {"text":"minutos","from":6774,"to":6787},
+        {"text":"antes","from":6787,"to":6795},
+        {"text":"de","from":6795,"to":6798},
+        {"text":"la","from":6798,"to":6801},
+        {"text":"transferencia,","from":6801,"to":6823},
+        {"text":"y","from":6829,"to":6831},
+        {"text":"ninguna","from":6833,"to":6846},
+        {"text":"copia","from":6846,"to":6856},
+        {"text":"programada","from":6856,"to":6872},
+        {"text":"lo","from":6872,"to":6875},
+        {"text":"explica.","from":6875,"to":6890}
+      ]
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-pivot",
+      "text": "Esa cuenta se sale de su línea base: justo lo que vigila el análisis de comportamiento de usuarios, UBA.",
+      "from": 6910,
+      "audioFrames": 189,
+      "durationInFrames": 206,
+      "audio": "voice/s09-04.mp3",
+      "words": [
+        {"text":"Esa","from":6913,"to":6921},
+        {"text":"cuenta","from":6921,"to":6931},
+        {"text":"se","from":6931,"to":6935},
+        {"text":"sale","from":6935,"to":6943},
+        {"text":"de","from":6943,"to":6946},
+        {"text":"su","from":6946,"to":6951},
+        {"text":"línea","from":6951,"to":6961},
+        {"text":"base:","from":6961,"to":6972},
+        {"text":"justo","from":6983,"to":6994},
+        {"text":"lo","from":6994,"to":6997},
+        {"text":"que","from":6997,"to":7000},
+        {"text":"vigila","from":7000,"to":7012},
+        {"text":"el","from":7012,"to":7015},
+        {"text":"análisis","from":7015,"to":7029},
+        {"text":"de","from":7029,"to":7032},
+        {"text":"comportamiento","from":7032,"to":7053},
+        {"text":"de","from":7053,"to":7056},
+        {"text":"usuarios,","from":7056,"to":7074},
+        {"text":"UBA.","from":7080,"to":7091}
+      ]
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-contain",
+      "text": "Primera decisión de contención: ¿apagas el servidor o lo aíslas?",
+      "from": 7148,
+      "audioFrames": 130,
+      "durationInFrames": 193,
+      "audio": "voice/s10-01.mp3",
+      "words": [
+        {"text":"Primera","from":7151,"to":7163},
+        {"text":"decisión","from":7163,"to":7178},
+        {"text":"de","from":7178,"to":7181},
+        {"text":"contención:","from":7181,"to":7201},
+        {"text":"¿apagas","from":7210,"to":7224},
+        {"text":"el","from":7224,"to":7227},
+        {"text":"servidor","from":7227,"to":7242},
+        {"text":"o","from":7248,"to":7251},
+        {"text":"lo","from":7251,"to":7255},
+        {"text":"aíslas?","from":7255,"to":7270}
+      ]
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-contain",
+      "text": "Aislarlo: cuarentena en una VLAN restringida, sin apagarlo, porque la memoria también es evidencia. Una captura de paquetes graba el resto de la sesión.",
+      "from": 7341,
+      "audioFrames": 286,
+      "durationInFrames": 298,
+      "audio": "voice/s10-02.mp3",
+      "words": [
+        {"text":"Aislarlo:","from":7344,"to":7363},
+        {"text":"cuarentena","from":7364,"to":7382},
+        {"text":"en","from":7382,"to":7385},
+        {"text":"una","from":7385,"to":7391},
+        {"text":"VLAN","from":7391,"to":7403},
+        {"text":"restringida,","from":7403,"to":7424},
+        {"text":"sin","from":7430,"to":7436},
+        {"text":"apagarlo,","from":7436,"to":7452},
+        {"text":"porque","from":7453,"to":7461},
+        {"text":"la","from":7461,"to":7464},
+        {"text":"memoria","from":7464,"to":7476},
+        {"text":"también","from":7476,"to":7488},
+        {"text":"es","from":7488,"to":7492},
+        {"text":"evidencia.","from":7492,"to":7508},
+        {"text":"Una","from":7536,"to":7544},
+        {"text":"captura","from":7544,"to":7558},
+        {"text":"de","from":7558,"to":7561},
+        {"text":"paquetes","from":7561,"to":7577},
+        {"text":"graba","from":7577,"to":7586},
+        {"text":"el","from":7586,"to":7590},
+        {"text":"resto","from":7590,"to":7600},
+        {"text":"de","from":7600,"to":7603},
+        {"text":"la","from":7603,"to":7607},
+        {"text":"sesión.","from":7607,"to":7619}
+      ]
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-contain",
+      "text": "Un playbook de SOAR, que automatiza la respuesta, propuso esa cuarentena. Solo se ejecutó cuando la analista la aprobó.",
+      "from": 7639,
+      "audioFrames": 236,
+      "durationInFrames": 248,
+      "audio": "voice/s10-03.mp3",
+      "words": [
+        {"text":"Un","from":7642,"to":7647},
+        {"text":"playbook","from":7647,"to":7661},
+        {"text":"de","from":7661,"to":7665},
+        {"text":"SOAR,","from":7665,"to":7675},
+        {"text":"que","from":7678,"to":7680},
+        {"text":"automatiza","from":7681,"to":7701},
+        {"text":"la","from":7701,"to":7704},
+        {"text":"respuesta,","from":7704,"to":7721},
+        {"text":"propuso","from":7723,"to":7739},
+        {"text":"esa","from":7739,"to":7746},
+        {"text":"cuarentena.","from":7746,"to":7763},
+        {"text":"Solo","from":7792,"to":7802},
+        {"text":"se","from":7802,"to":7807},
+        {"text":"ejecutó","from":7807,"to":7822},
+        {"text":"cuando","from":7822,"to":7831},
+        {"text":"la","from":7831,"to":7834},
+        {"text":"analista","from":7834,"to":7852},
+        {"text":"la","from":7852,"to":7855},
+        {"text":"aprobó.","from":7855,"to":7867}
+      ]
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-contain",
+      "text": "Se corrige rotando la credencial de la cuenta de servicio. La alerta se cierra al validar la corrección y documentarla, no al leerla.",
+      "from": 7887,
+      "audioFrames": 247,
+      "durationInFrames": 264,
+      "audio": "voice/s10-04.mp3",
+      "words": [
+        {"text":"Se","from":7890,"to":7895},
+        {"text":"corrige","from":7895,"to":7909},
+        {"text":"rotando","from":7909,"to":7923},
+        {"text":"la","from":7923,"to":7925},
+        {"text":"credencial","from":7925,"to":7943},
+        {"text":"de","from":7943,"to":7946},
+        {"text":"la","from":7946,"to":7949},
+        {"text":"cuenta","from":7949,"to":7958},
+        {"text":"de","from":7958,"to":7961},
+        {"text":"servicio.","from":7961,"to":7977},
+        {"text":"La","from":8006,"to":8010},
+        {"text":"alerta","from":8010,"to":8023},
+        {"text":"se","from":8023,"to":8027},
+        {"text":"cierra","from":8027,"to":8037},
+        {"text":"al","from":8037,"to":8041},
+        {"text":"validar","from":8041,"to":8052},
+        {"text":"la","from":8052,"to":8056},
+        {"text":"corrección","from":8056,"to":8073},
+        {"text":"y","from":8073,"to":8075},
+        {"text":"documentarla,","from":8074,"to":8097},
+        {"text":"no","from":8104,"to":8111},
+        {"text":"al","from":8111,"to":8114},
+        {"text":"leerla.","from":8114,"to":8126}
+      ]
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-limits",
+      "text": "El SIEM solo ve las fuentes integradas: lo que no le llega, para él no ocurrió.",
+      "from": 8183,
+      "audioFrames": 137,
+      "durationInFrames": 148,
+      "audio": "voice/s11-01.mp3",
+      "words": [
+        {"text":"El","from":8186,"to":8191},
+        {"text":"SIEM","from":8191,"to":8201},
+        {"text":"solo","from":8201,"to":8209},
+        {"text":"ve","from":8209,"to":8213},
+        {"text":"las","from":8213,"to":8218},
+        {"text":"fuentes","from":8218,"to":8230},
+        {"text":"integradas:","from":8230,"to":8249},
+        {"text":"lo","from":8259,"to":8263},
+        {"text":"que","from":8263,"to":8267},
+        {"text":"no","from":8267,"to":8271},
+        {"text":"le","from":8271,"to":8274},
+        {"text":"llega,","from":8274,"to":8283},
+        {"text":"para","from":8284,"to":8291},
+        {"text":"él","from":8291,"to":8294},
+        {"text":"no","from":8294,"to":8298},
+        {"text":"ocurrió.","from":8298,"to":8312}
+      ]
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-limits",
+      "text": "Y una fuente que se calla, missing logs, es tan sospechosa como una alerta.",
+      "from": 8331,
+      "audioFrames": 135,
+      "durationInFrames": 147,
+      "audio": "voice/s11-02.mp3",
+      "words": [
+        {"text":"Y","from":8334,"to":8337},
+        {"text":"una","from":8337,"to":8343},
+        {"text":"fuente","from":8343,"to":8355},
+        {"text":"que","from":8355,"to":8358},
+        {"text":"se","from":8358,"to":8363},
+        {"text":"calla,","from":8363,"to":8373},
+        {"text":"missing","from":8374,"to":8386},
+        {"text":"logs,","from":8386,"to":8397},
+        {"text":"es","from":8400,"to":8403},
+        {"text":"tan","from":8406,"to":8412},
+        {"text":"sospechosa","from":8412,"to":8430},
+        {"text":"como","from":8430,"to":8438},
+        {"text":"una","from":8438,"to":8444},
+        {"text":"alerta.","from":8444,"to":8458}
+      ]
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-limits",
+      "text": "Sin relojes sincronizados, la correlación se desordena. El SIEM ve eventos y metadatos: jamás el contenido.",
+      "from": 8478,
+      "audioFrames": 230,
+      "durationInFrames": 241,
+      "audio": "voice/s11-03.mp3",
+      "words": [
+        {"text":"Sin","from":8481,"to":8489},
+        {"text":"relojes","from":8489,"to":8502},
+        {"text":"sincronizados,","from":8502,"to":8527},
+        {"text":"la","from":8533,"to":8537},
+        {"text":"correlación","from":8537,"to":8556},
+        {"text":"se","from":8556,"to":8561},
+        {"text":"desordena.","from":8561,"to":8577},
+        {"text":"El","from":8606,"to":8611},
+        {"text":"SIEM","from":8611,"to":8621},
+        {"text":"ve","from":8621,"to":8625},
+        {"text":"eventos","from":8625,"to":8641},
+        {"text":"y","from":8641,"to":8643},
+        {"text":"metadatos:","from":8643,"to":8663},
+        {"text":"jamás","from":8670,"to":8681},
+        {"text":"el","from":8681,"to":8684},
+        {"text":"contenido.","from":8684,"to":8700}
+      ]
+    },
+    {
+      "id": "s11-04",
+      "scene": "s11-limits",
+      "text": "El archivado, archiving, es para investigaciones y cumplimiento: reconstruir una intrusión antigua depende de la retención.",
+      "from": 8719,
+      "audioFrames": 210,
+      "durationInFrames": 227,
+      "audio": "voice/s11-04.mp3",
+      "words": [
+        {"text":"El","from":8722,"to":8727},
+        {"text":"archivado,","from":8727,"to":8744},
+        {"text":"archiving,","from":8745,"to":8763},
+        {"text":"es","from":8765,"to":8769},
+        {"text":"para","from":8771,"to":8777},
+        {"text":"investigaciones","from":8777,"to":8800},
+        {"text":"y","from":8800,"to":8802},
+        {"text":"cumplimiento:","from":8802,"to":8823},
+        {"text":"reconstruir","from":8832,"to":8853},
+        {"text":"una","from":8853,"to":8858},
+        {"text":"intrusión","from":8858,"to":8873},
+        {"text":"antigua","from":8873,"to":8886},
+        {"text":"depende","from":8886,"to":8898},
+        {"text":"de","from":8898,"to":8901},
+        {"text":"la","from":8901,"to":8904},
+        {"text":"retención.","from":8904,"to":8921}
+      ]
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-recap",
+      "text": "Agregar, normalizar, correlacionar y alertar, enriqueciendo por el camino. Y el Blue Team responde: triaje, contención, corrección, validación y ajuste.",
+      "from": 8978,
+      "audioFrames": 291,
+      "durationInFrames": 305,
+      "audio": "voice/s12-01.mp3",
+      "words": [
+        {"text":"Agregar,","from":8981,"to":8997},
+        {"text":"normalizar,","from":8997,"to":9018},
+        {"text":"correlacionar","from":9019,"to":9040},
+        {"text":"y","from":9040,"to":9042},
+        {"text":"alertar,","from":9042,"to":9056},
+        {"text":"enriqueciendo","from":9060,"to":9082},
+        {"text":"por","from":9082,"to":9086},
+        {"text":"el","from":9086,"to":9089},
+        {"text":"camino.","from":9089,"to":9101},
+        {"text":"Y","from":9131,"to":9133},
+        {"text":"el","from":9134,"to":9137},
+        {"text":"Blue","from":9137,"to":9143},
+        {"text":"Team","from":9143,"to":9150},
+        {"text":"responde:","from":9150,"to":9167},
+        {"text":"triaje,","from":9167,"to":9181},
+        {"text":"contención,","from":9181,"to":9200},
+        {"text":"corrección,","from":9202,"to":9219},
+        {"text":"validación","from":9224,"to":9245},
+        {"text":"y","from":9245,"to":9247},
+        {"text":"ajuste.","from":9247,"to":9262}
+      ]
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-recap",
+      "text": "Para el examen: NetFlow es metadato; alert fatigue se cura con alert tuning; y archiving es para investigaciones y cumplimiento.",
+      "from": 9283,
+      "audioFrames": 224,
+      "durationInFrames": 238,
+      "audio": "voice/s12-02.mp3",
+      "words": [
+        {"text":"Para","from":9286,"to":9291},
+        {"text":"el","from":9291,"to":9295},
+        {"text":"examen:","from":9295,"to":9309},
+        {"text":"NetFlow","from":9313,"to":9328},
+        {"text":"es","from":9328,"to":9332},
+        {"text":"metadato;","from":9332,"to":9348},
+        {"text":"alert","from":9357,"to":9367},
+        {"text":"fatigue","from":9367,"to":9378},
+        {"text":"se","from":9378,"to":9382},
+        {"text":"cura","from":9382,"to":9390},
+        {"text":"con","from":9390,"to":9396},
+        {"text":"alert","from":9396,"to":9403},
+        {"text":"tuning;","from":9403,"to":9417},
+        {"text":"y","from":9424,"to":9427},
+        {"text":"archiving","from":9429,"to":9444},
+        {"text":"es","from":9444,"to":9447},
+        {"text":"para","from":9447,"to":9453},
+        {"text":"investigaciones","from":9453,"to":9476},
+        {"text":"y","from":9476,"to":9478},
+        {"text":"cumplimiento.","from":9478,"to":9499}
+      ]
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-recap",
+      "text": "Ahora te toca: aplica lo visto en las preguntas de esta lección.",
+      "from": 9521,
+      "audioFrames": 117,
+      "durationInFrames": 135,
+      "audio": "voice/s12-03.mp3",
+      "words": [
+        {"text":"Ahora","from":9524,"to":9534},
+        {"text":"te","from":9534,"to":9538},
+        {"text":"toca:","from":9538,"to":9548},
+        {"text":"aplica","from":9557,"to":9570},
+        {"text":"lo","from":9571,"to":9574},
+        {"text":"visto","from":9574,"to":9583},
+        {"text":"en","from":9584,"to":9586},
+        {"text":"las","from":9585,"to":9590},
+        {"text":"preguntas","from":9590,"to":9606},
+        {"text":"de","from":9606,"to":9610},
+        {"text":"esta","from":9610,"to":9617},
+        {"text":"lección.","from":9617,"to":9630}
+      ]
+    }
+  ],
+  "captions": [
+    {
+      "from": 45,
+      "to": 124,
+      "lines": [
+        [
+          {"text":"Madrugada","from":48,"to":64},
+          {"text":"en","from":64,"to":66},
+          {"text":"la","from":66,"to":69},
+          {"text":"Autoridad","from":69,"to":84}
+        ],
+        [
+          {"text":"Portuaria","from":84,"to":101},
+          {"text":"de","from":101,"to":103},
+          {"text":"Halden:","from":103,"to":118}
+        ]
+      ]
+    },
+    {
+      "from": 124,
+      "to": 249,
+      "lines": [
+        [
+          {"text":"al","from":127,"to":131},
+          {"text":"SOC","from":131,"to":137},
+          {"text":"llegan","from":138,"to":147},
+          {"text":"6.000","from":147,"to":161},
+          {"text":"alertas","from":161,"to":174}
+        ],
+        [
+          {"text":"al","from":174,"to":178},
+          {"text":"día,","from":178,"to":187},
+          {"text":"y","from":194,"to":197},
+          {"text":"solo","from":197,"to":207},
+          {"text":"una","from":207,"to":213},
+          {"text":"importa.","from":213,"to":227}
+        ]
+      ]
+    },
+    {
+      "from": 249,
+      "to": 374,
+      "lines": [
+        [
+          {"text":"Encontrarla","from":252,"to":273},
+          {"text":"es","from":273,"to":276},
+          {"text":"trabajo","from":276,"to":290},
+          {"text":"del","from":290,"to":294},
+          {"text":"equipo","from":294,"to":304}
+        ],
+        [
+          {"text":"defensivo,","from":304,"to":323},
+          {"text":"el","from":323,"to":327},
+          {"text":"Blue","from":327,"to":332},
+          {"text":"Team,","from":332,"to":341},
+          {"text":"con","from":351,"to":354},
+          {"text":"su","from":354,"to":359},
+          {"text":"SIEM:","from":359,"to":370}
+        ]
+      ]
+    },
+    {
+      "from": 374,
+      "to": 469,
+      "lines": [
+        [
+          {"text":"Security","from":377,"to":395},
+          {"text":"Information","from":395,"to":415},
+          {"text":"and","from":415,"to":421},
+          {"text":"Event","from":422,"to":430},
+          {"text":"Management.","from":430,"to":450}
+        ]
+      ]
+    },
+    {
+      "from": 469,
+      "to": 585,
+      "lines": [
+        [
+          {"text":"Une","from":472,"to":480},
+          {"text":"SIM,","from":480,"to":489},
+          {"text":"que","from":494,"to":496},
+          {"text":"guarda,","from":501,"to":513},
+          {"text":"busca","from":516,"to":527}
+        ],
+        [
+          {"text":"e","from":528,"to":530},
+          {"text":"informa","from":529,"to":542},
+          {"text":"a","from":542,"to":545},
+          {"text":"largo","from":545,"to":554},
+          {"text":"plazo,","from":554,"to":566},
+          {"text":"y","from":568,"to":571},
+          {"text":"SEM,","from":571,"to":580}
+        ]
+      ]
+    },
+    {
+      "from": 585,
+      "to": 662,
+      "lines": [
+        [
+          {"text":"que","from":588,"to":590},
+          {"text":"vigila","from":592,"to":604},
+          {"text":"eventos","from":604,"to":618},
+          {"text":"en","from":618,"to":622},
+          {"text":"tiempo","from":622,"to":631},
+          {"text":"real.","from":631,"to":643}
+        ]
+      ]
+    },
+    {
+      "from": 662,
+      "to": 777,
+      "lines": [
+        [
+          {"text":"Al","from":665,"to":669},
+          {"text":"fundirse,","from":669,"to":687},
+          {"text":"su","from":687,"to":692},
+          {"text":"trabajo","from":692,"to":704},
+          {"text":"cabe","from":704,"to":712}
+        ],
+        [
+          {"text":"en","from":712,"to":715},
+          {"text":"cuatro","from":715,"to":725},
+          {"text":"verbos:","from":725,"to":737},
+          {"text":"agregar,","from":743,"to":757},
+          {"text":"normalizar,","from":758,"to":778}
+        ]
+      ]
+    },
+    {
+      "from": 777,
+      "to": 843,
+      "lines": [
+        [
+          {"text":"correlacionar","from":780,"to":802},
+          {"text":"y","from":802,"to":805},
+          {"text":"alertar.","from":805,"to":819}
+        ]
+      ]
+    },
+    {
+      "from": 876,
+      "to": 977,
+      "lines": [
+        [
+          {"text":"Primero,","from":879,"to":892},
+          {"text":"recoger:","from":898,"to":917},
+          {"text":"log","from":924,"to":931},
+          {"text":"aggregation.","from":931,"to":953}
+        ]
+      ]
+    },
+    {
+      "from": 979,
+      "to": 1090,
+      "lines": [
+        [
+          {"text":"Los","from":982,"to":988},
+          {"text":"sistemas","from":988,"to":1003},
+          {"text":"cuentan","from":1003,"to":1014},
+          {"text":"quién","from":1014,"to":1020},
+          {"text":"entró;","from":1020,"to":1030}
+        ],
+        [
+          {"text":"las","from":1035,"to":1042},
+          {"text":"aplicaciones,","from":1042,"to":1064},
+          {"text":"qué","from":1072,"to":1075},
+          {"text":"hizo;","from":1075,"to":1084}
+        ]
+      ]
+    },
+    {
+      "from": 1090,
+      "to": 1170,
+      "lines": [
+        [
+          {"text":"la","from":1093,"to":1097},
+          {"text":"infraestructura,","from":1097,"to":1122},
+          {"text":"por","from":1125,"to":1130},
+          {"text":"dónde","from":1130,"to":1138},
+          {"text":"se","from":1138,"to":1142},
+          {"text":"movió.","from":1142,"to":1151}
+        ]
+      ]
+    },
+    {
+      "from": 1170,
+      "to": 1326,
+      "lines": [
+        [
+          {"text":"Servidores","from":1173,"to":1192},
+          {"text":"y","from":1192,"to":1194},
+          {"text":"estaciones","from":1194,"to":1212},
+          {"text":"envían","from":1212,"to":1224},
+          {"text":"por","from":1224,"to":1228},
+          {"text":"agente;","from":1228,"to":1241}
+        ],
+        [
+          {"text":"firewalls","from":1248,"to":1268},
+          {"text":"y","from":1268,"to":1270},
+          {"text":"switches,","from":1270,"to":1286},
+          {"text":"por","from":1292,"to":1295},
+          {"text":"syslog;","from":1295,"to":1309},
+          {"text":"la","from":1315,"to":1320},
+          {"text":"nube,","from":1320,"to":1329}
+        ]
+      ]
+    },
+    {
+      "from": 1326,
+      "to": 1425,
+      "lines": [
+        [
+          {"text":"por","from":1329,"to":1335},
+          {"text":"API;","from":1335,"to":1347},
+          {"text":"y","from":1357,"to":1359},
+          {"text":"los","from":1360,"to":1365},
+          {"text":"routers","from":1365,"to":1377},
+          {"text":"exportan","from":1377,"to":1392},
+          {"text":"NetFlow.","from":1392,"to":1406}
+        ]
+      ]
+    },
+    {
+      "from": 1425,
+      "to": 1562,
+      "lines": [
+        [
+          {"text":"Todo","from":1428,"to":1435},
+          {"text":"converge","from":1435,"to":1449},
+          {"text":"en","from":1449,"to":1452},
+          {"text":"un","from":1452,"to":1458},
+          {"text":"punto","from":1458,"to":1465},
+          {"text":"central,","from":1465,"to":1480}
+        ],
+        [
+          {"text":"con","from":1487,"to":1492},
+          {"text":"la","from":1493,"to":1496},
+          {"text":"hora","from":1497,"to":1503},
+          {"text":"sincronizada","from":1503,"to":1524},
+          {"text":"por","from":1524,"to":1529},
+          {"text":"NTP.","from":1529,"to":1544}
+        ]
+      ]
+    },
+    {
+      "from": 1562,
+      "to": 1726,
+      "lines": [
+        [
+          {"text":"Si","from":1565,"to":1571},
+          {"text":"un","from":1571,"to":1575},
+          {"text":"intruso","from":1575,"to":1589},
+          {"text":"borra","from":1589,"to":1598},
+          {"text":"el","from":1598,"to":1600},
+          {"text":"registro","from":1600,"to":1616},
+          {"text":"local,","from":1616,"to":1627},
+          {"text":"la","from":1635,"to":1640}
+        ],
+        [
+          {"text":"evidencia","from":1640,"to":1657},
+          {"text":"sobrevive","from":1657,"to":1672},
+          {"text":"en","from":1672,"to":1674},
+          {"text":"la","from":1674,"to":1678},
+          {"text":"copia","from":1678,"to":1688},
+          {"text":"central.","from":1688,"to":1702}
+        ]
+      ]
+    },
+    {
+      "from": 1759,
+      "to": 1882,
+      "lines": [
+        [
+          {"text":"Después,","from":1762,"to":1778},
+          {"text":"normalizar,","from":1779,"to":1799},
+          {"text":"porque","from":1800,"to":1809}
+        ],
+        [
+          {"text":"cada","from":1809,"to":1816},
+          {"text":"fuente","from":1816,"to":1827},
+          {"text":"habla","from":1827,"to":1834},
+          {"text":"su","from":1834,"to":1839},
+          {"text":"propio","from":1839,"to":1849},
+          {"text":"dialecto.","from":1849,"to":1863}
+        ]
+      ]
+    },
+    {
+      "from": 1882,
+      "to": 2002,
+      "lines": [
+        [
+          {"text":"El","from":1885,"to":1890},
+          {"text":"SIEM","from":1890,"to":1900},
+          {"text":"parsea","from":1900,"to":1914},
+          {"text":"cada","from":1915,"to":1922},
+          {"text":"línea:","from":1922,"to":1934}
+        ],
+        [
+          {"text":"extrae","from":1941,"to":1957},
+          {"text":"sus","from":1957,"to":1964},
+          {"text":"campos.","from":1964,"to":1978}
+        ]
+      ]
+    },
+    {
+      "from": 2004,
+      "to": 2093,
+      "lines": [
+        [
+          {"text":"Y","from":2007,"to":2009},
+          {"text":"los","from":2010,"to":2015},
+          {"text":"normaliza","from":2015,"to":2032},
+          {"text":"a","from":2032,"to":2035},
+          {"text":"un","from":2035,"to":2039},
+          {"text":"esquema","from":2039,"to":2050}
+        ],
+        [
+          {"text":"común,","from":2050,"to":2061},
+          {"text":"donde","from":2064,"to":2073},
+          {"text":"usuario,","from":2073,"to":2090}
+        ]
+      ]
+    },
+    {
+      "from": 2093,
+      "to": 2177,
+      "lines": [
+        [
+          {"text":"IP","from":2096,"to":2103},
+          {"text":"de","from":2104,"to":2107},
+          {"text":"origen","from":2107,"to":2119},
+          {"text":"y","from":2119,"to":2121},
+          {"text":"acción","from":2121,"to":2133},
+          {"text":"se","from":2133,"to":2138},
+          {"text":"llaman","from":2138,"to":2147},
+          {"text":"igual.","from":2147,"to":2158}
+        ]
+      ]
+    },
+    {
+      "from": 2177,
+      "to": 2352,
+      "lines": [
+        [
+          {"text":"También","from":2180,"to":2191},
+          {"text":"la","from":2191,"to":2195},
+          {"text":"hora:","from":2195,"to":2203},
+          {"text":"las","from":2213,"to":2219},
+          {"text":"10:14","from":2219,"to":2243},
+          {"text":"de","from":2243,"to":2246},
+          {"text":"Halden","from":2246,"to":2258}
+        ],
+        [
+          {"text":"se","from":2258,"to":2262},
+          {"text":"guardan","from":2262,"to":2273},
+          {"text":"como","from":2273,"to":2281},
+          {"text":"las","from":2281,"to":2285},
+          {"text":"09:14","from":2285,"to":2312},
+          {"text":"UTC.","from":2312,"to":2328}
+        ]
+      ]
+    },
+    {
+      "from": 2385,
+      "to": 2497,
+      "lines": [
+        [
+          {"text":"Antes","from":2388,"to":2399},
+          {"text":"de","from":2399,"to":2401},
+          {"text":"correlacionar,","from":2401,"to":2424},
+          {"text":"el","from":2427,"to":2432},
+          {"text":"SIEM","from":2432,"to":2441}
+        ],
+        [
+          {"text":"enriquece:","from":2441,"to":2459},
+          {"text":"añade","from":2468,"to":2479},
+          {"text":"qué","from":2479,"to":2482},
+          {"text":"activo","from":2482,"to":2493},
+          {"text":"es,","from":2493,"to":2499}
+        ]
+      ]
+    },
+    {
+      "from": 2497,
+      "to": 2572,
+      "lines": [
+        [
+          {"text":"cuánto","from":2500,"to":2509},
+          {"text":"importa","from":2509,"to":2521},
+          {"text":"y","from":2521,"to":2523},
+          {"text":"quién","from":2523,"to":2531},
+          {"text":"es","from":2531,"to":2535},
+          {"text":"el","from":2535,"to":2537},
+          {"text":"usuario.","from":2537,"to":2553}
+        ]
+      ]
+    },
+    {
+      "from": 2572,
+      "to": 2701,
+      "lines": [
+        [
+          {"text":"También","from":2575,"to":2587},
+          {"text":"de","from":2587,"to":2590},
+          {"text":"dónde","from":2590,"to":2599},
+          {"text":"viene","from":2599,"to":2607},
+          {"text":"la","from":2607,"to":2611},
+          {"text":"IP","from":2611,"to":2619}
+        ],
+        [
+          {"text":"y","from":2620,"to":2622},
+          {"text":"si","from":2622,"to":2626},
+          {"text":"figura","from":2626,"to":2637},
+          {"text":"en","from":2637,"to":2641},
+          {"text":"inteligencia","from":2641,"to":2661},
+          {"text":"de","from":2661,"to":2664},
+          {"text":"amenazas.","from":2664,"to":2682}
+        ]
+      ]
+    },
+    {
+      "from": 2701,
+      "to": 2760,
+      "lines": [
+        [
+          {"text":"El","from":2704,"to":2707},
+          {"text":"contexto","from":2707,"to":2724},
+          {"text":"decide","from":2724,"to":2736},
+          {"text":"la","from":2736,"to":2739},
+          {"text":"gravedad:","from":2739,"to":2754}
+        ]
+      ]
+    },
+    {
+      "from": 2760,
+      "to": 2827,
+      "lines": [
+        [
+          {"text":"el","from":2763,"to":2766},
+          {"text":"mismo","from":2768,"to":2778},
+          {"text":"aviso","from":2778,"to":2788},
+          {"text":"no","from":2788,"to":2791},
+          {"text":"pesa","from":2791,"to":2800}
+        ],
+        [
+          {"text":"igual","from":2800,"to":2809},
+          {"text":"en","from":2809,"to":2812},
+          {"text":"un","from":2812,"to":2817},
+          {"text":"portátil","from":2817,"to":2830}
+        ]
+      ]
+    },
+    {
+      "from": 2827,
+      "to": 2902,
+      "lines": [
+        [
+          {"text":"que","from":2830,"to":2834},
+          {"text":"en","from":2834,"to":2836},
+          {"text":"la","from":2836,"to":2839},
+          {"text":"terminal","from":2839,"to":2853},
+          {"text":"de","from":2853,"to":2855},
+          {"text":"contenedores.","from":2855,"to":2878}
+        ]
+      ]
+    },
+    {
+      "from": 2935,
+      "to": 3007,
+      "lines": [
+        [
+          {"text":"Ahora","from":2938,"to":2949},
+          {"text":"sí,","from":2949,"to":2956},
+          {"text":"correlacionar.","from":2957,"to":2983}
+        ]
+      ]
+    },
+    {
+      "from": 3009,
+      "to": 3130,
+      "lines": [
+        [
+          {"text":"Tres","from":3012,"to":3019},
+          {"text":"inicios","from":3019,"to":3033},
+          {"text":"de","from":3033,"to":3036},
+          {"text":"sesión","from":3036,"to":3047},
+          {"text":"fallidos","from":3047,"to":3063}
+        ],
+        [
+          {"text":"pueden","from":3063,"to":3073},
+          {"text":"ser","from":3073,"to":3079},
+          {"text":"un","from":3079,"to":3083},
+          {"text":"simple","from":3083,"to":3094},
+          {"text":"despiste.","from":3094,"to":3111}
+        ]
+      ]
+    },
+    {
+      "from": 3130,
+      "to": 3286,
+      "lines": [
+        [
+          {"text":"Pero","from":3133,"to":3139},
+          {"text":"luego","from":3139,"to":3148},
+          {"text":"entra","from":3148,"to":3156},
+          {"text":"la","from":3156,"to":3160},
+          {"text":"misma","from":3160,"to":3169},
+          {"text":"cuenta,","from":3169,"to":3181},
+          {"text":"y","from":3189,"to":3191},
+          {"text":"diez","from":3192,"to":3199}
+        ],
+        [
+          {"text":"minutos","from":3199,"to":3213},
+          {"text":"después","from":3213,"to":3224},
+          {"text":"aparece","from":3224,"to":3238},
+          {"text":"un","from":3238,"to":3242},
+          {"text":"usuario","from":3242,"to":3256},
+          {"text":"nuevo.","from":3256,"to":3266}
+        ]
+      ]
+    },
+    {
+      "from": 3286,
+      "to": 3408,
+      "lines": [
+        [
+          {"text":"Aunque","from":3289,"to":3298},
+          {"text":"vengan","from":3298,"to":3309},
+          {"text":"de","from":3309,"to":3312},
+          {"text":"fuentes","from":3312,"to":3323},
+          {"text":"distintas,","from":3323,"to":3341}
+        ],
+        [
+          {"text":"si","from":3347,"to":3352},
+          {"text":"caen","from":3352,"to":3361},
+          {"text":"en","from":3361,"to":3363},
+          {"text":"la","from":3363,"to":3366},
+          {"text":"misma","from":3367,"to":3375},
+          {"text":"ventana","from":3375,"to":3388},
+          {"text":"de","from":3388,"to":3391},
+          {"text":"tiempo,","from":3392,"to":3404}
+        ]
+      ]
+    },
+    {
+      "from": 3408,
+      "to": 3493,
+      "lines": [
+        [
+          {"text":"una","from":3411,"to":3417},
+          {"text":"regla","from":3417,"to":3427},
+          {"text":"de","from":3427,"to":3430},
+          {"text":"correlación","from":3430,"to":3449},
+          {"text":"une","from":3449,"to":3455},
+          {"text":"las","from":3455,"to":3460},
+          {"text":"piezas.","from":3460,"to":3474}
+        ]
+      ]
+    },
+    {
+      "from": 3493,
+      "to": 3639,
+      "lines": [
+        [
+          {"text":"Y","from":3496,"to":3498},
+          {"text":"salta","from":3499,"to":3510},
+          {"text":"la","from":3511,"to":3514},
+          {"text":"alerta,","from":3514,"to":3527},
+          {"text":"que","from":3528,"to":3532},
+          {"text":"debe","from":3533,"to":3540},
+          {"text":"decir","from":3540,"to":3550},
+          {"text":"qué","from":3550,"to":3553}
+        ],
+        [
+          {"text":"pasó,","from":3553,"to":3564},
+          {"text":"dónde,","from":3566,"to":3577},
+          {"text":"con","from":3577,"to":3583},
+          {"text":"qué","from":3583,"to":3586},
+          {"text":"gravedad","from":3586,"to":3600},
+          {"text":"y","from":3601,"to":3603},
+          {"text":"qué","from":3603,"to":3606},
+          {"text":"hacer.","from":3606,"to":3615}
+        ]
+      ]
+    },
+    {
+      "from": 3672,
+      "to": 3761,
+      "lines": [
+        [
+          {"text":"En","from":3675,"to":3679},
+          {"text":"Halden,","from":3679,"to":3693},
+          {"text":"la","from":3696,"to":3700},
+          {"text":"consola","from":3700,"to":3713}
+        ],
+        [
+          {"text":"escupe","from":3713,"to":3725},
+          {"text":"6.000","from":3725,"to":3738},
+          {"text":"alertas","from":3738,"to":3750},
+          {"text":"diarias","from":3750,"to":3764}
+        ]
+      ]
+    },
+    {
+      "from": 3761,
+      "to": 3874,
+      "lines": [
+        [
+          {"text":"y","from":3764,"to":3766},
+          {"text":"el","from":3766,"to":3770},
+          {"text":"turno","from":3770,"to":3782},
+          {"text":"de","from":3782,"to":3785},
+          {"text":"noche","from":3785,"to":3793},
+          {"text":"cierra","from":3793,"to":3804}
+        ],
+        [
+          {"text":"el","from":3804,"to":3806},
+          {"text":"90","from":3806,"to":3818},
+          {"text":"%","from":3818,"to":3833},
+          {"text":"sin","from":3833,"to":3839},
+          {"text":"abrirlas.","from":3839,"to":3854}
+        ]
+      ]
+    },
+    {
+      "from": 3874,
+      "to": 3969,
+      "lines": [
+        [
+          {"text":"Es","from":3877,"to":3883},
+          {"text":"alert","from":3883,"to":3891},
+          {"text":"fatigue,","from":3891,"to":3903},
+          {"text":"la","from":3909,"to":3914},
+          {"text":"fatiga","from":3914,"to":3926},
+          {"text":"de","from":3926,"to":3930},
+          {"text":"alertas.","from":3930,"to":3945}
+        ]
+      ]
+    },
+    {
+      "from": 3973,
+      "to": 4071,
+      "lines": [
+        [
+          {"text":"Tres","from":3976,"to":3982},
+          {"text":"reglas","from":3982,"to":3994},
+          {"text":"generan","from":3994,"to":4006},
+          {"text":"el","from":4006,"to":4010},
+          {"text":"78","from":4010,"to":4024},
+          {"text":"%","from":4024,"to":4047},
+          {"text":"del","from":4047,"to":4051},
+          {"text":"volumen,","from":4051,"to":4066}
+        ]
+      ]
+    },
+    {
+      "from": 4071,
+      "to": 4170,
+      "lines": [
+        [
+          {"text":"y","from":4074,"to":4076},
+          {"text":"ninguna","from":4076,"to":4089},
+          {"text":"ha","from":4089,"to":4092},
+          {"text":"producido","from":4092,"to":4109}
+        ],
+        [
+          {"text":"nunca","from":4109,"to":4118},
+          {"text":"un","from":4118,"to":4122},
+          {"text":"incidente","from":4122,"to":4138},
+          {"text":"real.","from":4138,"to":4150}
+        ]
+      ]
+    },
+    {
+      "from": 4170,
+      "to": 4246,
+      "lines": [
+        [
+          {"text":"Las","from":4173,"to":4179},
+          {"text":"disparan","from":4179,"to":4193},
+          {"text":"el","from":4193,"to":4196},
+          {"text":"agente","from":4196,"to":4206}
+        ],
+        [
+          {"text":"de","from":4206,"to":4209},
+          {"text":"copias","from":4209,"to":4220},
+          {"text":"de","from":4220,"to":4223},
+          {"text":"seguridad,","from":4223,"to":4239}
+        ]
+      ]
+    },
+    {
+      "from": 4246,
+      "to": 4313,
+      "lines": [
+        [
+          {"text":"el","from":4249,"to":4253},
+          {"text":"escáner","from":4253,"to":4266},
+          {"text":"de","from":4266,"to":4269},
+          {"text":"vulnerabilidades","from":4269,"to":4295},
+          {"text":"corporativo","from":4295,"to":4316}
+        ]
+      ]
+    },
+    {
+      "from": 4313,
+      "to": 4414,
+      "lines": [
+        [
+          {"text":"y","from":4316,"to":4319},
+          {"text":"un","from":4319,"to":4323},
+          {"text":"balanceador","from":4323,"to":4340},
+          {"text":"que","from":4340,"to":4344},
+          {"text":"reinicia","from":4344,"to":4361}
+        ],
+        [
+          {"text":"sesiones","from":4361,"to":4376},
+          {"text":"cada","from":4376,"to":4383},
+          {"text":"hora.","from":4383,"to":4390}
+        ]
+      ]
+    },
+    {
+      "from": 4447,
+      "to": 4589,
+      "lines": [
+        [
+          {"text":"La","from":4450,"to":4455},
+          {"text":"cura","from":4455,"to":4464},
+          {"text":"no","from":4464,"to":4468},
+          {"text":"es","from":4468,"to":4472},
+          {"text":"más","from":4472,"to":4479},
+          {"text":"gente","from":4479,"to":4488},
+          {"text":"ni","from":4488,"to":4492},
+          {"text":"otra","from":4492,"to":4499}
+        ],
+        [
+          {"text":"herramienta:","from":4499,"to":4518},
+          {"text":"es","from":4525,"to":4531},
+          {"text":"afinar,","from":4531,"to":4543},
+          {"text":"alert","from":4546,"to":4556},
+          {"text":"tuning.","from":4557,"to":4570}
+        ]
+      ]
+    },
+    {
+      "from": 4589,
+      "to": 4723,
+      "lines": [
+        [
+          {"text":"Se","from":4592,"to":4597},
+          {"text":"excluye","from":4597,"to":4613},
+          {"text":"el","from":4613,"to":4615},
+          {"text":"patrón","from":4615,"to":4626},
+          {"text":"benigno","from":4626,"to":4639}
+        ],
+        [
+          {"text":"conocido;","from":4639,"to":4655},
+          {"text":"la","from":4662,"to":4668},
+          {"text":"regla","from":4668,"to":4678},
+          {"text":"sigue","from":4678,"to":4687},
+          {"text":"activa.","from":4687,"to":4699}
+        ]
+      ]
+    },
+    {
+      "from": 4725,
+      "to": 4845,
+      "lines": [
+        [
+          {"text":"Cada","from":4728,"to":4735},
+          {"text":"exclusión","from":4735,"to":4753},
+          {"text":"se","from":4753,"to":4757},
+          {"text":"documenta:","from":4757,"to":4775}
+        ],
+        [
+          {"text":"qué,","from":4784,"to":4787},
+          {"text":"por","from":4788,"to":4794},
+          {"text":"qué","from":4794,"to":4799},
+          {"text":"y","from":4800,"to":4802},
+          {"text":"quién","from":4803,"to":4810},
+          {"text":"la","from":4810,"to":4813},
+          {"text":"aprobó.","from":4813,"to":4825}
+        ]
+      ]
+    },
+    {
+      "from": 4845,
+      "to": 4973,
+      "lines": [
+        [
+          {"text":"Excluidos","from":4848,"to":4868},
+          {"text":"los","from":4868,"to":4873},
+          {"text":"tres","from":4873,"to":4880},
+          {"text":"patrones,","from":4880,"to":4898},
+          {"text":"quedan","from":4904,"to":4912},
+          {"text":"1.320.","from":4912,"to":4949}
+        ]
+      ]
+    },
+    {
+      "from": 4976,
+      "to": 5122,
+      "lines": [
+        [
+          {"text":"Deduplicar","from":4979,"to":4998},
+          {"text":"y","from":4998,"to":5001},
+          {"text":"agrupar","from":5001,"to":5013},
+          {"text":"eventos","from":5013,"to":5025}
+        ],
+        [
+          {"text":"relacionados","from":5025,"to":5047},
+          {"text":"deja","from":5047,"to":5055},
+          {"text":"la","from":5055,"to":5058},
+          {"text":"cola","from":5058,"to":5066},
+          {"text":"en","from":5066,"to":5069},
+          {"text":"400","from":5069,"to":5091},
+          {"text":"al","from":5091,"to":5094},
+          {"text":"día.","from":5094,"to":5102}
+        ]
+      ]
+    },
+    {
+      "from": 5122,
+      "to": 5257,
+      "lines": [
+        [
+          {"text":"Ojo:","from":5125,"to":5135},
+          {"text":"una","from":5137,"to":5143},
+          {"text":"exclusión","from":5143,"to":5161},
+          {"text":"demasiado","from":5161,"to":5177},
+          {"text":"amplia","from":5177,"to":5188}
+        ],
+        [
+          {"text":"crea","from":5188,"to":5195},
+          {"text":"falsos","from":5195,"to":5207},
+          {"text":"negativos,","from":5207,"to":5225},
+          {"text":"false","from":5228,"to":5236},
+          {"text":"negatives,","from":5236,"to":5253}
+        ]
+      ]
+    },
+    {
+      "from": 5257,
+      "to": 5342,
+      "lines": [
+        [
+          {"text":"justo","from":5260,"to":5273},
+          {"text":"por","from":5273,"to":5278},
+          {"text":"donde","from":5278,"to":5286},
+          {"text":"entrará","from":5286,"to":5297},
+          {"text":"el","from":5297,"to":5302},
+          {"text":"atacante.","from":5302,"to":5318}
+        ]
+      ]
+    },
+    {
+      "from": 5375,
+      "to": 5499,
+      "lines": [
+        [
+          {"text":"Dos","from":5378,"to":5385},
+          {"text":"semanas","from":5385,"to":5399},
+          {"text":"después,","from":5399,"to":5413},
+          {"text":"gracias","from":5415,"to":5430}
+        ],
+        [
+          {"text":"al","from":5430,"to":5433},
+          {"text":"ajuste,","from":5433,"to":5447},
+          {"text":"destaca","from":5447,"to":5461},
+          {"text":"una","from":5462,"to":5467},
+          {"text":"alerta.","from":5467,"to":5482}
+        ]
+      ]
+    },
+    {
+      "from": 5499,
+      "to": 5636,
+      "lines": [
+        [
+          {"text":"Volumen","from":5502,"to":5516},
+          {"text":"saliente","from":5516,"to":5531},
+          {"text":"inusual","from":5531,"to":5546},
+          {"text":"en","from":5546,"to":5549},
+          {"text":"un","from":5549,"to":5552},
+          {"text":"servidor","from":5552,"to":5566}
+        ],
+        [
+          {"text":"de","from":5566,"to":5569},
+          {"text":"la","from":5569,"to":5572},
+          {"text":"terminal","from":5573,"to":5586},
+          {"text":"de","from":5586,"to":5589},
+          {"text":"contenedores.","from":5589,"to":5612}
+        ]
+      ]
+    },
+    {
+      "from": 5639,
+      "to": 5735,
+      "lines": [
+        [
+          {"text":"La","from":5642,"to":5646},
+          {"text":"analista","from":5646,"to":5664},
+          {"text":"se","from":5664,"to":5668},
+          {"text":"la","from":5668,"to":5671},
+          {"text":"asigna","from":5671,"to":5685}
+        ],
+        [
+          {"text":"y","from":5685,"to":5687},
+          {"text":"empieza","from":5687,"to":5700},
+          {"text":"el","from":5700,"to":5703},
+          {"text":"triaje.","from":5703,"to":5716}
+        ]
+      ]
+    },
+    {
+      "from": 5735,
+      "to": 5947,
+      "lines": [
+        [
+          {"text":"NetFlow","from":5738,"to":5755},
+          {"text":"lo","from":5755,"to":5758},
+          {"text":"confirma:","from":5758,"to":5775},
+          {"text":"38","from":5785,"to":5799},
+          {"text":"GB","from":5799,"to":5824},
+          {"text":"hacia","from":5824,"to":5831},
+          {"text":"una","from":5831,"to":5837},
+          {"text":"IP","from":5837,"to":5842}
+        ],
+        [
+          {"text":"desconocida,","from":5842,"to":5862},
+          {"text":"entre","from":5871,"to":5880},
+          {"text":"las","from":5880,"to":5885},
+          {"text":"02:00","from":5885,"to":5893},
+          {"text":"y","from":5893,"to":5895},
+          {"text":"las","from":5894,"to":5900},
+          {"text":"04:30.","from":5900,"to":5923}
+        ]
+      ]
+    },
+    {
+      "from": 6000,
+      "to": 6129,
+      "lines": [
+        [
+          {"text":"No.","from":6003,"to":6009},
+          {"text":"NetFlow","from":6009,"to":6024},
+          {"text":"es","from":6024,"to":6027},
+          {"text":"metadato:","from":6027,"to":6044},
+          {"text":"quién","from":6054,"to":6060}
+        ],
+        [
+          {"text":"habló","from":6060,"to":6067},
+          {"text":"con","from":6067,"to":6073},
+          {"text":"quién,","from":6073,"to":6081},
+          {"text":"cuándo","from":6082,"to":6092},
+          {"text":"y","from":6092,"to":6094},
+          {"text":"cuánto.","from":6093,"to":6105}
+        ]
+      ]
+    },
+    {
+      "from": 6131,
+      "to": 6268,
+      "lines": [
+        [
+          {"text":"Solo","from":6134,"to":6145},
+          {"text":"una","from":6145,"to":6150},
+          {"text":"captura","from":6150,"to":6163},
+          {"text":"de","from":6163,"to":6166},
+          {"text":"paquetes","from":6166,"to":6180},
+          {"text":"guarda","from":6180,"to":6189}
+        ],
+        [
+          {"text":"el","from":6189,"to":6191},
+          {"text":"contenido,","from":6191,"to":6208},
+          {"text":"si","from":6213,"to":6219},
+          {"text":"no","from":6219,"to":6224},
+          {"text":"iba","from":6224,"to":6229},
+          {"text":"cifrado.","from":6229,"to":6244}
+        ]
+      ]
+    },
+    {
+      "from": 6301,
+      "to": 6379,
+      "lines": [
+        [
+          {"text":"¿Y","from":6304,"to":6306},
+          {"text":"si","from":6307,"to":6312},
+          {"text":"fuera","from":6312,"to":6323},
+          {"text":"una","from":6323,"to":6328},
+          {"text":"copia","from":6328,"to":6339},
+          {"text":"legítima?","from":6339,"to":6355}
+        ]
+      ]
+    },
+    {
+      "from": 6382,
+      "to": 6513,
+      "lines": [
+        [
+          {"text":"La","from":6385,"to":6389},
+          {"text":"analista","from":6389,"to":6406},
+          {"text":"pivota:","from":6406,"to":6420},
+          {"text":"revisa","from":6429,"to":6442}
+        ],
+        [
+          {"text":"ese","from":6442,"to":6449},
+          {"text":"servidor","from":6449,"to":6463},
+          {"text":"desde","from":6463,"to":6471},
+          {"text":"las","from":6471,"to":6481},
+          {"text":"01:30.","from":6481,"to":6494}
+        ]
+      ]
+    },
+    {
+      "from": 6513,
+      "to": 6581,
+      "lines": [
+        [
+          {"text":"El","from":6516,"to":6521},
+          {"text":"SIEM","from":6521,"to":6530},
+          {"text":"correlaciona","from":6530,"to":6550}
+        ],
+        [
+          {"text":"el","from":6550,"to":6553},
+          {"text":"flujo","from":6553,"to":6564},
+          {"text":"con","from":6564,"to":6569},
+          {"text":"un","from":6569,"to":6573},
+          {"text":"inicio","from":6573,"to":6584}
+        ]
+      ]
+    },
+    {
+      "from": 6581,
+      "to": 6691,
+      "lines": [
+        [
+          {"text":"de","from":6584,"to":6587},
+          {"text":"sesión","from":6587,"to":6600},
+          {"text":"a","from":6600,"to":6605},
+          {"text":"las","from":6606,"to":6614},
+          {"text":"01:52","from":6614,"to":6636}
+        ],
+        [
+          {"text":"de","from":6636,"to":6640},
+          {"text":"una","from":6640,"to":6646},
+          {"text":"cuenta","from":6646,"to":6656},
+          {"text":"de","from":6656,"to":6659},
+          {"text":"servicio.","from":6659,"to":6674}
+        ]
+      ]
+    },
+    {
+      "from": 6691,
+      "to": 6826,
+      "lines": [
+        [
+          {"text":"Viene","from":6694,"to":6704},
+          {"text":"de","from":6704,"to":6708},
+          {"text":"una","from":6708,"to":6713},
+          {"text":"estación","from":6713,"to":6727},
+          {"text":"de","from":6727,"to":6730},
+          {"text":"administración,","from":6730,"to":6753}
+        ],
+        [
+          {"text":"ocho","from":6766,"to":6774},
+          {"text":"minutos","from":6774,"to":6787},
+          {"text":"antes","from":6787,"to":6795},
+          {"text":"de","from":6795,"to":6798},
+          {"text":"la","from":6798,"to":6801},
+          {"text":"transferencia,","from":6801,"to":6823}
+        ]
+      ]
+    },
+    {
+      "from": 6826,
+      "to": 6910,
+      "lines": [
+        [
+          {"text":"y","from":6829,"to":6831},
+          {"text":"ninguna","from":6833,"to":6846},
+          {"text":"copia","from":6846,"to":6856},
+          {"text":"programada","from":6856,"to":6872},
+          {"text":"lo","from":6872,"to":6875},
+          {"text":"explica.","from":6875,"to":6890}
+        ]
+      ]
+    },
+    {
+      "from": 6910,
+      "to": 6980,
+      "lines": [
+        [
+          {"text":"Esa","from":6913,"to":6921},
+          {"text":"cuenta","from":6921,"to":6931},
+          {"text":"se","from":6931,"to":6935},
+          {"text":"sale","from":6935,"to":6943},
+          {"text":"de","from":6943,"to":6946},
+          {"text":"su","from":6946,"to":6951},
+          {"text":"línea","from":6951,"to":6961},
+          {"text":"base:","from":6961,"to":6972}
+        ]
+      ]
+    },
+    {
+      "from": 6980,
+      "to": 7115,
+      "lines": [
+        [
+          {"text":"justo","from":6983,"to":6994},
+          {"text":"lo","from":6994,"to":6997},
+          {"text":"que","from":6997,"to":7000},
+          {"text":"vigila","from":7000,"to":7012},
+          {"text":"el","from":7012,"to":7015},
+          {"text":"análisis","from":7015,"to":7029}
+        ],
+        [
+          {"text":"de","from":7029,"to":7032},
+          {"text":"comportamiento","from":7032,"to":7053},
+          {"text":"de","from":7053,"to":7056},
+          {"text":"usuarios,","from":7056,"to":7074},
+          {"text":"UBA.","from":7080,"to":7091}
+        ]
+      ]
+    },
+    {
+      "from": 7148,
+      "to": 7294,
+      "lines": [
+        [
+          {"text":"Primera","from":7151,"to":7163},
+          {"text":"decisión","from":7163,"to":7178},
+          {"text":"de","from":7178,"to":7181},
+          {"text":"contención:","from":7181,"to":7201}
+        ],
+        [
+          {"text":"¿apagas","from":7210,"to":7224},
+          {"text":"el","from":7224,"to":7227},
+          {"text":"servidor","from":7227,"to":7242},
+          {"text":"o","from":7248,"to":7251},
+          {"text":"lo","from":7251,"to":7255},
+          {"text":"aíslas?","from":7255,"to":7270}
+        ]
+      ]
+    },
+    {
+      "from": 7341,
+      "to": 7450,
+      "lines": [
+        [
+          {"text":"Aislarlo:","from":7344,"to":7363},
+          {"text":"cuarentena","from":7364,"to":7382},
+          {"text":"en","from":7382,"to":7385},
+          {"text":"una","from":7385,"to":7391},
+          {"text":"VLAN","from":7391,"to":7403}
+        ],
+        [
+          {"text":"restringida,","from":7403,"to":7424},
+          {"text":"sin","from":7430,"to":7436},
+          {"text":"apagarlo,","from":7436,"to":7452}
+        ]
+      ]
+    },
+    {
+      "from": 7450,
+      "to": 7532,
+      "lines": [
+        [
+          {"text":"porque","from":7453,"to":7461},
+          {"text":"la","from":7461,"to":7464},
+          {"text":"memoria","from":7464,"to":7476},
+          {"text":"también","from":7476,"to":7488},
+          {"text":"es","from":7488,"to":7492},
+          {"text":"evidencia.","from":7492,"to":7508}
+        ]
+      ]
+    },
+    {
+      "from": 7533,
+      "to": 7639,
+      "lines": [
+        [
+          {"text":"Una","from":7536,"to":7544},
+          {"text":"captura","from":7544,"to":7558},
+          {"text":"de","from":7558,"to":7561},
+          {"text":"paquetes","from":7561,"to":7577}
+        ],
+        [
+          {"text":"graba","from":7577,"to":7586},
+          {"text":"el","from":7586,"to":7590},
+          {"text":"resto","from":7590,"to":7600},
+          {"text":"de","from":7600,"to":7603},
+          {"text":"la","from":7603,"to":7607},
+          {"text":"sesión.","from":7607,"to":7619}
+        ]
+      ]
+    },
+    {
+      "from": 7639,
+      "to": 7787,
+      "lines": [
+        [
+          {"text":"Un","from":7642,"to":7647},
+          {"text":"playbook","from":7647,"to":7661},
+          {"text":"de","from":7661,"to":7665},
+          {"text":"SOAR,","from":7665,"to":7675},
+          {"text":"que","from":7678,"to":7680},
+          {"text":"automatiza","from":7681,"to":7701}
+        ],
+        [
+          {"text":"la","from":7701,"to":7704},
+          {"text":"respuesta,","from":7704,"to":7721},
+          {"text":"propuso","from":7723,"to":7739},
+          {"text":"esa","from":7739,"to":7746},
+          {"text":"cuarentena.","from":7746,"to":7763}
+        ]
+      ]
+    },
+    {
+      "from": 7789,
+      "to": 7887,
+      "lines": [
+        [
+          {"text":"Solo","from":7792,"to":7802},
+          {"text":"se","from":7802,"to":7807},
+          {"text":"ejecutó","from":7807,"to":7822},
+          {"text":"cuando","from":7822,"to":7831}
+        ],
+        [
+          {"text":"la","from":7831,"to":7834},
+          {"text":"analista","from":7834,"to":7852},
+          {"text":"la","from":7852,"to":7855},
+          {"text":"aprobó.","from":7855,"to":7867}
+        ]
+      ]
+    },
+    {
+      "from": 7887,
+      "to": 8001,
+      "lines": [
+        [
+          {"text":"Se","from":7890,"to":7895},
+          {"text":"corrige","from":7895,"to":7909},
+          {"text":"rotando","from":7909,"to":7923},
+          {"text":"la","from":7923,"to":7925},
+          {"text":"credencial","from":7925,"to":7943}
+        ],
+        [
+          {"text":"de","from":7943,"to":7946},
+          {"text":"la","from":7946,"to":7949},
+          {"text":"cuenta","from":7949,"to":7958},
+          {"text":"de","from":7958,"to":7961},
+          {"text":"servicio.","from":7961,"to":7977}
+        ]
+      ]
+    },
+    {
+      "from": 8003,
+      "to": 8150,
+      "lines": [
+        [
+          {"text":"La","from":8006,"to":8010},
+          {"text":"alerta","from":8010,"to":8023},
+          {"text":"se","from":8023,"to":8027},
+          {"text":"cierra","from":8027,"to":8037},
+          {"text":"al","from":8037,"to":8041},
+          {"text":"validar","from":8041,"to":8052},
+          {"text":"la","from":8052,"to":8056}
+        ],
+        [
+          {"text":"corrección","from":8056,"to":8073},
+          {"text":"y","from":8073,"to":8075},
+          {"text":"documentarla,","from":8074,"to":8097},
+          {"text":"no","from":8104,"to":8111},
+          {"text":"al","from":8111,"to":8114},
+          {"text":"leerla.","from":8114,"to":8126}
+        ]
+      ]
+    },
+    {
+      "from": 8183,
+      "to": 8331,
+      "lines": [
+        [
+          {"text":"El","from":8186,"to":8191},
+          {"text":"SIEM","from":8191,"to":8201},
+          {"text":"solo","from":8201,"to":8209},
+          {"text":"ve","from":8209,"to":8213},
+          {"text":"las","from":8213,"to":8218},
+          {"text":"fuentes","from":8218,"to":8230},
+          {"text":"integradas:","from":8230,"to":8249}
+        ],
+        [
+          {"text":"lo","from":8259,"to":8263},
+          {"text":"que","from":8263,"to":8267},
+          {"text":"no","from":8267,"to":8271},
+          {"text":"le","from":8271,"to":8274},
+          {"text":"llega,","from":8274,"to":8283},
+          {"text":"para","from":8284,"to":8291},
+          {"text":"él","from":8291,"to":8294},
+          {"text":"no","from":8294,"to":8298},
+          {"text":"ocurrió.","from":8298,"to":8312}
+        ]
+      ]
+    },
+    {
+      "from": 8331,
+      "to": 8478,
+      "lines": [
+        [
+          {"text":"Y","from":8334,"to":8337},
+          {"text":"una","from":8337,"to":8343},
+          {"text":"fuente","from":8343,"to":8355},
+          {"text":"que","from":8355,"to":8358},
+          {"text":"se","from":8358,"to":8363},
+          {"text":"calla,","from":8363,"to":8373},
+          {"text":"missing","from":8374,"to":8386},
+          {"text":"logs,","from":8386,"to":8397}
+        ],
+        [
+          {"text":"es","from":8400,"to":8403},
+          {"text":"tan","from":8406,"to":8412},
+          {"text":"sospechosa","from":8412,"to":8430},
+          {"text":"como","from":8430,"to":8438},
+          {"text":"una","from":8438,"to":8444},
+          {"text":"alerta.","from":8444,"to":8458}
+        ]
+      ]
+    },
+    {
+      "from": 8478,
+      "to": 8601,
+      "lines": [
+        [
+          {"text":"Sin","from":8481,"to":8489},
+          {"text":"relojes","from":8489,"to":8502},
+          {"text":"sincronizados,","from":8502,"to":8527}
+        ],
+        [
+          {"text":"la","from":8533,"to":8537},
+          {"text":"correlación","from":8537,"to":8556},
+          {"text":"se","from":8556,"to":8561},
+          {"text":"desordena.","from":8561,"to":8577}
+        ]
+      ]
+    },
+    {
+      "from": 8603,
+      "to": 8719,
+      "lines": [
+        [
+          {"text":"El","from":8606,"to":8611},
+          {"text":"SIEM","from":8611,"to":8621},
+          {"text":"ve","from":8621,"to":8625},
+          {"text":"eventos","from":8625,"to":8641},
+          {"text":"y","from":8641,"to":8643},
+          {"text":"metadatos:","from":8643,"to":8663}
+        ],
+        [
+          {"text":"jamás","from":8670,"to":8681},
+          {"text":"el","from":8681,"to":8684},
+          {"text":"contenido.","from":8684,"to":8700}
+        ]
+      ]
+    },
+    {
+      "from": 8719,
+      "to": 8829,
+      "lines": [
+        [
+          {"text":"El","from":8722,"to":8727},
+          {"text":"archivado,","from":8727,"to":8744},
+          {"text":"archiving,","from":8745,"to":8763}
+        ],
+        [
+          {"text":"es","from":8765,"to":8769},
+          {"text":"para","from":8771,"to":8777},
+          {"text":"investigaciones","from":8777,"to":8800},
+          {"text":"y","from":8800,"to":8802},
+          {"text":"cumplimiento:","from":8802,"to":8823}
+        ]
+      ]
+    },
+    {
+      "from": 8829,
+      "to": 8945,
+      "lines": [
+        [
+          {"text":"reconstruir","from":8832,"to":8853},
+          {"text":"una","from":8853,"to":8858},
+          {"text":"intrusión","from":8858,"to":8873}
+        ],
+        [
+          {"text":"antigua","from":8873,"to":8886},
+          {"text":"depende","from":8886,"to":8898},
+          {"text":"de","from":8898,"to":8901},
+          {"text":"la","from":8901,"to":8904},
+          {"text":"retención.","from":8904,"to":8921}
+        ]
+      ]
+    },
+    {
+      "from": 8978,
+      "to": 9125,
+      "lines": [
+        [
+          {"text":"Agregar,","from":8981,"to":8997},
+          {"text":"normalizar,","from":8997,"to":9018},
+          {"text":"correlacionar","from":9019,"to":9040}
+        ],
+        [
+          {"text":"y","from":9040,"to":9042},
+          {"text":"alertar,","from":9042,"to":9056},
+          {"text":"enriqueciendo","from":9060,"to":9082},
+          {"text":"por","from":9082,"to":9086},
+          {"text":"el","from":9086,"to":9089},
+          {"text":"camino.","from":9089,"to":9101}
+        ]
+      ]
+    },
+    {
+      "from": 9128,
+      "to": 9221,
+      "lines": [
+        [
+          {"text":"Y","from":9131,"to":9133},
+          {"text":"el","from":9134,"to":9137},
+          {"text":"Blue","from":9137,"to":9143},
+          {"text":"Team","from":9143,"to":9150},
+          {"text":"responde:","from":9150,"to":9167}
+        ],
+        [
+          {"text":"triaje,","from":9167,"to":9181},
+          {"text":"contención,","from":9181,"to":9200},
+          {"text":"corrección,","from":9202,"to":9219}
+        ]
+      ]
+    },
+    {
+      "from": 9221,
+      "to": 9283,
+      "lines": [
+        [
+          {"text":"validación","from":9224,"to":9245},
+          {"text":"y","from":9245,"to":9247},
+          {"text":"ajuste.","from":9247,"to":9262}
+        ]
+      ]
+    },
+    {
+      "from": 9283,
+      "to": 9421,
+      "lines": [
+        [
+          {"text":"Para","from":9286,"to":9291},
+          {"text":"el","from":9291,"to":9295},
+          {"text":"examen:","from":9295,"to":9309},
+          {"text":"NetFlow","from":9313,"to":9328},
+          {"text":"es","from":9328,"to":9332},
+          {"text":"metadato;","from":9332,"to":9348}
+        ],
+        [
+          {"text":"alert","from":9357,"to":9367},
+          {"text":"fatigue","from":9367,"to":9378},
+          {"text":"se","from":9378,"to":9382},
+          {"text":"cura","from":9382,"to":9390},
+          {"text":"con","from":9390,"to":9396},
+          {"text":"alert","from":9396,"to":9403},
+          {"text":"tuning;","from":9403,"to":9417}
+        ]
+      ]
+    },
+    {
+      "from": 9421,
+      "to": 9521,
+      "lines": [
+        [
+          {"text":"y","from":9424,"to":9427},
+          {"text":"archiving","from":9429,"to":9444},
+          {"text":"es","from":9444,"to":9447},
+          {"text":"para","from":9447,"to":9453},
+          {"text":"investigaciones","from":9453,"to":9476}
+        ],
+        [
+          {"text":"y","from":9476,"to":9478},
+          {"text":"cumplimiento.","from":9478,"to":9499}
+        ]
+      ]
+    },
+    {
+      "from": 9521,
+      "to": 9654,
+      "lines": [
+        [
+          {"text":"Ahora","from":9524,"to":9534},
+          {"text":"te","from":9534,"to":9538},
+          {"text":"toca:","from":9538,"to":9548},
+          {"text":"aplica","from":9557,"to":9570},
+          {"text":"lo","from":9571,"to":9574},
+          {"text":"visto","from":9574,"to":9583}
+        ],
+        [
+          {"text":"en","from":9584,"to":9586},
+          {"text":"las","from":9585,"to":9590},
+          {"text":"preguntas","from":9590,"to":9606},
+          {"text":"de","from":9606,"to":9610},
+          {"text":"esta","from":9610,"to":9617},
+          {"text":"lección.","from":9617,"to":9630}
+        ]
+      ]
+    }
+  ],
+  "cues": [
+    {"scene":"s01-hook","id":"flood","frame":147},
+    {"scene":"s01-hook","id":"needle","frame":207},
+    {"scene":"s01-hook","id":"title","frame":359},
+    {"scene":"s01-hook","id":"def-sim","frame":480},
+    {"scene":"s01-hook","id":"def-sem","frame":571},
+    {"scene":"s01-hook","id":"def-merge","frame":665},
+    {"scene":"s01-hook","id":"verbs","frame":743},
+    {"scene":"s02-collect","id":"src-systems","frame":988},
+    {"scene":"s02-collect","id":"src-apps","frame":1042},
+    {"scene":"s02-collect","id":"src-infra","frame":1097},
+    {"scene":"s02-collect","id":"m-agent","frame":1228},
+    {"scene":"s02-collect","id":"m-syslog","frame":1295},
+    {"scene":"s02-collect","id":"m-api","frame":1335},
+    {"scene":"s02-collect","id":"m-netflow","frame":1392},
+    {"scene":"s02-collect","id":"ntp","frame":1529},
+    {"scene":"s02-collect","id":"wipe","frame":1589},
+    {"scene":"s03-normalize","id":"raw","frame":1809},
+    {"scene":"s03-normalize","id":"parse","frame":1900},
+    {"scene":"s03-normalize","id":"schema","frame":2039},
+    {"scene":"s03-normalize","id":"utc","frame":2213},
+    {"scene":"s04-enrich","id":"enr-asset","frame":2479},
+    {"scene":"s04-enrich","id":"enr-identity","frame":2523},
+    {"scene":"s04-enrich","id":"enr-geo","frame":2587},
+    {"scene":"s04-enrich","id":"enr-ti","frame":2622},
+    {"scene":"s04-enrich","id":"severity","frame":2788},
+    {"scene":"s05-correlate","id":"ev-fail","frame":3012},
+    {"scene":"s05-correlate","id":"ev-success","frame":3148},
+    {"scene":"s05-correlate","id":"ev-create","frame":3224},
+    {"scene":"s05-correlate","id":"window","frame":3375},
+    {"scene":"s05-correlate","id":"rule","frame":3417},
+    {"scene":"s05-correlate","id":"alert","frame":3499},
+    {"scene":"s06-fatigue","id":"queue","frame":3696},
+    {"scene":"s06-fatigue","id":"close-unread","frame":3793},
+    {"scene":"s06-fatigue","id":"pareto","frame":3976},
+    {"scene":"s06-fatigue","id":"r-backup","frame":4193},
+    {"scene":"s06-fatigue","id":"r-scanner","frame":4249},
+    {"scene":"s06-fatigue","id":"r-lb","frame":4319},
+    {"scene":"s07-tuning","id":"exclude","frame":4597},
+    {"scene":"s07-tuning","id":"rule-on","frame":4662},
+    {"scene":"s07-tuning","id":"documented","frame":4753},
+    {"scene":"s07-tuning","id":"count-1320","frame":4904},
+    {"scene":"s07-tuning","id":"count-400","frame":5047},
+    {"scene":"s07-tuning","id":"overtune","frame":5137},
+    {"scene":"s08-triage","id":"two-weeks","frame":5378},
+    {"scene":"s08-triage","id":"alert-top","frame":5447},
+    {"scene":"s08-triage","id":"assign","frame":5642},
+    {"scene":"s08-triage","id":"netflow","frame":5738},
+    {"scene":"s08-triage","id":"38gb","frame":5785},
+    {"scene":"s08-triage","id":"metadata","frame":6027},
+    {"scene":"s09-pivot","id":"query","frame":6429},
+    {"scene":"s09-pivot","id":"logon-0152","frame":6569},
+    {"scene":"s09-pivot","id":"adm-ws","frame":6708},
+    {"scene":"s09-pivot","id":"link-8min","frame":6766},
+    {"scene":"s09-pivot","id":"uba","frame":7012},
+    {"scene":"s10-contain","id":"quarantine","frame":7364},
+    {"scene":"s10-contain","id":"power-on","frame":7430},
+    {"scene":"s10-contain","id":"pcap","frame":7536},
+    {"scene":"s10-contain","id":"soar","frame":7642},
+    {"scene":"s10-contain","id":"approve","frame":7855},
+    {"scene":"s10-contain","id":"validate","frame":8041},
+    {"scene":"s11-limits","id":"blind-source","frame":8259},
+    {"scene":"s11-limits","id":"silence","frame":8337},
+    {"scene":"s11-limits","id":"ntp-skew","frame":8481},
+    {"scene":"s11-limits","id":"no-payload","frame":8670},
+    {"scene":"s11-limits","id":"archive","frame":8722},
+    {"scene":"s12-recap","id":"recap-pipe","frame":8981},
+    {"scene":"s12-recap","id":"recap-loop","frame":9131},
+    {"scene":"s12-recap","id":"recap-exam","frame":9286},
+    {"scene":"s12-recap","id":"endcard","frame":9524}
+  ],
+  "exam": [
+    {"scene":"s01-hook","from":665,"durationInFrames":120,"objective":"4.4","text":"Un SIEM agrega, normaliza, correlaciona y alerta"},
+    {"scene":"s02-collect","from":1529,"durationInFrames":150,"objective":"4.4","text":"Log aggregation: copia central y hora sincronizada"},
+    {"scene":"s05-correlate","from":3224,"durationInFrames":150,"objective":"4.9","text":"4625 fallido · 4624 correcto · 4720 cuenta creada"},
+    {"scene":"s06-fatigue","from":3874,"durationInFrames":150,"objective":"4.4","text":"Cerrar alertas sin leerlas = alert fatigue"},
+    {"scene":"s07-tuning","from":4662,"durationInFrames":150,"objective":"4.4","text":"Alert tuning: excluir el patrón, no desactivar la regla"},
+    {"scene":"s08-triage","from":6027,"durationInFrames":150,"objective":"4.4","text":"NetFlow = metadatos · packet capture = contenido"},
+    {"scene":"s09-pivot","from":6910,"durationInFrames":150,"objective":"4.5","text":"UBA: detecta cuentas que se salen de su línea base"},
+    {"scene":"s10-contain","from":7364,"durationInFrames":150,"objective":"4.4","text":"Quarantine: aislar para investigar sin destruir evidencia"},
+    {"scene":"s11-limits","from":8722,"durationInFrames":150,"objective":"4.4","text":"Archiving: investigaciones y cumplimiento, no el día a día"}
+  ],
+  "think": [
+    {"scene":"s08-triage","from":5935,"durationInFrames":56,"q":"Con NetFlow, ¿sabes qué datos salieron?"},
+    {"scene":"s10-contain","from":7282,"durationInFrames":50,"q":"¿Apagarlo o aislarlo?"}
+  ]
+}
