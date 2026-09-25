@@ -1,0 +1,208 @@
+WEBVTT
+
+1
+00:00:01.500 --> 00:00:03.633
+Halden, de madrugada.
+
+2
+00:00:03.733 --> 00:00:08.133
+El portátil de operaciones está aislado
+de la red, pero sigue encendido.
+
+3
+00:00:08.133 --> 00:00:11.500
+Operaciones quiere
+reinstalarlo esta noche.
+
+4
+00:00:11.600 --> 00:00:15.867
+Podrá, pero después de capturarlo:
+esto puede acabar ante un juez.
+
+5
+00:00:15.867 --> 00:00:19.333
+La asesoría jurídica emite un legal hold.
+
+6
+00:00:19.400 --> 00:00:24.367
+Nace cuando el litigio es razonablemente
+previsible, no cuando llega la demanda.
+
+7
+00:00:24.367 --> 00:00:26.367
+Y prevalece sobre la retención:
+
+8
+00:00:26.367 --> 00:00:30.867
+la rotación que borraría los logs
+del caso a los 30 días se detiene.
+
+9
+00:00:31.900 --> 00:00:36.300
+Antes de tocar nada, la analista
+sigue el order of volatility: primero,
+
+10
+00:00:36.300 --> 00:00:38.233
+lo que antes desaparece.
+
+11
+00:00:38.233 --> 00:00:41.067
+Arriba, la memoria RAM
+y la cache: procesos,
+
+12
+00:00:41.067 --> 00:00:44.367
+conexiones y claves
+de cifrado que solo viven ahí.
+
+13
+00:00:44.367 --> 00:00:48.967
+Después, el estado de red,
+los procesos y los archivos temporales.
+
+14
+00:00:49.067 --> 00:00:54.833
+Luego el disco, los logs remotos
+y los backups. Al final, el papel.
+
+15
+00:00:54.833 --> 00:00:59.600
+Si alguien lo apaga para ir más rápido,
+las capas de arriba se pierden.
+
+16
+00:00:59.633 --> 00:01:03.000
+Por eso la memoria
+se vuelca antes de apagarlo.
+
+17
+00:01:04.033 --> 00:01:06.900
+Laboratorio, a las 05:40.
+
+18
+00:01:07.000 --> 00:01:11.333
+Sandoval conecta el disco a un write
+blocker: solo se puede leer.
+
+19
+00:01:11.333 --> 00:01:16.200
+Primero, el hash SHA-256 del original,
+antes de copiar nada.
+
+20
+00:01:16.200 --> 00:01:19.033
+Después, la imagen bit
+a bit: sector a sector,
+
+21
+00:01:19.033 --> 00:01:24.667
+con el espacio no asignado y los ficheros
+borrados. No es copiar carpetas.
+
+22
+00:01:24.667 --> 00:01:26.833
+Al terminar, se calcula
+el hash de los datos
+
+23
+00:01:26.833 --> 00:01:30.000
+adquiridos y se vuelve
+a calcular el del original.
+
+24
+00:01:30.000 --> 00:01:32.533
+Los tres valores coinciden.
+
+25
+00:01:32.567 --> 00:01:34.900
+El original se vuelve
+a precintar y el análisis
+
+26
+00:01:34.900 --> 00:01:37.533
+se hace sobre una copia de trabajo.
+
+27
+00:01:38.567 --> 00:01:43.667
+Ahora, otro final posible: el hash de la
+imagen no coincide con el del original.
+
+28
+00:01:45.633 --> 00:01:47.800
+Firmar el formulario no lo arregla:
+
+29
+00:01:47.800 --> 00:01:51.867
+esa imagen no es una copia exacta
+y pierde su valor como prueba.
+
+30
+00:01:51.867 --> 00:01:55.200
+Cambiar a MD5, más débil, tampoco.
+
+31
+00:01:55.267 --> 00:01:59.167
+Se repite la adquisición
+y se documenta la discrepancia.
+
+32
+00:02:00.200 --> 00:02:04.433
+Desde las 04:12, el disco viaja
+en una bolsa antiestática precintada,
+
+33
+00:02:04.433 --> 00:02:06.700
+y cada entrega queda anotada.
+
+34
+00:02:06.700 --> 00:02:10.767
+Esa es la chain of custody: quién
+la tuvo, cuándo, de quién la recibió,
+
+35
+00:02:10.767 --> 00:02:12.867
+a quién la entregó y por qué.
+
+36
+00:02:12.867 --> 00:02:17.167
+Imagina el disco una noche
+en un cajón sin cerrar, sin anotar.
+
+37
+00:02:17.233 --> 00:02:21.267
+Aunque el hash coincida,
+ese hueco puede hacerla inadmisible.
+
+38
+00:02:21.267 --> 00:02:24.600
+Porque el hash demuestra que los
+datos no cambiaron, y la cadena,
+
+39
+00:02:24.600 --> 00:02:29.067
+quién tuvo el objeto.
+Ninguno sustituye al otro.
+
+40
+00:02:30.167 --> 00:02:33.933
+Cinco reflejos de examen:
+legal hold al prever el litigio,
+
+41
+00:02:33.933 --> 00:02:38.500
+memoria antes que disco, y hash
+antes y después, analizando la copia.
+
+42
+00:02:38.500 --> 00:02:42.000
+Hash distinto: se repite la adquisición.
+
+43
+00:02:42.067 --> 00:02:46.200
+Y un hueco en la custodia puede
+dejar la evidencia inadmisible.
+
+44
+00:02:46.267 --> 00:02:49.000
+Seguimos con las fuentes de datos.

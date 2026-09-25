@@ -244,7 +244,7 @@ describe('placement blocks', () => {
   });
 });
 
-describe('SIEM lesson video', () => {
+describe('lesson videos', () => {
   // Only the fs calls this test needs, typed locally so the suite does not
   // depend on @types/node being installed.
   type Fs = {
@@ -255,30 +255,45 @@ describe('SIEM lesson video', () => {
   const loadFs = async (): Promise<Fs> => import(/* @vite-ignore */ ['node', 'fs'].join(':'));
   const publicFile = (path: string) => new URL(`../../public/${path}`, import.meta.url);
 
-  const block = ALL_MODULES.find((m) => m.id === 'sp4m6')?.blocks.find(
-    (b) => b.t === 'video' && b.src === 'videos/siem-blue-team.mp4',
+  // Every t:'video' block of both tracks, with the lesson that embeds it.
+  const videos = ALL_MODULES.flatMap((m) =>
+    m.blocks.flatMap((b) => (b.t === 'video' ? [{ module: m.id, block: b }] : [])),
   );
+  const moduleOf = (src: string) => videos.find((v) => v.block.src === src)?.module;
 
-  it('sp4m6 embeds the SIEM video', () => {
-    expect(block).toBeDefined();
+  it('the explainers sit in the lessons the video plan puts them in', () => {
+    expect(moduleOf('videos/siem-blue-team.mp4')).toBe('sp4m6');
+    expect(moduleOf('videos/forense-adquisicion.mp4')).toBe('sp4m11');
   });
 
-  it('points at relative public assets that exist', async () => {
-    if (!block || block.t !== 'video') throw new Error('SIEM video block missing');
+  it('every video block points at relative public assets that exist', async () => {
+    expect(videos.length).toBeGreaterThan(0);
     const fs = await loadFs();
-    const assets = [
-      [block.src, /\.mp4$/],
-      [block.poster, /\.(png|jpe?g|webp)$/],
-      [block.transcript, /\.txt$/],
-      [block.captions, /\.vtt$/],
-    ] as const;
-    for (const [path, ext] of assets) {
-      expect(path, path).toMatch(ext);
-      expect(path.startsWith('/') || path.includes('..'), path).toBe(false);
-      expect(fs.existsSync(publicFile(path)), path).toBe(true);
+    for (const { module, block } of videos) {
+      const assets = [
+        [block.src, /\.mp4$/],
+        [block.poster, /\.(png|jpe?g|webp)$/],
+        [block.transcript, /\.txt$/],
+        [block.captions, /\.vtt$/],
+      ] as const;
+      for (const [path, ext] of assets) {
+        const where = `${module}: ${path}`;
+        expect(path, where).toMatch(ext);
+        expect(path.startsWith('/') || path.includes('..'), where).toBe(false);
+        expect(fs.existsSync(publicFile(path)), where).toBe(true);
+      }
+      expect(block.title.trim().length, module).toBeGreaterThan(0);
+      expect(fs.statSync(publicFile(block.src)).size, block.src).toBeLessThan(50 * 1024 * 1024);
+      expect(fs.readFileSync(publicFile(block.transcript), 'utf8').length, block.transcript).toBeGreaterThan(200);
+      // WEBVTT header, a blank line, then the first cue (any identifier) and its timing.
+      expect(fs.readFileSync(publicFile(block.captions), 'utf8'), block.captions).toMatch(
+        /^WEBVTT\r?\n\r?\n[^\r\n]+\r?\n\d\d:\d\d:\d\d\.\d{3} --> /,
+      );
     }
-    expect(fs.statSync(publicFile(block.src)).size).toBeLessThan(50 * 1024 * 1024);
-    expect(fs.readFileSync(publicFile(block.transcript), 'utf8').length).toBeGreaterThan(200);
-    expect(fs.readFileSync(publicFile(block.captions), 'utf8')).toMatch(/^WEBVTT\n\n1\n\d\d:\d\d:\d\d\.\d{3} --> /);
+  });
+
+  it('no two video blocks share an asset', () => {
+    const paths = videos.flatMap(({ block }) => [block.src, block.poster, block.transcript, block.captions]);
+    expect(new Set(paths).size).toBe(paths.length);
   });
 });

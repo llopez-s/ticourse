@@ -161,22 +161,32 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   and each device keeps its own copy locally, but it is the one place where a device whose
   `localStorage` was cleared *before* its next push can lose data. Retrying once after a 404 on
   the first sync for a code would shrink the window.
-- **Tests:** vitest, `npm test` (133 tests in `src/**/*.test.ts`, 9 files). Content tests assert
+- **Tests:** vitest, `npm test` (137 tests in `src/**/*.test.ts`, 10 files). Content tests assert
   Domain 1–5 completeness, that every Security+ boss section has ≥12 questions, 4 choices + valid
   answer per question, ids unique, lab data present, and (placement blocks) that every content
   section has exactly one 12-question block with contiguous ids and non-empty text. Partial
   placement coverage fails for **every** track; shipping none at all is still allowed. A
-  `SIEM lesson video` suite checks that sp4m6's video block and its four public assets exist.
-- **Lesson videos (`t: 'video'` blocks).** The SIEM explainer (sp4m6, ~6:07) is a self-contained
-  Remotion project in `video/siem/` — see its `README.md`. Pipeline: `narration.json` →
-  `scripts/tts-elevenlabs.mjs` (ElevenLabs v3, voice Sarah, one request per scene with `<tag>`
-  emotion directions, cut into per-segment clips; needs `ELEVENLABS_API_KEY` in the git-ignored
-  `.env.local`; free plan = premade voices only + "Voz: ElevenLabs" credit) — or `scripts/tts.py`
-  (edge-tts fallback) → `scripts/build-timeline.mjs`
-  (`src/timeline.json` + transcript + WebVTT) → `scripts/render.mjs` (MP4 + poster into
-  `public/videos/`, ffprobe/A-V-sync checks). Rendering is local only (not in CI), so the MP4 is
-  committed. Its voice clips live in `video/siem/public/` (Remotion `--public-dir`), never in the
-  app's `public/`. The EDR video (sp4m7, `video/edr/`) is a separate, older pipeline.
+  `lesson videos` suite walks every `t: 'video'` block of both tracks (assets exist, relative,
+  < 50 MB, VTT header, no shared assets) and pins SIEM to sp4m6 and the forensics capsule to sp4m11.
+- **Lesson videos (`t: 'video'` blocks).** One shared Remotion engine in `video/engine/` (scripts,
+  UI, overlays, theme, fonts, timeline types — see its `README.md`) and one folder per video with a
+  `video.json` (output name, composition/poster ids, `profile` principal|capsula, `track`):
+  `video/siem/` (sp4m6, ~6:07, ElevenLabs voice Sarah) and `video/forense-adquisicion/` (sp4m11,
+  capsule ~2:52, edge-tts Elvira until the ElevenLabs quota resets on 2026-10-25 — re-voice steps in
+  its README). Every script takes `--video <slug>`. Pipeline: `narration.json` →
+  `scripts/tts-elevenlabs.mjs` (ElevenLabs v3, one request per scene with `<tag>` emotion
+  directions; needs `ELEVENLABS_API_KEY` in the git-ignored `.env.local`; free plan = 10k chars/month,
+  premade voices only + "Voz: ElevenLabs" credit) — or `scripts/tts.py` (edge-tts) →
+  `scripts/build-timeline.mjs` (`src/timeline.json` + transcript + WebVTT) → `scripts/render.mjs`
+  (bundles first, then MP4 + poster into `public/videos/`, ffprobe/A-V-sync checks). Rendering is
+  local only (not in CI), so the MP4 is committed. Voice clips live in `video/<slug>/public/`
+  (Remotion `--public-dir`), never in the app's `public/`. The video content plan (ranking, batches,
+  briefs) is `docs/superpowers/plans/2026-09-25-lesson-videos.md`. The EDR video (sp4m7,
+  `video/edr/`) is a separate, older pipeline that V1 of the plan replaces.
+- **Remotion on this machine:** when the CPU is busy, the CLI's bundling blocks the event loop and
+  Chrome's connection times out after 25 s. `render.mjs`/`qa-frames.mjs` therefore bundle first;
+  for ad-hoc renders do `remotion bundle` then render from the bundle dir. In the Bash tool,
+  Remotion renders need the sandbox disabled.
 - **Bash gotcha in this harness:** commands containing backticks fail to parse before running —
   write patch scripts to a file (or use Edit/Write) instead of inline heredocs with backticks.
 - `.claude/settings.local.json` has **stale hardcoded Bash paths** from a previous location
