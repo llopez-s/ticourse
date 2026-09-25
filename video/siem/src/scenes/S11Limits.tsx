@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
-import type { SceneProps } from '../timeline/types';
-import type { Accent } from '../theme/tokens';
-import { C, STAGE } from '../theme/tokens';
-import { progress } from '../theme/motion';
-import type { IconName } from '../ui';
+import type { SceneProps } from '../../../engine/src/timeline/types';
+import type { Accent } from '../../../engine/src/theme/tokens';
+import { C, STAGE } from '../../../engine/src/theme/tokens';
+import { progress } from '../../../engine/src/theme/motion';
+import type { IconName } from '../../../engine/src/ui';
 import { BlindSource, ClockSkew, NoPayload, Retention, Silence } from './parts/s11-limits/Limits';
 import { Tile, mixHex } from './parts/s11-limits/Tile';
 import { s11Timing } from './parts/s11-limits/timing';

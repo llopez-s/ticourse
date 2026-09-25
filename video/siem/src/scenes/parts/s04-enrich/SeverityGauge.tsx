@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
-import { C, FONT, TYPE, alpha } from '../../../theme/tokens';
-import { SeverityBadge, type Severity } from '../../../ui';
+import { C, FONT, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { SeverityBadge, type Severity } from '../../../../../engine/src/ui';
 import { SeverityDial } from './SeverityDial';
 
 /** Shared geometry so the main event and its "mismo aviso" copy read as the same instrument. */

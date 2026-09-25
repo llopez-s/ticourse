@@ -1,7 +1,7 @@
 import { AbsoluteFill, useCurrentFrame } from 'remotion';
 import { sceneTiming } from '../timeline/load';
-import type { SceneId, SceneProps } from '../timeline/types';
-import { C, FONT, STAGE, TYPE } from '../theme/tokens';
+import type { SceneId, SceneProps } from '../../../engine/src/timeline/types';
+import { C, FONT, STAGE, TYPE } from '../../../engine/src/theme/tokens';
 
 /**
  * Development stand-in for a scene that has not been built yet: shows the

@@ -1,4 +1,4 @@
-import type { IconName } from '../ui';
+import type { IconName } from '../../../engine/src/ui';
 
 /**
  * Content of scene 02 "Recoger" (log aggregation). Fictitious data only:

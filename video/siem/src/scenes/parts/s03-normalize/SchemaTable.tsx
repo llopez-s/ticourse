@@ -1,7 +1,7 @@
 import { interpolateColors } from 'remotion';
-import { C, FONT, TYPE, alpha } from '../../../theme/tokens';
-import { EASE, enter, lerp, progress } from '../../../theme/motion';
-import { Chip, Icon, Panel } from '../../../ui';
+import { C, FONT, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { EASE, enter, lerp, progress } from '../../../../../engine/src/theme/motion';
+import { Chip, Icon, Panel } from '../../../../../engine/src/ui';
 import { COLUMN_LABEL, FIELD_ORDER, SOURCES, type FieldKey } from '../../../data/s03-normalize';
 import {
   CHAR_W,

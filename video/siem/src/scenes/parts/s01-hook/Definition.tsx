@@ -1,8 +1,8 @@
 import type { CSSProperties, ReactNode } from 'react';
 import { interpolateColors } from 'remotion';
-import { C, FONT, STAGE, TYPE, alpha } from '../../../theme/tokens';
-import { EASE, lerp, progress, springIn } from '../../../theme/motion';
-import { Chip, Icon, type IconName } from '../../../ui';
+import { C, FONT, STAGE, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { EASE, lerp, progress, springIn } from '../../../../../engine/src/theme/motion';
+import { Chip, Icon, type IconName } from '../../../../../engine/src/ui';
 
 export interface DefinitionTimes {
   title: number;

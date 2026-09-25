@@ -1,4 +1,4 @@
-import { curveBetween, type Point } from '../../../ui';
+import { curveBetween, type Point } from '../../../../../engine/src/ui';
 import type { GroupId, InputId, LinkId } from '../../../data/s02-collect';
 
 /** Stage-local geometry of scene 02 (stage = 1728 x 660, origin at STAGE.left/top). */

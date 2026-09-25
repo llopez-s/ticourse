@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { C, STAGE, alpha } from '../../../theme/tokens';
-import { progress } from '../../../theme/motion';
-import { Packet, cubicLength, cubicPath } from '../../../ui';
+import { C, STAGE, alpha } from '../../../../../engine/src/theme/tokens';
+import { progress } from '../../../../../engine/src/theme/motion';
+import { Packet, cubicLength, cubicPath } from '../../../../../engine/src/ui';
 import type { LinkId } from '../../../data/s02-collect';
 import { L, LANDING, LINK_IDS, PORT, inputY, linkCurve } from './layout';
 import { DRAW, TRAVEL, linkLitAt, wipeFocus, type S02Timing } from './timing';

@@ -1,7 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react';
-import { ACCENT, C, FONT, RADIUS, TYPE, alpha, type Accent } from '../../../theme/tokens';
-import { EASE, countUp, enter, fmtInt, lerp, progress } from '../../../theme/motion';
-import { Counter, Icon, type IconName } from '../../../ui';
+import { ACCENT, C, FONT, RADIUS, TYPE, alpha, type Accent } from '../../../../../engine/src/theme/tokens';
+import { EASE, countUp, enter, fmtInt, lerp, progress } from '../../../../../engine/src/theme/motion';
+import { Counter, Icon, type IconName } from '../../../../../engine/src/ui';
 import { CLOSED_UNREAD, CLOSED_UNREAD_PCT, DAILY_ALERTS } from '../../../data/s06-fatigue';
 
 function Card({

@@ -1,8 +1,8 @@
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
-import type { SceneProps } from '../timeline/types';
-import { ACCENT, C, FONT, STAGE, TYPE, alpha } from '../theme/tokens';
-import { EASE, fadeIn, lerp, progress, springIn } from '../theme/motion';
-import { Chip, Icon, MonoLine, Panel, PipelineSpine, type Severity } from '../ui';
+import type { SceneProps } from '../../../engine/src/timeline/types';
+import { ACCENT, C, FONT, STAGE, TYPE, alpha } from '../../../engine/src/theme/tokens';
+import { EASE, fadeIn, lerp, progress, springIn } from '../../../engine/src/theme/motion';
+import { Chip, Icon, MonoLine, Panel, PipelineSpine, type Severity } from '../../../engine/src/ui';
 import { CONTEXT_ROWS, EVENT, GHOST } from '../data/s04-enrich';
 import { SeverityGauge } from './parts/s04-enrich/SeverityGauge';
 

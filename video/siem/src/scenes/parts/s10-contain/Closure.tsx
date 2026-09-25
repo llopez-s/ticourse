@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { random } from 'remotion';
-import { C, FONT, TYPE, alpha } from '../../../theme/tokens';
-import { EASE, fadeIn, progress } from '../../../theme/motion';
-import { Icon, Panel } from '../../../ui';
+import { C, FONT, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { EASE, fadeIn, progress } from '../../../../../engine/src/theme/motion';
+import { Icon, Panel } from '../../../../../engine/src/ui';
 import { StepRow } from './Steps';
 import type { S10Timing } from './timing';
 

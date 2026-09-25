@@ -1,4 +1,4 @@
-import type { SceneProps } from '../../../timeline/types';
+import type { SceneProps } from '../../../../../engine/src/timeline/types';
 
 /** Every beat of S11 in local frames, derived from cues and segment starts. */
 export interface S11Timing {

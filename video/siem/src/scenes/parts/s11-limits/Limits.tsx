@@ -1,8 +1,8 @@
 import { useMemo, type ReactNode } from 'react';
 import { random } from 'remotion';
-import { C, FONT, RADIUS, TYPE, alpha } from '../../../theme/tokens';
-import { EASE, fadeIn, lerp, progress, pulse, springIn } from '../../../theme/motion';
-import { Chip, Connector, Icon, cubicPoint, curveBetween, type IconName } from '../../../ui';
+import { C, FONT, RADIUS, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { EASE, fadeIn, lerp, progress, pulse, springIn } from '../../../../../engine/src/theme/motion';
+import { Chip, Connector, Icon, cubicPoint, curveBetween, type IconName } from '../../../../../engine/src/ui';
 import { Kicker } from './Tile';
 import type { S11Timing } from './timing';
 

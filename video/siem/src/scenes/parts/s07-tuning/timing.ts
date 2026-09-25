@@ -1,6 +1,6 @@
 import { TIMELINE } from '../../../timeline/load';
-import type { SceneProps } from '../../../timeline/types';
-import { EASE, progress } from '../../../theme/motion';
+import type { SceneProps } from '../../../../../engine/src/timeline/types';
+import { EASE, progress } from '../../../../../engine/src/theme/motion';
 
 const norm = (s: string) =>
   s

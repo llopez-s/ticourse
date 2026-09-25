@@ -1,4 +1,4 @@
-import type { SceneProps } from '../../../timeline/types';
+import type { SceneProps } from '../../../../../engine/src/timeline/types';
 
 /**
  * Every beat of S10 in local frames, derived from the cues and segment starts

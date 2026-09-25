@@ -1,6 +1,6 @@
-import { C, FONT, RADIUS, TYPE, alpha } from '../../../theme/tokens';
-import { EASE, fadeIn, lerp, progress, pulse, springIn } from '../../../theme/motion';
-import { Chip, Icon, Panel, SeverityBadge } from '../../../ui';
+import { C, FONT, RADIUS, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { EASE, fadeIn, lerp, progress, pulse, springIn } from '../../../../../engine/src/theme/motion';
+import { Chip, Icon, Panel, SeverityBadge } from '../../../../../engine/src/ui';
 import { ALERT, CALM_ROWS } from '../../../data/s08-triage';
 
 const BODY_PAD = 16;

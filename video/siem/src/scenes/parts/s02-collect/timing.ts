@@ -1,6 +1,6 @@
-import type { SceneProps } from '../../../timeline/types';
+import type { SceneProps } from '../../../../../engine/src/timeline/types';
 import type { LinkId } from '../../../data/s02-collect';
-import { progress } from '../../../theme/motion';
+import { progress } from '../../../../../engine/src/theme/motion';
 
 /** Every beat of scene 02 in LOCAL frames, derived from cues (never hard-coded). */
 export interface S02Timing {

@@ -1,6 +1,6 @@
-import { C, FONT, RADIUS, TYPE, alpha } from '../../../theme/tokens';
-import { EASE, fadeIn, fadeOut, lerp, progress, pulse, springIn } from '../../../theme/motion';
-import { Icon } from '../../../ui';
+import { C, FONT, RADIUS, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { EASE, fadeIn, fadeOut, lerp, progress, pulse, springIn } from '../../../../../engine/src/theme/motion';
+import { Icon } from '../../../../../engine/src/ui';
 import type { S10Timing } from './timing';
 
 /** Size of the network diagram (local px). */

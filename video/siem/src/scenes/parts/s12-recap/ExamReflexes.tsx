@@ -1,6 +1,6 @@
-import { C, FONT, RADIUS, TYPE, alpha } from '../../../theme/tokens';
-import { enter, progress } from '../../../theme/motion';
-import { Chip, Icon, Panel, type IconName } from '../../../ui';
+import { C, FONT, RADIUS, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { enter, progress } from '../../../../../engine/src/theme/motion';
+import { Chip, Icon, Panel, type IconName } from '../../../../../engine/src/ui';
 
 const ITEMS: { icon: IconName; main: string; sub: string }[] = [
   { icon: 'network', main: 'NetFlow = metadatos', sub: 'packet capture = contenido' },

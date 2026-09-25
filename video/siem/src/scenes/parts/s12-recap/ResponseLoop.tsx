@@ -1,6 +1,6 @@
-import { ACCENT, C, FONT, alpha, type Accent } from '../../../theme/tokens';
-import { EASE, lerp, progress, springIn } from '../../../theme/motion';
-import { Chip, Icon, type IconName, type Point } from '../../../ui';
+import { ACCENT, C, FONT, alpha, type Accent } from '../../../../../engine/src/theme/tokens';
+import { EASE, lerp, progress, springIn } from '../../../../../engine/src/theme/motion';
+import { Chip, Icon, type IconName, type Point } from '../../../../../engine/src/ui';
 
 /* Local geometry of the loop box (its top-left is placed by the caller). */
 export const LOOP_BOX = { w: 800, h: 520 };

@@ -1,7 +1,7 @@
-import { BrandMark } from '../../../overlay/ChapterRail';
-import { C, FONT, STAGE, TYPE, alpha } from '../../../theme/tokens';
-import { enter, progress, springIn } from '../../../theme/motion';
-import { Chip, Icon } from '../../../ui';
+import { BrandMark } from '../../../../../engine/src/overlay/ChapterRail';
+import { C, FONT, STAGE, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { enter, progress, springIn } from '../../../../../engine/src/theme/motion';
+import { Chip, Icon } from '../../../../../engine/src/ui';
 
 const CARD_W = 1320;
 
