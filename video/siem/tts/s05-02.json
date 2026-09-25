@@ -1,81 +1,98 @@
 {
- "key": "4a8a9e7c9f847ab9162427dbc27b0f769963a0bb45ab5eaaef5bcde69ef40a78",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "f3035505beb0fb53575091708f13ffbcee057d5f6ce8d18dcc5220d12f085699",
+ "sceneKey": "739ff197527dbcbf135704d292d7e3682dde6f3481f39b6e3838b333741eb3ce",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Pero luego entra la misma cuenta, y diez minutos después aparece un usuario nuevo.",
- "bytes": 32976,
- "durationMs": 5496.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[suspicious] Pero luego entra la misma cuenta, y diez minutos después aparece un usuario nuevo.",
+ "bytes": 59904,
+ "bitrateKbps": 96,
+ "durationMs": 4926,
+ "clipInSceneMs": [
+  6714,
+  11640
+ ],
+ "requestId": "sjFCZlziSeCnOvkjDeuC",
  "words": [
   {
    "text": "Pero",
-   "offsetMs": 100.0,
-   "durationMs": 212.5
+   "offsetMs": 60,
+   "durationMs": 26
   },
   {
    "text": "luego",
-   "offsetMs": 312.5,
-   "durationMs": 287.5
+   "offsetMs": 139,
+   "durationMs": 267
   },
   {
    "text": "entra",
-   "offsetMs": 600.0,
-   "durationMs": 275.0
+   "offsetMs": 446,
+   "durationMs": 200
   },
   {
    "text": "la",
-   "offsetMs": 875.0,
-   "durationMs": 112.5
+   "offsetMs": 699,
+   "durationMs": 107
   },
   {
    "text": "misma",
-   "offsetMs": 987.5,
-   "durationMs": 312.5
+   "offsetMs": 846,
+   "durationMs": 200
   },
   {
-   "text": "cuenta",
-   "offsetMs": 1300.0,
-   "durationMs": 412.5
+   "text": "cuenta,",
+   "offsetMs": 1115,
+   "durationMs": 811
   },
   {
    "text": "y",
-   "offsetMs": 1950.0,
-   "durationMs": 62.5
+   "offsetMs": 2006,
+   "durationMs": 80
   },
   {
    "text": "diez",
-   "offsetMs": 2075.0,
-   "durationMs": 225.0
+   "offsetMs": 2126,
+   "durationMs": 360
   },
   {
    "text": "minutos",
-   "offsetMs": 2312.5,
-   "durationMs": 437.5
+   "offsetMs": 2516,
+   "durationMs": 210
   },
   {
    "text": "después",
-   "offsetMs": 2750.0,
-   "durationMs": 387.5
+   "offsetMs": 2776,
+   "durationMs": 350
   },
   {
    "text": "aparece",
-   "offsetMs": 3137.5,
-   "durationMs": 462.5
+   "offsetMs": 3179,
+   "durationMs": 427
   },
   {
    "text": "un",
-   "offsetMs": 3600.0,
-   "durationMs": 125.0
+   "offsetMs": 3633,
+   "durationMs": 53
   },
   {
    "text": "usuario",
-   "offsetMs": 3725.0,
-   "durationMs": 475.0
+   "offsetMs": 3746,
+   "durationMs": 420
   },
   {
-   "text": "nuevo",
-   "offsetMs": 4200.0,
-   "durationMs": 337.5
+   "text": "nuevo.",
+   "offsetMs": 4246,
+   "durationMs": 480
   }
  ]
 }

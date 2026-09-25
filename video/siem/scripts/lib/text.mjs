@@ -4,6 +4,8 @@
 // Markup inside a segment's "text":
 //   {cue-id}          zero-width marker: the visual `cue-id` fires on the next display token
 //   [display|spoken]  show `display`, say `spoken` (either side may be several words)
+//   <direction>       voice-only performance direction (ElevenLabs v3 audio tag): sent to
+//                     the voice as "[direction]", never shown, never timed
 // Outside markup, a lexicon maps whole display tokens (punctuation stripped) to
 // a respelling for the neural voice, keeping the surrounding punctuation.
 
@@ -15,6 +17,7 @@ export class MarkupError extends Error {
 }
 
 const CUE_ID = /^[A-Za-z0-9][A-Za-z0-9_-]*$/;
+const DIRECTION = /^[A-Za-z][A-Za-z ,'-]*$/;
 const EDGE_PUNCT = /^([^\p{L}\p{N}]*)(.*?)([^\p{L}\p{N}]*)$/su;
 const WS = /\s+/;
 
@@ -30,6 +33,17 @@ export function parsePieces(text) {
   let i = 0;
   while (i < text.length) {
     const ch = text[i];
+    if (ch === '<') {
+      const j = text.indexOf('>', i + 1);
+      if (j < 0) throw new MarkupError(`Unbalanced markup: "<" at position ${i} is never closed`, text);
+      const inner = text.slice(i + 1, j).trim();
+      if (!DIRECTION.test(inner)) throw new MarkupError(`Invalid direction "<${inner}>" (letters, spaces, commas, - and ' only)`, text);
+      flush();
+      pieces.push({ type: 'direction', value: inner });
+      i = j + 1;
+      continue;
+    }
+    if (ch === '>') throw new MarkupError(`Unbalanced markup: stray ">" at position ${i}`, text);
     if (ch === '{' || ch === '[') {
       const closer = ch === '{' ? '}' : ']';
       let j = i + 1;
@@ -105,6 +119,7 @@ export function parseSegmentText(text, lexicon = {}) {
   const sFrags = [];
   const units = []; // { d0, d1, s0, s1 } fragment ranges of one plain word or one group
   const cueAt = []; // { id, frag } -> index of the next display fragment
+  const directionAt = []; // { value, frag } -> index of the next spoken fragment
   const plainTokens = [];
   let glue = false;
 
@@ -120,6 +135,9 @@ export function parseSegmentText(text, lexicon = {}) {
   for (const piece of pieces) {
     if (piece.type === 'cue') {
       cueAt.push({ id: piece.id, frag: dFrags.length });
+    } else if (piece.type === 'direction') {
+      directionAt.push({ value: piece.value, frag: sFrags.length });
+      glue = false;
     } else if (piece.type === 'group') {
       addUnit(words(piece.display), words(piece.spoken));
     } else {
@@ -201,9 +219,23 @@ export function parseSegmentText(text, lexicon = {}) {
     displayIndex: frag < dFrags.length ? D.tokenOf[frag] : D.tokens.length,
   }));
 
+  // Voice-only directions are inserted before the spoken token they precede.
+  const directed = [];
+  let d = 0;
+  S.tokens.forEach((tok, k) => {
+    while (d < directionAt.length && (directionAt[d].frag < sFrags.length ? S.tokenOf[directionAt[d].frag] : S.tokens.length) <= k) {
+      directed.push(`[${directionAt[d].value}]`);
+      d += 1;
+    }
+    directed.push(tok);
+  });
+  for (; d < directionAt.length; d += 1) directed.push(`[${directionAt[d].value}]`);
+
   return {
     display: D.tokens.join(' '),
     spoken: S.tokens.join(' '),
+    directedSpoken: directed.join(' '),
+    directions: directionAt.map((x) => x.value),
     displayTokens,
     spokenTokens: S.tokens,
     cues,

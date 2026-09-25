@@ -1,76 +1,93 @@
 {
- "key": "37643b6dc7964d8387619b4fe7216d94555b7afe2d7b7dea1477c3c5268cdf38",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "62fe7e87578495b78a0d172020698172b02aa5ca8ab4fbc69f896dcfe2fdb832",
+ "sceneKey": "999f3d74e4fa3c3de39b1d6ed603bf135dc82dc19210a64e4eefd4a4f1205dc3",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "La cura no es más gente ni otra herramienta: es afinar, alert tiúnin.",
- "bytes": 30096,
- "durationMs": 5016.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[confident] La cura no es más gente ni otra herramienta: es afinar, alert tuning.",
+ "bytes": 71136,
+ "bitrateKbps": 96,
+ "durationMs": 5871,
+ "clipInSceneMs": [
+  9,
+  5880
+ ],
+ "requestId": "v7UXbiCqrUdiXJJIY0Q0",
  "words": [
   {
    "text": "La",
-   "offsetMs": 100.0,
-   "durationMs": 162.5
+   "offsetMs": 60,
+   "durationMs": 11
   },
   {
    "text": "cura",
-   "offsetMs": 262.5,
-   "durationMs": 312.5
+   "offsetMs": 151,
+   "durationMs": 320
   },
   {
    "text": "no",
-   "offsetMs": 575.0,
-   "durationMs": 137.5
+   "offsetMs": 551,
+   "durationMs": 160
   },
   {
    "text": "es",
-   "offsetMs": 712.5,
-   "durationMs": 112.5
+   "offsetMs": 764,
+   "durationMs": 107
   },
   {
    "text": "más",
-   "offsetMs": 825.0,
-   "durationMs": 225.0
+   "offsetMs": 931,
+   "durationMs": 180
   },
   {
    "text": "gente",
-   "offsetMs": 1050.0,
-   "durationMs": 325.0
+   "offsetMs": 1178,
+   "durationMs": 333
   },
   {
    "text": "ni",
-   "offsetMs": 1375.0,
-   "durationMs": 125.0
+   "offsetMs": 1591,
+   "durationMs": 160
   },
   {
    "text": "otra",
-   "offsetMs": 1500.0,
-   "durationMs": 237.5
+   "offsetMs": 1799,
+   "durationMs": 192
   },
   {
-   "text": "herramienta",
-   "offsetMs": 1737.5,
-   "durationMs": 612.5
+   "text": "herramienta:",
+   "offsetMs": 2042,
+   "durationMs": 1069
   },
   {
    "text": "es",
-   "offsetMs": 2612.5,
-   "durationMs": 187.5
+   "offsetMs": 3218,
+   "durationMs": 213
   },
   {
-   "text": "afinar",
-   "offsetMs": 2800.0,
-   "durationMs": 400.0
+   "text": "afinar,",
+   "offsetMs": 3527,
+   "durationMs": 944
   },
   {
    "text": "alert",
-   "offsetMs": 3312.5,
-   "durationMs": 312.5
+   "offsetMs": 4564,
+   "durationMs": 467
   },
   {
-   "text": "tiúnin",
-   "offsetMs": 3650.0,
-   "durationMs": 437.5
+   "text": "tuning.",
+   "offsetMs": 5122,
+   "durationMs": 629
   }
  ]
 }

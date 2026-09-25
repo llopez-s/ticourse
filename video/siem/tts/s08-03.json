@@ -1,116 +1,128 @@
 {
- "key": "e39e9541b4c19dbd3137849ca7dcd3f703fbc0886e36e8e338fb04a5af2a2479",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "1c2d99f616bac0a47361edfb4421eeede4394dcb26d37f249c35f5f09802ee89",
+ "sceneKey": "743649b9e9439afcbb3a8246b5a394ee9072099b22c549e2aae7abb3232cb515",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "net flou lo confirma: treinta y ocho gigabytes hacia una i pe desconocida, entre las dos y las cuatro y media.",
- "bytes": 43344,
- "durationMs": 7224.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[serious] NetFlow lo confirma: treinta y ocho gigabytes hacia una i pe desconocida, entre las dos y las cuatro y media.",
+ "bytes": 89280,
+ "bitrateKbps": 96,
+ "durationMs": 7380,
+ "clipInSceneMs": [
+  13160,
+  20540
+ ],
+ "requestId": "Oim3NIKVwySv8rn9EziA",
  "words": [
   {
-   "text": "net",
-   "offsetMs": 100.0,
-   "durationMs": 237.5
-  },
-  {
-   "text": "flou",
-   "offsetMs": 337.5,
-   "durationMs": 325.0
+   "text": "NetFlow",
+   "offsetMs": 60,
+   "durationMs": 300
   },
   {
    "text": "lo",
-   "offsetMs": 662.5,
-   "durationMs": 112.5
+   "offsetMs": 387,
+   "durationMs": 53
   },
   {
-   "text": "confirma",
-   "offsetMs": 775.0,
-   "durationMs": 562.5
+   "text": "confirma:",
+   "offsetMs": 504,
+   "durationMs": 1056
   },
   {
    "text": "treinta",
-   "offsetMs": 1675.0,
-   "durationMs": 375.0
+   "offsetMs": 1600,
+   "durationMs": 280
   },
   {
    "text": "y",
-   "offsetMs": 2050.0,
-   "durationMs": 75.0
+   "offsetMs": 1920,
+   "durationMs": 40
   },
   {
    "text": "ocho",
-   "offsetMs": 2125.0,
-   "durationMs": 225.0
+   "offsetMs": 2040,
+   "durationMs": 160
   },
   {
    "text": "gigabytes",
-   "offsetMs": 2350.0,
-   "durationMs": 600.0
+   "offsetMs": 2280,
+   "durationMs": 560
   },
   {
    "text": "hacia",
-   "offsetMs": 2950.0,
-   "durationMs": 250.0
+   "offsetMs": 2907,
+   "durationMs": 333
   },
   {
    "text": "una",
-   "offsetMs": 3200.0,
-   "durationMs": 187.5
+   "offsetMs": 3300,
+   "durationMs": 180
   },
   {
    "text": "i",
-   "offsetMs": 3387.5,
-   "durationMs": 62.5
+   "offsetMs": 3600,
+   "durationMs": 120
   },
   {
    "text": "pe",
-   "offsetMs": 3450.0,
-   "durationMs": 100.0
+   "offsetMs": 3800,
+   "durationMs": 160
   },
   {
-   "text": "desconocida",
-   "offsetMs": 3562.5,
-   "durationMs": 675.0
+   "text": "desconocida,",
+   "offsetMs": 4017,
+   "durationMs": 823
   },
   {
    "text": "entre",
-   "offsetMs": 4537.5,
-   "durationMs": 300.0
+   "offsetMs": 4933,
+   "durationMs": 467
   },
   {
    "text": "las",
-   "offsetMs": 4837.5,
-   "durationMs": 175.0
+   "offsetMs": 5460,
+   "durationMs": 180
   },
   {
    "text": "dos",
-   "offsetMs": 5012.5,
-   "durationMs": 250.0
+   "offsetMs": 5700,
+   "durationMs": 180
   },
   {
    "text": "y",
-   "offsetMs": 5262.5,
-   "durationMs": 50.0
+   "offsetMs": 5920,
+   "durationMs": 40
   },
   {
    "text": "las",
-   "offsetMs": 5312.5,
-   "durationMs": 175.0
+   "offsetMs": 6000,
+   "durationMs": 120
   },
   {
    "text": "cuatro",
-   "offsetMs": 5487.5,
-   "durationMs": 362.5
+   "offsetMs": 6166,
+   "durationMs": 274
   },
   {
    "text": "y",
-   "offsetMs": 5850.0,
-   "durationMs": 62.5
+   "offsetMs": 6520,
+   "durationMs": 80
   },
   {
-   "text": "media",
-   "offsetMs": 5912.5,
-   "durationMs": 362.5
+   "text": "media.",
+   "offsetMs": 6653,
+   "durationMs": 427
   }
  ]
 }

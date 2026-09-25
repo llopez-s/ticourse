@@ -1,116 +1,133 @@
 {
- "key": "db033b4398c98c7f504342baae31696e1f6d1f301a4301ae75e172e69c354f81",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "d4b4fa76a2d909517ea1925300a1a50fbcb9d6681f64862cfeccc961ebbed11d",
+ "sceneKey": "0f54b704630a806a015e31fc7530a2972148a212bc9f5aa47251af643022573c",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Esa cuenta se sale de su línea base: justo lo que vigila el análisis de comportamiento de usuarios, u be a.",
- "bytes": 42192,
- "durationMs": 7032.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[confident] Esa cuenta se sale de su línea base: justo lo que vigila el análisis de comportamiento de usuarios, u be a.",
+ "bytes": 81216,
+ "bitrateKbps": 96,
+ "durationMs": 6711,
+ "clipInSceneMs": [
+  21689,
+  28400
+ ],
+ "requestId": "e4u3OR3g3nmCYXcjM75Q",
  "words": [
   {
    "text": "Esa",
-   "offsetMs": 100.0,
-   "durationMs": 250.0
+   "offsetMs": 60,
+   "durationMs": 173
   },
   {
    "text": "cuenta",
-   "offsetMs": 362.5,
-   "durationMs": 350.0
+   "offsetMs": 279,
+   "durationMs": 274
   },
   {
    "text": "se",
-   "offsetMs": 712.5,
-   "durationMs": 125.0
+   "offsetMs": 606,
+   "durationMs": 107
   },
   {
    "text": "sale",
-   "offsetMs": 837.5,
-   "durationMs": 262.5
+   "offsetMs": 761,
+   "durationMs": 192
   },
   {
    "text": "de",
-   "offsetMs": 1100.0,
-   "durationMs": 112.5
+   "offsetMs": 980,
+   "durationMs": 53
   },
   {
    "text": "su",
-   "offsetMs": 1212.5,
-   "durationMs": 150.0
+   "offsetMs": 1086,
+   "durationMs": 107
   },
   {
    "text": "línea",
-   "offsetMs": 1362.5,
-   "durationMs": 325.0
+   "offsetMs": 1246,
+   "durationMs": 267
   },
   {
-   "text": "base",
-   "offsetMs": 1687.5,
-   "durationMs": 362.5
+   "text": "base:",
+   "offsetMs": 1593,
+   "durationMs": 800
   },
   {
    "text": "justo",
-   "offsetMs": 2425.0,
-   "durationMs": 375.0
+   "offsetMs": 2446,
+   "durationMs": 267
   },
   {
    "text": "lo",
-   "offsetMs": 2812.5,
-   "durationMs": 75.0
+   "offsetMs": 2766,
+   "durationMs": 107
   },
   {
    "text": "que",
-   "offsetMs": 2887.5,
-   "durationMs": 112.5
+   "offsetMs": 2893,
+   "durationMs": 60
   },
   {
    "text": "vigila",
-   "offsetMs": 3000.0,
-   "durationMs": 387.5
+   "offsetMs": 3013,
+   "durationMs": 420
   },
   {
    "text": "el",
-   "offsetMs": 3387.5,
-   "durationMs": 100.0
+   "offsetMs": 3460,
+   "durationMs": 53
   },
   {
    "text": "análisis",
-   "offsetMs": 3487.5,
-   "durationMs": 487.5
+   "offsetMs": 3561,
+   "durationMs": 432
   },
   {
    "text": "de",
-   "offsetMs": 3975.0,
-   "durationMs": 75.0
+   "offsetMs": 4020,
+   "durationMs": 53
   },
   {
    "text": "comportamiento",
-   "offsetMs": 4050.0,
-   "durationMs": 725.0
+   "offsetMs": 4123,
+   "durationMs": 670
   },
   {
    "text": "de",
-   "offsetMs": 4775.0,
-   "durationMs": 100.0
+   "offsetMs": 4820,
+   "durationMs": 53
   },
   {
-   "text": "usuarios",
-   "offsetMs": 4875.0,
-   "durationMs": 600.0
+   "text": "usuarios,",
+   "offsetMs": 4953,
+   "durationMs": 800
   },
   {
    "text": "u",
-   "offsetMs": 5650.0,
-   "durationMs": 100.0
+   "offsetMs": 5873,
+   "durationMs": 120
   },
   {
    "text": "be",
-   "offsetMs": 5750.0,
-   "durationMs": 162.5
+   "offsetMs": 6073,
+   "durationMs": 160
   },
   {
-   "text": "a",
-   "offsetMs": 5950.0,
-   "durationMs": 75.0
+   "text": "a.",
+   "offsetMs": 6473,
+   "durationMs": 240
   }
  ]
 }

@@ -1,5 +1,7 @@
 #!/usr/bin/env node
-// Full voice pipeline: prepare-tts.mjs -> tts.py -> build-timeline.mjs (audio mode).
+// Full voice pipeline, by provider (narration.json "voice"):
+//   edge-tts:   prepare-tts.mjs -> tts.py -> build-timeline.mjs (audio mode)
+//   ElevenLabs: tts-elevenlabs.mjs -> build-timeline.mjs   (voice "elevenlabs/<model>/<voice_id>")
 // Stops at the first failing step.
 //
 //   node video/siem/scripts/audio.mjs                 # synthesise what changed, rebuild the timeline
@@ -12,8 +14,10 @@
 //
 // Python comes from $PYTHON (default "python"); it needs edge-tts and network access.
 import { spawnSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
+import { isElevenLabsVoice } from './lib/narration.mjs';
 import { PATHS, REPO_ROOT, SCRIPTS_DIR, isMainModule } from './lib/paths.mjs';
 
 const OPTIONS = {
@@ -27,6 +31,7 @@ const OPTIONS = {
   rate: { type: 'string' },
   pitch: { type: 'string' },
   only: { type: 'string' },
+  scene: { type: 'string' },
   force: { type: 'boolean', default: false },
   attempts: { type: 'string' },
   'full-audio': { type: 'boolean', default: false },
@@ -72,6 +77,16 @@ function main() {
   }
 
   const node = process.execPath;
+  const buildTimelineArgs = [
+    path.join(SCRIPTS_DIR, 'build-timeline.mjs'),
+    ...pass(values, ['narration', 'lexicon', 'storyboard', 'tts-dir', 'voice-dir', 'voice', 'rate', 'pitch', 'full-audio', 'tail-ms', 'out', 'transcript']),
+  ];
+  const narrationVoice = JSON.parse(readFileSync(values.narration ? path.resolve(values.narration) : PATHS.narration, 'utf8').replace(/^﻿/, '')).voice;
+  if (isElevenLabsVoice(narrationVoice)) {
+    step('tts-elevenlabs', node, [path.join(SCRIPTS_DIR, 'tts-elevenlabs.mjs'), ...pass(values, ['scene', 'force'])]);
+    step('build-timeline', node, buildTimelineArgs);
+    return;
+  }
   step('prepare-tts', node, [path.join(SCRIPTS_DIR, 'prepare-tts.mjs'), ...pass(values, ['narration', 'lexicon', 'storyboard']), '--out', PATHS.ttsInput]);
   step(
     'tts.py',

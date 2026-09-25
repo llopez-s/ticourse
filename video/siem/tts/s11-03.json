@@ -1,91 +1,108 @@
 {
- "key": "afe3266154e019f575b436ce98888fe3df8b9f06abe83540e45b4b0534229f04",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "b1f5e48311d3a1f69ce292858f3c37155613501fb214dde68ae4b0d7f2b21825",
+ "sceneKey": "de5803373715e435f6dcc3ea090185b86b4464e51f1b9c7e7ebc12b248245483",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
  "spoken": "Sin relojes sincronizados, la correlación se desordena. El síem ve eventos y metadatos: jamás el contenido.",
- "bytes": 50400,
- "durationMs": 8400.0,
+ "bytes": 98784,
+ "bitrateKbps": 96,
+ "durationMs": 8170,
+ "clipInSceneMs": [
+  11170,
+  19340
+ ],
+ "requestId": "ytHdaU1iGNfMX7wFuOr2",
  "words": [
   {
    "text": "Sin",
-   "offsetMs": 100.0,
-   "durationMs": 250.0
+   "offsetMs": 50,
+   "durationMs": 300
   },
   {
    "text": "relojes",
-   "offsetMs": 350.0,
-   "durationMs": 437.5
+   "offsetMs": 403,
+   "durationMs": 427
   },
   {
-   "text": "sincronizados",
-   "offsetMs": 787.5,
-   "durationMs": 850.0
+   "text": "sincronizados,",
+   "offsetMs": 878,
+   "durationMs": 1152
   },
   {
    "text": "la",
-   "offsetMs": 1837.5,
-   "durationMs": 137.5
+   "offsetMs": 2083,
+   "durationMs": 107
   },
   {
    "text": "correlación",
-   "offsetMs": 1975.0,
-   "durationMs": 625.0
+   "offsetMs": 2236,
+   "durationMs": 514
   },
   {
    "text": "se",
-   "offsetMs": 2600.0,
-   "durationMs": 150.0
+   "offsetMs": 2803,
+   "durationMs": 107
   },
   {
-   "text": "desordena",
-   "offsetMs": 2750.0,
-   "durationMs": 562.5
+   "text": "desordena.",
+   "offsetMs": 2970,
+   "durationMs": 660
   },
   {
    "text": "El",
-   "offsetMs": 4262.5,
-   "durationMs": 162.5
+   "offsetMs": 3870,
+   "durationMs": 480
   },
   {
    "text": "síem",
-   "offsetMs": 4425.0,
-   "durationMs": 350.0
+   "offsetMs": 4430,
+   "durationMs": 320
   },
   {
    "text": "ve",
-   "offsetMs": 4775.0,
-   "durationMs": 125.0
+   "offsetMs": 4803,
+   "durationMs": 107
   },
   {
    "text": "eventos",
-   "offsetMs": 4900.0,
-   "durationMs": 525.0
+   "offsetMs": 4980,
+   "durationMs": 490
   },
   {
    "text": "y",
-   "offsetMs": 5425.0,
-   "durationMs": 75.0
+   "offsetMs": 5510,
+   "durationMs": 40
   },
   {
-   "text": "metadatos",
-   "offsetMs": 5500.0,
-   "durationMs": 675.0
+   "text": "metadatos:",
+   "offsetMs": 5590,
+   "durationMs": 760
   },
   {
    "text": "jamás",
-   "offsetMs": 6412.5,
-   "durationMs": 362.5
+   "offsetMs": 6490,
+   "durationMs": 580
   },
   {
    "text": "el",
-   "offsetMs": 6775.0,
-   "durationMs": 75.0
+   "offsetMs": 7097,
+   "durationMs": 53
   },
   {
-   "text": "contenido",
-   "offsetMs": 6850.0,
-   "durationMs": 562.5
+   "text": "contenido.",
+   "offsetMs": 7214,
+   "durationMs": 656
   }
  ]
 }

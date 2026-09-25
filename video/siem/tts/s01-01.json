@@ -1,106 +1,123 @@
 {
- "key": "3733d6c4287dca65aba5e4be7216febba0b456748f4d2447c826f0d44e2665a8",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "7457968d29f572a023a47dcd24cd8211da7ed96254f8bc38c3e72a3f19b18032",
+ "sceneKey": "3798efe0e33e13a3aa6c852d89c5085f68c5d9f8bf6b21d42fd943e1e840a8f9",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Madrugada en la Autoridad Portuaria de jálden: al soc llegan seis mil alertas al día, y solo una importa.",
- "bytes": 42336,
- "durationMs": 7056.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[intrigued] Madrugada en la Autoridad Portuaria de Halden: al sok llegan seis mil alertas al día, [serious] y solo una importa.",
+ "bytes": 91008,
+ "bitrateKbps": 96,
+ "durationMs": 7515,
+ "clipInSceneMs": [
+  150,
+  7665
+ ],
+ "requestId": "mFoxrePPYtvokaHj7TLx",
  "words": [
   {
    "text": "Madrugada",
-   "offsetMs": 100.0,
-   "durationMs": 537.5
+   "offsetMs": 60,
+   "durationMs": 430
   },
   {
    "text": "en",
-   "offsetMs": 637.5,
-   "durationMs": 62.5
+   "offsetMs": 543,
+   "durationMs": 107
   },
   {
    "text": "la",
-   "offsetMs": 700.0,
-   "durationMs": 112.5
+   "offsetMs": 677,
+   "durationMs": 53
   },
   {
    "text": "Autoridad",
-   "offsetMs": 812.5,
-   "durationMs": 475.0
+   "offsetMs": 797,
+   "durationMs": 493
   },
   {
    "text": "Portuaria",
-   "offsetMs": 1300.0,
-   "durationMs": 550.0
+   "offsetMs": 1354,
+   "durationMs": 576
   },
   {
    "text": "de",
-   "offsetMs": 1850.0,
-   "durationMs": 87.5
+   "offsetMs": 1957,
+   "durationMs": 53
   },
   {
-   "text": "jálden",
-   "offsetMs": 1937.5,
-   "durationMs": 487.5
+   "text": "Halden:",
+   "offsetMs": 2090,
+   "durationMs": 800
   },
   {
    "text": "al",
-   "offsetMs": 2725.0,
-   "durationMs": 125.0
+   "offsetMs": 2997,
+   "durationMs": 213
   },
   {
-   "text": "soc",
-   "offsetMs": 2850.0,
-   "durationMs": 212.5
+   "text": "sok",
+   "offsetMs": 3290,
+   "durationMs": 240
   },
   {
    "text": "llegan",
-   "offsetMs": 3087.5,
-   "durationMs": 325.0
+   "offsetMs": 3578,
+   "durationMs": 432
   },
   {
    "text": "seis",
-   "offsetMs": 3412.5,
-   "durationMs": 250.0
+   "offsetMs": 4058,
+   "durationMs": 192
   },
   {
    "text": "mil",
-   "offsetMs": 3662.5,
-   "durationMs": 200.0
+   "offsetMs": 4310,
+   "durationMs": 180
   },
   {
    "text": "alertas",
-   "offsetMs": 3862.5,
-   "durationMs": 450.0
+   "offsetMs": 4557,
+   "durationMs": 493
   },
   {
    "text": "al",
-   "offsetMs": 4312.5,
-   "durationMs": 112.5
+   "offsetMs": 5103,
+   "durationMs": 107
   },
   {
-   "text": "día",
-   "offsetMs": 4425.0,
-   "durationMs": 300.0
+   "text": "día,",
+   "offsetMs": 5270,
+   "durationMs": 580
   },
   {
    "text": "y",
-   "offsetMs": 4975.0,
-   "durationMs": 87.5
+   "offsetMs": 6095,
+   "durationMs": 53
   },
   {
    "text": "solo",
-   "offsetMs": 5062.5,
-   "durationMs": 350.0
+   "offsetMs": 6170,
+   "durationMs": 85
   },
   {
    "text": "una",
-   "offsetMs": 5412.5,
-   "durationMs": 175.0
+   "offsetMs": 6335,
+   "durationMs": 240
   },
   {
-   "text": "importa",
-   "offsetMs": 5587.5,
-   "durationMs": 475.0
+   "text": "importa.",
+   "offsetMs": 6644,
+   "durationMs": 571
   }
  ]
 }

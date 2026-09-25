@@ -1,101 +1,118 @@
 {
- "key": "3164042c56629bc2e1005c8e693b63bb9209ededde16a6468754552174d51fb7",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "86b89a8718d6f3e91225b2126f8a429c7bc204749a1189d8e1db040c81180986",
+ "sceneKey": "0f54b704630a806a015e31fc7530a2972148a212bc9f5aa47251af643022573c",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Viene de una estación de administración, ocho minutos antes de la transferencia, y ninguna copia programada lo explica.",
- "bytes": 45648,
- "durationMs": 7608.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[suspicious] Viene de una estación de administración, ocho minutos antes de la transferencia, y ninguna copia programada lo explica.",
+ "bytes": 93312,
+ "bitrateKbps": 96,
+ "durationMs": 7706,
+ "clipInSceneMs": [
+  13769,
+  21475
+ ],
+ "requestId": "e4u3OR3g3nmCYXcjM75Q",
  "words": [
   {
    "text": "Viene",
-   "offsetMs": 100.0,
-   "durationMs": 325.0
+   "offsetMs": 60,
+   "durationMs": 171
   },
   {
    "text": "de",
-   "offsetMs": 425.0,
-   "durationMs": 137.5
+   "offsetMs": 284,
+   "durationMs": 107
   },
   {
    "text": "una",
-   "offsetMs": 562.5,
-   "durationMs": 175.0
+   "offsetMs": 431,
+   "durationMs": 120
   },
   {
    "text": "estación",
-   "offsetMs": 737.5,
-   "durationMs": 462.5
+   "offsetMs": 591,
+   "durationMs": 360
   },
   {
    "text": "de",
-   "offsetMs": 1200.0,
-   "durationMs": 87.5
+   "offsetMs": 978,
+   "durationMs": 53
   },
   {
-   "text": "administración",
-   "offsetMs": 1287.5,
-   "durationMs": 787.5
+   "text": "administración,",
+   "offsetMs": 1071,
+   "durationMs": 1240
   },
   {
    "text": "ocho",
-   "offsetMs": 2500.0,
-   "durationMs": 250.0
+   "offsetMs": 2391,
+   "durationMs": 160
   },
   {
    "text": "minutos",
-   "offsetMs": 2750.0,
-   "durationMs": 450.0
+   "offsetMs": 2611,
+   "durationMs": 420
   },
   {
    "text": "antes",
-   "offsetMs": 3200.0,
-   "durationMs": 275.0
+   "offsetMs": 3084,
+   "durationMs": 267
   },
   {
    "text": "de",
-   "offsetMs": 3475.0,
-   "durationMs": 87.5
+   "offsetMs": 3378,
+   "durationMs": 53
   },
   {
    "text": "la",
-   "offsetMs": 3562.5,
-   "durationMs": 87.5
+   "offsetMs": 3458,
+   "durationMs": 53
   },
   {
-   "text": "transferencia",
-   "offsetMs": 3650.0,
-   "durationMs": 762.5
+   "text": "transferencia,",
+   "offsetMs": 3564,
+   "durationMs": 1227
   },
   {
    "text": "y",
-   "offsetMs": 4600.0,
-   "durationMs": 75.0
+   "offsetMs": 4831,
+   "durationMs": 40
   },
   {
    "text": "ninguna",
-   "offsetMs": 4725.0,
-   "durationMs": 425.0
+   "offsetMs": 4931,
+   "durationMs": 420
   },
   {
    "text": "copia",
-   "offsetMs": 5150.0,
-   "durationMs": 337.5
+   "offsetMs": 5411,
+   "durationMs": 260
   },
   {
    "text": "programada",
-   "offsetMs": 5487.5,
-   "durationMs": 550.0
+   "offsetMs": 5721,
+   "durationMs": 510
   },
   {
    "text": "lo",
-   "offsetMs": 6037.5,
-   "durationMs": 87.5
+   "offsetMs": 6284,
+   "durationMs": 107
   },
   {
-   "text": "explica",
-   "offsetMs": 6125.0,
-   "durationMs": 512.5
+   "text": "explica.",
+   "offsetMs": 6451,
+   "durationMs": 980
   }
  ]
 }

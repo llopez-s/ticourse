@@ -2,6 +2,8 @@
 // computes the hashes that tie generated files back to their sources.
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
+import path from 'node:path';
+import { PATHS } from './paths.mjs';
 import { MarkupError, parseSegmentText, pronunciationRisks } from './text.mjs';
 
 export const SEGMENT_ID = /^s\d\d-\d\d$/;
@@ -30,9 +32,31 @@ export function parseJsonText(text, path) {
 }
 
 /** Reads the three source files. A missing lexicon is allowed (empty, with a warning). */
+export const EDGE_VOICE = /^[a-z]{2}-[A-Z]{2}-\w+Neural$/;
+export const ELEVEN_VOICE = /^elevenlabs\/[a-z0-9_]+\/[A-Za-z0-9]{10,40}$/;
+
+/** True when the narration is voiced with ElevenLabs (voice "elevenlabs/<model>/<voice_id>"). */
+export function isElevenLabsVoice(voice) {
+  return typeof voice === 'string' && ELEVEN_VOICE.test(voice);
+}
+
+/**
+ * The text a segment is synthesised from (and keyed on): ElevenLabs gets the
+ * voice-only <directions> as [audio tags]; edge-tts gets plain spoken text.
+ */
+export function spokenForVoice(voice, parsed) {
+  return isElevenLabsVoice(voice) ? parsed.directedSpoken : parsed.spoken;
+}
+
 export function loadSources({ storyboard, narration, lexicon }) {
   const storyboardText = readSource(storyboard, 'storyboard.json');
   const narrationText = readSource(narration, 'narration.json');
+  // narration.json may name its own lexicon ("lexicon": "lexicon.elevenlabs.json",
+  // relative to narration.json); it wins over the default lexicon path only.
+  const narrationJson = parseJsonText(narrationText, narration);
+  if (lexicon === PATHS.lexicon && typeof narrationJson?.lexicon === 'string') {
+    lexicon = path.resolve(path.dirname(narration), narrationJson.lexicon);
+  }
   const lexiconRaw = readSource(lexicon, 'lexicon.json', { optional: true });
   return {
     paths: { storyboard, narration, lexicon },
@@ -108,7 +132,10 @@ export function analyzeNarration({ storyboard, narration, lexicon }) {
     return { errors, warnings, voice: null, scenes: [], segments: [] };
   }
   const voice = { voice: narration.voice, rate: narration.rate ?? '+0%', pitch: narration.pitch ?? '+0Hz' };
-  if (typeof voice.voice !== 'string' || !/^[a-z]{2}-[A-Z]{2}-\w+Neural$/.test(voice.voice)) errors.push(`narration.voice ${JSON.stringify(voice.voice)} is not a neural voice name like "es-ES-ElviraNeural"`);
+  if (typeof voice.voice !== 'string' || !(EDGE_VOICE.test(voice.voice) || ELEVEN_VOICE.test(voice.voice))) {
+    errors.push(`narration.voice ${JSON.stringify(voice.voice)} must be an edge-tts voice ("es-ES-ElviraNeural") or "elevenlabs/<model_id>/<voice_id>"`);
+  }
+  if (narration.elevenlabs !== undefined && !isObj(narration.elevenlabs)) errors.push('narration.elevenlabs must be an object of voice settings');
   if (!/^[+-]\d{1,3}%$/.test(voice.rate)) errors.push(`narration.rate ${JSON.stringify(voice.rate)} must look like "+0%"`);
   if (!/^[+-]\d{1,3}Hz$/.test(voice.pitch)) errors.push(`narration.pitch ${JSON.stringify(voice.pitch)} must look like "+0Hz"`);
   if (!Array.isArray(narration.segments) || !narration.segments.length) {

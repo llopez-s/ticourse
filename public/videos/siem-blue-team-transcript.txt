@@ -1,38 +1,39 @@
 SIEM en acción: del ruido a la evidencia
 Simulación educativa con datos ficticios · IntelForge Academy — material independiente, no afiliado a CompTIA
+Voz: ElevenLabs (elevenlabs.io)
 
 [00:00] I · Qué es — Seis mil avisos, uno importa
 Madrugada en la Autoridad Portuaria de Halden: al SOC llegan 6.000 alertas al día, y solo una importa. Encontrarla es trabajo del equipo defensivo, el Blue Team, con su SIEM: Security Information and Event Management. Une SIM, que guarda, busca e informa a largo plazo, y SEM, que vigila eventos en tiempo real. Al fundirse, su trabajo cabe en cuatro verbos: agregar, normalizar, correlacionar y alertar.
 
-[00:28] II · Cómo funciona — Recoger
+[00:33] II · Cómo funciona — Recoger
 Primero, recoger: log aggregation. Los sistemas cuentan quién entró; las aplicaciones, qué hizo; la infraestructura, por dónde se movió. Servidores y estaciones envían por agente; firewalls y switches, por syslog; la nube, por API; y los routers exportan NetFlow. Todo converge en un punto central, con la hora sincronizada por NTP. Si un intruso borra el registro local, la evidencia sobrevive en la copia central.
 
-[00:58] II · Cómo funciona — Normalizar
+[01:07] II · Cómo funciona — Normalizar
 Después, normalizar, porque cada fuente habla su propio dialecto. El SIEM parsea cada línea: extrae sus campos. Y los normaliza a un esquema común, donde usuario, IP de origen y acción se llaman igual. También la hora: las 10:14 de Halden se guardan como las 09:14 UTC.
 
-[01:19] II · Cómo funciona — Enriquecer
+[01:31] II · Cómo funciona — Enriquecer
 Antes de correlacionar, el SIEM enriquece: añade qué activo es, cuánto importa y quién es el usuario. También de dónde viene la IP y si figura en inteligencia de amenazas. El contexto decide la gravedad: el mismo aviso no pesa igual en un portátil que en la terminal de contenedores.
 
-[01:37] II · Cómo funciona — Correlacionar y alertar
+[01:53] II · Cómo funciona — Correlacionar y alertar
 Ahora sí, correlacionar. Tres inicios de sesión fallidos pueden ser un simple despiste. Pero luego entra la misma cuenta, y diez minutos después aparece un usuario nuevo. Aunque vengan de fuentes distintas, si caen en la misma ventana de tiempo, una regla de correlación une las piezas. Y salta la alerta, que debe decir qué pasó, dónde, con qué gravedad y qué hacer.
 
-[02:02] III · Operar el SIEM — Alert fatigue
+[02:22] III · Operar el SIEM — Alert fatigue
 En Halden, la consola escupe 6.000 alertas diarias y el turno de noche cierra el 90 % sin abrirlas. Es alert fatigue, la fatiga de alertas. Tres reglas generan el 78 % del volumen, y ninguna ha producido nunca un incidente real. Las disparan el agente de copias de seguridad, el escáner de vulnerabilidades corporativo y un balanceador que reinicia sesiones cada hora.
 
-[02:27] III · Operar el SIEM — Alert tuning
+[02:51] III · Operar el SIEM — Alert tuning
 La cura no es más gente ni otra herramienta: es afinar, alert tuning. Se excluye el patrón benigno conocido; la regla sigue activa. Cada exclusión se documenta: qué, por qué y quién la aprobó. Excluidos los tres patrones, quedan 1.320. Deduplicar y agrupar eventos relacionados deja la cola en 400 al día. Ojo: una exclusión demasiado amplia crea falsos negativos, false negatives, justo por donde entrará el atacante.
 
-[02:58] IV · El caso de Halden — Triaje
+[03:27] IV · El caso de Halden — Triaje
 Dos semanas después, gracias al ajuste, destaca una alerta. Volumen saliente inusual en un servidor de la terminal de contenedores. La analista se la asigna y empieza el triaje. NetFlow lo confirma: 38 GB hacia una IP desconocida, entre las 02:00 y las 04:30. No. NetFlow es metadato: quién habló con quién, cuándo y cuánto. Solo una captura de paquetes guarda el contenido, si no iba cifrado.
 
-[03:29] IV · El caso de Halden — Pivotar y correlacionar
+[04:01] IV · El caso de Halden — Pivotar y correlacionar
 ¿Y si fuera una copia legítima? La analista pivota: revisa ese servidor desde las 01:30. El SIEM correlaciona el flujo con un inicio de sesión a las 01:52 de una cuenta de servicio. Viene de una estación de administración, ocho minutos antes de la transferencia, y ninguna copia programada lo explica. Esa cuenta se sale de su línea base: justo lo que vigila el análisis de comportamiento de usuarios, UBA.
 
-[03:57] IV · El caso de Halden — Contener y validar
+[04:31] IV · El caso de Halden — Contener y validar
 Primera decisión de contención: ¿apagas el servidor o lo aíslas? Aislarlo: cuarentena en una VLAN restringida, sin apagarlo, porque la memoria también es evidencia. Una captura de paquetes graba el resto de la sesión. Un playbook de SOAR, que automatiza la respuesta, propuso esa cuarentena. Solo se ejecutó cuando la analista la aprobó. Se corrige rotando la credencial de la cuenta de servicio. La alerta se cierra al validar la corrección y documentarla, no al leerla.
 
-[04:32] V · Límites y examen — Lo que el SIEM no ve
+[05:07] V · Límites y examen — Lo que el SIEM no ve
 El SIEM solo ve las fuentes integradas: lo que no le llega, para él no ocurrió. Y una fuente que se calla, missing logs, es tan sospechosa como una alerta. Sin relojes sincronizados, la correlación se desordena. El SIEM ve eventos y metadatos: jamás el contenido. El archivado, archiving, es para investigaciones y cumplimiento: reconstruir una intrusión antigua depende de la retención.
 
-[04:58] V · Límites y examen — Para el examen
+[05:37] V · Límites y examen — Para el examen
 Agregar, normalizar, correlacionar y alertar, enriqueciendo por el camino. Y el Blue Team responde: triaje, contención, corrección, validación y ajuste. Para el examen: NetFlow es metadato; alert fatigue se cura con alert tuning; y archiving es para investigaciones y cumplimiento. Ahora te toca: aplica lo visto en las preguntas de esta lección.

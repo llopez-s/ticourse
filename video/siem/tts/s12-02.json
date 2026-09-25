@@ -1,116 +1,128 @@
 {
- "key": "ff3badb5899ef254dc9a074f06b7b145db6a0d0e217df0e4305fb4172c7a5e01",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "7058a4c69de42f5f100e4b8d5ac3644eb9eef031d37b3d8ac0bf1da08e5ab81c",
+ "sceneKey": "fb6351f91753cfc7bd89883a2ac6a89bfd5229d526291e73e4cfdf0e779442c7",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Para el examen: net flou es metadato; alert fatíg se cura con alert tiúnin; y árcaivin es para investigaciones y cumplimiento.",
- "bytes": 48960,
- "durationMs": 8160.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[confident] Para el examen: NetFlow es metadato; alert fatigue se cura con alert tuning; y archiving es para investigaciones y cumplimiento.",
+ "bytes": 117792,
+ "bitrateKbps": 96,
+ "durationMs": 9752,
+ "clipInSceneMs": [
+  12148,
+  21900
+ ],
+ "requestId": "gLkBhKVMmowZvDAcO0wH",
  "words": [
   {
    "text": "Para",
-   "offsetMs": 100.0,
-   "durationMs": 175.0
+   "offsetMs": 60,
+   "durationMs": 32
   },
   {
    "text": "el",
-   "offsetMs": 275.0,
-   "durationMs": 125.0
+   "offsetMs": 119,
+   "durationMs": 53
   },
   {
-   "text": "examen",
-   "offsetMs": 400.0,
-   "durationMs": 462.5
+   "text": "examen:",
+   "offsetMs": 252,
+   "durationMs": 880
   },
   {
-   "text": "net",
-   "offsetMs": 987.5,
-   "durationMs": 237.5
-  },
-  {
-   "text": "flou",
-   "offsetMs": 1225.0,
-   "durationMs": 287.5
+   "text": "NetFlow",
+   "offsetMs": 1232,
+   "durationMs": 540
   },
   {
    "text": "es",
-   "offsetMs": 1512.5,
-   "durationMs": 125.0
+   "offsetMs": 1879,
+   "durationMs": 213
   },
   {
-   "text": "metadato",
-   "offsetMs": 1637.5,
-   "durationMs": 525.0
+   "text": "metadato;",
+   "offsetMs": 2152,
+   "durationMs": 740
   },
   {
    "text": "alert",
-   "offsetMs": 2450.0,
-   "durationMs": 350.0
+   "offsetMs": 3039,
+   "durationMs": 733
   },
   {
-   "text": "fatíg",
-   "offsetMs": 2800.0,
-   "durationMs": 350.0
+   "text": "fatigue",
+   "offsetMs": 3822,
+   "durationMs": 350
   },
   {
    "text": "se",
-   "offsetMs": 3150.0,
-   "durationMs": 162.5
+   "offsetMs": 4252,
+   "durationMs": 160
   },
   {
    "text": "cura",
-   "offsetMs": 3312.5,
-   "durationMs": 250.0
+   "offsetMs": 4452,
+   "durationMs": 200
   },
   {
    "text": "con",
-   "offsetMs": 3562.5,
-   "durationMs": 187.5
+   "offsetMs": 4712,
+   "durationMs": 180
   },
   {
    "text": "alert",
-   "offsetMs": 3750.0,
-   "durationMs": 262.5
+   "offsetMs": 4999,
+   "durationMs": 533
   },
   {
-   "text": "tiúnin",
-   "offsetMs": 4012.5,
-   "durationMs": 437.5
+   "text": "tuning;",
+   "offsetMs": 5612,
+   "durationMs": 880
   },
   {
    "text": "y",
-   "offsetMs": 4712.5,
-   "durationMs": 87.5
+   "offsetMs": 6532,
+   "durationMs": 40
   },
   {
-   "text": "árcaivin",
-   "offsetMs": 4862.5,
-   "durationMs": 487.5
+   "text": "archiving",
+   "offsetMs": 6620,
+   "durationMs": 592
   },
   {
    "text": "es",
-   "offsetMs": 5350.0,
-   "durationMs": 100.0
+   "offsetMs": 7292,
+   "durationMs": 160
   },
   {
    "text": "para",
-   "offsetMs": 5450.0,
-   "durationMs": 212.5
+   "offsetMs": 7484,
+   "durationMs": 128
   },
   {
    "text": "investigaciones",
-   "offsetMs": 5662.5,
-   "durationMs": 775.0
+   "offsetMs": 7656,
+   "durationMs": 836
   },
   {
    "text": "y",
-   "offsetMs": 6437.5,
-   "durationMs": 62.5
+   "offsetMs": 8532,
+   "durationMs": 40
   },
   {
-   "text": "cumplimiento",
-   "offsetMs": 6500.0,
-   "durationMs": 687.5
+   "text": "cumplimiento.",
+   "offsetMs": 8612,
+   "durationMs": 840
   }
  ]
 }

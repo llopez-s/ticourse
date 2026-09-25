@@ -1,116 +1,133 @@
 {
- "key": "62e45de46783690850880df58a6efa581a96431c7f6bb60a1b84a3c85239f8a6",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "fbd7cb2116557f58779998e18d29b5024a3f6e3935edae1c786c8f9cac27179f",
+ "sceneKey": "87c026a80357990142b86623e8776effc7c2fae7c59b0df6296afeba63e7e2c7",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "En jálden, la consola escupe seis mil alertas diarias y el turno de noche cierra el noventa por ciento sin abrirlas.",
- "bytes": 42480,
- "durationMs": 7080.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[tired] En Halden, la consola escupe seis mil alertas diarias y el turno de noche cierra el noventa por ciento sin abrirlas.",
+ "bytes": 90432,
+ "bitrateKbps": 96,
+ "durationMs": 7475,
+ "clipInSceneMs": [
+  73,
+  7548
+ ],
+ "requestId": "wjd8BgNMY9Ygl93T4ozA",
  "words": [
   {
    "text": "En",
-   "offsetMs": 100.0,
-   "durationMs": 137.5
+   "offsetMs": 60,
+   "durationMs": 27
   },
   {
-   "text": "jálden",
-   "offsetMs": 237.5,
-   "durationMs": 450.0
+   "text": "Halden,",
+   "offsetMs": 127,
+   "durationMs": 760
   },
   {
    "text": "la",
-   "offsetMs": 787.5,
-   "durationMs": 150.0
+   "offsetMs": 914,
+   "durationMs": 53
   },
   {
    "text": "consola",
-   "offsetMs": 937.5,
-   "durationMs": 437.5
+   "offsetMs": 1031,
+   "durationMs": 416
   },
   {
    "text": "escupe",
-   "offsetMs": 1375.0,
-   "durationMs": 400.0
+   "offsetMs": 1487,
+   "durationMs": 360
   },
   {
    "text": "seis",
-   "offsetMs": 1775.0,
-   "durationMs": 237.5
+   "offsetMs": 1911,
+   "durationMs": 256
   },
   {
    "text": "mil",
-   "offsetMs": 2012.5,
-   "durationMs": 200.0
+   "offsetMs": 2227,
+   "durationMs": 180
   },
   {
    "text": "alertas",
-   "offsetMs": 2212.5,
-   "durationMs": 375.0
+   "offsetMs": 2460,
+   "durationMs": 427
   },
   {
    "text": "diarias",
-   "offsetMs": 2587.5,
-   "durationMs": 462.5
+   "offsetMs": 2940,
+   "durationMs": 507
   },
   {
    "text": "y",
-   "offsetMs": 3050.0,
-   "durationMs": 87.5
+   "offsetMs": 3647,
+   "durationMs": 200
   },
   {
    "text": "el",
-   "offsetMs": 3137.5,
-   "durationMs": 112.5
+   "offsetMs": 3874,
+   "durationMs": 53
   },
   {
    "text": "turno",
-   "offsetMs": 3275.0,
-   "durationMs": 375.0
+   "offsetMs": 3994,
+   "durationMs": 333
   },
   {
    "text": "de",
-   "offsetMs": 3650.0,
-   "durationMs": 112.5
+   "offsetMs": 4354,
+   "durationMs": 53
   },
   {
    "text": "noche",
-   "offsetMs": 3762.5,
-   "durationMs": 275.0
+   "offsetMs": 4460,
+   "durationMs": 267
   },
   {
    "text": "cierra",
-   "offsetMs": 4037.5,
-   "durationMs": 362.5
+   "offsetMs": 4807,
+   "durationMs": 400
   },
   {
    "text": "el",
-   "offsetMs": 4400.0,
-   "durationMs": 75.0
+   "offsetMs": 5234,
+   "durationMs": 53
   },
   {
    "text": "noventa",
-   "offsetMs": 4475.0,
-   "durationMs": 387.5
+   "offsetMs": 5340,
+   "durationMs": 347
   },
   {
    "text": "por",
-   "offsetMs": 4862.5,
-   "durationMs": 150.0
+   "offsetMs": 5747,
+   "durationMs": 180
   },
   {
    "text": "ciento",
-   "offsetMs": 5012.5,
-   "durationMs": 350.0
+   "offsetMs": 5967,
+   "durationMs": 280
   },
   {
    "text": "sin",
-   "offsetMs": 5362.5,
-   "durationMs": 187.5
+   "offsetMs": 6307,
+   "durationMs": 180
   },
   {
-   "text": "abrirlas",
-   "offsetMs": 5550.0,
-   "durationMs": 525.0
+   "text": "abrirlas.",
+   "offsetMs": 6540,
+   "durationMs": 747
   }
  ]
 }

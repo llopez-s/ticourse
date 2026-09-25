@@ -1,126 +1,143 @@
 {
- "key": "3db194a53207df9eb599d016db40f2d366090bee99f8e5038dfa1821b5872b1a",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "2350e931dcaaed34b05b2b97a8fba6188bcfdd3422e41900524e1d0b33707230",
+ "sceneKey": "c12cef15f23a2071be2f4dd98f48d24f20f794b84ef61f48cec6dd5db6c1836f",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Se corrige rotando la credencial de la cuenta de servicio. La alerta se cierra al validar la corrección y documentarla, no al leerla.",
- "bytes": 53856,
- "durationMs": 8976.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[relieved] Se corrige rotando la credencial de la cuenta de servicio. La alerta se cierra al validar la corrección y documentarla, no al leerla.",
+ "bytes": 96768,
+ "bitrateKbps": 96,
+ "durationMs": 8015,
+ "clipInSceneMs": [
+  24385,
+  32400
+ ],
+ "requestId": "ePfnPcOnfSy476dDHlq5",
  "words": [
   {
    "text": "Se",
-   "offsetMs": 100.0,
-   "durationMs": 175.0
+   "offsetMs": 60,
+   "durationMs": 36
   },
   {
    "text": "corrige",
-   "offsetMs": 275.0,
-   "durationMs": 462.5
+   "offsetMs": 128,
+   "durationMs": 368
   },
   {
    "text": "rotando",
-   "offsetMs": 737.5,
-   "durationMs": 450.0
+   "offsetMs": 556,
+   "durationMs": 340
   },
   {
    "text": "la",
-   "offsetMs": 1187.5,
-   "durationMs": 87.5
+   "offsetMs": 923,
+   "durationMs": 53
   },
   {
    "text": "credencial",
-   "offsetMs": 1275.0,
-   "durationMs": 587.5
+   "offsetMs": 1024,
+   "durationMs": 512
   },
   {
    "text": "de",
-   "offsetMs": 1862.5,
-   "durationMs": 87.5
+   "offsetMs": 1589,
+   "durationMs": 107
   },
   {
    "text": "la",
-   "offsetMs": 1950.0,
-   "durationMs": 100.0
+   "offsetMs": 1723,
+   "durationMs": 53
   },
   {
    "text": "cuenta",
-   "offsetMs": 2050.0,
-   "durationMs": 325.0
+   "offsetMs": 1822,
+   "durationMs": 274
   },
   {
    "text": "de",
-   "offsetMs": 2375.0,
-   "durationMs": 100.0
+   "offsetMs": 2123,
+   "durationMs": 53
   },
   {
-   "text": "servicio",
-   "offsetMs": 2475.0,
-   "durationMs": 525.0
+   "text": "servicio.",
+   "offsetMs": 2247,
+   "durationMs": 929
   },
   {
    "text": "La",
-   "offsetMs": 3950.0,
-   "durationMs": 137.5
+   "offsetMs": 3296,
+   "durationMs": 240
   },
   {
    "text": "alerta",
-   "offsetMs": 4087.5,
-   "durationMs": 437.5
+   "offsetMs": 3589,
+   "durationMs": 347
   },
   {
    "text": "se",
-   "offsetMs": 4525.0,
-   "durationMs": 137.5
+   "offsetMs": 3963,
+   "durationMs": 53
   },
   {
    "text": "cierra",
-   "offsetMs": 4662.5,
-   "durationMs": 350.0
+   "offsetMs": 4096,
+   "durationMs": 320
   },
   {
    "text": "al",
-   "offsetMs": 5012.5,
-   "durationMs": 112.5
+   "offsetMs": 4443,
+   "durationMs": 53
   },
   {
    "text": "validar",
-   "offsetMs": 5125.0,
-   "durationMs": 387.5
+   "offsetMs": 4546,
+   "durationMs": 350
   },
   {
    "text": "la",
-   "offsetMs": 5512.5,
-   "durationMs": 112.5
+   "offsetMs": 4923,
+   "durationMs": 53
   },
   {
    "text": "corrección",
-   "offsetMs": 5625.0,
-   "durationMs": 562.5
+   "offsetMs": 5016,
+   "durationMs": 600
   },
   {
    "text": "y",
-   "offsetMs": 6187.5,
-   "durationMs": 50.0
+   "offsetMs": 5696,
+   "durationMs": 80
   },
   {
-   "text": "documentarla",
-   "offsetMs": 6237.5,
-   "durationMs": 775.0
+   "text": "documentarla,",
+   "offsetMs": 5829,
+   "durationMs": 1067
   },
   {
    "text": "no",
-   "offsetMs": 7225.0,
-   "durationMs": 225.0
+   "offsetMs": 6976,
+   "durationMs": 160
   },
   {
    "text": "al",
-   "offsetMs": 7450.0,
-   "durationMs": 100.0
+   "offsetMs": 7189,
+   "durationMs": 107
   },
   {
-   "text": "leerla",
-   "offsetMs": 7550.0,
-   "durationMs": 425.0
+   "text": "leerla.",
+   "offsetMs": 7376,
+   "durationMs": 640
   }
  ]
 }

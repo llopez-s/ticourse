@@ -1,91 +1,108 @@
 {
- "key": "72ea50bea4229078a4192752e77c9ebef03fcf754b46e1bbade3d66c7826d5c0",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "38eb09feccd0707f0dbc71560a25fabd3ab5ee2525d2894f258636dab4eabc65",
+ "sceneKey": "de5803373715e435f6dcc3ea090185b86b4464e51f1b9c7e7ebc12b248245483",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "El síem solo ve las fuentes integradas: lo que no le llega, para él no ocurrió.",
- "bytes": 31824,
- "durationMs": 5304.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[serious] El síem solo ve las fuentes integradas: lo que no le llega, para él no ocurrió.",
+ "bytes": 67392,
+ "bitrateKbps": 96,
+ "durationMs": 5562,
+ "clipInSceneMs": [
+  73,
+  5635
+ ],
+ "requestId": "ytHdaU1iGNfMX7wFuOr2",
  "words": [
   {
    "text": "El",
-   "offsetMs": 100.0,
-   "durationMs": 150.0
+   "offsetMs": 60,
+   "durationMs": 27
   },
   {
    "text": "síem",
-   "offsetMs": 262.5,
-   "durationMs": 325.0
+   "offsetMs": 167,
+   "durationMs": 320
   },
   {
    "text": "solo",
-   "offsetMs": 587.5,
-   "durationMs": 275.0
+   "offsetMs": 535,
+   "durationMs": 192
   },
   {
    "text": "ve",
-   "offsetMs": 862.5,
-   "durationMs": 125.0
+   "offsetMs": 780,
+   "durationMs": 107
   },
   {
    "text": "las",
-   "offsetMs": 987.5,
-   "durationMs": 175.0
+   "offsetMs": 927,
+   "durationMs": 120
   },
   {
    "text": "fuentes",
-   "offsetMs": 1162.5,
-   "durationMs": 387.5
+   "offsetMs": 1087,
+   "durationMs": 360
   },
   {
-   "text": "integradas",
-   "offsetMs": 1550.0,
-   "durationMs": 662.5
+   "text": "integradas:",
+   "offsetMs": 1493,
+   "durationMs": 1074
   },
   {
    "text": "lo",
-   "offsetMs": 2525.0,
-   "durationMs": 125.0
+   "offsetMs": 2594,
+   "durationMs": 53
   },
   {
    "text": "que",
-   "offsetMs": 2650.0,
-   "durationMs": 137.5
+   "offsetMs": 2687,
+   "durationMs": 120
   },
   {
    "text": "no",
-   "offsetMs": 2800.0,
-   "durationMs": 137.5
+   "offsetMs": 2834,
+   "durationMs": 53
   },
   {
    "text": "le",
-   "offsetMs": 2937.5,
-   "durationMs": 100.0
+   "offsetMs": 2940,
+   "durationMs": 107
   },
   {
-   "text": "llega",
-   "offsetMs": 3037.5,
-   "durationMs": 300.0
+   "text": "llega,",
+   "offsetMs": 3095,
+   "durationMs": 512
   },
   {
    "text": "para",
-   "offsetMs": 3375.0,
-   "durationMs": 237.5
+   "offsetMs": 3655,
+   "durationMs": 192
   },
   {
    "text": "él",
-   "offsetMs": 3612.5,
-   "durationMs": 100.0
+   "offsetMs": 3927,
+   "durationMs": 160
   },
   {
    "text": "no",
-   "offsetMs": 3712.5,
-   "durationMs": 125.0
+   "offsetMs": 4140,
+   "durationMs": 107
   },
   {
-   "text": "ocurrió",
-   "offsetMs": 3837.5,
-   "durationMs": 475.0
+   "text": "ocurrió.",
+   "offsetMs": 4295,
+   "durationMs": 992
   }
  ]
 }

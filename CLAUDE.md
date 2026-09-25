@@ -167,9 +167,12 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   section has exactly one 12-question block with contiguous ids and non-empty text. Partial
   placement coverage fails for **every** track; shipping none at all is still allowed. A
   `SIEM lesson video` suite checks that sp4m6's video block and its four public assets exist.
-- **Lesson videos (`t: 'video'` blocks).** The SIEM explainer (sp4m6, ~5:25) is a self-contained
+- **Lesson videos (`t: 'video'` blocks).** The SIEM explainer (sp4m6, ~6:07) is a self-contained
   Remotion project in `video/siem/` — see its `README.md`. Pipeline: `narration.json` →
-  `scripts/tts.py` (edge-tts neural es-ES voice; network only here) → `scripts/build-timeline.mjs`
+  `scripts/tts-elevenlabs.mjs` (ElevenLabs v3, voice Sarah, one request per scene with `<tag>`
+  emotion directions, cut into per-segment clips; needs `ELEVENLABS_API_KEY` in the git-ignored
+  `.env.local`; free plan = premade voices only + "Voz: ElevenLabs" credit) — or `scripts/tts.py`
+  (edge-tts fallback) → `scripts/build-timeline.mjs`
   (`src/timeline.json` + transcript + WebVTT) → `scripts/render.mjs` (MP4 + poster into
   `public/videos/`, ffprobe/A-V-sync checks). Rendering is local only (not in CI), so the MP4 is
   committed. Its voice clips live in `video/siem/public/` (Remotion `--public-dir`), never in the

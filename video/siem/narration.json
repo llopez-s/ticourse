@@ -1,18 +1,27 @@
 {
-  "voice": "es-ES-ElviraNeural",
+  "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
   "rate": "+0%",
   "pitch": "+0Hz",
+  "lexicon": "lexicon.elevenlabs.json",
+  "elevenlabs": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true,
+    "speed": 1,
+    "seed": 20260925
+  },
   "segments": [
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "Madrugada en la Autoridad Portuaria de Halden: al SOC llegan {flood}[6.000|seis mil] alertas al día, y solo {needle}una importa.",
+      "text": "<intrigued> Madrugada en la Autoridad Portuaria de Halden: al SOC llegan {flood}[6.000|seis mil] alertas al día, <serious> y solo {needle}una importa.",
       "pauseAfterMs": 450
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "Encontrarla es trabajo del equipo defensivo, el Blue Team, con su {title}SIEM: Security Information and Event Management.",
+      "text": "<confident> Encontrarla es trabajo del equipo defensivo, el Blue Team, con su {title}SIEM: Security Information and Event Management.",
       "pauseAfterMs": 350
     },
     {
@@ -24,14 +33,19 @@
     {
       "id": "s01-04",
       "scene": "s01-hook",
-      "text": "{def-merge}Al fundirse, su trabajo cabe en cuatro verbos: {verbs}agregar, normalizar, correlacionar y alertar.",
+      "text": "<enthusiastic> {def-merge}Al fundirse, su trabajo cabe en cuatro verbos: {verbs}agregar, normalizar, correlacionar y alertar.",
       "pauseAfterMs": 550,
-      "exam": { "objective": "4.4", "text": "Un SIEM agrega, normaliza, correlaciona y alerta", "at": "def-merge", "holdSec": 4 }
+      "exam": {
+        "objective": "4.4",
+        "text": "Un SIEM agrega, normaliza, correlaciona y alerta",
+        "at": "def-merge",
+        "holdSec": 4
+      }
     },
     {
       "id": "s02-01",
       "scene": "s02-collect",
-      "text": "Primero, recoger: log aggregation. Los {src-systems}sistemas cuentan quién entró; las {src-apps}aplicaciones, qué hizo; la {src-infra}infraestructura, por dónde se movió.",
+      "text": "<clear, engaging> Primero, recoger: log aggregation. Los {src-systems}sistemas cuentan quién entró; las {src-apps}aplicaciones, qué hizo; la {src-infra}infraestructura, por dónde se movió.",
       "pauseAfterMs": 350
     },
     {
@@ -45,18 +59,23 @@
       "scene": "s02-collect",
       "text": "Todo converge en un punto central, con la hora sincronizada por {ntp}NTP.",
       "pauseAfterMs": 350,
-      "exam": { "objective": "4.4", "text": "Log aggregation: copia central y hora sincronizada", "at": "ntp", "holdSec": 5 }
+      "exam": {
+        "objective": "4.4",
+        "text": "Log aggregation: copia central y hora sincronizada",
+        "at": "ntp",
+        "holdSec": 5
+      }
     },
     {
       "id": "s02-04",
       "scene": "s02-collect",
-      "text": "Si un intruso {wipe}borra el registro local, la evidencia sobrevive en la copia central.",
+      "text": "<mischievously> Si un intruso {wipe}borra el registro local, <reassuring> la evidencia sobrevive en la copia central.",
       "pauseAfterMs": 550
     },
     {
       "id": "s03-01",
       "scene": "s03-normalize",
-      "text": "Después, normalizar, porque {raw}cada fuente habla su propio dialecto.",
+      "text": "<curious> Después, normalizar, porque {raw}cada fuente habla su propio dialecto.",
       "pauseAfterMs": 350
     },
     {
@@ -74,7 +93,7 @@
     {
       "id": "s04-01",
       "scene": "s04-enrich",
-      "text": "Antes de correlacionar, el SIEM enriquece: añade {enr-asset}qué activo es, cuánto importa y {enr-identity}quién es el usuario.",
+      "text": "<thoughtful> Antes de correlacionar, el SIEM enriquece: añade {enr-asset}qué activo es, cuánto importa y {enr-identity}quién es el usuario.",
       "pauseAfterMs": 350
     },
     {
@@ -86,21 +105,26 @@
     {
       "id": "s04-03",
       "scene": "s04-enrich",
-      "text": "El contexto decide la gravedad: el mismo aviso {severity}no pesa igual en un portátil que en la terminal de contenedores.",
+      "text": "<serious> El contexto decide la gravedad: el mismo aviso {severity}no pesa igual en un portátil que en la terminal de contenedores.",
       "pauseAfterMs": 550
     },
     {
       "id": "s05-01",
       "scene": "s05-correlate",
-      "text": "Ahora sí, correlacionar. {ev-fail}Tres inicios de sesión fallidos pueden ser un simple despiste.",
+      "text": "<casual> Ahora sí, correlacionar. {ev-fail}Tres inicios de sesión fallidos pueden ser un simple despiste.",
       "pauseAfterMs": 350
     },
     {
       "id": "s05-02",
       "scene": "s05-correlate",
-      "text": "Pero luego {ev-success}entra la misma cuenta, y diez minutos después {ev-create}aparece un usuario nuevo.",
+      "text": "<suspicious> Pero luego {ev-success}entra la misma cuenta, y diez minutos después {ev-create}aparece un usuario nuevo.",
       "pauseAfterMs": 400,
-      "exam": { "objective": "4.9", "text": "4625 fallido · 4624 correcto · 4720 cuenta creada", "at": "ev-create", "holdSec": 5 }
+      "exam": {
+        "objective": "4.9",
+        "text": "4625 fallido · 4624 correcto · 4720 cuenta creada",
+        "at": "ev-create",
+        "holdSec": 5
+      }
     },
     {
       "id": "s05-03",
@@ -111,32 +135,36 @@
     {
       "id": "s05-04",
       "scene": "s05-correlate",
-      "text": "Y {alert}salta la alerta, que debe decir qué pasó, dónde, con qué gravedad y qué hacer.",
+      "text": "<emphatic> Y {alert}salta la alerta, que debe decir qué pasó, dónde, con qué gravedad y qué hacer.",
       "pauseAfterMs": 550
     },
     {
       "id": "s06-01",
       "scene": "s06-fatigue",
-      "text": "En Halden, {queue}la consola escupe [6.000|seis mil] alertas diarias y el turno de noche {close-unread}cierra el [90 %|noventa por ciento] sin abrirlas.",
+      "text": "<tired> En Halden, {queue}la consola escupe [6.000|seis mil] alertas diarias y el turno de noche {close-unread}cierra el [90 %|noventa por ciento] sin abrirlas.",
       "pauseAfterMs": 400
     },
     {
       "id": "s06-02",
       "scene": "s06-fatigue",
-      "text": "Es alert fatigue, la fatiga de alertas. {pareto}Tres reglas generan el [78 %|setenta y ocho por ciento] del volumen, y ninguna ha producido nunca un incidente real.",
+      "text": "<sighs> Es alert fatigue, la fatiga de alertas. {pareto}Tres reglas generan el [78 %|setenta y ocho por ciento] del volumen, y ninguna ha producido nunca un incidente real.",
       "pauseAfterMs": 400,
-      "exam": { "objective": "4.4", "text": "Cerrar alertas sin leerlas = alert fatigue", "holdSec": 5 }
+      "exam": {
+        "objective": "4.4",
+        "text": "Cerrar alertas sin leerlas = alert fatigue",
+        "holdSec": 5
+      }
     },
     {
       "id": "s06-03",
       "scene": "s06-fatigue",
-      "text": "Las disparan {r-backup}el agente de copias de seguridad, {r-scanner}el escáner de vulnerabilidades corporativo y {r-lb}un balanceador que reinicia sesiones cada hora.",
+      "text": "<sarcastic> Las disparan {r-backup}el agente de copias de seguridad, {r-scanner}el escáner de vulnerabilidades corporativo y {r-lb}un balanceador que reinicia sesiones cada hora.",
       "pauseAfterMs": 550
     },
     {
       "id": "s07-01",
       "scene": "s07-tuning",
-      "text": "La cura no es más gente ni otra herramienta: es afinar, alert tuning.",
+      "text": "<confident> La cura no es más gente ni otra herramienta: es afinar, alert tuning.",
       "pauseAfterMs": 350
     },
     {
@@ -144,24 +172,29 @@
       "scene": "s07-tuning",
       "text": "Se {exclude}excluye el patrón benigno conocido; {rule-on}la regla sigue activa. Cada exclusión {documented}se documenta: qué, por qué y quién la aprobó.",
       "pauseAfterMs": 400,
-      "exam": { "objective": "4.4", "text": "Alert tuning: excluir el patrón, no desactivar la regla", "at": "rule-on", "holdSec": 5 }
+      "exam": {
+        "objective": "4.4",
+        "text": "Alert tuning: excluir el patrón, no desactivar la regla",
+        "at": "rule-on",
+        "holdSec": 5
+      }
     },
     {
       "id": "s07-03",
       "scene": "s07-tuning",
-      "text": "Excluidos los tres patrones, {count-1320}quedan [1.320|mil trescientas veinte]. Deduplicar y agrupar eventos relacionados {count-400}deja la cola en [400|cuatrocientas] al día.",
+      "text": "Excluidos los tres patrones, {count-1320}quedan [1.320|mil trescientas veinte]. <satisfied> Deduplicar y agrupar eventos relacionados {count-400}deja la cola en [400|cuatrocientas] al día.",
       "pauseAfterMs": 400
     },
     {
       "id": "s07-04",
       "scene": "s07-tuning",
-      "text": "Ojo: {overtune}una exclusión demasiado amplia crea falsos negativos, false negatives, justo por donde entrará el atacante.",
+      "text": "<serious, warning> Ojo: {overtune}una exclusión demasiado amplia crea falsos negativos, false negatives, justo por donde entrará el atacante.",
       "pauseAfterMs": 550
     },
     {
       "id": "s08-01",
       "scene": "s08-triage",
-      "text": "{two-weeks}Dos semanas después, gracias al ajuste, {alert-top}destaca una alerta.",
+      "text": "<tense> {two-weeks}Dos semanas después, gracias al ajuste, {alert-top}destaca una alerta.",
       "pauseAfterMs": 300
     },
     {
@@ -173,78 +206,98 @@
     {
       "id": "s08-03",
       "scene": "s08-triage",
-      "text": "{netflow}NetFlow lo confirma: {38gb}[38 GB|treinta y ocho gigabytes] hacia una IP desconocida, entre las [02:00|dos] y las [04:30|cuatro y media].",
+      "text": "<serious> {netflow}NetFlow lo confirma: {38gb}[38 GB|treinta y ocho gigabytes] hacia una IP desconocida, entre las [02:00|dos] y las [04:30|cuatro y media].",
       "pauseAfterMs": 300,
-      "think": { "q": "Con NetFlow, ¿sabes qué datos salieron?", "holdMs": 2000 }
+      "think": {
+        "q": "Con NetFlow, ¿sabes qué datos salieron?",
+        "holdMs": 2000
+      }
     },
     {
       "id": "s08-04",
       "scene": "s08-triage",
-      "text": "No. NetFlow es {metadata}metadato: quién habló con quién, cuándo y cuánto. Solo una captura de paquetes guarda el contenido, si no iba cifrado.",
+      "text": "<firm> No. NetFlow es {metadata}metadato: quién habló con quién, cuándo y cuánto. Solo una captura de paquetes guarda el contenido, si no iba cifrado.",
       "pauseAfterMs": 550,
-      "exam": { "objective": "4.4", "text": "NetFlow = metadatos · packet capture = contenido", "at": "metadata", "holdSec": 5 }
+      "exam": {
+        "objective": "4.4",
+        "text": "NetFlow = metadatos · packet capture = contenido",
+        "at": "metadata",
+        "holdSec": 5
+      }
     },
     {
       "id": "s09-01",
       "scene": "s09-pivot",
-      "text": "¿Y si fuera una copia legítima? La analista pivota: {query}revisa ese servidor [desde las 01:30|desde la una y media].",
+      "text": "<curious> ¿Y si fuera una copia legítima? La analista pivota: {query}revisa ese servidor [desde las 01:30|desde la una y media].",
       "pauseAfterMs": 350
     },
     {
       "id": "s09-02",
       "scene": "s09-pivot",
-      "text": "El SIEM correlaciona el flujo con {logon-0152}un inicio de sesión [a las 01:52|a la una y cincuenta y dos] de una cuenta de servicio.",
+      "text": "<intrigued> El SIEM correlaciona el flujo con {logon-0152}un inicio de sesión [a las 01:52|a la una y cincuenta y dos] de una cuenta de servicio.",
       "pauseAfterMs": 300
     },
     {
       "id": "s09-03",
       "scene": "s09-pivot",
-      "text": "Viene de {adm-ws}una estación de administración, {link-8min}ocho minutos antes de la transferencia, y ninguna copia programada lo explica.",
+      "text": "<suspicious> Viene de {adm-ws}una estación de administración, {link-8min}ocho minutos antes de la transferencia, y ninguna copia programada lo explica.",
       "pauseAfterMs": 400
     },
     {
       "id": "s09-04",
       "scene": "s09-pivot",
-      "text": "Esa cuenta se sale de su línea base: justo lo que vigila {uba}el análisis de comportamiento de usuarios, UBA.",
+      "text": "<confident> Esa cuenta se sale de su línea base: justo lo que vigila {uba}el análisis de comportamiento de usuarios, UBA.",
       "pauseAfterMs": 550,
-      "exam": { "objective": "4.5", "text": "UBA: detecta cuentas que se salen de su línea base", "holdSec": 5 }
+      "exam": {
+        "objective": "4.5",
+        "text": "UBA: detecta cuentas que se salen de su línea base",
+        "holdSec": 5
+      }
     },
     {
       "id": "s10-01",
       "scene": "s10-contain",
-      "text": "Primera decisión de contención: ¿apagas el servidor o lo aíslas?",
+      "text": "<urgent> Primera decisión de contención: ¿apagas el servidor o lo aíslas?",
       "pauseAfterMs": 300,
-      "think": { "q": "¿Apagarlo o aislarlo?", "holdMs": 1800 }
+      "think": {
+        "q": "¿Apagarlo o aislarlo?",
+        "holdMs": 1800
+      }
     },
     {
       "id": "s10-02",
       "scene": "s10-contain",
-      "text": "Aislarlo: {quarantine}cuarentena en una VLAN restringida, {power-on}sin apagarlo, porque la memoria también es evidencia. {pcap}Una captura de paquetes graba el resto de la sesión.",
+      "text": "<firm> Aislarlo: {quarantine}cuarentena en una VLAN restringida, {power-on}sin apagarlo, porque la memoria también es evidencia. {pcap}Una captura de paquetes graba el resto de la sesión.",
       "pauseAfterMs": 400,
-      "exam": { "objective": "4.4", "text": "Quarantine: aislar para investigar sin destruir evidencia", "at": "quarantine", "holdSec": 5 }
+      "exam": {
+        "objective": "4.4",
+        "text": "Quarantine: aislar para investigar sin destruir evidencia",
+        "at": "quarantine",
+        "holdSec": 5
+      }
     },
     {
       "id": "s10-03",
       "scene": "s10-contain",
-      "text": "{soar}Un playbook de SOAR, que automatiza la respuesta, propuso esa cuarentena. Solo se ejecutó cuando la analista la {approve}aprobó.",
+      "text": "<calm> {soar}Un playbook de SOAR, que automatiza la respuesta, propuso esa cuarentena. Solo se ejecutó cuando la analista la {approve}aprobó.",
       "pauseAfterMs": 400
     },
     {
       "id": "s10-04",
       "scene": "s10-contain",
-      "text": "Se corrige rotando la credencial de la cuenta de servicio. La alerta se cierra al {validate}validar la corrección y documentarla, no al leerla.",
+      "text": "<relieved> Se corrige rotando la credencial de la cuenta de servicio. La alerta se cierra al {validate}validar la corrección y documentarla, no al leerla.",
       "pauseAfterMs": 550
     },
     {
       "id": "s11-01",
       "scene": "s11-limits",
-      "text": "El SIEM solo ve las fuentes integradas: {blind-source}lo que no le llega, para él no ocurrió.",
+      "text": "<serious> El SIEM solo ve las fuentes integradas: {blind-source}lo que no le llega, para él no ocurrió.",
       "pauseAfterMs": 350
     },
     {
       "id": "s11-02",
       "scene": "s11-limits",
-      "text": "Y {silence}una fuente que se calla, missing logs, es tan sospechosa como una alerta.",
+      "text": "<ominous> Y {silence}una fuente que se calla, missing logs, es tan sospechosa como una alerta.",
       "pauseAfterMs": 400
     },
     {
@@ -256,26 +309,31 @@
     {
       "id": "s11-04",
       "scene": "s11-limits",
-      "text": "{archive}El archivado, archiving, es para investigaciones y cumplimiento: reconstruir una intrusión antigua depende de la retención.",
+      "text": "<thoughtful> {archive}El archivado, archiving, es para investigaciones y cumplimiento: reconstruir una intrusión antigua depende de la retención.",
       "pauseAfterMs": 550,
-      "exam": { "objective": "4.4", "text": "Archiving: investigaciones y cumplimiento, no el día a día", "at": "archive", "holdSec": 5 }
+      "exam": {
+        "objective": "4.4",
+        "text": "Archiving: investigaciones y cumplimiento, no el día a día",
+        "at": "archive",
+        "holdSec": 5
+      }
     },
     {
       "id": "s12-01",
       "scene": "s12-recap",
-      "text": "{recap-pipe}Agregar, normalizar, correlacionar y alertar, enriqueciendo por el camino. {recap-loop}Y el Blue Team responde: triaje, contención, corrección, validación y ajuste.",
+      "text": "<warmly> {recap-pipe}Agregar, normalizar, correlacionar y alertar, enriqueciendo por el camino. {recap-loop}Y el Blue Team responde: triaje, contención, corrección, validación y ajuste.",
       "pauseAfterMs": 450
     },
     {
       "id": "s12-02",
       "scene": "s12-recap",
-      "text": "{recap-exam}Para el examen: NetFlow es metadato; alert fatigue se cura con alert tuning; y archiving es para investigaciones y cumplimiento.",
+      "text": "<confident> {recap-exam}Para el examen: NetFlow es metadato; alert fatigue se cura con alert tuning; y archiving es para investigaciones y cumplimiento.",
       "pauseAfterMs": 450
     },
     {
       "id": "s12-03",
       "scene": "s12-recap",
-      "text": "{endcard}Ahora te toca: aplica lo visto en las preguntas de esta lección.",
+      "text": "<cheerful> {endcard}Ahora te toca: aplica lo visto en las preguntas de esta lección.",
       "pauseAfterMs": 600
     }
   ]

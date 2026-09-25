@@ -1,101 +1,118 @@
 {
- "key": "0692dc4f6a50d2276a742482c6887cec4a58d9edf08907b69d3d44e485027cb6",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "da3b715f5ccbfb54efe620855f6a239684a503c638dcc32f8f680860ba3ae4ac",
+ "sceneKey": "3798efe0e33e13a3aa6c852d89c5085f68c5d9f8bf6b21d42fd943e1e840a8f9",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
  "spoken": "Une sim, que guarda, busca e informa a largo plazo, y sem, que vigila eventos en tiempo real.",
- "bytes": 40176,
- "durationMs": 6696.0,
+ "bytes": 92160,
+ "bitrateKbps": 96,
+ "durationMs": 7620,
+ "clipInSceneMs": [
+  15733,
+  23353
+ ],
+ "requestId": "mFoxrePPYtvokaHj7TLx",
  "words": [
   {
    "text": "Une",
-   "offsetMs": 100.0,
-   "durationMs": 250.0
+   "offsetMs": 60,
+   "durationMs": 540
   },
   {
-   "text": "sim",
-   "offsetMs": 350.0,
-   "durationMs": 312.5
+   "text": "sim,",
+   "offsetMs": 700,
+   "durationMs": 460
   },
   {
    "text": "que",
-   "offsetMs": 825.0,
-   "durationMs": 87.5
+   "offsetMs": 1200,
+   "durationMs": 120
   },
   {
-   "text": "guarda",
-   "offsetMs": 1050.0,
-   "durationMs": 400.0
+   "text": "guarda,",
+   "offsetMs": 1389,
+   "durationMs": 651
   },
   {
    "text": "busca",
-   "offsetMs": 1562.5,
-   "durationMs": 362.5
+   "offsetMs": 2107,
+   "durationMs": 333
   },
   {
    "text": "e",
-   "offsetMs": 1962.5,
-   "durationMs": 50.0
+   "offsetMs": 2560,
+   "durationMs": 120
   },
   {
    "text": "informa",
-   "offsetMs": 2012.5,
-   "durationMs": 412.5
+   "offsetMs": 2749,
+   "durationMs": 491
   },
   {
    "text": "a",
-   "offsetMs": 2425.0,
-   "durationMs": 112.5
+   "offsetMs": 3320,
+   "durationMs": 80
   },
   {
    "text": "largo",
-   "offsetMs": 2537.5,
-   "durationMs": 287.5
+   "offsetMs": 3440,
+   "durationMs": 200
   },
   {
-   "text": "plazo",
-   "offsetMs": 2825.0,
-   "durationMs": 400.0
+   "text": "plazo,",
+   "offsetMs": 3693,
+   "durationMs": 507
   },
   {
    "text": "y",
-   "offsetMs": 3287.5,
-   "durationMs": 100.0
+   "offsetMs": 4440,
+   "durationMs": 240
   },
   {
-   "text": "sem",
-   "offsetMs": 3400.0,
-   "durationMs": 312.5
+   "text": "sem,",
+   "offsetMs": 4780,
+   "durationMs": 460
   },
   {
    "text": "que",
-   "offsetMs": 3950.0,
-   "durationMs": 62.5
+   "offsetMs": 5280,
+   "durationMs": 120
   },
   {
    "text": "vigila",
-   "offsetMs": 4087.5,
-   "durationMs": 400.0
+   "offsetMs": 5460,
+   "durationMs": 340
   },
   {
    "text": "eventos",
-   "offsetMs": 4487.5,
-   "durationMs": 462.5
+   "offsetMs": 5860,
+   "durationMs": 420
   },
   {
    "text": "en",
-   "offsetMs": 4950.0,
-   "durationMs": 150.0
+   "offsetMs": 6333,
+   "durationMs": 107
   },
   {
    "text": "tiempo",
-   "offsetMs": 5100.0,
-   "durationMs": 312.5
+   "offsetMs": 6486,
+   "durationMs": 274
   },
   {
-   "text": "real",
-   "offsetMs": 5412.5,
-   "durationMs": 375.0
+   "text": "real.",
+   "offsetMs": 6840,
+   "durationMs": 480
   }
  ]
 }

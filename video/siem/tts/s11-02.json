@@ -1,81 +1,98 @@
 {
- "key": "b86eefd3a326a82946a5a196ee2fae07dd5a0c3341f272ecbd4e314c8cbcbcd3",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "0198dd0d53afdeed595b7f09ba45402b033487eafe72e7294784f7125f112bc5",
+ "sceneKey": "de5803373715e435f6dcc3ea090185b86b4464e51f1b9c7e7ebc12b248245483",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Y una fuente que se calla, mísin logs, es tan sospechosa como una alerta.",
- "bytes": 31248,
- "durationMs": 5208.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[ominous] Y una fuente que se calla, missing logs, es tan sospechosa como una alerta.",
+ "bytes": 64512,
+ "bitrateKbps": 96,
+ "durationMs": 5320,
+ "clipInSceneMs": [
+  5850,
+  11170
+ ],
+ "requestId": "ytHdaU1iGNfMX7wFuOr2",
  "words": [
   {
    "text": "Y",
-   "offsetMs": 100.0,
-   "durationMs": 87.5
+   "offsetMs": 60,
+   "durationMs": 10
   },
   {
    "text": "una",
-   "offsetMs": 212.5,
-   "durationMs": 200.0
+   "offsetMs": 130,
+   "durationMs": 180
   },
   {
    "text": "fuente",
-   "offsetMs": 412.5,
-   "durationMs": 387.5
+   "offsetMs": 363,
+   "durationMs": 267
   },
   {
    "text": "que",
-   "offsetMs": 800.0,
-   "durationMs": 112.5
+   "offsetMs": 670,
+   "durationMs": 120
   },
   {
    "text": "se",
-   "offsetMs": 912.5,
-   "durationMs": 137.5
+   "offsetMs": 843,
+   "durationMs": 107
   },
   {
-   "text": "calla",
-   "offsetMs": 1050.0,
-   "durationMs": 337.5
+   "text": "calla,",
+   "offsetMs": 998,
+   "durationMs": 352
   },
   {
-   "text": "mísin",
-   "offsetMs": 1437.5,
-   "durationMs": 387.5
+   "text": "missing",
+   "offsetMs": 1440,
+   "durationMs": 630
   },
   {
-   "text": "logs",
-   "offsetMs": 1825.0,
-   "durationMs": 387.5
+   "text": "logs,",
+   "offsetMs": 2166,
+   "durationMs": 624
   },
   {
    "text": "es",
-   "offsetMs": 2300.0,
-   "durationMs": 112.5
+   "offsetMs": 2870,
+   "durationMs": 160
   },
   {
    "text": "tan",
-   "offsetMs": 2512.5,
-   "durationMs": 175.0
+   "offsetMs": 3070,
+   "durationMs": 120
   },
   {
    "text": "sospechosa",
-   "offsetMs": 2700.0,
-   "durationMs": 600.0
+   "offsetMs": 3250,
+   "durationMs": 660
   },
   {
    "text": "como",
-   "offsetMs": 3300.0,
-   "durationMs": 275.0
+   "offsetMs": 3958,
+   "durationMs": 192
   },
   {
    "text": "una",
-   "offsetMs": 3575.0,
-   "durationMs": 187.5
+   "offsetMs": 4190,
+   "durationMs": 120
   },
   {
-   "text": "alerta",
-   "offsetMs": 3762.5,
-   "durationMs": 475.0
+   "text": "alerta.",
+   "offsetMs": 4377,
+   "durationMs": 893
   }
  ]
 }

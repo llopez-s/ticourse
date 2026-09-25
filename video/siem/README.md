@@ -40,19 +40,49 @@ Dos modos:
 | `{needle}una` | el cue `needle` se dispara al empezar la palabra «una» (al final del segmento si no hay palabra detrás) |
 | `[6.000\|seis mil]` | se muestra «6.000», la voz dice «seis mil»; ambos lados pueden tener varias palabras |
 | `{38gb}[38 GB\|treinta y ocho gigabytes]` | un cue puede ir delante de un grupo |
+| `<tired> En Halden…` | dirección solo para la voz (etiqueta de audio de ElevenLabs v3, se envía como `[tired]`); nunca se muestra ni se cronometra; edge-tts la ignora |
 
 Las marcas no se anidan. El léxico se aplica a palabras sueltas **fuera** de los grupos, ignorando la
 puntuación que las rodea (`«NetFlow»,` -> `«net flou»,`). Cada `requiredCues` de una escena debe aparecer
 exactamente una vez en sus segmentos. `build-timeline` avisa de las palabras que la voz podría leer mal
 (cifras, identificadores, siglas fuera del léxico).
 
+## Voz: ElevenLabs (actual) o edge-tts
+
+El proveedor lo decide `narration.json` → `"voice"`:
+
+- `"elevenlabs/eleven_v3/<voice_id>"` (actual: **Sarah**, `EXAVITQu4vr4xnSDxMaL`). Usa
+  `scripts/tts-elevenlabs.mjs`: **una petición por escena** (v3 no admite *request stitching*, así la
+  entonación y la emoción son continuas), con marcas de tiempo por carácter
+  (`/v1/text-to-speech/{voice_id}/with-timestamps`, PCM 24 kHz). La toma se corta en los silencios en un
+  clip por segmento (MP3 CBR 96 kbps); si un segmento empieza con una etiqueta audible (`<sighs>`,
+  `<laughs>`…) se queda con hasta 900 ms del silencio anterior para no cortarla. Las tomas completas se
+  guardan en `out/eleven-takes/` para escucharlas. Ajustes en `narration.json` → `"elevenlabs"`
+  (`stability` 0 / 0.5 / 1 = Creative / Natural / Robust, `seed`…) y léxico propio en
+  `lexicon.elevenlabs.json` (solo siglas; los términos en inglés se leen tal cual). La caché es por escena:
+  cambiar una frase vuelve a sintetizar solo su escena (~300–500 caracteres).
+- `"es-ES-ElviraNeural"` (edge-tts, gratis, sin clave): `prepare-tts.mjs` + `tts.py` con `lexicon.json`.
+
+**Clave de ElevenLabs:** `ELEVENLABS_API_KEY` en `.env.local` en la raíz del repo (ignorado por git; el
+script lo lee solo y nunca lo imprime). Basta una clave con permiso de *Text to Speech* y lectura de voces.
+**Plan:** el gratuito solo permite voces predefinidas por API (las de la biblioteca, como las de acento de
+España, piden Starter o superior) y no incluye licencia comercial; por eso el vídeo acredita «Voz:
+ElevenLabs» en la tarjeta final y la transcripción. Una pasada completa son ~5.100 caracteres (créditos).
+
+```bash
+# Audición de voces (una frase con emociones por voz, en .audition/)
+node video/siem/scripts/tts-elevenlabs.mjs --audition --voices <voice_id>,<voice_id>
+# Síntesis (solo escenas cambiadas; --scene s06-fatigue --force para rehacer una) + timeline
+node video/siem/scripts/audio.mjs
+```
+
 ## Requisitos
 
 - Node (el del repo; en Git Bash: `eval "$(fnm env)"`) y `npm install` hecho en la raíz del repo.
   Remotion trae su propio ffmpeg/ffprobe; no hace falta instalarlos.
-- Python 3.10+ con `edge-tts` (`python -m pip install edge-tts`, probado con 7.2.8). Otra ruta de Python:
+- Solo para edge-tts: Python 3.10+ con `edge-tts` (`python -m pip install edge-tts`, probado con 7.2.8). Otra ruta de Python:
   variable `PYTHON`.
-- Red **solo** para sintetizar la voz (`tts.py`). Lo demás funciona sin conexión; los clips ya generados
+- Red **solo** para sintetizar la voz (`tts-elevenlabs.mjs` o `tts.py`). Lo demás funciona sin conexión; los clips ya generados
   se reutilizan (caché por hash de voz + velocidad + tono + texto hablado).
 
 ## Comandos (desde la raíz del repo, en este orden)

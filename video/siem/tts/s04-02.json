@@ -1,81 +1,98 @@
 {
- "key": "2516d11f182867353cb37b6f36f78607ec04e0a99ccf10d59cf6cfbbd7daca96",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "388af34acd06d4b88173c140e81368b4767a530bd0b5649e001f25ac1ea5ac27",
+ "sceneKey": "45e349be0f79b2f4707e9cd24624154d5ba0f751f5981aadb2a40fc5e520992a",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
  "spoken": "También de dónde viene la i pe y si figura en inteligencia de amenazas.",
- "bytes": 27936,
- "durationMs": 4656.0,
+ "bytes": 55872,
+ "bitrateKbps": 96,
+ "durationMs": 4590,
+ "clipInSceneMs": [
+  8350,
+  12940
+ ],
+ "requestId": "FXf3VaiuEhRrQYwer0wL",
  "words": [
   {
    "text": "También",
-   "offsetMs": 100.0,
-   "durationMs": 400.0
+   "offsetMs": 30,
+   "durationMs": 420
   },
   {
    "text": "de",
-   "offsetMs": 500.0,
-   "durationMs": 112.5
+   "offsetMs": 477,
+   "durationMs": 53
   },
   {
    "text": "dónde",
-   "offsetMs": 612.5,
-   "durationMs": 287.5
+   "offsetMs": 583,
+   "durationMs": 267
   },
   {
    "text": "viene",
-   "offsetMs": 900.0,
-   "durationMs": 262.5
+   "offsetMs": 890,
+   "durationMs": 200
   },
   {
    "text": "la",
-   "offsetMs": 1162.5,
-   "durationMs": 137.5
+   "offsetMs": 1117,
+   "durationMs": 53
   },
   {
    "text": "i",
-   "offsetMs": 1312.5,
-   "durationMs": 75.0
+   "offsetMs": 1250,
+   "durationMs": 80
   },
   {
    "text": "pe",
-   "offsetMs": 1387.5,
-   "durationMs": 187.5
+   "offsetMs": 1410,
+   "durationMs": 160
   },
   {
    "text": "y",
-   "offsetMs": 1587.5,
-   "durationMs": 62.5
+   "offsetMs": 1770,
+   "durationMs": 200
   },
   {
    "text": "si",
-   "offsetMs": 1650.0,
-   "durationMs": 150.0
+   "offsetMs": 2023,
+   "durationMs": 107
   },
   {
    "text": "figura",
-   "offsetMs": 1800.0,
-   "durationMs": 375.0
+   "offsetMs": 2187,
+   "durationMs": 343
   },
   {
    "text": "en",
-   "offsetMs": 2175.0,
-   "durationMs": 112.5
+   "offsetMs": 2583,
+   "durationMs": 107
   },
   {
    "text": "inteligencia",
-   "offsetMs": 2287.5,
-   "durationMs": 687.5
+   "offsetMs": 2740,
+   "durationMs": 670
   },
   {
    "text": "de",
-   "offsetMs": 2975.0,
-   "durationMs": 87.5
+   "offsetMs": 3437,
+   "durationMs": 53
   },
   {
-   "text": "amenazas",
-   "offsetMs": 3062.5,
-   "durationMs": 600.0
+   "text": "amenazas.",
+   "offsetMs": 3522,
+   "durationMs": 768
   }
  ]
 }

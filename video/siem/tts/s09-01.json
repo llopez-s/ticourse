@@ -1,96 +1,113 @@
 {
- "key": "7e67a01028f307313b0b61733a95ee3ea34348ad012095038714c1c411cbf50a",
- "voice": "es-ES-ElviraNeural",
+ "provider": "elevenlabs",
+ "key": "fba5b8503e18c720b60a6373ccee7f2a8c5e67cee399b3d409aa0ca24b3464fd",
+ "sceneKey": "0f54b704630a806a015e31fc7530a2972148a212bc9f5aa47251af643022573c",
+ "voice": "elevenlabs/eleven_v3/EXAVITQu4vr4xnSDxMaL",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "¿Y si fuera una copia legítima? La analista pivota: revisa ese servidor desde la una y media.",
- "bytes": 44496,
- "durationMs": 7416.0,
+ "model": "eleven_v3",
+ "settings": {
+  "stability": 0.5,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "use_speaker_boost": true,
+  "speed": 1,
+  "seed": 20260925
+ },
+ "spoken": "[curious] ¿Y si fuera una copia legítima? La analista pivota: revisa ese servidor desde la una y media.",
+ "bytes": 79776,
+ "bitrateKbps": 96,
+ "durationMs": 6580,
+ "clipInSceneMs": [
+  40,
+  6620
+ ],
+ "requestId": "e4u3OR3g3nmCYXcjM75Q",
  "words": [
   {
-   "text": "Y",
-   "offsetMs": 100.0,
-   "durationMs": 50.0
+   "text": "¿Y",
+   "offsetMs": 60,
+   "durationMs": 30
   },
   {
    "text": "si",
-   "offsetMs": 200.0,
-   "durationMs": 162.5
+   "offsetMs": 100,
+   "durationMs": 73
   },
   {
    "text": "fuera",
-   "offsetMs": 362.5,
-   "durationMs": 362.5
+   "offsetMs": 227,
+   "durationMs": 266
   },
   {
    "text": "una",
-   "offsetMs": 725.0,
-   "durationMs": 187.5
+   "offsetMs": 547,
+   "durationMs": 133
   },
   {
    "text": "copia",
-   "offsetMs": 912.5,
-   "durationMs": 362.5
+   "offsetMs": 720,
+   "durationMs": 280
   },
   {
-   "text": "legítima",
-   "offsetMs": 1275.0,
-   "durationMs": 537.5
+   "text": "legítima?",
+   "offsetMs": 1040,
+   "durationMs": 600
   },
   {
    "text": "La",
-   "offsetMs": 2787.5,
-   "durationMs": 150.0
+   "offsetMs": 1720,
+   "durationMs": 293
   },
   {
    "text": "analista",
-   "offsetMs": 2937.5,
-   "durationMs": 562.5
+   "offsetMs": 2227,
+   "durationMs": 573
   },
   {
-   "text": "pivota",
-   "offsetMs": 3500.0,
-   "durationMs": 462.5
+   "text": "pivota:",
+   "offsetMs": 2860,
+   "durationMs": 513
   },
   {
    "text": "revisa",
-   "offsetMs": 4250.0,
-   "durationMs": 462.5
+   "offsetMs": 3480,
+   "durationMs": 667
   },
   {
    "text": "ese",
-   "offsetMs": 4712.5,
-   "durationMs": 212.5
+   "offsetMs": 4280,
+   "durationMs": 180
   },
   {
    "text": "servidor",
-   "offsetMs": 4925.0,
-   "durationMs": 487.5
+   "offsetMs": 4490,
+   "durationMs": 510
   },
   {
    "text": "desde",
-   "offsetMs": 5412.5,
-   "durationMs": 262.5
+   "offsetMs": 5053,
+   "durationMs": 267
   },
   {
    "text": "la",
-   "offsetMs": 5675.0,
-   "durationMs": 112.5
+   "offsetMs": 5347,
+   "durationMs": 53
   },
   {
    "text": "una",
-   "offsetMs": 5787.5,
-   "durationMs": 225.0
+   "offsetMs": 5460,
+   "durationMs": 180
   },
   {
    "text": "y",
-   "offsetMs": 6012.5,
-   "durationMs": 75.0
+   "offsetMs": 5680,
+   "durationMs": 40
   },
   {
-   "text": "media",
-   "offsetMs": 6087.5,
-   "durationMs": 350.0
+   "text": "media.",
+   "offsetMs": 5787,
+   "durationMs": 493
   }
  ]
 }
