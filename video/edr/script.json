@@ -1,0 +1,84 @@
+{
+  "segments": [
+    {
+      "id": "01-intro",
+      "scene": "intro",
+      "text": "En Puerto de Halden, aparece una alerta en el portátil de Lucía, del equipo de operaciones."
+    },
+    {
+      "id": "02-definition",
+      "scene": "intro",
+      "text": "El Blue Team abre el EDR: una herramienta para detectar, investigar y responder a amenazas en equipos finales."
+    },
+    {
+      "id": "03-sensor",
+      "scene": "telemetry",
+      "text": "Un sensor instalado en cada equipo incorporado observa la actividad y envía telemetría a una consola central."
+    },
+    {
+      "id": "04-signals",
+      "scene": "telemetry",
+      "text": "Relaciona procesos, cambios en archivos y conexiones de red para ayudar a reconstruir lo ocurrido."
+    },
+    {
+      "id": "05-detection",
+      "scene": "alert",
+      "text": "Aquí, una aplicación ofimática inició un intérprete de comandos y luego intentó contactar con un dominio inusual."
+    },
+    {
+      "id": "06-uncertainty",
+      "scene": "alert",
+      "text": "La alerta señala un comportamiento sospechoso; por sí sola no demuestra un compromiso. Primero revisamos contexto y gravedad."
+    },
+    {
+      "id": "07-tree",
+      "scene": "triage",
+      "text": "En el árbol de procesos seguimos la secuencia: documento, aplicación, proceso hijo y conexión."
+    },
+    {
+      "id": "08-context",
+      "scene": "triage",
+      "text": "Comprobamos usuario, hora, ruta del archivo, firma del programa y acciones previas del sensor."
+    },
+    {
+      "id": "09-evidence",
+      "scene": "triage",
+      "text": "Lucía confirma que no esperaba esa ejecución. La secuencia refuerza la sospecha y registramos las evidencias."
+    },
+    {
+      "id": "10-hunt",
+      "scene": "scope",
+      "text": "Buscamos el mismo archivo, dominio y patrón de procesos en los demás equipos incorporados."
+    },
+    {
+      "id": "11-scope",
+      "scene": "scope",
+      "text": "Encontramos actividad semejante en dos estaciones. El alcance ya no parece limitado al portátil de Lucía."
+    },
+    {
+      "id": "12-isolate",
+      "scene": "contain",
+      "text": "Con esa evidencia y según el procedimiento, aislamos los equipos afectados para cortar comunicaciones mientras investigamos."
+    },
+    {
+      "id": "13-tradeoff",
+      "scene": "contain",
+      "text": "El aislamiento puede interrumpir trabajo legítimo. Documentamos motivo, hora y responsable de la decisión."
+    },
+    {
+      "id": "14-remediate",
+      "scene": "close",
+      "text": "Después retiramos el artefacto, corregimos la causa de entrada y verificamos que el patrón no reaparece."
+    },
+    {
+      "id": "15-learnings",
+      "scene": "close",
+      "text": "Cerramos el incidente con cronología, acciones y lecciones para mejorar las reglas y la respuesta futura."
+    },
+    {
+      "id": "16-limit",
+      "scene": "close",
+      "text": "Recuerda: el EDR depende de equipos incorporados y sensores operativos. Correlaciona sus hallazgos con otras fuentes."
+    }
+  ]
+}

@@ -105,6 +105,14 @@ const sp4m7: Module = {
       md: 'Las últimas capacidades del objetivo se distinguen mejor por la pregunta que contestan. El **file integrity monitoring (FIM)** calcula un hash de referencia de los archivos críticos —configuración, binarios del sistema, contenido web— y avisa cuando cambian: responde a **«¿alguien ha modificado esto y cuándo?»**, que es justo lo que hace falta tras una intrusión o para demostrar cumplimiento. El **data loss prevention (DLP)** inspecciona el dato en movimiento, en uso y en reposo buscando patrones o etiquetas —números de contenedor, datos personales, el contrato de practicaje— y bloquea o registra la salida por correo, USB o nube: responde a **«¿se está yendo información que no debería salir?»**. El **network access control (NAC)** decide **si un dispositivo puede siquiera estar en la red**, comprobando identidad y estado de salud (parches, agente, cifrado) antes de conceder acceso, y derivando a una VLAN de cuarentena lo que no cumple. El **EDR** (*endpoint detection and response*) vigila el comportamiento del endpoint —procesos, ejecuciones, persistencia—, permite **aislar el equipo** y deja la telemetría para la investigación; el **XDR** es la evolución que **correlaciona** esa telemetría con la del correo, la red, la identidad y la nube para reconstruir una cadena que en un solo endpoint parecería inocua. Y el **user behavior analytics (UBA)** construye una línea base **de la persona**, no de la máquina: descargas masivas a las tres de la mañana, un acceso desde dos países en veinte minutos o una cuenta que empieza a tocar sistemas que nunca usó.',
     },
     {
+      t: 'video',
+      title: 'EDR en acción: de la alerta a la respuesta',
+      src: 'videos/edr-blue-team.mp4',
+      poster: 'videos/edr-blue-team-poster.png',
+      transcript: 'videos/edr-blue-team-transcript.txt',
+      captions: 'videos/edr-blue-team-captions.vtt',
+    },
+    {
       t: 'table',
       headers: ['Lo que necesitas conseguir', 'Capacidad esperada', 'Dónde se sitúa'],
       rows: [

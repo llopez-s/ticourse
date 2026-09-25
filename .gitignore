@@ -1,5 +1,16 @@
 node_modules
 dist
+.npm-cache/
+.chrome-test/
+.chrome-node-test/
+video/edr/elevenlabs-samples/
+video/edr/elevenlabs-master/
+video/edr/elevenlabs-clips/
+video/edr/elevenlabs-segmented/
+video/edr/elevenlabs-preview.mp4
+video/edr/preview-frames/
+# EDR voice clips are Remotion inputs; anything under public/ ships to Pages
+public/videos/edr/voice/
 *.local
 .claude/settings.local.json
 .DS_Store

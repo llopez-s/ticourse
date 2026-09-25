@@ -8,7 +8,12 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "video:audio": "node video/edr/generate-audio.mjs",
+    "video:audio:elevenlabs": "node video/edr/generate-elevenlabs.mjs",
+    "video:audio:import": "node video/edr/import-audio.mjs",
+    "video:check": "tsc --noEmit -p video/tsconfig.json",
+    "video:render": "npm run video:check && node video/edr/render.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",
@@ -17,10 +22,12 @@
     "zustand": "^5.0.5"
   },
   "devDependencies": {
+    "@remotion/cli": "4.0.527",
     "@tailwindcss/vite": "^4.1.10",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
+    "remotion": "4.0.527",
     "tailwindcss": "^4.1.10",
     "typescript": "~5.8.3",
     "vite": "^7.0.0",

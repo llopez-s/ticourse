@@ -1,0 +1,41 @@
+{
+  "voice": "es-ES-ElviraNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "{flood}Cada día llegan [6.000|seis mil] avisos al SOC de la Autoridad Portuaria de Halden. Solo {needle}uno importa de verdad.",
+      "pauseAfterMs": 600,
+      "exam": { "objective": "4.4", "text": "Un SIEM agrega, normaliza, correlaciona y alerta", "at": "needle", "holdSec": 5 }
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "Para encontrarlo, el equipo azul usa un SIEM. {title}Veamos cómo convierte el ruido en evidencia."
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-collect",
+      "text": "{src-systems}Primero recogemos registros de servidores, estaciones y cortafuegos, también por {m-netflow}«NetFlow», los metadatos de cada conexión."
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-collect",
+      "text": "Todo con la hora sincronizada por {ntp}NTP, porque sin un reloj común no hay línea temporal fiable.",
+      "pauseAfterMs": 500,
+      "think": { "q": "Con NetFlow, ¿sabes qué datos salieron?", "holdMs": 2200 }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-normalize",
+      "text": "Cada fuente escribe a su manera: {raw}una línea en bruto no se parece a otra de otro fabricante."
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-normalize",
+      "text": "El SIEM extrae los campos y guarda la hora en {utc}UTC, igual para todos, a las [01:52|la una y cincuenta y dos].{end}"
+    }
+  ]
+}
