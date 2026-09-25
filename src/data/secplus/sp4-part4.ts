@@ -106,7 +106,7 @@ const sp4m7: Module = {
     },
     {
       t: 'video',
-      title: 'EDR en acción: de la alerta a la respuesta',
+      title: 'EDR en acción: de la alerta a la respuesta · narración de elevenlabs.io',
       src: 'videos/edr-blue-team.mp4',
       poster: 'videos/edr-blue-team-poster.png',
       transcript: 'videos/edr-blue-team-transcript.txt',

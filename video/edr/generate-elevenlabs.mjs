@@ -1,7 +1,7 @@
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
-import { mkdir, readFile, readdir, unlink, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, rename, unlink, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 
@@ -312,12 +312,32 @@ async function generateContinuous() {
     }
     const audio = Buffer.from(response.audio_base64, 'base64');
     if (audio.length < 10_000) throw new Error('The narration audio is unexpectedly short');
-    await writeFile(masterPath, audio);
     if (!response.alignment?.characters?.length) {
-      throw new Error('ElevenLabs returned no character timing. The full MP3 was saved; use --segments to generate separate clips.');
+      const unalignedPath = join(masterDir, `full-narration-${signature.slice(0, 12)}.unaligned.mp3`);
+      await writeFile(unalignedPath, audio);
+      throw new Error(`ElevenLabs returned no character timing. The full MP3 was saved at ${unalignedPath}; use --segments to generate separate clips.`);
     }
-    await writeFile(masterAlignmentPath, `${JSON.stringify(response.alignment)}\n`);
-    await writeFile(metadataPath, `${JSON.stringify({ signature, voiceId, model, prompt }, null, 2)}\n`);
+    const stagingId = randomUUID();
+    const stagedMaster = join(masterDir, `full-narration.${stagingId}.mp3`);
+    const stagedAlignment = join(masterDir, `full-narration.${stagingId}.alignment.json`);
+    const stagedMetadata = join(masterDir, `full-narration.${stagingId}.metadata.json`);
+    try {
+      await Promise.all([
+        writeFile(stagedMaster, audio),
+        writeFile(stagedAlignment, `${JSON.stringify(response.alignment)}\n`),
+        writeFile(stagedMetadata, `${JSON.stringify({ signature, voiceId, model, prompt }, null, 2)}\n`),
+      ]);
+      // Metadata is the cache's commit marker. Invalidate it before replacing
+      // either payload so an interrupted write cannot mix old and new data.
+      if (existsSync(metadataPath)) await unlink(metadataPath);
+      await rename(stagedMaster, masterPath);
+      await rename(stagedAlignment, masterAlignmentPath);
+      await rename(stagedMetadata, metadataPath);
+    } finally {
+      await Promise.all([stagedMaster, stagedAlignment, stagedMetadata].map(async (path) => {
+        if (existsSync(path)) await unlink(path);
+      }));
+    }
   } else {
     console.log('Reusing the continuous narration and its character timing.');
   }
@@ -382,13 +402,21 @@ if (!segmentFilter && !separateClips) {
   process.exit(0);
 }
 
-const targetDir = separateClips ? join(currentDir, 'elevenlabs-segmented') : sampleDir;
+const targetDir = join(currentDir, 'elevenlabs-segmented');
 await mkdir(targetDir, { recursive: true });
 let generated = 0;
 for (const segment of selected) {
   const index = segments.findIndex(({ id }) => id === segment.id);
   const prompt = `${directions[segment.id] ? `${directions[segment.id]} ` : ''}${segment.text}`;
-  const signature = createHash('sha256').update(JSON.stringify({ voiceId, model, prompt })).digest('hex');
+  const body = {
+    text: prompt,
+    model_id: model,
+    language_code: 'es',
+    voice_settings: { stability: 0.5 },
+    ...(index > 0 ? { previous_text: segments[index - 1].text } : {}),
+    ...(index < segments.length - 1 ? { next_text: segments[index + 1].text } : {}),
+  };
+  const signature = createHash('sha256').update(JSON.stringify({ voiceId, body })).digest('hex');
   const mp3Path = join(targetDir, `${segment.id}.mp3`);
   const alignmentPath = join(targetDir, `${segment.id}.alignment.json`);
   const metadataPath = join(targetDir, `${segment.id}.metadata.json`);
@@ -401,14 +429,6 @@ for (const segment of selected) {
     }
   }
 
-  const body = {
-    text: prompt,
-    model_id: model,
-    language_code: 'es',
-    voice_settings: { stability: 0.5 },
-    ...(index > 0 ? { previous_text: segments[index - 1].text } : {}),
-    ...(index < segments.length - 1 ? { next_text: segments[index + 1].text } : {}),
-  };
   console.log(`${segment.id}: generating...`);
   const response = await request(`/v1/text-to-speech/${voiceId}/with-timestamps?output_format=mp3_44100_128`, {
     method: 'POST',

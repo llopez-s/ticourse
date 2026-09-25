@@ -169,7 +169,7 @@ export function makeCaptions(segments, alignments) {
       cueStart = end;
     }
   }
-  return `${cues.join('\n')}\n`;
+  return `${cues.join('\n').trimEnd()}\n`;
 }
 
 export async function writeDerivedAssets({ audioDir, publicAudioPrefix, alignments, sourceLabel, pauseSeconds = 0.4 }) {

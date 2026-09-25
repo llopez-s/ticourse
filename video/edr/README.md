@@ -4,9 +4,14 @@ Vídeo educativo generado con JavaScript/React y Remotion. La historia, la voz y
 
 ## Regenerar
 
-1. Edita `script.json` si cambia el guion. Mantén los identificadores de escena (`intro`, `telemetry`, `alert`, `triage`, `scope`, `contain`, `close`).
-2. En Windows con PowerShell 7 y la voz española **Microsoft Laura**, ejecuta `npm run video:audio`. Actualiza los WAV, la línea de tiempo, la transcripción y los subtítulos WebVTT.
-3. Ejecuta `npm run video:render`. Comprueba los tipos y genera `public/videos/edr-blue-team.mp4` y el póster. Los WAV ya incluidos permiten volver a renderizar sin sintetizar la voz.
+1. Instala las dependencias con `npm ci` si trabajas desde una copia nueva. La fuente Bella está versionada en `video/edr/source/`: MP3 comprimido, alineación por carácter y hashes de integridad. No hace falta una clave de API para reconstruirla.
+2. Ejecuta `npm run video:render`. Si faltan los WAV locales, prepara la fuente Bella automáticamente sin conectarse a ElevenLabs. Comprueba los tipos y genera `public/videos/edr-blue-team.mp4` y el póster.
+
+`npm run video:audio:prepare` permite preparar la voz de forma explícita: verifica los hashes, corta la locución en los 16 segmentos del guion, normaliza los WAV y actualiza `timeline.json`, la transcripción y los subtítulos WebVTT. Los WAV generados están ignorados por Git.
+
+Si cambias `script.json`, mantén los identificadores de escena (`intro`, `telemetry`, `alert`, `triage`, `scope`, `contain`, `close`). El preparador rechazará un guion distinto del que se locutó y alineó. Genera o importa una locución nueva antes de renderizar ese cambio.
+
+En Windows con PowerShell 7 también puedes ejecutar `npm run video:audio` para sintetizar la voz española **Microsoft Laura** como alternativa local. Este comando vuelve a activar sus WAV y regenera la línea de tiempo y los subtítulos.
 
 ### Sustituir la narración
 
@@ -16,7 +21,7 @@ El importador añade por defecto 0,4 s de silencio entre clips. Si los clips pro
 
 Si el proveedor entrega marcas temporales por carácter, guarda junto a cada clip un archivo como `01-intro.alignment.json`. Se admite el objeto de alineación de ElevenLabs, con `characters`, `character_start_times_seconds` y `character_end_times_seconds`, directamente o bajo la clave `alignment`. El texto reconstruido debe coincidir con `script.json`; si no hay marcas, los tiempos de cada frase de subtítulos se estiman por longitud. Comprueba el resultado escuchando el video antes de publicarlo.
 
-Los clips importados se guardan en una carpeta con versión bajo `public/videos/edr/voice/natural/`; los WAV originales de Laura permanecen intactos. `npm run video:audio` vuelve a activar Laura si hace falta. Nunca pongas claves de API en el repositorio.
+Los clips importados se guardan en una carpeta con versión bajo `public/videos/edr/voice/natural/`; los WAV originales de Laura permanecen intactos. `npm run video:audio` vuelve a activar Laura si hace falta. Para recuperar Bella, ejecuta `npm run video:audio:prepare`. Nunca pongas claves de API en el repositorio.
 
 ### Flujo con ElevenLabs
 
@@ -32,7 +37,7 @@ El modo `--segments` genera cada frase por separado si la locución continua no 
 
 En el plan gratuito, ElevenLabs permite usar voces prediseñadas por API, pero bloquea las voces de la biblioteca y Voice Design por API. Para esas voces hay que usar un plan que habilite la API o generar el MP3 desde la interfaz web e importarlo. El generador ofrece `--design` y `--create=N` para diseñar y guardar una voz propia cuando la cuenta tenga acceso a Voice Design por API. La clave permanece solo en el entorno o `.env.local` y no debe incorporarse al código.
 
-El [plan gratuito de ElevenLabs](https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform) exige uso no comercial y atribución a `elevenlabs.io` o `11.ai` en el título al publicar. Para un curso comercial, genera el audio durante una suscripción con licencia comercial; contratarla después no cambia los derechos del audio generado antes.
+La fuente Bella versionada se generó con el plan gratuito de ElevenLabs para el uso no comercial de este curso. El [plan gratuito de ElevenLabs](https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform) exige atribución a `elevenlabs.io` o `11.ai` en el título al publicar. Conserva ese crédito tanto en la lección como en el MP4 descargable. Para un curso comercial, genera el audio durante una suscripción con licencia comercial; contratarla después no cambia los derechos del audio generado antes.
 
 En Windows, cierra la lección si el video está abierto antes de volver a renderizar: el reproductor puede mantener bloqueado el MP4 anterior.
 

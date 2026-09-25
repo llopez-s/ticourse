@@ -541,7 +541,10 @@ export function EDRVideo() {
           <Dot color={C.cyan} size={13} />
           INTELFORGE <span style={{ color: C.cyan }}>//</span> BLUE TEAM
         </div>
-        <div style={{ ...label, fontSize: 14 }}>SIMULACIÓN EDUCATIVA</div>
+        <div style={{ textAlign: 'right', lineHeight: 1.35 }}>
+          <div style={{ ...label, fontSize: 14 }}>SIMULACIÓN EDUCATIVA</div>
+          <div style={{ color: C.muted, fontSize: 18, fontWeight: 700 }}>Voz: elevenlabs.io</div>
+        </div>
       </div>
 
       <div style={{ position: 'absolute', top: 80, left: 55, right: 55, display: 'flex', alignItems: 'end', justifyContent: 'space-between' }}>
