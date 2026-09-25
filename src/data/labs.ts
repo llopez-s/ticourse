@@ -291,12 +291,12 @@ const GCTI_CLASSIFY: Record<string, ClassifyData> = {
         why: 'Identificadores del operador/registrante apuntan al vértice Adversary.',
       },
       {
-        text: 'Custom loader with PDB path C:\\Users\\kaz\\dev\\ldr\\ldr.pdb',
+        text: 'Custom loader with PDB path D:\\proj\\cicada\\loader\\Release\\ldr.pdb',
         answer: 'cap',
         why: 'El malware y sus artefactos de desarrollo son Capability.',
       },
       {
-        text: 'update-svc-cdn.com and its dedicated VPS at 141.98.6.10',
+        text: 'update-svc-cdn.com and the self-signed TLS certificate it presents',
         answer: 'inf',
         why: 'Dominios y servidores que conectan capability con víctima: Infrastructure.',
       },
@@ -669,7 +669,7 @@ export const PIVOT: {
     },
     cert1: {
       id: 'cert1',
-      label: 'Cert TLS autofirmado SHA1 9f:3a:c1…',
+      label: 'Cert TLS autofirmado SHA1 d4:7e:02…',
       type: 'cert',
       verdict: 'lead',
       note: 'Certificado autofirmado: material del actor. Buscar este fingerprint en escaneos de Internet revela dónde más se usa.',
@@ -769,7 +769,7 @@ export const YARA: {
   strings: [
     {
       id: 's1',
-      text: 'C:\\Users\\kaz\\dev\\ldr\\bin\\ldr.pdb',
+      text: 'D:\\proj\\cicada\\loader\\Release\\ldr.pdb',
       kind: 'ascii',
       rarity: 'rare',
       note: 'PDB path del entorno del autor — raro y muy específico (solo variante 1).',

@@ -552,7 +552,7 @@ level: high`,
       },
       {
         t: 'p',
-        md: 'Detalle elegante: el actor renombra `certutil.exe` a `winhlp.exe`, pero **`OriginalFileName` viene del PE header**, no del nombre en disco — renombrar no lo cambia. La regla selecciona por identidad real del binario y excluye el uso con su nombre legítimo. Esto es detección **de comportamiento**: sobrevive a que el actor cambie dominios, hashes y nombres de fichero.',
+        md: 'Detalle elegante: el actor renombra `certutil.exe` a `wcssvc.exe`, pero **`OriginalFileName` viene del PE header**, no del nombre en disco — renombrar no lo cambia. La regla selecciona por identidad real del binario y excluye el uso con su nombre legítimo. Esto es detección **de comportamiento**: sobrevive a que el actor cambie dominios, hashes y nombres de fichero.',
       },
       {
         t: 'table',
@@ -783,7 +783,7 @@ level: high`,
         id: 's5m3q9',
         domain: 'Dissemination',
         prompt:
-          'A Sigma rule selects on OriginalFileName: CertUtil.exe. The adversary renames the binary to winhlp.exe before use. The rule:',
+          'A Sigma rule selects on OriginalFileName: CertUtil.exe. The adversary renames the binary to wcssvc.exe before use. The rule:',
         choices: [
           'Stops matching — the filename changed',
           'Still matches — OriginalFileName comes from the PE header, which renaming on disk does not alter',
