@@ -1,0 +1,384 @@
+WEBVTT
+
+1
+00:00:01.500 --> 00:00:04.133
+Madrugada en la Autoridad
+Portuaria de Halden:
+
+2
+00:00:04.133 --> 00:00:08.300
+al SOC llegan 6.000 alertas
+al día, y solo una importa.
+
+3
+00:00:08.300 --> 00:00:12.467
+Encontrarla es trabajo del equipo
+defensivo, el Blue Team, con su SIEM:
+
+4
+00:00:12.467 --> 00:00:15.633
+Security Information and Event Management.
+
+5
+00:00:15.633 --> 00:00:19.500
+Une SIM, que guarda, busca
+e informa a largo plazo, y SEM,
+
+6
+00:00:19.500 --> 00:00:22.067
+que vigila eventos en tiempo real.
+
+7
+00:00:22.067 --> 00:00:25.900
+Al fundirse, su trabajo cabe
+en cuatro verbos: agregar, normalizar,
+
+8
+00:00:25.900 --> 00:00:28.100
+correlacionar y alertar.
+
+9
+00:00:29.200 --> 00:00:32.567
+Primero, recoger: log aggregation.
+
+10
+00:00:32.633 --> 00:00:36.333
+Los sistemas cuentan quién entró;
+las aplicaciones, qué hizo;
+
+11
+00:00:36.333 --> 00:00:39.000
+la infraestructura, por dónde se movió.
+
+12
+00:00:39.000 --> 00:00:44.200
+Servidores y estaciones envían por agente;
+firewalls y switches, por syslog; la nube,
+
+13
+00:00:44.200 --> 00:00:47.500
+por API; y los routers exportan NetFlow.
+
+14
+00:00:47.500 --> 00:00:52.067
+Todo converge en un punto central,
+con la hora sincronizada por NTP.
+
+15
+00:00:52.067 --> 00:00:57.533
+Si un intruso borra el registro local, la
+evidencia sobrevive en la copia central.
+
+16
+00:00:58.633 --> 00:01:02.733
+Después, normalizar, porque
+cada fuente habla su propio dialecto.
+
+17
+00:01:02.733 --> 00:01:06.733
+El SIEM parsea cada línea:
+extrae sus campos.
+
+18
+00:01:06.800 --> 00:01:09.767
+Y los normaliza a un esquema
+común, donde usuario,
+
+19
+00:01:09.767 --> 00:01:12.567
+IP de origen y acción se llaman igual.
+
+20
+00:01:12.567 --> 00:01:18.400
+También la hora: las 10:14 de Halden
+se guardan como las 09:14 UTC.
+
+21
+00:01:19.500 --> 00:01:23.233
+Antes de correlacionar, el SIEM
+enriquece: añade qué activo es,
+
+22
+00:01:23.233 --> 00:01:25.733
+cuánto importa y quién es el usuario.
+
+23
+00:01:25.733 --> 00:01:30.033
+También de dónde viene la IP
+y si figura en inteligencia de amenazas.
+
+24
+00:01:30.033 --> 00:01:32.000
+El contexto decide la gravedad:
+
+25
+00:01:32.000 --> 00:01:34.233
+el mismo aviso no pesa
+igual en un portátil
+
+26
+00:01:34.233 --> 00:01:36.733
+que en la terminal de contenedores.
+
+27
+00:01:37.833 --> 00:01:40.233
+Ahora sí, correlacionar.
+
+28
+00:01:40.300 --> 00:01:44.333
+Tres inicios de sesión fallidos
+pueden ser un simple despiste.
+
+29
+00:01:44.333 --> 00:01:49.533
+Pero luego entra la misma cuenta, y diez
+minutos después aparece un usuario nuevo.
+
+30
+00:01:49.533 --> 00:01:53.600
+Aunque vengan de fuentes distintas,
+si caen en la misma ventana de tiempo,
+
+31
+00:01:53.600 --> 00:01:56.433
+una regla de correlación une las piezas.
+
+32
+00:01:56.433 --> 00:02:01.300
+Y salta la alerta, que debe decir qué
+pasó, dónde, con qué gravedad y qué hacer.
+
+33
+00:02:02.400 --> 00:02:05.367
+En Halden, la consola
+escupe 6.000 alertas diarias
+
+34
+00:02:05.367 --> 00:02:09.133
+y el turno de noche cierra
+el 90 % sin abrirlas.
+
+35
+00:02:09.133 --> 00:02:12.300
+Es alert fatigue, la fatiga de alertas.
+
+36
+00:02:12.433 --> 00:02:15.700
+Tres reglas generan el 78 % del volumen,
+
+37
+00:02:15.700 --> 00:02:19.000
+y ninguna ha producido
+nunca un incidente real.
+
+38
+00:02:19.000 --> 00:02:21.533
+Las disparan el agente
+de copias de seguridad,
+
+39
+00:02:21.533 --> 00:02:23.767
+el escáner de vulnerabilidades corporativo
+
+40
+00:02:23.767 --> 00:02:27.133
+y un balanceador que reinicia
+sesiones cada hora.
+
+41
+00:02:28.233 --> 00:02:32.967
+La cura no es más gente ni otra
+herramienta: es afinar, alert tuning.
+
+42
+00:02:32.967 --> 00:02:37.433
+Se excluye el patrón benigno
+conocido; la regla sigue activa.
+
+43
+00:02:37.500 --> 00:02:41.500
+Cada exclusión se documenta:
+qué, por qué y quién la aprobó.
+
+44
+00:02:41.500 --> 00:02:45.767
+Excluidos los tres patrones, quedan 1.320.
+
+45
+00:02:45.867 --> 00:02:50.733
+Deduplicar y agrupar eventos
+relacionados deja la cola en 400 al día.
+
+46
+00:02:50.733 --> 00:02:55.233
+Ojo: una exclusión demasiado amplia
+crea falsos negativos, false negatives,
+
+47
+00:02:55.233 --> 00:02:58.067
+justo por donde entrará el atacante.
+
+48
+00:02:59.167 --> 00:03:03.300
+Dos semanas después, gracias
+al ajuste, destaca una alerta.
+
+49
+00:03:03.300 --> 00:03:07.867
+Volumen saliente inusual en un servidor
+de la terminal de contenedores.
+
+50
+00:03:07.967 --> 00:03:11.167
+La analista se la asigna
+y empieza el triaje.
+
+51
+00:03:11.167 --> 00:03:18.233
+NetFlow lo confirma: 38 GB hacia una IP
+desconocida, entre las 02:00 y las 04:30.
+
+52
+00:03:20.000 --> 00:03:24.300
+No. NetFlow es metadato: quién
+habló con quién, cuándo y cuánto.
+
+53
+00:03:24.367 --> 00:03:28.933
+Solo una captura de paquetes guarda
+el contenido, si no iba cifrado.
+
+54
+00:03:30.033 --> 00:03:32.633
+¿Y si fuera una copia legítima?
+
+55
+00:03:32.733 --> 00:03:37.100
+La analista pivota: revisa
+ese servidor desde las 01:30.
+
+56
+00:03:37.100 --> 00:03:39.367
+El SIEM correlaciona
+el flujo con un inicio
+
+57
+00:03:39.367 --> 00:03:43.033
+de sesión a las 01:52
+de una cuenta de servicio.
+
+58
+00:03:43.033 --> 00:03:47.533
+Viene de una estación de administración,
+ocho minutos antes de la transferencia,
+
+59
+00:03:47.533 --> 00:03:50.333
+y ninguna copia programada lo explica.
+
+60
+00:03:50.333 --> 00:03:52.667
+Esa cuenta se sale de su línea base:
+
+61
+00:03:52.667 --> 00:03:57.167
+justo lo que vigila el análisis
+de comportamiento de usuarios, UBA.
+
+62
+00:03:58.267 --> 00:04:03.133
+Primera decisión de contención:
+¿apagas el servidor o lo aíslas?
+
+63
+00:04:04.700 --> 00:04:08.333
+Aislarlo: cuarentena en una VLAN
+restringida, sin apagarlo,
+
+64
+00:04:08.333 --> 00:04:11.067
+porque la memoria también es evidencia.
+
+65
+00:04:11.100 --> 00:04:14.633
+Una captura de paquetes
+graba el resto de la sesión.
+
+66
+00:04:14.633 --> 00:04:19.567
+Un playbook de SOAR, que automatiza
+la respuesta, propuso esa cuarentena.
+
+67
+00:04:19.633 --> 00:04:22.900
+Solo se ejecutó cuando
+la analista la aprobó.
+
+68
+00:04:22.900 --> 00:04:26.700
+Se corrige rotando la credencial
+de la cuenta de servicio.
+
+69
+00:04:26.767 --> 00:04:31.667
+La alerta se cierra al validar la
+corrección y documentarla, no al leerla.
+
+70
+00:04:32.767 --> 00:04:37.700
+El SIEM solo ve las fuentes integradas:
+lo que no le llega, para él no ocurrió.
+
+71
+00:04:37.700 --> 00:04:42.600
+Y una fuente que se calla, missing logs,
+es tan sospechosa como una alerta.
+
+72
+00:04:42.600 --> 00:04:46.700
+Sin relojes sincronizados,
+la correlación se desordena.
+
+73
+00:04:46.767 --> 00:04:50.633
+El SIEM ve eventos y metadatos:
+jamás el contenido.
+
+74
+00:04:50.633 --> 00:04:54.300
+El archivado, archiving,
+es para investigaciones y cumplimiento:
+
+75
+00:04:54.300 --> 00:04:58.167
+reconstruir una intrusión
+antigua depende de la retención.
+
+76
+00:04:59.267 --> 00:05:04.167
+Agregar, normalizar, correlacionar
+y alertar, enriqueciendo por el camino.
+
+77
+00:05:04.267 --> 00:05:07.367
+Y el Blue Team responde:
+triaje, contención, corrección,
+
+78
+00:05:07.367 --> 00:05:09.433
+validación y ajuste.
+
+79
+00:05:09.433 --> 00:05:14.033
+Para el examen: NetFlow es metadato;
+alert fatigue se cura con alert tuning;
+
+80
+00:05:14.033 --> 00:05:17.367
+y archiving es para investigaciones
+y cumplimiento.
+
+81
+00:05:17.367 --> 00:05:21.800
+Ahora te toca: aplica lo visto
+en las preguntas de esta lección.

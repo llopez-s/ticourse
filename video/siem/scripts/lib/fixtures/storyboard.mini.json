@@ -1,0 +1,15 @@
+{
+  "title": "SIEM en acción: del ruido a la evidencia",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "chapters": [
+    { "n": 1, "title": "Qué es" },
+    { "n": 2, "title": "Cómo funciona" }
+  ],
+  "scenes": [
+    { "id": "s01-hook", "chapter": 1, "title": "Seis mil avisos, uno importa", "targetSec": 16, "wordBudget": 36, "requiredCues": ["flood", "needle", "title"] },
+    { "id": "s02-collect", "chapter": 2, "title": "Recoger", "targetSec": 16, "wordBudget": 36, "requiredCues": ["src-systems", "m-netflow", "ntp"] },
+    { "id": "s03-normalize", "chapter": 2, "title": "Normalizar", "targetSec": 12, "wordBudget": 26, "requiredCues": ["raw", "utc", "end"] }
+  ]
+}

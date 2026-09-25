@@ -1,0 +1,124 @@
+{
+  "title": "SIEM en acción: del ruido a la evidencia",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 305,
+  "chapters": [
+    { "n": 1, "title": "Qué es" },
+    { "n": 2, "title": "Cómo funciona" },
+    { "n": 3, "title": "Operar el SIEM" },
+    { "n": 4, "title": "El caso de Halden" },
+    { "n": 5, "title": "Límites y examen" }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Seis mil avisos, uno importa",
+      "goal": "Gancho y definición: SIEM = SIM + SEM; agrega, normaliza, correlaciona y alerta",
+      "targetSec": 28,
+      "wordBudget": 66,
+      "requiredCues": ["flood", "needle", "title", "def-sim", "def-sem", "def-merge", "verbs"]
+    },
+    {
+      "id": "s02-collect",
+      "chapter": 2,
+      "title": "Recoger",
+      "goal": "Log aggregation: sistemas, aplicaciones e infraestructura; agente, syslog, API y NetFlow; hora sincronizada (NTP); la copia central protege la evidencia",
+      "targetSec": 26,
+      "wordBudget": 62,
+      "requiredCues": ["src-systems", "src-apps", "src-infra", "m-agent", "m-syslog", "m-api", "m-netflow", "ntp", "wipe"]
+    },
+    {
+      "id": "s03-normalize",
+      "chapter": 2,
+      "title": "Normalizar",
+      "goal": "Parsear (extraer campos) y normalizar a un esquema común con hora en UTC",
+      "targetSec": 22,
+      "wordBudget": 52,
+      "requiredCues": ["raw", "parse", "schema", "utc"]
+    },
+    {
+      "id": "s04-enrich",
+      "chapter": 2,
+      "title": "Enriquecer",
+      "goal": "El contexto (activo, identidad, geolocalización, threat intelligence) decide la gravedad",
+      "targetSec": 20,
+      "wordBudget": 48,
+      "requiredCues": ["enr-asset", "enr-identity", "enr-geo", "enr-ti", "severity"]
+    },
+    {
+      "id": "s05-correlate",
+      "chapter": 2,
+      "title": "Correlacionar y alertar",
+      "goal": "Una regla une eventos inocentes dentro de una ventana; qué contiene una alerta útil",
+      "targetSec": 28,
+      "wordBudget": 66,
+      "requiredCues": ["ev-fail", "ev-success", "ev-create", "window", "rule", "alert"]
+    },
+    {
+      "id": "s06-fatigue",
+      "chapter": 3,
+      "title": "Alert fatigue",
+      "goal": "Reconocer la fatiga de alertas: 6.000/día, 90 % cerradas sin abrir, 3 reglas = 78 %",
+      "targetSec": 24,
+      "wordBudget": 58,
+      "requiredCues": ["queue", "close-unread", "pareto", "r-backup", "r-scanner", "r-lb"]
+    },
+    {
+      "id": "s07-tuning",
+      "chapter": 3,
+      "title": "Alert tuning",
+      "goal": "La cura es afinar: excluir el patrón benigno (no la regla), documentar, deduplicar y agrupar; afinar de más da false negatives",
+      "targetSec": 28,
+      "wordBudget": 66,
+      "requiredCues": ["exclude", "rule-on", "documented", "count-1320", "count-400", "overtune"]
+    },
+    {
+      "id": "s08-triage",
+      "chapter": 4,
+      "title": "Triaje",
+      "goal": "Con la cola limpia la alerta se ve; triaje; NetFlow = metadatos (38 GB, 02:00–04:30)",
+      "targetSec": 26,
+      "wordBudget": 62,
+      "requiredCues": ["two-weeks", "alert-top", "assign", "netflow", "38gb", "metadata"]
+    },
+    {
+      "id": "s09-pivot",
+      "chapter": 4,
+      "title": "Pivotar y correlacionar",
+      "goal": "Búsqueda y correlación entre fuentes: logon de cuenta de servicio a las 01:52 desde estación de administración; UBA",
+      "targetSec": 28,
+      "wordBudget": 66,
+      "requiredCues": ["query", "logon-0152", "adm-ws", "link-8min", "uba"]
+    },
+    {
+      "id": "s10-contain",
+      "chapter": 4,
+      "title": "Contener y validar",
+      "goal": "Quarantine sin apagar (preservar evidencia), captura de paquetes, SOAR con aprobación humana, validación y reporting",
+      "targetSec": 30,
+      "wordBudget": 72,
+      "requiredCues": ["quarantine", "power-on", "pcap", "soar", "approve", "validate"]
+    },
+    {
+      "id": "s11-limits",
+      "chapter": 5,
+      "title": "Lo que el SIEM no ve",
+      "goal": "Puntos ciegos: fuentes no integradas, fuentes que se callan, relojes desincronizados, sin payload; archiving",
+      "targetSec": 24,
+      "wordBudget": 58,
+      "requiredCues": ["blind-source", "silence", "ntp-skew", "no-payload", "archive"]
+    },
+    {
+      "id": "s12-recap",
+      "chapter": 5,
+      "title": "Para el examen",
+      "goal": "Consolidar: pipeline del SIEM + ciclo del Blue Team + reflejos de examen",
+      "targetSec": 22,
+      "wordBudget": 52,
+      "requiredCues": ["recap-pipe", "recap-loop", "recap-exam", "endcard"]
+    }
+  ]
+}

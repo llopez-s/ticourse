@@ -243,3 +243,42 @@ describe('placement blocks', () => {
     }
   });
 });
+
+describe('SIEM lesson video', () => {
+  // Only the fs calls this test needs, typed locally so the suite does not
+  // depend on @types/node being installed.
+  type Fs = {
+    existsSync(path: URL): boolean;
+    statSync(path: URL): { size: number };
+    readFileSync(path: URL, encoding: 'utf8'): string;
+  };
+  const loadFs = async (): Promise<Fs> => import(/* @vite-ignore */ ['node', 'fs'].join(':'));
+  const publicFile = (path: string) => new URL(`../../public/${path}`, import.meta.url);
+
+  const block = ALL_MODULES.find((m) => m.id === 'sp4m6')?.blocks.find(
+    (b) => b.t === 'video' && b.src === 'videos/siem-blue-team.mp4',
+  );
+
+  it('sp4m6 embeds the SIEM video', () => {
+    expect(block).toBeDefined();
+  });
+
+  it('points at relative public assets that exist', async () => {
+    if (!block || block.t !== 'video') throw new Error('SIEM video block missing');
+    const fs = await loadFs();
+    const assets = [
+      [block.src, /\.mp4$/],
+      [block.poster, /\.(png|jpe?g|webp)$/],
+      [block.transcript, /\.txt$/],
+      [block.captions, /\.vtt$/],
+    ] as const;
+    for (const [path, ext] of assets) {
+      expect(path, path).toMatch(ext);
+      expect(path.startsWith('/') || path.includes('..'), path).toBe(false);
+      expect(fs.existsSync(publicFile(path)), path).toBe(true);
+    }
+    expect(fs.statSync(publicFile(block.src)).size).toBeLessThan(50 * 1024 * 1024);
+    expect(fs.readFileSync(publicFile(block.transcript), 'utf8').length).toBeGreaterThan(200);
+    expect(fs.readFileSync(publicFile(block.captions), 'utf8')).toMatch(/^WEBVTT\n\n1\n\d\d:\d\d:\d\d\.\d{3} --> /);
+  });
+});
