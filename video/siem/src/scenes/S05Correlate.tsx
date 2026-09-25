@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react';
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
-import type { SceneProps } from '../timeline/types';
-import { C, FONT, RADIUS, STAGE, TYPE, alpha } from '../theme/tokens';
-import { EASE, fadeIn, progress, springIn } from '../theme/motion';
-import { Icon, MonoLine, Panel, PipelineSpine, SeverityBadge, curveBetween } from '../ui';
+import type { SceneProps } from '../../../engine/src/timeline/types';
+import { C, FONT, RADIUS, STAGE, TYPE, alpha } from '../../../engine/src/theme/tokens';
+import { EASE, fadeIn, progress, springIn } from '../../../engine/src/theme/motion';
+import { Icon, MonoLine, Panel, PipelineSpine, SeverityBadge, curveBetween } from '../../../engine/src/ui';
 import { ACCOUNT, ALERT_FIELDS, AXIS, EVENTS, LANES, RULE, clock, type EventKind } from '../data/s05-correlate';
 import { EventChip, chipHeight, chipWidth } from './parts/s05-correlate/EventChip';
 import { Link } from './parts/s05-correlate/Link';

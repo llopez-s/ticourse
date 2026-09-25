@@ -1,7 +1,7 @@
 import { useVideoConfig } from 'remotion';
-import { C, FONT, TYPE, alpha } from '../../../theme/tokens';
-import { enter, progress, typewriter } from '../../../theme/motion';
-import { Icon, Panel } from '../../../ui';
+import { C, FONT, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { enter, progress, typewriter } from '../../../../../engine/src/theme/motion';
+import { Icon, Panel } from '../../../../../engine/src/ui';
 import { INPUTS, type InputId } from '../../../data/s02-collect';
 import { L } from './layout';
 import { wipeFocus, type S02Timing } from './timing';

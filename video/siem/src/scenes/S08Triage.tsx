@@ -1,8 +1,8 @@
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
-import type { SceneProps } from '../timeline/types';
-import { C, STAGE, alpha } from '../theme/tokens';
-import { EASE, countUp, enter, fadeIn, progress } from '../theme/motion';
-import { CaseStrip, Cursor, Panel } from '../ui';
+import type { SceneProps } from '../../../engine/src/timeline/types';
+import { C, STAGE, alpha } from '../../../engine/src/theme/tokens';
+import { EASE, countUp, enter, fadeIn, progress } from '../../../engine/src/theme/motion';
+import { CaseStrip, Cursor, Panel } from '../../../engine/src/ui';
 import { ALERT, EXFIL } from '../data/s08-triage';
 import { AlertQueue, assignButtonCenter } from './parts/s08-triage/AlertQueue';
 import { MetaCards } from './parts/s08-triage/MetaCards';

@@ -1,7 +1,7 @@
 import { interpolateColors } from 'remotion';
-import { C, FONT, RADIUS, TYPE, alpha } from '../../../theme/tokens';
-import { progress } from '../../../theme/motion';
-import { Icon } from '../../../ui';
+import { C, FONT, RADIUS, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { progress } from '../../../../../engine/src/theme/motion';
+import { Icon } from '../../../../../engine/src/ui';
 import { CLOCK_SYNCED } from '../../../data/s02-collect';
 import type { S02Timing } from './timing';
 

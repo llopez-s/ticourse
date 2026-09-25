@@ -1,5 +1,5 @@
 import { random } from 'remotion';
-import type { Severity } from '../ui';
+import type { Severity } from '../../../engine/src/ui';
 
 /**
  * S08 "Triaje" — fictitious data only (RFC 5737 external IPs, 10.20.x.x

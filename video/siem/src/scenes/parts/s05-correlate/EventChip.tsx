@@ -1,4 +1,4 @@
-import { ACCENT, C, FONT, RADIUS, alpha, type Accent } from '../../../theme/tokens';
+import { ACCENT, C, FONT, RADIUS, alpha, type Accent } from '../../../../../engine/src/theme/tokens';
 
 /** Rough rendered width of an event chip (layout only: bands, links, labels). */
 export function chipWidth(code: string, label: string | undefined, size: number): number {

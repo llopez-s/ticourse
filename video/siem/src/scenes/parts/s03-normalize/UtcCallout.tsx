@@ -1,7 +1,7 @@
 import { interpolateColors } from 'remotion';
-import { C, FONT, TYPE } from '../../../theme/tokens';
-import { EASE, progress } from '../../../theme/motion';
-import { Chip, Icon, Panel } from '../../../ui';
+import { C, FONT, TYPE } from '../../../../../engine/src/theme/tokens';
+import { EASE, progress } from '../../../../../engine/src/theme/motion';
+import { Chip, Icon, Panel } from '../../../../../engine/src/ui';
 import { UTC_BEAT } from '../../../data/s03-normalize';
 import { COL, L, type S03Timing } from './layout';
 

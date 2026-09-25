@@ -1,5 +1,5 @@
-import type { Accent } from '../theme/tokens';
-import type { IconName } from '../ui';
+import type { Accent } from '../../../engine/src/theme/tokens';
+import type { IconName } from '../../../engine/src/ui';
 
 /**
  * S04 "Enriquecer": one normalised event and the four pieces of context the

@@ -1,6 +1,6 @@
-import { C } from '../theme/tokens';
-import type { Accent } from '../theme/tokens';
-import type { IconName, MonoToken } from '../ui';
+import { C } from '../../../engine/src/theme/tokens';
+import type { Accent } from '../../../engine/src/theme/tokens';
+import type { IconName, MonoToken } from '../../../engine/src/ui';
 
 /**
  * S05 "Correlacionar y alertar": three harmless-looking events from three

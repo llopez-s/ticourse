@@ -1,6 +1,6 @@
-import { ACCENT, C, FONT, TYPE, alpha } from '../../../theme/tokens';
-import { EASE, countUp, enter, fadeIn, fmtInt, progress } from '../../../theme/motion';
-import { Chip, Panel } from '../../../ui';
+import { ACCENT, C, FONT, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { EASE, countUp, enter, fadeIn, fmtInt, progress } from '../../../../../engine/src/theme/motion';
+import { Chip, Panel } from '../../../../../engine/src/ui';
 import { DAILY_ALERTS, TAIL_RULES, TAIL_SHARE_PCT, TOP_RULES, TOP_SHARE_PCT } from '../../../data/s06-fatigue';
 import { steps } from './timing';
 

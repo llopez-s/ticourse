@@ -1,6 +1,6 @@
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
-import type { SceneProps } from '../timeline/types';
-import { STAGE } from '../theme/tokens';
+import type { SceneProps } from '../../../engine/src/timeline/types';
+import { STAGE } from '../../../engine/src/theme/tokens';
 import { Definition } from './parts/s01-hook/Definition';
 import { Flood } from './parts/s01-hook/Flood';
 import { wordFrame } from './parts/s01-hook/words';

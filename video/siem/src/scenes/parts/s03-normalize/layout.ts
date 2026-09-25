@@ -1,6 +1,6 @@
-import type { SceneProps } from '../../../timeline/types';
+import type { SceneProps } from '../../../../../engine/src/timeline/types';
 import { FIELD_ORDER, SOURCES, type FieldKey, type RawPart } from '../../../data/s03-normalize';
-import { EASE, progress } from '../../../theme/motion';
+import { EASE, progress } from '../../../../../engine/src/theme/motion';
 
 /** Stage-local geometry of scene 03 (stage = 1728 x 660). */
 export const L = {

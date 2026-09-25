@@ -1,8 +1,8 @@
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
-import type { SceneProps } from '../timeline/types';
-import { STAGE } from '../theme/tokens';
-import { EASE, fadeOut, lerp, progress } from '../theme/motion';
-import { CaseStrip, Cursor, Stamp } from '../ui';
+import type { SceneProps } from '../../../engine/src/timeline/types';
+import { STAGE } from '../../../engine/src/theme/tokens';
+import { EASE, fadeOut, lerp, progress } from '../../../engine/src/theme/motion';
+import { CaseStrip, Cursor, Stamp } from '../../../engine/src/ui';
 import { Closure } from './parts/s10-contain/Closure';
 import { APPROVE_BUTTON, COLLAPSED, COLUMN, Playbook } from './parts/s10-contain/Playbook';
 import { DIAG, Topology } from './parts/s10-contain/Topology';

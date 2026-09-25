@@ -1,0 +1,20 @@
+Adquisición forense: capturar sin contaminar
+Simulación educativa con datos ficticios · IntelForge Academy — material independiente, no afiliado a CompTIA
+
+[00:00] I · Antes de tocar — Operaciones lo quiere esta noche
+Halden, de madrugada. El portátil de operaciones está aislado de la red, pero sigue encendido. Operaciones quiere reinstalarlo esta noche. Podrá, pero después de capturarlo: esto puede acabar ante un juez. La asesoría jurídica emite un legal hold. Nace cuando el litigio es razonablemente previsible, no cuando llega la demanda. Y prevalece sobre la retención: la rotación que borraría los logs del caso a los 30 días se detiene.
+
+[00:31] I · Antes de tocar — Orden de volatilidad
+Antes de tocar nada, la analista sigue el order of volatility: primero, lo que antes desaparece. Arriba, la memoria RAM y la cache: procesos, conexiones y claves de cifrado que solo viven ahí. Después, el estado de red, los procesos y los archivos temporales. Luego el disco, los logs remotos y los backups. Al final, el papel. Si alguien lo apaga para ir más rápido, las capas de arriba se pierden. Por eso la memoria se vuelca antes de apagarlo.
+
+[01:03] II · Adquirir — Demo: imagen bit a bit
+Laboratorio, a las 05:40. Sandoval conecta el disco a un write blocker: solo se puede leer. Primero, el hash SHA-256 del original, antes de copiar nada. Después, la imagen bit a bit: sector a sector, con el espacio no asignado y los ficheros borrados. No es copiar carpetas. Al terminar, se calcula el hash de los datos adquiridos y se vuelve a calcular el del original. Los tres valores coinciden. El original se vuelve a precintar y el análisis se hace sobre una copia de trabajo.
+
+[01:38] II · Adquirir — Cuando el hash no cuadra
+Ahora, otro final posible: el hash de la imagen no coincide con el del original. Firmar el formulario no lo arregla: esa imagen no es una copia exacta y pierde su valor como prueba. Cambiar a MD5, más débil, tampoco. Se repite la adquisición y se documenta la discrepancia.
+
+[01:59] III · Custodiar — Cadena de custodia
+Desde las 04:12, el disco viaja en una bolsa antiestática precintada, y cada entrega queda anotada. Esa es la chain of custody: quién la tuvo, cuándo, de quién la recibió, a quién la entregó y por qué. Imagina el disco una noche en un cajón sin cerrar, sin anotar. Aunque el hash coincida, ese hueco puede hacerla inadmisible. Porque el hash demuestra que los datos no cambiaron, y la cadena, quién tuvo el objeto. Ninguno sustituye al otro.
+
+[02:29] III · Custodiar — Para el examen
+Cinco reflejos de examen: legal hold al prever el litigio, memoria antes que disco, y hash antes y después, analizando la copia. Hash distinto: se repite la adquisición. Y un hueco en la custodia puede dejar la evidencia inadmisible. Seguimos con las fuentes de datos.

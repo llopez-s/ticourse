@@ -1,6 +1,6 @@
-import { C, FONT, RADIUS, TYPE, alpha } from '../../../theme/tokens';
-import { enter, fadeIn, progress, pulse } from '../../../theme/motion';
-import { Chip, Icon, Panel } from '../../../ui';
+import { C, FONT, RADIUS, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { enter, fadeIn, progress, pulse } from '../../../../../engine/src/theme/motion';
+import { Chip, Icon, Panel } from '../../../../../engine/src/ui';
 
 /**
  * "¿Copia legítima?" — the benign explanation the analyst has to rule out.

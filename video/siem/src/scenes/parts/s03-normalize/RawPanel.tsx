@@ -1,7 +1,7 @@
 import { interpolateColors, useVideoConfig } from 'remotion';
-import { C, FONT, TYPE, alpha } from '../../../theme/tokens';
-import { EASE, enter, progress } from '../../../theme/motion';
-import { Chip, Icon, MonoLine, Panel, type MonoToken } from '../../../ui';
+import { C, FONT, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { EASE, enter, progress } from '../../../../../engine/src/theme/motion';
+import { Chip, Icon, MonoLine, Panel, type MonoToken } from '../../../../../engine/src/ui';
 import { SOURCES } from '../../../data/s03-normalize';
 import { CHAR_W, L, LINE_LEN, PART_GEO, columnFocus, flightStart, rawOffset, rowTop, type S03Timing } from './layout';
 

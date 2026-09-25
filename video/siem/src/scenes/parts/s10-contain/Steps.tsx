@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
-import { C, FONT, TYPE, alpha } from '../../../theme/tokens';
-import { Icon, type IconName } from '../../../ui';
+import { C, FONT, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { Icon, type IconName } from '../../../../../engine/src/ui';
 
 export type StepState = 'hidden' | 'locked' | 'waiting' | 'done';
 

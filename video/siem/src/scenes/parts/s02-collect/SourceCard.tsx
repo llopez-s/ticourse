@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 import { interpolateColors } from 'remotion';
-import { C, FONT, TYPE, alpha } from '../../../theme/tokens';
-import { enter, progress } from '../../../theme/motion';
-import { Icon, Panel } from '../../../ui';
+import { C, FONT, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { enter, progress } from '../../../../../engine/src/theme/motion';
+import { Icon, Panel } from '../../../../../engine/src/ui';
 import { DEVICE_LINE, INFRA_ROWS, type LinkId, type SourceGroup } from '../../../data/s02-collect';
 import { CARD, INFRA_ROW_Y, L } from './layout';
 import { ClockPill } from './ClockPill';

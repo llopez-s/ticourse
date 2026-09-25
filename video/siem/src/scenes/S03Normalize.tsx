@@ -1,8 +1,8 @@
 import { AbsoluteFill, useCurrentFrame } from 'remotion';
-import type { SceneProps } from '../timeline/types';
-import { STAGE } from '../theme/tokens';
-import { progress } from '../theme/motion';
-import { PipelineSpine } from '../ui';
+import type { SceneProps } from '../../../engine/src/timeline/types';
+import { STAGE } from '../../../engine/src/theme/tokens';
+import { progress } from '../../../engine/src/theme/motion';
+import { PipelineSpine } from '../../../engine/src/ui';
 import { buildTiming } from './parts/s03-normalize/layout';
 import { RawPanel } from './parts/s03-normalize/RawPanel';
 import { Flights, SchemaTable } from './parts/s03-normalize/SchemaTable';

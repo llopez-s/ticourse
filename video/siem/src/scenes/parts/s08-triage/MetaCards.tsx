@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
-import { C, FONT, RADIUS, TYPE, alpha } from '../../../theme/tokens';
-import { enter, fadeIn, progress } from '../../../theme/motion';
-import { Chip, Icon } from '../../../ui';
+import { C, FONT, RADIUS, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { enter, fadeIn, progress } from '../../../../../engine/src/theme/motion';
+import { Chip, Icon } from '../../../../../engine/src/ui';
 import { ALERT, EXFIL } from '../../../data/s08-triage';
 
 /** "quién / cuándo / cuánto" fact pill: label in cyan, value in mono. */

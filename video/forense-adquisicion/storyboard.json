@@ -1,0 +1,68 @@
+{
+  "title": "Adquisición forense: capturar sin contaminar",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 172,
+  "chapters": [
+    { "n": 1, "title": "Antes de tocar" },
+    { "n": 2, "title": "Adquirir" },
+    { "n": 3, "title": "Custodiar" }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hold",
+      "chapter": 1,
+      "title": "Operaciones lo quiere esta noche",
+      "goal": "Madrugada del 4-9, portátil aislado y encendido; Operaciones pide reinstalarlo (podrá, pero después de capturarlo); la asesoría jurídica emite el legal hold (nace cuando el litigio es razonablemente previsible, no con la demanda) y prevalece sobre la retención: la rotación de logs del caso a 30 días se detiene",
+      "targetSec": 26,
+      "wordBudget": 70,
+      "requiredCues": ["laptop-on", "rebuild", "hold", "retention-stop"]
+    },
+    {
+      "id": "s02-volatility",
+      "chapter": 1,
+      "title": "Orden de volatilidad",
+      "goal": "Order of volatility: RAM y cache, estado de red, procesos y archivos temporales, disco, logs remotos y backups, papel; apagar borra las capas de arriba, así que la memoria se vuelca antes de apagarlo",
+      "targetSec": 32,
+      "wordBudget": 80,
+      "requiredCues": ["stack", "ram-first", "power-off", "lost"]
+    },
+    {
+      "id": "s03-image",
+      "chapter": 2,
+      "title": "Demo: imagen bit a bit",
+      "goal": "Write blocker; hash del original; imagen E01 sector a sector (incluye no asignado y borrados); hash de los datos adquiridos y nuevo hash del original: MATCH; el análisis se hace sobre la copia de trabajo",
+      "targetSec": 40,
+      "wordBudget": 94,
+      "requiredCues": ["blocker", "hash-orig", "acquire", "hash-img", "match", "work-copy"]
+    },
+    {
+      "id": "s04-mismatch",
+      "chapter": 2,
+      "title": "Cuando el hash no cuadra",
+      "goal": "Hash distinto: la imagen no es una copia exacta y pierde valor probatorio; ni firmar el formulario ni pasar a MD5 lo arreglan; se repite la adquisición y se documenta",
+      "targetSec": 22,
+      "wordBudget": 52,
+      "requiredCues": ["mismatch", "invalid", "repeat"]
+    },
+    {
+      "id": "s05-custody",
+      "chapter": 3,
+      "title": "Cadena de custodia",
+      "goal": "Desde las 04:12 (incautación, precinto 0091) la bolsa pasa de mano en mano; el formulario registra quién, cuándo, de quién, a quién y por qué; un hueco sin justificar puede hacerla inadmisible aunque el hash coincida; el hash demuestra que los datos no cambiaron y la cadena, quién tuvo el objeto",
+      "targetSec": 32,
+      "wordBudget": 78,
+      "requiredCues": ["bag", "rows", "gap", "inadmissible", "hash-vs-chain"]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Para el examen",
+      "goal": "Cinco reflejos de examen y tarjeta final que devuelve a la lección (fuentes de datos)",
+      "targetSec": 20,
+      "wordBudget": 48,
+      "requiredCues": ["recap", "endcard"]
+    }
+  ]
+}

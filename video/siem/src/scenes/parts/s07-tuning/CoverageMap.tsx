@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { ACCENT, C, FONT, TYPE, alpha } from '../../../theme/tokens';
-import { EASE, enter, fadeIn, lerp, progress, pulse } from '../../../theme/motion';
-import { Chip, Connector, Icon, Packet, Panel, type Point } from '../../../ui';
+import { ACCENT, C, FONT, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { EASE, enter, fadeIn, lerp, progress, pulse } from '../../../../../engine/src/theme/motion';
+import { Chip, Connector, Icon, Packet, Panel, type Point } from '../../../../../engine/src/ui';
 
 /** Body-relative geometry (panel body is width × (height − 64)). */
 const COLS = 14;

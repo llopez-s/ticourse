@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react';
 import { AbsoluteFill, interpolateColors, random } from 'remotion';
-import { ensureFonts } from './theme/fonts';
-import { C, FONT, LAYOUT, TYPE, alpha } from './theme/tokens';
-import { Backdrop } from './ui/Backdrop';
-import { Chip } from './ui/Chip';
-import { Icon } from './ui/Icon';
-import { cubicPath, curveBetween, type Point } from './ui/geometry';
-import { BrandMark } from './overlay/ChapterRail';
-import { SIMULATION_LABEL } from './overlay/SimulationTag';
+import { ensureFonts } from '../../engine/src/theme/fonts';
+import { C, FONT, LAYOUT, TYPE, alpha } from '../../engine/src/theme/tokens';
+import { Backdrop } from '../../engine/src/ui/Backdrop';
+import { Chip } from '../../engine/src/ui/Chip';
+import { Icon } from '../../engine/src/ui/Icon';
+import { cubicPath, curveBetween, type Point } from '../../engine/src/ui/geometry';
+import { BrandMark } from '../../engine/src/overlay/ChapterRail';
+import { SIMULATION_LABEL } from '../../engine/src/overlay/SimulationTag';
 
 ensureFonts();
 

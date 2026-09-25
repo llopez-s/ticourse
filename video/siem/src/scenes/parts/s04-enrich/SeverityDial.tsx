@@ -1,4 +1,4 @@
-import { C, alpha } from '../../../theme/tokens';
+import { C, alpha } from '../../../../../engine/src/theme/tokens';
 
 const SEGMENTS = [
   { from: 180, to: 122, color: C.emerald },

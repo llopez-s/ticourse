@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react';
-import type { SceneId, SceneProps } from '../timeline/types';
+import type { SceneId, SceneProps } from '../../../engine/src/timeline/types';
 import { S01Hook } from './S01Hook';
 import { S02Collect } from './S02Collect';
 import { S03Normalize } from './S03Normalize';

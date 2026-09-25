@@ -1,5 +1,5 @@
 import { TIMELINE, enterFramesFor, sceneTiming } from '../../../timeline/load';
-import type { SceneId } from '../../../timeline/types';
+import type { SceneId } from '../../../../../engine/src/timeline/types';
 
 /** Lower-case, accent-free, letters and digits only: "Agregar," -> "agregar", "6.000" -> "6000". */
 function norm(text: string): string {

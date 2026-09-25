@@ -1,5 +1,5 @@
-import { C } from '../../../theme/tokens';
-import { cubicLength, cubicPath, type Point } from '../../../ui';
+import { C } from '../../../../../engine/src/theme/tokens';
+import { cubicLength, cubicPath, type Point } from '../../../../../engine/src/ui';
 
 /** Solid correlation link along a cubic curve; `draw` (0–1) reveals it from the start point. */
 export function Link({

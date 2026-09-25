@@ -1,0 +1,172 @@
+{
+  "voice": "es-ES-ElviraNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hold",
+      "text": "<serious> Halden, de madrugada. El {laptop-on}portátil de operaciones está aislado de la red, pero sigue encendido.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hold",
+      "text": "<urgent> Operaciones quiere {rebuild}reinstalarlo esta noche. Podrá, pero después de capturarlo: esto puede acabar ante un juez.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hold",
+      "text": "<firm> La asesoría jurídica emite un {hold}legal hold. Nace cuando el litigio es razonablemente previsible, no cuando llega la demanda.",
+      "pauseAfterMs": 350,
+      "exam": {
+        "objective": "4.8",
+        "text": "Legal hold: al prever el litigio, no con la demanda",
+        "at": "hold",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hold",
+      "text": "Y prevalece sobre la retención: la {retention-stop}rotación que borraría los logs del caso a los [30 días|treinta días] se detiene.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-volatility",
+      "text": "<calm> Antes de tocar nada, la analista sigue el {stack}order of volatility: primero, lo que antes desaparece.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-volatility",
+      "text": "Arriba, la {ram-first}memoria RAM y la cache: procesos, conexiones y claves de cifrado que solo viven ahí.",
+      "pauseAfterMs": 350,
+      "exam": {
+        "objective": "4.8",
+        "text": "Memoria y cache antes que disco",
+        "at": "ram-first",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-volatility",
+      "text": "Después, el estado de red, los procesos y los archivos temporales. Luego el disco, los logs remotos y los backups. Al final, el papel.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-volatility",
+      "text": "<warning> Si alguien lo {power-off}apaga para ir más rápido, las capas de arriba se {lost}pierden. Por eso la memoria se vuelca antes de apagarlo.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-image",
+      "text": "<focused> Laboratorio, [a las 05:40|a las cinco y cuarenta]. Sandoval conecta el disco a un {blocker}write blocker: solo se puede leer.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-image",
+      "text": "Primero, el {hash-orig}hash [SHA-256|sha doscientos cincuenta y seis] del original, antes de copiar nada.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-image",
+      "text": "Después, la {acquire}imagen bit a bit: sector a sector, con el espacio no asignado y los ficheros borrados. No es copiar carpetas.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-image",
+      "text": "Al terminar, se calcula el {hash-img}hash de los datos adquiridos y se vuelve a calcular el del original.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-image",
+      "text": "<satisfied> Los tres valores {match}coinciden. El original se vuelve a precintar y el análisis se hace sobre una {work-copy}copia de trabajo.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "4.8",
+        "text": "Hash antes y después; se analiza la copia",
+        "at": "match",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-mismatch",
+      "text": "<concerned> Ahora, otro final posible: el hash de la imagen {mismatch}no coincide con el del original.",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Hash distinto. ¿Basta con firmar el formulario?",
+        "holdMs": 2200
+      }
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-mismatch",
+      "text": "<firm> Firmar el formulario no lo arregla: esa imagen {invalid}no es una copia exacta y pierde su valor como prueba.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-mismatch",
+      "text": "Cambiar a [MD5|eme de cinco], más débil, tampoco. Se {repeat}repite la adquisición y se documenta la discrepancia.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "4.8",
+        "text": "Hash distinto: repetir y documentar",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-custody",
+      "text": "<steady> Desde [las 04:12|las cuatro y doce], el disco viaja en una {bag}bolsa antiestática precintada, y cada entrega queda anotada.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-custody",
+      "text": "Esa es la {rows}chain of custody: quién la tuvo, cuándo, de quién la recibió, a quién la entregó y por qué.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-custody",
+      "text": "<grave> Imagina el disco una noche en un {gap}cajón sin cerrar, sin anotar. Aunque el hash coincida, ese hueco puede hacerla {inadmissible}inadmisible.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.8",
+        "text": "Hueco en la custodia: evidencia inadmisible",
+        "at": "gap",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-custody",
+      "text": "Porque el {hash-vs-chain}hash demuestra que los datos no cambiaron, y la cadena, quién tuvo el objeto. Ninguno sustituye al otro.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-recap",
+      "text": "<warm> Cinco {recap}reflejos de examen: legal hold al prever el litigio, memoria antes que disco, y hash antes y después, analizando la copia.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-recap",
+      "text": "Hash distinto: se repite la adquisición. Y un hueco en la custodia puede dejar la evidencia inadmisible. {endcard}Seguimos con las fuentes de datos.",
+      "pauseAfterMs": 600
+    }
+  ]
+}

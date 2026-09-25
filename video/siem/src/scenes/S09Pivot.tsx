@@ -1,8 +1,8 @@
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
-import type { SceneProps } from '../timeline/types';
-import { STAGE } from '../theme/tokens';
-import { EASE, enter, fadeIn, lerp, progress } from '../theme/motion';
-import { CaseStrip } from '../ui';
+import type { SceneProps } from '../../../engine/src/timeline/types';
+import { STAGE } from '../../../engine/src/theme/tokens';
+import { EASE, enter, fadeIn, lerp, progress } from '../../../engine/src/theme/motion';
+import { CaseStrip } from '../../../engine/src/ui';
 import { QUERY_LINES } from '../data/s09-pivot';
 import { CaseTimeline } from './parts/s09-pivot/CaseTimeline';
 import { Hypothesis } from './parts/s09-pivot/Hypothesis';

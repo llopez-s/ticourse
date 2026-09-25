@@ -1,7 +1,7 @@
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
-import type { SceneProps } from '../timeline/types';
-import { STAGE } from '../theme/tokens';
-import { EASE, lerp, progress } from '../theme/motion';
+import type { SceneProps } from '../../../engine/src/timeline/types';
+import { STAGE } from '../../../engine/src/theme/tokens';
+import { EASE, lerp, progress } from '../../../engine/src/theme/motion';
 import { EndCard } from './parts/s12-recap/EndCard';
 import { ExamReflexes } from './parts/s12-recap/ExamReflexes';
 import { RecapSpine } from './parts/s12-recap/RecapSpine';

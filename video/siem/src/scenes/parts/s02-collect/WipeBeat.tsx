@@ -1,6 +1,6 @@
-import { C, FONT, TYPE, alpha } from '../../../theme/tokens';
-import { EASE, progress } from '../../../theme/motion';
-import { Chip, Icon, Panel } from '../../../ui';
+import { C, FONT, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { EASE, progress } from '../../../../../engine/src/theme/motion';
+import { Chip, Icon, Panel } from '../../../../../engine/src/ui';
 import { LOCAL_LOG } from '../../../data/s02-collect';
 import { CARD, L } from './layout';
 import { type S02Timing } from './timing';

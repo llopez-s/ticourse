@@ -158,6 +158,19 @@ Las exam cards se listan en el orden de las escenas:
 - **No retirar con V1:** la carpeta `video/edr/` y sus scripts se quedan hasta P2. `generate-elevenlabs.mjs` se amplió hoy y puede ser la implementación de referencia de ElevenLabs.
 
 ### V2 · sp4m11 · Cápsula · «Adquisición forense: capturar sin contaminar»
+
+> **PRODUCIDO 2026-09-25** (rama `video-forense-adquisicion`, sin commit). Se adelantó a V1 porque la cuota
+> gratuita de ElevenLabs estaba agotada (9.963/10.000, renueva el 25-10): V1 habría sustituido un vídeo
+> publicado con voz de ElevenLabs por uno con edge-tts, y además exige retirar assets con confirmación.
+> Resultado: 2:52, 6 escenas, 5 exam cards, 1 think prompt, voz edge-tts Elvira (pasos para re-locutar en
+> `video/forense-adquisicion/README.md`). La revisión de exactitud cambió el guion respecto a esta ficha:
+> - las 04:12 son la incautación (el disco ya está precintado), no el momento del portátil encendido;
+> - Operaciones podrá reinstalar, pero después de la captura;
+> - el hold prevalece solo sobre los logs del caso;
+> - el think prompt pasa a «Hash distinto. ¿Basta con firmar el formulario?»;
+> - «inadmisible» se matiza a «puede hacerla inadmisible»;
+> - el original se vuelve a precintar (0114);
+> - la demo verifica el E01 con `ewfverify`, no con `sha256sum` sobre el contenedor.
 - **Slug:** `forense-adquisicion`.
 - **Objetivo:** 4.8.
 - **Duración:** escenas ~162 s; render ≈ 180 s.
@@ -329,6 +342,14 @@ Las exam cards se listan en el orden de las escenas:
   - Los briefs son agnósticos respecto a la voz: se usará la que fije ese trabajo, la misma en todos los vídeos.
   - No se toca `scripts/lib` hasta que ese trabajo esté integrado.
 - **P2 · Generalizar la tubería SIEM antes de V1**, que es el segundo vídeo sobre ella. Si no, acabaremos con N copias bifurcadas.
+  - **HECHO (2026-09-25), salvo la retirada de `video/edr/`, que queda para V1.**
+    - Motor en `video/engine/` y un `video.json` por vídeo (en vez de ampliar `storyboard.json`, para no
+      alterar el `sourceHash` del SIEM).
+    - Todos los scripts aceptan `--video <slug>`.
+    - Los perfiles viven en `scripts/lib/profiles.mjs`.
+    - Regresión del SIEM comprobada:
+      - timeline, transcripción y VTT regenerados byte a byte idénticos;
+      - 10 fotogramas renderizados antes y después, idénticos salvo 6 píxeles de la barra de progreso (±2/255).
   - **Retirar `video/edr/`** y sus scripts `video:*` de `package.json` solo cuando el código de ElevenLabs de `video/edr/generate-elevenlabs.mjs` se haya migrado al motor compartido.
   - **Motor compartido y una carpeta por vídeo.** Cada carpeta `video/<slug>/` lleva `storyboard.json`, `narration.json`, `lexicon.json`, `scenes/`, `data/` y `Poster`.
   - **Parametrizar los valores fijos:**
@@ -339,7 +360,9 @@ Las exam cards se listan en el orden de las escenas:
     - ventana de duración, reglas de estilo y objetivo de tamaño: un **perfil** `principal`/`capsula` en `storyboard.json`;
     - `DEFAULTS` de `tts.py`.
   - **Reutilizar tal cual:** `ui/*`, `overlay/*`, `theme/*`, `timeline/load.ts`, `scene-props.ts` y `lib/{text,align,captions,remotion,narration,freshness}.mjs`.
-- **P3 · Tests.**
+- **P3 · Tests.** **HECHO en parte (2026-09-25):** la suite `lesson videos` recorre todos los bloques
+  `t:'video'`. La comprobación «sin `.wav`/`.mp3` bajo `public/videos/`» queda para V1, porque hoy falla
+  en local por `public/videos/edr/voice/*.wav`, que está ignorado por git.
   - Convertir la suite `SIEM lesson video` (`src/data/content.test.ts:247-284`) en una que recorra **todos** los bloques `t:'video'` de ambas pistas.
   - Añadir una comprobación de que no hay `.wav`/`.mp3` bajo `public/videos/`.
   - Los tests `node:test` de `video/**/scripts/lib` siguen fuera de vitest; se ejecutan a mano.

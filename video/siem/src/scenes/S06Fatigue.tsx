@@ -1,7 +1,7 @@
 import { AbsoluteFill, useCurrentFrame } from 'remotion';
-import type { SceneProps } from '../timeline/types';
-import { STAGE } from '../theme/tokens';
-import { EASE, progress } from '../theme/motion';
+import type { SceneProps } from '../../../engine/src/timeline/types';
+import { STAGE } from '../../../engine/src/theme/tokens';
+import { EASE, progress } from '../../../engine/src/theme/motion';
 import { AlertQueue } from './parts/s06-fatigue/AlertQueue';
 import { NightShiftStats } from './parts/s06-fatigue/NightShiftStats';
 import { ParetoChart } from './parts/s06-fatigue/ParetoChart';

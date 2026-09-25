@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { interpolateColors, random } from 'remotion';
-import { C, FONT, STAGE, TYPE, alpha } from '../../../theme/tokens';
-import { EASE, enter, fmtInt, lerp, progress, pulse } from '../../../theme/motion';
-import { Chip, Panel, cubicLength, cubicPath, type Point } from '../../../ui';
+import { C, FONT, STAGE, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { EASE, enter, fmtInt, lerp, progress, pulse } from '../../../../../engine/src/theme/motion';
+import { Chip, Panel, cubicLength, cubicPath, type Point } from '../../../../../engine/src/ui';
 
 /** 120 x 50 = exactly 6.000 alert dots (one of them is the needle). */
 const COLS = 120;

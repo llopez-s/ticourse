@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
-import { ACCENT, C, FONT, RADIUS, TYPE, alpha, type Accent } from '../../../theme/tokens';
-import { Icon, type IconName } from '../../../ui';
+import { ACCENT, C, FONT, RADIUS, TYPE, alpha, type Accent } from '../../../../../engine/src/theme/tokens';
+import { Icon, type IconName } from '../../../../../engine/src/ui';
 
 /**
  * One blind-spot tile. Before its cue it is only a dashed placeholder (so the

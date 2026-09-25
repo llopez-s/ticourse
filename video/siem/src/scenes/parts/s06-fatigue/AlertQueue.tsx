@@ -1,8 +1,8 @@
 import type { ReactElement } from 'react';
 import { random } from 'remotion';
-import { C, FONT, RADIUS, TYPE, alpha } from '../../../theme/tokens';
-import { EASE, fadeIn, fadeOut, lerp, progress } from '../../../theme/motion';
-import { Cursor, Icon, Panel, Stamp } from '../../../ui';
+import { C, FONT, RADIUS, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { EASE, fadeIn, fadeOut, lerp, progress } from '../../../../../engine/src/theme/motion';
+import { Cursor, Icon, Panel, Stamp } from '../../../../../engine/src/ui';
 import { QUEUE_NOISY, QUEUE_TAIL, type QueueAlert } from '../../../data/s06-fatigue';
 
 /** Panel header height (see ui/Panel). */

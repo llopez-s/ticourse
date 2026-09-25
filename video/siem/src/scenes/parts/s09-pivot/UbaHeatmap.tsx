@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { C, FONT, TYPE, alpha } from '../../../theme/tokens';
-import { EASE, fadeIn, progress, pulse, springIn } from '../../../theme/motion';
-import { Chip, Panel } from '../../../ui';
+import { C, FONT, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { EASE, fadeIn, progress, pulse, springIn } from '../../../../../engine/src/theme/motion';
+import { Chip, Panel } from '../../../../../engine/src/ui';
 import { BASELINE_FROM, BASELINE_TO, OUTLIER, TODAY_NOW_H, UBA_ACTIVITY, UBA_DAYS, UBA_HOURS } from '../../../data/s09-pivot';
 
 /** Body-local geometry (the panel header is 64 px + borders). Days run left→right, hours top→bottom. */

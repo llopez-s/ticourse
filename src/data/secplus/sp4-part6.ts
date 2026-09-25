@@ -90,6 +90,14 @@ VERIFICACION DE INTEGRIDAD
           'Hashing before and after exists precisely so that a mismatch is detected: it proves the copy is not bit-for-bit identical, so the image loses its evidentiary value and the acquisition has to be redone and the anomaly recorded. The signed custody form is the tempting distractor because it is also an integrity control, but it documents possession of the physical item and cannot vouch for the fidelity of the copy.',
       },
     },
+    {
+      t: 'video',
+      title: 'Adquisición forense: capturar sin contaminar',
+      src: 'videos/forense-adquisicion.mp4',
+      poster: 'videos/forense-adquisicion-poster.png',
+      transcript: 'videos/forense-adquisicion-transcript.txt',
+      captions: 'videos/forense-adquisicion-captions.vtt',
+    },
     { t: 'h', text: 'Fuentes de datos: cada pregunta tiene su log' },
     {
       t: 'p',

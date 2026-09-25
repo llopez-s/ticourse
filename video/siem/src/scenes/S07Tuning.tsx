@@ -1,7 +1,7 @@
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
-import type { SceneProps } from '../timeline/types';
-import { STAGE } from '../theme/tokens';
-import { progress } from '../theme/motion';
+import type { SceneProps } from '../../../engine/src/timeline/types';
+import { STAGE } from '../../../engine/src/theme/tokens';
+import { progress } from '../../../engine/src/theme/motion';
 import { CoverageMap } from './parts/s07-tuning/CoverageMap';
 import { CureOptions } from './parts/s07-tuning/CureOptions';
 import { ExclusionDeck } from './parts/s07-tuning/ExclusionDeck';
