@@ -113,7 +113,9 @@ como interceptado y se escribe letra a letra, y a continuación la narradora lo 
   (`text` ≤ 70 caracteres, sin flechas/emoji/símbolos prohibidos; `holdMs` entre 2500 y 4500 ms — el silencio
   antes del audio del segmento, para dar tiempo a leer el mensaje).
 - `video.json` necesita `"adversary": "SILENT PAGER"` (el adversario de la sección, en `src/data/secplus/sections.ts`
-  o `src/data/course-gcti.ts`) en cuanto algún segmento use `intercept`; si no, `analyzeNarration` lo rechaza.
+  o `src/data/course-gcti.ts`) en cuanto algún segmento use `intercept`; si no, `build-timeline.mjs` lo rechaza
+  como error (`analyzeNarration` no lee `video.json`, así que esta comprobación concreta vive en
+  `build-timeline.mjs`, donde ya se juntan los dos archivos).
 - Límites que valida `analyzeNarration`: como mucho 1 mensaje por capítulo (error), ninguno en la escena final
   (error), y el recuento total fuera del rango del perfil (§1) es solo un aviso.
 - No tiene voz ni entra en los subtítulos; sí entra en la transcripción, como
@@ -494,7 +496,11 @@ Las exam cards se listan en el orden de las escenas:
      cuanto un segmento use `intercept`) y `"lesson"` (el id de módulo que enlaza la descripción de YouTube).
    - **Antes de sintetizar la voz:** `node video/engine/scripts/voice-plan.mjs --video <slug>` calcula si el
      guion cabe en el crédito de ElevenLabs (con el 15 % de margen para repetir tomas) y dice qué voz usar;
-     se copia esa voz en `narration.json` → `"voice"` a mano.
+     se copia esa voz en `narration.json` → `"voice"` a mano. Si toca Chatterbox, `narration.json` debe fijar
+     además `"lexicon": "lexicon.chatterbox.json"` (solo siglas: las reescrituras de `lexicon.json`, «jash»,
+     «jóuld», son para edge-tts y con Chatterbox se leen peor). `build-timeline.mjs` usa ese mismo léxico —
+     por eso se fija en `narration.json` en vez de cambiarlo por su cuenta — y `tts-chatterbox.mjs` avisa si
+     no está puesto.
    - **Al hacer la revisión de exactitud** (paso 3): el revisor comprueba además que ninguna analogía ni chiste
      de la narración con chispa falsee el concepto.
    - **Después de `render`** (paso 5): `node video/engine/scripts/youtube-meta.mjs --video <slug>` escribe

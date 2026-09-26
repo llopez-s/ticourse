@@ -112,19 +112,22 @@ interceptado, se escribe letra a letra y, a continuación, la narradora le respo
   - `holdMs`: entre 2500 y 4500. Es un silencio **antes** del audio del segmento, para que dé tiempo a leer el
     mensaje. La tarjeta sigue visible hasta que termina el segmento.
 
-### 4.2 Validación (`analyzeNarration`)
+### 4.2 Validación
 
-- **Errores:**
+- **Errores de `analyzeNarration`:**
   - más de 1 mensaje por capítulo;
   - un mensaje en la escena final;
-  - `text` o `holdMs` fuera de rango;
-  - hay `intercept` pero `video.json` no tiene `adversary`.
-- **Aviso:** el recuento del vídeo queda fuera del rango del perfil (§3).
+  - `text` o `holdMs` fuera de rango.
+- **Error de `build-timeline.mjs`:** hay `intercept` pero `video.json` no tiene `adversary`. (`analyzeNarration`
+  no conoce `video.json`, así que esta comprobación vive donde ya se juntan los dos: `build-timeline.mjs`.)
+- **Aviso de `analyzeNarration`:** el recuento del vídeo queda fuera del rango del perfil (§3).
 
 ### 4.3 Timeline y render
 
 - **`build-timeline.mjs`**:
-  - añade `leadFrames` al segmento: el audio empieza después del silencio;
+  - retrasa el `from` del segmento (el inicio de su audio) `holdMs` fotogramas de silencio; la entrada de
+    `intercept[]` empieza en el fotograma donde arrancaría ese audio sin el retraso (el principio del
+    silencio) y dura hasta que terminan el audio y la pausa del segmento;
   - genera la lista `intercept[]` con `from`, `durationInFrames`, `text` y `adversary`, igual que ya hace con
     `think[]`;
   - la clave `intercept` **solo se escribe cuando hay alguno**. Así el `timeline.json` del SIEM y el del forense
@@ -302,7 +305,7 @@ reproduciéndose desde GitHub. Notas para cuando se retomen:
   - los nuevos avisos de estilo;
   - el mapeo de emociones de Chatterbox;
   - los capítulos y el título de `youtube-meta`;
-  - `leadFrames` en el timeline.
+  - el retraso del segmento y la entrada `intercept[]` en el timeline.
 - `python -m unittest discover -s video/engine/scripts -p "test_*.py"` (worker de Chatterbox).
 - `npm test` (vitest, incluidos los bloques `youtube`), `tsc` y `npm run build`.
 - **Regresión del SIEM:** timeline, transcripción y VTT byte a byte idénticos. Ningún vídeo publicado usa

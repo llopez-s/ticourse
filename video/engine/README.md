@@ -78,13 +78,16 @@ explicación.
 - **`narration.json`**, en el segmento que responde: `"intercept": { "text": "…", "holdMs": 3500 }`.
   - `text`: 70 caracteres como máximo (`INTERCEPT_TEXT_MAX`), sin flechas, emoji ni los símbolos prohibidos de
     las tarjetas de examen. No se locuta.
-  - `holdMs`: entre 2500 y 4500 (`INTERCEPT_HOLD_MS`) — el silencio **antes** del audio del segmento
-    (`leadFrames`, que añade `build-timeline.mjs`), para dar tiempo a leer el mensaje. Un segmento no puede
-    llevar `intercept` y `think` a la vez.
+  - `holdMs`: entre 2500 y 4500 (`INTERCEPT_HOLD_MS`) — el silencio **antes** del audio del segmento, que
+    `build-timeline.mjs` añade retrasando el `from` del segmento ese mismo hueco, para dar tiempo a leer el
+    mensaje. Un segmento no puede llevar `intercept` y `think` a la vez.
 - **`video.json`**: `"adversary": "SILENT PAGER"`. Obligatorio en cuanto algún segmento use `intercept`; si
-  falta, `analyzeNarration` lo rechaza como error.
+  falta, `build-timeline.mjs` lo rechaza como error (`analyzeNarration` no lee `video.json`, así que esta
+  comprobación concreta vive donde ambos archivos ya se cruzan).
 - **`build-timeline.mjs`**:
-  - añade `leadFrames` al segmento (el audio empieza después del silencio);
+  - retrasa el `from` del segmento (el inicio de su audio) `holdMs` fotogramas; la entrada de `intercept[]`
+    empieza en el fotograma donde arrancaría ese audio sin el retraso (el principio del silencio) y dura
+    hasta que terminan el audio y la pausa del segmento;
   - escribe la clave opcional `timeline.intercept[]` (`from`, `durationInFrames`, `text`, `adversary`), **solo
     cuando hay alguno** — así el `timeline.json` de un vídeo sin `intercept` (SIEM, forense) sigue siendo byte
     a byte idéntico, y `validate-timeline.mjs` la trata como opcional;
@@ -94,9 +97,10 @@ explicación.
   escritura letra a letra; ocupa el mismo hueco que la pausa para pensar (nunca coinciden en el tiempo). Está
   en `OverlayGallery` para la QA visual.
 
-Validación completa (`analyzeNarration`): como mucho 1 mensaje por capítulo y ninguno en la escena final son
-errores; `text`/`holdMs` fuera de rango son errores; el recuento total fuera del rango del perfil (tabla de
-«Perfiles») es solo un aviso.
+Validación completa: `analyzeNarration` da error si hay más de 1 mensaje por capítulo, si hay uno en la escena
+final o si `text`/`holdMs` está fuera de rango, y avisa (no falla) si el recuento total queda fuera del rango
+del perfil (tabla de «Perfiles»). El único error que no pasa por `analyzeNarration` es el de `adversary`
+ausente, arriba, porque `analyzeNarration` no lee `video.json`.
 
 ## Cómo está hecho
 
