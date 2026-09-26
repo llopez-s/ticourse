@@ -10,6 +10,9 @@ export const SEGMENT_ID = /^s\d\d-\d\d$/;
 export const DEFAULT_PAUSE_MS = 330;
 export const EXAM_TEXT_MAX = 58;
 export const THINK_Q_MAX = 48;
+/** Intercepted messages: on-screen only (never voiced), typed out during a silent lead before their segment. */
+export const INTERCEPT_TEXT_MAX = 70;
+export const INTERCEPT_HOLD_MS = [2500, 4500];
 /** Symbols the style guide bans from anything that reaches the screen or the voice. */
 export const FORBIDDEN_SYMBOLS = /[→←↑↓↔⇒⇐⇔➔➜≠≈≤≥✓✔✗✘★☆•]|\p{Extended_Pictographic}/u;
 
@@ -241,6 +244,22 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
         think = { q: t.q, holdMs: t.holdMs };
       }
     }
+    let intercept = null;
+    if (raw.intercept !== undefined) {
+      const x = raw.intercept;
+      if (!isObj(x)) errors.push(`${label}: intercept must be an object`);
+      else {
+        if (typeof x.text !== 'string' || !x.text.trim()) errors.push(`${label}: intercept.text must be a non-empty string`);
+        else {
+          if (x.text.length > INTERCEPT_TEXT_MAX) errors.push(`${label}: intercept.text is ${x.text.length} characters (max ${INTERCEPT_TEXT_MAX})`);
+          if (FORBIDDEN_SYMBOLS.test(x.text) || /[{}[\]|<>]/.test(x.text)) errors.push(`${label}: intercept.text contains a forbidden symbol`);
+        }
+        const [lo, hi] = INTERCEPT_HOLD_MS;
+        if (typeof x.holdMs !== 'number' || x.holdMs < lo || x.holdMs > hi) errors.push(`${label}: intercept.holdMs must be between ${lo} and ${hi}`);
+        if (raw.think !== undefined) errors.push(`${label}: a segment cannot carry both a think prompt and an intercepted message`);
+        intercept = { text: x.text, holdMs: x.holdMs };
+      }
+    }
 
     // Style (warnings only)
     const displayWords = parsed.displayTokens.length;
@@ -256,7 +275,7 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
       prevMood = mood;
     }
 
-    segments.push({ id: raw.id, scene: raw.scene, sceneIndex: si, text: raw.text, parsed, pauseMs, exam, think });
+    segments.push({ id: raw.id, scene: raw.scene, sceneIndex: si, text: raw.text, parsed, pauseMs, exam, think, intercept });
   });
 
   // Scenes
@@ -264,6 +283,7 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
   const lastScene = storyboard.scenes.at(-1).id;
   let examCount = 0;
   const thinkScenes = [];
+  const interceptsByChapter = new Map();
   for (const { scene, segments: segs } of scenes) {
     if (!segs.length) {
       errors.push(`scene ${scene.id} has no segments`);
@@ -298,9 +318,18 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
       if (s.exam.at && !counts.has(s.exam.at)) errors.push(`${s.id}: exam.at "${s.exam.at}" is not a cue of ${scene.id}`);
     }
     for (const s of segs) if (s.think) thinkScenes.push(scene.id);
+    for (const s of segs.filter((x) => x.intercept)) {
+      if (scene.id === lastScene) errors.push(`${s.id}: the closing scene must not carry an intercepted message`);
+      interceptsByChapter.set(scene.chapter, (interceptsByChapter.get(scene.chapter) ?? 0) + 1);
+    }
   }
   if (thinkScenes.length !== thinkPrompts) warnings.push(`${thinkScenes.length} think prompts (style guide: exactly ${thinkPrompts})`);
   if (examCount && (examCount < examCards[0] || examCount > examCards[1])) warnings.push(`${examCount} exam cards (style guide: ${examCards[0]}–${examCards[1]})`);
+  for (const [chapter, n] of interceptsByChapter) if (n > 1) errors.push(`chapter ${chapter}: ${n} intercepted messages (max 1 per chapter)`);
+  const interceptCount = [...interceptsByChapter.values()].reduce((a, b) => a + b, 0);
+  if (intercepts && (interceptCount < intercepts[0] || interceptCount > intercepts[1])) {
+    warnings.push(`${interceptCount} intercepted messages (style guide: ${intercepts[0]}–${intercepts[1]})`);
+  }
 
   const unused = Object.keys(lexicon).filter((k) => !usedLexicon.has(k));
   if (unused.length) warnings.push(`lexicon entries never used outside markup: ${unused.join(', ')}`);

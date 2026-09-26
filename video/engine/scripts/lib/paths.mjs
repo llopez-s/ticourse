@@ -27,17 +27,32 @@ export function videoSlugFrom(argv = process.argv, env = process.env) {
 
 const MANIFEST_KEYS = ['slug', 'output', 'composition', 'poster', 'profile', 'track'];
 
+/** Optional video.json keys and the shape their value must have. */
+export const OPTIONAL_MANIFEST_KEYS = Object.freeze({
+  /** Section adversary whose intercepted messages the video shows (e.g. "SILENT PAGER"). */
+  adversary: /^[A-Z][A-Z ]{1,30}[A-Z]$/,
+});
+
+/** Checks a parsed video.json; throws on the first problem. */
+export function checkManifest(manifest, file, slug) {
+  for (const key of MANIFEST_KEYS) {
+    if (typeof manifest[key] !== 'string' || !manifest[key]) throw new Error(`${file}: "${key}" must be a non-empty string`);
+  }
+  for (const [key, pattern] of Object.entries(OPTIONAL_MANIFEST_KEYS)) {
+    if (manifest[key] !== undefined && (typeof manifest[key] !== 'string' || !pattern.test(manifest[key]))) {
+      throw new Error(`${file}: "${key}" must match ${pattern}`);
+    }
+  }
+  if (manifest.slug !== slug) throw new Error(`${file}: slug "${manifest.slug}" does not match its folder "${slug}"`);
+  return manifest;
+}
+
 /** Reads and checks video/<slug>/video.json. */
 export function readManifest(slug) {
   if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) throw new Error(`invalid video slug ${JSON.stringify(slug)}`);
   const file = path.join(VIDEOS_DIR, slug, 'video.json');
   if (!existsSync(file)) throw new Error(`no video.json for "${slug}" (expected ${file})`);
-  const manifest = JSON.parse(readFileSync(file, 'utf8').replace(/^﻿/, ''));
-  for (const key of MANIFEST_KEYS) {
-    if (typeof manifest[key] !== 'string' || !manifest[key]) throw new Error(`${file}: "${key}" must be a non-empty string`);
-  }
-  if (manifest.slug !== slug) throw new Error(`${file}: slug "${manifest.slug}" does not match its folder "${slug}"`);
-  return manifest;
+  return checkManifest(JSON.parse(readFileSync(file, 'utf8').replace(/^﻿/, '')), file, slug);
 }
 
 /** Where the rendered MP4 goes: the app's public/videos (committed) or, for YouTube, the video's out/ (ignored). */
