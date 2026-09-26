@@ -69,13 +69,34 @@ export interface CheckQ {
   explain?: string;
 }
 
+/** A lesson video hosted in the app: the MP4 and its captions live in public/videos. */
+export interface VideoFileBlock {
+  t: 'video';
+  title: string;
+  src: string;
+  poster: string;
+  transcript: string;
+  captions: string;
+}
+
+/** A lesson video hosted on YouTube: only the poster and the transcript live in public/videos. */
+export interface YouTubeVideoBlock {
+  t: 'video';
+  title: string;
+  /** YouTube video id (11 characters). */
+  youtube: string;
+  poster: string;
+  transcript: string;
+}
+
 export type Block =
   | { t: 'p'; md: string }
   | { t: 'h'; text: string }
   | { t: 'list'; items: string[]; ordered?: boolean }
   | { t: 'table'; headers: string[]; rows: string[][] }
   | { t: 'code'; lang?: string; title?: string; text: string }
-  | { t: 'video'; title: string; src: string; poster: string; transcript: string; captions: string }
+  | VideoFileBlock
+  | YouTubeVideoBlock
   | {
       t: 'callout';
       kind: 'tip' | 'warn' | 'example' | 'exam' | 'story';
