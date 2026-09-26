@@ -5,7 +5,7 @@
 
 The job file names the model pack, the reference clip (or null for the built-in
 voice), the synthesis settings and a list of {id, text, seed[, exaggeration, cfgWeight]}.
-For every job the worker writes into outDir:
+For every job that succeeds the worker writes into outDir:
 
     <id>.wav   mono PCM at the model's sample rate (Chatterbox embeds its Perth watermark)
     <id>.json  {id, sampleRate, durationMs, seed, takes, score, asrText, words:[{text,startMs,endMs}]}
@@ -14,7 +14,10 @@ Chatterbox returns no timings, so each take is transcribed with faster-whisper:
 the transcript's word timestamps become the clip's word boundaries, and its
 similarity to the script (0-1, see script_score) decides whether the take is
 kept. A take below minScore is synthesised again with another seed, up to
-`attempts` takes; the best one wins.
+`attempts` takes; the best one wins. A job whose every take comes back with no
+words at all is logged and skipped — neither file above is written for it —
+and the run moves on to the next job instead of aborting; the exit status is 1
+if any job was skipped this way (their ids are logged), else 0.
 
 Models are cached under $HF_HOME (the Node side points it at
 video/engine/.cache/huggingface so nothing lands on C:).
@@ -205,6 +208,7 @@ def main(argv: list[str] | None = None) -> int:
 
     attempts = max(1, int(spec.get("attempts", 3)))
     min_score = float(spec.get("minScore", 0.85))
+    failed: list[str] = []
     for n, job in enumerate(spec["jobs"], 1):
         t0 = time.monotonic()
         best = None
@@ -237,8 +241,10 @@ def main(argv: list[str] | None = None) -> int:
             if take + 1 < attempts:
                 log(f"    {job['id']}: take {take + 1} matches the script at {score:.2f} (< {min_score}) — retrying")
         if not best["words"]:
-            log(f"chatterbox: {job['id']}: whisper found no words in any take")
-            return 1
+            log(f"chatterbox: {job['id']}: whisper found no words in any take — skipping it, {len(spec['jobs']) - n} job(s) left")
+            best["file"].unlink(missing_ok=True)  # the best take's leftover .takeN.wav; nothing else of this job was written
+            failed.append(job["id"])
+            continue
         os.replace(best["file"], out_dir / f"{job['id']}.wav")
         duration_ms = best["samples"] / tts.sr * 1000
         result = {
@@ -256,6 +262,9 @@ def main(argv: list[str] | None = None) -> int:
             f"  [{n}/{len(spec['jobs'])}] {job['id']}: {duration_ms / 1000:.2f} s audio, match {best['score']:.2f}, "
             f"{len(best['words'])} words, {time.monotonic() - t0:.0f} s"
         )
+    if failed:
+        log(f"chatterbox: done in {time.monotonic() - started:.0f} s — {len(failed)} job(s) failed: {', '.join(failed)}")
+        return 1
     log(f"chatterbox: done in {time.monotonic() - started:.0f} s")
     return 0
 

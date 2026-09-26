@@ -96,7 +96,12 @@ function checkSetup() {
   }
 }
 
-/** Runs the Python worker on a job file; the worker writes <id>.wav + <id>.json into outDir. */
+/**
+ * Runs the Python worker on a job file; the worker writes <id>.wav + <id>.json into outDir for
+ * every job that succeeded (a job with no words in any take is skipped, not written). Returns the
+ * worker's exit status instead of throwing on non-zero, so a caller can decide what a partial
+ * failure means for it; only a failure to launch the process (`res.error`) throws here.
+ */
 function runWorker(jobFile, log) {
   const res = spawnSync(VENV_PYTHON, ['-X', 'utf8', WORKER, '--jobs', jobFile], {
     cwd: REPO_ROOT,
@@ -109,8 +114,19 @@ function runWorker(jobFile, log) {
     },
   });
   if (res.error) throw new Error(`cannot run the Chatterbox worker: ${res.error.message}`);
-  if (res.status !== 0) throw new Error(`the Chatterbox worker failed (exit ${res.status})`);
   log.log('');
+  return res.status;
+}
+
+/** Which of `ids` have both a <id>.json and <id>.wav in `workDir` — a job the worker actually finished. */
+export function finishedJobs(ids, workDir) {
+  const done = [];
+  const missing = [];
+  for (const id of ids) {
+    if (existsSync(path.join(workDir, `${id}.json`)) && existsSync(path.join(workDir, `${id}.wav`))) done.push(id);
+    else missing.push(id);
+  }
+  return { done, missing };
 }
 
 /** Encodes a worker WAV to a CBR MP3 clip. Returns its size in bytes. */
@@ -208,12 +224,15 @@ export function synthesizeNarration({ only = null, force = false, log = console 
     const m = moodOf.get(seg.id);
     return { id: seg.id, text: spokenForVoice(voice, seg.parsed), seed: segmentSeed(settings.seed, seg.id), exaggeration: m.exaggeration, cfgWeight: m.cfg_weight };
   });
-  runWorker(jobFileFor('narration', { pack, voiceRef, settings, jobs, outDir: WORK_DIR }), log);
+  const status = runWorker(jobFileFor('narration', { pack, voiceRef, settings, jobs, outDir: WORK_DIR }), log);
 
   mkdirSync(PATHS.voiceDir, { recursive: true });
   mkdirSync(PATHS.ttsDir, { recursive: true });
+  const { done, missing } = finishedJobs(todo.map((seg) => seg.id), WORK_DIR);
+  const doneIds = new Set(done);
   const weak = [];
   for (const seg of todo) {
+    if (!doneIds.has(seg.id)) continue; // the worker produced no result for this one; see the throw below
     const result = JSON.parse(readFileSync(path.join(WORK_DIR, `${seg.id}.json`), 'utf8'));
     const mp3Path = path.join(PATHS.voiceDir, `${seg.id}.mp3`);
     const bytes = encodeClip(path.join(WORK_DIR, `${seg.id}.wav`), mp3Path);
@@ -241,6 +260,13 @@ export function synthesizeNarration({ only = null, force = false, log = console 
   }
   if (weak.length) {
     log.warn(`  aviso: best take still differs from the script (score < ${settings.min_score}): ${weak.join(', ')} — listen to them, or rerun with --only <id> --force`);
+  }
+  // A segment can fail on its own (e.g. whisper found no words in any take) without the whole run
+  // being discarded: every other segment above is already encoded and recorded, and the cache
+  // (the rec.key/settingsKey/bytes check above `todo` is computed from) will skip them on a rerun.
+  if (missing.length || status !== 0) {
+    const names = missing.length ? missing.join(', ') : `(worker exited ${status} with no segment identified as missing)`;
+    throw new Error(`the Chatterbox worker did not produce results for: ${names} — rerun to redo only those segments (the cache skips the ones already done)`);
   }
 }
 
@@ -275,7 +301,8 @@ export function audition({ voices = ['mtl/default', 'es-es/default'], respelled 
     const { pack, voiceName, voiceRef } = parseVoice(`chatterbox/${v}`);
     const name = `${pack}-${voiceName}`;
     const jobs = variants.map((x) => ({ id: `${name}${x.suffix}`, text: x.text, seed: DEFAULT_SETTINGS.seed }));
-    runWorker(jobFileFor(name, { pack, voiceRef, settings: DEFAULT_SETTINGS, jobs, outDir: dir }), log);
+    const status = runWorker(jobFileFor(name, { pack, voiceRef, settings: DEFAULT_SETTINGS, jobs, outDir: dir }), log);
+    if (status !== 0) throw new Error(`the Chatterbox worker failed (exit ${status})`);
     for (const job of jobs) {
       const out = path.join(PATHS.auditionDir, `chatterbox-${job.id}.mp3`);
       encodeClip(path.join(dir, `${job.id}.wav`), out);
@@ -305,7 +332,8 @@ export function moodAudition({ voice = 'es-es/default', log = console } = {}) {
     exaggeration: r.exaggeration,
     cfgWeight: r.cfg_weight,
   }));
-  runWorker(jobFileFor(`moods-${pack}-${voiceName}`, { pack, voiceRef, settings: DEFAULT_SETTINGS, jobs, outDir: dir }), log);
+  const status = runWorker(jobFileFor(`moods-${pack}-${voiceName}`, { pack, voiceRef, settings: DEFAULT_SETTINGS, jobs, outDir: dir }), log);
+  if (status !== 0) throw new Error(`the Chatterbox worker failed (exit ${status})`);
   for (const job of jobs) {
     const out = path.join(PATHS.auditionDir, `chatterbox-${job.id}.mp3`);
     encodeClip(path.join(dir, `${job.id}.wav`), out);

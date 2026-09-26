@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
-import { DEFAULT_SETTINGS, VOICES_DIR, parseVoice, segmentSeed, settingsFor, settingsKey } from '../tts-chatterbox.mjs';
+import { DEFAULT_SETTINGS, VOICES_DIR, finishedJobs, parseVoice, segmentSeed, settingsFor, settingsKey } from '../tts-chatterbox.mjs';
 import { analyzeNarration, isChatterboxVoice, isElevenLabsVoice, spokenForVoice } from './narration.mjs';
 import { parseSegmentText } from './text.mjs';
 
@@ -48,4 +50,19 @@ test('segmentSeed is stable per segment and differs between segments', () => {
   assert.equal(segmentSeed(20260925, 's01-01'), segmentSeed(20260925, 's01-01'));
   assert.notEqual(segmentSeed(20260925, 's01-01'), segmentSeed(20260925, 's01-02'));
   assert.ok(Number.isInteger(segmentSeed(20260925, 's09-04')) && segmentSeed(20260925, 's09-04') < 2 ** 31);
+});
+
+test('finishedJobs: an id is done only when both its .json and .wav exist in workDir', () => {
+  const dir = mkdtempSync(path.join(os.tmpdir(), 'chatterbox-finished-'));
+  try {
+    writeFileSync(path.join(dir, 's01-01.json'), '{}');
+    writeFileSync(path.join(dir, 's01-01.wav'), '');
+    writeFileSync(path.join(dir, 's01-02.json'), '{}'); // no .wav alongside it: not done
+    writeFileSync(path.join(dir, 's01-03.wav'), ''); // no .json alongside it: not done
+    const { done, missing } = finishedJobs(['s01-01', 's01-02', 's01-03', 's01-04'], dir);
+    assert.deepEqual(done, ['s01-01']);
+    assert.deepEqual(missing, ['s01-02', 's01-03', 's01-04']);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });
