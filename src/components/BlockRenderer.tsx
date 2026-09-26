@@ -1,6 +1,7 @@
 /// <reference types="vite/client" />
 import { useEffect, useRef, useState } from 'react';
-import type { Block, CheckQ } from '../lib/types';
+import type { Block, CheckQ, VideoFileBlock, YouTubeVideoBlock } from '../lib/types';
+import { isYouTubeBlock, youtubeEmbedUrl, youtubeWatchUrl } from '../lib/youtube';
 import { md } from '../lib/md';
 import { useStore } from '../lib/store';
 
@@ -49,14 +50,46 @@ function parseVtt(source: string): CaptionCue[] {
     });
 }
 
-function VideoBlock({ block }: { block: Extract<Block, { t: 'video' }> }) {
+/** «Leer transcripción»: loads the transcript text the first time it opens. */
+function TranscriptDetails({ src }: { src: string }) {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle');
+  const [text, setText] = useState('');
+  const load = async (open: boolean) => {
+    if (!open || status !== 'idle') return;
+    setStatus('loading');
+    try {
+      const response = await fetch(src);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      setText(await response.text());
+      setStatus('ready');
+    } catch {
+      setStatus('error');
+    }
+  };
+  return (
+    <details
+      className="w-full rounded-lg border border-ink-700 bg-ink-850 px-3 py-2 text-slate-300"
+      onToggle={(event) => void load(event.currentTarget.open)}
+    >
+      <summary className="cursor-pointer font-medium text-cyan-300">Leer transcripción</summary>
+      {status === 'loading' ? <p role="status" className="mt-3">Cargando transcripción…</p> : null}
+      {status === 'ready' ? <p className="mt-3 whitespace-pre-wrap leading-relaxed">{text}</p> : null}
+      {status === 'error' ? (
+        <p role="alert" className="mt-3 text-amber-200">No se pudo cargar la transcripción.</p>
+      ) : null}
+      <a className="mt-3 inline-block text-cyan-300 underline underline-offset-2 hover:text-cyan-200" href={src}>
+        Abrir archivo de transcripción
+      </a>
+    </details>
+  );
+}
+
+function VideoBlock({ block }: { block: VideoFileBlock }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoError, setVideoError] = useState(false);
   const [cues, setCues] = useState<CaptionCue[]>([]);
   const [currentTime, setCurrentTime] = useState(0);
   const [captionsError, setCaptionsError] = useState(false);
-  const [transcriptStatus, setTranscriptStatus] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle');
-  const [transcriptText, setTranscriptText] = useState('');
   const videoSrc = assetUrl(block.src);
   const transcriptSrc = assetUrl(block.transcript);
   const captionsSrc = assetUrl(block.captions);
@@ -82,19 +115,6 @@ function VideoBlock({ block }: { block: Extract<Block, { t: 'video' }> }) {
       await videoRef.current?.requestFullscreen();
     } catch {
       // Native video controls still offer fullscreen where the browser supports it.
-    }
-  };
-
-  const loadTranscript = async (open: boolean) => {
-    if (!open || transcriptStatus !== 'idle') return;
-    setTranscriptStatus('loading');
-    try {
-      const response = await fetch(transcriptSrc);
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      setTranscriptText(await response.text());
-      setTranscriptStatus('ready');
-    } catch {
-      setTranscriptStatus('error');
     }
   };
 
@@ -137,22 +157,62 @@ function VideoBlock({ block }: { block: Extract<Block, { t: 'video' }> }) {
             Pantalla completa
           </button>
         ) : null}
-        <details
-          className="w-full rounded-lg border border-ink-700 bg-ink-850 px-3 py-2 text-slate-300"
-          onToggle={(event) => void loadTranscript(event.currentTarget.open)}
+        <TranscriptDetails src={transcriptSrc} />
+      </div>
+    </section>
+  );
+}
+
+/**
+ * YouTube lesson video behind a click-to-load facade: until the learner presses play the page shows
+ * only our own poster, so nothing is requested from YouTube.
+ */
+function YouTubeBlock({ block }: { block: YouTubeVideoBlock }) {
+  const [playing, setPlaying] = useState(false);
+  return (
+    <section className="my-6 overflow-hidden rounded-xl border border-cyan-500/30 bg-ink-900">
+      <div className="border-b border-ink-700 px-4 py-3">
+        <h3 className="text-base font-semibold text-slate-100">{block.title}</h3>
+      </div>
+      <div className="relative aspect-video w-full bg-ink-950">
+        {playing ? (
+          <iframe
+            className="absolute inset-0 h-full w-full"
+            src={youtubeEmbedUrl(block.youtube)}
+            title={block.title}
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        ) : (
+          <button
+            type="button"
+            className="group absolute inset-0 h-full w-full focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-cyan-400"
+            onClick={() => setPlaying(true)}
+            aria-label={`Reproducir «${block.title}» (se carga desde YouTube)`}
+          >
+            <img src={assetUrl(block.poster)} alt="" className="h-full w-full object-cover" />
+            <span className="absolute left-1/2 top-1/2 flex h-16 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-red-600/90 shadow-lg transition group-hover:bg-red-600">
+              <svg viewBox="0 0 24 24" className="h-8 w-8 fill-white" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </span>
+          </button>
+        )}
+      </div>
+      <p className="border-t border-ink-700 px-4 py-2 text-xs text-slate-400">
+        El vídeo se carga desde YouTube solo al pulsar reproducir.
+      </p>
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 px-4 py-3 text-sm">
+        <a
+          className="font-medium text-cyan-300 underline underline-offset-2 hover:text-cyan-200"
+          href={youtubeWatchUrl(block.youtube)}
+          target="_blank"
+          rel="noreferrer"
         >
-          <summary className="cursor-pointer font-medium text-cyan-300">Leer transcripción</summary>
-          {transcriptStatus === 'loading' ? <p role="status" className="mt-3">Cargando transcripción…</p> : null}
-          {transcriptStatus === 'ready' ? (
-            <p className="mt-3 whitespace-pre-wrap leading-relaxed">{transcriptText}</p>
-          ) : null}
-          {transcriptStatus === 'error' ? (
-            <p role="alert" className="mt-3 text-amber-200">No se pudo cargar la transcripción.</p>
-          ) : null}
-          <a className="mt-3 inline-block text-cyan-300 underline underline-offset-2 hover:text-cyan-200" href={transcriptSrc}>
-            Abrir archivo de transcripción
-          </a>
-        </details>
+          Ver en YouTube
+        </a>
+        <TranscriptDetails src={assetUrl(block.transcript)} />
       </div>
     </section>
   );
@@ -369,7 +429,7 @@ export default function BlockRenderer({
               </div>
             );
           case 'video':
-            return <VideoBlock key={i} block={b} />;
+            return isYouTubeBlock(b) ? <YouTubeBlock key={i} block={b} /> : <VideoBlock key={i} block={b} />;
           case 'callout': {
             const s = CALLOUT_STYLE[b.kind];
             return (

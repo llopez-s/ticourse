@@ -30,6 +30,10 @@ export function pickFrames(timeline, { scene = null, extra = [] } = {}) {
     for (const c of timeline.cues.filter((x) => x.scene === s.id)) add(c.frame + 12, s.id, `cue-${c.id}`);
     for (const e of timeline.exam.filter((x) => x.scene === s.id)) add(e.from + 20, s.id, `exam-${e.objective}`);
     for (const t of timeline.think.filter((x) => x.scene === s.id)) add(t.from + 10, s.id, 'think');
+    for (const i of (timeline.intercept ?? []).filter((x) => x.scene === s.id)) {
+      add(i.from + 30, s.id, 'intercept-typing');
+      add(i.from + i.durationInFrames - 20, s.id, 'intercept');
+    }
     add(s.from + s.durationInFrames - 10, s.id, 'end');
   }
   for (const f of extra) {

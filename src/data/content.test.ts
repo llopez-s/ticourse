@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { ALL_MODULES, ALL_PLACEMENT, ALL_QUESTIONS, contentSections, sectionById } from './course';
+import { isYouTubeBlock, isYouTubeId } from '../lib/youtube';
 import { CLASSIFY_DATA, LABS, ORDER_DATA, SELECT_DATA } from './labs';
 import { TRACKS } from './tracks';
 import { PLACEMENT_BLOCK_N } from '../lib/placement';
@@ -256,9 +257,11 @@ describe('lesson videos', () => {
   const publicFile = (path: string) => new URL(`../../public/${path}`, import.meta.url);
 
   // Every t:'video' block of both tracks, with the lesson that embeds it.
-  const videos = ALL_MODULES.flatMap((m) =>
+  const allVideos = ALL_MODULES.flatMap((m) =>
     m.blocks.flatMap((b) => (b.t === 'video' ? [{ module: m.id, block: b }] : [])),
   );
+  const videos = allVideos.flatMap((v) => (isYouTubeBlock(v.block) ? [] : [{ module: v.module, block: v.block }]));
+  const youtubeVideos = allVideos.flatMap((v) => (isYouTubeBlock(v.block) ? [{ module: v.module, block: v.block }] : []));
   const moduleOf = (src: string) => videos.find((v) => v.block.src === src)?.module;
 
   it('the explainers sit in the lessons the video plan puts them in', () => {
@@ -292,8 +295,24 @@ describe('lesson videos', () => {
     }
   });
 
+  it('every YouTube video block has a valid id and its poster and transcript in public/', async () => {
+    const fs = await loadFs();
+    for (const { module, block } of youtubeVideos) {
+      expect(isYouTubeId(block.youtube), `${module}: ${block.youtube}`).toBe(true);
+      for (const [path, ext] of [[block.poster, /\.(png|jpe?g|webp)$/], [block.transcript, /\.txt$/]] as const) {
+        expect(path, module).toMatch(ext);
+        expect(path.startsWith('/') || path.includes('..'), module).toBe(false);
+        expect(fs.existsSync(publicFile(path)), `${module}: ${path}`).toBe(true);
+      }
+      expect(fs.readFileSync(publicFile(block.transcript), 'utf8').length, block.transcript).toBeGreaterThan(200);
+    }
+  });
+
   it('no two video blocks share an asset', () => {
-    const paths = videos.flatMap(({ block }) => [block.src, block.poster, block.transcript, block.captions]);
+    const paths = [
+      ...videos.flatMap(({ block }) => [block.src, block.poster, block.transcript, block.captions]),
+      ...youtubeVideos.flatMap(({ block }) => [block.youtube, block.poster, block.transcript]),
+    ];
     expect(new Set(paths).size).toBe(paths.length);
   });
 });

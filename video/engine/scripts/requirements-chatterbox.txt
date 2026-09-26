@@ -1,0 +1,7 @@
+# Chatterbox voice (tts-chatterbox.mjs -> chatterbox_worker.py), CPU only.
+# Install into video/engine/.venv-chatterbox with Python 3.12 (see video/engine/README.md, «Voz: Chatterbox»).
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.6.0
+torchaudio==2.6.0
+chatterbox-tts==0.1.7
+faster-whisper==1.2.1

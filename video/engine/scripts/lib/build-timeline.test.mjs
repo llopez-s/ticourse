@@ -15,7 +15,7 @@ const tmp = mkdtempSync(path.join(tmpdir(), 'siem-timeline-'));
 after(() => rmSync(tmp, { recursive: true, force: true }));
 
 /** Writes a narration variant and builds it in estimate mode without touching real outputs. */
-async function buildVariant(mutate, name) {
+async function buildVariant(mutate, name, extra = {}) {
   const narration = read('narration.mini.json');
   mutate(narration);
   const file = path.join(tmp, `${name}.json`);
@@ -27,12 +27,14 @@ async function buildVariant(mutate, name) {
     lexicon: path.join(FIX, 'lexicon.mini.json'),
     write: false,
     log: quiet,
+    ...extra,
   });
 }
 
 test('estimate mode: the timeline satisfies the types.ts contract and the timing recipe', async () => {
   const { timeline, transcript } = await buildVariant(() => {}, 'ok');
   assert.deepEqual(validateTimeline(timeline), []);
+  assert.equal('intercept' in timeline, false, 'no intercept key without intercepted messages');
   assert.equal(timeline.mode, 'estimate');
   assert.equal(timeline.voice, 'none');
   assert.ok(timeline.segments.every((s) => s.audio === null));
@@ -194,4 +196,33 @@ test('WebVTT: one cue per caption page, sitting next to the transcript', async (
   assert.deepEqual(text, page.lines.map((line) => line.map((w) => w.text).join(' ')));
   assert.equal(captionsPathFor('/x/videos/siem-blue-team-transcript.txt'), '/x/videos/siem-blue-team-captions.vtt');
   assert.equal(captionsPathFor('/tmp/other.txt'), '/tmp/other.txt.vtt');
+});
+
+const MSG = 'Borro el log del servidor y aquí no ha pasado nada.';
+
+test('intercepted message: silent lead, card until the answer ends, transcript line', async () => {
+  const { timeline, transcript } = await buildVariant(
+    (n) => {
+      n.segments[2].intercept = { text: MSG, holdMs: 3000 };
+    },
+    'intercept',
+    { adversary: 'SILENT PAGER' },
+  );
+  assert.deepEqual(validateTimeline(timeline), []);
+  const seg = timeline.segments.find((s) => s.id === 's02-01');
+  const scene = timeline.scenes.find((s) => s.id === 's02-collect');
+  assert.deepEqual(timeline.intercept, [
+    { scene: 's02-collect', from: scene.from + TIMING.lead, durationInFrames: 90 + seg.durationInFrames, adversary: 'SILENT PAGER', text: MSG },
+  ]);
+  assert.equal(seg.from, scene.from + TIMING.lead + 90, 'the answer starts after 3000 ms of silence');
+  assert.ok(transcript.includes(`[Mensaje interceptado · SILENT PAGER] «${MSG}» ${seg.text}`), transcript);
+});
+
+test('intercepted messages need an adversary in video.json', async () => {
+  await assert.rejects(
+    buildVariant((n) => {
+      n.segments[2].intercept = { text: MSG, holdMs: 3000 };
+    }, 'no-adversary', { adversary: null }),
+    /no "adversary"/,
+  );
 });

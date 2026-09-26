@@ -10,6 +10,9 @@ export const SEGMENT_ID = /^s\d\d-\d\d$/;
 export const DEFAULT_PAUSE_MS = 330;
 export const EXAM_TEXT_MAX = 58;
 export const THINK_Q_MAX = 48;
+/** Intercepted messages: on-screen only (never voiced), typed out during a silent lead before their segment. */
+export const INTERCEPT_TEXT_MAX = 70;
+export const INTERCEPT_HOLD_MS = [2500, 4500];
 /** Symbols the style guide bans from anything that reaches the screen or the voice. */
 export const FORBIDDEN_SYMBOLS = /[→←↑↓↔⇒⇐⇔➔➜≠≈≤≥✓✔✗✘★☆•]|\p{Extended_Pictographic}/u;
 
@@ -34,15 +37,22 @@ export function parseJsonText(text, path) {
 /** Reads the three source files. A missing lexicon is allowed (empty, with a warning). */
 export const EDGE_VOICE = /^[a-z]{2}-[A-Z]{2}-\w+Neural$/;
 export const ELEVEN_VOICE = /^elevenlabs\/[a-z0-9_]+\/[A-Za-z0-9]{10,40}$/;
+/** Local Chatterbox model: "chatterbox/<pack>/<voice>" (pack es-es | mtl; voice default | a clip in engine/voices/). */
+export const CHATTERBOX_VOICE = /^chatterbox\/(es-es|mtl)\/[a-z0-9][a-z0-9_-]*$/;
 
 /** True when the narration is voiced with ElevenLabs (voice "elevenlabs/<model>/<voice_id>"). */
 export function isElevenLabsVoice(voice) {
   return typeof voice === 'string' && ELEVEN_VOICE.test(voice);
 }
 
+/** True when the narration is voiced locally with Chatterbox (voice "chatterbox/<pack>/<voice>"). */
+export function isChatterboxVoice(voice) {
+  return typeof voice === 'string' && CHATTERBOX_VOICE.test(voice);
+}
+
 /**
  * The text a segment is synthesised from (and keyed on): ElevenLabs gets the
- * voice-only <directions> as [audio tags]; edge-tts gets plain spoken text.
+ * voice-only <directions> as [audio tags]; edge-tts and Chatterbox get plain spoken text.
  */
 export function spokenForVoice(voice, parsed) {
   return isElevenLabsVoice(voice) ? parsed.directedSpoken : parsed.spoken;
@@ -98,7 +108,7 @@ const countWords = (s) => s.split(/\s+/).filter(Boolean).length;
  * @returns {{errors: string[], warnings: string[], voice: {voice: string, rate: string, pitch: string},
  *   scenes: {scene: object, index: number, segments: object[]}[], segments: object[]}}
  */
-export function analyzeNarration({ storyboard, narration, lexicon }, { examCards = [8, 11], thinkPrompts = 2 } = {}) {
+export function analyzeNarration({ storyboard, narration, lexicon }, { examCards = [8, 11], thinkPrompts = 2, intercepts = null, chispa = false } = {}) {
   const errors = [];
   const warnings = [];
 
@@ -132,10 +142,13 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
     return { errors, warnings, voice: null, scenes: [], segments: [] };
   }
   const voice = { voice: narration.voice, rate: narration.rate ?? '+0%', pitch: narration.pitch ?? '+0Hz' };
-  if (typeof voice.voice !== 'string' || !(EDGE_VOICE.test(voice.voice) || ELEVEN_VOICE.test(voice.voice))) {
-    errors.push(`narration.voice ${JSON.stringify(voice.voice)} must be an edge-tts voice ("es-ES-ElviraNeural") or "elevenlabs/<model_id>/<voice_id>"`);
+  if (typeof voice.voice !== 'string' || !(EDGE_VOICE.test(voice.voice) || ELEVEN_VOICE.test(voice.voice) || CHATTERBOX_VOICE.test(voice.voice))) {
+    errors.push(
+      `narration.voice ${JSON.stringify(voice.voice)} must be an edge-tts voice ("es-ES-ElviraNeural"), "elevenlabs/<model_id>/<voice_id>" or "chatterbox/<es-es|mtl>/<voice>"`,
+    );
   }
   if (narration.elevenlabs !== undefined && !isObj(narration.elevenlabs)) errors.push('narration.elevenlabs must be an object of voice settings');
+  if (narration.chatterbox !== undefined && !isObj(narration.chatterbox)) errors.push('narration.chatterbox must be an object of synthesis settings');
   if (!/^[+-]\d{1,3}%$/.test(voice.rate)) errors.push(`narration.rate ${JSON.stringify(voice.rate)} must look like "+0%"`);
   if (!/^[+-]\d{1,3}Hz$/.test(voice.pitch)) errors.push(`narration.pitch ${JSON.stringify(voice.pitch)} must look like "+0Hz"`);
   if (!Array.isArray(narration.segments) || !narration.segments.length) {
@@ -150,6 +163,7 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
   const risks = new Map(); // token -> first segment id
   let currentScene = -1;
   let lastIndex = 0;
+  let prevMood = null;
   narration.segments.forEach((raw, k) => {
     const label = isObj(raw) && typeof raw.id === 'string' ? raw.id : `segment #${k + 1}`;
     if (!isObj(raw)) {
@@ -230,6 +244,22 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
         think = { q: t.q, holdMs: t.holdMs };
       }
     }
+    let intercept = null;
+    if (raw.intercept !== undefined) {
+      const x = raw.intercept;
+      if (!isObj(x)) errors.push(`${label}: intercept must be an object`);
+      else {
+        if (typeof x.text !== 'string' || !x.text.trim()) errors.push(`${label}: intercept.text must be a non-empty string`);
+        else {
+          if (x.text.length > INTERCEPT_TEXT_MAX) errors.push(`${label}: intercept.text is ${x.text.length} characters (max ${INTERCEPT_TEXT_MAX})`);
+          if (FORBIDDEN_SYMBOLS.test(x.text) || /[{}[\]|<>]/.test(x.text)) errors.push(`${label}: intercept.text contains a forbidden symbol`);
+        }
+        const [lo, hi] = INTERCEPT_HOLD_MS;
+        if (typeof x.holdMs !== 'number' || x.holdMs < lo || x.holdMs > hi) errors.push(`${label}: intercept.holdMs must be between ${lo} and ${hi}`);
+        if (raw.think !== undefined) errors.push(`${label}: a segment cannot carry both a think prompt and an intercepted message`);
+        intercept = { text: x.text, holdMs: x.holdMs };
+      }
+    }
 
     // Style (warnings only)
     const displayWords = parsed.displayTokens.length;
@@ -238,7 +268,14 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
       if (countWords(sentence) > 22) warnings.push(`${label}: sentence of ${countWords(sentence)} words (max 22): "${sentence.slice(0, 60)}…"`);
     }
 
-    segments.push({ id: raw.id, scene: raw.scene, sceneIndex: si, text: raw.text, parsed, pauseMs, exam, think });
+    if (chispa) {
+      if (parsed.spoken.includes(';')) warnings.push(`${label}: ";" in the narration — split it into two sentences (chispa style)`);
+      const mood = parsed.directions[0] ?? null;
+      if (mood && mood === prevMood) warnings.push(`${label}: same emotion <${mood}> as the previous segment (chispa style: vary it)`);
+      prevMood = mood;
+    }
+
+    segments.push({ id: raw.id, scene: raw.scene, sceneIndex: si, text: raw.text, parsed, pauseMs, exam, think, intercept });
   });
 
   // Scenes
@@ -246,6 +283,7 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
   const lastScene = storyboard.scenes.at(-1).id;
   let examCount = 0;
   const thinkScenes = [];
+  const interceptsByChapter = new Map();
   for (const { scene, segments: segs } of scenes) {
     if (!segs.length) {
       errors.push(`scene ${scene.id} has no segments`);
@@ -270,6 +308,8 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
     const actual = [...new Set(order)].filter((id) => required.includes(id)).join(' ');
     if (expected !== actual) warnings.push(`scene ${scene.id}: cues fire in a different order than requiredCues (${actual})`);
 
+    if (chispa && !segs.some((s) => s.parsed.display.includes('?'))) warnings.push(`scene ${scene.id}: no question (chispa style: at least one per scene)`);
+
     const exams = segs.filter((s) => s.exam);
     examCount += exams.length;
     if (exams.length > 1) errors.push(`scene ${scene.id}: ${exams.length} exam cards (max 1 per scene)`);
@@ -278,9 +318,18 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
       if (s.exam.at && !counts.has(s.exam.at)) errors.push(`${s.id}: exam.at "${s.exam.at}" is not a cue of ${scene.id}`);
     }
     for (const s of segs) if (s.think) thinkScenes.push(scene.id);
+    for (const s of segs.filter((x) => x.intercept)) {
+      if (scene.id === lastScene) errors.push(`${s.id}: the closing scene must not carry an intercepted message`);
+      interceptsByChapter.set(scene.chapter, (interceptsByChapter.get(scene.chapter) ?? 0) + 1);
+    }
   }
   if (thinkScenes.length !== thinkPrompts) warnings.push(`${thinkScenes.length} think prompts (style guide: exactly ${thinkPrompts})`);
   if (examCount && (examCount < examCards[0] || examCount > examCards[1])) warnings.push(`${examCount} exam cards (style guide: ${examCards[0]}–${examCards[1]})`);
+  for (const [chapter, n] of interceptsByChapter) if (n > 1) errors.push(`chapter ${chapter}: ${n} intercepted messages (max 1 per chapter)`);
+  const interceptCount = [...interceptsByChapter.values()].reduce((a, b) => a + b, 0);
+  if (intercepts && (interceptCount < intercepts[0] || interceptCount > intercepts[1])) {
+    warnings.push(`${interceptCount} intercepted messages (style guide: ${intercepts[0]}–${intercepts[1]})`);
+  }
 
   const unused = Object.keys(lexicon).filter((k) => !usedLexicon.has(k));
   if (unused.length) warnings.push(`lexicon entries never used outside markup: ${unused.join(', ')}`);

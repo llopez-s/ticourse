@@ -2,6 +2,7 @@
 // Full voice pipeline, by provider (narration.json "voice"):
 //   edge-tts:   prepare-tts.mjs -> tts.py -> build-timeline.mjs (audio mode)
 //   ElevenLabs: tts-elevenlabs.mjs -> build-timeline.mjs   (voice "elevenlabs/<model>/<voice_id>")
+//   Chatterbox: tts-chatterbox.mjs -> build-timeline.mjs   (voice "chatterbox/<pack>/<voice>", local, no quota)
 // Stops at the first failing step.
 //
 //   node video/engine/scripts/audio.mjs --video <slug>                 # synthesise what changed, rebuild the timeline
@@ -19,7 +20,7 @@ import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
-import { isElevenLabsVoice } from './lib/narration.mjs';
+import { isChatterboxVoice, isElevenLabsVoice } from './lib/narration.mjs';
 import { PATHS, REPO_ROOT, SCRIPTS_DIR, VIDEO, isMainModule } from './lib/paths.mjs';
 
 const OPTIONS = {
@@ -87,6 +88,11 @@ function main() {
   const narrationVoice = JSON.parse(readFileSync(values.narration ? path.resolve(values.narration) : PATHS.narration, 'utf8').replace(/^﻿/, '')).voice;
   if (isElevenLabsVoice(narrationVoice)) {
     step('tts-elevenlabs', node, [path.join(SCRIPTS_DIR, 'tts-elevenlabs.mjs'), ...pass(values, ['scene', 'force'])]);
+    step('build-timeline', node, buildTimelineArgs);
+    return;
+  }
+  if (isChatterboxVoice(narrationVoice)) {
+    step('tts-chatterbox', node, [path.join(SCRIPTS_DIR, 'tts-chatterbox.mjs'), ...pass(values, ['only', 'force'])]);
     step('build-timeline', node, buildTimelineArgs);
     return;
   }

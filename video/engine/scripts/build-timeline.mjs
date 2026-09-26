@@ -41,7 +41,7 @@ export const TIMING = Object.freeze({
 
 const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 /** Disclaimer line of the active video's transcript (depends on its track). */
-export const TRANSCRIPT_NOTICE = trackNotice(MANIFEST.track);
+export const TRANSCRIPT_NOTICE = trackNotice(MANIFEST.track, MANIFEST.profile);
 /** Credit line added to the transcript when the narration is voiced by ElevenLabs. */
 export const ELEVENLABS_CREDIT = 'Voz: ElevenLabs (elevenlabs.io)';
 
@@ -133,7 +133,7 @@ async function loadAudio(segments, voice, opts, errors, warnings) {
   }
   if (trailing.length) {
     const avg = trailing.reduce((a, b) => a + b, 0) / trailing.length;
-    audio.trailingNote = `${isElevenLabsVoice(voice.voice) ? 'elevenlabs' : 'edge-tts'} trailing silence: avg ${avg.toFixed(0)} ms per clip — ${opts.fullAudio ? 'kept (--full-audio)' : `trimmed to last word + ${opts.tailMs} ms`}`;
+    audio.trailingNote = `${entries[0]?.tts.provider ?? 'edge-tts'} trailing silence: avg ${avg.toFixed(0)} ms per clip — ${opts.fullAudio ? 'kept (--full-audio)' : `trimmed to last word + ${opts.tailMs} ms`}`;
   }
   return audio;
 }
@@ -169,6 +169,7 @@ export async function buildTimeline(options = {}) {
     transcript: PATHS.transcript,
     profile: MANIFEST.profile,
     track: MANIFEST.track,
+    adversary: MANIFEST.adversary ?? null,
     fullAudio: false,
     tailMs: TIMING.speechTailMs,
     write: true,
@@ -205,6 +206,7 @@ export async function buildTimeline(options = {}) {
   const cues = [];
   const exam = [];
   const think = [];
+  const intercept = [];
   const segmentStarts = [];
   const allWords = [];
   const examSources = [];
@@ -214,6 +216,9 @@ export async function buildTimeline(options = {}) {
     t += sceneIdx === 0 ? TIMING.firstLead : TIMING.lead;
     const sceneCues = new Map();
     for (const seg of segs) {
+      // An intercepted message types out during a silent lead; the segment's audio (the answer) starts after it.
+      const leadFrom = t;
+      if (seg.intercept) t += toFrames(seg.intercept.holdMs);
       const a = audio.get(seg.id);
       const from = t;
       const audioFrames = Math.max(1, Math.ceil((a.durationMs * fps) / 1000));
@@ -251,6 +256,15 @@ export async function buildTimeline(options = {}) {
           from: from + audioFrames + TIMING.thinkOffset,
           durationInFrames: thinkFrames - TIMING.thinkOffset,
           q: seg.think.q,
+        });
+      }
+      if (seg.intercept) {
+        intercept.push({
+          scene: scene.id,
+          from: leadFrom,
+          durationInFrames: from + audioFrames + pause - leadFrom,
+          adversary: opts.adversary,
+          text: seg.intercept.text,
         });
       }
       t += durationInFrames;
@@ -308,6 +322,7 @@ export async function buildTimeline(options = {}) {
       `total length ${mmss(durationInFrames, fps)} (${totalSec.toFixed(1)} s) is outside the "${opts.profile}" window ${mmss(profile.minTotalSec * fps, fps)}–${mmss(profile.maxTotalSec * fps, fps)}`,
     );
   }
+  if (intercept.length && !opts.adversary) errors.push('the narration has intercepted messages but video.json has no "adversary"');
 
   const captions = paginate(allWords, segmentStarts);
 
@@ -333,12 +348,13 @@ export async function buildTimeline(options = {}) {
     cues,
     exam,
     think,
+    ...(intercept.length ? { intercept } : {}),
   };
   errors.push(...validateTimeline(timeline, { sceneIds: opts.sceneIds ?? storyboard.scenes.map((s) => s.id), maxChapters: profile.maxChapters }));
   if ((storyboard.chapters ?? []).length > profile.maxChapters) errors.push(`storyboard has ${storyboard.chapters.length} chapters; the "${opts.profile}" profile allows ${profile.maxChapters}`);
   reportOrThrow({ errors, warnings }, log);
 
-  const transcript = buildTranscript(timeline, { title: storyboard.title, notice: trackNotice(opts.track) });
+  const transcript = buildTranscript(timeline, { title: storyboard.title, notice: trackNotice(opts.track, opts.profile) });
   const vtt = buildVtt(timeline);
   if (opts.write) {
     writeFileAtomic(opts.out, `${formatJson(timeline)}\n`);
@@ -379,10 +395,14 @@ export function buildVtt(timeline) {
 export function buildTranscript(timeline, { title, notice = TRANSCRIPT_NOTICE }) {
   const lines = [title, notice, ...(isElevenLabsVoice(timeline.voice) ? [ELEVENLABS_CREDIT] : []), ''];
   timeline.scenes.forEach((s, k) => {
-    const text = timeline.segments
-      .filter((seg) => seg.scene === s.id)
-      .map((seg) => seg.text)
-      .join(' ');
+    const pieces = [];
+    for (const seg of timeline.segments.filter((x) => x.scene === s.id)) {
+      for (const i of (timeline.intercept ?? []).filter((x) => x.scene === s.id && x.from <= seg.from && seg.from < x.from + x.durationInFrames)) {
+        pieces.push(`[Mensaje interceptado · ${i.adversary}] «${i.text}»`);
+      }
+      pieces.push(seg.text);
+    }
+    const text = pieces.join(' ');
     lines.push(`[${mmss(s.from, timeline.fps)}] ${ROMAN[s.chapter]} · ${s.chapterTitle} — ${s.title}`);
     lines.push(text);
     if (k < timeline.scenes.length - 1) lines.push('');
