@@ -1,4 +1,6 @@
-# ◆ IntelForge Academy — Preparación GCTI · Security+
+# ◆ Alertópolis — Preparación GCTI · Security+
+
+*Antes IntelForge Academy. Las claves de guardado del navegador (`intelforge-v1`, `intelforge-sync`) conservan el nombre antiguo a propósito, para no perder el progreso.*
 
 Curso web interactivo y gamificado con **dos tracks** de certificación, que
 comparten el mismo motor (XP, rachas, flashcards SM-2, bosses, simulacros):

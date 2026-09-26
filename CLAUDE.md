@@ -1,4 +1,4 @@
-# CLAUDE.md — TICourse (IntelForge Academy)
+# CLAUDE.md — TICourse (Alertópolis, formerly IntelForge Academy)
 
 Guidance for working in this repository. Part of the `D:\LLM projects` collection — see
 `../PROJECTS.md` for the cross-project index. The Spanish `README.md` is the authoritative
@@ -6,7 +6,7 @@ content/feature doc.
 
 ## What this is
 
-**IntelForge Academy** — a gamified, **unofficial** web study companion with **two tracks**
+**Alertópolis** (renamed from IntelForge Academy on 2026-09-26; storage keys keep the old name on purpose) — a gamified, **unofficial** web study companion with **two tracks**
 sharing one engine:
 
 - **`gcti`** — GIAC GCTI (SANS FOR578 Cyber Threat Intelligence). Complete: 27 lessons, 174

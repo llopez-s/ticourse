@@ -1,6 +1,7 @@
 import { useEffect, type ReactNode } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useStore } from '../lib/store';
+import { APP_WORDMARK } from '../lib/brand';
 import { levelInfo, nextRank, rankFor } from '../lib/xp';
 import { buildQueue, NEW_PER_DAY } from '../lib/srs';
 import { todayStr } from '../lib/util';
@@ -140,7 +141,7 @@ function TopBar() {
         <Link to="/" className="flex items-center gap-2 md:hidden">
           <span className="text-cyan-400">◆</span>
           <span className="font-mono text-sm font-bold tracking-tight text-slate-100">
-            INTELFORGE
+            {APP_WORDMARK}
           </span>
         </Link>
 
@@ -236,7 +237,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <span className="text-2xl text-cyan-400">◆</span>
           <div>
             <div className="font-mono text-sm font-bold tracking-tight text-slate-50">
-              INTELFORGE
+              {APP_WORDMARK}
             </div>
             <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">
               {track.brand}

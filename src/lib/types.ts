@@ -1,4 +1,4 @@
-// Core domain types for IntelForge Academy
+// Core domain types for Alertópolis (formerly IntelForge Academy)
 
 export type Conf = 'low' | 'med' | 'high';
 export type Grade = 0 | 3 | 4 | 5; // Again / Hard / Good / Easy

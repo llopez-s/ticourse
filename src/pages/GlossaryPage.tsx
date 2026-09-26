@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { contentSections, sectionById } from '../data/course';
 import { PageTitle } from '../components/Bits';
 import { useTrack } from '../components/Layout';
+import { APP_NAME } from '../lib/brand';
 
 export default function GlossaryPage() {
   const [params, setParams] = useSearchParams();
@@ -71,7 +72,7 @@ export default function GlossaryPage() {
       {/* print header */}
       <div className="mb-4 hidden print:block">
         <h1 className="text-xl font-bold">
-          Índice — IntelForge Academy · {track.name} (material no oficial)
+          Índice — {APP_NAME} · {track.name} (material no oficial)
         </h1>
       </div>
 
