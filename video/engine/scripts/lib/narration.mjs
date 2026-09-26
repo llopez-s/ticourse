@@ -34,15 +34,22 @@ export function parseJsonText(text, path) {
 /** Reads the three source files. A missing lexicon is allowed (empty, with a warning). */
 export const EDGE_VOICE = /^[a-z]{2}-[A-Z]{2}-\w+Neural$/;
 export const ELEVEN_VOICE = /^elevenlabs\/[a-z0-9_]+\/[A-Za-z0-9]{10,40}$/;
+/** Local Chatterbox model: "chatterbox/<pack>/<voice>" (pack es-es | mtl; voice default | a clip in engine/voices/). */
+export const CHATTERBOX_VOICE = /^chatterbox\/(es-es|mtl)\/[a-z0-9][a-z0-9_-]*$/;
 
 /** True when the narration is voiced with ElevenLabs (voice "elevenlabs/<model>/<voice_id>"). */
 export function isElevenLabsVoice(voice) {
   return typeof voice === 'string' && ELEVEN_VOICE.test(voice);
 }
 
+/** True when the narration is voiced locally with Chatterbox (voice "chatterbox/<pack>/<voice>"). */
+export function isChatterboxVoice(voice) {
+  return typeof voice === 'string' && CHATTERBOX_VOICE.test(voice);
+}
+
 /**
  * The text a segment is synthesised from (and keyed on): ElevenLabs gets the
- * voice-only <directions> as [audio tags]; edge-tts gets plain spoken text.
+ * voice-only <directions> as [audio tags]; edge-tts and Chatterbox get plain spoken text.
  */
 export function spokenForVoice(voice, parsed) {
   return isElevenLabsVoice(voice) ? parsed.directedSpoken : parsed.spoken;
@@ -132,10 +139,13 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
     return { errors, warnings, voice: null, scenes: [], segments: [] };
   }
   const voice = { voice: narration.voice, rate: narration.rate ?? '+0%', pitch: narration.pitch ?? '+0Hz' };
-  if (typeof voice.voice !== 'string' || !(EDGE_VOICE.test(voice.voice) || ELEVEN_VOICE.test(voice.voice))) {
-    errors.push(`narration.voice ${JSON.stringify(voice.voice)} must be an edge-tts voice ("es-ES-ElviraNeural") or "elevenlabs/<model_id>/<voice_id>"`);
+  if (typeof voice.voice !== 'string' || !(EDGE_VOICE.test(voice.voice) || ELEVEN_VOICE.test(voice.voice) || CHATTERBOX_VOICE.test(voice.voice))) {
+    errors.push(
+      `narration.voice ${JSON.stringify(voice.voice)} must be an edge-tts voice ("es-ES-ElviraNeural"), "elevenlabs/<model_id>/<voice_id>" or "chatterbox/<es-es|mtl>/<voice>"`,
+    );
   }
   if (narration.elevenlabs !== undefined && !isObj(narration.elevenlabs)) errors.push('narration.elevenlabs must be an object of voice settings');
+  if (narration.chatterbox !== undefined && !isObj(narration.chatterbox)) errors.push('narration.chatterbox must be an object of synthesis settings');
   if (!/^[+-]\d{1,3}%$/.test(voice.rate)) errors.push(`narration.rate ${JSON.stringify(voice.rate)} must look like "+0%"`);
   if (!/^[+-]\d{1,3}Hz$/.test(voice.pitch)) errors.push(`narration.pitch ${JSON.stringify(voice.pitch)} must look like "+0Hz"`);
   if (!Array.isArray(narration.segments) || !narration.segments.length) {

@@ -176,7 +176,10 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   its README). Every script takes `--video <slug>`. Pipeline: `narration.json` →
   `scripts/tts-elevenlabs.mjs` (ElevenLabs v3, one request per scene with `<tag>` emotion
   directions; needs `ELEVENLABS_API_KEY` in the git-ignored `.env.local`; free plan = 10k chars/month,
-  premade voices only + "Voz: ElevenLabs" credit) — or `scripts/tts.py` (edge-tts) →
+  premade voices only + "Voz: ElevenLabs" credit) — or `scripts/tts-chatterbox.mjs` (Chatterbox, local
+  MIT model on CPU, voice `chatterbox/<es-es|mtl>/<default|clip>`; a Python worker in the git-ignored
+  `video/engine/.venv-chatterbox` synthesises each segment and transcribes it with faster-whisper for
+  word timings + a script-match retry; ~4–6 GB RAM, slow) — or `scripts/tts.py` (edge-tts) →
   `scripts/build-timeline.mjs` (`src/timeline.json` + transcript + WebVTT) → `scripts/render.mjs`
   (bundles first, then MP4 + poster into `public/videos/`, ffprobe/A-V-sync checks). Rendering is
   local only (not in CI), so the MP4 is committed. Voice clips live in `video/<slug>/public/`

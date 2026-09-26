@@ -133,7 +133,7 @@ async function loadAudio(segments, voice, opts, errors, warnings) {
   }
   if (trailing.length) {
     const avg = trailing.reduce((a, b) => a + b, 0) / trailing.length;
-    audio.trailingNote = `${isElevenLabsVoice(voice.voice) ? 'elevenlabs' : 'edge-tts'} trailing silence: avg ${avg.toFixed(0)} ms per clip — ${opts.fullAudio ? 'kept (--full-audio)' : `trimmed to last word + ${opts.tailMs} ms`}`;
+    audio.trailingNote = `${entries[0]?.tts.provider ?? 'edge-tts'} trailing silence: avg ${avg.toFixed(0)} ms per clip — ${opts.fullAudio ? 'kept (--full-audio)' : `trimmed to last word + ${opts.tailMs} ms`}`;
   }
   return audio;
 }

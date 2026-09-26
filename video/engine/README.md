@@ -75,7 +75,7 @@ puntuación que las rodea (`«NetFlow»,` -> `«net flou»,`). Cada `requiredCue
 exactamente una vez en sus segmentos. `build-timeline` avisa de las palabras que la voz podría leer mal
 (cifras, identificadores, siglas fuera del léxico).
 
-## Voz: ElevenLabs (actual) o edge-tts
+## Voz: ElevenLabs, Chatterbox o edge-tts
 
 El proveedor lo decide `narration.json` → `"voice"`:
 
@@ -89,6 +89,8 @@ El proveedor lo decide `narration.json` → `"voice"`:
   (`stability` 0 / 0.5 / 1 = Creative / Natural / Robust, `seed`…) y léxico propio en
   `lexicon.elevenlabs.json` (solo siglas; los términos en inglés se leen tal cual). La caché es por escena:
   cambiar una frase vuelve a sintetizar solo su escena (~300–500 caracteres).
+- `"chatterbox/<paquete>/<voz>"` (local, gratis, sin cuota): `scripts/tts-chatterbox.mjs`. Ver
+  [Voz: Chatterbox](#voz-chatterbox).
 - `"es-ES-ElviraNeural"` (edge-tts, gratis, sin clave): `prepare-tts.mjs` + `tts.py` con `lexicon.json`.
 
 **Clave de ElevenLabs:** `ELEVENLABS_API_KEY` en `.env.local` en la raíz del repo (ignorado por git; el
@@ -105,13 +107,74 @@ node video/engine/scripts/tts-elevenlabs.mjs --video siem --audition --voices <v
 node video/engine/scripts/audio.mjs --video siem
 ```
 
+## Voz: Chatterbox
+
+[Chatterbox](https://github.com/resemble-ai/chatterbox), de Resemble AI, tiene licencia MIT y corre en
+este equipo, sin GPU. No tiene cuota ni pide clave: solo necesita red la primera vez, para bajar los modelos.
+
+**Voz.** Se elige en `narration.json` con `"voice": "chatterbox/<paquete>/<voz>"`:
+- Paquete `es-es`: el modelo ajustado a español de España, `ResembleAI/Chatterbox-Multilingual-es-es` (su T3, su decodificador `s3gen_v3` y su tokenizador; el worker lo monta con las clases de 0.1.7).
+- Paquete `mtl`: el multilingüe de `chatterbox-tts` 0.1.7 (T3 v2, `from_pretrained`).
+- Voz `default`: la voz integrada del modelo.
+- Cualquier otro nombre: un clip de referencia `video/engine/voices/<voz>.wav`, que clona esa voz. Debe
+  durar entre 6 y 10 s, estar limpio y tener una sola persona hablando. La carpeta está ignorada por git,
+  porque un clip de voz es un dato personal y el repo es público. **Solo con permiso de quien habla.**
+
+**Tiempos por palabra.** Chatterbox no los da. El worker (`scripts/chatterbox_worker.py`) transcribe cada
+toma con faster-whisper, y esas marcas son las fronteras de palabra que usa `build-timeline`. La misma
+transcripción se compara con el guion (`script_score`, de 0 a 1). Si una toma no llega a `min_score`
+(normalmente porque se salta o repite frases), se sintetiza otra vez con otra semilla, hasta `attempts`
+tomas, y se queda la mejor. Las que siguen por debajo se listan al final para escucharlas.
+
+**Ajustes.** Van en `narration.json` → `"chatterbox"`:
+- `exaggeration`: 0.5 es neutro; más alto, más dramático.
+- `cfg_weight`: más bajo, locución más pausada.
+- `temperature`.
+- `seed`: base de la semilla por segmento.
+- `asr_model`: modelo de faster-whisper, `small` por defecto.
+- `min_score` y `attempts`: control de las tomas, como se explica arriba.
+
+Cambiar la voz, el clip o un ajuste de audio vuelve a sintetizar; cambiar `asr_model`, `min_score` o
+`attempts` no.
+
+**Léxico.** Usa solo siglas: `lexicon.chatterbox.json` si existe; si no, `lexicon.elevenlabs.json`. Las
+reescrituras de `lexicon.json` («jash», «jóuld») son para edge-tts. Se midió con la audición del 2026-09-25,
+comparando la transcripción de Whisper con el guion:
+- `es-es` sin reescrituras pronuncia bien «Halden», «SOC» y «legal hold» (coincidencia 0,96).
+- `es-es` con ellas empeora (0,93): «jálden» sale «Hallem» y «jash» sale «cash».
+- `mtl` lee los términos en inglés con fonética española: «hash antes» sale «a santas».
+
+`--respelled` añade a la audición una segunda toma con `lexicon.json` para volver a comparar.
+
+**Marca de agua.** Todo el audio sale con la marca de agua neuronal Perth de Resemble AI. No se oye.
+
+```bash
+# Entorno (una vez): Python 3.12, torch de CPU, en D: para no llenar C:
+C:/Python312/python.exe -m venv video/engine/.venv-chatterbox
+video/engine/.venv-chatterbox/Scripts/python.exe -m pip install -r video/engine/scripts/requirements-chatterbox.txt
+
+# Audición: la misma frase con cada voz, en video/<slug>/.audition/chatterbox-*.mp3
+node video/engine/scripts/tts-chatterbox.mjs --video <slug> --audition --voices mtl/default,es-es/default [--respelled]
+
+# Síntesis (solo los segmentos que cambian; --only s01-02 --force para rehacer uno) + timeline
+node video/engine/scripts/audio.mjs --video <slug>
+```
+
+Los modelos (~4 GB) se descargan la primera vez en `video/engine/.cache/huggingface/`, también ignorada
+por git. Así `HF_HOME` no apunta a C:.
+
+**Rendimiento en CPU.** El proceso ocupa entre 4 y 6 GB de RAM. Tarda varias veces más que la duración del
+audio, así que una cápsula lleva de 30 a 60 minutos. Todo va en un solo proceso que carga los modelos una
+vez; conviene lanzarlo en segundo plano con el equipo descargado.
+
 ## Requisitos
 
 - Node (el del repo; en Git Bash: `eval "$(fnm env)"`) y `npm install` hecho en la raíz del repo.
   Remotion trae su propio ffmpeg/ffprobe; no hace falta instalarlos.
 - Solo para edge-tts: Python 3.10+ con `edge-tts` (`python -m pip install edge-tts`, probado con 7.2.8). Otra ruta de Python:
   variable `PYTHON`.
-- Red **solo** para sintetizar la voz (`tts-elevenlabs.mjs` o `tts.py`). Lo demás funciona sin conexión; los clips ya generados
+- Solo para Chatterbox: el venv de [Voz: Chatterbox](#voz-chatterbox).
+- Red **solo** para sintetizar la voz (`tts-elevenlabs.mjs` o `tts.py`; Chatterbox, solo la primera vez). Lo demás funciona sin conexión; los clips ya generados
   se reutilizan (caché por hash de voz + velocidad + tono + texto hablado).
 
 ## Comandos (desde la raíz del repo, en este orden)
@@ -178,6 +241,9 @@ Notas:
 tarjeta de examen y pausa) e `index.json` con el mapa archivo → fotograma → escena/cue.
 
 ## Pruebas
+
+`scripts/test_*.py` (unittest, sin dependencias: `python -m unittest discover -s video/engine/scripts -p "test_*.py"`)
+cubre la normalización y la puntuación de guion del worker de Chatterbox.
 
 `scripts/lib/*.test.mjs` (node:test, sin dependencias): marcas y léxico, alineación con límites de palabra
 que faltan o sobran (incluidos límites reales grabados de edge-tts en `fixtures/edge-boundaries.json`),
