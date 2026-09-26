@@ -52,7 +52,7 @@ export function readManifest(slug) {
   if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) throw new Error(`invalid video slug ${JSON.stringify(slug)}`);
   const file = path.join(VIDEOS_DIR, slug, 'video.json');
   if (!existsSync(file)) throw new Error(`no video.json for "${slug}" (expected ${file})`);
-  return checkManifest(JSON.parse(readFileSync(file, 'utf8').replace(/^﻿/, '')), file, slug);
+  return checkManifest(JSON.parse(readFileSync(file, 'utf8').replace(/^\uFEFF/, '')), file, slug);
 }
 
 /** Where the rendered MP4 goes: the app's public/videos (committed) or, for YouTube, the video's out/ (ignored). */
