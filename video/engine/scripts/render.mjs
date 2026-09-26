@@ -9,12 +9,13 @@
 // matches the current sources and every voice clip exists. crf and the size
 // target come from the video's profile (video.json -> scripts/lib/profiles.mjs).
 // The video is bundled once, then the MP4 and the poster render from that bundle.
+import { spawnSync } from 'node:child_process';
 import { mkdirSync, statSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { checkTimelineFresh } from './lib/freshness.mjs';
-import { COMPOSITION, MANIFEST, PATHS, POSTER_STILL, isMainModule } from './lib/paths.mjs';
+import { COMPOSITION, MANIFEST, PATHS, POSTER_STILL, REPO_ROOT, isMainModule } from './lib/paths.mjs';
 import { profileFor } from './lib/profiles.mjs';
 import { assertCliFlags, bundleVideo, probeMedia, runPool, runRemotion, runRemotionAsync } from './lib/remotion.mjs';
 
@@ -94,6 +95,10 @@ async function main() {
   assertCliFlags(flags);
 
   const out = draft ? PATHS.draft : PATHS.video;
+  // A YouTube render is 100+ MB at crf 18 and must never reach the public repo.
+  if (!draft && PROFILE.host === 'youtube' && spawnSync('git', ['check-ignore', '-q', out], { cwd: REPO_ROOT }).status !== 0) {
+    throw new Error(`${out} is not git-ignored: a YouTube render must stay out of the repo (see the root .gitignore)`);
+  }
   mkdirSync(path.dirname(out), { recursive: true });
   const concurrency = Math.max(1, Math.min(Number(values.concurrency ?? 8), os.cpus().length));
   const args = [
@@ -141,7 +146,8 @@ async function main() {
   const mb = statSync(out).size / 1e6;
   console.log(`\n${out}\n  ${duration.toFixed(2)} s · ${video?.codec_name} ${video?.width}x${video?.height} @ ${video?.r_frame_rate} · ${audio?.codec_name} ${audio?.sample_rate} Hz · ${mb.toFixed(1)} MB`);
   if (!draft) {
-    if (mb > SIZE.fail) errors.push(`file is ${mb.toFixed(1)} MB (limit ${SIZE.fail} MB)`);
+    if (!SIZE) console.log(`  size not checked: the "${MANIFEST.profile}" profile is uploaded to YouTube, which re-encodes it`);
+    else if (mb > SIZE.fail) errors.push(`file is ${mb.toFixed(1)} MB (limit ${SIZE.fail} MB)`);
     else if (mb > SIZE.warn) warnings.push(`file is ${mb.toFixed(1)} MB (warn above ${SIZE.warn} MB)`);
     else if (mb < SIZE.targetMin || mb > SIZE.targetMax) warnings.push(`file is ${mb.toFixed(1)} MB (target ${SIZE.targetMin}–${SIZE.targetMax} MB)`);
     else console.log(`  size within the ${SIZE.targetMin}–${SIZE.targetMax} MB target`);

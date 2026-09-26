@@ -7,6 +7,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { profileFor } from './profiles.mjs';
 
 export const SCRIPTS_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const ENGINE_DIR = path.resolve(SCRIPTS_DIR, '..');
@@ -39,6 +40,13 @@ export function readManifest(slug) {
   return manifest;
 }
 
+/** Where the rendered MP4 goes: the app's public/videos (committed) or, for YouTube, the video's out/ (ignored). */
+export function mp4PathFor(manifest, dir, publicVideos) {
+  return profileFor(manifest.profile).host === 'youtube'
+    ? path.join(dir, 'out', `${manifest.output}.mp4`)
+    : path.join(publicVideos, `${manifest.output}.mp4`);
+}
+
 /** Every path one video's pipeline reads or writes. */
 export function videoPaths(slug) {
   const manifest = readManifest(slug);
@@ -61,7 +69,7 @@ export function videoPaths(slug) {
     auditionDir: path.join(dir, '.audition'),
     transcript: path.join(publicVideos, `${manifest.output}-transcript.txt`),
     captions: path.join(publicVideos, `${manifest.output}-captions.vtt`),
-    video: path.join(publicVideos, `${manifest.output}.mp4`),
+    video: mp4PathFor(manifest, dir, publicVideos),
     poster: path.join(publicVideos, `${manifest.output}-poster.png`),
     draft: path.join(dir, 'out', 'draft.mp4'),
     qaDir: path.join(dir, 'out', 'qa'),

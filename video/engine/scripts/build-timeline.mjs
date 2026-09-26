@@ -41,7 +41,7 @@ export const TIMING = Object.freeze({
 
 const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 /** Disclaimer line of the active video's transcript (depends on its track). */
-export const TRANSCRIPT_NOTICE = trackNotice(MANIFEST.track);
+export const TRANSCRIPT_NOTICE = trackNotice(MANIFEST.track, MANIFEST.profile);
 /** Credit line added to the transcript when the narration is voiced by ElevenLabs. */
 export const ELEVENLABS_CREDIT = 'Voz: ElevenLabs (elevenlabs.io)';
 
@@ -338,7 +338,7 @@ export async function buildTimeline(options = {}) {
   if ((storyboard.chapters ?? []).length > profile.maxChapters) errors.push(`storyboard has ${storyboard.chapters.length} chapters; the "${opts.profile}" profile allows ${profile.maxChapters}`);
   reportOrThrow({ errors, warnings }, log);
 
-  const transcript = buildTranscript(timeline, { title: storyboard.title, notice: trackNotice(opts.track) });
+  const transcript = buildTranscript(timeline, { title: storyboard.title, notice: trackNotice(opts.track, opts.profile) });
   const vtt = buildVtt(timeline);
   if (opts.write) {
     writeFileAtomic(opts.out, `${formatJson(timeline)}\n`);
