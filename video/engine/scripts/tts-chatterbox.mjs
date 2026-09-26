@@ -12,6 +12,7 @@
 //
 //   node video/engine/scripts/tts-chatterbox.mjs --video <slug> [--only s01-01,s02-03] [--force]
 //   node video/engine/scripts/tts-chatterbox.mjs --video <slug> --audition [--voices es-es/default,mtl/default] [--respelled]
+//   node video/engine/scripts/tts-chatterbox.mjs --video <slug> --audition --moods [--voices es-es/default]
 //
 // Voice: narration.json "voice": "chatterbox/<pack>/<voice>". pack = es-es (the Spain-Spanish
 // language pack) or mtl (the multilingual model); voice = default (the model's built-in voice)
@@ -23,6 +24,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
+import { REGISTERS, moodFor } from './lib/moods.mjs';
 import { analyzeNarration, isChatterboxVoice, loadSources, reportOrThrow, spokenForVoice, ttsKey } from './lib/narration.mjs';
 import { ENGINE_DIR, MANIFEST, PATHS, REPO_ROOT, SCRIPTS_DIR, isMainModule } from './lib/paths.mjs';
 import { profileFor } from './lib/profiles.mjs';
@@ -46,6 +48,7 @@ export const DEFAULT_SETTINGS = {
   asr_model: 'small', // faster-whisper model used for word timings and the script check
   min_score: 0.85, // similarity (0–1) between the transcript and the script below which a clip is redone
   attempts: 3, // takes per segment at most; the best-scoring one is kept
+  moods: true, // per-segment register from the <direction> (lib/moods.mjs); false = one exaggeration/cfg_weight for the whole video
 };
 
 /** The part of the settings that changes the audio (a change re-synthesises every clip). */
@@ -74,6 +77,12 @@ export function settingsKey(voice, settings, voiceRefBytes = null) {
   const audio = Object.fromEntries(AUDIO_SETTINGS.map((k) => [k, settings[k]]));
   const ref = voiceRefBytes ? createHash('sha256').update(voiceRefBytes).digest('hex') : 'builtin';
   return sha(`${voice}\n${ref}\n${JSON.stringify(audio)}`);
+}
+
+/** exaggeration + cfg_weight of one segment: its mood register, or the video-wide settings when moods are off. */
+export function segmentVoiceSettings(settings, directions) {
+  if (settings.moods === false) return { register: null, exaggeration: settings.exaggeration, cfg_weight: settings.cfg_weight, unknown: [] };
+  return moodFor(directions);
 }
 
 /** Per-segment seed: stable across runs and independent of which segments are redone. */
@@ -145,9 +154,18 @@ function jobFileFor(name, { pack, voiceRef, settings, jobs, outDir }) {
   return file;
 }
 
+/** Warning text when a Chatterbox narration resolves to the edge-tts lexicon (its respellings read worse), else null. */
+export function edgeLexiconWarning(lexiconPath, defaultLexiconPath = PATHS.lexicon) {
+  return lexiconPath === defaultLexiconPath
+    ? 'this Chatterbox narration uses lexicon.json, the edge-tts respellings («jash», «jóuld») that Chatterbox reads worse — add "lexicon": "lexicon.chatterbox.json" (acronyms only) to narration.json'
+    : null;
+}
+
 export function synthesizeNarration({ only = null, force = false, log = console } = {}) {
   checkSetup();
   const sources = loadSources({ storyboard: PATHS.storyboard, narration: PATHS.narration, lexicon: PATHS.lexicon });
+  const lexWarn = edgeLexiconWarning(sources.paths.lexicon);
+  if (lexWarn) log.warn(`  aviso: ${lexWarn}`);
   const analysis = analyzeNarration(sources, profileFor(MANIFEST.profile));
   reportOrThrow(analysis, log);
   const { voice, rate, pitch } = analysis.voice;
@@ -155,7 +173,14 @@ export function synthesizeNarration({ only = null, force = false, log = console 
   const { pack, voiceRef } = parseVoice(voice);
   if (voiceRef && !existsSync(voiceRef)) throw new Error(`reference clip not found: ${voiceRef}`);
   const settings = settingsFor(sources.narration);
-  const sKey = settingsKey(voice, settings, voiceRef ? readFileSync(voiceRef) : null);
+  const refBytes = voiceRef ? readFileSync(voiceRef) : null;
+  const moodOf = new Map(analysis.segments.map((seg) => [seg.id, segmentVoiceSettings(settings, seg.parsed.directions)]));
+  const segKey = (seg) => {
+    const m = moodOf.get(seg.id);
+    return settingsKey(voice, { ...settings, exaggeration: m.exaggeration, cfg_weight: m.cfg_weight }, refBytes);
+  };
+  const unknown = analysis.segments.flatMap((seg) => moodOf.get(seg.id).unknown.map((w) => `${w} (${seg.id})`));
+  if (unknown.length) log.warn(`  aviso: directions with no Chatterbox register, read as neutral: ${unknown.join(', ')}`);
 
   const segments = analysis.segments.filter((seg) => !only || only.includes(seg.id));
   if (only) {
@@ -170,7 +195,7 @@ export function synthesizeNarration({ only = null, force = false, log = console 
     try {
       const rec = JSON.parse(readFileSync(jsonPath, 'utf8'));
       const spoken = spokenForVoice(voice, seg.parsed);
-      return !(rec.key === ttsKey(voice, rate, pitch, spoken) && rec.settingsKey === sKey && rec.bytes === statSync(mp3Path).size);
+      return !(rec.key === ttsKey(voice, rate, pitch, spoken) && rec.settingsKey === segKey(seg) && rec.bytes === statSync(mp3Path).size);
     } catch {
       return true;
     }
@@ -179,7 +204,10 @@ export function synthesizeNarration({ only = null, force = false, log = console 
   if (!todo.length) return;
 
   rmSync(WORK_DIR, { recursive: true, force: true });
-  const jobs = todo.map((seg) => ({ id: seg.id, text: spokenForVoice(voice, seg.parsed), seed: segmentSeed(settings.seed, seg.id) }));
+  const jobs = todo.map((seg) => {
+    const m = moodOf.get(seg.id);
+    return { id: seg.id, text: spokenForVoice(voice, seg.parsed), seed: segmentSeed(settings.seed, seg.id), exaggeration: m.exaggeration, cfgWeight: m.cfg_weight };
+  });
   runWorker(jobFileFor('narration', { pack, voiceRef, settings, jobs, outDir: WORK_DIR }), log);
 
   mkdirSync(PATHS.voiceDir, { recursive: true });
@@ -193,11 +221,12 @@ export function synthesizeNarration({ only = null, force = false, log = console 
     const record = {
       provider: 'chatterbox',
       key: ttsKey(voice, rate, pitch, spoken),
-      settingsKey: sKey,
+      settingsKey: segKey(seg),
       voice,
       rate,
       pitch,
-      settings,
+      settings: { ...settings, exaggeration: moodOf.get(seg.id).exaggeration, cfg_weight: moodOf.get(seg.id).cfg_weight },
+      register: moodOf.get(seg.id).register,
       spoken,
       bytes,
       bitrateKbps: BITRATE_KBPS,
@@ -256,6 +285,35 @@ export function audition({ voices = ['mtl/default', 'es-es/default'], respelled 
   }
 }
 
+/** The §2.2 sample paragraph of the spec: the same text in every register, to judge them by ear. */
+export const MOOD_AUDITION_TEXT =
+  '¿Cómo llegan los logs al SIEM? Depende de quién hable. Servidores y estaciones llevan un agente: un pequeño programa que lo reenvía todo. ' +
+  'Firewalls y switches no suelen admitir agentes, así que hablan syslog. La nube contesta por API. ' +
+  '¿Y los routers? Esos no te cuentan qué se dijo, solo quién habló con quién y cuánto: NetFlow.';
+
+/** One take of MOOD_AUDITION_TEXT per register -> .audition/chatterbox-mood-<register>.mp3. */
+export function moodAudition({ voice = 'es-es/default', log = console } = {}) {
+  checkSetup();
+  const { pack, voiceName, voiceRef } = parseVoice(`chatterbox/${voice}`);
+  const text = parseSegmentText(MOOD_AUDITION_TEXT, neuralLexicon()).spoken;
+  const dir = path.join(PATHS.auditionDir, 'chatterbox');
+  mkdirSync(PATHS.auditionDir, { recursive: true });
+  const jobs = Object.entries(REGISTERS).map(([register, r]) => ({
+    id: `mood-${register}`,
+    text,
+    seed: DEFAULT_SETTINGS.seed,
+    exaggeration: r.exaggeration,
+    cfgWeight: r.cfg_weight,
+  }));
+  runWorker(jobFileFor(`moods-${pack}-${voiceName}`, { pack, voiceRef, settings: DEFAULT_SETTINGS, jobs, outDir: dir }), log);
+  for (const job of jobs) {
+    const out = path.join(PATHS.auditionDir, `chatterbox-${job.id}.mp3`);
+    encodeClip(path.join(dir, `${job.id}.wav`), out);
+    const r = JSON.parse(readFileSync(path.join(dir, `${job.id}.json`), 'utf8'));
+    log.log(`  ${job.id}: ${out} (${(r.durationMs / 1000).toFixed(1)} s, script match ${r.score.toFixed(2)})`);
+  }
+}
+
 function main() {
   const { values } = parseArgs({
     options: {
@@ -265,9 +323,14 @@ function main() {
       audition: { type: 'boolean', default: false },
       voices: { type: 'string' },
       respelled: { type: 'boolean', default: false },
+      moods: { type: 'boolean', default: false },
     },
   });
   const list = (s) => s.split(',').map((x) => x.trim()).filter(Boolean);
+  if (values.moods) {
+    moodAudition(values.voices ? { voice: list(values.voices)[0] } : {});
+    return;
+  }
   if (values.audition) {
     audition({ ...(values.voices ? { voices: list(values.voices) } : {}), respelled: values.respelled });
     return;

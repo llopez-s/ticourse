@@ -4,8 +4,8 @@
     python -X utf8 video/engine/scripts/chatterbox_worker.py --jobs <file.jobs.json>
 
 The job file names the model pack, the reference clip (or null for the built-in
-voice), the synthesis settings and a list of {id, text, seed}. For every job the
-worker writes into outDir:
+voice), the synthesis settings and a list of {id, text, seed[, exaggeration, cfgWeight]}.
+For every job the worker writes into outDir:
 
     <id>.wav   mono PCM at the model's sample rate (Chatterbox embeds its Perth watermark)
     <id>.json  {id, sampleRate, durationMs, seed, takes, score, asrText, words:[{text,startMs,endMs}]}
@@ -153,6 +153,15 @@ def seed_everything(seed: int) -> None:
     torch.manual_seed(seed)
 
 
+def job_settings(spec: dict, job: dict) -> tuple[float, float]:
+    """exaggeration and cfg_weight of one job: its own (the segment's mood register), else the run's.
+
+    generate() rebuilds conds.t3.emotion_adv whenever exaggeration changes between calls
+    (chatterbox-tts 0.1.7, mtl_tts.py), so no conditionals need preparing again.
+    """
+    return float(job.get("exaggeration", spec["exaggeration"])), float(job.get("cfgWeight", spec["cfgWeight"]))
+
+
 def transcribe(asr, wav_path: Path, language: str) -> tuple[str, list[dict]]:
     segments, _info = asr.transcribe(
         str(wav_path),
@@ -199,6 +208,7 @@ def main(argv: list[str] | None = None) -> int:
     for n, job in enumerate(spec["jobs"], 1):
         t0 = time.monotonic()
         best = None
+        exaggeration, cfg_weight = job_settings(spec, job)
         for take in range(attempts):
             seed = int(job["seed"]) + take * SEED_STEP
             seed_everything(seed)
@@ -206,8 +216,8 @@ def main(argv: list[str] | None = None) -> int:
                 job["text"],
                 language_id=spec.get("language", "es"),
                 audio_prompt_path=voice_ref,
-                exaggeration=spec["exaggeration"],
-                cfg_weight=spec["cfgWeight"],
+                exaggeration=exaggeration,
+                cfg_weight=cfg_weight,
                 temperature=spec["temperature"],
             )
             audio = wav.squeeze(0).detach().cpu().numpy()
