@@ -1,5 +1,5 @@
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
-import type { CaptionPage, ExamCue, SceneTiming, ThinkPrompt as ThinkEntry } from '../timeline/types';
+import type { CaptionPage, ExamCue, InterceptCue, SceneTiming, ThinkPrompt as ThinkEntry } from '../timeline/types';
 import { C, STAGE, TYPE } from '../theme/tokens';
 import { Backdrop } from '../ui/Backdrop';
 import { MonoLine } from '../ui/MonoLine';
@@ -8,6 +8,7 @@ import { SeverityBadge } from '../ui/Chip';
 import { CaptionsView } from '../overlay/Captions';
 import { ChapterRailView } from '../overlay/ChapterRail';
 import { ExamCueView } from '../overlay/ExamCueLayer';
+import { InterceptView } from '../overlay/InterceptLayer';
 import { ProgressBarView } from '../overlay/ProgressBar';
 import { SimulationTagView } from '../overlay/SimulationTag';
 import { ThinkPromptView } from '../overlay/ThinkPrompt';
@@ -20,6 +21,7 @@ import { ThinkPromptView } from '../overlay/ThinkPrompt';
  *   131 panel morphing between pages        150  one-line page, exam card holding
  *   250 long lines shrunk, chapter wipe     330  think prompt mid-countdown
  *   365 last page + think prompt            420  chapter V, one-line exam card
+ *   40  intercepted message typing          100  intercepted message complete
  */
 export const GALLERY_DURATION = 450;
 
@@ -82,6 +84,10 @@ const THINK: ThinkEntry[] = [
   },
 ];
 
+const INTERCEPT: InterceptCue[] = [
+  { scene: 's01-hook', from: 20, durationInFrames: 90, adversary: 'SILENT PAGER', text: 'Borro el log del servidor y aquí no ha pasado nada.' },
+];
+
 /** A stand-in for scene content so the overlays can be judged over something busy. */
 function MockStage() {
   const rows = [
@@ -125,6 +131,7 @@ export function OverlayGallery() {
       <ChapterRailView scenes={SCENES} frame={frame} />
       <SimulationTagView exam={EXAM} frame={frame} />
       <ThinkPromptView prompts={THINK} frame={frame} fps={fps} />
+      <InterceptView entries={INTERCEPT} frame={frame} />
       <ExamCueView exam={EXAM} frame={frame} />
       <CaptionsView pages={CAPTIONS} frame={frame} />
       <ProgressBarView scenes={SCENES} frame={frame} total={GALLERY_DURATION} />
