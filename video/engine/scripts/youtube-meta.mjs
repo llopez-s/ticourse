@@ -8,7 +8,7 @@ import { existsSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { ELEVENLABS_CREDIT, captionsPathFor } from './build-timeline.mjs';
-import { parseJsonText } from './lib/narration.mjs';
+import { loadSources, parseJsonText } from './lib/narration.mjs';
 import { MANIFEST, PATHS, isMainModule } from './lib/paths.mjs';
 import { profileFor, trackNotice } from './lib/profiles.mjs';
 import { writeFileAtomic } from './lib/remotion.mjs';
@@ -24,6 +24,8 @@ const TRACK_TAGS = {
   gcti: ['GCTI', 'threat intelligence', 'inteligencia de amenazas', 'ciberseguridad', 'FOR578', 'Alertópolis'],
 };
 const HASHTAGS = { secplus: '#SecurityPlus #Ciberseguridad #Alertópolis', gcti: '#ThreatIntelligence #Ciberseguridad #Alertópolis' };
+/** A lexicon key usable as a tag: no markup, no single letters (spec §6.2). */
+const LEXICON_TAG = /^[\p{L}\p{N}][\p{L}\p{N}+.\-]*$/u;
 
 const stamp = (frame, fps) => {
   const s = Math.floor(frame / fps);
@@ -53,13 +55,24 @@ export function voiceCredit(voice) {
   return null;
 }
 
-export function youtubeTags(timeline, track) {
-  return [...new Set([...TRACK_TAGS[track], ...timeline.exam.map((e) => `objetivo ${e.objective}`)])];
+/** Track/exam tags (spec §6.2), then lexicon terms, deduplicated in that order and fit to the 500-char budget. */
+export function youtubeTags(timeline, track, lexiconTerms = []) {
+  const fixed = [...new Set([...TRACK_TAGS[track], ...timeline.exam.map((e) => `objetivo ${e.objective}`)])];
+  const seen = new Set(fixed);
+  const extra = [];
+  for (const term of lexiconTerms) {
+    if (term.length >= 2 && LEXICON_TAG.test(term) && !seen.has(term)) {
+      seen.add(term);
+      extra.push(term);
+    }
+  }
+  const tags = [...fixed, ...extra];
+  while (tags.length > fixed.length && tags.join(',').length > TAGS_MAX_CHARS) tags.pop();
+  return tags;
 }
 
 export function youtubeDescription({ timeline, lesson, track, notice }) {
-  const first = timeline.scenes[0].id;
-  const hook = timeline.segments.filter((s) => s.scene === first).slice(0, 2).map((s) => s.text).join(' ');
+  const hook = timeline.segments.slice(0, 2).map((s) => s.text).join(' ');
   const credit = voiceCredit(timeline.voice);
   return [
     hook,
@@ -88,7 +101,8 @@ function main() {
   const title = youtubeTitle(storyboard.title, MANIFEST.track);
   if (title.length > TITLE_MAX) errors.push(`title is ${title.length} characters (YouTube max ${TITLE_MAX}): shorten storyboard.title`);
   errors.push(...youtubeChapters(timeline).errors);
-  const tags = youtubeTags(timeline, MANIFEST.track);
+  const { lexicon } = loadSources({ storyboard: PATHS.storyboard, narration: PATHS.narration, lexicon: PATHS.lexicon });
+  const tags = youtubeTags(timeline, MANIFEST.track, Object.keys(lexicon));
   if (tags.join(',').length > TAGS_MAX_CHARS) errors.push(`tags take ${tags.join(',').length} characters (max ${TAGS_MAX_CHARS})`);
   if (!existsSync(PATHS.poster)) errors.push(`no poster at ${PATHS.poster} — run render.mjs`);
   else if (statSync(PATHS.poster).size > THUMB_MAX_BYTES) errors.push(`poster is over 2 MB, YouTube's thumbnail limit`);

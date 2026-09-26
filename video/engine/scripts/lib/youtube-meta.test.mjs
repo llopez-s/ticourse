@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { APP_URL, TITLE_MAX, voiceCredit, youtubeChapters, youtubeDescription, youtubeTags, youtubeTitle } from '../youtube-meta.mjs';
+import { APP_URL, TAGS_MAX_CHARS, TITLE_MAX, voiceCredit, youtubeChapters, youtubeDescription, youtubeTags, youtubeTitle } from '../youtube-meta.mjs';
 
 const scene = (id, title, from, sec) => ({ id, title, from, durationInFrames: sec * 30, chapter: 1, chapterTitle: 'Uno' });
 const timeline = {
@@ -44,4 +44,37 @@ test('description: hook, lesson link, chapters, credit, notice, hashtags', () =>
   assert.ok(d.includes('Chatterbox'));
   assert.ok(d.includes('AVISO'));
   assert.ok(d.trimEnd().endsWith('#SecurityPlus #Ciberseguridad #Alertópolis'));
+});
+
+test('youtubeTags: lexicon terms are appended after the objectives, deduplicated, and filtered', () => {
+  const tags = youtubeTags(timeline, 'secplus', ['SIEM', 'Security+', 'a', '¡hola!', 'NetFlow']);
+  const objectiveIdx = tags.indexOf('objetivo 4.9');
+  assert.ok(objectiveIdx !== -1);
+  assert.ok(tags.indexOf('SIEM') > objectiveIdx);
+  assert.ok(tags.indexOf('NetFlow') > objectiveIdx);
+  assert.equal(tags.filter((t) => t === 'Security+').length, 1);
+  assert.ok(!tags.includes('a'));
+  assert.ok(!tags.includes('¡hola!'));
+});
+
+test('youtubeTags: over-budget lexicon terms are dropped, never the track/objective tags', () => {
+  const longTerms = Array.from({ length: 200 }, (_, i) => `terminolargolexico${i}`);
+  const tags = youtubeTags(timeline, 'secplus', longTerms);
+  assert.ok(tags.join(',').length <= TAGS_MAX_CHARS);
+  assert.ok(tags.includes('Security+'));
+  assert.ok(tags.includes('objetivo 4.4'));
+  assert.ok(tags.includes('objetivo 4.9'));
+});
+
+test('description: hook is the first two segments of the whole video, even with a one-segment first scene', () => {
+  const oneSegTimeline = {
+    ...timeline,
+    segments: [
+      { scene: 's01-a', text: 'Único segmento del principio.' },
+      { scene: 's02-b', text: 'Segundo segmento de otra escena.' },
+      { scene: 's02-b', text: 'Otra cosa.' },
+    ],
+  };
+  const d = youtubeDescription({ timeline: oneSegTimeline, lesson: 'sp4m7', track: 'secplus', notice: 'AVISO' });
+  assert.ok(d.startsWith('Único segmento del principio. Segundo segmento de otra escena.'));
 });
