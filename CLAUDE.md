@@ -170,7 +170,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   < 50 MB, VTT header, no shared assets) and pins SIEM to sp4m6 and the forensics capsule to sp4m11.
 - **Lesson videos (`t: 'video'` blocks).** One shared Remotion engine in `video/engine/` (scripts,
   UI, overlays, theme, fonts, timeline types — see its `README.md`) and one folder per video with a
-  `video.json` (output name, composition/poster ids, `profile` principal|capsula, `track`):
+  `video.json` (output name, composition/poster ids, `profile` principal|capsula|principal-yt|capsula-yt, `track`):
   `video/siem/` (sp4m6, ~6:07, ElevenLabs voice Sarah) and `video/forense-adquisicion/` (sp4m11,
   capsule ~2:52, edge-tts Elvira until the ElevenLabs quota resets on 2026-10-25 — re-voice steps in
   its README). Every script takes `--video <slug>`. Pipeline: `narration.json` →
@@ -181,11 +181,17 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `video/engine/.venv-chatterbox` synthesises each segment and transcribes it with faster-whisper for
   word timings + a script-match retry; ~4–6 GB RAM, slow) — or `scripts/tts.py` (edge-tts) →
   `scripts/build-timeline.mjs` (`src/timeline.json` + transcript + WebVTT) → `scripts/render.mjs`
-  (bundles first, then MP4 + poster into `public/videos/`, ffprobe/A-V-sync checks). Rendering is
-  local only (not in CI), so the MP4 is committed. Voice clips live in `video/<slug>/public/`
-  (Remotion `--public-dir`), never in the app's `public/`. The video content plan (ranking, batches,
-  briefs) is `docs/superpowers/plans/2026-09-25-lesson-videos.md`. The EDR video (sp4m7,
-  `video/edr/`) is a separate, older pipeline that V1 of the plan replaces.
+  (bundles first, then MP4 + poster, ffprobe/A-V-sync checks). Rendering is local only (not in CI).
+  Voice clips live in `video/<slug>/public/` (Remotion `--public-dir`), never in the app's `public/`.
+  The video content plan (ranking, batches, briefs) is
+  `docs/superpowers/plans/2026-09-25-lesson-videos.md`. The EDR video (sp4m7, `video/edr/`) is a
+  separate, older pipeline that V1 of the plan replaces. **New videos (V1+) use the `-yt` profiles**:
+  livelier "narración con chispa" writing, intercepted adversary messages, `scripts/voice-plan.mjs`
+  (picks ElevenLabs vs. Chatterbox from the remaining quota) and `scripts/youtube-meta.mjs` (writes
+  the title/description/tags for upload) — the MP4 renders to `video/<slug>/out/` (git-ignored) and is
+  published to YouTube instead of being committed to `public/videos/`; the app embeds it via a
+  `youtube` block id, not an MP4 file. Design:
+  `docs/superpowers/specs/2026-09-26-video-narration-style-design.md`.
 - **Remotion on this machine:** when the CPU is busy, the CLI's bundling blocks the event loop and
   Chrome's connection times out after 25 s. `render.mjs`/`qa-frames.mjs` therefore bundle first;
   for ad-hoc renders do `remotion bundle` then render from the bundle dir. In the Bash tool,

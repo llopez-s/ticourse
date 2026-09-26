@@ -22,22 +22,109 @@ Resultado esperado: un ranking razonado de todo el curso, tres tandas priorizada
 
 ## 1. Formatos
 
-| | **Principal** | **Cápsula práctica** |
-|---|---|---|
-| Suma de `targetSec` de las escenas | 270–300 s | 130–165 s |
-| Duración renderizada | ≈ +20 s por márgenes de la tubería (entradas, colas y transiciones de escena, cierre): 290–320 s. En el SIEM, 305 s de escenas dieron 325 s | ≈ +15–20 s: 150–190 s |
-| Estructura | 5 capítulos, 10–12 escenas | 3 capítulos, 5–6 escenas |
-| Exam cards (≤58 car., máx. 1 por escena, ninguna en la última) | 8–11 | 4–6 |
-| Think prompts (≤48 car.) | 2 | 1 |
-| Demo práctica | 1–3 escenas de consola/log/diagrama | ≥50 % del vídeo |
-| Tamaño MP4 | ≤25 MB. El SIEM dio 31 MB con crf 23; subir a crf ~26 en el perfil y comprobarlo con `render --draft` | ≤12 MB |
-| Cuándo usarlo | Concepto con flujo o espacio que exige explicar el *porqué* | Una destreza concreta y repetible (procedimiento, lectura de salida) |
+| | **Principal** | **Cápsula práctica** | **Principal YouTube (`principal-yt`)** | **Cápsula YouTube (`capsula-yt`)** |
+|---|---|---|---|---|
+| Suma de `targetSec` de las escenas | 270–300 s | 130–165 s | más que Principal, para que quepa la chispa sin recortar contenido (lo acota la duración renderizada) | más que Cápsula, ídem |
+| Duración renderizada (`minTotalSec`–`maxTotalSec` de `scripts/lib/profiles.mjs`) | ≈ +20 s por márgenes de la tubería (entradas, colas y transiciones de escena, cierre): 290–320 s. En el SIEM, 305 s de escenas dieron 325 s | ≈ +15–20 s: 150–190 s | **380–500 s** | **190–260 s** |
+| Estructura | 5 capítulos, 10–12 escenas | 3 capítulos, 5–6 escenas | 5 capítulos (sin cambios) | 3 capítulos (sin cambios) |
+| Exam cards (≤58 car., máx. 1 por escena, ninguna en la última) | 8–11 | 4–6 | 8–11 (sin cambios) | 4–6 (sin cambios) |
+| Think prompts (≤48 car.) | 2 | 1 | 2 (sin cambios) | 1 (sin cambios) |
+| Mensajes interceptados del adversario (§4) | — (perfil sin ellos) | — (perfil sin ellos) | **2–4, máx. 1 por capítulo** | **1–2** |
+| Demo práctica | 1–3 escenas de consola/log/diagrama | ≥50 % del vídeo | igual que Principal | igual que Cápsula |
+| crf | 23 (el SIEM dio 31 MB; subir a ~26 en el perfil y comprobarlo con `render --draft`) | 27 | **18** (YouTube vuelve a codificar; sube más calidad) | **18** |
+| Tamaño MP4 / dónde vive | ≤25 MB, en `public/videos/` (se commitea) | ≤12 MB, en `public/videos/` (se commitea) | **sin objetivo de tamaño: se sube a YouTube.** El MP4 va a `video/<slug>/out/`, que está **ignorado por git — nunca se commitea** | igual que Principal YouTube |
+| Cuándo usarlo | Concepto con flujo o espacio que exige explicar el *porqué* | Una destreza concreta y repetible (procedimiento, lectura de salida) | igual que Principal, para un vídeo nuevo que se publica en el canal de YouTube | igual que Cápsula, ídem |
 
 Estilo común, heredado del SIEM:
 - 1920×1080 a 30 fps, sin flechas ni emoji en la narración.
 - Subtítulos de 2×42 caracteres.
 - Datos ficticios con el sello «Simulación educativa · datos ficticios».
 - Descargo por pista: «no afiliado a CompTIA» en Security+, «no afiliado a SANS/GIAC» en GCTI.
+
+### Narración con chispa (vídeos nuevos)
+
+Estas reglas rigen los vídeos nuevos (V1 EDR rehecho, V3, V4 y siguientes); los tres vídeos ya publicados
+(SIEM, EDR antiguo y forense) no se tocan. Copiadas de
+`docs/superpowers/specs/2026-09-26-video-narration-style-design.md` §2.1–§2.3 y §5.2.
+
+#### Reglas
+
+1. **Una idea nueva por frase.** Frases de unas 20 palabras como mucho. Nada de enumeraciones con punto y coma:
+   una lista de más de tres elementos se reparte en varias frases o se lleva a la pantalla.
+2. **Te habla a ti.** En segunda persona. Al menos una pregunta por escena, contestada enseguida.
+3. **Una imagen por concepto clave.** Cada concepto clave lleva una analogía cotidiana o una imagen concreta
+   («un pequeño programa que lo reenvía todo»).
+4. **Humor en el marco, nunca en el dato.** La ironía, los guiños y los remates van en las frases que presentan
+   o comentan. La frase que transmite el dato va limpia y literal. El texto de las tarjetas de examen no se
+   adorna.
+5. **Remate con respiro.** Después de un chiste o de una revelación, `pauseAfterMs` sube a 600–900 ms.
+6. **Emoción variada.** Se usan las etiquetas `<…>` de ElevenLabs (Chatterbox también las usa; ver §5.2) sin
+   repetir la misma en dos segmentos seguidos.
+7. **La historia manda.** Halden / GLASS HARBOR en Security+ y VELVET CICADA en GCTI. El adversario provoca y la
+   analista responde (§4).
+
+#### Ejemplo
+
+Antes (SIEM `s02-02`, 20 palabras):
+
+> Servidores y estaciones envían por agente; firewalls y switches, por syslog; la nube, por API; y los routers
+> exportan NetFlow.
+
+Después (unas 55 palabras, los mismos datos):
+
+> ¿Cómo llegan los logs al SIEM? Depende de quién hable. Servidores y estaciones llevan un agente: un pequeño
+> programa que lo reenvía todo. Firewalls y switches no suelen admitir agentes, así que hablan syslog. La nube
+> contesta por API. ¿Y los routers? Esos no te cuentan qué se dijo, solo quién habló con quién y cuánto: NetFlow.
+
+#### Salvaguardas de rigor
+
+- **El revisor de exactitud** (subagente de solo lectura, antes de sintetizar la voz) comprueba también que
+  ninguna analogía ni ningún chiste falsee el concepto. Una analogía que simplifica en exceso se corrige o se
+  quita.
+- **Validador del motor** (`analyzeNarration`). Frase de más de 22 palabras: el aviso ya existe para todos los
+  perfiles. Los perfiles `-yt` activan además, **solo como avisos, no errores** (así los vídeos antiguos no se
+  llenan de avisos):
+  - dos segmentos seguidos con la misma etiqueta de emoción;
+  - escena sin ninguna pregunta;
+  - `;` en el texto hablado.
+
+#### Vocabulario de etiquetas de emoción
+
+El guion usa etiquetas `<…>` que ElevenLabs entiende de forma nativa y que Chatterbox traduce a un registro
+(`video/engine/scripts/lib/moods.mjs`), para que el guion sea el mismo con cualquiera de los dos motores:
+
+| Registro | Etiquetas | `exaggeration` | `cfg_weight` |
+|---|---|---|---|
+| Sereno | `calm`, `serious`, `steady`, `grave`, `focused`, `firm`, `concerned`, `warning`, `ominous`, `tired`, `sighs` | 0.40 | 0.50 |
+| Neutro | sin etiqueta, `clear`, `thoughtful` | 0.50 | 0.50 |
+| Cálido | `curious`, `intrigued`, `confident`, `warm`, `warmly`, `satisfied`, `relieved`, `reassuring`, `casual`, `engaging` | 0.60 | 0.45 |
+| Vivo | `enthusiastic`, `cheerful`, `mischievously`, `sarcastic`, `urgent`, `suspicious`, `emphatic`, `tense` | 0.75 | 0.35 |
+
+Qué etiqueta decide: la primera dirección del segmento y, dentro de ella («serious, warning»), la primera
+palabra que esté en la tabla. Si una etiqueta no está en la tabla, se aplica el registro neutro y se avisa.
+Detalle de la síntesis en `video/engine/README.md` («Voz: Chatterbox»).
+
+#### El mensaje interceptado
+
+Un nuevo tipo de aviso en pantalla, sin voz: un mensaje del adversario de la sección de la lección aparece
+como interceptado y se escribe letra a letra, y a continuación la narradora lo responde con la explicación.
+
+- Se declara en un segmento de `narration.json` con `"intercept": { "text": "…", "holdMs": 3500 }`
+  (`text` ≤ 70 caracteres, sin flechas/emoji/símbolos prohibidos; `holdMs` entre 2500 y 4500 ms — el silencio
+  antes del audio del segmento, para dar tiempo a leer el mensaje).
+- `video.json` necesita `"adversary": "SILENT PAGER"` (el adversario de la sección, en `src/data/secplus/sections.ts`
+  o `src/data/course-gcti.ts`) en cuanto algún segmento use `intercept`; si no, `analyzeNarration` lo rechaza.
+- Límites que valida `analyzeNarration`: como mucho 1 mensaje por capítulo (error), ninguno en la escena final
+  (error), y el recuento total fuera del rango del perfil (§1) es solo un aviso.
+- No tiene voz ni entra en los subtítulos; sí entra en la transcripción, como
+  `[Mensaje interceptado · SILENT PAGER] «…»`, porque es contenido.
+
+#### Los nombres en pantalla
+
+En los vídeos nuevos, el póster y la tarjeta final dicen **«Alertópolis»**, nunca «IntelForge Academy» (el
+nombre antiguo, que conservan los tres vídeos ya publicados para no romper su regresión byte a byte). Lo
+decide el `profile` de `video.json`: `scripts/lib/profiles.mjs` usa `LEGACY_APP_NAME` para `principal`/`capsula`
+y `APP_NAME` para `principal-yt`/`capsula-yt`.
 
 ## 2. Rúbrica de selección (igual para ambas pistas)
 
@@ -401,6 +488,24 @@ Las exam cards se listan en el orden de las escenas:
    - con marcado `{cue}` y `[display|spoken]`;
    - nuevas entradas de léxico para la pista (p. ej. Diamond, WHOIS, pDNS, DMARC);
    - exam cards y think prompts, que valida `analyzeNarration`.
+
+   **Para los vídeos con perfil `-yt` (YouTube), además:**
+   - `video.json` lleva `"profile": "principal-yt"` o `"capsula-yt"`, y también `"adversary"` (obligatorio en
+     cuanto un segmento use `intercept`) y `"lesson"` (el id de módulo que enlaza la descripción de YouTube).
+   - **Antes de sintetizar la voz:** `node video/engine/scripts/voice-plan.mjs --video <slug>` calcula si el
+     guion cabe en el crédito de ElevenLabs (con el 15 % de margen para repetir tomas) y dice qué voz usar;
+     se copia esa voz en `narration.json` → `"voice"` a mano.
+   - **Al hacer la revisión de exactitud** (paso 3): el revisor comprueba además que ninguna analogía ni chiste
+     de la narración con chispa falsee el concepto.
+   - **Después de `render`** (paso 5): `node video/engine/scripts/youtube-meta.mjs --video <slug>` escribe
+     `out/youtube.md` (título, descripción con capítulos, etiquetas y la lista de archivos a subir). Publicación:
+     - Lidia inicia sesión en YouTube Studio en su Chrome;
+     - Claude, con Claude in Chrome, sube el MP4, rellena los datos de `out/youtube.md`, sube los subtítulos y
+       la miniatura, y **pide confirmación antes de pulsar «Publicar»**, vídeo a vídeo;
+     - nunca se usa ni se pide la contraseña de Lidia.
+   - **En la app** (paso 6): en vez de copiar el MP4, se añade o sustituye un bloque
+     `{ t: 'video', title, youtube: '<id>', poster, transcript }`, con el póster y la transcripción en
+     `public/videos/` y **sin copiar el MP4** (se queda en `video/<slug>/out/`, ignorado por git).
 3. **Revisión de exactitud** por un subagente de solo lectura contra la lección y el objetivo oficial, *antes* de sintetizar la voz.
 4. `build-timeline --estimate`, escenas en Remotion (reutilizando `ui/*`) y `qa-frames`.
 5. Audio con la voz fijada en P1, `render --draft` y después `render`, que comprueba duración, tamaño y sincronía A/V.

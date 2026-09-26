@@ -2,7 +2,10 @@
 // Renders the final MP4 + poster with the bundled Remotion CLI, then checks the
 // result (duration, codecs, size, audio/video sync).
 //
-//   node video/engine/scripts/render.mjs --video <slug>          # public/videos/<output>.mp4 + -poster.png
+//   node video/engine/scripts/render.mjs --video <slug>
+//     repo profiles (principal/capsula): public/videos/<output>.mp4 + -poster.png
+//     -yt profiles (principal-yt/capsula-yt): video/<slug>/out/<output>.mp4 (git-ignored,
+//       uploaded to YouTube instead) + public/videos/<output>-poster.png (poster always goes there)
 //   node video/engine/scripts/render.mjs --video <slug> --draft  # half scale, crf 30 -> video/<slug>/out/draft.mp4
 //
 // Refuses to run unless src/timeline.json is in audio mode, its sourceHash

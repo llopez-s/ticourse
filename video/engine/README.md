@@ -30,12 +30,73 @@ video/<slug>/
 
 | Campo | Qué decide |
 | --- | --- |
-| `output` | nombres en `public/videos/`: `<output>.mp4`, `-poster.png`, `-transcript.txt`, `-captions.vtt` |
+| `output` | nombres del vídeo: `<output>.mp4` (dónde, según el perfil — ver «Perfiles»), `-poster.png`, `-transcript.txt`, `-captions.vtt`, todos bajo `public/videos/` salvo el MP4 de los perfiles `-yt` |
 | `composition`, `poster` | ids que registra `src/Root.tsx` (deben coincidir) |
-| `profile` | `principal` (5 capítulos, 4:40–5:40, 8–11 tarjetas, 2 pausas, crf 23, 15–25 MB) o `capsula` (3 capítulos, 2:20–3:20, 4–6 tarjetas, 1 pausa, crf 27, ≤ 12 MB); ver `scripts/lib/profiles.mjs` |
+| `profile` | uno de los cuatro perfiles (`principal`, `capsula`, `principal-yt`, `capsula-yt`); ver «Perfiles» |
 | `track` | descargo de la transcripción: `secplus` (no afiliado a CompTIA) o `gcti` (no afiliado a SANS/GIAC) |
+| `adversary` | opcional; el adversario de la sección (p. ej. `SILENT PAGER`). Obligatorio en cuanto algún segmento de `narration.json` use `intercept` — ver «Mensaje interceptado» |
+| `lesson` | opcional; el id de módulo (p. ej. `sp4m7`) que enlaza la descripción de YouTube (`youtube-meta.mjs`) |
 
 Todos los scripts eligen el vídeo con `--video <slug>` (o la variable `VIDEO`; por defecto `siem`).
+
+## Perfiles
+
+`video.json` → `"profile"` fija el formato del vídeo (`scripts/lib/profiles.mjs`; ver también el plan
+`docs/superpowers/plans/2026-09-25-lesson-videos.md` §1):
+
+| | `principal` | `capsula` | `principal-yt` | `capsula-yt` |
+| --- | --- | --- | --- | --- |
+| Duración (`minTotalSec`–`maxTotalSec`) | 280–340 s | 140–200 s | **380–500 s** | **190–260 s** |
+| Capítulos (`maxChapters`) | 5 | 3 | 5 | 3 |
+| Tarjetas de examen (`examCards`) | 8–11 | 4–6 | 8–11 | 4–6 |
+| Pausas para pensar (`thinkPrompts`) | 2 | 1 | 2 | 1 |
+| Mensajes interceptados (`intercepts`) | 0 | 0 | **2–4, máx. 1/capítulo** | **1–2** |
+| Narración con chispa (`chispa`) | no | no | **sí** | **sí** |
+| `host` | `repo` | `repo` | **`youtube`** | **`youtube`** |
+| `crf` | 23 | 27 | **18** | **18** |
+| Tamaño objetivo (`size`) | 15–25 MB (aviso > 30, error > 45) | 4–12 MB (aviso > 15, error > 25) | **sin objetivo** | **sin objetivo** |
+
+`host: 'youtube'` (los dos perfiles `-yt`) cambia dos cosas:
+
+- **La ruta del MP4** (`lib/paths.mjs` → `mp4PathFor`): en vez de `public/videos/<output>.mp4` (se commitea),
+  el vídeo final va a `video/<slug>/out/<output>.mp4`, que está ignorado por git. `render.mjs` se niega a
+  renderizar un perfil `-yt` si esa ruta no está `git check-ignore`d. El **póster** siempre va a
+  `public/videos/`, en los cuatro perfiles, porque pesa poco y lo necesita la app.
+- **El tamaño**: con `size: null`, `render.mjs` no comprueba el peso del MP4 (solo avisa de que no se
+  comprueba, porque YouTube vuelve a codificar el vídeo al subirlo).
+
+**El aviso con la marca** (`trackNotice`, en la transcripción y en la tarjeta final de créditos): los perfiles
+antiguos (`principal`, `capsula`) llevan `LEGACY_APP_NAME` («IntelForge Academy»), para que la regresión del
+SIEM siga siendo byte a byte idéntica; los perfiles `-yt` llevan `APP_NAME` («Alertópolis»).
+
+## Mensaje interceptado
+
+Un aviso en pantalla **sin voz**, solo para los perfiles `-yt`: un mensaje del adversario de la sección
+aparece interceptado, se escribe letra a letra y, a continuación, el segmento de narración lo responde con la
+explicación.
+
+- **`narration.json`**, en el segmento que responde: `"intercept": { "text": "…", "holdMs": 3500 }`.
+  - `text`: 70 caracteres como máximo (`INTERCEPT_TEXT_MAX`), sin flechas, emoji ni los símbolos prohibidos de
+    las tarjetas de examen. No se locuta.
+  - `holdMs`: entre 2500 y 4500 (`INTERCEPT_HOLD_MS`) — el silencio **antes** del audio del segmento
+    (`leadFrames`, que añade `build-timeline.mjs`), para dar tiempo a leer el mensaje. Un segmento no puede
+    llevar `intercept` y `think` a la vez.
+- **`video.json`**: `"adversary": "SILENT PAGER"`. Obligatorio en cuanto algún segmento use `intercept`; si
+  falta, `analyzeNarration` lo rechaza como error.
+- **`build-timeline.mjs`**:
+  - añade `leadFrames` al segmento (el audio empieza después del silencio);
+  - escribe la clave opcional `timeline.intercept[]` (`from`, `durationInFrames`, `text`, `adversary`), **solo
+    cuando hay alguno** — así el `timeline.json` de un vídeo sin `intercept` (SIEM, forense) sigue siendo byte
+    a byte idéntico, y `validate-timeline.mjs` la trata como opcional;
+  - los subtítulos no incluyen el mensaje, porque no es voz; la transcripción sí, como
+    `[Mensaje interceptado · SILENT PAGER] «…»`.
+- **`src/overlay/InterceptLayer.tsx`**: la tarjeta, con acento rojo, el nombre del adversario y el efecto de
+  escritura letra a letra; ocupa el mismo hueco que la pausa para pensar (nunca coinciden en el tiempo). Está
+  en `OverlayGallery` para la QA visual.
+
+Validación completa (`analyzeNarration`): como mucho 1 mensaje por capítulo y ninguno en la escena final son
+errores; `text`/`holdMs` fuera de rango son errores; el recuento total fuera del rango del perfil (tabla de
+«Perfiles») es solo un aviso.
 
 ## Cómo está hecho
 
@@ -89,6 +150,16 @@ El proveedor lo decide `narration.json` → `"voice"`:
   (`stability` 0 / 0.5 / 1 = Creative / Natural / Robust, `seed`…) y léxico propio en
   `lexicon.elevenlabs.json` (solo siglas; los términos en inglés se leen tal cual). La caché es por escena:
   cambiar una frase vuelve a sintetizar solo su escena (~300–500 caracteres).
+
+  **Aviso de facturación.** Si el plan no permite PCM (`pcm_24000`), `tts-elevenlabs.mjs` reintenta la misma
+  escena en MP3 y la decodifica (`synthesizePcm`) — esa segunda petición **factura la escena dos veces**.
+  `voice-plan.mjs` reserva un margen del 15 % sobre el guion para repetir tomas; un reintento PCM→MP3 se come
+  ese margen sin que haya habido ninguna toma repetida de verdad.
+
+  **Elegir el motor:** `node video/engine/scripts/voice-plan.mjs --video <slug>` calcula los caracteres que
+  facturaría el guion (§ arriba) y consulta `getSubscription()`; si el crédito restante cubre el guion × 1,15
+  (margen de repetición), imprime la voz de ElevenLabs (Sarah); si no, la de Chatterbox. Solo imprime la
+  decisión — hay que copiar la voz a mano en `narration.json` → `"voice"`.
 - `"chatterbox/<paquete>/<voz>"` (local, gratis, sin cuota): `scripts/tts-chatterbox.mjs`. Ver
   [Voz: Chatterbox](#voz-chatterbox).
 - `"es-ES-ElviraNeural"` (edge-tts, gratis, sin clave): `prepare-tts.mjs` + `tts.py` con `lexicon.json`.
@@ -137,14 +208,42 @@ tomas, y se queda la mejor. Las que siguen por debajo se listan al final para es
 Cambiar la voz, el clip o un ajuste de audio vuelve a sintetizar; cambiar `asr_model`, `min_score` o
 `attempts` no.
 
-**Léxico.** Usa solo siglas: `lexicon.chatterbox.json` si existe; si no, `lexicon.elevenlabs.json`. Las
-reescrituras de `lexicon.json` («jash», «jóuld») son para edge-tts. Se midió con la audición del 2026-09-25,
-comparando la transcripción de Whisper con el guion:
+**Registros.** Antes, Chatterbox recibía el texto sin etiquetas y aplicaba un único `exaggeration`/`cfg_weight`
+a todo el vídeo, así que salía plano. Con `"chatterbox": { "moods": true }` (el valor por defecto), cada
+segmento traduce su primera etiqueta `<…>` a uno de cuatro registros (`scripts/lib/moods.mjs`, `moodFor`):
+
+| Registro | Etiquetas | `exaggeration` | `cfg_weight` |
+|---|---|---|---|
+| Sereno | `calm`, `serious`, `steady`, `grave`, `focused`, `firm`, `concerned`, `warning`, `ominous`, `tired`, `sighs` | 0.40 | 0.50 |
+| Neutro | sin etiqueta, `clear`, `thoughtful` | 0.50 | 0.50 |
+| Cálido | `curious`, `intrigued`, `confident`, `warm`, `warmly`, `satisfied`, `relieved`, `reassuring`, `casual`, `engaging` | 0.60 | 0.45 |
+| Vivo | `enthusiastic`, `cheerful`, `mischievously`, `sarcastic`, `urgent`, `suspicious`, `emphatic`, `tense` | 0.75 | 0.35 |
+
+Decide la primera dirección del segmento y, dentro de ella («serious, warning»), la primera palabra que esté
+en la tabla; si ninguna lo está, se aplica el registro neutro y se avisa. Con
+`"chatterbox": { "moods": false }` vuelve al `exaggeration`/`cfg_weight` únicos de siempre, para todo el
+vídeo. La caché por segmento incluye el registro efectivo, así que cambiar la emoción de un segmento (o
+apagar/encender `moods`) solo vuelve a sintetizar los segmentos afectados. Antes del primer vídeo con
+Chatterbox se audiciona el párrafo de ejemplo de la guía de narración en los cuatro registros:
+
+```bash
+node video/engine/scripts/tts-chatterbox.mjs --video <slug> --audition --moods [--voices es-es/default]
+```
+
+**Léxico.** Una narración con voz Chatterbox debe fijar en `narration.json` → `"lexicon": "lexicon.chatterbox.json"`
+(solo siglas): las reescrituras de `lexicon.json` («jash», «jóuld») son para edge-tts y con Chatterbox se leen
+peor. `build-timeline.mjs` usa ese mismo léxico (lo toma de `narration.json` → `"lexicon"`, no lo cambia por su
+cuenta), para que el guion mostrado y el hablado no diverjan. `tts-chatterbox.mjs` avisa
+(`edgeLexiconWarning`) cuando una narración Chatterbox resuelve al `lexicon.json` por defecto en vez de a uno
+propio.
+
+La *audición* de voces (`--audition`, sin narración de por medio) usa aparte `lexicon.chatterbox.json` si
+existe, si no `lexicon.elevenlabs.json` (`neuralLexicon`), y solo con `--respelled` añade una segunda toma con
+`lexicon.json` para comparar. Se midió con la audición del 2026-09-25, comparando la transcripción de Whisper
+con el guion:
 - `es-es` sin reescrituras pronuncia bien «Halden», «SOC» y «legal hold» (coincidencia 0,96).
 - `es-es` con ellas empeora (0,93): «jálden» sale «Hallem» y «jash» sale «cash».
 - `mtl` lee los términos en inglés con fonética española: «hash antes» sale «a santas».
-
-`--respelled` añade a la audición una segunda toma con `lexicon.json` para volver a comparar.
 
 **Marca de agua.** Todo el audio sale con la marca de agua neuronal Perth de Resemble AI. No se oye.
 
@@ -183,25 +282,38 @@ vez; conviene lanzarlo en segundo plano con el equipo descargado.
 # 1. Timeline estimado, sin voz (valida narration.json contra storyboard.json)
 node video/engine/scripts/build-timeline.mjs --video <slug> --estimate
 
-# 2. Voz: audición opcional de tres voces en .audition/, luego síntesis + timeline con audio
+# 2. Perfiles -yt: qué voz usar (ElevenLabs si el crédito llega, si no Chatterbox); copiar el resultado
+#    a mano en narration.json -> "voice"
+node video/engine/scripts/voice-plan.mjs --video <slug>
+
+# 3. Voz: audición opcional de tres voces en .audition/, luego síntesis + timeline con audio
 node video/engine/scripts/audio.mjs --video <slug> --audition
 node video/engine/scripts/audio.mjs --video <slug>
 
-# 3. Tipos y pruebas
+# 4. Tipos y pruebas
 npx tsc --noEmit -p video/<slug>/tsconfig.json
 npx tsc --noEmit -p video/engine/tsconfig.json
 node --test "video/engine/scripts/lib/*.test.mjs"
 
-# 4. Revisar
+# 5. Revisar
 npx remotion studio video/<slug>/src/index.ts --public-dir=video/<slug>/public
 node video/engine/scripts/qa-frames.mjs --video <slug>  # o --scene s05-correlate, --extra 1200,1350
 
-# 5. Render
+# 6. Render
 node video/engine/scripts/render.mjs --video <slug> --draft   # media resolución, rápido
 node video/engine/scripts/render.mjs --video <slug>           # final + póster
+
+# 7. Perfiles -yt: metadatos y archivos listos para subir a YouTube (después de renderizar)
+node video/engine/scripts/youtube-meta.mjs --video <slug>
 ```
 
 Notas:
+
+- `voice-plan.mjs` y `youtube-meta.mjs` solo tienen sentido para los perfiles `principal-yt`/`capsula-yt`; en
+  `principal`/`capsula` no hace falta ejecutarlos. `voice-plan.mjs` solo imprime la decisión (no toca
+  `narration.json`); `youtube-meta.mjs` exige un timeline en modo audio y un póster ya renderizado, y escribe
+  `video/<slug>/out/youtube.md` con el título, la descripción (con capítulos), las etiquetas y la lista de
+  archivos a subir.
 
 - `node --test` necesita el patrón entre comillas (`"…/*.test.mjs"`): en Node 26 pasar la carpeta
   (`video/engine/scripts/lib/`) falla porque intenta ejecutarla como archivo.
@@ -230,10 +342,12 @@ Notas:
 | --- | --- | --- |
 | `video/<slug>/src/timeline.json` | timeline que lee la composición | sí |
 | `video/<slug>/public/voice/<id>.mp3`, `tts/<id>.json` | clips de voz y tiempos por palabra | sí (caché reproducible) |
-| `public/videos/<output>.mp4` | vídeo final | sí |
-| `public/videos/<output>-poster.png` | póster (id `poster` de `video.json`) | sí |
+| `public/videos/<output>.mp4` | vídeo final, perfiles `principal`/`capsula` | sí |
+| `video/<slug>/out/<output>.mp4` | vídeo final, perfiles `principal-yt`/`capsula-yt` (se sube a YouTube, no se commitea) | no |
+| `public/videos/<output>-poster.png` | póster (id `poster` de `video.json`); en `public/videos/` en los cuatro perfiles | sí |
 | `public/videos/<output>-transcript.txt` | transcripción por escenas | sí |
 | `public/videos/<output>-captions.vtt` | subtítulos WebVTT del reproductor (una entrada por página de subtítulo quemada en el vídeo) | sí |
+| `video/<slug>/out/youtube.md` | título, descripción, etiquetas y archivos a subir (`youtube-meta.mjs`, solo perfiles `-yt`) | no |
 | `out/draft.mp4`, `out/qa/<escena>/`, `out/tts-input.json` | borradores y fotogramas de revisión | no |
 | `.audition/<voz>.mp3`, `.audition/audition.txt` | audición de voces | no |
 
