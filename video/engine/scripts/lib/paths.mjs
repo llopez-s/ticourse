@@ -31,6 +31,8 @@ const MANIFEST_KEYS = ['slug', 'output', 'composition', 'poster', 'profile', 'tr
 export const OPTIONAL_MANIFEST_KEYS = Object.freeze({
   /** Section adversary whose intercepted messages the video shows (e.g. "SILENT PAGER"). */
   adversary: /^[A-Z][A-Z ]{1,30}[A-Z]$/,
+  /** Lesson the video belongs to (module id, e.g. "sp4m7" or "s3m3"): the YouTube description links to it. */
+  lesson: /^sp?\d+m\d+$/,
 });
 
 /** Checks a parsed video.json; throws on the first problem. */

@@ -50,4 +50,7 @@ test('checkManifest: adversary is optional but must look like a campaign name', 
   assert.throws(() => checkManifest({ ...base, adversary: 'silent pager' }, 'video.json', 'x'), /"adversary"/);
   assert.throws(() => checkManifest({ ...base, output: '' }, 'video.json', 'x'), /"output"/);
   assert.throws(() => checkManifest(base, 'video.json', 'y'), /does not match its folder/);
+  assert.doesNotThrow(() => checkManifest({ ...base, lesson: 'sp4m7' }, 'video.json', 'x'));
+  assert.doesNotThrow(() => checkManifest({ ...base, lesson: 's3m3' }, 'video.json', 'x'));
+  assert.throws(() => checkManifest({ ...base, lesson: 'lesson-7' }, 'video.json', 'x'), /"lesson"/);
 });
