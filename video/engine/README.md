@@ -211,16 +211,24 @@ transcripción se compara con el guion (`script_score`, de 0 a 1). Si una toma n
 (normalmente porque se salta o repite frases), se sintetiza otra vez con otra semilla, hasta `attempts`
 tomas, y se queda la mejor. Las que siguen por debajo se listan al final para escucharlas.
 
-**Ajustes.** Van en `narration.json` → `"chatterbox"`:
+**Ajustes.** Van en `narration.json` → `"chatterbox"`, por ejemplo `"chatterbox": { "tempo": 0.8,
+"temperature": 0.7 }`:
 - `exaggeration`: 0.5 es neutro; más alto, más dramático.
 - `cfg_weight`: más bajo, locución más pausada.
 - `temperature`.
+- `tempo`: velocidad de habla, aplicada al codificar el clip con el filtro `atempo` de ffmpeg (conserva
+  el tono, no queda ni «pitcheado» ni robótico). `1` = sin cambios, `0.8` = 80 % de velocidad (más
+  lento). Debe estar entre `0.5` y `1.5`; fuera de ese rango `tts-chatterbox.mjs` lanza un error claro
+  en vez de llamar a ffmpeg con un valor que no tiene sentido.
 - `seed`: base de la semilla por segmento.
 - `asr_model`: modelo de faster-whisper, `small` por defecto.
 - `min_score` y `attempts`: control de las tomas, como se explica arriba.
 
 Cambiar la voz, el clip o un ajuste de audio vuelve a sintetizar; cambiar `asr_model`, `min_score` o
-`attempts` no.
+`attempts` no. `tempo` cuenta como ajuste de audio aunque no cambie lo que dice el worker de
+Chatterbox (solo cómo se recodifica el WAV que ya sintetizó): cambiarlo invalida igualmente la caché
+de síntesis de cada clip — vuelve a pasar por el worker en vez de solo recodificar — pero se acepta
+así para no complicar la clave de caché con un caso especial.
 
 **Registros.** Antes, Chatterbox recibía el texto sin etiquetas y aplicaba un único `exaggeration`/`cfg_weight`
 a todo el vídeo, así que salía plano. Con `"chatterbox": { "moods": true }` (el valor por defecto), cada
@@ -241,7 +249,7 @@ apagar/encender `moods`) solo vuelve a sintetizar los segmentos afectados. Antes
 Chatterbox se audiciona el párrafo de ejemplo de la guía de narración en los cuatro registros:
 
 ```bash
-node video/engine/scripts/tts-chatterbox.mjs --video <slug> --audition --moods [--voices es-es/default]
+node video/engine/scripts/tts-chatterbox.mjs --video <slug> --audition --moods [--voices es-es/default] [--tempo 0.8] [--temperature 0.7]
 ```
 
 **Léxico.** Una narración con voz Chatterbox debe fijar en `narration.json` → `"lexicon": "lexicon.chatterbox.json"`
@@ -259,6 +267,12 @@ con el guion:
 - `es-es` con ellas empeora (0,93): «jálden» sale «Hallem» y «jash» sale «cash».
 - `mtl` lee los términos en inglés con fonética española: «hash antes» sale «a santas».
 
+Tanto `--audition` como `--audition --moods` aceptan `--tempo <n>` y `--temperature <n>` para probar
+otra velocidad u otra temperatura sin tocar `narration.json`: por defecto usan `DEFAULT_SETTINGS`
+(`tempo` 1, `temperature` 0.8). Cuando alguno de los dos difiere de su valor por defecto, el nombre del
+archivo lleva un sufijo (`-t080` con `tempo` 0.8, `-temp070` con `temperature` 0.7, `-t080-temp070` si
+difieren los dos), para no pisar la audición hecha con los valores por defecto.
+
 **Marca de agua.** Todo el audio sale con la marca de agua neuronal Perth de Resemble AI. No se oye.
 
 ```bash
@@ -267,7 +281,7 @@ C:/Python312/python.exe -m venv video/engine/.venv-chatterbox
 video/engine/.venv-chatterbox/Scripts/python.exe -m pip install -r video/engine/scripts/requirements-chatterbox.txt
 
 # Audición: la misma frase con cada voz, en video/<slug>/.audition/chatterbox-*.mp3
-node video/engine/scripts/tts-chatterbox.mjs --video <slug> --audition --voices mtl/default,es-es/default [--respelled]
+node video/engine/scripts/tts-chatterbox.mjs --video <slug> --audition --voices mtl/default,es-es/default [--respelled] [--tempo 0.8] [--temperature 0.7]
 
 # Síntesis (solo los segmentos que cambian; --only s01-02 --force para rehacer uno) + timeline
 node video/engine/scripts/audio.mjs --video <slug>
