@@ -10,7 +10,11 @@ const SHAPES = {
   CuePoint: ['scene', 'id', 'frame'],
   ExamCue: ['scene', 'from', 'durationInFrames', 'objective', 'text'],
   ThinkPrompt: ['scene', 'from', 'durationInFrames', 'q'],
+  InterceptCue: ['scene', 'from', 'durationInFrames', 'adversary', 'text'],
 };
+
+/** Keys a shape may carry in addition to SHAPES (only written when non-empty). */
+const OPTIONAL = { Timeline: ['intercept'] };
 
 /**
  * @param {object} t timeline
@@ -30,7 +34,7 @@ export function validateTimeline(t, opts = {}) {
     const want = SHAPES[shape];
     const have = Object.keys(obj);
     const missing = want.filter((k) => !have.includes(k));
-    const extra = have.filter((k) => !want.includes(k));
+    const extra = have.filter((k) => !want.includes(k) && !(OPTIONAL[shape] ?? []).includes(k));
     if (missing.length) errors.push(`${where}: missing ${missing.join(', ')}`);
     if (extra.length) errors.push(`${where}: unexpected ${extra.join(', ')}`);
     return !missing.length;
@@ -153,5 +157,21 @@ export function validateTimeline(t, opts = {}) {
     int(p.durationInFrames, `${where}.durationInFrames`, 1);
     str(p.q, `${where}.q`);
   });
+  if (t.intercept !== undefined) {
+    if (!Array.isArray(t.intercept) || !t.intercept.length) errors.push('timeline.intercept: when present, a non-empty array');
+    else {
+      t.intercept.forEach((x, k) => {
+        const where = `intercept[${k}]`;
+        if (!keys(x, 'InterceptCue', where)) return;
+        if (!sceneOf.has(x.scene)) errors.push(`${where}.scene: not in scenes`);
+        int(x.from, `${where}.from`);
+        int(x.durationInFrames, `${where}.durationInFrames`, 1);
+        str(x.adversary, `${where}.adversary`);
+        str(x.text, `${where}.text`);
+        const sc = sceneOf.get(x.scene);
+        if (sc && (x.from < sc.from || x.from + x.durationInFrames > sc.from + sc.durationInFrames)) errors.push(`${where}: outside its scene`);
+      });
+    }
+  }
   return errors;
 }

@@ -76,6 +76,18 @@ export interface ThinkPrompt {
   q: string;
 }
 
+/** A message from the section's adversary: shown on screen (never voiced) before the narrator answers it. */
+export interface InterceptCue {
+  scene: SceneId;
+  /** First frame of the silent lead before the answering segment's audio. */
+  from: number;
+  /** Until the answering segment's pause ends. */
+  durationInFrames: number;
+  /** The section adversary from video.json, e.g. "SILENT PAGER". */
+  adversary: string;
+  text: string;
+}
+
 export interface Timeline {
   mode: 'audio' | 'estimate';
   /** sha256 of narration.json + lexicon.json + storyboard.json used to build this file. */
@@ -91,6 +103,8 @@ export interface Timeline {
   cues: CuePoint[];
   exam: ExamCue[];
   think: ThinkPrompt[];
+  /** Present only when the video has intercepted messages. */
+  intercept?: InterceptCue[];
 }
 
 /** What every scene component receives. All frames are LOCAL to the scene's Sequence. */
