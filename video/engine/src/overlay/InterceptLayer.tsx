@@ -8,7 +8,7 @@ import { twoLines, useFontsReady } from './Captions';
 
 const ENTER = 12;
 const EXIT = 10;
-/** Frames per typed character: 70 characters type out in ~2.3 s, inside the shortest (2.5 s) lead. */
+/** Frames per typed character: at 1 frame/char, 70 characters take 70 frames to type out. */
 const TYPE_RATE = 1;
 /** Same slot as the think prompt (they never overlap in time). */
 const TOP = LAYOUT.stage.top + 10;
@@ -18,13 +18,20 @@ const BODY = { size: 42, weight: 700, letterSpacing: -0.2 } as const;
 const BODY_MAX = MAX_WIDTH - 2 * PAD_X - 4;
 const CARD_BG = alpha(C.roseDeep, 0.92);
 
-/** Where one message is in its life at `frame`: null when off screen. */
+/** Frame (relative to `entry.from`) where typing starts: a third of the way into the enter animation. */
+const TYPE_START = Math.floor(ENTER / 3);
+
+/**
+ * Where one message is in its life at `frame`: null when off screen. Typing starts at ENTER / 3
+ * (frame 4 of 12) so a 70-character message — the longest allowed, `INTERCEPT_TEXT_MAX` — finishes
+ * typing at 4 + 70 = 74 frames, inside the shortest allowed hold (2.5 s = 75 frames at 30 fps).
+ */
 export function interceptState(entry: InterceptCue, frame: number) {
   const end = entry.from + entry.durationInFrames;
   if (frame < entry.from || frame >= end) return null;
   const pin = progress(frame, entry.from, ENTER, EASE.out);
   const pout = progress(frame, end - EXIT, EXIT, EASE.inOut);
-  const typed = Math.min(entry.text.length, Math.max(0, Math.floor((frame - entry.from - ENTER / 2) / TYPE_RATE)));
+  const typed = Math.min(entry.text.length, Math.max(0, Math.floor((frame - entry.from - TYPE_START) / TYPE_RATE)));
   return { opacity: Math.min(pin, 1 - pout), dy: (1 - pin) * -18 + pout * -10, typed };
 }
 

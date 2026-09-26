@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { APP_URL, TAGS_MAX_CHARS, TITLE_MAX, voiceCredit, youtubeChapters, youtubeDescription, youtubeTags, youtubeTitle } from '../youtube-meta.mjs';
+import { APP_URL, TAGS_MAX_CHARS, TITLE_MAX, tagsLength, voiceCredit, youtubeChapters, youtubeDescription, youtubeTags, youtubeTitle } from '../youtube-meta.mjs';
 
 const scene = (id, title, from, sec) => ({ id, title, from, durationInFrames: sec * 30, chapter: 1, chapterTitle: 'Uno' });
 const timeline = {
@@ -64,6 +64,25 @@ test('youtubeTags: over-budget lexicon terms are dropped, never the track/object
   assert.ok(tags.includes('Security+'));
   assert.ok(tags.includes('objetivo 4.4'));
   assert.ok(tags.includes('objetivo 4.9'));
+});
+
+test('tagsLength: +2 characters per tag containing a space (YouTube Studio quotes it), plain comma-join otherwise', () => {
+  assert.equal(tagsLength(['abc', 'de']), 'abc,de'.length);
+  assert.equal(tagsLength(['abc', 'de fg']), 'abc,de fg'.length + 2);
+  assert.equal(tagsLength(['a b', 'c d', 'ef']), 'a b,c d,ef'.length + 4);
+  assert.equal(tagsLength([]), 0);
+});
+
+test('youtubeTags: fitting reserves room for quoting, so the quoted length never exceeds the 500-char budget', () => {
+  // TRACK_TAGS.secplus has 2 space-containing fixed tags ("CompTIA Security+ en español", "blue
+  // team"), so the real, YouTube-quoted budget is 4 characters tighter than a plain comma-join
+  // suggests. Without accounting for that, fitting on raw length alone keeps 139 of these 2-char
+  // extras (total exactly 500 unquoted, 504 quoted); reserving the quoting keeps only 137 (498 quoted).
+  const timelineNoExam = { ...timeline, exam: [] };
+  const extras = Array.from({ length: 200 }, (_, i) => String.fromCharCode(97 + Math.floor(i / 26)) + String.fromCharCode(97 + (i % 26)));
+  const tags = youtubeTags(timelineNoExam, 'secplus', extras);
+  assert.ok(tagsLength(tags) <= TAGS_MAX_CHARS, `tagsLength ${tagsLength(tags)} exceeds ${TAGS_MAX_CHARS}`);
+  assert.equal(tags.length, 6 + 137);
 });
 
 test('description: hook is the first two segments of the whole video, even with a one-segment first scene', () => {

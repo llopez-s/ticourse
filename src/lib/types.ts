@@ -77,6 +77,7 @@ export interface VideoFileBlock {
   poster: string;
   transcript: string;
   captions: string;
+  youtube?: never;
 }
 
 /** A lesson video hosted on YouTube: only the poster and the transcript live in public/videos. */
@@ -87,6 +88,8 @@ export interface YouTubeVideoBlock {
   youtube: string;
   poster: string;
   transcript: string;
+  src?: never;
+  captions?: never;
 }
 
 export type Block =

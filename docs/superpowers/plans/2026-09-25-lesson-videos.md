@@ -124,9 +124,13 @@ como interceptado y se escribe letra a letra, y a continuación la narradora lo 
 #### Los nombres en pantalla
 
 En los vídeos nuevos, el póster y la tarjeta final dicen **«Alertópolis»**, nunca «IntelForge Academy» (el
-nombre antiguo, que conservan los tres vídeos ya publicados para no romper su regresión byte a byte). Lo
-decide el `profile` de `video.json`: `scripts/lib/profiles.mjs` usa `LEGACY_APP_NAME` para `principal`/`capsula`
-y `APP_NAME` para `principal-yt`/`capsula-yt`.
+nombre antiguo, que conservan los tres vídeos ya publicados para no romper su regresión byte a byte). El
+`profile` de `video.json` **no** lo decide: `LEGACY_APP_NAME`/`APP_NAME` de `scripts/lib/profiles.mjs` solo
+llegan al aviso de marca de la transcripción y la descripción de YouTube (`trackNotice`), nunca al póster ni a
+la tarjeta final. El póster (`src/Poster.tsx`) y la tarjeta final (la escena de cierre) de cada vídeo nuevo
+escriben «ALERTÓPOLIS» ellos mismos, a mano — nunca se copian de `video/siem/` o `video/forense-adquisicion/`
+sin cambiar el nombre. `video/engine/scripts/lib/brand-yt.test.mjs` vigila que ningún vídeo con perfil `-yt`
+conserve «INTELFORGE ACADEMY» en su propio `src/`.
 
 ## 2. Rúbrica de selección (igual para ambas pistas)
 

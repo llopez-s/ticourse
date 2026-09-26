@@ -93,8 +93,9 @@ Los MP4 de los vídeos de YouTube **no se copian a `public/videos/` ni se commit
 `video/<slug>/out/`, que está ignorado por git. Se pueden volver a renderizar cuando haga falta, porque los clips
 de voz y el timeline sí están versionados.
 
-`render.mjs` mantiene sus comprobaciones de duración, códec y sincronía A/V. En los perfiles `-yt`, la de tamaño
-pasa a ser solo un aviso.
+`render.mjs` mantiene sus comprobaciones de duración, códec y sincronía A/V. En los perfiles `-yt` (`size: null`
+en el perfil) la de tamaño no se hace: se omite y solo se registra una línea diciendo que no se comprueba,
+porque YouTube vuelve a codificar el vídeo al subirlo.
 
 ## 4. Mensaje interceptado del adversario
 
@@ -222,7 +223,7 @@ Escribe `video/<slug>/out/youtube.md`, listo para copiar, con:
 - **Título** (≤100 caracteres). Primero el término que se busca, después el examen:
   `SIEM explicado: del ruido a la evidencia | Security+ SY0-701 en español`.
 - **Descripción:**
-  - un gancho de dos líneas;
+  - un gancho formado por los dos primeros segmentos del vídeo;
   - capítulos generados del timeline (`00:00 …`; YouTube exige que el primero sea 00:00, al menos 3 capítulos
     y de 10 s o más);
   - un enlace a la lección en la app (`https://llopez-s.github.io/ticourse/`);
@@ -261,7 +262,7 @@ reproduciéndose desde GitHub. Notas para cuando se retomen:
 - **`VideoBlock`**:
   - con `youtube`, muestra el póster con un botón de reproducir (fachada) y **solo al pulsar** carga
     `https://www.youtube-nocookie.com/embed/<id>?autoplay=1&rel=0&cc_load_policy=1&cc_lang_pref=es&hl=es`:
-    hasta ese clic no se envía nada a Google;
+    hasta ese clic no se envía nada a YouTube;
   - debajo, «Ver en YouTube» y la transcripción desplegable, como ahora. Sin enlace de descarga.
 - **El póster y la transcripción siguen en `public/videos/`**, porque pesan poco.
 - **Tests de `content.test.ts`:**

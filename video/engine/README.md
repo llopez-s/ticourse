@@ -1,7 +1,7 @@
 # Motor de vídeos de lección
 
 Tubería compartida, hecha con [Remotion](https://www.remotion.dev/) 4, para los vídeos que se incrustan en
-las lecciones de IntelForge Academy (bloques `t: 'video'`). Cada vídeo vive en su carpeta
+las lecciones de Alertópolis (bloques `t: 'video'`). Cada vídeo vive en su carpeta
 `video/<slug>/`; este motor pone los scripts, la interfaz, las superposiciones (subtítulos, raíl de
 capítulos, tarjetas de examen, pausas para pensar, barra de progreso), el tema, las fuentes y los tipos.
 Plan de contenidos: `docs/superpowers/plans/2026-09-25-lesson-videos.md`.
@@ -65,9 +65,19 @@ Todos los scripts eligen el vídeo con `--video <slug>` (o la variable `VIDEO`; 
 - **El tamaño**: con `size: null`, `render.mjs` no comprueba el peso del MP4 (solo avisa de que no se
   comprueba, porque YouTube vuelve a codificar el vídeo al subirlo).
 
-**El aviso con la marca** (`trackNotice`, en la transcripción y en la tarjeta final de créditos): los perfiles
-antiguos (`principal`, `capsula`) llevan `LEGACY_APP_NAME` («IntelForge Academy»), para que la regresión del
-SIEM siga siendo byte a byte idéntica; los perfiles `-yt` llevan `APP_NAME` («Alertópolis»).
+**El aviso con la marca** (`trackNotice`, solo en la transcripción y en la descripción de YouTube — **no** en
+el póster ni en la tarjeta final, ver «El póster y la tarjeta final» abajo): los perfiles antiguos
+(`principal`, `capsula`) llevan `LEGACY_APP_NAME` («IntelForge Academy»), para que la regresión del SIEM siga
+siendo byte a byte idéntica; los perfiles `-yt` llevan `APP_NAME` («Alertópolis»).
+
+### El póster y la tarjeta final
+
+El `profile` de `video.json` **no** decide el nombre que aparece en el póster (`src/Poster.tsx`) ni en la
+tarjeta final de créditos (la escena de cierre): cada vídeo los escribe él mismo, a mano, como texto literal.
+Un vídeo nuevo con perfil `-yt` debe escribir «ALERTÓPOLIS»; nunca se copian esos archivos de `video/siem/` o
+`video/forense-adquisicion/` (que llevan «INTELFORGE ACADEMY», el nombre antiguo, para no romper su
+regresión byte a byte) sin cambiar el nombre. `scripts/lib/brand-yt.test.mjs` vigila que ningún vídeo con
+perfil `-yt` conserve «INTELFORGE ACADEMY» en su propio `src/`.
 
 ## Mensaje interceptado
 

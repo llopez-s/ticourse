@@ -55,6 +55,15 @@ export function voiceCredit(voice) {
   return null;
 }
 
+/**
+ * Length YouTube Studio actually charges against the 500-char tag budget: `tags.join(',')`, plus 2
+ * extra characters for every tag containing a space, because Studio wraps those in quotes.
+ */
+export function tagsLength(tags) {
+  const quoting = tags.reduce((n, tag) => n + (tag.includes(' ') ? 2 : 0), 0);
+  return tags.join(',').length + quoting;
+}
+
 /** Track/exam tags (spec §6.2), then lexicon terms, deduplicated in that order and fit to the 500-char budget. */
 export function youtubeTags(timeline, track, lexiconTerms = []) {
   const fixed = [...new Set([...TRACK_TAGS[track], ...timeline.exam.map((e) => `objetivo ${e.objective}`)])];
@@ -67,7 +76,7 @@ export function youtubeTags(timeline, track, lexiconTerms = []) {
     }
   }
   const tags = [...fixed, ...extra];
-  while (tags.length > fixed.length && tags.join(',').length > TAGS_MAX_CHARS) tags.pop();
+  while (tags.length > fixed.length && tagsLength(tags) > TAGS_MAX_CHARS) tags.pop();
   return tags;
 }
 
@@ -103,7 +112,7 @@ function main() {
   errors.push(...youtubeChapters(timeline).errors);
   const { lexicon } = loadSources({ storyboard: PATHS.storyboard, narration: PATHS.narration, lexicon: PATHS.lexicon });
   const tags = youtubeTags(timeline, MANIFEST.track, Object.keys(lexicon));
-  if (tags.join(',').length > TAGS_MAX_CHARS) errors.push(`tags take ${tags.join(',').length} characters (max ${TAGS_MAX_CHARS})`);
+  if (tagsLength(tags) > TAGS_MAX_CHARS) errors.push(`tags take ${tagsLength(tags)} characters, quoted (max ${TAGS_MAX_CHARS})`);
   if (!existsSync(PATHS.poster)) errors.push(`no poster at ${PATHS.poster} — run render.mjs`);
   else if (statSync(PATHS.poster).size > THUMB_MAX_BYTES) errors.push(`poster is over 2 MB, YouTube's thumbnail limit`);
   const captions = captionsPathFor(PATHS.transcript);

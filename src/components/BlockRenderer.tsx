@@ -165,7 +165,7 @@ function VideoBlock({ block }: { block: VideoFileBlock }) {
 
 /**
  * YouTube lesson video behind a click-to-load facade: until the learner presses play the page shows
- * only our own poster, so nothing is requested from YouTube or Google.
+ * only our own poster, so nothing is requested from YouTube.
  */
 function YouTubeBlock({ block }: { block: YouTubeVideoBlock }) {
   const [playing, setPlaying] = useState(false);
@@ -187,7 +187,7 @@ function YouTubeBlock({ block }: { block: YouTubeVideoBlock }) {
         ) : (
           <button
             type="button"
-            className="group absolute inset-0 h-full w-full"
+            className="group absolute inset-0 h-full w-full focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-cyan-400"
             onClick={() => setPlaying(true)}
             aria-label={`Reproducir «${block.title}» (se carga desde YouTube)`}
           >
