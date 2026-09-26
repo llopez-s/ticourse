@@ -105,7 +105,7 @@ const countWords = (s) => s.split(/\s+/).filter(Boolean).length;
  * @returns {{errors: string[], warnings: string[], voice: {voice: string, rate: string, pitch: string},
  *   scenes: {scene: object, index: number, segments: object[]}[], segments: object[]}}
  */
-export function analyzeNarration({ storyboard, narration, lexicon }, { examCards = [8, 11], thinkPrompts = 2 } = {}) {
+export function analyzeNarration({ storyboard, narration, lexicon }, { examCards = [8, 11], thinkPrompts = 2, intercepts = null, chispa = false } = {}) {
   const errors = [];
   const warnings = [];
 
@@ -160,6 +160,7 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
   const risks = new Map(); // token -> first segment id
   let currentScene = -1;
   let lastIndex = 0;
+  let prevMood = null;
   narration.segments.forEach((raw, k) => {
     const label = isObj(raw) && typeof raw.id === 'string' ? raw.id : `segment #${k + 1}`;
     if (!isObj(raw)) {
@@ -248,6 +249,13 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
       if (countWords(sentence) > 22) warnings.push(`${label}: sentence of ${countWords(sentence)} words (max 22): "${sentence.slice(0, 60)}…"`);
     }
 
+    if (chispa) {
+      if (parsed.spoken.includes(';')) warnings.push(`${label}: ";" in the narration — split it into two sentences (chispa style)`);
+      const mood = parsed.directions[0] ?? null;
+      if (mood && mood === prevMood) warnings.push(`${label}: same emotion <${mood}> as the previous segment (chispa style: vary it)`);
+      prevMood = mood;
+    }
+
     segments.push({ id: raw.id, scene: raw.scene, sceneIndex: si, text: raw.text, parsed, pauseMs, exam, think });
   });
 
@@ -279,6 +287,8 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
     const expected = required.filter((id) => counts.has(id)).join(' ');
     const actual = [...new Set(order)].filter((id) => required.includes(id)).join(' ');
     if (expected !== actual) warnings.push(`scene ${scene.id}: cues fire in a different order than requiredCues (${actual})`);
+
+    if (chispa && !segs.some((s) => s.parsed.display.includes('?'))) warnings.push(`scene ${scene.id}: no question (chispa style: at least one per scene)`);
 
     const exams = segs.filter((s) => s.exam);
     examCount += exams.length;
