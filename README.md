@@ -13,6 +13,12 @@ comparten el mismo motor (XP, rachas, flashcards SM-2, bosses, simulacros):
 **▶ En vivo: https://llopez-s.github.io/ticourse/** — se despliega solo en cada
 push a `main` (GitHub Actions: tests → build → Pages).
 
+**Identidad visual.** La misma que la del canal de YouTube `@Alertopolis`, *ciberseguridad en español, con
+chispa*: el rombo cian con la baliza rosa (favicon), el logotipo ALERT·ÓPOLIS de la barra lateral y la ciudad
+nocturna del Panel, donde cada ventana es un evento (gris = rutina, cian = dato, ámbar = aviso) y la baliza de
+la torre es la alerta que importa. `public/apple-touch-icon.png` y `public/og-image.png` (la vista previa al
+compartir el enlace) son el avatar y un recorte del banner del canal.
+
 Cambia de track con el selector de la barra lateral. El progreso de lecciones,
 quizzes, labs, bosses y cartas es independiente por track; XP, nivel, racha y
 misiones diarias son un único perfil compartido.

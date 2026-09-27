@@ -83,6 +83,46 @@ body {
   animation: glow-pulse 1.8s ease-in-out infinite;
 }
 
+/* Night sky behind the Dashboard skyline: the channel banner's glows (cyan over
+   the city, violet low on the left) and its faint grid, at strip scale. */
+.city-sky {
+  background:
+    radial-gradient(60% 95% at 86% 0%, rgb(14 116 144 / 0.3), transparent 70%),
+    radial-gradient(55% 85% at 0% 100%, rgb(46 16 101 / 0.42), transparent 70%);
+}
+.city-sky::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  background-image:
+    linear-gradient(rgb(29 45 74 / 0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(29 45 74 / 0.55) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* The beacon pings three times when the Dashboard opens, then holds still. */
+@keyframes beacon-ping {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+.beacon-ping {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: beacon-ping 2.4s ease-out 0.4s 3;
+}
+@media (prefers-reduced-motion: reduce) {
+  .beacon-ping {
+    animation: none;
+  }
+}
+
 .transition-bar {
   transition: width 0.5s ease-out;
 }

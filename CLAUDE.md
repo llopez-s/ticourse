@@ -124,6 +124,16 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
 - State shape and persistence live in `lib/store.ts` (Zustand + `persist`, key `intelforge-v1`).
   Changing the store shape can invalidate a user's saved progress — migrate carefully.
 
+- **Brand (matches the YouTube channel art).** `lib/brand.ts` holds `APP_NAME`, `APP_WORDMARK` +
+  `WORDMARK_PARTS` (ALERT white / ÓPOLIS cyan), `APP_TAGLINE` ("Ciberseguridad en español, con chispa") and
+  `SITE_URL`. `components/Brand.tsx` draws the lockup (`BrandMark` = the videos' diamond, `Wordmark`);
+  `components/Skyline.tsx` + `lib/skyline.ts` draw the Dashboard's night city (seeded, deterministic; windows
+  dim/cyan/amber = routine/data/warning, rose beacon on the tallest tower near the right edge, everything
+  left of `RISE_FROM` stays under `LOW_MAX` so text can sit above it). `public/favicon.svg` is the avatar
+  (diamond + rose badge); `public/apple-touch-icon.png` and `public/og-image.png` are the channel avatar and
+  a banner crop. OG/Twitter meta in `index.html` use absolute `SITE_URL` paths; `brand.test.ts` pins all of it.
+  Track icons must not reuse the app's `◆`.
+
 ## State & gotchas
 
 - **Complete / functional** product, not a scaffold. GCTI: 27 lessons, 174 quiz questions, 12
@@ -161,7 +171,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   and each device keeps its own copy locally, but it is the one place where a device whose
   `localStorage` was cleared *before* its next push can lose data. Retrying once after a 404 on
   the first sync for a code would shrink the window.
-- **Tests:** vitest, `npm test` (144 tests in `src/**/*.test.ts`, 12 files). Content tests assert
+- **Tests:** vitest, `npm test` (158 tests in `src/**/*.test.ts`, 13 files). Content tests assert
   Domain 1–5 completeness, that every Security+ boss section has ≥12 questions, 4 choices + valid
   answer per question, ids unique, lab data present, and (placement blocks) that every content
   section has exactly one 12-question block with contiguous ids and non-empty text. Partial
