@@ -16,6 +16,7 @@ import { todayStr } from '../lib/util';
 import { levelInfo, rankFor } from '../lib/xp';
 import { isDone } from '../lib/placement';
 import { Bar, Panel, Ring } from '../components/Bits';
+import { Skyline } from '../components/Skyline';
 
 function QuestsPanel() {
   const day = useStore((s) => s.day);
@@ -156,17 +157,24 @@ export default function Dashboard() {
 
   return (
     <div>
-      <div className="mb-6">
-        <div className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
-          Centro de operaciones
+      {/* The channel banner's city: the greeting sits in its sky. Below xl the
+          text takes the full width, so it stays above the skyline; from xl on it
+          narrows and the low rooftops run under it, left of the beacon tower. */}
+      <section className="relative mb-6 overflow-hidden rounded-xl border border-ink-700 bg-ink-950 xl:min-h-[172px]">
+        <div aria-hidden="true" className="city-sky absolute inset-0" />
+        <Skyline className="absolute inset-x-0 bottom-0 h-[120px] w-full md:h-[150px]" />
+        <div className="relative px-5 pb-[128px] pt-5 md:px-6 md:pb-[158px] xl:max-w-[28rem] xl:pb-12">
+          <div className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
+            Centro de operaciones
+          </div>
+          <h1 className="mt-1 text-2xl font-bold text-slate-50">
+            Hola, {rank.name} {rank.icon}
+          </h1>
+          <p className="mt-1 text-sm text-slate-300">
+            {track.tagline}
+          </p>
         </div>
-        <h1 className="text-2xl font-bold text-slate-50">
-          Hola, {rank.name} {rank.icon}
-        </h1>
-        <p className="mt-1 text-sm text-slate-400">
-          {track.tagline}
-        </p>
-      </div>
+      </section>
 
       {placementBlocks(track.id).length > 0 &&
         (s.placement.some((p) => p.track === track.id) ? (

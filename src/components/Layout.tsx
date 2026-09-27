@@ -1,7 +1,7 @@
 import { useEffect, type ReactNode } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useStore } from '../lib/store';
-import { APP_WORDMARK } from '../lib/brand';
+import { APP_NAME, APP_TAGLINE } from '../lib/brand';
 import { levelInfo, nextRank, rankFor } from '../lib/xp';
 import { buildQueue, NEW_PER_DAY } from '../lib/srs';
 import { todayStr } from '../lib/util';
@@ -9,6 +9,7 @@ import { isDone } from '../lib/placement';
 import { modulesOf, sectionsOf, trackOf } from '../data/course';
 import { TRACKS, TRACK_IDS, type TrackMeta } from '../data/tracks';
 import { Bar } from './Bits';
+import { BrandMark, Wordmark } from './Brand';
 
 /** The active study track (content scope). */
 export function useTrack(): TrackMeta {
@@ -138,11 +139,9 @@ function TopBar() {
   return (
     <header className="no-print sticky top-0 z-20 border-b border-ink-700 bg-ink-950/85 backdrop-blur">
       <div className="flex items-center gap-3 px-4 py-2.5 md:px-6">
-        <Link to="/" className="flex items-center gap-2 md:hidden">
-          <span className="text-cyan-400">◆</span>
-          <span className="font-mono text-sm font-bold tracking-tight text-slate-100">
-            {APP_WORDMARK}
-          </span>
+        <Link to="/" aria-label={`${APP_NAME}: panel de mando`} className="flex items-center gap-1.5 md:hidden">
+          <BrandMark className="h-4 w-4 text-cyan-400" />
+          <Wordmark className="text-base leading-none" />
         </Link>
 
         <div className="hidden items-center gap-3 md:flex">
@@ -233,16 +232,12 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen">
       <aside className="no-print fixed inset-y-0 left-0 z-30 hidden w-64 flex-col overflow-y-auto border-r border-ink-700 bg-ink-900 md:flex">
-        <Link to="/" className="flex items-center gap-2.5 px-5 pb-2 pt-5">
-          <span className="text-2xl text-cyan-400">◆</span>
-          <div>
-            <div className="font-mono text-sm font-bold tracking-tight text-slate-50">
-              {APP_WORDMARK}
-            </div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">
-              {track.brand}
-            </div>
+        <Link to="/" aria-label={`${APP_NAME}: panel de mando`} className="block px-5 pb-4 pt-5">
+          <div className="flex items-center gap-2">
+            <BrandMark className="h-5 w-5 text-cyan-400" />
+            <Wordmark className="text-xl leading-none" />
           </div>
+          <div className="mt-1.5 text-[11px] leading-snug text-slate-400">{APP_TAGLINE}</div>
         </Link>
         <TrackSwitcher />
 

@@ -42,7 +42,6 @@ export type { TrackId };
 export interface TrackMeta {
   id: TrackId;
   name: string;
-  brand: string;
   icon: string;
   tagline: string;
   disclaimer: string;
@@ -77,8 +76,7 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
   gcti: {
     id: 'gcti',
     name: 'CTI · GCTI',
-    brand: 'CTI Academy',
-    icon: '◆',
+    icon: '🎓',
     tagline:
       'Preparación FOR578 · GCTI — teoría, labs y examen en un solo sitio.',
     disclaimer:
@@ -116,7 +114,6 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
   secplus: {
     id: 'secplus',
     name: 'Security+',
-    brand: 'Security+ Forge',
     icon: '🛡️',
     tagline:
       'Preparación CompTIA Security+ (SY0-701) — los 5 dominios, labs y simulacros.',

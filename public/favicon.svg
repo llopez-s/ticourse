@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- The channel avatar at tab size: the app's diamond with a rose alert badge
+       cut out of its upper-right edge. Transparent, so it reads on light and dark tabs. -->
+  <defs>
+    <mask id="cut" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+      <rect width="64" height="64" fill="#fff" />
+      <circle cx="46.5" cy="17.5" r="15" fill="#000" />
+    </mask>
+  </defs>
+  <g mask="url(#cut)">
+    <rect x="12" y="12" width="40" height="40" rx="7" transform="rotate(45 32 32)" fill="#22d3ee" />
+  </g>
+  <circle cx="46.5" cy="17.5" r="11" fill="#f43f5e" />
+</svg>
