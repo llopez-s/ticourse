@@ -64,8 +64,10 @@ export interface ExamCue {
   scene: SceneId;
   from: number;
   durationInFrames: number;
-  /** Exam objective shown on the card, e.g. "4.4" (SY0-701). */
+  /** Exam objective shown on the card, e.g. "4.4" (SY0-701) or a GCTI domain ("Intrusion Analysis"). */
   objective: string;
+  /** Exam named on the badge; absent means "SY0-701" (Security+ timelines predate it). */
+  badge?: string;
   text: string;
 }
 

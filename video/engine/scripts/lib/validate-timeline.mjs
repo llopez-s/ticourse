@@ -14,7 +14,7 @@ const SHAPES = {
 };
 
 /** Keys a shape may carry in addition to SHAPES (only written when non-empty). */
-const OPTIONAL = { Timeline: ['intercept'] };
+const OPTIONAL = { Timeline: ['intercept'], ExamCue: ['badge'] };
 
 /**
  * @param {object} t timeline
@@ -148,6 +148,7 @@ export function validateTimeline(t, opts = {}) {
     int(e.durationInFrames, `${where}.durationInFrames`, 1);
     str(e.objective, `${where}.objective`);
     str(e.text, `${where}.text`);
+    if (e.badge !== undefined) str(e.badge, `${where}.badge`);
   });
   t.think.forEach((p, k) => {
     const where = `think[${k}]`;

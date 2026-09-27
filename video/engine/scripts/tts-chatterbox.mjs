@@ -213,7 +213,7 @@ export function synthesizeNarration({ only = null, force = false, log = console 
   const sources = loadSources({ storyboard: PATHS.storyboard, narration: PATHS.narration, lexicon: PATHS.lexicon });
   const lexWarn = edgeLexiconWarning(sources.paths.lexicon);
   if (lexWarn) log.warn(`  aviso: ${lexWarn}`);
-  const analysis = analyzeNarration(sources, profileFor(MANIFEST.profile));
+  const analysis = analyzeNarration(sources, { ...profileFor(MANIFEST.profile), track: MANIFEST.track });
   reportOrThrow(analysis, log);
   const { voice, rate, pitch } = analysis.voice;
   if (!isChatterboxVoice(voice)) throw new Error(`narration.voice is "${voice}", not a Chatterbox voice (chatterbox/<es-es|mtl>/<voice>)`);

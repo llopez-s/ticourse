@@ -31,7 +31,7 @@ export function auditionText(lexicon) {
 
 export function prepareTts({ storyboard = PATHS.storyboard, narration = PATHS.narration, lexicon = PATHS.lexicon, log = console } = {}) {
   const sources = loadSources({ storyboard, narration, lexicon });
-  const analysis = analyzeNarration(sources, profileFor(MANIFEST.profile));
+  const analysis = analyzeNarration(sources, { ...profileFor(MANIFEST.profile), track: MANIFEST.track });
   if (sources.lexiconMissing) analysis.warnings.push(`no lexicon at ${lexicon}`);
   reportOrThrow(analysis, log);
   const { voice, rate, pitch } = analysis.voice;

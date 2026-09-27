@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { PATHS } from './paths.mjs';
+import { examObjectiveError } from './profiles.mjs';
 import { MarkupError, parseSegmentText, pronunciationRisks } from './text.mjs';
 
 export const SEGMENT_ID = /^s\d\d-\d\d$/;
@@ -108,7 +109,7 @@ const countWords = (s) => s.split(/\s+/).filter(Boolean).length;
  * @returns {{errors: string[], warnings: string[], voice: {voice: string, rate: string, pitch: string},
  *   scenes: {scene: object, index: number, segments: object[]}[], segments: object[]}}
  */
-export function analyzeNarration({ storyboard, narration, lexicon }, { examCards = [8, 11], thinkPrompts = 2, intercepts = null, chispa = false } = {}) {
+export function analyzeNarration({ storyboard, narration, lexicon }, { examCards = [8, 11], thinkPrompts = 2, intercepts = null, chispa = false, track = 'secplus' } = {}) {
   const errors = [];
   const warnings = [];
 
@@ -218,7 +219,8 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
       const e = raw.exam;
       if (!isObj(e)) errors.push(`${label}: exam must be an object`);
       else {
-        if (typeof e.objective !== 'string' || !/^[1-5]\.\d{1,2}$/.test(e.objective)) errors.push(`${label}: exam.objective must be an SY0-701 objective like "4.4"`);
+        const objectiveError = examObjectiveError(track, e.objective);
+        if (objectiveError) errors.push(`${label}: ${objectiveError}`);
         if (typeof e.text !== 'string' || !e.text.trim()) errors.push(`${label}: exam.text must be a non-empty string`);
         else {
           if (e.text.length > EXAM_TEXT_MAX) errors.push(`${label}: exam.text is ${e.text.length} characters (max ${EXAM_TEXT_MAX})`);

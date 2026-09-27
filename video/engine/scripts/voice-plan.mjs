@@ -35,7 +35,7 @@ export function chooseVoice(chars, subscription) {
 async function main() {
   parseArgs({ options: { video: { type: 'string' } } });
   const sources = loadSources({ storyboard: PATHS.storyboard, narration: PATHS.narration, lexicon: PATHS.lexicon });
-  const analysis = analyzeNarration(sources, profileFor(MANIFEST.profile));
+  const analysis = analyzeNarration(sources, { ...profileFor(MANIFEST.profile), track: MANIFEST.track });
   reportOrThrow(analysis);
   const chars = elevenLabsChars(analysis.scenes);
   let subscription = null;

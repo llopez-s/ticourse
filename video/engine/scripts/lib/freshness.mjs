@@ -18,7 +18,7 @@ export function checkTimelineFresh({ requireAudio = true, timelinePath = PATHS.t
   const sources = loadSources({ storyboard: PATHS.storyboard, narration: PATHS.narration, lexicon: PATHS.lexicon });
   let keys = null;
   if (timeline.mode === 'audio') {
-    const analysis = analyzeNarration(sources);
+    const analysis = analyzeNarration(sources, { track: PATHS.manifest.track });
     if (analysis.errors.length) {
       problems.push(`narration.json no longer validates (${analysis.errors.length} errors) — run build-timeline.mjs`);
       return { ok: false, problems, timeline };

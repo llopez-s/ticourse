@@ -66,7 +66,7 @@ export function tagsLength(tags) {
 
 /** Track/exam tags (spec §6.2), then lexicon terms, deduplicated in that order and fit to the 500-char budget. */
 export function youtubeTags(timeline, track, lexiconTerms = []) {
-  const fixed = [...new Set([...TRACK_TAGS[track], ...timeline.exam.map((e) => `objetivo ${e.objective}`)])];
+  const fixed = [...new Set([...TRACK_TAGS[track], ...timeline.exam.map((e) => (track === 'gcti' ? e.objective : `objetivo ${e.objective}`))])];
   const seen = new Set(fixed);
   const extra = [];
   for (const term of lexiconTerms) {

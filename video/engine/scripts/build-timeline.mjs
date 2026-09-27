@@ -20,7 +20,7 @@ import { alignSpokenTokens, displayTimes, normalizeToken } from './lib/align.mjs
 import { paginate } from './lib/captions.mjs';
 import { analyzeNarration, isElevenLabsVoice, loadSources, parseJsonText, reportOrThrow, sourceHash, spokenForVoice, ttsKey } from './lib/narration.mjs';
 import { AUDIO_CMD, MANIFEST, PATHS, isMainModule } from './lib/paths.mjs';
-import { profileFor, trackNotice } from './lib/profiles.mjs';
+import { EXAM_BADGE, profileFor, trackNotice } from './lib/profiles.mjs';
 import { probeDurationsMs, writeFileAtomic } from './lib/remotion.mjs';
 import { validateTimeline } from './lib/validate-timeline.mjs';
 
@@ -181,7 +181,7 @@ export async function buildTimeline(options = {}) {
 
   const profile = profileFor(opts.profile);
   const sources = loadSources(opts);
-  const analysis = analyzeNarration(sources, profile);
+  const analysis = analyzeNarration(sources, { ...profile, track: opts.track });
   if (sources.lexiconMissing) analysis.warnings.push(`no lexicon at ${opts.lexicon} — acronyms will be read as written`);
   reportOrThrow(analysis, log);
   const { storyboard } = sources;
@@ -276,6 +276,8 @@ export async function buildTimeline(options = {}) {
         durationInFrames: Math.round(seg.exam.holdSec * fps),
         objective: seg.exam.objective,
         text: seg.exam.text,
+        // Security+ cards keep the implicit SY0-701 badge, so their timelines stay byte-identical.
+        ...(opts.track === 'secplus' ? {} : { badge: EXAM_BADGE[opts.track] }),
       });
     }
     t += TIMING.sceneTail;

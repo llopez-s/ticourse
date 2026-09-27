@@ -123,7 +123,7 @@ function encodeClip(pcmSlice, outFile, id) {
 
 export async function synthesizeNarration({ scenes: onlyScenes = null, force = false, log = console } = {}) {
   const sources = loadSources({ storyboard: PATHS.storyboard, narration: PATHS.narration, lexicon: PATHS.lexicon });
-  const analysis = analyzeNarration(sources, profileFor(MANIFEST.profile));
+  const analysis = analyzeNarration(sources, { ...profileFor(MANIFEST.profile), track: MANIFEST.track });
   reportOrThrow(analysis, log);
   const { voice, rate, pitch } = analysis.voice;
   if (!isElevenLabsVoice(voice)) throw new Error(`narration.voice is "${voice}", not an ElevenLabs voice (elevenlabs/<model>/<voice_id>)`);

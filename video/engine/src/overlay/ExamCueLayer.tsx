@@ -69,7 +69,7 @@ export function simulationTagOpacity(exam: ExamCue[], frame: number): number {
 }
 
 /** The violet card itself, top-right, right edge on the stage margin. */
-export function ExamCard({ objective, text, opacity = 1, offsetX = 0 }: { objective: string; text: string; opacity?: number; offsetX?: number }) {
+export function ExamCard({ objective, badge = 'SY0-701', text, opacity = 1, offsetX = 0 }: { objective: string; badge?: string; text: string; opacity?: number; offsetX?: number }) {
   const fontsReady = useFontsReady();
   // One line when it fits, otherwise the two most even lines, with the card hugging them.
   const body = twoLines(text, BODY, fontsReady, BODY_MAX);
@@ -103,7 +103,7 @@ export function ExamCard({ objective, text, opacity = 1, offsetX = 0 }: { object
             whiteSpace: 'nowrap',
           }}
         >
-          {`EXAMEN · SY0-701 · ${objective}`}
+          {`EXAMEN · ${badge} · ${objective}`}
         </span>
       </div>
       <div
@@ -138,6 +138,7 @@ export function ExamCueView({ exam, frame }: { exam: ExamCue[]; frame: number })
         <ExamCard
           key={`${cue.scene}-${cue.from}`}
           objective={cue.objective}
+          badge={cue.badge}
           text={cue.text}
           opacity={state.opacity}
           offsetX={state.offsetX}
