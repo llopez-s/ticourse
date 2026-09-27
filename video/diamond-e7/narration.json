@@ -1,0 +1,382 @@
+{
+  "voice": "es-ES-ElviraNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<tense> {alert}Madrugada del [5 de marzo|cinco de marzo] en Meridian Dynamics. [A las 02:13 UTC|A las dos y trece, hora u te ce], salta una alerta en el SOC.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<curious> ¿Qué ha pasado? {beacon}La estación [ENG-WS-041|eng uve doble ese cero cuarenta y uno], de ingeniería de propulsión, llama por HTTPS a un dominio que nadie conoce. Más o menos cada minuto.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<thoughtful> Un beacon suelto es solo un dato. {four-q}Para entenderlo te haces cuatro preguntas: quién, con qué, a través de qué y contra quién.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<confident> Cuatro preguntas, cuatro esquinas. Eso es el {title}Diamond Model, y hoy lo construyes con este evento: E7.",
+      "pauseAfterMs": 750
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-axiom",
+      "text": "<calm> {axiom}El modelo parte de un axioma. En cada intrusión, un adversario da un paso hacia un objetivo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-axiom",
+      "text": "<clear> Para darlo usa una capacidad, sobre una infraestructura, contra una víctima. ¿Lo ves? Son las cuatro preguntas de antes.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-axiom",
+      "text": "<focused> {v-adv}Adversary: quién. {v-cap}Capability: con qué. {v-infra}Infrastructure: a través de qué. {v-vic}Victim: contra quién.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Vértices: Adversary, Capability, Infrastructure, Victim",
+        "at": "v-vic",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-axiom",
+      "text": "<mischievously> Puede. Pero un diamante con una esquina vacía ya sirve. ¿Por qué? Porque las aristas unen los vértices: conoces uno y puedes buscar los demás.",
+      "pauseAfterMs": 750,
+      "intercept": {
+        "text": "Dibuja tu diamante. Siempre te faltará una esquina: la mía.",
+        "holdMs": 3600
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-victim",
+      "text": "<casual> Empiezas por lo que tienes: tu propia telemetría. {raw}En pantalla, las líneas crudas del EDR de esa madrugada.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-victim",
+      "text": "<curious> ¿Qué pertenece a la víctima? {drag-victim}El equipo, [ENG-WS-041|eng uve doble ese cero cuarenta y uno], y la empresa, Meridian Dynamics. Los dos van a Victim.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-victim",
+      "text": "<focused> ¿Y con qué te atacan? {drag-cap}El hash del binario, [9f3a...e1|que empieza por nueve efe tres a], es el implante GLASS VIPER, un loader. Va a Capability.",
+      "pauseAfterMs": 450,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Loader, exploit o técnica: Capability",
+        "at": "drag-cap",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-victim",
+      "text": "<warm> {pipe}Y este detalle, también: el named pipe [vc_pipe_%08x|ve ce pipe]. Si recompilan, el hash cambia. El patrón del pipe suele seguir ahí, como un acento.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-infra",
+      "text": "<engaging> ¿Y a través de qué habla ese implante? {domain}De un dominio: [update-svc-cdn.com|update ese uve ce, ce de ene, punto com].",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-infra",
+      "text": "<clear> Ese dominio resuelve a {ip}una IP de [185.220.x.x|ciento ochenta y cinco, doscientos veinte]. Y el servidor presenta {cert}un certificado TLS autofirmado: [CN=updatesvc|update ese uve ce].",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-infra",
+      "text": "<firm> Dominio, IP, servidor y certificado: todo eso es Infrastructure. Es la carretera por la que viaja la herramienta.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-infra",
+      "text": "<mischievously> Y aquí cae media clase. ¿El implante es infraestructura porque se conecta? {not-cap}No. El implante es Capability, y el dominio al que llama, Infrastructure.",
+      "pauseAfterMs": 750,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Dominio, IP y servidor C2: Infrastructure",
+        "at": "not-cap",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-adversary",
+      "text": "<thoughtful> Queda una esquina. ¿Quién está detrás? Respuesta honesta: no lo sabes. {unknown}Y escribes UNKNOWN.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-adversary",
+      "text": "<calm> Ese apodo se lo pusiste tú: un nombre de seguimiento para el implante y quien lo usa. No es una identidad, así que Adversary sigue en UNKNOWN.",
+      "pauseAfterMs": 500,
+      "intercept": {
+        "text": "Llámame GLASS VIPER, si te consuela. Mi nombre no lo sabrás.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-adversary",
+      "text": "<serious> La tentación es clara: rellenar la esquina con el nombre de quien sospechas.",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Rellenas Adversary con lo que sospechas?",
+        "holdMs": 2300
+      }
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-adversary",
+      "text": "<firm> No. UNKNOWN con un plan vale más que un nombre inventado. {pending}Anotas el pivote pendiente: el WHOIS histórico del dominio.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-adversary",
+      "text": "<curious> ¿Y si un día sale un nombre? {operator}El operator es quien teclea: registra el dominio y lanza el implante.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-adversary",
+      "text": "<grave> {customer}El customer lo encarga y se queda el botín: los diseños de propulsión. Pueden ser gente distinta, y los dos viven en Adversary.",
+      "pauseAfterMs": 750,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Operator teclea; customer encarga y se beneficia",
+        "at": "customer",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-meta",
+      "text": "<engaging> El diamante dice quién, con qué, por dónde y contra quién. ¿Y el resto del contexto? Va en las meta-features.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-meta",
+      "text": "<focused> La ficha de E7 se rellena campo a campo. {ts}Hora: [02:13 UTC|las dos y trece, u te ce]. {phase}Fase de la kill chain: Command and Control.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-meta",
+      "text": "<steady> {result}Resultado: éxito, el beacon salió. {direction}Dirección: de la víctima hacia la infraestructura.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-meta",
+      "text": "<clear> {method}Metodología: beacon HTTPS cada sesenta segundos, con jitter. Es un latido con algo de temblor, para no sonar a reloj.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-meta",
+      "text": "<warm> {resources}Y recursos: hosting, dominio y certificado TLS. Es lo que el adversario tuvo que conseguir para que todo funcionara.",
+      "pauseAfterMs": 650,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Hora, fase, resultado, dirección, método, recursos",
+        "at": "resources",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-axes",
+      "text": "<intrigued> Ahora traza dos diagonales. {axis-sp}La primera une Adversary y Victim: es el eje socio-político.",
+      "pauseAfterMs": 450,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Eje socio-político: Adversary y Victim",
+        "at": "axis-sp",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-axes",
+      "text": "<curious> ¿Qué pregunta ese eje? Por qué esta víctima. {why-meridian}¿Por qué Meridian? Por su propiedad intelectual de propulsión: es lo que necesita el customer.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-axes",
+      "text": "<calm> {axis-tech}La segunda une Capability e Infrastructure: el eje tecnológico. Cuenta cómo se despliega la técnica: implante, dominio, hosting y certificado.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-axes",
+      "text": "<confident> Un eje explica el porqué, y el otro, el cómo. Con los dos, el ataque empieza a tener sentido.",
+      "pauseAfterMs": 700
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-pivot",
+      "text": "<enthusiastic> Y aquí el diamante deja de ser una ficha y se vuelve herramienta. {loop}Cada vértice conocido ilumina a los demás.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-pivot",
+      "text": "<focused> ¿Cómo? {v2c}De la víctima, tus logs, sacas la muestra: capability. {c2i}De la muestra sacas el C2 que lleva escrito dentro: infraestructura.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-pivot",
+      "text": "<intrigued> {i2c}De ese C2 salen otras muestras que llaman al mismo sitio: más capability. {i2a}Y a veces, un descuido del adversario, como el email con que registró un dominio.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Pivotar: cada vértice conocido ayuda a descubrir otros",
+        "at": "i2a",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-pivot",
+      "text": "<satisfied> Cada vuelta del bucle hace crecer el grafo. ¿Te suena a juego? Es justo lo que harás en el [Lab 3A|lab tres a].",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-quality",
+      "text": "<sarcastic> Qué amable. {tenants}Esa IP es hosting compartido: unos catorce mil dominios de terceros viven en ella.",
+      "pauseAfterMs": 600,
+      "intercept": {
+        "text": "Sígueme por la IP. Tengo catorce mil vecinos deseando conocerte.",
+        "holdMs": 3600
+      }
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-quality",
+      "text": "<curious> Tienes dos caminos: esa IP, o el certificado autofirmado [CN=updatesvc|update ese uve ce].",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Pivotas por la IP o por el certificado?",
+        "holdMs": 2300
+      }
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-quality",
+      "text": "<firm> ¿Por la IP? No. {noise}Catorce mil vecinos inocentes son catorce mil pistas falsas: ruido.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-quality",
+      "text": "<confident> {cert-reuse}Ese certificado autofirmado, en cambio, solo lo despliega el actor. Y aparece en dos IP más. Eso es oro.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Cert autofirmado reutilizado: pivote de oro",
+        "at": "cert-reuse",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-quality",
+      "text": "<thoughtful> {whois-pending}El WHOIS histórico sigue pendiente. La regla, para siempre: un recurso dedicado discrimina, y uno compartido contamina.",
+      "pauseAfterMs": 700
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-thread",
+      "text": "<intrigued> {e9}Dos días después aparece E9. Mismo implante, misma metodología. Pero ahora, en Actions on Objectives.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-thread",
+      "text": "<tense> ¿Qué significa eso? Que ya no solo avisa de que está dentro. Ahora va a por lo que vino a buscar.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-thread",
+      "text": "<clear> {chrono}Ordenas los eventos en el tiempo y a lo largo de la kill chain. {thread}E7 y E9 dejan de ir sueltos: forman un activity thread.",
+      "pauseAfterMs": 450,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Eventos en orden de kill chain: activity thread",
+        "at": "thread",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-thread",
+      "text": "<warm> Un evento es una foto. Un hilo es la película. Y esa película la montas en la lección siguiente.",
+      "pauseAfterMs": 700
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-limits",
+      "text": "<serious> ¿Y qué no hace el diamante? {no-attrib}No atribuye por sí solo. Poner nombre real al adversario exige muchas más pruebas que un vértice relleno.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-limits",
+      "text": "<calm> {one-event}Un evento tampoco es una campaña. Un diamante describe un solo paso de la intrusión. La campaña aparece al juntar muchos hilos.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-limits",
+      "text": "<confident> {plan}Su valor real es el plan de pivotes: qué sabes, qué te falta y por dónde buscarlo.",
+      "pauseAfterMs": 700
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-recap",
+      "text": "<warm> {recap}Para el examen, llévate esto. Cuatro vértices. El implante es Capability, y el dominio, Infrastructure.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-recap",
+      "text": "<focused> Operator teclea, customer encarga. UNKNOWN vale si lleva un plan. ¿Y al pivotar? Mejor lo dedicado que lo compartido.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-recap",
+      "text": "<cheerful> {endcard}Ahora sigue esos pivotes en la lección de infraestructura: passive DNS, WHOIS y certificados. Nos vemos allí.",
+      "pauseAfterMs": 900
+    }
+  ]
+}

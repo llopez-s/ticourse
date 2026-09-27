@@ -1,0 +1,124 @@
+{
+  "title": "El Diamond Model en acción: el evento E7",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 400,
+  "chapters": [
+    { "n": 1, "title": "Qué es" },
+    { "n": 2, "title": "Los cuatro vértices" },
+    { "n": 3, "title": "Meta-features y ejes" },
+    { "n": 4, "title": "Pivotar" },
+    { "n": 5, "title": "Límites y examen" }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "02:13 UTC, un beacon",
+      "goal": "SOC de Meridian Dynamics, madrugada del 5-3-2026, 02:13 UTC: la estación de ingeniería de propulsión ENG-WS-041 hace beacon HTTPS a un dominio desconocido, más o menos cada minuto (jitter); un dato suelto no explica nada; cuatro preguntas (quién, con qué, a través de qué, contra quién) = el Diamond Model; hoy se construye el evento E7",
+      "targetSec": 33,
+      "wordBudget": 73,
+      "requiredCues": ["alert", "beacon", "four-q", "title"]
+    },
+    {
+      "id": "s02-axiom",
+      "chapter": 1,
+      "title": "El axioma",
+      "goal": "El diamante se dibuja vértice a vértice mientras se lee el axioma: en cada intrusión un adversario da un paso hacia un objetivo usando una capability sobre una infraestructura contra una víctima; Adversary (quién), Capability (con qué), Infrastructure (a través de qué), Victim (contra quién); las aristas unen los vértices, así que conocer uno lleva a los demás; mensaje interceptado de GLASS VIPER sobre la esquina que faltará",
+      "targetSec": 33,
+      "wordBudget": 73,
+      "requiredCues": ["axiom", "v-adv", "v-cap", "v-infra", "v-vic"]
+    },
+    {
+      "id": "s03-victim",
+      "chapter": 2,
+      "title": "Víctima y capability",
+      "goal": "Demo: líneas crudas de EDR de esa madrugada; el analista arrastra el host ENG-WS-041 y Meridian Dynamics a Victim, y el SHA-256 9f3a...e1 y el named pipe vc_pipe_%08x a Capability (implante GLASS VIPER, loader de stage 1); el hash cambia al recompilar, el nombre del pipe suele seguir",
+      "targetSec": 36,
+      "wordBudget": 79,
+      "requiredCues": ["raw", "drag-victim", "drag-cap", "pipe"]
+    },
+    {
+      "id": "s04-infra",
+      "chapter": 2,
+      "title": "Infraestructura",
+      "goal": "update-svc-cdn.com resuelve a 185.220.x.x (hosting compartido) y el servidor presenta un certificado TLS autofirmado CN=updatesvc: todo va a Infrastructure; tarjeta de trampa: el implante es Capability aunque se conecte, el dominio al que llama es Infrastructure",
+      "targetSec": 33,
+      "wordBudget": 73,
+      "requiredCues": ["domain", "ip", "cert", "not-cap"]
+    },
+    {
+      "id": "s05-adversary",
+      "chapter": 2,
+      "title": "UNKNOWN está bien",
+      "goal": "Adversary queda en UNKNOWN; GLASS VIPER es un nombre de seguimiento (del implante y de quien lo usa), no una identidad; no se rellena con sospechas: se anota el pivote pendiente (WHOIS histórico del dominio); dentro de Adversary, operator (teclea, registra, lanza) frente a customer (encarga y recibe los diseños de propulsión), que pueden ser entidades distintas",
+      "targetSec": 36,
+      "wordBudget": 79,
+      "requiredCues": ["unknown", "pending", "operator", "customer"]
+    },
+    {
+      "id": "s06-meta",
+      "chapter": 3,
+      "title": "Meta-features",
+      "goal": "Demo: la ficha E7 se rellena campo a campo: timestamp 2026-03-05 02:13 UTC, fase Command & Control, resultado success, dirección victim a infrastructure, metodología beacon HTTPS con jitter de 60 s, recursos hosting, dominio y cert TLS",
+      "targetSec": 36,
+      "wordBudget": 79,
+      "requiredCues": ["ts", "phase", "result", "direction", "method", "resources"]
+    },
+    {
+      "id": "s07-axes",
+      "chapter": 3,
+      "title": "Dos ejes",
+      "goal": "Eje socio-político (Adversary y Victim): por qué esta víctima, por qué Meridian: su propiedad intelectual de propulsión es la necesidad del cliente; eje tecnológico (Capability e Infrastructure): cómo se despliega la técnica (implante, dominio, hosting, certificado); uno explica el porqué y el otro el cómo",
+      "targetSec": 33,
+      "wordBudget": 73,
+      "requiredCues": ["axis-sp", "why-meridian", "axis-tech"]
+    },
+    {
+      "id": "s08-pivot",
+      "chapter": 4,
+      "title": "Pivotar entre vértices",
+      "goal": "Bucle animado: de la víctima (logs) a la muestra (capability), de la muestra al C2 hardcodeado (infraestructura), del C2 a otras muestras que llaman al mismo sitio (más capability) o a un desliz del adversario (email de registro); el grafo crece; es la mecánica del Lab 3A: Pivot Hunt",
+      "targetSec": 36,
+      "wordBudget": 79,
+      "requiredCues": ["loop", "v2c", "c2i", "i2c", "i2a"]
+    },
+    {
+      "id": "s09-quality",
+      "chapter": 4,
+      "title": "No todos los pivotes valen igual",
+      "goal": "Mensaje interceptado sobre la IP; contador de inquilinos de 185.220.x.x (~14.000 dominios de terceros: ruido) frente al certificado autofirmado CN=updatesvc, visto en 2 IP más (sin nombrarlas: las revela la lección de infraestructura) y que solo despliega el actor (oro); WHOIS histórico pendiente; recurso dedicado discrimina, compartido contamina",
+      "targetSec": 36,
+      "wordBudget": 79,
+      "requiredCues": ["tenants", "noise", "cert-reuse", "whois-pending"]
+    },
+    {
+      "id": "s10-thread",
+      "chapter": 4,
+      "title": "De evento a hilo",
+      "goal": "Llega E9, dos días después, con la misma capability y la misma metodología, en fase Actions on Objectives; se ordenan los eventos en el tiempo y a lo largo de la kill chain y forman un activity thread (puente a s2m4)",
+      "targetSec": 30,
+      "wordBudget": 66,
+      "requiredCues": ["e9", "chrono", "thread"]
+    },
+    {
+      "id": "s11-limits",
+      "chapter": 5,
+      "title": "Lo que el diamante no hace",
+      "goal": "No atribuye por sí solo; un evento no es una campaña; su valor es el plan de pivotes: qué sabes, qué te falta y dónde buscarlo",
+      "targetSec": 28,
+      "wordBudget": 62,
+      "requiredCues": ["no-attrib", "one-event", "plan"]
+    },
+    {
+      "id": "s12-recap",
+      "chapter": 5,
+      "title": "Para el examen",
+      "goal": "Reflejos: cuatro vértices; implante es Capability, dominio es Infrastructure; operator teclea y customer encarga; UNKNOWN con plan es válido; pivotar por lo dedicado; tarjeta final Alertópolis que lleva a la lección de infraestructura (pDNS, WHOIS, certificados)",
+      "targetSec": 30,
+      "wordBudget": 66,
+      "requiredCues": ["recap", "endcard"]
+    }
+  ]
+}

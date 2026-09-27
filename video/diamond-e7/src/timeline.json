@@ -1,0 +1,3516 @@
+{
+  "mode": "estimate",
+  "sourceHash": "0ceb226a5308082340e26103b887b03b2b840dbec37a5c585e82d31a488f8751",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "durationInFrames": 13143,
+  "voice": "none",
+  "scenes": [
+    {"id":"s01-hook","chapter":1,"chapterTitle":"Qué es","title":"02:13 UTC, un beacon","from":0,"durationInFrames":1117},
+    {"id":"s02-axiom","chapter":1,"chapterTitle":"Qué es","title":"El axioma","from":1117,"durationInFrames":1092},
+    {"id":"s03-victim","chapter":2,"chapterTitle":"Los cuatro vértices","title":"Víctima y capability","from":2209,"durationInFrames":1042},
+    {"id":"s04-infra","chapter":2,"chapterTitle":"Los cuatro vértices","title":"Infraestructura","from":3251,"durationInFrames":949},
+    {"id":"s05-adversary","chapter":2,"chapterTitle":"Los cuatro vértices","title":"UNKNOWN está bien","from":4200,"durationInFrames":1689},
+    {"id":"s06-meta","chapter":3,"chapterTitle":"Meta-features y ejes","title":"Meta-features","from":5889,"durationInFrames":1201},
+    {"id":"s07-axes","chapter":3,"chapterTitle":"Meta-features y ejes","title":"Dos ejes","from":7090,"durationInFrames":1008},
+    {"id":"s08-pivot","chapter":4,"chapterTitle":"Pivotar","title":"Pivotar entre vértices","from":8098,"durationInFrames":1175},
+    {"id":"s09-quality","chapter":4,"chapterTitle":"Pivotar","title":"No todos los pivotes valen igual","from":9273,"durationInFrames":1202},
+    {"id":"s10-thread","chapter":4,"chapterTitle":"Pivotar","title":"De evento a hilo","from":10475,"durationInFrames":1056},
+    {"id":"s11-limits","chapter":5,"chapterTitle":"Límites y examen","title":"Lo que el diamante no hace","from":11531,"durationInFrames":837},
+    {"id":"s12-recap","chapter":5,"chapterTitle":"Límites y examen","title":"Para el examen","from":12368,"durationInFrames":775}
+  ],
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "Madrugada del 5 de marzo en Meridian Dynamics. A las 02:13 UTC, salta una alerta en el SOC.",
+      "from": 45,
+      "audioFrames": 216,
+      "durationInFrames": 231,
+      "audio": null,
+      "words": [
+        {"text":"Madrugada","from":45,"to":71},
+        {"text":"del","from":71,"to":80},
+        {"text":"5","from":80,"to":83},
+        {"text":"de","from":83,"to":89},
+        {"text":"marzo","from":89,"to":103},
+        {"text":"en","from":103,"to":109},
+        {"text":"Meridian","from":109,"to":133},
+        {"text":"Dynamics.","from":133,"to":159},
+        {"text":"A","from":159,"to":162},
+        {"text":"las","from":162,"to":171},
+        {"text":"02:13","from":171,"to":185},
+        {"text":"UTC,","from":185,"to":197},
+        {"text":"salta","from":197,"to":211},
+        {"text":"una","from":211,"to":220},
+        {"text":"alerta","from":220,"to":238},
+        {"text":"en","from":238,"to":243},
+        {"text":"el","from":243,"to":249},
+        {"text":"SOC.","from":249,"to":261}
+      ]
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "¿Qué ha pasado? La estación ENG-WS-041, de ingeniería de propulsión, llama por HTTPS a un dominio que nadie conoce. Más o menos cada minuto.",
+      "from": 276,
+      "audioFrames": 288,
+      "durationInFrames": 303,
+      "audio": null,
+      "words": [
+        {"text":"¿Qué","from":276,"to":286},
+        {"text":"ha","from":286,"to":291},
+        {"text":"pasado?","from":291,"to":308},
+        {"text":"La","from":308,"to":313},
+        {"text":"estación","from":313,"to":333},
+        {"text":"ENG-WS-041,","from":333,"to":360},
+        {"text":"de","from":360,"to":365},
+        {"text":"ingeniería","from":365,"to":389},
+        {"text":"de","from":389,"to":394},
+        {"text":"propulsión,","from":394,"to":421},
+        {"text":"llama","from":421,"to":434},
+        {"text":"por","from":434,"to":441},
+        {"text":"HTTPS","from":441,"to":453},
+        {"text":"a","from":453,"to":456},
+        {"text":"un","from":456,"to":461},
+        {"text":"dominio","from":461,"to":478},
+        {"text":"que","from":478,"to":485},
+        {"text":"nadie","from":485,"to":498},
+        {"text":"conoce.","from":498,"to":515},
+        {"text":"Más","from":515,"to":522},
+        {"text":"o","from":522,"to":525},
+        {"text":"menos","from":525,"to":537},
+        {"text":"cada","from":537,"to":547},
+        {"text":"minuto.","from":547,"to":564}
+      ]
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "Un beacon suelto es solo un dato. Para entenderlo te haces cuatro preguntas: quién, con qué, a través de qué y contra quién.",
+      "from": 579,
+      "audioFrames": 276,
+      "durationInFrames": 291,
+      "audio": null,
+      "words": [
+        {"text":"Un","from":579,"to":584},
+        {"text":"beacon","from":584,"to":601},
+        {"text":"suelto","from":601,"to":617},
+        {"text":"es","from":617,"to":622},
+        {"text":"solo","from":622,"to":633},
+        {"text":"un","from":633,"to":639},
+        {"text":"dato.","from":639,"to":652},
+        {"text":"Para","from":652,"to":663},
+        {"text":"entenderlo","from":663,"to":690},
+        {"text":"te","from":690,"to":695},
+        {"text":"haces","from":695,"to":709},
+        {"text":"cuatro","from":709,"to":725},
+        {"text":"preguntas:","from":725,"to":752},
+        {"text":"quién,","from":752,"to":768},
+        {"text":"con","from":768,"to":777},
+        {"text":"qué,","from":777,"to":787},
+        {"text":"a","from":787,"to":790},
+        {"text":"través","from":790,"to":806},
+        {"text":"de","from":806,"to":812},
+        {"text":"qué","from":812,"to":820},
+        {"text":"y","from":820,"to":823},
+        {"text":"contra","from":823,"to":839},
+        {"text":"quién.","from":839,"to":855}
+      ]
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "Cuatro preguntas, cuatro esquinas. Eso es el Diamond Model, y hoy lo construyes con este evento: E7.",
+      "from": 870,
+      "audioFrames": 204,
+      "durationInFrames": 227,
+      "audio": null,
+      "words": [
+        {"text":"Cuatro","from":870,"to":885},
+        {"text":"preguntas,","from":885,"to":909},
+        {"text":"cuatro","from":909,"to":923},
+        {"text":"esquinas.","from":923,"to":945},
+        {"text":"Eso","from":945,"to":953},
+        {"text":"es","from":953,"to":957},
+        {"text":"el","from":957,"to":962},
+        {"text":"Diamond","from":962,"to":979},
+        {"text":"Model,","from":979,"to":994},
+        {"text":"y","from":994,"to":996},
+        {"text":"hoy","from":996,"to":1004},
+        {"text":"lo","from":1004,"to":1008},
+        {"text":"construyes","from":1008,"to":1033},
+        {"text":"con","from":1033,"to":1040},
+        {"text":"este","from":1040,"to":1050},
+        {"text":"evento:","from":1050,"to":1067},
+        {"text":"E7.","from":1067,"to":1074}
+      ]
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-axiom",
+      "text": "El modelo parte de un axioma. En cada intrusión, un adversario da un paso hacia un objetivo.",
+      "from": 1129,
+      "audioFrames": 204,
+      "durationInFrames": 216,
+      "audio": null,
+      "words": [
+        {"text":"El","from":1129,"to":1134},
+        {"text":"modelo","from":1134,"to":1150},
+        {"text":"parte","from":1150,"to":1164},
+        {"text":"de","from":1164,"to":1169},
+        {"text":"un","from":1169,"to":1175},
+        {"text":"axioma.","from":1175,"to":1193},
+        {"text":"En","from":1193,"to":1199},
+        {"text":"cada","from":1199,"to":1210},
+        {"text":"intrusión,","from":1210,"to":1236},
+        {"text":"un","from":1236,"to":1242},
+        {"text":"adversario","from":1242,"to":1269},
+        {"text":"da","from":1269,"to":1274},
+        {"text":"un","from":1274,"to":1279},
+        {"text":"paso","from":1279,"to":1290},
+        {"text":"hacia","from":1290,"to":1303},
+        {"text":"un","from":1303,"to":1309},
+        {"text":"objetivo.","from":1309,"to":1333}
+      ]
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-axiom",
+      "text": "Para darlo usa una capacidad, sobre una infraestructura, contra una víctima. ¿Lo ves? Son las cuatro preguntas de antes.",
+      "from": 1345,
+      "audioFrames": 228,
+      "durationInFrames": 242,
+      "audio": null,
+      "words": [
+        {"text":"Para","from":1345,"to":1354},
+        {"text":"darlo","from":1354,"to":1365},
+        {"text":"usa","from":1365,"to":1372},
+        {"text":"una","from":1372,"to":1379},
+        {"text":"capacidad,","from":1379,"to":1401},
+        {"text":"sobre","from":1401,"to":1412},
+        {"text":"una","from":1412,"to":1419},
+        {"text":"infraestructura,","from":1419,"to":1455},
+        {"text":"contra","from":1455,"to":1468},
+        {"text":"una","from":1468,"to":1475},
+        {"text":"víctima.","from":1475,"to":1493},
+        {"text":"¿Lo","from":1493,"to":1499},
+        {"text":"ves?","from":1499,"to":1508},
+        {"text":"Son","from":1508,"to":1515},
+        {"text":"las","from":1515,"to":1522},
+        {"text":"cuatro","from":1522,"to":1535},
+        {"text":"preguntas","from":1535,"to":1555},
+        {"text":"de","from":1555,"to":1560},
+        {"text":"antes.","from":1560,"to":1573}
+      ]
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-axiom",
+      "text": "Adversary: quién. Capability: con qué. Infrastructure: a través de qué. Victim: contra quién.",
+      "from": 1587,
+      "audioFrames": 156,
+      "durationInFrames": 171,
+      "audio": null,
+      "words": [
+        {"text":"Adversary:","from":1587,"to":1606},
+        {"text":"quién.","from":1606,"to":1618},
+        {"text":"Capability:","from":1618,"to":1639},
+        {"text":"con","from":1639,"to":1645},
+        {"text":"qué.","from":1645,"to":1652},
+        {"text":"Infrastructure:","from":1652,"to":1681},
+        {"text":"a","from":1681,"to":1683},
+        {"text":"través","from":1683,"to":1695},
+        {"text":"de","from":1695,"to":1699},
+        {"text":"qué.","from":1699,"to":1706},
+        {"text":"Victim:","from":1706,"to":1720},
+        {"text":"contra","from":1720,"to":1731},
+        {"text":"quién.","from":1731,"to":1743}
+      ]
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-axiom",
+      "text": "Puede. Pero un diamante con una esquina vacía ya sirve. ¿Por qué? Porque las aristas unen los vértices: conoces uno y puedes buscar los demás.",
+      "from": 1866,
+      "audioFrames": 300,
+      "durationInFrames": 323,
+      "audio": null,
+      "words": [
+        {"text":"Puede.","from":1866,"to":1881},
+        {"text":"Pero","from":1881,"to":1891},
+        {"text":"un","from":1891,"to":1897},
+        {"text":"diamante","from":1897,"to":1917},
+        {"text":"con","from":1917,"to":1924},
+        {"text":"una","from":1924,"to":1932},
+        {"text":"esquina","from":1932,"to":1950},
+        {"text":"vacía","from":1950,"to":1963},
+        {"text":"ya","from":1963,"to":1968},
+        {"text":"sirve.","from":1968,"to":1983},
+        {"text":"¿Por","from":1983,"to":1993},
+        {"text":"qué?","from":1993,"to":2003},
+        {"text":"Porque","from":2003,"to":2019},
+        {"text":"las","from":2019,"to":2026},
+        {"text":"aristas","from":2026,"to":2044},
+        {"text":"unen","from":2044,"to":2054},
+        {"text":"los","from":2054,"to":2062},
+        {"text":"vértices:","from":2062,"to":2085},
+        {"text":"conoces","from":2085,"to":2102},
+        {"text":"uno","from":2102,"to":2110},
+        {"text":"y","from":2110,"to":2113},
+        {"text":"puedes","from":2113,"to":2128},
+        {"text":"buscar","from":2128,"to":2143},
+        {"text":"los","from":2143,"to":2151},
+        {"text":"demás.","from":2151,"to":2166}
+      ]
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-victim",
+      "text": "Empiezas por lo que tienes: tu propia telemetría. En pantalla, las líneas crudas del EDR de esa madrugada.",
+      "from": 2221,
+      "audioFrames": 216,
+      "durationInFrames": 230,
+      "audio": null,
+      "words": [
+        {"text":"Empiezas","from":2221,"to":2240},
+        {"text":"por","from":2240,"to":2248},
+        {"text":"lo","from":2248,"to":2253},
+        {"text":"que","from":2253,"to":2260},
+        {"text":"tienes:","from":2260,"to":2277},
+        {"text":"tu","from":2277,"to":2282},
+        {"text":"propia","from":2282,"to":2296},
+        {"text":"telemetría.","from":2296,"to":2323},
+        {"text":"En","from":2323,"to":2328},
+        {"text":"pantalla,","from":2328,"to":2350},
+        {"text":"las","from":2350,"to":2357},
+        {"text":"líneas","from":2357,"to":2371},
+        {"text":"crudas","from":2371,"to":2386},
+        {"text":"del","from":2386,"to":2393},
+        {"text":"EDR","from":2393,"to":2401},
+        {"text":"de","from":2401,"to":2405},
+        {"text":"esa","from":2405,"to":2413},
+        {"text":"madrugada.","from":2413,"to":2437}
+      ]
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-victim",
+      "text": "¿Qué pertenece a la víctima? El equipo, ENG-WS-041, y la empresa, Meridian Dynamics. Los dos van a Victim.",
+      "from": 2451,
+      "audioFrames": 216,
+      "durationInFrames": 230,
+      "audio": null,
+      "words": [
+        {"text":"¿Qué","from":2451,"to":2461},
+        {"text":"pertenece","from":2461,"to":2483},
+        {"text":"a","from":2483,"to":2485},
+        {"text":"la","from":2485,"to":2490},
+        {"text":"víctima?","from":2490,"to":2509},
+        {"text":"El","from":2509,"to":2514},
+        {"text":"equipo,","from":2514,"to":2531},
+        {"text":"ENG-WS-041,","from":2531,"to":2558},
+        {"text":"y","from":2558,"to":2560},
+        {"text":"la","from":2560,"to":2565},
+        {"text":"empresa,","from":2565,"to":2584},
+        {"text":"Meridian","from":2584,"to":2604},
+        {"text":"Dynamics.","from":2604,"to":2626},
+        {"text":"Los","from":2626,"to":2633},
+        {"text":"dos","from":2633,"to":2640},
+        {"text":"van","from":2640,"to":2648},
+        {"text":"a","from":2648,"to":2650},
+        {"text":"Victim.","from":2650,"to":2667}
+      ]
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-victim",
+      "text": "¿Y con qué te atacan? El hash del binario, 9f3a...e1, es el implante GLASS VIPER, un loader. Va a Capability.",
+      "from": 2681,
+      "audioFrames": 240,
+      "durationInFrames": 254,
+      "audio": null,
+      "words": [
+        {"text":"¿Y","from":2681,"to":2686},
+        {"text":"con","from":2686,"to":2694},
+        {"text":"qué","from":2694,"to":2702},
+        {"text":"te","from":2702,"to":2708},
+        {"text":"atacan?","from":2708,"to":2726},
+        {"text":"El","from":2726,"to":2732},
+        {"text":"hash","from":2732,"to":2742},
+        {"text":"del","from":2742,"to":2750},
+        {"text":"binario,","from":2750,"to":2772},
+        {"text":"9f3a...e1,","from":2772,"to":2798},
+        {"text":"es","from":2798,"to":2804},
+        {"text":"el","from":2804,"to":2809},
+        {"text":"implante","from":2809,"to":2830},
+        {"text":"GLASS","from":2830,"to":2844},
+        {"text":"VIPER,","from":2844,"to":2860},
+        {"text":"un","from":2860,"to":2865},
+        {"text":"loader.","from":2865,"to":2884},
+        {"text":"Va","from":2884,"to":2889},
+        {"text":"a","from":2889,"to":2892},
+        {"text":"Capability.","from":2892,"to":2921}
+      ]
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-victim",
+      "text": "Y este detalle, también: el named pipe vc_pipe_%08x. Si recompilan, el hash cambia. El patrón del pipe suele seguir ahí, como un acento.",
+      "from": 2935,
+      "audioFrames": 276,
+      "durationInFrames": 296,
+      "audio": null,
+      "words": [
+        {"text":"Y","from":2935,"to":2937},
+        {"text":"este","from":2937,"to":2947},
+        {"text":"detalle,","from":2947,"to":2966},
+        {"text":"también:","from":2966,"to":2986},
+        {"text":"el","from":2986,"to":2991},
+        {"text":"named","from":2991,"to":3003},
+        {"text":"pipe","from":3003,"to":3012},
+        {"text":"vc_pipe_%08x.","from":3012,"to":3044},
+        {"text":"Si","from":3044,"to":3049},
+        {"text":"recompilan,","from":3049,"to":3075},
+        {"text":"el","from":3075,"to":3080},
+        {"text":"hash","from":3080,"to":3090},
+        {"text":"cambia.","from":3090,"to":3107},
+        {"text":"El","from":3107,"to":3112},
+        {"text":"patrón","from":3112,"to":3126},
+        {"text":"del","from":3126,"to":3134},
+        {"text":"pipe","from":3134,"to":3143},
+        {"text":"suele","from":3143,"to":3155},
+        {"text":"seguir","from":3155,"to":3170},
+        {"text":"ahí,","from":3170,"to":3180},
+        {"text":"como","from":3180,"to":3189},
+        {"text":"un","from":3189,"to":3194},
+        {"text":"acento.","from":3194,"to":3211}
+      ]
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-infra",
+      "text": "¿Y a través de qué habla ese implante? De un dominio: update-svc-cdn.com.",
+      "from": 3263,
+      "audioFrames": 144,
+      "durationInFrames": 158,
+      "audio": null,
+      "words": [
+        {"text":"¿Y","from":3263,"to":3268},
+        {"text":"a","from":3268,"to":3270},
+        {"text":"través","from":3270,"to":3284},
+        {"text":"de","from":3284,"to":3289},
+        {"text":"qué","from":3289,"to":3296},
+        {"text":"habla","from":3296,"to":3307},
+        {"text":"ese","from":3307,"to":3314},
+        {"text":"implante?","from":3314,"to":3335},
+        {"text":"De","from":3335,"to":3340},
+        {"text":"un","from":3340,"to":3344},
+        {"text":"dominio:","from":3344,"to":3363},
+        {"text":"update-svc-cdn.com.","from":3363,"to":3407}
+      ]
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-infra",
+      "text": "Ese dominio resuelve a una IP de 185.220.x.x. Y el servidor presenta un certificado TLS autofirmado: CN=updatesvc.",
+      "from": 3421,
+      "audioFrames": 204,
+      "durationInFrames": 218,
+      "audio": null,
+      "words": [
+        {"text":"Ese","from":3421,"to":3427},
+        {"text":"dominio","from":3427,"to":3442},
+        {"text":"resuelve","from":3442,"to":3458},
+        {"text":"a","from":3458,"to":3461},
+        {"text":"una","from":3461,"to":3467},
+        {"text":"IP","from":3467,"to":3471},
+        {"text":"de","from":3471,"to":3475},
+        {"text":"185.220.x.x.","from":3475,"to":3500},
+        {"text":"Y","from":3500,"to":3502},
+        {"text":"el","from":3502,"to":3506},
+        {"text":"servidor","from":3506,"to":3523},
+        {"text":"presenta","from":3523,"to":3540},
+        {"text":"un","from":3540,"to":3544},
+        {"text":"certificado","from":3544,"to":3567},
+        {"text":"TLS","from":3567,"to":3573},
+        {"text":"autofirmado:","from":3573,"to":3598},
+        {"text":"CN=updatesvc.","from":3598,"to":3625}
+      ]
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-infra",
+      "text": "Dominio, IP, servidor y certificado: todo eso es Infrastructure. Es la carretera por la que viaja la herramienta.",
+      "from": 3639,
+      "audioFrames": 216,
+      "durationInFrames": 230,
+      "audio": null,
+      "words": [
+        {"text":"Dominio,","from":3639,"to":3657},
+        {"text":"IP,","from":3657,"to":3664},
+        {"text":"servidor","from":3664,"to":3682},
+        {"text":"y","from":3682,"to":3684},
+        {"text":"certificado:","from":3684,"to":3711},
+        {"text":"todo","from":3711,"to":3720},
+        {"text":"eso","from":3720,"to":3727},
+        {"text":"es","from":3727,"to":3731},
+        {"text":"Infrastructure.","from":3731,"to":3765},
+        {"text":"Es","from":3765,"to":3770},
+        {"text":"la","from":3770,"to":3774},
+        {"text":"carretera","from":3774,"to":3794},
+        {"text":"por","from":3794,"to":3801},
+        {"text":"la","from":3801,"to":3806},
+        {"text":"que","from":3806,"to":3812},
+        {"text":"viaja","from":3812,"to":3824},
+        {"text":"la","from":3824,"to":3828},
+        {"text":"herramienta.","from":3828,"to":3855}
+      ]
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-infra",
+      "text": "Y aquí cae media clase. ¿El implante es infraestructura porque se conecta? No. El implante es Capability, y el dominio al que llama, Infrastructure.",
+      "from": 3869,
+      "audioFrames": 288,
+      "durationInFrames": 311,
+      "audio": null,
+      "words": [
+        {"text":"Y","from":3869,"to":3871},
+        {"text":"aquí","from":3871,"to":3881},
+        {"text":"cae","from":3881,"to":3887},
+        {"text":"media","from":3887,"to":3899},
+        {"text":"clase.","from":3899,"to":3913},
+        {"text":"¿El","from":3913,"to":3920},
+        {"text":"implante","from":3920,"to":3938},
+        {"text":"es","from":3938,"to":3943},
+        {"text":"infraestructura","from":3943,"to":3977},
+        {"text":"porque","from":3977,"to":3991},
+        {"text":"se","from":3991,"to":3996},
+        {"text":"conecta?","from":3996,"to":4014},
+        {"text":"No.","from":4014,"to":4021},
+        {"text":"El","from":4021,"to":4026},
+        {"text":"implante","from":4026,"to":4044},
+        {"text":"es","from":4044,"to":4049},
+        {"text":"Capability,","from":4049,"to":4074},
+        {"text":"y","from":4074,"to":4076},
+        {"text":"el","from":4076,"to":4081},
+        {"text":"dominio","from":4081,"to":4097},
+        {"text":"al","from":4097,"to":4102},
+        {"text":"que","from":4102,"to":4109},
+        {"text":"llama,","from":4109,"to":4122},
+        {"text":"Infrastructure.","from":4122,"to":4157}
+      ]
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-adversary",
+      "text": "Queda una esquina. ¿Quién está detrás? Respuesta honesta: no lo sabes. Y escribes UNKNOWN.",
+      "from": 4212,
+      "audioFrames": 168,
+      "durationInFrames": 183,
+      "audio": null,
+      "words": [
+        {"text":"Queda","from":4212,"to":4223},
+        {"text":"una","from":4223,"to":4229},
+        {"text":"esquina.","from":4229,"to":4247},
+        {"text":"¿Quién","from":4247,"to":4260},
+        {"text":"está","from":4260,"to":4269},
+        {"text":"detrás?","from":4269,"to":4284},
+        {"text":"Respuesta","from":4284,"to":4304},
+        {"text":"honesta:","from":4304,"to":4321},
+        {"text":"no","from":4321,"to":4325},
+        {"text":"lo","from":4325,"to":4330},
+        {"text":"sabes.","from":4330,"to":4343},
+        {"text":"Y","from":4343,"to":4345},
+        {"text":"escribes","from":4345,"to":4363},
+        {"text":"UNKNOWN.","from":4363,"to":4380}
+      ]
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-adversary",
+      "text": "Ese apodo se lo pusiste tú: un nombre de seguimiento para el implante y quien lo usa. No es una identidad, así que Adversary sigue en UNKNOWN.",
+      "from": 4500,
+      "audioFrames": 324,
+      "durationInFrames": 339,
+      "audio": null,
+      "words": [
+        {"text":"Ese","from":4500,"to":4508},
+        {"text":"apodo","from":4508,"to":4522},
+        {"text":"se","from":4522,"to":4528},
+        {"text":"lo","from":4528,"to":4534},
+        {"text":"pusiste","from":4534,"to":4553},
+        {"text":"tú:","from":4553,"to":4561},
+        {"text":"un","from":4561,"to":4567},
+        {"text":"nombre","from":4567,"to":4584},
+        {"text":"de","from":4584,"to":4589},
+        {"text":"seguimiento","from":4589,"to":4620},
+        {"text":"para","from":4620,"to":4631},
+        {"text":"el","from":4631,"to":4637},
+        {"text":"implante","from":4637,"to":4659},
+        {"text":"y","from":4659,"to":4662},
+        {"text":"quien","from":4662,"to":4676},
+        {"text":"lo","from":4676,"to":4682},
+        {"text":"usa.","from":4682,"to":4693},
+        {"text":"No","from":4693,"to":4698},
+        {"text":"es","from":4698,"to":4704},
+        {"text":"una","from":4704,"to":4712},
+        {"text":"identidad,","from":4712,"to":4740},
+        {"text":"así","from":4740,"to":4749},
+        {"text":"que","from":4749,"to":4757},
+        {"text":"Adversary","from":4757,"to":4782},
+        {"text":"sigue","from":4782,"to":4796},
+        {"text":"en","from":4796,"to":4802},
+        {"text":"UNKNOWN.","from":4802,"to":4824}
+      ]
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-adversary",
+      "text": "La tentación es clara: rellenar la esquina con el nombre de quien sospechas.",
+      "from": 4839,
+      "audioFrames": 156,
+      "durationInFrames": 234,
+      "audio": null,
+      "words": [
+        {"text":"La","from":4839,"to":4844},
+        {"text":"tentación","from":4844,"to":4866},
+        {"text":"es","from":4866,"to":4871},
+        {"text":"clara:","from":4871,"to":4885},
+        {"text":"rellenar","from":4885,"to":4905},
+        {"text":"la","from":4905,"to":4910},
+        {"text":"esquina","from":4910,"to":4927},
+        {"text":"con","from":4927,"to":4934},
+        {"text":"el","from":4934,"to":4939},
+        {"text":"nombre","from":4939,"to":4954},
+        {"text":"de","from":4954,"to":4958},
+        {"text":"quien","from":4958,"to":4971},
+        {"text":"sospechas.","from":4971,"to":4995}
+      ]
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-adversary",
+      "text": "No. UNKNOWN con un plan vale más que un nombre inventado. Anotas el pivote pendiente: el WHOIS histórico del dominio.",
+      "from": 5073,
+      "audioFrames": 240,
+      "durationInFrames": 255,
+      "audio": null,
+      "words": [
+        {"text":"No.","from":5073,"to":5080},
+        {"text":"UNKNOWN","from":5080,"to":5097},
+        {"text":"con","from":5097,"to":5105},
+        {"text":"un","from":5105,"to":5110},
+        {"text":"plan","from":5110,"to":5120},
+        {"text":"vale","from":5120,"to":5129},
+        {"text":"más","from":5129,"to":5137},
+        {"text":"que","from":5137,"to":5144},
+        {"text":"un","from":5144,"to":5149},
+        {"text":"nombre","from":5149,"to":5164},
+        {"text":"inventado.","from":5164,"to":5188},
+        {"text":"Anotas","from":5188,"to":5203},
+        {"text":"el","from":5203,"to":5208},
+        {"text":"pivote","from":5208,"to":5222},
+        {"text":"pendiente:","from":5222,"to":5247},
+        {"text":"el","from":5247,"to":5252},
+        {"text":"WHOIS","from":5252,"to":5264},
+        {"text":"histórico","from":5264,"to":5286},
+        {"text":"del","from":5286,"to":5293},
+        {"text":"dominio.","from":5293,"to":5313}
+      ]
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-adversary",
+      "text": "¿Y si un día sale un nombre? El operator es quien teclea: registra el dominio y lanza el implante.",
+      "from": 5328,
+      "audioFrames": 228,
+      "durationInFrames": 242,
+      "audio": null,
+      "words": [
+        {"text":"¿Y","from":5328,"to":5334},
+        {"text":"si","from":5334,"to":5339},
+        {"text":"un","from":5339,"to":5345},
+        {"text":"día","from":5345,"to":5354},
+        {"text":"sale","from":5354,"to":5365},
+        {"text":"un","from":5365,"to":5371},
+        {"text":"nombre?","from":5371,"to":5391},
+        {"text":"El","from":5391,"to":5396},
+        {"text":"operator","from":5396,"to":5419},
+        {"text":"es","from":5419,"to":5425},
+        {"text":"quien","from":5425,"to":5439},
+        {"text":"teclea:","from":5439,"to":5459},
+        {"text":"registra","from":5459,"to":5482},
+        {"text":"el","from":5482,"to":5488},
+        {"text":"dominio","from":5488,"to":5508},
+        {"text":"y","from":5508,"to":5510},
+        {"text":"lanza","from":5510,"to":5525},
+        {"text":"el","from":5525,"to":5530},
+        {"text":"implante.","from":5530,"to":5556}
+      ]
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-adversary",
+      "text": "El customer lo encarga y se queda el botín: los diseños de propulsión. Pueden ser gente distinta, y los dos viven en Adversary.",
+      "from": 5570,
+      "audioFrames": 276,
+      "durationInFrames": 299,
+      "audio": null,
+      "words": [
+        {"text":"El","from":5570,"to":5575},
+        {"text":"customer","from":5575,"to":5596},
+        {"text":"lo","from":5596,"to":5602},
+        {"text":"encarga","from":5602,"to":5620},
+        {"text":"y","from":5620,"to":5623},
+        {"text":"se","from":5623,"to":5628},
+        {"text":"queda","from":5628,"to":5641},
+        {"text":"el","from":5641,"to":5646},
+        {"text":"botín:","from":5646,"to":5662},
+        {"text":"los","from":5662,"to":5670},
+        {"text":"diseños","from":5670,"to":5688},
+        {"text":"de","from":5688,"to":5694},
+        {"text":"propulsión.","from":5694,"to":5722},
+        {"text":"Pueden","from":5722,"to":5738},
+        {"text":"ser","from":5738,"to":5746},
+        {"text":"gente","from":5746,"to":5759},
+        {"text":"distinta,","from":5759,"to":5783},
+        {"text":"y","from":5783,"to":5786},
+        {"text":"los","from":5786,"to":5793},
+        {"text":"dos","from":5793,"to":5801},
+        {"text":"viven","from":5801,"to":5814},
+        {"text":"en","from":5814,"to":5820},
+        {"text":"Adversary.","from":5820,"to":5846}
+      ]
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-meta",
+      "text": "El diamante dice quién, con qué, por dónde y contra quién. ¿Y el resto del contexto? Va en las meta-features.",
+      "from": 5901,
+      "audioFrames": 240,
+      "durationInFrames": 254,
+      "audio": null,
+      "words": [
+        {"text":"El","from":5901,"to":5906},
+        {"text":"diamante","from":5906,"to":5928},
+        {"text":"dice","from":5928,"to":5938},
+        {"text":"quién,","from":5938,"to":5954},
+        {"text":"con","from":5954,"to":5962},
+        {"text":"qué,","from":5962,"to":5973},
+        {"text":"por","from":5973,"to":5981},
+        {"text":"dónde","from":5981,"to":5994},
+        {"text":"y","from":5994,"to":5997},
+        {"text":"contra","from":5997,"to":6013},
+        {"text":"quién.","from":6013,"to":6029},
+        {"text":"¿Y","from":6029,"to":6034},
+        {"text":"el","from":6034,"to":6040},
+        {"text":"resto","from":6040,"to":6053},
+        {"text":"del","from":6053,"to":6061},
+        {"text":"contexto?","from":6061,"to":6085},
+        {"text":"Va","from":6085,"to":6090},
+        {"text":"en","from":6090,"to":6096},
+        {"text":"las","from":6096,"to":6104},
+        {"text":"meta-features.","from":6104,"to":6141}
+      ]
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-meta",
+      "text": "La ficha de E7 se rellena campo a campo. Hora: 02:13 UTC. Fase de la kill chain: Command and Control.",
+      "from": 6155,
+      "audioFrames": 240,
+      "durationInFrames": 254,
+      "audio": null,
+      "words": [
+        {"text":"La","from":6155,"to":6161},
+        {"text":"ficha","from":6161,"to":6175},
+        {"text":"de","from":6175,"to":6181},
+        {"text":"E7","from":6181,"to":6187},
+        {"text":"se","from":6187,"to":6193},
+        {"text":"rellena","from":6193,"to":6214},
+        {"text":"campo","from":6214,"to":6228},
+        {"text":"a","from":6228,"to":6231},
+        {"text":"campo.","from":6231,"to":6249},
+        {"text":"Hora:","from":6249,"to":6263},
+        {"text":"02:13","from":6263,"to":6278},
+        {"text":"UTC.","from":6278,"to":6290},
+        {"text":"Fase","from":6290,"to":6301},
+        {"text":"de","from":6301,"to":6307},
+        {"text":"la","from":6307,"to":6313},
+        {"text":"kill","from":6313,"to":6325},
+        {"text":"chain:","from":6325,"to":6342},
+        {"text":"Command","from":6342,"to":6363},
+        {"text":"and","from":6363,"to":6372},
+        {"text":"Control.","from":6372,"to":6395}
+      ]
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-meta",
+      "text": "Resultado: éxito, el beacon salió. Dirección: de la víctima hacia la infraestructura.",
+      "from": 6409,
+      "audioFrames": 144,
+      "durationInFrames": 158,
+      "audio": null,
+      "words": [
+        {"text":"Resultado:","from":6409,"to":6428},
+        {"text":"éxito,","from":6428,"to":6440},
+        {"text":"el","from":6440,"to":6444},
+        {"text":"beacon","from":6444,"to":6456},
+        {"text":"salió.","from":6456,"to":6467},
+        {"text":"Dirección:","from":6467,"to":6487},
+        {"text":"de","from":6487,"to":6491},
+        {"text":"la","from":6491,"to":6495},
+        {"text":"víctima","from":6495,"to":6508},
+        {"text":"hacia","from":6508,"to":6518},
+        {"text":"la","from":6518,"to":6522},
+        {"text":"infraestructura.","from":6522,"to":6553}
+      ]
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-meta",
+      "text": "Metodología: beacon HTTPS cada sesenta segundos, con jitter. Es un latido con algo de temblor, para no sonar a reloj.",
+      "from": 6567,
+      "audioFrames": 240,
+      "durationInFrames": 255,
+      "audio": null,
+      "words": [
+        {"text":"Metodología:","from":6567,"to":6596},
+        {"text":"beacon","from":6596,"to":6611},
+        {"text":"HTTPS","from":6611,"to":6623},
+        {"text":"cada","from":6623,"to":6633},
+        {"text":"sesenta","from":6633,"to":6650},
+        {"text":"segundos,","from":6650,"to":6672},
+        {"text":"con","from":6672,"to":6680},
+        {"text":"jitter.","from":6680,"to":6697},
+        {"text":"Es","from":6697,"to":6702},
+        {"text":"un","from":6702,"to":6707},
+        {"text":"latido","from":6707,"to":6721},
+        {"text":"con","from":6721,"to":6729},
+        {"text":"algo","from":6729,"to":6738},
+        {"text":"de","from":6738,"to":6743},
+        {"text":"temblor,","from":6743,"to":6763},
+        {"text":"para","from":6763,"to":6773},
+        {"text":"no","from":6773,"to":6778},
+        {"text":"sonar","from":6778,"to":6790},
+        {"text":"a","from":6790,"to":6792},
+        {"text":"reloj.","from":6792,"to":6807}
+      ]
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-meta",
+      "text": "Y recursos: hosting, dominio y certificado TLS. Es lo que el adversario tuvo que conseguir para que todo funcionara.",
+      "from": 6822,
+      "audioFrames": 228,
+      "durationInFrames": 248,
+      "audio": null,
+      "words": [
+        {"text":"Y","from":6822,"to":6824},
+        {"text":"recursos:","from":6824,"to":6845},
+        {"text":"hosting,","from":6845,"to":6864},
+        {"text":"dominio","from":6864,"to":6880},
+        {"text":"y","from":6880,"to":6882},
+        {"text":"certificado","from":6882,"to":6908},
+        {"text":"TLS.","from":6908,"to":6917},
+        {"text":"Es","from":6917,"to":6922},
+        {"text":"lo","from":6922,"to":6927},
+        {"text":"que","from":6927,"to":6934},
+        {"text":"el","from":6934,"to":6938},
+        {"text":"adversario","from":6938,"to":6962},
+        {"text":"tuvo","from":6962,"to":6971},
+        {"text":"que","from":6971,"to":6978},
+        {"text":"conseguir","from":6978,"to":6999},
+        {"text":"para","from":6999,"to":7008},
+        {"text":"que","from":7008,"to":7015},
+        {"text":"todo","from":7015,"to":7024},
+        {"text":"funcionara.","from":7024,"to":7050}
+      ]
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-axes",
+      "text": "Ahora traza dos diagonales. La primera une Adversary y Victim: es el eje socio-político.",
+      "from": 7102,
+      "audioFrames": 168,
+      "durationInFrames": 182,
+      "audio": null,
+      "words": [
+        {"text":"Ahora","from":7102,"to":7113},
+        {"text":"traza","from":7113,"to":7124},
+        {"text":"dos","from":7124,"to":7131},
+        {"text":"diagonales.","from":7131,"to":7156},
+        {"text":"La","from":7156,"to":7160},
+        {"text":"primera","from":7160,"to":7176},
+        {"text":"une","from":7176,"to":7183},
+        {"text":"Adversary","from":7183,"to":7203},
+        {"text":"y","from":7203,"to":7205},
+        {"text":"Victim:","from":7205,"to":7221},
+        {"text":"es","from":7221,"to":7225},
+        {"text":"el","from":7225,"to":7230},
+        {"text":"eje","from":7230,"to":7236},
+        {"text":"socio-político.","from":7236,"to":7270}
+      ]
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-axes",
+      "text": "¿Qué pregunta ese eje? Por qué esta víctima. ¿Por qué Meridian? Por su propiedad intelectual de propulsión: es lo que necesita el customer.",
+      "from": 7284,
+      "audioFrames": 276,
+      "durationInFrames": 291,
+      "audio": null,
+      "words": [
+        {"text":"¿Qué","from":7284,"to":7293},
+        {"text":"pregunta","from":7293,"to":7312},
+        {"text":"ese","from":7312,"to":7319},
+        {"text":"eje?","from":7319,"to":7329},
+        {"text":"Por","from":7329,"to":7336},
+        {"text":"qué","from":7336,"to":7343},
+        {"text":"esta","from":7343,"to":7352},
+        {"text":"víctima.","from":7352,"to":7371},
+        {"text":"¿Por","from":7371,"to":7381},
+        {"text":"qué","from":7381,"to":7388},
+        {"text":"Meridian?","from":7388,"to":7409},
+        {"text":"Por","from":7409,"to":7416},
+        {"text":"su","from":7416,"to":7421},
+        {"text":"propiedad","from":7421,"to":7442},
+        {"text":"intelectual","from":7442,"to":7468},
+        {"text":"de","from":7468,"to":7473},
+        {"text":"propulsión:","from":7473,"to":7499},
+        {"text":"es","from":7499,"to":7503},
+        {"text":"lo","from":7503,"to":7508},
+        {"text":"que","from":7508,"to":7515},
+        {"text":"necesita","from":7515,"to":7534},
+        {"text":"el","from":7534,"to":7539},
+        {"text":"customer.","from":7539,"to":7560}
+      ]
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-axes",
+      "text": "La segunda une Capability e Infrastructure: el eje tecnológico. Cuenta cómo se despliega la técnica: implante, dominio, hosting y certificado.",
+      "from": 7575,
+      "audioFrames": 240,
+      "durationInFrames": 254,
+      "audio": null,
+      "words": [
+        {"text":"La","from":7575,"to":7579},
+        {"text":"segunda","from":7579,"to":7593},
+        {"text":"une","from":7593,"to":7598},
+        {"text":"Capability","from":7598,"to":7618},
+        {"text":"e","from":7618,"to":7620},
+        {"text":"Infrastructure:","from":7620,"to":7649},
+        {"text":"el","from":7649,"to":7653},
+        {"text":"eje","from":7653,"to":7659},
+        {"text":"tecnológico.","from":7659,"to":7682},
+        {"text":"Cuenta","from":7682,"to":7694},
+        {"text":"cómo","from":7694,"to":7702},
+        {"text":"se","from":7702,"to":7706},
+        {"text":"despliega","from":7706,"to":7723},
+        {"text":"la","from":7723,"to":7727},
+        {"text":"técnica:","from":7727,"to":7743},
+        {"text":"implante,","from":7743,"to":7760},
+        {"text":"dominio,","from":7760,"to":7776},
+        {"text":"hosting","from":7776,"to":7790},
+        {"text":"y","from":7790,"to":7792},
+        {"text":"certificado.","from":7792,"to":7815}
+      ]
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-axes",
+      "text": "Un eje explica el porqué, y el otro, el cómo. Con los dos, el ataque empieza a tener sentido.",
+      "from": 7829,
+      "audioFrames": 228,
+      "durationInFrames": 249,
+      "audio": null,
+      "words": [
+        {"text":"Un","from":7829,"to":7835},
+        {"text":"eje","from":7835,"to":7844},
+        {"text":"explica","from":7844,"to":7865},
+        {"text":"el","from":7865,"to":7872},
+        {"text":"porqué,","from":7872,"to":7893},
+        {"text":"y","from":7893,"to":7896},
+        {"text":"el","from":7896,"to":7902},
+        {"text":"otro,","from":7902,"to":7917},
+        {"text":"el","from":7917,"to":7923},
+        {"text":"cómo.","from":7923,"to":7938},
+        {"text":"Con","from":7938,"to":7948},
+        {"text":"los","from":7948,"to":7957},
+        {"text":"dos,","from":7957,"to":7969},
+        {"text":"el","from":7969,"to":7975},
+        {"text":"ataque","from":7975,"to":7993},
+        {"text":"empieza","from":7993,"to":8014},
+        {"text":"a","from":8014,"to":8017},
+        {"text":"tener","from":8017,"to":8033},
+        {"text":"sentido.","from":8033,"to":8057}
+      ]
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-pivot",
+      "text": "Y aquí el diamante deja de ser una ficha y se vuelve herramienta. Cada vértice conocido ilumina a los demás.",
+      "from": 8110,
+      "audioFrames": 240,
+      "durationInFrames": 254,
+      "audio": null,
+      "words": [
+        {"text":"Y","from":8110,"to":8113},
+        {"text":"aquí","from":8113,"to":8123},
+        {"text":"el","from":8123,"to":8129},
+        {"text":"diamante","from":8129,"to":8150},
+        {"text":"deja","from":8150,"to":8161},
+        {"text":"de","from":8161,"to":8167},
+        {"text":"ser","from":8167,"to":8175},
+        {"text":"una","from":8175,"to":8183},
+        {"text":"ficha","from":8183,"to":8196},
+        {"text":"y","from":8196,"to":8199},
+        {"text":"se","from":8199,"to":8204},
+        {"text":"vuelve","from":8204,"to":8221},
+        {"text":"herramienta.","from":8221,"to":8253},
+        {"text":"Cada","from":8253,"to":8264},
+        {"text":"vértice","from":8264,"to":8283},
+        {"text":"conocido","from":8283,"to":8304},
+        {"text":"ilumina","from":8304,"to":8323},
+        {"text":"a","from":8323,"to":8326},
+        {"text":"los","from":8326,"to":8334},
+        {"text":"demás.","from":8334,"to":8350}
+      ]
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-pivot",
+      "text": "¿Cómo? De la víctima, tus logs, sacas la muestra: capability. De la muestra sacas el C2 que lleva escrito dentro: infraestructura.",
+      "from": 8364,
+      "audioFrames": 252,
+      "durationInFrames": 266,
+      "audio": null,
+      "words": [
+        {"text":"¿Cómo?","from":8364,"to":8378},
+        {"text":"De","from":8378,"to":8382},
+        {"text":"la","from":8382,"to":8387},
+        {"text":"víctima,","from":8387,"to":8405},
+        {"text":"tus","from":8405,"to":8412},
+        {"text":"logs,","from":8412,"to":8424},
+        {"text":"sacas","from":8424,"to":8435},
+        {"text":"la","from":8435,"to":8440},
+        {"text":"muestra:","from":8440,"to":8458},
+        {"text":"capability.","from":8458,"to":8483},
+        {"text":"De","from":8483,"to":8488},
+        {"text":"la","from":8488,"to":8492},
+        {"text":"muestra","from":8492,"to":8508},
+        {"text":"sacas","from":8508,"to":8520},
+        {"text":"el","from":8520,"to":8524},
+        {"text":"C2","from":8524,"to":8529},
+        {"text":"que","from":8529,"to":8536},
+        {"text":"lleva","from":8536,"to":8547},
+        {"text":"escrito","from":8547,"to":8563},
+        {"text":"dentro:","from":8563,"to":8579},
+        {"text":"infraestructura.","from":8579,"to":8616}
+      ]
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-pivot",
+      "text": "De ese C2 salen otras muestras que llaman al mismo sitio: más capability. Y a veces, un descuido del adversario, como el email con que registró un dominio.",
+      "from": 8630,
+      "audioFrames": 336,
+      "durationInFrames": 351,
+      "audio": null,
+      "words": [
+        {"text":"De","from":8630,"to":8635},
+        {"text":"ese","from":8635,"to":8643},
+        {"text":"C2","from":8643,"to":8648},
+        {"text":"salen","from":8648,"to":8662},
+        {"text":"otras","from":8662,"to":8675},
+        {"text":"muestras","from":8675,"to":8696},
+        {"text":"que","from":8696,"to":8704},
+        {"text":"llaman","from":8704,"to":8719},
+        {"text":"al","from":8719,"to":8725},
+        {"text":"mismo","from":8725,"to":8738},
+        {"text":"sitio:","from":8738,"to":8753},
+        {"text":"más","from":8753,"to":8761},
+        {"text":"capability.","from":8761,"to":8790},
+        {"text":"Y","from":8790,"to":8793},
+        {"text":"a","from":8793,"to":8795},
+        {"text":"veces,","from":8795,"to":8811},
+        {"text":"un","from":8811,"to":8816},
+        {"text":"descuido","from":8816,"to":8837},
+        {"text":"del","from":8837,"to":8845},
+        {"text":"adversario,","from":8845,"to":8874},
+        {"text":"como","from":8874,"to":8885},
+        {"text":"el","from":8885,"to":8890},
+        {"text":"email","from":8890,"to":8903},
+        {"text":"con","from":8903,"to":8911},
+        {"text":"que","from":8911,"to":8919},
+        {"text":"registró","from":8919,"to":8940},
+        {"text":"un","from":8940,"to":8945},
+        {"text":"dominio.","from":8945,"to":8966}
+      ]
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-pivot",
+      "text": "Cada vuelta del bucle hace crecer el grafo. ¿Te suena a juego? Es justo lo que harás en el Lab 3A.",
+      "from": 8981,
+      "audioFrames": 252,
+      "durationInFrames": 272,
+      "audio": null,
+      "words": [
+        {"text":"Cada","from":8981,"to":8994},
+        {"text":"vuelta","from":8994,"to":9013},
+        {"text":"del","from":9013,"to":9023},
+        {"text":"bucle","from":9023,"to":9039},
+        {"text":"hace","from":9039,"to":9052},
+        {"text":"crecer","from":9052,"to":9071},
+        {"text":"el","from":9071,"to":9078},
+        {"text":"grafo.","from":9078,"to":9097},
+        {"text":"¿Te","from":9097,"to":9107},
+        {"text":"suena","from":9107,"to":9123},
+        {"text":"a","from":9123,"to":9126},
+        {"text":"juego?","from":9126,"to":9146},
+        {"text":"Es","from":9146,"to":9152},
+        {"text":"justo","from":9152,"to":9168},
+        {"text":"lo","from":9168,"to":9175},
+        {"text":"que","from":9175,"to":9185},
+        {"text":"harás","from":9185,"to":9201},
+        {"text":"en","from":9201,"to":9207},
+        {"text":"el","from":9207,"to":9214},
+        {"text":"Lab","from":9214,"to":9223},
+        {"text":"3A.","from":9223,"to":9233}
+      ]
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-quality",
+      "text": "Qué amable. Esa IP es hosting compartido: unos catorce mil dominios de terceros viven en ella.",
+      "from": 9393,
+      "audioFrames": 192,
+      "durationInFrames": 210,
+      "audio": null,
+      "words": [
+        {"text":"Qué","from":9393,"to":9400},
+        {"text":"amable.","from":9400,"to":9417},
+        {"text":"Esa","from":9417,"to":9425},
+        {"text":"IP","from":9425,"to":9429},
+        {"text":"es","from":9429,"to":9434},
+        {"text":"hosting","from":9434,"to":9451},
+        {"text":"compartido:","from":9451,"to":9478},
+        {"text":"unos","from":9478,"to":9488},
+        {"text":"catorce","from":9488,"to":9505},
+        {"text":"mil","from":9505,"to":9512},
+        {"text":"dominios","from":9512,"to":9532},
+        {"text":"de","from":9532,"to":9536},
+        {"text":"terceros","from":9536,"to":9556},
+        {"text":"viven","from":9556,"to":9568},
+        {"text":"en","from":9568,"to":9573},
+        {"text":"ella.","from":9573,"to":9585}
+      ]
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-quality",
+      "text": "Tienes dos caminos: esa IP, o el certificado autofirmado CN=updatesvc.",
+      "from": 9603,
+      "audioFrames": 120,
+      "durationInFrames": 198,
+      "audio": null,
+      "words": [
+        {"text":"Tienes","from":9603,"to":9615},
+        {"text":"dos","from":9615,"to":9621},
+        {"text":"caminos:","from":9621,"to":9636},
+        {"text":"esa","from":9636,"to":9642},
+        {"text":"IP,","from":9642,"to":9648},
+        {"text":"o","from":9648,"to":9650},
+        {"text":"el","from":9650,"to":9654},
+        {"text":"certificado","from":9654,"to":9676},
+        {"text":"autofirmado","from":9676,"to":9697},
+        {"text":"CN=updatesvc.","from":9697,"to":9723}
+      ]
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-quality",
+      "text": "¿Por la IP? No. Catorce mil vecinos inocentes son catorce mil pistas falsas: ruido.",
+      "from": 9801,
+      "audioFrames": 168,
+      "durationInFrames": 183,
+      "audio": null,
+      "words": [
+        {"text":"¿Por","from":9801,"to":9811},
+        {"text":"la","from":9811,"to":9815},
+        {"text":"IP?","from":9815,"to":9823},
+        {"text":"No.","from":9823,"to":9830},
+        {"text":"Catorce","from":9830,"to":9847},
+        {"text":"mil","from":9847,"to":9854},
+        {"text":"vecinos","from":9854,"to":9871},
+        {"text":"inocentes","from":9871,"to":9892},
+        {"text":"son","from":9892,"to":9899},
+        {"text":"catorce","from":9899,"to":9916},
+        {"text":"mil","from":9916,"to":9923},
+        {"text":"pistas","from":9923,"to":9938},
+        {"text":"falsas:","from":9938,"to":9955},
+        {"text":"ruido.","from":9955,"to":9969}
+      ]
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-quality",
+      "text": "Ese certificado autofirmado, en cambio, solo lo despliega el actor. Y aparece en dos IP más. Eso es oro.",
+      "from": 9984,
+      "audioFrames": 228,
+      "durationInFrames": 246,
+      "audio": null,
+      "words": [
+        {"text":"Ese","from":9984,"to":9992},
+        {"text":"certificado","from":9992,"to":10021},
+        {"text":"autofirmado,","from":10021,"to":10053},
+        {"text":"en","from":10053,"to":10058},
+        {"text":"cambio,","from":10058,"to":10077},
+        {"text":"solo","from":10077,"to":10087},
+        {"text":"lo","from":10087,"to":10093},
+        {"text":"despliega","from":10093,"to":10117},
+        {"text":"el","from":10117,"to":10122},
+        {"text":"actor.","from":10122,"to":10138},
+        {"text":"Y","from":10138,"to":10140},
+        {"text":"aparece","from":10140,"to":10159},
+        {"text":"en","from":10159,"to":10164},
+        {"text":"dos","from":10164,"to":10172},
+        {"text":"IP","from":10172,"to":10178},
+        {"text":"más.","from":10178,"to":10188},
+        {"text":"Eso","from":10188,"to":10196},
+        {"text":"es","from":10196,"to":10201},
+        {"text":"oro.","from":10201,"to":10212}
+      ]
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-quality",
+      "text": "El WHOIS histórico sigue pendiente. La regla, para siempre: un recurso dedicado discrimina, y uno compartido contamina.",
+      "from": 10230,
+      "audioFrames": 204,
+      "durationInFrames": 225,
+      "audio": null,
+      "words": [
+        {"text":"El","from":10230,"to":10234},
+        {"text":"WHOIS","from":10234,"to":10244},
+        {"text":"histórico","from":10244,"to":10262},
+        {"text":"sigue","from":10262,"to":10272},
+        {"text":"pendiente.","from":10272,"to":10291},
+        {"text":"La","from":10291,"to":10295},
+        {"text":"regla,","from":10295,"to":10307},
+        {"text":"para","from":10307,"to":10315},
+        {"text":"siempre:","from":10315,"to":10331},
+        {"text":"un","from":10331,"to":10335},
+        {"text":"recurso","from":10335,"to":10349},
+        {"text":"dedicado","from":10349,"to":10365},
+        {"text":"discrimina,","from":10365,"to":10386},
+        {"text":"y","from":10386,"to":10388},
+        {"text":"uno","from":10388,"to":10394},
+        {"text":"compartido","from":10394,"to":10414},
+        {"text":"contamina.","from":10414,"to":10434}
+      ]
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-thread",
+      "text": "Dos días después aparece E9. Mismo implante, misma metodología. Pero ahora, en Actions on Objectives.",
+      "from": 10487,
+      "audioFrames": 180,
+      "durationInFrames": 194,
+      "audio": null,
+      "words": [
+        {"text":"Dos","from":10487,"to":10493},
+        {"text":"días","from":10493,"to":10501},
+        {"text":"después","from":10501,"to":10516},
+        {"text":"aparece","from":10516,"to":10530},
+        {"text":"E9.","from":10530,"to":10537},
+        {"text":"Mismo","from":10537,"to":10547},
+        {"text":"implante,","from":10547,"to":10566},
+        {"text":"misma","from":10566,"to":10576},
+        {"text":"metodología.","from":10576,"to":10601},
+        {"text":"Pero","from":10601,"to":10609},
+        {"text":"ahora,","from":10609,"to":10621},
+        {"text":"en","from":10621,"to":10626},
+        {"text":"Actions","from":10626,"to":10640},
+        {"text":"on","from":10640,"to":10644},
+        {"text":"Objectives.","from":10644,"to":10667}
+      ]
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-thread",
+      "text": "¿Qué significa eso? Que ya no solo avisa de que está dentro. Ahora va a por lo que vino a buscar.",
+      "from": 10681,
+      "audioFrames": 252,
+      "durationInFrames": 267,
+      "audio": null,
+      "words": [
+        {"text":"¿Qué","from":10681,"to":10694},
+        {"text":"significa","from":10694,"to":10724},
+        {"text":"eso?","from":10724,"to":10737},
+        {"text":"Que","from":10737,"to":10746},
+        {"text":"ya","from":10746,"to":10753},
+        {"text":"no","from":10753,"to":10760},
+        {"text":"solo","from":10760,"to":10773},
+        {"text":"avisa","from":10773,"to":10789},
+        {"text":"de","from":10789,"to":10796},
+        {"text":"que","from":10796,"to":10805},
+        {"text":"está","from":10805,"to":10818},
+        {"text":"dentro.","from":10818,"to":10841},
+        {"text":"Ahora","from":10841,"to":10858},
+        {"text":"va","from":10858,"to":10864},
+        {"text":"a","from":10864,"to":10868},
+        {"text":"por","from":10868,"to":10877},
+        {"text":"lo","from":10877,"to":10884},
+        {"text":"que","from":10884,"to":10894},
+        {"text":"vino","from":10894,"to":10907},
+        {"text":"a","from":10907,"to":10910},
+        {"text":"buscar.","from":10910,"to":10933}
+      ]
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-thread",
+      "text": "Ordenas los eventos en el tiempo y a lo largo de la kill chain. E7 y E9 dejan de ir sueltos: forman un activity thread.",
+      "from": 10948,
+      "audioFrames": 300,
+      "durationInFrames": 314,
+      "audio": null,
+      "words": [
+        {"text":"Ordenas","from":10948,"to":10970},
+        {"text":"los","from":10970,"to":10980},
+        {"text":"eventos","from":10980,"to":11002},
+        {"text":"en","from":11002,"to":11008},
+        {"text":"el","from":11008,"to":11014},
+        {"text":"tiempo","from":11014,"to":11033},
+        {"text":"y","from":11033,"to":11036},
+        {"text":"a","from":11036,"to":11040},
+        {"text":"lo","from":11040,"to":11046},
+        {"text":"largo","from":11046,"to":11062},
+        {"text":"de","from":11062,"to":11068},
+        {"text":"la","from":11068,"to":11074},
+        {"text":"kill","from":11074,"to":11087},
+        {"text":"chain.","from":11087,"to":11106},
+        {"text":"E7","from":11106,"to":11112},
+        {"text":"y","from":11112,"to":11115},
+        {"text":"E9","from":11115,"to":11122},
+        {"text":"dejan","from":11122,"to":11137},
+        {"text":"de","from":11137,"to":11144},
+        {"text":"ir","from":11144,"to":11150},
+        {"text":"sueltos:","from":11150,"to":11175},
+        {"text":"forman","from":11175,"to":11194},
+        {"text":"un","from":11194,"to":11201},
+        {"text":"activity","from":11201,"to":11226},
+        {"text":"thread.","from":11226,"to":11248}
+      ]
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-thread",
+      "text": "Un evento es una foto. Un hilo es la película. Y esa película la montas en la lección siguiente.",
+      "from": 11262,
+      "audioFrames": 228,
+      "durationInFrames": 249,
+      "audio": null,
+      "words": [
+        {"text":"Un","from":11262,"to":11268},
+        {"text":"evento","from":11268,"to":11285},
+        {"text":"es","from":11285,"to":11291},
+        {"text":"una","from":11291,"to":11300},
+        {"text":"foto.","from":11300,"to":11315},
+        {"text":"Un","from":11315,"to":11320},
+        {"text":"hilo","from":11320,"to":11332},
+        {"text":"es","from":11332,"to":11338},
+        {"text":"la","from":11338,"to":11344},
+        {"text":"película.","from":11344,"to":11370},
+        {"text":"Y","from":11370,"to":11373},
+        {"text":"esa","from":11373,"to":11382},
+        {"text":"película","from":11382,"to":11405},
+        {"text":"la","from":11405,"to":11411},
+        {"text":"montas","from":11411,"to":11429},
+        {"text":"en","from":11429,"to":11434},
+        {"text":"la","from":11434,"to":11440},
+        {"text":"lección","from":11440,"to":11461},
+        {"text":"siguiente.","from":11461,"to":11490}
+      ]
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-limits",
+      "text": "¿Y qué no hace el diamante? No atribuye por sí solo. Poner nombre real al adversario exige muchas más pruebas que un vértice relleno.",
+      "from": 11543,
+      "audioFrames": 288,
+      "durationInFrames": 302,
+      "audio": null,
+      "words": [
+        {"text":"¿Y","from":11543,"to":11548},
+        {"text":"qué","from":11548,"to":11556},
+        {"text":"no","from":11556,"to":11561},
+        {"text":"hace","from":11561,"to":11572},
+        {"text":"el","from":11572,"to":11577},
+        {"text":"diamante?","from":11577,"to":11601},
+        {"text":"No","from":11601,"to":11606},
+        {"text":"atribuye","from":11606,"to":11627},
+        {"text":"por","from":11627,"to":11635},
+        {"text":"sí","from":11635,"to":11640},
+        {"text":"solo.","from":11640,"to":11653},
+        {"text":"Poner","from":11653,"to":11666},
+        {"text":"nombre","from":11666,"to":11682},
+        {"text":"real","from":11682,"to":11692},
+        {"text":"al","from":11692,"to":11697},
+        {"text":"adversario","from":11697,"to":11724},
+        {"text":"exige","from":11724,"to":11737},
+        {"text":"muchas","from":11737,"to":11752},
+        {"text":"más","from":11752,"to":11760},
+        {"text":"pruebas","from":11760,"to":11779},
+        {"text":"que","from":11779,"to":11786},
+        {"text":"un","from":11786,"to":11792},
+        {"text":"vértice","from":11792,"to":11810},
+        {"text":"relleno.","from":11810,"to":11831}
+      ]
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-limits",
+      "text": "Un evento tampoco es una campaña. Un diamante describe un solo paso de la intrusión. La campaña aparece al juntar muchos hilos.",
+      "from": 11845,
+      "audioFrames": 264,
+      "durationInFrames": 278,
+      "audio": null,
+      "words": [
+        {"text":"Un","from":11845,"to":11850},
+        {"text":"evento","from":11850,"to":11865},
+        {"text":"tampoco","from":11865,"to":11882},
+        {"text":"es","from":11882,"to":11887},
+        {"text":"una","from":11887,"to":11895},
+        {"text":"campaña.","from":11895,"to":11915},
+        {"text":"Un","from":11915,"to":11920},
+        {"text":"diamante","from":11920,"to":11940},
+        {"text":"describe","from":11940,"to":11960},
+        {"text":"un","from":11960,"to":11965},
+        {"text":"solo","from":11965,"to":11975},
+        {"text":"paso","from":11975,"to":11984},
+        {"text":"de","from":11984,"to":11989},
+        {"text":"la","from":11989,"to":11994},
+        {"text":"intrusión.","from":11994,"to":12019},
+        {"text":"La","from":12019,"to":12024},
+        {"text":"campaña","from":12024,"to":12042},
+        {"text":"aparece","from":12042,"to":12059},
+        {"text":"al","from":12059,"to":12064},
+        {"text":"juntar","from":12064,"to":12079},
+        {"text":"muchos","from":12079,"to":12094},
+        {"text":"hilos.","from":12094,"to":12109}
+      ]
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-limits",
+      "text": "Su valor real es el plan de pivotes: qué sabes, qué te falta y por dónde buscarlo.",
+      "from": 12123,
+      "audioFrames": 204,
+      "durationInFrames": 225,
+      "audio": null,
+      "words": [
+        {"text":"Su","from":12123,"to":12129},
+        {"text":"valor","from":12129,"to":12145},
+        {"text":"real","from":12145,"to":12157},
+        {"text":"es","from":12157,"to":12163},
+        {"text":"el","from":12163,"to":12169},
+        {"text":"plan","from":12169,"to":12182},
+        {"text":"de","from":12182,"to":12188},
+        {"text":"pivotes:","from":12188,"to":12213},
+        {"text":"qué","from":12213,"to":12222},
+        {"text":"sabes,","from":12222,"to":12240},
+        {"text":"qué","from":12240,"to":12250},
+        {"text":"te","from":12250,"to":12256},
+        {"text":"falta","from":12256,"to":12271},
+        {"text":"y","from":12271,"to":12274},
+        {"text":"por","from":12274,"to":12284},
+        {"text":"dónde","from":12284,"to":12299},
+        {"text":"buscarlo.","from":12299,"to":12327}
+      ]
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-recap",
+      "text": "Para el examen, llévate esto. Cuatro vértices. El implante es Capability, y el dominio, Infrastructure.",
+      "from": 12380,
+      "audioFrames": 180,
+      "durationInFrames": 194,
+      "audio": null,
+      "words": [
+        {"text":"Para","from":12380,"to":12388},
+        {"text":"el","from":12388,"to":12392},
+        {"text":"examen,","from":12392,"to":12406},
+        {"text":"llévate","from":12406,"to":12420},
+        {"text":"esto.","from":12420,"to":12431},
+        {"text":"Cuatro","from":12431,"to":12443},
+        {"text":"vértices.","from":12443,"to":12461},
+        {"text":"El","from":12461,"to":12465},
+        {"text":"implante","from":12465,"to":12481},
+        {"text":"es","from":12481,"to":12485},
+        {"text":"Capability,","from":12485,"to":12507},
+        {"text":"y","from":12507,"to":12509},
+        {"text":"el","from":12509,"to":12513},
+        {"text":"dominio,","from":12513,"to":12530},
+        {"text":"Infrastructure.","from":12530,"to":12560}
+      ]
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-recap",
+      "text": "Operator teclea, customer encarga. UNKNOWN vale si lleva un plan. ¿Y al pivotar? Mejor lo dedicado que lo compartido.",
+      "from": 12574,
+      "audioFrames": 228,
+      "durationInFrames": 243,
+      "audio": null,
+      "words": [
+        {"text":"Operator","from":12574,"to":12592},
+        {"text":"teclea,","from":12592,"to":12609},
+        {"text":"customer","from":12609,"to":12627},
+        {"text":"encarga.","from":12627,"to":12645},
+        {"text":"UNKNOWN","from":12645,"to":12662},
+        {"text":"vale","from":12662,"to":12671},
+        {"text":"si","from":12671,"to":12675},
+        {"text":"lleva","from":12675,"to":12687},
+        {"text":"un","from":12687,"to":12691},
+        {"text":"plan.","from":12691,"to":12703},
+        {"text":"¿Y","from":12703,"to":12708},
+        {"text":"al","from":12708,"to":12712},
+        {"text":"pivotar?","from":12712,"to":12731},
+        {"text":"Mejor","from":12731,"to":12742},
+        {"text":"lo","from":12742,"to":12747},
+        {"text":"dedicado","from":12747,"to":12765},
+        {"text":"que","from":12765,"to":12772},
+        {"text":"lo","from":12772,"to":12777},
+        {"text":"compartido.","from":12777,"to":12802}
+      ]
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-recap",
+      "text": "Ahora sigue esos pivotes en la lección de infraestructura: passive DNS, WHOIS y certificados. Nos vemos allí.",
+      "from": 12817,
+      "audioFrames": 204,
+      "durationInFrames": 231,
+      "audio": null,
+      "words": [
+        {"text":"Ahora","from":12817,"to":12828},
+        {"text":"sigue","from":12828,"to":12839},
+        {"text":"esos","from":12839,"to":12848},
+        {"text":"pivotes","from":12848,"to":12863},
+        {"text":"en","from":12863,"to":12867},
+        {"text":"la","from":12867,"to":12872},
+        {"text":"lección","from":12872,"to":12887},
+        {"text":"de","from":12887,"to":12892},
+        {"text":"infraestructura:","from":12892,"to":12927},
+        {"text":"passive","from":12927,"to":12942},
+        {"text":"DNS,","from":12942,"to":12951},
+        {"text":"WHOIS","from":12951,"to":12962},
+        {"text":"y","from":12962,"to":12964},
+        {"text":"certificados.","from":12964,"to":12992},
+        {"text":"Nos","from":12992,"to":12999},
+        {"text":"vemos","from":12999,"to":13010},
+        {"text":"allí.","from":13010,"to":13021}
+      ]
+    }
+  ],
+  "captions": [
+    {
+      "from": 42,
+      "to": 156,
+      "lines": [
+        [
+          {"text":"Madrugada","from":45,"to":71},
+          {"text":"del","from":71,"to":80},
+          {"text":"5","from":80,"to":83},
+          {"text":"de","from":83,"to":89},
+          {"text":"marzo","from":89,"to":103}
+        ],
+        [
+          {"text":"en","from":103,"to":109},
+          {"text":"Meridian","from":109,"to":133},
+          {"text":"Dynamics.","from":133,"to":159}
+        ]
+      ]
+    },
+    {
+      "from": 156,
+      "to": 273,
+      "lines": [
+        [
+          {"text":"A","from":159,"to":162},
+          {"text":"las","from":162,"to":171},
+          {"text":"02:13","from":171,"to":185},
+          {"text":"UTC,","from":185,"to":197},
+          {"text":"salta","from":197,"to":211}
+        ],
+        [
+          {"text":"una","from":211,"to":220},
+          {"text":"alerta","from":220,"to":238},
+          {"text":"en","from":238,"to":243},
+          {"text":"el","from":243,"to":249},
+          {"text":"SOC.","from":249,"to":261}
+        ]
+      ]
+    },
+    {
+      "from": 273,
+      "to": 305,
+      "lines": [
+        [
+          {"text":"¿Qué","from":276,"to":286},
+          {"text":"ha","from":286,"to":291},
+          {"text":"pasado?","from":291,"to":308}
+        ]
+      ]
+    },
+    {
+      "from": 305,
+      "to": 418,
+      "lines": [
+        [
+          {"text":"La","from":308,"to":313},
+          {"text":"estación","from":313,"to":333},
+          {"text":"ENG-WS-041,","from":333,"to":360}
+        ],
+        [
+          {"text":"de","from":360,"to":365},
+          {"text":"ingeniería","from":365,"to":389},
+          {"text":"de","from":389,"to":394},
+          {"text":"propulsión,","from":394,"to":421}
+        ]
+      ]
+    },
+    {
+      "from": 418,
+      "to": 576,
+      "lines": [
+        [
+          {"text":"llama","from":421,"to":434},
+          {"text":"por","from":434,"to":441},
+          {"text":"HTTPS","from":441,"to":453},
+          {"text":"a","from":453,"to":456},
+          {"text":"un","from":456,"to":461},
+          {"text":"dominio","from":461,"to":478},
+          {"text":"que","from":478,"to":485},
+          {"text":"nadie","from":485,"to":498}
+        ],
+        [
+          {"text":"conoce.","from":498,"to":515},
+          {"text":"Más","from":515,"to":522},
+          {"text":"o","from":522,"to":525},
+          {"text":"menos","from":525,"to":537},
+          {"text":"cada","from":537,"to":547},
+          {"text":"minuto.","from":547,"to":564}
+        ]
+      ]
+    },
+    {
+      "from": 576,
+      "to": 649,
+      "lines": [
+        [
+          {"text":"Un","from":579,"to":584},
+          {"text":"beacon","from":584,"to":601},
+          {"text":"suelto","from":601,"to":617},
+          {"text":"es","from":617,"to":622},
+          {"text":"solo","from":622,"to":633},
+          {"text":"un","from":633,"to":639},
+          {"text":"dato.","from":639,"to":652}
+        ]
+      ]
+    },
+    {
+      "from": 649,
+      "to": 784,
+      "lines": [
+        [
+          {"text":"Para","from":652,"to":663},
+          {"text":"entenderlo","from":663,"to":690},
+          {"text":"te","from":690,"to":695},
+          {"text":"haces","from":695,"to":709},
+          {"text":"cuatro","from":709,"to":725}
+        ],
+        [
+          {"text":"preguntas:","from":725,"to":752},
+          {"text":"quién,","from":752,"to":768},
+          {"text":"con","from":768,"to":777},
+          {"text":"qué,","from":777,"to":787}
+        ]
+      ]
+    },
+    {
+      "from": 784,
+      "to": 867,
+      "lines": [
+        [
+          {"text":"a","from":787,"to":790},
+          {"text":"través","from":790,"to":806},
+          {"text":"de","from":806,"to":812},
+          {"text":"qué","from":812,"to":820},
+          {"text":"y","from":820,"to":823},
+          {"text":"contra","from":823,"to":839},
+          {"text":"quién.","from":839,"to":855}
+        ]
+      ]
+    },
+    {
+      "from": 867,
+      "to": 942,
+      "lines": [
+        [
+          {"text":"Cuatro","from":870,"to":885},
+          {"text":"preguntas,","from":885,"to":909},
+          {"text":"cuatro","from":909,"to":923},
+          {"text":"esquinas.","from":923,"to":945}
+        ]
+      ]
+    },
+    {
+      "from": 942,
+      "to": 1098,
+      "lines": [
+        [
+          {"text":"Eso","from":945,"to":953},
+          {"text":"es","from":953,"to":957},
+          {"text":"el","from":957,"to":962},
+          {"text":"Diamond","from":962,"to":979},
+          {"text":"Model,","from":979,"to":994},
+          {"text":"y","from":994,"to":996},
+          {"text":"hoy","from":996,"to":1004}
+        ],
+        [
+          {"text":"lo","from":1004,"to":1008},
+          {"text":"construyes","from":1008,"to":1033},
+          {"text":"con","from":1033,"to":1040},
+          {"text":"este","from":1040,"to":1050},
+          {"text":"evento:","from":1050,"to":1067},
+          {"text":"E7.","from":1067,"to":1074}
+        ]
+      ]
+    },
+    {
+      "from": 1126,
+      "to": 1190,
+      "lines": [
+        [
+          {"text":"El","from":1129,"to":1134},
+          {"text":"modelo","from":1134,"to":1150},
+          {"text":"parte","from":1150,"to":1164},
+          {"text":"de","from":1164,"to":1169},
+          {"text":"un","from":1169,"to":1175},
+          {"text":"axioma.","from":1175,"to":1193}
+        ]
+      ]
+    },
+    {
+      "from": 1190,
+      "to": 1342,
+      "lines": [
+        [
+          {"text":"En","from":1193,"to":1199},
+          {"text":"cada","from":1199,"to":1210},
+          {"text":"intrusión,","from":1210,"to":1236},
+          {"text":"un","from":1236,"to":1242},
+          {"text":"adversario","from":1242,"to":1269}
+        ],
+        [
+          {"text":"da","from":1269,"to":1274},
+          {"text":"un","from":1274,"to":1279},
+          {"text":"paso","from":1279,"to":1290},
+          {"text":"hacia","from":1290,"to":1303},
+          {"text":"un","from":1303,"to":1309},
+          {"text":"objetivo.","from":1309,"to":1333}
+        ]
+      ]
+    },
+    {
+      "from": 1342,
+      "to": 1490,
+      "lines": [
+        [
+          {"text":"Para","from":1345,"to":1354},
+          {"text":"darlo","from":1354,"to":1365},
+          {"text":"usa","from":1365,"to":1372},
+          {"text":"una","from":1372,"to":1379},
+          {"text":"capacidad,","from":1379,"to":1401},
+          {"text":"sobre","from":1401,"to":1412},
+          {"text":"una","from":1412,"to":1419}
+        ],
+        [
+          {"text":"infraestructura,","from":1419,"to":1455},
+          {"text":"contra","from":1455,"to":1468},
+          {"text":"una","from":1468,"to":1475},
+          {"text":"víctima.","from":1475,"to":1493}
+        ]
+      ]
+    },
+    {
+      "from": 1490,
+      "to": 1584,
+      "lines": [
+        [
+          {"text":"¿Lo","from":1493,"to":1499},
+          {"text":"ves?","from":1499,"to":1508},
+          {"text":"Son","from":1508,"to":1515},
+          {"text":"las","from":1515,"to":1522},
+          {"text":"cuatro","from":1522,"to":1535}
+        ],
+        [
+          {"text":"preguntas","from":1535,"to":1555},
+          {"text":"de","from":1555,"to":1560},
+          {"text":"antes.","from":1560,"to":1573}
+        ]
+      ]
+    },
+    {
+      "from": 1584,
+      "to": 1703,
+      "lines": [
+        [
+          {"text":"Adversary:","from":1587,"to":1606},
+          {"text":"quién.","from":1606,"to":1618},
+          {"text":"Capability:","from":1618,"to":1639},
+          {"text":"con","from":1639,"to":1645},
+          {"text":"qué.","from":1645,"to":1652}
+        ],
+        [
+          {"text":"Infrastructure:","from":1652,"to":1681},
+          {"text":"a","from":1681,"to":1683},
+          {"text":"través","from":1683,"to":1695},
+          {"text":"de","from":1695,"to":1699},
+          {"text":"qué.","from":1699,"to":1706}
+        ]
+      ]
+    },
+    {
+      "from": 1703,
+      "to": 1767,
+      "lines": [
+        [
+          {"text":"Victim:","from":1706,"to":1720},
+          {"text":"contra","from":1720,"to":1731},
+          {"text":"quién.","from":1731,"to":1743}
+        ]
+      ]
+    },
+    {
+      "from": 1863,
+      "to": 2000,
+      "lines": [
+        [
+          {"text":"Puede.","from":1866,"to":1881},
+          {"text":"Pero","from":1881,"to":1891},
+          {"text":"un","from":1891,"to":1897},
+          {"text":"diamante","from":1897,"to":1917},
+          {"text":"con","from":1917,"to":1924},
+          {"text":"una","from":1924,"to":1932}
+        ],
+        [
+          {"text":"esquina","from":1932,"to":1950},
+          {"text":"vacía","from":1950,"to":1963},
+          {"text":"ya","from":1963,"to":1968},
+          {"text":"sirve.","from":1968,"to":1983},
+          {"text":"¿Por","from":1983,"to":1993},
+          {"text":"qué?","from":1993,"to":2003}
+        ]
+      ]
+    },
+    {
+      "from": 2000,
+      "to": 2190,
+      "lines": [
+        [
+          {"text":"Porque","from":2003,"to":2019},
+          {"text":"las","from":2019,"to":2026},
+          {"text":"aristas","from":2026,"to":2044},
+          {"text":"unen","from":2044,"to":2054},
+          {"text":"los","from":2054,"to":2062},
+          {"text":"vértices:","from":2062,"to":2085}
+        ],
+        [
+          {"text":"conoces","from":2085,"to":2102},
+          {"text":"uno","from":2102,"to":2110},
+          {"text":"y","from":2110,"to":2113},
+          {"text":"puedes","from":2113,"to":2128},
+          {"text":"buscar","from":2128,"to":2143},
+          {"text":"los","from":2143,"to":2151},
+          {"text":"demás.","from":2151,"to":2166}
+        ]
+      ]
+    },
+    {
+      "from": 2218,
+      "to": 2320,
+      "lines": [
+        [
+          {"text":"Empiezas","from":2221,"to":2240},
+          {"text":"por","from":2240,"to":2248},
+          {"text":"lo","from":2248,"to":2253},
+          {"text":"que","from":2253,"to":2260},
+          {"text":"tienes:","from":2260,"to":2277}
+        ],
+        [
+          {"text":"tu","from":2277,"to":2282},
+          {"text":"propia","from":2282,"to":2296},
+          {"text":"telemetría.","from":2296,"to":2323}
+        ]
+      ]
+    },
+    {
+      "from": 2320,
+      "to": 2448,
+      "lines": [
+        [
+          {"text":"En","from":2323,"to":2328},
+          {"text":"pantalla,","from":2328,"to":2350},
+          {"text":"las","from":2350,"to":2357},
+          {"text":"líneas","from":2357,"to":2371},
+          {"text":"crudas","from":2371,"to":2386}
+        ],
+        [
+          {"text":"del","from":2386,"to":2393},
+          {"text":"EDR","from":2393,"to":2401},
+          {"text":"de","from":2401,"to":2405},
+          {"text":"esa","from":2405,"to":2413},
+          {"text":"madrugada.","from":2413,"to":2437}
+        ]
+      ]
+    },
+    {
+      "from": 2448,
+      "to": 2506,
+      "lines": [
+        [
+          {"text":"¿Qué","from":2451,"to":2461},
+          {"text":"pertenece","from":2461,"to":2483},
+          {"text":"a","from":2483,"to":2485},
+          {"text":"la","from":2485,"to":2490},
+          {"text":"víctima?","from":2490,"to":2509}
+        ]
+      ]
+    },
+    {
+      "from": 2506,
+      "to": 2678,
+      "lines": [
+        [
+          {"text":"El","from":2509,"to":2514},
+          {"text":"equipo,","from":2514,"to":2531},
+          {"text":"ENG-WS-041,","from":2531,"to":2558},
+          {"text":"y","from":2558,"to":2560},
+          {"text":"la","from":2560,"to":2565},
+          {"text":"empresa,","from":2565,"to":2584}
+        ],
+        [
+          {"text":"Meridian","from":2584,"to":2604},
+          {"text":"Dynamics.","from":2604,"to":2626},
+          {"text":"Los","from":2626,"to":2633},
+          {"text":"dos","from":2633,"to":2640},
+          {"text":"van","from":2640,"to":2648},
+          {"text":"a","from":2648,"to":2650},
+          {"text":"Victim.","from":2650,"to":2667}
+        ]
+      ]
+    },
+    {
+      "from": 2678,
+      "to": 2723,
+      "lines": [
+        [
+          {"text":"¿Y","from":2681,"to":2686},
+          {"text":"con","from":2686,"to":2694},
+          {"text":"qué","from":2694,"to":2702},
+          {"text":"te","from":2702,"to":2708},
+          {"text":"atacan?","from":2708,"to":2726}
+        ]
+      ]
+    },
+    {
+      "from": 2723,
+      "to": 2881,
+      "lines": [
+        [
+          {"text":"El","from":2726,"to":2732},
+          {"text":"hash","from":2732,"to":2742},
+          {"text":"del","from":2742,"to":2750},
+          {"text":"binario,","from":2750,"to":2772},
+          {"text":"9f3a...e1,","from":2772,"to":2798}
+        ],
+        [
+          {"text":"es","from":2798,"to":2804},
+          {"text":"el","from":2804,"to":2809},
+          {"text":"implante","from":2809,"to":2830},
+          {"text":"GLASS","from":2830,"to":2844},
+          {"text":"VIPER,","from":2844,"to":2860},
+          {"text":"un","from":2860,"to":2865},
+          {"text":"loader.","from":2865,"to":2884}
+        ]
+      ]
+    },
+    {
+      "from": 2881,
+      "to": 2932,
+      "lines": [
+        [
+          {"text":"Va","from":2884,"to":2889},
+          {"text":"a","from":2889,"to":2892},
+          {"text":"Capability.","from":2892,"to":2921}
+        ]
+      ]
+    },
+    {
+      "from": 2932,
+      "to": 3041,
+      "lines": [
+        [
+          {"text":"Y","from":2935,"to":2937},
+          {"text":"este","from":2937,"to":2947},
+          {"text":"detalle,","from":2947,"to":2966},
+          {"text":"también:","from":2966,"to":2986}
+        ],
+        [
+          {"text":"el","from":2986,"to":2991},
+          {"text":"named","from":2991,"to":3003},
+          {"text":"pipe","from":3003,"to":3012},
+          {"text":"vc_pipe_%08x.","from":3012,"to":3044}
+        ]
+      ]
+    },
+    {
+      "from": 3041,
+      "to": 3235,
+      "lines": [
+        [
+          {"text":"Si","from":3044,"to":3049},
+          {"text":"recompilan,","from":3049,"to":3075},
+          {"text":"el","from":3075,"to":3080},
+          {"text":"hash","from":3080,"to":3090},
+          {"text":"cambia.","from":3090,"to":3107},
+          {"text":"El","from":3107,"to":3112},
+          {"text":"patrón","from":3112,"to":3126}
+        ],
+        [
+          {"text":"del","from":3126,"to":3134},
+          {"text":"pipe","from":3134,"to":3143},
+          {"text":"suele","from":3143,"to":3155},
+          {"text":"seguir","from":3155,"to":3170},
+          {"text":"ahí,","from":3170,"to":3180},
+          {"text":"como","from":3180,"to":3189},
+          {"text":"un","from":3189,"to":3194},
+          {"text":"acento.","from":3194,"to":3211}
+        ]
+      ]
+    },
+    {
+      "from": 3260,
+      "to": 3418,
+      "lines": [
+        [
+          {"text":"¿Y","from":3263,"to":3268},
+          {"text":"a","from":3268,"to":3270},
+          {"text":"través","from":3270,"to":3284},
+          {"text":"de","from":3284,"to":3289},
+          {"text":"qué","from":3289,"to":3296},
+          {"text":"habla","from":3296,"to":3307},
+          {"text":"ese","from":3307,"to":3314},
+          {"text":"implante?","from":3314,"to":3335}
+        ],
+        [
+          {"text":"De","from":3335,"to":3340},
+          {"text":"un","from":3340,"to":3344},
+          {"text":"dominio:","from":3344,"to":3363},
+          {"text":"update-svc-cdn.com.","from":3363,"to":3407}
+        ]
+      ]
+    },
+    {
+      "from": 3418,
+      "to": 3497,
+      "lines": [
+        [
+          {"text":"Ese","from":3421,"to":3427},
+          {"text":"dominio","from":3427,"to":3442},
+          {"text":"resuelve","from":3442,"to":3458}
+        ],
+        [
+          {"text":"a","from":3458,"to":3461},
+          {"text":"una","from":3461,"to":3467},
+          {"text":"IP","from":3467,"to":3471},
+          {"text":"de","from":3471,"to":3475},
+          {"text":"185.220.x.x.","from":3475,"to":3500}
+        ]
+      ]
+    },
+    {
+      "from": 3497,
+      "to": 3636,
+      "lines": [
+        [
+          {"text":"Y","from":3500,"to":3502},
+          {"text":"el","from":3502,"to":3506},
+          {"text":"servidor","from":3506,"to":3523},
+          {"text":"presenta","from":3523,"to":3540},
+          {"text":"un","from":3540,"to":3544},
+          {"text":"certificado","from":3544,"to":3567}
+        ],
+        [
+          {"text":"TLS","from":3567,"to":3573},
+          {"text":"autofirmado:","from":3573,"to":3598},
+          {"text":"CN=updatesvc.","from":3598,"to":3625}
+        ]
+      ]
+    },
+    {
+      "from": 3636,
+      "to": 3762,
+      "lines": [
+        [
+          {"text":"Dominio,","from":3639,"to":3657},
+          {"text":"IP,","from":3657,"to":3664},
+          {"text":"servidor","from":3664,"to":3682},
+          {"text":"y","from":3682,"to":3684},
+          {"text":"certificado:","from":3684,"to":3711}
+        ],
+        [
+          {"text":"todo","from":3711,"to":3720},
+          {"text":"eso","from":3720,"to":3727},
+          {"text":"es","from":3727,"to":3731},
+          {"text":"Infrastructure.","from":3731,"to":3765}
+        ]
+      ]
+    },
+    {
+      "from": 3762,
+      "to": 3866,
+      "lines": [
+        [
+          {"text":"Es","from":3765,"to":3770},
+          {"text":"la","from":3770,"to":3774},
+          {"text":"carretera","from":3774,"to":3794},
+          {"text":"por","from":3794,"to":3801},
+          {"text":"la","from":3801,"to":3806}
+        ],
+        [
+          {"text":"que","from":3806,"to":3812},
+          {"text":"viaja","from":3812,"to":3824},
+          {"text":"la","from":3824,"to":3828},
+          {"text":"herramienta.","from":3828,"to":3855}
+        ]
+      ]
+    },
+    {
+      "from": 3866,
+      "to": 4018,
+      "lines": [
+        [
+          {"text":"Y","from":3869,"to":3871},
+          {"text":"aquí","from":3871,"to":3881},
+          {"text":"cae","from":3881,"to":3887},
+          {"text":"media","from":3887,"to":3899},
+          {"text":"clase.","from":3899,"to":3913},
+          {"text":"¿El","from":3913,"to":3920},
+          {"text":"implante","from":3920,"to":3938}
+        ],
+        [
+          {"text":"es","from":3938,"to":3943},
+          {"text":"infraestructura","from":3943,"to":3977},
+          {"text":"porque","from":3977,"to":3991},
+          {"text":"se","from":3991,"to":3996},
+          {"text":"conecta?","from":3996,"to":4014},
+          {"text":"No.","from":4014,"to":4021}
+        ]
+      ]
+    },
+    {
+      "from": 4018,
+      "to": 4181,
+      "lines": [
+        [
+          {"text":"El","from":4021,"to":4026},
+          {"text":"implante","from":4026,"to":4044},
+          {"text":"es","from":4044,"to":4049},
+          {"text":"Capability,","from":4049,"to":4074}
+        ],
+        [
+          {"text":"y","from":4074,"to":4076},
+          {"text":"el","from":4076,"to":4081},
+          {"text":"dominio","from":4081,"to":4097},
+          {"text":"al","from":4097,"to":4102},
+          {"text":"que","from":4102,"to":4109},
+          {"text":"llama,","from":4109,"to":4122},
+          {"text":"Infrastructure.","from":4122,"to":4157}
+        ]
+      ]
+    },
+    {
+      "from": 4209,
+      "to": 4340,
+      "lines": [
+        [
+          {"text":"Queda","from":4212,"to":4223},
+          {"text":"una","from":4223,"to":4229},
+          {"text":"esquina.","from":4229,"to":4247},
+          {"text":"¿Quién","from":4247,"to":4260},
+          {"text":"está","from":4260,"to":4269},
+          {"text":"detrás?","from":4269,"to":4284}
+        ],
+        [
+          {"text":"Respuesta","from":4284,"to":4304},
+          {"text":"honesta:","from":4304,"to":4321},
+          {"text":"no","from":4321,"to":4325},
+          {"text":"lo","from":4325,"to":4330},
+          {"text":"sabes.","from":4330,"to":4343}
+        ]
+      ]
+    },
+    {
+      "from": 4340,
+      "to": 4404,
+      "lines": [
+        [
+          {"text":"Y","from":4343,"to":4345},
+          {"text":"escribes","from":4345,"to":4363},
+          {"text":"UNKNOWN.","from":4363,"to":4380}
+        ]
+      ]
+    },
+    {
+      "from": 4497,
+      "to": 4558,
+      "lines": [
+        [
+          {"text":"Ese","from":4500,"to":4508},
+          {"text":"apodo","from":4508,"to":4522},
+          {"text":"se","from":4522,"to":4528},
+          {"text":"lo","from":4528,"to":4534},
+          {"text":"pusiste","from":4534,"to":4553},
+          {"text":"tú:","from":4553,"to":4561}
+        ]
+      ]
+    },
+    {
+      "from": 4558,
+      "to": 4690,
+      "lines": [
+        [
+          {"text":"un","from":4561,"to":4567},
+          {"text":"nombre","from":4567,"to":4584},
+          {"text":"de","from":4584,"to":4589},
+          {"text":"seguimiento","from":4589,"to":4620}
+        ],
+        [
+          {"text":"para","from":4620,"to":4631},
+          {"text":"el","from":4631,"to":4637},
+          {"text":"implante","from":4637,"to":4659},
+          {"text":"y","from":4659,"to":4662},
+          {"text":"quien","from":4662,"to":4676},
+          {"text":"lo","from":4676,"to":4682},
+          {"text":"usa.","from":4682,"to":4693}
+        ]
+      ]
+    },
+    {
+      "from": 4690,
+      "to": 4836,
+      "lines": [
+        [
+          {"text":"No","from":4693,"to":4698},
+          {"text":"es","from":4698,"to":4704},
+          {"text":"una","from":4704,"to":4712},
+          {"text":"identidad,","from":4712,"to":4740}
+        ],
+        [
+          {"text":"así","from":4740,"to":4749},
+          {"text":"que","from":4749,"to":4757},
+          {"text":"Adversary","from":4757,"to":4782},
+          {"text":"sigue","from":4782,"to":4796},
+          {"text":"en","from":4796,"to":4802},
+          {"text":"UNKNOWN.","from":4802,"to":4824}
+        ]
+      ]
+    },
+    {
+      "from": 4836,
+      "to": 5019,
+      "lines": [
+        [
+          {"text":"La","from":4839,"to":4844},
+          {"text":"tentación","from":4844,"to":4866},
+          {"text":"es","from":4866,"to":4871},
+          {"text":"clara:","from":4871,"to":4885},
+          {"text":"rellenar","from":4885,"to":4905},
+          {"text":"la","from":4905,"to":4910},
+          {"text":"esquina","from":4910,"to":4927}
+        ],
+        [
+          {"text":"con","from":4927,"to":4934},
+          {"text":"el","from":4934,"to":4939},
+          {"text":"nombre","from":4939,"to":4954},
+          {"text":"de","from":4954,"to":4958},
+          {"text":"quien","from":4958,"to":4971},
+          {"text":"sospechas.","from":4971,"to":4995}
+        ]
+      ]
+    },
+    {
+      "from": 5070,
+      "to": 5185,
+      "lines": [
+        [
+          {"text":"No.","from":5073,"to":5080},
+          {"text":"UNKNOWN","from":5080,"to":5097},
+          {"text":"con","from":5097,"to":5105},
+          {"text":"un","from":5105,"to":5110},
+          {"text":"plan","from":5110,"to":5120},
+          {"text":"vale","from":5120,"to":5129}
+        ],
+        [
+          {"text":"más","from":5129,"to":5137},
+          {"text":"que","from":5137,"to":5144},
+          {"text":"un","from":5144,"to":5149},
+          {"text":"nombre","from":5149,"to":5164},
+          {"text":"inventado.","from":5164,"to":5188}
+        ]
+      ]
+    },
+    {
+      "from": 5185,
+      "to": 5325,
+      "lines": [
+        [
+          {"text":"Anotas","from":5188,"to":5203},
+          {"text":"el","from":5203,"to":5208},
+          {"text":"pivote","from":5208,"to":5222},
+          {"text":"pendiente:","from":5222,"to":5247}
+        ],
+        [
+          {"text":"el","from":5247,"to":5252},
+          {"text":"WHOIS","from":5252,"to":5264},
+          {"text":"histórico","from":5264,"to":5286},
+          {"text":"del","from":5286,"to":5293},
+          {"text":"dominio.","from":5293,"to":5313}
+        ]
+      ]
+    },
+    {
+      "from": 5325,
+      "to": 5388,
+      "lines": [
+        [
+          {"text":"¿Y","from":5328,"to":5334},
+          {"text":"si","from":5334,"to":5339},
+          {"text":"un","from":5339,"to":5345},
+          {"text":"día","from":5345,"to":5354},
+          {"text":"sale","from":5354,"to":5365},
+          {"text":"un","from":5365,"to":5371},
+          {"text":"nombre?","from":5371,"to":5391}
+        ]
+      ]
+    },
+    {
+      "from": 5388,
+      "to": 5567,
+      "lines": [
+        [
+          {"text":"El","from":5391,"to":5396},
+          {"text":"operator","from":5396,"to":5419},
+          {"text":"es","from":5419,"to":5425},
+          {"text":"quien","from":5425,"to":5439},
+          {"text":"teclea:","from":5439,"to":5459}
+        ],
+        [
+          {"text":"registra","from":5459,"to":5482},
+          {"text":"el","from":5482,"to":5488},
+          {"text":"dominio","from":5488,"to":5508},
+          {"text":"y","from":5508,"to":5510},
+          {"text":"lanza","from":5510,"to":5525},
+          {"text":"el","from":5525,"to":5530},
+          {"text":"implante.","from":5530,"to":5556}
+        ]
+      ]
+    },
+    {
+      "from": 5567,
+      "to": 5719,
+      "lines": [
+        [
+          {"text":"El","from":5570,"to":5575},
+          {"text":"customer","from":5575,"to":5596},
+          {"text":"lo","from":5596,"to":5602},
+          {"text":"encarga","from":5602,"to":5620},
+          {"text":"y","from":5620,"to":5623},
+          {"text":"se","from":5623,"to":5628},
+          {"text":"queda","from":5628,"to":5641}
+        ],
+        [
+          {"text":"el","from":5641,"to":5646},
+          {"text":"botín:","from":5646,"to":5662},
+          {"text":"los","from":5662,"to":5670},
+          {"text":"diseños","from":5670,"to":5688},
+          {"text":"de","from":5688,"to":5694},
+          {"text":"propulsión.","from":5694,"to":5722}
+        ]
+      ]
+    },
+    {
+      "from": 5719,
+      "to": 5870,
+      "lines": [
+        [
+          {"text":"Pueden","from":5722,"to":5738},
+          {"text":"ser","from":5738,"to":5746},
+          {"text":"gente","from":5746,"to":5759},
+          {"text":"distinta,","from":5759,"to":5783}
+        ],
+        [
+          {"text":"y","from":5783,"to":5786},
+          {"text":"los","from":5786,"to":5793},
+          {"text":"dos","from":5793,"to":5801},
+          {"text":"viven","from":5801,"to":5814},
+          {"text":"en","from":5814,"to":5820},
+          {"text":"Adversary.","from":5820,"to":5846}
+        ]
+      ]
+    },
+    {
+      "from": 5898,
+      "to": 6082,
+      "lines": [
+        [
+          {"text":"El","from":5901,"to":5906},
+          {"text":"diamante","from":5906,"to":5928},
+          {"text":"dice","from":5928,"to":5938},
+          {"text":"quién,","from":5938,"to":5954},
+          {"text":"con","from":5954,"to":5962},
+          {"text":"qué,","from":5962,"to":5973},
+          {"text":"por","from":5973,"to":5981},
+          {"text":"dónde","from":5981,"to":5994}
+        ],
+        [
+          {"text":"y","from":5994,"to":5997},
+          {"text":"contra","from":5997,"to":6013},
+          {"text":"quién.","from":6013,"to":6029},
+          {"text":"¿Y","from":6029,"to":6034},
+          {"text":"el","from":6034,"to":6040},
+          {"text":"resto","from":6040,"to":6053},
+          {"text":"del","from":6053,"to":6061},
+          {"text":"contexto?","from":6061,"to":6085}
+        ]
+      ]
+    },
+    {
+      "from": 6082,
+      "to": 6152,
+      "lines": [
+        [
+          {"text":"Va","from":6085,"to":6090},
+          {"text":"en","from":6090,"to":6096},
+          {"text":"las","from":6096,"to":6104},
+          {"text":"meta-features.","from":6104,"to":6141}
+        ]
+      ]
+    },
+    {
+      "from": 6152,
+      "to": 6287,
+      "lines": [
+        [
+          {"text":"La","from":6155,"to":6161},
+          {"text":"ficha","from":6161,"to":6175},
+          {"text":"de","from":6175,"to":6181},
+          {"text":"E7","from":6181,"to":6187},
+          {"text":"se","from":6187,"to":6193},
+          {"text":"rellena","from":6193,"to":6214}
+        ],
+        [
+          {"text":"campo","from":6214,"to":6228},
+          {"text":"a","from":6228,"to":6231},
+          {"text":"campo.","from":6231,"to":6249},
+          {"text":"Hora:","from":6249,"to":6263},
+          {"text":"02:13","from":6263,"to":6278},
+          {"text":"UTC.","from":6278,"to":6290}
+        ]
+      ]
+    },
+    {
+      "from": 6287,
+      "to": 6406,
+      "lines": [
+        [
+          {"text":"Fase","from":6290,"to":6301},
+          {"text":"de","from":6301,"to":6307},
+          {"text":"la","from":6307,"to":6313},
+          {"text":"kill","from":6313,"to":6325},
+          {"text":"chain:","from":6325,"to":6342}
+        ],
+        [
+          {"text":"Command","from":6342,"to":6363},
+          {"text":"and","from":6363,"to":6372},
+          {"text":"Control.","from":6372,"to":6395}
+        ]
+      ]
+    },
+    {
+      "from": 6406,
+      "to": 6464,
+      "lines": [
+        [
+          {"text":"Resultado:","from":6409,"to":6428},
+          {"text":"éxito,","from":6428,"to":6440},
+          {"text":"el","from":6440,"to":6444},
+          {"text":"beacon","from":6444,"to":6456},
+          {"text":"salió.","from":6456,"to":6467}
+        ]
+      ]
+    },
+    {
+      "from": 6464,
+      "to": 6564,
+      "lines": [
+        [
+          {"text":"Dirección:","from":6467,"to":6487},
+          {"text":"de","from":6487,"to":6491},
+          {"text":"la","from":6491,"to":6495},
+          {"text":"víctima","from":6495,"to":6508}
+        ],
+        [
+          {"text":"hacia","from":6508,"to":6518},
+          {"text":"la","from":6518,"to":6522},
+          {"text":"infraestructura.","from":6522,"to":6553}
+        ]
+      ]
+    },
+    {
+      "from": 6564,
+      "to": 6694,
+      "lines": [
+        [
+          {"text":"Metodología:","from":6567,"to":6596},
+          {"text":"beacon","from":6596,"to":6611},
+          {"text":"HTTPS","from":6611,"to":6623}
+        ],
+        [
+          {"text":"cada","from":6623,"to":6633},
+          {"text":"sesenta","from":6633,"to":6650},
+          {"text":"segundos,","from":6650,"to":6672},
+          {"text":"con","from":6672,"to":6680},
+          {"text":"jitter.","from":6680,"to":6697}
+        ]
+      ]
+    },
+    {
+      "from": 6694,
+      "to": 6819,
+      "lines": [
+        [
+          {"text":"Es","from":6697,"to":6702},
+          {"text":"un","from":6702,"to":6707},
+          {"text":"latido","from":6707,"to":6721},
+          {"text":"con","from":6721,"to":6729},
+          {"text":"algo","from":6729,"to":6738},
+          {"text":"de","from":6738,"to":6743},
+          {"text":"temblor,","from":6743,"to":6763}
+        ],
+        [
+          {"text":"para","from":6763,"to":6773},
+          {"text":"no","from":6773,"to":6778},
+          {"text":"sonar","from":6778,"to":6790},
+          {"text":"a","from":6790,"to":6792},
+          {"text":"reloj.","from":6792,"to":6807}
+        ]
+      ]
+    },
+    {
+      "from": 6819,
+      "to": 6914,
+      "lines": [
+        [
+          {"text":"Y","from":6822,"to":6824},
+          {"text":"recursos:","from":6824,"to":6845},
+          {"text":"hosting,","from":6845,"to":6864}
+        ],
+        [
+          {"text":"dominio","from":6864,"to":6880},
+          {"text":"y","from":6880,"to":6882},
+          {"text":"certificado","from":6882,"to":6908},
+          {"text":"TLS.","from":6908,"to":6917}
+        ]
+      ]
+    },
+    {
+      "from": 6914,
+      "to": 7074,
+      "lines": [
+        [
+          {"text":"Es","from":6917,"to":6922},
+          {"text":"lo","from":6922,"to":6927},
+          {"text":"que","from":6927,"to":6934},
+          {"text":"el","from":6934,"to":6938},
+          {"text":"adversario","from":6938,"to":6962},
+          {"text":"tuvo","from":6962,"to":6971}
+        ],
+        [
+          {"text":"que","from":6971,"to":6978},
+          {"text":"conseguir","from":6978,"to":6999},
+          {"text":"para","from":6999,"to":7008},
+          {"text":"que","from":7008,"to":7015},
+          {"text":"todo","from":7015,"to":7024},
+          {"text":"funcionara.","from":7024,"to":7050}
+        ]
+      ]
+    },
+    {
+      "from": 7099,
+      "to": 7153,
+      "lines": [
+        [
+          {"text":"Ahora","from":7102,"to":7113},
+          {"text":"traza","from":7113,"to":7124},
+          {"text":"dos","from":7124,"to":7131},
+          {"text":"diagonales.","from":7131,"to":7156}
+        ]
+      ]
+    },
+    {
+      "from": 7153,
+      "to": 7281,
+      "lines": [
+        [
+          {"text":"La","from":7156,"to":7160},
+          {"text":"primera","from":7160,"to":7176},
+          {"text":"une","from":7176,"to":7183},
+          {"text":"Adversary","from":7183,"to":7203},
+          {"text":"y","from":7203,"to":7205},
+          {"text":"Victim:","from":7205,"to":7221}
+        ],
+        [
+          {"text":"es","from":7221,"to":7225},
+          {"text":"el","from":7225,"to":7230},
+          {"text":"eje","from":7230,"to":7236},
+          {"text":"socio-político.","from":7236,"to":7270}
+        ]
+      ]
+    },
+    {
+      "from": 7281,
+      "to": 7406,
+      "lines": [
+        [
+          {"text":"¿Qué","from":7284,"to":7293},
+          {"text":"pregunta","from":7293,"to":7312},
+          {"text":"ese","from":7312,"to":7319},
+          {"text":"eje?","from":7319,"to":7329},
+          {"text":"Por","from":7329,"to":7336},
+          {"text":"qué","from":7336,"to":7343}
+        ],
+        [
+          {"text":"esta","from":7343,"to":7352},
+          {"text":"víctima.","from":7352,"to":7371},
+          {"text":"¿Por","from":7371,"to":7381},
+          {"text":"qué","from":7381,"to":7388},
+          {"text":"Meridian?","from":7388,"to":7409}
+        ]
+      ]
+    },
+    {
+      "from": 7406,
+      "to": 7496,
+      "lines": [
+        [
+          {"text":"Por","from":7409,"to":7416},
+          {"text":"su","from":7416,"to":7421},
+          {"text":"propiedad","from":7421,"to":7442}
+        ],
+        [
+          {"text":"intelectual","from":7442,"to":7468},
+          {"text":"de","from":7468,"to":7473},
+          {"text":"propulsión:","from":7473,"to":7499}
+        ]
+      ]
+    },
+    {
+      "from": 7496,
+      "to": 7572,
+      "lines": [
+        [
+          {"text":"es","from":7499,"to":7503},
+          {"text":"lo","from":7503,"to":7508},
+          {"text":"que","from":7508,"to":7515},
+          {"text":"necesita","from":7515,"to":7534},
+          {"text":"el","from":7534,"to":7539},
+          {"text":"customer.","from":7539,"to":7560}
+        ]
+      ]
+    },
+    {
+      "from": 7572,
+      "to": 7679,
+      "lines": [
+        [
+          {"text":"La","from":7575,"to":7579},
+          {"text":"segunda","from":7579,"to":7593},
+          {"text":"une","from":7593,"to":7598},
+          {"text":"Capability","from":7598,"to":7618}
+        ],
+        [
+          {"text":"e","from":7618,"to":7620},
+          {"text":"Infrastructure:","from":7620,"to":7649},
+          {"text":"el","from":7649,"to":7653},
+          {"text":"eje","from":7653,"to":7659},
+          {"text":"tecnológico.","from":7659,"to":7682}
+        ]
+      ]
+    },
+    {
+      "from": 7679,
+      "to": 7826,
+      "lines": [
+        [
+          {"text":"Cuenta","from":7682,"to":7694},
+          {"text":"cómo","from":7694,"to":7702},
+          {"text":"se","from":7702,"to":7706},
+          {"text":"despliega","from":7706,"to":7723},
+          {"text":"la","from":7723,"to":7727},
+          {"text":"técnica:","from":7727,"to":7743}
+        ],
+        [
+          {"text":"implante,","from":7743,"to":7760},
+          {"text":"dominio,","from":7760,"to":7776},
+          {"text":"hosting","from":7776,"to":7790},
+          {"text":"y","from":7790,"to":7792},
+          {"text":"certificado.","from":7792,"to":7815}
+        ]
+      ]
+    },
+    {
+      "from": 7826,
+      "to": 7935,
+      "lines": [
+        [
+          {"text":"Un","from":7829,"to":7835},
+          {"text":"eje","from":7835,"to":7844},
+          {"text":"explica","from":7844,"to":7865},
+          {"text":"el","from":7865,"to":7872},
+          {"text":"porqué,","from":7872,"to":7893}
+        ],
+        [
+          {"text":"y","from":7893,"to":7896},
+          {"text":"el","from":7896,"to":7902},
+          {"text":"otro,","from":7902,"to":7917},
+          {"text":"el","from":7917,"to":7923},
+          {"text":"cómo.","from":7923,"to":7938}
+        ]
+      ]
+    },
+    {
+      "from": 7935,
+      "to": 8081,
+      "lines": [
+        [
+          {"text":"Con","from":7938,"to":7948},
+          {"text":"los","from":7948,"to":7957},
+          {"text":"dos,","from":7957,"to":7969},
+          {"text":"el","from":7969,"to":7975},
+          {"text":"ataque","from":7975,"to":7993}
+        ],
+        [
+          {"text":"empieza","from":7993,"to":8014},
+          {"text":"a","from":8014,"to":8017},
+          {"text":"tener","from":8017,"to":8033},
+          {"text":"sentido.","from":8033,"to":8057}
+        ]
+      ]
+    },
+    {
+      "from": 8107,
+      "to": 8250,
+      "lines": [
+        [
+          {"text":"Y","from":8110,"to":8113},
+          {"text":"aquí","from":8113,"to":8123},
+          {"text":"el","from":8123,"to":8129},
+          {"text":"diamante","from":8129,"to":8150},
+          {"text":"deja","from":8150,"to":8161},
+          {"text":"de","from":8161,"to":8167},
+          {"text":"ser","from":8167,"to":8175}
+        ],
+        [
+          {"text":"una","from":8175,"to":8183},
+          {"text":"ficha","from":8183,"to":8196},
+          {"text":"y","from":8196,"to":8199},
+          {"text":"se","from":8199,"to":8204},
+          {"text":"vuelve","from":8204,"to":8221},
+          {"text":"herramienta.","from":8221,"to":8253}
+        ]
+      ]
+    },
+    {
+      "from": 8250,
+      "to": 8361,
+      "lines": [
+        [
+          {"text":"Cada","from":8253,"to":8264},
+          {"text":"vértice","from":8264,"to":8283},
+          {"text":"conocido","from":8283,"to":8304},
+          {"text":"ilumina","from":8304,"to":8323},
+          {"text":"a","from":8323,"to":8326},
+          {"text":"los","from":8326,"to":8334},
+          {"text":"demás.","from":8334,"to":8350}
+        ]
+      ]
+    },
+    {
+      "from": 8361,
+      "to": 8480,
+      "lines": [
+        [
+          {"text":"¿Cómo?","from":8364,"to":8378},
+          {"text":"De","from":8378,"to":8382},
+          {"text":"la","from":8382,"to":8387},
+          {"text":"víctima,","from":8387,"to":8405},
+          {"text":"tus","from":8405,"to":8412},
+          {"text":"logs,","from":8412,"to":8424}
+        ],
+        [
+          {"text":"sacas","from":8424,"to":8435},
+          {"text":"la","from":8435,"to":8440},
+          {"text":"muestra:","from":8440,"to":8458},
+          {"text":"capability.","from":8458,"to":8483}
+        ]
+      ]
+    },
+    {
+      "from": 8480,
+      "to": 8627,
+      "lines": [
+        [
+          {"text":"De","from":8483,"to":8488},
+          {"text":"la","from":8488,"to":8492},
+          {"text":"muestra","from":8492,"to":8508},
+          {"text":"sacas","from":8508,"to":8520},
+          {"text":"el","from":8520,"to":8524},
+          {"text":"C2","from":8524,"to":8529},
+          {"text":"que","from":8529,"to":8536},
+          {"text":"lleva","from":8536,"to":8547}
+        ],
+        [
+          {"text":"escrito","from":8547,"to":8563},
+          {"text":"dentro:","from":8563,"to":8579},
+          {"text":"infraestructura.","from":8579,"to":8616}
+        ]
+      ]
+    },
+    {
+      "from": 8627,
+      "to": 8787,
+      "lines": [
+        [
+          {"text":"De","from":8630,"to":8635},
+          {"text":"ese","from":8635,"to":8643},
+          {"text":"C2","from":8643,"to":8648},
+          {"text":"salen","from":8648,"to":8662},
+          {"text":"otras","from":8662,"to":8675},
+          {"text":"muestras","from":8675,"to":8696},
+          {"text":"que","from":8696,"to":8704},
+          {"text":"llaman","from":8704,"to":8719}
+        ],
+        [
+          {"text":"al","from":8719,"to":8725},
+          {"text":"mismo","from":8725,"to":8738},
+          {"text":"sitio:","from":8738,"to":8753},
+          {"text":"más","from":8753,"to":8761},
+          {"text":"capability.","from":8761,"to":8790}
+        ]
+      ]
+    },
+    {
+      "from": 8787,
+      "to": 8978,
+      "lines": [
+        [
+          {"text":"Y","from":8790,"to":8793},
+          {"text":"a","from":8793,"to":8795},
+          {"text":"veces,","from":8795,"to":8811},
+          {"text":"un","from":8811,"to":8816},
+          {"text":"descuido","from":8816,"to":8837},
+          {"text":"del","from":8837,"to":8845},
+          {"text":"adversario,","from":8845,"to":8874}
+        ],
+        [
+          {"text":"como","from":8874,"to":8885},
+          {"text":"el","from":8885,"to":8890},
+          {"text":"email","from":8890,"to":8903},
+          {"text":"con","from":8903,"to":8911},
+          {"text":"que","from":8911,"to":8919},
+          {"text":"registró","from":8919,"to":8940},
+          {"text":"un","from":8940,"to":8945},
+          {"text":"dominio.","from":8945,"to":8966}
+        ]
+      ]
+    },
+    {
+      "from": 8978,
+      "to": 9143,
+      "lines": [
+        [
+          {"text":"Cada","from":8981,"to":8994},
+          {"text":"vuelta","from":8994,"to":9013},
+          {"text":"del","from":9013,"to":9023},
+          {"text":"bucle","from":9023,"to":9039},
+          {"text":"hace","from":9039,"to":9052},
+          {"text":"crecer","from":9052,"to":9071}
+        ],
+        [
+          {"text":"el","from":9071,"to":9078},
+          {"text":"grafo.","from":9078,"to":9097},
+          {"text":"¿Te","from":9097,"to":9107},
+          {"text":"suena","from":9107,"to":9123},
+          {"text":"a","from":9123,"to":9126},
+          {"text":"juego?","from":9126,"to":9146}
+        ]
+      ]
+    },
+    {
+      "from": 9143,
+      "to": 9257,
+      "lines": [
+        [
+          {"text":"Es","from":9146,"to":9152},
+          {"text":"justo","from":9152,"to":9168},
+          {"text":"lo","from":9168,"to":9175},
+          {"text":"que","from":9175,"to":9185},
+          {"text":"harás","from":9185,"to":9201},
+          {"text":"en","from":9201,"to":9207},
+          {"text":"el","from":9207,"to":9214},
+          {"text":"Lab","from":9214,"to":9223},
+          {"text":"3A.","from":9223,"to":9233}
+        ]
+      ]
+    },
+    {
+      "from": 9390,
+      "to": 9414,
+      "lines": [
+        [
+          {"text":"Qué","from":9393,"to":9400},
+          {"text":"amable.","from":9400,"to":9417}
+        ]
+      ]
+    },
+    {
+      "from": 9414,
+      "to": 9600,
+      "lines": [
+        [
+          {"text":"Esa","from":9417,"to":9425},
+          {"text":"IP","from":9425,"to":9429},
+          {"text":"es","from":9429,"to":9434},
+          {"text":"hosting","from":9434,"to":9451},
+          {"text":"compartido:","from":9451,"to":9478},
+          {"text":"unos","from":9478,"to":9488},
+          {"text":"catorce","from":9488,"to":9505}
+        ],
+        [
+          {"text":"mil","from":9505,"to":9512},
+          {"text":"dominios","from":9512,"to":9532},
+          {"text":"de","from":9532,"to":9536},
+          {"text":"terceros","from":9536,"to":9556},
+          {"text":"viven","from":9556,"to":9568},
+          {"text":"en","from":9568,"to":9573},
+          {"text":"ella.","from":9573,"to":9585}
+        ]
+      ]
+    },
+    {
+      "from": 9600,
+      "to": 9747,
+      "lines": [
+        [
+          {"text":"Tienes","from":9603,"to":9615},
+          {"text":"dos","from":9615,"to":9621},
+          {"text":"caminos:","from":9621,"to":9636},
+          {"text":"esa","from":9636,"to":9642},
+          {"text":"IP,","from":9642,"to":9648}
+        ],
+        [
+          {"text":"o","from":9648,"to":9650},
+          {"text":"el","from":9650,"to":9654},
+          {"text":"certificado","from":9654,"to":9676},
+          {"text":"autofirmado","from":9676,"to":9697},
+          {"text":"CN=updatesvc.","from":9697,"to":9723}
+        ]
+      ]
+    },
+    {
+      "from": 9798,
+      "to": 9827,
+      "lines": [
+        [
+          {"text":"¿Por","from":9801,"to":9811},
+          {"text":"la","from":9811,"to":9815},
+          {"text":"IP?","from":9815,"to":9823},
+          {"text":"No.","from":9823,"to":9830}
+        ]
+      ]
+    },
+    {
+      "from": 9827,
+      "to": 9981,
+      "lines": [
+        [
+          {"text":"Catorce","from":9830,"to":9847},
+          {"text":"mil","from":9847,"to":9854},
+          {"text":"vecinos","from":9854,"to":9871},
+          {"text":"inocentes","from":9871,"to":9892},
+          {"text":"son","from":9892,"to":9899}
+        ],
+        [
+          {"text":"catorce","from":9899,"to":9916},
+          {"text":"mil","from":9916,"to":9923},
+          {"text":"pistas","from":9923,"to":9938},
+          {"text":"falsas:","from":9938,"to":9955},
+          {"text":"ruido.","from":9955,"to":9969}
+        ]
+      ]
+    },
+    {
+      "from": 9981,
+      "to": 10135,
+      "lines": [
+        [
+          {"text":"Ese","from":9984,"to":9992},
+          {"text":"certificado","from":9992,"to":10021},
+          {"text":"autofirmado,","from":10021,"to":10053}
+        ],
+        [
+          {"text":"en","from":10053,"to":10058},
+          {"text":"cambio,","from":10058,"to":10077},
+          {"text":"solo","from":10077,"to":10087},
+          {"text":"lo","from":10087,"to":10093},
+          {"text":"despliega","from":10093,"to":10117},
+          {"text":"el","from":10117,"to":10122},
+          {"text":"actor.","from":10122,"to":10138}
+        ]
+      ]
+    },
+    {
+      "from": 10135,
+      "to": 10227,
+      "lines": [
+        [
+          {"text":"Y","from":10138,"to":10140},
+          {"text":"aparece","from":10140,"to":10159},
+          {"text":"en","from":10159,"to":10164},
+          {"text":"dos","from":10164,"to":10172},
+          {"text":"IP","from":10172,"to":10178},
+          {"text":"más.","from":10178,"to":10188},
+          {"text":"Eso","from":10188,"to":10196},
+          {"text":"es","from":10196,"to":10201},
+          {"text":"oro.","from":10201,"to":10212}
+        ]
+      ]
+    },
+    {
+      "from": 10227,
+      "to": 10288,
+      "lines": [
+        [
+          {"text":"El","from":10230,"to":10234},
+          {"text":"WHOIS","from":10234,"to":10244},
+          {"text":"histórico","from":10244,"to":10262},
+          {"text":"sigue","from":10262,"to":10272},
+          {"text":"pendiente.","from":10272,"to":10291}
+        ]
+      ]
+    },
+    {
+      "from": 10288,
+      "to": 10383,
+      "lines": [
+        [
+          {"text":"La","from":10291,"to":10295},
+          {"text":"regla,","from":10295,"to":10307},
+          {"text":"para","from":10307,"to":10315},
+          {"text":"siempre:","from":10315,"to":10331}
+        ],
+        [
+          {"text":"un","from":10331,"to":10335},
+          {"text":"recurso","from":10335,"to":10349},
+          {"text":"dedicado","from":10349,"to":10365},
+          {"text":"discrimina,","from":10365,"to":10386}
+        ]
+      ]
+    },
+    {
+      "from": 10383,
+      "to": 10458,
+      "lines": [
+        [
+          {"text":"y","from":10386,"to":10388},
+          {"text":"uno","from":10388,"to":10394},
+          {"text":"compartido","from":10394,"to":10414},
+          {"text":"contamina.","from":10414,"to":10434}
+        ]
+      ]
+    },
+    {
+      "from": 10484,
+      "to": 10598,
+      "lines": [
+        [
+          {"text":"Dos","from":10487,"to":10493},
+          {"text":"días","from":10493,"to":10501},
+          {"text":"después","from":10501,"to":10516},
+          {"text":"aparece","from":10516,"to":10530},
+          {"text":"E9.","from":10530,"to":10537}
+        ],
+        [
+          {"text":"Mismo","from":10537,"to":10547},
+          {"text":"implante,","from":10547,"to":10566},
+          {"text":"misma","from":10566,"to":10576},
+          {"text":"metodología.","from":10576,"to":10601}
+        ]
+      ]
+    },
+    {
+      "from": 10598,
+      "to": 10678,
+      "lines": [
+        [
+          {"text":"Pero","from":10601,"to":10609},
+          {"text":"ahora,","from":10609,"to":10621},
+          {"text":"en","from":10621,"to":10626},
+          {"text":"Actions","from":10626,"to":10640},
+          {"text":"on","from":10640,"to":10644},
+          {"text":"Objectives.","from":10644,"to":10667}
+        ]
+      ]
+    },
+    {
+      "from": 10678,
+      "to": 10838,
+      "lines": [
+        [
+          {"text":"¿Qué","from":10681,"to":10694},
+          {"text":"significa","from":10694,"to":10724},
+          {"text":"eso?","from":10724,"to":10737}
+        ],
+        [
+          {"text":"Que","from":10737,"to":10746},
+          {"text":"ya","from":10746,"to":10753},
+          {"text":"no","from":10753,"to":10760},
+          {"text":"solo","from":10760,"to":10773},
+          {"text":"avisa","from":10773,"to":10789},
+          {"text":"de","from":10789,"to":10796},
+          {"text":"que","from":10796,"to":10805},
+          {"text":"está","from":10805,"to":10818},
+          {"text":"dentro.","from":10818,"to":10841}
+        ]
+      ]
+    },
+    {
+      "from": 10838,
+      "to": 10945,
+      "lines": [
+        [
+          {"text":"Ahora","from":10841,"to":10858},
+          {"text":"va","from":10858,"to":10864},
+          {"text":"a","from":10864,"to":10868},
+          {"text":"por","from":10868,"to":10877},
+          {"text":"lo","from":10877,"to":10884},
+          {"text":"que","from":10884,"to":10894},
+          {"text":"vino","from":10894,"to":10907},
+          {"text":"a","from":10907,"to":10910},
+          {"text":"buscar.","from":10910,"to":10933}
+        ]
+      ]
+    },
+    {
+      "from": 10945,
+      "to": 11103,
+      "lines": [
+        [
+          {"text":"Ordenas","from":10948,"to":10970},
+          {"text":"los","from":10970,"to":10980},
+          {"text":"eventos","from":10980,"to":11002},
+          {"text":"en","from":11002,"to":11008},
+          {"text":"el","from":11008,"to":11014},
+          {"text":"tiempo","from":11014,"to":11033}
+        ],
+        [
+          {"text":"y","from":11033,"to":11036},
+          {"text":"a","from":11036,"to":11040},
+          {"text":"lo","from":11040,"to":11046},
+          {"text":"largo","from":11046,"to":11062},
+          {"text":"de","from":11062,"to":11068},
+          {"text":"la","from":11068,"to":11074},
+          {"text":"kill","from":11074,"to":11087},
+          {"text":"chain.","from":11087,"to":11106}
+        ]
+      ]
+    },
+    {
+      "from": 11103,
+      "to": 11259,
+      "lines": [
+        [
+          {"text":"E7","from":11106,"to":11112},
+          {"text":"y","from":11112,"to":11115},
+          {"text":"E9","from":11115,"to":11122},
+          {"text":"dejan","from":11122,"to":11137},
+          {"text":"de","from":11137,"to":11144},
+          {"text":"ir","from":11144,"to":11150},
+          {"text":"sueltos:","from":11150,"to":11175}
+        ],
+        [
+          {"text":"forman","from":11175,"to":11194},
+          {"text":"un","from":11194,"to":11201},
+          {"text":"activity","from":11201,"to":11226},
+          {"text":"thread.","from":11226,"to":11248}
+        ]
+      ]
+    },
+    {
+      "from": 11259,
+      "to": 11367,
+      "lines": [
+        [
+          {"text":"Un","from":11262,"to":11268},
+          {"text":"evento","from":11268,"to":11285},
+          {"text":"es","from":11285,"to":11291},
+          {"text":"una","from":11291,"to":11300},
+          {"text":"foto.","from":11300,"to":11315}
+        ],
+        [
+          {"text":"Un","from":11315,"to":11320},
+          {"text":"hilo","from":11320,"to":11332},
+          {"text":"es","from":11332,"to":11338},
+          {"text":"la","from":11338,"to":11344},
+          {"text":"película.","from":11344,"to":11370}
+        ]
+      ]
+    },
+    {
+      "from": 11367,
+      "to": 11514,
+      "lines": [
+        [
+          {"text":"Y","from":11370,"to":11373},
+          {"text":"esa","from":11373,"to":11382},
+          {"text":"película","from":11382,"to":11405},
+          {"text":"la","from":11405,"to":11411},
+          {"text":"montas","from":11411,"to":11429}
+        ],
+        [
+          {"text":"en","from":11429,"to":11434},
+          {"text":"la","from":11434,"to":11440},
+          {"text":"lección","from":11440,"to":11461},
+          {"text":"siguiente.","from":11461,"to":11490}
+        ]
+      ]
+    },
+    {
+      "from": 11540,
+      "to": 11650,
+      "lines": [
+        [
+          {"text":"¿Y","from":11543,"to":11548},
+          {"text":"qué","from":11548,"to":11556},
+          {"text":"no","from":11556,"to":11561},
+          {"text":"hace","from":11561,"to":11572},
+          {"text":"el","from":11572,"to":11577},
+          {"text":"diamante?","from":11577,"to":11601}
+        ],
+        [
+          {"text":"No","from":11601,"to":11606},
+          {"text":"atribuye","from":11606,"to":11627},
+          {"text":"por","from":11627,"to":11635},
+          {"text":"sí","from":11635,"to":11640},
+          {"text":"solo.","from":11640,"to":11653}
+        ]
+      ]
+    },
+    {
+      "from": 11650,
+      "to": 11842,
+      "lines": [
+        [
+          {"text":"Poner","from":11653,"to":11666},
+          {"text":"nombre","from":11666,"to":11682},
+          {"text":"real","from":11682,"to":11692},
+          {"text":"al","from":11692,"to":11697},
+          {"text":"adversario","from":11697,"to":11724},
+          {"text":"exige","from":11724,"to":11737}
+        ],
+        [
+          {"text":"muchas","from":11737,"to":11752},
+          {"text":"más","from":11752,"to":11760},
+          {"text":"pruebas","from":11760,"to":11779},
+          {"text":"que","from":11779,"to":11786},
+          {"text":"un","from":11786,"to":11792},
+          {"text":"vértice","from":11792,"to":11810},
+          {"text":"relleno.","from":11810,"to":11831}
+        ]
+      ]
+    },
+    {
+      "from": 11842,
+      "to": 11912,
+      "lines": [
+        [
+          {"text":"Un","from":11845,"to":11850},
+          {"text":"evento","from":11850,"to":11865},
+          {"text":"tampoco","from":11865,"to":11882},
+          {"text":"es","from":11882,"to":11887},
+          {"text":"una","from":11887,"to":11895},
+          {"text":"campaña.","from":11895,"to":11915}
+        ]
+      ]
+    },
+    {
+      "from": 11912,
+      "to": 12016,
+      "lines": [
+        [
+          {"text":"Un","from":11915,"to":11920},
+          {"text":"diamante","from":11920,"to":11940},
+          {"text":"describe","from":11940,"to":11960},
+          {"text":"un","from":11960,"to":11965},
+          {"text":"solo","from":11965,"to":11975}
+        ],
+        [
+          {"text":"paso","from":11975,"to":11984},
+          {"text":"de","from":11984,"to":11989},
+          {"text":"la","from":11989,"to":11994},
+          {"text":"intrusión.","from":11994,"to":12019}
+        ]
+      ]
+    },
+    {
+      "from": 12016,
+      "to": 12120,
+      "lines": [
+        [
+          {"text":"La","from":12019,"to":12024},
+          {"text":"campaña","from":12024,"to":12042},
+          {"text":"aparece","from":12042,"to":12059},
+          {"text":"al","from":12059,"to":12064},
+          {"text":"juntar","from":12064,"to":12079},
+          {"text":"muchos","from":12079,"to":12094},
+          {"text":"hilos.","from":12094,"to":12109}
+        ]
+      ]
+    },
+    {
+      "from": 12120,
+      "to": 12351,
+      "lines": [
+        [
+          {"text":"Su","from":12123,"to":12129},
+          {"text":"valor","from":12129,"to":12145},
+          {"text":"real","from":12145,"to":12157},
+          {"text":"es","from":12157,"to":12163},
+          {"text":"el","from":12163,"to":12169},
+          {"text":"plan","from":12169,"to":12182},
+          {"text":"de","from":12182,"to":12188},
+          {"text":"pivotes:","from":12188,"to":12213},
+          {"text":"qué","from":12213,"to":12222}
+        ],
+        [
+          {"text":"sabes,","from":12222,"to":12240},
+          {"text":"qué","from":12240,"to":12250},
+          {"text":"te","from":12250,"to":12256},
+          {"text":"falta","from":12256,"to":12271},
+          {"text":"y","from":12271,"to":12274},
+          {"text":"por","from":12274,"to":12284},
+          {"text":"dónde","from":12284,"to":12299},
+          {"text":"buscarlo.","from":12299,"to":12327}
+        ]
+      ]
+    },
+    {
+      "from": 12377,
+      "to": 12458,
+      "lines": [
+        [
+          {"text":"Para","from":12380,"to":12388},
+          {"text":"el","from":12388,"to":12392},
+          {"text":"examen,","from":12392,"to":12406},
+          {"text":"llévate","from":12406,"to":12420}
+        ],
+        [
+          {"text":"esto.","from":12420,"to":12431},
+          {"text":"Cuatro","from":12431,"to":12443},
+          {"text":"vértices.","from":12443,"to":12461}
+        ]
+      ]
+    },
+    {
+      "from": 12458,
+      "to": 12571,
+      "lines": [
+        [
+          {"text":"El","from":12461,"to":12465},
+          {"text":"implante","from":12465,"to":12481},
+          {"text":"es","from":12481,"to":12485},
+          {"text":"Capability,","from":12485,"to":12507}
+        ],
+        [
+          {"text":"y","from":12507,"to":12509},
+          {"text":"el","from":12509,"to":12513},
+          {"text":"dominio,","from":12513,"to":12530},
+          {"text":"Infrastructure.","from":12530,"to":12560}
+        ]
+      ]
+    },
+    {
+      "from": 12571,
+      "to": 12728,
+      "lines": [
+        [
+          {"text":"Operator","from":12574,"to":12592},
+          {"text":"teclea,","from":12592,"to":12609},
+          {"text":"customer","from":12609,"to":12627},
+          {"text":"encarga.","from":12627,"to":12645},
+          {"text":"UNKNOWN","from":12645,"to":12662}
+        ],
+        [
+          {"text":"vale","from":12662,"to":12671},
+          {"text":"si","from":12671,"to":12675},
+          {"text":"lleva","from":12675,"to":12687},
+          {"text":"un","from":12687,"to":12691},
+          {"text":"plan.","from":12691,"to":12703},
+          {"text":"¿Y","from":12703,"to":12708},
+          {"text":"al","from":12708,"to":12712},
+          {"text":"pivotar?","from":12712,"to":12731}
+        ]
+      ]
+    },
+    {
+      "from": 12728,
+      "to": 12814,
+      "lines": [
+        [
+          {"text":"Mejor","from":12731,"to":12742},
+          {"text":"lo","from":12742,"to":12747},
+          {"text":"dedicado","from":12747,"to":12765},
+          {"text":"que","from":12765,"to":12772},
+          {"text":"lo","from":12772,"to":12777},
+          {"text":"compartido.","from":12777,"to":12802}
+        ]
+      ]
+    },
+    {
+      "from": 12814,
+      "to": 12948,
+      "lines": [
+        [
+          {"text":"Ahora","from":12817,"to":12828},
+          {"text":"sigue","from":12828,"to":12839},
+          {"text":"esos","from":12839,"to":12848},
+          {"text":"pivotes","from":12848,"to":12863},
+          {"text":"en","from":12863,"to":12867},
+          {"text":"la","from":12867,"to":12872},
+          {"text":"lección","from":12872,"to":12887}
+        ],
+        [
+          {"text":"de","from":12887,"to":12892},
+          {"text":"infraestructura:","from":12892,"to":12927},
+          {"text":"passive","from":12927,"to":12942},
+          {"text":"DNS,","from":12942,"to":12951}
+        ]
+      ]
+    },
+    {
+      "from": 12948,
+      "to": 13045,
+      "lines": [
+        [
+          {"text":"WHOIS","from":12951,"to":12962},
+          {"text":"y","from":12962,"to":12964},
+          {"text":"certificados.","from":12964,"to":12992},
+          {"text":"Nos","from":12992,"to":12999},
+          {"text":"vemos","from":12999,"to":13010},
+          {"text":"allí.","from":13010,"to":13021}
+        ]
+      ]
+    }
+  ],
+  "cues": [
+    {"scene":"s01-hook","id":"alert","frame":45},
+    {"scene":"s01-hook","id":"beacon","frame":308},
+    {"scene":"s01-hook","id":"four-q","frame":652},
+    {"scene":"s01-hook","id":"title","frame":962},
+    {"scene":"s02-axiom","id":"axiom","frame":1129},
+    {"scene":"s02-axiom","id":"v-adv","frame":1587},
+    {"scene":"s02-axiom","id":"v-cap","frame":1618},
+    {"scene":"s02-axiom","id":"v-infra","frame":1652},
+    {"scene":"s02-axiom","id":"v-vic","frame":1706},
+    {"scene":"s03-victim","id":"raw","frame":2323},
+    {"scene":"s03-victim","id":"drag-victim","frame":2509},
+    {"scene":"s03-victim","id":"drag-cap","frame":2726},
+    {"scene":"s03-victim","id":"pipe","frame":2935},
+    {"scene":"s04-infra","id":"domain","frame":3335},
+    {"scene":"s04-infra","id":"ip","frame":3461},
+    {"scene":"s04-infra","id":"cert","frame":3540},
+    {"scene":"s04-infra","id":"not-cap","frame":4014},
+    {"scene":"s05-adversary","id":"unknown","frame":4343},
+    {"scene":"s05-adversary","id":"pending","frame":5188},
+    {"scene":"s05-adversary","id":"operator","frame":5391},
+    {"scene":"s05-adversary","id":"customer","frame":5570},
+    {"scene":"s06-meta","id":"ts","frame":6249},
+    {"scene":"s06-meta","id":"phase","frame":6290},
+    {"scene":"s06-meta","id":"result","frame":6409},
+    {"scene":"s06-meta","id":"direction","frame":6467},
+    {"scene":"s06-meta","id":"method","frame":6567},
+    {"scene":"s06-meta","id":"resources","frame":6822},
+    {"scene":"s07-axes","id":"axis-sp","frame":7156},
+    {"scene":"s07-axes","id":"why-meridian","frame":7371},
+    {"scene":"s07-axes","id":"axis-tech","frame":7575},
+    {"scene":"s08-pivot","id":"loop","frame":8253},
+    {"scene":"s08-pivot","id":"v2c","frame":8378},
+    {"scene":"s08-pivot","id":"c2i","frame":8483},
+    {"scene":"s08-pivot","id":"i2c","frame":8630},
+    {"scene":"s08-pivot","id":"i2a","frame":8790},
+    {"scene":"s09-quality","id":"tenants","frame":9417},
+    {"scene":"s09-quality","id":"noise","frame":9830},
+    {"scene":"s09-quality","id":"cert-reuse","frame":9984},
+    {"scene":"s09-quality","id":"whois-pending","frame":10230},
+    {"scene":"s10-thread","id":"e9","frame":10487},
+    {"scene":"s10-thread","id":"chrono","frame":10948},
+    {"scene":"s10-thread","id":"thread","frame":11106},
+    {"scene":"s11-limits","id":"no-attrib","frame":11601},
+    {"scene":"s11-limits","id":"one-event","frame":11845},
+    {"scene":"s11-limits","id":"plan","frame":12123},
+    {"scene":"s12-recap","id":"recap","frame":12380},
+    {"scene":"s12-recap","id":"endcard","frame":12817}
+  ],
+  "exam": [
+    {"scene":"s02-axiom","from":1706,"durationInFrames":150,"objective":"Intrusion Analysis","text":"Vértices: Adversary, Capability, Infrastructure, Victim","badge":"GCTI"},
+    {"scene":"s03-victim","from":2726,"durationInFrames":150,"objective":"Intrusion Analysis","text":"Loader, exploit o técnica: Capability","badge":"GCTI"},
+    {"scene":"s04-infra","from":4014,"durationInFrames":150,"objective":"Intrusion Analysis","text":"Dominio, IP y servidor C2: Infrastructure","badge":"GCTI"},
+    {"scene":"s05-adversary","from":5570,"durationInFrames":150,"objective":"Intrusion Analysis","text":"Operator teclea; customer encarga y se beneficia","badge":"GCTI"},
+    {"scene":"s06-meta","from":6822,"durationInFrames":150,"objective":"Intrusion Analysis","text":"Hora, fase, resultado, dirección, método, recursos","badge":"GCTI"},
+    {"scene":"s07-axes","from":7156,"durationInFrames":150,"objective":"Intrusion Analysis","text":"Eje socio-político: Adversary y Victim","badge":"GCTI"},
+    {"scene":"s08-pivot","from":8790,"durationInFrames":150,"objective":"Intrusion Analysis","text":"Pivotar: cada vértice conocido ayuda a descubrir otros","badge":"GCTI"},
+    {"scene":"s09-quality","from":9984,"durationInFrames":150,"objective":"Intrusion Analysis","text":"Cert autofirmado reutilizado: pivote de oro","badge":"GCTI"},
+    {"scene":"s10-thread","from":11106,"durationInFrames":150,"objective":"Intrusion Analysis","text":"Eventos en orden de kill chain: activity thread","badge":"GCTI"}
+  ],
+  "think": [
+    {"scene":"s05-adversary","from":4999,"durationInFrames":65,"q":"¿Rellenas Adversary con lo que sospechas?"},
+    {"scene":"s09-quality","from":9727,"durationInFrames":65,"q":"¿Pivotas por la IP o por el certificado?"}
+  ],
+  "intercept": [
+    {"scene":"s02-axiom","from":1758,"durationInFrames":431,"adversary":"GLASS VIPER","text":"Dibuja tu diamante. Siempre te faltará una esquina: la mía."},
+    {"scene":"s05-adversary","from":4395,"durationInFrames":444,"adversary":"GLASS VIPER","text":"Llámame GLASS VIPER, si te consuela. Mi nombre no lo sabrás."},
+    {"scene":"s09-quality","from":9285,"durationInFrames":318,"adversary":"GLASS VIPER","text":"Sígueme por la IP. Tengo catorce mil vecinos deseando conocerte."}
+  ]
+}
