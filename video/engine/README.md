@@ -56,6 +56,13 @@ Todos los scripts eligen el vídeo con `--video <slug>` (o la variable `VIDEO`; 
 | `crf` | 23 | 27 | **18** | **18** |
 | Tamaño objetivo (`size`) | 15–25 MB (aviso > 30, error > 45) | 4–12 MB (aviso > 15, error > 25) | **sin objetivo** | **sin objetivo** |
 
+**Tarjetas de examen por pista** (`video.json` → `"track"`): en Security+, `exam.objective` es un objetivo
+SY0-701 («4.5») y la tarjeta dice «EXAMEN · SY0-701 · 4.5». GCTI no publica objetivos numerados, así que en
+GCTI `exam.objective` es uno de los cinco dominios del curso (`GCTI_DOMAINS` de `scripts/lib/profiles.mjs`,
+p. ej. «Intrusion Analysis»), la tarjeta dice «EXAMEN · GCTI · Intrusion Analysis» (campo `badge` de la
+tarjeta en `timeline.json`, que solo se escribe fuera de Security+) y la etiqueta de YouTube es el dominio tal
+cual, sin «objetivo».
+
 `host: 'youtube'` (los dos perfiles `-yt`) cambia dos cosas:
 
 - **La ruta del MP4** (`lib/paths.mjs` → `mp4PathFor`): en vez de `public/videos/<output>.mp4` (se commitea),
