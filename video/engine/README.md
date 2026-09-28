@@ -427,6 +427,28 @@ node video/engine/scripts/import-recording.mjs --video <slug> --file "video/engi
 node video/engine/scripts/audio.mjs --video <slug>
 ```
 
+## Masterización: voz y programa
+
+Dos pasos opcionales, en Python (venv de Chatterbox con `pip install pedalboard pyloudnorm librosa soundfile scipy`):
+
+- **`scripts/master_voice.py`**, sobre la grabación **antes** de `import-recording.mjs`: mono, paso alto a 70 Hz,
+  EQ correctiva (−1,5 dB a 300 Hz, +2 dB a 3,2 kHz), de-esser dinámico en 5–9 kHz (hasta −8 dB), un poco de
+  «aire» por encima de 8,5 kHz (excitador armónico suave) y compresión ligera (2,5:1), a −20 LUFS con limitador
+  a −3 dBFS. Toda la cadena conserva la longitud y los tiempos (filtros de fase cero, limitador sin latencia),
+  así que Whisper y los cortes no se mueven. **No reduce ruido**: una grabación con silencios digitales ya viene
+  sin ruido y una segunda pasada solo añade artefactos. `--ab` escribe un antes/después igualado en volumen.
+- **`scripts/master_mix.py`**, sobre el MP4 ya renderizado: añade un **ambiente** generado aquí (pad oscuro con un
+  acorde por capítulo, fundido en cada cambio, más un tono de sala muy bajo; unos 20–25 LU por debajo de la voz y
+  6 dB más bajo mientras alguien habla, según el timeline), lleva el programa a **−14 LUFS** (YouTube) y limita el
+  pico real a **−1 dBTP** (detección 4× sin latencia). El vídeo se copia tal cual; el audio sale en AAC 192 kbps.
+  `--bed-db` sube o baja el ambiente, `--no-bed` lo quita.
+
+```bash
+python video/engine/scripts/master_voice.py --in "video/engine/voices/<grabación>.wav" --out "video/engine/voices/<grabación> (master).wav" --ab video/<slug>/out/voz-antes-despues.wav
+# ... import-recording con el WAV masterizado, audio.mjs y render.mjs ...
+python video/engine/scripts/master_mix.py --video-in video/<slug>/out/<slug>.mp4 --timeline video/<slug>/src/timeline.json --out video/<slug>/out/<slug>-master.mp4
+```
+
 ## Requisitos
 
 - Node (el del repo; en Git Bash: `eval "$(fnm env)"`) y `npm install` hecho en la raíz del repo.
