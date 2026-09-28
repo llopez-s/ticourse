@@ -326,19 +326,22 @@ export function gainDb(measured, targetLufs, ceilingDbtp = -1) {
 /**
  * Args for the ffmpeg binary (runFfmpeg) that cut a clip from `source` — seeking in the input,
  * which on a WAV is sample-exact and skips decoding what comes before — splice its `ranges`
- * together when there is more than one (atrim + concat), apply `gain` dB and encode it.
+ * together when there is more than one (atrim + concat), apply `gain` dB and encode it. A `tempo`
+ * other than 1 speeds the clip up (or slows it down) with ffmpeg's pitch-preserving atempo.
  */
-export function clipArgs({ source, ranges, gain, out }) {
+export function clipArgs({ source, ranges, gain, out, tempo = 1 }) {
   const start = ranges[0].startMs;
   const end = ranges[ranges.length - 1].endMs;
   const sec = (ms) => String(ms / 1000);
+  // tempo 1 keeps the arguments byte-identical to before recordings had a tempo.
+  const level = tempo === 1 ? `volume=${gain}dB` : `volume=${gain}dB,atempo=${tempo}`;
   const filter =
     ranges.length === 1
-      ? ['-af', `volume=${gain}dB`]
+      ? ['-af', level]
       : [
           '-filter_complex',
           `${ranges.map((r, k) => `[0:a]atrim=start=${sec(r.startMs - start)}:end=${sec(r.endMs - start)},asetpts=PTS-STARTPTS[a${k}]`).join(';')};` +
-            `${ranges.map((_, k) => `[a${k}]`).join('')}concat=n=${ranges.length}:v=0:a=1,volume=${gain}dB[out]`,
+            `${ranges.map((_, k) => `[a${k}]`).join('')}concat=n=${ranges.length}:v=0:a=1,${level}[out]`,
           '-map', '[out]',
         ];
   return [
@@ -346,6 +349,30 @@ export function clipArgs({ source, ranges, gain, out }) {
     ...filter, '-ac', '1', '-ar', String(CLIP_SAMPLE_RATE),
     '-c:a', 'libmp3lame', '-b:a', `${CLIP_BITRATE_KBPS}k`, '-write_xing', '0', '-id3v2_version', '0', out,
   ];
+}
+
+/** Speed-ups a human recording keeps sounding natural with: from a touch slower to a quarter faster. */
+export const RECORDING_TEMPO = Object.freeze([0.8, 1.25]);
+
+/**
+ * Tempo and pause limit of an import: narration.json "recording": { "tempo", "maxPauseMs" }, each
+ * overridden by its command-line flag. Without either, tempo 1 and no pause limit — what every import
+ * did before the setting existed, so older videos re-import byte-identically.
+ */
+export function recordingSettings(narration, { tempo, maxPauseMs } = {}) {
+  const own = narration?.recording ?? {};
+  if (own === null || typeof own !== 'object' || Array.isArray(own)) throw new Error('narration.json "recording" must be an object');
+  const unknown = Object.keys(own).filter((k) => !['tempo', 'maxPauseMs'].includes(k));
+  if (unknown.length) throw new Error(`narration.json "recording": unknown key(s) ${unknown.join(', ')} (known: tempo, maxPauseMs)`);
+  const settings = { tempo: tempo ?? own.tempo ?? 1, maxPauseMs: maxPauseMs ?? own.maxPauseMs ?? null };
+  const [lo, hi] = RECORDING_TEMPO;
+  if (typeof settings.tempo !== 'number' || !(settings.tempo >= lo && settings.tempo <= hi)) {
+    throw new Error(`recording tempo must be a number between ${lo} and ${hi} (got ${JSON.stringify(settings.tempo)})`);
+  }
+  if (settings.maxPauseMs !== null && !(Number.isInteger(settings.maxPauseMs) && settings.maxPauseMs >= 100)) {
+    throw new Error(`recording maxPauseMs must be a whole number of milliseconds, at least 100 (got ${JSON.stringify(settings.maxPauseMs)})`);
+  }
+  return settings;
 }
 
 /**

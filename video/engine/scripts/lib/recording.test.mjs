@@ -18,10 +18,12 @@ import {
   parseLoudness,
   parseSilences,
   recordingRecord,
+  recordingSettings,
   selectSegments,
   similarity,
   unusedRanges,
 } from './recording.mjs';
+import { withTempo } from '../import-recording.mjs';
 
 /** ASR words from a list of [text, startMs, endMs]. */
 const W = (rows) => rows.map(([text, startMs, endMs]) => ({ text, startMs, endMs }));
@@ -275,6 +277,35 @@ test('clipArgs splices the kept ranges of a clip whose pauses were shortened', (
   assert.equal(args[args.indexOf('-map') + 1], '[out]');
   assert.ok(!args.includes('-af'));
   assert.equal(args.at(-1), 'a.mp3');
+});
+
+test('clipArgs speeds a clip up with atempo after the gain, and only when tempo is not 1', () => {
+  const one = clipArgs({ source: 'rec.wav', ranges: [{ startMs: 870, endMs: 2120 }], gain: 3.5, out: 'a.mp3', tempo: 1.08 });
+  assert.equal(one[one.indexOf('-af') + 1], 'volume=3.5dB,atempo=1.08');
+  const ranges = [{ startMs: 1000, endMs: 3150 }, { startMs: 3850, endMs: 6000 }];
+  const two = clipArgs({ source: 'rec.wav', ranges, gain: -1, out: 'a.mp3', tempo: 1.08 });
+  assert.ok(two[two.indexOf('-filter_complex') + 1].endsWith('concat=n=2:v=0:a=1,volume=-1dB,atempo=1.08[out]'));
+  assert.deepEqual(clipArgs({ source: 'rec.wav', ranges, gain: -1, out: 'a.mp3', tempo: 1 }), clipArgs({ source: 'rec.wav', ranges, gain: -1, out: 'a.mp3' }));
+});
+
+test('recordingSettings: narration.json "recording", overridden by the flags; none means tempo 1 and no pause limit', () => {
+  assert.deepEqual(recordingSettings({}), { tempo: 1, maxPauseMs: null });
+  assert.deepEqual(recordingSettings({ recording: { tempo: 1.08, maxPauseMs: 250 } }), { tempo: 1.08, maxPauseMs: 250 });
+  assert.deepEqual(recordingSettings({ recording: { tempo: 1.08, maxPauseMs: 250 } }, { tempo: 1, maxPauseMs: 400 }), { tempo: 1, maxPauseMs: 400 });
+  assert.throws(() => recordingSettings({ recording: { tempo: 1.5 } }), /between 0.8 and 1.25/);
+  assert.throws(() => recordingSettings({ recording: { maxPauseMs: 50 } }), /at least 100/);
+  assert.throws(() => recordingSettings({ recording: { speed: 1.1 } }), /unknown key\(s\) speed/);
+  assert.throws(() => recordingSettings({ recording: [] }), /must be an object/);
+});
+
+test('withTempo shrinks the duration and word timings of a sped-up clip, and leaves tempo 1 alone', () => {
+  const record = { provider: 'recording', durationMs: 2500, words: [{ text: 'hola', offsetMs: 0, durationMs: 500 }, { text: 'mundo', offsetMs: 1250, durationMs: 1000 }] };
+  assert.equal(withTempo(record, 1), record);
+  const fast = withTempo(record, 1.25);
+  assert.equal(fast.tempo, 1.25);
+  assert.equal(fast.durationMs, 2000);
+  assert.deepEqual(fast.words, [{ text: 'hola', offsetMs: 0, durationMs: 400 }, { text: 'mundo', offsetMs: 1000, durationMs: 800 }]);
+  assert.equal(fast.provider, 'recording');
 });
 
 test('ffmpegBinary finds the ffmpeg that Remotion ships, to run it without the CLI wrapper', () => {

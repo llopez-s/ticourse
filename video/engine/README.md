@@ -48,13 +48,22 @@ Todos los scripts eligen el vídeo con `--video <slug>` (o la variable `VIDEO`; 
 | --- | --- | --- | --- | --- |
 | Duración (`minTotalSec`–`maxTotalSec`) | 280–340 s | 140–200 s | **380–500 s** | **190–260 s** |
 | Capítulos (`maxChapters`) | 5 | 3 | 5 | 3 |
-| Tarjetas de examen (`examCards`) | 8–11 | 4–6 | 8–11 | 4–6 |
+| Tarjetas de examen (`examCards`) | 8–11 | 4–6 | **5–8** | **3–5** |
 | Pausas para pensar (`thinkPrompts`) | 2 | 1 | 2 | 1 |
 | Mensajes interceptados (`intercepts`) | 0 | 0 | **2–4, máx. 1/capítulo** | **1–2** |
-| Narración con chispa (`chispa`) | no | no | **sí** | **sí** |
+| Avisos de narración hablada (`chispa`) | no | no | **sí** | **sí** |
 | `host` | `repo` | `repo` | **`youtube`** | **`youtube`** |
 | `crf` | 23 | 27 | **18** | **18** |
 | Tamaño objetivo (`size`) | 15–25 MB (aviso > 30, error > 45) | 4–12 MB (aviso > 15, error > 25) | **sin objetivo** | **sin objetivo** |
+
+**Narración hablada.** Las reglas de escritura de los vídeos `-yt` (hablar como una persona, menos conceptos
+mejor contados, ritmo) viven en una sola copia: el plan `docs/superpowers/plans/2026-09-25-lesson-videos.md`
+§1, «Narración hablada». Con `chispa: true`, `analyzeNarration` (`scripts/lib/narration.mjs`) avisa —nunca
+falla— de lo que se detecta sin leer: la misma emoción en dos segmentos seguidos, `;` en la voz, más de un
+«:» de conector en un segmento o «:» en más de un tercio de ellos, un dominio/IP/equipo/hash/correo/fichero
+leído en voz alta (`IDENTIFIER_PATTERNS`) y más de `OPENER_MAX` (3) preguntas que empiezan igual («¿Y …?»).
+Lo demás (acotaciones, conceptos usados antes de explicarlos, analogías amontonadas) lo mira el revisor de
+naturalidad del recetario.
 
 **Tarjetas de examen por pista** (`video.json` → `"track"`): en Security+, `exam.objective` es un objetivo
 SY0-701 («4.5») y la tarjeta dice «EXAMEN · SY0-701 · 4.5». GCTI no publica objetivos numerados, así que en
@@ -412,6 +421,13 @@ git) y `scripts/import-recording.mjs` lo convierte en los mismos clips que escri
 4. **Informa** en `out/recording/<nombre>/report-<archivo>.md`: la coincidencia de cada frase («revisar» por debajo de
    0,9: sobran o faltan palabras, escúchala), las que no encontró (sin clip: `build-timeline` las nombrará) y
    los trozos de la grabación que no usó.
+
+**Ritmo** (`narration.json` → `"recording": { "tempo": 1.08, "maxPauseMs": 250 }`, o los flags `--tempo` y
+`--max-pause`, que mandan sobre él): `maxPauseMs` acorta a ese valor cada pausa dentro de una frase, y
+`tempo` acelera cada clip con `atempo` (conserva el tono; 0,8–1,25) y escala con él los tiempos de palabra
+(`withTempo`, que reutiliza `scaleTimings` de Chatterbox). Sin la clave ni los flags, tempo 1 y sin límite:
+los vídeos ya grabados se reimportan exactamente igual. Al grabar, mejor a ritmo de conversación, sin la
+pausa de lectura entre frases: el corte ya deja aire.
 
 Una frase que salga mal se regraba: se graban solo esas frases, en el orden del guion, en otro archivo, y se
 importa con `--only <ids>`; los demás clips no se tocan. No se pueden quitar palabras de en medio de un clip

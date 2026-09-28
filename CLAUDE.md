@@ -197,7 +197,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `docs/superpowers/plans/2026-09-25-lesson-videos.md`. The old EDR video (`video/edr/`, a separate,
   older pipeline) was replaced in sp4m7 by V1 «Defensa en capas» (YouTube `GfjE0lP2H0s`) on 2026-09-28
   and its `public/videos/edr-blue-team.*` files retired; `video/edr/` stays until P2. **New videos (V1+) use the `-yt` profiles**:
-  livelier "narración con chispa" writing, intercepted adversary messages, `scripts/voice-plan.mjs`
+  livelier writing (now «narración hablada», see below), intercepted adversary messages, `scripts/voice-plan.mjs`
   (picks ElevenLabs vs. Chatterbox from the remaining quota) and `scripts/youtube-meta.mjs` (writes
   the title/description/tags for upload) — the MP4 renders to `video/<slug>/out/` (git-ignored) and is
   published to YouTube instead of being committed to `public/videos/`; the app embeds it via a
@@ -216,6 +216,15 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=safe.directory GIT_CONFIG_VALUE_0=*` (its git-ignore check
   otherwise trips on "dubious ownership"), and `npm ci` there first — the scripts resolve Remotion and
   ffmpeg from the worktree's own `node_modules`.
+  **From V4 on, scripts follow «Narración hablada»** (2026-09-28; rules only in the video plan §1, design
+  `docs/superpowers/specs/2026-09-28-spoken-narration-design.md`), which replaces «con chispa» — V1 and V3
+  still sounded read aloud, and they are **not** redone. Talk like a person (no stage directions, spoken
+  connectors instead of colons, idea before its name, repeat what matters, never spell out domains/hosts/
+  hashes — they go on screen), **4–6 key concepts per principal** (2–3 per capsule; `-yt` exam cards now 5–8 /
+  3–5), `wordBudget` at 2.7 words/s, and a read-only **naturalness reviewer** next to the accuracy one. The
+  `-yt` validator warns on colon connectors, spelled identifiers and «¿Y …?» formulas (it no longer asks for
+  a question per scene). Own recordings can be sped up: `narration.json` → `"recording": { "tempo": 1.08,
+  "maxPauseMs": 250 }` (provisional values; absent = tempo 1, older videos re-import unchanged).
 - **Remotion on this machine:** when the CPU is busy, the CLI's bundling blocks the event loop and
   Chrome's connection times out after 25 s. `render.mjs`/`qa-frames.mjs` therefore bundle first;
   for ad-hoc renders do `remotion bundle` then render from the bundle dir. In the Bash tool,

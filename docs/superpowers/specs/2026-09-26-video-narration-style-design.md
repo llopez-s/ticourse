@@ -26,6 +26,9 @@ Este diseño cambia **cómo se hacen los vídeos nuevos** (V1 EDR rehecho, V3, V
 
 ## 2. Guía de narración
 
+> **Sustituida el 2026-09-28** por `2026-09-28-spoken-narration-design.md` («narración hablada»), cuyas reglas
+> viven solo en el plan de vídeos §1. Esta sección queda como registro de cómo se escribieron V1 y V3.
+
 Estas reglas pasan a la sección «Estilo común» del plan de vídeos
 (`docs/superpowers/plans/2026-09-25-lesson-videos.md` §1) y al README del motor, para que las hereden todos los
 vídeos.
