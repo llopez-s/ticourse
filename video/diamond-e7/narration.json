@@ -3,6 +3,11 @@
   "rate": "+0%",
   "pitch": "+0Hz",
   "lexicon": "lexicon.chatterbox.json",
+  "adversaryVoice": { "voice": "sapi/Microsoft Pablo", "rate": 0, "fx": "machine" },
+  "sfx": {
+    "alert": "alarm", "beacon": "ping2", "drag-victim": "check", "pipe": "check", "domain": "check",
+    "unknown": "block", "noise": "block", "e9": "alarm", "plan": "lock"
+  },
   "segments": [
     {
       "id": "s01-01",
