@@ -194,8 +194,9 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   (bundles first, then MP4 + poster, ffprobe/A-V-sync checks). Rendering is local only (not in CI).
   Voice clips live in `video/<slug>/public/` (Remotion `--public-dir`), never in the app's `public/`.
   The video content plan (ranking, batches, briefs) is
-  `docs/superpowers/plans/2026-09-25-lesson-videos.md`. The EDR video (sp4m7, `video/edr/`) is a
-  separate, older pipeline that V1 of the plan replaces. **New videos (V1+) use the `-yt` profiles**:
+  `docs/superpowers/plans/2026-09-25-lesson-videos.md`. The old EDR video (`video/edr/`, a separate,
+  older pipeline) was replaced in sp4m7 by V1 «Defensa en capas» (YouTube `GfjE0lP2H0s`) on 2026-09-28
+  and its `public/videos/edr-blue-team.*` files retired; `video/edr/` stays until P2. **New videos (V1+) use the `-yt` profiles**:
   livelier "narración con chispa" writing, intercepted adversary messages, `scripts/voice-plan.mjs`
   (picks ElevenLabs vs. Chatterbox from the remaining quota) and `scripts/youtube-meta.mjs` (writes
   the title/description/tags for upload) — the MP4 renders to `video/<slug>/out/` (git-ignored) and is
