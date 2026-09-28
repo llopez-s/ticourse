@@ -43,6 +43,28 @@ export function bundleVideo() {
   return { dir, remove: () => rmSync(dir, { recursive: true, force: true }) };
 }
 
+/**
+ * The ffmpeg binary Remotion ships (node_modules/@remotion/compositor-<platform>/ffmpeg). Calling
+ * it directly skips starting the Remotion CLI in Node for every call, which on a busy CPU costs
+ * minutes when a script runs ffmpeg dozens of times.
+ */
+export function ffmpegBinary() {
+  const dir = path.join(REPO_ROOT, 'node_modules', '@remotion');
+  const exe = process.platform === 'win32' ? 'ffmpeg.exe' : 'ffmpeg';
+  for (const name of existsSync(dir) ? readdirSync(dir) : []) {
+    const candidate = path.join(dir, name, exe);
+    if (name.startsWith('compositor-') && existsSync(candidate)) return candidate;
+  }
+  throw new Error(`Remotion's ffmpeg not found under ${dir} — run "npm install" in ${REPO_ROOT}`);
+}
+
+/** Synchronous call to ffmpegBinary() with captured output. `args` start after the program name. */
+export function runFfmpeg(args) {
+  const res = spawnSync(ffmpegBinary(), args, { cwd: REPO_ROOT, encoding: 'utf8', maxBuffer: 256 * 1024 * 1024, windowsHide: true });
+  if (res.error) throw res.error;
+  return { status: res.status, stdout: res.stdout ?? '', stderr: res.stderr ?? '' };
+}
+
 /** Asynchronous CLI call with captured output (used for parallel ffprobe). */
 export function runRemotionAsync(args) {
   assertCli();

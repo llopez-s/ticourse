@@ -177,6 +177,8 @@ El proveedor lo decide `narration.json` → `"voice"`:
 - `"chatterbox/<paquete>/<voz>"` (local, gratis, sin cuota): `scripts/tts-chatterbox.mjs`. Ver
   [Voz: Chatterbox](#voz-chatterbox).
 - `"es-ES-ElviraNeural"` (edge-tts, gratis, sin clave): `prepare-tts.mjs` + `tts.py` con `lexicon.json`.
+- `"recording/<nombre>"`: la narradora lee el guion entero con su micrófono y `import-recording.mjs` lo
+  corta en clips. Ver [Voz: grabación propia](#voz-grabación-propia).
 
 **Clave de ElevenLabs:** `ELEVENLABS_API_KEY` en `.env.local` en la raíz del repo (ignorado por git; el
 script lo lee solo y nunca lo imprime). Basta una clave con permiso de *Text to Speech* y lectura de voces.
@@ -294,6 +296,41 @@ por git. Así `HF_HOME` no apunta a C:.
 audio, así que una cápsula lleva de 30 a 60 minutos. Todo va en un solo proceso que carga los modelos una
 vez; conviene lanzarlo en segundo plano con el equipo descargado.
 
+## Voz: grabación propia
+
+La narradora graba el guion entero de una vez (un WAV, por ejemplo en `video/engine/voices/`, ignorada por
+git) y `scripts/import-recording.mjs` lo convierte en los mismos clips que escriben los proveedores de TTS
+(`tts/<id>.json` + `public/voice/<id>.mp3`) para la voz `"recording/<nombre>"`:
+
+1. **Transcribe** la grabación con marcas de tiempo por palabra (`scripts/recording_asr.py`, faster-whisper
+   `small` en el venv de Chatterbox). El resultado se guarda en `out/recording/<nombre>/asr-<archivo>.json` y se
+   reutiliza mientras no cambien el archivo (hash) ni la pista que se le da a Whisper (la primera frase del guion,
+   el adversario y las siglas del léxico); `--force-asr` lo rehace. Tarda ~7–10 min por 12 min de audio en CPU.
+2. **Localiza** cada frase del guion, en orden (`lib/recording.mjs`). Compara con el texto mostrado y con el
+   hablado de `[mostrado|hablado]`, con los números en palabras, así que tolera lo que Whisper escribe mal
+   («de Mark» por DMARC, «4.00 y 12.00»). Si una frase se leyó varias veces, **se queda con la última toma**;
+   lo que no está en el guion (tarjetas de examen, mensajes interceptados, arranques en falso) se descarta.
+3. **Corta** cada clip en el silencio más cercano a sus palabras (o, si se habla de corrido, a medio camino
+   de la palabra vecina), aplica **una sola ganancia** a toda la grabación (hasta la sonoridad de `--match
+   <clip>`, o `--lufs`, sin pasar de −1 dBTP) y codifica como Chatterbox (24 kHz mono, MP3 CBR 96 kbps).
+4. **Informa** en `out/recording/<nombre>/report-<archivo>.md`: la coincidencia de cada frase («revisar» por debajo de
+   0,9: sobran o faltan palabras, escúchala), las que no encontró (sin clip: `build-timeline` las nombrará) y
+   los trozos de la grabación que no usó.
+
+Una frase que salga mal se regraba: se graban solo esas frases, en el orden del guion, en otro archivo, y se
+importa con `--only <ids>`; los demás clips no se tocan. No se pueden quitar palabras de en medio de un clip
+(un rótulo leído en voz alta dentro de una frase se queda). Las animaciones que se disparan en una
+palabra usan los tiempos de Whisper, que pueden desviarse ~0,2 s.
+
+```bash
+# Clips en las carpetas del vídeo (o --tts-dir/--voice-dir para dejarlos aparte) + informe
+node video/engine/scripts/import-recording.mjs --video <slug> --file "video/engine/voices/<grabación>.wav" --name <nombre> --match <clip de referencia>.mp3
+# Sustituir solo unas frases regrabadas (mismas carpetas y referencia de volumen)
+node video/engine/scripts/import-recording.mjs --video <slug> --file "video/engine/voices/<regrabación>.wav" --name <nombre> --only s02-03,s04-01 --match <clip de referencia>.mp3
+# Con "voice": "recording/<nombre>" en narration.json, audio.mjs solo reconstruye el timeline
+node video/engine/scripts/audio.mjs --video <slug>
+```
+
 ## Requisitos
 
 - Node (el del repo; en Git Bash: `eval "$(fnm env)"`) y `npm install` hecho en la raíz del repo.
@@ -385,11 +422,14 @@ tarjeta de examen y pausa) e `index.json` con el mapa archivo → fotograma → 
 ## Pruebas
 
 `scripts/test_*.py` (unittest, sin dependencias: `python -m unittest discover -s video/engine/scripts -p "test_*.py"`)
-cubre la normalización y la puntuación de guion del worker de Chatterbox.
+cubre la normalización y la puntuación de guion del worker de Chatterbox, y cómo `recording_asr.py` aplana
+las palabras de Whisper.
 
 `scripts/lib/*.test.mjs` (node:test, sin dependencias): marcas y léxico, alineación con límites de palabra
 que faltan o sobran (incluidos límites reales grabados de edge-tts en `fixtures/edge-boundaries.json`),
-paginación de subtítulos, receta de tiempos y validaciones del timeline. La prueba de modo audio usa
+paginación de subtítulos, receta de tiempos y validaciones del timeline. `recording.test.mjs` cubre la
+grabación propia: localizar frases (última toma, arranques en falso, audio fuera del guion, números),
+cortes en silencios, ganancia e informe. La prueba de modo audio usa
 `out/test/tts2/`; si no existe se omite. Para generarla:
 
 ```bash

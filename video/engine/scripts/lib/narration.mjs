@@ -39,6 +39,8 @@ export const EDGE_VOICE = /^[a-z]{2}-[A-Z]{2}-\w+Neural$/;
 export const ELEVEN_VOICE = /^elevenlabs\/[a-z0-9_]+\/[A-Za-z0-9]{10,40}$/;
 /** Local Chatterbox model: "chatterbox/<pack>/<voice>" (pack es-es | mtl; voice default | a clip in engine/voices/). */
 export const CHATTERBOX_VOICE = /^chatterbox\/(es-es|mtl)\/[a-z0-9][a-z0-9_-]*$/;
+/** A narrator's own recording, cut into clips by import-recording.mjs: "recording/<name>". */
+export const RECORDING_VOICE = /^recording\/[a-z0-9][a-z0-9_-]*$/;
 
 /** True when the narration is voiced with ElevenLabs (voice "elevenlabs/<model>/<voice_id>"). */
 export function isElevenLabsVoice(voice) {
@@ -48,6 +50,11 @@ export function isElevenLabsVoice(voice) {
 /** True when the narration is voiced locally with Chatterbox (voice "chatterbox/<pack>/<voice>"). */
 export function isChatterboxVoice(voice) {
   return typeof voice === 'string' && CHATTERBOX_VOICE.test(voice);
+}
+
+/** True when the narration is a human recording (voice "recording/<name>"). */
+export function isRecordingVoice(voice) {
+  return typeof voice === 'string' && RECORDING_VOICE.test(voice);
 }
 
 /**
@@ -142,9 +149,12 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
     return { errors, warnings, voice: null, scenes: [], segments: [] };
   }
   const voice = { voice: narration.voice, rate: narration.rate ?? '+0%', pitch: narration.pitch ?? '+0Hz' };
-  if (typeof voice.voice !== 'string' || !(EDGE_VOICE.test(voice.voice) || ELEVEN_VOICE.test(voice.voice) || CHATTERBOX_VOICE.test(voice.voice))) {
+  if (
+    typeof voice.voice !== 'string' ||
+    !(EDGE_VOICE.test(voice.voice) || ELEVEN_VOICE.test(voice.voice) || CHATTERBOX_VOICE.test(voice.voice) || RECORDING_VOICE.test(voice.voice))
+  ) {
     errors.push(
-      `narration.voice ${JSON.stringify(voice.voice)} must be an edge-tts voice ("es-ES-ElviraNeural"), "elevenlabs/<model_id>/<voice_id>" or "chatterbox/<es-es|mtl>/<voice>"`,
+      `narration.voice ${JSON.stringify(voice.voice)} must be an edge-tts voice ("es-ES-ElviraNeural"), "elevenlabs/<model_id>/<voice_id>", "chatterbox/<es-es|mtl>/<voice>" or "recording/<name>"`,
     );
   }
   if (narration.elevenlabs !== undefined && !isObj(narration.elevenlabs)) errors.push('narration.elevenlabs must be an object of voice settings');
