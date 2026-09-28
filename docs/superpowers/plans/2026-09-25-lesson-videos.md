@@ -390,6 +390,12 @@ Las exam cards se listan en el orden de las escenas:
   - «¿Pivotas por la IP o por el certificado?» (s09)
 
 ### V4 · s3m3 · Principal · «Pivotar por la infraestructura: pDNS, WHOIS y certificados»
+
+> **Producido el 2026-09-28 con «Narración hablada» (§1)**, que recortó este brief: 11 escenas, 7 tarjetas y 5
+> conceptos clave (sin la escena del presupuesto del Lab 3A; lote y bloqueo previo en dos escenas). La versión
+> vigente es `video/pivot-infra/storyboard.json`; qué se quedó fuera, en `video/pivot-infra/out/script-notes.md`.
+> La tabla de abajo es el brief original.
+
 - **Slug:** `pivot-infra`.
 - **Duración:** escenas ~294 s; render ≈ 314 s.
 - **Inserción:** en `src/data/s3.ts`, después del check de los 14.000 dominios (~`:627`) y antes del callout de campaña del Lab 3A. El orden queda vídeo, laboratorio.
