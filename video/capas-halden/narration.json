@@ -1,8 +1,15 @@
 {
-  "voice": "chatterbox/es-es/default",
+  "voice": "recording/lidia",
   "rate": "+0%",
   "pitch": "+0Hz",
   "lexicon": "lexicon.chatterbox.json",
+  "adversaryVoice": { "voice": "sapi/Microsoft Pablo", "rate": 0, "fx": "machine" },
+  "sfx": {
+    "mail-in": "mail", "spf-pass": "check", "dkim-pass": "check", "dmarc-fail": "error",
+    "reject": "block", "blocked": "block", "implicit": "block", "alert": "alarm",
+    "inline": "block", "hits-2": "ping2", "isolate": "lock", "dlp": "block"
+  },
+  "chatterbox": { "temperature": 0.3 },
   "segments": [
     {
       "id": "s01-01",

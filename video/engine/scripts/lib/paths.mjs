@@ -14,6 +14,9 @@ export const ENGINE_DIR = path.resolve(SCRIPTS_DIR, '..');
 export const VIDEOS_DIR = path.resolve(ENGINE_DIR, '..');
 export const REPO_ROOT = path.resolve(VIDEOS_DIR, '..');
 
+/** The generated sound-effect library (scripts/sfx_generate.py): <name>.mp3 + sfx.json. */
+export const SFX_DIR = path.join(ENGINE_DIR, 'sfx');
+
 export const DEFAULT_VIDEO = 'siem';
 
 /** Slug named by --video / --video=… in argv, else $VIDEO, else DEFAULT_VIDEO. */
@@ -80,6 +83,7 @@ export function videoPaths(slug) {
     entry: path.join(dir, 'src', 'index.ts'),
     publicDir: path.join(dir, 'public'),
     voiceDir: path.join(dir, 'public', 'voice'),
+    publicSfxDir: path.join(dir, 'public', 'sfx'),
     ttsDir: path.join(dir, 'tts'),
     outDir: path.join(dir, 'out'),
     ttsInput: path.join(dir, 'out', 'tts-input.json'),

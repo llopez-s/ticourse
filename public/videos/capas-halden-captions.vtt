@@ -1,0 +1,528 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:05.767
+Autoridad Portuaria de Halden,
+3 de septiembre, por la tarde.
+
+2
+00:00:05.767 --> 00:00:10.467
+Por la puerta del correo entra
+un mensaje, como un contenedor más.
+
+3
+00:00:10.600 --> 00:00:12.067
+¿Quién lo detiene?
+
+4
+00:00:12.067 --> 00:00:18.100
+En el mapa se encienden siete capas,
+y cada una contesta una pregunta distinta.
+
+5
+00:00:18.100 --> 00:00:25.300
+Spoiler: ninguna lo para sola.
+Por eso esto se llama defensa en capas.
+
+6
+00:00:25.667 --> 00:00:30.967
+Enfrente, SILENT PAGER,
+que cuenta con que tu SOC duerma.
+
+7
+00:00:30.967 --> 00:00:33.800
+Hoy sigues su ataque capa por capa.
+
+8
+00:00:35.167 --> 00:00:37.500
+Sala de control del muelle 3.
+
+9
+00:00:37.500 --> 00:00:41.767
+Lucía, de Operaciones, recibe
+por correo los turnos de atraque.
+
+10
+00:00:41.767 --> 00:00:45.933
+Remite haldenport.example: de casa.
+
+11
+00:00:46.067 --> 00:00:48.033
+¿Seguro que es de casa?
+
+12
+00:00:48.033 --> 00:00:54.367
+Abres las cabeceras: la etiqueta
+de envío que casi nadie mira.
+
+13
+00:00:54.367 --> 00:00:57.800
+SPF da el aprobado. DKIM, también.
+
+14
+00:00:57.800 --> 00:01:03.967
+Pero lo que validan es hdn-mailer.example,
+el dominio del atacante.
+
+15
+00:01:06.200 --> 00:01:08.367
+Falló la alineación.
+
+16
+00:01:08.367 --> 00:01:12.733
+DMARC compara el From que ve
+Lucía, haldenport.example,
+
+17
+00:01:12.733 --> 00:01:17.000
+con el dominio validado.
+No coinciden: suspenso.
+
+18
+00:01:17.100 --> 00:01:23.133
+Dos aprobados y un suspenso, y el correo
+está en su bandeja. ¿Cómo ha entrado?
+
+19
+00:01:24.367 --> 00:01:28.167
+SPF es la lista de mensajeros autorizados:
+
+20
+00:01:28.167 --> 00:01:33.333
+un registro DNS con las IP que pueden
+enviar en nombre de un dominio.
+
+21
+00:01:33.333 --> 00:01:36.333
+DKIM es el sello de lacre de un dominio.
+
+22
+00:01:36.333 --> 00:01:41.533
+Su firma dice qué dominio firmó
+y que el mensaje no cambió después.
+
+23
+00:01:41.533 --> 00:01:45.100
+Ninguno de los dos exige
+que ese dominio sea el del From.
+
+24
+00:01:45.100 --> 00:01:52.500
+DMARC sí: exige que coincida
+con el dominio que validó SPF o DKIM.
+
+25
+00:01:58.533 --> 00:02:00.967
+Duele, pero acierta.
+
+26
+00:02:00.967 --> 00:02:07.833
+Tu DNS publica p=none: DMARC solo
+informa, y el correo entra igual.
+
+27
+00:02:08.167 --> 00:02:10.067
+¿Para qué sirve eso?
+
+28
+00:02:10.067 --> 00:02:14.767
+Para los informes: quién envía
+en tu nombre, antes de apretar.
+
+29
+00:02:14.767 --> 00:02:19.700
+Cuando lo legítimo ya pasa, subes
+a quarantine: a spam o a cuarentena.
+
+30
+00:02:19.700 --> 00:02:23.733
+Y luego a reject: rechazado en la puerta.
+
+31
+00:02:23.733 --> 00:02:32.000
+¿Y el email gateway? Filtra spam, malware
+y enlaces: su terreno es el contenido.
+
+32
+00:02:32.000 --> 00:02:35.533
+La identidad del dominio la decide DMARC.
+
+33
+00:02:36.467 --> 00:02:40.500
+Lucía abre el adjunto
+y habilita el contenido.
+
+34
+00:02:40.500 --> 00:02:43.567
+La macro acaba lanzando PowerShell.
+
+35
+00:02:43.633 --> 00:02:45.900
+¿Y qué es lo primero que hace?
+
+36
+00:02:45.900 --> 00:02:52.033
+Mirar la guía: pregunta al DNS
+por cdn-halden-sync.example.
+
+37
+00:02:52.033 --> 00:02:59.167
+Un dominio registrado hace dos días.
+La reputación lo marca como sospechoso.
+
+38
+00:02:59.300 --> 00:03:03.067
+El DNS filtering no le
+devuelve la dirección.
+
+39
+00:03:03.067 --> 00:03:07.333
+Sin dirección, la conexión
+ni siquiera se intenta.
+
+40
+00:03:07.467 --> 00:03:14.733
+Pero el malware trae un plan B:
+una IP fija, por el 443.
+
+41
+00:03:14.733 --> 00:03:19.100
+Sin consulta DNS,
+este filtro no se entera.
+
+42
+00:03:20.233 --> 00:03:22.533
+Siguiente capa: el firewall.
+
+43
+00:03:22.533 --> 00:03:27.700
+Su regla 7 prohíbe que los equipos
+de Operaciones salgan directos a Internet.
+
+44
+00:03:27.700 --> 00:03:34.033
+Y aun así, la conexión con el C2,
+el mando y control, sale tan tranquila.
+
+45
+00:03:35.900 --> 00:03:40.633
+El firewall lee de arriba abajo,
+como un portero con su lista.
+
+46
+00:03:40.633 --> 00:03:45.100
+El paquete baja y gana
+la primera regla que encaja.
+
+47
+00:03:45.233 --> 00:03:52.633
+La regla 3, resto de una migración,
+deja pasar todo por el 443.
+
+48
+00:03:52.633 --> 00:03:54.833
+La siete ni se llega a leer.
+
+49
+00:03:55.200 --> 00:03:57.433
+¿Y lo que no encaja en ninguna?
+
+50
+00:03:57.433 --> 00:04:02.467
+Cae en el implicit deny:
+lo que no se permite, se bloquea.
+
+51
+00:04:02.567 --> 00:04:07.933
+Se retira la regla 3 sobrante
+y se añade un deny final con log.
+
+52
+00:04:07.933 --> 00:04:12.400
+Ese deny no cambia el resultado:
+registra lo descartado.
+
+53
+00:04:13.633 --> 00:04:18.400
+Tras el firewall, un sensor escucha
+en un tap: recibe una copia del tráfico,
+
+54
+00:04:18.400 --> 00:04:19.967
+como una cámara.
+
+55
+00:04:19.967 --> 00:04:24.467
+Una firma reconoce el patrón de red
+de esa llamada. Salta la alerta.
+
+56
+00:04:24.467 --> 00:04:27.500
+Y el paquete sigue su camino.
+
+57
+00:04:34.033 --> 00:04:40.233
+No podía: es un IDS. Mira una copia,
+así que alerta, pero no bloquea.
+
+58
+00:04:40.400 --> 00:04:44.133
+Para bloquear, un IPS en línea:
+descarta el paquete,
+
+59
+00:04:44.133 --> 00:04:47.767
+aunque un falso positivo
+cortaría tráfico legítimo.
+
+60
+00:04:47.867 --> 00:04:49.733
+¿Y lo nunca visto?
+
+61
+00:04:49.733 --> 00:04:52.167
+Para eso está la detección por anomalías:
+
+62
+00:04:52.167 --> 00:04:55.767
+aprende lo normal y avisa
+si algo se desvía.
+
+63
+00:04:57.133 --> 00:05:03.967
+Abres la consola del EDR y ves el árbol
+de procesos del portátil de Lucía.
+
+64
+00:05:03.967 --> 00:05:08.300
+¿Desde cuándo Word tiene hijos?
+
+65
+00:05:08.300 --> 00:05:14.567
+Este abre una consola, y de ella sale
+PowerShell con un comando codificado.
+
+66
+00:05:14.900 --> 00:05:19.333
+Luego, una conexión al 443.
+
+67
+00:05:19.333 --> 00:05:24.767
+El documento es nuevo y ningún antivirus
+lo conoce: lo delata su comportamiento.
+
+68
+00:05:24.900 --> 00:05:30.300
+¿Basta para condenar? No:
+una alerta es sospecha, no prueba.
+
+69
+00:05:30.300 --> 00:05:37.333
+El triaje pide contexto: usuaria, hora,
+ruta y firma digital del ejecutable.
+
+70
+00:05:37.333 --> 00:05:42.000
+Lucía abrió el adjunto, sí,
+pero no esperaba ninguna consola.
+
+71
+00:05:42.000 --> 00:05:44.000
+La sospecha crece.
+
+72
+00:05:45.367 --> 00:05:50.267
+¿Es solo este portátil? Antes
+de limpiar nada, necesitas el alcance.
+
+73
+00:05:50.267 --> 00:05:52.033
+Buscas el hash del documento,
+
+74
+00:05:52.033 --> 00:05:55.900
+el dominio y el patrón de procesos
+en todos los equipos con agente.
+
+75
+00:05:56.000 --> 00:05:58.133
+Dos aciertos más.
+
+76
+00:05:58.133 --> 00:06:06.600
+Uno es ADM-WS-02, una estación
+de administración: donde viven las llaves.
+
+77
+00:06:06.667 --> 00:06:08.933
+Cada capa tenía una pieza del puzle.
+
+78
+00:06:08.933 --> 00:06:14.233
+El XDR las une, del correo
+al endpoint, en un solo incidente.
+
+79
+00:06:14.333 --> 00:06:21.233
+Por separado, cada aviso parecía poca
+cosa. Juntos, cuentan el ataque entero.
+
+80
+00:06:27.267 --> 00:06:31.433
+Ni hablar. No lo apagas:
+lo aíslas desde el EDR.
+
+81
+00:06:31.633 --> 00:06:34.567
+Solo queda abierto
+el canal con la consola.
+
+82
+00:06:34.567 --> 00:06:40.367
+Como un barco en cuarentena: nadie
+sube ni baja, pero la radio funciona.
+
+83
+00:06:40.500 --> 00:06:42.267
+¿Por qué encendido?
+
+84
+00:06:42.267 --> 00:06:44.600
+Porque la RAM es evidencia: procesos,
+
+85
+00:06:44.600 --> 00:06:47.867
+conexiones y claves
+que se pierden al apagar.
+
+86
+00:06:47.867 --> 00:06:51.367
+Todo queda documentado:
+motivo, hora y responsable.
+
+87
+00:06:51.367 --> 00:06:57.833
+Y así pasará la noche,
+hasta que lo incauten a las 04:12.
+
+88
+00:06:57.867 --> 00:07:03.100
+Lo que aún nadie sabía: antes de aislarlo,
+
+89
+00:07:03.100 --> 00:07:08.667
+ya había salido la credencial de una
+cuenta de servicio. Aislar no la invalida.
+
+90
+00:07:10.267 --> 00:07:13.700
+Quedan cuatro preguntas.
+¿Alguien ha tocado este archivo?
+
+91
+00:07:13.700 --> 00:07:17.233
+FIM guarda un hash
+de referencia y avisa si cambia:
+
+92
+00:07:17.233 --> 00:07:20.767
+como cotejar la carga con su manifiesto.
+
+93
+00:07:20.867 --> 00:07:23.067
+¿Se nos va información?
+
+94
+00:07:23.067 --> 00:07:29.000
+DLP ve el contrato de practicaje camino
+de un webmail personal, y lo bloquea.
+
+95
+00:07:29.000 --> 00:07:30.900
+¿Debería ese equipo estar en la red?
+
+96
+00:07:30.900 --> 00:07:33.800
+NAC revisa identidad y estado,
+
+97
+00:07:33.800 --> 00:07:39.033
+y el portátil del contratista
+acaba en una VLAN de cuarentena.
+
+98
+00:07:39.033 --> 00:07:42.900
+¿Y esa cuenta que descarga
+en masa a las 03:00?
+
+99
+00:07:42.900 --> 00:07:48.167
+UBA conoce sus costumbres,
+y esa no es una de ellas.
+
+100
+00:07:49.633 --> 00:07:54.200
+Ahora, lo que no ven. El EDR solo
+ve los equipos con su agente.
+
+101
+00:07:54.200 --> 00:07:57.033
+Uno sin agente, para él, no existe.
+
+102
+00:07:57.033 --> 00:08:00.533
+¿Y un dominio con un cero en vez de una o?
+
+103
+00:08:00.533 --> 00:08:04.367
+DMARC protege tu dominio,
+no sus imitaciones.
+
+104
+00:08:04.367 --> 00:08:21.233
+¿Y telnet, LDAP o SNMPv2c?
+Se sustituyen por SSH, LDAPS y SNMPv3.
+
+105
+00:08:21.233 --> 00:08:22.367
+Restringirlos por IP no basta:
+siguen viajando en claro.
+
+106
+00:08:22.367 --> 00:08:27.667
+Cada capa tiene un punto ciego.
+Por eso se apilan, una tras otra.
+
+107
+00:08:28.900 --> 00:08:33.267
+SILENT PAGER contaba
+con que tu SOC durmiera.
+
+108
+00:08:33.267 --> 00:08:38.000
+Hoy, capa a capa,
+cada control contestó su pregunta.
+
+109
+00:08:38.067 --> 00:08:44.100
+Para el examen: ¿falsifican tu dominio?
+DMARC en reject. ¿Detectó y no bloqueó?
+
+110
+00:08:44.100 --> 00:08:49.267
+Un IDS. ¿Ninguna regla
+lo permite? Implicit deny.
+
+111
+00:08:49.267 --> 00:08:53.400
+Y esa credencial de servicio
+volverá de madrugada, a la 01:52.
+
+112
+00:08:53.400 --> 00:08:57.900
+Pero esa ya es otra alerta: la del SIEM.
+
+113
+00:08:58.200 --> 00:09:04.533
+Ahora te toca a ti: las preguntas de esta
+lección te esperan en Alertópolis.

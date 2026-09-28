@@ -5,11 +5,14 @@ import { EASE, progress } from '../theme/motion';
 import { C, FONT, LAYOUT, RADIUS, TYPE, alpha } from '../theme/tokens';
 import { Icon } from '../ui/Icon';
 import { twoLines, useFontsReady } from './Captions';
+import TIMING from './intercept-timing.json';
 
-const ENTER = 12;
-const EXIT = 10;
+const ENTER = TIMING.enter;
+const EXIT = TIMING.exit;
 /** Frames per typed character: at 1 frame/char, 70 characters take 70 frames to type out. */
-const TYPE_RATE = 1;
+const TYPE_RATE = TIMING.typeRate;
+/** Frame (relative to `entry.from`) where typing starts: a third of the way into the enter animation. */
+const TYPE_START = TIMING.typeStart;
 /** Same slot as the think prompt (they never overlap in time). */
 const TOP = LAYOUT.stage.top + 10;
 const MAX_WIDTH = 1400;
@@ -17,9 +20,6 @@ const PAD_X = 34;
 const BODY = { size: 42, weight: 700, letterSpacing: -0.2 } as const;
 const BODY_MAX = MAX_WIDTH - 2 * PAD_X - 4;
 const CARD_BG = alpha(C.roseDeep, 0.92);
-
-/** Frame (relative to `entry.from`) where typing starts: a third of the way into the enter animation. */
-const TYPE_START = Math.floor(ENTER / 3);
 
 /**
  * Where one message is in its life at `frame`: null when off screen. Typing starts at ENTER / 3

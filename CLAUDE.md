@@ -191,7 +191,10 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   the title/description/tags for upload) — the MP4 renders to `video/<slug>/out/` (git-ignored) and is
   published to YouTube instead of being committed to `public/videos/`; the app embeds it via a
   `youtube` block id, not an MP4 file. Design:
-  `docs/superpowers/specs/2026-09-26-video-narration-style-design.md`.
+  `docs/superpowers/specs/2026-09-26-video-narration-style-design.md`. Intercepted messages can now be
+  voiced: `narration.json` → `adversaryVoice` (SAPI Pablo + the `machine` fx preset, via `tts-adversary.mjs`)
+  and `sfx` (11-sound library + per-cue key moments, via `sfx_generate.py`) — `capas-halden` (sp4m7) ships
+  both. Design: `docs/superpowers/specs/2026-09-28-adversary-voice-sfx-design.md`.
 - **Remotion on this machine:** when the CPU is busy, the CLI's bundling blocks the event loop and
   Chrome's connection times out after 25 s. `render.mjs`/`qa-frames.mjs` therefore bundle first;
   for ad-hoc renders do `remotion bundle` then render from the bundle dir. In the Bash tool,

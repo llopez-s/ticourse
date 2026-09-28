@@ -3,6 +3,8 @@
 //   edge-tts:   prepare-tts.mjs -> tts.py -> build-timeline.mjs (audio mode)
 //   ElevenLabs: tts-elevenlabs.mjs -> build-timeline.mjs   (voice "elevenlabs/<model>/<voice_id>")
 //   Chatterbox: tts-chatterbox.mjs -> build-timeline.mjs   (voice "chatterbox/<pack>/<voice>", local, no quota)
+//   Recording:  build-timeline.mjs only                    (voice "recording/<name>", clips from import-recording.mjs)
+//   + tts-adversary.mjs before build-timeline when narration.json has "adversaryVoice"
 // Stops at the first failing step.
 //
 //   node video/engine/scripts/audio.mjs --video <slug>                 # synthesise what changed, rebuild the timeline
@@ -20,7 +22,7 @@ import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
-import { isChatterboxVoice, isElevenLabsVoice } from './lib/narration.mjs';
+import { isChatterboxVoice, isElevenLabsVoice, isRecordingVoice } from './lib/narration.mjs';
 import { PATHS, REPO_ROOT, SCRIPTS_DIR, VIDEO, isMainModule } from './lib/paths.mjs';
 
 const OPTIONS = {
@@ -85,14 +87,26 @@ function main() {
     path.join(SCRIPTS_DIR, 'build-timeline.mjs'),
     ...pass(values, ['narration', 'lexicon', 'storyboard', 'tts-dir', 'voice-dir', 'voice', 'rate', 'pitch', 'full-audio', 'tail-ms', 'out', 'transcript']),
   ];
-  const narrationVoice = JSON.parse(readFileSync(values.narration ? path.resolve(values.narration) : PATHS.narration, 'utf8').replace(/^﻿/, '')).voice;
+  const narrationJson = JSON.parse(readFileSync(values.narration ? path.resolve(values.narration) : PATHS.narration, 'utf8').replace(/^﻿/, ''));
+  const narrationVoice = narrationJson.voice;
+  const adversaryStep = () => {
+    if (narrationJson.adversaryVoice) step('tts-adversary', node, [path.join(SCRIPTS_DIR, 'tts-adversary.mjs'), ...pass(values, ['force'])]);
+  };
   if (isElevenLabsVoice(narrationVoice)) {
     step('tts-elevenlabs', node, [path.join(SCRIPTS_DIR, 'tts-elevenlabs.mjs'), ...pass(values, ['scene', 'force'])]);
+    adversaryStep();
     step('build-timeline', node, buildTimelineArgs);
     return;
   }
   if (isChatterboxVoice(narrationVoice)) {
     step('tts-chatterbox', node, [path.join(SCRIPTS_DIR, 'tts-chatterbox.mjs'), ...pass(values, ['only', 'force'])]);
+    adversaryStep();
+    step('build-timeline', node, buildTimelineArgs);
+    return;
+  }
+  if (isRecordingVoice(narrationVoice)) {
+    // The narrator's clips come from import-recording.mjs; only the adversary's voice (if any) is synthesised here.
+    adversaryStep();
     step('build-timeline', node, buildTimelineArgs);
     return;
   }
@@ -103,6 +117,7 @@ function main() {
     ['-X', 'utf8', PATHS.ttsPy, '--input', PATHS.ttsInput, ...pass(values, ['tts-dir', 'voice-dir', 'voice', 'rate', 'pitch', 'only', 'force', 'attempts'])],
     env,
   );
+  adversaryStep();
   step(
     'build-timeline',
     node,
