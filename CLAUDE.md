@@ -202,7 +202,20 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   the title/description/tags for upload) — the MP4 renders to `video/<slug>/out/` (git-ignored) and is
   published to YouTube instead of being committed to `public/videos/`; the app embeds it via a
   `youtube` block id, not an MP4 file. Design:
-  `docs/superpowers/specs/2026-09-26-video-narration-style-design.md`.
+  `docs/superpowers/specs/2026-09-26-video-narration-style-design.md`. Intercepted messages can now be
+  voiced: `narration.json` → `adversaryVoice` (SAPI Pablo + the `machine` fx preset, via `tts-adversary.mjs`)
+  and `sfx` (11-sound library + per-cue key moments, via `sfx_generate.py`) — `capas-halden` (sp4m7) ships
+  both. Design: `docs/superpowers/specs/2026-09-28-adversary-voice-sfx-design.md`.
+  **V3 `video/diamond-e7/`** (s2m3, GCTI, YouTube `rwMIu0XBoWQ`, 7:54) is the first GCTI video: exam
+  cards are track-aware (`EXAM_BADGE`/`GCTI_DOMAINS` in `scripts/lib/profiles.mjs` — a GCTI card names a
+  course domain, badge «GCTI»), and every scene draws the shared `src/scenes/parts/Diamond.tsx`.
+  **Mastering** (Python, venv + `pedalboard pyloudnorm librosa soundfile scipy`): `scripts/master_voice.py`
+  on the narrator's WAV *before* `import-recording` (time-aligned EQ/de-ess/compression, no denoise) and
+  `scripts/master_mix.py` on the rendered MP4 (generated ambient bed ducked under speech, −14 LUFS,
+  −1 dBTP); see the engine README «Masterización». In a git worktree, run `render.mjs` with
+  `GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=safe.directory GIT_CONFIG_VALUE_0=*` (its git-ignore check
+  otherwise trips on "dubious ownership"), and `npm ci` there first — the scripts resolve Remotion and
+  ffmpeg from the worktree's own `node_modules`.
 - **Remotion on this machine:** when the CPU is busy, the CLI's bundling blocks the event loop and
   Chrome's connection times out after 25 s. `render.mjs`/`qa-frames.mjs` therefore bundle first;
   for ad-hoc renders do `remotion bundle` then render from the bundle dir. In the Bash tool,

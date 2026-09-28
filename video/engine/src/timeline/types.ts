@@ -64,8 +64,10 @@ export interface ExamCue {
   scene: SceneId;
   from: number;
   durationInFrames: number;
-  /** Exam objective shown on the card, e.g. "4.4" (SY0-701). */
+  /** Exam objective shown on the card, e.g. "4.4" (SY0-701) or a GCTI domain ("Intrusion Analysis"). */
   objective: string;
+  /** Exam named on the badge; absent means "SY0-701" (Security+ timelines predate it). */
+  badge?: string;
   text: string;
 }
 
@@ -76,7 +78,20 @@ export interface ThinkPrompt {
   q: string;
 }
 
-/** A message from the section's adversary: shown on screen (never voiced) before the narrator answers it. */
+/** One sound effect (build-timeline, from scripts/lib/sfx.mjs). */
+export interface SfxCue {
+  from: number;
+  /** Library name, e.g. "glitch". */
+  sound: string;
+  /** Path in the video's public dir, e.g. "sfx/glitch.mp3". */
+  src: string;
+  /** How long it plays (cuts a loop such as typing). */
+  durationInFrames: number;
+  /** Linear mix volume, 0–1 (the voices play at 1). */
+  volume: number;
+}
+
+/** A message from the section's adversary: shown on screen, voiced when the video has adversaryVoice. */
 export interface InterceptCue {
   scene: SceneId;
   /** First frame of the silent lead before the answering segment's audio. */
@@ -86,6 +101,12 @@ export interface InterceptCue {
   /** The section adversary from video.json, e.g. "SILENT PAGER". */
   adversary: string;
   text: string;
+  /** The adversary's voice, e.g. "voice/s03-04-intercept.mp3" — only when narration.json has adversaryVoice. */
+  audio?: string;
+  /** Frame the voice starts (the message starts typing). */
+  audioFrom?: number;
+  /** Length of the voice in frames. */
+  audioFrames?: number;
 }
 
 export interface Timeline {
@@ -105,6 +126,8 @@ export interface Timeline {
   think: ThinkPrompt[];
   /** Present only when the video has intercepted messages. */
   intercept?: InterceptCue[];
+  /** Present only when narration.json has "sfx". */
+  sfx?: SfxCue[];
 }
 
 /** What every scene component receives. All frames are LOCAL to the scene's Sequence. */

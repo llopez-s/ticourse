@@ -13,6 +13,7 @@ import { ChapterRail } from './overlay/ChapterRail';
 import { ExamCueLayer } from './overlay/ExamCueLayer';
 import { InterceptLayer } from './overlay/InterceptLayer';
 import { ProgressBar } from './overlay/ProgressBar';
+import { SfxLayer } from './overlay/SfxLayer';
 import { SimulationTag } from './overlay/SimulationTag';
 import { ThinkPrompt } from './overlay/ThinkPrompt';
 
@@ -79,6 +80,7 @@ export function LessonVideo({ timeline, scenes }: { timeline: Timeline; scenes: 
           ) : null,
         )}
 
+        <SfxLayer />
         <ChapterRail />
         <SimulationTag />
         <ThinkPrompt />

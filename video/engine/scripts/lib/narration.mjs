@@ -3,14 +3,17 @@
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
-import { PATHS } from './paths.mjs';
+import { PATHS, SFX_DIR } from './paths.mjs';
+import { examObjectiveError } from './profiles.mjs';
 import { MarkupError, parseSegmentText, pronunciationRisks } from './text.mjs';
+import { adversaryVoiceErrors } from './adversary.mjs';
 
 export const SEGMENT_ID = /^s\d\d-\d\d$/;
 export const DEFAULT_PAUSE_MS = 330;
 export const EXAM_TEXT_MAX = 58;
 export const THINK_Q_MAX = 48;
-/** Intercepted messages: on-screen only (never voiced), typed out during a silent lead before their segment. */
+/** Intercepted messages: typed out during a silent lead before their segment, on screen always and voiced
+ * too when narration.json has "adversaryVoice" (see adversary.mjs, tts-adversary.mjs). */
 export const INTERCEPT_TEXT_MAX = 70;
 export const INTERCEPT_HOLD_MS = [2500, 4500];
 /** Symbols the style guide bans from anything that reaches the screen or the voice. */
@@ -39,6 +42,8 @@ export const EDGE_VOICE = /^[a-z]{2}-[A-Z]{2}-\w+Neural$/;
 export const ELEVEN_VOICE = /^elevenlabs\/[a-z0-9_]+\/[A-Za-z0-9]{10,40}$/;
 /** Local Chatterbox model: "chatterbox/<pack>/<voice>" (pack es-es | mtl; voice default | a clip in engine/voices/). */
 export const CHATTERBOX_VOICE = /^chatterbox\/(es-es|mtl)\/[a-z0-9][a-z0-9_-]*$/;
+/** A narrator's own recording, cut into clips by import-recording.mjs: "recording/<name>". */
+export const RECORDING_VOICE = /^recording\/[a-z0-9][a-z0-9_-]*$/;
 
 /** True when the narration is voiced with ElevenLabs (voice "elevenlabs/<model>/<voice_id>"). */
 export function isElevenLabsVoice(voice) {
@@ -50,6 +55,11 @@ export function isChatterboxVoice(voice) {
   return typeof voice === 'string' && CHATTERBOX_VOICE.test(voice);
 }
 
+/** True when the narration is a human recording (voice "recording/<name>"). */
+export function isRecordingVoice(voice) {
+  return typeof voice === 'string' && RECORDING_VOICE.test(voice);
+}
+
 /**
  * The text a segment is synthesised from (and keyed on): ElevenLabs gets the
  * voice-only <directions> as [audio tags]; edge-tts and Chatterbox get plain spoken text.
@@ -58,7 +68,7 @@ export function spokenForVoice(voice, parsed) {
   return isElevenLabsVoice(voice) ? parsed.directedSpoken : parsed.spoken;
 }
 
-export function loadSources({ storyboard, narration, lexicon }) {
+export function loadSources({ storyboard, narration, lexicon, sfxDir = SFX_DIR }) {
   const storyboardText = readSource(storyboard, 'storyboard.json');
   const narrationText = readSource(narration, 'narration.json');
   // narration.json may name its own lexicon ("lexicon": "lexicon.elevenlabs.json",
@@ -68,12 +78,19 @@ export function loadSources({ storyboard, narration, lexicon }) {
     lexicon = path.resolve(path.dirname(narration), narrationJson.lexicon);
   }
   const lexiconRaw = readSource(lexicon, 'lexicon.json', { optional: true });
+  // The sound library's sfx.json only counts toward sourceHash when narration.json has "sfx": a video
+  // without that key stays byte-identical even if the library is later regenerated. When the key is set but
+  // the library file is missing, sfxText is '' rather than null, so a missing library still changes the hash
+  // instead of silently matching a stale timeline.
+  const sfxFile = path.join(sfxDir, 'sfx.json');
+  const sfxText = narrationJson?.sfx !== undefined ? (existsSync(sfxFile) ? readFileSync(sfxFile, 'utf8') : '') : null;
   return {
     paths: { storyboard, narration, lexicon },
     storyboardText,
     narrationText,
     lexiconText: lexiconRaw ?? '',
     lexiconMissing: lexiconRaw === null,
+    sfxText,
     storyboard: parseJsonText(storyboardText, storyboard),
     narration: parseJsonText(narrationText, narration),
     lexicon: lexiconRaw === null ? {} : parseJsonText(lexiconRaw, lexicon),
@@ -86,13 +103,19 @@ export function ttsKey(voice, rate, pitch, spoken) {
 }
 
 /**
- * sha256 over the exact source bytes (storyboard, narration, lexicon) and, in
- * audio mode, the per-segment TTS keys ([id, key] pairs in narration order).
+ * sha256 over the exact source bytes (storyboard, narration, lexicon), the sound library's sfx.json when
+ * narration.json has "sfx" (sfxText, from loadSources — null otherwise, so it never affects a video without
+ * that key), and, in audio mode, the per-segment TTS keys ([id, key] pairs in narration order). build-timeline
+ * and freshness.mjs both go through loadSources then sourceHash, so they cannot compute this differently.
  */
-export function sourceHash({ storyboardText, narrationText, lexiconText }, ttsKeys = null) {
+export function sourceHash({ storyboardText, narrationText, lexiconText, sfxText = null }, ttsKeys = null) {
   const h = createHash('sha256');
   for (const part of [storyboardText, narrationText, lexiconText]) {
     h.update(part, 'utf8');
+    h.update('\u0000');
+  }
+  if (sfxText !== null) {
+    h.update(sfxText, 'utf8');
     h.update('\u0000');
   }
   if (ttsKeys) for (const [id, key] of ttsKeys) h.update(`${id}:${key}\n`, 'utf8');
@@ -108,7 +131,7 @@ const countWords = (s) => s.split(/\s+/).filter(Boolean).length;
  * @returns {{errors: string[], warnings: string[], voice: {voice: string, rate: string, pitch: string},
  *   scenes: {scene: object, index: number, segments: object[]}[], segments: object[]}}
  */
-export function analyzeNarration({ storyboard, narration, lexicon }, { examCards = [8, 11], thinkPrompts = 2, intercepts = null, chispa = false } = {}) {
+export function analyzeNarration({ storyboard, narration, lexicon }, { examCards = [8, 11], thinkPrompts = 2, intercepts = null, chispa = false, track = 'secplus' } = {}) {
   const errors = [];
   const warnings = [];
 
@@ -142,11 +165,16 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
     return { errors, warnings, voice: null, scenes: [], segments: [] };
   }
   const voice = { voice: narration.voice, rate: narration.rate ?? '+0%', pitch: narration.pitch ?? '+0Hz' };
-  if (typeof voice.voice !== 'string' || !(EDGE_VOICE.test(voice.voice) || ELEVEN_VOICE.test(voice.voice) || CHATTERBOX_VOICE.test(voice.voice))) {
+  if (
+    typeof voice.voice !== 'string' ||
+    !(EDGE_VOICE.test(voice.voice) || ELEVEN_VOICE.test(voice.voice) || CHATTERBOX_VOICE.test(voice.voice) || RECORDING_VOICE.test(voice.voice))
+  ) {
     errors.push(
-      `narration.voice ${JSON.stringify(voice.voice)} must be an edge-tts voice ("es-ES-ElviraNeural"), "elevenlabs/<model_id>/<voice_id>" or "chatterbox/<es-es|mtl>/<voice>"`,
+      `narration.voice ${JSON.stringify(voice.voice)} must be an edge-tts voice ("es-ES-ElviraNeural"), "elevenlabs/<model_id>/<voice_id>", "chatterbox/<es-es|mtl>/<voice>" or "recording/<name>"`,
     );
   }
+  if (narration.adversaryVoice !== undefined) errors.push(...adversaryVoiceErrors(narration.adversaryVoice));
+  if (narration.sfx !== undefined && !isObj(narration.sfx)) errors.push('narration.sfx must be an object of cue id -> sound name');
   if (narration.elevenlabs !== undefined && !isObj(narration.elevenlabs)) errors.push('narration.elevenlabs must be an object of voice settings');
   if (narration.chatterbox !== undefined && !isObj(narration.chatterbox)) errors.push('narration.chatterbox must be an object of synthesis settings');
   if (!/^[+-]\d{1,3}%$/.test(voice.rate)) errors.push(`narration.rate ${JSON.stringify(voice.rate)} must look like "+0%"`);
@@ -218,7 +246,8 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
       const e = raw.exam;
       if (!isObj(e)) errors.push(`${label}: exam must be an object`);
       else {
-        if (typeof e.objective !== 'string' || !/^[1-5]\.\d{1,2}$/.test(e.objective)) errors.push(`${label}: exam.objective must be an SY0-701 objective like "4.4"`);
+        const objectiveError = examObjectiveError(track, e.objective);
+        if (objectiveError) errors.push(`${label}: ${objectiveError}`);
         if (typeof e.text !== 'string' || !e.text.trim()) errors.push(`${label}: exam.text must be a non-empty string`);
         else {
           if (e.text.length > EXAM_TEXT_MAX) errors.push(`${label}: exam.text is ${e.text.length} characters (max ${EXAM_TEXT_MAX})`);

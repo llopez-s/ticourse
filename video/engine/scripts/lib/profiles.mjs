@@ -64,6 +64,21 @@ export const PROFILES = Object.freeze({
 
 const AFFILIATION = Object.freeze({ secplus: 'CompTIA', gcti: 'SANS/GIAC' });
 
+/** Exam named on the badge of an exam card ("EXAMEN · SY0-701 · 4.5"). */
+export const EXAM_BADGE = Object.freeze({ secplus: 'SY0-701', gcti: 'GCTI' });
+
+/** GCTI publishes no numbered objectives, so a GCTI exam card names the course domain (src/lib/types.ts). */
+export const GCTI_DOMAINS = Object.freeze(['Requirements', 'Intrusion Analysis', 'Collection', 'Analysis', 'Dissemination']);
+
+/** Why `objective` is not valid on an exam card of `track`, or null when it is. */
+export function examObjectiveError(track, objective) {
+  if (!EXAM_BADGE[track]) throw new Error(`unknown track "${track}" (known: ${Object.keys(EXAM_BADGE).join(', ')})`);
+  if (track === 'gcti') {
+    return GCTI_DOMAINS.includes(objective) ? null : `exam.objective must be a GCTI domain (${GCTI_DOMAINS.join(', ')})`;
+  }
+  return typeof objective === 'string' && /^[1-5]\.\d{1,2}$/.test(objective) ? null : 'exam.objective must be an SY0-701 objective like "4.4"';
+}
+
 export function profileFor(name) {
   const profile = PROFILES[name];
   if (!profile) throw new Error(`unknown video profile "${name}" (known: ${Object.keys(PROFILES).join(', ')})`);

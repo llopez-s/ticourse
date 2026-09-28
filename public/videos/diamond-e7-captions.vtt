@@ -1,0 +1,487 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:05.667
+Madrugada del 5 de marzo
+en Meridian Dynamics.
+
+2
+00:00:05.667 --> 00:00:10.833
+A las 02:13 UTC, salta
+una alerta en el SOC.
+
+3
+00:00:10.933 --> 00:00:12.533
+¿Qué ha pasado?
+
+4
+00:00:12.533 --> 00:00:20.333
+La estación ENG-WS-041,
+de ingeniería de propulsión,
+
+5
+00:00:20.333 --> 00:00:24.767
+llama por HTTPS a un dominio que nadie
+conoce. Más o menos cada minuto.
+
+6
+00:00:24.767 --> 00:00:27.900
+Un beacon suelto es solo un dato.
+
+7
+00:00:27.900 --> 00:00:32.000
+Para entenderlo te haces cuatro
+preguntas: quién, con qué,
+
+8
+00:00:32.000 --> 00:00:34.433
+a través de qué y contra quién.
+
+9
+00:00:34.433 --> 00:00:36.800
+Cuatro preguntas, cuatro esquinas.
+
+10
+00:00:36.800 --> 00:00:42.733
+Eso es el Diamond Model, y hoy
+lo construyes con este evento: E7.
+
+11
+00:00:44.200 --> 00:00:46.267
+El modelo parte de un axioma.
+
+12
+00:00:46.267 --> 00:00:50.267
+En cada intrusión, un adversario
+da un paso hacia un objetivo.
+
+13
+00:00:50.267 --> 00:00:54.533
+Para darlo usa una capacidad, sobre una
+infraestructura, contra una víctima.
+
+14
+00:00:54.533 --> 00:00:57.800
+¿Lo ves? Son las cuatro
+preguntas de antes.
+
+15
+00:00:57.800 --> 00:01:03.467
+Adversary: quién. Capability: con qué.
+Infrastructure: a través de qué.
+
+16
+00:01:03.467 --> 00:01:05.833
+Victim: contra quién.
+
+17
+00:01:11.767 --> 00:01:16.767
+Puede. Pero un diamante con una
+esquina vacía ya sirve. ¿Por qué?
+
+18
+00:01:16.767 --> 00:01:23.367
+Porque las aristas unen los vértices:
+conoces uno y puedes buscar los demás.
+
+19
+00:01:24.800 --> 00:01:28.633
+Empiezas por lo que tienes:
+tu propia telemetría.
+
+20
+00:01:28.633 --> 00:01:32.867
+En pantalla, las líneas crudas
+del EDR de esa madrugada.
+
+21
+00:01:32.967 --> 00:01:34.833
+¿Qué pertenece a la víctima?
+
+22
+00:01:34.833 --> 00:01:43.233
+El equipo, ENG-WS-041, y la empresa,
+Meridian Dynamics. Los dos van a Victim.
+
+23
+00:01:43.233 --> 00:01:45.067
+¿Y con qué te atacan?
+
+24
+00:01:45.067 --> 00:01:52.467
+El hash del binario, 9f3a...e1,
+es el implante GLASS VIPER, un loader.
+
+25
+00:01:52.467 --> 00:01:53.000
+Va a Capability.
+
+26
+00:01:53.000 --> 00:01:58.800
+Y este detalle, también:
+el named pipe vc_pipe_%08x.
+
+27
+00:01:58.800 --> 00:02:05.833
+Si recompilan, el hash cambia. El patrón
+del pipe suele seguir ahí, como un acento.
+
+28
+00:02:06.733 --> 00:02:15.767
+¿Y a través de qué habla ese implante?
+De un dominio: update-svc-cdn.com.
+
+29
+00:02:15.767 --> 00:02:22.567
+Ese dominio resuelve
+a una IP de 185.220.x.x.
+
+30
+00:02:22.567 --> 00:02:28.700
+Y el servidor presenta un certificado
+TLS autofirmado: CN=updatesvc.
+
+31
+00:02:28.700 --> 00:02:33.233
+Dominio, IP, servidor y certificado:
+todo eso es Infrastructure.
+
+32
+00:02:33.233 --> 00:02:36.933
+Es la carretera por la
+que viaja la herramienta.
+
+33
+00:02:36.933 --> 00:02:42.433
+Y aquí cae media clase. ¿El implante
+es infraestructura porque se conecta? No.
+
+34
+00:02:42.433 --> 00:02:47.800
+El implante es Capability,
+y el dominio al que llama, Infrastructure.
+
+35
+00:02:49.267 --> 00:02:55.300
+Queda una esquina. ¿Quién está detrás?
+Respuesta honesta: no lo sabes.
+
+36
+00:02:55.300 --> 00:02:57.200
+Y escribes UNKNOWN.
+
+37
+00:03:02.833 --> 00:03:04.767
+Ese apodo se lo pusiste tú:
+
+38
+00:03:04.767 --> 00:03:07.133
+un nombre de seguimiento
+para el implante y quien lo usa.
+
+39
+00:03:07.133 --> 00:03:11.767
+No es una identidad,
+así que Adversary sigue en UNKNOWN.
+
+40
+00:03:11.767 --> 00:03:16.600
+La tentación es clara: rellenar la esquina
+con el nombre de quien sospechas.
+
+41
+00:03:18.567 --> 00:03:22.567
+No. UNKNOWN con un plan vale
+más que un nombre inventado.
+
+42
+00:03:22.567 --> 00:03:26.767
+Anotas el pivote pendiente:
+el WHOIS histórico del dominio.
+
+43
+00:03:26.767 --> 00:03:28.267
+¿Y si un día sale un nombre?
+
+44
+00:03:28.267 --> 00:03:32.267
+El operator es quien teclea:
+registra el dominio y lanza el implante.
+
+45
+00:03:32.267 --> 00:03:36.333
+El customer lo encarga y se queda
+el botín: los diseños de propulsión.
+
+46
+00:03:36.333 --> 00:03:41.133
+Pueden ser gente distinta,
+y los dos viven en Adversary.
+
+47
+00:03:42.600 --> 00:03:48.133
+El diamante dice quién, con qué, por dónde
+y contra quién. ¿Y el resto del contexto?
+
+48
+00:03:48.133 --> 00:03:50.167
+Va en las meta-features.
+
+49
+00:03:50.167 --> 00:03:56.033
+La ficha de E7 se rellena
+campo a campo. Hora: 02:13 UTC.
+
+50
+00:03:56.033 --> 00:03:58.733
+Fase de la kill chain:
+Command and Control.
+
+51
+00:03:58.733 --> 00:04:02.067
+Resultado: éxito, el beacon salió.
+
+52
+00:04:02.067 --> 00:04:05.533
+Dirección: de la víctima
+hacia la infraestructura.
+
+53
+00:04:05.533 --> 00:04:10.667
+Metodología: beacon HTTPS
+cada sesenta segundos, con jitter.
+
+54
+00:04:10.667 --> 00:04:14.567
+Es un latido con algo de temblor,
+para no sonar a reloj.
+
+55
+00:04:14.633 --> 00:04:18.700
+Y recursos: hosting,
+dominio y certificado TLS.
+
+56
+00:04:18.700 --> 00:04:23.233
+Es lo que el adversario tuvo
+que conseguir para que todo funcionara.
+
+57
+00:04:24.333 --> 00:04:26.400
+Ahora traza dos diagonales.
+
+58
+00:04:26.400 --> 00:04:32.133
+La primera une Adversary y Victim:
+es el eje socio-político.
+
+59
+00:04:32.167 --> 00:04:37.633
+¿Qué pregunta ese eje? Por qué
+esta víctima. ¿Por qué Meridian?
+
+60
+00:04:37.767 --> 00:04:39.967
+Por su propiedad
+intelectual de propulsión:
+
+61
+00:04:39.967 --> 00:04:41.933
+es lo que necesita el customer.
+
+62
+00:04:41.933 --> 00:04:46.667
+La segunda une Capability
+e Infrastructure: el eje tecnológico.
+
+63
+00:04:46.667 --> 00:04:51.567
+Cuenta cómo se despliega la técnica:
+implante, dominio, hosting y certificado.
+
+64
+00:04:51.567 --> 00:04:55.100
+Un eje explica el porqué,
+y el otro, el cómo.
+
+65
+00:04:55.100 --> 00:04:58.300
+Con los dos, el ataque
+empieza a tener sentido.
+
+66
+00:04:59.700 --> 00:05:05.567
+Y aquí el diamante deja de ser
+una ficha y se vuelve herramienta.
+
+67
+00:05:05.567 --> 00:05:09.000
+Cada vértice conocido ilumina a los demás.
+
+68
+00:05:09.000 --> 00:05:14.200
+¿Cómo? De la víctima, tus logs,
+sacas la muestra: capability.
+
+69
+00:05:14.200 --> 00:05:19.167
+De la muestra sacas el C2 que lleva
+escrito dentro: infraestructura.
+
+70
+00:05:19.167 --> 00:05:23.700
+De ese C2 salen otras muestras que llaman
+al mismo sitio: más capability.
+
+71
+00:05:23.700 --> 00:05:28.933
+Y a veces, un descuido del adversario,
+como el email con que registró un dominio.
+
+72
+00:05:28.933 --> 00:05:33.100
+Cada vuelta del bucle hace crecer
+el grafo. ¿Te suena a juego?
+
+73
+00:05:33.100 --> 00:05:36.567
+Es justo lo que harás en el Lab 3A.
+
+74
+00:05:43.833 --> 00:05:45.367
+Qué amable.
+
+75
+00:05:45.367 --> 00:05:51.300
+Esa IP es hosting compartido: unos catorce
+mil dominios de terceros viven en ella.
+
+76
+00:05:51.300 --> 00:05:59.467
+Tienes dos caminos: esa IP,
+o el certificado autofirmado CN=updatesvc.
+
+77
+00:06:01.700 --> 00:06:03.167
+¿Por la IP? No.
+
+78
+00:06:03.167 --> 00:06:08.333
+Catorce mil vecinos inocentes son
+catorce mil pistas falsas: ruido.
+
+79
+00:06:08.333 --> 00:06:12.900
+Ese certificado autofirmado,
+en cambio, solo lo despliega el actor.
+
+80
+00:06:12.900 --> 00:06:17.533
+Y aparece en dos IP más. Eso es oro.
+
+81
+00:06:17.533 --> 00:06:19.633
+El WHOIS histórico sigue pendiente.
+
+82
+00:06:19.633 --> 00:06:23.133
+La regla, para siempre:
+un recurso dedicado discrimina,
+
+83
+00:06:23.133 --> 00:06:25.700
+y uno compartido contamina.
+
+84
+00:06:26.833 --> 00:06:32.200
+Dos días después aparece E9.
+Mismo implante, misma metodología.
+
+85
+00:06:32.200 --> 00:06:35.633
+Pero ahora, en Actions on Objectives.
+
+86
+00:06:35.700 --> 00:06:39.700
+¿Qué significa eso?
+Que ya no solo avisa de que está dentro.
+
+87
+00:06:39.700 --> 00:06:42.600
+Ahora va a por lo que vino a buscar.
+
+88
+00:06:42.733 --> 00:06:45.933
+Ordenas los eventos en el tiempo
+y a lo largo de la kill chain.
+
+89
+00:06:45.933 --> 00:06:51.200
+E7 y E9 dejan de ir sueltos:
+forman un activity thread.
+
+90
+00:06:51.200 --> 00:06:53.633
+Un evento es una foto.
+Un hilo es la película.
+
+91
+00:06:53.633 --> 00:06:56.667
+Y esa película la montas
+en la lección siguiente.
+
+92
+00:06:57.800 --> 00:07:01.533
+¿Y qué no hace el diamante?
+No atribuye por sí solo.
+
+93
+00:07:01.533 --> 00:07:06.233
+Poner nombre real al adversario exige
+muchas más pruebas que un vértice relleno.
+
+94
+00:07:06.233 --> 00:07:08.400
+Un evento tampoco es una campaña.
+
+95
+00:07:08.400 --> 00:07:11.700
+Un diamante describe un solo
+paso de la intrusión.
+
+96
+00:07:11.700 --> 00:07:14.867
+La campaña aparece al juntar muchos hilos.
+
+97
+00:07:14.867 --> 00:07:21.967
+Su valor real es el plan de pivotes: qué
+sabes, qué te falta y por dónde buscarlo.
+
+98
+00:07:23.100 --> 00:07:26.867
+Para el examen, llévate
+esto. Cuatro vértices.
+
+99
+00:07:26.867 --> 00:07:30.500
+El implante es Capability,
+y el dominio, Infrastructure.
+
+100
+00:07:30.500 --> 00:07:37.367
+Operator teclea, customer encarga. UNKNOWN
+vale si lleva un plan. ¿Y al pivotar?
+
+101
+00:07:37.367 --> 00:07:39.967
+Mejor lo dedicado que lo compartido.
+
+102
+00:07:39.967 --> 00:07:46.533
+Ahora sigue esos pivotes en la lección
+de infraestructura: passive DNS,
+
+103
+00:07:46.533 --> 00:07:50.000
+WHOIS y certificados. Nos vemos allí.

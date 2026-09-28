@@ -18,10 +18,12 @@ import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { alignSpokenTokens, displayTimes, normalizeToken } from './lib/align.mjs';
 import { paginate } from './lib/captions.mjs';
+import { adversaryClipId, adversaryConfig, adversaryKey, hashKeys } from './lib/adversary.mjs';
 import { analyzeNarration, isElevenLabsVoice, loadSources, parseJsonText, reportOrThrow, sourceHash, spokenForVoice, ttsKey } from './lib/narration.mjs';
-import { AUDIO_CMD, MANIFEST, PATHS, isMainModule } from './lib/paths.mjs';
-import { profileFor, trackNotice } from './lib/profiles.mjs';
+import { AUDIO_CMD, MANIFEST, PATHS, SFX_DIR, VIDEO, isMainModule } from './lib/paths.mjs';
+import { EXAM_BADGE, profileFor, trackNotice } from './lib/profiles.mjs';
 import { probeDurationsMs, writeFileAtomic } from './lib/remotion.mjs';
+import { INTERCEPT_TIMING, placeSfx, readSfxLibrary, sfxMapErrors, syncSfxFiles, voicedHoldFrames } from './lib/sfx.mjs';
 import { validateTimeline } from './lib/validate-timeline.mjs';
 
 export const TIMING = Object.freeze({
@@ -138,6 +140,26 @@ async function loadAudio(segments, voice, opts, errors, warnings) {
   return audio;
 }
 
+/** The adversary's voiced clips (tts-adversary.mjs), checked against the text and settings: seg id -> {audio, durationMs}. */
+export function loadAdversary(segments, config, opts, errors) {
+  const clips = new Map();
+  const cmd = `node video/engine/scripts/tts-adversary.mjs --video ${VIDEO}`;
+  for (const seg of segments.filter((s) => s.intercept)) {
+    const id = adversaryClipId(seg.id);
+    const jsonPath = path.join(opts.ttsDir, `${id}.json`);
+    const mp3Path = path.join(opts.voiceDir, `${id}.mp3`);
+    if (!existsSync(jsonPath) || !existsSync(mp3Path)) {
+      errors.push(`${seg.id}: no adversary voice (${id}) — run: ${cmd}`);
+      continue;
+    }
+    const rec = parseJsonText(readFileSync(jsonPath, 'utf8'), jsonPath);
+    if (rec.key !== adversaryKey(config, seg.intercept.text)) errors.push(`${seg.id}: the adversary voice is stale — run: ${cmd}`);
+    else if (statSync(mp3Path).size !== rec.bytes) errors.push(`${seg.id}: ${mp3Path} does not match its record — run: ${cmd} --force`);
+    else clips.set(seg.id, { audio: `voice/${id}.mp3`, durationMs: rec.durationMs });
+  }
+  return clips;
+}
+
 /** Estimate mode: 2.5 display words per second, words spread by character share. */
 function estimateAudio(segments) {
   const audio = new Map();
@@ -165,6 +187,8 @@ export async function buildTimeline(options = {}) {
     lexicon: PATHS.lexicon,
     ttsDir: PATHS.ttsDir,
     voiceDir: PATHS.voiceDir,
+    sfxDir: SFX_DIR,
+    publicSfxDir: PATHS.publicSfxDir,
     out: PATHS.timeline,
     transcript: PATHS.transcript,
     profile: MANIFEST.profile,
@@ -181,7 +205,7 @@ export async function buildTimeline(options = {}) {
 
   const profile = profileFor(opts.profile);
   const sources = loadSources(opts);
-  const analysis = analyzeNarration(sources, profile);
+  const analysis = analyzeNarration(sources, { ...profile, track: opts.track });
   if (sources.lexiconMissing) analysis.warnings.push(`no lexicon at ${opts.lexicon} — acronyms will be read as written`);
   reportOrThrow(analysis, log);
   const { storyboard } = sources;
@@ -197,6 +221,13 @@ export async function buildTimeline(options = {}) {
   const warnings = [];
   const mode = opts.estimate ? 'estimate' : 'audio';
   const audio = opts.estimate ? estimateAudio(analysis.segments) : await loadAudio(analysis.segments, voice, opts, errors, warnings);
+  if (errors.length) reportOrThrow({ errors, warnings }, log);
+
+  const adversaryVoice = sources.narration.adversaryVoice ? adversaryConfig(sources.narration.adversaryVoice) : null;
+  // opts.adversaryClips is a test-only override (like --tts-dir/--voice-dir): it replaces loadAdversary's real
+  // Windows/SAPI-backed lookup with a fixed Map, so a test can exercise voicedHoldFrames growing the lead
+  // without a real adversary clip on disk.
+  const adversary = opts.adversaryClips ?? (mode === 'audio' && adversaryVoice ? loadAdversary(analysis.segments, adversaryVoice, opts, errors) : new Map());
   if (errors.length) reportOrThrow({ errors, warnings }, log);
 
   // Timing
@@ -218,7 +249,9 @@ export async function buildTimeline(options = {}) {
     for (const seg of segs) {
       // An intercepted message types out during a silent lead; the segment's audio (the answer) starts after it.
       const leadFrom = t;
-      if (seg.intercept) t += toFrames(seg.intercept.holdMs);
+      const voiced = adversary.get(seg.id);
+      const voiceFrames = voiced ? Math.ceil((voiced.durationMs * fps) / 1000) : 0;
+      if (seg.intercept) t += voiced ? voicedHoldFrames(toFrames(seg.intercept.holdMs), voiceFrames) : toFrames(seg.intercept.holdMs);
       const a = audio.get(seg.id);
       const from = t;
       const audioFrames = Math.max(1, Math.ceil((a.durationMs * fps) / 1000));
@@ -265,6 +298,7 @@ export async function buildTimeline(options = {}) {
           durationInFrames: from + audioFrames + pause - leadFrom,
           adversary: opts.adversary,
           text: seg.intercept.text,
+          ...(voiced ? { audio: voiced.audio, audioFrom: leadFrom + INTERCEPT_TIMING.typeStart, audioFrames: voiceFrames } : {}),
         });
       }
       t += durationInFrames;
@@ -276,6 +310,8 @@ export async function buildTimeline(options = {}) {
         durationInFrames: Math.round(seg.exam.holdSec * fps),
         objective: seg.exam.objective,
         text: seg.exam.text,
+        // Security+ cards keep the implicit SY0-701 badge, so their timelines stay byte-identical.
+        ...(opts.track === 'secplus' ? {} : { badge: EXAM_BADGE[opts.track] }),
       });
     }
     t += TIMING.sceneTail;
@@ -328,10 +364,30 @@ export async function buildTimeline(options = {}) {
 
   let hash;
   if (mode === 'audio') {
-    const keys = analysis.segments.map((seg) => [seg.id, ttsKey(voice.voice, voice.rate, voice.pitch, spokenForVoice(voice.voice, seg.parsed))]);
+    const keys = hashKeys({
+      segments: analysis.segments,
+      adversaryVoice,
+      narrationKey: (seg) => ttsKey(voice.voice, voice.rate, voice.pitch, spokenForVoice(voice.voice, seg.parsed)),
+      adversaryKeyOf: (seg) => adversaryKey(adversaryVoice, seg.intercept.text),
+    });
     hash = sourceHash(sources, keys);
   } else {
     hash = sourceHash(sources);
+  }
+
+  let sfx = [];
+  let sfxLibrary = null;
+  if (sources.narration.sfx !== undefined) {
+    try {
+      sfxLibrary = readSfxLibrary(opts.sfxDir);
+      const mapErrors = sfxMapErrors(sources.narration.sfx, cues, sfxLibrary, opts.sfxDir);
+      errors.push(...mapErrors);
+      if (!mapErrors.length) {
+        sfx = placeSfx({ scenes, cues, exam, intercept, map: sources.narration.sfx, library: sfxLibrary, fps, transitionFrames: TIMING.transitionFrames });
+      }
+    } catch (err) {
+      errors.push(err.message);
+    }
   }
 
   const timeline = {
@@ -349,6 +405,7 @@ export async function buildTimeline(options = {}) {
     exam,
     think,
     ...(intercept.length ? { intercept } : {}),
+    ...(sfx.length ? { sfx } : {}),
   };
   errors.push(...validateTimeline(timeline, { sceneIds: opts.sceneIds ?? storyboard.scenes.map((s) => s.id), maxChapters: profile.maxChapters }));
   if ((storyboard.chapters ?? []).length > profile.maxChapters) errors.push(`storyboard has ${storyboard.chapters.length} chapters; the "${opts.profile}" profile allows ${profile.maxChapters}`);
@@ -360,6 +417,9 @@ export async function buildTimeline(options = {}) {
     writeFileAtomic(opts.out, `${formatJson(timeline)}\n`);
     writeFileAtomic(opts.transcript, transcript);
     writeFileAtomic(captionsPathFor(opts.transcript), vtt);
+    // Runs whenever narration.json has "sfx", even {} or a map that places nothing, so a library
+    // regeneration or a removed mapping still cleans out video/<slug>/public/sfx/ (§4.4).
+    if (sources.narration.sfx !== undefined) syncSfxFiles(sfx, sfxLibrary, opts.sfxDir, opts.publicSfxDir);
   }
   return { timeline, transcript, vtt, analysis, trailingNote: audio.trailingNote ?? null };
 }
@@ -492,7 +552,7 @@ async function main() {
     console.log('--check: nothing written');
   }
   const stale = existsSync(opts.ttsDir ?? PATHS.ttsDir)
-    ? readdirSync(opts.ttsDir ?? PATHS.ttsDir).filter((f) => f.endsWith('.json') && !timeline.segments.some((s) => `${s.id}.json` === f))
+    ? readdirSync(opts.ttsDir ?? PATHS.ttsDir).filter((f) => f.endsWith('.json') && !f.endsWith('-intercept.json') && !timeline.segments.some((s) => `${s.id}.json` === f))
     : [];
   if (!opts.estimate && stale.length) console.warn(`  aviso: TTS files for segments no longer in narration.json: ${stale.join(', ')}`);
 }

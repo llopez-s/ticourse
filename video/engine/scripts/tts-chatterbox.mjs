@@ -11,8 +11,8 @@
 //   tts/<segment>.json           ({ key, voice, rate, pitch, spoken, bytes, bitrateKbps, durationMs, words, asr, ... })
 //
 //   node video/engine/scripts/tts-chatterbox.mjs --video <slug> [--only s01-01,s02-03] [--force]
-//   node video/engine/scripts/tts-chatterbox.mjs --video <slug> --audition [--voices es-es/default,mtl/default] [--respelled]
-//   node video/engine/scripts/tts-chatterbox.mjs --video <slug> --audition --moods [--voices es-es/default]
+//   node video/engine/scripts/tts-chatterbox.mjs --video <slug> --audition [--voices es-es/default,mtl/default] [--respelled] [--tempo 0.8] [--temperature 0.7]
+//   node video/engine/scripts/tts-chatterbox.mjs --video <slug> --audition --moods [--voices es-es/default] [--tempo 0.8] [--temperature 0.7]
 //
 // Voice: narration.json "voice": "chatterbox/<pack>/<voice>". pack = es-es (the Spain-Spanish
 // language pack) or mtl (the multilingual model); voice = default (the model's built-in voice)
@@ -44,6 +44,7 @@ export const DEFAULT_SETTINGS = {
   exaggeration: 0.5, // emotion intensity; 0.5 is neutral, higher is more dramatic
   cfg_weight: 0.5, // adherence to the reference voice; lower = slower, more deliberate delivery
   temperature: 0.8,
+  tempo: 1, // speaking-rate multiplier applied at encode time (ffmpeg atempo, pitch-preserving); 1 = unchanged, 0.8 = 80% speed
   seed: 20260925,
   asr_model: 'small', // faster-whisper model used for word timings and the script check
   min_score: 0.85, // similarity (0–1) between the transcript and the script below which a clip is redone
@@ -52,7 +53,14 @@ export const DEFAULT_SETTINGS = {
 };
 
 /** The part of the settings that changes the audio (a change re-synthesises every clip). */
-const AUDIO_SETTINGS = ['language', 'exaggeration', 'cfg_weight', 'temperature', 'seed'];
+const AUDIO_SETTINGS = ['language', 'exaggeration', 'cfg_weight', 'temperature', 'seed', 'tempo'];
+
+/** Throws unless tempo is in the range a single ffmpeg atempo filter keeps intelligible. */
+export function validateTempo(tempo) {
+  if (typeof tempo !== 'number' || !Number.isFinite(tempo) || tempo < 0.5 || tempo > 1.5) {
+    throw new Error(`tempo must be a number between 0.5 and 1.5 (got ${JSON.stringify(tempo)})`);
+  }
+}
 
 export const AUDITION_TEXT =
   'Madrugada en la Autoridad Portuaria de Halden. Al SOC llegan [6.000|seis mil] alertas al día, y solo una importa. ' +
@@ -69,7 +77,9 @@ export function parseVoice(voice) {
 }
 
 export function settingsFor(narration) {
-  return { ...DEFAULT_SETTINGS, ...(narration.chatterbox ?? {}) };
+  const settings = { ...DEFAULT_SETTINGS, ...(narration.chatterbox ?? {}) };
+  validateTempo(settings.tempo);
+  return settings;
 }
 
 /** Hash of everything besides the text that shapes a take: voice, reference clip and audio settings. */
@@ -88,6 +98,23 @@ export function segmentVoiceSettings(settings, directions) {
 /** Per-segment seed: stable across runs and independent of which segments are redone. */
 export function segmentSeed(base, segmentId) {
   return (base + Number.parseInt(sha(segmentId).slice(0, 6), 16)) % 2 ** 31;
+}
+
+/**
+ * Scales a worker result's un-stretched-WAV word timings and clip duration by 1/tempo — the
+ * factor `encodeClip`'s atempo stretches (or compresses) the audio by — rounding the same way
+ * the record always has. Pure: tempo 1 leaves every number numerically identical to before.
+ */
+export function scaleTimings(result, tempo) {
+  const factor = 1 / tempo;
+  return {
+    durationMs: Math.round(result.durationMs * factor),
+    words: result.words.map((w) => ({
+      text: w.text,
+      offsetMs: Math.round(w.startMs * factor),
+      durationMs: Math.max(1, Math.round((w.endMs - w.startMs) * factor)),
+    })),
+  };
 }
 
 function checkSetup() {
@@ -129,14 +156,18 @@ export function finishedJobs(ids, workDir) {
   return { done, missing };
 }
 
-/** Encodes a worker WAV to a CBR MP3 clip. Returns its size in bytes. */
-function encodeClip(wav, outFile) {
+/** ffmpeg args for encodeClip. tempo 1 keeps them byte-identical to before `-af` existed. */
+export function encodeArgs(wav, tmpOut, tempo = 1) {
+  const args = ['ffmpeg', '-v', 'error', '-y', '-i', wav, '-ac', '1', '-ar', String(SAMPLE_RATE)];
+  if (tempo !== 1) args.push('-af', `atempo=${tempo}`);
+  args.push('-c:a', 'libmp3lame', '-b:a', `${BITRATE_KBPS}k`, '-write_xing', '0', '-id3v2_version', '0', tmpOut);
+  return args;
+}
+
+/** Encodes a worker WAV to a CBR MP3 clip, slowing it with ffmpeg's pitch-preserving atempo when tempo !== 1. Returns its size in bytes. */
+function encodeClip(wav, outFile, tempo = 1) {
   const tmpOut = `${outFile}.tmp.mp3`;
-  const res = runRemotion(
-    ['ffmpeg', '-v', 'error', '-y', '-i', wav, '-ac', '1', '-ar', String(SAMPLE_RATE),
-      '-c:a', 'libmp3lame', '-b:a', `${BITRATE_KBPS}k`, '-write_xing', '0', '-id3v2_version', '0', tmpOut],
-    { capture: true },
-  );
+  const res = runRemotion(encodeArgs(wav, tmpOut, tempo), { capture: true });
   if (res.status !== 0) throw new Error(`ffmpeg failed for ${wav}: ${res.stderr}`);
   rmSync(outFile, { force: true });
   writeFileSync(outFile, readFileSync(tmpOut));
@@ -182,7 +213,7 @@ export function synthesizeNarration({ only = null, force = false, log = console 
   const sources = loadSources({ storyboard: PATHS.storyboard, narration: PATHS.narration, lexicon: PATHS.lexicon });
   const lexWarn = edgeLexiconWarning(sources.paths.lexicon);
   if (lexWarn) log.warn(`  aviso: ${lexWarn}`);
-  const analysis = analyzeNarration(sources, profileFor(MANIFEST.profile));
+  const analysis = analyzeNarration(sources, { ...profileFor(MANIFEST.profile), track: MANIFEST.track });
   reportOrThrow(analysis, log);
   const { voice, rate, pitch } = analysis.voice;
   if (!isChatterboxVoice(voice)) throw new Error(`narration.voice is "${voice}", not a Chatterbox voice (chatterbox/<es-es|mtl>/<voice>)`);
@@ -235,8 +266,9 @@ export function synthesizeNarration({ only = null, force = false, log = console 
     if (!doneIds.has(seg.id)) continue; // the worker produced no result for this one; see the throw below
     const result = JSON.parse(readFileSync(path.join(WORK_DIR, `${seg.id}.json`), 'utf8'));
     const mp3Path = path.join(PATHS.voiceDir, `${seg.id}.mp3`);
-    const bytes = encodeClip(path.join(WORK_DIR, `${seg.id}.wav`), mp3Path);
+    const bytes = encodeClip(path.join(WORK_DIR, `${seg.id}.wav`), mp3Path, settings.tempo);
     const spoken = spokenForVoice(voice, seg.parsed);
+    const scaled = scaleTimings(result, settings.tempo);
     const record = {
       provider: 'chatterbox',
       key: ttsKey(voice, rate, pitch, spoken),
@@ -249,11 +281,11 @@ export function synthesizeNarration({ only = null, force = false, log = console 
       spoken,
       bytes,
       bitrateKbps: BITRATE_KBPS,
-      durationMs: Math.round(result.durationMs),
+      durationMs: scaled.durationMs,
       seed: result.seed,
       takes: result.takes,
       asr: { model: settings.asr_model, text: result.asrText, score: result.score },
-      words: result.words.map((w) => ({ text: w.text, offsetMs: Math.round(w.startMs), durationMs: Math.max(1, Math.round(w.endMs - w.startMs)) })),
+      words: scaled.words,
     };
     writeFileAtomic(path.join(PATHS.ttsDir, `${seg.id}.json`), `${JSON.stringify(record, null, 1)}\n`);
     if (result.score < settings.min_score) weak.push(`${seg.id} (${result.score.toFixed(2)})`);
@@ -283,12 +315,28 @@ export function neuralLexicon() {
 }
 
 /**
+ * Filename suffix for an audition/mood take when `tempo` or `temperature` differ from
+ * DEFAULT_SETTINGS, so a take at other settings doesn't overwrite the default-settings one
+ * (e.g. tempo 0.8 + temperature 0.7 -> "-t080-temp070").
+ */
+export function auditionSuffix(tempo, temperature) {
+  const parts = [];
+  if (tempo !== DEFAULT_SETTINGS.tempo) parts.push(`t${Math.round(tempo * 100).toString().padStart(3, '0')}`);
+  if (temperature !== DEFAULT_SETTINGS.temperature) parts.push(`temp${Math.round(temperature * 100).toString().padStart(3, '0')}`);
+  return parts.length ? `-${parts.join('-')}` : '';
+}
+
+/**
  * One take per voice with the neural (acronyms-only) lexicon and, when --respelled is
  * given, a second take of the same text with the video's lexicon.json respellings
  * («jash», «jóuld»), so both can be compared by ear. The model loads once per voice.
+ * `tempo`/`temperature` default to DEFAULT_SETTINGS; pass either to audition another value
+ * (the CLI does this with --tempo/--temperature) without touching narration.json.
  */
-export function audition({ voices = ['mtl/default', 'es-es/default'], respelled = false, log = console } = {}) {
+export function audition({ voices = ['mtl/default', 'es-es/default'], respelled = false, tempo = DEFAULT_SETTINGS.tempo, temperature = DEFAULT_SETTINGS.temperature, log = console } = {}) {
   checkSetup();
+  validateTempo(tempo);
+  const variantSuffix = auditionSuffix(tempo, temperature);
   const variants = [{ suffix: '', text: parseSegmentText(AUDITION_TEXT, neuralLexicon()).spoken }];
   if (respelled && existsSync(PATHS.lexicon)) {
     const text = parseSegmentText(AUDITION_TEXT, JSON.parse(readFileSync(PATHS.lexicon, 'utf8'))).spoken;
@@ -300,14 +348,14 @@ export function audition({ voices = ['mtl/default', 'es-es/default'], respelled 
   for (const v of voices) {
     const { pack, voiceName, voiceRef } = parseVoice(`chatterbox/${v}`);
     const name = `${pack}-${voiceName}`;
-    const jobs = variants.map((x) => ({ id: `${name}${x.suffix}`, text: x.text, seed: DEFAULT_SETTINGS.seed }));
-    const status = runWorker(jobFileFor(name, { pack, voiceRef, settings: DEFAULT_SETTINGS, jobs, outDir: dir }), log);
+    const jobs = variants.map((x) => ({ id: `${name}${x.suffix}${variantSuffix}`, text: x.text, seed: DEFAULT_SETTINGS.seed }));
+    const status = runWorker(jobFileFor(name, { pack, voiceRef, settings: { ...DEFAULT_SETTINGS, temperature }, jobs, outDir: dir }), log);
     if (status !== 0) throw new Error(`the Chatterbox worker failed (exit ${status})`);
     for (const job of jobs) {
       const out = path.join(PATHS.auditionDir, `chatterbox-${job.id}.mp3`);
-      encodeClip(path.join(dir, `${job.id}.wav`), out);
+      encodeClip(path.join(dir, `${job.id}.wav`), out, tempo);
       const r = JSON.parse(readFileSync(path.join(dir, `${job.id}.json`), 'utf8'));
-      log.log(`  ${job.id}: ${out} (${(r.durationMs / 1000).toFixed(1)} s, script match ${r.score.toFixed(2)})`);
+      log.log(`  ${job.id}: ${out} (${(scaleTimings(r, tempo).durationMs / 1000).toFixed(1)} s, script match ${r.score.toFixed(2)})`);
     }
   }
 }
@@ -318,27 +366,33 @@ export const MOOD_AUDITION_TEXT =
   'Firewalls y switches no suelen admitir agentes, así que hablan syslog. La nube contesta por API. ' +
   '¿Y los routers? Esos no te cuentan qué se dijo, solo quién habló con quién y cuánto: NetFlow.';
 
-/** One take of MOOD_AUDITION_TEXT per register -> .audition/chatterbox-mood-<register>.mp3. */
-export function moodAudition({ voice = 'es-es/default', log = console } = {}) {
+/**
+ * One take of MOOD_AUDITION_TEXT per register -> .audition/chatterbox-mood-<register>.mp3.
+ * `tempo`/`temperature` default to DEFAULT_SETTINGS; the CLI overrides either with
+ * --tempo/--temperature without touching narration.json.
+ */
+export function moodAudition({ voice = 'es-es/default', tempo = DEFAULT_SETTINGS.tempo, temperature = DEFAULT_SETTINGS.temperature, log = console } = {}) {
   checkSetup();
+  validateTempo(tempo);
+  const variantSuffix = auditionSuffix(tempo, temperature);
   const { pack, voiceName, voiceRef } = parseVoice(`chatterbox/${voice}`);
   const text = parseSegmentText(MOOD_AUDITION_TEXT, neuralLexicon()).spoken;
   const dir = path.join(PATHS.auditionDir, 'chatterbox');
   mkdirSync(PATHS.auditionDir, { recursive: true });
   const jobs = Object.entries(REGISTERS).map(([register, r]) => ({
-    id: `mood-${register}`,
+    id: `mood-${register}${variantSuffix}`,
     text,
     seed: DEFAULT_SETTINGS.seed,
     exaggeration: r.exaggeration,
     cfgWeight: r.cfg_weight,
   }));
-  const status = runWorker(jobFileFor(`moods-${pack}-${voiceName}`, { pack, voiceRef, settings: DEFAULT_SETTINGS, jobs, outDir: dir }), log);
+  const status = runWorker(jobFileFor(`moods-${pack}-${voiceName}`, { pack, voiceRef, settings: { ...DEFAULT_SETTINGS, temperature }, jobs, outDir: dir }), log);
   if (status !== 0) throw new Error(`the Chatterbox worker failed (exit ${status})`);
   for (const job of jobs) {
     const out = path.join(PATHS.auditionDir, `chatterbox-${job.id}.mp3`);
-    encodeClip(path.join(dir, `${job.id}.wav`), out);
+    encodeClip(path.join(dir, `${job.id}.wav`), out, tempo);
     const r = JSON.parse(readFileSync(path.join(dir, `${job.id}.json`), 'utf8'));
-    log.log(`  ${job.id}: ${out} (${(r.durationMs / 1000).toFixed(1)} s, script match ${r.score.toFixed(2)})`);
+    log.log(`  ${job.id}: ${out} (${(scaleTimings(r, tempo).durationMs / 1000).toFixed(1)} s, script match ${r.score.toFixed(2)})`);
   }
 }
 
@@ -352,15 +406,21 @@ function main() {
       voices: { type: 'string' },
       respelled: { type: 'boolean', default: false },
       moods: { type: 'boolean', default: false },
+      tempo: { type: 'string' },
+      temperature: { type: 'string' },
     },
   });
   const list = (s) => s.split(',').map((x) => x.trim()).filter(Boolean);
+  const overrides = {
+    ...(values.tempo !== undefined ? { tempo: Number.parseFloat(values.tempo) } : {}),
+    ...(values.temperature !== undefined ? { temperature: Number.parseFloat(values.temperature) } : {}),
+  };
   if (values.moods) {
-    moodAudition(values.voices ? { voice: list(values.voices)[0] } : {});
+    moodAudition({ ...(values.voices ? { voice: list(values.voices)[0] } : {}), ...overrides });
     return;
   }
   if (values.audition) {
-    audition({ ...(values.voices ? { voices: list(values.voices) } : {}), respelled: values.respelled });
+    audition({ ...(values.voices ? { voices: list(values.voices) } : {}), respelled: values.respelled, ...overrides });
     return;
   }
   synthesizeNarration({ only: values.only ? list(values.only) : null, force: values.force });

@@ -11,10 +11,11 @@ const SHAPES = {
   ExamCue: ['scene', 'from', 'durationInFrames', 'objective', 'text'],
   ThinkPrompt: ['scene', 'from', 'durationInFrames', 'q'],
   InterceptCue: ['scene', 'from', 'durationInFrames', 'adversary', 'text'],
+  SfxCue: ['from', 'sound', 'src', 'durationInFrames', 'volume'],
 };
 
 /** Keys a shape may carry in addition to SHAPES (only written when non-empty). */
-const OPTIONAL = { Timeline: ['intercept'] };
+const OPTIONAL = { Timeline: ['intercept', 'sfx'], InterceptCue: ['audio', 'audioFrom', 'audioFrames'], ExamCue: ['badge'] };
 
 /**
  * @param {object} t timeline
@@ -148,6 +149,7 @@ export function validateTimeline(t, opts = {}) {
     int(e.durationInFrames, `${where}.durationInFrames`, 1);
     str(e.objective, `${where}.objective`);
     str(e.text, `${where}.text`);
+    if (e.badge !== undefined) str(e.badge, `${where}.badge`);
   });
   t.think.forEach((p, k) => {
     const where = `think[${k}]`;
@@ -168,8 +170,29 @@ export function validateTimeline(t, opts = {}) {
         int(x.durationInFrames, `${where}.durationInFrames`, 1);
         str(x.adversary, `${where}.adversary`);
         str(x.text, `${where}.text`);
+        const voiced = ['audio', 'audioFrom', 'audioFrames'].filter((k) => k in x);
+        if (voiced.length && voiced.length < 3) errors.push(`${where}: audio, audioFrom and audioFrames go together`);
+        if (voiced.length === 3) {
+          str(x.audio, `${where}.audio`);
+          int(x.audioFrom, `${where}.audioFrom`, x.from);
+          int(x.audioFrames, `${where}.audioFrames`, 1);
+        }
         const sc = sceneOf.get(x.scene);
         if (sc && (x.from < sc.from || x.from + x.durationInFrames > sc.from + sc.durationInFrames)) errors.push(`${where}: outside its scene`);
+      });
+    }
+  }
+  if (t.sfx !== undefined) {
+    if (!Array.isArray(t.sfx) || !t.sfx.length) errors.push('timeline.sfx: when present, a non-empty array');
+    else {
+      t.sfx.forEach((s, k) => {
+        const where = `sfx[${k}]`;
+        if (!keys(s, 'SfxCue', where)) return;
+        int(s.from, `${where}.from`);
+        str(s.sound, `${where}.sound`);
+        if (typeof s.src !== 'string' || !s.src.startsWith('sfx/')) errors.push(`${where}.src: expected "sfx/<file>"`);
+        int(s.durationInFrames, `${where}.durationInFrames`, 1);
+        if (typeof s.volume !== 'number' || !(s.volume > 0 && s.volume <= 1)) errors.push(`${where}.volume: expected a number in (0, 1]`);
       });
     }
   }

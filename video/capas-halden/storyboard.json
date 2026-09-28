@@ -1,0 +1,124 @@
+{
+  "title": "Defensa en capas: del correo falso al equipo aislado",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 400,
+  "chapters": [
+    { "n": 1, "title": "El ataque" },
+    { "n": 2, "title": "El correo" },
+    { "n": 3, "title": "La red" },
+    { "n": 4, "title": "El endpoint" },
+    { "n": 5, "title": "El resto del mapa" }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Un correo, siete controles",
+      "goal": "Tarde del 3-9-2026 en la Autoridad Portuaria de Halden: un correo entra en el mapa y se encienden siete capas (correo, DNS, web, firewall, IDS/IPS, endpoint, datos, solo en pantalla); ninguna para el ataque sola y cada una contesta una pregunta distinta; enfrente, SILENT PAGER, que cuenta con que el SOC duerma",
+      "targetSec": 32,
+      "wordBudget": 72,
+      "requiredCues": ["map", "mail-in", "layers", "title"]
+    },
+    {
+      "id": "s02-spoof",
+      "chapter": 2,
+      "title": "El correo que parecía de casa",
+      "goal": "Demo: bandeja de Lucía (Operaciones, sala de control del muelle 3) y panel Authentication-Results: spf=pass smtp.mailfrom=hdn-mailer.example; dkim=pass header.d=hdn-mailer.example; dmarc=fail (p=NONE) header.from=haldenport.example. SPF y DKIM validan el dominio del atacante; el From visible es el tuyo y no está alineado, así que DMARC falla; aun así el correo llega",
+      "targetSec": 35,
+      "wordBudget": 73,
+      "requiredCues": ["inbox", "headers", "spf-pass", "dkim-pass", "dmarc-fail"]
+    },
+    {
+      "id": "s03-dmarc",
+      "chapter": 2,
+      "title": "Tres mecanismos encadenados",
+      "goal": "Cadena animada: SPF (registro DNS con las IP autorizadas a enviar por un dominio), DKIM (firma criptográfica del dominio que prueba que el mensaje no se alteró), DMARC (exige que el From visible coincida con el dominio validado por SPF o DKIM, publica la política y activa informes). Demo: dig TXT _dmarc.haldenport.example devuelve v=DMARC1; p=none; rua=…; con none solo informa y el correo entra; con los envíos legítimos confirmados por los informes, la política sube a quarantine y a reject. El email gateway filtra contenido, no la identidad del dominio",
+      "targetSec": 41,
+      "wordBudget": 90,
+      "requiredCues": ["spf", "dkim", "dmarc-align", "policy", "reports", "reject"]
+    },
+    {
+      "id": "s04-dns",
+      "chapter": 3,
+      "title": "DNS filtering",
+      "goal": "Lucía abre el adjunto y habilita el contenido; la macro acaba lanzando PowerShell, que consulta cdn-halden-sync.example (registrado hace 2 días); la reputación lo marca y el DNS filtering no lo resuelve, así que la conexión ni se intenta; límite: el malware recurre a una IP fija por 443 sin consultar el DNS",
+      "targetSec": 30,
+      "wordBudget": 66,
+      "requiredCues": ["open-doc", "resolve", "newly-registered", "blocked", "fallback-ip"]
+    },
+    {
+      "id": "s05-rules",
+      "chapter": 3,
+      "title": "Orden de reglas e implicit deny",
+      "goal": "Demo: tabla de reglas; la regla 7 impide que la red de Operaciones salga directa a Internet, pero la conexión al C2 sale; el paquete baja de arriba abajo y gana la primera coincidencia: la regla 3 (ALLOW any any tcp/443, resto de una migración) sombrea a la 7; lo que no casa con ninguna cae en el implicit deny; se corrige el orden y se añade un deny explícito final con log, que no cambia el resultado pero registra lo descartado",
+      "targetSec": 41,
+      "wordBudget": 86,
+      "requiredCues": ["table", "packet", "first-match", "shadowed", "implicit", "fix"]
+    },
+    {
+      "id": "s06-ids",
+      "chapter": 3,
+      "title": "Detectó pero no bloqueó",
+      "goal": "Sensor en un tap (copia del tráfico): una firma reconoce el patrón de red de la llamada al C2 (no el documento), salta la alerta y el paquete sigue; un IDS fuera de línea detecta y alerta pero no bloquea; un IPS en línea puede descartar el paquete, con el riesgo de que un falso positivo corte tráfico legítimo; lo nunca visto se detecta por anomalías o tendencias (línea base de lo normal)",
+      "targetSec": 32,
+      "wordBudget": 71,
+      "requiredCues": ["tap", "sig-match", "alert", "passes", "inline", "anomaly"]
+    },
+    {
+      "id": "s07-edr",
+      "chapter": 4,
+      "title": "El EDR ve el proceso",
+      "goal": "Demo: consola EDR con el árbol WINWORD.EXE, cmd.exe, powershell.exe -enc … y la conexión 443 a la IP fija; el documento es nuevo y ningún antivirus lo conoce, lo delata el comportamiento; una alerta es sospecha, no prueba: el triaje pide contexto (usuaria, hora, ruta, firma digital del ejecutable); Lucía no esperaba ninguna consola",
+      "targetSec": 35,
+      "wordBudget": 78,
+      "requiredCues": ["tree", "child", "encoded", "conn", "context"]
+    },
+    {
+      "id": "s08-scope",
+      "chapter": 4,
+      "title": "Alcance: la flota y el XDR",
+      "goal": "Antes de limpiar hace falta el alcance: búsqueda del hash, el dominio y el patrón de procesos en los equipos incorporados al EDR; 2 aciertos más, uno de ellos ADM-WS-02, una estación de administración (su destino no se narra); el XDR une las señales de correo, DNS, firewall, IDS y endpoint en un único incidente",
+      "targetSec": 30,
+      "wordBudget": 66,
+      "requiredCues": ["hunt", "hits-2", "adm-ws", "xdr"]
+    },
+    {
+      "id": "s09-isolate",
+      "chapter": 4,
+      "title": "Aislar sin apagar",
+      "goal": "Botón de aislamiento del EDR en el portátil de Lucía: solo queda el canal con la consola; no se apaga porque la RAM es evidencia; se documentan motivo, hora y responsable; pasa la noche aislado y encendido hasta la incautación de las 04:12 del 4-9 (sp4m11); cabo suelto: la credencial de una cuenta de servicio salió antes del aislamiento y aislar no la invalida",
+      "targetSec": 35,
+      "wordBudget": 77,
+      "requiredCues": ["isolate", "edr-channel", "ram", "documented"]
+    },
+    {
+      "id": "s10-data",
+      "chapter": 5,
+      "title": "Datos, dispositivos y personas",
+      "goal": "Cuatro viñetas, cada pregunta con su capacidad: FIM (hash de referencia de la configuración: ¿quién cambió el archivo?), DLP (contrato de practicaje hacia un webmail personal), NAC (identidad y estado; portátil de contratista a la VLAN de cuarentena), UBA (línea base de la persona: descargas masivas a las 03:00)",
+      "targetSec": 35,
+      "wordBudget": 79,
+      "requiredCues": ["fim", "dlp", "nac", "uba"]
+    },
+    {
+      "id": "s11-limits",
+      "chapter": 5,
+      "title": "Lo que no ven",
+      "goal": "El EDR solo ve los equipos incorporados; DMARC protege tu dominio, no los dominios parecidos (lookalikes); telnet, LDAP y SNMPv2c se sustituyen por SSH, LDAPS y SNMPv3, no se restringen por IP; cada capa tiene un punto ciego, por eso se apilan",
+      "targetSec": 27,
+      "wordBudget": 60,
+      "requiredCues": ["unenrolled", "lookalike", "secure-proto"]
+    },
+    {
+      "id": "s12-recap",
+      "chapter": 5,
+      "title": "Para el examen",
+      "goal": "Frases del escenario asociadas a su capacidad (dominio falsificado: DMARC en reject; detectó y no bloqueó: IDS; ninguna regla lo permite: implicit deny); la credencial de servicio reaparece a las 01:52 en el caso del SIEM; tarjeta final Alertópolis",
+      "targetSec": 27,
+      "wordBudget": 59,
+      "requiredCues": ["recap-map", "recap-reflex", "endcard"]
+    }
+  ]
+}

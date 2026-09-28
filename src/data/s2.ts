@@ -591,6 +591,13 @@ Eje tecnológico    : Capability ↔ Infrastructure
         md: 'Fíjate en dos decisiones de tradecraft. Primera: **Adversary se queda en UNKNOWN** — el diamante no te obliga a rellenar lo que no sabes; te obliga a *saber qué te falta* y qué pivote podría llenarlo. Segunda: no todos los pivotes valen igual. El cert TLS **autofirmado** reutilizado en tres servidores es oro — solo el actor lo despliega. La IP del propio E7, un shared hosting con ~14.000 dominios de terceros, es ruido. Y la distinción **operator vs. customer** vive dentro del vértice Adversary: `kazuo.tanji@` (si el pivote confirma) sería el *operator* que registró el dominio; quién encarga y recibe los diseños de propulsión — el *customer* — sigue siendo otra incógnita.',
       },
       {
+        t: 'video',
+        title: 'El Diamond Model en acción: el evento E7',
+        youtube: 'rwMIu0XBoWQ',
+        poster: 'videos/diamond-e7-poster.png',
+        transcript: 'videos/diamond-e7-transcript.txt',
+      },
+      {
         t: 'callout',
         kind: 'example',
         md: 'Evento: beacon HTTPS desde un host de ingeniería a `update-svc-cdn.com`. Victim: workstation de Meridian. Capability: el implante. Infrastructure: el dominio + su IP. Adversary: ¿desconocido aún? El certificado TLS reutilizado y el WHOIS son tus pivotes hacia él.',

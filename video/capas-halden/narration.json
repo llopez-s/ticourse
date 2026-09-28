@@ -1,0 +1,449 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "adversaryVoice": { "voice": "sapi/Microsoft Pablo", "rate": 0, "fx": "machine" },
+  "sfx": {
+    "mail-in": "mail", "spf-pass": "check", "dkim-pass": "check", "dmarc-fail": "error",
+    "reject": "block", "blocked": "block", "implicit": "block", "alert": "alarm",
+    "inline": "block", "hits-2": "ping2", "isolate": "lock", "dlp": "block"
+  },
+  "chatterbox": { "temperature": 0.3 },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<intrigued> {map}Autoridad Portuaria de Halden, [3 de septiembre|tres de septiembre], por la tarde. {mail-in}Por la puerta del correo entra un mensaje, como un contenedor más.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<tense> ¿Quién lo detiene? {layers}En el mapa se encienden siete capas, y cada una contesta una pregunta distinta.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<mischievously> Spoiler: ninguna lo para sola. Por eso esto se llama {title}defensa en capas.",
+      "pauseAfterMs": 750
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<ominous> Enfrente, [SILENT PAGER|Silent Pager], que cuenta con que tu SOC duerma. Hoy sigues su ataque capa por capa.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-spoof",
+      "text": "<casual> Sala de control del [muelle 3|muelle tres]. {inbox}Lucía, de Operaciones, recibe por correo los turnos de atraque. Remite [haldenport.example|haldenport punto example]: de casa.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-spoof",
+      "text": "<curious> ¿Seguro que es de casa? Abres las {headers}cabeceras: la etiqueta de envío que casi nadie mira.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-spoof",
+      "text": "<focused> {spf-pass}SPF da el aprobado. {dkim-pass}DKIM, también. Pero lo que validan es [hdn-mailer.example|hache de ene mailer punto example], el dominio del atacante.",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "SPF y DKIM pasan. ¿Qué falló entonces?",
+        "holdMs": 2300
+      }
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-spoof",
+      "text": "<firm> Falló la alineación. {dmarc-fail}DMARC compara el From que ve Lucía, [haldenport.example|haldenport punto example], con el dominio validado. No coinciden: suspenso.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "4.5",
+        "text": "SPF y DKIM no bastan: DMARC exige alineación",
+        "at": "dmarc-fail",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-spoof",
+      "text": "<intrigued> Dos aprobados y un suspenso, y el correo está en su bandeja. ¿Cómo ha entrado?",
+      "pauseAfterMs": 750
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-dmarc",
+      "text": "<clear> {spf}SPF es la lista de mensajeros autorizados: un registro DNS con las IP que pueden enviar en nombre de un dominio.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-dmarc",
+      "text": "<warm> {dkim}DKIM es el sello de lacre de un dominio. Su firma dice qué dominio firmó y que el mensaje no cambió después.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-dmarc",
+      "text": "<firm> Ninguno de los dos exige que ese dominio sea el del From. {dmarc-align}DMARC sí: exige que coincida con el dominio que validó SPF o DKIM.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-dmarc",
+      "text": "<sarcastic> Duele, pero acierta. Tu DNS publica {policy}[p=none|pe igual none]: DMARC solo informa, y el correo entra igual.",
+      "pauseAfterMs": 700,
+      "intercept": {
+        "text": "Tu DMARC solo mira, como tu turno de noche. Y yo, dentro.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-dmarc",
+      "text": "<curious> ¿Para qué sirve eso? {reports}Para los informes: quién envía en tu nombre, antes de apretar.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-dmarc",
+      "text": "<confident> Cuando lo legítimo ya pasa, subes a quarantine: a spam o a cuarentena. {reject}Y luego a reject: rechazado en la puerta.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "4.5",
+        "text": "DMARC p=none solo informa; p=reject bloquea",
+        "at": "reject",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-07",
+      "scene": "s03-dmarc",
+      "text": "<thoughtful> ¿Y el email gateway? Filtra spam, malware y enlaces: su terreno es el contenido. La identidad del dominio la decide DMARC.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-dns",
+      "text": "<tense> Lucía {open-doc}abre el adjunto y habilita el contenido. La macro acaba lanzando [PowerShell|Powershell].",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-dns",
+      "text": "<curious> ¿Y qué es lo primero que hace? Mirar la guía: {resolve}pregunta al DNS por [cdn-halden-sync.example|ce de ene halden sinc punto example].",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-dns",
+      "text": "<suspicious> Un dominio {newly-registered}registrado hace dos días. La reputación lo marca como sospechoso.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-dns",
+      "text": "<satisfied> {blocked}El DNS filtering no le devuelve la dirección. Sin dirección, la conexión ni siquiera se intenta.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "4.5",
+        "text": "DNS filtering corta antes de conectar",
+        "at": "blocked",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-dns",
+      "text": "<concerned> Pero el malware trae un plan B: {fallback-ip}una IP fija, por el [443|cuatro cuatro tres]. Sin consulta DNS, este filtro no se entera.",
+      "pauseAfterMs": 700
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-rules",
+      "text": "<engaging> Siguiente capa: el firewall. {table}Su [regla 7|regla siete] prohíbe que los equipos de Operaciones salgan directos a Internet.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-rules",
+      "text": "<suspicious> Y aun así, la conexión con el C2, el mando y control, sale tan tranquila.",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "La regla 7 debía bloquear el C2. ¿Por qué pasó?",
+        "holdMs": 2400
+      }
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-rules",
+      "text": "<clear> El firewall lee de arriba abajo, como un portero con su lista. {packet}El paquete baja y {first-match}gana la primera regla que encaja.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-rules",
+      "text": "<sarcastic> La [regla 3|regla tres], resto de una migración, deja pasar todo por el [443|cuatro cuatro tres]. {shadowed}La siete ni se llega a leer.",
+      "pauseAfterMs": 800
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-rules",
+      "text": "<calm> ¿Y lo que no encaja en ninguna? {implicit}Cae en el implicit deny: lo que no se permite, se bloquea.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "4.5",
+        "text": "Gana la primera que encaja; al final, implicit deny",
+        "at": "implicit",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-rules",
+      "text": "<satisfied> {fix}Se retira la [regla 3|regla tres] sobrante y se añade un deny final con log. Ese deny no cambia el resultado: registra lo descartado.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-ids",
+      "text": "<intrigued> Tras el firewall, un sensor escucha en un {tap}tap: recibe una copia del tráfico, como una cámara.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-ids",
+      "text": "<tense> {sig-match}Una firma reconoce el patrón de red de esa llamada. {alert}Salta la alerta. Y {passes}el paquete sigue su camino.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-ids",
+      "text": "<firm> No podía: es un IDS. Mira una copia, así que alerta, pero no bloquea.",
+      "pauseAfterMs": 600,
+      "intercept": {
+        "text": "Tu sensor me vio pasar. Qué detalle. Ni se levantó de la silla.",
+        "holdMs": 4000
+      }
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-ids",
+      "text": "<confident> Para bloquear, un IPS {inline}en línea: descarta el paquete, aunque un falso positivo cortaría tráfico legítimo.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "4.5",
+        "text": "IDS detecta sin bloquear; IPS va en línea",
+        "at": "inline",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-ids",
+      "text": "<curious> ¿Y lo nunca visto? Para eso está la detección por {anomaly}anomalías: aprende lo normal y avisa si algo se desvía.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-edr",
+      "text": "<focused> Abres la consola del EDR y ves el {tree}árbol de procesos del portátil de Lucía.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-edr",
+      "text": "<mischievously> ¿Desde cuándo Word tiene hijos? {child}Este abre una consola, y de ella sale [PowerShell|Powershell] {encoded}con un comando codificado.",
+      "pauseAfterMs": 700
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-edr",
+      "text": "<serious> Luego, {conn}una conexión al [443|cuatro cuatro tres]. El documento es nuevo y ningún antivirus lo conoce: lo delata su comportamiento.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "4.5",
+        "text": "Malware a medida: comportamiento, no firmas",
+        "at": "conn",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-edr",
+      "text": "<steady> ¿Basta para condenar? No: una alerta es sospecha, no prueba. El triaje pide {context}contexto: usuaria, hora, ruta y firma digital del ejecutable.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-edr",
+      "text": "<warm> Lucía abrió el adjunto, sí, pero no esperaba ninguna consola. La sospecha crece.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-scope",
+      "text": "<curious> ¿Es solo este portátil? Antes de limpiar nada, necesitas el alcance.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-scope",
+      "text": "<focused> {hunt}Buscas el hash del documento, el dominio y el patrón de procesos en todos los equipos con agente.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-scope",
+      "text": "<tense> {hits-2}Dos aciertos más. Uno es {adm-ws}[ADM-WS-02|a de eme uve doble ese cero dos], una estación de administración: donde viven las llaves.",
+      "pauseAfterMs": 750
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-scope",
+      "text": "<engaging> Cada capa tenía una pieza del puzle. {xdr}El XDR las une, del correo al endpoint, en un solo incidente.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "4.5",
+        "text": "XDR une endpoint, correo, red e identidad",
+        "at": "xdr",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-scope",
+      "text": "<thoughtful> Por separado, cada aviso parecía poca cosa. Juntos, cuentan el ataque entero.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-isolate",
+      "text": "<emphatic> Ni hablar. No lo apagas: {isolate}lo aíslas desde el EDR.",
+      "pauseAfterMs": 550,
+      "intercept": {
+        "text": "Apágalo. Un reinicio y aquí no ha pasado nada.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-isolate",
+      "text": "<calm> {edr-channel}Solo queda abierto el canal con la consola. Como un barco en cuarentena: nadie sube ni baja, pero la radio funciona.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "4.5",
+        "text": "EDR aísla el equipo sin apagarlo",
+        "at": "edr-channel",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-isolate",
+      "text": "<serious> ¿Por qué encendido? Porque {ram}la RAM es evidencia: procesos, conexiones y claves que se pierden al apagar.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-isolate",
+      "text": "<steady> Todo queda {documented}documentado: motivo, hora y responsable. Y así pasará la noche, hasta que lo incauten [a las 04:12|a las cuatro y doce de la madrugada].",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-isolate",
+      "text": "<ominous> Lo que aún nadie sabía: antes de aislarlo, ya había salido la credencial de una cuenta de servicio. Aislar no la invalida.",
+      "pauseAfterMs": 900
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-data",
+      "text": "<engaging> Quedan cuatro preguntas. ¿Alguien ha tocado este archivo? {fim}FIM guarda un hash de referencia y avisa si cambia: como cotejar la carga con su manifiesto.",
+      "pauseAfterMs": 550,
+      "exam": {
+        "objective": "4.5",
+        "text": "¿Alguien cambió el archivo? FIM",
+        "at": "fim",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-data",
+      "text": "<suspicious> ¿Se nos va información? {dlp}DLP ve el contrato de practicaje camino de un webmail personal, y lo bloquea.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-data",
+      "text": "<firm> ¿Debería ese equipo estar en la red? {nac}NAC revisa identidad y estado, y el portátil del contratista acaba en una VLAN de cuarentena.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-data",
+      "text": "<mischievously> ¿Y esa cuenta que descarga en masa [a las 03:00|a las tres de la mañana]? {uba}UBA conoce sus costumbres, y esa no es una de ellas.",
+      "pauseAfterMs": 750
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-limits",
+      "text": "<serious> Ahora, lo que no ven. {unenrolled}El EDR solo ve los equipos con su agente. Uno sin agente, para él, no existe.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-limits",
+      "text": "<intrigued> ¿Y un dominio con un cero en vez de una o? {lookalike}DMARC protege tu dominio, no sus imitaciones.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-limits",
+      "text": "<emphatic> ¿Y telnet, LDAP o [SNMPv2c|ese ene eme pe uve dos ce]? {secure-proto}Se sustituyen por SSH, LDAPS y [SNMPv3|ese ene eme pe uve tres]. Restringirlos por IP no basta: siguen viajando en claro.",
+      "pauseAfterMs": 550,
+      "exam": {
+        "objective": "4.5",
+        "text": "Protocolo en claro: sustituir, no restringir",
+        "at": "secure-proto",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s11-04",
+      "scene": "s11-limits",
+      "text": "<thoughtful> Cada capa tiene un punto ciego. Por eso se apilan, una tras otra.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-recap",
+      "text": "<warmly> {recap-map}[SILENT PAGER|Silent Pager] contaba con que tu SOC durmiera. Hoy, capa a capa, cada control contestó su pregunta.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-recap",
+      "text": "<confident> {recap-reflex}Para el examen: ¿falsifican tu dominio? DMARC en reject. ¿Detectó y no bloqueó? Un IDS. ¿Ninguna regla lo permite? Implicit deny.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-recap",
+      "text": "<intrigued> Y esa credencial de servicio volverá de madrugada, [a la 01:52|a la una y cincuenta y dos]. Pero esa ya es otra alerta: la del SIEM.",
+      "pauseAfterMs": 850
+    },
+    {
+      "id": "s12-04",
+      "scene": "s12-recap",
+      "text": "<cheerful> {endcard}Ahora te toca a ti: las preguntas de esta lección te esperan en Alertópolis.",
+      "pauseAfterMs": 600
+    }
+  ]
+}
