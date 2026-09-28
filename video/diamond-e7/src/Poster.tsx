@@ -62,7 +62,7 @@ export function Poster() {
             GCTI · Intrusion Analysis
           </Chip>
           <Chip accent="muted" icon="clock" size={30}>
-            ~7 min
+            ~8 min
           </Chip>
         </div>
         <Chip accent="muted" size={26} style={{ color: C.muted }}>

@@ -1,0 +1,38 @@
+El Diamond Model en acción: el evento E7
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC
+
+[00:00] I · Qué es — 02:13 UTC, un beacon
+Madrugada del 5 de marzo en Meridian Dynamics. A las 02:13 UTC, salta una alerta en el SOC. ¿Qué ha pasado? La estación ENG-WS-041, de ingeniería de propulsión, llama por HTTPS a un dominio que nadie conoce. Más o menos cada minuto. Un beacon suelto es solo un dato. Para entenderlo te haces cuatro preguntas: quién, con qué, a través de qué y contra quién. Cuatro preguntas, cuatro esquinas. Eso es el Diamond Model, y hoy lo construyes con este evento: E7.
+
+[00:43] I · Qué es — El axioma
+El modelo parte de un axioma. En cada intrusión, un adversario da un paso hacia un objetivo. Para darlo usa una capacidad, sobre una infraestructura, contra una víctima. ¿Lo ves? Son las cuatro preguntas de antes. Adversary: quién. Capability: con qué. Infrastructure: a través de qué. Victim: contra quién. [Mensaje interceptado · GLASS VIPER] «Dibuja tu diamante. Siempre te faltará una esquina: la mía.» Puede. Pero un diamante con una esquina vacía ya sirve. ¿Por qué? Porque las aristas unen los vértices: conoces uno y puedes buscar los demás.
+
+[01:24] II · Los cuatro vértices — Víctima y capability
+Empiezas por lo que tienes: tu propia telemetría. En pantalla, las líneas crudas del EDR de esa madrugada. ¿Qué pertenece a la víctima? El equipo, ENG-WS-041, y la empresa, Meridian Dynamics. Los dos van a Victim. ¿Y con qué te atacan? El hash del binario, 9f3a...e1, es el implante GLASS VIPER, un loader. Va a Capability. Y este detalle, también: el named pipe vc_pipe_%08x. Si recompilan, el hash cambia. El patrón del pipe suele seguir ahí, como un acento.
+
+[02:06] II · Los cuatro vértices — Infraestructura
+¿Y a través de qué habla ese implante? De un dominio: update-svc-cdn.com. Ese dominio resuelve a una IP de 185.220.x.x. Y el servidor presenta un certificado TLS autofirmado: CN=updatesvc. Dominio, IP, servidor y certificado: todo eso es Infrastructure. Es la carretera por la que viaja la herramienta. Y aquí cae media clase. ¿El implante es infraestructura porque se conecta? No. El implante es Capability, y el dominio al que llama, Infrastructure.
+
+[02:48] II · Los cuatro vértices — UNKNOWN está bien
+Queda una esquina. ¿Quién está detrás? Respuesta honesta: no lo sabes. Y escribes UNKNOWN. [Mensaje interceptado · GLASS VIPER] «Llámame GLASS VIPER, si te consuela. Mi nombre no lo sabrás.» Ese apodo se lo pusiste tú: un nombre de seguimiento para el implante y quien lo usa. No es una identidad, así que Adversary sigue en UNKNOWN. La tentación es clara: rellenar la esquina con el nombre de quien sospechas. No. UNKNOWN con un plan vale más que un nombre inventado. Anotas el pivote pendiente: el WHOIS histórico del dominio. ¿Y si un día sale un nombre? El operator es quien teclea: registra el dominio y lanza el implante. El customer lo encarga y se queda el botín: los diseños de propulsión. Pueden ser gente distinta, y los dos viven en Adversary.
+
+[03:42] III · Meta-features y ejes — Meta-features
+El diamante dice quién, con qué, por dónde y contra quién. ¿Y el resto del contexto? Va en las meta-features. La ficha de E7 se rellena campo a campo. Hora: 02:13 UTC. Fase de la kill chain: Command and Control. Resultado: éxito, el beacon salió. Dirección: de la víctima hacia la infraestructura. Metodología: beacon HTTPS cada sesenta segundos, con jitter. Es un latido con algo de temblor, para no sonar a reloj. Y recursos: hosting, dominio y certificado TLS. Es lo que el adversario tuvo que conseguir para que todo funcionara.
+
+[04:24] III · Meta-features y ejes — Dos ejes
+Ahora traza dos diagonales. La primera une Adversary y Victim: es el eje socio-político. ¿Qué pregunta ese eje? Por qué esta víctima. ¿Por qué Meridian? Por su propiedad intelectual de propulsión: es lo que necesita el customer. La segunda une Capability e Infrastructure: el eje tecnológico. Cuenta cómo se despliega la técnica: implante, dominio, hosting y certificado. Un eje explica el porqué, y el otro, el cómo. Con los dos, el ataque empieza a tener sentido.
+
+[04:59] IV · Pivotar — Pivotar entre vértices
+Y aquí el diamante deja de ser una ficha y se vuelve herramienta. Cada vértice conocido ilumina a los demás. ¿Cómo? De la víctima, tus logs, sacas la muestra: capability. De la muestra sacas el C2 que lleva escrito dentro: infraestructura. De ese C2 salen otras muestras que llaman al mismo sitio: más capability. Y a veces, un descuido del adversario, como el email con que registró un dominio. Cada vuelta del bucle hace crecer el grafo. ¿Te suena a juego? Es justo lo que harás en el Lab 3A.
+
+[05:37] IV · Pivotar — No todos los pivotes valen igual
+[Mensaje interceptado · GLASS VIPER] «Sígueme por la IP. Tengo catorce mil vecinos deseando conocerte.» Qué amable. Esa IP es hosting compartido: unos catorce mil dominios de terceros viven en ella. Tienes dos caminos: esa IP, o el certificado autofirmado CN=updatesvc. ¿Por la IP? No. Catorce mil vecinos inocentes son catorce mil pistas falsas: ruido. Ese certificado autofirmado, en cambio, solo lo despliega el actor. Y aparece en dos IP más. Eso es oro. El WHOIS histórico sigue pendiente. La regla, para siempre: un recurso dedicado discrimina, y uno compartido contamina.
+
+[06:26] IV · Pivotar — De evento a hilo
+Dos días después aparece E9. Mismo implante, misma metodología. Pero ahora, en Actions on Objectives. ¿Qué significa eso? Que ya no solo avisa de que está dentro. Ahora va a por lo que vino a buscar. Ordenas los eventos en el tiempo y a lo largo de la kill chain. E7 y E9 dejan de ir sueltos: forman un activity thread. Un evento es una foto. Un hilo es la película. Y esa película la montas en la lección siguiente.
+
+[06:57] V · Límites y examen — Lo que el diamante no hace
+¿Y qué no hace el diamante? No atribuye por sí solo. Poner nombre real al adversario exige muchas más pruebas que un vértice relleno. Un evento tampoco es una campaña. Un diamante describe un solo paso de la intrusión. La campaña aparece al juntar muchos hilos. Su valor real es el plan de pivotes: qué sabes, qué te falta y por dónde buscarlo.
+
+[07:22] V · Límites y examen — Para el examen
+Para el examen, llévate esto. Cuatro vértices. El implante es Capability, y el dominio, Infrastructure. Operator teclea, customer encarga. UNKNOWN vale si lleva un plan. ¿Y al pivotar? Mejor lo dedicado que lo compartido. Ahora sigue esos pivotes en la lección de infraestructura: passive DNS, WHOIS y certificados. Nos vemos allí.
