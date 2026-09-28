@@ -248,6 +248,9 @@ Las exam cards se listan en el orden de las escenas:
 - **Retirar con V1** (con confirmación):
   - `public/videos/edr-blue-team.*`
   - `public/videos/edr/voice/*.wav`: 4,3 MB que hoy se publican a los usuarios.
+  - **HECHO (2026-09-28):** V1 publicado en YouTube (`GfjE0lP2H0s`) y enlazado en sp4m7 (PR #12). Lidia confirmó
+    retirar `public/videos/edr-blue-team.*`. Los WAV ya no estaban en git (los ignora `.gitignore`) y se
+    borraron en local.
 - **No retirar con V1:** la carpeta `video/edr/` y sus scripts se quedan hasta P2. `generate-elevenlabs.mjs` se amplió hoy y puede ser la implementación de referencia de ElevenLabs.
 
 ### V2 · sp4m11 · Cápsula · «Adquisición forense: capturar sin contaminar»

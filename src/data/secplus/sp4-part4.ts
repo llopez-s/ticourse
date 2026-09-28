@@ -105,14 +105,6 @@ const sp4m7: Module = {
       md: 'Las últimas capacidades del objetivo se distinguen mejor por la pregunta que contestan. El **file integrity monitoring (FIM)** calcula un hash de referencia de los archivos críticos —configuración, binarios del sistema, contenido web— y avisa cuando cambian: responde a **«¿alguien ha modificado esto y cuándo?»**, que es justo lo que hace falta tras una intrusión o para demostrar cumplimiento. El **data loss prevention (DLP)** inspecciona el dato en movimiento, en uso y en reposo buscando patrones o etiquetas —números de contenedor, datos personales, el contrato de practicaje— y bloquea o registra la salida por correo, USB o nube: responde a **«¿se está yendo información que no debería salir?»**. El **network access control (NAC)** decide **si un dispositivo puede siquiera estar en la red**, comprobando identidad y estado de salud (parches, agente, cifrado) antes de conceder acceso, y derivando a una VLAN de cuarentena lo que no cumple. El **EDR** (*endpoint detection and response*) vigila el comportamiento del endpoint —procesos, ejecuciones, persistencia—, permite **aislar el equipo** y deja la telemetría para la investigación; el **XDR** es la evolución que **correlaciona** esa telemetría con la del correo, la red, la identidad y la nube para reconstruir una cadena que en un solo endpoint parecería inocua. Es lo que verás en el vídeo de esta lección: la tarde del 3 de septiembre, el portátil de Lucía, de Operaciones, queda aislado desde el EDR, sin apagarlo. Y el **user behavior analytics (UBA)** construye una línea base **de la persona**, no de la máquina: descargas masivas a las tres de la mañana, un acceso desde dos países en veinte minutos o una cuenta que empieza a tocar sistemas que nunca usó.',
     },
     {
-      t: 'video',
-      title: 'EDR en acción: de la alerta a la respuesta · narración de elevenlabs.io',
-      src: 'videos/edr-blue-team.mp4',
-      poster: 'videos/edr-blue-team-poster.png',
-      transcript: 'videos/edr-blue-team-transcript.txt',
-      captions: 'videos/edr-blue-team-captions.vtt',
-    },
-    {
       t: 'table',
       headers: ['Lo que necesitas conseguir', 'Capacidad esperada', 'Dónde se sitúa'],
       rows: [
@@ -172,6 +164,17 @@ const sp4m7: Module = {
         explain:
           'DLP inspects content leaving the organisation and can block or log a transfer that matches a sensitive pattern or classification label, which is exactly this case. EDR is the tempting distractor because it also runs on the endpoint, but it looks for malicious process behaviour rather than for authorised software moving sensitive data.',
       },
+    },
+    {
+      t: 'p',
+      md: 'Antes de la nota de examen, júntalo todo en un solo ataque. El vídeo lo sigue capa por capa: desde el correo falso que recibe **Lucía**, de Operaciones, en la sala de control del muelle 3, hasta su portátil aislado y encendido. Fíjate en qué control lo ve, cuál falla y por qué.',
+    },
+    {
+      t: 'video',
+      title: 'Defensa en capas: del correo falso al equipo aislado',
+      youtube: 'GfjE0lP2H0s',
+      poster: 'videos/capas-halden-poster.png',
+      transcript: 'videos/capas-halden-transcript.txt',
     },
     {
       t: 'callout',
