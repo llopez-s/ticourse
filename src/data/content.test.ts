@@ -267,6 +267,7 @@ describe('lesson videos', () => {
   it('the explainers sit in the lessons the video plan puts them in', () => {
     expect(moduleOf('videos/siem-blue-team.mp4')).toBe('sp4m6');
     expect(moduleOf('videos/forense-adquisicion.mp4')).toBe('sp4m11');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'rwMIu0XBoWQ')?.module).toBe('s2m3');
   });
 
   it('every video block points at relative public assets that exist', async () => {
