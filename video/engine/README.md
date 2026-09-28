@@ -438,7 +438,7 @@ Dos pasos opcionales, en Python (venv de Chatterbox con `pip install pedalboard 
   así que Whisper y los cortes no se mueven. **No reduce ruido**: una grabación con silencios digitales ya viene
   sin ruido y una segunda pasada solo añade artefactos. `--ab` escribe un antes/después igualado en volumen.
 - **`scripts/master_mix.py`**, sobre el MP4 ya renderizado: añade un **ambiente** generado aquí (pad oscuro con un
-  acorde por capítulo, fundido en cada cambio, más un tono de sala muy bajo; unos 20–25 LU por debajo de la voz y
+  acorde por capítulo, fundido en cada cambio, más un tono de sala muy bajo; unos 14 LU por debajo de la voz antes de atenuarse y
   6 dB más bajo mientras alguien habla, según el timeline), lleva el programa a **−14 LUFS** (YouTube) y limita el
   pico real a **−1 dBTP** (detección 4× sin latencia). El vídeo se copia tal cual; el audio sale en AAC 192 kbps.
   `--bed-db` sube o baja el ambiente, `--no-bed` lo quita.

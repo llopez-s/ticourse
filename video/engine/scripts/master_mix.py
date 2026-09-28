@@ -5,7 +5,7 @@
 
 1. Takes the rendered MP4's audio (narration + adversary voice + sound effects, as Remotion mixed them).
 2. Adds an ambient bed generated here (no samples, no licences): a soft dark pad with one chord per
-   chapter, crossfaded at each chapter change, over a very low room tone. It sits ~20 LU under the
+   chapter, crossfaded at each chapter change, over a very low room tone. It sits ~14 LU under the
    voice and ducks 6 dB more whenever someone speaks (the timeline says when), so it mostly fills
    the pauses, think prompts and transitions. Fades in at the start and out on the end card.
 3. Sets the integrated loudness to --target (YouTube: -14 LUFS) and limits true peaks to --ceiling
@@ -26,6 +26,8 @@ from scipy import signal
 from scipy.ndimage import minimum_filter1d
 
 SR = 48000
+# How far under the program the bed sits before ducking (the listener's first draft asked for more than 20).
+BED_UNDER_LU = 14.0
 # One chord per chapter (D minor colour): Dm7, Bbmaj7, Gm9, Asus4, Dm(add9). Low register, under the voice.
 CHORDS = [
     [73.42, 110.00, 174.61, 261.63],
@@ -170,8 +172,8 @@ def main():
         mix = prog.copy()
         if not args.no_bed:
             bed = ambient_bed(timeline, n)
-            # Bed ~20 LU under the program, then 6 dB lower while anyone speaks.
-            bed *= 10 ** ((prog_lufs - 20 + args.bed_db - meter.integrated_loudness(bed)) / 20)
+            # Bed ~14 LU under the program, then 6 dB lower while anyone speaks.
+            bed *= 10 ** ((prog_lufs - BED_UNDER_LU + args.bed_db - meter.integrated_loudness(bed)) / 20)
             duck = 10 ** (-6 * smooth(speech_mask(timeline, n), 250) / 20)
             bed *= duck[:, None]
             print(f"  bed: {meter.integrated_loudness(bed):.1f} LUFS ({meter.integrated_loudness(bed) - prog_lufs:+.1f} LU vs program)")
