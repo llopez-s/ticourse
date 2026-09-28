@@ -1,0 +1,188 @@
+{
+  "title": "Pivotar por la infraestructura: passive DNS, WHOIS y certificados",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 388,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "El rastro"
+    },
+    {
+      "n": 2,
+      "title": "Passive DNS"
+    },
+    {
+      "n": 3,
+      "title": "Certificados"
+    },
+    {
+      "n": 4,
+      "title": "WHOIS y ciclo de vida"
+    },
+    {
+      "n": 5,
+      "title": "Pasivo primero"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Tres pistas en el aire",
+      "goal": "Vuelve E7 (V3): la ficha de infraestructura con dos pivotes pendientes, el certificado autofirmado CN=updatesvc «visto en 2 IP más» y el «WHOIS histórico: pendiente» (NUNCA mostrar el email ni ningún registrante aquí: se revela en s07); la IP 185.220.x.x ya marcada como «ruido». Para operar, el adversario registra dominios, alquila servidores y les pone certificados: todo deja rastro público o semipúblico. Su infraestructura es lo que más se le ve; seguir ese rastro es pivotar por la infraestructura",
+      "targetSec": 32,
+      "wordBudget": 86,
+      "requiredCues": [
+        "e7-pending",
+        "register",
+        "rent",
+        "serve",
+        "title"
+      ]
+    },
+    {
+      "id": "s02-sources",
+      "chapter": 1,
+      "title": "Tres fuentes, tres preguntas",
+      "goal": "Tres tarjetas, cada una con su pregunta: passive DNS (a qué apuntaba un dominio y quién más vive en esa IP), WHOIS (quién lo registró y cuándo), certificados TLS (qué certificado presenta cada servidor y dónde se repite). Las tres se consultan sin que el actor se entere (se retoma en s10)",
+      "targetSec": 30,
+      "wordBudget": 81,
+      "requiredCues": [
+        "pdns",
+        "whois",
+        "tls"
+      ]
+    },
+    {
+      "id": "s03-pdns",
+      "chapter": 2,
+      "title": "El listín con memoria",
+      "goal": "Demo de consola. DNS = listín (nombre a número); passive DNS = el listín con memoria: sensores repartidos por Internet anotan las respuestas que ven pasar, con fecha. Consulta 1, por dominio: pdns lookup update-svc-cdn.com da 185.220.x.x con first seen 2026-02-11 y last seen 2026-03-07 (seguía activa después de E7). Consulta 2, al revés: pdns ip 185.220.x.x hace subir un contador hasta 14.000 dominios. Pausa para pensar: ¿sigues por ahí?",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "requiredCues": [
+        "phonebook",
+        "q-domain",
+        "history",
+        "q-ip",
+        "count-14000"
+      ]
+    },
+    {
+      "id": "s04-tenants",
+      "chapter": 2,
+      "title": "¿Cuántos inquilinos?",
+      "goal": "Respuesta: no. La IP es hosting compartido, un bloque con 14.000 pisos: vivir en el mismo bloque no hace cómplices a los vecinos, y seguirlos a todos ahoga en pistas falsas. Igual de ruidosos: IP de CDN (sirve webs de miles de empresas) y sinkhole (recoge dominios cazados de actores distintos); en pantalla también nameservers genéricos del registrador y certificados de CA gratuitas masivas. Lo contrario, recurso dedicado (una casa donde solo vive él): VPS propio, certificado autofirmado hecho a medida, email de registro real. Regla: cuenta los inquilinos del recurso. Compartido contamina (te trae a los vecinos), dedicado discrimina (te lleva solo a él)",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "building",
+        "shared",
+        "cdn",
+        "dedicated",
+        "rule"
+      ]
+    },
+    {
+      "id": "s05-cert",
+      "chapter": 3,
+      "title": "La llave hecha a mano",
+      "goal": "Demo. El C2 presenta un certificado TLS autofirmado hecho a medida (CN=updatesvc, SHA1 d4:7e:02…): hecho por el propio actor, sin CA. Mensaje interceptado de HOLLOW LANTERN y respuesta: eso lo delata, como una llave hecha a mano que abre otra puerta. Su huella (el código que lo identifica) se busca en datos de escaneo de Internet: 3 IP (185.220.x.x, el bloque; 141.98.6.10, con muy pocos inquilinos; una tercera totalmente difuminada, SIN etiqueta de Lab 3A). Passive DNS de 141.98.6.10: meridian-sso-portal.com (portal falso de inicio de sesión de Meridian: phishing) y dos vecinos difuminados «(Lab 3A)». El C2 y el phishing comparten llave: pista muy fuerte de un mismo dueño (no certeza)",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "fp",
+        "scan",
+        "hits",
+        "dedicated-ip",
+        "phish-link",
+        "redacted"
+      ]
+    },
+    {
+      "id": "s06-ct",
+      "chapter": 3,
+      "title": "El tablón de certificados",
+      "goal": "Certificate Transparency: toda CA pública publica cada certificado que firma en registros abiertos, como un tablón que cualquiera puede leer. Sirve para ver infraestructura nueva mientras se monta: aparece un certificado recién emitido para un dominio que imita a Meridian, con el nombre TOTALMENTE difuminado (bloques) y la etiqueta «imita a Meridian» (no inventar ningún nombre legible: meridian-hr-portal.com es del Lab 3A). Dos avisos: los autofirmados no pasan por el tablón (se buscan en escaneos) y los de CA gratuitas masivas se emiten por millones, así que el emisor no dice nada (como seguir a todo el bloque) y lo que pivota es la huella exacta",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "requiredCues": [
+        "ct-board",
+        "new-sub",
+        "free-ca",
+        "exact"
+      ]
+    },
+    {
+      "id": "s07-whois",
+      "chapter": 4,
+      "title": "El WHOIS tiene memoria",
+      "goal": "WHOIS = ficha de registro (quién, cuándo, en qué tienda: el registrador). El del dominio del C2, update-svc-cdn.com, hoy está REDACTED FOR PRIVACY. Mensaje interceptado de HOLLOW LANTERN y respuesta: hoy sí, pero hay WHOIS histórico de antes de la privacidad; la ficha de 2025 muestra el email de contacto kazuo.tanji@protonmail.com (puede ser un alias, pero es un pivote dedicado). Sin email seguiría el patrón de registro: mismo registrador, mismos nameservers, mismo día; cada dato suelto no dice nada, juntos lo delatan. Nunca se muestran los dominios a los que lleva ese email (Lab 3A)",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "whois-redacted",
+        "whois-history",
+        "email",
+        "pattern"
+      ]
+    },
+    {
+      "id": "s08-lifecycle",
+      "chapter": 4,
+      "title": "Vida de un dominio malicioso",
+      "goal": "Línea temporal del ciclo de vida: registro en lote (varios hermanos el mismo día), dormido/aparcado semanas o meses para envejecer y esquivar los filtros de reputación por edad, activación (el DNS apunta a infraestructura operativa), uso en la campaña, quemado al detectarse, abandono o reventa. Pausa para pensar: ¿se puede bloquear antes del primer uso?",
+      "targetSec": 30,
+      "wordBudget": 81,
+      "requiredCues": [
+        "batch",
+        "parked",
+        "active",
+        "use",
+        "burned"
+      ]
+    },
+    {
+      "id": "s09-preblock",
+      "chapter": 4,
+      "title": "Ir por delante",
+      "goal": "Sí: detectar el patrón de registro en lote descubre a los hermanos antes de que despierten; se buscan los dominios con el mismo patrón y el mismo día (en pantalla, TOTALMENTE difuminados, aún dormidos) y se bloquean antes del primer correo. En la matriz de cursos de acción (s2m2) es un Deny. Por una vez vas por delante del ataque",
+      "targetSec": 28,
+      "wordBudget": 76,
+      "requiredCues": [
+        "batch-detect",
+        "siblings",
+        "pre-block",
+        "coa-deny"
+      ]
+    },
+    {
+      "id": "s10-opsec",
+      "chapter": 5,
+      "title": "Sin que te vea",
+      "goal": "Colección pasiva: pDNS, CT y WHOIS histórico leen observaciones de terceros y el actor no te ve (listín, tablón, fichas). Mensaje interceptado de HOLLOW LANTERN (ven a verme) y respuesta: visitar o escanear su servidor es colección activa, deja tu visita en sus logs y puede darse cuenta de que vas detrás. Pasivo primero; si hay que tocar, desde un entorno desechable sin huella corporativa (managed attribution, s3m4)",
+      "targetSec": 30,
+      "wordBudget": 81,
+      "requiredCues": [
+        "passive",
+        "active-risk",
+        "managed"
+      ]
+    },
+    {
+      "id": "s11-recap",
+      "chapter": 5,
+      "title": "Para el examen",
+      "goal": "Reflejos con las mismas imágenes del vídeo: listín con memoria, cuenta los inquilinos, la misma llave hecha a mano en dos servidores apunta a un mismo dueño, el tablón enseña lo que montan, el WHOIS tiene memoria, investigas sin que el actor se entere y, si pillas el lote, bloqueas antes del primer uso. Tarjeta final: ahora te toca en el Lab 3A (consultas contadas)",
+      "targetSec": 28,
+      "wordBudget": 76,
+      "requiredCues": [
+        "recap",
+        "lab3a",
+        "endcard"
+      ]
+    }
+  ]
+}
