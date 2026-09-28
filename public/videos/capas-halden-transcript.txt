@@ -1,0 +1,38 @@
+Defensa en capas: del correo falso al equipo aislado
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA
+
+[00:00] I · El ataque — Un correo, siete controles
+Autoridad Portuaria de Halden, 3 de septiembre, por la tarde. Por la puerta del correo entra un mensaje, como un contenedor más. ¿Quién lo detiene? En el mapa se encienden siete capas, y cada una contesta una pregunta distinta. Spoiler: ninguna lo para sola. Por eso esto se llama defensa en capas. Enfrente, SILENT PAGER, que cuenta con que tu SOC duerma. Hoy sigues su ataque capa por capa.
+
+[00:34] II · El correo — El correo que parecía de casa
+Sala de control del muelle 3. Lucía, de Operaciones, recibe por correo los turnos de atraque. Remite haldenport.example: de casa. ¿Seguro que es de casa? Abres las cabeceras: la etiqueta de envío que casi nadie mira. SPF da el aprobado. DKIM, también. Pero lo que validan es hdn-mailer.example, el dominio del atacante. Falló la alineación. DMARC compara el From que ve Lucía, haldenport.example, con el dominio validado. No coinciden: suspenso. Dos aprobados y un suspenso, y el correo está en su bandeja. ¿Cómo ha entrado?
+
+[01:24] II · El correo — Tres mecanismos encadenados
+SPF es la lista de mensajeros autorizados: un registro DNS con las IP que pueden enviar en nombre de un dominio. DKIM es el sello de lacre de un dominio. Su firma dice qué dominio firmó y que el mensaje no cambió después. Ninguno de los dos exige que ese dominio sea el del From. DMARC sí: exige que coincida con el dominio que validó SPF o DKIM. [Mensaje interceptado · SILENT PAGER] «Tu DMARC solo mira, como tu turno de noche. Y yo, dentro.» Duele, pero acierta. Tu DNS publica p=none: DMARC solo informa, y el correo entra igual. ¿Para qué sirve eso? Para los informes: quién envía en tu nombre, antes de apretar. Cuando lo legítimo ya pasa, subes a quarantine: a spam o a cuarentena. Y luego a reject: rechazado en la puerta. ¿Y el email gateway? Filtra spam, malware y enlaces: su terreno es el contenido. La identidad del dominio la decide DMARC.
+
+[02:36] III · La red — DNS filtering
+Lucía abre el adjunto y habilita el contenido. La macro acaba lanzando PowerShell. ¿Y qué es lo primero que hace? Mirar la guía: pregunta al DNS por cdn-halden-sync.example. Un dominio registrado hace dos días. La reputación lo marca como sospechoso. El DNS filtering no le devuelve la dirección. Sin dirección, la conexión ni siquiera se intenta. Pero el malware trae un plan B: una IP fija, por el 443. Sin consulta DNS, este filtro no se entera.
+
+[03:19] III · La red — Orden de reglas e implicit deny
+Siguiente capa: el firewall. Su regla 7 prohíbe que los equipos de Operaciones salgan directos a Internet. Y aun así, la conexión con el C2, el mando y control, sale tan tranquila. El firewall lee de arriba abajo, como un portero con su lista. El paquete baja y gana la primera regla que encaja. La regla 3, resto de una migración, deja pasar todo por el 443. La siete ni se llega a leer. ¿Y lo que no encaja en ninguna? Cae en el implicit deny: lo que no se permite, se bloquea. Se retira la regla 3 sobrante y se añade un deny final con log. Ese deny no cambia el resultado: registra lo descartado.
+
+[04:13] III · La red — Detectó pero no bloqueó
+Tras el firewall, un sensor escucha en un tap: recibe una copia del tráfico, como una cámara. Una firma reconoce el patrón de red de esa llamada. Salta la alerta. Y el paquete sigue su camino. [Mensaje interceptado · SILENT PAGER] «Tu sensor me vio pasar. Qué detalle. Ni se levantó de la silla.» No podía: es un IDS. Mira una copia, así que alerta, pero no bloquea. Para bloquear, un IPS en línea: descarta el paquete, aunque un falso positivo cortaría tráfico legítimo. ¿Y lo nunca visto? Para eso está la detección por anomalías: aprende lo normal y avisa si algo se desvía.
+
+[04:56] IV · El endpoint — El EDR ve el proceso
+Abres la consola del EDR y ves el árbol de procesos del portátil de Lucía. ¿Desde cuándo Word tiene hijos? Este abre una consola, y de ella sale PowerShell con un comando codificado. Luego, una conexión al 443. El documento es nuevo y ningún antivirus lo conoce: lo delata su comportamiento. ¿Basta para condenar? No: una alerta es sospecha, no prueba. El triaje pide contexto: usuaria, hora, ruta y firma digital del ejecutable. Lucía abrió el adjunto, sí, pero no esperaba ninguna consola. La sospecha crece.
+
+[05:44] IV · El endpoint — Alcance: la flota y el XDR
+¿Es solo este portátil? Antes de limpiar nada, necesitas el alcance. Buscas el hash del documento, el dominio y el patrón de procesos en todos los equipos con agente. Dos aciertos más. Uno es ADM-WS-02, una estación de administración: donde viven las llaves. Cada capa tenía una pieza del puzle. El XDR las une, del correo al endpoint, en un solo incidente. Por separado, cada aviso parecía poca cosa. Juntos, cuentan el ataque entero.
+
+[06:22] IV · El endpoint — Aislar sin apagar
+[Mensaje interceptado · SILENT PAGER] «Apágalo. Un reinicio y aquí no ha pasado nada.» Ni hablar. No lo apagas: lo aíslas desde el EDR. Solo queda abierto el canal con la consola. Como un barco en cuarentena: nadie sube ni baja, pero la radio funciona. ¿Por qué encendido? Porque la RAM es evidencia: procesos, conexiones y claves que se pierden al apagar. Todo queda documentado: motivo, hora y responsable. Y así pasará la noche, hasta que lo incauten a las 04:12. Lo que aún nadie sabía: antes de aislarlo, ya había salido la credencial de una cuenta de servicio. Aislar no la invalida.
+
+[07:09] V · El resto del mapa — Datos, dispositivos y personas
+Quedan cuatro preguntas. ¿Alguien ha tocado este archivo? FIM guarda un hash de referencia y avisa si cambia: como cotejar la carga con su manifiesto. ¿Se nos va información? DLP ve el contrato de practicaje camino de un webmail personal, y lo bloquea. ¿Debería ese equipo estar en la red? NAC revisa identidad y estado, y el portátil del contratista acaba en una VLAN de cuarentena. ¿Y esa cuenta que descarga en masa a las 03:00? UBA conoce sus costumbres, y esa no es una de ellas.
+
+[07:49] V · El resto del mapa — Lo que no ven
+Ahora, lo que no ven. El EDR solo ve los equipos con su agente. Uno sin agente, para él, no existe. ¿Y un dominio con un cero en vez de una o? DMARC protege tu dominio, no sus imitaciones. ¿Y telnet, LDAP o SNMPv2c? Se sustituyen por SSH, LDAPS y SNMPv3. Restringirlos por IP no basta: siguen viajando en claro. Cada capa tiene un punto ciego. Por eso se apilan, una tras otra.
+
+[08:28] V · El resto del mapa — Para el examen
+SILENT PAGER contaba con que tu SOC durmiera. Hoy, capa a capa, cada control contestó su pregunta. Para el examen: ¿falsifican tu dominio? DMARC en reject. ¿Detectó y no bloqueó? Un IDS. ¿Ninguna regla lo permite? Implicit deny. Y esa credencial de servicio volverá de madrugada, a la 01:52. Pero esa ya es otra alerta: la del SIEM. Ahora te toca a ti: las preguntas de esta lección te esperan en Alertópolis.
