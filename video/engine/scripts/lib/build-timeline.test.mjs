@@ -1,11 +1,14 @@
 import assert from 'node:assert/strict';
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { after, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { TIMING, TRANSCRIPT_NOTICE, buildTimeline, captionsPathFor, formatJson } from '../build-timeline.mjs';
-import { analyzeNarration, sourceHash, ttsKey } from './narration.mjs';
+import { adversaryClipId, adversaryKey } from './adversary.mjs';
+import { TIMING, TRANSCRIPT_NOTICE, buildTimeline, captionsPathFor, formatJson, loadAdversary } from '../build-timeline.mjs';
+import { analyzeNarration, loadSources, sourceHash, ttsKey } from './narration.mjs';
+import { SFX_DIR } from './paths.mjs';
+import { INTERCEPT_TIMING, voicedHoldFrames } from './sfx.mjs';
 import { validateTimeline } from './validate-timeline.mjs';
 
 const FIX = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures');
@@ -102,6 +105,33 @@ test('sourceHash covers the three sources and, in audio mode, the TTS keys', asy
   assert.equal(timeline.sourceHash, sourceHash(sources));
   assert.notEqual(sourceHash(sources), sourceHash({ ...sources, lexiconText: `${sources.lexiconText} ` }));
   assert.notEqual(sourceHash(sources), sourceHash(sources, [['s01-01', ttsKey('v', '+0%', '+0Hz', 'hola')]]));
+});
+
+test('sourceHash: the sound library only counts when narration.json has "sfx", and only through loadSources', () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'sfxlib-hash-'));
+  writeFileSync(path.join(dir, 'sfx.json'), JSON.stringify({ sampleRate: 44100, sounds: {} }));
+  const base = { storyboard: path.join(FIX, 'storyboard.mini.json'), narration: path.join(FIX, 'narration.mini.json'), lexicon: path.join(FIX, 'lexicon.mini.json') };
+
+  const without = loadSources(base);
+  assert.equal(without.sfxText, null, 'no "sfx" key: the library never enters the hash');
+
+  const withSfxNarration = read('narration.mini.json');
+  withSfxNarration.sfx = {};
+  const narrationFile = path.join(tmp, 'sfx-hash.json');
+  writeFileSync(narrationFile, JSON.stringify(withSfxNarration));
+  const withSfx = loadSources({ ...base, narration: narrationFile, sfxDir: dir });
+  assert.equal(withSfx.sfxText, readFileSync(path.join(dir, 'sfx.json'), 'utf8'));
+  assert.notEqual(sourceHash(withSfx), sourceHash(without), 'the same narration/storyboard/lexicon, but "sfx" pulls in the library');
+
+  writeFileSync(path.join(dir, 'sfx.json'), JSON.stringify({ sampleRate: 44100, sounds: { x: 1 } }));
+  const regenerated = loadSources({ ...base, narration: narrationFile, sfxDir: dir });
+  assert.notEqual(sourceHash(regenerated), sourceHash(withSfx), 'a regenerated library (new bytes) changes the hash');
+
+  const missingLib = loadSources({ ...base, narration: narrationFile, sfxDir: path.join(dir, 'nope') });
+  assert.equal(missingLib.sfxText, '', 'the key is set but the library file is missing: sfxText is empty, not null');
+  assert.notEqual(sourceHash(missingLib), sourceHash(without));
+
+  rmSync(dir, { recursive: true, force: true });
 });
 
 test('validation: missing, duplicate and unknown cues fail loudly', async () => {
@@ -218,6 +248,98 @@ test('intercepted message: silent lead, card until the answer ends, transcript l
   assert.ok(transcript.includes(`[Mensaje interceptado · SILENT PAGER] «${MSG}» ${seg.text}`), transcript);
 });
 
+const ADV_CFG = { voice: 'sapi/Microsoft Pablo', rate: 0, fx: 'machine' };
+
+/** A temp {ttsDir, voiceDir} pair with one adversary record + MP3 for segId, or none of the files given null. */
+function adversaryFixture(segId, record) {
+  const dir = mkdtempSync(path.join(tmpdir(), 'adversary-load-'));
+  const ttsDir = path.join(dir, 'tts');
+  const voiceDir = path.join(dir, 'voice');
+  mkdirSync(ttsDir, { recursive: true });
+  mkdirSync(voiceDir, { recursive: true });
+  if (record) {
+    const id = adversaryClipId(segId);
+    writeFileSync(path.join(voiceDir, `${id}.mp3`), record.content ?? 'x'.repeat(record.bytes));
+    writeFileSync(path.join(ttsDir, `${id}.json`), JSON.stringify({ key: record.key, bytes: record.bytes, durationMs: record.durationMs }));
+  }
+  return { dir, ttsDir, voiceDir };
+}
+
+test('loadAdversary: missing record, stale key, a byte mismatch and a good clip', () => {
+  const seg = { id: 's03-04', intercept: { text: 'Hola.', holdMs: 3000 } };
+  const id = adversaryClipId(seg.id);
+  const key = adversaryKey(ADV_CFG, seg.intercept.text);
+
+  {
+    const { dir, ttsDir, voiceDir } = adversaryFixture(seg.id, null);
+    const errors = [];
+    const clips = loadAdversary([seg], ADV_CFG, { ttsDir, voiceDir }, errors);
+    assert.equal(clips.size, 0);
+    assert.match(errors[0], new RegExp(`no adversary voice \\(${id}\\)`));
+    assert.match(errors[0], /tts-adversary\.mjs/);
+    rmSync(dir, { recursive: true, force: true });
+  }
+  {
+    const { dir, ttsDir, voiceDir } = adversaryFixture(seg.id, { key: 'stale-key', bytes: 3, durationMs: 4000 });
+    const errors = [];
+    loadAdversary([seg], ADV_CFG, { ttsDir, voiceDir }, errors);
+    assert.match(errors[0], /stale/);
+    rmSync(dir, { recursive: true, force: true });
+  }
+  {
+    // record.bytes says 999, but the file adversaryFixture writes is only 3 bytes long: a real mismatch.
+    const { dir, ttsDir, voiceDir } = adversaryFixture(seg.id, { key, bytes: 999, content: 'abc', durationMs: 4000 });
+    const errors = [];
+    loadAdversary([seg], ADV_CFG, { ttsDir, voiceDir }, errors);
+    assert.match(errors[0], /does not match its record/);
+    assert.match(errors[0], /--force/);
+    rmSync(dir, { recursive: true, force: true });
+  }
+  {
+    const { dir, ttsDir, voiceDir } = adversaryFixture(seg.id, { key, bytes: 3, durationMs: 4200 });
+    const errors = [];
+    const clips = loadAdversary([seg], ADV_CFG, { ttsDir, voiceDir }, errors);
+    assert.deepEqual(errors, []);
+    assert.deepEqual(clips.get(seg.id), { audio: `voice/${id}.mp3`, durationMs: 4200 });
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('a voiced intercept grows the lead with voicedHoldFrames, beyond the written holdMs', async () => {
+  const seg = { id: 's02-01' };
+  const durationMs = 6000; // long enough that the voice, not the 3000 ms holdMs, sets the lead
+  // opts.adversaryClips stands in for loadAdversary here (see build-timeline.mjs), so no tts/voice fixture is needed.
+  const adversaryClips = new Map([[seg.id, { audio: `voice/${adversaryClipId(seg.id)}.mp3`, durationMs }]]);
+  const { timeline } = await buildVariant(
+    (n) => { n.segments[2].intercept = { text: 'Borro el log del servidor y aquí no ha pasado nada.', holdMs: 3000 }; },
+    'intercept-voiced',
+    { adversary: 'SILENT PAGER', adversaryClips },
+  );
+
+  const fps = timeline.fps;
+  const voiceFrames = Math.ceil((durationMs * fps) / 1000);
+  const writtenHold = Math.round((3000 * fps) / 1000);
+  const expectedLead = voicedHoldFrames(writtenHold, voiceFrames);
+  assert.ok(expectedLead > writtenHold, 'a 6 s clip needs more than the written 3000 ms hold');
+
+  const answer = timeline.segments.find((s) => s.id === seg.id);
+  const scene = timeline.scenes.find((s) => s.id === 's02-collect');
+  const leadFrom = scene.from + TIMING.lead;
+  assert.equal(answer.from, leadFrom + expectedLead, 'the answer waits for the voice-driven hold, not the written one');
+  assert.deepEqual(timeline.intercept[0], {
+    scene: 's02-collect',
+    from: leadFrom,
+    // The intercept spans the silent lead plus the answer's own duration (audio + pause; no think here).
+    durationInFrames: expectedLead + answer.durationInFrames,
+    adversary: 'SILENT PAGER',
+    text: 'Borro el log del servidor y aquí no ha pasado nada.',
+    audio: `voice/${adversaryClipId(seg.id)}.mp3`,
+    audioFrom: leadFrom + INTERCEPT_TIMING.typeStart,
+    audioFrames: voiceFrames,
+  });
+  assert.deepEqual(validateTimeline(timeline), []);
+});
+
 test('intercepted messages need an adversary in video.json', async () => {
   await assert.rejects(
     buildVariant((n) => {
@@ -225,4 +347,23 @@ test('intercepted messages need an adversary in video.json', async () => {
     }, 'no-adversary', { adversary: null }),
     /no "adversary"/,
   );
+});
+
+test('sfx: without the key the timeline has none; with it, automatic sounds and key moments are placed', async () => {
+  const plain = await buildVariant(() => {}, 'no-sfx');
+  assert.equal('sfx' in plain.timeline, false);
+
+  const { timeline } = await buildVariant((n) => { n.sfx = { flood: 'mail' }; }, 'sfx', { sfxDir: SFX_DIR });
+  const cue = (id) => timeline.cues.find((c) => c.id === id).frame;
+  const of = (sound) => timeline.sfx.filter((s) => s.sound === sound).map((s) => s.from);
+  assert.deepEqual(of('mail'), [cue('flood')]);
+  assert.deepEqual(of('ding'), timeline.exam.map((e) => e.from));
+  const wipes = timeline.scenes.filter((s, k) => k > 0 && s.chapter !== timeline.scenes[k - 1].chapter).map((s) => s.from - TIMING.transitionFrames);
+  assert.deepEqual(of('whoosh'), wipes);
+  assert.deepEqual(validateTimeline(timeline), []);
+});
+
+test('sfx: an unknown cue or sound stops the build', async () => {
+  await assert.rejects(buildVariant((n) => { n.sfx = { flod: 'mail' }; }, 'sfx-bad-cue', { sfxDir: SFX_DIR }), /flod/);
+  await assert.rejects(buildVariant((n) => { n.sfx = { flood: 'siren' }; }, 'sfx-bad-sound', { sfxDir: SFX_DIR }), /siren/);
 });

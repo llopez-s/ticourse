@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { INTERCEPT_TEXT_MAX, analyzeNarration } from './narration.mjs';
 import { checkManifest } from './paths.mjs';
+import INTERCEPT_TIMING from '../../src/overlay/intercept-timing.json' with { type: 'json' };
 
 const storyboard = {
   chapters: [{ n: 1, title: 'Uno' }, { n: 2, title: 'Dos' }],
@@ -53,4 +54,11 @@ test('checkManifest: adversary is optional but must look like a campaign name', 
   assert.doesNotThrow(() => checkManifest({ ...base, lesson: 'sp4m7' }, 'video.json', 'x'));
   assert.doesNotThrow(() => checkManifest({ ...base, lesson: 's3m3' }, 'video.json', 'x'));
   assert.throws(() => checkManifest({ ...base, lesson: 'lesson-7' }, 'video.json', 'x'), /"lesson"/);
+});
+
+test('intercept timing: typing starts a third into the enter animation and the longest message fits the shortest hold', () => {
+  assert.deepEqual(Object.keys(INTERCEPT_TIMING).sort(), ['enter', 'exit', 'typeRate', 'typeStart']);
+  assert.equal(INTERCEPT_TIMING.typeStart, Math.floor(INTERCEPT_TIMING.enter / 3));
+  // 2.5 s (INTERCEPT_HOLD_MS[0]) at 30 fps = 75 frames
+  assert.ok(INTERCEPT_TIMING.typeStart + INTERCEPT_TEXT_MAX * INTERCEPT_TIMING.typeRate <= 75);
 });

@@ -3,14 +3,16 @@
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
-import { PATHS } from './paths.mjs';
+import { PATHS, SFX_DIR } from './paths.mjs';
 import { MarkupError, parseSegmentText, pronunciationRisks } from './text.mjs';
+import { adversaryVoiceErrors } from './adversary.mjs';
 
 export const SEGMENT_ID = /^s\d\d-\d\d$/;
 export const DEFAULT_PAUSE_MS = 330;
 export const EXAM_TEXT_MAX = 58;
 export const THINK_Q_MAX = 48;
-/** Intercepted messages: on-screen only (never voiced), typed out during a silent lead before their segment. */
+/** Intercepted messages: typed out during a silent lead before their segment, on screen always and voiced
+ * too when narration.json has "adversaryVoice" (see adversary.mjs, tts-adversary.mjs). */
 export const INTERCEPT_TEXT_MAX = 70;
 export const INTERCEPT_HOLD_MS = [2500, 4500];
 /** Symbols the style guide bans from anything that reaches the screen or the voice. */
@@ -65,7 +67,7 @@ export function spokenForVoice(voice, parsed) {
   return isElevenLabsVoice(voice) ? parsed.directedSpoken : parsed.spoken;
 }
 
-export function loadSources({ storyboard, narration, lexicon }) {
+export function loadSources({ storyboard, narration, lexicon, sfxDir = SFX_DIR }) {
   const storyboardText = readSource(storyboard, 'storyboard.json');
   const narrationText = readSource(narration, 'narration.json');
   // narration.json may name its own lexicon ("lexicon": "lexicon.elevenlabs.json",
@@ -75,12 +77,19 @@ export function loadSources({ storyboard, narration, lexicon }) {
     lexicon = path.resolve(path.dirname(narration), narrationJson.lexicon);
   }
   const lexiconRaw = readSource(lexicon, 'lexicon.json', { optional: true });
+  // The sound library's sfx.json only counts toward sourceHash when narration.json has "sfx": a video
+  // without that key stays byte-identical even if the library is later regenerated. When the key is set but
+  // the library file is missing, sfxText is '' rather than null, so a missing library still changes the hash
+  // instead of silently matching a stale timeline.
+  const sfxFile = path.join(sfxDir, 'sfx.json');
+  const sfxText = narrationJson?.sfx !== undefined ? (existsSync(sfxFile) ? readFileSync(sfxFile, 'utf8') : '') : null;
   return {
     paths: { storyboard, narration, lexicon },
     storyboardText,
     narrationText,
     lexiconText: lexiconRaw ?? '',
     lexiconMissing: lexiconRaw === null,
+    sfxText,
     storyboard: parseJsonText(storyboardText, storyboard),
     narration: parseJsonText(narrationText, narration),
     lexicon: lexiconRaw === null ? {} : parseJsonText(lexiconRaw, lexicon),
@@ -93,13 +102,19 @@ export function ttsKey(voice, rate, pitch, spoken) {
 }
 
 /**
- * sha256 over the exact source bytes (storyboard, narration, lexicon) and, in
- * audio mode, the per-segment TTS keys ([id, key] pairs in narration order).
+ * sha256 over the exact source bytes (storyboard, narration, lexicon), the sound library's sfx.json when
+ * narration.json has "sfx" (sfxText, from loadSources — null otherwise, so it never affects a video without
+ * that key), and, in audio mode, the per-segment TTS keys ([id, key] pairs in narration order). build-timeline
+ * and freshness.mjs both go through loadSources then sourceHash, so they cannot compute this differently.
  */
-export function sourceHash({ storyboardText, narrationText, lexiconText }, ttsKeys = null) {
+export function sourceHash({ storyboardText, narrationText, lexiconText, sfxText = null }, ttsKeys = null) {
   const h = createHash('sha256');
   for (const part of [storyboardText, narrationText, lexiconText]) {
     h.update(part, 'utf8');
+    h.update('\u0000');
+  }
+  if (sfxText !== null) {
+    h.update(sfxText, 'utf8');
     h.update('\u0000');
   }
   if (ttsKeys) for (const [id, key] of ttsKeys) h.update(`${id}:${key}\n`, 'utf8');
@@ -157,6 +172,8 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
       `narration.voice ${JSON.stringify(voice.voice)} must be an edge-tts voice ("es-ES-ElviraNeural"), "elevenlabs/<model_id>/<voice_id>", "chatterbox/<es-es|mtl>/<voice>" or "recording/<name>"`,
     );
   }
+  if (narration.adversaryVoice !== undefined) errors.push(...adversaryVoiceErrors(narration.adversaryVoice));
+  if (narration.sfx !== undefined && !isObj(narration.sfx)) errors.push('narration.sfx must be an object of cue id -> sound name');
   if (narration.elevenlabs !== undefined && !isObj(narration.elevenlabs)) errors.push('narration.elevenlabs must be an object of voice settings');
   if (narration.chatterbox !== undefined && !isObj(narration.chatterbox)) errors.push('narration.chatterbox must be an object of synthesis settings');
   if (!/^[+-]\d{1,3}%$/.test(voice.rate)) errors.push(`narration.rate ${JSON.stringify(voice.rate)} must look like "+0%"`);

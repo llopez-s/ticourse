@@ -4,6 +4,7 @@
 //   ElevenLabs: tts-elevenlabs.mjs -> build-timeline.mjs   (voice "elevenlabs/<model>/<voice_id>")
 //   Chatterbox: tts-chatterbox.mjs -> build-timeline.mjs   (voice "chatterbox/<pack>/<voice>", local, no quota)
 //   Recording:  build-timeline.mjs only                    (voice "recording/<name>", clips from import-recording.mjs)
+//   + tts-adversary.mjs before build-timeline when narration.json has "adversaryVoice"
 // Stops at the first failing step.
 //
 //   node video/engine/scripts/audio.mjs --video <slug>                 # synthesise what changed, rebuild the timeline
@@ -86,19 +87,26 @@ function main() {
     path.join(SCRIPTS_DIR, 'build-timeline.mjs'),
     ...pass(values, ['narration', 'lexicon', 'storyboard', 'tts-dir', 'voice-dir', 'voice', 'rate', 'pitch', 'full-audio', 'tail-ms', 'out', 'transcript']),
   ];
-  const narrationVoice = JSON.parse(readFileSync(values.narration ? path.resolve(values.narration) : PATHS.narration, 'utf8').replace(/^﻿/, '')).voice;
+  const narrationJson = JSON.parse(readFileSync(values.narration ? path.resolve(values.narration) : PATHS.narration, 'utf8').replace(/^﻿/, ''));
+  const narrationVoice = narrationJson.voice;
+  const adversaryStep = () => {
+    if (narrationJson.adversaryVoice) step('tts-adversary', node, [path.join(SCRIPTS_DIR, 'tts-adversary.mjs'), ...pass(values, ['force'])]);
+  };
   if (isElevenLabsVoice(narrationVoice)) {
     step('tts-elevenlabs', node, [path.join(SCRIPTS_DIR, 'tts-elevenlabs.mjs'), ...pass(values, ['scene', 'force'])]);
+    adversaryStep();
     step('build-timeline', node, buildTimelineArgs);
     return;
   }
   if (isChatterboxVoice(narrationVoice)) {
     step('tts-chatterbox', node, [path.join(SCRIPTS_DIR, 'tts-chatterbox.mjs'), ...pass(values, ['only', 'force'])]);
+    adversaryStep();
     step('build-timeline', node, buildTimelineArgs);
     return;
   }
   if (isRecordingVoice(narrationVoice)) {
-    // The clips come from import-recording.mjs; there is nothing to synthesise.
+    // The narrator's clips come from import-recording.mjs; only the adversary's voice (if any) is synthesised here.
+    adversaryStep();
     step('build-timeline', node, buildTimelineArgs);
     return;
   }
@@ -109,6 +117,7 @@ function main() {
     ['-X', 'utf8', PATHS.ttsPy, '--input', PATHS.ttsInput, ...pass(values, ['tts-dir', 'voice-dir', 'voice', 'rate', 'pitch', 'only', 'force', 'attempts'])],
     env,
   );
+  adversaryStep();
   step(
     'build-timeline',
     node,

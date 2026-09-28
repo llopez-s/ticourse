@@ -81,36 +81,117 @@ perfil `-yt` conserve «INTELFORGE ACADEMY» en su propio `src/`.
 
 ## Mensaje interceptado
 
-Un aviso en pantalla **sin voz**, solo para los perfiles `-yt`: un mensaje del adversario de la sección
-aparece interceptado, se escribe letra a letra y, a continuación, el segmento de narración lo responde con la
-explicación.
+Un aviso en pantalla, solo para los perfiles `-yt`: un mensaje del adversario de la sección aparece
+interceptado, se escribe letra a letra y, a continuación, el segmento de narración lo responde con la
+explicación. Sin `adversaryVoice` en `narration.json` el mensaje es mudo, como hasta ahora — ver «Con voz»
+más abajo para cuando lo lleva.
 
 - **`narration.json`**, en el segmento que responde: `"intercept": { "text": "…", "holdMs": 3500 }`.
   - `text`: 70 caracteres como máximo (`INTERCEPT_TEXT_MAX`), sin flechas, emoji ni los símbolos prohibidos de
-    las tarjetas de examen. No se locuta.
+    las tarjetas de examen. No se locuta con la voz de la narradora (pero puede tener la del adversario, ver
+    «Con voz»).
   - `holdMs`: entre 2500 y 4500 (`INTERCEPT_HOLD_MS`) — el silencio **antes** del audio del segmento, que
-    `build-timeline.mjs` añade retrasando el `from` del segmento ese mismo hueco, para dar tiempo a leer el
-    mensaje. Un segmento no puede llevar `intercept` y `think` a la vez.
+    `build-timeline.mjs` añade retrasando el `from` del segmento ese mismo hueco (o más, con voz — ver «Con
+    voz»), para dar tiempo a leer el mensaje. Un segmento no puede llevar `intercept` y `think` a la vez.
 - **`video.json`**: `"adversary": "SILENT PAGER"`. Obligatorio en cuanto algún segmento use `intercept`; si
   falta, `build-timeline.mjs` lo rechaza como error (`analyzeNarration` no lee `video.json`, así que esta
   comprobación concreta vive donde ambos archivos ya se cruzan).
 - **`build-timeline.mjs`**:
-  - retrasa el `from` del segmento (el inicio de su audio) `holdMs` fotogramas; la entrada de `intercept[]`
-    empieza en el fotograma donde arrancaría ese audio sin el retraso (el principio del silencio) y dura
-    hasta que terminan el audio y la pausa del segmento;
-  - escribe la clave opcional `timeline.intercept[]` (`from`, `durationInFrames`, `text`, `adversary`), **solo
-    cuando hay alguno** — así el `timeline.json` de un vídeo sin `intercept` (SIEM, forense) sigue siendo byte
-    a byte idéntico, y `validate-timeline.mjs` la trata como opcional;
-  - los subtítulos no incluyen el mensaje, porque no es voz; la transcripción sí, como
+  - retrasa el `from` del segmento (el inicio de su audio) el hueco calculado (`holdMs`, o más largo con voz);
+    la entrada de `intercept[]` empieza en el fotograma donde arrancaría ese audio sin el retraso (el
+    principio del silencio) y dura hasta que terminan el audio y la pausa del segmento;
+  - escribe la clave opcional `timeline.intercept[]` (`from`, `durationInFrames`, `text`, `adversary`, y con
+    voz `audio`, `audioFrom`, `audioFrames`), **solo cuando hay alguno** — así el `timeline.json` de un vídeo
+    sin `intercept` (SIEM, forense) sigue siendo byte a byte idéntico, y `validate-timeline.mjs` la trata como
+    opcional;
+  - los subtítulos no incluyen el mensaje, porque no es voz de la narradora; la transcripción sí, como
     `[Mensaje interceptado · SILENT PAGER] «…»`.
 - **`src/overlay/InterceptLayer.tsx`**: la tarjeta, con acento rojo, el nombre del adversario y el efecto de
   escritura letra a letra; ocupa el mismo hueco que la pausa para pensar (nunca coinciden en el tiempo). Está
-  en `OverlayGallery` para la QA visual.
+  en `OverlayGallery` para la QA visual. `src/overlay/SfxLayer.tsx` reproduce el audio (voz del adversario y
+  efectos de sonido, ver «Efectos de sonido»): ninguno de los dos dibuja nada en pantalla.
 
 Validación completa: `analyzeNarration` da error si hay más de 1 mensaje por capítulo, si hay uno en la escena
 final o si `text`/`holdMs` está fuera de rango, y avisa (no falla) si el recuento total queda fuera del rango
 del perfil (tabla de «Perfiles»). El único error que no pasa por `analyzeNarration` es el de `adversary`
 ausente, arriba, porque `analyzeNarration` no lee `video.json`.
+
+### Con voz
+
+`narration.json` → `"adversaryVoice": { "voice": "sapi/Microsoft Pablo", "rate": 0, "fx": "machine" }`
+(opcional; único proveedor por ahora: `sapi/<nombre de voz de Windows>`, `rate` entero de −10 a 10,
+`fx` solo `"machine"`). Sin ella los mensajes siguen mudos. Tenerla sin ningún segmento con `intercept` es un
+aviso, no un error.
+
+**Requiere PowerShell 7 (`pwsh`).** `tts-adversary.mjs` sintetiza a través de `pwsh` cuando está disponible:
+Windows PowerShell 5.1 (`powershell.exe`) solo enumera las voces clásicas de `System.Speech.Synthesis`, así
+que una voz moderna instalada solo como paquete OneCore (como «Microsoft Pablo») le resulta invisible aunque
+esté instalada; `pwsh` sí ve las voces OneCore. Solo cae a `powershell.exe` cuando `pwsh` no se puede lanzar
+(no instalado / no está en el PATH) — en ese caso el error de «voz no instalada» no lista Pablo aunque lo
+esté.
+
+`scripts/tts-adversary.mjs --video <slug>` genera, por cada segmento con `intercept`: `scripts/sapi_tts.ps1`
+sintetiza `intercept.text` con `System.Speech.Synthesis.SpeechSynthesizer` a un WAV; `scripts/adversary_fx.py`
+(venv de Chatterbox: librosa, scipy) aplica el preset `machine` (−4 semitonos, modulación en anillo
+`0,6 + 0,4·sen(2π·48·t)`, paso banda Butterworth de orden 4 entre 120 y 5000 Hz, misma duración, pico
+−1 dBFS); `runFfmpeg` lo iguala a la sonoridad de la narración (medida sobre los clips de `public/voice/`) y
+lo codifica igual (24 kHz mono, MP3 CBR 96 kbps) en `public/voice/<segmento>-intercept.mp3`, junto a
+`tts/<segmento>-intercept.json` (`key` = sha256 de voz + velocidad + preset + texto; el registro también
+guarda `targetLufs`, la sonoridad de la narración a la que se niveló el clip). Un clip en caché se regenera si
+su `key` o sus bytes ya no coinciden, o si `targetLufs` se ha alejado más de 1 dB de la sonoridad actual de la
+narración (o falta, en un registro anterior a esta comprobación) — así **cambiar la voz de la narración
+renivela automáticamente los clips del adversario** la próxima vez que se ejecute este paso, sin necesidad de
+`--force`. `audio.mjs` ejecuta este paso antes de `build-timeline` en cuanto `narration.json` tiene
+`adversaryVoice`, con cualquier voz de narración; mide la sonoridad de la narración una vez por ejecución
+(la necesita para comprobar la caché de cada clip), pero con todos los clips en caché no llega a `pwsh` ni a
+SAPI, así que esa comprobación funciona en cualquier sistema operativo — solo sintetizar necesita Windows.
+
+El hueco (`holdMs`) crece: `voicedHoldFrames` (`scripts/lib/sfx.mjs`) usa el mayor del `holdMs` escrito y
+`TYPE_START + fotogramas de la voz + 10` de margen. La voz del adversario empieza a sonar en
+`intercept.from + TYPE_START`, cuando el mensaje empieza a escribirse en la tarjeta; esta sigue en pantalla
+hasta que acaba la respuesta de la narradora. `ENTER`, `EXIT`, `TYPE_START` y `TYPE_RATE` viven en
+`src/overlay/intercept-timing.json`, que leen tanto `build-timeline.mjs` como `InterceptLayer.tsx`, para que
+no se desalineen. Una voz de Pablo dura ~5–6 s por mensaje: tres mensajes alargan el vídeo ~5–8 s.
+
+## Efectos de sonido
+
+`scripts/sfx_generate.py` genera, con semilla fija (byte a byte reproducible), la biblioteca de 11 sonidos en
+`video/engine/sfx/<nombre>.mp3` + `sfx.json` (duración y volumen de cada uno, versionados: son pocos KB):
+`glitch`, `typing`, `ding`, `whoosh`, `mail`, `check`, `error`, `block`, `alarm`, `ping2`, `lock`. Todos se
+normalizan a −1 dBFS de pico antes de codificar (el MP3 entregado queda entre −1,5 y −0,5 dBFS, porque la
+codificación desplaza el pico). Necesita el python del venv de Chatterbox (numpy, scipy, soundfile):
+
+```bash
+video/engine/.venv-chatterbox/Scripts/python.exe video/engine/scripts/sfx_generate.py --preview video/engine/out/sfx-preview.mp3
+```
+
+escribe un muestrario (con los mismos volúmenes de mezcla que el vídeo) para escucharlos antes de tocar los
+volúmenes.
+
+Colocación automática (solo cuando `narration.json` tiene la clave `sfx`, **aunque sea `{}`** — así los
+vídeos publicados sin ella no cambian): `glitch` en cada `intercept.from`; `typing` desde
+`intercept.from + TYPE_START` durante `texto.length × TYPE_RATE` fotogramas; `ding` en cada tarjeta de
+examen (`exam.from`); `whoosh` en el inicio visual de la primera escena de cada capítulo nuevo. Además,
+`narration.json` → `"sfx": { "<id de cue>": "<sonido>" }` pone un efecto en el fotograma de ese cue. El mapa
+va por **id de cue solo** (no por escena): si ese id apareciera en más de una escena, `build-timeline.mjs` lo
+rechaza como error, en vez de colocar el sonido en todas ellas sin avisar. Para `capas-halden`:
+
+```json
+"sfx": {
+  "mail-in": "mail", "spf-pass": "check", "dkim-pass": "check", "dmarc-fail": "error",
+  "reject": "block", "blocked": "block", "implicit": "block", "alert": "alarm",
+  "inline": "block", "hits-2": "ping2", "isolate": "lock", "dlp": "block"
+}
+```
+
+`build-timeline.mjs` escribe `timeline.sfx[]` (`from`, `sound`, `src`, `durationInFrames`, `volume`) y copia a
+`video/<slug>/public/sfx/` los sonidos que usa (Remotion solo lee la carpeta pública del vídeo), borrando ahí
+los que ya no se usan. La voz de la narradora y la del adversario suenan a volumen 1; los volúmenes de los
+efectos (entre 0,024 y 0,170; tabla completa en el spec
+`docs/superpowers/specs/2026-09-28-adversary-voice-sfx-design.md` §4.1) se miden con `ffmpeg loudnorm` para que
+la voz siempre suene más alta que los efectos: con la narración a unos −25 LUFS, cada efecto queda 12 dB por
+debajo (−37 LUFS), salvo `whoosh` (14 dB por debajo) y `typing` (25 dB por debajo) — bajos a propósito, para no
+distraer. `src/overlay/SfxLayer.tsx` los reproduce junto con la voz del adversario (ver «Con voz»).
 
 ## Cómo está hecho
 
@@ -119,10 +200,18 @@ storyboard.json + narration.json + lexicon.json      (de video/<slug>/)
       │
       ├─ scripts/prepare-tts.mjs  resuelve marcas + léxico -> out/tts-input.json (texto hablado)
       ├─ scripts/tts.py           edge-tts -> public/voice/<id>.mp3 + tts/<id>.json (tiempos por palabra)
+      ├─ scripts/tts-adversary.mjs  (solo con "adversaryVoice") -> public/voice/<seg>-intercept.mp3
+      │                              + tts/<seg>-intercept.json — ver «Mensaje interceptado» → «Con voz»
       └─ scripts/build-timeline.mjs -> src/timeline.json (lo único que lee Remotion)
                                      + public/videos/<output>-transcript.txt
                                      + public/videos/<output>-captions.vtt
+                                     + (con "sfx") copia de video/engine/sfx/*.mp3 -> public/sfx/
 ```
+
+`video/engine/sfx/` (biblioteca de efectos, `scripts/sfx_generate.py`, ver «Efectos de sonido») es una fuente
+más para `build-timeline.mjs`: junto al storyboard, la narración y el léxico, entra en `timeline.sourceHash`
+en cuanto `narration.json` tiene la clave `sfx`, para que una biblioteca regenerada invalide un timeline
+construido contra la anterior.
 
 `src/timeline.json` cumple exactamente `engine/src/timeline/types.ts`: escenas, segmentos con tiempos por
 palabra, páginas de subtítulos (máx. 2 líneas × 42 caracteres), cues, tarjetas de examen y pausas para
@@ -407,6 +496,9 @@ Notas:
 | --- | --- | --- |
 | `video/<slug>/src/timeline.json` | timeline que lee la composición | sí |
 | `video/<slug>/public/voice/<id>.mp3`, `tts/<id>.json` | clips de voz y tiempos por palabra | sí (caché reproducible) |
+| `video/<slug>/public/voice/<seg>-intercept.mp3`, `tts/<seg>-intercept.json` | voz del adversario por mensaje interceptado (solo con `adversaryVoice`) | sí (caché reproducible) |
+| `video/engine/sfx/*.mp3`, `sfx.json` | biblioteca de efectos de sonido (`sfx_generate.py`, semilla fija) | sí |
+| `video/<slug>/public/sfx/*.mp3` | copia de los efectos que usa este vídeo (Remotion solo lee la carpeta pública del vídeo) | no — generada por `build-timeline.mjs` a partir de la biblioteca |
 | `public/videos/<output>.mp4` | vídeo final, perfiles `principal`/`capsula` | sí |
 | `video/<slug>/out/<output>.mp4` | vídeo final, perfiles `principal-yt`/`capsula-yt` (se sube a YouTube, no se commitea) | no |
 | `public/videos/<output>-poster.png` | póster (id `poster` de `video.json`); en `public/videos/` en los cuatro perfiles | sí |
@@ -422,14 +514,17 @@ tarjeta de examen y pausa) e `index.json` con el mapa archivo → fotograma → 
 ## Pruebas
 
 `scripts/test_*.py` (unittest, sin dependencias: `python -m unittest discover -s video/engine/scripts -p "test_*.py"`)
-cubre la normalización y la puntuación de guion del worker de Chatterbox, y cómo `recording_asr.py` aplana
-las palabras de Whisper.
+cubre la normalización y la puntuación de guion del worker de Chatterbox, cómo `recording_asr.py` aplana las
+palabras de Whisper, `test_sfx_generate.py` (la biblioteca de sonidos: duraciones, pico y reproducibilidad de
+la semilla) y `test_adversary_fx.py` (el preset `machine`: conserva la duración y deja el pico en −1 dBFS).
 
 `scripts/lib/*.test.mjs` (node:test, sin dependencias): marcas y léxico, alineación con límites de palabra
 que faltan o sobran (incluidos límites reales grabados de edge-tts en `fixtures/edge-boundaries.json`),
 paginación de subtítulos, receta de tiempos y validaciones del timeline. `recording.test.mjs` cubre la
 grabación propia: localizar frases (última toma, arranques en falso, audio fuera del guion, números),
-cortes en silencios, ganancia e informe. La prueba de modo audio usa
+cortes en silencios, ganancia e informe. `sfx.test.mjs` cubre `voicedHoldFrames`, `placeSfx` (sonidos
+automáticos y momentos clave) y `sfxMapErrors`; `adversary.test.mjs` cubre la validación de
+`adversaryVoice`, la clave de caché y el registro `tts/<segmento>-intercept.json`. La prueba de modo audio usa
 `out/test/tts2/`; si no existe se omite. Para generarla:
 
 ```bash
@@ -442,4 +537,6 @@ python -X utf8 video/engine/scripts/tts.py --narration $F/narration.json --lexic
 
 Tipografías en `engine/src/fonts/` (se importan en `theme/fonts.ts`, así que todos los vídeos las comparten): Inter y JetBrains Mono, ambas bajo SIL Open Font License 1.1
 (`engine/src/fonts/OFL.txt`). La voz se sintetiza con el servicio de voces neurales que usa `edge-tts`;
-revisa sus condiciones antes de publicar.
+revisa sus condiciones antes de publicar. La voz del adversario usa una voz SAPI de Windows (`scripts/sapi_tts.ps1`),
+pensada para uso en el propio equipo: revisa sus condiciones antes de monetizar el canal (hoy no se
+monetiza).
