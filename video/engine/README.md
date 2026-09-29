@@ -427,7 +427,10 @@ git) y `scripts/import-recording.mjs` lo convierte en los mismos clips que escri
    si se lee al menos tan bien como la toma entera, contra el texto mostrado o el hablado; en un empate
    gana la lectura posterior.
 3. **Corta** cada clip en el silencio más cercano a sus palabras (o, si se habla de corrido, a medio camino
-   de la palabra vecina), aplica **una sola ganancia** a toda la grabación (hasta la sonoridad de `--match
+   de la palabra vecina). Antes corrige los tiempos que Whisper estira sobre una pausa: una palabra que se
+   traga una pausa larga entera se queda en el lado más largo (`repairSwallowedPauses`), y si una pausa larga
+   **empieza dentro** de la palabra del borde, esa palabra está mal cronometrada (Whisper se saltó la anterior
+   y la estiró sobre su audio, V4: «júis») y el corte va a esa pausa. Aplica **una sola ganancia** a toda la grabación (hasta la sonoridad de `--match
    <clip>`, o `--lufs`, sin pasar de −1 dBTP) y codifica como Chatterbox (24 kHz mono, MP3 CBR 96 kbps).
 4. **Informa** en `out/recording/<nombre>/report-<archivo>.md`: la coincidencia de cada frase («revisar» por debajo de
    0,9: sobran o faltan palabras, escúchala), las que no encontró (sin clip: `build-timeline` las nombrará) y
@@ -452,8 +455,23 @@ palabra usan los tiempos de Whisper, que pueden desviarse ~0,2 s.
 node video/engine/scripts/import-recording.mjs --video <slug> --file "video/engine/voices/<grabación>.wav" --name <nombre> --match <clip de referencia>.mp3
 # Sustituir solo unas frases regrabadas (mismas carpetas y referencia de volumen)
 node video/engine/scripts/import-recording.mjs --video <slug> --file "video/engine/voices/<regrabación>.wav" --name <nombre> --only s02-03,s04-01 --match <clip de referencia>.mp3
-# Con "voice": "recording/<nombre>" en narration.json, audio.mjs solo reconstruye el timeline
+# Con "voice": "recording/<nombre>" en narration.json, audio.mjs reconstruye el timeline y comprueba la voz
 node video/engine/scripts/audio.mjs --video <slug>
+```
+
+**Comprobación de la voz** (`scripts/verify-voice.mjs`, que `audio.mjs` lanza tras `build-timeline` en las voces
+`recording/…`). Escucha cada clip **tal como suena en el vídeo** (solo la parte que se reproduce): lo transcribe
+otra vez con faster-whisper (`verify_voice.py`, en el venv de Chatterbox) y mide la energía en sus bordes.
+Son **errores** un clip que empieza o acaba dentro de una palabra (energía de borde > 0,35 del RMS del clip), voz
+justo después de la parte que se reproduce (> 0,15) y una frase de tres palabras que se oye más veces de las que
+dice el guion (una toma que se coló); es un **aviso** una similitud con el guion por debajo de 0,75 (escúchalo,
+muchas veces es solo el reconocimiento). Escribe `out/verify-voice.md` y `out/verify-voice.json` (con el
+`sourceHash` del timeline) y solo vuelve a transcribir los clips que cambiaron (`out/verify-voice-cache.json`;
+`--force` lo rehace todo). **`render.mjs` se niega a renderizar una grabación sin un informe al día y sin
+errores**; `--skip-voice-check` lo salta a sabiendas.
+
+```bash
+node video/engine/scripts/verify-voice.mjs --video <slug> [--warn-only] [--force]
 ```
 
 ## Masterización: voz y programa

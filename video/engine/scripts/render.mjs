@@ -20,15 +20,18 @@
 // target come from the video's profile (video.json -> scripts/lib/profiles.mjs).
 // The video is bundled once, then the MP4 and the poster render from that bundle.
 import { spawnSync } from 'node:child_process';
-import { mkdirSync, rmSync, statSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, statSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { checkTimelineFresh } from './lib/freshness.mjs';
-import { COMPOSITION, MANIFEST, PATHS, POSTER_STILL, REPO_ROOT, SCRIPTS_DIR, isMainModule } from './lib/paths.mjs';
+import { COMPOSITION, MANIFEST, PATHS, POSTER_STILL, REPO_ROOT, SCRIPTS_DIR, VIDEO, isMainModule } from './lib/paths.mjs';
 import { profileFor } from './lib/profiles.mjs';
 import { assertCliFlags, bundleVideo, ffmpegBinary, probeMedia, runPool, runRemotion, runRemotionAsync, spawnAsync } from './lib/remotion.mjs';
 import { VENV_PYTHON } from './tts-chatterbox.mjs';
+import { reportIsCurrent } from './lib/verify-voice.mjs';
+
+const VOICE_REPORT = path.join(PATHS.outDir, 'verify-voice.json');
 
 const PROFILE = profileFor(MANIFEST.profile);
 const SIZE = PROFILE.size; // MB (10^6 bytes)
@@ -106,6 +109,8 @@ async function main() {
       draft: { type: 'boolean', default: false },
       master: { type: 'boolean', default: false },
       'bed-db': { type: 'string' },
+      'skip-voice-check': { type: 'boolean', default: false },
+      'no-bundle-cache': { type: 'boolean', default: false },
       concurrency: { type: 'string' },
       video: { type: 'string' },
     },
@@ -121,6 +126,15 @@ async function main() {
     process.exit(1);
   }
   const timeline = fresh.timeline;
+  // A recorded narration must have passed verify-voice.mjs on this very timeline (no cut words, no leftover takes).
+  if (!draft && timeline.voice.startsWith('recording/') && !values['skip-voice-check']) {
+    const report = existsSync(VOICE_REPORT) ? JSON.parse(readFileSync(VOICE_REPORT, 'utf8')) : null;
+    const problem = !report ? 'it has not run' : !reportIsCurrent(report, timeline) ? 'its report is for another timeline' : report.errors.length ? `it found ${report.errors.length} error(s)` : null;
+    if (problem) {
+      console.error(`render.mjs: refusing to render: the voice check (verify-voice.mjs) ${problem}. Run node video/engine/scripts/verify-voice.mjs --video ${VIDEO}, or pass --skip-voice-check.`);
+      process.exit(1);
+    }
+  }
   const expectedSec = timeline.durationInFrames / timeline.fps;
 
   const flags = ['codec', 'crf', 'x264-preset', 'pixel-format', 'audio-codec', 'audio-bitrate', 'image-format', 'jpeg-quality', 'concurrency', 'enforce-audio-track', 'scale'];
@@ -154,7 +168,7 @@ async function main() {
   ];
   const started = Date.now();
   console.log('\n== bundle');
-  const bundle = bundleVideo();
+  const bundle = bundleVideo(values['no-bundle-cache'] ? { cache: false } : {});
   try {
     args[1] = bundle.dir;
     if (master) {
