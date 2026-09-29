@@ -7,6 +7,7 @@
     "tempo": 1.08,
     "maxPauseMs": 250
   },
+  "examTiming": "sentence-end",
   "adversaryVoice": {
     "voice": "sapi/Microsoft Pablo",
     "rate": 0,
@@ -28,25 +29,37 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> ¿Te acuerdas de E7, el beacon de Meridian? {e7-pending}Nos dejó dos pistas pendientes. Un certificado que se repite y un WHOIS por mirar.",
-      "pauseAfterMs": 350
+      "text": "<intrigued> Tienes un dominio malicioso y una IP con catorce mil vecinos. ¿Por dónde tiras?",
+      "pauseAfterMs": 450
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<engaging> Hoy las seguimos. Y te adelanto algo bueno. Para atacarte, el adversario también tiene que hacer papeleo.",
+      "text": "<confident> {title}Hoy aprendes a pivotar por la infraestructura. O sea, a elegir la pista que te lleva al atacante, y no al ruido.",
       "pauseAfterMs": 550
     },
     {
       "id": "s01-03",
       "scene": "s01-hook",
-      "text": "<mischievously> {register}Registra dominios, {rent}alquila servidores y {serve}les pone certificados. Y todo eso deja rastro, casi siempre público.",
-      "pauseAfterMs": 350
+      "text": "<curious> Partimos de una alerta de Meridian, el evento E7. {e7-pending}Nos dejó dos pistas pendientes. Un certificado que se repite, y el registro del dominio, que nadie ha mirado todavía.",
+      "pauseAfterMs": 400
     },
     {
       "id": "s01-04",
       "scene": "s01-hook",
-      "text": "<confident> O sea, que su infraestructura es lo que más se le ve. Seguir ese rastro se llama {title}pivotar por la infraestructura, y hoy lo haces tú.",
+      "text": "<engaging> Hoy las seguimos. Y te adelanto algo bueno. Para atacarte, el adversario también tiene que hacer papeleo.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-hook",
+      "text": "<mischievously> {register}Registra dominios, {rent}alquila servidores y {serve}les pone certificados. Y todo eso deja rastro, casi siempre público.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-06",
+      "scene": "s01-hook",
+      "text": "<confident> O sea, que su infraestructura es lo que más se le ve. Seguir ese rastro se llama pivotar por la infraestructura, y hoy lo haces tú.",
       "pauseAfterMs": 600
     },
     {
@@ -122,7 +135,7 @@
       "pauseAfterMs": 300,
       "think": {
         "q": "14.000 dominios en la IP. ¿Sigues por ahí?",
-        "holdMs": 2400
+        "holdMs": 4500
       }
     },
     {
@@ -314,7 +327,7 @@
       "pauseAfterMs": 300,
       "think": {
         "q": "¿Puedes bloquear un dominio antes de usarse?",
-        "holdMs": 2400
+        "holdMs": 4500
       }
     },
     {
@@ -378,19 +391,19 @@
     {
       "id": "s11-01",
       "scene": "s11-recap",
-      "text": "<warm> {recap}Resumiendo. El passive DNS es un listín con memoria. Y antes de cada pivote, cuenta los inquilinos.",
+      "text": "<warm> {recap}Resumiendo, quédate con tres reglas para tu próximo pivote.",
       "pauseAfterMs": 350
     },
     {
       "id": "s11-02",
       "scene": "s11-recap",
-      "text": "<confident> Si la misma llave hecha a mano abre dos servidores, seguramente son del mismo dueño. El tablón te enseña lo que montan. Y el WHOIS también tiene memoria.",
+      "text": "<confident> {rule-1}Una, antes de seguir una pista, cuenta los inquilinos. {rule-2}Dos, busca lo que es solo suyo, como un certificado hecho a mano.",
       "pauseAfterMs": 350
     },
     {
       "id": "s11-03",
       "scene": "s11-recap",
-      "text": "<enthusiastic> Investigas sin que el actor se entere. Y si pillas el lote, bloqueas antes del primer uso.",
+      "text": "<enthusiastic> {rule-3}Y tres, mira siempre en pasivo, para que el actor no sepa que vas detrás.",
       "pauseAfterMs": 450
     },
     {

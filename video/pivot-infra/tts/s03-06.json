@@ -5,87 +5,92 @@
  "rate": "+0%",
  "pitch": "+0Hz",
  "spoken": "Y el contador no para de subir. Mil, cinco mil… catorce mil dominios.",
- "bytes": 75456,
+ "bytes": 79200,
  "bitrateKbps": 96,
- "durationMs": 6210,
+ "durationMs": 6525,
  "source": {
   "file": "video/engine/voices/pivot-infra lidia (master).wav",
   "sha256": "b15777be7059d2042dc9b7746ed119a59c81ec16811d6448e2c480938f235bad",
   "gainDb": -5.3,
-  "startMs": 152449,
+  "startMs": 151220,
   "endMs": 159434,
-  "pausesRemovedMs": 278
+  "pausesRemovedMs": 1167
  },
  "asr": {
   "model": "small",
-  "text": "Y el contador no para de subir mil, cinco mil, catorce mil dominios.",
-  "score": 1
+  "text": "y el contador no para de subir 1 .000, 5 .000, 14 .000 dominios",
+  "score": 0.75
  },
  "words": [
   {
-   "text": "Y",
+   "text": "y",
    "offsetMs": 0,
-   "durationMs": 621
+   "durationMs": 918
   },
   {
    "text": "el",
-   "offsetMs": 621,
-   "durationMs": 111
+   "offsetMs": 918,
+   "durationMs": 130
   },
   {
    "text": "contador",
-   "offsetMs": 732,
+   "offsetMs": 1047,
    "durationMs": 500
   },
   {
    "text": "no",
-   "offsetMs": 1232,
+   "offsetMs": 1547,
    "durationMs": 241
   },
   {
    "text": "para",
-   "offsetMs": 1473,
+   "offsetMs": 1788,
    "durationMs": 222
   },
   {
    "text": "de",
-   "offsetMs": 1695,
+   "offsetMs": 2010,
    "durationMs": 204
   },
   {
    "text": "subir",
-   "offsetMs": 1899,
-   "durationMs": 315
-  },
-  {
-   "text": "mil,",
    "offsetMs": 2214,
-   "durationMs": 793
+   "durationMs": 278
   },
   {
-   "text": "cinco",
-   "offsetMs": 3525,
-   "durationMs": 222
+   "text": "1",
+   "offsetMs": 2492,
+   "durationMs": 626
   },
   {
-   "text": "mil,",
-   "offsetMs": 3747,
-   "durationMs": 444
+   "text": ".000,",
+   "offsetMs": 3118,
+   "durationMs": 352
   },
   {
-   "text": "catorce",
-   "offsetMs": 4531,
-   "durationMs": 426
+   "text": "5",
+   "offsetMs": 3655,
+   "durationMs": 407
   },
   {
-   "text": "mil",
-   "offsetMs": 4956,
-   "durationMs": 185
+   "text": ".000,",
+   "offsetMs": 4062,
+   "durationMs": 556
   },
   {
-   "text": "dominios.",
+   "text": "14",
+   "offsetMs": 4784,
+   "durationMs": 357
+  },
+  {
+   "text": ".000",
    "offsetMs": 5142,
-   "durationMs": 722
+   "durationMs": 352
+  },
+  {
+   "text": "dominios",
+   "offsetMs": 5494,
+   "durationMs": 833
   }
  ],
  "tempo": 1.08

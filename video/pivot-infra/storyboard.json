@@ -31,15 +31,15 @@
       "id": "s01-hook",
       "chapter": 1,
       "title": "Dos pistas en el aire",
-      "goal": "Vuelve E7 (V3): la ficha de infraestructura con dos pivotes pendientes, el certificado autofirmado CN=updatesvc «visto en 2 IP más» y el «WHOIS histórico: pendiente» (NUNCA mostrar el email ni ningún registrante aquí: se revela en s07); la IP 185.220.x.x ya marcada como «ruido». Para operar, el adversario registra dominios, alquila servidores y les pone certificados: todo deja rastro público o semipúblico. Su infraestructura es lo que más se le ve; seguir ese rastro es pivotar por la infraestructura",
-      "targetSec": 32,
-      "wordBudget": 86,
+      "goal": "En los primeros ~10 s, el problema y la promesa: un dominio malicioso y una IP con 14.000 vecinos; ¿por dónde tiras? El título «Pivotar por la infraestructura» y la promesa «elegir la pista que lleva al atacante, no al ruido». Luego el contexto que se entiende sin haber visto V3: la alerta de Meridian (evento E7) dejó dos pistas pendientes, el certificado autofirmado CN=updatesvc «visto en 2 IP más» y el registro del dominio sin mirar (NUNCA mostrar el email ni ningún registrante: se revela en s07); la IP 185.220.x.x ya marcada como «ruido». Para operar, el adversario registra dominios, alquila servidores y les pone certificados: todo deja rastro. Cierra repitiendo el nombre: seguir ese rastro es pivotar por la infraestructura",
+      "targetSec": 44,
+      "wordBudget": 119,
       "requiredCues": [
+        "title",
         "e7-pending",
         "register",
         "rent",
-        "serve",
-        "title"
+        "serve"
       ]
     },
     {
@@ -175,11 +175,14 @@
       "id": "s11-recap",
       "chapter": 5,
       "title": "Para el examen",
-      "goal": "Reflejos con las mismas imágenes del vídeo: listín con memoria, cuenta los inquilinos, la misma llave hecha a mano en dos servidores apunta a un mismo dueño, el tablón enseña lo que montan, el WHOIS tiene memoria, investigas sin que el actor se entere y, si pillas el lote, bloqueas antes del primer uso. Tarjeta final: ahora te toca en el Lab 3A (consultas contadas)",
+      "goal": "Tres reglas prácticas, una por tarjeta grande, y una sola acción: 1) cuenta los inquilinos antes de seguir una pista (compartido contamina, dedicado discrimina); 2) busca lo que es solo suyo, como un certificado hecho a mano; 3) mira siempre en pasivo, que el actor no sepa que vas detrás. Tarjeta final: ahora te toca en el Lab 3A (consultas contadas)",
       "targetSec": 28,
       "wordBudget": 76,
       "requiredCues": [
         "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
         "lab3a",
         "endcard"
       ]

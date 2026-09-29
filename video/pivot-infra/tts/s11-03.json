@@ -1,111 +1,101 @@
 {
  "provider": "recording",
- "key": "01a71bd0e400796e27eff74675cbe8923da7370372421d815b36d9ecf6167a08",
+ "key": "4e46950e42b0aae470e87c748191383ac3b83c464da4a5e590c41d5c66e3bcac",
  "voice": "recording/lidia",
  "rate": "+0%",
  "pitch": "+0Hz",
- "spoken": "Investigas sin que el actor se entere. Y si pillas el lote, bloqueas antes del primer uso.",
- "bytes": 72864,
+ "spoken": "Y tres, mira siempre en pasivo, para que el actor no sepa que vas detrás.",
+ "bytes": 76608,
  "bitrateKbps": 96,
- "durationMs": 6000,
+ "durationMs": 6317,
  "source": {
-  "file": "video/engine/voices/pivot-infra lidia (master).wav",
-  "sha256": "b15777be7059d2042dc9b7746ed119a59c81ec16811d6448e2c480938f235bad",
+  "file": "video/engine/voices/pivot-infra regrabacion lidia (master).wav",
+  "sha256": "e3b48b667b6a5b12ec2ff9c658ebbf411a939d6a3d90010b47b8d995690074cd",
   "gainDb": -5.3,
-  "startMs": 576426,
-  "endMs": 582906,
-  "pausesRemovedMs": 0
+  "startMs": 51740,
+  "endMs": 59005,
+  "pausesRemovedMs": 443
  },
  "asr": {
   "model": "small",
-  "text": "Investigas sin que el actor se entere, y si pillas el lote, bloqueas antes del primer uso.",
+  "text": "Y tres, mira siempre en pasivo para que el actor no sepa que vas detrás.",
   "score": 1
  },
  "words": [
   {
-   "text": "Investigas",
-   "offsetMs": 106,
-   "durationMs": 667
+   "text": "Y",
+   "offsetMs": 0,
+   "durationMs": 627
   },
   {
-   "text": "sin",
-   "offsetMs": 772,
-   "durationMs": 204
-  },
-  {
-   "text": "que",
-   "offsetMs": 976,
-   "durationMs": 148
-  },
-  {
-   "text": "el",
-   "offsetMs": 1124,
-   "durationMs": 130
-  },
-  {
-   "text": "actor",
-   "offsetMs": 1254,
+   "text": "tres,",
+   "offsetMs": 627,
    "durationMs": 259
   },
   {
-   "text": "se",
-   "offsetMs": 1513,
-   "durationMs": 222
-  },
-  {
-   "text": "entere,",
-   "offsetMs": 1735,
-   "durationMs": 389
-  },
-  {
-   "text": "y",
-   "offsetMs": 2587,
-   "durationMs": 56
-  },
-  {
-   "text": "si",
-   "offsetMs": 2643,
-   "durationMs": 130
-  },
-  {
-   "text": "pillas",
-   "offsetMs": 2772,
-   "durationMs": 333
-  },
-  {
-   "text": "el",
-   "offsetMs": 3106,
-   "durationMs": 167
-  },
-  {
-   "text": "lote,",
-   "offsetMs": 3272,
-   "durationMs": 352
-  },
-  {
-   "text": "bloqueas",
-   "offsetMs": 3920,
-   "durationMs": 685
-  },
-  {
-   "text": "antes",
-   "offsetMs": 4606,
+   "text": "mira",
+   "offsetMs": 1405,
    "durationMs": 296
   },
   {
-   "text": "del",
-   "offsetMs": 4902,
-   "durationMs": 222
+   "text": "siempre",
+   "offsetMs": 1701,
+   "durationMs": 444
   },
   {
-   "text": "primer",
-   "offsetMs": 5124,
-   "durationMs": 315
+   "text": "en",
+   "offsetMs": 2145,
+   "durationMs": 407
   },
   {
-   "text": "uso.",
-   "offsetMs": 5439,
-   "durationMs": 315
+   "text": "pasivo",
+   "offsetMs": 2553,
+   "durationMs": 537
+  },
+  {
+   "text": "para",
+   "offsetMs": 3090,
+   "durationMs": 537
+  },
+  {
+   "text": "que",
+   "offsetMs": 3627,
+   "durationMs": 167
+  },
+  {
+   "text": "el",
+   "offsetMs": 3794,
+   "durationMs": 111
+  },
+  {
+   "text": "actor",
+   "offsetMs": 3905,
+   "durationMs": 204
+  },
+  {
+   "text": "no",
+   "offsetMs": 4108,
+   "durationMs": 352
+  },
+  {
+   "text": "sepa",
+   "offsetMs": 4460,
+   "durationMs": 426
+  },
+  {
+   "text": "que",
+   "offsetMs": 4886,
+   "durationMs": 500
+  },
+  {
+   "text": "vas",
+   "offsetMs": 5386,
+   "durationMs": 204
+  },
+  {
+   "text": "detrás.",
+   "offsetMs": 5590,
+   "durationMs": 481
   }
  ],
  "tempo": 1.08
