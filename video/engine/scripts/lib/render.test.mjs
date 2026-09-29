@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { clipOnset, parseSilenceEnds, syncReport } from '../render.mjs';
+import { clipOnset, masterPaths, parseSilenceEnds, syncReport } from '../render.mjs';
 
 const FPS = 30;
 /** Three segments starting at 2 s, 8 s and 14 s; first word 3 frames in. */
@@ -55,4 +55,13 @@ test('without measured clip onsets the first word frame is the reference', () =>
   const rep = syncReport(timeline, timeline.segments.map((s) => s.words[0].from / FPS));
   assert.equal(rep.fail, false);
   assert.equal(rep.mismatches.length, 0);
+});
+
+test('masterPaths: the unmastered render, the program audio and the premaster sit next to the final MP4', () => {
+  assert.deepEqual(masterPaths('video/x/out/pivot-infra.mp4'), {
+    video: 'video/x/out/pivot-infra-premaster.mp4',
+    program: 'video/x/out/pivot-infra-program.wav',
+    premaster: 'video/x/out/pivot-infra-premaster.wav',
+    final: 'video/x/out/pivot-infra.mp4',
+  });
 });

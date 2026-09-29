@@ -470,7 +470,16 @@ Dos pasos opcionales, en Python (venv de Chatterbox con `pip install pedalboard 
   **−14 LUFS** (YouTube) y limita el pico real a **−1 dBTP** (detección 4× sin latencia). El vídeo se copia tal cual;
   el audio sale en AAC 192 kbps. Lo que cuenta es el archivo entregado: **mide el MP4 ya codificado** (el AAC puede
   subir el pico por encima del PCM) y, si pasa de −1 dBTP, vuelve a limitar con el techo más bajo lo que se pasó,
-  más 0,1 dB (`next_ceiling`, hasta 3 pasadas). El ambiente por defecto (`--bed-style story`, desde V4) **sigue la historia** que
+  más 0,1 dB (`next_ceiling`, hasta 3 pasadas).
+
+  **En paralelo con el render:** `render.mjs --video <slug> --master [--bed-db <n>]` saca primero la mezcla de audio
+  sola (`remotion render … --codec=wav`) y, mientras se dibujan los fotogramas, corre la fase pesada de
+  `master_mix.py` (`--audio-in … --premaster-out …`: ambiente y sonoridad). Al acabar la imagen solo queda la ligera
+  (`--video-in … --premaster … --out …`: limitador, AAC, unir y medir). El render sin masterizar queda como
+  `<output>-premaster.mp4` (las comprobaciones de sincronía se hacen sobre él, porque el ambiente rellena los
+  silencios que buscan) y el masterizado es `<output>.mp4`. El Python sale de `$MASTER_PYTHON` o del venv de
+  Chatterbox, y se comprueba que tenga pedalboard, pyloudnorm, soundfile y scipy antes de renderizar nada. Ojo: el
+  ffmpeg de Remotion solo escribe PCM de 16 y 24 bits (no `pcm_f32le`). El ambiente por defecto (`--bed-style story`, desde V4) **sigue la historia** que
   cuenta el timeline:
   - cada capítulo recorre una progresión de cuatro acordes en re menor (uno cada 10 s) con un arpegio suave;
   - bajo el mensaje del adversario, un acorde disonante y un latido grave, y el arpegio se calla;

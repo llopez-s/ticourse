@@ -153,6 +153,28 @@ class MasterMixTest(unittest.TestCase):
         self.assertGreater(band(*tense, 48, 60), 3 * band(*free, 48, 60))
         self.assertLess(band(*tense, 600, 1400), 0.5 * band(*free, 600, 1400))
 
+    def test_premaster_reaches_the_target_loudness_with_and_without_the_bed(self):
+        sr = master_mix.SR
+        prog = np.stack([speechlike(sr, 40.0)] * 2, axis=1)
+        meter = master_mix.pyln.Meter(sr)
+        for no_bed in (True, False):
+            out = master_mix.premaster(prog, story_timeline(), meter, target=-14.0, no_bed=no_bed)
+            self.assertEqual(out.shape, prog.shape)
+            self.assertAlmostEqual(meter.integrated_loudness(out), -14.0, delta=0.1)
+
+    def test_read_audio_goes_through_remotions_ffmpeg(self):
+        # Remotion's ffmpeg encodes pcm_s16le and pcm_s24le only (no pcm_f32le): read_audio must use one of them.
+        import os, tempfile
+        import soundfile as sf
+        ffmpeg = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "node_modules", "@remotion", "compositor-win32-x64-msvc", "ffmpeg.exe"))
+        if not os.path.exists(ffmpeg):
+            self.skipTest("Remotion's ffmpeg is not installed")
+        with tempfile.TemporaryDirectory() as tmp:
+            src = os.path.join(tmp, "in.wav")
+            sf.write(src, np.stack([speechlike(master_mix.SR, 0.5)] * 2, axis=1), master_mix.SR, subtype="PCM_16")
+            audio = master_mix.read_audio(ffmpeg, src, tmp)
+            self.assertEqual(audio.shape, (master_mix.SR // 2, 2))
+
     def test_the_story_bed_plays_10_db_over_the_pad_bed(self):
         self.assertEqual(set(master_mix.BED_UNDER_LU), set(master_mix.BED_STYLES))
         self.assertEqual(master_mix.BED_UNDER_LU["pad"], 14.0)  # V1/V3 stay reproducible

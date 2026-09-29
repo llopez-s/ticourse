@@ -7,20 +7,28 @@
 //     -yt profiles (principal-yt/capsula-yt): video/<slug>/out/<output>.mp4 (git-ignored,
 //       uploaded to YouTube instead) + public/videos/<output>-poster.png (poster always goes there)
 //   node video/engine/scripts/render.mjs --video <slug> --draft  # half scale, crf 30 -> video/<slug>/out/draft.mp4
+//   node video/engine/scripts/render.mjs --video <slug> --master [--bed-db <n>]
+//     also masters the audio (master_mix.py) WHILE the frames render: Remotion's audio-only render
+//     (seconds) feeds master_mix's heavy stage (ambient bed, loudness) in parallel with the video render;
+//     at the end only the light stage runs (limit, AAC, mux, delivered-peak check). The unmastered
+//     render stays as <output>-premaster.mp4 (the sync checks run on it: the bed fills the silences
+//     they look for) and the mastered one is <output>.mp4. Python: $MASTER_PYTHON, else the Chatterbox
+//     venv; it needs pedalboard, pyloudnorm, soundfile and scipy, checked before anything renders.
 //
 // Refuses to run unless src/timeline.json is in audio mode, its sourceHash
 // matches the current sources and every voice clip exists. crf and the size
 // target come from the video's profile (video.json -> scripts/lib/profiles.mjs).
 // The video is bundled once, then the MP4 and the poster render from that bundle.
 import { spawnSync } from 'node:child_process';
-import { mkdirSync, statSync } from 'node:fs';
+import { mkdirSync, rmSync, statSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { checkTimelineFresh } from './lib/freshness.mjs';
-import { COMPOSITION, MANIFEST, PATHS, POSTER_STILL, REPO_ROOT, isMainModule } from './lib/paths.mjs';
+import { COMPOSITION, MANIFEST, PATHS, POSTER_STILL, REPO_ROOT, SCRIPTS_DIR, isMainModule } from './lib/paths.mjs';
 import { profileFor } from './lib/profiles.mjs';
-import { assertCliFlags, bundleVideo, probeMedia, runPool, runRemotion, runRemotionAsync } from './lib/remotion.mjs';
+import { assertCliFlags, bundleVideo, ffmpegBinary, probeMedia, runPool, runRemotion, runRemotionAsync, spawnAsync } from './lib/remotion.mjs';
+import { VENV_PYTHON } from './tts-chatterbox.mjs';
 
 const PROFILE = profileFor(MANIFEST.profile);
 const SIZE = PROFILE.size; // MB (10^6 bytes)
@@ -70,6 +78,22 @@ export function syncReport(timeline, silenceEnds, clipOnsets = new Map()) {
   };
 }
 
+/** Files of a --master render, next to the final MP4: the unmastered render, the program audio and the premaster. */
+export function masterPaths(out) {
+  const base = out.replace(/\.mp4$/i, '');
+  return { video: `${base}-premaster.mp4`, program: `${base}-program.wav`, premaster: `${base}-premaster.wav`, final: out };
+}
+
+/** The Python that runs master_mix.py, or throws before anything renders if it lacks the audio libraries. */
+function masterPython() {
+  const py = process.env.MASTER_PYTHON || VENV_PYTHON;
+  const probe = spawnSync(py, ['-c', 'import pedalboard, pyloudnorm, soundfile, scipy'], { encoding: 'utf8', windowsHide: true });
+  if (probe.error || probe.status !== 0) {
+    throw new Error(`--master needs a Python with pedalboard, pyloudnorm, soundfile and scipy (${py}): ${(probe.stderr || probe.error?.message || '').trim().split('\n').pop()} — pip install them there, or set MASTER_PYTHON`);
+  }
+  return py;
+}
+
 function run(label, args) {
   console.log(`\n== ${label}\nremotion ${args.map((a) => (/\s/.test(a) ? JSON.stringify(a) : a)).join(' ')}`);
   const res = runRemotion(args);
@@ -80,11 +104,16 @@ async function main() {
   const { values } = parseArgs({
     options: {
       draft: { type: 'boolean', default: false },
+      master: { type: 'boolean', default: false },
+      'bed-db': { type: 'string' },
       concurrency: { type: 'string' },
       video: { type: 'string' },
     },
   });
   const draft = values.draft;
+  const master = values.master;
+  if (master && draft) throw new Error('--master is for the final render, not a --draft');
+  const py = master ? masterPython() : null;
   const fresh = checkTimelineFresh();
   if (!fresh.ok) {
     console.error('render.mjs: refusing to render:');
@@ -97,7 +126,9 @@ async function main() {
   const flags = ['codec', 'crf', 'x264-preset', 'pixel-format', 'audio-codec', 'audio-bitrate', 'image-format', 'jpeg-quality', 'concurrency', 'enforce-audio-track', 'scale'];
   assertCliFlags(flags);
 
-  const out = draft ? PATHS.draft : PATHS.video;
+  const paths = master ? masterPaths(PATHS.video) : null;
+  // With --master the frames render to the -premaster.mp4; the mastered file takes the final name.
+  const out = draft ? PATHS.draft : master ? paths.video : PATHS.video;
   // A YouTube render is 100+ MB at crf 18 and must never reach the public repo.
   if (!draft && PROFILE.host === 'youtube' && spawnSync('git', ['check-ignore', '-q', out], { cwd: REPO_ROOT }).status !== 0) {
     throw new Error(`${out} is not git-ignored: a YouTube render must stay out of the repo (see the root .gitignore)`);
@@ -126,7 +157,26 @@ async function main() {
   const bundle = bundleVideo();
   try {
     args[1] = bundle.dir;
-    run(draft ? 'render (draft)' : 'render', args);
+    if (master) {
+      // The audio chain (audio-only render, then master_mix's heavy stage) runs while the frames render.
+      const audioChain = (async () => {
+        const t0 = Date.now();
+        const wav = await runRemotionAsync(['render', bundle.dir, COMPOSITION, paths.program, '--codec=wav', '--enforce-audio-track']);
+        if (wav.status !== 0) throw new Error(`audio-only render failed (exit ${wav.status}): ${wav.stderr.trim().slice(-400)}`);
+        console.log(`\n== audio: program rendered in ${((Date.now() - t0) / 1000).toFixed(0)} s; premastering while the frames render`);
+        const pre = await spawnAsync(py, [
+          path.join(SCRIPTS_DIR, 'master_mix.py'), '--audio-in', paths.program, '--timeline', PATHS.timeline,
+          '--premaster-out', paths.premaster, '--ffmpeg', ffmpegBinary(), ...(values['bed-db'] ? ['--bed-db', values['bed-db']] : []),
+        ]);
+        if (pre.status !== 0) throw new Error(`master_mix stage 1 failed (exit ${pre.status}): ${pre.stderr.trim().slice(-600)}`);
+        console.log(`\n== audio: premaster ready after ${((Date.now() - t0) / 1000).toFixed(0)} s\n${pre.stdout.trim()}`);
+      })();
+      console.log(`\n== render\nremotion ${args.map((a) => (/\s/.test(a) ? JSON.stringify(a) : a)).join(' ')}`);
+      const [video] = await Promise.all([runRemotionAsync(args, { inherit: true }), audioChain]);
+      if (video.status !== 0) throw new Error(`render failed (exit ${video.status})`);
+    } else {
+      run(draft ? 'render (draft)' : 'render', args);
+    }
     if (!draft) run('poster', ['still', bundle.dir, POSTER_STILL, PATHS.poster, '--image-format=png']);
   } finally {
     bundle.remove();
@@ -181,7 +231,20 @@ async function main() {
     console.error(`render.mjs: ${errors.length} check(s) failed:\n${errors.map((e) => `  - ${e}`).join('\n')}`);
     process.exit(1);
   }
-  console.log(draft ? `\ndraft ok -> ${out}` : `\nok -> ${out}\n      ${PATHS.poster}`);
+  if (master) {
+    // The light stage: limit, AAC next to the untouched video stream, delivered-peak check.
+    console.log('\n== master (stage 2)');
+    const t0 = Date.now();
+    const fin = spawnSync(py, [path.join(SCRIPTS_DIR, 'master_mix.py'), '--video-in', out, '--premaster', paths.premaster, '--out', paths.final, '--ffmpeg', ffmpegBinary()], {
+      cwd: REPO_ROOT, stdio: 'inherit', windowsHide: true,
+    });
+    if (fin.status !== 0) throw new Error(`master_mix stage 2 failed (exit ${fin.status})`);
+    const finalSec = Number(probeMedia(paths.final).format?.duration);
+    if (!(Math.abs(finalSec - expectedSec) <= 0.2)) throw new Error(`mastered duration ${finalSec.toFixed(2)} s, timeline says ${expectedSec.toFixed(2)} s`);
+    rmSync(paths.program, { force: true });
+    console.log(`  mastered in ${((Date.now() - t0) / 1000).toFixed(0)} s after the frames`);
+  }
+  console.log(draft ? `\ndraft ok -> ${out}` : `\nok -> ${master ? paths.final : out}\n      ${PATHS.poster}`);
 }
 
 if (isMainModule(import.meta.url)) {

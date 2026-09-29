@@ -66,18 +66,27 @@ export function runFfmpeg(args) {
 }
 
 /** Asynchronous CLI call with captured output (used for parallel ffprobe). */
-export function runRemotionAsync(args) {
+export function runRemotionAsync(args, { inherit = false } = {}) {
   assertCli();
+  return spawnAsync(process.execPath, [PATHS.remotionCli, ...args], { inherit });
+}
+
+/**
+ * A child process that does not block the event loop (unlike spawnSync), so two of them can run at once.
+ * With `inherit`, its output goes straight to this console (progress bars) and is not captured.
+ */
+export function spawnAsync(command, args, { inherit = false, env = process.env } = {}) {
   return new Promise((resolve, reject) => {
-    const child = spawn(process.execPath, [PATHS.remotionCli, ...args], {
+    const child = spawn(command, args, {
       cwd: REPO_ROOT,
-      stdio: ['ignore', 'pipe', 'pipe'],
+      env,
+      stdio: inherit ? ['ignore', 'inherit', 'inherit'] : ['ignore', 'pipe', 'pipe'],
       windowsHide: true,
     });
     let stdout = '';
     let stderr = '';
-    child.stdout.setEncoding('utf8').on('data', (d) => (stdout += d));
-    child.stderr.setEncoding('utf8').on('data', (d) => (stderr += d));
+    child.stdout?.setEncoding('utf8').on('data', (d) => (stdout += d));
+    child.stderr?.setEncoding('utf8').on('data', (d) => (stderr += d));
     child.on('error', reject);
     child.on('close', (status) => resolve({ status, stdout, stderr }));
   });

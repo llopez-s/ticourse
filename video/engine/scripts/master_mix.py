@@ -2,6 +2,9 @@
 
     python video/engine/scripts/master_mix.py --video-in out/x.mp4 --timeline src/timeline.json --out out/x-master.mp4
         [--target -14] [--ceiling -1] [--bed-db 0] [--no-bed] [--bed-style story|pad] [--ffmpeg <exe>] [--excerpt 40:80 --excerpt-out x.wav]
+    Or in two stages, so the heavy one runs while the frames render (render.mjs --master does this):
+    python ... master_mix.py --audio-in out/x-program.wav --timeline src/timeline.json --premaster-out out/x-premaster.wav
+    python ... master_mix.py --video-in out/x-premaster.mp4 --premaster out/x-premaster.wav --out out/x.mp4
 
 1. Takes the rendered MP4's audio (narration + adversary voice + sound effects, as Remotion mixed them).
 2. Adds an ambient bed generated here (no samples, no licences). The default --bed-style story walks a
@@ -365,11 +368,75 @@ def next_ceiling(limiter_db, measured_tp_db, target_tp_db, margin_db=0.1):
     return limiter_db - (measured_tp_db - target_tp_db) - margin_db
 
 
+def read_audio(ffmpeg, src, tmp, name="program.wav"):
+    """Any file ffmpeg reads (the rendered MP4, or an audio-only WAV) as stereo float at SR."""
+    raw = os.path.join(tmp, name)
+    subprocess.run([ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-i", src, "-vn", "-ac", "2", "-ar", str(SR), "-c:a", "pcm_s24le", raw], check=True)
+    audio, _ = sf.read(raw, always_2d=True)
+    return audio
+
+
+def premaster(prog, timeline, meter, target=-14.0, bed_style="story", bed_db=0.0, no_bed=False):
+    """Stage 1, the heavy one: the program plus the ambient bed, at the target loudness, not yet limited.
+    It only needs the audio, so it can run while the video frames are still rendering."""
+    n = len(prog)
+    prog_lufs = meter.integrated_loudness(prog)
+    print(f"master_mix: program {prog_lufs:.1f} LUFS, true peak {true_peak_db(prog):.1f} dBTP, {n / SR:.1f} s")
+    mix = prog.copy()
+    if not no_bed:
+        bed = BED_STYLES[bed_style](timeline, n)
+        # The bed BED_UNDER_LU under the program, then 6 dB lower while anyone speaks.
+        bed *= 10 ** ((prog_lufs - BED_UNDER_LU[bed_style] + bed_db - meter.integrated_loudness(bed)) / 20)
+        duck = 10 ** (-6 * smooth(speech_mask(timeline, n), 250) / 20)
+        bed *= duck[:, None]
+        print(f"  bed ({bed_style}): {meter.integrated_loudness(bed):.1f} LUFS ({meter.integrated_loudness(bed) - prog_lufs:+.1f} LU vs program)")
+        mix = prog + bed
+    return mix * 10 ** ((target - meter.integrated_loudness(mix)) / 20)
+
+
+def deliver(unlimited, video_in, out, meter, ffmpeg, tmp, ceiling_db=-1.0):
+    """Stage 2, the light one: limit, encode AAC next to the untouched video stream, and check the delivered
+    MP4. AAC can push the true peak past the PCM limiter's ceiling, so the MP4 is decoded and measured, and
+    limited again with a lower ceiling if it overshot (up to 3 passes). Returns the limited PCM."""
+    ceiling = ceiling_db
+    for _ in range(3):
+        mix, gr = limit(unlimited, ceiling)
+        active = gr < -0.1
+        print(
+            f"  master: {meter.integrated_loudness(mix):.1f} LUFS, true peak {true_peak_db(mix):.1f} dBTP "
+            f"(limiter at {ceiling:.2f}), limiter active {100 * active.mean():.2f}% of the time, max {-gr.min():.1f} dB"
+        )
+        mastered = os.path.join(tmp, "master.wav")
+        sf.write(mastered, mix, SR, subtype="PCM_24")
+        subprocess.run(
+            [ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-i", video_in, "-i", mastered,
+             "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", out],
+            check=True,
+        )
+        delivered = read_audio(ffmpeg, out, tmp, "check.wav")
+        tp = true_peak_db(delivered)
+        print(f"  delivered MP4: {meter.integrated_loudness(delivered):.1f} LUFS, true peak {tp:.2f} dBTP")
+        lower = next_ceiling(ceiling, tp, ceiling_db)
+        if lower is None:
+            break
+        ceiling = lower
+    else:
+        print(f"  warning: the MP4's true peak is still {tp:.2f} dBTP, over {ceiling_db} dBTP")
+    print(f"  -> {out}")
+    return mix
+
+
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--video-in", required=True)
-    ap.add_argument("--timeline", required=True)
-    ap.add_argument("--out", required=True)
+    ap = argparse.ArgumentParser(
+        description="One pass: --video-in + --timeline + --out. In two stages (render.mjs --master runs stage 1 while "
+        "the frames render): --audio-in + --timeline + --premaster-out, then --video-in + --premaster + --out."
+    )
+    ap.add_argument("--video-in", help="the rendered MP4 (its video stream is copied untouched)")
+    ap.add_argument("--audio-in", help="stage 1 only: the program audio, e.g. Remotion's audio-only render")
+    ap.add_argument("--premaster-out", help="stage 1 only: where to write the unlimited premaster (float WAV)")
+    ap.add_argument("--premaster", help="stage 2 only: a premaster written by stage 1")
+    ap.add_argument("--timeline")
+    ap.add_argument("--out")
     ap.add_argument("--target", type=float, default=-14.0)
     ap.add_argument("--ceiling", type=float, default=-1.0)
     ap.add_argument("--bed-db", type=float, default=0.0, help="raise/lower the ambient bed from its default level")
@@ -379,59 +446,29 @@ def main():
     ap.add_argument("--excerpt", help="start:end seconds of the master to also write as WAV")
     ap.add_argument("--excerpt-out")
     args = ap.parse_args()
+    stage1 = bool(args.audio_in or args.premaster_out)
+    stage2 = bool(args.premaster)
+    if stage1 and not (args.audio_in and args.premaster_out and args.timeline):
+        ap.error("stage 1 needs --audio-in, --timeline and --premaster-out")
+    if stage2 and not (args.video_in and args.out):
+        ap.error("stage 2 needs --video-in, --premaster and --out")
+    if not stage1 and not stage2 and not (args.video_in and args.timeline and args.out):
+        ap.error("one pass needs --video-in, --timeline and --out")
 
     args.ffmpeg = os.path.abspath(args.ffmpeg)  # Windows won't run a relative path with forward slashes
-    timeline = json.load(open(args.timeline, encoding="utf8"))
     meter = pyln.Meter(SR)
     with tempfile.TemporaryDirectory() as tmp:
-        raw = os.path.join(tmp, "program.wav")
-        subprocess.run([args.ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-i", args.video_in, "-vn", "-ac", "2", "-ar", str(SR), "-c:a", "pcm_s16le", raw], check=True)
-        prog, _ = sf.read(raw, always_2d=True)
-        n = len(prog)
-        prog_lufs = meter.integrated_loudness(prog)
-        print(f"master_mix: program {prog_lufs:.1f} LUFS, true peak {true_peak_db(prog):.1f} dBTP, {n / SR:.1f} s")
-
-        mix = prog.copy()
-        if not args.no_bed:
-            bed = BED_STYLES[args.bed_style](timeline, n)
-            # The bed BED_UNDER_LU under the program, then 6 dB lower while anyone speaks.
-            bed *= 10 ** ((prog_lufs - BED_UNDER_LU[args.bed_style] + args.bed_db - meter.integrated_loudness(bed)) / 20)
-            duck = 10 ** (-6 * smooth(speech_mask(timeline, n), 250) / 20)
-            bed *= duck[:, None]
-            print(f"  bed ({args.bed_style}): {meter.integrated_loudness(bed):.1f} LUFS ({meter.integrated_loudness(bed) - prog_lufs:+.1f} LU vs program)")
-            mix = prog + bed
-
-        mix *= 10 ** ((args.target - meter.integrated_loudness(mix)) / 20)
-        unlimited = mix
-        # The delivered file is what counts: AAC can push the true peak past the PCM limiter's ceiling, so the
-        # MP4 is decoded and measured, and limited again with a lower ceiling if it overshot (up to 3 passes).
-        ceiling = args.ceiling
-        for attempt in range(3):
-            mix, gr = limit(unlimited, ceiling)
-            active = gr < -0.1
-            print(
-                f"  master: {meter.integrated_loudness(mix):.1f} LUFS, true peak {true_peak_db(mix):.1f} dBTP "
-                f"(limiter at {ceiling:.2f}), limiter active {100 * active.mean():.2f}% of the time, max {-gr.min():.1f} dB"
-            )
-            mastered = os.path.join(tmp, "master.wav")
-            sf.write(mastered, mix, SR, subtype="PCM_24")
-            subprocess.run(
-                [args.ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-i", args.video_in, "-i", mastered,
-                 "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", args.out],
-                check=True,
-            )
-            check = os.path.join(tmp, "check.wav")
-            subprocess.run([args.ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-i", args.out, "-vn", "-ac", "2", "-ar", str(SR), "-c:a", "pcm_f32le", check], check=True)
-            delivered, _ = sf.read(check, always_2d=True)
-            tp = true_peak_db(delivered)
-            print(f"  delivered MP4: {meter.integrated_loudness(delivered):.1f} LUFS, true peak {tp:.2f} dBTP")
-            lower = next_ceiling(ceiling, tp, args.ceiling)
-            if lower is None:
-                break
-            ceiling = lower
+        if stage2:
+            unlimited, _ = sf.read(args.premaster, always_2d=True)
         else:
-            print(f"  warning: the MP4's true peak is still {tp:.2f} dBTP, over {args.ceiling} dBTP")
-        print(f"  -> {args.out}")
+            timeline = json.load(open(args.timeline, encoding="utf8"))
+            prog = read_audio(args.ffmpeg, args.audio_in or args.video_in, tmp)
+            unlimited = premaster(prog, timeline, meter, args.target, args.bed_style, args.bed_db, args.no_bed)
+            if stage1:
+                sf.write(args.premaster_out, unlimited, SR, subtype="FLOAT")
+                print(f"  premaster -> {args.premaster_out}")
+                return
+        mix = deliver(unlimited, args.video_in, args.out, meter, args.ffmpeg, tmp, args.ceiling)
         if args.excerpt and args.excerpt_out:
             a, b = (float(v) for v in args.excerpt.split(":"))
             sf.write(args.excerpt_out, mix[int(a * SR) : int(b * SR)], SR, subtype="PCM_16")
