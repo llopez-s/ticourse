@@ -478,9 +478,10 @@ Dos pasos opcionales, en Python (venv de Chatterbox con `pip install pedalboard 
   - un soplo de ruido filtrado sube hacia cada capítulo nuevo;
   - desde el resumen, resuelve a re mayor con el arpegio algo más vivo.
 
-  Queda unos 14 LU por debajo de la voz, sobre un tono de sala muy bajo, y se atenúa 6 dB mientras alguien habla
-  (el arpegio, 12 dB), así que sobre todo llena las pausas. `--bed-style pad` es el ambiente de V1 y V3 (un
-  acorde fijo por capítulo); `--bed-db` lo sube o baja y `--no-bed` lo quita.
+  Queda unos 4 LU por debajo del programa antes de atenuarse (10 dB más que el de V1 y V3, elegido de oído el
+  2026-09-29 entre +4, +7 y +10), sobre un tono de sala muy bajo, y se atenúa 6 dB mientras alguien habla (el
+  arpegio, 12 dB), así que sobre todo llena las pausas. `--bed-style pad` es el ambiente de V1 y V3 (un acorde fijo
+  por capítulo, 14 LU por debajo); `--bed-db` sube o baja cualquiera de los dos y `--no-bed` lo quita.
 
 ```bash
 python video/engine/scripts/master_voice.py --in "video/engine/voices/<grabación>.wav" --out "video/engine/voices/<grabación> (master).wav" --ab video/<slug>/out/voz-antes-despues.wav

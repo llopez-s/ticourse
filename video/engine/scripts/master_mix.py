@@ -8,10 +8,10 @@
    four-chord progression per chapter (a chord every 10 s) with a soft arpeggio, and follows the story
    the timeline tells: a dissonant cluster and a heartbeat under the adversary's message, a suspended
    chord and a tick-tock in a think prompt, a noise swell into each chapter, and a resolution to D major
-   from the recap on. --bed-style pad is the first bed: one static chord per chapter. Either sits ~14 LU
-   under the voice over a very low room tone and ducks 6 dB more whenever someone speaks (the
-   arpeggio 12 dB), so it mostly fills the pauses, think prompts and transitions. Fades in at the start
-   and out on the end card.
+   from the recap on; it sits ~4 LU under the program before ducking. --bed-style pad is the first bed
+   (V1/V3): one static chord per chapter, ~14 LU under. Both lie over a very low room tone and duck 6 dB
+   more whenever someone speaks (the story bed's arpeggio 12 dB), so they mostly fill the pauses, think
+   prompts and transitions. Fades in at the start and out on the end card.
 3. Sets the integrated loudness to --target (YouTube: -14 LUFS) and limits true peaks to --ceiling
    (4x oversampled detection, no latency, so audio and video stay in sync).
 4. Remuxes: the video stream is copied untouched, the audio re-encoded as AAC 192 kbps.
@@ -30,8 +30,9 @@ from scipy import signal
 from scipy.ndimage import minimum_filter1d
 
 SR = 48000
-# How far under the program the bed sits before ducking (the listener's first draft asked for more than 20).
-BED_UNDER_LU = 14.0
+# How far under the program each bed sits before ducking. The pad bed of V1/V3 keeps its 14 LU (the listener's
+# first draft asked for more than 20); the story bed plays 10 dB louder, chosen by ear on 2026-09-29 (+4, +7, +10).
+BED_UNDER_LU = {"story": 4.0, "pad": 14.0}
 # One chord per chapter (D minor colour): Dm7, Bbmaj7, Gm9, Asus4, Dm(add9). Low register, under the voice.
 CHORDS = [
     [73.42, 110.00, 174.61, 261.63],
@@ -393,8 +394,8 @@ def main():
         mix = prog.copy()
         if not args.no_bed:
             bed = BED_STYLES[args.bed_style](timeline, n)
-            # Bed ~14 LU under the program, then 6 dB lower while anyone speaks.
-            bed *= 10 ** ((prog_lufs - BED_UNDER_LU + args.bed_db - meter.integrated_loudness(bed)) / 20)
+            # The bed BED_UNDER_LU under the program, then 6 dB lower while anyone speaks.
+            bed *= 10 ** ((prog_lufs - BED_UNDER_LU[args.bed_style] + args.bed_db - meter.integrated_loudness(bed)) / 20)
             duck = 10 ** (-6 * smooth(speech_mask(timeline, n), 250) / 20)
             bed *= duck[:, None]
             print(f"  bed ({args.bed_style}): {meter.integrated_loudness(bed):.1f} LUFS ({meter.integrated_loudness(bed) - prog_lufs:+.1f} LU vs program)")

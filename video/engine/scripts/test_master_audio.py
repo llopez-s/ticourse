@@ -153,6 +153,11 @@ class MasterMixTest(unittest.TestCase):
         self.assertGreater(band(*tense, 48, 60), 3 * band(*free, 48, 60))
         self.assertLess(band(*tense, 600, 1400), 0.5 * band(*free, 600, 1400))
 
+    def test_the_story_bed_plays_10_db_over_the_pad_bed(self):
+        self.assertEqual(set(master_mix.BED_UNDER_LU), set(master_mix.BED_STYLES))
+        self.assertEqual(master_mix.BED_UNDER_LU["pad"], 14.0)  # V1/V3 stay reproducible
+        self.assertEqual(master_mix.BED_UNDER_LU["pad"] - master_mix.BED_UNDER_LU["story"], 10.0)
+
     def test_next_ceiling_lowers_the_limiter_by_the_encoded_overshoot(self):
         self.assertIsNone(master_mix.next_ceiling(-1.0, -1.2, -1.0))  # the MP4 is under the target: done
         self.assertAlmostEqual(master_mix.next_ceiling(-1.0, -0.84, -1.0), -1.26)  # 0.16 dB over, plus 0.1 of margin
