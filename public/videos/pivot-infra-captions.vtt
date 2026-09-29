@@ -75,450 +75,450 @@ y quién más vive en esa dirección.
 Es el passive DNS.
 
 16
-00:01:05.967 --> 00:01:11.100
+00:01:05.967 --> 00:01:11.600
 La segunda te dice quién registró
 el dominio, y cuándo. Eso es el WHOIS.
 
 17
-00:01:11.100 --> 00:01:15.167
+00:01:11.867 --> 00:01:15.133
 Y la tercera mira los certificados
 de sus servidores,
 
 18
-00:01:15.167 --> 00:01:18.467
+00:01:15.133 --> 00:01:18.400
 que a veces se repiten donde no deberían.
 
 19
-00:01:18.467 --> 00:01:23.767
+00:01:18.400 --> 00:01:23.700
 O sea, que tienes tres fuentes,
 y las tres tienen algo en común.
 
 20
-00:01:23.767 --> 00:01:26.867
+00:01:23.700 --> 00:01:26.800
 Puedes consultarlas
 sin que el actor se entere.
 
 21
-00:01:27.967 --> 00:01:34.767
+00:01:27.900 --> 00:01:34.700
 Empezamos por el passive DNS.
 Piensa en el DNS como en un listín.
 
 22
-00:01:34.767 --> 00:01:36.233
+00:01:34.700 --> 00:01:36.167
 Le das un nombre y te devuelve un número.
 
 23
-00:01:36.233 --> 00:01:40.667
+00:01:36.167 --> 00:01:40.600
 Pues el passive DNS es ese
 listín, pero con memoria.
 
 24
-00:01:40.667 --> 00:01:45.533
+00:01:40.600 --> 00:01:45.467
 Hay sensores por todo Internet
 apuntando las respuestas que ven pasar,
 
 25
-00:01:45.533 --> 00:01:47.267
+00:01:45.467 --> 00:01:47.200
 con su fecha.
 
 26
-00:01:47.333 --> 00:01:50.333
+00:01:47.267 --> 00:01:50.267
 Así que le puedes preguntar dos cosas.
 
 27
-00:01:50.333 --> 00:01:55.533
+00:01:50.267 --> 00:01:55.467
 La primera, a qué apuntaba
 el dominio del C2 de E7.
 
 28
-00:01:55.533 --> 00:02:00.300
+00:01:55.467 --> 00:02:00.233
 Y te lo dice con fechas.
 Apuntaba a esta IP de hosting.
 
 29
-00:02:00.300 --> 00:02:03.933
+00:02:00.233 --> 00:02:03.867
 Los sensores la vieron por primera
 vez semanas antes de E7,
 
 30
-00:02:03.933 --> 00:02:07.200
+00:02:03.867 --> 00:02:07.133
 y seguía activa días después.
 
 31
-00:02:07.433 --> 00:02:13.267
+00:02:07.367 --> 00:02:13.200
 La segunda pregunta va al revés. ¿Qué
 otros dominios han vivido en esa misma IP?
 
 32
-00:02:13.267 --> 00:02:20.100
+00:02:13.200 --> 00:02:20.033
 Y el contador no para de subir.
 Mil, cinco mil… catorce mil dominios.
 
 33
-00:02:25.600 --> 00:02:29.200
+00:02:25.533 --> 00:02:29.133
 Por ahí no. Esa IP
 es un hosting compartido.
 
 34
-00:02:29.200 --> 00:02:33.267
+00:02:29.133 --> 00:02:33.200
 Es como un bloque con catorce mil pisos.
 
 35
-00:02:33.267 --> 00:02:37.267
+00:02:33.200 --> 00:02:37.200
 Que tu sospechoso viva en el bloque
 no convierte a sus vecinos en cómplices.
 
 36
-00:02:37.267 --> 00:02:41.767
+00:02:37.200 --> 00:02:41.700
 Y si los sigues a todos,
 te ahogas en pistas falsas.
 
 37
-00:02:41.767 --> 00:02:46.700
+00:02:41.700 --> 00:02:46.633
 Pasa lo mismo con la IP de una CDN,
 que sirve miles de webs de empresas.
 
 38
-00:02:46.700 --> 00:02:51.267
+00:02:46.633 --> 00:02:51.200
 O con un sinkhole, que recoge
 miles de dominios ya cazados.
 
 39
-00:02:51.367 --> 00:02:54.233
+00:02:51.300 --> 00:02:54.167
 Lo contrario es una casa
 donde solo vive él,
 
 40
-00:02:54.233 --> 00:03:00.433
+00:02:54.167 --> 00:03:00.367
 como un servidor propio o un certificado
 hecho a mano. Eso es un recurso dedicado.
 
 41
-00:03:00.433 --> 00:03:04.567
+00:03:00.367 --> 00:03:04.500
 O sea, que antes de pivotar,
 cuenta los inquilinos.
 
 42
-00:03:04.567 --> 00:03:07.933
+00:03:04.500 --> 00:03:07.867
 Compartido contamina,
 porque te trae a los vecinos.
 
 43
-00:03:07.933 --> 00:03:11.900
+00:03:07.867 --> 00:03:11.833
 Dedicado discrimina,
 porque te lleva solo a él.
 
 44
-00:03:13.100 --> 00:03:19.433
+00:03:13.033 --> 00:03:19.367
 Vamos con el certificado. El C2 usa
 uno autofirmado, y encima hecho a medida.
 
 45
-00:03:19.433 --> 00:03:25.133
+00:03:19.367 --> 00:03:25.067
 O sea, uno que el actor se ha hecho
 él mismo, sin autoridad que lo firme.
 
 46
-00:03:30.467 --> 00:03:36.167
+00:03:30.400 --> 00:03:36.100
 Justo. Y eso es lo que lo delata.
 Es como una llave hecha a mano.
 
 47
-00:03:36.167 --> 00:03:41.100
+00:03:36.100 --> 00:03:41.033
 Si abre otra puerta, casi seguro
 que esa puerta también es suya.
 
 48
-00:03:41.100 --> 00:03:44.500
+00:03:41.033 --> 00:03:44.433
 Ese certificado tiene una huella,
 un código que lo identifica,
 
 49
-00:03:44.500 --> 00:03:50.067
+00:03:44.433 --> 00:03:50.000
 y la buscas en los escaneos
 de Internet. Y aparece en tres IP.
 
 50
-00:03:50.067 --> 00:03:55.467
+00:03:50.000 --> 00:03:55.400
 Una ya la conoces, la del bloque de pisos.
 Pero esta otra tiene muy pocos inquilinos.
 
 51
-00:03:55.467 --> 00:03:57.533
+00:03:55.400 --> 00:03:57.467
 Es un servidor propio.
 
 52
-00:03:57.567 --> 00:04:01.567
+00:03:57.500 --> 00:04:01.500
 ¿Y quién vive ahí?
 Se lo preguntas al listín con memoria.
 
 53
-00:04:01.567 --> 00:04:06.167
+00:04:01.500 --> 00:04:06.100
 Un portal falso para iniciar sesión
 en Meridian. O sea, phishing.
 
 54
-00:04:06.167 --> 00:04:09.033
+00:04:06.100 --> 00:04:08.967
 Así que el C2 y el phishing
 comparten la misma llave.
 
 55
-00:04:09.033 --> 00:04:12.933
+00:04:08.967 --> 00:04:12.867
 Y eso es una pista muy fuerte
 de que tienen el mismo dueño.
 
 56
-00:04:12.933 --> 00:04:18.400
+00:04:12.867 --> 00:04:18.333
 Los demás vecinos los dejamos tapados,
 que esos te tocan a ti en el Lab 3A.
 
 57
-00:04:19.500 --> 00:04:21.467
+00:04:19.433 --> 00:04:21.400
 Los certificados tienen otro truco.
 
 58
-00:04:21.467 --> 00:04:24.400
+00:04:21.400 --> 00:04:24.333
 Cuando una autoridad
 de certificación pública firma uno,
 
 59
-00:04:24.400 --> 00:04:27.200
+00:04:24.333 --> 00:04:27.133
 lo tiene que colgar a la vista de todos.
 
 60
-00:04:27.200 --> 00:04:30.567
+00:04:27.133 --> 00:04:30.500
 Es como un tablón de anuncios
 que puede leer cualquiera.
 
 61
-00:04:30.567 --> 00:04:33.200
+00:04:30.500 --> 00:04:33.133
 Se llama Certificate Transparency.
 
 62
-00:04:33.200 --> 00:04:37.733
+00:04:33.133 --> 00:04:37.667
 ¿Y eso para qué te sirve? Para ver la
 infraestructura nueva mientras la montan.
 
 63
-00:04:37.733 --> 00:04:42.100
+00:04:37.667 --> 00:04:42.033
 Hoy mismo sale un certificado
 para un dominio que imita a Meridian.
 
 64
-00:04:42.233 --> 00:04:43.867
+00:04:42.167 --> 00:04:43.800
 Ojo con dos cosas.
 
 65
-00:04:43.867 --> 00:04:49.300
+00:04:43.800 --> 00:04:49.233
 Los autofirmados no pasan por el tablón,
 así que esos se buscan en los escaneos.
 
 66
-00:04:49.300 --> 00:04:52.300
+00:04:49.233 --> 00:04:52.233
 Y los certificados gratis
 salen por millones,
 
 67
-00:04:52.300 --> 00:04:57.000
+00:04:52.233 --> 00:04:56.933
 así que el emisor no te dice nada.
 Es como seguir a todo el bloque.
 
 68
-00:04:57.000 --> 00:05:00.000
+00:04:56.933 --> 00:04:59.933
 Lo que pivota es la huella exacta.
 
 69
-00:05:01.100 --> 00:05:05.433
+00:05:01.033 --> 00:05:05.367
 Tercera fuente, el WHOIS.
 Es la ficha de registro del dominio.
 
 70
-00:05:05.433 --> 00:05:11.067
+00:05:05.367 --> 00:05:11.000
 Quién lo compró, cuándo y en qué tienda.
 A esa tienda se la llama registrador.
 
 71
-00:05:11.167 --> 00:05:14.567
+00:05:11.100 --> 00:05:14.500
 Miras la del dominio
 del C2 y… todo tapado.
 
 72
-00:05:14.567 --> 00:05:17.867
+00:05:14.500 --> 00:05:17.800
 Tiene activada
 la protección de privacidad.
 
 73
-00:05:24.833 --> 00:05:28.400
+00:05:24.767 --> 00:05:28.333
 Hoy sí. Pero el WHOIS
 también tiene memoria.
 
 74
-00:05:28.400 --> 00:05:32.967
+00:05:28.333 --> 00:05:32.900
 Quedan fichas antiguas, de antes
 de que activaran la privacidad.
 
 75
-00:05:33.033 --> 00:05:36.833
+00:05:32.967 --> 00:05:36.767
 Y en la ficha de 2025 aparece
 un correo de contacto.
 
 76
-00:05:36.833 --> 00:05:41.333
+00:05:36.767 --> 00:05:41.267
 Puede que no sea un nombre real,
 pero es un pivote dedicado.
 
 77
-00:05:41.333 --> 00:05:43.967
+00:05:41.267 --> 00:05:43.900
 Y aunque no hubiera correo,
 quedaría el patrón.
 
 78
-00:05:43.967 --> 00:05:47.800
+00:05:43.900 --> 00:05:47.733
 Mismo registrador, mismos
 servidores de nombres y mismo día.
 
 79
-00:05:47.800 --> 00:05:52.433
+00:05:47.733 --> 00:05:52.367
 Cada dato suelto no dice nada.
 Juntos, lo delatan.
 
 80
-00:05:53.800 --> 00:05:56.233
+00:05:53.733 --> 00:05:56.167
 Ese patrón tiene una historia detrás,
 
 81
-00:05:56.233 --> 00:05:59.767
+00:05:56.167 --> 00:05:59.700
 porque un dominio malicioso
 pasa por varias etapas.
 
 82
-00:05:59.767 --> 00:06:02.967
+00:05:59.700 --> 00:06:02.900
 Suele nacer en lote,
 con varios hermanos el mismo día.
 
 83
-00:06:02.967 --> 00:06:07.467
+00:06:02.900 --> 00:06:07.400
 Y luego se queda dormido,
 semanas o incluso meses.
 
 84
-00:06:07.467 --> 00:06:12.667
+00:06:07.400 --> 00:06:12.600
 ¿Por qué dormido? Porque muchos filtros
 desconfían de los dominios recién nacidos.
 
 85
-00:06:12.667 --> 00:06:15.500
+00:06:12.600 --> 00:06:15.433
 Así que el actor los deja envejecer.
 
 86
-00:06:15.500 --> 00:06:20.267
+00:06:15.433 --> 00:06:20.200
 Un día lo despiertan y lo apuntan
 a sus servidores. Lo usan en la campaña.
 
 87
-00:06:20.267 --> 00:06:25.367
+00:06:20.200 --> 00:06:25.300
 Y cuando alguien lo detecta, queda
 quemado y el actor pasa al siguiente.
 
 88
-00:06:31.200 --> 00:06:34.000
+00:06:31.133 --> 00:06:33.933
 Pues sí, y ahí está lo bonito.
 
 89
-00:06:34.000 --> 00:06:38.367
+00:06:33.933 --> 00:06:38.300
 Si detectas el lote, conoces
 a los hermanos antes de que despierten.
 
 90
-00:06:38.367 --> 00:06:43.100
+00:06:38.300 --> 00:06:43.033
 Buscas los dominios registrados
 con el mismo patrón y el mismo día.
 
 91
-00:06:43.100 --> 00:06:45.867
+00:06:43.033 --> 00:06:45.800
 Aquí salen varios, todavía dormidos.
 
 92
-00:06:45.867 --> 00:06:48.867
+00:06:45.800 --> 00:06:48.800
 Y los bloqueas ya, antes
 de que llegue el primer correo.
 
 93
-00:06:48.867 --> 00:06:53.367
+00:06:48.800 --> 00:06:53.300
 En la matriz de cursos
 de acción, esto es un Deny.
 
 94
-00:06:53.433 --> 00:06:58.567
+00:06:53.367 --> 00:06:58.500
 O sea, que por una vez no vas
 detrás del ataque. Vas por delante.
 
 95
-00:06:59.833 --> 00:07:02.800
+00:06:59.767 --> 00:07:02.733
 Una última cosa, y es importante.
 
 96
-00:07:02.800 --> 00:07:06.933
+00:07:02.733 --> 00:07:06.867
 Todo lo de hoy lo has sacado del listín,
 del tablón y de las fichas,
 
 97
-00:07:06.933 --> 00:07:10.733
+00:07:06.867 --> 00:07:10.667
 sin tocar al actor.
 Eso es pivotar en pasivo.
 
 98
-00:07:15.833 --> 00:07:21.167
+00:07:15.767 --> 00:07:21.100
 Ni se te ocurra. Si visitas o escaneas
 su servidor, tu visita queda en sus logs.
 
 99
-00:07:21.167 --> 00:07:24.533
+00:07:21.100 --> 00:07:24.467
 Y puede darse cuenta
 de que vas detrás de él.
 
 100
-00:07:24.600 --> 00:07:26.833
+00:07:24.533 --> 00:07:26.767
 Por eso, pasivo primero.
 
 101
-00:07:26.833 --> 00:07:28.767
+00:07:26.767 --> 00:07:28.700
 Y si algún día tienes que tocar,
 
 102
-00:07:28.767 --> 00:07:31.967
+00:07:28.700 --> 00:07:31.900
 hazlo desde un entorno desechable
 que no lleve a tu empresa.
 
 103
-00:07:31.967 --> 00:07:34.533
+00:07:31.900 --> 00:07:34.467
 Eso, en la próxima lección.
 
 104
-00:07:35.567 --> 00:07:40.200
+00:07:35.500 --> 00:07:40.133
 Resumiendo, quédate con tres
 reglas para tu próximo pivote.
 
 105
-00:07:40.300 --> 00:07:44.033
+00:07:40.233 --> 00:07:43.967
 Una, antes de seguir una pista,
 cuenta los inquilinos.
 
 106
-00:07:44.033 --> 00:07:49.367
+00:07:43.967 --> 00:07:49.300
 Dos, busca lo que es solo suyo,
 como un certificado hecho a mano.
 
 107
-00:07:49.367 --> 00:07:56.333
+00:07:49.300 --> 00:07:56.267
 Y tres, mira siempre en pasivo,
 para que el actor no sepa que vas detrás.
 
 108
-00:07:56.733 --> 00:08:02.600
+00:07:56.667 --> 00:08:02.533
 Ahora te toca a ti,
 con las consultas contadas, en el Lab 3A.
 
 109
-00:08:02.600 --> 00:08:05.000
+00:08:02.533 --> 00:08:04.933
 Nos vemos en Alertópolis.

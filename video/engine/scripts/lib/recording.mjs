@@ -25,6 +25,7 @@ const POST_ROLL_MS = 120; // and after the last word, before the silence that fo
 const SNAP_EARLY_MS = 500; // how far a silence may sit before an ASR word edge and still be snapped to
 const SNAP_LATE_MS = 200; // and how far past it (ASR edges drift both ways, more often late at a start)
 const FALLBACK_MS = 250; // with no silence nearby, never reach further than this past the word edge
+const MISTIMED_PAUSE_MS = 300; // a pause this long starting inside a word means Whisper mistimed that word
 
 const UNITS = 'cero uno dos tres cuatro cinco seis siete ocho nueve diez once doce trece catorce quince dieciseis diecisiete dieciocho diecinueve veinte veintiuno veintidos veintitres veinticuatro veinticinco veintiseis veintisiete veintiocho veintinueve'.split(' ');
 const TENS = ['', '', '', 'treinta', 'cuarenta', 'cincuenta', 'sesenta', 'setenta', 'ochenta', 'noventa'];
@@ -319,24 +320,36 @@ function cutEdges(f, words, silences, totalMs) {
   const rawEnd = words[f.last].endMs;
   const prevEnd = f.first > 0 ? words[f.first - 1].endMs : 0;
   const nextStart = f.last + 1 < words.length ? words[f.last + 1].startMs : totalMs;
+  // With no silence at an edge, a long pause that starts inside the word across it means that word is mistimed:
+  // Whisper dropped a word and stretched its neighbour over the dropped audio (V4 s02-03: «júis» was never
+  // transcribed, so «Y» got 70.12–71.18 s with the pause after «júis», 70.82–72.04, starting inside it). Both
+  // clips then cut in that pause, whatever the word edges say — the next word's for the end, the first's for the start.
+  const mistimedPause = (w) =>
+    w ? nearest(silences.filter((s) => s.endMs - s.startMs >= MISTIMED_PAUSE_MS && s.startMs > w.startMs && s.startMs < w.endMs), (s) => s.startMs, w.startMs) : null;
 
   const lead = nearest(
     silences.filter((s) => s.endMs >= Math.max(prevEnd, rawStart - SNAP_EARLY_MS) && s.endMs <= rawStart + SNAP_LATE_MS),
     (s) => s.endMs,
     rawStart,
   );
+  const leadPause = lead ? null : mistimedPause(words[f.first]);
   const startMs = lead
     ? Math.max(lead.startMs, prevEnd, lead.endMs - PRE_ROLL_MS)
-    : Math.max(Math.min(rawStart, Math.round((prevEnd + rawStart) / 2)), rawStart - FALLBACK_MS);
+    : leadPause
+      ? Math.max(leadPause.startMs, leadPause.endMs - PRE_ROLL_MS)
+      : Math.max(Math.min(rawStart, Math.round((prevEnd + rawStart) / 2)), rawStart - FALLBACK_MS);
 
   const tail = nearest(
     silences.filter((s) => s.startMs >= rawEnd - SNAP_LATE_MS && s.startMs <= Math.min(nextStart, rawEnd + SNAP_EARLY_MS)),
     (s) => s.startMs,
     rawEnd,
   );
+  const tailPause = tail ? null : mistimedPause(words[f.last + 1]);
   const endMs = tail
     ? Math.min(tail.endMs, nextStart, tail.startMs + POST_ROLL_MS)
-    : Math.min(Math.max(rawEnd, Math.round((rawEnd + nextStart) / 2)), rawEnd + FALLBACK_MS);
+    : tailPause
+      ? Math.min(tailPause.endMs, tailPause.startMs + POST_ROLL_MS)
+      : Math.min(Math.max(rawEnd, Math.round((rawEnd + nextStart) / 2)), rawEnd + FALLBACK_MS);
 
   return { startMs, endMs: Math.max(endMs, startMs + 1) };
 }

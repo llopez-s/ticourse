@@ -403,6 +403,21 @@ test('cutPoints no longer cuts «IP» once the swallowed pause is repaired', () 
   assert.ok(b.startMs >= 152400, `the next clip must start at the end of the pause, got ${b.startMs}`);
 });
 
+test('cutPoints: a word Whisper dropped stays in its clip (V4 s02-03 lost «WHOIS» to the next one)', () => {
+  // «Eso es el júis. [pause] Y la tercera…»: Whisper never wrote «júis» and stretched «Y» over it, so the pause
+  // after «júis» (70824–72044) starts inside «Y» and ends inside «la», and no silence touches the el|Y edge.
+  const words = W([['Eso', 69160, 69500], ['es', 69500, 69840], ['el', 69840, 70120], ['Y', 70120, 71180], ['la', 71180, 72240], ['tercera', 72240, 72860]]);
+  const silences = [{ startMs: 69068, endMs: 69276 }, { startMs: 70824, endMs: 72044 }];
+  const located = [{ id: 'a', found: true, first: 0, last: 2 }, { id: 'b', found: true, first: 3, last: 5 }];
+  const [a, b] = cutPoints(located, repairSwallowedPauses(words, silences), silences, 80000);
+  assert.ok(a.endMs >= 70824, `«júis» must stay in the first clip, got ${a.endMs}`);
+  assert.ok(b.startMs >= 72044 - 80, `the next clip must start after the pause, got ${b.startMs}`);
+  // a correctly timed pair (no pause starting inside a word) keeps the old midpoint fallback
+  const tight = W([['el', 0, 300], ['Y', 300, 450], ['la', 450, 600]]);
+  const [c, d] = cutPoints([{ id: 'c', found: true, first: 0, last: 0 }, { id: 'd', found: true, first: 1, last: 2 }], tight, [{ startMs: 700, endMs: 1200 }], 2000);
+  assert.deepEqual([c.endMs, d.startMs], [300, 300]);
+});
+
 test('trailingSpeechEnd: where the voice of a clip really stops (a silence that runs to its end), else its length', () => {
   assert.equal(trailingSpeechEnd([{ startMs: 300, endMs: 500 }, { startMs: 4200, endMs: 4510 }], 4520), 4200);
   assert.equal(trailingSpeechEnd([{ startMs: 300, endMs: 500 }], 4520), 4520);
