@@ -287,6 +287,23 @@ def risers(starts, n, rng, dur=2.0):
     return out
 
 
+def windowed(n, gate, synth):
+    """A layer synthesised only where its gate is open: synth(i0, i1) -> (i1 - i0, 2) for each run of gate > 0,
+    zeros elsewhere. The adversary's and the think prompts' layers sound a few seconds each, so rendering them
+    over the whole video was most of the bed's cost (and of stage 1's ~10 min on V4)."""
+    out = np.zeros((n, 2))
+    edges = np.flatnonzero(np.diff(np.concatenate([[0], (gate > 1e-4).astype(np.int8), [0]])))
+    for a, b in zip(edges[::2], edges[1::2]):
+        out[a:b] = synth(a, b)
+    return out
+
+
+def rms_where(x, gate):
+    """RMS over the samples where the gate is open (a windowed layer is silent elsewhere)."""
+    open_ = gate > 1e-4
+    return rms(x[open_]) if np.any(open_) else 1.0
+
+
 def rms(x):
     return float(np.sqrt(np.mean(x ** 2)) + 1e-12)
 
@@ -308,17 +325,17 @@ def ambient_bed(timeline, n, seed=7):
     ref = rms(chords)
 
     arp = arpeggio(spans, n, rng, story_windows(timeline)["finale"])
-    cluster = pad([midi_hz(m) for m in CLUSTER], t, rng)
-    suspended = pad([midi_hz(m) for m in SUSPENDED], t, rng)
+    cluster = windowed(n, gates["adversary"], lambda a, b: pad([midi_hz(m) for m in CLUSTER], t[a:b], rng))
+    suspended = windowed(n, gates["think"], lambda a, b: pad([midi_hz(m) for m in SUSPENDED], t[a:b], rng))
     beat, tick, lift = heartbeat(n), ticks(n), risers(chapter_starts(timeline), n, rng)
 
     adv, thk = gates["adversary"][:, None], gates["think"][:, None]
     quiet = np.clip(adv + thk, 0.0, 1.0)
     # Levels are set against the chord pad's RMS, so the balance holds whatever the progression.
     bed = chords * (1.0 - 0.65 * adv - 0.5 * thk)
-    bed += cluster / rms(cluster) * ref * 0.9 * adv
+    bed += cluster / rms_where(cluster, gates["adversary"]) * ref * 0.9 * adv
     bed += beat / rms(beat) * ref * 0.8 * adv
-    bed += suspended / rms(suspended) * ref * 0.7 * thk
+    bed += suspended / rms_where(suspended, gates["think"]) * ref * 0.7 * thk
     bed += tick / rms(tick) * ref * 0.1 * thk
     # The arpeggio goes quiet under the adversary and in a think prompt, and 6 dB lower still whenever
     # someone speaks (on top of the whole bed's ducking in main), so it mostly fills the pauses.
@@ -360,6 +377,11 @@ def true_peak_db(x):
     return 20 * np.log10(np.max(np.abs(signal.resample_poly(x, 4, 1, axis=0))) + 1e-12)
 
 
+# AAC pushes the true peak ~0.2-0.4 dB over the PCM limiter's (V4: -1.49 limited came out at -1.08), so the
+# first pass already leaves this much room and usually is the only one.
+AAC_HEADROOM_DB = 0.5
+
+
 def next_ceiling(limiter_db, measured_tp_db, target_tp_db, margin_db=0.1):
     """Limiter ceiling for another pass when the encoded file's true peak overshot the target (AAC adds a
     little on top of the PCM peak); None when it did not."""
@@ -398,7 +420,7 @@ def deliver(unlimited, video_in, out, meter, ffmpeg, tmp, ceiling_db=-1.0):
     """Stage 2, the light one: limit, encode AAC next to the untouched video stream, and check the delivered
     MP4. AAC can push the true peak past the PCM limiter's ceiling, so the MP4 is decoded and measured, and
     limited again with a lower ceiling if it overshot (up to 3 passes). Returns the limited PCM."""
-    ceiling = ceiling_db
+    ceiling = ceiling_db - AAC_HEADROOM_DB
     for _ in range(3):
         mix, gr = limit(unlimited, ceiling)
         active = gr < -0.1

@@ -175,6 +175,26 @@ class MasterMixTest(unittest.TestCase):
             audio = master_mix.read_audio(ffmpeg, src, tmp)
             self.assertEqual(audio.shape, (master_mix.SR // 2, 2))
 
+    def test_windowed_synthesises_only_where_the_gate_is_open(self):
+        n = 1000
+        gate = np.zeros(n)
+        gate[100:200] = 1.0
+        gate[600:650] = 0.5
+        calls = []
+
+        def synth(a, b):
+            calls.append((a, b))
+            return np.ones((b - a, 2))
+
+        out = master_mix.windowed(n, gate, synth)
+        self.assertEqual(calls, [(100, 200), (600, 650)])
+        self.assertEqual(out[:100].sum(), 0.0)
+        self.assertEqual(out[100:200].sum(), 200.0)
+        self.assertEqual(out[200:600].sum(), 0.0)
+
+    def test_the_first_pass_leaves_aac_headroom(self):
+        self.assertEqual(master_mix.AAC_HEADROOM_DB, 0.5)  # V4: limited at -1.49, the MP4 came out at -1.08 dBTP
+
     def test_the_story_bed_plays_10_db_over_the_pad_bed(self):
         self.assertEqual(set(master_mix.BED_UNDER_LU), set(master_mix.BED_STYLES))
         self.assertEqual(master_mix.BED_UNDER_LU["pad"], 14.0)  # V1/V3 stay reproducible

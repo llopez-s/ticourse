@@ -29,6 +29,7 @@ import { ENGINE_DIR, MANIFEST, PATHS, REPO_ROOT, SCRIPTS_DIR, isMainModule } fro
 import { profileFor } from './lib/profiles.mjs';
 import {
   REVIEW_SCORE,
+  asrCacheValid,
   asrPrompt,
   clipArgs,
   cutPoints,
@@ -52,8 +53,9 @@ function transcribe(file, sha256, prompt, workDir, { force, log }) {
   const cache = path.join(workDir, `asr-${fileSlug(file)}.json`);
   if (!force && existsSync(cache)) {
     const cached = JSON.parse(readFileSync(cache, 'utf8'));
-    if (cached.sha256 === sha256 && cached.model === ASR_MODEL && cached.prompt === prompt) {
-      log.log(`import-recording: transcript cached (${cached.words.length} words)`);
+    if (asrCacheValid(cached, { sha256, model: ASR_MODEL })) {
+      const note = cached.prompt === prompt ? '' : ' — the Whisper prompt changed since (was the first sentence rewritten?); --force-asr redoes it';
+      log.log(`import-recording: transcript cached (${cached.words.length} words)${note}`);
       return cached;
     }
   }

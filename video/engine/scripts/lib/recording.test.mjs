@@ -7,6 +7,7 @@ import { ffmpegBinary } from './remotion.mjs';
 import { parseSegmentText } from './text.mjs';
 import {
   REVIEW_SCORE,
+  asrCacheValid,
   asrPrompt,
   clipArgs,
   clipWords,
@@ -367,6 +368,14 @@ test('withTempo shrinks the duration and word timings of a sped-up clip, and lea
   assert.equal(fast.durationMs, 2000);
   assert.deepEqual(fast.words, [{ text: 'hola', offsetMs: 0, durationMs: 400 }, { text: 'mundo', offsetMs: 1000, durationMs: 800 }]);
   assert.equal(fast.provider, 'recording');
+});
+
+test('asrCacheValid: the same recording and model reuse the transcript, whatever the prompt', () => {
+  const cached = { sha256: 'abc', model: 'small', prompt: 'Antes empezaba así.', words: [] };
+  assert.equal(asrCacheValid(cached, { sha256: 'abc', model: 'small' }), true);
+  assert.equal(asrCacheValid(cached, { sha256: 'def', model: 'small' }), false); // another recording
+  assert.equal(asrCacheValid(cached, { sha256: 'abc', model: 'medium' }), false); // another model
+  assert.equal(asrCacheValid({ sha256: 'abc', model: 'small' }, { sha256: 'abc', model: 'small' }), false); // no words
 });
 
 test('ffmpegBinary finds the ffmpeg that Remotion ships, to run it without the CLI wrapper', () => {

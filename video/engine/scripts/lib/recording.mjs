@@ -446,6 +446,15 @@ export function recordingSettings(narration, { tempo, maxPauseMs } = {}) {
 }
 
 /**
+ * Whether a cached transcript still fits: same recording (hash) and same model. The prompt is not part of it:
+ * it opens with the script's first sentence, so rewriting that sentence re-transcribed the whole recording
+ * (~5 min, and a different spelling of the numbers) although the audio had not changed. --force-asr redoes it.
+ */
+export function asrCacheValid(cached, { sha256, model }) {
+  return Boolean(cached) && cached.sha256 === sha256 && cached.model === model && Array.isArray(cached.words);
+}
+
+/**
  * Whisper's initial prompt: the script's first sentence, then the adversary's name and the
  * lexicon's terms, so it spells them as the script does. The sentence goes first because a bare
  * comma list reads to Whisper as a list, and it starts numbering what it hears («2. 3. 4.»).

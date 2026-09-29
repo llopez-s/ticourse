@@ -142,7 +142,7 @@ async function main() {
     out,
     '--codec=h264',
     `--crf=${draft ? 30 : PROFILE.crf}`,
-    `--x264-preset=${draft ? 'veryfast' : 'slow'}`,
+    `--x264-preset=${draft ? 'veryfast' : PROFILE.x264Preset}`,
     '--pixel-format=yuv420p',
     '--audio-codec=aac',
     '--audio-bitrate=96K',
