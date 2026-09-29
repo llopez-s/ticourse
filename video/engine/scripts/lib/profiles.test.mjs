@@ -21,6 +21,10 @@ test('the -yt profiles: longer windows, crf 18, YouTube, chispa checks, intercep
   assert.deepEqual([c.examCards, c.thinkPrompts, c.intercepts], [[3, 5], 1, [1, 2]]);
 });
 
+test('burned-in captions: kept in the app\'s MP4s, off on YouTube (which shows the VTT)', () => {
+  assert.deepEqual(['principal', 'capsula', 'principal-yt', 'capsula-yt'].map((name) => profileFor(name).captionsOnScreen), [true, true, false, false]);
+});
+
 test('x264 preset: slow for the videos kept in the repo, medium for YouTube (it re-encodes the upload)', () => {
   assert.deepEqual(['principal', 'capsula', 'principal-yt', 'capsula-yt'].map((name) => profileFor(name).x264Preset), ['slow', 'slow', 'medium', 'medium']);
 });

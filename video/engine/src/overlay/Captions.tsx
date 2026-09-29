@@ -288,5 +288,7 @@ export function CaptionsView({ pages, frame }: { pages: CaptionPage[]; frame: nu
 export function Captions() {
   const frame = useCurrentFrame();
   const timeline = useTimeline();
+  // YouTube videos carry the captions as a VTT track instead of burning them in.
+  if (timeline.captionsOnScreen === false) return null;
   return <CaptionsView pages={timeline.captions} frame={frame} />;
 }

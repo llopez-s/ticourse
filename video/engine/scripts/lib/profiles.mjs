@@ -21,6 +21,7 @@ export const PROFILES = Object.freeze({
     host: 'repo',
     crf: 23,
     x264Preset: 'slow',
+    captionsOnScreen: true, // the MP4 plays in the app, burned-in captions included
     size: Object.freeze({ targetMin: 15, targetMax: 25, warn: 30, fail: 45 }), // MB (10^6 bytes)
   }),
   /** Practical capsule: 3 chapters, 5–6 scenes, ~3 min, at least half demo. */
@@ -35,6 +36,7 @@ export const PROFILES = Object.freeze({
     host: 'repo',
     crf: 27,
     x264Preset: 'slow',
+    captionsOnScreen: true, // the MP4 plays in the app, burned-in captions included
     size: Object.freeze({ targetMin: 4, targetMax: 12, warn: 15, fail: 25 }),
   }),
   /** Lively explainer for YouTube: ~6–8 min, intercepted messages, no size target (YouTube re-encodes). */
@@ -49,6 +51,7 @@ export const PROFILES = Object.freeze({
     host: 'youtube',
     crf: 18,
     x264Preset: 'medium', // YouTube re-encodes the upload: 'slow' bought nothing visible, at ~2× the encode time
+    captionsOnScreen: false, // YouTube shows the uploaded VTT (the app's embed forces it on): burned-in ones were redundant
     size: null,
   }),
   /** Lively capsule for YouTube: ~3–4 min. */
@@ -63,6 +66,7 @@ export const PROFILES = Object.freeze({
     host: 'youtube',
     crf: 18,
     x264Preset: 'medium', // YouTube re-encodes the upload: 'slow' bought nothing visible, at ~2× the encode time
+    captionsOnScreen: false, // YouTube shows the uploaded VTT (the app's embed forces it on): burned-in ones were redundant
     size: null,
   }),
 });

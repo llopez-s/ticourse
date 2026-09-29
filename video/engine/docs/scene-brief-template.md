@@ -37,7 +37,9 @@ Remotion 4 + React 19 + TypeScript. {{width}}×{{height}}, {{fps}} fps. {{trackL
 
 ## Layout rules
 - Draw ONLY inside the stage (y 190–850; use `<Stage>`; stage-local 1728×660). The top band belongs to the
-  chapter rail / exam card; captions own y 872–1046.
+  chapter rail / exam card; captions own y 872–1046 in the videos
+  that burn them in; YouTube (-yt) videos have none on screen (YouTube shows the VTT, over the bottom of the
+  frame when the viewer turns it on), so that band is free, but keep essential text above y ≈ 900.
 - The top-centre of the stage (stage-local y ≈ 0–230, x ≈ 400–1330) is where the **think prompt** and the
   **intercepted-message card** appear. Keep that area free of essential text during:
 {{keepClear}}

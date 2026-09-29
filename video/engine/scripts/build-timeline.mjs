@@ -441,6 +441,8 @@ export async function buildTimeline(options = {}) {
     think,
     ...(intercept.length ? { intercept } : {}),
     ...(sfx.length ? { sfx } : {}),
+    // Written only when off, so the timelines of the videos that burn captions in stay byte-identical.
+    ...(profile.captionsOnScreen === false ? { captionsOnScreen: false } : {}),
   };
   errors.push(...validateTimeline(timeline, { sceneIds: opts.sceneIds ?? storyboard.scenes.map((s) => s.id), maxChapters: profile.maxChapters }));
   if ((storyboard.chapters ?? []).length > profile.maxChapters) errors.push(`storyboard has ${storyboard.chapters.length} chapters; the "${opts.profile}" profile allows ${profile.maxChapters}`);

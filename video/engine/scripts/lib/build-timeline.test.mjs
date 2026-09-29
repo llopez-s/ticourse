@@ -218,6 +218,16 @@ test('a -yt video warns when its title cue comes after the first 12 seconds', as
   assert.ok(!early.some((w) => /title cue/.test(w)), early.join('\n'));
 });
 
+test('captionsOnScreen: written (false) only for the YouTube profiles; the rest keep their timelines as they were', async () => {
+  const quietYt = { profile: 'principal-yt', log: { warn: () => {}, log: () => {} } };
+  const yt = await buildVariant(() => {}, 'yt-captions', quietYt);
+  assert.equal(yt.timeline.captionsOnScreen, false);
+  assert.ok(yt.timeline.captions.length > 0, 'the pages are still built: they become the VTT');
+  const repo = await buildVariant(() => {}, 'repo-captions');
+  assert.equal('captionsOnScreen' in repo.timeline, false);
+  assert.deepEqual(validateTimeline({ ...repo.timeline, captionsOnScreen: true }, { sceneIds: repo.timeline.scenes.map((s) => s.id) }).filter((e) => /captionsOnScreen/.test(e)), ['timeline.captionsOnScreen: when present, false']);
+});
+
 test('analyzeNarration: style warnings do not block the build', () => {
   const storyboard = read('storyboard.mini.json');
   const narration = read('narration.mini.json');
