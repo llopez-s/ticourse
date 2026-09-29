@@ -16,6 +16,25 @@ export const CANON = {
 export const KEY_COLOR = C.emerald;
 
 /**
+ * Focus helper: `d` (0–1) pushes back an element the narration is not on —
+ * at 1 it sits at 40 % opacity and half saturation, so the one thing being
+ * explained reads first. `base` is the element's own opacity (appear/fade).
+ */
+export function dimStyle(d: number, base = 1): CSSProperties {
+  const k = Math.max(0, Math.min(1, d));
+  return {
+    opacity: base * (1 - 0.6 * k),
+    filter: k > 0.001 ? `saturate(${1 - 0.5 * k})` : undefined,
+  };
+}
+
+/** Linear blend (clamped weight), for positions and scales driven by focus weights. */
+export function mix(a: number, b: number, t: number): number {
+  const k = Math.max(0, Math.min(1, t));
+  return a + (b - a) * k;
+}
+
+/**
  * Rounded pill in any colour (the engine Chip has no sky accent and pads
  * generously). `glow` (0–1) adds a halo for the pill the narration is on.
  */

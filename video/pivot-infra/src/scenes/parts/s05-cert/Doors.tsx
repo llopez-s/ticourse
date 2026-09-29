@@ -1,4 +1,4 @@
-import { C, FONT, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
+import { C, FONT, alpha } from '../../../../../engine/src/theme/tokens';
 import { EASE, fadeIn, progress } from '../../../../../engine/src/theme/motion';
 import { Icon } from '../../../../../engine/src/ui';
 import { KEY_COLOR } from './bits';
@@ -11,6 +11,9 @@ const DOOR_B_X = 1170;
 /** Keyhole, door-local, when the door is shut. */
 const HOLE = { x: DOOR_W - 42, y: DOOR_H / 2 + 6 };
 const KEY_SIZE = 96;
+/** The caption and door labels are what the voice explains here: phone-legible sizes. */
+const CAPTION_SIZE = 50;
+const LABEL_SIZE = 44;
 
 /** Keyhole x in stage coordinates while a door hinged on its left edge swings open. */
 function holeX(doorX: number, open: number): number {
@@ -75,10 +78,10 @@ export function KeyDoors({ frame, t, keyFrom }: { frame: number; t: DoorTiming; 
           position: 'absolute',
           left: DOOR_A_X - 40,
           width: DOOR_B_X + DOOR_W - DOOR_A_X + 80,
-          top: 246,
+          top: 238,
           textAlign: 'center',
           fontFamily: FONT.sans,
-          fontSize: TYPE.h3 - 8,
+          fontSize: CAPTION_SIZE,
           fontWeight: 800,
           color: KEY_COLOR,
           whiteSpace: 'nowrap',
@@ -126,10 +129,10 @@ function DoorLabel({ x, color, opacity = 1, children }: { x: number; color: stri
       style={{
         position: 'absolute',
         left: x + DOOR_W / 2,
-        top: DOOR_Y + DOOR_H + 14,
+        top: DOOR_Y + DOOR_H + 8,
         transform: 'translateX(-50%)',
         fontFamily: FONT.sans,
-        fontSize: TYPE.label,
+        fontSize: LABEL_SIZE,
         fontWeight: 750,
         color,
         whiteSpace: 'nowrap',

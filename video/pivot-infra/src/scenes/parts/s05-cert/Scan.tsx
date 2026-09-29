@@ -2,17 +2,19 @@ import type { ReactNode } from 'react';
 import { C, FONT, RADIUS, TYPE, alpha } from '../../../../../engine/src/theme/tokens';
 import { EASE, fadeIn, progress, pulse } from '../../../../../engine/src/theme/motion';
 import { Icon } from '../../../../../engine/src/ui';
-import { CANON, KEY_COLOR, KeyBadge, MiniBlock, MiniHouse, Pill, RedactBar } from './bits';
+import { CANON, KEY_COLOR, KeyBadge, MiniBlock, MiniHouse, Pill, RedactBar, dimStyle } from './bits';
 
 /** The right-hand area of the scene (right of the C2 column). */
 export const RIGHT_X = 476;
 export const RIGHT_W = 1728 - RIGHT_X;
 
-export const BAR_H = 76;
+export const BAR_H = 88;
 /** Bar-local x of the searched value (the fingerprint lands here). */
-export const BAR_VALUE_X = 566;
+export const BAR_VALUE_X = 676;
+/** Size of the searched value once it has landed in the bar. */
+export const BAR_VALUE_SIZE = 44;
 /** Bar-local x of the «huella» pill (the definition line aligns under it). */
-const BAR_PILL_X = 392;
+const BAR_PILL_X = 470;
 
 /** Tiles sit mid-area while they are the subject, then rise to make room for the pDNS console. */
 export const TILES_Y = 150;
@@ -29,9 +31,9 @@ export const tileX = (i: number) => RIGHT_X + i * (TILE_W + TILE_GAP);
  * the certificate); `status` is 0 before the search, 1 while it runs and 2
  * when the three hits are in.
  */
-export function SearchBar({ opacity, huellaGlow, defP, status }: { opacity: number; huellaGlow: number; defP: number; status: 0 | 1 | 2 }) {
+export function SearchBar({ opacity, huellaGlow, defP, status, dim = 0 }: { opacity: number; huellaGlow: number; defP: number; status: 0 | 1 | 2; dim?: number }) {
   return (
-    <div style={{ position: 'absolute', left: RIGHT_X, top: 0, width: RIGHT_W, height: 140, opacity }}>
+    <div style={{ position: 'absolute', left: RIGHT_X, top: 0, width: RIGHT_W, height: 160, ...dimStyle(dim, opacity) }}>
       <div
         style={{
           position: 'absolute',
@@ -47,20 +49,20 @@ export function SearchBar({ opacity, huellaGlow, defP, status }: { opacity: numb
         }}
       >
         <div style={{ position: 'absolute', left: 22, top: 0, height: BAR_H - 4, display: 'flex', alignItems: 'center', gap: 12 }}>
-          <Icon name="radar" size={32} color={C.cyan} />
-          <span style={{ fontFamily: FONT.sans, fontSize: TYPE.small, fontWeight: 700, color: C.text, whiteSpace: 'nowrap' }}>Escaneos de Internet</span>
+          <Icon name="radar" size={36} color={C.cyan} />
+          <span style={{ fontFamily: FONT.sans, fontSize: TYPE.label, fontWeight: 700, color: C.text, whiteSpace: 'nowrap' }}>Escaneos de Internet</span>
         </div>
         <div style={{ position: 'absolute', left: BAR_PILL_X - 22, top: 16, width: 2, height: BAR_H - 36, background: C.ink600 }} />
         <div style={{ position: 'absolute', left: BAR_PILL_X, top: 0, height: BAR_H - 4, display: 'flex', alignItems: 'center' }}>
-          <Pill color={KEY_COLOR} size={TYPE.label} glow={huellaGlow}>
+          <Pill color={KEY_COLOR} size={40} glow={huellaGlow}>
             huella
           </Pill>
         </div>
         <div style={{ position: 'absolute', right: 22, top: 0, height: BAR_H - 4, display: 'flex', alignItems: 'center' }}>
           {status === 1 ? (
-            <span style={{ fontFamily: FONT.sans, fontSize: TYPE.small, fontWeight: 650, color: C.muted, whiteSpace: 'nowrap' }}>buscando…</span>
+            <span style={{ fontFamily: FONT.sans, fontSize: TYPE.label, fontWeight: 650, color: C.muted, whiteSpace: 'nowrap' }}>buscando…</span>
           ) : status === 2 ? (
-            <Pill color={KEY_COLOR} size={TYPE.small} solid icon="check">
+            <Pill color={KEY_COLOR} size={TYPE.label} solid icon="check">
               3 IP
             </Pill>
           ) : null}
@@ -70,9 +72,9 @@ export function SearchBar({ opacity, huellaGlow, defP, status }: { opacity: numb
         style={{
           position: 'absolute',
           left: BAR_PILL_X,
-          top: BAR_H + 12,
+          top: BAR_H + 6,
           fontFamily: FONT.sans,
-          fontSize: TYPE.label,
+          fontSize: 44,
           fontWeight: 700,
           color: '#6ee7b7',
           whiteSpace: 'nowrap',
@@ -146,37 +148,65 @@ export interface TileState {
   p: number;
   /** 0–1 highlight in the tile's accent. */
   hl: number;
-  /** 0–1 overall dimming. */
-  dim: number;
+  /** 0–1 focus dimming (see dimStyle). */
+  d: number;
   keyGlow: number;
   /** 0–1 appearance of the tag. */
   tagP: number;
 }
 
+/** Where a tile sits and how big it is drawn: top-left of the scaled box, and the scale. */
+export interface TileBox {
+  x: number;
+  y: number;
+  s: number;
+}
+
+/**
+ * Lays the row out from per-tile scales: the tiles keep filling RIGHT_W with
+ * equal gaps, so one can grow (the one the voice is on) while the others
+ * shrink aside. With all scales at 1 this is exactly tileX().
+ */
+export function rowXs(scales: readonly [number, number, number]): [number, number, number] {
+  const widths = scales.map((k) => TILE_W * k);
+  const gap = (RIGHT_W - widths[0] - widths[1] - widths[2]) / 2;
+  return [RIGHT_X, RIGHT_X + widths[0] + gap, RIGHT_X + widths[0] + widths[1] + 2 * gap];
+}
+
 /** One scan hit: a server that presents the same self-signed key. */
-export function ResultTile({ i, y, s, accent, children }: { i: number; y: number; s: TileState; accent: string; children?: ReactNode }) {
+export function ResultTile({ i, box, s, accent, children }: { i: number; box: TileBox; s: TileState; accent: string; children?: ReactNode }) {
   if (s.p <= 0) return null;
   return (
     <div
       style={{
         position: 'absolute',
-        left: tileX(i),
-        top: y,
+        left: box.x,
+        top: box.y,
         width: TILE_W,
         height: TILE_H,
-        boxSizing: 'border-box',
-        padding: '18px 22px',
-        borderRadius: RADIUS.lg,
-        border: `2px solid ${s.hl > 0 ? alpha(accent, 0.35 + 0.6 * s.hl) : C.ink700}`,
-        background: `linear-gradient(180deg, ${s.hl > 0 ? alpha(accent, 0.1 * s.hl) : C.ink850} 0%, ${alpha(C.ink900, 0.97)} 100%)`,
-        boxShadow: `0 20px 44px ${alpha('#000000', 0.35)}${s.hl > 0 ? `, 0 0 ${Math.round(34 * s.hl)}px ${alpha(accent, 0.3 * s.hl)}` : ''}`,
-        opacity: s.p * (1 - 0.45 * s.dim),
-        transform: `scale(${0.3 + 0.7 * s.p})`,
-        transformOrigin: growOrigin(i),
-        fontFamily: FONT.sans,
+        transform: `scale(${box.s})`,
+        transformOrigin: '0 0',
+        ...dimStyle(s.d),
       }}
     >
-      {children}
+      <div
+        style={{
+          width: TILE_W,
+          height: TILE_H,
+          boxSizing: 'border-box',
+          padding: '18px 22px',
+          borderRadius: RADIUS.lg,
+          border: `2px solid ${s.hl > 0 ? alpha(accent, 0.35 + 0.6 * s.hl) : C.ink700}`,
+          background: `linear-gradient(180deg, ${s.hl > 0 ? alpha(accent, 0.1 * s.hl) : C.ink850} 0%, ${alpha(C.ink900, 0.97)} 100%)`,
+          boxShadow: `0 20px 44px ${alpha('#000000', 0.35)}${s.hl > 0 ? `, 0 0 ${Math.round(34 * s.hl)}px ${alpha(accent, 0.3 * s.hl)}` : ''}`,
+          opacity: s.p,
+          transform: `scale(${0.3 + 0.7 * s.p})`,
+          transformOrigin: growOrigin(i),
+          fontFamily: FONT.sans,
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 }
@@ -201,19 +231,19 @@ export function TileHead({ ip, keyGlow }: { ip: string | null; keyGlow: number }
 }
 
 /** The three hits, in canon order. */
-export function ResultTiles({ frame, y, states }: { frame: number; y: number; states: [TileState, TileState, TileState] }) {
+export function ResultTiles({ frame, boxes, states }: { frame: number; boxes: [TileBox, TileBox, TileBox]; states: [TileState, TileState, TileState] }) {
   const [a, b, c] = states;
   const pulseOn = pulse(frame, 30, 0.5);
   return (
     <>
-      <ResultTile i={0} y={y} s={a} accent={C.amber}>
+      <ResultTile i={0} box={boxes[0]} s={a} accent={C.amber}>
         <TileHead ip={CANON.blockIp} keyGlow={a.keyGlow} />
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginTop: 20, opacity: a.tagP }}>
           <MiniBlock height={50} glow={a.hl} />
           <span style={{ fontSize: TYPE.label, fontWeight: 750, color: C.amber, whiteSpace: 'nowrap' }}>el bloque · 14.000</span>
         </div>
       </ResultTile>
-      <ResultTile i={1} y={y} s={b} accent={C.emerald}>
+      <ResultTile i={1} box={boxes[1]} s={b} accent={C.emerald}>
         <TileHead ip={CANON.vpsIp} keyGlow={b.keyGlow} />
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 14, opacity: b.tagP, transform: `translateY(${(1 - b.tagP) * 10}px)` }}>
           <MiniHouse size={58} glow={b.hl * (0.7 + 0.3 * pulseOn)} />
@@ -224,7 +254,7 @@ export function ResultTiles({ frame, y, states }: { frame: number; y: number; st
           </div>
         </div>
       </ResultTile>
-      <ResultTile i={2} y={y} s={c} accent={C.sky}>
+      <ResultTile i={2} box={boxes[2]} s={c} accent={C.sky}>
         <TileHead ip={null} keyGlow={c.keyGlow} />
         <div style={{ marginTop: 26, opacity: c.tagP * 0.55 }}>
           <RedactBar width={230} height={24} color={C.faint} />

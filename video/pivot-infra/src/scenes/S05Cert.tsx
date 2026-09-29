@@ -2,12 +2,27 @@ import { useCurrentFrame, useVideoConfig } from 'remotion';
 import type { SceneProps } from '../../../engine/src/timeline/types';
 import { C, FONT, alpha } from '../../../engine/src/theme/tokens';
 import { EASE, fadeIn, progress, pulse } from '../../../engine/src/theme/motion';
-import { Caps, CANON, KEY_COLOR } from './parts/s05-cert/bits';
+import { Caps, CANON, KEY_COLOR, dimStyle, mix } from './parts/s05-cert/bits';
 import { C2Node, CERT_H, CERT_KEY_TILE, CERT_SHA1_POS, CertCard, COL_W, NODE_DOMAIN_POS, NODE_H } from './parts/s05-cert/CertCard';
 import { KeyDoors } from './parts/s05-cert/Doors';
-import { PHISH_POS, PdnsConsole, CONSOLE_Y } from './parts/s05-cert/PdnsConsole';
-import { BAR_H, BAR_VALUE_X, RIGHT_X, ResultTiles, ScanField, SearchBar, TILE_H, TILE_W, TILES_MID, TILES_Y, tileX, type TileState } from './parts/s05-cert/Scan';
-import { SameKey } from './parts/s05-cert/SameKey';
+import { CONSOLE_Y, PdnsConsole, phishCardScale, phishTextPos } from './parts/s05-cert/PdnsConsole';
+import {
+  BAR_H,
+  BAR_VALUE_SIZE,
+  BAR_VALUE_X,
+  RIGHT_X,
+  ResultTiles,
+  ScanField,
+  SearchBar,
+  TILE_H,
+  TILE_W,
+  TILES_MID,
+  TILES_Y,
+  rowXs,
+  type TileBox,
+  type TileState,
+} from './parts/s05-cert/Scan';
+import { SAME_KEY_BOTTOM, SameKey } from './parts/s05-cert/SameKey';
 import { Stage, segment, wordFrame } from './kit';
 
 const SCENE = 's05-cert';
@@ -15,11 +30,27 @@ const SCENE = 's05-cert';
 // Docked layout: the C2 column on the left (kept left of the intercept card's band).
 const NODE_DOCK = { x: 0, y: 172 };
 const CERT_DOCK = { x: 0, y: NODE_DOCK.y + NODE_H + 12 };
-// Hero layout for s05-01: the C2 presents its certificate, centred and larger.
-const HERO_SCALE = 1.15;
+// Hero layout for s05-01: the C2 presents its certificate. The certificate is
+// what the voice explains, so it is the big one (CN ≈ 60 px, pills ≈ 48 px).
+const NODE_HERO_SCALE = 1.15;
+const CERT_HERO_SCALE = 1.5;
 const HERO_MID_Y = 330;
-const CERT_HERO = { x: 984, y: HERO_MID_Y - Math.round((CERT_H * HERO_SCALE) / 2) };
-const NODE_HERO = { x: 238, y: HERO_MID_Y - Math.round((NODE_H * HERO_SCALE) / 2) };
+const NODE_HERO = { x: 150, y: HERO_MID_Y - Math.round((NODE_H * NODE_HERO_SCALE) / 2) };
+const CERT_HERO = { x: 1728 - 60 - Math.round(COL_W * CERT_HERO_SCALE), y: HERO_MID_Y - Math.round((CERT_H * CERT_HERO_SCALE) / 2) };
+const NODE_HERO_R = NODE_HERO.x + COL_W * NODE_HERO_SCALE;
+
+// Scan hits: the tile the voice is on grows, the others shrink aside (rowXs keeps the row inside the area).
+const TILE_FOCUS = 1.45;
+const TILE_ASIDE = 0.78;
+/** Once the console opens the tiles are context: smaller, top-aligned at TILES_Y. */
+const TILE_RISEN = 0.8;
+/** Under the conclusion strip (s05-06 on) they sit lower and smaller still. */
+const TILE_LATE = 0.7;
+const TILES_LATE_Y = SAME_KEY_BOTTOM + 14;
+/** Font size of the fingerprint in the certificate card (it grows to BAR_VALUE_SIZE as it flies to the search). */
+const SHA1_CARD_SIZE = 32;
+
+type P = { x: number; y: number };
 
 /**
  * s05-cert «La llave hecha a mano». The C2 presents a self-signed certificate
@@ -29,6 +60,10 @@ const NODE_HERO = { x: 238, y: HERO_MID_Y - Math.round((NODE_H * HERO_SCALE) / 2
  * redacted. Passive DNS of that server shows the phishing portal against
  * Meridian: C2 and phishing share the same key, a strong clue of one owner.
  * The two other neighbours stay redacted for Lab 3A.
+ *
+ * Focus: at every beat the element the voice is on is enlarged and at full
+ * strength, and everything else steps back (dimStyle: ~40 % opacity, half
+ * saturation) — evidence first, then its reading, then the rule.
  */
 export function S05Cert(props: SceneProps) {
   const frame = useCurrentFrame();
@@ -64,10 +99,11 @@ export function S05Cert(props: SceneProps) {
   const nodeIn = progress(frame, 0, 18);
   // Hero, then docked to the left before the intercept card arrives at the end of s05-01.
   const dock = progress(frame, s1.to - 26, 22, EASE.inOut);
-  const lerp2 = (a: { x: number; y: number }, b: { x: number; y: number }) => ({ x: a.x + (b.x - a.x) * dock, y: a.y + (b.y - a.y) * dock });
+  const lerp2 = (a: P, b: P): P => ({ x: mix(a.x, b.x, dock), y: mix(a.y, b.y, dock) });
   const nodePos = lerp2(NODE_HERO, NODE_DOCK);
   const certPos = lerp2(CERT_HERO, CERT_DOCK);
-  const scale = HERO_SCALE + (1 - HERO_SCALE) * dock;
+  const nodeScale = mix(NODE_HERO_SCALE, 1, dock);
+  const certScale = mix(CERT_HERO_SCALE, 1, dock);
 
   // Doors (s05-02) — the key leaves its tile while they are on screen.
   const doorsOut = s2.to - 14;
@@ -85,58 +121,93 @@ export function S05Cert(props: SceneProps) {
   );
   const huella = progress(frame, scan + 4, 12) * (1 - 0.55 * progress(frame, hits + 20, 30));
   const certGlow = progress(frame, fp, 12) * (1 - progress(frame, s1.to - 10, 30));
-  const nodeGlow = Math.max(
-    fadeIn(frame, 0, 18) * 0.3 * (1 - dock),
-    progress(frame, s6.from, 10) * (1 - progress(frame, s6.from + 40, 30)),
-  );
+  // s05-06: the two sources of the conclusion light up for a moment as their copies lift off.
+  const liftWin = progress(frame, s6.from, 10) * (1 - progress(frame, s6.from + 40, 30));
+  const nodeGlow = Math.max(fadeIn(frame, 0, 18) * 0.3 * (1 - dock), liftWin);
 
-  // Scan search (s05-03).
+  // Focus of the C2 column. Hero: the certificate leads, the C2 steps back once
+  // «autofirmado» is said; docked, the column is context except for short
+  // windows — «eso es lo que lo delata» (the whole certificate), the fingerprint
+  // search (its row only) and the C2's domain lifting off in s05-06.
+  const givesWin = progress(frame, wGives - 4, 10) * (1 - progress(frame, wKey + 10, 14));
+  const scanWin = progress(frame, scan - 4, 10) * (1 - progress(frame, hits + 20, 20));
+  const nodeD = Math.max(0.6 * progress(frame, wAuto, 12), dock) * (1 - 0.85 * liftWin);
+  const certD = dock * (1 - 0.8 * givesWin);
+  const certRowD = dock * (1 - Math.max(scanWin, 0.8 * givesWin));
+
+  // Scan search (s05-03): the bar is the subject until the hits land, then context.
   const barOpacity = fadeIn(frame, scan, 12) * (1 - progress(frame, s6.from, 12, EASE.inOut));
+  const barD = Math.max(0.6 * progress(frame, hits + 24, 16), progress(frame, s4.from, 16));
   const huellaGlow = progress(frame, wPrint - 4, 10) * (1 - 0.6 * progress(frame, hits, 20));
   const defP = progress(frame, wCode, 12);
   const status: 0 | 1 | 2 = frame < wScans ? 0 : frame < hits ? 1 : 2;
   const printFly = progress(frame, wPrint, 24, EASE.inOut);
-  const printFrom = { x: CERT_DOCK.x + CERT_SHA1_POS.x, y: CERT_DOCK.y + CERT_SHA1_POS.y };
-  const printTo = { x: RIGHT_X + BAR_VALUE_X, y: (BAR_H - 4 - 42) / 2 };
+  const printFrom: P = { x: CERT_DOCK.x + CERT_SHA1_POS.x, y: CERT_DOCK.y + CERT_SHA1_POS.y };
+  const printTo: P = { x: RIGHT_X + BAR_VALUE_X, y: (BAR_H - 4 - BAR_VALUE_SIZE * 1.3) / 2 };
 
-  // Hits (s05-03/04).
+  // Hits (s05-03/04). f0: «la del bloque de pisos»; f1: {dedicated-ip} «esta otra».
   const tileP = (i: number) => progress(frame, hits + i * 4, 12);
+  const f0 = progress(frame, s4.from, 16, EASE.inOut) * (1 - progress(frame, dedicated, 16, EASE.inOut));
+  const f1 = progress(frame, dedicated, 16, EASE.inOut);
+  const aside = progress(frame, s4.from, 16, EASE.inOut);
   const rise = progress(frame, s5.from - 4, 18, EASE.inOut);
-  const tilesY = TILES_MID + (TILES_Y - TILES_MID) * rise;
+  const late = progress(frame, s6.from, 20, EASE.inOut);
+  const pre = [
+    1 + (TILE_FOCUS - 1) * f0 + (TILE_ASIDE - 1) * f1,
+    1 + (TILE_ASIDE - 1) * f0 + (TILE_FOCUS - 1) * f1,
+    1 + (TILE_ASIDE - 1) * aside,
+  ];
+  const scales = pre.map((k) => mix(mix(k, TILE_RISEN, rise), TILE_LATE, late)) as [number, number, number];
+  const xs = rowXs(scales);
+  // Centred on the row's middle while they are the subject, top-aligned once the console needs the room.
+  const boxes = scales.map((k, i) => ({
+    x: xs[i],
+    y: mix(mix(TILES_MID + (TILE_H * (1 - k)) / 2, TILES_Y, rise), TILES_LATE_Y, late),
+    s: k,
+  })) as [TileBox, TileBox, TileBox];
   const keysGlow = Math.max(progress(frame, hits + 8, 10) * (1 - progress(frame, hits + 40, 30)), progress(frame, wSameKey - 16, 10) * (1 - progress(frame, wSameKey + 40, 30)));
-  const late = 0.35 * progress(frame, s6.from, 20);
   const tiles: [TileState, TileState, TileState] = [
     {
       p: tileP(0),
-      hl: progress(frame, s4.from, 12) * (1 - 0.65 * progress(frame, dedicated, 16)),
-      dim: Math.max(0.55 * progress(frame, dedicated, 16), late),
+      hl: f0,
+      d: Math.max(f1, rise),
       keyGlow: keysGlow,
       tagP: progress(frame, hits + 4, 10),
     },
     {
       p: tileP(1),
-      hl: progress(frame, dedicated, 12) * (1 - 0.45 * progress(frame, s6.from, 20)),
-      dim: late,
+      hl: f1 * (1 - 0.45 * late),
+      d: Math.max(f0, 0.35 * rise, progress(frame, phish, 16), late),
       keyGlow: keysGlow,
       tagP: progress(frame, dedicated, 12),
     },
     {
       p: tileP(2),
       hl: 0,
-      dim: Math.max(0.35 * progress(frame, dedicated, 16), late),
+      d: Math.max(aside, rise),
       keyGlow: keysGlow,
       tagP: tileP(2),
     },
   ];
 
-  // Passive DNS (s05-05) and the shared key (s05-06).
+  // Passive DNS (s05-05): the phishing answer, then (s05-07) the Lab 3A neighbours.
   const phishGlow = Math.max(
     0.55 * progress(frame, phish, 12),
     progress(frame, wPhishing, 8) * (1 - progress(frame, wPhishing + 20, 20)),
-    progress(frame, s6.from, 10) * (1 - progress(frame, s6.from + 40, 30)),
+    liftWin,
   );
+  const phishFocus = progress(frame, phish, 14, EASE.inOut);
+  const labFocus = progress(frame, redacted, 16, EASE.inOut);
+  const consoleD = 0.7 * progress(frame, s6.from + 30, 16) * (1 - labFocus);
   const askLink = progress(frame, s5.from + 14, 12, EASE.inOut);
-  const vpsX = tileX(1) + TILE_W / 2;
+  const vps = boxes[1];
+  const vpsX = vps.x + (TILE_W * vps.s) / 2;
+  const linkTop = vps.y + TILE_H * vps.s + 2;
+
+  // s05-06: the copies lift off from wherever their sources are drawn at that moment.
+  const liftAt = s6.from + 4;
+  const phLift = liftAt + 6;
+  const phLiftScale = phishCardScale(progress(phLift, phish, 14, EASE.inOut), progress(phLift, redacted, 16, EASE.inOut));
 
   return (
     <Stage>
@@ -144,9 +215,9 @@ export function S05Cert(props: SceneProps) {
       {dock < 1 ? (
         <svg width={1728} height={660} style={{ position: 'absolute', left: 0, top: 0, overflow: 'visible', opacity: (1 - dock) * certIn }}>
           <line
-            x1={NODE_HERO.x + COL_W * HERO_SCALE + 8}
+            x1={NODE_HERO_R + 8}
             y1={HERO_MID_Y}
-            x2={NODE_HERO.x + COL_W * HERO_SCALE + 8 + (CERT_HERO.x - NODE_HERO.x - COL_W * HERO_SCALE - 16) * certIn}
+            x2={NODE_HERO_R + 8 + (CERT_HERO.x - NODE_HERO_R - 16) * certIn}
             y2={HERO_MID_Y}
             stroke={alpha(C.sky, 0.8)}
             strokeWidth={4}
@@ -160,8 +231,8 @@ export function S05Cert(props: SceneProps) {
         <div
           style={{
             position: 'absolute',
-            left: NODE_HERO.x + COL_W * HERO_SCALE,
-            width: CERT_HERO.x - NODE_HERO.x - COL_W * HERO_SCALE,
+            left: NODE_HERO_R,
+            width: CERT_HERO.x - NODE_HERO_R,
             top: HERO_MID_Y - 48,
             display: 'flex',
             justifyContent: 'center',
@@ -172,7 +243,16 @@ export function S05Cert(props: SceneProps) {
         </div>
       ) : null}
 
-      <div style={{ position: 'absolute', left: nodePos.x, top: nodePos.y, transform: `translateY(${(1 - nodeIn) * 18}px) scale(${scale})`, transformOrigin: '0 0', opacity: nodeIn }}>
+      <div
+        style={{
+          position: 'absolute',
+          left: nodePos.x,
+          top: nodePos.y,
+          transform: `translateY(${(1 - nodeIn) * 18}px) scale(${nodeScale})`,
+          transformOrigin: '0 0',
+          ...dimStyle(nodeD, nodeIn),
+        }}
+      >
         <C2Node glow={nodeGlow} />
       </div>
       {frame >= fp ? (
@@ -181,12 +261,12 @@ export function S05Cert(props: SceneProps) {
             position: 'absolute',
             left: certPos.x,
             top: certPos.y,
-            transform: `translateX(${(1 - certIn) * -40}px) scale(${scale})`,
+            transform: `translateX(${(1 - certIn) * -40}px) scale(${certScale})`,
             transformOrigin: '0 0',
             opacity: certIn,
           }}
         >
-          <CertCard glow={certGlow} keyGlow={keyGlow} autoP={autoP} noCaP={noCaP} noCaGlow={noCaGlow} huella={huella} hideKey={keyAway} />
+          <CertCard glow={certGlow} keyGlow={keyGlow} autoP={autoP} noCaP={noCaP} noCaGlow={noCaGlow} huella={huella} hideKey={keyAway} dim={certD} rowDim={certRowD} />
         </div>
       ) : null}
 
@@ -198,52 +278,53 @@ export function S05Cert(props: SceneProps) {
       />
 
       {/* s05-03: search the fingerprint over Internet scan data. */}
-      {frame >= scan ? <SearchBar opacity={barOpacity} huellaGlow={huellaGlow} defP={defP} status={status} /> : null}
+      {frame >= scan ? <SearchBar opacity={barOpacity} huellaGlow={huellaGlow} defP={defP} status={status} dim={barD} /> : null}
       {frame >= wPrint && barOpacity > 0 ? (
         <div
           style={{
             position: 'absolute',
-            left: printFrom.x + (printTo.x - printFrom.x) * printFly,
-            top: printFrom.y + (printTo.y - printFrom.y) * printFly - Math.sin(Math.PI * printFly) * 40,
+            left: mix(printFrom.x, printTo.x, printFly),
+            top: mix(printFrom.y, printTo.y, printFly) - Math.sin(Math.PI * printFly) * 40,
+            transform: `scale(${mix(1, BAR_VALUE_SIZE / SHA1_CARD_SIZE, printFly)})`,
+            transformOrigin: '0 0',
             fontFamily: FONT.mono,
-            fontSize: 32,
+            fontSize: SHA1_CARD_SIZE,
             fontWeight: 700,
             lineHeight: 1.3,
             color: '#6ee7b7',
             whiteSpace: 'nowrap',
-            opacity: Math.min(fadeIn(frame, wPrint, 6), printFly >= 1 ? barOpacity : 1),
             textShadow: printFly < 1 ? `0 0 18px ${alpha(KEY_COLOR, 0.7)}` : undefined,
+            ...dimStyle(barD, Math.min(fadeIn(frame, wPrint, 6), printFly >= 1 ? barOpacity : 1)),
           }}
         >
           {CANON.sha1}
         </div>
       ) : null}
       <ScanField frame={frame} showAt={scan + 20} sweepAt={wScans} hits={hits} />
-      <ResultTiles frame={frame} y={tilesY} states={tiles} />
+      <ResultTiles frame={frame} boxes={boxes} states={tiles} />
 
       {/* s05-05: ask the listín about the dedicated server. */}
-      <svg width={1728} height={660} style={{ position: 'absolute', left: 0, top: 0, overflow: 'visible', pointerEvents: 'none' }}>
-        {askLink > 0 ? (
-          <line
-            x1={vpsX}
-            y1={tilesY + TILE_H + 2}
-            x2={vpsX}
-            y2={tilesY + TILE_H + 2 + (CONSOLE_Y - tilesY - TILE_H - 2) * askLink}
-            stroke={C.emerald}
-            strokeWidth={4}
-            strokeLinecap="round"
-          />
+      <svg width={1728} height={660} style={{ position: 'absolute', left: 0, top: 0, overflow: 'visible', pointerEvents: 'none', opacity: 1 - 0.6 * late }}>
+        {askLink > 0 && CONSOLE_Y > linkTop ? (
+          <line x1={vpsX} y1={linkTop} x2={vpsX} y2={linkTop + (CONSOLE_Y - linkTop) * askLink} stroke={C.emerald} strokeWidth={4} strokeLinecap="round" />
         ) : null}
       </svg>
-      <PdnsConsole frame={frame} fps={fps} t={{ openAt: s5.from + 10, cmdAt: wAsk, resultAt: phish, lockAt: redacted }} phishGlow={phishGlow} />
+      <PdnsConsole
+        frame={frame}
+        fps={fps}
+        t={{ openAt: s5.from + 10, cmdAt: wAsk, resultAt: phish, lockAt: redacted }}
+        phishGlow={phishGlow}
+        focus={{ phish: phishFocus, lab: labFocus, dim: consoleD }}
+      />
 
       {/* s05-06: same key, strong clue of one owner. */}
       <SameKey
         frame={frame}
-        t={{ liftAt: s6.from + 4, keyAt: wSameKey, clueAt: wClue }}
-        c2From={{ x: NODE_DOCK.x + NODE_DOMAIN_POS.x, y: NODE_DOCK.y + NODE_DOMAIN_POS.y }}
-        phishFrom={PHISH_POS}
+        t={{ liftAt, keyAt: wSameKey, clueAt: wClue }}
+        c2From={{ x: NODE_DOCK.x + NODE_DOMAIN_POS.x, y: NODE_DOCK.y + NODE_DOMAIN_POS.y, size: 32 }}
+        phishFrom={{ ...phishTextPos(phLiftScale), size: 32 * phLiftScale }}
         keyFrom={{ x: CERT_DOCK.x + CERT_KEY_TILE.x + CERT_KEY_TILE.size / 2, y: CERT_DOCK.y + CERT_KEY_TILE.y + CERT_KEY_TILE.size / 2 }}
+        dim={0.45 * labFocus}
       />
     </Stage>
   );
