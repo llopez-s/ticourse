@@ -5,7 +5,7 @@ import path from 'node:path';
 import { after, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { adversaryClipId, adversaryKey } from './adversary.mjs';
-import { TIMING, TRANSCRIPT_NOTICE, buildTimeline, captionsPathFor, formatJson, loadAdversary } from '../build-timeline.mjs';
+import { TIMING, TRANSCRIPT_NOTICE, buildTimeline, captionsPathFor, formatJson, loadAdversary, playbackMs } from '../build-timeline.mjs';
 import { analyzeNarration, loadSources, sourceHash, ttsKey } from './narration.mjs';
 import { SFX_DIR } from './paths.mjs';
 import { INTERCEPT_TIMING, voicedHoldFrames } from './sfx.mjs';
@@ -226,6 +226,13 @@ test('captionsOnScreen: written (false) only for the YouTube profiles; the rest 
   const repo = await buildVariant(() => {}, 'repo-captions');
   assert.equal('captionsOnScreen' in repo.timeline, false);
   assert.deepEqual(validateTimeline({ ...repo.timeline, captionsOnScreen: true }, { sceneIds: repo.timeline.scenes.map((s) => s.id) }).filter((e) => /captionsOnScreen/.test(e)), ['timeline.captionsOnScreen: when present, false']);
+});
+
+test('playbackMs: a recording plays until its voice really stops (+ tail), even when the ASR ends the last word early', () => {
+  assert.equal(playbackMs({ probeMs: 5000, lastEnd: 4000, speechEndMs: 4600, tailMs: 250 }), 4850); // V4 s08-04 lost «siguiente»
+  assert.equal(playbackMs({ probeMs: 5000, lastEnd: 4000, tailMs: 250 }), 4250); // TTS clips: as before
+  assert.equal(playbackMs({ probeMs: 4700, lastEnd: 4000, speechEndMs: 4600, tailMs: 250 }), 4700); // never past the clip
+  assert.equal(playbackMs({ probeMs: 5000, lastEnd: 4000, speechEndMs: 4600, tailMs: 250, fullAudio: true }), 5000);
 });
 
 test('analyzeNarration: style warnings do not block the build', () => {

@@ -247,6 +247,31 @@ function sentenceTakes(segment, tokens, from, limit) {
   return merged;
 }
 
+/**
+ * Whisper sometimes stretches a word over the pause next to it (V4: «y» got 151.22–153.10 s, with the pause
+ * after the previous «IP» inside it), so a cut placed from those edges lands in the wrong place and chops a
+ * word. For a pause of at least `minMs` strictly inside a word's span, the word is the longer of the two sides
+ * (the shorter one is the tail or onset of its neighbour): after the pause, the start moves to its end; before
+ * it, the end moves to its start. (V4: «y» 151.22–153.10 with a pause 151.39–152.53 is really 152.53–153.10.)
+ */
+export function repairSwallowedPauses(words, silences, { minMs = 300 } = {}) {
+  return words.map((w) => {
+    let { startMs, endMs } = w;
+    for (const s of silences) {
+      if (s.endMs - s.startMs < minMs || s.startMs <= startMs || s.endMs >= endMs) continue;
+      if (endMs - s.endMs >= s.startMs - startMs) startMs = s.endMs;
+      else endMs = s.startMs;
+    }
+    return startMs === w.startMs && endMs === w.endMs ? w : { ...w, startMs, endMs };
+  });
+}
+
+/** Where a clip's voice really stops: the start of a silence that runs to its end (within 40 ms), else its length. */
+export function trailingSpeechEnd(silences, durationMs) {
+  const tail = silences.find((s) => s.endMs >= durationMs - 40 && s.startMs < durationMs);
+  return tail ? tail.startMs : durationMs;
+}
+
 /** Silences from ffmpeg silencedetect's stderr; one still open at the end runs to `totalMs`. */
 export function parseSilences(stderr, totalMs) {
   const out = [];

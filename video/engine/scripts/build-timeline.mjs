@@ -53,6 +53,15 @@ const mmss = (frames, fps) => {
 };
 
 /** Pretty JSON with flat objects (words, cues…) kept on one line. */
+/**
+ * How long a clip plays: to its last word + `tailMs`, or, for a recording that measured where its voice really
+ * stops (`speechEndMs`, import-recording), to the later of the two + `tailMs` — never past the clip itself.
+ */
+export function playbackMs({ probeMs, lastEnd, speechEndMs, tailMs, fullAudio = false }) {
+  if (fullAudio) return probeMs;
+  return Math.min(probeMs, Math.max(lastEnd, speechEndMs ?? 0) + tailMs);
+}
+
 /** How exam cards are timed: on their cue, or once the sentence holding it has been heard (narration.json "examTiming"). */
 export const EXAM_TIMINGS = Object.freeze(['cue', 'sentence-end']);
 /** The -yt profiles want the title cue (the topic and the promise) inside the first seconds. */
@@ -140,7 +149,7 @@ async function loadAudio(segments, voice, opts, errors, warnings) {
       continue;
     }
     trailing.push(probeMs - lastEnd);
-    const durationMs = opts.fullAudio ? probeMs : Math.min(probeMs, lastEnd + opts.tailMs);
+    const durationMs = playbackMs({ probeMs, lastEnd, speechEndMs: tts.speechEndMs, tailMs: opts.tailMs, fullAudio: opts.fullAudio });
     const spokenTimes = alignSpokenTokens(seg.parsed.spokenTokens, tts.words, { totalMs: lastEnd });
     const content = seg.parsed.spokenTokens.filter((t) => normalizeToken(t)).length;
     const unmatched = spokenTimes.filter((t, k) => !t.matched && normalizeToken(seg.parsed.spokenTokens[k])).length;

@@ -41,6 +41,8 @@ import {
   parseSilences,
   recordingRecord,
   recordingSettings,
+  repairSwallowedPauses,
+  trailingSpeechEnd,
   selectSegments,
 } from './lib/recording.mjs';
 import { runFfmpeg, writeFileAtomic } from './lib/remotion.mjs';
@@ -122,8 +124,10 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
   const target = match ? parseLoudness(analyse(match, 'loudnorm=print_format=json')).integrated : lufs;
   const gain = gainDb(parseLoudness(analyse(file, 'loudnorm=print_format=json')), target);
 
-  const located = locateSegments(segments, words);
-  const cuts = cutPoints(located, words, silences, asr.durationMs);
+  // Cuts are placed from the words' edges, so first undo the pauses Whisper stretched a word over.
+  const timed = repairSwallowedPauses(words, silences);
+  const located = locateSegments(segments, timed);
+  const cuts = cutPoints(located, timed, silences, asr.durationMs);
   const cutOf = new Map(cuts.map((c) => [c.id, c]));
   mkdirSync(ttsDir, { recursive: true });
   mkdirSync(voiceDir, { recursive: true });
@@ -144,10 +148,13 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
       bytes: statSync(mp3).size,
       ranges,
       located: located[k],
-      words,
+      words: timed,
       source: { file: path.relative(REPO_ROOT, path.resolve(file)).split(path.sep).join('/'), sha256, gainDb: gain },
       asrModel: ASR_MODEL,
     }), settings.tempo);
+    // Where the voice of this clip really stops, measured on the clip itself: build-timeline plays a clip up to
+    // its last word + a tail, and Whisper often ends the last word early (V4 s08-04 lost «siguiente»).
+    record.speechEndMs = trailingSpeechEnd(parseSilences(analyse(mp3, `silencedetect=noise=${noise}:d=0.08`), record.durationMs), record.durationMs);
     pausesRemovedMs += record.source.pausesRemovedMs;
     writeFileAtomic(path.join(ttsDir, `${seg.id}.json`), `${JSON.stringify(record, null, 1)}\n`);
   }

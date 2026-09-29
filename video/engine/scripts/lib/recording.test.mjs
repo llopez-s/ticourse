@@ -20,6 +20,8 @@ import {
   parseSilences,
   recordingRecord,
   recordingSettings,
+  repairSwallowedPauses,
+  trailingSpeechEnd,
   selectSegments,
   similarity,
   unusedRanges,
@@ -376,6 +378,35 @@ test('asrCacheValid: the same recording and model reuse the transcript, whatever
   assert.equal(asrCacheValid(cached, { sha256: 'def', model: 'small' }), false); // another recording
   assert.equal(asrCacheValid(cached, { sha256: 'abc', model: 'medium' }), false); // another model
   assert.equal(asrCacheValid({ sha256: 'abc', model: 'small' }, { sha256: 'abc', model: 'small' }), false); // no words
+});
+
+test('repairSwallowedPauses: a word whose span swallowed a pause starts after it (V4 s03-05/06: «IP» was cut)', () => {
+  // Whisper gave «y» 151.22–153.10 s: the pause after «IP» (really 151.39–152.53) is inside it, off its edges.
+  const words = W([['misma', 150640, 150980], ['IP', 150980, 151220], ['y', 151220, 153100], ['el', 153100, 153240]]);
+  const silences = [{ startMs: 151390, endMs: 152530 }];
+  const fixed = repairSwallowedPauses(words, silences);
+  assert.deepEqual(fixed.map((w) => [w.text, w.startMs, w.endMs]), [['misma', 150640, 150980], ['IP', 150980, 151220], ['y', 152530, 153100], ['el', 153100, 153240]]);
+  // and a word whose end swallowed the pause after it ends where the pause starts
+  const tail = repairSwallowedPauses(W([['suya.', 1000, 3000], ['Ese', 3000, 3200]]), [{ startMs: 1500, endMs: 2950 }]);
+  assert.deepEqual(tail.map((w) => [w.startMs, w.endMs]), [[1000, 1500], [3000, 3200]]);
+  // short pauses and pauses between words are left alone
+  const same = W([['a', 0, 400], ['b', 600, 1000]]);
+  assert.deepEqual(repairSwallowedPauses(same, [{ startMs: 400, endMs: 600 }, { startMs: 700, endMs: 800 }]), same);
+});
+
+test('cutPoints no longer cuts «IP» once the swallowed pause is repaired', () => {
+  const words = W([['misma', 150640, 150980], ['IP', 150980, 151220], ['y', 151220, 153100], ['el', 153100, 153240]]);
+  const silences = [{ startMs: 151390, endMs: 152530 }];
+  const located = [{ id: 'a', found: true, first: 0, last: 1 }, { id: 'b', found: true, first: 2, last: 3 }];
+  const [a, b] = cutPoints(located, repairSwallowedPauses(words, silences), silences, 160000);
+  assert.ok(a.endMs >= 151390, `«IP» must end in the pause, got ${a.endMs}`);
+  assert.ok(b.startMs >= 152400, `the next clip must start at the end of the pause, got ${b.startMs}`);
+});
+
+test('trailingSpeechEnd: where the voice of a clip really stops (a silence that runs to its end), else its length', () => {
+  assert.equal(trailingSpeechEnd([{ startMs: 300, endMs: 500 }, { startMs: 4200, endMs: 4510 }], 4520), 4200);
+  assert.equal(trailingSpeechEnd([{ startMs: 300, endMs: 500 }], 4520), 4520);
+  assert.equal(trailingSpeechEnd([], 4520), 4520);
 });
 
 test('ffmpegBinary finds the ffmpeg that Remotion ships, to run it without the CLI wrapper', () => {
