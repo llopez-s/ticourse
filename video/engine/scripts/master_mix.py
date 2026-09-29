@@ -356,6 +356,14 @@ def true_peak_db(x):
     return 20 * np.log10(np.max(np.abs(signal.resample_poly(x, 4, 1, axis=0))) + 1e-12)
 
 
+def next_ceiling(limiter_db, measured_tp_db, target_tp_db, margin_db=0.1):
+    """Limiter ceiling for another pass when the encoded file's true peak overshot the target (AAC adds a
+    little on top of the PCM peak); None when it did not."""
+    if measured_tp_db <= target_tp_db:
+        return None
+    return limiter_db - (measured_tp_db - target_tp_db) - margin_db
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--video-in", required=True)
@@ -393,19 +401,35 @@ def main():
             mix = prog + bed
 
         mix *= 10 ** ((args.target - meter.integrated_loudness(mix)) / 20)
-        mix, gr = limit(mix, args.ceiling)
-        active = gr < -0.1
-        print(
-            f"  master: {meter.integrated_loudness(mix):.1f} LUFS, true peak {true_peak_db(mix):.1f} dBTP, "
-            f"limiter active {100 * active.mean():.2f}% of the time, max {-gr.min():.1f} dB"
-        )
-        mastered = os.path.join(tmp, "master.wav")
-        sf.write(mastered, mix, SR, subtype="PCM_24")
-        subprocess.run(
-            [args.ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-i", args.video_in, "-i", mastered,
-             "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", args.out],
-            check=True,
-        )
+        unlimited = mix
+        # The delivered file is what counts: AAC can push the true peak past the PCM limiter's ceiling, so the
+        # MP4 is decoded and measured, and limited again with a lower ceiling if it overshot (up to 3 passes).
+        ceiling = args.ceiling
+        for attempt in range(3):
+            mix, gr = limit(unlimited, ceiling)
+            active = gr < -0.1
+            print(
+                f"  master: {meter.integrated_loudness(mix):.1f} LUFS, true peak {true_peak_db(mix):.1f} dBTP "
+                f"(limiter at {ceiling:.2f}), limiter active {100 * active.mean():.2f}% of the time, max {-gr.min():.1f} dB"
+            )
+            mastered = os.path.join(tmp, "master.wav")
+            sf.write(mastered, mix, SR, subtype="PCM_24")
+            subprocess.run(
+                [args.ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-i", args.video_in, "-i", mastered,
+                 "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", args.out],
+                check=True,
+            )
+            check = os.path.join(tmp, "check.wav")
+            subprocess.run([args.ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-i", args.out, "-vn", "-ac", "2", "-ar", str(SR), "-c:a", "pcm_f32le", check], check=True)
+            delivered, _ = sf.read(check, always_2d=True)
+            tp = true_peak_db(delivered)
+            print(f"  delivered MP4: {meter.integrated_loudness(delivered):.1f} LUFS, true peak {tp:.2f} dBTP")
+            lower = next_ceiling(ceiling, tp, args.ceiling)
+            if lower is None:
+                break
+            ceiling = lower
+        else:
+            print(f"  warning: the MP4's true peak is still {tp:.2f} dBTP, over {args.ceiling} dBTP")
         print(f"  -> {args.out}")
         if args.excerpt and args.excerpt_out:
             a, b = (float(v) for v in args.excerpt.split(":"))

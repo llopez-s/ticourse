@@ -153,6 +153,10 @@ class MasterMixTest(unittest.TestCase):
         self.assertGreater(band(*tense, 48, 60), 3 * band(*free, 48, 60))
         self.assertLess(band(*tense, 600, 1400), 0.5 * band(*free, 600, 1400))
 
+    def test_next_ceiling_lowers_the_limiter_by_the_encoded_overshoot(self):
+        self.assertIsNone(master_mix.next_ceiling(-1.0, -1.2, -1.0))  # the MP4 is under the target: done
+        self.assertAlmostEqual(master_mix.next_ceiling(-1.0, -0.84, -1.0), -1.26)  # 0.16 dB over, plus 0.1 of margin
+
     def test_true_peak_limiter_holds_the_ceiling(self):
         sr = master_mix.SR
         t = np.arange(sr) / sr

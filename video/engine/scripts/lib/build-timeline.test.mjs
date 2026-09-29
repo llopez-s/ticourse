@@ -176,6 +176,48 @@ test('validation: an exam card must stay inside its scene', async () => {
   );
 });
 
+test('examTiming "sentence-end": the card waits for the end of the sentence that holds its cue', async () => {
+  const base = await buildVariant(() => {}, 'exam-cue');
+  const late = await buildVariant((n) => (n.examTiming = 'sentence-end'), 'exam-sentence');
+  const cueFrame = base.timeline.cues.find((c) => c.id === 'needle').frame;
+  const verdad = late.timeline.segments[0].words.find((w) => w.text === 'verdad.');
+  assert.equal(base.timeline.exam[0].from, cueFrame);
+  assert.equal(late.timeline.exam[0].from, verdad.to); // «Solo uno importa de verdad.» is heard first
+});
+
+test('examTiming "sentence-end": a card that would leave its scene is pulled back, never before its cue', async () => {
+  const { timeline } = await buildVariant((n) => {
+    n.examTiming = 'sentence-end';
+    delete n.segments[0].exam;
+    n.segments[1].text = '{title}Veamos cómo convierte el ruido en evidencia. Lo hace en pasos.';
+    n.segments[1].exam = { objective: '4.4', text: 'Un SIEM convierte el ruido en evidencia', at: 'title', holdSec: 4 };
+  }, 'exam-pullback');
+  const [card] = timeline.exam;
+  const scene = timeline.scenes.find((s) => s.id === card.scene);
+  const cue = timeline.cues.find((c) => c.id === 'title').frame;
+  const evidencia = timeline.segments[1].words.find((w) => w.text === 'evidencia.');
+  assert.equal(card.from + card.durationInFrames, scene.from + scene.durationInFrames - 1, JSON.stringify(card)); // pulled back to fit
+  assert.ok(card.from > cue && card.from < evidencia.to, JSON.stringify({ card, cue, sentenceEnd: evidencia.to }));
+});
+
+test('examTiming: an unknown value stops the build', async () => {
+  await assert.rejects(buildVariant((n) => (n.examTiming = 'later'), 'exam-bad'), /examTiming/);
+});
+
+test('a -yt video warns when its title cue comes after the first 12 seconds', async () => {
+  const warned = [];
+  const log = { warn: (m) => warned.push(m), log: () => {} };
+  const pad = 'Hoy empezamos con calma, porque antes de nada conviene contar de dónde viene todo esto y por qué importa tanto en el trabajo diario de un equipo azul como el nuestro.';
+  await buildVariant((n) => (n.segments[1].text = `${pad} {title}Veamos cómo convierte el ruido en evidencia.`), 'late-title', { profile: 'principal-yt', log });
+  assert.ok(warned.some((w) => /title cue at .* after the first 12 s/.test(w)), warned.join('\n'));
+  const early = [];
+  await buildVariant((n) => (n.segments[0].text = '{flood}Seis mil avisos al día. Solo {needle}uno importa.'), 'early-title', {
+    profile: 'principal-yt',
+    log: { warn: (m) => early.push(m), log: () => {} },
+  });
+  assert.ok(!early.some((w) => /title cue/.test(w)), early.join('\n'));
+});
+
 test('analyzeNarration: style warnings do not block the build', () => {
   const storyboard = read('storyboard.mini.json');
   const narration = read('narration.mini.json');

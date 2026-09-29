@@ -56,6 +56,12 @@ Todos los scripts eligen el vídeo con `--video <slug>` (o la variable `VIDEO`; 
 | `crf` | 23 | 27 | **18** | **18** |
 | Tamaño objetivo (`size`) | 15–25 MB (aviso > 30, error > 45) | 4–12 MB (aviso > 15, error > 25) | **sin objetivo** | **sin objetivo** |
 
+**Claridad y ritmo** (revisión del 2026-09-29, `docs/reviews/2026-09-29-videos/`): `think.holdMs` admite hasta 5000 ms y
+los perfiles `-yt` avisan por debajo de 4000 (la entrada y la salida de la tarjeta se comen ~0,9 s);
+`narration.json` → `"examTiming": "sentence-end"` hace que cada tarjeta de examen espere a que termine la oración que
+contiene su cue (primero el ejemplo, después la regla), retrasada solo hasta donde quepa en su escena y nunca antes
+de su cue; y `build-timeline` avisa en los `-yt` si el cue `title` llega después de los 12 primeros segundos.
+
 **Narración hablada.** Las reglas de escritura de los vídeos `-yt` (hablar como una persona, menos conceptos
 mejor contados, ritmo) viven en una sola copia: el plan `docs/superpowers/plans/2026-09-25-lesson-videos.md`
 §1, «Narración hablada». Con `chispa: true`, `analyzeNarration` (`scripts/lib/narration.mjs`) avisa —nunca
@@ -462,7 +468,9 @@ Dos pasos opcionales, en Python (venv de Chatterbox con `pip install pedalboard 
   sin ruido y una segunda pasada solo añade artefactos. `--ab` escribe un antes/después igualado en volumen.
 - **`scripts/master_mix.py`**, sobre el MP4 ya renderizado: añade un **ambiente** generado aquí, lleva el programa a
   **−14 LUFS** (YouTube) y limita el pico real a **−1 dBTP** (detección 4× sin latencia). El vídeo se copia tal cual;
-  el audio sale en AAC 192 kbps. El ambiente por defecto (`--bed-style story`, desde V4) **sigue la historia** que
+  el audio sale en AAC 192 kbps. Lo que cuenta es el archivo entregado: **mide el MP4 ya codificado** (el AAC puede
+  subir el pico por encima del PCM) y, si pasa de −1 dBTP, vuelve a limitar con el techo más bajo lo que se pasó,
+  más 0,1 dB (`next_ceiling`, hasta 3 pasadas). El ambiente por defecto (`--bed-style story`, desde V4) **sigue la historia** que
   cuenta el timeline:
   - cada capítulo recorre una progresión de cuatro acordes en re menor (uno cada 10 s) con un arpegio suave;
   - bajo el mensaje del adversario, un acorde disonante y un latido grave, y el arpegio se calla;

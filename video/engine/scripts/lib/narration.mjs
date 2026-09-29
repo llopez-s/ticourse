@@ -12,6 +12,9 @@ export const SEGMENT_ID = /^s\d\d-\d\d$/;
 export const DEFAULT_PAUSE_MS = 330;
 export const EXAM_TEXT_MAX = 58;
 export const THINK_Q_MAX = 48;
+/** Silent hold after a think prompt's segment. The -yt profiles want 3–4 s of it fully on screen (review of 2026-09-29). */
+export const THINK_HOLD_MS = [1800, 5000];
+export const THINK_HOLD_YT_MIN = 4000;
 /** Intercepted messages: typed out during a silent lead before their segment, on screen always and voiced
  * too when narration.json has "adversaryVoice" (see adversary.mjs, tts-adversary.mjs). */
 export const INTERCEPT_TEXT_MAX = 70;
@@ -300,7 +303,12 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
           if (t.q.length > THINK_Q_MAX) errors.push(`${label}: think.q is ${t.q.length} characters (max ${THINK_Q_MAX})`);
           if (FORBIDDEN_SYMBOLS.test(t.q)) errors.push(`${label}: think.q contains a forbidden symbol`);
         }
-        if (typeof t.holdMs !== 'number' || t.holdMs < 1800 || t.holdMs > 2500) errors.push(`${label}: think.holdMs must be between 1800 and 2500`);
+        const [lo, hi] = THINK_HOLD_MS;
+        if (typeof t.holdMs !== 'number' || t.holdMs < lo || t.holdMs > hi) errors.push(`${label}: think.holdMs must be between ${lo} and ${hi}`);
+        else if (chispa && t.holdMs < THINK_HOLD_YT_MIN) {
+          // The card's entrance and exit eat ~0.9 s of the hold (build-timeline's thinkOffset + ThinkPrompt's ENTER/EXIT).
+          warnings.push(`${label}: think prompt of ${(t.holdMs / 1000).toFixed(1)} s leaves ~${Math.max(0, t.holdMs / 1000 - 0.87).toFixed(1)} s to think (use at least ${THINK_HOLD_YT_MIN} ms)`);
+        }
         think = { q: t.q, holdMs: t.holdMs };
       }
     }

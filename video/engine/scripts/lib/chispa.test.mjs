@@ -62,6 +62,19 @@ test('spoken style: colons, spelled identifiers and formula questions are flagge
   assert.ok(!warnings.some((w) => /segments use a colon/.test(w)), 'one colon segment out of five is under a third');
 });
 
+test('think prompts: up to 5 s; the -yt profiles want at least 4 s so 3–4 s are left to think', () => {
+  const withThink = (holdMs) => [
+    { id: 's01-01', scene: 's01-a', text: '¿Cómo llegan los logs al SIEM? Depende de quién hable en cada caso.', think: { q: '¿Por agente o por syslog?', holdMs } },
+    ...segments.slice(1),
+  ];
+  assert.ok(run(withThink(5500), { chispa: true }).errors.some((e) => /think.holdMs must be between 1800 and 5000/.test(e)));
+  const long = run(withThink(4500), { chispa: true });
+  assert.deepEqual(long.errors, []);
+  assert.ok(!long.warnings.some((w) => /think prompt of/.test(w)), long.warnings.join('\n'));
+  assert.ok(run(withThink(2300), { chispa: true }).warnings.some((w) => /s01-01: think prompt of 2.3 s/.test(w)));
+  assert.ok(!run(withThink(2300), {}).warnings.some((w) => /think prompt of/.test(w)), 'legacy profiles keep their short prompts');
+});
+
 test('spoken style: the rewritten sample of capas-halden s02 passes clean', () => {
   const board = {
     chapters: [{ n: 1, title: 'Uno' }],

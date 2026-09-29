@@ -135,6 +135,30 @@ Después (mismos cues, misma pausa para pensar, misma tarjeta de examen):
   250 ms las pausas dentro de cada frase y acelera los clips un 8 % sin cambiar el tono. **Provisional** hasta
   que Lidia elija en la audición de ritmo (escena s02 de capas-halden a 1×, pausas cortas, 1,08× y 1,15×).
 - Al grabar: a ritmo de conversación, sin la pausa de lectura entre frases (el corte ya deja aire).
+- Si una oración sale mal, basta con repetir **esa oración**: el importador se queda con la última toma de
+  cada oración y las empalma (y con la última toma de la frase entera, si se repite completa).
+
+#### Claridad y ritmo (revisión del 2026-09-29)
+
+Del análisis de V1, V3 y el borrador de V4 (`docs/reviews/2026-09-29-videos/analisis-y-prompt.md`): la estética
+y los diagramas funcionan; lo que más ayuda es que quien lo ve sepa qué va a aprender, dónde mirar y cuándo pensar.
+
+1. **La promesa, en los primeros 8–12 s.** El problema, qué sabrá hacer quien lo ve y el nombre del tema (el cue
+   `title`; `build-timeline` avisa si llega después de los 12 s). Si el vídeo continúa otro, una frase resume lo
+   imprescindible para que se entienda por separado.
+2. **Tiempo de verdad para pensar.** Dos preguntas en un principal y una en una cápsula, cada una una decisión breve
+   (mejor con dos opciones), con `think.holdMs` de 4000–5000 ms: 3–4 s con la tarjeta asentada. Después, la
+   respuesta y su motivo.
+3. **Primero el ejemplo, después la tarjeta.** `narration.json` → `"examTiming": "sentence-end"`: la tarjeta de
+   examen espera a que termine la oración de su cue. Una regla por tarjeta, y nunca una tarjeta nueva mientras hay
+   que leer un log o comparar dos valores.
+4. **Dónde mirar.** Evidencia, interpretación y regla, por pasos y al compás de la voz. Se amplía la fila, el valor o
+   la conexión que se explica y se atenúa el resto; 48–60 px para las etiquetas clave, comprobado a 480 px de ancho.
+5. **El adversario trae un error concreto** que la explicación corrige; si solo repite la historia, sobra.
+6. **Cierre: tres reglas prácticas y una sola acción siguiente** (una pregunta, un laboratorio o la lección
+   siguiente).
+7. **El mismo volumen en todos los episodios:** `master_mix.py`, −14 LUFS y −1 dBTP medidos sobre el MP4 ya
+   codificado.
 
 #### Vocabulario de etiquetas de emoción
 
@@ -579,7 +603,8 @@ Las exam cards se listan en el orden de las escenas:
      `{ t: 'video', title, youtube: '<id>', poster, transcript }`, con el póster y la transcripción en
      `public/videos/` y **sin copiar el MP4** (se queda en `video/<slug>/out/`, ignorado por git).
 3. **Revisión de exactitud** por un subagente de solo lectura contra la lección y el objetivo oficial, *antes* de sintetizar o grabar la voz; en los vídeos `-yt`, a la vez que la **revisión de naturalidad** (§1).
-4. `build-timeline --estimate`, escenas en Remotion (reutilizando `ui/*`) y `qa-frames`.
+4. `build-timeline --estimate`, escenas en Remotion (reutilizando `ui/*`) y `qa-frames`. Antes del render final se
+   revisan a tamaño móvil (480 px) una escena densa, una pregunta completa y el cierre.
 5. Audio con la voz fijada en P1, `render --draft` y después `render`, que comprueba duración, tamaño y sincronía A/V.
 6. Copiar el MP4, el póster, el transcript y el VTT a `public/videos/<slug>*` y añadir o sustituir el bloque `t:'video'` en el punto de inserción indicado.
 7. `npm test`, `npm run build` y vista previa en el navegador.
