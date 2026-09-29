@@ -415,6 +415,11 @@ git) y `scripts/import-recording.mjs` lo convierte en los mismos clips que escri
    hablado de `[mostrado|hablado]`, con los números en palabras, así que tolera lo que Whisper escribe mal
    («de Mark» por DMARC, «4.00 y 12.00»). Si una frase se leyó varias veces, **se queda con la última toma**;
    lo que no está en el guion (tarjetas de examen, mensajes interceptados, arranques en falso) se descarta.
+   Y va más fino que la frase: si la narradora relee **solo una oración** (la que le salió mal) o reempieza
+   una a medias, se queda con la **última toma de cada oración** y las empalma, cada parte cortada por su
+   cuenta (`parts` en el resultado; el informe marca esas frases como «empalme»). El empalme solo se hace
+   si se lee al menos tan bien como la toma entera, contra el texto mostrado o el hablado; en un empate
+   gana la lectura posterior.
 3. **Corta** cada clip en el silencio más cercano a sus palabras (o, si se habla de corrido, a medio camino
    de la palabra vecina), aplica **una sola ganancia** a toda la grabación (hasta la sonoridad de `--match
    <clip>`, o `--lufs`, sin pasar de −1 dBTP) y codifica como Chatterbox (24 kHz mono, MP3 CBR 96 kbps).
@@ -430,8 +435,10 @@ los vídeos ya grabados se reimportan exactamente igual. Al grabar, mejor a ritm
 pausa de lectura entre frases: el corte ya deja aire.
 
 Una frase que salga mal se regraba: se graban solo esas frases, en el orden del guion, en otro archivo, y se
-importa con `--only <ids>`; los demás clips no se tocan. No se pueden quitar palabras de en medio de un clip
-(un rótulo leído en voz alta dentro de una frase se queda). Las animaciones que se disparan en una
+importa con `--only <ids>`; los demás clips no se tocan (`--only` busca esas frases desde el principio del
+archivo, así que es para una regrabación aparte, no para la grabación entera: para esa, se reimporta todo,
+que con la transcripción en caché tarda menos de un minuto). No se pueden quitar palabras sueltas de en medio
+de una oración (un rótulo leído en voz alta dentro de una oración se queda). Las animaciones que se disparan en una
 palabra usan los tiempos de Whisper, que pueden desviarse ~0,2 s.
 
 ```bash
@@ -453,11 +460,19 @@ Dos pasos opcionales, en Python (venv de Chatterbox con `pip install pedalboard 
   a −3 dBFS. Toda la cadena conserva la longitud y los tiempos (filtros de fase cero, limitador sin latencia),
   así que Whisper y los cortes no se mueven. **No reduce ruido**: una grabación con silencios digitales ya viene
   sin ruido y una segunda pasada solo añade artefactos. `--ab` escribe un antes/después igualado en volumen.
-- **`scripts/master_mix.py`**, sobre el MP4 ya renderizado: añade un **ambiente** generado aquí (pad oscuro con un
-  acorde por capítulo, fundido en cada cambio, más un tono de sala muy bajo; unos 14 LU por debajo de la voz antes de atenuarse y
-  6 dB más bajo mientras alguien habla, según el timeline), lleva el programa a **−14 LUFS** (YouTube) y limita el
-  pico real a **−1 dBTP** (detección 4× sin latencia). El vídeo se copia tal cual; el audio sale en AAC 192 kbps.
-  `--bed-db` sube o baja el ambiente, `--no-bed` lo quita.
+- **`scripts/master_mix.py`**, sobre el MP4 ya renderizado: añade un **ambiente** generado aquí, lleva el programa a
+  **−14 LUFS** (YouTube) y limita el pico real a **−1 dBTP** (detección 4× sin latencia). El vídeo se copia tal cual;
+  el audio sale en AAC 192 kbps. El ambiente por defecto (`--bed-style story`, desde V4) **sigue la historia** que
+  cuenta el timeline:
+  - cada capítulo recorre una progresión de cuatro acordes en re menor (uno cada 10 s) con un arpegio suave;
+  - bajo el mensaje del adversario, un acorde disonante y un latido grave, y el arpegio se calla;
+  - en una pausa para pensar, un acorde suspendido y un tic-tac;
+  - un soplo de ruido filtrado sube hacia cada capítulo nuevo;
+  - desde el resumen, resuelve a re mayor con el arpegio algo más vivo.
+
+  Queda unos 14 LU por debajo de la voz, sobre un tono de sala muy bajo, y se atenúa 6 dB mientras alguien habla
+  (el arpegio, 12 dB), así que sobre todo llena las pausas. `--bed-style pad` es el ambiente de V1 y V3 (un
+  acorde fijo por capítulo); `--bed-db` lo sube o baja y `--no-bed` lo quita.
 
 ```bash
 python video/engine/scripts/master_voice.py --in "video/engine/voices/<grabación>.wav" --out "video/engine/voices/<grabación> (master).wav" --ab video/<slug>/out/voz-antes-despues.wav

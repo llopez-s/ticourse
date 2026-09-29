@@ -52,6 +52,28 @@ class MasterVoiceTest(unittest.TestCase):
         self.assertLess(np.max(np.abs(y - x)), 1e-3)
 
 
+def story_timeline():
+    """40 s, two chapters: an intercept (voiced) answered at 17 s, a think prompt 23–25 s, the recap from 32 s."""
+    return {
+        "fps": 30,
+        "durationInFrames": 1200,
+        "scenes": [
+            {"id": "s01-a", "chapter": 1, "from": 0},
+            {"id": "s02-b", "chapter": 2, "from": 300},
+            {"id": "s03-recap", "chapter": 2, "from": 960},
+        ],
+        "segments": [
+            {"id": "s01-01", "scene": "s01-a", "from": 30, "audioFrames": 240, "durationInFrames": 250},
+            {"id": "s02-01", "scene": "s02-b", "from": 330, "audioFrames": 60, "durationInFrames": 70},
+            {"id": "s02-02", "scene": "s02-b", "from": 510, "audioFrames": 150, "durationInFrames": 160},
+            {"id": "s02-03", "scene": "s02-b", "from": 780, "audioFrames": 120, "durationInFrames": 130},
+            {"id": "s03-01", "scene": "s03-recap", "from": 990, "audioFrames": 150, "durationInFrames": 160},
+        ],
+        "intercept": [{"scene": "s02-b", "from": 400, "durationInFrames": 280, "audioFrom": 404, "audioFrames": 90}],
+        "think": [{"scene": "s02-b", "from": 690, "durationInFrames": 60}],
+    }
+
+
 @unittest.skipIf(SKIP, SKIP)
 class MasterMixTest(unittest.TestCase):
     def test_smooth_matches_a_moving_average(self):
@@ -78,6 +100,58 @@ class MasterMixTest(unittest.TestCase):
     def test_chapter_starts(self):
         timeline = {"fps": 30, "scenes": [{"chapter": 1, "from": 0}, {"chapter": 1, "from": 300}, {"chapter": 2, "from": 900}]}
         self.assertEqual(master_mix.chapter_starts(timeline), [0.0, 30.0])
+
+    def test_story_windows(self):
+        w = master_mix.story_windows(story_timeline())
+        (a, b), = w["adversary"]
+        self.assertAlmostEqual(a, 400 / 30)  # the card appears...
+        self.assertAlmostEqual(b, 17.0)  # ...and the tension lasts until the narrator answers
+        self.assertEqual(w["think"], [(23.0, 25.0)])
+        self.assertEqual(w["finale"], 32.0)  # the last scene (recap + end card) resolves
+
+    def test_chord_schedule_moves_within_chapters_and_resolves_at_the_end(self):
+        spans = master_mix.chord_schedule(story_timeline(), 40.0)
+        starts = [a for a, _, _ in spans]
+        self.assertEqual(starts, [0.0, 10.0, 20.0, 30.0, 32.0])
+        for (_, b, _), (a, _, _) in zip(spans, spans[1:]):
+            self.assertEqual(b, a)  # contiguous, no gaps
+        self.assertEqual(spans[-1][1], 40.0)
+        prog = master_mix.PROGRESSIONS
+        self.assertEqual([c for _, _, c in spans[:4]], [prog[0][0], prog[1][0], prog[1][1], prog[1][2]])
+        self.assertEqual(spans[4][2], master_mix.FINALE[0])
+
+    def test_event_gates_follow_the_story(self):
+        tl = story_timeline()
+        n = 40 * master_mix.SR
+        g = master_mix.event_gates(tl, n)
+        at = lambda name, s: g[name][int(s * master_mix.SR)]
+        self.assertGreater(at("adversary", 15.0), 0.99)
+        self.assertLess(at("adversary", 20.0), 0.01)
+        self.assertGreater(at("think", 24.0), 0.99)
+        self.assertLess(at("think", 28.0), 0.01)
+        self.assertGreater(at("finale", 36.0), 0.99)
+        self.assertLess(at("finale", 28.0), 0.01)
+
+    def test_story_bed_reacts_and_is_reproducible(self):
+        tl = story_timeline()
+        n = 40 * master_mix.SR
+        bed = master_mix.ambient_bed(tl, n)
+        self.assertEqual(bed.shape, (n, 2))
+        self.assertTrue(np.all(np.isfinite(bed)))
+        self.assertTrue(np.array_equal(bed, master_mix.ambient_bed(tl, n)))  # same seed, same bed
+        self.assertFalse(np.array_equal(bed, master_mix.pad_bed(tl, n)))  # the old bed is still there, and differs
+
+        def band(a, b, lo, hi):
+            x = bed[int(a * master_mix.SR) : int(b * master_mix.SR)].mean(axis=1)
+            f = np.fft.rfftfreq(len(x), 1 / master_mix.SR)
+            p = np.abs(np.fft.rfft(x)) ** 2
+            return p[(f >= lo) & (f < hi)].sum() / len(x)
+
+        free = (30.2, 31.8)  # nobody speaks, no event
+        tense = (14.2, 16.2)  # the adversary's message
+        # The heartbeat thump (~55 Hz) comes in with the adversary; the arpeggio goes quiet.
+        self.assertGreater(band(*tense, 48, 60), 3 * band(*free, 48, 60))
+        self.assertLess(band(*tense, 600, 1400), 0.5 * band(*free, 600, 1400))
 
     def test_true_peak_limiter_holds_the_ceiling(self):
         sr = master_mix.SR
