@@ -129,7 +129,8 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
   for (const [k, seg] of segments.entries()) {
     const cut = cutOf.get(seg.id);
     if (!cut) continue;
-    const ranges = keepRanges(cut, silences, settings.maxPauseMs);
+    // A spliced take (the last reading of each sentence) is cut part by part, then joined.
+    const ranges = (cut.parts ?? [cut]).flatMap((p) => keepRanges(p, silences, settings.maxPauseMs));
     const mp3 = path.join(voiceDir, `${seg.id}.mp3`);
     const res = runFfmpeg(clipArgs({ source: file, ranges, gain, out: mp3, tempo: settings.tempo }));
     if (res.status !== 0) throw new Error(`ffmpeg failed cutting ${seg.id}: ${res.stderr.trim()}`);

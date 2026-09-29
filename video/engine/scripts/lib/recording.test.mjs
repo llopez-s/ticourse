@@ -152,6 +152,67 @@ test('locateSegments drops a false start before the good take', () => {
   assert.deepEqual(found.map((f) => [f.first, f.last]), [[3, 10], [11, 16]]);
 });
 
+test('locateSegments keeps the last take of each sentence: a re-read last sentence replaces the first attempt', () => {
+  const text = 'Empezamos por el passive DNS. Le das un nombre y te devuelve un número.';
+  const words = [
+    ...spoken('Empezamos por el passive DNS. Le das nombre y te devuelve un número.'), // 0–12, a word missing
+    ...spoken('Le das un nombre y te devuelve un número.', 7000), // 13–21: the narrator re-reads that sentence
+    ...spoken('Pues el passive DNS es ese listín.', 12000), // 22–28
+  ];
+  const [a, b] = locateSegments([seg('a', text), seg('b', 'Pues el passive DNS es ese listín.')], words);
+  assert.deepEqual(a.parts, [{ first: 0, last: 4 }, { first: 13, last: 21 }]);
+  assert.deepEqual([a.first, a.last], [0, 21]);
+  assert.equal(a.heard, 'Empezamos por el passive DNS. Le das un nombre y te devuelve un número.');
+  assert.ok(a.score > 0.95, JSON.stringify(a));
+  assert.deepEqual([b.first, b.last, b.parts], [22, 28, undefined]);
+});
+
+test('locateSegments drops a false start inside a sentence', () => {
+  const text = 'Una última cosa. Todo lo de hoy lo has sacado del listín, sin tocar al actor.';
+  const words = [
+    ...spoken('Una última cosa. Todo lo que has sacado hoy, todo lo de hoy lo has sacado del listín, sin tocar al actor.'),
+    ...spoken('Ni se te ocurra, que te ven.', 14000),
+  ];
+  const [a] = locateSegments([seg('a', text), seg('b', 'Ni se te ocurra, que te ven.')], words);
+  assert.deepEqual(a.parts, [{ first: 0, last: 2 }, { first: 9, last: 21 }]);
+  assert.ok(a.score > 0.95, JSON.stringify(a));
+});
+
+test('locateSegments splices an identical re-read too (the later reading wins a tie), scoring the spoken form', () => {
+  const text = 'Hoy sí. Pero el [WHOIS|júis] también tiene memoria. Quedan fichas antiguas.';
+  const words = [
+    ...spoken('Hoy sí. Pero el júis también tiene memoria. Quedan fichas antiguas.'), // 0–10
+    ...spoken('Quedan fichas antiguas.', 6000), // 11–13
+    ...spoken('Y aparece un correo.', 9000), // 14–17
+  ];
+  const [a] = locateSegments([seg('a', text), seg('b', 'Y aparece un correo.')], words);
+  assert.deepEqual(a.parts, [{ first: 0, last: 7 }, { first: 11, last: 13 }]);
+});
+
+test('locateSegments leaves a take read in one go alone (no parts)', () => {
+  const sentence = 'Y esa credencial volverá de madrugada. Pero esa ya es otra alerta: la del SIEM.';
+  const words = [...spoken(sentence), ...spoken('Ahora te toca a ti.', 9000)];
+  const found = locateSegments([seg('a', sentence), seg('b', 'Ahora te toca a ti.')], words);
+  assert.ok(found.every((f) => f.parts === undefined), JSON.stringify(found));
+});
+
+test('cutPoints cuts each part of a spliced take on its own, never into the dropped words', () => {
+  const words = W([['a', 0, 400], ['b', 500, 900], ['x', 1000, 1400], ['c', 2000, 2400]]);
+  const located = [{ id: 's', found: true, first: 0, last: 3, parts: [{ first: 0, last: 1 }, { first: 3, last: 3 }] }];
+  const [cut] = cutPoints(located, words, [], 3000);
+  assert.deepEqual(cut.parts.map((p) => [p.startMs, p.endMs]), [[0, 950], [1750, 2650]]);
+  assert.deepEqual([cut.startMs, cut.endMs], [0, 2650]);
+});
+
+test('clipWords and unusedRanges follow the parts of a spliced take', () => {
+  const words = W([['a', 0, 400], ['b', 500, 900], ['x', 1000, 1400], ['c', 2000, 2400]]);
+  const parts = [{ first: 0, last: 1 }, { first: 3, last: 3 }];
+  const ranges = [{ startMs: 0, endMs: 950 }, { startMs: 1750, endMs: 2650 }];
+  assert.deepEqual(clipWords(words, 0, 3, ranges, parts).map((w) => [w.text, w.offsetMs]), [['a', 0], ['b', 500], ['c', 1200]]);
+  const unused = unusedRanges([{ id: 's', found: true, first: 0, last: 3, parts }], words);
+  assert.deepEqual(unused.map((r) => r.text), ['x']);
+});
+
 test('locateSegments compares with both the shown and the spoken form', () => {
   const words = spoken('Autoridad Portuaria de Halden, 3 de septiembre.');
   const [f] = locateSegments([seg('a', 'Autoridad Portuaria de Halden, [3 de septiembre|tres de septiembre].')], words);

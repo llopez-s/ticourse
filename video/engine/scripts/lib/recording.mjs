@@ -15,6 +15,7 @@ export const CLIP_SAMPLE_RATE = 24000; // same as the Chatterbox clips
 export const CLIP_BITRATE_KBPS = 96;
 const ANCHOR_SLACK = 0.1; // first pass: the earliest take within this of the best anchors the segment
 const NEAR_BEST = 0.05; // second pass: takes within this of the best count as equally good; the last wins
+const SENTENCE_SCORE = 0.8; // third pass: every sentence of a segment must be found at least this well to splice
 const EDGE_SLACK = 0.02; // within a take, an extra first word is kept if it costs at most this much score
 const LOOKAHEAD = 300; // words searched past the previous segment for the next one
 const MIN_LEN = 0.6; // candidate span length, relative to the segment text (in characters)
@@ -168,24 +169,82 @@ export function locateSegments(segments, words, { minScore = MIN_SCORE, lookahea
   }
 
   // Pass 2: between its anchor and the next segment's, keep the last take that is as good as the best.
-  return segments.map((s, k) => {
+  const picks = segments.map((s, k) => {
     const anchor = anchors[k];
-    if (!anchor) return { id: s.id, found: false, score: 0 };
+    if (!anchor) return null;
     const next = anchors.slice(k + 1).find(Boolean);
     const limit = next ? next.first : n;
     const cands = scanStarts(forms[k], tokens, anchor.first, limit, limit, true);
     const best = bestScore(cands);
     const takes = groupTakes(cands.filter((c) => c.score >= best - NEAR_BEST));
-    const pick = takes.length ? takes[takes.length - 1] : anchor;
+    return takes.length ? takes[takes.length - 1] : anchor;
+  });
+
+  // Pass 3: a narrator often re-reads just the sentence that went wrong, or restarts one half-way. Up to
+  // the next segment's take, keep the last take of every sentence, and splice them when that reads better.
+  const heardOf = (spans) => spans.flatMap((p) => words.slice(p.first, p.last + 1).map((w) => w.text)).join(' ');
+  return segments.map((s, k) => {
+    const pick = picks[k];
+    if (!pick) return { id: s.id, found: false, score: 0 };
+    // The sentences are looked for between the previous segment's take and the next one's: a false start
+    // can make pass 2 begin the take late, after the first sentence.
+    const prev = picks.slice(0, k).reverse().find(Boolean);
+    const next = picks.slice(k + 1).find(Boolean);
+    const parts = sentenceTakes(s, tokens, prev ? prev.last + 1 : 0, next ? next.first : n);
+    const spliced = parts && parts.length > 1 ? parts : null;
+    const whole = { first: pick.first, last: pick.last };
+    const heard = heardOf(spliced ?? [whole]);
+    // Scored like pass 2 scores a take: against the shown and the spoken form, whichever is closer.
+    const score = spliced ? Math.max(similarity(s.parsed.display, heard), similarity(s.parsed.spoken, heard)) : pick.score;
+    // A splice must read at least as well as the take it replaces; on a tie the later reading wins.
+    const useSplice = spliced && score >= pick.score - 0.01;
     return {
       id: s.id,
       found: true,
-      score: Math.round(pick.score * 100) / 100,
-      first: pick.first,
-      last: pick.last,
-      heard: words.slice(pick.first, pick.last + 1).map((w) => w.text).join(' '),
+      score: Math.round((useSplice ? score : pick.score) * 100) / 100,
+      first: useSplice ? spliced[0].first : pick.first,
+      last: useSplice ? spliced.at(-1).last : pick.last,
+      ...(useSplice ? { parts: spliced } : {}),
+      heard: useSplice ? heard : heardOf([whole]),
     };
   });
+}
+
+/** A segment's sentences, each with its match forms (shown and spoken), or null when the two forms split differently. */
+function sentenceForms(segment) {
+  const split = (text) => text.split(/(?<=[.!?…])\s+/).map((x) => x.trim()).filter(Boolean);
+  const shown = split(segment.parsed.display);
+  const said = split(segment.parsed.spoken);
+  if (said.length !== shown.length) return shown.map((x) => [matchKey(x)].filter(Boolean));
+  return shown.map((x, j) => [...new Set([matchKey(x), matchKey(said[j])])].filter(Boolean));
+}
+
+/**
+ * The last take of every sentence of a segment in words [from, limit), chosen from the last sentence
+ * backwards so they stay in order, as merged runs of words ({first, last}); null when the segment has a
+ * single sentence or some sentence is not there.
+ */
+function sentenceTakes(segment, tokens, from, limit) {
+  const sentences = sentenceForms(segment);
+  if (sentences.length < 2 || sentences.some((f) => !f.length)) return null;
+  const chosen = [];
+  let end = limit;
+  for (let j = sentences.length - 1; j >= 0; j--) {
+    const cands = scanStarts(sentences[j], tokens, from, end, end, true);
+    const best = bestScore(cands);
+    if (!(best >= SENTENCE_SCORE)) return null;
+    const takes = groupTakes(cands.filter((c) => c.score >= best - NEAR_BEST));
+    const take = takes[takes.length - 1];
+    chosen.unshift({ first: take.first, last: take.last });
+    end = take.first;
+  }
+  const merged = [];
+  for (const p of chosen) {
+    const prev = merged[merged.length - 1];
+    if (prev && p.first === prev.last + 1) prev.last = p.last;
+    else merged.push({ ...p });
+  }
+  return merged;
 }
 
 /** Silences from ffmpeg silencedetect's stderr; one still open at the end runs to `totalMs`. */
@@ -218,34 +277,43 @@ function nearest(cands, at, target) {
  * the segment does not own.
  */
 export function cutPoints(located, words, silences, totalMs) {
+  const cutSpan = (span) => cutEdges(span, words, silences, totalMs);
   return located
     .filter((f) => f.found)
     .map((f) => {
-      const rawStart = words[f.first].startMs;
-      const rawEnd = words[f.last].endMs;
-      const prevEnd = f.first > 0 ? words[f.first - 1].endMs : 0;
-      const nextStart = f.last + 1 < words.length ? words[f.last + 1].startMs : totalMs;
-
-      const lead = nearest(
-        silences.filter((s) => s.endMs >= Math.max(prevEnd, rawStart - SNAP_EARLY_MS) && s.endMs <= rawStart + SNAP_LATE_MS),
-        (s) => s.endMs,
-        rawStart,
-      );
-      const startMs = lead
-        ? Math.max(lead.startMs, prevEnd, lead.endMs - PRE_ROLL_MS)
-        : Math.max(Math.min(rawStart, Math.round((prevEnd + rawStart) / 2)), rawStart - FALLBACK_MS);
-
-      const tail = nearest(
-        silences.filter((s) => s.startMs >= rawEnd - SNAP_LATE_MS && s.startMs <= Math.min(nextStart, rawEnd + SNAP_EARLY_MS)),
-        (s) => s.startMs,
-        rawEnd,
-      );
-      const endMs = tail
-        ? Math.min(tail.endMs, nextStart, tail.startMs + POST_ROLL_MS)
-        : Math.min(Math.max(rawEnd, Math.round((rawEnd + nextStart) / 2)), rawEnd + FALLBACK_MS);
-
-      return { id: f.id, startMs, endMs: Math.max(endMs, startMs + 1) };
+      if (!f.parts) return { id: f.id, ...cutSpan(f) };
+      // A spliced take: every part is cut on its own, so a join never reaches into the dropped words.
+      const parts = f.parts.map(cutSpan);
+      return { id: f.id, startMs: parts[0].startMs, endMs: parts[parts.length - 1].endMs, parts };
     });
+}
+
+/** Clip edges of one run of words ({first, last}), as cutPoints describes. */
+function cutEdges(f, words, silences, totalMs) {
+  const rawStart = words[f.first].startMs;
+  const rawEnd = words[f.last].endMs;
+  const prevEnd = f.first > 0 ? words[f.first - 1].endMs : 0;
+  const nextStart = f.last + 1 < words.length ? words[f.last + 1].startMs : totalMs;
+
+  const lead = nearest(
+    silences.filter((s) => s.endMs >= Math.max(prevEnd, rawStart - SNAP_EARLY_MS) && s.endMs <= rawStart + SNAP_LATE_MS),
+    (s) => s.endMs,
+    rawStart,
+  );
+  const startMs = lead
+    ? Math.max(lead.startMs, prevEnd, lead.endMs - PRE_ROLL_MS)
+    : Math.max(Math.min(rawStart, Math.round((prevEnd + rawStart) / 2)), rawStart - FALLBACK_MS);
+
+  const tail = nearest(
+    silences.filter((s) => s.startMs >= rawEnd - SNAP_LATE_MS && s.startMs <= Math.min(nextStart, rawEnd + SNAP_EARLY_MS)),
+    (s) => s.startMs,
+    rawEnd,
+  );
+  const endMs = tail
+    ? Math.min(tail.endMs, nextStart, tail.startMs + POST_ROLL_MS)
+    : Math.min(Math.max(rawEnd, Math.round((rawEnd + nextStart) / 2)), rawEnd + FALLBACK_MS);
+
+  return { startMs, endMs: Math.max(endMs, startMs + 1) };
 }
 
 /**
@@ -281,8 +349,10 @@ function clipTime(t, ranges) {
 const rangesMs = (ranges) => ranges.reduce((sum, r) => sum + r.endMs - r.startMs, 0);
 
 /** Word boundaries of one clip (words[first..last]) made of `ranges`, in the TTS record format. */
-export function clipWords(words, first, last, ranges) {
-  return words.slice(first, last + 1).map((w) => {
+export function clipWords(words, first, last, ranges, parts = null) {
+  // A spliced take keeps only its parts' words; the dropped ones are not in the clip.
+  const kept = parts ? parts.flatMap((p) => words.slice(p.first, p.last + 1)) : words.slice(first, last + 1);
+  return kept.map((w) => {
     const offsetMs = clipTime(w.startMs, ranges);
     return { text: w.text, offsetMs, durationMs: Math.max(1, clipTime(w.endMs, ranges) - offsetMs) };
   });
@@ -291,7 +361,7 @@ export function clipWords(words, first, last, ranges) {
 /** Runs of recorded words that no found segment uses (what was skipped), for the import report. */
 export function unusedRanges(located, words) {
   const used = new Array(words.length).fill(false);
-  for (const f of located) if (f.found) for (let k = f.first; k <= f.last; k++) used[k] = true;
+  for (const f of located) if (f.found) for (const p of f.parts ?? [f]) for (let k = p.first; k <= p.last; k++) used[k] = true;
   const out = [];
   let run = null;
   words.forEach((w, k) => {
@@ -412,7 +482,7 @@ export function recordingRecord({ voice, rate, pitch, spoken, bytes, ranges, loc
     durationMs,
     source: { ...source, startMs, endMs, pausesRemovedMs: endMs - startMs - durationMs },
     asr: { model: asrModel, text: located.heard, score: located.score },
-    words: clipWords(words, located.first, located.last, ranges),
+    words: clipWords(words, located.first, located.last, ranges, located.parts ?? null),
   };
 }
 
@@ -428,7 +498,8 @@ export function importReport({ located, cuts, words, gain, pausesRemovedMs = 0 }
   const rows = located.map((f) => {
     if (!f.found) return `| ${f.id} | — | — | no encontrada |`;
     const c = cutOf.get(f.id);
-    return `| ${f.id} | ${f.score.toFixed(2)} | ${clock(c.startMs)}–${clock(c.endMs)} | ${f.score < REVIEW_SCORE ? 'revisar' : 'ok'} |`;
+    const state = f.score < REVIEW_SCORE ? 'revisar' : 'ok';
+    return `| ${f.id} | ${f.score.toFixed(2)} | ${clock(c.startMs)}–${clock(c.endMs)} | ${f.parts ? `${state} · empalme de la última toma de cada oración` : state} |`;
   });
   const unused = unusedRanges(located, words).map((r) => `- ${clock(r.startMs)}–${clock(r.endMs)} · ${r.text}`);
   return [
