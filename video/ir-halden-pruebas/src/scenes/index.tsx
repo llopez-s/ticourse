@@ -1,17 +1,17 @@
 import type { ComponentType } from 'react';
 import type { SceneId, SceneProps } from '../../../engine/src/timeline/types';
-import { Placeholder } from './Placeholder';
-
-const placeholder = (id: SceneId): ComponentType<SceneProps> =>
-  function PlaceholderScene(props: SceneProps) {
-    return <Placeholder id={id} props={props} />;
-  };
+import { S04Caza } from './S04Caza';
+import { S05Huecos } from './S05Huecos';
+import { S01Hook } from './S01Hook';
+import { S02Mesa } from './S02Mesa';
+import { S03Simulacro } from './S03Simulacro';
+import { S06Recap } from './S06Recap';
 
 export const SCENES: Record<SceneId, ComponentType<SceneProps>> = {
-  's01-hook': placeholder('s01-hook'),
-  's02-mesa': placeholder('s02-mesa'),
-  's03-simulacro': placeholder('s03-simulacro'),
-  's04-caza': placeholder('s04-caza'),
-  's05-huecos': placeholder('s05-huecos'),
-  's06-recap': placeholder('s06-recap'),
+  's01-hook': S01Hook,
+  's02-mesa': S02Mesa,
+  's03-simulacro': S03Simulacro,
+  's04-caza': S04Caza,
+  's05-huecos': S05Huecos,
+  's06-recap': S06Recap,
 };
