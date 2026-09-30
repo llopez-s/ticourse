@@ -527,8 +527,9 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
 (despide a Lucía). Cierre con tres reglas y una sola tarea: el laboratorio spl4b, más un gancho a V5b.
 
 **Canon nuevo que fija V5** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
-- IR-2026-0147 se declara el 2026-09-03 a las 18:10 CEST, con gravedad alta.
-- 18:30: el EDR aísla, encendidos, `OPS-WS-14` (portátil de Lucía) y `OPS-WS-08`, y se marca la contención.
+- IR-2026-0147 se declara el 2026-09-03 a las 16:09 CEST, con gravedad alta (V1 fija en pantalla la alerta del
+  EDR a las 16:04 y el aislamiento del portátil de Lucía a las 16:11).
+- 16:11 y 16:15: el EDR aísla, encendidos, `OPS-WS-14` (portátil de Lucía) y `OPS-WS-08`, y se marca la contención.
   `ADM-WS-02` se queda sin aislar: su responsable no estaba localizable y nadie de guardia tenía autoridad para
   aislar una estación de administración (el plan no tenía suplentes). Ese día nadie sabía aún que la credencial de
   servicio había salido (V1), así que el alcance del 3-9 son tres equipos y ninguna cuenta.

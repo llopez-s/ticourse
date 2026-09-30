@@ -31,7 +31,7 @@
       "id": "s01-hook",
       "chapter": 1,
       "title": "Treinta y ocho gigas",
-      "goal": "En los primeros ~10 s, el problema y la promesa: el portátil de Lucía (OPS-WS-14) ha pasado la noche aislado y aun así se han ido 38 GB; título «Respuesta a incidentes» y la promesa «llevar un incidente entero y saber cuándo cerrar cada fase». Luego la puesta al día para quien no vio V1 ni el SIEM, como una tira horizontal de la noche que se revela al compás de la voz: 3-9 tarde, correo trampa y el portátil aislado de la red, encendido (18:30); 01:52, logon de la cuenta de servicio svc_tosreport en srv-tc-app03, un servidor de la terminal de contenedores; salida de datos 02:00–04:30 (38 GB hacia 203.0.113.47). Después la sala de crisis del 4-9 a mediodía (12:00) y la pizarra del caso IR-2026-0147 con siete columnas vacías (solo su silueta: se leen en s02). Nunca mostrar NULL CIPHER, el ASN ni «una sola operación» (dosier del jefe de sp4)",
+      "goal": "En los primeros ~10 s, el problema y la promesa: el portátil de Lucía (OPS-WS-14) ha pasado la noche aislado y aun así se han ido 38 GB; título «Respuesta a incidentes» y la promesa «llevar un incidente entero y saber cuándo cerrar cada fase». Luego la puesta al día para quien no vio V1 ni el SIEM, como una tira horizontal de la noche que se revela al compás de la voz: 3-9 tarde, correo trampa y el portátil aislado de la red, encendido (16:11); 01:52, logon de la cuenta de servicio svc_tosreport en srv-tc-app03, un servidor de la terminal de contenedores; salida de datos 02:00–04:30 (38 GB hacia 203.0.113.47). Después la sala de crisis del 4-9 a mediodía (12:00) y la pizarra del caso IR-2026-0147 con siete columnas vacías (solo su silueta: se leen en s02). Nunca mostrar NULL CIPHER, el ASN ni «una sola operación» (dosier del jefe de sp4)",
       "targetSec": 59,
       "wordBudget": 159,
       "requiredCues": [
@@ -47,7 +47,7 @@
       "id": "s02-board",
       "chapter": 1,
       "title": "La pizarra",
-      "goal": "La pizarra del caso IR-2026-0147: siete columnas en el orden del examen, cada una con el nombre en castellano grande y en inglés debajo, pequeño (Preparación · Preparation, Detección · Detection, Análisis · Analysis, Contención · Containment, Erradicación · Eradication, Recuperación · Recovery, Lecciones aprendidas · Lessons learned) y una casilla «¿terminada?» con su condición en una línea. La voz NO las enumera: van en pantalla. Se ilumina Preparación (plan, quién hace qué, quién le sustituye) marcada como «antes del incidente». Luego zoom a Detección: la ficha del caso se rellena por pasos (número IR-2026-0147, declarado 2026-09-03 18:10 CEST, gravedad ALTA, notificado) y se marca su casilla. Se atenúan las demás columnas mientras se explica una",
+      "goal": "La pizarra del caso IR-2026-0147: siete columnas en el orden del examen, cada una con el nombre en castellano grande y en inglés debajo, pequeño (Preparación · Preparation, Detección · Detection, Análisis · Analysis, Contención · Containment, Erradicación · Eradication, Recuperación · Recovery, Lecciones aprendidas · Lessons learned) y una casilla «¿terminada?» con su condición en una línea. La voz NO las enumera: van en pantalla. Se ilumina Preparación (plan, quién hace qué, quién le sustituye) marcada como «antes del incidente». Luego zoom a Detección: la ficha del caso se rellena por pasos (número IR-2026-0147, declarado 2026-09-03 16:09 CEST, gravedad ALTA, notificado) y se marca su casilla. Se atenúan las demás columnas mientras se explica una",
       "targetSec": 49,
       "wordBudget": 132,
       "requiredCues": [
@@ -62,7 +62,7 @@
       "id": "s03-scope",
       "chapter": 2,
       "title": "¿Contenido?",
-      "goal": "Columna Análisis: el alcance del 3-9 son tres equipos (los de V1 s08): OPS-WS-14 portátil de Lucía, OPS-WS-08 Operaciones y ADM-WS-02 estación de administración, con la etiqueta «donde viven las llaves». NO hay ninguna cuenta en el alcance del 3-9: que la credencial había salido no se sabía (V1: «lo que aún nadie sabía»). A las 18:30 se aíslan OPS-WS-14 y OPS-WS-08 desde el EDR: candado sobre cada uno y la etiqueta «encendido · memoria preservada». Se marca la casilla de Contención con «18:30». Pregunta para pensar al final: la casilla recién marcada late; ADM-WS-02 sigue visible pero sin resaltar (no destripar la respuesta)",
+      "goal": "Columna Análisis: el alcance del 3-9 son tres equipos (los de V1 s08): OPS-WS-14 portátil de Lucía, OPS-WS-08 Operaciones y ADM-WS-02 estación de administración, con la etiqueta «donde viven las llaves». NO hay ninguna cuenta en el alcance del 3-9: que la credencial había salido no se sabía (V1: «lo que aún nadie sabía»). Se aíslan desde el EDR OPS-WS-14 (16:11, como en V1) y OPS-WS-08 (16:15): candado sobre cada uno y la etiqueta «encendido · memoria preservada». Se marca la casilla de Contención con «16:15». Pregunta para pensar al final: la casilla recién marcada late; ADM-WS-02 sigue visible pero sin resaltar (no destripar la respuesta)",
       "targetSec": 47,
       "wordBudget": 127,
       "requiredCues": [
