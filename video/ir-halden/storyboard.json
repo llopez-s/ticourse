@@ -1,0 +1,191 @@
+{
+  "title": "Respuesta a incidentes: la mañana después",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 562,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "La mañana después"
+    },
+    {
+      "n": 2,
+      "title": "Contener de verdad"
+    },
+    {
+      "n": 3,
+      "title": "Limpiar y volver"
+    },
+    {
+      "n": 4,
+      "title": "Aprender"
+    },
+    {
+      "n": 5,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Treinta y ocho gigas",
+      "goal": "En los primeros ~10 s, el problema y la promesa: el portátil de Lucía (OPS-WS-14) ha pasado la noche aislado y aun así se han ido 38 GB; título «Respuesta a incidentes» y la promesa «llevar un incidente entero y saber cuándo cerrar cada fase». Luego la puesta al día para quien no vio V1 ni el SIEM, como una tira horizontal de la noche que se revela al compás de la voz: 3-9 tarde, correo trampa y el portátil aislado de la red, encendido; 01:52, logon de una cuenta de servicio en un servidor de la terminal de contenedores; salida de datos 02:00–04:30 (38 GB). Después la sala de crisis del 4-9 a las 10:00 y la pizarra del caso IR-2026-0147 con siete columnas vacías (solo su silueta: se leen en s02). Nunca mostrar NULL CIPHER, el ASN ni «una sola operación» (dosier del jefe de sp4)",
+      "targetSec": 59,
+      "wordBudget": 159,
+      "requiredCues": [
+        "exfil",
+        "title",
+        "night",
+        "logon",
+        "crisis",
+        "board"
+      ]
+    },
+    {
+      "id": "s02-board",
+      "chapter": 1,
+      "title": "La pizarra",
+      "goal": "La pizarra del caso IR-2026-0147: siete columnas en el orden del examen, cada una con el nombre en castellano grande y en inglés debajo, pequeño (Preparación · Preparation, Detección · Detection, Análisis · Analysis, Contención · Containment, Erradicación · Eradication, Recuperación · Recovery, Lecciones aprendidas · Lessons learned) y una casilla «¿terminada?» con su condición en una línea. La voz NO las enumera: van en pantalla. Se ilumina Preparación (plan, quién hace qué, quién le sustituye) marcada como «antes del incidente». Luego zoom a Detección: la ficha del caso se rellena por pasos (número IR-2026-0147, declarado 2026-09-03 18:10 CEST, gravedad ALTA, notificado) y se marca su casilla. Se atenúan las demás columnas mientras se explica una",
+      "targetSec": 49,
+      "wordBudget": 132,
+      "requiredCues": [
+        "seven",
+        "before",
+        "criterion",
+        "declare",
+        "clock"
+      ]
+    },
+    {
+      "id": "s03-scope",
+      "chapter": 2,
+      "title": "¿Contenido?",
+      "goal": "Columna Análisis: el alcance del 3-9 son tres equipos (los de V1 s08): OPS-WS-14 portátil de Lucía, OPS-WS-08 Operaciones y ADM-WS-02 estación de administración, con la etiqueta «donde viven las llaves». NO hay ninguna cuenta en el alcance del 3-9: que la credencial había salido no se sabía (V1: «lo que aún nadie sabía»). A las 18:30 se aíslan OPS-WS-14 y OPS-WS-08 desde el EDR: candado sobre cada uno y la etiqueta «encendido · memoria preservada». Se marca la casilla de Contención con «18:30». Pregunta para pensar al final: la casilla recién marcada late; ADM-WS-02 sigue visible pero sin resaltar (no destripar la respuesta)",
+      "targetSec": 47,
+      "wordBudget": 127,
+      "requiredCues": [
+        "scope",
+        "three",
+        "isolate",
+        "ram",
+        "marked"
+      ]
+    },
+    {
+      "id": "s04-key",
+      "chapter": 2,
+      "title": "La llave maestra",
+      "goal": "La respuesta: la casilla de Contención se desmarca. Zoom a la fila de ADM-WS-02 (sin aislar: «responsable sin localizar · nadie de guardia podía autorizarlo»). El hallazgo de esta mañana, como línea de log que se resalta: 2026-09-03 21:14 logon de la cuenta de servicio en el servidor de la terminal desde ADM-WS-02 (sin alerta); después 01:52 y la alarma por la salida de datos desde las 02:00. La analogía: tres naves del puerto, dos con candado y la tercera abierta, justo la que guarda las llaves maestras; una llave sale de ella (la cuenta de servicio). La regla por pasos: candado a los equipos del alcance y a las cuentas que pasan por ellos: anular contraseñas, cortar sesiones, bloquear el servidor de la atacante. Nombre del examen al final: containment",
+      "targetSec": 68,
+      "wordBudget": 184,
+      "requiredCues": [
+        "no",
+        "adm",
+        "found",
+        "alert",
+        "master-key",
+        "rule",
+        "name"
+      ]
+    },
+    {
+      "id": "s05-order",
+      "chapter": 2,
+      "title": "Formatéalo ya",
+      "goal": "Mensaje interceptado de SILENT PAGER (formatear ya) y la respuesta: si limpias antes de contener te equivocas dos veces, (1) borras la prueba (memoria y disco) y (2) ella vuelve con su llave en cuanto el servidor arranque. Dos iconos que caen, uno por error. Luego la secuencia contener, erradicar, recuperar como tres pasos en orden. Cierre de la contención a las 04:30, todo de golpe, con la responsable de seguridad al teléfono: ADM-WS-02 aislada, el servidor en cuarentena en una VLAN restringida y la contraseña de la cuenta cambiada (estos dos, hechos del SIEM); ahí se corta la salida de datos (02:00–04:30). La casilla de Contención se marca de nuevo con «04:30»",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "requiredCues": [
+        "wipe",
+        "evidence",
+        "back",
+        "closed",
+        "done"
+      ]
+    },
+    {
+      "id": "s06-eradicate",
+      "chapter": 3,
+      "title": "Nos vemos el jueves",
+      "goal": "Mensaje interceptado de SILENT PAGER (nos vemos el jueves) y la respuesta: en el servidor de la terminal hay una tarea programada, creada el 3-9 a las 21:20, que arranca el programa cada jueves por la noche; hay otra igual en ADM-WS-02: la persistencia. Lista de limpieza que se tacha por pasos: el programa, la tarea programada (en los dos equipos), el agujero por el que entró (el permiso de Operaciones para ejecutar macros, retirado; la regla 3 del cortafuegos, ya corregida en V1, aparece como «confirmada»). Analogía: la nave del puerto, revisar cada rincón y tapiar la ventana. Luego la búsqueda de V1 (hash del documento, dominio, patrón de procesos) más la tarea programada, repetida en todos los equipos con agente: contador que termina en 0 resultados",
+      "targetSec": 53,
+      "wordBudget": 143,
+      "requiredCues": [
+        "task",
+        "persist",
+        "holes",
+        "window",
+        "hunt",
+        "zero"
+      ]
+    },
+    {
+      "id": "s07-recovery",
+      "chapter": 3,
+      "title": "¿Qué copia?",
+      "goal": "Recuperación del servidor de la terminal, con su memoria y su disco ya capturados. Tres copias en fila: 2026-09-03 23:00, 2026-09-02 23:00, 2026-09-01 23:00. La de anoche se resalta como «la más reciente · antes de la alerta de la madrugada». Pregunta para pensar. La respuesta, por pasos: en la línea de tiempo aparece 21:14 (primera entrada confirmada en el servidor) antes de las 23:00, y la copia del 3-9 se tacha: se hizo con ella dentro y lleva la tarea programada de las 21:20 (la nave fotografiada con la intrusa escondida). Se restaura la del 2-9, de antes de todo el incidente: comprobación de integridad (hash coincide) y visto bueno de Operaciones a los manifiestos. El servidor vuelve a producción con «vigilancia reforzada · 30 días»",
+      "targetSec": 64,
+      "wordBudget": 173,
+      "requiredCues": [
+        "backups",
+        "last-night",
+        "entry",
+        "photo",
+        "restore",
+        "verify",
+        "watch"
+      ]
+    },
+    {
+      "id": "s08-rca",
+      "chapter": 4,
+      "title": "Despide a Lucía",
+      "goal": "Reunión de cierre el 2026-09-11 (la última columna). Mensaje interceptado de SILENT PAGER (despide a Lucía) y la respuesta: causas, no culpables. Analogía de la gotera: fregar el suelo (reinstalar el portátil) frente al agujero del tejado. La cadena de «¿por qué?» baja escalón a escalón: Lucía abrió un adjunto (como cualquiera) → se ejecutó la macro → Operaciones tenía una excepción a la norma que bloquea las macros → la excepción era de hace dos años y no caducaba nunca. El último escalón (ya retirada, pero las excepciones no caducan) se marca como la causa arreglable. Nombre del examen: root cause analysis. Lucía nunca aparece señalada ni en rojo",
+      "targetSec": 66,
+      "wordBudget": 178,
+      "requiredCues": [
+        "meeting",
+        "blame",
+        "drip",
+        "why",
+        "exception",
+        "name"
+      ]
+    },
+    {
+      "id": "s09-plan",
+      "chapter": 4,
+      "title": "El hueco del plan",
+      "goal": "Segundo hilo del RCA: ella siguió dentro horas → la contención se dio por cerrada con dos equipos de tres → ADM-WS-02 no se aisló porque nadie de guardia tenía permiso → el plan no tenía suplentes. El hilo acaba en la primera columna de la pizarra (Preparación), que se ilumina. Lista de mejoras, cada una con responsable y fecha (en pantalla, la voz no las lee): suplentes con permiso para aislar (Seguridad, 2026-09-30); las excepciones caducan solas (Sistemas, 2026-09-18); cuentas de servicio en un gestor de contraseñas con rotación (Sistemas, 2026-10-31); DMARC en reject (Correo, 2026-09-25); alerta de logon de cuentas de servicio desde estaciones (SOC, 2026-09-25). Las mejoras vuelan a la columna Preparación y la pizarra se cierra en círculo. Nombre del examen: lessons learned. No culpar al turno de noche",
+      "targetSec": 56,
+      "wordBudget": 151,
+      "requiredCues": [
+        "thread2",
+        "deputy",
+        "prep",
+        "owner",
+        "loop",
+        "name2"
+      ]
+    },
+    {
+      "id": "s10-recap",
+      "chapter": 5,
+      "title": "Tres reglas",
+      "goal": "Tres reglas prácticas, una tarjeta grande cada una: 1) cada casilla se marca con su condición, no con las ganas de acabar; 2) primero cierras equipos y llaves, después limpias, y vuelves con una copia de antes de que entrara; 3) busca la gotera, no a quién culpar. Gancho a la cápsula siguiente (¿cómo sabes que el plan nuevo funciona?) sin nombrar tabletop ni simulation. Tarjeta final Alertópolis: «Ahora te toca: Incident Response Drill» (laboratorio spl4b)",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "lab",
+        "endcard"
+      ]
+    }
+  ]
+}

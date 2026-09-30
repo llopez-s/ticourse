@@ -25,7 +25,7 @@ Resultado esperado: un ranking razonado de todo el curso, tres tandas priorizada
 | | **Principal** | **Cápsula práctica** | **Principal YouTube (`principal-yt`)** | **Cápsula YouTube (`capsula-yt`)** |
 |---|---|---|---|---|
 | Suma de `targetSec` de las escenas | 270–300 s | 130–165 s | más que Principal: menos conceptos, mejor contados (lo acota la duración renderizada) | más que Cápsula, ídem |
-| Duración renderizada (`minTotalSec`–`maxTotalSec` de `scripts/lib/profiles.mjs`) | ≈ +20 s por márgenes de la tubería (entradas, colas y transiciones de escena, cierre): 290–320 s. En el SIEM, 305 s de escenas dieron 325 s | ≈ +15–20 s: 150–190 s | **380–500 s** | **190–260 s** |
+| Duración renderizada (`minTotalSec`–`maxTotalSec` de `scripts/lib/profiles.mjs`) | ≈ +20 s por márgenes de la tubería (entradas, colas y transiciones de escena, cierre): 290–320 s. En el SIEM, 305 s de escenas dieron 325 s | ≈ +15–20 s: 150–190 s | **380–600 s** (hasta 10 min desde V5, 2026-09-30: es un techo, no un objetivo) | **190–260 s** |
 | Estructura | 5 capítulos, 10–12 escenas | 3 capítulos, 5–6 escenas | 5 capítulos (sin cambios) | 3 capítulos (sin cambios) |
 | Exam cards (≤58 car., máx. 1 por escena, ninguna en la última) | 8–11 | 4–6 | **5–8** (4–6 conceptos clave) | **3–5** (2–3 conceptos clave) |
 | Think prompts (≤48 car.) | 2 | 1 | 2 (sin cambios) | 1 (sin cambios) |
@@ -464,12 +464,13 @@ Las exam cards se listan en el orden de las escenas:
 ## 5. Tandas 2 y 3 (esbozo; cada vídeo recibirá su brief al abrir su tanda)
 
 **Tanda 2** (3 principales + 3 cápsulas, 3 Sec+ / 3 GCTI):
-- **sp4m10 IR (Principal).**
-  - Tablero con las 7 fases y sus criterios de salida.
-  - Qué se rompe si se erradica antes de contener.
-  - Tabletop frente a simulación; RCA frente a threat hunting.
-  - Continúa el caso de Halden de V1 y del SIEM.
-  - Aporta el porqué que spl4b (order) no da.
+- **sp4m10 IR (Principal): abierta el 2026-09-30 como V5, ficha completa abajo.** Lidia eligió partirla en dos
+  para no pasar de 4 conceptos: V5 cuenta el proceso (fases, contención, vuelta y revisión final) y el resto va a
+  una cápsula aparte.
+- **sp4m10 V5b (Cápsula) «Antes del próximo incidente».** Tabletop frente a simulation (qué valida cada uno) y
+  threat hunting (hipótesis sin alerta previa, y cada caza deja reglas nuevas y huecos de visibilidad a la vista).
+  Continúa V5: el plan nuevo, con suplentes, se prueba en un simulacro de mesa, y la caza parte del dosier de
+  SILENT PAGER (cuentas de servicio). Recibe su ficha al abrirse.
 - **sp4m8 IAM (Principal).**
   - Diagramas de secuencia navegador–IdP–SP para SAML, OAuth (autoriza, no autentica) y OIDC.
   - Demo de fatiga de push MFA en un móvil simulado.
@@ -492,6 +493,66 @@ Las exam cards se listan en el orden de las escenas:
   - Password spraying frente a brute force.
   - `../` traversal.
   - Firma de la amplificación DNS en NetFlow.
+
+### V5 · sp4m10 · Principal · «Respuesta a incidentes: la mañana después»
+
+> Diseñado con Lidia el 2026-09-30 (rama `video-ir-halden`, que sale de `video-pivot-infra`). La versión vigente
+> de escenas y guion es `video/ir-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en
+> `video/ir-halden/out/script-notes.md`.
+
+- **Carpeta:** `ir-halden` · perfil `principal-yt` · objetivo 4.8 · adversario SILENT PAGER · voz `recording/lidia`
+  (tempo 1,08 y pausas de 250 ms, provisionales como en V4).
+- **Duración:** Lidia permite hasta 10 minutos; el guion revisado estima ~9:24. No se rellena.
+- **Inserción:** en `src/data/secplus/sp4-part5.ts`, justo después de la tabla «Fase / Objetivo / Error clásico» y
+  antes del apartado «Entrenamiento y pruebas», como bloque `youtube`.
+- **Enfoque («la mañana después»):** 4-9 a las 10:00, sala de crisis. La pizarra del caso IR-2026-0147 tiene siete
+  columnas con una casilla cada una. Las fases que ya pasaron en V1, el SIEM y V2 se repasan con una sola pregunta:
+  ¿se podía marcar esa casilla? Así aparece el error central: la contención se dio por cerrada con dos equipos de
+  tres, y el que quedó abierto era la estación de administración, «donde viven las llaves». SILENT PAGER propone los atajos en sus mensajes y la narradora
+  enseña qué se rompería con cada uno. El orden de las fases no se recita: va en pantalla, porque ya lo practica
+  spl4b.
+
+**Conceptos (4) y su imagen:**
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | Una fase se cierra cuando cumple su condición, no cuando lo parece. Detectar es declarar: caso, hora y gravedad | La pizarra con una casilla por columna | «Detectar es declarar: caso, hora y gravedad» |
+| 2 | Contener es cerrarlo todo, equipos y cuentas, antes de limpiar. Se aísla encendido y se anulan credenciales y sesiones | Dos naves del puerto con candado y abierta la tercera, la que guarda las llaves maestras | «Contener: aislar sin apagar y anular credenciales» · «Primero contener; después erradicar y recuperar» |
+| 3 | Limpiar a fondo (persistencia y agujero, comprobado en todos los equipos) y volver desde una copia anterior al primer compromiso confirmado | La misma nave: revisar cada rincón y tapiar la ventana. La foto hecha con la intrusa ya dentro | «Erradicar: malware, persistencia y el agujero» · «Copia de antes del compromiso, y verificada» |
+| 4 | En la revisión final se buscan causas, no culpables, y cada mejora lleva responsable y fecha | La gotera: fregar el suelo frente a arreglar el tejado | «Lecciones aprendidas: causas, no culpables» · «Sin responsable ni fecha, la mejora no existe» |
+
+**Escenas:** diez, en cinco capítulos (La mañana después · Contener de verdad · Limpiar y volver · Aprender · Para el
+examen). Pregunta para pensar en s03 («Dos equipos aislados. ¿Contención cerrada?») y en s07 («Copia de las 23:00,
+antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), s06 (nos vemos el jueves) y s08
+(despide a Lucía). Cierre con tres reglas y una sola tarea: el laboratorio spl4b, más un gancho a V5b.
+
+**Canon nuevo que fija V5** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- IR-2026-0147 se declara el 2026-09-03 a las 18:10 CEST, con gravedad alta.
+- 18:30: el EDR aísla, encendidos, `OPS-WS-14` (portátil de Lucía) y `OPS-WS-08`, y se marca la contención.
+  `ADM-WS-02` se queda sin aislar: su responsable no estaba localizable y nadie de guardia tenía autoridad para
+  aislar una estación de administración (el plan no tenía suplentes). Ese día nadie sabía aún que la credencial de
+  servicio había salido (V1), así que el alcance del 3-9 son tres equipos y ninguna cuenta.
+- 21:14 del 3-9: la cuenta de servicio ya entra en el servidor de la terminal desde `ADM-WS-02`, sin alerta, y a las
+  21:20 deja una tarea programada que arranca el programa cada jueves por la noche (otra igual en `ADM-WS-02`). Lo
+  descubre el análisis la mañana del 4-9. La 01:52 del SIEM fue la primera vez que se vio.
+- 04:30 del 4-9 (después del triaje del SIEM, que ve la salida de 02:00 a 04:30): con la responsable de seguridad al
+  teléfono se cierra todo de golpe. `ADM-WS-02` aislada, el servidor en cuarentena y la contraseña cambiada, y ahí se
+  corta la salida de datos.
+- Erradicación: fuera las tareas programadas, retirado el permiso de macros de Operaciones y confirmada la regla 3
+  del cortafuegos (ya corregida en V1). La búsqueda de V1 más la tarea, repetida en todos los equipos con agente, da
+  cero resultados.
+- Copias del servidor, cada noche a las 23:00. La del 3-9 se descarta: es posterior a las 21:14 y lleva la tarea
+  programada. Se restaura la del 2-9, de antes de todo el incidente, con su integridad comprobada y el visto bueno de
+  Operaciones. Vuelve con vigilancia reforzada 30 días.
+- Revisión final el 2026-09-11, con dos hilos de «¿por qué?»: la macro se ejecutó por una excepción de Operaciones de
+  hace dos años que nunca caducaba (el ejemplo de la propia lección: ya retirada, la causa de fondo es que las
+  excepciones no caducan), y la atacante siguió dentro horas porque la contención se cerró con dos equipos de tres,
+  ya que faltaban suplentes (un hueco de la preparación). Mejoras con responsable y fecha: suplentes con autoridad
+  para aislar (Seguridad, 30-9), las excepciones caducan solas (Sistemas, 18-9), cuentas de servicio en un gestor de
+  contraseñas con rotación (Sistemas, 31-10), DMARC en reject (Correo, 25-9) y alerta de logon de cuentas de
+  servicio desde estaciones (SOC, 25-9).
+- **No se toca:** la pista del ASN de NULL CIPHER ni «GH es una sola operación» (dosier del jefe de sp4). No se culpa
+  a nadie, ni a Lucía ni al turno de noche.
 
 **Tanda 3:**
 - sp1m6 (Principal) y sp1m7 (Cápsula `openssl s_client -showcerts` con un intermedio ausente), como serie «Confianza».
