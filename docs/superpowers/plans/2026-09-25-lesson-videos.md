@@ -467,10 +467,8 @@ Las exam cards se listan en el orden de las escenas:
 - **sp4m10 IR (Principal): abierta el 2026-09-30 como V5, ficha completa abajo.** Lidia eligió partirla en dos
   para no pasar de 4 conceptos: V5 cuenta el proceso (fases, contención, vuelta y revisión final) y el resto va a
   una cápsula aparte.
-- **sp4m10 V5b (Cápsula) «Antes del próximo incidente».** Tabletop frente a simulation (qué valida cada uno) y
-  threat hunting (hipótesis sin alerta previa, y cada caza deja reglas nuevas y huecos de visibilidad a la vista).
-  Continúa V5: el plan nuevo, con suplentes, se prueba en un simulacro de mesa, y la caza parte del dosier de
-  SILENT PAGER (cuentas de servicio). Recibe su ficha al abrirse.
+- **sp4m10 V5b (Cápsula): abierta el 2026-10-01, ficha completa abajo.** Tabletop frente a simulation y threat
+  hunting, la otra mitad de la lección que V5 dejó fuera.
 - **sp4m8 IAM (Principal).**
   - Diagramas de secuencia navegador–IdP–SP para SAML, OAuth (autoriza, no autentica) y OIDC.
   - Demo de fatiga de push MFA en un móvil simulado.
@@ -569,6 +567,90 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
   (Sistemas, 15-10).
 - **No se toca:** la pista del ASN de NULL CIPHER ni «GH es una sola operación» (dosier del jefe de sp4). No se culpa
   a nadie, ni a Lucía ni al turno de noche.
+
+### V5b · sp4m10 · Cápsula · «Antes del próximo incidente: tabletop, simulation y threat hunting»
+
+> Diseñado con Lidia el 2026-10-01 (rama `video-ir-halden-pruebas`, desde `main` con V4 y V5 ya fusionados). La
+> versión vigente de escenas y guion será `video/ir-halden-pruebas/storyboard.json` + `narration.json`; qué se quedó
+> fuera, en `video/ir-halden-pruebas/out/script-notes.md`.
+>
+> **Dos ajustes sobre el diseño aprobado**, porque el validador los rechazaría:
+> - Cuatro tarjetas en cinco escenas obligaban a poner dos en la misma, y `analyzeNarration` admite una por escena y
+>   ninguna en el cierre. «Salir a buscar» se parte en dos escenas: la caza y lo que deja. Son seis en total, dentro de
+>   las 5–6 de una cápsula, y los tres capítulos no cambian.
+> - La pregunta para pensar tenía 49 caracteres (máximo 48): pasa a «Sin tocar producción, barato: ¿mesa o simulacro?».
+
+- **Carpeta:** `ir-halden-pruebas` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~3:30–4:00, sin rellenar) ·
+  objetivo 4.8 · adversario SILENT PAGER, un mensaje interceptado, con la voz de V5 · voz `recording/lidia` con
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · música de V4 y V5 (`Go On Going - Stayloose.mp3`).
+- **Inserción:** en `src/data/secplus/sp4-part5.ts`, lección sp4m10, después del check de threat hunting y antes del
+  párrafo final («Ya sabes conducir el incidente…»), como bloque `youtube`. Se fija en la suite `lesson videos` de
+  `src/data/content.test.ts`.
+- **Enfoque («¿funciona el plan nuevo?»):** V5 acabó con esa pregunta. Las mejoras de la reunión del 11-9 ya están en
+  marcha, entre ellas los suplentes con autoridad para aislar. El vídeo prueba el plan de dos maneras (hablando y de
+  verdad) y después sale a buscar sin que haya saltado ninguna alarma. Una frase de puente resume V5 para quien no lo
+  vio: en septiembre la atacante siguió dentro horas porque nadie de guardia podía aislar un equipo.
+
+**Conceptos (2) y su imagen:**
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | La mesa (tabletop exercise) es una conversación: roles, quién decide, a quién se llama; no toca ningún sistema y es barata. El simulacro (simulation) se ejecuta de verdad: herramientas, permisos y tiempos reales; cuesta y puede afectar a la operación | Un ensayo con el guion en la mano frente a un simulacro de incendio | «Tabletop: se habla, no se toca nada» · «Simulation: se ejecuta de verdad, con coste» |
+| 2 | Threat hunting: salir a buscar sin alerta, desde una hipótesis. Encuentre o no a alguien, deja reglas de detección nuevas y enseña dónde falta visibilidad | Buscar una fuga de agua con el contador, antes de que salga la mancha: cierras los grifos y miras si sigue girando. Un servidor que no manda registros es un grifo que no pasa por el contador | «Hunting: hipótesis y ninguna alerta previa» · «Cada caza deja reglas nuevas y huecos a la vista» |
+
+**Escenas:** seis, en tres capítulos (Probar el plan · Salir a buscar · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «¿Funciona el plan nuevo?» | I Probar el plan | 26 | La lista de mejoras del 11-9 (la de V5 s09) con «suplentes con permiso para aislar · Seguridad · 30-09» resaltada y un sello «¿funciona?»; título; dos iconos (mesa y simulacro) y una lupa; el puente, en una tira: «3-9 · `ADM-WS-02` sin aislar · nadie de guardia podía autorizarlo» | La promesa en los primeros 10 s y el puente con V5 · `plan, title, promise, bridge` |
+| s02-mesa «Ensayo en la sala» | I | 50 | Las dos maneras, a la par: la mesa con el guion en la mano y el simulacro de incendio. Pregunta para pensar. Se ilumina la mesa: «se habla · no se toca ningún sistema · barato» y el nombre TABLETOP EXERCISE. La mesa del 2-10 en la sala de crisis, seis áreas; la tarjeta del caso: «03:00 · se ha caído el correo · ¿a quién llamas?»; «a la suplente de Seguridad»; su teléfono, dentro del buzón, que se apaga; la lista sale a papel y al móvil de guardia | La mesa prueba roles y llamadas sin tocar nada · `two-ways, fire, table, tabletop, room, gap, fix` · **think** |
+| s03-simulacro «Probarlo de verdad» | I | 50 | El bocadillo de la mesa «yo aíslo el equipo» con un «¿seguro?». El simulacro del 8-10 a las 22:00 en la VLAN de pruebas (`ptl-pruebas-02`), cronómetro en marcha; llaman a la suplente; consola: «Aislar equipo» y «Acción no permitida · tu rol no incluye aislar equipos»; lo hace la analista de guardia; el cronómetro para en 11 min (22:11). Barra de comparación: «simulacro · 11 min» frente a «3-9 · `ADM-WS-02` abierta 18 h». Mejora: «permiso de aislar en la cuenta de la suplente · Seguridad · 09-10». Nombre SIMULATION y su coste en tres chips. Cierre en dos columnas: la mesa, lo que se dice; el simulacro, lo que se hace | El simulacro prueba herramientas, permisos y tiempos, y cuesta · `words, night, denied, eleven, real, cost, both` |
+| s04-caza «Salir a buscar» | II Salir a buscar | 38 | Mensaje interceptado. La fuga: una casa con los grifos cerrados, sin mancha en el techo y el contador girando. La hipótesis: «si vuelve, entrará como la otra vez: cuenta de servicio, de madrugada», con la referencia «4-9 · 01:52 · `svc_tosreport` desde `ADM-WS-07`». La consulta: «13-10 · 30 días (13-09 a 13-10) · logons de cuentas de servicio · 00:00–06:00 · desde cualquier equipo (estaciones y servidores)». Nombre THREAT HUNTING | Salir a buscar sin alerta, desde una hipótesis · `calm, meter, hypothesis, hunt, hunting` · **intercept** |
+| s05-huecos «Lo que deja la caza» | II | 36 | Resultado: histograma por horas, todo gris («tareas conocidas, a su hora»), «sin explicar: 0». Mapa de cobertura: 24 servidores, 22 encendidos y 2 apagados, `srv-bascula01` (báscula de camiones) y `srv-accesos01` (control de accesos de la puerta de camiones), «0 registros · nunca conectados»; «ni limpios ni sucios: no se ven». Dos mejoras: «conectar `srv-bascula01` y `srv-accesos01` a la central · Sistemas · 16-10» y «regla: cuenta de servicio fuera de su horario, desde cualquier equipo · SOC · 15-10» | Una caza nunca vuelve de vacío: reglas nuevas y huecos a la vista · `result, dark, unknown, rule, never-empty` |
+| s06-recap «Tres reglas» | III Para el examen | 26 | Tres tarjetas de reglas; tarjeta final Alertópolis: «Ahora te toca: las preguntas de la lección» (sp4m10, 8 preguntas) | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+
+- **Exam cards** (objetivo 4.8), una por escena de s02 a s05:
+  - «Tabletop: se habla, no se toca nada» (s02)
+  - «Simulation: se ejecuta de verdad, con coste» (s03)
+  - «Hunting: hipótesis y ninguna alerta previa» (s04)
+  - «Cada caza deja reglas nuevas y huecos a la vista» (s05)
+- **Think prompt:** «Sin tocar producción, barato: ¿mesa o simulacro?» (s02).
+- **Mensaje interceptado** (s04): «Sin alarma no hay nada que buscar. Duerme tranquila.» El error concreto que la
+  narradora corrige: que no suene nada no quiere decir que no haya nadie.
+- **Cierre:** tres reglas (mesa para quién decide y a quién se llama, simulacro para herramientas, permisos y tiempos;
+  si ya hay una alerta, no es hunting; ninguna caza vuelve de vacío) y una sola tarea: las preguntas de la lección.
+
+**Canon nuevo que fija V5b** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- **2026-10-02 (viernes), 10:00, sala de crisis: la mesa.** Seis áreas (Seguridad, Sistemas, Operaciones,
+  Comunicación, Dirección y Asesoría jurídica). Caso: a las 03:00 se cae el correo corporativo. «¿A quién llamas?»: a
+  la suplente de Seguridad, pero su teléfono solo está en la lista de contactos del plan, que vive en el correo
+  corporativo. Mejora: lista de contactos fuera de banda (en papel en la sala y en el móvil de guardia), Seguridad,
+  05-10. Es el ejemplo de la propia lección (`sp4-part5.ts:277`).
+- **2026-10-08 (jueves), 22:00–22:11: el simulacro.** El turno de guardia del SOC simula un ataque en la VLAN de
+  pruebas (`ptl-pruebas-02`, el portátil de pruebas del SIEM) y llama a la suplente de Seguridad, sin nombre. Ella da
+  la orden de aislar, pero su cuenta de la consola del EDR no tiene el permiso de aislar equipos: lo ejecuta la
+  analista de guardia por orden suya. Así se sostienen a la vez los dos hechos del diseño (ella aísla el segmento; a
+  su cuenta le falta un permiso): la autoridad es suya y el botón, de la analista. El segmento queda aislado a las
+  22:11, a los 11 minutos. Comparación: `ADM-WS-02` estuvo abierta del 3-9 a las 16:15 al 4-9 a las 10:30, unas 18 h
+  (deducido del registro). Mejora: permiso de aislar en la cuenta de la suplente, Seguridad, 09-10. Que el 8-10 sea
+  jueves, la noche de la tarea programada ya borrada (V5 s06), es casualidad: no se dice ni se insinúa nada.
+- **2026-10-13 (martes): la caza.** Hipótesis tomada de lo que enseñó el incidente (el logon de `svc_tosreport` a la
+  01:52 desde una estación de administración), no del dosier del jefe de sp4: si vuelve, lo hará con una cuenta de
+  servicio, de madrugada. Consulta: logons de cuentas de servicio entre las 00:00 y las 06:00, desde cualquier equipo,
+  en los 30 días que guarda la central (13-09 a 13-10). La ventana deja fuera la noche del 4-9 a propósito, para que
+  la caza no «encuentre» el caso conocido; y es más amplia que la alerta del SOC del 25-9, que solo mira logons desde
+  estaciones. Resultado: ningún rastro de la atacante; todo lo que entra de madrugada son tareas conocidas, a su hora.
+  Pero dos servidores **nunca se conectaron** a la central y no han mandado ni un registro: `srv-bascula01` (báscula de
+  camiones) y `srv-accesos01` (control de accesos de la puerta de camiones), dos nombres nuevos porque todos los
+  servidores neutros del registro ya salen enviando registros en el SIEM. Son 24 servidores en total, 22 con
+  registros. Mejoras: conectarlos a la central (Sistemas, 16-10) y convertir la búsqueda en regla, «cuenta de
+  servicio fuera de su horario, desde cualquier equipo» (SOC, 15-10).
+- **No se toca:** el dosier del jefe de sp4 (el ASN de NULL CIPHER, «GH es una sola operación»), ni la ruta de salida
+  de los 38 GB, que sigue siendo un hueco abierto: los dos servidores sin registros no tienen nada que ver con ella y
+  el vídeo no los relaciona. No se dice quién instaló esos servidores (los contratistas de fondo siguen neutros).
+  «Nunca se conectaron», no «dejaron de enviar»: la lección sp2 ya tiene un servidor de facturación que deja de enviar
+  logs (`sp2-part3.ts:441`), y no es este caso. No se culpa a nadie: ni a la suplente por el permiso ni a Sistemas por
+  los servidores.
 
 **Tanda 3:**
 - sp1m6 (Principal) y sp1m7 (Cápsula `openssl s_client -showcerts` con un intermedio ausente), como serie «Confianza».
