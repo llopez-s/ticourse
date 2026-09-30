@@ -34,7 +34,7 @@ const MANIFEST_KEYS = ['slug', 'output', 'composition', 'poster', 'profile', 'tr
 export const OPTIONAL_MANIFEST_KEYS = Object.freeze({
   /** Section adversary whose intercepted messages the video shows (e.g. "SILENT PAGER"). */
   adversary: /^[A-Z][A-Z ]{1,30}[A-Z]$/,
-  /** Lesson the video belongs to (module id, e.g. "sp4m7" or "s3m3"): the YouTube description links to it. */
+  /** Lesson the video belongs to (module id, e.g. "sp4m7" or "s3m3"): the app lesson that embeds it. */
   lesson: /^sp?\d+m\d+$/,
   /** Library track under the mastered mix (a file in video/engine/music/library/, listed in music/LICENSES.md). */
   music: /^[^/\\]+\.(mp3|wav|flac)$/i,

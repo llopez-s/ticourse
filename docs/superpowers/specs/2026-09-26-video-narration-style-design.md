@@ -229,7 +229,8 @@ Escribe `video/<slug>/out/youtube.md`, listo para copiar, con:
   - un gancho formado por los dos primeros segmentos del vídeo;
   - capítulos generados del timeline (`00:00 …`; YouTube exige que el primero sea 00:00, al menos 3 capítulos
     y de 10 s o más);
-  - un enlace a la lección en la app (`https://llopez-s.github.io/ticourse/`);
+  - ~~un enlace a la lección en la app~~ (retirado el 2026-09-30: YouTube no permite enlaces externos en las
+    descripciones del canal Alertópolis y los quitaba al publicar);
   - los créditos de voz;
   - el descargo de la pista («no afiliado a CompTIA», «no afiliado a SANS/GIAC»);
   - 3 hashtags.

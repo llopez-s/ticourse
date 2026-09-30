@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { APP_URL, TAGS_MAX_CHARS, TITLE_MAX, tagsLength, voiceCredit, youtubeChapters, youtubeDescription, youtubeTags, youtubeTitle } from '../youtube-meta.mjs';
+import { TAGS_MAX_CHARS, TITLE_MAX, tagsLength, voiceCredit, youtubeChapters, youtubeDescription, youtubeTags, youtubeTitle } from '../youtube-meta.mjs';
 
 const scene = (id, title, from, sec) => ({ id, title, from, durationInFrames: sec * 30, chapter: 1, chapterTitle: 'Uno' });
 const timeline = {
@@ -36,10 +36,10 @@ test('title, credit and tags', () => {
   assert.equal(tags.filter((t) => t === 'objetivo 4.4').length, 1);
 });
 
-test('description: hook, lesson link, chapters, credit, notice, hashtags', () => {
-  const d = youtubeDescription({ timeline, lesson: 'sp4m7', track: 'secplus', notice: 'AVISO' });
+test('description: hook, chapters, credit, notice, hashtags, and no links (the channel cannot have them)', () => {
+  const d = youtubeDescription({ timeline, track: 'secplus', notice: 'AVISO' });
   assert.ok(d.startsWith('¿Seis mil alertas al día? Solo una importa.'));
-  assert.ok(d.includes(`${APP_URL}#/learn/sp4m7`));
+  assert.doesNotMatch(d, /https?:/);
   assert.ok(d.includes('00:40 Recoger'));
   assert.ok(d.includes('Chatterbox'));
   assert.ok(d.includes('AVISO'));
@@ -94,6 +94,6 @@ test('description: hook is the first two segments of the whole video, even with 
       { scene: 's02-b', text: 'Otra cosa.' },
     ],
   };
-  const d = youtubeDescription({ timeline: oneSegTimeline, lesson: 'sp4m7', track: 'secplus', notice: 'AVISO' });
+  const d = youtubeDescription({ timeline: oneSegTimeline, track: 'secplus', notice: 'AVISO' });
   assert.ok(d.startsWith('Único segmento del principio. Segundo segmento de otra escena.'));
 });
