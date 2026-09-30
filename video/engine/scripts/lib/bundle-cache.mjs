@@ -6,11 +6,50 @@
 // mtime): the voice MP3s can be large and a changed clip always changes its size or mtime.
 // No side effects at import: qa-frames.test.mjs imports this through remotion.mjs.
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 /** Bump when what goes into the key (or how the bundle is built) changes: old entries stop matching. */
 export const BUNDLE_CACHE_FORMAT = 1;
+
+/** What Windows answers while a virus scanner or the indexer still holds files webpack has just written. */
+export const TRANSIENT_RENAME_CODES = Object.freeze(['EPERM', 'EACCES', 'EBUSY']);
+
+function sleepSync(ms) {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+}
+
+/**
+ * Deletes a finished run's temp bundle. Windows can keep a file of it locked for a while after
+ * Chrome exits (ENOTEMPTY, EBUSY): rmSync retries, and if the lock outlasts that the folder is left
+ * behind with a warning — the render already succeeded, and pruneBundleCache sweeps it later.
+ * Returns whether the folder is gone.
+ */
+export function removeDirQuietly(dir, { rm = rmSync, log = console } = {}) {
+  try {
+    rm(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 250 });
+    return true;
+  } catch (err) {
+    log.warn(`bundle: could not remove ${dir} (${err?.code ?? err}); it can be deleted later`);
+    return false;
+  }
+}
+
+/**
+ * renameSync that waits out those transient locks: up to `tries` attempts, 250 ms longer each time
+ * (capped at 1.5 s). Returns the attempt that worked; other errors, and the last transient one, are thrown.
+ */
+export function renameWithRetry(from, to, { rename = renameSync, sleep = sleepSync, tries = 8 } = {}) {
+  for (let attempt = 1; ; attempt += 1) {
+    try {
+      rename(from, to);
+      return attempt;
+    } catch (err) {
+      if (!TRANSIENT_RENAME_CODES.includes(err?.code) || attempt >= tries) throw err;
+      sleep(Math.min(250 * attempt, 1500));
+    }
+  }
+}
 
 /** Top-level lockfile/package.json entries whose versions end up in the bundle. */
 const BUNDLED_PACKAGE = /^(remotion|@remotion\/[^/]+|react|react-dom)$/;

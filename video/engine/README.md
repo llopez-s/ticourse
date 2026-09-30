@@ -46,7 +46,7 @@ Todos los scripts eligen el vídeo con `--video <slug>` (o la variable `VIDEO`; 
 
 | | `principal` | `capsula` | `principal-yt` | `capsula-yt` |
 | --- | --- | --- | --- | --- |
-| Duración (`minTotalSec`–`maxTotalSec`) | 280–340 s | 140–200 s | **380–500 s** | **190–260 s** |
+| Duración (`minTotalSec`–`maxTotalSec`) | 280–340 s | 140–200 s | **380–600 s** (hasta 10 min desde V5) | **190–260 s** |
 | Capítulos (`maxChapters`) | 5 | 3 | 5 | 3 |
 | Tarjetas de examen (`examCards`) | 8–11 | 4–6 | **5–8** | **3–5** |
 | Pausas para pensar (`thinkPrompts`) | 2 | 1 | 2 | 1 |
@@ -392,6 +392,8 @@ difieren los dos), para no pisar la audición hecha con los valores por defecto.
 # Entorno (una vez): Python 3.12, torch de CPU, en D: para no llenar C:
 C:/Python312/python.exe -m venv video/engine/.venv-chatterbox
 video/engine/.venv-chatterbox/Scripts/python.exe -m pip install -r video/engine/scripts/requirements-chatterbox.txt
+# En un git worktree (no tiene su propio venv, y en un disco exFAT no admite enlaces): usa el de la copia principal
+export CHATTERBOX_PYTHON="D:/LLM projects/TICourse/video/engine/.venv-chatterbox/Scripts/python.exe"
 
 # Audición: la misma frase con cada voz, en video/<slug>/.audition/chatterbox-*.mp3
 node video/engine/scripts/tts-chatterbox.mjs --video <slug> --audition --voices mtl/default,es-es/default [--respelled] [--tempo 0.8] [--temperature 0.7]
@@ -553,6 +555,12 @@ python video/engine/scripts/master_mix.py --audio-in video/<slug>/out/<slug>-pro
 # 1. Timeline estimado, sin voz (valida narration.json contra storyboard.json)
 node video/engine/scripts/build-timeline.mjs --video <slug> --estimate
 
+# 1b. Canon: dónde más usa la campaña cada equipo, cuenta, IP, dominio, hash, caso y hora del guion
+#     (otros vídeos de la pista, sus lecciones y docs/superpowers/canon/<campaña>.md) -> out/canon-refs.md
+node video/engine/scripts/canon-check.mjs --video <slug>
+#     Con las revisiones aplicadas y canon-refs.md leído: video.json -> "frozen": "AAAA-MM-DD". Sin él, la hoja
+#     de grabación (script-sheets.mjs --recording) sale como «BORRADOR · no grabes todavía».
+
 # 2. Perfiles -yt: qué voz usar (ElevenLabs si el crédito llega, si no Chatterbox); copiar el resultado
 #    a mano en narration.json -> "voice"
 node video/engine/scripts/voice-plan.mjs --video <slug>
@@ -586,6 +594,21 @@ Notas:
   `video/<slug>/out/youtube.md` con el título, la descripción (con capítulos), las etiquetas y la lista de
   archivos a subir.
 
+- **Cola de trabajos pesados** (`lib/heavy-lock.mjs`): `render.mjs`, `qa-frames.mjs`, la transcripción de
+  `import-recording.mjs` y `verify-voice.mjs` toman un candado en la carpeta temporal del sistema (lo comparten la
+  copia principal y todos los worktrees) y esperan su turno, diciendo una vez a quién esperan. En V5, tres agentes
+  renderizando a la vez que Whisper transcribía lo hicieron todo 2–3 veces más lento. Un candado de un proceso
+  muerto se toma sin esperar; `RENDER_LOCK=0` salta la cola.
+- **Recortar frases de una grabación** (`scripts/recut_recording.py`, venv de Chatterbox): cuando `verify-voice`
+  marca una frase y la grabación tiene una toma limpia (un arranque en falso pegado a la buena, palabras perdidas en
+  una pausa larga, algo dicho tras la última), `--map "<wav>@<a>-<b>"` enseña voz y silencios (un carácter cada
+  50 ms) y `--part "<wav>@<a>-<b>"` (repetido, en orden de guion) monta las tomas buenas en un archivo corto con
+  `--out`, que se importa con `import-recording.mjs --only <ids>` y el mismo `--match`.
+- **Etiquetas de YouTube:** `video.json` → `"tags": [...]` fija las etiquetas de tema (con espacios, sin comas);
+  sin él, `youtube-meta.mjs` usa las claves del léxico, que son de pronunciación y no de tema.
+- **En un git worktree:** `export CHATTERBOX_PYTHON=".../TICourse/video/engine/.venv-chatterbox/Scripts/python.exe"`
+  (el venv está fuera de git y un disco exFAT no admite enlaces) y `GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=safe.directory
+  GIT_CONFIG_VALUE_0=*` para `render.mjs`; la biblioteca de música (`music/library/`, fuera de git) se copia a mano.
 - `node --test` necesita el patrón entre comillas (`"…/*.test.mjs"`): en Node 26 pasar la carpeta
   (`video/engine/scripts/lib/`) falla porque intenta ejecutarla como archivo.
 - `audio.mjs` acepta `--only s08-02,s08-03`, `--force`, `--attempts N`, `--full-audio`, `--tail-ms N`.

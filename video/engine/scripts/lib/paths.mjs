@@ -38,6 +38,11 @@ export const OPTIONAL_MANIFEST_KEYS = Object.freeze({
   lesson: /^sp?\d+m\d+$/,
   /** Library track under the mastered mix (a file in video/engine/music/library/, listed in music/LICENSES.md). */
   music: /^[^/\\]+\.(mp3|wav|flac)$/i,
+  /**
+   * Day the script was frozen (YYYY-MM-DD): both reviews applied and canon-check read. Until then the
+   * recording sheet comes out as a draft, so the narrator never records a script that may still change.
+   */
+  frozen: /^\d{4}-\d{2}-\d{2}$/,
 });
 
 /** Checks a parsed video.json; throws on the first problem. */
@@ -49,6 +54,11 @@ export function checkManifest(manifest, file, slug) {
     if (manifest[key] !== undefined && (typeof manifest[key] !== 'string' || !pattern.test(manifest[key]))) {
       throw new Error(`${file}: "${key}" must match ${pattern}`);
     }
+  }
+  // YouTube topic tags (youtube-meta.mjs): they replace the lexicon terms, which are pronunciation keys, not topics.
+  if (manifest.tags !== undefined) {
+    const ok = Array.isArray(manifest.tags) && manifest.tags.every((t) => typeof t === 'string' && t.trim() && t.length <= 60 && !t.includes(','));
+    if (!ok) throw new Error(`${file}: "tags" must be a list of non-empty strings of at most 60 characters, without commas`);
   }
   if (manifest.slug !== slug) throw new Error(`${file}: slug "${manifest.slug}" does not match its folder "${slug}"`);
   return manifest;

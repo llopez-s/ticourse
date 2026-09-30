@@ -3,7 +3,7 @@ import { mkdirSync, mkdtempSync, readdirSync, rmSync, utimesSync, writeFileSync 
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
-import { BUNDLE_MANIFEST, bundleKey, collectBundleInputs, isCompleteBundle, markInUse, pruneBundleCache } from './bundle-cache.mjs';
+import { BUNDLE_MANIFEST, bundleKey, collectBundleInputs, isCompleteBundle, markInUse, pruneBundleCache, removeDirQuietly, renameWithRetry } from './bundle-cache.mjs';
 
 const BASE = {
   sources: [
@@ -132,4 +132,51 @@ test('isCompleteBundle wants index.html and a manifest with the same key; markIn
   markInUse(dir, 4321);
   const markers = readdirSync(dir).filter((f) => f.startsWith('.inuse-'));
   assert.deepEqual(markers, ['.inuse-4321']);
+});
+
+const lockError = (code) => Object.assign(new Error(`${code}: operation not permitted, rename`), { code });
+
+test('renameWithRetry: waits out a transient Windows lock, then renames', () => {
+  const calls = [];
+  const sleeps = [];
+  let failures = 2;
+  const rename = (from, to) => {
+    calls.push([from, to]);
+    if (failures-- > 0) throw lockError('EPERM');
+  };
+  assert.equal(renameWithRetry('a.building-1', 'a', { rename, sleep: (ms) => sleeps.push(ms) }), 3);
+  assert.equal(calls.length, 3);
+  assert.deepEqual(sleeps, [250, 500]);
+});
+
+test('renameWithRetry: EACCES and EBUSY are transient too; the wait is capped', () => {
+  const sleeps = [];
+  const codes = ['EACCES', 'EBUSY', 'EPERM', 'EPERM', 'EPERM', 'EPERM', 'EPERM'];
+  const rename = () => {
+    const code = codes.shift();
+    if (code) throw lockError(code);
+  };
+  assert.equal(renameWithRetry('a', 'b', { rename, sleep: (ms) => sleeps.push(ms) }), 8);
+  assert.deepEqual(sleeps, [250, 500, 750, 1000, 1250, 1500, 1500]);
+});
+
+test('renameWithRetry: other errors, and the last transient one, are thrown', () => {
+  assert.throws(() => renameWithRetry('a', 'b', { rename: () => { throw lockError('ENOENT'); }, sleep: () => assert.fail('no wait') }), /ENOENT/);
+  let tries = 0;
+  assert.throws(
+    () => renameWithRetry('a', 'b', { tries: 3, sleep: () => {}, rename: () => { tries += 1; throw lockError('EPERM'); } }),
+    (err) => err.code === 'EPERM',
+  );
+  assert.equal(tries, 3);
+});
+
+test('removeDirQuietly: retries through the lock, and a lock that outlasts it is only a warning', () => {
+  const seen = [];
+  assert.equal(removeDirQuietly('tmp.building-1', { rm: (dir, opts) => seen.push([dir, opts]) }), true);
+  assert.equal(seen[0][0], 'tmp.building-1');
+  assert.ok(seen[0][1].recursive && seen[0][1].force && seen[0][1].maxRetries >= 3, 'recursive, force, with retries');
+  const warnings = [];
+  const locked = () => { throw lockError('ENOTEMPTY'); };
+  assert.equal(removeDirQuietly('tmp.building-2', { rm: locked, log: { warn: (m) => warnings.push(m) } }), false);
+  assert.match(warnings[0], /tmp\.building-2.*ENOTEMPTY/);
 });

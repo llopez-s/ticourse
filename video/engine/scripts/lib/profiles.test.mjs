@@ -14,7 +14,7 @@ test('the legacy profiles keep their numbers, stay in the repo and use no chispa
 
 test('the -yt profiles: longer windows, crf 18, YouTube, chispa checks, intercepted messages', () => {
   const p = profileFor('principal-yt');
-  assert.deepEqual([p.minTotalSec, p.maxTotalSec, p.maxChapters, p.crf, p.host, p.chispa, p.size], [380, 500, 5, 18, 'youtube', true, null]);
+  assert.deepEqual([p.minTotalSec, p.maxTotalSec, p.maxChapters, p.crf, p.host, p.chispa, p.size], [380, 600, 5, 18, 'youtube', true, null]);
   assert.deepEqual([p.examCards, p.thinkPrompts, p.intercepts], [[5, 8], 2, [2, 4]]);
   const c = profileFor('capsula-yt');
   assert.deepEqual([c.minTotalSec, c.maxTotalSec, c.maxChapters, c.crf, c.host, c.chispa, c.size], [190, 260, 3, 18, 'youtube', true, null]);

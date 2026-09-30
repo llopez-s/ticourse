@@ -66,3 +66,11 @@ test('intercept timing: typing starts a third into the enter animation and the l
   // 2.5 s (INTERCEPT_HOLD_MS[0]) at 30 fps = 75 frames
   assert.ok(INTERCEPT_TIMING.typeStart + INTERCEPT_TEXT_MAX * INTERCEPT_TIMING.typeRate <= 75);
 });
+
+test('checkManifest: tags is an optional list of short topic tags without commas', () => {
+  const base = { slug: 'x', output: 'x', composition: 'X', poster: 'XPoster', profile: 'principal-yt', track: 'secplus' };
+  assert.doesNotThrow(() => checkManifest({ ...base, tags: ['respuesta a incidentes', 'containment'] }, 'video.json', 'x'));
+  assert.throws(() => checkManifest({ ...base, tags: 'respuesta a incidentes' }, 'video.json', 'x'), /"tags"/);
+  assert.throws(() => checkManifest({ ...base, tags: ['a, b'] }, 'video.json', 'x'), /"tags"/);
+  assert.throws(() => checkManifest({ ...base, tags: [''] }, 'video.json', 'x'), /"tags"/);
+});

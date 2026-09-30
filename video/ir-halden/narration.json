@@ -1,0 +1,428 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "exfil": "error",
+    "declare": "check",
+    "isolate": "lock",
+    "found": "glitch",
+    "alert": "alarm",
+    "done": "lock",
+    "zero": "check",
+    "entry": "error",
+    "verify": "check",
+    "loop": "ding"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<intrigued> {exfil}El portátil de Lucía ha pasado la noche aislado, como tocaba. Y aun así, de madrugada, se han ido [38 GB|treinta y ocho gigas] del puerto.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Hoy va de respuesta a incidentes. Vas a aprender a llevar uno entero, y a saber cuándo puedes dar por cerrada cada fase.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<calm> {night}Te pongo al día. Ayer por la tarde, Lucía abrió un correo trampa y su portátil empezó a hablar con la atacante. Lo aislaron de la red sin apagarlo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<serious> {logon}Pero [a las 01:52|a las dos menos ocho] entró una cuenta de servicio en un servidor de la terminal de contenedores. Y desde ahí salieron los datos.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-hook",
+      "text": "<warm> {crisis}Es mediodía y estás en la sala de crisis. {board}En la pizarra está el caso, repartido en siete columnas.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-06",
+      "scene": "s01-hook",
+      "text": "<engaging> ¿Cuáles de esas columnas están cerradas de verdad? Porque alguna se cerró antes de tiempo.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-board",
+      "text": "<clear> {seven}Las columnas van en el orden en que las pide el examen. Cada una lleva una casilla, para marcarla cuando esté terminada.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-board",
+      "text": "<thoughtful> {before}La primera, la preparación, es la única que ocurre antes del incidente. Es tener el plan, saber quién hace qué y quién le sustituye.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-board",
+      "text": "<focused> {criterion}Y ojo con las casillas. Se marcan cuando se cumple su condición, no cuando tienes prisa por pasar a la siguiente.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-board",
+      "text": "<curious> {declare}Mira la de detección. Detectar no es ver la alerta, es declarar el incidente, con su número de caso, su hora y su gravedad.",
+      "pauseAfterMs": 350,
+      "exam": {
+        "objective": "4.8",
+        "text": "Detectar es declarar: caso, hora y gravedad",
+        "at": "declare",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-board",
+      "text": "<satisfied> {clock}Desde ese momento corre el reloj. Nuestro caso se declaró ayer [a las 16:09|a las cuatro y nueve], con gravedad alta. Esta casilla aguanta, porque cumple su condición.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-scope",
+      "text": "<focused> {scope}Vamos con el análisis. Aquí se decide el alcance, es decir, hasta dónde ha llegado la atacante.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-scope",
+      "text": "<clear> {three}Ayer el alcance quedó en tres equipos tocados. Uno era una estación de administración, que es donde viven las llaves.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-scope",
+      "text": "<calm> {isolate}Minutos después se aislaron dos de esos equipos, el de Lucía y otro de Operaciones. Los dos se quedaron encendidos.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-scope",
+      "text": "<serious> {ram}Es a propósito, porque lo que hay en la memoria también es prueba. Si los apagas, esa parte se pierde para siempre.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-scope",
+      "text": "<intrigued> {marked}Con dos equipos aislados y la prueba a salvo, alguien marcó la casilla de contención. ¿Tú también la marcarías?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Dos equipos aislados. ¿Contención cerrada?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-key",
+      "text": "<firm> {no}Pues no. Esta casilla pide que la atacante ya no pueda hacer más daño, y todavía podía.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-key",
+      "text": "<tense> {adm}El tercer equipo, la estación de administración, se quedó sin aislar. No había forma de localizar a su responsable, y nadie más podía autorizarlo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-key",
+      "text": "<concerned> {found}Y esta mañana el análisis ha encontrado algo peor. [A las 21:14|A las nueve y catorce de la noche], desde esa estación abierta, saltó a otra que nadie vigilaba.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-key",
+      "text": "<grave> Desde esa, [a las 01:52|a las dos menos ocho], usó la cuenta de servicio para entrar en el servidor. {alert}La alarma saltó de madrugada, pero nadie la miró hasta esta mañana.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-key",
+      "text": "<thoughtful> {master-key}Es como cerrar con candado dos naves del puerto y dejar abierta la tercera, justo la que guarda las llaves maestras. Y la cuenta de servicio era una de ellas.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-key",
+      "text": "<confident> {rule}Por eso contener es echar el candado a todo, a los equipos del alcance y a las cuentas que pasan por ellos. Anulas contraseñas, cortas sesiones y bloqueas su servidor.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.8",
+        "text": "Contener: aislar sin apagar y anular credenciales",
+        "at": "rule",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-key",
+      "text": "<emphatic> O sea, que un equipo aislado no es un incidente contenido. {name}En el examen, esta fase se llama containment.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-order",
+      "text": "<sarcastic> {wipe}Sin rastro, claro. Justo lo que le conviene a ella, y lo último que te conviene a ti.",
+      "pauseAfterMs": 450,
+      "intercept": {
+        "text": "Formatea el servidor ya. Rápido, limpio y sin rastro de mí.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-order",
+      "text": "<firm> {evidence}Si limpias antes de contener, te equivocas dos veces. La primera, porque borras la prueba, lo que había en la memoria y en el disco.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-order",
+      "text": "<serious> {back}Y la segunda, porque ella sigue teniendo la llave. En cuanto el servidor vuelva a arrancar, se cuela otra vez.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-order",
+      "text": "<relieved> {closed}Así que primero cierras, y después limpias. Esta mañana, en cuanto alguien miró esa alarma, se cerró todo de golpe.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.8",
+        "text": "Primero contener; después erradicar y recuperar",
+        "at": "closed",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-order",
+      "text": "<satisfied> {done}Se aislaron las dos estaciones, el servidor pasó a cuarentena y se cambió la contraseña. Los datos ya se habían ido, pero ahora sí, casilla marcada.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-eradicate",
+      "text": "<mischievously> {task}Y lo dice en serio. En el servidor dejó una tarea programada que vuelve a arrancar su programa cada jueves por la noche.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "¿Borraste mi programa? Estupendo. Nos vemos el jueves.",
+        "holdMs": 3600
+      }
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-eradicate",
+      "text": "<clear> {persist}Eso que deja preparado para volver se llama persistencia, y había otra igual en la estación que nadie vigilaba.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-eradicate",
+      "text": "<focused> {holes}Limpiar, entonces, no es solo borrar el programa. Es quitar su persistencia y tapar el agujero por el que entró. Eso es erradicar.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.8",
+        "text": "Erradicar: malware, persistencia y el agujero",
+        "at": "holes",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-eradicate",
+      "text": "<warm> {window}Vuelve a la nave del puerto. No basta con echar a la intrusa, hay que revisar cada rincón y tapiar la ventana por la que se coló.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-eradicate",
+      "text": "<confident> {hunt}Tampoco basta con este servidor. Repites la búsqueda en todos los equipos del puerto, también en los que antes no se veían, {zero}y esta vez sale limpia.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-recovery",
+      "text": "<curious> {backups}Con su memoria y su disco ya capturados, toca recuperar el servidor. Tienes tres copias de seguridad para elegir.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-recovery",
+      "text": "<engaging> {last-night}La más reciente es de anoche, [de las 23:00|de las once]. Se hizo antes de la alerta de la madrugada, así que parece la buena, ¿no?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Copia de las 23:00, antes de la alerta. ¿Vale?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-recovery",
+      "text": "<firm> {entry}No te vale. Lo que cuenta no es cuándo viste a la atacante, sino cuándo entró. Y entró ayer por la tarde, con el correo de Lucía.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-recovery",
+      "text": "<thoughtful> {photo}Esa copia se hizo con ella ya dentro del puerto. Es como fotografiar la nave con ella rondando por ahí. Podría estar detrás de cualquier caja.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-recovery",
+      "text": "<confident> {restore}Te quedas con la de antes de que empezara todo. {verify}Primero compruebas que está íntegra, y luego Operaciones revisa que los datos cuadran.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.8",
+        "text": "Copia de antes del compromiso, y verificada",
+        "at": "verify",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-recovery",
+      "text": "<reassuring> {watch}El servidor vuelve al trabajo, pero vigilado de cerca durante un mes. Total, que sale con la copia limpia y con la alarma puesta.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-rca",
+      "text": "<calm> {meeting}Una semana después llega la reunión de cierre, la última columna. Aquí se decide si el puerto sale de esto mejor de lo que entró.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-rca",
+      "text": "<sarcastic> {blame}Qué detalle por su parte. Pero en esta reunión no se busca a quién culpar, sino por qué funcionó el ataque.",
+      "pauseAfterMs": 450,
+      "intercept": {
+        "text": "Despide a Lucía y caso cerrado. De nada.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-rca",
+      "text": "<thoughtful> {drip}Piénsalo como una gotera. Si solo friegas el suelo, mañana vuelve a estar mojado, porque el agujero sigue en el tejado. Reinstalar el portátil es fregar el suelo.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-rca",
+      "text": "<focused> {why}Se trata de preguntar por qué, y luego otra vez por qué. Lucía abrió un adjunto, como cualquiera. ¿Por qué se ejecutó su macro?",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-rca",
+      "text": "<intrigued> {exception}Porque Operaciones tenía permiso para saltarse la norma que bloquea las macros. Un permiso de hace dos años que no caducaba nunca.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-rca",
+      "text": "<confident> {name}Ese permiso ya está retirado, pero la gotera de verdad es que los permisos no caducan. Y buscar así la causa de fondo se llama root cause analysis.",
+      "pauseAfterMs": 550,
+      "exam": {
+        "objective": "4.8",
+        "text": "Lecciones aprendidas: causas, no culpables",
+        "at": "name",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-plan",
+      "text": "<curious> {thread2}Queda otro hilo, el de aquella noche. ¿Por qué pudo seguir dentro tantas horas? Porque se dio la contención por cerrada con dos equipos de tres.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-plan",
+      "text": "<thoughtful> {deputy}¿Y el tercero? Nadie de guardia tenía permiso para aislarlo, porque el plan no decía quién sustituye al responsable.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-plan",
+      "text": "<serious> {prep}Fíjate dónde acaba este hilo, en la primera columna. El fallo de aquella noche venía de la preparación, mucho antes del ataque.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-plan",
+      "text": "<confident> De la reunión sale una lista de mejoras, y cada una lleva un responsable y una fecha. {owner}Si le falta alguno de los dos, esa mejora no existe.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.8",
+        "text": "Sin responsable ni fecha, la mejora no existe",
+        "at": "owner",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-plan",
+      "text": "<warm> {loop}Esas mejoras van a parar a la preparación, y así se cierra el círculo. Vamos, que el puerto sale de esto mejor de lo que entró.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-plan",
+      "text": "<satisfied> {name2}En el examen, esta última fase se llama lessons learned.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-recap",
+      "text": "<engaging> {recap}SILENT PAGER contaba con que fueras con prisas. Para que no te pille, llévate tres reglas al próximo incidente.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-recap",
+      "text": "<confident> {rule-1}La primera, cada casilla se marca con su condición, no con las ganas de acabar. {rule-2}La segunda, primero cierras equipos y llaves, y después limpias.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-recap",
+      "text": "<warm> Y vuelves siempre con una copia de antes de que entrara, y comprobada. {rule-3}La tercera, cuando todo pase, busca la gotera, no a quién culpar.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-recap",
+      "text": "<intrigued> {next}Ahora, ¿cómo sabes que el plan nuevo funciona antes del próximo susto? Va en el siguiente vídeo.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-recap",
+      "text": "<cheerful> {lab}Mientras tanto, te toca a ti poner en orden las fases en el laboratorio de incidentes. {endcard}Nos vemos en Alertópolis.",
+      "pauseAfterMs": 700
+    }
+  ]
+}

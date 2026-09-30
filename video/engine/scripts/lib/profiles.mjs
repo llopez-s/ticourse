@@ -39,10 +39,10 @@ export const PROFILES = Object.freeze({
     captionsOnScreen: true, // the MP4 plays in the app, burned-in captions included
     size: Object.freeze({ targetMin: 4, targetMax: 12, warn: 15, fail: 25 }),
   }),
-  /** Lively explainer for YouTube: ~6–8 min, intercepted messages, no size target (YouTube re-encodes). */
+  /** Lively explainer for YouTube: ~6–10 min, intercepted messages, no size target (YouTube re-encodes). */
   'principal-yt': Object.freeze({
     minTotalSec: 380,
-    maxTotalSec: 500,
+    maxTotalSec: 600,
     maxChapters: 5,
     examCards: [5, 8],
     thinkPrompts: 2,

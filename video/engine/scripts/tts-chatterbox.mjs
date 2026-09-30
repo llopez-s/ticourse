@@ -35,7 +35,10 @@ const SAMPLE_RATE = 24000;
 const BITRATE_KBPS = 96;
 const WORK_DIR = path.join(PATHS.outDir, 'chatterbox');
 export const VOICES_DIR = path.join(ENGINE_DIR, 'voices');
-export const VENV_PYTHON = path.join(ENGINE_DIR, '.venv-chatterbox', process.platform === 'win32' ? 'Scripts/python.exe' : 'bin/python');
+// CHATTERBOX_PYTHON points at another checkout's venv: a git worktree has none of its own, and on a drive
+// without links (exFAT) it cannot borrow one.
+export const VENV_PYTHON =
+  process.env.CHATTERBOX_PYTHON || path.join(ENGINE_DIR, '.venv-chatterbox', process.platform === 'win32' ? 'Scripts/python.exe' : 'bin/python');
 const WORKER = path.join(SCRIPTS_DIR, 'chatterbox_worker.py');
 
 /** Default synthesis settings; narration.json "chatterbox" overrides any of them. */

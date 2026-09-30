@@ -4,7 +4,17 @@ import { spawn, spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { BUNDLE_MANIFEST, bundleKey, collectBundleInputs, isCompleteBundle, markInUse, pruneBundleCache } from './bundle-cache.mjs';
+import {
+  BUNDLE_MANIFEST,
+  TRANSIENT_RENAME_CODES,
+  bundleKey,
+  collectBundleInputs,
+  isCompleteBundle,
+  markInUse,
+  pruneBundleCache,
+  removeDirQuietly,
+  renameWithRetry,
+} from './bundle-cache.mjs';
 import { ENGINE_DIR, PATHS, REPO_ROOT, VIDEO } from './paths.mjs';
 
 function assertCli() {
@@ -51,7 +61,7 @@ export function bundleVideo({ cache = process.env.BUNDLE_CACHE !== '0' } = {}) {
     const dir = mkdtempSync(path.join(os.tmpdir(), `${VIDEO}-bundle-`));
     build(dir);
     console.log(`bundle: built (cache off) in ${secs()}`);
-    return { dir, remove: () => rmSync(dir, { recursive: true, force: true }) };
+    return { dir, remove: () => removeDirQuietly(dir) };
   }
 
   const rel = (p) => path.relative(REPO_ROOT, p).split(path.sep).join('/');
@@ -79,17 +89,21 @@ export function bundleVideo({ cache = process.env.BUNDLE_CACHE !== '0' } = {}) {
   if (currentKey() !== key) {
     // A source changed while webpack ran: the bundle may hold either version, so use it once only.
     console.log(`bundle: built in ${secs()}, not cached (sources changed while bundling)`);
-    return { dir: tmp, remove: () => rmSync(tmp, { recursive: true, force: true }) };
+    return { dir: tmp, remove: () => removeDirQuietly(tmp) };
   }
   writeFileSync(path.join(tmp, BUNDLE_MANIFEST), `${JSON.stringify({ key, video: VIDEO, builtAt: new Date().toISOString(), buildMs: Date.now() - started })}\n`);
   try {
-    renameSync(tmp, dir);
+    renameWithRetry(tmp, dir);
   } catch (err) {
     if (isCompleteBundle(dir, key)) {
       rmSync(tmp, { recursive: true, force: true }); // another run finished the same bundle first: use theirs
     } else if (existsSync(dir)) {
       rmSync(dir, { recursive: true, force: true }); // an unfinished leftover under the final name
-      renameSync(tmp, dir);
+      renameWithRetry(tmp, dir);
+    } else if (TRANSIENT_RENAME_CODES.includes(err.code)) {
+      // Something still holds the new files: the bundle is fine, it just cannot be cached this time.
+      console.log(`bundle: built in ${secs()}, not cached (${err.code} renaming it)`);
+      return { dir: tmp, remove: () => removeDirQuietly(tmp) };
     } else {
       throw err;
     }

@@ -19,6 +19,53 @@ export const STUDIO_INTERCEPT_PAUSE_MS = 600;
 const collapse = (s) => s.replace(/\s+/g, ' ').trim();
 const lower = (s) => s.toLocaleLowerCase('es');
 
+/**
+ * How the reading sheet names each emotion tag of the vocabulary (moods.mjs), in Spanish: the
+ * narrator reads the sheet, not the tags. A tag outside the table is shown as it is.
+ */
+export const TONE_ES = Object.freeze({
+  calm: 'tranquila',
+  serious: 'seria',
+  steady: 'pausada',
+  grave: 'grave',
+  focused: 'concentrada',
+  firm: 'firme',
+  concerned: 'preocupada',
+  warning: 'de aviso',
+  ominous: 'inquietante',
+  tired: 'cansada',
+  sighs: 'con un suspiro',
+  clear: 'clara',
+  thoughtful: 'pensativa',
+  curious: 'con curiosidad',
+  intrigued: 'intrigada',
+  confident: 'segura',
+  warm: 'cercana',
+  warmly: 'con cariño',
+  satisfied: 'satisfecha',
+  relieved: 'aliviada',
+  reassuring: 'tranquilizadora',
+  casual: 'desenfadada',
+  engaging: 'animada',
+  enthusiastic: 'entusiasta',
+  cheerful: 'alegre',
+  mischievously: 'pícara',
+  sarcastic: 'irónica',
+  urgent: 'con urgencia',
+  suspicious: 'suspicaz',
+  emphatic: 'enfática',
+  tense: 'tensa',
+});
+
+/** "curious, warm" -> "con curiosidad, cercana" (see TONE_ES). */
+export function toneLabel(mood) {
+  return mood
+    .split(',')
+    .map((m) => m.trim())
+    .map((m) => TONE_ES[m.toLowerCase()] ?? m)
+    .join(', ');
+}
+
 /** Leading performance direction(s) of a segment ("<intrigued> Tienes…" -> "intrigued"), or null. */
 export function segmentMood(text) {
   const moods = [];
@@ -125,6 +172,12 @@ export function parseOnly(value, segments) {
   return segments.filter((s) => wanted.has(s.id)).map((s) => s.id);
 }
 
+/** Where the narrator saves the whole recording: video/engine/voices/<slug> <name>.wav. */
+export function recordingFile(slug, voice) {
+  const name = isRecordingVoice(voice) ? ` ${voice.slice('recording/'.length)}` : '';
+  return `video/engine/voices/${slug}${name}.wav`;
+}
+
 /** Where the narrator saves a re-recording: video/engine/voices/<slug> regrabacion <name>.wav. */
 export function rerecordFile(slug, voice) {
   const name = isRecordingVoice(voice) ? ` ${voice.slice('recording/'.length)}` : '';
@@ -161,7 +214,7 @@ function readingBody(storyboard, narration, manifest, ids = null) {
       if (seg.intercept) out.push(`> *(En pantalla, no se lee: mensaje de ${adversary} — «${seg.intercept.text}». Tú contestas:)*`, '');
       const mood = segmentMood(seg.text);
       const pause = (seg.pauseAfterMs ?? DEFAULT_PAUSE_MS) >= LONG_PAUSE_MS ? ' **(pausa larga)**' : '';
-      out.push(`**${seg.id}**${mood ? ` · *${mood}*` : ''} — ${readingText(seg.text)}${pause}`, '');
+      out.push(`**${seg.id}**${mood ? ` · *${toneLabel(mood)}*` : ''} — ${readingText(seg.text)}${pause}`, '');
       if (seg.think) out.push(`> *(En pantalla: «${seg.think.q}». Deja un segundo de silencio.)*`, '');
     }
   }
@@ -191,12 +244,20 @@ const cap = (s) => s.charAt(0).toLocaleUpperCase('es') + s.slice(1);
 export function recordingSheet({ storyboard, narration, manifest }) {
   const tempo = tempoLabel(narration);
   const screen = onScreenOnly(narration);
+  const frozen = manifest.frozen;
   const out = [
-    `# Guion para grabar · ${storyboard.title}`,
+    frozen ? `# Guion para grabar · ${storyboard.title}` : `# BORRADOR · no grabes todavía · ${storyboard.title}`,
+    '',
+    frozen
+      ? `**Versión definitiva** · guion congelado el ${frozen}.`
+      : '**Borrador:** el guion aún no está congelado (falta `"frozen"` en video.json) y puede cambiar. No lo grabes todavía.',
     '',
     'Lee de corrido y en orden, **a ritmo de conversación**: como si se lo contaras a una amiga, no como quien lee.',
     `Entre frase y frase deja un respiro corto; los silencios se recortan solos${tempo ? ` y el vídeo se acelera un poco (${tempo})` : ''} al montarlo.`,
-    'Si algo sale mal, **basta con repetir la oración que falló** (no hace falta la frase entera) y seguir: el importador se queda con la última toma de cada oración.',
+    'Si algo sale mal, **calla un segundo y repite la oración que falló desde su principio** (no hace falta la frase entera) y sigue: el importador se queda con la última toma de cada oración.',
+    'No hagas pausas largas dentro de una frase: si necesitas respirar, termina antes la oración.',
+    'Al acabar la última frase, deja dos segundos de silencio antes de parar la grabación.',
+    `Guárdala como \`${recordingFile(manifest.slug, narration.voice)}\`.`,
     'Lo que va entre paréntesis en cursiva es solo cómo pronunciar; la *dirección* de cada frase es orientativa.',
     screen
       ? `${cap(screen)} salen en pantalla: **no se leen**. Los dominios, IP y correos tampoco: están en pantalla.`

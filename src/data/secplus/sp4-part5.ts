@@ -350,6 +350,13 @@ const sp4m10: Module = {
         ],
       ],
     },
+    {
+      t: 'video',
+      title: 'Respuesta a incidentes: la mañana después',
+      youtube: 'S_nVqWYkKXM',
+      poster: 'videos/ir-halden-poster.png',
+      transcript: 'videos/ir-halden-transcript.txt',
+    },
     { t: 'h', text: 'Entrenamiento y pruebas: tabletop frente a simulation' },
     {
       t: 'p',
