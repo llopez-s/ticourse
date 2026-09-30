@@ -1,0 +1,416 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "history": "ding",
+    "count-14000": "error",
+    "hits": "ping2",
+    "phish-link": "alarm",
+    "redacted": "glitch",
+    "new-sub": "ding",
+    "email": "check",
+    "burned": "error",
+    "pre-block": "block",
+    "active-risk": "alarm"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<intrigued> Tienes un dominio malicioso y una IP con catorce mil vecinos. ¿Por dónde tiras?",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Hoy aprendes a pivotar por la infraestructura. O sea, a elegir la pista que te lleva al atacante, y no al ruido.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<curious> Partimos de una alerta de Meridian, el evento E7. {e7-pending}Nos dejó dos pistas pendientes. Un certificado que se repite, y el registro del dominio, que nadie ha mirado todavía.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<engaging> Hoy las seguimos. Y te adelanto algo bueno. Para atacarte, el adversario también tiene que hacer papeleo.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-hook",
+      "text": "<mischievously> {register}Registra dominios, {rent}alquila servidores y {serve}les pone certificados. Y todo eso deja rastro, casi siempre público.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-06",
+      "scene": "s01-hook",
+      "text": "<confident> O sea, que su infraestructura es lo que más se le ve. Seguir ese rastro se llama pivotar por la infraestructura, y hoy lo haces tú.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-sources",
+      "text": "<clear> Para seguirlo tienes tres fuentes, y cada una contesta una pregunta distinta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-sources",
+      "text": "<curious> {pdns}La primera te dice a qué dirección apuntaba un dominio, y quién más vive en esa dirección. Es el passive DNS.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-sources",
+      "text": "<warm> {whois}La segunda te dice quién registró el dominio, y cuándo. Eso es el WHOIS.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-sources",
+      "text": "<intrigued> {tls}Y la tercera mira los certificados de sus servidores, que a veces se repiten donde no deberían.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-sources",
+      "text": "<thoughtful> O sea, que tienes tres fuentes, y las tres tienen algo en común. Puedes consultarlas sin que el actor se entere.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-pdns",
+      "text": "<engaging> Empezamos por el passive DNS. {phonebook}Piensa en el DNS como en un listín. Le das un nombre y te devuelve un número.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-pdns",
+      "text": "<clear> Pues el passive DNS es ese listín, pero con memoria. Hay sensores por todo Internet apuntando las respuestas que ven pasar, con su fecha.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-pdns",
+      "text": "<focused> Así que le puedes preguntar dos cosas. {q-domain}La primera, a qué apuntaba el dominio del C2 de E7.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-pdns",
+      "text": "<satisfied> {history}Y te lo dice con fechas. Apuntaba a esta IP de hosting. Los sensores la vieron por primera vez semanas antes de E7, y seguía activa días después.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-pdns",
+      "text": "<curious> La segunda pregunta va al revés. {q-ip}¿Qué otros dominios han vivido en esa misma IP?",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Collection",
+        "text": "Passive DNS: a qué resolvió y quién más comparte IP",
+        "at": "q-ip",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-pdns",
+      "text": "<tense> {count-14000}Y el contador no para de subir. Mil, cinco mil… catorce mil dominios.",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "14.000 dominios en la IP. ¿Sigues por ahí?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-tenants",
+      "text": "<firm> Por ahí no. {building}Esa IP es un hosting compartido. Es como un bloque con catorce mil pisos.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-tenants",
+      "text": "<thoughtful> Que tu sospechoso viva en el bloque no convierte a sus vecinos en cómplices. {shared}Y si los sigues a todos, te ahogas en pistas falsas.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-tenants",
+      "text": "<casual> {cdn}Pasa lo mismo con la IP de una CDN, que sirve miles de webs de empresas. O con un sinkhole, que recoge miles de dominios ya cazados.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-tenants",
+      "text": "<confident> {dedicated}Lo contrario es una casa donde solo vive él, como un servidor propio o un certificado hecho a mano. Eso es un recurso dedicado.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-tenants",
+      "text": "<warm> {rule}O sea, que antes de pivotar, cuenta los inquilinos. Compartido contamina, porque te trae a los vecinos. Dedicado discrimina, porque te lleva solo a él.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "Collection",
+        "text": "Recurso dedicado discrimina; compartido contamina",
+        "at": "rule",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-cert",
+      "text": "<intrigued> Vamos con el certificado. {fp}El C2 usa uno autofirmado, y encima hecho a medida. O sea, uno que el actor se ha hecho él mismo, sin autoridad que lo firme.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-cert",
+      "text": "<sarcastic> Justo. Y eso es lo que lo delata. Es como una llave hecha a mano. Si abre otra puerta, casi seguro que esa puerta también es suya.",
+      "pauseAfterMs": 600,
+      "intercept": {
+        "text": "Mis certificados me los firmo yo. Nadie más tiene uno igual.",
+        "holdMs": 3600
+      }
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-cert",
+      "text": "<focused> {scan}Ese certificado tiene una huella, un código que lo identifica, y la buscas en los escaneos de Internet. {hits}Y aparece en tres IP.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-cert",
+      "text": "<curious> Una ya la conoces, la del bloque de pisos. {dedicated-ip}Pero esta otra tiene muy pocos inquilinos. Es un servidor propio.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-cert",
+      "text": "<tense> ¿Y quién vive ahí? Se lo preguntas al listín con memoria. {phish-link}Un portal falso para iniciar sesión en Meridian. O sea, phishing.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-cert",
+      "text": "<emphatic> Así que el C2 y el phishing comparten la misma llave. Y eso es una pista muy fuerte de que tienen el mismo dueño.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-cert",
+      "text": "<casual> {redacted}Los demás vecinos los dejamos tapados, que esos te tocan a ti en el [Lab 3A|lab tres a].",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-ct",
+      "text": "<clear> Los certificados tienen otro truco. Cuando una autoridad de certificación pública firma uno, lo tiene que colgar a la vista de todos.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-ct",
+      "text": "<warm> {ct-board}Es como un tablón de anuncios que puede leer cualquiera. Se llama Certificate Transparency.",
+      "pauseAfterMs": 350,
+      "exam": {
+        "objective": "Collection",
+        "text": "CT logs: cada certificado de CA pública queda publicado",
+        "at": "ct-board",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-ct",
+      "text": "<intrigued> ¿Y eso para qué te sirve? {new-sub}Para ver la infraestructura nueva mientras la montan. Hoy mismo sale un certificado para un dominio que imita a Meridian.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-ct",
+      "text": "<serious> Ojo con dos cosas. Los autofirmados no pasan por el tablón, así que esos se buscan en los escaneos.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-ct",
+      "text": "<firm> {free-ca}Y los certificados gratis salen por millones, así que el emisor no te dice nada. Es como seguir a todo el bloque. {exact}Lo que pivota es la huella exacta.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-whois",
+      "text": "<casual> Tercera fuente, el WHOIS. Es la ficha de registro del dominio. Quién lo compró, cuándo y en qué tienda. A esa tienda se la llama registrador.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-whois",
+      "text": "<curious> {whois-redacted}Miras la del dominio del C2 y… todo tapado. Tiene activada la protección de privacidad.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-whois",
+      "text": "<mischievously> Hoy sí. Pero el WHOIS también tiene memoria. {whois-history}Quedan fichas antiguas, de antes de que activaran la privacidad.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "Mi WHOIS está tapado. Privacidad, analista. Búscate otro hobby.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-whois",
+      "text": "<satisfied> {email}Y en la ficha de [2025|dos mil veinticinco] aparece un correo de contacto. Puede que no sea un nombre real, pero es un pivote dedicado.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-whois",
+      "text": "<thoughtful> Y aunque no hubiera correo, quedaría el patrón. {pattern}Mismo registrador, mismos servidores de nombres y mismo día. Cada dato suelto no dice nada. Juntos, lo delatan.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "Collection",
+        "text": "WHOIS con privacidad: histórico y patrones",
+        "at": "pattern",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-lifecycle",
+      "text": "<engaging> Ese patrón tiene una historia detrás, porque un dominio malicioso pasa por varias etapas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-lifecycle",
+      "text": "<clear> {batch}Suele nacer en lote, con varios hermanos el mismo día. {parked}Y luego se queda dormido, semanas o incluso meses.",
+      "pauseAfterMs": 350,
+      "exam": {
+        "objective": "Collection",
+        "text": "Dominios dormidos envejecen para evadir reputación",
+        "at": "parked",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-lifecycle",
+      "text": "<suspicious> ¿Por qué dormido? Porque muchos filtros desconfían de los dominios recién nacidos. Así que el actor los deja envejecer.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-lifecycle",
+      "text": "<tense> {active}Un día lo despiertan y lo apuntan a sus servidores. {use}Lo usan en la campaña. {burned}Y cuando alguien lo detecta, queda quemado y el actor pasa al siguiente.",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Puedes bloquear un dominio antes de usarse?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-preblock",
+      "text": "<confident> Pues sí, y ahí está lo bonito. {batch-detect}Si detectas el lote, conoces a los hermanos antes de que despierten.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-preblock",
+      "text": "<focused> {siblings}Buscas los dominios registrados con el mismo patrón y el mismo día. Aquí salen varios, todavía dormidos.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-preblock",
+      "text": "<satisfied> {pre-block}Y los bloqueas ya, antes de que llegue el primer correo. {coa-deny}En la matriz de cursos de acción, esto es un Deny.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Collection",
+        "text": "Detectar el lote permite bloquear antes del uso",
+        "at": "pre-block",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-preblock",
+      "text": "<warm> O sea, que por una vez no vas detrás del ataque. Vas por delante.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-opsec",
+      "text": "<calm> Una última cosa, y es importante. {passive}Todo lo de hoy lo has sacado del listín, del tablón y de las fichas, sin tocar al actor. Eso es pivotar en pasivo.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Collection",
+        "text": "Pivoteo pasivo: el actor no te ve",
+        "at": "passive",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-opsec",
+      "text": "<firm> Ni se te ocurra. {active-risk}Si visitas o escaneas su servidor, tu visita queda en sus logs. Y puede darse cuenta de que vas detrás de él.",
+      "pauseAfterMs": 450,
+      "intercept": {
+        "text": "¿Por qué no vienes a verme? Mi servidor te está esperando.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-opsec",
+      "text": "<steady> Por eso, pasivo primero. {managed}Y si algún día tienes que tocar, hazlo desde un entorno desechable que no lleve a tu empresa. Eso, en la próxima lección.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-recap",
+      "text": "<warm> {recap}Resumiendo, quédate con tres reglas para tu próximo pivote.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-recap",
+      "text": "<confident> {rule-1}Una, antes de seguir una pista, cuenta los inquilinos. {rule-2}Dos, busca lo que es solo suyo, como un certificado hecho a mano.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-recap",
+      "text": "<enthusiastic> {rule-3}Y tres, mira siempre en pasivo, para que el actor no sepa que vas detrás.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s11-04",
+      "scene": "s11-recap",
+      "text": "<cheerful> {lab3a}Ahora te toca a ti, con las consultas contadas, en el [Lab 3A|lab tres a]. {endcard}Nos vemos en Alertópolis.",
+      "pauseAfterMs": 600
+    }
+  ]
+}

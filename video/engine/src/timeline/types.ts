@@ -128,6 +128,8 @@ export interface Timeline {
   intercept?: InterceptCue[];
   /** Present only when narration.json has "sfx". */
   sfx?: SfxCue[];
+  /** Present (false) only when captions are not burned in: YouTube videos, which carry the VTT instead. */
+  captionsOnScreen?: false;
 }
 
 /** What every scene component receives. All frames are LOCAL to the scene's Sequence. */

@@ -24,10 +24,10 @@ Resultado esperado: un ranking razonado de todo el curso, tres tandas priorizada
 
 | | **Principal** | **Cápsula práctica** | **Principal YouTube (`principal-yt`)** | **Cápsula YouTube (`capsula-yt`)** |
 |---|---|---|---|---|
-| Suma de `targetSec` de las escenas | 270–300 s | 130–165 s | más que Principal, para que quepa la chispa sin recortar contenido (lo acota la duración renderizada) | más que Cápsula, ídem |
+| Suma de `targetSec` de las escenas | 270–300 s | 130–165 s | más que Principal: menos conceptos, mejor contados (lo acota la duración renderizada) | más que Cápsula, ídem |
 | Duración renderizada (`minTotalSec`–`maxTotalSec` de `scripts/lib/profiles.mjs`) | ≈ +20 s por márgenes de la tubería (entradas, colas y transiciones de escena, cierre): 290–320 s. En el SIEM, 305 s de escenas dieron 325 s | ≈ +15–20 s: 150–190 s | **380–500 s** | **190–260 s** |
 | Estructura | 5 capítulos, 10–12 escenas | 3 capítulos, 5–6 escenas | 5 capítulos (sin cambios) | 3 capítulos (sin cambios) |
-| Exam cards (≤58 car., máx. 1 por escena, ninguna en la última) | 8–11 | 4–6 | 8–11 (sin cambios) | 4–6 (sin cambios) |
+| Exam cards (≤58 car., máx. 1 por escena, ninguna en la última) | 8–11 | 4–6 | **5–8** (4–6 conceptos clave) | **3–5** (2–3 conceptos clave) |
 | Think prompts (≤48 car.) | 2 | 1 | 2 (sin cambios) | 1 (sin cambios) |
 | Mensajes interceptados del adversario (§4) | — (perfil sin ellos) | — (perfil sin ellos) | **2–4, máx. 1 por capítulo** | **1–2** |
 | Demo práctica | 1–3 escenas de consola/log/diagrama | ≥50 % del vídeo | igual que Principal | igual que Cápsula |
@@ -41,52 +41,124 @@ Estilo común, heredado del SIEM:
 - Datos ficticios con el sello «Simulación educativa · datos ficticios».
 - Descargo por pista: «no afiliado a CompTIA» en Security+, «no afiliado a SANS/GIAC» en GCTI.
 
-### Narración con chispa (vídeos nuevos)
+### Narración hablada (vídeos nuevos)
 
-Estas reglas rigen los vídeos nuevos (V1 EDR rehecho, V3, V4 y siguientes); los tres vídeos ya publicados
-(SIEM, EDR antiguo y forense) no se tocan. Copiadas de
-`docs/superpowers/specs/2026-09-26-video-narration-style-design.md` §2.1–§2.3 y §5.2.
+Estas reglas rigen los vídeos nuevos (V4 y siguientes) y son **la única copia**: el README del motor y los
+diseños remiten aquí. Sustituyen a la «narración con chispa» del 2026-09-26, con la que se escribieron V1
+(capas-halden) y V3 (diamond-e7); esos vídeos, como los tres anteriores, no se rehacen. Diseño y motivos:
+`docs/superpowers/specs/2026-09-28-spoken-narration-design.md`.
+
+El objetivo: que suene a una persona que te lo explica, no a un texto leído. La narradora es una sola voz, en
+segunda persona, y el guion es lo que dice (la transcripción y los subtítulos salen de él).
 
 #### Reglas
 
-1. **Una idea nueva por frase.** Frases de unas 20 palabras como mucho. Nada de enumeraciones con punto y coma:
-   una lista de más de tres elementos se reparte en varias frases o se lleva a la pantalla.
-2. **Te habla a ti.** En segunda persona. Al menos una pregunta por escena, contestada enseguida.
-3. **Una imagen por concepto clave.** Cada concepto clave lleva una analogía cotidiana o una imagen concreta
-   («un pequeño programa que lo reenvía todo»).
-4. **Humor en el marco, nunca en el dato.** La ironía, los guiños y los remates van en las frases que presentan
-   o comentan. La frase que transmite el dato va limpia y literal. El texto de las tarjetas de examen no se
-   adorna.
-5. **Remate con respiro.** Después de un chiste o de una revelación, `pauseAfterMs` sube a 600–900 ms.
-6. **Emoción variada.** Se usan las etiquetas `<…>` de ElevenLabs (Chatterbox también las usa; ver §5.2) sin
-   repetir la misma en dos segmentos seguidos.
-7. **La historia manda.** Halden / GLASS HARBOR en Security+ y VELVET CICADA en GCTI. El adversario provoca y la
-   analista responde (§4).
+1. **Habla, no acotes.** Cada frase tiene a alguien haciendo algo. «Sala de control del muelle 3.» pasa a
+   «Estamos en el muelle tres.»
+2. **Conectores hablados, no dos puntos.** «porque», «o sea», «así que», «pues», «fíjate», «es que». Como mucho
+   un «:» por segmento, y en no más de un tercio de los segmentos.
+3. **Primero la idea, luego el nombre.** Se explica con palabras llanas y después se nombra («…si no es el
+   mismo, suspenso. Eso es la alineación.»). Ningún término se usa en la historia antes de explicarlo.
+4. **Repite lo importante.** Cada concepto clave se dice dos veces, con palabras distintas. Cada capítulo
+   anuncia lo que viene y cierra con un «o sea, que…».
+5. **Lo que se lee no se deletrea.** Dominios, equipos, IP, hashes, correos y nombres de fichero van en
+   pantalla; la voz dice qué son («el dominio del atacante», «una estación de administración»). Como mucho una
+   excepción por vídeo, si el nombre es la pista central, justificada en `out/script-notes.md`.
+6. **Una analogía por concepto, y se mantiene.** Una imagen cotidiana por concepto clave, que vuelve cuando el
+   concepto vuelve. Nada de amontonar imágenes nuevas.
+7. **Preguntas de verdad, sin cuota.** Las que se haría quien lo ve, con formas distintas. Nunca la fórmula
+   «¿Y X? Pues Y» encadenada.
+8. **Frases cortas, unidas como se habla.** Una idea nueva por frase (unas 20 palabras como mucho; nada de
+   enumeraciones con punto y coma: una lista de más de tres elementos va a la pantalla), pero con sus
+   conectores: una frase corta no tiene que sonar a telegrama.
+9. **Humor en el marco, nunca en el dato.** Ironía, guiños y remates van en las frases que presentan o comentan;
+   la que transmite el dato va limpia. El texto de las tarjetas de examen no se adorna.
+10. **Ritmo vivo.** `pauseAfterMs` normal 250–400 ms; tras un remate o una revelación, 500–700 ms. Emociones
+    `<…>` variadas (ElevenLabs las entiende y Chatterbox las traduce a un registro), sin repetir la misma en dos
+    segmentos seguidos.
+11. **La historia manda.** Halden / GLASS HARBOR en Security+ y VELVET CICADA en GCTI. El adversario provoca y
+    la narradora responde (§4).
+12. **La prueba del café.** ¿Se lo dirías así a una amiga tomando algo? Si no, se reescribe.
 
-#### Ejemplo
+#### Menos conceptos, mejor contados
 
-Antes (SIEM `s02-02`, 20 palabras):
+- Un principal explica **4–6 conceptos clave**; una cápsula, **2–3**. Cada uno recibe explicación llana, nombre,
+  su analogía, su momento en la historia y como mucho dos tarjetas de examen.
+- Lo que no cabe se queda en el texto de la lección de la app; `out/script-notes.md` dice qué se quedó fuera y
+  dónde está. Si una lección tiene demasiado, se parte en dos vídeos.
+- **Nunca se rellena** para llegar a la duración mínima del perfil: si el guion queda corto, se baja el mínimo.
+- `wordBudget` de cada escena = `targetSec` × **2,7** palabras/s en los perfiles `-yt` (los antiguos, 2,4).
 
-> Servidores y estaciones envían por agente; firewalls y switches, por syslog; la nube, por API; y los routers
-> exportan NetFlow.
+#### Ejemplo (capas-halden s02, aprobado por Lidia)
 
-Después (unas 55 palabras, los mismos datos):
+Antes:
 
-> ¿Cómo llegan los logs al SIEM? Depende de quién hable. Servidores y estaciones llevan un agente: un pequeño
-> programa que lo reenvía todo. Firewalls y switches no suelen admitir agentes, así que hablan syslog. La nube
-> contesta por API. ¿Y los routers? Esos no te cuentan qué se dijo, solo quién habló con quién y cuánto: NetFlow.
+> Sala de control del muelle 3. Lucía, de Operaciones, recibe por correo los turnos de atraque. Remite
+> haldenport.example: de casa. ¿Seguro que es de casa? Abres las cabeceras: la etiqueta de envío que casi nadie
+> mira. SPF da el aprobado. DKIM, también. Pero lo que validan es hdn-mailer.example, el dominio del atacante.
+> […] Falló la alineación. DMARC compara el From que ve Lucía, haldenport.example, con el dominio validado. No
+> coinciden: suspenso.
 
-#### Salvaguardas de rigor
+Después (mismos cues, misma pausa para pensar, misma tarjeta de examen):
 
-- **El revisor de exactitud** (subagente de solo lectura, antes de sintetizar la voz) comprueba también que
-  ninguna analogía ni ningún chiste falsee el concepto. Una analogía que simplifica en exceso se corrige o se
-  quita.
-- **Validador del motor** (`analyzeNarration`). Frase de más de 22 palabras: el aviso ya existe para todos los
-  perfiles. Los perfiles `-yt` activan además, **solo como avisos, no errores** (así los vídeos antiguos no se
-  llenan de avisos):
-  - dos segmentos seguidos con la misma etiqueta de emoción;
-  - escena sin ninguna pregunta;
-  - `;` en el texto hablado.
+> Estamos en el muelle tres. A Lucía, de Operaciones, le llega un correo con los turnos de atraque. Y viene de
+> casa, del dominio del puerto.
+> Bueno, eso parece. Pero antes de fiarte, mira las cabeceras. Son como la etiqueta de envío de un paquete, y
+> casi nadie las mira.
+> Hay dos comprobaciones en verde. SPF dice que el servidor tenía permiso para enviarlo. Y DKIM, que la firma es
+> buena.
+> Todo en orden, ¿no? Pues mira de quién es ese permiso. Y esa firma. Del dominio del atacante, no del puerto.
+> Lo que falla es que no cuadran. DMARC compara el remitente que ve Lucía con el dominio que han comprobado SPF y
+> DKIM. Si no es el mismo, suspenso.
+> Eso es la alineación. O sea, que el correo trae dos aprobados y un suspenso… y aun así está en su bandeja.
+> ¿Cómo ha entrado?
+
+#### Revisores y validador
+
+- **Dos revisores**, subagentes de solo lectura, en paralelo y antes de grabar o sintetizar la voz:
+  - **exactitud**, contra la lección y el objetivo oficial; comprueba también que ninguna analogía ni chiste
+    falsee el concepto (una analogía que simplifica en exceso se corrige o se quita);
+  - **naturalidad**, contra las doce reglas y el presupuesto de conceptos de arriba; devuelve los segmentos que
+    hay que reescribir, con una propuesta para cada uno.
+- **Validador del motor** (`analyzeNarration`). El aviso de frase de más de 22 palabras vale para todos los
+  perfiles. Los perfiles `-yt` (`chispa: true`) avisan además, **solo como avisos**:
+  - dos segmentos seguidos con la misma etiqueta de emoción, y `;` en el texto hablado;
+  - más de un «:» usado como conector en un segmento, o «:» en más de un tercio de los segmentos;
+  - un dominio, IP, equipo, hash, correo o nombre de fichero leído en voz alta;
+  - más de 3 preguntas que empiezan con la misma palabra («¿Y …?»).
+
+  El primer guion con estas reglas debe pasar `build-timeline --estimate` sin ninguno de estos avisos.
+
+#### Grabación propia: ritmo
+
+- `narration.json` → `"recording": { "tempo": 1.08, "maxPauseMs": 250 }`: `import-recording.mjs` acorta a
+  250 ms las pausas dentro de cada frase y acelera los clips un 8 % sin cambiar el tono. **Provisional** hasta
+  que Lidia elija en la audición de ritmo (escena s02 de capas-halden a 1×, pausas cortas, 1,08× y 1,15×).
+- Al grabar: a ritmo de conversación, sin la pausa de lectura entre frases (el corte ya deja aire).
+- Si una oración sale mal, basta con repetir **esa oración**: el importador se queda con la última toma de
+  cada oración y las empalma (y con la última toma de la frase entera, si se repite completa).
+
+#### Claridad y ritmo (revisión del 2026-09-29)
+
+Del análisis de V1, V3 y el borrador de V4 (`docs/reviews/2026-09-29-videos/analisis-y-prompt.md`): la estética
+y los diagramas funcionan; lo que más ayuda es que quien lo ve sepa qué va a aprender, dónde mirar y cuándo pensar.
+
+1. **La promesa, en los primeros 8–12 s.** El problema, qué sabrá hacer quien lo ve y el nombre del tema (el cue
+   `title`; `build-timeline` avisa si llega después de los 12 s). Si el vídeo continúa otro, una frase resume lo
+   imprescindible para que se entienda por separado.
+2. **Tiempo de verdad para pensar.** Dos preguntas en un principal y una en una cápsula, cada una una decisión breve
+   (mejor con dos opciones), con `think.holdMs` de 4000–5000 ms: 3–4 s con la tarjeta asentada. Después, la
+   respuesta y su motivo.
+3. **Primero el ejemplo, después la tarjeta.** `narration.json` → `"examTiming": "sentence-end"`: la tarjeta de
+   examen espera a que termine la oración de su cue. Una regla por tarjeta, y nunca una tarjeta nueva mientras hay
+   que leer un log o comparar dos valores.
+4. **Dónde mirar.** Evidencia, interpretación y regla, por pasos y al compás de la voz. Se amplía la fila, el valor o
+   la conexión que se explica y se atenúa el resto; 48–60 px para las etiquetas clave, comprobado a 480 px de ancho.
+5. **El adversario trae un error concreto** que la explicación corrige; si solo repite la historia, sobra.
+6. **Cierre: tres reglas prácticas y una sola acción siguiente** (una pregunta, un laboratorio o la lección
+   siguiente).
+7. **El mismo volumen en todos los episodios:** `master_mix.py`, −14 LUFS y −1 dBTP medidos sobre el MP4 ya
+   codificado.
 
 #### Vocabulario de etiquetas de emoción
 
@@ -342,6 +414,12 @@ Las exam cards se listan en el orden de las escenas:
   - «¿Pivotas por la IP o por el certificado?» (s09)
 
 ### V4 · s3m3 · Principal · «Pivotar por la infraestructura: pDNS, WHOIS y certificados»
+
+> **Producido el 2026-09-28 con «Narración hablada» (§1)**, que recortó este brief: 11 escenas, 7 tarjetas y 5
+> conceptos clave (sin la escena del presupuesto del Lab 3A; lote y bloqueo previo en dos escenas). La versión
+> vigente es `video/pivot-infra/storyboard.json`; qué se quedó fuera, en `video/pivot-infra/out/script-notes.md`.
+> La tabla de abajo es el brief original.
+
 - **Slug:** `pivot-infra`.
 - **Duración:** escenas ~294 s; render ≈ 314 s.
 - **Inserción:** en `src/data/s3.ts`, después del check de los 14.000 dominios (~`:627`) y antes del callout de campaña del Lab 3A. El orden queda vídeo, laboratorio.
@@ -493,6 +571,8 @@ Las exam cards se listan en el orden de las escenas:
 ## 8. Flujo de producción por vídeo (recetario)
 
 1. **`storyboard.json`:** perfil, capítulos, escenas, `targetSec`, `wordBudget` y `requiredCues`, copiados de este plan.
+   En los vídeos `-yt`, antes de escribirlo se recorta el brief a **4–6 conceptos clave** (2–3 en una cápsula) y
+   `out/script-notes.md` dice qué se quedó fuera y dónde está en la lección (§1, «Narración hablada»).
 2. **`narration.json` + `lexicon.json`:**
    - con marcado `{cue}` y `[display|spoken]`;
    - nuevas entradas de léxico para la pista (p. ej. Diamond, WHOIS, pDNS, DMARC);
@@ -508,8 +588,11 @@ Las exam cards se listan en el orden de las escenas:
      «jóuld», son para edge-tts y con Chatterbox se leen peor). `build-timeline.mjs` usa ese mismo léxico —
      por eso se fija en `narration.json` en vez de cambiarlo por su cuenta — y `tts-chatterbox.mjs` avisa si
      no está puesto.
-   - **Al hacer la revisión de exactitud** (paso 3): el revisor comprueba además que ninguna analogía ni chiste
-     de la narración con chispa falsee el concepto.
+   - **Revisores** (paso 3): el de exactitud comprueba además que ninguna analogía ni chiste falsee el concepto,
+     y en paralelo un **revisor de naturalidad** repasa el guion contra las reglas de «Narración hablada» (§1).
+   - **Con grabación propia** (`"voice": "recording/<nombre>"`): `narration.json` lleva
+     `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` (valores provisionales, §1) y
+     `import-recording.mjs` los aplica al cortar los clips.
    - **Después de `render`** (paso 5): `node video/engine/scripts/youtube-meta.mjs --video <slug>` escribe
      `out/youtube.md` (título, descripción con capítulos, etiquetas y la lista de archivos a subir). Publicación:
      - Lidia inicia sesión en YouTube Studio en su Chrome;
@@ -519,8 +602,9 @@ Las exam cards se listan en el orden de las escenas:
    - **En la app** (paso 6): en vez de copiar el MP4, se añade o sustituye un bloque
      `{ t: 'video', title, youtube: '<id>', poster, transcript }`, con el póster y la transcripción en
      `public/videos/` y **sin copiar el MP4** (se queda en `video/<slug>/out/`, ignorado por git).
-3. **Revisión de exactitud** por un subagente de solo lectura contra la lección y el objetivo oficial, *antes* de sintetizar la voz.
-4. `build-timeline --estimate`, escenas en Remotion (reutilizando `ui/*`) y `qa-frames`.
+3. **Revisión de exactitud** por un subagente de solo lectura contra la lección y el objetivo oficial, *antes* de sintetizar o grabar la voz; en los vídeos `-yt`, a la vez que la **revisión de naturalidad** (§1).
+4. `build-timeline --estimate`, escenas en Remotion (reutilizando `ui/*`) y `qa-frames`. Antes del render final se
+   revisan a tamaño móvil (480 px) una escena densa, una pregunta completa y el cierre.
 5. Audio con la voz fijada en P1, `render --draft` y después `render`, que comprueba duración, tamaño y sincronía A/V.
 6. Copiar el MP4, el póster, el transcript y el VTT a `public/videos/<slug>*` y añadir o sustituir el bloque `t:'video'` en el punto de inserción indicado.
 7. `npm test`, `npm run build` y vista previa en el navegador.

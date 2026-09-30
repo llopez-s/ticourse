@@ -53,6 +53,31 @@ const mmss = (frames, fps) => {
 };
 
 /** Pretty JSON with flat objects (words, cues…) kept on one line. */
+/**
+ * How long a clip plays: to its last word + `tailMs`, or, for a recording that measured where its voice really
+ * stops (`speechEndMs`, import-recording), to the later of the two + `tailMs` — never past the clip itself.
+ */
+export function playbackMs({ probeMs, lastEnd, speechEndMs, tailMs, fullAudio = false }) {
+  if (fullAudio) return probeMs;
+  return Math.min(probeMs, Math.max(lastEnd, speechEndMs ?? 0) + tailMs);
+}
+
+/** How exam cards are timed: on their cue, or once the sentence holding it has been heard (narration.json "examTiming"). */
+export const EXAM_TIMINGS = Object.freeze(['cue', 'sentence-end']);
+/** The -yt profiles want the title cue (the topic and the promise) inside the first seconds. */
+export const TITLE_MAX_SEC = 12;
+
+/** Frame at which the sentence holding `cueId` (without one, the card segment's first sentence) has been heard. */
+function sentenceEndFrame(sceneSegs, timelineSegments, examSeg, cueId) {
+  const owner = (cueId && sceneSegs.find((x) => x.parsed.cues.some((c) => c.id === cueId))) || examSeg;
+  const { words } = timelineSegments.find((x) => x.id === owner.id);
+  const start = (cueId && owner.parsed.cues.find((c) => c.id === cueId)?.displayIndex) || 0;
+  for (let k = Math.min(start, words.length - 1); k < words.length; k++) {
+    if (/[.!?…]["»)]*$/.test(words[k].text)) return words[k].to;
+  }
+  return words[words.length - 1].to;
+}
+
 export function formatJson(value, indent = '') {
   const flat = (v) => v === null || typeof v !== 'object';
   if (flat(value)) return JSON.stringify(value);
@@ -124,7 +149,7 @@ async function loadAudio(segments, voice, opts, errors, warnings) {
       continue;
     }
     trailing.push(probeMs - lastEnd);
-    const durationMs = opts.fullAudio ? probeMs : Math.min(probeMs, lastEnd + opts.tailMs);
+    const durationMs = playbackMs({ probeMs, lastEnd, speechEndMs: tts.speechEndMs, tailMs: opts.tailMs, fullAudio: opts.fullAudio });
     const spokenTimes = alignSpokenTokens(seg.parsed.spokenTokens, tts.words, { totalMs: lastEnd });
     const content = seg.parsed.spokenTokens.filter((t) => normalizeToken(t)).length;
     const unmatched = spokenTimes.filter((t, k) => !t.matched && normalizeToken(seg.parsed.spokenTokens[k])).length;
@@ -220,6 +245,10 @@ export async function buildTimeline(options = {}) {
   const errors = [];
   const warnings = [];
   const mode = opts.estimate ? 'estimate' : 'audio';
+  const examTiming = sources.narration.examTiming ?? 'cue';
+  if (!EXAM_TIMINGS.includes(examTiming)) {
+    errors.push(`narration.json "examTiming" must be one of ${EXAM_TIMINGS.join(', ')} (got ${JSON.stringify(examTiming)})`);
+  }
   const audio = opts.estimate ? estimateAudio(analysis.segments) : await loadAudio(analysis.segments, voice, opts, errors, warnings);
   if (errors.length) reportOrThrow({ errors, warnings }, log);
 
@@ -304,10 +333,18 @@ export async function buildTimeline(options = {}) {
       t += durationInFrames;
     }
     for (const { seg, from } of examSources.filter((e) => e.seg.scene === scene.id)) {
+      const holdFrames = Math.round(seg.exam.holdSec * fps);
+      const cueFrame = seg.exam.at ? sceneCues.get(seg.exam.at) : from;
+      // "sentence-end": the card waits until the sentence that holds its cue has been heard (the example
+      // first, then the rule), pulled back if it would leave the scene, but never before its cue.
+      const cardFrom =
+        examTiming === 'sentence-end'
+          ? Math.max(cueFrame, Math.min(sentenceEndFrame(segs, segments, seg, seg.exam.at), t + TIMING.sceneTail - holdFrames - 1))
+          : cueFrame;
       exam.push({
         scene: scene.id,
-        from: seg.exam.at ? sceneCues.get(seg.exam.at) : from,
-        durationInFrames: Math.round(seg.exam.holdSec * fps),
+        from: cardFrom,
+        durationInFrames: holdFrames,
         objective: seg.exam.objective,
         text: seg.exam.text,
         // Security+ cards keep the implicit SY0-701 badge, so their timelines stay byte-identical.
@@ -359,6 +396,13 @@ export async function buildTimeline(options = {}) {
     );
   }
   if (intercept.length && !opts.adversary) errors.push('the narration has intercepted messages but video.json has no "adversary"');
+  if (profile.chispa) {
+    // Review of 2026-09-29: say what the viewer will learn, and name the topic, in the first seconds.
+    const title = cues.find((c) => c.id === 'title');
+    if (title && title.frame / fps > TITLE_MAX_SEC) {
+      warnings.push(`title cue at ${(title.frame / fps).toFixed(1)} s, after the first ${TITLE_MAX_SEC} s: say early what the viewer will learn and name the topic`);
+    }
+  }
 
   const captions = paginate(allWords, segmentStarts);
 
@@ -406,6 +450,8 @@ export async function buildTimeline(options = {}) {
     think,
     ...(intercept.length ? { intercept } : {}),
     ...(sfx.length ? { sfx } : {}),
+    // Written only when off, so the timelines of the videos that burn captions in stay byte-identical.
+    ...(profile.captionsOnScreen === false ? { captionsOnScreen: false } : {}),
   };
   errors.push(...validateTimeline(timeline, { sceneIds: opts.sceneIds ?? storyboard.scenes.map((s) => s.id), maxChapters: profile.maxChapters }));
   if ((storyboard.chapters ?? []).length > profile.maxChapters) errors.push(`storyboard has ${storyboard.chapters.length} chapters; the "${opts.profile}" profile allows ${profile.maxChapters}`);

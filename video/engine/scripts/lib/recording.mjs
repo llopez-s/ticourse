@@ -15,6 +15,7 @@ export const CLIP_SAMPLE_RATE = 24000; // same as the Chatterbox clips
 export const CLIP_BITRATE_KBPS = 96;
 const ANCHOR_SLACK = 0.1; // first pass: the earliest take within this of the best anchors the segment
 const NEAR_BEST = 0.05; // second pass: takes within this of the best count as equally good; the last wins
+const SENTENCE_SCORE = 0.8; // third pass: every sentence of a segment must be found at least this well to splice
 const EDGE_SLACK = 0.02; // within a take, an extra first word is kept if it costs at most this much score
 const LOOKAHEAD = 300; // words searched past the previous segment for the next one
 const MIN_LEN = 0.6; // candidate span length, relative to the segment text (in characters)
@@ -24,6 +25,7 @@ const POST_ROLL_MS = 120; // and after the last word, before the silence that fo
 const SNAP_EARLY_MS = 500; // how far a silence may sit before an ASR word edge and still be snapped to
 const SNAP_LATE_MS = 200; // and how far past it (ASR edges drift both ways, more often late at a start)
 const FALLBACK_MS = 250; // with no silence nearby, never reach further than this past the word edge
+const MISTIMED_PAUSE_MS = 300; // a pause this long starting inside a word means Whisper mistimed that word
 
 const UNITS = 'cero uno dos tres cuatro cinco seis siete ocho nueve diez once doce trece catorce quince dieciseis diecisiete dieciocho diecinueve veinte veintiuno veintidos veintitres veinticuatro veinticinco veintiseis veintisiete veintiocho veintinueve'.split(' ');
 const TENS = ['', '', '', 'treinta', 'cuarenta', 'cincuenta', 'sesenta', 'setenta', 'ochenta', 'noventa'];
@@ -168,24 +170,107 @@ export function locateSegments(segments, words, { minScore = MIN_SCORE, lookahea
   }
 
   // Pass 2: between its anchor and the next segment's, keep the last take that is as good as the best.
-  return segments.map((s, k) => {
+  const picks = segments.map((s, k) => {
     const anchor = anchors[k];
-    if (!anchor) return { id: s.id, found: false, score: 0 };
+    if (!anchor) return null;
     const next = anchors.slice(k + 1).find(Boolean);
     const limit = next ? next.first : n;
     const cands = scanStarts(forms[k], tokens, anchor.first, limit, limit, true);
     const best = bestScore(cands);
     const takes = groupTakes(cands.filter((c) => c.score >= best - NEAR_BEST));
-    const pick = takes.length ? takes[takes.length - 1] : anchor;
+    return takes.length ? takes[takes.length - 1] : anchor;
+  });
+
+  // Pass 3: a narrator often re-reads just the sentence that went wrong, or restarts one half-way. Up to
+  // the next segment's take, keep the last take of every sentence, and splice them when that reads better.
+  const heardOf = (spans) => spans.flatMap((p) => words.slice(p.first, p.last + 1).map((w) => w.text)).join(' ');
+  return segments.map((s, k) => {
+    const pick = picks[k];
+    if (!pick) return { id: s.id, found: false, score: 0 };
+    // The sentences are looked for between the previous segment's take and the next one's: a false start
+    // can make pass 2 begin the take late, after the first sentence.
+    const prev = picks.slice(0, k).reverse().find(Boolean);
+    const next = picks.slice(k + 1).find(Boolean);
+    const parts = sentenceTakes(s, tokens, prev ? prev.last + 1 : 0, next ? next.first : n);
+    const spliced = parts && parts.length > 1 ? parts : null;
+    const whole = { first: pick.first, last: pick.last };
+    const heard = heardOf(spliced ?? [whole]);
+    // Scored like pass 2 scores a take: against the shown and the spoken form, whichever is closer.
+    const score = spliced ? Math.max(similarity(s.parsed.display, heard), similarity(s.parsed.spoken, heard)) : pick.score;
+    // A splice must read at least as well as the take it replaces; on a tie the later reading wins.
+    const useSplice = spliced && score >= pick.score - 0.01;
     return {
       id: s.id,
       found: true,
-      score: Math.round(pick.score * 100) / 100,
-      first: pick.first,
-      last: pick.last,
-      heard: words.slice(pick.first, pick.last + 1).map((w) => w.text).join(' '),
+      score: Math.round((useSplice ? score : pick.score) * 100) / 100,
+      first: useSplice ? spliced[0].first : pick.first,
+      last: useSplice ? spliced.at(-1).last : pick.last,
+      ...(useSplice ? { parts: spliced } : {}),
+      heard: useSplice ? heard : heardOf([whole]),
     };
   });
+}
+
+/** A segment's sentences, each with its match forms (shown and spoken), or null when the two forms split differently. */
+function sentenceForms(segment) {
+  const split = (text) => text.split(/(?<=[.!?…])\s+/).map((x) => x.trim()).filter(Boolean);
+  const shown = split(segment.parsed.display);
+  const said = split(segment.parsed.spoken);
+  if (said.length !== shown.length) return shown.map((x) => [matchKey(x)].filter(Boolean));
+  return shown.map((x, j) => [...new Set([matchKey(x), matchKey(said[j])])].filter(Boolean));
+}
+
+/**
+ * The last take of every sentence of a segment in words [from, limit), chosen from the last sentence
+ * backwards so they stay in order, as merged runs of words ({first, last}); null when the segment has a
+ * single sentence or some sentence is not there.
+ */
+function sentenceTakes(segment, tokens, from, limit) {
+  const sentences = sentenceForms(segment);
+  if (sentences.length < 2 || sentences.some((f) => !f.length)) return null;
+  const chosen = [];
+  let end = limit;
+  for (let j = sentences.length - 1; j >= 0; j--) {
+    const cands = scanStarts(sentences[j], tokens, from, end, end, true);
+    const best = bestScore(cands);
+    if (!(best >= SENTENCE_SCORE)) return null;
+    const takes = groupTakes(cands.filter((c) => c.score >= best - NEAR_BEST));
+    const take = takes[takes.length - 1];
+    chosen.unshift({ first: take.first, last: take.last });
+    end = take.first;
+  }
+  const merged = [];
+  for (const p of chosen) {
+    const prev = merged[merged.length - 1];
+    if (prev && p.first === prev.last + 1) prev.last = p.last;
+    else merged.push({ ...p });
+  }
+  return merged;
+}
+
+/**
+ * Whisper sometimes stretches a word over the pause next to it (V4: «y» got 151.22–153.10 s, with the pause
+ * after the previous «IP» inside it), so a cut placed from those edges lands in the wrong place and chops a
+ * word. For a pause of at least `minMs` strictly inside a word's span, the word is the longer of the two sides
+ * (the shorter one is the tail or onset of its neighbour): after the pause, the start moves to its end; before
+ * it, the end moves to its start. (V4: «y» 151.22–153.10 with a pause 151.39–152.53 is really 152.53–153.10.)
+ */
+export function repairSwallowedPauses(words, silences, { minMs = 300 } = {}) {
+  return words.map((w) => {
+    let { startMs, endMs } = w;
+    for (const s of silences) {
+      if (s.endMs - s.startMs < minMs || s.startMs <= startMs || s.endMs >= endMs) continue;
+      if (endMs - s.endMs >= s.startMs - startMs) startMs = s.endMs;
+      else endMs = s.startMs;
+    }
+    return startMs === w.startMs && endMs === w.endMs ? w : { ...w, startMs, endMs };
+  });
+}
+
+/** Where a clip's voice really stops: the start of a silence that runs to its end (within 40 ms), else its length. */
+export function trailingSpeechEnd(silences, durationMs) {
+  const tail = silences.find((s) => s.endMs >= durationMs - 40 && s.startMs < durationMs);
+  return tail ? tail.startMs : durationMs;
 }
 
 /** Silences from ffmpeg silencedetect's stderr; one still open at the end runs to `totalMs`. */
@@ -218,34 +303,55 @@ function nearest(cands, at, target) {
  * the segment does not own.
  */
 export function cutPoints(located, words, silences, totalMs) {
+  const cutSpan = (span) => cutEdges(span, words, silences, totalMs);
   return located
     .filter((f) => f.found)
     .map((f) => {
-      const rawStart = words[f.first].startMs;
-      const rawEnd = words[f.last].endMs;
-      const prevEnd = f.first > 0 ? words[f.first - 1].endMs : 0;
-      const nextStart = f.last + 1 < words.length ? words[f.last + 1].startMs : totalMs;
-
-      const lead = nearest(
-        silences.filter((s) => s.endMs >= Math.max(prevEnd, rawStart - SNAP_EARLY_MS) && s.endMs <= rawStart + SNAP_LATE_MS),
-        (s) => s.endMs,
-        rawStart,
-      );
-      const startMs = lead
-        ? Math.max(lead.startMs, prevEnd, lead.endMs - PRE_ROLL_MS)
-        : Math.max(Math.min(rawStart, Math.round((prevEnd + rawStart) / 2)), rawStart - FALLBACK_MS);
-
-      const tail = nearest(
-        silences.filter((s) => s.startMs >= rawEnd - SNAP_LATE_MS && s.startMs <= Math.min(nextStart, rawEnd + SNAP_EARLY_MS)),
-        (s) => s.startMs,
-        rawEnd,
-      );
-      const endMs = tail
-        ? Math.min(tail.endMs, nextStart, tail.startMs + POST_ROLL_MS)
-        : Math.min(Math.max(rawEnd, Math.round((rawEnd + nextStart) / 2)), rawEnd + FALLBACK_MS);
-
-      return { id: f.id, startMs, endMs: Math.max(endMs, startMs + 1) };
+      if (!f.parts) return { id: f.id, ...cutSpan(f) };
+      // A spliced take: every part is cut on its own, so a join never reaches into the dropped words.
+      const parts = f.parts.map(cutSpan);
+      return { id: f.id, startMs: parts[0].startMs, endMs: parts[parts.length - 1].endMs, parts };
     });
+}
+
+/** Clip edges of one run of words ({first, last}), as cutPoints describes. */
+function cutEdges(f, words, silences, totalMs) {
+  const rawStart = words[f.first].startMs;
+  const rawEnd = words[f.last].endMs;
+  const prevEnd = f.first > 0 ? words[f.first - 1].endMs : 0;
+  const nextStart = f.last + 1 < words.length ? words[f.last + 1].startMs : totalMs;
+  // With no silence at an edge, a long pause that starts inside the word across it means that word is mistimed:
+  // Whisper dropped a word and stretched its neighbour over the dropped audio (V4 s02-03: «júis» was never
+  // transcribed, so «Y» got 70.12–71.18 s with the pause after «júis», 70.82–72.04, starting inside it). Both
+  // clips then cut in that pause, whatever the word edges say — the next word's for the end, the first's for the start.
+  const mistimedPause = (w) =>
+    w ? nearest(silences.filter((s) => s.endMs - s.startMs >= MISTIMED_PAUSE_MS && s.startMs > w.startMs && s.startMs < w.endMs), (s) => s.startMs, w.startMs) : null;
+
+  const lead = nearest(
+    silences.filter((s) => s.endMs >= Math.max(prevEnd, rawStart - SNAP_EARLY_MS) && s.endMs <= rawStart + SNAP_LATE_MS),
+    (s) => s.endMs,
+    rawStart,
+  );
+  const leadPause = lead ? null : mistimedPause(words[f.first]);
+  const startMs = lead
+    ? Math.max(lead.startMs, prevEnd, lead.endMs - PRE_ROLL_MS)
+    : leadPause
+      ? Math.max(leadPause.startMs, leadPause.endMs - PRE_ROLL_MS)
+      : Math.max(Math.min(rawStart, Math.round((prevEnd + rawStart) / 2)), rawStart - FALLBACK_MS);
+
+  const tail = nearest(
+    silences.filter((s) => s.startMs >= rawEnd - SNAP_LATE_MS && s.startMs <= Math.min(nextStart, rawEnd + SNAP_EARLY_MS)),
+    (s) => s.startMs,
+    rawEnd,
+  );
+  const tailPause = tail ? null : mistimedPause(words[f.last + 1]);
+  const endMs = tail
+    ? Math.min(tail.endMs, nextStart, tail.startMs + POST_ROLL_MS)
+    : tailPause
+      ? Math.min(tailPause.endMs, tailPause.startMs + POST_ROLL_MS)
+      : Math.min(Math.max(rawEnd, Math.round((rawEnd + nextStart) / 2)), rawEnd + FALLBACK_MS);
+
+  return { startMs, endMs: Math.max(endMs, startMs + 1) };
 }
 
 /**
@@ -281,8 +387,10 @@ function clipTime(t, ranges) {
 const rangesMs = (ranges) => ranges.reduce((sum, r) => sum + r.endMs - r.startMs, 0);
 
 /** Word boundaries of one clip (words[first..last]) made of `ranges`, in the TTS record format. */
-export function clipWords(words, first, last, ranges) {
-  return words.slice(first, last + 1).map((w) => {
+export function clipWords(words, first, last, ranges, parts = null) {
+  // A spliced take keeps only its parts' words; the dropped ones are not in the clip.
+  const kept = parts ? parts.flatMap((p) => words.slice(p.first, p.last + 1)) : words.slice(first, last + 1);
+  return kept.map((w) => {
     const offsetMs = clipTime(w.startMs, ranges);
     return { text: w.text, offsetMs, durationMs: Math.max(1, clipTime(w.endMs, ranges) - offsetMs) };
   });
@@ -291,7 +399,7 @@ export function clipWords(words, first, last, ranges) {
 /** Runs of recorded words that no found segment uses (what was skipped), for the import report. */
 export function unusedRanges(located, words) {
   const used = new Array(words.length).fill(false);
-  for (const f of located) if (f.found) for (let k = f.first; k <= f.last; k++) used[k] = true;
+  for (const f of located) if (f.found) for (const p of f.parts ?? [f]) for (let k = p.first; k <= p.last; k++) used[k] = true;
   const out = [];
   let run = null;
   words.forEach((w, k) => {
@@ -326,19 +434,22 @@ export function gainDb(measured, targetLufs, ceilingDbtp = -1) {
 /**
  * Args for the ffmpeg binary (runFfmpeg) that cut a clip from `source` — seeking in the input,
  * which on a WAV is sample-exact and skips decoding what comes before — splice its `ranges`
- * together when there is more than one (atrim + concat), apply `gain` dB and encode it.
+ * together when there is more than one (atrim + concat), apply `gain` dB and encode it. A `tempo`
+ * other than 1 speeds the clip up (or slows it down) with ffmpeg's pitch-preserving atempo.
  */
-export function clipArgs({ source, ranges, gain, out }) {
+export function clipArgs({ source, ranges, gain, out, tempo = 1 }) {
   const start = ranges[0].startMs;
   const end = ranges[ranges.length - 1].endMs;
   const sec = (ms) => String(ms / 1000);
+  // tempo 1 keeps the arguments byte-identical to before recordings had a tempo.
+  const level = tempo === 1 ? `volume=${gain}dB` : `volume=${gain}dB,atempo=${tempo}`;
   const filter =
     ranges.length === 1
-      ? ['-af', `volume=${gain}dB`]
+      ? ['-af', level]
       : [
           '-filter_complex',
           `${ranges.map((r, k) => `[0:a]atrim=start=${sec(r.startMs - start)}:end=${sec(r.endMs - start)},asetpts=PTS-STARTPTS[a${k}]`).join(';')};` +
-            `${ranges.map((_, k) => `[a${k}]`).join('')}concat=n=${ranges.length}:v=0:a=1,volume=${gain}dB[out]`,
+            `${ranges.map((_, k) => `[a${k}]`).join('')}concat=n=${ranges.length}:v=0:a=1,${level}[out]`,
           '-map', '[out]',
         ];
   return [
@@ -346,6 +457,39 @@ export function clipArgs({ source, ranges, gain, out }) {
     ...filter, '-ac', '1', '-ar', String(CLIP_SAMPLE_RATE),
     '-c:a', 'libmp3lame', '-b:a', `${CLIP_BITRATE_KBPS}k`, '-write_xing', '0', '-id3v2_version', '0', out,
   ];
+}
+
+/** Speed-ups a human recording keeps sounding natural with: from a touch slower to a quarter faster. */
+export const RECORDING_TEMPO = Object.freeze([0.8, 1.25]);
+
+/**
+ * Tempo and pause limit of an import: narration.json "recording": { "tempo", "maxPauseMs" }, each
+ * overridden by its command-line flag. Without either, tempo 1 and no pause limit — what every import
+ * did before the setting existed, so older videos re-import byte-identically.
+ */
+export function recordingSettings(narration, { tempo, maxPauseMs } = {}) {
+  const own = narration?.recording ?? {};
+  if (own === null || typeof own !== 'object' || Array.isArray(own)) throw new Error('narration.json "recording" must be an object');
+  const unknown = Object.keys(own).filter((k) => !['tempo', 'maxPauseMs'].includes(k));
+  if (unknown.length) throw new Error(`narration.json "recording": unknown key(s) ${unknown.join(', ')} (known: tempo, maxPauseMs)`);
+  const settings = { tempo: tempo ?? own.tempo ?? 1, maxPauseMs: maxPauseMs ?? own.maxPauseMs ?? null };
+  const [lo, hi] = RECORDING_TEMPO;
+  if (typeof settings.tempo !== 'number' || !(settings.tempo >= lo && settings.tempo <= hi)) {
+    throw new Error(`recording tempo must be a number between ${lo} and ${hi} (got ${JSON.stringify(settings.tempo)})`);
+  }
+  if (settings.maxPauseMs !== null && !(Number.isInteger(settings.maxPauseMs) && settings.maxPauseMs >= 100)) {
+    throw new Error(`recording maxPauseMs must be a whole number of milliseconds, at least 100 (got ${JSON.stringify(settings.maxPauseMs)})`);
+  }
+  return settings;
+}
+
+/**
+ * Whether a cached transcript still fits: same recording (hash) and same model. The prompt is not part of it:
+ * it opens with the script's first sentence, so rewriting that sentence re-transcribed the whole recording
+ * (~5 min, and a different spelling of the numbers) although the audio had not changed. --force-asr redoes it.
+ */
+export function asrCacheValid(cached, { sha256, model }) {
+  return Boolean(cached) && cached.sha256 === sha256 && cached.model === model && Array.isArray(cached.words);
 }
 
 /**
@@ -385,7 +529,7 @@ export function recordingRecord({ voice, rate, pitch, spoken, bytes, ranges, loc
     durationMs,
     source: { ...source, startMs, endMs, pausesRemovedMs: endMs - startMs - durationMs },
     asr: { model: asrModel, text: located.heard, score: located.score },
-    words: clipWords(words, located.first, located.last, ranges),
+    words: clipWords(words, located.first, located.last, ranges, located.parts ?? null),
   };
 }
 
@@ -401,7 +545,8 @@ export function importReport({ located, cuts, words, gain, pausesRemovedMs = 0 }
   const rows = located.map((f) => {
     if (!f.found) return `| ${f.id} | — | — | no encontrada |`;
     const c = cutOf.get(f.id);
-    return `| ${f.id} | ${f.score.toFixed(2)} | ${clock(c.startMs)}–${clock(c.endMs)} | ${f.score < REVIEW_SCORE ? 'revisar' : 'ok'} |`;
+    const state = f.score < REVIEW_SCORE ? 'revisar' : 'ok';
+    return `| ${f.id} | ${f.score.toFixed(2)} | ${clock(c.startMs)}–${clock(c.endMs)} | ${f.parts ? `${state} · empalme de la última toma de cada oración` : state} |`;
   });
   const unused = unusedRanges(located, words).map((r) => `- ${clock(r.startMs)}–${clock(r.endMs)} · ${r.text}`);
   return [

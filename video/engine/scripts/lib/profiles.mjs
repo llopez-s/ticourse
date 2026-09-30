@@ -1,6 +1,7 @@
 // Per-video formats (video.json "profile") and per-track disclaimers (video.json "track").
 // See docs/superpowers/plans/2026-09-25-lesson-videos.md §1 and
-// docs/superpowers/specs/2026-09-26-video-narration-style-design.md §3.
+// docs/superpowers/specs/2026-09-26-video-narration-style-design.md §3 and, for the -yt exam-card ranges,
+// docs/superpowers/specs/2026-09-28-spoken-narration-design.md §3 (fewer concepts, better told).
 
 /** The app's public name (2026-09-26). Videos rendered for YouTube carry it. */
 export const APP_NAME = 'Alertópolis';
@@ -19,6 +20,8 @@ export const PROFILES = Object.freeze({
     chispa: false,
     host: 'repo',
     crf: 23,
+    x264Preset: 'slow',
+    captionsOnScreen: true, // the MP4 plays in the app, burned-in captions included
     size: Object.freeze({ targetMin: 15, targetMax: 25, warn: 30, fail: 45 }), // MB (10^6 bytes)
   }),
   /** Practical capsule: 3 chapters, 5–6 scenes, ~3 min, at least half demo. */
@@ -32,6 +35,8 @@ export const PROFILES = Object.freeze({
     chispa: false,
     host: 'repo',
     crf: 27,
+    x264Preset: 'slow',
+    captionsOnScreen: true, // the MP4 plays in the app, burned-in captions included
     size: Object.freeze({ targetMin: 4, targetMax: 12, warn: 15, fail: 25 }),
   }),
   /** Lively explainer for YouTube: ~6–8 min, intercepted messages, no size target (YouTube re-encodes). */
@@ -39,12 +44,14 @@ export const PROFILES = Object.freeze({
     minTotalSec: 380,
     maxTotalSec: 500,
     maxChapters: 5,
-    examCards: [8, 11],
+    examCards: [5, 8],
     thinkPrompts: 2,
     intercepts: [2, 4],
     chispa: true,
     host: 'youtube',
     crf: 18,
+    x264Preset: 'medium', // YouTube re-encodes the upload: 'slow' bought nothing visible, at ~2× the encode time
+    captionsOnScreen: false, // YouTube shows the uploaded VTT (the app's embed forces it on): burned-in ones were redundant
     size: null,
   }),
   /** Lively capsule for YouTube: ~3–4 min. */
@@ -52,12 +59,14 @@ export const PROFILES = Object.freeze({
     minTotalSec: 190,
     maxTotalSec: 260,
     maxChapters: 3,
-    examCards: [4, 6],
+    examCards: [3, 5],
     thinkPrompts: 1,
     intercepts: [1, 2],
     chispa: true,
     host: 'youtube',
     crf: 18,
+    x264Preset: 'medium', // YouTube re-encodes the upload: 'slow' bought nothing visible, at ~2× the encode time
+    captionsOnScreen: false, // YouTube shows the uploaded VTT (the app's embed forces it on): burned-in ones were redundant
     size: null,
   }),
 });

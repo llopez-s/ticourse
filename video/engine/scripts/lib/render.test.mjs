@@ -1,6 +1,22 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { clipOnset, parseSilenceEnds, syncReport } from '../render.mjs';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { clipOnset, masterPaths, musicTrack, parseSilenceEnds, syncReport } from '../render.mjs';
+
+test('musicTrack: the library file video.json names, or null; a missing file stops the render early', () => {
+  const engine = mkdtempSync(path.join(os.tmpdir(), 'music-'));
+  try {
+    assert.equal(musicTrack({ slug: 'x' }, engine), null);
+    assert.throws(() => musicTrack({ music: 'song.mp3' }, engine), /is missing: download it again/);
+    mkdirSync(path.join(engine, 'music', 'library'), { recursive: true });
+    writeFileSync(path.join(engine, 'music', 'library', 'song.mp3'), '');
+    assert.equal(musicTrack({ music: 'song.mp3' }, engine), path.join(engine, 'music', 'library', 'song.mp3'));
+  } finally {
+    rmSync(engine, { recursive: true, force: true });
+  }
+});
 
 const FPS = 30;
 /** Three segments starting at 2 s, 8 s and 14 s; first word 3 frames in. */
@@ -55,4 +71,13 @@ test('without measured clip onsets the first word frame is the reference', () =>
   const rep = syncReport(timeline, timeline.segments.map((s) => s.words[0].from / FPS));
   assert.equal(rep.fail, false);
   assert.equal(rep.mismatches.length, 0);
+});
+
+test('masterPaths: the unmastered render, the program audio and the premaster sit next to the final MP4', () => {
+  assert.deepEqual(masterPaths('video/x/out/pivot-infra.mp4'), {
+    video: 'video/x/out/pivot-infra-premaster.mp4',
+    program: 'video/x/out/pivot-infra-program.wav',
+    premaster: 'video/x/out/pivot-infra-premaster.wav',
+    final: 'video/x/out/pivot-infra.mp4',
+  });
 });

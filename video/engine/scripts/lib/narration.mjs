@@ -12,6 +12,9 @@ export const SEGMENT_ID = /^s\d\d-\d\d$/;
 export const DEFAULT_PAUSE_MS = 330;
 export const EXAM_TEXT_MAX = 58;
 export const THINK_Q_MAX = 48;
+/** Silent hold after a think prompt's segment. The -yt profiles want 3–4 s of it fully on screen (review of 2026-09-29). */
+export const THINK_HOLD_MS = [1800, 5000];
+export const THINK_HOLD_YT_MIN = 4000;
 /** Intercepted messages: typed out during a silent lead before their segment, on screen always and voiced
  * too when narration.json has "adversaryVoice" (see adversary.mjs, tts-adversary.mjs). */
 export const INTERCEPT_TEXT_MAX = 70;
@@ -126,6 +129,35 @@ const isObj = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 const countWords = (s) => s.split(/\s+/).filter(Boolean).length;
 
 /**
+ * Strings a listener cannot take in by ear — domains, IPs, host names, hashes, e-mail addresses, file
+ * and pipe names. The spoken style puts them on screen and has the voice say what they are.
+ */
+export const IDENTIFIER_PATTERNS = Object.freeze([
+  /^[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/i, // domain: haldenport.example, update-svc-cdn.com
+  /^\d{1,3}(\.(\d{1,3}|x)){3}$/i, // IPv4, also a redacted 185.220.x.x
+  /^[A-Z]{2,}(-[A-Z0-9]+)+-\d{2,}$/, // host: ADM-WS-02, ENG-WS-041 (not SY0-701)
+  /^[0-9a-f]{4,}(\.{3}|…)[0-9a-f]+$/i, // shortened hash: 9f3a...e1
+  /^[0-9a-f]{16,}$/i, // hash
+  /@/, // e-mail address
+  /^\w+_[\w%]+$/, // file or pipe name: vc_pipe_%08x
+]);
+
+/** The token without the punctuation around it: "¿haldenport.example?" -> "haldenport.example". */
+const bareToken = (t) => t.replace(/^[¿¡«"'(]+/, '').replace(/[.,;:!?…»"')]+$/, '');
+
+/** True when a display token is something a listener cannot take in by ear (IDENTIFIER_PATTERNS). */
+export function isSpelledIdentifier(token) {
+  const t = bareToken(token);
+  return t.length > 0 && IDENTIFIER_PATTERNS.some((re) => re.test(t));
+}
+
+/** Colons used as connectors ("Abres las cabeceras: la etiqueta…"), not inside a time like 04:12. */
+const connectorColons = (s) => (s.match(/(?<!\d):(?!\d)/g) ?? []).length;
+
+/** Spoken style: more questions than this opening with the same word is a formula («¿Y …?» seven times). */
+export const OPENER_MAX = 3;
+
+/**
  * Validates everything that can be checked before timing and returns the
  * parsed segments grouped by storyboard scene.
  * @returns {{errors: string[], warnings: string[], voice: {voice: string, rate: string, pitch: string},
@@ -192,6 +224,8 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
   let currentScene = -1;
   let lastIndex = 0;
   let prevMood = null;
+  const openers = new Map(); // spoken style: first word of each question ("¿y") -> segment ids
+  let colonSegments = 0;
   narration.segments.forEach((raw, k) => {
     const label = isObj(raw) && typeof raw.id === 'string' ? raw.id : `segment #${k + 1}`;
     if (!isObj(raw)) {
@@ -269,7 +303,12 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
           if (t.q.length > THINK_Q_MAX) errors.push(`${label}: think.q is ${t.q.length} characters (max ${THINK_Q_MAX})`);
           if (FORBIDDEN_SYMBOLS.test(t.q)) errors.push(`${label}: think.q contains a forbidden symbol`);
         }
-        if (typeof t.holdMs !== 'number' || t.holdMs < 1800 || t.holdMs > 2500) errors.push(`${label}: think.holdMs must be between 1800 and 2500`);
+        const [lo, hi] = THINK_HOLD_MS;
+        if (typeof t.holdMs !== 'number' || t.holdMs < lo || t.holdMs > hi) errors.push(`${label}: think.holdMs must be between ${lo} and ${hi}`);
+        else if (chispa && t.holdMs < THINK_HOLD_YT_MIN) {
+          // The card's entrance and exit eat ~0.9 s of the hold (build-timeline's thinkOffset + ThinkPrompt's ENTER/EXIT).
+          warnings.push(`${label}: think prompt of ${(t.holdMs / 1000).toFixed(1)} s leaves ~${Math.max(0, t.holdMs / 1000 - 0.87).toFixed(1)} s to think (use at least ${THINK_HOLD_YT_MIN} ms)`);
+        }
         think = { q: t.q, holdMs: t.holdMs };
       }
     }
@@ -302,6 +341,16 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
       const mood = parsed.directions[0] ?? null;
       if (mood && mood === prevMood) warnings.push(`${label}: same emotion <${mood}> as the previous segment (chispa style: vary it)`);
       prevMood = mood;
+      const colons = connectorColons(parsed.display);
+      if (colons) colonSegments += 1;
+      if (colons > 1) warnings.push(`${label}: ${colons} colons — join the ideas the way people talk («porque», «o sea», «así que») (spoken style)`);
+      for (const t of parsed.displayTokens) {
+        if (isSpelledIdentifier(t.text)) warnings.push(`${label}: "${bareToken(t.text)}" is read aloud — put it on screen and say what it is (spoken style)`);
+      }
+      for (const sentence of parsed.display.split(/(?<=[.!?…])\s+/)) {
+        const opener = sentence.split(/\s+/)[0].toLowerCase().replace(/[.,;:!?…»"')]+$/, '');
+        if (opener.startsWith('¿')) openers.set(opener, [...(openers.get(opener) ?? []), raw.id]);
+      }
     }
 
     segments.push({ id: raw.id, scene: raw.scene, sceneIndex: si, text: raw.text, parsed, pauseMs, exam, think, intercept });
@@ -337,8 +386,6 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
     const actual = [...new Set(order)].filter((id) => required.includes(id)).join(' ');
     if (expected !== actual) warnings.push(`scene ${scene.id}: cues fire in a different order than requiredCues (${actual})`);
 
-    if (chispa && !segs.some((s) => s.parsed.display.includes('?'))) warnings.push(`scene ${scene.id}: no question (chispa style: at least one per scene)`);
-
     const exams = segs.filter((s) => s.exam);
     examCount += exams.length;
     if (exams.length > 1) errors.push(`scene ${scene.id}: ${exams.length} exam cards (max 1 per scene)`);
@@ -350,6 +397,14 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
     for (const s of segs.filter((x) => x.intercept)) {
       if (scene.id === lastScene) errors.push(`${s.id}: the closing scene must not carry an intercepted message`);
       interceptsByChapter.set(scene.chapter, (interceptsByChapter.get(scene.chapter) ?? 0) + 1);
+    }
+  }
+  if (chispa) {
+    for (const [word, ids] of openers) {
+      if (ids.length > OPENER_MAX) warnings.push(`${ids.length} questions open with "${word}" (${ids.join(', ')}) — a formula, not a question the viewer would ask (spoken style)`);
+    }
+    if (colonSegments * 3 > segments.length) {
+      warnings.push(`${colonSegments} of ${segments.length} segments use a colon as a connector (spoken style: at most a third)`);
     }
   }
   if (thinkScenes.length !== thinkPrompts) warnings.push(`${thinkScenes.length} think prompts (style guide: exactly ${thinkPrompts})`);

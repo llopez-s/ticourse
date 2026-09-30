@@ -1,6 +1,7 @@
 import type { ComponentType, FC } from 'react';
 import { AbsoluteFill, Composition, Folder, Still } from 'remotion';
 import { GALLERY_DURATION, OverlayGallery } from './dev/OverlayGallery';
+import { UI_GALLERY_DURATION, UiGallery } from './dev/SceneKitGallery';
 import { LessonVideo, sceneComponent, type SceneMap } from './LessonVideo';
 import { TimelineProvider } from './timeline/context';
 import { buildSceneProps } from './timeline/scene-props';
@@ -76,6 +77,7 @@ export function createLessonRoot({
           width={timeline.width}
           height={timeline.height}
         />
+        <Composition id="UiGallery" component={UiGallery} durationInFrames={UI_GALLERY_DURATION} fps={timeline.fps} width={timeline.width} height={timeline.height} />
       </Folder>
     </>
   );

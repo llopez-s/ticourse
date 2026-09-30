@@ -15,7 +15,7 @@ const SHAPES = {
 };
 
 /** Keys a shape may carry in addition to SHAPES (only written when non-empty). */
-const OPTIONAL = { Timeline: ['intercept', 'sfx'], InterceptCue: ['audio', 'audioFrom', 'audioFrames'], ExamCue: ['badge'] };
+const OPTIONAL = { Timeline: ['intercept', 'sfx', 'captionsOnScreen'], InterceptCue: ['audio', 'audioFrom', 'audioFrames'], ExamCue: ['badge'] };
 
 /**
  * @param {object} t timeline
@@ -182,6 +182,7 @@ export function validateTimeline(t, opts = {}) {
       });
     }
   }
+  if (t.captionsOnScreen !== undefined && t.captionsOnScreen !== false) errors.push('timeline.captionsOnScreen: when present, false');
   if (t.sfx !== undefined) {
     if (!Array.isArray(t.sfx) || !t.sfx.length) errors.push('timeline.sfx: when present, a non-empty array');
     else {

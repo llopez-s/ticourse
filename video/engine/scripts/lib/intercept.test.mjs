@@ -54,6 +54,10 @@ test('checkManifest: adversary is optional but must look like a campaign name', 
   assert.doesNotThrow(() => checkManifest({ ...base, lesson: 'sp4m7' }, 'video.json', 'x'));
   assert.doesNotThrow(() => checkManifest({ ...base, lesson: 's3m3' }, 'video.json', 'x'));
   assert.throws(() => checkManifest({ ...base, lesson: 'lesson-7' }, 'video.json', 'x'), /"lesson"/);
+  // music: a file name in video/engine/music/library, never a path
+  assert.doesNotThrow(() => checkManifest({ ...base, music: 'Go On Going - Stayloose.mp3' }, 'video.json', 'x'));
+  assert.throws(() => checkManifest({ ...base, music: '../voices/x.mp3' }, 'video.json', 'x'), /"music"/);
+  assert.throws(() => checkManifest({ ...base, music: 'notes.txt' }, 'video.json', 'x'), /"music"/);
 });
 
 test('intercept timing: typing starts a third into the enter animation and the longest message fits the shortest hold', () => {

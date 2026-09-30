@@ -626,6 +626,13 @@ Hosts contactados:
         },
       },
       {
+        t: 'video',
+        title: 'Pivotar por la infraestructura: passive DNS, WHOIS y certificados',
+        youtube: '8pet46MOGmk',
+        poster: 'videos/pivot-infra-poster.png',
+        transcript: 'videos/pivot-infra-transcript.txt',
+      },
+      {
         t: 'callout',
         kind: 'story',
         title: '🎖️ Campaña',

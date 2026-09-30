@@ -19,7 +19,7 @@
 // it is installed. pwsh's System.Speech sees the OneCore voices too. Falls back to powershell.exe
 // only when pwsh itself cannot be launched (not installed / not on PATH).
 import { spawnSync } from 'node:child_process';
-import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
@@ -85,6 +85,12 @@ export function voiceAdversary({ force = false, log = console } = {}) {
   let pwshCache = null;
   const pwsh = () => (pwshCache ??= powershellExe());
 
+  // A video can voice its adversary before its narration exists (e.g. before the narrator records), so the
+  // clip folders may not be there yet.
+  if (todo.length) {
+    mkdirSync(PATHS.voiceDir, { recursive: true });
+    mkdirSync(PATHS.ttsDir, { recursive: true });
+  }
   const tmp = mkdtempSync(path.join(os.tmpdir(), 'adversary-'));
   try {
     for (const seg of todo) {

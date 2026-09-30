@@ -26,6 +26,9 @@ Este diseño cambia **cómo se hacen los vídeos nuevos** (V1 EDR rehecho, V3, V
 
 ## 2. Guía de narración
 
+> **Sustituida el 2026-09-28** por `2026-09-28-spoken-narration-design.md` («narración hablada»), cuyas reglas
+> viven solo en el plan de vídeos §1. Esta sección queda como registro de cómo se escribieron V1 y V3.
+
 Estas reglas pasan a la sección «Estilo común» del plan de vídeos
 (`docs/superpowers/plans/2026-09-25-lesson-videos.md` §1) y al README del motor, para que las hereden todos los
 vídeos.
@@ -226,7 +229,8 @@ Escribe `video/<slug>/out/youtube.md`, listo para copiar, con:
   - un gancho formado por los dos primeros segmentos del vídeo;
   - capítulos generados del timeline (`00:00 …`; YouTube exige que el primero sea 00:00, al menos 3 capítulos
     y de 10 s o más);
-  - un enlace a la lección en la app (`https://llopez-s.github.io/ticourse/`);
+  - ~~un enlace a la lección en la app~~ (retirado el 2026-09-30: YouTube no permite enlaces externos en las
+    descripciones del canal Alertópolis y los quitaba al publicar);
   - los créditos de voz;
   - el descargo de la pista («no afiliado a CompTIA», «no afiliado a SANS/GIAC»);
   - 3 hashtags.

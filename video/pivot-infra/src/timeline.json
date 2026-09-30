@@ -1,0 +1,4016 @@
+{
+  "mode": "audio",
+  "sourceHash": "97c0ca73f64ab79da3885c58fde10f336206248090687abdcb290bdd2fe48eef",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "durationInFrames": 14645,
+  "voice": "recording/lidia",
+  "scenes": [
+    {"id":"s01-hook","chapter":1,"chapterTitle":"El rastro","title":"Dos pistas en el aire","from":0,"durationInFrames":1552},
+    {"id":"s02-sources","chapter":1,"chapterTitle":"El rastro","title":"Tres fuentes, tres preguntas","from":1552,"durationInFrames":1076},
+    {"id":"s03-pdns","chapter":2,"chapterTitle":"Passive DNS","title":"El listín con memoria","from":2628,"durationInFrames":1722},
+    {"id":"s04-tenants","chapter":2,"chapterTitle":"Passive DNS","title":"¿Cuántos inquilinos?","from":4350,"durationInFrames":1425},
+    {"id":"s05-cert","chapter":3,"chapterTitle":"Certificados","title":"La llave hecha a mano","from":5775,"durationInFrames":1997},
+    {"id":"s06-ct","chapter":3,"chapterTitle":"Certificados","title":"El tablón de certificados","from":7772,"durationInFrames":1243},
+    {"id":"s07-whois","chapter":4,"chapterTitle":"WHOIS y ciclo de vida","title":"El WHOIS tiene memoria","from":9015,"durationInFrames":1581},
+    {"id":"s08-lifecycle","chapter":4,"chapterTitle":"WHOIS y ciclo de vida","title":"Vida de un dominio malicioso","from":10596,"durationInFrames":1122},
+    {"id":"s09-preblock","chapter":4,"chapterTitle":"WHOIS y ciclo de vida","title":"Ir por delante","from":11718,"durationInFrames":862},
+    {"id":"s10-opsec","chapter":5,"chapterTitle":"Pasivo primero","title":"Sin que te vea","from":12580,"durationInFrames":1076},
+    {"id":"s11-recap","chapter":5,"chapterTitle":"Pasivo primero","title":"Para el examen","from":13656,"durationInFrames":989}
+  ],
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "Tienes un dominio malicioso y una IP con catorce mil vecinos. ¿Por dónde tiras?",
+      "from": 45,
+      "audioFrames": 180,
+      "durationInFrames": 194,
+      "audio": "voice/s01-01.mp3",
+      "words": [
+        {"text":"Tienes","from":52,"to":71},
+        {"text":"un","from":71,"to":75},
+        {"text":"dominio","from":75,"to":87},
+        {"text":"malicioso","from":87,"to":106},
+        {"text":"y","from":106,"to":111},
+        {"text":"una","from":111,"to":116},
+        {"text":"IP","from":116,"to":122},
+        {"text":"con","from":122,"to":133},
+        {"text":"catorce","from":133,"to":149},
+        {"text":"mil","from":149,"to":155},
+        {"text":"vecinos.","from":155,"to":170},
+        {"text":"¿Por","from":181,"to":194},
+        {"text":"dónde","from":194,"to":202},
+        {"text":"tiras?","from":202,"to":215}
+      ]
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "Hoy aprendes a pivotar por la infraestructura. O sea, a elegir la pista que te lleva al atacante, y no al ruido.",
+      "from": 239,
+      "audioFrames": 201,
+      "durationInFrames": 218,
+      "audio": "voice/s01-02.mp3",
+      "words": [
+        {"text":"Hoy","from":246,"to":253},
+        {"text":"aprendes","from":253,"to":269},
+        {"text":"a","from":269,"to":273},
+        {"text":"pivotar","from":273,"to":285},
+        {"text":"por","from":285,"to":289},
+        {"text":"la","from":289,"to":294},
+        {"text":"infraestructura.","from":294,"to":314},
+        {"text":"O","from":326,"to":330},
+        {"text":"sea,","from":330,"to":337},
+        {"text":"a","from":347,"to":349},
+        {"text":"elegir","from":349,"to":358},
+        {"text":"la","from":358,"to":363},
+        {"text":"pista","from":363,"to":372},
+        {"text":"que","from":372,"to":378},
+        {"text":"te","from":378,"to":382},
+        {"text":"lleva","from":382,"to":388},
+        {"text":"al","from":388,"to":394},
+        {"text":"atacante,","from":394,"to":407},
+        {"text":"y","from":407,"to":416},
+        {"text":"no","from":416,"to":420},
+        {"text":"al","from":420,"to":423},
+        {"text":"ruido.","from":423,"to":432}
+      ]
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "Partimos de una alerta de Meridian, el evento E7. Nos dejó dos pistas pendientes. Un certificado que se repite, y el registro del dominio, que nadie ha mirado todavía.",
+      "from": 457,
+      "audioFrames": 316,
+      "durationInFrames": 328,
+      "audio": "voice/s01-03.mp3",
+      "words": [
+        {"text":"Partimos","from":460,"to":469},
+        {"text":"de","from":469,"to":475},
+        {"text":"una","from":475,"to":479},
+        {"text":"alerta","from":479,"to":489},
+        {"text":"de","from":489,"to":493},
+        {"text":"Meridian,","from":493,"to":504},
+        {"text":"el","from":515,"to":517},
+        {"text":"evento","from":517,"to":526},
+        {"text":"E7.","from":526,"to":540},
+        {"text":"Nos","from":557,"to":566},
+        {"text":"dejó","from":566,"to":576},
+        {"text":"dos","from":576,"to":585},
+        {"text":"pistas","from":585,"to":599},
+        {"text":"pendientes.","from":599,"to":617},
+        {"text":"Un","from":632,"to":635},
+        {"text":"certificado","from":635,"to":652},
+        {"text":"que","from":652,"to":656},
+        {"text":"se","from":656,"to":660},
+        {"text":"repite,","from":660,"to":673},
+        {"text":"y","from":673,"to":687},
+        {"text":"el","from":687,"to":691},
+        {"text":"registro","from":691,"to":702},
+        {"text":"del","from":702,"to":706},
+        {"text":"dominio,","from":706,"to":720},
+        {"text":"que","from":720,"to":729},
+        {"text":"nadie","from":729,"to":735},
+        {"text":"ha","from":735,"to":740},
+        {"text":"mirado","from":740,"to":749},
+        {"text":"todavía.","from":749,"to":761}
+      ]
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "Hoy las seguimos. Y te adelanto algo bueno. Para atacarte, el adversario también tiene que hacer papeleo.",
+      "from": 785,
+      "audioFrames": 192,
+      "durationInFrames": 209,
+      "audio": "voice/s01-04.mp3",
+      "words": [
+        {"text":"Hoy","from":791,"to":798},
+        {"text":"las","from":798,"to":803},
+        {"text":"seguimos.","from":803,"to":818},
+        {"text":"Y","from":818,"to":828},
+        {"text":"te","from":828,"to":832},
+        {"text":"adelanto","from":832,"to":843},
+        {"text":"algo","from":843,"to":849},
+        {"text":"bueno.","from":849,"to":858},
+        {"text":"Para","from":867,"to":873},
+        {"text":"atacarte,","from":873,"to":889},
+        {"text":"el","from":889,"to":908},
+        {"text":"adversario","from":908,"to":923},
+        {"text":"también","from":923,"to":933},
+        {"text":"tiene","from":933,"to":943},
+        {"text":"que","from":943,"to":946},
+        {"text":"hacer","from":946,"to":953},
+        {"text":"papeleo.","from":953,"to":973}
+      ]
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-hook",
+      "text": "Registra dominios, alquila servidores y les pone certificados. Y todo eso deja rastro, casi siempre público.",
+      "from": 994,
+      "audioFrames": 221,
+      "durationInFrames": 232,
+      "audio": "voice/s01-05.mp3",
+      "words": [
+        {"text":"Registra","from":994,"to":1011},
+        {"text":"dominios,","from":1011,"to":1029},
+        {"text":"alquila","from":1033,"to":1044},
+        {"text":"servidores","from":1044,"to":1061},
+        {"text":"y","from":1061,"to":1070},
+        {"text":"les","from":1070,"to":1076},
+        {"text":"pone","from":1076,"to":1082},
+        {"text":"certificados.","from":1082,"to":1109},
+        {"text":"Y","from":1124,"to":1130},
+        {"text":"todo","from":1130,"to":1135},
+        {"text":"eso","from":1135,"to":1144},
+        {"text":"deja","from":1144,"to":1151},
+        {"text":"rastro,","from":1151,"to":1165},
+        {"text":"casi","from":1170,"to":1174},
+        {"text":"siempre","from":1174,"to":1187},
+        {"text":"público.","from":1187,"to":1205}
+      ]
+    },
+    {
+      "id": "s01-06",
+      "scene": "s01-hook",
+      "text": "O sea, que su infraestructura es lo que más se le ve. Seguir ese rastro se llama pivotar por la infraestructura, y hoy lo haces tú.",
+      "from": 1226,
+      "audioFrames": 288,
+      "durationInFrames": 306,
+      "audio": "voice/s01-06.mp3",
+      "words": [
+        {"text":"O","from":1233,"to":1248},
+        {"text":"sea,","from":1248,"to":1256},
+        {"text":"que","from":1268,"to":1275},
+        {"text":"su","from":1275,"to":1282},
+        {"text":"infraestructura","from":1282,"to":1312},
+        {"text":"es","from":1312,"to":1330},
+        {"text":"lo","from":1330,"to":1335},
+        {"text":"que","from":1335,"to":1338},
+        {"text":"más","from":1338,"to":1345},
+        {"text":"se","from":1345,"to":1351},
+        {"text":"le","from":1351,"to":1353},
+        {"text":"ve.","from":1353,"to":1356},
+        {"text":"Seguir","from":1364,"to":1373},
+        {"text":"ese","from":1373,"to":1378},
+        {"text":"rastro","from":1378,"to":1393},
+        {"text":"se","from":1393,"to":1398},
+        {"text":"llama","from":1398,"to":1405},
+        {"text":"pivotar","from":1405,"to":1425},
+        {"text":"por","from":1425,"to":1437},
+        {"text":"la","from":1437,"to":1441},
+        {"text":"infraestructura,","from":1441,"to":1461},
+        {"text":"y","from":1461,"to":1472},
+        {"text":"hoy","from":1472,"to":1478},
+        {"text":"lo","from":1478,"to":1488},
+        {"text":"haces","from":1488,"to":1499},
+        {"text":"tú.","from":1499,"to":1507}
+      ]
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-sources",
+      "text": "Para seguirlo tienes tres fuentes, y cada una contesta una pregunta distinta.",
+      "from": 1564,
+      "audioFrames": 168,
+      "durationInFrames": 177,
+      "audio": "voice/s02-01.mp3",
+      "words": [
+        {"text":"Para","from":1571,"to":1590},
+        {"text":"seguirlo","from":1590,"to":1607},
+        {"text":"tienes","from":1607,"to":1613},
+        {"text":"tres","from":1613,"to":1626},
+        {"text":"fuentes,","from":1626,"to":1643},
+        {"text":"y","from":1643,"to":1656},
+        {"text":"cada","from":1656,"to":1663},
+        {"text":"una","from":1663,"to":1671},
+        {"text":"contesta","from":1671,"to":1686},
+        {"text":"una","from":1686,"to":1690},
+        {"text":"pregunta","from":1690,"to":1700},
+        {"text":"distinta.","from":1700,"to":1722}
+      ]
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-sources",
+      "text": "La primera te dice a qué dirección apuntaba un dominio, y quién más vive en esa dirección. Es el passive DNS.",
+      "from": 1741,
+      "audioFrames": 223,
+      "durationInFrames": 234,
+      "audio": "voice/s02-02.mp3",
+      "words": [
+        {"text":"La","from":1744,"to":1753},
+        {"text":"primera","from":1753,"to":1768},
+        {"text":"te","from":1768,"to":1779},
+        {"text":"dice","from":1779,"to":1785},
+        {"text":"a","from":1785,"to":1789},
+        {"text":"qué","from":1789,"to":1791},
+        {"text":"dirección","from":1791,"to":1804},
+        {"text":"apuntaba","from":1804,"to":1820},
+        {"text":"un","from":1820,"to":1824},
+        {"text":"dominio,","from":1824,"to":1838},
+        {"text":"y","from":1852,"to":1858},
+        {"text":"quién","from":1858,"to":1866},
+        {"text":"más","from":1866,"to":1876},
+        {"text":"vive","from":1876,"to":1882},
+        {"text":"en","from":1882,"to":1888},
+        {"text":"esa","from":1888,"to":1892},
+        {"text":"dirección.","from":1892,"to":1907},
+        {"text":"Es","from":1913,"to":1920},
+        {"text":"el","from":1920,"to":1924},
+        {"text":"passive","from":1924,"to":1938},
+        {"text":"DNS.","from":1938,"to":1947}
+      ]
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-sources",
+      "text": "La segunda te dice quién registró el dominio, y cuándo. Eso es el WHOIS.",
+      "from": 1975,
+      "audioFrames": 173,
+      "durationInFrames": 184,
+      "audio": "voice/s02-03.mp3",
+      "words": [
+        {"text":"La","from":1982,"to":2001},
+        {"text":"segunda","from":2001,"to":2010},
+        {"text":"te","from":2010,"to":2017},
+        {"text":"dice","from":2018,"to":2024},
+        {"text":"quién","from":2024,"to":2031},
+        {"text":"registró","from":2031,"to":2045},
+        {"text":"el","from":2045,"to":2048},
+        {"text":"dominio,","from":2048,"to":2061},
+        {"text":"y","from":2066,"to":2071},
+        {"text":"cuándo.","from":2071,"to":2078},
+        {"text":"Eso","from":2096,"to":2105},
+        {"text":"es","from":2105,"to":2115},
+        {"text":"el","from":2115,"to":2122},
+        {"text":"WHOIS.","from":2122,"to":2124}
+      ]
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-sources",
+      "text": "Y la tercera mira los certificados de sus servidores, que a veces se repiten donde no deberían.",
+      "from": 2159,
+      "audioFrames": 179,
+      "durationInFrames": 190,
+      "audio": "voice/s02-04.mp3",
+      "words": [
+        {"text":"Y","from":2159,"to":2161},
+        {"text":"la","from":2159,"to":2167},
+        {"text":"tercera","from":2167,"to":2184},
+        {"text":"mira","from":2184,"to":2198},
+        {"text":"los","from":2198,"to":2205},
+        {"text":"certificados","from":2205,"to":2226},
+        {"text":"de","from":2226,"to":2230},
+        {"text":"sus","from":2230,"to":2234},
+        {"text":"servidores,","from":2234,"to":2249},
+        {"text":"que","from":2257,"to":2269},
+        {"text":"a","from":2269,"to":2271},
+        {"text":"veces","from":2271,"to":2277},
+        {"text":"se","from":2277,"to":2283},
+        {"text":"repiten","from":2283,"to":2296},
+        {"text":"donde","from":2296,"to":2304},
+        {"text":"no","from":2304,"to":2313},
+        {"text":"deberían.","from":2313,"to":2330}
+      ]
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-sources",
+      "text": "O sea, que tienes tres fuentes, y las tres tienen algo en común. Puedes consultarlas sin que el actor se entere.",
+      "from": 2349,
+      "audioFrames": 241,
+      "durationInFrames": 259,
+      "audio": "voice/s02-05.mp3",
+      "words": [
+        {"text":"O","from":2355,"to":2361},
+        {"text":"sea,","from":2361,"to":2371},
+        {"text":"que","from":2386,"to":2391},
+        {"text":"tienes","from":2391,"to":2400},
+        {"text":"tres","from":2400,"to":2410},
+        {"text":"fuentes,","from":2410,"to":2428},
+        {"text":"y","from":2428,"to":2436},
+        {"text":"las","from":2436,"to":2441},
+        {"text":"tres","from":2441,"to":2451},
+        {"text":"tienen","from":2451,"to":2466},
+        {"text":"algo","from":2466,"to":2481},
+        {"text":"en","from":2481,"to":2486},
+        {"text":"común.","from":2486,"to":2496},
+        {"text":"Puedes","from":2514,"to":2525},
+        {"text":"consultarlas","from":2525,"to":2546},
+        {"text":"sin","from":2546,"to":2551},
+        {"text":"que","from":2551,"to":2555},
+        {"text":"el","from":2555,"to":2558},
+        {"text":"actor","from":2558,"to":2564},
+        {"text":"se","from":2564,"to":2570},
+        {"text":"entere.","from":2570,"to":2580}
+      ]
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-pdns",
+      "text": "Empezamos por el passive DNS. Piensa en el DNS como en un listín. Le das un nombre y te devuelve un número.",
+      "from": 2640,
+      "audioFrames": 237,
+      "durationInFrames": 248,
+      "audio": "voice/s03-01.mp3",
+      "words": [
+        {"text":"Empezamos","from":2640,"to":2662},
+        {"text":"por","from":2662,"to":2667},
+        {"text":"el","from":2678,"to":2683},
+        {"text":"passive","from":2683,"to":2695},
+        {"text":"DNS.","from":2695,"to":2743},
+        {"text":"Piensa","from":2743,"to":2754},
+        {"text":"en","from":2754,"to":2770},
+        {"text":"el","from":2770,"to":2775},
+        {"text":"DNS","from":2775,"to":2812},
+        {"text":"como","from":2812,"to":2817},
+        {"text":"en","from":2817,"to":2828},
+        {"text":"un","from":2828,"to":2840},
+        {"text":"listín.","from":2840,"to":2844},
+        {"text":"Le","from":2844,"to":2854},
+        {"text":"das","from":2854,"to":2858},
+        {"text":"un","from":2858,"to":2868},
+        {"text":"nombre","from":2868,"to":2870},
+        {"text":"y","from":2868,"to":2870},
+        {"text":"te","from":2868,"to":2870},
+        {"text":"devuelve","from":2868,"to":2870},
+        {"text":"un","from":2868,"to":2870},
+        {"text":"número.","from":2868,"to":2870}
+      ]
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-pdns",
+      "text": "Pues el passive DNS es ese listín, pero con memoria. Hay sensores por todo Internet apuntando las respuestas que ven pasar, con su fecha.",
+      "from": 2888,
+      "audioFrames": 311,
+      "durationInFrames": 323,
+      "audio": "voice/s03-02.mp3",
+      "words": [
+        {"text":"Pues","from":2888,"to":2895},
+        {"text":"el","from":2895,"to":2901},
+        {"text":"passive","from":2901,"to":2911},
+        {"text":"DNS","from":2911,"to":2928},
+        {"text":"es","from":2941,"to":2947},
+        {"text":"ese","from":2947,"to":2955},
+        {"text":"listín,","from":2955,"to":2971},
+        {"text":"pero","from":2978,"to":2985},
+        {"text":"con","from":2985,"to":2994},
+        {"text":"memoria.","from":2994,"to":3013},
+        {"text":"Hay","from":3021,"to":3028},
+        {"text":"sensores","from":3028,"to":3042},
+        {"text":"por","from":3042,"to":3053},
+        {"text":"todo","from":3053,"to":3065},
+        {"text":"Internet","from":3065,"to":3082},
+        {"text":"apuntando","from":3082,"to":3110},
+        {"text":"las","from":3110,"to":3116},
+        {"text":"respuestas","from":3116,"to":3133},
+        {"text":"que","from":3133,"to":3139},
+        {"text":"ven","from":3139,"to":3144},
+        {"text":"pasar,","from":3144,"to":3156},
+        {"text":"con","from":3167,"to":3171},
+        {"text":"su","from":3171,"to":3179},
+        {"text":"fecha.","from":3179,"to":3192}
+      ]
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-pdns",
+      "text": "Así que le puedes preguntar dos cosas. La primera, a qué apuntaba el dominio del C2 de E7.",
+      "from": 3211,
+      "audioFrames": 240,
+      "durationInFrames": 249,
+      "audio": "voice/s03-03.mp3",
+      "words": [
+        {"text":"Así","from":3221,"to":3233},
+        {"text":"que","from":3233,"to":3238},
+        {"text":"le","from":3239,"to":3242},
+        {"text":"puedes","from":3242,"to":3250},
+        {"text":"preguntar","from":3250,"to":3268},
+        {"text":"dos","from":3268,"to":3279},
+        {"text":"cosas.","from":3279,"to":3299},
+        {"text":"La","from":3311,"to":3333},
+        {"text":"primera,","from":3333,"to":3345},
+        {"text":"a","from":3345,"to":3351},
+        {"text":"qué","from":3362,"to":3364},
+        {"text":"apuntaba","from":3363,"to":3377},
+        {"text":"el","from":3377,"to":3382},
+        {"text":"dominio","from":3382,"to":3394},
+        {"text":"del","from":3394,"to":3398},
+        {"text":"C2","from":3398,"to":3412},
+        {"text":"de","from":3412,"to":3422},
+        {"text":"E7.","from":3422,"to":3440}
+      ]
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-pdns",
+      "text": "Y te lo dice con fechas. Apuntaba a esta IP de hosting. Los sensores la vieron por primera vez semanas antes de E7, y seguía activa días después.",
+      "from": 3460,
+      "audioFrames": 345,
+      "durationInFrames": 357,
+      "audio": "voice/s03-04.mp3",
+      "words": [
+        {"text":"Y","from":3467,"to":3489},
+        {"text":"te","from":3489,"to":3492},
+        {"text":"lo","from":3492,"to":3496},
+        {"text":"dice","from":3496,"to":3503},
+        {"text":"con","from":3503,"to":3510},
+        {"text":"fechas.","from":3510,"to":3527},
+        {"text":"Apuntaba","from":3542,"to":3561},
+        {"text":"a","from":3561,"to":3570},
+        {"text":"esta","from":3570,"to":3578},
+        {"text":"IP","from":3578,"to":3583},
+        {"text":"de","from":3583,"to":3588},
+        {"text":"hosting.","from":3588,"to":3597},
+        {"text":"Los","from":3610,"to":3614},
+        {"text":"sensores","from":3614,"to":3628},
+        {"text":"la","from":3628,"to":3634},
+        {"text":"vieron","from":3634,"to":3644},
+        {"text":"por","from":3644,"to":3648},
+        {"text":"primera","from":3658,"to":3668},
+        {"text":"vez","from":3668,"to":3675},
+        {"text":"semanas","from":3675,"to":3684},
+        {"text":"antes","from":3684,"to":3696},
+        {"text":"de","from":3696,"to":3704},
+        {"text":"E7,","from":3704,"to":3719},
+        {"text":"y","from":3719,"to":3738},
+        {"text":"seguía","from":3738,"to":3748},
+        {"text":"activa","from":3748,"to":3764},
+        {"text":"días","from":3764,"to":3778},
+        {"text":"después.","from":3778,"to":3790}
+      ]
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-pdns",
+      "text": "La segunda pregunta va al revés. ¿Qué otros dominios han vivido en esa misma IP?",
+      "from": 3817,
+      "audioFrames": 171,
+      "durationInFrames": 180,
+      "audio": "voice/s03-05.mp3",
+      "words": [
+        {"text":"La","from":3824,"to":3838},
+        {"text":"segunda","from":3838,"to":3847},
+        {"text":"pregunta","from":3847,"to":3865},
+        {"text":"va","from":3865,"to":3877},
+        {"text":"al","from":3877,"to":3882},
+        {"text":"revés.","from":3882,"to":3894},
+        {"text":"¿Qué","from":3903,"to":3905},
+        {"text":"otros","from":3905,"to":3911},
+        {"text":"dominios","from":3911,"to":3924},
+        {"text":"han","from":3924,"to":3929},
+        {"text":"vivido","from":3929,"to":3946},
+        {"text":"en","from":3946,"to":3956},
+        {"text":"esa","from":3956,"to":3961},
+        {"text":"misma","from":3962,"to":3971},
+        {"text":"IP?","from":3971,"to":3978}
+      ]
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-pdns",
+      "text": "Y el contador no para de subir. Mil, cinco mil… catorce mil dominios.",
+      "from": 3997,
+      "audioFrames": 189,
+      "durationInFrames": 333,
+      "audio": "voice/s03-06.mp3",
+      "words": [
+        {"text":"Y","from":3999,"to":4015},
+        {"text":"el","from":4015,"to":4019},
+        {"text":"contador","from":4019,"to":4034},
+        {"text":"no","from":4034,"to":4041},
+        {"text":"para","from":4041,"to":4048},
+        {"text":"de","from":4048,"to":4054},
+        {"text":"subir.","from":4054,"to":4062},
+        {"text":"Mil,","from":4062,"to":4069},
+        {"text":"cinco","from":4081,"to":4092},
+        {"text":"mil…","from":4097,"to":4110},
+        {"text":"catorce","from":4110,"to":4140},
+        {"text":"mil","from":4140,"to":4152},
+        {"text":"dominios.","from":4152,"to":4177}
+      ]
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-tenants",
+      "text": "Por ahí no. Esa IP es un hosting compartido. Es como un bloque con catorce mil pisos.",
+      "from": 4362,
+      "audioFrames": 226,
+      "durationInFrames": 237,
+      "audio": "voice/s04-01.mp3",
+      "words": [
+        {"text":"Por","from":4369,"to":4387},
+        {"text":"ahí","from":4387,"to":4393},
+        {"text":"no.","from":4393,"to":4401},
+        {"text":"Esa","from":4412,"to":4417},
+        {"text":"IP","from":4417,"to":4426},
+        {"text":"es","from":4426,"to":4438},
+        {"text":"un","from":4438,"to":4442},
+        {"text":"hosting","from":4442,"to":4452},
+        {"text":"compartido.","from":4452,"to":4477},
+        {"text":"Es","from":4477,"to":4493},
+        {"text":"como","from":4493,"to":4499},
+        {"text":"un","from":4499,"to":4504},
+        {"text":"bloque","from":4504,"to":4512},
+        {"text":"con","from":4512,"to":4531},
+        {"text":"catorce","from":4531,"to":4545},
+        {"text":"mil","from":4545,"to":4552},
+        {"text":"pisos.","from":4552,"to":4573}
+      ]
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-tenants",
+      "text": "Que tu sospechoso viva en el bloque no convierte a sus vecinos en cómplices. Y si los sigues a todos, te ahogas en pistas falsas.",
+      "from": 4599,
+      "audioFrames": 241,
+      "durationInFrames": 255,
+      "audio": "voice/s04-02.mp3",
+      "words": [
+        {"text":"Que","from":4599,"to":4616},
+        {"text":"tu","from":4616,"to":4619},
+        {"text":"sospechoso","from":4619,"to":4635},
+        {"text":"viva","from":4635,"to":4642},
+        {"text":"en","from":4642,"to":4645},
+        {"text":"el","from":4645,"to":4650},
+        {"text":"bloque","from":4650,"to":4658},
+        {"text":"no","from":4658,"to":4665},
+        {"text":"convierte","from":4665,"to":4677},
+        {"text":"a","from":4677,"to":4682},
+        {"text":"sus","from":4682,"to":4686},
+        {"text":"vecinos","from":4686,"to":4696},
+        {"text":"en","from":4696,"to":4702},
+        {"text":"cómplices.","from":4702,"to":4719},
+        {"text":"Y","from":4719,"to":4741},
+        {"text":"si","from":4741,"to":4744},
+        {"text":"los","from":4744,"to":4748},
+        {"text":"sigues","from":4748,"to":4756},
+        {"text":"a","from":4756,"to":4759},
+        {"text":"todos,","from":4759,"to":4769},
+        {"text":"te","from":4769,"to":4783},
+        {"text":"ahogas","from":4783,"to":4795},
+        {"text":"en","from":4795,"to":4800},
+        {"text":"pistas","from":4800,"to":4812},
+        {"text":"falsas.","from":4812,"to":4828}
+      ]
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-tenants",
+      "text": "Pasa lo mismo con la IP de una CDN, que sirve miles de webs de empresas. O con un sinkhole, que recoge miles de dominios ya cazados.",
+      "from": 4854,
+      "audioFrames": 270,
+      "durationInFrames": 282,
+      "audio": "voice/s04-03.mp3",
+      "words": [
+        {"text":"Pasa","from":4854,"to":4863},
+        {"text":"lo","from":4863,"to":4867},
+        {"text":"mismo","from":4867,"to":4875},
+        {"text":"con","from":4875,"to":4886},
+        {"text":"la","from":4886,"to":4891},
+        {"text":"IP","from":4891,"to":4896},
+        {"text":"de","from":4896,"to":4903},
+        {"text":"una","from":4903,"to":4910},
+        {"text":"CDN,","from":4910,"to":4927},
+        {"text":"que","from":4934,"to":4942},
+        {"text":"sirve","from":4942,"to":4953},
+        {"text":"miles","from":4953,"to":4961},
+        {"text":"de","from":4961,"to":4968},
+        {"text":"webs","from":4968,"to":4973},
+        {"text":"de","from":4973,"to":4978},
+        {"text":"empresas.","from":4978,"to":4991},
+        {"text":"O","from":5002,"to":5005},
+        {"text":"con","from":5015,"to":5020},
+        {"text":"un","from":5020,"to":5024},
+        {"text":"sinkhole,","from":5024,"to":5038},
+        {"text":"que","from":5046,"to":5051},
+        {"text":"recoge","from":5051,"to":5064},
+        {"text":"miles","from":5064,"to":5071},
+        {"text":"de","from":5071,"to":5076},
+        {"text":"dominios","from":5077,"to":5092},
+        {"text":"ya","from":5092,"to":5097},
+        {"text":"cazados.","from":5097,"to":5112}
+      ]
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-tenants",
+      "text": "Lo contrario es una casa donde solo vive él, como un servidor propio o un certificado hecho a mano. Eso es un recurso dedicado.",
+      "from": 5136,
+      "audioFrames": 259,
+      "durationInFrames": 271,
+      "audio": "voice/s04-04.mp3",
+      "words": [
+        {"text":"Lo","from":5142,"to":5150},
+        {"text":"contrario","from":5150,"to":5164},
+        {"text":"es","from":5164,"to":5171},
+        {"text":"una","from":5171,"to":5176},
+        {"text":"casa","from":5176,"to":5186},
+        {"text":"donde","from":5186,"to":5196},
+        {"text":"solo","from":5196,"to":5205},
+        {"text":"vive","from":5205,"to":5212},
+        {"text":"él,","from":5212,"to":5221},
+        {"text":"como","from":5228,"to":5234},
+        {"text":"un","from":5234,"to":5238},
+        {"text":"servidor","from":5238,"to":5249},
+        {"text":"propio","from":5249,"to":5261},
+        {"text":"o","from":5261,"to":5271},
+        {"text":"un","from":5271,"to":5275},
+        {"text":"certificado","from":5275,"to":5293},
+        {"text":"hecho","from":5293,"to":5300},
+        {"text":"a","from":5300,"to":5304},
+        {"text":"mano.","from":5304,"to":5311},
+        {"text":"Eso","from":5325,"to":5347},
+        {"text":"es","from":5347,"to":5351},
+        {"text":"un","from":5351,"to":5355},
+        {"text":"recurso","from":5355,"to":5368},
+        {"text":"dedicado.","from":5368,"to":5387}
+      ]
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-tenants",
+      "text": "O sea, que antes de pivotar, cuenta los inquilinos. Compartido contamina, porque te trae a los vecinos. Dedicado discrimina, porque te lleva solo a él.",
+      "from": 5407,
+      "audioFrames": 330,
+      "durationInFrames": 348,
+      "audio": "voice/s04-05.mp3",
+      "words": [
+        {"text":"O","from":5414,"to":5424},
+        {"text":"sea,","from":5433,"to":5444},
+        {"text":"que","from":5444,"to":5455},
+        {"text":"antes","from":5455,"to":5462},
+        {"text":"de","from":5462,"to":5468},
+        {"text":"pivotar,","from":5468,"to":5487},
+        {"text":"cuenta","from":5490,"to":5502},
+        {"text":"los","from":5502,"to":5509},
+        {"text":"inquilinos.","from":5509,"to":5529},
+        {"text":"Compartido","from":5538,"to":5557},
+        {"text":"contamina,","from":5557,"to":5575},
+        {"text":"porque","from":5585,"to":5590},
+        {"text":"te","from":5590,"to":5596},
+        {"text":"trae","from":5596,"to":5607},
+        {"text":"a","from":5607,"to":5613},
+        {"text":"los","from":5613,"to":5616},
+        {"text":"vecinos.","from":5616,"to":5630},
+        {"text":"Dedicado","from":5639,"to":5653},
+        {"text":"discrimina,","from":5655,"to":5673},
+        {"text":"porque","from":5673,"to":5686},
+        {"text":"te","from":5686,"to":5692},
+        {"text":"lleva","from":5692,"to":5700},
+        {"text":"solo","from":5700,"to":5716},
+        {"text":"a","from":5716,"to":5724},
+        {"text":"él.","from":5724,"to":5731}
+      ]
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-cert",
+      "text": "Vamos con el certificado. El C2 usa uno autofirmado, y encima hecho a medida. O sea, uno que el actor se ha hecho él mismo, sin autoridad que lo firme.",
+      "from": 5787,
+      "audioFrames": 349,
+      "durationInFrames": 358,
+      "audio": "voice/s05-01.mp3",
+      "words": [
+        {"text":"Vamos","from":5794,"to":5816},
+        {"text":"con","from":5816,"to":5824},
+        {"text":"el","from":5824,"to":5828},
+        {"text":"certificado.","from":5828,"to":5848},
+        {"text":"El","from":5865,"to":5869},
+        {"text":"C2","from":5869,"to":5879},
+        {"text":"usa","from":5879,"to":5894},
+        {"text":"uno","from":5894,"to":5900},
+        {"text":"autofirmado,","from":5900,"to":5923},
+        {"text":"y","from":5923,"to":5929},
+        {"text":"encima","from":5929,"to":5943},
+        {"text":"hecho","from":5943,"to":5954},
+        {"text":"a","from":5954,"to":5958},
+        {"text":"medida.","from":5958,"to":5967},
+        {"text":"O","from":5984,"to":6000},
+        {"text":"sea,","from":6000,"to":6007},
+        {"text":"uno","from":6017,"to":6019},
+        {"text":"que","from":6019,"to":6024},
+        {"text":"el","from":6024,"to":6028},
+        {"text":"actor","from":6028,"to":6038},
+        {"text":"se","from":6047,"to":6051},
+        {"text":"ha","from":6051,"to":6054},
+        {"text":"hecho","from":6054,"to":6062},
+        {"text":"él","from":6062,"to":6073},
+        {"text":"mismo,","from":6073,"to":6086},
+        {"text":"sin","from":6091,"to":6097},
+        {"text":"autoridad","from":6097,"to":6111},
+        {"text":"que","from":6111,"to":6115},
+        {"text":"lo","from":6115,"to":6118},
+        {"text":"firme.","from":6118,"to":6128}
+      ]
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-cert",
+      "text": "Justo. Y eso es lo que lo delata. Es como una llave hecha a mano. Si abre otra puerta, casi seguro que esa puerta también es suya.",
+      "from": 6308,
+      "audioFrames": 306,
+      "durationInFrames": 324,
+      "audio": "voice/s05-02.mp3",
+      "words": [
+        {"text":"Justo.","from":6315,"to":6334},
+        {"text":"Y","from":6335,"to":6342},
+        {"text":"eso","from":6342,"to":6352},
+        {"text":"es","from":6352,"to":6373},
+        {"text":"lo","from":6373,"to":6378},
+        {"text":"que","from":6378,"to":6382},
+        {"text":"lo","from":6382,"to":6386},
+        {"text":"delata.","from":6386,"to":6398},
+        {"text":"Es","from":6411,"to":6430},
+        {"text":"como","from":6430,"to":6436},
+        {"text":"una","from":6436,"to":6443},
+        {"text":"llave","from":6443,"to":6454},
+        {"text":"hecha","from":6454,"to":6467},
+        {"text":"a","from":6467,"to":6469},
+        {"text":"mano.","from":6467,"to":6479},
+        {"text":"Si","from":6486,"to":6504},
+        {"text":"abre","from":6504,"to":6511},
+        {"text":"otra","from":6511,"to":6518},
+        {"text":"puerta,","from":6518,"to":6530},
+        {"text":"casi","from":6539,"to":6543},
+        {"text":"seguro","from":6543,"to":6556},
+        {"text":"que","from":6556,"to":6561},
+        {"text":"esa","from":6561,"to":6564},
+        {"text":"puerta","from":6564,"to":6574},
+        {"text":"también","from":6574,"to":6590},
+        {"text":"es","from":6590,"to":6598},
+        {"text":"suya.","from":6598,"to":6608}
+      ]
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-cert",
+      "text": "Ese certificado tiene una huella, un código que lo identifica, y la buscas en los escaneos de Internet. Y aparece en tres IP.",
+      "from": 6632,
+      "audioFrames": 260,
+      "durationInFrames": 271,
+      "audio": "voice/s05-03.mp3",
+      "words": [
+        {"text":"Ese","from":6634,"to":6639},
+        {"text":"certificado","from":6639,"to":6657},
+        {"text":"tiene","from":6657,"to":6666},
+        {"text":"una","from":6666,"to":6674},
+        {"text":"huella,","from":6674,"to":6688},
+        {"text":"un","from":6696,"to":6699},
+        {"text":"código","from":6699,"to":6706},
+        {"text":"que","from":6706,"to":6715},
+        {"text":"lo","from":6715,"to":6718},
+        {"text":"identifica,","from":6718,"to":6736},
+        {"text":"y","from":6736,"to":6746},
+        {"text":"la","from":6746,"to":6750},
+        {"text":"buscas","from":6750,"to":6760},
+        {"text":"en","from":6760,"to":6764},
+        {"text":"los","from":6764,"to":6767},
+        {"text":"escaneos","from":6767,"to":6781},
+        {"text":"de","from":6781,"to":6785},
+        {"text":"Internet.","from":6785,"to":6796},
+        {"text":"Y","from":6805,"to":6817},
+        {"text":"aparece","from":6817,"to":6830},
+        {"text":"en","from":6830,"to":6845},
+        {"text":"tres","from":6845,"to":6855},
+        {"text":"IP.","from":6855,"to":6884}
+      ]
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-cert",
+      "text": "Una ya la conoces, la del bloque de pisos. Pero esta otra tiene muy pocos inquilinos. Es un servidor propio.",
+      "from": 6903,
+      "audioFrames": 207,
+      "durationInFrames": 218,
+      "audio": "voice/s05-04.mp3",
+      "words": [
+        {"text":"Una","from":6903,"to":6912},
+        {"text":"ya","from":6912,"to":6928},
+        {"text":"la","from":6928,"to":6933},
+        {"text":"conoces,","from":6933,"to":6950},
+        {"text":"la","from":6959,"to":6962},
+        {"text":"del","from":6962,"to":6967},
+        {"text":"bloque","from":6967,"to":6972},
+        {"text":"de","from":6972,"to":6977},
+        {"text":"pisos.","from":6977,"to":6991},
+        {"text":"Pero","from":6995,"to":7002},
+        {"text":"esta","from":7002,"to":7007},
+        {"text":"otra","from":7007,"to":7016},
+        {"text":"tiene","from":7016,"to":7024},
+        {"text":"muy","from":7024,"to":7029},
+        {"text":"pocos","from":7029,"to":7039},
+        {"text":"inquilinos.","from":7039,"to":7056},
+        {"text":"Es","from":7065,"to":7075},
+        {"text":"un","from":7075,"to":7079},
+        {"text":"servidor","from":7079,"to":7088},
+        {"text":"propio.","from":7088,"to":7100}
+      ]
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-cert",
+      "text": "¿Y quién vive ahí? Se lo preguntas al listín con memoria. Un portal falso para iniciar sesión en Meridian. O sea, phishing.",
+      "from": 7121,
+      "audioFrames": 247,
+      "durationInFrames": 261,
+      "audio": "voice/s05-05.mp3",
+      "words": [
+        {"text":"¿Y","from":7128,"to":7147},
+        {"text":"quién","from":7147,"to":7153},
+        {"text":"vive","from":7153,"to":7159},
+        {"text":"ahí?","from":7159,"to":7167},
+        {"text":"Se","from":7182,"to":7187},
+        {"text":"lo","from":7187,"to":7190},
+        {"text":"preguntas","from":7190,"to":7203},
+        {"text":"al","from":7203,"to":7207},
+        {"text":"listín","from":7207,"to":7213},
+        {"text":"con","from":7213,"to":7220},
+        {"text":"memoria.","from":7220,"to":7233},
+        {"text":"Un","from":7248,"to":7253},
+        {"text":"portal","from":7253,"to":7260},
+        {"text":"falso","from":7260,"to":7273},
+        {"text":"para","from":7273,"to":7279},
+        {"text":"iniciar","from":7279,"to":7290},
+        {"text":"sesión","from":7290,"to":7300},
+        {"text":"en","from":7300,"to":7305},
+        {"text":"Meridian.","from":7305,"to":7318},
+        {"text":"O","from":7318,"to":7321},
+        {"text":"sea,","from":7331,"to":7342},
+        {"text":"phishing.","from":7351,"to":7359}
+      ]
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-cert",
+      "text": "Así que el C2 y el phishing comparten la misma llave. Y eso es una pista muy fuerte de que tienen el mismo dueño.",
+      "from": 7382,
+      "audioFrames": 194,
+      "durationInFrames": 206,
+      "audio": "voice/s05-06.mp3",
+      "words": [
+        {"text":"Así","from":7386,"to":7401},
+        {"text":"que","from":7401,"to":7405},
+        {"text":"el","from":7405,"to":7408},
+        {"text":"C2","from":7408,"to":7416},
+        {"text":"y","from":7416,"to":7419},
+        {"text":"el","from":7419,"to":7422},
+        {"text":"phishing","from":7422,"to":7430},
+        {"text":"comparten","from":7430,"to":7443},
+        {"text":"la","from":7443,"to":7447},
+        {"text":"misma","from":7447,"to":7452},
+        {"text":"llave.","from":7452,"to":7465},
+        {"text":"Y","from":7472,"to":7478},
+        {"text":"eso","from":7478,"to":7482},
+        {"text":"es","from":7482,"to":7484},
+        {"text":"una","from":7484,"to":7488},
+        {"text":"pista","from":7488,"to":7498},
+        {"text":"muy","from":7498,"to":7508},
+        {"text":"fuerte","from":7508,"to":7524},
+        {"text":"de","from":7524,"to":7529},
+        {"text":"que","from":7529,"to":7533},
+        {"text":"tienen","from":7533,"to":7540},
+        {"text":"el","from":7540,"to":7545},
+        {"text":"mismo","from":7545,"to":7553},
+        {"text":"dueño.","from":7553,"to":7566}
+      ]
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-cert",
+      "text": "Los demás vecinos los dejamos tapados, que esos te tocan a ti en el Lab 3A.",
+      "from": 7588,
+      "audioFrames": 147,
+      "durationInFrames": 164,
+      "audio": "voice/s05-07.mp3",
+      "words": [
+        {"text":"Los","from":7589,"to":7602},
+        {"text":"demás","from":7602,"to":7611},
+        {"text":"vecinos","from":7611,"to":7622},
+        {"text":"los","from":7622,"to":7630},
+        {"text":"dejamos","from":7630,"to":7640},
+        {"text":"tapados,","from":7640,"to":7655},
+        {"text":"que","from":7660,"to":7662},
+        {"text":"esos","from":7662,"to":7667},
+        {"text":"te","from":7667,"to":7671},
+        {"text":"tocan","from":7671,"to":7678},
+        {"text":"a","from":7678,"to":7683},
+        {"text":"ti","from":7683,"to":7687},
+        {"text":"en","from":7687,"to":7693},
+        {"text":"el","from":7693,"to":7697},
+        {"text":"Lab","from":7697,"to":7703},
+        {"text":"3A.","from":7703,"to":7726}
+      ]
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-ct",
+      "text": "Los certificados tienen otro truco. Cuando una autoridad de certificación pública firma uno, lo tiene que colgar a la vista de todos.",
+      "from": 7784,
+      "audioFrames": 220,
+      "durationInFrames": 231,
+      "audio": "voice/s06-01.mp3",
+      "words": [
+        {"text":"Los","from":7786,"to":7791},
+        {"text":"certificados","from":7791,"to":7807},
+        {"text":"tienen","from":7807,"to":7815},
+        {"text":"otro","from":7815,"to":7823},
+        {"text":"truco.","from":7823,"to":7836},
+        {"text":"Cuando","from":7845,"to":7849},
+        {"text":"una","from":7849,"to":7856},
+        {"text":"autoridad","from":7856,"to":7867},
+        {"text":"de","from":7867,"to":7871},
+        {"text":"certificación","from":7871,"to":7890},
+        {"text":"pública","from":7890,"to":7900},
+        {"text":"firma","from":7900,"to":7913},
+        {"text":"uno,","from":7913,"to":7921},
+        {"text":"lo","from":7933,"to":7941},
+        {"text":"tiene","from":7941,"to":7947},
+        {"text":"que","from":7947,"to":7952},
+        {"text":"colgar","from":7952,"to":7964},
+        {"text":"a","from":7964,"to":7970},
+        {"text":"la","from":7970,"to":7972},
+        {"text":"vista","from":7972,"to":7977},
+        {"text":"de","from":7977,"to":7982},
+        {"text":"todos.","from":7982,"to":7990}
+      ]
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-ct",
+      "text": "Es como un tablón de anuncios que puede leer cualquiera. Se llama Certificate Transparency.",
+      "from": 8015,
+      "audioFrames": 168,
+      "durationInFrames": 179,
+      "audio": "voice/s06-02.mp3",
+      "words": [
+        {"text":"Es","from":8017,"to":8026},
+        {"text":"como","from":8026,"to":8031},
+        {"text":"un","from":8031,"to":8036},
+        {"text":"tablón","from":8036,"to":8043},
+        {"text":"de","from":8043,"to":8047},
+        {"text":"anuncios","from":8047,"to":8061},
+        {"text":"que","from":8061,"to":8068},
+        {"text":"puede","from":8068,"to":8076},
+        {"text":"leer","from":8076,"to":8086},
+        {"text":"cualquiera.","from":8086,"to":8111},
+        {"text":"Se","from":8118,"to":8125},
+        {"text":"llama","from":8125,"to":8131},
+        {"text":"Certificate","from":8131,"to":8149},
+        {"text":"Transparency.","from":8149,"to":8176}
+      ]
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-ct",
+      "text": "¿Y eso para qué te sirve? Para ver la infraestructura nueva mientras la montan. Hoy mismo sale un certificado para un dominio que imita a Meridian.",
+      "from": 8194,
+      "audioFrames": 253,
+      "durationInFrames": 267,
+      "audio": "voice/s06-03.mp3",
+      "words": [
+        {"text":"¿Y","from":8197,"to":8206},
+        {"text":"eso","from":8206,"to":8212},
+        {"text":"para","from":8220,"to":8228},
+        {"text":"qué","from":8228,"to":8232},
+        {"text":"te","from":8232,"to":8236},
+        {"text":"sirve?","from":8236,"to":8246},
+        {"text":"Para","from":8254,"to":8260},
+        {"text":"ver","from":8260,"to":8267},
+        {"text":"la","from":8267,"to":8269},
+        {"text":"infraestructura","from":8269,"to":8283},
+        {"text":"nueva","from":8283,"to":8290},
+        {"text":"mientras","from":8290,"to":8304},
+        {"text":"la","from":8304,"to":8312},
+        {"text":"montan.","from":8312,"to":8325},
+        {"text":"Hoy","from":8333,"to":8339},
+        {"text":"mismo","from":8339,"to":8349},
+        {"text":"sale","from":8349,"to":8371},
+        {"text":"un","from":8371,"to":8375},
+        {"text":"certificado","from":8375,"to":8390},
+        {"text":"para","from":8390,"to":8396},
+        {"text":"un","from":8396,"to":8399},
+        {"text":"dominio","from":8399,"to":8410},
+        {"text":"que","from":8410,"to":8414},
+        {"text":"imita","from":8414,"to":8424},
+        {"text":"a","from":8424,"to":8426},
+        {"text":"Meridian.","from":8426,"to":8437}
+      ]
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-ct",
+      "text": "Ojo con dos cosas. Los autofirmados no pasan por el tablón, así que esos se buscan en los escaneos.",
+      "from": 8461,
+      "audioFrames": 201,
+      "durationInFrames": 212,
+      "audio": "voice/s06-04.mp3",
+      "words": [
+        {"text":"Ojo","from":8468,"to":8479},
+        {"text":"con","from":8479,"to":8485},
+        {"text":"dos","from":8485,"to":8489},
+        {"text":"cosas.","from":8489,"to":8502},
+        {"text":"Los","from":8517,"to":8521},
+        {"text":"autofirmados","from":8521,"to":8542},
+        {"text":"no","from":8542,"to":8549},
+        {"text":"pasan","from":8549,"to":8559},
+        {"text":"por","from":8559,"to":8564},
+        {"text":"el","from":8564,"to":8568},
+        {"text":"tablón,","from":8568,"to":8582},
+        {"text":"así","from":8594,"to":8603},
+        {"text":"que","from":8603,"to":8608},
+        {"text":"esos","from":8608,"to":8612},
+        {"text":"se","from":8612,"to":8617},
+        {"text":"buscan","from":8617,"to":8627},
+        {"text":"en","from":8627,"to":8631},
+        {"text":"los","from":8631,"to":8633},
+        {"text":"escaneos.","from":8633,"to":8653}
+      ]
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-ct",
+      "text": "Y los certificados gratis salen por millones, así que el emisor no te dice nada. Es como seguir a todo el bloque. Lo que pivota es la huella exacta.",
+      "from": 8673,
+      "audioFrames": 304,
+      "durationInFrames": 322,
+      "audio": "voice/s06-05.mp3",
+      "words": [
+        {"text":"Y","from":8680,"to":8699},
+        {"text":"los","from":8699,"to":8702},
+        {"text":"certificados","from":8702,"to":8720},
+        {"text":"gratis","from":8720,"to":8733},
+        {"text":"salen","from":8733,"to":8743},
+        {"text":"por","from":8743,"to":8751},
+        {"text":"millones,","from":8751,"to":8770},
+        {"text":"así","from":8770,"to":8790},
+        {"text":"que","from":8790,"to":8794},
+        {"text":"el","from":8794,"to":8797},
+        {"text":"emisor","from":8797,"to":8809},
+        {"text":"no","from":8809,"to":8816},
+        {"text":"te","from":8816,"to":8821},
+        {"text":"dice","from":8821,"to":8827},
+        {"text":"nada.","from":8827,"to":8837},
+        {"text":"Es","from":8851,"to":8857},
+        {"text":"como","from":8857,"to":8862},
+        {"text":"seguir","from":8862,"to":8871},
+        {"text":"a","from":8871,"to":8876},
+        {"text":"todo","from":8876,"to":8882},
+        {"text":"el","from":8882,"to":8888},
+        {"text":"bloque.","from":8888,"to":8896},
+        {"text":"Lo","from":8911,"to":8915},
+        {"text":"que","from":8915,"to":8919},
+        {"text":"pivota","from":8919,"to":8930},
+        {"text":"es","from":8930,"to":8940},
+        {"text":"la","from":8940,"to":8945},
+        {"text":"huella","from":8945,"to":8954},
+        {"text":"exacta.","from":8954,"to":8974}
+      ]
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-whois",
+      "text": "Tercera fuente, el WHOIS. Es la ficha de registro del dominio. Quién lo compró, cuándo y en qué tienda. A esa tienda se la llama registrador.",
+      "from": 9027,
+      "audioFrames": 288,
+      "durationInFrames": 299,
+      "audio": "voice/s07-01.mp3",
+      "words": [
+        {"text":"Tercera","from":9034,"to":9053},
+        {"text":"fuente,","from":9053,"to":9070},
+        {"text":"el","from":9083,"to":9086},
+        {"text":"WHOIS.","from":9086,"to":9101},
+        {"text":"Es","from":9117,"to":9120},
+        {"text":"la","from":9120,"to":9124},
+        {"text":"ficha","from":9124,"to":9131},
+        {"text":"de","from":9131,"to":9136},
+        {"text":"registro","from":9136,"to":9146},
+        {"text":"del","from":9146,"to":9151},
+        {"text":"dominio.","from":9151,"to":9164},
+        {"text":"Quién","from":9164,"to":9171},
+        {"text":"lo","from":9171,"to":9175},
+        {"text":"compró,","from":9175,"to":9186},
+        {"text":"cuándo","from":9196,"to":9204},
+        {"text":"y","from":9204,"to":9209},
+        {"text":"en","from":9209,"to":9212},
+        {"text":"qué","from":9212,"to":9215},
+        {"text":"tienda.","from":9215,"to":9225},
+        {"text":"A","from":9242,"to":9245},
+        {"text":"esa","from":9245,"to":9249},
+        {"text":"tienda","from":9249,"to":9261},
+        {"text":"se","from":9261,"to":9274},
+        {"text":"la","from":9274,"to":9277},
+        {"text":"llama","from":9277,"to":9284},
+        {"text":"registrador.","from":9284,"to":9306}
+      ]
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-whois",
+      "text": "Miras la del dominio del C2 y… todo tapado. Tiene activada la protección de privacidad.",
+      "from": 9326,
+      "audioFrames": 195,
+      "durationInFrames": 204,
+      "audio": "voice/s07-02.mp3",
+      "words": [
+        {"text":"Miras","from":9336,"to":9353},
+        {"text":"la","from":9353,"to":9357},
+        {"text":"del","from":9357,"to":9361},
+        {"text":"dominio","from":9361,"to":9374},
+        {"text":"del","from":9375,"to":9379},
+        {"text":"C2","from":9379,"to":9390},
+        {"text":"y…","from":9390,"to":9400},
+        {"text":"todo","from":9400,"to":9416},
+        {"text":"tapado.","from":9416,"to":9438},
+        {"text":"Tiene","from":9438,"to":9451},
+        {"text":"activada","from":9451,"to":9467},
+        {"text":"la","from":9467,"to":9472},
+        {"text":"protección","from":9472,"to":9486},
+        {"text":"de","from":9486,"to":9491},
+        {"text":"privacidad.","from":9491,"to":9510}
+      ]
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-whois",
+      "text": "Hoy sí. Pero el WHOIS también tiene memoria. Quedan fichas antiguas, de antes de que activaran la privacidad.",
+      "from": 9739,
+      "audioFrames": 234,
+      "durationInFrames": 246,
+      "audio": "voice/s07-03.mp3",
+      "words": [
+        {"text":"Hoy","from":9746,"to":9764},
+        {"text":"sí.","from":9764,"to":9773},
+        {"text":"Pero","from":9782,"to":9790},
+        {"text":"el","from":9790,"to":9797},
+        {"text":"WHOIS","from":9797,"to":9805},
+        {"text":"también","from":9805,"to":9816},
+        {"text":"tiene","from":9816,"to":9823},
+        {"text":"memoria.","from":9823,"to":9838},
+        {"text":"Quedan","from":9853,"to":9871},
+        {"text":"fichas","from":9871,"to":9881},
+        {"text":"antiguas,","from":9881,"to":9899},
+        {"text":"de","from":9899,"to":9912},
+        {"text":"antes","from":9912,"to":9918},
+        {"text":"de","from":9918,"to":9923},
+        {"text":"que","from":9923,"to":9926},
+        {"text":"activaran","from":9926,"to":9940},
+        {"text":"la","from":9940,"to":9944},
+        {"text":"privacidad.","from":9944,"to":9963}
+      ]
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-whois",
+      "text": "Y en la ficha de 2025 aparece un correo de contacto. Puede que no sea un nombre real, pero es un pivote dedicado.",
+      "from": 9985,
+      "audioFrames": 240,
+      "durationInFrames": 254,
+      "audio": "voice/s07-04.mp3",
+      "words": [
+        {"text":"Y","from":9992,"to":10004},
+        {"text":"en","from":10004,"to":10007},
+        {"text":"la","from":10007,"to":10009},
+        {"text":"ficha","from":10009,"to":10018},
+        {"text":"de","from":10018,"to":10023},
+        {"text":"2025","from":10023,"to":10040},
+        {"text":"aparece","from":10040,"to":10068},
+        {"text":"un","from":10068,"to":10075},
+        {"text":"correo","from":10075,"to":10083},
+        {"text":"de","from":10083,"to":10085},
+        {"text":"contacto.","from":10085,"to":10105},
+        {"text":"Puede","from":10106,"to":10115},
+        {"text":"que","from":10115,"to":10120},
+        {"text":"no","from":10120,"to":10123},
+        {"text":"sea","from":10123,"to":10131},
+        {"text":"un","from":10131,"to":10138},
+        {"text":"nombre","from":10138,"to":10144},
+        {"text":"real,","from":10144,"to":10158},
+        {"text":"pero","from":10166,"to":10169},
+        {"text":"es","from":10169,"to":10174},
+        {"text":"un","from":10174,"to":10178},
+        {"text":"pivote","from":10178,"to":10190},
+        {"text":"dedicado.","from":10190,"to":10218}
+      ]
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-whois",
+      "text": "Y aunque no hubiera correo, quedaría el patrón. Mismo registrador, mismos servidores de nombres y mismo día. Cada dato suelto no dice nada. Juntos, lo delatan.",
+      "from": 10239,
+      "audioFrames": 319,
+      "durationInFrames": 337,
+      "audio": "voice/s07-05.mp3",
+      "words": [
+        {"text":"Y","from":10241,"to":10253},
+        {"text":"aunque","from":10253,"to":10256},
+        {"text":"no","from":10256,"to":10264},
+        {"text":"hubiera","from":10264,"to":10270},
+        {"text":"correo,","from":10270,"to":10288},
+        {"text":"quedaría","from":10288,"to":10303},
+        {"text":"el","from":10303,"to":10308},
+        {"text":"patrón.","from":10308,"to":10320},
+        {"text":"Mismo","from":10320,"to":10337},
+        {"text":"registrador,","from":10337,"to":10359},
+        {"text":"mismos","from":10359,"to":10379},
+        {"text":"servidores","from":10379,"to":10393},
+        {"text":"de","from":10393,"to":10398},
+        {"text":"nombres","from":10398,"to":10406},
+        {"text":"y","from":10406,"to":10417},
+        {"text":"mismo","from":10417,"to":10424},
+        {"text":"día.","from":10424,"to":10435},
+        {"text":"Cada","from":10435,"to":10439},
+        {"text":"dato","from":10450,"to":10459},
+        {"text":"suelto","from":10459,"to":10471},
+        {"text":"no","from":10471,"to":10479},
+        {"text":"dice","from":10479,"to":10484},
+        {"text":"nada.","from":10484,"to":10495},
+        {"text":"Juntos,","from":10495,"to":10513},
+        {"text":"lo","from":10513,"to":10533},
+        {"text":"delatan.","from":10533,"to":10547}
+      ]
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-lifecycle",
+      "text": "Ese patrón tiene una historia detrás, porque un dominio malicioso pasa por varias etapas.",
+      "from": 10608,
+      "audioFrames": 175,
+      "durationInFrames": 184,
+      "audio": "voice/s08-01.mp3",
+      "words": [
+        {"text":"Ese","from":10615,"to":10636},
+        {"text":"patrón","from":10636,"to":10650},
+        {"text":"tiene","from":10651,"to":10657},
+        {"text":"una","from":10657,"to":10663},
+        {"text":"historia","from":10663,"to":10674},
+        {"text":"detrás,","from":10674,"to":10688},
+        {"text":"porque","from":10688,"to":10699},
+        {"text":"un","from":10699,"to":10704},
+        {"text":"dominio","from":10704,"to":10713},
+        {"text":"malicioso","from":10713,"to":10731},
+        {"text":"pasa","from":10731,"to":10742},
+        {"text":"por","from":10742,"to":10749},
+        {"text":"varias","from":10749,"to":10757},
+        {"text":"etapas.","from":10757,"to":10777}
+      ]
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-lifecycle",
+      "text": "Suele nacer en lote, con varios hermanos el mismo día. Y luego se queda dormido, semanas o incluso meses.",
+      "from": 10792,
+      "audioFrames": 222,
+      "durationInFrames": 233,
+      "audio": "voice/s08-02.mp3",
+      "words": [
+        {"text":"Suele","from":10794,"to":10806},
+        {"text":"nacer","from":10806,"to":10817},
+        {"text":"en","from":10817,"to":10822},
+        {"text":"lote,","from":10822,"to":10832},
+        {"text":"con","from":10832,"to":10838},
+        {"text":"varios","from":10838,"to":10844},
+        {"text":"hermanos","from":10844,"to":10862},
+        {"text":"el","from":10862,"to":10866},
+        {"text":"mismo","from":10866,"to":10871},
+        {"text":"día.","from":10871,"to":10881},
+        {"text":"Y","from":10890,"to":10900},
+        {"text":"luego","from":10900,"to":10904},
+        {"text":"se","from":10904,"to":10910},
+        {"text":"queda","from":10910,"to":10918},
+        {"text":"dormido,","from":10918,"to":10940},
+        {"text":"semanas","from":10947,"to":10962},
+        {"text":"o","from":10962,"to":10973},
+        {"text":"incluso","from":10973,"to":10985},
+        {"text":"meses.","from":10985,"to":11001}
+      ]
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-lifecycle",
+      "text": "¿Por qué dormido? Porque muchos filtros desconfían de los dominios recién nacidos. Así que el actor los deja envejecer.",
+      "from": 11025,
+      "audioFrames": 229,
+      "durationInFrames": 241,
+      "audio": "voice/s08-03.mp3",
+      "words": [
+        {"text":"¿Por","from":11025,"to":11030},
+        {"text":"qué","from":11030,"to":11035},
+        {"text":"dormido?","from":11035,"to":11050},
+        {"text":"Porque","from":11065,"to":11073},
+        {"text":"muchos","from":11073,"to":11082},
+        {"text":"filtros","from":11082,"to":11099},
+        {"text":"desconfían","from":11099,"to":11121},
+        {"text":"de","from":11121,"to":11127},
+        {"text":"los","from":11127,"to":11131},
+        {"text":"dominios","from":11131,"to":11145},
+        {"text":"recién","from":11145,"to":11156},
+        {"text":"nacidos.","from":11156,"to":11169},
+        {"text":"Así","from":11181,"to":11189},
+        {"text":"que","from":11189,"to":11193},
+        {"text":"el","from":11193,"to":11197},
+        {"text":"actor","from":11197,"to":11206},
+        {"text":"los","from":11206,"to":11210},
+        {"text":"deja","from":11220,"to":11228},
+        {"text":"envejecer.","from":11228,"to":11244}
+      ]
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-lifecycle",
+      "text": "Un día lo despiertan y lo apuntan a sus servidores. Lo usan en la campaña. Y cuando alguien lo detecta, queda quemado y el actor pasa al siguiente.",
+      "from": 11266,
+      "audioFrames": 288,
+      "durationInFrames": 432,
+      "audio": "voice/s08-04.mp3",
+      "words": [
+        {"text":"Un","from":11266,"to":11272},
+        {"text":"día","from":11272,"to":11278},
+        {"text":"lo","from":11278,"to":11283},
+        {"text":"despiertan","from":11283,"to":11307},
+        {"text":"y","from":11307,"to":11309},
+        {"text":"lo","from":11317,"to":11320},
+        {"text":"apuntan","from":11320,"to":11333},
+        {"text":"a","from":11333,"to":11336},
+        {"text":"sus","from":11336,"to":11339},
+        {"text":"servidores.","from":11339,"to":11353},
+        {"text":"Lo","from":11366,"to":11369},
+        {"text":"usan","from":11369,"to":11380},
+        {"text":"en","from":11380,"to":11386},
+        {"text":"la","from":11386,"to":11389},
+        {"text":"campaña.","from":11389,"to":11409},
+        {"text":"Y","from":11409,"to":11419},
+        {"text":"cuando","from":11419,"to":11423},
+        {"text":"alguien","from":11423,"to":11431},
+        {"text":"lo","from":11431,"to":11435},
+        {"text":"detecta,","from":11435,"to":11451},
+        {"text":"queda","from":11457,"to":11466},
+        {"text":"quemado","from":11466,"to":11483},
+        {"text":"y","from":11483,"to":11491},
+        {"text":"el","from":11491,"to":11494},
+        {"text":"actor","from":11494,"to":11505},
+        {"text":"pasa","from":11516,"to":11521},
+        {"text":"al","from":11521,"to":11528},
+        {"text":"siguiente.","from":11528,"to":11535}
+      ]
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-preblock",
+      "text": "Pues sí, y ahí está lo bonito. Si detectas el lote, conoces a los hermanos antes de que despierten.",
+      "from": 11730,
+      "audioFrames": 211,
+      "durationInFrames": 222,
+      "audio": "voice/s09-01.mp3",
+      "words": [
+        {"text":"Pues","from":11737,"to":11754},
+        {"text":"sí,","from":11754,"to":11764},
+        {"text":"y","from":11775,"to":11779},
+        {"text":"ahí","from":11779,"to":11783},
+        {"text":"está","from":11783,"to":11789},
+        {"text":"lo","from":11789,"to":11794},
+        {"text":"bonito.","from":11794,"to":11806},
+        {"text":"Si","from":11821,"to":11824},
+        {"text":"detectas","from":11824,"to":11836},
+        {"text":"el","from":11836,"to":11841},
+        {"text":"lote,","from":11841,"to":11854},
+        {"text":"conoces","from":11863,"to":11871},
+        {"text":"a","from":11871,"to":11875},
+        {"text":"los","from":11875,"to":11878},
+        {"text":"hermanos","from":11878,"to":11890},
+        {"text":"antes","from":11890,"to":11899},
+        {"text":"de","from":11899,"to":11904},
+        {"text":"que","from":11904,"to":11908},
+        {"text":"despierten.","from":11913,"to":11931}
+      ]
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-preblock",
+      "text": "Buscas los dominios registrados con el mismo patrón y el mismo día. Aquí salen varios, todavía dormidos.",
+      "from": 11952,
+      "audioFrames": 214,
+      "durationInFrames": 225,
+      "audio": "voice/s09-02.mp3",
+      "words": [
+        {"text":"Buscas","from":11952,"to":11967},
+        {"text":"los","from":11967,"to":11973},
+        {"text":"dominios","from":11973,"to":11986},
+        {"text":"registrados","from":11986,"to":12002},
+        {"text":"con","from":12002,"to":12011},
+        {"text":"el","from":12011,"to":12014},
+        {"text":"mismo","from":12014,"to":12022},
+        {"text":"patrón","from":12022,"to":12036},
+        {"text":"y","from":12036,"to":12054},
+        {"text":"el","from":12054,"to":12058},
+        {"text":"mismo","from":12058,"to":12068},
+        {"text":"día.","from":12068,"to":12077},
+        {"text":"Aquí","from":12094,"to":12101},
+        {"text":"salen","from":12101,"to":12109},
+        {"text":"varios,","from":12109,"to":12117},
+        {"text":"todavía","from":12127,"to":12139},
+        {"text":"dormidos.","from":12139,"to":12155}
+      ]
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-preblock",
+      "text": "Y los bloqueas ya, antes de que llegue el primer correo. En la matriz de cursos de acción, esto es un Deny.",
+      "from": 12177,
+      "audioFrames": 209,
+      "durationInFrames": 221,
+      "audio": "voice/s09-03.mp3",
+      "words": [
+        {"text":"Y","from":12177,"to":12181},
+        {"text":"los","from":12181,"to":12185},
+        {"text":"bloqueas","from":12185,"to":12198},
+        {"text":"ya,","from":12198,"to":12203},
+        {"text":"antes","from":12203,"to":12218},
+        {"text":"de","from":12218,"to":12223},
+        {"text":"que","from":12223,"to":12226},
+        {"text":"llegue","from":12226,"to":12232},
+        {"text":"el","from":12232,"to":12236},
+        {"text":"primer","from":12236,"to":12242},
+        {"text":"correo.","from":12242,"to":12259},
+        {"text":"En","from":12267,"to":12269},
+        {"text":"la","from":12267,"to":12270},
+        {"text":"matriz","from":12270,"to":12279},
+        {"text":"de","from":12279,"to":12316},
+        {"text":"cursos","from":12316,"to":12329},
+        {"text":"de","from":12329,"to":12333},
+        {"text":"acción,","from":12333,"to":12344},
+        {"text":"esto","from":12355,"to":12360},
+        {"text":"es","from":12360,"to":12363},
+        {"text":"un","from":12363,"to":12367},
+        {"text":"Deny.","from":12367,"to":12375}
+      ]
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-preblock",
+      "text": "O sea, que por una vez no vas detrás del ataque. Vas por delante.",
+      "from": 12398,
+      "audioFrames": 142,
+      "durationInFrames": 162,
+      "audio": "voice/s09-04.mp3",
+      "words": [
+        {"text":"O","from":12404,"to":12409},
+        {"text":"sea,","from":12409,"to":12417},
+        {"text":"que","from":12428,"to":12434},
+        {"text":"por","from":12434,"to":12439},
+        {"text":"una","from":12439,"to":12443},
+        {"text":"vez","from":12443,"to":12448},
+        {"text":"no","from":12448,"to":12463},
+        {"text":"vas","from":12463,"to":12470},
+        {"text":"detrás","from":12470,"to":12480},
+        {"text":"del","from":12480,"to":12485},
+        {"text":"ataque.","from":12485,"to":12490},
+        {"text":"Vas","from":12503,"to":12508},
+        {"text":"por","from":12508,"to":12515},
+        {"text":"delante.","from":12515,"to":12531}
+      ]
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-opsec",
+      "text": "Una última cosa, y es importante. Todo lo de hoy lo has sacado del listín, del tablón y de las fichas, sin tocar al actor. Eso es pivotar en pasivo.",
+      "from": 12592,
+      "audioFrames": 311,
+      "durationInFrames": 323,
+      "audio": "voice/s10-01.mp3",
+      "words": [
+        {"text":"Una","from":12596,"to":12599},
+        {"text":"última","from":12608,"to":12617},
+        {"text":"cosa,","from":12617,"to":12627},
+        {"text":"y","from":12638,"to":12641},
+        {"text":"es","from":12641,"to":12647},
+        {"text":"importante.","from":12647,"to":12666},
+        {"text":"Todo","from":12685,"to":12698},
+        {"text":"lo","from":12698,"to":12704},
+        {"text":"de","from":12704,"to":12710},
+        {"text":"hoy","from":12710,"to":12714},
+        {"text":"lo","from":12714,"to":12718},
+        {"text":"has","from":12718,"to":12720},
+        {"text":"sacado","from":12720,"to":12730},
+        {"text":"del","from":12730,"to":12737},
+        {"text":"listín,","from":12737,"to":12752},
+        {"text":"del","from":12759,"to":12763},
+        {"text":"tablón","from":12763,"to":12775},
+        {"text":"y","from":12775,"to":12785},
+        {"text":"de","from":12785,"to":12787},
+        {"text":"las","from":12787,"to":12792},
+        {"text":"fichas,","from":12792,"to":12805},
+        {"text":"sin","from":12809,"to":12822},
+        {"text":"tocar","from":12822,"to":12829},
+        {"text":"al","from":12829,"to":12834},
+        {"text":"actor.","from":12834,"to":12843},
+        {"text":"Eso","from":12852,"to":12859},
+        {"text":"es","from":12860,"to":12867},
+        {"text":"pivotar","from":12867,"to":12879},
+        {"text":"en","from":12879,"to":12883},
+        {"text":"pasivo.","from":12883,"to":12896}
+      ]
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-opsec",
+      "text": "Ni se te ocurra. Si visitas o escaneas su servidor, tu visita queda en sus logs. Y puede darse cuenta de que vas detrás de él.",
+      "from": 13069,
+      "audioFrames": 249,
+      "durationInFrames": 263,
+      "audio": "voice/s10-02.mp3",
+      "words": [
+        {"text":"Ni","from":13076,"to":13092},
+        {"text":"se","from":13092,"to":13096},
+        {"text":"te","from":13096,"to":13099},
+        {"text":"ocurra.","from":13099,"to":13111},
+        {"text":"Si","from":13129,"to":13136},
+        {"text":"visitas","from":13136,"to":13150},
+        {"text":"o","from":13150,"to":13153},
+        {"text":"escaneas","from":13153,"to":13166},
+        {"text":"su","from":13166,"to":13170},
+        {"text":"servidor,","from":13170,"to":13184},
+        {"text":"tu","from":13191,"to":13196},
+        {"text":"visita","from":13196,"to":13211},
+        {"text":"queda","from":13211,"to":13214},
+        {"text":"en","from":13214,"to":13219},
+        {"text":"sus","from":13219,"to":13226},
+        {"text":"logs.","from":13226,"to":13236},
+        {"text":"Y","from":13236,"to":13242},
+        {"text":"puede","from":13251,"to":13259},
+        {"text":"darse","from":13259,"to":13270},
+        {"text":"cuenta","from":13270,"to":13277},
+        {"text":"de","from":13277,"to":13282},
+        {"text":"que","from":13282,"to":13285},
+        {"text":"vas","from":13285,"to":13290},
+        {"text":"detrás","from":13290,"to":13300},
+        {"text":"de","from":13300,"to":13305},
+        {"text":"él.","from":13305,"to":13310}
+      ]
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-opsec",
+      "text": "Por eso, pasivo primero. Y si algún día tienes que tocar, hazlo desde un entorno desechable que no lleve a tu empresa. Eso, en la próxima lección.",
+      "from": 13332,
+      "audioFrames": 286,
+      "durationInFrames": 304,
+      "audio": "voice/s10-03.mp3",
+      "words": [
+        {"text":"Por","from":13339,"to":13350},
+        {"text":"eso,","from":13350,"to":13360},
+        {"text":"pasivo","from":13360,"to":13377},
+        {"text":"primero.","from":13377,"to":13391},
+        {"text":"Y","from":13406,"to":13415},
+        {"text":"si","from":13415,"to":13418},
+        {"text":"algún","from":13418,"to":13425},
+        {"text":"día","from":13425,"to":13432},
+        {"text":"tienes","from":13432,"to":13440},
+        {"text":"que","from":13440,"to":13445},
+        {"text":"tocar,","from":13445,"to":13454},
+        {"text":"hazlo","from":13464,"to":13472},
+        {"text":"desde","from":13472,"to":13477},
+        {"text":"un","from":13477,"to":13482},
+        {"text":"entorno","from":13482,"to":13491},
+        {"text":"desechable","from":13491,"to":13509},
+        {"text":"que","from":13509,"to":13516},
+        {"text":"no","from":13516,"to":13520},
+        {"text":"lleve","from":13520,"to":13529},
+        {"text":"a","from":13529,"to":13533},
+        {"text":"tu","from":13533,"to":13536},
+        {"text":"empresa.","from":13536,"to":13547},
+        {"text":"Eso,","from":13560,"to":13567},
+        {"text":"en","from":13567,"to":13580},
+        {"text":"la","from":13580,"to":13584},
+        {"text":"próxima","from":13584,"to":13592},
+        {"text":"lección.","from":13592,"to":13610}
+      ]
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-recap",
+      "text": "Resumiendo, quédate con tres reglas para tu próximo pivote.",
+      "from": 13668,
+      "audioFrames": 124,
+      "durationInFrames": 135,
+      "audio": "voice/s11-01.mp3",
+      "words": [
+        {"text":"Resumiendo,","from":13668,"to":13687},
+        {"text":"quédate","from":13700,"to":13712},
+        {"text":"con","from":13712,"to":13719},
+        {"text":"tres","from":13719,"to":13725},
+        {"text":"reglas","from":13725,"to":13735},
+        {"text":"para","from":13735,"to":13743},
+        {"text":"tu","from":13743,"to":13748},
+        {"text":"próximo","from":13748,"to":13757},
+        {"text":"pivote.","from":13757,"to":13780}
+      ]
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-recap",
+      "text": "Una, antes de seguir una pista, cuenta los inquilinos. Dos, busca lo que es solo suyo, como un certificado hecho a mano.",
+      "from": 13803,
+      "audioFrames": 268,
+      "durationInFrames": 279,
+      "audio": "voice/s11-02.mp3",
+      "words": [
+        {"text":"Una,","from":13810,"to":13829},
+        {"text":"antes","from":13840,"to":13847},
+        {"text":"de","from":13847,"to":13852},
+        {"text":"seguir","from":13852,"to":13858},
+        {"text":"una","from":13858,"to":13863},
+        {"text":"pista,","from":13863,"to":13873},
+        {"text":"cuenta","from":13885,"to":13893},
+        {"text":"los","from":13893,"to":13897},
+        {"text":"inquilinos.","from":13897,"to":13912},
+        {"text":"Dos,","from":13922,"to":13932},
+        {"text":"busca","from":13953,"to":13962},
+        {"text":"lo","from":13962,"to":13966},
+        {"text":"que","from":13966,"to":13971},
+        {"text":"es","from":13971,"to":13978},
+        {"text":"solo","from":13978,"to":13987},
+        {"text":"suyo,","from":13987,"to":14009},
+        {"text":"como","from":14009,"to":14022},
+        {"text":"un","from":14022,"to":14026},
+        {"text":"certificado","from":14026,"to":14043},
+        {"text":"hecho","from":14043,"to":14049},
+        {"text":"a","from":14049,"to":14052},
+        {"text":"mano.","from":14052,"to":14060}
+      ]
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-recap",
+      "text": "Y tres, mira siempre en pasivo, para que el actor no sepa que vas detrás.",
+      "from": 14082,
+      "audioFrames": 192,
+      "durationInFrames": 206,
+      "audio": "voice/s11-03.mp3",
+      "words": [
+        {"text":"Y","from":14082,"to":14088},
+        {"text":"tres,","from":14101,"to":14109},
+        {"text":"mira","from":14124,"to":14133},
+        {"text":"siempre","from":14133,"to":14146},
+        {"text":"en","from":14146,"to":14159},
+        {"text":"pasivo,","from":14159,"to":14175},
+        {"text":"para","from":14175,"to":14191},
+        {"text":"que","from":14191,"to":14196},
+        {"text":"el","from":14196,"to":14199},
+        {"text":"actor","from":14199,"to":14205},
+        {"text":"no","from":14205,"to":14216},
+        {"text":"sepa","from":14216,"to":14229},
+        {"text":"que","from":14229,"to":14244},
+        {"text":"vas","from":14244,"to":14250},
+        {"text":"detrás.","from":14250,"to":14264}
+      ]
+    },
+    {
+      "id": "s11-04",
+      "scene": "s11-recap",
+      "text": "Ahora te toca a ti, con las consultas contadas, en el Lab 3A. Nos vemos en Alertópolis.",
+      "from": 14288,
+      "audioFrames": 244,
+      "durationInFrames": 262,
+      "audio": "voice/s11-04.mp3",
+      "words": [
+        {"text":"Ahora","from":14303,"to":14318},
+        {"text":"te","from":14318,"to":14334},
+        {"text":"toca","from":14334,"to":14343},
+        {"text":"a","from":14343,"to":14354},
+        {"text":"ti,","from":14354,"to":14358},
+        {"text":"con","from":14368,"to":14376},
+        {"text":"las","from":14376,"to":14381},
+        {"text":"consultas","from":14381,"to":14397},
+        {"text":"contadas,","from":14397,"to":14414},
+        {"text":"en","from":14414,"to":14426},
+        {"text":"el","from":14426,"to":14434},
+        {"text":"Lab","from":14434,"to":14446},
+        {"text":"3A.","from":14446,"to":14467},
+        {"text":"Nos","from":14479,"to":14486},
+        {"text":"vemos","from":14486,"to":14493},
+        {"text":"en","from":14493,"to":14499},
+        {"text":"Alertópolis.","from":14499,"to":14524}
+      ]
+    }
+  ],
+  "captions": [
+    {
+      "from": 49,
+      "to": 239,
+      "lines": [
+        [
+          {"text":"Tienes","from":52,"to":71},
+          {"text":"un","from":71,"to":75},
+          {"text":"dominio","from":75,"to":87},
+          {"text":"malicioso","from":87,"to":106},
+          {"text":"y","from":106,"to":111},
+          {"text":"una","from":111,"to":116},
+          {"text":"IP","from":116,"to":122}
+        ],
+        [
+          {"text":"con","from":122,"to":133},
+          {"text":"catorce","from":133,"to":149},
+          {"text":"mil","from":149,"to":155},
+          {"text":"vecinos.","from":155,"to":170},
+          {"text":"¿Por","from":181,"to":194},
+          {"text":"dónde","from":194,"to":202},
+          {"text":"tiras?","from":202,"to":215}
+        ]
+      ]
+    },
+    {
+      "from": 243,
+      "to": 323,
+      "lines": [
+        [
+          {"text":"Hoy","from":246,"to":253},
+          {"text":"aprendes","from":253,"to":269},
+          {"text":"a","from":269,"to":273},
+          {"text":"pivotar","from":273,"to":285}
+        ],
+        [
+          {"text":"por","from":285,"to":289},
+          {"text":"la","from":289,"to":294},
+          {"text":"infraestructura.","from":294,"to":314}
+        ]
+      ]
+    },
+    {
+      "from": 323,
+      "to": 456,
+      "lines": [
+        [
+          {"text":"O","from":326,"to":330},
+          {"text":"sea,","from":330,"to":337},
+          {"text":"a","from":347,"to":349},
+          {"text":"elegir","from":349,"to":358},
+          {"text":"la","from":358,"to":363},
+          {"text":"pista","from":363,"to":372},
+          {"text":"que","from":372,"to":378},
+          {"text":"te","from":378,"to":382}
+        ],
+        [
+          {"text":"lleva","from":382,"to":388},
+          {"text":"al","from":388,"to":394},
+          {"text":"atacante,","from":394,"to":407},
+          {"text":"y","from":407,"to":416},
+          {"text":"no","from":416,"to":420},
+          {"text":"al","from":420,"to":423},
+          {"text":"ruido.","from":423,"to":432}
+        ]
+      ]
+    },
+    {
+      "from": 457,
+      "to": 629,
+      "lines": [
+        [
+          {"text":"Partimos","from":460,"to":469},
+          {"text":"de","from":469,"to":475},
+          {"text":"una","from":475,"to":479},
+          {"text":"alerta","from":479,"to":489},
+          {"text":"de","from":489,"to":493},
+          {"text":"Meridian,","from":493,"to":504},
+          {"text":"el","from":515,"to":517}
+        ],
+        [
+          {"text":"evento","from":517,"to":526},
+          {"text":"E7.","from":526,"to":540},
+          {"text":"Nos","from":557,"to":566},
+          {"text":"dejó","from":566,"to":576},
+          {"text":"dos","from":576,"to":585},
+          {"text":"pistas","from":585,"to":599},
+          {"text":"pendientes.","from":599,"to":617}
+        ]
+      ]
+    },
+    {
+      "from": 629,
+      "to": 717,
+      "lines": [
+        [
+          {"text":"Un","from":632,"to":635},
+          {"text":"certificado","from":635,"to":652},
+          {"text":"que","from":652,"to":656},
+          {"text":"se","from":656,"to":660},
+          {"text":"repite,","from":660,"to":673}
+        ],
+        [
+          {"text":"y","from":673,"to":687},
+          {"text":"el","from":687,"to":691},
+          {"text":"registro","from":691,"to":702},
+          {"text":"del","from":702,"to":706},
+          {"text":"dominio,","from":706,"to":720}
+        ]
+      ]
+    },
+    {
+      "from": 717,
+      "to": 785,
+      "lines": [
+        [
+          {"text":"que","from":720,"to":729},
+          {"text":"nadie","from":729,"to":735},
+          {"text":"ha","from":735,"to":740},
+          {"text":"mirado","from":740,"to":749},
+          {"text":"todavía.","from":749,"to":761}
+        ]
+      ]
+    },
+    {
+      "from": 788,
+      "to": 864,
+      "lines": [
+        [
+          {"text":"Hoy","from":791,"to":798},
+          {"text":"las","from":798,"to":803},
+          {"text":"seguimos.","from":803,"to":818}
+        ],
+        [
+          {"text":"Y","from":818,"to":828},
+          {"text":"te","from":828,"to":832},
+          {"text":"adelanto","from":832,"to":843},
+          {"text":"algo","from":843,"to":849},
+          {"text":"bueno.","from":849,"to":858}
+        ]
+      ]
+    },
+    {
+      "from": 864,
+      "to": 991,
+      "lines": [
+        [
+          {"text":"Para","from":867,"to":873},
+          {"text":"atacarte,","from":873,"to":889},
+          {"text":"el","from":889,"to":908},
+          {"text":"adversario","from":908,"to":923}
+        ],
+        [
+          {"text":"también","from":923,"to":933},
+          {"text":"tiene","from":933,"to":943},
+          {"text":"que","from":943,"to":946},
+          {"text":"hacer","from":946,"to":953},
+          {"text":"papeleo.","from":953,"to":973}
+        ]
+      ]
+    },
+    {
+      "from": 991,
+      "to": 1121,
+      "lines": [
+        [
+          {"text":"Registra","from":994,"to":1011},
+          {"text":"dominios,","from":1011,"to":1029},
+          {"text":"alquila","from":1033,"to":1044}
+        ],
+        [
+          {"text":"servidores","from":1044,"to":1061},
+          {"text":"y","from":1061,"to":1070},
+          {"text":"les","from":1070,"to":1076},
+          {"text":"pone","from":1076,"to":1082},
+          {"text":"certificados.","from":1082,"to":1109}
+        ]
+      ]
+    },
+    {
+      "from": 1121,
+      "to": 1229,
+      "lines": [
+        [
+          {"text":"Y","from":1124,"to":1130},
+          {"text":"todo","from":1130,"to":1135},
+          {"text":"eso","from":1135,"to":1144},
+          {"text":"deja","from":1144,"to":1151},
+          {"text":"rastro,","from":1151,"to":1165}
+        ],
+        [
+          {"text":"casi","from":1170,"to":1174},
+          {"text":"siempre","from":1174,"to":1187},
+          {"text":"público.","from":1187,"to":1205}
+        ]
+      ]
+    },
+    {
+      "from": 1230,
+      "to": 1361,
+      "lines": [
+        [
+          {"text":"O","from":1233,"to":1248},
+          {"text":"sea,","from":1248,"to":1256},
+          {"text":"que","from":1268,"to":1275},
+          {"text":"su","from":1275,"to":1282},
+          {"text":"infraestructura","from":1282,"to":1312}
+        ],
+        [
+          {"text":"es","from":1312,"to":1330},
+          {"text":"lo","from":1330,"to":1335},
+          {"text":"que","from":1335,"to":1338},
+          {"text":"más","from":1338,"to":1345},
+          {"text":"se","from":1345,"to":1351},
+          {"text":"le","from":1351,"to":1353},
+          {"text":"ve.","from":1353,"to":1356}
+        ]
+      ]
+    },
+    {
+      "from": 1361,
+      "to": 1531,
+      "lines": [
+        [
+          {"text":"Seguir","from":1364,"to":1373},
+          {"text":"ese","from":1373,"to":1378},
+          {"text":"rastro","from":1378,"to":1393},
+          {"text":"se","from":1393,"to":1398},
+          {"text":"llama","from":1398,"to":1405},
+          {"text":"pivotar","from":1405,"to":1425}
+        ],
+        [
+          {"text":"por","from":1425,"to":1437},
+          {"text":"la","from":1437,"to":1441},
+          {"text":"infraestructura,","from":1441,"to":1461},
+          {"text":"y","from":1461,"to":1472},
+          {"text":"hoy","from":1472,"to":1478},
+          {"text":"lo","from":1478,"to":1488},
+          {"text":"haces","from":1488,"to":1499},
+          {"text":"tú.","from":1499,"to":1507}
+        ]
+      ]
+    },
+    {
+      "from": 1568,
+      "to": 1741,
+      "lines": [
+        [
+          {"text":"Para","from":1571,"to":1590},
+          {"text":"seguirlo","from":1590,"to":1607},
+          {"text":"tienes","from":1607,"to":1613},
+          {"text":"tres","from":1613,"to":1626},
+          {"text":"fuentes,","from":1626,"to":1643}
+        ],
+        [
+          {"text":"y","from":1643,"to":1656},
+          {"text":"cada","from":1656,"to":1663},
+          {"text":"una","from":1663,"to":1671},
+          {"text":"contesta","from":1671,"to":1686},
+          {"text":"una","from":1686,"to":1690},
+          {"text":"pregunta","from":1690,"to":1700},
+          {"text":"distinta.","from":1700,"to":1722}
+        ]
+      ]
+    },
+    {
+      "from": 1741,
+      "to": 1849,
+      "lines": [
+        [
+          {"text":"La","from":1744,"to":1753},
+          {"text":"primera","from":1753,"to":1768},
+          {"text":"te","from":1768,"to":1779},
+          {"text":"dice","from":1779,"to":1785},
+          {"text":"a","from":1785,"to":1789},
+          {"text":"qué","from":1789,"to":1791}
+        ],
+        [
+          {"text":"dirección","from":1791,"to":1804},
+          {"text":"apuntaba","from":1804,"to":1820},
+          {"text":"un","from":1820,"to":1824},
+          {"text":"dominio,","from":1824,"to":1838}
+        ]
+      ]
+    },
+    {
+      "from": 1849,
+      "to": 1971,
+      "lines": [
+        [
+          {"text":"y","from":1852,"to":1858},
+          {"text":"quién","from":1858,"to":1866},
+          {"text":"más","from":1866,"to":1876},
+          {"text":"vive","from":1876,"to":1882},
+          {"text":"en","from":1882,"to":1888},
+          {"text":"esa","from":1888,"to":1892},
+          {"text":"dirección.","from":1892,"to":1907}
+        ],
+        [
+          {"text":"Es","from":1913,"to":1920},
+          {"text":"el","from":1920,"to":1924},
+          {"text":"passive","from":1924,"to":1938},
+          {"text":"DNS.","from":1938,"to":1947}
+        ]
+      ]
+    },
+    {
+      "from": 1979,
+      "to": 2148,
+      "lines": [
+        [
+          {"text":"La","from":1982,"to":2001},
+          {"text":"segunda","from":2001,"to":2010},
+          {"text":"te","from":2010,"to":2017},
+          {"text":"dice","from":2018,"to":2024},
+          {"text":"quién","from":2024,"to":2031},
+          {"text":"registró","from":2031,"to":2045}
+        ],
+        [
+          {"text":"el","from":2045,"to":2048},
+          {"text":"dominio,","from":2048,"to":2061},
+          {"text":"y","from":2066,"to":2071},
+          {"text":"cuándo.","from":2071,"to":2078},
+          {"text":"Eso","from":2096,"to":2105},
+          {"text":"es","from":2105,"to":2115},
+          {"text":"el","from":2115,"to":2122},
+          {"text":"WHOIS.","from":2122,"to":2124}
+        ]
+      ]
+    },
+    {
+      "from": 2156,
+      "to": 2254,
+      "lines": [
+        [
+          {"text":"Y","from":2159,"to":2161},
+          {"text":"la","from":2159,"to":2167},
+          {"text":"tercera","from":2167,"to":2184},
+          {"text":"mira","from":2184,"to":2198},
+          {"text":"los","from":2198,"to":2205},
+          {"text":"certificados","from":2205,"to":2226}
+        ],
+        [
+          {"text":"de","from":2226,"to":2230},
+          {"text":"sus","from":2230,"to":2234},
+          {"text":"servidores,","from":2234,"to":2249}
+        ]
+      ]
+    },
+    {
+      "from": 2254,
+      "to": 2352,
+      "lines": [
+        [
+          {"text":"que","from":2257,"to":2269},
+          {"text":"a","from":2269,"to":2271},
+          {"text":"veces","from":2271,"to":2277},
+          {"text":"se","from":2277,"to":2283},
+          {"text":"repiten","from":2283,"to":2296},
+          {"text":"donde","from":2296,"to":2304},
+          {"text":"no","from":2304,"to":2313},
+          {"text":"deberían.","from":2313,"to":2330}
+        ]
+      ]
+    },
+    {
+      "from": 2352,
+      "to": 2511,
+      "lines": [
+        [
+          {"text":"O","from":2355,"to":2361},
+          {"text":"sea,","from":2361,"to":2371},
+          {"text":"que","from":2386,"to":2391},
+          {"text":"tienes","from":2391,"to":2400},
+          {"text":"tres","from":2400,"to":2410},
+          {"text":"fuentes,","from":2410,"to":2428}
+        ],
+        [
+          {"text":"y","from":2428,"to":2436},
+          {"text":"las","from":2436,"to":2441},
+          {"text":"tres","from":2441,"to":2451},
+          {"text":"tienen","from":2451,"to":2466},
+          {"text":"algo","from":2466,"to":2481},
+          {"text":"en","from":2481,"to":2486},
+          {"text":"común.","from":2486,"to":2496}
+        ]
+      ]
+    },
+    {
+      "from": 2511,
+      "to": 2604,
+      "lines": [
+        [
+          {"text":"Puedes","from":2514,"to":2525},
+          {"text":"consultarlas","from":2525,"to":2546}
+        ],
+        [
+          {"text":"sin","from":2546,"to":2551},
+          {"text":"que","from":2551,"to":2555},
+          {"text":"el","from":2555,"to":2558},
+          {"text":"actor","from":2558,"to":2564},
+          {"text":"se","from":2564,"to":2570},
+          {"text":"entere.","from":2570,"to":2580}
+        ]
+      ]
+    },
+    {
+      "from": 2637,
+      "to": 2841,
+      "lines": [
+        [
+          {"text":"Empezamos","from":2640,"to":2662},
+          {"text":"por","from":2662,"to":2667},
+          {"text":"el","from":2678,"to":2683},
+          {"text":"passive","from":2683,"to":2695},
+          {"text":"DNS.","from":2695,"to":2743}
+        ],
+        [
+          {"text":"Piensa","from":2743,"to":2754},
+          {"text":"en","from":2754,"to":2770},
+          {"text":"el","from":2770,"to":2775},
+          {"text":"DNS","from":2775,"to":2812},
+          {"text":"como","from":2812,"to":2817},
+          {"text":"en","from":2817,"to":2828},
+          {"text":"un","from":2828,"to":2840},
+          {"text":"listín.","from":2840,"to":2844}
+        ]
+      ]
+    },
+    {
+      "from": 2841,
+      "to": 2885,
+      "lines": [
+        [
+          {"text":"Le","from":2844,"to":2854},
+          {"text":"das","from":2854,"to":2858},
+          {"text":"un","from":2858,"to":2868},
+          {"text":"nombre","from":2868,"to":2870},
+          {"text":"y","from":2868,"to":2870},
+          {"text":"te","from":2868,"to":2870},
+          {"text":"devuelve","from":2868,"to":2870},
+          {"text":"un","from":2868,"to":2870},
+          {"text":"número.","from":2868,"to":2870}
+        ]
+      ]
+    },
+    {
+      "from": 2885,
+      "to": 3018,
+      "lines": [
+        [
+          {"text":"Pues","from":2888,"to":2895},
+          {"text":"el","from":2895,"to":2901},
+          {"text":"passive","from":2901,"to":2911},
+          {"text":"DNS","from":2911,"to":2928},
+          {"text":"es","from":2941,"to":2947},
+          {"text":"ese","from":2947,"to":2955}
+        ],
+        [
+          {"text":"listín,","from":2955,"to":2971},
+          {"text":"pero","from":2978,"to":2985},
+          {"text":"con","from":2985,"to":2994},
+          {"text":"memoria.","from":2994,"to":3013}
+        ]
+      ]
+    },
+    {
+      "from": 3018,
+      "to": 3164,
+      "lines": [
+        [
+          {"text":"Hay","from":3021,"to":3028},
+          {"text":"sensores","from":3028,"to":3042},
+          {"text":"por","from":3042,"to":3053},
+          {"text":"todo","from":3053,"to":3065},
+          {"text":"Internet","from":3065,"to":3082}
+        ],
+        [
+          {"text":"apuntando","from":3082,"to":3110},
+          {"text":"las","from":3110,"to":3116},
+          {"text":"respuestas","from":3116,"to":3133},
+          {"text":"que","from":3133,"to":3139},
+          {"text":"ven","from":3139,"to":3144},
+          {"text":"pasar,","from":3144,"to":3156}
+        ]
+      ]
+    },
+    {
+      "from": 3164,
+      "to": 3216,
+      "lines": [
+        [
+          {"text":"con","from":3167,"to":3171},
+          {"text":"su","from":3171,"to":3179},
+          {"text":"fecha.","from":3179,"to":3192}
+        ]
+      ]
+    },
+    {
+      "from": 3218,
+      "to": 3308,
+      "lines": [
+        [
+          {"text":"Así","from":3221,"to":3233},
+          {"text":"que","from":3233,"to":3238},
+          {"text":"le","from":3239,"to":3242},
+          {"text":"puedes","from":3242,"to":3250},
+          {"text":"preguntar","from":3250,"to":3268},
+          {"text":"dos","from":3268,"to":3279},
+          {"text":"cosas.","from":3279,"to":3299}
+        ]
+      ]
+    },
+    {
+      "from": 3308,
+      "to": 3464,
+      "lines": [
+        [
+          {"text":"La","from":3311,"to":3333},
+          {"text":"primera,","from":3333,"to":3345},
+          {"text":"a","from":3345,"to":3351},
+          {"text":"qué","from":3362,"to":3364},
+          {"text":"apuntaba","from":3363,"to":3377}
+        ],
+        [
+          {"text":"el","from":3377,"to":3382},
+          {"text":"dominio","from":3382,"to":3394},
+          {"text":"del","from":3394,"to":3398},
+          {"text":"C2","from":3398,"to":3412},
+          {"text":"de","from":3412,"to":3422},
+          {"text":"E7.","from":3422,"to":3440}
+        ]
+      ]
+    },
+    {
+      "from": 3464,
+      "to": 3607,
+      "lines": [
+        [
+          {"text":"Y","from":3467,"to":3489},
+          {"text":"te","from":3489,"to":3492},
+          {"text":"lo","from":3492,"to":3496},
+          {"text":"dice","from":3496,"to":3503},
+          {"text":"con","from":3503,"to":3510},
+          {"text":"fechas.","from":3510,"to":3527}
+        ],
+        [
+          {"text":"Apuntaba","from":3542,"to":3561},
+          {"text":"a","from":3561,"to":3570},
+          {"text":"esta","from":3570,"to":3578},
+          {"text":"IP","from":3578,"to":3583},
+          {"text":"de","from":3583,"to":3588},
+          {"text":"hosting.","from":3588,"to":3597}
+        ]
+      ]
+    },
+    {
+      "from": 3607,
+      "to": 3716,
+      "lines": [
+        [
+          {"text":"Los","from":3610,"to":3614},
+          {"text":"sensores","from":3614,"to":3628},
+          {"text":"la","from":3628,"to":3634},
+          {"text":"vieron","from":3634,"to":3644},
+          {"text":"por","from":3644,"to":3648},
+          {"text":"primera","from":3658,"to":3668}
+        ],
+        [
+          {"text":"vez","from":3668,"to":3675},
+          {"text":"semanas","from":3675,"to":3684},
+          {"text":"antes","from":3684,"to":3696},
+          {"text":"de","from":3696,"to":3704},
+          {"text":"E7,","from":3704,"to":3719}
+        ]
+      ]
+    },
+    {
+      "from": 3716,
+      "to": 3814,
+      "lines": [
+        [
+          {"text":"y","from":3719,"to":3738},
+          {"text":"seguía","from":3738,"to":3748},
+          {"text":"activa","from":3748,"to":3764},
+          {"text":"días","from":3764,"to":3778},
+          {"text":"después.","from":3778,"to":3790}
+        ]
+      ]
+    },
+    {
+      "from": 3821,
+      "to": 3996,
+      "lines": [
+        [
+          {"text":"La","from":3824,"to":3838},
+          {"text":"segunda","from":3838,"to":3847},
+          {"text":"pregunta","from":3847,"to":3865},
+          {"text":"va","from":3865,"to":3877},
+          {"text":"al","from":3877,"to":3882},
+          {"text":"revés.","from":3882,"to":3894},
+          {"text":"¿Qué","from":3903,"to":3905}
+        ],
+        [
+          {"text":"otros","from":3905,"to":3911},
+          {"text":"dominios","from":3911,"to":3924},
+          {"text":"han","from":3924,"to":3929},
+          {"text":"vivido","from":3929,"to":3946},
+          {"text":"en","from":3946,"to":3956},
+          {"text":"esa","from":3956,"to":3961},
+          {"text":"misma","from":3962,"to":3971},
+          {"text":"IP?","from":3971,"to":3978}
+        ]
+      ]
+    },
+    {
+      "from": 3996,
+      "to": 4201,
+      "lines": [
+        [
+          {"text":"Y","from":3999,"to":4015},
+          {"text":"el","from":4015,"to":4019},
+          {"text":"contador","from":4019,"to":4034},
+          {"text":"no","from":4034,"to":4041},
+          {"text":"para","from":4041,"to":4048},
+          {"text":"de","from":4048,"to":4054},
+          {"text":"subir.","from":4054,"to":4062}
+        ],
+        [
+          {"text":"Mil,","from":4062,"to":4069},
+          {"text":"cinco","from":4081,"to":4092},
+          {"text":"mil…","from":4097,"to":4110},
+          {"text":"catorce","from":4110,"to":4140},
+          {"text":"mil","from":4140,"to":4152},
+          {"text":"dominios.","from":4152,"to":4177}
+        ]
+      ]
+    },
+    {
+      "from": 4366,
+      "to": 4474,
+      "lines": [
+        [
+          {"text":"Por","from":4369,"to":4387},
+          {"text":"ahí","from":4387,"to":4393},
+          {"text":"no.","from":4393,"to":4401},
+          {"text":"Esa","from":4412,"to":4417},
+          {"text":"IP","from":4417,"to":4426}
+        ],
+        [
+          {"text":"es","from":4426,"to":4438},
+          {"text":"un","from":4438,"to":4442},
+          {"text":"hosting","from":4442,"to":4452},
+          {"text":"compartido.","from":4452,"to":4477}
+        ]
+      ]
+    },
+    {
+      "from": 4474,
+      "to": 4596,
+      "lines": [
+        [
+          {"text":"Es","from":4477,"to":4493},
+          {"text":"como","from":4493,"to":4499},
+          {"text":"un","from":4499,"to":4504},
+          {"text":"bloque","from":4504,"to":4512},
+          {"text":"con","from":4512,"to":4531},
+          {"text":"catorce","from":4531,"to":4545},
+          {"text":"mil","from":4545,"to":4552},
+          {"text":"pisos.","from":4552,"to":4573}
+        ]
+      ]
+    },
+    {
+      "from": 4596,
+      "to": 4716,
+      "lines": [
+        [
+          {"text":"Que","from":4599,"to":4616},
+          {"text":"tu","from":4616,"to":4619},
+          {"text":"sospechoso","from":4619,"to":4635},
+          {"text":"viva","from":4635,"to":4642},
+          {"text":"en","from":4642,"to":4645},
+          {"text":"el","from":4645,"to":4650},
+          {"text":"bloque","from":4650,"to":4658}
+        ],
+        [
+          {"text":"no","from":4658,"to":4665},
+          {"text":"convierte","from":4665,"to":4677},
+          {"text":"a","from":4677,"to":4682},
+          {"text":"sus","from":4682,"to":4686},
+          {"text":"vecinos","from":4686,"to":4696},
+          {"text":"en","from":4696,"to":4702},
+          {"text":"cómplices.","from":4702,"to":4719}
+        ]
+      ]
+    },
+    {
+      "from": 4716,
+      "to": 4851,
+      "lines": [
+        [
+          {"text":"Y","from":4719,"to":4741},
+          {"text":"si","from":4741,"to":4744},
+          {"text":"los","from":4744,"to":4748},
+          {"text":"sigues","from":4748,"to":4756},
+          {"text":"a","from":4756,"to":4759},
+          {"text":"todos,","from":4759,"to":4769}
+        ],
+        [
+          {"text":"te","from":4769,"to":4783},
+          {"text":"ahogas","from":4783,"to":4795},
+          {"text":"en","from":4795,"to":4800},
+          {"text":"pistas","from":4800,"to":4812},
+          {"text":"falsas.","from":4812,"to":4828}
+        ]
+      ]
+    },
+    {
+      "from": 4851,
+      "to": 4999,
+      "lines": [
+        [
+          {"text":"Pasa","from":4854,"to":4863},
+          {"text":"lo","from":4863,"to":4867},
+          {"text":"mismo","from":4867,"to":4875},
+          {"text":"con","from":4875,"to":4886},
+          {"text":"la","from":4886,"to":4891},
+          {"text":"IP","from":4891,"to":4896},
+          {"text":"de","from":4896,"to":4903},
+          {"text":"una","from":4903,"to":4910},
+          {"text":"CDN,","from":4910,"to":4927}
+        ],
+        [
+          {"text":"que","from":4934,"to":4942},
+          {"text":"sirve","from":4942,"to":4953},
+          {"text":"miles","from":4953,"to":4961},
+          {"text":"de","from":4961,"to":4968},
+          {"text":"webs","from":4968,"to":4973},
+          {"text":"de","from":4973,"to":4978},
+          {"text":"empresas.","from":4978,"to":4991}
+        ]
+      ]
+    },
+    {
+      "from": 4999,
+      "to": 5136,
+      "lines": [
+        [
+          {"text":"O","from":5002,"to":5005},
+          {"text":"con","from":5015,"to":5020},
+          {"text":"un","from":5020,"to":5024},
+          {"text":"sinkhole,","from":5024,"to":5038},
+          {"text":"que","from":5046,"to":5051},
+          {"text":"recoge","from":5051,"to":5064}
+        ],
+        [
+          {"text":"miles","from":5064,"to":5071},
+          {"text":"de","from":5071,"to":5076},
+          {"text":"dominios","from":5077,"to":5092},
+          {"text":"ya","from":5092,"to":5097},
+          {"text":"cazados.","from":5097,"to":5112}
+        ]
+      ]
+    },
+    {
+      "from": 5139,
+      "to": 5225,
+      "lines": [
+        [
+          {"text":"Lo","from":5142,"to":5150},
+          {"text":"contrario","from":5150,"to":5164},
+          {"text":"es","from":5164,"to":5171},
+          {"text":"una","from":5171,"to":5176},
+          {"text":"casa","from":5176,"to":5186}
+        ],
+        [
+          {"text":"donde","from":5186,"to":5196},
+          {"text":"solo","from":5196,"to":5205},
+          {"text":"vive","from":5205,"to":5212},
+          {"text":"él,","from":5212,"to":5221}
+        ]
+      ]
+    },
+    {
+      "from": 5225,
+      "to": 5411,
+      "lines": [
+        [
+          {"text":"como","from":5228,"to":5234},
+          {"text":"un","from":5234,"to":5238},
+          {"text":"servidor","from":5238,"to":5249},
+          {"text":"propio","from":5249,"to":5261},
+          {"text":"o","from":5261,"to":5271},
+          {"text":"un","from":5271,"to":5275},
+          {"text":"certificado","from":5275,"to":5293}
+        ],
+        [
+          {"text":"hecho","from":5293,"to":5300},
+          {"text":"a","from":5300,"to":5304},
+          {"text":"mano.","from":5304,"to":5311},
+          {"text":"Eso","from":5325,"to":5347},
+          {"text":"es","from":5347,"to":5351},
+          {"text":"un","from":5351,"to":5355},
+          {"text":"recurso","from":5355,"to":5368},
+          {"text":"dedicado.","from":5368,"to":5387}
+        ]
+      ]
+    },
+    {
+      "from": 5411,
+      "to": 5535,
+      "lines": [
+        [
+          {"text":"O","from":5414,"to":5424},
+          {"text":"sea,","from":5433,"to":5444},
+          {"text":"que","from":5444,"to":5455},
+          {"text":"antes","from":5455,"to":5462},
+          {"text":"de","from":5462,"to":5468},
+          {"text":"pivotar,","from":5468,"to":5487}
+        ],
+        [
+          {"text":"cuenta","from":5490,"to":5502},
+          {"text":"los","from":5502,"to":5509},
+          {"text":"inquilinos.","from":5509,"to":5529}
+        ]
+      ]
+    },
+    {
+      "from": 5535,
+      "to": 5636,
+      "lines": [
+        [
+          {"text":"Compartido","from":5538,"to":5557},
+          {"text":"contamina,","from":5557,"to":5575}
+        ],
+        [
+          {"text":"porque","from":5585,"to":5590},
+          {"text":"te","from":5590,"to":5596},
+          {"text":"trae","from":5596,"to":5607},
+          {"text":"a","from":5607,"to":5613},
+          {"text":"los","from":5613,"to":5616},
+          {"text":"vecinos.","from":5616,"to":5630}
+        ]
+      ]
+    },
+    {
+      "from": 5636,
+      "to": 5755,
+      "lines": [
+        [
+          {"text":"Dedicado","from":5639,"to":5653},
+          {"text":"discrimina,","from":5655,"to":5673}
+        ],
+        [
+          {"text":"porque","from":5673,"to":5686},
+          {"text":"te","from":5686,"to":5692},
+          {"text":"lleva","from":5692,"to":5700},
+          {"text":"solo","from":5700,"to":5716},
+          {"text":"a","from":5716,"to":5724},
+          {"text":"él.","from":5724,"to":5731}
+        ]
+      ]
+    },
+    {
+      "from": 5791,
+      "to": 5981,
+      "lines": [
+        [
+          {"text":"Vamos","from":5794,"to":5816},
+          {"text":"con","from":5816,"to":5824},
+          {"text":"el","from":5824,"to":5828},
+          {"text":"certificado.","from":5828,"to":5848},
+          {"text":"El","from":5865,"to":5869},
+          {"text":"C2","from":5869,"to":5879},
+          {"text":"usa","from":5879,"to":5894}
+        ],
+        [
+          {"text":"uno","from":5894,"to":5900},
+          {"text":"autofirmado,","from":5900,"to":5923},
+          {"text":"y","from":5923,"to":5929},
+          {"text":"encima","from":5929,"to":5943},
+          {"text":"hecho","from":5943,"to":5954},
+          {"text":"a","from":5954,"to":5958},
+          {"text":"medida.","from":5958,"to":5967}
+        ]
+      ]
+    },
+    {
+      "from": 5981,
+      "to": 6152,
+      "lines": [
+        [
+          {"text":"O","from":5984,"to":6000},
+          {"text":"sea,","from":6000,"to":6007},
+          {"text":"uno","from":6017,"to":6019},
+          {"text":"que","from":6019,"to":6024},
+          {"text":"el","from":6024,"to":6028},
+          {"text":"actor","from":6028,"to":6038},
+          {"text":"se","from":6047,"to":6051},
+          {"text":"ha","from":6051,"to":6054},
+          {"text":"hecho","from":6054,"to":6062}
+        ],
+        [
+          {"text":"él","from":6062,"to":6073},
+          {"text":"mismo,","from":6073,"to":6086},
+          {"text":"sin","from":6091,"to":6097},
+          {"text":"autoridad","from":6097,"to":6111},
+          {"text":"que","from":6111,"to":6115},
+          {"text":"lo","from":6115,"to":6118},
+          {"text":"firme.","from":6118,"to":6128}
+        ]
+      ]
+    },
+    {
+      "from": 6312,
+      "to": 6483,
+      "lines": [
+        [
+          {"text":"Justo.","from":6315,"to":6334},
+          {"text":"Y","from":6335,"to":6342},
+          {"text":"eso","from":6342,"to":6352},
+          {"text":"es","from":6352,"to":6373},
+          {"text":"lo","from":6373,"to":6378},
+          {"text":"que","from":6378,"to":6382},
+          {"text":"lo","from":6382,"to":6386},
+          {"text":"delata.","from":6386,"to":6398}
+        ],
+        [
+          {"text":"Es","from":6411,"to":6430},
+          {"text":"como","from":6430,"to":6436},
+          {"text":"una","from":6436,"to":6443},
+          {"text":"llave","from":6443,"to":6454},
+          {"text":"hecha","from":6454,"to":6467},
+          {"text":"a","from":6467,"to":6469},
+          {"text":"mano.","from":6467,"to":6479}
+        ]
+      ]
+    },
+    {
+      "from": 6483,
+      "to": 6631,
+      "lines": [
+        [
+          {"text":"Si","from":6486,"to":6504},
+          {"text":"abre","from":6504,"to":6511},
+          {"text":"otra","from":6511,"to":6518},
+          {"text":"puerta,","from":6518,"to":6530},
+          {"text":"casi","from":6539,"to":6543},
+          {"text":"seguro","from":6543,"to":6556}
+        ],
+        [
+          {"text":"que","from":6556,"to":6561},
+          {"text":"esa","from":6561,"to":6564},
+          {"text":"puerta","from":6564,"to":6574},
+          {"text":"también","from":6574,"to":6590},
+          {"text":"es","from":6590,"to":6598},
+          {"text":"suya.","from":6598,"to":6608}
+        ]
+      ]
+    },
+    {
+      "from": 6631,
+      "to": 6733,
+      "lines": [
+        [
+          {"text":"Ese","from":6634,"to":6639},
+          {"text":"certificado","from":6639,"to":6657},
+          {"text":"tiene","from":6657,"to":6666},
+          {"text":"una","from":6666,"to":6674},
+          {"text":"huella,","from":6674,"to":6688}
+        ],
+        [
+          {"text":"un","from":6696,"to":6699},
+          {"text":"código","from":6699,"to":6706},
+          {"text":"que","from":6706,"to":6715},
+          {"text":"lo","from":6715,"to":6718},
+          {"text":"identifica,","from":6718,"to":6736}
+        ]
+      ]
+    },
+    {
+      "from": 6733,
+      "to": 6900,
+      "lines": [
+        [
+          {"text":"y","from":6736,"to":6746},
+          {"text":"la","from":6746,"to":6750},
+          {"text":"buscas","from":6750,"to":6760},
+          {"text":"en","from":6760,"to":6764},
+          {"text":"los","from":6764,"to":6767},
+          {"text":"escaneos","from":6767,"to":6781}
+        ],
+        [
+          {"text":"de","from":6781,"to":6785},
+          {"text":"Internet.","from":6785,"to":6796},
+          {"text":"Y","from":6805,"to":6817},
+          {"text":"aparece","from":6817,"to":6830},
+          {"text":"en","from":6830,"to":6845},
+          {"text":"tres","from":6845,"to":6855},
+          {"text":"IP.","from":6855,"to":6884}
+        ]
+      ]
+    },
+    {
+      "from": 6900,
+      "to": 7062,
+      "lines": [
+        [
+          {"text":"Una","from":6903,"to":6912},
+          {"text":"ya","from":6912,"to":6928},
+          {"text":"la","from":6928,"to":6933},
+          {"text":"conoces,","from":6933,"to":6950},
+          {"text":"la","from":6959,"to":6962},
+          {"text":"del","from":6962,"to":6967},
+          {"text":"bloque","from":6967,"to":6972},
+          {"text":"de","from":6972,"to":6977},
+          {"text":"pisos.","from":6977,"to":6991}
+        ],
+        [
+          {"text":"Pero","from":6995,"to":7002},
+          {"text":"esta","from":7002,"to":7007},
+          {"text":"otra","from":7007,"to":7016},
+          {"text":"tiene","from":7016,"to":7024},
+          {"text":"muy","from":7024,"to":7029},
+          {"text":"pocos","from":7029,"to":7039},
+          {"text":"inquilinos.","from":7039,"to":7056}
+        ]
+      ]
+    },
+    {
+      "from": 7062,
+      "to": 7124,
+      "lines": [
+        [
+          {"text":"Es","from":7065,"to":7075},
+          {"text":"un","from":7075,"to":7079},
+          {"text":"servidor","from":7079,"to":7088},
+          {"text":"propio.","from":7088,"to":7100}
+        ]
+      ]
+    },
+    {
+      "from": 7125,
+      "to": 7245,
+      "lines": [
+        [
+          {"text":"¿Y","from":7128,"to":7147},
+          {"text":"quién","from":7147,"to":7153},
+          {"text":"vive","from":7153,"to":7159},
+          {"text":"ahí?","from":7159,"to":7167}
+        ],
+        [
+          {"text":"Se","from":7182,"to":7187},
+          {"text":"lo","from":7187,"to":7190},
+          {"text":"preguntas","from":7190,"to":7203},
+          {"text":"al","from":7203,"to":7207},
+          {"text":"listín","from":7207,"to":7213},
+          {"text":"con","from":7213,"to":7220},
+          {"text":"memoria.","from":7220,"to":7233}
+        ]
+      ]
+    },
+    {
+      "from": 7245,
+      "to": 7383,
+      "lines": [
+        [
+          {"text":"Un","from":7248,"to":7253},
+          {"text":"portal","from":7253,"to":7260},
+          {"text":"falso","from":7260,"to":7273},
+          {"text":"para","from":7273,"to":7279},
+          {"text":"iniciar","from":7279,"to":7290},
+          {"text":"sesión","from":7290,"to":7300}
+        ],
+        [
+          {"text":"en","from":7300,"to":7305},
+          {"text":"Meridian.","from":7305,"to":7318},
+          {"text":"O","from":7318,"to":7321},
+          {"text":"sea,","from":7331,"to":7342},
+          {"text":"phishing.","from":7351,"to":7359}
+        ]
+      ]
+    },
+    {
+      "from": 7383,
+      "to": 7469,
+      "lines": [
+        [
+          {"text":"Así","from":7386,"to":7401},
+          {"text":"que","from":7401,"to":7405},
+          {"text":"el","from":7405,"to":7408},
+          {"text":"C2","from":7408,"to":7416},
+          {"text":"y","from":7416,"to":7419},
+          {"text":"el","from":7419,"to":7422},
+          {"text":"phishing","from":7422,"to":7430}
+        ],
+        [
+          {"text":"comparten","from":7430,"to":7443},
+          {"text":"la","from":7443,"to":7447},
+          {"text":"misma","from":7447,"to":7452},
+          {"text":"llave.","from":7452,"to":7465}
+        ]
+      ]
+    },
+    {
+      "from": 7469,
+      "to": 7586,
+      "lines": [
+        [
+          {"text":"Y","from":7472,"to":7478},
+          {"text":"eso","from":7478,"to":7482},
+          {"text":"es","from":7482,"to":7484},
+          {"text":"una","from":7484,"to":7488},
+          {"text":"pista","from":7488,"to":7498},
+          {"text":"muy","from":7498,"to":7508},
+          {"text":"fuerte","from":7508,"to":7524}
+        ],
+        [
+          {"text":"de","from":7524,"to":7529},
+          {"text":"que","from":7529,"to":7533},
+          {"text":"tienen","from":7533,"to":7540},
+          {"text":"el","from":7540,"to":7545},
+          {"text":"mismo","from":7545,"to":7553},
+          {"text":"dueño.","from":7553,"to":7566}
+        ]
+      ]
+    },
+    {
+      "from": 7586,
+      "to": 7750,
+      "lines": [
+        [
+          {"text":"Los","from":7589,"to":7602},
+          {"text":"demás","from":7602,"to":7611},
+          {"text":"vecinos","from":7611,"to":7622},
+          {"text":"los","from":7622,"to":7630},
+          {"text":"dejamos","from":7630,"to":7640},
+          {"text":"tapados,","from":7640,"to":7655}
+        ],
+        [
+          {"text":"que","from":7660,"to":7662},
+          {"text":"esos","from":7662,"to":7667},
+          {"text":"te","from":7667,"to":7671},
+          {"text":"tocan","from":7671,"to":7678},
+          {"text":"a","from":7678,"to":7683},
+          {"text":"ti","from":7683,"to":7687},
+          {"text":"en","from":7687,"to":7693},
+          {"text":"el","from":7693,"to":7697},
+          {"text":"Lab","from":7697,"to":7703},
+          {"text":"3A.","from":7703,"to":7726}
+        ]
+      ]
+    },
+    {
+      "from": 7783,
+      "to": 7842,
+      "lines": [
+        [
+          {"text":"Los","from":7786,"to":7791},
+          {"text":"certificados","from":7791,"to":7807},
+          {"text":"tienen","from":7807,"to":7815},
+          {"text":"otro","from":7815,"to":7823},
+          {"text":"truco.","from":7823,"to":7836}
+        ]
+      ]
+    },
+    {
+      "from": 7842,
+      "to": 7930,
+      "lines": [
+        [
+          {"text":"Cuando","from":7845,"to":7849},
+          {"text":"una","from":7849,"to":7856},
+          {"text":"autoridad","from":7856,"to":7867}
+        ],
+        [
+          {"text":"de","from":7867,"to":7871},
+          {"text":"certificación","from":7871,"to":7890},
+          {"text":"pública","from":7890,"to":7900},
+          {"text":"firma","from":7900,"to":7913},
+          {"text":"uno,","from":7913,"to":7921}
+        ]
+      ]
+    },
+    {
+      "from": 7930,
+      "to": 8014,
+      "lines": [
+        [
+          {"text":"lo","from":7933,"to":7941},
+          {"text":"tiene","from":7941,"to":7947},
+          {"text":"que","from":7947,"to":7952},
+          {"text":"colgar","from":7952,"to":7964},
+          {"text":"a","from":7964,"to":7970},
+          {"text":"la","from":7970,"to":7972},
+          {"text":"vista","from":7972,"to":7977},
+          {"text":"de","from":7977,"to":7982},
+          {"text":"todos.","from":7982,"to":7990}
+        ]
+      ]
+    },
+    {
+      "from": 8014,
+      "to": 8115,
+      "lines": [
+        [
+          {"text":"Es","from":8017,"to":8026},
+          {"text":"como","from":8026,"to":8031},
+          {"text":"un","from":8031,"to":8036},
+          {"text":"tablón","from":8036,"to":8043},
+          {"text":"de","from":8043,"to":8047},
+          {"text":"anuncios","from":8047,"to":8061}
+        ],
+        [
+          {"text":"que","from":8061,"to":8068},
+          {"text":"puede","from":8068,"to":8076},
+          {"text":"leer","from":8076,"to":8086},
+          {"text":"cualquiera.","from":8086,"to":8111}
+        ]
+      ]
+    },
+    {
+      "from": 8115,
+      "to": 8194,
+      "lines": [
+        [
+          {"text":"Se","from":8118,"to":8125},
+          {"text":"llama","from":8125,"to":8131},
+          {"text":"Certificate","from":8131,"to":8149},
+          {"text":"Transparency.","from":8149,"to":8176}
+        ]
+      ]
+    },
+    {
+      "from": 8194,
+      "to": 8330,
+      "lines": [
+        [
+          {"text":"¿Y","from":8197,"to":8206},
+          {"text":"eso","from":8206,"to":8212},
+          {"text":"para","from":8220,"to":8228},
+          {"text":"qué","from":8228,"to":8232},
+          {"text":"te","from":8232,"to":8236},
+          {"text":"sirve?","from":8236,"to":8246},
+          {"text":"Para","from":8254,"to":8260},
+          {"text":"ver","from":8260,"to":8267},
+          {"text":"la","from":8267,"to":8269}
+        ],
+        [
+          {"text":"infraestructura","from":8269,"to":8283},
+          {"text":"nueva","from":8283,"to":8290},
+          {"text":"mientras","from":8290,"to":8304},
+          {"text":"la","from":8304,"to":8312},
+          {"text":"montan.","from":8312,"to":8325}
+        ]
+      ]
+    },
+    {
+      "from": 8330,
+      "to": 8461,
+      "lines": [
+        [
+          {"text":"Hoy","from":8333,"to":8339},
+          {"text":"mismo","from":8339,"to":8349},
+          {"text":"sale","from":8349,"to":8371},
+          {"text":"un","from":8371,"to":8375},
+          {"text":"certificado","from":8375,"to":8390}
+        ],
+        [
+          {"text":"para","from":8390,"to":8396},
+          {"text":"un","from":8396,"to":8399},
+          {"text":"dominio","from":8399,"to":8410},
+          {"text":"que","from":8410,"to":8414},
+          {"text":"imita","from":8414,"to":8424},
+          {"text":"a","from":8424,"to":8426},
+          {"text":"Meridian.","from":8426,"to":8437}
+        ]
+      ]
+    },
+    {
+      "from": 8465,
+      "to": 8514,
+      "lines": [
+        [
+          {"text":"Ojo","from":8468,"to":8479},
+          {"text":"con","from":8479,"to":8485},
+          {"text":"dos","from":8485,"to":8489},
+          {"text":"cosas.","from":8489,"to":8502}
+        ]
+      ]
+    },
+    {
+      "from": 8514,
+      "to": 8677,
+      "lines": [
+        [
+          {"text":"Los","from":8517,"to":8521},
+          {"text":"autofirmados","from":8521,"to":8542},
+          {"text":"no","from":8542,"to":8549},
+          {"text":"pasan","from":8549,"to":8559},
+          {"text":"por","from":8559,"to":8564},
+          {"text":"el","from":8564,"to":8568},
+          {"text":"tablón,","from":8568,"to":8582}
+        ],
+        [
+          {"text":"así","from":8594,"to":8603},
+          {"text":"que","from":8603,"to":8608},
+          {"text":"esos","from":8608,"to":8612},
+          {"text":"se","from":8612,"to":8617},
+          {"text":"buscan","from":8617,"to":8627},
+          {"text":"en","from":8627,"to":8631},
+          {"text":"los","from":8631,"to":8633},
+          {"text":"escaneos.","from":8633,"to":8653}
+        ]
+      ]
+    },
+    {
+      "from": 8677,
+      "to": 8767,
+      "lines": [
+        [
+          {"text":"Y","from":8680,"to":8699},
+          {"text":"los","from":8699,"to":8702},
+          {"text":"certificados","from":8702,"to":8720},
+          {"text":"gratis","from":8720,"to":8733}
+        ],
+        [
+          {"text":"salen","from":8733,"to":8743},
+          {"text":"por","from":8743,"to":8751},
+          {"text":"millones,","from":8751,"to":8770}
+        ]
+      ]
+    },
+    {
+      "from": 8767,
+      "to": 8908,
+      "lines": [
+        [
+          {"text":"así","from":8770,"to":8790},
+          {"text":"que","from":8790,"to":8794},
+          {"text":"el","from":8794,"to":8797},
+          {"text":"emisor","from":8797,"to":8809},
+          {"text":"no","from":8809,"to":8816},
+          {"text":"te","from":8816,"to":8821},
+          {"text":"dice","from":8821,"to":8827},
+          {"text":"nada.","from":8827,"to":8837}
+        ],
+        [
+          {"text":"Es","from":8851,"to":8857},
+          {"text":"como","from":8857,"to":8862},
+          {"text":"seguir","from":8862,"to":8871},
+          {"text":"a","from":8871,"to":8876},
+          {"text":"todo","from":8876,"to":8882},
+          {"text":"el","from":8882,"to":8888},
+          {"text":"bloque.","from":8888,"to":8896}
+        ]
+      ]
+    },
+    {
+      "from": 8908,
+      "to": 8998,
+      "lines": [
+        [
+          {"text":"Lo","from":8911,"to":8915},
+          {"text":"que","from":8915,"to":8919},
+          {"text":"pivota","from":8919,"to":8930},
+          {"text":"es","from":8930,"to":8940},
+          {"text":"la","from":8940,"to":8945},
+          {"text":"huella","from":8945,"to":8954},
+          {"text":"exacta.","from":8954,"to":8974}
+        ]
+      ]
+    },
+    {
+      "from": 9031,
+      "to": 9161,
+      "lines": [
+        [
+          {"text":"Tercera","from":9034,"to":9053},
+          {"text":"fuente,","from":9053,"to":9070},
+          {"text":"el","from":9083,"to":9086},
+          {"text":"WHOIS.","from":9086,"to":9101}
+        ],
+        [
+          {"text":"Es","from":9117,"to":9120},
+          {"text":"la","from":9120,"to":9124},
+          {"text":"ficha","from":9124,"to":9131},
+          {"text":"de","from":9131,"to":9136},
+          {"text":"registro","from":9136,"to":9146},
+          {"text":"del","from":9146,"to":9151},
+          {"text":"dominio.","from":9151,"to":9164}
+        ]
+      ]
+    },
+    {
+      "from": 9161,
+      "to": 9330,
+      "lines": [
+        [
+          {"text":"Quién","from":9164,"to":9171},
+          {"text":"lo","from":9171,"to":9175},
+          {"text":"compró,","from":9175,"to":9186},
+          {"text":"cuándo","from":9196,"to":9204},
+          {"text":"y","from":9204,"to":9209},
+          {"text":"en","from":9209,"to":9212},
+          {"text":"qué","from":9212,"to":9215},
+          {"text":"tienda.","from":9215,"to":9225}
+        ],
+        [
+          {"text":"A","from":9242,"to":9245},
+          {"text":"esa","from":9245,"to":9249},
+          {"text":"tienda","from":9249,"to":9261},
+          {"text":"se","from":9261,"to":9274},
+          {"text":"la","from":9274,"to":9277},
+          {"text":"llama","from":9277,"to":9284},
+          {"text":"registrador.","from":9284,"to":9306}
+        ]
+      ]
+    },
+    {
+      "from": 9333,
+      "to": 9435,
+      "lines": [
+        [
+          {"text":"Miras","from":9336,"to":9353},
+          {"text":"la","from":9353,"to":9357},
+          {"text":"del","from":9357,"to":9361},
+          {"text":"dominio","from":9361,"to":9374}
+        ],
+        [
+          {"text":"del","from":9375,"to":9379},
+          {"text":"C2","from":9379,"to":9390},
+          {"text":"y…","from":9390,"to":9400},
+          {"text":"todo","from":9400,"to":9416},
+          {"text":"tapado.","from":9416,"to":9438}
+        ]
+      ]
+    },
+    {
+      "from": 9435,
+      "to": 9534,
+      "lines": [
+        [
+          {"text":"Tiene","from":9438,"to":9451},
+          {"text":"activada","from":9451,"to":9467}
+        ],
+        [
+          {"text":"la","from":9467,"to":9472},
+          {"text":"protección","from":9472,"to":9486},
+          {"text":"de","from":9486,"to":9491},
+          {"text":"privacidad.","from":9491,"to":9510}
+        ]
+      ]
+    },
+    {
+      "from": 9743,
+      "to": 9850,
+      "lines": [
+        [
+          {"text":"Hoy","from":9746,"to":9764},
+          {"text":"sí.","from":9764,"to":9773},
+          {"text":"Pero","from":9782,"to":9790},
+          {"text":"el","from":9790,"to":9797},
+          {"text":"WHOIS","from":9797,"to":9805}
+        ],
+        [
+          {"text":"también","from":9805,"to":9816},
+          {"text":"tiene","from":9816,"to":9823},
+          {"text":"memoria.","from":9823,"to":9838}
+        ]
+      ]
+    },
+    {
+      "from": 9850,
+      "to": 9987,
+      "lines": [
+        [
+          {"text":"Quedan","from":9853,"to":9871},
+          {"text":"fichas","from":9871,"to":9881},
+          {"text":"antiguas,","from":9881,"to":9899},
+          {"text":"de","from":9899,"to":9912},
+          {"text":"antes","from":9912,"to":9918}
+        ],
+        [
+          {"text":"de","from":9918,"to":9923},
+          {"text":"que","from":9923,"to":9926},
+          {"text":"activaran","from":9926,"to":9940},
+          {"text":"la","from":9940,"to":9944},
+          {"text":"privacidad.","from":9944,"to":9963}
+        ]
+      ]
+    },
+    {
+      "from": 9989,
+      "to": 10103,
+      "lines": [
+        [
+          {"text":"Y","from":9992,"to":10004},
+          {"text":"en","from":10004,"to":10007},
+          {"text":"la","from":10007,"to":10009},
+          {"text":"ficha","from":10009,"to":10018},
+          {"text":"de","from":10018,"to":10023},
+          {"text":"2025","from":10023,"to":10040},
+          {"text":"aparece","from":10040,"to":10068}
+        ],
+        [
+          {"text":"un","from":10068,"to":10075},
+          {"text":"correo","from":10075,"to":10083},
+          {"text":"de","from":10083,"to":10085},
+          {"text":"contacto.","from":10085,"to":10105}
+        ]
+      ]
+    },
+    {
+      "from": 10103,
+      "to": 10238,
+      "lines": [
+        [
+          {"text":"Puede","from":10106,"to":10115},
+          {"text":"que","from":10115,"to":10120},
+          {"text":"no","from":10120,"to":10123},
+          {"text":"sea","from":10123,"to":10131},
+          {"text":"un","from":10131,"to":10138},
+          {"text":"nombre","from":10138,"to":10144},
+          {"text":"real,","from":10144,"to":10158}
+        ],
+        [
+          {"text":"pero","from":10166,"to":10169},
+          {"text":"es","from":10169,"to":10174},
+          {"text":"un","from":10174,"to":10178},
+          {"text":"pivote","from":10178,"to":10190},
+          {"text":"dedicado.","from":10190,"to":10218}
+        ]
+      ]
+    },
+    {
+      "from": 10238,
+      "to": 10317,
+      "lines": [
+        [
+          {"text":"Y","from":10241,"to":10253},
+          {"text":"aunque","from":10253,"to":10256},
+          {"text":"no","from":10256,"to":10264},
+          {"text":"hubiera","from":10264,"to":10270},
+          {"text":"correo,","from":10270,"to":10288}
+        ],
+        [
+          {"text":"quedaría","from":10288,"to":10303},
+          {"text":"el","from":10303,"to":10308},
+          {"text":"patrón.","from":10308,"to":10320}
+        ]
+      ]
+    },
+    {
+      "from": 10317,
+      "to": 10432,
+      "lines": [
+        [
+          {"text":"Mismo","from":10320,"to":10337},
+          {"text":"registrador,","from":10337,"to":10359},
+          {"text":"mismos","from":10359,"to":10379}
+        ],
+        [
+          {"text":"servidores","from":10379,"to":10393},
+          {"text":"de","from":10393,"to":10398},
+          {"text":"nombres","from":10398,"to":10406},
+          {"text":"y","from":10406,"to":10417},
+          {"text":"mismo","from":10417,"to":10424},
+          {"text":"día.","from":10424,"to":10435}
+        ]
+      ]
+    },
+    {
+      "from": 10432,
+      "to": 10571,
+      "lines": [
+        [
+          {"text":"Cada","from":10435,"to":10439},
+          {"text":"dato","from":10450,"to":10459},
+          {"text":"suelto","from":10459,"to":10471},
+          {"text":"no","from":10471,"to":10479},
+          {"text":"dice","from":10479,"to":10484},
+          {"text":"nada.","from":10484,"to":10495}
+        ],
+        [
+          {"text":"Juntos,","from":10495,"to":10513},
+          {"text":"lo","from":10513,"to":10533},
+          {"text":"delatan.","from":10533,"to":10547}
+        ]
+      ]
+    },
+    {
+      "from": 10612,
+      "to": 10685,
+      "lines": [
+        [
+          {"text":"Ese","from":10615,"to":10636},
+          {"text":"patrón","from":10636,"to":10650},
+          {"text":"tiene","from":10651,"to":10657},
+          {"text":"una","from":10657,"to":10663},
+          {"text":"historia","from":10663,"to":10674},
+          {"text":"detrás,","from":10674,"to":10688}
+        ]
+      ]
+    },
+    {
+      "from": 10685,
+      "to": 10791,
+      "lines": [
+        [
+          {"text":"porque","from":10688,"to":10699},
+          {"text":"un","from":10699,"to":10704},
+          {"text":"dominio","from":10704,"to":10713},
+          {"text":"malicioso","from":10713,"to":10731}
+        ],
+        [
+          {"text":"pasa","from":10731,"to":10742},
+          {"text":"por","from":10742,"to":10749},
+          {"text":"varias","from":10749,"to":10757},
+          {"text":"etapas.","from":10757,"to":10777}
+        ]
+      ]
+    },
+    {
+      "from": 10791,
+      "to": 10887,
+      "lines": [
+        [
+          {"text":"Suele","from":10794,"to":10806},
+          {"text":"nacer","from":10806,"to":10817},
+          {"text":"en","from":10817,"to":10822},
+          {"text":"lote,","from":10822,"to":10832}
+        ],
+        [
+          {"text":"con","from":10832,"to":10838},
+          {"text":"varios","from":10838,"to":10844},
+          {"text":"hermanos","from":10844,"to":10862},
+          {"text":"el","from":10862,"to":10866},
+          {"text":"mismo","from":10866,"to":10871},
+          {"text":"día.","from":10871,"to":10881}
+        ]
+      ]
+    },
+    {
+      "from": 10887,
+      "to": 11022,
+      "lines": [
+        [
+          {"text":"Y","from":10890,"to":10900},
+          {"text":"luego","from":10900,"to":10904},
+          {"text":"se","from":10904,"to":10910},
+          {"text":"queda","from":10910,"to":10918},
+          {"text":"dormido,","from":10918,"to":10940}
+        ],
+        [
+          {"text":"semanas","from":10947,"to":10962},
+          {"text":"o","from":10962,"to":10973},
+          {"text":"incluso","from":10973,"to":10985},
+          {"text":"meses.","from":10985,"to":11001}
+        ]
+      ]
+    },
+    {
+      "from": 11022,
+      "to": 11178,
+      "lines": [
+        [
+          {"text":"¿Por","from":11025,"to":11030},
+          {"text":"qué","from":11030,"to":11035},
+          {"text":"dormido?","from":11035,"to":11050},
+          {"text":"Porque","from":11065,"to":11073},
+          {"text":"muchos","from":11073,"to":11082},
+          {"text":"filtros","from":11082,"to":11099}
+        ],
+        [
+          {"text":"desconfían","from":11099,"to":11121},
+          {"text":"de","from":11121,"to":11127},
+          {"text":"los","from":11127,"to":11131},
+          {"text":"dominios","from":11131,"to":11145},
+          {"text":"recién","from":11145,"to":11156},
+          {"text":"nacidos.","from":11156,"to":11169}
+        ]
+      ]
+    },
+    {
+      "from": 11178,
+      "to": 11263,
+      "lines": [
+        [
+          {"text":"Así","from":11181,"to":11189},
+          {"text":"que","from":11189,"to":11193},
+          {"text":"el","from":11193,"to":11197},
+          {"text":"actor","from":11197,"to":11206},
+          {"text":"los","from":11206,"to":11210},
+          {"text":"deja","from":11220,"to":11228},
+          {"text":"envejecer.","from":11228,"to":11244}
+        ]
+      ]
+    },
+    {
+      "from": 11263,
+      "to": 11406,
+      "lines": [
+        [
+          {"text":"Un","from":11266,"to":11272},
+          {"text":"día","from":11272,"to":11278},
+          {"text":"lo","from":11278,"to":11283},
+          {"text":"despiertan","from":11283,"to":11307},
+          {"text":"y","from":11307,"to":11309},
+          {"text":"lo","from":11317,"to":11320},
+          {"text":"apuntan","from":11320,"to":11333}
+        ],
+        [
+          {"text":"a","from":11333,"to":11336},
+          {"text":"sus","from":11336,"to":11339},
+          {"text":"servidores.","from":11339,"to":11353},
+          {"text":"Lo","from":11366,"to":11369},
+          {"text":"usan","from":11369,"to":11380},
+          {"text":"en","from":11380,"to":11386},
+          {"text":"la","from":11386,"to":11389},
+          {"text":"campaña.","from":11389,"to":11409}
+        ]
+      ]
+    },
+    {
+      "from": 11406,
+      "to": 11559,
+      "lines": [
+        [
+          {"text":"Y","from":11409,"to":11419},
+          {"text":"cuando","from":11419,"to":11423},
+          {"text":"alguien","from":11423,"to":11431},
+          {"text":"lo","from":11431,"to":11435},
+          {"text":"detecta,","from":11435,"to":11451},
+          {"text":"queda","from":11457,"to":11466}
+        ],
+        [
+          {"text":"quemado","from":11466,"to":11483},
+          {"text":"y","from":11483,"to":11491},
+          {"text":"el","from":11491,"to":11494},
+          {"text":"actor","from":11494,"to":11505},
+          {"text":"pasa","from":11516,"to":11521},
+          {"text":"al","from":11521,"to":11528},
+          {"text":"siguiente.","from":11528,"to":11535}
+        ]
+      ]
+    },
+    {
+      "from": 11734,
+      "to": 11818,
+      "lines": [
+        [
+          {"text":"Pues","from":11737,"to":11754},
+          {"text":"sí,","from":11754,"to":11764},
+          {"text":"y","from":11775,"to":11779},
+          {"text":"ahí","from":11779,"to":11783},
+          {"text":"está","from":11783,"to":11789},
+          {"text":"lo","from":11789,"to":11794},
+          {"text":"bonito.","from":11794,"to":11806}
+        ]
+      ]
+    },
+    {
+      "from": 11818,
+      "to": 11949,
+      "lines": [
+        [
+          {"text":"Si","from":11821,"to":11824},
+          {"text":"detectas","from":11824,"to":11836},
+          {"text":"el","from":11836,"to":11841},
+          {"text":"lote,","from":11841,"to":11854},
+          {"text":"conoces","from":11863,"to":11871}
+        ],
+        [
+          {"text":"a","from":11871,"to":11875},
+          {"text":"los","from":11875,"to":11878},
+          {"text":"hermanos","from":11878,"to":11890},
+          {"text":"antes","from":11890,"to":11899},
+          {"text":"de","from":11899,"to":11904},
+          {"text":"que","from":11904,"to":11908},
+          {"text":"despierten.","from":11913,"to":11931}
+        ]
+      ]
+    },
+    {
+      "from": 11949,
+      "to": 12091,
+      "lines": [
+        [
+          {"text":"Buscas","from":11952,"to":11967},
+          {"text":"los","from":11967,"to":11973},
+          {"text":"dominios","from":11973,"to":11986},
+          {"text":"registrados","from":11986,"to":12002}
+        ],
+        [
+          {"text":"con","from":12002,"to":12011},
+          {"text":"el","from":12011,"to":12014},
+          {"text":"mismo","from":12014,"to":12022},
+          {"text":"patrón","from":12022,"to":12036},
+          {"text":"y","from":12036,"to":12054},
+          {"text":"el","from":12054,"to":12058},
+          {"text":"mismo","from":12058,"to":12068},
+          {"text":"día.","from":12068,"to":12077}
+        ]
+      ]
+    },
+    {
+      "from": 12091,
+      "to": 12174,
+      "lines": [
+        [
+          {"text":"Aquí","from":12094,"to":12101},
+          {"text":"salen","from":12101,"to":12109},
+          {"text":"varios,","from":12109,"to":12117},
+          {"text":"todavía","from":12127,"to":12139},
+          {"text":"dormidos.","from":12139,"to":12155}
+        ]
+      ]
+    },
+    {
+      "from": 12174,
+      "to": 12264,
+      "lines": [
+        [
+          {"text":"Y","from":12177,"to":12181},
+          {"text":"los","from":12181,"to":12185},
+          {"text":"bloqueas","from":12185,"to":12198},
+          {"text":"ya,","from":12198,"to":12203},
+          {"text":"antes","from":12203,"to":12218}
+        ],
+        [
+          {"text":"de","from":12218,"to":12223},
+          {"text":"que","from":12223,"to":12226},
+          {"text":"llegue","from":12226,"to":12232},
+          {"text":"el","from":12232,"to":12236},
+          {"text":"primer","from":12236,"to":12242},
+          {"text":"correo.","from":12242,"to":12259}
+        ]
+      ]
+    },
+    {
+      "from": 12264,
+      "to": 12399,
+      "lines": [
+        [
+          {"text":"En","from":12267,"to":12269},
+          {"text":"la","from":12267,"to":12270},
+          {"text":"matriz","from":12270,"to":12279},
+          {"text":"de","from":12279,"to":12316},
+          {"text":"cursos","from":12316,"to":12329}
+        ],
+        [
+          {"text":"de","from":12329,"to":12333},
+          {"text":"acción,","from":12333,"to":12344},
+          {"text":"esto","from":12355,"to":12360},
+          {"text":"es","from":12360,"to":12363},
+          {"text":"un","from":12363,"to":12367},
+          {"text":"Deny.","from":12367,"to":12375}
+        ]
+      ]
+    },
+    {
+      "from": 12401,
+      "to": 12555,
+      "lines": [
+        [
+          {"text":"O","from":12404,"to":12409},
+          {"text":"sea,","from":12409,"to":12417},
+          {"text":"que","from":12428,"to":12434},
+          {"text":"por","from":12434,"to":12439},
+          {"text":"una","from":12439,"to":12443},
+          {"text":"vez","from":12443,"to":12448},
+          {"text":"no","from":12448,"to":12463},
+          {"text":"vas","from":12463,"to":12470}
+        ],
+        [
+          {"text":"detrás","from":12470,"to":12480},
+          {"text":"del","from":12480,"to":12485},
+          {"text":"ataque.","from":12485,"to":12490},
+          {"text":"Vas","from":12503,"to":12508},
+          {"text":"por","from":12508,"to":12515},
+          {"text":"delante.","from":12515,"to":12531}
+        ]
+      ]
+    },
+    {
+      "from": 12593,
+      "to": 12682,
+      "lines": [
+        [
+          {"text":"Una","from":12596,"to":12599},
+          {"text":"última","from":12608,"to":12617},
+          {"text":"cosa,","from":12617,"to":12627},
+          {"text":"y","from":12638,"to":12641},
+          {"text":"es","from":12641,"to":12647},
+          {"text":"importante.","from":12647,"to":12666}
+        ]
+      ]
+    },
+    {
+      "from": 12682,
+      "to": 12806,
+      "lines": [
+        [
+          {"text":"Todo","from":12685,"to":12698},
+          {"text":"lo","from":12698,"to":12704},
+          {"text":"de","from":12704,"to":12710},
+          {"text":"hoy","from":12710,"to":12714},
+          {"text":"lo","from":12714,"to":12718},
+          {"text":"has","from":12718,"to":12720},
+          {"text":"sacado","from":12720,"to":12730},
+          {"text":"del","from":12730,"to":12737},
+          {"text":"listín,","from":12737,"to":12752}
+        ],
+        [
+          {"text":"del","from":12759,"to":12763},
+          {"text":"tablón","from":12763,"to":12775},
+          {"text":"y","from":12775,"to":12785},
+          {"text":"de","from":12785,"to":12787},
+          {"text":"las","from":12787,"to":12792},
+          {"text":"fichas,","from":12792,"to":12805}
+        ]
+      ]
+    },
+    {
+      "from": 12806,
+      "to": 12920,
+      "lines": [
+        [
+          {"text":"sin","from":12809,"to":12822},
+          {"text":"tocar","from":12822,"to":12829},
+          {"text":"al","from":12829,"to":12834},
+          {"text":"actor.","from":12834,"to":12843}
+        ],
+        [
+          {"text":"Eso","from":12852,"to":12859},
+          {"text":"es","from":12860,"to":12867},
+          {"text":"pivotar","from":12867,"to":12879},
+          {"text":"en","from":12879,"to":12883},
+          {"text":"pasivo.","from":12883,"to":12896}
+        ]
+      ]
+    },
+    {
+      "from": 13073,
+      "to": 13233,
+      "lines": [
+        [
+          {"text":"Ni","from":13076,"to":13092},
+          {"text":"se","from":13092,"to":13096},
+          {"text":"te","from":13096,"to":13099},
+          {"text":"ocurra.","from":13099,"to":13111},
+          {"text":"Si","from":13129,"to":13136},
+          {"text":"visitas","from":13136,"to":13150},
+          {"text":"o","from":13150,"to":13153},
+          {"text":"escaneas","from":13153,"to":13166}
+        ],
+        [
+          {"text":"su","from":13166,"to":13170},
+          {"text":"servidor,","from":13170,"to":13184},
+          {"text":"tu","from":13191,"to":13196},
+          {"text":"visita","from":13196,"to":13211},
+          {"text":"queda","from":13211,"to":13214},
+          {"text":"en","from":13214,"to":13219},
+          {"text":"sus","from":13219,"to":13226},
+          {"text":"logs.","from":13226,"to":13236}
+        ]
+      ]
+    },
+    {
+      "from": 13233,
+      "to": 13334,
+      "lines": [
+        [
+          {"text":"Y","from":13236,"to":13242},
+          {"text":"puede","from":13251,"to":13259},
+          {"text":"darse","from":13259,"to":13270},
+          {"text":"cuenta","from":13270,"to":13277}
+        ],
+        [
+          {"text":"de","from":13277,"to":13282},
+          {"text":"que","from":13282,"to":13285},
+          {"text":"vas","from":13285,"to":13290},
+          {"text":"detrás","from":13290,"to":13300},
+          {"text":"de","from":13300,"to":13305},
+          {"text":"él.","from":13305,"to":13310}
+        ]
+      ]
+    },
+    {
+      "from": 13336,
+      "to": 13403,
+      "lines": [
+        [
+          {"text":"Por","from":13339,"to":13350},
+          {"text":"eso,","from":13350,"to":13360},
+          {"text":"pasivo","from":13360,"to":13377},
+          {"text":"primero.","from":13377,"to":13391}
+        ]
+      ]
+    },
+    {
+      "from": 13403,
+      "to": 13461,
+      "lines": [
+        [
+          {"text":"Y","from":13406,"to":13415},
+          {"text":"si","from":13415,"to":13418},
+          {"text":"algún","from":13418,"to":13425},
+          {"text":"día","from":13425,"to":13432},
+          {"text":"tienes","from":13432,"to":13440},
+          {"text":"que","from":13440,"to":13445},
+          {"text":"tocar,","from":13445,"to":13454}
+        ]
+      ]
+    },
+    {
+      "from": 13461,
+      "to": 13557,
+      "lines": [
+        [
+          {"text":"hazlo","from":13464,"to":13472},
+          {"text":"desde","from":13472,"to":13477},
+          {"text":"un","from":13477,"to":13482},
+          {"text":"entorno","from":13482,"to":13491},
+          {"text":"desechable","from":13491,"to":13509}
+        ],
+        [
+          {"text":"que","from":13509,"to":13516},
+          {"text":"no","from":13516,"to":13520},
+          {"text":"lleve","from":13520,"to":13529},
+          {"text":"a","from":13529,"to":13533},
+          {"text":"tu","from":13533,"to":13536},
+          {"text":"empresa.","from":13536,"to":13547}
+        ]
+      ]
+    },
+    {
+      "from": 13557,
+      "to": 13634,
+      "lines": [
+        [
+          {"text":"Eso,","from":13560,"to":13567},
+          {"text":"en","from":13567,"to":13580},
+          {"text":"la","from":13580,"to":13584},
+          {"text":"próxima","from":13584,"to":13592},
+          {"text":"lección.","from":13592,"to":13610}
+        ]
+      ]
+    },
+    {
+      "from": 13665,
+      "to": 13804,
+      "lines": [
+        [
+          {"text":"Resumiendo,","from":13668,"to":13687},
+          {"text":"quédate","from":13700,"to":13712},
+          {"text":"con","from":13712,"to":13719},
+          {"text":"tres","from":13719,"to":13725}
+        ],
+        [
+          {"text":"reglas","from":13725,"to":13735},
+          {"text":"para","from":13735,"to":13743},
+          {"text":"tu","from":13743,"to":13748},
+          {"text":"próximo","from":13748,"to":13757},
+          {"text":"pivote.","from":13757,"to":13780}
+        ]
+      ]
+    },
+    {
+      "from": 13807,
+      "to": 13919,
+      "lines": [
+        [
+          {"text":"Una,","from":13810,"to":13829},
+          {"text":"antes","from":13840,"to":13847},
+          {"text":"de","from":13847,"to":13852},
+          {"text":"seguir","from":13852,"to":13858},
+          {"text":"una","from":13858,"to":13863},
+          {"text":"pista,","from":13863,"to":13873}
+        ],
+        [
+          {"text":"cuenta","from":13885,"to":13893},
+          {"text":"los","from":13893,"to":13897},
+          {"text":"inquilinos.","from":13897,"to":13912}
+        ]
+      ]
+    },
+    {
+      "from": 13919,
+      "to": 14079,
+      "lines": [
+        [
+          {"text":"Dos,","from":13922,"to":13932},
+          {"text":"busca","from":13953,"to":13962},
+          {"text":"lo","from":13962,"to":13966},
+          {"text":"que","from":13966,"to":13971},
+          {"text":"es","from":13971,"to":13978},
+          {"text":"solo","from":13978,"to":13987},
+          {"text":"suyo,","from":13987,"to":14009}
+        ],
+        [
+          {"text":"como","from":14009,"to":14022},
+          {"text":"un","from":14022,"to":14026},
+          {"text":"certificado","from":14026,"to":14043},
+          {"text":"hecho","from":14043,"to":14049},
+          {"text":"a","from":14049,"to":14052},
+          {"text":"mano.","from":14052,"to":14060}
+        ]
+      ]
+    },
+    {
+      "from": 14079,
+      "to": 14288,
+      "lines": [
+        [
+          {"text":"Y","from":14082,"to":14088},
+          {"text":"tres,","from":14101,"to":14109},
+          {"text":"mira","from":14124,"to":14133},
+          {"text":"siempre","from":14133,"to":14146},
+          {"text":"en","from":14146,"to":14159},
+          {"text":"pasivo,","from":14159,"to":14175}
+        ],
+        [
+          {"text":"para","from":14175,"to":14191},
+          {"text":"que","from":14191,"to":14196},
+          {"text":"el","from":14196,"to":14199},
+          {"text":"actor","from":14199,"to":14205},
+          {"text":"no","from":14205,"to":14216},
+          {"text":"sepa","from":14216,"to":14229},
+          {"text":"que","from":14229,"to":14244},
+          {"text":"vas","from":14244,"to":14250},
+          {"text":"detrás.","from":14250,"to":14264}
+        ]
+      ]
+    },
+    {
+      "from": 14300,
+      "to": 14476,
+      "lines": [
+        [
+          {"text":"Ahora","from":14303,"to":14318},
+          {"text":"te","from":14318,"to":14334},
+          {"text":"toca","from":14334,"to":14343},
+          {"text":"a","from":14343,"to":14354},
+          {"text":"ti,","from":14354,"to":14358}
+        ],
+        [
+          {"text":"con","from":14368,"to":14376},
+          {"text":"las","from":14376,"to":14381},
+          {"text":"consultas","from":14381,"to":14397},
+          {"text":"contadas,","from":14397,"to":14414},
+          {"text":"en","from":14414,"to":14426},
+          {"text":"el","from":14426,"to":14434},
+          {"text":"Lab","from":14434,"to":14446},
+          {"text":"3A.","from":14446,"to":14467}
+        ]
+      ]
+    },
+    {
+      "from": 14476,
+      "to": 14548,
+      "lines": [
+        [
+          {"text":"Nos","from":14479,"to":14486},
+          {"text":"vemos","from":14486,"to":14493},
+          {"text":"en","from":14493,"to":14499},
+          {"text":"Alertópolis.","from":14499,"to":14524}
+        ]
+      ]
+    }
+  ],
+  "cues": [
+    {"scene":"s01-hook","id":"title","frame":246},
+    {"scene":"s01-hook","id":"e7-pending","frame":557},
+    {"scene":"s01-hook","id":"register","frame":994},
+    {"scene":"s01-hook","id":"rent","frame":1033},
+    {"scene":"s01-hook","id":"serve","frame":1070},
+    {"scene":"s02-sources","id":"pdns","frame":1744},
+    {"scene":"s02-sources","id":"whois","frame":1982},
+    {"scene":"s02-sources","id":"tls","frame":2159},
+    {"scene":"s03-pdns","id":"phonebook","frame":2743},
+    {"scene":"s03-pdns","id":"q-domain","frame":3311},
+    {"scene":"s03-pdns","id":"history","frame":3467},
+    {"scene":"s03-pdns","id":"q-ip","frame":3903},
+    {"scene":"s03-pdns","id":"count-14000","frame":3999},
+    {"scene":"s04-tenants","id":"building","frame":4412},
+    {"scene":"s04-tenants","id":"shared","frame":4719},
+    {"scene":"s04-tenants","id":"cdn","frame":4854},
+    {"scene":"s04-tenants","id":"dedicated","frame":5142},
+    {"scene":"s04-tenants","id":"rule","frame":5414},
+    {"scene":"s05-cert","id":"fp","frame":5865},
+    {"scene":"s05-cert","id":"scan","frame":6634},
+    {"scene":"s05-cert","id":"hits","frame":6805},
+    {"scene":"s05-cert","id":"dedicated-ip","frame":6995},
+    {"scene":"s05-cert","id":"phish-link","frame":7248},
+    {"scene":"s05-cert","id":"redacted","frame":7589},
+    {"scene":"s06-ct","id":"ct-board","frame":8017},
+    {"scene":"s06-ct","id":"new-sub","frame":8254},
+    {"scene":"s06-ct","id":"free-ca","frame":8680},
+    {"scene":"s06-ct","id":"exact","frame":8911},
+    {"scene":"s07-whois","id":"whois-redacted","frame":9336},
+    {"scene":"s07-whois","id":"whois-history","frame":9853},
+    {"scene":"s07-whois","id":"email","frame":9992},
+    {"scene":"s07-whois","id":"pattern","frame":10320},
+    {"scene":"s08-lifecycle","id":"batch","frame":10794},
+    {"scene":"s08-lifecycle","id":"parked","frame":10890},
+    {"scene":"s08-lifecycle","id":"active","frame":11266},
+    {"scene":"s08-lifecycle","id":"use","frame":11366},
+    {"scene":"s08-lifecycle","id":"burned","frame":11409},
+    {"scene":"s09-preblock","id":"batch-detect","frame":11821},
+    {"scene":"s09-preblock","id":"siblings","frame":11952},
+    {"scene":"s09-preblock","id":"pre-block","frame":12177},
+    {"scene":"s09-preblock","id":"coa-deny","frame":12267},
+    {"scene":"s10-opsec","id":"passive","frame":12685},
+    {"scene":"s10-opsec","id":"active-risk","frame":13129},
+    {"scene":"s10-opsec","id":"managed","frame":13406},
+    {"scene":"s11-recap","id":"recap","frame":13668},
+    {"scene":"s11-recap","id":"rule-1","frame":13810},
+    {"scene":"s11-recap","id":"rule-2","frame":13922},
+    {"scene":"s11-recap","id":"rule-3","frame":14082},
+    {"scene":"s11-recap","id":"lab3a","frame":14303},
+    {"scene":"s11-recap","id":"endcard","frame":14479}
+  ],
+  "exam": [
+    {"scene":"s03-pdns","from":3978,"durationInFrames":150,"objective":"Collection","text":"Passive DNS: a qué resolvió y quién más comparte IP","badge":"GCTI"},
+    {"scene":"s04-tenants","from":5529,"durationInFrames":150,"objective":"Collection","text":"Recurso dedicado discrimina; compartido contamina","badge":"GCTI"},
+    {"scene":"s06-ct","from":8111,"durationInFrames":150,"objective":"Collection","text":"CT logs: cada certificado de CA pública queda publicado","badge":"GCTI"},
+    {"scene":"s07-whois","from":10435,"durationInFrames":150,"objective":"Collection","text":"WHOIS con privacidad: histórico y patrones","badge":"GCTI"},
+    {"scene":"s08-lifecycle","from":11001,"durationInFrames":150,"objective":"Collection","text":"Dominios dormidos envejecen para evadir reputación","badge":"GCTI"},
+    {"scene":"s09-preblock","from":12259,"durationInFrames":150,"objective":"Collection","text":"Detectar el lote permite bloquear antes del uso","badge":"GCTI"},
+    {"scene":"s10-opsec","from":12843,"durationInFrames":150,"objective":"Collection","text":"Pivoteo pasivo: el actor no te ve","badge":"GCTI"}
+  ],
+  "think": [
+    {"scene":"s03-pdns","from":4190,"durationInFrames":131,"q":"14.000 dominios en la IP. ¿Sigues por ahí?"},
+    {"scene":"s08-lifecycle","from":11558,"durationInFrames":131,"q":"¿Puedes bloquear un dominio antes de usarse?"}
+  ],
+  "intercept": [
+    {"scene":"s05-cert","from":6145,"durationInFrames":487,"adversary":"HOLLOW LANTERN","text":"Mis certificados me los firmo yo. Nadie más tiene uno igual.","audio":"voice/s05-02-intercept.mp3","audioFrom":6149,"audioFrames":149},
+    {"scene":"s07-whois","from":9530,"durationInFrames":455,"adversary":"HOLLOW LANTERN","text":"Mi WHOIS está tapado. Privacidad, analista. Búscate otro hobby.","audio":"voice/s07-03-intercept.mp3","audioFrom":9534,"audioFrames":195},
+    {"scene":"s10-opsec","from":12915,"durationInFrames":417,"adversary":"HOLLOW LANTERN","text":"¿Por qué no vienes a verme? Mi servidor te está esperando.","audio":"voice/s10-02-intercept.mp3","audioFrom":12919,"audioFrames":140}
+  ],
+  "sfx": [
+    {"from":2613,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
+    {"from":3467,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":3978,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":3999,"sound":"error","src":"sfx/error.mp3","durationInFrames":14,"volume":0.071},
+    {"from":5529,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":5760,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
+    {"from":6145,"sound":"glitch","src":"sfx/glitch.mp3","durationInFrames":12,"volume":0.166},
+    {"from":6149,"sound":"typing","src":"sfx/typing.mp3","durationInFrames":60,"volume":0.08},
+    {"from":6805,"sound":"ping2","src":"sfx/ping2.mp3","durationInFrames":37,"volume":0.044},
+    {"from":7248,"sound":"alarm","src":"sfx/alarm.mp3","durationInFrames":29,"volume":0.024},
+    {"from":7589,"sound":"glitch","src":"sfx/glitch.mp3","durationInFrames":12,"volume":0.166},
+    {"from":8111,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":8254,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":9000,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
+    {"from":9530,"sound":"glitch","src":"sfx/glitch.mp3","durationInFrames":12,"volume":0.166},
+    {"from":9534,"sound":"typing","src":"sfx/typing.mp3","durationInFrames":63,"volume":0.08},
+    {"from":9992,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
+    {"from":10435,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":11001,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":11409,"sound":"error","src":"sfx/error.mp3","durationInFrames":14,"volume":0.071},
+    {"from":12177,"sound":"block","src":"sfx/block.mp3","durationInFrames":11,"volume":0.17},
+    {"from":12259,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":12565,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
+    {"from":12843,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":12915,"sound":"glitch","src":"sfx/glitch.mp3","durationInFrames":12,"volume":0.166},
+    {"from":12919,"sound":"typing","src":"sfx/typing.mp3","durationInFrames":58,"volume":0.08},
+    {"from":13129,"sound":"alarm","src":"sfx/alarm.mp3","durationInFrames":29,"volume":0.024}
+  ],
+  "captionsOnScreen": false
+}

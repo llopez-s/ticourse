@@ -48,13 +48,28 @@ Todos los scripts eligen el vídeo con `--video <slug>` (o la variable `VIDEO`; 
 | --- | --- | --- | --- | --- |
 | Duración (`minTotalSec`–`maxTotalSec`) | 280–340 s | 140–200 s | **380–500 s** | **190–260 s** |
 | Capítulos (`maxChapters`) | 5 | 3 | 5 | 3 |
-| Tarjetas de examen (`examCards`) | 8–11 | 4–6 | 8–11 | 4–6 |
+| Tarjetas de examen (`examCards`) | 8–11 | 4–6 | **5–8** | **3–5** |
 | Pausas para pensar (`thinkPrompts`) | 2 | 1 | 2 | 1 |
 | Mensajes interceptados (`intercepts`) | 0 | 0 | **2–4, máx. 1/capítulo** | **1–2** |
-| Narración con chispa (`chispa`) | no | no | **sí** | **sí** |
+| Avisos de narración hablada (`chispa`) | no | no | **sí** | **sí** |
 | `host` | `repo` | `repo` | **`youtube`** | **`youtube`** |
 | `crf` | 23 | 27 | **18** | **18** |
 | Tamaño objetivo (`size`) | 15–25 MB (aviso > 30, error > 45) | 4–12 MB (aviso > 15, error > 25) | **sin objetivo** | **sin objetivo** |
+
+**Claridad y ritmo** (revisión del 2026-09-29, `docs/reviews/2026-09-29-videos/`): `think.holdMs` admite hasta 5000 ms y
+los perfiles `-yt` avisan por debajo de 4000 (la entrada y la salida de la tarjeta se comen ~0,9 s);
+`narration.json` → `"examTiming": "sentence-end"` hace que cada tarjeta de examen espere a que termine la oración que
+contiene su cue (primero el ejemplo, después la regla), retrasada solo hasta donde quepa en su escena y nunca antes
+de su cue; y `build-timeline` avisa en los `-yt` si el cue `title` llega después de los 12 primeros segundos.
+
+**Narración hablada.** Las reglas de escritura de los vídeos `-yt` (hablar como una persona, menos conceptos
+mejor contados, ritmo) viven en una sola copia: el plan `docs/superpowers/plans/2026-09-25-lesson-videos.md`
+§1, «Narración hablada». Con `chispa: true`, `analyzeNarration` (`scripts/lib/narration.mjs`) avisa —nunca
+falla— de lo que se detecta sin leer: la misma emoción en dos segmentos seguidos, `;` en la voz, más de un
+«:» de conector en un segmento o «:» en más de un tercio de ellos, un dominio/IP/equipo/hash/correo/fichero
+leído en voz alta (`IDENTIFIER_PATTERNS`) y más de `OPENER_MAX` (3) preguntas que empiezan igual («¿Y …?»).
+Lo demás (acotaciones, conceptos usados antes de explicarlos, analogías amontonadas) lo mira el revisor de
+naturalidad del recetario.
 
 **Tarjetas de examen por pista** (`video.json` → `"track"`): en Security+, `exam.objective` es un objetivo
 SY0-701 («4.5») y la tarjeta dice «EXAMEN · SY0-701 · 4.5». GCTI no publica objetivos numerados, así que en
@@ -406,16 +421,33 @@ git) y `scripts/import-recording.mjs` lo convierte en los mismos clips que escri
    hablado de `[mostrado|hablado]`, con los números en palabras, así que tolera lo que Whisper escribe mal
    («de Mark» por DMARC, «4.00 y 12.00»). Si una frase se leyó varias veces, **se queda con la última toma**;
    lo que no está en el guion (tarjetas de examen, mensajes interceptados, arranques en falso) se descarta.
+   Y va más fino que la frase: si la narradora relee **solo una oración** (la que le salió mal) o reempieza
+   una a medias, se queda con la **última toma de cada oración** y las empalma, cada parte cortada por su
+   cuenta (`parts` en el resultado; el informe marca esas frases como «empalme»). El empalme solo se hace
+   si se lee al menos tan bien como la toma entera, contra el texto mostrado o el hablado; en un empate
+   gana la lectura posterior.
 3. **Corta** cada clip en el silencio más cercano a sus palabras (o, si se habla de corrido, a medio camino
-   de la palabra vecina), aplica **una sola ganancia** a toda la grabación (hasta la sonoridad de `--match
+   de la palabra vecina). Antes corrige los tiempos que Whisper estira sobre una pausa: una palabra que se
+   traga una pausa larga entera se queda en el lado más largo (`repairSwallowedPauses`), y si una pausa larga
+   **empieza dentro** de la palabra del borde, esa palabra está mal cronometrada (Whisper se saltó la anterior
+   y la estiró sobre su audio, V4: «júis») y el corte va a esa pausa. Aplica **una sola ganancia** a toda la grabación (hasta la sonoridad de `--match
    <clip>`, o `--lufs`, sin pasar de −1 dBTP) y codifica como Chatterbox (24 kHz mono, MP3 CBR 96 kbps).
 4. **Informa** en `out/recording/<nombre>/report-<archivo>.md`: la coincidencia de cada frase («revisar» por debajo de
    0,9: sobran o faltan palabras, escúchala), las que no encontró (sin clip: `build-timeline` las nombrará) y
    los trozos de la grabación que no usó.
 
+**Ritmo** (`narration.json` → `"recording": { "tempo": 1.08, "maxPauseMs": 250 }`, o los flags `--tempo` y
+`--max-pause`, que mandan sobre él): `maxPauseMs` acorta a ese valor cada pausa dentro de una frase, y
+`tempo` acelera cada clip con `atempo` (conserva el tono; 0,8–1,25) y escala con él los tiempos de palabra
+(`withTempo`, que reutiliza `scaleTimings` de Chatterbox). Sin la clave ni los flags, tempo 1 y sin límite:
+los vídeos ya grabados se reimportan exactamente igual. Al grabar, mejor a ritmo de conversación, sin la
+pausa de lectura entre frases: el corte ya deja aire.
+
 Una frase que salga mal se regraba: se graban solo esas frases, en el orden del guion, en otro archivo, y se
-importa con `--only <ids>`; los demás clips no se tocan. No se pueden quitar palabras de en medio de un clip
-(un rótulo leído en voz alta dentro de una frase se queda). Las animaciones que se disparan en una
+importa con `--only <ids>`; los demás clips no se tocan (`--only` busca esas frases desde el principio del
+archivo, así que es para una regrabación aparte, no para la grabación entera: para esa, se reimporta todo,
+que con la transcripción en caché tarda menos de un minuto). No se pueden quitar palabras sueltas de en medio
+de una oración (un rótulo leído en voz alta dentro de una oración se queda). Las animaciones que se disparan en una
 palabra usan los tiempos de Whisper, que pueden desviarse ~0,2 s.
 
 ```bash
@@ -423,8 +455,23 @@ palabra usan los tiempos de Whisper, que pueden desviarse ~0,2 s.
 node video/engine/scripts/import-recording.mjs --video <slug> --file "video/engine/voices/<grabación>.wav" --name <nombre> --match <clip de referencia>.mp3
 # Sustituir solo unas frases regrabadas (mismas carpetas y referencia de volumen)
 node video/engine/scripts/import-recording.mjs --video <slug> --file "video/engine/voices/<regrabación>.wav" --name <nombre> --only s02-03,s04-01 --match <clip de referencia>.mp3
-# Con "voice": "recording/<nombre>" en narration.json, audio.mjs solo reconstruye el timeline
+# Con "voice": "recording/<nombre>" en narration.json, audio.mjs reconstruye el timeline y comprueba la voz
 node video/engine/scripts/audio.mjs --video <slug>
+```
+
+**Comprobación de la voz** (`scripts/verify-voice.mjs`, que `audio.mjs` lanza tras `build-timeline` en las voces
+`recording/…`). Escucha cada clip **tal como suena en el vídeo** (solo la parte que se reproduce): lo transcribe
+otra vez con faster-whisper (`verify_voice.py`, en el venv de Chatterbox) y mide la energía en sus bordes.
+Son **errores** un clip que empieza o acaba dentro de una palabra (energía de borde > 0,35 del RMS del clip), voz
+justo después de la parte que se reproduce (> 0,15) y una frase de tres palabras que se oye más veces de las que
+dice el guion (una toma que se coló); es un **aviso** una similitud con el guion por debajo de 0,75 (escúchalo,
+muchas veces es solo el reconocimiento). Escribe `out/verify-voice.md` y `out/verify-voice.json` (con el
+`sourceHash` del timeline) y solo vuelve a transcribir los clips que cambiaron (`out/verify-voice-cache.json`;
+`--force` lo rehace todo). **`render.mjs` se niega a renderizar una grabación sin un informe al día y sin
+errores**; `--skip-voice-check` lo salta a sabiendas.
+
+```bash
+node video/engine/scripts/verify-voice.mjs --video <slug> [--warn-only] [--force]
 ```
 
 ## Masterización: voz y programa
@@ -437,16 +484,57 @@ Dos pasos opcionales, en Python (venv de Chatterbox con `pip install pedalboard 
   a −3 dBFS. Toda la cadena conserva la longitud y los tiempos (filtros de fase cero, limitador sin latencia),
   así que Whisper y los cortes no se mueven. **No reduce ruido**: una grabación con silencios digitales ya viene
   sin ruido y una segunda pasada solo añade artefactos. `--ab` escribe un antes/después igualado en volumen.
-- **`scripts/master_mix.py`**, sobre el MP4 ya renderizado: añade un **ambiente** generado aquí (pad oscuro con un
-  acorde por capítulo, fundido en cada cambio, más un tono de sala muy bajo; unos 14 LU por debajo de la voz antes de atenuarse y
-  6 dB más bajo mientras alguien habla, según el timeline), lleva el programa a **−14 LUFS** (YouTube) y limita el
-  pico real a **−1 dBTP** (detección 4× sin latencia). El vídeo se copia tal cual; el audio sale en AAC 192 kbps.
-  `--bed-db` sube o baja el ambiente, `--no-bed` lo quita.
+- **`scripts/master_mix.py`**, sobre el MP4 ya renderizado: añade un **ambiente** generado aquí, lleva el programa a
+  **−14 LUFS** (YouTube) y limita el pico real a **−1 dBTP** (detección 4× sin latencia). El vídeo se copia tal cual;
+  el audio sale en AAC 192 kbps. Lo que cuenta es el archivo entregado: **mide el MP4 ya codificado** (el AAC puede
+  subir el pico por encima del PCM) y, si pasa de −1 dBTP, vuelve a limitar con el techo más bajo lo que se pasó,
+  más 0,1 dB (`next_ceiling`, hasta 3 pasadas).
+
+  **En paralelo con el render:** `render.mjs --video <slug> --master [--bed-db <n>]` saca primero la mezcla de audio
+  sola (`remotion render … --codec=wav`) y, mientras se dibujan los fotogramas, corre la fase pesada de
+  `master_mix.py` (`--audio-in … --premaster-out …`: ambiente y sonoridad). Al acabar la imagen solo queda la ligera
+  (`--video-in … --premaster … --out …`: limitador, AAC, unir y medir). El render sin masterizar queda como
+  `<output>-premaster.mp4` (las comprobaciones de sincronía se hacen sobre él, porque el ambiente rellena los
+  silencios que buscan) y el masterizado es `<output>.mp4`. El Python sale de `$MASTER_PYTHON` o del venv de
+  Chatterbox, y se comprueba que tenga pedalboard, pyloudnorm, soundfile y scipy antes de renderizar nada. Ojo: el
+  ffmpeg de Remotion solo escribe PCM de 16 y 24 bits (no `pcm_f32le`). El ambiente por defecto (`--bed-style story`, desde V4) **sigue la historia** que
+  cuenta el timeline:
+  - cada capítulo recorre una progresión de cuatro acordes en re menor (uno cada 10 s) con un arpegio suave;
+  - bajo el mensaje del adversario, un acorde disonante y un latido grave, y el arpegio se calla;
+  - en una pausa para pensar, un acorde suspendido y un tic-tac;
+  - un soplo de ruido filtrado sube hacia cada capítulo nuevo;
+  - desde el resumen, resuelve a re mayor con el arpegio algo más vivo.
+
+  Queda unos 4 LU por debajo del programa antes de atenuarse (10 dB más que el de V1 y V3, elegido de oído el
+  2026-09-29 entre +4, +7 y +10), sobre un tono de sala muy bajo, y se atenúa 6 dB mientras alguien habla (el
+  arpegio, 12 dB), así que sobre todo llena las pausas. `--bed-style pad` es el ambiente de V1 y V3 (un acorde fijo
+  por capítulo, 14 LU por debajo); `--bed-db` sube o baja cualquiera de los dos y `--no-bed` lo quita.
+
+- **Música de biblioteca** (desde V4, sustituye al ambiente generado): `video.json` → `"music": "<archivo>"`, un
+  archivo de `music/library/` (ignorada por git; qué es cada uno y su licencia, en `music/LICENSES.md`), y
+  `render.mjs --master` pasa `--bed-style music --music <ruta>` a `master_mix.py`. `scripts/music_kit.py` corta la
+  pista en frases de 4 compases sobre sus propios pulsos (la fase sale de donde cambia la energía: las secciones
+  empiezan en una frase) y la **reordena al largo del vídeo siguiendo la historia**:
+  - empieza por la primera frase de la pista y acaba con su final real, colocado para acabar con el vídeo;
+  - entre medias sigue la pista (la frase siguiente no cuesta nada) y salta cuando la historia pide otra energía:
+    frases tranquilas bajo la narración, las más fuertes en un mensaje del adversario o una pausa para pensar (con
+    el adversario, las más oscuras);
+  - una frase ya usada cuesta un poco más cada vez, así que un vídeo largo recorre toda la pista;
+  - las frases se unen con un fundido de 80 ms centrado en el primer tiempo de la siguiente.
+
+  Bajo la voz, la música pasa a una copia filtrada a 1,5 kHz (se quedan el cuerpo y el ritmo, no los agudos que
+  compiten con la voz) y, como los otros ambientes, se atenúa 6 dB; queda 8 LU por debajo del programa antes de
+  atenuarse (primer valor, a ajustar de oído con `--bed-db`). El registro de `master_mix` lista qué frase suena en
+  cada momento. Para probar sin renderizar la imagen: `scripts/render-audio.mjs` escribe solo el audio del programa
+  (`out/<slug>-program.wav`, ~6 min en V4) y `master_mix.py --audio-in … --premaster-out …` mezcla en ~1 min.
 
 ```bash
 python video/engine/scripts/master_voice.py --in "video/engine/voices/<grabación>.wav" --out "video/engine/voices/<grabación> (master).wav" --ab video/<slug>/out/voz-antes-despues.wav
 # ... import-recording con el WAV masterizado, audio.mjs y render.mjs ...
 python video/engine/scripts/master_mix.py --video-in video/<slug>/out/<slug>.mp4 --timeline video/<slug>/src/timeline.json --out video/<slug>/out/<slug>-master.mp4
+# Probar una pista de biblioteca sin renderizar la imagen
+node video/engine/scripts/render-audio.mjs --video <slug>
+python video/engine/scripts/master_mix.py --audio-in video/<slug>/out/<slug>-program.wav --timeline video/<slug>/src/timeline.json --premaster-out video/<slug>/out/prueba.wav --bed-style music --music "video/engine/music/library/<pista>.mp3"
 ```
 
 ## Requisitos

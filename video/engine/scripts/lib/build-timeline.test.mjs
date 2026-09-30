@@ -5,7 +5,7 @@ import path from 'node:path';
 import { after, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { adversaryClipId, adversaryKey } from './adversary.mjs';
-import { TIMING, TRANSCRIPT_NOTICE, buildTimeline, captionsPathFor, formatJson, loadAdversary } from '../build-timeline.mjs';
+import { TIMING, TRANSCRIPT_NOTICE, buildTimeline, captionsPathFor, formatJson, loadAdversary, playbackMs } from '../build-timeline.mjs';
 import { analyzeNarration, loadSources, sourceHash, ttsKey } from './narration.mjs';
 import { SFX_DIR } from './paths.mjs';
 import { INTERCEPT_TIMING, voicedHoldFrames } from './sfx.mjs';
@@ -174,6 +174,65 @@ test('validation: an exam card must stay inside its scene', async () => {
     }, 'examout'),
     /leaves its scene/,
   );
+});
+
+test('examTiming "sentence-end": the card waits for the end of the sentence that holds its cue', async () => {
+  const base = await buildVariant(() => {}, 'exam-cue');
+  const late = await buildVariant((n) => (n.examTiming = 'sentence-end'), 'exam-sentence');
+  const cueFrame = base.timeline.cues.find((c) => c.id === 'needle').frame;
+  const verdad = late.timeline.segments[0].words.find((w) => w.text === 'verdad.');
+  assert.equal(base.timeline.exam[0].from, cueFrame);
+  assert.equal(late.timeline.exam[0].from, verdad.to); // «Solo uno importa de verdad.» is heard first
+});
+
+test('examTiming "sentence-end": a card that would leave its scene is pulled back, never before its cue', async () => {
+  const { timeline } = await buildVariant((n) => {
+    n.examTiming = 'sentence-end';
+    delete n.segments[0].exam;
+    n.segments[1].text = '{title}Veamos cómo convierte el ruido en evidencia. Lo hace en pasos.';
+    n.segments[1].exam = { objective: '4.4', text: 'Un SIEM convierte el ruido en evidencia', at: 'title', holdSec: 4 };
+  }, 'exam-pullback');
+  const [card] = timeline.exam;
+  const scene = timeline.scenes.find((s) => s.id === card.scene);
+  const cue = timeline.cues.find((c) => c.id === 'title').frame;
+  const evidencia = timeline.segments[1].words.find((w) => w.text === 'evidencia.');
+  assert.equal(card.from + card.durationInFrames, scene.from + scene.durationInFrames - 1, JSON.stringify(card)); // pulled back to fit
+  assert.ok(card.from > cue && card.from < evidencia.to, JSON.stringify({ card, cue, sentenceEnd: evidencia.to }));
+});
+
+test('examTiming: an unknown value stops the build', async () => {
+  await assert.rejects(buildVariant((n) => (n.examTiming = 'later'), 'exam-bad'), /examTiming/);
+});
+
+test('a -yt video warns when its title cue comes after the first 12 seconds', async () => {
+  const warned = [];
+  const log = { warn: (m) => warned.push(m), log: () => {} };
+  const pad = 'Hoy empezamos con calma, porque antes de nada conviene contar de dónde viene todo esto y por qué importa tanto en el trabajo diario de un equipo azul como el nuestro.';
+  await buildVariant((n) => (n.segments[1].text = `${pad} {title}Veamos cómo convierte el ruido en evidencia.`), 'late-title', { profile: 'principal-yt', log });
+  assert.ok(warned.some((w) => /title cue at .* after the first 12 s/.test(w)), warned.join('\n'));
+  const early = [];
+  await buildVariant((n) => (n.segments[0].text = '{flood}Seis mil avisos al día. Solo {needle}uno importa.'), 'early-title', {
+    profile: 'principal-yt',
+    log: { warn: (m) => early.push(m), log: () => {} },
+  });
+  assert.ok(!early.some((w) => /title cue/.test(w)), early.join('\n'));
+});
+
+test('captionsOnScreen: written (false) only for the YouTube profiles; the rest keep their timelines as they were', async () => {
+  const quietYt = { profile: 'principal-yt', log: { warn: () => {}, log: () => {} } };
+  const yt = await buildVariant(() => {}, 'yt-captions', quietYt);
+  assert.equal(yt.timeline.captionsOnScreen, false);
+  assert.ok(yt.timeline.captions.length > 0, 'the pages are still built: they become the VTT');
+  const repo = await buildVariant(() => {}, 'repo-captions');
+  assert.equal('captionsOnScreen' in repo.timeline, false);
+  assert.deepEqual(validateTimeline({ ...repo.timeline, captionsOnScreen: true }, { sceneIds: repo.timeline.scenes.map((s) => s.id) }).filter((e) => /captionsOnScreen/.test(e)), ['timeline.captionsOnScreen: when present, false']);
+});
+
+test('playbackMs: a recording plays until its voice really stops (+ tail), even when the ASR ends the last word early', () => {
+  assert.equal(playbackMs({ probeMs: 5000, lastEnd: 4000, speechEndMs: 4600, tailMs: 250 }), 4850); // V4 s08-04 lost «siguiente»
+  assert.equal(playbackMs({ probeMs: 5000, lastEnd: 4000, tailMs: 250 }), 4250); // TTS clips: as before
+  assert.equal(playbackMs({ probeMs: 4700, lastEnd: 4000, speechEndMs: 4600, tailMs: 250 }), 4700); // never past the clip
+  assert.equal(playbackMs({ probeMs: 5000, lastEnd: 4000, speechEndMs: 4600, tailMs: 250, fullAudio: true }), 5000);
 });
 
 test('analyzeNarration: style warnings do not block the build', () => {

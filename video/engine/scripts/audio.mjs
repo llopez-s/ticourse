@@ -3,7 +3,7 @@
 //   edge-tts:   prepare-tts.mjs -> tts.py -> build-timeline.mjs (audio mode)
 //   ElevenLabs: tts-elevenlabs.mjs -> build-timeline.mjs   (voice "elevenlabs/<model>/<voice_id>")
 //   Chatterbox: tts-chatterbox.mjs -> build-timeline.mjs   (voice "chatterbox/<pack>/<voice>", local, no quota)
-//   Recording:  build-timeline.mjs only                    (voice "recording/<name>", clips from import-recording.mjs)
+//   Recording:  build-timeline.mjs -> verify-voice.mjs     (voice "recording/<name>", clips from import-recording.mjs)
 //   + tts-adversary.mjs before build-timeline when narration.json has "adversaryVoice"
 // Stops at the first failing step.
 //
@@ -108,6 +108,8 @@ function main() {
     // The narrator's clips come from import-recording.mjs; only the adversary's voice (if any) is synthesised here.
     adversaryStep();
     step('build-timeline', node, buildTimelineArgs);
+    // Then every clip is checked as the video will play it (cuts, leftover takes): render.mjs requires it.
+    step('verify-voice', node, [path.join(SCRIPTS_DIR, 'verify-voice.mjs')]);
     return;
   }
   step('prepare-tts', node, [path.join(SCRIPTS_DIR, 'prepare-tts.mjs'), ...pass(values, ['narration', 'lexicon', 'storyboard']), '--out', PATHS.ttsInput]);

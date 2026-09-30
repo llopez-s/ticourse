@@ -5,15 +5,21 @@
 //   node video/engine/scripts/qa-frames.mjs --video <slug>                   # all scenes -> video/<slug>/out/qa/all/
 //   node video/engine/scripts/qa-frames.mjs --video <slug> --scene s05-correlate
 //   node video/engine/scripts/qa-frames.mjs --video <slug> --extra 1200,1350
+//   node video/engine/scripts/qa-frames.mjs --video <slug> --sheet          # + out/qa/sheets/sheetNN.jpg
 //
 // Works in estimate and audio mode. Files are renamed to
-// f<frame>_<scene>_<label>.jpeg and listed in index.json next to them.
+// f<frame>_<scene>_<label>.jpeg and listed in index.json next to them. With --sheet, the stills
+// are also laid out 3×4 per contact sheet (qa_sheet.py, Pillow in the Chatterbox venv).
+// The bundle is reused from out/bundle-cache/ while its inputs are unchanged (--no-bundle-cache
+// or BUNDLE_CACHE=0 rebuilds it in a temp folder).
+import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { parseJsonText } from './lib/narration.mjs';
-import { COMPOSITION, PATHS, REPO_ROOT, isMainModule } from './lib/paths.mjs';
+import { COMPOSITION, PATHS, REPO_ROOT, SCRIPTS_DIR, isMainModule } from './lib/paths.mjs';
 import { assertCliFlags, bundleVideo, runRemotion } from './lib/remotion.mjs';
+import { VENV_PYTHON } from './tts-chatterbox.mjs';
 
 /** Frames worth looking at, with what they show. */
 export function pickFrames(timeline, { scene = null, extra = [] } = {}) {
@@ -53,6 +59,40 @@ function supportsFrameLists() {
 
 const slug = (s) => s.replace(/[^\w.-]+/g, '-').slice(0, 80);
 
+/** Exit code qa_sheet.py uses when Pillow is missing. */
+const NO_PILLOW = 3;
+
+/**
+ * Lays the stills of `srcDir` out as out/qa/sheets/sheetNN.jpg. The stills are already written,
+ * so a missing venv or Pillow only prints how to get them; any other failure sets exit code 1.
+ */
+function contactSheets(srcDir) {
+  const out = path.join(PATHS.qaDir, 'sheets');
+  mkdirSync(out, { recursive: true });
+  for (const f of readdirSync(out)) if (/^sheet\d+\.jpg$/i.test(f)) rmSync(path.join(out, f));
+  const pipHint = `"${VENV_PYTHON}" -m pip install pillow`;
+  if (!existsSync(VENV_PYTHON)) {
+    console.warn(`qa-frames: no contact sheets — the Chatterbox venv is missing (${VENV_PYTHON}). Create it as in video/engine/README.md («Voz: Chatterbox»), then: ${pipHint}`);
+    return;
+  }
+  const res = spawnSync(VENV_PYTHON, ['-X', 'utf8', path.join(SCRIPTS_DIR, 'qa_sheet.py'), '--src', srcDir, '--out', out], {
+    cwd: REPO_ROOT,
+    encoding: 'utf8',
+    windowsHide: true,
+  });
+  if (res.status === NO_PILLOW) {
+    console.warn(`qa-frames: no contact sheets — Pillow is not installed in the venv. Install it with: ${pipHint}`);
+    return;
+  }
+  if (res.error || res.status !== 0) {
+    console.error(`qa-frames: contact sheets failed: ${res.error?.message ?? (res.stderr.trim() || `exit ${res.status}`)}`);
+    process.exitCode = 1;
+    return;
+  }
+  const sheets = res.stdout.split(/\r?\n/).filter((l) => /sheet\d+\.jpg$/i.test(l));
+  console.log(`qa-frames: ${sheets.length} contact sheet(s) -> ${out}`);
+}
+
 async function main() {
   const { values } = parseArgs({
     options: {
@@ -60,6 +100,8 @@ async function main() {
       extra: { type: 'string' },
       scale: { type: 'string', default: '0.5' },
       video: { type: 'string' },
+      sheet: { type: 'boolean', default: false },
+      'no-bundle-cache': { type: 'boolean', default: false },
     },
   });
   const timeline = parseJsonText(readFileSync(PATHS.timeline, 'utf8'), PATHS.timeline);
@@ -89,7 +131,7 @@ async function main() {
   const produced = new Map(); // frame -> file path
 
   // Bundle once, then render from the finished bundle (see bundleVideo in lib/remotion.mjs).
-  const bundle = bundleVideo();
+  const bundle = bundleVideo(values['no-bundle-cache'] ? { cache: false } : {});
   try {
     if (supportsFrameLists()) {
       const res = runRemotion(['render', bundle.dir, COMPOSITION, outDir, '--sequence', `--frames=${frames.join(',')}`, ...common]);
@@ -129,6 +171,7 @@ async function main() {
   for (const x of index) console.log(`${x.file.padEnd(width)}  -> ${String(x.frame).padStart(pad)}  -> ${x.labels.join(', ')}`);
   console.log(`qa-frames: ${index.length} stills in ${((Date.now() - started) / 1000).toFixed(0)} s`);
   if (missing.length) throw new Error(`frames not produced: ${missing.join(', ')}`);
+  if (values.sheet) contactSheets(outDir);
 }
 
 if (isMainModule(import.meta.url)) {

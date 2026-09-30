@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 // Writes video/<slug>/out/youtube.md for a video whose profile goes to YouTube: title,
-// description (hook, lesson link, chapters, voice credit, disclaimer, hashtags), tags and the
-// files to upload. Needs an audio-mode timeline (run audio.mjs, then render.mjs, first).
+// description (hook, chapters, voice credit, disclaimer, hashtags), tags and the
+// files to upload. No links: YouTube does not allow external links in the Alertópolis channel's
+// descriptions (it dropped the lesson link from V1, V3 and V4 on publishing). Needs an audio-mode
+// timeline (run audio.mjs, then render.mjs, first).
 //
 //   node video/engine/scripts/youtube-meta.mjs --video <slug>
 import { existsSync, readFileSync, statSync } from 'node:fs';
@@ -13,7 +15,6 @@ import { MANIFEST, PATHS, isMainModule } from './lib/paths.mjs';
 import { profileFor, trackNotice } from './lib/profiles.mjs';
 import { writeFileAtomic } from './lib/remotion.mjs';
 
-export const APP_URL = 'https://llopez-s.github.io/ticourse/';
 export const TITLE_MAX = 100;
 export const TAGS_MAX_CHARS = 500;
 export const THUMB_MAX_BYTES = 2 * 1024 * 1024;
@@ -80,13 +81,11 @@ export function youtubeTags(timeline, track, lexiconTerms = []) {
   return tags;
 }
 
-export function youtubeDescription({ timeline, lesson, track, notice }) {
+export function youtubeDescription({ timeline, track, notice }) {
   const hook = timeline.segments.slice(0, 2).map((s) => s.text).join(' ');
   const credit = voiceCredit(timeline.voice);
   return [
     hook,
-    '',
-    `Practica esta lección gratis en Alertópolis: ${APP_URL}#/learn/${lesson}`,
     '',
     'Capítulos',
     ...youtubeChapters(timeline).lines,
@@ -103,7 +102,6 @@ function main() {
   parseArgs({ options: { video: { type: 'string' } } });
   const errors = [];
   if (profileFor(MANIFEST.profile).host !== 'youtube') errors.push(`profile "${MANIFEST.profile}" is not a YouTube profile (principal-yt / capsula-yt)`);
-  if (!MANIFEST.lesson) errors.push('video.json needs "lesson" (the module id the description links to)');
   const timeline = parseJsonText(readFileSync(PATHS.timeline, 'utf8'), PATHS.timeline);
   if (timeline.mode !== 'audio') errors.push('timeline.json is in estimate mode — run audio.mjs first');
   const storyboard = parseJsonText(readFileSync(PATHS.storyboard, 'utf8'), PATHS.storyboard);
@@ -120,7 +118,7 @@ function main() {
   if (errors.length) throw new Error(`${errors.length} problem(s):\n${errors.map((e) => `  - ${e}`).join('\n')}`);
 
   const notice = trackNotice(MANIFEST.track, MANIFEST.profile);
-  const description = youtubeDescription({ timeline, lesson: MANIFEST.lesson, track: MANIFEST.track, notice });
+  const description = youtubeDescription({ timeline, track: MANIFEST.track, notice });
   const out = path.join(PATHS.outDir, 'youtube.md');
   writeFileAtomic(
     out,
@@ -151,6 +149,7 @@ function main() {
       '',
       '- Visibilidad: pública (se publica solo con el OK de Lidia).',
       '- Audiencia: «No, no es contenido creado para niños».',
+      '- Sin enlaces externos en la descripción: YouTube no los permite en este canal.',
       `- Lista: ${MANIFEST.track === 'secplus' ? 'Security+ SY0-701' : 'GCTI'}.`,
       '',
     ].join('\n'),

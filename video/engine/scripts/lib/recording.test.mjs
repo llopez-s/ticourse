@@ -7,6 +7,7 @@ import { ffmpegBinary } from './remotion.mjs';
 import { parseSegmentText } from './text.mjs';
 import {
   REVIEW_SCORE,
+  asrCacheValid,
   asrPrompt,
   clipArgs,
   clipWords,
@@ -18,10 +19,14 @@ import {
   parseLoudness,
   parseSilences,
   recordingRecord,
+  recordingSettings,
+  repairSwallowedPauses,
+  trailingSpeechEnd,
   selectSegments,
   similarity,
   unusedRanges,
 } from './recording.mjs';
+import { withTempo } from '../import-recording.mjs';
 
 /** ASR words from a list of [text, startMs, endMs]. */
 const W = (rows) => rows.map(([text, startMs, endMs]) => ({ text, startMs, endMs }));
@@ -150,6 +155,67 @@ test('locateSegments drops a false start before the good take', () => {
   assert.deepEqual(found.map((f) => [f.first, f.last]), [[3, 10], [11, 16]]);
 });
 
+test('locateSegments keeps the last take of each sentence: a re-read last sentence replaces the first attempt', () => {
+  const text = 'Empezamos por el passive DNS. Le das un nombre y te devuelve un número.';
+  const words = [
+    ...spoken('Empezamos por el passive DNS. Le das nombre y te devuelve un número.'), // 0–12, a word missing
+    ...spoken('Le das un nombre y te devuelve un número.', 7000), // 13–21: the narrator re-reads that sentence
+    ...spoken('Pues el passive DNS es ese listín.', 12000), // 22–28
+  ];
+  const [a, b] = locateSegments([seg('a', text), seg('b', 'Pues el passive DNS es ese listín.')], words);
+  assert.deepEqual(a.parts, [{ first: 0, last: 4 }, { first: 13, last: 21 }]);
+  assert.deepEqual([a.first, a.last], [0, 21]);
+  assert.equal(a.heard, 'Empezamos por el passive DNS. Le das un nombre y te devuelve un número.');
+  assert.ok(a.score > 0.95, JSON.stringify(a));
+  assert.deepEqual([b.first, b.last, b.parts], [22, 28, undefined]);
+});
+
+test('locateSegments drops a false start inside a sentence', () => {
+  const text = 'Una última cosa. Todo lo de hoy lo has sacado del listín, sin tocar al actor.';
+  const words = [
+    ...spoken('Una última cosa. Todo lo que has sacado hoy, todo lo de hoy lo has sacado del listín, sin tocar al actor.'),
+    ...spoken('Ni se te ocurra, que te ven.', 14000),
+  ];
+  const [a] = locateSegments([seg('a', text), seg('b', 'Ni se te ocurra, que te ven.')], words);
+  assert.deepEqual(a.parts, [{ first: 0, last: 2 }, { first: 9, last: 21 }]);
+  assert.ok(a.score > 0.95, JSON.stringify(a));
+});
+
+test('locateSegments splices an identical re-read too (the later reading wins a tie), scoring the spoken form', () => {
+  const text = 'Hoy sí. Pero el [WHOIS|júis] también tiene memoria. Quedan fichas antiguas.';
+  const words = [
+    ...spoken('Hoy sí. Pero el júis también tiene memoria. Quedan fichas antiguas.'), // 0–10
+    ...spoken('Quedan fichas antiguas.', 6000), // 11–13
+    ...spoken('Y aparece un correo.', 9000), // 14–17
+  ];
+  const [a] = locateSegments([seg('a', text), seg('b', 'Y aparece un correo.')], words);
+  assert.deepEqual(a.parts, [{ first: 0, last: 7 }, { first: 11, last: 13 }]);
+});
+
+test('locateSegments leaves a take read in one go alone (no parts)', () => {
+  const sentence = 'Y esa credencial volverá de madrugada. Pero esa ya es otra alerta: la del SIEM.';
+  const words = [...spoken(sentence), ...spoken('Ahora te toca a ti.', 9000)];
+  const found = locateSegments([seg('a', sentence), seg('b', 'Ahora te toca a ti.')], words);
+  assert.ok(found.every((f) => f.parts === undefined), JSON.stringify(found));
+});
+
+test('cutPoints cuts each part of a spliced take on its own, never into the dropped words', () => {
+  const words = W([['a', 0, 400], ['b', 500, 900], ['x', 1000, 1400], ['c', 2000, 2400]]);
+  const located = [{ id: 's', found: true, first: 0, last: 3, parts: [{ first: 0, last: 1 }, { first: 3, last: 3 }] }];
+  const [cut] = cutPoints(located, words, [], 3000);
+  assert.deepEqual(cut.parts.map((p) => [p.startMs, p.endMs]), [[0, 950], [1750, 2650]]);
+  assert.deepEqual([cut.startMs, cut.endMs], [0, 2650]);
+});
+
+test('clipWords and unusedRanges follow the parts of a spliced take', () => {
+  const words = W([['a', 0, 400], ['b', 500, 900], ['x', 1000, 1400], ['c', 2000, 2400]]);
+  const parts = [{ first: 0, last: 1 }, { first: 3, last: 3 }];
+  const ranges = [{ startMs: 0, endMs: 950 }, { startMs: 1750, endMs: 2650 }];
+  assert.deepEqual(clipWords(words, 0, 3, ranges, parts).map((w) => [w.text, w.offsetMs]), [['a', 0], ['b', 500], ['c', 1200]]);
+  const unused = unusedRanges([{ id: 's', found: true, first: 0, last: 3, parts }], words);
+  assert.deepEqual(unused.map((r) => r.text), ['x']);
+});
+
 test('locateSegments compares with both the shown and the spoken form', () => {
   const words = spoken('Autoridad Portuaria de Halden, 3 de septiembre.');
   const [f] = locateSegments([seg('a', 'Autoridad Portuaria de Halden, [3 de septiembre|tres de septiembre].')], words);
@@ -275,6 +341,87 @@ test('clipArgs splices the kept ranges of a clip whose pauses were shortened', (
   assert.equal(args[args.indexOf('-map') + 1], '[out]');
   assert.ok(!args.includes('-af'));
   assert.equal(args.at(-1), 'a.mp3');
+});
+
+test('clipArgs speeds a clip up with atempo after the gain, and only when tempo is not 1', () => {
+  const one = clipArgs({ source: 'rec.wav', ranges: [{ startMs: 870, endMs: 2120 }], gain: 3.5, out: 'a.mp3', tempo: 1.08 });
+  assert.equal(one[one.indexOf('-af') + 1], 'volume=3.5dB,atempo=1.08');
+  const ranges = [{ startMs: 1000, endMs: 3150 }, { startMs: 3850, endMs: 6000 }];
+  const two = clipArgs({ source: 'rec.wav', ranges, gain: -1, out: 'a.mp3', tempo: 1.08 });
+  assert.ok(two[two.indexOf('-filter_complex') + 1].endsWith('concat=n=2:v=0:a=1,volume=-1dB,atempo=1.08[out]'));
+  assert.deepEqual(clipArgs({ source: 'rec.wav', ranges, gain: -1, out: 'a.mp3', tempo: 1 }), clipArgs({ source: 'rec.wav', ranges, gain: -1, out: 'a.mp3' }));
+});
+
+test('recordingSettings: narration.json "recording", overridden by the flags; none means tempo 1 and no pause limit', () => {
+  assert.deepEqual(recordingSettings({}), { tempo: 1, maxPauseMs: null });
+  assert.deepEqual(recordingSettings({ recording: { tempo: 1.08, maxPauseMs: 250 } }), { tempo: 1.08, maxPauseMs: 250 });
+  assert.deepEqual(recordingSettings({ recording: { tempo: 1.08, maxPauseMs: 250 } }, { tempo: 1, maxPauseMs: 400 }), { tempo: 1, maxPauseMs: 400 });
+  assert.throws(() => recordingSettings({ recording: { tempo: 1.5 } }), /between 0.8 and 1.25/);
+  assert.throws(() => recordingSettings({ recording: { maxPauseMs: 50 } }), /at least 100/);
+  assert.throws(() => recordingSettings({ recording: { speed: 1.1 } }), /unknown key\(s\) speed/);
+  assert.throws(() => recordingSettings({ recording: [] }), /must be an object/);
+});
+
+test('withTempo shrinks the duration and word timings of a sped-up clip, and leaves tempo 1 alone', () => {
+  const record = { provider: 'recording', durationMs: 2500, words: [{ text: 'hola', offsetMs: 0, durationMs: 500 }, { text: 'mundo', offsetMs: 1250, durationMs: 1000 }] };
+  assert.equal(withTempo(record, 1), record);
+  const fast = withTempo(record, 1.25);
+  assert.equal(fast.tempo, 1.25);
+  assert.equal(fast.durationMs, 2000);
+  assert.deepEqual(fast.words, [{ text: 'hola', offsetMs: 0, durationMs: 400 }, { text: 'mundo', offsetMs: 1000, durationMs: 800 }]);
+  assert.equal(fast.provider, 'recording');
+});
+
+test('asrCacheValid: the same recording and model reuse the transcript, whatever the prompt', () => {
+  const cached = { sha256: 'abc', model: 'small', prompt: 'Antes empezaba así.', words: [] };
+  assert.equal(asrCacheValid(cached, { sha256: 'abc', model: 'small' }), true);
+  assert.equal(asrCacheValid(cached, { sha256: 'def', model: 'small' }), false); // another recording
+  assert.equal(asrCacheValid(cached, { sha256: 'abc', model: 'medium' }), false); // another model
+  assert.equal(asrCacheValid({ sha256: 'abc', model: 'small' }, { sha256: 'abc', model: 'small' }), false); // no words
+});
+
+test('repairSwallowedPauses: a word whose span swallowed a pause starts after it (V4 s03-05/06: «IP» was cut)', () => {
+  // Whisper gave «y» 151.22–153.10 s: the pause after «IP» (really 151.39–152.53) is inside it, off its edges.
+  const words = W([['misma', 150640, 150980], ['IP', 150980, 151220], ['y', 151220, 153100], ['el', 153100, 153240]]);
+  const silences = [{ startMs: 151390, endMs: 152530 }];
+  const fixed = repairSwallowedPauses(words, silences);
+  assert.deepEqual(fixed.map((w) => [w.text, w.startMs, w.endMs]), [['misma', 150640, 150980], ['IP', 150980, 151220], ['y', 152530, 153100], ['el', 153100, 153240]]);
+  // and a word whose end swallowed the pause after it ends where the pause starts
+  const tail = repairSwallowedPauses(W([['suya.', 1000, 3000], ['Ese', 3000, 3200]]), [{ startMs: 1500, endMs: 2950 }]);
+  assert.deepEqual(tail.map((w) => [w.startMs, w.endMs]), [[1000, 1500], [3000, 3200]]);
+  // short pauses and pauses between words are left alone
+  const same = W([['a', 0, 400], ['b', 600, 1000]]);
+  assert.deepEqual(repairSwallowedPauses(same, [{ startMs: 400, endMs: 600 }, { startMs: 700, endMs: 800 }]), same);
+});
+
+test('cutPoints no longer cuts «IP» once the swallowed pause is repaired', () => {
+  const words = W([['misma', 150640, 150980], ['IP', 150980, 151220], ['y', 151220, 153100], ['el', 153100, 153240]]);
+  const silences = [{ startMs: 151390, endMs: 152530 }];
+  const located = [{ id: 'a', found: true, first: 0, last: 1 }, { id: 'b', found: true, first: 2, last: 3 }];
+  const [a, b] = cutPoints(located, repairSwallowedPauses(words, silences), silences, 160000);
+  assert.ok(a.endMs >= 151390, `«IP» must end in the pause, got ${a.endMs}`);
+  assert.ok(b.startMs >= 152400, `the next clip must start at the end of the pause, got ${b.startMs}`);
+});
+
+test('cutPoints: a word Whisper dropped stays in its clip (V4 s02-03 lost «WHOIS» to the next one)', () => {
+  // «Eso es el júis. [pause] Y la tercera…»: Whisper never wrote «júis» and stretched «Y» over it, so the pause
+  // after «júis» (70824–72044) starts inside «Y» and ends inside «la», and no silence touches the el|Y edge.
+  const words = W([['Eso', 69160, 69500], ['es', 69500, 69840], ['el', 69840, 70120], ['Y', 70120, 71180], ['la', 71180, 72240], ['tercera', 72240, 72860]]);
+  const silences = [{ startMs: 69068, endMs: 69276 }, { startMs: 70824, endMs: 72044 }];
+  const located = [{ id: 'a', found: true, first: 0, last: 2 }, { id: 'b', found: true, first: 3, last: 5 }];
+  const [a, b] = cutPoints(located, repairSwallowedPauses(words, silences), silences, 80000);
+  assert.ok(a.endMs >= 70824, `«júis» must stay in the first clip, got ${a.endMs}`);
+  assert.ok(b.startMs >= 72044 - 80, `the next clip must start after the pause, got ${b.startMs}`);
+  // a correctly timed pair (no pause starting inside a word) keeps the old midpoint fallback
+  const tight = W([['el', 0, 300], ['Y', 300, 450], ['la', 450, 600]]);
+  const [c, d] = cutPoints([{ id: 'c', found: true, first: 0, last: 0 }, { id: 'd', found: true, first: 1, last: 2 }], tight, [{ startMs: 700, endMs: 1200 }], 2000);
+  assert.deepEqual([c.endMs, d.startMs], [300, 300]);
+});
+
+test('trailingSpeechEnd: where the voice of a clip really stops (a silence that runs to its end), else its length', () => {
+  assert.equal(trailingSpeechEnd([{ startMs: 300, endMs: 500 }, { startMs: 4200, endMs: 4510 }], 4520), 4200);
+  assert.equal(trailingSpeechEnd([{ startMs: 300, endMs: 500 }], 4520), 4520);
+  assert.equal(trailingSpeechEnd([], 4520), 4520);
 });
 
 test('ffmpegBinary finds the ffmpeg that Remotion ships, to run it without the CLI wrapper', () => {
