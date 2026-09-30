@@ -215,6 +215,20 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   **library music** instead of the generated bed — `video.json` → `"music"` names a YouTube Audio Library track in
   the git-ignored `video/engine/music/library/` (licences in `music/LICENSES.md`), which `music_kit.py` re-arranges
   to the story. YouTube does not allow external links in the channel's descriptions, so `youtube-meta` writes none.
+  **V5 `video/ir-halden/`** (sp4m10, Security+, YouTube `S_nVqWYkKXM`, 8:19, published 2026-10-01) continues the
+  Halden case (the morning after V1/SIEM/V2) and is the reason for the **new production order** in the video plan §8
+  «Orden de trabajo»: read the campaign's **canon registry** first (`docs/superpowers/canon/glass-harbor.md`,
+  `velvet-cicada.md` — every on-screen fact of the published videos with `path:line`, plus the contradictions found
+  between sources), run `canon-check.mjs --video <slug>` (writes `out/canon-refs.md` for the accuracy reviewer),
+  freeze the script (`video.json` → `"frozen": "YYYY-MM-DD"`; until then the recording sheet is a «BORRADOR»), build
+  scenes while the narrator records, and fix bad cuts from her own takes with `recut_recording.py` before asking for a
+  re-record. V5's script had to change twice after review because the SIEM video's *screen data* (01:52 logon from
+  `ADM-WS-07`, morning triage) and V1's (16:04 alert, 16:11 isolation) contradicted it — transcripts alone miss this.
+  Engine additions from V5: `principal-yt` up to 600 s; reading-sheet tones in Spanish; `video.json` → `"tags"` for
+  YouTube topic tags; a machine-wide **heavy-job lock** (`lib/heavy-lock.mjs`: render, qa-frames and both Whisper
+  passes queue; `RENDER_LOCK=0` skips it); Windows/worktree fixes (bundle rename/remove retries, repo-relative
+  qa-frames folder for paths under `.claude`, `CHATTERBOX_PYTHON` to borrow the main checkout's venv, since this
+  exFAT drive allows no junctions).
   **Mastering** (Python, venv + `pedalboard pyloudnorm librosa soundfile scipy`): `scripts/master_voice.py`
   on the narrator's WAV *before* `import-recording` (time-aligned EQ/de-ess/compression, no denoise) and
   `scripts/master_mix.py` on the rendered MP4 (generated ambient bed ducked under speech, −14 LUFS,

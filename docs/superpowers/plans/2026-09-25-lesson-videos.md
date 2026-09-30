@@ -499,6 +499,12 @@ Las exam cards se listan en el orden de las escenas:
 > Diseñado con Lidia el 2026-09-30 (rama `video-ir-halden`, que sale de `video-pivot-infra`). La versión vigente
 > de escenas y guion es `video/ir-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en
 > `video/ir-halden/out/script-notes.md`.
+>
+> **Producido y publicado el 2026-10-01**: YouTube `S_nVqWYkKXM`, 8:19, 10 escenas, 7 tarjetas, 2 preguntas, 3
+> mensajes de SILENT PAGER, voz de Lidia (2 frases regrabadas y 4 recortadas de sus propias tomas), música de V4,
+> −14,1 LUFS. En la lección sp4m10, tras la tabla de fases. El canon cambió dos veces después de las revisiones, por
+> los datos en pantalla del SIEM (la 01:52 desde `ADM-WS-07`, triaje por la mañana) y de V1 (alerta a las 16:04,
+> aislamiento a las 16:11): lo que vale es el «Canon nuevo» de abajo y `docs/superpowers/canon/glass-harbor.md`.
 
 - **Carpeta:** `ir-halden` · perfil `principal-yt` · objetivo 4.8 · adversario SILENT PAGER · voz `recording/lidia`
   (tempo 1,08 y pausas de 250 ms, provisionales como en V4).
@@ -640,6 +646,40 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
 - GitHub Pages no tiene LFS y todo lo de `public/` se despliega. Si se superan unos 300 MB, conviene replantear el hospedaje de los MP4 antes de la tanda 3. Esto refuerza la disciplina de duración y de crf.
 
 ## 8. Flujo de producción por vídeo (recetario)
+
+### Orden de trabajo (desde V5b, 2026-10-01)
+
+Sale de lo que costó V5: tres versiones de la hoja de grabación y dos frases regrabadas porque el canon de los
+vídeos publicados vivía solo en sus datos en pantalla; cuatro horas de escenas con tres agentes y Whisper peleando
+por la misma CPU; cuatro cortes a mano en la grabación. Los pasos detallados siguen más abajo.
+
+1. **Diseño en una ronda.** Claude pasa la ficha entera (conceptos e imágenes, historia y canon nuevo, escenas,
+   producción) con las opciones recomendadas ya elegidas; Lidia dice solo qué cambia.
+2. **Guion contra el registro de canon.** Antes de escribir, se lee `docs/superpowers/canon/<campaña>.md`
+   (`glass-harbor` en Security+, `velvet-cicada` en GCTI). Con el guion escrito, `canon-check.mjs --video <slug>`
+   escribe `out/canon-refs.md`: cada equipo, cuenta, IP, dominio, hash, caso y hora del guion, con las líneas de los
+   otros vídeos, lecciones y registro que ya lo usan.
+3. **Dos revisiones en paralelo** (exactitud y naturalidad). La de exactitud lee el registro y `out/canon-refs.md`,
+   además de la lección y el objetivo.
+4. **Congelar el guion.** Con las revisiones aplicadas y `canon-refs.md` leído, `video.json` → `"frozen":
+   "AAAA-MM-DD"`. Solo entonces la hoja de grabación sale como «versión definitiva»; antes es un «BORRADOR · no
+   grabes todavía» y `script-sheets.mjs` avisa. Lidia recibe una sola hoja.
+5. **Escenas mientras se graba.** Las piezas comunes y las escenas se montan sobre la línea de tiempo estimada, que ya
+   tiene todas las marcas, mientras Lidia graba; con la voz real basta un repaso de fotogramas. Los trabajos pesados
+   (render, `qa-frames`, la transcripción de Whisper, `verify-voice`) hacen cola solos (`lib/heavy-lock.mjs`, un
+   candado en la carpeta temporal compartido por todas las copias del repo; `RENDER_LOCK=0` lo salta).
+6. **Importar y verificar.** `master_voice.py` → `import-recording.mjs` → `audio.mjs` (línea de tiempo y
+   `verify-voice`). Si `verify-voice` marca una frase, primero se mira si hay una toma limpia en la grabación:
+   `recut_recording.py --map <wav>@<a>-<b>` enseña dónde están los silencios y `--part` monta las tomas buenas en un
+   archivo corto que se importa con `--only`. Solo si no la hay, se regraba esa frase.
+7. **Render, YouTube y lección.** `render.mjs --master`; `youtube-meta.mjs` (las etiquetas de tema salen de
+   `video.json` → `"tags"`); subida con Lidia (ella arrastra el MP4, que pasa del límite de 10 MB de las herramientas
+   del navegador, y la miniatura si el navegador integrado no puede elegir archivos); el bloque `youtube` en la
+   lección; `npm test` y `npm run build`.
+8. **Cerrar antes de abrir el siguiente.** El canon nuevo del vídeo se apunta en el registro de su campaña, y su PR
+   se fusiona antes de empezar el vídeo siguiente, para que cada rama lleve solo lo suyo.
+
+### Pasos detallados
 
 1. **`storyboard.json`:** perfil, capítulos, escenas, `targetSec`, `wordBudget` y `requiredCues`, copiados de este plan.
    En los vídeos `-yt`, antes de escribirlo se recorta el brief a **4–6 conceptos clave** (2–3 en una cápsula) y
