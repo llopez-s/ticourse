@@ -1,0 +1,226 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "gap": "error",
+    "fix": "check",
+    "denied": "block",
+    "eleven": "lock",
+    "result": "check",
+    "dark": "error"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {plan}El puerto ya tiene plan nuevo contra incidentes, con suplentes y todo. {title}Pero ¿cómo sabes que funciona antes del siguiente?",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {promise}Vas a ver dos formas de probarlo, y cómo se sale a buscar sin que salte ninguna alarma.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<calm> {bridge}En septiembre, la atacante siguió dentro horas porque nadie de guardia podía aislar un equipo. De ahí vienen los suplentes.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-mesa",
+      "text": "<thoughtful> {two-ways}La primera es sentarse a la mesa y recorrer un incidente hablando, como un ensayo con el guion en la mano.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-mesa",
+      "text": "<engaging> {fire}La otra es hacerlo de verdad, como un simulacro de incendio. El puerto quiere empezar sin tocar nada en marcha y gastando poco. ¿Cuál eliges?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Sin tocar producción, barato: ¿mesa o simulacro?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-mesa",
+      "text": "<confident> {table}La mesa, porque se habla y no se toca ningún sistema. {tabletop}En el examen se llama tabletop exercise.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.8",
+        "text": "Tabletop: se habla, no se toca nada",
+        "at": "tabletop",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-mesa",
+      "text": "<warm> {room}Se sientan todas las áreas y quien dirige plantea un caso. A las tres de la madrugada se cae el correo. ¿A quién llamas?",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-mesa",
+      "text": "<mischievously> {gap}A la suplente de Seguridad, claro. ¿Y su teléfono? En la lista de contactos… que vive en el correo.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-mesa",
+      "text": "<relieved> {fix}Desde ese día, la lista también está en papel y en el móvil de guardia.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-simulacro",
+      "text": "<thoughtful> {words}En la mesa, la suplente dijo que ella aislaba el equipo. Pero decirlo no demuestra que pueda, ni cuánto tarda.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-simulacro",
+      "text": "<focused> {night}Para eso está el simulacro. Una noche, la guardia finge un ataque en una red de pruebas y la llama.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-simulacro",
+      "text": "<tense> {denied}Ella da la orden de aislar y la consola dice que no. A su cuenta le falta el permiso, y eso en la mesa no sale.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-simulacro",
+      "text": "<satisfied> {eleven}Lo hace la analista de guardia, y en once minutos la red está aislada. La otra vez, aquel equipo estuvo abierto más de dieciocho horas.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-simulacro",
+      "text": "<clear> {real}Esto es una simulation, se ejecuta de verdad. {cost}Y cuesta más, porque hay gente despierta de noche y un trozo de red parado.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.8",
+        "text": "Simulation: se ejecuta de verdad, con coste",
+        "at": "cost",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-simulacro",
+      "text": "<warm> {both}O sea, que la mesa prueba lo que se dice, y el simulacro, lo que se hace.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-caza",
+      "text": "<sarcastic> {calm}Qué detalle. Pero que no suene nada no quiere decir que no haya nadie.",
+      "pauseAfterMs": 450,
+      "intercept": {
+        "text": "Sin alarma no hay nada que buscar. Duerme tranquila.",
+        "holdMs": 3600
+      }
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-caza",
+      "text": "<thoughtful> {meter}Piensa en una fuga de agua. Antes de que salga la mancha, cierras los grifos y miras el contador. Si sigue girando, algo gotea.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-caza",
+      "text": "<curious> {hypothesis}Pues igual. Sales a buscar sin que nada avise, no a ciegas, sino desde una hipótesis. La otra vez usó una cuenta de servicio de madrugada.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-caza",
+      "text": "<focused> {hunt}Repasas treinta días de registros, buscando cuentas de servicio que entren de madrugada, desde cualquier equipo. {hunting}Eso es threat hunting. No esperas a que suene nada, sales tú a buscar.",
+      "pauseAfterMs": 550,
+      "exam": {
+        "objective": "4.8",
+        "text": "Hunting: hipótesis y ninguna alerta previa",
+        "at": "hunting",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-huecos",
+      "text": "<calm> {result}De ella, ni rastro. Lo que entra de madrugada son tareas conocidas, a su hora de siempre.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-huecos",
+      "text": "<intrigued> {dark}Pero fíjate en lo que falta. Dos servidores nunca mandaron registros a la central, como grifos que no pasan por el contador.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-huecos",
+      "text": "<serious> {unknown}De esos dos no puedes decir que estén limpios, solo que no los ves.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-huecos",
+      "text": "<confident> La caza te deja dos arreglos. {rule}Esos servidores se conectan, y tu búsqueda se convierte en una regla que avisa sola.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.8",
+        "text": "Cada caza deja reglas nuevas y huecos a la vista",
+        "at": "rule",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-huecos",
+      "text": "<satisfied> {never-empty}Vamos, que una caza nunca vuelve de vacío. Aunque no encuentre a nadie, te enseña dónde no ves.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-recap",
+      "text": "<engaging> {recap}SILENT PAGER contaba con que durmieras. Tres reglas para no dormirte.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-recap",
+      "text": "<confident> {rule-1}Para probar quién decide y a quién se llama, la mesa. Para probar herramientas, permisos y tiempos, el simulacro.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-recap",
+      "text": "<firm> {rule-2}Si ya ha saltado una alerta, no es hunting. {rule-3}Y la caza siempre trae algo, una regla o un hueco.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-recap",
+      "text": "<cheerful> {next}Ahora te toca a ti, con las preguntas de la lección. {endcard}Nos vemos en Alertópolis.",
+      "pauseAfterMs": 700
+    }
+  ]
+}

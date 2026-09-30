@@ -621,7 +621,7 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
   si ya hay una alerta, no es hunting; ninguna caza vuelve de vacío) y una sola tarea: las preguntas de la lección.
 
 **Canon nuevo que fija V5b** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
-- **2026-10-02 (viernes), 10:00, sala de crisis: la mesa.** Seis áreas (Seguridad, Sistemas, Operaciones,
+- **2026-10-02 (viernes), 09:30, sala de crisis: la mesa.** Seis áreas (Seguridad, Sistemas, Operaciones,
   Comunicación, Dirección y Asesoría jurídica). Caso: a las 03:00 se cae el correo corporativo. «¿A quién llamas?»: a
   la suplente de Seguridad, pero su teléfono solo está en la lista de contactos del plan, que vive en el correo
   corporativo. Mejora: lista de contactos fuera de banda (en papel en la sala y en el móvil de guardia), Seguridad,
