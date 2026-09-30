@@ -3,7 +3,7 @@ import { mkdirSync, mkdtempSync, readdirSync, rmSync, utimesSync, writeFileSync 
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
-import { BUNDLE_MANIFEST, bundleKey, collectBundleInputs, isCompleteBundle, markInUse, pruneBundleCache, renameWithRetry } from './bundle-cache.mjs';
+import { BUNDLE_MANIFEST, bundleKey, collectBundleInputs, isCompleteBundle, markInUse, pruneBundleCache, removeDirQuietly, renameWithRetry } from './bundle-cache.mjs';
 
 const BASE = {
   sources: [
@@ -168,4 +168,15 @@ test('renameWithRetry: other errors, and the last transient one, are thrown', ()
     (err) => err.code === 'EPERM',
   );
   assert.equal(tries, 3);
+});
+
+test('removeDirQuietly: retries through the lock, and a lock that outlasts it is only a warning', () => {
+  const seen = [];
+  assert.equal(removeDirQuietly('tmp.building-1', { rm: (dir, opts) => seen.push([dir, opts]) }), true);
+  assert.equal(seen[0][0], 'tmp.building-1');
+  assert.ok(seen[0][1].recursive && seen[0][1].force && seen[0][1].maxRetries >= 3, 'recursive, force, with retries');
+  const warnings = [];
+  const locked = () => { throw lockError('ENOTEMPTY'); };
+  assert.equal(removeDirQuietly('tmp.building-2', { rm: locked, log: { warn: (m) => warnings.push(m) } }), false);
+  assert.match(warnings[0], /tmp\.building-2.*ENOTEMPTY/);
 });

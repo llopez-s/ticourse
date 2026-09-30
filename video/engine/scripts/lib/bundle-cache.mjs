@@ -20,6 +20,22 @@ function sleepSync(ms) {
 }
 
 /**
+ * Deletes a finished run's temp bundle. Windows can keep a file of it locked for a while after
+ * Chrome exits (ENOTEMPTY, EBUSY): rmSync retries, and if the lock outlasts that the folder is left
+ * behind with a warning — the render already succeeded, and pruneBundleCache sweeps it later.
+ * Returns whether the folder is gone.
+ */
+export function removeDirQuietly(dir, { rm = rmSync, log = console } = {}) {
+  try {
+    rm(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 250 });
+    return true;
+  } catch (err) {
+    log.warn(`bundle: could not remove ${dir} (${err?.code ?? err}); it can be deleted later`);
+    return false;
+  }
+}
+
+/**
  * renameSync that waits out those transient locks: up to `tries` attempts, 250 ms longer each time
  * (capped at 1.5 s). Returns the attempt that worked; other errors, and the last transient one, are thrown.
  */
