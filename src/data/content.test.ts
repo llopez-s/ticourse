@@ -268,6 +268,8 @@ describe('lesson videos', () => {
     expect(moduleOf('videos/siem-blue-team.mp4')).toBe('sp4m6');
     expect(moduleOf('videos/forense-adquisicion.mp4')).toBe('sp4m11');
     expect(youtubeVideos.find((v) => v.block.youtube === 'rwMIu0XBoWQ')?.module).toBe('s2m3');
+    // V4 continues V3's E7 pivots, before Lab 3A: the order is video, then lab
+    expect(youtubeVideos.find((v) => v.block.youtube === '8pet46MOGmk')?.module).toBe('s3m3');
   });
 
   it('every video block points at relative public assets that exist', async () => {

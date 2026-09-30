@@ -209,6 +209,12 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   **V3 `video/diamond-e7/`** (s2m3, GCTI, YouTube `rwMIu0XBoWQ`, 7:54) is the first GCTI video: exam
   cards are track-aware (`EXAM_BADGE`/`GCTI_DOMAINS` in `scripts/lib/profiles.mjs` — a GCTI card names a
   course domain, badge «GCTI»), and every scene draws the shared `src/scenes/parts/Diamond.tsx`.
+  **V4 `video/pivot-infra/`** (s3m3, GCTI, YouTube `8pet46MOGmk`, 8:08, published 2026-09-30 on the Alertópolis
+  channel) is the first narrated by Lidia's own recording end to end: `verify-voice.mjs` re-transcribes every clip
+  as the video plays it and `render.mjs` refuses a recording with cut words or leftover takes; and the first with
+  **library music** instead of the generated bed — `video.json` → `"music"` names a YouTube Audio Library track in
+  the git-ignored `video/engine/music/library/` (licences in `music/LICENSES.md`), which `music_kit.py` re-arranges
+  to the story. YouTube does not allow external links in the channel's descriptions, so `youtube-meta` writes none.
   **Mastering** (Python, venv + `pedalboard pyloudnorm librosa soundfile scipy`): `scripts/master_voice.py`
   on the narrator's WAV *before* `import-recording` (time-aligned EQ/de-ess/compression, no denoise) and
   `scripts/master_mix.py` on the rendered MP4 (generated ambient bed ducked under speech, −14 LUFS,
