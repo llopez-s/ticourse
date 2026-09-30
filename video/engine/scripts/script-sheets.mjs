@@ -42,7 +42,13 @@ function main() {
     sheets.push(['guion-regrabacion.md', rerecordSheet({ ...sources, ids })]);
   } else {
     const both = !values.recording && !values['voice-studio'];
-    if (both || values.recording) sheets.push(['guion-grabacion.md', recordingSheet(sources)]);
+    if (both || values.recording) {
+      sheets.push(['guion-grabacion.md', recordingSheet(sources)]);
+      if (!MANIFEST.frozen) {
+        console.warn('script-sheets: the script is not frozen (video.json has no "frozen"): the recording sheet is a DRAFT.');
+        console.warn('  Freeze it (both reviews applied, canon-check read) before sending it to the narrator.');
+      }
+    }
     if (both || values['voice-studio']) sheets.push(['guion-voice-studio.md', voiceStudioSheet(sources)]);
   }
   mkdirSync(outDir, { recursive: true });

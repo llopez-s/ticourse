@@ -38,6 +38,11 @@ export const OPTIONAL_MANIFEST_KEYS = Object.freeze({
   lesson: /^sp?\d+m\d+$/,
   /** Library track under the mastered mix (a file in video/engine/music/library/, listed in music/LICENSES.md). */
   music: /^[^/\\]+\.(mp3|wav|flac)$/i,
+  /**
+   * Day the script was frozen (YYYY-MM-DD): both reviews applied and canon-check read. Until then the
+   * recording sheet comes out as a draft, so the narrator never records a script that may still change.
+   */
+  frozen: /^\d{4}-\d{2}-\d{2}$/,
 });
 
 /** Checks a parsed video.json; throws on the first problem. */

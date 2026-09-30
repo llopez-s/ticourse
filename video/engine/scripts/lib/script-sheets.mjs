@@ -172,6 +172,12 @@ export function parseOnly(value, segments) {
   return segments.filter((s) => wanted.has(s.id)).map((s) => s.id);
 }
 
+/** Where the narrator saves the whole recording: video/engine/voices/<slug> <name>.wav. */
+export function recordingFile(slug, voice) {
+  const name = isRecordingVoice(voice) ? ` ${voice.slice('recording/'.length)}` : '';
+  return `video/engine/voices/${slug}${name}.wav`;
+}
+
 /** Where the narrator saves a re-recording: video/engine/voices/<slug> regrabacion <name>.wav. */
 export function rerecordFile(slug, voice) {
   const name = isRecordingVoice(voice) ? ` ${voice.slice('recording/'.length)}` : '';
@@ -238,12 +244,20 @@ const cap = (s) => s.charAt(0).toLocaleUpperCase('es') + s.slice(1);
 export function recordingSheet({ storyboard, narration, manifest }) {
   const tempo = tempoLabel(narration);
   const screen = onScreenOnly(narration);
+  const frozen = manifest.frozen;
   const out = [
-    `# Guion para grabar · ${storyboard.title}`,
+    frozen ? `# Guion para grabar · ${storyboard.title}` : `# BORRADOR · no grabes todavía · ${storyboard.title}`,
+    '',
+    frozen
+      ? `**Versión definitiva** · guion congelado el ${frozen}.`
+      : '**Borrador:** el guion aún no está congelado (falta `"frozen"` en video.json) y puede cambiar. No lo grabes todavía.',
     '',
     'Lee de corrido y en orden, **a ritmo de conversación**: como si se lo contaras a una amiga, no como quien lee.',
     `Entre frase y frase deja un respiro corto; los silencios se recortan solos${tempo ? ` y el vídeo se acelera un poco (${tempo})` : ''} al montarlo.`,
-    'Si algo sale mal, **basta con repetir la oración que falló** (no hace falta la frase entera) y seguir: el importador se queda con la última toma de cada oración.',
+    'Si algo sale mal, **calla un segundo y repite la oración que falló desde su principio** (no hace falta la frase entera) y sigue: el importador se queda con la última toma de cada oración.',
+    'No hagas pausas largas dentro de una frase: si necesitas respirar, termina antes la oración.',
+    'Al acabar la última frase, deja dos segundos de silencio antes de parar la grabación.',
+    `Guárdala como \`${recordingFile(manifest.slug, narration.voice)}\`.`,
     'Lo que va entre paréntesis en cursiva es solo cómo pronunciar; la *dirección* de cada frase es orientativa.',
     screen
       ? `${cap(screen)} salen en pantalla: **no se leen**. Los dominios, IP y correos tampoco: están en pantalla.`

@@ -19,7 +19,7 @@ import {
 
 const FIX = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures');
 const read = (f) => JSON.parse(readFileSync(path.join(FIX, f), 'utf8'));
-const MANIFEST = { slug: 'siem', adversary: 'SILENT PAGER' };
+const MANIFEST = { slug: 'siem', adversary: 'SILENT PAGER', frozen: '2026-10-01' };
 
 /** The mini fixtures, plus an intercepted message before s01-02 and a mood on s02-01. */
 function sources({ intercept = false, narration: extra = {} } = {}) {
@@ -142,4 +142,21 @@ test('sheets reject a segment whose scene is not in the storyboard', () => {
   src.narration.segments[0].scene = 's99-nope';
   assert.throws(() => recordingSheet(src), /segment s01-01: unknown scene "s99-nope"/);
   assert.throws(() => voiceStudioSheet(src), /unknown scene/);
+});
+
+test('recordingSheet: a script that is not frozen yet comes out as a draft nobody should record', () => {
+  const draft = recordingSheet({ ...sources(), manifest: { slug: 'siem', adversary: 'SILENT PAGER' } });
+  assert.match(draft, /^# BORRADOR · no grabes todavía · SIEM en acción/);
+  assert.match(draft, /"frozen"/);
+  const final = recordingSheet(sources());
+  assert.match(final, /\*\*Versión definitiva\*\* · guion congelado el 2026-10-01/);
+  assert.doesNotMatch(final, /BORRADOR/);
+});
+
+test('recordingSheet: the recording habits that spare cutting by hand, and where to save the file', () => {
+  const md = recordingSheet(sources());
+  assert.match(md, /calla un segundo/);
+  assert.match(md, /pausas largas dentro de una frase/);
+  assert.match(md, /dos segundos de silencio/);
+  assert.match(md, /Guárdala como `video\/engine\/voices\/siem[^`]*\.wav`/);
 });
