@@ -392,6 +392,8 @@ difieren los dos), para no pisar la audición hecha con los valores por defecto.
 # Entorno (una vez): Python 3.12, torch de CPU, en D: para no llenar C:
 C:/Python312/python.exe -m venv video/engine/.venv-chatterbox
 video/engine/.venv-chatterbox/Scripts/python.exe -m pip install -r video/engine/scripts/requirements-chatterbox.txt
+# En un git worktree (no tiene su propio venv, y en un disco exFAT no admite enlaces): usa el de la copia principal
+export CHATTERBOX_PYTHON="D:/LLM projects/TICourse/video/engine/.venv-chatterbox/Scripts/python.exe"
 
 # Audición: la misma frase con cada voz, en video/<slug>/.audition/chatterbox-*.mp3
 node video/engine/scripts/tts-chatterbox.mjs --video <slug> --audition --voices mtl/default,es-es/default [--respelled] [--tempo 0.8] [--temperature 0.7]
