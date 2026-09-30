@@ -53,7 +53,7 @@
     {
       "id": "s01-05",
       "scene": "s01-hook",
-      "text": "<warm> {crisis}Son las diez de la mañana y estás en la sala de crisis. {board}En la pizarra está el caso, repartido en siete columnas.",
+      "text": "<warm> {crisis}Es mediodía y estás en la sala de crisis. {board}En la pizarra está el caso, repartido en siete columnas.",
       "pauseAfterMs": 350
     },
     {
@@ -147,13 +147,13 @@
     {
       "id": "s04-03",
       "scene": "s04-key",
-      "text": "<concerned> {found}Y esta mañana el análisis ha encontrado algo peor. [A las 21:14|A las nueve y catorce de la noche], esa cuenta ya entraba en el servidor desde allí.",
+      "text": "<concerned> {found}Y esta mañana el análisis ha encontrado algo peor. [A las 21:14|A las nueve y catorce de la noche], desde esa estación abierta, saltó a otra que nadie vigilaba.",
       "pauseAfterMs": 450
     },
     {
       "id": "s04-04",
       "scene": "s04-key",
-      "text": "<grave> {alert}Nadie lo vio hasta la madrugada, cuando la salida de datos hizo saltar la alarma. Para entonces, ella llevaba horas dentro.",
+      "text": "<grave> Desde esa, [a las 01:52|a las dos menos ocho], usó la cuenta de servicio para entrar en el servidor. {alert}La alarma saltó de madrugada, pero nadie la miró hasta esta mañana.",
       "pauseAfterMs": 500
     },
     {
@@ -205,7 +205,7 @@
     {
       "id": "s05-04",
       "scene": "s05-order",
-      "text": "<relieved> {closed}Así que primero cierras, y después limpias. [A las 04:30|A las cuatro y media], con la responsable de seguridad al teléfono, se cerró todo de golpe.",
+      "text": "<relieved> {closed}Así que primero cierras, y después limpias. Esta mañana, en cuanto alguien miró esa alarma, se cerró todo de golpe.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "4.8",
@@ -217,7 +217,7 @@
     {
       "id": "s05-05",
       "scene": "s05-order",
-      "text": "<satisfied> {done}Se aisló la estación, el servidor pasó a cuarentena y se cambió la contraseña. Ahí se cortó la salida de datos, y ahora sí, casilla marcada sin miedo.",
+      "text": "<satisfied> {done}Se aislaron las dos estaciones, el servidor pasó a cuarentena y se cambió la contraseña. Los datos ya se habían ido, pero ahora sí, casilla marcada.",
       "pauseAfterMs": 650
     },
     {
@@ -233,7 +233,7 @@
     {
       "id": "s06-02",
       "scene": "s06-eradicate",
-      "text": "<clear> {persist}Eso que deja preparado para volver se llama persistencia, y tenía otra igual en la estación de administración.",
+      "text": "<clear> {persist}Eso que deja preparado para volver se llama persistencia, y había otra igual en la estación que nadie vigilaba.",
       "pauseAfterMs": 350
     },
     {
@@ -257,7 +257,7 @@
     {
       "id": "s06-05",
       "scene": "s06-eradicate",
-      "text": "<confident> {hunt}Tampoco basta con este servidor. Repites la búsqueda en todos los equipos del puerto, ahora también buscando su tarea, {zero}y esta vez sale limpia.",
+      "text": "<confident> {hunt}Tampoco basta con este servidor. Repites la búsqueda en todos los equipos del puerto, también en los que antes no se veían, {zero}y esta vez sale limpia.",
       "pauseAfterMs": 600
     },
     {
@@ -279,13 +279,13 @@
     {
       "id": "s07-03",
       "scene": "s07-recovery",
-      "text": "<firm> {entry}No te vale. Lo que cuenta no es cuándo viste a la atacante, sino cuándo entró. Y entró [a las 21:14|a las nueve y catorce].",
+      "text": "<firm> {entry}No te vale. Lo que cuenta no es cuándo viste a la atacante, sino cuándo entró. Y entró ayer por la tarde, con el correo de Lucía.",
       "pauseAfterMs": 450
     },
     {
       "id": "s07-04",
       "scene": "s07-recovery",
-      "text": "<thoughtful> {photo}Esa copia se hizo con ella ya dentro, y lleva su tarea programada. Es como fotografiar la nave con la intrusa escondida detrás de una caja.",
+      "text": "<thoughtful> {photo}Esa copia se hizo con ella ya dentro del puerto. Es como fotografiar la nave con ella rondando por ahí. Podría estar detrás de cualquier caja.",
       "pauseAfterMs": 450
     },
     {

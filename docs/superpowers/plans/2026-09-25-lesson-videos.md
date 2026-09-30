@@ -502,7 +502,7 @@ Las exam cards se listan en el orden de las escenas:
 
 - **Carpeta:** `ir-halden` · perfil `principal-yt` · objetivo 4.8 · adversario SILENT PAGER · voz `recording/lidia`
   (tempo 1,08 y pausas de 250 ms, provisionales como en V4).
-- **Duración:** Lidia permite hasta 10 minutos; el guion revisado estima ~9:24. No se rellena.
+- **Duración:** Lidia permite hasta 10 minutos; el guion revisado estima ~9:28. No se rellena.
 - **Inserción:** en `src/data/secplus/sp4-part5.ts`, justo después de la tabla «Fase / Objetivo / Error clásico» y
   antes del apartado «Entrenamiento y pruebas», como bloque `youtube`.
 - **Enfoque («la mañana después»):** 4-9 a las 10:00, sala de crisis. La pizarra del caso IR-2026-0147 tiene siete
@@ -532,25 +532,34 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
   `ADM-WS-02` se queda sin aislar: su responsable no estaba localizable y nadie de guardia tenía autoridad para
   aislar una estación de administración (el plan no tenía suplentes). Ese día nadie sabía aún que la credencial de
   servicio había salido (V1), así que el alcance del 3-9 son tres equipos y ninguna cuenta.
-- 21:14 del 3-9: la cuenta de servicio ya entra en el servidor de la terminal desde `ADM-WS-02`, sin alerta, y a las
-  21:20 deja una tarea programada que arranca el programa cada jueves por la noche (otra igual en `ADM-WS-02`). Lo
-  descubre el análisis la mañana del 4-9. La 01:52 del SIEM fue la primera vez que se vio.
-- 04:30 del 4-9 (después del triaje del SIEM, que ve la salida de 02:00 a 04:30): con la responsable de seguridad al
-  teléfono se cierra todo de golpe. `ADM-WS-02` aislada, el servidor en cuarentena y la contraseña cambiada, y ahí se
-  corta la salida de datos.
+- **Datos del SIEM que manda en pantalla** (`video/siem/src/data/s09-pivot.ts` y `S10Contain.tsx`, ya publicados):
+  la 01:52 es un logon 4624 de `svc_tosreport` desde `ADM-WS-07` (10.20.4.17) en `srv-tc-app03`; la salida de
+  38 GB a 203.0.113.47 va de 02:00 a 04:30 y **termina sola**; el mapa UBA de `svc_tosreport` no tiene más
+  actividad fuera de horario que esa 01:52; el triaje es por la mañana del 4-9 y la cuarentena (sin apagar) y el
+  cambio de contraseña llegan después, con una sesión aún abierta.
+- 21:14 del 3-9: desde `ADM-WS-02`, que sigue abierta, la atacante abre una sesión remota hacia `ADM-WS-07`, una
+  estación de administración **sin agente EDR** (por eso la búsqueda de V1 no la vio; V1 s11: «uno sin agente, para
+  él, no existe»). No usa `svc_tosreport` (el mapa UBA no lo permite). Lo descubre el análisis la mañana del 4-9.
+- 01:58, dentro de la sesión de la 01:52: tarea programada en `srv-tc-app03` que arranca el programa cada jueves por
+  la noche; otra igual en `ADM-WS-07`.
+- 10:30 del 4-9, después del triaje del SIEM: se cierra todo de golpe. `ADM-WS-02` y `ADM-WS-07` aisladas,
+  `srv-tc-app03` en cuarentena y la contraseña de `svc_tosreport` cambiada. Los datos ya se habían ido. La sala de
+  crisis de V5 es a mediodía (12:00).
 - Erradicación: fuera las tareas programadas, retirado el permiso de macros de Operaciones y confirmada la regla 3
-  del cortafuegos (ya corregida en V1). La búsqueda de V1 más la tarea, repetida en todos los equipos con agente, da
-  cero resultados.
-- Copias del servidor, cada noche a las 23:00. La del 3-9 se descarta: es posterior a las 21:14 y lleva la tarea
-  programada. Se restaura la del 2-9, de antes de todo el incidente, con su integridad comprobada y el visto bueno de
-  Operaciones. Vuelve con vigilancia reforzada 30 días.
+  del cortafuegos (ya corregida en V1). La búsqueda de V1 más la tarea, repetida en todos los equipos (también los
+  que no tenían agente, `ADM-WS-07` ya con él), da cero resultados.
+- Copias de `srv-tc-app03`, cada noche a las 23:00. La del 3-9 se descarta: se hizo con la atacante ya dentro del
+  puerto (el incidente empieza el 3-9 por la tarde, con el correo de Lucía), aunque sea anterior a la alerta. Se
+  restaura la del 2-9, de antes de todo el incidente, con su integridad comprobada y el visto bueno de Operaciones.
+  Vuelve con vigilancia reforzada 30 días.
 - Revisión final el 2026-09-11, con dos hilos de «¿por qué?»: la macro se ejecutó por una excepción de Operaciones de
   hace dos años que nunca caducaba (el ejemplo de la propia lección: ya retirada, la causa de fondo es que las
   excepciones no caducan), y la atacante siguió dentro horas porque la contención se cerró con dos equipos de tres,
   ya que faltaban suplentes (un hueco de la preparación). Mejoras con responsable y fecha: suplentes con autoridad
   para aislar (Seguridad, 30-9), las excepciones caducan solas (Sistemas, 18-9), cuentas de servicio en un gestor de
   contraseñas con rotación (Sistemas, 31-10), DMARC en reject (Correo, 25-9) y alerta de logon de cuentas de
-  servicio desde estaciones (SOC, 25-9).
+  servicio desde estaciones (SOC, 25-9), más agente de seguridad en todas las estaciones de administración
+  (Sistemas, 15-10).
 - **No se toca:** la pista del ASN de NULL CIPHER ni «GH es una sola operación» (dosier del jefe de sp4). No se culpa
   a nadie, ni a Lucía ni al turno de noche.
 
