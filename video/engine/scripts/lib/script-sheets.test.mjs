@@ -11,6 +11,7 @@ import {
   rerecordFile,
   rerecordSheet,
   segmentMood,
+  toneLabel,
   studioMarks,
   studioText,
   voiceStudioSheet,
@@ -28,6 +29,12 @@ function sources({ intercept = false, narration: extra = {} } = {}) {
   narration.segments[2].text = `<curious> ${narration.segments[2].text}`;
   return { storyboard, narration, manifest: MANIFEST };
 }
+
+test('toneLabel: each emotion tag in Spanish, unknown ones as they are', () => {
+  assert.equal(toneLabel('curious'), 'con curiosidad');
+  assert.equal(toneLabel('serious, warning'), 'seria, de aviso');
+  assert.equal(toneLabel('whispering'), 'whispering');
+});
 
 test('segmentMood: the leading direction(s) only', () => {
   assert.equal(segmentMood('<intrigued> Tienes un dominio.'), 'intrigued');
@@ -59,7 +66,7 @@ test('recordingSheet: headings, one line per segment, long pauses, on-screen not
   assert.ok(md.indexOf('## 2. Cómo funciona') < md.indexOf('### Recoger'), 'chapter 2 opens before its first scene');
   assert.equal(md.split('## 2. Cómo funciona').length, 2, 'each chapter heading once');
   assert.match(md, /\*\*s01-01\*\* — Cada día llegan 6\.000 \*\(lee: «seis mil»\)\* avisos .* \*\*\(pausa larga\)\*\*\n/);
-  assert.match(md, /\*\*s02-01\*\* · \*curious\* — Primero recogemos/);
+  assert.match(md, /\*\*s02-01\*\* · \*con curiosidad\* — Primero recogemos/, 'the tone in Spanish');
   assert.doesNotMatch(md, /\*\*s02-02\*\*[^\n]*pausa larga/, '500 ms is not a long pause');
   assert.match(md, /\*\*s02-02\*\*[^\n]*\n\n> \*\(En pantalla: «Con NetFlow, ¿sabes qué datos salieron\?». Deja un segundo de silencio\.\)\*/);
   assert.doesNotMatch(md, /\{|\}|\|/, 'no markup left');

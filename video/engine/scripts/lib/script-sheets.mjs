@@ -19,6 +19,53 @@ export const STUDIO_INTERCEPT_PAUSE_MS = 600;
 const collapse = (s) => s.replace(/\s+/g, ' ').trim();
 const lower = (s) => s.toLocaleLowerCase('es');
 
+/**
+ * How the reading sheet names each emotion tag of the vocabulary (moods.mjs), in Spanish: the
+ * narrator reads the sheet, not the tags. A tag outside the table is shown as it is.
+ */
+export const TONE_ES = Object.freeze({
+  calm: 'tranquila',
+  serious: 'seria',
+  steady: 'pausada',
+  grave: 'grave',
+  focused: 'concentrada',
+  firm: 'firme',
+  concerned: 'preocupada',
+  warning: 'de aviso',
+  ominous: 'inquietante',
+  tired: 'cansada',
+  sighs: 'con un suspiro',
+  clear: 'clara',
+  thoughtful: 'pensativa',
+  curious: 'con curiosidad',
+  intrigued: 'intrigada',
+  confident: 'segura',
+  warm: 'cercana',
+  warmly: 'con cariño',
+  satisfied: 'satisfecha',
+  relieved: 'aliviada',
+  reassuring: 'tranquilizadora',
+  casual: 'desenfadada',
+  engaging: 'animada',
+  enthusiastic: 'entusiasta',
+  cheerful: 'alegre',
+  mischievously: 'pícara',
+  sarcastic: 'irónica',
+  urgent: 'con urgencia',
+  suspicious: 'suspicaz',
+  emphatic: 'enfática',
+  tense: 'tensa',
+});
+
+/** "curious, warm" -> "con curiosidad, cercana" (see TONE_ES). */
+export function toneLabel(mood) {
+  return mood
+    .split(',')
+    .map((m) => m.trim())
+    .map((m) => TONE_ES[m.toLowerCase()] ?? m)
+    .join(', ');
+}
+
 /** Leading performance direction(s) of a segment ("<intrigued> Tienes…" -> "intrigued"), or null. */
 export function segmentMood(text) {
   const moods = [];
@@ -161,7 +208,7 @@ function readingBody(storyboard, narration, manifest, ids = null) {
       if (seg.intercept) out.push(`> *(En pantalla, no se lee: mensaje de ${adversary} — «${seg.intercept.text}». Tú contestas:)*`, '');
       const mood = segmentMood(seg.text);
       const pause = (seg.pauseAfterMs ?? DEFAULT_PAUSE_MS) >= LONG_PAUSE_MS ? ' **(pausa larga)**' : '';
-      out.push(`**${seg.id}**${mood ? ` · *${mood}*` : ''} — ${readingText(seg.text)}${pause}`, '');
+      out.push(`**${seg.id}**${mood ? ` · *${toneLabel(mood)}*` : ''} — ${readingText(seg.text)}${pause}`, '');
       if (seg.think) out.push(`> *(En pantalla: «${seg.think.q}». Deja un segundo de silencio.)*`, '');
     }
   }

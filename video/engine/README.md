@@ -46,7 +46,7 @@ Todos los scripts eligen el vídeo con `--video <slug>` (o la variable `VIDEO`; 
 
 | | `principal` | `capsula` | `principal-yt` | `capsula-yt` |
 | --- | --- | --- | --- | --- |
-| Duración (`minTotalSec`–`maxTotalSec`) | 280–340 s | 140–200 s | **380–500 s** | **190–260 s** |
+| Duración (`minTotalSec`–`maxTotalSec`) | 280–340 s | 140–200 s | **380–600 s** (hasta 10 min desde V5) | **190–260 s** |
 | Capítulos (`maxChapters`) | 5 | 3 | 5 | 3 |
 | Tarjetas de examen (`examCards`) | 8–11 | 4–6 | **5–8** | **3–5** |
 | Pausas para pensar (`thinkPrompts`) | 2 | 1 | 2 | 1 |
