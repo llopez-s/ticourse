@@ -25,7 +25,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { checkTimelineFresh } from './lib/freshness.mjs';
-import { COMPOSITION, MANIFEST, PATHS, POSTER_STILL, REPO_ROOT, SCRIPTS_DIR, VIDEO, isMainModule } from './lib/paths.mjs';
+import { COMPOSITION, ENGINE_DIR, MANIFEST, PATHS, POSTER_STILL, REPO_ROOT, SCRIPTS_DIR, VIDEO, isMainModule } from './lib/paths.mjs';
 import { profileFor } from './lib/profiles.mjs';
 import { assertCliFlags, bundleVideo, ffmpegBinary, probeMedia, runPool, runRemotion, runRemotionAsync, spawnAsync } from './lib/remotion.mjs';
 import { VENV_PYTHON } from './tts-chatterbox.mjs';
@@ -88,13 +88,25 @@ export function masterPaths(out) {
 }
 
 /** The Python that runs master_mix.py, or throws before anything renders if it lacks the audio libraries. */
-function masterPython() {
+function masterPython(music) {
   const py = process.env.MASTER_PYTHON || VENV_PYTHON;
-  const probe = spawnSync(py, ['-c', 'import pedalboard, pyloudnorm, soundfile, scipy'], { encoding: 'utf8', windowsHide: true });
+  const libs = ['pedalboard', 'pyloudnorm', 'soundfile', 'scipy', ...(music ? ['librosa'] : [])];
+  const probe = spawnSync(py, ['-c', `import ${libs.join(', ')}`], { encoding: 'utf8', windowsHide: true });
   if (probe.error || probe.status !== 0) {
-    throw new Error(`--master needs a Python with pedalboard, pyloudnorm, soundfile and scipy (${py}): ${(probe.stderr || probe.error?.message || '').trim().split('\n').pop()} — pip install them there, or set MASTER_PYTHON`);
+    throw new Error(`--master needs a Python with ${libs.join(', ')} (${py}): ${(probe.stderr || probe.error?.message || '').trim().split('\n').pop()} — pip install them there, or set MASTER_PYTHON`);
   }
   return py;
+}
+
+/**
+ * The library track video.json names ("music"), or null: master_mix then uses its generated story bed. Throws
+ * before anything renders when the file is missing (music/library is git-ignored: a fresh clone lacks it).
+ */
+export function musicTrack(manifest, engineDir = ENGINE_DIR) {
+  if (!manifest.music) return null;
+  const file = path.join(engineDir, 'music', 'library', manifest.music);
+  if (!existsSync(file)) throw new Error(`video.json names the music "${manifest.music}", but ${file} is missing: download it again (music/LICENSES.md says from where)`);
+  return file;
 }
 
 function run(label, args) {
@@ -118,7 +130,8 @@ async function main() {
   const draft = values.draft;
   const master = values.master;
   if (master && draft) throw new Error('--master is for the final render, not a --draft');
-  const py = master ? masterPython() : null;
+  const music = master ? musicTrack(MANIFEST) : null;
+  const py = master ? masterPython(music) : null;
   const fresh = checkTimelineFresh();
   if (!fresh.ok) {
     console.error('render.mjs: refusing to render:');
@@ -181,6 +194,7 @@ async function main() {
         const pre = await spawnAsync(py, [
           path.join(SCRIPTS_DIR, 'master_mix.py'), '--audio-in', paths.program, '--timeline', PATHS.timeline,
           '--premaster-out', paths.premaster, '--ffmpeg', ffmpegBinary(), ...(values['bed-db'] ? ['--bed-db', values['bed-db']] : []),
+          ...(music ? ['--bed-style', 'music', '--music', music] : []),
         ]);
         if (pre.status !== 0) throw new Error(`master_mix stage 1 failed (exit ${pre.status}): ${pre.stderr.trim().slice(-600)}`);
         console.log(`\n== audio: premaster ready after ${((Date.now() - t0) / 1000).toFixed(0)} s\n${pre.stdout.trim()}`);

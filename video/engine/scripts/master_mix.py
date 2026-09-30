@@ -14,7 +14,8 @@
    from the recap on; it sits ~4 LU under the program before ducking. --bed-style pad is the first bed
    (V1/V3): one static chord per chapter, ~14 LU under. Both lie over a very low room tone and duck 6 dB
    more whenever someone speaks (the story bed's arpeggio 12 dB), so they mostly fill the pauses, think
-   prompts and transitions. Fades in at the start and out on the end card.
+   prompts and transitions. Fades in at the start and out on the end card. --bed-style music --music <track>
+   uses a library track instead (music_kit.py re-arranges it to the story; low-passed under the voice).
 3. Sets the integrated loudness to --target (YouTube: -14 LUFS) and limits true peaks to --ceiling
    (4x oversampled detection, no latency, so audio and video stay in sync).
 4. Remuxes: the video stream is copied untouched, the audio re-encoded as AAC 192 kbps.
@@ -32,10 +33,12 @@ from pedalboard import Pedalboard, Reverb
 from scipy import signal
 from scipy.ndimage import minimum_filter1d
 
+import music_kit
+
 SR = 48000
 # How far under the program each bed sits before ducking. The pad bed of V1/V3 keeps its 14 LU (the listener's
 # first draft asked for more than 20); the story bed plays 10 dB louder, chosen by ear on 2026-09-29 (+4, +7, +10).
-BED_UNDER_LU = {"story": 4.0, "pad": 14.0}
+BED_UNDER_LU = {"story": 4.0, "pad": 14.0, "music": 8.0}  # music: a first guess, to be set by ear
 # One chord per chapter (D minor colour): Dm7, Bbmaj7, Gm9, Asus4, Dm(add9). Low register, under the voice.
 CHORDS = [
     [73.42, 110.00, 174.61, 261.63],
@@ -354,7 +357,39 @@ def ambient_bed(timeline, n, seed=7):
     return bed * fade[:, None]
 
 
-BED_STYLES = {"story": ambient_bed, "pad": pad_bed}
+MUSIC_LOWPASS_HZ = 1500  # under the voice the music keeps only its body: its presence band is the voice's
+
+
+def music_bed(timeline, n, song):
+    """--bed-style music: a library track re-arranged to the story (music_kit.py). Wherever someone speaks it
+    crossfades into a low-passed copy of itself, so drums and leads step back from the voice's presence band."""
+    mono = signal.resample_poly(song.mean(axis=1), music_kit.AN_SR // 150, SR // 150)
+    blocks = music_kit.phrases(mono)
+    gates = event_gates(timeline, n)
+
+    def want(t0, t1):
+        a = int(t0 * SR)
+        b = max(a + 1, int(t1 * SR))
+        # A message or a think prompt lasts ~5 s of a ~11 s phrase: covering half of it is covering it.
+        adversary = min(1.0, 2 * float(gates["adversary"][a:b].mean()))
+        event = max(adversary, min(1.0, 2 * float(gates["think"][a:b].mean())))
+        return music_kit.UNDER_SPEECH + (1 - music_kit.UNDER_SPEECH) * event, adversary
+
+    plan = music_kit.arrange(blocks, n / SR, want)
+    print(f"  music: {len(blocks)} phrases in the track, {len(plan)} played", *music_kit.describe(blocks, plan), sep="\n")
+    bed = music_kit.place(song, SR, blocks, plan, n)
+    speech = smooth(speech_mask(timeline, n), 250)[:, None]
+    dark = signal.sosfiltfilt(signal.butter(2, MUSIC_LOWPASS_HZ, btype="low", fs=SR, output="sos"), bed, axis=0)
+    bed = bed * (1.0 - speech) + dark * speech
+    fade = np.ones(n)
+    fin, fout = int(1.0 * SR), int(3.0 * SR)
+    fade[:fin] = np.linspace(0, 1, fin)
+    fade[-fout:] = np.linspace(1, 0, fout)
+    return bed * fade[:, None]
+
+
+# music_bed takes the track too; the other two only the timeline.
+BED_STYLES = {"story": ambient_bed, "pad": pad_bed, "music": music_bed}
 
 
 def limit(x, ceiling_db, release_ms=60.0):
@@ -398,15 +433,18 @@ def read_audio(ffmpeg, src, tmp, name="program.wav"):
     return audio
 
 
-def premaster(prog, timeline, meter, target=-14.0, bed_style="story", bed_db=0.0, no_bed=False):
+def premaster(prog, timeline, meter, target=-14.0, bed_style="story", bed_db=0.0, no_bed=False, music=None):
     """Stage 1, the heavy one: the program plus the ambient bed, at the target loudness, not yet limited.
-    It only needs the audio, so it can run while the video frames are still rendering."""
+    It only needs the audio, so it can run while the video frames are still rendering. `music` is the
+    library track (stereo float at SR) for bed_style "music"."""
     n = len(prog)
     prog_lufs = meter.integrated_loudness(prog)
     print(f"master_mix: program {prog_lufs:.1f} LUFS, true peak {true_peak_db(prog):.1f} dBTP, {n / SR:.1f} s")
     mix = prog.copy()
     if not no_bed:
-        bed = BED_STYLES[bed_style](timeline, n)
+        if bed_style == "music" and music is None:
+            raise ValueError('bed style "music" needs the track (--music)')
+        bed = music_bed(timeline, n, music) if bed_style == "music" else BED_STYLES[bed_style](timeline, n)
         # The bed BED_UNDER_LU under the program, then 6 dB lower while anyone speaks.
         bed *= 10 ** ((prog_lufs - BED_UNDER_LU[bed_style] + bed_db - meter.integrated_loudness(bed)) / 20)
         duck = 10 ** (-6 * smooth(speech_mask(timeline, n), 250) / 20)
@@ -463,7 +501,8 @@ def main():
     ap.add_argument("--ceiling", type=float, default=-1.0)
     ap.add_argument("--bed-db", type=float, default=0.0, help="raise/lower the ambient bed from its default level")
     ap.add_argument("--no-bed", action="store_true")
-    ap.add_argument("--bed-style", choices=sorted(BED_STYLES), default="story", help="story (default): moving chords that react to the timeline; pad: the first, one chord per chapter")
+    ap.add_argument("--bed-style", choices=sorted(BED_STYLES), default="story", help="story (default): moving chords that react to the timeline; pad: the first, one chord per chapter; music: a library track (--music) re-arranged to the story")
+    ap.add_argument("--music", help="bed style music: the library track (any file ffmpeg reads)")
     ap.add_argument("--ffmpeg", default="node_modules/@remotion/compositor-win32-x64-msvc/ffmpeg.exe")
     ap.add_argument("--excerpt", help="start:end seconds of the master to also write as WAV")
     ap.add_argument("--excerpt-out")
@@ -485,7 +524,8 @@ def main():
         else:
             timeline = json.load(open(args.timeline, encoding="utf8"))
             prog = read_audio(args.ffmpeg, args.audio_in or args.video_in, tmp)
-            unlimited = premaster(prog, timeline, meter, args.target, args.bed_style, args.bed_db, args.no_bed)
+            music = read_audio(args.ffmpeg, args.music, tmp, "music.wav") if args.bed_style == "music" and args.music else None
+            unlimited = premaster(prog, timeline, meter, args.target, args.bed_style, args.bed_db, args.no_bed, music)
             if stage1:
                 sf.write(args.premaster_out, unlimited, SR, subtype="FLOAT")
                 print(f"  premaster -> {args.premaster_out}")

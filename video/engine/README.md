@@ -510,10 +510,31 @@ Dos pasos opcionales, en Python (venv de Chatterbox con `pip install pedalboard 
   arpegio, 12 dB), así que sobre todo llena las pausas. `--bed-style pad` es el ambiente de V1 y V3 (un acorde fijo
   por capítulo, 14 LU por debajo); `--bed-db` sube o baja cualquiera de los dos y `--no-bed` lo quita.
 
+- **Música de biblioteca** (desde V4, sustituye al ambiente generado): `video.json` → `"music": "<archivo>"`, un
+  archivo de `music/library/` (ignorada por git; qué es cada uno y su licencia, en `music/LICENSES.md`), y
+  `render.mjs --master` pasa `--bed-style music --music <ruta>` a `master_mix.py`. `scripts/music_kit.py` corta la
+  pista en frases de 4 compases sobre sus propios pulsos (la fase sale de donde cambia la energía: las secciones
+  empiezan en una frase) y la **reordena al largo del vídeo siguiendo la historia**:
+  - empieza por la primera frase de la pista y acaba con su final real, colocado para acabar con el vídeo;
+  - entre medias sigue la pista (la frase siguiente no cuesta nada) y salta cuando la historia pide otra energía:
+    frases tranquilas bajo la narración, las más fuertes en un mensaje del adversario o una pausa para pensar (con
+    el adversario, las más oscuras);
+  - una frase ya usada cuesta un poco más cada vez, así que un vídeo largo recorre toda la pista;
+  - las frases se unen con un fundido de 80 ms centrado en el primer tiempo de la siguiente.
+
+  Bajo la voz, la música pasa a una copia filtrada a 1,5 kHz (se quedan el cuerpo y el ritmo, no los agudos que
+  compiten con la voz) y, como los otros ambientes, se atenúa 6 dB; queda 8 LU por debajo del programa antes de
+  atenuarse (primer valor, a ajustar de oído con `--bed-db`). El registro de `master_mix` lista qué frase suena en
+  cada momento. Para probar sin renderizar la imagen: `scripts/render-audio.mjs` escribe solo el audio del programa
+  (`out/<slug>-program.wav`, ~6 min en V4) y `master_mix.py --audio-in … --premaster-out …` mezcla en ~1 min.
+
 ```bash
 python video/engine/scripts/master_voice.py --in "video/engine/voices/<grabación>.wav" --out "video/engine/voices/<grabación> (master).wav" --ab video/<slug>/out/voz-antes-despues.wav
 # ... import-recording con el WAV masterizado, audio.mjs y render.mjs ...
 python video/engine/scripts/master_mix.py --video-in video/<slug>/out/<slug>.mp4 --timeline video/<slug>/src/timeline.json --out video/<slug>/out/<slug>-master.mp4
+# Probar una pista de biblioteca sin renderizar la imagen
+node video/engine/scripts/render-audio.mjs --video <slug>
+python video/engine/scripts/master_mix.py --audio-in video/<slug>/out/<slug>-program.wav --timeline video/<slug>/src/timeline.json --premaster-out video/<slug>/out/prueba.wav --bed-style music --music "video/engine/music/library/<pista>.mp3"
 ```
 
 ## Requisitos
