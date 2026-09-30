@@ -42,7 +42,7 @@ export interface WhyStepState {
   cause?: number;
   /** Chip drawn after the text, on the last line (e.g. «como cualquiera»). */
   inline?: { node: ReactNode; at: number };
-  /** Chips on the right end of the step's top edge (or bottom edge with `tabsBelow`). */
+  /** Chips on the right end of the step's top edge (or fully under the step with `tabsBelow`, clear of its text). */
   tabs?: readonly StepTab[];
   tabsBelow?: boolean;
   /** 0–1 underline drawn under the line `underlineLine` (default the last). */
@@ -284,7 +284,7 @@ export function WhyChain({
               ))}
             </div>
             {st.tabs?.length ? (
-              <div style={{ position: 'absolute', right: 18, ...(st.tabsBelow ? { bottom: 0, transform: 'translateY(58%)' } : { top: 0, transform: 'translateY(-58%)' }), display: 'flex', gap: 12 }}>
+              <div style={{ position: 'absolute', right: 18, ...(st.tabsBelow ? { top: '100%', marginTop: 10 } : { top: 0, transform: 'translateY(-58%)' }), display: 'flex', gap: 12 }}>
                 {st.tabs.map((t) => {
                   const q = springIn(frame, fps, t.at - 2, { damping: 15 });
                   if (q <= 0.001) return null;

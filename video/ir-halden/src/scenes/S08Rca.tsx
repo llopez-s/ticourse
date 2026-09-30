@@ -16,7 +16,7 @@ const S = 's08-rca';
 const BOARD_LOW = 510; // the compact strip sits at the bottom while the intercept owns the top band
 const LEAK_BIG = { left: 584, top: 126, width: 560 };
 const LEAK_SMALL = { left: 0, top: 96, width: 480 }; // parts/Leak reads small under ~330 px
-const CHAIN = { left: 548, top: 30 };
+const CHAIN = { left: 548, top: 10 }; // leaves room for step 4's chips under it (bottom ≈ 636)
 const PLATE = { left: 0, top: 516, width: 480 };
 
 /**
@@ -141,7 +141,7 @@ export function S08Rca(props: SceneProps) {
 
       {chainOn ? (
         <div style={{ position: 'absolute', left: CHAIN.left, top: CHAIN.top }}>
-          <WhyChain steps={CHAIN1} states={states} whyAt={whyAt} slotAt={why + 20} frame={frame} fps={fps} opts={{ dir: 'right', dx: 56, gap: 46, fontSize: 44 }} />
+          <WhyChain steps={CHAIN1} states={states} whyAt={whyAt} slotAt={why + 20} frame={frame} fps={fps} opts={{ dir: 'right', dx: 56, gap: 42, fontSize: 44 }} />
         </div>
       ) : null}
 
