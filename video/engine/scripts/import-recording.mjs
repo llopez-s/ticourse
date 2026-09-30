@@ -24,6 +24,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
+import { acquireHeavyLock } from './lib/heavy-lock.mjs';
 import { analyzeNarration, isRecordingVoice, loadSources, reportOrThrow, spokenForVoice } from './lib/narration.mjs';
 import { ENGINE_DIR, MANIFEST, PATHS, REPO_ROOT, SCRIPTS_DIR, isMainModule } from './lib/paths.mjs';
 import { profileFor } from './lib/profiles.mjs';
@@ -63,16 +64,23 @@ function transcribe(file, sha256, prompt, workDir, { force, log }) {
   }
   if (!existsSync(VENV_PYTHON)) throw new Error(`Chatterbox venv not found at ${VENV_PYTHON} — it also runs Whisper; create it as in video/engine/README.md`);
   const raw = path.join(workDir, `asr-${fileSlug(file)}.raw.json`);
-  const res = spawnSync(
-    VENV_PYTHON,
-    ['-X', 'utf8', path.join(SCRIPTS_DIR, 'recording_asr.py'), '--audio', file, '--out', raw, '--model', ASR_MODEL, '--prompt', prompt],
-    {
-      cwd: REPO_ROOT,
-      stdio: 'inherit',
-      windowsHide: true,
-      env: { ...process.env, HF_HOME: process.env.HF_HOME ?? path.join(ENGINE_DIR, '.cache', 'huggingface'), HF_HUB_DISABLE_SYMLINKS_WARNING: '1' },
-    },
-  );
+  // Whisper on the CPU is a heavy job: wait for any render to finish instead of slowing both (lib/heavy-lock.mjs).
+  const releaseLock = acquireHeavyLock(`import-recording (Whisper) ${path.basename(file)}`);
+  let res;
+  try {
+    res = spawnSync(
+      VENV_PYTHON,
+      ['-X', 'utf8', path.join(SCRIPTS_DIR, 'recording_asr.py'), '--audio', file, '--out', raw, '--model', ASR_MODEL, '--prompt', prompt],
+      {
+        cwd: REPO_ROOT,
+        stdio: 'inherit',
+        windowsHide: true,
+        env: { ...process.env, HF_HOME: process.env.HF_HOME ?? path.join(ENGINE_DIR, '.cache', 'huggingface'), HF_HUB_DISABLE_SYMLINKS_WARNING: '1' },
+      },
+    );
+  } finally {
+    releaseLock();
+  }
   if (res.error) throw new Error(`cannot run recording_asr.py: ${res.error.message}`);
   if (res.status !== 0) throw new Error(`recording_asr.py failed (exit ${res.status})`);
   const asr = { sha256, ...JSON.parse(readFileSync(raw, 'utf8')) };

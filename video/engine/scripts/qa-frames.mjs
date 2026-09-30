@@ -17,7 +17,8 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, w
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { parseJsonText } from './lib/narration.mjs';
-import { COMPOSITION, PATHS, REPO_ROOT, SCRIPTS_DIR, isMainModule } from './lib/paths.mjs';
+import { acquireHeavyLock } from './lib/heavy-lock.mjs';
+import { COMPOSITION, PATHS, REPO_ROOT, SCRIPTS_DIR, VIDEO, isMainModule } from './lib/paths.mjs';
 import { assertCliFlags, bundleVideo, runRemotion } from './lib/remotion.mjs';
 import { VENV_PYTHON } from './tts-chatterbox.mjs';
 
@@ -141,6 +142,8 @@ async function main() {
   const started = Date.now();
   const produced = new Map(); // frame -> file path
 
+  // One heavy job at a time on this machine (lib/heavy-lock.mjs): parallel renders only slow each other down.
+  const releaseLock = acquireHeavyLock(`qa-frames ${VIDEO}${values.scene ? ` ${values.scene}` : ''}`);
   // Bundle once, then render from the finished bundle (see bundleVideo in lib/remotion.mjs).
   const bundle = bundleVideo(values['no-bundle-cache'] ? { cache: false } : {});
   try {
@@ -162,6 +165,7 @@ async function main() {
     }
   } finally {
     bundle.remove();
+    releaseLock();
   }
 
   const pad = String(timeline.durationInFrames).length;

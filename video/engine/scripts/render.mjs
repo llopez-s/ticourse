@@ -25,6 +25,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { checkTimelineFresh } from './lib/freshness.mjs';
+import { acquireHeavyLock } from './lib/heavy-lock.mjs';
 import { COMPOSITION, ENGINE_DIR, MANIFEST, PATHS, POSTER_STILL, REPO_ROOT, SCRIPTS_DIR, VIDEO, isMainModule } from './lib/paths.mjs';
 import { profileFor } from './lib/profiles.mjs';
 import { assertCliFlags, bundleVideo, ffmpegBinary, probeMedia, runPool, runRemotion, runRemotionAsync, spawnAsync } from './lib/remotion.mjs';
@@ -180,6 +181,8 @@ async function main() {
     ...(draft ? ['--scale=0.5'] : []),
   ];
   const started = Date.now();
+  // One heavy job at a time on this machine (lib/heavy-lock.mjs): parallel renders only slow each other down.
+  const releaseLock = acquireHeavyLock(`render ${VIDEO}${draft ? ' (draft)' : ''}`);
   console.log('\n== bundle');
   const bundle = bundleVideo(values['no-bundle-cache'] ? { cache: false } : {});
   try {
@@ -208,6 +211,7 @@ async function main() {
     if (!draft) run('poster', ['still', bundle.dir, POSTER_STILL, PATHS.poster, '--image-format=png']);
   } finally {
     bundle.remove();
+    releaseLock();
   }
   console.log(`\nrendered in ${((Date.now() - started) / 1000).toFixed(0)} s`);
 

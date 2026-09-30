@@ -17,6 +17,7 @@ import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'no
 import os from 'node:os';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
+import { acquireHeavyLock } from './lib/heavy-lock.mjs';
 import { ENGINE_DIR, PATHS, REPO_ROOT, SCRIPTS_DIR, VIDEO, isMainModule } from './lib/paths.mjs';
 import { writeFileAtomic } from './lib/remotion.mjs';
 import { clipFindings, voiceReport } from './lib/verify-voice.mjs';
@@ -41,6 +42,8 @@ export function verifyVoice({ warnOnly = false, force = false, log = console } =
   if (todo.length) {
     log.log(`verify-voice: transcribing ${todo.length}/${jobs.length} clips (the others are cached)`);
     const tmp = mkdtempSync(path.join(os.tmpdir(), 'verify-voice-'));
+    // Whisper on the CPU is a heavy job: wait for any render to finish instead of slowing both (lib/heavy-lock.mjs).
+    const releaseLock = acquireHeavyLock(`verify-voice ${VIDEO}`);
     try {
       const jobFile = path.join(tmp, 'jobs.json');
       const outFile = path.join(tmp, 'results.json');
@@ -56,6 +59,7 @@ export function verifyVoice({ warnOnly = false, force = false, log = console } =
       const byId = new Map(todo.map((j) => [j.id, j]));
       for (const r of JSON.parse(readFileSync(outFile, 'utf8'))) cache[r.id] = { key: byId.get(r.id).key, ...r };
     } finally {
+      releaseLock();
       rmSync(tmp, { recursive: true, force: true });
     }
     writeFileAtomic(CACHE, `${JSON.stringify(cache, null, 1)}\n`);
