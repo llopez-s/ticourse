@@ -50,6 +50,11 @@ export function checkManifest(manifest, file, slug) {
       throw new Error(`${file}: "${key}" must match ${pattern}`);
     }
   }
+  // YouTube topic tags (youtube-meta.mjs): they replace the lexicon terms, which are pronunciation keys, not topics.
+  if (manifest.tags !== undefined) {
+    const ok = Array.isArray(manifest.tags) && manifest.tags.every((t) => typeof t === 'string' && t.trim() && t.length <= 60 && !t.includes(','));
+    if (!ok) throw new Error(`${file}: "tags" must be a list of non-empty strings of at most 60 characters, without commas`);
+  }
   if (manifest.slug !== slug) throw new Error(`${file}: slug "${manifest.slug}" does not match its folder "${slug}"`);
   return manifest;
 }

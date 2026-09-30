@@ -97,3 +97,11 @@ test('description: hook is the first two segments of the whole video, even with 
   const d = youtubeDescription({ timeline: oneSegTimeline, track: 'secplus', notice: 'AVISO' });
   assert.ok(d.startsWith('Único segmento del principio. Segundo segmento de otra escena.'));
 });
+
+test('youtubeTags: video.json topic tags replace the lexicon terms, spaces allowed, deduplicated', () => {
+  const tags = youtubeTags(timeline, 'secplus', ['SILENT', 'PAGER'], ['respuesta a incidentes', 'incident response', 'Security+', 'respuesta a incidentes']);
+  assert.ok(tags.includes('respuesta a incidentes') && tags.includes('incident response'));
+  assert.ok(!tags.includes('SILENT') && !tags.includes('PAGER'), 'no lexicon terms when topics are given');
+  assert.equal(tags.filter((t) => t === 'respuesta a incidentes').length, 1);
+  assert.equal(tags.filter((t) => t === 'Security+').length, 1, 'a topic already among the fixed tags is not repeated');
+});

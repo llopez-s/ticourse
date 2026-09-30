@@ -65,13 +65,17 @@ export function tagsLength(tags) {
   return tags.join(',').length + quoting;
 }
 
-/** Track/exam tags (spec §6.2), then lexicon terms, deduplicated in that order and fit to the 500-char budget. */
-export function youtubeTags(timeline, track, lexiconTerms = []) {
+/**
+ * Track/exam tags (spec §6.2), then the video's own topic tags (video.json "tags") or, without them, its lexicon
+ * terms; deduplicated in that order and fit to the 500-char budget.
+ */
+export function youtubeTags(timeline, track, lexiconTerms = [], topics = null) {
   const fixed = [...new Set([...TRACK_TAGS[track], ...timeline.exam.map((e) => (track === 'gcti' ? e.objective : `objetivo ${e.objective}`))])];
   const seen = new Set(fixed);
   const extra = [];
-  for (const term of lexiconTerms) {
-    if (term.length >= 2 && LEXICON_TAG.test(term) && !seen.has(term)) {
+  const candidates = topics ? topics.map((t) => t.trim()) : lexiconTerms.filter((t) => t.length >= 2 && LEXICON_TAG.test(t));
+  for (const term of candidates) {
+    if (term && !seen.has(term)) {
       seen.add(term);
       extra.push(term);
     }
@@ -109,7 +113,7 @@ function main() {
   if (title.length > TITLE_MAX) errors.push(`title is ${title.length} characters (YouTube max ${TITLE_MAX}): shorten storyboard.title`);
   errors.push(...youtubeChapters(timeline).errors);
   const { lexicon } = loadSources({ storyboard: PATHS.storyboard, narration: PATHS.narration, lexicon: PATHS.lexicon });
-  const tags = youtubeTags(timeline, MANIFEST.track, Object.keys(lexicon));
+  const tags = youtubeTags(timeline, MANIFEST.track, Object.keys(lexicon), MANIFEST.tags ?? null);
   if (tagsLength(tags) > TAGS_MAX_CHARS) errors.push(`tags take ${tagsLength(tags)} characters, quoted (max ${TAGS_MAX_CHARS})`);
   if (!existsSync(PATHS.poster)) errors.push(`no poster at ${PATHS.poster} — run render.mjs`);
   else if (statSync(PATHS.poster).size > THUMB_MAX_BYTES) errors.push(`poster is over 2 MB, YouTube's thumbnail limit`);
