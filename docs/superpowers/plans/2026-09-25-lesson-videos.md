@@ -505,7 +505,7 @@ Las exam cards se listan en el orden de las escenas:
 - **Duración:** Lidia permite hasta 10 minutos; el guion revisado estima ~9:28. No se rellena.
 - **Inserción:** en `src/data/secplus/sp4-part5.ts`, justo después de la tabla «Fase / Objetivo / Error clásico» y
   antes del apartado «Entrenamiento y pruebas», como bloque `youtube`.
-- **Enfoque («la mañana después»):** 4-9 a las 10:00, sala de crisis. La pizarra del caso IR-2026-0147 tiene siete
+- **Enfoque («la mañana después»):** 4-9 a mediodía (12:00), sala de crisis. La pizarra del caso IR-2026-0147 tiene siete
   columnas con una casilla cada una. Las fases que ya pasaron en V1, el SIEM y V2 se repasan con una sola pregunta:
   ¿se podía marcar esa casilla? Así aparece el error central: la contención se dio por cerrada con dos equipos de
   tres, y el que quedó abierto era la estación de administración, «donde viven las llaves». SILENT PAGER propone los atajos en sus mensajes y la narradora
