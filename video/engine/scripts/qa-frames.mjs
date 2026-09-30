@@ -21,6 +21,17 @@ import { COMPOSITION, PATHS, REPO_ROOT, SCRIPTS_DIR, isMainModule } from './lib/
 import { assertCliFlags, bundleVideo, runRemotion } from './lib/remotion.mjs';
 import { VENV_PYTHON } from './tts-chatterbox.mjs';
 
+/**
+ * The folder to hand `remotion render --sequence`, relative to the repo root (the CLI's cwd).
+ * Remotion reads everything after the first "." of the path as an extension and refuses an image
+ * sequence with one, so an absolute path through a dotted folder (a worktree under .claude/) fails.
+ */
+export function sequenceOutDir(outDir, root = REPO_ROOT) {
+  const rel = path.relative(root, outDir);
+  if (!rel || rel.startsWith('..') || path.isAbsolute(rel)) return outDir;
+  return rel.split(path.sep).join('/');
+}
+
 /** Frames worth looking at, with what they show. */
 export function pickFrames(timeline, { scene = null, extra = [] } = {}) {
   const last = timeline.durationInFrames - 1;
@@ -134,7 +145,7 @@ async function main() {
   const bundle = bundleVideo(values['no-bundle-cache'] ? { cache: false } : {});
   try {
     if (supportsFrameLists()) {
-      const res = runRemotion(['render', bundle.dir, COMPOSITION, outDir, '--sequence', `--frames=${frames.join(',')}`, ...common]);
+      const res = runRemotion(['render', bundle.dir, COMPOSITION, sequenceOutDir(outDir), '--sequence', `--frames=${frames.join(',')}`, ...common]);
       if (res.status !== 0) throw new Error(`remotion render failed (exit ${res.status})`);
       for (const f of readdirSync(outDir)) {
         const m = /(\d+)\.jpe?g$/i.exec(f);
