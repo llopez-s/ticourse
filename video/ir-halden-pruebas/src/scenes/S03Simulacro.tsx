@@ -79,7 +79,7 @@ export function S03Simulacro(props: SceneProps) {
   const consoleIn = progress(frame, denied - 14, 14);
   const consoleOut = progress(frame, septiembre - 10, 14, EASE.inOut);
   const barsOut = progress(frame, real - 10, 14, EASE.inOut);
-  const p5Out = progress(frame, both - 10, 14, EASE.inOut);
+  const p5Out = progress(frame, both - 14, 12, EASE.inOut);
 
   // --- The drill: waiting → front → (gone for the console) → SIMULATION → closing column
   const toFront = progress(frame, night - 6, 22, EASE.inOut);
@@ -153,7 +153,7 @@ export function S03Simulacro(props: SceneProps) {
       ) : null}
 
       {/* P6: the table says, the drill does */}
-      {frame >= both - 10 ? <Closing frame={frame} fps={fps} at={both} mesaAt={mesaWord - 6} drillAt={simulacro2 - 6} /> : null}
+      {frame >= both - 2 ? <Closing frame={frame} fps={fps} at={both} mesaAt={mesaWord - 6} drillAt={simulacro2 - 6} /> : null}
     </Stage>
   );
 }
@@ -350,7 +350,9 @@ function NameColumn({ frame, fps, labelAt, nameAt, chipAt, costAt, out }: { fram
 // ---------------------------------------------------------------------------
 
 function Closing({ frame, fps, at, mesaAt, drillAt }: { frame: number; fps: number; at: number; mesaAt: number; drillAt: number }) {
-  const mesaIn = springIn(frame, fps, at - 6, { damping: 16 });
+  const mesaIn = springIn(frame, fps, at + 10, { damping: 16 }); // after the drill has slid past its place
+  // The labels fade in with the table (not at their 0.35 resting opacity the moment the phase mounts).
+  const labelsIn = progress(frame, at + 8, 12);
   const mesaLit = progress(frame, mesaAt, 14) * (1 - 0.5 * progress(frame, drillAt, 14));
   const drillLit = progress(frame, drillAt, 14);
   const { height } = twoWaysSize(MESA_BOTH.w);
@@ -364,7 +366,7 @@ function Closing({ frame, fps, at, mesaAt, drillAt }: { frame: number; fps: numb
         <MesaArt width={MESA_BOTH.w} act={1} glow={mesaLit} dim={0.5 * drillLit * (1 - mesaLit)} frame={frame} />
       </div>
       {cols.map((c) => (
-        <div key={c.name} style={{ position: 'absolute', left: c.left, top: MESA_BOTH.top + height + 14, width: MESA_BOTH.w, textAlign: 'center', fontFamily: FONT.sans, whiteSpace: 'nowrap', opacity: clamp01(0.35 + c.lit) }}>
+        <div key={c.name} style={{ position: 'absolute', left: c.left, top: MESA_BOTH.top + height + 14, width: MESA_BOTH.w, textAlign: 'center', fontFamily: FONT.sans, whiteSpace: 'nowrap', opacity: labelsIn * clamp01(0.35 + c.lit) }}>
           <div style={{ fontSize: 38, fontWeight: 750, color: c.tone }}>{c.name}</div>
           <div style={{ marginTop: 2, fontSize: 56, fontWeight: 850, letterSpacing: -0.6, color: C.textStrong, transform: `scale(${0.94 + 0.06 * c.lit})` }}>{c.line}</div>
         </div>
