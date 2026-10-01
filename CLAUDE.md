@@ -229,6 +229,14 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   passes queue; `RENDER_LOCK=0` skips it); Windows/worktree fixes (bundle rename/remove retries, repo-relative
   qa-frames folder for paths under `.claude`, `CHATTERBOX_PYTHON` to borrow the main checkout's venv, since this
   exFAT drive allows no junctions).
+  **V5b `video/ir-halden-pruebas/`** (sp4m10, Security+, `capsula-yt`, YouTube `vlJ9FRtSIlM`, 3:35, published
+  2026-10-01): tabletop vs simulation and threat hunting, the first capsule made with the §8 order end to end. Lessons:
+  check the validator's arithmetic at design time (one exam card per scene and none in the closing one forced a sixth
+  scene; think prompts ≤ 48 chars); Lidia's real reading lands at ~88 % of `--estimate`; `verify-voice` cannot hear a
+  restart Whisper merges into the next words («Pues… digo… Pues igual» passed as one clean sentence), so after
+  importing, compare the full-recording ASR with each clip and look for non-word speech inside clips; and a
+  `--only` re-import must reuse the full import's gain (`--lufs=<excerpt LUFS + that gain>`), because `--match`
+  measured on one sentence gave it ~1 dB more.
   **Mastering** (Python, venv + `pedalboard pyloudnorm librosa soundfile scipy`): `scripts/master_voice.py`
   on the narrator's WAV *before* `import-recording` (time-aligned EQ/de-ess/compression, no denoise) and
   `scripts/master_mix.py` on the rendered MP4 (generated ambient bed ducked under speech, −14 LUFS,

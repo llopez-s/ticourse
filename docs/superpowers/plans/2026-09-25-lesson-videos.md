@@ -571,8 +571,14 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
 ### V5b · sp4m10 · Cápsula · «Antes del próximo incidente: tabletop, simulation y threat hunting»
 
 > Diseñado con Lidia el 2026-10-01 (rama `video-ir-halden-pruebas`, desde `main` con V4 y V5 ya fusionados). La
-> versión vigente de escenas y guion será `video/ir-halden-pruebas/storyboard.json` + `narration.json`; qué se quedó
+> versión vigente de escenas y guion es `video/ir-halden-pruebas/storyboard.json` + `narration.json`; qué se quedó
 > fuera, en `video/ir-halden-pruebas/out/script-notes.md`.
+>
+> **Producido y publicado el 2026-10-01**: YouTube `vlJ9FRtSIlM`, 3:35, 6 escenas, 4 tarjetas, 1 pregunta, 1 mensaje de
+> SILENT PAGER, voz de Lidia en una sola toma (s04-03 recortada de sus propias tomas: arrastraba un «Pues… digo…»), música
+> de V4 y V5, −14,1 LUFS. En la lección sp4m10, tras el check de threat hunting. Dos frases dicen lo que se grabó: «un plan
+> contra incidentes» y «el atacante» (decisión de Lidia; la serie sigue con «la atacante»). El canon que vale es el de abajo
+> y `docs/superpowers/canon/glass-harbor.md`.
 >
 > **Dos ajustes sobre el diseño aprobado**, porque el validador los rechazaría:
 > - Cuatro tarjetas en cinco escenas obligaban a poner dos en la misma, y `analyzeNarration` admite una por escena y

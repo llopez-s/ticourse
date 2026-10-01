@@ -404,6 +404,13 @@ const sp4m10: Module = {
       },
     },
     {
+      t: 'video',
+      title: 'Antes del próximo incidente: tabletop, simulation y threat hunting',
+      youtube: 'vlJ9FRtSIlM',
+      poster: 'videos/ir-halden-pruebas-poster.png',
+      transcript: 'videos/ir-halden-pruebas-transcript.txt',
+    },
+    {
       t: 'p',
       md: 'Ya sabes conducir el incidente de principio a fin y cerrar el ciclo para que la organización salga mejor de lo que entró. Falta la parte que convierte tu investigación en algo que aguante fuera del SOC: cómo se **adquiere y se preserva** la evidencia sin contaminarla, qué es una cadena de custodia y por qué un **legal hold** manda por encima del calendario de retención, y qué fuente de datos —logs de firewall, de endpoint, del sistema operativo, capturas de red— responde de verdad a cada pregunta de la investigación. Eso es la última lección del Dominio 4.',
     },
