@@ -469,28 +469,27 @@ Las exam cards se listan en el orden de las escenas:
   una cápsula aparte.
 - **sp4m10 V5b (Cápsula): abierta el 2026-10-01, ficha completa abajo.** Tabletop frente a simulation y threat
   hunting, la otra mitad de la lección que V5 dejó fuera.
-- **sp4m8 IAM (Principal).**
-  - Diagramas de secuencia navegador–IdP–SP para SAML, OAuth (autoriza, no autentica) y OIDC.
-  - Demo de fatiga de push MFA en un móvil simulado.
-  - Joiner-mover-leaver y permission creep.
-  - Checkout JIT en el vault de PAM.
-- **s4m3 ACH (Principal).**
-  - La matriz se rellena celda a celda.
-  - Las filas sin diagnosticidad se desvanecen; gana la hipótesis menos inconsistente.
-  - Sensibilidad retirando E4.
-  - Usar el extracto de la lección y no la solución del lab4b.
-- **s2m5 ATT&CK + Pyramid (Cápsula).**
-  - El árbol de procesos EDR de VELVET CICADA se mapea en directo: procedimiento, técnica T1053.005, táctica.
-  - Cada indicador sube por la pirámide.
-  - Requiere el canon de `winhlp.exe` (P4).
-- **s3m5 STIX (Cápsula).**
-  - Decidir si se ingiere un indicador STIX 2.1: `valid_until`, `confidence`, marcado TLP.
-  - Grafo indicator, malware, intrusion-set.
-  - «STIX describe, TAXII transporta».
-- **sp2m7 (Cápsula) «Ataques en los logs».**
-  - Password spraying frente a brute force.
-  - `../` traversal.
-  - Firma de la amplificación DNS en NetFlow.
+- **sp4m8 IAM (Principal): V6, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** Identidad y acceso en
+  Halden del 19 al 28-10: altas, cambios y bajas, SAML, OAuth, MFA y la bóveda de cuentas de servicio.
+- **s2m5 ATT&CK + Pyramid (Cápsula): V7, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** El árbol de
+  procesos del 2-3 en ATT&CK y en la pirámide, con los dos hashes del loader como prueba de su base.
+- **s3m5 STIX (Cápsula): V8, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** El aviso caducado del ISAC:
+  no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
+- **s4m3 ACH (Principal): V9, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** La matriz del extracto de la
+  lección, celda a celda, con supuestos clave, diagnosticidad y sensibilidad; primera aparición de PAPER CRANE.
+- **sp2m7 (Cápsula) «Ataques en los logs»: V10, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** La noche
+  del 20 al 21-10: spraying, traversal y amplificación DNS; primera aparición de RED MARROW.
+
+**Orden propuesto para el resto de la tanda 2** (2026-10-01, pendiente de Lidia): V5b, V6, V7, V8, V9 y V10.
+- V6 sigue la historia de Halden justo después de V5b.
+- Las tres de GCTI van en el orden del curso (S2, S3, S4), así cada una puede remitir a la anterior.
+- V10 va al final: necesita la voz nueva de RED MARROW y un cambio en su lección (fecha e IP).
+- Grabación por parejas, un principal y una cápsula por sesión: V6 con V7, V9 con V8, y V10 con el primero de la tanda 3.
+- Trabajo de motor antes de renderizar V9: un efecto nuevo para las voces de PAPER CRANE (V9) y RED MARROW (V10), porque
+  `adversary_fx.py` solo tiene `machine`, el de los otros tres adversarios.
+- Las decisiones de cada ficha, para aprobarlas en una ronda, y los cambios que proponen a las lecciones y a los
+  registros de canon: `docs/reviews/2026-10-01-fichas-tanda2/decisiones.md`. Las fichas pasaron una revisión de
+  exactitud y canon por campaña y la comprobación de límites del validador; ninguna tiene guion todavía.
 
 ### V5 · sp4m10 · Principal · «Respuesta a incidentes: la mañana después»
 
@@ -659,6 +658,770 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
   «Nunca se conectaron», no «dejaron de enviar»: la lección sp2 ya tiene un servidor de facturación que deja de enviar
   logs (`sp2-part3.ts:441`), y no es este caso. No se culpa a nadie: ni a la suplente por el permiso ni a Sistemas por
   los servidores.
+
+
+### V6 · sp4m8 · Principal · «Identidad y acceso: quién entra y hasta dónde»
+
+> Propuesta del 2026-10-01, pendiente de la aprobación de Lidia. La versión vigente de escenas y guion será
+> `video/iam-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/iam-halden/out/script-notes.md`.
+>
+> Sin ajustes del validador pendientes: las 8 tarjetas, las 2 preguntas y los 3 mensajes están medidos con Node y caben
+> (una tarjeta por escena como mucho, ninguna en el cierre; un mensaje por capítulo como mucho, ninguno en el cierre).
+
+- **Carpeta:** `iam-halden` · perfil `principal-yt` (380–600 s renderizados; objetivo ~9 min, sin rellenar) ·
+  objetivo 4.6 (identity and access management; lo confirma la cabecera de la lección, `sp4-part4.ts:315`) ·
+  adversario SILENT PAGER, tres mensajes interceptados, voz del adversario **ya existe** (la de V1 y V5) · voz
+  `recording/lidia` con `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · música de V4 y V5
+  (`Go On Going - Stayloose.mp3`) · en `video.json`, `"lesson": "sp4m8"`.
+- **Duración:** suma de `s` = **520 s** (11 escenas); renderizado estimado de unos 535–540 s (unos 8:55) con el margen habitual
+  de 15–20 s. Referencia: en V5, 562 s de escenas dieron 8:19 con la grabación a 1,08, así que el techo de 600 s queda
+  lejos. `wordBudget` = `s` × 2,7.
+- **Inserción:** en `src/data/secplus/sp4-part4.ts`, lección sp4m8, entre el check de MFA («password and then a security
+  question answer», bloque `:449–463`) y el callout «Nota de examen: las pistas de IAM son casi siempre literales»
+  (`:464–469`), como bloque `youtube` (`{ t: 'video', title, youtube, poster, transcript }`). Como V1 en sp4m7
+  (`:168–178`), lo precede un párrafo de una línea: «Antes de la nota de examen, júntalo todo en el puerto: quién entra,
+  cómo lo demuestra y hasta dónde llega». El vídeo recorre cuatro de las cinco partes y funciona como síntesis; la nota
+  de examen lo remata. Se fija en la suite `lesson videos` de `src/data/content.test.ts` (como V5 en `:274`).
+- **Laboratorios:** ninguno de la sección ejercita IAM (spl4a Log Hunt clasifica fuentes de datos, spl4b ordena las
+  fases de respuesta, spl4c prioriza vulnerabilidades), así que no hay solución que esconder. Por eso la acción final
+  no es un laboratorio: son las 8 preguntas de la lección.
+- **Etiquetas** (en `video.json`, `"tags"`): identity and access management, IAM, gestión de identidades, SAML, OAuth,
+  OpenID Connect, federación, MFA, MFA fatigue, PAM, just-in-time, permission creep.
+- **Enfoque («la contraseña buena no basta»):** el vídeo arranca en la 01:52 del 4-9, que ya es canon del SIEM y de V5:
+  una cuenta de servicio robada entró en un servidor con su contraseña de verdad, y el servidor abrió. De ahí salen las
+  dos preguntas de todo el objetivo 4.6: ¿quién eres? y ¿qué puedes hacer? El resto es octubre en Halden, después de
+  V5b: la revisión trimestral de accesos (19-10), una jubilación (23-10), cómo entra la plantilla en la web de un socio
+  y cómo lee el calendario la app de un proveedor (sin fecha, como en la lección), una demo hipotética de avisos push en
+  «tu móvil», y el cierre del arco: la mejora de V5 «cuentas de servicio en un gestor de contraseñas con rotación»
+  se cumple el 27-10, con un préstamo de privilegio el 28-10. SILENT PAGER propone tres atajos y la narradora enseña qué
+  se rompería con cada uno. Frase de puente para quien no vio V5: «En septiembre, una cuenta de servicio del puerto
+  entró de madrugada en un servidor. Con su contraseña de verdad.»
+
+**Conceptos (5) y su imagen:**
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | Ciclo de vida (alta, cambio, baja: joiner-mover-leaver). Cada cambio de puesto suma permisos y nadie quita los viejos: eso es permission creep, y se corrige con least privilege y una attestation periódica, en la que cada responsable confirma lo que se queda y se retira lo demás. Quien se va queda deshabilitado el mismo día y se borra después, según la política de retención (deprovisioning) | La acreditación del puerto que abre puertas: cada puesto le suma puertas; en la revisión, su responsable dice cuáles se quedan. Y la taquilla del que se va: se precinta, no se vacía | «Permission creep: least privilege y attestation» · «Baja: deshabilitar el mismo día, borrar después» |
+| 2 | Federación con SAML. Para entrar en la web de un socio con tu cuenta, el socio no te pide nada: te manda a casa, tu casa (el IdP) comprueba quién eres y te da una aserción firmada, para esa web y por unos minutos. El socio se fía de la firma porque las dos organizaciones lo acordaron antes, y nunca ve la contraseña. Si la cuenta se deshabilita en casa, se acaba el acceso fuera. Una vez en casa, muchas webs: SSO, y por eso ese inicio de sesión debe llevar segundo factor (norma de la lección, `:360`; el vídeo no enseña que el IdP de Halden ya lo pida) | Un pase de visita firmado por tu casa: para esa oficina, válido hoy, y la recepción del socio conoce la firma | «Web del socio con tu cuenta: SAML y federation» |
+| 3 | OAuth autoriza y delega: una app recibe un permiso con alcance y caducidad, nunca la contraseña, y se retira sin tocarla. No dice quién eres: para eso está OpenID Connect, encima de OAuth. LDAP es otra cosa: consultar el directorio de casa | La nota para que tu vecina recoja un paquete: le deja recoger ese paquete, no le da tu DNI ni la convierte en ti | «OAuth autoriza y delega; no autentica» |
+| 4 | MFA son tipos distintos de prueba (algo que sabes, que tienes, que eres, dónde estás), no pantallas: contraseña y pregunta secreta son un solo factor. El push se vence por cansancio (MFA fatigue); la llave FIDO2 hay que tocarla en el equipo donde se entra y solo firma para la web de verdad, así que resiste al phishing. El SMS no es la salida: con él no llegan avisos que aprobar, pero se desvía a otro móvil (SIM swapping) o se teclea en una web falsa; solo cambia el ataque | El cajero: la tarjeta la tienes, el PIN lo sabes, y el ladrón necesita dos robos distintos. Cuando vuelve, una tarjeta que en un cajero falso no funciona | «Dos cosas que sabes o que tienes: un solo factor» · «MFA fatigue: llave FIDO2; el SMS solo cambia el ataque» |
+| 5 | PAM. Las credenciales con privilegio viven en una bóveda: nadie las sabe y rotan solas (password vaulting). El privilegio se presta solo durante la ventana aprobada (just-in-time), con una credencial que caduca al acabar (ephemeral credentials); después se retira y la contraseña cambia | El armario de llaves de la garita: nadie se lleva una llave a casa, queda apuntado quién la usa, se presta para el trabajo y al devolverla se cambia la cerradura | «Password vaulting: nadie sabe la clave y rota sola» · «JIT: privilegio solo en la ventana aprobada» |
+
+**Escenas:** once, en cinco capítulos (La contraseña buena · Altas, cambios y bajas · Entrar en casa ajena · Demostrar
+que eres tú · Las llaves maestras). Como en V1, el cierre vive dentro del último capítulo de contenido, así que su
+mensaje va en s10, no en s11.
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «La contraseña buena» | I La contraseña buena | 44 | La ficha de la 01:52 del SIEM, grande: «4-9 · 01:52 · logon `4624` de `svc_tosreport` desde `ADM-WS-07` en `srv-tc-app03`», con un sello verde «contraseña correcta · adelante»; debajo, en rosa, «¿era quien decía ser?». La ficha se atenúa y entra el título «Identidad y acceso», con «IAM · identity and access management» debajo, y la promesa en tres chips: «quién entra · cómo lo demuestra · hasta dónde llega». Dos preguntas grandes, una cada vez: «¿quién eres?» (authentication) y «¿qué puedes hacer?» (authorization). La ruta del vídeo, cuatro paradas con icono: altas y bajas, casa ajena, segundo factor, llaves maestras | La promesa en los primeros 10 s y el puente con V5; identidad frente a permiso · `logon, title, promise, two-q, route` |
+| s02-creep «La acreditación que solo suma» | II Altas, cambios y bajas | 50 | El ciclo en un anillo: alta · cambio · baja (joiner · mover · leaver); se ilumina «cambio» y se atenúa lo demás. «19-10 · revisión trimestral de accesos». La ficha de `c.navarro`: Atención a navieras (2021), Facturación (2023), Comunicación (2025). Su acreditación con 11 puertas: 4 en cian («de su puesto») y 7 en ámbar («de puestos anteriores»); se amplía una, «facturas a navieras · emitir», con la etiqueta «nadie lo decidió». Nombre PERMISSION CREEP. La lista de la revisión: su responsable de Comunicación confirma 4; las 7 sin confirmar se desvanecen con «no confirmado · retirado». Nombres ATTESTATION y LEAST PRIVILEGE | Cada cambio de puesto suma y nadie quita; la revisión periódica retira lo que nadie confirma · `cycle, mover, doors, creep, review, removed` |
+| s03-leaver «Se jubila el viernes» | II | 48 | El anillo, ahora con «baja» iluminada. La ficha de `o.virta`, de Importación (la oficina que trata con aduanas): «se jubila el viernes 23-10». Pregunta para pensar, con dos botones: «borrar» y «deshabilitar». La respuesta por pasos: la acreditación pasa a «deshabilitada · 23-10 · fin de turno»; la taquilla, precintada: «buzón · archivos · registros · se conservan»; «borrar: cuando lo diga la política de retención». «Borrar hoy», tachado: «sin vuelta atrás». Nombre DEPROVISIONING | Deshabilitar el mismo día y borrar después · `leaver, choice, same-day, locker, retention, deprov` · **think** |
+| s04-saml «Un pase firmado por tu casa» | III Entrar en casa ajena | 54 | Diagrama de secuencia con tres carriles: «navegador · personal del puerto», «plataforma aduanera · el socio (SP)» e «IdP · Autoridad Portuaria de Halden» (sin nombres de host). Cada paso se ilumina al compás de la voz y los anteriores se atenúan: abrir la plataforma; «no te conozco: que responda tu casa» y la redirección al IdP; la contraseña, solo en el carril del IdP, con un candado «no sale de casa» (el carril enseña solo «contraseña»: ningún segundo factor en el IdP de Halden en todo el vídeo); el pase: «quién: cuenta del puerto · para: plataforma aduanera · válido: 5 min · firma: IdP de Halden»; el navegador lo lleva al socio, que comprueba la firma contra una línea discontinua «confianza acordada antes» y abre. Nombres SAML (aserción), FEDERATION y SSO («una vez en casa, muchas webs»). Remate: la cuenta de `o.virta` (Importación, usaba esta plataforma), deshabilitada; el IdP ya no firma pases para esa cuenta y el socio dice «acceso denegado» sin tocar nada allí | El socio se fía de la firma de tu casa y nunca ve la contraseña; deshabilitar en casa corta fuera · `open, redirect, home, assertion, verify, federation, dies` |
+| s05-oauth «Una nota para recoger un paquete» | III | 54 | El planificador de atraques de un proveedor externo pide «usuario y contraseña del puerto» para leer el calendario de atraques. Mensaje interceptado. La casilla de contraseña, tachada: «con tu contraseña: correo · archivos · todo · y solo se corta cambiándola». La secuencia OAuth, con el mismo estilo que s04 (app · IdP de Halden · calendario): la app te manda a casa; pantalla de consentimiento «Planificador de atraques quiere: leer el calendario de atraques · Permitir / Rechazar»; a la app le llega un permiso, no la contraseña: `alcance: calendario.leer` · `caduca: 60 min`; lee el calendario (verde) e intenta el correo: «fuera de alcance» (rosa); botón «retirar permiso». Viñeta de la imagen: «autorizo a mi vecina a recoger el paquete de hoy». Nombre OAUTH: «autoriza y delega · no autentica» | Un permiso con alcance y caducidad, sin contraseña, que se retira sin tocarla · `app, crossed, consent, token, scope, revoke, authz` · **intercept** |
+| s06-cual «¿Quién eres o qué puede hacer?» | III | 32 | Tres frases de escenario caen y se enganchan a su nombre, con los iconos de las imágenes: «entrar en la web del socio con tu cuenta» (el pase): SAML; «una app lee tu calendario sin tu contraseña» (la nota): OAuth; «Iniciar sesión con…» (la nota con una ficha de identidad encima): OPENID CONNECT. Debajo, el directorio detrás del IdP: «consultar el directorio de casa: LDAP», que luego se atenúa. Fila final: «SAML: quién eres, para entrar · OAuth: qué puede hacer una app por ti · OIDC: OAuth más quién eres» | Los tres nombres que el examen mezcla a propósito · `saml-q, oauth-q, oidc, ldap, sum` |
+| s07-factors «Tarjeta y PIN» | IV Demostrar que eres tú | 46 | Un inicio de sesión con «contraseña» y «pregunta secreta: ¿cómo se llamaba tu primera mascota?». Mensaje interceptado. Cuatro columnas: algo que sabes (contraseña, PIN, pregunta), algo que tienes (token, app de códigos, llave de seguridad, tarjeta inteligente), algo que eres (huella, cara, iris) y dónde estás (ubicación, red). El cajero: la tarjeta cae en «tienes» y el PIN en «sabes»: «dos robos distintos». La contraseña y la pregunta caen las dos en «sabes»: «una llamada con engaño se lleva las dos · 1 factor». Un token y una app de códigos, las dos en «tienes»: «1 factor». Rótulo MFA: «tipos distintos, no pantallas» | MFA cuenta tipos de prueba, no pasos · `types, atm, two-thefts, same-type, one-factor` · **intercept** |
+| s08-fatigue «Avisos sin parar» | IV | 54 | Un móvil simulado («simulación · sin fecha», reloj 00:47) y una franja: «alguien ya tiene tu contraseña». Avisos que se apilan: «¿Estás iniciando sesión? · Aprobar / Rechazar», contador de 1 a 20 y el pulgar que se acerca a «Aprobar». Nombre MFA FATIGUE · push bombing. Pregunta para pensar. La respuesta en dos columnas: SMS, tachado («se desvía a otro móvil: SIM swapping» · «se teclea en una web falsa»); llave FIDO2 («hay que tocarla, en el equipo donde se entra» · «solo firma para la web de verdad»). La web parecida de V1 s11 (`haldenp0rt.example`; nunca se enseña el host real del IdP): la llave no firma (en voz, «no firma para esa web»). Vuelve la imagen: una tarjeta que en un cajero falso no funciona. Rótulo «resistente al phishing» | El push se vence por cansancio; la llave FIDO2 no tiene nada que aprobar desde lejos y está atada a la web de verdad · `premise, pushes, fatigue, sms, key, origin` · **think** |
+| s09-vault «El armario de llaves» | V Las llaves maestras | 48 | La lista de mejoras de V5 s09 con una fila resaltada: «cuentas de servicio en gestor de contraseñas con rotación · Sistemas · 31-10», y un sello «27-10 · hecho». La imagen: el armario de llaves de la garita, con su registro. La consola de la bóveda: `svc_tosreport`, `svc_edi` «y el resto de cuentas de servicio» entran junto a «administradores del dominio · ya estaban»; columna «¿quién la sabe?»: «nadie»; «rotación: cada 24 h y cada vez que una persona la retira»; registro de accesos. Barra de comparación: «septiembre: hasta que alguien se diera cuenta», con «4-9 · 10:30» en pequeño debajo, frente a «ahora: 24 h como mucho, aunque nadie se dé cuenta». Vuelve la ficha de la 01:52 con `4672 · privilegios especiales` ampliado y «retirados · para informes no hacían falta». Nombres PAM y PASSWORD VAULTING | Las credenciales con privilegio viven en una bóveda: nadie las sabe y rotan solas · `improvement, cabinet, vault, nobody, rotate, before-after, least` |
+| s10-jit «Solo durante la ventana» | V | 52 | Primero, el mensaje interceptado. Después, lo que propone: un reloj de 24 h con «administrador del dominio · fijo» en rosa todo el día, rotulado «sin JIT · lo que propone» (no es el estado del puerto: en Halden los administradores del dominio ya se prestan por ventana, sp4m8q7 y s09). La consola de la bóveda: solicitud de «L. Ferrer · Infraestructura»: «administrador del dominio · motivo: cambio aprobado · ventana: 28-10 · 22:00–23:00»; «aprueba: R. Salas · jefe de sistemas». El préstamo: «credencial válida hasta las 23:00 · sesión grabada · cuenta de administración, separada de la diaria». Cuenta atrás; a las 23:00, «privilegio retirado · contraseña rotada». Una copia de la credencial a las 23:05: «ya no sirve». Vuelve el armario: se presta la llave para el trabajo y al devolverla se cambia la cerradura. Nombres JUST-IN-TIME PERMISSIONS y EPHEMERAL CREDENTIALS | El privilegio existe solo durante la ventana aprobada · `standing, request, approve, checkout, clock, revoked, copy` · **intercept** |
+| s11-recap «Tres reglas» | V | 38 | Tres tarjetas de reglas, una cada vez; tarjeta final Alertópolis: «Ahora te toca: las preguntas de la lección» (sp4m8, 8 preguntas) | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+
+- **Exam cards** (objetivo 4.6), una por escena en s02–s05 y s07–s10; ninguna en s01, s06 ni el cierre:
+  - «Permission creep: least privilege y attestation» (s02, 47)
+  - «Baja: deshabilitar el mismo día, borrar después» (s03, 47)
+  - «Web del socio con tu cuenta: SAML y federation» (s04, 46)
+  - «OAuth autoriza y delega; no autentica» (s05, 37)
+  - «Dos cosas que sabes o que tienes: un solo factor» (s07, 48)
+  - «MFA fatigue: llave FIDO2; el SMS solo cambia el ataque» (s08, 54)
+  - «Password vaulting: nadie sabe la clave y rota sola» (s09, 50)
+  - «JIT: privilegio solo en la ventana aprobada» (s10, 43)
+- **Think prompts** (`holdMs` 4500):
+  - «Se jubila el viernes. ¿Borrar o deshabilitar?» (s03, 45). Respuesta: deshabilitar, y ese mismo día; borrar más
+    tarde, porque el buzón, los archivos y los registros pueden hacer falta y borrar no tiene vuelta atrás.
+  - «Avisos sin parar. ¿Códigos SMS o llave FIDO2?» (s08, 45). Respuesta: la llave, porque hay que tocarla en el equipo
+    donde se entra y solo firma para la web de verdad; el SMS quita los avisos, pero solo cambia el ataque (se desvía o
+    se teclea en una web falsa).
+- **Mensajes interceptados** (SILENT PAGER, uno por capítulo en III, IV y V; ninguno en el cierre):
+  - s05: «Dale tu contraseña a esa app del calendario. Va más rápido.» (59). El error que corrige la narradora: dar la
+    contraseña a una app de terceros. Con ella la app tiene tu cuenta entera y solo se le quita cambiándola; con OAuth
+    recibe un permiso para una sola cosa, que caduca y se retira sin tocar la contraseña.
+  - s07: «¿Contraseña y pregunta secreta? Dos factores. Qué tranquilidad.» (63). El error: contar pantallas en vez de
+    tipos. Las dos son algo que sabes, y una sola llamada con engaño se lleva las dos: un solo factor.
+  - s10: «Admin fijo y listo. Pedir permiso cada vez es un rollo.» (55). El error: dejar el privilegio puesto por
+    comodidad. Un administrador fijo lo es las 24 horas, y su contraseña robada sirve cualquier noche; con JIT el
+    privilegio solo existe durante la ventana aprobada y la credencial caduca al acabar.
+- **Cierre:** tres reglas y una sola tarea.
+  1. Cada cambio de puesto quita además de dar, y quien se va queda deshabilitado ese mismo día.
+  2. Tu contraseña solo la ve tu casa, con un segundo factor de otro tipo: al socio le llega un pase firmado, y a la
+     app, un permiso con límite.
+  3. Nadie guarda las llaves maestras: la bóveda las cambia sola y solo las presta durante la ventana.
+
+  Tarea: las 8 preguntas de la lección sp4m8.
+
+**Se queda fuera** (está en la lección, que quien ve el vídeo ya ha leído, porque va al final):
+- Los cinco modelos de control de acceso (MAC, DAC, RBAC, rule-based, ABAC) y las time-of-day restrictions
+  (`sp4-part4.ts:403–443`; preguntas sp4m8q3 y q4; tarjeta fcp427). Es una taxonomía por «quién decide», y la sirven
+  mejor la tabla, la tarjeta y las preguntas; meterla subía a 6–7 conceptos. El vídeo solo usa least privilege (s02).
+- Contraseñas: longitud frente a complejidad, listas de contraseñas filtradas, sin caducidad forzada, gestores de
+  contraseñas y passwordless (`:447`; pregunta sp4m8q6; tarjeta fcp429).
+- Identity proofing, el primer paso del alta (`:340`); el anillo de s02 dice «alta», pero no lo explica.
+- LDAPS, la interoperabilidad y el riesgo de concentrar todo en un solo inicio de sesión (`:360`, tabla `:363–392`); de
+  SSO solo queda que ese inicio de sesión debe llevar segundo factor (s04, como norma: el IdP de Halden no lo enseña).
+- De MFA: biometría y ubicación salen solo como ejemplos en las columnas de s07; SIM swapping, solo en pantalla y con
+  una frase llana en s08 (`:447`).
+- De PAM: la cuenta de administración separada de la diaria y la grabación de sesión salen solo en pantalla (s10).
+- El párrafo final, puente a la automatización del objetivo 4.7 (`:471–473`).
+
+**Canon nuevo que fija V6** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- **2026-10-19 (lunes): la revisión trimestral de accesos de octubre.** Es la práctica que la pregunta sp4m8q1 ya da
+  como habitual en Halden (cada responsable recibe la lista de su equipo y confirma o retira), así que el vídeo no dice
+  que sea la primera. Caso en pantalla: `c.navarro` (**nueva**), de Comunicación; antes, Atención a navieras (2021) y
+  Facturación (2023). 11 permisos, 4 de su puesto; su responsable confirma los 4 y se retiran los 7 restantes, entre
+  ellos «facturas a navieras · emitir». «Nadie lo decidió»: no se culpa a nadie.
+- **2026-10-23 (viernes): se jubila `o.virta`** (**nuevo**), de Importación (la oficina que trata con aduanas, el
+  *import desk* de `labs-sp2.ts:146`), así que usaba la plataforma aduanera del socio. Su cuenta se deshabilita ese mismo día, al
+  terminar su turno; buzón, archivos y registros se conservan hasta que la política de retención permita borrarlos.
+  Es una baja sin conflicto ni sospecha (el check de la lección, `:345`, usa un despido tras una disputa: el vídeo no).
+- **Federación y OAuth, sin fecha**, como en la lección: el personal entra en la plataforma aduanera del socio con su
+  cuenta del puerto por SAML (`:332`, `:360`, sp4m8q8), con una aserción válida 5 minutos; el planificador de atraques
+  de un proveedor externo lee el calendario de atraques con un permiso `calendario.leer` de 60 minutos (`:396`). Sin
+  nombres de host ni dominio para el IdP o el socio (el registro ya tiene tres dominios públicos en conflicto, §5.2).
+- **La demo de push es hipotética**: «tu móvil», reloj 00:47, sin fecha. No es un hecho del caso. La web falsa es
+  `haldenp0rt.example`, el ejemplo de dominio parecido que ya enseña V1 s11.
+- **2026-10-27 (martes): la mejora de V5 se cumple antes de plazo** («cuentas de servicio en gestor de contraseñas con
+  rotación · Sistemas · 31-10»). Las cuentas de servicio (`svc_tosreport`, `svc_edi` y el resto) entran en la bóveda
+  de Sistemas, que **ya guardaba** las credenciales de administrador del dominio (sp4m8q7 lo da como práctica del
+  puerto). Nadie conoce sus contraseñas; rotan cada 24 h y cada vez que una persona la retira. A `svc_tosreport` se le retiran los
+  privilegios especiales (el `4672` de la 01:52, que el SIEM ya enseña en pantalla): para los informes no hacían falta
+  (**deducción nueva**). La contraseña robada en septiembre sirvió hasta que alguien se dio cuenta y la cambió a mano,
+  el 4-9 a las 10:30 (V5); sin eso habría seguido valiendo. Con la bóveda dura 24 h como mucho, aunque nadie se dé
+  cuenta: la bóveda le pone un límite, no dice que hubiera parado la 01:52.
+- **2026-10-28 (miércoles), 22:00–23:00: un préstamo just-in-time.** L. Ferrer (Infraestructura, ya en el registro) pide
+  ser administrador del dominio para un cambio aprobado, sin número de cambio; aprueba R. Salas (jefe de sistemas, ya en
+  el registro). Credencial válida solo esa hora, sesión grabada, cuenta de administración separada de la diaria. A las
+  23:00 se retira el privilegio y la contraseña rota; una copia a las 23:05 ya no sirve.
+- **Comprobado contra la cronología:** ninguna fecha nueva choca con las del registro ni con las de V5 (11-9, 18-9, 25-9,
+  30-9, 15-10, 31-10), V5b (2-10, 5-10, 8-10, 9-10, 13-10, 15-10, 16-10) y V10 (noche del 20 al 21-10, MFA en el
+  proveedor de identidad · Sistemas · 30-11). Días de la semana comprobados con Node. `c.navarro` y `o.virta` no
+  existen en el repo y no se parecen a las cuentas del password spraying (`a.berg`, `j.solheim`, `m.lund`,
+  `k.nyborg`, `r.haugen`).
+- **El IdP de Halden no enseña segundo factor en ningún momento del vídeo.** El 21-10 solo pedía la contraseña (V10) y
+  la MFA llega el 30-11; V6 no lo contradice ni se adelanta: el segundo factor sale como norma de la lección (s04) y en
+  la demo hipotética del móvil (s07–s08).
+
+**No se toca:**
+- El dosier del jefe de sp4 (la IP del ASN de NULL CIPHER, «GH es una sola operación», la firma «GH») ni quién es
+  GLASS HARBOR.
+- **Ningún contratista** en una baja, en una cuenta que sigue viva o en un privilegio que no caduca, ni la expresión
+  «acceso perpetuo»: es el final de sp5 («un contratista con acceso perpetuo», `sections.ts:125`). Los contratistas de
+  fondo siguen neutros, y el vídeo no usa el ejemplo de horario de obra de la lección.
+- El password spraying del 21-10 (V10, `LOGIN OK user=r.haugen`): es de su ficha. Ningún reloj del vídeo marca las
+  03:xx y la demo de push no tiene fecha.
+- Ningún segundo factor en el IdP de Halden: el carril del IdP de s04 enseña solo «contraseña» (ver «Canon nuevo»).
+- No se dice que el segundo factor, la bóveda o la rotación habrían parado la 01:52: era una cuenta de servicio, sin
+  segundo factor, y la contraseña se usó unas diez horas después del robo.
+- Lucía no sale en ninguna escena de identidad (ni en los pases, ni en la app, ni en el móvil): V5 ya gastó «Despide a
+  Lucía».
+- `svc_edi` sale solo como una cuenta de servicio más, sin nada que la relacione con el aviso de ejemplo del SIEM
+  (`siem/src/data/s04-enrich.ts`).
+- La ruta de salida de los 38 GB, que sigue siendo un hueco abierto.
+- No se culpa a nadie: ni a `c.navarro` ni a sus responsables por los permisos acumulados, ni a quien dio los
+  privilegios especiales a `svc_tosreport`.
+
+### V7 · s2m5 · Cápsula · «Del comando al TTP: ATT&CK y la Pyramid of Pain»
+
+> Propuesta del 2026-10-01, pendiente de la aprobación de Lidia. La versión vigente de escenas y guion será
+> `video/attack-piramide/storyboard.json` + `narration.json`; qué se quedó fuera, en
+> `video/attack-piramide/out/script-notes.md`.
+>
+> Sobre el esbozo del plan (§5): se mantiene el árbol mapeado en directo y cada indicador subiendo por la pirámide. Lo
+> nuevo es cómo trata el choque del hash del registro (§5, punto 1), que resuelve **solo en parte** (nombre, ruta y
+> hash; siguen abiertos el nombre `VC_Loader_v1.dll` del Lab 3B y el punto 11): el `4c81...b3` del árbol y el
+> `9f3a...e1` de E7 salen juntos, como otro binario en el mismo equipo que habla con el mismo dominio, y son la prueba
+> de la base de la pirámide (ver `V7-s2m5-decisiones.md`). No hace falta ningún ajuste por el validador: 4 tarjetas en
+> 6 escenas, una por escena de s02 a s05 y ninguna en el cierre.
+>
+> Revisada el 2026-10-01 con los arreglos de la revisión de exactitud (`revision-gcti.md`, V7 y «Entre fichas» 1):
+> en s05 solo el hash es «la ropa»; las dos compilaciones se dicen con cautela; sub-techniques en pantalla; `certutil`
+> en Tools; la regla recorre toda la cadena.
+
+- **Carpeta:** `attack-piramide` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) ·
+  objetivo GCTI **Intrusion Analysis** (dominio del curso de S2, `src/data/course-gcti.ts:32`, y de todas las
+  preguntas de s2m5) · adversario GLASS VIPER, un mensaje interceptado · voz `recording/lidia` con
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · voz del adversario: **ya existe**, la de V3
+  (`"adversaryVoice": { "voice": "sapi/Microsoft Pablo", "rate": 0, "fx": "machine" }`,
+  `video/diamond-e7/narration.json:6`) · música de V4 y V5 (`Go On Going - Stayloose.mp3`).
+- **`video.json`:** `"profile": "capsula-yt"`, `"track": "gcti"`, `"adversary": "GLASS VIPER"`, `"lesson": "s2m5"`,
+  la música de arriba y `"tags"` para YouTube (MITRE ATT&CK, Pyramid of Pain, TTP, GCTI, threat intelligence).
+- **Ritmo:** `"examTiming": "sentence-end"`; pregunta con `think.holdMs` 4500; mensaje con `intercept.holdMs` 3500.
+- **Duración:** suma de `s` **218 s**; renderizado estimado **~3:55–4:05** (218 s + 15–20 s de márgenes de la
+  tubería + ~8 s de silencio del mensaje y de la pregunta). `wordBudget` a 2,7 palabras/s: 65, 124, 86, 108, 140 y 65.
+- **Inserción:** en `src/data/s2.ts`, lección s2m5, entre el párrafo «Practica la **escalera de abstracción**…»
+  (`:1177-1180`) y el primer check («Given THIS process tree…», `:1181`), como bloque `youtube`:
+  `{ t: 'video', title, youtube: '<id>', poster: 'videos/attack-piramide-poster.png', transcript: 'videos/attack-piramide-transcript.txt' }`.
+  Igual que V3 en s2m3: el vídeo va justo antes de los checks que preguntan por los mismos datos (el hash como la
+  inversión más débil, el comando como procedure). Se fija en la suite `lesson videos` de `src/data/content.test.ts`,
+  junto a los de V3, V4 y V5 (`:270-274`).
+- **Enfoque («dos fotos del mismo equipo»):** después de la alerta de E7 (V3), Meridian reconstruye cómo empezó todo en
+  la estación de ingeniería de propulsión, y el EDR guardaba el árbol de procesos de la mañana del 2 de marzo, el de
+  la lección. Primero se le pone nombre a cada rama con ATT&CK (tactic, technique, procedure) y después cada indicador
+  sube a su peldaño de la pirámide. GLASS VIPER propone el atajo de siempre, bloquear su hash, y la segunda foto del
+  mismo equipo, la del 5 de marzo que ya enseñó V3, le quita la razón: otro binario, con otro hash (la ropa) y otro
+  nombre y otra carpeta (el acento), que habla con el mismo dominio. La salida es la regla de comportamiento de la
+  propia lección. Una frase de puente resume V3 para quien
+  no lo vio: el 5 de marzo, de madrugada, ese equipo llamó a un dominio que nadie conocía.
+- **Lo que se lee no se deletrea:** equipo, rutas, hashes, dominio, nombre de la tarea e identificadores de técnica
+  (`T1053.005`…) van en pantalla; la voz dice qué son («el equipo de ingeniería», «un nombre que imita una
+  actualización de Windows», «la técnica de la tarea programada»). Ninguna excepción. La voz no nombra VELVET CICADA:
+  dice «el atacante» o GLASS VIPER, nombre de seguimiento del implante y de quien lo usa, como en V3.
+
+**Conceptos (2) y su imagen:**
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | La escalera de ATT&CK. La tactic es el porqué del paso (Persistence: poder volver); la technique, el cómo general, que usan muchos (`T1053` Scheduled Task/Job, con su sub-technique `.005` Scheduled Task; la voz dice «la técnica»); la procedure, cómo lo hace exactamente este actor (el comando, con su nombre de tarea disfrazado). Los números de técnica son un idioma común: el mismo número significa lo mismo para tu SOC, tu proveedor y un informe público | La llave escondida. El porqué es volver a entrar en la casa; una manera es dejarse una llave (otra sería una ventana mal cerrada: otra técnica, el mismo porqué); la suya es una copia en la maceta del rellano con una etiqueta que pone «revisión del gas» | «Procedure: el comando exacto de este actor» · «Persistence es una tactic: el porqué, no el cómo» |
+| 2 | La Pyramid of Pain ordena los indicadores por lo que le cuesta al adversario cambiarlos: el hash, abajo del todo (otra compilación y ya es otro); el dominio, algo más arriba; los artefactos, como el nombre de la tarea o la ruta y el nombre del ejecutable, en medio (cambiarlos le cuesta más trabajo); las herramientas, más arriba; los comportamientos (TTPs), en la cima. Decisión práctica: invertir arriba, en una regla de comportamiento que le da igual el binario y su nombre | Reconocer a alguien por la ropa (se la cambia en un minuto), por el acento (le cuesta, pero lo disimula; es la imagen que V3 usó para el patrón del named pipe) o por la forma de andar (tendría que aprender a andar otra vez) | «Pyramid of Pain: cuanto más arriba, más le duele» · «Detecta el comportamiento: sobrevive a recompilar» |
+
+**Escenas:** seis, en tres capítulos (El árbol · La pirámide · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «Un árbol, dos mapas» | I El árbol | 24 | El árbol de procesos de la lección se dibuja rama a rama, atenuado, con la cabecera `ENG-WS-041 · 02-03-2026 · 09:44`. A sus lados se abren dos mapas vacíos: la matriz de ATT&CK (columnas de tácticas) y la pirámide de seis peldaños, en gris. Título. La promesa, en una línea: «ponerle nombre a cada rama · elegir la detección que le duele». El puente, en una tira con la ficha de E7 de V3: «05-03-2026 · 02:13 UTC · beacon a `update-svc-cdn.com` · dominio desconocido» y «después de la alerta: ¿cómo empezó? 02-03» | La promesa en los primeros 10 s (casi tres días con el atacante dentro; qué sabrás hacer; ATT&CK y la Pyramid of Pain) y el puente con V3 · `tree, promise, title, bridge` |
+| s02-escalera «Porqué, cómo y cómo exactamente» | I | 46 | Se amplía la rama `schtasks.exe /create /tn WindowsUpdateCheck /sc onlogon` y el resto del árbol se atenúa; debajo, en llano: «que el programa vuelva a arrancar en cada inicio de sesión». Viñeta de la llave: un rellano, una maceta, una llave con la etiqueta «revisión del gas». Escalera de tres peldaños que se construye al compás de la voz, de arriba abajo: TACTIC `Persistence` («el porqué: poder volver»); «TECHNIQUE · `T1053` Scheduled Task/Job · sub-technique `.005` Scheduled Task» («el cómo · lo usan muchos»; la voz dice «la técnica»), con una ventana entornada atenuada al lado («otra técnica, el mismo porqué»); PROCEDURE, el comando entero («así lo hace este»). Al final se resaltan juntos `WindowsUpdateCheck` y la etiqueta «revisión del gas»: el disfraz es parte de la procedure. La tarjeta, con la escalera ya completa | Tactic, technique y procedure en una sola rama; el comando exacto es la procedure, no la técnica · `zoom-task, key, tactic, technique, other-way, procedure, disguise` |
+| s03-ramas «El resto del árbol» | I | 32 | El árbol entero vuelve y las otras ramas se encienden una a una; la anterior se atenúa al pasar a la siguiente: `powershell.exe -nop -w hidden -enc SQBFAFgAKA...` con «`T1059` Command and Scripting Interpreter · sub-technique `.001` PowerShell» · Execution; `wcssvc.exe -decode a.txt payload.bin` con «`T1140` Deobfuscate/Decode Files or Information» (technique, sin sub-technique) · Defense Evasion, y al lado la cabecera del ejecutable, `OriginalFileName: CertUtil.exe`, con el nombre en disco tachado como disfraz; la línea de la conexión TLS de `winhlp.exe` a `update-svc-cdn.com:443` con «`T1071` Application Layer Protocol · sub-technique `.001` Web Protocols» · Command and Control. Las etiquetas siguen el formato de s02 (technique y, debajo, su sub-technique); la voz dice «técnica». Chip «idioma común»: tres rótulos genéricos (tu SOC, tu proveedor, un informe público) leen el mismo `T1053.005`. Al final, las cuatro tácticas en fila (Execution, Defense Evasion, Persistence, Command and Control) y la tarjeta, con el árbol ya atenuado | Todo el árbol en ATT&CK; los números de técnica son un idioma común; las tácticas son los porqués · `branch-ps, branch-decode, real-name, branch-c2, common, tactics` |
+| s04-piramide «Lo que le duele cambiar» | II La pirámide | 40 | Mensaje interceptado. La pirámide de la lección, de abajo arriba: Hash values · Trivial; IP addresses · Easy; Domain names · Simple; Network/Host artifacts · Annoying; Tools · Challenging; TTPs · Tough. A la izquierda, la viñeta de la persona, alineada con la base, el medio y la cima: la ropa, el acento, la forma de andar. Los indicadores del árbol suben uno a uno a su peldaño y se amplía el que nombra la voz: `4c81...b3` a Hash values; `update-svc-cdn.com` a Domain names; `WindowsUpdateCheck` y la ruta `C:\ProgramData\winhlp.exe` a Host artifacts; `wcssvc.exe (CertUtil)` a Tools; las cuatro etiquetas de técnica (`T1059.001`, `T1140`, `T1053.005`, `T1071.001`) a TTPs, arriba del todo, mientras el dominio de la línea de la conexión se queda en Domain names, como en la lección. Solo IP addresses queda en gris, porque el árbol no trae ninguna IP; la voz no lo comenta, ni dice que falte nada en ningún peldaño. La tarjeta, con la pirámide ya quieta | La pirámide ordena por lo que le cuesta al adversario cambiar cada cosa; cada indicador del árbol en su peldaño (la ruta y el nombre, con el acento); lo que ATT&CK nombra como técnica vive arriba · `pyramid, person, hash-up, domain-up, artifact-up, tool-up, ttp-up` · **intercept** |
+| s05-otra-ropa «Tres días después» | II | 52 | Dos fotos del mismo equipo, lado a lado. Izquierda, «02-03-2026 · 09:44»: `C:\ProgramData\winhlp.exe` · `SHA-256 4c81...b3`. Derecha, «05-03-2026 · 02:11 UTC», las líneas del EDR de V3, solo ruta y hash (sin el campo `signed`): `C:\ProgramData\UpdSvc\updsvc.exe` · `sha256=9f3a...e1`, y debajo `update-svc-cdn.com:443`. Un chip «regla: hash `4c81...b3`» recorre la foto de la derecha y se queda en «0 coincidencias». Tres tonos, al compás de la voz: en ámbar, **solo el hash**, con la etiqueta «la ropa»; en un segundo tono, más apagado, el nombre y la carpeta, con la etiqueta «artefactos: también cambiaron, con más trabajo» (el acento de s04); en cian lo que sigue igual, el dominio, «de momento». En voz, con cautela: «otro binario, que habla con el mismo dominio. Todo apunta a otra compilación del mismo programa», y la imagen: «cambió de ropa, y hasta de acento. Lo que no ha cambiado es la forma de andar» (sin punto y coma en el guion). Pregunta para pensar. La regla de la lección, en grande: «PowerShell lanzado por explorer crea una tarea programada no inventariada». Se prueba sobre la foto del 2 de marzo: la animación recorre la cadena entera, de `explorer.exe` a `powershell.exe`, `wcssvc.exe`, `winhlp.exe` y `schtasks.exe`, y solo entonces salta en la línea de la tarea, `09:44:20`, sin mirar ningún hash; la voz dice «en la cadena que arranca ese PowerShell». En la viñeta de s04 se ilumina la forma de andar, en la cima. La tarjeta, con las fotos ya atenuadas | Otro binario, otro hash: la regla por hash no ve la segunda foto; el nombre y la carpeta también cambiaron, con más trabajo; lo que dura es la regla de comportamiento sobre toda la cadena · `two-photos, zero-hits, ropa, accent, same-domain, rule, chain, retro-hit, walk` · **think** |
+| s06-recap «Tres reglas» | III Para el examen | 24 | Tres tarjetas de reglas; tarjeta final Alertópolis: «Ahora te toca: las preguntas de la lección» (s2m5, 10 preguntas) | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+
+- **Exam cards** (dominio Intrusion Analysis), una por escena de s02 a s05:
+  - «Procedure: el comando exacto de este actor» (s02) (42)
+  - «Persistence es una tactic: el porqué, no el cómo» (s03) (48)
+  - «Pyramid of Pain: cuanto más arriba, más le duele» (s04) (48)
+  - «Detecta el comportamiento: sobrevive a recompilar» (s05) (49)
+- **Think prompt:** «¿Añades el hash nuevo o vigilas la conducta?» (s05) (44). Respuesta: la conducta, porque el hash
+  nuevo caduca con la siguiente compilación, y la regla de comportamiento habría saltado el 2 de marzo sin conocer
+  ningún hash.
+- **Mensaje interceptado** (s04): «Bloquea mi hash. Así ya no me volverás a ver.» (45). El error concreto que la
+  narradora corrige: creer que bloquear el hash lo para. Lo responde en s04 («antes de bloquear nada, mira cuánto le
+  cuesta cambiar eso») y lo remata en s05, con la ironía en el marco: tenía razón a su manera, con esa regla ya no le
+  ves, porque el 5 de marzo lleva otro hash.
+- **Cierre:** tres reglas (el comando exacto es la procedure, la técnica es el cómo y la táctica, el porqué; el hash
+  está en la base de la pirámide y caduca con la siguiente compilación, y los nombres y las rutas, un poco más arriba,
+  también se cambian con algo más de trabajo; invierte arriba, en una regla que no mira ni la ropa ni el acento, sino
+  cómo anda) y una sola tarea: las preguntas de la lección, que además practican lo que el vídeo deja fuera
+  (el heatmap y lo que no sale en la ficha de un grupo).
+
+**Se queda fuera** (lo cuenta la lección y lo preguntan sus preguntas):
+- ATT&CK como mapa de cobertura: el heatmap de las técnicas de tu amenaza prioritaria frente a lo que detectas, y el
+  «technique bingo» (`src/data/s2.ts:1115`, `:1123` y el final de `:1179`; s2m5q4).
+- ATT&CK describe, no predice ni es exhaustivo: que una técnica no salga en la ficha de un grupo no quiere decir que no
+  la use (`:1123`; s2m5q5 y s2m5q10).
+- Emulación y estructura de informes (`:1116-1117`).
+- La diferencia entre technique y sub-technique: sale en pantalla (s02 y s03), pero la voz no la explica y dice
+  «técnica», como la lección (`:1109`).
+- El peldaño IP addresses (el árbol no trae ninguna IP), los ejemplos de la tabla (`:1131-1140`) y el autor de la
+  pirámide, David Bianco (`:1128`). `wcssvc.exe (CertUtil)` sube a Tools en pantalla, sin explicación en voz.
+- El caso del decodificador propio que sustituye a certutil (s2m5q8): el vídeo llega a la misma conclusión con el
+  cambio de binario.
+
+**Canon nuevo que fija V7** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- **El árbol del 2-3 se reconstruye después de E7.** Tras la alerta del 2026-03-05 a las 02:13 UTC (V3), Meridian
+  reconstruye en el EDR de `ENG-WS-041` cómo empezó todo; el árbol de s2m5 es el de la mañana del 2026-03-02
+  (cabecera `09:44`, sin zona, como s2m1). Nadie vio ni bloqueó nada el 2-3, lo que encaja con V3, que presenta
+  `update-svc-cdn.com` como dominio desconocido en E7 (`video/diamond-e7/narration.json:21`;
+  `video/diamond-e7/src/scenes/S01Hook.tsx:286`). La reconstrucción no lleva hora.
+- **Lectura del caso (no algo que el vídeo demuestre): `4c81...b3` y `9f3a...e1` son dos compilaciones del mismo
+  loader** en el mismo equipo: `C:\ProgramData\winhlp.exe` con `4c81...b3` el 2-3 (s2m5, `src/data/s2.ts:1165`) y
+  `C:\ProgramData\UpdSvc\updsvc.exe` con `9f3a...e1` el 5-3 a las 02:11:47Z (V3,
+  `video/diamond-e7/src/data/s03-victim.ts:25-32`; E7 y s3m2). Loader e implante son el mismo objeto: «implante GLASS
+  VIPER (stage-1 loader)» (`src/data/s2.ts:576`) y «es el implante GLASS VIPER, un loader» en V3
+  (`video/diamond-e7/narration.json:85`). En pantalla y en voz, V7 solo enseña otro binario que habla con el mismo
+  dominio, `update-svc-cdn.com`, y la voz lo dice con cautela («todo apunta a otra compilación del mismo programa»):
+  la prueba fuerte, el PDB, es del dosier de BROKEN CHAIN, y el imphash y el ssdeep llegan en s3m2. Entre las dos
+  fotos el binario se sustituyó; no se dice cómo ni cuál se compiló antes (el `9f3a2c...e1` de s3m2 tiene compile
+  time 2026-02-19, `src/data/s3.ts:331`). Ni la tarea ni el named pipe del 5-3 salen.
+- **Solo para el registro (nunca en pantalla ni en voz, porque el Lab 3B no se destripa):** `9f3a...e1` lleva el PDB
+  (`src/data/s3.ts:332`), así que es la variante 1 del Lab 3B, «la del incidente de Meridian»
+  (`src/data/labs.ts:775,819`); `4c81...b3` queda con rasgos estáticos sin definir y **no** es la variante 2, que no
+  es de Meridian (`src/data/labs.ts:826`). Con esto V7 resuelve **solo en parte** el punto 1 de §5: el nombre, la ruta
+  y el hash; siguen abiertos el nombre `VC_Loader_v1.dll` que el Lab 3B da a esa variante (§5, punto 1) y cuántas
+  muestras comparten PDB (§5, punto 11).
+- **Dos pruebas de la analista, no hechos del caso** (posteriores a E7, sin fecha): la regla por el hash `4c81...b3`
+  sobre la telemetría del 5-3 da 0 coincidencias; la regla de comportamiento de la lección sobre la del 2-3 salta en
+  la línea de la tarea, `09:44:20` (`src/data/s2.ts:81`). No se dice si el SOC las despliega ni quién.
+
+**No se toca:**
+- El dosier de BROKEN CHAIN (`src/data/course-gcti.ts:40`): ni el PDB en ninguna forma, ni cuántas muestras hay, ni
+  que los TTPs se repitan en sus playbooks, ni «VELVET CICADA ya tiene cara técnica». Los dos binarios son del
+  mismo equipo, no de varias víctimas.
+- Lab 3A, Lab 3B y el final de la campaña (registro §4): nada en pantalla ni en voz. La nota sobre las variantes del
+  Lab 3B de «Canon nuevo» es solo para el registro.
+- Las víctimas de s2m4 (`src/data/s2.ts:871-883`): no se usan, porque su vector y su ruta (`C:\Users\..\winhlp.exe`)
+  chocan con la cadena de s2m1 (registro §5, punto 4).
+- Quién abrió el adjunto (registro §5, punto 5): ni nombre ni puesto; la voz dice que «se abre el adjunto».
+- El intervalo del beacon (registro §5, punto 3) y el campo `signed` (punto 2): ni se dicen ni se enseñan.
+- lab2a y lab2c: el vídeo habla solo en ATT&CK (Persistence, nunca la fase Installation de la Kill Chain) y no
+  clasifica nada en Courses of Action (ni la búsqueda del hash ni la regla).
+- El peldaño IP addresses se queda en gris porque el árbol de la lección no trae ninguna IP. La IP del C2
+  (`185.220.x.x`) no se añade desde E7: no forma parte de este árbol, y la voz no da ninguna razón al respecto.
+- No se culpa a nadie de Meridian: ni a quien abrió el adjunto ni al SOC por no verlo el 2-3.
+
+### V8 · s3m5 · Cápsula · «¿Bloqueo este dominio? Indicadores, STIX y TAXII»
+
+> Propuesta del 2026-10-01, pendiente de la aprobación de Lidia. La versión vigente de escenas y guion será
+> `video/stix-isac/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/stix-isac/out/script-notes.md`.
+>
+> **Un aviso por el validador:** la pregunta para pensar tiene 48 caracteres, justo el máximo de `analyzeNarration`.
+> Si se retoca, no puede crecer.
+
+- **Carpeta:** `stix-isac` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) · dominio del
+  curso **Collection** (S3 · Fuentes de colección: las tarjetas llevan `"objective": "Collection"` y la insignia dice
+  «GCTI») · adversario HOLLOW LANTERN, un mensaje interceptado, con la voz que ya existe de V4
+  (`"adversaryVoice": { "voice": "sapi/Microsoft Pablo", "rate": 0, "fx": "machine" }`) · voz `recording/lidia` con
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · música de V4 y V5 (`Go On Going - Stayloose.mp3`) ·
+  `video.json`: `"track": "gcti"`, `"lesson": "s3m5"`, `"adversary": "HOLLOW LANTERN"`.
+- **Duración:** suma de `s` = **218 s** (`wordBudget` total de unas 588 palabras, a 2,7 por segundo); renderizado
+  estimado, **unos 240 s (4:00)**, sumando la pausa de la pregunta (4,5 s), la del mensaje (3,5 s) y los márgenes de la tubería. El
+  techo del perfil es 260 s y V4 acabó 100 s por encima de su suma: el guion no pasa del presupuesto de palabras de
+  ninguna escena.
+- **Inserción:** en `src/data/s3.ts`, lección s3m5, después del segundo check del apartado STIX/TAXII («Your TIP polled
+  a collection on the ISAC server…», que termina en `:1107`) y antes del encabezado «YARA en 60 segundos» (`:1108`),
+  como bloque `youtube` (`{ t: 'video', title, youtube, poster, transcript }`). Cierra la mitad STIX/TAXII de la
+  lección y deja YARA para el Lab 3B. Se fija en la suite `lesson videos` de `src/data/content.test.ts`, junto a los
+  otros tres (`:270-274`). No va entre `:1053` y `:1055`: ese párrafo acaba en dos puntos que presentan el JSON.
+- **Laboratorios:** ninguno de S3 ejercita STIX ni TAXII. `lab3a` (Pivot Hunt): ni un nombre suyo ni una pista.
+  `lab3b` (YARA Forge): queda fuera con YARA. `lab3c` (CMF Builder) tiene la categoría «ISAC / peers»: el vídeo enseña
+  un indicador que llega de un ISAC, pero nunca plantea qué fuente responde a qué pregunta.
+- **Lo que se lee no se deletrea:** la voz dice «el dominio», «el ISAC», «el loader», «el grupo que sigues»; el
+  dominio, la IP, el identificador del ISAC y los nombres GLASS VIPER y VELVET CICADA van solo en pantalla. Tampoco
+  se leen los nombres de campo (`valid_until` es «la fecha de caducidad»). La confianza se dice «70 sobre 100», nunca
+  como porcentaje ni como probabilidad.
+- **Lo que se decide es este aviso, no el dominio:** la voz habla siempre de «este aviso» y nunca dice que el dominio
+  no se bloquee, porque el indicador propio de Meridian para ese dominio (`s5.ts:600-606`) sigue vigente el 2-7. El
+  botón «Bloquear» late en la tarjeta del objeto que entra, nunca en el nodo del dominio.
+- **Etiquetas propuestas** (`"tags"` de `video.json`): «STIX», «TAXII», «indicadores de compromiso», «IOC»,
+  «inteligencia de amenazas», «threat intelligence», «ISAC», «TLP», «GCTI», «CTI».
+- **Enfoque («un aviso con fecha de caducidad»):** el caso de la propia lección, con sus datos tal cual. El 2026-07-02
+  (el «hoy» de `s3.ts:1076`) llega a la plataforma de inteligencia de Meridian el indicador STIX 2.1 que el ISAC
+  aeroespacial creó el 2026-03-11 para `cdn-sync-status.example`, válido hasta el 2026-06-25 (`s3.ts:1059-1072`). La
+  tentación es el botón de bloquear; el vídeo enseña a leerlo antes: qué trae, qué significa su fecha, qué hacer con
+  él, cómo se guarda con su contexto y por dónde ha llegado. Recoge lo que V4 dejó para esta lección (la edad de los
+  indicadores, `video/pivot-infra/out/script-notes.md`). HOLLOW LANTERN, el equipo de infraestructura del adversario,
+  presume de haber tirado ese dominio hace meses: la narradora le da la razón en el dato y se la quita en la
+  conclusión. Una frase sitúa a quien no ha visto nada: eres la analista de inteligencia de Meridian, una aeroespacial
+  a la que un grupo lleva meses atacando; hasta ahora lo seguías sobre todo con tus datos, y hoy te llega un aviso de
+  fuera, en STIX (el ISAC ya era fuente de avisos en el CMF de Meridian, `s3.ts:73`).
+
+**Conceptos (3) y su imagen:**
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | Un indicador que llega se lee antes de meterlo en ningún sitio: quién lo dice (la fuente), cuánto se fía (confianza, 70 sobre 100), con quién se puede compartir (la marca TLP) y hasta cuándo vale (`valid_until`). Los indicadores envejecen porque los dominios y las IP cambian de manos. Si el aviso ha caducado, no va al bloqueo a ciegas: sirve para buscar hacia atrás en tus registros (retro-hunt), y cuanto antes, porque esa búsqueda solo llega hasta donde llega lo que guardas. Y si tus datos lo ven vivo hoy, manda tu evidencia, no la fecha de otro | El aviso de los vecinos sobre el número de un timador: quién avisa, cuánto se fía, a quién se lo puedes contar y hasta cuándo vale. Un número que se da de baja acaba siendo de otra persona; tu registro de llamadas sí te dice si te llamó cuando era suyo | «Listo para ingerir: patrón, validez, confianza y fuente» · «valid_until vencido: buscar hacia atrás, no bloquear» |
+| 2 | STIX guarda el contexto como un grafo: las relaciones (que también son objetos y viajan con el dato) unen el indicador al malware y el malware al intrusion set. Dicen qué significa un acierto y qué hacer después. El mismo indicador de dos fuentes no se guarda dos veces: se fusiona y conserva las dos | Un número apuntado en un pósit frente al mismo número en tu agenda: con nombre, de qué lo conoces y quién te lo pasó. Si lo tienes dos veces, fusionas los contactos | «Relaciones STIX: el contexto viaja con el dato» |
+| 3 | STIX describe: es el lenguaje, lo que se cuenta y con qué contexto, marca TLP incluida. TAXII transporta: el servidor guarda colecciones y el cliente pasa a consultarlas (pull) | La carta y el correo. La colección es el apartado de correos del ISAC, adonde tu plataforma pasa a recoger | «STIX describe; TAXII transporta» |
+
+**Escenas:** seis, en tres capítulos (Leer el aviso · Contexto y transporte · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «Un aviso y un botón» | I Leer el aviso | 24 | La plataforma de inteligencia (TIP) de Meridian, con la fecha «02-07-2026». Entra un objeto nuevo, remitente «ISAC aeroespacial», con `cdn-sync-status.example`; en su tarjeta (no en el dominio) late un botón «Bloquear»; lo demás, atenuado. Título «¿Bloqueo este dominio? Indicadores, STIX y TAXII» antes de los 10 s. Tres chips de la promesa: «su fecha · su contexto · cómo llega». Tira de contexto: «Meridian Dynamics · aeroespacial · meses en el punto de mira» y, debajo, el puente: «hasta ahora: sobre todo tus datos · hoy: un aviso de fuera, en STIX» | La promesa: decidir si un indicador que llega entra en tus sistemas; contexto para quien no vio V3 ni V4 · `tip, incoming, block, title, promise, bridge` |
+| s02-lectura «Lo que trae el aviso» | I | 42 | El JSON de la lección, tal cual (`s3.ts:1059-1072`), con la cabecera «Indicador STIX 2.1 · ISAC aeroespacial». Se amplía un campo cada vez y se atenúa el resto: `pattern` con `cdn-sync-status.example`; `created_by_ref` `identity--aero-isac-share-0001`, rotulado «quién lo dice: el ISAC»; `confidence: 70`, rotulado «70 sobre 100»; `object_marking_refs` `tlp-amber-strict`, rotulado «solo dentro de Meridian». A la derecha, la nota de los vecinos se rellena al mismo compás: «número de un timador · avisa: la asociación · se fían: bastante · no lo cuentes fuera de casa». Después, `valid_until: 2026-06-25` junto a un calendario con «hoy · 02-07-2026», y la nota añade «vale hasta el 25 de junio». Con la comparación ya hecha y el calendario atenuado, la tarjeta; se va antes de la pregunta para pensar | Un IOC útil trae su contexto: fuente, confianza, marca y validez; los indicadores caducan porque la infraestructura cambia de manos · `json, pattern, source, confidence, tlp, context, until, today` · **think** |
+| s03-caducado «Caducado para bloquear» | I | 44 | Respuesta: en la tarjeta del objeto entrante, «bloquear este aviso» se tacha y «mirar atrás» se marca. En la nota de los vecinos, el número puede pasar a otra dueña (el icono de una clínica) y el candado cae sobre ella: «a ciegas, castigas a quien lo herede». Mensaje interceptado. Respuesta: la revalidación que se ve es solo el passive DNS, la fila de s3m4 `198.51.100.84 · last seen 2026-04-18 11:31:55`, ampliada y con «nada después»; debajo, la regla «si lo ves vivo hoy, manda tu evidencia». La búsqueda, sobre un registro de llamadas que corre hacia atrás: una línea de tiempo del 27-02 (registro del dominio) al 02-07 con su tramo visto (27-02 a 18-04) sombreado y las dos barras de retención del CMF de Meridian (`s3.ts:68-69`): «EDR · 90 días · desde el 03-04», que alcanza el final del tramo, y «proxy · 30 días · desde el 02-06 · ya no llega», en gris. Rótulo: «retro-hunt · hasta donde llegue lo que guardas». Sin resultados en pantalla. La tarjeta llega al final, con las barras ya atenuadas | Este aviso caducado no va al bloqueo a ciegas: se busca hacia atrás, y ya, porque la búsqueda vale lo que dure lo que guardas; la evidencia propia manda sobre la fecha ajena · `strike, reassigned, dns-last, own-evidence, retention, retro-hunt` · **intercept** |
+| s04-grafo «Un pósit o un contacto» | II Contexto y transporte | 46 | En pantalla: «¿y si aparece en tus registros?». A la izquierda, un pósit con `cdn-sync-status.example`, solo. A la derecha, el mismo dominio como nodo en la plataforma de Meridian, con dos relaciones que se encienden por turnos: `indicator` «indicates» `malware · loader GLASS VIPER`; `intrusion-set · VELVET CICADA` «uses» ese malware. Chip práctico: «si aparece: busca el loader en ese equipo». Sobre una arista, «relationship · también es un objeto STIX». Después, el objeto del ISAC entra por un lado y se funde con el nodo (el icono de fusionar contactos); quedan dos fuentes: «incidente propio · correo del 02-03» e «ISAC aeroespacial · 11-03 · confianza 70 · caducado» | Las relaciones dicen qué significa un acierto y qué hacer; un indicador, un solo nodo con todas sus fuentes · `postit, graph, indicates, uses, action, relationship, merge, sources` |
+| s05-taxii «La carta y el correo» | II | 36 | Una carta y su sobre: dentro, el JSON de s02 en miniatura con el rótulo «STIX · qué se cuenta y cómo»; el sobre, «TAXII · cómo llega». El servidor TAXII del ISAC, con una fila de apartados de correos (las colecciones). La plataforma de Meridian pasa a recoger: «consulta (pull) · 02-07 · primera vez: llega todo lo que había», y entre los sobres sale el del 11-03. La marca `tlp-amber-strict` se ilumina dentro de la carta, no en el sobre | STIX es el lenguaje y lleva el contexto y la marca; TAXII es el transporte: colecciones que el cliente consulta · `letter, envelope, collection, pull, backlog, marking, mnemonic` |
+| s06-recap «Tres reglas» | III Para el examen | 26 | Tres tarjetas de reglas, cada una con su imagen en miniatura (la nota de los vecinos, la agenda, la carta); tarjeta final Alertópolis: «Ahora te toca: las preguntas de la lección» (s3m5, 10 preguntas) | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+
+- **Exam cards** (dominio Collection), una por escena de s02 a s05:
+  - «Listo para ingerir: patrón, validez, confianza y fuente» (s02, 55 caracteres; sale después del calendario y antes
+    de la pregunta)
+  - «valid_until vencido: buscar hacia atrás, no bloquear» (s03, 52)
+  - «Relaciones STIX: el contexto viaja con el dato» (s04, 46)
+  - «STIX describe; TAXII transporta» (s05, 31)
+- **Think prompt:** «Caducó hace una semana. ¿Bloqueas o miras atrás?» (s02, 48 caracteres; `holdMs` 4500). s03 abre con la
+  respuesta: este aviso no va al bloqueo, se mira atrás, porque el ISAC ya no responde de él y bloquear a ciegas puede
+  castigar a quien herede el dominio (`s3.ts:1076`). La voz: «lo que hizo con él puede seguir en tus registros, hasta
+  donde llegue lo que guardas; por eso se busca ya». Es el momento de examen de la escena: la búsqueda hacia atrás vale
+  lo que dure lo que guardas (proxy 30 días, EDR 90, en el CMF de `s3.ts:68-69`).
+- **Mensaje interceptado** (s03, capítulo I, `holdMs` 3500):
+  «Ese dominio lo tiré hace meses. Bloquéalo, si te hace ilusión.» (62 caracteres). El error concreto: que un indicador caducado ya no sirve para nada, como si solo sirviera
+  para bloquear. La narradora le da la razón en el dato (el passive DNS no lo ve desde el 18 de abril, y por eso este
+  aviso no va al bloqueo) y se la quita en la conclusión: lo que hizo con ese dominio puede seguir en tus registros,
+  hasta donde llegue lo que guardas, y se busca hacia atrás ya.
+  Mantiene su voz de V4 (tutea, frases cortas, ironía) y no contradice sus tres mensajes publicados; encaja con V4 s08
+  («queda quemado y el actor pasa al siguiente»).
+- **Cierre:** tres reglas y una sola tarea.
+  1. Antes de meter un aviso en el bloqueo, lee su fecha: si ha caducado, busca hacia atrás, y cuanto antes.
+  2. Un indicador, un solo nodo: con sus relaciones y todas sus fuentes.
+  3. No confundas la carta con el correo: STIX describe, TAXII transporta.
+
+  Tarea: las preguntas de la lección (s3m5, 10 preguntas). No se manda al Lab 3B porque el vídeo no enseña YARA.
+
+**Se queda fuera** (y dónde está):
+- **YARA entera:** la anatomía `meta`/`strings`/`condition` y las condiciones combinadas (`s3.ts:1108-1148`, preguntas
+  s3m5q4 y s3m5q5) y el Lab 3B. Es la otra mitad de la lección; si hace falta, otra cápsula (backlog).
+- **La tabla TLP completa y el «fumble» de TLP:** s3m4 (`s3.ts:807-830`). Aquí solo sale la marca del objeto,
+  AMBER+STRICT, en una frase.
+- **A qué cola se manda cada indicador** según su confianza y su fuente (`s3.ts:1076`), y el reparto por destino
+  (dominios al proxy, hashes al EDR), que es de S5 (`s5.ts:622`).
+- **Los demás objetos STIX** de la lista (`threat-actor`, `campaign`, `attack-pattern`, `s3.ts:1043`); campaign frente
+  a intrusion set y la relación `attributed-to` son de S4 (`s4.ts:1003-1043`).
+- **Los channels de TAXII** (publicación y suscripción, pregunta s3m5q6): TAXII 2.1 reserva el nombre pero no los
+  define. El vídeo solo enseña colecciones.
+- **La deuda del SOC y las listas de 500.000 entradas** (`s3.ts:1038,1076`): se quedan en una imagen (la clínica), sin
+  cifra.
+- **El caso «caducado pero sigue activo»** (s3m5q8): una línea en s03; el detalle, en la pregunta.
+- **Los resultados de la búsqueda hacia atrás:** no se enseñan (ver «No se toca»).
+
+**Canon nuevo que fija V8** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- **2026-07-02 (jueves), sin hora: el «hoy» de la lección** (`s3.ts:1076`), que el registro todavía no apunta. Ese
+  día la plataforma de inteligencia de Meridian consulta **por primera vez** la colección TAXII del ISAC aeroespacial
+  (pull) y se trae todo lo que había, entre ello el indicador del 2026-03-11 (`s3.ts:1063`). Así se explica que un
+  indicador de marzo llegue en julio. El ISAC ya mandaba avisos antes por otra vía (es fuente del CMF de Meridian,
+  `s3.ts:73`, y de la prueba E4 de s4m3, `s4.ts:431-432`); por TAXII, solo desde el 2-7. La colección no tiene nombre
+  en pantalla. Nada de la cronología del registro
+  ocurre después, salvo los rangos abiertos (la actividad del Cluster-B, de abril de 2026 hasta hoy, en `s4.ts:732`).
+- **La revalidación del 2026-07-02:** el passive DNS de `cdn-sync-status.example` sigue acabando en la fila de s3m4,
+  `198.51.100.84 · last seen 2026-04-18 11:31:55` (`s3.ts:776`): nada después. Cuadra con el mensaje de HOLLOW
+  LANTERN. La revalidación que se ve es solo esa; el WHOIS no sale.
+- **Límite de lo que puede decir la voz (WHOIS):** el registro no caduca hasta el 2027-02-27 (`s3.ts:765`), así que
+  el 2-7 el dominio sigue a nombre del servicio de privacidad. La voz solo dice que **puede** cambiar de manos, y
+  castiga «a quien lo herede», nunca «a quien lo tenga ahora».
+- **La búsqueda hacia atrás:** ventana desde el 2026-02-27, el día en que se registró el dominio (`s3.ts:763`), con
+  las retenciones del CMF de Meridian (`s3.ts:68-69`): el EDR guarda 90 días (desde el 2026-04-03, así que alcanza el
+  final del tramo visto, hasta el 18-4) y el proxy 30 (desde el 2026-06-02: ya no llega). El correo y el DNS interno
+  no llevan barra, porque el CMF no da su retención. Sin resultados en pantalla.
+- **El grafo de la plataforma de Meridian:** `cdn-sync-status.example` «indicates» `malware · loader GLASS VIPER`
+  (el dominio entregó el loader en el correo del 2026-03-02, `s2.ts:68-83`); `intrusion-set · VELVET CICADA` «uses»
+  ese malware. Es el ejemplo de la lección (`s3.ts:1048`) con el sentido que marca STIX 2.1: el intrusion set usa el
+  malware («used-by» no es un tipo de relación). En S3 el loader ya se llama «GLASS VIPER stage-1» (`s3.ts:62,326`) y
+  el grupo, VELVET CICADA (`s3.ts:310`). Solo nombres: ni hash, ni ruta, ni fechas de validez del registro propio.
+- **Tras la fusión, dos fuentes en el mismo nodo:** «incidente propio · correo del 02-03» e «ISAC aeroespacial ·
+  11-03 · confianza 70 · caducado». La del ISAC conserva sus fechas; la propia no enseña ninguna.
+- **HOLLOW LANTERN «tiró» el dominio hace meses** (su palabra, sin fecha): encaja con el passive DNS y con V4 s08.
+- **No se toca:** el dosier de DEEP WELL (certificados y `kazuo.tanji@` que llevan a una sola organización): el grafo
+  no incluye el C2, el certificado ni el correo de registro. Ningún nombre del Lab 3A. De S4, ni el intrusion set STIX
+  de GLASS VIPER (`s4.ts:1013-1021`, `first_seen` 2025-11-03) ni la campaña «PO-REVISION phishing wave» ni
+  `attributed-to`. De S5, ni el indicador propio de Meridian para este dominio (`s5.ts:596-607`: del 18-4, válido
+  hasta el 18-7) ni la ola de phishing del 18-4 (`s5.ts:47-58`): por eso no se enseñan resultados de la búsqueda ni
+  fechas del registro propio, y la voz no dice que Meridian no lo esté bloqueando. No se culpa a nadie: ni a RR. HH.
+  por el correo del 2-3 ni al ISAC por la fecha de caducidad.
+
+### V9 · s4m3 · Principal · «ACH: gana la hipótesis que no puedes tumbar»
+
+> Propuesta del 2026-10-01, pendiente de la aprobación de Lidia. La versión vigente de escenas y guion será
+> `video/ach-matriz/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/ach-matriz/out/script-notes.md`.
+>
+> Sobre el esbozo del plan (§5): se mantiene todo (matriz celda a celda, la fila sin diagnosticidad que se apaga, gana la
+> menos inconsistente, sensibilidad retirando E4) y se usa el extracto de la lección (`src/data/s4.ts:421-437`), no la
+> solución del Lab 4B. Lo nuevo: de las técnicas estructuradas entran dos, Key Assumptions Check y Devil's Advocacy, y
+> la primera aparición de PAPER CRANE. No hace falta ningún ajuste por el validador: 7 tarjetas en 10 escenas, como
+> mucho una por escena y ninguna en el cierre; 3 mensajes en tres capítulos distintos.
+
+- **Carpeta:** `ach-matriz` · perfil `principal-yt` (380–600 s renderizados) · objetivo GCTI **Analysis** (dominio del
+  curso de S4, `src/data/course-gcti.ts:70`, y de todas las preguntas de s4m3); las tarjetas llevan
+  `"objective": "Analysis"` e insignia «GCTI» · adversario **PAPER CRANE** (`src/data/course-gcti.ts:74-76`), primera
+  aparición en pantalla, tres mensajes interceptados · voz `recording/lidia` con
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · voz del adversario: **voz nueva del adversario, efecto por
+  decidir** (hoy el motor solo trae el efecto `machine`, `video/engine/scripts/lib/adversary.mjs:5`, el de SILENT
+  PAGER, GLASS VIPER y HOLLOW LANTERN) · música de V4 y V5 (`Go On Going - Stayloose.mp3`).
+- **`video.json`:** `"profile": "principal-yt"`, `"track": "gcti"`, `"adversary": "PAPER CRANE"`, `"lesson": "s4m3"`,
+  la música de arriba y `"tags"` para YouTube (ACH, analysis of competing hypotheses, análisis de hipótesis en
+  competencia, structured analytic techniques, key assumptions check, diagnosticity, threat intelligence, GCTI).
+- **Ritmo:** `"examTiming": "sentence-end"`; preguntas con `think.holdMs` 4500; mensajes con `intercept.holdMs` 3500–3800.
+  En s08 el mensaje abre la escena y la pregunta llega dos segmentos después (el validador no deja los dos en el mismo
+  segmento).
+- **Duración:** suma de `s` **458 s**; renderizado estimado **~8:00–8:20** (458 s + 15–20 s de márgenes de la tubería
+  + ~20 s de silencio de los tres mensajes y las dos preguntas). Es una estimación: V4 (400 s de escenas) salió en
+  8:08 y V5 (562 s) en 8:19. No se rellena. `wordBudget` a 2,7 palabras/s: 97, 113, 135, 124, 162, 124, 135, 151, 113
+  y 81.
+- **Inserción:** en `src/data/s4.ts`, lección s4m3, después del cuarto check («Evidence that is consistent with every
+  hypothesis in the matrix:», `:488-502`) y antes del callout de campaña «Campaña» que manda al Lab 4B (`:503`),
+  como bloque `youtube`:
+  `{ t: 'video', title: 'ACH: gana la hipótesis que no puedes tumbar', youtube: '<id>', poster: 'videos/ach-matriz-poster.png', transcript: 'videos/ach-matriz-transcript.txt' }`.
+  Igual que V4 en s3m3: el orden queda lección, checks, vídeo y laboratorio, porque el vídeo resume la lección entera
+  (técnicas, pasos, matriz y sensibilidad) y termina mandando al Lab 4B. La alternativa de V3 en s2m3, antes de los
+  checks, se descarta por eso mismo: aquí los checks repasan la matriz, y el vídeo va más allá. Se fija en la suite `lesson videos` de
+  `src/data/content.test.ts`, junto a los de V3, V4 y V5 (`:270-274`).
+- **Enfoque («todo encaja»):** la reunión de análisis de Meridian, la de la misión 4 (`src/data/labs.ts:149`). La sala
+  ya tiene respuesta: espionaje, porque las cuatro pruebas encajan. El CISO pregunta qué busca el intruso, porque de eso
+  depende qué se protege primero. El vídeo no le lleva la contraria a la sala: le enseña a ganarse esa respuesta.
+  Primero saca a la luz lo que todos dan por hecho (que no hay otra explicación y que las pruebas son lo que parecen);
+  después pone las tres hipótesis de la lección a competir en su matriz, celda a celda; la fila del phishing se apaga
+  porque vale para las tres; gana la que menos choca; y al final se quita la prueba más fuerte, E4, para ver si la
+  conclusión se sostiene. PAPER CRANE sale por primera vez y no defiende ninguna hipótesis: empuja atajos de método
+  (fiarse de todo, contar lo que encaja, tirarlo todo en cuanto una prueba falla), y la narradora enseña qué se rompe
+  con cada uno. La conclusión es provisional: cuatro pruebas de un extracto; la matriz completa es el Lab 4B.
+- **Laboratorios:** el Lab 4B ya ejercita ACH (penalización L=1 del ranking). El vídeo aporta el porqué (refutar en
+  vez de confirmar, diagnosticidad, sensibilidad) y la demo sobre las 12 celdas del extracto de la lección, con las
+  valoraciones de la lección. Nunca enseña las otras cuatro pruebas del laboratorio, sus valoraciones, sus notas ni su
+  mecánica (24 celdas y comparar con la solución experta, `src/data/labs.ts:862-930`). Del Lab 4A (sesgos,
+  `src/data/labs.ts:447-499`) no sale ninguna de sus ocho frases en la sala.
+- **Lo que se lee no se deletrea:** el vídeo casi no tiene identificadores; las etiquetas E1–E4 y H1–H3 y el texto de
+  cada fila van en pantalla, y la voz dice qué son («la entrada por phishing», «seis meses sin cobrar nada», «un
+  certificado que se repite en una campaña de espionaje»). La voz dice «el intruso»; el nombre VELVET CICADA solo sale en
+  el título de la matriz, como en la lección.
+- **Se queda fuera:**
+  - What-If Analysis y brainstorming estructurado: solo como fichas en pantalla en s02 (`src/data/s4.ts:382-383`).
+  - La lista de los ocho pasos de ACH (`src/data/s4.ts:393-404`): el vídeo recorre 1, 2, 3, 4, 6, 7 y 8; el 5 (refinar
+    y eliminar) queda dentro de s07.
+  - Cómo se expresa la confianza (la escala de ICD 203 y la diferencia entre probabilidad y confianza): s5m2
+    (`src/data/s5.ts:294`, `:335`). La nota de s09 dice «moderada» y una tira aparte, fuera de la nota, remite ahí.
+  - Qué evidencia es barata de falsificar y la tabla de false flags: s4m5 (`src/data/s4.ts:1060-1075`).
+  - Los sesgos y las falacias concretas: s4m1 y s4m2 (en s02 solo asoman, tenues, dos nombres de sesgo).
+  - La matriz completa de ocho pruebas: Lab 4B.
+
+**Conceptos (4) y su imagen:**
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | Técnicas estructuradas: el razonamiento sale de la cabeza a algo que otros pueden revisar, porque los sesgos no se quitan con fuerza de voluntad. Devil's Advocacy: alguien defiende a propósito la postura contraria. Key Assumptions Check: escribes lo que das por hecho y le preguntas «¿y si es falso?» | Palparte el bolsillo antes de salir de casa: das por hecho que llevas el móvil y la cartera. Vuelve en s08, cuando se retoma el segundo supuesto (sin llaves: la llave ya es el certificado en V4 y la persistencia en V7) | «Devil's Advocacy: alguien defiende la postura contraria» · «Key Assumptions Check: ¿y si este supuesto falla?» |
+| 2 | ACH: todas las hipótesis primero, con el equipo, y se intenta tumbar cada una; cada prueba contra cada hipótesis (C, I o N). Gana la menos inconsistente, no la más confirmada: una sola inconsistencia sólida basta para descartar | El yogur que falta en la nevera y tres sospechosos: tu compañera de piso, tu hermano, que vino de visita, y el perro. No buscas quién pudo, sino quién no pudo. El perro tiene cinco cosas a favor y una en contra: no sabe abrir la nevera | «ACH: primero todas las hipótesis, luego la evidencia» · «Gana la menos inconsistente, no la más confirmada» |
+| 3 | Diagnosticidad: una prueba vale por lo que separa, no por lo llamativa. La que encaja con todas las hipótesis no mueve nada (E1, la entrada por phishing) | En la misma cocina, la nota «tenía hambre», que se pega a los tres sospechosos a la vez y no aparta a ninguno | «Diagnosticity: si encaja con todas, no discrimina» |
+| 4 | Sensibilidad e informe: qué prueba, si fuera falsa, cambiaría la conclusión; se quita y se vuelve a contar. Si aguanta, la conclusión es robusta; si depende de ella, baja la confianza. El informe lleva la ganadora, su confianza, las descartadas con su porqué y la prueba que hay que vigilar | La conclusión como una mesa sobre sus patas: quitas una y miras si sigue en pie. Un taburete de una sola pata se cae. Vuelve en miniatura en el informe y en el cierre | «Sensitivity: ¿qué prueba, si cae, cambia la conclusión?» · «Informe: ganadora, confianza y descartadas con su porqué» |
+
+Los conceptos 2 y 3 comparten la cocina del yogur a propósito: es la misma escena con otro detalle, no una imagen nueva.
+
+**Escenas:** diez, en cinco capítulos (Todo encaja · Hipótesis en competencia · Lo que discrimina · ¿Y si una prueba
+miente? · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «Todo encaja» | I Todo encaja | 36 | La reunión de análisis de Meridian. La pizarra con cuatro notas, las pruebas del extracto en corto («entrada por spearphishing», «6 meses sin cifrar ni extorsionar», «exfiltración selectiva de diseños de propulsión», «certificado TLS compartido con una campaña de espionaje que reportó el ISAC») y en el centro «ESPIONAJE», rodeado, con «todo encaja» debajo; junto a cada nota, la palabra «encaja» (nunca un visto; la letra C no sale hasta la leyenda de s05). Título antes de los 10 s. La promesa en tres iconos: una lista con una interrogación (lo que das por hecho), una cuadrícula (la matriz) y una mesa (la prueba que la sostiene). Tira con la pregunta del CISO: «¿Qué busca el intruso?» y debajo «de eso depende qué se protege primero» | Que todo encaje no demuestra nada. La promesa: poner tus hipótesis a competir con ACH y saber qué prueba sostiene tu conclusión · `room, fits, title, promise, ciso, stakes` |
+| s02-fuera «Sácalo de la cabeza» | I | 42 | Una cabeza de perfil con ideas que se enredan; asoman, tenues, «confirmation bias» y «anchoring». Las ideas salen y se ordenan en una hoja: STRUCTURED ANALYTIC TECHNIQUES. Cinco fichas (Key Assumptions Check, Devil's Advocacy, What-If Analysis, brainstorming estructurado, ACH); se amplía Devil's Advocacy y el resto se atenúa. En la sala, alguien del equipo recibe una ficha «abogada del diablo · defiende lo contrario» y escribe en la pizarra «¿y si es un rescate?» | Los sesgos no se quitan con fuerza de voluntad: el razonamiento se saca a una estructura que otros revisan. Devil's Advocacy · `head, paper, sats, devil, contrary` |
+| s03-supuestos «Lo que das por hecho» | I | 50 | Mensaje interceptado. Ficha de PAPER CRANE: «célula de engaño · siembra pistas falsas». La hoja KEY ASSUMPTIONS CHECK se escribe a mano con dos supuestos: «1 · no hay otra explicación» y «2 · las pruebas son lo que parecen». Junto a cada uno aparece «¿y si no?» y se abre: el 1 deja tres huecos de hipótesis vacíos; el 2, una mesa pequeña con la etiqueta «lo comprobamos al final». La analogía: en la puerta de casa, una mano se palpa el bolsillo buscando el móvil y la cartera | Lo que nadie dice en voz alta es lo primero que se comprueba: se escribe y se le pregunta «¿y si es falso?». Key Assumptions Check · `crane, sheet, assume-1, assume-2, pocket, kac` · **intercept** |
+| s04-hipotesis «Todas a la vez» | II Hipótesis en competencia | 46 | El nombre ANALYSIS OF COMPETING HYPOTHESES y «Richards Heuer». La cocina: falta un yogur en la nevera y hay tres sospechosos en silueta (la compañera de piso, el hermano de visita y el perro); sobre cada uno, «¿pudo?» se convierte en «¿no pudo?». Vuelta a Meridian: los tres huecos de s03 se llenan con las hipótesis de la lección, H1 espionaje estatal-industrial, H2 ransomware o crimen financiero y H3 hacktivismo o insider, con iconos genéricos (nunca una persona de la plantilla). Una tira: «primero todas, con el equipo; después, las pruebas» | ACH: todas las hipótesis a la vez y se intenta tumbar cada una; no se busca lo que confirma a tu favorita · `ach, heuer, fridge, suspects, refute, hypotheses, all-first` |
+| s05-matriz «Celda a celda» | II | 60 | **Demo:** la matriz de la lección (`src/data/s4.ts:421-434`), con su título «Extracto de matriz ACH · VELVET CICADA (ficticio)». Columnas H1–H3 y filas E1–E4 con su texto; leyenda «C = encaja · I = choca · N = no dice nada». Se rellena por filas; la celda que explica la voz se amplía y el resto se atenúa. E1 (spearphishing): C, C, C. E2 (6 meses, cero cifrado o extorsión): C, I, N, con la I de H2 resaltada y la nota «el ransomware cobra rápido». E3 y E4 entran más deprisa: C, I, I. Matriz completa, todavía sin recuentos ni columna de diagnosticidad. Pregunta para pensar, con las filas E1 y E2 resaltadas | Cada prueba contra cada hipótesis; una I es la prueba chocando con la hipótesis · `grid, legend, row-e1, row-e2, rows-e3e4, full` · **think** |
+| s06-diagnosticidad «La pista que vale para todos» | III Lo que discrimina | 46 | La respuesta: se resalta E2. La fila E1 se vuelve gris y se desvanece; en la columna de la derecha aparece «NULA» en E1 y «ALTA» en E2, E3 y E4, como en la lección. Vuelve la cocina: la nota «tenía hambre» se pega a la vez a los tres sospechosos y no aparta a ninguno. Nombre: DIAGNOSTICITY. El contraste de la lección en dos líneas: «usa phishing: vale para las tres» frente a «nada de cobrar en seis meses: choca con el dinero». La tarjeta entra cuando ya no hay que leer la matriz | Una prueba vale por lo que separa, no por lo llamativa; la que encaja con todas no mueve nada · `answer, fade-e1, hungry, high-rows, diagnosticity` |
+| s07-inconsistente «Gana la que no puedes tumbar» | III | 50 | Mensaje interceptado. Bajo la matriz, una cuenta de C por columna (4, 1, 1) que se tacha; debajo, la de I, la fila «Inconsistencias» de la lección: 0, 3, 2. H1 se enmarca: «la menos inconsistente». La cocina: el perro con cinco notas a favor («le encanta el yogur», «estaba en casa», «tenía hambre», «pone cara de culpable», «hay pelos en la cocina») y una en contra, en rojo: «no sabe abrir la nevera»; el perro sale de la fila. Una tira: «nadie demuestra una hipótesis; se descartan las demás» | Se cuenta lo que tumba, no lo que encaja; una inconsistencia sólida basta; la ganadora no es «la demostrada». Aquí las dos cuentas dan H1, y la voz avisa de que eso engaña (la C de E1 suma para las tres); el perro enseña dónde no coinciden · `count-c, count-i, least, dog, lethal, not-proven` · **intercept** |
+| s08-sensibilidad «Quita una pata» | IV ¿Y si una prueba miente? | 56 | Mensaje interceptado. Vuelve la hoja de s03 con el supuesto 2 resaltado y, un instante, la mano que se palpa el bolsillo. En la fila E4, la etiqueta «strong link» y una nota: «justo lo que alguien podría plantar» (sin decir quién ni si pasó). Pregunta para pensar. La conclusión como tablero de mesa sobre tres patas, E2, E3 y E4 (E1 no es pata: no sostiene nada). Se quita la pata E4: la fila se atenúa, la cuenta pasa a 0, 2, 1 y la mesa sigue en pie. Contraste: un taburete de una sola pata, «solo E4», que se cae, con «baja la confianza». Nombre: SENSITIVITY ANALYSIS | Qué prueba, si fuera falsa, cambia la conclusión, y se vigila. Aquí aguanta sin E4 gracias a E2 y E3: conclusión robusta. Si dependiera solo de E4, bajaría la confianza · `assume-2, strong-link, pull-e4, recount, stands, stool, sensitivity` · **intercept** · **think** |
+| s09-informe «Lo que llega al CISO» | IV | 42 | Una nota de una página se escribe línea a línea: «Juicio: H1, la menos inconsistente (extracto de 4 pruebas)» · «Confianza: moderada · 4 pruebas de un extracto; aguanta sin E4» · «Descartadas: H2 (E2, E3, E4) · H3 (E3, E4)» · «Vigilar: E4». La mesa de s08, en miniatura en una esquina: «se apoya en E2 y E3». Sello «provisional» (nunca «caso cerrado»). Fuera de la nota, dos tiras aparte: «cómo se dice la confianza: s5m2» y «la matriz completa, en el Lab 4B» | El informe lleva la conclusión, su confianza, las alternativas descartadas con su porqué y la prueba que hay que vigilar · `memo, verdict, confidence, discarded, watch, provisional` |
+| s10-recap «Tres reglas» | V Para el examen | 30 | Tres tarjetas de reglas con sus iconos (lista con interrogación, cuadrícula, mesa); tarjeta final Alertópolis: «Ahora te toca: Lab 4B» | Reflejos · `recap, rule-1, rule-2, rule-3, lab4b, endcard` |
+
+- **Exam cards** (dominio Analysis), una por escena en s02, s03, s04, s06, s07, s08 y s09 (ninguna en s01, en la demo
+  de la matriz de s05 ni en el cierre):
+  - «Devil's Advocacy: alguien defiende la postura contraria» (s02, 55)
+  - «Key Assumptions Check: ¿y si este supuesto falla?» (s03, 49)
+  - «ACH: primero todas las hipótesis, luego la evidencia» (s04, 52)
+  - «Diagnosticity: si encaja con todas, no discrimina» (s06, 49)
+  - «Gana la menos inconsistente, no la más confirmada» (s07, 49)
+  - «Sensitivity: ¿qué prueba, si cae, cambia la conclusión?» (s08, 55)
+  - «Informe: ganadora, confianza y descartadas con su porqué» (s09, 56)
+- **Think prompts:**
+  - «¿Qué pesa más: el phishing o los seis meses?» (s05, 44). Respuesta en s06: los seis meses, porque el phishing
+    vale para las tres hipótesis y seis meses sin cobrar nada chocan con el crimen financiero.
+  - «Sin el certificado, ¿cambia la ganadora?» (s08, 40). Respuesta: no; E2 y E3 tumban a H2, y E3 tumba a H3: la cuenta queda en 0, 2 y 1
+    (E2 frente a H3 es N, `src/data/s4.ts:429`).
+- **Mensajes interceptados** (PAPER CRANE; tutea, dos frases cortas, ironía; empuja atajos de método, nunca una
+  hipótesis, y no confiesa nada):
+  - s03 (cap. I): «Fíate de lo que ves, analista. Las pruebas nunca mienten.» (57). El error: tomar las pruebas por lo
+    que parecen. La narradora: eso es justo lo que le conviene que pienses a quien siembra pistas falsas; «las pruebas
+    son lo que parecen» es un supuesto, y los supuestos se escriben y se comprueban.
+  - s07 (cap. III): «Cuenta las que te dan la razón. La que más sume, gana.» (54). El error: contar lo que encaja. La
+    narradora: lo que encaja suma para varias hipótesis a la vez (la C de E1 cuenta para las tres); lo que decide es lo
+    que tumba, y una sola inconsistencia sólida basta, como la nevera para el perro.
+  - s08 (cap. IV): «Si una prueba es falsa, se te cae todo. Empieza de cero.» (56). El error: todo o nada ante una
+    prueba dudosa. La narradora: antes te pedía que te fiaras de todo y ahora de nada, y las dos cosas le vienen bien;
+    lo que toca es medir: quitas esa prueba, vuelves a contar y miras si la conclusión sigue en pie.
+- **Cierre:** tres reglas (antes de pesar pruebas, escribe lo que das por hecho y pon todas las hipótesis en la mesa;
+  cuenta lo que tumba, no lo que encaja: gana la menos inconsistente; quita la prueba más fuerte y mira si tu
+  conclusión sigue en pie) y una sola tarea: el Lab 4B, la matriz completa.
+
+**Canon nuevo que fija V9** (nada de esto estaba en los datos del curso; todo va sin fecha ni hora, así que no se
+ordena contra la cronología del registro ni choca con ella; lo posterior debe respetarlo):
+- **La reunión de análisis se ve por primera vez.** Es la de la misión 4 (`src/data/labs.ts:149`), sin fecha. En la
+  pizarra, las cuatro pruebas del extracto de la lección, tal cual (`src/data/s4.ts:428-432`), y «ESPIONAJE» como la idea
+  que la sala ya daba por buena. No es un fallo de nadie: es lo normal antes de un Key Assumptions Check.
+- **El CISO** (sin nombre, `src/data/labs.ts:57`) pregunta qué busca el intruso para decidir qué proteger primero.
+- **La abogada del diablo:** alguien del equipo, sin nombre, recibe ese papel y defiende H2 («¿y si es un rescate?»).
+  Es su papel, no un error suyo; no «pierde».
+- **La hoja de Key Assumptions Check** con dos supuestos: «no hay otra explicación» y «las pruebas son lo que parecen».
+- **La nota al CISO:** juicio provisional (H1, la menos inconsistente con las cuatro pruebas del extracto), confianza
+  «moderada · 4 pruebas de un extracto; aguanta sin E4», descartadas H2 (E2, E3, E4) y H3 (E3, E4), y vigilar E4. No es el informe final del caso,
+  el que lee el consejo «el lunes» (`src/data/labs.ts:187,1144`).
+- **PAPER CRANE en pantalla por primera vez:** sus tres mensajes pasan a ser canon de su voz (tutea, frases cortas,
+  ironía; atajos de método, nunca una hipótesis; nunca confiesa haber plantado nada). Su ficha en pantalla repite solo
+  lo que ya dice la sección: «célula de engaño · siembra pistas falsas» (`src/data/course-gcti.ts:74-76`).
+- Los sospechosos del yogur son de la analogía, no del canon de Meridian.
+
+**No se toca:**
+- **El dosier de HALL OF MIRRORS** (`src/data/course-gcti.ts:78`): nada de strings en cirílico, horarios falsos ni «PAPER
+  CRANE las plantó»; tampoco «espionaje industrial sistemático», «las alternativas se desmoronan» ni «caso cerrado».
+  H1 sale la menos inconsistente porque así lo dice la lección (`src/data/s4.ts:441`), siempre como provisional y con
+  cuatro pruebas. De E4 solo se dice lo que dice la lección: que es el tipo de prueba que un actor podría plantar; ni
+  quién, ni si pasó, ni cómo.
+- **El Lab 4B** (`src/data/labs.ts:862-930`): solo las cuatro filas del extracto con las valoraciones de la lección (E3
+  contra H3 es I en la lección y N en el laboratorio: manda la lección). Nunca sus otras cuatro pruebas (loader propio,
+  horario UTC+8, silencio público, exfiltración lenta en bloques pequeños), sus notas ni su mecánica.
+- **El horario UTC+8:** fuera del vídeo. Es la prueba estrella de baja diagnosticidad del Lab 4B (`src/data/labs.ts:907`),
+  una frase del Lab 4A (`:481`) y roza los «horarios falsos» del dosier; s4m3 no lo trae. El ejemplo de diagnosticidad
+  nula es E1, el de la lección.
+- **El Lab 4A** (`src/data/labs.ts:447-499`): ninguna de sus ocho frases.
+- **E4 no se identifica con el certificado de V3 y V4** (`CN=updatesvc`): sería fijar que el ISAC lo vio en una campaña
+  de espionaje, tocar la tercera IP del certificado (hueco 15 del registro) y rozar el dosier de DEEP WELL (kazuo, «una
+  sola organización»). La fila se queda como la escribe la lección.
+- **Cluster-A y Cluster-B** siguen separados: el vídeo no habla de clusters (`src/data/s4.ts:722-737`).
+- Nada del Lab 3A, del Lab 3B ni del final de la campaña.
+- **«6 meses»** sale tal cual en la lección y hereda el hueco 8 del registro (duración de la operación); el vídeo no
+  pone fechas.
+- No se culpa a nadie: ni a la sala por su primera idea ni a quien hace de abogada del diablo. H3 incluye «insider»
+  porque es una hipótesis de la lección, con un icono genérico, nunca alguien de la plantilla.
+
+### V10 · sp2m7 · Cápsula · «Ataques en los logs: spraying, traversal y amplificación DNS»
+
+> Propuesta del 2026-10-01, pendiente de la aprobación de Lidia. La versión vigente de escenas y guion será
+> `video/logs-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/logs-halden/out/script-notes.md`.
+>
+> **Un ajuste que no pide el validador sino el canon:** el registro de la lección fecha el password spraying el 4-9,
+> la misma noche del caso de sp4, y lo lanza desde una IP que no es de documentación. El vídeo lo pasa a la noche del 20
+> al 21-10 con las mismas cuentas y horas, desde `192.0.2.157`, y propone aparte cambiar en la lección la fecha y la IP,
+> a la vez. Motivos y alternativas, en `V10-sp2m7-decisiones.md`.
+>
+> **Revisada el 2026-10-01** (exactitud y canon, `revision-secplus.md`): MFA con responsable y fecha, el 403 explicado,
+> IP de documentación, promesa antes de los 12 s y la guardia de madrugada en s05.
+
+- **Carpeta:** `logs-halden` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) ·
+  objetivo **2.4** (indicators of malicious activity; confirmado en la cabecera de la lección,
+  `src/data/secplus/sp2-part4.ts:5`) · adversario **RED MARROW** (sección sp2, `src/data/secplus/sections.ts:63-68`),
+  dos mensajes interceptados, su primera aparición en pantalla · voz `recording/lidia` con
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · voz del adversario: **voz nueva del adversario, efecto por
+  decidir** (propuesta: `sapi/Microsoft Laura`, ya instalada, con un preset nuevo «teléfono», voz de llamada en banda
+  estrecha y sin el anillo de `machine`; hoy `video/engine/scripts/adversary_fx.py` solo tiene `machine`. Si la voz fija
+  o no el género de RED MARROW es una pregunta para Lidia, en decisiones) · música de V4 y V5
+  (`Go On Going - Stayloose.mp3`).
+- **Efectos (`sfx`):** los automáticos del motor (mensaje, tarjetas, capítulos) y cuatro momentos: `zero` («check»),
+  `served` («error»), `full` («alarm»), `second-lock` («lock»).
+- **Duración:** suma de `s` **220 s**; renderizado estimado **unos 240 s (4:00)**, con los márgenes de la tubería y las dos
+  voces del adversario. Dentro de 190–260. No se rellena. La suma no predice bien el renderizado (V5 salió a 0,89 veces su
+  suma y V4 a 1,22), así que el primer borrador se mide por los dos lados: si se acerca a 190 s, se alargan s02 o s05, las
+  de leer registros; si pasa de 255 s, se recorta s05.
+- **Inserción:** en `src/data/secplus/sp2-part4.ts`, lección sp2m7, entre el check del password spraying (las 900
+  cuentas, bloque de las líneas 121–135) y el párrafo final «Ya sabes leer un log o una gráfica y ponerle nombre al
+  ataque…» (línea 136), como bloque `youtube`. Ese párrafo remata el vídeo casi palabra por palabra. Se fija en la suite
+  `lesson videos` de `src/data/content.test.ts`. El check de justo antes cuenta otra noche parecida (900 cuentas, sin
+  acierto): la voz no enlaza las dos.
+- **Enfoque («tres rastros de una noche»):** miércoles 21-10, revisión de la mañana en el SOC. La cola trae tres cosas
+  de la noche, y cada una deja una **forma** distinta en su registro: un origen que prueba muchas cuentas, una URL con
+  puntos y barras, y un chorro de respuestas DNS que nadie pidió. El vídeo lee cada registro (evidencia), le pone nombre
+  (interpretación) y decide qué hacer (regla). Es lo que pide la lección: «el examen describe un síntoma y espera que
+  nombres el ataque» (`sp2-part4.ts:22`). RED MARROW firma los dos primeros con consejos de amigo que son mentira; el
+  tercero no lo firma nadie, porque en un ataque reflejado quien lo lanza no aparece en tus registros. La caída del
+  portal ya la atendió la guardia de madrugada: tras V5 y V5b hay quien mira de noche, y el vídeo no repite «nadie
+  mira». No hace falta frase de puente: el vídeo no continúa ningún otro.
+
+**Conceptos (3) y su imagen:**
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | Password spraying frente a brute force: mira la forma, no el volumen. Un solo origen contra muchas cuentas, un intento en cada una, a ritmo lento, y ningún bloqueo de cuenta (account lockout), porque está hecho para no llegar al umbral. Contra cualquier ataque de contraseña, lo más eficaz es MFA; además, lista de contraseñas prohibidas y bloqueo por origen, no por cuenta | Un bloque de pisos. Un manojo de llaves en una sola puerta, que se bloquea al quinto intento, frente a una sola llave muy corriente probada una vez en cada puerta, sin que ninguna salte. MFA es el segundo cerrojo: la llave gira y la puerta pide además algo que solo tú tienes (dibujado como el móvil o una llave física; nunca la palabra «código») | «Spraying: pocas contraseñas, muchas cuentas, sin lockout» · «Contra ataques de contraseña, lo más eficaz: MFA» |
+| 2 | Directory traversal: secuencias `../` (o su versión codificada, `%2e%2e%2f`) en un parámetro de ruta para salir de la carpeta permitida. El código y los bytes de la respuesta dicen si se lo llevó. No es inyección (no hay comillas ni `OR 1=1`). Defensa: resolver la ruta completa (canonicalizar) y comprobar que sigue dentro de la carpeta; nunca filtrar solo el texto | La ventanilla de un archivo. El empleado saca documentos de un solo armario, y la nota del pedido dice «sal del armario, sube cuatro plantas y tráeme la lista de usuarios de la portería». La versión codificada es la misma nota escrita en clave | «Directory traversal: canonicalizar y confinar la ruta» |
+| 3 | DDoS reflejado y amplificado (DNS amplification): respuestas DNS grandes que llegan de cientos de servidores legítimos a preguntas que tu servidor nunca hizo. Reflected, porque alguien preguntó con tu dirección falsificada; amplified, porque la pregunta es pequeña y la respuesta enorme. Las dos etiquetas valen a la vez. No es DNS poisoning, que te cambia a dónde vas. Se para antes de tu enlace (filtrado en el proveedor, servicio anti-DDoS) y en origen, cerrando los resolvers abiertos | Pedidos a domicilio que nadie hizo: alguien llama a cientos de restaurantes, pide el menú más grande y da tu dirección. Llamada corta, pedido enorme, y el que llamó nunca aparece en tu puerta. La calle se atasca antes de tu portal | «Respuestas DNS que nunca pediste: reflected y amplified» |
+
+**Escenas:** seis, en tres capítulos (Una llave, muchas puertas · La URL y la tubería · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «Tres rastros de una noche» | I Una llave, muchas puertas | 22 | La cola del SOC, «21-10 · 08:00 · revisión de la mañana», con tres filas en orden de hora, todas a la vez y a media luz, un icono cada una: una llave («03:10 · fallos de inicio de sesión · 1 origen · proveedor de identidad»), una carpeta («04:26 · peticiones con `../` · `hpa-portal-web-01`») y una tubería («05:40 · DNS entrante masivo · `hpa-portal-web-01`»). La primera frase habla de la cola entera («Tres rastros de esta noche en el puerto, y cada ataque deja una forma distinta en su registro»); al acabarla, título «Ataques en los logs» (hacia los 8 s, siempre antes de los 12) y la promesa en tres chips: «la forma · el nombre · qué hacer». Después, las tres filas se encienden juntas en una sola frase y el resto se atenúa | La promesa en los primeros 10 s: tres registros de una noche; al acabar, nombrar cada ataque por la forma que deja y decidir qué hacer · `queue, title, promise, rows` |
+| s02-spray «Una llave en todas las puertas» | I | 46 | Se amplía la fila de la llave: el registro del proveedor de identidad («IdP de Halden») con las cinco líneas de la lección (`sp2-part4.ts:65-69`), fechadas `2026-10-21` y con origen `192.0.2.157`; la línea del OK queda atenuada para s03. Dónde mirar, por pasos: la columna `user` (cambia en cada línea), la columna `src` (siempre `192.0.2.157`), la hora (unos 40 s entre intentos). Resumen debajo: «180 cuentas · 1 intento por cuenta · 03:10–05:06 · cuentas bloqueadas: 0», con el 0 a 60 px. Nota pequeña: «este registro no guarda qué contraseña se probó». La imagen: un bloque de pisos; a la izquierda, un manojo de llaves en una sola puerta que se bloquea al quinto intento («umbral: 5 fallos»; contraejemplo, no pasó); a la derecha, una sola llave que prueba cada puerta una vez y ninguna salta. Encima, la matriz cuentas × contraseñas: la fuerza bruta llena una fila, el spraying una columna. Nombres: BRUTE FORCE y PASSWORD SPRAYING; al lado del 0, ACCOUNT LOCKOUT | Mirar la forma, no el volumen: un origen, muchas cuentas, un intento en cada una y ningún bloqueo · `log, users, src, pace, zero, one-door, every-door, matrix, spraying` |
+| s03-mfa «Una puerta se abrió» | I | 38 | Se amplía la línea atenuada, `03:12:37 LOGIN OK user=r.haugen src=192.0.2.157`, y aparece la siguiente, nueva: `03:13:15 LOGOUT user=r.haugen · aplicaciones abiertas: 0` (la narradora la lee como dato y no especula por qué se fue). Junto a la línea del OK, «IdP de Halden · pide: contraseña». Mensaje interceptado. La tarjeta de la política junto a `Halden2026!`, con tres casillas en verde (mayúscula, cifras, símbolo) y el sello «cumple»; debajo, «y es de las primeras que prueba cualquiera». Tres acciones, una por frase y cada una se enciende al decirla: «esa cuenta: contraseña nueva y sesiones cerradas» · «bloquear el origen, no las cuentas» · «MFA y lista de contraseñas prohibidas en el proveedor de identidad · Sistemas · 30-11». La imagen vuelve: la misma puerta del bloque con un segundo cerrojo; la llave gira y la puerta pide además algo que solo tú tienes, dibujado como el móvil o una llave física | Nadie tuvo la culpa: la contraseña cumplía las normas, y el spraying apuesta justo por esas. Se bloquea por origen; lo más eficaz es MFA · `ok, logout, rules, not-fault, reset, block-src, mfa, second-lock` · **intercept** |
+| s04-traversal «Una nota con indicaciones» | II La URL y la tubería | 42 | Se amplía la fila de la carpeta: el registro de accesos de `hpa-portal-web-01` (portal público de reservas de atraque) con las dos líneas de la lección (`sp2-part4.ts:61-62`), a las `04:26:14` y `04:26:21`, desde `192.0.2.157`. Dónde mirar: primero `file=`; luego cada `../` se enciende a la vez que un escalón en un plano de carpetas que sube hasta la raíz y baja a `etc/passwd`; después, `200` y `1834` ampliados: «se lo llevó». La imagen: la ventanilla del archivo y la nota del pedido. Nombre DIRECTORY TRAVERSAL; al lado, tachado, «inyección: sin comillas ni `OR 1=1`». Mensaje interceptado. Segunda línea: `%2e%2e%2f` se traduce carácter a carácter a `../` («la misma nota, en clave»); junto al `403 0`, la nota «403: el servidor no puede leer `shadow` · no es un filtro», con `shadow` en monoespaciada. En la voz, una frase: «La segunda la frenó el propio sistema: ese archivo solo lo lee el administrador. Ningún filtro la vio». La defensa, en el plano: el empleado sigue la ruta antes de moverse y, si acaba fuera del armario, no va: «resolver la ruta · comprobar que sigue dentro» | Puntos y barras en un parámetro de ruta, también en clave; el código y los bytes dicen si pasó; canonicalizar y confinar, no filtrar el texto · `access-log, param, climb, served, traversal, not-sqli, encoded, no-filter, canon, confine` · **intercept** |
+| s05-amp «Pedidos que nadie hizo» | II | 48 | Se amplía la fila de la tubería: NetFlow entrante a `hpa-portal-web-01`, `05:40–06:05`, con filas `UDP · 198.51.100.61:53`, `198.51.100.140:53`, `198.51.100.203:53`, `198.51.100.212:53`… Dónde mirar, por pasos: la columna del puerto de origen (siempre 53), el contador «orígenes distintos: 340», el medidor «enlace de 1 Gb/s · 100 %» y, al lado, «consultas DNS del portal a esos servidores: 0». La imagen: el portal y cientos de repartidores que llegan a la vez con pedidos enormes; en un recuadro, alguien llama a los restaurantes y da tu dirección. Esquema del mecanismo, rotulado como tal (no sale del registro): «pregunta: 60 bytes · respuesta: 3.000 bytes». Nombres: REFLECTED (la dirección falsa) y AMPLIFIED (el pedido enorme), que se juntan en DNS AMPLIFICATION. Tachado: «DNS poisoning: te cambia a dónde vas; esto te llena la tubería». Pregunta para pensar. Respuesta: los 340 son servidores legítimos de terceros (resolvers abiertos); la calle se atasca antes de tu portal; se corta en la avenida: «filtrado en el proveedor · servicio anti-DDoS»; y en origen, «cerrar los resolvers abiertos». Después de la respuesta, para no destriparla, una línea: «guardia · 05:44 · aviso de caída · llamada al proveedor» | Respuestas a preguntas que nunca hiciste: reflejado y amplificado a la vez; se para antes de tu enlace, no en tu cortafuegos · `netflow, port53, sources, full, zero-q, delivery, reflected, amplified, not-poison, upstream, on-call` · **think** |
+| s06-recap «Tres reglas» | III Para el examen | 24 | Tres tarjetas de reglas, cada una con su icono (llave, carpeta, tubería); tarjeta final Alertópolis: «Ahora te toca: las preguntas de la lección» (sp2m7, 8 preguntas) | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+
+- **Exam cards** (objetivo 2.4), una por escena de s02 a s05:
+  - «Spraying: pocas contraseñas, muchas cuentas, sin lockout» (s02) (56)
+  - «Contra ataques de contraseña, lo más eficaz: MFA» (s03) (48)
+  - «Directory traversal: canonicalizar y confinar la ruta» (s04) (53)
+  - «Respuestas DNS que nunca pediste: reflected y amplified» (s05) (55)
+- **Think prompt:** «¿Bloqueas esas IP o llamas a tu proveedor?» (s05) (42). Llega después de nombrar el ataque y de su
+  tarjeta, con el registro ya leído. Respuesta: al proveedor. Esas IP son servidores legítimos que el atacante usa de
+  espejo, mañana serán otras, y tu enlace ya está lleno antes de que el tráfico llegue a tu cortafuegos. Justo después, la
+  línea de la guardia enseña que eso es lo que se hizo a las 05:44.
+- **Mensajes interceptados** (RED MARROW, `holdMs` ~3800):
+  - s03: «Halden2026! Cumple todas tus normas. Así que es segura. Confía en mí.» (69). El error que corrige la
+    narradora: que una contraseña que cumple las reglas de complejidad es segura. Las cumple, y justo por eso la eligió:
+    es de las más previsibles que las cumplen. Lo arreglan la lista de contraseñas prohibidas y, sobre todo, MFA; más
+    reglas de complejidad, no. De paso, el mensaje dice qué contraseña probó, cosa que este registro no guarda.
+  - s04: «Borra los puntos y las barras de la URL y listo. Confía en mí.» (62). El error: filtrar el texto literal. Te lo
+    recomienda porque ya te lo ha mandado en clave (`%2e%2e%2f`), y un filtro que busca `../` no lo reconoce. Aquí ni
+    siquiera había filtro (el portal no tiene nada delante, `src/data/secplus/sp4-part3.ts:57`): la petición del 403 la
+    frenó el propio sistema. La defensa es resolver la ruta y comprobar dónde acaba.
+- **Cierre:** tres reglas y una sola tarea.
+  1. Muchas cuentas, un intento en cada una y ningún bloqueo: spraying. Contra eso, MFA.
+  2. Puntos y barras en una ruta, también en clave: traversal. Se resuelve la ruta; no se filtra el texto.
+  3. Respuestas que tu servidor nunca pidió: DDoS reflejado y amplificado. Se para antes de tu enlace, en el proveedor.
+
+  Tarea: las preguntas de la lección (sp2m7, 8 preguntas; las q1, q2, q4 y q8 tocan lo que cuenta el vídeo).
+- **Se queda fuera** (sigue en la lección):
+  - Ataques físicos (brute force físico, RFID cloning, environmental): `sp2-part4.ts:27`.
+  - DNS poisoning y hijacking (el envenenamiento solo sale como trampa, en una frase), wireless (evil twin, rogue AP,
+    deauthentication) y NTP `monlist`: `:31`; on-path, ARP poisoning, credential replay y malicious code: `:35`. Quiz q3.
+  - Los ataques de aplicación salvo traversal: injection (solo como trampa), buffer overflow, replay, privilege
+    escalation, CSRF y SSRF: `:54`. Quiz q7.
+  - Criptográficos (downgrade, collision, birthday): `:90`. Quiz q5 y q6.
+  - La tabla completa de síntoma, indicador y mitigación: `:97-114`.
+- **Laboratorios:** ninguno de sp2 lee registros. spl2a clasifica actores, spl2b vectores de ingeniería social y spl2c
+  elige mitigaciones tras un movimiento lateral (`src/data/secplus/labs-sp2.ts`), así que no hay solución que destripar.
+  Dos precauciones:
+  - spl2a tiene un DDoS de un colectivo hacktivista contra el portal de ferris. El vídeo no dice quién lanza su DDoS ni
+    usa ese portal, para no dar la clasificación del laboratorio.
+  - spl4a (sp4) pregunta qué fuente responde «qué cuenta inició sesión a las 03:12» (`src/data/secplus/labs-sp4.ts:93`).
+    El vídeo enseña un registro del proveedor de identidad de otra noche y nunca nombra categorías de fuentes, así que
+    no responde esa pregunta.
+
+**Canon nuevo que fija V10** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- **Noche del martes 20 al miércoles 21-10-2026.** Queda después de todo lo fechado de Halden (el caso de septiembre y
+  las fechas previstas de V5b del 2 al 16-10) y antes del plazo más largo de V5 (31-10); no toca ninguna.
+- **El proveedor de identidad** se rotula como en V6: «proveedor de identidad» o «IdP de Halden». **El 21-10 solo pedía
+  contraseña**: por eso acierta el spraying. V6 no enseña segundo factor en él.
+- **21-10 · 03:10:02–05:06: password spraying** desde `192.0.2.157` contra el proveedor de identidad. Las cinco líneas son
+  las de la lección (mismas cuentas y horas; cambian la fecha y la IP). En total, 180 cuentas, un intento por cuenta,
+  unos 40 s entre intentos (180 intentos a ese ritmo acaban hacia las 05:06) y 0 cuentas bloqueadas. El umbral de
+  bloqueo del puerto es de 5 fallos. Un solo acierto: `r.haugen` a las 03:12:37, con `Halden2026!`, que cumplía la
+  política de contraseñas. La sesión se cierra a las 03:13:15 sin abrir ninguna aplicación, sin explicación. La
+  contraseña no sale del registro: la dice el mensaje de RED MARROW.
+- **21-10 · 04:26:14 y 04:26:21: directory traversal** desde `192.0.2.157` contra el visor de documentos
+  (`/gate/viewdoc`) de `hpa-portal-web-01`, con las dos líneas de la lección. La primera sirve `/etc/passwd` (200, 1834
+  bytes). La segunda, codificada, pide `/etc/shadow` y recibe un 403 porque el servidor no puede leer ese archivo (solo lo
+  lee el administrador); no hay filtro ni nada delante del portal.
+- **21-10 · 05:40–06:05: DDoS reflejado y amplificado por DNS** contra `hpa-portal-web-01`: 340 resolvers abiertos de
+  terceros, todo desde el puerto 53 UDP, el enlace de 1 Gb/s del portal al 100 % y 0 consultas del portal a esos
+  servidores. El portal no responde en esos 25 minutos y el ataque se para solo. Nadie lo firma: quien lo lanza no sale en
+  ningún registro. Los resolvers de ejemplo son `198.51.100.61`, `198.51.100.140`, `198.51.100.203` y `198.51.100.212`,
+  todos libres y en otro /24 que el atacante.
+- **21-10 · 05:44: la guardia** recibe el aviso de caída del portal y llama al proveedor.
+- **21-10 · 08:00: revisión de la mañana** de la analista del SOC (sin nombre, en segunda persona). Lo inmediato, sin
+  fecha porque se hace esa misma mañana: contraseña nueva y sesiones cerradas para `r.haugen`; `192.0.2.157` bloqueada en
+  el perímetro; el visor resolverá la ruta y la confinará a su carpeta; filtrado anti-DDoS en el proveedor. La mejora de
+  fondo, con dueño y fecha: **«MFA y lista de contraseñas prohibidas en el proveedor de identidad · Sistemas · 30-11»**
+  (lunes).
+- **RED MARROW, primera aparición.** Tutea a la analista, frases cortas, ironía, como SILENT PAGER, pero su registro es
+  otro: el del estafador amable, que da consejos de amigo que son mentira y cierra con «Confía en mí». La narradora lo
+  presenta con lo que ya anuncia el jefe de sp2 antes del combate: vive de engañar, con correos falsos y memorias USB en
+  el aparcamiento. Ningún texto usa un artículo ni un adjetivo que marque su género («Es RED MARROW»); si la voz lo fija,
+  lo decide Lidia (pregunta en decisiones) y se apunta aquí.
+- **Cierre de canon** (paso 8 del orden de trabajo), en `docs/superpowers/canon/glass-harbor.md`: la fila 52 sale de la
+  cronología del incidente y pasa a una fila del 21-10; la 135 cambia IP y fecha; se cierra el hueco de la 245; y en §2 se
+  anota que el 21-10 el proveedor de identidad solo pedía contraseña, con la MFA a cargo de Sistemas para el 30-11.
+
+**No se toca:**
+- El caso `IR-2026-0147` (3-9 y 4-9): ni sus fechas y horas, ni sus equipos, ni `svc_tosreport`, ni SILENT PAGER. Nada
+  relaciona la noche del 21-10 con él.
+- El dosier de RED MARROW (kits contra los operadores de grúas, el proveedor de mantenimiento, «GH compra acceso a través
+  de terceros») y el nombre GLASS HARBOR. Nada insinúa que RED MARROW trabaje con otros adversarios ni que venda lo que
+  consigue: la narradora no dice por qué se cerró la sesión de `r.haugen` (nada de «la guardó», «para después» ni «para
+  venderla»).
+- Ninguna IP del vídeo cae en `203.0.113.0/24`, la de SILENT PAGER, ni es `198.51.100.23`, que debe quedar neutra.
+- El DDoS no se atribuye a nadie y no es el portal de ferris de spl2a.
+- De `hpa-portal-web-01` no se menciona el FINDING #0147 del escaneo del 1-9 (`src/data/secplus/sp4-part3.ts:55`),
+  ni el número 0147: el traversal es otro fallo, del visor de documentos.
+- Los episodios de las lecciones que se parecen al caso (el `svchost32` de las 02:40 de sp2m6, la administradora que
+  descarga manifiestos, el servidor de grúas y su dominio): no se mezclan. Por eso el traversal va a las 04:26 y no pide
+  manifiestos.
+- El check de las 900 cuentas que va justo antes del vídeo (`sp2-part4.ts:124`) es otra noche: la voz no lo enlaza.
+- La fila «Inicios de sesión fallidos en la VPN» de la cola tranquila del SIEM (mañana del 4-9,
+  `video/siem/src/data/s08-triage.ts:13`) sigue siendo ruido de fondo: el vídeo no la relaciona con nada.
+- La VPN: el vídeo no dice nada de ella (sp4m8 tiene un check sin fecha sobre su «MFA», `src/data/secplus/sp4-part4.ts:452`).
+- No se culpa a nadie: ni a `r.haugen` (su contraseña cumplía la política) ni a quien escribió la política. `r.haugen`
+  no se desarrolla: ni nombre completo ni área.
 
 **Tanda 3:**
 - sp1m6 (Principal) y sp1m7 (Cápsula `openssl s_client -showcerts` con un intermedio ausente), como serie «Confianza».
