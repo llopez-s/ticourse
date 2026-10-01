@@ -467,7 +467,7 @@ Las exam cards se listan en el orden de las escenas:
 - **sp4m10 IR (Principal): abierta el 2026-09-30 como V5, ficha completa abajo.** Lidia eligió partirla en dos
   para no pasar de 4 conceptos: V5 cuenta el proceso (fases, contención, vuelta y revisión final) y el resto va a
   una cápsula aparte.
-- **sp4m10 V5b (Cápsula): abierta el 2026-10-01, ficha completa abajo.** Tabletop frente a simulation y threat
+- **sp4m10 V5b (Cápsula): publicada el 2026-10-01 (YouTube `vlJ9FRtSIlM`), ficha completa abajo.** Tabletop frente a simulation y threat
   hunting, la otra mitad de la lección que V5 dejó fuera.
 - **sp4m8 IAM (Principal): V6, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** Identidad y acceso en
   Halden del 19 al 28-10: altas, cambios y bajas, SAML, OAuth, MFA y la bóveda de cuentas de servicio.
