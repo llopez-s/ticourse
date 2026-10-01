@@ -103,11 +103,25 @@ export default function CardsPage() {
 
         <div className="rounded-2xl border border-ink-600 bg-ink-900 p-8">
           <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.25em] text-slate-500">
-            {revealed ? 'Respuesta' : 'Pregunta'}
+            Pregunta
           </div>
-          <div className="min-h-28 text-lg font-medium leading-relaxed text-slate-100">
-            {revealed ? card.back : card.front}
+          <div
+            className={`text-lg font-medium leading-relaxed text-slate-100 ${
+              revealed ? '' : 'min-h-28'
+            }`}
+          >
+            {card.front}
           </div>
+          {revealed && (
+            <div className="mt-5 animate-pop-in border-t border-ink-600 pt-5">
+              <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.25em] text-cyan-400">
+                Respuesta
+              </div>
+              <div className="text-lg font-medium leading-relaxed text-cyan-100">
+                {card.back}
+              </div>
+            </div>
+          )}
 
           {!revealed ? (
             <button
