@@ -1,0 +1,124 @@
+{
+  "title": "Del comando al TTP: ATT&CK y la Pyramid of Pain",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 218,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "El árbol"
+    },
+    {
+      "n": 2,
+      "title": "La pirámide"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Un árbol, dos mapas",
+      "goal": "El árbol de procesos de la lección (s2m5) se dibuja rama a rama, atenuado, con la cabecera «ENG-WS-041 · 02-03-2026 · 09:44» (sin zona horaria y sin horas línea a línea). A sus lados se abren dos mapas vacíos: la matriz de ATT&CK (columnas de tácticas) y la pirámide de seis peldaños, en gris. Título «Del comando al TTP» con la línea «ATT&CK · Pyramid of Pain». La promesa, en una línea: «ponerle nombre a cada rama · elegir la detección que más le duele». El puente con V3, en una tira con la ficha de E7: «05-03-2026 · 02:13 UTC · beacon a update-svc-cdn.com · dominio desconocido» y «después de la alerta: ¿cómo empezó? 02-03». Nunca VELVET CICADA, el PDB ni nada del dosier de BROKEN CHAIN",
+      "targetSec": 24,
+      "wordBudget": 65,
+      "requiredCues": [
+        "tree",
+        "title",
+        "promise",
+        "bridge"
+      ]
+    },
+    {
+      "id": "s02-escalera",
+      "chapter": 1,
+      "title": "Porqué, cómo y cómo exactamente",
+      "goal": "Se amplía la rama «schtasks.exe /create /tn WindowsUpdateCheck /sc onlogon» y el resto del árbol se atenúa; debajo, en llano: «que el programa vuelva a arrancar en cada inicio de sesión». Viñeta de la llave: un rellano, una maceta, una llave con la etiqueta «revisión del gas». Escalera de tres peldaños que se construye al compás de la voz, de arriba abajo: TACTIC «Persistence» («el porqué: poder volver»); «TECHNIQUE · T1053 Scheduled Task/Job · sub-technique .005 Scheduled Task» («el cómo · lo usan muchos»), con una ventana entornada atenuada al lado («otra técnica, el mismo porqué»); PROCEDURE, el comando entero («así lo hace este»). Al final se resaltan juntos «WindowsUpdateCheck» y la etiqueta «revisión del gas»: el disfraz es parte de la procedure. La tarjeta, con la escalera ya completa. Nunca la fase Installation de la Kill Chain",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "requiredCues": [
+        "zoom-task",
+        "key",
+        "tactic",
+        "technique",
+        "other-way",
+        "procedure",
+        "disguise"
+      ]
+    },
+    {
+      "id": "s03-ramas",
+      "chapter": 1,
+      "title": "El resto del árbol",
+      "goal": "El árbol entero vuelve y las otras ramas se encienden una a una; la anterior se atenúa al pasar a la siguiente. «powershell.exe -nop -w hidden -enc SQBFAFgAKA...» con «T1059 Command and Scripting Interpreter · sub-technique .001 PowerShell» · Execution. «wcssvc.exe -decode a.txt payload.bin» con «T1140 Deobfuscate/Decode Files or Information» (technique, sin sub-technique) · Defense Evasion, y al lado la cabecera del ejecutable, «OriginalFileName: CertUtil.exe», con el nombre en disco tachado como disfraz. La línea de la conexión TLS de «winhlp.exe» a «update-svc-cdn.com:443» con «T1071 Application Layer Protocol · sub-technique .001 Web Protocols» · Command and Control. Chip «idioma común»: tres rótulos genéricos (tu SOC, tu proveedor, un informe público) leen el mismo «T1053.005». Al final, las cuatro tácticas en fila (Execution, Defense Evasion, Persistence, Command and Control) y la tarjeta, con el árbol ya atenuado. Cierre del capítulo: la escalera de s02 junto a la fila de tácticas. Nada de Courses of Action",
+      "targetSec": 32,
+      "wordBudget": 86,
+      "requiredCues": [
+        "branch-ps",
+        "branch-decode",
+        "real-name",
+        "branch-c2",
+        "common",
+        "tactics",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s04-piramide",
+      "chapter": 2,
+      "title": "Lo que le duele cambiar",
+      "goal": "Mensaje interceptado de GLASS VIPER («Bloquea mi hash. Así ya no me volverás a ver.»). La pirámide de la lección, de abajo arriba: Hash values · Trivial; IP addresses · Easy; Domain names · Simple; Network/Host artifacts · Annoying; Tools · Challenging; TTPs · Tough. A la izquierda, la viñeta de la persona, alineada con la base, el medio y la cima: la ropa, el acento, la forma de andar. Los indicadores del árbol suben uno a uno a su peldaño y se amplía el que nombra la voz: «4c81...b3» a Hash values; «update-svc-cdn.com» a Domain names; «WindowsUpdateCheck» y la ruta «C:\\ProgramData\\winhlp.exe» a Host artifacts; «wcssvc.exe (CertUtil)» a Tools; las cuatro etiquetas de técnica (T1059.001, T1140, T1053.005, T1071.001) a TTPs, arriba del todo. Solo IP addresses queda en gris (el árbol no trae ninguna IP; la voz no lo comenta). La tarjeta, con la pirámide ya quieta. Después, la respuesta al mensaje: el hash resaltado en la base",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "requiredCues": [
+        "pyramid",
+        "person",
+        "hash-up",
+        "domain-up",
+        "artifact-up",
+        "tool-up",
+        "ttp-up",
+        "reply"
+      ]
+    },
+    {
+      "id": "s05-otra-ropa",
+      "chapter": 2,
+      "title": "Tres días después",
+      "goal": "Dos fotos del mismo equipo, lado a lado. Izquierda, «02-03-2026 · 09:44»: «C:\\ProgramData\\winhlp.exe» · «SHA-256 4c81...b3». Derecha, «05-03-2026 · 02:11 UTC», las líneas del EDR de V3, solo ruta y hash (sin el campo signed): «C:\\ProgramData\\UpdSvc\\updsvc.exe» · «sha256=9f3a...e1», y debajo «update-svc-cdn.com:443». Un chip «regla: hash 4c81...b3» recorre la foto de la derecha y se queda en «0 coincidencias». Tres tonos, al compás de la voz: en ámbar, solo el hash, con la etiqueta «la ropa»; en un segundo tono, más apagado, el nombre y la carpeta, con la etiqueta «nombre y carpeta del ejecutable: también cambiaron, con más trabajo» (nunca «artefactos» en general: la tarea WindowsUpdateCheck del 5-3 no sale); en cian lo que sigue igual, el dominio, «de momento». Pregunta para pensar. La regla de la lección, en grande: «PowerShell lanzado por explorer crea una tarea programada no inventariada». Se prueba sobre la foto del 2 de marzo: la animación recorre la cadena entera, de explorer.exe a powershell.exe, wcssvc.exe, winhlp.exe y schtasks.exe, y solo entonces salta en la línea de la tarea, «09:44:20», sin mirar ningún hash. En la viñeta de s04 se ilumina la forma de andar, en la cima. La tarjeta, con las fotos ya atenuadas. Ni el named pipe, ni la tarea del 5-3, ni el PDB",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "requiredCues": [
+        "two-photos",
+        "zero-hits",
+        "ropa",
+        "accent",
+        "same-domain",
+        "rule",
+        "chain",
+        "retro-hit",
+        "walk"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "goal": "Tres reglas prácticas, una tarjeta grande cada una: 1) el comando exacto es la procedure; la technique, el cómo; la tactic, el porqué; 2) el hash está en la base y caduca con la siguiente compilación, y nombres y rutas aguantan un poco más; 3) invierte arriba, en una regla que mira cómo anda y no qué ropa lleva. Una sola tarea: las preguntas de la lección (s2m5, 10 preguntas). Tarjeta final Alertópolis",
+      "targetSec": 24,
+      "wordBudget": 65,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

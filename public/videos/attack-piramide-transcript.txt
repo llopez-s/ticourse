@@ -1,0 +1,20 @@
+Del comando al TTP: ATT&CK y la Pyramid of Pain
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC
+
+[00:00] I · El árbol — Un árbol, dos mapas
+Así entró el atacante en un equipo de Meridian. Lo leemos con ATT&CK y con la Pyramid of Pain. Vas a saber nombrar cada rama y elegir la detección que más le cuesta esquivar. El cinco de marzo, este equipo llamó a un dominio que nadie conocía. Tras esa alerta, tocó mirar atrás, al día dos.
+
+[00:26] I · El árbol — Porqué, cómo y cómo exactamente
+Empezamos por esta rama. Crea una tarea programada, para que el programa arranque en cada inicio de sesión. Es como quien quiere volver a tu casa y se esconde una llave. Ese porqué, poder volver, es la tactic. Y se llama Persistence. El cómo general, la llave, aquí es una tarea programada. Esa es la technique. Una ventana abierta sería otra técnica, con el mismo porqué. Y cómo lo hace exactamente este, con su comando y su nombre de tarea, eso es la procedure. Y fíjate en el nombre, que imita una comprobación de actualizaciones de Windows. Es la etiqueta de «revisión del gas».
+
+[01:11] I · El árbol — El resto del árbol
+Ahora, el resto. Primero, PowerShell escondido, con las órdenes en clave. Execution. Luego, un programa de nombre raro descodifica un fichero. Es certutil renombrado, para despistar. Defense Evasion. Y el programa llama a casa por la web. Command and Control. Cada técnica lleva un número que entienden igual tu SOC, tu proveedor o un informe público. Un idioma común. Ejecutar, despistar, quedarse y llamar a casa. Cuatro porqués, cuatro tactics. O sea, tres pisos por rama. El porqué, el cómo y cómo lo hace este.
+
+[01:48] II · La pirámide — Lo que le duele cambiar
+[Mensaje interceptado · GLASS VIPER] «Bloquea mi hash. Así ya no me volverás a ver.» Qué amable. Antes, mira esta pirámide, que ordena lo que sabes de él por lo que le cuesta cambiarlo. Es como reconocer a alguien por la ropa, que se cambia en un minuto, por el acento o por cómo anda. Abajo del todo, el hash, la ropa. Lo compila otra vez y ya es otro. El dominio, algo más arriba. El nombre de la tarea y la ruta, en medio, son el acento. Su herramienta disfrazada, más arriba. En la cima, las técnicas, cómo anda. Esto es la Pyramid of Pain. Así que bloquear su hash es lo más barato para él. Mañana, otra ropa.
+
+[02:37] II · La pirámide — Tres días después
+Dos fotos del mismo equipo, la de este árbol y la de la alerta, tres días después. Pasas una regla con el hash del día dos por la foto del cinco. Cero coincidencias. Tenía razón, a su manera. El del cinco lleva otro hash, otra ropa. Y otro nombre y otra carpeta, que le cuestan más. El acento. Pero llama al mismo dominio. Todo apunta a otra compilación del mismo programa. Entonces, ¿añades el hash nuevo o vigilas lo que hace? Lo que hace, porque ese hash caduca en la próxima compilación. Esta regla busca PowerShell, lanzado desde el explorador, que crea una tarea que nadie tiene apuntada. La pasas por la foto del día dos, por toda la cadena de ese PowerShell. Y salta en la tarea, sin ningún hash. O sea, cambió de ropa y de acento, pero anda igual. Y ahí le pillas.
+
+[03:45] III · Para el examen — Tres reglas
+Te llevas tres ideas. El comando exacto es la procedure, la técnica, el cómo, y la tactic, el porqué. El hash, en la base, caduca con cada compilación. Nombres y rutas aguantan algo más. Y lo que más rinde está arriba, una regla que mira cómo anda, no qué ropa lleva. Ahora, a por las diez preguntas de la lección. Hasta la próxima.
