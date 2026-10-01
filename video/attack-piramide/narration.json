@@ -22,30 +22,30 @@
       "id": "s01-01",
       "scene": "s01-hook",
       "text": "<curious> {tree}Así entró el atacante en un equipo de Meridian. {title}Lo leemos con ATT&CK y con la Pyramid of Pain.",
-      "pauseAfterMs": 450
+      "pauseAfterMs": 400
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {promise}Vas a saber nombrar cada rama y elegir la detección que más le cuesta esquivar.",
-      "pauseAfterMs": 450
+      "text": "<confident> {promise}Al final sabrás nombrar cada rama y elegir la detección que más le cuesta esquivar.",
+      "pauseAfterMs": 400
     },
     {
       "id": "s01-03",
       "scene": "s01-hook",
-      "text": "<calm> {bridge}El cinco de marzo, este equipo llamó a un dominio que nadie conocía. Tras esa alerta, tocó mirar atrás, al día dos.",
+      "text": "<calm> {bridge}El cinco de marzo, este equipo llamó a un dominio que nadie conocía. Y tocó mirar cómo empezó, el día dos.",
       "pauseAfterMs": 600
     },
     {
       "id": "s02-01",
       "scene": "s02-escalera",
-      "text": "<thoughtful> {zoom-task}Empezamos por esta rama. Crea una tarea programada, para que el programa arranque en cada inicio de sesión.",
+      "text": "<thoughtful> {zoom-task}Mira esta rama. Crea una tarea programada para que el programa arranque al iniciar sesión.",
       "pauseAfterMs": 350
     },
     {
       "id": "s02-02",
       "scene": "s02-escalera",
-      "text": "<warm> {key}Es como quien quiere volver a tu casa y se esconde una llave.",
+      "text": "<warm> {key}Es como quien esconde una llave en tu maceta para entrar cuando quiera.",
       "pauseAfterMs": 350
     },
     {
@@ -75,31 +75,37 @@
     {
       "id": "s02-06",
       "scene": "s02-escalera",
-      "text": "<mischievously> {disguise}Y fíjate en el nombre, que imita una comprobación de actualizaciones de Windows. Es la etiqueta de «revisión del gas».",
+      "text": "<mischievously> {disguise}Y fíjate en el nombre, que imita una actualización de Windows. Es la llave con su etiqueta de «revisión del gas».",
       "pauseAfterMs": 600
     },
     {
       "id": "s03-01",
       "scene": "s03-ramas",
-      "text": "<curious> {branch-ps}Ahora, el resto. Primero, PowerShell escondido, con las órdenes en clave. Execution.",
+      "text": "<curious> {branch-ps}Ahora, el resto. Un PowerShell escondido ejecuta órdenes codificadas, Execution.",
       "pauseAfterMs": 350
     },
     {
       "id": "s03-02",
       "scene": "s03-ramas",
-      "text": "<suspicious> {branch-decode}Luego, un programa de nombre raro descodifica un fichero. {real-name}Es certutil renombrado, para despistar. Defense Evasion. {branch-c2}Y el programa llama a casa por la web. Command and Control.",
+      "text": "<suspicious> {branch-decode}Luego, un programa de nombre raro descodifica lo que venía escondido, Defense Evasion. {real-name}Por dentro es certutil, de Windows, con otro nombre.",
       "pauseAfterMs": 350
     },
     {
       "id": "s03-03",
       "scene": "s03-ramas",
-      "text": "<warm> {common}Cada técnica lleva un número que entienden igual tu SOC, tu proveedor o un informe público. Un idioma común.",
+      "text": "<steady> {branch-c2}Y el programa que instala llama a casa por la web, Command and Control.",
       "pauseAfterMs": 350
     },
     {
       "id": "s03-04",
       "scene": "s03-ramas",
-      "text": "<clear> {tactics}Ejecutar, despistar, quedarse y llamar a casa. Cuatro porqués, cuatro tactics.",
+      "text": "<warm> {common}Cada técnica lleva un número que entienden igual tu SOC, tu proveedor o un informe público. Un idioma común.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-ramas",
+      "text": "<clear> Ejecutar, despistar, quedarse y llamar a casa. {tactics}Cuatro porqués, cuatro tactics.",
       "pauseAfterMs": 350,
       "exam": {
         "objective": "Intrusion Analysis",
@@ -109,15 +115,15 @@
       }
     },
     {
-      "id": "s03-05",
+      "id": "s03-06",
       "scene": "s03-ramas",
-      "text": "<satisfied> {wrap}O sea, tres pisos por rama. El porqué, el cómo y cómo lo hace este.",
+      "text": "<satisfied> {wrap}O sea, tres peldaños por rama. El porqué, el cómo y cómo lo hace este.",
       "pauseAfterMs": 650
     },
     {
       "id": "s04-01",
       "scene": "s04-piramide",
-      "text": "<sarcastic> {pyramid}Qué amable. Antes, mira esta pirámide, que ordena lo que sabes de él por lo que le cuesta cambiarlo.",
+      "text": "<sarcastic> {pyramid}Cuánta generosidad. Antes, mira esta pirámide, que ordena lo que sabes de él por lo que le cuesta cambiarlo.",
       "pauseAfterMs": 350,
       "intercept": {
         "text": "Bloquea mi hash. Así ya no me volverás a ver.",
@@ -139,13 +145,13 @@
     {
       "id": "s04-04",
       "scene": "s04-piramide",
-      "text": "<clear> {domain-up}El dominio, algo más arriba. {artifact-up}El nombre de la tarea y la ruta, en medio, son el acento. {tool-up}Su herramienta disfrazada, más arriba.",
+      "text": "<clear> {domain-up}El dominio sube algo más. {artifact-up}El nombre de la tarea y la ruta, en medio, son el acento. {tool-up}Y más arriba, la herramienta disfrazada.",
       "pauseAfterMs": 350
     },
     {
       "id": "s04-05",
       "scene": "s04-piramide",
-      "text": "<confident> En la cima, las técnicas, cómo anda. {ttp-up}Esto es la Pyramid of Pain.",
+      "text": "<confident> En la cima, cómo anda, que son sus técnicas. {ttp-up}Esto es la Pyramid of Pain.",
       "pauseAfterMs": 350,
       "exam": {
         "objective": "Intrusion Analysis",
@@ -157,13 +163,13 @@
     {
       "id": "s04-06",
       "scene": "s04-piramide",
-      "text": "<firm> {reply}Así que bloquear su hash es lo más barato para él. Mañana, otra ropa.",
+      "text": "<firm> {reply}Así que bloquear su hash es lo que menos le duele. Mañana, otra ropa.",
       "pauseAfterMs": 650
     },
     {
       "id": "s05-01",
       "scene": "s05-otra-ropa",
-      "text": "<intrigued> {two-photos}Dos fotos del mismo equipo, la de este árbol y la de la alerta, tres días después.",
+      "text": "<intrigued> {two-photos}Compara dos fotos del mismo equipo, la de este árbol y la de la alerta.",
       "pauseAfterMs": 350
     },
     {
@@ -175,14 +181,14 @@
     {
       "id": "s05-03",
       "scene": "s05-otra-ropa",
-      "text": "<thoughtful> {ropa}El del cinco lleva otro hash, otra ropa. {accent}Y otro nombre y otra carpeta, que le cuestan más. El acento.",
+      "text": "<thoughtful> {ropa}El del cinco lleva otro hash, otra ropa. {accent}Y el programa tiene otro nombre y otra carpeta, que ya le cuestan más.",
       "pauseAfterMs": 350
     },
     {
       "id": "s05-04",
       "scene": "s05-otra-ropa",
       "text": "<steady> {same-domain}Pero llama al mismo dominio. Todo apunta a otra compilación del mismo programa.",
-      "pauseAfterMs": 450
+      "pauseAfterMs": 400
     },
     {
       "id": "s05-05",
@@ -197,14 +203,14 @@
     {
       "id": "s05-06",
       "scene": "s05-otra-ropa",
-      "text": "<confident> {rule}Lo que hace, porque ese hash caduca en la próxima compilación. Esta regla busca PowerShell, lanzado desde el explorador, que crea una tarea que nadie tiene apuntada.",
+      "text": "<confident> {rule}Lo que hace, porque ese hash caduca en cuanto recompile. La regla busca PowerShell lanzado desde el explorador que crea una tarea programada sin apuntar.",
       "pauseAfterMs": 350
     },
     {
       "id": "s05-07",
       "scene": "s05-otra-ropa",
       "text": "<focused> {chain}La pasas por la foto del día dos, por toda la cadena de ese PowerShell. {retro-hit}Y salta en la tarea, sin ningún hash.",
-      "pauseAfterMs": 450,
+      "pauseAfterMs": 400,
       "exam": {
         "objective": "Intrusion Analysis",
         "text": "Detecta el comportamiento: sobrevive a recompilar",
@@ -215,13 +221,13 @@
     {
       "id": "s05-08",
       "scene": "s05-otra-ropa",
-      "text": "<satisfied> {walk}O sea, cambió de ropa y de acento, pero anda igual. Y ahí le pillas.",
+      "text": "<satisfied> {walk}O sea, cambió de ropa y disimuló el acento. Pero cambiar cómo anda le costaría mucho más.",
       "pauseAfterMs": 700
     },
     {
       "id": "s06-01",
       "scene": "s06-recap",
-      "text": "<warm> {recap}Te llevas tres ideas. {rule-1}El comando exacto es la procedure, la técnica, el cómo, y la tactic, el porqué.",
+      "text": "<warm> {recap}Apúntate tres cosas. {rule-1}El comando exacto es la procedure, el cómo, la technique, y el porqué, la tactic.",
       "pauseAfterMs": 350
     },
     {
@@ -233,13 +239,13 @@
     {
       "id": "s06-03",
       "scene": "s06-recap",
-      "text": "<confident> {rule-3}Y lo que más rinde está arriba, una regla que mira cómo anda, no qué ropa lleva.",
+      "text": "<confident> {rule-3}Y tu esfuerzo, ponlo arriba, en una regla que mira cómo anda, no qué ropa lleva.",
       "pauseAfterMs": 350
     },
     {
       "id": "s06-04",
       "scene": "s06-recap",
-      "text": "<cheerful> {next}Ahora, a por las diez preguntas de la lección. {endcard}Hasta la próxima.",
+      "text": "<cheerful> {next}A por las diez preguntas de la lección. {endcard}Hasta la próxima.",
       "pauseAfterMs": 700
     }
   ]
