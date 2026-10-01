@@ -1,13 +1,17 @@
 import type { ComponentType } from 'react';
 import type { SceneId, SceneProps } from '../../../engine/src/timeline/types';
-import { Placeholder } from './Placeholder';
+import { S01Hook } from './S01Hook';
+import { S02Escalera } from './S02Escalera';
+import { S03Ramas } from './S03Ramas';
+import { S04Piramide } from './S04Piramide';
+import { S05OtraRopa } from './S05OtraRopa';
+import { S06Recap } from './S06Recap';
 
-/** One line per scene; each placeholder is replaced by its scene when it is built. */
 export const SCENES: Record<SceneId, ComponentType<SceneProps>> = {
-  's01-hook': (p) => <Placeholder id="s01-hook" props={p} />,
-  's02-escalera': (p) => <Placeholder id="s02-escalera" props={p} />,
-  's03-ramas': (p) => <Placeholder id="s03-ramas" props={p} />,
-  's04-piramide': (p) => <Placeholder id="s04-piramide" props={p} />,
-  's05-otra-ropa': (p) => <Placeholder id="s05-otra-ropa" props={p} />,
-  's06-recap': (p) => <Placeholder id="s06-recap" props={p} />,
+  's01-hook': S01Hook,
+  's02-escalera': S02Escalera,
+  's03-ramas': S03Ramas,
+  's04-piramide': S04Piramide,
+  's05-otra-ropa': S05OtraRopa,
+  's06-recap': S06Recap,
 };
