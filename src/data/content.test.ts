@@ -272,6 +272,8 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === '8pet46MOGmk')?.module).toBe('s3m3');
     // V5 walks the Halden case through the phases, right after the table of phases and classic errors
     expect(youtubeVideos.find((v) => v.block.youtube === 'S_nVqWYkKXM')?.module).toBe('sp4m10');
+    // V7 reads s2m5's process tree, right before the checks that ask about the same tree
+    expect(youtubeVideos.find((v) => v.block.youtube === 'XCOAc7tlPTE')?.module).toBe('s2m5');
   });
 
   it('every video block points at relative public assets that exist', async () => {

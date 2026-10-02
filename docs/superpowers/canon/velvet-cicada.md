@@ -1,7 +1,7 @@
 # Canon de «Operación VELVET CICADA» (GCTI)
 
 Registro único de los datos ficticios de la campaña GCTI: la intrusión contra Meridian Dynamics que continúan
-las lecciones, los laboratorios y los vídeos. Estado a 2026-10-01 (vídeos publicados: V3 y V4).
+las lecciones, los laboratorios y los vídeos. Estado a 2026-10-03 (vídeos publicados: V3, V4 y V7).
 
 ## 1. Cómo se usa
 
@@ -373,7 +373,7 @@ Lección `src/data/s3.ts:629-631`; adversario HOLLOW LANTERN (`video/pivot-infra
   (`video/pivot-infra/src/scenes/S08Lifecycle.tsx:328`); el bloqueo previo encuentra cinco hermanos tapados
   (`video/pivot-infra/src/scenes/S09Preblock.tsx:35`).
 
-### V7 · `attack-piramide` · s2m5 · YouTube `PENDIENTE`
+### V7 · `attack-piramide` · s2m5 · YouTube `XCOAc7tlPTE`
 
 Lección `src/data/s2.ts:1097` (bloque `youtube` entre el párrafo de la escalera de abstracción y el primer check del
 árbol); adversario de los interceptados GLASS VIPER (`video/attack-piramide/video.json:8`). Notas propias en

@@ -826,6 +826,12 @@ mensaje va en s10, no en s11.
 > dos no se pisan. La versión vigente de escenas y guion será `video/attack-piramide/storyboard.json` +
 > `narration.json`; qué se quedó fuera, en `video/attack-piramide/out/script-notes.md`.
 >
+> **Producido y publicado el 2026-10-03**: YouTube `XCOAc7tlPTE`, 3:59, 6 escenas, 4 tarjetas, 1 pregunta, 1 mensaje
+> de GLASS VIPER con la voz de V3, voz de Lidia (una frase recortada de sus propias tomas: a s04-02 se le pegaba el
+> arranque abandonado de s04-03), música de V4, −14,1 LUFS. En la lección s2m5, entre el párrafo de la escalera de
+> abstracción y el primer check del árbol. La grabación quedó al 93 % del estimado (V5b, 85 %). El canon nuevo está en
+> `docs/superpowers/canon/velvet-cicada.md` §7.
+>
 > **Ajustes al abrirla** (ya incluidos abajo):
 > - s03 y s04 acababan en la frase de su tarjeta, y la tarjeta necesita ~5 s de escena detrás: s03 cierra el capítulo
 >   I con un «o sea, que…» (cue `wrap`) y s04 responde al mensaje después de la tarjeta (cue `reply`).
