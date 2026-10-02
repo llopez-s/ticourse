@@ -467,7 +467,7 @@ Las exam cards se listan en el orden de las escenas:
 - **sp4m10 IR (Principal): abierta el 2026-09-30 como V5, ficha completa abajo.** Lidia eligió partirla en dos
   para no pasar de 4 conceptos: V5 cuenta el proceso (fases, contención, vuelta y revisión final) y el resto va a
   una cápsula aparte.
-- **sp4m10 V5b (Cápsula): abierta el 2026-10-01, ficha completa abajo.** Tabletop frente a simulation y threat
+- **sp4m10 V5b (Cápsula): publicada el 2026-10-01 (YouTube `vlJ9FRtSIlM`), ficha completa abajo.** Tabletop frente a simulation y threat
   hunting, la otra mitad de la lección que V5 dejó fuera.
 - **sp4m8 IAM (Principal): V6, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** Identidad y acceso en
   Halden del 19 al 28-10: altas, cambios y bajas, SAML, OAuth, MFA y la bóveda de cuentas de servicio.
@@ -570,8 +570,14 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
 ### V5b · sp4m10 · Cápsula · «Antes del próximo incidente: tabletop, simulation y threat hunting»
 
 > Diseñado con Lidia el 2026-10-01 (rama `video-ir-halden-pruebas`, desde `main` con V4 y V5 ya fusionados). La
-> versión vigente de escenas y guion será `video/ir-halden-pruebas/storyboard.json` + `narration.json`; qué se quedó
+> versión vigente de escenas y guion es `video/ir-halden-pruebas/storyboard.json` + `narration.json`; qué se quedó
 > fuera, en `video/ir-halden-pruebas/out/script-notes.md`.
+>
+> **Producido y publicado el 2026-10-01**: YouTube `vlJ9FRtSIlM`, 3:35, 6 escenas, 4 tarjetas, 1 pregunta, 1 mensaje de
+> SILENT PAGER, voz de Lidia en una sola toma (s04-03 recortada de sus propias tomas: arrastraba un «Pues… digo…»), música
+> de V4 y V5, −14,1 LUFS. En la lección sp4m10, tras el check de threat hunting. Dos frases dicen lo que se grabó: «un plan
+> contra incidentes» y «el atacante» (decisión de Lidia; la serie sigue con «la atacante»). El canon que vale es el de abajo
+> y `docs/superpowers/canon/glass-harbor.md`.
 >
 > **Dos ajustes sobre el diseño aprobado**, porque el validador los rechazaría:
 > - Cuatro tarjetas en cinco escenas obligaban a poner dos en la misma, y `analyzeNarration` admite una por escena y
@@ -603,9 +609,9 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
 |---|---|---|---|---|
 | s01-hook «¿Funciona el plan nuevo?» | I Probar el plan | 26 | La lista de mejoras del 11-9 (la de V5 s09) con «suplentes con permiso para aislar · Seguridad · 30-09» resaltada y un sello «¿funciona?»; título; dos iconos (mesa y simulacro) y una lupa; el puente, en una tira: «3-9 · `ADM-WS-02` sin aislar · nadie de guardia podía autorizarlo» | La promesa en los primeros 10 s y el puente con V5 · `plan, title, promise, bridge` |
 | s02-mesa «Ensayo en la sala» | I | 50 | Las dos maneras, a la par: la mesa con el guion en la mano y el simulacro de incendio. Pregunta para pensar. Se ilumina la mesa: «se habla · no se toca ningún sistema · barato» y el nombre TABLETOP EXERCISE. La mesa del 2-10 en la sala de crisis, seis áreas; la tarjeta del caso: «03:00 · se ha caído el correo · ¿a quién llamas?»; «a la suplente de Seguridad»; su teléfono, dentro del buzón, que se apaga; la lista sale a papel y al móvil de guardia | La mesa prueba roles y llamadas sin tocar nada · `two-ways, fire, table, tabletop, room, gap, fix` · **think** |
-| s03-simulacro «Probarlo de verdad» | I | 50 | El bocadillo de la mesa «yo aíslo el equipo» con un «¿seguro?». El simulacro del 8-10 a las 22:00 en la VLAN de pruebas (`ptl-pruebas-02`), cronómetro en marcha; llaman a la suplente; consola: «Aislar equipo» y «Acción no permitida · tu rol no incluye aislar equipos»; lo hace la analista de guardia; el cronómetro para en 11 min (22:11). Barra de comparación: «simulacro · 11 min» frente a «3-9 · `ADM-WS-02` abierta 18 h». Mejora: «permiso de aislar en la cuenta de la suplente · Seguridad · 09-10». Nombre SIMULATION y su coste en tres chips. Cierre en dos columnas: la mesa, lo que se dice; el simulacro, lo que se hace | El simulacro prueba herramientas, permisos y tiempos, y cuesta · `words, night, denied, eleven, real, cost, both` |
-| s04-caza «Salir a buscar» | II Salir a buscar | 38 | Mensaje interceptado. La fuga: una casa con los grifos cerrados, sin mancha en el techo y el contador girando. La hipótesis: «si vuelve, entrará como la otra vez: cuenta de servicio, de madrugada», con la referencia «4-9 · 01:52 · `svc_tosreport` desde `ADM-WS-07`». La consulta: «13-10 · 30 días (13-09 a 13-10) · logons de cuentas de servicio · 00:00–06:00 · desde cualquier equipo (estaciones y servidores)». Nombre THREAT HUNTING | Salir a buscar sin alerta, desde una hipótesis · `calm, meter, hypothesis, hunt, hunting` · **intercept** |
-| s05-huecos «Lo que deja la caza» | II | 36 | Resultado: histograma por horas, todo gris («tareas conocidas, a su hora»), «sin explicar: 0». Mapa de cobertura: 24 servidores, 22 encendidos y 2 apagados, `srv-bascula01` (báscula de camiones) y `srv-accesos01` (control de accesos de la puerta de camiones), «0 registros · nunca conectados»; «ni limpios ni sucios: no se ven». Dos mejoras: «conectar `srv-bascula01` y `srv-accesos01` a la central · Sistemas · 16-10» y «regla: cuenta de servicio fuera de su horario, desde cualquier equipo · SOC · 15-10» | Una caza nunca vuelve de vacío: reglas nuevas y huecos a la vista · `result, dark, unknown, rule, never-empty` |
+| s03-simulacro «Probarlo de verdad» | I | 50 | El bocadillo de la mesa «aislar es cosa mía» con un «¿seguro?». El simulacro del 8-10 a las 22:00 en la VLAN de pruebas (`ptl-pruebas-02`), cronómetro en marcha; llaman a la suplente; la suplente pulsa «Aislar equipo» y la consola responde «Acción no permitida · tu rol no incluye aislar equipos»; dos filas separan el plan (ella puede aislar) de su cuenta (no puede); lo hace la analista de guardia por orden de la suplente; el cronómetro para en «11 min» (22:11; nunca «11:00», que se leería como una hora). Barra de comparación: «simulacro · 11 min» frente a «septiembre · `ADM-WS-02` · más de 18 h hasta aislarla». Mejora: «permiso de aislar en la cuenta de la suplente · Seguridad · 09-10». Nombre SIMULATION y su coste en tres chips, sin sugerir una parada de producción. Cierre en dos columnas: la mesa, lo que se dice; el simulacro, lo que se hace | El simulacro prueba herramientas, permisos y tiempos, y cuesta · `words, night, denied, eleven, real, cost, both` |
+| s04-caza «Salir a buscar» | II Salir a buscar | 38 | Mensaje interceptado. La fuga: una casa con los grifos cerrados, sin mancha en el techo y el contador girando. La hipótesis: «si vuelve, se moverá como la otra vez: de madrugada, con una cuenta de servicio» (no «entrará»: en septiembre entró por el correo de Lucía), con la referencia «4-9 · 01:52 · `svc_tosreport` desde `ADM-WS-07`». La consulta: «13-10 · 30 días (13-09 a 13-10) · logons de cuentas de servicio · 00:00–06:00 · desde cualquier equipo (estaciones y servidores)», con «alertas para esta hipótesis: 0» y la regla del SOC del 25-09 sin disparos. Nombre THREAT HUNTING | Salir a buscar sin alerta, desde una hipótesis · `calm, meter, hypothesis, hunt, hunting` · **intercept** |
+| s05-huecos «Lo que deja la caza» | II | 36 | Resultado: histograma por horas, todo gris («tareas conocidas, a su hora»), «sin explicar: 0». Mapa de cobertura: 24 servidores, 22 encendidos y 2 apagados, `srv-bascula01` (báscula de camiones) y `srv-accesos01` (control de accesos de la puerta de camiones), «0 registros · nunca conectados»; «ni bueno ni malo: no se ven» (no «limpios»: V5 s06 ya dice que la búsqueda en todos los equipos «sale limpia», con otra telemetría). Dos mejoras: «conectar `srv-bascula01` y `srv-accesos01` a la central · Sistemas · 16-10» y «regla: cuenta de servicio fuera de su horario, desde cualquier equipo · SOC · 15-10» | Una caza nunca vuelve de vacío: reglas nuevas y huecos a la vista · `result, dark, unknown, rule, never-empty` |
 | s06-recap «Tres reglas» | III Para el examen | 26 | Tres tarjetas de reglas; tarjeta final Alertópolis: «Ahora te toca: las preguntas de la lección» (sp4m10, 8 preguntas) | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
 
 - **Exam cards** (objetivo 4.8), una por escena de s02 a s05:
@@ -620,22 +626,24 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
   si ya hay una alerta, no es hunting; ninguna caza vuelve de vacío) y una sola tarea: las preguntas de la lección.
 
 **Canon nuevo que fija V5b** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
-- **2026-10-02 (viernes), 10:00, sala de crisis: la mesa.** Seis áreas (Seguridad, Sistemas, Operaciones,
+- **2026-10-02 (viernes), 09:30, sala de crisis: la mesa.** Seis áreas (Seguridad, Sistemas, Operaciones,
   Comunicación, Dirección y Asesoría jurídica). Caso: a las 03:00 se cae el correo corporativo. «¿A quién llamas?»: a
   la suplente de Seguridad, pero su teléfono solo está en la lista de contactos del plan, que vive en el correo
-  corporativo. Mejora: lista de contactos fuera de banda (en papel en la sala y en el móvil de guardia), Seguridad,
-  05-10. Es el ejemplo de la propia lección (`sp4-part5.ts:277`).
-- **2026-10-08 (jueves), 22:00–22:11: el simulacro.** El turno de guardia del SOC simula un ataque en la VLAN de
-  pruebas (`ptl-pruebas-02`, el portátil de pruebas del SIEM) y llama a la suplente de Seguridad, sin nombre. Ella da
-  la orden de aislar, pero su cuenta de la consola del EDR no tiene el permiso de aislar equipos: lo ejecuta la
-  analista de guardia por orden suya. Así se sostienen a la vez los dos hechos del diseño (ella aísla el segmento; a
-  su cuenta le falta un permiso): la autoridad es suya y el botón, de la analista. El segmento queda aislado a las
-  22:11, a los 11 minutos. Comparación: `ADM-WS-02` estuvo abierta del 3-9 a las 16:15 al 4-9 a las 10:30, unas 18 h
+  corporativo. Mejora: una copia de la lista fuera de banda (en papel en la sala y en el móvil de guardia), Seguridad,
+  05-10 («tres días después», en voz). Es el ejemplo de la propia lección (`sp4-part5.ts:277`).
+- **2026-10-08 (jueves), 22:00–22:11: el simulacro.** El turno de guardia del SOC simula un ataque en un equipo de
+  pruebas (`ptl-pruebas-02`, el portátil de pruebas del SIEM, en la VLAN de pruebas) y llama a la suplente de
+  Seguridad, sin nombre. Ella pulsa «Aislar equipo» y la consola del EDR dice que no: el plan le da la autoridad (la
+  mejora de Seguridad del 30-09 está cumplida), pero a su cuenta de la consola le falta el permiso de aislar equipos.
+  Lo ejecuta la analista de guardia por orden de la suplente. Así se sostienen a la vez los dos hechos del diseño
+  (ella aísla; a su cuenta le falta un permiso): la autoridad es suya y el botón, de la analista. El equipo queda
+  aislado a las 22:11, a los 11 minutos (en pantalla, «11 min», nunca «11:00»). Un EDR aísla equipos, no redes: la
+  voz dice «equipo». Comparación: `ADM-WS-02` estuvo abierta del 3-9 a las 16:15 al 4-9 a las 10:30, unas 18 h
   (deducido del registro). Mejora: permiso de aislar en la cuenta de la suplente, Seguridad, 09-10. Que el 8-10 sea
   jueves, la noche de la tarea programada ya borrada (V5 s06), es casualidad: no se dice ni se insinúa nada.
 - **2026-10-13 (martes): la caza.** Hipótesis tomada de lo que enseñó el incidente (el logon de `svc_tosreport` a la
-  01:52 desde una estación de administración), no del dosier del jefe de sp4: si vuelve, lo hará con una cuenta de
-  servicio, de madrugada. Consulta: logons de cuentas de servicio entre las 00:00 y las 06:00, desde cualquier equipo,
+  01:52 desde una estación de administración), no del dosier del jefe de sp4: si vuelve, se moverá como la otra vez, de
+  madrugada y con una cuenta de servicio (no «entrará»: en septiembre entró por el correo de Lucía, V5 s07). Consulta: logons de cuentas de servicio entre las 00:00 y las 06:00, desde cualquier equipo,
   en los 30 días que guarda la central (13-09 a 13-10). La ventana deja fuera la noche del 4-9 a propósito, para que
   la caza no «encuentre» el caso conocido; y es más amplia que la alerta del SOC del 25-9, que solo mira logons desde
   estaciones. Resultado: ningún rastro de la atacante; todo lo que entra de madrugada son tareas conocidas, a su hora.

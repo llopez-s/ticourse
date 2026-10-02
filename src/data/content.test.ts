@@ -272,6 +272,8 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === '8pet46MOGmk')?.module).toBe('s3m3');
     // V5 walks the Halden case through the phases, right after the table of phases and classic errors
     expect(youtubeVideos.find((v) => v.block.youtube === 'S_nVqWYkKXM')?.module).toBe('sp4m10');
+    // V5b tests the new plan and goes hunting, after the threat-hunting check and before the closing paragraph
+    expect(youtubeVideos.find((v) => v.block.youtube === 'vlJ9FRtSIlM')?.module).toBe('sp4m10');
   });
 
   it('every video block points at relative public assets that exist', async () => {
