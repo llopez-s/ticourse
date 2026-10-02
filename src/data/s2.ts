@@ -1179,6 +1179,13 @@ winhlp.exe → TLS update-svc-cdn.com:443
         md: 'Practica la **escalera de abstracción**: el comando exacto (`schtasks /create /tn WindowsUpdateCheck...`) es la **procedure** de este actor; `T1053.005 Scheduled Task` es la **technique**; Persistence es la **tactic**. Ahora cruza con la pirámide: si tu detección apunta al hash de `winhlp.exe`, el actor la anula recompilando (trivial). Si apunta al *nombre* de la tarea, la anula renombrándola (annoying). Si apunta al **comportamiento** — «PowerShell lanzado por explorer crea una tarea programada no inventariada» — el actor tendría que rediseñar su forma de operar para evadirla: eso es la cima de la pirámide (tough) y la razón de que las techniques de ATT&CK y los TTPs sean la detección más duradera. Aviso final: pintar 200 celdas de un heatmap no es un programa de detección — sin lógica que cace cada técnica, es «technique bingo».',
       },
       {
+        t: 'video',
+        title: 'Del comando al TTP: ATT&CK y la Pyramid of Pain',
+        youtube: 'XCOAc7tlPTE',
+        poster: 'videos/attack-piramide-poster.png',
+        transcript: 'videos/attack-piramide-transcript.txt',
+      },
+      {
         t: 'check',
         q: {
           q: 'Given THIS process tree, where should limited detection-engineering effort go for the most durable coverage — and why is the winhlp.exe hash the weakest investment?',

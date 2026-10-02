@@ -274,6 +274,8 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'S_nVqWYkKXM')?.module).toBe('sp4m10');
     // V5b tests the new plan and goes hunting, after the threat-hunting check and before the closing paragraph
     expect(youtubeVideos.find((v) => v.block.youtube === 'vlJ9FRtSIlM')?.module).toBe('sp4m10');
+    // V7 reads s2m5's process tree, right before the checks that ask about the same tree
+    expect(youtubeVideos.find((v) => v.block.youtube === 'XCOAc7tlPTE')?.module).toBe('s2m5');
   });
 
   it('every video block points at relative public assets that exist', async () => {

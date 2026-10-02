@@ -1,7 +1,7 @@
 # Canon de «Operación VELVET CICADA» (GCTI)
 
 Registro único de los datos ficticios de la campaña GCTI: la intrusión contra Meridian Dynamics que continúan
-las lecciones, los laboratorios y los vídeos. Estado a 2026-10-01 (vídeos publicados: V3 y V4).
+las lecciones, los laboratorios y los vídeos. Estado a 2026-10-03 (vídeos publicados: V3, V4 y V7).
 
 ## 1. Cómo se usa
 
@@ -179,6 +179,7 @@ Mensajes interceptados publicados. Son canon de la voz del adversario; un guion 
 | GLASS VIPER | «Dibuja tu diamante. Siempre te faltará una esquina: la mía.» | `video/diamond-e7/narration.json:66` |
 | GLASS VIPER | «Llámame GLASS VIPER, si te consuela. Mi nombre no lo sabrás.» | `video/diamond-e7/narration.json:142` |
 | GLASS VIPER | «Sígueme por la IP. Tengo catorce mil vecinos deseando conocerte.» | `video/diamond-e7/narration.json:282` |
+| GLASS VIPER | «Bloquea mi hash. Así ya no me volverás a ver.» | `video/attack-piramide/narration.json` (s04-01) |
 | HOLLOW LANTERN | «Mis certificados me los firmo yo. Nadie más tiene uno igual.» | `video/pivot-infra/narration.json:189` |
 | HOLLOW LANTERN | «Mi WHOIS está tapado. Privacidad, analista. Búscate otro hobby.» | `video/pivot-infra/narration.json:277` |
 | HOLLOW LANTERN | «¿Por qué no vienes a verme? Mi servidor te está esperando.» | `video/pivot-infra/narration.json:381` |
@@ -239,6 +240,12 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
    [V3] (`video/diamond-e7/src/data/s03-victim.ts:29-32`); el Lab 3B llama a la variante de Meridian
    `VC_Loader_v1.dll` (`src/data/labs.ts:816-819`). P4 dejó el `4c81...b3` sin tocar a propósito
    (`docs/superpowers/plans/2026-09-25-lesson-videos.md:626`).
+   **Resuelto en parte por V7** (§7): las dos fotos son del mismo equipo, `winhlp.exe` con `4c81...b3` el 2-3 y
+   `UpdSvc\updsvc.exe` con `9f3a...e1` el 5-3, y se leen como dos compilaciones del mismo loader (lectura del
+   caso, dicha con cautela, no demostrada en pantalla). Siguen abiertos el nombre `VC_Loader_v1.dll` del Lab 3B y
+   cuántas muestras comparten PDB (punto 11). Ojo: la muestra del sandbox con `9f3a2c...e1` crea la misma tarea
+   `WindowsUpdateCheck` (`src/data/s3.ts:338`), así que entre las dos fotos cambian el hash, el nombre y la carpeta
+   del ejecutable, no el nombre de la tarea.
 2. **¿Firmada o no?** La muestra del sandbox está firmada por «Bright Meridian Software Kft.»
    (`src/data/s3.ts:334,533`); V3 muestra `signed=false` para el mismo hash [V3]
    (`video/diamond-e7/src/data/s03-victim.ts:32`). El plan dice que es la misma muestra
@@ -365,6 +372,35 @@ Lección `src/data/s3.ts:629-631`; adversario HOLLOW LANTERN (`video/pivot-infra
 - Ciclo de vida (genérico, no es el C2): el dominio de ejemplo se activa con «edad 120 días»
   (`video/pivot-infra/src/scenes/S08Lifecycle.tsx:328`); el bloqueo previo encuentra cinco hermanos tapados
   (`video/pivot-infra/src/scenes/S09Preblock.tsx:35`).
+
+### V7 · `attack-piramide` · s2m5 · YouTube `XCOAc7tlPTE`
+
+Lección `src/data/s2.ts:1097` (bloque `youtube` entre el párrafo de la escalera de abstracción y el primer check del
+árbol); adversario de los interceptados GLASS VIPER (`video/attack-piramide/video.json:8`). Notas propias en
+`video/attack-piramide/out/script-notes.md`. Canon nuevo:
+
+- **El árbol de s2m5 se reconstruye después de E7.** Tras la alerta del 2026-03-05 a las 02:13 UTC, Meridian mira
+  en el EDR de `ENG-WS-041` cómo empezó todo; el árbol es el de la mañana del 2026-03-02, con la cabecera
+  «ENG-WS-041 · 02-03-2026 · 09:44» (sin zona y sin horas línea a línea, por §5 punto 19). La reconstrucción no
+  lleva hora. Nadie vio ni bloqueó nada el 2-3, como en V3 (dominio «desconocido» en E7).
+- **Dos fotos del mismo equipo.** 2-3: `C:\ProgramData\winhlp.exe` · `SHA-256 4c81...b3`. 5-3, con las líneas de
+  V3 sin el pipe ni `signed`: `02:11:47Z` PROC_START `C:\ProgramData\UpdSvc\updsvc.exe`, FILE_HASH `9f3a...e1`,
+  `02:13:02Z` NET_CONN `update-svc-cdn.com:443`. En voz, con cautela: «todo apunta a otra compilación del mismo
+  programa». No se dice cómo se sustituyó el binario ni cuál se compiló antes (la muestra `9f3a2c...e1` de s3m2
+  tiene compile time 2026-02-19, `src/data/s3.ts:331`).
+- **Solo para el registro (nunca en pantalla ni en voz):** `9f3a...e1` lleva el PDB (`src/data/s3.ts:332`), así
+  que es la variante 1 del Lab 3B, la de Meridian (`src/data/labs.ts:775,819`); `4c81...b3` queda con rasgos
+  estáticos sin definir y **no** es la variante 2 (`src/data/labs.ts:826`).
+- **Dos pruebas de la analista, sin fecha ni dueño:** una regla por el hash `4c81...b3` sobre la foto del 5-3 da
+  «0 coincidencias»; la regla de comportamiento de la lección («PowerShell lanzado por explorer crea una tarea
+  programada no inventariada», `src/data/s2.ts:1179`), pasada por toda la cadena del 2-3, salta en la línea de la
+  tarea, `09:44:20` (`src/data/s2.ts:81`). No se dice si el SOC las despliega.
+- **La imagen de la pirámide** continúa la de V3: la ropa es el hash; el acento, los nombres y las rutas (V3 lo usó
+  para el patrón del named pipe, lo que sobrevive a recompilar); cómo anda, los TTPs. El 5-3 «cambió de ropa y
+  disimuló el acento»; no se afirma que el 5-3 se comporte igual, porque V3 no enseña ni PowerShell ni la tarea de
+  ese día.
+- Mensaje interceptado nuevo de GLASS VIPER: «Bloquea mi hash. Así ya no me volverás a ver.»
+  (`video/attack-piramide/narration.json`, s04-01).
 
 ### Plantilla para el siguiente
 

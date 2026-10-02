@@ -237,6 +237,14 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   importing, compare the full-recording ASR with each clip and look for non-word speech inside clips; and a
   `--only` re-import must reuse the full import's gain (`--lufs=<excerpt LUFS + that gain>`), because `--match`
   measured on one sentence gave it ~1 dB more.
+  **V7 `video/attack-piramide/`** (s2m5, GCTI, `capsula-yt`, YouTube `XCOAc7tlPTE`, 3:59, published 2026-10-03): the
+  s2m5 process tree read with ATT&CK and the Pyramid of Pain, and the two loader hashes shown as two photos of
+  `ENG-WS-041` (registry §5.1 resolved only in part; §7 has the rest). Lessons: Lidia's reading landed at 93 % of
+  `--estimate` this time (V5 ~88 %, V5b 85 %), so aim the estimate near the profile's ceiling minus ~10 %; an abandoned first take
+  of the next sentence can stick to a clip's end (`verify-voice` flags it as edge energy) — rebuild that clip from her
+  own take with `recut_recording.py --part` and re-import with `--only <id> --lufs=<excerpt LUFS + full import gain>`;
+  in YouTube Studio, typed tags do not turn into chips — fill the field with `form_input`, then read the chips back and
+  delete any garbled one.
   **Mastering** (Python, venv + `pedalboard pyloudnorm librosa soundfile scipy`): `scripts/master_voice.py`
   on the narrator's WAV *before* `import-recording` (time-aligned EQ/de-ess/compression, no denoise) and
   `scripts/master_mix.py` on the rendered MP4 (generated ambient bed ducked under speech, −14 LUFS,
