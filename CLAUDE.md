@@ -229,10 +229,18 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   passes queue; `RENDER_LOCK=0` skips it); Windows/worktree fixes (bundle rename/remove retries, repo-relative
   qa-frames folder for paths under `.claude`, `CHATTERBOX_PYTHON` to borrow the main checkout's venv, since this
   exFAT drive allows no junctions).
+  **V5b `video/ir-halden-pruebas/`** (sp4m10, Security+, `capsula-yt`, YouTube `vlJ9FRtSIlM`, 3:35, published
+  2026-10-01): tabletop vs simulation and threat hunting, the first capsule made with the §8 order end to end. Lessons:
+  check the validator's arithmetic at design time (one exam card per scene and none in the closing one forced a sixth
+  scene; think prompts ≤ 48 chars); Lidia's real reading lands at ~88 % of `--estimate`; `verify-voice` cannot hear a
+  restart Whisper merges into the next words («Pues… digo… Pues igual» passed as one clean sentence), so after
+  importing, compare the full-recording ASR with each clip and look for non-word speech inside clips; and a
+  `--only` re-import must reuse the full import's gain (`--lufs=<excerpt LUFS + that gain>`), because `--match`
+  measured on one sentence gave it ~1 dB more.
   **V7 `video/attack-piramide/`** (s2m5, GCTI, `capsula-yt`, YouTube `XCOAc7tlPTE`, 3:59, published 2026-10-03): the
   s2m5 process tree read with ATT&CK and the Pyramid of Pain, and the two loader hashes shown as two photos of
   `ENG-WS-041` (registry §5.1 resolved only in part; §7 has the rest). Lessons: Lidia's reading landed at 93 % of
-  `--estimate` this time (V5b 85 %), so aim the estimate near the profile's ceiling minus ~10 %; an abandoned first take
+  `--estimate` this time (V5 ~88 %, V5b 85 %), so aim the estimate near the profile's ceiling minus ~10 %; an abandoned first take
   of the next sentence can stick to a clip's end (`verify-voice` flags it as edge energy) — rebuild that clip from her
   own take with `recut_recording.py --part` and re-import with `--only <id> --lufs=<excerpt LUFS + full import gain>`;
   in YouTube Studio, typed tags do not turn into chips — fill the field with `form_input`, then read the chips back and

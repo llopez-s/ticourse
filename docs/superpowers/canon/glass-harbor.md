@@ -1,7 +1,7 @@
 # Canon · Operación GLASS HARBOR (Autoridad Portuaria de Halden)
 
 Registro de los hechos fijos del incidente de Halden que cuentan los vídeos de Security+ y sus lecciones.
-Última revisión: 2026-10-01 (SIEM, V1, V2, V5 y las lecciones `sp1`–`sp5`).
+Última revisión: 2026-10-01 (SIEM, V1, V2, V5, V5b y las lecciones `sp1`–`sp5`).
 
 ## 1. Cómo se usa
 
@@ -11,9 +11,9 @@ Registro de los hechos fijos del incidente de Halden que cuentan los vídeos de 
 - Lo que solo está en planes o notas no es canon hasta que salga en pantalla o en voz (lista aparte en §5).
 
 **Rutas** (relativas a la raíz del repo): `siem/` = `video/siem/` · `v1/` = `video/capas-halden/` ·
-`v2/` = `video/forense-adquisicion/` · `v5/` = `video/ir-halden/` · `eng/` = `video/engine/` · `sp/` = `src/data/secplus/` ·
+`v2/` = `video/forense-adquisicion/` · `v5/` = `video/ir-halden/` · `v5b/` = `video/ir-halden-pruebas/` · `eng/` = `video/engine/` · `sp/` = `src/data/secplus/` ·
 `plan` = `docs/superpowers/plans/2026-09-25-lesson-videos.md` · `notas-v1` = `D:\LLM projects\TICourse\video\capas-halden\out\script-notes.md`
-(fuera de git, checkout principal) · `notas-v5` = `v5/out/script-notes.md` (fuera de git). «(deducido)» = cálculo propio, no lo dice ninguna fuente.
+(fuera de git, checkout principal) · `notas-v5` = `v5/out/script-notes.md` (fuera de git) · `notas-v5b` = `v5b/out/script-notes.md` (fuera de git). «(deducido)» = cálculo propio, no lo dice ninguna fuente.
 
 **Vídeos de Halden**
 
@@ -23,6 +23,7 @@ Registro de los hechos fijos del incidente de Halden que cuentan los vídeos de 
 | V1 «Defensa en capas» | sp4m7 | YouTube `GfjE0lP2H0s`, `sp/sp4-part4.ts:173-178` | la tarde del 3-9: correo, capas, caza, aislamiento |
 | V2 «Adquisición forense» | sp4m11 | MP4, `sp/sp4-part6.ts:93-100` | de las 04:12 del 4-9 al análisis del 5-9 (11:20): incautación, imagen, custodia |
 | V5 «Respuesta a incidentes» | sp4m10 | YouTube `S_nVqWYkKXM`, `sp/sp4-part5.ts:353-359` | 4-9 a mediodía y la reunión del 11-9 |
+| V5b «Antes del próximo incidente» | sp4m10 | YouTube `vlJ9FRtSIlM`, `sp/sp4-part5.ts:406-412` | octubre: la mesa del 2-10, el simulacro del 8-10 y la caza del 13-10 |
 
 ## 2. Cronología del incidente
 
@@ -66,6 +67,12 @@ Horas en CEST. 2026-09-03 es jueves y 2026-09-11 viernes (deducido, calendario).
 | 2026-09-10 · 23:30 (deducido) | Primer jueves en que habría arrancado la tarea, ya borrada («Nos vemos el jueves») | — | `v5/src/data/s06-eradicate.ts:13`, `v5/narration.json:229` |
 | 2026-09-11 | Reunión de cierre «una semana después»: dos hilos de «¿por qué?» y 6 mejoras | equipo de respuesta | `v5/src/data/s08-rca.ts:22-27`, `v5/src/data/s09-plan.ts:25-32` |
 | 18-09 → 31-10 | Plazos de las mejoras (ver §3, casos) | Seguridad, Sistemas, Correo, SOC | `v5/src/data/s09-plan.ts:26-31` |
+| 2026-10-02 (viernes) · 09:30 | La mesa (tabletop) en la sala de crisis: seis áreas; caso «03:00 · se cae el correo corporativo · ¿a quién llamas?»; «a la suplente de Seguridad», pero su número solo está en la lista de contactos del plan, dentro del correo | Seguridad, Sistemas, Operaciones, Comunicación, Dirección, Asesoría jurídica | `v5b/src/data/s02-mesa.ts:14-26`, `v5b/narration.json:68-80` |
+| 2026-10-05 | Copia de la lista de contactos fuera de banda (papel en la sala y móvil de guardia); la del correo sigue | Seguridad | `v5b/src/data/s02-mesa.ts:35`, `v5b/narration.json:86` («tres días después») |
+| 2026-10-08 (jueves) · 22:00–22:11 | El simulacro: la guardia finge un ataque en `ptl-pruebas-02` (VLAN de pruebas) y llama a la suplente; ella pulsa «Aislar equipo» y la consola del EDR responde «Acción no permitida · tu rol no incluye aislar equipos»; lo aísla la analista de guardia «por orden de la suplente»; 11 min | la suplente de Seguridad, la analista de guardia | `v5b/src/data/s03-simulacro.ts:8-35`, `:43-44` |
+| 2026-10-09 | Permiso de aislar en la cuenta de la suplente | Seguridad | `v5b/src/data/s03-simulacro.ts:48` |
+| 2026-10-13 (martes) | La caza: hipótesis «si vuelve, se moverá como la otra vez: de madrugada, con una cuenta de servicio»; logons de cuentas de servicio de 00:00 a 06:00, desde cualquier equipo, en los 30 días de la central (13-09 a 13-10); «alertas para esta hipótesis: 0» y la regla del SOC del 25-09 con «0 disparos». Resultado: solo tareas conocidas, «sin explicar: 0»; `srv-bascula01` y `srv-accesos01` nunca conectados a la central | SOC (la jugadora, en segunda persona) | `v5b/src/data/s04-caza.ts:43`, `:55-71`, `:85-87`, `v5b/src/data/s05-huecos.ts:17-20`, `:46-99` |
+| 2026-10-15 / 2026-10-16 | Regla «cuenta de servicio fuera de su horario, desde cualquier equipo» (SOC, 15-10); conectar `srv-bascula01` y `srv-accesos01` a la central (Sistemas, 16-10) | SOC, Sistemas | `v5b/src/data/s05-huecos.ts:111-119` |
 
 Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente):
 
@@ -94,6 +101,9 @@ Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente
 | L. Ferrer | Infraestructura; dueño de CHG-2041 | `sp/sp1-part3.ts:71` |
 | CISO · director de operaciones | cargos sin nombre | `sp/labs-sp4.ts:21`, `sp/sp4-part3.ts:167` |
 | Seguridad, Sistemas, Correo, SOC | áreas con mejoras asignadas | `v5/src/data/s09-plan.ts:26-31` |
+| la suplente de Seguridad | sin nombre, en femenino; la mejora del 30-09; en la mesa «aislar es cosa mía»; en el simulacro su cuenta no puede aislar (el fallo es del permiso, no de ella) | `v5b/src/data/s02-mesa.ts:26`, `v5b/src/data/s03-simulacro.ts:31-35` |
+| la analista de guardia | SOC, sin nombre; aísla `ptl-pruebas-02` por orden de la suplente | `v5b/src/data/s03-simulacro.ts:26` |
+| las seis áreas de la mesa | Seguridad, Sistemas, Operaciones, Comunicación, Dirección, Asesoría jurídica | `v5b/src/data/s02-mesa.ts:15` |
 
 ### Equipos y servidores
 
@@ -108,6 +118,9 @@ Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente
 | `mx.haldenport.example` | pasarela de correo que firma `Authentication-Results` | — | `v1/src/scenes/S02Spoof.tsx:141` |
 | VLAN producción / «VLAN cuarentena (restringida)» | redes del servidor en el SIEM | — | `siem/src/scenes/parts/s10-contain/Topology.tsx:70`, `:153` |
 | WB-04 · caja fuerte SOC | bloqueador de escritura · custodia | — | `sp/sp4-part6.ts:58`, `:64` |
+| `ptl-pruebas-02` | portátil de pruebas (SIEM); en V5b, el equipo del simulacro, en la «VLAN de pruebas» | aislado a las 22:11 del 8-10 | `siem/src/data/s04-enrich.ts:77`, `v5b/src/data/s03-simulacro.ts:10-11` |
+| `srv-bascula01` · `srv-accesos01` | báscula de camiones · control de accesos de la puerta de camiones | «0 registros · nunca conectados» a la central (13-10); se conectan el 16-10. No tienen nada que ver con la salida de los 38 GB ni con la atacante, y no se dice quién los instaló | `v5b/src/data/s05-huecos.ts:69`, `:80`, `:88`, `:111-113` |
+| la central (24 servidores) | 22 con registros y 2 nunca conectados el 13-10; con nombre en pantalla solo los que ya envían registros en el SIEM | — | `v5b/src/data/s05-huecos.ts:46-48` |
 
 ### Cuentas
 
@@ -153,6 +166,7 @@ Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente
 | hilo 1 del RCA | «Lucía abrió un adjunto» → macro → excepción de Operaciones → «de hace dos años, no caducaba nunca» | `v5/src/data/s08-rca.ts:47-52` |
 | hilo 2 del RCA | «siguió dentro horas» → «dos equipos de tres» → nadie de guardia podía aislar `ADM-WS-02` → «el plan no tenía suplentes» | `v5/src/data/s09-plan.ts:6-11` |
 | mejoras | suplentes (Seguridad, 30-09) · excepciones caducan (Sistemas, 18-09) · gestor de contraseñas con rotación (Sistemas, 31-10) · DMARC en reject (Correo, 25-09) · alerta de logon de cuentas de servicio desde estaciones (SOC, 25-09) · agente en todas las estaciones de administración (Sistemas, 15-10) | `v5/src/data/s09-plan.ts:26-31` |
+| mejoras de V5b | lista de contactos fuera de banda (Seguridad, 05-10) · permiso de aislar en la cuenta de la suplente (Seguridad, 09-10) · regla «cuenta de servicio fuera de su horario, desde cualquier equipo» (SOC, 15-10) · conectar `srv-bascula01` y `srv-accesos01` a la central (Sistemas, 16-10) | `v5b/src/data/s02-mesa.ts:35`, `v5b/src/data/s03-simulacro.ts:48`, `v5b/src/data/s05-huecos.ts:111-119` |
 
 ## 4. Adversarios por sección
 
@@ -175,6 +189,7 @@ ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tut
 | V5 s05 | «Formatea el servidor ya. Rápido, limpio y sin rastro de mí.» | `v5/narration.json:188-191` |
 | V5 s06 | «¿Borraste mi programa? Estupendo. Nos vemos el jueves.» | `v5/narration.json:228-229` |
 | V5 s08 | «Despide a Lucía y caso cerrado. De nada.» | `v5/narration.json:320-321` |
+| V5b s04 | «Sin alarma no hay nada que buscar. Duerme tranquila.» | `v5b/narration.json:137` |
 
 **Lo que no se puede destripar** en un vídeo de lección:
 
@@ -218,6 +233,17 @@ ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tut
     (`sp/sp4-part6.ts:56`, `v1/narration.json:355`). Matiz más que choque.
 13. **Esclusas (sp3, fondo).** Los PLC de las esclusas están «air-gapped» (`sp/sp3-part1.ts:394`), pero la misión 3 dice que todo cuelga del mismo switch,
     «hasta los PLC de las esclusas» (`sp/labs-sp3.ts:21`), y el dosier los hace alcanzables desde la wifi de invitados (`sp/sections.ts:87`).
+
+### Notas de V5b
+
+- **«el atacante» en la voz.** En el puente de V5b la narradora dice «En septiembre, el atacante estuvo horas dentro» (`v5b/narration.json:40`): lo
+  grabó así y Lidia decidió dejarlo. El resto de la serie dice «la atacante» (SILENT PAGER, ella), y el propio V5b sigue con «De ella, ni rastro».
+  Un guion nuevo vuelve a «la atacante».
+- **«11 min» no es una hora.** El simulacro dura 11 minutos (22:00 a 22:11); la pantalla escribe «11 min», nunca «11:00».
+- **La ventana de la caza** (13-09 a 13-10) deja fuera la noche del 4-9 a propósito; un vídeo posterior no debe decir que la caza vio la 01:52.
+- **Los dos servidores sin registros** no explican la salida de los 38 GB (que sigue siendo un hueco, abajo) ni sugieren que la atacante esté en
+  ellos. En las lecciones las básculas van asociadas a un proveedor (`sp/sp1-part3.ts:127`): V5b no dice quién instaló estos.
+- **El 8-10 es jueves**, la noche de la tarea programada ya borrada (V5 s06): casualidad, el vídeo no lo dice.
 
 ### Huecos (ninguna fuente lo dice)
 
@@ -263,8 +289,8 @@ ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tut
 - El destino de `ADM-WS-02` no se narra en V1 a propósito, para que el logon de la 01:52 siga siendo posible (`notas-v1:56-58`).
 - Lucía es «la misma usuaria del vídeo EDR antiguo», ya retirado (`plan:282`).
 - El 3-9 es jueves; el guion de V1 no nombra el día (`notas-v1:74`).
-- V5b «Antes del próximo incidente»: el plan nuevo, con suplentes, se prueba en un simulacro de mesa, y la caza parte del dosier de SILENT PAGER
-  (`plan:470-473`).
+- (Superado.) El esbozo de V5b en la tanda 2 del plan decía «simulacro de mesa» y que la caza partía del dosier de SILENT PAGER. V5b,
+  ya publicado, separa la mesa del simulacro y saca la hipótesis de lo que enseñó el incidente (la 01:52), no del dosier del jefe de sp4.
 
 ## 6. Nombres libres
 
@@ -277,7 +303,7 @@ Nombres de fondo ya usados, neutros (no tocan el caso). Mejor reutilizarlos que 
 | `fw-int01` · `srv-gis01` · 10.20.9.14 | firewall interno · servidor SSH · destino interno | `siem/src/data/s03-normalize.ts:75-79`, `:97` |
 | `a.soto` (10.20.6.52) | usuaria legítima; su ejemplo del 14/03 usa `SRV-TC-APP03` | `siem/src/data/s03-normalize.ts:54-60` |
 | `srv-tc-app01` · `svc_edi` · 198.51.100.23 | otro servidor de la terminal, su cuenta y un destino | `siem/src/data/s04-enrich.ts:15-17` |
-| `ptl-pruebas-02` | portátil de pruebas | `siem/src/data/s04-enrich.ts:77` |
+| `ptl-pruebas-02` | portátil de pruebas; V5b lo usa para el simulacro (ya no es solo relleno) | `siem/src/data/s04-enrich.ts:77`, `v5b/src/data/s03-simulacro.ts:11` |
 | `rdp01` · `srv-fich02` | escritorio remoto · servidor de ficheros | `siem/src/data/s05-correlate.ts:12`, `:26` |
 | `backup01` · `vulnscan01` · `lb-web02` | copias · escáner · balanceador | `siem/src/data/s06-fatigue.ts:23-25` |
 | 10.20.6.23 · 10.20.3.54 · 10.20.9.12 | hosts de la cola de avisos | `siem/src/data/s06-fatigue.ts:30-33` |
