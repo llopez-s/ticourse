@@ -1024,7 +1024,7 @@ mensaje va en s10, no en s11.
 
 ### V8 · s3m5 · Cápsula · «¿Bloqueo este dominio? Indicadores, STIX y TAXII»
 
-> **Aprobada por Lidia el 2026-10-03**, tal cual y con las recomendaciones de la ronda de diseño (rama `video-stix-isac`,
+> **Aprobada por Lidia el 2026-10-03**, tal cual y con las recomendaciones de la ronda de diseño, y guion congelado ese día tras su visto bueno (rama `video-stix-isac`,
 > desde `main` con V6 ya fusionado). La versión vigente de escenas y guion es `video/stix-isac/storyboard.json` +
 > `narration.json`; qué se quedó fuera, en `video/stix-isac/out/script-notes.md`.
 >
