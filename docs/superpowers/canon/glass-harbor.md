@@ -24,7 +24,7 @@ Registro de los hechos fijos del incidente de Halden que cuentan los vídeos de 
 | V2 «Adquisición forense» | sp4m11 | MP4, `sp/sp4-part6.ts:93-100` | de las 04:12 del 4-9 al análisis del 5-9 (11:20): incautación, imagen, custodia |
 | V5 «Respuesta a incidentes» | sp4m10 | YouTube `S_nVqWYkKXM`, `sp/sp4-part5.ts:353-359` | 4-9 a mediodía y la reunión del 11-9 |
 | V5b «Antes del próximo incidente» | sp4m10 | YouTube `vlJ9FRtSIlM`, `sp/sp4-part5.ts:406-412` | octubre: la mesa del 2-10, el simulacro del 8-10 y la caza del 13-10 |
-| V6 «Identidad y acceso» | sp4m8 | YouTube (id pendiente), `sp/sp4-part4.ts` (bloque de V6) | octubre: la revisión de accesos del 19-10, la jubilación del 23-10, la bóveda del 27-10 y el préstamo del 28-10 |
+| V6 «Identidad y acceso» | sp4m8 | YouTube `It1DrWKbFe4`, `sp/sp4-part4.ts:464-475` | octubre: la revisión de accesos del 19-10, la jubilación del 23-10, la bóveda del 27-10 y el préstamo del 28-10 |
 
 ## 2. Cronología del incidente
 

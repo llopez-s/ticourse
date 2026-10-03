@@ -462,6 +462,17 @@ const sp4m8: Module = {
       },
     },
     {
+      t: 'p',
+      md: 'Antes de la nota de examen, júntalo todo en el puerto: quién entra, cómo lo demuestra y hasta dónde llega.',
+    },
+    {
+      t: 'video',
+      title: 'Identidad y acceso: quién entra y hasta dónde',
+      youtube: 'It1DrWKbFe4',
+      poster: 'videos/iam-halden-poster.png',
+      transcript: 'videos/iam-halden-transcript.txt',
+    },
+    {
       t: 'callout',
       kind: 'exam',
       title: 'Nota de examen: las pistas de IAM son casi siempre literales',

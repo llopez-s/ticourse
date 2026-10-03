@@ -469,7 +469,7 @@ Las exam cards se listan en el orden de las escenas:
   una cápsula aparte.
 - **sp4m10 V5b (Cápsula): publicada el 2026-10-01 (YouTube `vlJ9FRtSIlM`), ficha completa abajo.** Tabletop frente a simulation y threat
   hunting, la otra mitad de la lección que V5 dejó fuera.
-- **sp4m8 IAM (Principal): V6, abierta el 2026-10-03 con las opciones recomendadas de su ficha (abajo).** Identidad y acceso en
+- **sp4m8 IAM (Principal): V6, publicada el 2026-10-03 (YouTube `It1DrWKbFe4`), ficha completa abajo.** Identidad y acceso en
   Halden del 19 al 28-10: altas, cambios y bajas, SAML, OAuth, MFA y la bóveda de cuentas de servicio.
 - **s2m5 ATT&CK + Pyramid (Cápsula): V7, publicada el 2026-10-03 (YouTube `XCOAc7tlPTE`), ficha completa abajo.** El árbol de procesos del
   2-3 en ATT&CK y en la pirámide, con los dos hashes del loader como prueba de su base.
@@ -666,6 +666,15 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
 > la ronda de diseño del 2-10, que quedó sin respuesta; Lidia pidió seguir con el vídeo más prioritario. **Aprobada por
 > Lidia el 2026-10-03**, con el guion ya revisado, y congelada ese día. La versión vigente de escenas y guion es
 > `video/iam-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/iam-halden/out/script-notes.md`.
+>
+> **Producido y publicado el 2026-10-03**: YouTube `It1DrWKbFe4`, 9:17, 11 escenas, 8 tarjetas, 2 preguntas, 3 mensajes
+> de SILENT PAGER con la voz de V1 y V5, voz de Lidia (s10-02 regrabada: la primera toma decía «el privilegio se pierde»),
+> música de V4, −14,1 LUFS. La grabación quedó al 93 % del estimado, como V7. En la lección sp4m8, entre el check de MFA
+> y la nota de examen, con una frase de entrada. Dos frases dicen lo que se grabó: s10-01 «Al atacante» (decisión de
+> Lidia, como el «el atacante» de V5b) y, en s08-03, Whisper oye «No se rompe nada, te agotas» donde el guion dice «No
+> rompe nada, te agota» (se deja). El canon nuevo está en `docs/superpowers/canon/glass-harbor.md`. La regrabación de
+> s10-02 se importó con `--match` y en el vídeo publicado queda ~1,4 dB más baja que sus vecinas (con `--lufs` habría
+> quedado entre ellas); YouTube no deja cambiar el archivo, así que el repo conserva el clip publicado.
 >
 > **Ajustes al abrirla** (el guion ya los lleva; la tabla de escenas de abajo es la ficha original):
 > - Duración: 520 s de escenas a 2,7 palabras/s darían ~1.400 palabras y unos 620 s estimados, por encima del techo de
