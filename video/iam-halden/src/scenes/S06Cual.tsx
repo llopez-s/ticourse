@@ -24,7 +24,8 @@ const NAME_W = W - NAME_X;
 const MIXED: Partial<Record<RowId, { x: number; y: number; rot: number }>> = {
   saml: { x: 1290, y: 150, rot: -5 },
   oauth: { x: 1420, y: 280, rot: 4 },
-  ldap: { x: 1300, y: 400, rot: -3 },
+  // Below the OIDC row, so it never covers OPENID CONNECT while it waits for «LDAP».
+  ldap: { x: 1420, y: 566, rot: -3 },
 };
 // …and where they sit first, in the middle of the empty stage, until the first scenario arrives.
 const OPENING: Partial<Record<RowId, { x: number; y: number }>> = {

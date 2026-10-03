@@ -56,7 +56,8 @@ export function S01Hook(props: SceneProps) {
   const questionIn = progress(frame, wordFrame(S, 's01-02', 'era') - 6, 14);
 
   // ---- Title and promise (right), then the title moves to the top centre.
-  const titleIn = progress(frame, title + 6, 20);
+  // Waits until the card has slid past the title's left edge (toSide ≈ 0.6), so the two never overlap.
+  const titleIn = progress(frame, title + 14, 18);
   const toTop = progress(frame, twoQ - 12, 24, EASE.inOut);
   const titleOut = progress(frame, close.from - 10, 16, EASE.inOut);
   const chipAt = PROMISE.map((p) => wordFrame(S, 's01-03', p.word) - 6);
