@@ -663,8 +663,8 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
 ### V6 · sp4m8 · Principal · «Identidad y acceso: quién entra y hasta dónde»
 
 > Abierta el 2026-10-03 (rama `video-iam-halden`, desde `main` con V7 ya fusionado) con las opciones recomendadas de
-> la ronda de diseño del 2-10, que quedó sin respuesta; Lidia pidió seguir con el vídeo más prioritario. Lo que ella
-> cambie antes de congelar el guion manda sobre esta ficha. La versión vigente de escenas y guion es
+> la ronda de diseño del 2-10, que quedó sin respuesta; Lidia pidió seguir con el vídeo más prioritario. **Aprobada por
+> Lidia el 2026-10-03**, con el guion ya revisado, y congelada ese día. La versión vigente de escenas y guion es
 > `video/iam-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/iam-halden/out/script-notes.md`.
 >
 > **Ajustes al abrirla** (el guion ya los lleva; la tabla de escenas de abajo es la ficha original):
