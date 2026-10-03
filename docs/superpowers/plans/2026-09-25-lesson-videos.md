@@ -682,6 +682,19 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
 > - Mensaje de s07: «¿Contraseña y pregunta secreta? Dos factores. Con eso vas sobrada.» (66), para no repetir la
 >   cadencia del «Qué detalle» de V1.
 > - En la voz, `c.navarro` es «una compañera de Comunicación» y `o.virta`, «un compañero de Importación» (canon nuevo).
+>
+> **Cambios de las revisiones del 2026-10-03** (exactitud y naturalidad; el guion y `storyboard.json` ya los llevan, la
+> tabla de escenas no):
+> - La bóveda rota la contraseña cada 24 h y **cada vez que alguien la devuelve**, no al sacarla (sp4m8q7 y s10).
+> - s04: el remate de SAML no dibuja ningún intento de entrar con la cuenta del jubilado; en pantalla, en condicional,
+>   «sin pase: acceso denegado».
+> - s08: reloj 00:04, porque la voz dice «a medianoche»; y sin cajero falso al final (un cajero falso es donde se copian
+>   tarjetas): la llave «no firma, por mucho que la imiten».
+> - s09: las otras cinco mejoras de V5 salen atenuadas y sin estado.
+> - s01: «¿eres quien dices?» para la authentication; s06 nombra solo SAML, OAuth y LDAP como los que mezcla el examen
+>   (OpenID Connect no está en la lista del 4.6).
+> - El capítulo V cierra con su «o sea, que…» en el armario de s10, y el final cambia «Nos vemos en Alertópolis» por
+>   «Por hoy, cerramos la garita»; en pantalla, «Tu turno», no «Ahora te toca».
 
 - **Carpeta:** `iam-halden` · perfil `principal-yt` (380–600 s renderizados; objetivo ~9 min, sin rellenar) ·
   objetivo 4.6 (identity and access management; lo confirma la cabecera de la lección, `sp4-part4.ts:315`) ·
@@ -800,12 +813,13 @@ mensaje va en s10, no en s11.
   cuenta del puerto por SAML (`:332`, `:360`, sp4m8q8), con una aserción válida 5 minutos; el planificador de atraques
   de un proveedor externo lee el calendario de atraques con un permiso `calendario.leer` de 60 minutos (`:396`). Sin
   nombres de host ni dominio para el IdP o el socio (el registro ya tiene tres dominios públicos en conflicto, §5.2).
-- **La demo de push es hipotética**: «tu móvil», reloj 00:47, sin fecha. No es un hecho del caso. La web falsa es
+- **La demo de push es hipotética**: «tu móvil», reloj 00:04 (la voz dice «a medianoche»), sin fecha. No es un hecho del caso. La web falsa es
   `haldenp0rt.example`, el ejemplo de dominio parecido que ya enseña V1 s11.
 - **2026-10-27 (martes): la mejora de V5 se cumple antes de plazo** («cuentas de servicio en gestor de contraseñas con
   rotación · Sistemas · 31-10»). Las cuentas de servicio (`svc_tosreport`, `svc_edi` y el resto) entran en la bóveda
   de Sistemas, que **ya guardaba** las credenciales de administrador del dominio (sp4m8q7 lo da como práctica del
-  puerto). Nadie conoce sus contraseñas; rotan cada 24 h y cada vez que una persona la retira. A `svc_tosreport` se le retiran los
+  puerto). Nadie conoce sus contraseñas; rotan cada 24 h y cada vez que una persona la devuelve (no al sacarla: así lo
+  dice sp4m8q7, «rotated automatically the moment the session ends»). A `svc_tosreport` se le retiran los
   privilegios especiales (el `4672` de la 01:52, que el SIEM ya enseña en pantalla): para los informes no hacían falta
   (**deducción nueva**). La contraseña robada en septiembre sirvió hasta que alguien se dio cuenta y la cambió a mano,
   el 4-9 a las 10:30 (V5); sin eso habría seguido valiendo. Con la bóveda dura 24 h como mucho, aunque nadie se dé
