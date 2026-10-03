@@ -473,7 +473,7 @@ Las exam cards se listan en el orden de las escenas:
   Halden del 19 al 28-10: altas, cambios y bajas, SAML, OAuth, MFA y la bóveda de cuentas de servicio.
 - **s2m5 ATT&CK + Pyramid (Cápsula): V7, publicada el 2026-10-03 (YouTube `XCOAc7tlPTE`), ficha completa abajo.** El árbol de procesos del
   2-3 en ATT&CK y en la pirámide, con los dos hashes del loader como prueba de su base.
-- **s3m5 STIX (Cápsula): V8, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** El aviso caducado del ISAC:
+- **s3m5 STIX (Cápsula): V8, aprobada el 2026-10-03, ficha completa abajo.** El aviso caducado del ISAC:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
 - **s4m3 ACH (Principal): V9, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** La matriz del extracto de la
   lección, celda a celda, con supuestos clave, diagnosticidad y sensibilidad; primera aparición de PAPER CRANE.
@@ -1024,11 +1024,19 @@ mensaje va en s10, no en s11.
 
 ### V8 · s3m5 · Cápsula · «¿Bloqueo este dominio? Indicadores, STIX y TAXII»
 
-> Propuesta del 2026-10-01, pendiente de la aprobación de Lidia. La versión vigente de escenas y guion será
-> `video/stix-isac/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/stix-isac/out/script-notes.md`.
+> **Aprobada por Lidia el 2026-10-03**, tal cual y con las recomendaciones de la ronda de diseño (rama `video-stix-isac`,
+> desde `main` con V6 ya fusionado). La versión vigente de escenas y guion es `video/stix-isac/storyboard.json` +
+> `narration.json`; qué se quedó fuera, en `video/stix-isac/out/script-notes.md`.
 >
-> **Un aviso por el validador:** la pregunta para pensar tiene 48 caracteres, justo el máximo de `analyzeNarration`.
-> Si se retoca, no puede crecer.
+> **Ajustes al abrirla** (el guion ya los lleva; la tabla de escenas de abajo es la ficha original):
+> - Las dos tarjetas que caían en la última frase de su escena llevan detrás el «o sea, que…» que cierra su capítulo:
+>   s03 (`wrap`, capítulo I) y s05 (`close`, capítulo II). La de s05 va en la misma frase que la marca TLP.
+> - Duración: 218 s de escenas, como V7. Guion de ~550 palabras, estimado ~4:13; con el ritmo de Lidia, ~3:55.
+> - La pregunta para pensar sigue en 48 caracteres, el máximo; en el cierre, en pantalla, «Tu turno», no «Ahora te toca».
+> - Retoques de la lección s3m5 en la PR del vídeo (recomendados en la revisión de GCTI): «used-by» pasa a «uses»,
+>   «el ISAC empuja» pasa a «publica en una colección y tu TIP lo recoge», y el JSON gana `"modified"`.
+> - **No** se renombra el intrusion set STIX de S4 (`s4.ts:1016`): el registro apunta la lectura (GLASS VIPER, el loader
+>   y el nombre de los vendors; VELVET CICADA, el intrusion set en el modelo de Meridian).
 
 - **Carpeta:** `stix-isac` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) · dominio del
   curso **Collection** (S3 · Fuentes de colección: las tarjetas llevan `"objective": "Collection"` y la insignia dice
