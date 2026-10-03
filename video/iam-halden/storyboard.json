@@ -1,0 +1,214 @@
+{
+  "title": "Identidad y acceso: quién entra y hasta dónde",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 520,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "La contraseña buena"
+    },
+    {
+      "n": 2,
+      "title": "Altas, cambios y bajas"
+    },
+    {
+      "n": 3,
+      "title": "Entrar en casa ajena"
+    },
+    {
+      "n": 4,
+      "title": "Demostrar que eres tú"
+    },
+    {
+      "n": 5,
+      "title": "Las llaves maestras"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "La contraseña buena",
+      "goal": "Puente con V5 y promesa en los primeros ~10 s. La ficha de la 01:52 del SIEM, grande: «4-9 · 01:52 · logon 4624 de svc_tosreport desde ADM-WS-07 en srv-tc-app03», con un sello verde «contraseña correcta · adelante» (cue logon). Con title, la ficha se atenúa, aparece debajo en rosa «¿era quien decía ser?» y entra el título «Identidad y acceso» con «IAM · identity and access management» debajo. Con promise, tres chips: «quién entra · cómo lo demuestra · hasta dónde llega». Con two-q, dos preguntas grandes, una cada vez: «¿quién eres?» (AUTHENTICATION) y «¿qué puedes hacer?» (AUTHORIZATION). Con route, la ruta del vídeo como cuatro paradas con icono, que se encienden en fila: altas y bajas, casa ajena, segundo factor, llaves maestras. Cierre del capítulo («o sea, que…»): vuelve la ficha de la 01:52 con «sabe la contraseña ≠ es quien dice». Nunca enseñar NULL CIPHER, el ASN ni «una sola operación» (dosier del jefe de sp4); no culpar a nadie",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "requiredCues": [
+        "logon",
+        "title",
+        "promise",
+        "two-q",
+        "route"
+      ]
+    },
+    {
+      "id": "s02-creep",
+      "chapter": 2,
+      "title": "La acreditación que solo suma",
+      "goal": "El ciclo de vida en un anillo con tres tramos: alta · cambio · baja, con JOINER · MOVER · LEAVER debajo, pequeño (cycle). Con mover se ilumina «cambio» y se atenúa lo demás; aparece la cabecera «19-10 · revisión trimestral de accesos» (es la de cada trimestre: nunca «la primera») y la ficha de c.navarro (en femenino en la voz: «una compañera de Comunicación»): Atención a navieras (2021), Facturación (2023), Comunicación (2025). Con doors, su acreditación del puerto como una tarjeta con 11 puertas: 4 en cian («de su puesto») y 7 en ámbar («de puestos anteriores»). Con creep se amplía una ámbar, «facturas a navieras · emitir», con la etiqueta «nadie lo decidió», y el nombre PERMISSION CREEP. Con review, la lista de la revisión y dos nombres: LEAST PRIVILEGE («solo lo que pide el puesto») y ATTESTATION («cada responsable confirma qué se queda»). Con removed, su responsable de Comunicación confirma las 4 cian y las 7 ámbar se desvanecen con «no confirmado · retirado». Ningún tono de culpa: ni c.navarro ni sus responsables en rojo",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "cycle",
+        "mover",
+        "doors",
+        "creep",
+        "review",
+        "removed"
+      ]
+    },
+    {
+      "id": "s03-leaver",
+      "chapter": 2,
+      "title": "Se jubila el viernes",
+      "goal": "El anillo de s02, ahora con «baja» iluminada (leaver). La ficha de o.virta (en masculino en la voz: «un compañero de Importación»), «Importación · la oficina que trata con aduanas», con «se jubila el viernes 23-10». Con choice, la pregunta para pensar con dos botones: «borrar» y «deshabilitar» (sin resaltar ninguno hasta la respuesta). Con same-day, se pulsa «deshabilitar» y la acreditación pasa a «deshabilitada · 23-10 · fin de turno». Con locker, la imagen: su taquilla, que se precinta (no se vacía); con retention, dentro de la taquilla tres etiquetas «buzón · archivos · registros · se conservan» y debajo «borrar: cuando lo diga la política de retención». El botón «borrar hoy» aparece tachado con «sin vuelta atrás». Con deprov, el nombre DEPROVISIONING. Con wrap, cierre del capítulo II: el anillo entero con «cambio: también quita» y «baja: deshabilitada ese día». Una baja sin conflicto ni sospecha: nada de despidos ni de contratistas",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "requiredCues": [
+        "leaver",
+        "choice",
+        "same-day",
+        "locker",
+        "retention",
+        "deprov",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s04-saml",
+      "chapter": 3,
+      "title": "Un pase firmado por tu casa",
+      "goal": "Diagrama de secuencia con tres carriles: «navegador · personal del puerto», «plataforma aduanera · el socio (SP)» e «IdP · Autoridad Portuaria de Halden», sin nombres de host ni dominio. Cada paso se ilumina al compás de la voz y los anteriores se atenúan. open: el navegador abre la plataforma del socio. redirect: el socio responde «no te conozco: que responda tu casa» y una flecha de redirección lleva al carril del IdP. home: la contraseña se escribe solo en el carril del IdP, con un candado «no sale de casa»; el carril del IdP enseña SOLO «contraseña» (ningún segundo factor en el IdP de Halden en todo el vídeo). assertion: el IdP emite un pase como una tarjeta de visita firmada: «quién: cuenta del puerto · para: plataforma aduanera · válido: 5 min · firma: IdP de Halden». verify: el pase viaja en el carril del navegador (lo lleva el navegador, no la usuaria en mano) hasta el socio, que lo compara con una línea discontinua «confianza acordada antes» y abre. federation: nombres ASERCIÓN SAML y FEDERATION sobre la línea discontinua. sso: un inicio de sesión en casa enciende varias webs a la vez, nombre SSO, con la norma «este inicio de sesión debe llevar segundo factor» como regla (no como estado del IdP de Halden). dies: la cuenta de o.virta (Importación, usaba esta plataforma), «deshabilitada»; el IdP no firma pase y el socio dice «acceso denegado» sin tocar nada en su lado",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "open",
+        "redirect",
+        "home",
+        "assertion",
+        "verify",
+        "federation",
+        "sso",
+        "dies"
+      ]
+    },
+    {
+      "id": "s05-oauth",
+      "chapter": 3,
+      "title": "Un vale para recoger un paquete",
+      "goal": "app: el planificador de atraques de un proveedor externo pide «usuario y contraseña del puerto» para leer el calendario de atraques. Mensaje interceptado. crossed: la casilla de contraseña, tachada, con «con tu contraseña: correo · archivos · todo · y solo se corta cambiándola». consent: secuencia OAuth con el mismo estilo que s04 (carriles app · IdP de Halden · calendario de atraques): la app te manda a casa y sale la pantalla de consentimiento «Planificador de atraques quiere: leer el calendario de atraques · Permitir / Rechazar», con «Permitir» pulsado. token: a la app le llega un permiso, no la contraseña (lo emite el IdP de Halden, no la usuaria). scope: el permiso se amplía, «alcance: calendario.leer · caduca: 60 min»; la app lee el calendario (verde) e intenta el correo: «fuera de alcance» (rosa). revoke: botón «retirar permiso», y la contraseña intacta. authz: nombre OAUTH con «autoriza y delega · no autentica». note: la imagen que se mantiene: la conserjería entrega a tu vecina un vale para recoger el paquete de hoy (no tu DNI, no tus llaves), porque tú lo autorizaste",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "app",
+        "crossed",
+        "consent",
+        "token",
+        "scope",
+        "revoke",
+        "authz",
+        "note"
+      ]
+    },
+    {
+      "id": "s06-cual",
+      "chapter": 3,
+      "title": "¿Quién eres o qué puede hacer?",
+      "goal": "Tres frases de escenario caen y se enganchan a su nombre, con los iconos de las imágenes. saml-q: «entrar en la web del socio con tu cuenta» (el pase) → SAML. oauth-q: «una app lee tu calendario sin tu contraseña» (el vale) → OAUTH. oidc: «Iniciar sesión con…» (el vale con una ficha de identidad encima) → OPENID CONNECT. ldap: debajo, el directorio detrás del IdP: «consultar el directorio de casa» → LDAP, que luego se atenúa. sum: cierre del capítulo III, fila final «SAML: quién eres, para entrar · OAuth: qué puede hacer una app por ti · OIDC: OAuth más quién eres». OpenID Connect no lleva tarjeta de examen",
+      "targetSec": 32,
+      "wordBudget": 86,
+      "requiredCues": [
+        "saml-q",
+        "oauth-q",
+        "oidc",
+        "ldap",
+        "sum"
+      ]
+    },
+    {
+      "id": "s07-factors",
+      "chapter": 4,
+      "title": "Tarjeta y PIN",
+      "goal": "Al empezar, un inicio de sesión simulado que pide «contraseña» y luego «pregunta secreta: ¿cómo se llamaba tu primera mascota?». Mensaje interceptado (antes del segundo segmento). types: cuatro columnas, algo que sabes (contraseña, PIN, pregunta), algo que tienes (token, app de códigos, llave de seguridad, tarjeta inteligente), algo que eres (huella, cara, iris) y dónde estás (ubicación, red). atm: la imagen del cajero, la tarjeta cae en «tienes» y el PIN en «sabes»; two-thefts: «dos robos distintos». same-type: la contraseña y la pregunta caen las dos en «sabes», con «una llamada con engaño se lleva las dos». one-factor: «1 factor» sobre ese par; luego un token y una app de códigos caen los dos en «tienes», también «1 factor». mfa: rótulo MFA · multifactor con «tipos distintos, no pantallas». El inicio de sesión del principio es genérico: no es la VPN ni el IdP de Halden",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "requiredCues": [
+        "types",
+        "atm",
+        "two-thefts",
+        "same-type",
+        "one-factor",
+        "mfa"
+      ]
+    },
+    {
+      "id": "s08-fatigue",
+      "chapter": 4,
+      "title": "Avisos sin parar",
+      "goal": "premise: un móvil simulado con el sello «simulación · sin fecha» y reloj 00:47 (nunca 03:xx), y una franja «alguien ya tiene tu contraseña». pushes: avisos que se apilan, «¿Estás iniciando sesión? · Aprobar / Rechazar», contador de 1 a 20, y el pulgar que se acerca a «Aprobar». fatigue: nombre MFA FATIGUE · push bombing. Pregunta para pensar (sin cue). sms: la respuesta en dos columnas; primero SMS, tachado, con «se desvía a otro móvil: SIM swapping» y «se teclea en una web falsa». key: la llave FIDO2, con «hay que tocarla, en el equipo donde se entra» y «solo firma para la web de verdad». origin: la web parecida de V1 s11, haldenp0rt.example (nunca el host real del IdP), y la llave «no firma» para ella; vuelve la imagen del cajero: una tarjeta que en un cajero falso no funciona; rótulo «resistente al phishing». Cierre del capítulo IV sin cue nuevo: las dos ideas («no se aprueba desde lejos · no sirve en una web falsa»). No decir ni insinuar que Halden vaya a usar llaves: la demo es hipotética",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "premise",
+        "pushes",
+        "fatigue",
+        "sms",
+        "key",
+        "origin"
+      ]
+    },
+    {
+      "id": "s09-vault",
+      "chapter": 5,
+      "title": "El armario de llaves",
+      "goal": "improvement: la lista de mejoras de V5 s09 con la fila resaltada «cuentas de servicio en gestor de contraseñas con rotación · Sistemas · 31-10» y un sello «27-10 · hecho». cabinet: la imagen, el armario de llaves de la garita con su libro de registro. vault: la consola de la bóveda: svc_tosreport, svc_edi «y el resto de cuentas de servicio» entran junto a «administradores del dominio · ya estaban» (la bóveda no se estrena). nobody: columna «¿quién la sabe?»: «nadie». rotate: «rotación: cada 24 h y cada vez que una persona la retira», con el registro de accesos. pam: nombres PAM (privileged access management) y PASSWORD VAULTING. before-after: barra de comparación, «septiembre: hasta que alguien se diera cuenta» con «4-9 · 10:30» en pequeño debajo, frente a «ahora: 24 h como mucho, aunque nadie se dé cuenta». least: vuelve la ficha de la 01:52 con «4672 · privilegios especiales» ampliado y «retirados · para informes no hacían falta», con LEAST PRIVILEGE. Nunca decir ni dibujar que la bóveda habría parado la 01:52: le pone un límite",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "requiredCues": [
+        "improvement",
+        "cabinet",
+        "vault",
+        "nobody",
+        "rotate",
+        "pam",
+        "before-after",
+        "least"
+      ]
+    },
+    {
+      "id": "s10-jit",
+      "chapter": 5,
+      "title": "Solo durante la ventana",
+      "goal": "Primero el mensaje interceptado. standing: lo que propone, un reloj de 24 h con «administrador del dominio · fijo» en rosa todo el día, rotulado «sin JIT · lo que propone» (no es el estado del puerto: en Halden los administradores del dominio ya se prestan por ventana). request: la consola de la bóveda, solicitud de «L. Ferrer · Infraestructura»: «administrador del dominio · motivo: cambio aprobado · ventana: 28-10 · 22:00–23:00» (sin número de cambio). approve: «aprueba: R. Salas · jefe de sistemas». checkout: el préstamo, «credencial válida hasta las 23:00 · sesión grabada · cuenta de administración, separada de la diaria». clock: cuenta atrás hasta las 23:00 y «privilegio retirado · contraseña rotada». revoked: nombre JUST-IN-TIME PERMISSIONS. copy: una copia de la credencial a las 23:05, «ya no sirve», y el nombre EPHEMERAL CREDENTIALS. lock-change: vuelve el armario de s09: se presta la llave para el trabajo y, al devolverla, se cambia la cerradura",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "requiredCues": [
+        "standing",
+        "request",
+        "approve",
+        "checkout",
+        "clock",
+        "revoked",
+        "copy",
+        "lock-change"
+      ]
+    },
+    {
+      "id": "s11-recap",
+      "chapter": 5,
+      "title": "Tres reglas",
+      "goal": "recap: los tres atajos de SILENT PAGER del vídeo, tachados en una fila. Tres tarjetas de reglas, una cada vez: rule-1 «cada cambio de puesto también quita · quien se va, deshabilitado ese día»; rule-2 «tu contraseña solo la ve tu casa, con un segundo factor de otro tipo · al socio, un pase; a la app, un permiso»; rule-3 «nadie guarda las llaves maestras · la bóveda las cambia y solo las presta en la ventana». next: «Ahora te toca: las preguntas de la lección» (sp4m8, 8 preguntas). endcard: tarjeta final ALERTÓPOLIS",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

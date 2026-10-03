@@ -469,9 +469,9 @@ Las exam cards se listan en el orden de las escenas:
   una cápsula aparte.
 - **sp4m10 V5b (Cápsula): publicada el 2026-10-01 (YouTube `vlJ9FRtSIlM`), ficha completa abajo.** Tabletop frente a simulation y threat
   hunting, la otra mitad de la lección que V5 dejó fuera.
-- **sp4m8 IAM (Principal): V6, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** Identidad y acceso en
+- **sp4m8 IAM (Principal): V6, abierta el 2026-10-03 con las opciones recomendadas de su ficha (abajo).** Identidad y acceso en
   Halden del 19 al 28-10: altas, cambios y bajas, SAML, OAuth, MFA y la bóveda de cuentas de servicio.
-- **s2m5 ATT&CK + Pyramid (Cápsula): V7, abierta el 2026-10-01, ficha completa abajo.** El árbol de procesos del
+- **s2m5 ATT&CK + Pyramid (Cápsula): V7, publicada el 2026-10-03 (YouTube `XCOAc7tlPTE`), ficha completa abajo.** El árbol de procesos del
   2-3 en ATT&CK y en la pirámide, con los dos hashes del loader como prueba de su base.
 - **s3m5 STIX (Cápsula): V8, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** El aviso caducado del ISAC:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
@@ -662,11 +662,26 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
 
 ### V6 · sp4m8 · Principal · «Identidad y acceso: quién entra y hasta dónde»
 
-> Propuesta del 2026-10-01, pendiente de la aprobación de Lidia. La versión vigente de escenas y guion será
+> Abierta el 2026-10-03 (rama `video-iam-halden`, desde `main` con V7 ya fusionado) con las opciones recomendadas de
+> la ronda de diseño del 2-10, que quedó sin respuesta; Lidia pidió seguir con el vídeo más prioritario. Lo que ella
+> cambie antes de congelar el guion manda sobre esta ficha. La versión vigente de escenas y guion es
 > `video/iam-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/iam-halden/out/script-notes.md`.
 >
-> Sin ajustes del validador pendientes: las 8 tarjetas, las 2 preguntas y los 3 mensajes están medidos con Node y caben
-> (una tarjeta por escena como mucho, ninguna en el cierre; un mensaje por capítulo como mucho, ninguno en el cierre).
+> **Ajustes al abrirla** (el guion ya los lleva; la tabla de escenas de abajo es la ficha original):
+> - Duración: 520 s de escenas a 2,7 palabras/s darían ~1.400 palabras y unos 620 s estimados, por encima del techo de
+>   600. El guion se escribe al ~95 % de cada presupuesto (~1.330 palabras, estimado ≤ 600 s); con el ritmo real de
+>   Lidia (85–93 % del estimado) saldrá entre 8:30 y 9:15.
+> - Cada tarjeta espera al final de su frase y necesita ~5 s de escena detrás, así que se nombra antes de la última
+>   frase de su escena. Cues nuevos: `wrap` (s03, cierre del capítulo II), `sso` (s04), `note` (s05, la imagen del vale
+>   después de nombrar OAuth), `mfa` (s07), `pam` (s09, donde se nombran PAM y password vaulting) y `lock-change` (s10,
+>   vuelve el armario). Las tarjetas caen en `review`, `deprov`, `federation`, `authz`, `one-factor`, `key`, `pam` y
+>   `revoked`.
+> - s01: la frase de puente tiene 19 palabras y `title` cae antes de los 12 s; `promise` va en la misma frase.
+> - La imagen de OAuth: tú dices que sí y la conserjería (tu casa) le da a tu vecina un vale para ese paquete, no tu
+>   DNI. El permiso lo emite el IdP, nunca la usuaria.
+> - Mensaje de s07: «¿Contraseña y pregunta secreta? Dos factores. Con eso vas sobrada.» (66), para no repetir la
+>   cadencia del «Qué detalle» de V1.
+> - En la voz, `c.navarro` es «una compañera de Comunicación» y `o.virta`, «un compañero de Importación» (canon nuevo).
 
 - **Carpeta:** `iam-halden` · perfil `principal-yt` (380–600 s renderizados; objetivo ~9 min, sin rellenar) ·
   objetivo 4.6 (identity and access management; lo confirma la cabecera de la lección, `sp4-part4.ts:315`) ·
