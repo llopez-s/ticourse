@@ -245,6 +245,18 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   own take with `recut_recording.py --part` and re-import with `--only <id> --lufs=<excerpt LUFS + full import gain>`;
   in YouTube Studio, typed tags do not turn into chips — fill the field with `form_input`, then read the chips back and
   delete any garbled one.
+  **V6 `video/iam-halden/`** (sp4m8, Security+, `principal-yt`, YouTube `It1DrWKbFe4`, 9:17, published 2026-10-03):
+  identity and access in Halden from the 01:52 logon to the vault of 27-10 (lifecycle, SAML, OAuth, MFA, PAM; SILENT
+  PAGER ×3). Lessons: when all three Whisper passes agree on a *different word* («el privilegio se pierde» for «se
+  pide»), ask Lidia to listen before rendering — it was a misreading, re-recorded; an RMS envelope of the master
+  (`soundfile`, 20 ms frames) settles ASR artefacts instead (a «se Se» stutter and a dropped «y su baja» were both
+  Whisper's); the `--only` re-import repeated V5b's `--match` mistake (s10-02 ~1.4 dB under its neighbours in the
+  published video) — always `--lufs=<excerpt LUFS + full import gain>`; an `sfx` stamp that must coincide with a word
+  needs its own cue on that word (`{done}Hecho.`), which changes neither the script nor the recording sheet; in
+  YouTube Studio this time, typing the comma-separated tags and pressing Enter did create the chips (read them back
+  either way). To preview a worktree, `preview_start` reads the **main checkout's** `.claude/launch.json`: add a
+  temporary entry `cmd /c npm --prefix "<worktree, forward slashes>" run dev -- --port 5174 --strictPort`, start it,
+  and restore the file at once.
   **Mastering** (Python, venv + `pedalboard pyloudnorm librosa soundfile scipy`): `scripts/master_voice.py`
   on the narrator's WAV *before* `import-recording` (time-aligned EQ/de-ess/compression, no denoise) and
   `scripts/master_mix.py` on the rendered MP4 (generated ambient bed ducked under speech, −14 LUFS,

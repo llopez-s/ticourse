@@ -1,0 +1,525 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "removed": "check",
+    "same-day": "lock",
+    "dies": "block",
+    "crossed": "error",
+    "revoke": "block",
+    "one-factor": "error",
+    "pushes": "alarm",
+    "origin": "block",
+    "revoked": "lock",
+    "copy": "error",
+    "done": "check"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<intrigued> {logon}En septiembre, una cuenta de servicio entró de madrugada en un servidor del puerto. Con su contraseña de verdad.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<serious> {title}Y el servidor le abrió, faltaría más. Pero ¿era quien decía ser?",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<clear> {promise}Para eso está la gestión de identidades y accesos, que decide quién entra, cómo lo demuestra y hasta dónde llega.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<thoughtful> {two-q}En el fondo, todo cabe en dos preguntas. ¿Eres quien dices? Eso es la authentication. ¿Qué puedes hacer? Eso es la authorization.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-hook",
+      "text": "<engaging> {route}Las seguimos en cuatro paradas, desde la gente que entra y sale hasta las llaves maestras.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-06",
+      "scene": "s01-hook",
+      "text": "<warm> O sea, que una contraseña buena demuestra que sabes algo. No demuestra quién eres.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-creep",
+      "text": "<curious> {cycle}Primero, la gente que entra y sale. Cada cuenta tiene su alta, sus cambios de puesto y su baja. En inglés, joiner, mover y leaver.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-creep",
+      "text": "<thoughtful> {mover}Lo delicado son los cambios. En la revisión de accesos de octubre aparece una compañera de Comunicación que antes pasó por otros dos puestos.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-creep",
+      "text": "<intrigued> {doors}Su acreditación abre once puertas, y siete son de aquellos puestos.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-creep",
+      "text": "<concerned> {creep}Todavía puede emitir facturas a navieras, y nadie lo decidió. Cada cambio sumó puertas y ninguno quitó las viejas. Se llama permission creep.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-creep",
+      "text": "<confident> El arreglo es dar solo lo que pide el puesto, el least privilege. Y que cada trimestre los responsables confirmen lo que se queda. {review}Eso es la attestation.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.6",
+        "text": "Permission creep: least privilege y attestation",
+        "at": "review",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-creep",
+      "text": "<satisfied> {removed}Su responsable confirma las cuatro de Comunicación y las otras siete se retiran. Sin culpables, que el fallo es del proceso.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-leaver",
+      "text": "<warm> {leaver}Y la otra punta, la baja. Un compañero de Importación, que trata con aduanas, se jubila el viernes.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-leaver",
+      "text": "<engaging> {choice}¿Qué haces con su cuenta, la borras o la deshabilitas?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Se jubila el viernes. ¿Borrar o deshabilitar?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-leaver",
+      "text": "<firm> {same-day}La deshabilitas, y ese mismo viernes, al acabar su turno. Desde ese momento no abre nada, pero todo sigue ahí.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-leaver",
+      "text": "<thoughtful> {locker}Como su taquilla, que se precinta pero no se vacía. {retention}Correo, archivos y registros se guardan hasta que la política de retención permita borrarlos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-leaver",
+      "text": "<serious> Borrar hoy no tiene vuelta atrás, y quizá mañana haga falta algo. {deprov}Cerrar así una cuenta se llama deprovisioning.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.6",
+        "text": "Baja: deshabilitar el mismo día, borrar después",
+        "at": "deprov",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-leaver",
+      "text": "<satisfied> {wrap}O sea, que un cambio de puesto también quita, y quien se va queda deshabilitado ese mismo día.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-saml",
+      "text": "<curious> {open}Ahora salimos de casa. La gente del puerto entra en la plataforma aduanera de un socio con su propia cuenta.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-saml",
+      "text": "<clear> {redirect}El socio no te pide la contraseña, te manda a tu casa. {home}La escribes allí, en el proveedor de identidad del puerto, el IdP, y de ahí no sale.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-saml",
+      "text": "<warm> {assertion}Tu casa te firma un pase de visita, que dice quién eres, para qué web y que caduca en cinco minutos.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-saml",
+      "text": "<confident> {verify}Tu navegador se lo lleva al socio, que reconoce la firma de tu casa y te abre.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-saml",
+      "text": "<clear> {federation}Ese pase es una aserción SAML, y la confianza pactada entre las dos organizaciones, la federation.",
+      "pauseAfterMs": 350,
+      "exam": {
+        "objective": "4.6",
+        "text": "Web del socio con tu cuenta: SAML y federation",
+        "at": "federation",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-saml",
+      "text": "<calm> {sso}Entrar una vez en casa y abrir muchas webs es el SSO, y por eso esa entrada debe llevar segundo factor.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-saml",
+      "text": "<satisfied> {dies}Al compañero que se jubiló, su casa ya no le firma pases, así que fuera tampoco entra.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-oauth",
+      "text": "<intrigued> {app}Otro caso. La app de un proveedor quiere leer el calendario de atraques, y te pide tu contraseña.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-oauth",
+      "text": "<mischievously> {crossed}Ese atajo sale carísimo. Con tu contraseña, la app abre tu correo, tus archivos, todo, y solo se la quitas cambiándola.",
+      "pauseAfterMs": 450,
+      "intercept": {
+        "text": "Dale tu contraseña a esa app del calendario. Va más rápido.",
+        "holdMs": 3600
+      }
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-oauth",
+      "text": "<clear> {consent}Hay otro camino. La app te manda a casa, y tu casa te pregunta si la dejas leer ese calendario. Dices que sí.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-oauth",
+      "text": "<focused> {token}Entonces tu casa le da a la app un permiso, no tu contraseña. {scope}Solo sirve para ese calendario, y caduca en una hora.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-oauth",
+      "text": "<confident> Tu correo le queda fuera. {revoke}Si dejas de fiarte, le retiras el permiso sin tocar tu contraseña.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-oauth",
+      "text": "<warm> {authz}Así funciona OAuth, que autoriza y delega, pero no dice quién eres.",
+      "pauseAfterMs": 350,
+      "exam": {
+        "objective": "4.6",
+        "text": "OAuth autoriza y delega; no autentica",
+        "at": "authz",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-oauth",
+      "text": "<thoughtful> {note}Como avisar en conserjería de que tu vecina recogerá tu paquete. Le dan un vale para ese paquete, no tu DNI.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-cual",
+      "text": "<engaging> {saml-q}El examen mezcla SAML, OAuth y LDAP a propósito. Entrar en la web del socio con tu cuenta es SAML, el pase.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-cual",
+      "text": "<clear> {oauth-q}Una app que lee tu calendario sin tu contraseña es OAuth, el vale.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-cual",
+      "text": "<curious> {oidc}¿Y el botón de iniciar sesión con otra cuenta? OpenID Connect, OAuth con una ficha de quién eres.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-cual",
+      "text": "<casual> {ldap}Y para consultar la lista de cuentas de casa, el directorio, está LDAP.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-cual",
+      "text": "<confident> {sum}O sea, que SAML te deja entrar, OAuth deja que una app actúe por ti, y OpenID Connect añade quién eres.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-factors",
+      "text": "<calm> Siguiente parada, demostrar que eres tú. Un inicio de sesión te pide la contraseña y luego una pregunta secreta.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-factors",
+      "text": "<sarcastic> ¿Sobrada? Ni de lejos. Aquí no se cuentan pantallas, se cuentan tipos de prueba.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "¿Contraseña y pregunta secreta? Dos factores. Con eso vas sobrada.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-factors",
+      "text": "<clear> {types}Algo que sabes, algo que tienes o algo que eres. Y a veces, dónde estás.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-factors",
+      "text": "<warm> {atm}Mira el cajero. La tarjeta la tienes y el PIN lo sabes, {two-thefts}así que el ladrón necesita dos robos distintos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-factors",
+      "text": "<focused> {same-type}La contraseña y la pregunta, en cambio, son dos cosas que sabes, y en una sola llamada te sacan las dos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-factors",
+      "text": "<firm> Dos pantallas, un solo factor. {one-factor}Y lo mismo un token y una app de códigos, dos cosas que tienes.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.6",
+        "text": "Dos cosas que sabes o que tienes: un solo factor",
+        "at": "one-factor",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-07",
+      "scene": "s07-factors",
+      "text": "<confident> {mfa}Eso es lo que mira la MFA, la autenticación multifactor. Tipos distintos, no más pantallas.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-fatigue",
+      "text": "<tense> {premise}Imagina tu móvil a medianoche. Alguien ya tiene tu contraseña, y solo le falta que apruebes un aviso.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-fatigue",
+      "text": "<urgent> {pushes}Y empiezan a llegar, uno, diez, veinte. Al final, por cansancio o por error, acabas pulsando aprobar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-fatigue",
+      "text": "<serious> {fatigue}Es la MFA fatigue, o push bombing. No rompe nada, te agota hasta que dices que sí.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-fatigue",
+      "text": "<engaging> Para cortarlo, ¿códigos por SMS o una llave de seguridad FIDO2?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Avisos sin parar. ¿Códigos SMS o llave FIDO2?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-fatigue",
+      "text": "<confident> {sms}Con SMS no hay avisos, pero el código se desvía a otro móvil o se teclea en una web falsa. Solo cambia el ataque.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-fatigue",
+      "text": "<warm> {key}La llave hay que tocarla en el equipo donde entras, y solo firma para la web de verdad.",
+      "pauseAfterMs": 350,
+      "exam": {
+        "objective": "4.6",
+        "text": "MFA fatigue: llave FIDO2; el SMS solo cambia el ataque",
+        "at": "key",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-07",
+      "scene": "s08-fatigue",
+      "text": "<satisfied> {origin}En una web parecida no firma, por mucho que la imiten. Por eso resiste al phishing.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-08",
+      "scene": "s08-fatigue",
+      "text": "<thoughtful> O sea, que el segundo factor bueno ni se aprueba desde lejos ni sirve en una web falsa.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-vault",
+      "text": "<calm> {improvement}Última parada, las llaves maestras. Una mejora de septiembre era meter las cuentas de servicio en un gestor de contraseñas. {done}Hecho.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-vault",
+      "text": "<warm> Es como el {cabinet}armario de llaves de la garita. Nadie se queda ninguna, y se apunta quién usa cada una.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-vault",
+      "text": "<focused> {vault}Ahora están en una bóveda así, con las de administrador, que ya vivían ahí.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-vault",
+      "text": "<clear> {nobody}Sus contraseñas no las sabe nadie, {rotate}y cambian solas cada día y cada vez que alguien devuelve una.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-vault",
+      "text": "<confident> {pam}Gestionar así el acceso con privilegio es el PAM, y la bóveda, el password vaulting.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.6",
+        "text": "Password vaulting: nadie sabe la clave y rota sola",
+        "at": "pam",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-vault",
+      "text": "<thoughtful> {before-after}No hace milagros, pero pone un límite. En septiembre la contraseña robada valió hasta que alguien se dio cuenta. Ahora, un día como mucho, aunque nadie se entere.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-07",
+      "scene": "s09-vault",
+      "text": "<firm> {least}Y la cuenta de septiembre, que solo sacaba informes, pierde sus privilegios especiales. Least privilege, otra vez.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-jit",
+      "text": "<sarcastic> {standing}Al atacante le vendría de perlas. Un administrador fijo es administrador todo el día, y su contraseña robada vale cualquier noche.",
+      "pauseAfterMs": 450,
+      "intercept": {
+        "text": "Admin fijo y listo. Pedir permiso cada vez es un rollo.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-jit",
+      "text": "<clear> {request}En el puerto, el privilegio se pide. Alguien de Infraestructura necesita ser administrador para un cambio aprobado, de diez a once de la noche.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-jit",
+      "text": "<focused> {approve}El jefe de sistemas lo aprueba, {checkout}y la bóveda le presta una contraseña que solo vale hasta las once.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-jit",
+      "text": "<steady> {clock}A las once en punto, el privilegio desaparece y la contraseña cambia sola.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-jit",
+      "text": "<confident> El privilegio dura lo que la ventana. {revoked}Son los permisos just-in-time.",
+      "pauseAfterMs": 350,
+      "exam": {
+        "objective": "4.6",
+        "text": "JIT: privilegio solo en la ventana aprobada",
+        "at": "revoked",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-06",
+      "scene": "s10-jit",
+      "text": "<satisfied> {copy}Si alguien copió esa contraseña, a las once y cinco ya no le sirve. Es una ephemeral credential, una credencial efímera.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-07",
+      "scene": "s10-jit",
+      "text": "<warm> {lock-change}O sea, que en la garita te prestan la llave para el trabajo y, al devolverla, cambian la cerradura.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-recap",
+      "text": "<engaging> {recap}Tres atajos te ha ofrecido SILENT PAGER, y con los tres entraba. Contra cada uno, una regla.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-recap",
+      "text": "<confident> {rule-1}Con las cuentas, cambiar de puesto también quita, y la cuenta de quien se va se precinta ese día.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-recap",
+      "text": "<clear> {rule-2}Con las contraseñas, la tuya solo la ve tu casa, y la acompaña un factor de otro tipo. Al socio, un pase, y a la app, un permiso.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-04",
+      "scene": "s11-recap",
+      "text": "<warm> {rule-3}Y con las llaves maestras, nadie se las queda. La bóveda las cambia sola y solo las presta durante la ventana.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s11-05",
+      "scene": "s11-recap",
+      "text": "<cheerful> {next}Para ponerte a prueba, tienes las ocho preguntas de la lección. {endcard}Por hoy, cerramos la garita.",
+      "pauseAfterMs": 700
+    }
+  ]
+}

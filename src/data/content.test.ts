@@ -276,6 +276,8 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'vlJ9FRtSIlM')?.module).toBe('sp4m10');
     // V7 reads s2m5's process tree, right before the checks that ask about the same tree
     expect(youtubeVideos.find((v) => v.block.youtube === 'XCOAc7tlPTE')?.module).toBe('s2m5');
+    // V6 gathers identity and access in the port, after the MFA check and before the exam note
+    expect(youtubeVideos.find((v) => v.block.youtube === 'It1DrWKbFe4')?.module).toBe('sp4m8');
   });
 
   it('every video block points at relative public assets that exist', async () => {

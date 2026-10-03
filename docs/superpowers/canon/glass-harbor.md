@@ -1,7 +1,7 @@
 # Canon · Operación GLASS HARBOR (Autoridad Portuaria de Halden)
 
 Registro de los hechos fijos del incidente de Halden que cuentan los vídeos de Security+ y sus lecciones.
-Última revisión: 2026-10-01 (SIEM, V1, V2, V5, V5b y las lecciones `sp1`–`sp5`).
+Última revisión: 2026-10-03 (SIEM, V1, V2, V5, V5b, V6 y las lecciones `sp1`–`sp5`).
 
 ## 1. Cómo se usa
 
@@ -11,9 +11,9 @@ Registro de los hechos fijos del incidente de Halden que cuentan los vídeos de 
 - Lo que solo está en planes o notas no es canon hasta que salga en pantalla o en voz (lista aparte en §5).
 
 **Rutas** (relativas a la raíz del repo): `siem/` = `video/siem/` · `v1/` = `video/capas-halden/` ·
-`v2/` = `video/forense-adquisicion/` · `v5/` = `video/ir-halden/` · `v5b/` = `video/ir-halden-pruebas/` · `eng/` = `video/engine/` · `sp/` = `src/data/secplus/` ·
+`v2/` = `video/forense-adquisicion/` · `v5/` = `video/ir-halden/` · `v5b/` = `video/ir-halden-pruebas/` · `v6/` = `video/iam-halden/` · `eng/` = `video/engine/` · `sp/` = `src/data/secplus/` ·
 `plan` = `docs/superpowers/plans/2026-09-25-lesson-videos.md` · `notas-v1` = `D:\LLM projects\TICourse\video\capas-halden\out\script-notes.md`
-(fuera de git, checkout principal) · `notas-v5` = `v5/out/script-notes.md` (fuera de git) · `notas-v5b` = `v5b/out/script-notes.md` (fuera de git). «(deducido)» = cálculo propio, no lo dice ninguna fuente.
+(fuera de git, checkout principal) · `notas-v5` = `v5/out/script-notes.md` (fuera de git) · `notas-v5b` = `v5b/out/script-notes.md` (fuera de git) · `notas-v6` = `v6/out/script-notes.md` (fuera de git). «(deducido)» = cálculo propio, no lo dice ninguna fuente.
 
 **Vídeos de Halden**
 
@@ -24,6 +24,7 @@ Registro de los hechos fijos del incidente de Halden que cuentan los vídeos de 
 | V2 «Adquisición forense» | sp4m11 | MP4, `sp/sp4-part6.ts:93-100` | de las 04:12 del 4-9 al análisis del 5-9 (11:20): incautación, imagen, custodia |
 | V5 «Respuesta a incidentes» | sp4m10 | YouTube `S_nVqWYkKXM`, `sp/sp4-part5.ts:353-359` | 4-9 a mediodía y la reunión del 11-9 |
 | V5b «Antes del próximo incidente» | sp4m10 | YouTube `vlJ9FRtSIlM`, `sp/sp4-part5.ts:406-412` | octubre: la mesa del 2-10, el simulacro del 8-10 y la caza del 13-10 |
+| V6 «Identidad y acceso» | sp4m8 | YouTube `It1DrWKbFe4`, `sp/sp4-part4.ts:464-475` | octubre: la revisión de accesos del 19-10, la jubilación del 23-10, la bóveda del 27-10 y el préstamo del 28-10 |
 
 ## 2. Cronología del incidente
 
@@ -73,6 +74,12 @@ Horas en CEST. 2026-09-03 es jueves y 2026-09-11 viernes (deducido, calendario).
 | 2026-10-09 | Permiso de aislar en la cuenta de la suplente | Seguridad | `v5b/src/data/s03-simulacro.ts:48` |
 | 2026-10-13 (martes) | La caza: hipótesis «si vuelve, se moverá como la otra vez: de madrugada, con una cuenta de servicio»; logons de cuentas de servicio de 00:00 a 06:00, desde cualquier equipo, en los 30 días de la central (13-09 a 13-10); «alertas para esta hipótesis: 0» y la regla del SOC del 25-09 con «0 disparos». Resultado: solo tareas conocidas, «sin explicar: 0»; `srv-bascula01` y `srv-accesos01` nunca conectados a la central | SOC (la jugadora, en segunda persona) | `v5b/src/data/s04-caza.ts:43`, `:55-71`, `:85-87`, `v5b/src/data/s05-huecos.ts:17-20`, `:46-99` |
 | 2026-10-15 / 2026-10-16 | Regla «cuenta de servicio fuera de su horario, desde cualquier equipo» (SOC, 15-10); conectar `srv-bascula01` y `srv-accesos01` a la central (Sistemas, 16-10) | SOC, Sistemas | `v5b/src/data/s05-huecos.ts:111-119` |
+| 2026-10-19 (lunes) | «19-10 · revisión trimestral de accesos» (la de cada trimestre, nunca «la primera»): `c.navarro`, de Comunicación (antes Atención a navieras · 2021 y Facturación · 2023), tiene 11 permisos, 4 de su puesto; su responsable confirma los 4 y se retiran los otros 7, entre ellos «facturas a navieras · emitir» («nadie lo decidió») | `c.navarro`, responsable de Comunicación | `v6/src/data/s02-creep.ts:8-10`, `v6/narration.json` (s02) |
+| 2026-10-23 (viernes) · fin de turno | Se jubila `o.virta`, de Importación («la oficina que trata con aduanas»): cuenta «deshabilitada · 23-10 · fin de turno»; buzón, archivos y registros se conservan hasta que lo permita la política de retención. Sin conflicto ni sospecha. Con la cuenta deshabilitada, el IdP no le firma pases para la plataforma aduanera del socio («sin pase: acceso denegado», en condicional: nadie intenta entrar) | `o.virta` | `v6/src/data/s03-leaver.ts:7-16`, `v6/src/data/s04-saml.ts:27-31` |
+| sin fecha (como la lección) | El personal del puerto entra en la plataforma aduanera del socio con su cuenta del puerto por SAML: pase «válido: 5 min», «firma: IdP de Halden»; el carril del IdP pide **solo contraseña** | personal del puerto, IdP de Halden | `v6/src/scenes/parts/PassCard.tsx:21-22`, `v6/src/data/s04-saml.ts:11` |
+| sin fecha (como la lección) | La app «Planificador de atraques» de un proveedor externo lee el calendario de atraques por OAuth: «alcance: calendario.leer · caduca: 60 min», emitido por el IdP de Halden | proveedor externo | `v6/src/data/s05-oauth.ts:9`, `:41-42` |
+| 2026-10-27 (martes) | La mejora de V5 «cuentas de servicio en gestor de contraseñas con rotación · Sistemas · 31-10», «27-10 · hecho»: `svc_tosreport`, `svc_edi` y el resto entran en la «bóveda de Sistemas», que ya guardaba los administradores del dominio («ya estaban»); «¿quién la sabe?: nadie»; rotación «cada 24 h y cada vez que una persona la devuelve». A `svc_tosreport` se le retiran los privilegios especiales (`4672`): «retirados · solo sacaba informes» (deducción de V6) | Sistemas | `v6/src/data/s09-vault.ts:23`, `:37-50`, `v6/src/scenes/parts/LogonCard.tsx:32` |
+| 2026-10-28 (miércoles) · 22:00–23:00 | Préstamo just-in-time: «L. Ferrer · Infraestructura» pide «administrador del dominio · motivo: cambio aprobado · ventana: 28-10 · 22:00–23:00»; «aprueba: R. Salas · jefe de sistemas»; credencial válida hasta las 23:00, sesión grabada, cuenta de administración separada de la diaria; a las 23:00 «privilegio retirado · contraseña rotada»; una «copia · 23:05» «ya no sirve» | L. Ferrer, R. Salas | `v6/src/data/s10-jit.ts:14-32` |
 
 Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente):
 
@@ -97,8 +104,10 @@ Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente
 | M. Aalto | SOC, credencial 2211; incauta el SSD | `sp/sp4-part6.ts:57`, `v2/src/data/canon.ts:24-25` |
 | J. Rekola | Asesoría jurídica; testigo | `sp/sp4-part6.ts:57`, `v2/src/data/canon.ts:26-27` |
 | R. Sandoval | laboratorio forense | `sp/sp4-part6.ts:63`, `v2/src/data/canon.ts:28`, `v2/narration.json:69` |
-| R. Salas | jefe de sistemas; aprobó la exclusión EXC-01 | `siem/src/data/s07-tuning.ts:58` |
-| L. Ferrer | Infraestructura; dueño de CHG-2041 | `sp/sp1-part3.ts:71` |
+| R. Salas | jefe de sistemas; aprobó la exclusión EXC-01; aprueba el préstamo just-in-time del 28-10 | `siem/src/data/s07-tuning.ts:58`, `v6/src/data/s10-jit.ts:20` |
+| L. Ferrer | Infraestructura; dueño de CHG-2041; pide el préstamo just-in-time del 28-10 (en voz, «alguien de Infraestructura») | `sp/sp1-part3.ts:71`, `v6/src/data/s10-jit.ts:14` |
+| `c.navarro` | Comunicación (antes Atención a navieras y Facturación); en voz, «una compañera de Comunicación»; sus permisos acumulados no son culpa de nadie | `v6/src/data/s02-creep.ts:10` |
+| `o.virta` | Importación, «la oficina que trata con aduanas»; usaba la plataforma aduanera del socio; se jubila el 23-10; en voz, «un compañero de Importación» | `v6/src/data/s03-leaver.ts:7` |
 | CISO · director de operaciones | cargos sin nombre | `sp/labs-sp4.ts:21`, `sp/sp4-part3.ts:167` |
 | Seguridad, Sistemas, Correo, SOC | áreas con mejoras asignadas | `v5/src/data/s09-plan.ts:26-31` |
 | la suplente de Seguridad | sin nombre, en femenino; la mejora del 30-09; en la mesa «aislar es cosa mía»; en el simulacro su cuenta no puede aislar (el fallo es del permiso, no de ella) | `v5b/src/data/s02-mesa.ts:26`, `v5b/src/data/s03-simulacro.ts:31-35` |
@@ -128,6 +137,8 @@ Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente
 |---|---|---|
 | `svc_tosreport` | cuenta de servicio; línea base «informes, lunes a viernes 08-18 h»; su único punto fuera de horario es «hoy, 01:52»; credencial rotada / contraseña cambiada el 4-9 | `siem/src/data/s09-pivot.ts:36`, `:60`, `siem/src/scenes/parts/s09-pivot/UbaHeatmap.tsx:277`, `siem/src/scenes/parts/s10-contain/Closure.tsx:36-40`, `v5/src/data/s05-order.ts:63` |
 | (ninguna más) | En el alcance del 3-9 no hay ninguna cuenta: aún no se sabía lo de la credencial | `v5/src/data/s03-scope.ts:6` (comentario), `v5/narration.json:110` |
+| `svc_tosreport` (desde el 27-10) | en la bóveda de Sistemas, rota cada 24 h y al devolverse; sin privilegios especiales («retirados · solo sacaba informes») | `v6/src/data/s09-vault.ts:37-42`, `v6/src/scenes/parts/LogonCard.tsx:32` |
+| `svc_edi` (desde el 27-10) | en la bóveda de Sistemas, sin más relación con el caso (no se liga al aviso de ejemplo del SIEM) | `v6/src/data/s09-vault.ts:37` |
 
 ### Dominios, IP y hashes
 
@@ -165,7 +176,7 @@ Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente
 | pizarra de 7 columnas | fases con su condición de cierre; horas escritas solo 16:09, 16:15 y 10:30 | `v5/src/scenes/parts/Board.tsx:36-42`, `:62` |
 | hilo 1 del RCA | «Lucía abrió un adjunto» → macro → excepción de Operaciones → «de hace dos años, no caducaba nunca» | `v5/src/data/s08-rca.ts:47-52` |
 | hilo 2 del RCA | «siguió dentro horas» → «dos equipos de tres» → nadie de guardia podía aislar `ADM-WS-02` → «el plan no tenía suplentes» | `v5/src/data/s09-plan.ts:6-11` |
-| mejoras | suplentes (Seguridad, 30-09) · excepciones caducan (Sistemas, 18-09) · gestor de contraseñas con rotación (Sistemas, 31-10) · DMARC en reject (Correo, 25-09) · alerta de logon de cuentas de servicio desde estaciones (SOC, 25-09) · agente en todas las estaciones de administración (Sistemas, 15-10) | `v5/src/data/s09-plan.ts:26-31` |
+| mejoras | suplentes (Seguridad, 30-09) · excepciones caducan (Sistemas, 18-09) · gestor de contraseñas con rotación (Sistemas, 31-10; hecha el 27-10, V6) · DMARC en reject (Correo, 25-09) · alerta de logon de cuentas de servicio desde estaciones (SOC, 25-09) · agente en todas las estaciones de administración (Sistemas, 15-10) | `v5/src/data/s09-plan.ts:26-31` |
 | mejoras de V5b | lista de contactos fuera de banda (Seguridad, 05-10) · permiso de aislar en la cuenta de la suplente (Seguridad, 09-10) · regla «cuenta de servicio fuera de su horario, desde cualquier equipo» (SOC, 15-10) · conectar `srv-bascula01` y `srv-accesos01` a la central (Sistemas, 16-10) | `v5b/src/data/s02-mesa.ts:35`, `v5b/src/data/s03-simulacro.ts:48`, `v5b/src/data/s05-huecos.ts:111-119` |
 
 ## 4. Adversarios por sección
@@ -190,6 +201,9 @@ ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tut
 | V5 s06 | «¿Borraste mi programa? Estupendo. Nos vemos el jueves.» | `v5/narration.json:228-229` |
 | V5 s08 | «Despide a Lucía y caso cerrado. De nada.» | `v5/narration.json:320-321` |
 | V5b s04 | «Sin alarma no hay nada que buscar. Duerme tranquila.» | `v5b/narration.json:137` |
+| V6 s05 | «Dale tu contraseña a esa app del calendario. Va más rápido.» | `v6/narration.json:214` |
+| V6 s07 | «¿Contraseña y pregunta secreta? Dos factores. Con eso vas sobrada.» | `v6/narration.json:296` |
+| V6 s10 | «Admin fijo y listo. Pedir permiso cada vez es un rollo.» | `v6/narration.json:448` |
 
 **Lo que no se puede destripar** en un vídeo de lección:
 
@@ -211,7 +225,8 @@ ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tut
    `v5/src/scenes/parts/Board.tsx:59`). En V1 el 0412 sale entre 16:04 y 16:11 del 3-9, justo cuando V5 declara el IR-2026-0147 (16:09).
 2. **Dominio público.** V1 `haldenport.example` (`v1/src/scenes/S02Spoof.tsx:94`); SIEM `puerto-halden.example` (`siem/src/data/s08-triage.ts:13`, `:15`);
    sp2 da a entender `haldenport.com` («the port authority's real domain», `sp/sp2-part2.ts:227`; `sp/labs-sp2.ts:186`, `sp/sp2-part2.ts:129`).
-   El plan pidió anotarlo sin corregir (`plan:631-632`).
+   El plan pidió anotarlo sin corregir (`plan:631-632`). V6 sigue a V1: su web parecida es `haldenp0rt.example` (`v6/src/data/s08-fatigue.ts:33`),
+   lo que da a entender que el IdP vive bajo `haldenport.example`, aunque el host real del IdP y del socio no sale nunca.
 3. **Hora de la sala de crisis.** `plan:508` dice «4-9 a las 10:00»; V5 enseña 12:00 (`v5/src/data/s01-hook.ts:94`) y el propio plan lo repite en `:548`.
    `notas-v5:37` también habla de las 10:00.
 4. **Cierre de la contención.** `notas-v5:31-33`: «todo se cierra a las 04:30… (antes se decía 03:05)»; la pantalla dice 10:30 (`v5/src/scenes/parts/Board.tsx:62`,
@@ -244,6 +259,22 @@ ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tut
 - **Los dos servidores sin registros** no explican la salida de los 38 GB (que sigue siendo un hueco, abajo) ni sugieren que la atacante esté en
   ellos. En las lecciones las básculas van asociadas a un proveedor (`sp/sp1-part3.ts:127`): V5b no dice quién instaló estos.
 - **El 8-10 es jueves**, la noche de la tarea programada ya borrada (V5 s06): casualidad, el vídeo no lo dice.
+
+### Notas de V6
+
+- **El IdP de Halden no enseña segundo factor** en ningún momento de V6: el carril del IdP de s04 solo pide contraseña, y el segundo
+  factor sale como norma («ese inicio de sesión debe llevar segundo factor») y en una demo hipotética de «tu móvil», «simulación · sin
+  fecha», reloj 00:04 (`v6/src/data/s08-fatigue.ts:9`). La ficha de V10 fija la MFA del proveedor de identidad para el 30-11; V6 no se adelanta.
+- **La bóveda le pone un límite, no lo habría evitado.** La contraseña robada de septiembre sirvió «hasta que alguien se diera cuenta»
+  (10:30 del 4-9); con la bóveda, «24 h como mucho, aunque nadie se dé cuenta». Ningún vídeo debe decir que la bóveda o el segundo
+  factor habrían parado la 01:52.
+- **Rotación al devolver.** La bóveda rota la contraseña cuando una persona la devuelve, no cuando la saca (`v6/src/data/s09-vault.ts:40`),
+  como dice sp4m8q7.
+- **Los privilegios especiales de `svc_tosreport`** (el `4672` de la 01:52) se retiran el 27-10 porque «solo sacaba informes»: deducción
+  de V6 a partir de la pantalla del SIEM; no culpa a quien se los dio.
+- **Géneros fijados por la voz:** `c.navarro` es «una compañera»; `o.virta`, «un compañero».
+- **«Al atacante» en la voz.** La respuesta de s10-01 dice «Al atacante le vendría de perlas» (`v6/narration.json`, s10-01): lo grabó así y
+  Lidia decidió dejarlo, como el «el atacante» de V5b. SILENT PAGER sigue siendo «ella» y un guion nuevo vuelve a «la atacante».
 
 ### Huecos (ninguna fuente lo dice)
 

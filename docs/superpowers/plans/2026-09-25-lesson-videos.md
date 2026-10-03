@@ -469,9 +469,9 @@ Las exam cards se listan en el orden de las escenas:
   una cápsula aparte.
 - **sp4m10 V5b (Cápsula): publicada el 2026-10-01 (YouTube `vlJ9FRtSIlM`), ficha completa abajo.** Tabletop frente a simulation y threat
   hunting, la otra mitad de la lección que V5 dejó fuera.
-- **sp4m8 IAM (Principal): V6, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** Identidad y acceso en
+- **sp4m8 IAM (Principal): V6, publicada el 2026-10-03 (YouTube `It1DrWKbFe4`), ficha completa abajo.** Identidad y acceso en
   Halden del 19 al 28-10: altas, cambios y bajas, SAML, OAuth, MFA y la bóveda de cuentas de servicio.
-- **s2m5 ATT&CK + Pyramid (Cápsula): V7, abierta el 2026-10-01, ficha completa abajo.** El árbol de procesos del
+- **s2m5 ATT&CK + Pyramid (Cápsula): V7, publicada el 2026-10-03 (YouTube `XCOAc7tlPTE`), ficha completa abajo.** El árbol de procesos del
   2-3 en ATT&CK y en la pirámide, con los dos hashes del loader como prueba de su base.
 - **s3m5 STIX (Cápsula): V8, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** El aviso caducado del ISAC:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
@@ -662,11 +662,48 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
 
 ### V6 · sp4m8 · Principal · «Identidad y acceso: quién entra y hasta dónde»
 
-> Propuesta del 2026-10-01, pendiente de la aprobación de Lidia. La versión vigente de escenas y guion será
+> Abierta el 2026-10-03 (rama `video-iam-halden`, desde `main` con V7 ya fusionado) con las opciones recomendadas de
+> la ronda de diseño del 2-10, que quedó sin respuesta; Lidia pidió seguir con el vídeo más prioritario. **Aprobada por
+> Lidia el 2026-10-03**, con el guion ya revisado, y congelada ese día. La versión vigente de escenas y guion es
 > `video/iam-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/iam-halden/out/script-notes.md`.
 >
-> Sin ajustes del validador pendientes: las 8 tarjetas, las 2 preguntas y los 3 mensajes están medidos con Node y caben
-> (una tarjeta por escena como mucho, ninguna en el cierre; un mensaje por capítulo como mucho, ninguno en el cierre).
+> **Producido y publicado el 2026-10-03**: YouTube `It1DrWKbFe4`, 9:17, 11 escenas, 8 tarjetas, 2 preguntas, 3 mensajes
+> de SILENT PAGER con la voz de V1 y V5, voz de Lidia (s10-02 regrabada: la primera toma decía «el privilegio se pierde»),
+> música de V4, −14,1 LUFS. La grabación quedó al 93 % del estimado, como V7. En la lección sp4m8, entre el check de MFA
+> y la nota de examen, con una frase de entrada. Dos frases dicen lo que se grabó: s10-01 «Al atacante» (decisión de
+> Lidia, como el «el atacante» de V5b) y, en s08-03, Whisper oye «No se rompe nada, te agotas» donde el guion dice «No
+> rompe nada, te agota» (se deja). El canon nuevo está en `docs/superpowers/canon/glass-harbor.md`. La regrabación de
+> s10-02 se importó con `--match` y en el vídeo publicado queda ~1,4 dB más baja que sus vecinas (con `--lufs` habría
+> quedado entre ellas); YouTube no deja cambiar el archivo, así que el repo conserva el clip publicado.
+>
+> **Ajustes al abrirla** (el guion ya los lleva; la tabla de escenas de abajo es la ficha original):
+> - Duración: 520 s de escenas a 2,7 palabras/s darían ~1.400 palabras y unos 620 s estimados, por encima del techo de
+>   600. El guion se escribe al ~95 % de cada presupuesto (~1.330 palabras, estimado ≤ 600 s); con el ritmo real de
+>   Lidia (85–93 % del estimado) saldrá entre 8:30 y 9:15.
+> - Cada tarjeta espera al final de su frase y necesita ~5 s de escena detrás, así que se nombra antes de la última
+>   frase de su escena. Cues nuevos: `wrap` (s03, cierre del capítulo II), `sso` (s04), `note` (s05, la imagen del vale
+>   después de nombrar OAuth), `mfa` (s07), `pam` (s09, donde se nombran PAM y password vaulting) y `lock-change` (s10,
+>   vuelve el armario). Las tarjetas caen en `review`, `deprov`, `federation`, `authz`, `one-factor`, `key`, `pam` y
+>   `revoked`.
+> - s01: la frase de puente tiene 19 palabras y `title` cae antes de los 12 s; `promise` va en la misma frase.
+> - La imagen de OAuth: tú dices que sí y la conserjería (tu casa) le da a tu vecina un vale para ese paquete, no tu
+>   DNI. El permiso lo emite el IdP, nunca la usuaria.
+> - Mensaje de s07: «¿Contraseña y pregunta secreta? Dos factores. Con eso vas sobrada.» (66), para no repetir la
+>   cadencia del «Qué detalle» de V1.
+> - En la voz, `c.navarro` es «una compañera de Comunicación» y `o.virta`, «un compañero de Importación» (canon nuevo).
+>
+> **Cambios de las revisiones del 2026-10-03** (exactitud y naturalidad; el guion y `storyboard.json` ya los llevan, la
+> tabla de escenas no):
+> - La bóveda rota la contraseña cada 24 h y **cada vez que alguien la devuelve**, no al sacarla (sp4m8q7 y s10).
+> - s04: el remate de SAML no dibuja ningún intento de entrar con la cuenta del jubilado; en pantalla, en condicional,
+>   «sin pase: acceso denegado».
+> - s08: reloj 00:04, porque la voz dice «a medianoche»; y sin cajero falso al final (un cajero falso es donde se copian
+>   tarjetas): la llave «no firma, por mucho que la imiten».
+> - s09: las otras cinco mejoras de V5 salen atenuadas y sin estado.
+> - s01: «¿eres quien dices?» para la authentication; s06 nombra solo SAML, OAuth y LDAP como los que mezcla el examen
+>   (OpenID Connect no está en la lista del 4.6).
+> - El capítulo V cierra con su «o sea, que…» en el armario de s10, y el final cambia «Nos vemos en Alertópolis» por
+>   «Por hoy, cerramos la garita»; en pantalla, «Tu turno», no «Ahora te toca».
 
 - **Carpeta:** `iam-halden` · perfil `principal-yt` (380–600 s renderizados; objetivo ~9 min, sin rellenar) ·
   objetivo 4.6 (identity and access management; lo confirma la cabecera de la lección, `sp4-part4.ts:315`) ·
@@ -785,12 +822,13 @@ mensaje va en s10, no en s11.
   cuenta del puerto por SAML (`:332`, `:360`, sp4m8q8), con una aserción válida 5 minutos; el planificador de atraques
   de un proveedor externo lee el calendario de atraques con un permiso `calendario.leer` de 60 minutos (`:396`). Sin
   nombres de host ni dominio para el IdP o el socio (el registro ya tiene tres dominios públicos en conflicto, §5.2).
-- **La demo de push es hipotética**: «tu móvil», reloj 00:47, sin fecha. No es un hecho del caso. La web falsa es
+- **La demo de push es hipotética**: «tu móvil», reloj 00:04 (la voz dice «a medianoche»), sin fecha. No es un hecho del caso. La web falsa es
   `haldenp0rt.example`, el ejemplo de dominio parecido que ya enseña V1 s11.
 - **2026-10-27 (martes): la mejora de V5 se cumple antes de plazo** («cuentas de servicio en gestor de contraseñas con
   rotación · Sistemas · 31-10»). Las cuentas de servicio (`svc_tosreport`, `svc_edi` y el resto) entran en la bóveda
   de Sistemas, que **ya guardaba** las credenciales de administrador del dominio (sp4m8q7 lo da como práctica del
-  puerto). Nadie conoce sus contraseñas; rotan cada 24 h y cada vez que una persona la retira. A `svc_tosreport` se le retiran los
+  puerto). Nadie conoce sus contraseñas; rotan cada 24 h y cada vez que una persona la devuelve (no al sacarla: así lo
+  dice sp4m8q7, «rotated automatically the moment the session ends»). A `svc_tosreport` se le retiran los
   privilegios especiales (el `4672` de la 01:52, que el SIEM ya enseña en pantalla): para los informes no hacían falta
   (**deducción nueva**). La contraseña robada en septiembre sirvió hasta que alguien se dio cuenta y la cambió a mano,
   el 4-9 a las 10:30 (V5); sin eso habría seguido valiendo. Con la bóveda dura 24 h como mucho, aunque nadie se dé
