@@ -473,7 +473,7 @@ Las exam cards se listan en el orden de las escenas:
   Halden del 19 al 28-10: altas, cambios y bajas, SAML, OAuth, MFA y la bóveda de cuentas de servicio.
 - **s2m5 ATT&CK + Pyramid (Cápsula): V7, publicada el 2026-10-03 (YouTube `XCOAc7tlPTE`), ficha completa abajo.** El árbol de procesos del
   2-3 en ATT&CK y en la pirámide, con los dos hashes del loader como prueba de su base.
-- **s3m5 STIX (Cápsula): V8, aprobada el 2026-10-03, ficha completa abajo.** El aviso caducado del ISAC:
+- **s3m5 STIX (Cápsula): V8, publicada el 2026-10-04 (YouTube `KO4REQeaKgM`), ficha completa abajo.** El aviso caducado del ISAC:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
 - **s4m3 ACH (Principal): V9, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** La matriz del extracto de la
   lección, celda a celda, con supuestos clave, diagnosticidad y sensibilidad; primera aparición de PAPER CRANE.
@@ -1027,6 +1027,12 @@ mensaje va en s10, no en s11.
 > **Aprobada por Lidia el 2026-10-03**, tal cual y con las recomendaciones de la ronda de diseño, y guion congelado ese día tras su visto bueno (rama `video-stix-isac`,
 > desde `main` con V6 ya fusionado). La versión vigente de escenas y guion es `video/stix-isac/storyboard.json` +
 > `narration.json`; qué se quedó fuera, en `video/stix-isac/out/script-notes.md`.
+>
+> **Producido y publicado el 2026-10-04**: YouTube `KO4REQeaKgM` (lo subió Lidia), 3:53, 6 escenas, 4 tarjetas, 1
+> pregunta, 1 mensaje de HOLLOW LANTERN con la voz de V4, voz de Lidia (31 de 31 frases importadas, sin las tomas repetidas; dos
+> frases del guion se ajustaron a lo grabado), música de V4. En la lección s3m5, después del check «TAXII ; STIX» y
+> antes de «YARA en 60 segundos». La grabación quedó al 92 % del estimado, como se calculó. El canon nuevo está en
+> `docs/superpowers/canon/velvet-cicada.md` (cronología y §7).
 >
 > **Ajustes al abrirla** (el guion ya los lleva; la tabla de escenas de abajo es la ficha original):
 > - Las dos tarjetas que caían en la última frase de su escena llevan detrás el «o sea, que…» que cierra su capítulo:

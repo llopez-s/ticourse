@@ -1106,6 +1106,13 @@ first_seen           last_seen            type  rdata
             'TAXII is the transport (collections/channels the TIP pulls from); STIX is the language describing the indicator and its context. STIX describes, TAXII transports.',
         },
       },
+      {
+        t: 'video',
+        title: '¿Bloqueo este dominio? Indicadores, STIX y TAXII',
+        youtube: 'KO4REQeaKgM',
+        poster: 'videos/stix-isac-poster.png',
+        transcript: 'videos/stix-isac-transcript.txt',
+      },
       { t: 'h', text: 'YARA en 60 segundos' },
       {
         t: 'p',
