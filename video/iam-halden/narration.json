@@ -22,9 +22,9 @@
     "one-factor": "error",
     "pushes": "alarm",
     "origin": "block",
-    "improvement": "check",
     "revoked": "lock",
-    "copy": "error"
+    "copy": "error",
+    "done": "check"
   },
   "segments": [
     {
@@ -394,13 +394,13 @@
     {
       "id": "s09-01",
       "scene": "s09-vault",
-      "text": "<calm> {improvement}Última parada, las llaves maestras. Una mejora de septiembre era meter las cuentas de servicio en un gestor de contraseñas. Hecho.",
+      "text": "<calm> {improvement}Última parada, las llaves maestras. Una mejora de septiembre era meter las cuentas de servicio en un gestor de contraseñas. {done}Hecho.",
       "pauseAfterMs": 400
     },
     {
       "id": "s09-02",
       "scene": "s09-vault",
-      "text": "<warm> {cabinet}Es como el armario de llaves de la garita. Nadie se queda ninguna, y se apunta quién usa cada una.",
+      "text": "<warm> Es como el {cabinet}armario de llaves de la garita. Nadie se queda ninguna, y se apunta quién usa cada una.",
       "pauseAfterMs": 350
     },
     {
