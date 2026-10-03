@@ -273,6 +273,8 @@ ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tut
 - **Los privilegios especiales de `svc_tosreport`** (el `4672` de la 01:52) se retiran el 27-10 porque «solo sacaba informes»: deducción
   de V6 a partir de la pantalla del SIEM; no culpa a quien se los dio.
 - **Géneros fijados por la voz:** `c.navarro` es «una compañera»; `o.virta`, «un compañero».
+- **«Al atacante» en la voz.** La respuesta de s10-01 dice «Al atacante le vendría de perlas» (`v6/narration.json`, s10-01): lo grabó así y
+  Lidia decidió dejarlo, como el «el atacante» de V5b. SILENT PAGER sigue siendo «ella» y un guion nuevo vuelve a «la atacante».
 
 ### Huecos (ninguna fuente lo dice)
 
