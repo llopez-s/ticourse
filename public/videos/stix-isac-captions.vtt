@@ -1,267 +1,267 @@
 WEBVTT
 
 1
-00:00:01.400 --> 00:00:02.633
+00:00:01.633 --> 00:00:03.633
 Es dos de julio.
 
 2
-00:00:02.633 --> 00:00:07.433
+00:00:03.633 --> 00:00:06.800
 A tu plataforma llega un aviso
 sobre un dominio del atacante,
 
 3
-00:00:07.433 --> 00:00:09.767
+00:00:06.800 --> 00:00:09.233
 con su botón de bloquear.
 
 4
-00:00:09.767 --> 00:00:14.967
+00:00:09.233 --> 00:00:14.867
 ¿Lo pulsas? Espera, antes léelo.
 Su fecha, su contexto y cómo llega.
 
 5
-00:00:14.967 --> 00:00:17.167
+00:00:14.867 --> 00:00:16.800
 Eres la analista de Meridian,
 
 6
-00:00:17.167 --> 00:00:21.167
+00:00:16.800 --> 00:00:19.700
 una aeroespacial en el punto
 de mira desde hace meses.
 
 7
-00:00:21.167 --> 00:00:25.867
+00:00:19.700 --> 00:00:23.300
 Hasta hoy seguías al grupo
 sobre todo con tus datos.
 
 8
-00:00:26.600 --> 00:00:27.233
+00:00:24.600 --> 00:00:25.700
 Ábrelo.
 
 9
-00:00:27.233 --> 00:00:30.833
+00:00:25.700 --> 00:00:28.033
 Es un indicador, y viene
 en un formato estándar
 
 10
-00:00:30.833 --> 00:00:34.967
+00:00:28.033 --> 00:00:31.867
 que guarda el dato con su contexto.
 Se llama STIX.
 
 11
-00:00:34.967 --> 00:00:36.233
+00:00:31.867 --> 00:00:33.133
 Primero, el dominio.
 
 12
-00:00:36.233 --> 00:00:38.867
+00:00:33.133 --> 00:00:36.167
 Luego, quién lo dice,
 el ISAC aeroespacial,
 
 13
-00:00:38.867 --> 00:00:42.133
+00:00:36.167 --> 00:00:39.267
 donde las empresas
 del sector comparten avisos.
 
 14
-00:00:42.133 --> 00:00:44.500
+00:00:39.267 --> 00:00:41.667
 Cuánto se fía, setenta sobre cien.
 
 15
-00:00:44.500 --> 00:00:49.300
+00:00:41.667 --> 00:00:46.633
 Con quién compartirlo, solo dentro
 de Meridian. Es la marca TLP.
 
 16
-00:00:49.300 --> 00:00:52.833
+00:00:46.667 --> 00:00:49.600
 Como el aviso de los vecinos
 sobre un timador.
 
 17
-00:00:52.833 --> 00:00:57.300
+00:00:49.600 --> 00:00:53.333
 Sabes quién avisa, si está
 seguro y a quién contarlo.
 
 18
-00:00:57.300 --> 00:01:02.900
+00:00:53.400 --> 00:00:57.533
 Te queda mirar hasta cuándo vale.
 Este caduca el veinticinco de junio.
 
 19
-00:01:02.900 --> 00:01:04.900
+00:00:57.533 --> 00:00:59.533
 Y hoy es dos de julio.
 
 20
-00:01:04.900 --> 00:01:09.300
+00:00:59.533 --> 00:01:03.367
 Caducó hace una semana,
 y los dominios pueden cambiar de manos.
 
 21
-00:01:09.300 --> 00:01:12.600
+00:01:03.367 --> 00:01:05.900
 ¿Lo bloqueas, o miras hacia atrás?
 
 22
-00:01:17.567 --> 00:01:22.367
+00:01:11.667 --> 00:01:15.867
 Este aviso no lo bloqueas,
 porque el ISAC ya no responde de él.
 
 23
-00:01:22.367 --> 00:01:29.267
+00:01:15.867 --> 00:01:21.033
 Si el dominio cambia de manos, bloquearlo
 a ciegas castiga a quien lo herede.
 
 24
-00:01:32.333 --> 00:01:39.533
+00:01:26.400 --> 00:01:32.233
 Que lo tiró es verdad. En el historial del
 DNS no sale desde el dieciocho de abril.
 
 25
-00:01:39.533 --> 00:01:42.900
+00:01:32.233 --> 00:01:35.133
 Pero tirarlo no borra lo que hizo con él.
 
 26
-00:01:42.900 --> 00:01:48.733
+00:01:35.133 --> 00:01:39.067
 Y si hoy lo vieras activo,
 tu evidencia pesaría más que la fecha.
 
 27
-00:01:48.733 --> 00:01:54.633
+00:01:39.067 --> 00:01:43.033
 Lo que hizo puede seguir en tus registros,
 hasta donde llegue lo que guardas.
 
 28
-00:01:54.633 --> 00:01:59.533
+00:01:43.033 --> 00:01:47.900
 El EDR llega hasta abril.
 El proxy, con treinta días, ya no.
 
 29
-00:01:59.533 --> 00:02:04.300
+00:01:47.900 --> 00:01:52.300
 Por eso este aviso te sirve para buscar
 hacia atrás, y cuanto antes.
 
 30
-00:02:04.300 --> 00:02:06.333
+00:01:52.300 --> 00:01:54.200
 Lo llaman retro-hunt.
 
 31
-00:02:06.333 --> 00:02:13.233
+00:01:54.533 --> 00:02:00.100
 O sea, que un aviso caducado no se bloquea
 a ciegas. Sirve para mirar atrás.
 
 32
-00:02:14.067 --> 00:02:18.733
+00:02:01.667 --> 00:02:06.033
 Ahora, el contexto. Supón
 que el dominio sale en tus registros.
 
 33
-00:02:18.733 --> 00:02:23.233
+00:02:06.033 --> 00:02:10.267
 Suelto, como un número en un pósit,
 no sabrías qué hacer.
 
 34
-00:02:23.233 --> 00:02:27.467
+00:02:10.267 --> 00:02:14.233
 En tu plataforma, en cambio,
 es un contacto con nombre.
 
 35
-00:02:27.467 --> 00:02:33.633
+00:02:14.233 --> 00:02:19.100
 Apunta al loader del phishing de marzo,
 y el grupo que sigues usa ese loader.
 
 36
-00:02:33.633 --> 00:02:36.233
+00:02:19.100 --> 00:02:21.433
 Así sabes qué significa un acierto.
 
 37
-00:02:36.233 --> 00:02:40.000
+00:02:21.433 --> 00:02:24.233
 Si sale en un ordenador,
 buscas allí el loader.
 
 38
-00:02:40.000 --> 00:02:45.600
+00:02:24.233 --> 00:02:30.067
 Y esas relaciones también son objetos
 STIX, así que viajan con el dato.
 
 39
-00:02:45.600 --> 00:02:49.233
+00:02:30.067 --> 00:02:32.767
 Tu plataforma no guarda
 aparte el aviso del ISAC.
 
 40
-00:02:49.233 --> 00:02:53.967
+00:02:32.767 --> 00:02:36.967
 Lo funde con ese contacto,
 como dos repetidos en la agenda.
 
 41
-00:02:53.967 --> 00:03:00.467
+00:02:37.067 --> 00:02:42.433
 Queda un solo contacto con sus dos
-fuentes, tu propio incidente y el ISAC.
+fuentes, tu incidente y el ISAC.
 
 42
-00:03:01.233 --> 00:03:05.433
+00:02:43.733 --> 00:02:47.467
 Falta ver cómo ha llegado.
 Funciona como una carta.
 
 43
-00:03:05.433 --> 00:03:09.600
+00:02:47.467 --> 00:02:51.467
 Lo que dice, con su contexto
 y su marca, es STIX.
 
 44
-00:03:09.600 --> 00:03:11.867
+00:02:51.467 --> 00:02:53.967
 El correo que la lleva es TAXII.
 
 45
-00:03:11.867 --> 00:03:17.167
+00:02:53.967 --> 00:02:58.633
 El ISAC deja sus avisos en colecciones,
 como apartados de correos.
 
 46
-00:03:17.167 --> 00:03:22.167
+00:02:58.667 --> 00:03:01.700
 El dos de julio, tu plataforma
 pasa a recoger por primera vez.
 
 47
-00:03:22.167 --> 00:03:26.367
+00:03:01.700 --> 00:03:05.100
 Y se trae todo lo que había,
 también este aviso.
 
 48
-00:03:26.367 --> 00:03:31.267
+00:03:05.100 --> 00:03:09.800
 Y la marca de compartir va dentro
 de la carta, no en el sobre.
 
 49
-00:03:31.267 --> 00:03:35.167
+00:03:09.800 --> 00:03:13.733
 Así que STIX describe y TAXII transporta.
 
 50
-00:03:35.167 --> 00:03:42.067
+00:03:13.733 --> 00:03:19.867
 O sea, que el contexto viaja dentro
 de la carta, y tu plataforma la recoge.
 
 51
-00:03:42.900 --> 00:03:47.667
+00:03:21.233 --> 00:03:27.167
 La próxima vez que parpadee ese
 botón, repasa estas tres reglas.
 
 52
-00:03:47.667 --> 00:03:50.633
+00:03:27.167 --> 00:03:29.800
 Antes de bloquear, mira hasta cuándo vale.
 
 53
-00:03:50.633 --> 00:03:54.467
+00:03:29.800 --> 00:03:33.433
 Si ha caducado, busca
 hacia atrás, y cuanto antes.
 
 54
-00:03:54.467 --> 00:04:00.067
-Un indicador es un solo contacto,
+00:03:33.433 --> 00:03:38.400
+Un indicador es solo un contacto,
 con sus relaciones y todas sus fuentes.
 
 55
-00:04:00.067 --> 00:04:05.333
+00:03:38.567 --> 00:03:44.567
 Y no confundas la carta con el correo.
 STIX describe, TAXII transporta.
 
 56
-00:04:05.333 --> 00:04:12.233
+00:03:44.567 --> 00:03:49.733
 ¿Te atreves con las diez preguntas de la
 lección? Nos leemos en el próximo aviso.
