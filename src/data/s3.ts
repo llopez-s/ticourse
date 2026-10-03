@@ -1045,7 +1045,7 @@ first_seen           last_seen            type  rdata
       {
         t: 'callout',
         kind: 'example',
-        md: 'En STIX: un objeto `indicator` (patrón del dominio C2) se conecta vía `relationship` («indicates») con un objeto `malware` (el loader); a su vez, un `intrusion-set` (VELVET CICADA) se conecta con ese malware mediante otra `relationship` («uses»). El contexto viaja con el dato.',
+        md: 'En STIX: un objeto `indicator` (patrón de un dominio del actor) se conecta vía `relationship` («indicates») con un objeto `malware` (el loader); a su vez, un `intrusion-set` (VELVET CICADA) se conecta con ese malware mediante otra `relationship` («uses»). El contexto viaja con el dato.',
       },
       { t: 'h', text: 'Un indicador que llega: ¿ingerir?' },
       {

@@ -1037,6 +1037,19 @@ mensaje va en s10, no en s11.
 >   «el ISAC empuja» pasa a «publica en una colección y tu TIP lo recoge», y el JSON gana `"modified"`.
 > - **No** se renombra el intrusion set STIX de S4 (`s4.ts:1016`): el registro apunta la lectura (GLASS VIPER, el loader
 >   y el nombre de los vendors; VELVET CICADA, el intrusion set en el modelo de Meridian).
+>
+> **Cambios de las revisiones del 2026-10-03** (exactitud y naturalidad; el guion y `storyboard.json` ya los llevan, la
+> tabla de escenas no):
+> - **Mensaje nuevo de HOLLOW LANTERN:** «Ese dominio lo tiré hace meses. Ya no te sirve para nada.» (58). Con el
+>   anterior («Bloquéalo, si te hace ilusión») no quedaba error que rebatir, porque s03 ya ha descartado el bloqueo; el
+>   nuevo trae el error que la ficha quería corregir (que un aviso caducado no sirve para nada).
+> - s04: el nodo es el del indicador, «indicator · cdn-sync-status.example» (en STIX 2.1 `indicates` solo sale de un
+>   `indicator`), y la fuente del ISAC conserva AMBER+STRICT tras la fusión.
+> - s03: «hasta donde llegue lo que guardas» se queda; el EDR «llega hasta abril» (solo cubre del 03-04 al 18-04).
+> - s01: «seguías al grupo sobre todo con tus datos» (el ISAC ya era fuente del CMF); s02 nombra «indicador» antes de
+>   usarlo; s05 cierra con «el contexto viaja dentro de la carta, y tu plataforma la recoge».
+> - La lección s3m5 cambia además «patrón del dominio C2» por «patrón de un dominio del actor»: el indicador del
+>   ejemplo es el de entrega, no el C2.
 
 - **Carpeta:** `stix-isac` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) · dominio del
   curso **Collection** (S3 · Fuentes de colección: las tarjetas llevan `"objective": "Collection"` y la insignia dice

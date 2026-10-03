@@ -23,25 +23,25 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {tip}Dos de julio. {incoming}A tu plataforma llega un aviso sobre un dominio del atacante, {block}con su botón de bloquear.",
+      "text": "<curious> {tip}Es dos de julio. {incoming}A tu plataforma llega un aviso sobre un dominio del atacante, {block}con su botón de bloquear.",
       "pauseAfterMs": 350
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<intrigued> {title}¿Lo pulsas? Espera, que trae más de lo que parece. {promise}Su fecha, su contexto y su camino.",
+      "text": "<intrigued> {title}¿Lo pulsas? Espera, antes léelo. {promise}Su fecha, su contexto y cómo llega.",
       "pauseAfterMs": 400
     },
     {
       "id": "s01-03",
       "scene": "s01-hook",
-      "text": "<calm> {bridge}Eres la analista de Meridian, una aeroespacial en el punto de mira desde hace meses. Hasta hoy lo seguías casi solo con tus datos.",
+      "text": "<calm> {bridge}Eres la analista de Meridian, una aeroespacial en el punto de mira desde hace meses. Hasta hoy seguías al grupo sobre todo con tus datos.",
       "pauseAfterMs": 550
     },
     {
       "id": "s02-01",
       "scene": "s02-lectura",
-      "text": "<focused> {json}Ábrelo. Viene en un formato estándar que guarda el dato con su contexto. Se llama STIX.",
+      "text": "<focused> {json}Ábrelo. Es un indicador, y viene en un formato estándar que guarda el dato con su contexto. Se llama STIX.",
       "pauseAfterMs": 350
     },
     {
@@ -59,13 +59,13 @@
     {
       "id": "s02-04",
       "scene": "s02-lectura",
-      "text": "<warm> {context}Como el aviso de los vecinos sobre un timador. Quién avisa, cuánto se fía y a quién se lo puedes contar.",
+      "text": "<warm> {context}Como el aviso de los vecinos sobre un timador. Sabes quién avisa, si está seguro y a quién contarlo.",
       "pauseAfterMs": 400
     },
     {
       "id": "s02-05",
       "scene": "s02-lectura",
-      "text": "<curious> {until}Pero falta hasta cuándo vale. Este, hasta el veinticinco de junio. {today}Y hoy es dos de julio.",
+      "text": "<curious> {until}Te queda mirar hasta cuándo vale. Este caduca el veinticinco de junio. {today}Y hoy es dos de julio.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "Collection",
@@ -87,35 +87,35 @@
     {
       "id": "s03-01",
       "scene": "s03-caducado",
-      "text": "<firm> {strike}Este aviso no va al bloqueo, porque el ISAC ya no responde de él. {reassigned}Y si el dominio cambia de manos, bloquearlo castiga a quien lo herede.",
+      "text": "<firm> {strike}Este aviso no lo bloqueas, porque el ISAC ya no responde de él. {reassigned}Si el dominio cambia de manos, bloquearlo a ciegas castiga a quien lo herede.",
       "pauseAfterMs": 450
     },
     {
       "id": "s03-02",
       "scene": "s03-caducado",
-      "text": "<sarcastic> {dns-last}En el dato tiene razón. El passive DNS no lo ve desde el dieciocho de abril.",
+      "text": "<casual> {dns-last}Que lo tiró es verdad. En el historial del DNS no sale desde el dieciocho de abril.",
       "pauseAfterMs": 400,
       "intercept": {
-        "text": "Ese dominio lo tiré hace meses. Bloquéalo, si te hace ilusión.",
+        "text": "Ese dominio lo tiré hace meses. Ya no te sirve para nada.",
         "holdMs": 3500
       }
     },
     {
       "id": "s03-03",
       "scene": "s03-caducado",
-      "text": "<serious> {own-evidence}Pero tirarlo no borra lo que hizo con él. Y si lo vieras vivo hoy, mandaría tu evidencia, no la fecha.",
+      "text": "<serious> {own-evidence}Pero tirarlo no borra lo que hizo con él. Y si hoy lo vieras activo, tu evidencia pesaría más que la fecha.",
       "pauseAfterMs": 400
     },
     {
       "id": "s03-04",
       "scene": "s03-caducado",
-      "text": "<focused> {retention}Eso puede seguir en tus registros, hasta donde llegue lo que guardas. El EDR guarda noventa días, y llega. El proxy, treinta, y no.",
+      "text": "<focused> {retention}Lo que hizo puede seguir en tus registros, hasta donde llegue lo que guardas. El EDR llega hasta abril. El proxy, con treinta días, ya no.",
       "pauseAfterMs": 400
     },
     {
       "id": "s03-05",
       "scene": "s03-caducado",
-      "text": "<confident> Por eso este aviso sirve para buscar hacia atrás, y cuanto antes. {retro-hunt}Eso se llama retro-hunt.",
+      "text": "<confident> Por eso este aviso te sirve para buscar hacia atrás, y cuanto antes. {retro-hunt}Lo llaman retro-hunt.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "Collection",
@@ -127,31 +127,31 @@
     {
       "id": "s03-06",
       "scene": "s03-caducado",
-      "text": "<warm> {wrap}O sea, que un aviso caducado no se bloquea a ciegas. Se usa para mirar atrás.",
+      "text": "<warm> {wrap}O sea, que un aviso caducado no se bloquea a ciegas. Sirve para mirar atrás.",
       "pauseAfterMs": 650
     },
     {
       "id": "s04-01",
       "scene": "s04-grafo",
-      "text": "<curious> {postit}Ahora, imagina que el dominio aparece en tus registros. Suelto, como un número en un pósit, no sabrías qué hacer.",
+      "text": "<curious> {postit}Ahora, el contexto. Supón que el dominio sale en tus registros. Suelto, como un número en un pósit, no sabrías qué hacer.",
       "pauseAfterMs": 350
     },
     {
       "id": "s04-02",
       "scene": "s04-grafo",
-      "text": "<clear> {graph}En tu plataforma, en cambio, es un contacto con nombre. {indicates}Indica el loader del correo de marzo, {uses}y el grupo que sigues usa ese loader.",
+      "text": "<clear> {graph}En tu plataforma, en cambio, es un contacto con nombre. {indicates}Apunta al loader del phishing de marzo, {uses}y el grupo que sigues usa ese loader.",
       "pauseAfterMs": 400
     },
     {
       "id": "s04-03",
       "scene": "s04-grafo",
-      "text": "<focused> {action}Así sabes qué significa un acierto. Si aparece, buscas el loader en ese equipo.",
+      "text": "<focused> {action}Así sabes qué significa un acierto. Si sale en un ordenador, buscas allí el loader.",
       "pauseAfterMs": 350
     },
     {
       "id": "s04-04",
       "scene": "s04-grafo",
-      "text": "<thoughtful> {relationship}Y esas relaciones también son objetos STIX, así que viajan con el dato.",
+      "text": "<steady> {relationship}Y esas relaciones también son objetos STIX, así que viajan con el dato.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "Collection",
@@ -163,7 +163,7 @@
     {
       "id": "s04-05",
       "scene": "s04-grafo",
-      "text": "<warm> {merge}¿Y el aviso del ISAC? No se guarda dos veces. Se funde con el que ya tenías, como dos contactos repetidos.",
+      "text": "<warm> {merge}Tu plataforma no guarda aparte el aviso del ISAC. Lo funde con ese contacto, como dos repetidos en la agenda.",
       "pauseAfterMs": 350
     },
     {
@@ -175,19 +175,19 @@
     {
       "id": "s05-01",
       "scene": "s05-taxii",
-      "text": "<engaging> {letter}Falta por dónde ha llegado. Piensa en una carta. Lo que cuenta, con su contexto y su marca, es STIX.",
+      "text": "<engaging> {letter}Falta ver cómo ha llegado. Funciona como una carta. Lo que dice, con su contexto y su marca, es STIX.",
       "pauseAfterMs": 350
     },
     {
       "id": "s05-02",
       "scene": "s05-taxii",
-      "text": "<clear> {envelope}El correo que la lleva es TAXII. {collection}El ISAC deja sus avisos en un servidor, en colecciones, como apartados de correos.",
+      "text": "<clear> {envelope}El correo que la lleva es TAXII. {collection}El ISAC deja sus avisos en colecciones, como apartados de correos.",
       "pauseAfterMs": 350
     },
     {
       "id": "s05-03",
       "scene": "s05-taxii",
-      "text": "<focused> {pull}El dos de julio, tu plataforma pasa a recoger por primera vez, {backlog}y se trae todo lo que había, también este aviso.",
+      "text": "<casual> {pull}El dos de julio, tu plataforma pasa a recoger por primera vez. {backlog}Y se trae todo lo que había, también este aviso.",
       "pauseAfterMs": 400
     },
     {
@@ -205,19 +205,19 @@
     {
       "id": "s05-05",
       "scene": "s05-taxii",
-      "text": "<warm> {close}O sea, que nadie te empuja el aviso. Tu plataforma pasa a recogerlo.",
+      "text": "<warm> {close}O sea, que el contexto viaja dentro de la carta, y tu plataforma la recoge.",
       "pauseAfterMs": 650
     },
     {
       "id": "s06-01",
       "scene": "s06-recap",
-      "text": "<engaging> {recap}Para el próximo aviso que te llegue, tres reglas.",
+      "text": "<engaging> {recap}La próxima vez que parpadee ese botón, repasa estas tres reglas.",
       "pauseAfterMs": 350
     },
     {
       "id": "s06-02",
       "scene": "s06-recap",
-      "text": "<confident> {rule-1}Antes de bloquear, mira su fecha. Si ha caducado, busca hacia atrás, y cuanto antes.",
+      "text": "<confident> {rule-1}Antes de bloquear, mira hasta cuándo vale. Si ha caducado, busca hacia atrás, y cuanto antes.",
       "pauseAfterMs": 400
     },
     {
@@ -235,7 +235,7 @@
     {
       "id": "s06-05",
       "scene": "s06-recap",
-      "text": "<cheerful> {next}Ponte a prueba con las diez preguntas de la lección. {endcard}Nos leemos en el próximo aviso.",
+      "text": "<cheerful> {next}¿Te atreves con las diez preguntas de la lección? {endcard}Nos leemos en el próximo aviso.",
       "pauseAfterMs": 700
     }
   ]
