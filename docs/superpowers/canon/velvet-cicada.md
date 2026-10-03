@@ -47,7 +47,7 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 | 2026-03-07 (sin hora) | **E9** (AoO) | Mismo implante y metodología, dos días después de E7 [V3] | `src/data/s2.ts:623`; `video/diamond-e7/src/scenes/S10Thread.tsx:80-84` |
 | 2026-03-07 | — | pDNS: last seen de `update-svc-cdn.com` en `185.220.x.x` [V4] | `video/pivot-infra/src/scenes/S03Pdns.tsx:66` |
 | 2026-03-09 08:05 → 08:23 (sin zona) | Víctima 2 | Orbital Components: «PO revision» a `finance@orbital.example`, `msdtcs.exe`, beacon a `portal-auth-check.example` | `src/data/s2.ts:879-883` |
-| 2026-03-11 | — | Un ISAC empuja el indicador STIX de `cdn-sync-status.example` (válido hasta 2026-06-25) | `src/data/s3.ts:1063-1069` |
+| 2026-03-11 | — | El ISAC aeroespacial publica en una colección TAXII el indicador STIX de `cdn-sync-status.example` (válido hasta 2026-06-25); la TIP de Meridian lo recoge (pull) el 2026-07-02 | `src/data/s3.ts:1053`, `:1063-1070` |
 | marzo → mayo 2026 (rango) | — | Exfiltración de diseños de propulsión, según el BLUF | `src/data/s5.ts:312`; `src/data/labs.ts:1016` |
 | abr-2026 → hoy (rango) | — | Actividad del Cluster-B (Orbital-2) | `src/data/s4.ts:732` |
 | 2026-04-18 desde 06:00 UTC | — | 41 correos de phishing de credenciales a la cadena de suministro | `src/data/s5.ts:56-58` |
@@ -274,6 +274,9 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
    (`src/data/s4.ts:814,1016,1048`). VELVET CICADA también es «intrusion set» (`src/data/s3.ts:1048`;
    `src/data/s5.ts:312`). V3 lo explica como nombre de seguimiento del implante y quien lo usa [V3]
    (`video/diamond-e7/narration.json:139`).
+   **Lectura que usa V8** (2026-10-03, decisión de Lidia: no se renombra el intrusion set STIX de S4,
+   `src/data/s4.ts:1016`): GLASS VIPER es el loader y el nombre que usan los vendors y el ISAC; VELVET CICADA es el
+   intrusion set en el modelo de Meridian, el que «uses» ese loader en su grafo.
 10. **«Tres C2» con el mismo certificado** (`src/data/s2.ts:841`; `src/data/labs.ts:314`) frente a las tres IP de
     V4: el C2, el VPS del phishing `141.98.6.10` y una desconocida [V4]
     (`video/pivot-infra/src/scenes/S05Cert.tsx:57-60`).

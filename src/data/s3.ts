@@ -1045,12 +1045,12 @@ first_seen           last_seen            type  rdata
       {
         t: 'callout',
         kind: 'example',
-        md: 'En STIX: un objeto `indicator` (patrón del dominio C2) se conecta vía `relationship` («indicates») con un objeto `malware` (el loader), que se conecta («used-by») con un `intrusion-set` (VELVET CICADA). El contexto viaja con el dato.',
+        md: 'En STIX: un objeto `indicator` (patrón del dominio C2) se conecta vía `relationship` («indicates») con un objeto `malware` (el loader); a su vez, un `intrusion-set` (VELVET CICADA) se conecta con ese malware mediante otra `relationship` («uses»). El contexto viaja con el dato.',
       },
       { t: 'h', text: 'Un indicador que llega: ¿ingerir?' },
       {
         t: 'p',
-        md: 'Cambia de sombrero: aquí no publicas inteligencia, la **recibes**. Un ISAC aeroespacial empuja este objeto STIX 2.1 a tu TIP. Antes de meterlo en producción (bloqueo, hunting), decides si es apto — y ese juicio se lee en sus metadatos:',
+        md: 'Cambia de sombrero: aquí no publicas inteligencia, la **recibes**. El ISAC aeroespacial publica este objeto STIX 2.1 en una colección TAXII, y tu TIP lo recoge (*pull*). Antes de meterlo en producción (bloqueo, hunting), decides si es apto — y ese juicio se lee en sus metadatos:',
       },
       {
         t: 'code',
@@ -1061,6 +1061,7 @@ first_seen           last_seen            type  rdata
   "spec_version": "2.1",
   "id": "indicator--7c1e0a44-2b9f-4d18-a6e3-meridian0052",
   "created": "2026-03-11T08:00:00Z",
+  "modified": "2026-03-11T08:00:00Z",
   "created_by_ref": "identity--aero-isac-share-0001",
   "name": "GLASS VIPER phishing domain",
   "pattern_type": "stix",
@@ -1291,7 +1292,7 @@ first_seen           last_seen            type  rdata
         ],
         answer: 1,
         explain:
-          'Relationships carry the context: indicator → indicates → malware → used-by → intrusion-set. That is how attribution/ownership travels with the ingested data, beyond the raw pattern.',
+          'Relationships carry the context: indicator → indicates → malware, and intrusion-set → uses → malware. That is how attribution/ownership travels with the ingested data, beyond the raw pattern.',
       },
     ],
   },
