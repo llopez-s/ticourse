@@ -1,0 +1,452 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Laura",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {room}En la reunión de análisis de Meridian, la pizarra ya tiene respuesta. {fits}Cuatro pruebas, y todas encajan con una palabra, espionaje.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<intrigued> {title}Pero que todo encaje no demuestra nada. Esa respuesta hay que ganársela, y para eso está ACH, el análisis de hipótesis en competencia.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<clear> {promise}Primero, escribes lo que das por hecho. Luego, pones tus hipótesis a competir en una matriz. Y al final, quitas la prueba más fuerte, a ver si todo aguanta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<serious> {ciso}Porque el CISO quiere saber qué busca el intruso. {stakes}Y de eso depende qué se protege primero.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-fuera",
+      "text": "<thoughtful> {head}Antes de la matriz, hay un problema. En tu cabeza mandan los sesgos, y no se van por mucho que te esfuerces.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-fuera",
+      "text": "<clear> {paper}Lo que ayuda es sacar el razonamiento de la cabeza a una hoja, donde otros puedan revisarlo. {sats}Son las técnicas estructuradas de análisis, structured analytic techniques.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-fuera",
+      "text": "<curious> Hay varias, y hoy usas tres. {devil}La primera es sencilla. A alguien del equipo le toca defender, a propósito, lo contrario de lo que piensa la sala.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-fuera",
+      "text": "<engaging> {contrary}Aquí le cae a una compañera, que escribe «¿y si es un rescate?». No es que lo crea, es su papel.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-fuera",
+      "text": "<confident> {advocacy}Eso es hacer de abogada del diablo, la Devil's Advocacy.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Analysis",
+        "text": "Devil's Advocacy: alguien defiende la postura contraria",
+        "at": "advocacy",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-fuera",
+      "text": "<warm> Así la sala defiende su idea con pruebas, no por costumbre.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-supuestos",
+      "text": "<suspicious> {crane}Te escribe PAPER CRANE, la célula de engaño del adversario. Claro, como siembra pistas falsas, le encanta que no mires dos veces.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "Fíate de lo que ves, analista. Las pruebas nunca mienten.",
+        "holdMs": 3600
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-supuestos",
+      "text": "<firm> Fíjate en lo que pide, que des por buena una cosa sin comprobarla. Eso es un supuesto.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-supuestos",
+      "text": "<clear> {sheet}Por eso los supuestos se escriben. En esta hoja hay dos. {assume-1}Que no hay otra explicación. {assume-2}Y que las pruebas son lo que parecen.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-supuestos",
+      "text": "<thoughtful> A cada uno le preguntas «¿y si es falso?». Si falla el primero, te faltan hipótesis. Si falla el segundo, alguna prueba engaña, y eso se mira al final.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-supuestos",
+      "text": "<warm> {pocket}Es como palparte el bolsillo antes de salir. Das por hecho que llevas el móvil y la cartera, pero mejor comprobarlo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-supuestos",
+      "text": "<confident> {kac}Escribir lo que das por hecho y ponerlo a prueba tiene nombre, Key Assumptions Check.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Analysis",
+        "text": "Key Assumptions Check: ¿y si este supuesto falla?",
+        "at": "kac",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-07",
+      "scene": "s03-supuestos",
+      "text": "<calm> O sea, que lo que nadie dice en voz alta es lo primero que pones por escrito.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-hipotesis",
+      "text": "<curious> {fridge}Ahora, las hipótesis. Imagínate que falta un yogur en la nevera. {suspects}Hay tres sospechosos, tu compañera de piso, tu hermano, que vino de visita, y el perro.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-hipotesis",
+      "text": "<intrigued> {refute}Lo normal es buscar quién pudo comérselo. El truco es al revés, buscar quién no pudo.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-hipotesis",
+      "text": "<clear> {ach}Así funciona la tercera técnica, el análisis de hipótesis en competencia, ACH. {heuer}La ideó Richards Heuer. Aquí no confirmas tu favorita, intentas tumbarlas todas.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-hipotesis",
+      "text": "<focused> {hypotheses}En Meridian, llenas los huecos de la hoja. Espionaje. Crimen por dinero, como el rescate que proponía la abogada del diablo. Y hacktivistas o alguien de dentro.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-hipotesis",
+      "text": "<firm> {all-first}Y el orden importa. Primero todas las hipótesis, con el equipo, y solo después las pruebas.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Analysis",
+        "text": "ACH: primero todas las hipótesis, luego la evidencia",
+        "at": "all-first",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-hipotesis",
+      "text": "<warm> Si empiezas por las pruebas, te casas con la primera idea que encaje.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-matriz",
+      "text": "<clear> {grid}Con eso montas la matriz. Hipótesis en columnas, pruebas en filas, y cada prueba contra cada hipótesis.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-matriz",
+      "text": "<steady> {legend}En cada casilla, una letra. C si la prueba encaja, I si choca, y N si no dice nada.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-matriz",
+      "text": "<thoughtful> {row-e1}Primera prueba, entraron con un correo de phishing hecho a medida. Encaja con el espionaje, con el crimen y con los hacktivistas. [Tres C|Tres ces].",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-matriz",
+      "text": "<intrigued> {row-e2}La segunda es más curiosa. Seis meses dentro, y ni un archivo cifrado ni un mensaje pidiendo dinero.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-matriz",
+      "text": "<focused> Con el espionaje encaja, porque un espía quiere pasar desapercibido. Con el crimen choca, que el ransomware cobra rápido. A los hacktivistas ni les va ni les viene.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-matriz",
+      "text": "<steady> {rows-e3e4}Las otras dos van más deprisa. Solo se llevaron diseños de propulsión. Y un certificado suyo ya salió en una campaña de espionaje, según el ISAC.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-matriz",
+      "text": "<serious> Las dos encajan con el espionaje y chocan con lo demás.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s05-08",
+      "scene": "s05-matriz",
+      "text": "<engaging> {full}O sea, que la matriz está llena y aún no has contado nada. ¿Qué pesa más, el phishing o los seis meses?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Qué pesa más: el phishing o los seis meses?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-diagnosticidad",
+      "text": "<confident> {answer}Pesan más los seis meses. El phishing encaja con las tres hipótesis, y por eso no te ayuda a elegir.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-diagnosticidad",
+      "text": "<clear> {fade-e1}Esa fila ya la puedes apagar. Es la prueba más vistosa de la pizarra, y no separa nada.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-diagnosticidad",
+      "text": "<casual> {hungry}Volvemos a la cocina. Sabes que quien se lo comió tenía hambre. Menuda pista, si tenían hambre los tres. No aparta a nadie.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-diagnosticidad",
+      "text": "<focused> {high-rows}En cambio, seis meses sin cobrar chocan de frente con el crimen. Esa prueba sí separa, y las otras dos, también.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-diagnosticidad",
+      "text": "<firm> {diagnosticity}A ese poder de separar se le llama diagnosticidad, y en el examen, diagnosticity. Una prueba vale por lo que separa, no por lo que brilla.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Analysis",
+        "text": "Diagnosticity: si encaja con todas, no discrimina",
+        "at": "diagnosticity",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-diagnosticidad",
+      "text": "<warm> Cuando una pista te deslumbre, pregúntate a cuántas hipótesis les sirve.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-inconsistente",
+      "text": "<sarcastic> {count-c}Vaya atajo. Si cuentas [las C|las ces], el espionaje suma cuatro, y las otras, una cada una. Parece claro, pero engaña.",
+      "pauseAfterMs": 450,
+      "intercept": {
+        "text": "Cuenta las que te dan la razón. La que más sume, gana.",
+        "holdMs": 3600
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-inconsistente",
+      "text": "<thoughtful> Lo que encaja suma para varias a la vez. El phishing, como el hambre en la cocina, le da una C a cada una.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-inconsistente",
+      "text": "<clear> {count-i}Pues cuenta lo que tumba, [las I|las íes]. Espionaje, cero. Crimen, tres. Hacktivistas, dos.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-inconsistente",
+      "text": "<confident> {least}Gana el espionaje, pero no por ser el más confirmado, sino por ser el que menos choca.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-inconsistente",
+      "text": "<casual> {dog}Mira al perro. Tiene cinco cosas a favor, {lethal}y una en contra, que no sabe abrir la nevera. Y una sola, si es sólida, basta para sacarlo de la lista.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-inconsistente",
+      "text": "<firm> {not-proven}Nadie demuestra una hipótesis. Lo que haces es descartar las demás, y gana la menos inconsistente, no la más confirmada.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Analysis",
+        "text": "Gana la menos inconsistente, no la más confirmada",
+        "at": "not-proven",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-07",
+      "scene": "s07-inconsistente",
+      "text": "<warm> O sea, que se cuenta lo que tumba, no lo que encaja.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-sensibilidad",
+      "text": "<mischievously> {assume-2}Antes te pedía que te fiaras de todo, y ahora, de nada. Las dos cosas le vienen bien.",
+      "pauseAfterMs": 450,
+      "intercept": {
+        "text": "Si una prueba es falsa, se te cae todo. Empieza de cero.",
+        "holdMs": 3700
+      }
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-sensibilidad",
+      "text": "<thoughtful> Vuelve el segundo supuesto, que las pruebas son lo que parecen. Toca palparse el bolsillo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-sensibilidad",
+      "text": "<focused> {strong-link}La más fuerte es el certificado, justo el tipo de prueba que alguien podría plantar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-sensibilidad",
+      "text": "<engaging> No hace falta empezar de cero. Si quitas el certificado, ¿cambia la ganadora?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Sin el certificado, ¿cambia la ganadora?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-sensibilidad",
+      "text": "<clear> {pull-e4}Tu conclusión es una mesa con tres patas, las pruebas que separan. Quitas la del certificado {recount}y vuelves a contar. Espionaje, cero. Crimen, dos. Hacktivistas, uno.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-sensibilidad",
+      "text": "<relieved> {stands}No cambia, la mesa aguanta. Los seis meses y los diseños tumban al crimen, y los diseños, a los hacktivistas.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s08-07",
+      "scene": "s08-sensibilidad",
+      "text": "<concerned> {stool}Con solo el certificado, sería un taburete de una pata. Tu confianza tendría que bajar, porque si esa pata cae, se te cae todo.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-08",
+      "scene": "s08-sensibilidad",
+      "text": "<confident> {sensitivity}Quitar una prueba y mirar si tu conclusión aguanta se llama análisis de sensibilidad, sensitivity analysis.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Analysis",
+        "text": "Sensitivity: ¿qué prueba, si cae, cambia la conclusión?",
+        "at": "sensitivity",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-09",
+      "scene": "s08-sensibilidad",
+      "text": "<warm> Aquí el certificado no la cambia, pero lo vigilas igual.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-informe",
+      "text": "<clear> {memo}Ya puedes escribirle al CISO, y te basta una página.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-informe",
+      "text": "<steady> {verdict}Empiezas por el juicio, que el espionaje es la hipótesis menos inconsistente. {confidence}Lo dices con confianza moderada, porque son solo cuatro pruebas de un extracto.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-informe",
+      "text": "<focused> {discarded}Luego, las que descartas y por qué. {watch}Y la pata que hay que vigilar, el certificado.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-informe",
+      "text": "<confident> {report}Un buen informe de ACH lleva eso, la ganadora, su confianza y las descartadas con su porqué.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Analysis",
+        "text": "Informe: ganadora, confianza y descartadas con su porqué",
+        "at": "report",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-informe",
+      "text": "<warm> {provisional}Y un sello de provisional, nunca de caso cerrado. Si mañana llega otra prueba, la metes en la matriz y vuelves a contar.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-informe",
+      "text": "<calm> O sea, que el CISO ya tiene una respuesta provisional, sabe en qué se apoya y qué prueba vigilar.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-recap",
+      "text": "<warm> {recap}Te llevas tres reglas. {rule-1}Antes de pesar pruebas, escribe lo que das por hecho y pon a competir todas las hipótesis.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-recap",
+      "text": "<confident> {rule-2}Cuenta lo que tumba, no lo que encaja, porque gana la menos inconsistente. {rule-3}Y quita la prueba más fuerte, a ver si tu conclusión sigue en pie.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-recap",
+      "text": "<engaging> {lab4b}Ahora te toca a ti, con la matriz completa del Lab 4B. {endcard}Y ojo con los atajos, que PAPER CRANE cuenta con ellos.",
+      "pauseAfterMs": 600
+    }
+  ]
+}

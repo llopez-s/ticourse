@@ -1,0 +1,193 @@
+{
+  "title": "ACH: gana la hipótesis que no puedes tumbar",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 458,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Todo encaja"
+    },
+    {
+      "n": 2,
+      "title": "Hipótesis en competencia"
+    },
+    {
+      "n": 3,
+      "title": "Lo que discrimina"
+    },
+    {
+      "n": 4,
+      "title": "¿Y si una prueba miente?"
+    },
+    {
+      "n": 5,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Todo encaja",
+      "goal": "La reunión de análisis de Meridian. La pizarra con cuatro notas, las pruebas del extracto en corto («entrada por spearphishing», «6 meses sin cifrar ni extorsionar», «exfiltración selectiva de diseños de propulsión», «certificado TLS compartido con una campaña de espionaje que reportó el ISAC») y en el centro «ESPIONAJE», rodeado, con «todo encaja» debajo; junto a cada nota, la palabra «encaja» (nunca un visto; la letra C no sale hasta la leyenda de s05). Título antes de los 10 s. La promesa en tres iconos: una lista con una interrogación (lo que das por hecho), una cuadrícula (la matriz) y una mesa (quitar la prueba más fuerte y ver si aguanta). Tira con la pregunta del CISO: «¿Qué busca el intruso?» y debajo «de eso depende qué se protege primero» · Qué se aprende: Que todo encaje no demuestra nada. La promesa: poner tus hipótesis a competir con ACH y saber qué prueba sostiene tu conclusión",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "room",
+        "fits",
+        "title",
+        "promise",
+        "ciso",
+        "stakes"
+      ]
+    },
+    {
+      "id": "s02-fuera",
+      "chapter": 1,
+      "title": "Sácalo de la cabeza",
+      "goal": "Una cabeza de perfil con ideas que se enredan; asoman, tenues, «confirmation bias» y «anchoring». Las ideas salen y se ordenan en una hoja: STRUCTURED ANALYTIC TECHNIQUES. Cinco fichas (Key Assumptions Check, Devil's Advocacy, What-If Analysis, brainstorming estructurado, ACH); se amplía Devil's Advocacy y el resto se atenúa. En la sala, alguien del equipo recibe una ficha «abogada del diablo · defiende lo contrario» y escribe en la pizarra «¿y si es un rescate?» · Qué se aprende: Los sesgos no se quitan con fuerza de voluntad: el razonamiento se saca a una estructura que otros revisan. Devil's Advocacy",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "head",
+        "paper",
+        "sats",
+        "devil",
+        "contrary",
+        "advocacy"
+      ]
+    },
+    {
+      "id": "s03-supuestos",
+      "chapter": 1,
+      "title": "Lo que das por hecho",
+      "goal": "Mensaje interceptado. Ficha de PAPER CRANE: «célula de engaño · siembra pistas falsas». La hoja KEY ASSUMPTIONS CHECK se escribe a mano con dos supuestos: «1 · no hay otra explicación» y «2 · las pruebas son lo que parecen». Junto a cada uno aparece «¿y si no?» y se abre: el 1 deja tres huecos de hipótesis vacíos; el 2, una mesa pequeña con la etiqueta «lo comprobamos al final». La analogía: en la puerta de casa, una mano se palpa el bolsillo buscando el móvil y la cartera · Qué se aprende: Lo que nadie dice en voz alta es lo primero que se comprueba: se escribe y se le pregunta «¿y si es falso?». Key Assumptions Check",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "crane",
+        "sheet",
+        "assume-1",
+        "assume-2",
+        "pocket",
+        "kac"
+      ]
+    },
+    {
+      "id": "s04-hipotesis",
+      "chapter": 2,
+      "title": "Todas a la vez",
+      "goal": "El nombre ANALYSIS OF COMPETING HYPOTHESES y «Richards Heuer». La cocina: falta un yogur en la nevera y hay tres sospechosos en silueta (la compañera de piso, el hermano de visita y el perro); sobre cada uno, «¿pudo?» se convierte en «¿no pudo?». Vuelta a Meridian: los tres huecos de s03 se llenan con las hipótesis de la lección, H1 espionaje estatal-industrial, H2 ransomware o crimen financiero y H3 hacktivismo o insider, con iconos genéricos (nunca una persona de la plantilla). Una tira: «primero todas, con el equipo; después, las pruebas» · Qué se aprende: ACH: todas las hipótesis a la vez y se intenta tumbar cada una; no se busca lo que confirma a tu favorita",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "requiredCues": [
+        "fridge",
+        "suspects",
+        "refute",
+        "ach",
+        "heuer",
+        "hypotheses",
+        "all-first"
+      ]
+    },
+    {
+      "id": "s05-matriz",
+      "chapter": 2,
+      "title": "Celda a celda",
+      "goal": "**Demo:** la matriz de la lección (`src/data/s4.ts:421-434`), con su título «Extracto de matriz ACH · VELVET CICADA (ficticio)». Columnas H1–H3 y filas E1–E4 con su texto; leyenda «C = encaja · I = choca · N = no dice nada». Se rellena por filas; la celda que explica la voz se amplía y el resto se atenúa. E1 (spearphishing): C, C, C. E2 (6 meses, cero cifrado o extorsión): C, I, N, con la I de H2 resaltada y la nota «el ransomware cobra rápido». E3 y E4 entran más deprisa: C, I, I. Matriz completa, todavía sin recuentos ni columna de diagnosticidad. Pregunta para pensar, con las filas E1 y E2 resaltadas · Qué se aprende: Cada prueba contra cada hipótesis; una I es la prueba chocando con la hipótesis",
+      "targetSec": 60,
+      "wordBudget": 162,
+      "requiredCues": [
+        "grid",
+        "legend",
+        "row-e1",
+        "row-e2",
+        "rows-e3e4",
+        "full"
+      ]
+    },
+    {
+      "id": "s06-diagnosticidad",
+      "chapter": 3,
+      "title": "La pista que vale para todos",
+      "goal": "La respuesta: se resalta E2. La fila E1 se vuelve gris y se desvanece; en la columna de la derecha aparece «NULA» en E1 y «ALTA» en E2, E3 y E4, como en la lección. Vuelve la cocina: la etiqueta «tenía hambre» (lo que se sabe del culpable, no una nota que alguien dejó) se pega a la vez a los tres sospechosos y no aparta a ninguno. Nombre: DIAGNOSTICITY. El contraste de la lección en dos líneas: «usa phishing: vale para las tres» frente a «nada de cobrar en seis meses: choca con el dinero». La tarjeta entra cuando ya no hay que leer la matriz · Qué se aprende: Una prueba vale por lo que separa, no por lo llamativa; la que encaja con todas no mueve nada",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "requiredCues": [
+        "answer",
+        "fade-e1",
+        "hungry",
+        "high-rows",
+        "diagnosticity"
+      ]
+    },
+    {
+      "id": "s07-inconsistente",
+      "chapter": 3,
+      "title": "Gana la que no puedes tumbar",
+      "goal": "Mensaje interceptado. Bajo la matriz, una cuenta de C por columna (4, 1, 1) que se tacha; debajo, la de I, la fila «Inconsistencias» de la lección: 0, 3, 2. H1 se enmarca: «la menos inconsistente». La cocina: el perro con cinco notas a favor («le encanta el yogur», «estaba en casa», «tenía hambre», «pone cara de culpable», «hay pelos en la cocina») y una en contra, en rojo: «no sabe abrir la nevera»; el perro sale de la fila. Una tira: «nadie demuestra una hipótesis; se descartan las demás» · Qué se aprende: Se cuenta lo que tumba, no lo que encaja; una inconsistencia sólida basta; la ganadora no es «la demostrada». Aquí las dos cuentas dan H1, y la voz avisa de que eso engaña (la C de E1 suma para las tres); el perro enseña dónde no coinciden",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "count-c",
+        "count-i",
+        "least",
+        "dog",
+        "lethal",
+        "not-proven"
+      ]
+    },
+    {
+      "id": "s08-sensibilidad",
+      "chapter": 4,
+      "title": "Quita una pata",
+      "goal": "Mensaje interceptado. Vuelve la hoja de s03 con el supuesto 2 resaltado y, un instante, la mano que se palpa el bolsillo. En la fila E4, la etiqueta «strong link» y una nota: «justo lo que alguien podría plantar» (sin decir quién ni si pasó). Pregunta para pensar. La conclusión como tablero de mesa sobre tres patas, E2, E3 y E4 (E1 no es pata: no sostiene nada). Se quita la pata E4: la fila se atenúa, la cuenta pasa a 0, 2, 1 y la mesa sigue en pie. Contraste: un taburete de una sola pata, «solo E4», que se cae, con «baja la confianza». Nombre: SENSITIVITY ANALYSIS · Qué se aprende: Qué prueba, si fuera falsa, cambia la conclusión, y se vigila. Aquí aguanta sin E4 gracias a E2 y E3: conclusión robusta. Si dependiera solo de E4, bajaría la confianza · Revisión de exactitud: la mesa se dibuja de perfil, con E2 y E3 como patas de los extremos y E4 como pata central; al quitar E4 queda una mesa normal que se sostiene (nunca se ve caer la mesa). La respuesta a la pregunta separa qué tumba a qué: E2 y E3 tumban a H2; E3, a H3.",
+      "targetSec": 56,
+      "wordBudget": 151,
+      "requiredCues": [
+        "assume-2",
+        "strong-link",
+        "pull-e4",
+        "recount",
+        "stands",
+        "stool",
+        "sensitivity"
+      ]
+    },
+    {
+      "id": "s09-informe",
+      "chapter": 4,
+      "title": "Lo que llega al CISO",
+      "goal": "Una nota de una página se escribe línea a línea: «Juicio: H1, la menos inconsistente (extracto de 4 pruebas)» · «Confianza: moderada · 4 pruebas de un extracto; aguanta sin E4» · «Descartadas: H2 (E2, E3, E4) · H3 (E3, E4)» · «Vigilar: E4». La mesa de s08, en miniatura en una esquina: «sin E4, sigue en pie», con la pata central E4 marcada «vigilar». Sello «provisional» (nunca «caso cerrado»). Fuera de la nota, dos tiras aparte: «cómo se dice la confianza: s5m2» y «la matriz completa, en el Lab 4B» · Qué se aprende: El informe lleva la conclusión, su confianza, las alternativas descartadas con su porqué y la prueba que hay que vigilar",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "memo",
+        "verdict",
+        "confidence",
+        "discarded",
+        "watch",
+        "report",
+        "provisional"
+      ]
+    },
+    {
+      "id": "s10-recap",
+      "chapter": 5,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas con sus iconos (lista con interrogación, cuadrícula, mesa); tarjeta final Alertópolis: «Ahora te toca: Lab 4B» · Qué se aprende: Reflejos",
+      "targetSec": 30,
+      "wordBudget": 81,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "lab4b",
+        "endcard"
+      ]
+    }
+  ]
+}
