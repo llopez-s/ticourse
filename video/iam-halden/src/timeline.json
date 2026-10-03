@@ -1,10 +1,10 @@
 {
   "mode": "audio",
-  "sourceHash": "017915a728c9415ef4715896c9eb151a49b0b539c135c3cb5287c12074aad0b5",
+  "sourceHash": "703a09c7104029c47921b05ebfa5ece25b164a71aabd2c68f9bde63c9f31920a",
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "durationInFrames": 16693,
+  "durationInFrames": 16708,
   "voice": "recording/lidia",
   "scenes": [
     {"id":"s01-hook","chapter":1,"chapterTitle":"La contraseña buena","title":"La contraseña buena","from":0,"durationInFrames":1309},
@@ -16,8 +16,8 @@
     {"id":"s07-factors","chapter":4,"chapterTitle":"Demostrar que eres tú","title":"Tarjeta y PIN","from":8902,"durationInFrames":1647},
     {"id":"s08-fatigue","chapter":4,"chapterTitle":"Demostrar que eres tú","title":"Avisos sin parar","from":10549,"durationInFrames":1731},
     {"id":"s09-vault","chapter":5,"chapterTitle":"Las llaves maestras","title":"El armario de llaves","from":12280,"durationInFrames":1539},
-    {"id":"s10-jit","chapter":5,"chapterTitle":"Las llaves maestras","title":"Solo durante la ventana","from":13819,"durationInFrames":1618},
-    {"id":"s11-recap","chapter":5,"chapterTitle":"Las llaves maestras","title":"Tres reglas","from":15437,"durationInFrames":1256}
+    {"id":"s10-jit","chapter":5,"chapterTitle":"Las llaves maestras","title":"Solo durante la ventana","from":13819,"durationInFrames":1633},
+    {"id":"s11-recap","chapter":5,"chapterTitle":"Las llaves maestras","title":"Tres reglas","from":15452,"durationInFrames":1256}
   ],
   "segments": [
     {
@@ -1774,14 +1774,13 @@
     {
       "id": "s10-01",
       "scene": "s10-jit",
-      "text": "A la atacante le vendría de perlas. Un administrador fijo es administrador todo el día, y su contraseña robada vale cualquier noche.",
+      "text": "Al atacante le vendría de perlas. Un administrador fijo es administrador todo el día, y su contraseña robada vale cualquier noche.",
       "from": 13991,
       "audioFrames": 245,
       "durationInFrames": 259,
       "audio": "voice/s10-01.mp3",
       "words": [
-        {"text":"A","from":13998,"to":14003},
-        {"text":"la","from":14003,"to":14015},
+        {"text":"Al","from":13998,"to":14015},
         {"text":"atacante","from":14015,"to":14029},
         {"text":"le","from":14029,"to":14034},
         {"text":"vendría","from":14034,"to":14045},
@@ -1809,328 +1808,328 @@
       "scene": "s10-jit",
       "text": "En el puerto, el privilegio se pide. Alguien de Infraestructura necesita ser administrador para un cambio aprobado, de diez a once de la noche.",
       "from": 14250,
-      "audioFrames": 254,
-      "durationInFrames": 265,
+      "audioFrames": 269,
+      "durationInFrames": 280,
       "audio": "voice/s10-02.mp3",
       "words": [
-        {"text":"En","from":14257,"to":14275},
-        {"text":"el","from":14275,"to":14279},
-        {"text":"puerto,","from":14279,"to":14289},
-        {"text":"el","from":14289,"to":14298},
-        {"text":"privilegio","from":14298,"to":14315},
-        {"text":"se","from":14315,"to":14320},
-        {"text":"pide.","from":14320,"to":14331},
-        {"text":"Alguien","from":14339,"to":14349},
-        {"text":"de","from":14349,"to":14352},
-        {"text":"Infraestructura","from":14352,"to":14368},
-        {"text":"necesita","from":14368,"to":14379},
-        {"text":"ser","from":14379,"to":14387},
-        {"text":"administrador","from":14387,"to":14408},
-        {"text":"para","from":14408,"to":14416},
-        {"text":"un","from":14416,"to":14421},
-        {"text":"cambio","from":14421,"to":14427},
-        {"text":"aprobado,","from":14427,"to":14443},
-        {"text":"de","from":14443,"to":14459},
-        {"text":"diez","from":14459,"to":14467},
-        {"text":"a","from":14467,"to":14469},
-        {"text":"once","from":14469,"to":14477},
-        {"text":"de","from":14477,"to":14483},
-        {"text":"la","from":14483,"to":14486},
-        {"text":"noche.","from":14486,"to":14494}
+        {"text":"En","from":14257,"to":14276},
+        {"text":"el","from":14276,"to":14280},
+        {"text":"puerto,","from":14280,"to":14293},
+        {"text":"el","from":14305,"to":14308},
+        {"text":"privilegio","from":14308,"to":14326},
+        {"text":"se","from":14326,"to":14330},
+        {"text":"pide.","from":14330,"to":14340},
+        {"text":"Alguien","from":14349,"to":14359},
+        {"text":"de","from":14359,"to":14363},
+        {"text":"Infraestructura","from":14363,"to":14380},
+        {"text":"necesita","from":14380,"to":14390},
+        {"text":"ser","from":14390,"to":14400},
+        {"text":"administrador","from":14400,"to":14422},
+        {"text":"para","from":14422,"to":14430},
+        {"text":"un","from":14430,"to":14435},
+        {"text":"cambio","from":14435,"to":14443},
+        {"text":"aprobado,","from":14443,"to":14459},
+        {"text":"de","from":14459,"to":14475},
+        {"text":"diez","from":14475,"to":14483},
+        {"text":"a","from":14483,"to":14485},
+        {"text":"once","from":14485,"to":14492},
+        {"text":"de","from":14492,"to":14498},
+        {"text":"la","from":14498,"to":14502},
+        {"text":"noche.","from":14502,"to":14509}
       ]
     },
     {
       "id": "s10-03",
       "scene": "s10-jit",
       "text": "El jefe de sistemas lo aprueba, y la bóveda le presta una contraseña que solo vale hasta las once.",
-      "from": 14515,
+      "from": 14530,
       "audioFrames": 165,
       "durationInFrames": 176,
       "audio": "voice/s10-03.mp3",
       "words": [
-        {"text":"El","from":14522,"to":14531},
-        {"text":"jefe","from":14531,"to":14538},
-        {"text":"de","from":14538,"to":14541},
-        {"text":"sistemas","from":14541,"to":14549},
-        {"text":"lo","from":14549,"to":14557},
-        {"text":"aprueba,","from":14557,"to":14566},
-        {"text":"y","from":14566,"to":14570},
-        {"text":"la","from":14570,"to":14573},
-        {"text":"bóveda","from":14573,"to":14581},
-        {"text":"le","from":14581,"to":14589},
-        {"text":"presta","from":14589,"to":14597},
-        {"text":"una","from":14597,"to":14601},
-        {"text":"contraseña","from":14601,"to":14617},
-        {"text":"que","from":14617,"to":14630},
-        {"text":"solo","from":14630,"to":14636},
-        {"text":"vale","from":14636,"to":14644},
-        {"text":"hasta","from":14644,"to":14654},
-        {"text":"las","from":14654,"to":14659},
-        {"text":"once.","from":14659,"to":14668}
+        {"text":"El","from":14537,"to":14546},
+        {"text":"jefe","from":14546,"to":14553},
+        {"text":"de","from":14553,"to":14556},
+        {"text":"sistemas","from":14556,"to":14564},
+        {"text":"lo","from":14564,"to":14572},
+        {"text":"aprueba,","from":14572,"to":14581},
+        {"text":"y","from":14581,"to":14585},
+        {"text":"la","from":14585,"to":14588},
+        {"text":"bóveda","from":14588,"to":14596},
+        {"text":"le","from":14596,"to":14604},
+        {"text":"presta","from":14604,"to":14612},
+        {"text":"una","from":14612,"to":14616},
+        {"text":"contraseña","from":14616,"to":14632},
+        {"text":"que","from":14632,"to":14645},
+        {"text":"solo","from":14645,"to":14651},
+        {"text":"vale","from":14651,"to":14659},
+        {"text":"hasta","from":14659,"to":14669},
+        {"text":"las","from":14669,"to":14674},
+        {"text":"once.","from":14674,"to":14683}
       ]
     },
     {
       "id": "s10-04",
       "scene": "s10-jit",
       "text": "A las once en punto, el privilegio desaparece y la contraseña cambia sola.",
-      "from": 14691,
+      "from": 14706,
       "audioFrames": 153,
       "durationInFrames": 165,
       "audio": "voice/s10-04.mp3",
       "words": [
-        {"text":"A","from":14698,"to":14716},
-        {"text":"las","from":14716,"to":14719},
-        {"text":"once","from":14719,"to":14727},
-        {"text":"en","from":14727,"to":14732},
-        {"text":"punto,","from":14732,"to":14738},
-        {"text":"el","from":14738,"to":14746},
-        {"text":"privilegio","from":14746,"to":14761},
-        {"text":"desaparece","from":14761,"to":14779},
-        {"text":"y","from":14779,"to":14792},
-        {"text":"la","from":14792,"to":14795},
-        {"text":"contraseña","from":14795,"to":14813},
-        {"text":"cambia","from":14813,"to":14826},
-        {"text":"sola.","from":14826,"to":14835}
+        {"text":"A","from":14713,"to":14731},
+        {"text":"las","from":14731,"to":14734},
+        {"text":"once","from":14734,"to":14742},
+        {"text":"en","from":14742,"to":14747},
+        {"text":"punto,","from":14747,"to":14753},
+        {"text":"el","from":14753,"to":14761},
+        {"text":"privilegio","from":14761,"to":14776},
+        {"text":"desaparece","from":14776,"to":14794},
+        {"text":"y","from":14794,"to":14807},
+        {"text":"la","from":14807,"to":14810},
+        {"text":"contraseña","from":14810,"to":14828},
+        {"text":"cambia","from":14828,"to":14841},
+        {"text":"sola.","from":14841,"to":14850}
       ]
     },
     {
       "id": "s10-05",
       "scene": "s10-jit",
       "text": "El privilegio dura lo que la ventana. Son los permisos just-in-time.",
-      "from": 14856,
+      "from": 14871,
       "audioFrames": 137,
       "durationInFrames": 148,
       "audio": "voice/s10-05.mp3",
       "words": [
-        {"text":"El","from":14863,"to":14870},
-        {"text":"privilegio","from":14870,"to":14887},
-        {"text":"dura","from":14887,"to":14896},
-        {"text":"lo","from":14899,"to":14901},
-        {"text":"que","from":14901,"to":14905},
-        {"text":"la","from":14905,"to":14908},
-        {"text":"ventana.","from":14908,"to":14921},
-        {"text":"Son","from":14929,"to":14934},
-        {"text":"los","from":14935,"to":14940},
-        {"text":"permisos","from":14940,"to":14957},
-        {"text":"just-in-time.","from":14957,"to":14982}
+        {"text":"El","from":14878,"to":14885},
+        {"text":"privilegio","from":14885,"to":14902},
+        {"text":"dura","from":14902,"to":14911},
+        {"text":"lo","from":14914,"to":14916},
+        {"text":"que","from":14916,"to":14920},
+        {"text":"la","from":14920,"to":14923},
+        {"text":"ventana.","from":14923,"to":14936},
+        {"text":"Son","from":14944,"to":14949},
+        {"text":"los","from":14950,"to":14955},
+        {"text":"permisos","from":14955,"to":14972},
+        {"text":"just-in-time.","from":14972,"to":14997}
       ]
     },
     {
       "id": "s10-06",
       "scene": "s10-jit",
       "text": "Si alguien copió esa contraseña, a las once y cinco ya no le sirve. Es una ephemeral credential, una credencial efímera.",
-      "from": 15004,
+      "from": 15019,
       "audioFrames": 217,
       "durationInFrames": 229,
       "audio": "voice/s10-06.mp3",
       "words": [
-        {"text":"Si","from":15008,"to":15018},
-        {"text":"alguien","from":15018,"to":15024},
-        {"text":"copió","from":15024,"to":15034},
-        {"text":"esa","from":15034,"to":15038},
-        {"text":"contraseña,","from":15038,"to":15054},
-        {"text":"a","from":15061,"to":15063},
-        {"text":"las","from":15062,"to":15065},
-        {"text":"once","from":15065,"to":15072},
-        {"text":"y","from":15072,"to":15074},
-        {"text":"cinco","from":15073,"to":15082},
-        {"text":"ya","from":15082,"to":15088},
-        {"text":"no","from":15088,"to":15092},
-        {"text":"le","from":15092,"to":15095},
-        {"text":"sirve.","from":15095,"to":15103},
-        {"text":"Es","from":15116,"to":15123},
-        {"text":"una","from":15123,"to":15129},
-        {"text":"ephemeral","from":15129,"to":15148},
-        {"text":"credential,","from":15148,"to":15163},
-        {"text":"una","from":15178,"to":15182},
-        {"text":"credencial","from":15182,"to":15195},
-        {"text":"efímera.","from":15195,"to":15201}
+        {"text":"Si","from":15023,"to":15033},
+        {"text":"alguien","from":15033,"to":15039},
+        {"text":"copió","from":15039,"to":15049},
+        {"text":"esa","from":15049,"to":15053},
+        {"text":"contraseña,","from":15053,"to":15069},
+        {"text":"a","from":15076,"to":15078},
+        {"text":"las","from":15077,"to":15080},
+        {"text":"once","from":15080,"to":15087},
+        {"text":"y","from":15087,"to":15089},
+        {"text":"cinco","from":15088,"to":15097},
+        {"text":"ya","from":15097,"to":15103},
+        {"text":"no","from":15103,"to":15107},
+        {"text":"le","from":15107,"to":15110},
+        {"text":"sirve.","from":15110,"to":15118},
+        {"text":"Es","from":15131,"to":15138},
+        {"text":"una","from":15138,"to":15144},
+        {"text":"ephemeral","from":15144,"to":15163},
+        {"text":"credential,","from":15163,"to":15178},
+        {"text":"una","from":15193,"to":15197},
+        {"text":"credencial","from":15197,"to":15210},
+        {"text":"efímera.","from":15210,"to":15216}
       ]
     },
     {
       "id": "s10-07",
       "scene": "s10-jit",
       "text": "O sea, que en la garita te prestan la llave para el trabajo y, al devolverla, cambian la cerradura.",
-      "from": 15233,
+      "from": 15248,
       "audioFrames": 164,
       "durationInFrames": 184,
       "audio": "voice/s10-07.mp3",
       "words": [
-        {"text":"O","from":15233,"to":15237},
-        {"text":"sea,","from":15237,"to":15243},
-        {"text":"que","from":15257,"to":15259},
-        {"text":"en","from":15259,"to":15261},
-        {"text":"la","from":15261,"to":15263},
-        {"text":"garita","from":15263,"to":15272},
-        {"text":"te","from":15272,"to":15277},
-        {"text":"prestan","from":15277,"to":15285},
-        {"text":"la","from":15285,"to":15289},
-        {"text":"llave","from":15289,"to":15297},
-        {"text":"para","from":15297,"to":15303},
-        {"text":"el","from":15303,"to":15305},
-        {"text":"trabajo","from":15305,"to":15316},
-        {"text":"y,","from":15316,"to":15330},
-        {"text":"al","from":15330,"to":15334},
-        {"text":"devolverla,","from":15334,"to":15351},
-        {"text":"cambian","from":15351,"to":15368},
-        {"text":"la","from":15368,"to":15373},
-        {"text":"cerradura.","from":15373,"to":15388}
+        {"text":"O","from":15248,"to":15252},
+        {"text":"sea,","from":15252,"to":15258},
+        {"text":"que","from":15272,"to":15274},
+        {"text":"en","from":15274,"to":15276},
+        {"text":"la","from":15276,"to":15278},
+        {"text":"garita","from":15278,"to":15287},
+        {"text":"te","from":15287,"to":15292},
+        {"text":"prestan","from":15292,"to":15300},
+        {"text":"la","from":15300,"to":15304},
+        {"text":"llave","from":15304,"to":15312},
+        {"text":"para","from":15312,"to":15318},
+        {"text":"el","from":15318,"to":15320},
+        {"text":"trabajo","from":15320,"to":15331},
+        {"text":"y,","from":15331,"to":15345},
+        {"text":"al","from":15345,"to":15349},
+        {"text":"devolverla,","from":15349,"to":15366},
+        {"text":"cambian","from":15366,"to":15383},
+        {"text":"la","from":15383,"to":15388},
+        {"text":"cerradura.","from":15388,"to":15403}
       ]
     },
     {
       "id": "s11-01",
       "scene": "s11-recap",
       "text": "Tres atajos te ha ofrecido SILENT PAGER, y con los tres entraba. Contra cada uno, una regla.",
-      "from": 15449,
+      "from": 15464,
       "audioFrames": 201,
       "durationInFrames": 213,
       "audio": "voice/s11-01.mp3",
       "words": [
-        {"text":"Tres","from":15456,"to":15470},
-        {"text":"atajos","from":15470,"to":15485},
-        {"text":"te","from":15485,"to":15489},
-        {"text":"ha","from":15489,"to":15491},
-        {"text":"ofrecido","from":15490,"to":15505},
-        {"text":"SILENT","from":15505,"to":15519},
-        {"text":"PAGER,","from":15519,"to":15530},
-        {"text":"y","from":15530,"to":15542},
-        {"text":"con","from":15542,"to":15549},
-        {"text":"los","from":15549,"to":15555},
-        {"text":"tres","from":15555,"to":15562},
-        {"text":"entraba.","from":15562,"to":15580},
-        {"text":"Contra","from":15590,"to":15602},
-        {"text":"cada","from":15602,"to":15607},
-        {"text":"uno,","from":15607,"to":15617},
-        {"text":"una","from":15617,"to":15629},
-        {"text":"regla.","from":15629,"to":15642}
+        {"text":"Tres","from":15471,"to":15485},
+        {"text":"atajos","from":15485,"to":15500},
+        {"text":"te","from":15500,"to":15504},
+        {"text":"ha","from":15504,"to":15506},
+        {"text":"ofrecido","from":15505,"to":15520},
+        {"text":"SILENT","from":15520,"to":15534},
+        {"text":"PAGER,","from":15534,"to":15545},
+        {"text":"y","from":15545,"to":15557},
+        {"text":"con","from":15557,"to":15564},
+        {"text":"los","from":15564,"to":15570},
+        {"text":"tres","from":15570,"to":15577},
+        {"text":"entraba.","from":15577,"to":15595},
+        {"text":"Contra","from":15605,"to":15617},
+        {"text":"cada","from":15617,"to":15622},
+        {"text":"uno,","from":15622,"to":15632},
+        {"text":"una","from":15632,"to":15644},
+        {"text":"regla.","from":15644,"to":15657}
       ]
     },
     {
       "id": "s11-02",
       "scene": "s11-recap",
       "text": "Con las cuentas, cambiar de puesto también quita, y la cuenta de quien se va se precinta ese día.",
-      "from": 15662,
+      "from": 15677,
       "audioFrames": 177,
       "durationInFrames": 189,
       "audio": "voice/s11-02.mp3",
       "words": [
-        {"text":"Con","from":15669,"to":15680},
-        {"text":"las","from":15680,"to":15686},
-        {"text":"cuentas,","from":15686,"to":15701},
-        {"text":"cambiar","from":15702,"to":15709},
-        {"text":"de","from":15709,"to":15715},
-        {"text":"puesto","from":15715,"to":15722},
-        {"text":"también","from":15722,"to":15733},
-        {"text":"quita,","from":15733,"to":15745},
-        {"text":"y","from":15745,"to":15752},
-        {"text":"la","from":15752,"to":15756},
-        {"text":"cuenta","from":15756,"to":15763},
-        {"text":"de","from":15763,"to":15770},
-        {"text":"quien","from":15770,"to":15774},
-        {"text":"se","from":15774,"to":15780},
-        {"text":"va","from":15780,"to":15787},
-        {"text":"se","from":15787,"to":15796},
-        {"text":"precinta","from":15796,"to":15812},
-        {"text":"ese","from":15812,"to":15821},
-        {"text":"día.","from":15821,"to":15830}
+        {"text":"Con","from":15684,"to":15695},
+        {"text":"las","from":15695,"to":15701},
+        {"text":"cuentas,","from":15701,"to":15716},
+        {"text":"cambiar","from":15717,"to":15724},
+        {"text":"de","from":15724,"to":15730},
+        {"text":"puesto","from":15730,"to":15737},
+        {"text":"también","from":15737,"to":15748},
+        {"text":"quita,","from":15748,"to":15760},
+        {"text":"y","from":15760,"to":15767},
+        {"text":"la","from":15767,"to":15771},
+        {"text":"cuenta","from":15771,"to":15778},
+        {"text":"de","from":15778,"to":15785},
+        {"text":"quien","from":15785,"to":15789},
+        {"text":"se","from":15789,"to":15795},
+        {"text":"va","from":15795,"to":15802},
+        {"text":"se","from":15802,"to":15811},
+        {"text":"precinta","from":15811,"to":15827},
+        {"text":"ese","from":15827,"to":15836},
+        {"text":"día.","from":15836,"to":15845}
       ]
     },
     {
       "id": "s11-03",
       "scene": "s11-recap",
       "text": "Con las contraseñas, la tuya solo la ve tu casa, y la acompaña un factor de otro tipo. Al socio, un pase, y a la app, un permiso.",
-      "from": 15851,
+      "from": 15866,
       "audioFrames": 285,
       "durationInFrames": 297,
       "audio": "voice/s11-03.mp3",
       "words": [
-        {"text":"Con","from":15858,"to":15875},
-        {"text":"las","from":15875,"to":15881},
-        {"text":"contraseñas,","from":15881,"to":15902},
-        {"text":"la","from":15912,"to":15920},
-        {"text":"tuya","from":15920,"to":15930},
-        {"text":"solo","from":15930,"to":15939},
-        {"text":"la","from":15939,"to":15945},
-        {"text":"ve","from":15945,"to":15950},
-        {"text":"tu","from":15950,"to":15954},
-        {"text":"casa,","from":15954,"to":15964},
-        {"text":"y","from":15964,"to":15974},
-        {"text":"la","from":15974,"to":15977},
-        {"text":"acompaña","from":15977,"to":15990},
-        {"text":"un","from":15990,"to":15992},
-        {"text":"factor","from":15992,"to":16001},
-        {"text":"de","from":16001,"to":16009},
-        {"text":"otro","from":16009,"to":16016},
-        {"text":"tipo.","from":16016,"to":16027},
-        {"text":"Al","from":16042,"to":16049},
-        {"text":"socio,","from":16049,"to":16060},
-        {"text":"un","from":16060,"to":16065},
-        {"text":"pase,","from":16065,"to":16074},
-        {"text":"y","from":16074,"to":16079},
-        {"text":"a","from":16087,"to":16090},
-        {"text":"la","from":16090,"to":16093},
-        {"text":"app,","from":16093,"to":16100},
-        {"text":"un","from":16100,"to":16111},
-        {"text":"permiso.","from":16111,"to":16124}
+        {"text":"Con","from":15873,"to":15890},
+        {"text":"las","from":15890,"to":15896},
+        {"text":"contraseñas,","from":15896,"to":15917},
+        {"text":"la","from":15927,"to":15935},
+        {"text":"tuya","from":15935,"to":15945},
+        {"text":"solo","from":15945,"to":15954},
+        {"text":"la","from":15954,"to":15960},
+        {"text":"ve","from":15960,"to":15965},
+        {"text":"tu","from":15965,"to":15969},
+        {"text":"casa,","from":15969,"to":15979},
+        {"text":"y","from":15979,"to":15989},
+        {"text":"la","from":15989,"to":15992},
+        {"text":"acompaña","from":15992,"to":16005},
+        {"text":"un","from":16005,"to":16007},
+        {"text":"factor","from":16007,"to":16016},
+        {"text":"de","from":16016,"to":16024},
+        {"text":"otro","from":16024,"to":16031},
+        {"text":"tipo.","from":16031,"to":16042},
+        {"text":"Al","from":16057,"to":16064},
+        {"text":"socio,","from":16064,"to":16075},
+        {"text":"un","from":16075,"to":16080},
+        {"text":"pase,","from":16080,"to":16089},
+        {"text":"y","from":16089,"to":16094},
+        {"text":"a","from":16102,"to":16105},
+        {"text":"la","from":16105,"to":16108},
+        {"text":"app,","from":16108,"to":16115},
+        {"text":"un","from":16115,"to":16126},
+        {"text":"permiso.","from":16126,"to":16139}
       ]
     },
     {
       "id": "s11-04",
       "scene": "s11-recap",
       "text": "Y con las llaves maestras, nadie se las queda. La bóveda las cambia sola y solo las presta durante la ventana.",
-      "from": 16148,
+      "from": 16163,
       "audioFrames": 219,
       "durationInFrames": 233,
       "audio": "voice/s11-04.mp3",
       "words": [
-        {"text":"Y","from":16155,"to":16172},
-        {"text":"con","from":16172,"to":16176},
-        {"text":"las","from":16176,"to":16180},
-        {"text":"llaves","from":16180,"to":16186},
-        {"text":"maestras,","from":16186,"to":16204},
-        {"text":"nadie","from":16204,"to":16214},
-        {"text":"se","from":16214,"to":16221},
-        {"text":"las","from":16221,"to":16226},
-        {"text":"queda.","from":16226,"to":16233},
-        {"text":"La","from":16246,"to":16252},
-        {"text":"bóveda","from":16252,"to":16261},
-        {"text":"las","from":16261,"to":16269},
-        {"text":"cambia","from":16269,"to":16278},
-        {"text":"sola","from":16278,"to":16288},
-        {"text":"y","from":16288,"to":16303},
-        {"text":"solo","from":16303,"to":16311},
-        {"text":"las","from":16311,"to":16319},
-        {"text":"presta","from":16319,"to":16331},
-        {"text":"durante","from":16331,"to":16339},
-        {"text":"la","from":16339,"to":16346},
-        {"text":"ventana.","from":16346,"to":16358}
+        {"text":"Y","from":16170,"to":16187},
+        {"text":"con","from":16187,"to":16191},
+        {"text":"las","from":16191,"to":16195},
+        {"text":"llaves","from":16195,"to":16201},
+        {"text":"maestras,","from":16201,"to":16219},
+        {"text":"nadie","from":16219,"to":16229},
+        {"text":"se","from":16229,"to":16236},
+        {"text":"las","from":16236,"to":16241},
+        {"text":"queda.","from":16241,"to":16248},
+        {"text":"La","from":16261,"to":16267},
+        {"text":"bóveda","from":16267,"to":16276},
+        {"text":"las","from":16276,"to":16284},
+        {"text":"cambia","from":16284,"to":16293},
+        {"text":"sola","from":16293,"to":16303},
+        {"text":"y","from":16303,"to":16318},
+        {"text":"solo","from":16318,"to":16326},
+        {"text":"las","from":16326,"to":16334},
+        {"text":"presta","from":16334,"to":16346},
+        {"text":"durante","from":16346,"to":16354},
+        {"text":"la","from":16354,"to":16361},
+        {"text":"ventana.","from":16361,"to":16373}
       ]
     },
     {
       "id": "s11-05",
       "scene": "s11-recap",
       "text": "Para ponerte a prueba, tienes las ocho preguntas de la lección. Por hoy, cerramos la garita.",
-      "from": 16381,
+      "from": 16396,
       "audioFrames": 196,
       "durationInFrames": 217,
       "audio": "voice/s11-05.mp3",
       "words": [
-        {"text":"Para","from":16388,"to":16398},
-        {"text":"ponerte","from":16398,"to":16410},
-        {"text":"a","from":16410,"to":16413},
-        {"text":"prueba,","from":16413,"to":16419},
-        {"text":"tienes","from":16419,"to":16424},
-        {"text":"las","from":16436,"to":16444},
-        {"text":"ocho","from":16444,"to":16450},
-        {"text":"preguntas","from":16450,"to":16464},
-        {"text":"de","from":16464,"to":16471},
-        {"text":"la","from":16471,"to":16475},
-        {"text":"lección.","from":16475,"to":16488},
-        {"text":"Por","from":16502,"to":16511},
-        {"text":"hoy,","from":16511,"to":16517},
-        {"text":"cerramos","from":16517,"to":16546},
-        {"text":"la","from":16546,"to":16553},
-        {"text":"garita.","from":16553,"to":16565}
+        {"text":"Para","from":16403,"to":16413},
+        {"text":"ponerte","from":16413,"to":16425},
+        {"text":"a","from":16425,"to":16428},
+        {"text":"prueba,","from":16428,"to":16434},
+        {"text":"tienes","from":16434,"to":16439},
+        {"text":"las","from":16451,"to":16459},
+        {"text":"ocho","from":16459,"to":16465},
+        {"text":"preguntas","from":16465,"to":16479},
+        {"text":"de","from":16479,"to":16486},
+        {"text":"la","from":16486,"to":16490},
+        {"text":"lección.","from":16490,"to":16503},
+        {"text":"Por","from":16517,"to":16526},
+        {"text":"hoy,","from":16526,"to":16532},
+        {"text":"cerramos","from":16532,"to":16561},
+        {"text":"la","from":16561,"to":16568},
+        {"text":"garita.","from":16568,"to":16580}
       ]
     }
   ],
@@ -4336,8 +4335,7 @@
       "to": 14067,
       "lines": [
         [
-          {"text":"A","from":13998,"to":14003},
-          {"text":"la","from":14003,"to":14015},
+          {"text":"Al","from":13998,"to":14015},
           {"text":"atacante","from":14015,"to":14029},
           {"text":"le","from":14029,"to":14034},
           {"text":"vendría","from":14034,"to":14045},
@@ -4383,407 +4381,407 @@
     },
     {
       "from": 14254,
-      "to": 14336,
+      "to": 14346,
       "lines": [
         [
-          {"text":"En","from":14257,"to":14275},
-          {"text":"el","from":14275,"to":14279},
-          {"text":"puerto,","from":14279,"to":14289},
-          {"text":"el","from":14289,"to":14298},
-          {"text":"privilegio","from":14298,"to":14315},
-          {"text":"se","from":14315,"to":14320},
-          {"text":"pide.","from":14320,"to":14331}
+          {"text":"En","from":14257,"to":14276},
+          {"text":"el","from":14276,"to":14280},
+          {"text":"puerto,","from":14280,"to":14293},
+          {"text":"el","from":14305,"to":14308},
+          {"text":"privilegio","from":14308,"to":14326},
+          {"text":"se","from":14326,"to":14330},
+          {"text":"pide.","from":14330,"to":14340}
         ]
       ]
     },
     {
-      "from": 14336,
-      "to": 14440,
+      "from": 14346,
+      "to": 14456,
       "lines": [
         [
-          {"text":"Alguien","from":14339,"to":14349},
-          {"text":"de","from":14349,"to":14352},
-          {"text":"Infraestructura","from":14352,"to":14368},
-          {"text":"necesita","from":14368,"to":14379},
-          {"text":"ser","from":14379,"to":14387}
+          {"text":"Alguien","from":14349,"to":14359},
+          {"text":"de","from":14359,"to":14363},
+          {"text":"Infraestructura","from":14363,"to":14380},
+          {"text":"necesita","from":14380,"to":14390},
+          {"text":"ser","from":14390,"to":14400}
         ],
         [
-          {"text":"administrador","from":14387,"to":14408},
-          {"text":"para","from":14408,"to":14416},
-          {"text":"un","from":14416,"to":14421},
-          {"text":"cambio","from":14421,"to":14427},
-          {"text":"aprobado,","from":14427,"to":14443}
+          {"text":"administrador","from":14400,"to":14422},
+          {"text":"para","from":14422,"to":14430},
+          {"text":"un","from":14430,"to":14435},
+          {"text":"cambio","from":14435,"to":14443},
+          {"text":"aprobado,","from":14443,"to":14459}
         ]
       ]
     },
     {
-      "from": 14440,
-      "to": 14518,
+      "from": 14456,
+      "to": 14533,
       "lines": [
         [
-          {"text":"de","from":14443,"to":14459},
-          {"text":"diez","from":14459,"to":14467},
-          {"text":"a","from":14467,"to":14469},
-          {"text":"once","from":14469,"to":14477},
-          {"text":"de","from":14477,"to":14483},
-          {"text":"la","from":14483,"to":14486},
-          {"text":"noche.","from":14486,"to":14494}
+          {"text":"de","from":14459,"to":14475},
+          {"text":"diez","from":14475,"to":14483},
+          {"text":"a","from":14483,"to":14485},
+          {"text":"once","from":14485,"to":14492},
+          {"text":"de","from":14492,"to":14498},
+          {"text":"la","from":14498,"to":14502},
+          {"text":"noche.","from":14502,"to":14509}
         ]
       ]
     },
     {
-      "from": 14519,
-      "to": 14563,
+      "from": 14534,
+      "to": 14578,
       "lines": [
         [
-          {"text":"El","from":14522,"to":14531},
-          {"text":"jefe","from":14531,"to":14538},
-          {"text":"de","from":14538,"to":14541},
-          {"text":"sistemas","from":14541,"to":14549},
-          {"text":"lo","from":14549,"to":14557},
-          {"text":"aprueba,","from":14557,"to":14566}
+          {"text":"El","from":14537,"to":14546},
+          {"text":"jefe","from":14546,"to":14553},
+          {"text":"de","from":14553,"to":14556},
+          {"text":"sistemas","from":14556,"to":14564},
+          {"text":"lo","from":14564,"to":14572},
+          {"text":"aprueba,","from":14572,"to":14581}
         ]
       ]
     },
     {
-      "from": 14563,
-      "to": 14692,
+      "from": 14578,
+      "to": 14707,
       "lines": [
         [
-          {"text":"y","from":14566,"to":14570},
-          {"text":"la","from":14570,"to":14573},
-          {"text":"bóveda","from":14573,"to":14581},
-          {"text":"le","from":14581,"to":14589},
-          {"text":"presta","from":14589,"to":14597},
-          {"text":"una","from":14597,"to":14601},
-          {"text":"contraseña","from":14601,"to":14617}
+          {"text":"y","from":14581,"to":14585},
+          {"text":"la","from":14585,"to":14588},
+          {"text":"bóveda","from":14588,"to":14596},
+          {"text":"le","from":14596,"to":14604},
+          {"text":"presta","from":14604,"to":14612},
+          {"text":"una","from":14612,"to":14616},
+          {"text":"contraseña","from":14616,"to":14632}
         ],
         [
-          {"text":"que","from":14617,"to":14630},
-          {"text":"solo","from":14630,"to":14636},
-          {"text":"vale","from":14636,"to":14644},
-          {"text":"hasta","from":14644,"to":14654},
-          {"text":"las","from":14654,"to":14659},
-          {"text":"once.","from":14659,"to":14668}
+          {"text":"que","from":14632,"to":14645},
+          {"text":"solo","from":14645,"to":14651},
+          {"text":"vale","from":14651,"to":14659},
+          {"text":"hasta","from":14659,"to":14669},
+          {"text":"las","from":14669,"to":14674},
+          {"text":"once.","from":14674,"to":14683}
         ]
       ]
     },
     {
-      "from": 14695,
-      "to": 14859,
+      "from": 14710,
+      "to": 14874,
       "lines": [
         [
-          {"text":"A","from":14698,"to":14716},
-          {"text":"las","from":14716,"to":14719},
-          {"text":"once","from":14719,"to":14727},
-          {"text":"en","from":14727,"to":14732},
-          {"text":"punto,","from":14732,"to":14738},
-          {"text":"el","from":14738,"to":14746},
-          {"text":"privilegio","from":14746,"to":14761}
+          {"text":"A","from":14713,"to":14731},
+          {"text":"las","from":14731,"to":14734},
+          {"text":"once","from":14734,"to":14742},
+          {"text":"en","from":14742,"to":14747},
+          {"text":"punto,","from":14747,"to":14753},
+          {"text":"el","from":14753,"to":14761},
+          {"text":"privilegio","from":14761,"to":14776}
         ],
         [
-          {"text":"desaparece","from":14761,"to":14779},
-          {"text":"y","from":14779,"to":14792},
-          {"text":"la","from":14792,"to":14795},
-          {"text":"contraseña","from":14795,"to":14813},
-          {"text":"cambia","from":14813,"to":14826},
-          {"text":"sola.","from":14826,"to":14835}
+          {"text":"desaparece","from":14776,"to":14794},
+          {"text":"y","from":14794,"to":14807},
+          {"text":"la","from":14807,"to":14810},
+          {"text":"contraseña","from":14810,"to":14828},
+          {"text":"cambia","from":14828,"to":14841},
+          {"text":"sola.","from":14841,"to":14850}
         ]
       ]
     },
     {
-      "from": 14860,
-      "to": 15005,
+      "from": 14875,
+      "to": 15020,
       "lines": [
         [
-          {"text":"El","from":14863,"to":14870},
-          {"text":"privilegio","from":14870,"to":14887},
-          {"text":"dura","from":14887,"to":14896},
-          {"text":"lo","from":14899,"to":14901},
-          {"text":"que","from":14901,"to":14905},
-          {"text":"la","from":14905,"to":14908},
-          {"text":"ventana.","from":14908,"to":14921}
+          {"text":"El","from":14878,"to":14885},
+          {"text":"privilegio","from":14885,"to":14902},
+          {"text":"dura","from":14902,"to":14911},
+          {"text":"lo","from":14914,"to":14916},
+          {"text":"que","from":14916,"to":14920},
+          {"text":"la","from":14920,"to":14923},
+          {"text":"ventana.","from":14923,"to":14936}
         ],
         [
-          {"text":"Son","from":14929,"to":14934},
-          {"text":"los","from":14935,"to":14940},
-          {"text":"permisos","from":14940,"to":14957},
-          {"text":"just-in-time.","from":14957,"to":14982}
+          {"text":"Son","from":14944,"to":14949},
+          {"text":"los","from":14950,"to":14955},
+          {"text":"permisos","from":14955,"to":14972},
+          {"text":"just-in-time.","from":14972,"to":14997}
         ]
       ]
     },
     {
-      "from": 15005,
-      "to": 15113,
+      "from": 15020,
+      "to": 15128,
       "lines": [
         [
-          {"text":"Si","from":15008,"to":15018},
-          {"text":"alguien","from":15018,"to":15024},
-          {"text":"copió","from":15024,"to":15034},
-          {"text":"esa","from":15034,"to":15038},
-          {"text":"contraseña,","from":15038,"to":15054}
+          {"text":"Si","from":15023,"to":15033},
+          {"text":"alguien","from":15033,"to":15039},
+          {"text":"copió","from":15039,"to":15049},
+          {"text":"esa","from":15049,"to":15053},
+          {"text":"contraseña,","from":15053,"to":15069}
         ],
         [
-          {"text":"a","from":15061,"to":15063},
-          {"text":"las","from":15062,"to":15065},
-          {"text":"once","from":15065,"to":15072},
-          {"text":"y","from":15072,"to":15074},
-          {"text":"cinco","from":15073,"to":15082},
-          {"text":"ya","from":15082,"to":15088},
-          {"text":"no","from":15088,"to":15092},
-          {"text":"le","from":15092,"to":15095},
-          {"text":"sirve.","from":15095,"to":15103}
+          {"text":"a","from":15076,"to":15078},
+          {"text":"las","from":15077,"to":15080},
+          {"text":"once","from":15080,"to":15087},
+          {"text":"y","from":15087,"to":15089},
+          {"text":"cinco","from":15088,"to":15097},
+          {"text":"ya","from":15097,"to":15103},
+          {"text":"no","from":15103,"to":15107},
+          {"text":"le","from":15107,"to":15110},
+          {"text":"sirve.","from":15110,"to":15118}
         ]
       ]
     },
     {
-      "from": 15113,
-      "to": 15225,
+      "from": 15128,
+      "to": 15240,
       "lines": [
         [
-          {"text":"Es","from":15116,"to":15123},
-          {"text":"una","from":15123,"to":15129},
-          {"text":"ephemeral","from":15129,"to":15148},
-          {"text":"credential,","from":15148,"to":15163}
+          {"text":"Es","from":15131,"to":15138},
+          {"text":"una","from":15138,"to":15144},
+          {"text":"ephemeral","from":15144,"to":15163},
+          {"text":"credential,","from":15163,"to":15178}
         ],
         [
-          {"text":"una","from":15178,"to":15182},
-          {"text":"credencial","from":15182,"to":15195},
-          {"text":"efímera.","from":15195,"to":15201}
+          {"text":"una","from":15193,"to":15197},
+          {"text":"credencial","from":15197,"to":15210},
+          {"text":"efímera.","from":15210,"to":15216}
         ]
       ]
     },
     {
-      "from": 15230,
-      "to": 15348,
+      "from": 15245,
+      "to": 15363,
       "lines": [
         [
-          {"text":"O","from":15233,"to":15237},
-          {"text":"sea,","from":15237,"to":15243},
-          {"text":"que","from":15257,"to":15259},
-          {"text":"en","from":15259,"to":15261},
-          {"text":"la","from":15261,"to":15263},
-          {"text":"garita","from":15263,"to":15272},
-          {"text":"te","from":15272,"to":15277},
-          {"text":"prestan","from":15277,"to":15285}
+          {"text":"O","from":15248,"to":15252},
+          {"text":"sea,","from":15252,"to":15258},
+          {"text":"que","from":15272,"to":15274},
+          {"text":"en","from":15274,"to":15276},
+          {"text":"la","from":15276,"to":15278},
+          {"text":"garita","from":15278,"to":15287},
+          {"text":"te","from":15287,"to":15292},
+          {"text":"prestan","from":15292,"to":15300}
         ],
         [
-          {"text":"la","from":15285,"to":15289},
-          {"text":"llave","from":15289,"to":15297},
-          {"text":"para","from":15297,"to":15303},
-          {"text":"el","from":15303,"to":15305},
-          {"text":"trabajo","from":15305,"to":15316},
-          {"text":"y,","from":15316,"to":15330},
-          {"text":"al","from":15330,"to":15334},
-          {"text":"devolverla,","from":15334,"to":15351}
+          {"text":"la","from":15300,"to":15304},
+          {"text":"llave","from":15304,"to":15312},
+          {"text":"para","from":15312,"to":15318},
+          {"text":"el","from":15318,"to":15320},
+          {"text":"trabajo","from":15320,"to":15331},
+          {"text":"y,","from":15331,"to":15345},
+          {"text":"al","from":15345,"to":15349},
+          {"text":"devolverla,","from":15349,"to":15366}
         ]
       ]
     },
     {
-      "from": 15348,
-      "to": 15412,
+      "from": 15363,
+      "to": 15427,
       "lines": [
         [
-          {"text":"cambian","from":15351,"to":15368},
-          {"text":"la","from":15368,"to":15373},
-          {"text":"cerradura.","from":15373,"to":15388}
+          {"text":"cambian","from":15366,"to":15383},
+          {"text":"la","from":15383,"to":15388},
+          {"text":"cerradura.","from":15388,"to":15403}
         ]
       ]
     },
     {
-      "from": 15453,
-      "to": 15587,
+      "from": 15468,
+      "to": 15602,
       "lines": [
         [
-          {"text":"Tres","from":15456,"to":15470},
-          {"text":"atajos","from":15470,"to":15485},
-          {"text":"te","from":15485,"to":15489},
-          {"text":"ha","from":15489,"to":15491},
-          {"text":"ofrecido","from":15490,"to":15505},
-          {"text":"SILENT","from":15505,"to":15519}
+          {"text":"Tres","from":15471,"to":15485},
+          {"text":"atajos","from":15485,"to":15500},
+          {"text":"te","from":15500,"to":15504},
+          {"text":"ha","from":15504,"to":15506},
+          {"text":"ofrecido","from":15505,"to":15520},
+          {"text":"SILENT","from":15520,"to":15534}
         ],
         [
-          {"text":"PAGER,","from":15519,"to":15530},
-          {"text":"y","from":15530,"to":15542},
-          {"text":"con","from":15542,"to":15549},
-          {"text":"los","from":15549,"to":15555},
-          {"text":"tres","from":15555,"to":15562},
-          {"text":"entraba.","from":15562,"to":15580}
+          {"text":"PAGER,","from":15534,"to":15545},
+          {"text":"y","from":15545,"to":15557},
+          {"text":"con","from":15557,"to":15564},
+          {"text":"los","from":15564,"to":15570},
+          {"text":"tres","from":15570,"to":15577},
+          {"text":"entraba.","from":15577,"to":15595}
         ]
       ]
     },
     {
-      "from": 15587,
-      "to": 15666,
+      "from": 15602,
+      "to": 15681,
       "lines": [
         [
-          {"text":"Contra","from":15590,"to":15602},
-          {"text":"cada","from":15602,"to":15607},
-          {"text":"uno,","from":15607,"to":15617},
-          {"text":"una","from":15617,"to":15629},
-          {"text":"regla.","from":15629,"to":15642}
+          {"text":"Contra","from":15605,"to":15617},
+          {"text":"cada","from":15617,"to":15622},
+          {"text":"uno,","from":15622,"to":15632},
+          {"text":"una","from":15632,"to":15644},
+          {"text":"regla.","from":15644,"to":15657}
         ]
       ]
     },
     {
-      "from": 15666,
-      "to": 15742,
+      "from": 15681,
+      "to": 15757,
       "lines": [
         [
-          {"text":"Con","from":15669,"to":15680},
-          {"text":"las","from":15680,"to":15686},
-          {"text":"cuentas,","from":15686,"to":15701},
-          {"text":"cambiar","from":15702,"to":15709}
+          {"text":"Con","from":15684,"to":15695},
+          {"text":"las","from":15695,"to":15701},
+          {"text":"cuentas,","from":15701,"to":15716},
+          {"text":"cambiar","from":15717,"to":15724}
         ],
         [
-          {"text":"de","from":15709,"to":15715},
-          {"text":"puesto","from":15715,"to":15722},
-          {"text":"también","from":15722,"to":15733},
-          {"text":"quita,","from":15733,"to":15745}
+          {"text":"de","from":15724,"to":15730},
+          {"text":"puesto","from":15730,"to":15737},
+          {"text":"también","from":15737,"to":15748},
+          {"text":"quita,","from":15748,"to":15760}
         ]
       ]
     },
     {
-      "from": 15742,
-      "to": 15854,
+      "from": 15757,
+      "to": 15869,
       "lines": [
         [
-          {"text":"y","from":15745,"to":15752},
-          {"text":"la","from":15752,"to":15756},
-          {"text":"cuenta","from":15756,"to":15763},
-          {"text":"de","from":15763,"to":15770},
-          {"text":"quien","from":15770,"to":15774}
+          {"text":"y","from":15760,"to":15767},
+          {"text":"la","from":15767,"to":15771},
+          {"text":"cuenta","from":15771,"to":15778},
+          {"text":"de","from":15778,"to":15785},
+          {"text":"quien","from":15785,"to":15789}
         ],
         [
-          {"text":"se","from":15774,"to":15780},
-          {"text":"va","from":15780,"to":15787},
-          {"text":"se","from":15787,"to":15796},
-          {"text":"precinta","from":15796,"to":15812},
-          {"text":"ese","from":15812,"to":15821},
-          {"text":"día.","from":15821,"to":15830}
+          {"text":"se","from":15789,"to":15795},
+          {"text":"va","from":15795,"to":15802},
+          {"text":"se","from":15802,"to":15811},
+          {"text":"precinta","from":15811,"to":15827},
+          {"text":"ese","from":15827,"to":15836},
+          {"text":"día.","from":15836,"to":15845}
         ]
       ]
     },
     {
-      "from": 15855,
-      "to": 15961,
+      "from": 15870,
+      "to": 15976,
       "lines": [
         [
-          {"text":"Con","from":15858,"to":15875},
-          {"text":"las","from":15875,"to":15881},
-          {"text":"contraseñas,","from":15881,"to":15902}
+          {"text":"Con","from":15873,"to":15890},
+          {"text":"las","from":15890,"to":15896},
+          {"text":"contraseñas,","from":15896,"to":15917}
         ],
         [
-          {"text":"la","from":15912,"to":15920},
-          {"text":"tuya","from":15920,"to":15930},
-          {"text":"solo","from":15930,"to":15939},
-          {"text":"la","from":15939,"to":15945},
-          {"text":"ve","from":15945,"to":15950},
-          {"text":"tu","from":15950,"to":15954},
-          {"text":"casa,","from":15954,"to":15964}
+          {"text":"la","from":15927,"to":15935},
+          {"text":"tuya","from":15935,"to":15945},
+          {"text":"solo","from":15945,"to":15954},
+          {"text":"la","from":15954,"to":15960},
+          {"text":"ve","from":15960,"to":15965},
+          {"text":"tu","from":15965,"to":15969},
+          {"text":"casa,","from":15969,"to":15979}
         ]
       ]
     },
     {
-      "from": 15961,
-      "to": 16148,
+      "from": 15976,
+      "to": 16163,
       "lines": [
         [
-          {"text":"y","from":15964,"to":15974},
-          {"text":"la","from":15974,"to":15977},
-          {"text":"acompaña","from":15977,"to":15990},
-          {"text":"un","from":15990,"to":15992},
-          {"text":"factor","from":15992,"to":16001},
-          {"text":"de","from":16001,"to":16009},
-          {"text":"otro","from":16009,"to":16016},
-          {"text":"tipo.","from":16016,"to":16027}
+          {"text":"y","from":15979,"to":15989},
+          {"text":"la","from":15989,"to":15992},
+          {"text":"acompaña","from":15992,"to":16005},
+          {"text":"un","from":16005,"to":16007},
+          {"text":"factor","from":16007,"to":16016},
+          {"text":"de","from":16016,"to":16024},
+          {"text":"otro","from":16024,"to":16031},
+          {"text":"tipo.","from":16031,"to":16042}
         ],
         [
-          {"text":"Al","from":16042,"to":16049},
-          {"text":"socio,","from":16049,"to":16060},
-          {"text":"un","from":16060,"to":16065},
-          {"text":"pase,","from":16065,"to":16074},
-          {"text":"y","from":16074,"to":16079},
-          {"text":"a","from":16087,"to":16090},
-          {"text":"la","from":16090,"to":16093},
-          {"text":"app,","from":16093,"to":16100},
-          {"text":"un","from":16100,"to":16111},
-          {"text":"permiso.","from":16111,"to":16124}
+          {"text":"Al","from":16057,"to":16064},
+          {"text":"socio,","from":16064,"to":16075},
+          {"text":"un","from":16075,"to":16080},
+          {"text":"pase,","from":16080,"to":16089},
+          {"text":"y","from":16089,"to":16094},
+          {"text":"a","from":16102,"to":16105},
+          {"text":"la","from":16105,"to":16108},
+          {"text":"app,","from":16108,"to":16115},
+          {"text":"un","from":16115,"to":16126},
+          {"text":"permiso.","from":16126,"to":16139}
         ]
       ]
     },
     {
-      "from": 16152,
-      "to": 16243,
+      "from": 16167,
+      "to": 16258,
       "lines": [
         [
-          {"text":"Y","from":16155,"to":16172},
-          {"text":"con","from":16172,"to":16176},
-          {"text":"las","from":16176,"to":16180},
-          {"text":"llaves","from":16180,"to":16186},
-          {"text":"maestras,","from":16186,"to":16204}
+          {"text":"Y","from":16170,"to":16187},
+          {"text":"con","from":16187,"to":16191},
+          {"text":"las","from":16191,"to":16195},
+          {"text":"llaves","from":16195,"to":16201},
+          {"text":"maestras,","from":16201,"to":16219}
         ],
         [
-          {"text":"nadie","from":16204,"to":16214},
-          {"text":"se","from":16214,"to":16221},
-          {"text":"las","from":16221,"to":16226},
-          {"text":"queda.","from":16226,"to":16233}
+          {"text":"nadie","from":16219,"to":16229},
+          {"text":"se","from":16229,"to":16236},
+          {"text":"las","from":16236,"to":16241},
+          {"text":"queda.","from":16241,"to":16248}
         ]
       ]
     },
     {
-      "from": 16243,
-      "to": 16382,
+      "from": 16258,
+      "to": 16397,
       "lines": [
         [
-          {"text":"La","from":16246,"to":16252},
-          {"text":"bóveda","from":16252,"to":16261},
-          {"text":"las","from":16261,"to":16269},
-          {"text":"cambia","from":16269,"to":16278},
-          {"text":"sola","from":16278,"to":16288},
-          {"text":"y","from":16288,"to":16303},
-          {"text":"solo","from":16303,"to":16311}
+          {"text":"La","from":16261,"to":16267},
+          {"text":"bóveda","from":16267,"to":16276},
+          {"text":"las","from":16276,"to":16284},
+          {"text":"cambia","from":16284,"to":16293},
+          {"text":"sola","from":16293,"to":16303},
+          {"text":"y","from":16303,"to":16318},
+          {"text":"solo","from":16318,"to":16326}
         ],
         [
-          {"text":"las","from":16311,"to":16319},
-          {"text":"presta","from":16319,"to":16331},
-          {"text":"durante","from":16331,"to":16339},
-          {"text":"la","from":16339,"to":16346},
-          {"text":"ventana.","from":16346,"to":16358}
+          {"text":"las","from":16326,"to":16334},
+          {"text":"presta","from":16334,"to":16346},
+          {"text":"durante","from":16346,"to":16354},
+          {"text":"la","from":16354,"to":16361},
+          {"text":"ventana.","from":16361,"to":16373}
         ]
       ]
     },
     {
-      "from": 16385,
-      "to": 16499,
+      "from": 16400,
+      "to": 16514,
       "lines": [
         [
-          {"text":"Para","from":16388,"to":16398},
-          {"text":"ponerte","from":16398,"to":16410},
-          {"text":"a","from":16410,"to":16413},
-          {"text":"prueba,","from":16413,"to":16419},
-          {"text":"tienes","from":16419,"to":16424}
+          {"text":"Para","from":16403,"to":16413},
+          {"text":"ponerte","from":16413,"to":16425},
+          {"text":"a","from":16425,"to":16428},
+          {"text":"prueba,","from":16428,"to":16434},
+          {"text":"tienes","from":16434,"to":16439}
         ],
         [
-          {"text":"las","from":16436,"to":16444},
-          {"text":"ocho","from":16444,"to":16450},
-          {"text":"preguntas","from":16450,"to":16464},
-          {"text":"de","from":16464,"to":16471},
-          {"text":"la","from":16471,"to":16475},
-          {"text":"lección.","from":16475,"to":16488}
+          {"text":"las","from":16451,"to":16459},
+          {"text":"ocho","from":16459,"to":16465},
+          {"text":"preguntas","from":16465,"to":16479},
+          {"text":"de","from":16479,"to":16486},
+          {"text":"la","from":16486,"to":16490},
+          {"text":"lección.","from":16490,"to":16503}
         ]
       ]
     },
     {
-      "from": 16499,
-      "to": 16589,
+      "from": 16514,
+      "to": 16604,
       "lines": [
         [
-          {"text":"Por","from":16502,"to":16511},
-          {"text":"hoy,","from":16511,"to":16517},
-          {"text":"cerramos","from":16517,"to":16546},
-          {"text":"la","from":16546,"to":16553},
-          {"text":"garita.","from":16553,"to":16565}
+          {"text":"Por","from":16517,"to":16526},
+          {"text":"hoy,","from":16526,"to":16532},
+          {"text":"cerramos","from":16532,"to":16561},
+          {"text":"la","from":16561,"to":16568},
+          {"text":"garita.","from":16568,"to":16580}
         ]
       ]
     }
@@ -4851,18 +4849,18 @@
     {"scene":"s09-vault","id":"least","frame":13557},
     {"scene":"s10-jit","id":"standing","frame":13998},
     {"scene":"s10-jit","id":"request","frame":14257},
-    {"scene":"s10-jit","id":"approve","frame":14522},
-    {"scene":"s10-jit","id":"checkout","frame":14566},
-    {"scene":"s10-jit","id":"clock","frame":14698},
-    {"scene":"s10-jit","id":"revoked","frame":14929},
-    {"scene":"s10-jit","id":"copy","frame":15008},
-    {"scene":"s10-jit","id":"lock-change","frame":15233},
-    {"scene":"s11-recap","id":"recap","frame":15456},
-    {"scene":"s11-recap","id":"rule-1","frame":15669},
-    {"scene":"s11-recap","id":"rule-2","frame":15858},
-    {"scene":"s11-recap","id":"rule-3","frame":16155},
-    {"scene":"s11-recap","id":"next","frame":16388},
-    {"scene":"s11-recap","id":"endcard","frame":16502}
+    {"scene":"s10-jit","id":"approve","frame":14537},
+    {"scene":"s10-jit","id":"checkout","frame":14581},
+    {"scene":"s10-jit","id":"clock","frame":14713},
+    {"scene":"s10-jit","id":"revoked","frame":14944},
+    {"scene":"s10-jit","id":"copy","frame":15023},
+    {"scene":"s10-jit","id":"lock-change","frame":15248},
+    {"scene":"s11-recap","id":"recap","frame":15471},
+    {"scene":"s11-recap","id":"rule-1","frame":15684},
+    {"scene":"s11-recap","id":"rule-2","frame":15873},
+    {"scene":"s11-recap","id":"rule-3","frame":16170},
+    {"scene":"s11-recap","id":"next","frame":16403},
+    {"scene":"s11-recap","id":"endcard","frame":16517}
   ],
   "exam": [
     {"scene":"s02-creep","from":2578,"durationInFrames":150,"objective":"4.6","text":"Permission creep: least privilege y attestation"},
@@ -4872,7 +4870,7 @@
     {"scene":"s07-factors","from":10301,"durationInFrames":150,"objective":"4.6","text":"Dos cosas que sabes o que tienes: un solo factor"},
     {"scene":"s08-fatigue","from":11846,"durationInFrames":150,"objective":"4.6","text":"MFA fatigue: llave FIDO2; el SMS solo cambia el ataque"},
     {"scene":"s09-vault","from":13254,"durationInFrames":150,"objective":"4.6","text":"Password vaulting: nadie sabe la clave y rota sola"},
-    {"scene":"s10-jit","from":14982,"durationInFrames":150,"objective":"4.6","text":"JIT: privilegio solo en la ventana aprobada"}
+    {"scene":"s10-jit","from":14997,"durationInFrames":150,"objective":"4.6","text":"JIT: privilegio solo en la ventana aprobada"}
   ],
   "think": [
     {"scene":"s03-leaver","from":3195,"durationInFrames":131,"q":"Se jubila el viernes. ¿Borrar o deshabilitar?"},
@@ -4910,9 +4908,9 @@
     {"from":13254,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
     {"from":13831,"sound":"glitch","src":"sfx/glitch.mp3","durationInFrames":12,"volume":0.166},
     {"from":13835,"sound":"typing","src":"sfx/typing.mp3","durationInFrames":55,"volume":0.08},
-    {"from":14929,"sound":"lock","src":"sfx/lock.mp3","durationInFrames":15,"volume":0.115},
-    {"from":14982,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
-    {"from":15008,"sound":"error","src":"sfx/error.mp3","durationInFrames":14,"volume":0.071}
+    {"from":14944,"sound":"lock","src":"sfx/lock.mp3","durationInFrames":15,"volume":0.115},
+    {"from":14997,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":15023,"sound":"error","src":"sfx/error.mp3","durationInFrames":14,"volume":0.071}
   ],
   "captionsOnScreen": false
 }
