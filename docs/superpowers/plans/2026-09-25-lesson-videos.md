@@ -475,7 +475,7 @@ Las exam cards se listan en el orden de las escenas:
   2-3 en ATT&CK y en la pirámide, con los dos hashes del loader como prueba de su base.
 - **s3m5 STIX (Cápsula): V8, publicada el 2026-10-04 (YouTube `KO4REQeaKgM`), ficha completa abajo.** El aviso caducado del ISAC:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
-- **s4m3 ACH (Principal): V9, aprobada el 2026-10-04, ficha completa abajo.** La matriz del extracto de la
+- **s4m3 ACH (Principal): V9, publicada el 2026-10-04 (YouTube `TjVViiBTeds`), ficha completa abajo.** La matriz del extracto de la
   lección, celda a celda, con supuestos clave, diagnosticidad y sensibilidad; primera aparición de PAPER CRANE.
 - **sp2m7 (Cápsula) «Ataques en los logs»: V10, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** La noche
   del 20 al 21-10: spraying, traversal y amplificación DNS; primera aparición de RED MARROW.
@@ -1197,6 +1197,11 @@ mensaje va en s10, no en s11.
 > `video-stix-isac` porque V8 aún no estaba fusionado. Se graba sola (V8 ya se grabó el 2026-10-03). La versión
 > vigente de escenas y guion es `video/ach-matriz/storyboard.json` + `narration.json`; qué se quedó fuera, en
 > `video/ach-matriz/out/script-notes.md`.
+>
+> **Producido y publicado el 2026-10-04**: YouTube `TjVViiBTeds`, 8:25, 10 escenas, 7 tarjetas, 2 preguntas, 3 mensajes
+> de PAPER CRANE (voz `sapi/Microsoft Laura` con `machine`), voz de Lidia, música de V4 y V5. En la lección s4m3, después
+> del cuarto check y antes del callout de campaña que manda al Lab 4B. La grabación quedó en 8:25 frente a los 9:14
+> estimados (91 %), en la línea de V7 y V8. El canon nuevo está en `docs/superpowers/canon/velvet-cicada.md` (§7).
 >
 > Sobre el esbozo del plan (§5): se mantiene todo (matriz celda a celda, la fila sin diagnosticidad que se apaga, gana la
 > menos inconsistente, sensibilidad retirando E4) y se usa el extracto de la lección (`src/data/s4.ts:421-437`), no la

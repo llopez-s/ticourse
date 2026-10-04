@@ -280,6 +280,8 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'It1DrWKbFe4')?.module).toBe('sp4m8');
     // V8 closes s3m5's STIX/TAXII half, after the TAXII-vs-STIX check and before YARA
     expect(youtubeVideos.find((v) => v.block.youtube === 'KO4REQeaKgM')?.module).toBe('s3m5');
+    // V9 sums up s4m3 after its checks and hands over to Lab 4B: lesson, checks, video, lab
+    expect(youtubeVideos.find((v) => v.block.youtube === 'TjVViiBTeds')?.module).toBe('s4m3');
   });
 
   it('every video block points at relative public assets that exist', async () => {

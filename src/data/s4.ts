@@ -501,6 +501,13 @@ H1 seguiría siendo la menos inconsistente por E2+E3.`,
         },
       },
       {
+        t: 'video',
+        title: 'ACH: gana la hipótesis que no puedes tumbar',
+        youtube: 'TjVViiBTeds',
+        poster: 'videos/ach-matriz-poster.png',
+        transcript: 'videos/ach-matriz-transcript.txt',
+      },
+      {
         t: 'callout',
         kind: 'story',
         title: '🎖️ Campaña',

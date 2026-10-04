@@ -263,6 +263,11 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   lesson's «today» (2026-07-02) in the VELVET CICADA registry. Lidia's reading landed at 92 % of `--estimate`, as
   predicted; she uploaded it to YouTube herself, so the id came from the channel's public feed
   (`https://www.youtube.com/feeds/videos.xml?channel_id=UCe0XBMwoI3bI61K8qolacJA`).
+  **V9 `video/ach-matriz/`** (s4m3, GCTI, `principal-yt`, YouTube `TjVViiBTeds`, 8:25, published 2026-10-04): the
+  analysis meeting's «todo encaja» earned the hard way — Key Assumptions Check and Devil's Advocacy, the lesson's
+  ACH extract cell by cell, E1's null diagnosticity, «gana la menos inconsistente» (0/3/2) and the sensitivity check
+  without E4 (0/2/1). First on-screen PAPER CRANE (×3), voiced `sapi/Microsoft Laura` + `machine` — no new effect.
+  Sits after s4m3's checks and before the Lab 4B callout. Lidia's reading landed at 91 % of `--estimate` (9:14).
   **Mastering** (Python, venv + `pedalboard pyloudnorm librosa soundfile scipy`): `scripts/master_voice.py`
   on the narrator's WAV *before* `import-recording` (time-aligned EQ/de-ess/compression, no denoise) and
   `scripts/master_mix.py` on the rendered MP4 (generated ambient bed ducked under speech, −14 LUFS,
