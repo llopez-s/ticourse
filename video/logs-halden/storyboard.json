@@ -1,0 +1,131 @@
+{
+  "title": "Ataques en los logs: spraying, traversal y amplificación DNS",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 220,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Una llave, muchas puertas"
+    },
+    {
+      "n": 2,
+      "title": "La URL y la tubería"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Tres rastros de una noche",
+      "goal": "La cola del SOC, «21-10 · 08:00 · revisión de la mañana», con tres filas en orden de hora, todas a la vez y a media luz, un icono cada una: una llave («03:10 · fallos de inicio de sesión · 1 origen · proveedor de identidad»), una carpeta («04:26 · peticiones con `../` · `hpa-portal-web-01`») y una tubería («05:40 · DNS entrante masivo · `hpa-portal-web-01`»). La primera frase habla de la cola entera («Tres rastros de esta noche en el puerto, y cada ataque deja una forma distinta en su registro»); al acabarla, título «Ataques en los logs» (hacia los 8 s, siempre antes de los 12) y la promesa en tres chips: «la forma · el nombre · qué hacer». Después, las tres filas se encienden juntas en una sola frase y el resto se atenúa",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "requiredCues": [
+        "queue",
+        "title",
+        "promise",
+        "rows"
+      ]
+    },
+    {
+      "id": "s02-spray",
+      "chapter": 1,
+      "title": "Una llave en todas las puertas",
+      "goal": "Se amplía la fila de la llave: el registro del proveedor de identidad («IdP de Halden») con las cinco líneas de la lección (`sp2-part4.ts:65-69`), fechadas `2026-10-21` y con origen `192.0.2.157`; la línea del OK queda atenuada para s03. Dónde mirar, por pasos: la columna `user` (cambia en cada línea), la columna `src` (siempre `192.0.2.157`), la hora (unos 40 s entre intentos). Resumen debajo: «180 cuentas · 1 intento por cuenta · 03:10–05:06 · cuentas bloqueadas: 0», con el 0 a 60 px. Nota pequeña: «este registro no guarda qué contraseña se probó». La imagen: un bloque de pisos; a la izquierda, un manojo de llaves en una sola puerta que se bloquea al quinto intento («umbral: 5 fallos»; contraejemplo, no pasó); a la derecha, una sola llave que prueba cada puerta una vez y ninguna salta. Encima, la matriz cuentas × contraseñas: la fuerza bruta llena una fila, el spraying una columna. Nombres: BRUTE FORCE y PASSWORD SPRAYING; al lado del 0, ACCOUNT LOCKOUT",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "requiredCues": [
+        "log",
+        "users",
+        "src",
+        "pace",
+        "zero",
+        "one-door",
+        "every-door",
+        "matrix",
+        "spraying"
+      ]
+    },
+    {
+      "id": "s03-mfa",
+      "chapter": 1,
+      "title": "Una puerta se abrió",
+      "goal": "Se amplía la línea atenuada, `03:12:37 LOGIN OK user=r.haugen src=192.0.2.157`, y aparece la siguiente, nueva: `03:13:15 LOGOUT user=r.haugen · aplicaciones abiertas: 0` (la narradora la lee como dato y no especula por qué se fue). Junto a la línea del OK, «IdP de Halden · pide: contraseña». Mensaje interceptado. La tarjeta de la política junto a `Halden2026!`, con tres casillas en verde (mayúscula, cifras, símbolo) y el sello «cumple»; debajo, «y es de las primeras que prueba cualquiera». Tres acciones, una por frase y cada una se enciende al decirla: «esa cuenta: contraseña nueva y sesiones cerradas» · «bloquear el origen, no las cuentas» · «MFA y lista de contraseñas prohibidas en el proveedor de identidad · Sistemas · 30-11». La imagen vuelve: la misma puerta del bloque con un segundo cerrojo; la llave gira y la puerta pide además algo que solo tú tienes, dibujado como el móvil o una llave física",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "requiredCues": [
+        "ok",
+        "logout",
+        "rules",
+        "not-fault",
+        "reset",
+        "block-src",
+        "mfa",
+        "second-lock"
+      ]
+    },
+    {
+      "id": "s04-traversal",
+      "chapter": 2,
+      "title": "Una nota con indicaciones",
+      "goal": "Se amplía la fila de la carpeta: el registro de accesos de `hpa-portal-web-01` (portal público de reservas de atraque) con las dos líneas de la lección (`sp2-part4.ts:61-62`), a las `04:26:14` y `04:26:21`, desde `192.0.2.157`. Dónde mirar: primero `file=`; luego cada `../` se enciende a la vez que un escalón en un plano de carpetas que sube hasta la raíz y baja a `etc/passwd`; después, `200` y `1834` ampliados: «se lo llevó». La imagen: la ventanilla del archivo y la nota del pedido. Nombre DIRECTORY TRAVERSAL; al lado, tachado, «inyección: sin comillas ni `OR 1=1`». Mensaje interceptado. Segunda línea: `%2e%2e%2f` se traduce carácter a carácter a `../` («la misma nota, en clave»); junto al `403 0`, la nota «403: el servidor no puede leer `shadow` · no es un filtro», con `shadow` en monoespaciada. En la voz, una frase: «La segunda la frenó el propio sistema: ese archivo solo lo lee el administrador. Ningún filtro la vio». La defensa, en el plano: el empleado sigue la ruta antes de moverse y, si acaba fuera del armario, no va: «resolver la ruta · comprobar que sigue dentro»",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "access-log",
+        "param",
+        "climb",
+        "served",
+        "traversal",
+        "not-sqli",
+        "encoded",
+        "no-filter",
+        "canon",
+        "confine"
+      ]
+    },
+    {
+      "id": "s05-amp",
+      "chapter": 2,
+      "title": "Pedidos que nadie hizo",
+      "goal": "Se amplía la fila de la tubería: NetFlow entrante a `hpa-portal-web-01`, `05:40–06:05`, con filas `UDP · 198.51.100.61:53`, `198.51.100.140:53`, `198.51.100.203:53`, `198.51.100.212:53`… Dónde mirar, por pasos: la columna del puerto de origen (siempre 53), el contador «orígenes distintos: 340», el medidor «enlace de 1 Gb/s · 100 %» y, al lado, «consultas DNS del portal a esos servidores: 0». La imagen: el portal y cientos de repartidores que llegan a la vez con pedidos enormes; en un recuadro, alguien llama a los restaurantes y da tu dirección. Esquema del mecanismo, rotulado como tal (no sale del registro): «pregunta: 60 bytes · respuesta: 3.000 bytes». Nombres: REFLECTED (la dirección falsa) y AMPLIFIED (el pedido enorme), que se juntan en DNS AMPLIFICATION. Tachado: «DNS poisoning: te cambia a dónde vas; esto te llena la tubería». Pregunta para pensar. Respuesta: los 340 son servidores legítimos de terceros (resolvers abiertos); la calle se atasca antes de tu portal; se corta en la avenida: «filtrado en el proveedor · servicio anti-DDoS»; y en origen, «cerrar los resolvers abiertos». Después de la respuesta, para no destriparla, una línea: «guardia · 05:44 · aviso de caída · llamada al proveedor»",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "requiredCues": [
+        "netflow",
+        "port53",
+        "sources",
+        "full",
+        "zero-q",
+        "delivery",
+        "reflected",
+        "amplified",
+        "not-poison",
+        "upstream",
+        "on-call"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, cada una con su icono (llave, carpeta, tubería); tarjeta final Alertópolis: «Ahora te toca: las preguntas de la lección» (sp2m7, 8 preguntas)",
+      "targetSec": 24,
+      "wordBudget": 65,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
