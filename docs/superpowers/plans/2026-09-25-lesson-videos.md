@@ -1192,7 +1192,7 @@ mensaje va en s10, no en s11.
 
 ### V9 · s4m3 · Principal · «ACH: gana la hipótesis que no puedes tumbar»
 
-> **Aprobada por Lidia el 2026-10-04**, tal cual, con una decisión de la ronda de diseño: PAPER CRANE habla con el efecto
+> **Aprobada por Lidia el 2026-10-04**, tal cual, y guion congelado ese día tras su visto bueno, con una decisión de la ronda de diseño: PAPER CRANE habla con el efecto
 > `machine` de siempre y la voz `sapi/Microsoft Laura` (no hay efecto nuevo). Rama `video-ach-matriz`, que sale de
 > `video-stix-isac` porque V8 aún no estaba fusionado. Se graba sola (V8 ya se grabó el 2026-10-03). La versión
 > vigente de escenas y guion es `video/ach-matriz/storyboard.json` + `narration.json`; qué se quedó fuera, en
