@@ -62,11 +62,11 @@ GET /gate/viewdoc?file=../../../../etc/passwd HTTP/1.1            200  1834
 GET /gate/viewdoc?file=%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fshadow   403     0
 
 # 2) Password spraying en el log de autenticación (muchas cuentas, UNA contraseña, ritmo lento)
-2026-09-04 03:10:02  LOGIN FAIL  user=a.berg      src=185.22.9.41  reason=bad_password
-2026-09-04 03:10:41  LOGIN FAIL  user=j.solheim   src=185.22.9.41  reason=bad_password
-2026-09-04 03:11:19  LOGIN FAIL  user=m.lund      src=185.22.9.41  reason=bad_password
-2026-09-04 03:11:58  LOGIN FAIL  user=k.nyborg    src=185.22.9.41  reason=bad_password
-2026-09-04 03:12:37  LOGIN OK    user=r.haugen    src=185.22.9.41
+2026-10-21 03:10:02  LOGIN FAIL  user=a.berg      src=192.0.2.157  reason=bad_password
+2026-10-21 03:10:41  LOGIN FAIL  user=j.solheim   src=192.0.2.157  reason=bad_password
+2026-10-21 03:11:19  LOGIN FAIL  user=m.lund      src=192.0.2.157  reason=bad_password
+2026-10-21 03:11:58  LOGIN FAIL  user=k.nyborg    src=192.0.2.157  reason=bad_password
+2026-10-21 03:12:37  LOGIN OK    user=r.haugen    src=192.0.2.157
 # ... una prueba por cuenta, ~40 s entre intentos: ninguna cuenta alcanza el umbral de lockout`,
     },
     {

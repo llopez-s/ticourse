@@ -186,6 +186,10 @@ Los tres son solo texto: no cambian ids, ni opciones, ni respuestas.
 
 ## V10 · sp2m7 · decisiones para aprobar en una ronda
 
+> **Respuesta de Lidia (2026-10-04):** las cuatro, tal cual; la voz no fija el género de RED MARROW; voz `Microsoft
+> Laura` con un efecto nuevo de llamada telefónica (`telefono`), porque Laura con `machine` ya es PAPER CRANE (V9); y sí
+> al cambio de fecha e IP en la lección, hecho ese mismo día.
+
 1. **La noche del spraying (la decisión de canon que tocaba).** El vídeo lo cuenta la noche del 20 al 21-10, con las
    mismas cuentas y horas de la lección; cambian la fecha y la IP. Descartado dejarlo el 4-9 sin relacionarlo con el
    caso: dos adversarios distintos que entran con éxito la misma noche invitan a pensar que trabajan juntos, y la

@@ -477,7 +477,7 @@ Las exam cards se listan en el orden de las escenas:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
 - **s4m3 ACH (Principal): V9, publicada el 2026-10-04 (YouTube `TjVViiBTeds`), ficha completa abajo.** La matriz del extracto de la
   lección, celda a celda, con supuestos clave, diagnosticidad y sensibilidad; primera aparición de PAPER CRANE.
-- **sp2m7 (Cápsula) «Ataques en los logs»: V10, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** La noche
+- **sp2m7 (Cápsula) «Ataques en los logs»: V10, aprobada el 2026-10-04, ficha completa abajo.** La noche
   del 20 al 21-10: spraying, traversal y amplificación DNS; primera aparición de RED MARROW.
 
 **Orden propuesto para el resto de la tanda 2** (2026-10-01, pendiente de Lidia): V5b, V6, V7, V8, V9 y V10.
@@ -1360,7 +1360,11 @@ ordena contra la cronología del registro ni choca con ella; lo posterior debe r
 
 ### V10 · sp2m7 · Cápsula · «Ataques en los logs: spraying, traversal y amplificación DNS»
 
-> Propuesta del 2026-10-01, pendiente de la aprobación de Lidia. La versión vigente de escenas y guion será
+> **Aprobada por Lidia el 2026-10-04**, tal cual, con las cuatro decisiones de su hoja
+> (`docs/reviews/2026-10-01-fichas-tanda2/decisiones.md`) y el cambio en la lección (fecha e IP del spraying, hecho ese
+> día). RED MARROW habla con `sapi/Microsoft Laura` y un efecto nuevo, `telefono`, para no sonar como PAPER CRANE (Laura
+> con `machine`, V9); la voz **no** fija su género. Rama `video-logs-halden`, que sale de `main` con V9 ya fusionado. Se
+> graba sola: la primera de la tanda 3 aún no tiene ficha. La versión vigente de escenas y guion será
 > `video/logs-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/logs-halden/out/script-notes.md`.
 >
 > **Un ajuste que no pide el validador sino el canon:** el registro de la lección fecha el password spraying el 4-9,
@@ -1375,10 +1379,9 @@ ordena contra la cronología del registro ni choca con ella; lo posterior debe r
   objetivo **2.4** (indicators of malicious activity; confirmado en la cabecera de la lección,
   `src/data/secplus/sp2-part4.ts:5`) · adversario **RED MARROW** (sección sp2, `src/data/secplus/sections.ts:63-68`),
   dos mensajes interceptados, su primera aparición en pantalla · voz `recording/lidia` con
-  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · voz del adversario: **voz nueva del adversario, efecto por
-  decidir** (propuesta: `sapi/Microsoft Laura`, ya instalada, con un preset nuevo «teléfono», voz de llamada en banda
-  estrecha y sin el anillo de `machine`; hoy `video/engine/scripts/adversary_fx.py` solo tiene `machine`. Si la voz fija
-  o no el género de RED MARROW es una pregunta para Lidia, en decisiones) · música de V4 y V5
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · voz del adversario: **`sapi/Microsoft Laura` con el efecto
+  `telefono`** (decidido el 2026-10-04): voz de llamada en banda estrecha y sin el anillo de `machine`, añadido al motor
+  para V10 (`video/engine/scripts/adversary_fx.py`). La voz no cuenta como canon del género · música de V4 y V5
   (`Go On Going - Stayloose.mp3`).
 - **Efectos (`sfx`):** los automáticos del motor (mensaje, tarjetas, capítulos) y cuatro momentos: `zero` («check»),
   `served` («error»), `full` («alarm»), `second-lock` («lock»).
@@ -1489,8 +1492,9 @@ ordena contra la cronología del registro ni choca con ella; lo posterior debe r
 - **RED MARROW, primera aparición.** Tutea a la analista, frases cortas, ironía, como SILENT PAGER, pero su registro es
   otro: el del estafador amable, que da consejos de amigo que son mentira y cierra con «Confía en mí». La narradora lo
   presenta con lo que ya anuncia el jefe de sp2 antes del combate: vive de engañar, con correos falsos y memorias USB en
-  el aparcamiento. Ningún texto usa un artículo ni un adjetivo que marque su género («Es RED MARROW»); si la voz lo fija,
-  lo decide Lidia (pregunta en decisiones) y se apunta aquí.
+  el aparcamiento. Ningún texto usa un artículo ni un adjetivo que marque su género («Es RED MARROW»). La voz no lo fija
+  (decisión de Lidia del 2026-10-04): igual que SILENT PAGER, que es «ella» y suena con Pablo, un vídeo posterior puede
+  fijarlo.
 - **Cierre de canon** (paso 8 del orden de trabajo), en `docs/superpowers/canon/glass-harbor.md`: la fila 52 sale de la
   cronología del incidente y pasa a una fila del 21-10; la 135 cambia IP y fecha; se cierra el hueco de la 245; y en §2 se
   anota que el 21-10 el proveedor de identidad solo pedía contraseña, con la MFA a cargo de Sistemas para el 30-11.
