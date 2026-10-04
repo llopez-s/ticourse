@@ -1,7 +1,7 @@
 # Canon de «Operación VELVET CICADA» (GCTI)
 
 Registro único de los datos ficticios de la campaña GCTI: la intrusión contra Meridian Dynamics que continúan
-las lecciones, los laboratorios y los vídeos. Estado a 2026-10-04 (vídeos publicados: V3, V4, V7 y V8).
+las lecciones, los laboratorios y los vídeos. Estado a 2026-10-04 (vídeos publicados: V3, V4, V7, V8 y V9).
 
 ## 1. Cómo se usa
 
@@ -59,6 +59,7 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 | 2026-07-02 (jueves, sin hora) | «hoy» de s3m5 [V8] | La TIP de Meridian consulta por primera vez (pull) la colección TAXII del ISAC aeroespacial y se trae todo lo que había, entre ello el indicador del 11-03, ya caducado; el pDNS de `cdn-sync-status.example` sigue sin nada después del 18-4; búsqueda hacia atrás desde el 27-02, sin resultados en pantalla | `src/data/s3.ts:1076`; `video/stix-isac/src/data/s05-taxii.ts:24`; `video/stix-isac/src/data/s03-caducado.ts:15-16,33-38` |
 | «el martes» (sin fecha) | — | `141.98.6.10` sirvió un panel de phishing | `src/data/s1.ts:27,32` |
 | «6 meses» (duración) | — | Acceso silencioso, sin cifrado ni extorsión | `src/data/s4.ts:429`; `src/data/labs.ts:883,895,919` |
+| reunión de análisis (sin fecha) | Misión 4 [V9] | Pizarra con las cuatro pruebas y «ESPIONAJE»; Key Assumptions Check, matriz ACH y nota provisional al CISO | `src/data/labs.ts:149`; `video/ach-matriz/src/scenes/parts/Whiteboard.tsx:24-36`; `video/ach-matriz/src/data/s09-informe.ts:17-41` |
 | «el lunes» (sin fecha) | Misión 5 | El consejo de Meridian lee el informe final | `src/data/labs.ts:187,1144` |
 
 ## 3. Datos fijos
@@ -164,14 +165,16 @@ Los strings y muestras del Lab 3B (`vc_stage2.bin`, `VC_Loader_v1.dll`, `VC_Load
 | EMBER FOX | Célula de acceso inicial, spearphishing; adversario de S1 | `src/data/course-gcti.ts:17-19` |
 | GLASS VIPER | Operadores de intrusión (S2); también nombre del implante y de un intrusion set STIX (ver §5) | `src/data/course-gcti.ts:36-38`; `src/data/s2.ts:576`; `src/data/s4.ts:1016` |
 | HOLLOW LANTERN | Equipo de infraestructura del adversario; adversario de S3 | `src/data/course-gcti.ts:55-57` |
-| PAPER CRANE | Célula de engaño: siembra false flags; adversario de S4 | `src/data/course-gcti.ts:74-76`; `src/data/labs.ts:149` |
+| PAPER CRANE | Célula de engaño: siembra false flags; adversario de S4. Ficha en pantalla: «célula de engaño · siembra pistas falsas» [V9] | `src/data/course-gcti.ts:74-76`; `src/data/labs.ts:149`; `video/ach-matriz/src/data/s03-supuestos.ts:7` |
 | `kazuo.tanji@protonmail.com` | Email de registro; sería el *operator* si el pivote confirma. El *customer* sigue sin conocerse | `src/data/s2.ts:575,591` |
 | horario laboral UTC+8 | Patrón del operador; baja diagnosticidad | `src/data/labs.ts:324,907` |
 | `resource_level: organization` · `primary_motivation: organizational-gain` | Perfil STIX de GLASS VIPER | `src/data/s4.ts:1019-1020` |
 | Cluster-A (Meridian) frente a Cluster-B (Orbital-2) | Se mantienen separados | `src/data/s4.ts:722-737` |
 
 Qué adversario habla en cada vídeo: el de la sección de la lección (`video.json` → `adversary`). V3 usa GLASS
-VIPER (`video/diamond-e7/video.json:8`) y V4 HOLLOW LANTERN (`video/pivot-infra/video.json:8`).
+VIPER (`video/diamond-e7/video.json:8`) y V4 HOLLOW LANTERN (`video/pivot-infra/video.json:8`). V9 estrena a PAPER
+CRANE (`video/ach-matriz/video.json:8`) con otra voz: `sapi/Microsoft Laura` con el efecto `machine`, en lugar de
+Pablo (`video/ach-matriz/narration.json:11-15`).
 
 Mensajes interceptados publicados. Son canon de la voz del adversario; un guion posterior no debe contradecirlos:
 
@@ -184,6 +187,10 @@ Mensajes interceptados publicados. Son canon de la voz del adversario; un guion 
 | HOLLOW LANTERN | «Mis certificados me los firmo yo. Nadie más tiene uno igual.» | `video/pivot-infra/narration.json:189` |
 | HOLLOW LANTERN | «Mi WHOIS está tapado. Privacidad, analista. Búscate otro hobby.» | `video/pivot-infra/narration.json:277` |
 | HOLLOW LANTERN | «¿Por qué no vienes a verme? Mi servidor te está esperando.» | `video/pivot-infra/narration.json:381` |
+| HOLLOW LANTERN | «Ese dominio lo tiré hace meses. Ya no te sirve para nada.» | `video/stix-isac/narration.json:99` (s03-02) |
+| PAPER CRANE | «Fíate de lo que ves, analista. Las pruebas nunca mienten.» | `video/ach-matriz/narration.json:89` (s03-01) |
+| PAPER CRANE | «Cuenta las que te dan la razón. La que más sume, gana.» | `video/ach-matriz/narration.json:277` (s07-01) |
+| PAPER CRANE | «Si una prueba es falsa, se te cae todo. Empieza de cero.» | `video/ach-matriz/narration.json:329` (s08-01) |
 
 V3 explica en voz que GLASS VIPER es «un nombre de seguimiento para el implante y quien lo usa»
 (`video/diamond-e7/narration.json:139`).
@@ -270,6 +277,8 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
 8. **Duración de la operación.** «6 meses de acceso» (`src/data/s4.ts:429`; `src/data/labs.ts:883,919`) y
    exfiltración «between March and May» (`src/data/s5.ts:312`) frente a la actividad del Cluster-A
    «nov-2025 → mar-2026» (`src/data/s4.ts:732`) y la ola de phishing del 2026-04-18 (`src/data/s5.ts:47-58`).
+   V9 enseña «6 meses» en pantalla tal cual, sin fechas, así que hereda el hueco [V9]
+   (`video/ach-matriz/src/data/matrix.ts:48`; `video/ach-matriz/src/scenes/parts/Whiteboard.tsx:26`).
 9. **Qué es GLASS VIPER.** Operadores de intrusión (`src/data/course-gcti.ts:36-40`); implante/loader
    (`src/data/s2.ts:576`; `src/data/s3.ts:62,326`; `src/data/s5.ts:491`); intrusion set STIX y grupo de vendor
    (`src/data/s4.ts:814,1016,1048`). VELVET CICADA también es «intrusion set» (`src/data/s3.ts:1048`;
@@ -438,6 +447,71 @@ adversario de los interceptados HOLLOW LANTERN (`video/stix-isac/video.json:8`).
 - **No se toca** (sigue fuera): el C2, el certificado y el correo de registro del dosier de DEEP WELL; el intrusion set
   STIX de S4 (`src/data/s4.ts:1013-1021`), la campaña «PO-REVISION phishing wave» y `attributed-to`; el indicador
   propio de Meridian para este dominio (`src/data/s5.ts:596-607`) y la ola de phishing del 18-4.
+
+### V9 · `ach-matriz` · s4m3 · YouTube `TjVViiBTeds`
+
+Lección `src/data/s4.ts:503` (bloque `video` después del cuarto check, «Evidence that is consistent with every
+hypothesis in the matrix:», y antes del callout «🎖️ Campaña»); 8:25, publicado el 2026-10-04 en el canal Alertópolis.
+Adversario de los interceptados PAPER CRANE, que sale en pantalla por primera vez (`video/ach-matriz/video.json:8`), con
+la voz `sapi/Microsoft Laura` y el efecto `machine` (`video/ach-matriz/narration.json:11-15`). Notas propias en
+`video/ach-matriz/out/script-notes.md`. Todo va sin fecha ni hora: no se ordena contra §2. Canon nuevo:
+
+- **La reunión de análisis se ve por primera vez** (la de la misión 4, `src/data/labs.ts:149`), sin fecha: «Meridian
+  Dynamics · reunión de análisis» en el borde de la pizarra (`video/ach-matriz/src/scenes/parts/Whiteboard.tsx:35`;
+  `video/ach-matriz/src/scenes/S01Hook.tsx:83`).
+- **La pizarra** (`video/ach-matriz/src/scenes/parts/Whiteboard.tsx:25-33`): cuatro notas, «entrada por
+  spearphishing», «6 meses sin cifrar ni extorsionar», «exfiltración selectiva de diseños de propulsión» y
+  «certificado TLS compartido con una campaña de espionaje que reportó el ISAC»; junto a cada una, «encaja»; en el
+  centro, «ESPIONAJE» en un círculo y «todo encaja» debajo. Es la idea que la sala ya daba por buena, no el fallo de
+  nadie. El plan pedía las pruebas de la lección «tal cual»; la pizarra las resume a mano, y las filas exactas salen
+  en la matriz.
+- **El CISO** (sin nombre): «¿Qué busca el intruso?» y «de eso depende qué se protege primero»
+  (`video/ach-matriz/src/data/s01-hook.ts:24-28`).
+- **La abogada del diablo:** una compañera del equipo, sin nombre (en voz, `video/ach-matriz/narration.json:62`,
+  s02-04), recibe la tarjeta «abogada del diablo · defiende lo contrario» (`video/ach-matriz/src/data/s02-fuera.ts:26`)
+  y escribe en la pizarra «¿y si es un rescate?» (`video/ach-matriz/src/scenes/parts/Whiteboard.tsx:34`). Es su
+  papel, no lo que cree; no «pierde».
+- **La hoja KEY ASSUMPTIONS CHECK** (`video/ach-matriz/src/scenes/parts/AssumptionSheet.tsx:23-29`): «1 · no hay otra
+  explicación» y «2 · las pruebas son lo que parecen», cada uno con «¿y si no?»; el segundo, con «lo comprobamos al
+  final». Las tres hipótesis llevan iconos genéricos (ojo, candado, bandera; `:32`), nunca a alguien de la plantilla.
+- **La matriz** es el extracto de la lección (`src/data/s4.ts:420-437`) con sus valoraciones, E3 contra H3 incluida
+  (I): filas y columnas con el texto exacto (`video/ach-matriz/src/data/matrix.ts:38-67`); título «Extracto de matriz
+  ACH · VELVET CICADA (ficticio)» (`:71`). Lo que cambia respecto a la lección: la leyenda dice «C = encaja · I =
+  choca · N = no dice nada» (`:72`); la columna «Diagnosticidad» solo pone NULA o ALTA, con «strong link» como
+  etiqueta aparte en E4 (`:80-81`); y hay una fila inventada, «cuenta de C», 4 · 1 · 1, que se tacha (`:83`, `:122`).
+  «Inconsistencias» 0 · 3 · 2 y, «sin E4», 0 · 2 · 1, con «la menos inconsistente» sobre H1 (`:85-88`, `:124-126`).
+  Notas: «el ransomware cobra rápido» bajo la I de E2 frente a H2 y, en ámbar, «justo lo que alguien podría plantar»
+  junto a E4 (`:90-92`); nadie dice que se plantara.
+- **La mesa de la conclusión:** «conclusión: H1» sobre tres patas, E2, E4 y E3; sin E4, «sin E4, sigue en pie»; solo
+  con E4 sería un taburete, «baja la confianza» (`video/ach-matriz/src/scenes/parts/Table.tsx:23-30`).
+- **La nota al CISO** (`video/ach-matriz/src/data/s09-informe.ts:17-46`), titulada «¿Qué busca el intruso?», con el
+  sello «provisional»:
+  - «Juicio: H1, la menos inconsistente (extracto de 4 pruebas)»
+  - «Confianza: moderada · 4 pruebas de un extracto; aguanta sin E4»
+  - «Descartadas: H2 (E2, E3, E4) · H3 (E3, E4)»
+  - «Vigilar: E4»
+
+  El encabezado «Para el CISO · Meridian Dynamics» es atrezo (`:37-38`). No es el informe final del caso, el que lee
+  el consejo «el lunes» (`src/data/labs.ts:187,1144`).
+- **E4 en voz es «un certificado suyo»**, indefinido (`video/ach-matriz/narration.json:210`, s05-06), para no señalar
+  el `CN=updatesvc` de V3 y V4. Tras la revisión de exactitud la voz ya no lo llama «la prueba que cambiaría la
+  conclusión»: «Aquí el certificado no la cambia, pero lo vigilas igual» (`:388`, s08-09;
+  `video/ach-matriz/out/script-notes.md:49-51,55-56`).
+- **PAPER CRANE**, ficha en pantalla: «PAPER CRANE · célula de engaño · siembra pistas falsas»
+  (`video/ach-matriz/src/data/s03-supuestos.ts:7`), lo mismo que ya dice la sección (`src/data/course-gcti.ts:74-76`).
+  Sus tres mensajes, sin fecha, pasan a ser canon de su voz (tutea, frases cortas, ironía; empuja atajos de método,
+  nunca una hipótesis, y no confiesa nada):
+  - «Fíate de lo que ves, analista. Las pruebas nunca mienten.» (`video/ach-matriz/narration.json:89`, s03-01)
+  - «Cuenta las que te dan la razón. La que más sume, gana.» (`video/ach-matriz/narration.json:277`, s07-01)
+  - «Si una prueba es falsa, se te cae todo. Empieza de cero.» (`video/ach-matriz/narration.json:329`, s08-01)
+- Los sospechosos del yogur (la compañera de piso, el hermano y el perro) son de la analogía, no de Meridian.
+- **No se toca** (sigue fuera): el dosier de HALL OF MIRRORS (`src/data/course-gcti.ts:78`): ni strings en cirílico, ni
+  horarios falsos, ni «PAPER CRANE las plantó», ni «espionaje industrial sistemático» ni «caso cerrado»; de E4 solo se
+  dice que es el tipo de prueba que alguien podría plantar. Del Lab 4B (`src/data/labs.ts:862-930`), sus otras cuatro
+  pruebas (loader propio, horario UTC+8, silencio público, exfiltración lenta), sus notas y su mecánica; el horario
+  UTC+8; las ocho frases del Lab 4A (`src/data/labs.ts:447-499`). E4 **no** se identifica con el certificado
+  `CN=updatesvc` (ni la tercera IP, §5 punto 15, ni el dosier de DEEP WELL). Cluster-A y Cluster-B no salen
+  (`src/data/s4.ts:722-737`). Nada del Lab 3A, del Lab 3B ni del final de la campaña.
 
 ### Plantilla para el siguiente
 

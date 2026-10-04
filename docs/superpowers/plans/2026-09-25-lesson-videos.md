@@ -475,7 +475,7 @@ Las exam cards se listan en el orden de las escenas:
   2-3 en ATT&CK y en la pirámide, con los dos hashes del loader como prueba de su base.
 - **s3m5 STIX (Cápsula): V8, publicada el 2026-10-04 (YouTube `KO4REQeaKgM`), ficha completa abajo.** El aviso caducado del ISAC:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
-- **s4m3 ACH (Principal): V9, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** La matriz del extracto de la
+- **s4m3 ACH (Principal): V9, publicada el 2026-10-04 (YouTube `TjVViiBTeds`), ficha completa abajo.** La matriz del extracto de la
   lección, celda a celda, con supuestos clave, diagnosticidad y sensibilidad; primera aparición de PAPER CRANE.
 - **sp2m7 (Cápsula) «Ataques en los logs»: V10, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** La noche
   del 20 al 21-10: spraying, traversal y amplificación DNS; primera aparición de RED MARROW.
@@ -486,7 +486,8 @@ Las exam cards se listan en el orden de las escenas:
 - V10 va al final: necesita la voz nueva de RED MARROW y un cambio en su lección (fecha e IP).
 - Grabación por parejas, un principal y una cápsula por sesión: V6 con V7, V9 con V8, y V10 con el primero de la tanda 3.
 - Trabajo de motor antes de renderizar V9: un efecto nuevo para las voces de PAPER CRANE (V9) y RED MARROW (V10), porque
-  `adversary_fx.py` solo tiene `machine`, el de los otros tres adversarios.
+  `adversary_fx.py` solo tiene `machine`, el de los otros tres adversarios. **Para V9 no hace falta** (2026-10-04):
+  Lidia eligió `machine` con otra voz, `sapi/Microsoft Laura`.
 - Las decisiones de cada ficha, para aprobarlas en una ronda, y los cambios que proponen a las lecciones y a los
   registros de canon: `docs/reviews/2026-10-01-fichas-tanda2/decisiones.md`. Las fichas pasaron una revisión de
   exactitud y canon por campaña y la comprobación de límites del validador; ninguna tiene guion todavía.
@@ -1191,8 +1192,16 @@ mensaje va en s10, no en s11.
 
 ### V9 · s4m3 · Principal · «ACH: gana la hipótesis que no puedes tumbar»
 
-> Propuesta del 2026-10-01, pendiente de la aprobación de Lidia. La versión vigente de escenas y guion será
-> `video/ach-matriz/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/ach-matriz/out/script-notes.md`.
+> **Aprobada por Lidia el 2026-10-04**, tal cual, y guion congelado ese día tras su visto bueno, con una decisión de la ronda de diseño: PAPER CRANE habla con el efecto
+> `machine` de siempre y la voz `sapi/Microsoft Laura` (no hay efecto nuevo). Rama `video-ach-matriz`, que sale de
+> `video-stix-isac` porque V8 aún no estaba fusionado. Se graba sola (V8 ya se grabó el 2026-10-03). La versión
+> vigente de escenas y guion es `video/ach-matriz/storyboard.json` + `narration.json`; qué se quedó fuera, en
+> `video/ach-matriz/out/script-notes.md`.
+>
+> **Producido y publicado el 2026-10-04**: YouTube `TjVViiBTeds`, 8:25, 10 escenas, 7 tarjetas, 2 preguntas, 3 mensajes
+> de PAPER CRANE (voz `sapi/Microsoft Laura` con `machine`), voz de Lidia, música de V4 y V5. En la lección s4m3, después
+> del cuarto check y antes del callout de campaña que manda al Lab 4B. La grabación quedó en 8:25 frente a los 9:14
+> estimados (91 %), en la línea de V7 y V8. El canon nuevo está en `docs/superpowers/canon/velvet-cicada.md` (§7).
 >
 > Sobre el esbozo del plan (§5): se mantiene todo (matriz celda a celda, la fila sin diagnosticidad que se apaga, gana la
 > menos inconsistente, sensibilidad retirando E4) y se usa el extracto de la lección (`src/data/s4.ts:421-437`), no la
@@ -1204,9 +1213,9 @@ mensaje va en s10, no en s11.
   curso de S4, `src/data/course-gcti.ts:70`, y de todas las preguntas de s4m3); las tarjetas llevan
   `"objective": "Analysis"` e insignia «GCTI» · adversario **PAPER CRANE** (`src/data/course-gcti.ts:74-76`), primera
   aparición en pantalla, tres mensajes interceptados · voz `recording/lidia` con
-  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · voz del adversario: **voz nueva del adversario, efecto por
-  decidir** (hoy el motor solo trae el efecto `machine`, `video/engine/scripts/lib/adversary.mjs:5`, el de SILENT
-  PAGER, GLASS VIPER y HOLLOW LANTERN) · música de V4 y V5 (`Go On Going - Stayloose.mp3`).
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · voz del adversario: **`sapi/Microsoft Laura` con el efecto
+  `machine`** (decidido el 2026-10-04; el motor solo trae `machine`, `video/engine/scripts/lib/adversary.mjs:5`, el de
+  SILENT PAGER, GLASS VIPER y HOLLOW LANTERN, que hablan con Pablo) · música de V4 y V5 (`Go On Going - Stayloose.mp3`).
 - **`video.json`:** `"profile": "principal-yt"`, `"track": "gcti"`, `"adversary": "PAPER CRANE"`, `"lesson": "s4m3"`,
   la música de arriba y `"tags"` para YouTube (ACH, analysis of competing hypotheses, análisis de hipótesis en
   competencia, structured analytic techniques, key assumptions check, diagnosticity, threat intelligence, GCTI).
