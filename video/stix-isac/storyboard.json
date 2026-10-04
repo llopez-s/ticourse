@@ -1,0 +1,126 @@
+{
+  "title": "¿Bloqueo este dominio? Indicadores, STIX y TAXII",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 218,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Leer el aviso"
+    },
+    {
+      "n": 2,
+      "title": "Contexto y transporte"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Un aviso y un botón",
+      "goal": "tip: la plataforma de inteligencia (TIP) de Meridian, con la fecha «02-07-2026». incoming: entra un objeto nuevo, con «fuente: ISAC aeroespacial», con cdn-sync-status.example. block: en la tarjeta de ese objeto (NUNCA en un nodo del dominio) late un botón «Bloquear»; lo demás, atenuado. title (antes de los 10 s): «¿Bloqueo este dominio? Indicadores, STIX y TAXII». promise: tres chips «su fecha · su contexto · cómo llega». bridge: tira de contexto «Meridian Dynamics · aeroespacial · meses en el punto de mira» y, debajo, «hasta ahora: sobre todo tus datos · hoy: un aviso de fuera, en STIX». Ningún nombre del Lab 3A; nada del dosier de DEEP WELL",
+      "targetSec": 24,
+      "wordBudget": 65,
+      "requiredCues": [
+        "tip",
+        "incoming",
+        "block",
+        "title",
+        "promise",
+        "bridge"
+      ]
+    },
+    {
+      "id": "s02-lectura",
+      "chapter": 1,
+      "title": "Lo que trae el aviso",
+      "goal": "json: el JSON de la lección con la cabecera «Indicador STIX 2.1 · ISAC aeroespacial», con el campo \"modified\": \"2026-03-11T08:00:00Z\" debajo de created (el resto exacto como src/data/s3.ts, el bloque code de s3m5). Se amplía un campo cada vez y se atenúa el resto. pattern: [domain-name:value = 'cdn-sync-status.example']. source: created_by_ref identity--aero-isac-share-0001, rotulado «quién lo dice: el ISAC». confidence: 70, rotulado «70 sobre 100» (nunca %). tlp: object_marking_refs marking-definition--tlp-amber-strict, rotulado «solo dentro de Meridian». A la derecha, la imagen: la nota de los vecinos que se rellena al mismo compás, context: «número de un timador · avisa: la asociación · se fía: bastante (la confianza es del que avisa, no tuya) · no lo cuentes fuera de casa». until: valid_until 2026-06-25 junto a un calendario; la nota añade «vale hasta el 25 de junio». today: en el calendario, «hoy · 02-07-2026». La tarjeta de examen sale tras today; el calendario se atenúa antes de la pregunta para pensar (que ocupa la franja superior central al final de la escena)",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "json",
+        "pattern",
+        "source",
+        "confidence",
+        "tlp",
+        "context",
+        "until",
+        "today"
+      ]
+    },
+    {
+      "id": "s03-caducado",
+      "chapter": 1,
+      "title": "Caducado para bloquear",
+      "goal": "strike: en la tarjeta del objeto entrante, «bloquear este aviso» se tacha y «mirar atrás» se marca (nunca «el dominio no se bloquea»). reassigned: en la nota de los vecinos, el número puede pasar a otra dueña (icono de una clínica) y el candado cae sobre ella: «a ciegas, castigas a quien lo herede». Mensaje interceptado de HOLLOW LANTERN (antes del segmento de dns-last). dns-last: la revalidación que se ve es solo el passive DNS (rotulado «passive DNS · historial»; la voz dice «el historial del DNS»), la fila de s3m4 «198.51.100.84 · last seen 2026-04-18 11:31:55», ampliada, con «nada después». own-evidence: la regla «si lo ves vivo hoy, manda tu evidencia». retention: un registro de llamadas que corre hacia atrás; línea de tiempo del 27-02 (registro del dominio) al 02-07 con el tramo visto (27-02 a 18-04) sombreado y dos barras de retención del CMF de Meridian: «EDR · 90 días · desde el 03-04», que alcanza el final del tramo, y «proxy · 30 días · desde el 02-06 · ya no llega», en gris. retro-hunt: rótulo «retro-hunt · hasta donde llegue lo que guardas». Sin resultados de búsqueda en pantalla. wrap: cierre del capítulo I, las barras atenuadas y «caducado: no se bloquea a ciegas · se busca hacia atrás»",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "requiredCues": [
+        "strike",
+        "reassigned",
+        "dns-last",
+        "own-evidence",
+        "retention",
+        "retro-hunt",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s04-grafo",
+      "chapter": 2,
+      "title": "Un pósit o un contacto",
+      "goal": "postit: en pantalla «¿y si aparece en tus registros?»; a la izquierda, un pósit con cdn-sync-status.example, solo. graph: a la derecha, el nodo del indicador en la plataforma de Meridian, rotulado «indicator · cdn-sync-status.example» (un contacto con nombre; en STIX 2.1 indicates solo sale de un indicator, nunca de un domain-name). indicates: se enciende la relación indicator «indicates» malware · loader GLASS VIPER. uses: intrusion-set · VELVET CICADA «uses» ese malware (dirección: el intrusion set usa el malware). action: chip práctico «si aparece en un equipo: busca allí el loader». relationship: sobre una arista, «relationship · también es un objeto STIX». merge: el objeto del ISAC entra por un lado y se funde con el nodo (icono de fusionar contactos). sources: quedan dos fuentes: «incidente propio · correo del 02-03» e «ISAC aeroespacial · 11-03 · confianza 70 · AMBER+STRICT · caducado» (la marca sobrevive a la fusión). Solo nombres: ni hash, ni ruta, ni C2, ni certificado, ni correo de registro, ni fechas del indicador propio de Meridian",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "requiredCues": [
+        "postit",
+        "graph",
+        "indicates",
+        "uses",
+        "action",
+        "relationship",
+        "merge",
+        "sources"
+      ]
+    },
+    {
+      "id": "s05-taxii",
+      "chapter": 2,
+      "title": "La carta y el correo",
+      "goal": "letter: una carta; dentro, el JSON de s02 en miniatura con el rótulo «STIX · qué se cuenta y cómo». envelope: el sobre y el servicio de correo, «TAXII · cómo llega». collection: el servidor TAXII del ISAC con una fila de apartados de correos (las colecciones, sin nombre). pull: la plataforma de Meridian pasa a recoger: «consulta (pull) · 02-07 · primera vez». backlog: «llega todo lo que había» y entre las cartas sale la del 11-03 (la fecha es de la carta, el created de STIX; un sobre de TAXII lleva varias). marking: la marca tlp-amber-strict se ilumina dentro de la carta, no en el sobre. mnemonic: «STIX describe · TAXII transporta». close: cierre del capítulo II, «el contexto viaja en la carta · tu plataforma la recoge». Sin channels de TAXII",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "letter",
+        "envelope",
+        "collection",
+        "pull",
+        "backlog",
+        "marking",
+        "mnemonic",
+        "close"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "goal": "recap. Tres tarjetas de reglas, cada una con su imagen en miniatura: rule-1 la nota de los vecinos, «antes de bloquear, mira hasta cuándo vale · caducado: busca hacia atrás, ya»; rule-2 la agenda, «un indicador, un solo contacto · con relaciones y todas sus fuentes»; rule-3 la carta, «la carta no es el correo · STIX describe, TAXII transporta». next: «Tu turno: las 10 preguntas de la lección» (s3m5; no «Ahora te toca»). endcard: tarjeta final ALERTÓPOLIS",
+      "targetSec": 26,
+      "wordBudget": 70,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

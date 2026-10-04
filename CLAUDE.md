@@ -257,6 +257,12 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   either way). To preview a worktree, `preview_start` reads the **main checkout's** `.claude/launch.json`: add a
   temporary entry `cmd /c npm --prefix "<worktree, forward slashes>" run dev -- --port 5174 --strictPort`, start it,
   and restore the file at once.
+  **V8 `video/stix-isac/`** (s3m5, GCTI, `capsula-yt`, YouTube `KO4REQeaKgM`, 3:53, published 2026-10-04): the
+  ISAC's expired STIX indicator reaches Meridian's platform on 2-7 through its first TAXII pull — not blocked, hunted
+  backwards; the graph («indicates», «uses») and «STIX describe, TAXII transporta» (HOLLOW LANTERN ×1). Fixes the
+  lesson's «today» (2026-07-02) in the VELVET CICADA registry. Lidia's reading landed at 92 % of `--estimate`, as
+  predicted; she uploaded it to YouTube herself, so the id came from the channel's public feed
+  (`https://www.youtube.com/feeds/videos.xml?channel_id=UCe0XBMwoI3bI61K8qolacJA`).
   **Mastering** (Python, venv + `pedalboard pyloudnorm librosa soundfile scipy`): `scripts/master_voice.py`
   on the narrator's WAV *before* `import-recording` (time-aligned EQ/de-ess/compression, no denoise) and
   `scripts/master_mix.py` on the rendered MP4 (generated ambient bed ducked under speech, −14 LUFS,

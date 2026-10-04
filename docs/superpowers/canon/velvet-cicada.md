@@ -1,7 +1,7 @@
 # Canon de «Operación VELVET CICADA» (GCTI)
 
 Registro único de los datos ficticios de la campaña GCTI: la intrusión contra Meridian Dynamics que continúan
-las lecciones, los laboratorios y los vídeos. Estado a 2026-10-03 (vídeos publicados: V3, V4 y V7).
+las lecciones, los laboratorios y los vídeos. Estado a 2026-10-04 (vídeos publicados: V3, V4, V7 y V8).
 
 ## 1. Cómo se usa
 
@@ -47,7 +47,7 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 | 2026-03-07 (sin hora) | **E9** (AoO) | Mismo implante y metodología, dos días después de E7 [V3] | `src/data/s2.ts:623`; `video/diamond-e7/src/scenes/S10Thread.tsx:80-84` |
 | 2026-03-07 | — | pDNS: last seen de `update-svc-cdn.com` en `185.220.x.x` [V4] | `video/pivot-infra/src/scenes/S03Pdns.tsx:66` |
 | 2026-03-09 08:05 → 08:23 (sin zona) | Víctima 2 | Orbital Components: «PO revision» a `finance@orbital.example`, `msdtcs.exe`, beacon a `portal-auth-check.example` | `src/data/s2.ts:879-883` |
-| 2026-03-11 | — | Un ISAC empuja el indicador STIX de `cdn-sync-status.example` (válido hasta 2026-06-25) | `src/data/s3.ts:1063-1069` |
+| 2026-03-11 | — | El ISAC aeroespacial publica en una colección TAXII el indicador STIX de `cdn-sync-status.example` (válido hasta 2026-06-25); la TIP de Meridian lo recoge (pull) el 2026-07-02 | `src/data/s3.ts:1053`, `:1063-1070` |
 | marzo → mayo 2026 (rango) | — | Exfiltración de diseños de propulsión, según el BLUF | `src/data/s5.ts:312`; `src/data/labs.ts:1016` |
 | abr-2026 → hoy (rango) | — | Actividad del Cluster-B (Orbital-2) | `src/data/s4.ts:732` |
 | 2026-04-18 desde 06:00 UTC | — | 41 correos de phishing de credenciales a la cadena de suministro | `src/data/s5.ts:56-58` |
@@ -56,6 +56,7 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 | 2026-04-18 11:40 UTC | — | Flash alert MER-FA-2026-014; acciones antes de las 18:00 UTC; siguiente parte a las 17:00 UTC | `src/data/s5.ts:47-48,63,68` |
 | 2026-04-18 | — | Fecha de la regla YARA `GLASSVIPER_Loader_MemMap` | `src/data/s5.ts:497,502` |
 | 2026-04-25 | — | Próxima revisión del flash alert | `src/data/s5.ts:48` |
+| 2026-07-02 (jueves, sin hora) | «hoy» de s3m5 [V8] | La TIP de Meridian consulta por primera vez (pull) la colección TAXII del ISAC aeroespacial y se trae todo lo que había, entre ello el indicador del 11-03, ya caducado; el pDNS de `cdn-sync-status.example` sigue sin nada después del 18-4; búsqueda hacia atrás desde el 27-02, sin resultados en pantalla | `src/data/s3.ts:1076`; `video/stix-isac/src/data/s05-taxii.ts:24`; `video/stix-isac/src/data/s03-caducado.ts:15-16,33-38` |
 | «el martes» (sin fecha) | — | `141.98.6.10` sirvió un panel de phishing | `src/data/s1.ts:27,32` |
 | «6 meses» (duración) | — | Acceso silencioso, sin cifrado ni extorsión | `src/data/s4.ts:429`; `src/data/labs.ts:883,895,919` |
 | «el lunes» (sin fecha) | Misión 5 | El consejo de Meridian lee el informe final | `src/data/labs.ts:187,1144` |
@@ -274,6 +275,9 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
    (`src/data/s4.ts:814,1016,1048`). VELVET CICADA también es «intrusion set» (`src/data/s3.ts:1048`;
    `src/data/s5.ts:312`). V3 lo explica como nombre de seguimiento del implante y quien lo usa [V3]
    (`video/diamond-e7/narration.json:139`).
+   **Lectura que usa V8** (2026-10-03, decisión de Lidia: no se renombra el intrusion set STIX de S4,
+   `src/data/s4.ts:1016`): GLASS VIPER es el loader y el nombre que usan los vendors y el ISAC; VELVET CICADA es el
+   intrusion set en el modelo de Meridian, el que «uses» ese loader en su grafo.
 10. **«Tres C2» con el mismo certificado** (`src/data/s2.ts:841`; `src/data/labs.ts:314`) frente a las tres IP de
     V4: el C2, el VPS del phishing `141.98.6.10` y una desconocida [V4]
     (`video/pivot-infra/src/scenes/S05Cert.tsx:57-60`).
@@ -401,6 +405,39 @@ Lección `src/data/s2.ts:1097` (bloque `youtube` entre el párrafo de la escaler
   ese día.
 - Mensaje interceptado nuevo de GLASS VIPER: «Bloquea mi hash. Así ya no me volverás a ver.»
   (`video/attack-piramide/narration.json`, s04-01).
+
+### V8 · `stix-isac` · s3m5 · YouTube `KO4REQeaKgM`
+
+Lección `src/data/s3.ts:1110` (bloque `youtube` después del check «TAXII ; STIX» y antes de «YARA en 60 segundos»);
+adversario de los interceptados HOLLOW LANTERN (`video/stix-isac/video.json:8`). Notas propias en
+`video/stix-isac/out/script-notes.md`. Canon nuevo:
+
+- **El «hoy» de la lección es el 2026-07-02 (jueves), sin hora** (`src/data/s3.ts:1076`): «hoy · 02-07-2026» en el
+  calendario y en el marco de la plataforma (`video/stix-isac/src/scenes/parts/TipFrame.tsx:21`). Ese día la
+  plataforma de Meridian consulta **por primera vez** la colección TAXII del ISAC aeroespacial, «consulta (pull) ·
+  02-07 · primera vez», y «llega todo lo que había» (`video/stix-isac/src/data/s05-taxii.ts:24,27`): por eso un
+  indicador de marzo llega en julio. El ISAC ya mandaba avisos antes por otra vía (`src/data/s3.ts:73`; la prueba E4
+  de s4m3, `src/data/s4.ts:431-432`); por TAXII, solo desde el 2-7. La colección no tiene nombre en pantalla.
+- **El indicador del ISAC** (`video/stix-isac/src/scenes/parts/StixJson.tsx:18-32`): «Indicador STIX 2.1 · ISAC
+  aeroespacial», `created` y `modified` `2026-03-11T08:00:00Z`, `valid_from` `2026-03-11T00:00:00Z`, `valid_until`
+  `2026-06-25T00:00:00Z`; marca `tlp-amber-strict` (`video/stix-isac/src/data/s05-taxii.ts:16`).
+- **La revalidación del 2-7:** el passive DNS de `cdn-sync-status.example` sigue acabando en `198.51.100.84 · last
+  seen 2026-04-18 11:31:55`, «nada después» (`video/stix-isac/src/data/s03-caducado.ts:10-16`). El WHOIS no sale. La
+  voz solo dice que el dominio **puede** cambiar de manos (el registro no caduca hasta el 2027-02-27,
+  `src/data/s3.ts:765`).
+- **La búsqueda hacia atrás** va del 27-02 («registro del dominio») al 02-07, con el tramo visto hasta el 18-04 y las
+  retenciones del CMF: «EDR · 90 días · desde el 03-04» y «proxy · 30 días · desde el 02-06 · ya no llega»
+  (`video/stix-isac/src/data/s03-caducado.ts:33-38`). Sin resultados en pantalla.
+- **El grafo de la plataforma de Meridian:** `cdn-sync-status.example` «indicates» `malware · loader GLASS VIPER`;
+  `intrusion-set · VELVET CICADA` «uses» ese malware (`video/stix-isac/src/data/s04-grafo.ts:13-19`). Es la lectura de
+  §5 punto 9. Solo nombres: ni hash, ni ruta, ni las fechas del registro propio de Meridian.
+- **Dos fuentes en el mismo nodo tras la fusión:** «incidente propio · correo del 02-03» e «ISAC aeroespacial ·
+  11-03 · confianza 70», con `AMBER+STRICT` y «caducado» (`video/stix-isac/src/data/s04-grafo.ts:31-37`).
+- Mensaje interceptado nuevo de HOLLOW LANTERN, sin fecha: «Ese dominio lo tiré hace meses. Ya no te sirve para nada.»
+  (`video/stix-isac/narration.json`, s03-02). Encaja con el passive DNS y con V4 s08.
+- **No se toca** (sigue fuera): el C2, el certificado y el correo de registro del dosier de DEEP WELL; el intrusion set
+  STIX de S4 (`src/data/s4.ts:1013-1021`), la campaña «PO-REVISION phishing wave» y `attributed-to`; el indicador
+  propio de Meridian para este dominio (`src/data/s5.ts:596-607`) y la ola de phishing del 18-4.
 
 ### Plantilla para el siguiente
 

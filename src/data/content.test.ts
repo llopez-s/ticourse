@@ -278,6 +278,8 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'XCOAc7tlPTE')?.module).toBe('s2m5');
     // V6 gathers identity and access in the port, after the MFA check and before the exam note
     expect(youtubeVideos.find((v) => v.block.youtube === 'It1DrWKbFe4')?.module).toBe('sp4m8');
+    // V8 closes s3m5's STIX/TAXII half, after the TAXII-vs-STIX check and before YARA
+    expect(youtubeVideos.find((v) => v.block.youtube === 'KO4REQeaKgM')?.module).toBe('s3m5');
   });
 
   it('every video block points at relative public assets that exist', async () => {

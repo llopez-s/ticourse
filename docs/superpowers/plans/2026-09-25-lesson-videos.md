@@ -473,7 +473,7 @@ Las exam cards se listan en el orden de las escenas:
   Halden del 19 al 28-10: altas, cambios y bajas, SAML, OAuth, MFA y la bóveda de cuentas de servicio.
 - **s2m5 ATT&CK + Pyramid (Cápsula): V7, publicada el 2026-10-03 (YouTube `XCOAc7tlPTE`), ficha completa abajo.** El árbol de procesos del
   2-3 en ATT&CK y en la pirámide, con los dos hashes del loader como prueba de su base.
-- **s3m5 STIX (Cápsula): V8, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** El aviso caducado del ISAC:
+- **s3m5 STIX (Cápsula): V8, publicada el 2026-10-04 (YouTube `KO4REQeaKgM`), ficha completa abajo.** El aviso caducado del ISAC:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
 - **s4m3 ACH (Principal): V9, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** La matriz del extracto de la
   lección, celda a celda, con supuestos clave, diagnosticidad y sensibilidad; primera aparición de PAPER CRANE.
@@ -1024,11 +1024,38 @@ mensaje va en s10, no en s11.
 
 ### V8 · s3m5 · Cápsula · «¿Bloqueo este dominio? Indicadores, STIX y TAXII»
 
-> Propuesta del 2026-10-01, pendiente de la aprobación de Lidia. La versión vigente de escenas y guion será
-> `video/stix-isac/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/stix-isac/out/script-notes.md`.
+> **Aprobada por Lidia el 2026-10-03**, tal cual y con las recomendaciones de la ronda de diseño, y guion congelado ese día tras su visto bueno (rama `video-stix-isac`,
+> desde `main` con V6 ya fusionado). La versión vigente de escenas y guion es `video/stix-isac/storyboard.json` +
+> `narration.json`; qué se quedó fuera, en `video/stix-isac/out/script-notes.md`.
 >
-> **Un aviso por el validador:** la pregunta para pensar tiene 48 caracteres, justo el máximo de `analyzeNarration`.
-> Si se retoca, no puede crecer.
+> **Producido y publicado el 2026-10-04**: YouTube `KO4REQeaKgM` (lo subió Lidia), 3:53, 6 escenas, 4 tarjetas, 1
+> pregunta, 1 mensaje de HOLLOW LANTERN con la voz de V4, voz de Lidia (31 de 31 frases importadas, sin las tomas repetidas; dos
+> frases del guion se ajustaron a lo grabado), música de V4. En la lección s3m5, después del check «TAXII ; STIX» y
+> antes de «YARA en 60 segundos». La grabación quedó al 92 % del estimado, como se calculó. El canon nuevo está en
+> `docs/superpowers/canon/velvet-cicada.md` (cronología y §7).
+>
+> **Ajustes al abrirla** (el guion ya los lleva; la tabla de escenas de abajo es la ficha original):
+> - Las dos tarjetas que caían en la última frase de su escena llevan detrás el «o sea, que…» que cierra su capítulo:
+>   s03 (`wrap`, capítulo I) y s05 (`close`, capítulo II). La de s05 va en la misma frase que la marca TLP.
+> - Duración: 218 s de escenas, como V7. Guion de ~550 palabras, estimado ~4:13; con el ritmo de Lidia, ~3:55.
+> - La pregunta para pensar sigue en 48 caracteres, el máximo; en el cierre, en pantalla, «Tu turno», no «Ahora te toca».
+> - Retoques de la lección s3m5 en la PR del vídeo (recomendados en la revisión de GCTI): «used-by» pasa a «uses»,
+>   «el ISAC empuja» pasa a «publica en una colección y tu TIP lo recoge», y el JSON gana `"modified"`.
+> - **No** se renombra el intrusion set STIX de S4 (`s4.ts:1016`): el registro apunta la lectura (GLASS VIPER, el loader
+>   y el nombre de los vendors; VELVET CICADA, el intrusion set en el modelo de Meridian).
+>
+> **Cambios de las revisiones del 2026-10-03** (exactitud y naturalidad; el guion y `storyboard.json` ya los llevan, la
+> tabla de escenas no):
+> - **Mensaje nuevo de HOLLOW LANTERN:** «Ese dominio lo tiré hace meses. Ya no te sirve para nada.» (58). Con el
+>   anterior («Bloquéalo, si te hace ilusión») no quedaba error que rebatir, porque s03 ya ha descartado el bloqueo; el
+>   nuevo trae el error que la ficha quería corregir (que un aviso caducado no sirve para nada).
+> - s04: el nodo es el del indicador, «indicator · cdn-sync-status.example» (en STIX 2.1 `indicates` solo sale de un
+>   `indicator`), y la fuente del ISAC conserva AMBER+STRICT tras la fusión.
+> - s03: «hasta donde llegue lo que guardas» se queda; el EDR «llega hasta abril» (solo cubre del 03-04 al 18-04).
+> - s01: «seguías al grupo sobre todo con tus datos» (el ISAC ya era fuente del CMF); s02 nombra «indicador» antes de
+>   usarlo; s05 cierra con «el contexto viaja dentro de la carta, y tu plataforma la recoge».
+> - La lección s3m5 cambia además «patrón del dominio C2» por «patrón de un dominio del actor»: el indicador del
+>   ejemplo es el de entrega, no el C2.
 
 - **Carpeta:** `stix-isac` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) · dominio del
   curso **Collection** (S3 · Fuentes de colección: las tarjetas llevan `"objective": "Collection"` y la insignia dice
