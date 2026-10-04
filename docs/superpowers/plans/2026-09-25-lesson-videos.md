@@ -1367,6 +1367,12 @@ ordena contra la cronología del registro ni choca con ella; lo posterior debe r
 > graba sola: la primera de la tanda 3 aún no tiene ficha. La versión vigente de escenas y guion será
 > `video/logs-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/logs-halden/out/script-notes.md`.
 >
+> **Guion tras las revisiones (2026-10-04)**: 590 palabras, estimado 4:33 (~4:10 grabado). La tabla de escenas de abajo
+> es la ficha original; lo que cambió al escribirlo, en `video/logs-halden/out/script-notes.md` (§ Revisiones):
+> la MFA como «algo que solo tienes tú», la guardia sin parar el ataque, la nota «sal de la sala y sube cuatro plantas»
+> (no «armario»), «codificada» en vez de «en clave», «account lockout» con la puerta del quinto fallo y no con el 0, y
+> la voz sin «proveedor de identidad», «SOC» ni «DDoS» (siguen en pantalla).
+>
 > **Un ajuste que no pide el validador sino el canon:** el registro de la lección fecha el password spraying el 4-9,
 > la misma noche del caso de sp4, y lo lanza desde una IP que no es de documentación. El vídeo lo pasa a la noche del 20
 > al 21-10 con las mismas cuentas y horas, desde `192.0.2.157`, y propone aparte cambiar en la lección la fecha y la IP,

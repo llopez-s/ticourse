@@ -23,7 +23,7 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {queue}Es miércoles por la mañana, y la cola del SOC trae tres rastros de esta noche.",
+      "text": "<curious> {queue}Esta mañana, tu cola de alertas trae tres rastros de anoche.",
       "pauseAfterMs": 350
     },
     {
@@ -35,37 +35,43 @@
     {
       "id": "s01-03",
       "scene": "s01-hook",
-      "text": "<focused> {rows}Son una llave que prueba muchas puertas, una URL llena de puntos y barras y un chorro de respuestas que nadie pidió.",
+      "text": "<focused> {rows}Son una llave en muchas puertas, una URL llena de puntos y barras y un chorro de respuestas que nadie pidió.",
       "pauseAfterMs": 550
     },
     {
       "id": "s02-01",
       "scene": "s02-spray",
-      "text": "<clear> {log}Empieza por la llave, el registro del proveedor de identidad.",
+      "text": "<clear> {log}Empieza por la llave, el registro de inicios de sesión.",
       "pauseAfterMs": 350
     },
     {
       "id": "s02-02",
       "scene": "s02-spray",
-      "text": "<focused> {users}El usuario cambia en cada línea, {src}pero el origen es siempre el mismo. {pace}Y va sin prisa, un intento cada cuarenta segundos.",
+      "text": "<focused> {users}El usuario cambia en cada línea, {src}pero el origen, no. {pace}Y va sin prisa, un intento cada cuarenta segundos.",
       "pauseAfterMs": 350
     },
     {
       "id": "s02-03",
       "scene": "s02-spray",
-      "text": "<curious> {zero}Ciento ochenta cuentas, un intento en cada una, y el bloqueo de cuenta, el account lockout, ni se entera.",
+      "text": "<curious> {zero}Ciento ochenta cuentas, un intento en cada una, y el bloqueo de cuenta ni se entera.",
       "pauseAfterMs": 400
     },
     {
       "id": "s02-04",
       "scene": "s02-spray",
-      "text": "<warm> {one-door}Piensa en un bloque de pisos. Un manojo de llaves en una sola puerta la bloquea al quinto intento. {every-door}Aquí es una llave corriente, probada una vez en cada puerta.",
+      "text": "<warm> {one-door}Piensa en un bloque de pisos. Si pruebas un manojo de llaves en una puerta, al quinto fallo se bloquea, el account lockout.",
       "pauseAfterMs": 350
     },
     {
       "id": "s02-05",
       "scene": "s02-spray",
-      "text": "<clear> {matrix}Lo primero es la fuerza bruta, el brute force. Lo segundo, pocas contraseñas contra muchas cuentas, {spraying}es el password spraying.",
+      "text": "<engaging> {every-door}Aquí, una llave corriente prueba cada puerta una vez.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-spray",
+      "text": "<clear> {matrix}Muchas contraseñas contra una cuenta es la fuerza bruta. Pocas contraseñas contra muchas cuentas {spraying}es el password spraying.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "2.4",
@@ -75,21 +81,21 @@
       }
     },
     {
-      "id": "s02-06",
+      "id": "s02-07",
       "scene": "s02-spray",
-      "text": "<steady> O sea, que no mires cuánto. Mira la forma.",
+      "text": "<steady> Así que no cuentes fallos, mira la forma.",
       "pauseAfterMs": 500
     },
     {
       "id": "s03-01",
       "scene": "s03-mfa",
-      "text": "<serious> {ok}Pero una puerta se abrió. Una cuenta acierta a las tres y doce {logout}y sale a los treinta y ocho segundos, sin abrir nada.",
+      "text": "<serious> {ok}Pero una puerta se abrió. Una cuenta acierta {logout}y sale enseguida, sin entrar en ninguna aplicación.",
       "pauseAfterMs": 400
     },
     {
       "id": "s03-02",
       "scene": "s03-mfa",
-      "text": "<sarcastic> {rules}Es RED MARROW, que vive de engañar. Y sí, esa contraseña cumple las normas.",
+      "text": "<sarcastic> {rules}Es RED MARROW, que vive de engañar. Y sí, cumple las normas.",
       "pauseAfterMs": 350,
       "intercept": {
         "text": "Halden2026! Cumple todas tus normas. Así que es segura. Confía en mí.",
@@ -111,7 +117,7 @@
     {
       "id": "s03-05",
       "scene": "s03-mfa",
-      "text": "<confident> Lo que de verdad lo frena es pedir algo más que la contraseña. {mfa}Eso es la MFA.",
+      "text": "<confident> Lo que de verdad lo frena es pedir, además de la contraseña, algo que solo tienes tú. {mfa}Es la MFA.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "2.4",
@@ -123,7 +129,7 @@
     {
       "id": "s03-06",
       "scene": "s03-mfa",
-      "text": "<warm> {second-lock}Un segundo cerrojo, que pide algo que solo tienes tú. O sea, que una llave corriente ya no abre.",
+      "text": "<warm> {second-lock}Es un segundo cerrojo. O sea, que una llave corriente ya no abre.",
       "pauseAfterMs": 600
     },
     {
@@ -147,19 +153,19 @@
     {
       "id": "s04-04",
       "scene": "s04-traversal",
-      "text": "<warm> Es como dejar en una ventanilla la nota «sal del armario y sube cuatro plantas». {traversal}Eso es el directory traversal.",
+      "text": "<warm> Es como dejar en una ventanilla la nota «sal de la sala y sube cuatro plantas». {traversal}Se llama directory traversal.",
       "pauseAfterMs": 350
     },
     {
       "id": "s04-05",
       "scene": "s04-traversal",
-      "text": "<clear> {not-sqli}No hay comillas, así que no es una inyección.",
+      "text": "<clear> {not-sqli}No cuela código, solo cambia la ruta. No es una inyección.",
       "pauseAfterMs": 400
     },
     {
       "id": "s04-06",
       "scene": "s04-traversal",
-      "text": "<firm> {encoded}Mal consejo, porque la segunda ya viene en clave. Es la misma nota, y ese filtro no la vería.",
+      "text": "<firm> {encoded}Mal consejo, porque la segunda petición viene codificada. Es la misma nota, y ese filtro no la vería.",
       "pauseAfterMs": 350,
       "intercept": {
         "text": "Borra los puntos y las barras de la URL y listo. Confía en mí.",
@@ -169,13 +175,13 @@
     {
       "id": "s04-07",
       "scene": "s04-traversal",
-      "text": "<calm> {no-filter}A esa la frenó el sistema, porque ese archivo solo lo lee el administrador. Filtro, ninguno.",
+      "text": "<calm> {no-filter}A esa la frenó el sistema, porque pedía otro archivo, que solo lee el administrador. Filtro, ninguno.",
       "pauseAfterMs": 350
     },
     {
       "id": "s04-08",
       "scene": "s04-traversal",
-      "text": "<confident> La defensa es seguir la ruta entera antes de moverse. {canon}Eso es canonicalizarla. {confine}Y si acaba fuera del armario, no se va.",
+      "text": "<confident> La defensa es calcular la ruta entera antes de moverse. {canon}Eso es canonicalizarla. {confine}Y si acaba fuera de la sala, se rechaza.",
       "pauseAfterMs": 650,
       "exam": {
         "objective": "2.4",
@@ -193,7 +199,7 @@
     {
       "id": "s05-02",
       "scene": "s05-amp",
-      "text": "<focused> {port53}Todo viene del puerto del DNS, {sources}desde trescientos cuarenta servidores, {full}y el enlace se llena.",
+      "text": "<focused> {port53}Todo viene del puerto del DNS, {sources}desde trescientos cuarenta servidores, {full}y la conexión se satura.",
       "pauseAfterMs": 350
     },
     {
@@ -205,13 +211,13 @@
     {
       "id": "s05-04",
       "scene": "s05-amp",
-      "text": "<warm> {delivery}Es como si alguien pidiera el menú más grande a cientos de restaurantes, con tu dirección. Y quien llama nunca aparece.",
+      "text": "<warm> {delivery}Es como si alguien pidiera el menú más grande a cientos de restaurantes, con tu dirección.",
       "pauseAfterMs": 350
     },
     {
       "id": "s05-05",
       "scene": "s05-amp",
-      "text": "<clear> {reflected}Preguntaron con tu dirección y te llegan rebotadas. Eso es reflected. {amplified}La pregunta es pequeña y la respuesta, enorme. Eso es amplified.",
+      "text": "<clear> {reflected}Usan tu dirección, y las respuestas te llegan a ti. Eso es reflected. {amplified}La pregunta es pequeña y la respuesta, enorme. Eso es amplified.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "2.4",
@@ -223,13 +229,13 @@
     {
       "id": "s05-06",
       "scene": "s05-amp",
-      "text": "<firm> {not-poison}Juntas forman la amplificación DNS, que no te desvía como un envenenamiento. Te llena la tubería.",
+      "text": "<firm> {not-poison}Juntas forman la amplificación DNS. No te desvía como un envenenamiento, te atasca la calle.",
       "pauseAfterMs": 350
     },
     {
       "id": "s05-07",
       "scene": "s05-amp",
-      "text": "<engaging> ¿Bloqueas esas direcciones, o llamas a tu proveedor?",
+      "text": "<engaging> ¿Bloqueas esas direcciones, o llamas a tu proveedor de Internet?",
       "pauseAfterMs": 300,
       "think": {
         "q": "¿Bloqueas esas IP o llamas a tu proveedor?",
@@ -245,31 +251,31 @@
     {
       "id": "s05-09",
       "scene": "s05-amp",
-      "text": "<calm> {on-call}La guardia ya llamó a los cuatro minutos. O sea, que lo que no pediste se para antes de tu puerta.",
+      "text": "<calm> {on-call}Quien estaba de guardia llamó al proveedor a los cuatro minutos. O sea, que lo que no pediste no se para en tu portal.",
       "pauseAfterMs": 600
     },
     {
       "id": "s06-01",
       "scene": "s06-recap",
-      "text": "<confident> {recap}Tres rastros, tres reglas. {rule-1}Muchas cuentas, un intento en cada una y ningún bloqueo, es spraying. Contra eso, MFA.",
+      "text": "<confident> {recap}Tres rastros, tres reglas. {rule-1}Una llave en muchas puertas, sin ningún bloqueo, es spraying. Contra eso, MFA.",
       "pauseAfterMs": 400
     },
     {
       "id": "s06-02",
       "scene": "s06-recap",
-      "text": "<clear> {rule-2}Puntos y barras en una ruta, aunque vengan en clave, es traversal. Resuelve la ruta, no filtres el texto.",
+      "text": "<clear> {rule-2}Puntos y barras en una ruta, aunque vengan codificados, es traversal. Resuelve la ruta y mira dónde acaba, no filtres el texto.",
       "pauseAfterMs": 400
     },
     {
       "id": "s06-03",
       "scene": "s06-recap",
-      "text": "<warm> {rule-3}Y respuestas que nunca pediste, un DDoS reflejado y amplificado. Se para en el proveedor.",
+      "text": "<warm> {rule-3}Y respuestas que nunca pediste, reflejadas y amplificadas, se paran en el proveedor.",
       "pauseAfterMs": 450
     },
     {
       "id": "s06-04",
       "scene": "s06-recap",
-      "text": "<cheerful> {next}Ahora, las ocho preguntas de la lección. {endcard}Nos vemos en el próximo rastro.",
+      "text": "<cheerful> {next}Te tocan las ocho preguntas de la lección. {endcard}Hasta el próximo rastro.",
       "pauseAfterMs": 600
     }
   ]

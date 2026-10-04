@@ -1,290 +1,280 @@
 WEBVTT
 
 1
-00:00:01.400 --> 00:00:08.167
-Es miércoles por la mañana, y la cola
-del SOC trae tres rastros de esta noche.
+00:00:01.400 --> 00:00:06.167
+Esta mañana, tu cola de alertas
+trae tres rastros de anoche.
 
 2
-00:00:08.167 --> 00:00:12.067
+00:00:06.167 --> 00:00:10.067
 Cada ataque deja una forma
 distinta en su registro.
 
 3
-00:00:12.067 --> 00:00:16.967
+00:00:10.067 --> 00:00:14.967
 Hoy aprendes a verla, a ponerle
 nombre y a decidir qué hacer.
 
 4
-00:00:16.967 --> 00:00:20.100
-Son una llave que prueba muchas puertas,
+00:00:14.967 --> 00:00:17.533
+Son una llave en muchas puertas,
 
 5
-00:00:20.100 --> 00:00:26.667
+00:00:17.533 --> 00:00:24.267
 una URL llena de puntos y barras
 y un chorro de respuestas que nadie pidió.
 
 6
-00:00:27.400 --> 00:00:31.767
-Empieza por la llave, el registro
-del proveedor de identidad.
+00:00:25.000 --> 00:00:29.367
+Empieza por la llave,
+el registro de inicios de sesión.
 
 7
-00:00:31.767 --> 00:00:36.800
+00:00:29.367 --> 00:00:33.200
 El usuario cambia en cada línea,
-pero el origen es siempre el mismo.
+pero el origen, no.
 
 8
-00:00:36.800 --> 00:00:40.933
+00:00:33.200 --> 00:00:37.333
 Y va sin prisa, un intento
 cada cuarenta segundos.
 
 9
-00:00:40.933 --> 00:00:46.100
-Ciento ochenta cuentas, un intento
-en cada una, y el bloqueo de cuenta,
+00:00:37.333 --> 00:00:44.133
+Ciento ochenta cuentas, un intento en cada
+una, y el bloqueo de cuenta ni se entera.
 
 10
-00:00:46.100 --> 00:00:48.933
-el account lockout, ni se entera.
-
-11
-00:00:48.933 --> 00:00:51.133
+00:00:44.133 --> 00:00:46.333
 Piensa en un bloque de pisos.
 
+11
+00:00:46.333 --> 00:00:51.800
+Si pruebas un manojo de llaves
+en una puerta, al quinto fallo se bloquea,
+
 12
-00:00:51.133 --> 00:00:56.333
-Un manojo de llaves en una sola
-puerta la bloquea al quinto intento.
+00:00:51.800 --> 00:00:53.700
+el account lockout.
 
 13
-00:00:56.333 --> 00:01:01.300
-Aquí es una llave corriente,
-probada una vez en cada puerta.
+00:00:53.700 --> 00:00:57.667
+Aquí, una llave corriente
+prueba cada puerta una vez.
 
 14
-00:01:01.300 --> 00:01:04.200
-Lo primero es la fuerza
-bruta, el brute force.
+00:00:57.667 --> 00:01:01.000
+Muchas contraseñas contra una
+cuenta es la fuerza bruta.
 
 15
-00:01:04.200 --> 00:01:09.700
-Lo segundo, pocas contraseñas contra
-muchas cuentas, es el password spraying.
+00:01:01.000 --> 00:01:05.267
+Pocas contraseñas contra muchas
+cuentas es el password spraying.
 
 16
-00:01:09.700 --> 00:01:14.200
-O sea, que no mires cuánto. Mira la forma.
+00:01:05.267 --> 00:01:09.367
+Así que no cuentes fallos, mira la forma.
 
 17
-00:01:14.867 --> 00:01:17.033
+00:01:10.033 --> 00:01:11.700
 Pero una puerta se abrió.
 
 18
-00:01:17.033 --> 00:01:23.133
-Una cuenta acierta a las tres y doce
-y sale a los treinta y ocho segundos,
+00:01:11.700 --> 00:01:17.333
+Una cuenta acierta y sale enseguida,
+sin entrar en ninguna aplicación.
 
 19
-00:01:23.133 --> 00:01:25.367
-sin abrir nada.
+00:01:20.633 --> 00:01:25.800
+Es RED MARROW, que vive de engañar.
+Y sí, cumple las normas.
 
 20
-00:01:28.667 --> 00:01:34.633
-Es RED MARROW, que vive de engañar.
-Y sí, esa contraseña cumple las normas.
-
-21
-00:01:34.633 --> 00:01:41.433
+00:01:25.800 --> 00:01:32.600
 Justo por eso es de las primeras
 que se prueban, y no es culpa de nadie.
 
-22
-00:01:41.433 --> 00:01:45.167
+21
+00:01:32.600 --> 00:01:36.333
 Esa cuenta estrena contraseña
 y cierra sus sesiones.
 
-23
-00:01:45.167 --> 00:01:48.200
+22
+00:01:36.333 --> 00:01:39.367
 Y se bloquea el origen, no las cuentas.
 
+23
+00:01:39.367 --> 00:01:46.533
+Lo que de verdad lo frena es pedir, además
+de la contraseña, algo que solo tienes tú.
+
 24
-00:01:48.200 --> 00:01:55.400
-Lo que de verdad lo frena es pedir algo
-más que la contraseña. Eso es la MFA.
+00:01:46.533 --> 00:01:47.767
+Es la MFA.
 
 25
-00:01:55.400 --> 00:01:59.700
-Un segundo cerrojo, que pide
-algo que solo tienes tú.
+00:01:47.767 --> 00:01:53.867
+Es un segundo cerrojo. O sea,
+que una llave corriente ya no abre.
 
 26
-00:01:59.700 --> 00:02:03.900
-O sea, que una llave corriente ya no abre.
-
-27
-00:02:04.667 --> 00:02:10.633
+00:01:54.633 --> 00:02:00.600
 Ahora, la URL. A las cuatro y veintiséis,
 alguien pide un documento al portal.
 
-28
-00:02:10.633 --> 00:02:12.267
+27
+00:02:00.600 --> 00:02:02.233
 Mira qué archivo pide.
 
-29
-00:02:12.267 --> 00:02:17.800
+28
+00:02:02.233 --> 00:02:07.767
 Cada punto, punto, barra sube una carpeta,
 hasta salir de la del portal.
 
-30
-00:02:17.800 --> 00:02:23.067
+29
+00:02:07.767 --> 00:02:13.033
 Y el servidor se lo da.
 Se lleva la lista de usuarios.
 
-31
-00:02:23.067 --> 00:02:28.800
+30
+00:02:13.033 --> 00:02:18.733
 Es como dejar en una ventanilla la nota
-«sal del armario y sube cuatro plantas».
+«sal de la sala y sube cuatro plantas».
+
+31
+00:02:18.733 --> 00:02:21.400
+Se llama directory traversal.
 
 32
-00:02:28.800 --> 00:02:31.433
-Eso es el directory traversal.
+00:02:21.400 --> 00:02:26.700
+No cuela código, solo cambia
+la ruta. No es una inyección.
 
 33
-00:02:31.433 --> 00:02:35.933
-No hay comillas,
-así que no es una inyección.
+00:02:30.000 --> 00:02:34.300
+Mal consejo, porque la segunda
+petición viene codificada.
 
 34
-00:02:39.233 --> 00:02:43.400
-Mal consejo, porque
-la segunda ya viene en clave.
-
-35
-00:02:43.400 --> 00:02:47.200
+00:02:34.300 --> 00:02:37.567
 Es la misma nota,
 y ese filtro no la vería.
 
-36
-00:02:47.200 --> 00:02:52.367
-A esa la frenó el sistema, porque ese
-archivo solo lo lee el administrador.
+35
+00:02:37.567 --> 00:02:41.100
+A esa la frenó el sistema,
+porque pedía otro archivo,
 
-37
-00:02:52.367 --> 00:02:53.967
+36
+00:02:41.100 --> 00:02:44.733
+que solo lee el administrador.
 Filtro, ninguno.
 
-38
-00:02:53.967 --> 00:02:59.933
-La defensa es seguir la ruta entera
+37
+00:02:44.733 --> 00:02:50.700
+La defensa es calcular la ruta entera
 antes de moverse. Eso es canonicalizarla.
 
-39
-00:02:59.933 --> 00:03:03.667
-Y si acaba fuera del armario, no se va.
+38
+00:02:50.700 --> 00:02:54.433
+Y si acaba fuera de la sala, se rechaza.
 
-40
-00:03:04.500 --> 00:03:10.467
+39
+00:02:55.267 --> 00:03:01.233
 Último rastro, a las seis menos veinte,
 en el tráfico que entra al portal.
 
-41
-00:03:10.467 --> 00:03:15.133
+40
+00:03:01.233 --> 00:03:05.733
 Todo viene del puerto del DNS,
 desde trescientos cuarenta servidores,
 
-42
-00:03:15.133 --> 00:03:16.833
-y el enlace se llena.
+41
+00:03:05.733 --> 00:03:07.600
+y la conexión se satura.
 
-43
-00:03:16.833 --> 00:03:20.433
+42
+00:03:07.600 --> 00:03:11.200
 Pero el portal no les ha preguntado nada.
 
-44
-00:03:20.433 --> 00:03:25.533
+43
+00:03:11.200 --> 00:03:16.333
 Es como si alguien pidiera el menú
 más grande a cientos de restaurantes,
 
-45
-00:03:25.533 --> 00:03:29.200
+44
+00:03:16.333 --> 00:03:17.967
 con tu dirección.
-Y quien llama nunca aparece.
+
+45
+00:03:17.967 --> 00:03:22.900
+Usan tu dirección, y las respuestas
+te llegan a ti. Eso es reflected.
 
 46
-00:03:29.200 --> 00:03:33.800
-Preguntaron con tu dirección y te
-llegan rebotadas. Eso es reflected.
-
-47
-00:03:33.800 --> 00:03:38.400
+00:03:22.900 --> 00:03:27.967
 La pregunta es pequeña y la respuesta,
 enorme. Eso es amplified.
 
+47
+00:03:27.967 --> 00:03:30.367
+Juntas forman la amplificación DNS.
+
 48
-00:03:38.400 --> 00:03:43.467
-Juntas forman la amplificación DNS,
-que no te desvía como un envenenamiento.
+00:03:30.367 --> 00:03:34.333
+No te desvía como un envenenamiento,
+te atasca la calle.
 
 49
-00:03:43.467 --> 00:03:45.167
-Te llena la tubería.
+00:03:34.333 --> 00:03:39.233
+¿Bloqueas esas direcciones,
+o llamas a tu proveedor de Internet?
 
 50
-00:03:45.167 --> 00:03:49.267
-¿Bloqueas esas direcciones,
-o llamas a tu proveedor?
-
-51
-00:03:53.167 --> 00:03:58.300
+00:03:43.133 --> 00:03:48.267
 Al proveedor. Esos servidores son
 de terceros y mañana serán otros.
 
-52
-00:03:58.300 --> 00:04:01.533
+51
+00:03:48.267 --> 00:03:51.500
 Y la calle se atasca antes de tu portal.
 
+52
+00:03:51.500 --> 00:03:56.967
+Quien estaba de guardia llamó
+al proveedor a los cuatro minutos.
+
 53
-00:04:01.533 --> 00:04:05.200
-La guardia ya llamó a los cuatro minutos.
+00:03:56.967 --> 00:04:02.000
+O sea, que lo que no pediste
+no se para en tu portal.
 
 54
-00:04:05.200 --> 00:04:10.833
-O sea, que lo que no pediste
-se para antes de tu puerta.
-
-55
-00:04:11.600 --> 00:04:13.433
+00:04:02.767 --> 00:04:04.533
 Tres rastros, tres reglas.
 
+55
+00:04:04.533 --> 00:04:09.967
+Una llave en muchas puertas, sin ningún
+bloqueo, es spraying. Contra eso, MFA.
+
 56
-00:04:13.433 --> 00:04:18.067
-Muchas cuentas, un intento en cada
-una y ningún bloqueo, es spraying.
+00:04:09.967 --> 00:04:14.867
+Puntos y barras en una ruta, aunque
+vengan codificados, es traversal.
 
 57
-00:04:18.067 --> 00:04:19.600
-Contra eso, MFA.
+00:04:14.867 --> 00:04:19.167
+Resuelve la ruta y mira dónde
+acaba, no filtres el texto.
 
 58
-00:04:19.600 --> 00:04:24.400
-Puntos y barras en una ruta,
-aunque vengan en clave, es traversal.
+00:04:19.167 --> 00:04:24.833
+Y respuestas que nunca pediste, reflejadas
+y amplificadas, se paran en el proveedor.
 
 59
-00:04:24.400 --> 00:04:27.600
-Resuelve la ruta, no filtres el texto.
-
-60
-00:04:27.600 --> 00:04:32.000
-Y respuestas que nunca pediste,
-un DDoS reflejado y amplificado.
-
-61
-00:04:32.000 --> 00:04:34.067
-Se para en el proveedor.
-
-62
-00:04:34.067 --> 00:04:40.167
-Ahora, las ocho preguntas de la lección.
-Nos vemos en el próximo rastro.
+00:04:24.833 --> 00:04:30.533
+Te tocan las ocho preguntas de la lección.
+Hasta el próximo rastro.
