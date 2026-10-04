@@ -1367,7 +1367,8 @@ ordena contra la cronología del registro ni choca con ella; lo posterior debe r
 > graba sola: la primera de la tanda 3 aún no tiene ficha. La versión vigente de escenas y guion será
 > `video/logs-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/logs-halden/out/script-notes.md`.
 >
-> **Guion tras las revisiones (2026-10-04)**: 590 palabras, estimado 4:33 (~4:10 grabado). La tabla de escenas de abajo
+> **Guion congelado el 2026-10-04** con el visto bueno de Lidia (y el capítulo II rebautizado «La URL y el atasco»,
+> porque la voz ya no habla de tubería). **Tras las revisiones**: 590 palabras, estimado 4:33 (~4:10 grabado). La tabla de escenas de abajo
 > es la ficha original; lo que cambió al escribirlo, en `video/logs-halden/out/script-notes.md` (§ Revisiones):
 > la MFA como «algo que solo tienes tú», la guardia sin parar el ataque, la nota «sal de la sala y sube cuatro plantas»
 > (no «armario»), «codificada» en vez de «en clave», «account lockout» con la puerta del quinto fallo y no con el 0, y
@@ -1417,7 +1418,7 @@ ordena contra la cronología del registro ni choca con ella; lo posterior debe r
 | 2 | Directory traversal: secuencias `../` (o su versión codificada, `%2e%2e%2f`) en un parámetro de ruta para salir de la carpeta permitida. El código y los bytes de la respuesta dicen si se lo llevó. No es inyección (no hay comillas ni `OR 1=1`). Defensa: resolver la ruta completa (canonicalizar) y comprobar que sigue dentro de la carpeta; nunca filtrar solo el texto | La ventanilla de un archivo. El empleado saca documentos de un solo armario, y la nota del pedido dice «sal del armario, sube cuatro plantas y tráeme la lista de usuarios de la portería». La versión codificada es la misma nota escrita en clave | «Directory traversal: canonicalizar y confinar la ruta» |
 | 3 | DDoS reflejado y amplificado (DNS amplification): respuestas DNS grandes que llegan de cientos de servidores legítimos a preguntas que tu servidor nunca hizo. Reflected, porque alguien preguntó con tu dirección falsificada; amplified, porque la pregunta es pequeña y la respuesta enorme. Las dos etiquetas valen a la vez. No es DNS poisoning, que te cambia a dónde vas. Se para antes de tu enlace (filtrado en el proveedor, servicio anti-DDoS) y en origen, cerrando los resolvers abiertos | Pedidos a domicilio que nadie hizo: alguien llama a cientos de restaurantes, pide el menú más grande y da tu dirección. Llamada corta, pedido enorme, y el que llamó nunca aparece en tu puerta. La calle se atasca antes de tu portal | «Respuestas DNS que nunca pediste: reflected y amplified» |
 
-**Escenas:** seis, en tres capítulos (Una llave, muchas puertas · La URL y la tubería · Para el examen).
+**Escenas:** seis, en tres capítulos (Una llave, muchas puertas · La URL y la tubería, rebautizado «La URL y el atasco» al congelar · Para el examen).
 
 | Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
 |---|---|---|---|---|
