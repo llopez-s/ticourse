@@ -102,8 +102,12 @@ export function youtubeDescription({ timeline, track, notice }) {
   ].join('\n');
 }
 
-function main() {
-  parseArgs({ options: { video: { type: 'string' } } });
+/**
+ * Everything YouTube gets for the current --video: title, description, tags and the files to upload. Throws with
+ * the list of problems (estimate-mode timeline, title too long, missing poster or captions…). youtube.md and
+ * youtube-upload.mjs both use it, so what is uploaded is what youtube.md shows.
+ */
+export function buildYoutubeMeta() {
   const errors = [];
   if (profileFor(MANIFEST.profile).host !== 'youtube') errors.push(`profile "${MANIFEST.profile}" is not a YouTube profile (principal-yt / capsula-yt)`);
   const timeline = parseJsonText(readFileSync(PATHS.timeline, 'utf8'), PATHS.timeline);
@@ -123,6 +127,13 @@ function main() {
 
   const notice = trackNotice(MANIFEST.track, MANIFEST.profile);
   const description = youtubeDescription({ timeline, track: MANIFEST.track, notice });
+  return { slug: MANIFEST.slug, track: MANIFEST.track, title, description, tags, files: { video: PATHS.video, captions, poster: PATHS.poster } };
+}
+
+function main() {
+  parseArgs({ options: { video: { type: 'string' } } });
+  const { title, description, tags, files } = buildYoutubeMeta();
+  const captions = files.captions;
   const out = path.join(PATHS.outDir, 'youtube.md');
   writeFileAtomic(
     out,

@@ -142,7 +142,7 @@ ausente, arriba, porque `analyzeNarration` no lee `video.json`.
 
 `narration.json` → `"adversaryVoice": { "voice": "sapi/Microsoft Pablo", "rate": 0, "fx": "machine" }`
 (opcional; único proveedor por ahora: `sapi/<nombre de voz de Windows>`, `rate` entero de −10 a 10,
-`fx` solo `"machine"`). Sin ella los mensajes siguen mudos. Tenerla sin ningún segmento con `intercept` es un
+`fx` `"machine"` —el de siempre— o `"telefono"`). Sin ella los mensajes siguen mudos. Tenerla sin ningún segmento con `intercept` es un
 aviso, no un error.
 
 **Requiere PowerShell 7 (`pwsh`).** `tts-adversary.mjs` sintetiza a través de `pwsh` cuando está disponible:
@@ -156,7 +156,11 @@ esté.
 sintetiza `intercept.text` con `System.Speech.Synthesis.SpeechSynthesizer` a un WAV; `scripts/adversary_fx.py`
 (venv de Chatterbox: librosa, scipy) aplica el preset `machine` (−4 semitonos, modulación en anillo
 `0,6 + 0,4·sen(2π·48·t)`, paso banda Butterworth de orden 4 entre 120 y 5000 Hz, misma duración, pico
-−1 dBFS); `runFfmpeg` lo iguala a la sonoridad de la narración (medida sobre los clips de `public/voice/`) y
+−1 dBFS) o el preset `telefono`, una llamada de banda estrecha: sin cambio de tono ni modulación en anillo,
+una saturación suave (`tanh`), un siseo de línea casi inaudible (−50 dB, con semilla fija) y un paso banda
+Butterworth de orden 6 sin desfase entre 300 y 3400 Hz, también con la misma duración y pico −1 dBFS. Lo
+añadimos para RED MARROW (V10, sp2m7), que usa la misma voz Laura que PAPER CRANE: con `machine` habrían
+sonado igual. `runFfmpeg` lo iguala a la sonoridad de la narración (medida sobre los clips de `public/voice/`) y
 lo codifica igual (24 kHz mono, MP3 CBR 96 kbps) en `public/voice/<segmento>-intercept.mp3`, junto a
 `tts/<segmento>-intercept.json` (`key` = sha256 de voz + velocidad + preset + texto; el registro también
 guarda `targetLufs`, la sonoridad de la narración a la que se niveló el clip). Un clip en caché se regenera si
@@ -630,6 +634,46 @@ Notas:
 - `build-timeline.mjs` admite `--storyboard --narration --lexicon --tts-dir --voice-dir --out
   --transcript` para pruebas y `--check` para validar sin escribir.
 
+## Subida a YouTube por la API
+
+`scripts/youtube-upload.mjs` sube un vídeo `-yt` ya renderizado al canal **Alertópolis** con la YouTube Data API v3:
+el MP4 (subida reanudable, a trozos de 8 MB), el póster como miniatura, los subtítulos en español y la lista de su
+pista («CompTIA Security+ SY0-701 en español» o «GIAC GCTI en español»). Título, descripción y etiquetas son los de
+`out/youtube.md`: los dos salen de `buildYoutubeMeta()` (`youtube-meta.mjs`). Sube en **privado** salvo que
+`--privacy` diga otra cosa.
+
+**Puesta en marcha (una vez, la hace Lidia):**
+
+1. En Google Cloud, un proyecto con la **YouTube Data API v3** activada y un cliente OAuth de tipo **«App de
+   escritorio»**. Con la pantalla de consentimiento en modo prueba (su cuenta como usuaria de prueba), Google hace
+   caducar el refresh token a los 7 días y hay que repetir `--auth`; pasándola a producción sin verificar, el token
+   dura, a cambio del aviso «Google no ha verificado esta aplicación» al autorizar.
+2. El JSON del cliente se guarda como `video/engine/youtube/client_secret.json` (la carpeta está en `.gitignore`).
+3. `node video/engine/scripts/youtube-upload.mjs --auth`: abre la página de consentimiento (la dirección también sale
+   en la consola), Lidia entra con su cuenta y **elige el canal Alertópolis**; el script guarda el refresh token en
+   `video/engine/youtube/token.json` solo si el canal es el bueno (`UCe0XBMwoI3bI61K8qolacJA`).
+
+**Por vídeo:**
+
+```bash
+node video/engine/scripts/youtube-upload.mjs --video <slug> --dry-run    # lo que enviaría, sin red
+node video/engine/scripts/youtube-upload.mjs --video <slug>              # privado
+node video/engine/scripts/youtube-upload.mjs --video <slug> --privacy unlisted
+```
+
+- Antes de subir nada comprueba que la cuenta es la de Alertópolis (el 2026-09-30, V4 acabó primero en el canal
+  personal).
+- Cada paso hecho se apunta en `video/<slug>/out/youtube-upload.json` (id del vídeo, miniatura, subtítulos, lista).
+  Si algo falla, relanzarlo termina lo que falta y **nunca sube el vídeo dos veces**.
+- Un corte de red o un 5xx a mitad de la subida espera y pregunta a YouTube por dónde iba; un 4xx (cuota, permisos)
+  se para y lo dice.
+- **Proyectos sin auditar:** según la referencia de `videos.insert`, lo que sube un proyecto creado después del
+  28-7-2020 y no auditado queda **restringido a privado** hasta que YouTube audita el proyecto (formulario «YouTube API
+  Services – Audit and Quota Extension Form»). Mientras tanto, la subida a mano sigue valiendo.
+- En un git worktree, las credenciales de la copia principal: `export YOUTUBE_CREDENTIALS_DIR=".../TICourse/video/engine/youtube"`.
+- Cuota: `videos.insert` cuenta en su propio cubo de subidas; `thumbnails.set` cuesta unas 50 unidades; las demás
+  llamadas, pocas.
+
 ## Qué se genera y dónde
 
 | Archivo | Qué es | ¿En git? |
@@ -645,6 +689,8 @@ Notas:
 | `public/videos/<output>-transcript.txt` | transcripción por escenas | sí |
 | `public/videos/<output>-captions.vtt` | subtítulos WebVTT del reproductor (una entrada por página de subtítulo quemada en el vídeo) | sí |
 | `video/<slug>/out/youtube.md` | título, descripción, etiquetas y archivos a subir (`youtube-meta.mjs`, solo perfiles `-yt`) | no |
+| `video/<slug>/out/youtube-upload.json` | lo que ya hizo `youtube-upload.mjs` (id del vídeo, miniatura, subtítulos, lista) | no |
+| `video/engine/youtube/client_secret.json`, `token.json` | cliente OAuth y refresh token de la subida por la API | no |
 | `out/draft.mp4`, `out/qa/<escena>/`, `out/tts-input.json` | borradores y fotogramas de revisión | no |
 | `.audition/<voz>.mp3`, `.audition/audition.txt` | audición de voces | no |
 
@@ -656,7 +702,10 @@ tarjeta de examen y pausa) e `index.json` con el mapa archivo → fotograma → 
 `scripts/test_*.py` (unittest, sin dependencias: `python -m unittest discover -s video/engine/scripts -p "test_*.py"`)
 cubre la normalización y la puntuación de guion del worker de Chatterbox, cómo `recording_asr.py` aplana las
 palabras de Whisper, `test_sfx_generate.py` (la biblioteca de sonidos: duraciones, pico y reproducibilidad de
-la semilla) y `test_adversary_fx.py` (el preset `machine`: conserva la duración y deja el pico en −1 dBFS).
+la semilla) y `test_adversary_fx.py` (los presets: `machine` conserva la duración y deja el pico en −1 dBFS; `telefono`,
+además, no satura, es reproducible, corta a 30 dB o más lo que cae fuera de 300–3400 Hz y deja muchísima
+menos energía por encima de 3,5 kHz que `machine`). Las de `adversary_fx` sí necesitan librosa y scipy (el venv de
+Chatterbox); sin ellas se saltan.
 
 `scripts/lib/*.test.mjs` (node:test, sin dependencias): marcas y léxico, alineación con límites de palabra
 que faltan o sobran (incluidos límites reales grabados de edge-tts en `fixtures/edge-boundaries.json`),
