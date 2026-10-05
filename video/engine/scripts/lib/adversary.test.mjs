@@ -9,6 +9,7 @@ test('adversaryVoiceErrors: a SAPI voice, a rate from -10 to 10 and a known pres
   assert.deepEqual(adversaryVoiceErrors(cfg), []);
   assert.deepEqual(adversaryVoiceErrors({ voice: 'sapi/Microsoft Pablo' }), []);
   assert.deepEqual(adversaryVoiceErrors({ voice: 'sapi/Microsoft Laura', fx: 'telefono' }), []);
+  assert.deepEqual(adversaryVoiceErrors({ voice: 'sapi/Microsoft Helena', fx: 'cifrado' }), []);
   assert.equal(adversaryVoiceErrors({ voice: 'Microsoft Pablo' }).length, 1);
   assert.equal(adversaryVoiceErrors({ ...cfg, rate: 11 }).length, 1);
   assert.equal(adversaryVoiceErrors({ ...cfg, rate: 1.5 }).length, 1);

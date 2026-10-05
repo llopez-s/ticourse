@@ -142,7 +142,7 @@ ausente, arriba, porque `analyzeNarration` no lee `video.json`.
 
 `narration.json` → `"adversaryVoice": { "voice": "sapi/Microsoft Pablo", "rate": 0, "fx": "machine" }`
 (opcional; único proveedor por ahora: `sapi/<nombre de voz de Windows>`, `rate` entero de −10 a 10,
-`fx` `"machine"` —el de siempre— o `"telefono"`). Sin ella los mensajes siguen mudos. Tenerla sin ningún segmento con `intercept` es un
+`fx` `"machine"` —el de siempre—, `"telefono"` o `"cifrado"`). Sin ella los mensajes siguen mudos. Tenerla sin ningún segmento con `intercept` es un
 aviso, no un error.
 
 **Requiere PowerShell 7 (`pwsh`).** `tts-adversary.mjs` sintetiza a través de `pwsh` cuando está disponible:
@@ -160,7 +160,11 @@ sintetiza `intercept.text` con `System.Speech.Synthesis.SpeechSynthesizer` a un 
 una saturación suave (`tanh`), un siseo de línea casi inaudible (−50 dB, con semilla fija) y un paso banda
 Butterworth de orden 6 sin desfase entre 300 y 3400 Hz, también con la misma duración y pico −1 dBFS. Lo
 añadimos para RED MARROW (V10, sp2m7), que usa la misma voz Laura que PAPER CRANE: con `machine` habrían
-sonado igual. `runFfmpeg` lo iguala a la sonoridad de la narración (medida sobre los clips de `public/voice/`) y
+sonado igual. Y el preset `cifrado`, una transmisión digital pobre y seca, sin cambio de tono, sin anillo, sin
+banda de teléfono y sin sala: cada muestra se retiene hasta unos 11 kHz sin filtrar antes (el aliasing da el brillo
+metálico), se cuantiza a 6 bits (el crujido) y una puerta de ruido (RMS de 20 ms, −36 dB bajo el momento más fuerte,
+bordes de 3 ms) deja en silencio digital las colas entre palabras; misma duración y pico −1 dBFS. Es la voz de NULL
+CIPHER (V11, sp1m6), con Helena. `runFfmpeg` lo iguala a la sonoridad de la narración (medida sobre los clips de `public/voice/`) y
 lo codifica igual (24 kHz mono, MP3 CBR 96 kbps) en `public/voice/<segmento>-intercept.mp3`, junto a
 `tts/<segmento>-intercept.json` (`key` = sha256 de voz + velocidad + preset + texto; el registro también
 guarda `targetLufs`, la sonoridad de la narración a la que se niveló el clip). Un clip en caché se regenera si
@@ -704,7 +708,9 @@ cubre la normalización y la puntuación de guion del worker de Chatterbox, cóm
 palabras de Whisper, `test_sfx_generate.py` (la biblioteca de sonidos: duraciones, pico y reproducibilidad de
 la semilla) y `test_adversary_fx.py` (los presets: `machine` conserva la duración y deja el pico en −1 dBFS; `telefono`,
 además, no satura, es reproducible, corta a 30 dB o más lo que cae fuera de 300–3400 Hz y deja muchísima
-menos energía por encima de 3,5 kHz que `machine`). Las de `adversary_fx` sí necesitan librosa y scipy (el venv de
+menos energía por encima de 3,5 kHz que `machine`; `cifrado` no satura, es reproducible, deja como mucho 65 niveles
+distintos, repite cada muestra por parejas a 22 050 Hz, deja en cero el siseo entre dos palabras y conserva los agudos
+que `telefono` corta). Las de `adversary_fx` sí necesitan librosa y scipy (el venv de
 Chatterbox); sin ellas se saltan.
 
 `scripts/lib/*.test.mjs` (node:test, sin dependencias): marcas y léxico, alineación con límites de palabra
