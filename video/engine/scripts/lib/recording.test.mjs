@@ -424,6 +424,9 @@ test('asrClips: a long pause inside the recording and a long tail are skipped to
   assert.deepEqual(asrClips([{ startMs: 0, endMs: 9000 }, { startMs: 60000, endMs: 72000 }], 120000), [{ startMs: 8000, endMs: 120000 }]);
   // ffmpeg's duration is rounded to 10 ms: a silence that ends 5 ms before it still ends the file
   assert.deepEqual(asrClips([{ startMs: 100000, endMs: 109995 }], 110000), [{ startMs: 0, endMs: 101000 }]);
+  // a click in the first few ms does not make the leading silence a pause, nor give Whisper a window of nothing
+  assert.deepEqual(asrClips([{ startMs: 50, endMs: 28497 }], 345165), [{ startMs: 27000, endMs: 346000 }]);
+  assert.deepEqual(asrClips([{ startMs: 50, endMs: 9000 }], 60000), [{ startMs: 8000, endMs: 60000 }]);
   // a recording that is all silence has nothing to transcribe: heard whole, Whisper finds nothing
   assert.equal(asrClips([{ startMs: 0, endMs: 60000 }], 60000), null);
 });

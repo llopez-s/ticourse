@@ -589,7 +589,9 @@ export function asrCacheValid(cached, { sha256, model, clips = null }) {
 export const LONG_EDGE_SILENCE_MS = 8000;
 export const LONG_PAUSE_MS = 15000;
 const ASR_MARGIN_MS = 1000; // air Whisper still hears on each side of a skipped silence
-const EDGE_TOLERANCE_MS = 100; // ffmpeg prints the duration rounded to 10 ms; a silence this close to it ends the file
+// A silence this close to an edge is at that edge: ffmpeg prints the duration rounded to 10 ms, and a click in the
+// first few ms of a recording makes its leading silence start just after 0.
+const EDGE_TOLERANCE_MS = 100;
 
 /** ms from the "Duration: HH:MM:SS.cc" line ffmpeg prints for its input, or null. */
 export function parseDuration(stderr) {
@@ -604,13 +606,14 @@ export function parseDuration(stderr) {
  * @returns {{startMs: number, endMs: number}[] | null} null when there is no such silence: the whole file, as before
  */
 export function asrClips(silences, totalMs) {
-  const atEdge = (s) => s.startMs <= 0 || s.endMs >= totalMs - EDGE_TOLERANCE_MS;
+  const atStart = (s) => s.startMs <= EDGE_TOLERANCE_MS;
+  const atEdge = (s) => atStart(s) || s.endMs >= totalMs - EDGE_TOLERANCE_MS;
   const long = silences.filter((s) => s.endMs - s.startMs >= (atEdge(s) ? LONG_EDGE_SILENCE_MS : LONG_PAUSE_MS));
   if (!long.length) return null;
   const clips = [];
   let from = 0;
   for (const s of long) {
-    if (s.startMs > from) clips.push({ startMs: from, endMs: Math.ceil((s.startMs + ASR_MARGIN_MS) / 1000) * 1000 });
+    if (!atStart(s) && s.startMs > from) clips.push({ startMs: from, endMs: Math.ceil((s.startMs + ASR_MARGIN_MS) / 1000) * 1000 });
     if (s.endMs >= totalMs - EDGE_TOLERANCE_MS) return clips.length ? clips : null;
     from = Math.max(0, Math.floor((s.endMs - ASR_MARGIN_MS) / 1000) * 1000);
   }
