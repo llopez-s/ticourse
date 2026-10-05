@@ -2,9 +2,9 @@ import unittest
 
 try:
     import numpy as np
-    from adversary_fx import PRESETS, machine, telefono
+    from adversary_fx import PRESETS, cifrado, machine, telefono
 except ImportError:
-    machine = telefono = None
+    machine = telefono = cifrado = None
 
 
 @unittest.skipIf(machine is None, "needs librosa/scipy (video/engine/.venv-chatterbox)")
@@ -67,6 +67,58 @@ class TelefonoPresetTest(unittest.TestCase):
         y = 0.3 * np.random.default_rng(3).standard_normal(sr)
         self.assertLess(_share_above(telefono(y, sr), sr, 3500), 0.02)
         self.assertGreater(_share_above(machine(y, sr), sr, 3500), 5 * _share_above(telefono(y, sr), sr, 3500))
+
+
+@unittest.skipIf(cifrado is None, "needs librosa/scipy (video/engine/.venv-chatterbox)")
+class CifradoPresetTest(unittest.TestCase):
+    def test_is_a_registered_preset(self):
+        self.assertIs(PRESETS["cifrado"], cifrado)
+
+    def test_keeps_the_length_and_peaks_at_minus_1_dbfs(self):
+        sr = 22050
+        t = np.arange(sr) / sr
+        y = 0.3 * np.sin(2 * np.pi * 220 * t)
+        out = cifrado(y, sr)
+        self.assertEqual(len(out), len(y))
+        self.assertAlmostEqual(float(np.max(np.abs(out))), 10 ** (-1 / 20), places=6)
+
+    def test_a_loud_input_never_clips(self):
+        sr = 24000
+        y = np.clip(3 * np.random.default_rng(4).standard_normal(sr), -1, 1)
+        self.assertLessEqual(float(np.max(np.abs(cifrado(y, sr)))), 10 ** (-1 / 20) + 1e-9)
+
+    def test_quantises_to_about_6_bits(self):
+        sr = 22050
+        t = np.arange(sr) / sr
+        out = cifrado(0.5 * np.sin(2 * np.pi * 220 * t), sr)
+        self.assertLessEqual(len(np.unique(np.round(out, 9))), 2**6 + 1)
+
+    def test_holds_each_sample_down_to_about_11_khz_without_filtering_first(self):
+        sr = 22050
+        t = np.arange(sr) / sr
+        out = cifrado(0.5 * np.sin(2 * np.pi * 220 * t), sr)
+        pairs = out[: len(out) // 2 * 2].reshape(-1, 2)
+        self.assertGreater(float(np.mean(pairs[:, 0] == pairs[:, 1])), 0.99)
+
+    def test_the_gate_silences_the_gaps_between_words(self):
+        sr = 22050
+        t = np.arange(sr) / sr
+        word = 0.5 * np.sin(2 * np.pi * 300 * t[: sr // 4])
+        gap = 0.0005 * np.random.default_rng(5).standard_normal(sr // 2)
+        out = cifrado(np.concatenate([word, gap, word]), sr)
+        middle = out[sr // 4 + sr // 10 : sr // 4 + sr // 2 - sr // 10]
+        self.assertTrue(np.all(middle == 0.0), "the hiss between the words is gated to digital silence")
+        self.assertFalse(np.all(telefono(np.concatenate([word, gap, word]), sr)[sr // 4 + sr // 10 : sr // 2] == 0.0))
+
+    def test_is_deterministic(self):
+        sr = 22050
+        y = 0.3 * np.random.default_rng(6).standard_normal(sr)
+        self.assertTrue(np.array_equal(cifrado(y, sr), cifrado(y, sr)))
+
+    def test_keeps_the_highs_a_phone_band_would_cut(self):
+        sr = 22050
+        y = 0.3 * np.random.default_rng(7).standard_normal(sr)
+        self.assertGreater(_share_above(cifrado(y, sr), sr, 3500), 5 * _share_above(telefono(y, sr), sr, 3500))
 
 
 if __name__ == "__main__":

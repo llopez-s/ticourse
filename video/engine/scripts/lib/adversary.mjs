@@ -2,7 +2,7 @@
 // effect preset, one clip per intercepted message (tts-adversary.mjs writes them). Pure helpers.
 import { createHash } from 'node:crypto';
 
-export const ADVERSARY_FX = Object.freeze(['machine', 'telefono']);
+export const ADVERSARY_FX = Object.freeze(['machine', 'telefono', 'cifrado']);
 export const SAPI_VOICE = /^sapi\/[A-Za-z][A-Za-z0-9 ]*$/;
 const isObj = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 
