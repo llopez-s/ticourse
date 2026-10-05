@@ -8,6 +8,7 @@ const cfg = { voice: 'sapi/Microsoft Pablo', rate: 0, fx: 'machine' };
 test('adversaryVoiceErrors: a SAPI voice, a rate from -10 to 10 and a known preset', () => {
   assert.deepEqual(adversaryVoiceErrors(cfg), []);
   assert.deepEqual(adversaryVoiceErrors({ voice: 'sapi/Microsoft Pablo' }), []);
+  assert.deepEqual(adversaryVoiceErrors({ voice: 'sapi/Microsoft Laura', fx: 'telefono' }), []);
   assert.equal(adversaryVoiceErrors({ voice: 'Microsoft Pablo' }).length, 1);
   assert.equal(adversaryVoiceErrors({ ...cfg, rate: 11 }).length, 1);
   assert.equal(adversaryVoiceErrors({ ...cfg, rate: 1.5 }).length, 1);
@@ -20,7 +21,7 @@ test('adversaryConfig fills the defaults; the key changes with voice, rate, pres
   const k = adversaryKey(cfg, 'Hola.');
   assert.match(k, /^[0-9a-f]{64}$/);
   assert.equal(adversaryKey(cfg, 'Hola.'), k);
-  for (const other of [adversaryKey({ ...cfg, rate: 1 }, 'Hola.'), adversaryKey(cfg, 'Hola!'), adversaryKey({ ...cfg, voice: 'sapi/Microsoft Helena' }, 'Hola.')]) {
+  for (const other of [adversaryKey({ ...cfg, rate: 1 }, 'Hola.'), adversaryKey(cfg, 'Hola!'), adversaryKey({ ...cfg, voice: 'sapi/Microsoft Helena' }, 'Hola.'), adversaryKey({ ...cfg, fx: 'telefono' }, 'Hola.')]) {
     assert.notEqual(other, k);
   }
   assert.equal(adversaryClipId('s03-04'), 's03-04-intercept');

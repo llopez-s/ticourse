@@ -1,0 +1,20 @@
+Ataques en los logs: spraying, traversal y amplificación DNS
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA
+
+[00:00] I · Una llave, muchas puertas — Tres rastros de una noche
+Esta mañana, tu cola de alertas trae tres rastros de anoche. Cada ataque deja una forma distinta en su registro. Hoy aprendes a verla, a ponerle nombre y a decidir qué hacer. Son una llave en muchas puertas, una URL llena de puntos y barras y un chorro de respuestas que nadie pidió.
+
+[00:24] I · Una llave, muchas puertas — Una llave en todas las puertas
+Empieza por la llave, el registro de inicios de sesión. El usuario cambia en cada línea, pero el origen, no. Y va sin prisa, un intento cada cuarenta segundos. Ciento ochenta cuentas, un intento en cada una, y el bloqueo de cuenta ni se entera. Piensa en un bloque de pisos. Si pruebas un manojo de llaves en una puerta, al quinto fallo se bloquea, el account lockout. Aquí, una llave corriente prueba cada puerta una vez. Muchas contraseñas contra una cuenta es la fuerza bruta. Pocas contraseñas contra muchas cuentas es el password spraying. Así que no cuentes fallos, mira la forma.
+
+[01:09] I · Una llave, muchas puertas — Una puerta se abrió
+Pero una puerta se abrió. Una cuenta acierta y sale enseguida, sin entrar en ninguna aplicación. [Mensaje interceptado · RED MARROW] «Halden2026! Cumple todas tus normas. Así que es segura. Confía en mí.» Es RED MARROW, que vive de engañar. Y sí, cumple las normas. Justo por eso es de las primeras que se prueban, y no es culpa de nadie. Esa cuenta estrena contraseña y cierra sus sesiones. Y se bloquea el origen, no las cuentas. Lo que de verdad lo frena es pedir, además de la contraseña, algo que solo tienes tú. Es la MFA. Es un segundo cerrojo. O sea, que una llave corriente ya no abre.
+
+[01:54] II · La URL y el atasco — Una nota con indicaciones
+Ahora, la URL. A las cuatro y veintiséis, alguien pide un documento al portal. Mira qué archivo pide. Cada punto, punto, barra sube una carpeta, hasta salir de la del portal. Y el servidor se lo da. Se lleva la lista de usuarios. Es como dejar en una ventanilla la nota «sal de la sala y sube cuatro plantas». Se llama directory traversal. No cuela código, solo cambia la ruta. No es una inyección. [Mensaje interceptado · RED MARROW] «Borra los puntos y las barras de la URL y listo. Confía en mí.» Mal consejo, porque la segunda petición viene codificada. Es la misma nota, y ese filtro no la vería. A esa la frenó el sistema, porque pedía otro archivo, que solo lee el administrador. Filtro, ninguno. La defensa es calcular la ruta entera antes de moverse. Eso es canonicalizarla. Y si acaba fuera de la sala, se rechaza.
+
+[02:54] II · La URL y el atasco — Pedidos que nadie hizo
+Último rastro, a las seis menos veinte, en el tráfico que entra al portal. Todo viene del puerto del DNS, desde trescientos cuarenta servidores, y la conexión se satura. Pero el portal no les ha preguntado nada. Es como si alguien pidiera el menú más grande a cientos de restaurantes, con tu dirección. Usan tu dirección, y las respuestas te llegan a ti. Eso es reflected. La pregunta es pequeña y la respuesta, enorme. Eso es amplified. Juntas forman la amplificación DNS. No te desvía como un envenenamiento, te atasca la calle. ¿Bloqueas esas direcciones, o llamas a tu proveedor de Internet? Al proveedor. Esos servidores son de terceros y mañana serán otros. Y la calle se atasca antes de tu portal. Quien estaba de guardia llamó al proveedor a los cuatro minutos. O sea, que lo que no pediste no se para en tu portal.
+
+[04:02] III · Para el examen — Tres reglas
+Tres rastros, tres reglas. Una llave en muchas puertas, sin ningún bloqueo, es spraying. Contra eso, MFA. Puntos y barras en una ruta, aunque vengan codificados, es traversal. Resuelve la ruta y mira dónde acaba, no filtres el texto. Y respuestas que nunca pediste, reflejadas y amplificadas, se paran en el proveedor. Te tocan las ocho preguntas de la lección. Hasta el próximo rastro.

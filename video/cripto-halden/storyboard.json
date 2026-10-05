@@ -1,0 +1,214 @@
+{
+  "title": "Criptografía: quién usa qué clave y por qué TLS es híbrido",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 480,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Dos maneras de cifrar"
+    },
+    {
+      "n": 2,
+      "title": "Solo para sus ojos"
+    },
+    {
+      "n": 3,
+      "title": "La huella"
+    },
+    {
+      "n": 4,
+      "title": "El sello"
+    },
+    {
+      "n": 5,
+      "title": "El saludo"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una línea, cuatro piezas",
+      "goal": "Sello «martes 3-11 · Autoridad Portuaria de Halden» y una tira «portal de reservas de atraque» (sin nombre de equipo). Una terminal rotulada «prueba de conexión · desde fuera, como una naviera» ejecuta `curl -v https://reservas.haldenport.example/`; pasan en gris las líneas del saludo (`Client hello`, `Server hello`, `Certificate`, `CERT verify`, `Finished`) y se queda una, ampliada a 48–60 px: `SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519 / id-ecPublicKey`. Debajo, a media luz y sin leerlas: `issuer: CN=Confianza Global TLS Issuing CA 3`, `expire date: Nov 11 23:59:59 2026 GMT`, `SSL certificate verify ok`. La línea se parte en cuatro fichas, cada una con una interrogación. La primera frase habla de la línea entera («cuatro piezas»); al acabarla, título «Criptografía: quién usa qué clave» (hacia los 7 s, siempre antes de los 12) y la promesa en tres chips: «quién usa qué clave · hash y firma · por qué TLS es híbrido». La línea se encoge a una esquina con la nota «al final, la lees entera»",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "terminal",
+        "line",
+        "title",
+        "promise",
+        "pieces",
+        "later"
+      ]
+    },
+    {
+      "id": "s02-familias",
+      "chapter": 1,
+      "title": "Una llave para dos, o un buzón",
+      "goal": "A la izquierda, una cerradura y una llave con dos copias, una en el puerto y otra en la naviera: «la misma clave cierra y abre» · «rápida: discos, bases de datos, tráfico». Nombre SYMMETRIC · AES. La copia viaja por una carretera con una sombra al lado: «¿cómo le llega la copia sin que nadie la vea?». A la derecha, el buzón de la naviera: por la ranura echan cartas manos distintas («clave pública · la tiene cualquiera») y solo la dueña lo abre con su llave («clave privada · no sale de casa»). Rótulo «lo que cierra una, solo lo abre la otra». Nombre ASYMMETRIC · RSA, ECC. Barra de velocidad: AES «muy rápida» frente a RSA «muchísimo más lenta». Mensaje interceptado, con el rótulo de presentación «NULL CIPHER · célula de acceso inicial» (38); la voz: «Es NULL CIPHER, una célula de acceso inicial. Busca el primer hueco que no cierre». Respuesta: con la pública, es verdad, no hay secreto que repartir; pero la barra de RSA se queda corta ante unos gigas. Dos chips para cerrar: «simétrica: el volumen» · «asimétrica: acordar claves y firmar»",
+      "targetSec": 56,
+      "wordBudget": 151,
+      "requiredCues": [
+        "one-key",
+        "copies",
+        "fast",
+        "road",
+        "mailbox",
+        "slot",
+        "owner",
+        "pair",
+        "slow",
+        "families",
+        "roles"
+      ]
+    },
+    {
+      "id": "s03-naviera",
+      "chapter": 2,
+      "title": "Solo para la naviera",
+      "goal": "«Oferta comercial 2027 · para una naviera · confidencial»: precios y bonificaciones que la competencia no debe ver. La pregunta: ¿con qué clave la cierras? Dos claves a la vista, rotuladas «pública de la naviera» y «privada del puerto». Mensaje interceptado. La respuesta por pasos: la oferta cerrada con la privada del puerto se abre con «la pública del puerto», que tiene una multitud de iconos: «la abre cualquiera» (`anyone`). Se rehace: la oferta cae por la ranura del buzón de la naviera («su pública», `drop`) y solo su llave la abre («su privada»). Regla grande: «cifras con SU pública». Nombre CONFIDENTIALITY. Nota pequeña, solo en pantalla: «TLS protege el camino · esto protege el documento, esté donde esté». Al pie, un aviso que vuelve en s07: «tu privada sirve para otra cosa · capítulo IV»",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "requiredCues": [
+        "offer",
+        "two-keys",
+        "wrong",
+        "anyone",
+        "drop",
+        "only-her",
+        "rule",
+        "confidential",
+        "later"
+      ]
+    },
+    {
+      "id": "s04-huella",
+      "chapter": 3,
+      "title": "Una huella no se descifra",
+      "goal": "La oferta entra en una máquina rotulada SHA-256 y sale una ristra corta, siempre igual de larga, `e3a1…9c07` (inventada, abreviada de 64 caracteres; no coincide con ningún hash del registro). La imagen: la huella de la oferta, pegada al documento (en la voz, siempre «la huella de la oferta», nunca la de quien la escribió). Se cambia un precio («12,40» pasa a «12,41») y la huella cambia entera. Un camino de vuelta, tachado: «una sola dirección · sin clave · no se descifra». Nombre HASH, con «no es cifrado» debajo y «integridad: ¿ha cambiado?». Después, dos documentos distintos con la misma huella, rotulados «colisión»: MD5 y SHA-1 con un sello «retirados»; SHA-256 y SHA-3, «hoy» (en la voz, media frase; el resto, en pantalla)",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "requiredCues": [
+        "machine",
+        "print",
+        "change",
+        "one-way",
+        "hash",
+        "collision",
+        "retired"
+      ]
+    },
+    {
+      "id": "s05-contrasenas",
+      "chapter": 3,
+      "title": "Cómo se guarda una contraseña",
+      "goal": "La pantalla de acceso a la zona de la naviera en el portal. Rótulo: «el portal no necesita leer tu contraseña: solo comprobarla», así que guarda su huella, no la contraseña cifrada. Antes de la tabla, dos trucos contados en llano y sin nombre, cada uno con su icono: «a cada contraseña, un dato al azar antes de sacar la huella» y «sacar la huella miles de veces seguidas, para que cada intento cueste». Una tabla rotulada «ejemplo · así no»: dos cuentas distintas con la misma contraseña y la misma huella (`7c1d…a4b0` dos veces, `twins`). Pregunta para pensar, con dos botones: «un dato al azar» y «miles de veces». La respuesta: el dato al azar, distinto en cada cuenta y guardado junto a su huella; la misma contraseña da huellas distintas (`2f9e…11c3`, `b80a…6d57`). Un catálogo de «huellas ya calculadas» (rainbow table) se tacha. Nombre SALT. Después, el otro truco, que no arregla las huellas iguales pero encarece cada intento: dos relojes con las palabras de la lección (`:121`): «quien entra: milisegundos, ni lo nota» frente a «quien prueba mil millones: una muralla». Nombre KEY STRETCHING · bcrypt · PBKDF2 · Argon2. Tachado pequeño, solo en pantalla: «SHA-512 a secas: más larga, casi igual de rápida»",
+      "targetSec": 58,
+      "wordBudget": 157,
+      "requiredCues": [
+        "login",
+        "compare",
+        "tricks",
+        "twins",
+        "choice",
+        "salt",
+        "catalog",
+        "clocks",
+        "stretch",
+        "not-longer",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s06-solo-huella",
+      "chapter": 4,
+      "title": "La huella sola no basta",
+      "goal": "La naviera ya ha abierto la oferta con su llave y se pregunta dos cosas: «¿es del puerto?» y «¿la ha tocado alguien?». Mensaje interceptado. Después, el ejemplo, rotulado «ejemplo · así no · lo que propone NULL CIPHER» (45) y contado como hipótesis («imagínate que…»), sin el portal de fondo: por la ranura del buzón de la naviera echa cartas cualquiera; alguien escribe una oferta falsa, le adjunta su huella bien calculada y la echa por la ranura; la naviera comprueba la huella y encaja: «encaja, y es falsa» (`both-match`). Cerrar para la naviera tampoco dice quién escribió. Regla: «la huella dice que no cambió · no dice quién la hizo»",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "doubts",
+        "slot-again",
+        "fake",
+        "both-match",
+        "who"
+      ]
+    },
+    {
+      "id": "s07-sello",
+      "chapter": 4,
+      "title": "El sello del puerto",
+      "goal": "La imagen: el sello de lacre del puerto. El anillo solo lo tiene el puerto («clave privada»); el dibujo del sello lo conoce todo el mundo («clave pública»). El puerto saca la huella de la oferta y la sella con su anillo. En la naviera, por pasos: vuelve a sacar la huella de lo que ha recibido; comprueba el sello con la pública del puerto: «el sello encaja con la huella que acaba de sacar» · «del puerto · intacta» (`seal-ok`). Variante: un precio cambiado, la huella cambia y el sello ya no encaja. Nombre DIGITAL SIGNATURE y tres chips: INTEGRITY · AUTHENTICATION · NON-REPUDIATION («el puerto no puede negar que la ofreció»). Vuelve el aviso de s03: «tu privada no esconde: firma». La pareja de reglas, con sus dos imágenes: «para que solo lo lea la naviera: su buzón» · «para que sepa que eres tú: tu sello»",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "ring",
+        "design",
+        "seal",
+        "recompute",
+        "verify",
+        "seal-ok",
+        "tampered",
+        "signature",
+        "three",
+        "pair"
+      ]
+    },
+    {
+      "id": "s08-mezcla",
+      "chapter": 5,
+      "title": "Pinturas en la carretera",
+      "goal": "Vuelve la carretera de s02, con su sombra y su pregunta: «¿cómo le llega la copia de la llave?». La imagen, las pinturas, sin decir todavía qué viaja y qué no: un color común a la vista de todos; el puerto le añade su color secreto y la naviera el suyo; las mezclas se cruzan por la carretera (la sombra las ve); cada lado echa su secreto en la mezcla del otro y los dos llegan al mismo color (`same`). La sombra solo tiene mezclas: «una mezcla no se separa». Pregunta para pensar. Respuesta: «no viaja · cada lado lo calcula». Nombre DIFFIE-HELLMAN, y ECDH, «la misma idea con curvas elípticas». Bajo la sombra, el límite: «la pintura no dice con quién has mezclado» (41); en la voz, «Eso sí, la pintura no te dice con quién has mezclado. Te lo dice el sello, que ahora verás en la línea». Del color final sale la llave para dos de s02: «la copia que nadie tuvo que llevar · session key»",
+      "targetSec": 56,
+      "wordBudget": 151,
+      "requiredCues": [
+        "road",
+        "common",
+        "secrets",
+        "swap",
+        "same",
+        "unmix",
+        "choice",
+        "dh",
+        "with-whom",
+        "session-key"
+      ]
+    },
+    {
+      "id": "s09-linea",
+      "chapter": 5,
+      "title": "La línea, entera",
+      "goal": "Vuelve la línea de s01, grande. Cada ficha se enciende al compás de la voz, con el icono de su imagen: `X25519`, la pintura («acuerdan la clave de sesión · ECDH»); `AES_256_GCM`, la llave para dos («cifra todo el tráfico · simétrica»); `SHA384`, la huella («comprueban que nadie ha tocado el saludo»); `id-ecPublicKey`, el sello («el servidor sella el saludo con su privada · has mezclado con el dueño de esa clave»). Rótulo HYBRID: «asimétrica para empezar · simétrica para todo lo demás». La oferta de s03, un momento: «la oferta, igual: el documento con una clave simétrica · esa clave, por el buzón de la naviera». Al final se encienden las líneas del certificado de s01 (`issuer: CN=Confianza Global TLS Issuing CA 3`) y una pregunta: «¿cómo sabe la naviera que esa clave pública es del puerto?», con «siguiente vídeo»",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "line-back",
+        "x25519",
+        "aes",
+        "sha",
+        "ec-key",
+        "hybrid",
+        "offer-too",
+        "question"
+      ]
+    },
+    {
+      "id": "s10-recap",
+      "chapter": 5,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, una cada vez, con sus iconos (buzón y sello · huella · pintura y llave). Tarjeta final Alertópolis: «Tu turno: el laboratorio Crypto Toolbox» (spl1c, 12 necesidades, ≥80 %)",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
