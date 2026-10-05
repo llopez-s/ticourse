@@ -1,0 +1,482 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "cheap": "glitch",
+    "match": "check",
+    "projected": "alarm",
+    "tonight": "lock"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-fotos",
+      "text": "<curious> {photos}Tienes varias fotos de la intrusión en Meridian. {orbital}Y Orbital, uno de sus proveedores, te pasa las de esta mañana.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-fotos",
+      "text": "<intrigued> {title}Toca pasar de la foto a la película. ¿Es el mismo atacante? ¿Qué hará después?",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-fotos",
+      "text": "<engaging> {promise}Para saberlo, montas la película de cada intrusión, miras si las dos son del mismo y te adelantas a lo que viene.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-fotos",
+      "text": "<warm> {bridge}Por si no has visto el vídeo del diamante, cada evento es la foto de un momento del ataque. Quién, con qué, por dónde y contra quién.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-pelicula",
+      "text": "<calm> {rail}La película de Meridian la montas sobre las siete fases de un ataque, la kill chain.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-pelicula",
+      "text": "<focused> {frames}Cada foto va a su sitio, por fecha y por fase. El lunes dos llega un correo con un currículum, que es la entrega.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-pelicula",
+      "text": "<steady> Se abre el adjunto y se instala un programa, con una tarea programada para quedarse. Luego llama a casa, al servidor del atacante, el C2.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-pelicula",
+      "text": "<intrigued> Tres días después, una de esas llamadas hace saltar la alerta, E7.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-pelicula",
+      "text": "<serious> El sábado, en E9, el atacante ya está en la última fase. Comprime archivos en una carpeta temporal y saca muchos datos de golpe.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-pelicula",
+      "text": "<confident> {order}Así colocadas, las fotos ya te cuentan la historia entera.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-pelicula",
+      "text": "<warm> {thread}Únelas con un hilo y dejan de ser fotos sueltas. {film}Ahora son la película de una intrusión, y eso se llama activity thread.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Activity thread: los eventos de una intrusión, en orden",
+        "at": "film",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-08",
+      "scene": "s02-pelicula",
+      "text": "<clear> Hay uno por víctima, siempre en orden de tiempo y de fase.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-09",
+      "scene": "s02-pelicula",
+      "text": "<satisfied> {wrap-i}En pocas palabras, de los eventos sale el hilo. El de Meridian está completo, y falta el de Orbital.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-orbital",
+      "text": "<curious> {orbital-log}Lo de Orbital llega en crudo, tal como lo registraron sus sistemas esta mañana.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-orbital",
+      "text": "<focused> {lure}A primera hora le llega a Finanzas un correo con un pedido falso.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-orbital",
+      "text": "<steady> {runs}Luego se ejecuta el adjunto y deja un programa con nombre de servicio de Windows. {calls}Enseguida, ese programa llama a casa.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-orbital",
+      "text": "<thoughtful> {partial}En la fila de Orbital se encienden las fases de la entrega a la llamada a casa. La última fase todavía no tiene foto.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-orbital",
+      "text": "<clear> Es otro hilo, porque es otra víctima. Y como va a medias, es un hilo parcial.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-orbital",
+      "text": "<sarcastic> Se cuela GLASS VIPER, que no es más que tu mote para el intruso de Meridian y lo que usa. Qué prisa por desmarcarse.",
+      "pauseAfterMs": 650,
+      "intercept": {
+        "text": "Otra empresa, otro dominio, otro correo. Eso no es cosa mía.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-taller",
+      "text": "<firm> {reply-ii}Eso habrá que verlo. Pon las dos películas en una tabla, una frente a otra.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-taller",
+      "text": "<curious> Lo que comparten puede unirlas, y eso es un enlace, pero no todos pesan igual.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-taller",
+      "text": "<thoughtful> {lure}Los señuelos no se parecen, y los dominios tampoco. {cheap}Pero el atacante cambia las dos cosas gratis, así que esa diferencia no separa nada.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-taller",
+      "text": "<warm> Piensa en dos cajas trampa, una en cada puerta. Les cambia el envoltorio y el número al que llama el aparato, porque le cuesta poco.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-taller",
+      "text": "<intrigued> {pdb}En la fila siguiente miras dentro de cada caja, en el programa.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-taller",
+      "text": "<focused> Al compilar, a veces {match}la carpeta donde se hizo se queda escrita en el programa. {label}Es como la etiqueta del taller, por dentro.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-taller",
+      "text": "<confident> No siempre la lleva. Pero si otro programa trae la misma, salen del mismo taller.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s04-08",
+      "scene": "s04-taller",
+      "text": "<clear> Aquí coincide letra por letra en los dos programas. Los analistas la llaman la ruta del PDB.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-09",
+      "scene": "s04-taller",
+      "text": "<firm> {strong}Una ruta única como esta es rara y cara de cambiar, y por eso cuenta como enlace fuerte.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Enlace fuerte: raro y caro de cambiar, como un PDB único",
+        "at": "strong",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-10",
+      "scene": "s04-taller",
+      "text": "<warm> El envoltorio y el número cambian. La etiqueta del taller, cuando está, se repite.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-debiles",
+      "text": "<casual> {https}Los dos programas llaman por HTTPS al puerto [443|cuatro cuatro tres], como casi todo internet, y eso es muy débil.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-debiles",
+      "text": "<steady> {supplier}También cuenta que Orbital sea proveedor de Meridian, porque encaja con alguien que va a por su cadena de suministro. Es un enlace medio.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-debiles",
+      "text": "<thoughtful> {weak-list}HTTPS es como PowerShell, Cobalt Strike o el phishing. Los usan miles de atacantes, y no distinguen a ninguno.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-debiles",
+      "text": "<warm> {tape}Son la cinta de embalar marrón, que llevan las dos cajas y todas las del mundo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-debiles",
+      "text": "<focused> {detect-vs-group}Ojo, que detectar y agrupar no piden lo mismo. Para que una detección dure, te sirve lo que al atacante le cuesta cambiar.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-debiles",
+      "text": "<firm> Para agrupar, además, tiene que ser raro. {weak}Por eso PowerShell o HTTPS al [443|cuatro cuatro tres] son enlaces débiles.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "PowerShell o HTTPS 443: enlace débil para agrupar",
+        "at": "weak",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-debiles",
+      "text": "<calm> Ya está la tabla entera, y cada fila tiene su peso.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-08",
+      "scene": "s05-debiles",
+      "text": "<engaging> Con dominios distintos y la misma ruta del PDB, ¿agrupas los dos hilos?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Dominios distintos, mismo PDB. ¿Los agrupas?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-grupo",
+      "text": "<confident> {answer}Sí, los agrupas. La ruta sale de su taller y es rara. Cambiar de dominio le sale gratis, y que no coincida no rompe nada.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-grupo",
+      "text": "<clear> {verdict}La tabla se queda en dos marcas, la ruta, que es fuerte, y el proveedor, que es medio. El resto sigue sin contar.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-grupo",
+      "text": "<focused> {frame}Con eso, las dos películas entran en el mismo marco. {group}Cuando unes hilos con enlaces fuertes que puedes justificar, tienes un activity group.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Activity group: hilos unidos por enlaces fuertes",
+        "at": "group",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-grupo",
+      "text": "<reassuring> Por ahora lo dejas como grupo candidato, que con dos hilos es lo honesto.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-grupo",
+      "text": "<steady> {build-order}Repasa cómo lo has montado. De los eventos sacas un hilo por víctima, comparas los hilos y, si cuadran, los juntas en un grupo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-grupo",
+      "text": "<thoughtful> {apt}Ese grupo es el paso previo a los nombres que ves en los informes, un APT con número o un intrusion set.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-nombre",
+      "text": "<mischievously> {reply-iii}Quién eres no lo pone en ningún sitio, y el grupo tampoco lo dice. {blank}Por eso su marco va sin nombre.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "Ya me has metido en un grupo. Pues dime quién soy.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-nombre",
+      "text": "<calm> {plate}Las dos cajas salen del mismo taller, eso sí. Pero la puerta del taller no tiene placa.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-nombre",
+      "text": "<clear> {two-cols}Agrupar te dice qué intrusiones van juntas. Saber quién está detrás es atribuir, y eso pide otras pruebas.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-nombre",
+      "text": "<firm> {attribution}Agrupar no es atribuir. Los niveles de atribución los ves en la sección cuatro.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Agrupar no es atribuir: el grupo no dice quién es",
+        "at": "attribution",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-nombre",
+      "text": "<warm> {wrap-iii}Dicho de otra manera, ya sabes qué va junto. Quién es, todavía no, y para lo que viene no te hace falta.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-grafo",
+      "text": "<serious> {reply-iv}Así empezó también lo de Meridian, el lunes dos. Y aquella película no se quedó en la llamada.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "En Orbital solo llamo a casa. Ahí no va a pasar nada más.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-grafo",
+      "text": "<focused> {overlay}Coloca la película de Meridian encima de la de Orbital. {match-phases}De la entrega a la llamada a casa, las fases coinciden.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-grafo",
+      "text": "<intrigued> {projected}El fotograma del sábado cae justo en el hueco de Orbital. Es lo que vino después en Meridian, comprimir en una carpeta temporal y sacar muchos datos de golpe.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-grafo",
+      "text": "<confident> {inherit}Como el hilo de Orbital encaja en el grupo, heredas sus hipótesis. Qué hará después, con qué herramientas y qué busca.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-grafo",
+      "text": "<thoughtful> Ya tienes una buena pista de la escena que viene. No la sabes, la compruebas.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-grafo",
+      "text": "<curious> {possible}Desde ese hueco salen otros caminos posibles, otra carpeta u otro destino.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-07",
+      "scene": "s08-grafo",
+      "text": "<clear> {graph}Lo que hizo y lo que podría hacer, superpuestos, forman un activity-attack graph.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Activity-attack graph: lo observado y lo posible",
+        "at": "graph",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-08",
+      "scene": "s08-grafo",
+      "text": "<warm> Te sirve para adelantarte, y no solo para reconocer lo que ya has visto.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-noche",
+      "text": "<engaging> En Orbital, el atacante ha llegado hasta la llamada a casa, el C2. ¿Esperas a ver qué hace, o buscas ya?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Orbital va por C2. ¿Esperas o buscas ya?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-noche",
+      "text": "<firm> {wait}Si esperas a que saque los datos para confirmarlo, te cuesta justo lo que quieres proteger.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-noche",
+      "text": "<confident> {hunt}Buscas ya. Lo que el grupo hizo en Meridian después de llamar a casa te da una hipótesis que puedes comprobar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-noche",
+      "text": "<clear> {plan}Meridian le pasa a Orbital qué buscar, archivos comprimidos en carpetas temporales y salidas de datos muy grandes.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-noche",
+      "text": "<urgent> {tonight}Esta noche, Orbital vigila las fases que aún no le han llegado, las que el grupo ya hizo en Meridian.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Hilo parcial: vigila las fases que aún no llegan",
+        "at": "tonight",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-noche",
+      "text": "<calm> {wrap-iv}Con lo cual, la película de Meridian acaba siendo una lista de cosas que buscar.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-reglas",
+      "text": "<engaging> {recap}Antes de irte, un repaso rápido. {rule-1}Un evento es una foto, y los de una intrusión, en orden y por fases, son su película.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-reglas",
+      "text": "<clear> {rule-2}Para juntar dos películas, busca lo raro de su taller, como una ruta del PDB que sea única. Lo común no une. Lo barato, si no coincide, no separa.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-reglas",
+      "text": "<focused> {rule-3}Y un grupo no es un nombre, es un plan. Lo que hizo en una víctima te da hipótesis para la siguiente.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-reglas",
+      "text": "<cheerful> {next}Lo siguiente, las diez preguntas de la lección. {endcard}Ninguna foto viene sola, siempre hay una película detrás.",
+      "pauseAfterMs": 700
+    }
+  ]
+}

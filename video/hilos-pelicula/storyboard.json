@@ -1,0 +1,190 @@
+{
+  "title": "De la foto a la película: activity threads y grupos",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 454,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "De la foto a la película"
+    },
+    {
+      "n": 2,
+      "title": "¿El mismo taller?"
+    },
+    {
+      "n": 3,
+      "title": "Un grupo, no un nombre"
+    },
+    {
+      "n": 4,
+      "title": "Lo que viene"
+    },
+    {
+      "n": 5,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-fotos",
+      "chapter": 1,
+      "title": "Dos fotos y una pregunta",
+      "goal": "Dos fichas sueltas con el estilo de las de V3 (`video/diamond-e7/src/scenes/S10Thread.tsx:66-88`), copiadas campo por campo, bajo «Meridian Dynamics» (`photos`): «E7 · 2026-03-05 · 02:13 UTC · beacon HTTPS · 60 s · C2» y «E9 · 2026-03-07 · +2 días · misma metodología · Actions on Objectives». Entra un tercer montón (`orbital`): «2026-03-09 · Orbital Components · proveedor de Meridian · eventos nuevos», con dos preguntas: «¿el mismo atacante?» y «¿qué hará después?». Título «De la foto a la película», con «activity threads y grupos» debajo, antes de los 10 s (`title`). La promesa en tres chips (`promise`): «montar el hilo de una intrusión · saber si dos son del mismo · adelantarte a lo que viene». Tira de puente con la frase de V3 (`bridge`): «un evento es una foto · un hilo es la película», y debajo, pequeño, «quién · con qué · por dónde · contra quién». La voz no lee ninguna fecha ni hora de las fichas",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "photos",
+        "orbital",
+        "title",
+        "promise",
+        "bridge"
+      ]
+    },
+    {
+      "id": "s02-pelicula",
+      "chapter": 1,
+      "title": "La película de Meridian",
+      "goal": "La fila de las siete fases de la kill chain, como en V3 S10 (`rail`), con Weaponization en discontinua y sin rótulo y Reconnaissance vacía, como las dejó V13 para esta misma intrusión. Las fotos de Meridian se colocan una a una por fecha y por fase, al compás de la voz (`frames`; la de Exploitation entra con «Se abre el adjunto», s02-03): «02-03 · Delivery · correo con un CV», «02-03 · Exploitation · se abre el adjunto», «02-03 · Installation · loader y tarea programada», «02-03 · C2 · primera llamada a casa» (las del 2-3 sin número de evento y sin hora: es lo que enseñan V13 y V7), E7 «05-03 · C2» y E9 «07-03 · Actions on Objectives · compresión en una carpeta temporal · salida grande» (plan A; sin tamaño ni destino). Las fotos quedan ordenadas en el tiempo y por fase (`order`). Un hilo, dibujado como una línea, las une (`thread`) y las fotos se vuelven fotogramas de una tira de película, con el nombre ACTIVITY THREAD (`film`). Chips: «una intrusión · una víctima · en orden de tiempo y de fase». La tarjeta, con la tira ya quieta. Debajo, el orden de construcción, a medias (`wrap-i`): «eventos · hilo». Cierre del capítulo",
+      "targetSec": 56,
+      "wordBudget": 151,
+      "requiredCues": [
+        "rail",
+        "frames",
+        "order",
+        "thread",
+        "film",
+        "wrap-i"
+      ]
+    },
+    {
+      "id": "s03-orbital",
+      "chapter": 2,
+      "title": "Otra empresa, otra película",
+      "goal": "Las líneas de Orbital de la lección tal cual (`src/data/s2.ts:879-883`), con el rótulo «eventos crudos · Orbital Components · proveedor de Meridian» (`orbital-log`): `2026-03-09 08:05  email \"PO revision\" -> finance@orbital.example`, `2026-03-09 08:22  attachment runs; drops C:\\Users\\..\\msdtcs.exe`, `linker artifact: D:\\proj\\cicada\\loader\\Release\\ldr.pdb` y `2026-03-09 08:23  msdtcs.exe beacons -> portal-auth-check.example:443`. Los «->» de la lección se dibujan como conector, como en V7 (`video/attack-piramide/src/scenes/parts/ProcessTree.tsx:40`) y V13, nunca como carácter. Por pasos, con lo demás atenuado: el correo, «un pedido falso a Finanzas» (`lure`); la línea del adjunto, «se ejecuta el adjunto y deja un programa» (`runs`); la línea `linker artifact`, atenuada para s04; el beacon, «llama a casa» (`calls`). Su propia fila de fases (`partial`): Delivery, Exploitation, Installation y C2 encendidas; Actions on Objectives vacía, sin foto y con una interrogación: «hilo parcial». Al final, las dos películas una al lado de la otra (la de Meridian entera, la de Orbital a medias) y el mensaje interceptado. Ni LNK ni PowerShell en Orbital: la lección solo dice «attachment runs». La voz no lee horas, correo, ruta ni dominio",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "requiredCues": [
+        "orbital-log",
+        "lure",
+        "runs",
+        "calls",
+        "partial"
+      ]
+    },
+    {
+      "id": "s04-taller",
+      "chapter": 2,
+      "title": "La etiqueta del taller",
+      "goal": "Respuesta al mensaje (`reply-ii`): una tabla de comparación que se rellena fila a fila, Meridian a la izquierda y Orbital a la derecha. «señuelo: un CV · un pedido» (`lure`) y «dominio al que llama: `update-svc-cdn.com` · `portal-auth-check.example`» pasan a gris, con «barato de cambiar · si no coincide, no separa» (`cheap`). La imagen de V13 (`TrapBox`): dos cajas trampa en dos puertas, con envoltorios distintos (la caja es la misma; lo que cambia es el envoltorio) y aparatos que llaman a números distintos. Después, la fila «ruta de compilación (PDB)» (`pdb`): `D:\\proj\\cicada\\loader\\Release\\ldr.pdb` a los dos lados (Meridian: `winhlp.exe`; Orbital: `msdtcs.exe`; sin carpeta), que se iluminan carácter a carácter hasta coincidir enteras, en cian (`match`), mientras la voz dice la frase común. Dentro de las dos cajas, el componente común de V13 (`WorkshopLabel`, con la ruta en monoespaciada), rotulado «la etiqueta del taller» (`label`). Con «Pero si otro programa trae la misma» (s04-07, sincronizado por palabra), el rótulo común de la regla: «si otra trae la misma: mismo taller · enlace fuerte». La fila del PDB se marca «fuerte», «raro y caro de cambiar» (`strong`). La tarjeta, con la tabla ya quieta",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "reply-ii",
+        "lure",
+        "cheap",
+        "pdb",
+        "match",
+        "label",
+        "strong"
+      ]
+    },
+    {
+      "id": "s05-debiles",
+      "chapter": 2,
+      "title": "Lo que lleva todo el mundo",
+      "goal": "Dos filas más en la tabla: «canal: HTTPS al 443 · HTTPS al 443», «muy débil: lo hace todo el mundo» (`https`); «relación: proveedor de Meridian», «medio: encaja con ir a por su cadena de suministro» (`supplier`). Al lado, la lista de la lección de lo que no une, «PowerShell · Cobalt Strike · phishing», con «miles de actores» (`weak-list`, `src/data/s2.ts:834,842-843`). La imagen: la cinta de embalar marrón en las dos cajas, «como todas las cajas» (`tape`). Una línea pequeña que enlaza con V7 (`detect-vs-group`): «para que una detección dure: lo que le cuesta cambiar · para agrupar: además, que sea raro». La fila de HTTPS y la lista se marcan «débil para agrupar» (`weak`). La tarjeta, que se va antes de la pregunta. Pregunta para pensar, con la tabla entera a la vista y ninguna fila resaltada",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "https",
+        "supplier",
+        "weak-list",
+        "tape",
+        "detect-vs-group",
+        "weak"
+      ]
+    },
+    {
+      "id": "s06-grupo",
+      "chapter": 3,
+      "title": "Mismo taller, mismo grupo",
+      "goal": "Respuesta (`answer`): sí. La tabla se resume en dos marcas (`verdict`), «fuerte: la ruta del PDB» y «medio: proveedor»; lo gris se queda gris. Las dos películas entran en un mismo marco (`frame`) y cae el nombre ACTIVITY GROUP, «candidato» (`group`). La tarjeta. El orden de construcción se completa (`build-order`): «eventos · hilos · comparar hilos · grupo» (s2m4q8). Una nota (`apt`): «lo que fuera se llama «APT-X» o intrusion set» (`src/data/s2.ts:828`). Ni VELVET CICADA ni GLASS VIPER en el marco",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "answer",
+        "verdict",
+        "frame",
+        "group",
+        "build-order",
+        "apt"
+      ]
+    },
+    {
+      "id": "s07-nombre",
+      "chapter": 3,
+      "title": "Un grupo no es un nombre",
+      "goal": "Mensaje interceptado (`reply-iii`). El marco del grupo lleva un rótulo en blanco: «sin nombre» (`blank`). La imagen: la puerta del taller, sin placa (`plate`): «mismo taller · ¿de quién?». Dos columnas (`two-cols`): «agrupar: qué intrusiones van juntas» y «atribuir: quién está detrás · pide otras pruebas»; con `attribution`, un chip «S4: niveles de atribución». La tarjeta. Cierre del capítulo (`wrap-iii`)",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "requiredCues": [
+        "reply-iii",
+        "blank",
+        "plate",
+        "two-cols",
+        "attribution",
+        "wrap-iii"
+      ]
+    },
+    {
+      "id": "s08-grafo",
+      "chapter": 4,
+      "title": "La escena que viene",
+      "goal": "Mensaje interceptado (`reply-iv`). La película de Meridian, entera, se superpone a la de Orbital (`overlay`): las fases de la entrega a la llamada a casa coinciden y se enlazan (`match-phases`). El fotograma de E9 se proyecta sobre el hueco de Actions on Objectives de Orbital y se ilumina (`projected`): «lo que vino después en Meridian: compresión en una carpeta temporal · salida grande». Tres hipótesis heredadas, en chips, con un rótulo «a comprobar» (`inherit`): «qué hará después · con qué · qué busca». Después, desde el hueco salen dos ramas discontinuas, «otra carpeta · otro destino» (`possible`): los caminos posibles; y solo entonces cae el nombre ACTIVITY-ATTACK GRAPH, «lo que hizo y lo que podría hacer» (`graph`). La tarjeta",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "reply-iv",
+        "overlay",
+        "match-phases",
+        "projected",
+        "inherit",
+        "possible",
+        "graph"
+      ]
+    },
+    {
+      "id": "s09-noche",
+      "chapter": 4,
+      "title": "Orbital, a medio camino",
+      "goal": "Pregunta para pensar, con la película de Orbital y su hueco, sin el fotograma proyectado ni ningún plan a la vista. Respuesta: «esperar a que saque los datos para confirmarlo» se tacha, con «cuesta justo lo que quieres proteger» (`wait`); se marca «buscar ya» (`hunt`). El plan que Meridian le pasa a Orbital (`plan`): «esta noche: buscar compresión de archivos en carpetas temporales · vigilar transferencias salientes grandes», sin fecha y sin ningún resultado; sale del check de la lección («archive staging in temp paths and large outbound transfers», `src/data/s2.ts:929`), no de la ficha de E9. Con `tonight`, el plan se cierra con un candado. La tarjeta. Cierre del capítulo (`wrap-iv`): la película de Meridian se convierte en una lista de cosas que buscar",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "requiredCues": [
+        "wait",
+        "hunt",
+        "plan",
+        "tonight",
+        "wrap-iv"
+      ]
+    },
+    {
+      "id": "s10-reglas",
+      "chapter": 5,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, una cada vez, con sus iconos (`rule-1` la tira de película, `rule-2` la etiqueta del taller, `rule-3` el fotograma que se proyecta); tarjeta final Alertópolis (`next`, `endcard`): «Tu turno: las preguntas de la lección» (s2m4, 10 preguntas). Ningún laboratorio",
+      "targetSec": 30,
+      "wordBudget": 81,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
