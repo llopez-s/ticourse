@@ -482,7 +482,8 @@ Las exam cards se listan en el orden de las escenas:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
 - **s4m3 ACH (Principal): V9, publicada el 2026-10-04 (YouTube `TjVViiBTeds`), ficha completa abajo.** La matriz del extracto de la
   lección, celda a celda, con supuestos clave, diagnosticidad y sensibilidad; primera aparición de PAPER CRANE.
-- **sp2m7 (Cápsula) «Ataques en los logs»: V10, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** La noche
+- **sp2m7 (Cápsula) «Ataques en los logs»: V10, guion congelado el 2026-10-04; escenas y póster montados el 2026-10-05
+  sobre la línea de tiempo estimada, a falta de la grabación, que va en la misma sesión que V11.** La noche
   del 20 al 21-10: spraying, traversal y amplificación DNS; primera aparición de RED MARROW.
 
 **Orden propuesto para el resto de la tanda 2** (2026-10-01, pendiente de Lidia): V5b, V6, V7, V8, V9 y V10.
@@ -1365,8 +1366,19 @@ ordena contra la cronología del registro ni choca con ella; lo posterior debe r
 
 ### V10 · sp2m7 · Cápsula · «Ataques en los logs: spraying, traversal y amplificación DNS»
 
-> Propuesta del 2026-10-01, pendiente de la aprobación de Lidia. La versión vigente de escenas y guion será
+> **Aprobada por Lidia el 2026-10-04**, tal cual, con las cuatro decisiones de su hoja
+> (`docs/reviews/2026-10-01-fichas-tanda2/decisiones.md`) y el cambio en la lección (fecha e IP del spraying, hecho ese
+> día). RED MARROW habla con `sapi/Microsoft Laura` y un efecto nuevo, `telefono`, para no sonar como PAPER CRANE (Laura
+> con `machine`, V9); la voz **no** fija su género. Rama `video-logs-halden`, que sale de `main` con V9 ya fusionado. Se
+> graba con V11 (sp1m6), la primera de la tanda 3, cuya ficha se escribió el 2026-10-05. La versión vigente de escenas y guion será
 > `video/logs-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/logs-halden/out/script-notes.md`.
+>
+> **Guion congelado el 2026-10-04** con el visto bueno de Lidia (y el capítulo II rebautizado «La URL y el atasco»,
+> porque la voz ya no habla de tubería). **Tras las revisiones**: 590 palabras, estimado 4:33 (~4:10 grabado). La tabla de escenas de abajo
+> es la ficha original; lo que cambió al escribirlo, en `video/logs-halden/out/script-notes.md` (§ Revisiones):
+> la MFA como «algo que solo tienes tú», la guardia sin parar el ataque, la nota «sal de la sala y sube cuatro plantas»
+> (no «armario»), «codificada» en vez de «en clave», «account lockout» con la puerta del quinto fallo y no con el 0, y
+> la voz sin «proveedor de identidad», «SOC» ni «DDoS» (siguen en pantalla).
 >
 > **Un ajuste que no pide el validador sino el canon:** el registro de la lección fecha el password spraying el 4-9,
 > la misma noche del caso de sp4, y lo lanza desde una IP que no es de documentación. El vídeo lo pasa a la noche del 20
@@ -1380,10 +1392,9 @@ ordena contra la cronología del registro ni choca con ella; lo posterior debe r
   objetivo **2.4** (indicators of malicious activity; confirmado en la cabecera de la lección,
   `src/data/secplus/sp2-part4.ts:5`) · adversario **RED MARROW** (sección sp2, `src/data/secplus/sections.ts:63-68`),
   dos mensajes interceptados, su primera aparición en pantalla · voz `recording/lidia` con
-  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · voz del adversario: **voz nueva del adversario, efecto por
-  decidir** (propuesta: `sapi/Microsoft Laura`, ya instalada, con un preset nuevo «teléfono», voz de llamada en banda
-  estrecha y sin el anillo de `machine`; hoy `video/engine/scripts/adversary_fx.py` solo tiene `machine`. Si la voz fija
-  o no el género de RED MARROW es una pregunta para Lidia, en decisiones) · música de V4 y V5
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · voz del adversario: **`sapi/Microsoft Laura` con el efecto
+  `telefono`** (decidido el 2026-10-04): voz de llamada en banda estrecha y sin el anillo de `machine`, añadido al motor
+  para V10 (`video/engine/scripts/adversary_fx.py`). La voz no cuenta como canon del género · música de V4 y V5
   (`Go On Going - Stayloose.mp3`).
 - **Efectos (`sfx`):** los automáticos del motor (mensaje, tarjetas, capítulos) y cuatro momentos: `zero` («check»),
   `served` («error»), `full` («alarm»), `second-lock` («lock»).
@@ -1413,7 +1424,7 @@ ordena contra la cronología del registro ni choca con ella; lo posterior debe r
 | 2 | Directory traversal: secuencias `../` (o su versión codificada, `%2e%2e%2f`) en un parámetro de ruta para salir de la carpeta permitida. El código y los bytes de la respuesta dicen si se lo llevó. No es inyección (no hay comillas ni `OR 1=1`). Defensa: resolver la ruta completa (canonicalizar) y comprobar que sigue dentro de la carpeta; nunca filtrar solo el texto | La ventanilla de un archivo. El empleado saca documentos de un solo armario, y la nota del pedido dice «sal del armario, sube cuatro plantas y tráeme la lista de usuarios de la portería». La versión codificada es la misma nota escrita en clave | «Directory traversal: canonicalizar y confinar la ruta» |
 | 3 | DDoS reflejado y amplificado (DNS amplification): respuestas DNS grandes que llegan de cientos de servidores legítimos a preguntas que tu servidor nunca hizo. Reflected, porque alguien preguntó con tu dirección falsificada; amplified, porque la pregunta es pequeña y la respuesta enorme. Las dos etiquetas valen a la vez. No es DNS poisoning, que te cambia a dónde vas. Se para antes de tu enlace (filtrado en el proveedor, servicio anti-DDoS) y en origen, cerrando los resolvers abiertos | Pedidos a domicilio que nadie hizo: alguien llama a cientos de restaurantes, pide el menú más grande y da tu dirección. Llamada corta, pedido enorme, y el que llamó nunca aparece en tu puerta. La calle se atasca antes de tu portal | «Respuestas DNS que nunca pediste: reflected y amplified» |
 
-**Escenas:** seis, en tres capítulos (Una llave, muchas puertas · La URL y la tubería · Para el examen).
+**Escenas:** seis, en tres capítulos (Una llave, muchas puertas · La URL y la tubería, rebautizado «La URL y el atasco» al congelar · Para el examen).
 
 | Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
 |---|---|---|---|---|
@@ -1494,8 +1505,9 @@ ordena contra la cronología del registro ni choca con ella; lo posterior debe r
 - **RED MARROW, primera aparición.** Tutea a la analista, frases cortas, ironía, como SILENT PAGER, pero su registro es
   otro: el del estafador amable, que da consejos de amigo que son mentira y cierra con «Confía en mí». La narradora lo
   presenta con lo que ya anuncia el jefe de sp2 antes del combate: vive de engañar, con correos falsos y memorias USB en
-  el aparcamiento. Ningún texto usa un artículo ni un adjetivo que marque su género («Es RED MARROW»); si la voz lo fija,
-  lo decide Lidia (pregunta en decisiones) y se apunta aquí.
+  el aparcamiento. Ningún texto usa un artículo ni un adjetivo que marque su género («Es RED MARROW»). La voz no lo fija
+  (decisión de Lidia del 2026-10-04): igual que SILENT PAGER, que es «ella» y suena con Pablo, un vídeo posterior puede
+  fijarlo.
 - **Cierre de canon** (paso 8 del orden de trabajo), en `docs/superpowers/canon/glass-harbor.md`: la fila 52 sale de la
   cronología del incidente y pasa a una fila del 21-10; la 135 cambia IP y fecha; se cierra el hueco de la 245; y en §2 se
   anota que el 21-10 el proveedor de identidad solo pedía contraseña, con la MFA a cargo de Sistemas para el 30-11.
