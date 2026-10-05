@@ -282,6 +282,8 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'KO4REQeaKgM')?.module).toBe('s3m5');
     // V9 sums up s4m3 after its checks and hands over to Lab 4B: lesson, checks, video, lab
     expect(youtubeVideos.find((v) => v.block.youtube === 'TjVViiBTeds')?.module).toBe('s4m3');
+    // V10 reads one night's three trails in sp2m7, after the 900-accounts check and before the closing paragraph
+    expect(youtubeVideos.find((v) => v.block.youtube === 'uHHv-1hTYTE')?.module).toBe('sp2m7');
   });
 
   it('every video block points at relative public assets that exist', async () => {
