@@ -1,7 +1,7 @@
 # Canon · Operación GLASS HARBOR (Autoridad Portuaria de Halden)
 
 Registro de los hechos fijos del incidente de Halden que cuentan los vídeos de Security+ y sus lecciones.
-Última revisión: 2026-10-03 (SIEM, V1, V2, V5, V5b, V6 y las lecciones `sp1`–`sp5`).
+Última revisión: 2026-10-04 (SIEM, V1, V2, V5, V5b, V6 y las lecciones `sp1`–`sp5`; el spraying de sp2m7 pasa al 21-10).
 
 ## 1. Cómo se usa
 
@@ -51,7 +51,6 @@ Horas en CEST. 2026-09-03 es jueves y 2026-09-11 viernes (deducido, calendario).
 | 4-9 · 01:52 | Logon 4624 (y 4672) de `svc_tosreport` desde `ADM-WS-07` en `srv-tc-app03` | `ADM-WS-07` → `srv-tc-app03` | `siem/src/data/s09-pivot.ts:32-42`, `v5/src/data/s04-key.ts:55-66` |
 | 4-9 · 01:58 | Tarea programada «cada jueves · 23:30» en el servidor y otra igual en la estación | `srv-tc-app03`, `ADM-WS-07` | `v5/src/data/s06-eradicate.ts:10-14`, `:33` |
 | 4-9 · 02:00–04:30 | Salen 38 GB a `203.0.113.47:443` (≈ 4,2 MB/s) y la salida termina sola; salta la alarma y nadie la mira | `srv-tc-app03` | `siem/src/data/s08-triage.ts:28-38`, `v5/src/data/s04-key.ts:69-79`, `v5/src/data/s05-order.ts:68` |
-| 4-9 · 03:10–03:12 | (Lección sp2m7, no está en ningún vídeo) password spraying desde 185.22.9.41; `LOGIN OK user=r.haugen` a las 03:12:37 | proveedor de identidad | `sp/sp2-part4.ts:65-69` |
 | 4-9 · madrugada, antes de 04:12 (sin hora) | Operaciones pide reinstalar el portátil; Asesoría jurídica emite el legal hold; se para la rotación de 30 días de los logs del caso; la regla es volcar la memoria antes de apagar (sin hora ni responsable) | portátil de operaciones | `v2/narration.json:9-33`, `:63`, `v2/src/scenes/S01Hold.tsx:168-169`, `:188`, `:227` |
 | 4-9 · 04:12 | Incautación del SSD `HPA-EV-003` en la sala de control, muelle 3; precinto 0091 | M. Aalto; testigo J. Rekola | `sp/sp4-part6.ts:56-62`, `v2/src/data/canon.ts:40`, `v1/src/scenes/S09Isolate.tsx:57` |
 | 4-9 · 05:40 | Entrega al laboratorio; `lsblk` del disco | M. Aalto → R. Sandoval | `sp/sp4-part6.ts:63`, `v2/src/scenes/S03Image.tsx:155` |
@@ -80,6 +79,7 @@ Horas en CEST. 2026-09-03 es jueves y 2026-09-11 viernes (deducido, calendario).
 | sin fecha (como la lección) | La app «Planificador de atraques» de un proveedor externo lee el calendario de atraques por OAuth: «alcance: calendario.leer · caduca: 60 min», emitido por el IdP de Halden | proveedor externo | `v6/src/data/s05-oauth.ts:9`, `:41-42` |
 | 2026-10-27 (martes) | La mejora de V5 «cuentas de servicio en gestor de contraseñas con rotación · Sistemas · 31-10», «27-10 · hecho»: `svc_tosreport`, `svc_edi` y el resto entran en la «bóveda de Sistemas», que ya guardaba los administradores del dominio («ya estaban»); «¿quién la sabe?: nadie»; rotación «cada 24 h y cada vez que una persona la devuelve». A `svc_tosreport` se le retiran los privilegios especiales (`4672`): «retirados · solo sacaba informes» (deducción de V6) | Sistemas | `v6/src/data/s09-vault.ts:23`, `:37-50`, `v6/src/scenes/parts/LogonCard.tsx:32` |
 | 2026-10-28 (miércoles) · 22:00–23:00 | Préstamo just-in-time: «L. Ferrer · Infraestructura» pide «administrador del dominio · motivo: cambio aprobado · ventana: 28-10 · 22:00–23:00»; «aprueba: R. Salas · jefe de sistemas»; credencial válida hasta las 23:00, sesión grabada, cuenta de administración separada de la diaria; a las 23:00 «privilegio retirado · contraseña rotada»; una «copia · 23:05» «ya no sirve» | L. Ferrer, R. Salas | `v6/src/data/s10-jit.ts:14-32` |
+| 2026-10-21 (miércoles) · 03:10–03:12 | (Lección sp2m7; V10 en preparación) password spraying desde 192.0.2.157 contra el proveedor de identidad; `LOGIN OK user=r.haugen` a las 03:12:37. Hasta el 2026-10-04 la lección lo fechaba el 4-9, desde 185.22.9.41 | proveedor de identidad | `sp/sp2-part4.ts:65-69` |
 
 Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente):
 
@@ -156,7 +156,7 @@ Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente
 | `203.0.113.77:443` | IP fija de respaldo del malware del portátil | `v1/src/data/s07-edr.ts:28-31`, `v1/src/scenes/S04Dns.tsx:10` |
 | `203.0.113.47:443` | destino de los 38 GB; «bloquear su servidor» | `siem/src/data/s08-triage.ts:29`, `siem/src/data/s09-pivot.ts:44`, `v5/src/data/s04-key.ts:76`, `:113` |
 | 10.20.4.17 · 10.20.8.31 · 10.20.0.0/16 | `ADM-WS-07` · `srv-tc-app03` · red interna | `siem/src/data/s09-pivot.ts:39`, `siem/src/data/s08-triage.ts:24`, `siem/src/data/s07-tuning.ts:40` |
-| 185.22.9.41 | origen del password spraying del 4-9 (lección) | `sp/sp2-part4.ts:65` |
+| 192.0.2.157 | origen del password spraying del 21-10 (lección; antes 185.22.9.41, que no es de documentación) | `sp/sp2-part4.ts:65` |
 | `b41f0e7c…c7a2` | hash del documento (caza de V1 y de V5) | `v1/src/data/s08-scope.ts:18`, `v5/src/data/s06-eradicate.ts:54` |
 | `…\Temp\turnos_muelle3.docm` · firma «Microsoft Windows (válida)» | adjunto y contexto del EDR | `v1/src/data/s07-edr.ts:16-17`, `v1/src/scenes/S02Spoof.tsx:121` |
 | `-enc JAB3AGMAPQBOAGUAdwAtA…` | PowerShell codificado | `v1/src/data/s07-edr.ts:24` |
@@ -299,8 +299,9 @@ ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tut
   no se dice de quién es ni desde dónde, aunque la salida acabó a las 04:30.
 - **La tarea de las 01:58 no está en el pivote del SIEM** (01:30–04:30 en ese servidor, `siem/src/data/s09-pivot.ts:13-21`); V5 la descubre después.
 - **Cierre del SIEM.** «CASO 0412 · informe de cierre» el 4-9 (`siem/src/scenes/parts/s10-contain/Closure.tsx:99`) frente a un caso que V5 lleva hasta el 11-9.
-- **Password spraying del 4-9** (03:10–03:12, `sp/sp2-part4.ts:65-69`) y la pregunta del logon de las 03:12 (`sp/labs-sp4.ts:93`): misma noche, y ningún vídeo
-  lo integra ni lo descarta. La cápsula prevista «Ataques en los logs» (`plan:492-495`) tendrá que decidirlo.
+- (Resuelto el 2026-10-04.) **Password spraying del 4-9** frente a la pregunta del logon de las 03:12 (`sp/labs-sp4.ts:93`): Lidia aprobó
+  pasar el spraying de la lección a la noche del 20 al 21-10, desde `192.0.2.157` (`sp/sp2-part4.ts:65-69`), como pide la ficha de V10.
+  Ya no cae en la noche del caso; la pregunta de spl4a sigue siendo del 4-9 y no tiene que ver con él.
 - **Viñetas de V1 dentro del día del caso.** FIM: `firewall-rules.conf` cambia «hoy · 14:32» (base «ayer · 22:00», `v1/src/scenes/S10Data.tsx:205-214`): si «hoy»
   es el 3-9, es un cambio sin explicar antes del correo. UBA: «03:00 · fuera de la línea base» (`:342`, `v1/narration.json:391`) sin cuenta: no puede ser
   `svc_tosreport`, cuyo único punto fuera de horario es la 01:52 (`siem/src/data/s09-pivot.ts:60`).

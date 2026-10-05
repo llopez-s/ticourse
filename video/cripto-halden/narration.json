@@ -1,0 +1,478 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Helena",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "drop": "mail",
+    "anyone": "error",
+    "twins": "error",
+    "both-match": "error",
+    "seal-ok": "check",
+    "same": "ding"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {terminal}Una naviera entra en el portal del puerto a por su oferta. {line}Y su conexión, por dentro, cabe en una línea.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<engaging> {title}Esa línea es pura criptografía, y hoy la vamos a desmontar.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<curious> {promise}Verás quién usa cada clave, qué hacen un hash y una firma, y por qué la conexión usa dos maneras de cifrar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<warm> {pieces}Son cuatro piezas, y ahora parecen jeroglíficos. {later}Al final vas a leer la línea entera, aunque alguien va a intentar liarte.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-familias",
+      "text": "<clear> {one-key}Lo más sencillo es una sola clave que cierra y abre, como la llave de casa. {copies}Y cada lado tiene su copia.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-familias",
+      "text": "<confident> {fast}Es rapidísima, así que cifra discos y tráfico. Es el cifrado simétrico, y su estándar es AES.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-familias",
+      "text": "<curious> {road}El problema es hacerle llegar la copia a la naviera sin que nadie la vea.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-familias",
+      "text": "<warm> {mailbox}La otra idea es un buzón. {slot}Cualquiera echa cartas por la ranura, {owner}pero solo su dueña lo abre.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-familias",
+      "text": "<clear> {pair}Son dos claves juntas. La pública la tiene todo el mundo y la privada no sale de casa. Lo que cierra una, solo lo abre la otra.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-familias",
+      "text": "<steady> Es el cifrado asimétrico, el de RSA y las curvas elípticas. {slow}Y es muchísimo más lento.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-familias",
+      "text": "<sarcastic> Aquí aparece NULL CIPHER, una célula de acceso inicial. Busca el primer hueco que no cierre.",
+      "pauseAfterMs": 350,
+      "intercept": {
+        "text": "Cifrar los gigas con RSA. Sin secreto que repartir. Lógico.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s02-08",
+      "scene": "s02-familias",
+      "text": "<firm> Es verdad, no hay secreto que repartir. Pero RSA es tan lento que nadie cifra gigas con él.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-09",
+      "scene": "s02-familias",
+      "text": "<confident> {families}Así que la simétrica es para el volumen, y la asimétrica, para acordar claves y firmar. {roles}Cómo se reparten el trabajo, lo verás al final.",
+      "pauseAfterMs": 650,
+      "exam": {
+        "objective": "1.4",
+        "text": "Symmetric: una clave, rápida; asymmetric: un par, lenta",
+        "at": "families",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-naviera",
+      "text": "<focused> {offer}Vamos con la oferta, los precios del año que viene. La competencia no debe verlos.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-naviera",
+      "text": "<curious> {two-keys}Tienes dos claves a mano, la pública de la naviera y la privada del puerto. ¿Con cuál la cierras?",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-naviera",
+      "text": "<mischievously> {wrong}NULL CIPHER lo tiene clarísimo. Y en algo acierta, que nadie más tiene la privada del puerto.",
+      "pauseAfterMs": 350,
+      "intercept": {
+        "text": "Cifrar con la privada. Nadie más la tiene, nadie más lo lee. Lógico.",
+        "holdMs": 4000
+      }
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-naviera",
+      "text": "<firm> Pero lo que cierras con la privada del puerto se abre con su pública. {anyone}Y esa la tiene todo el mundo, así que la oferta la lee cualquiera.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-naviera",
+      "text": "<warm> La buena es la otra. {drop}La oferta va por la ranura de la naviera, se cierra con su pública, {only-her}y solo su privada la abre.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-naviera",
+      "text": "<clear> {rule}Para que solo lo lea el destinatario, cifras con su clave pública, no con la tuya. {confidential}Y eso es la confidencialidad.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "1.4",
+        "text": "Confidencialidad: cifra con la pública del destinatario",
+        "at": "confidential",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-07",
+      "scene": "s03-naviera",
+      "text": "<intrigued> {later}O sea, que tu privada no sirve para esconder. Sirve para otra cosa, pero antes te falta una pieza.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-huella",
+      "text": "<curious> {machine}Ahora la oferta pasa por una máquina, y sale una ristra corta de letras y números, siempre igual de larga. {print}Es la huella de la oferta.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-huella",
+      "text": "<focused> {change}Cambias un céntimo de un precio, y la huella cambia entera. Así sabes si alguien ha tocado la oferta. A eso lo llamamos integridad.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-huella",
+      "text": "<clear> {one-way}Y solo va en una dirección. De la huella no sacas la oferta, ni hay ninguna clave que la abra.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-huella",
+      "text": "<confident> {hash}Esa huella es un hash. Y fíjate, un hash no es cifrado, porque no se descifra.",
+      "pauseAfterMs": 450,
+      "exam": {
+        "objective": "1.4",
+        "text": "Hash: una sola dirección y sin clave; no es cifrado",
+        "at": "hash",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-huella",
+      "text": "<serious> {collision}Dos documentos con la misma huella son una colisión. {retired}Con [MD5|eme de cinco] y [SHA-1|sha uno] ya se fabrican, por eso están retirados.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-contrasenas",
+      "text": "<warm> {login}Para recoger la oferta, la naviera entra en el portal con su contraseña. {compare}Y el portal no necesita leerla, solo comprobarla.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-contrasenas",
+      "text": "<clear> Así que guarda su huella, no la contraseña cifrada, y la compara cada vez que alguien entra.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-contrasenas",
+      "text": "<thoughtful> {tricks}Para guardarlas bien hay dos trucos. Uno, añadir a cada contraseña un dato al azar antes de sacar la huella. Otro, pasarla por la máquina miles de veces.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-contrasenas",
+      "text": "<curious> {twins}Mira esta tabla de ejemplo. Dos cuentas con la misma contraseña, y la misma huella.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-contrasenas",
+      "text": "<engaging> {choice}Si las dos huellas salen iguales, ¿qué truco faltó?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Dos cuentas, misma huella: ¿qué truco faltó?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-contrasenas",
+      "text": "<confident> {salt}El dato al azar. Con él, la misma contraseña deja huellas distintas. Se llama salt, la sal.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-contrasenas",
+      "text": "<focused> {catalog}Y con sal ya no sirven los catálogos de huellas calculadas de antemano, las rainbow tables.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-08",
+      "scene": "s05-contrasenas",
+      "text": "<warm> {clocks}El otro truco no arregla las huellas iguales, pero hace que cada intento cueste mucho más.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-09",
+      "scene": "s05-contrasenas",
+      "text": "<steady> {stretch}Es el key stretching. {not-longer}Y ojo, que un hash más largo apenas frena, porque es casi igual de rápido.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "1.4",
+        "text": "Contraseñas: hash con salt único y key stretching",
+        "at": "stretch",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-10",
+      "scene": "s05-contrasenas",
+      "text": "<calm> {wrap}Total, que las contraseñas se guardan como huellas, con sal y despacio.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-solo-huella",
+      "text": "<intrigued> {doubts}La naviera ya ha abierto la oferta, pero le quedan dos dudas. ¿Es del puerto? ¿Y la ha tocado alguien?",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-solo-huella",
+      "text": "<sarcastic> NULL CIPHER propone algo que suena bien. {slot-again}Hasta que te acuerdas del buzón, donde cualquiera echa cartas.",
+      "pauseAfterMs": 350,
+      "intercept": {
+        "text": "Adjuntar el hash. Si la tocan, se nota. Si no, es del puerto. Lógico.",
+        "holdMs": 4000
+      }
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-solo-huella",
+      "text": "<serious> {fake}Imagínate que alguien escribe una oferta falsa, le saca su huella y la echa por la ranura. La naviera comprueba esa huella. {both-match}Y encaja.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-solo-huella",
+      "text": "<firm> {who}La huella dice que nada ha cambiado, y para eso sirve. Pero no dice quién escribió la oferta.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-sello",
+      "text": "<warm> Para eso está el sello de lacre del puerto. {ring}El anillo solo lo tiene el puerto, {design}y el dibujo lo conoce todo el mundo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-sello",
+      "text": "<clear> {seal}El puerto saca la huella de la oferta y la sella con su clave privada, que es el anillo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-sello",
+      "text": "<focused> {recompute}La naviera vuelve a sacar la huella de lo que ha recibido. {verify}Y comprueba el sello con la pública del puerto, que es el dibujo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-sello",
+      "text": "<satisfied> {seal-ok}Si el sello encaja con esa huella, la oferta es del puerto, y nadie la ha tocado.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-sello",
+      "text": "<serious> {tampered}Y si alguien cambia un precio, la huella cambia, y el sello ya no encaja.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-sello",
+      "text": "<confident> {signature}Acabas de ver una firma digital. {three}Da integridad y autenticidad, y además no repudio, porque el puerto no puede negar que la ofreció.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "1.4",
+        "text": "Firma: tu privada; integridad, autenticidad, no repudio",
+        "at": "three",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-07",
+      "scene": "s07-sello",
+      "text": "<warm> {pair}O sea, que tu privada no esconde, firma. Para que solo lo lea la naviera, su buzón. Para que sepa que eres tú, tu sello.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-mezcla",
+      "text": "<curious> {road}Toca el problema del principio. ¿Cómo le llega a la naviera su copia de la clave sin que nadie la vea?",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-mezcla",
+      "text": "<warm> Piensa en pinturas. {common}Hay un color común, que ve todo el mundo. {secrets}El puerto le añade un color secreto, y la naviera, el suyo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-mezcla",
+      "text": "<clear> {swap}Las mezclas se cruzan por la carretera, a la vista. {same}Cada lado echa su secreto en la mezcla del otro, y los dos llegan al mismo color.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-mezcla",
+      "text": "<intrigued> {unmix}Quien miraba solo tiene mezclas, y una mezcla no se separa.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-mezcla",
+      "text": "<engaging> {choice}Ese color final, ¿ha pasado por la carretera, o no?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Ese color final, ¿viaja por la carretera o no?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-mezcla",
+      "text": "<confident> No, cada lado lo calcula. Así, dos partes sin ningún secreto previo acaban compartiendo uno. {dh}Es Diffie-Hellman, y con curvas elípticas, ECDH.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "1.4",
+        "text": "Key exchange: Diffie-Hellman, secreto común sin enviarlo",
+        "at": "dh",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-07",
+      "scene": "s08-mezcla",
+      "text": "<serious> {with-whom}Eso sí, la pintura no te dice con quién has mezclado. Te lo dice el sello, que ahora verás en la línea.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-08",
+      "scene": "s08-mezcla",
+      "text": "<satisfied> {session-key}De ese color final sale la clave simétrica del principio, la copia que nadie tuvo que llevar. Es la clave de sesión, session key.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-linea",
+      "text": "<engaging> {line-back}Vuelve la línea del principio, y ya la puedes leer.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-linea",
+      "text": "<clear> {x25519}La primera es la pintura, el acuerdo de la clave con curvas elípticas. {aes}La segunda, AES, la simétrica, que con esa clave cifra el tráfico.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-linea",
+      "text": "<focused> {sha}La tercera es una huella, y comprueba que nadie ha tocado los primeros mensajes, el saludo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-linea",
+      "text": "<warm> {ec-key}Y la última, la clave pública del servidor. Con su privada, el servidor sella el saludo, y sabes que mezclas con el dueño de esa clave.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-linea",
+      "text": "<confident> Vamos, que asimétrica para empezar y simétrica para todo lo demás. {hybrid}Así funciona TLS, y por eso decimos que es híbrido.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "1.4",
+        "text": "TLS híbrido: asimétrica acuerda, AES cifra el tráfico",
+        "at": "hybrid",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-linea",
+      "text": "<warm> {offer-too}Y la oferta, igual. Se cifra con una clave simétrica, y esa clave viaja por el buzón de la naviera.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-07",
+      "scene": "s09-linea",
+      "text": "<intrigued> {question}Queda una pregunta. ¿Cómo sabe la naviera que esa clave pública es de verdad del puerto? Eso, en el siguiente vídeo.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-recap",
+      "text": "<confident> {recap}Tres reglas para el examen. {rule-1}Para que solo lo lea el destinatario, su buzón, su clave pública. Para que sepa que eres tú, tu sello, tu privada.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-recap",
+      "text": "<clear> {rule-2}Un hash es una huella, y no se descifra. Las contraseñas se guardan así, con sal y despacio.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-recap",
+      "text": "<warm> {rule-3}Y la asimétrica acuerda la clave y pone el sello. La simétrica cifra todo lo demás. Eso es TLS.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-recap",
+      "text": "<cheerful> {next}Ahora te toca el laboratorio Crypto Toolbox. {endcard}Y desconfía de lo que suene demasiado lógico.",
+      "pauseAfterMs": 600
+    }
+  ]
+}
