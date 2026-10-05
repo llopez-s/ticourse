@@ -8,26 +8,28 @@ de límites del validador (tarjetas, preguntas, mensajes, escenas y duración), 
 encontraron un fallo que bloqueaba (una tarjeta de V16 que, tal como estaba escrita, abría la puerta fail-secure), y ya
 está arreglado en la ficha.
 
-Basta con decir qué cambia; lo que no se diga, queda como está.
+**Aprobadas el 2026-10-05.** Lidia delegó las decisiones («decide tú todo, debe tener coherencia»): se toman las
+opciones recomendadas, abajo con su resultado, y los cambios de lección van en la rama del vídeo que los necesita,
+como hizo V10 con sp2m7.
 
-## Lo que necesito que me contestes
+## Lo que se ha decidido
 
 1. **Voz y género de los dos adversarios nuevos de Security+.** NULL CIPHER (sp1, V11–V12) y BLIND ARCHITECT (sp3,
    V16–V17) llevarían la voz de Helena, la única voz instalada que no usa ningún adversario: NULL CIPHER a ritmo normal y
    con un efecto nuevo, `cifrado` (de reserva, `machine`), y BLIND ARCHITECT más pausada y con otro efecto nuevo,
    `megafonia` (un aviso por los altavoces de una nave vacía). Con esa voz las dos se oyen como mujeres, y el curso ya las
    escribe en femenino («NULL CIPHER neutralizada», `src/data/secplus/sections.ts:49`; «BLIND ARCHITECT derrotada», `:87`).
-   El texto de los vídeos sigue sin marcarlo. **Por defecto: sí, y el registro lo apunta como canon.** Si prefieres que no
-   cuente, como con RED MARROW, no cambia nada del guion.
+   El texto de los vídeos sigue sin marcarlo. **Decidido: sí, y el registro lo apunta como canon** al cerrar V11 y V16.
 2. **V14: ¿cambiamos la Víctima 1 del walkthrough de s2m4?** Choca con s2m1, con V7 y con el E9 de V3 (detalle y texto
-   exacto en las decisiones de V14). **Recomendado: sí**, en la rama de V14. Si no, el vídeo va por el plan B, con la ficha
-   de E9 copiada palabra por palabra de V3.
+   exacto en las decisiones de V14). **Decidido: sí** (plan A), en la rama de V14; el plan B queda en la ficha
+   por si algo lo impide.
 3. **V15: ¿corregimos el import del informe de sandbox?** `MapViewOfSection` (`src/data/s3.ts:333`) no lo exporta
-   Windows; el real es `NtMapViewOfSection`. **Recomendado: sí**, en la rama de V15. La regla YARA de S5 sigue funcionando.
-4. **V15: ¿añadimos la evasión del sandbox a s3m2?** **Recomendado: no por ahora**; V15 no la necesita.
+   Windows; el real es `NtMapViewOfSection`. **Decidido: sí**, en la rama de V15. La regla YARA de S5 sigue funcionando.
+4. **V15: ¿añadimos la evasión del sandbox a s3m2?** **Decidido: no por ahora**; V15 no la necesita.
 5. **V16, opcional: la OT de sp3m2.** «Los PLC de las esclusas están air-gapped» (`src/data/secplus/sp3-part1.ts:394`)
    choca con sp3m4, con su pregunta q6 y con el dosier de BLIND ARCHITECT, que las ponen en red. Propuesta: que diga «los
-   sistemas de control de las grúas», como su propio check (`:288`). V16 no depende de ello.
+   sistemas de control de las grúas», como su propio check (`:288`). **Decidido: sí**, en la rama de V16, que no depende
+   de ello pero así deja de contradecir a la lección.
 
 ## Orden de producción y grabación
 

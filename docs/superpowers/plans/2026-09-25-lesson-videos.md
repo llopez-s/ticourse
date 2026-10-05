@@ -482,8 +482,7 @@ Las exam cards se listan en el orden de las escenas:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
 - **s4m3 ACH (Principal): V9, publicada el 2026-10-04 (YouTube `TjVViiBTeds`), ficha completa abajo.** La matriz del extracto de la
   lección, celda a celda, con supuestos clave, diagnosticidad y sensibilidad; primera aparición de PAPER CRANE.
-- **sp2m7 (Cápsula) «Ataques en los logs»: V10, guion congelado el 2026-10-04; escenas y póster montados el 2026-10-05
-  sobre la línea de tiempo estimada, a falta de la grabación (va en la misma sesión que V11).** La noche
+- **sp2m7 (Cápsula) «Ataques en los logs»: V10, ficha propuesta el 2026-10-01 (abajo), pendiente de Lidia.** La noche
   del 20 al 21-10: spraying, traversal y amplificación DNS; primera aparición de RED MARROW.
 
 **Orden propuesto para el resto de la tanda 2** (2026-10-01, pendiente de Lidia): V5b, V6, V7, V8, V9 y V10.
@@ -1805,7 +1804,7 @@ Como en V6, el cierre vive dentro del último capítulo de contenido, así que e
 
 ### V12 · sp1m7 · Cápsula · «PKI en la consola: el eslabón que falta, CRL y OCSP»
 
-> Propuesta del 2026-10-04, pendiente de la aprobación de Lidia. Segunda parte de la serie «Confianza»: sigue a V11
+> Propuesta del 2026-10-04; aprobada el 2026-10-05 con las opciones recomendadas (Lidia delegó las decisiones). Segunda parte de la serie «Confianza»: sigue a V11
 > (sp1m6) con una frase de puente. Se graba en la misma sesión que V13. La versión vigente de escenas y guion será
 > `video/pki-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/pki-halden/out/script-notes.md`.
 >
@@ -1997,7 +1996,7 @@ Como en V6, el cierre vive dentro del último capítulo de contenido, así que e
 
 ### V13 · s2m1 · Principal · «La Cyber Kill Chain: basta con romper un eslabón»
 
-> Propuesta del 2026-10-04, pendiente de la aprobación de Lidia. Tanda 3; se graba en la misma sesión que V12 (sp1m7,
+> Propuesta del 2026-10-04; aprobada el 2026-10-05 con las opciones recomendadas (Lidia delegó las decisiones). Tanda 3; se graba en la misma sesión que V12 (sp1m7,
 > cápsula). La versión vigente de escenas y guion será `video/kill-chain-eslabon/storyboard.json` + `narration.json`;
 > qué se quedó fuera, en `video/kill-chain-eslabon/out/script-notes.md`.
 >
@@ -2228,7 +2227,7 @@ examen). Como en V6, el resumen final vive dentro del último capítulo.
 
 ### V14 · s2m4 · Principal · «De la foto a la película: activity threads y grupos»
 
-> Propuesta del 2026-10-04, pendiente de la aprobación de Lidia. Tanda 3; se graba en la misma sesión que V15 (s3m2,
+> Propuesta del 2026-10-04; aprobada el 2026-10-05 con las opciones recomendadas (Lidia delegó las decisiones). Tanda 3; se graba en la misma sesión que V15 (s3m2,
 > cápsula). La versión vigente de escenas y guion será `video/hilos-pelicula/storyboard.json` + `narration.json`; qué
 > se quedó fuera, en `video/hilos-pelicula/out/script-notes.md`.
 >
@@ -2486,7 +2485,7 @@ no como lo que hizo el 7-3.
 
 ### V15 · s3m2 · Cápsula · «Lo que cuenta una muestra: triaje de malware en sandbox»
 
-> Propuesta del 2026-10-04, pendiente de la aprobación de Lidia. Se graba en la misma sesión que V14 (s2m4). La versión
+> Propuesta del 2026-10-04; aprobada el 2026-10-05 con las opciones recomendadas (Lidia delegó las decisiones). Se graba en la misma sesión que V14 (s2m4). La versión
 > vigente de escenas y guion será `video/sandbox-muestra/storyboard.json` + `narration.json`; qué se quedó fuera, en
 > `video/sandbox-muestra/out/script-notes.md`. Las decisiones, con la alternativa descartada de cada una, están en
 > `docs/reviews/2026-10-05-fichas-tanda3/decisiones.md` (apartado V15).
@@ -2752,7 +2751,7 @@ del vídeo y ninguno queda destripado:
 
 ### V16 · sp3m4 · Principal · «Zonas de seguridad: dónde va cada cosa y qué pasa si falla»
 
-> Propuesta del 2026-10-04, pendiente de la aprobación de Lidia. La versión vigente de escenas y guion será
+> Propuesta del 2026-10-04; aprobada el 2026-10-05 con las opciones recomendadas (Lidia delegó las decisiones). La versión vigente de escenas y guion será
 > `video/zonas-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/zonas-halden/out/script-notes.md`.
 >
 > Primer vídeo de la sección sp3 y **primera aparición de BLIND ARCHITECT**. Comparte arco con V17 (sp3m5), que lo
@@ -2996,7 +2995,7 @@ en s09.
 
 ### V17 · sp3m5 · Principal · «Por dónde se entra: 802.1X, VPN e IPSec»
 
-> Propuesta del 2026-10-04, pendiente de la aprobación de Lidia. La versión vigente de escenas y guion será
+> Propuesta del 2026-10-04; aprobada el 2026-10-05 con las opciones recomendadas (Lidia delegó las decisiones). La versión vigente de escenas y guion será
 > `video/fronteras-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en
 > `video/fronteras-halden/out/script-notes.md`.
 >
