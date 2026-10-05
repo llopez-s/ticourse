@@ -2,10 +2,12 @@
 
 Called by import-recording.mjs, which caches the result by the recording's hash:
 
-    python recording_asr.py --audio <wav> --out <json> [--model small] [--language es] [--prompt "..."]
+    python recording_asr.py --audio <wav> --out <json> [--model small] [--language es] [--prompt "..."] [--clips 27,346]
 
-Writes {model, language, prompt, durationMs, words: [{text, startMs, endMs}]}. The prompt
-(names and acronyms from the script) nudges Whisper towards their spelling.
+Writes {model, language, prompt, clips, durationMs, words: [{text, startMs, endMs}]}. The prompt
+(names and acronyms from the script) nudges Whisper towards their spelling. --clips (start,end pairs in
+seconds) is all Whisper hears: the Node side leaves the long silences out (asrClips in lib/recording.mjs),
+and the timestamps stay in the recording's time. Without it, the whole file.
 Models are cached under $HF_HOME (the Node side points it at video/engine/.cache/huggingface).
 """
 import argparse
@@ -30,6 +32,16 @@ def words_from_segments(segments) -> list[dict]:
     return words
 
 
+def parse_clips(spec: str | None) -> list[float] | None:
+    """'27,346' (start,end pairs in seconds, in order) -> [27.0, 346.0]; nothing -> None (the whole file)."""
+    if not spec or not spec.strip():
+        return None
+    edges = [float(x) for x in spec.split(",")]
+    if len(edges) % 2 or any(b <= a for a, b in zip(edges, edges[1:])):
+        raise ValueError(f"--clips must be start,end pairs of seconds in increasing order (got {spec!r})")
+    return edges
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--audio", required=True)
@@ -37,7 +49,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--model", default="small")
     p.add_argument("--language", default="es")
     p.add_argument("--prompt", default="")
+    p.add_argument("--clips", default="")
     args = p.parse_args(argv)
+    clips = parse_clips(args.clips)
 
     from faster_whisper import WhisperModel
 
@@ -51,6 +65,8 @@ def main(argv: list[str] | None = None) -> int:
         vad_filter=False,  # keep every word: the Node side decides what belongs to the script
         condition_on_previous_text=False,  # a misheard sentence must not drag the next one along
         initial_prompt=args.prompt or None,
+        # only the stretches between long silences; without clips, the call is the same as before they existed
+        **({"clip_timestamps": clips} if clips else {}),
     )
     collected = []
     for seg in segments:
@@ -60,6 +76,7 @@ def main(argv: list[str] | None = None) -> int:
         "model": args.model,
         "language": args.language,
         "prompt": args.prompt,
+        "clips": [{"startMs": round(a * 1000), "endMs": round(b * 1000)} for a, b in zip(clips[::2], clips[1::2])] if clips else None,
         "durationMs": round(info.duration * 1000),
         "words": words_from_segments(collected),
     }
