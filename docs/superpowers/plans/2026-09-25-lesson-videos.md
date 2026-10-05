@@ -477,7 +477,8 @@ Las exam cards se listan en el orden de las escenas:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
 - **s4m3 ACH (Principal): V9, publicada el 2026-10-04 (YouTube `TjVViiBTeds`), ficha completa abajo.** La matriz del extracto de la
   lección, celda a celda, con supuestos clave, diagnosticidad y sensibilidad; primera aparición de PAPER CRANE.
-- **sp2m7 (Cápsula) «Ataques en los logs»: V10, aprobada el 2026-10-04, ficha completa abajo.** La noche
+- **sp2m7 (Cápsula) «Ataques en los logs»: V10, guion congelado el 2026-10-04; escenas y póster montados el 2026-10-05
+  sobre la línea de tiempo estimada, a falta de la grabación, que va en la misma sesión que V11.** La noche
   del 20 al 21-10: spraying, traversal y amplificación DNS; primera aparición de RED MARROW.
 
 **Orden propuesto para el resto de la tanda 2** (2026-10-01, pendiente de Lidia): V5b, V6, V7, V8, V9 y V10.
@@ -1364,7 +1365,7 @@ ordena contra la cronología del registro ni choca con ella; lo posterior debe r
 > (`docs/reviews/2026-10-01-fichas-tanda2/decisiones.md`) y el cambio en la lección (fecha e IP del spraying, hecho ese
 > día). RED MARROW habla con `sapi/Microsoft Laura` y un efecto nuevo, `telefono`, para no sonar como PAPER CRANE (Laura
 > con `machine`, V9); la voz **no** fija su género. Rama `video-logs-halden`, que sale de `main` con V9 ya fusionado. Se
-> graba sola: la primera de la tanda 3 aún no tiene ficha. La versión vigente de escenas y guion será
+> graba con V11 (sp1m6), la primera de la tanda 3, cuya ficha se escribió el 2026-10-05. La versión vigente de escenas y guion será
 > `video/logs-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/logs-halden/out/script-notes.md`.
 >
 > **Guion congelado el 2026-10-04** con el visto bueno de Lidia (y el capítulo II rebautizado «La URL y el atasco»,
