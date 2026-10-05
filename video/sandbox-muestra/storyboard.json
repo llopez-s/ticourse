@@ -1,0 +1,120 @@
+{
+  "title": "Lo que cuenta una muestra: triaje de malware en sandbox",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 218,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "La muestra"
+    },
+    {
+      "n": 2,
+      "title": "Leer el informe"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "La copia que llamó a casa",
+      "goal": "Tira a media luz con las líneas del EDR de V3 tal como las enseñó V7 (`video/attack-piramide/src/data/s05-otra-ropa.ts:10-15`, literales y en ISO: PROC_START con `image=C:\\ProgramData\\UpdSvc\\updsvc.exe`, FILE_HASH con `sha256=9f3a...e1` y NET_CONN con `dst=update-svc-cdn.com:443  HTTPS`; sin el campo `signed` ni la línea del pipe), con el rótulo de V7, «05-03-2026 · 02:11 UTC» (`edr`): es «esta alerta» de la voz; al lado, «Meridian Dynamics · aeroespacial». De la línea del hash se desprende una ficha, «muestra · SHA-256 `9f3a2c...e1`», que entra en una caja cerrada todavía apagada (`sample`). Título «Lo que cuenta una muestra», con «triaje de malware en sandbox» debajo (`title`, hacia los 9 s del estimado, siempre antes de los 12). La promesa en tres chips (`promise`): «sin avisarle · lo suyo y el ruido · sus parientes». La voz no dice ni la fecha, ni la hora, ni el equipo, ni la ruta, ni el hash, ni el dominio (la fecha y el equipo se quedan en el rótulo), y no dice «casa»",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "requiredCues": [
+        "edr",
+        "sample",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-hash",
+      "chapter": 1,
+      "title": "Antes de abrirla",
+      "goal": "La pantalla de un servicio público de análisis, genérico y sin marca (nada que recuerde a VirusTotal): «servicio público · decenas de antivirus», con un botón «Subir muestra» que late, desde el principio de la escena (sin cue: la voz no lo presenta). Mensaje interceptado, sobre esa pantalla. Respuesta (`reply`): junto al botón, un ojo con «también puede mirar el atacante» y la cadena «si la ve · puede saber que lo has descubierto · cambia de dominios». La viñeta del coche (`car`): una calle con un coche aparcado; a la izquierda, una libreta con la matrícula («la buscas tú, en silencio»); a la derecha, tachada, una nota en el parabrisas («te he visto»). La búsqueda por hash (`lookup`): «buscar · `9f3a2c...e1`», con el chip «no sube el fichero», y el resultado (`no-hits`), «sin resultados», a 60 px. Debajo, pequeño y en gris, la otra razón de la lección: «y lo que se sube, otros lo pueden descargar». La tarjeta, con la búsqueda ya quieta. Después (`own-sandbox`), la caja cerrada de s01 se enciende: «sandbox interno de Meridian · máquina aislada, de usar y tirar», y la ficha de la muestra entra en ella",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "requiredCues": [
+        "reply",
+        "car",
+        "lookup",
+        "no-hits",
+        "own-sandbox"
+      ]
+    },
+    {
+      "id": "s03-mitades",
+      "chapter": 1,
+      "title": "Dos mitades",
+      "goal": "El informe de la lección en extracto (`src/data/s3.ts:327-344`), con el rótulo «Informe de sandbox · extracto · GLASS VIPER stage-1 · MER-2026-023» y sin la línea `Signing cert` (`report`). Dos bandas: ESTÁTICO arriba (hash, imphash, ssdeep, fecha, PDB e `Imports : NtMapViewOfSection, CreateNamedPipeA, CreateProcessA`) y DINÁMICO abajo (pipe, persistencia y los cinco hosts, atenuados y **sin** las anotaciones `→ …` de la lección, que no salen en todo el vídeo). La de arriba se ilumina y se atenúa enseguida con «la leemos luego» y el nombre STATIC ANALYSIS · análisis estático (`static`). La de abajo, línea a línea: `schtasks /create /tn WindowsUpdateCheck` con «tarea para volver a arrancar» (`task`; solo lo que hace en el sandbox, ninguna fecha); el pipe `vc_pipe_4f8a1c9e` (`pipe`) y, a su lado, en pequeño, el de E7 en V3, `vc_pipe_3a7f09c1`: el prefijo `vc_pipe_` en cian en los dos y los ocho caracteres finales en ámbar, con «mismo formato · otro número en cada ejecución» (solo en pantalla: la voz no lo comenta). Nombre DYNAMIC ANALYSIS · análisis dinámico (`dynamic`). La tarjeta, con las dos bandas ya quietas. Cierre del capítulo (`wrap`): las dos bandas con «lo que lleva escrito» y «lo que hace»",
+      "targetSec": 30,
+      "wordBudget": 81,
+      "requiredCues": [
+        "report",
+        "static",
+        "task",
+        "pipe",
+        "dynamic",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s04-llamadas",
+      "chapter": 2,
+      "title": "Cinco llamadas",
+      "goal": "Se amplía la lista de hosts contactados, **sin** las anotaciones de la lección (`hosts`): cinco filas con su puerto (`update-svc-cdn.com:443`, `ocsp-verify-node.example:443`, `time.windows.com:123`, `ctldl.windowsupdate.com:80`, `www.msftconnecttest.com:80`), todas del mismo color. Ninguna fila enseña respuesta, bytes, código HTTP ni «conectado»: son lo que el sandbox apuntó, no conexiones hechas. Pregunta para pensar («Cinco sitios en la lista. ¿Bloqueas los cinco?»), con la lista quieta. Respuesta: la viñeta del teléfono prestado (`phone`): un móvil y una libreta de llamadas, dos de quien lo usa y tres del propio teléfono, con un reloj, un escudo y un icono de cobertura. Dónde mirar, por pasos: dos filas se encienden en rosa (`two`), `update-svc-cdn.com` («su servidor de siempre · el de E7») y `ocsp-verify-node.example` («de repuesto»); las otras tres en gris (`three`), rotuladas en llano: «poner la hora», «certificados de confianza de Windows», «¿hay internet?», y encima «las hace Windows solo, con muestra o sin ella» (sin «jitter», sin «beacon», sin «NTP», sin flechas). Contrafactual (`blackout`): un candado sobre las cinco y, en un mapa de los equipos de Meridian, relojes en blanco y la conexión con interrogación: «gol en propia puerta». Se deshace y el candado queda solo sobre las dos rosas, sin fecha (`triage`). La tarjeta. Después (`spare`), el de repuesto ampliado junto a las dos líneas de conexión de E7 en V3 (`02:13:02Z` y `02:14:01Z`, las dos a `update-svc-cdn.com`): «en la alerta de E7: no salía · lo ha dado el sandbox». Nada dice si la red de Meridian llegó a hablar con él",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "requiredCues": [
+        "hosts",
+        "phone",
+        "two",
+        "three",
+        "blackout",
+        "triage",
+        "spare"
+      ]
+    },
+    {
+      "id": "s05-etiqueta",
+      "chapter": 2,
+      "title": "Lo que lleva escrito",
+      "goal": "Mensaje interceptado, sobre las dos filas rosas de s04, que siguen con su candado. Respuesta (`reply`): se vuelve a la banda ESTÁTICO. La viñeta de la ropa a medida: una prenda colgada, y cuatro cosas que se encienden al compás de la voz. Primero (`garment`), la prenda entera en ámbar con `SHA-256 9f3a2c...e1` («esta prenda exacta · un byte y ya es otra»). Luego las piezas, botones y forro (`imports`), junto a la línea `Imports : NtMapViewOfSection, CreateNamedPipeA, CreateProcessA`, y (`imphash`) `Imphash 1b8d4f2a... · comparte tabla de imports con 3 muestras previas`, con el rótulo «apunta a la familia» y el nombre IMPHASH. Luego el patrón de corte, superpuesto a otro casi igual, con `ssdeep · 94 % · variante de 2026-01` y el nombre SSDEEP (fuzzy hashing) (`ssdeep`). La tarjeta, con la prenda quieta. Después se da la vuelta al cuello y aparece la etiqueta del taller (`label`; el componente común con V13 y V14, `video/kill-chain-eslabon/src/scenes/parts/WorkshopLabel.tsx` en la rama de V13), cosida por dentro: `D:\\proj\\cicada\\loader\\Release\\ldr.pdb` en monoespaciada, sin resaltar ninguna parte, con «no siempre la lleva» y «si otra trae la misma: mismo taller · enlace fuerte». Nombre PDB PATH (`pdb`). Por último (`date`), `Compile time : 2026-02-19` con «la pone quien compila · a veces, falsa» y el chip «enlace débil»; la fecha no se compara con nada. Cierre del capítulo (`close`): el dominio («se cambia en un rato») frente a la prenda nueva que se parece a la vieja",
+      "targetSec": 58,
+      "wordBudget": 157,
+      "requiredCues": [
+        "reply",
+        "garment",
+        "imports",
+        "imphash",
+        "ssdeep",
+        "label",
+        "pdb",
+        "date",
+        "close"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, cada una con su viñeta en miniatura (`recap`, `rule-1` el coche, `rule-2` el teléfono, `rule-3` la prenda con la etiqueta del taller en el cuello). Tarjeta final Alertópolis (`next`, `endcard`): «Tu turno: las preguntas de la lección» (s3m2, 10 preguntas). Ningún laboratorio",
+      "targetSec": 24,
+      "wordBudget": 65,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

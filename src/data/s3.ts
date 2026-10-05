@@ -330,7 +330,7 @@ Imphash      : 1b8d4f2a...      (comparte tabla de imports con 3 muestras previa
 ssdeep       : 3072:Ab9..:Xk2   (94% similar a variante de 2026-01)
 Compile time : 2026-02-19 (plausible; los actores lo falsean a veces)
 PDB path     : D:\\proj\\cicada\\loader\\Release\\ldr.pdb
-Imports      : MapViewOfSection, CreateNamedPipeA, CreateProcessA
+Imports      : NtMapViewOfSection, CreateNamedPipeA, CreateProcessA
 Signing cert : "Bright Meridian Software Kft." (firmante desconocido)
 
 === DINÁMICO ===

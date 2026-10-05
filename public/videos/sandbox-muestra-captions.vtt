@@ -1,0 +1,253 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:06.267
+Te ha llegado una copia del programa
+de esta alerta en Meridian.
+
+2
+00:00:06.267 --> 00:00:08.567
+Esa copia es una muestra.
+
+3
+00:00:08.567 --> 00:00:10.500
+Y puede contarte mucho.
+
+4
+00:00:10.500 --> 00:00:17.867
+Sin avisar a su dueño, verás qué es suyo,
+qué es ruido y quiénes son sus parientes.
+
+5
+00:00:22.133 --> 00:00:24.900
+Más ojos, y entre ellos los suyos.
+
+6
+00:00:24.900 --> 00:00:30.600
+Si la ven, pueden saber que los has
+descubierto y cambiar de dominios.
+
+7
+00:00:30.600 --> 00:00:34.100
+Y de eso se encarga quien te lo propone.
+
+8
+00:00:34.100 --> 00:00:36.767
+Piensa en un coche raro en tu calle.
+
+9
+00:00:36.767 --> 00:00:41.600
+Buscas la matrícula sin dejarle
+una nota en el parabrisas.
+
+10
+00:00:41.600 --> 00:00:47.900
+Con la muestra, igual. Buscas su hash, un
+código que sale del fichero, sin subirlo.
+
+11
+00:00:47.900 --> 00:00:53.533
+Ni rastro, porque nadie la ha subido ahí,
+lo normal en una muestra dirigida,
+
+12
+00:00:53.533 --> 00:00:55.100
+hecha a medida.
+
+13
+00:00:55.100 --> 00:01:01.267
+Así que la detonas en un sandbox propio,
+una máquina aislada, de usar y tirar,
+
+14
+00:01:01.267 --> 00:01:03.600
+para ver qué hace.
+
+15
+00:01:04.267 --> 00:01:07.700
+El sandbox te devuelve
+un informe en dos mitades.
+
+16
+00:01:07.700 --> 00:01:12.233
+Arriba, lo que se lee sin ejecutarla,
+el análisis estático.
+
+17
+00:01:12.233 --> 00:01:14.433
+Abajo, lo que hizo al detonarla,
+
+18
+00:01:14.433 --> 00:01:18.933
+como crear una tarea programada
+para volver a arrancar sola.
+
+19
+00:01:18.933 --> 00:01:24.933
+Eso lo ves con ella en marcha.
+Y mirarla así es el análisis dinámico.
+
+20
+00:01:24.933 --> 00:01:31.033
+Una mitad cuenta lo que lleva
+escrito, y la otra, lo que hace.
+
+21
+00:01:31.867 --> 00:01:37.567
+Ahora, con lupa. En el informe salen
+cinco sitios. ¿Bloqueas los cinco?
+
+22
+00:01:41.467 --> 00:01:46.967
+No. El informe no es un veredicto,
+porque el sandbox lo apunta todo.
+
+23
+00:01:46.967 --> 00:01:49.233
+Como en un teléfono prestado,
+
+24
+00:01:49.233 --> 00:01:54.167
+salen las llamadas de quien
+lo usa y las del propio teléfono.
+
+25
+00:01:54.167 --> 00:01:59.267
+Dos son del atacante, su servidor
+de siempre y uno de repuesto.
+
+26
+00:01:59.267 --> 00:02:04.367
+Los otros tres los llama Windows
+solo, con muestra o sin ella.
+
+27
+00:02:04.367 --> 00:02:06.000
+Si los bloqueas todos,
+
+28
+00:02:06.000 --> 00:02:10.833
+ningún equipo de Meridian se pone
+en hora ni comprueba su conexión.
+
+29
+00:02:10.833 --> 00:02:12.867
+Gol en propia puerta.
+
+30
+00:02:12.867 --> 00:02:15.900
+El candado, solo en los dos del actor.
+
+31
+00:02:15.900 --> 00:02:21.267
+Lo demás es ruido, y separarlo
+antes de bloquear es el triaje.
+
+32
+00:02:21.267 --> 00:02:25.767
+Y el de repuesto
+lo ha destapado el sandbox.
+
+33
+00:02:30.033 --> 00:02:33.900
+Bloquearlos sigue valiendo:
+le obligas a gastar otro.
+
+34
+00:02:33.900 --> 00:02:39.200
+Un dominio lo cambia en un rato.
+Rehacer la muestra de arriba abajo, no.
+
+35
+00:02:39.200 --> 00:02:44.467
+Imagínatela como una prenda a medida.
+Su hash es esa prenda exacta.
+
+36
+00:02:44.467 --> 00:02:47.100
+Un byte distinto, y ya es otra.
+
+37
+00:02:47.100 --> 00:02:51.800
+Las piezas son las funciones
+que pide a Windows, sus imports.
+
+38
+00:02:51.800 --> 00:02:57.500
+El hash de sus imports, el imphash,
+lo comparten tres muestras que ya tenías.
+
+39
+00:02:57.500 --> 00:02:59.367
+Apunta a la familia.
+
+40
+00:02:59.367 --> 00:03:03.033
+Y el patrón casi calca
+el de una variante anterior.
+
+41
+00:03:03.033 --> 00:03:07.433
+Lo mide el ssdeep, y delata
+una variante recompilada.
+
+42
+00:03:07.433 --> 00:03:13.333
+Al compilar, a veces la carpeta donde
+se hizo se queda escrita en el programa.
+
+43
+00:03:13.333 --> 00:03:18.533
+Es como la etiqueta del taller,
+cosida en el cuello, por dentro.
+
+44
+00:03:18.533 --> 00:03:25.067
+No siempre la lleva. Pero si otro programa
+trae la misma, salen del mismo taller.
+
+45
+00:03:25.067 --> 00:03:26.933
+Es la ruta del PDB.
+
+46
+00:03:26.933 --> 00:03:32.900
+La fecha de compilación, en cambio,
+la pone quien compila, y puede ser falsa.
+
+47
+00:03:32.900 --> 00:03:35.400
+Un dominio le sale en un rato.
+
+48
+00:03:35.400 --> 00:03:41.000
+Lo difícil es una prenda
+que no recuerde a la anterior.
+
+49
+00:03:41.833 --> 00:03:47.533
+Te dejo tres reglas. Una muestra
+hecha a medida no se sube a la ligera.
+
+50
+00:03:47.533 --> 00:03:49.400
+Primero, su hash.
+
+51
+00:03:49.400 --> 00:03:54.167
+Lo que Windows hace solo es ruido.
+Sepáralo antes de bloquear.
+
+52
+00:03:54.167 --> 00:03:59.100
+Y para dar con sus parientes,
+imphash, ssdeep y la ruta del PDB.
+
+53
+00:03:59.100 --> 00:04:01.767
+La fecha de compilación, no.
+
+54
+00:04:01.767 --> 00:04:08.267
+Sigue con las preguntas de la lección.
+Y mira siempre el cuello por dentro.

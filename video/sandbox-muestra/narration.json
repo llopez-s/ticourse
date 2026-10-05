@@ -1,0 +1,252 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "no-hits": "check",
+    "blackout": "error",
+    "triage": "block",
+    "label": "ping2"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<intrigued> {edr}Te ha llegado una copia del programa de esta alerta en Meridian. {sample}Esa copia es una muestra.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<curious> {title}Y puede contarte mucho. {promise}Sin avisar a su dueño, verás qué es suyo, qué es ruido y quiénes son sus parientes.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-hash",
+      "text": "<sarcastic> {reply}Más ojos, y entre ellos los suyos. Si la ven, pueden saber que los has descubierto y cambiar de dominios. Y de eso se encarga quien te lo propone.",
+      "pauseAfterMs": 350,
+      "intercept": {
+        "text": "Súbela a un servicio público. Cuantos más ojos, mejor.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-hash",
+      "text": "<warm> {car}Piensa en un coche raro en tu calle. Buscas la matrícula sin dejarle una nota en el parabrisas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-hash",
+      "text": "<focused> {lookup}Con la muestra, igual. Buscas su hash, un código que sale del fichero, sin subirlo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-hash",
+      "text": "<calm> {no-hits}Ni rastro, porque nadie la ha subido ahí, lo normal en una muestra dirigida, hecha a medida.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Collection",
+        "text": "Muestra dirigida: busca el hash; subirla puede avisarle",
+        "at": "no-hits",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-hash",
+      "text": "<confident> {own-sandbox}Así que la detonas en un sandbox propio, una máquina aislada, de usar y tirar, para ver qué hace.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-mitades",
+      "text": "<curious> {report}El sandbox te devuelve un informe en dos mitades. {static}Arriba, lo que se lee sin ejecutarla, el análisis estático.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-mitades",
+      "text": "<focused> {task}Abajo, lo que hizo al detonarla, como crear una tarea programada para volver a arrancar sola.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-mitades",
+      "text": "<steady> {pipe}Eso lo ves con ella en marcha. {dynamic}Y mirarla así es el análisis dinámico.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Collection",
+        "text": "Estático: sin ejecutar. Dinámico: detonar y observar",
+        "at": "dynamic",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-mitades",
+      "text": "<warm> {wrap}Una mitad cuenta lo que lleva escrito, y la otra, lo que hace.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-llamadas",
+      "text": "<engaging> {hosts}Ahora, con lupa. En el informe salen cinco sitios. ¿Bloqueas los cinco?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Cinco sitios en la lista. ¿Bloqueas los cinco?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-llamadas",
+      "text": "<confident> No. El informe no es un veredicto, porque el sandbox lo apunta todo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-llamadas",
+      "text": "<warm> {phone}Como en un teléfono prestado, salen las llamadas de quien lo usa y las del propio teléfono.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-llamadas",
+      "text": "<focused> {two}Dos son del atacante, su servidor de siempre y uno de repuesto.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-llamadas",
+      "text": "<clear> {three}Los otros tres los llama Windows solo, con muestra o sin ella.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-llamadas",
+      "text": "<serious> {blackout}Si los bloqueas todos, ningún equipo de Meridian se pone en hora ni comprueba su conexión. Gol en propia puerta.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-llamadas",
+      "text": "<firm> {triage}El candado, solo en los dos del actor. Lo demás es ruido, y separarlo antes de bloquear es el triaje.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Collection",
+        "text": "Antes de bloquear, separa al actor del ruido",
+        "at": "triage",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-08",
+      "scene": "s04-llamadas",
+      "text": "<intrigued> {spare}Y el de repuesto lo ha destapado el sandbox.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-etiqueta",
+      "text": "<firm> {reply}Bloquearlos sigue valiendo: le obligas a gastar otro. Un dominio lo cambia en un rato. Rehacer la muestra de arriba abajo, no.",
+      "pauseAfterMs": 350,
+      "intercept": {
+        "text": "Bloquea esos dos, analista. Tengo más esperando su turno.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-etiqueta",
+      "text": "<warm> {garment}Imagínatela como una prenda a medida. Su hash es esa prenda exacta. Un byte distinto, y ya es otra.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-etiqueta",
+      "text": "<focused> {imports}Las piezas son las funciones que pide a Windows, sus imports.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-etiqueta",
+      "text": "<curious> {imphash}El hash de sus imports, el imphash, lo comparten tres muestras que ya tenías. Apunta a la familia.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-etiqueta",
+      "text": "<thoughtful> Y el patrón casi calca el de una variante anterior. {ssdeep}Lo mide el ssdeep, y delata una variante recompilada.",
+      "pauseAfterMs": 450,
+      "exam": {
+        "objective": "Collection",
+        "text": "Variante recompilada: ssdeep. Mismos imports: imphash",
+        "at": "ssdeep",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-etiqueta",
+      "text": "<calm> Al compilar, a veces la carpeta donde se hizo se queda escrita en el programa. {label}Es como la etiqueta del taller, cosida en el cuello, por dentro.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-etiqueta",
+      "text": "<confident> No siempre la lleva. Pero si otro programa trae la misma, salen del mismo taller. {pdb}Es la ruta del PDB.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-08",
+      "scene": "s05-etiqueta",
+      "text": "<serious> {date}La fecha de compilación, en cambio, la pone quien compila, y puede ser falsa.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-09",
+      "scene": "s05-etiqueta",
+      "text": "<satisfied> {close}Un dominio le sale en un rato. Lo difícil es una prenda que no recuerde a la anterior.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-recap",
+      "text": "<engaging> {recap}Te dejo tres reglas. {rule-1}Una muestra hecha a medida no se sube a la ligera. Primero, su hash.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-recap",
+      "text": "<clear> {rule-2}Lo que Windows hace solo es ruido. Sepáralo antes de bloquear.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-recap",
+      "text": "<confident> {rule-3}Y para dar con sus parientes, imphash, ssdeep y la ruta del PDB. La fecha de compilación, no.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-recap",
+      "text": "<cheerful> {next}Sigue con las preguntas de la lección. {endcard}Y mira siempre el cuello por dentro.",
+      "pauseAfterMs": 700
+    }
+  ]
+}
