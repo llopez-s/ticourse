@@ -3289,7 +3289,8 @@ por la misma CPU; cuatro cortes a mano en la grabación. Los pasos detallados si
    archivo corto que se importa con `--only`. Solo si no la hay, se regraba esa frase.
 7. **Render, YouTube y lección.** `render.mjs --master`; `youtube-meta.mjs` (las etiquetas de tema salen de
    `video.json` → `"tags"`); subida con Lidia (ella arrastra el MP4, que pasa del límite de 10 MB de las herramientas
-   del navegador, y la miniatura si el navegador integrado no puede elegir archivos); el bloque `youtube` en la
+   del navegador, y la miniatura si el navegador integrado no puede elegir archivos) o, desde el 2026-10-05, por la
+   API con `youtube-upload.mjs` (privado; README del motor, «Subida a YouTube por la API»); el bloque `youtube` en la
    lección; `npm test` y `npm run build`.
 8. **Cerrar antes de abrir el siguiente.** El canon nuevo del vídeo se apunta en el registro de su campaña, y su PR
    se fusiona antes de empezar el vídeo siguiente, para que cada rama lleve solo lo suyo.
