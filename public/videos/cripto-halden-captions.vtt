@@ -1,0 +1,607 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:06.100
+Una naviera entra en el portal
+del puerto a por su oferta.
+
+2
+00:00:06.100 --> 00:00:10.167
+Y su conexión, por dentro,
+cabe en una línea.
+
+3
+00:00:10.167 --> 00:00:14.933
+Esa línea es pura criptografía,
+y hoy la vamos a desmontar.
+
+4
+00:00:14.933 --> 00:00:19.733
+Verás quién usa cada clave,
+qué hacen un hash y una firma,
+
+5
+00:00:19.733 --> 00:00:24.133
+y por qué la conexión usa
+dos maneras de cifrar.
+
+6
+00:00:24.133 --> 00:00:27.600
+Son cuatro piezas,
+y ahora parecen jeroglíficos.
+
+7
+00:00:27.600 --> 00:00:33.433
+Al final vas a leer la línea entera,
+aunque alguien va a intentar liarte.
+
+8
+00:00:34.200 --> 00:00:40.633
+Lo más sencillo es una sola clave
+que cierra y abre, como la llave de casa.
+
+9
+00:00:40.633 --> 00:00:43.367
+Y cada lado tiene su copia.
+
+10
+00:00:43.367 --> 00:00:46.800
+Es rapidísima,
+así que cifra discos y tráfico.
+
+11
+00:00:46.800 --> 00:00:50.567
+Es el cifrado simétrico,
+y su estándar es AES.
+
+12
+00:00:50.567 --> 00:00:57.033
+El problema es hacerle llegar la copia
+a la naviera sin que nadie la vea.
+
+13
+00:00:57.033 --> 00:00:58.967
+La otra idea es un buzón.
+
+14
+00:00:58.967 --> 00:01:04.600
+Cualquiera echa cartas por la ranura,
+pero solo su dueña lo abre.
+
+15
+00:01:04.600 --> 00:01:06.633
+Son dos claves juntas.
+
+16
+00:01:06.633 --> 00:01:11.967
+La pública la tiene todo el mundo
+y la privada no sale de casa.
+
+17
+00:01:11.967 --> 00:01:15.767
+Lo que cierra una, solo lo abre la otra.
+
+18
+00:01:15.767 --> 00:01:20.233
+Es el cifrado asimétrico,
+el de RSA y las curvas elípticas.
+
+19
+00:01:20.233 --> 00:01:23.067
+Y es muchísimo más lento.
+
+20
+00:01:26.367 --> 00:01:30.267
+Aquí aparece NULL CIPHER,
+una célula de acceso inicial.
+
+21
+00:01:30.267 --> 00:01:33.133
+Busca el primer hueco que no cierre.
+
+22
+00:01:33.133 --> 00:01:36.333
+Es verdad, no hay secreto que repartir.
+
+23
+00:01:36.333 --> 00:01:40.733
+Pero RSA es tan lento
+que nadie cifra gigas con él.
+
+24
+00:01:40.733 --> 00:01:44.967
+Así que la simétrica es para
+el volumen, y la asimétrica,
+
+25
+00:01:44.967 --> 00:01:51.633
+para acordar claves y firmar. Cómo
+se reparten el trabajo, lo verás al final.
+
+26
+00:01:52.467 --> 00:01:58.833
+Vamos con la oferta, los precios del año
+que viene. La competencia no debe verlos.
+
+27
+00:01:58.833 --> 00:02:04.700
+Tienes dos claves a mano, la pública
+de la naviera y la privada del puerto.
+
+28
+00:02:04.700 --> 00:02:07.333
+¿Con cuál la cierras?
+
+29
+00:02:10.833 --> 00:02:13.233
+NULL CIPHER lo tiene clarísimo.
+
+30
+00:02:13.233 --> 00:02:18.000
+Y en algo acierta, que nadie
+más tiene la privada del puerto.
+
+31
+00:02:18.000 --> 00:02:23.767
+Pero lo que cierras con la privada
+del puerto se abre con su pública.
+
+32
+00:02:23.767 --> 00:02:29.667
+Y esa la tiene todo el mundo,
+así que la oferta la lee cualquiera.
+
+33
+00:02:29.667 --> 00:02:31.433
+La buena es la otra.
+
+34
+00:02:31.433 --> 00:02:37.367
+La oferta va por la ranura de la naviera,
+se cierra con su pública,
+
+35
+00:02:37.367 --> 00:02:40.033
+y solo su privada la abre.
+
+36
+00:02:40.033 --> 00:02:45.067
+Para que solo lo lea el destinatario,
+cifras con su clave pública,
+
+37
+00:02:45.067 --> 00:02:48.833
+no con la tuya.
+Y eso es la confidencialidad.
+
+38
+00:02:48.833 --> 00:02:52.333
+O sea, que tu privada
+no sirve para esconder.
+
+39
+00:02:52.333 --> 00:02:57.333
+Sirve para otra cosa,
+pero antes te falta una pieza.
+
+40
+00:02:58.167 --> 00:03:04.633
+Ahora la oferta pasa por una máquina, y
+sale una ristra corta de letras y números,
+
+41
+00:03:04.633 --> 00:03:08.933
+siempre igual de larga.
+Es la huella de la oferta.
+
+42
+00:03:08.933 --> 00:03:13.300
+Cambias un céntimo de un precio,
+y la huella cambia entera.
+
+43
+00:03:13.300 --> 00:03:18.933
+Así sabes si alguien ha tocado la oferta.
+A eso lo llamamos integridad.
+
+44
+00:03:18.933 --> 00:03:21.267
+Y solo va en una dirección.
+
+45
+00:03:21.267 --> 00:03:27.300
+De la huella no sacas la oferta,
+ni hay ninguna clave que la abra.
+
+46
+00:03:27.300 --> 00:03:34.167
+Esa huella es un hash. Y fíjate, un hash
+no es cifrado, porque no se descifra.
+
+47
+00:03:34.167 --> 00:03:38.067
+Dos documentos con la misma
+huella son una colisión.
+
+48
+00:03:38.067 --> 00:03:43.067
+Con MD5 y SHA-1 ya se fabrican,
+por eso están retirados.
+
+49
+00:03:43.800 --> 00:03:48.733
+Para recoger la oferta, la naviera
+entra en el portal con su contraseña.
+
+50
+00:03:48.733 --> 00:03:52.567
+Y el portal no necesita
+leerla, solo comprobarla.
+
+51
+00:03:52.567 --> 00:03:56.400
+Así que guarda su huella,
+no la contraseña cifrada,
+
+52
+00:03:56.400 --> 00:03:59.767
+y la compara cada vez que alguien entra.
+
+53
+00:03:59.767 --> 00:04:02.533
+Para guardarlas bien hay dos trucos.
+
+54
+00:04:02.533 --> 00:04:07.667
+Uno, añadir a cada contraseña un dato
+al azar antes de sacar la huella.
+
+55
+00:04:07.667 --> 00:04:11.367
+Otro, pasarla por la
+máquina miles de veces.
+
+56
+00:04:11.367 --> 00:04:13.367
+Mira esta tabla de ejemplo.
+
+57
+00:04:13.367 --> 00:04:17.733
+Dos cuentas con la misma
+contraseña, y la misma huella.
+
+58
+00:04:17.733 --> 00:04:22.233
+Si las dos huellas salen
+iguales, ¿qué truco faltó?
+
+59
+00:04:26.133 --> 00:04:31.300
+El dato al azar. Con él, la misma
+contraseña deja huellas distintas.
+
+60
+00:04:31.300 --> 00:04:33.300
+Se llama salt, la sal.
+
+61
+00:04:33.300 --> 00:04:38.267
+Y con sal ya no sirven los catálogos
+de huellas calculadas de antemano,
+
+62
+00:04:38.267 --> 00:04:40.067
+las rainbow tables.
+
+63
+00:04:40.067 --> 00:04:43.300
+El otro truco no arregla
+las huellas iguales,
+
+64
+00:04:43.300 --> 00:04:46.867
+pero hace que cada intento
+cueste mucho más.
+
+65
+00:04:46.867 --> 00:04:48.633
+Es el key stretching.
+
+66
+00:04:48.633 --> 00:04:54.867
+Y ojo, que un hash más largo apenas
+frena, porque es casi igual de rápido.
+
+67
+00:04:54.867 --> 00:05:00.567
+Total, que las contraseñas se guardan
+como huellas, con sal y despacio.
+
+68
+00:05:01.400 --> 00:05:07.467
+La naviera ya ha abierto la oferta,
+pero le quedan dos dudas. ¿Es del puerto?
+
+69
+00:05:07.467 --> 00:05:10.300
+¿Y la ha tocado alguien?
+
+70
+00:05:13.800 --> 00:05:16.467
+NULL CIPHER propone algo que suena bien.
+
+71
+00:05:16.467 --> 00:05:20.967
+Hasta que te acuerdas del buzón,
+donde cualquiera echa cartas.
+
+72
+00:05:20.967 --> 00:05:24.533
+Imagínate que alguien
+escribe una oferta falsa,
+
+73
+00:05:24.533 --> 00:05:31.067
+le saca su huella y la echa por la ranura.
+La naviera comprueba esa huella. Y encaja.
+
+74
+00:05:31.067 --> 00:05:35.233
+La huella dice que nada
+ha cambiado, y para eso sirve.
+
+75
+00:05:35.233 --> 00:05:39.167
+Pero no dice quién escribió la oferta.
+
+76
+00:05:39.900 --> 00:05:43.567
+Para eso está el sello
+de lacre del puerto.
+
+77
+00:05:43.567 --> 00:05:49.867
+El anillo solo lo tiene el puerto,
+y el dibujo lo conoce todo el mundo.
+
+78
+00:05:49.867 --> 00:05:55.933
+El puerto saca la huella de la oferta
+y la sella con su clave privada,
+
+79
+00:05:55.933 --> 00:05:57.833
+que es el anillo.
+
+80
+00:05:57.833 --> 00:06:02.533
+La naviera vuelve a sacar
+la huella de lo que ha recibido.
+
+81
+00:06:02.533 --> 00:06:08.200
+Y comprueba el sello con la pública
+del puerto, que es el dibujo.
+
+82
+00:06:08.200 --> 00:06:13.233
+Si el sello encaja con esa huella,
+la oferta es del puerto,
+
+83
+00:06:13.233 --> 00:06:15.400
+y nadie la ha tocado.
+
+84
+00:06:15.400 --> 00:06:21.800
+Y si alguien cambia un precio,
+la huella cambia, y el sello ya no encaja.
+
+85
+00:06:21.800 --> 00:06:24.067
+Acabas de ver una firma digital.
+
+86
+00:06:24.067 --> 00:06:27.700
+Da integridad y autenticidad,
+y además no repudio,
+
+87
+00:06:27.700 --> 00:06:31.400
+porque el puerto no puede
+negar que la ofreció.
+
+88
+00:06:31.400 --> 00:06:38.367
+O sea, que tu privada no esconde, firma.
+Para que solo lo lea la naviera, su buzón.
+
+89
+00:06:38.367 --> 00:06:42.300
+Para que sepa que eres tú, tu sello.
+
+90
+00:06:43.133 --> 00:06:45.900
+Toca el problema del principio.
+
+91
+00:06:45.900 --> 00:06:51.933
+¿Cómo le llega a la naviera su copia
+de la clave sin que nadie la vea?
+
+92
+00:06:51.933 --> 00:06:56.833
+Piensa en pinturas. Hay un color
+común, que ve todo el mundo.
+
+93
+00:06:56.833 --> 00:07:01.900
+El puerto le añade un color
+secreto, y la naviera, el suyo.
+
+94
+00:07:01.900 --> 00:07:06.133
+Las mezclas se cruzan
+por la carretera, a la vista.
+
+95
+00:07:06.133 --> 00:07:13.100
+Cada lado echa su secreto en la mezcla
+del otro, y los dos llegan al mismo color.
+
+96
+00:07:13.100 --> 00:07:17.900
+Quien miraba solo tiene mezclas,
+y una mezcla no se separa.
+
+97
+00:07:17.900 --> 00:07:22.800
+Ese color final, ¿ha pasado
+por la carretera, o no?
+
+98
+00:07:26.700 --> 00:07:28.233
+No, cada lado lo calcula.
+
+99
+00:07:28.233 --> 00:07:32.433
+Así, dos partes sin ningún secreto
+previo acaban compartiendo uno.
+
+100
+00:07:32.433 --> 00:07:35.900
+Es Diffie-Hellman,
+y con curvas elípticas, ECDH.
+
+101
+00:07:35.900 --> 00:07:40.500
+Eso sí, la pintura no te
+dice con quién has mezclado.
+
+102
+00:07:40.500 --> 00:07:45.100
+Te lo dice el sello,
+que ahora verás en la línea.
+
+103
+00:07:45.100 --> 00:07:49.433
+De ese color final sale la clave
+simétrica del principio,
+
+104
+00:07:49.433 --> 00:07:55.600
+la copia que nadie tuvo que llevar.
+Es la clave de sesión, session key.
+
+105
+00:07:56.367 --> 00:08:00.733
+Vuelve la línea del principio,
+y ya la puedes leer.
+
+106
+00:08:00.733 --> 00:08:05.867
+La primera es la pintura, el acuerdo
+de la clave con curvas elípticas.
+
+107
+00:08:05.867 --> 00:08:11.100
+La segunda, AES, la simétrica,
+que con esa clave cifra el tráfico.
+
+108
+00:08:11.100 --> 00:08:16.733
+La tercera es una huella, y comprueba
+que nadie ha tocado los primeros mensajes,
+
+109
+00:08:16.733 --> 00:08:17.867
+el saludo.
+
+110
+00:08:17.867 --> 00:08:21.267
+Y la última, la clave
+pública del servidor.
+
+111
+00:08:21.267 --> 00:08:24.767
+Con su privada,
+el servidor sella el saludo,
+
+112
+00:08:24.767 --> 00:08:28.667
+y sabes que mezclas
+con el dueño de esa clave.
+
+113
+00:08:28.667 --> 00:08:33.467
+Vamos, que asimétrica para empezar
+y simétrica para todo lo demás.
+
+114
+00:08:33.467 --> 00:08:37.467
+Así funciona TLS, y por eso
+decimos que es híbrido.
+
+115
+00:08:37.467 --> 00:08:39.067
+Y la oferta, igual.
+
+116
+00:08:39.067 --> 00:08:45.867
+Se cifra con una clave simétrica, y esa
+clave viaja por el buzón de la naviera.
+
+117
+00:08:45.867 --> 00:08:47.367
+Queda una pregunta.
+
+118
+00:08:47.367 --> 00:08:52.267
+¿Cómo sabe la naviera que esa clave
+pública es de verdad del puerto?
+
+119
+00:08:52.267 --> 00:08:55.167
+Eso, en el siguiente vídeo.
+
+120
+00:08:56.000 --> 00:08:58.133
+Tres reglas para el examen.
+
+121
+00:08:58.133 --> 00:09:03.167
+Para que solo lo lea el destinatario,
+su buzón, su clave pública.
+
+122
+00:09:03.167 --> 00:09:07.200
+Para que sepa que eres tú,
+tu sello, tu privada.
+
+123
+00:09:07.200 --> 00:09:10.267
+Un hash es una huella, y no se descifra.
+
+124
+00:09:10.267 --> 00:09:14.800
+Las contraseñas se guardan
+así, con sal y despacio.
+
+125
+00:09:14.800 --> 00:09:21.500
+Y la asimétrica acuerda la clave y pone el
+sello. La simétrica cifra todo lo demás.
+
+126
+00:09:21.500 --> 00:09:22.867
+Eso es TLS.
+
+127
+00:09:22.867 --> 00:09:25.867
+Ahora te toca el laboratorio
+Crypto Toolbox.
+
+128
+00:09:25.867 --> 00:09:29.767
+Y desconfía de lo que suene
+demasiado lógico.
