@@ -1,7 +1,7 @@
 # Canon · Operación GLASS HARBOR (Autoridad Portuaria de Halden)
 
 Registro de los hechos fijos del incidente de Halden que cuentan los vídeos de Security+ y sus lecciones.
-Última revisión: 2026-10-04 (SIEM, V1, V2, V5, V5b, V6 y las lecciones `sp1`–`sp5`; el spraying de sp2m7 pasa al 21-10).
+Última revisión: 2026-10-06 (SIEM, V1, V2, V5, V5b, V6, V10, V11 y las lecciones `sp1`–`sp5`; el martes 3-11 de V11 entra en la cronología).
 
 ## 1. Cómo se usa
 
@@ -11,9 +11,10 @@ Registro de los hechos fijos del incidente de Halden que cuentan los vídeos de 
 - Lo que solo está en planes o notas no es canon hasta que salga en pantalla o en voz (lista aparte en §5).
 
 **Rutas** (relativas a la raíz del repo): `siem/` = `video/siem/` · `v1/` = `video/capas-halden/` ·
-`v2/` = `video/forense-adquisicion/` · `v5/` = `video/ir-halden/` · `v5b/` = `video/ir-halden-pruebas/` · `v6/` = `video/iam-halden/` · `eng/` = `video/engine/` · `sp/` = `src/data/secplus/` ·
+`v2/` = `video/forense-adquisicion/` · `v5/` = `video/ir-halden/` · `v5b/` = `video/ir-halden-pruebas/` · `v6/` = `video/iam-halden/` · `v10/` = `video/logs-halden/` · `v11/` = `video/cripto-halden/` · `eng/` = `video/engine/` · `sp/` = `src/data/secplus/` ·
 `plan` = `docs/superpowers/plans/2026-09-25-lesson-videos.md` · `notas-v1` = `D:\LLM projects\TICourse\video\capas-halden\out\script-notes.md`
-(fuera de git, checkout principal) · `notas-v5` = `v5/out/script-notes.md` (fuera de git) · `notas-v5b` = `v5b/out/script-notes.md` (fuera de git) · `notas-v6` = `v6/out/script-notes.md` (fuera de git). «(deducido)» = cálculo propio, no lo dice ninguna fuente.
+(fuera de git, checkout principal) · `notas-v5` = `v5/out/script-notes.md` (fuera de git) · `notas-v5b` = `v5b/out/script-notes.md` (fuera de git) · `notas-v6` = `v6/out/script-notes.md` (fuera de git) ·
+`notas-v10` = `v10/out/script-notes.md` (fuera de git) · `notas-v11` = `v11/out/script-notes.md` (fuera de git). «(deducido)» = cálculo propio, no lo dice ninguna fuente.
 
 **Vídeos de Halden**
 
@@ -25,6 +26,8 @@ Registro de los hechos fijos del incidente de Halden que cuentan los vídeos de 
 | V5 «Respuesta a incidentes» | sp4m10 | YouTube `S_nVqWYkKXM`, `sp/sp4-part5.ts:353-359` | 4-9 a mediodía y la reunión del 11-9 |
 | V5b «Antes del próximo incidente» | sp4m10 | YouTube `vlJ9FRtSIlM`, `sp/sp4-part5.ts:406-412` | octubre: la mesa del 2-10, el simulacro del 8-10 y la caza del 13-10 |
 | V6 «Identidad y acceso» | sp4m8 | YouTube `It1DrWKbFe4`, `sp/sp4-part4.ts:464-475` | octubre: la revisión de accesos del 19-10, la jubilación del 23-10, la bóveda del 27-10 y el préstamo del 28-10 |
+| V10 «Ataques en los logs» | sp2m7 | YouTube `uHHv-1hTYTE`, `sp/sp2-part4.ts:136-142` | la noche del 20 al 21-10 y la revisión de las 08:00: spraying contra el proveedor de identidad, traversal y amplificación DNS contra el portal; primera aparición de RED MARROW |
+| V11 «Criptografía» | sp1m6 | YouTube `6jyHqrkMOZQ`, `sp/sp1-part4.ts:144-154` | el martes 3-11: una naviera se conecta al portal de reservas y recoge su oferta para 2027; primera aparición de NULL CIPHER. Para quien sigue el curso es el primer vídeo de Halden (sp1), aunque pase en noviembre |
 
 ## 2. Cronología del incidente
 
@@ -74,12 +77,20 @@ Horas en CEST. 2026-09-03 es jueves y 2026-09-11 viernes (deducido, calendario).
 | 2026-10-13 (martes) | La caza: hipótesis «si vuelve, se moverá como la otra vez: de madrugada, con una cuenta de servicio»; logons de cuentas de servicio de 00:00 a 06:00, desde cualquier equipo, en los 30 días de la central (13-09 a 13-10); «alertas para esta hipótesis: 0» y la regla del SOC del 25-09 con «0 disparos». Resultado: solo tareas conocidas, «sin explicar: 0»; `srv-bascula01` y `srv-accesos01` nunca conectados a la central | SOC (la jugadora, en segunda persona) | `v5b/src/data/s04-caza.ts:43`, `:55-71`, `:85-87`, `v5b/src/data/s05-huecos.ts:17-20`, `:46-99` |
 | 2026-10-15 / 2026-10-16 | Regla «cuenta de servicio fuera de su horario, desde cualquier equipo» (SOC, 15-10); conectar `srv-bascula01` y `srv-accesos01` a la central (Sistemas, 16-10) | SOC, Sistemas | `v5b/src/data/s05-huecos.ts:111-119` |
 | 2026-10-19 (lunes) | «19-10 · revisión trimestral de accesos» (la de cada trimestre, nunca «la primera»): `c.navarro`, de Comunicación (antes Atención a navieras · 2021 y Facturación · 2023), tiene 11 permisos, 4 de su puesto; su responsable confirma los 4 y se retiran los otros 7, entre ellos «facturas a navieras · emitir» («nadie lo decidió») | `c.navarro`, responsable de Comunicación | `v6/src/data/s02-creep.ts:8-10`, `v6/narration.json` (s02) |
+| 2026-10-21 (miércoles; la noche del martes 20) · 03:10:02–05:06 | Password spraying desde `192.0.2.157` contra el proveedor de identidad: en el registro del «IdP de Halden» el usuario cambia en cada línea y el origen no, unos 40 s entre intentos; «180 cuentas · 1 intento por cuenta · 03:10–05:06 · cuentas bloqueadas: 0». Las cinco líneas en pantalla son las de la lección (hasta el 2026-10-04, fechadas el 4-9 y desde 185.22.9.41). «umbral: 5 fallos» sale en la puerta de contraejemplo, la que sí se bloquearía | IdP de Halden | `v10/src/data/s02-spray.ts:19-30`, `:36-59`, `sp/sp2-part4.ts:65-69` |
+| 21-10 · 03:12:37 / 03:13:15 | Un solo acierto, `LOGIN OK user=r.haugen`; a las 03:13:15, `LOGOUT`, «aplicaciones abiertas: 0», sin explicación («sale enseguida, sin entrar en ninguna aplicación»). Junto al OK, «IdP de Halden · pide: contraseña»: **el 21-10 el proveedor de identidad solo pedía contraseña**, y por eso acierta. La contraseña, `Halden2026!`, cumplía la política («cumple»); el registro no la guarda: la dice RED MARROW | `r.haugen`, IdP de Halden | `v10/src/data/s03-mfa.ts:9-22`, `v10/src/data/s02-spray.ts:52`, `v10/narration.json:92`, `:100-103` |
+| 21-10 · 04:26:14 y 04:26:21 | Directory traversal desde `192.0.2.157` contra el visor de documentos (`/gate/viewdoc`) del portal (en voz, «alguien pide un documento al portal»): `file=../../../../etc/passwd` → `200 1834`, «se lo llevó» (en voz, «la lista de usuarios»); la misma petición, codificada (`%2e%2e%2f…etc%2fshadow`) → `403 0`, «el servidor no puede leer `shadow` · no es un filtro»; en voz, «Filtro, ninguno» | `hpa-portal-web-01` | `v10/src/data/s04-traversal.ts:8-14`, `:26-63`, `:94`, `v10/narration.json:138`, `:150`, `:178` |
+| 21-10 · 05:40–06:05 | Amplificación DNS (DDoS reflejado y amplificado) contra el portal: NetFlow entrante, todo UDP desde el puerto 53, «orígenes distintos: 340» («resolvers abiertos de terceros»; legibles solo `198.51.100.61`, `.140`, `.203` y `.212`), «enlace de 1 Gb/s · 100 %» y «consultas DNS del portal a esos servidores: 0». Nadie lo firma | `hpa-portal-web-01` | `v10/src/data/s05-amp.ts:8-27`, `:60` |
+| 21-10 · 05:44 | «guardia · 05:44 · aviso de caída · llamada al proveedor» (en voz, «a los cuatro minutos»); no se dice que la llamada parase el ataque | quien estaba de guardia | `v10/src/data/s05-amp.ts:65`, `v10/narration.json:254` |
+| 21-10 · 08:00 | «21-10 · 08:00 · revisión de la mañana»: la cola de alertas trae los tres rastros: «03:10 · fallos de inicio de sesión · 1 origen · proveedor de identidad», «04:26 · peticiones con `../`» y «05:40 · DNS entrante masivo», las dos últimas en `hpa-portal-web-01`. Acciones: «esa cuenta: contraseña nueva y sesiones cerradas» · «bloquear el origen, no las cuentas» · «MFA y lista de contraseñas prohibidas en el proveedor de identidad · Sistemas · 30-11». Lo del portal sale como defensa y respuesta, sin fecha ni dueño: «resolver la ruta · comprobar que sigue dentro»; «filtrado en el proveedor · servicio anti-DDoS» y «en origen: cerrar los resolvers abiertos» | la jugadora, en segunda persona («tu cola de alertas»); Sistemas | `v10/src/scenes/parts/TrailRow.tsx:73-77`, `:106`, `v10/narration.json:26`, `v10/src/data/s03-mfa.ts:28-32`, `v10/src/data/s04-traversal.ts:97`, `v10/src/data/s05-amp.ts:58-62` |
 | 2026-10-23 (viernes) · fin de turno | Se jubila `o.virta`, de Importación («la oficina que trata con aduanas»): cuenta «deshabilitada · 23-10 · fin de turno»; buzón, archivos y registros se conservan hasta que lo permita la política de retención. Sin conflicto ni sospecha. Con la cuenta deshabilitada, el IdP no le firma pases para la plataforma aduanera del socio («sin pase: acceso denegado», en condicional: nadie intenta entrar) | `o.virta` | `v6/src/data/s03-leaver.ts:7-16`, `v6/src/data/s04-saml.ts:27-31` |
 | sin fecha (como la lección) | El personal del puerto entra en la plataforma aduanera del socio con su cuenta del puerto por SAML: pase «válido: 5 min», «firma: IdP de Halden»; el carril del IdP pide **solo contraseña** | personal del puerto, IdP de Halden | `v6/src/scenes/parts/PassCard.tsx:21-22`, `v6/src/data/s04-saml.ts:11` |
 | sin fecha (como la lección) | La app «Planificador de atraques» de un proveedor externo lee el calendario de atraques por OAuth: «alcance: calendario.leer · caduca: 60 min», emitido por el IdP de Halden | proveedor externo | `v6/src/data/s05-oauth.ts:9`, `:41-42` |
 | 2026-10-27 (martes) | La mejora de V5 «cuentas de servicio en gestor de contraseñas con rotación · Sistemas · 31-10», «27-10 · hecho»: `svc_tosreport`, `svc_edi` y el resto entran en la «bóveda de Sistemas», que ya guardaba los administradores del dominio («ya estaban»); «¿quién la sabe?: nadie»; rotación «cada 24 h y cada vez que una persona la devuelve». A `svc_tosreport` se le retiran los privilegios especiales (`4672`): «retirados · solo sacaba informes» (deducción de V6) | Sistemas | `v6/src/data/s09-vault.ts:23`, `:37-50`, `v6/src/scenes/parts/LogonCard.tsx:32` |
 | 2026-10-28 (miércoles) · 22:00–23:00 | Préstamo just-in-time: «L. Ferrer · Infraestructura» pide «administrador del dominio · motivo: cambio aprobado · ventana: 28-10 · 22:00–23:00»; «aprueba: R. Salas · jefe de sistemas»; credencial válida hasta las 23:00, sesión grabada, cuenta de administración separada de la diaria; a las 23:00 «privilegio retirado · contraseña rotada»; una «copia · 23:05» «ya no sirve» | L. Ferrer, R. Salas | `v6/src/data/s10-jit.ts:14-32` |
-| 2026-10-21 (miércoles) · 03:10–03:12 | (Lección sp2m7; V10 en preparación) password spraying desde 192.0.2.157 contra el proveedor de identidad; `LOGIN OK user=r.haugen` a las 03:12:37. Hasta el 2026-10-04 la lección lo fechaba el 4-9, desde 185.22.9.41 | proveedor de identidad | `sp/sp2-part4.ts:65-69` |
+| 2026-11-03 (martes), sin hora | Una naviera, sin nombre, se conecta «desde fuera» al portal de reservas de atraque: `curl -v https://reservas.haldenport.example/` → `SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519 / id-ecPublicKey`, emisor `CN=Confianza Global TLS Issuing CA 3`, «SSL certificate verify ok». Entra con su contraseña en la «zona de navieras» y recoge la «Oferta comercial 2027 · para una naviera» (confidencial), cifrada para ella y firmada por el puerto | una naviera, el portal de reservas | `v11/src/data/s01-hook.ts:11-27`, `v11/src/scenes/parts/TlsLine.tsx:61-65`, `v11/src/data/s05-contrasenas.ts:12-15`, `v11/src/scenes/parts/Fingerprint.tsx:298-305`, `v11/narration.json:28`, `:144`, `:344`, `:444` |
+| 2026-11-11 (miércoles) · 23:59:59 GMT | Caduca el certificado del portal: «expire date: Nov 11 23:59:59 2026 GMT», solo a media luz en el `curl` de s01, sin leer ni resaltar (lo recoge V12) | `reservas.haldenport.example` | `v11/src/data/s01-hook.ts:26-27` |
+| 2026-11-30 (lunes) | Plazo de la mejora de V10 «MFA y lista de contraseñas prohibidas en el proveedor de identidad · Sistemas · 30-11»; ningún vídeo la enseña cumplida todavía | Sistemas | `v10/src/data/s03-mfa.ts:31` |
 
 Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente):
 
@@ -99,7 +110,8 @@ Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente
 | Lucía | Operaciones, sala de control del muelle 3; sin apellido; abre el adjunto | `v1/src/data/s07-edr.ts:12-13`, `v1/src/scenes/S02Spoof.tsx:92`, `v5/src/data/s01-hook.ts:6`, `sp/sp4-part4.ts:105`, `:170` |
 | la analista | SOC, sin nombre, en femenino; triaje y aprobación en el SIEM, orden de volatilidad en V2 | `siem/narration.json:203`, `siem/src/scenes/parts/s10-contain/Playbook.tsx:60`, `v2/narration.json:39` |
 | «Analista de turno · SOC» | responsable del aislamiento de 16:11 | `v1/src/data/s09-isolate.ts:15` |
-| la jugadora | «la primera analista de seguridad» del puerto | `src/data/tracks.ts:149`, `sp/labs.ts:30` |
+| la jugadora | «la primera analista de seguridad» del puerto; V5b y V10 le hablan en segunda persona (en V10, «tu cola de alertas», sin género en la voz); V11 la pone del lado del puerto («para que sepa que eres tú, tu sello») | `src/data/tracks.ts:149`, `sp/labs.ts:30`, `v10/narration.json:26`, `v11/narration.json:344` |
+| una naviera | cliente del puerto, sin nombre en pantalla ni en voz; el 3-11 entra en la zona de navieras del portal y recoge su oferta para 2027 | `v11/narration.json:28`, `v11/src/data/s03-naviera.ts:9`, `v11/src/scenes/parts/Fingerprint.tsx:305` |
 | responsable de `ADM-WS-02` | sin nombre; «sin localizar» el 3-9 | `v5/src/data/s04-key.ts:11` |
 | M. Aalto | SOC, credencial 2211; incauta el SSD | `sp/sp4-part6.ts:57`, `v2/src/data/canon.ts:24-25` |
 | J. Rekola | Asesoría jurídica; testigo | `sp/sp4-part6.ts:57`, `v2/src/data/canon.ts:26-27` |
@@ -109,10 +121,11 @@ Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente
 | `c.navarro` | Comunicación (antes Atención a navieras y Facturación); en voz, «una compañera de Comunicación»; sus permisos acumulados no son culpa de nadie | `v6/src/data/s02-creep.ts:10` |
 | `o.virta` | Importación, «la oficina que trata con aduanas»; usaba la plataforma aduanera del socio; se jubila el 23-10; en voz, «un compañero de Importación» | `v6/src/data/s03-leaver.ts:7` |
 | CISO · director de operaciones | cargos sin nombre | `sp/labs-sp4.ts:21`, `sp/sp4-part3.ts:167` |
-| Seguridad, Sistemas, Correo, SOC | áreas con mejoras asignadas | `v5/src/data/s09-plan.ts:26-31` |
+| Seguridad, Sistemas, Correo, SOC | áreas con mejoras asignadas (Sistemas también la MFA del proveedor de identidad, 30-11, V10) | `v5/src/data/s09-plan.ts:26-31`, `v10/src/data/s03-mfa.ts:31` |
 | la suplente de Seguridad | sin nombre, en femenino; la mejora del 30-09; en la mesa «aislar es cosa mía»; en el simulacro su cuenta no puede aislar (el fallo es del permiso, no de ella) | `v5b/src/data/s02-mesa.ts:26`, `v5b/src/data/s03-simulacro.ts:31-35` |
 | la analista de guardia | SOC, sin nombre; aísla `ptl-pruebas-02` por orden de la suplente | `v5b/src/data/s03-simulacro.ts:26` |
 | las seis áreas de la mesa | Seguridad, Sistemas, Operaciones, Comunicación, Dirección, Asesoría jurídica | `v5b/src/data/s02-mesa.ts:15` |
+| quien estaba de guardia (21-10) | sin nombre ni género («Quien estaba de guardia»); recibe el aviso de caída del portal a las 05:44 y llama al proveedor de Internet. No es por fuerza la analista de guardia de V5b, que es de otra noche | `v10/src/data/s05-amp.ts:65`, `v10/narration.json:238`, `:254` |
 
 ### Equipos y servidores
 
@@ -130,6 +143,9 @@ Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente
 | `ptl-pruebas-02` | portátil de pruebas (SIEM); en V5b, el equipo del simulacro, en la «VLAN de pruebas» | aislado a las 22:11 del 8-10 | `siem/src/data/s04-enrich.ts:77`, `v5b/src/data/s03-simulacro.ts:10-11` |
 | `srv-bascula01` · `srv-accesos01` | báscula de camiones · control de accesos de la puerta de camiones | «0 registros · nunca conectados» a la central (13-10); se conectan el 16-10. No tienen nada que ver con la salida de los 38 GB ni con la atacante, y no se dice quién los instaló | `v5b/src/data/s05-huecos.ts:69`, `:80`, `:88`, `:111-113` |
 | la central (24 servidores) | 22 con registros y 2 nunca conectados el 13-10; con nombre en pantalla solo los que ya envían registros en el SIEM | — | `v5b/src/data/s05-huecos.ts:46-48` |
+| «IdP de Halden» · «proveedor de identidad» | el proveedor de identidad del puerto; nunca con nombre de host | V6: firma los pases SAML y los tokens OAuth. V10: su «registro de inicios de sesión» guarda el spraying del 21-10 y no la contraseña probada; ese día «pide: contraseña» y nada más; MFA y lista de contraseñas prohibidas, Sistemas, 30-11 | `v6/src/scenes/parts/PassCard.tsx:21-22`, `v6/src/data/s04-saml.ts:11`, `v10/src/data/s02-spray.ts:19-22`, `:52`, `v10/src/data/s03-mfa.ts:13`, `:31` |
+| `hpa-portal-web-01` | «portal público de reservas de atraque», «sin WAF delante» (1-9); visor de documentos `/gate/viewdoc`; enlace de 1 Gb/s. En V11 (sin el nombre del equipo, deducido por la descripción): `reservas.haldenport.example`, TLS 1.3 con certificado de `Confianza Global TLS Issuing CA 3` que caduca el 11-11, y una «zona de navieras» con usuario y contraseña, de la que guarda «su huella», no «la contraseña cifrada» | traversal de las 04:26 y amplificación DNS de 05:40 a 06:05 del 21-10; «Filtro, ninguno». El 3-11, la conexión de la naviera (V11) | `sp/sp4-part3.ts:56-57`, `v10/src/data/s04-traversal.ts:10-11`, `v10/src/data/s05-amp.ts:10`, `:25`, `v10/narration.json:178`, `v11/src/data/s01-hook.ts:12`, `v11/src/data/s05-contrasenas.ts:12-25` |
+| el proveedor de Internet | sin nombre; en voz, «tu proveedor de Internet» | la guardia lo llama a las 05:44; «filtrado en el proveedor · servicio anti-DDoS» | `v10/narration.json:238`, `v10/src/data/s05-amp.ts:59`, `:65` |
 
 ### Cuentas
 
@@ -139,6 +155,9 @@ Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente
 | (ninguna más) | En el alcance del 3-9 no hay ninguna cuenta: aún no se sabía lo de la credencial | `v5/src/data/s03-scope.ts:6` (comentario), `v5/narration.json:110` |
 | `svc_tosreport` (desde el 27-10) | en la bóveda de Sistemas, rota cada 24 h y al devolverse; sin privilegios especiales («retirados · solo sacaba informes») | `v6/src/data/s09-vault.ts:37-42`, `v6/src/scenes/parts/LogonCard.tsx:32` |
 | `svc_edi` (desde el 27-10) | en la bóveda de Sistemas, sin más relación con el caso (no se liga al aviso de ejemplo del SIEM) | `v6/src/data/s09-vault.ts:37` |
+| `r.haugen` | cuenta del puerto en el proveedor de identidad; la única que acierta el spraying del 21-10 (03:12:37) y sale a las 03:13:15 sin abrir ninguna aplicación; contraseña nueva y sesiones cerradas esa mañana. En voz, «una cuenta»: sin nombre completo, área ni género. Su contraseña cumplía la política, «y no es culpa de nadie» | `v10/src/data/s03-mfa.ts:9-10`, `:29`, `v10/narration.json:92`, `:108` |
+| `a.berg` · `j.solheim` · `m.lund` · `k.nyborg` | las cuatro cuentas que fallan en las líneas legibles del spraying (las de la lección); las otras 175 no tienen nombre (deducido: 180 menos cinco) | `v10/src/data/s02-spray.ts:25-28`, `sp/sp2-part4.ts:65-68` |
+| cuentas de las navieras en el portal | «zona de navieras» de `reservas.haldenport.example`, usuario y contraseña; no son de la plantilla ni pasan por el IdP de Halden. La tabla de s05 (dos cuentas con la misma huella y después con sal) es un «ejemplo · así no», sin nombres de usuario y con las contraseñas tapadas | `v11/src/data/s05-contrasenas.ts:2-8`, `:12-18` |
 
 ### Dominios, IP y hashes
 
@@ -150,18 +169,24 @@ Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente
 | `hdn-mailer.example` (DKIM `s=selector1`) | dominio con el que el atacante pasa SPF y DKIM | `v1/src/scenes/S02Spoof.tsx:143`, `:148`, `v1/src/scenes/S03Dmarc.tsx:97` |
 | `cdn-halden-sync.example` | C2, registrado hace dos días; bloqueado por el filtro DNS | `v1/src/scenes/S04Dns.tsx:9`, `v1/src/data/s08-scope.ts:19`, `v5/src/data/s06-eradicate.ts:55` |
 | `haldenp0rt.example` | ejemplo de dominio parecido | `v1/src/scenes/S11Limits.tsx:149` |
+| `reservas.haldenport.example` | nombre público del portal de reservas de atraque (V11); el segundo bajo `haldenport.example`, tras `mx.haldenport.example` | `v11/src/scenes/parts/TlsLine.tsx:61`, `v11/src/data/s01-hook.ts:16`, `v11/src/data/s05-contrasenas.ts:13` |
+| `SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519 / id-ecPublicKey` | la línea de `curl` de la conexión del 3-11, la «línea» de V11; su emisor, `CN=Confianza Global TLS Issuing CA 3`, es la CA intermedia ficticia de la lección (raíz `Confianza Global Root`) | `v11/src/scenes/parts/TlsLine.tsx:65`, `v11/src/data/s01-hook.ts:27`, `sp/sp1-part4.ts:312-326` |
 | `vpn.puerto-halden.example`, `portal.puerto-halden.example` | dominios del puerto en el SIEM | `siem/src/data/s08-triage.ts:13`, `:15` |
 | `*.halden-port.local` | dominio interno | `sp/sp1-part3.ts:70` |
 | `haldenp0rt.com`, `haldenp0rt-mail.com`, `ha1denport.com` | dominios trampa de las lecciones de sp2 | `sp/labs-sp2.ts:186`, `sp/sp2-part2.ts:129`, `:227` |
 | `203.0.113.77:443` | IP fija de respaldo del malware del portátil | `v1/src/data/s07-edr.ts:28-31`, `v1/src/scenes/S04Dns.tsx:10` |
 | `203.0.113.47:443` | destino de los 38 GB; «bloquear su servidor» | `siem/src/data/s08-triage.ts:29`, `siem/src/data/s09-pivot.ts:44`, `v5/src/data/s04-key.ts:76`, `:113` |
 | 10.20.4.17 · 10.20.8.31 · 10.20.0.0/16 | `ADM-WS-07` · `srv-tc-app03` · red interna | `siem/src/data/s09-pivot.ts:39`, `siem/src/data/s08-triage.ts:24`, `siem/src/data/s07-tuning.ts:40` |
-| 192.0.2.157 | origen del password spraying del 21-10 (lección; antes 185.22.9.41, que no es de documentación) | `sp/sp2-part4.ts:65` |
+| 192.0.2.157 | origen del password spraying y del traversal del 21-10, los dos rastros que firma RED MARROW (en la lección, antes 185.22.9.41, que no es de documentación) | `v10/src/data/s02-spray.ts:25-29`, `v10/src/data/s04-traversal.ts:13`, `sp/sp2-part4.ts:65-69` |
+| 198.51.100.61 · .140 · .203 · .212 | los cuatro resolvers abiertos legibles de los 340 de la amplificación DNS del 21-10 (UDP, puerto 53); servidores legítimos de terceros, no del atacante | `v10/src/data/s05-amp.ts:16-21`, `:60` |
+| `GET /gate/viewdoc?file=../../../../etc/passwd  200  1834` · `GET /gate/viewdoc?file=%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fshadow  403  0` | las dos peticiones del traversal (las de la lección, con la hora y el origen que añade V10 y sin el `HTTP/1.1`) | `v10/src/data/s04-traversal.ts:23-60`, `sp/sp2-part4.ts:61-62` |
+| `Halden2026!` | contraseña de `r.haugen` el 21-10; cumple la política (mayúscula, cifras, símbolo); solo la enseñan la tarjeta de la política y el mensaje de RED MARROW. En la lección es además el ejemplo de spraying y la contraseña del check de las 900 cuentas | `v10/src/data/s03-mfa.ts:16-22`, `v10/narration.json:101`, `sp/sp2-part4.ts:94`, `:124` |
 | `b41f0e7c…c7a2` | hash del documento (caza de V1 y de V5) | `v1/src/data/s08-scope.ts:18`, `v5/src/data/s06-eradicate.ts:54` |
 | `…\Temp\turnos_muelle3.docm` · firma «Microsoft Windows (válida)» | adjunto y contexto del EDR | `v1/src/data/s07-edr.ts:16-17`, `v1/src/scenes/S02Spoof.tsx:121` |
 | `-enc JAB3AGMAPQBOAGUAdwAtA…` | PowerShell codificado | `v1/src/data/s07-edr.ts:24` |
 | `9f2b7c…41d0` | SHA-256 del SSD y de `HPA-EV-003.E01` | `sp/sp4-part6.ts:68-70`, `v2/src/data/canon.ts:16` |
 | `4e81a0…c92f` | hash de la copia rota de V2 s04 (contrafactual, no es del caso) | `v2/src/data/canon.ts:18` |
+| `e3a1…9c07` · `58bd…f26e` · `a46f…0d3b` · `c2f7…8e15` · `7c1d…a4b0` · `2f9e…11c3` · `b80a…6d57` · `71c4…d2e8` | huellas inventadas y abreviadas de V11: la de la oferta y la del céntimo cambiado, la colisión de ejemplo (s04), la del inicio de sesión, la tabla «así no» y las dos con sal (s05) y la de la oferta falsa hipotética (s06). Ninguna es del caso | `v11/src/data/s04-huella.ts:11-13`, `:28`, `v11/src/data/s05-contrasenas.ts:22`, `:37-39`, `v11/src/data/s06-solo-huella.ts:28` |
 
 ### Casos y evidencias
 
@@ -178,19 +203,23 @@ Hechos fechados de las lecciones que caen esa semana (fondo, no son el incidente
 | hilo 2 del RCA | «siguió dentro horas» → «dos equipos de tres» → nadie de guardia podía aislar `ADM-WS-02` → «el plan no tenía suplentes» | `v5/src/data/s09-plan.ts:6-11` |
 | mejoras | suplentes (Seguridad, 30-09) · excepciones caducan (Sistemas, 18-09) · gestor de contraseñas con rotación (Sistemas, 31-10; hecha el 27-10, V6) · DMARC en reject (Correo, 25-09) · alerta de logon de cuentas de servicio desde estaciones (SOC, 25-09) · agente en todas las estaciones de administración (Sistemas, 15-10) | `v5/src/data/s09-plan.ts:26-31` |
 | mejoras de V5b | lista de contactos fuera de banda (Seguridad, 05-10) · permiso de aislar en la cuenta de la suplente (Seguridad, 09-10) · regla «cuenta de servicio fuera de su horario, desde cualquier equipo» (SOC, 15-10) · conectar `srv-bascula01` y `srv-accesos01` a la central (Sistemas, 16-10) | `v5b/src/data/s02-mesa.ts:35`, `v5b/src/data/s03-simulacro.ts:48`, `v5b/src/data/s05-huecos.ts:111-119` |
+| mejora de V10 | «MFA y lista de contraseñas prohibidas en el proveedor de identidad · Sistemas · 30-11» (la única con dueño y fecha; lo demás de esa mañana va sin fecha) | `v10/src/data/s03-mfa.ts:31` |
+| «Oferta comercial 2027 · para una naviera» | la oferta del 3-11, «confidencial»: «atraque, por metro» 12,40 · «practicaje» 8,75 · «bonificación» 6 % («los precios del año que viene»). En s04 un céntimo pasa de 12,40 a 12,41 solo para enseñar la huella; la «oferta falsa» de s06 (9,90 · 8,75 · 15 %) es un ejemplo en condicional | `v11/src/scenes/parts/Fingerprint.tsx:298-305`, `v11/src/data/s03-naviera.ts:4`, `v11/narration.json:116`, `v11/src/data/s04-huella.ts:14`, `v11/src/data/s06-solo-huella.ts:19-26` |
 
 ## 4. Adversarios por sección
 
 | Sección | Jefe | Adversario | Qué hace (flavor) | Qué revela su dosier | Fuente |
 |---|---|---|---|---|---|
-| sp1 | FIRST KEY | NULL CIPHER | célula de acceso inicial: badges clonados, cambios sin aprobar, certificados caducados | lector de badges clonado; certificado autofirmado instalado como raíz hace tres años; nota «el puerto sigue sin inventario», firmada GH | `sp/sections.ts:44-49` |
-| sp2 | OPEN WOUND | RED MARROW | phishing, USB en el aparcamiento, proveedor comprometido | kits contra los operadores de grúas; malware por un proveedor de mantenimiento; «GH compra acceso a través de terceros» | `sp/sections.ts:63-68` |
+| sp1 | FIRST KEY | NULL CIPHER (ella, por la voz, desde V11) | célula de acceso inicial: badges clonados, cambios sin aprobar, certificados caducados | lector de badges clonado; certificado autofirmado instalado como raíz hace tres años; nota «el puerto sigue sin inventario», firmada GH | `sp/sections.ts:44-49` |
+| sp2 | OPEN WOUND | RED MARROW (sin género fijado) | phishing, USB en el aparcamiento, proveedor comprometido | kits contra los operadores de grúas; malware por un proveedor de mantenimiento; «GH compra acceso a través de terceros» | `sp/sections.ts:63-68` |
 | sp3 | LOAD BEARING | BLIND ARCHITECT | red plana, OT en la VLAN de oficinas, backups sin probar | PLC de las esclusas alcanzables desde la wifi de invitados; «GH busca un punto único de fallo» | `sp/sections.ts:82-87` |
 | sp4 | NIGHT WATCH | SILENT PAGER (ella) | «Las alertas llegan a las 3 a. m. y nadie las lee» | movimiento lateral con cuentas de servicio sin rotar; logs sin centralizar; IP del mismo ASN que NULL CIPHER; «GH es una sola operación» | `sp/sections.ts:101-106` |
 | sp5 | FINAL AUDIT | PAPER GOVERNOR | políticas sin dueño, riesgos sin registro, proveedor sin contrato | GLASS HARBOR era un contratista con acceso perpetuo y sin due diligence; el puerto vuelve a operar | `sp/sections.ts:120-125` |
 
-La campaña promete «descubrir quién está detrás de GLASS HARBOR» (`src/data/tracks.ts:147-149`). Los vídeos de sp4 solo
-ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tutea a la analista:
+La campaña promete «descubrir quién está detrás de GLASS HARBOR» (`src/data/tracks.ts:147-149`). En pantalla han salido tres:
+SILENT PAGER en los vídeos de sp4 (`v1/video.json:8`, `v5/video.json:8`), RED MARROW en V10, la cápsula de sp2m7, su primera
+aparición (`v10/video.json:8`), y NULL CIPHER en V11, la principal de sp1m6, también su primera aparición (`v11/video.json:8`).
+SILENT PAGER y RED MARROW tutean a la analista; NULL CIPHER habla en infinitivo, sin persona (§5, «Notas de V11»):
 
 | Vídeo | Mensaje interceptado | Fuente |
 |---|---|---|
@@ -204,11 +233,21 @@ ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tut
 | V6 s05 | «Dale tu contraseña a esa app del calendario. Va más rápido.» | `v6/narration.json:214` |
 | V6 s07 | «¿Contraseña y pregunta secreta? Dos factores. Con eso vas sobrada.» | `v6/narration.json:296` |
 | V6 s10 | «Admin fijo y listo. Pedir permiso cada vez es un rollo.» | `v6/narration.json:448` |
+| V10 s03 (RED MARROW) | «Halden2026! Cumple todas tus normas. Así que es segura. Confía en mí.» | `v10/narration.json:100-103` |
+| V10 s04 (RED MARROW) | «Borra los puntos y las barras de la URL y listo. Confía en mí.» | `v10/narration.json:170-173` |
+| V11 s02 (NULL CIPHER) | «Cifrar los gigas con RSA. Sin secreto que repartir. Lógico.» | `v11/narration.json:91` |
+| V11 s03 (NULL CIPHER) | «Cifrar con la privada. Nadie más la tiene, nadie más lo lee. Lógico.» | `v11/narration.json:131` |
+| V11 s06 (NULL CIPHER) | «Adjuntar el hash. Si la tocan, se nota. Si no, es del puerto. Lógico.» | `v11/narration.json:283` |
 
 **Lo que no se puede destripar** en un vídeo de lección:
 
 - La IP del mismo ASN que NULL CIPHER (`sp/sections.ts:106`).
 - «GH es una sola operación», ni que los cinco adversarios trabajan juntos; tampoco la firma «GH» de los dosieres (`sp/sections.ts:49`, `:68`, `:87`, `:106`).
+- El dosier de RED MARROW: los kits contra los operadores de grúas, el malware que llega por un proveedor de mantenimiento y
+  «GH compra acceso a través de terceros» (`sp/sections.ts:68`). V10 no insinúa que venda lo que consigue ni que trabaje con otros adversarios.
+- El dosier de NULL CIPHER: el lector de badges clonado, el certificado autofirmado instalado como raíz «temporalmente» y la nota
+  «el puerto sigue sin inventario» (`sp/sections.ts:49`). V11 no enseña ningún autofirmado, ninguna raíz instalada ni ningún
+  almacén de confianza tocado, no dice «inventario» y no le da a NULL CIPHER IP, dominio ni equipo.
 - Quién es GLASS HARBOR (un contratista con acceso perpetuo) ni el final «el puerto vuelve a operar» (`sp/sections.ts:125`).
   Los contratistas de fondo siguen neutros: el portátil de contratista del NAC (`v1/src/scenes/S10Data.tsx:275`), la cuenta
   `ext.soporte` (`siem/src/data/s05-correlate.ts:11`) y el servidor de 2019 de un contratista (`sp/sp4-part2.ts:146`).
@@ -227,6 +266,7 @@ ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tut
    sp2 da a entender `haldenport.com` («the port authority's real domain», `sp/sp2-part2.ts:227`; `sp/labs-sp2.ts:186`, `sp/sp2-part2.ts:129`).
    El plan pidió anotarlo sin corregir (`plan:631-632`). V6 sigue a V1: su web parecida es `haldenp0rt.example` (`v6/src/data/s08-fatigue.ts:33`),
    lo que da a entender que el IdP vive bajo `haldenport.example`, aunque el host real del IdP y del socio no sale nunca.
+   V11 también sigue a V1: el portal de reservas es `reservas.haldenport.example` (`v11/src/scenes/parts/TlsLine.tsx:61`).
 3. **Hora de la sala de crisis.** `plan:508` dice «4-9 a las 10:00»; V5 enseña 12:00 (`v5/src/data/s01-hook.ts:94`) y el propio plan lo repite en `:548`.
    `notas-v5:37` también habla de las 10:00.
 4. **Cierre de la contención.** `notas-v5:31-33`: «todo se cierra a las 04:30… (antes se decía 03:05)»; la pantalla dice 10:30 (`v5/src/scenes/parts/Board.tsx:62`,
@@ -264,7 +304,7 @@ ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tut
 
 - **El IdP de Halden no enseña segundo factor** en ningún momento de V6: el carril del IdP de s04 solo pide contraseña, y el segundo
   factor sale como norma («ese inicio de sesión debe llevar segundo factor») y en una demo hipotética de «tu móvil», «simulación · sin
-  fecha», reloj 00:04 (`v6/src/data/s08-fatigue.ts:9`). La ficha de V10 fija la MFA del proveedor de identidad para el 30-11; V6 no se adelanta.
+  fecha», reloj 00:04 (`v6/src/data/s08-fatigue.ts:9`). V10 fija la MFA del proveedor de identidad para el 30-11 (`v10/src/data/s03-mfa.ts:31`); V6 no se adelanta.
 - **La bóveda le pone un límite, no lo habría evitado.** La contraseña robada de septiembre sirvió «hasta que alguien se diera cuenta»
   (10:30 del 4-9); con la bóveda, «24 h como mucho, aunque nadie se dé cuenta». Ningún vídeo debe decir que la bóveda o el segundo
   factor habrían parado la 01:52.
@@ -275,6 +315,62 @@ ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tut
 - **Géneros fijados por la voz:** `c.navarro` es «una compañera»; `o.virta`, «un compañero».
 - **«Al atacante» en la voz.** La respuesta de s10-01 dice «Al atacante le vendría de perlas» (`v6/narration.json`, s10-01): lo grabó así y
   Lidia decidió dejarlo, como el «el atacante» de V5b. SILENT PAGER sigue siendo «ella» y un guion nuevo vuelve a «la atacante».
+
+### Notas de V10
+
+- **El 21-10 el proveedor de identidad solo pedía contraseña** («IdP de Halden · pide: contraseña», `v10/src/data/s03-mfa.ts:13`), y por eso
+  acierta el spraying. La MFA, con la lista de contraseñas prohibidas, es una mejora con dueño y fecha, «Sistemas · 30-11», que solo sale en
+  pantalla; la voz dice «Es la MFA» (`v10/narration.json:120`, `notas-v10:16-17`). Cuadra con V6, que tampoco le enseña segundo factor.
+  Un vídeo fechado antes del 30-11 no le pone MFA al IdP, y uno posterior no la da por hecha sin enseñarla.
+- **El registro de RED MARROW.** Tutea a la analista con frases cortas e ironía, como SILENT PAGER, pero es el estafador amable: da consejos
+  de amigo que son mentira y cierra los dos mensajes con «Confía en mí» (`v10/narration.json:101`, `:171`). La narradora lo presenta como
+  «RED MARROW, que vive de engañar» (`:98`); lo de «con correos falsos y memorias USB» se cayó por duración (`notas-v10:29-30`). Ningún texto
+  le pone artículo ni adjetivo con género, y la voz (`sapi/Microsoft Laura` con el efecto `telefono`, `v10/narration.json:11-15`) no lo fija:
+  decisión de Lidia del 2026-10-04 (`plan:1505-1510`). Un vídeo posterior puede fijarlo, igual que SILENT PAGER es «ella» y suena con Pablo.
+- **Las 05:40 y las 05:44 son casualidad.** Coinciden con la entrega al laboratorio y el arranque de `ewfacquire` de V2 (4-9, §2): otra noche
+  y otro hecho (`notas-v10:57-58`). Lo mismo con las 03:12: la voz no dice la hora del acierto para no recordar la pregunta de spl4a y de
+  sp4m11 (`sp/labs-sp4.ts:93`, `sp/sp4-part6.ts:125`), que es del 4-9 y no tiene nada que ver con `r.haugen`.
+- **La guardia no paró el ataque.** Llamó al proveedor a las 05:44; el NetFlow sigue hasta las 06:05 y la voz no dice que acabara por la
+  llamada: «lo que no pediste no se para en tu portal» (`v10/narration.json:254`, `notas-v10:35-37`).
+- **Ni «SOC» ni «la analista» salen en V10**, que habla en segunda persona; «proveedor de identidad» y «DDoS» están en pantalla, no en la
+  voz (`notas-v10:62`).
+- **Parecidos que no son el mismo hecho.** El check de las 900 cuentas, justo antes del vídeo en la lección (`sp/sp2-part4.ts:124`), es otra
+  noche, con la misma `Halden2026!` y sin acierto; la voz no los enlaza. `192.0.2.10` (escaneo bloqueado de la cola tranquila del SIEM, 4-9,
+  `siem/src/data/s08-triage.ts:16`) comparte /24 con `192.0.2.157`, y `198.51.100.23` (`siem/src/data/s04-enrich.ts:16`) con los resolvers:
+  son rangos de documentación y no hay relación. Ninguna IP de V10 cae en `203.0.113.0/24`, la de SILENT PAGER.
+- **Lo que V10 calla a propósito** (no son huecos que rellenar): por qué se cerró la sesión de `r.haugen` (nada de «la guardó» ni «para
+  venderla»); qué se hizo con el `/etc/passwd` del portal; quién lanzó la amplificación DNS, que nadie firma (y no es el DDoS del portal de
+  ferris de spl2a, `plan:1473-1474`); cualquier relación con el caso `IR-2026-0147`, SILENT PAGER o `svc_tosreport`; el FINDING #0147 del
+  escaneo del 1-9 en el mismo portal (`sp/sp4-part3.ts:55`), que es otro fallo; la VPN; y el nombre completo, el área o el género de `r.haugen`.
+
+### Notas de V11
+
+- **El 3-11 no tiene hora.** Es martes (calendario) y queda después de todo lo fechado de Halden (V6 hasta el 28-10, el plazo de V5
+  del 31-10) y antes de la MFA del proveedor de identidad (30-11, V10). Para quien sigue el curso es el primer vídeo de Halden (sp1):
+  no recuerda el caso de septiembre ni la noche de V10.
+- **El portal de V11 es el de V10, sin nada de V10.** La tira «portal de reservas de atraque» (`v11/src/data/s01-hook.ts:12`) es la
+  descripción de `hpa-portal-web-01` (`sp/sp4-part3.ts:56`), pero el nombre del equipo no sale en V11. Ningún vídeo dice qué pudo leer
+  el traversal del 21-10: ni las contraseñas de las navieras, ni la clave del certificado, ni las ofertas. Por eso la oferta falsa de
+  s06 es una hipótesis con el buzón («ejemplo · así no · lo que propone NULL CIPHER», «Imagínate que…»,
+  `v11/src/data/s06-solo-huella.ts:17`, `v11/narration.json:290`), y nadie cambia nada en el portal.
+- **«autenticación no requerida» no choca con la zona de navieras.** El FINDING #0147 del 1-9 (`sp/sp4-part3.ts:57`) habla de
+  explotar el fallo sin credenciales (`PR:N` en el vector CVSS, `:60`), no de que el portal no tenga inicio de sesión.
+- **El registro de NULL CIPHER.** Habla como un manual de procedimiento: infinitivo y ninguna persona gramatical, una razón técnica
+  que suena bien y lleva a la conclusión equivocada, y siempre «Lógico.» al final (§4). No tutea, a diferencia de SILENT PAGER y RED
+  MARROW. Solo da consejos: no ataca nada y no tiene IP, dominio ni equipo en pantalla. La narradora la presenta con el anuncio del
+  jefe de sp1 (`sp/sections.ts:47`): «Aquí aparece NULL CIPHER, una célula de acceso inicial. Busca el primer hueco que no cierre»
+  (`v11/narration.json:88`); en pantalla, «NULL CIPHER · célula de acceso inicial» (`v11/src/data/s02-familias.ts:31`). Ni puertas
+  ni llaves para NULL CIPHER: son la imagen del spraying de RED MARROW en V10.
+- **Género.** Ningún texto de V11 lo marca («una célula» concuerda con la palabra). La voz, `sapi/Microsoft Helena` con el efecto
+  `cifrado` (`v11/narration.json:11-15`), la fija como mujer, igual que «NULL CIPHER neutralizada» en el curso (`sp/sections.ts:49`).
+  Lo decidió la ronda de la tanda 3, que Lidia delegó el 2026-10-05 (`docs/reviews/2026-10-05-fichas-tanda3/decisiones.md:11`,
+  `:197-200`). Helena es también la voz de BLIND ARCHITECT (V16), con otro ritmo y otro efecto; V12 hereda la voz de V11.
+- **La oferta va cifrada para la naviera y firmada por el puerto**, y en la práctica es híbrida: el documento con una clave simétrica,
+  y esa clave por el buzón de la naviera (`v11/narration.json:444`). No se dice dónde guarda el puerto su clave de firma.
+- **Lo que V11 calla a propósito** (no son huecos que rellenar): la IP del portal (el `curl` deja fuera la línea «Connected to…»,
+  `v11/src/data/s01-hook.ts:4`); el nombre de la naviera; dónde vive el portal en la red; cualquier relación con `IR-2026-0147`,
+  SILENT PAGER, RED MARROW o la noche del 21-10; el FINDING #0147; el dosier de NULL CIPHER (§4); y cualquier cambio en el portal,
+  aprobado o no, aunque el anuncio de su jefe hable de «cambios sin aprobar» (`sp/sections.ts:47`).
 
 ### Huecos (ninguna fuente lo dice)
 
@@ -301,7 +397,7 @@ ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tut
 - **Cierre del SIEM.** «CASO 0412 · informe de cierre» el 4-9 (`siem/src/scenes/parts/s10-contain/Closure.tsx:99`) frente a un caso que V5 lleva hasta el 11-9.
 - (Resuelto el 2026-10-04.) **Password spraying del 4-9** frente a la pregunta del logon de las 03:12 (`sp/labs-sp4.ts:93`): Lidia aprobó
   pasar el spraying de la lección a la noche del 20 al 21-10, desde `192.0.2.157` (`sp/sp2-part4.ts:65-69`), como pide la ficha de V10.
-  Ya no cae en la noche del caso; la pregunta de spl4a sigue siendo del 4-9 y no tiene que ver con él.
+  Ya no cae en la noche del caso; la pregunta de spl4a sigue siendo del 4-9 y no tiene que ver con él. V10, publicado el 2026-10-05, lo enseña así (§2, 21-10).
 - **Viñetas de V1 dentro del día del caso.** FIM: `firewall-rules.conf` cambia «hoy · 14:32» (base «ayer · 22:00», `v1/src/scenes/S10Data.tsx:205-214`): si «hoy»
   es el 3-9, es un cambio sin explicar antes del correo. UBA: «03:00 · fuera de la línea base» (`:342`, `v1/narration.json:391`) sin cuenta: no puede ser
   `svc_tosreport`, cuyo único punto fuera de horario es la 01:52 (`siem/src/data/s09-pivot.ts:60`).
@@ -323,6 +419,18 @@ ponen en pantalla a SILENT PAGER (`v1/video.json:8`, `v5/video.json:8`), que tut
 - El 3-9 es jueves; el guion de V1 no nombra el día (`notas-v1:74`).
 - (Superado.) El esbozo de V5b en la tanda 2 del plan decía «simulacro de mesa» y que la caza partía del dosier de SILENT PAGER. V5b,
   ya publicado, separa la mesa del simulacro y saca la hipótesis de lo que enseñó el incidente (la 01:52), no del dosier del jefe de sp4.
+- V10: «el portal no responde en esos 25 minutos y el ataque se para solo» (`plan:1496`). En pantalla solo están la ventana 05:40–06:05 y el
+  «aviso de caída» de la guardia.
+- V10: lo que se hace esa misma mañana además de las tres acciones de s03, es decir, `192.0.2.157` bloqueada en el perímetro, el visor que
+  resolverá y confinará la ruta y el filtrado anti-DDoS en el proveedor (`plan:1500-1503`, `notas-v10:36-37`). En pantalla son una acción
+  general («bloquear el origen, no las cuentas»), una defensa y una respuesta, sin fecha.
+- V10: «el umbral de bloqueo del puerto es de 5 fallos» (`plan:1486-1487`). La pantalla pone «umbral: 5 fallos» en la puerta de contraejemplo
+  de la imagen, no en el registro.
+- V11: el certificado del portal es `CN=reservas.haldenport.example`, con clave ECC P-256 y válido desde el 11-11-2025; y el propio
+  servidor termina TLS (`plan:1749-1755`). En pantalla solo salen el emisor, «verify ok» y la caducidad, esta a media luz.
+- V11: el portal guarda las contraseñas de las navieras con salt por cuenta y key stretching (`plan:1756-1758`). En pantalla, «el portal
+  guarda su huella», no la contraseña cifrada (`v11/src/data/s05-contrasenas.ts:22-25`); la sal y el estiramiento se enseñan, pero no
+  se dicen del portal.
 
 ## 6. Nombres libres
 
@@ -341,7 +449,7 @@ Nombres de fondo ya usados, neutros (no tocan el caso). Mejor reutilizarlos que 
 | 10.20.6.23 · 10.20.3.54 · 10.20.9.12 | hosts de la cola de avisos | `siem/src/data/s06-fatigue.ts:30-33` |
 | R-112 · R-087 · R-203 · EXC-01…03 | reglas ruidosas del SIEM y sus exclusiones | `siem/src/data/s06-fatigue.ts:45-47`, `siem/src/data/s07-tuning.ts:53-69` |
 | `fw-perimetro-01` · 192.0.2.10 · `ws-ops-12` | cola tranquila del SIEM | `siem/src/data/s08-triage.ts:14-17` |
-| `hpa-portal-web-01` | portal público de reservas de atraque | `sp/sp4-part3.ts:56` |
+| `hpa-portal-web-01` | portal público de reservas de atraque; V10 lo usa para el traversal y la amplificación DNS del 21-10, y V11 se conecta a él desde fuera como `reservas.haldenport.example` (ya no es solo relleno, ver §3) | `sp/sp4-part3.ts:56`, `v10/src/data/s04-traversal.ts:10-11`, `v11/src/scenes/parts/TlsLine.tsx:61` |
 | HALDEN-OPS | wifi WPA2 de la terminal | `sp/sp4-part1.ts:384` |
 | muelle norte | servidor de planificación de grúas (R-014) | `sp/sp5-part2.ts:114` |
 

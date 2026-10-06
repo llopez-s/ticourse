@@ -482,8 +482,8 @@ Las exam cards se listan en el orden de las escenas:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
 - **s4m3 ACH (Principal): V9, publicada el 2026-10-04 (YouTube `TjVViiBTeds`), ficha completa abajo.** La matriz del extracto de la
   lección, celda a celda, con supuestos clave, diagnosticidad y sensibilidad; primera aparición de PAPER CRANE.
-- **sp2m7 (Cápsula) «Ataques en los logs»: V10, guion congelado el 2026-10-04; escenas y póster montados el 2026-10-05
-  sobre la línea de tiempo estimada, a falta de la grabación, que va en la misma sesión que V11.** La noche
+- **sp2m7 (Cápsula) «Ataques en los logs»: V10, publicada el 2026-10-05 (YouTube `uHHv-1hTYTE`, la primera subida por la
+  API, con `youtube-upload.mjs`), ficha completa abajo.** La noche
   del 20 al 21-10: spraying, traversal y amplificación DNS; primera aparición de RED MARROW.
 
 **Orden propuesto para el resto de la tanda 2** (2026-10-01, pendiente de Lidia): V5b, V6, V7, V8, V9 y V10.
@@ -1573,6 +1573,10 @@ un script.
 > sp1m7). Se graba en la misma sesión que V10 y su guion se escribe justo después de aprobarse. La versión vigente de
 > escenas y guion será `video/cripto-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en
 > `video/cripto-halden/out/script-notes.md`.
+>
+> **Producido y publicado**: subido por la API el 2026-10-05 (YouTube `6jyHqrkMOZQ`, privado) y publicado por Lidia;
+> 8:30, 10 escenas, 7 tarjetas, 2 preguntas, 3 mensajes de NULL CIPHER (voz `sapi/Microsoft Helena` con el efecto nuevo `cifrado`), voz de
+> Lidia, música de V4 y V5. En la lección sp1m6, donde dice «Inserción», con su línea de entrada.
 >
 > **Revisada el 2026-10-05** (exactitud y canon, `revision-V11-V12.md`): la pintura ya dice su límite (no te dice con quién
 > has mezclado, y eso lo pone el sello del servidor: s08, s09 y concepto 5, «sin ningún secreto previo»); las dos preguntas

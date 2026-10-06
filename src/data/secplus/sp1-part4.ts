@@ -143,6 +143,17 @@ HÍBRIDO (lo que hace TLS en la práctica)
     },
     {
       t: 'p',
+      md: 'Antes de pasar a la PKI, júntalo todo en el portal del puerto: quién usa qué clave y por qué una conexión usa las dos familias.',
+    },
+    {
+      t: 'video',
+      title: 'Criptografía: quién usa qué clave y por qué TLS es híbrido',
+      youtube: '6jyHqrkMOZQ',
+      poster: 'videos/cripto-halden-poster.png',
+      transcript: 'videos/cripto-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Ya sabes qué hace cada primitiva. Queda la pregunta incómoda: cuando recibes una **public key**, ¿cómo sabes que pertenece a quien dice? Esa confianza no la da la matemática, la da la **PKI** — certificados, autoridades y raíces de confianza — que es el tema de la siguiente lección.',
     },
   ],
