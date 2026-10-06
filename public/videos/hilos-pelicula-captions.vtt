@@ -1,584 +1,584 @@
 WEBVTT
 
 1
-00:00:01.400 --> 00:00:04.967
+00:00:01.400 --> 00:00:04.033
 Tienes varias fotos
 de la intrusión en Meridian.
 
 2
-00:00:04.967 --> 00:00:09.700
+00:00:04.033 --> 00:00:08.567
 Y Orbital, uno de sus proveedores,
 te pasa las de esta mañana.
 
 3
-00:00:09.700 --> 00:00:16.100
+00:00:08.567 --> 00:00:13.833
 Toca pasar de la foto a la película.
 ¿Es el mismo atacante? ¿Qué hará después?
 
 4
-00:00:16.100 --> 00:00:20.300
+00:00:14.167 --> 00:00:17.533
 Para saberlo, montas
 la película de cada intrusión,
 
 5
-00:00:20.300 --> 00:00:25.300
+00:00:17.533 --> 00:00:21.133
 miras si las dos son del mismo
 y te adelantas a lo que viene.
 
 6
-00:00:25.300 --> 00:00:28.733
+00:00:21.200 --> 00:00:25.867
 Por si no has visto el vídeo del diamante,
 
 7
-00:00:28.733 --> 00:00:32.667
+00:00:25.867 --> 00:00:28.400
 cada evento es la foto
 de un momento del ataque.
 
 8
-00:00:32.667 --> 00:00:37.000
+00:00:28.400 --> 00:00:31.900
 Quién, con qué, por dónde y contra quién.
 
 9
-00:00:37.833 --> 00:00:43.133
+00:00:33.233 --> 00:00:37.000
 La película de Meridian la montas
 sobre las siete fases de un ataque,
 
 10
-00:00:43.133 --> 00:00:44.600
+00:00:37.000 --> 00:00:38.433
 la kill chain.
 
 11
-00:00:44.600 --> 00:00:48.433
+00:00:38.433 --> 00:00:41.567
 Cada foto va a su sitio,
 por fecha y por fase.
 
 12
-00:00:48.433 --> 00:00:54.567
+00:00:41.567 --> 00:00:46.200
 El lunes dos llega un correo
 con un currículum, que es la entrega.
 
 13
-00:00:54.567 --> 00:00:57.767
+00:00:46.200 --> 00:00:48.333
 Se abre el adjunto
 y se instala un programa,
 
 14
-00:00:57.767 --> 00:01:00.767
+00:00:48.333 --> 00:00:50.533
 con una tarea programada para quedarse.
 
 15
-00:01:00.767 --> 00:01:04.933
+00:00:50.533 --> 00:00:54.200
 Luego llama a casa,
 al servidor del atacante, el C2.
 
 16
-00:01:04.933 --> 00:01:10.100
+00:00:54.267 --> 00:00:59.500
 Tres días después, una de esas
 llamadas hace saltar la alerta, E7.
 
 17
-00:01:10.100 --> 00:01:14.200
+00:00:59.533 --> 00:01:03.433
 El sábado, en E9, el atacante
 ya está en la última fase.
 
 18
-00:01:14.200 --> 00:01:20.167
+00:01:03.433 --> 00:01:07.633
 Comprime archivos en una carpeta
 temporal y saca muchos datos de golpe.
 
 19
-00:01:20.167 --> 00:01:24.533
+00:01:07.800 --> 00:01:11.933
 Así colocadas, las fotos ya te
 cuentan la historia entera.
 
 20
-00:01:24.533 --> 00:01:28.200
+00:01:11.933 --> 00:01:15.167
 Únelas con un hilo y dejan
 de ser fotos sueltas.
 
 21
-00:01:28.200 --> 00:01:34.133
+00:01:15.167 --> 00:01:19.533
 Ahora son la película de una intrusión,
 y eso se llama activity thread.
 
 22
-00:01:34.133 --> 00:01:39.300
+00:01:19.600 --> 00:01:23.367
 Hay uno por víctima, siempre
 en orden de tiempo y de fase.
 
 23
-00:01:39.300 --> 00:01:42.900
+00:01:23.400 --> 00:01:26.700
 En pocas palabras,
 de los eventos sale el hilo.
 
 24
-00:01:42.900 --> 00:01:47.800
+00:01:26.700 --> 00:01:30.433
 El de Meridian está completo,
 y falta el de Orbital.
 
 25
-00:01:48.633 --> 00:01:54.600
+00:01:31.733 --> 00:01:36.533
 Lo de Orbital llega en crudo, tal como
 lo registraron sus sistemas esta mañana.
 
 26
-00:01:54.600 --> 00:02:00.100
+00:01:36.533 --> 00:01:40.133
 A primera hora le llega a Finanzas
 un correo con un pedido falso.
 
 27
-00:02:00.100 --> 00:02:04.100
+00:01:40.133 --> 00:01:43.067
 Luego se ejecuta el adjunto
 y deja un programa con nombre
 
 28
-00:02:04.100 --> 00:02:08.900
+00:01:43.067 --> 00:01:47.367
 de servicio de Windows. Enseguida,
 ese programa llama a casa.
 
 29
-00:02:08.900 --> 00:02:15.333
+00:01:47.467 --> 00:01:51.467
 En la fila de Orbital se encienden las
 fases de la entrega a la llamada a casa.
 
 30
-00:02:15.333 --> 00:02:18.900
+00:01:51.467 --> 00:01:54.033
 La última fase todavía no tiene foto.
 
 31
-00:02:18.900 --> 00:02:26.200
+00:01:54.067 --> 00:01:58.900
 Es otro hilo, porque es otra víctima.
 Y como va a medias, es un hilo parcial.
 
 32
-00:02:29.167 --> 00:02:31.033
+00:02:05.300 --> 00:02:07.033
 Se cuela GLASS VIPER,
 
 33
-00:02:31.033 --> 00:02:36.400
+00:02:07.033 --> 00:02:11.033
 que no es más que tu mote para el
 intruso de Meridian y lo que usa.
 
 34
-00:02:36.400 --> 00:02:39.667
+00:02:11.033 --> 00:02:13.433
 Qué prisa por desmarcarse.
 
 35
-00:02:40.500 --> 00:02:46.867
+00:02:14.833 --> 00:02:19.800
 Eso habrá que verlo. Pon las dos
 películas en una tabla, una frente a otra.
 
 36
-00:02:46.867 --> 00:02:53.233
+00:02:19.900 --> 00:02:24.933
 Lo que comparten puede unirlas, y eso
 es un enlace, pero no todos pesan igual.
 
 37
-00:02:53.233 --> 00:02:56.900
+00:02:24.933 --> 00:02:28.433
 Los señuelos no se parecen,
 y los dominios tampoco.
 
 38
-00:02:56.900 --> 00:03:00.100
+00:02:28.433 --> 00:02:30.700
 Pero el atacante cambia
 las dos cosas gratis,
 
 39
-00:03:00.100 --> 00:03:03.233
+00:02:30.700 --> 00:02:33.467
 así que esa diferencia no separa nada.
 
 40
-00:03:03.233 --> 00:03:06.833
+00:02:33.467 --> 00:02:36.700
 Piensa en dos cajas trampa,
 una en cada puerta.
 
 41
-00:03:06.833 --> 00:03:11.467
+00:02:36.700 --> 00:02:39.400
 Les cambia el envoltorio
 y el número al que llama el aparato,
 
 42
-00:03:11.467 --> 00:03:13.633
+00:02:39.400 --> 00:02:41.467
 porque le cuesta poco.
 
 43
-00:03:13.633 --> 00:03:18.800
+00:02:41.567 --> 00:02:45.767
 En la fila siguiente miras dentro
 de cada caja, en el programa.
 
 44
-00:03:18.800 --> 00:03:24.700
+00:02:45.767 --> 00:02:50.133
 Al compilar, a veces la carpeta donde
 se hizo se queda escrita en el programa.
 
 45
-00:03:24.700 --> 00:03:28.300
+00:02:50.133 --> 00:02:52.733
 Es como la etiqueta
 del taller, por dentro.
 
 46
-00:03:28.300 --> 00:03:34.800
+00:02:52.733 --> 00:02:57.933
 No siempre la lleva. Pero si otro programa
 trae la misma, salen del mismo taller.
 
 47
-00:03:34.800 --> 00:03:38.633
+00:02:58.200 --> 00:03:01.267
 Aquí coincide letra por letra
 en los dos programas.
 
 48
-00:03:38.633 --> 00:03:41.967
+00:03:01.267 --> 00:03:04.500
 Los analistas la llaman la ruta del PDB.
 
 49
-00:03:41.967 --> 00:03:46.133
+00:03:04.500 --> 00:03:07.667
 Una ruta única como esta
 es rara y cara de cambiar,
 
 50
-00:03:46.133 --> 00:03:49.567
+00:03:07.667 --> 00:03:10.200
 y por eso cuenta como enlace fuerte.
 
 51
-00:03:49.567 --> 00:03:51.933
+00:03:10.300 --> 00:03:12.667
 El envoltorio y el número cambian.
 
 52
-00:03:51.933 --> 00:03:56.067
+00:03:12.667 --> 00:03:16.033
 La etiqueta del taller,
 cuando está, se repite.
 
 53
-00:03:56.900 --> 00:04:02.700
+00:03:17.433 --> 00:03:23.967
 Los dos programas llaman por HTTPS
 al puerto 443, como casi todo internet,
 
 54
-00:04:02.700 --> 00:04:04.467
+00:03:23.967 --> 00:03:25.733
 y eso es muy débil.
 
 55
-00:04:04.467 --> 00:04:08.333
+00:03:25.733 --> 00:03:29.567
 También cuenta que Orbital
 sea proveedor de Meridian,
 
 56
-00:04:08.333 --> 00:04:14.433
+00:03:29.567 --> 00:03:34.867
 porque encaja con alguien que va a por su
 cadena de suministro. Es un enlace medio.
 
 57
-00:04:14.433 --> 00:04:18.233
+00:03:35.033 --> 00:03:38.467
 HTTPS es como PowerShell,
 Cobalt Strike o el phishing.
 
 58
-00:04:18.233 --> 00:04:22.400
+00:03:38.467 --> 00:03:42.433
 Los usan miles de atacantes,
 y no distinguen a ninguno.
 
 59
-00:04:22.400 --> 00:04:29.200
+00:03:42.433 --> 00:03:48.433
 Son la cinta de embalar marrón, que llevan
 las dos cajas y todas las del mundo.
 
 60
-00:04:29.200 --> 00:04:32.700
+00:03:48.500 --> 00:03:52.067
 Ojo, que detectar y agrupar
 no piden lo mismo.
 
 61
-00:04:32.700 --> 00:04:38.767
+00:03:52.067 --> 00:03:56.533
 Para que una detección dure, te sirve
 lo que al atacante le cuesta cambiar.
 
 62
-00:04:38.767 --> 00:04:41.733
+00:03:56.533 --> 00:03:59.167
 Para agrupar, además, tiene que ser raro.
 
 63
-00:04:41.733 --> 00:04:45.967
+00:03:59.167 --> 00:04:04.167
 Por eso PowerShell o HTTPS
 al 443 son enlaces débiles.
 
 64
-00:04:45.967 --> 00:04:50.767
+00:04:04.167 --> 00:04:07.833
 Ya está la tabla entera,
 y cada fila tiene su peso.
 
 65
-00:04:50.767 --> 00:04:56.867
+00:04:07.967 --> 00:04:12.900
 Con dominios distintos y la misma
 ruta del PDB, ¿agrupas los dos hilos?
 
 66
-00:05:01.833 --> 00:05:06.167
+00:04:18.600 --> 00:04:22.967
 Sí, los agrupas. La ruta
 sale de su taller y es rara.
 
 67
-00:05:06.167 --> 00:05:12.233
+00:04:22.967 --> 00:04:27.333
 Cambiar de dominio le sale gratis,
 y que no coincida no rompe nada.
 
 68
-00:05:12.233 --> 00:05:18.100
+00:04:27.400 --> 00:04:32.033
 La tabla se queda en dos marcas,
 la ruta, que es fuerte, y el proveedor,
 
 69
-00:05:18.100 --> 00:05:21.800
+00:04:32.033 --> 00:04:35.333
 que es medio. El resto sigue sin contar.
 
 70
-00:05:21.800 --> 00:05:25.167
+00:04:35.400 --> 00:04:38.800
 Con eso, las dos películas
 entran en el mismo marco.
 
 71
-00:05:25.167 --> 00:05:29.267
+00:04:38.800 --> 00:04:42.133
 Cuando unes hilos con enlaces
 fuertes que puedes justificar,
 
 72
-00:05:29.267 --> 00:05:31.400
+00:04:42.133 --> 00:04:44.100
 tienes un activity group.
 
 73
-00:05:31.400 --> 00:05:37.400
+00:04:44.100 --> 00:04:48.700
 Por ahora lo dejas como grupo candidato,
 que con dos hilos es lo honesto.
 
 74
-00:05:37.400 --> 00:05:39.533
+00:04:48.700 --> 00:04:50.500
 Repasa cómo lo has montado.
 
 75
-00:05:39.533 --> 00:05:45.233
+00:04:50.500 --> 00:04:54.800
 De los eventos sacas un hilo por víctima,
 comparas los hilos y, si cuadran,
 
 76
-00:05:45.233 --> 00:05:47.400
+00:04:54.800 --> 00:04:56.700
 los juntas en un grupo.
 
 77
-00:05:47.400 --> 00:05:53.033
+00:04:56.733 --> 00:05:00.700
 Ese grupo es el paso previo
 a los nombres que ves en los informes,
 
 78
-00:05:53.033 --> 00:05:57.100
+00:05:00.700 --> 00:05:03.867
 un APT con número o un intrusion set.
 
 79
-00:06:01.433 --> 00:06:07.133
+00:05:10.000 --> 00:05:13.633
 Quién eres no lo pone en ningún
 sitio, y el grupo tampoco lo dice.
 
 80
-00:06:07.133 --> 00:06:10.233
+00:05:13.633 --> 00:05:16.167
 Por eso su marco va sin nombre.
 
 81
-00:06:10.233 --> 00:06:13.767
+00:05:16.233 --> 00:05:19.133
 Las dos cajas salen
 del mismo taller, eso sí.
 
 82
-00:06:13.767 --> 00:06:17.500
+00:05:19.133 --> 00:05:21.767
 Pero la puerta del taller no tiene placa.
 
 83
-00:06:17.500 --> 00:06:20.500
+00:05:21.767 --> 00:05:24.333
 Agrupar te dice qué
 intrusiones van juntas.
 
 84
-00:06:20.500 --> 00:06:25.067
+00:05:24.333 --> 00:05:28.267
 Saber quién está detrás es atribuir,
 y eso pide otras pruebas.
 
 85
-00:06:25.067 --> 00:06:31.067
+00:05:28.267 --> 00:05:33.600
 Agrupar no es atribuir. Los niveles de
 atribución los ves en la sección cuatro.
 
 86
-00:06:31.067 --> 00:06:34.900
+00:05:33.600 --> 00:05:36.333
 Dicho de otra manera,
 ya sabes qué va junto.
 
 87
-00:06:34.900 --> 00:06:40.767
+00:05:36.333 --> 00:05:40.767
 Quién es, todavía no,
 y para lo que viene no te hace falta.
 
 88
-00:06:45.100 --> 00:06:48.833
+00:05:47.233 --> 00:05:50.400
 Así empezó también
 lo de Meridian, el lunes dos.
 
 89
-00:06:48.833 --> 00:06:52.700
+00:05:50.400 --> 00:05:53.033
 Y aquella película
 no se quedó en la llamada.
 
 90
-00:06:52.700 --> 00:06:56.933
+00:05:53.033 --> 00:05:56.233
 Coloca la película de Meridian
 encima de la de Orbital.
 
 91
-00:06:56.933 --> 00:07:01.467
+00:05:56.233 --> 00:05:59.733
 De la entrega a la llamada
 a casa, las fases coinciden.
 
 92
-00:07:01.467 --> 00:07:05.667
+00:05:59.733 --> 00:06:03.067
 El fotograma del sábado cae
 justo en el hueco de Orbital.
 
 93
-00:07:05.667 --> 00:07:08.233
+00:06:03.067 --> 00:06:04.733
 Es lo que vino después en Meridian,
 
 94
-00:07:08.233 --> 00:07:13.533
+00:06:04.733 --> 00:06:08.633
 comprimir en una carpeta temporal
 y sacar muchos datos de golpe.
 
 95
-00:07:13.533 --> 00:07:18.233
+00:06:08.767 --> 00:06:13.000
 Como el hilo de Orbital encaja
 en el grupo, heredas sus hipótesis.
 
 96
-00:07:18.233 --> 00:07:22.300
+00:06:13.000 --> 00:06:16.767
 Qué hará después, con qué
 herramientas y qué busca.
 
 97
-00:07:22.300 --> 00:07:28.800
+00:06:16.767 --> 00:06:21.433
 Ya tienes una buena pista de la escena
 que viene. No la sabes, la compruebas.
 
 98
-00:07:28.800 --> 00:07:33.967
+00:06:21.500 --> 00:06:26.500
 Desde ese hueco salen otros caminos
 posibles, otra carpeta u otro destino.
 
 99
-00:07:33.967 --> 00:07:36.967
+00:06:26.500 --> 00:06:29.033
 Lo que hizo y lo que podría
 hacer, superpuestos,
 
 100
-00:07:36.967 --> 00:07:39.567
+00:06:29.033 --> 00:06:31.633
 forman un activity-attack graph.
 
 101
-00:07:39.567 --> 00:07:46.067
+00:06:31.633 --> 00:06:36.433
 Te sirve para adelantarte, y no solo
 para reconocer lo que ya has visto.
 
 102
-00:07:46.900 --> 00:07:52.300
+00:06:37.667 --> 00:06:41.433
 En Orbital, el atacante ha llegado
 hasta la llamada a casa, el C2.
 
 103
-00:07:52.300 --> 00:07:56.200
+00:06:41.433 --> 00:06:44.000
 ¿Esperas a ver qué hace, o buscas ya?
 
 104
-00:08:00.100 --> 00:08:03.633
+00:06:48.467 --> 00:06:51.567
 Si esperas a que saque
 los datos para confirmarlo,
 
 105
-00:08:03.633 --> 00:08:06.900
+00:06:51.567 --> 00:06:54.167
 te cuesta justo lo que quieres proteger.
 
 106
-00:08:06.900 --> 00:08:07.733
+00:06:54.167 --> 00:06:55.167
 Buscas ya.
 
 107
-00:08:07.733 --> 00:08:11.567
+00:06:55.167 --> 00:06:57.133
 Lo que el grupo hizo
 en Meridian después de llamar
 
 108
-00:08:11.567 --> 00:08:15.700
+00:06:57.133 --> 00:07:00.067
 a casa te da una hipótesis
 que puedes comprobar.
 
 109
-00:08:15.700 --> 00:08:18.067
+00:07:00.067 --> 00:07:02.600
 Meridian le pasa a Orbital qué buscar,
 
 110
-00:08:18.067 --> 00:08:23.267
+00:07:02.600 --> 00:07:07.600
 archivos comprimidos en carpetas
 temporales y salidas de datos muy grandes.
 
 111
-00:08:23.267 --> 00:08:28.333
+00:07:07.867 --> 00:07:11.400
 Esta noche, Orbital vigila
 las fases que aún no le han llegado,
 
 112
-00:08:28.333 --> 00:08:31.667
+00:07:11.400 --> 00:07:13.667
 las que el grupo ya hizo en Meridian.
 
 113
-00:08:31.667 --> 00:08:38.567
+00:07:13.667 --> 00:07:18.200
 Con lo cual, la película de Meridian acaba
 siendo una lista de cosas que buscar.
 
 114
-00:08:39.400 --> 00:08:42.133
+00:07:19.600 --> 00:07:22.167
 Antes de irte, un repaso rápido.
 
 115
-00:08:42.133 --> 00:08:47.600
+00:07:22.167 --> 00:07:25.533
 Un evento es una foto, y los de una
 intrusión, en orden y por fases,
 
 116
-00:08:47.600 --> 00:08:49.400
+00:07:25.533 --> 00:07:27.133
 son su película.
 
 117
-00:08:49.400 --> 00:08:53.833
+00:07:27.200 --> 00:07:30.733
 Para juntar dos películas,
 busca lo raro de su taller,
 
 118
-00:08:53.833 --> 00:08:57.967
+00:07:30.733 --> 00:07:34.433
 como una ruta del PDB que sea
 única. Lo común no une.
 
 119
-00:08:57.967 --> 00:09:01.400
+00:07:34.433 --> 00:07:37.700
 Lo barato, si no coincide, no separa.
 
 120
-00:09:01.400 --> 00:09:04.700
+00:07:37.767 --> 00:07:40.133
 Y un grupo no es un nombre, es un plan.
 
 121
-00:09:04.700 --> 00:09:10.667
+00:07:40.133 --> 00:07:43.533
 Lo que hizo en una víctima te
 da hipótesis para la siguiente.
 
 122
-00:09:10.667 --> 00:09:13.733
+00:07:43.767 --> 00:07:46.667
 Lo siguiente, las diez
 preguntas de la lección.
 
 123
-00:09:13.733 --> 00:09:18.367
+00:07:46.667 --> 00:07:50.167
 Ninguna foto viene sola,
 siempre hay una película detrás.
