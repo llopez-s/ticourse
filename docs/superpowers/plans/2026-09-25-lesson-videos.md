@@ -1824,6 +1824,10 @@ Como en V6, el cierre vive dentro del último capítulo de contenido, así que e
 > (sp1m6) con una frase de puente. Se graba en la misma sesión que V13. La versión vigente de escenas y guion será
 > `video/pki-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/pki-halden/out/script-notes.md`.
 >
+> **Producido y subido**: por la API el 2026-10-06 (YouTube `zEhyYU7Vuwc`, privado hasta que Lidia lo publique); 3:53,
+> 6 escenas, 4 tarjetas, 1 pregunta, 2 mensajes de NULL CIPHER (voz `sapi/Microsoft Helena` con `cifrado`, como en V11),
+> voz de Lidia, música de V4 y V5. En la lección sp1m7, donde dice «Inserción», con su línea de entrada.
+>
 > **Revisada el 2026-10-05** (exactitud y canon, `revision-V11-V12.md`): la raíz está «ya en el trust store del cliente»,
 > no «de serie» (tarjeta de s03 e imagen del ancla); la revocación, en condicional y solo con los dos motivos de la lección,
 > sin decir cómo se filtraría una clave; y el plan de red de V16 se aprueba el 20-11 y va por fases desde el 1-12. De los

@@ -392,6 +392,17 @@ El root ya está en el trust store del sistema; por eso la cadena "cierra".`,
     },
     {
       t: 'p',
+      md: 'Antes de seguir con la gestión de claves, míralo en una consola: una cadena a la que le falta un eslabón y cómo se entera un cliente de que un certificado ya no vale.',
+    },
+    {
+      t: 'video',
+      title: 'PKI en la consola: el eslabón que falta, CRL y OCSP',
+      youtube: 'zEhyYU7Vuwc',
+      poster: 'videos/pki-halden-poster.png',
+      transcript: 'videos/pki-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Dos conceptos de gestión cierran la parte de PKI. **Key escrow**: una copia de la **private key** (o de la clave de cifrado) se deposita en un tercero de confianza o en un sistema controlado por la organización, de modo que se pueda **recuperar** si la usuaria pierde la clave, deja la empresa, o si hay una orden legal. Es imprescindible para claves de **cifrado** (si se pierde, se pierden los datos) y debe evitarse para claves de **firma** (si otra persona puede firmar en tu nombre, adiós non-repudiation). **Key management** es el ciclo de vida completo: generación con entropía adecuada, almacenamiento protegido, distribución, **rotation** periódica, revocación y destrucción segura. La mayor parte de los incidentes criptográficos reales no son de algoritmos rotos, sino de claves mal gestionadas: en repositorios de código, en scripts, sin rotar en años.',
     },
     { t: 'h', text: 'Raíces de confianza en hardware' },
