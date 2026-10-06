@@ -4,17 +4,17 @@ Simulación educativa con datos ficticios · Alertópolis — material independi
 [00:00] I · La muestra — La copia que llamó a casa
 Te ha llegado una copia del programa de esta alerta en Meridian. Esa copia es una muestra. Y puede contarte mucho. Sin avisar a su dueño, verás qué es suyo, qué es ruido y quiénes son sus parientes.
 
-[00:17] I · La muestra — Antes de abrirla
+[00:15] I · La muestra — Antes de abrirla
 [Mensaje interceptado · HOLLOW LANTERN] «Súbela a un servicio público. Cuantos más ojos, mejor.» Más ojos, y entre ellos los suyos. Si la ven, pueden saber que los has descubierto y cambiar de dominios. Y de eso se encarga quien te lo propone. Piensa en un coche raro en tu calle. Buscas la matrícula sin dejarle una nota en el parabrisas. Con la muestra, igual. Buscas su hash, un código que sale del fichero, sin subirlo. Ni rastro, porque nadie la ha subido ahí, lo normal en una muestra dirigida, hecha a medida. Así que la detonas en un sandbox propio, una máquina aislada, de usar y tirar, para ver qué hace.
 
-[00:55] I · La muestra — Dos mitades
+[00:53] I · La muestra — Dos mitades
 El sandbox te devuelve un informe en dos mitades. Arriba, lo que se lee sin ejecutarla, el análisis estático. Abajo, lo que hizo al detonarla, como crear una tarea programada para volver a arrancar sola. Eso lo ves con ella en marcha. Y mirarla así es el análisis dinámico. Una mitad cuenta lo que lleva escrito, y la otra, lo que hace.
 
-[01:18] II · Leer el informe — Cinco llamadas
+[01:15] II · Leer el informe — Cinco llamadas
 Ahora, con lupa. En el informe salen cinco sitios. ¿Bloqueas los cinco? No. El informe no es un veredicto, porque el sandbox lo apunta todo. Como en un teléfono prestado, salen las llamadas de quien lo usa y las del propio teléfono. Dos son del atacante, su servidor de siempre y uno de repuesto. Los otros tres los llama Windows solo, con muestra o sin ella. Si los bloqueas todos, ningún equipo de Meridian se pone en hora ni comprueba su conexión. Gol en propia puerta. El candado, solo en los dos del actor. Lo demás es ruido, y separarlo antes de bloquear es el triaje. Y el de repuesto lo ha destapado el sandbox.
 
-[02:05] II · Leer el informe — Lo que lleva escrito
+[02:02] II · Leer el informe — Lo que lleva escrito
 [Mensaje interceptado · HOLLOW LANTERN] «Bloquea esos dos, analista. Tengo más esperando su turno.» Bloquearlos sigue valiendo: le obligas a gastar otro. Un dominio lo cambia en un rato. Rehacer la muestra de arriba abajo, no. Imagínatela como una prenda a medida. Su hash es esa prenda exacta. Un byte distinto, y ya es otra. Las piezas son las funciones que pide a Windows, sus imports. El hash de sus imports, el imphash, lo comparten tres muestras que ya tenías. Apunta a la familia. Y el patrón casi calca el de una variante anterior. Lo mide el ssdeep, y delata una variante recompilada. Al compilar, a veces la carpeta donde se hizo se queda escrita en el programa. Es como la etiqueta del taller, cosida en el cuello, por dentro. No siempre la lleva. Pero si otro programa trae la misma, salen del mismo taller. Es la ruta del PDB. La fecha de compilación, en cambio, la pone quien compila, y puede ser falsa. Un dominio le sale en un rato. Lo difícil es una prenda que no recuerde a la anterior.
 
-[03:08] III · Para el examen — Tres reglas
+[03:06] III · Para el examen — Tres reglas
 Te dejo tres reglas. Una muestra hecha a medida no se sube a la ligera. Primero, su hash. Lo que Windows hace solo es ruido. Sepáralo antes de bloquear. Y para dar con sus parientes, imphash, ssdeep y la ruta del PDB. La fecha de compilación, no. Sigue con las preguntas de la lección. Y mira siempre el cuello por dentro.
