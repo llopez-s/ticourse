@@ -1,0 +1,136 @@
+{
+  "title": "PKI en la consola: el eslabón que falta, CRL y OCSP",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 210,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "La cadena"
+    },
+    {
+      "n": 2,
+      "title": "¿Sigue valiendo?"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "No encuentro al emisor",
+      "goal": "La línea de V11 a media luz (`SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519 / id-ecPublicKey`) y, encima, la pregunta con la que acabó: «¿cómo sabes que esa clave pública es del puerto?» (la frase de puente). Al responder («te lo dice su certificado»), título «PKI: la cadena y la revocación» (hacia los 9 s, siempre antes de los 12) y la promesa en tres chips: «leer la cadena · arreglarla · saber si sigue valiendo». Después, una tira: «lunes 9-11 · por la tarde · certificado nuevo en el portal · el anterior caducaba el 11-11». Y el mensaje de la naviera: «martes 10-11 · 08:15 · desde ayer por la tarde nuestra integración no conecta con vuestro portal: `unable to get local issuer certificate`»",
+      "targetSec": 24,
+      "wordBudget": 65,
+      "requiredCues": [
+        "bridge",
+        "title",
+        "promise",
+        "renewal",
+        "message"
+      ]
+    },
+    {
+      "id": "s02-cadena",
+      "chapter": 1,
+      "title": "Un solo eslabón",
+      "goal": "Terminal, «10-11 · 08:40»: `openssl s_client -connect reservas.haldenport.example:443 -showcerts`. La salida, de OpenSSL 3 (copiada de una salida real al montar la escena, no de memoria): `depth=0 CN = reservas.haldenport.example` · `verify error:num=20:unable to get local issuer certificate` · `verify return:1` · `depth=0 CN = reservas.haldenport.example` · `verify error:num=21:unable to verify the first certificate` · `verify return:1` · `depth=0 CN = reservas.haldenport.example` · `verify return:1` · `---` · `Certificate chain` con una sola entrada, `0 s:CN = reservas.haldenport.example` · `i:CN = Confianza Global TLS Issuing CA 3` · `a:PKEY: id-ecPublicKey, 256 (bit); sigalg: ecdsa-with-SHA384` · `v:NotBefore: Nov  9 00:00:00 2026 GMT; NotAfter: May 27 23:59:59 2027 GMT`, el bloque del certificado abreviado y, al final, `Verify return code: 21 (unable to verify the first certificate)`. Dónde mirar, por pasos y con el resto atenuado: la lista de la cadena, que solo tiene la entrada `0` (`one-link`); la línea `i:`, quién lo firmó, rotulada «emisor»; el error 20, el aviso, «no encuentro al emisor». Mientras la voz dice que por encima hay dos CA, dos fichas sin dibujo, «intermedia» y «raíz». La imagen (`anchor`): la cadena del ancla, **sin rótulos y sin decidir nada todavía**: el último eslabón, el del portal, sólido; encima, el eslabón del medio y el ancla, **los dos en línea discontinua e igual de apagados**. Con «no manda ninguna de las dos» (`choice`), los dos parpadean a la vez. Pregunta para pensar, con dos botones: «raíz» e «intermedia». Con la respuesta (`intermediate`), el ancla se vuelve sólida, ya a bordo, rotulada «raíz · Confianza Global Root · ya está en tu equipo», y el eslabón del medio se queda en discontinua, rotulado INTERMEDIATE CA («Issuing CA 3 · no ha llegado»). Nombres LEAF, ROOT CA, TRUST STORE y CHAIN OF TRUST",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "terminal",
+        "chain-list",
+        "one-link",
+        "issuer",
+        "error-20",
+        "anchor",
+        "choice",
+        "intermediate",
+        "issuer-unknown",
+        "names"
+      ]
+    },
+    {
+      "id": "s03-arreglo",
+      "chapter": 1,
+      "title": "El eslabón del medio",
+      "goal": "«¿Cómo se arregla?». Mensaje interceptado (con «Vuelve NULL CIPHER», sin más presentación). Respuesta: entre la naviera y el portal aparece alguien que enseña su propio certificado (un dibujo genérico, sin nombre); con la verificación quitada, la naviera cifra igual, pero para quien se ha puesto en medio (`mitm`): «cifrado, sí · ¿con quién?». Rótulo: «se arregla la cadena, no el aviso». Después, la causa, sin culpas: «la CA entrega dos ficheros: el certificado y la cadena · se instaló uno» («de los despistes más comunes»). «09:10 · Infraestructura instala la intermedia» (la tira no recuerda ningún paso de verificación de un cambio). El mismo comando: `depth=2 CN = Confianza Global Root` · `depth=1 CN = Confianza Global TLS Issuing CA 3` · `depth=0 CN = reservas.haldenport.example`, todos `verify return:1`; la lista de la cadena, con `0` y `1` (la `1`: `1 s:CN = Confianza Global TLS Issuing CA 3` · `i:CN = Confianza Global Root` · `a:PKEY: id-ecPublicKey, 384 (bit); sigalg: RSA-SHA256` · `v:NotBefore: Mar 14 00:00:00 2023 GMT; NotAfter: Mar 13 23:59:59 2033 GMT`), y `Verify return code: 0 (ok)` (`ok`). Dónde mirar: el servidor manda dos; el tercero, la raíz, lo pone cada cliente desde su almacén (el tuyo en esta prueba, «la tienes tú»; el de la naviera, en su programa). La raíz ampliada: «Subject = Issuer · se firma a sí misma». La cadena del ancla, completa: «la raíz no hace falta mandarla: ya la tienes» (44). El programa de la naviera conecta",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "fix",
+        "mitm",
+        "with-whom",
+        "two-files",
+        "installed",
+        "rerun",
+        "depths",
+        "ok",
+        "root",
+        "anchor-full",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s04-revocar",
+      "chapter": 2,
+      "title": "¿Sigue valiendo?",
+      "goal": "La segunda pregunta de la naviera: «¿y si un día este certificado deja de valer antes de tiempo, quién nos avisa?». Rótulo con los dos motivos de la lección y nada más (`sp/sp1-part4.ts:365`): «un certificado puede dejar de valer antes de su fecha: se filtra la clave privada · el dominio cambia de dueño». Mensaje interceptado. Respuesta: junto al `NotAfter: May 27 … 2027` de s02, «faltan más de seis meses»; mientras tanto, quien tuviera la clave podría presentarse como el portal, y los clientes le creerían. Sello REVOKE sobre **una copia atenuada** del certificado, rotulada «si se filtrara la clave», nunca sobre el del portal: «se revoca ya · y se pide otro con una clave nueva» (`revoke`). Rótulo (`where`): «nadie avisa · lo comprueba el cliente». Después, el propio certificado dice dónde preguntar (`crl-url`): `openssl x509 -noout -ext crlDistributionPoints,authorityInfoAccess` da `X509v3 CRL Distribution Points:` · `Full Name:` · `URI:http://crl.confianza.example/issuing3.crl` · `Authority Information Access:` · `OCSP - URI:http://ocsp.confianza.example`, las de la lección (`sp/sp1-part4.ts:325-326`). La imagen: la recepción de un hotel que recoge una vez al día la lista de documentos robados; un DNI robado esta mañana no sale hasta mañana. Nombre CRL: «lista firmada por la CA · el cliente la descarga cada cierto tiempo»",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "requiredCues": [
+        "question",
+        "reasons",
+        "wait",
+        "months",
+        "pretend",
+        "revoke",
+        "where",
+        "crl-url",
+        "hotel",
+        "list",
+        "crl"
+      ]
+    },
+    {
+      "id": "s05-ocsp",
+      "chapter": 2,
+      "title": "Un justificante recién sellado",
+      "goal": "El mismo hotel: recepción llama a la policía con cada huésped; respuesta al momento, pero tres chips: «cola (latencia) · policía saturada (carga en la CA) · sabe dónde duerme cada cual (privacidad)». Nombre OCSP. Después, el huésped trae, con el DNI, «un justificante de la policía · sellado · de esta mañana»; recepción solo comprueba el sello. Nombre OCSP STAPLING. La demo: «10-11», `openssl s_client -connect reservas.haldenport.example:443 -status` da `OCSP response: no response sent`. La mejora: «OCSP stapling en el portal · Infraestructura · 12-11». «12-11», el mismo comando: `OCSP Response Status: successful (0x0)` · `Cert Status: good` · `This Update: Nov 12 08:00:00 2026 GMT` · `Next Update: Nov 12 20:00:00 2026 GMT` (`after`). Dónde mirar: «good» y las dos fechas, con el rótulo «sellada esta mañana · caduca esta noche · el portal pide otra antes»; la respuesta la firma la CA y la trae el portal (grapada)",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "call",
+        "costs",
+        "ocsp",
+        "note",
+        "stapling",
+        "before",
+        "improvement",
+        "after",
+        "good",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, cada una con su icono (la cadena del ancla · el sello de «revocado» · el justificante). Tarjeta final Alertópolis: «Tu turno: termina la lección y sus preguntas» (44)",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

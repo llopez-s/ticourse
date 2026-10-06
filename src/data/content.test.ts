@@ -286,6 +286,8 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'uHHv-1hTYTE')?.module).toBe('sp2m7');
     // V11 gathers sp1m6 at its end, after the steganography-to-blockchain list and before the paragraph that hands over to PKI
     expect(youtubeVideos.find((v) => v.block.youtube === '6jyHqrkMOZQ')?.module).toBe('sp1m6');
+    // V12 replays sp1m7's chain and revocation in a console, after the OCSP stapling check and before key escrow
+    expect(youtubeVideos.find((v) => v.block.youtube === 'zEhyYU7Vuwc')?.module).toBe('sp1m7');
     // V13 sums up s2m1 after the demo's checks and before the paragraph that hands over to Courses of Action and s2m4
     expect(youtubeVideos.find((v) => v.block.youtube === 'WidodMPEs24')?.module).toBe('s2m1');
   });

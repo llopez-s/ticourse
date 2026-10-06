@@ -1,0 +1,20 @@
+PKI en la consola: el eslabón que falta, CRL y OCSP
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA
+
+[00:00] I · La cadena — No encuentro al emisor
+El vídeo anterior acabó con una duda. Cuando el portal te da su clave pública, ¿cómo sabes que es del puerto? Te lo dice su certificado, sellado por una autoridad, una CA. Lo abrimos en una consola, vemos qué falla y si sigue valiendo. El lunes, el portal estrena certificado. El martes, una naviera avisa de que no conecta.
+
+[00:22] I · La cadena — Un solo eslabón
+Conéctate al portal desde una terminal, y mira qué certificados te manda. Solo trae uno, el del portal. Debajo pone quién lo selló, el emisor. Y un aviso dice que no lo encuentra. Por encima hay dos CA, una intermedia y la raíz, arriba del todo. Es como la cadena de un ancla. El servidor no manda ninguna de las dos, pero solo te falta una. ¿Cuál? La intermedia. El ancla, la raíz, ya va a bordo, en el almacén de tu equipo. Así que, si el emisor es desconocido, suele faltar la intermedia, o el certificado se selló solo. Ese almacén es el trust store.
+
+[01:05] I · La cadena — El eslabón del medio
+¿Cómo se arregla? NULL CIPHER tiene una solución de manual. [Mensaje interceptado · NULL CIPHER] «Desactivar la verificación del certificado. Sigue cifrado. Lógico.» Si nadie comprueba el certificado, cualquiera que se cuele en medio enseña el suyo. Y la naviera cifra igual, sin saber con quién. Se arregla la cadena, no el aviso. La CA entrega dos ficheros, y el lunes solo se instaló uno. Se instala la intermedia y repites la prueba. Salen tres niveles, y la verificación da cero, que es lo bueno. El servidor solo manda dos. La raíz se sella sola, es autofirmada, y la tienes tú, en tu almacén. No hace falta mandarla, ya iba a bordo. O sea, que con la intermedia, la naviera conecta.
+
+[01:53] II · ¿Sigue valiendo? — ¿Sigue valiendo?
+La naviera pregunta otra cosa. Si el certificado deja de valer antes de tiempo, ¿quién le avisa? Puede pasar si se filtra la clave privada o el dominio cambia de dueño. [Mensaje interceptado · NULL CIPHER] «¿Clave filtrada? Esperar a que caduque el certificado. Lógico.» ¿Esperar a que caduque? Quedan más de seis meses. Mientras, quien tenga la clave podría hacerse pasar por el portal. Se revoca ya, y se pide otro con una clave nueva. ¿Quién avisa a la naviera? Nadie, lo comprueba ella. El certificado lleva dos direcciones. Una lleva a una lista, como la que recoge un hotel cada día con los DNI robados. Si te roban el tuyo hoy, no sale hasta mañana. Esa lista, firmada por la CA, es la CRL. Y puede llegar tarde.
+
+[02:42] II · ¿Sigue valiendo? — Un justificante recién sellado
+La otra dirección es para preguntar al momento, como si el hotel llamara a la policía por cada huésped. El hotel está al día, pero hay cola, y la policía se satura. Preguntar así a la CA se llama OCSP. Mejor, que el huésped traiga un justificante sellado por la policía esta mañana. El portal hace lo mismo, y trae grapada la respuesta de la CA. Lo llaman OCSP stapling. El martes no traía ninguna. Se activa el jueves, y la prueba ya la enseña. Dice good. Total, que el cliente ya no pregunta a nadie. Le llega la respuesta, fresca y firmada.
+
+[03:21] III · Para el examen — Tres reglas
+Resumiendo, tres reglas. Emisor desconocido, falta la intermedia o es autofirmado. El servidor manda la intermedia, la raíz ya la tienes. Clave filtrada, se revoca ya y se cambia, sin esperar a que caduque. La CRL puede llegar tarde, OCSP pregunta al momento, y con stapling la respuesta la trae el servidor. Termina tú la lección y sus preguntas. Arregla cadenas, no avisos.
