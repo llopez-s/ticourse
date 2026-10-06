@@ -61,7 +61,35 @@ def cifrado(y, sr):
     return out / (np.max(np.abs(out)) + 1e-12) * 10 ** (-1 / 20)
 
 
-PRESETS = {"machine": machine, "telefono": telefono, "cifrado": cifrado}
+def _peaking(f0, gain_db, q, sr):
+    amp = 10 ** (gain_db / 40)
+    w0 = 2 * np.pi * f0 / sr
+    alpha = np.sin(w0) / (2 * q)
+    b = np.array([1 + alpha * amp, -2 * np.cos(w0), 1 - alpha * amp])
+    a = np.array([1 + alpha / amp, -2 * np.cos(w0), 1 - alpha / amp])
+    return b / a[0], a / a[0]
+
+
+def megafonia(y, sr):
+    x = np.asarray(y, dtype=np.float64)
+    x = x / (np.max(np.abs(x)) + 1e-12)
+    hi = min(5000.0, 0.45 * sr)
+    x = signal.sosfiltfilt(signal.butter(4, [250, hi], btype="bandpass", fs=sr, output="sos"), x)
+    x = signal.lfilter(*_peaking(2000.0, 6.0, 1.0, sr), x)
+    t = np.arange(int(1.2 * sr)) / sr
+    onset = np.clip((t - 0.060) / 0.060, 0.0, 1.0)
+    tail = np.random.default_rng(316).standard_normal(len(t)) * onset * np.exp(-6.91 * t / 1.0)
+    tail *= 0.35 / (np.sqrt(np.sum(tail**2)) + 1e-12)
+    ir = tail
+    ir[0] += 1.0
+    ir[int(0.090 * sr)] += 0.5
+    out = signal.fftconvolve(x, ir)[: len(x)]
+    fade = min(len(out), max(1, int(0.040 * sr)))
+    out[-fade:] *= np.linspace(1.0, 0.0, fade)
+    return out / (np.max(np.abs(out)) + 1e-12) * 10 ** (-1 / 20)
+
+
+PRESETS = {"machine": machine, "telefono": telefono, "cifrado": cifrado, "megafonia": megafonia}
 
 
 def main(argv=None):
