@@ -1,0 +1,247 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Helena",
+    "rate": 0,
+    "fx": "cifrado"
+  },
+  "sfx": {
+    "one-link": "error",
+    "mitm": "error",
+    "ok": "check",
+    "revoke": "block",
+    "after": "lock"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {bridge}El vídeo anterior acabó con una duda. Cuando el portal te da su clave pública, ¿cómo sabes que es del puerto?",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Te lo dice su certificado, sellado por una autoridad, una CA. {promise}Lo abrimos en una consola, vemos qué falla y si sigue valiendo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<concerned> {renewal}El lunes, el portal estrena certificado. {message}El martes, una naviera avisa de que no conecta.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-cadena",
+      "text": "<clear> {terminal}Conéctate al portal desde una terminal, {chain-list}y mira qué certificados te manda.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-cadena",
+      "text": "<focused> {one-link}Solo trae uno, el del portal. {issuer}Debajo pone quién lo selló, el emisor. {error-20}Y un aviso dice que no lo encuentra.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-cadena",
+      "text": "<warm> Por encima hay dos CA, una intermedia y la raíz, arriba del todo. {anchor}Es como la cadena de un ancla.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-cadena",
+      "text": "<engaging> {choice}El servidor no manda ninguna de las dos, pero solo te falta una. ¿Cuál?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Emisor desconocido: ¿falta raíz o intermedia?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-cadena",
+      "text": "<confident> {intermediate}La intermedia. El ancla, la raíz, ya va a bordo, en el almacén de tu equipo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-cadena",
+      "text": "<clear> {issuer-unknown}Así que, si el emisor es desconocido, suele faltar la intermedia, o el certificado se selló solo. {names}Ese almacén es el trust store.",
+      "pauseAfterMs": 550,
+      "exam": {
+        "objective": "1.4",
+        "text": "Issuer unknown: falta la intermedia o es self-signed",
+        "at": "issuer-unknown",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-arreglo",
+      "text": "<curious> {fix}¿Cómo se arregla? NULL CIPHER tiene una solución de manual.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-arreglo",
+      "text": "<firm> {mitm}Si nadie comprueba el certificado, cualquiera que se cuele en medio enseña el suyo. {with-whom}Y la naviera cifra igual, sin saber con quién.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "Desactivar la verificación del certificado. Sigue cifrado. Lógico.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-arreglo",
+      "text": "<serious> Se arregla la cadena, no el aviso. {two-files}La CA entrega dos ficheros, {installed}y el lunes solo se instaló uno.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-arreglo",
+      "text": "<focused> {rerun}Se instala la intermedia y repites la prueba. {depths}Salen tres niveles, {ok}y la verificación da cero, que es lo bueno.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-arreglo",
+      "text": "<intrigued> {root}El servidor solo manda dos. La raíz se sella sola, es autofirmada, y la tienes tú, en tu almacén.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-arreglo",
+      "text": "<confident> {anchor-full}No hace falta mandarla, ya iba a bordo. {wrap}O sea, que con la intermedia, la naviera conecta.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "1.4",
+        "text": "Root CA: self-signed y ya en el trust store del cliente",
+        "at": "anchor-full",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-revocar",
+      "text": "<thoughtful> {question}La naviera pregunta otra cosa. Si el certificado deja de valer antes de tiempo, ¿quién le avisa?",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-revocar",
+      "text": "<serious> {reasons}Puede pasar si se filtra la clave privada o el dominio cambia de dueño.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-revocar",
+      "text": "<sarcastic> {wait}¿Esperar a que caduque? {months}Quedan más de seis meses. {pretend}Mientras, quien tenga la clave podría hacerse pasar por el portal.",
+      "pauseAfterMs": 450,
+      "intercept": {
+        "text": "¿Clave filtrada? Esperar a que caduque el certificado. Lógico.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-revocar",
+      "text": "<firm> {revoke}Se revoca ya, y se pide otro con una clave nueva. {where}¿Quién avisa a la naviera? Nadie, lo comprueba ella. {crl-url}El certificado lleva dos direcciones.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-revocar",
+      "text": "<warm> Una lleva a una lista, {hotel}como la que recoge un hotel cada día {list}con los DNI robados. Si te roban el tuyo hoy, no sale hasta mañana.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-revocar",
+      "text": "<calm> {crl}Esa lista, firmada por la CA, es la CRL. Y puede llegar tarde.",
+      "pauseAfterMs": 550,
+      "exam": {
+        "objective": "1.4",
+        "text": "CRL: lista periódica; puede ir horas por detrás",
+        "at": "crl",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-ocsp",
+      "text": "<curious> {call}La otra dirección es para preguntar al momento, como si el hotel llamara a la policía por cada huésped.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-ocsp",
+      "text": "<thoughtful> {costs}El hotel está al día, pero hay cola, y la policía se satura. {ocsp}Preguntar así a la CA se llama OCSP.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-ocsp",
+      "text": "<warm> {note}Mejor, que el huésped traiga un justificante sellado por la policía esta mañana.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-ocsp",
+      "text": "<confident> El portal hace lo mismo, y trae grapada la respuesta de la CA. {stapling}Lo llaman OCSP stapling.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-ocsp",
+      "text": "<serious> {before}El martes no traía ninguna. {improvement}Se activa el jueves, {after}y la prueba ya la enseña. {good}Dice good.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-ocsp",
+      "text": "<satisfied> {wrap}Total, que el cliente ya no pregunta a nadie. Le llega la respuesta, fresca y firmada.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "1.4",
+        "text": "OCSP: estado al momento; stapling: lo trae el servidor",
+        "at": "wrap",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-recap",
+      "text": "<confident> {recap}Resumiendo, tres reglas. {rule-1}Emisor desconocido, falta la intermedia o es autofirmado. El servidor manda la intermedia, la raíz ya la tienes.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-recap",
+      "text": "<firm> {rule-2}Clave filtrada, se revoca ya y se cambia, sin esperar a que caduque.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-recap",
+      "text": "<clear> {rule-3}La CRL puede llegar tarde, OCSP pregunta al momento, y con stapling la respuesta la trae el servidor.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-recap",
+      "text": "<cheerful> {next}Termina tú la lección y sus preguntas. {endcard}Arregla cadenas, no avisos.",
+      "pauseAfterMs": 600
+    }
+  ]
+}
