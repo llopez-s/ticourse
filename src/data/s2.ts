@@ -114,6 +114,13 @@ Attachment: CV_Ingeniero.zip (contiene: CV_Ingeniero.pdf.lnk)       [Weaponizati
         },
       },
       {
+        t: 'video',
+        title: 'La Cyber Kill Chain: basta con romper un eslabón',
+        youtube: 'WidodMPEs24',
+        poster: 'videos/kill-chain-eslabon-poster.png',
+        transcript: 'videos/kill-chain-eslabon-transcript.txt',
+      },
+      {
         t: 'p',
         md: 'Cada intrusión analizada produce una kill chain documentada. Varias kill chains comparadas revelan **patrones del adversario** — la base de las campañas (S2M4). Antes, veamos qué hacer defensivamente con cada fase: la matriz de **Courses of Action**.',
       },
