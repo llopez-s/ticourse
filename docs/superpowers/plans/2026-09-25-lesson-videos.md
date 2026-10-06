@@ -2020,6 +2020,10 @@ Como en V6, el cierre vive dentro del último capítulo de contenido, así que e
 > cápsula). La versión vigente de escenas y guion será `video/kill-chain-eslabon/storyboard.json` + `narration.json`;
 > qué se quedó fuera, en `video/kill-chain-eslabon/out/script-notes.md`.
 >
+> **Producido y subido**: por la API el 2026-10-06 (YouTube `WidodMPEs24`, privado hasta que Lidia lo publique); 8:04,
+> 10 escenas, 7 tarjetas, 2 preguntas, 3 mensajes de GLASS VIPER (voz `sapi/Microsoft Pablo` con `machine`), voz de
+> Lidia, música de V4 y V5. En la lección s2m1, donde dice «Inserción», sin línea de entrada (como V9).
+>
 > **La penalización del ranking manda en el diseño** (L=1, plan §3, fila 15): el lab2a ya practica qué fase es cada
 > evento, así que el vídeo no recita el orden. Da el porqué (por qué van en fila, por qué basta con romper una, por qué
 > una fase se deduce, por qué conviene llegar antes) y una sola demo, la reconstrucción de la propia lección. Las
