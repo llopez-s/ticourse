@@ -30,7 +30,8 @@ const O_TOP = 380;
 /** Clip height: the strip and a little shadow, never the rail line (at L.railY). */
 const CLIP_H = Math.round(L.stripBottom + (L.railY - L.dotR * 2 - L.stripBottom) * 0.5);
 const RIGHT_X = 1136;
-const CHIPS_TOP = 216;
+/** Low enough to leave air under the graph's two-line legend (it lands above the chips on `graph`). */
+const CHIPS_TOP = 232;
 
 /** A frame's rect on stage. */
 function frameAt(top: number, id: FramePhaseId, col: 0 | 1 = 0): Rect {

@@ -29,7 +29,8 @@ const AMBER_SOFT = '#fcd34d';
  * «muy débil: lo hace todo el mundo». `supplier`: row 5 «relación», «medio: encaja con ir a por su
  * cadena de suministro». `weak-list`: the lesson's list between the boxes, word by word, with «miles
  * de actores». `tape`: the brown packing tape lights on both boxes, then on a row of ordinary parcels,
- * «como todas las cajas». `detect-vs-group`: the small line in two halves, each with its sentence.
+ * «como todas las cajas», held through «Ojo, que detectar y agrupar…» (`detect-vs-group`). Then the small
+ * line in two halves, each on its sentence («Para que una detección dure…», «Para agrupar…»).
  * `weak`: «débil para agrupar» on the list and on row 4. s05-07 «Ya está la tabla entera»: the rest
  * steps out and the whole table settles below the think card (TABLE_AT_REST), where s06 picks it up;
  * no row is lit during the question.
@@ -80,16 +81,21 @@ export function S05Debiles(props: SceneProps) {
 
   // ---- The boxes, the list, the tape, the small line ---------------------------------------------------
   const restOut = 1 - progress(frame, wYa - 2, 22, EASE.inOut);
-  const tapeHl = windowWeight(frame, tapeAt - 2, detectAt + 10, { ramp: 12 });
+  // The tape image (parcels, «como todas las cajas») holds through «Ojo, que detectar y agrupar…» and gives way to
+  // the small line's first half on its own sentence («Para que una detección dure…»): on the voiced timeline the
+  // cue `detect-vs-group` comes a breath after «todas las del mundo», which left the caption barely a second.
+  const detLineAt = Math.max(detectAt + 2, wPara1 - 8);
+  const tapeHl = windowWeight(frame, tapeAt - 2, detLineAt, { ramp: 12 });
   const twoBoxes = windowWeight(frame, wDos - 4, wTodas + 10, { ramp: 10 });
   const chipIn = [listAt + 2, wCobalt - 6, wPhishing - 6].map((at) => progress(frame, at, 14));
   const noteIn = progress(frame, wMiles - 4, 14);
   const listDim = windowWeight(frame, tapeAt, wPara1 - 10, { ramp: 14 }) * 0.5;
   const listWeak = progress(frame, weakAt - 2, 16);
   const parcelsIn = PARCELS.map((_, k) => progress(frame, wTodas - 6 + k * 4, 14));
-  const parcelsOut = 1 - progress(frame, detectAt - 12, 14);
-  const tapeCapIn = progress(frame, wTodas + 10, 14);
-  const det1 = progress(frame, detectAt + 2, 16);
+  // Parcels and caption share the band with the small line (y 578–654): they are gone before it lands.
+  const parcelsOut = 1 - progress(frame, detLineAt - 14, 12);
+  const tapeCapIn = progress(frame, wTodas + 4, 14);
+  const det1 = progress(frame, detLineAt, 16);
   const det2 = progress(frame, wPara2 - 6, 16);
 
   const boxes = SIDES.map((side) => ({ side, b: boxAt(side, toBand) }));

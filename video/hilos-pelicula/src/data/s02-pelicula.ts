@@ -14,9 +14,12 @@ export const CHIPS = [
   { text: 'en orden de tiempo y de fase', seg: 's02-08', word: 'orden' },
 ] as const;
 
-/** When each of Meridian's frames drops into its slot: [frame key, segment, word]. */
+/**
+ * When each of Meridian's frames drops into its slot: [frame key, segment, word]. Delivery lands on its date («El
+ * lunes dos»), not on «correo»: in the voiced take some seconds pass between the two, and the rail would stand empty.
+ */
 export const FRAME_WORDS = [
-  ['m-delivery', 's02-02', 'correo'],
+  ['m-delivery', 's02-02', 'lunes'],
   ['m-exploitation', 's02-03', 'Se'],
   ['m-installation', 's02-03', 'instala'],
   ['m-c2', 's02-03', 'llama'],

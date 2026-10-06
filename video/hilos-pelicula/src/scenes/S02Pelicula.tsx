@@ -19,7 +19,7 @@ const BO = buildOrderLayout(BUILD_STEPS_THREAD, BO_SIZE);
 /**
  * s02-pelicula «La película de Meridian». The V3 rail draws itself (`rail`), Weaponization dashed and Recon empty
  * as V13 left them; on «por fecha y por fase» (`frames`) a light runs over the phase names. Meridian's photos then
- * drop one by one into their slots on the words that tell them (Delivery on «correo», Exploitation on «Se abre»,
+ * drop one by one into their slots on the words that tell them (Delivery on its date, «El lunes», Exploitation on «Se abre»,
  * Installation on «instala», the first call on «llama»; E7 on «alerta», beside it in C2; E9 on «E9», whose line
  * lights on «Comprime»), each lifted while the voice is on it. They hang a little crooked until `order`, when they
  * straighten and their dates are read left to right. `thread`: the rose string runs over them and the rail turns
