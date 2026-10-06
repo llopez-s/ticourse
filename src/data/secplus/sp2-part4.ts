@@ -134,6 +134,13 @@ GET /gate/viewdoc?file=%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fshadow   403     0
       },
     },
     {
+      t: 'video',
+      title: 'Ataques en los logs: spraying, traversal y amplificación DNS',
+      youtube: 'uHHv-1hTYTE',
+      poster: 'videos/logs-halden-poster.png',
+      transcript: 'videos/logs-halden-transcript.txt',
+    },
+    {
       t: 'p',
       md: 'Ya sabes leer un log o una gráfica y ponerle nombre al ataque, y para cada uno tienes una mitigación en la punta de la lengua. La última lección del dominio ordena esas mitigaciones en un catálogo: **segmentation, access control, allow lists, isolation, patching, encryption, monitoring, least privilege, configuration enforcement, decommissioning** y las técnicas de **hardening** que aplicarás a cada host nuevo antes de conectarlo a la red.',
     },
