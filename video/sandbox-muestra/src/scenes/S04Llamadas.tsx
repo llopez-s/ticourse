@@ -93,11 +93,13 @@ export function S04Llamadas(props: SceneProps) {
   const sweep = (i: number) => progress(frame, apuntaAt - 2 + i * 5, 22, EASE.inOut);
 
   // Header «Hosts contactados:» with the lens, beside the low list (outside the think band).
-  const headIn = mix(0.45, 1, progress(frame, hostsAt, 14)) * (1 - progress(frame, phoneAt - 6, 14, EASE.inOut));
+  const headIn = mix(0.45, 1, progress(frame, hostsAt, 14)) * (1 - progress(frame, phoneAt - 14, 12, EASE.inOut));
 
   // Right column: the phone, then the blackout map.
-  const phoneIn = progress(frame, phoneAt, 18) * (1 - progress(frame, blackoutAt - 2, 14, EASE.inOut));
-  const phoneLog = progress(frame, phoneAt + 6, 40, EASE.linear);
+  // The phone waits until the list has slid out of its column (they overlapped mid-move); it still lands before
+  // «prestado».
+  const phoneIn = progress(frame, phoneAt + 12, 16) * (1 - progress(frame, blackoutAt - 2, 14, EASE.inOut));
+  const phoneLog = progress(frame, phoneAt + 16, 36, EASE.linear);
   const guest = progress(frame, quienAt - 2, 14);
   const own = progress(frame, propioAt - 2, 14);
   const pulseGuest = windowWeight(frame, twoAt, threeAt, { ramp: 12 }) * (0.55 + 0.45 * pulse(frame, fps, 0.8));

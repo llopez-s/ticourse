@@ -55,7 +55,8 @@ export function S01Hook(props: SceneProps) {
   // ---- The group (strip + box) slides down to make room for the title.
   const shift = progress(frame, titleAt - 10, 24, EASE.inOut);
   const groupY = mix(GROUP_Y0, GROUP_Y1, shift);
-  const groupIn = progress(frame, 0, 14);
+  // The strip is already there (dim) on the video's first frame: no empty stage at frame 0.
+  const groupIn = mix(0.5, 1, progress(frame, 0, 14));
 
   // ---- Strip: half-light from the first frame; its lines light one by one at `edr`.
   const lineLit = E7_STRIP.map((_, i) => progress(frame, edrAt - 6 + i * 5, 12));

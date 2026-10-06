@@ -157,7 +157,8 @@ export function S05Etiqueta(props: SceneProps) {
   const cuY = (y: number) => CU.y + CU_SIZE.h * 0.3 + (y - CU_SIZE.h * 0.3) * cuK;
 
   // ── close: the domain, cheap, against the new garment.
-  const chipIn = progress(frame, dominioAt - 4, 14);
+  // The chip waits until the garment has left its corner on the way to the centre (they overlapped mid-move).
+  const chipIn = progress(frame, Math.max(dominioAt - 4, closeAt + 22), 14);
   const chipCap = progress(frame, saleAt - 2, 14);
   const newIn = progress(frame, prendaAt - 6, 20);
 

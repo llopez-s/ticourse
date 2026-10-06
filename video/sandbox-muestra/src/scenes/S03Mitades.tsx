@@ -61,21 +61,26 @@ export function S03Mitades(props: SceneProps) {
   const originX = S02_BOX.x + slot.x;
   const originY = S02_BOX.y + slot.y;
 
+  // The right column (and the pipe's focus) hold until the wrap label lands («lo que lleva escrito»), not from the
+  // `wrap` cue: the voice takes a beat to get there and the column would otherwise sit dim and half empty under the
+  // exam card.
+  const wrapOutAt = Math.max(wrapAt, wEscrito - 8);
+
   // ---- Static band: lights at `static`, steps back soon after its name («la leemos luego»).
   const staticGlow = windowWeight(frame, staticAt - 4, wEstatico + 34, { ramp: 12 });
   const laterAt = Math.min(wEstatico + 30, Math.max(staticAt + 40, s1.to - 30));
   const staticDim = 0.75 * progress(frame, laterAt, 18) * (1 - progress(frame, wEscrito - 8, 16));
-  const laterIn = progress(frame, laterAt, 16) * (1 - progress(frame, wrapAt - 6, 14));
+  const laterIn = progress(frame, laterAt, 16) * (1 - progress(frame, wrapOutAt - 14, 12));
   const staticName = frame < wEstatico - 6 ? 0 : springIn(frame, fps, wEstatico - 6, { damping: 15, mass: 0.7 });
 
   // ---- Dynamic band: the task, then the pipe pair, then the name.
-  const dynGlow = windowWeight(frame, taskAt - 4, wrapAt - 6, { ramp: 12 }) * 0.8;
+  const dynGlow = windowWeight(frame, taskAt - 4, wrapOutAt, { ramp: 12 }) * 0.8;
   const taskFocus = windowWeight(frame, wTarea - 8, pipeAt - 4, { ramp: 10 });
   const taskLabel = progress(frame, wTarea - 2, 14) * (1 - progress(frame, pipeAt - 10, 12));
-  const pipeFocus = windowWeight(frame, pipeAt - 4, wrapAt - 10, { ramp: 10 });
+  const pipeFocus = windowWeight(frame, pipeAt - 4, wrapOutAt - 4, { ramp: 10 });
   const pipeSplit = progress(frame, pipeAt + 6, 16);
-  const pairIn = progress(frame, pipeAt + 10, 16) * (1 - progress(frame, wrapAt - 6, 14));
-  const ruleIn = progress(frame, pipeAt + 30, 16) * (1 - progress(frame, wrapAt - 6, 14));
+  const pairIn = progress(frame, pipeAt + 10, 16) * (1 - progress(frame, wrapOutAt - 6, 14));
+  const ruleIn = progress(frame, pipeAt + 30, 16) * (1 - progress(frame, wrapOutAt - 6, 14));
   const dynNameAt = Math.max(dynamicAt, wDinamico - 8);
   const dynName = frame < dynNameAt ? 0 : springIn(frame, fps, dynNameAt, { damping: 15, mass: 0.7 });
 
@@ -84,7 +89,7 @@ export function S03Mitades(props: SceneProps) {
   const wrapDynamic = progress(frame, wHace - 8, 16);
   const wrapGlowS = windowWeight(frame, wEscrito - 8, wHace - 6, { ramp: 10 });
   const wrapGlowD = windowWeight(frame, wHace - 8, Number.POSITIVE_INFINITY, { ramp: 10 });
-  const namesDim = 0.45 * progress(frame, wrapAt - 6, 14);
+  const namesDim = 0.45 * progress(frame, wrapOutAt, 14);
 
   const hostDim = Object.fromEntries(HOST_ROWS.map((id) => [id, 0.55])) as Partial<Record<ReportRowId, number>>;
   const dynDim: Partial<Record<ReportRowId, number>> = {

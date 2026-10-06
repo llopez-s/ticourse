@@ -58,7 +58,8 @@ export function garmentPiecesAnchor(width: number): { x: number; y: number } {
 
 const CLOTH = {
   old: { fill: '#2b3a52', edge: '#6b81a6', shade: '#22304a', collar: '#25334a' },
-  new: { fill: '#3a3352', edge: '#8a7fb0', shade: '#2e2944', collar: '#312b47' },
+  // Graphite, not violet: violet means exam in this video.
+  new: { fill: '#3b3e44', edge: '#8a909b', shade: '#303338', collar: '#34373c' },
 } as const;
 const LINING = '#4a3f33';
 const LINING_EDGE = '#7a6a55';

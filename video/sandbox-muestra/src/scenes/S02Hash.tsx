@@ -55,6 +55,7 @@ export function S02Hash(props: SceneProps) {
   const wMatricula = wordFrame(SCENE, 's02-02', 'matrícula');
   const wNota = wordFrame(SCENE, 's02-02', 'nota');
   const wParabrisas = wordFrame(SCENE, 's02-02', 'parabrisas');
+  const wBuscas = wordFrame(SCENE, 's02-03', 'Buscas');
   const wSubirlo = wordFrame(SCENE, 's02-03', 'subirlo');
   const wSubido = wordFrame(SCENE, 's02-04', 'subido');
   const wSandbox = wordFrame(SCENE, 's02-05', 'sandbox');
@@ -72,14 +73,17 @@ export function S02Hash(props: SceneProps) {
   const carIn = progress(frame, carAt - 4, 18);
   const nbIn = progress(frame, wMatricula - 8, 16);
   const noteIn = progress(frame, wNota - 6, 14);
-  const strike = progress(frame, wParabrisas + 4, 14, EASE.inOut);
-  const toThumb = progress(frame, lookupAt - 8, 20, EASE.inOut);
+  // The note is struck as the voice reaches «parabrisas», so the struck note holds at full size before the thumbnail.
+  const strike = progress(frame, wParabrisas - 4, 14, EASE.inOut);
+  const toThumb = progress(frame, lookupAt, 20, EASE.inOut);
 
   // ---------------------------------------------------------------- phase C: the search
+  // The notebook's line lands in the field as the voice says «Buscas su hash» (not on «Con la muestra, igual»).
+  const flyAt = Math.max(lookupAt + 14, wBuscas - 16);
   const dOut = progress(frame, ownAt - 8, 16, EASE.inOut);
-  const searchIn = progress(frame, lookupAt + 10, 14);
-  const fly = progress(frame, lookupAt + 14, 22, EASE.inOut);
-  const verbIn = progress(frame, lookupAt + 18, 12);
+  const searchIn = progress(frame, Math.min(flyAt - 14, lookupAt + 16), 14);
+  const fly = progress(frame, flyAt, 22, EASE.inOut);
+  const verbIn = progress(frame, flyAt + 4, 12);
   const chipIn = progress(frame, wSubirlo - 6, 14);
   const resultIn = progress(frame, noHitsAt - 2, 14);
   const alsoIn = progress(frame, wSubido - 4, 16);
@@ -98,7 +102,7 @@ export function S02Hash(props: SceneProps) {
   const flyX = mix(from.x, to.x, fly);
   const flyY = mix(from.y, to.y, fly) - Math.sin(Math.PI * fly) * 40;
   const flySize = mix(from.size, to.size, fly);
-  const swap = progress(frame, lookupAt + 22, 10);
+  const swap = progress(frame, flyAt + 8, 10);
 
   // ---------------------------------------------------------------- phase D: the own sandbox
   const boxIn = progress(frame, ownAt - 4, 20);
