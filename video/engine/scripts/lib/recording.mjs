@@ -396,10 +396,16 @@ export function clipWords(words, first, last, ranges, parts = null) {
   });
 }
 
+/** For every recorded word, whether a found segment uses it. */
+function usedWords(located, count) {
+  const used = new Array(count).fill(false);
+  for (const f of located) if (f.found) for (const p of f.parts ?? [f]) for (let k = p.first; k <= p.last; k++) used[k] = true;
+  return used;
+}
+
 /** Runs of recorded words that no found segment uses (what was skipped), for the import report. */
 export function unusedRanges(located, words) {
-  const used = new Array(words.length).fill(false);
-  for (const f of located) if (f.found) for (const p of f.parts ?? [f]) for (let k = p.first; k <= p.last; k++) used[k] = true;
+  const used = usedWords(located, words.length);
   const out = [];
   let run = null;
   words.forEach((w, k) => {
@@ -414,6 +420,78 @@ export function unusedRanges(located, words) {
     }
   });
   return out;
+}
+
+const RECUT_PAD_MS = 300; // silence kept on each side of the voice in a recut suggestion
+const RECUT_GAP_S = 0.8; // the digital silence recut_recording.py writes after each part (its --gap default)
+
+/**
+ * ffmpeg filter that measures a stretch of the recording as loud as recut_recording.py will write it: on a
+ * sentence the silence after it weighs in (V10 s01-01: -19.23 LUFS bare, -19.53 cut), and --lufs must match the cut.
+ */
+export function recutLoudnessFilter() {
+  return `apad=pad_dur=${RECUT_GAP_S},loudnorm=print_format=json`;
+}
+
+/**
+ * Where each run of consecutive segments that were not found should be in the recording: between the cut of the
+ * found segment before it (or the start) and the one after it (or the end), trimmed to the voice inside — a
+ * silence over either edge is dropped but RECUT_PAD_MS of it — with what Whisper heard there that no segment uses.
+ * @returns {{ids: string[], startMs: number | null, endMs: number | null, heard: string}[]} null edges: no voice there
+ */
+export function missingGaps(located, cuts, words, silences, totalMs) {
+  const cutOf = new Map(cuts.map((c) => [c.id, c]));
+  const used = usedWords(located, words.length);
+  const runs = [];
+  located.forEach((f, k) => {
+    if (f.found) return;
+    const run = runs[runs.length - 1];
+    if (run && run.last === k - 1) {
+      run.ids.push(f.id);
+      run.last = k;
+    } else runs.push({ ids: [f.id], first: k, last: k });
+  });
+  return runs.map(({ ids, first, last }) => {
+    const prev = located.slice(0, first).reverse().find((f) => f.found);
+    const next = located.slice(last + 1).find((f) => f.found);
+    const from = prev ? cutOf.get(prev.id).endMs : 0;
+    const to = next ? cutOf.get(next.id).startMs : totalMs;
+    const heard = words.filter((w, k) => !used[k] && w.startMs >= from && w.startMs < to).map((w) => w.text).join(' ');
+    const lead = silences.find((s) => s.startMs <= from && from < s.endMs);
+    const tail = silences.find((s) => s.startMs < to && to <= s.endMs);
+    const voiceFrom = lead ? lead.endMs : from;
+    const voiceTo = tail ? tail.startMs : to;
+    if (voiceTo <= voiceFrom) return { ids, startMs: null, endMs: null, heard };
+    return {
+      ids,
+      startMs: lead ? Math.max(lead.startMs, voiceFrom - RECUT_PAD_MS) : from,
+      endMs: tail ? Math.min(tail.endMs, voiceTo + RECUT_PAD_MS) : to,
+      heard,
+    };
+  });
+}
+
+/**
+ * What to tell the narrator about one missingGaps entry: the likely cause and, when there is voice there, the
+ * exact commands that cut it into its own file (recut_recording.py) and import just those segments with the
+ * full import's gain (`lufs` = that excerpt's loudness + the gain; --match measured on one sentence gives more).
+ * Paths are as the commands are run, from the repo root.
+ */
+export function recutAdvice(gap, { file, out, slug, name, python, lufs }) {
+  const ids = gap.ids.join(', ');
+  if (gap.startMs === null) {
+    return [`${ids}: no voice between the sentences around it — was it recorded? Record it and import that file with --only ${gap.ids.join(',')}`];
+  }
+  const cause = gap.heard
+    ? `Whisper heard «${gap.heard}» there, too far from the script — listen to it, and if it was misread, re-record it`
+    : 'there is voice there but Whisper heard nothing (it drops audio after a long silence, more so when it repeats the start of its prompt)';
+  const sec = (ms) => (ms / 1000).toFixed(2);
+  const quote = (p) => (/\s/.test(p) ? `"${p}"` : p);
+  return [
+    `${ids} should be at ${clock(gap.startMs)}–${clock(gap.endMs)}: ${cause}. If it is read right there, cut it out and import just that:`,
+    `  ${quote(python)} video/engine/scripts/recut_recording.py --out "${out}" --part "${file}@${sec(gap.startMs)}-${sec(gap.endMs)}"`,
+    `  node video/engine/scripts/import-recording.mjs --video ${slug} --file "${out}" --name ${name} --only ${gap.ids.join(',')} --lufs=${lufs}`,
+  ];
 }
 
 /** Integrated loudness (LUFS) and true peak (dBTP) from ffmpeg loudnorm's print_format=json analysis. */
@@ -484,12 +562,63 @@ export function recordingSettings(narration, { tempo, maxPauseMs } = {}) {
 }
 
 /**
- * Whether a cached transcript still fits: same recording (hash) and same model. The prompt is not part of it:
- * it opens with the script's first sentence, so rewriting that sentence re-transcribed the whole recording
- * (~5 min, and a different spelling of the numbers) although the audio had not changed. --force-asr redoes it.
+ * Whether a cached transcript still fits: same recording (hash), same model and same stretches heard (asrClips;
+ * a transcript cached before Whisper skipped long silences heard the whole file, `clips` null). The prompt is not
+ * part of it: it opens with the script's first sentence, so rewriting that sentence re-transcribed the whole
+ * recording (~5 min, and a different spelling of the numbers) although the audio had not changed. --force-asr redoes it.
  */
-export function asrCacheValid(cached, { sha256, model }) {
-  return Boolean(cached) && cached.sha256 === sha256 && cached.model === model && Array.isArray(cached.words);
+export function asrCacheValid(cached, { sha256, model, clips = null }) {
+  return (
+    Boolean(cached) &&
+    cached.sha256 === sha256 &&
+    cached.model === model &&
+    Array.isArray(cached.words) &&
+    JSON.stringify(cached.clips ?? null) === JSON.stringify(clips)
+  );
+}
+
+/**
+ * Silences Whisper is not given (asrClips). At the edges from 8 s: Whisper's initial prompt only counts in the
+ * first 30 s window it decodes, and over a silence it gets lost — V10 (logs-halden) opened with 28.5 s of it, the
+ * first window was dropped as «no speech» and the next one skipped «…cola de alertas trae tres rastros de
+ * anoche», the end of the prompt's first sentence; with 10 s, Whisper wrote the prompt's tail into the silence.
+ * Inside the recording from 15 s: a window that is mostly silence can be dropped whole, with the start of the
+ * sentence that follows it. Every published recording stays under both (at most 5.9 s at an edge, pivot-infra,
+ * and 13.7 s inside, iam-halden), so its transcript and clips do not change.
+ */
+export const LONG_EDGE_SILENCE_MS = 8000;
+export const LONG_PAUSE_MS = 15000;
+const ASR_MARGIN_MS = 1000; // air Whisper still hears on each side of a skipped silence
+// A silence this close to an edge is at that edge: ffmpeg prints the duration rounded to 10 ms, and a click in the
+// first few ms of a recording makes its leading silence start just after 0.
+const EDGE_TOLERANCE_MS = 100;
+
+/** ms from the "Duration: HH:MM:SS.cc" line ffmpeg prints for its input, or null. */
+export function parseDuration(stderr) {
+  const m = /Duration: (\d+):(\d{2}):(\d{2}(?:\.\d+)?)/.exec(stderr);
+  return m ? Math.round(((Number(m[1]) * 60 + Number(m[2])) * 60 + Number(m[3])) * 1000) : null;
+}
+
+/**
+ * The stretches of the recording Whisper transcribes: all of it but its long silences (LONG_EDGE_SILENCE_MS at
+ * the start or end, LONG_PAUSE_MS inside), keeping ASR_MARGIN_MS of each, rounded out to whole seconds so a
+ * slightly different silence detection keeps the cached transcript. Its timestamps stay in the recording's time.
+ * @returns {{startMs: number, endMs: number}[] | null} null when there is no such silence: the whole file, as before
+ */
+export function asrClips(silences, totalMs) {
+  const atStart = (s) => s.startMs <= EDGE_TOLERANCE_MS;
+  const atEdge = (s) => atStart(s) || s.endMs >= totalMs - EDGE_TOLERANCE_MS;
+  const long = silences.filter((s) => s.endMs - s.startMs >= (atEdge(s) ? LONG_EDGE_SILENCE_MS : LONG_PAUSE_MS));
+  if (!long.length) return null;
+  const clips = [];
+  let from = 0;
+  for (const s of long) {
+    if (!atStart(s) && s.startMs > from) clips.push({ startMs: from, endMs: Math.ceil((s.startMs + ASR_MARGIN_MS) / 1000) * 1000 });
+    if (s.endMs >= totalMs - EDGE_TOLERANCE_MS) return clips.length ? clips : null;
+    from = Math.max(0, Math.floor((s.endMs - ASR_MARGIN_MS) / 1000) * 1000);
+  }
+  clips.push({ startMs: from, endMs: Math.ceil(totalMs / 1000) * 1000 });
+  return clips;
 }
 
 /**
@@ -534,7 +663,7 @@ export function recordingRecord({ voice, rate, pitch, spoken, bytes, ranges, loc
 }
 
 /** m:ss.s */
-function clock(ms) {
+export function clock(ms) {
   const tenths = Math.round(ms / 100);
   return `${Math.floor(tenths / 600)}:${((tenths % 600) / 10).toFixed(1).padStart(4, '0')}`;
 }

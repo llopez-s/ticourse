@@ -1,13 +1,15 @@
 import assert from 'node:assert/strict';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
+import { fileURLToPath } from 'node:url';
 import { analyzeNarration, isRecordingVoice, spokenForVoice, ttsKey } from './narration.mjs';
 import { ffmpegBinary } from './remotion.mjs';
 import { parseSegmentText } from './text.mjs';
 import {
   REVIEW_SCORE,
   asrCacheValid,
+  asrClips,
   asrPrompt,
   clipArgs,
   clipWords,
@@ -16,8 +18,12 @@ import {
   importReport,
   keepRanges,
   locateSegments,
+  missingGaps,
+  parseDuration,
   parseLoudness,
   parseSilences,
+  recutAdvice,
+  recutLoudnessFilter,
   recordingRecord,
   recordingSettings,
   repairSwallowedPauses,
@@ -378,6 +384,122 @@ test('asrCacheValid: the same recording and model reuse the transcript, whatever
   assert.equal(asrCacheValid(cached, { sha256: 'def', model: 'small' }), false); // another recording
   assert.equal(asrCacheValid(cached, { sha256: 'abc', model: 'medium' }), false); // another model
   assert.equal(asrCacheValid({ sha256: 'abc', model: 'small' }, { sha256: 'abc', model: 'small' }), false); // no words
+});
+
+test('asrCacheValid: a transcript is only reused for the same stretches Whisper heard', () => {
+  const old = { sha256: 'abc', model: 'small', words: [] }; // made before Whisper skipped long silences
+  const clips = [{ startMs: 27000, endMs: 346000 }];
+  assert.equal(asrCacheValid(old, { sha256: 'abc', model: 'small', clips: null }), true); // a published recording: unchanged
+  assert.equal(asrCacheValid(old, { sha256: 'abc', model: 'small', clips }), false); // V10: heard the silence, redo it
+  assert.equal(asrCacheValid({ ...old, clips }, { sha256: 'abc', model: 'small', clips: [{ startMs: 27000, endMs: 346000 }] }), true);
+  assert.equal(asrCacheValid({ ...old, clips }, { sha256: 'abc', model: 'small', clips: [{ startMs: 26000, endMs: 346000 }] }), false);
+  assert.equal(asrCacheValid({ ...old, clips }, { sha256: 'abc', model: 'small', clips: null }), false);
+});
+
+/** Silences of a recording: a lead of `lead` ms, then `gaps` (ms) spread out, then a tail of `tail` ms. */
+function silencesOf({ lead = 0, gaps = [], tail = 0, totalMs }) {
+  const out = lead ? [{ startMs: 0, endMs: lead }] : [];
+  gaps.forEach((g, k) => out.push({ startMs: lead + (k + 1) * 60000, endMs: lead + (k + 1) * 60000 + g }));
+  if (tail) out.push({ startMs: totalMs - tail, endMs: totalMs });
+  return out;
+}
+
+test('asrClips: published recordings (silences up to 5.9 s at the edges, 13.7 s inside) are heard whole, as before', () => {
+  // The longest silences of every published master (silencedetect -40 dB): pivot-infra's 5.9 s lead,
+  // iam-halden's 13.7 s and ach-matriz's 12.6 s pauses, iam-halden's 5.3 s tail (its re-recording).
+  assert.equal(asrClips(silencesOf({ lead: 5892, gaps: [13685, 12576, 11032], tail: 5263, totalMs: 713860 }), 713860), null);
+  assert.equal(asrClips([], 60000), null);
+});
+
+test('asrClips: Whisper skips a long leading silence (V10 lost its first sentence after 28.5 s of it)', () => {
+  const fx = JSON.parse(readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures', 'recording-lead-silence.json'), 'utf8'));
+  // From 1 s before the voice, rounded out to whole seconds, to the end of the file.
+  assert.deepEqual(asrClips(fx.silences, fx.totalMs), [{ startMs: 27000, endMs: 346000 }]);
+});
+
+test('asrClips: a long pause inside the recording and a long tail are skipped too, keeping 1 s of air', () => {
+  const silences = [{ startMs: 0, endMs: 2000 }, { startMs: 100400, endMs: 130600 }, { startMs: 200300, endMs: 240000 }];
+  assert.deepEqual(asrClips(silences, 240000), [{ startMs: 0, endMs: 102000 }, { startMs: 129000, endMs: 202000 }]);
+  // edges count from 8 s, pauses inside from 15 s (a 12 s pause stays)
+  assert.deepEqual(asrClips([{ startMs: 0, endMs: 9000 }, { startMs: 60000, endMs: 72000 }], 120000), [{ startMs: 8000, endMs: 120000 }]);
+  // ffmpeg's duration is rounded to 10 ms: a silence that ends 5 ms before it still ends the file
+  assert.deepEqual(asrClips([{ startMs: 100000, endMs: 109995 }], 110000), [{ startMs: 0, endMs: 101000 }]);
+  // a click in the first few ms does not make the leading silence a pause, nor give Whisper a window of nothing
+  assert.deepEqual(asrClips([{ startMs: 50, endMs: 28497 }], 345165), [{ startMs: 27000, endMs: 346000 }]);
+  assert.deepEqual(asrClips([{ startMs: 50, endMs: 9000 }], 60000), [{ startMs: 8000, endMs: 60000 }]);
+  // a recording that is all silence has nothing to transcribe: heard whole, Whisper finds nothing
+  assert.equal(asrClips([{ startMs: 0, endMs: 60000 }], 60000), null);
+});
+
+test('parseDuration reads the input duration ffmpeg prints, in ms', () => {
+  assert.equal(parseDuration('Input #0, wav, from \'a.wav\':\n  Duration: 00:05:45.17, bitrate: 1058 kb/s\n'), 345170);
+  assert.equal(parseDuration('  Duration: 01:02:03.5, start: 0\n'), 3723500);
+  assert.equal(parseDuration('no duration here'), null);
+});
+
+/** The V10 fixture located and cut as import-recording does it. */
+function v10() {
+  const fx = JSON.parse(readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures', 'recording-lead-silence.json'), 'utf8'));
+  const segments = fx.segments.map((s) => seg(s.id, s.text));
+  const words = repairSwallowedPauses(W(fx.words), fx.silences);
+  const located = locateSegments(segments, words);
+  const cuts = cutPoints(located, words, fx.silences, fx.totalMs);
+  return { ...fx, words, located, cuts };
+}
+
+test('missingGaps: where a sentence that was not found should be, trimmed to the voice (V10 s01-01: 28.5–32.4 s)', () => {
+  const { located, cuts, words, silences, totalMs } = v10();
+  assert.deepEqual(located.map((f) => f.found), [false, true, true]);
+  // From the start of the file to s01-02's cut; the voice starts after the 28.5 s silence and stops at the one
+  // before «Cada», with 300 ms of that silence kept on each side.
+  assert.deepEqual(missingGaps(located, cuts, words, silences, totalMs), [{ ids: ['s01-01'], startMs: 28197, endMs: 32653, heard: '' }]);
+});
+
+test('missingGaps: consecutive missing sentences share one gap, with what Whisper heard there', () => {
+  const words = [...spoken('uno dos'), ...spoken('algo raro', 2000), ...spoken('cinco seis', 5000)];
+  const located = [
+    { id: 'a', found: true, score: 1, first: 0, last: 1 },
+    { id: 'b', found: false, score: 0 },
+    { id: 'c', found: false, score: 0 },
+    { id: 'd', found: true, score: 1, first: 4, last: 5 },
+  ];
+  const cuts = [{ id: 'a', startMs: 0, endMs: 1000 }, { id: 'd', startMs: 4900, endMs: 6000 }];
+  const silences = [{ startMs: 1000, endMs: 1900 }, { startMs: 2900, endMs: 4950 }];
+  assert.deepEqual(missingGaps(located, cuts, words, silences, 6000), [{ ids: ['b', 'c'], startMs: 1600, endMs: 3200, heard: 'algo raro' }]);
+  // no voice between the neighbours: nothing to cut
+  const quiet = [{ startMs: 900, endMs: 5000 }];
+  assert.deepEqual(missingGaps(located, cuts, W([['uno', 0, 400], ['dos', 500, 900], ['cinco', 5000, 5400], ['seis', 5500, 5900]]), quiet, 6000), [
+    { ids: ['b', 'c'], startMs: null, endMs: null, heard: '' },
+  ]);
+});
+
+test('recutLoudnessFilter measures a gap as recut_recording.py writes it: the voice, then its silence after each part', () => {
+  // V10: the bare excerpt measured -19.23 LUFS, the recut file -19.53, so --lufs gave the clip 0.3 dB more gain.
+  const recut = readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'recut_recording.py'), 'utf8');
+  const gap = /"--gap", type=float, default=([\d.]+)/.exec(recut)[1];
+  assert.equal(recutLoudnessFilter(), `apad=pad_dur=${gap},loudnorm=print_format=json`);
+});
+
+test('recutAdvice: the cause and the exact commands to cut the sentence out and import just that', () => {
+  const gap = { ids: ['s01-01'], startMs: 28197, endMs: 32653, heard: '' };
+  const lines = recutAdvice(gap, {
+    file: 'video/engine/voices/logs-halden lidia (master).wav',
+    out: 'video/engine/voices/logs-halden lidia s01-01 (recorte).wav',
+    slug: 'logs-halden',
+    name: 'lidia',
+    python: 'video/engine/.venv-chatterbox/Scripts/python.exe',
+    lufs: -18.07,
+  }).join('\n');
+  assert.match(lines, /s01-01 .*0:28\.2–0:32\.7/);
+  assert.match(lines, /Whisper heard nothing/);
+  assert.ok(lines.includes('video/engine/.venv-chatterbox/Scripts/python.exe video/engine/scripts/recut_recording.py --out "video/engine/voices/logs-halden lidia s01-01 (recorte).wav" --part "video/engine/voices/logs-halden lidia (master).wav@28.20-32.65"'), lines);
+  assert.ok(lines.includes('node video/engine/scripts/import-recording.mjs --video logs-halden --file "video/engine/voices/logs-halden lidia s01-01 (recorte).wav" --name lidia --only s01-01 --lufs=-18.07'), lines);
+  // heard but too far from the script: listen first
+  assert.match(recutAdvice({ ...gap, heard: 'esta manana tu' }, { file: 'a.wav', out: 'b.wav', slug: 'x', name: 'n', python: 'py', lufs: -18 }).join('\n'), /heard «esta manana tu»/);
+  // no voice at all: it was not recorded, no commands
+  const none = recutAdvice({ ids: ['s02-03', 's02-04'], startMs: null, endMs: null, heard: '' }, { file: 'a.wav', out: 'b.wav', slug: 'x', name: 'n', python: 'py', lufs: -18 });
+  assert.match(none.join('\n'), /s02-03, s02-04.*no voice/);
+  assert.ok(!none.join('\n').includes('recut_recording'));
 });
 
 test('repairSwallowedPauses: a word whose span swallowed a pause starts after it (V4 s03-05/06: «IP» was cut)', () => {
