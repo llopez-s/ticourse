@@ -482,8 +482,8 @@ Las exam cards se listan en el orden de las escenas:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
 - **s4m3 ACH (Principal): V9, publicada el 2026-10-04 (YouTube `TjVViiBTeds`), ficha completa abajo.** La matriz del extracto de la
   lección, celda a celda, con supuestos clave, diagnosticidad y sensibilidad; primera aparición de PAPER CRANE.
-- **sp2m7 (Cápsula) «Ataques en los logs»: V10, guion congelado el 2026-10-04; escenas y póster montados el 2026-10-05
-  sobre la línea de tiempo estimada, a falta de la grabación, que va en la misma sesión que V11.** La noche
+- **sp2m7 (Cápsula) «Ataques en los logs»: V10, publicada el 2026-10-05 (YouTube `uHHv-1hTYTE`, la primera subida por la
+  API, con `youtube-upload.mjs`), ficha completa abajo.** La noche
   del 20 al 21-10: spraying, traversal y amplificación DNS; primera aparición de RED MARROW.
 
 **Orden propuesto para el resto de la tanda 2** (2026-10-01, pendiente de Lidia): V5b, V6, V7, V8, V9 y V10.
