@@ -284,6 +284,8 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'TjVViiBTeds')?.module).toBe('s4m3');
     // V10 reads one night's three trails in sp2m7, after the 900-accounts check and before the closing paragraph
     expect(youtubeVideos.find((v) => v.block.youtube === 'uHHv-1hTYTE')?.module).toBe('sp2m7');
+    // V11 gathers sp1m6 at its end, after the steganography-to-blockchain list and before the paragraph that hands over to PKI
+    expect(youtubeVideos.find((v) => v.block.youtube === '6jyHqrkMOZQ')?.module).toBe('sp1m6');
   });
 
   it('every video block points at relative public assets that exist', async () => {

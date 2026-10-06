@@ -1574,6 +1574,10 @@ un script.
 > escenas y guion será `video/cripto-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en
 > `video/cripto-halden/out/script-notes.md`.
 >
+> **Producido y publicado**: subido por la API el 2026-10-05 (YouTube `6jyHqrkMOZQ`, privado) y publicado por Lidia;
+> 8:30, 10 escenas, 7 tarjetas, 2 preguntas, 3 mensajes de NULL CIPHER (voz `sapi/Microsoft Helena` con el efecto nuevo `cifrado`), voz de
+> Lidia, música de V4 y V5. En la lección sp1m6, donde dice «Inserción», con su línea de entrada.
+>
 > **Revisada el 2026-10-05** (exactitud y canon, `revision-V11-V12.md`): la pintura ya dice su límite (no te dice con quién
 > has mezclado, y eso lo pone el sello del servidor: s08, s09 y concepto 5, «sin ningún secreto previo»); las dos preguntas
 > para pensar ya no usan nombres sin explicar ni llegan con la respuesta dada (s05 y s08); s06 va en condicional, rotulada
