@@ -1,0 +1,124 @@
+{
+  "title": "Triaje de vulnerabilidades: el contexto manda sobre el número",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 210,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "El número y el contexto"
+    },
+    {
+      "n": 2,
+      "title": "Sin parche y sin prueba"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una cola, un solo parche",
+      "goal": "La cola del SOC, «01-10 · jueves · 09:00 · informe de escaneo mensual · credentialed» (`report`), con tres filas rojas a media luz (`rows`), cada una con su equipo y su nota: `srv-msg01` 9.8, `srv-msg02` 9.8 y `cam-nvr-02` 8.1, y un contador «esta semana cabe: 1 parche». La primera frase habla del informe entero; al acabarla, título «Qué se arregla primero» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «el número y el contexto · lo que no tiene parche · cerrar con prueba». Después las tres filas se encienden juntas y el resto se atenúa. Rótulo «datos ficticios» en el sello de la simulación; los CVE son inventados",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "requiredCues": [
+        "report",
+        "rows",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-contexto",
+      "chapter": 1,
+      "title": "El mismo fallo, dos servidores",
+      "goal": "Se amplían las dos primeras filas (`rows`): `srv-msg01` y `srv-msg02`, las dos «CVE-2026-40218 · ejecución remota de código en el servicio de mensajería · CVSS v3.1 9.8 CRITICAL · AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H». Dónde mirar, por pasos y con el resto atenuado: la columna CVE (`cve`, la misma en las dos: «el nombre del fallo»), la nota (`score`, la misma: «gravedad en abstracto · de 0 a 10 · nota base») y, por último, lo que la nota no sabe y la ficha de cada equipo sí (`listens`): «escucha en: la red interna» (`srv-msg01`) y «escucha en: solo este equipo» (`srv-msg02`). La imagen (`hull`): dos barcos con el mismo agujero rotulado «9.8», uno en dique seco (`srv-msg02`) y otro en alta mar con temporal (`srv-msg01`); el agujero es la nota y el mar, el contexto. Nombres CVE y CVSS (`names`). La tarjeta de examen, con las dos fichas ya quietas",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "rows",
+        "cve",
+        "score",
+        "listens",
+        "hull",
+        "names"
+      ]
+    },
+    {
+      "id": "s03-orden",
+      "chapter": 1,
+      "title": "¿Y ahora, cuál?",
+      "goal": "Las dos filas empatadas, «9.8 · 9.8», con el chip «esta semana cabe: 1» (`tie`, «ding»). La narradora presenta a SILENT PAGER con el anuncio del jefe de sp4 («cuenta con que tu SOC duerma», `sp/sections.ts:104`) y llega el mensaje interceptado. Respuesta: una moneda no mira nada de esto (`coin`); cuatro preguntas, una por vez y aplicadas a las dos filas. «¿Se llega?» (`reach`; `srv-msg01`: «sí · desde cualquier puesto de la red interna»; `srv-msg02`: «solo desde el propio equipo»); «¿Hay exploit?» (`exploit`; las dos: «público desde hace 9 días», porque es del fallo y no del servidor); «¿Hay algo delante?» (`front`; las dos: «nada»); «¿Qué se para si cae?» (`impact`; las dos: «el intercambio de mensajes entre las aplicaciones del puerto»). Tres respuestas iguales y una distinta: decide la que distingue. Resultado en la fila de `srv-msg01`: «P1 · parche hoy · ventana de emergencia (24 h)» (`p1`), y en la de `srv-msg02`, «P3 · ciclo mensual» (`p3`). Nota: «Sistemas · parche en srv-msg01 · hoy · 18:00». El barco de alta mar sube a primera fila",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "tie",
+        "coin",
+        "reach",
+        "exploit",
+        "front",
+        "impact",
+        "p1",
+        "p3"
+      ]
+    },
+    {
+      "id": "s04-sinparche",
+      "chapter": 2,
+      "title": "Lo que no tiene parche",
+      "goal": "La tercera fila, ampliada (`unpatchable`): `cam-nvr-02` · «grabador de las cámaras del recinto» · «CVE-2026-38105 · CVSS v3.1 8.1 (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H) · firmware sin soporte · el fabricante no publica parche». Cuatro opciones en fila (`options`) que se tachan o se encienden una a una: «parchear» (tachada: no existe parche, `no-patch`, «block»), «seguro · insurance» (tachada tras el mensaje, `insurance`), «aislar · segmentation y compensar · compensating controls» (`isolate`) y «excepción». Mensaje interceptado. Respuesta: junto al sello «seguro · insurance · transfiere el coste · el fallo sigue igual de explotable». Después, mamparos y bombas de achique sobre el casco (aislar y vigilar), y el registro de la excepción rellenándose campo a campo (`record`, «lock»): «Qué: grabador de las cámaras · firmware sin soporte» · «Por qué: el fabricante no publica parche» · «Dueño: director de operaciones» (`owner`, con la nota pequeña «quien manda en el negocio, no quien lo encontró») · «Controles: aislado · acceso solo desde un equipo autorizado · alertas reforzadas» · «Caduca: 01-04-2027» (`expiry`) · «Revisión: cada 90 días». La tarjeta de examen, con el registro quieto",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "requiredCues": [
+        "unpatchable",
+        "options",
+        "no-patch",
+        "insurance",
+        "isolate",
+        "record",
+        "owner",
+        "expiry"
+      ]
+    },
+    {
+      "id": "s05-despues",
+      "chapter": 2,
+      "title": "Después del parche",
+      "goal": "«Lunes 5-10 · 08:30 · rescan» (`rescan`). La fila de `srv-msg01` sigue en la lista: «CVE-2026-40218 · detectada de nuevo», y al lado «Sistemas · parche instalado el 1-10 · 18:00» (`still`). Pregunta para pensar (`question`), con la fila quieta (el método y la versión detectada todavía no se ven, ni ningún rótulo que conteste) y dos botones: «volver a parchear» y «comprobar la versión». Respuesta: comprobar. Con ella (`version`) aparece el método de la fila, «comprobación remota del servicio, sin sesión · versión que anuncia: msgq/3.1.4», con la frase de la voz «aunque el escaneo lleve credenciales, esta comprobación lee lo que el servicio anuncia por la red», y la consola de `srv-msg01` (`running`): `msgq --version` da `3.1.7`; paquete instalado `3.1.7`; servicio activo «desde 01-10 18:12» (descarta que falte un reinicio); y el banner que el servicio anuncia (`banner`), `msgq/3.1.4`, ampliado: «texto de la configuración · nadie lo cambió». Rótulo: «el escáner leía el letrero, no el servicio». Veredicto (`false-positive`): FALSE POSITIVE, «documentado», y «Sistemas corrige el texto · 5-10» (`fix`). Nuevo rescan: limpio, y el sello «cerrado · con prueba» (`closed`, «check»). La tarjeta de examen, con el sello ya quieto",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "requiredCues": [
+        "rescan",
+        "still",
+        "question",
+        "version",
+        "running",
+        "banner",
+        "false-positive",
+        "fix",
+        "closed"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas (`recap`), cada una con su viñeta en miniatura: el casco con el agujero y el mar (`rule-1`) · el casco con mamparos y el acta (`rule-2`) · la sentina (`rule-3`). Tarjeta final Alertópolis (`endcard`): «Ahora te toca: el laboratorio de triaje» (Vulnerability Triage, spl4c); la voz dice «en el laboratorio lo aplicas con otros ocho hallazgos» (`next`)",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
