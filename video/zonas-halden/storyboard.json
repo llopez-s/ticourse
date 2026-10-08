@@ -1,0 +1,194 @@
+{
+  "title": "Zonas de seguridad: dónde va cada cosa y qué pasa si falla",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 472,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "El plano"
+    },
+    {
+      "n": 2,
+      "title": "Vallas con control"
+    },
+    {
+      "n": 3,
+      "title": "Dónde va cada cosa"
+    },
+    {
+      "n": 4,
+      "title": "Cuando un control falla"
+    },
+    {
+      "n": 5,
+      "title": "Ver o parar"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "El plano de la servilleta",
+      "goal": "Sello «16-11 · lunes · rediseño de la red». Una servilleta con el plano de hoy, dibujado a mano: Internet, `fw-perimetro-01` y el router central `rt-core`; colgando de él, cuatro cajas de VLAN con su nombre: Oficinas, Administración, Producción y Pruebas; y aparte, Operaciones, detrás de un «cortafuegos interno» (sin «el único»). Entre el router y las cuatro cajas, una etiqueta: «entre estas VLAN: el router no filtra». El portal, atenuado dentro de Oficinas (lo recoge s04). Al acabar la primera frase, título «Zonas de seguridad» (hacia los 7–9 s, siempre antes de los 12) con «security zones · device placement · failure modes» debajo, y la promesa en tres chips: «qué va junto · dónde va cada control · qué pasa si falla». Entra la etiqueta del adversario: «BLIND ARCHITECT · sección 3», con una línea: «vive de los planos con atajos»",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "requiredCues": [
+        "napkin",
+        "title",
+        "promise",
+        "adversary"
+      ]
+    },
+    {
+      "id": "s02-garita",
+      "chapter": 2,
+      "title": "Una valla con la garita vacía",
+      "goal": "El puerto desde arriba: la calle, la terminal de pasajeros, las oficinas, el muelle y la sala de control de Operaciones (como un área más, no como la puerta de s05), cada área con su valla y una garita en el paso; una acreditación pasa la garita de las oficinas y no la del muelle. Rótulo: «zona: misma confianza dentro · un control en cada paso». Vuelve la servilleta: un paquete sale de Oficinas, cruza `rt-core` sin pararse y llega a Producción, y la valla del dibujo se queda con la garita vacía y la barrera levantada. Mensaje interceptado. Respuesta: «la VLAN aparta el tráfico; nadie decide qué cruza» y «una VLAN sin control no es una zona»; aparece un control en la frontera entre las dos y el mismo paquete se para, salvo que una regla lo deje pasar. Nombre SECURITY ZONE",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "requiredCues": [
+        "port",
+        "checkpoint",
+        "packet",
+        "passes",
+        "empty-gate",
+        "control",
+        "zone"
+      ]
+    },
+    {
+      "id": "s03-alcance",
+      "chapter": 2,
+      "title": "Hasta dónde llega un portátil",
+      "goal": "«Si cae un portátil de Oficinas, ¿hasta dónde llega?»: desde un portátil de Oficinas se encienden líneas a Administración, Producción, Pruebas y el portal; Operaciones queda fuera, detrás del cortafuegos interno. El plan nuevo: seis zonas en fila con su confianza, como la tabla de la lección (`sp3-part2.ts:325-363`) pero **sin su contenido**: Internet («ninguna»), DMZ («baja»), interna («media»), OT («crítica, pero frágil», `:348`), gestión («máxima») e invitados («ninguna»), con una garita entre cada dos. El mismo portátil: «alcanza: su zona y lo que una regla permita». Nombre ATTACK SURFACE y tres chips que la agrandan: «cada servicio publicado · cada excepción · cada camino de más». Cierre del capítulo",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "requiredCues": [
+        "laptop",
+        "reach",
+        "six",
+        "reach-after",
+        "surface",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s04-dmz",
+      "chapter": 3,
+      "title": "La ventanilla",
+      "goal": "Se amplía el portal: `hpa-portal-web-01` («portal público de reservas de atraque»), dentro de Oficinas, junto a los puestos de Importación. En `fw-perimetro-01`, su regla, en columnas: «origen: Internet · destino: `hpa-portal-web-01` · tcp/443 · permitir». Mensaje interceptado. Respuesta: una línea punteada de Internet al portal y del portal a los puestos de al lado, «si alguien lo rompe, ya está dentro». La imagen: la ventanilla de atención a navieras y transportistas, metida en la valla, sin puerta a las oficinas: solo una bandeja para pasar papeles, con alguien detrás que mira cada uno. El portal se muda a una caja nueva entre el perímetro y la red interna, con dos reglas: «de Internet a la DMZ: solo 443, al portal» · «de la DMZ a la red interna: solo lo imprescindible, con regla; nada más». Nombre DMZ",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "portal",
+        "rule-in",
+        "inside",
+        "counter",
+        "dmz",
+        "dmz-rules"
+      ]
+    },
+    {
+      "id": "s05-jump",
+      "chapter": 3,
+      "title": "Una sola puerta",
+      "goal": "Hoy: «Administración a gestión · SSH · desde cada puesto» (la regla 5 de V1, un ALLOW que cruza el cortafuegos interno, `video/capas-halden/src/scenes/S05Rules.tsx:24`; sin citar V1 en voz); de varios puestos de Administración, sin nombre, sale una línea cada uno hasta las interfaces de gestión: «un camino por puesto». La imagen: la sala de mandos de la red con una sola puerta, un torno con tarjeta y PIN, y un registro con cámara. El plan: la caja del jump server, «endurecido · MFA · sesión grabada», suelta entre los puestos y la zona de gestión, dentro de ninguna zona; en `converge`, todas las líneas convergen en ella y aparece al lado la zona de gestión con sus interfaces dentro, sin rótulo de acceso. Pregunta para pensar, con dos botones: «DMZ» y «gestión». Respuesta: «gestión»; la caja entra en la zona y aparece «zona de gestión: solo responde al jump server»; la DMZ, tachada: «lo alcanzaría cualquiera desde Internet · el único control, convertido en el único blanco». Nombre JUMP SERVER, con «jump box · bastion host» debajo. Cierre del capítulo",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "today",
+        "many-paths",
+        "room",
+        "jump",
+        "converge",
+        "answer",
+        "bastion",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s06-barrera",
+      "chapter": 4,
+      "title": "Cuando se va la luz",
+      "goal": "«Lo que va en el camino del tráfico acabará fallando», con tres chips: «memoria · firmas corruptas · corriente». La barrera de la garita en un corte de luz (antes del corte, la garita con su vigilante y la barrera con corriente; no el dibujo vacío de s02), con dos finales: arriba (los camiones pasan y nadie mira) y abajo (cola de camiones, no pasa nadie). Nombres FAIL-OPEN («pasa sin inspeccionar · gana la disponibilidad») y FAIL-CLOSED («no pasa ni un camión · gana la seguridad», con «también: fail-secure» en pequeño). Mensaje interceptado. Respuesta: «¿siempre? Depende de qué sale más caro»",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "requiredCues": [
+        "inline",
+        "causes",
+        "barrier",
+        "open",
+        "closed",
+        "depends"
+      ]
+    },
+    {
+      "id": "s07-decidir",
+      "chapter": 4,
+      "title": "Dos controles, dos respuestas",
+      "goal": "Dos equipos en línea del plan. Primero, el cortafuegos nuevo delante de la zona de gestión. Pregunta para pensar, con dos botones: «abre» y «cierra». Respuesta: cierra; detrás están los mandos de cada switch y cada cortafuegos, un rato sin administrar sale más barato que dejarlos sin inspección, y el tráfico del puerto no pasa por ahí. Rótulo FAIL-CLOSED. Después, el equipo en línea que va a entrar en la red que mueve las bombas de las esclusas (el ejemplo de la lección, `sp3-part2.ts:391-405`), con la nota de Operaciones: «si se paran las bombas, se puede inundar un muelle»; rótulo «fail-open, o fuera del camino», y debajo «el riesgo se cubre separando y vigilando». Barra final: «ninguno es el bueno: decide lo que cuesta más»",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "mgmt-fw",
+        "closes",
+        "why",
+        "pumps",
+        "flood",
+        "opens",
+        "cost"
+      ]
+    },
+    {
+      "id": "s08-puertas",
+      "chapter": 4,
+      "title": "La salida de emergencia",
+      "goal": "La misma pregunta en una puerta: corte de luz en el edificio de oficinas. La salida de emergencia se abre (FAIL-SAFE · «primero, la gente»); la puerta de la sala de servidores se queda bloqueada (FAIL-SECURE · «primero, lo que guarda»). Rótulo con la frase de la lección: «en las personas manda la vida; en los datos, la protección» (`:383`). Cierre del capítulo",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "requiredCues": [
+        "power-cut",
+        "exit",
+        "server-room",
+        "life",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s09-camara",
+      "chapter": 5,
+      "title": "La cámara no baja la barrera",
+      "goal": "El plan pone más sensores, en taps y puertos espejo (no los estrena: V1 ya tiene uno detrás del cortafuegos el 3-9, `video/capas-halden/narration.json:215`). La imagen: la cámara de la valla, que ve pasar a todos y no baja la barrera. Dos ejes en cruz: «dónde está: inline (el tráfico lo atraviesa) · tap (recibe una copia)» y «qué puede hacer: active (corta, bloquea, reescribe) · passive (mira, registra, avisa)». Un paquete por el tap: alerta, y sigue su camino; el mismo paquete por un equipo inline y active: descartado. Tachado: «un IPS en un puerto espejo no para nada, aunque se llame IPS». El sensor del tap se apaga: «punto ciego · no corta nada»; rótulo «el modo de fallo solo se decide para lo que va en línea». Nombres INLINE / TAP y ACTIVE / PASSIVE. Al final, el sello del plan: «plan de zonas · aprobado en el comité de cambios · 20-11 · lo ejecuta Infraestructura (L. Ferrer) · por fases desde el 1-12»",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "requiredCues": [
+        "sensors",
+        "camera",
+        "axes",
+        "alert-passes",
+        "drop",
+        "blind",
+        "only-inline",
+        "approved"
+      ]
+    },
+    {
+      "id": "s10-recap",
+      "chapter": 5,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, una cada vez, con su icono (valla, ventanilla, barrera); tarjeta final Alertópolis: «Tu turno: el laboratorio Zone Defense» (spl3a, 12 sistemas y cuatro zonas)",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
