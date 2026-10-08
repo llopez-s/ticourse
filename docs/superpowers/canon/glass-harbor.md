@@ -1,7 +1,7 @@
 # Canon · Operación GLASS HARBOR (Autoridad Portuaria de Halden)
 
 Registro de los hechos fijos del incidente de Halden que cuentan los vídeos de Security+ y sus lecciones.
-Última revisión: 2026-10-08 (SIEM, V1, V2, V5, V5b, V6, V10, V11, V16 y las lecciones `sp1`–`sp5`; el lunes 16-11 y el viernes 20-11 de V16 entran en la cronología, y la red del puerto, antes y después del plan de zonas, en §3.).
+Última revisión: 2026-10-08 (SIEM, V1, V2, V5, V5b, V6, V10, V11, V16 y las lecciones `sp1`–`sp5`; el lunes 16-11 y el viernes 20-11 de V16 entran en la cronología, y la red del puerto, antes y después del plan de zonas, en §3).
 
 ## 1. Cómo se usa
 
