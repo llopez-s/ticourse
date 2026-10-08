@@ -943,6 +943,13 @@ Eje tecnológico    : Capability ↔ Infrastructure
         },
       },
       {
+        t: 'video',
+        title: 'De la foto a la película: activity threads y grupos',
+        youtube: 'WMhXfPe5zTE',
+        poster: 'videos/hilos-pelicula-poster.png',
+        transcript: 'videos/hilos-pelicula-transcript.txt',
+      },
+      {
         t: 'callout',
         kind: 'story',
         title: '🎖️ Campaña',
