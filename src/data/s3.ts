@@ -348,6 +348,13 @@ Hosts contactados:
         md: 'El triaje empieza separando **infraestructura del actor** de **ruido del sistema**. De los cinco hosts, solo dos son del actor (`update-svc-cdn.com`, `ocsp-verify-node.example`); los otros tres son telemetría normal de Windows que cualquier proceso genera. Bloquear los cinco a ciegas rompería la resolución de hora y las comprobaciones de conectividad de toda la flota — un autogol clásico. Después vienen los pivotes: el **imphash** te lleva a la familia por toolchain (mismo compilador/estructura, aunque el SHA-256 difiera); el **ssdeep** al 94% confirma que es una variante recompilada; el **PDB path** es el link fuerte hacia el entorno del desarrollador; y cada C2 alimenta el vértice Infrastructure del diamante. Nota también el certificado: estar *firmado* no lo hace benigno — un firmante desconocido con nombre plausible es una bandera, no un salvoconducto.',
       },
       {
+        t: 'video',
+        title: 'Lo que cuenta una muestra: triaje de malware en sandbox',
+        youtube: 'z9OLiWCphso',
+        poster: 'videos/sandbox-muestra-poster.png',
+        transcript: 'videos/sandbox-muestra-transcript.txt',
+      },
+      {
         t: 'check',
         q: {
           q: 'Of the five contacted hosts, which should be actioned as C2 — and what is the risk of blocking all five?',

@@ -299,6 +299,8 @@ describe('lesson videos', () => {
     // V14 turns s2m4's events into threads and groups, after the last check (Victim 2's partial thread) and before
     // the campaign callout that sends the learner to Labs 2A and 2B
     expect(youtubeVideos.find((v) => v.block.youtube === 'WMhXfPe5zTE')?.module).toBe('s2m4');
+    // V15 triages the sandbox report after the triage paragraph and before the four checks on its data
+    expect(youtubeVideos.find((v) => v.block.youtube === 'z9OLiWCphso')?.module).toBe('s3m2');
   });
 
   it('every video block points at relative public assets that exist', async () => {
