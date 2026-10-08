@@ -1,7 +1,7 @@
 # Canon de «Operación VELVET CICADA» (GCTI)
 
 Registro único de los datos ficticios de la campaña GCTI: la intrusión contra Meridian Dynamics que continúan
-las lecciones, los laboratorios y los vídeos. Estado a 2026-10-08 (vídeos con su canon aquí: V3, V4, V7, V8, V9, V14 y V15; el de V13 falta).
+las lecciones, los laboratorios y los vídeos. Estado a 2026-10-08 (vídeos con su canon aquí: V3, V4, V7, V8, V9, V13, V14 y V15).
 
 ## 1. Cómo se usa
 
@@ -35,11 +35,11 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 | 2026-02-27 14:22:08 (sin zona) | — | pDNS first seen de `cdn-sync-status.example` en `203.0.113.27` | `src/data/s3.ts:775` |
 | 2026-02-27 | — | `first_seen` de la campaña STIX «PO-REVISION phishing wave» | `src/data/s4.ts:1026-1028` |
 | 2026-03-01 09:40:51 → 10:02:13 (sin zona) | — | `cdn-sync-status.example` pasa de `203.0.113.27` a `198.51.100.84` («la primera IP se quemó») | `src/data/s3.ts:775-776,780` |
-| 2026-03-02 09:41 UTC | Delivery | Spearphish «Candidatura - Ingeniero de propulsion» a RR. HH.; el walkthrough de s2m4 usa el mismo correo (plan A de V14, `src/data/s2.ts:879`) | `src/data/s2.ts:68-74` |
-| 2026-03-02 09:44:12 → 09:45:02 (sin zona, «mismo dia») | Exploitation → C2 | En ENG-WS-041: LNK, PowerShell, `winhlp.exe`, tarea programada, primer beacon; s2m4: 09:44 LNK y `winhlp.exe` con la ruta del PDB, 09:45 beacon (`src/data/s2.ts:880-882`) | `src/data/s2.ts:76-83` |
+| 2026-03-02 09:41 UTC | Delivery | Spearphish «Candidatura - Ingeniero de propulsion» a RR. HH.; el walkthrough de s2m4 usa el mismo correo (plan A de V14, `src/data/s2.ts:879`); V13 enseña sus cabeceras tal como las escribe la lección, con `Received: from mx1.cdn-sync-status.example (203.0.113.27) by mail.meridian.example; Mon, 2 Mar 2026 09:41:07 +0000` (`video/kill-chain-eslabon/src/scenes/parts/LessonLog.tsx:74-109`) | `src/data/s2.ts:68-74` |
+| 2026-03-02 09:44:12 → 09:45:02 (sin zona, «mismo dia») | Exploitation → C2 | En ENG-WS-041: LNK, PowerShell, `winhlp.exe`, tarea programada, primer beacon; s2m4: 09:44 LNK y `winhlp.exe` con la ruta del PDB, 09:45 beacon (`src/data/s2.ts:880-882`); V13 las enseña línea a línea, sin zona: 09:44:12 `explorer.exe`, 09:44:13 `powershell.exe`, 09:44:19 escribe `C:\ProgramData\winhlp.exe`, 09:44:20 `schtasks` (`WindowsUpdateCheck`), 09:45:02 beacon (`video/kill-chain-eslabon/src/scenes/parts/LessonLog.tsx:121-155`) | `src/data/s2.ts:76-83` |
 | 2026-03-05 02:11:47Z | antes de E7 [V3] | PROC_START de `C:\ProgramData\UpdSvc\updsvc.exe`; FILE_HASH `9f3a...e1` | `video/diamond-e7/src/data/s03-victim.ts:25-32` |
 | 2026-03-05 02:11:49Z | antes de E7 [V3] | PIPE_CREATE `\\.\pipe\vc_pipe_3a7f09c1` | `video/diamond-e7/src/data/s03-victim.ts:36-38` |
-| 2026-03-05 02:13 UTC | **E7** (C2) | Beacon HTTPS a `update-svc-cdn.com`; salta la alerta del SOC; informe MER-2026-019 | `src/data/s2.ts:559,564-566`; `video/diamond-e7/src/scenes/S01Hook.tsx:196-197` |
+| 2026-03-05 02:13 UTC | **E7** (C2) | Beacon HTTPS a `update-svc-cdn.com`; salta la alerta del SOC; informe MER-2026-019; V13 la dibuja como una alerta del SOC («SOC · Meridian Dynamics · turno de noche», tras «Sin alertas activas…»), con `ENG-WS-041` «ingeniería de propulsión» que «llama a» `update-svc-cdn.com` «dominio desconocido» (`video/kill-chain-eslabon/src/data/alert.ts:9-21`) | `src/data/s2.ts:559,564-566`; `video/diamond-e7/src/scenes/S01Hook.tsx:196-197` |
 | 2026-03-05 02:13:02Z y 02:14:01Z | E7 [V3] | Dos NET_CONN a `update-svc-cdn.com:443` | `video/diamond-e7/src/data/s03-victim.ts:42-45` |
 | 2026-03-07 (sin hora) | **E9** (AoO) | Mismo implante y metodología, dos días después de E7 [V3]; V14 (plan A) le da el contenido «compresión en una carpeta temporal · salida grande», sin tamaño ni destino en pantalla (`video/hilos-pelicula/src/scenes/parts/FilmRail.tsx:236`) | `src/data/s2.ts:623`; `video/diamond-e7/src/scenes/S10Thread.tsx:80-84` |
 | 2026-03-07 00:52 (sin zona) | AoO (s2m4) | Staging en `C:\Windows\Temp\~tmp4421.cab`. Antes la lección lo ponía el 4-3 a las 22:10; V14 (plan A) lo pasa a la madrugada del sábado 7-3, que es lo que E9 ya decía | `src/data/s2.ts:883` |
@@ -183,6 +183,9 @@ Mensajes interceptados publicados. Son canon de la voz del adversario; un guion 
 | GLASS VIPER | «Llámame GLASS VIPER, si te consuela. Mi nombre no lo sabrás.» | `video/diamond-e7/narration.json:142` |
 | GLASS VIPER | «Sígueme por la IP. Tengo catorce mil vecinos deseando conocerte.» | `video/diamond-e7/narration.json:282` |
 | GLASS VIPER | «Bloquea mi hash. Así ya no me volverás a ver.» | `video/attack-piramide/narration.json` (s04-01) |
+| GLASS VIPER | «Tú tienes que acertar siempre. A mí me basta con una vez.» | `video/kill-chain-eslabon/narration.json:96` (s02-07) |
+| GLASS VIPER | «Mi taller no lo verás nunca. Esa parte te la pierdes.» | `video/kill-chain-eslabon/narration.json:236` (s05-01) |
+| GLASS VIPER | «Tú vigila tus planos, que es lo importante. Lo demás, ni lo mires.» | `video/kill-chain-eslabon/narration.json:318` (s07-01) |
 | GLASS VIPER | «Otra empresa, otro dominio, otro correo. Eso no es cosa mía.» | `video/hilos-pelicula/narration.json:143` (s03-06) |
 | GLASS VIPER | «Ya me has metido en un grupo. Pues dime quién soy.» | `video/hilos-pelicula/narration.json:319` (s07-01) |
 | GLASS VIPER | «En Orbital solo llamo a casa. Ahí no va a pasar nada más.» | `video/hilos-pelicula/narration.json:359` (s08-01) |
@@ -300,7 +303,7 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
     ~14.000 (`src/data/s2.ts:591`; `src/data/labs.ts:739`; [V3] `video/diamond-e7/src/scenes/S09Quality.tsx:36`).
 13. **IP del relay.** El correo sale de `mx1.cdn-sync-status.example (203.0.113.27)` el 2026-03-02
     (`src/data/s2.ts:71-72`), pero el pDNS dice que el dominio dejó esa IP el 2026-03-01 (`src/data/s3.ts:775-776,780`).
-    Es un subdominio, así que puede no chocar, pero nadie lo explica.
+    Es un subdominio, así que puede no chocar, pero nadie lo explica. V13 enseña la IP en la línea `Received` sin comentarla (`video/kill-chain-eslabon/src/scenes/parts/LessonLog.tsx:95`).
 14. **Cadena del email de kazuo.** «tres dominios más» y «seis activos nuevos» en el callout de s3m3
     (`src/data/s3.ts:590`) frente a dos dominios desde el email (`src/data/labs.ts:659-660`) y 4 activos en el
     Lab 3A (`src/data/labs.ts:643`; `src/data/s3.ts:639`).
@@ -317,7 +320,7 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
 18. **Opción mala del Lab 5B con otros datos.** «On 14 March … WKS-0211» (`src/data/labs.ts:1011`) frente a
     2 de marzo y ENG-WS-041 (`src/data/s2.ts:68,76`). Es una opción incorrecta por estilo, no por datos.
 19. **Paso de `certutil`.** El árbol de s2m5 dice ser el host de s2m1 e incluye `wcssvc.exe`
-    (`src/data/s2.ts:1151,1161`); la cadena de s2m1 no lo tiene (`src/data/s2.ts:79-80`).
+    (`src/data/s2.ts:1151,1161`); la cadena de s2m1 no lo tiene (`src/data/s2.ts:79-80`). V13 enseña la cadena de s2m1, sin `certutil`, y la voz no dice qué proceso escribe `winhlp.exe`.
 20. **TLD mezclados.** Dominios del actor en `.com`/`.net` (`src/data/s2.ts:29`; `src/data/labs.ts:688,696`) y en
     `.example` (`src/data/s2.ts:877,883`; `src/data/s3.ts:341,760`).
 21. **Brief frente a pantalla (resuelto por la pantalla).** El brief de V4 proponía un lookalike de CT con nombre
@@ -516,6 +519,61 @@ la voz `sapi/Microsoft Laura` y el efecto `machine` (`video/ach-matriz/narration
   UTC+8; las ocho frases del Lab 4A (`src/data/labs.ts:447-499`). E4 **no** se identifica con el certificado
   `CN=updatesvc` (ni la tercera IP, §5 punto 15, ni el dosier de DEEP WELL). Cluster-A y Cluster-B no salen
   (`src/data/s4.ts:722-737`). Nada del Lab 3A, del Lab 3B ni del final de la campaña.
+
+### V13 · `kill-chain-eslabon` · s2m1 · YouTube `WidodMPEs24`
+
+Lección `src/data/s2.ts:117-122` (bloque `video` entre el segundo check de la demo, «In the EDR chain, the schtasks line and the
+winhlp.exe→443 line…», y el párrafo de cierre «Cada intrusión analizada produce una kill chain documentada…»); 8:04, subido a
+Alertópolis el 2026-10-06 y público el 2026-10-08. Principal. Adversario de los interceptados GLASS VIPER
+(`video/kill-chain-eslabon/video.json:8`), con la voz `sapi/Microsoft Pablo` y el efecto `machine`
+(`video/kill-chain-eslabon/narration.json:11-15`). Notas propias en `video/kill-chain-eslabon/out/script-notes.md`. **Ningún dato nuevo de la
+intrusión:** todo lo que sale ya estaba en V3, V7 o en la lección. Canon nuevo, solo de pantalla y de voz:
+
+- **La semana, en un calendario:** lunes 02-03, martes 03-03, miércoles 04-03 y jueves 05-03 (`video/kill-chain-eslabon/src/data/s01-alerta.ts`,
+  `CALENDAR`), con «Meridian Dynamics · aeroespacial» y «tú, su analista de inteligencia». Luego sale la alerta del 5-3 como en V3 (§2).
+- **La reconstrucción del 2-3 se hace después de la alerta, sin hora de reconstrucción**, como en V7. V13 le añade las cabeceras del
+  correo, que V7 no enseñó: `From: "Laura Iglesias - Talent" <l.iglesias@meridian-careers.com>` («parece de casa»), `Return-Path:
+  <bounce@mx1.cdn-sync-status.example>` y `Received: from mx1.cdn-sync-status.example (203.0.113.27) by mail.meridian.example; Mon, 2 Mar 2026
+  09:41:07 +0000` («apuntan a quien lo envió de verdad»), el asunto «Candidatura - Ingeniero de propulsion (CV adjunto)» (sin tilde, como la
+  lección) y el adjunto `CV_Ingeniero.zip` que contiene `CV_Ingeniero.pdf.lnk` (`video/kill-chain-eslabon/src/scenes/parts/LessonLog.tsx:74-120`;
+  `video/kill-chain-eslabon/src/data/s03-correo.ts:7-9`). La IP va sin resaltar y sin comentar (§5 punto 13).
+- **La cadena del EDR** en `ENG-WS-041`, «mismo día», con las líneas de la lección y sus horas, sin zona (§5 punto 19; `LessonLog.tsx:121-152`);
+  el beacon sale rotulado solo «beacon · cada 60 s» (`video/kill-chain-eslabon/src/data/s04-equipo.ts:12`) y el nombre COMMAND & CONTROL entra
+  con la respuesta. Se reconoce un LNK como «un acceso directo que se hace pasar por un PDF, dentro de un ZIP» (`video/kill-chain-eslabon/src/data/s05-taller.ts:8`).
+- **Las siete fases, con la imagen del ladrón y la casa:** «Cyber Kill Chain · Lockheed Martin»; «él necesita las siete, en orden», «te basta con
+  romper una a tu alcance» y «si lo intenta otra vez, empieza de nuevo» (`video/kill-chain-eslabon/src/data/s02-cadena.ts`).
+  Cada prueba a su fase: el correo es **Delivery**, y que el remitente imite a Meridian no lo hace Reconnaissance («investigar a Meridian fue
+  antes; usarlo para que el correo entre y se abra es entrega», `s03-correo.ts:20-24`); **Exploitation** «se ejecuta código al abrirlo»; **Installation**
+  «quedarse»; el beacon es C2, no la misión; **Actions on Objectives:** «leer las carpetas de diseño, comprimirlas, sacarlas»
+  (`s04-equipo.ts:8-17`).
+- **Observado frente a inferido** (`video/kill-chain-eslabon/src/data/s06-frontera.ts`): Weaponization va en discontinua, «no se observa · se deduce»
+  del artefacto (`s05-taller.ts:17`; en voz, `video/kill-chain-eslabon/narration.json:267`, `:285`); Reconnaissance «casi nunca la ves; a veces asoma en
+  los registros de lo que tienes de cara a internet, como tu web» (`:297`). **El 5-3 la cadena reconstruida llega hasta C2 y «por lo que ves, la séptima
+  no aparece»** (`video/kill-chain-eslabon/src/data/s08-cortar.ts:19`): cuadra con V3, donde la primera acción sobre el objetivo es E9 el 7-3; el vídeo
+  no dice si Meridian llegó a tiempo.
+- **Cortar a la izquierda** (`video/kill-chain-eslabon/src/data/s07-izquierda.ts`, `s08-cortar.ts`): «te enteras cuando ya está con los planos»; «para
+  saltar antes, hay que ver antes» con «registros del correo · del equipo»; «lo paramos en Delivery» como idioma común; la entrega se corta en la «pasarela
+  de correo», «en la red · antes del equipo», frente a la «estación de ingeniería»; borrar el programa o cortar el beacon «también sirven, pero ya ha
+  avanzado más». Un eslabón roto frustra ese intento, no acaba con el atacante.
+- **Límites del modelo** (`video/kill-chain-eslabon/src/data/s09-limites.ts`): un insider con acceso legítimo, credenciales válidas y servicios en la
+  nube (SaaS); «encaja bien: intrusiones con malware y fases en fila»; se complementa con ATT&CK («el cómo, técnica a técnica») y el Diamond Model («cada
+  paso, un diamante de cuatro esquinas»).
+- **La etiqueta del taller = la ruta del PDB**, imagen común de V13, V14 y V15, aquí **en blanco** y con media frase en voz: «y a veces, por dentro,
+  hasta la etiqueta del taller donde la montó» (`video/kill-chain-eslabon/narration.json:261`; `video/kill-chain-eslabon/src/data/s05-taller.ts:14`). La frase
+  entera y la regla del enlace fuerte son de V14 y V15; V13 no enseña la ruta. Nunca «la etiqueta» a secas (V7 llamó así al disfraz del nombre de la tarea)
+  ni «etiqueta de envío» (imagen de V1).
+- **GLASS VIPER**, tres mensajes nuevos, sin fecha, que pasan a ser canon de su voz (retador, tutea, desmonta con una idea corta; nunca dice quién
+  es); ver la tabla de §4:
+  - «Tú tienes que acertar siempre. A mí me basta con una vez.» (`video/kill-chain-eslabon/narration.json:96`, s02-07)
+  - «Mi taller no lo verás nunca. Esa parte te la pierdes.» (`video/kill-chain-eslabon/narration.json:236`, s05-01)
+  - «Tú vigila tus planos, que es lo importante. Lo demás, ni lo mires.» (`video/kill-chain-eslabon/narration.json:318`, s07-01)
+- La caja, el taller, la acera, la casa y el ladrón son de las analogías, no del caso. Ninguna persona, fecha, equipo ni IP nuevos.
+- **No se toca** (sigue fuera): el dosier de BROKEN CHAIN (`src/data/course-gcti.ts:40`): ni que los TTPs se repitan en sus playbooks, ni el PDB
+  en tres muestras, ni «VELVET CICADA ya tiene cara técnica»; quién abrió el adjunto (§5 punto 5: «alguien lo abre», en una estación de ingeniería,
+  sin «RR. HH.» junto a `ENG-WS-041`); el orden entre las 09:41 del correo y la cadena sin zona («ese mismo día», nunca «tres minutos después»); el
+  cambio de binario del 5-3 (`UpdSvc\updsvc.exe`, `9f3a...e1`, de V7: ningún hash en todo el vídeo); el intervalo del beacon de 90 s del Lab 2A;
+  E7, el informe MER-2026-019 y todo lo posterior (E9, la exfiltración, Orbital, los Labs 3A y 3B). No se culpa a nadie: ni a quien abrió el
+  adjunto ni al SOC.
 
 ### V14 · `hilos-pelicula` · s2m4 · YouTube `WMhXfPe5zTE`
 
