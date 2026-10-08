@@ -1,7 +1,7 @@
 # Canon de «Operación VELVET CICADA» (GCTI)
 
 Registro único de los datos ficticios de la campaña GCTI: la intrusión contra Meridian Dynamics que continúan
-las lecciones, los laboratorios y los vídeos. Estado a 2026-10-08 (vídeos con su canon aquí: V3, V4, V7, V8, V9 y V14; el de V13 falta).
+las lecciones, los laboratorios y los vídeos. Estado a 2026-10-08 (vídeos con su canon aquí: V3, V4, V7, V8, V9, V14 y V15; el de V13 falta).
 
 ## 1. Cómo se usa
 
@@ -136,7 +136,7 @@ Ficha completa de E7 (`src/data/s2.ts:565-587`): KC phase Command & Control, Res
 | Imphash `1b8d4f2a...` | Comparte tabla de imports con 3 muestras previas | `src/data/s3.ts:329` |
 | ssdeep `3072:Ab9..:Xk2` | 94 % similar a la variante de 2026-01 | `src/data/s3.ts:330` |
 | PDB `D:\proj\cicada\loader\Release\ldr.pdb` | Ruta canónica (P4) | `src/data/s2.ts:881,889`; `src/data/s3.ts:332`; `src/data/s5.ts:510`; `src/data/labs.ts:294,772` |
-| `MapViewOfSection`, `CreateNamedPipeA`, `CreateProcessA` | Imports de la muestra | `src/data/s3.ts:333` |
+| `NtMapViewOfSection`, `CreateNamedPipeA`, `CreateProcessA` | Imports de la muestra; V15 cambió la lección de `MapViewOfSection` a `NtMapViewOfSection` (la regla YARA de S5 sigue encontrándola como subcadena, `src/data/s5.ts:507`) | `src/data/s3.ts:333` |
 | named pipe `vc_pipe_%08x` | Formato propio; instancias `vc_pipe_4f8a1c9e` (sandbox) y `vc_pipe_3a7f09c1` (E7) [V3] | `src/data/s2.ts:577`; `src/data/s3.ts:337`; `video/diamond-e7/src/data/s03-victim.ts:38` |
 | `schtasks /create /tn WindowsUpdateCheck /tr C:\ProgramData\winhlp.exe /sc onlogon` | Persistencia | `src/data/s2.ts:81-82,1167`; `src/data/s3.ts:338` |
 | `winhlp.exe` (`C:\ProgramData\winhlp.exe`) | Loader según las lecciones (canon P4) | `src/data/s2.ts:80,880`; `docs/superpowers/plans/2026-09-25-lesson-videos.md:621` |
@@ -183,10 +183,15 @@ Mensajes interceptados publicados. Son canon de la voz del adversario; un guion 
 | GLASS VIPER | «Llámame GLASS VIPER, si te consuela. Mi nombre no lo sabrás.» | `video/diamond-e7/narration.json:142` |
 | GLASS VIPER | «Sígueme por la IP. Tengo catorce mil vecinos deseando conocerte.» | `video/diamond-e7/narration.json:282` |
 | GLASS VIPER | «Bloquea mi hash. Así ya no me volverás a ver.» | `video/attack-piramide/narration.json` (s04-01) |
+| GLASS VIPER | «Otra empresa, otro dominio, otro correo. Eso no es cosa mía.» | `video/hilos-pelicula/narration.json:143` (s03-06) |
+| GLASS VIPER | «Ya me has metido en un grupo. Pues dime quién soy.» | `video/hilos-pelicula/narration.json:319` (s07-01) |
+| GLASS VIPER | «En Orbital solo llamo a casa. Ahí no va a pasar nada más.» | `video/hilos-pelicula/narration.json:359` (s08-01) |
 | HOLLOW LANTERN | «Mis certificados me los firmo yo. Nadie más tiene uno igual.» | `video/pivot-infra/narration.json:189` |
 | HOLLOW LANTERN | «Mi WHOIS está tapado. Privacidad, analista. Búscate otro hobby.» | `video/pivot-infra/narration.json:277` |
 | HOLLOW LANTERN | «¿Por qué no vienes a verme? Mi servidor te está esperando.» | `video/pivot-infra/narration.json:381` |
 | HOLLOW LANTERN | «Ese dominio lo tiré hace meses. Ya no te sirve para nada.» | `video/stix-isac/narration.json:99` (s03-02) |
+| HOLLOW LANTERN | «Súbela a un servicio público. Cuantos más ojos, mejor.» | `video/sandbox-muestra/narration.json:41` (s02-01) |
+| HOLLOW LANTERN | «Bloquea esos dos, analista. Tengo más esperando su turno.» | `video/sandbox-muestra/narration.json:169` (s05-01) |
 | PAPER CRANE | «Fíate de lo que ves, analista. Las pruebas nunca mienten.» | `video/ach-matriz/narration.json:89` (s03-01) |
 | PAPER CRANE | «Cuenta las que te dan la razón. La que más sume, gana.» | `video/ach-matriz/narration.json:277` (s07-01) |
 | PAPER CRANE | «Si una prueba es falsa, se te cae todo. Empieza de cero.» | `video/ach-matriz/narration.json:329` (s08-01) |
@@ -567,6 +572,58 @@ beacon), con staging y salida el 7-3 (`src/data/s2.ts:879-884`); «PO revision»
   (`src/data/s4.ts:1033`), el certificado «en 3 C2» (§5 punto 10), el tamaño y destino de la salida de E9 (§5 punto 7), el vector
   por un proveedor (cuenta VPN, portales del BLUF), quién abrió el adjunto (§5 punto 5) y todo lo posterior al 9-3 (el indicador
   del ISAC del 11-3 es de V8). Nadie tiene nombre y no se culpa a nadie.
+
+### V15 · `sandbox-muestra` · s3m2 · YouTube `z9OLiWCphso`
+
+Lección `src/data/s3.ts:350-356` (bloque `video` después del párrafo del triaje, «El triaje empieza separando infraestructura del
+actor de ruido del sistema…», y antes del primer check, «Of the five contacted hosts…»); 3:35, subido a Alertópolis el 2026-10-06
+y público el 2026-10-08. Cápsula. Adversario de los interceptados HOLLOW LANTERN (`video/sandbox-muestra/video.json:8`), con la
+voz `sapi/Microsoft Pablo` y el efecto `machine` (`video/sandbox-muestra/narration.json:11-15`). Notas propias en
+`video/sandbox-muestra/out/script-notes.md`. Sin fecha ni hora, después de E7 (como V9); las únicas horas en pantalla son las de la
+tira de V3. **La lección cambió con él:** `MapViewOfSection` pasa a `NtMapViewOfSection` en los imports de la muestra
+(`src/data/s3.ts:333`, ver §3). Canon nuevo:
+
+- **La muestra del informe MER-2026-023 es la copia del programa que el EDR vio en `ENG-WS-041`** el 5-3
+  (`C:\ProgramData\UpdSvc\updsvc.exe`, `9f3a...e1`): V15 lo enseña en pantalla con las dos grafías del hash, `9f3a...e1` en la
+  tira de V3 y `9f3a2c...e1` en el informe (`video/sandbox-muestra/src/data/e7.ts:24-40`, `video/sandbox-muestra/src/data/report.ts:37-45`). No se
+  dice quién recogió la copia ni cuándo.
+- **La búsqueda del hash** en un servicio público de análisis (sin nombre ni marca; «decenas de antivirus»): «sin resultados»
+  (`video/sandbox-muestra/src/data/s02-hash.ts:26-33`). Meridian no sube el fichero, «porque nadie la ha subido ahí, lo normal en una
+  muestra dirigida, hecha a medida» (`video/sandbox-muestra/narration.json:60`); no dice nada de otros servicios. Es compatible con que
+  la familia ya se conozca: lo que no está ahí es esta compilación exacta.
+- **La detonación** en el «sandbox interno de Meridian», «máquina aislada, de usar y tirar» (`video/sandbox-muestra/src/data/s02-hash.ts:35-38`;
+  `video/sandbox-muestra/narration.json:72`), la fila del CMF (`src/data/s3.ts:72`).
+- **El informe en pantalla** (`video/sandbox-muestra/src/data/report.ts:15-51`): «Informe de sandbox · extracto · GLASS VIPER stage-1 ·
+  MER-2026-023» con las líneas de la lección (SHA-256, imphash «comparte tabla de imports con 3 muestras previas», ssdeep «94% similar
+  a variante de 2026-01», compile time `2026-02-19` «plausible; los actores lo falsean a veces», la ruta del PDB, los imports con
+  `NtMapViewOfSection`, el pipe y la persistencia).
+- **El pipe, en dos ejecuciones de la misma muestra:** `vc_pipe_4f8a1c9e` en el sandbox y `vc_pipe_3a7f09c1` en E7 [V3], juntos en pantalla:
+  «mismo formato, otro número en cada ejecución» (`video/sandbox-muestra/src/data/s03-mitades.ts:8`, `video/sandbox-muestra/src/data/e7.ts:43-47`).
+  Nada sobre recompilaciones.
+- **La tarea `WindowsUpdateCheck`** sale solo como lo que la muestra hace en el sandbox («tarea para volver a arrancar»). Nada dice que el 5-3 se
+  creara en `ENG-WS-041` (V7 tampoco; §5 punto 1).
+- **Los cinco hosts contactados** (`video/sandbox-muestra/src/data/report.ts:66-72`): del actor, `update-svc-cdn.com:443` («su servidor de siempre ·
+  el de E7») y `ocsp-verify-node.example:443` («de repuesto»); de Windows, `time.windows.com:123` («poner la hora»),
+  `ctldl.windowsupdate.com:80` («certificados de confianza de Windows») y `www.msftconnecttest.com:80` («¿hay internet?»). El de
+  repuesto «no salía en la alerta de E7: lo ha dado el sandbox» (`video/sandbox-muestra/src/data/s04-llamadas.ts:11`): V3 solo enseña dos
+  conexiones a `update-svc-cdn.com`, y no se dice si la red de Meridian llegó a hablar con él.
+- **La decisión de triaje:** el candado solo en los dos del actor; bloquear los cinco es «gol en propia puerta»: ningún equipo de Meridian se
+  pondría en hora ni comprobaría su conexión (`video/sandbox-muestra/narration.json:142-148`). Sin fecha, y sin relación con E9 ni con el «last
+  seen» del 7-3 de `update-svc-cdn.com` (V4).
+- **Parientes** (`video/sandbox-muestra/src/data/s05-etiqueta.ts`): el hash es «esta prenda exacta · un byte y ya es otra»; imphash y ssdeep
+  apuntan a la familia («variante de 2026-01»); la fecha de compilación es un enlace débil («la pone quien compila · a veces, falsa»); y la
+  ruta del PDB es **la etiqueta del taller**, la imagen común de V13, V14 y V15, con la misma frase en voz que V14 («Al compilar, a veces la
+  carpeta donde se hizo se queda escrita en el programa. Es como la etiqueta del taller…»; aquí, «cosida en el cuello, por dentro»,
+  `video/sandbox-muestra/narration.json:206`) y la misma regla en pantalla: «si otro programa trae la misma · mismo taller · enlace fuerte». V15 solo
+  dice qué significaría un acierto; no enseña ninguno.
+- **HOLLOW LANTERN**, dos mensajes nuevos, sin fecha, que pasan a ser canon de su voz (consejos en imperativo,
+  que tutean; nunca dice quién es): «Súbela a un servicio público. Cuantos más ojos, mejor.» (s02-01) y «Bloquea esos dos, analista.
+  Tengo más esperando su turno.» (s05-01); ver la tabla de §4.
+- Sin personas nuevas.
+- **No se toca** (sigue fuera): el dosier de DEEP WELL (`src/data/course-gcti.ts:59`): ni certificados compartidos, ni `kazuo.tanji@`, ni
+  «una sola organización»; el de BROKEN CHAIN (`src/data/course-gcti.ts:40`): ni «el mismo PDB en tres muestras» ni cuántas lo comparten
+  (§5 punto 11; las «3 muestras previas» del imphash son de la lección y no se relacionan con el PDB); y los dos loaders de s2m4 con el
+  mismo PDB (`src/data/s2.ts:879-890`), que son la demo de V14.
 
 ### Plantilla para el siguiente
 
