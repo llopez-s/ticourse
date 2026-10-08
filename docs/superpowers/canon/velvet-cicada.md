@@ -1,7 +1,7 @@
 # Canon de «Operación VELVET CICADA» (GCTI)
 
 Registro único de los datos ficticios de la campaña GCTI: la intrusión contra Meridian Dynamics que continúan
-las lecciones, los laboratorios y los vídeos. Estado a 2026-10-04 (vídeos publicados: V3, V4, V7, V8 y V9).
+las lecciones, los laboratorios y los vídeos. Estado a 2026-10-08 (vídeos con su canon aquí: V3, V4, V7, V8, V9 y V14; el de V13 falta).
 
 ## 1. Cómo se usa
 
@@ -35,18 +35,18 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 | 2026-02-27 14:22:08 (sin zona) | — | pDNS first seen de `cdn-sync-status.example` en `203.0.113.27` | `src/data/s3.ts:775` |
 | 2026-02-27 | — | `first_seen` de la campaña STIX «PO-REVISION phishing wave» | `src/data/s4.ts:1026-1028` |
 | 2026-03-01 09:40:51 → 10:02:13 (sin zona) | — | `cdn-sync-status.example` pasa de `203.0.113.27` a `198.51.100.84` («la primera IP se quemó») | `src/data/s3.ts:775-776,780` |
-| 2026-03-02 09:14 → 09:32 (sin zona) | Víctima 1 (s2m4) | Correo «PO revision» a `j.alvarez@meridian.example`; cae `winhlp.exe`; beacon | `src/data/s2.ts:872-875` |
-| 2026-03-02 09:41 UTC | Delivery | Spearphish «Candidatura - Ingeniero de propulsion» a RR. HH. | `src/data/s2.ts:68-74` |
-| 2026-03-02 09:44:12 → 09:45:02 (sin zona, «mismo dia») | Exploitation → C2 | En ENG-WS-041: LNK, PowerShell, `winhlp.exe`, tarea programada, primer beacon | `src/data/s2.ts:76-83` |
-| 2026-03-04 22:10 (sin zona) | AoO (s2m4) | Staging en `C:\Windows\Temp\~tmp4421.cab` | `src/data/s2.ts:876` |
-| 2026-03-05 01:47 (sin zona) | AoO (s2m4) | Salen 1,2 GB hacia `transfer-cdn-eu.example` | `src/data/s2.ts:877` |
+| 2026-03-02 09:41 UTC | Delivery | Spearphish «Candidatura - Ingeniero de propulsion» a RR. HH.; el walkthrough de s2m4 usa el mismo correo (plan A de V14, `src/data/s2.ts:879`) | `src/data/s2.ts:68-74` |
+| 2026-03-02 09:44:12 → 09:45:02 (sin zona, «mismo dia») | Exploitation → C2 | En ENG-WS-041: LNK, PowerShell, `winhlp.exe`, tarea programada, primer beacon; s2m4: 09:44 LNK y `winhlp.exe` con la ruta del PDB, 09:45 beacon (`src/data/s2.ts:880-882`) | `src/data/s2.ts:76-83` |
 | 2026-03-05 02:11:47Z | antes de E7 [V3] | PROC_START de `C:\ProgramData\UpdSvc\updsvc.exe`; FILE_HASH `9f3a...e1` | `video/diamond-e7/src/data/s03-victim.ts:25-32` |
 | 2026-03-05 02:11:49Z | antes de E7 [V3] | PIPE_CREATE `\\.\pipe\vc_pipe_3a7f09c1` | `video/diamond-e7/src/data/s03-victim.ts:36-38` |
 | 2026-03-05 02:13 UTC | **E7** (C2) | Beacon HTTPS a `update-svc-cdn.com`; salta la alerta del SOC; informe MER-2026-019 | `src/data/s2.ts:559,564-566`; `video/diamond-e7/src/scenes/S01Hook.tsx:196-197` |
 | 2026-03-05 02:13:02Z y 02:14:01Z | E7 [V3] | Dos NET_CONN a `update-svc-cdn.com:443` | `video/diamond-e7/src/data/s03-victim.ts:42-45` |
-| 2026-03-07 (sin hora) | **E9** (AoO) | Mismo implante y metodología, dos días después de E7 [V3] | `src/data/s2.ts:623`; `video/diamond-e7/src/scenes/S10Thread.tsx:80-84` |
+| 2026-03-07 (sin hora) | **E9** (AoO) | Mismo implante y metodología, dos días después de E7 [V3]; V14 (plan A) le da el contenido «compresión en una carpeta temporal · salida grande», sin tamaño ni destino en pantalla (`video/hilos-pelicula/src/scenes/parts/FilmRail.tsx:236`) | `src/data/s2.ts:623`; `video/diamond-e7/src/scenes/S10Thread.tsx:80-84` |
+| 2026-03-07 00:52 (sin zona) | AoO (s2m4) | Staging en `C:\Windows\Temp\~tmp4421.cab`. Antes la lección lo ponía el 4-3 a las 22:10; V14 (plan A) lo pasa a la madrugada del sábado 7-3, que es lo que E9 ya decía | `src/data/s2.ts:883` |
+| 2026-03-07 01:47 (sin zona) | AoO (s2m4) | Salen 1,2 GB hacia `transfer-cdn-eu.example` (antes, 5-3) | `src/data/s2.ts:884` |
 | 2026-03-07 | — | pDNS: last seen de `update-svc-cdn.com` en `185.220.x.x` [V4] | `video/pivot-infra/src/scenes/S03Pdns.tsx:66` |
-| 2026-03-09 08:05 → 08:23 (sin zona) | Víctima 2 | Orbital Components: «PO revision» a `finance@orbital.example`, `msdtcs.exe`, beacon a `portal-auth-check.example` | `src/data/s2.ts:879-883` |
+| 2026-03-09 08:05 → 08:23 (sin zona) | Víctima 2 | Orbital Components: «PO revision» a `finance@orbital.example`, `msdtcs.exe`, beacon a `portal-auth-check.example` | `src/data/s2.ts:887-890` |
+| 2026-03-09 (lunes), sin hora | V14 | El «hoy» del vídeo: Orbital le pasa a Meridian sus eventos de esa misma mañana (los de la fila anterior; no se dice cómo ni quién), y esa noche Meridian le pasa a Orbital qué buscar (compresión de archivos en carpetas temporales, transferencias salientes grandes) como hipótesis que se comprueba. Sin resultado: el vídeo no dice si se encontró algo | `video/hilos-pelicula/src/data/s01-fotos.ts:10-15`, `video/hilos-pelicula/src/data/s09-noche.ts:19-25` |
 | 2026-03-11 | — | El ISAC aeroespacial publica en una colección TAXII el indicador STIX de `cdn-sync-status.example` (válido hasta 2026-06-25); la TIP de Meridian lo recoge (pull) el 2026-07-02 | `src/data/s3.ts:1053`, `:1063-1070` |
 | marzo → mayo 2026 (rango) | — | Exfiltración de diseños de propulsión, según el BLUF | `src/data/s5.ts:312`; `src/data/labs.ts:1016` |
 | abr-2026 → hoy (rango) | — | Actividad del Cluster-B (Orbital-2) | `src/data/s4.ts:732` |
@@ -76,7 +76,6 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 | tú, «primera analista CTI» | La protagonista; la ficha el CISO | `src/data/s1.ts:749`; `src/data/tracks.ts:111` |
 | el CISO, el consejo (board) | Sin nombre. El CISO pide los PIR; el consejo decide al final | `src/data/labs.ts:57,187` |
 | «Laura Iglesias - Talent» `l.iglesias@meridian-careers.com` | Remitente falso del spearphish | `src/data/s2.ts:69` |
-| `j.alvarez@meridian.example` | Empleada de Meridian que recibe el «PO revision» | `src/data/s2.ts:872` |
 | analistas de RR. HH. | Reciben el spearphish (cuatro buzones); una abre el LNK | `src/data/labs.ts:238,243,319` |
 | Orbital Components (`orbital.example`, `finance@orbital.example`) | Proveedor de Meridian; Víctima 2 | `src/data/s2.ts:879-880` |
 | «Orbital-2» | Etiqueta del Cluster-B en s4m4 | `src/data/s4.ts:723` |
@@ -136,14 +135,14 @@ Ficha completa de E7 (`src/data/s2.ts:565-587`): KC phase Command & Control, Res
 | SHA-256 `9f3a...e1` = `9f3a2c...e1` | Hash del implante de E7; es la misma muestra del sandbox | `src/data/s2.ts:577`; `src/data/s3.ts:328`; `docs/superpowers/plans/2026-09-25-lesson-videos.md:620` |
 | Imphash `1b8d4f2a...` | Comparte tabla de imports con 3 muestras previas | `src/data/s3.ts:329` |
 | ssdeep `3072:Ab9..:Xk2` | 94 % similar a la variante de 2026-01 | `src/data/s3.ts:330` |
-| PDB `D:\proj\cicada\loader\Release\ldr.pdb` | Ruta canónica (P4) | `src/data/s2.ts:874,882`; `src/data/s3.ts:332`; `src/data/s5.ts:510`; `src/data/labs.ts:294,772` |
+| PDB `D:\proj\cicada\loader\Release\ldr.pdb` | Ruta canónica (P4) | `src/data/s2.ts:881,889`; `src/data/s3.ts:332`; `src/data/s5.ts:510`; `src/data/labs.ts:294,772` |
 | `MapViewOfSection`, `CreateNamedPipeA`, `CreateProcessA` | Imports de la muestra | `src/data/s3.ts:333` |
 | named pipe `vc_pipe_%08x` | Formato propio; instancias `vc_pipe_4f8a1c9e` (sandbox) y `vc_pipe_3a7f09c1` (E7) [V3] | `src/data/s2.ts:577`; `src/data/s3.ts:337`; `video/diamond-e7/src/data/s03-victim.ts:38` |
 | `schtasks /create /tn WindowsUpdateCheck /tr C:\ProgramData\winhlp.exe /sc onlogon` | Persistencia | `src/data/s2.ts:81-82,1167`; `src/data/s3.ts:338` |
-| `winhlp.exe` (`C:\ProgramData\winhlp.exe`) | Loader según las lecciones (canon P4) | `src/data/s2.ts:80,873`; `docs/superpowers/plans/2026-09-25-lesson-videos.md:621` |
-| `winhlp.exe   SHA-256 4c81...b3` | Hash del loader en el árbol de s2m5 | `src/data/s2.ts:1165,1354` |
+| `winhlp.exe` (`C:\ProgramData\winhlp.exe`) | Loader según las lecciones (canon P4) | `src/data/s2.ts:80,880`; `docs/superpowers/plans/2026-09-25-lesson-videos.md:621` |
+| `winhlp.exe   SHA-256 4c81...b3` | Hash del loader en el árbol de s2m5; lleva la ruta del PDB (decidido en V14, **solo para el registro**: nunca en pantalla ni en voz, por el dosier de BROKEN CHAIN, `src/data/course-gcti.ts:40`) | `src/data/s2.ts:1165,1354` |
 | `C:\ProgramData\UpdSvc\updsvc.exe`, `signed=false` | Binario del implante en E7 [V3] | `video/diamond-e7/src/data/s03-victim.ts:29,32` |
-| `msdtcs.exe` | Loader en Orbital (Víctima 2) | `src/data/s2.ts:881` |
+| `msdtcs.exe` | Loader en Orbital (Víctima 2) | `src/data/s2.ts:888` |
 | `wcssvc.exe -decode a.txt payload.bin` | `certutil` renombrado (`OriginalFileName` CertUtil.exe) | `src/data/s2.ts:1161-1162`; `src/data/s5.ts:555` |
 | `powershell.exe -nop -w hidden -enc SQBFAFgAKA...` | Ejecución tras abrir el LNK | `src/data/s2.ts:79,1158` |
 | `CV_Ingeniero.zip` con `CV_Ingeniero.pdf.lnk` | Artefacto de entrega | `src/data/s2.ts:74`; `src/data/labs.ts:228` |
@@ -253,7 +252,7 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
    caso, dicha con cautela, no demostrada en pantalla). Siguen abiertos el nombre `VC_Loader_v1.dll` del Lab 3B y
    cuántas muestras comparten PDB (punto 11). Ojo: la muestra del sandbox con `9f3a2c...e1` crea la misma tarea
    `WindowsUpdateCheck` (`src/data/s3.ts:338`), así que entre las dos fotos cambian el hash, el nombre y la carpeta
-   del ejecutable, no el nombre de la tarea.
+   del ejecutable, no el nombre de la tarea. **V14** (plan A) añade, solo para el registro: `winhlp.exe` (`4c81...b3`) lleva la ruta del PDB, así que la «variante 1, la de Meridian» del Lab 3B (`src/data/labs.ts:819`) es una familia de compilaciones con ruta del PDB (`4c81...b3` el 2-3 y `9f3a...e1` el 5-3), no un solo binario; `4c81...b3` sigue sin ser la variante 2, que no la lleva (`src/data/labs.ts:826`).
 2. **¿Firmada o no?** La muestra del sandbox está firmada por «Bright Meridian Software Kft.»
    (`src/data/s3.ts:334,533`); V3 muestra `signed=false` para el mismo hash [V3]
    (`video/diamond-e7/src/data/s03-victim.ts:32`). El plan dice que es la misma muestra
@@ -263,7 +262,7 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
 4. **Vector de entrada.** Spearphish del CV a RR. HH. el 2026-03-02 09:41 UTC (`src/data/s2.ts:68-74`) frente a
    correo «PO revision» a `j.alvarez@` ese mismo día a las 09:14, sin zona (`src/data/s2.ts:872`), frente a cuenta
    VPN de proveedor (`src/data/labs.ts:329`) y «supplier portals» en el BLUF (`src/data/s5.ts:312`;
-   `src/data/labs.ts:1016`). Las horas de s2m4 no llevan zona horaria (`src/data/s2.ts:872-883`).
+   `src/data/labs.ts:1016`). Las horas de s2m4 no llevan zona horaria (`src/data/s2.ts:879-890`). **Resuelto en parte por V14 (plan A):** la Víctima 1 del walkthrough de s2m4 ya no recibe el «PO revision» a `j.alvarez@` a las 09:14, sino el mismo correo del CV a las 09:41 que s2m1 (`src/data/s2.ts:879`); «PO revision» queda solo para Orbital y para los proveedores de S4 y S5. Siguen abiertos la cuenta VPN de proveedor y los «supplier portals».
 5. **Quién abre el LNK.** Una analista de RR. HH. (`src/data/labs.ts:238,243`; `src/data/s2.ts:26`), pero la
    cadena ocurre en ENG-WS-041, workstation de ingeniería (`src/data/s2.ts:76,582`).
 6. **Cuál es «el dominio del phishing».** `meridian-sso-portal.com` es «el dominio del phishing inicial»
@@ -291,7 +290,7 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
     V4: el C2, el VPS del phishing `141.98.6.10` y una desconocida [V4]
     (`video/pivot-infra/src/scenes/S05Cert.tsx:57-60`).
 11. **Muestras con el mismo PDB.** Tres (`src/data/course-gcti.ts:40`) frente a dos loaders
-    (`src/data/s2.ts:840,874,882`) frente a solo la variante 1 del Lab 3B (`src/data/labs.ts:775,826`).
+    (`src/data/s2.ts:840,874,882`) frente a solo la variante 1 del Lab 3B (`src/data/labs.ts:775,826`). **Resuelto en parte por V14 (plan A):** son tres compilaciones con la misma ruta, `winhlp.exe` `4c81...b3` (2-3), la muestra `9f3a...e1` de E7 (5-3, `src/data/s3.ts:332`) y `msdtcs.exe` en Orbital (9-3), que es lo que dice el dosier; la lección enseña dos (`src/data/s2.ts:881,889`) y nada en pantalla dice «tres».
 12. **Inquilinos de `185.220.x.x`.** «hundreds» en la explicación de un check (`src/data/s2.ts:617`) frente a
     ~14.000 (`src/data/s2.ts:591`; `src/data/labs.ts:739`; [V3] `video/diamond-e7/src/scenes/S09Quality.tsx:36`).
 13. **IP del relay.** El correo sale de `mx1.cdn-sync-status.example (203.0.113.27)` el 2026-03-02
@@ -512,6 +511,62 @@ la voz `sapi/Microsoft Laura` y el efecto `machine` (`video/ach-matriz/narration
   UTC+8; las ocho frases del Lab 4A (`src/data/labs.ts:447-499`). E4 **no** se identifica con el certificado
   `CN=updatesvc` (ni la tercera IP, §5 punto 15, ni el dosier de DEEP WELL). Cluster-A y Cluster-B no salen
   (`src/data/s4.ts:722-737`). Nada del Lab 3A, del Lab 3B ni del final de la campaña.
+
+### V14 · `hilos-pelicula` · s2m4 · YouTube `WMhXfPe5zTE`
+
+Lección `src/data/s2.ts:945-951` (bloque `video` después del último check, «Victim 2's thread shows Delivery → Exploitation →
+Installation → C2 but no staging or exfil yet…», y antes del callout «🎖️ Campaña»); 7:51, subido a Alertópolis el 2026-10-06 y
+público el 2026-10-08. Adversario de los interceptados GLASS VIPER (`video/hilos-pelicula/video.json:8`), con la voz
+`sapi/Microsoft Pablo` y el efecto `machine` (`video/hilos-pelicula/narration.json:11-15`). Notas propias en
+`video/hilos-pelicula/out/script-notes.md`. Va sin hora; el «hoy» es el lunes 9-3 (ver §2). **La lección cambió con él (plan A,
+decidido el 2026-10-05):** la Víctima 1 del walkthrough pasa a ser la de s2m1 (el CV de las 09:41, el LNK en `ENG-WS-041`, el
+beacon), con staging y salida el 7-3 (`src/data/s2.ts:879-884`); «PO revision» queda solo para Orbital (`:887`). Canon nuevo:
+
+- **El hilo de Meridian en pantalla** (`video/hilos-pelicula/src/scenes/parts/FilmRail.tsx:231-236`): cuatro eventos del 02-03
+  sin número, hora, equipo ni archivo (Delivery «correo con un CV», Exploitation «se abre el adjunto», Installation «loader y
+  tarea programada», C2 «primera llamada a casa»), E7 («05-03 · C2», con la ficha de V3) y E9 (07-03, Actions on Objectives,
+  «compresión en una carpeta temporal · salida grande»). Los del 2-3 no reciben número de evento: E1–E6 y E8 siguen sin
+  definir. E9 sale dos veces: en s01 con la ficha de V3 tal cual («misma metodología») y en s02 con el contenido del plan A,
+  sin tamaño ni destino. Hueco menor: V3 dice que E9 tiene la metodología de E7 (beacon HTTPS), y una salida de datos no es
+  eso (`src/data/s2.ts:570`).
+- **El hilo de Orbital** (`video/hilos-pelicula/src/scenes/parts/s03-orbital/OrbitalLog.tsx:36-60`): `2026-03-09 08:05` el
+  correo «PO revision» a `finance@orbital.example` («un pedido falso a Finanzas»), `08:22` el adjunto que se ejecuta y deja
+  `C:\Users\..\msdtcs.exe` con la ruta del PDB, `08:23` el beacon a `portal-auth-check.example`. El montón de Orbital lleva
+  «2026-03-09 · Orbital Components · proveedor de Meridian · eventos nuevos» (`video/hilos-pelicula/src/data/s01-fotos.ts:10-15`).
+  Es un hilo parcial (`video/hilos-pelicula/src/data/s03-orbital.ts:15`): sin staging ni salida todavía.
+- **La ruta del PDB** `D:\proj\cicada\loader\Release\ldr.pdb` sale igual en `winhlp.exe` y en `msdtcs.exe`
+  (`video/hilos-pelicula/src/scenes/parts/CompareTable.tsx:61`, `:82`). Imagen común de V13, V14 y V15: «la etiqueta del
+  taller» (`video/hilos-pelicula/src/data/s04-taller.ts:8`), con la misma frase en voz: «Al compilar, a veces la carpeta donde
+  se hizo se queda escrita en el programa. Es como la etiqueta del taller, por dentro. No siempre la lleva. Pero si otro
+  programa trae la misma, salen del mismo taller.» (s04-06 y s04-07). Se llama «la ruta del PDB» (s04-08). La regla en
+  pantalla: «si otro programa trae la misma · mismo taller · enlace fuerte» (`video/hilos-pelicula/src/data/s04-taller.ts:14`).
+- **Enlaces débiles y fuertes:** PowerShell, Cobalt Strike y phishing son lo que usan «miles de actores»
+  (`video/hilos-pelicula/src/data/s05-debiles.ts:8-11`); lo que cuenta es lo que cuesta cambiar y, para agrupar, además lo raro.
+- **Agrupar no es atribuir** (`video/hilos-pelicula/src/data/s07-nombre.ts:7-11`): «agrupar: qué intrusiones van juntas» frente a
+  «atribuir: quién está detrás · pide otras pruebas» (remite a «S4: niveles de atribución»). El veredicto es un activity group
+  **candidato**, sin nombre: ni VELVET CICADA ni GLASS VIPER; GLASS VIPER sale como nombre del implante en las fichas de E7 y E9 (como en V3) y como firma de los
+  mensajes; la narradora lo presenta como «tu mote para el intruso de Meridian y lo que usa» (`video/hilos-pelicula/narration.json:140`).
+- **La noche del 9-3 en Orbital** (`video/hilos-pelicula/src/data/s09-noche.ts:19-40`): Meridian le pasa a Orbital «cosas que
+  buscar», una por fase (correo con un CV, se abre el adjunto, loader y tarea programada, primera llamada a casa, compresión en
+  una carpeta temporal · salida grande), como hipótesis «a comprobar» (`video/hilos-pelicula/src/data/s08-grafo.ts:19-22`); esperar a
+  que saque los datos «cuesta justo lo que quieres proteger». Sin resultado.
+- **Las tres reglas del cierre** (`video/hilos-pelicula/src/data/s10-reglas.ts:20-43`): «Un evento es una foto, y los de una
+  intrusión, en orden y por fases, son su película»; «Lo común no une. Lo barato, si no coincide, no separa» (la ficha decía «ni
+  une ni separa»; la sesión principal lo corrigió por exactitud); «Un grupo no es un nombre, es un plan». Remata con
+  «Tu turno: las preguntas de la lección» (`:74`, s2m4 · 10 preguntas).
+- **GLASS VIPER**, tres mensajes nuevos, sin fecha, que pasan a ser canon de su voz (se cuela con el mote del intruso de Meridian, desmarca
+  y tutea; nunca dice quién es):
+  - «Otra empresa, otro dominio, otro correo. Eso no es cosa mía.» (`video/hilos-pelicula/narration.json:143`, s03-06)
+  - «Ya me has metido en un grupo. Pues dime quién soy.» (`video/hilos-pelicula/narration.json:319`, s07-01)
+  - «En Orbital solo llamo a casa. Ahí no va a pasar nada más.» (`video/hilos-pelicula/narration.json:359`, s08-01)
+- Las analogías (la caja, el taller y la película) son de la explicación, no del caso.
+- **No se toca** (sigue fuera): el dosier de BROKEN CHAIN (`src/data/course-gcti.ts:40`): ni «tres muestras», ni que los TTPs
+  se repitan en sus playbooks, ni «VELVET CICADA ya tiene cara técnica»; por eso el adjunto de Orbital no se llama LNK ni se dice
+  que lanzara PowerShell. La palabra que hay dentro de la ruta del PDB sale tal cual y la voz no la comenta (el hallazgo es del Lab
+  3A, `src/data/labs.ts:688-691`). Cluster-A y Cluster-B (`src/data/s4.ts:729-745`), la campaña STIX «PO-REVISION phishing wave»
+  (`src/data/s4.ts:1033`), el certificado «en 3 C2» (§5 punto 10), el tamaño y destino de la salida de E9 (§5 punto 7), el vector
+  por un proveedor (cuenta VPN, portales del BLUF), quién abrió el adjunto (§5 punto 5) y todo lo posterior al 9-3 (el indicador
+  del ISAC del 11-3 es de V8). Nadie tiene nombre y no se culpa a nadie.
 
 ### Plantilla para el siguiente
 

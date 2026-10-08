@@ -62,6 +62,13 @@ como hizo V10 con sp2m7.
   Sistemas. V11–V12 solo fijan la cadena pública; la CA interna sigue sin definir y V17 no enseña ningún certificado.
 - **Una sola imagen para la ruta PDB** en V13, V14 y V15: «la etiqueta del taller», con la misma frase en la voz («no
   siempre la lleva»). V14 y V15 se graban juntos.
+  **La frase vigente es la de los guiones congelados de V14 y V15 (2026-10-05)**, no la de las fichas: las dos
+  revisiones de naturalidad avisaron de que «se queda escrita dentro la carpeta» se oye como «dentro *de* la carpeta».
+  Queda «Al compilar, a veces la carpeta donde se hizo se queda escrita en el programa. Es como la etiqueta del taller,
+  por dentro. No siempre la lleva. Pero si otro programa trae la misma, salen del mismo taller.» V15 añade solo
+  «cosida en el cuello,» delante de «por dentro». En pantalla, la regla va en dos líneas: «si otro programa trae la
+  misma» / «mismo taller · enlace fuerte». V13 no dice esta frase; cuando se apunte la imagen en el registro de VELVET
+  CICADA, va esta redacción.
 - **Ningún título de escena destripa su pregunta.** El título se ve arriba durante toda la escena, y la tarjeta de la
   pregunta no lo tapa (lo encontró la revisión del guion de V11; regla nueva en el plan, §1). Cambian cuatro títulos:
   V14 s09 «Esta noche, en Orbital» pasa a «Orbital, a medio camino»; V15 s04 «Cinco llamadas, dos suyas», a «Cinco

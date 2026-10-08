@@ -7,7 +7,8 @@
 //        [--max-pause <ms>] [--tempo <x>] [--force-asr]
 //
 // 1. Transcribes the recording with word timings (recording_asr.py, faster-whisper in the
-//    Chatterbox venv), cached in out/recording/<name>/asr-<file>.json by the file's hash.
+//    Chatterbox venv), cached in out/recording/<name>/asr-<file>.json by the file's hash. Long
+//    silences are left out of what Whisper hears (asrClips: V10 lost its first sentence after 28.5 s of it).
 // 2. Finds every segment in it, in order; a sentence read more than once keeps its last take,
 //    and audio that is not in the script (exam cards, intercepts, false starts) is skipped.
 // 3. Cuts each clip at the nearest silence, applies one gain to the whole recording (to --match's
@@ -17,7 +18,8 @@
 //    Both default to narration.json "recording": { "tempo": 1.08, "maxPauseMs": 250 } when set there.
 // 4. Writes out/recording/<name>/report-<file>.md: each segment's match, and what was left out.
 // Set narration.json "voice" to "recording/<name>" before build-timeline. Segments it could not
-// find get no clip, so build-timeline names them. To replace some sentences, record just those
+// find get no clip, so build-timeline names them; the console says where each should be, what Whisper
+// heard there, and the commands that cut it out and import just that. To replace some sentences, record just those
 // (in script order) and import that file with --only <ids>: the other clips are left as they are.
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -31,17 +33,23 @@ import { profileFor } from './lib/profiles.mjs';
 import {
   REVIEW_SCORE,
   asrCacheValid,
+  asrClips,
   asrPrompt,
   clipArgs,
+  clock,
   cutPoints,
   gainDb,
   importReport,
   keepRanges,
   locateSegments,
+  missingGaps,
+  parseDuration,
   parseLoudness,
   parseSilences,
   recordingRecord,
   recordingSettings,
+  recutAdvice,
+  recutLoudnessFilter,
   repairSwallowedPauses,
   trailingSpeechEnd,
   selectSegments,
@@ -51,17 +59,21 @@ import { VENV_PYTHON, scaleTimings } from './tts-chatterbox.mjs';
 
 const ASR_MODEL = 'small';
 
-/** Whisper transcript of `file`, reused while the file, model and prompt are unchanged. */
-function transcribe(file, sha256, prompt, workDir, { force, log }) {
+/** Whisper transcript of the `clips` of `file` (null: all of it), reused while the file, model and clips are unchanged. */
+function transcribe(file, sha256, prompt, clips, workDir, { force, log }) {
   const cache = path.join(workDir, `asr-${fileSlug(file)}.json`);
   if (!force && existsSync(cache)) {
     const cached = JSON.parse(readFileSync(cache, 'utf8'));
-    if (asrCacheValid(cached, { sha256, model: ASR_MODEL })) {
+    if (asrCacheValid(cached, { sha256, model: ASR_MODEL, clips })) {
       const note = cached.prompt === prompt ? '' : ' — the Whisper prompt changed since (was the first sentence rewritten?); --force-asr redoes it';
       log.log(`import-recording: transcript cached (${cached.words.length} words)${note}`);
       return cached;
     }
+    if (asrCacheValid(cached, { sha256, model: ASR_MODEL, clips: cached.clips ?? null })) {
+      log.log('import-recording: the cached transcript heard other stretches of the recording (its long silences changed) — transcribing again');
+    }
   }
+  if (clips) log.log(`import-recording: long silences left out, Whisper hears ${clips.map((c) => `${clock(c.startMs)}–${clock(c.endMs)}`).join(', ')}`);
   if (!existsSync(VENV_PYTHON)) throw new Error(`Chatterbox venv not found at ${VENV_PYTHON} — it also runs Whisper; create it as in video/engine/README.md`);
   const raw = path.join(workDir, `asr-${fileSlug(file)}.raw.json`);
   // Whisper on the CPU is a heavy job: wait for any render to finish instead of slowing both (lib/heavy-lock.mjs).
@@ -70,7 +82,10 @@ function transcribe(file, sha256, prompt, workDir, { force, log }) {
   try {
     res = spawnSync(
       VENV_PYTHON,
-      ['-X', 'utf8', path.join(SCRIPTS_DIR, 'recording_asr.py'), '--audio', file, '--out', raw, '--model', ASR_MODEL, '--prompt', prompt],
+      [
+        '-X', 'utf8', path.join(SCRIPTS_DIR, 'recording_asr.py'), '--audio', file, '--out', raw, '--model', ASR_MODEL, '--prompt', prompt,
+        ...(clips ? ['--clips', clips.flatMap((c) => [c.startMs / 1000, c.endMs / 1000]).join(',')] : []),
+      ],
       {
         cwd: REPO_ROOT,
         stdio: 'inherit',
@@ -93,11 +108,35 @@ function fileSlug(file) {
   return path.basename(file, path.extname(file)).normalize('NFD').replace(/\p{M}+/gu, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
-/** stderr of one ffmpeg analysis pass over `file` (output discarded). */
-function analyse(file, filter) {
-  const res = runFfmpeg(['-hide_banner', '-nostats', '-i', file, '-af', filter, '-f', 'null', '-']);
+/** stderr of one ffmpeg analysis pass over `file`, or just its `range` (output discarded). */
+function analyse(file, filter, range = null) {
+  const span = range ? ['-ss', String(range.startMs / 1000), '-t', String((range.endMs - range.startMs) / 1000)] : [];
+  const res = runFfmpeg(['-hide_banner', '-nostats', ...span, '-i', file, '-af', filter, '-f', 'null', '-']);
   if (res.status !== 0) throw new Error(`ffmpeg ${filter.split('=')[0]} failed for ${file}: ${res.stderr.trim()}`);
   return res.stderr;
+}
+
+/** `p` as the commands are typed, from the repo root with forward slashes (absolute when it is on another drive). */
+function fromRoot(p) {
+  const rel = path.relative(REPO_ROOT, p);
+  return (path.isAbsolute(rel) ? p : rel).split(path.sep).join('/');
+}
+
+/**
+ * recutAdvice's paths and loudness for one gap: the cut goes next to the recording, and the --only import gets the
+ * full import's gain as --lufs (the cut's loudness, measured as recut_recording.py will write it, + that gain).
+ */
+function recutOptions(gap, { file, name, gain }) {
+  const out = path.join(path.dirname(file), `${MANIFEST.slug} ${name} ${gap.ids.join(' ')} (recorte).wav`);
+  let lufs = `<LUFS of the cut + ${gain}>`;
+  if (gap.startMs !== null) {
+    try {
+      lufs = Math.round((parseLoudness(analyse(file, recutLoudnessFilter(), gap)).integrated + gain) * 100) / 100;
+    } catch {
+      // too little voice to measure: the placeholder says what to put there
+    }
+  }
+  return { file: fromRoot(file), out: fromRoot(out), slug: MANIFEST.slug, name, python: fromRoot(VENV_PYTHON), lufs };
 }
 
 /** A clip record whose audio was sped up by `tempo`: duration and word timings shrink by the same factor. */
@@ -125,10 +164,15 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
   const workDir = path.join(PATHS.outDir, 'recording', name);
   mkdirSync(workDir, { recursive: true });
   const sha256 = createHash('sha256').update(readFileSync(file)).digest('hex');
-  const asr = transcribe(file, sha256, asrPrompt({ opening: analysis.segments[0]?.parsed.display, adversary: MANIFEST.adversary, lexicon: sources.lexicon }), workDir, { force: forceAsr, log });
+  // Silences first: Whisper is not given the long ones (asrClips). The cuts read the same pass, timed as always.
+  const silenceLog = analyse(file, `silencedetect=noise=${noise}:d=0.12`);
+  const fileMs = parseDuration(silenceLog);
+  const clips = fileMs === null ? null : asrClips(parseSilences(silenceLog, fileMs), fileMs);
+  const prompt = asrPrompt({ opening: analysis.segments[0]?.parsed.display, adversary: MANIFEST.adversary, lexicon: sources.lexicon });
+  const asr = transcribe(file, sha256, prompt, clips, workDir, { force: forceAsr, log });
   const words = asr.words;
 
-  const silences = parseSilences(analyse(file, `silencedetect=noise=${noise}:d=0.12`), asr.durationMs);
+  const silences = parseSilences(silenceLog, asr.durationMs);
   const target = match ? parseLoudness(analyse(match, 'loudnorm=print_format=json')).integrated : lufs;
   const gain = gainDb(parseLoudness(analyse(file, 'loudnorm=print_format=json')), target);
 
@@ -174,7 +218,12 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
   const weak = located.filter((f) => f.found && f.score < REVIEW_SCORE).map((f) => `${f.id} (${f.score.toFixed(2)})`);
   log.log(`import-recording: ${cuts.length}/${located.length} clips -> ${voiceDir} (gain ${gain} dB${pausesRemovedMs ? `, ${(pausesRemovedMs / 1000).toFixed(1)} s of pauses removed` : ''}${settings.tempo !== 1 ? `, tempo ${settings.tempo}` : ''})`);
   if (weak.length) log.warn(`  aviso: listen to these, they differ from the script: ${weak.join(', ')}`);
-  if (missing.length) log.warn(`  aviso: not found in the recording (no clip written): ${missing.join(', ')}`);
+  if (missing.length) {
+    log.warn(`  aviso: not found in the recording (no clip written): ${missing.join(', ')}`);
+    for (const gap of missingGaps(located, cuts, timed, silences, asr.durationMs)) {
+      for (const line of recutAdvice(gap, recutOptions(gap, { file, name, gain }))) log.warn(`    ${line}`);
+    }
+  }
   if (sources.narration.voice !== voice) log.warn(`  aviso: narration.json "voice" is "${sources.narration.voice}" — set it to "${voice}" before build-timeline`);
   log.log(`report -> ${reportPath}`);
   return { located, cuts, gain, missing, weak };

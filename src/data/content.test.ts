@@ -296,6 +296,9 @@ describe('lesson videos', () => {
     // V17 walks sp3m5's three ways in (802.1X, site-to-site IPSec, remote access), after the full-tunnel check and
     // before the exam note
     expect(youtubeVideos.find((v) => v.block.youtube === 'R4bvB3FTrrE')?.module).toBe('sp3m5');
+    // V14 turns s2m4's events into threads and groups, after the last check (Victim 2's partial thread) and before
+    // the campaign callout that sends the learner to Labs 2A and 2B
+    expect(youtubeVideos.find((v) => v.block.youtube === 'WMhXfPe5zTE')?.module).toBe('s2m4');
   });
 
   it('every video block points at relative public assets that exist', async () => {

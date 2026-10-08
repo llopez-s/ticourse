@@ -876,12 +876,12 @@ Eje tecnológico    : Capability ↔ Infrastructure
         lang: 'text',
         title: 'Eventos crudos consolidados (ficticios)',
         text: `[Victim 1 — Meridian Dynamics]
-2026-03-02 09:14  email "PO revision" -> j.alvarez@meridian.example
-2026-03-02 09:31  attachment runs; drops C:\\Users\\..\\winhlp.exe
+2026-03-02 09:41  email "Candidatura - Ingeniero de propulsion" (CV_Ingeniero.zip)
+2026-03-02 09:44  LNK runs on ENG-WS-041; drops C:\\ProgramData\\winhlp.exe
                   linker artifact: D:\\proj\\cicada\\loader\\Release\\ldr.pdb
-2026-03-02 09:32  winhlp.exe beacons -> update-svc-cdn.com:443
-2026-03-04 22:10  archive staged: C:\\Windows\\Temp\\~tmp4421.cab
-2026-03-05 01:47  1.2 GB out -> transfer-cdn-eu.example
+2026-03-02 09:45  winhlp.exe beacons -> update-svc-cdn.com:443
+2026-03-07 00:52  archive staged: C:\\Windows\\Temp\\~tmp4421.cab
+2026-03-07 01:47  1.2 GB out -> transfer-cdn-eu.example
 
 [Victim 2 — Orbital Components (Meridian supplier)]
 2026-03-09 08:05  email "PO revision" -> finance@orbital.example
@@ -891,13 +891,13 @@ Eje tecnológico    : Capability ↔ Infrastructure
       },
       {
         t: 'p',
-        md: '**Paso 1 — separa por víctima y ordena por fases.** Victim 1 es un thread completo: Delivery (phish) → Installation (`winhlp.exe`) → C2 (beacon) → Actions (staging y exfil de 1,2 GB). Victim 2 es un thread *parcial*: Delivery → Installation → C2, sin acciones finales observadas **todavía**. **Paso 2 — compara los threads con criterios de fuerza**, no con la intuición:',
+        md: '**Paso 1 — separa por víctima y ordena por fases.** Victim 1 es un thread completo: Delivery (phish) → Exploitation (el adjunto se ejecuta) → Installation (`winhlp.exe`) → C2 (beacon) → Actions (staging y exfil de 1,2 GB). Victim 2 es un thread *parcial*: Delivery → Exploitation → Installation → C2, sin acciones finales observadas **todavía**. **Paso 2 — compara los threads con criterios de fuerza**, no con la intuición:',
       },
       {
         t: 'table',
         headers: ['Observación compartida', 'Tipo', 'Veredicto'],
         rows: [
-          ['Mismo lure «PO revision» en ambas', 'Tema de targeting', '**Medio** — sugiere el mismo tasking, no lo prueba'],
+          ['Señuelos distintos: un CV en Meridian, un «PO revision» en Orbital', 'Señuelo a medida', '**Neutro** — se adapta a cada víctima y cambiarlo es barato; que no coincida no rompe el grupo'],
           ['Mismo PDB path `cicada\\loader\\Release\\ldr.pdb`','Artefacto de desarrollo', '**Fuerte** — mismo entorno de build del actor'],
           ['Dominios C2 distintos', 'Infraestructura rotada', '**Neutro** — rotar dominios es barato; su ausencia no rompe el grupo'],
           ['Ambos beacons por HTTPS/443', 'Técnica universal', '**Muy débil** — descártalo como criterio'],
@@ -906,7 +906,7 @@ Eje tecnológico    : Capability ↔ Infrastructure
       },
       {
         t: 'p',
-        md: '**Veredicto:** un enlace fuerte (el PDB) reforzado por dos medios coherentes → ambos threads entran en el mismo **activity group candidato**. Y aquí el grafo paga el esfuerzo: si el actor sigue el patrón del thread 1, en Orbital *aún no ha llegado* el staging ni la exfiltración — el **activity-attack graph** te dice exactamente qué buscar y dónde sembrar detección esta noche.',
+        md: '**Veredicto:** un enlace fuerte (el PDB) reforzado por uno medio y coherente (Orbital es proveedor de Meridian) → ambos threads entran en el mismo **activity group candidato**. Y aquí el grafo paga el esfuerzo: si el actor sigue el patrón del thread 1, en Orbital *aún no ha llegado* el staging ni la exfiltración — el **activity-attack graph** te dice exactamente qué buscar y dónde sembrar detección esta noche.',
       },
       {
         t: 'check',
@@ -930,7 +930,7 @@ Eje tecnológico    : Capability ↔ Infrastructure
       {
         t: 'check',
         q: {
-          q: 'Victim 2\'s thread shows Delivery → Installation → C2 but no staging or exfil yet. Per the activity-attack graph logic, the BEST immediate defensive move is:',
+          q: 'Victim 2\'s thread shows Delivery → Exploitation → Installation → C2 but no staging or exfil yet. Per the activity-attack graph logic, the BEST immediate defensive move is:',
           choices: [
             'Wait for exfiltration to confirm the pattern',
             'Hunt and instrument the phases the group performed at Victim 1 but not yet here: archive staging in temp paths and large outbound transfers',
@@ -941,6 +941,13 @@ Eje tecnológico    : Capability ↔ Infrastructure
           explain:
             'Group membership predicts the actor\'s remaining moves. You defend the phases that have not happened yet — that is proactive CTI.',
         },
+      },
+      {
+        t: 'video',
+        title: 'De la foto a la película: activity threads y grupos',
+        youtube: 'WMhXfPe5zTE',
+        poster: 'videos/hilos-pelicula-poster.png',
+        transcript: 'videos/hilos-pelicula-transcript.txt',
       },
       {
         t: 'callout',

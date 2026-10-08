@@ -428,9 +428,18 @@ git) y `scripts/import-recording.mjs` lo convierte en los mismos clips que escri
 (`tts/<id>.json` + `public/voice/<id>.mp3`) para la voz `"recording/<nombre>"`:
 
 1. **Transcribe** la grabación con marcas de tiempo por palabra (`scripts/recording_asr.py`, faster-whisper
-   `small` en el venv de Chatterbox). El resultado se guarda en `out/recording/<nombre>/asr-<archivo>.json` y se
-   reutiliza mientras no cambien el archivo (hash) ni la pista que se le da a Whisper (la primera frase del guion,
-   el adversario y las siglas del léxico); `--force-asr` lo rehace. Tarda ~7–10 min por 12 min de audio en CPU.
+   `small` en el venv de Chatterbox), con una pista inicial (la primera frase del guion, el adversario y las siglas
+   del léxico) para que escriba los nombres como el guion. **Los silencios largos no se le pasan a Whisper**
+   (`asrClips`): 8 s o más al principio o al final, 15 s o más en medio, dejando 1 s de aire a cada lado y con las
+   marcas de tiempo en el tiempo de la grabación (`clip_timestamps`). Whisper oye en ventanas de 30 s y la pista
+   solo cuenta en la primera que descodifica: V10 (`logs-halden`) empezaba con 28,5 s de silencio, Whisper tiró esa
+   ventana por «sin voz» y en la siguiente se saltó el final de la primera frase, que repetía la pista, así que
+   s01-01 se quedó sin clip; con 10 s de silencio ya escribía la pista dentro del silencio. Ninguna grabación
+   publicada llega a esos umbrales (como mucho 5,9 s en un borde y 13,7 s en medio), así que se transcriben igual
+   que antes. El resultado se guarda en `out/recording/<nombre>/asr-<archivo>.json` y se reutiliza mientras no
+   cambien el archivo (hash), el modelo ni los tramos que oye Whisper (una caché anterior a esto, hecha con la
+   grabación entera, se rehace sola si la grabación tiene silencios largos); `--force-asr` lo rehace siempre.
+   Tarda ~7–10 min por 12 min de audio en CPU.
 2. **Localiza** cada frase del guion, en orden (`lib/recording.mjs`). Compara con el texto mostrado y con el
    hablado de `[mostrado|hablado]`, con los números en palabras, así que tolera lo que Whisper escribe mal
    («de Mark» por DMARC, «4.00 y 12.00»). Si una frase se leyó varias veces, **se queda con la última toma**;
@@ -448,7 +457,16 @@ git) y `scripts/import-recording.mjs` lo convierte en los mismos clips que escri
    <clip>`, o `--lufs`, sin pasar de −1 dBTP) y codifica como Chatterbox (24 kHz mono, MP3 CBR 96 kbps).
 4. **Informa** en `out/recording/<nombre>/report-<archivo>.md`: la coincidencia de cada frase («revisar» por debajo de
    0,9: sobran o faltan palabras, escúchala), las que no encontró (sin clip: `build-timeline` las nombrará) y
-   los trozos de la grabación que no usó.
+   los trozos de la grabación que no usó. Por cada frase que no encontró (o varias seguidas), la consola dice
+   **dónde debería estar** (entre el corte de la frase anterior y el de la siguiente, ajustado a la voz), qué oyó
+   Whisper ahí y la causa probable: voz sin transcribir (Whisper se la saltó), algo demasiado distinto del guion
+   (escúchalo; si se leyó mal, se regraba) o ninguna voz (no se grabó). Si hay voz, da los dos comandos exactos para
+   arreglarlo sin regrabar: `recut_recording.py --part "<grabación>@<inicio>-<fin>"` a un archivo
+   `<slug> <nombre> <ids> (recorte).wav` junto a la grabación, e `import-recording --only <ids>
+   --lufs=<sonoridad del recorte + ganancia>`, con el número ya calculado para que el clip quede con la misma
+   ganancia que el resto (no `--match`: medido sobre una frase da ~1 dB de más). La sonoridad se mide como la
+   escribirá `recut_recording.py`, con sus 0,8 s de silencio detrás: en una frase sola pesan (V10 s01-01: −19,23 LUFS
+   el trozo pelado, −19,53 el recorte, 0,3 dB de diferencia en el clip).
 
 **Ritmo** (`narration.json` → `"recording": { "tempo": 1.08, "maxPauseMs": 250 }`, o los flags `--tempo` y
 `--max-pause`, que mandan sobre él): `maxPauseMs` acorta a ese valor cada pausa dentro de una frase, y
