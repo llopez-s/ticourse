@@ -292,7 +292,7 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'WidodMPEs24')?.module).toBe('s2m1');
     // V16 draws sp3m4's zones, placement and failure modes on the port, after the mirror-port check and before the
     // paragraph that hands over to firewalls and VPNs (sp3m5)
-    expect(youtubeVideos.find((v) => v.block.youtube === '2H9tDjWiRpc')?.module).toBe('sp3m4');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'PcNk_XCJmOM')?.module).toBe('sp3m4');
   });
 
   it('every video block points at relative public assets that exist', async () => {

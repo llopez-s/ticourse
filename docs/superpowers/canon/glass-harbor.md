@@ -29,7 +29,7 @@ Registro de los hechos fijos del incidente de Halden que cuentan los vídeos de 
 | V6 «Identidad y acceso» | sp4m8 | YouTube `It1DrWKbFe4`, `sp/sp4-part4.ts:464-475` | octubre: la revisión de accesos del 19-10, la jubilación del 23-10, la bóveda del 27-10 y el préstamo del 28-10 |
 | V10 «Ataques en los logs» | sp2m7 | YouTube `uHHv-1hTYTE`, `sp/sp2-part4.ts:136-142` | la noche del 20 al 21-10 y la revisión de las 08:00: spraying contra el proveedor de identidad, traversal y amplificación DNS contra el portal; primera aparición de RED MARROW |
 | V11 «Criptografía» | sp1m6 | YouTube `6jyHqrkMOZQ`, `sp/sp1-part4.ts:144-154` | el martes 3-11: una naviera se conecta al portal de reservas y recoge su oferta para 2027; primera aparición de NULL CIPHER. Para quien sigue el curso es el primer vídeo de Halden (sp1), aunque pase en noviembre |
-| V16 «Zonas de seguridad» | sp3m4 | YouTube `2H9tDjWiRpc`, `sp/sp3-part2.ts:479-489` | el lunes 16-11 rediseñas el plano de red; el viernes 20-11 el comité lo aprueba. Sin ataque: decisiones de diseño. Primera aparición de BLIND ARCHITECT. Es el primer vídeo de sp3 y el primer vídeo de red en el orden del curso (se ve antes que cualquiera de sp4, aunque pase después de V6, V10 y V11): no remite al caso de septiembre ni a la noche del 21-10 |
+| V16 «Zonas de seguridad» | sp3m4 | YouTube `PcNk_XCJmOM`, `sp/sp3-part2.ts:479-489` | el lunes 16-11 rediseñas el plano de red; el viernes 20-11 el comité lo aprueba. Sin ataque: decisiones de diseño. Primera aparición de BLIND ARCHITECT. Es el primer vídeo de sp3 y el primer vídeo de red en el orden del curso (se ve antes que cualquiera de sp4, aunque pase después de V6, V10 y V11): no remite al caso de septiembre ni a la noche del 21-10 |
 
 ## 2. Cronología del incidente
 

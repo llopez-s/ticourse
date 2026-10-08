@@ -2779,7 +2779,8 @@ del vídeo y ninguno queda destripado:
 > `video/zonas-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/zonas-halden/out/script-notes.md`.
 >
 > **Guion escrito, revisado y congelado el 2026-10-07** (aprobado por Lidia). **Producido y subido**: por la API el
-> 2026-10-08 (YouTube `2H9tDjWiRpc`, privado hasta que Lidia lo publique); 8:26, 10 escenas, 7 tarjetas, 2 preguntas, 3
+> 2026-10-08 (YouTube `PcNk_XCJmOM`, privado hasta que Lidia lo publique; la primera subida, `2H9tDjWiRpc`, se quedó
+> procesando para siempre por un fallo del script ya arreglado, y Lidia la borra); 8:26, 10 escenas, 7 tarjetas, 2 preguntas, 3
 > mensajes de BLIND ARCHITECT (voz `sapi/Microsoft Helena` a `rate` −2 con el efecto nuevo `megafonia`), voz de Lidia,
 > música de V4 y V5. En la lección sp3m4, donde dice «Inserción», con su línea de entrada.
 >
