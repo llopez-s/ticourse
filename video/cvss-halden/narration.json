@@ -29,37 +29,37 @@
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<engaging> {title}¿Qué se arregla primero? {promise}Hoy ves cómo se decide, qué se hace con lo que no tiene parche y cuándo puedes darlo por cerrado.",
+      "text": "<engaging> {title}¿Qué se arregla primero? {promise}Hoy ves cómo se decide, qué haces con lo que no tiene parche y cuándo está cerrado de verdad.",
       "pauseAfterMs": 450
     },
     {
       "id": "s02-01",
       "scene": "s02-contexto",
-      "text": "<clear> {rows}Dos servidores, el mismo fallo. {cve}Esta columna es su nombre público, el CVE.",
+      "text": "<clear> {rows}Dos servidores, el mismo fallo. {cve}Esta columna es el nombre público del fallo, el CVE.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-02",
       "scene": "s02-contexto",
-      "text": "<focused> {score}Esta es la nota base, el CVSS, de cero a diez. Dice lo grave que sería el fallo en abstracto, sin saber nada de tu red.",
+      "text": "<focused> {score}Esta es la nota base del CVSS, de cero a diez. Dice lo grave que sería el fallo en abstracto, sin saber nada de tu red.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-03",
       "scene": "s02-contexto",
-      "text": "<curious> La misma nota, ¿y la misma prisa? {listens}Eso la nota no lo sabe. El primero escucha en la red interna, y el segundo solo en su equipo.",
+      "text": "<curious> La misma nota, ¿y la misma prisa? {listens}Eso la nota no lo sabe. El primero se ve desde la red interna, y el segundo solo desde su equipo.",
       "pauseAfterMs": 350
     },
     {
       "id": "s02-04",
       "scene": "s02-contexto",
-      "text": "<warm> {hull}Piensa en el agujero de un casco. La nota es su tamaño, y el contexto es el mar.",
+      "text": "<warm> {hull}Piensa en un agujero en el casco de un barco. La nota es su tamaño, y el contexto, el mar.",
       "pauseAfterMs": 250
     },
     {
       "id": "s02-05",
       "scene": "s02-contexto",
-      "text": "<thoughtful> En dique seco, espera a la próxima reparación. En alta mar y con temporal, no.",
+      "text": "<thoughtful> El segundo, en dique seco, puede esperar a la reparación. El primero, en alta mar con temporal, no.",
       "pauseAfterMs": 350
     },
     {
@@ -92,7 +92,7 @@
       "text": "<sarcastic> {coin}Una moneda no mira nada de esto. Mejor cuatro preguntas.",
       "pauseAfterMs": 350,
       "intercept": {
-        "text": "Mismo 9.8, misma prisa. Que decida una moneda.",
+        "text": "Mismo 9,8, misma prisa. Que decida una moneda.",
         "holdMs": 3800
       }
     },
@@ -111,7 +111,7 @@
     {
       "id": "s03-06",
       "scene": "s03-orden",
-      "text": "<thoughtful> {front}¿Hay algo delante? Nada, en los dos. {impact}¿Y qué se para si cae? Lo mismo, los mensajes del puerto.",
+      "text": "<thoughtful> {front}¿Hay algo que lo proteja? Nada, en los dos. {impact}¿Y qué se para si cae? Lo mismo, los mensajes del puerto.",
       "pauseAfterMs": 450
     },
     {
@@ -141,13 +141,13 @@
     {
       "id": "s04-02",
       "scene": "s04-sinparche",
-      "text": "<curious> {options}Mira las opciones. {no-patch}Parchear es imposible, porque no hay parche.",
+      "text": "<curious> {options}Mira las opciones, una por una. {no-patch}Parchear queda descartado.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-03",
       "scene": "s04-sinparche",
-      "text": "<sarcastic> {insurance}Un seguro paga parte del golpe, pero el fallo sigue igual de explotable. Y «a otra cosa» no es una decisión.",
+      "text": "<clear> {insurance}Un seguro paga parte de la factura, pero el fallo sigue igual de explotable. Y «a otra cosa» no es una decisión.",
       "pauseAfterMs": 450,
       "intercept": {
         "text": "¿Sin parche? Contrata un seguro y a otra cosa.",
@@ -157,19 +157,19 @@
     {
       "id": "s04-04",
       "scene": "s04-sinparche",
-      "text": "<serious> {isolate}Sin parche, lo aíslas, como los mamparos de un casco, y lo compensas con alertas reforzadas, como las bombas de achique.",
+      "text": "<serious> {isolate}Sin parche, lo aíslas, como los mamparos de un casco. Y lo compensas con alertas reforzadas, como las bombas de achique.",
       "pauseAfterMs": 350
     },
     {
       "id": "s04-05",
       "scene": "s04-sinparche",
-      "text": "<firm> {record}Lo que queda lo acepta el negocio, no quien lo encontró. {owner}Lo firma el director de operaciones, en una excepción con controles.",
+      "text": "<firm> {record}El riesgo que queda lo acepta el negocio, no quien lo encontró. {owner}Lo firma el director de operaciones, en una excepción con controles.",
       "pauseAfterMs": 250
     },
     {
       "id": "s04-06",
       "scene": "s04-sinparche",
-      "text": "<calm> {expiry}Caduca en seis meses, y se revisa cada tres. O sea, aislar, compensar y firmar con fecha.",
+      "text": "<calm> {expiry}La excepción caduca en seis meses, y se revisa cada tres meses.",
       "pauseAfterMs": 600,
       "exam": {
         "objective": "4.3",
@@ -181,13 +181,13 @@
     {
       "id": "s05-01",
       "scene": "s05-despues",
-      "text": "<casual> {rescan}El lunes repites el escaneo. {still}El primer servidor sigue saliendo, y Sistemas lo parcheó el jueves.",
+      "text": "<casual> {rescan}El lunes repites el escaneo, y {still}el primer servidor aparece otra vez, aunque Sistemas lo parcheó el jueves.",
       "pauseAfterMs": 400
     },
     {
       "id": "s05-02",
       "scene": "s05-despues",
-      "text": "<curious> {question}Parcheado y sigue saliendo. ¿Qué haces primero, parchear otra vez o comprobar?",
+      "text": "<curious> {question}Está parcheado, y aun así sigue saliendo. ¿Qué haces primero?",
       "pauseAfterMs": 300,
       "think": {
         "q": "Parcheado y sigue saliendo. ¿Qué haces primero?",
@@ -197,25 +197,25 @@
     {
       "id": "s05-03",
       "scene": "s05-despues",
-      "text": "<confident> Comprobar. {version}Aunque el escaneo lleve credenciales, esta fila sale de una comprobación que lee lo que el servicio anuncia por la red.",
+      "text": "<confident> Comprobar. {version}El escaneo entra con credenciales, pero esta fila solo mira lo que el servicio anuncia por la red.",
       "pauseAfterMs": 350
     },
     {
       "id": "s05-04",
       "scene": "s05-despues",
-      "text": "<focused> {running}En el equipo ya corre la versión nueva. {banner}El escáner leyó el letrero del casco, no el casco.",
+      "text": "<focused> {running}En el equipo ya corre la versión nueva, y no falta ningún reinicio. {banner}El escáner leyó el letrero del casco, no el casco.",
       "pauseAfterMs": 400
     },
     {
       "id": "s05-05",
       "scene": "s05-despues",
-      "text": "<satisfied> {false-positive}Un fallo que el escáner ve y no existe es un false positive. Se documenta, {fix}y Sistemas corrige el texto, sin culpas.",
+      "text": "<satisfied> {false-positive}Cuando el escáner avisa de un fallo que no existe, es un falso positivo. Se documenta, {fix}y Sistemas corrige el texto.",
       "pauseAfterMs": 350
     },
     {
       "id": "s05-06",
       "scene": "s05-despues",
-      "text": "<confident> {closed}Nuevo rescan, limpio. Ahora sí, cerrado con prueba. O sea, que se cierra al revalidar, no con un correo.",
+      "text": "<confident> {closed}Nuevo escaneo, limpio. Ahora sí, cerrado con prueba. O sea, se cierra al revalidar, no con un correo.",
       "pauseAfterMs": 600,
       "exam": {
         "objective": "4.3",
@@ -233,13 +233,13 @@
     {
       "id": "s06-02",
       "scene": "s06-recap",
-      "text": "<firm> {rule-2}Sin parche, aislar, compensar y firmar una excepción con caducidad. Un seguro no cierra el fallo.",
+      "text": "<firm> {rule-2}Si no hay parche, aíslas, compensas y firmas una excepción con caducidad. Un seguro no cierra el fallo.",
       "pauseAfterMs": 350
     },
     {
       "id": "s06-03",
       "scene": "s06-recap",
-      "text": "<clear> {rule-3}Hasta que no lo compruebas, no está cerrado. Si sigue saliendo, mira qué corre de verdad.",
+      "text": "<clear> {rule-3}No está cerrado hasta que lo compruebas. Si sigue saliendo, mira qué corre de verdad.",
       "pauseAfterMs": 450
     },
     {
