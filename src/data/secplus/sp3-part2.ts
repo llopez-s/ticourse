@@ -478,6 +478,17 @@ const sp3m4: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a los cortafuegos, júntalo todo en el puerto: zonas, colocación y qué pasa cuando un control se cae.',
+    },
+    {
+      t: 'video',
+      title: 'Zonas de seguridad: dónde va cada cosa y qué pasa si falla',
+      youtube: '2H9tDjWiRpc',
+      poster: 'videos/zonas-halden-poster.png',
+      transcript: 'videos/zonas-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Con las zonas dibujadas, los dispositivos colocados y el modo de fallo decidido, queda elegir **qué tecnología** pones en cada frontera. La siguiente lección entra en los tipos de cortafuegos —**WAF**, **UTM**, **NGFW** y el filtrado de **layer 4 frente a layer 7**—, en la seguridad de puerto con **802.1X** y **EAP**, y en la comunicación segura: **VPN** de sitio a sitio y de acceso remoto, túnel completo o dividido, **TLS** frente a **IPSec**, **SD-WAN** y **SASE**.',
     },
   ],

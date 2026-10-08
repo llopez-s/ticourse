@@ -2778,6 +2778,11 @@ del vídeo y ninguno queda destripado:
 > Propuesta del 2026-10-04; aprobada el 2026-10-05 con las opciones recomendadas (Lidia delegó las decisiones). La versión vigente de escenas y guion será
 > `video/zonas-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/zonas-halden/out/script-notes.md`.
 >
+> **Guion escrito, revisado y congelado el 2026-10-07** (aprobado por Lidia). **Producido y subido**: por la API el
+> 2026-10-08 (YouTube `2H9tDjWiRpc`, privado hasta que Lidia lo publique); 8:26, 10 escenas, 7 tarjetas, 2 preguntas, 3
+> mensajes de BLIND ARCHITECT (voz `sapi/Microsoft Helena` a `rate` −2 con el efecto nuevo `megafonia`), voz de Lidia,
+> música de V4 y V5. En la lección sp3m4, donde dice «Inserción», con su línea de entrada.
+>
 > Primer vídeo de la sección sp3 y **primera aparición de BLIND ARCHITECT**. Comparte arco con V17 (sp3m5), que lo
 > continúa la semana siguiente con una sola frase de puente; cada uno se entiende sin el otro. Decisiones, riesgos y la
 > pregunta de la voz, en `docs/reviews/2026-10-05-fichas-tanda3/decisiones.md` (apartado V16).
