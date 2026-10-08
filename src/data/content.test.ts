@@ -293,6 +293,9 @@ describe('lesson videos', () => {
     // V16 draws sp3m4's zones, placement and failure modes on the port, after the mirror-port check and before the
     // paragraph that hands over to firewalls and VPNs (sp3m5)
     expect(youtubeVideos.find((v) => v.block.youtube === 'PcNk_XCJmOM')?.module).toBe('sp3m4');
+    // V17 walks sp3m5's three ways in (802.1X, site-to-site IPSec, remote access), after the full-tunnel check and
+    // before the exam note
+    expect(youtubeVideos.find((v) => v.block.youtube === 'R4bvB3FTrrE')?.module).toBe('sp3m5');
   });
 
   it('every video block points at relative public assets that exist', async () => {

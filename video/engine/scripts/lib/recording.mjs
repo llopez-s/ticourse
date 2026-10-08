@@ -45,9 +45,15 @@ function numberWords(n) {
 /**
  * The form two texts are compared in: normalized (no case, accents, spaces or punctuation)
  * with every run of digits spelled out, so the ASR's «7» matches the script's «siete».
+ * Digits are spelled before punctuation goes, so a dot between two numbers keeps them apart
+ * («802.1X» is «ochocientos dos» + «uno equis», as the ASR's two words «802» «.1X.» read), unless
+ * it is a thousands separator: a dot before exactly three digits («6.000» is «seis mil»).
  */
 export function matchKey(text) {
-  return normalizeToken(text).replace(/\d+/g, (d) => (d.length > 6 ? [...d].map((c) => UNITS[Number(c)]).join('') : numberWords(Number(d))));
+  const spelled = String(text)
+    .replace(/(\d)\.(?=\d{3}(?!\d))/g, '$1')
+    .replace(/\d+/g, (d) => (d.length > 6 ? [...d].map((c) => UNITS[Number(c)]).join('') : numberWords(Number(d))));
+  return normalizeToken(spelled);
 }
 
 /** Match key of one ASR word; drops the «.00» Whisper writes after an hour («4.00 y 12.00»). */

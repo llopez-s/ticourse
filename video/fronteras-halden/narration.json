@@ -1,0 +1,506 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Helena",
+    "rate": -2,
+    "fx": "megafonia"
+  },
+  "sfx": {
+    "lease": "ding",
+    "reject": "block",
+    "box": "lock",
+    "ipsec-blocked": "error"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<calm> {plan}La semana pasada, el puerto {bridge}aprobó dividir su red en zonas, cada una con su control.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<curious> {title}Ahora toca ver por dónde se entra en esas zonas desde fuera de la valla.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<clear> {promise}Al acabar sabrás quién puede enchufarse a la red, cómo se unen dos sedes y cómo entra quien está fuera.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<focused> {paths}Son tres caminos hacia dentro. Un cable en una toma, la terminal de contenedores, que es otra sede, y alguien de viaje, en un hotel.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-hook",
+      "text": "<mischievously> {adversary}Y vuelve BLIND ARCHITECT, que vive de los planos con atajos. Para cada camino trae un atajo, y los tres suenan razonables.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-toma",
+      "text": "<focused> {room}Primer camino, el enchufe. Es lunes, estás en la sala de formación de la planta de oficinas y hay una toma libre.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-toma",
+      "text": "<curious> {plug}Quieres comprobar una cosa. Conectas un portátil de pruebas y en tres segundos {lease}ya tiene una dirección en la red de oficinas.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-toma",
+      "text": "<serious> {nobody}Y la toma no le ha preguntado quién es. Le da red a cualquiera que se enchufe.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-toma",
+      "text": "<sarcastic> ¿De casa? Date una vuelta por esta planta. Salas de reuniones, visitas que entran y salen, tomas libres por todas partes.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "¿Cerrar tomas? Quien llega al enchufe ya es de casa. Menos es más.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-toma",
+      "text": "<firm> {inside}Estar dentro del edificio no dice quién eres. Para saberlo, alguien tiene que preguntar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-toma",
+      "text": "<concerned> Encima, el portátil ha caído en la red de oficinas, que con el plan va a ser la zona interna. Así, sin presentarse.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-8021x",
+      "text": "<clear> {lanes}En una toma que pregunta hay tres papeles, cada uno en su carril.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-8021x",
+      "text": "<focused> {closed}La toma va al switch, y su puerto empieza cerrado. Solo deja pasar lo justo para presentarte.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-8021x",
+      "text": "<curious> {ask}Tu portátil pide entrar y dice quién es. {relay}El switch se lo pasa a un servidor RADIUS.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-8021x",
+      "text": "<steady> {check}Allí lo miran en el directorio. Y quien abre la toma, o la deja cerrada, es el switch.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-8021x",
+      "text": "<engaging> Entonces, ¿quién decide, el switch o el servidor?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Quién decide: el switch o el servidor RADIUS?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-8021x",
+      "text": "<confident> {decides}El servidor. El switch transmite y obedece, aunque sea él quien abre.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s03-07",
+      "scene": "s03-8021x",
+      "text": "<clear> {roles}En el examen, tu portátil es el supplicant, el switch es el authenticator y RADIUS, el authentication server.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "3.2",
+        "text": "Supplicant pide, authenticator transmite, RADIUS decide",
+        "at": "roles",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-08",
+      "scene": "s03-8021x",
+      "text": "<warm> {gate}Como en la puerta del recinto. El conductor enseña su acreditación, el vigilante llama a la oficina de acreditaciones y abre si le dicen que sí.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-09",
+      "scene": "s03-8021x",
+      "text": "<satisfied> {dot1x}Eso es 802.1X, el control de acceso a la red por puerto. La toma no se abre hasta que demuestras quién eres.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-eap",
+      "text": "<clear> {eap}Entre los tres usan un marco común, que admite distintas formas de demostrar quién eres. Se llama EAP.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-eap",
+      "text": "<focused> {methods}Cada forma es un método. {eaptls}El más fuerte pide certificado en el equipo y en el servidor, y es EAP-TLS.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "3.2",
+        "text": "802.1X con certificados en los dos lados: EAP-TLS",
+        "at": "eaptls",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-eap",
+      "text": "<warm> En la puerta del recinto, sería como si la oficina también te enseñara su acreditación.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-eap",
+      "text": "<confident> {accept}Con un sí, la toma se abre, {zone-vlan}y RADIUS puede meter al equipo en la red de su zona, su VLAN.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-eap",
+      "text": "<serious> {reject}Con un no, sigue cerrada, {quarantine}o el equipo cae en una VLAN de cuarentena, solo para que lo arreglen.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-eap",
+      "text": "<steady> Así que propones 802.1X en los switches de la planta, para cuando arranque el plan.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-eap",
+      "text": "<calm> {wrap}O sea, que con 802.1X no basta con estar dentro. Alguien tiene que decidir quién eres.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-sedes",
+      "text": "<curious> {two-sites}Segundo camino, otra sede. El miércoles revisas el túnel que ya une la sede con la terminal de contenedores.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-sedes",
+      "text": "<clear> {gateways}En medio está Internet, que no controlas. Así que el túnel va cifrado entre las salidas de cada sede, sus pasarelas.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-sedes",
+      "text": "<focused> {transparent}Se monta una vez, y los equipos de cada lado no instalan nada.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-sedes",
+      "text": "<warm> {corridor}Es como un pasillo cubierto que cruza una calle que no es tuya. Lo usa quien está dentro, sin pensarlo.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-sedes",
+      "text": "<engaging> {client}El otro túnel es de una sola persona, que lo abre desde su portátil con un programa, el cliente.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-sedes",
+      "text": "<thoughtful> {launch}Ese túnel es una lancha. La pides tú cada vez, y solo te lleva a ti.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-sedes",
+      "text": "<confident> {names}Al pasillo lo llamamos VPN site-to-site, y a la lancha, de acceso remoto.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "3.2",
+        "text": "Site-to-site: entre pasarelas; remote access: con cliente",
+        "at": "names",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-08",
+      "scene": "s05-sedes",
+      "text": "<calm> El túnel de la terminal es un pasillo. Ahora, a ver qué lleva dentro.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-ah-esp",
+      "text": "<focused> {config}Abres la configuración del túnel. Tiene tres líneas, el protocolo, el modo y los dos extremos.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-ah-esp",
+      "text": "<clear> {layer3}El túnel va sobre IPSec, que trabaja en la capa de red y protege paquetes IP, lleven lo que lleven.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-ah-esp",
+      "text": "<curious> {ah}Para el protocolo hay dos opciones. La primera comprueba que nadie ha tocado el paquete y que viene de quien dice.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-ah-esp",
+      "text": "<steady> Te da integridad y autenticación del origen, pero no cifra nada. Se llama AH.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-ah-esp",
+      "text": "<warm> {seal}Es una bolsa transparente con precinto. Si la abren, se nota, pero todo el mundo ve lo que lleva.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-ah-esp",
+      "text": "<confident> La segunda también lo comprueba, y además cifra, así que nadie ve qué lleva. {esp}Esa es ESP, la que añade la confidencialidad.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-07",
+      "scene": "s06-ah-esp",
+      "text": "<satisfied> {box}La misma carga, en una caja cerrada y precintada. Por eso ESP es el que se usa, también en el túnel del puerto.",
+      "pauseAfterMs": 550,
+      "exam": {
+        "objective": "3.2",
+        "text": "AH: integridad sin cifrar; ESP añade confidencialidad",
+        "at": "box",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-modos",
+      "text": "<firm> El modo no se elige por lo que pesa la cabecera, sino por quién habla con quién.",
+      "pauseAfterMs": 450,
+      "intercept": {
+        "text": "Entre las dos sedes, modo transporte: menos cabeceras. Menos es más.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-modos",
+      "text": "<clear> {transport}El modo transporte cifra solo la carga y deja a la vista la cabecera original. Sirve para dos equipos que hablan entre sí.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-modos",
+      "text": "<warm> {plates}Es un camión con la carga tapada. No sabes qué lleva, pero se le ve la matrícula.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-modos",
+      "text": "<focused> {tunnel}El modo túnel mete el paquete entero, con sus direcciones internas, dentro de uno nuevo, de pasarela a pasarela.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-modos",
+      "text": "<satisfied> {container}Es el camión entero dentro de un contenedor. Por fuera, solo se ven las dos pasarelas.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-modos",
+      "text": "<confident> Entre dos pasarelas que protegen lo que tienen detrás, hace falta el modo túnel. {keep}Así que el del puerto se queda como está.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "3.2",
+        "text": "Modo túnel, entre pasarelas; transporte, entre equipos",
+        "at": "keep",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-07",
+      "scene": "s07-modos",
+      "text": "<calm> {wrap}Total, que dos sedes se unen una vez, entre pasarelas, con ESP y en modo túnel.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-hotel",
+      "text": "<curious> {remote}Tercer camino, desde fuera. El puerto tiene una VPN de acceso remoto, la lancha.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-hotel",
+      "text": "<casual> {hotel}Alguien del puerto está de viaje, en la red de un hotel.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-hotel",
+      "text": "<concerned> {web-only}Esa red solo deja salir la web, y a través de un proxy. Como si el hotel solo abriera la puerta de la web.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-hotel",
+      "text": "<engaging> Una VPN puede ir sobre IPSec, como el túnel de la terminal, o sobre TLS. ¿Cuál le sirve?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "La red del hotel solo deja web. ¿IPSec o TLS?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-hotel",
+      "text": "<confident> {tls}TLS, porque sale por el 443, la misma puerta que cualquier página web.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-hotel",
+      "text": "<serious> {ipsec-blocked}IPSec necesita sus propios protocolos, que no son web. Llama a otra puerta, y está cerrada.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-07",
+      "scene": "s08-hotel",
+      "text": "<clear> {why}Una red que solo deja web corta esos protocolos. Por eso las VPN de acceso remoto suelen ir sobre TLS.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "3.2",
+        "text": "Red que solo deja pasar web: VPN sobre TLS",
+        "at": "why",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-08",
+      "scene": "s08-hotel",
+      "text": "<warm> La del puerto va sobre TLS, aunque mucha gente aún la llama VPN SSL.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-tunel",
+      "text": "<focused> {today-split}Hoy, esa VPN solo mete en el túnel lo del puerto. Lo demás sale directo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-tunel",
+      "text": "<sarcastic> Más rápido sí que va. Lo que no dice es por qué.",
+      "pauseAfterMs": 500,
+      "intercept": {
+        "text": "Túnel dividido para todos: va más rápido. Menos es más.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-tunel",
+      "text": "<clear> {full}Con el túnel completo, el full tunnel, todo sale por la sede.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-tunel",
+      "text": "<confident> {inspect}Así pasa por tu filtrado web, tu control de fugas de datos y tus registros.",
+      "pauseAfterMs": 350,
+      "exam": {
+        "objective": "3.2",
+        "text": "Full tunnel: todo el tráfico pasa por tu inspección",
+        "at": "inspect",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-tunel",
+      "text": "<warm> Como en la aduana del puerto, nada pasa sin que lo veas. {price}A cambio, más latencia y más tráfico en la sede.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-tunel",
+      "text": "<curious> {split}El dividido, el split tunnel, va más rápido porque se salta la aduana. Lo que sale directo no se filtra ni se registra.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-07",
+      "scene": "s09-tunel",
+      "text": "<concerned> {bridge}Y el portátil queda con un pie a cada lado de la valla. Hace de puente entre Internet sin vigilar y tu red.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s09-08",
+      "scene": "s09-tunel",
+      "text": "<firm> {decision}Propones túnel completo, {approved}y el viernes el comité de cambios lo aprueba, junto con 802.1X.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-09",
+      "scene": "s09-tunel",
+      "text": "<calm> {wrap}Vamos, que desde fuera se entra por TLS, y pronto todo pasará por la aduana.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-recap",
+      "text": "<confident> {recap}Tres caminos, tres reglas. {rule-1}Una toma no se abre hasta que alguien decide quién eres. El switch transmite, y RADIUS decide.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-recap",
+      "text": "<clear> {rule-2}Dos sedes se unen una vez, entre pasarelas, con ESP y en modo túnel. Una persona entra con su cliente, y por TLS si la red solo deja web.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-recap",
+      "text": "<warm> {rule-3}Y si todo tiene que pasar por tu inspección, túnel completo. El dividido deja el portátil con un pie a cada lado.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-recap",
+      "text": "<cheerful> {next}Ahora te tocan las ocho preguntas de la lección. {endcard}Y la próxima toma libre que veas, mira a ver si te pregunta quién eres.",
+      "pauseAfterMs": 600
+    }
+  ]
+}
