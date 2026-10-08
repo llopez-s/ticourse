@@ -391,7 +391,7 @@ const sp3m2: Module = {
       t: 'callout',
       kind: 'example',
       title: 'En la Autoridad Portuaria de Halden',
-      md: 'El puerto tiene los tres modelos a la vez. Los **PLC de las esclusas** están **air-gapped** y se actualizan con medios del fabricante, así que el control real está en quién toca ese USB. Las aplicaciones de oficina viven en **VMs on-premises**, donde la auditoría encuentra once máquinas encendidas de un piloto de 2023 que nadie apagó: **VM sprawl** puro, sin parchear y fuera del inventario. Y el nuevo portal de reservas corre en **contenedores** construidos sobre una imagen base descargada de un registro público sin verificar, con un servicio ejecutándose como root. Tres arquitecturas, tres controles distintos: medios extraíbles, ciclo de vida de las VM y procedencia de las imágenes.',
+      md: 'El puerto tiene los tres modelos a la vez. Los **sistemas de control de las grúas** están **air-gapped** y se actualizan con medios del fabricante, así que el control real está en quién toca ese USB. Las aplicaciones de oficina viven en **VMs on-premises**, donde la auditoría encuentra once máquinas encendidas de un piloto de 2023 que nadie apagó: **VM sprawl** puro, sin parchear y fuera del inventario. Y el nuevo portal de reservas corre en **contenedores** construidos sobre una imagen base descargada de un registro público sin verificar, con un servicio ejecutándose como root. Tres arquitecturas, tres controles distintos: medios extraíbles, ciclo de vida de las VM y procedencia de las imágenes.',
     },
     {
       t: 'p',

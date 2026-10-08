@@ -1,0 +1,196 @@
+{
+  "title": "La Cyber Kill Chain: basta con romper un eslabón",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 454,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Siete pasos"
+    },
+    {
+      "n": 2,
+      "title": "Leer las pruebas"
+    },
+    {
+      "n": 3,
+      "title": "Lo que no ves"
+    },
+    {
+      "n": 4,
+      "title": "Llegar antes"
+    },
+    {
+      "n": 5,
+      "title": "Límites y examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-alerta",
+      "chapter": 1,
+      "title": "Una llamada que nadie esperaba",
+      "goal": "El SOC de Meridian, de noche. Una ficha de alerta grande con los datos que ya enseñaron V3 y V7, sin nada más: «05-03-2026 · 02:13 UTC», «ENG-WS-041 · ingeniería de propulsión», «llama a `update-svc-cdn.com`» y, en rosa, «dominio desconocido» (sin «E7», sin número de informe, sin hash). Debajo, «¿qué le queda por hacer?». La ficha se atenúa y entra el título «La Cyber Kill Chain» con «basta con romper un eslabón» debajo, antes de los 10 s (`title`). La promesa en tres chips (`promise`): «leer cada fase en las pruebas · separar lo que ves de lo que deduces · decidir dónde cortar». Tira de contexto: «Meridian Dynamics · aeroespacial · tú, su analista de inteligencia». Al final (`back`), un calendario que retrocede hasta «lunes 02-03». La voz no lee ni la hora, ni el equipo, ni el dominio",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "alert",
+        "title",
+        "promise",
+        "back"
+      ]
+    },
+    {
+      "id": "s02-cadena",
+      "chapter": 1,
+      "title": "Siete pasos, en orden",
+      "goal": "La imagen: una casa en una calle y el plan del ladrón en siete viñetas que se dibujan una a una al compás de la voz (acera, taller, caja en la puerta, caja abierta con el aparato encendido, llave en la maceta, el bocadillo «sigo aquí, ¿qué hago?», los planos). Bajo cada viñeta, su nombre en pantalla (`names`): Reconnaissance, Weaponization, Delivery, Exploitation, Installation, Command & Control (C2) y Actions on Objectives, con «Cyber Kill Chain · Lockheed Martin» en pequeño (la voz no lee la lista). Las viñetas se enganchan como eslabones (`chain`): cada una cuelga de la anterior. Mensaje interceptado. Respuesta: la viñeta de la caja abierta se rompe («nadie la abre», `break`) y las tres siguientes pasan a gris (`grey`), con «esta se queda en la puerta». Al lado, pequeña, una caja nueva que sale otra vez del taller (no vuelve a la acera): «si lo intenta otra vez, empieza de nuevo». Dos marcadores (`asymmetry`): «él: necesita las siete, en orden» · «tú: te basta con romper una a tu alcance». La tarjeta, con la cadena ya quieta",
+      "targetSec": 56,
+      "wordBudget": 151,
+      "requiredCues": [
+        "house",
+        "seven",
+        "names",
+        "chain",
+        "break",
+        "grey",
+        "asymmetry"
+      ]
+    },
+    {
+      "id": "s03-correo",
+      "chapter": 2,
+      "title": "La caja en la puerta",
+      "goal": "Las cabeceras de la lección tal cual (`src/data/s2.ts:68-74`), sin las marcas `[fase]` de la derecha ni el asterisco del adjunto, rotuladas «pasarela de correo · 2026-03-02 09:41 UTC». Dónde mirar, por pasos, con lo demás atenuado: `From` con `meridian-careers.com` y la etiqueta «parece de casa» (`from`); `Return-Path` y las dos líneas de `Received` con `mx1.cdn-sync-status.example`, «apuntan a quien lo envió de verdad» (`real-sender`; la IP de `Received` se queda como en la lección, sin resaltar); el asunto, «Candidatura - Ingeniero de propulsion (CV adjunto)» (`subject`); la línea del adjunto, atenuada para s05. Sin línea `To:` y sin «RR. HH.» en pantalla. A la derecha se enciende la viñeta de la caja en la puerta y entra el nombre DELIVERY: «llevar el artefacto hasta la víctima» (`delivery`). Junto al `From`, una ficha «¿Reconnaissance?» que se tacha (`not-recon`): «investigar a Meridian fue antes · usarlo para que el correo entre y se abra es entrega». La tarjeta, con las cabeceras ya atenuadas",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "requiredCues": [
+        "headers",
+        "from",
+        "real-sender",
+        "subject",
+        "delivery",
+        "not-recon"
+      ]
+    },
+    {
+      "id": "s04-equipo",
+      "chapter": 2,
+      "title": "Dentro del equipo",
+      "goal": "La cadena del EDR de la lección (`src/data/s2.ts:76-83`), sin las marcas `[fase]` de la derecha (cada fase la pone su viñeta, cuando la dice la voz), «host ENG-WS-041 · mismo día», línea a línea; la que explica la voz se amplía, el resto se atenúa, y a la derecha se enciende su viñeta. `09:44:12 explorer.exe` abre `CV_Ingeniero.pdf.lnk` y `09:44:13 powershell.exe -nop -w hidden -enc …` (`open`): EXPLOITATION, «se ejecuta código al abrirlo», la caja abierta (`exploitation`). `09:44:19 escribe C:\\ProgramData\\winhlp.exe` (`drop`) y `09:44:20 schtasks /create /tn WindowsUpdateCheck … /sc onlogon` (`task`): INSTALLATION, «quedarse», la llave en la maceta (`installation`). `09:45:02 winhlp.exe`, con un conector dibujado (no el carácter de flecha, como V7, `video/attack-piramide/src/scenes/parts/ProcessTree.tsx:40`), hasta `TLS update-svc-cdn.com:443 (beacon 60s)` (`beacon`), rotulada solo «beacon · cada 60 s», **sin nombre de fase y sin encender ninguna viñeta**: la pregunta para pensar llega con la línea del beacon sola. Respuesta (`c2`): se enciende la viñeta del «sigo aquí, ¿qué hago?» y entra COMMAND & CONTROL; dos columnas, «C2: el canal que permite la misión» y «Actions on Objectives: leer las carpetas de diseño, comprimirlas, sacarlas» (`mission`; la voz se queda en «leer, comprimir y sacar» y nunca dice «buscar» ni «recorrer» las carpetas); la línea del beacon cae en la primera. La tarjeta. Cierre del capítulo (`wrap-ii`): las cuatro fases vistas, en fila, cada una con su hora como en su fuente («UTC» solo en la del correo, ninguna en las del EDR), sin minutos ni flechas con tiempo entre fases",
+      "targetSec": 56,
+      "wordBudget": 151,
+      "requiredCues": [
+        "edr",
+        "open",
+        "exploitation",
+        "drop",
+        "task",
+        "installation",
+        "beacon",
+        "c2",
+        "mission",
+        "wrap-ii"
+      ]
+    },
+    {
+      "id": "s05-taller",
+      "chapter": 3,
+      "title": "El taller que no ves",
+      "goal": "Mensaje interceptado (`reply`). La imagen: el taller del ladrón tras una puerta cerrada, fuera de cuadro (`door`); delante, la caja que dejó en tu puerta, que se abre por capas (`box`). En paralelo se amplía la línea del adjunto (`lnk`): `CV_Ingeniero.zip (contiene: CV_Ingeniero.pdf.lnk)`, rotulada «un acceso directo que se hace pasar por un PDF, dentro de un ZIP», con la nota de la lección «inferida: el LNK dentro del ZIP se construyó en el entorno del actor» (`inferred`, `src/data/s2.ts:85`). De la caja salen tres pistas, en una lista en pantalla (`clues`, las del callout, `:37`): «cómo está hecho el adjunto · con qué herramienta se montó · rutas de compilación (PDB)»; la tercera lleva el dibujo de la etiqueta del taller (el componente común con V14 y V15), en blanco, sin ningún valor de ruta, y ese dibujo va en el aparato, dentro de la caja abierta, no junto a la línea del ZIP. Nombre WEAPONIZATION, con una lupa (`weaponization`): «no se observa · se deduce»",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "requiredCues": [
+        "reply",
+        "door",
+        "box",
+        "lnk",
+        "inferred",
+        "clues",
+        "weaponization"
+      ]
+    },
+    {
+      "id": "s06-frontera",
+      "chapter": 3,
+      "title": "Visto, deducido y sin ver",
+      "goal": "La fila de las siete fases como mapa de lo que sabes (`map`). En cian, con un reloj y su línea de registro (`observed`): Delivery, Exploitation, Installation y Command & Control, «observadas: hay un registro con hora», cada hora como en su fuente («UTC» solo en la del correo, ninguna en las del EDR), sin minutos ni flechas con tiempo entre fases. Weaponization, discontinua y con la lupa (`dashed`): «inferida». Reconnaissance, en gris, con la viñeta de la acera borrosa (`absent`): «casi nunca la ves · a veces asoma en los registros de lo que tienes de cara a internet, como tu web» (sin nombrar la VPN). Actions on Objectives, vacía (`empty`): «sin pruebas todavía». La tarjeta. Cierre del capítulo (`wrap-iii`)",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "requiredCues": [
+        "map",
+        "observed",
+        "dashed",
+        "absent",
+        "empty",
+        "wrap-iii"
+      ]
+    },
+    {
+      "id": "s07-izquierda",
+      "chapter": 4,
+      "title": "Enterarte tarde",
+      "goal": "Mensaje interceptado. La fila de fases con alarmas. Primero, todas en Actions on Objectives (`alarms-right`); la viñeta, una caja fuerte abierta: «te enteras cuando ya está con los planos» (`late`); las seis fases anteriores se tiñen de rosa, «ya hechas, sin que lo vieras» (`done`). Antes de mover nada, un chip (`see-first`): «para saltar antes, hay que ver antes», con «registros del correo · del equipo» debajo, en pequeño. Después, las alarmas se reparten hacia la izquierda, hacia los pasos de antes (`shift`), cada una sobre una fuente que mira esa fase (la voz no lo dice: lo enseña la pantalla); una alarma que suena y nadie atiende no apaga nada. La que salta antes del C2 solo apaga las de su derecha cuando alguien actúa sobre ella (un candado o una mano encima, `act`): «cada paso que paras de verdad te ahorra los siguientes» (`saved`). Un bocadillo, «lo paramos en Delivery», con «cuatro palabras que dicen mucho» (`language`). La tarjeta, sobre la fila rosa (`done`)",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "alarms-right",
+        "late",
+        "done",
+        "see-first",
+        "shift",
+        "act",
+        "saved",
+        "language"
+      ]
+    },
+    {
+      "id": "s08-cortar",
+      "chapter": 4,
+      "title": "Lo primero que cortas",
+      "goal": "Dos zonas, sin rótulos de posición todavía: la pasarela de correo (`gateway`) y el equipo, rotulado «estación de ingeniería» (`host`; la voz dice «el propio equipo»). Pregunta para pensar, con Delivery y Exploitation resaltadas. Respuesta (s2m1q7, `src/data/s2.ts:200-213`): ahora sí, bajo la pasarela, «en la red · antes del equipo»: la entrega pasa en la pasarela, que es un control de red; en el propio equipo, lo primero es que el acceso directo no pueda lanzar PowerShell (`first-cut`, la caja que se abre y no enciende nada). A su derecha, «borrar el programa» y «cortar el beacon», en gris (`later`): «también sirven, pero ya ha avanzado más». La tarjeta. Vuelve la ficha del 5 de marzo sobre la fila de fases (`today`): el marcador en Command & Control y Actions on Objectives vacía, «por lo que ves, la séptima no aparece» (`:113`). Cierre del capítulo (`wrap-iv`)",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "requiredCues": [
+        "gateway",
+        "host",
+        "first-cut",
+        "later",
+        "today",
+        "wrap-iv"
+      ]
+    },
+    {
+      "id": "s09-limites",
+      "chapter": 5,
+      "title": "Cuando no hay caja",
+      "goal": "Vuelve la casa: alguien que vive en ella, o que tiene una llave de verdad, coge los planos (`insider`); las viñetas del taller, la caja y la puerta se quedan vacías y la cadena, con huecos (`gaps`). Tres chips (`limits`, `src/data/s2.ts:47`): «insider con acceso legítimo · credenciales válidas · servicios en la nube (SaaS)». Rótulo (`fits`): «encaja bien: intrusiones con malware y fases en fila». Dos fichas que la completan (`complements`): ATT&CK, «el cómo, técnica a técnica», y Diamond Model, «cada paso, un diamante de cuatro esquinas». La tarjeta",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "insider",
+        "gaps",
+        "limits",
+        "fits",
+        "complements"
+      ]
+    },
+    {
+      "id": "s10-reglas",
+      "chapter": 5,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, una cada vez, cada una con su viñeta en miniatura (la cadena rota, la caja que se abre por capas, la alarma a la izquierda); tarjeta final Alertópolis: «Tu turno: Lab 2A · Kill Chain Mapping»",
+      "targetSec": 30,
+      "wordBudget": 81,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "lab2a",
+        "endcard"
+      ]
+    }
+  ]
+}

@@ -18,6 +18,7 @@ import {
   importReport,
   keepRanges,
   locateSegments,
+  matchKey,
   missingGaps,
   parseDuration,
   parseLoudness,
@@ -87,6 +88,28 @@ test('locateSegments matches a time the ASR wrote in digits against its spoken w
     words,
   );
   assert.deepEqual(found.map((f) => [f.first, f.last]), [[0, 18], [19, 31]]);
+});
+
+test('locateSegments keeps «802.1X» at the end of a sentence when the ASR splits it into «802» and «.1X.»', () => {
+  // V17 s09-08: the script's «802.1X» used to read as one number («ocho mil veintiuno equis»), so the take
+  // matched better without its last word and the clip stopped at «802».
+  const words = [
+    ...spoken('Propones túnel completo, y el comité lo aprueba, junto con 802 .1X.'),
+    ...spoken('Vamos, que desde fuera se entra por TLS.', 8000),
+  ];
+  const found = locateSegments(
+    [seg('a', 'Propones túnel completo, y el comité lo aprueba, junto con 802.1X.'), seg('b', 'Vamos, que desde fuera se entra por TLS.')],
+    words,
+  );
+  assert.deepEqual(found.map((f) => [f.first, f.last]), [[0, 11], [12, 19]]);
+  assert.equal(found[0].score, 1);
+});
+
+test('matchKey: a dot before exactly three digits groups thousands, any other dot between digits splits two numbers', () => {
+  assert.equal(matchKey('6.000 alertas'), matchKey('seis mil alertas'));
+  assert.equal(matchKey('1.000.000'), matchKey('1000000'));
+  assert.equal(matchKey('802.1X'), matchKey('802') + matchKey('.1X.'));
+  assert.equal(matchKey('802.1X'), 'ochocientosdosunox');
 });
 
 test('locateSegments finds consecutive segments in order', () => {

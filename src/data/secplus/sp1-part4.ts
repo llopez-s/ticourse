@@ -143,6 +143,17 @@ HÍBRIDO (lo que hace TLS en la práctica)
     },
     {
       t: 'p',
+      md: 'Antes de pasar a la PKI, júntalo todo en el portal del puerto: quién usa qué clave y por qué una conexión usa las dos familias.',
+    },
+    {
+      t: 'video',
+      title: 'Criptografía: quién usa qué clave y por qué TLS es híbrido',
+      youtube: '6jyHqrkMOZQ',
+      poster: 'videos/cripto-halden-poster.png',
+      transcript: 'videos/cripto-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Ya sabes qué hace cada primitiva. Queda la pregunta incómoda: cuando recibes una **public key**, ¿cómo sabes que pertenece a quien dice? Esa confianza no la da la matemática, la da la **PKI** — certificados, autoridades y raíces de confianza — que es el tema de la siguiente lección.',
     },
   ],
@@ -378,6 +389,17 @@ El root ya está en el trust store del sistema; por eso la cadena "cierra".`,
         explain:
           'OCSP stapling gives clients a fresh, CA-signed status attached to the TLS handshake, so revocation is reflected quickly and clients never contact the CA themselves. A daily CRL can leave a revoked certificate trusted for up to a day, and a shorter validity period does nothing for a key compromised today.',
       },
+    },
+    {
+      t: 'p',
+      md: 'Antes de seguir con la gestión de claves, míralo en una consola: una cadena a la que le falta un eslabón y cómo se entera un cliente de que un certificado ya no vale.',
+    },
+    {
+      t: 'video',
+      title: 'PKI en la consola: el eslabón que falta, CRL y OCSP',
+      youtube: 'zEhyYU7Vuwc',
+      poster: 'videos/pki-halden-poster.png',
+      transcript: 'videos/pki-halden-transcript.txt',
     },
     {
       t: 'p',

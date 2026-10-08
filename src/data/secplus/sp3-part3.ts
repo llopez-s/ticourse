@@ -213,6 +213,17 @@ SPLIT TUNNEL — solo lo corporativo entra en el tunel
       },
     },
     {
+      t: 'p',
+      md: 'Antes de la nota de examen, recórrelo en el puerto: quién se enchufa, cómo se unen dos sedes y cómo entra quien está fuera.',
+    },
+    {
+      t: 'video',
+      title: 'Por dónde se entra: 802.1X, VPN e IPSec',
+      youtube: 'R4bvB3FTrrE',
+      poster: 'videos/fronteras-halden-poster.png',
+      transcript: 'videos/fronteras-halden-transcript.txt',
+    },
+    {
       t: 'callout',
       kind: 'exam',
       title: 'Nota de examen: cada pista apunta a un control concreto',

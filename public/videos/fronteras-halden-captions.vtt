@@ -1,0 +1,565 @@
+WEBVTT
+
+1
+00:00:01.633 --> 00:00:07.867
+La semana pasada, el puerto aprobó dividir
+su red en zonas, cada una con su control.
+
+2
+00:00:07.867 --> 00:00:11.933
+Ahora toca ver por dónde se entra
+en esas zonas desde fuera de la valla.
+
+3
+00:00:11.933 --> 00:00:15.167
+Al acabar sabrás quién
+puede enchufarse a la red,
+
+4
+00:00:15.167 --> 00:00:19.467
+cómo se unen dos sedes y cómo
+entra quien está fuera.
+
+5
+00:00:19.567 --> 00:00:22.067
+Son tres caminos hacia dentro.
+
+6
+00:00:22.067 --> 00:00:25.967
+Un cable en una toma, la terminal
+de contenedores, que es otra sede,
+
+7
+00:00:25.967 --> 00:00:28.300
+y alguien de viaje, en un hotel.
+
+8
+00:00:28.300 --> 00:00:32.500
+Y vuelve BLIND ARCHITECT,
+que vive de los planos con atajos.
+
+9
+00:00:32.500 --> 00:00:36.633
+Para cada camino trae un atajo,
+y los tres suenan razonables.
+
+10
+00:00:38.133 --> 00:00:40.200
+Primer camino, el enchufe.
+
+11
+00:00:40.200 --> 00:00:42.633
+Es lunes, estás en la sala de formación
+
+12
+00:00:42.633 --> 00:00:45.200
+de la planta de oficinas
+y hay una toma libre.
+
+13
+00:00:45.200 --> 00:00:46.600
+Quieres comprobar una cosa.
+
+14
+00:00:46.600 --> 00:00:48.800
+Conectas un portátil
+de pruebas y en tres segundos
+
+15
+00:00:48.800 --> 00:00:52.400
+ya tiene una dirección
+en la red de oficinas.
+
+16
+00:00:52.533 --> 00:00:57.867
+Y la toma no le ha preguntado quién es.
+Le da red a cualquiera que se enchufe.
+
+17
+00:01:05.933 --> 00:01:08.967
+¿De casa? Date una vuelta por esta planta.
+
+18
+00:01:08.967 --> 00:01:14.233
+Salas de reuniones, visitas que entran
+y salen, tomas libres por todas partes.
+
+19
+00:01:14.267 --> 00:01:16.233
+Estar dentro del edificio
+no dice quién eres.
+
+20
+00:01:16.233 --> 00:01:20.733
+Para saberlo, alguien tiene que preguntar.
+
+21
+00:01:20.733 --> 00:01:23.800
+Encima, el portátil ha caído
+en la red de oficinas,
+
+22
+00:01:23.800 --> 00:01:29.000
+que con el plan va a ser la zona
+interna. Así, sin presentarse.
+
+23
+00:01:30.300 --> 00:01:35.300
+En una toma que pregunta hay tres
+papeles, cada uno en su carril.
+
+24
+00:01:35.300 --> 00:01:38.767
+La toma va al switch,
+y su puerto empieza cerrado.
+
+25
+00:01:38.767 --> 00:01:42.000
+Solo deja pasar lo justo para presentarte.
+
+26
+00:01:42.000 --> 00:01:47.700
+Tu portátil pide entrar y dice quién es.
+El switch se lo pasa a un servidor RADIUS.
+
+27
+00:01:47.933 --> 00:01:49.900
+Allí lo miran en el directorio.
+
+28
+00:01:49.900 --> 00:01:53.500
+Y quien abre la toma,
+o la deja cerrada, es el switch.
+
+29
+00:01:53.500 --> 00:01:57.033
+Entonces, ¿quién decide,
+el switch o el servidor?
+
+30
+00:02:01.467 --> 00:02:07.067
+El servidor. El switch transmite
+y obedece, aunque sea él quien abre.
+
+31
+00:02:07.167 --> 00:02:10.600
+En el examen,
+tu portátil es el supplicant,
+
+32
+00:02:10.600 --> 00:02:15.967
+el switch es el authenticator
+y RADIUS, el authentication server.
+
+33
+00:02:16.000 --> 00:02:18.033
+Como en la puerta del recinto.
+
+34
+00:02:18.033 --> 00:02:20.133
+El conductor enseña su acreditación,
+
+35
+00:02:20.133 --> 00:02:24.767
+el vigilante llama a la oficina de
+acreditaciones y abre si le dicen que sí.
+
+36
+00:02:24.767 --> 00:02:29.933
+Eso es 802.1X, el control
+de acceso a la red por puerto.
+
+37
+00:02:29.933 --> 00:02:33.533
+La toma no se abre hasta
+que demuestras quién eres.
+
+38
+00:02:34.667 --> 00:02:36.733
+Entre los tres usan un marco común,
+
+39
+00:02:36.733 --> 00:02:41.400
+que admite distintas formas
+de demostrar quién eres. Se llama EAP.
+
+40
+00:02:41.400 --> 00:02:43.533
+Cada forma es un método.
+
+41
+00:02:43.533 --> 00:02:49.933
+El más fuerte pide certificado en el
+equipo y en el servidor, y es EAP-TLS.
+
+42
+00:02:50.200 --> 00:02:51.833
+En la puerta del recinto,
+
+43
+00:02:51.833 --> 00:02:55.367
+sería como si la oficina también
+te enseñara su acreditación.
+
+44
+00:02:55.367 --> 00:03:00.233
+Con un sí, la toma se abre, y RADIUS puede
+meter al equipo en la red de su zona,
+
+45
+00:03:00.233 --> 00:03:01.800
+su VLAN.
+
+46
+00:03:01.800 --> 00:03:06.767
+Con un no, sigue cerrada, o el equipo
+cae en una VLAN de cuarentena,
+
+47
+00:03:06.767 --> 00:03:09.033
+solo para que lo arreglen.
+
+48
+00:03:09.033 --> 00:03:15.967
+Así que propones 802.1X en los switches de
+la planta, para cuando arranque el plan.
+
+49
+00:03:16.033 --> 00:03:21.067
+O sea, que con 802.1X
+no basta con estar dentro.
+
+50
+00:03:21.067 --> 00:03:24.133
+Alguien tiene que decidir quién eres.
+
+51
+00:03:25.333 --> 00:03:27.700
+Segundo camino, otra sede.
+
+52
+00:03:27.700 --> 00:03:32.967
+El miércoles revisas el túnel que ya une
+la sede con la terminal de contenedores.
+
+53
+00:03:33.067 --> 00:03:35.867
+En medio está Internet, que no controlas.
+
+54
+00:03:35.867 --> 00:03:40.900
+Así que el túnel va cifrado entre las
+salidas de cada sede, sus pasarelas.
+
+55
+00:03:40.900 --> 00:03:45.967
+Se monta una vez, y los equipos
+de cada lado no instalan nada.
+
+56
+00:03:45.967 --> 00:03:49.567
+Es como un pasillo cubierto
+que cruza una calle que no es tuya.
+
+57
+00:03:49.567 --> 00:03:52.267
+Lo usa quien está dentro, sin pensarlo.
+
+58
+00:03:52.267 --> 00:03:57.200
+El otro túnel es de una sola persona, que
+lo abre desde su portátil con un programa,
+
+59
+00:03:57.200 --> 00:03:58.500
+el cliente.
+
+60
+00:03:58.500 --> 00:04:03.667
+Ese túnel es una lancha. La pides
+tú cada vez, y solo te lleva a ti.
+
+61
+00:04:03.667 --> 00:04:09.533
+Al pasillo lo llamamos VPN site-to-site,
+y a la lancha, de acceso remoto.
+
+62
+00:04:09.600 --> 00:04:14.400
+El túnel de la terminal es un pasillo.
+Ahora, a ver qué lleva dentro.
+
+63
+00:04:15.467 --> 00:04:17.533
+Abres la configuración del túnel.
+
+64
+00:04:17.533 --> 00:04:21.767
+Tiene tres líneas, el protocolo,
+el modo y los dos extremos.
+
+65
+00:04:21.767 --> 00:04:26.667
+El túnel va sobre IPSec, que trabaja
+en la capa de red y protege paquetes IP,
+
+66
+00:04:26.667 --> 00:04:28.433
+lleven lo que lleven.
+
+67
+00:04:28.433 --> 00:04:30.633
+Para el protocolo hay dos opciones.
+
+68
+00:04:30.633 --> 00:04:35.133
+La primera comprueba que nadie ha tocado
+el paquete y que viene de quien dice.
+
+69
+00:04:35.133 --> 00:04:41.033
+Te da integridad y autenticación del
+origen, pero no cifra nada. Se llama AH.
+
+70
+00:04:41.233 --> 00:04:43.633
+Es una bolsa transparente con precinto.
+
+71
+00:04:43.633 --> 00:04:47.000
+Si la abren, se nota,
+pero todo el mundo ve lo que lleva.
+
+72
+00:04:47.200 --> 00:04:51.533
+La segunda también lo comprueba, y además
+cifra, así que nadie ve qué lleva.
+
+73
+00:04:51.533 --> 00:04:55.967
+Esa es ESP, la que añade
+la confidencialidad.
+
+74
+00:04:56.000 --> 00:04:58.900
+La misma carga, en una caja
+cerrada y precintada.
+
+75
+00:04:58.900 --> 00:05:03.767
+Por eso ESP es el que se usa,
+también en el túnel del puerto.
+
+76
+00:05:13.400 --> 00:05:18.900
+El modo no se elige por lo que pesa la
+cabecera, sino por quién habla con quién.
+
+77
+00:05:19.067 --> 00:05:23.133
+El modo transporte cifra solo la carga
+y deja a la vista la cabecera original.
+
+78
+00:05:23.133 --> 00:05:26.700
+Sirve para dos equipos
+que hablan entre sí.
+
+79
+00:05:26.700 --> 00:05:32.100
+Es un camión con la carga tapada. No sabes
+qué lleva, pero se le ve la matrícula.
+
+80
+00:05:32.100 --> 00:05:35.900
+El modo túnel mete el paquete entero,
+con sus direcciones internas,
+
+81
+00:05:35.900 --> 00:05:39.133
+dentro de uno nuevo,
+de pasarela a pasarela.
+
+82
+00:05:39.133 --> 00:05:41.733
+Es el camión entero
+dentro de un contenedor.
+
+83
+00:05:41.733 --> 00:05:44.800
+Por fuera, solo se ven las dos pasarelas.
+
+84
+00:05:44.900 --> 00:05:50.300
+Entre dos pasarelas que protegen lo que
+tienen detrás, hace falta el modo túnel.
+
+85
+00:05:50.300 --> 00:05:53.400
+Así que el del puerto se queda como está.
+
+86
+00:05:53.400 --> 00:06:00.200
+Total, que dos sedes se unen una vez,
+entre pasarelas, con ESP y en modo túnel.
+
+87
+00:06:01.367 --> 00:06:07.467
+Tercer camino, desde fuera. El puerto
+tiene una VPN de acceso remoto, la lancha.
+
+88
+00:06:07.467 --> 00:06:11.133
+Alguien del puerto está de viaje,
+en la red de un hotel.
+
+89
+00:06:11.200 --> 00:06:14.833
+Esa red solo deja salir la web,
+y a través de un proxy.
+
+90
+00:06:14.833 --> 00:06:17.833
+Como si el hotel solo
+abriera la puerta de la web.
+
+91
+00:06:17.833 --> 00:06:23.500
+Una VPN puede ir sobre IPSec,
+como el túnel de la terminal, o sobre TLS.
+
+92
+00:06:23.500 --> 00:06:25.233
+¿Cuál le sirve?
+
+93
+00:06:29.700 --> 00:06:36.167
+TLS, porque sale por el 443,
+la misma puerta que cualquier página web.
+
+94
+00:06:36.200 --> 00:06:39.800
+IPSec necesita sus propios
+protocolos, que no son web.
+
+95
+00:06:39.800 --> 00:06:42.667
+Llama a otra puerta, y está cerrada.
+
+96
+00:06:42.800 --> 00:06:46.267
+Una red que solo deja web
+corta esos protocolos.
+
+97
+00:06:46.267 --> 00:06:50.500
+Por eso las VPN de acceso
+remoto suelen ir sobre TLS.
+
+98
+00:06:50.600 --> 00:06:57.133
+La del puerto va sobre TLS, aunque
+mucha gente aún la llama VPN SSL.
+
+99
+00:06:58.033 --> 00:07:04.000
+Hoy, esa VPN solo mete en el túnel
+lo del puerto. Lo demás sale directo.
+
+100
+00:07:10.900 --> 00:07:14.800
+Más rápido sí que va.
+Lo que no dice es por qué.
+
+101
+00:07:14.900 --> 00:07:20.933
+Con el túnel completo, el full
+tunnel, todo sale por la sede.
+
+102
+00:07:20.933 --> 00:07:26.167
+Así pasa por tu filtrado web, tu control
+de fugas de datos y tus registros.
+
+103
+00:07:26.333 --> 00:07:29.567
+Como en la aduana del puerto,
+nada pasa sin que lo veas.
+
+104
+00:07:29.567 --> 00:07:32.800
+A cambio, más latencia
+y más tráfico en la sede.
+
+105
+00:07:32.833 --> 00:07:37.667
+El dividido, el split tunnel,
+va más rápido porque se salta la aduana.
+
+106
+00:07:37.667 --> 00:07:40.967
+Lo que sale directo
+no se filtra ni se registra.
+
+107
+00:07:41.000 --> 00:07:45.200
+Y el portátil queda con un pie
+a cada lado de la valla.
+
+108
+00:07:45.200 --> 00:07:49.200
+Hace de puente entre Internet
+sin vigilar y tu red.
+
+109
+00:07:49.367 --> 00:07:53.867
+Propones túnel completo, y el viernes
+el comité de cambios lo aprueba,
+
+110
+00:07:53.867 --> 00:07:57.400
+junto con 802.1X.
+
+111
+00:07:57.567 --> 00:08:03.500
+Vamos, que desde fuera se entra por TLS,
+y pronto todo pasará por la aduana.
+
+112
+00:08:04.733 --> 00:08:09.700
+Tres caminos, tres reglas. Una toma no se
+abre hasta que alguien decide quién eres.
+
+113
+00:08:09.700 --> 00:08:13.300
+El switch transmite, y RADIUS decide.
+
+114
+00:08:13.300 --> 00:08:18.233
+Dos sedes se unen una vez,
+entre pasarelas, con ESP y en modo túnel.
+
+115
+00:08:18.233 --> 00:08:23.000
+Una persona entra con su cliente,
+y por TLS si la red solo deja web.
+
+116
+00:08:23.000 --> 00:08:26.833
+Y si todo tiene que pasar
+por tu inspección, túnel completo.
+
+117
+00:08:26.833 --> 00:08:30.333
+El dividido deja el portátil
+con un pie a cada lado.
+
+118
+00:08:30.333 --> 00:08:33.033
+Ahora te tocan las ocho
+preguntas de la lección.
+
+119
+00:08:33.033 --> 00:08:38.100
+Y la próxima toma libre que veas,
+mira a ver si te pregunta quién eres.
