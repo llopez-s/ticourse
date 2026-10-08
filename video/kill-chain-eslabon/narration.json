@@ -1,0 +1,477 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "alert": "alarm",
+    "break": "block",
+    "beacon": "ping2",
+    "late": "error",
+    "first-cut": "lock"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-alerta",
+      "text": "<tense> {alert}El cinco de marzo, de madrugada, una estación de ingeniería llama a un dominio que nadie conoce.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-alerta",
+      "text": "<curious> {title}Con la Cyber Kill Chain sabes en qué paso va el atacante, y qué le queda por hacer.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-alerta",
+      "text": "<engaging> {promise}La idea es que leas cada paso en las pruebas y separes lo que ves de lo que deduces. Y luego, que decidas dónde cortar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-alerta",
+      "text": "<warm> Tú eres la analista de inteligencia de Meridian, una empresa aeroespacial, y esa llamada es cosa tuya.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-alerta",
+      "text": "<calm> {back}Así que vuelves atrás, al lunes dos de marzo, a ver qué quedó en tus registros.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-cadena",
+      "text": "<warm> {house}Pero antes, pongamos que un ladrón quiere los planos que guardas en casa. {seven}Su plan tiene siete pasos.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-cadena",
+      "text": "<clear> Primero se fija en la casa desde la acera. Luego, en su taller, mete un aparato en una caja que parece otra cosa.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-cadena",
+      "text": "<focused> La caja llega a tu puerta, alguien de casa la abre y el aparato se enciende.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-cadena",
+      "text": "<steady> El aparato esconde una copia de la llave en la maceta, y cada minuto avisa al ladrón, «sigo aquí, ¿qué hago?».",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-cadena",
+      "text": "<calm> Y al final, el ladrón entra y se lleva los planos. {names}Debajo tienes el nombre de cada paso, y los siete juntos son la Cyber Kill Chain.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-cadena",
+      "text": "<confident> {chain}Van en fila, como eslabones, porque cada uno cuelga del anterior.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-cadena",
+      "text": "<sarcastic> Ahí tienes a GLASS VIPER, el nombre con el que sigues a quien opera dentro y a su programa. Para colarse, igual sí le basta con una vez.",
+      "pauseAfterMs": 350,
+      "intercept": {
+        "text": "Tú tienes que acertar siempre. A mí me basta con una vez.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s02-08",
+      "scene": "s02-cadena",
+      "text": "<firm> Pero para llevarse los planos, le tienen que salir los siete, en orden. {break}Si nadie abre la caja, {grey}no hay llave, ni aviso, ni planos.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-09",
+      "scene": "s02-cadena",
+      "text": "<thoughtful> ¿Que manda otra caja? Puede, pero empieza de nuevo, y tú ya sabes cómo la prepara.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-10",
+      "scene": "s02-cadena",
+      "text": "<confident> {asymmetry}Él necesita la cadena entera. A ti te basta con romper un eslabón de los que tienes a tu alcance.",
+      "pauseAfterMs": 650,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Kill Chain: al defensor le basta romper un eslabón",
+        "at": "asymmetry",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-correo",
+      "text": "<focused> Ahora, las pruebas, y cada línea cuenta un paso. {headers}Empiezas por el mensaje, tal como lo guardó la pasarela de correo, la puerta por donde entra.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-correo",
+      "text": "<curious> {from}El remitente parece de casa, con un dominio que imita al de Meridian. {real-sender}Pero estas otras apuntan al servidor que lo envió de verdad, y no es de casa.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-correo",
+      "text": "<steady> {subject}El asunto habla de una candidatura a ingeniero de propulsión, con el currículum adjunto.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-correo",
+      "text": "<clear> {delivery}Es la caja que llega a tu puerta. El atacante te manda lo que ha preparado, el artefacto. Y ese paso se llama Delivery, la entrega.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-correo",
+      "text": "<thoughtful> ¿Y ese remitente que imita a Meridian? Parece trabajo de la acera, de Reconnaissance.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-correo",
+      "text": "<firm> {not-recon}No. Investigar a Meridian fue antes. Usar lo que sabe para que el correo entre y se abra ya es parte de la entrega.",
+      "pauseAfterMs": 650,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Remitente verosímil: Delivery, no Reconnaissance",
+        "at": "not-recon",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-equipo",
+      "text": "<curious> {edr}Pasas al registro del equipo de la alerta. {open}Ese mismo día, alguien abre el adjunto. Y eso lanza PowerShell, la consola de órdenes de Windows, con la ventana oculta.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-equipo",
+      "text": "<focused> {exploitation}La caja se ha abierto. Se ejecuta código, se enciende el aparato, y estás en Exploitation.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-equipo",
+      "text": "<steady> {drop}Luego aparece un programa nuevo en una carpeta del sistema, {task}y una tarea programada que lo arranca al iniciar sesión.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-equipo",
+      "text": "<warm> {installation}Ahí está la llave en la maceta, para poder volver. Y quedarse tiene nombre, Installation.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-equipo",
+      "text": "<intrigued> {beacon}Y en la última línea, ese programa llama cada minuto al dominio de la alerta, como un latido. Eso es un beacon.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-equipo",
+      "text": "<engaging> Ese beacon, ¿es Command and Control, C2, o ya es Actions on Objectives?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Ese beacon, ¿C2 o Actions on Objectives?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-equipo",
+      "text": "<confident> {c2}C2, el «sigo aquí» del aparato. Abre el camino a la misión, pero no es la misión.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-08",
+      "scene": "s04-equipo",
+      "text": "<clear> {mission}La misión, Actions on Objectives, sería leer las carpetas de diseño, comprimirlas y sacarlas.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Beacon periódico: C2, no Actions on Objectives",
+        "at": "mission",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-09",
+      "scene": "s04-equipo",
+      "text": "<calm> {wrap-ii}Vamos, que el correo y el equipo te cuentan cuatro pasos, cada uno con su hora.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-taller",
+      "text": "<mischievously> {reply}Su taller, desde luego, no lo ves. Lo que se le olvida es que te ha dejado la caja.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "Mi taller no lo verás nunca. Esa parte te la pierdes.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-taller",
+      "text": "<thoughtful> {door}La montó en su taller, detrás de una puerta cerrada. {box}Y aun así, la caja te cuenta, capa a capa, cómo la preparó.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-taller",
+      "text": "<curious> {lnk}Mira el adjunto. Es un ZIP, y dentro, un acceso directo que se hace pasar por un PDF.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-taller",
+      "text": "<focused> {inferred}Ese disfraz no sale solo. Alguien lo construyó así a propósito, y eso lo deduces sin haberlo visto.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-taller",
+      "text": "<warm> {clues}Y la caja trae más pistas. Cómo está hecha, con qué herramienta se preparó, y a veces, por dentro, hasta la etiqueta del taller donde la montó.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-taller",
+      "text": "<confident> {weaponization}A preparar la caja lo llaman Weaponization. Esa fase no la observas, la deduces de lo que te llega.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-frontera",
+      "text": "<calm> {map}Ahora mira las siete fases como un mapa de lo que sabes.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-frontera",
+      "text": "<clear> {observed}Las cuatro que acabas de leer tienen un registro con su hora. Esas las has visto.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-frontera",
+      "text": "<focused> {dashed}Weaponization va en discontinua, porque nadie la vio. La deduces del artefacto, de la caja.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Weaponization no se observa: se infiere del artefacto",
+        "at": "dashed",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-frontera",
+      "text": "<thoughtful> {absent}Reconnaissance, la acera, casi nunca la ves. A veces asoma en los registros de lo que tienes de cara a internet, como tu web.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-frontera",
+      "text": "<serious> {empty}Y la última, la de los planos, sigue vacía. De esa no tienes pruebas, todavía.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-frontera",
+      "text": "<warm> {wrap-iii}Es decir, lo que ves tiene hora, y su taller, que no ves, lo deduces de lo que te deja.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-izquierda",
+      "text": "<sarcastic> Normal que te lo aconseje. {alarms-right}Fíjate qué pasa si todas tus alarmas vigilan solo los planos.",
+      "pauseAfterMs": 350,
+      "intercept": {
+        "text": "Tú vigila tus planos, que es lo importante. Lo demás, ni lo mires.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-izquierda",
+      "text": "<serious> {late}Te enteras cuando ya está con los planos. {done}Para entonces, el atacante ha hecho todo lo demás sin que lo vieras. Llegas tarde.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Detectar solo en la última fase es llegar tarde",
+        "at": "done",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-izquierda",
+      "text": "<thoughtful> {see-first}Para que una alarma salte antes, primero tienes que ver antes, con registros del correo y del equipo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-izquierda",
+      "text": "<focused> {shift}Con eso, las alarmas se mueven a la izquierda, a los pasos de antes. Pero si una suena y nadie le hace caso, no para al atacante.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-izquierda",
+      "text": "<confident> {act}Hace falta que alguien actúe y corte el paso que vigila esa alarma. {saved}Y cada paso que paras de verdad te ahorra todos los que venían detrás.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-izquierda",
+      "text": "<warm> {language}Además, la cadena te da un idioma común. «Lo paramos en Delivery» dice mucho en cuatro palabras.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cortar",
+      "text": "<curious> Entonces, ¿dónde cortas? {gateway}Mira dos sitios, la pasarela de correo {host}y el propio equipo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cortar",
+      "text": "<engaging> Si cortas en el equipo, ¿qué paso puedes romper primero, Delivery o Exploitation?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "En el propio equipo, ¿Delivery o Exploitation?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cortar",
+      "text": "<confident> Exploitation. La entrega pasa antes, en la pasarela, que es un control de red.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cortar",
+      "text": "<clear> {first-cut}En el equipo, lo primero es que al abrir la caja no se encienda nada, que el acceso directo no lance PowerShell.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "En el equipo, lo primero que cortas: Exploitation",
+        "at": "first-cut",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-cortar",
+      "text": "<steady> {later}Borrar el programa o cortar el beacon también sirve, pero para entonces el atacante ya ha avanzado más.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-cortar",
+      "text": "<intrigued> {today}Vuelves a la madrugada del cinco. Por lo que ves, el atacante va por el aviso, C2, y la séptima fase no aparece.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-07",
+      "scene": "s08-cortar",
+      "text": "<calm> {wrap-iv}Así que saber en qué paso va te dice qué le falta, y por dónde puedes cortarle.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-limites",
+      "text": "<thoughtful> Para terminar, mira dónde se queda corto el modelo. {insider}¿Y si quien se lleva los planos vive en la casa, o tiene una llave de verdad?",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-limites",
+      "text": "<serious> {gaps}No le hace falta taller, ni caja, ni que nadie abra nada. La cadena se queda llena de huecos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-limites",
+      "text": "<clear> {limits}Pasa con alguien de dentro que ya tiene acceso, un insider. También cuando entran con credenciales válidas, o cuando atacan servicios en la nube.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Insider con acceso legítimo: la Kill Chain encaja mal",
+        "at": "limits",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-limites",
+      "text": "<confident> {fits}Donde encaja bien es en intrusiones con malware y fases en fila, como la de Meridian.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-limites",
+      "text": "<warm> {complements}Por eso se completa con otros dos modelos. ATT&CK cuenta el cómo, técnica a técnica, y el Diamond Model dibuja cada paso como un diamante de cuatro esquinas.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-reglas",
+      "text": "<engaging> {recap}Si te quedas con tres ideas, que sean estas.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-reglas",
+      "text": "<confident> {rule-1}El atacante necesita los siete pasos. A ti te basta con romper uno a tu alcance, y si vuelve, empieza de nuevo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-reglas",
+      "text": "<clear> {rule-2}Cada prueba, a su fase. El correo es la entrega. El beacon es C2, no la misión. Y el taller se deduce de la caja.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-reglas",
+      "text": "<focused> {rule-3}Y cuanto más a la izquierda cortes, más pasos le quitas. Para eso hay que ver antes, o llegas tarde.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-reglas",
+      "text": "<cheerful> {lab2a}Te espera el [Lab 2A|lab dos a], con doce eventos de esta intrusión. {endcard}Que la próxima caja se quede en la puerta.",
+      "pauseAfterMs": 700
+    }
+  ]
+}

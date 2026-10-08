@@ -1,0 +1,476 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Helena",
+    "rate": -2,
+    "fx": "megafonia"
+  },
+  "sfx": {
+    "passes": "error",
+    "dmz": "whoosh",
+    "closes": "lock",
+    "drop": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {napkin}El puerto va a rehacer el plano de su red, y esta vez lo dibujas tú.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<engaging> {title}Vas a repartir la red en zonas de seguridad. {promise}Sabrás qué va junto, dónde va cada control y qué pasa cuando uno falla.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<thoughtful> El plano de ahora cabe en una servilleta. Tiene cuatro redes con nombre, que comparten cables pero van apartadas. Son VLAN.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<concerned> Pero el router central las deja hablar entre sí sin preguntar. Nadie lo decidió, la red creció así. Tienen nombre, pero no son zonas.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-hook",
+      "text": "<mischievously> {adversary}Y a alguien le viene de maravilla. Es BLIND ARCHITECT, que vive de los planos con atajos, y le basta con que falle un pilar.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-garita",
+      "text": "<warm> {port}Primero, qué es una zona. Mira el puerto desde arriba. Cada área tiene su valla, {checkpoint}y cada paso, su garita.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-garita",
+      "text": "<clear> Tu acreditación te abre las oficinas, pero no el muelle. Dentro de cada valla, todos tienen la misma confianza.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-garita",
+      "text": "<curious> Vuelve a la servilleta. {packet}Un paquete de Oficinas {passes}cruza el router sin pararse y llega a Producción.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-garita",
+      "text": "<serious> {empty-gate}Hay valla, pero en la garita nunca ha habido nadie, y la barrera está levantada.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-garita",
+      "text": "<firm> Sí, la VLAN aparta el tráfico. Pero si el router lo pasa todo, nadie decide qué cruza.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "¿Cortafuegos entre VLAN? Ya están separadas. Menos es más.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-garita",
+      "text": "<confident> {control}Pon un control en esa frontera, y el paquete se para, salvo que una regla lo deje pasar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-garita",
+      "text": "<satisfied> Con la misma confianza dentro y un control en cada frontera, {zone}ya tienes una zona de seguridad.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "3.2",
+        "text": "Zona: misma confianza y un control en cada frontera",
+        "at": "zone",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-08",
+      "scene": "s02-garita",
+      "text": "<steady> Una VLAN sin ese control no es una zona. Es una valla con la garita vacía.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-alcance",
+      "text": "<curious> {laptop}Imagina que alguien se hace con un portátil de Oficinas. ¿Hasta dónde llega desde ahí?",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-alcance",
+      "text": "<serious> {reach}A casi todo. Al portal de reservas, que está en su misma red. Y a las otras tres, porque el router no le pone ninguna garita.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-alcance",
+      "text": "<confident> {six}El plan nuevo tiene seis zonas, cada una con su confianza, de ninguna a máxima, y una garita en cada frontera.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-alcance",
+      "text": "<satisfied> {reach-after}Con el plan, el mismo portátil solo alcanza su zona y lo que una regla le permita. El daño se queda ahí.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-alcance",
+      "text": "<clear> Cada servicio que publicas es otra entrada para quien ataca. Y lo mismo cada excepción y cada camino de más.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-alcance",
+      "text": "<focused> {surface}Todas esas entradas forman la superficie de ataque, y las zonas la recortan. {wrap}O sea, que con zonas, un portátil en malas manos no llega a toda la red.",
+      "pauseAfterMs": 650,
+      "exam": {
+        "objective": "3.2",
+        "text": "Separar en zonas reduce la attack surface",
+        "at": "surface",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-dmz",
+      "text": "<engaging> Toca decidir dónde va cada cosa. {portal}Empieza por el portal de reservas, que vive en Oficinas, junto a los puestos de Importación.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-dmz",
+      "text": "<focused> {rule-in}El cortafuegos del perímetro le pone una regla de entrada, para que lo vean desde Internet.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-dmz",
+      "text": "<serious> Esa regla le abre el portal a cualquiera. {inside}Y quien lo rompa aparece junto a esos puestos, ya dentro.",
+      "pauseAfterMs": 550,
+      "intercept": {
+        "text": "Deja el portal dentro, con su regla de entrada. Menos es más.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-dmz",
+      "text": "<warm> {counter}Piensa en la ventanilla de atención a navieras y transportistas, metida en la valla.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-dmz",
+      "text": "<clear> No tiene puerta a las oficinas. Solo una bandeja para los papeles, y alguien que mira cada uno.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-dmz",
+      "text": "<confident> En tu plano, esa ventanilla es una zona entre Internet y la red interna. {dmz}Se llama DMZ, y ahí va lo que Internet tiene que alcanzar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-dmz",
+      "text": "<steady> El portal se muda ahí. {dmz-rules}De Internet solo le llega la web, y hacia dentro solo pasa lo imprescindible, con su regla.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "3.2",
+        "text": "Lo que Internet debe alcanzar, a la DMZ; nunca dentro",
+        "at": "dmz-rules",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-08",
+      "scene": "s04-dmz",
+      "text": "<satisfied> Así, quien rompa el portal se queda en la ventanilla.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-jump",
+      "text": "<thoughtful> {today}Quedan los mandos de cada switch y cada cortafuegos. Hoy, Administración entra en ellos desde cada puesto, {many-paths}un camino por puesto.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-jump",
+      "text": "<warm> {room}Imagina la sala de mandos de la red con una sola puerta. Un torno con tarjeta y PIN, y todo queda grabado.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-jump",
+      "text": "<clear> {jump}Esa puerta será un servidor endurecido, que pedirá un segundo factor y grabará cada sesión.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-jump",
+      "text": "<confident> {converge}Los mandos irán a su propia zona, la de gestión, y todo pasará por ese servidor. Es el jump server.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-jump",
+      "text": "<engaging> ¿Dónde lo colocas, en la DMZ, que se alcanza desde cualquier sitio, o en gestión?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿El jump server, en la DMZ o en gestión?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-jump",
+      "text": "<firm> {answer}En gestión, que solo le responderá a él. En la DMZ, cualquiera desde Internet llamaría a esa puerta, y tu único control sería el blanco de todos.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-jump",
+      "text": "<steady> {bastion}También lo llaman jump box o bastion host. Es el único camino para administrar.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "3.2",
+        "text": "Jump server: el único camino para administrar",
+        "at": "bastion",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-08",
+      "scene": "s05-jump",
+      "text": "<satisfied> {wrap}Así que lo público, a la ventanilla, y los mandos, tras una sola puerta.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-barrera",
+      "text": "<calm> Ya está todo en su sitio. Ahora, lo incómodo. {inline}Cualquier control en el camino del tráfico, en línea, se caerá algún día.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-barrera",
+      "text": "<focused> {causes}Porque se queda sin memoria, porque le llega una actualización rota, o porque se va la luz.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-barrera",
+      "text": "<curious> {barrier}Piensa en la barrera de la garita en un apagón. Puede quedarse de dos maneras.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-barrera",
+      "text": "<clear> Arriba, los camiones pasan y ya nadie mira. {open}Gana la disponibilidad, y eso se llama fail-open.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-barrera",
+      "text": "<serious> Abajo, no pasa ni un camión. {closed}Gana la seguridad, y eso es fail-closed, que también se llama fail-secure.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-barrera",
+      "text": "<sarcastic> ¿Siempre? Dejar pasar sin mirar también tiene su precio, y en según qué sitios sale carísimo.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "Si se cae, que deje pasar: el puerto no se para. Menos es más.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s06-07",
+      "scene": "s06-barrera",
+      "text": "<thoughtful> {depends}Depende de qué sale más caro cuando el control se cae, parar o no mirar. Y eso cambia de un control a otro.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "3.2",
+        "text": "Fail-open gana disponibilidad; fail-closed, seguridad",
+        "at": "depends",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-decidir",
+      "text": "<focused> Vamos con dos controles del plan. {mgmt-fw}El primero, el cortafuegos nuevo que va delante de la zona de gestión.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-decidir",
+      "text": "<engaging> Un día se cae. ¿Qué quieres que haga, que abra la barrera o que la cierre?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Cae el cortafuegos de gestión. ¿Abre o cierra?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-decidir",
+      "text": "<firm> {closes}Que cierre, fail-closed. Detrás están los mandos de toda la red, y un rato sin administrar sale más barato que dejar pasar sin mirar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-decidir",
+      "text": "<reassuring> {why}Y el puerto sigue trabajando, porque su tráfico no pasa por ese cortafuegos. Lo único que se para es administrar.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-decidir",
+      "text": "<serious> {pumps}El segundo se va a instalar en la red que mueve las bombas de las esclusas. {flood}Y Operaciones avisa de que, si se paran, se puede inundar un muelle.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-decidir",
+      "text": "<confident> {opens}Aquí lo peligroso es parar, así que toca fail-open, o sacarlo del camino. Y el riesgo lo cubres separando y vigilando.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s07-07",
+      "scene": "s07-decidir",
+      "text": "<calm> {cost}Ya ves, misma pregunta, dos respuestas. Ningún modo es el bueno, manda lo que sale más caro.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-puertas",
+      "text": "<curious> {power-cut}Y ahora, las puertas, que el examen mezcla con todo esto a propósito. Se va la luz en el edificio de oficinas.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-puertas",
+      "text": "<warm> {exit}La salida de emergencia se abre, para que la gente pueda salir. Es una puerta fail-safe.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-puertas",
+      "text": "<firm> {server-room}La puerta de la sala de servidores, en cambio, se queda bloqueada para proteger lo que guarda. Y sí, se llama fail-secure, igual que la barrera bajada.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-puertas",
+      "text": "<clear> {life}Donde hay personas, manda la vida, y donde hay datos, manda la protección.",
+      "pauseAfterMs": 450,
+      "exam": {
+        "objective": "3.2",
+        "text": "Sin luz: fail-safe abre por la gente; fail-secure cierra",
+        "at": "life",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-puertas",
+      "text": "<satisfied> {wrap}Total, que cada control y cada puerta tienen decidido qué hacer si fallan, según lo que más te costaría perder.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-camara",
+      "text": "<intrigued> Última pieza, ver o parar. {sensors}El plan pone más sensores, que reciben una copia del tráfico.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-camara",
+      "text": "<warm> {camera}Son como la cámara de la valla. Ve pasar a todos y avisa, pero no baja la barrera.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-camara",
+      "text": "<clear> {axes}Hazte dos preguntas. ¿Está en el camino o mira una copia? Eso es inline o tap. ¿Actúa o solo mira? Active o passive.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-camara",
+      "text": "<focused> {alert-passes}Por el tap, un paquete malo hace saltar la alerta y sigue. {drop}Por un equipo en línea y activo, se descarta.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "3.2",
+        "text": "Bloquear exige inline y active; en un tap, solo alerta",
+        "at": "drop",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-camara",
+      "text": "<firm> Para bloquear hacen falta las dos cosas, se llame como se llame el aparato.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-camara",
+      "text": "<serious> {blind}Si el sensor se apaga, te deja a ciegas, pero no corta nada. {only-inline}El modo de fallo solo se decide para lo que va en línea.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s09-07",
+      "scene": "s09-camara",
+      "text": "<satisfied> {approved}Vamos, que ver no es parar. Y con esto, plan aprobado.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-recap",
+      "text": "<confident> {recap}Tres reglas para el examen. {rule-1}Una zona es una valla con alguien en la garita, la misma confianza dentro y un control en cada paso.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-recap",
+      "text": "<clear> {rule-2}Lo que Internet tiene que alcanzar va a la ventanilla, la DMZ, nunca dentro. Y para administrar, una sola puerta, el jump server.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-recap",
+      "text": "<warm> {rule-3}Cada control en línea tiene decidido qué hacer al caerse, según lo que cueste más. Lo que solo mira una copia ni corta ni para.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-recap",
+      "text": "<cheerful> {next}Tu turno. Te espera el laboratorio Zone Defense, con doce sistemas por colocar. {endcard}Y cuando alguien te diga que menos es más, cuenta las garitas.",
+      "pauseAfterMs": 700
+    }
+  ]
+}

@@ -284,6 +284,18 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'TjVViiBTeds')?.module).toBe('s4m3');
     // V10 reads one night's three trails in sp2m7, after the 900-accounts check and before the closing paragraph
     expect(youtubeVideos.find((v) => v.block.youtube === 'uHHv-1hTYTE')?.module).toBe('sp2m7');
+    // V11 gathers sp1m6 at its end, after the steganography-to-blockchain list and before the paragraph that hands over to PKI
+    expect(youtubeVideos.find((v) => v.block.youtube === '6jyHqrkMOZQ')?.module).toBe('sp1m6');
+    // V12 replays sp1m7's chain and revocation in a console, after the OCSP stapling check and before key escrow
+    expect(youtubeVideos.find((v) => v.block.youtube === 'zEhyYU7Vuwc')?.module).toBe('sp1m7');
+    // V13 sums up s2m1 after the demo's checks and before the paragraph that hands over to Courses of Action and s2m4
+    expect(youtubeVideos.find((v) => v.block.youtube === 'WidodMPEs24')?.module).toBe('s2m1');
+    // V16 draws sp3m4's zones, placement and failure modes on the port, after the mirror-port check and before the
+    // paragraph that hands over to firewalls and VPNs (sp3m5)
+    expect(youtubeVideos.find((v) => v.block.youtube === 'PcNk_XCJmOM')?.module).toBe('sp3m4');
+    // V17 walks sp3m5's three ways in (802.1X, site-to-site IPSec, remote access), after the full-tunnel check and
+    // before the exam note
+    expect(youtubeVideos.find((v) => v.block.youtube === 'R4bvB3FTrrE')?.module).toBe('sp3m5');
   });
 
   it('every video block points at relative public assets that exist', async () => {

@@ -59,8 +59,12 @@ test('contentRange and nextOffset: the resumable protocol headers', () => {
   assert.equal(CHUNK_SIZE % (256 * 1024), 0, 'chunks must be multiples of 256 KiB');
 });
 
-/** A resumable-upload server in memory: one session, 308 until complete, an optional 503 on the nth PUT. */
-function fakeServer({ total, failOnPut = 0 }) {
+/**
+ * A resumable-upload server in memory: one session, 308 until complete, an optional 503 on the nth PUT. With
+ * `lateFinish`, the last chunk gets a 308 covering every byte (as YouTube answered V16's on 2026-10-08) and only a
+ * status query returns the video; a chunk PUT past the end gets 410, as the real session did.
+ */
+function fakeServer({ total, failOnPut = 0, lateFinish = false }) {
   const received = [];
   let puts = 0;
   let stored = 0;
@@ -76,14 +80,16 @@ function fakeServer({ total, failOnPut = 0 }) {
     puts += 1;
     const range = init.headers['Content-Range'];
     if (range === `bytes */${total}`) {
+      if (lateFinish && stored === total) return Response.json({ id: 'vid123', status: { uploadStatus: 'uploaded' } });
       return new Response(null, { status: 308, headers: stored ? { Range: `bytes=0-${stored - 1}` } : {} });
     }
     if (puts === failOnPut) return new Response('busy', { status: 503 });
     const [, from, to] = /^bytes (\d+)-(\d+)\/\d+$/.exec(range).map(Number);
+    if (from >= total || to < from) return new Response('Gone', { status: 410 });
     assert.equal(from, stored, 'each chunk must start where the server stopped');
     received.push(Buffer.from(init.body));
     stored = to + 1;
-    if (stored < total) return new Response(null, { status: 308, headers: { Range: `bytes=0-${stored - 1}` } });
+    if (stored < total || lateFinish) return new Response(null, { status: 308, headers: { Range: `bytes=0-${stored - 1}` } });
     return Response.json({ id: 'vid123', status: { uploadStatus: 'uploaded' } });
   };
   return { fetch, received: () => Buffer.concat(received), calls };
@@ -127,6 +133,28 @@ test('resumableUpload: after a 503 it asks the server where it stopped and resum
   assert.deepEqual(server.received(), data);
   assert.equal(waits, 1);
   assert.ok(server.calls.some((c) => c.headers['Content-Range'] === `bytes */${data.length}`), 'a status query after the failure');
+});
+
+test('resumableUpload: a 308 that covers every byte is finished with a status query, never an empty chunk', async () => {
+  const data = Buffer.alloc(600 * 1024, 5);
+  const server = fakeServer({ total: data.length, lateFinish: true });
+  const video = await resumableUpload({
+    fetch: server.fetch,
+    token: 'tok',
+    resource: videoResource({ title: 'T', description: 'D', tags: [] }),
+    size: data.length,
+    readChunk: (start, end) => data.subarray(start, end + 1),
+    chunkSize: 256 * 1024,
+    sleep: async () => {},
+  });
+  assert.equal(video.id, 'vid123');
+  assert.deepEqual(server.received(), data);
+  const ranges = server.calls.filter((c) => c.method === 'PUT').map((c) => c.headers['Content-Range']);
+  assert.equal(ranges.at(-1), `bytes */${data.length}`, 'the last request asks for the status');
+  for (const r of ranges.slice(0, -1)) {
+    const [, from, to] = /^bytes (\d+)-(\d+)\//.exec(r).map(Number);
+    assert.ok(from <= to && to < data.length, `chunk range ${r} stays inside the file`);
+  }
 });
 
 test('resumableUpload: a 4xx is not retried', async () => {

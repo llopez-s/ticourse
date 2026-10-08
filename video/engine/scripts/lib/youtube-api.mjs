@@ -177,9 +177,23 @@ export async function resumableUpload({ fetch, token, resource, size, readChunk,
   if (!session) throw new Error('videos.insert: YouTube returned no upload session URL');
 
   const done = (res) => res.status === 200 || res.status === 201;
+  const statusQuery = () => fetch(session, { method: 'PUT', headers: { ...auth, 'Content-Range': contentRange(null, null, size) }, body: new Uint8Array(0) });
   let offset = 0;
   let retries = 0;
   for (;;) {
+    // The server may answer the last chunk with a 308 that already covers every byte (V16, 2026-10-08). A further
+    // chunk would have an impossible range and the session answers 410, leaving the video half-finished: ask for
+    // the status until it hands over the video resource instead.
+    if (offset >= size) {
+      const status = await statusQuery();
+      if (done(status)) return status.json();
+      if (status.status !== 308 && !RETRIABLE.has(status.status)) throw await apiError(status, 'videos.insert');
+      retries += 1;
+      if (retries > maxRetries) throw new Error(`videos.insert: every byte was sent but YouTube never confirmed the video after ${maxRetries} status queries (HTTP ${status.status}); check Studio before uploading again`);
+      await sleep(Math.min(2 ** retries, 64) * 1000 * (0.5 + Math.random()));
+      if (status.status === 308) offset = Math.min(offset, nextOffset(status.headers.get('Range')));
+      continue;
+    }
     const end = Math.min(offset + chunkSize, size) - 1;
     let res = null;
     let failure = null;
@@ -200,7 +214,7 @@ export async function resumableUpload({ fetch, token, resource, size, readChunk,
     retries += 1;
     if (retries > maxRetries) throw new Error(`videos.insert: gave up after ${maxRetries} retries (${failure?.message ?? `HTTP ${res.status}`})`);
     await sleep(Math.min(2 ** retries, 64) * 1000 * (0.5 + Math.random()));
-    const status = await fetch(session, { method: 'PUT', headers: { ...auth, 'Content-Range': contentRange(null, null, size) }, body: new Uint8Array(0) });
+    const status = await statusQuery();
     if (done(status)) return status.json();
     if (status.status === 308) offset = nextOffset(status.headers.get('Range'));
     else if (!RETRIABLE.has(status.status)) throw await apiError(status, 'videos.insert');
