@@ -1,0 +1,255 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:06.500
+El equipo de desarrollo te enseña
+la nueva web de citas para camiones.
+
+2
+00:00:06.500 --> 00:00:10.467
+Hoy pruebas las tres cajas
+donde la gente escribe.
+
+3
+00:00:10.467 --> 00:00:15.933
+Vas a ver cómo un texto se vuelve
+orden, y dónde se frena.
+
+4
+00:00:15.933 --> 00:00:20.833
+Las herramientas ayudan,
+pero nada sustituye a probar la web.
+
+5
+00:00:21.467 --> 00:00:26.933
+Primera caja, el login. Con una contraseña
+equivocada, la web dice que no.
+
+6
+00:00:26.933 --> 00:00:32.800
+La consulta es una frase con huecos
+donde la web pega lo que escribes.
+
+7
+00:00:32.800 --> 00:00:38.267
+Ahora escribes tres cosas. Una comilla,
+que cierra el nombre antes de tiempo.
+
+8
+00:00:38.267 --> 00:00:42.833
+Una condición que siempre se cumple,
+y dos guiones, que apagan el resto,
+
+9
+00:00:42.833 --> 00:00:44.533
+contraseña incluida.
+
+10
+00:00:44.533 --> 00:00:50.133
+La consulta devuelve todas las filas,
+y la web abre sesión sin contraseña.
+
+11
+00:00:50.133 --> 00:00:52.433
+Es un formulario con un hueco.
+
+12
+00:00:52.433 --> 00:00:58.000
+Si lo que pegas cambia la frase,
+ya no rellenas, redactas la pregunta.
+
+13
+00:00:58.000 --> 00:01:06.100
+Eso es la SQL injection. El texto se cuela
+en la consulta y deja de ser un dato.
+
+14
+00:01:06.733 --> 00:01:11.233
+¿Cómo se arregla? Alguien
+tiene un consejo para ti.
+
+15
+00:01:14.400 --> 00:01:18.267
+Es RED MARROW, que vive
+de engañar. Qué amable.
+
+16
+00:01:18.267 --> 00:01:23.333
+Cifrar la base, el cifrado en reposo,
+protege el disco si se lo llevan.
+
+17
+00:01:23.333 --> 00:01:27.733
+Pero la consulta trucada
+la lanza la propia aplicación.
+
+18
+00:01:27.733 --> 00:01:30.933
+Lo que arregla es separar
+la orden del dato.
+
+19
+00:01:30.933 --> 00:01:35.300
+La consulta viaja con marcadores,
+y tu texto, aparte.
+
+20
+00:01:35.300 --> 00:01:41.667
+Repite la misma entrada. Ahora se compara
+con un nombre, y nadie se llama así.
+
+21
+00:01:41.667 --> 00:01:46.133
+Es el formulario impreso de antemano,
+con su casilla para cada dato.
+
+22
+00:01:46.133 --> 00:01:49.367
+Eso son las parameterized queries.
+
+23
+00:01:50.000 --> 00:01:51.933
+Segunda caja, el buscador.
+
+24
+00:01:51.933 --> 00:01:57.633
+Pruebas un enlace cuya matrícula es una
+etiqueta de script, y la página lo repite,
+
+25
+00:01:57.633 --> 00:01:58.667
+sin tocar.
+
+26
+00:01:58.667 --> 00:02:03.167
+¿Quién ejecuta ese script,
+el servidor o el navegador?
+
+27
+00:02:07.033 --> 00:02:13.000
+El navegador. El servidor solo devolvió el
+texto, y lo ejecuta quien pulsó el enlace.
+
+28
+00:02:13.000 --> 00:02:16.233
+Así podría llevarse su cookie de sesión.
+
+29
+00:02:16.233 --> 00:02:18.600
+Eso es cross-site scripting, XSS.
+
+30
+00:02:18.600 --> 00:02:22.633
+Este es el reflected, el cartel
+que repite lo que preguntas.
+
+31
+00:02:22.633 --> 00:02:28.233
+Viaja en el enlace, alguien tiene
+que pulsarlo, y suele llegar por phishing.
+
+32
+00:02:28.233 --> 00:02:34.100
+Tercera caja, las observaciones. Metes
+el mismo script y se guarda con la cita.
+
+33
+00:02:34.100 --> 00:02:38.100
+El personal de la puerta
+abre ese listado cada día.
+
+34
+00:02:38.100 --> 00:02:41.967
+Lo abre una persona
+y su navegador lo ejecuta.
+
+35
+00:02:41.967 --> 00:02:43.367
+Esa es la stored.
+
+36
+00:02:43.367 --> 00:02:48.333
+El script queda guardado
+en el servidor, como en un tablón,
+
+37
+00:02:48.333 --> 00:02:52.467
+y salta para todo el que abra la página.
+
+38
+00:02:53.100 --> 00:02:58.400
+¿Y esto cómo se arregla?
+RED MARROW sigue con sus ideas.
+
+39
+00:03:01.567 --> 00:03:04.867
+Pero el navegador solo
+obedece a la página.
+
+40
+00:03:04.867 --> 00:03:10.633
+Y esa página la escribe el servidor,
+con el texto de otra persona dentro.
+
+41
+00:03:10.633 --> 00:03:17.100
+Si el servidor codifica ese texto antes de
+mostrarlo, el script queda en una vitrina,
+
+42
+00:03:17.100 --> 00:03:19.300
+se lee pero no se obedece.
+
+43
+00:03:19.300 --> 00:03:23.467
+Eso es el output encoding,
+la defensa principal del XSS.
+
+44
+00:03:23.467 --> 00:03:28.367
+Pero si en el examen ves input
+validation, esa es la respuesta.
+
+45
+00:03:28.367 --> 00:03:33.167
+Desarrollo lo corrige en la web
+de citas para el trece.
+
+46
+00:03:33.167 --> 00:03:38.867
+O sea, la casilla y la vitrina
+dejan el dato en su sitio.
+
+47
+00:03:39.533 --> 00:03:43.733
+Resumiendo, tres reglas. Un texto
+dentro de la consulta es SQL injection.
+
+48
+00:03:43.733 --> 00:03:47.500
+Se arregla mandándolo aparte,
+con parameterized queries.
+
+49
+00:03:47.500 --> 00:03:51.167
+Un script que corre
+en otro navegador es XSS,
+
+50
+00:03:51.167 --> 00:03:55.867
+reflected si viaja en el enlace
+y stored si se guarda.
+
+51
+00:03:55.867 --> 00:04:02.900
+La defensa va donde el dato se junta con
+el código, y cifrar la base no lo arregla.
+
+52
+00:04:02.900 --> 00:04:06.233
+Y si ves input validation, esa es.
+
+53
+00:04:06.233 --> 00:04:11.933
+Termina tú la lección y sus preguntas.
+Cada dato, en su sitio.

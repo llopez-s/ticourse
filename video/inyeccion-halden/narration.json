@@ -1,0 +1,252 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Laura",
+    "rate": 0,
+    "fx": "telefono"
+  },
+  "sfx": {
+    "bypass": "error",
+    "blocked": "block",
+    "cookie": "alarm",
+    "vitrina": "lock"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {date}El equipo de desarrollo te enseña {app}la nueva web de citas para camiones. {boxes}Hoy pruebas las tres cajas donde la gente escribe.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Vas a ver cómo un texto se vuelve orden, {promise}y dónde se frena.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<firm> Las herramientas ayudan, pero nada sustituye a probar la web.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-sqli",
+      "text": "<clear> {login}Primera caja, el login. {fail}Con una contraseña equivocada, la web dice que no.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-sqli",
+      "text": "<focused> {query}La consulta es una frase con huecos {hole}donde la web pega lo que escribes.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-sqli",
+      "text": "<curious> Ahora escribes tres cosas. {quote}Una comilla, que cierra el nombre antes de tiempo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-sqli",
+      "text": "<serious> {always-true}Una condición que siempre se cumple, {comment}y dos guiones, que apagan el resto, contraseña incluida.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-sqli",
+      "text": "<firm> {result}La consulta devuelve todas las filas, {bypass}y la web abre sesión sin contraseña.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-sqli",
+      "text": "<warm> {form}Es un formulario con un hueco. Si lo que pegas cambia la frase, ya no rellenas, redactas la pregunta.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-sqli",
+      "text": "<clear> {name}Eso es la SQL injection. El texto se cuela en la consulta y deja de ser un dato.",
+      "pauseAfterMs": 450,
+      "exam": {
+        "objective": "2.3",
+        "text": "SQL injection: el input se pega dentro de la consulta",
+        "at": "name",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-casilla",
+      "text": "<curious> {fix}¿Cómo se arregla? Alguien tiene un consejo para ti.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-casilla",
+      "text": "<sarcastic> Es RED MARROW, que vive de engañar. Qué amable.",
+      "pauseAfterMs": 250,
+      "intercept": {
+        "text": "Cifra la base de datos y no se llevan nada. Confía en mí.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-casilla",
+      "text": "<serious> {db-encrypt}Cifrar la base, el cifrado en reposo, protege el disco si se lo llevan. {not-this}Pero la consulta trucada la lanza la propia aplicación.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-casilla",
+      "text": "<confident> {marks}Lo que arregla es separar la orden del dato. La consulta viaja con marcadores, {data}y tu texto, aparte.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-casilla",
+      "text": "<curious> {replay}Repite la misma entrada. Ahora se compara con un nombre, y {blocked}nadie se llama así.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-casilla",
+      "text": "<warm> {form-box}Es el formulario impreso de antemano, con su casilla para cada dato. {names}Eso son las parameterized queries.",
+      "pauseAfterMs": 450,
+      "exam": {
+        "objective": "2.3",
+        "text": "SQLi se corrige con parameterized queries",
+        "at": "form-box",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-vuelve",
+      "text": "<engaging> {search}Segunda caja, el buscador. {link}Pruebas un enlace cuya matrícula es una etiqueta de script, {echo}y la página lo repite, sin tocar.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-vuelve",
+      "text": "<thoughtful> {question}¿Quién ejecuta ese script, el servidor o el navegador?",
+      "pauseAfterMs": 250,
+      "think": {
+        "q": "¿Dónde corre el script: servidor o navegador?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-vuelve",
+      "text": "<confident> {browser}El navegador. El servidor solo devolvió el texto, y lo ejecuta quien pulsó el enlace. {cookie}Así podría llevarse su cookie de sesión.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-vuelve",
+      "text": "<clear> {xss}Eso es cross-site scripting, XSS. {reflected}Este es el reflected, el cartel que repite lo que preguntas. Viaja en el enlace, alguien tiene que pulsarlo, y suele llegar por phishing.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-vuelve",
+      "text": "<warm> {notes}Tercera caja, las observaciones. {saved}Metes el mismo script y se guarda con la cita.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-vuelve",
+      "text": "<intrigued> {opens}El personal de la puerta abre ese listado cada día. Lo abre una persona y su navegador lo ejecuta.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-vuelve",
+      "text": "<firm> {stored}Esa es la stored. El script queda guardado en el servidor, como en un {board}tablón, y salta para todo el que abra la página.",
+      "pauseAfterMs": 450,
+      "exam": {
+        "objective": "2.3",
+        "text": "Reflected: viaja en el enlace. Stored: queda guardado",
+        "at": "stored",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-vitrina",
+      "text": "<curious> {fix}¿Y esto cómo se arregla? RED MARROW sigue con sus ideas.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-vitrina",
+      "text": "<firm> {browser-obeys}Pero el navegador solo obedece a la página. {server-writes}Y esa página la escribe el servidor, con el texto de otra persona dentro.",
+      "pauseAfterMs": 250,
+      "intercept": {
+        "text": "Si corre en el navegador, el fallo no es tuyo. Confía en mí.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-vitrina",
+      "text": "<focused> {encoded}Si el servidor codifica ese texto antes de mostrarlo, {vitrina}el script queda en una vitrina, se lee pero no se obedece.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-vitrina",
+      "text": "<confident> {output-enc}Eso es el output encoding, {extras}la defensa principal del XSS. {exam-line}Pero si en el examen ves input validation, esa es la respuesta.",
+      "pauseAfterMs": 250,
+      "exam": {
+        "objective": "2.3",
+        "text": "XSS: la defensa principal es output encoding",
+        "at": "output-enc",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-vitrina",
+      "text": "<warm> {action}Desarrollo lo corrige en la web de citas para el trece. {same-root}O sea, la casilla y la vitrina dejan el dato en su sitio.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-recap",
+      "text": "<confident> {recap}Resumiendo, tres reglas. {rule-1}Un texto dentro de la consulta es SQL injection. Se arregla mandándolo aparte, con parameterized queries.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-recap",
+      "text": "<firm> {rule-2}Un script que corre en otro navegador es XSS, reflected si viaja en el enlace y stored si se guarda.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-recap",
+      "text": "<clear> {rule-3}La defensa va donde el dato se junta con el código, y cifrar la base no lo arregla. Y si ves input validation, esa es.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-recap",
+      "text": "<cheerful> {next}Termina tú la lección y sus preguntas. {endcard}Cada dato, en su sitio.",
+      "pauseAfterMs": 500
+    }
+  ]
+}
