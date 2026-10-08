@@ -241,9 +241,9 @@ por «Cómo se guarda una contraseña» y «Un color que nadie envía» por «Pi
 | 15 | s2m1 | Cyber Kill Chain | 3 | 2 | 3 | 3 | 0 | 1 | 18 | Principal | 3 |
 | 16 | s3m2 | Triaje de malware en sandbox | 2 | 3 | 2 | 3 | 1 | 0 | 18 | Cápsula | 3 |
 | 17 | sp3m4 | Zonas, colocación, fail-open/closed | 2 | 1 | 3 | 2 | 3 | 0 | 17 | Principal | 3 |
-| 18 | sp4m5 | Triaje CVSS por contexto | 1 | 3 | 3 | 2 | 1 | 1 | 16 | Cápsula | backlog |
-| 19 | sp2m4 | SQLi y XSS en un login simulado | 2 | 3 | 2 | 1 | 1 | 0 | 16 | Cápsula | backlog |
-| 20 | sp1m3 · sp4m2 · s4m5 · s2m2 | Zero Trust · WPA3 · atribución · CoA | — | — | — | — | — | — | 14 | Cápsula | backlog |
+| 18 | sp4m5 | Triaje CVSS por contexto | 1 | 3 | 3 | 2 | 1 | 1 | 16 | Cápsula | 4 |
+| 19 | sp2m4 | SQLi y XSS en un login simulado | 2 | 3 | 2 | 1 | 1 | 0 | 16 | Cápsula | 4 |
+| 20 | sp1m3 · sp4m2 · s4m5 · s2m2 | Zero Trust · WPA3 · atribución · CoA | — | — | — | — | — | — | 14 | Cápsula | 4 |
 | 21 | sp5m3 · s5m3 · sp3m7 · sp5m4 | ALE · YARA/Sigma · DR · RTO/RPO | — | — | — | — | — | — | 12–13 | Cápsula | backlog |
 
 **Cómo se eligió la tanda 1:**
@@ -1541,7 +1541,7 @@ ordena contra la cronología del registro ni choca con ella; lo posterior debe r
 - s3m2 sandbox (Cápsula).
 - sp3m4 zonas (Principal).
 
-**Backlog:** filas 18–21 del ranking, todas como cápsulas.
+**Backlog:** filas 18–21 del ranking, todas como cápsulas. Las filas 18 a 20 forman la tanda 4 (2026-10-08); queda la 21.
 
 **Tanda 3** (abierta el 2026-10-05; 5 principales y 2 cápsulas, 4 de Security+ y 3 de GCTI). Fichas completas abajo, de
 V11 a V17. Las decisiones de cada una, las preguntas para Lidia y lo que se decidió entre fichas, para aprobarlo en una
@@ -3214,6 +3214,1259 @@ examen).
   dirección de la red de oficinas»); 802.1X, 443 y UDP no son identificadores para el validador.
 
 ---
+
+
+**Tanda 4** (abierta el 2026-10-08; 6 cápsulas, 4 de Security+ y 2 de GCTI: las filas 18 a 20 del ranking). Fichas completas
+abajo, de V18 a V23. Las decisiones de cada una y lo que une a las seis, aprobado el 2026-10-08 (Lidia delegó):
+`docs/reviews/2026-10-08-fichas-tanda4/decisiones.md`. Pasaron una revisión de exactitud y canon por campaña
+(`revision-secplus.md`, `revision-gcti.md`) y la comprobación de límites con Node.
+
+| Nº | Lección | Formato | Carpeta | Se graba con |
+|---|---|---|---|---|
+| V18 | sp4m5 · triaje de vulnerabilidades: el contexto manda sobre el número | Cápsula | `cvss-halden` | V19 |
+| V19 | sp2m4 · SQL injection y XSS: cuando un texto se vuelve orden | Cápsula | `inyeccion-halden` | V18 |
+| V20 | sp1m3 · Zero Trust: quién decide, quién comunica y quién aplica | Cápsula | `zero-trust-halden` | V21 |
+| V21 | sp4m2 · WPA3-Enterprise: de una clave para todos a una identidad para cada uno | Cápsula | `wifi-halden` | V20 |
+| V22 | s2m2 · Courses of Action: ¿cortas o miras? | Cápsula | `coa-precios` | V23 |
+| V23 | s4m5 · atribución: ¿quién fue? Los tres niveles y las pistas falsas | Cápsula | `atribucion-cuadro` | V22 |
+
+
+
+### V18 · sp4m5 · Cápsula · «Triaje de vulnerabilidades: el contexto manda sobre el número»
+
+> Propuesta del 2026-10-08, lista para pegar tal cual en el plan de vídeos (§5, tras V17). Se graba con V19 (sp2m4): dos
+> cápsulas de Security+ en la misma sesión, SILENT PAGER y RED MARROW, que no se parecen en la voz. La versión vigente de
+> escenas y guion será `video/cvss-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en
+> `video/cvss-halden/out/script-notes.md`. Las decisiones, con la alternativa descartada de cada una, están en
+> `docs/reviews/2026-10-08-fichas-tanda4/decisiones-V18-V19.md` (apartado V18).
+>
+> Rutas relativas a la raíz del repo; `sp/` = `src/data/secplus/`.
+
+- **Carpeta:** `cvss-halden` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) · objetivo
+  **4.3** (lo confirma la cabecera de la lección, `sp/sp4-part3.ts:5`) · adversario **SILENT PAGER** (sección sp4,
+  `sp/sections.ts:101-106`), dos mensajes interceptados · voz `recording/lidia` con
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · voz del adversario: la de siempre,
+  `"adversaryVoice": { "voice": "sapi/Microsoft Pablo", "rate": 0, "fx": "machine" }` (V1, V5, V5b y V6) · música
+  `Go On Going - Stayloose.mp3` · `"examTiming": "sentence-end"`; pregunta con `think.holdMs` 4500; mensajes con
+  `intercept.holdMs` 3800.
+- **`video.json`:** `"profile": "capsula-yt"`, `"track": "secplus"`, `"adversary": "SILENT PAGER"`, `"lesson": "sp4m5"` y
+  `"tags"`: CVSS, CVE, priorización de vulnerabilidades, vulnerability management, gestión de vulnerabilidades,
+  compensating controls, exception, rescan, false positive, Security+. Título de YouTube: «Triaje de vulnerabilidades:
+  por qué el 9,8 no siempre va primero | CompTIA Security+ en español».
+- **Efectos (`sfx`):** los automáticos del motor (mensaje, tarjetas, capítulos) y cuatro momentos: `tie` («ding», las dos
+  filas empatan), `no-patch` («block», «parchear» se tacha), `record` («lock», el registro de la excepción con su
+  caducidad) y `closed` («check», el sello «cerrado · con prueba»).
+- **Léxico nuevo** (lo confirma Lidia al grabar): `CVSS` («ce ve ese ese»), `CVE` («ce ve e»), `exploit`, `rescan`,
+  `false positive`. Los números de CVE, los nombres de equipo y las versiones no se dicen nunca: van en pantalla.
+- **Lo que se lee no se deletrea:** la voz dice «el primer servidor», «el segundo», «el grabador de las cámaras», «el
+  servicio de mensajería», «el nombre del fallo» y «la nota». Van solo en pantalla los CVE, los equipos, los vectores
+  CVSS, las versiones (`3.1.4`, `3.1.7`) y el banner. Ninguna excepción. «Nueve coma ocho» y «ocho coma uno»
+  sí se dicen: son la nota, no un identificador.
+- **Duración:** suma de `s` **210 s** (6 escenas; `wordBudget` a 2,7 palabras/s: 54, 113, 113, 119, 108 y 59, unas 566).
+  Es la estructura de V12 (dos mensajes y una pregunta), que con 210 s estimó unos 260 s y renderizó unos 235–245 s
+  (≈ 4:00): dentro de 190–260. Los extremos conocidos (0,89 y 1,22 veces la suma) dan 187–256 s. La suma predice mal el
+  renderizado, así que el primer borrador se mide por los dos lados: si el estimado pasa de 255 s, se recorta en este
+  orden: primero, en s05, la frase que descarta el reinicio (se queda en la consola); después, en s04, la del seguro (queda
+  tachada en pantalla, pero el mensaje ya la nombra). Si se acerca a 190 s, se alarga s03, que lee las cuatro preguntas
+  una a una. No se rellena.
+- **Inserción:** en `sp/sp4-part3.ts`, lección sp4m5, entre el callout de ejemplo «En la Autoridad Portuaria de Halden»
+  (`:163-168`) y el párrafo de cierre «Con esto cierras el ciclo…» (`:169-172`), que salta a sp4m6, como bloque
+  `{ t: 'video', title: 'Triaje de vulnerabilidades: el contexto manda sobre el número', youtube: '<id>', poster: 'videos/cvss-halden-poster.png', transcript: 'videos/cvss-halden-transcript.txt' }`,
+  precedido de una línea: «Antes de cerrar el ciclo, hazlo con un informe nuevo: qué va primero, qué se hace con lo que
+  no tiene parche y cuándo un hallazgo está cerrado de verdad». Todo lo que enseña el vídeo va antes en la lección: la
+  nota CVSS frente al contexto (`:44-48`, el informe de `:53-80` y el check de `:85-96`), las respuestas (`:97-137`, la
+  nota de examen `:141-142` y el check de `:145-158`) y la validación (`:160-161`). Se fija en la suite `lesson videos` de
+  `src/data/content.test.ts` (`:267-296`) con su línea `toBe('sp4m5')`.
+- **Enfoque («tres filas rojas, un solo parche»):** jueves 1-10, informe del escaneo mensual de esa noche (el que corre cada
+  día 1, `credentialed`, como el de la lección). La cola trae tres filas rojas y esta semana cabe un solo parche. Dos son
+  el mismo fallo en dos servidores, con la misma nota, y la tercera es de un equipo que no tiene parche. El vídeo hace el
+  triaje entero en el orden en que se trabaja: pone el contexto al lado de la nota y decide, aísla y apunta una excepción
+  con dueño y fecha, y comprueba el lunes siguiente que lo parcheado está cerrado de verdad. SILENT PAGER propone un atajo
+  en cada uno de los dos primeros pasos. **No cuenta el escaneo de septiembre de la lección** (ni el portal, ni sus cifras):
+  es un informe nuevo, con otros equipos, y la lección sigue siendo la del 1-9. No hace falta frase de puente: el vídeo no
+  continúa ningún otro. En el orden del curso, V18 es el **segundo** vídeo de SILENT PAGER, tras V21 (sp4m2), y el primero de
+  vulnerabilidades; se presenta desde cero, sin «otra vez».
+
+**Conceptos (3) y su imagen:**
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | La nota CVSS mide severidad, no riesgo. El CVE es el nombre público del fallo; el CVSS, su nota de gravedad de 0 a 10, calculada sin saber nada de tu red (la nota base). Dos servidores con el mismo CVE y la misma nota pueden no tener la misma prisa: la prioridad la ponen la exposición (¿se llega?), el exploit, lo que hay delante y lo que se para si cae (`sp/sp4-part3.ts:44-48`, `:78-80`, nota `:141`, q3 `:206-219`, q4 `:221-234`) | El casco de un barco. El agujero es la nota: cuánto daño haría en abstracto. El mar es el contexto: el mismo agujero, del mismo tamaño, en un barco en dique seco puede esperar a la próxima reparación programada, y en alta mar, con temporal, no. El casco vuelve en los conceptos 2 y 3 | «CVSS mide severidad; el riesgo lo pone el contexto» · «Prioridad: exposición, exploit, controles e impacto» |
+| 2 | «No se puede parchear» no es «no se hace nada». Se reduce la exposición (segmentation) y se compensa (compensating controls y vigilancia), y el riesgo que queda lo acepta alguien del negocio con una exception con dueño, justificación, controles, fecha de caducidad y revisión. Un seguro transfiere impacto financiero; no hace menos explotable el fallo (`:99-100`, tabla `:102-137`, nota `:142`, check `:145-158`, q5, q6, q8) | El mismo casco, que no se puede soldar porque el astillero ya no existe: mamparos (aislar) y bombas de achique (controles y vigilancia) mientras dure; el seguro paga parte de la reparación del barco, pero el agujero sigue ahí; y el acta del armador, firmada y con fecha de revisión (el armador es quien manda en el negocio, no el mecánico que lo encontró) | «Sin parche: aislar, compensar y excepción con caducidad» |
+| 3 | Un hallazgo se cierra cuando se revalida (rescan, verification o audit), no cuando alguien dice que lo arregló. Si tras el parche sigue saliendo, antes de discutir se comprueba qué versión corre de verdad: puede faltar un reinicio o el escáner puede estar leyendo un dato viejo (`:160-161`). Hoy es lo segundo, y lo que se documenta es un false positive (q1 `:176-189`, q7 `:266-279`) | El taller dice «soldado»; tú botas el barco y miras la sentina, no el parte. Hoy el escáner leía el letrero del casco, no el casco | «Se cierra al revalidar: rescan, verification o audit» |
+
+**Escenas:** seis, en tres capítulos (El número y el contexto · Sin parche y sin prueba · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «Una cola, un solo parche» | I El número y el contexto | 20 | La cola del SOC, «01-10 · jueves · 09:00 · informe de escaneo mensual · credentialed», con tres filas rojas a media luz, cada una con su equipo y su nota: `srv-msg01` 9.8, `srv-msg02` 9.8 y `cam-nvr-02` 8.1, y un contador «esta semana cabe: 1 parche». La primera frase habla del informe entero («El informe del mes trae tres filas rojas, y esta semana solo cabe un parche»); al acabarla, título «Qué se arregla primero» (hacia los 7 s, siempre antes de los 12) y la promesa en tres chips: «el número y el contexto · lo que no tiene parche · cerrar con prueba». Después las tres filas se encienden juntas y el resto se atenúa | La promesa en los primeros 10 s: tres filas, un parche; al acabar, saber qué va primero, qué hacer cuando no hay parche y cuándo está cerrado · `report, rows, title, promise` |
+| s02-contexto «El mismo fallo, dos servidores» | I | 42 | Se amplían las dos primeras filas: `srv-msg01` y `srv-msg02`, las dos «CVE-2026-40218 · ejecución remota de código en el servicio de mensajería · CVSS v3.1 9.8 CRITICAL · AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H». Dónde mirar, por pasos y con el resto atenuado: la columna CVE (la misma en las dos: «el nombre del fallo»), la nota (la misma: «gravedad en abstracto · de 0 a 10 · nota base») y, por último, lo que la nota no sabe y la ficha de cada equipo sí: «escucha en: la red interna» (`srv-msg01`) y «escucha en: solo este equipo» (`srv-msg02`). La imagen: dos barcos con el mismo agujero rotulado «9.8», uno en dique seco (`srv-msg02`) y otro en alta mar con temporal (`srv-msg01`). Nombres CVE y CVSS. La tarjeta, con las dos fichas ya quietas | El CVE nombra el fallo; el CVSS lo puntúa en abstracto; el mismo fallo no pesa lo mismo en dos servidores · `rows, cve, score, listens, hull, names` |
+| s03-orden «¿Y ahora, cuál?» | I | 42 | Las dos filas empatadas, «9.8 · 9.8», con el chip «esta semana cabe: 1». La narradora presenta a SILENT PAGER con el anuncio del jefe de sp4 («cuenta con que tu SOC duerma», `sp/sections.ts:104`) y llega el mensaje interceptado. Respuesta: una moneda no mira nada de esto; cuatro preguntas, una por vez y aplicadas a las dos filas. «¿Se llega?» (`srv-msg01`: «sí · desde cualquier puesto de la red interna»; `srv-msg02`: «solo desde el propio equipo»); «¿Hay exploit?» (las dos: «público desde hace 9 días», porque es del fallo y no del servidor); «¿Hay algo delante?» (las dos: «nada»); «¿Qué se para si cae?» (las dos: «el intercambio de mensajes entre las aplicaciones del puerto»). Tres respuestas iguales y una distinta: decide la que distingue. Resultado en la fila de `srv-msg01`: «P1 · parche hoy · ventana de emergencia (24 h)», y en la de `srv-msg02`, «P3 · ciclo mensual». Nota: «Sistemas · parche en `srv-msg01` · hoy · 18:00». El barco de alta mar sube a primera fila | La nota empata; el contexto desempata. Se decide por exposición, exploit, controles e impacto, no tirando una moneda · `tie, coin, reach, exploit, front, impact, p1, p3` · **intercept** |
+| s04-sinparche «Lo que no tiene parche» | II Sin parche y sin prueba | 44 | La tercera fila, ampliada: `cam-nvr-02` · «grabador de las cámaras del recinto» · «CVE-2026-38105 · CVSS v3.1 8.1 (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H) · firmware sin soporte · el fabricante no publica parche». Cuatro opciones en fila que se tachan o se encienden una a una: «parchear» (tachada: no existe parche, `no-patch`), «seguro · insurance» (tachada tras el mensaje), «aislar · segmentation y compensar · compensating controls» y «excepción». Mensaje interceptado. Respuesta: junto al sello «seguro · insurance · transfiere el coste · el fallo sigue igual de explotable». Después, mamparos y bombas de achique sobre el casco (aislar y vigilar), y el registro de la excepción rellenándose campo a campo: «Qué: grabador de las cámaras · firmware sin soporte» · «Por qué: el fabricante no publica parche» · «Dueño: director de operaciones» (con la nota pequeña «quien manda en el negocio, no quien lo encontró») · «Controles: aislado · acceso solo desde un equipo autorizado · alertas reforzadas» · «Caduca: 01-04-2027» · «Revisión: cada 90 días» (`record`). La tarjeta, con el registro quieto | Sin parche se aísla y se compensa, y lo que queda lo firma el negocio con caducidad; un seguro no cierra el fallo · `unpatchable, options, no-patch, insurance, isolate, record, owner, expiry` · **intercept** |
+| s05-despues «Después del parche» | II | 40 | «Lunes 5-10 · 08:30 · rescan». La fila de `srv-msg01` sigue en la lista: «CVE-2026-40218 · detectada de nuevo», y al lado «Sistemas · parche instalado el 1-10 · 18:00». Pregunta para pensar, con la fila quieta (el método y la versión detectada todavía no se ven) y dos botones: «volver a parchear» y «comprobar la versión». Respuesta: comprobar. Con ella aparece el método de la fila, «comprobación remota del servicio, sin sesión · versión que anuncia: `msgq/3.1.4`», con la frase de la voz «aunque el escaneo lleve credenciales, esta comprobación lee lo que el servicio anuncia por la red», y la consola de `srv-msg01`: `msgq --version` da `3.1.7`; paquete instalado `3.1.7`; servicio activo «desde 01-10 18:12» (descarta que falte un reinicio); y el banner que el servicio anuncia, `msgq/3.1.4`, ampliado: «texto de la configuración · nadie lo cambió». Rótulo: «el escáner leía el letrero, no el servicio». Veredicto: FALSE POSITIVE, «documentado», y «Sistemas corrige el texto · 5-10». Nuevo rescan: limpio, y el sello «cerrado · con prueba» (`closed`). La tarjeta, con el sello ya quieto | Un hallazgo se cierra con una comprobación, no con un parte; antes de dar por malo el parche se mira qué corre de verdad; si no existe, se documenta como false positive · `rescan, still, question, version, running, banner, false-positive, fix, closed` · **think** |
+| s06-recap «Tres reglas» | III Para el examen | 22 | Tres tarjetas de reglas, cada una con su viñeta en miniatura (el casco con el agujero y el mar · el casco con mamparos y el acta · la sentina); tarjeta final Alertópolis: «Ahora te toca: el laboratorio de triaje» (Vulnerability Triage, spl4c); la voz dice «en el laboratorio lo aplicas con otros ocho hallazgos» | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+
+- **Tarjetas de examen** (objetivo 4.3), una por escena de s02 a s05, ninguna en la última y cada una con su cue antes de
+  la última frase de la escena (`examTiming: sentence-end`):
+  - «CVSS mide severidad; el riesgo lo pone el contexto» (s02) (50)
+  - «Prioridad: exposición, exploit, controles e impacto» (s03) (51)
+  - «Sin parche: aislar, compensar y excepción con caducidad» (s04) (55)
+  - «Se cierra al revalidar: rescan, verification o audit» (s05) (52)
+- **Pregunta para pensar:** «Parcheado y sigue saliendo. ¿Qué haces primero?» (s05) (47), `holdMs` 4500, con la fila de
+  `srv-msg01` quieta y sin ningún rótulo que la conteste. Respuesta: comprobar la versión que corre. Sin ese paso no se
+  sabe si falta un reinicio, si el escáner lee un dato viejo o si el parche no se aplicó; volver a parchear sin mirar
+  repite el trabajo y no demuestra nada. Aquí la comprobación enseña lo segundo. **No es la pregunta de la lección**
+  (`:85`, 9.8 frente a 7.5) ni la q7 (`:266-279`, «¿qué haces antes de cerrar por correo?»): trabaja la mitad que esas
+  dos no cubren, qué hacer cuando el rescan contradice al parche. El título de la escena («Después del parche») no da la
+  respuesta.
+- **Mensajes interceptados** (SILENT PAGER, `holdMs` 3800, uno por capítulo en I y II; ninguno en el cierre):
+  - s03: «Mismo 9.8, misma prisa. Que decida una moneda.» (46). El error concreto que corrige la narradora: que dos
+    hallazgos con la misma nota tengan la misma prioridad. Una moneda no mira si se llega, si hay exploit, si hay algo
+    delante ni qué se para; con esas cuatro preguntas, el que se alcanza va primero (nota `:141`, q3). Con la ironía en el
+    marco: la que propone dejarlo al azar es justo quien, según el anuncio del jefe de sp4, «cuenta con que tu SOC duerma» (`sp/sections.ts:104`); no hay otra cita de ella.
+  - s04: «¿Sin parche? Contrata un seguro y a otra cosa.» (46). El error: tomar el seguro por una respuesta a la
+    vulnerabilidad. Cubre parte del coste de un incidente; el fallo sigue igual de explotable, y «a otra cosa» es justo lo que
+    no es una excepción: la excepción lleva dueño, controles y fecha, y se vuelve a mirar (q8 `:281-294`, nota `:142`).
+    Sin coletilla: ni «De nada.» (V5 s08, `video/ir-halden/narration.json`) ni «Duerme tranquila» (V5b) ni «Qué elegante.» (V21), para que la
+    suya no se vuelva firma sin haberlo decidido.
+
+  Los dos mantienen su voz de V1, V5, V5b y V6 (tutea, frases cortas, ironía, atajos que le convienen; ninguno de sus diez mensajes llama «analista» a la jugadora, que es el tic de HOLLOW LANTERN en GCTI) y no
+  contradicen sus diez mensajes publicados (registro §4). Ninguno marca el género de quien habla: la voz de Pablo la hace «ella» como en
+  los demás, y la narradora dice «la atacante» si la nombra (registro §5, notas de V5b y V6).
+- **Cierre:** tres reglas y una sola tarea.
+  1. La nota CVSS dice lo grave que es el fallo; el contexto, lo urgente que es en tu servidor. Dos hallazgos con la misma
+     nota no tienen por qué ir juntos.
+  2. Sin parche no se hace nada «a lo bruto»: se aísla, se compensa y el negocio firma una excepción con dueño y caducidad.
+     Un seguro no cierra el fallo.
+  3. Hasta que no lo compruebas, no está cerrado: rescan o verificación, no un correo. Si sigue saliendo, primero mira qué
+     corre de verdad.
+
+  Tarea: el laboratorio Vulnerability Triage (spl4c), que practica justo esta decisión con otros ocho hallazgos
+  (`sp/labs-sp4.ts:35-45`). Las preguntas de la lección (8) tocan el vídeo casi todas (q1, q3, q4, q5, q6, q7 y q8), pero
+  el laboratorio es la práctica que falta.
+- **Se queda fuera** (sigue en la lección):
+  - El false negative y por qué es el error peligroso: `:27`, check `:29-43`, q2. El false positive sí sale, en la práctica
+    de s05; lo que no sale es su asimetría con el negativo.
+  - La classification de la vulnerabilidad, el exposure factor y la risk tolerance como conceptos con nombre: `:47`. En
+    pantalla salen las preguntas que los resumen, no sus nombres.
+  - La tabla completa de respuestas (`:102-137`), el SLA de la política y la audit como forma de validación (solo en la
+    tarjeta de s05).
+  - El reporting al owner técnico y a la dirección, y el mean time to remediate: `:161`.
+  - El ejemplo de septiembre con sus cifras (`:163-168`) y el informe del 1-9 con los hallazgos #0147 y #0203
+    (`:53-80`): ni se citan ni se comparan.
+- **Laboratorios:** el único relacionado es spl4c (`sp/labs-sp4.ts:35-45`, datos `:175-229`), de tipo `select`: ocho
+  hallazgos, cuatro huecos. Al ya ejercitar la misma decisión (penalización L del ranking), el vídeo aporta el porqué
+  (la nota frente al contexto, con el mismo CVE en dos equipos) y dos demos que el laboratorio no tiene: el registro de
+  la excepción rellenándose y la comprobación de la versión tras un rescan que contradice al parche. Tres precauciones:
+  - **Ninguno de los tres hallazgos del vídeo es una de las ocho opciones**: el portal de reservas con RCE, el
+    concentrador de VPN con el bypass de autenticación, el controlador de dominio con escalada local, el servidor FTP con
+    credenciales por defecto, la VM de laboratorio 9.8, el servidor de credenciales con control compensatorio, el TLS 1.0
+    informativo y el servidor de nóminas con un falso positivo. Un servicio de mensajería (dos veces) y un grabador de
+    cámaras no están.
+  - **No se monta un juego de elegir cuatro de ocho.** Hay tres filas y un solo hueco; la decisión se enseña, no se
+    juega.
+  - **El falso positivo de s05 no es el del laboratorio** (el servidor de nóminas, ya investigado y confirmado): aquí se
+    llega a él comprobando la versión, y es del propio hallazgo que se cerraba. Nada de nóminas ni de «ya investigado».
+
+**Canon nuevo que fija V18** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- **Jueves 2026-10-01, 09:00: informe del escaneo mensual** (`credentialed`, el que corre cada día 1). Queda el día antes
+  de la mesa de V5b (viernes 2-10, 09:30) y no toca nada del registro. Tres filas rojas, esta semana cabe un parche:
+  - `srv-msg01` y `srv-msg02` (servicio de mensajería entre aplicaciones, nombres nuevos): `CVE-2026-40218`, ejecución
+    remota de código, CVSS v3.1 9.8 (`AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H`), exploit público desde hace 9 días. En
+    `srv-msg01` el servicio escucha en la red interna; en `srv-msg02`, solo en el propio equipo. Las dos con el mismo
+    impacto, «el intercambio de mensajes entre las aplicaciones del puerto». Los CVE son inventados.
+  - `cam-nvr-02` (grabador de las cámaras del recinto, nombre nuevo): `CVE-2026-38105`, CVSS v3.1 8.1
+    (`AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H`), firmware sin soporte, sin parche del fabricante. Sin proveedor con nombre.
+- **Decisión de triaje (1-10):** `srv-msg01` es P1 (parche en la ventana de emergencia de 24 h) y Sistemas lo instala a las
+  18:00; `srv-msg02` es P3 (ciclo mensual, sin fecha).
+- **La excepción del grabador (1-10):** dueño, el director de operaciones (un cargo sin nombre, el de la lección,
+  `sp/sp4-part3.ts:167`); controles, aislado, acceso solo desde un equipo autorizado y alertas reforzadas; caduca el
+  1-04-2027 (jueves) y se revisa cada 90 días, como la exclusión EXC-01 del SIEM (`video/siem/src/data/s07-tuning.ts:53-58`).
+  No se contrata ningún seguro: el seguro solo aparece tachado.
+- **Lunes 2026-10-05, 08:30: el rescan** da `srv-msg01` otra vez, por el banner `msgq/3.1.4`. Verificación en
+  el equipo: versión `3.1.7`, paquete `3.1.7`, servicio activo desde el 1-10 a las 18:12. El banner es un texto de la
+  configuración que nadie había actualizado, y esa fila sale de una comprobación remota del servicio, sin sesión, aunque el escaneo
+  sea `credentialed`: **false positive documentado**. Sistemas corrige el texto el 5-10 y el rescan
+  lo da por cerrado. No es culpa de nadie.
+- **SILENT PAGER**, con su registro de V1–V6: «Mismo 9.8, misma prisa. Que decida una moneda.» y «¿Sin parche?
+  Contrata un seguro y a otra cosa.», sin fecha.
+- **Comprobado contra la cronología (Node):** 1-10 jueves, 2-10 viernes, 5-10 lunes y 1-04-2027 jueves. Nada choca con la
+  mesa del 2-10 (V5b), la copia de contactos del 5-10 (otra área, otro asunto) ni los plazos de V5 (18-09 a 31-10): el
+  vídeo no usa ninguno de esos días para nada de ellos.
+
+**No se toca:**
+- **El portal y todo lo suyo:** `hpa-portal-web-01`, el FINDING #0147, `CVE-2026-31887`, el informe del 1-9 y el callout de
+  septiembre de la lección (640, 180, 22, 6 y 3 hallazgos; el rescan de 5 de 6). El número 0147 no sale (el caso
+  `IR-2026-0147` es otra cosa: registro §5, «Mismo número, otra cosa»). La lección se contradice a sí misma sobre el WAF
+  del portal (`sp/sp4-part3.ts:57` «sin WAF delante» y `:65` «regla de virtual patching en el WAF»), y V10 («Filtro,
+  ninguno») y V16 dan por hecho que no había nada delante: el vídeo no entra. El laboratorio de la lección (`lab-sandbox-07`,
+  `CVE-2026-30114`) tampoco.
+- **El caso `IR-2026-0147`** y todo lo suyo (`svc_tosreport`, `ADM-WS-*`, `srv-tc-app03`, los 38 GB). Nada relaciona los
+  tres hallazgos con él.
+- **El dosier de SILENT PAGER** (`sp/sections.ts:106`): ni el ASN ni «GH es una sola operación» ni los logs sin
+  centralizar. Solo da consejos, no ataca nada, y no tiene IP, dominio ni equipo.
+- **La OT y los proveedores:** ni PLC, esclusas ni grúas (V16 no dibuja la OT y el dosier de BLIND ARCHITECT los
+  protege), ni imágenes médicas (q5), ni la megafonía de sp5, ni ningún contratista, técnico de mantenimiento o
+  proveedor con nombre. El fabricante del grabador es «el fabricante».
+- **El proveedor de identidad, la VPN y la MFA del 30-11**, el plan de zonas de V16 y V17: ningún hallazgo los toca. El
+  aislamiento del grabador se dice «aislado», sin VLAN, zona ni equipo de salto.
+- **El ruido del SIEM:** el escáner del informe es «el escaneo mensual», sin nombre de equipo. `vulnscan01`, la regla R-087 y
+  la exclusión EXC-02 (`video/siem/src/data/s06-fatigue.ts:24`, `s07-tuning.ts:53-69`) son otra cosa.
+- **Las mejoras de V5** («excepciones que caducan · Sistemas · 18-09», `video/ir-halden/src/data/s09-plan.ts:26-31`): la
+  excepción del vídeo caduca, pero el vídeo no cita ni da por hecha esa mejora.
+- Ninguna IP ni dominio en pantalla. No se culpa a nadie: ni a Sistemas por el texto del banner ni al fabricante.
+
+**Comprobación de límites** (perfil `capsula-yt`; recuento con Node, `[...texto].length`):
+- 6 escenas en 3 capítulos (máximo 3). Suma de `s`: 210 s; renderizado previsto 235–245 s (extremos 187–256), dentro de
+  190–260.
+- 3 conceptos (2–3), cada uno con como mucho dos tarjetas.
+- 4 tarjetas de examen (3–5), una por escena de s02 a s05, ninguna en s06; de 50, 51, 55 y 52 caracteres (máximo 58), sin
+  `{}[]|<>`, flechas, marcas, viñetas ni emoji.
+- 1 pregunta para pensar (exactamente 1), 47 caracteres (máximo 48), `holdMs` 4500.
+- 2 mensajes interceptados (1–2), uno por capítulo (I y II), ninguno en la escena final; de 46 y 46 caracteres (máximo
+  70); `holdMs` 3800 (2500–4500); `video.json` lleva `"adversary": "SILENT PAGER"`.
+- `wordBudget` por escena (`s` × 2,7): s01 54 · s02 113 · s03 113 · s04 119 · s05 108 · s06 59 (total 566).
+- Título antes de los 12 s: la primera frase de s01 tiene 15 palabras («El informe del mes trae tres filas rojas, y esta
+  semana solo cabe un parche»), unos 6 s a 2,7 palabras/s; con una frase de situar delante («Jueves, nueve de la mañana»)
+  el título entra hacia los 8 s. Si cae después de los 12 s, se quita la frase de situar.
+- Sin identificadores en la voz: CVE, equipos, versiones y banner solo en pantalla.
+
+**Notas para el guion** (revisión de exactitud y canon del 2026-10-08, `revision-secplus.md`):
+- **«Credentialed» frente al banner.** La lección enseña el falso positivo por banner como propio del escaneo sin credenciales
+  (`sp/sp4-part3.ts:27`). El vídeo lo cuenta en un informe `credentialed` y por eso lo dice: la fila de s05 lleva «comprobación
+  remota del servicio, sin sesión» y la voz, «aunque el escaneo lleve credenciales, esta comprobación lee lo que el servicio
+  anuncia por la red». La contradicción ya está en la propia lección (`:53` rotula el informe del 1-9 como `credentialed` y `:167`
+  atribuye sus 180 falsos positivos a «un escaneo sin credenciales»): va como cambio propuesto en las decisiones.
+- **s01.** El gancho dice «tres filas rojas, un solo parche», pero la tercera no tiene parche: la capacidad de la semana compite
+  solo entre las dos primeras. s04 lo aclara; si el revisor de naturalidad lo oye como engaño, la frase pasa a «tres filas
+  rojas, y esta semana cabe un parche».
+- **s04 (la escena más densa).** Si hay que recortar, el registro de la excepción: cuatro campos en voz (qué, dueño, controles,
+  caducidad) y seis en pantalla; los mamparos y las bombas de achique no se tocan.
+- **Capítulo II («Sin parche y sin prueba»).** Pasa la regla del título por poco, porque «sin prueba» empuja hacia «comprobar». Si
+  suena a pista, «Lo que no se puede parchear».
+- **Imagen del casco.** En la voz, ni «ancla» ni «a bordo»: son de V12.
+- **Identificadores inventados.** `CVE-2026-40218` y `CVE-2026-38105` van rotulados «datos ficticios» y no se contrastan con CVE reales.
+- **Términos de examen en pantalla.** «Segmentation», «compensating controls» e «insurance» salen escritos en inglés en los rótulos
+  de s04; la voz dice «aislar», «compensar» y «seguro».
+
+### V19 · sp2m4 · Cápsula · «SQL injection y XSS: cuando un texto se vuelve orden»
+
+> Propuesta del 2026-10-08, lista para pegar tal cual en el plan de vídeos (§5, tras V18). Se graba con V18 (sp4m5): dos
+> cápsulas de Security+ en la misma sesión, RED MARROW (voz de teléfono) y SILENT PAGER (voz de máquina). La versión
+> vigente de escenas y guion será `video/inyeccion-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en
+> `video/inyeccion-halden/out/script-notes.md`. Las decisiones, con la alternativa descartada de cada una, están en
+> `docs/reviews/2026-10-08-fichas-tanda4/decisiones-V18-V19.md` (apartado V19).
+>
+> Rutas relativas a la raíz del repo; `sp/` = `src/data/secplus/`.
+
+- **Carpeta:** `inyeccion-halden` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) · objetivo
+  **2.3** (lo confirma la cabecera de la lección, `sp/sp2-part2.ts:247`) · adversario **RED MARROW** (sección sp2,
+  `sp/sections.ts:63-68`), dos mensajes interceptados · voz `recording/lidia` con
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · voz del adversario: la de V10,
+  `"adversaryVoice": { "voice": "sapi/Microsoft Laura", "rate": 0, "fx": "telefono" }` (`video/logs-halden/narration.json:11-15`);
+  la voz no fija el género, decisión de Lidia del 2026-10-04 · música `Go On Going - Stayloose.mp3` ·
+  `"examTiming": "sentence-end"`; pregunta con `think.holdMs` 4500; mensajes con `intercept.holdMs` 3800.
+- **`video.json`:** `"profile": "capsula-yt"`, `"track": "secplus"`, `"adversary": "RED MARROW"`, `"lesson": "sp2m4"` y
+  `"tags"`: SQL injection, SQLi, XSS, cross-site scripting, reflected XSS, stored XSS, parameterized queries, output
+  encoding, input validation, vulnerabilidades web, Security+. Título de YouTube: «SQL injection y XSS: cuando un texto se
+  vuelve orden | CompTIA Security+ en español».
+- **Efectos (`sfx`):** los automáticos del motor y cuatro momentos: `bypass` («error», la sesión se abre sin contraseña),
+  `blocked` («block», la misma entrada ya no entra), `cookie` («alarm», la cookie sale del navegador) y `vitrina` («lock»,
+  el aviso queda dentro de la vitrina).
+- **Léxico nuevo** (lo confirma Lidia al grabar): `SQL` («ese cu ele»), `SQLi` («ese cu ele i»), `XSS` («equis ese ese»),
+  `cookie` («cuqui»), `script`, `stored` y `reflected` (se dicen en inglés, como `account lockout` en V10).
+- **Lo que se lee no se deletrea:** la carga (`' OR 1=1 --`) y el script van solo en pantalla; la voz dice «una comilla,
+  una condición que siempre se cumple y dos guiones» y «una etiqueta de script». Las direcciones, los parámetros y las
+  consultas no se leen. Ninguna excepción: el texto de la carga es la pista central, pero la pista es lo que hace, no cómo
+  se escribe.
+- **Duración:** suma de `s` **210 s** (6 escenas; `wordBudget` a 2,7 palabras/s: 54, 113, 108, 140, 92 y 59, unas 566).
+  Misma estructura que V10 y V12 (dos mensajes y una pregunta); con 210 s, V12 estimó unos 260 s y renderizó unos 235–245
+  (≈ 4:00): dentro de 190–260. Los extremos conocidos dan 187–256 s. El primer borrador se mide por los dos lados: si el
+  estimado pasa de 255 s, se recorta en este orden: primero, en s04, la segunda y la tercera persona que abren el listado
+  (quedan en la pantalla); después, en s05, la frase de los complementos (validar la entrada y la política de contenido, que ya
+  van en pantalla; la línea del examen sobre input validation **no** se recorta). Si se acerca a 190 s, se alarga s02, la lectura de la consulta. No se rellena. s04 es la escena más
+  cargada (dos demos, una pregunta y una tarjeta): si el título de s01 entra después de los 12 s, se recorta s01 y no
+  s04.
+- **Inserción:** en `sp/sp2-part2.ts`, lección sp2m4, entre el check del XSS almacenado en el portal de tickets
+  (`:324-332`) y la «Nota de examen: dos reflejos automáticos» (`:333-338`), como bloque
+  `{ t: 'video', title: 'SQL injection y XSS: cuando un texto se vuelve orden', youtube: '<id>', poster: 'videos/inyeccion-halden-poster.png', transcript: 'videos/inyeccion-halden-transcript.txt' }`,
+  precedido de una línea: «Antes de la nota de examen, míralo en una web de pruebas: dónde se cuela un texto y dónde se
+  frena». Todo lo que enseña el vídeo va antes en la lección: la SQL injection (`:292-295`), su consulta y su corrección
+  (`:296-318`), el XSS reflejado y el almacenado con su defensa (`:320-322`) y el check (`:324-332`). La nota de examen lo
+  remata con los dos reflejos. Se fija en la suite `lesson videos` de `src/data/content.test.ts` (`:267-296`) con su línea
+  `toBe('sp2m4')`.
+- **Enfoque («tres cajas de texto antes de publicar»):** jueves 5-11, 10:00. El equipo de desarrollo enseña a la analista la
+  copia de pruebas del portal de citas de camiones (el que la lección sp4m4 ya tiene en desarrollo, `sp/sp4-part2.ts:413`;
+  nunca salió en pantalla) antes de publicarlo. Datos ficticios, ningún atacante, ningún incidente: una revisión. Tres cajas
+  donde la gente escribe y tres sorpresas: el login (SQL injection), el buscador de citas (XSS reflejado) y las
+  observaciones para el personal de la puerta (XSS almacenado). RED MARROW da dos consejos de amigo que son mentira. **No es
+  el portal de reservas** (`hpa-portal-web-01`): ese es el de V10 y V11. La fecha cae entre V11 (3-11) y V12 (9 al 12-11) y
+  no toca nada. No hace falta frase de puente: el vídeo no continúa ningún otro. Quien sigue el curso ve V19 (sp2m4) antes
+  que V10 (sp2m7), donde RED MARROW sale por primera vez: se presenta con una frase, solo «que vive de engañar» (la de V10 sigue con «y sí, cumple las normas», que aquí no vale), y nunca con «otra
+  vez».
+
+**Conceptos (3) y su imagen:**
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | SQL injection. La web arma la consulta pegando el texto de la persona dentro de la frase; si ese texto trae sintaxis SQL, deja de ser un dato y pasa a ser parte de la orden. El caso de examen es saltarse el login (también leer o modificar tablas). Se corrige con parameterized queries: la consulta viaja con marcadores y el texto, aparte, como dato. Refuerzos: input validation con allow list y least privilege en la cuenta de la base (`sp/sp2-part2.ts:292-318`, q2 `:395-408`) | Un formulario del puerto. La consulta vulnerable es una frase con un hueco al que se pega tu texto: si lo que pegas cambia la frase, ya no rellenas una casilla, redactas la pregunta. La consulta parametrizada es el formulario impreso de antemano, con su casilla: lo que escribes se queda en la casilla y se lee siempre como un nombre | «SQL injection: el input se pega dentro de la consulta» · «SQLi se corrige con parameterized queries» |
+| 2 | Cross-site scripting. Es la misma lógica, pero lo inyectado es JavaScript y lo ejecuta el navegador de otra persona, no el servidor. Reflected: el servidor devuelve el texto en la respuesta y la víctima tiene que pulsar un enlace preparado, por eso suele ir con phishing. Stored: el script queda guardado en el servidor y se ejecuta para todo el que abra la página, sin engañar a nadie. Con ello se roban cookies de sesión (`:320-321`, check `:324-332`, q3 `:410-418`) | El panel de avisos de la puerta de camiones. El buscador es el cartel que te repite lo que le has preguntado (reflected); las observaciones son el tablón donde lo que alguien clava lo lee todo el que pasa (stored). El navegador obedece lo que pone el aviso | «Reflected: viaja en el enlace. Stored: queda guardado» |
+| 3 | Es la misma causa, y la defensa va donde el dato se encuentra con el código: parameterized queries en la consulta, output encoding en la página (el servidor convierte los caracteres especiales en texto inofensivo antes de mostrarlos), con input validation y la política de contenido (CSP) como complementos. **En el examen, si entre las opciones aparece input validation, esa es la respuesta** (nota `:337`). Cifrar la base de datos, un cortafuegos de red o una contraseña más larga no impiden que un texto se interprete como código (`:321`, nota de examen `:337`, q2) | La casilla del formulario (concepto 1) y, para la página, una vitrina: el aviso se lee, pero no se obedece. Los dos juntos: el dato en su sitio | «XSS: la defensa principal es output encoding» |
+
+**Escenas:** seis, en tres capítulos (Cuando el texto manda · Lo que devuelve la página · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «Tres cajas de texto» | I Cuando el texto manda | 20 | «05-11 · jueves · 10:00 · revisión antes de publicar» y, bajo ella, el rótulo «Citas de camiones · entorno de pruebas · datos ficticios». La copia aparece como tres pantallas pequeñas a media luz, con la caja de cada una resaltada: el login (usuario y contraseña), el buscador de citas (matrícula) y las observaciones para el personal de la puerta. Las dos primeras frases hablan del encargo entero («El equipo de desarrollo te enseña la nueva web de citas para camiones. Hoy pruebas las tres cajas donde la gente escribe»); al acabarlas, título «Cuando un texto se vuelve orden» (hacia los 8 s, siempre antes de los 12) y la promesa en tres chips: «el login · la búsqueda · las observaciones». Después, las tres cajas se encienden juntas y la voz añade «las herramientas ayudan, pero nada sustituye a probar la web» | La promesa en los primeros 10 s: tres cajas de una web sin publicar; al acabar, ver cómo un texto se convierte en orden y dónde se frena · `date, app, boxes, title, promise` |
+| s02-sqli «Una comilla en el login» | I | 42 | La pantalla de acceso de la copia. Primero, un intento normal, con un usuario de prueba y una contraseña equivocada: «usuario o contraseña incorrectos». Después, lo que hay detrás, con la consulta de la lección (`:301`): `SELECT * FROM users WHERE name = '<input>' AND pass = '<input>'`, con el texto de la persona en cian y el programa en blanco. Dónde mirar, por pasos y con el resto atenuado: el hueco del nombre; lo que se escribe, `' OR 1=1 --`, cuya comilla cierra el nombre antes de tiempo (lo cian pasa a blanco: ya es parte de la orden); `OR 1=1`, una condición que siempre se cumple; y `--`, que apaga el resto, la contraseña incluida (se tacha en gris). La consulta resultante (`:306-307`): «devuelve todas las filas». La web abre sesión «sin contraseña» (`bypass`). La imagen: el formulario del puerto con un hueco al que se pega el texto de la persona; si lo que se pega cambia la frase, redactas la pregunta. Nombre SQL INJECTION. La tarjeta, con la consulta ya quieta | El texto de la persona se pega dentro de la consulta y deja de ser un dato · `login, fail, query, hole, quote, always-true, comment, result, bypass, form, name` |
+| s03-casilla «Cada dato en su casilla» | I | 40 | «¿Cómo se arregla?» La narradora presenta a RED MARROW y llega el mensaje interceptado. Respuesta: «cifrar la base de datos» (el cifrado en reposo, el del disco) protege lo que hay en el disco si se lo llevan (rótulo «disco»), pero no cambia la consulta: la web abre la base con sus propios permisos y es ella quien lanza la consulta trucada (rótulo «la lanza la propia aplicación»). Lo que arregla es separar la orden del dato: la consulta sale con marcadores, `WHERE name = ? AND pass = ?` (`:312-313`), y el texto viaja aparte como dato. Se repite la misma entrada: ahora se compara tal cual con un nombre y no hay nadie con ese nombre, «usuario o contraseña incorrectos» (`blocked`). La imagen: el formulario impreso de antemano, con su casilla. Nombre PARAMETERIZED QUERIES; debajo, pequeño y en gris, los complementos de la lección (`:316-317`): «validar la entrada (allow list)» y «cuenta de la base con los permisos justos». La tarjeta, con la entrada ya repetida | Separar la orden del dato lo arregla; cifrar la base no toca la causa · `fix, db-encrypt, not-this, marks, data, replay, blocked, form-box, names` · **intercept** |
+| s04-vuelve «Un texto que vuelve» | II Lo que devuelve la página | 52 | «Segunda caja: el buscador de citas». La dirección de la copia, sin dominio, con `buscar?matricula=` y detrás `<script>enviar(document.cookie)</script>`; la página de respuesta con «Resultados para:» y, en el código de la página, el mismo texto tal cual, sin tocar. Pregunta para pensar, con la página quieta y dos botones: «servidor» y «navegador». Respuesta: el navegador. El servidor solo devolvió el texto dentro de la página; el que lo ejecuta es el navegador de quien pulsó el enlace. Un dibujo de ese navegador, con una cookie que sale hacia «sitio externo» (`cookie`). Nombre CROSS-SITE SCRIPTING; y REFLECTED: «viaja en el enlace · alguien tiene que pulsarlo · suele ir con phishing». «Tercera caja: las observaciones.» El mismo script se guarda en la cita; el listado del día del personal de la puerta: lo abre una persona y su navegador lo ejecuta, la abre otra y otra. Nombre STORED: «queda guardado en el servidor · salta para todo el que abra la página». La imagen: el panel de avisos, con el cartel que repite lo que le preguntas y el tablón donde se clava lo que otro lee. La tarjeta, con los dos nombres ya quietos | El script lo ejecuta el navegador de otra persona. Reflected viaja en el enlace y hace falta un clic; stored se queda guardado y salta para todos · `search, link, echo, question, browser, cookie, xss, reflected, notes, saved, opens, stored, board` · **think** |
+| s05-vitrina «Dentro de una vitrina» | II | 34 | «¿Y esto cómo se arregla?» La narradora vuelve a RED MARROW y llega el segundo mensaje interceptado. Respuesta: el navegador solo hace lo que la página le dice, y la página la escribe el servidor, con tu texto dentro. La misma página, ahora con el texto codificado: el `<script>` aparece como texto visible en pantalla y no se ejecuta (`vitrina`). Nombre OUTPUT ENCODING. La imagen: el aviso dentro de una vitrina, que se lee pero no se obedece. Debajo, pequeño y en gris, los complementos (`:321`): «validar la entrada · política de contenido (CSP)», y una línea: «en el examen, si entre las opciones ves input validation, esa es la respuesta» (nota `:337`). Una línea de acción: «consultas parametrizadas y codificación de salida en el portal de citas · Desarrollo · 13-11». Cierre del capítulo: la casilla y la vitrina juntas, «el dato en su sitio». La tarjeta, con el cierre ya quieto | La defensa del XSS es el output encoding, en el servidor; la misma raíz que la SQL injection · `fix, browser-obeys, server-writes, encoded, vitrina, output-enc, extras, exam-line, action, same-root` · **intercept** |
+| s06-recap «Tres reglas» | III Para el examen | 22 | Tres tarjetas de reglas, cada una con su icono (la casilla · el enlace y el tablón · la vitrina); tarjeta final Alertópolis: «Tu turno: termina la lección y sus preguntas» (44) | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+
+- **Tarjetas de examen** (objetivo 2.3), una por escena de s02 a s05, ninguna en la última y cada una con su cue antes de
+  la última frase de la escena (`examTiming: sentence-end`):
+  - «SQL injection: el input se pega dentro de la consulta» (s02) (53)
+  - «SQLi se corrige con parameterized queries» (s03) (41)
+  - «Reflected: viaja en el enlace. Stored: queda guardado» (s04) (53)
+  - «XSS: la defensa principal es output encoding» (s05) (44)
+- **Pregunta para pensar:** «¿Dónde corre el script: servidor o navegador?» (s04) (45), `holdMs` 4500. Llega con la
+  dirección y el eco ya a la vista y sin rótulo que la conteste (los nombres XSS y REFLECTED salen con la respuesta).
+  Respuesta: el navegador. El servidor solo devolvió el texto dentro de la página; es el navegador de quien abrió el
+  enlace el que lo ejecuta, y por eso se llevan la cookie de esa persona. Es lo que distingue el XSS de la SQL injection,
+  donde quien interpreta el texto es la base de datos. El título de la escena («Un texto que vuelve») no da la
+  respuesta.
+- **Mensajes interceptados** (RED MARROW, `holdMs` 3800, uno por capítulo en I y II; ninguno en el cierre):
+  - s03: «Cifra la base de datos y no se llevan nada. Confía en mí.» (57). El error concreto que corrige la narradora:
+    tomar el cifrado de la base de datos por la defensa. Protege lo que hay en el disco si se lo llevan; la web abre la
+    base con sus propios permisos y es ella quien lanza la consulta trucada, así que el login sigue roto y la aplicación
+    ve los datos descifrados. Lo arregla separar la orden del dato (nota de examen `:337`; es el distractor «full-disk
+    encryption» de q2, `:395-408`). Sin «cifrar no sirve»: cifrar el disco sirve para otra cosa.
+  - s05: «Si corre en el navegador, el fallo no es tuyo. Confía en mí.» (60). El error: culpar al navegador. Hace lo que la
+    página le dice, y la página la escribe el servidor, con el texto de otro dentro; el fallo es cómo se devuelve ese
+    texto, y la defensa se pone en el servidor (`:320-321`). La ironía va en el marco («qué amable»), no en el dato.
+
+  Los dos mantienen su voz de V10 (consejos de amigo que son mentira, frases cortas, «Confía en mí») y no contradicen sus
+  dos mensajes publicados. Se descartan a propósito las dos mentiras de V10 (contraseña que cumple las normas; borrar el
+  texto de la URL), para que no suenen a un guion repetido. Ninguno marca el género de quien habla.
+- **Cierre:** tres reglas y una sola tarea.
+  1. Un texto que acaba dentro de la consulta es SQL injection: el texto debe viajar aparte, como dato, con parameterized
+     queries.
+  2. Un script que corre en el navegador de otra persona es XSS: reflected, si viaja en el enlace; stored, si se queda
+     guardado.
+  3. Se arregla donde el dato se encuentra con el código: parameterized queries en la consulta y output encoding en la
+     página. Cifrar la base de datos no lo arregla, y en el examen, si entre las opciones aparece input validation, esa es.
+
+  Tarea: terminar la lección y sus preguntas. El vídeo va a mitad de sp2m4, antes de la nota de examen, del sistema
+  operativo y el hardware y del zero-day (`:333-377`), y cinco de las siete preguntas (la q1 del buffer overflow, la q4 del
+  TOC/TOU, la q5 del fin de soporte, la q6 del zero-day y la q7 de la actualización maliciosa) tratan de lo que el vídeo
+  deja fuera; las que tocan lo que cuenta son la q2 y la q3.
+- **Se queda fuera** (sigue en la lección):
+  - Memory injection, buffer overflow, race condition (TOC/TOU) y malicious update: `sp/sp2-part2.ts:266-274`, check
+    `:276-290`; quiz q1, q4 y q7.
+  - Sistema operativo y hardware (firmware, legacy y end-of-life) y la tabla de causas y correcciones: `:339-358`; quiz q5.
+  - Zero-day y sus mitigaciones: `:360-377`; quiz q6.
+  - Command injection y las demás inyecciones: solo como nombre en la nota de examen (`:337`).
+  - Las cookies seguras y la validación en el servidor (`sp/sp4-part1.ts:378`, `:486`), el WAF como control compensatorio
+    mientras se arregla el código (`sp/sp3-part3.ts:54-68`, `:231-240`) y el análisis de código y las pruebas de
+    seguridad de la aplicación (`sp/sp4-part2.ts:455`): dan para otros vídeos. La CSP solo sale como complemento en pantalla.
+- **Laboratorios:** ninguno de sp2 toca SQL injection ni XSS (spl2a clasifica actores, spl2b vectores de ingeniería
+  social y spl2c elige mitigaciones tras un movimiento lateral, `sp/labs-sp2.ts:7-41`), así que no hay solución que
+  destripar y la tarea final son las preguntas. Dos precauciones fuera de la sección:
+  - spl2b clasifica técnicas de ingeniería social: el vídeo dice que el XSS reflejado «suele ir con phishing», que es la
+    frase de la lección (`:320`), y no clasifica ningún mensaje.
+  - Las preguntas q2 (el portal de seguimiento de buques) y q3 (el foro de servicios portuarios) y el check del portal de
+    tickets (`:324-332`) tienen su escenario: el vídeo usa otro (el portal de citas) y no reproduce ninguno.
+
+**Canon nuevo que fija V19** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- **Jueves 2026-11-05, 10:00: revisión de seguridad previa a la publicación del portal de citas de camiones.** El portal
+  ya existía en la lección sp4m4, en desarrollo y con análisis de código en su pipeline (`sp/sp4-part2.ts:413`); V19 lo
+  pone por primera vez en pantalla, **en una copia de pruebas con datos ficticios, sin fecha de publicación y sin decir
+  dónde vivirá en la red**. El vídeo no habla del análisis de código ni de su pipeline. Queda entre V11 (martes 3-11) y V12
+  (lunes 9 al jueves 12-11).
+- **Tres fallos en el código de esa copia** (los tres, del portal de citas y de nadie más): la consulta del login se arma
+  pegando el texto, el buscador de citas devuelve la matrícula tal cual (XSS reflejado) y las observaciones se guardan y
+  se muestran sin codificar (XSS almacenado). Nada se ha explotado fuera de la revisión; ninguna cookie real.
+- **Mejora con responsable y fecha: «consultas parametrizadas y codificación de salida en el portal de citas · Desarrollo ·
+  13-11»** (viernes). «Desarrollo» es un área nueva en pantalla; en la lección es «el desarrollo del portal de citas de
+  camiones» (`sp/sp4-part2.ts:413`). Ni el área ni la mejora se desarrollan.
+- **El personal de la puerta** (sin nombres) abre cada día el listado de citas del portal.
+- **RED MARROW, segunda aparición** (primera en el orden del curso): «Cifra la base de datos y no se llevan nada. Confía en
+  mí.» y «Si corre en el navegador, el fallo no es tuyo. Confía en mí.», sin fecha. Sigue sin IP, dominio, equipo ni
+  género.
+- **Comprobado contra la cronología (Node):** 3-11 martes, 5-11 jueves, 9-11 lunes, 12-11 jueves y 13-11 viernes. Nada
+  choca con V10 (20 al 21-10), V11 (3-11), V12 (9 al 12-11), V16 (16 y 20-11) ni V17 (23 al 27-11).
+
+**No se toca:**
+- **El portal de reservas** (`hpa-portal-web-01`, `reservas.haldenport.example`) y todo lo que V10 y V11 dicen de él: el
+  login de las navieras, sus contraseñas, la noche del 21-10, el FINDING #0147. Ninguna SQL injection ni XSS se prueba, se
+  insinúa ni se compara con él. V10 dijo en voz que el traversal «no es una inyección»; V19 no lo retoma ni dice «como la
+  del portal».
+- **Qué pudo leer el traversal del 21-10:** ningún vídeo lo dice, y V19 no pone ningún ejemplo que lo sugiera (nada de
+  contraseñas de navieras ni de ficheros del sistema).
+- **El caso `IR-2026-0147`**, `svc_tosreport`, SILENT PAGER y todo lo de septiembre.
+- **El dosier de RED MARROW** (`sp/sections.ts:68`): los kits de phishing contra los operadores de grúas, el proveedor de
+  mantenimiento y «GH compra acceso a través de terceros». Las víctimas del vídeo son el personal de la puerta y quien
+  pulsa un enlace de prueba: nunca operadores de grúas ni un proveedor. Nada insinúa que RED MARROW lance los fallos, los
+  encuentre, los venda o trabaje con otros: solo da consejos.
+- **Ningún atacante con nombre, IP, dominio o equipo:** el script de las cajas es de prueba. Ninguna IP ni dominio en
+  pantalla (la dirección de la copia va sin dominio). Nada en `203.0.113.0/24`, `192.0.2.157` ni `198.51.100.0/24`.
+- **WAF:** el vídeo no dice que un cortafuegos «no sirve» contra esto. Dice que cifrar la base no arregla la causa. Un
+  WAF frena estos ataques mientras se corrige el código (`sp/sp3-part3.ts:66`, `:240`); de él, ni palabra, para no
+  contradecir sp3m5.
+- **Cuentas reales:** el usuario de prueba y las cuentas de la copia son ficticios y no se parecen a `r.haugen`, `a.berg`,
+  `j.solheim`, `m.lund` ni `k.nyborg`. La contraseña de prueba no es `Halden2026!`.
+- **El check del portal de tickets, q2, q3 y el check del buffer overflow** (otros escenarios): no se reproducen ni se
+  contradicen.
+- **La imagen de la «nota en la ventanilla»** de V10 (el traversal), los restaurantes de la amplificación DNS y las
+  puertas del spraying: no se reutilizan, para no confundir la inyección con el traversal.
+- No se culpa a nadie: ni a Desarrollo por los tres fallos (son lo que una revisión previa está para encontrar) ni a quien
+  escribió la consulta.
+
+**Comprobación de límites** (perfil `capsula-yt`; recuento con Node, `[...texto].length`):
+- 6 escenas en 3 capítulos (máximo 3). Suma de `s`: 210 s; renderizado previsto 235–245 s (extremos 187–256), dentro de
+  190–260.
+- 3 conceptos (2–3), cada uno con como mucho dos tarjetas (2, 1 y 1).
+- 4 tarjetas de examen (3–5), una por escena de s02 a s05, ninguna en s06; de 53, 41, 53 y 44 caracteres (máximo 58), sin
+  `{}[]|<>`, flechas, marcas, viñetas ni emoji.
+- 1 pregunta para pensar (exactamente 1), 45 caracteres (máximo 48), `holdMs` 4500.
+- 2 mensajes interceptados (1–2), uno por capítulo (I y II), ninguno en la escena final; de 57 y 60 caracteres (máximo
+  70); `holdMs` 3800 (2500–4500); `video.json` lleva `"adversary": "RED MARROW"`.
+- `wordBudget` por escena (`s` × 2,7): s01 54 · s02 113 · s03 108 · s04 140 · s05 92 · s06 59 (total 566).
+- Título antes de los 12 s: el encargo se dice en dos frases («El equipo de desarrollo te enseña la nueva web de citas para
+  camiones. Hoy pruebas las tres cajas donde la gente escribe», 13 y 9 palabras, unos 8 s a 2,7 palabras/s) y el título
+  entra tras la segunda, hacia los 9 s. Dicho en una sola frase de 25 palabras, entraría pasados los 12 s.
+- Sin identificadores en la voz: la carga, el script, las direcciones y las consultas solo en pantalla.
+
+**Notas para el guion** (revisión de exactitud y canon del 2026-10-08, `revision-secplus.md`):
+- **Cues y efectos.** Cada `sfx` tiene su cue en la tabla de escenas: `bypass` (s02), `blocked` (s03), `cookie` (s04) y `vitrina`
+  (s05). `sfxMapErrors` rechaza un efecto sin cue en el guion.
+- **Input validation.** No es solo complemento: la nota de examen (`sp/sp2-part2.ts:337`) dice que, ante una pregunta de la
+  familia injection, si entre las opciones aparece input validation (o su versión específica), esa es la respuesta. s05 lo dice
+  en pantalla y la regla 3 del cierre, en voz.
+- **Cookie y HttpOnly.** El script lee `document.cookie`; la lección enseña que `HttpOnly` lo impide (`sp/sp4-part1.ts:378`, q7
+  `:483-496`). La voz dice «pueden llevarse la cookie de sesión», en condicional, nunca que el robo es inevitable ni que la
+  cookie «siempre» sale.
+- **«Cifrado en reposo».** En la respuesta a RED MARROW de s03 la voz dice «el cifrado en reposo» o «el del disco»: con cifrado a
+  nivel de columna o de aplicación el resultado sería distinto.
+- **SAST del pipeline.** La lección sp4m4 (`sp/sp4-part2.ts:413`) dice que el portal de citas lo incorpora. V19 se ve antes
+  que sp4m4: s01 lleva la frase «las herramientas ayudan, pero nada sustituye a probar la web» y no habla del pipeline.
+- **«Desarrollo».** Es una actividad de la lección que el vídeo convierte en área con responsable y fecha. Admisible (el registro
+  ya admite áreas por función), pero el registro debe separar tres portales: el de reservas (`hpa-portal-web-01`), el de
+  declaración de carga (`sp/sp4-part1.ts:384`) y el de citas de camiones (V19). En voz, «la web de citas», nunca «el portal» a secas.
+- **«Suele ir con phishing» junto a RED MARROW.** Es la frase de la lección (`:320`), pero cerca de RED MARROW podría leerse como
+  «RED MARROW lanza el enlace». En el guion no cae justo después del mensaje de s05 (va en s04, antes) y no se relaciona con él.
+- **El personal de la puerta.** No se dice qué sistema de la puerta (`srv-accesos01`, `srv-bascula01`) lee el listado.
+- **Presentación de RED MARROW.** Solo «que vive de engañar»; «y sí, cumple las normas» es del mensaje de V10.
+
+### V20 · sp1m3 · Cápsula · «Zero Trust: quién decide, quién comunica y quién aplica»
+
+> Propuesta del 2026-10-08 (tanda 4), con las opciones recomendadas ya elegidas; falta que Lidia diga qué cambia. La versión
+> vigente de escenas y guion será `video/zero-trust-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en
+> `video/zero-trust-halden/out/script-notes.md`. Las decisiones, con lo descartado y los riesgos, están en
+> `docs/reviews/2026-10-08-fichas-tanda4/decisiones-V20-V21.md` (apartado V20).
+>
+> **Orden del curso.** sp1m3 va antes que sp1m6 y sp1m7, así que quien sigue el curso ve V20 antes que V11 y V12: es lo
+> primero de Halden que ve en sp1 y la primera aparición de NULL CIPHER *en su orden*, aunque V11 la estrene en la
+> cronología. Por eso V20 no remite a ningún otro vídeo, no nombra el caso de septiembre y presenta el puerto y a NULL CIPHER
+> desde cero, con la fórmula de V11.
+>
+> Rutas relativas a la raíz del repo; `sp/` = `src/data/secplus/`, `v1/` = `video/capas-halden/`.
+
+- **Carpeta:** `zero-trust-halden` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) · objetivo
+  **1.2** (cabecera de la lección, `sp/sp1-part2.ts:4`) · adversario **NULL CIPHER** (sección sp1, `sp/sections.ts:43-50`),
+  dos mensajes interceptados, con la voz con que se publicó V11 (`sapi/Microsoft Helena`, `rate` 0 y `cifrado`; la misma que
+  V12: una sola voz por adversario, para siempre) · voz `recording/lidia` con `"recording": { "tempo": 1.08, "maxPauseMs": 250 }`
+  · música `Go On Going - Stayloose.mp3` · en `video.json`, `"lesson": "sp1m3"` y `"adversary": "NULL CIPHER"`.
+- **Etiquetas** (`video.json`, clave `"tags"`): Zero Trust, never trust always verify, control plane, data plane, policy engine,
+  policy administrator, policy enforcement point, PEP, PDP, adaptive identity, threat scope reduction, NIST SP 800-207,
+  Security+.
+- **Efectos (`sfx`):** los automáticos del motor y cuatro momentos: `order` («lock», el encargado pasa la orden al mozo),
+  `grant` («check», petición 1 concedida), `step-up` («ding», el engine pide un segundo factor) y `revoke` («block», la
+  sesión se cierra).
+- **`video.json`:** `"profile": "capsula-yt"`, `"track": "secplus"`, `"adversary": "NULL CIPHER"`, `"lesson": "sp1m3"`, la música de arriba y los
+  `"tags"` de arriba. Título de YouTube: «Zero Trust: quién decide, quién comunica y quién aplica | CompTIA Security+ en
+  español». Ritmo: `"examTiming": "sentence-end"`; pregunta con `think.holdMs` 4500; mensajes con `intercept.holdMs` 3800.
+- **Léxico** (se reutiliza lo que Lidia ya dice y lo nuevo se confirma al grabar): ya fijados `TLS` («te ele ese»), `EDR`
+  («e de erre»), `NULL` («nal»), `CIPHER` («sáifer»); nuevos, con la lectura habitual en España: `PEP` («pep»), `PDP`
+  («pe de pe»), `ERP` («e erre pe»), `NIST` («nist»). `policy engine` y `policy administrator` se dicen en inglés, como
+  `account lockout` en V10, y siempre después de la idea en llano («el que decide… es el policy engine»).
+- **Lo que se lee no se deletrea:** `erp.local`, la regla del cortafuegos, la política y los campos de la petición van solo
+  en pantalla; la voz dice «el ERP», «la regla de Operaciones», «un portátil del puerto» y «una cuenta de prueba».
+  `SUBJECT/SYSTEM` y `IMPLICIT TRUST ZONE` son rótulos, no frases habladas. Ninguna excepción.
+- **Duración:** suma de `s` **210 s** (6 escenas), la misma que V12, que tiene la misma estructura (dos mensajes, una
+  pregunta, dos escenas de consola): estimado ~260 s y **unos 235–250 s renderizados (unos 4:00)**, dentro de 190–260. No se
+  rellena. La suma predice mal (V5 salió a 0,89 veces la suya y V4 a 1,22), así que el primer borrador se mide por los
+  dos lados: si el estimado pasa de 255 s, se recorta primero s04 (la política, solo en pantalla, sin leerla) y luego s02;
+  si se acerca a 190 s, se alarga s03, la escena que más cuenta.
+- **Inserción:** en `sp/sp1-part2.ts`, lección sp1m3, entre el check de adaptive identity (`:157-171`) y el párrafo que baja
+  a la seguridad física (`:172-175`), como bloque `t: 'video'` con su id de YouTube, su póster y su transcripción propios en
+  `public/`, precedido de una línea: «Antes de pasar a lo físico, míralo en el puerto: una petición al ERP y quién decide qué».
+  Todo lo que enseña el vídeo va antes en la lección: el contraste con el perímetro (`:19-48`), los dos planos y sus
+  componentes (`:49-85`), el flujo y el ejemplo (`:101-131`), la nota de examen (`:132-137`), los dos checks (`:86-100`,
+  `:138-152`) y los matices de adaptive identity y threat scope reduction (`:153-171`). El vídeo **repasa en el puerto**
+  lo que ya has leído. **Es casi un repaso uno a uno del ejemplo de la lección** (`:126-131`: ubicación inusual, segundo factor, solo lectura, token de 30 minutos y EDR a los diez minutos), con otra cuenta y **el mismo ERP**. Lo que aporta de más, que es poco pero es lo que lo hace un vídeo: la regla de V1 como «antes» (hoy se decide por el origen), un simulador donde se ve cada decisión con sus campos, los tres verbos como tres personas con un papel que caduca, y la revocación contada paso a paso; no adelanta nada que la lección no diga. Se fija en la suite
+  `lesson videos` de `src/data/content.test.ts` (`:248`), con su línea `toBe('sp1m3')` en el test que ata cada vídeo a su
+  lección.
+- **Enfoque («tres peticiones al ERP»):** viernes 13-11, el día siguiente al último hecho de V12 y el fin de semana antes de
+  que empiece el rediseño de la red de V16. Hoy, llegar al ERP depende de una línea del cortafuegos que mira de dónde vienes
+  (la regla de V1, «Operaciones a `erp.local` por 443», sin citarlo). Seguridad ha escrito en papel cómo se decidiría el
+  acceso si cada petición se verificara, y tú la pruebas en un simulador de políticas: **no funciona nada, el ERP no se
+  toca**. Tres peticiones de una cuenta de prueba: la normal, la misma cuenta desde otro país a las tres de la madrugada, y
+  un aviso del EDR a los diez minutos. NULL CIPHER trae dos atajos de manual. Registro de diseño y simulación, como el «plan»
+  de V16: lo que el motor «decidiría», «pediría», «cerraría»; nada «ya funciona». Sin frase de puente: el vídeo no continúa
+  ningún otro y se entiende solo.
+
+**Conceptos (3) y su imagen:**
+
+La imagen sale del almacén de un puerto, no de la valla, la garita ni la puerta del recinto (que ya son V16 y V17): un
+mundo de pedidos y mercancía, con tres personas y un papel.
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | Dentro no es de fiar. El modelo de perímetro decide una vez, en el borde, y después confía; el atacante que roba una credencial o compromete un portátil **ya está dentro**. Zero Trust decide en cada petición, con identidad, dispositivo y contexto: «never trust, always verify». No es denegar a todo el mundo: es pedir pruebas en cada acceso (`sp/sp1-part2.ts:21`, tabla `:33-36`) | El chaleco amarillo: dentro del recinto lo lleva todo el que trabaja allí, y no abre ninguna mercancía; solo dice que estás dentro. La regla de hoy se comporta como si el chaleco bastara | «Never trust, always verify: se verifica cada petición» |
+| 2 | Dos planos y tres verbos. El **policy engine decide**, el **policy administrator comunica** (crea y revoca la sesión, emite el token, ordena al PEP) y el **policy enforcement point aplica**. Engine y administrator son el PDP, en el control plane; el PEP es el único componente de control del data plane. Si la pregunta dice «quién decide», nunca es el PEP (`:52`, `:60-61`, `:69`, nota `:136`, q2, q3, q5) | Un almacén del puerto: la **oficina de pedidos** decide, el **encargado de turno** escribe la orden de salida y se la pasa, y el **mozo** del almacén entrega solo lo que dice la orden. El mozo ve pasar la mercancía, pero no tiene los datos ni las normas; la oficina sí, y son las mismas para todos los mozos. Todo va por el sistema de pedidos, **sin teléfono ni llamadas**: el mozo manda la petición, la oficina decide y la orden sale impresa, con su hora de caducidad, a la bandeja del mozo. No es el vigilante que llama a la oficina de acreditaciones de V17: aquí son tres personas y un papel que caduca | «Engine decide, administrator comunica, PEP aplica» · «PDP en el control plane; el PEP, en el data plane» |
+| 3 | El contexto cambia la exigencia y el daño se acota. **Adaptive identity**: la autenticación no es un sí o un no fijo, se endurece o se relaja según ubicación, hora, salud del equipo y comportamiento. **Threat scope reduction**: mínimo privilegio, zona pequeña y sesión corta, para que un compromiso valga poco; no es un producto. Y la sesión se revoca si llega una señal nueva (`:57-58`, `:129-131`, `:153-156`, q4) | La misma orden de salida: de siempre, a las diez de la mañana, la orden es normal. Hoy llega a las tres de la madrugada y desde un sitio que nadie conoce: la oficina pide una comprobación más y la orden es solo para mirar, no para llevarse. Vale para esa mercancía y media hora, y si llega un aviso sobre quien la retira, el encargado la anula y el mozo la devuelve a su sitio | «Threat scope reduction: que un compromiso valga poco» |
+
+**Escenas:** seis, en tres capítulos (Dentro no es de fiar · Quién decide y quién aplica · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «Basta con estar en Operaciones» | I Dentro no es de fiar | 22 | Sello «13-11 · viernes · acceso al ERP · diseño y simulación». Una regla del cortafuegos, la de V1 sin citarlo: «Operaciones · a `erp.local` · tcp/443 · permitir». Al lado, tres rótulos atenuados con lo que la regla no mira: «quién eres · cómo está tu equipo · desde dónde y cuándo». La primera frase dice la regla en llano («Hoy, para llegar al ERP, basta con que tu equipo esté en Operaciones»); al acabarla, título «Zero Trust» (hacia los 8 s, siempre antes de los 12) y la promesa en tres chips: «verificar cada petición · quién decide y quién aplica · adaptarse y acotar». Entra la etiqueta «NULL CIPHER · sección 1» con «célula de acceso inicial» | La promesa en los primeros 10 s: hoy decide de dónde vienes, y Zero Trust lo cambia · `rule, blind, title, promise, adversary` |
+| s02-dentro «Todos con chaleco» | I | 36 | El puerto visto de cerca, con gente de chaleco amarillo: «el chaleco no abre nada, solo dice que estás dentro». La regla de s01 vuelve dibujada así: «chaleco de Operaciones: pasa». Tres figuras con chaleco llegan a la misma regla y la pasan: quien trabaja allí, alguien con un chaleco que no es suyo («una credencial robada») y un portátil que ya no es de fiar («un equipo comprometido»); la regla las deja pasar a las tres con el mismo gesto. Mensaje interceptado. Respuesta: «estar dentro no dice si es de fiar». Dos columnas, con la fila de la lección (`sp/sp1-part2.ts:33-36`): «perímetro: se decide una vez, en el borde» frente a «Zero Trust: se decide en cada petición». Nombre ZERO TRUST, con «never trust, always verify» debajo | Una credencial robada o un portátil comprometido ya están dentro; Zero Trust verifica cada petición · `vest, same-rule, stolen, compromised, once, every, zerotrust` · **intercept** |
+| s03-verbos «Una oficina, un encargado y un mozo» | II Quién decide y quién aplica | 46 | La nave de un almacén del puerto, con una línea que la parte en dos. Abajo, el mozo, la estantería y quien viene a recoger un pedido; arriba, vacía, la oficina de pedidos y el encargado de turno. Primero, solo el mozo con el pedido en la mano. Mensaje interceptado. Respuesta: el mozo ve pasar la mercancía, pero no tiene el historial de quien recoge ni las normas, que son las mismas para todos los mozos. Suben la oficina y el encargado y se dibuja la secuencia, con su nombre cada uno: el mozo manda la petición por el sistema de pedidos, sin llamar a nadie, la oficina decide (POLICY ENGINE · decide), el encargado imprime la orden de salida con su caducidad y se la deja en la bandeja del mozo (POLICY ADMINISTRATOR · comunica; `order`), y el mozo entrega solo lo que dice la orden (POLICY ENFORCEMENT POINT · aplica). Un corchete une oficina y encargado: PDP. Aparecen los dos planos: arriba CONTROL PLANE, abajo DATA PLANE, con el mozo como lo único de control en la parte de abajo | Engine decide, administrator comunica, PEP aplica; engine y administrator son el PDP, en el control plane · `warehouse, clerk-alone, desk, lead, order, planes, pdp, wrap` · **intercept** |
+| s04-peticion «Una petición, paso a paso» | II | 38 | Consola: «simulador de políticas · propuesta de Seguridad · sin efectos: el ERP no se toca». La política, como una tarjeta que solo se lee en pantalla: «ERP · perfil Operaciones · equipo del puerto, cifrado y con EDR activo · ubicación y hora habituales · lectura y escritura · sesión de 30 min», con «policy-driven access control» en pequeño y sin explicar. Petición 1: «cuenta de prueba · perfil Operaciones · portátil del puerto, cifrado, EDR activo · 10:05 · desde la red del puerto», con el rótulo SUBJECT/SYSTEM (la persona más su equipo: los dos cuentan). Los cinco pasos del flujo de la lección (`sp/sp1-part2.ts:106-124`) se encienden en orden, dibujados como conectores entre el mozo, la oficina y el encargado de s03: la petición llega al PEP, el PEP consulta al PDP, el engine decide, el administrator emite la orden y el token de 30 minutos, y el tráfico va a una zona mínima. Resultado: «concedido · lectura y escritura · 30 min» (`grant`). Nombre IMPLICIT TRUST ZONE, con «zona pequeña y explícita: solo el ERP» | El PEP consulta y obedece; la decisión y la orden viven en el control plane; el tráfico, en el data plane · `sim, policy, request, consult, decide, order, traffic, zone, grant` |
+| s05-contexto «Otro país, las tres de la madrugada» | II | 46 | El sello «diseño y simulación · sin efectos» **sigue visible en toda la escena**. Petición 2, la misma cuenta y el mismo portátil, ahora «otro país · 03:00». El engine pide un segundo factor («el proveedor de identidad lo pedirá desde el 30-11», nota pequeña y en futuro; `step-up`) y, superado, concede **solo lectura** durante 30 minutos. Nombre ADAPTIVE IDENTITY, con «la exigencia cambia con el contexto» (el check de la lección acaba de preguntarla: aquí solo se ve y se nombra). Evento de prueba a los 10 minutos: «EDR: malware en el equipo». Pregunta para pensar, con dos botones: «PEP» y «administrator». Respuesta: el administrator. El engine ve el aviso y decide cerrar, el administrator revoca la sesión y el PEP la corta: «sesión cerrada · 10 min» (`revoke`). Nombre THREAT SCOPE REDUCTION con tres chips: «solo lectura · 30 min · solo el ERP». Un sello al final: «siguiente paso · piloto con el ERP de pruebas · Seguridad · 11-12» | Adaptive identity ajusta lo que se exige; threat scope reduction hace que valga poco y se puede cerrar en cuanto cambia la señal: decide el engine, revoca el administrator, corta el PEP · `req2, odd, step-up, readonly, event, think, revoke, scope, pilot` · **think** |
+| s06-recap «Tres reglas» | III Para el examen | 22 | Tres tarjetas de reglas, cada una con su icono (el chaleco · la oficina, el encargado y el mozo · la orden con su reloj); tarjeta final Alertópolis: «Tu turno: las preguntas de la lección» (sp1m3, 6 preguntas) | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+
+- **Tarjetas de examen** (objetivo 1.2), una por escena de s02 a s05, cada una con su cue antes de la última frase de la
+  escena (`examTiming: sentence-end`):
+  - «Never trust, always verify: se verifica cada petición» (s02) (53)
+  - «Engine decide, administrator comunica, PEP aplica» (s03) (49)
+  - «PDP en el control plane; el PEP, en el data plane» (s04) (49)
+  - «Threat scope reduction: que un compromiso valga poco» (s05) (52). Es un principio, no una estructura: la tarjeta no la
+    junta con las zonas. Adaptive identity queda en la escena (con su nombre en pantalla) y en la regla 3 del cierre; la pregunta para pensar es la de la revocación.
+- **Pregunta para pensar** (`holdMs` 4500): «El EDR avisa: ¿quién revoca la sesión?» (s05) (38). Llega con el aviso ya en
+  pantalla y sin rótulo que la conteste. Respuesta: el administrator revoca (crea y revoca la sesión y ordena al PEP,
+  `sp/sp1-part2.ts:61`, q3); el engine es quien ve la señal y decide cerrar, y el PEP, quien corta cuando se lo ordenan. La
+  tentación es el PEP, que es el que «corta». No repite el check de adaptive identity que sale justo antes en la lección
+  (`:157-171`, la misma situación de otro país a las 03:00) y trabaja lo que la lección solo nombra (la revocación,
+  `:130`) con la trampa de q3.
+- **Mensajes interceptados** (NULL CIPHER, `holdMs` ~3800; uno por capítulo en I y II, ninguno en el cierre; todos en
+  infinitivo, sin persona y con «Lógico.», como los de V11 y V12; ni puertas ni llaves):
+  - s02: «Confiar en todo equipo de la red interna. Ya pasó el control. Lógico.» (69). El error que corrige la narradora:
+    creer que haber pasado el borde basta. Es verdad que pasó el control; por eso un equipo comprometido o una credencial
+    robada también están dentro. Estar dentro no dice si es de fiar (`sp/sp1-part2.ts:21`).
+  - s03: «Dejar que decida el punto de aplicación. Ve todo el tráfico. Lógico.» (68). El error: que decida el PEP porque
+    está en medio. Ve el tráfico, sí, pero no tiene el contexto ni la política; decide el engine, el administrator comunica y
+    el PEP aplica (`:136`, q5: «la respuesta nunca es el PEP»).
+- **Cierre:** tres reglas y una sola tarea.
+  1. Dentro no es de fiar: se verifica cada petición, con identidad, equipo y contexto. Verificar no es negar.
+  2. El engine decide, el administrator comunica y el PEP aplica. Engine y administrator son el PDP, en el control plane; el
+     PEP, en el data plane.
+  3. La exigencia se adapta al contexto y el daño se acota: sesión corta, alcance mínimo y revocable. Zero Trust no es una
+     caja que se compra: un proveedor puede vender un PEP o un PDP, pero la política y las señales las diseñas tú
+     (`sp/sp1-part2.ts:155`).
+
+  Tarea: las 6 preguntas de la lección sp1m3 (todas tocan lo que cuenta el vídeo: la q1 es la definición, la q2, q3 y q5 son
+  los tres verbos, la q4 es threat scope reduction y la q6 se apoya en el rótulo SUBJECT/SYSTEM de s04).
+- **Se queda fuera** (sigue en la lección, que quien ve el vídeo ya ha leído, porque va al final):
+  - La tabla completa del perímetro frente a Zero Trust (`sp/sp1-part2.ts:23-48`): solo sale la fila de dónde se decide.
+  - Policy-driven access control como concepto propio (`:59`, `:78`): rótulo pequeño en s04, sin explicar.
+  - NIST SP 800-207 y la tabla de componentes por plano (`:52`, `:72-85`); micro-segmentación como término (`:40`, `:58`).
+  - Implicit trust zones y subject/system como conceptos con tarjeta: salen como rótulos en s04. La zona se dice «pequeña y
+    explícita».
+  - El matiz de que Zero Trust es una arquitectura y no una caja (`:155`): una frase en el cierre.
+  - El puente a la seguridad física (`:172-175`), que queda justo después del vídeo.
+- **Laboratorios:** ninguno de sp1 toca Zero Trust (`sp/labs.ts:16-55`: spl1a clasifica controles, spl1b ordena un cambio y
+  spl1c elige familias criptográficas), así que no hay solución que destripar. Una precaución: s01 y s04 enseñan una regla
+  de cortafuegos y una política, y el vídeo **no las clasifica** (technical, preventive, etc.), para no rozar spl1a.
+
+**Canon nuevo que fija V20** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- **2026-11-13 (viernes): diseño y simulación del acceso al ERP.** Seguridad ha escrito una política por petición para el
+  ERP (`erp.local`, el de la regla de V1, `v1/src/scenes/S05Rules.tsx:25`, y el «correo, web, ERP» del SIEM,
+  `video/siem/src/data/s02-collect.ts:33`) y la analista, en segunda persona y sin nombre, la prueba en un simulador de
+  políticas. **No funciona nada ni se toca el ERP real.** La política: perfil Operaciones; equipo del puerto, cifrado y con
+  EDR activo; ubicación y hora habituales; lectura y escritura; sesión de 30 minutos; con otro contexto, segundo factor y solo
+  lectura; si el EDR avisa, sesión cerrada. Sin nombres de equipo nuevos: ni del PEP ni del PDP.
+- **Tres peticiones de prueba, con una cuenta de prueba** (sin nombre, no es de nadie): las 10:05 desde la red del puerto
+  (concedida), la misma cuenta y equipo desde otro país a las 03:00 (segundo factor y solo lectura) y un evento de prueba
+  del EDR a los 10 minutos (sesión cerrada). Son simulaciones, no sucesos.
+- **El segundo factor lo pide el proveedor de identidad «desde el 30-11»**, en futuro, como en V10 (la mejora «MFA y lista de
+  contraseñas prohibidas en el proveedor de identidad · Sistemas · 30-11»). El 13-11 el proveedor de identidad solo pide
+  contraseña; la simulación supone que el 30-11 ya existirá, y lo dice.
+- **Mejora con responsable y fecha: «piloto con el ERP de pruebas · Seguridad · 11-12»** (viernes). Es un entorno de pruebas,
+  no el de producción, y se fecha después del 30-11 a propósito: el piloto necesita el segundo factor del proveedor de
+  identidad. Ningún vídeo la enseña cumplida.
+- **NULL CIPHER**, tercera aparición en la cronología (primera, en el orden del curso), con el registro de V11 y V12: manual
+  de procedimiento en infinitivo, «Lógico.», sin IP, dominio ni equipo; solo da consejos.
+- **Comprobado contra la cronología:** 13-11 viernes, 11-12 viernes, 30-11 lunes (Node). El 13-11 cae entre el último hecho
+  de V12 (12-11) y el 16-11 de V16; el 11-12 queda después del 1-12 (fases del plan de zonas) sin relacionarse con ellas.
+
+**No se toca:**
+- **El dosier de NULL CIPHER** (`sp/sections.ts:49`): ningún lector de badges (la lección siguiente, sp1m4, es la seguridad
+  física), ningún certificado autofirmado ni raíz «temporal», la palabra «inventario» no sale y nadie firma «GH». NULL CIPHER
+  no tiene IP, dominio ni equipo; nada la relaciona con otro adversario. Y la regla de V11: **ni puertas ni llaves para NULL
+  CIPHER** (es la imagen del spraying de RED MARROW en V10). La narradora puede hablar de «la puerta» al explicar el PEP
+  si el guion lo pide; sus mensajes, no. La imagen de V20 evita las dos palabras.
+- **El caso `IR-2026-0147`** (3-9 y 4-9): ni sus equipos (`OPS-WS-*`, `ADM-WS-*`, `srv-tc-app03`), ni `svc_tosreport`, ni la
+  01:52, ni los 38 GB. **El vídeo no dice que Zero Trust, el segundo factor o el EDR habrían frenado nada de septiembre**
+  (el registro, §5, ya lo prohíbe para la bóveda y el segundo factor). La señal «EDR activo» del equipo no insinúa que
+  alguna estación no lo tuviera. Lucía no sale: la cuenta de la simulación no es de nadie.
+- **La VPN** (V17: «cómo se entra en la VPN» no se toca): el «antes» es la regla de V1, no una VPN. Ni su servidor, ni sus
+  factores, ni el túnel dividido o completo.
+- **Las zonas y el jump server de V16:** el vídeo no los nombra ni dice que Zero Trust sustituya al plan de zonas. «Zona
+  mínima» no es ninguna de las seis zonas de V16. Nada de lo de V16 y V17 funciona antes del 1-12 y V20 no lo adelanta.
+- **La MFA del proveedor de identidad** (V10, Sistemas, 30-11): solo en futuro y como nota; ninguna pantalla pide un segundo
+  factor real el 13-11, ni se enseña cumplida. El proveedor de identidad no tiene nombre de host.
+- **El portal de reservas** (`hpa-portal-web-01`), la noche del 21-10, el certificado del 11-11 (V10–V12): no salen.
+- **Contratistas, proveedores y mantenimiento:** ninguno en ninguna escena (dosier de RED MARROW; final de sp5). Nadie con
+  nombre: ni `a.soto` ni `r.haugen` ni `c.navarro` ni `o.virta`; la cuenta es «de prueba».
+- **Septiembre, ni de lejos:** «credencial robada» y «equipo comprometido» son el supuesto de la lección (`:21`), pero la pareja se parece a lo que pasó el 3 y el 4-9. El guion no dice «como pasó», «como en un caso real» ni «habría frenado».
+- No se culpa a nadie de que la regla de hoy mire solo el origen: «la regla creció así», como la red de V16.
+
+**Comprobación de límites** (perfil `capsula-yt`; recuento con Node, `[...texto].length`, por un script que lee esta ficha):
+- Duración: suma 210 s; render esperado 235–250 s, dentro de 190–260. Los extremos conocidos (0,89 y 1,22 veces la suma)
+  dan 187–256 s: el alto cabe; el bajo queda 3 s por debajo del mínimo, pero V10 y V12, con la misma estructura,
+  estimaron por encima de su suma (273 s con 220 y unos 260 con 210), así que se espera lo contrario. Si el primer
+  borrador se acerca a 190, se alarga s03.
+- 6 escenas en 3 capítulos (máximo 3). 3 conceptos (2–3).
+- 4 tarjetas de examen (3–5), una por escena de s02 a s05, ninguna en la última; de 49 a 53 caracteres (máximo 58), sin
+  `{}[]|<>`, flechas, marcas, viñetas ni emoji.
+- 1 pregunta para pensar (exactamente 1), 38 caracteres (máximo 48), `holdMs` 4500.
+- 2 mensajes interceptados (1–2), uno por capítulo (I y II), ninguno en la escena final; 69 y 68 caracteres (máximo 70);
+  `holdMs` ~3800 (2500–4500); `video.json` lleva `"adversary": "NULL CIPHER"`.
+- `wordBudget` por escena (`s` × 2,7): s01 59 · s02 97 · s03 124 · s04 103 · s05 124 · s06 59 (total 566).
+- Sin identificadores en la voz: `erp.local` solo en pantalla (la voz dice «el ERP»); sin hosts, IP ni cuentas. Siglas en
+  voz que necesitan léxico (pronunciación, ver decisiones): PEP, PDP, EDR, ERP, NIST.
+- El título entra antes de los 12 s (s01: una frase corta y el título).
+
+### V21 · sp4m2 · Cápsula · «WPA3-Enterprise: de una clave para todos a una identidad para cada uno»
+
+> Propuesta del 2026-10-08 (tanda 4), con las opciones recomendadas ya elegidas; falta que Lidia diga qué cambia. La versión
+> vigente de escenas y guion será `video/wifi-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en
+> `video/wifi-halden/out/script-notes.md`. Las decisiones, con lo descartado y los riesgos, están en
+> `docs/reviews/2026-10-08-fichas-tanda4/decisiones-V20-V21.md` (apartado V21).
+>
+> **Orden del curso.** sp4m2 es la segunda lección de sp4, anterior a sp4m6 (el SIEM) y a sp4m7 (V1): quien sigue el curso
+> ve V21 antes que cualquier otro vídeo de SILENT PAGER y antes del caso de septiembre. Por eso V21 no remite a ningún
+> vídeo, no nombra el caso ni a Lucía, y presenta a SILENT PAGER desde cero, con la fórmula de V1 («cuenta con que tu SOC
+> duerma»). Ni siquiera necesita V17: explica el modo enterprise entero, en una frase, sin los nombres de los tres papeles.
+>
+> Rutas relativas a la raíz del repo; `sp/` = `src/data/secplus/`.
+
+- **Carpeta:** `wifi-halden` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) · objetivo **4.1**
+  (cabecera de la lección, `sp/sp4-part1.ts:266`) · adversario **SILENT PAGER** (sección sp4, `sp/sections.ts:101-106`), dos
+  mensajes interceptados, con la voz de V1, V5 y V5b (`sapi/Microsoft Pablo`, `rate` 0, `machine`;
+  `video/ir-halden-pruebas/narration.json:11-15`) · voz `recording/lidia` con
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · música `Go On Going - Stayloose.mp3` · en `video.json`,
+  `"lesson": "sp4m2"` y `"adversary": "SILENT PAGER"`.
+- **Etiquetas** (`video.json`, clave `"tags"`): WPA3, WPA2, SAE, four-way handshake, forward secrecy, WPA3-Enterprise, 802.1X,
+  RADIUS, EAP-TLS, PEAP, site survey, heat map, seguridad wifi, Security+.
+- **Efectos (`sfx`):** los automáticos del motor y cuatro momentos: `spill` («error», la señal llega al aparcamiento), `captured`
+  («glitch», el portátil graba el apretón de manos), `sealed` («lock», SAE: la captura no sirve) y `reject` («block», la
+  tableta revocada no entra).
+- **`video.json`:** `"profile": "capsula-yt"`, `"track": "secplus"`, `"adversary": "SILENT PAGER"`, `"lesson": "sp4m2"`, la música de arriba y los
+  `"tags"` de arriba. Título de YouTube: «WPA3-Enterprise: de una clave para todos a una identidad para cada uno | CompTIA Security+ en
+  español». Ritmo: `"examTiming": "sentence-end"`; pregunta con `think.holdMs` 4500; mensajes con `intercept.holdMs` 3800.
+- **Léxico** (se reutiliza lo que Lidia ya dice y lo nuevo se confirma al grabar, porque el importador ancla cada frase a
+  lo que ella diga): ya fijados `RADIUS` («rádius»), `EAP` («eap»), `EAP-TLS` («eap te ele ese»), `TLS` («te ele ese»),
+  `802.1X` («ochocientos dos punto uno equis»), `VLAN`; nuevos, con la lectura habitual en España: `WPA3` («uve doble pe a
+  tres»), `WPA2` («uve doble pe a dos»), `SAE` («ese a e»), `PEAP` («píap»), `TTLS` («te te ele ese»), `PSK` («pe ese ca»),
+  `PKI` («pe ca i»), `AAA` («a a a»). `four-way handshake`, `forward secrecy`, `heat map` y `site survey` se dicen en inglés.
+- **Lo que se lee no se deletrea:** `HALDEN-OPS`, `tableta 07`, `ptl-pruebas-02`, las direcciones del punto de acceso y las
+  líneas del registro de RADIUS van solo en pantalla; la voz dice «la red de las tabletas», «una tableta», «tu portátil de
+  pruebas» y «el servidor RADIUS». Las notas en dBm sí se dicen («menos cincuenta y cinco»): son el dato. Ninguna excepción.
+- **Duración:** suma de `s` **210 s** (6 escenas), la estructura de V10 y V12 (dos mensajes, una pregunta y escenas de
+  consola): estimado ~260 s y **unos 235–250 s renderizados (unos 4:00)**, dentro de 190–260. No se rellena. La suma predice
+  mal (0,89 en V5 y 1,22 en V4), así que el primer borrador se mide por los dos lados: si el estimado pasa de 255 s, se
+  recorta primero s02 (la repetición del mapa de calor, solo en pantalla) y luego s05 (la pantalla del punto de acceso
+  falso, que se queda en media frase); si se acerca a 190 s, se alarga s03, la escena más densa. s03 es la escena crítica
+  (el apretón de manos, el ataque sin conexión, SAE y forward secrecy en 50 s): si no cabe, el forward secrecy pasa a una
+  frase y un rótulo.
+- **Inserción:** en `sp/sp4-part1.ts`, lección sp4m2, entre el check de WPA3-Enterprise (`:310-324`) y el encabezado
+  «Movilidad: MDM y los modelos BYOD, COPE y CYOD» (`:325`), como bloque `t: 'video'` con su id de YouTube, su póster y su
+  transcripción propios en `public/`, precedido de una línea: «Antes de pasar a los móviles, míralo en la terminal: hasta dónde
+  llega la señal, qué se lleva quien la escucha y qué cambia con WPA3». Todo lo que enseña el vídeo va antes en la lección: el
+  site survey y el heat map (`:285-304`), WPA3, SAE, el modo enterprise y EAP (`:305-309`) y el check de enterprise
+  (`:310-324`). **El vídeo llega antes que el recuadro de Halden de la lección** (`:380-385`, «Tres hallazgos de la auditoría de
+  este trimestre»): lo que ese recuadro cuenta en presente («pasa a WPA3-Enterprise», «se bajan dos antenas»), el vídeo lo
+  fecha y lo cuenta con detalle; no contradice nada, y se propone aparte dar fecha al recuadro (decisiones). Se fija en la
+  suite `lesson videos` de `src/data/content.test.ts` (`:248`), con su línea `toBe('sp4m2')` en el test que ata cada vídeo
+  a su lección.
+- **Enfoque («una clave que sabe toda la terminal»):** lunes 14-12, revisión de campo de la auditoría del trimestre (la de
+  la lección, `sp/sp4-part1.ts:384`). Recorres la terminal con el portátil de pruebas: el mapa de calor deja la señal de
+  la red de las tabletas de las grúas, HALDEN-OPS, a −55 dBm en el aparcamiento de visitantes, y la red sigue en WPA2 con una
+  clave que sabe toda la terminal y que no cambia desde 2022. Qué se llevaría quien la escucha, lo enseñas **tú misma,
+  con una prueba autorizada en un punto de acceso de pruebas con la misma configuración** (nada se ataca en la red de
+  verdad, ni sale ninguna clave de verdad). Tres movimientos: bajar lo que se oye fuera (el martes 15-12 Infraestructura
+  baja la potencia de dos antenas y las gira hacia dentro, y el miércoles 16-12 la segunda medición deja −78 dBm), hacer
+  que lo que se oiga valga poco (SAE) y quitar la clave que todos comparten (modo enterprise con EAP-TLS, decidido ese
+  mismo día y con fecha de ejecución el martes 22-12, a cargo de Infraestructura). SILENT PAGER trae dos atajos de manual, sin atacar nada. Registro: auditoría y
+  prueba de laboratorio; la mejora de fondo, en futuro. Sin frase de puente: el vídeo no continúa ningún otro.
+
+**Conceptos (3) y su imagen:**
+
+Las tres imágenes salen del propio puerto o de la vida diaria y no se mezclan con las de V16 y V17 (valla, garita, puerta del
+recinto, aduana, ventanilla): un foco, un candado de combinación y el carné de cada uno. Nada de llaves ni de puertas para las
+claves, que ya son otras cosas en el canal.
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | La señal que se escapa (over-reach). El site survey mide la cobertura real y el heat map la dibuja, con dos problemas opuestos: las zonas sin cobertura y, el que interesa a seguridad, la señal que llega al aparcamiento, a la calle o al barco de enfrente. Se arregla con **colocación y potencia**: reubicar antenas, bajar la potencia, orientarlas hacia dentro. No con una clave más larga y no ocultando el SSID, que se descubre en cuanto un cliente legítimo se conecta (`sp/sp4-part1.ts:288`, check `:290-304`, q1) | Un foco del muelle que alumbra también al vecino de enfrente. No arreglas el foco poniéndole una cerradura ni tapando su etiqueta: lo bajas y lo giras hacia dentro | «Cobertura fuera del perímetro: colocación y potencia» |
+| 2 | WPA3 personal frente a WPA2-PSK. En WPA2-PSK, quien captura el **four-way handshake** se lo lleva y prueba millones de claves **sin conexión** hasta acertar, sin que la red se entere. **SAE** (Simultaneous Authentication of Equals) sustituye ese apretón: capturarlo no sirve, cada intento exige hablar con la red, y además da **forward secrecy**: averiguar la clave hoy no abre el tráfico grabado ayer. Sigue siendo una clave compartida (`:308`, q2) | Un candado de combinación. En WPA2 es como si pudieras desmontarlo y llevártelo a casa a probar combinaciones sin que nadie te vea; con SAE el candado está atornillado a la taquilla del muelle y solo se prueba allí, uno a uno y a la vista | «SAE: frena el ataque offline y da forward secrecy» |
+| 3 | Modo enterprise y método EAP. En lugar de una clave compartida, cada usuario o dispositivo se autentica individualmente contra un servidor AAA, normalmente RADIUS, con 802.1X: identidad en los registros, revocación individual sin cambiar nada al resto, políticas por perfil. El precio: un servidor RADIUS, un directorio y, si hay certificados, una PKI. El método lo pone EAP: **EAP-TLS** (certificado en el servidor y en el cliente, autenticación mutua, sin contraseñas) es el más fuerte; **PEAP** y **EAP-TTLS** llevan las credenciales dentro de un túnel TLS y dependen de que el cliente **valide el certificado del servidor**, o un punto de acceso falso las recoge a la primera (`:308`, check `:310-324`, q3) | El código de la escalera frente al carné de cada uno. Con la clave compartida, es el código de la escalera que sabe todo el edificio: echar a uno exige cambiarlo para todos. Con el modo enterprise, cada uno lleva su carné y se anula solo el que se pierde | «Modo enterprise: 802.1X y RADIUS, identidad individual» · «EAP-TLS, el más fuerte; PEAP exige validar al servidor» |
+
+**Escenas:** seis, en tres capítulos (Lo que se oye fuera · De una clave a una identidad · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «Una clave para toda la terminal» | I Lo que se oye fuera | 22 | Sello «14-12 · lunes · auditoría del trimestre · wifi de la terminal». Dos hallazgos en dos tarjetas: «la señal llega al aparcamiento de visitantes · −55 dBm» y «HALDEN-OPS · WPA2 · una clave que sabe toda la terminal · sin cambiar desde 2022». La primera frase dice el problema en llano («La clave del wifi de las tabletas la sabe toda la terminal, y lleva sin cambiar desde 2022»); al acabarla, título «WPA3» (hacia los 8 s, siempre antes de los 12) y la promesa en tres chips: «hasta dónde llega la señal · qué se lleva quien la escucha · una identidad para cada uno». Entra la etiqueta «SILENT PAGER · sección 4» con «cuenta con que tu SOC duerma» | La promesa en los primeros 10 s: dos hallazgos, una señal que se escapa y una clave de todos · `audit, findings, title, promise, adversary` |
+| s02-foco «Un foco que alumbra al vecino» | I | 36 | El plano de la terminal con el mapa de calor: rojo y naranja dentro, y una mancha que sale del límite de la terminal hasta el aparcamiento de visitantes (`spill`). El portátil de pruebas en el aparcamiento enseña la lista de redes que oye: «HALDEN-OPS · WPA2 · −55 dBm». La imagen: un foco del muelle que alumbra también la casa de enfrente. Nombres SITE SURVEY y HEAT MAP. Mensaje interceptado. Respuesta: dos tachados, «ocultar el nombre» («se ve en cuanto una tableta se conecta») y «una clave más larga» («no baja la señal»). Lo que sí: «colocación y potencia»; el 15-12 dos antenas bajan potencia y giran hacia dentro, y el 16-12 la segunda medición deja el aparcamiento en «−78 dBm»: «se oye menos, pero se oye». Cierre del capítulo con la pregunta que abre el siguiente: ¿y lo que aún se oiga? | La fuga es un problema de colocación y potencia; ocultar el SSID no es un control y la clave no baja la señal · `survey, spill, scan, floodlight, hide, fix, remeasure, still` · **intercept** |
+| s03-apreton «El apretón de manos» | II De una clave a una identidad | 50 | Rótulo fijo: «prueba autorizada · punto de acceso de pruebas · misma configuración que HALDEN-OPS · clave de prueba, corriente a propósito». Una tableta de pruebas se conecta y el four-way handshake se dibuja como cuatro intercambios entre la tableta y el punto de acceso; tu portátil de pruebas, cerca, los graba: «captura · 1 handshake» (`captured`). Se lleva el archivo «a casa» (otra pantalla, «sin conexión con la red»): contadores «claves probadas · 38.000.000» y, en el punto de acceso, «intentos recibidos · 0», **sin tiempos ni velocidades**, sin nombre de adaptador ni de modo de captura. El contador sigue y la escena **no enseña ningún resultado**: la voz dice qué pasaría («con una clave corriente acabaría acertando; una larga y aleatoria aguanta»). Nombres FOUR-WAY HANDSHAKE y OFFLINE. La imagen: el candado de combinación que te llevas a casa. Segunda mitad, WPA3 personal: el mismo intercambio, ahora con SAE (SIMULTANEOUS AUTHENTICATION OF EQUALS): el portátil graba y no tiene nada que probar; cada intento tiene que hacerse contra el punto de acceso, uno a uno y a la vista (`sealed`), con el candado atornillado a la taquilla. Una cinta del tráfico grabado ayer: con WPA2, la clave averiguada hoy la abre; con SAE sigue cerrada: FORWARD SECRECY. Rótulo final: «sigue siendo una clave para todos» | Quien captura el apretón de WPA2 lo ataca sin conexión; SAE lo impide y da forward secrecy; la clave sigue compartida · `lab-stamp, handshake, captured, offline, padlock, sealed, one-by-one, tape, still-shared` |
+| s04-enterprise «La clave de todos» | II | 40 | La clave compartida, en un cartel: «HALDEN-OPS · una clave · toda la terminal · sin cambiar desde 2022». Mensaje interceptado. Respuesta: una clave larga ayuda contra el diccionario, pero sigue siendo la misma para todos: no sabes quién entra y no puedes echar a uno sin cambiarla en todos los demás. La imagen: el código de la escalera que sabe todo el edificio. Ejemplo (rotulado «ejemplo · sin fecha»): «si una tableta se pierde». Con la clave compartida, hay que cambiarla en todas las demás. Con el modo enterprise, el registro de RADIUS: «tableta 07 · EAP-TLS · certificado válido · Access-Accept»; «ejemplo: certificado de la tableta 07 revocado»; «tableta 07 · Access-Reject» (`reject`); «tableta 08 · Access-Accept». La imagen: cada uno con su carné. Nombres WPA3-ENTERPRISE, con «802.1X · RADIUS (AAA)» debajo. Tres chips con lo que hace falta: «servidor RADIUS · directorio · PKI». El sello: «HALDEN-OPS a WPA3-Enterprise · EAP-TLS · Infraestructura · 22-12» | Una identidad por usuario o dispositivo: registros por persona y revocación individual · `shared, long-key, lost, accept, revoke, reject, aaa, needs, decision` · **intercept** |
+| s05-eap «Dos formas de entrar» | II | 42 | Dos carriles para la misma conexión. Primero, solo los títulos: «PEAP · TTLS» y «EAP-TLS». Pregunta para pensar, con dos botones: «PEAP» y «EAP-TLS». Respuesta: EAP-TLS, porque las tabletas ya tienen certificado (el dato de la lección) y se puede pedir lo más fuerte. Luego los carriles se llenan. PEAP: «usuario y contraseña dentro de un túnel TLS · certificado solo en el servidor»; la advertencia en grande, «el cliente tiene que validar el certificado del servidor». Un punto de acceso falso, dibujado fuera de la terminal y rotulado «hipótesis», con el mismo nombre de red: si la tableta no valida, recoge sus credenciales a la primera (el dibujo dice «credenciales», no «contraseña»). EAP-TLS: «certificado en la tableta y en el servidor · autenticación mutua · no hay contraseña que robar». Nombre EAP | EAP-TLS pide certificados en los dos lados y es el más fuerte; PEAP y TTLS dependen de validar el certificado del servidor · `lanes, think, answer, peap, validate, fake-ap, tls, mutual, wrap` · **think** |
+| s06-recap «Tres reglas» | III Para el examen | 20 | Tres tarjetas de reglas, cada una con su icono (el foco · el candado atornillado · el carné); tarjeta final Alertópolis: «Tu turno: termina la lección y sus preguntas» | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+
+- **Tarjetas de examen** (objetivo 4.1), una por escena de s02 a s05, cada una con su cue antes de la última frase de la
+  escena (`examTiming: sentence-end`):
+  - «Cobertura fuera del perímetro: colocación y potencia» (s02) (52)
+  - «SAE: frena el ataque offline y da forward secrecy» (s03) (49). «Frena», no «elimina»: SAE impide el diccionario
+    sin conexión, pero se puede seguir adivinando contra la red, uno a uno.
+  - «Modo enterprise: 802.1X y RADIUS, identidad individual» (s04) (54)
+  - «EAP-TLS, el más fuerte; PEAP exige validar al servidor» (s05) (54). Repite a propósito la idea de la tarjeta de V17
+    («802.1X con certificados en los dos lados: EAP-TLS») y añade lo que V17 deja solo en pantalla: la condición de PEAP.
+- **Pregunta para pensar** (`holdMs` 4500): «Tabletas con certificado: ¿PEAP o EAP-TLS?» (s05) (42). Llega con los dos carriles
+  solo con su título, para que el dibujo no la conteste. Respuesta: EAP-TLS. Las tabletas ya tienen certificado, así que el
+  puerto puede pedir autenticación mutua y quitar las contraseñas de en medio; PEAP es lo razonable cuando no hay
+  certificados de cliente, y más fácil de desplegar, pero más débil (`sp/sp4-part1.ts:308`, q3 `:422-435`).
+- **Mensajes interceptados** (SILENT PAGER, `holdMs` ~3800; uno por capítulo en I y II, ninguno en el cierre; tutea a la
+  analista y cierra con ironía, como en V1 y V5b; no ataca nada ni dice dónde está; no usa «Duerme tranquila» (es de V5b) ni
+  «De nada» (V5 y V18)):
+  - s02: «Oculta el nombre de la red. Si no la ven, no existe.» (52). El error que corrige la narradora: creer que
+    ocultar el SSID es un control. El nombre se descubre en cuanto un cliente legítimo se conecta y la señal sigue
+    llegando al aparcamiento; lo que se arregla es la cobertura (`sp/sp4-part1.ts:288`, check `:290-304`).
+  - s04: «Una clave larga para toda la terminal. Qué elegante.» (52). El error: dar por resuelto un problema de
+    identidad con una clave mejor. Una clave larga ayuda contra el diccionario, pero sigue siendo una para todos: no hay
+    nombres en los registros y no se puede revocar a uno sin cambiarla en todos (`:308`, check `:310-324`).
+- **Cierre:** tres reglas y una sola tarea.
+  1. Si la señal se escapa, colocación y potencia. Ni una clave más larga ni ocultar el nombre.
+  2. WPA3 cambia el apretón de manos de WPA2 por SAE: frena el ataque sin conexión y da forward secrecy. Pero la clave sigue
+     siendo de todos.
+  3. Una identidad para cada uno: modo enterprise con 802.1X y RADIUS. EAP-TLS, con certificados en los dos lados, es lo más
+     fuerte; PEAP y TTLS exigen que el cliente valide el certificado del servidor.
+
+  Tarea: terminar la lección y sus preguntas. El vídeo va a mitad de sp4m2, antes de los móviles y de las aplicaciones
+  (`:325-379`); de las siete preguntas, las q1, q2 y q3 tocan lo que cuenta el vídeo y las q4 a q7 (CYOD, MDM, validación de
+  entrada y cookies) tratan de lo que viene después.
+- **Se queda fuera** (sigue en la lección):
+  - Las zonas sin cobertura y la interferencia (`sp/sp4-part1.ts:287-288`): solo sale la fuga, que es la que interesa a
+    seguridad.
+  - MDM, containerization, remote wipe, jailbreak y los modelos BYOD, COPE y CYOD, y los métodos de conexión (`:325-368`; quiz
+    q4 y q5).
+  - La seguridad de aplicaciones (`:375-379`; quiz q6 y q7): validación de entrada, secure cookies, SAST y DAST y code signing.
+    Es el vecindario de V19 (sp2m4) y del tercer hallazgo del recuadro de Halden, y el vídeo ni lo cuenta ni lo numera.
+  - Los tres papeles de 802.1X (supplicant, authenticator y authentication server) y EAPOL, que cuenta V17; en V21, «el
+    punto de acceso pregunta al servidor RADIUS».
+  - WPA3-Enterprise de 192 bits, PMF y la protección de las tramas de gestión: no están en la lección.
+- **Laboratorios:** ninguno de sp4 toca la seguridad inalámbrica (`sp/labs-sp4.ts`: spl4a Log Hunt, spl4b Incident Response
+  Drill, spl4c Vulnerability Triage), así que no hay solución que destripar. Una precaución fuera de la sección: spl2a
+  clasifica a un jefe de operaciones que enchufa un router wifi sin registrar en la red del patio «para que su equipo use
+  tabletas» y que TI solo encuentra en un «wireless survey» (`sp/labs-sp2.ts:119-121`, shadow IT). **El survey de V21 no
+  encuentra ningún aparato ni ningún router sin registrar**, y la voz no habla de shadow IT ni de nadie que instale redes.
+- **Lo que enseñan las pantallas de la prueba** (precaución de producción): los contadores y rótulos de s03 no nombran
+  ninguna herramienta, ni listan palabras ni enseñan una clave encontrada. La prueba es con un punto de acceso de pruebas y
+  una clave de prueba; el vídeo no es una receta contra una red real.
+
+**Canon nuevo que fija V21** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- **2026-12-14 (lunes): revisión de campo de la auditoría del trimestre.** La analista (segunda persona, sin nombre) recorre
+  la terminal con el portátil de pruebas: el mapa de calor deja **−55 dBm** en el aparcamiento de visitantes (el dato de la
+  lección, `sp/sp4-part1.ts:384`) y la lista de redes que oye allí incluye **HALDEN-OPS**, en WPA2. Esa red, la de las
+  tabletas de las grúas, comparte una sola clave entre toda la terminal, sin cambiar desde 2022 (también de la lección).
+  No se dice quién hace la auditoría ni quién conoce la clave. Sin culpables: «creció así».
+- **Prueba autorizada de la analista, en laboratorio:** un punto de acceso de pruebas con la configuración de HALDEN-OPS
+  (WPA2-PSK, clave de prueba corriente a propósito). Captura de un handshake y un ataque de diccionario sin conexión con
+  contadores inventados (38.000.000 de claves probadas, sin tiempo ni velocidad) que no encuentran ni enseñan ninguna clave, ni de verdad ni de prueba. **No se ataca
+  HALDEN-OPS ni ninguna red real, y no sale ninguna clave real.**
+- **2026-12-15 (martes): Infraestructura baja la potencia de dos antenas y las gira hacia el interior**, y el
+  **2026-12-16 (miércoles)** la segunda medición deja el aparcamiento de visitantes en **−78 dBm**: «se oye menos, pero se
+  oye». Concreta el «se bajan dos antenas de potencia y se giran hacia el interior» de la lección.
+- **Mejora con responsable y fecha: «HALDEN-OPS a WPA3-Enterprise · EAP-TLS · Infraestructura · 22-12»** (martes), la del
+  recuadro de la lección, que dice «pasa a WPA3-Enterprise con RADIUS y EAP-TLS para las tabletas de las grúas, que ya tienen
+  certificado» sin fecha. **Desde el 22-12**, la red de las tabletas pasa a WPA3-Enterprise con EAP-TLS; hasta entonces sigue en WPA2
+  con su clave compartida. Ningún vídeo la enseña cumplida.
+- **Las tabletas «ya tienen certificado»** (el dato de la lección, en presente): el vídeo no dice quién se lo emitió, ni
+  cuándo, ni con qué CA.
+- **El ejemplo de la tableta perdida** (s04) es hipotético y está rotulado «ejemplo · sin fecha». No ha pasado, ni se ha
+  revocado nada. Sus nombres, **«tableta 07» y «tableta 08»**, son nuevos y solo salen en pantalla, dentro del ejemplo; no son
+  equipos del puerto ni de ningún registro.
+- **SILENT PAGER**, con el registro y la voz de V1, V5 y V5b: tutea y cierra con ironía; sin IP, dominio ni equipo; solo da
+  consejos equivocados.
+- **Comprobado contra la cronología:** 14-12 lunes, 15-12 martes, 16-12 miércoles y 22-12 martes (Node). Queda después de todo
+  lo fechado de Halden hasta ahora (V16–V17 del 16 al 27-11, la MFA del 30-11, el 1-12 del plan de zonas) sin tocarlo, y
+  dentro del trimestre («este trimestre» de la lección).
+
+**No se toca:**
+- **El dosier de SILENT PAGER** (`sp/sections.ts:106`): el ASN de NULL CIPHER, el movimiento lateral con cuentas de servicio,
+  los logs sin centralizar, «GH es una sola operación». SILENT PAGER no tiene aquí IP, dominio ni equipo, ni dice que esté
+  en el aparcamiento, ni que haya oído o capturado nada: son consejos, no un ataque. Y nada de lo de V21 es un incidente.
+- **El aparcamiento de RED MARROW** (`sp/sections.ts:63-68`: «USB en el aparcamiento»): el aparcamiento de visitantes sale solo
+  como el sitio donde se mide la señal, y nadie aparca ni deja nada allí. Tampoco los kits contra los operadores de grúas
+  (`:68`): las tabletas son «las tabletas de las grúas» de la lección, y la palabra «operadores» no sale.
+- **El dosier de BLIND ARCHITECT y la OT** (`sp/sections.ts:87`): la wifi de invitados no sale ni se dibuja; HALDEN-OPS no
+  tiene ninguna línea hacia PLC, esclusas ni zonas; el vídeo no dice a qué red llegan las tabletas ni qué hacen (no son el
+  control de las grúas, que la lección aísla, `sp/sp3-part1.ts:288`; el servidor de planificación de grúas, R-014, y el
+  servidor de control que habla con un dominio de fuera, `sp/sp2-part1.ts:147`, tampoco salen).
+- **El caso `IR-2026-0147`** (3-9 y 4-9) y sus equipos; Lucía; el portal de reservas y la noche del 21-10; el FINDING #0147.
+- **El dosier de NULL CIPHER:** ningún lector de badges, ningún autofirmado instalado como raíz. EAP-TLS sale como concepto,
+  con «certificado de la tableta» y «certificado del servidor»: ninguna CA con nombre, ninguna raíz que se instale en
+  nadie y ninguna «temporal». La CA interna del puerto sigue sin definir (V11–V12) y su raíz, si hiciera falta mencionarla,
+  «la reparte el puerto».
+- **V17:** el 802.1X de los switches de la planta de oficinas, el NAC de V1 y la VPN no salen; V21 no dice si el puerto tenía
+  o no un servidor RADIUS antes del 22-12, ni desde cuándo. «Un servidor RADIUS» a secas.
+- **Contratistas, proveedores y auditores externos:** ninguno en ninguna escena (PAPER GOVERNOR, `sp/sections.ts:125`; RED
+  MARROW, `:68`). Ni shadow IT ni routers sin registrar (spl2a).
+- **El tercer hallazgo del recuadro** (el portal de declaración de carga, `sp/sp4-part1.ts:384`) y todo lo de aplicaciones:
+  vecindario de V19.
+- **Una señal a −55 dBm no se presenta como un incidente.** Nada indica, ni se dice, que alguien hubiera capturado nunca el
+  handshake de HALDEN-OPS; el vídeo no lo afirma ni lo niega.
+- **Palabras:** «carné», nunca «badge» ni «pase» (dosier de NULL CIPHER, V6); «el código de la escalera», nunca «del portal» (el portal es el de reservas); no «valla y garita» juntas.
+- No se culpa a nadie de la clave de 2022 ni de la cobertura: «creció así».
+
+**Comprobación de límites** (perfil `capsula-yt`; recuento con Node, `[...texto].length`, por un script que lee esta ficha):
+- Duración: suma 210 s; render esperado 235–250 s, dentro de 190–260. Los extremos conocidos (0,89 y 1,22 veces la suma)
+  dan 187–256 s: el alto cabe; el bajo queda 3 s por debajo del mínimo, pero V10 y V12, con la misma estructura,
+  estimaron por encima de su suma, así que se espera lo contrario. Si el primer borrador se acerca a 190, se alarga s03.
+- 6 escenas en 3 capítulos (máximo 3). 3 conceptos (2–3).
+- 4 tarjetas de examen (3–5), una por escena de s02 a s05, ninguna en la última; de 49 a 54 caracteres (máximo 58), sin
+  `{}[]|<>`, flechas, marcas, viñetas ni emoji.
+- 1 pregunta para pensar (exactamente 1), 42 caracteres (máximo 48), `holdMs` 4500.
+- 2 mensajes interceptados (1–2), uno por capítulo (I y II), ninguno en la escena final; 52 y 52 caracteres (máximo 70);
+  `holdMs` ~3800 (2500–4500); `video.json` lleva `"adversary": "SILENT PAGER"`.
+- `wordBudget` por escena (`s` × 2,7): s01 59 · s02 97 · s03 135 · s04 108 · s05 113 · s06 54 (total 566).
+- Sin identificadores en la voz: HALDEN-OPS, el nombre de la tableta («tableta siete») y `ptl-pruebas-02` solo en pantalla
+  (la voz dice «la red de las tabletas» y «tu portátil de pruebas»). Siglas en voz que necesitan léxico: WPA3, SAE, EAP,
+  PEAP, TTLS, TLS, PSK, PKI, AAA, RADIUS (ya fijada: «rádius»).
+- El título entra antes de los 12 s (s01: una frase corta y el título).
+
+### V22 · s2m2 · Cápsula · «Courses of Action: ¿cortas o miras?»
+
+> Propuesta del 2026-10-08, con las opciones recomendadas ya elegidas; pendiente de que Lidia diga qué cambia. Tanda 4;
+> rama prevista `video-coa-precios`, desde `main`. La versión vigente de escenas y guion será
+> `video/coa-precios/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/coa-precios/out/script-notes.md`.
+> Las decisiones, con la alternativa descartada de cada una, están en
+> `docs/reviews/2026-10-08-fichas-tanda4/decisiones-V22-V23.md` (apartado V22).
+>
+> **La penalización del ranking manda en el diseño** (L=1, plan §3, fila 20): el Lab 2C ya clasifica ocho medidas en su
+> acción, y sus ocho ítems son casi las filas de la tabla de la lección (`src/data/labs.ts:352-392`;
+> `src/data/s2.ts:285-294`). El vídeo no recita los siete verbos ni clasifica nada. Cuenta lo que el laboratorio no
+> practica: por qué se confunden los dos pares del examen, cómo se lee la matriz (por filas) y lo que cuesta cada
+> acción visible, con una sola decisión que tomar. Continúa V13, que dejó dicho «dónde cortar» sin nombrar ninguna
+> acción de la matriz.
+
+- **Carpeta:** `coa-precios` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) · objetivo GCTI
+  **Intrusion Analysis** (dominio del curso de S2, `src/data/course-gcti.ts:32`, y de las diez preguntas de s2m2,
+  `src/data/s2.ts:390-520`); las tarjetas llevan `"objective": "Intrusion Analysis"` e insignia «GCTI» · adversario
+  **GLASS VIPER** (`src/data/course-gcti.ts:36`), dos mensajes interceptados · voz `recording/lidia` con
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · voz del adversario: **ya existe**, la de V3, V7 y V13
+  (`"adversaryVoice": { "voice": "sapi/Microsoft Pablo", "rate": 0, "fx": "machine" }`, `video/diamond-e7/narration.json:6`,
+  `video/kill-chain-eslabon/narration.json`) · música de V4 a V9 (`Go On Going - Stayloose.mp3`). No hace falta voz ni
+  efecto nuevos.
+- **`video.json`:** `"profile": "capsula-yt"`, `"track": "gcti"`, `"adversary": "GLASS VIPER"`, `"lesson": "s2m2"`, la
+  música de arriba y `"tags"`: «Courses of Action», «matriz de cursos de acción», «Cyber Kill Chain», «análisis de
+  intrusiones», «intrusion analysis», «intelligence gain loss», «respuesta a incidentes», «threat intelligence»,
+  «inteligencia de amenazas», «GCTI». Título de YouTube: «Courses of Action: ¿cortas o miras? | GIAC GCTI en español».
+- **Ritmo:** `"examTiming": "sentence-end"`; pregunta con `think.holdMs` 4500; mensajes con `intercept.holdMs` 3500. En s05 el
+  mensaje abre la escena y la pregunta llega unos segmentos después (el validador no deja los dos en el mismo segmento; V9, s08).
+- **Efectos (`sfx`):** los automáticos del motor (mensaje, tarjetas, capítulos) y tres momentos con sonidos de la
+  biblioteca que ya usan otros vídeos: `alarm` («alarm», la alarma de Detect), `deny` («block», la persiana que se echa) y
+  `visible` («error», la celda marcada que gasta visibilidad).
+- **Léxico nuevo** (formas propuestas; se confirman en la audición de Lidia, porque el léxico de verificación acepta lo
+  que ella diga): `Discover` («discóver»), `Detect` («ditéct»), `Deny` («dinái»), `Disrupt` («disrópt»), `Degrade`
+  («digréid»), `sinkhole` («sinkjol»). `Deceive` y `Destroy` solo salen en pantalla.
+- **Duración:** suma de `s` **218 s** (como V7, V8 y V15); `wordBudget` a 2,7 palabras/s: 49, 103, 124, 92, 157 y 65 (590
+  palabras). El guion se queda en **unas 550**, por debajo del presupuesto, porque lleva dos mensajes (unos 4–5 s cada
+  uno entre la espera y la voz del adversario) y una pregunta de 4,5 s. Estimado de `build-timeline --estimate` ~4:10–4:15;
+  con el ritmo de Lidia (V8 grabó al 92 %, V15 se espera al 93 %), **~3:50–3:55** renderizados. Dentro de 190–260. No se
+  rellena. La suma predice mal (V5 salió a 0,89 veces y V4 a 1,22), así que el primer borrador se mide por los dos lados.
+  Si el estimado pasa de ~255 s, se recorta en este orden: primero, en s04, la frase del ejemplo que falla (pasa a la
+  pantalla); después, en s02, el ejemplo de Detect (se queda solo en pantalla); después, la frase de puente con V13 de s05; la rama de
+  «si ya se llevan lo crítico» de s05 no se recorta nunca, porque es s2m2q8. Si baja de ~195 s, se alarga s03, leyendo
+  la fila de Installation.
+- **Inserción:** en `src/data/s2.ts`, lección s2m2, **después del tercer check** («Quarantining a host while its implant
+  is actively beaconing…», `:379-388`), como último bloque de la lección y justo antes del `quiz` (`:390`), como bloque
+  `youtube`:
+  `{ t: 'video', title: 'Courses of Action: ¿cortas o miras?', youtube: '<id>', poster: 'videos/coa-precios-poster.png', transcript: 'videos/coa-precios-transcript.txt' }`.
+  Como V9 en s4m3 y V13 en s2m1: el orden queda lección, checks, vídeo y laboratorio, porque el vídeo resume la lección
+  entera (los verbos, la matriz y el precio) y acaba mandando al Lab 2C. Descartado ponerlo antes de los checks, como V3,
+  V7 y V15: el primer check es literalmente la pregunta del sinkhole (`:355-367`) y la pregunta del vídeo la
+  contestaría. Todo lo que enseña ya lo ha presentado la lección antes de ese punto (tabla `:285-294`, nota de examen
+  `:297-301`, resiliencia `:303-305`, intelligence gain/loss `:306-315`, matriz `:316-353`). Se fija en la suite
+  `lesson videos` de `src/data/content.test.ts` (`:267-296`), junto a los demás.
+- **Lo que se lee no se deletrea:** los dominios (`update-svc-cdn.com`, `cdn-sync-status.example`), los nombres de
+  regla y de política y los nombres de los verbos en pantalla van escritos; la voz dice «el servidor del atacante»,
+  «el dominio del correo», «la regla que avisa». Los **nombres de los siete verbos se dicen en voz** (son términos de
+  examen) pero solo los que el vídeo usa (Discover, Detect, Deny, Disrupt, Degrade). Ninguna otra excepción. La voz no
+  nombra VELVET CICADA: dice «el atacante» o GLASS VIPER, nombre de seguimiento del implante y de quien lo usa, como en V3.
+  La voz dice «tu visibilidad» y nunca «el hilo» (en la lección «quema el hilo», `:342`; «hilo» es el activity thread de
+  V3 y V14).
+- **Enfoque («cortar o mirar»):** el equipo de respuesta de Meridian (el IR, rol que ya existe en la lección,
+  `src/data/s5.ts:66`; sin persona) le pregunta a la analista qué se puede hacer, ahora que se sabe en qué paso va la
+  intrusión (el final de V13). La analista monta la matriz de la lección, la de Meridian para esta intrusión (extracto
+  de trabajo), y la lee como un menú con precios. Primero los dos pares de verbos que más se confunden, cada uno con
+  una imagen; después la matriz entera por filas, con su lección de resiliencia; y al final la decisión que de verdad
+  cuesta: el C2 está a la vista y hay dos caminos, cortarlo o seguir mirando. GLASS VIPER provoca dos veces y la
+  narradora le da la razón en el dato y se la quita en la conclusión. **El vídeo no dice qué decide Meridian, ni cuándo.**
+  Una frase sitúa a quien no ha visto nada: eres la analista de inteligencia de Meridian, una aeroespacial, con una
+  intrusión delante.
+
+**Conceptos (3) y su imagen:**
+
+Una sola imagen para todo el vídeo, con un detalle distinto en cada concepto: **la tienda del barrio** y sus medidas. **Regla
+de la imagen (revisión del 2026-10-08): un gesto, un verbo, y cada objeto tiene una sola función.** Discover es la cinta
+grabada de ayer (el archivo); Detect, la alarma y la cámara en directo (concepto 1); Deny, la persiana que se echa antes de
+que entre alguien; Disrupt, sacar a alguien en plena faena (concepto 1). La puerta con cerradura, alarma, cámara en directo y
+vigilante en vez de solo cerradura (concepto 2). Para el C2 (concepto 3) no se reutiliza ningún gesto de los anteriores: el
+sospechoso habla por un walkie con su jefe; el sinkhole es que el walkie no conteste a nadie (Deny: ninguna llamada futura
+llega a ninguna parte), y Detect más Degrade es dejarle hablar por una línea ruidosa y escuchar. Nunca «echar» ni «la
+persiana» para el C2. No es la casa ni el ladrón de V13, ni la cocina de V9, ni el coche de V15.
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | Los dos pares que se confunden (nota de examen, `src/data/s2.ts:297-301`). **Discover** mira hacia atrás: busca en lo que ya guardas. **Detect** mira hacia delante: una alerta que salta cuando vuelva a ocurrir (la celda de Installation: alerta de `schtasks /create` fuera del inventario aprobado). **Deny** impide que la acción funcione (política que no deja a `explorer` crear procesos PowerShell); **Disrupt** corta lo que ya está en marcha (aislar el host en cuanto se crea la tarea). Una alarma sola no para a nadie (V13 ya lo decía en su s07; s2m2q1, q5 y q9, checks 2 y 3) | La tienda: la cinta grabada de ayer, que se rebobina (Discover), y la alarma con la cámara en directo (Detect); la persiana echada antes de que entre alguien (Deny) y sacar a alguien en plena faena (Disrupt) | «Discover mira atrás; Detect avisa hacia delante» · «Deny: no llega a funcionar; Disrupt: lo cortas en curso» |
+| 2 | La matriz se lee por filas. Fases en filas (las cinco que normalmente tienes a tu alcance: faltan Reconnaissance y Weaponization), acciones en columnas, una acción concreta en cada celda, no una categoría. **Una fase con una sola celda poblada es un punto único de fallo**: si ese control falla o se esquiva, la fase queda sin oposición; con dos o tres celdas complementarias, pasivas y activas, la fase sobrevive al fallo de una (si una falla, otra avisa o atrapa; `src/data/s2.ts:303-305,352`; s2m2q6 y q7). Discover y Destroy no ocupan celda en este extracto | La puerta de la tienda con cerradura, alarma, cámara en directo y vigilante; con solo la cerradura, si falla, la puerta queda abierta | «Una sola celda por fase es un punto único de fallo» |
+| 3 | **Intelligence gain/loss**: cada acción visible (`[!]`) le enseña al atacante lo que sabes y puede hacerle rotar su infraestructura, y tú pierdes visibilidad futura. El sinkhole del C2 es Deny: no mata la llamada de hoy, hace que las siguientes no lleguen a ninguna parte. Es lo más contundente y lo más caro; Detect más Degrade deja ver su operación con menos ruido (se parece más a una red lenta que a un bloqueo). Mirar vale mientras lo valioso esté protegido; **si ya se llevan lo crítico, al revés: contener ahora, recoger después** (s2m2q4 y q8). La decisión final no es del SOC, es una decisión de riesgo del negocio, informada por tu análisis (`:306-315,352`) | El sospechoso habla por un walkie con su jefe. Si haces que el walkie no conteste a nadie, mañana cambia de walkie y tú vuelves a empezar a ciegas; si lo dejas hablar por una línea ruidosa con la caja fuerte cerrada, te enteras de con quién habla y qué busca; si ya está vaciando la caja, se le corta el walkie y se asegura la tienda | «Intelligence gain/loss: lo visible avisa al atacante» |
+
+**Escenas:** seis, en tres capítulos (Los verbos · Las celdas y su precio · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «Qué hacemos con esto» | I Los verbos | 18 | La fila de pasos de la intrusión, en pequeño y atenuada (Delivery, Exploitation, Installation, Command & Control, Actions on Objectives), con una marca en C2: «llama a casa cada minuto» (sin ficha de alerta, sin fecha ni hora). Tira de contexto: «Meridian Dynamics · aeroespacial · tú, su analista de inteligencia» y, debajo, «equipo de respuesta: ¿qué hacemos con esto?». Título «Courses of Action» con «la matriz de decisiones» debajo, antes de los 8 s. La promesa en tres chips: «los verbos que se confunden · una matriz con huecos · cuánto cuesta cada acción» | La promesa en los primeros 10 s y el puente con V13 en una frase (ya sabes en qué paso va; ahora, qué haces y a qué precio) · `chain, ask, title, promise` |
+| s02-atras «Atrás y adelante» | I | 38 | La tienda del barrio en alzado: una cinta grabada, una alarma con su cámara en directo y una persiana. La cinta de ayer se rebobina y se rotula DISCOVER, «mirar hacia atrás lo que ya pasó» (sin ejemplo ni hash). La alarma y la cámara en directo, desde ahora: DETECT, «avisar cuando vuelva a ocurrir», con un solo ejemplo, la celda de la matriz «alerta: schtasks /create fuera del inventario aprobado». Una línea de tiempo con un «hoy» en medio y dos conectores dibujados, uno hacia atrás y otro hacia delante. La tarjeta, con la línea ya quieta | Discover mira lo que ya pasó; Detect, lo que pase desde ahora · `shop, discover, tape, detect, alarm, live, example-s, pair` |
+| s03-impedir «Impedir o cortar» | I | 46 | Mensaje interceptado. Respuesta: la alarma de s02 suena y la persiana sigue arriba (una alarma sola no para nada). Entra la matriz de la lección con su título «Matriz Courses of Action · extracto de trabajo (ficticia)»: cinco filas y las acciones que usa como columnas, que se encienden al nombrarse; sin Reconnaissance ni Weaponization, con «casi nunca a tu alcance». Se resaltan dos celdas: **Deny** de Exploitation, «política ASR: explorer no puede crear procesos PowerShell», con la persiana echada antes de que entre; y **Disrupt** de Installation, «aislamiento automático del host al crearse la tarea», con alguien sacado a la calle en plena faena. Rótulos: DENY «no llega a funcionar» y DISRUPT «lo cortas en curso». La tarjeta. Cierre del capítulo con el «o sea, que…»: «Discover y Detect miran · Deny y Disrupt paran» | Una alarma avisa, no para; Deny no deja que funcione y Disrupt corta lo que ya está en marcha · `reply-alarm, matrix, not-recon, deny, shutter, disrupt, inside, pair-ii, wrap-i` · **intercept** |
+| s04-fase «Fase por fase» | II Las celdas y su precio | 34 | La matriz entera, con el recuento de celdas de cada fila (Delivery 3, Exploitation 2, Installation 2, C2 3, Actions on Objectives 3) y la nota «cada fila es una fase». Ejemplo de qué pasa con una sola celda: la fila de Delivery se queda con solo «bloquear el dominio del correo en el gateway»; llega un dominio que no está en la lista, el control falla y la fila queda en blanco: «la fase, desprotegida». Después vuelve a poblarse con las otras dos celdas de su fila (Detect y Deceive, esta atenuada), «si una falla, otra avisa o atrapa» (el correo habrá entrado, pero la fase no está sola). La tarjeta | Una fase con una celda es un punto único de fallo; con varias celdas complementarias, la fase sobrevive al fallo de una · `rows, counts, single, fails, unopposed, back, many` |
+| s05-caminos «Dos caminos para el C2» | II | 58 | Mensaje interceptado. Respuesta: se amplía la fila de C2 con la leyenda «[!] = acción visible para el actor»: Detect, «anomalía: beacon TLS periódico hacia un dominio joven»; Deny, «sinkhole de `update-svc-cdn.com`», con [!] y «el actor lo sabrá en minutos»; Degrade, «throttling del egress hacia el C2». En voz, una frase entre la aparición de la celda y la pregunta: «el sinkhole no mata la llamada de hoy, hace que las siguientes no lleguen a ninguna parte: eso es Deny». La viñeta del walkie: que no conteste a nadie, o dejarle hablar por una línea ruidosa con la caja fuerte cerrada. Una frase de puente con V13: «ya no estás a tiempo de impedir los pasos de antes; lo que decides es qué haces con el que queda». Chips: «Supón que todavía no han sacado nada» y «Supón que lo importante está a salvo». Pregunta para pensar, con las dos opciones señaladas (la celda Deny del sinkhole y el par Detect más Degrade) y sin ninguna etiqueta de coste. Respuesta: se marca Detect más Degrade, «ves su operación, avisas menos», con «mientras lo valioso esté protegido». Sobre la fila de Actions on Objectives se enciende una alarma y la elegida pasa a ser la celda Deny del sinkhole (la fila de C2 sigue ampliada, para que nadie busque un Deny en Actions on Objectives): «si ya se llevan lo crítico: contener ahora, recoger después». Rótulo: «la decisión final es del negocio, no del SOC · tú pones los precios sobre la mesa». La tarjeta. Cierre del capítulo | Cada acción visible gasta visibilidad; mirar vale mientras lo valioso esté a salvo y se corta ya si se están llevando lo crítico; decide el negocio · `reply-move, row-c2, visible, sinkhole-deny, walkie, supose, answer, watch, flip, business, wrap-ii` · **intercept** · **think** |
+| s06-recap «Tres reglas» | III Para el examen | 24 | Tres tarjetas de reglas, cada una con su viñeta en miniatura (la cinta y la alarma, la fila con una sola celda, el walkie); tarjeta final Alertópolis: «Tu turno: Lab 2C · Courses of Action» | Reflejos · `recap, rule-1, rule-2, rule-3, lab2c, endcard` |
+
+- **Tarjetas de examen** (dominio Intrusion Analysis), una por escena de s02 a s05, ninguna en s01 ni en el cierre. Cada una
+  espera al final de su frase y lleva ~5 s de escena detrás (la de s03 y la de s05 llevan detrás el «o sea, que…» que
+  cierra su capítulo):
+  - «Discover mira atrás; Detect avisa hacia delante» (s02) (47)
+  - «Deny: no llega a funcionar; Disrupt: lo cortas en curso» (s03) (55)
+  - «Una sola celda por fase es un punto único de fallo» (s04) (50)
+  - «Intelligence gain/loss: lo visible avisa al atacante» (s05) (52; sale después de la respuesta a la pregunta)
+- **Pregunta para pensar:** «Nada robado y lo crítico a salvo: ¿cortas?» (s05) (42; `holdMs` 4500). Las dos condiciones de la
+  lección («mientras proteges los activos», `src/data/s2.ts:309`; s2m2q8) van dentro de la propia pregunta, y se dicen en voz
+  como una suposición («supón que todavía no han sacado nada y que lo importante está a salvo»), no como el estado de
+  Meridian. Respuesta: no cortes; sigue mirando, con Detect y Degrade, porque cada celda visible gasta visibilidad; y si
+  empiezan a salir los datos críticos, se corta ya (s2m2q4 y q8).
+  Quien decide es el negocio. El título de la escena («Dos caminos para el C2») no da la respuesta.
+- **Mensajes interceptados** (GLASS VIPER, uno en los capítulos I y II; ninguno en el cierre; registro de V3, V7 y V13:
+  tutea, dos frases cortas, ironía en la segunda, sin marcar su género y sin decir «analista», que es de HOLLOW LANTERN y
+  PAPER CRANE):
+  - s03 (cap. I): «Ponme todas las alarmas que quieras. Para pararme ya habrá tiempo.» (66; sin la fórmula «Tú + imperativo» de V13). El error que corrige la narradora: creer que
+    detectar ya es defender. La voz, más o menos así: «Tiene razón en una cosa: una alarma avisa. Pero una alarma sola no
+    para a nadie. Para parar hay dos verbos…» y entra la matriz. Distinto del tercer mensaje de V13 («Tú vigila tus
+    planos»): aquel era dónde mirar; este es qué haces cuando suena.
+  - s05 (cap. II): «Córtame ya. Me mudo en cinco minutos y vuelves a empezar.» (57). El error: que cortar ya es siempre lo
+    correcto. La voz: «Cortarlo ya es lo más contundente, sí. Y a él le viene bien: si lo cortas hoy, se muda, y tú pierdes
+    lo que aún podías ver. Te lo pide para que gastes tu visibilidad.» (es un cebo, como el «Bloquea mi hash» de V7 y el «Bloquea esos dos» de V15: la respuesta lo dice, y no pasa de ahí) Nunca «bloquear no sirve» (V15: «Bloquearlos sigue valiendo»): cortar sirve y tiene un
+    precio, y si ya se llevan lo crítico se corta. No repite el argumento de V7 (lo que le cuesta cambiar a él): aquí es
+    lo que cuesta a quien corta. «Cinco minutos» es el ejemplo de la lección (`src/data/s2.ts:314`).
+- **Cierre:** tres reglas y una sola tarea.
+  1. Discover mira atrás y Detect mira hacia delante; Deny no deja que funcione y Disrupt corta lo que ya está en marcha. Una
+     alarma sola no para nada.
+  2. Una fase con una sola celda es un punto único de fallo: varias medidas por fase, pasivas y activas.
+  3. Cada acción visible tiene un precio: ponlo sobre la mesa. Y si ya se están llevando lo crítico, corta primero y mira
+     después.
+
+  Tarea: el Lab 2C (ocho medidas por clasificar), que practica la clasificación, que el vídeo no hace.
+
+**Se queda fuera** (y dónde está):
+- La tabla completa de siete verbos con sus definiciones y ejemplos (`src/data/s2.ts:285-294`): no sale en
+  pantalla (solo la imagen de la cinta y la alarma y un ejemplo de Detect), y la voz nombra solo los verbos que usa.
+- **Deceive, Degrade y Destroy como definiciones** (s2m2q2, q3, q5 y q10): Deceive y Degrade salen en celdas de la matriz,
+  sin definir; la voz dice la idea de Degrade antes de su nombre («frenar sin cortar», en s05, junto a «una red lenta»);
+  **Destroy no sale** (el límite legal de q3 se queda en la lección). Discover y Destroy no ocupan celda
+  en este extracto, y la pantalla lo dice en una tira.
+- Las preguntas q1, q2, q3, q5, q9 y q10 (clasificar una medida): las practican el Lab 2C y el quiz.
+- El ejemplo de la lección de «48 h» y «su horario de operación» (`:314`): la voz dice «un tiempo»; el horario de
+  operación es terreno del Lab 4A y 4B.
+- Cómo se priorizan las celdas de otra intrusión o quién las paga.
+- La búsqueda de seis meses en DNS del segundo check (`:370-378`): el canon no da la retención del DNS interno de
+  Meridian (V8), y la ficha no la fija.
+
+**Laboratorios:**
+- **Lab 2C** (`src/data/labs.ts:88-97,340-393`, clasifica 8 medidas en su acción): es la penalización L. **El vídeo enseña la
+  matriz de la lección, que ya contiene seis de los ocho ítems** (el sinkhole como Deny, `labs.ts:368`; el aislamiento del
+  host como Disrupt, `:373`; las celdas de limitar la salida y de planos señuelo, `:378,383`; y, si salen en pantalla, las
+  otras dos), **sin añadir ninguno ni practicarlos**: no los lee como lista ni los clasifica. Solo se escapan el ítem 2 (DNS
+  histórico) y el 8 (incautación legal). Para quitar peso, s02 no usa ejemplos del laboratorio (ni el hash en 90 días de EDR
+  ni la regla Sigma del LNK) y el ejemplo de Detect es una celda que no es ítem. Lo que el vídeo da de más (el porqué de los
+  pares, la lectura por filas, el precio) no lo practica el laboratorio. Por eso el Lab 2C es la tarea del final.
+- **Lab 2A** (`:61-75`) y **Lab 2B** (`:77-86`): ni un evento del 2A (RAR, 650 MB, escaneo de la VPN, canal por la
+  nube…), ni vértices del 2B.
+- **Lab 3A, 3B y el final de la campaña:** nada.
+
+**Canon nuevo que fija V22** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- **Sin fecha ni hora**, como V9 y V15. Es posterior a la reconstrucción de la cadena (V7 y V13) y no se ordena contra la
+  cronología del registro. Ningún intervalo («48 horas»), ningún resultado y ninguna decisión: **la matriz de la lección es
+  el menú de trabajo de la analista, no lo que Meridian tiene desplegado**, y el vídeo no dice si se corta el C2, se mira
+  o se hace otra cosa.
+- **El equipo de respuesta** (IR, sin persona) pregunta qué se puede hacer. Es el rol que la lección ya nombra
+  (`src/data/s5.ts:66`; `src/data/s2.ts:421-434`); no se le da nombre ni postura (en la pregunta q4 el IR lead propone
+  mirar, y aquí no propone nada).
+- **La matriz de la lección con tres retoques en pantalla:** «hacia el C2» en lugar de «hacia la IP del C2» (la IP de
+  `update-svc-cdn.com` es un alojamiento compartido con ~14.000 dominios de terceros, `src/data/s2.ts:585` y V3/V4), sin
+  «quema el hilo» (se lee «el actor lo sabrá en minutos») y con la celda del buzón señuelo atenuada. Nada de esto cambia
+  ninguna acción ni su celda. Si Lidia acepta los cambios de lección de las decisiones, la pantalla y el texto coinciden.
+- **El «dominio que no está en la lista» de s04 es hipotético**: sin nombre, sin fecha y sin relación con ningún dominio del
+  caso (el Lab 3A guarda un segundo dominio de phishing aún sin usar, `src/data/labs.ts:704-707`). No es un hecho de Meridian.
+- **Dos mensajes nuevos de GLASS VIPER**, sin fecha, que pasan a ser canon de su voz: «Ponme todas las alarmas que quieras. Para
+  pararme ya habrá tiempo.» y «Córtame ya. Me mudo en cinco minutos y vuelves a empezar.»
+- **La imagen de la tienda** (cámara, alarma, persiana, vigilante, caja fuerte) es de la analogía, no del caso.
+- Ninguna persona, fecha, equipo, hash ni IP nuevos. Sale `update-svc-cdn.com` (del C2, como en V3, V4 y la lección) y
+  `cdn-sync-status.example` (del correo, como en V13 y la lección) solo como texto de las celdas de la matriz.
+
+**No se toca:**
+- **El dosier de BROKEN CHAIN** (`src/data/course-gcti.ts:40`): ni el PDB en ninguna forma, ni cuántas muestras hay, ni
+  «VELVET CICADA ya tiene cara técnica».
+- **E9 y el 7 de marzo**, ni «dos días» ni el último `last seen` de `update-svc-cdn.com` (V3, V4): el vídeo no dice
+  cuándo ni si se corta el C2, ni que Meridian viera salir nada (registro §5, punto 7). La séptima fase queda como en
+  V13: en el vídeo no hay ninguna prueba de ella.
+- **El indicador propio de Meridian para `cdn-sync-status.example`** (V8; `src/data/s5.ts:596-607`) y cualquier cosa de la
+  ola de abril: la celda de Delivery es un menú; no se dice que se haya bloqueado ni que no.
+- **Las retenciones del CMF** (EDR 90 días, proxy 30; V8): solo sale «90 días de EDR», la cifra de la tabla de la lección,
+  y sin ningún resultado.
+- **Quién abrió el adjunto** (registro §5, punto 5): «RR. HH.» solo asoma en la celda del buzón señuelo, atenuada, y nunca
+  junto a `ENG-WS-041`; ni equipo ni persona en ningún sitio. Ni el intervalo del beacon más allá de «cada minuto» (punto 3).
+- **El Lab 2C**: sin clasificar ninguna medida del laboratorio ni mostrar su respuesta; **el Lab 2A**: ni un evento suyo.
+- Ninguna acción ofensiva (Destroy): no se recomienda nada que un defensor privado no pueda hacer (s2m2q3).
+- No se culpa a nadie: ni al SOC por no cortar ya ni al equipo de respuesta por preguntar. Mirar durante un tiempo es una
+  decisión de riesgo, no un descuido.
+
+**Comprobación de límites** (recuentos hechos con un script de Node, `check-limits.mjs`, no a ojo; perfil `capsula-yt`):
+- Duración: suma 218 s (seis escenas: 18, 38, 46, 34, 58 y 24); estimado ~250 s; renderizado previsto ~230–235 s; ventana
+  190–260. Sí.
+- Capítulos: 3 (máximo 3). Sí.
+- Conceptos clave: 3 (2–3), con como mucho dos tarjetas por concepto (2, 1 y 1). Sí.
+- Tarjetas: 4 (3–5), una por escena de s02 a s05 y ninguna en s01 ni en s06, todas con `"objective": "Intrusion
+  Analysis"`. Caracteres: 47, 55, 50 y 52 (máximo 58). Sí.
+- Pregunta para pensar: 1, en s05; 42 caracteres (máximo 48); `holdMs` 4500 (mínimo 4000). Sí.
+- Mensajes interceptados: 2 (1–2), en s03 (cap. I) y s05 (cap. II), uno por capítulo, ninguno en la escena final; 66 y
+  57 caracteres (máximo 70); `holdMs` 3500 (2500–4500). Sí.
+- `video.json` lleva `"adversary": "GLASS VIPER"`. Sí.
+- Sin flechas, marcas de verificación, viñetas ni emoji (`FORBIDDEN_SYMBOLS` de
+  `video/engine/scripts/lib/narration.mjs:23`) en tarjetas, pregunta, mensajes, rótulos nuevos y frases de voz de muestra;
+  las flechas de tiempo de s02 se dibujan como conectores. Sí.
+- Ningún identificador leído en voz (dominios, nombres de regla y de política solo en pantalla). Sí.
+- `wordBudget` por escena: 49, 103, 124, 92, 157 y 65 (590 palabras); frases de voz de muestra de ≤ 22 palabras. El
+  título de la escena de la pregunta no la destripa. Sí.
+
+### V23 · s4m5 · Cápsula · «Atribución: ¿quién fue? Los tres niveles y las pistas falsas»
+
+> Propuesta del 2026-10-08, con las opciones recomendadas ya elegidas; pendiente de que Lidia diga qué cambia. Tanda 4;
+> rama prevista `video-atribucion-cuadro`, desde `main`. La versión vigente de escenas y guion será
+> `video/atribucion-cuadro/storyboard.json` + `narration.json`; qué se quedó fuera, en
+> `video/atribucion-cuadro/out/script-notes.md`. Las decisiones, con la alternativa descartada de cada una, están en
+> `docs/reviews/2026-10-08-fichas-tanda4/decisiones-V22-V23.md` (apartado V23).
+>
+> **Es la secuela de dos promesas publicadas.** V3 dejó Adversary en UNKNOWN («UNKNOWN con un plan vale más que un nombre
+> inventado», «el diamante no atribuye por sí solo», `video/diamond-e7/narration.json:157-159,351-353`) y la lección de V9
+> (s4m3) manda aquí lo de las pruebas más fuertes que alguien podría plantar (`src/data/s4.ts:441`, «S4M5, PAPER CRANE»; V9
+> lo dice en voz sin concretar, `video/ach-matriz/narration.json`, s08-03). V23 contesta a las dos: cuántas pruebas más pide
+> poner un nombre y cuáles pesan. Ninguna fecha, ninguna atribución del caso
+> y ninguna pista falsa sobre Meridian: la pared del dosier de HALL OF MIRRORS (`src/data/course-gcti.ts:78`) manda en todo
+> el diseño.
+
+- **Carpeta:** `atribucion-cuadro` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) · objetivo
+  GCTI **Analysis** (dominio del curso de S4, `src/data/course-gcti.ts:70`, y de las diez preguntas de s4m5,
+  `src/data/s4.ts:1120-1269`); las tarjetas llevan `"objective": "Analysis"` e insignia «GCTI» · adversario **PAPER
+  CRANE** (`src/data/course-gcti.ts:74-76`), dos mensajes interceptados · voz `recording/lidia` con
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · voz del adversario: **ya existe**, la de V9
+  (`"adversaryVoice": { "voice": "sapi/Microsoft Laura", "rate": 0, "fx": "machine" }`, `video/ach-matriz/narration.json:11-15`)
+  · música de V4 a V9 (`Go On Going - Stayloose.mp3`). No hace falta voz ni efecto nuevos.
+- **`video.json`:** `"profile": "capsula-yt"`, `"track": "gcti"`, `"adversary": "PAPER CRANE"`, `"lesson": "s4m5"`, la
+  música de arriba y `"tags"`: «atribución», «attribution», «false flag», «niveles de atribución», «intrusion set»,
+  «operator», «sponsor», «análisis de inteligencia», «threat intelligence», «inteligencia de amenazas», «GCTI». Título de
+  YouTube: «Atribución: ¿quién fue? Los tres niveles y las pistas falsas | GIAC GCTI en español».
+- **Ritmo:** `"examTiming": "sentence-end"`; pregunta con `think.holdMs` 4500; mensajes con `intercept.holdMs` 3500. En s04
+  el mensaje abre la escena y la pregunta llega más tarde (el validador no deja los dos en el mismo segmento).
+- **Efectos (`sfx`):** los automáticos del motor y tres momentos con sonidos de la biblioteca que ya usan otros vídeos:
+  `dark` («lock», el tercer nivel que queda a oscuras), `cheap` («glitch», la firma y la fecha que se pintan solas) y
+  `note` («check», la nota del informe).
+- **Léxico nuevo** (formas propuestas; se confirman en la audición de Lidia): `sponsor` («spónsor»), `operator`
+  («óperéitor»), `customer` («cástomer»; V3 lo dice en voz, pero no está en su léxico), `false flag` («fols flag»), `intrusion set` («intrúshon set»),
+  `HUMINT` («jiúmint»), `SIGINT` («sígint»), `opsec` («ópsec»). `PAPER`, `CRANE`, `CISO` y `UNKNOWN` ya están en los
+  léxicos de V9 y V3.
+- **Duración:** suma de `s` **218 s**; `wordBudget` a 2,7 palabras/s: 54, 140, 103, 130, 97 y 65 (589 palabras). El guion se
+  queda en **unas 550**, por debajo del presupuesto, porque lleva dos mensajes (unos 4–5 s cada uno) y una pregunta de 4,5 s.
+  Estimado de `build-timeline --estimate` ~4:10–4:15; con el ritmo de Lidia, **~3:50–3:55** renderizados. Dentro de
+  190–260. No se rellena. La suma predice mal (V5 salió a 0,89 veces y V4 a 1,22), así que el primer borrador se mide por
+  los dos lados. Si el estimado pasa de ~255 s, se recorta en este orden: primero, en s03, la fila del informe serio
+  (pasa a pantalla); después, en s05, la frase de los seguros; la regla de «cada nivel pide otro tipo de evidencia» y la
+  de lo barato frente a lo caro no se recortan. Si baja de ~195 s, se alarga s02 (la fila de Meridian en el primer nivel).
+- **Inserción:** en `src/data/s4.ts`, lección s4m5, **después del último check** («For a private-sector defender, the MOST
+  actionable attribution level is usually…», `:1099-1112`) y **antes del callout «Nota de examen»** (`:1114-1118`), como
+  bloque `youtube`:
+  `{ t: 'video', title: 'Atribución: ¿quién fue? Los tres niveles y las pistas falsas', youtube: '<id>', poster: 'videos/atribucion-cuadro-poster.png', transcript: 'videos/atribucion-cuadro-transcript.txt' }`.
+  Como V6 en sp4m8 (después del check de MFA y antes de la nota de examen), V9 en s4m3 y V13 en s2m1: el orden queda
+  lección, checks, vídeo y nota de examen, porque el vídeo resume la lección casi entera (los niveles, las pistas falsas y el
+  valor de atribuir) y contesta dos de sus tres checks (la pista barata y el nivel más útil; el del STIX queda fuera).
+  Descartado ponerlo antes de los checks, como V3 y V7: contestaría el segundo (strings en otro idioma) y el tercero antes de
+  que se hagan. Se fija en la suite `lesson videos` de `src/data/content.test.ts` (`:267-296`), junto a los demás.
+- **Lo que se lee no se deletrea:** el vídeo casi no tiene identificadores. Los textos de los rótulos van en pantalla; la voz
+  dice qué son («un informe serio», «un binario de ejemplo»). Los nombres de los niveles y términos de examen sí se dicen
+  (máquina, operador, sponsor, false flag, intrusion set). La voz no nombra VELVET CICADA ni GLASS VIPER: dice «el
+  atacante» o «el grupo que sigues»; en pantalla tampoco salen, porque la nota de s05 describe el grupo sin nombrarlo.
+- **Enfoque («un nombre para el informe»):** el diamante del evento E7 dejó la esquina de Adversary en UNKNOWN (V3). Ahora
+  que Meridian sabe cómo trabaja el atacante, el CISO (sin nombre, el de V9) quiere un nombre para el informe: «¿quién está
+  detrás? ¿ponemos un país?». La analista no contesta con un nombre sino con una pregunta: ¿hasta dónde llega lo que tengo?
+  Los tres niveles de la lección se explican con un cuadro (¿con qué se hizo, quién lo pintó, quién lo encargó?); la
+  telemetría llega al primero y el tercero no deja rastro en tu red. PAPER CRANE, la célula que siembra pistas falsas
+  (V9; también lo dice la sección, `src/data/course-gcti.ts:75-76`), empuja dos atajos, y la narradora los contesta con lo
+  barato y lo caro de falsificar sobre un binario de ejemplo que no es el de Meridian. El cierre vuelve al CISO con lo que sí
+  puedes escribir en el informe y lo que no, y con la pregunta del consejo de la lección: ¿qué decisión cambia con el nombre
+  del país? **El vídeo no atribuye nada al caso: ni país, ni persona, ni confianza sobre quién.** Una frase sitúa a quien no
+  ha visto nada: eres la analista de inteligencia de Meridian, una aeroespacial, y en el diamante del beacon del evento E7 la
+  esquina de Adversary sigue sin nombre.
+
+**Conceptos (3) y su imagen:**
+
+Una sola imagen para todo el vídeo, con un detalle distinto en cada concepto: **atribuir un cuadro**, que es literalmente lo
+que hace el mundo del arte («atribuido a»). Los tres niveles son tres preguntas sobre el cuadro, y los dibuja como tres
+bandas del mismo lienzo, de abajo arriba, nunca como una escalera (la escalera es de V7). Lo barato de falsificar es la firma
+y la fecha de la esquina; lo caro, el historial documentado año tras año. La cartela del museo («atribuido a…») es la
+afirmación con su confianza. No es la casa ni el taller de V13 a V15, ni la carta de V8, ni la cocina de V9, ni la ropa y el
+acento de V7.
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | «¿Quién fue?» tiene tres respuestas de profundidad creciente (`src/data/s4.ts:983-1003`; s4m5q1). **Máquina / infraestructura**: qué equipos y herramientas actuaron; lo da tu telemetría, el malware y el C2; confianza alta. **Operador**: quién tecleó; lo regalan los errores humanos (una cuenta personal desde la infraestructura, un alias reutilizado) y los hábitos propios sostenidos durante años; lo alcanzan vendors con visibilidad global y años de seguimiento; confianza moderada. **Sponsor**: por cuenta de quién; hacen falta HUMINT, SIGINT, financiación y órdenes, registros legales y victimología plurianual alineada con intereses; gobiernos o fusión público-privada; confianza moderada, y solo con fuentes que tu red no tiene, siempre dicha con lenguaje estimativo explícito (el lenguaje estimativo es otro eje, no un grado de confianza). La victimología sola no basta para llegar a quién dirige. **Subir un nivel no pide más evidencia técnica, pide evidencia de otro tipo**; la técnica sola rara vez alcanza el sponsor, y no es falta de habilidad sino de acceso a ese tipo de prueba, por eso un informe serio se detiene en el intrusion set con solapamientos a nivel de operador (s4m5q2, q8 y q9). Ya lo dibujó V3: el vértice Adversary guarda al operator, que teclea, y al customer, que encarga y se queda el botín (`src/data/s2.ts:557`) | Un cuadro en un caballete: ¿con qué se hizo? (el lienzo y los pigmentos), ¿quién lo pintó? (la mano, con sus descuidos: la huella en el barniz) y ¿quién lo encargó y lo pagó? (el contrato, que no está en el cuadro sino en un archivo) | «Cada nivel pide evidencia de otro tipo, no solo más» · «Sponsor: la telemetría sola rara vez basta» |
+| 2 | Lo barato y lo caro de falsificar. Los false flags atacan la evidencia barata: strings o idioma y compile times o horario, triviales de falsificar y de muy bajo peso aislados; tooling de otro grupo, fácil si es público o robado, de peso bajo; en cambio la victimología sostenida alineada con intereses concretos es cara de sostener (peso medio-alto) y el tradecraft estructural de años con errores de opsec es muy caro de falsificar (peso alto, en agregado). Caro no es imposible: V9 enseña que hasta la prueba más fuerte puede plantarse. Barato no es irrelevante: cuenta solo dentro de un cuerpo grande y coherente. El antídoto es el de V9: ACH con sensibilidad a la decepción, o sea, ¿qué pasa con mi conclusión si esta pista es un señuelo? (`src/data/s4.ts:1067-1082`; s4m5q3 y q5, check de `:1084-1097`) | La firma y la fecha de la esquina del cuadro, que un falsificador pinta en un minuto, frente a la procedencia documentada año tras año, que no se inventa de golpe | «False flag: ataca la evidencia barata de falsificar» |
+| 3 | ¿Qué decisión cambia con el nombre? La atribución es inteligencia y existe para servir a una decisión; sin decisión, no hay requisito (s4m5q4). Para defender, lo más útil es el nivel del grupo: cómo trabaja y qué busca (check de `:1099-1112`); el país importa a gobiernos (respuesta diplomática o legal), seguros y decisiones geopolíticas de negocio (`:1008`). Si afirmas algo, viaja como afirmación analítica con su confianza, no como etiqueta (`:1050`; s4m5q10). Una atribución de un gobierno es una fuente más, con su base y su confianza (s4m5q6), no una verdad de partida | La cartela del museo: «atribuido a…» es una afirmación con su grado de seguridad. Quien necesita la cartela es quien va a vender, asegurar o exponer el cuadro; quien solo tiene que arreglar la puerta por la que entraron no la necesita para decidir | «Antes de atribuir: ¿qué decisión cambia con el nombre?» |
+
+**Escenas:** seis, en tres capítulos (Los niveles · Pistas y decisión · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «Un nombre para el informe» | I Los niveles | 20 | El diamante del evento E7 (el de V3), en pequeño a un lado, con la esquina «Adversary · UNKNOWN» encendida y el resto atenuado. Al otro lado, la tira del CISO, la misma de V9: «CISO» y «¿Quién está detrás? ¿Ponemos un país en el informe?». Título «Atribución: ¿quién fue?» con «tres niveles, pistas falsas y cuándo vale la pena» debajo, antes de los 10 s. La promesa en tres chips: «hasta dónde puedes llegar · qué pista pesa de verdad · si hace falta un nombre» | La promesa en los primeros 10 s y el puente con V3 en una frase (el diamante dejó Adversary en UNKNOWN y el CISO quiere un nombre) · `diamond, ciso, title, promise` |
+| s02-niveles «Tres preguntas sobre un cuadro» | I | 52 | Un cuadro en un caballete, con su firma en una esquina. Tres preguntas se encienden una a una y cada una abre su banda del lienzo, de abajo arriba, rotulada: «¿con qué se hizo?» (lienzo y pigmentos), MÁQUINA / INFRAESTRUCTURA, «qué equipos y herramientas actuaron», con la evidencia de la lección, «tu telemetría, el malware, el C2» (confianza «alta»), y un chip «tu caso: el programa y su servidor»; «¿quién lo pintó?» (la mano, una huella en el barniz), OPERADOR, «quién tecleó», con «errores humanos: una cuenta personal desde la infraestructura, un alias reutilizado, hábitos propios años seguidos» (confianza «moderada»); «¿quién lo encargó y lo pagó?» (un contrato guardado fuera del cuadro), SPONSOR, «por cuenta de quién», con «dinero, órdenes, registros legales, años de victimología alineada con intereses» (confianza «moderada, y solo con fuentes que tu red no tiene»). Un chip hacia el diamante pequeño: «Capability + Infrastructure = máquina · Adversary = operator + customer». Tira: «subir un nivel pide evidencia de otro tipo, no más de lo mismo». La tarjeta | Tres niveles y cada uno pide otro tipo de evidencia; lo que tienes de Meridian es del primero · `canvas, machine, ours, hand, operator, slips, commission, sponsor, diamond, other-kind` |
+| s03-techo «Hasta dónde llega lo que ves» | I | 38 | Mensaje interceptado. Respuesta: las tres bandas como un muro iluminado por un foco, la telemetría: ilumina del todo la primera, apenas la segunda y deja a oscuras la tercera, con «no deja rastro en tu red». En una ficha genérica, «así habla un informe serio: se detiene donde acaba su evidencia»: «[nombre del conjunto] · solapamiento a nivel de operador con actividad anterior · confianza moderada» y, debajo, «país: —». La tarjeta. Cierre del capítulo con el «o sea, que…» | Sponsor pide fuentes que tu red no tiene (HUMINT, SIGINT, dinero, registros legales); quien se para en el intrusion set no es débil, es riguroso · `reply-name, wall, beam, dark, vendor, ceiling, wrap-i` · **intercept** |
+| s04-binario «Un binario sobre la mesa» | II Pistas y decisión | 48 | Mensaje interceptado, que abre la escena; el binario de ejemplo ya está sobre la mesa, con su rótulo «Ejemplo de la lección · no es el caso de Meridian», antes de que hable el mensaje, y la voz no dice que PAPER CRANE siembre nada mientras las pistas están a la vista. Respuesta corta: «pues vamos a ver cuánto dice». El binario lleva dos pistas: «textos en otro idioma» y «horas de compilación de una jornada de oficina concreta». Pregunta para pensar con las dos a la vista. Respuesta: en el cuadro, la firma y la fecha de la esquina; una mano las pinta en un minuto. La tabla de la lección se rellena fila a fila (evidencia · falsificable · peso): idioma y horario, triviales y de muy bajo peso; tooling de otro grupo, fácil y bajo; y, en contraste, «objetivos sostenidos durante años» (peso medio-alto) y «tradecraft de años con errores de opsec» (peso alto, en agregado), caros de sostener. Una pregunta final, la de V9: «si esta pista fuera un señuelo, ¿cambia tu conclusión?». La tarjeta | Lo barato de falsificar pesa poco aislado; lo caro pesa más; la pregunta de sensibilidad protege de los señuelos · `reply-crane, sample, lang, hours, signature, cheap, costly, sensitivity` · **intercept** · **think** |
+| s05-decision «El nombre y la decisión» | II | 36 | Vuelve la tira del CISO. Dos columnas: «a quién le sirve el país: gobiernos (respuesta diplomática o legal), seguros» y «qué cambia en tu defensa: detectar, cazar y proteger rara vez cambian con el país». La cartela del museo del cuadro, «atribuido a…», con «lo que afirmas lleva su confianza». Una nota de tres líneas, lo que sí puedes escribir en el informe: «cómo trabajan: lo ves en tu red» · «qué buscan: la propiedad intelectual de propulsión de Meridian» · «quién teclea: desconocido» · «para quién trabajan: tu red no tiene esa clase de prueba; el juicio se emite con su confianza y diciendo qué falta, no se calla». La tarjeta | La atribución sirve a una decisión; lo que afirmas, con su confianza; lo que no sabes, UNKNOWN · `ciso-again, who-needs, ours, label, note, unknown` |
+| s06-recap «Tres reglas» | III Para el examen | 24 | Tres tarjetas de reglas con su viñeta en miniatura (las tres bandas del cuadro, la firma de la esquina, la cartela); tarjeta final Alertópolis: «Tu turno: las preguntas de la lección (s4m5)» | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+
+- **Tarjetas de examen** (dominio Analysis), una por escena de s02 a s05, ninguna en s01 ni en el cierre. Cada una espera al final
+  de su frase y lleva ~5 s de escena detrás (la de s03 lleva detrás el «o sea, que…» que cierra el capítulo):
+  - «Cada nivel pide evidencia de otro tipo, no solo más» (s02) (51)
+  - «Sponsor: la telemetría sola rara vez basta» (s03) (42)
+  - «False flag: ataca la evidencia barata de falsificar» (s04) (51; sale después de la respuesta a la pregunta)
+  - «Antes de atribuir: ¿qué decisión cambia con el nombre?» (s05) (54)
+- **Pregunta para pensar:** «Idioma y horario: ¿bastan para un país?» (s04) (39; `holdMs` 4500; las dos pistas del binario de ejemplo siguen a la
+  vista). Respuesta: no. Cualquiera falsifica un idioma y una hora de compilación en un minuto, y aislados pesan muy poco, así
+  que no alcanzan para un país. Tampoco son irrelevantes: suman dentro de un cuerpo grande y coherente (el check de `:1084-1097`). El
+  título de la escena («Un binario sobre la mesa») no da la respuesta.
+- **Mensajes interceptados** (PAPER CRANE; tutea, dos frases cortas, ironía; empuja atajos de método, nunca una hipótesis, y no
+  confiesa nada; dice «analista», como en V9):
+  - s03 (cap. I): «Ponle un país al informe, analista. Todo consejo adora un nombre.» (65; «consejos» se oía como «avisos», y el canon dice «el consejo»). El error que corrige la
+    narradora: poner un país porque vende, sin la evidencia que pide ese nivel. La voz, más o menos así: «Claro que lo propone
+    quien se dedica a sembrar pistas falsas: un nombre apresurado le viene de perlas. Y un país es el nivel de arriba, el de
+    quién encarga, y esa prueba no pasa por tu red.» Nada de PAPER CRANE sembrando nada en el caso de Meridian.
+  - s04 (cap. II): «Con la primera pista que encaje ya tienes bastante. ¿Para qué más?» (66). El error: pararte en la primera
+    pista que encaja. La voz abre sin contestar: «Pues vamos a ver cuánto da una pista fácil»; la respuesta llega después de la
+    pregunta (lo barato pesa poco; busca lo caro, y pregúntate qué pasa si es un señuelo). Distinto de los tres de V9: aquel era
+    fiarse de todo, contar lo que encaja y tirarlo todo por una prueba falsa; este es parar pronto.
+- **Cierre:** tres reglas y una sola tarea.
+  1. Máquina, operador y sponsor: cada nivel pide evidencia de otro tipo. Tu red llega a la máquina; el país rara vez sale solo
+     de tu telemetría.
+  2. Un idioma o una hora se falsifican en un minuto; años de objetivos y de rutina cuestan mucho más (caro no es imposible).
+     Antes de fiarte de una pista, pregunta qué pasa con tu conclusión si fuera un señuelo.
+  3. Antes de poner un nombre, ¿qué decisión cambia? Y si lo pones, con su confianza.
+
+  Tarea: las diez preguntas de la lección s4m5. La q7 (campaign frente a intrusion set) toca lo que el vídeo deja fuera, y la q10
+  (la atribución como afirmación con su confianza dentro de STIX) solo en la idea: el objeto STIX queda fuera. Ningún laboratorio de S4 practica la atribución.
+
+**Se queda fuera** (y dónde está):
+- **Campaign frente a intrusion set y el modelo STIX con `attributed-to` y su `confidence`** (`src/data/s4.ts:1010-1051`,
+  check de `:1052-1066`, s4m5q7 y el objeto STIX de q10; la idea de q10, que la atribución viaja con su confianza, sí está en s05): pediría enseñar el JSON con el `intrusion-set` llamado «GLASS VIPER», la campaña
+  «PO-REVISION phishing wave» y `confidence: 75`. Choca con la lectura del registro (§5, punto 9: V8 muestra a GLASS VIPER
+  como el loader y a VELVET CICADA como el intrusion set) y V8 y V14 dejaron fuera la campaña; el `75` caería en «alto» en la
+  escala None/Low/Med/High de STIX 2.1 (de memoria, sin comprobar), frente a la «confianza media» con la que la propia
+  lección describe el ejemplo (`:1050`). Se queda en la lección y en las preguntas, y es una segunda parte posible si se resuelve el punto 9.
+- Los casos históricos de atribución (APT1, Sony, DNC, `src/data/s5.ts:822-901`) y la escala de confianza y probabilidad de
+  ICD 203 (s5m2): son de S5.
+- Cluster-A y Cluster-B (`src/data/s4.ts:729-744`): son de s4m4.
+- Las atribuciones de un gobierno como fuente (s4m5q6): una línea como mucho en s05, sin tarjeta.
+- Los nombres de personas y el nivel «threat-actor» de STIX (`:1050`).
+- La tabla de ejemplos de false flags más allá de las cinco filas de la lección.
+
+**Laboratorios:** ningún laboratorio de S4 practica la atribución, así que la tarea final son las preguntas de la lección. Cuatro
+precauciones.
+- **Lab 4A** (`src/data/labs.ts:137-146,447-501`): ninguna de sus ocho frases. En particular, ni el ancla en un informe que decía
+  un país, ni las horas de compilación en un huso con el país detrás, ni «lo ha atribuido BigVendorCo» (`:461,481,486`). El vídeo no
+  nombra ningún país, ni usa «UTC+8».
+- **Lab 4B** (`:153-162,862-930`): ni sus ocho pruebas, ni el horario, ni el certificado de E4. El vídeo no dice qué pruebas del
+  caso son plantables.
+- **Lab 5B, hallazgo 2** (`:1056-1076`): «VELVET CICADA opera por cuenta de un estado extranjero» con solo victimología,
+  horario e infraestructura se valora con confianza baja. El vídeo no valora ninguna afirmación de sponsor de Meridian ni la
+  entrega por adelantado: la confianza que sale (alta, media, moderada) es la de la tabla de la lección y la de la ficha genérica
+  de un informe, nunca la de un juicio del caso.
+- **Lab 3A, 3B y el final de la campaña:** nada.
+
+**Canon nuevo que fija V23** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- **Sin fecha ni hora**, como V9 y V15. No se ordena contra la cronología del registro.
+- **El CISO** (sin nombre, el de V9) pregunta quién está detrás y si se pone un país en el informe. Es una pregunta, no una
+  decisión: el vídeo no dice que el informe lleve o no un país más allá de lo que recomienda la analista.
+- **Meridian, en los tres niveles:** del primero, tiene el programa y su servidor (V3, V4; el certificado no sale aquí, para no acercarlo a la prueba plantable de V9); en el diamante,
+  Adversary sigue en UNKNOWN y el customer, sin conocerse. La nota de s05 dice que quién teclea es «desconocido» y que, para
+  quién trabajan, tu red no tiene esa clase de prueba y el juicio se emite con su confianza y diciendo qué falta, no se calla; y
+  que el país rara vez cambia las decisiones de defensa. El sponsor no se deja en «desconocido» a secas: el Lab 5B califica
+  de erróneo no emitir el juicio (`src/data/labs.ts:1071-1074`) y la lección dice que los vendors serios lo emiten «con
+  confianza explícita y matizada» (`src/data/s4.ts:1002`). Tampoco se adelanta la confianza que da el laboratorio. No se afirma nada de VELVET CICADA ni de GLASS VIPER.
+- **Dos mensajes nuevos de PAPER CRANE**, sin fecha, que pasan a ser canon de su voz: «Ponle un país al informe, analista. Todo
+  consejo adora un nombre.» y «Con la primera pista que encaje ya tienes bastante. ¿Para qué más?» Ninguno confiesa nada.
+- **El binario de ejemplo** de s04 es de la lección, no del caso: lleva el rótulo «Ejemplo de la lección · no es el caso de
+  Meridian» y no se relaciona con ninguna muestra de Meridian ni con el hash `9f3a...e1`.
+- **La ficha del informe serio** de s03 (`[nombre del conjunto] · solapamiento a nivel de operador…`) es genérica: no
+  existe ningún informe de ningún proveedor sobre Meridian.
+- **La imagen del cuadro** (lienzo, mano, encargo, firma de la esquina, procedencia, cartela) es de la analogía, no del caso.
+- Ninguna persona, fecha, equipo, hash ni IP nuevos.
+
+**No se toca:**
+- **El dosier de HALL OF MIRRORS** (`src/data/course-gcti.ts:78`): ni strings en cirílico ni horarios falsos, ni «PAPER CRANE
+  los plantó», ni «espionaje industrial sistemático». Las dos pistas de s04 son un ejemplo etiquetado y sin país, y ningún
+  mensaje habla de lo que PAPER CRANE haya sembrado. Tampoco se dice que el binario o las pruebas de Meridian sean señuelos.
+- **El dosier de BROKEN CHAIN y el de DEEP WELL** (`src/data/course-gcti.ts:40,59`): ni el PDB, ni `kazuo.tanji@`, ni «una
+  sola organización detrás de todas las campañas». El correo de registro no se usa como candidato a operador; la voz solo
+  nombra el tipo de descuido (una cuenta personal, un alias reutilizado), y el único correo de registro que existe es el
+  pivote de V3 y V4, sin identificar a nadie.
+- **Lab 4A, 4B y 5B hallazgo 2:** ver «Laboratorios». Ningún país, y ni «Rusia», «Moscú», «China» ni «UTC+8».
+- **El indicador y el grafo STIX** (campaña, intrusion set, `attributed-to`) y el punto 9 de §5.
+- **«Entra por proveedores»** del callout de `src/data/s4.ts:1008` (registro §5, punto 4): el vídeo no cita esa frase; la
+  nota de s05 dice solo «cómo trabajan» y «qué buscan». El vector de Meridian queda como en V13: el correo de s2m1.
+- **Los casos reales** de S5 y los nombres de grupos reales.
+- **El E4 de V9 y el certificado:** no se dice cuál de las pruebas del caso es plantable.
+- **Cluster-A y Cluster-B.**
+- No se culpa a nadie: ni al CISO por pedir un nombre ni a la sala por querer uno. Pedir un nombre es normal; el vídeo
+  enseña a decir hasta dónde se puede llegar.
+
+**Comprobación de límites** (recuentos hechos con un script de Node, `check-limits.mjs`, no a ojo; perfil `capsula-yt`):
+- Duración: suma 218 s (seis escenas: 20, 52, 38, 48, 36 y 24); estimado ~250 s; renderizado previsto ~230–235 s; ventana
+  190–260. Sí.
+- Capítulos: 3 (máximo 3). Sí.
+- Conceptos clave: 3 (2–3), con como mucho dos tarjetas por concepto (2, 1 y 1). Sí.
+- Tarjetas: 4 (3–5), una por escena de s02 a s05 y ninguna en s01 ni en s06, todas con `"objective": "Analysis"`. Caracteres:
+  51, 42, 51 y 54 (máximo 58). Sí.
+- Pregunta para pensar: 1, en s04; 39 caracteres (máximo 48); `holdMs` 4500 (mínimo 4000); es un sí o no, no una palabra. Sí.
+- Mensajes interceptados: 2 (1–2), en s03 (cap. I) y s04 (cap. II), uno por capítulo, ninguno en la escena final; 65 y 66
+  caracteres (máximo 70); `holdMs` 3500 (2500–4500). Sí.
+- `video.json` lleva `"adversary": "PAPER CRANE"`. Sí.
+- Sin flechas, marcas de verificación, viñetas ni emoji (`FORBIDDEN_SYMBOLS` de
+  `video/engine/scripts/lib/narration.mjs:23`) en tarjetas, pregunta, mensajes, rótulos nuevos y frases de voz de muestra. Sí.
+- Ningún identificador leído en voz. Sí.
+- `wordBudget` por escena: 54, 140, 103, 130, 97 y 65 (589 palabras); frases de voz de muestra de ≤ 22 palabras. El título
+  de la escena de la pregunta no la destripa. Sí.
 
 ## 6. Prerrequisitos (bloqueantes, en orden)
 
