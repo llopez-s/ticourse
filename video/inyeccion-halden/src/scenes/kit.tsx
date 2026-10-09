@@ -46,3 +46,21 @@ export function wordFrame(sceneId: string, segmentId: string, word: string, nth 
   const origin = sceneTiming(TIMELINE, sceneId).from - enterFramesFor(TIMELINE, sceneId);
   return hit.from - origin;
 }
+
+/**
+ * The scene's intercept and think-prompt windows in LOCAL frames, read from timeline.json (so they follow the real
+ * voice), with a 14-frame lead so a fold-away is complete when the card starts. Both cards draw at the top-centre
+ * of the stage (stage-local y 10 to ~200): anything there steps aside, anything else sits below y 230.
+ */
+export function overlayWindows(sceneId: string): [number, number][] {
+  const origin = sceneTiming(TIMELINE, sceneId).from - enterFramesFor(TIMELINE, sceneId);
+  const spans = [...(TIMELINE.intercept ?? []), ...TIMELINE.think].filter((o) => o.scene === sceneId);
+  return spans.map((o) => [o.from - origin - 14, o.from - origin + o.durationInFrames] as [number, number]);
+}
+
+/** Local [from, to) of the scene's intercept / think card, or null. */
+export function cardWindow(sceneId: string, kind: 'intercept' | 'think'): [number, number] | null {
+  const origin = sceneTiming(TIMELINE, sceneId).from - enterFramesFor(TIMELINE, sceneId);
+  const hit = (kind === 'intercept' ? TIMELINE.intercept ?? [] : TIMELINE.think).find((o) => o.scene === sceneId);
+  return hit ? [hit.from - origin, hit.from - origin + hit.durationInFrames] : null;
+}
