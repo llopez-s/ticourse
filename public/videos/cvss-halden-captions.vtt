@@ -1,269 +1,269 @@
 WEBVTT
 
 1
-00:00:01.400 --> 00:00:03.567
+00:00:01.400 --> 00:00:03.133
 Jueves, nueve de la mañana.
 
 2
-00:00:03.567 --> 00:00:09.900
+00:00:03.133 --> 00:00:08.433
 El informe del mes trae tres filas rojas,
 y esta semana solo cabe un parche.
 
 3
-00:00:09.900 --> 00:00:11.900
+00:00:08.533 --> 00:00:10.500
 ¿Qué se arregla primero?
 
 4
-00:00:11.900 --> 00:00:13.733
+00:00:10.500 --> 00:00:11.800
 Hoy ves cómo se decide,
 
 5
-00:00:13.733 --> 00:00:20.000
+00:00:11.800 --> 00:00:16.467
 qué haces con lo que no tiene parche
 y cuándo está cerrado de verdad.
 
 6
-00:00:20.633 --> 00:00:22.933
+00:00:17.700 --> 00:00:20.467
 Dos servidores, el mismo fallo.
 
 7
-00:00:22.933 --> 00:00:26.933
+00:00:20.467 --> 00:00:24.367
 Esta columna es el nombre
 público del fallo, el CVE.
 
 8
-00:00:26.933 --> 00:00:30.900
+00:00:24.433 --> 00:00:29.100
 Esta es la nota base
 del CVSS, de cero a diez.
 
 9
-00:00:30.900 --> 00:00:37.633
+00:00:29.100 --> 00:00:33.633
 Dice lo grave que sería el fallo
 en abstracto, sin saber nada de tu red.
 
 10
-00:00:37.633 --> 00:00:42.467
+00:00:33.633 --> 00:00:37.767
 La misma nota, ¿y la misma prisa?
 Eso la nota no lo sabe.
 
 11
-00:00:42.467 --> 00:00:49.200
+00:00:37.767 --> 00:00:41.933
 El primero se ve desde la red interna,
 y el segundo solo desde su equipo.
 
 12
-00:00:49.200 --> 00:00:53.267
+00:00:41.933 --> 00:00:44.467
 Piensa en un agujero
 en el casco de un barco.
 
 13
-00:00:53.267 --> 00:00:57.467
+00:00:44.467 --> 00:00:47.667
 La nota es su tamaño,
 y el contexto, el mar.
 
 14
-00:00:57.467 --> 00:01:01.667
+00:00:47.733 --> 00:00:51.100
 El segundo, en dique seco,
 puede esperar a la reparación.
 
 15
-00:01:01.667 --> 00:01:05.033
+00:00:51.100 --> 00:00:54.200
 El primero, en alta mar con temporal, no.
 
 16
-00:01:05.033 --> 00:01:09.567
+00:00:54.200 --> 00:00:59.133
 Por eso el CVSS mide severidad,
 y el riesgo lo pone el contexto.
 
 17
-00:01:09.567 --> 00:01:12.733
+00:00:59.133 --> 00:01:01.600
 Mismo número, distinta prisa.
 
 18
-00:01:13.500 --> 00:01:17.867
+00:01:02.633 --> 00:01:08.267
 9.8 contra 9.8, y un solo
 parche. ¿Cuál va primero?
 
 19
-00:01:17.867 --> 00:01:23.567
+00:01:08.267 --> 00:01:12.867
 Aquí se cuela SILENT PAGER,
 que cuenta con que tu SOC duerma.
 
 20
-00:01:26.867 --> 00:01:31.233
+00:01:18.833 --> 00:01:23.333
 Una moneda no mira nada de esto.
 Mejor cuatro preguntas.
 
 21
-00:01:31.233 --> 00:01:34.367
+00:01:23.500 --> 00:01:26.300
 ¿Se llega? El primero,
 desde la red interna.
 
 22
-00:01:34.367 --> 00:01:37.533
+00:01:26.300 --> 00:01:29.200
 El segundo, solo desde su propio equipo.
 
 23
-00:01:37.533 --> 00:01:44.233
+00:01:29.200 --> 00:01:35.500
 ¿Hay exploit? Sí, en los dos, desde hace
 nueve días. Es del fallo, no del servidor.
 
 24
-00:01:44.233 --> 00:01:49.633
+00:01:35.500 --> 00:01:40.367
 ¿Hay algo que lo proteja? Nada,
 en los dos. ¿Y qué se para si cae?
 
 25
-00:01:49.633 --> 00:01:53.100
+00:01:40.367 --> 00:01:42.900
 Lo mismo, los mensajes del puerto.
 
 26
-00:01:53.100 --> 00:01:57.533
+00:01:42.900 --> 00:01:46.900
 Tres respuestas iguales y una distinta,
 y decide la que distingue.
 
 27
-00:01:57.533 --> 00:01:59.467
+00:01:46.900 --> 00:01:48.833
 El primero, parche hoy.
 
 28
-00:01:59.467 --> 00:02:03.967
+00:01:48.833 --> 00:01:53.567
 El segundo, al ciclo mensual.
 Esperar no es olvidar.
 
 29
-00:02:04.733 --> 00:02:07.933
+00:01:54.767 --> 00:01:57.567
 Queda el grabador
 de las cámaras del recinto.
 
 30
-00:02:07.933 --> 00:02:11.900
+00:01:57.567 --> 00:02:02.033
 Tiene un 8.1, pero el fabricante
 no publica parche.
 
 31
-00:02:11.900 --> 00:02:16.400
+00:02:02.033 --> 00:02:06.500
 Mira las opciones, una por una.
 Parchear queda descartado.
 
 32
-00:02:19.600 --> 00:02:25.700
+00:02:11.100 --> 00:02:15.667
 Un seguro paga parte de la factura,
 pero el fallo sigue igual de explotable.
 
 33
-00:02:25.700 --> 00:02:28.867
+00:02:15.667 --> 00:02:18.667
 Y «a otra cosa» no es una decisión.
 
 34
-00:02:28.867 --> 00:02:32.567
+00:02:18.733 --> 00:02:22.833
 Sin parche, lo aíslas,
 como los mamparos de un casco.
 
 35
-00:02:32.567 --> 00:02:37.633
+00:02:22.833 --> 00:02:26.833
 Y lo compensas con alertas reforzadas,
 como las bombas de achique.
 
 36
-00:02:37.633 --> 00:02:41.967
+00:02:26.833 --> 00:02:30.633
 El riesgo que queda lo acepta
 el negocio, no quien lo encontró.
 
 37
-00:02:41.967 --> 00:02:47.100
+00:02:30.633 --> 00:02:34.800
 Lo firma el director de operaciones,
 en una excepción con controles.
 
 38
-00:02:47.100 --> 00:02:52.800
+00:02:34.800 --> 00:02:39.467
 La excepción caduca en seis meses,
 y se revisa cada tres meses.
 
 39
-00:02:53.567 --> 00:02:58.133
+00:02:40.867 --> 00:02:45.400
 El lunes repites el escaneo,
 y el primer servidor aparece otra vez,
 
 40
-00:02:58.133 --> 00:03:01.167
+00:02:45.400 --> 00:02:47.767
 aunque Sistemas lo parcheó el jueves.
 
 41
-00:03:01.167 --> 00:03:06.067
+00:02:47.900 --> 00:02:52.233
 Está parcheado, y aun así sigue
 saliendo. ¿Qué haces primero?
 
 42
-00:03:09.967 --> 00:03:10.800
+00:02:56.633 --> 00:02:57.633
 Comprobar.
 
 43
-00:03:10.800 --> 00:03:13.300
+00:02:57.633 --> 00:02:59.567
 El escaneo entra con credenciales,
 
 44
-00:03:13.300 --> 00:03:17.933
+00:02:59.567 --> 00:03:03.133
 pero esta fila solo mira lo que
 el servicio anuncia por la red.
 
 45
-00:03:17.933 --> 00:03:23.200
+00:03:03.133 --> 00:03:07.867
 En el equipo ya corre la versión
 nueva, y no falta ningún reinicio.
 
 46
-00:03:23.200 --> 00:03:27.533
+00:03:07.867 --> 00:03:12.033
 El escáner leyó el letrero
 del casco, no el casco.
 
 47
-00:03:27.533 --> 00:03:32.767
+00:03:12.033 --> 00:03:15.833
 Cuando el escáner avisa de un fallo
 que no existe, es un falso positivo.
 
 48
-00:03:32.767 --> 00:03:36.300
+00:03:15.833 --> 00:03:18.500
 Se documenta, y Sistemas corrige el texto.
 
 49
-00:03:36.300 --> 00:03:40.167
+00:03:18.500 --> 00:03:21.967
 Nuevo escaneo, limpio.
 Ahora sí, cerrado con prueba.
 
 50
-00:03:40.167 --> 00:03:44.400
+00:03:21.967 --> 00:03:25.767
 O sea, se cierra al revalidar,
 no con un correo.
 
 51
-00:03:45.167 --> 00:03:51.967
+00:03:26.933 --> 00:03:32.733
 Tres reglas. La nota dice lo grave que
 es el fallo, y el contexto, lo urgente.
 
 52
-00:03:51.967 --> 00:03:57.167
+00:03:32.733 --> 00:03:37.433
 Si no hay parche, aíslas, compensas
 y firmas una excepción con caducidad.
 
 53
-00:03:57.167 --> 00:03:59.533
+00:03:37.433 --> 00:03:39.767
 Un seguro no cierra el fallo.
 
 54
-00:03:59.533 --> 00:04:02.400
+00:03:39.767 --> 00:03:43.267
 No está cerrado hasta que lo compruebas.
 
 55
-00:04:02.400 --> 00:04:06.000
+00:03:43.267 --> 00:03:46.133
 Si sigue saliendo,
 mira qué corre de verdad.
 
 56
-00:04:06.000 --> 00:04:09.733
+00:03:46.233 --> 00:03:49.833
 En el laboratorio lo aplicas
 con otros ocho hallazgos.
 
 57
-00:04:09.733 --> 00:04:13.300
+00:03:49.833 --> 00:03:52.933
 Decide con contexto, no con una moneda.
