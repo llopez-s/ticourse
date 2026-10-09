@@ -23,255 +23,229 @@ qué se lleva quien la escucha
 y cómo dar a cada uno su identidad.
 
 6
-00:00:18.733 --> 00:00:24.033
-Y enfrente, SILENT PAGER,
+00:00:18.733 --> 00:00:25.233
+Y en el otro bando, SILENT PAGER,
 que cuenta con que tu SOC duerma.
 
 7
-00:00:24.500 --> 00:00:27.800
+00:00:25.667 --> 00:00:28.967
 Recorres la terminal midiendo la señal.
 
 8
-00:00:27.800 --> 00:00:31.567
-Eso es el site survey,
-y el mapa, el heat map.
+00:00:28.967 --> 00:00:33.133
+Es el site survey,
+y su mapa de calor, el heat map.
 
 9
-00:00:31.567 --> 00:00:35.233
+00:00:33.133 --> 00:00:36.567
 La mancha llega
 al aparcamiento de visitantes,
 
 10
-00:00:35.233 --> 00:00:37.900
+00:00:36.567 --> 00:00:39.067
 como un foco que alumbra al vecino.
 
 11
-00:00:37.900 --> 00:00:43.667
-Allí, tu portátil de pruebas oye
-la red de las tabletas a −55 dBm.
+00:00:39.067 --> 00:00:45.233
+Allí, tu portátil oye la red de las
+tabletas bastante fuerte, con −55 dBm.
 
 12
-00:00:46.867 --> 00:00:49.367
-Taparle la etiqueta no lo apaga,
+00:00:48.433 --> 00:00:55.100
+Esconder el nombre no apaga el foco,
+y se ve en cuanto una tableta se conecta.
 
 13
-00:00:49.367 --> 00:00:53.933
-porque el nombre se ve en cuanto
-una tableta se conecta.
+00:00:55.100 --> 00:00:58.367
+Tampoco una clave más larga baja la señal.
 
 14
-00:00:53.933 --> 00:00:56.133
-Tampoco ayuda una clave más larga.
+00:00:58.367 --> 00:01:03.367
+Se baja el foco y se gira hacia dentro,
+potencia y colocación.
 
 15
-00:00:56.133 --> 00:00:59.800
-Bájalo y gíralo hacia dentro,
-colocación y potencia.
+00:01:03.367 --> 00:01:09.400
+El martes ajustas dos antenas, y el
+miércoles el aparcamiento baja a −78 dBm.
 
 16
-00:00:59.800 --> 00:01:02.233
-El martes, dos antenas lo hacen,
+00:01:09.400 --> 00:01:12.267
+Se oye menos, pero se oye.
 
 17
-00:01:02.233 --> 00:01:06.167
-y el miércoles el aparcamiento
-queda en −78 dBm.
+00:01:13.000 --> 00:01:17.500
+Lo pruebas con permiso,
+en un punto de acceso de pruebas,
 
 18
-00:01:06.167 --> 00:01:11.467
-Se oye menos, pero se oye.
-¿Y lo que se oiga?
+00:01:17.500 --> 00:01:19.667
+con una clave de prueba.
 
 19
-00:01:12.000 --> 00:01:17.867
-Esta prueba es autorizada, en un punto
-de acceso de pruebas, con clave corriente.
+00:01:19.667 --> 00:01:24.800
+En WPA2 personal, tableta y punto de
+acceso comprueban la clave con un apretón
 
 20
-00:01:17.867 --> 00:01:23.400
-En WPA2, la tableta y el punto de acceso
-comprueban la clave en cuatro mensajes,
+00:01:24.800 --> 00:01:30.333
+de manos de cuatro mensajes, el four-way
+handshake. Cualquiera cerca lo graba.
 
 21
-00:01:23.400 --> 00:01:26.933
-el four-way handshake.
-Tu portátil los graba.
+00:01:30.333 --> 00:01:35.233
+Quien lo graba se lo lleva a casa,
+como un candado de combinación,
 
 22
-00:01:26.933 --> 00:01:32.567
-Te llevas la grabación a casa y pruebas
-claves sin conexión, o sea, offline.
+00:01:35.233 --> 00:01:40.600
+y prueba claves sin conexión, offline.
+La red no ve ningún intento.
 
 23
-00:01:32.567 --> 00:01:37.600
-La red ni se entera. Es como llevarte
-un candado de combinación.
-
-24
-00:01:37.600 --> 00:01:42.367
+00:01:40.600 --> 00:01:45.500
 Una clave corriente acabaría cayendo,
 y una larga y aleatoria aguantaría.
 
+24
+00:01:45.500 --> 00:01:51.767
+Con WPA3 personal el apretón cambia,
+y grabarlo ya no te sirve. Eso es SAE.
+
 25
-00:01:42.367 --> 00:01:47.433
-Con WPA3 personal, el apretón
-es otro, SAE, y grabarlo no sirve.
+00:01:51.767 --> 00:01:58.067
+Cada intento va contra el punto
+de acceso, uno a uno y a la vista.
 
 26
-00:01:47.433 --> 00:01:52.567
-Cada intento va contra el punto
-de acceso, uno a uno y a la vista,
+00:01:58.067 --> 00:02:03.567
+Con SAE, aunque averigües la clave hoy,
+no abre el tráfico que grabaste ayer.
 
 27
-00:01:52.567 --> 00:01:55.333
-como un candado atornillado.
+00:02:03.567 --> 00:02:05.867
+Eso es forward secrecy.
 
 28
-00:01:55.333 --> 00:02:00.833
-Con SAE, la clave que averigües hoy
-ya no abre lo que grabaste ayer,
-
-29
-00:02:00.833 --> 00:02:03.300
-y eso es forward secrecy.
-
-30
-00:02:03.300 --> 00:02:07.800
+00:02:05.867 --> 00:02:10.367
 Pero WPA3 personal sigue
 siendo una clave para todos.
 
-31
-00:02:12.133 --> 00:02:15.167
-Una clave larga ayuda
-contra el diccionario,
+29
+00:02:14.833 --> 00:02:19.133
+Larga aguanta las pruebas,
+sí. Pero mira quién la sabe.
 
-32
-00:02:15.167 --> 00:02:18.000
-pero sigue siendo la misma para todos.
-
-33
-00:02:18.000 --> 00:02:22.533
+30
+00:02:19.133 --> 00:02:23.667
 Es como el código de la escalera,
 que sabe todo el edificio.
 
-34
-00:02:22.533 --> 00:02:26.667
+31
+00:02:23.667 --> 00:02:27.800
 Si se pierde una tableta,
 toca cambiarlo en todas.
 
-35
-00:02:26.667 --> 00:02:31.000
+32
+00:02:27.800 --> 00:02:32.133
 En modo enterprise, cada una enseña
 su carné, un certificado,
 
-36
-00:02:31.000 --> 00:02:33.333
+33
+00:02:32.133 --> 00:02:34.467
 y un servidor decide si entra.
 
-37
-00:02:33.333 --> 00:02:40.033
+34
+00:02:34.467 --> 00:02:41.367
 Se anula el carné de esa tableta,
 y ya no entra. Las demás ni se enteran.
 
+35
+00:02:41.367 --> 00:02:45.967
+Eso es WPA3 enterprise, con 802.1X
+y un servidor RADIUS que autentica,
+
+36
+00:02:45.967 --> 00:02:47.633
+autoriza y registra.
+
+37
+00:02:47.633 --> 00:02:53.167
+Al final, el puerto pasa a WPA3 en modo
+enterprise, y no en modo personal,
+
 38
-00:02:40.033 --> 00:02:44.333
-Todo eso es 802.1X, con un servidor
-AAA, normalmente RADIUS.
-
-39
-00:02:44.333 --> 00:02:49.400
-Hace falta un servidor RADIUS, un
-directorio y, con certificados, una PKI.
-
-40
-00:02:49.400 --> 00:02:53.800
-Por eso el puerto pasará a WPA3
-enterprise, y no a personal,
-
-41
-00:02:53.800 --> 00:02:56.300
+00:02:53.167 --> 00:02:55.733
 el martes veintidós.
 
-42
-00:02:56.833 --> 00:03:00.433
-Dentro de 802.1X,
-EAP pone la forma de entrar.
+39
+00:02:56.300 --> 00:03:02.233
+Dentro de 802.1X, la forma de entrar
+la pone EAP, en dos grupos, EAP-TLS,
 
-43
-00:03:00.433 --> 00:03:03.900
-Hay dos carriles, PEAP y TTLS, o EAP-TLS.
+40
+00:03:02.233 --> 00:03:03.767
+y PEAP con TTLS.
 
-44
-00:03:03.900 --> 00:03:08.400
+41
+00:03:03.767 --> 00:03:08.267
 Las tabletas ya tienen certificado,
 así que, ¿cuál eliges?
 
+42
+00:03:12.133 --> 00:03:16.500
+EAP-TLS, porque ya tienen
+certificado y pides lo más fuerte.
+
+43
+00:03:16.500 --> 00:03:21.233
+PEAP y TTLS llevan usuario
+y contraseña dentro de un túnel TLS.
+
+44
+00:03:21.233 --> 00:03:23.167
+Son más débiles que EAP-TLS,
+
 45
-00:03:12.267 --> 00:03:17.100
-EAP-TLS, porque ya tienen certificado
-y puedes pedir lo más fuerte.
+00:03:23.167 --> 00:03:27.867
+porque dependen de que la tableta
+valide el certificado del servidor.
 
 46
-00:03:17.100 --> 00:03:21.467
-PEAP y TTLS llevan usuario
-y contraseña dentro de un túnel TLS,
-
-47
-00:03:21.467 --> 00:03:24.567
-con el certificado solo en el servidor.
-
-48
-00:03:24.567 --> 00:03:29.600
-Son más débiles, porque dependen
-de que la tableta valide ese certificado.
-
-49
-00:03:29.600 --> 00:03:33.633
+00:03:27.867 --> 00:03:31.900
 Si no, un punto de acceso
 falso recoge sus credenciales.
 
-50
-00:03:33.633 --> 00:03:39.133
-EAP-TLS pone certificado en los dos
+47
+00:03:31.900 --> 00:03:37.433
+EAP-TLS lleva certificado en los dos
 lados, y cada uno comprueba al otro.
 
-51
-00:03:39.133 --> 00:03:42.800
-O sea, que EAP-TLS no tiene
-contraseña que robar,
-
-52
-00:03:42.800 --> 00:03:46.833
+48
+00:03:37.433 --> 00:03:44.400
+O sea, que no hay contraseña que robar,
 y PEAP depende de que valides al servidor.
 
-53
-00:03:47.367 --> 00:03:48.333
-Tres reglas.
+49
+00:03:45.133 --> 00:03:49.800
+Tres reglas. Si el foco alumbra
+al vecino, bájalo y gíralo.
 
-54
-00:03:48.333 --> 00:03:53.667
-Si la señal se escapa, colocación
-y potencia, no una clave más larga.
+50
+00:03:49.800 --> 00:03:55.533
+WPA3 personal pone SAE, que frena el
+ataque sin conexión y da forward secrecy,
 
-55
-00:03:53.667 --> 00:03:57.333
-WPA3 pone SAE, que frena
-el ataque sin conexión,
-
-56
-00:03:57.333 --> 00:04:00.367
+51
+00:03:55.533 --> 00:03:58.467
 pero la clave sigue siendo de todos.
 
-57
-00:04:00.367 --> 00:04:04.100
-Una identidad por dispositivo
-es enterprise, con EAP-TLS,
+52
+00:03:58.467 --> 00:04:04.333
+Para un carné por tableta, enterprise con
+EAP-TLS, o PEAP si validas al servidor.
 
-58
-00:04:04.100 --> 00:04:06.267
-o PEAP si validas al servidor.
-
-59
-00:04:06.267 --> 00:04:11.567
-Termina la lección y sus preguntas.
-Cada uno, con su carné.
+53
+00:04:04.333 --> 00:04:11.633
+Tu turno, y la próxima clave de wifi
+que te den, mira quién más la sabe.

@@ -35,25 +35,25 @@
     {
       "id": "s01-03",
       "scene": "s01-hook",
-      "text": "<ominous> {adversary}Y enfrente, SILENT PAGER, que cuenta con que tu SOC duerma.",
-      "pauseAfterMs": 300
+      "text": "<ominous> {adversary}Y en el otro bando, SILENT PAGER, que cuenta con que tu SOC duerma.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s02-01",
       "scene": "s02-foco",
-      "text": "<engaging> {survey}Recorres la terminal midiendo la señal. Eso es el site survey, y el mapa, el heat map.",
+      "text": "<engaging> {survey}Recorres la terminal midiendo la señal. Es el site survey, y su mapa de calor, el heat map.",
       "pauseAfterMs": 250
     },
     {
       "id": "s02-02",
       "scene": "s02-foco",
-      "text": "<focused> {spill}La mancha llega al aparcamiento de visitantes, {floodlight}como un foco que alumbra al vecino. {scan}Allí, tu portátil de pruebas oye la red de las tabletas a [−55 dBm|menos cincuenta y cinco].",
+      "text": "<focused> {spill}La mancha llega al aparcamiento de visitantes, {floodlight}como un foco que alumbra al vecino. {scan}Allí, tu portátil oye la red de las tabletas bastante fuerte, con [−55 dBm|menos cincuenta y cinco].",
       "pauseAfterMs": 300
     },
     {
-      "id": "s02-04",
+      "id": "s02-03",
       "scene": "s02-foco",
-      "text": "<sarcastic> {hide}Taparle la etiqueta no lo apaga, porque el nombre se ve en cuanto una tableta se conecta.",
+      "text": "<clear> {hide}Esconder el nombre no apaga el foco, y se ve en cuanto una tableta se conecta.",
       "pauseAfterMs": 250,
       "intercept": {
         "text": "Oculta el nombre de la red. Si no la ven, no existe.",
@@ -61,16 +61,16 @@
       }
     },
     {
-      "id": "s02-05",
+      "id": "s02-04",
       "scene": "s02-foco",
-      "text": "<firm> {fix}Tampoco ayuda una clave más larga. Bájalo y gíralo hacia dentro, colocación y potencia.",
+      "text": "<firm> {fix}Tampoco una clave más larga baja la señal. Se baja el foco y se gira hacia dentro, potencia y colocación.",
       "pauseAfterMs": 250
     },
     {
-      "id": "s02-06",
+      "id": "s02-05",
       "scene": "s02-foco",
-      "text": "<steady> El martes, dos antenas lo hacen, {remeasure}y el miércoles el aparcamiento queda en [−78 dBm|menos setenta y ocho].",
-      "pauseAfterMs": 350,
+      "text": "<steady> El martes ajustas dos antenas, {remeasure}y el miércoles el aparcamiento baja a [−78 dBm|menos setenta y ocho]. {still}Se oye menos, pero se oye.",
+      "pauseAfterMs": 550,
       "exam": {
         "objective": "4.1",
         "text": "Cobertura fuera del perímetro: colocación y potencia",
@@ -79,52 +79,46 @@
       }
     },
     {
-      "id": "s02-07",
-      "scene": "s02-foco",
-      "text": "<calm> {still}Se oye menos, pero se oye. ¿Y lo que se oiga?",
-      "pauseAfterMs": 350
-    },
-    {
       "id": "s03-01",
       "scene": "s03-apreton",
-      "text": "<focused> {lab-stamp}Esta prueba es autorizada, en un punto de acceso de pruebas, con clave corriente.",
+      "text": "<focused> {lab-stamp}Lo pruebas con permiso, en un punto de acceso de pruebas, con una clave de prueba.",
       "pauseAfterMs": 250
     },
     {
       "id": "s03-02",
       "scene": "s03-apreton",
-      "text": "<clear> {handshake}En WPA2, la tableta y el punto de acceso comprueban la clave en cuatro mensajes, el four-way handshake. {captured}Tu portátil los graba.",
+      "text": "<clear> {handshake}En WPA2 personal, tableta y punto de acceso comprueban la clave con un apretón de manos de cuatro mensajes, el four-way handshake. {captured}Cualquiera cerca lo graba.",
       "pauseAfterMs": 250
     },
     {
       "id": "s03-03",
       "scene": "s03-apreton",
-      "text": "<serious> {offline}Te llevas la grabación a casa y pruebas claves sin conexión, o sea, offline. La red ni se entera. {padlock}Es como llevarte un candado de combinación.",
+      "text": "<serious> {offline}Quien lo graba se lo lleva a casa, {padlock}como un candado de combinación, y prueba claves sin conexión, offline. La red no ve ningún intento.",
       "pauseAfterMs": 250
     },
     {
       "id": "s03-04",
       "scene": "s03-apreton",
-      "text": "<warm> Una clave corriente acabaría cayendo, y una larga y aleatoria aguantaría.",
-      "pauseAfterMs": 350
+      "text": "<concerned> Una clave corriente acabaría cayendo, y una larga y aleatoria aguantaría.",
+      "pauseAfterMs": 500
     },
     {
       "id": "s03-05",
       "scene": "s03-apreton",
-      "text": "<confident> {sealed}Con WPA3 personal, el apretón es otro, SAE, y grabarlo no sirve.",
+      "text": "<confident> Con WPA3 personal el apretón cambia, y grabarlo {sealed}ya no te sirve. Eso es SAE.",
       "pauseAfterMs": 250
     },
     {
       "id": "s03-06",
       "scene": "s03-apreton",
-      "text": "<firm> {one-by-one}Cada intento va contra el punto de acceso, uno a uno y a la vista, como un candado atornillado.",
+      "text": "<firm> {one-by-one}Cada intento va contra el punto de acceso, uno a uno y a la vista.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-07",
       "scene": "s03-apreton",
-      "text": "<steady> {tape}Con SAE, la clave que averigües hoy ya no abre lo que grabaste ayer, y eso es forward secrecy.",
-      "pauseAfterMs": 350,
+      "text": "<steady> Con SAE, aunque averigües la clave hoy, no abre el tráfico que grabaste ayer. {tape}Eso es forward secrecy.",
+      "pauseAfterMs": 600,
       "exam": {
         "objective": "4.1",
         "text": "SAE: frena el ataque offline y da forward secrecy",
@@ -136,15 +130,15 @@
       "id": "s03-08",
       "scene": "s03-apreton",
       "text": "<firm> {still-shared}Pero WPA3 personal sigue siendo una clave para todos.",
-      "pauseAfterMs": 350
+      "pauseAfterMs": 500
     },
     {
       "id": "s04-01",
       "scene": "s04-enterprise",
-      "text": "<sarcastic> {shared}Una clave larga ayuda contra el diccionario, pero {long-key}sigue siendo la misma para todos.",
-      "pauseAfterMs": 250,
+      "text": "<sarcastic> {shared}Larga aguanta las pruebas, sí. Pero {long-key}mira quién la sabe.",
+      "pauseAfterMs": 300,
       "intercept": {
-        "text": "Una clave larga para toda la terminal. Qué elegante.",
+        "text": "Pon una sola clave larga. Así nadie pregunta quién entra.",
         "holdMs": 3800
       }
     },
@@ -163,14 +157,14 @@
     {
       "id": "s04-04",
       "scene": "s04-enterprise",
-      "text": "<firm> {revoke}Se anula el carné de esa tableta, {reject}y ya no entra. Las demás ni se enteran.",
-      "pauseAfterMs": 300
+      "text": "<satisfied> {revoke}Se anula el carné de esa tableta, {reject}y ya no entra. Las demás ni se enteran.",
+      "pauseAfterMs": 500
     },
     {
       "id": "s04-05",
       "scene": "s04-enterprise",
-      "text": "<clear> {aaa}Todo eso es 802.1X, con un servidor AAA, normalmente RADIUS.",
-      "pauseAfterMs": 300,
+      "text": "<clear> {aaa}Eso es WPA3 enterprise, con 802.1X y un servidor {needs}RADIUS que autentica, autoriza y registra.",
+      "pauseAfterMs": 250,
       "exam": {
         "objective": "4.1",
         "text": "Modo enterprise: 802.1X y RADIUS, identidad individual",
@@ -181,19 +175,13 @@
     {
       "id": "s04-06",
       "scene": "s04-enterprise",
-      "text": "<steady> {needs}Hace falta un servidor RADIUS, un directorio y, con certificados, una PKI.",
-      "pauseAfterMs": 250
-    },
-    {
-      "id": "s04-07",
-      "scene": "s04-enterprise",
-      "text": "<confident> {decision}Por eso el puerto pasará a WPA3 enterprise, y no a personal, el martes veintidós.",
-      "pauseAfterMs": 350
+      "text": "<confident> Al final, el puerto pasa a WPA3 en modo enterprise, y no en modo personal, {decision}el martes veintidós.",
+      "pauseAfterMs": 400
     },
     {
       "id": "s05-01",
       "scene": "s05-eap",
-      "text": "<engaging> {lanes}Dentro de 802.1X, EAP pone la forma de entrar. Hay dos carriles, PEAP y TTLS, o EAP-TLS.",
+      "text": "<engaging> {lanes}Dentro de 802.1X, la forma de entrar la pone EAP, en dos grupos, EAP-TLS, y PEAP con TTLS.",
       "pauseAfterMs": 250
     },
     {
@@ -209,20 +197,20 @@
     {
       "id": "s05-03",
       "scene": "s05-eap",
-      "text": "<confident> {answer}EAP-TLS, porque ya tienen certificado y puedes pedir lo más fuerte. {peap}PEAP y TTLS llevan usuario y contraseña dentro de un túnel TLS, con el certificado solo en el servidor.",
+      "text": "<confident> {answer}EAP-TLS, porque ya tienen certificado y pides lo más fuerte. {peap}PEAP y TTLS llevan usuario y contraseña dentro de un túnel TLS.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-04",
       "scene": "s05-eap",
-      "text": "<serious> {validate}Son más débiles, porque dependen de que la tableta valide ese certificado. Si no, {fake-ap}un punto de acceso falso recoge sus credenciales.",
+      "text": "<serious> {validate}Son más débiles que EAP-TLS, porque dependen de que la tableta valide el certificado del servidor. Si no, {fake-ap}un punto de acceso falso recoge sus credenciales.",
       "pauseAfterMs": 250
     },
     {
       "id": "s05-05",
       "scene": "s05-eap",
-      "text": "<satisfied> {tls}EAP-TLS pone certificado en los dos lados, y {mutual}cada uno comprueba al otro.",
-      "pauseAfterMs": 300,
+      "text": "<satisfied> {tls}EAP-TLS lleva certificado en los dos lados, y {mutual}cada uno comprueba al otro. {wrap}O sea, que no hay contraseña que robar, y PEAP depende de que valides al servidor.",
+      "pauseAfterMs": 550,
       "exam": {
         "objective": "4.1",
         "text": "EAP-TLS, el más fuerte; PEAP exige validar al servidor",
@@ -231,34 +219,28 @@
       }
     },
     {
-      "id": "s05-06",
-      "scene": "s05-eap",
-      "text": "<calm> {wrap}O sea, que EAP-TLS no tiene contraseña que robar, y PEAP depende de que valides al servidor.",
-      "pauseAfterMs": 350
-    },
-    {
       "id": "s06-01",
       "scene": "s06-recap",
-      "text": "<confident> {recap}Tres reglas. Si la señal se escapa, {rule-1}colocación y potencia, no una clave más larga.",
-      "pauseAfterMs": 300
+      "text": "<confident> {recap}Tres reglas. Si el foco alumbra al vecino, {rule-1}bájalo y gíralo.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s06-02",
       "scene": "s06-recap",
-      "text": "<firm> {rule-2}WPA3 pone SAE, que frena el ataque sin conexión, pero la clave sigue siendo de todos.",
-      "pauseAfterMs": 300
+      "text": "<firm> {rule-2}WPA3 personal pone SAE, que frena el ataque sin conexión y da forward secrecy, pero la clave sigue siendo de todos.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s06-03",
       "scene": "s06-recap",
-      "text": "<clear> {rule-3}Una identidad por dispositivo es enterprise, con EAP-TLS, o PEAP si validas al servidor.",
-      "pauseAfterMs": 300
+      "text": "<clear> {rule-3}Para un carné por tableta, enterprise con EAP-TLS, o PEAP si validas al servidor.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s06-04",
       "scene": "s06-recap",
-      "text": "<cheerful> {next}Termina la lección y sus preguntas. {endcard}Cada uno, con su carné.",
-      "pauseAfterMs": 300
+      "text": "<cheerful> {next}Tu turno, y la próxima clave de wifi que te den, {endcard}mira quién más la sabe.",
+      "pauseAfterMs": 250
     }
   ]
 }
