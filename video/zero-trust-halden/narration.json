@@ -23,14 +23,14 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {rule}Hoy, en el puerto de Halden, para llegar al ERP basta con que tu equipo esté en Operaciones. {blind}La regla no mira quién eres.",
-      "pauseAfterMs": 250
+      "text": "<curious> {rule}Hoy, en el puerto de Halden, la regla del cortafuegos deja llegar al ERP a cualquier portátil de Operaciones. {blind}No mira quién eres.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Con Zero Trust, eso cambia. {promise}Verás cómo se verifica cada petición, quién decide, quién aplica y cómo se adapta.",
-      "pauseAfterMs": 250
+      "text": "<confident> {title}Con Zero Trust, eso cambia. {promise}Verás cómo se verifica cada petición, quién decide, quién comunica, quién aplica y cómo se adapta.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s01-03",
@@ -41,20 +41,20 @@
     {
       "id": "s02-01",
       "scene": "s02-dentro",
-      "text": "<clear> {vest}Aquí todos llevan chaleco, y el chaleco no abre nada, solo dice que estás dentro.",
-      "pauseAfterMs": 250
+      "text": "<clear> {vest}Todos llevan chaleco. Y el chaleco no debería abrir nada, solo dice que estás dentro.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s02-02",
       "scene": "s02-dentro",
-      "text": "<focused> {same-rule}La regla deja pasar a quien trabaja, {stolen}a quien lleva una credencial robada, {compromised}y a un equipo comprometido.",
-      "pauseAfterMs": 400
+      "text": "<focused> {same-rule}La regla deja pasar a quien trabaja, {stolen}a quien usa una credencial robada desde dentro, {compromised}y a un portátil comprometido.",
+      "pauseAfterMs": 350
     },
     {
       "id": "s02-03",
       "scene": "s02-dentro",
-      "text": "<sarcastic> Es verdad, pasó el control. Pero estar dentro no dice si es de fiar.",
-      "pauseAfterMs": 250,
+      "text": "<sarcastic> Haber pasado el control solo dice que está dentro, no que sea de fiar.",
+      "pauseAfterMs": 300,
       "intercept": {
         "text": "Confiar en todo equipo de la red interna. Ya pasó el control. Lógico.",
         "holdMs": 3800
@@ -63,13 +63,13 @@
     {
       "id": "s02-04",
       "scene": "s02-dentro",
-      "text": "<confident> {once}El perímetro decide una vez, en el borde, y luego confía. {every}Zero Trust decide en cada petición.",
-      "pauseAfterMs": 250
+      "text": "<confident> {once}El perímetro decide una vez, en la entrada, y luego confía. {every}Zero Trust decide en cada petición.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s02-05",
       "scene": "s02-dentro",
-      "text": "<firm> {zerotrust}Ese es el lema, never trust, always verify. Verificar no es negar, es pedir pruebas. O sea, que dentro no es de fiar.",
+      "text": "<firm> {zerotrust}Es el lema, never trust, always verify. O sea, que dentro no es de fiar. Y verificar no es negar, es pedir pruebas.",
       "pauseAfterMs": 450,
       "exam": {
         "objective": "1.2",
@@ -81,45 +81,39 @@
     {
       "id": "s03-01",
       "scene": "s03-verbos",
-      "text": "<curious> {warehouse}En un almacén del puerto, un mozo entrega los pedidos {clerk-alone}él solo.",
-      "pauseAfterMs": 250
+      "text": "<curious> {warehouse}Imagina un almacén del puerto, con tres personas. {clerk-alone}El mozo entrega la mercancía sin preguntar a nadie.",
+      "pauseAfterMs": 400
     },
     {
       "id": "s03-02",
       "scene": "s03-verbos",
-      "text": "<sarcastic> El mozo ve pasar la mercancía, sí. Pero no sabe quién recoge ni qué normas hay.",
-      "pauseAfterMs": 250,
+      "text": "<sarcastic> El mozo ve pasar toda la mercancía, claro. Pero no tiene el historial de quien recoge ni las normas.",
+      "pauseAfterMs": 400,
       "intercept": {
-        "text": "Dejar que decida el punto de aplicación. Ve todo el tráfico. Lógico.",
+        "text": "Dejar decidir a quien ve el tráfico. Lo tiene delante. Lógico.",
         "holdMs": 3800
       }
     },
     {
       "id": "s03-03",
       "scene": "s03-verbos",
-      "text": "<clear> {desk}Eso lo sabe la oficina de pedidos, arriba. El mozo le escribe, y decide ella con las mismas normas para todos. Es el policy engine.",
-      "pauseAfterMs": 250
+      "text": "<clear> {desk}Eso lo tiene la oficina de pedidos, arriba. El mozo le pasa el pedido, y ella decide con las mismas normas para todos. Es el policy engine.",
+      "pauseAfterMs": 400
     },
     {
       "id": "s03-04",
       "scene": "s03-verbos",
-      "text": "<focused> {lead}El encargado de turno no decide. {order}Imprime la orden de salida, con su caducidad, y se la deja al mozo. Comunica, y es el policy administrator.",
-      "pauseAfterMs": 250
+      "text": "<focused> {lead}El administrativo de turno no decide. {order}Imprime la orden, con su caducidad, y se la deja al mozo. Comunica, y es el policy administrator.",
+      "pauseAfterMs": 400
     },
     {
       "id": "s03-05",
       "scene": "s03-verbos",
       "text": "<confident> El mozo entrega solo lo que dice la orden. Aplica, y es el policy enforcement point, el PEP.",
-      "pauseAfterMs": 250
+      "pauseAfterMs": 400
     },
     {
       "id": "s03-06",
-      "scene": "s03-verbos",
-      "text": "<thoughtful> {planes}Arriba se decide y se comunica, el control plane. Abajo pasa la mercancía, el data plane. {pdp}Oficina y encargado, juntos, son el PDP.",
-      "pauseAfterMs": 250
-    },
-    {
-      "id": "s03-07",
       "scene": "s03-verbos",
       "text": "<firm> {wrap}O sea, que el engine decide, el administrator comunica y el PEP aplica.",
       "pauseAfterMs": 450,
@@ -139,55 +133,61 @@
     {
       "id": "s04-02",
       "scene": "s04-peticion",
-      "text": "<engaging> {request}Primera petición, de una cuenta de prueba. Cuentan la persona y su equipo.",
+      "text": "<engaging> {request}Primera petición, de una cuenta de prueba. Cuentan la persona y su portátil.",
       "pauseAfterMs": 250
     },
     {
       "id": "s04-03",
       "scene": "s04-peticion",
-      "text": "<steady> {consult}La petición llegaría al PEP, el mozo, y consultaría a la oficina. {decide}El engine miraría cuenta, equipo y hora, y diría que sí.",
+      "text": "<steady> {consult}La petición llega al mozo, el PEP, y él pregunta a la oficina. {decide}El engine, con cuenta, portátil y hora, diría que sí.",
       "pauseAfterMs": 250
     },
     {
       "id": "s04-04",
       "scene": "s04-peticion",
-      "text": "<clear> {issue}El administrator emitiría la orden y un token de media hora. {traffic}El PEP dejaría pasar el tráfico {zone}a una zona pequeña y explícita.",
+      "text": "<clear> {issue}El administrator emite la orden, que es un token de media hora. {traffic}El PEP deja pasar la mercancía {zone}a una zona pequeña y delimitada.",
       "pauseAfterMs": 250
     },
     {
       "id": "s04-05",
       "scene": "s04-peticion",
-      "text": "<satisfied> {grant}Concedido, con lectura y escritura. La decisión y la orden, en el control plane. El tráfico, en el data plane.",
+      "text": "<satisfied> {grant}Concedido, con lectura y escritura. {planes}Arriba, en el control plane, la oficina decide y el administrativo comunica. {pdp}Juntos son el PDP.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-peticion",
+      "text": "<thoughtful> {data-plane}Abajo, en el data plane, el PEP y el tráfico.",
       "pauseAfterMs": 450,
       "exam": {
         "objective": "1.2",
         "text": "PDP en el control plane; el PEP, en el data plane",
-        "at": "grant",
+        "at": "data-plane",
         "holdSec": 5
       }
     },
     {
       "id": "s05-01",
       "scene": "s05-contexto",
-      "text": "<curious> {req2}Segunda petición. Misma cuenta, mismo portátil, {odd}pero otro país, a las tres de la madrugada.",
+      "text": "<curious> {req2}Otra petición, misma cuenta y mismo portátil, {odd}pero desde otro país, a las tres de la madrugada.",
       "pauseAfterMs": 250
     },
     {
       "id": "s05-02",
       "scene": "s05-contexto",
-      "text": "<thoughtful> El engine {step-up}pediría un segundo factor, que el proveedor de identidad exigirá desde el treinta de noviembre.",
+      "text": "<thoughtful> En esta prueba, el engine {step-up}pide un segundo factor. En el puerto, el proveedor de identidad tiene previsto exigirlo desde el treinta de noviembre.",
       "pauseAfterMs": 250
     },
     {
       "id": "s05-03",
       "scene": "s05-contexto",
-      "text": "<clear> {readonly}Superado, daría solo lectura durante media hora. La exigencia sube o baja según el contexto, y eso es adaptive identity.",
+      "text": "<clear> La exigencia sube o baja según el contexto, y eso es adaptive identity. {readonly}Si lo supera, daría solo lectura durante media hora.",
       "pauseAfterMs": 250
     },
     {
       "id": "s05-04",
       "scene": "s05-contexto",
-      "text": "<concerned> {event}A los diez minutos, el EDR avisa de un malware. {think}¿Quién revoca la sesión?",
+      "text": "<concerned> {event}A los diez minutos, el EDR del portátil detecta malware. {think}¿Quién revoca la sesión?",
       "pauseAfterMs": 250,
       "think": {
         "q": "El EDR avisa: ¿quién revoca la sesión?",
@@ -197,7 +197,7 @@
     {
       "id": "s05-05",
       "scene": "s05-contexto",
-      "text": "<confident> El administrator. El engine vería el aviso y decidiría cerrar, {revoke}el administrator revocaría la sesión, y el PEP la cortaría.",
+      "text": "<confident> El administrator. El engine ve el aviso y decide cerrar. {revoke}El administrator revoca la sesión. Y el PEP la corta.",
       "pauseAfterMs": 400
     },
     {
@@ -215,7 +215,7 @@
     {
       "id": "s05-07",
       "scene": "s05-contexto",
-      "text": "<warm> {pilot}El siguiente paso, un piloto con el ERP de pruebas. O sea, que se verifica, se adapta y se acota.",
+      "text": "<warm> {pilot}O sea, que se verifica, se adapta y se acota.",
       "pauseAfterMs": 400
     },
     {
@@ -227,19 +227,19 @@
     {
       "id": "s06-02",
       "scene": "s06-recap",
-      "text": "<firm> {rule-2}El engine decide, el administrator comunica y el PEP aplica.",
+      "text": "<firm> {rule-2}Decide el engine, comunica el administrator y aplica el PEP.",
       "pauseAfterMs": 350
     },
     {
       "id": "s06-03",
       "scene": "s06-recap",
-      "text": "<clear> {rule-3}La exigencia se adapta al contexto, y el daño se acota. Y Zero Trust no es una caja que se compra.",
+      "text": "<clear> {rule-3}Y la tercera, sesión corta, alcance mínimo y revocable.",
       "pauseAfterMs": 350
     },
     {
       "id": "s06-04",
       "scene": "s06-recap",
-      "text": "<cheerful> {next}Te toca a ti, con las preguntas de la lección. {endcard}Que cada petición dé la cara.",
+      "text": "<cheerful> {next}Te toca a ti, con las preguntas de la lección. {endcard}Y que ninguna petición pase solo por llevar chaleco.",
       "pauseAfterMs": 400
     }
   ]
