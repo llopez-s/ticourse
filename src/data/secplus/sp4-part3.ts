@@ -62,7 +62,7 @@ FINDING #0147 ------------------------------------------------------------
   Confirmation     : verificado a mano en preproducción -> NO es false positive
   Impacto negocio  : alto; el portal opera 24/7 y sostiene la facturación
   >> TRIAGE        : P1 - parche en ventana de emergencia (24 h)
-                     mitigación interina: regla de virtual patching en el WAF
+                     mitigación interina: regla de virtual patching en un WAF que se pondría delante hasta el parche
 
 FINDING #0203 ------------------------------------------------------------
   Asset            : lab-sandbox-07  (laboratorio de pruebas de integración)
@@ -164,7 +164,7 @@ impacto de negocio. Ordenar la cola por puntuación es el error clásico.`,
       t: 'callout',
       kind: 'example',
       title: 'En la Autoridad Portuaria de Halden',
-      md: 'El escaneo de septiembre devuelve 640 hallazgos y el comité pide «arreglar todos los críticos». La analista los cruza con el inventario y el resultado cambia la conversación: 180 son **false positives** de un escaneo sin credenciales sobre servidores que ya estaban parcheados; 22 críticos viven en el **laboratorio aislado** y pueden esperar al ciclo mensual; 6 están en sistemas **internet-facing** y dos de ellos tienen exploit público, así que se llevan la ventana de emergencia; y 3 están en los **PLC de las esclusas**, que no admiten parche y salen del comité con VLAN dedicada, ACL, monitorización reforzada y una **exception** firmada por el director de operaciones que **caduca en seis meses**. Dos semanas después, el **rescan** confirma que 5 de los 6 críticos expuestos han desaparecido; el sexto sigue ahí porque el servidor no se reinició tras el parche. Sin esa revalidación, el informe habría dicho «100 % remediado» y habría sido falso.',
+      md: 'El escaneo de septiembre devuelve 640 hallazgos y el comité pide «arreglar todos los críticos». La analista los cruza con el inventario y el resultado cambia la conversación: 180 son **false positives** de comprobaciones remotas que dedujeron la versión del banner sobre servidores que ya estaban parcheados; 22 críticos viven en el **laboratorio aislado** y pueden esperar al ciclo mensual; 6 están en sistemas **internet-facing** y dos de ellos tienen exploit público, así que se llevan la ventana de emergencia; y 3 están en los **PLC de las esclusas**, que no admiten parche y salen del comité con VLAN dedicada, ACL, monitorización reforzada y una **exception** firmada por el director de operaciones que **caduca en seis meses**. Dos semanas después, el **rescan** confirma que 5 de los 6 críticos expuestos han desaparecido; el sexto sigue ahí porque el servidor no se reinició tras el parche. Sin esa revalidación, el informe habría dicho «100 % remediado» y habría sido falso.',
     },
     {
       t: 'p',
