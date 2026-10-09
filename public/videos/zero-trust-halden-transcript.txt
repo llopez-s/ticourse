@@ -1,0 +1,20 @@
+Zero Trust: quién decide, quién comunica y quién aplica
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA
+
+[00:00] I · Dentro no es de fiar — Basta con estar en Operaciones
+Hoy, en el puerto de Halden, para llegar al ERP basta con que tu equipo esté en Operaciones. La regla no mira quién eres. Con Zero Trust, eso cambia. Verás cómo se verifica cada petición, quién decide, quién aplica y cómo se adapta. Aquí aparece NULL CIPHER, una célula de acceso inicial. Busca el primer hueco que no cierre.
+
+[00:26] I · Dentro no es de fiar — Todos con chaleco
+Aquí todos llevan chaleco, y el chaleco no abre nada, solo dice que estás dentro. La regla deja pasar a quien trabaja, a quien lleva una credencial robada, y a un equipo comprometido. [Mensaje interceptado · NULL CIPHER] «Confiar en todo equipo de la red interna. Ya pasó el control. Lógico.» Es verdad, pasó el control. Pero estar dentro no dice si es de fiar. El perímetro decide una vez, en el borde, y luego confía. Zero Trust decide en cada petición. Ese es el lema, never trust, always verify. Verificar no es negar, es pedir pruebas. O sea, que dentro no es de fiar.
+
+[01:08] II · Quién decide y quién aplica — Una oficina, un encargado y un mozo
+En un almacén del puerto, un mozo entrega los pedidos él solo. [Mensaje interceptado · NULL CIPHER] «Dejar que decida el punto de aplicación. Ve todo el tráfico. Lógico.» El mozo ve pasar la mercancía, sí. Pero no sabe quién recoge ni qué normas hay. Eso lo sabe la oficina de pedidos, arriba. El mozo le escribe, y decide ella con las mismas normas para todos. Es el policy engine. El encargado de turno no decide. Imprime la orden de salida, con su caducidad, y se la deja al mozo. Comunica, y es el policy administrator. El mozo entrega solo lo que dice la orden. Aplica, y es el policy enforcement point, el PEP. Arriba se decide y se comunica, el control plane. Abajo pasa la mercancía, el data plane. Oficina y encargado, juntos, son el PDP. O sea, que el engine decide, el administrator comunica y el PEP aplica.
+
+[02:08] II · Quién decide y quién aplica — Una petición, paso a paso
+Seguridad ha escrito una política para el ERP, y la pruebas en un simulador. Nada está en marcha. Primera petición, de una cuenta de prueba. Cuentan la persona y su equipo. La petición llegaría al PEP, el mozo, y consultaría a la oficina. El engine miraría cuenta, equipo y hora, y diría que sí. El administrator emitiría la orden y un token de media hora. El PEP dejaría pasar el tráfico a una zona pequeña y explícita. Concedido, con lectura y escritura. La decisión y la orden, en el control plane. El tráfico, en el data plane.
+
+[02:49] II · Quién decide y quién aplica — Otro país, las tres de la madrugada
+Segunda petición. Misma cuenta, mismo portátil, pero otro país, a las tres de la madrugada. El engine pediría un segundo factor, que el proveedor de identidad exigirá desde el treinta de noviembre. Superado, daría solo lectura durante media hora. La exigencia sube o baja según el contexto, y eso es adaptive identity. A los diez minutos, el EDR avisa de un malware. ¿Quién revoca la sesión? El administrator. El engine vería el aviso y decidiría cerrar, el administrator revocaría la sesión, y el PEP la cortaría. Así, aunque robaran la sesión, valdría poco: solo lectura, media hora y solo el ERP. Eso es threat scope reduction. El siguiente paso, un piloto con el ERP de pruebas. O sea, que se verifica, se adapta y se acota.
+
+[03:47] III · Para el examen — Tres reglas
+Resumiendo, tres reglas. Dentro no es de fiar, y verificar no es negar. El engine decide, el administrator comunica y el PEP aplica. La exigencia se adapta al contexto, y el daño se acota. Y Zero Trust no es una caja que se compra. Te toca a ti, con las preguntas de la lección. Que cada petición dé la cara.

@@ -1,0 +1,127 @@
+{
+  "title": "Zero Trust: quién decide, quién comunica y quién aplica",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 210,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Dentro no es de fiar"
+    },
+    {
+      "n": 2,
+      "title": "Quién decide y quién aplica"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Basta con estar en Operaciones",
+      "goal": "Sello «13-11 · viernes · acceso al ERP · diseño y simulación» (`rule`, junto con la regla). Una regla del cortafuegos, la de V1 sin citarlo: «Operaciones · a erp.local · tcp/443 · permitir». Al lado, tres rótulos atenuados con lo que la regla no mira: «quién eres · cómo está tu equipo · desde dónde y cuándo» (`blind`: se encienden con la frase que dice que da igual quién seas). La primera frase dice la regla en llano; al acabarla, título «Zero Trust» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «verificar cada petición · quién decide y quién aplica · adaptarse y acotar». Entra la etiqueta «NULL CIPHER · sección 1» con «célula de acceso inicial» (`adversary`). Sin frase de puente: el vídeo no continúa ningún otro y se entiende solo",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "requiredCues": [
+        "rule",
+        "blind",
+        "title",
+        "promise",
+        "adversary"
+      ]
+    },
+    {
+      "id": "s02-dentro",
+      "chapter": 1,
+      "title": "Todos con chaleco",
+      "goal": "El puerto visto de cerca, con gente de chaleco amarillo: «el chaleco no abre nada, solo dice que estás dentro» (`vest`). La regla de s01 vuelve dibujada así: «chaleco de Operaciones: pasa» (`same-rule`). Tres figuras con chaleco llegan a la misma regla y la pasan con el mismo gesto: quien trabaja allí, alguien con un chaleco que no es suyo («una credencial robada», `stolen`) y un portátil que ya no es de fiar («un equipo comprometido», `compromised`). Mensaje interceptado de NULL CIPHER. Respuesta: «estar dentro no dice si es de fiar». Dos columnas, con la fila de la lección (`sp/sp1-part2.ts:33-36`): «perímetro: se decide una vez, en el borde» (`once`) frente a «Zero Trust: se decide en cada petición» (`every`). Nombre ZERO TRUST, con «never trust, always verify» debajo (`zerotrust`). La tarjeta de examen sale con el lema ya quieto. Nada de recinto, valla ni garita: el chaleco es el centro",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "vest",
+        "same-rule",
+        "stolen",
+        "compromised",
+        "once",
+        "every",
+        "zerotrust"
+      ]
+    },
+    {
+      "id": "s03-verbos",
+      "chapter": 2,
+      "title": "Una oficina, un encargado y un mozo",
+      "goal": "La nave de un almacén del puerto, con una línea que la parte en dos (`warehouse`). Abajo, el mozo, la estantería y quien viene a recoger un pedido; arriba, vacía, la oficina de pedidos y el encargado de turno. Primero, solo el mozo con el pedido en la mano (`clerk-alone`). Mensaje interceptado de NULL CIPHER. Respuesta: el mozo ve pasar la mercancía, pero no tiene el historial de quien recoge ni las normas, que son las mismas para todos los mozos. Suben la oficina y el encargado y se dibuja la secuencia, con su nombre cada uno: el mozo manda la petición por el sistema de pedidos, sin llamar a nadie; la oficina decide (`desk`: POLICY ENGINE · decide); el encargado (`lead`) imprime la orden de salida con su caducidad y se la deja en la bandeja del mozo (`order`: POLICY ADMINISTRATOR · comunica); y el mozo entrega solo lo que dice la orden (POLICY ENFORCEMENT POINT · aplica). Aparecen los dos planos, arriba CONTROL PLANE y abajo DATA PLANE (`planes`), y un corchete une oficina y encargado: PDP (`pdp`). El mozo queda como lo único de control en la parte de abajo. La tarjeta de examen sale con la frase de los tres verbos ya quieta (`wrap`)",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "requiredCues": [
+        "warehouse",
+        "clerk-alone",
+        "desk",
+        "lead",
+        "order",
+        "planes",
+        "pdp",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s04-peticion",
+      "chapter": 2,
+      "title": "Una petición, paso a paso",
+      "goal": "Consola: «simulador de políticas · propuesta de Seguridad · sin efectos: el ERP no se toca» (`sim`). La política, como una tarjeta que solo se lee en pantalla (`policy`): «ERP · perfil Operaciones · equipo del puerto, cifrado y con EDR activo · ubicación y hora habituales · lectura y escritura · sesión de 30 min», con «policy-driven access control» en pequeño y sin explicar. Petición 1 (`request`): «cuenta de prueba · perfil Operaciones · portátil del puerto, cifrado, EDR activo · 10:05 · desde la red del puerto», con el rótulo SUBJECT/SYSTEM (la persona más su equipo: los dos cuentan). Los cinco pasos del flujo de la lección (`sp/sp1-part2.ts:106-124`) se encienden en orden, dibujados como conectores entre el mozo, la oficina y el encargado de s03: la petición llega al PEP (`consult`), el PEP consulta al PDP y el engine decide (`decide`), el administrator emite la orden y el token de 30 minutos (`issue`), y el tráfico va (`traffic`) a una zona mínima (`zone`: IMPLICIT TRUST ZONE, con «zona pequeña y explícita: solo el ERP»). Resultado: «concedido · lectura y escritura · 30 min» (`grant`). La tarjeta de examen sale con el resultado ya quieto. Todo lo que hace el motor, en condicional; sin clasificar la regla ni la política (no rozar spl1a)",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "requiredCues": [
+        "sim",
+        "policy",
+        "request",
+        "consult",
+        "decide",
+        "issue",
+        "traffic",
+        "zone",
+        "grant"
+      ]
+    },
+    {
+      "id": "s05-contexto",
+      "chapter": 2,
+      "title": "Otro país, las tres de la madrugada",
+      "goal": "El sello «diseño y simulación · sin efectos» sigue visible en toda la escena. Petición 2 (`req2`): la misma cuenta y el mismo portátil, ahora «otro país · 03:00» (`odd`). El engine pide un segundo factor («el proveedor de identidad lo pedirá desde el 30-11», nota pequeña y en futuro; `step-up`) y, superado, concede solo lectura durante 30 minutos (`readonly`). Nombre ADAPTIVE IDENTITY, con «la exigencia cambia con el contexto». Evento de prueba a los 10 minutos: «EDR: malware en el equipo» (`event`). Pregunta para pensar (`think`), con la página quieta y dos botones, «PEP» y «administrator», sin rótulo que la conteste. Respuesta: el administrator. El engine ve el aviso y decide cerrar, el administrator revoca la sesión y el PEP la corta: «sesión cerrada · 10 min» (`revoke`). Nombre THREAT SCOPE REDUCTION con tres chips: «solo lectura · 30 min · solo el ERP» (`scope`). Un sello al final: «siguiente paso · piloto con el ERP de pruebas · Seguridad · 11-12» (`pilot`). La tarjeta de examen sale con los tres chips ya quietos",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "requiredCues": [
+        "req2",
+        "odd",
+        "step-up",
+        "readonly",
+        "event",
+        "think",
+        "revoke",
+        "scope",
+        "pilot"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, cada una con su icono (el chaleco · la oficina, el encargado y el mozo · la orden con su reloj). Tarjeta final Alertópolis: «Tu turno: las preguntas de la lección» (sp1m3, 6 preguntas)",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
