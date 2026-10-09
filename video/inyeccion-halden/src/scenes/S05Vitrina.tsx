@@ -12,7 +12,7 @@ import { ThreeScreens } from './parts/Login';
 import { PageBody, SourceView, Vitrina } from './parts/Page';
 import { PortForm } from './parts/PortForm';
 import { WebWindow } from './parts/WebWindow';
-import { Stage, wordFrame } from './kit';
+import { Stage, cardWindow, wordFrame } from './kit';
 
 const S = 's05-vitrina';
 const W = 1728;
@@ -42,8 +42,10 @@ export function S05Vitrina(props: SceneProps) {
   const sameAt = at('same-root');
   const w = (seg: string, word: string, nth = 0) => wordFrame(S, seg, word, nth);
 
-  // ---- the question, over the page of s04 at half light
+  // ---- the question, over the page of s04 at half light; it clears before RED MARROW's card takes the top
+  const msg = cardWindow(S, 'intercept') ?? [fixAt + 140, fixAt + 500];
   const qIn = progress(frame, fixAt - 4, 14);
+  const qOut = progress(frame, msg[0] - 16, 12, EASE.inOut);
   const ctxIn = progress(frame, 6, 16);
   const ctxOut = progress(frame, obeysAt - 16, 14, EASE.inOut);
 
@@ -78,7 +80,7 @@ export function S05Vitrina(props: SceneProps) {
   return (
     <Stage>
       {/* ---------------- the question and the page of s04 ---------------- */}
-      <div style={{ position: 'absolute', left: 0, top: 6, width: W, textAlign: 'center', fontFamily: FONT.sans, fontSize: 80, fontWeight: 850, letterSpacing: -1.5, color: C.textStrong, opacity: qIn * (1 - ctxOut), transform: `translateY(${(1 - qIn) * 14}px)` }}>
+      <div style={{ position: 'absolute', left: 0, top: 6, width: W, textAlign: 'center', fontFamily: FONT.sans, fontSize: 80, fontWeight: 850, letterSpacing: -1.5, color: C.textStrong, opacity: qIn * (1 - qOut), transform: `translateY(${(1 - qIn) * 14 - 12 * qOut}px)` }}>
         {QUESTION}
       </div>
       {ctxOut < 1 ? (
