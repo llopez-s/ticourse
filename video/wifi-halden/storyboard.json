@@ -1,0 +1,129 @@
+{
+  "title": "WPA3-Enterprise: de una clave para todos a una identidad para cada uno",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 210,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Lo que se oye fuera"
+    },
+    {
+      "n": 2,
+      "title": "De una clave a una identidad"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una clave para toda la terminal",
+      "goal": "Sello «14-12 · lunes · auditoría del trimestre · wifi de la terminal» (`audit`). Dos hallazgos en dos tarjetas (`findings`): «la señal llega al aparcamiento de visitantes · −55 dBm» y «HALDEN-OPS · WPA2 · una clave que sabe toda la terminal · sin cambiar desde 2022». La primera frase dice el problema en llano; al acabarla, título «WPA3» (`title`, hacia los 8-10 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «hasta dónde llega la señal · qué se lleva quien la escucha · una identidad para cada uno». Entra la etiqueta «SILENT PAGER · sección 4» con «cuenta con que tu SOC duerma» (`adversary`). La voz no dice HALDEN-OPS ni la fecha: «la red de las tabletas»; la fecha y el nombre de la red solo van en pantalla",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "requiredCues": [
+        "audit",
+        "findings",
+        "title",
+        "promise",
+        "adversary"
+      ]
+    },
+    {
+      "id": "s02-foco",
+      "chapter": 1,
+      "title": "Un foco que alumbra al vecino",
+      "goal": "El plano de la terminal con el mapa de calor: rojo y naranja dentro (`survey`, al empezar el recorrido). Nombres SITE SURVEY y HEAT MAP. Una mancha sale del límite de la terminal hasta el aparcamiento de visitantes (`spill`, sonido `error`) y la imagen, un foco del muelle que alumbra también la casa de enfrente (`floodlight`). El portátil de pruebas (`ptl-pruebas-02`, solo en pantalla) en el aparcamiento enseña la lista de redes que oye: «HALDEN-OPS · WPA2 · −55 dBm» (`scan`); la lista no trae ningún otro aparato ni ningún router sin registrar. Mensaje interceptado de SILENT PAGER. Respuesta: dos tachados, «ocultar el nombre» («se ve en cuanto una tableta se conecta», `hide`) y «una clave más larga» («no baja la señal»). Lo que sí (`fix`): «colocación y potencia»; el 15-12 dos antenas bajan potencia y giran hacia dentro, y el 16-12 la segunda medición deja el aparcamiento en «−78 dBm» (`remeasure`). La tarjeta de examen sale con las dos mediciones ya quietas. Cierre del capítulo (`still`): «se oye menos, pero se oye», y la pregunta que abre el siguiente: ¿y lo que aún se oiga? La voz solo dice «el martes» y «el miércoles»; las fechas, en los sellos",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "survey",
+        "spill",
+        "floodlight",
+        "scan",
+        "hide",
+        "fix",
+        "remeasure",
+        "still"
+      ]
+    },
+    {
+      "id": "s03-apreton",
+      "chapter": 2,
+      "title": "El apretón de manos",
+      "goal": "Rótulo fijo (`lab-stamp`): «prueba autorizada · punto de acceso de pruebas · misma configuración que HALDEN-OPS · clave de prueba, corriente a propósito». Una tableta de pruebas se conecta y el four-way handshake se dibuja como cuatro intercambios entre la tableta y el punto de acceso (`handshake`); tu portátil de pruebas (`ptl-pruebas-02`, solo en pantalla), cerca, los graba: «captura · 1 handshake» (`captured`, sonido `glitch`). Se lleva el archivo «a casa» (otra pantalla, «sin conexión con la red»; `offline`): contadores «claves probadas · 38.000.000» y, en el punto de acceso, «intentos recibidos · 0», sin tiempos ni velocidades, sin nombre de adaptador ni de modo de captura, y la escena no enseña ningún resultado: la voz dice qué pasaría. Nombres FOUR-WAY HANDSHAKE y OFFLINE. La imagen (`padlock`, ya dentro de la frase del archivo que te llevas): el candado de combinación que te llevas a casa. Segunda mitad, WPA3 personal: el mismo intercambio, ahora con SAE (SIMULTANEOUS AUTHENTICATION OF EQUALS): el portátil graba y no tiene nada que probar (`sealed`, sonido `lock`); cada intento tiene que hacerse contra el punto de acceso, uno a uno y a la vista, con el candado atornillado a la taquilla (`one-by-one`). Una cinta del tráfico grabado ayer: con WPA2, la clave averiguada hoy la abre (solo en pantalla); con SAE sigue cerrada (`tape`, en la misma frase que nombra FORWARD SECRECY). La tarjeta de examen sale al acabar esa frase. Rótulo final (`still-shared`): «sigue siendo una clave para todos». Ninguna herramienta con nombre, ninguna lista de palabras, ninguna clave encontrada",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "lab-stamp",
+        "handshake",
+        "captured",
+        "offline",
+        "padlock",
+        "sealed",
+        "one-by-one",
+        "tape",
+        "still-shared"
+      ]
+    },
+    {
+      "id": "s04-enterprise",
+      "chapter": 2,
+      "title": "La clave de todos",
+      "goal": "La clave compartida, en un cartel: «HALDEN-OPS · una clave · toda la terminal · sin cambiar desde 2022» (`shared`). Mensaje interceptado de SILENT PAGER al empezar la escena, sobre el cartel. Respuesta: una clave larga ayuda contra el diccionario, pero sigue siendo la misma para todos (`long-key`). La imagen (`lost`): el código de la escalera que sabe todo el edificio; ejemplo rotulado «ejemplo · sin fecha»: «si una tableta se pierde» hay que cambiarlo en todas las demás. Con el modo enterprise, el registro de RADIUS: «tableta 07 · EAP-TLS · certificado válido · Access-Accept» (`accept`); «ejemplo: certificado de la tableta 07 revocado» (`revoke`); «tableta 07 · Access-Reject» (`reject`, sonido `block`) y «tableta 08 · Access-Accept». La imagen: cada uno con su carné. Nombres WPA3-ENTERPRISE, con «802.1X · RADIUS (AAA)» debajo (`aaa`); la tarjeta de examen sale al acabar esa frase. Tres chips con lo que hace falta (`needs`): «servidor RADIUS · directorio · PKI». El sello (`decision`): «HALDEN-OPS a WPA3-Enterprise · EAP-TLS · Infraestructura · 22-12». La voz no dice «tableta 07» ni «HALDEN-OPS»; no dice si el puerto tenía RADIUS antes del 22-12",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "requiredCues": [
+        "shared",
+        "long-key",
+        "lost",
+        "accept",
+        "revoke",
+        "reject",
+        "aaa",
+        "needs",
+        "decision"
+      ]
+    },
+    {
+      "id": "s05-eap",
+      "chapter": 2,
+      "title": "Dos formas de entrar",
+      "goal": "Dos carriles para la misma conexión (`lanes`). Primero, solo los títulos: «PEAP · TTLS» y «EAP-TLS». Pregunta para pensar (`think`), con dos botones: «PEAP» y «EAP-TLS». Respuesta (`answer`): EAP-TLS, porque las tabletas ya tienen certificado (el dato de la lección) y se puede pedir lo más fuerte. Luego los carriles se llenan. PEAP (`peap`): «usuario y contraseña dentro de un túnel TLS · certificado solo en el servidor»; la advertencia en grande, «el cliente tiene que validar el certificado del servidor» (`validate`). Un punto de acceso falso (`fake-ap`), dibujado fuera de la terminal y rotulado «hipótesis», con el mismo nombre de red: si la tableta no valida, recoge sus credenciales a la primera (el dibujo dice «credenciales», no «contraseña»). EAP-TLS (`tls`): «certificado en la tableta y en el servidor · autenticación mutua (`mutual`) · no hay contraseña que robar»; la tarjeta de examen sale al acabar esa frase. Nombre EAP. Cierre del capítulo (`wrap`): «o sea, que…»",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "lanes",
+        "think",
+        "answer",
+        "peap",
+        "validate",
+        "fake-ap",
+        "tls",
+        "mutual",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, cada una con su icono (el foco · el candado atornillado · el carné); tarjeta final Alertópolis: «Tu turno: termina la lección y sus preguntas»",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
