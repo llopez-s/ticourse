@@ -40,8 +40,8 @@ const CALL_Y = 204;
 const HULL_W = 420;
 const HULL_X = COL_X + (COL_W - HULL_W) / 2;
 const HULL_Y = 392;
-const LABEL_Y = 584;
-const VERDICT_Y = 580;
+const LABEL_Y = 592;
+const VERDICT_Y = 588;
 
 /** The think prompt's window in this scene's local frames (from the timeline). */
 function thinkWindow(): { from: number; to: number } {

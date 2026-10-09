@@ -228,11 +228,11 @@ function FindingCard({ frame, scoreAt, chipAt }: { frame: number; scoreAt: numbe
     >
       <div style={{ position: 'absolute', left: 0, top: 14, bottom: 14, width: 9, borderRadius: 5, background: '#fb7185' }} />
       <div style={{ display: 'flex', alignItems: 'center', gap: 36, height: 124 }}>
-        <div style={{ width: 520 }}>
+        <div style={{ width: 650 }}>
           <div style={{ fontFamily: FONT.mono, fontSize: 48, fontWeight: 850, color: C.textStrong, lineHeight: 1.1 }}>{CARD.host}</div>
-          <div style={{ fontSize: 36, fontWeight: 650, color: C.text, marginTop: 6 }}>{CARD.what}</div>
+          <div style={{ fontSize: 34, fontWeight: 650, color: C.text, marginTop: 6, whiteSpace: 'nowrap' }}>{CARD.what}</div>
         </div>
-        <div style={{ width: 400, ...scoreIn }}>
+        <div style={{ width: 380, ...scoreIn }}>
           <div style={{ fontFamily: FONT.mono, fontSize: 38, fontWeight: 800, color: C.cyanSoft, whiteSpace: 'nowrap' }}>{CARD.cve}</div>
           <div style={{ marginTop: 6 }}>
             <DataSeal size={24} />

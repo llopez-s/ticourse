@@ -23,18 +23,18 @@ export function HostConsole({ width, at, dim = 0, glow = 0, frame: frameProp }: 
   const current = useCurrentFrame();
   const { fps } = useVideoConfig();
   const frame = frameProp ?? current;
-  const labelW = 300;
+  const labelW = 330;
   const typed = typewriter(CONSOLE.cmd, frame, at.cmd, fps, 40);
   const caret = frame >= at.cmd && typed.length < CONSOLE.cmd.length;
   const row = (a: number) => enter(frame, a, { distance: 10, duration: 10 });
   const mono = { fontFamily: FONT.mono, fontWeight: 700 } as const;
-  const label = { width: labelW, flexShrink: 0, fontFamily: FONT.sans, fontSize: 28, fontWeight: 650, lineHeight: 1.2, color: C.muted } as const;
+  const label = { width: labelW, flexShrink: 0, fontFamily: FONT.sans, fontSize: 30, fontWeight: 650, lineHeight: 1.2, color: C.muted } as const;
   const noReboot = progress(frame, at.noReboot, 12);
   return (
     <div style={{ width, ...dimStyle(dim) }}>
       <Panel title={CONSOLE.title} icon="terminal" accent="cyan" glow={glow} style={{ width }} bodyStyle={{ padding: '14px 26px 18px' }}>
         {/* command and what it prints */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 22, height: 68 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 22, height: 62 }}>
           <span style={{ ...mono, fontSize: 34, color: C.text, whiteSpace: 'nowrap' }}>
             <span style={{ color: C.emerald, fontWeight: 800 }}>$ </span>
             {typed}
@@ -47,7 +47,7 @@ export function HostConsole({ width, at, dim = 0, glow = 0, frame: frameProp }: 
           ) : null}
         </div>
         {/* change log: the version from before the patch */}
-        <div style={{ ...(frame >= at.changes ? row(at.changes) : { opacity: 0 }), display: 'flex', alignItems: 'center', gap: 18, minHeight: 56 }}>
+        <div style={{ ...(frame >= at.changes ? row(at.changes) : { opacity: 0 }), display: 'flex', alignItems: 'center', gap: 18, minHeight: 52 }}>
           <span style={label}>{CONSOLE.changes.label}</span>
           <span style={{ ...mono, fontSize: 30, color: C.text, display: 'inline-flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap' }}>
             <span style={{ color: C.muted }}>{CONSOLE.changes.date}</span>
@@ -58,33 +58,36 @@ export function HostConsole({ width, at, dim = 0, glow = 0, frame: frameProp }: 
           </span>
         </div>
         {/* installed package */}
-        <div style={{ ...(frame >= at.pkg ? row(at.pkg) : { opacity: 0 }), display: 'flex', alignItems: 'center', gap: 18, minHeight: 52 }}>
+        <div style={{ ...(frame >= at.pkg ? row(at.pkg) : { opacity: 0 }), display: 'flex', alignItems: 'center', gap: 18, minHeight: 48 }}>
           <span style={label}>{CONSOLE.package.label}</span>
           <span style={{ ...mono, fontSize: 36, color: '#6ee7b7', fontWeight: 850 }}>{CONSOLE.package.value}</span>
         </div>
         {/* the service: active since the patch, no reboot missing */}
-        <div style={{ ...(frame >= at.service ? row(at.service) : { opacity: 0 }), display: 'flex', alignItems: 'center', gap: 18, minHeight: 56 }}>
+        <div style={{ ...(frame >= at.service ? row(at.service) : { opacity: 0 }), display: 'flex', alignItems: 'center', gap: 18, minHeight: 52 }}>
           <span style={label}>{CONSOLE.service.label}</span>
-          <span style={{ ...mono, fontSize: 30, color: C.textStrong, whiteSpace: 'nowrap' }}>{CONSOLE.service.value}</span>
+          <span style={{ ...mono, fontSize: 34, color: C.textStrong, whiteSpace: 'nowrap' }}>{CONSOLE.service.value}</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 18, minHeight: 50, marginLeft: labelW + 18 }}>
           <span
             style={{
               opacity: noReboot,
               transform: `scale(${0.9 + 0.1 * noReboot})`,
+              transformOrigin: 'left center',
               display: 'inline-flex',
               alignItems: 'center',
               gap: 10,
-              padding: '4px 16px 4px 10px',
+              padding: '2px 18px 2px 10px',
               borderRadius: RADIUS.pill,
               border: `2px solid ${alpha(C.emerald, 0.8)}`,
               background: alpha(C.emeraldDeep, 0.55),
               fontFamily: FONT.sans,
-              fontSize: 28,
+              fontSize: 32,
               fontWeight: 750,
               color: '#a7f3d0',
               whiteSpace: 'nowrap',
             }}
           >
-            <Icon name="check" size={30} color={C.emerald} strokeWidth={3} />
+            <Icon name="check" size={32} color={C.emerald} strokeWidth={3} />
             {CONSOLE.service.note}
           </span>
         </div>
