@@ -96,6 +96,7 @@ export function QueueRow({
   dim = 0,
   show = 1,
   hostSize = 44,
+  toneColors,
   children,
   right,
   style,
@@ -109,11 +110,13 @@ export function QueueRow({
   dim?: number;
   show?: number;
   hostSize?: number;
+  /** Overrides the severity colours (a closed finding turns emerald). */
+  toneColors?: { fg: string; soft: string; deep: string };
   children?: ReactNode;
   right?: ReactNode;
   style?: CSSProperties;
 }) {
-  const t = SEV_TONE[sev];
+  const t = toneColors ?? SEV_TONE[sev];
   const l = clamp01(lit);
   return (
     <div
