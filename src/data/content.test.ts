@@ -301,6 +301,8 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'WMhXfPe5zTE')?.module).toBe('s2m4');
     // V15 triages the sandbox report after the triage paragraph and before the four checks on its data
     expect(youtubeVideos.find((v) => v.block.youtube === 'z9OLiWCphso')?.module).toBe('s3m2');
+    // V18 triages a new report after sp4m5's September example and before the paragraph that closes the cycle
+    expect(youtubeVideos.find((v) => v.block.youtube === 'rE43EDA2_yE')?.module).toBe('sp4m5');
   });
 
   it('every video block points at relative public assets that exist', async () => {

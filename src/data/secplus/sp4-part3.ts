@@ -168,6 +168,17 @@ impacto de negocio. Ordenar la cola por puntuación es el error clásico.`,
     },
     {
       t: 'p',
+      md: 'Antes de cerrar el ciclo, hazlo con un informe nuevo: qué va primero, qué se hace con lo que no tiene parche y cuándo un hallazgo está cerrado de verdad.',
+    },
+    {
+      t: 'video',
+      title: 'Triaje de vulnerabilidades: el contexto manda sobre el número',
+      youtube: 'rE43EDA2_yE',
+      poster: 'videos/cvss-halden-poster.png',
+      transcript: 'videos/cvss-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Con esto cierras el ciclo de vulnerabilidades: identificar, confirmar, priorizar, responder, revalidar y reportar. Pero un escaneo es una **foto mensual**, y los ataques no esperan al primer día del mes. La siguiente lección pasa a la vigilancia continua del objetivo 4.4: qué se monitoriza, qué actividades componen la operación diaria de un SOC —**log aggregation**, **alerting**, **quarantine**, **alert tuning**— y con qué herramientas, desde el **SIEM** hasta **NetFlow**, se responde a cada pregunta.',
     },
   ],
