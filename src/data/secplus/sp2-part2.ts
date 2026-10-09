@@ -331,6 +331,17 @@ Corrección: parameterized queries (prepared statements).
       },
     },
     {
+      t: 'p',
+      md: 'Antes de la nota de examen, míralo en una web de pruebas: dónde se cuela un texto y dónde se frena.',
+    },
+    {
+      t: 'video',
+      title: 'SQL injection y XSS: cuando un texto se vuelve orden',
+      youtube: 'kEMyULl7v5A',
+      poster: 'videos/inyeccion-halden-poster.png',
+      transcript: 'videos/inyeccion-halden-transcript.txt',
+    },
+    {
       t: 'callout',
       kind: 'exam',
       title: 'Nota de examen: dos reflejos automáticos',
