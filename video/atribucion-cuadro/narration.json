@@ -28,43 +28,43 @@
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Poner ese nombre es atribuir. {promise}Verás hasta dónde llegas, qué pista pesa de verdad y si hace falta ponerlo.",
+      "text": "<confident> {title}Poner ese nombre es atribuir. {promise}Verás hasta dónde llegas, qué pista pesa de verdad y si hace falta un nombre.",
       "pauseAfterMs": 600
     },
     {
       "id": "s02-01",
       "scene": "s02-niveles",
-      "text": "<warm> {canvas}Con un cuadro pasa igual. Para saber de quién es, hay tres preguntas.",
+      "text": "<warm> {canvas}Un cuadro también se atribuye. Para saber de quién es, hay tres preguntas.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-02",
       "scene": "s02-niveles",
-      "text": "<clear> {machine}La primera, con qué se hizo. En un ataque, eso es qué equipos y herramientas actuaron, el nivel de máquina. {ours}Ahí está lo que tienes de Meridian.",
+      "text": "<clear> {machine}La primera, ¿con qué se hizo? En un ataque, ¿qué máquinas y herramientas se usaron? Es el nivel de máquina. {ours}Ahí está lo que tienes de Meridian.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-03",
       "scene": "s02-niveles",
-      "text": "<curious> {hand}La segunda, quién lo pintó, o sea, quién tecleó. {operator}Es el nivel de operador, {slips}y lo delatan sus descuidos, como al pintor una huella en el barniz.",
+      "text": "<curious> {hand}La segunda, ¿quién lo pintó? O sea, ¿quién tecleó? {operator}Ese es el operador, {slips}y lo delatan sus descuidos, como al pintor una huella en el barniz.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-04",
       "scene": "s02-niveles",
-      "text": "<intrigued> {commission}La tercera, quién lo encargó, y eso no está en el cuadro. {sponsor}Es saber por cuenta de quién se atacó, el nivel de sponsor.",
+      "text": "<intrigued> {commission}La tercera, ¿quién lo encargó? Y eso no está en el cuadro. {sponsor}¿Para quién trabaja el operador? Es el nivel de sponsor.",
       "pauseAfterMs": 350
     },
     {
       "id": "s02-05",
       "scene": "s02-niveles",
-      "text": "<calm> {diamond}Te sonará del diamante, con su operator, que teclea, y su customer, que encarga.",
+      "text": "<calm> {diamond}Te sonará del diamante, donde el operator teclea y el customer encarga.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-06",
       "scene": "s02-niveles",
-      "text": "<firm> {other-kind}Y subir de nivel no pide más pruebas de las mismas, pide pruebas de otro tipo.",
+      "text": "<firm> {other-kind}Y subir de nivel no pide más de lo mismo, pide pruebas de otro tipo.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "Analysis",
@@ -76,13 +76,13 @@
     {
       "id": "s02-07",
       "scene": "s02-niveles",
-      "text": "<casual> Con mil registros más de tu red, más telemetría, rara vez sabrás quién lo encargó.",
+      "text": "<casual> Con mil registros más de tu red, que son tu telemetría, rara vez sabrás quién lo encargó.",
       "pauseAfterMs": 600
     },
     {
       "id": "s03-01",
       "scene": "s03-techo",
-      "text": "<sarcastic> {reply-name}Es PAPER CRANE, que vive de sembrar pistas falsas, y un nombre con prisas le viene de perlas.",
+      "text": "<sarcastic> {reply-name}Y PAPER CRANE, más. Vive de sembrar pistas falsas, y las prisas le vienen de perlas.",
       "pauseAfterMs": 300,
       "intercept": {
         "text": "Ponle un país al informe, analista. Todo consejo adora un nombre.",
@@ -92,19 +92,19 @@
     {
       "id": "s03-02",
       "scene": "s03-techo",
-      "text": "<focused> {wall}Pero un país es el tercer nivel. {beam}Tu telemetría es un foco, que ilumina el primero y apenas roza el segundo.",
+      "text": "<focused> {wall}Pero un país es el tercer nivel. {beam}Tu telemetría es un foco que ilumina el primero y apenas roza el segundo.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-03",
       "scene": "s03-techo",
-      "text": "<serious> {dark}El tercero queda a oscuras, porque ni órdenes ni dinero pasan por tu red. Verlo pide fuentes humanas y escuchas, HUMINT y SIGINT, cosa de gobiernos.",
+      "text": "<serious> {dark}El tercero queda a oscuras, porque ni órdenes ni dinero pasan por tu red. Verlo suele pedir fuentes humanas y escuchas, HUMINT y SIGINT, cosa de gobiernos.",
       "pauseAfterMs": 350
     },
     {
       "id": "s03-04",
       "scene": "s03-techo",
-      "text": "<firm> {vendor}Por eso, pararse en el grupo, el intrusion set, no es debilidad, es rigor. {ceiling}Para llegar al sponsor, la telemetría sola rara vez basta.",
+      "text": "<firm> {vendor}Por eso te paras en el grupo, el intrusion set. No es debilidad, es rigor. {ceiling}Para llegar al sponsor, la telemetría sola rara vez basta.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "Analysis",
@@ -122,7 +122,7 @@
     {
       "id": "s04-01",
       "scene": "s04-binario",
-      "text": "<mischievously> {reply-crane}Pues vamos a ver cuánto da una pista fácil.",
+      "text": "<mischievously> {reply-crane}Pues vamos a ver cuánto pesa una pista fácil.",
       "pauseAfterMs": 300,
       "intercept": {
         "text": "Con la primera pista que encaje ya tienes bastante. ¿Para qué más?",
@@ -132,13 +132,13 @@
     {
       "id": "s04-02",
       "scene": "s04-binario",
-      "text": "<curious> {sample}Este binario es de ejemplo, no de Meridian. {lang}Trae textos en otro idioma {hours}y horas de compilación de una jornada de oficina.",
+      "text": "<curious> {sample}Este binario es de ejemplo, no de Meridian. {lang}Trae textos en otro idioma, {hours}y se compiló en horas de oficina de allí.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-03",
       "scene": "s04-binario",
-      "text": "<engaging> Las dos apuntan al mismo sitio. ¿Bastan para un país?",
+      "text": "<engaging> Las dos pistas apuntan al mismo sitio. ¿Bastan para un país?",
       "pauseAfterMs": 300,
       "think": {
         "q": "Idioma y horario: ¿bastan para un país?",
@@ -165,7 +165,7 @@
     {
       "id": "s04-06",
       "scene": "s04-binario",
-      "text": "<thoughtful> Solas pesan muy poco, aunque en un conjunto coherente sí suman.",
+      "text": "<thoughtful> Solas pesan muy poco, aunque entre muchas que encajen sí suman.",
       "pauseAfterMs": 300
     },
     {
@@ -189,7 +189,7 @@
     {
       "id": "s05-02",
       "scene": "s05-decision",
-      "text": "<clear> {ours}En tu defensa, detectar, cazar y proteger rara vez cambian con él.",
+      "text": "<clear> {ours}Tú detectas, cazas y proteges, y eso rara vez cambia con el país.",
       "pauseAfterMs": 300
     },
     {
@@ -206,31 +206,31 @@
     {
       "id": "s05-04",
       "scene": "s05-decision",
-      "text": "<thoughtful> {label}Lo que afirmes va como la cartela del museo, atribuido a, con su confianza.",
+      "text": "<thoughtful> {label}Lo que afirmes va como la cartela del museo, «atribuido a tal», con su confianza.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-05",
       "scene": "s05-decision",
-      "text": "<confident> {note}En el informe pones cómo trabajan y qué buscan. {unknown}Quién teclea no lo sabes, y lo dices. Para quién trabajan, das tu juicio con su confianza y lo que falta.",
+      "text": "<confident> {note}Del grupo escribes cómo trabaja y qué busca. {unknown}Quién teclea no lo sabes, y lo dices. Para quién trabaja, das tu juicio con su confianza y lo que falta.",
       "pauseAfterMs": 400
     },
     {
       "id": "s05-06",
       "scene": "s05-decision",
-      "text": "<calm> O sea, que el nombre va al final, y solo si una decisión lo pide.",
+      "text": "<calm> Total, que perseguir el nombre solo compensa si una decisión lo pide.",
       "pauseAfterMs": 650
     },
     {
       "id": "s06-01",
       "scene": "s06-recap",
-      "text": "<engaging> {recap}Te llevas tres reglas. {rule-1}Cada nivel pide pruebas de otro tipo.",
+      "text": "<engaging> {recap}Todo cabe en tres reglas. {rule-1}Cada nivel pide pruebas de otro tipo.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-02",
       "scene": "s06-recap",
-      "text": "<clear> {rule-2}Lo barato de falsificar pesa poco. Pregunta qué pasa si la pista es un señuelo.",
+      "text": "<clear> {rule-2}Lo barato de falsificar pesa poco. Pregúntate qué pasa si la pista es un señuelo.",
       "pauseAfterMs": 300
     },
     {
@@ -242,7 +242,7 @@
     {
       "id": "s06-04",
       "scene": "s06-recap",
-      "text": "<cheerful> {next}Te quedan las diez preguntas de la lección. {endcard}Y ojo con las firmas fáciles.",
+      "text": "<cheerful> {next}Te quedan las diez preguntas de la lección. {endcard}Y la firma no hace al pintor.",
       "pauseAfterMs": 700
     }
   ]
