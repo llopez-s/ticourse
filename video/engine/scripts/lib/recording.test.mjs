@@ -633,3 +633,48 @@ test('importReport flags weak and missing sentences and lists what was left out'
   assert.match(report, /0:05\.0–0:05\.4 · sobra/);
   assert.match(report, /\+2\.5 dB/);
 });
+
+test('cutPoints caps the air before the first word when maxLeadMs is given (a breath ended the silence early)', () => {
+  const words = [
+    { text: 'uno', startMs: 1000, endMs: 1400 },
+    { text: 'dos', startMs: 1500, endMs: 1900 },
+  ];
+  // the silence ends at 600 ms: a breath from 600 to 950 ms sits between it and the first word
+  const silences = [{ startMs: 0, endMs: 600 }];
+  const found = [{ id: 'a', found: true, first: 0, last: 1 }];
+  const [plain] = cutPoints(found, words, silences, 5000);
+  const [capped] = cutPoints(found, words, silences, 5000, { maxLeadMs: 250 });
+  assert.equal(plain.startMs, 520); // the breath rides in, as before
+  assert.equal(capped.startMs, 750); // 250 ms before the word, no breath
+  assert.equal(capped.endMs, plain.endMs);
+});
+
+test('cutPoints with maxLeadMs leaves an edge that is already close alone', () => {
+  const words = [{ text: 'uno', startMs: 1000, endMs: 1400 }];
+  const silences = [{ startMs: 0, endMs: 960 }];
+  const found = [{ id: 'a', found: true, first: 0, last: 0 }];
+  const [plain] = cutPoints(found, words, silences, 5000);
+  const [capped] = cutPoints(found, words, silences, 5000, { maxLeadMs: 250 });
+  assert.equal(capped.startMs, plain.startMs);
+});
+
+test('cutPoints follows the sound when Whisper starts the first word long before the voice', () => {
+  // the word is stamped at 1000 ms but the voice only begins where the silence ends, at 1700 ms
+  const words = [
+    { text: 'uno', startMs: 1000, endMs: 2400 },
+    { text: 'dos', startMs: 2500, endMs: 2900 },
+  ];
+  const silences = [{ startMs: 200, endMs: 1700 }];
+  const [cut] = cutPoints([{ id: 'a', found: true, first: 0, last: 1 }], words, silences, 6000);
+  assert.equal(cut.startMs, 1620); // 80 ms of air before the real onset, not 250 ms before the stamped start
+});
+
+test('cutPoints keeps the old edge when the silence it would snap to ends after the next word', () => {
+  const words = [
+    { text: 'uno', startMs: 1000, endMs: 1300 },
+    { text: 'dos', startMs: 1400, endMs: 1800 },
+  ];
+  const silences = [{ startMs: 200, endMs: 1500 }]; // would swallow «uno» whole: not an onset
+  const [cut] = cutPoints([{ id: 'a', found: true, first: 0, last: 1 }], words, silences, 6000);
+  assert.ok(cut.startMs <= 1000);
+});

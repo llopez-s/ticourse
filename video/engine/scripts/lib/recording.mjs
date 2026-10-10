@@ -24,6 +24,7 @@ const PRE_ROLL_MS = 80; // air kept before the first word when a silence precede
 const POST_ROLL_MS = 120; // and after the last word, before the silence that follows
 const SNAP_EARLY_MS = 500; // how far a silence may sit before an ASR word edge and still be snapped to
 const SNAP_LATE_MS = 200; // and how far past it (ASR edges drift both ways, more often late at a start)
+const LATE_ONSET_MAX_MS = 1200; // a word may start this far ahead of the silence it is stretched over
 const FALLBACK_MS = 250; // with no silence nearby, never reach further than this past the word edge
 const MISTIMED_PAUSE_MS = 300; // a pause this long starting inside a word means Whisper mistimed that word
 
@@ -306,10 +307,10 @@ function nearest(cands, at, target) {
  * Clip edges for every found segment: each edge snaps to the nearest silence around the ASR
  * word edge (keeping a little air), or — with no silence nearby, as in continuous speech —
  * falls halfway into the gap to the neighbouring word. An edge never reaches into a word
- * the segment does not own.
+ * the segment does not own. `maxLeadMs` (off by default) caps the air kept before the first word.
  */
-export function cutPoints(located, words, silences, totalMs) {
-  const cutSpan = (span) => cutEdges(span, words, silences, totalMs);
+export function cutPoints(located, words, silences, totalMs, { maxLeadMs = null } = {}) {
+  const cutSpan = (span) => cutEdges(span, words, silences, totalMs, maxLeadMs);
   return located
     .filter((f) => f.found)
     .map((f) => {
@@ -321,7 +322,7 @@ export function cutPoints(located, words, silences, totalMs) {
 }
 
 /** Clip edges of one run of words ({first, last}), as cutPoints describes. */
-function cutEdges(f, words, silences, totalMs) {
+function cutEdges(f, words, silences, totalMs, maxLeadMs = null) {
   const rawStart = words[f.first].startMs;
   const rawEnd = words[f.last].endMs;
   const prevEnd = f.first > 0 ? words[f.first - 1].endMs : 0;
@@ -333,11 +334,22 @@ function cutEdges(f, words, silences, totalMs) {
   const mistimedPause = (w) =>
     w ? nearest(silences.filter((s) => s.endMs - s.startMs >= MISTIMED_PAUSE_MS && s.startMs > w.startMs && s.startMs < w.endMs), (s) => s.startMs, w.startMs) : null;
 
-  const lead = nearest(
-    silences.filter((s) => s.endMs >= Math.max(prevEnd, rawStart - SNAP_EARLY_MS) && s.endMs <= rawStart + SNAP_LATE_MS),
+  // Whisper often starts a sentence's first word long before the voice does, over the silence ahead of it
+  // (V18 and V19: 0.5–0.8 s early). A word that "starts" inside a silence starts where that silence ends — as long
+  // as the next word of the run starts after it — and the cut follows the sound, not the stretched timestamp.
+  const afterFirst = f.first < f.last ? words[f.first + 1].startMs : rawEnd;
+  const lateOnset = nearest(
+    silences.filter((s) => s.startMs <= rawStart && s.endMs > rawStart + SNAP_LATE_MS && s.endMs - rawStart <= LATE_ONSET_MAX_MS && s.endMs <= afterFirst),
     (s) => s.endMs,
     rawStart,
   );
+  const lead =
+    lateOnset ??
+    nearest(
+      silences.filter((s) => s.endMs >= Math.max(prevEnd, rawStart - SNAP_EARLY_MS) && s.endMs <= rawStart + SNAP_LATE_MS),
+      (s) => s.endMs,
+      rawStart,
+    );
   const leadPause = lead ? null : mistimedPause(words[f.first]);
   const startMs = lead
     ? Math.max(lead.startMs, prevEnd, lead.endMs - PRE_ROLL_MS)
@@ -357,7 +369,10 @@ function cutEdges(f, words, silences, totalMs) {
       ? Math.min(tailPause.endMs, tailPause.startMs + POST_ROLL_MS)
       : Math.min(Math.max(rawEnd, Math.round((rawEnd + nextStart) / 2)), rawEnd + FALLBACK_MS);
 
-  return { startMs, endMs: Math.max(endMs, startMs + 1) };
+  // A breath or a click before the sentence ends the silence long before the first word does (V18, V19: clips that
+  // began 500–800 ms ahead of the voice), so the air kept in front of the word is capped when asked to.
+  const leadCapped = maxLeadMs === null ? startMs : Math.max(startMs, rawStart - maxLeadMs);
+  return { startMs: leadCapped, endMs: Math.max(endMs, leadCapped + 1) };
 }
 
 /**
