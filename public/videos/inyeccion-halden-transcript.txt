@@ -4,17 +4,17 @@ Simulación educativa con datos ficticios · Alertópolis — material independi
 [00:00] I · Cuando el texto manda — Tres cajas de texto
 El equipo de desarrollo te enseña la web donde los camiones pedirán cita. Hoy pruebas las tres cajas donde la gente escribe. Vas a ver cómo un texto se vuelve orden, y dónde se frena.
 
-[00:14] I · Cuando el texto manda — Una comilla en el login
+[00:13] I · Cuando el texto manda — Una comilla en el login
 Primera caja, el login. Con una contraseña equivocada, la web dice que no. La consulta a la base de datos es una frase con huecos donde la web pega lo que escribes. Ahora escribes tres cosas. Una comilla, que cierra el nombre antes de tiempo. Una condición que siempre se cumple, y dos guiones, que apagan el resto, contraseña incluida. La consulta devuelve todas las filas, y la web abre sesión sin contraseña. Es un formulario con un hueco. Si lo que pegas cambia la frase, ya no rellenas, redactas la pregunta. Eso es la inyección SQL. El texto se cuela en la consulta y pasa de dato a orden.
 
-[00:53] I · Cuando el texto manda — Cada dato en su casilla
+[00:51] I · Cuando el texto manda — Cada dato en su casilla
 ¿Cómo se arregla? Alguien tiene un consejo para ti. [Mensaje interceptado · RED MARROW] «Cifra la base de datos y no se llevan nada. Confía en mí.» Es RED MARROW, que vive de engañar. Qué amable. El cifrado en reposo protege el disco si se lo llevan. Pero la consulta trucada sale de la propia aplicación, que ve los datos descifrados. Lo que arregla es separar la orden del dato. La consulta viaja con casillas marcadas, y tu texto, aparte. Repite la misma entrada. Ahora se compara con un nombre, y nadie se llama así. Es un formulario ya impreso, con su casilla para cada dato. Eso son las parameterized queries.
 
-[01:38] II · Lo que devuelve la página — Un texto que vuelve
+[01:34] II · Lo que devuelve la página — Un texto que vuelve
 Segunda caja, el buscador. Pruebas un enlace con un script en vez de la matrícula, y la página lo repite. ¿Quién ejecuta ese script, el servidor o el navegador? El navegador. El servidor solo devolvió el texto, y lo ejecuta el navegador de quien pulsó el enlace. Y ese script podría llevarse su cookie de sesión. Todo esto es cross-site scripting, XSS. Y este es el reflected, el cartel que repite lo que preguntas. Viaja en el enlace, alguien tiene que pulsarlo, y suele llegar por phishing. Tercera caja, las observaciones. Metes el mismo script y se guarda con la cita. El personal de la puerta abrirá el listado cada día, y el navegador de cada persona ejecutaría el script. Este es el stored. El script queda guardado en el servidor, como un anuncio en un tablón. Y salta para todo el que abra la página.
 
-[02:37] II · Lo que devuelve la página — Dentro de una vitrina
+[02:31] II · Lo que devuelve la página — Dentro de una vitrina
 ¿Y con el script, qué se hace? RED MARROW sigue con sus ideas. [Mensaje interceptado · RED MARROW] «Si corre en el navegador, el fallo no es tuyo. Confía en mí.» Pero el navegador solo obedece a la página, y la escribe el servidor, con el texto de otra persona dentro. Si el servidor lo vuelve inofensivo antes de mostrarlo, el script queda en una vitrina. Se lee, pero no se obedece. Eso es el output encoding, la defensa principal del XSS. Y en el examen, input validation, o su versión específica como esta, es la respuesta. Desarrollo corrige las tres cajas para el trece de noviembre. O sea, la casilla y la vitrina dejan el dato en su sitio.
 
-[03:21] III · Para el examen — Tres reglas
+[03:14] III · Para el examen — Tres reglas
 Resumiendo, tres reglas. Un texto dentro de la consulta es SQL injection. Se arregla mandándolo aparte, con parameterized queries. Un script que corre en otro navegador es XSS, reflected si viaja en el enlace y stored si se guarda. La defensa va donde el dato se junta con el código, y cifrar la base no lo arregla. En el examen, input validation, o su versión específica. Termina tú la lección y sus preguntas. Cada dato, en su sitio.
