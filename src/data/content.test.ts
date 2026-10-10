@@ -304,7 +304,7 @@ describe('lesson videos', () => {
     // V18 triages a new report after sp4m5's September example and before the paragraph that closes the cycle
     expect(youtubeVideos.find((v) => v.block.youtube === 'rE43EDA2_yE')?.module).toBe('sp4m5');
     // V19 walks sp2m4's three text boxes after the stored-XSS check and before the exam note on the two reflexes
-    expect(youtubeVideos.find((v) => v.block.youtube === 'kYFWnbr5djs')?.module).toBe('sp2m4');
+    expect(youtubeVideos.find((v) => v.block.youtube === '5yD7BO4UYGQ')?.module).toBe('sp2m4');
   });
 
   it('every video block points at relative public assets that exist', async () => {

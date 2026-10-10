@@ -38,7 +38,7 @@ export function verifyVoice({ warnOnly = false, force = false, log = console } =
   });
 
   const cache = !force && existsSync(CACHE) ? JSON.parse(readFileSync(CACHE, 'utf8')) : {};
-  const todo = jobs.filter((j) => cache[j.id]?.key !== j.key);
+  const todo = jobs.filter((j) => cache[j.id]?.key !== j.key || cache[j.id]?.v !== 2); // v2: words, unheard, gaps
   if (todo.length) {
     log.log(`verify-voice: transcribing ${todo.length}/${jobs.length} clips (the others are cached)`);
     const tmp = mkdtempSync(path.join(os.tmpdir(), 'verify-voice-'));
@@ -72,7 +72,7 @@ export function verifyVoice({ warnOnly = false, force = false, log = console } =
   const warnings = [];
   for (const j of jobs) {
     const m = cache[j.id];
-    const f = clipFindings({ id: j.id, script: j.script, heard: m.heard, head: m.head, tail: m.tail, dropped: m.dropped });
+    const f = clipFindings({ id: j.id, script: j.script, heard: m.heard, head: m.head, tail: m.tail, dropped: m.dropped, words: m.words, unheard: m.unheard, gaps: m.gaps });
     errors.push(...f.errors);
     warnings.push(...f.warnings);
     rows.push({ id: j.id, similarity: f.similarity, head: m.head, tail: m.tail, dropped: m.dropped, heard: m.heard });

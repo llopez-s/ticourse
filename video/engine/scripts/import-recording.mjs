@@ -54,6 +54,7 @@ import {
   repairSwallowedPauses,
   trailingSpeechEnd,
   selectSegments,
+  stretchedWords,
 } from './lib/recording.mjs';
 import { runFfmpeg, writeFileAtomic } from './lib/remotion.mjs';
 import { VENV_PYTHON, scaleTimings } from './tts-chatterbox.mjs';
@@ -219,6 +220,19 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
   const weak = located.filter((f) => f.found && f.score < REVIEW_SCORE).map((f) => `${f.id} (${f.score.toFixed(2)})`);
   log.log(`import-recording: ${cuts.length}/${located.length} clips -> ${voiceDir} (gain ${gain} dB${pausesRemovedMs ? `, ${(pausesRemovedMs / 1000).toFixed(1)} s of pauses removed` : ''}${settings.tempo !== 1 ? `, tempo ${settings.tempo}` : ''})`);
   if (weak.length) log.warn(`  aviso: listen to these, they differ from the script: ${weak.join(', ')}`);
+  // A half-said sentence glued to its retake shows as one word stretched over the dropped words.
+  for (const sw of stretchedWords(located, timed, silences)) {
+    const cut = cutOf.get(sw.id);
+    // The clean take starts where the voice resumes after the silence inside the word, or at the word itself when
+    // the repair already moved its start past that silence.
+    const retake = sw.retakeMs ?? sw.startMs;
+    const gap = { ids: [sw.id], startMs: Math.max(0, retake - 500), endMs: cut.endMs + 300 };
+    log.warn(
+      `  aviso: ${sw.id}: «${sw.text}» lasts ${((sw.endMs - sw.startMs) / 1000).toFixed(1)} s (${clock(sw.startMs)}–${clock(sw.endMs)}): ` +
+        'Whisper stretched it over voice it did not transcribe, probably a half-said sentence and its retake in the same clip.',
+    );
+    for (const line of recutAdvice(gap, recutOptions(gap, { file, name, gain }))) log.warn(`    ${line}`);
+  }
   if (missing.length) {
     log.warn(`  aviso: not found in the recording (no clip written): ${missing.join(', ')}`);
     for (const gap of missingGaps(located, cuts, timed, silences, asr.durationMs)) {
