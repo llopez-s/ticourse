@@ -41,3 +41,27 @@ test('reportIsCurrent and voiceReport', () => {
   assert.match(md, /Errores: 1/);
   assert.match(md, /\| s01-01 \| 1\.00 \|/);
 });
+
+test('clipFindings: V19 s03-03 hid a half-said take under a stretched word and untranscribed voice', () => {
+  const script = 'El cifrado en reposo protege el disco si se lo llevan. Pero la consulta trucada sale de la propia aplicación.';
+  const heard = 'El cifrado en reposo protege el disco si se lo llevan. Pero la consulta trucada sale de la propia aplicación.';
+  const words = [
+    { text: 'El', start: 0.0, end: 0.4 },
+    { text: 'disco', start: 2.2, end: 4.4 }, // Whisper stretched it over the retake it did not transcribe
+    { text: 'si', start: 4.4, end: 4.6 },
+  ];
+  const f = clipFindings({ id: 's03-03', script, heard, ...ok, words, unheard: [[2.6, 2.8]], gaps: [[2.0, 0.5]] });
+  assert.equal(f.errors.length, 2);
+  assert.match(f.errors[0], /«disco» lasts 2\.2 s/);
+  assert.match(f.errors[1], /2\.8 s of voice at 2\.6 s/);
+  assert.equal(f.warnings.length, 0); // a 0.5 s silence alone is not enough to warn
+});
+
+test('clipFindings: spelled acronyms may be long, a long silence only asks to listen', () => {
+  const script = 'Esta es la nota base del CVSS, de cero a diez.';
+  const words = [{ text: 'CVSS,', start: 1.5, end: 3.9 }];
+  const f = clipFindings({ id: 's02-02', script, heard: script, ...ok, words, unheard: [], gaps: [[4.0, 0.7]] });
+  assert.deepEqual(f.errors, []);
+  assert.equal(f.warnings.length, 1);
+  assert.match(f.warnings[0], /0\.7 s silence at 4\.0 s/);
+});
