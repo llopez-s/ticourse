@@ -302,7 +302,7 @@ describe('lesson videos', () => {
     // V15 triages the sandbox report after the triage paragraph and before the four checks on its data
     expect(youtubeVideos.find((v) => v.block.youtube === 'z9OLiWCphso')?.module).toBe('s3m2');
     // V19 walks sp2m4's three text boxes after the stored-XSS check and before the exam note on the two reflexes
-    expect(youtubeVideos.find((v) => v.block.youtube === 'kEMyULl7v5A')?.module).toBe('sp2m4');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'kYFWnbr5djs')?.module).toBe('sp2m4');
   });
 
   it('every video block points at relative public assets that exist', async () => {

@@ -337,7 +337,7 @@ Corrección: parameterized queries (prepared statements).
     {
       t: 'video',
       title: 'SQL injection y XSS: cuando un texto se vuelve orden',
-      youtube: 'kEMyULl7v5A',
+      youtube: 'kYFWnbr5djs',
       poster: 'videos/inyeccion-halden-poster.png',
       transcript: 'videos/inyeccion-halden-transcript.txt',
     },
