@@ -152,19 +152,19 @@
       "id": "s04-05",
       "scene": "s04-peticion",
       "text": "<satisfied> {grant}Concedido, con lectura y escritura. {planes}Arriba, en el control plane, la oficina decide y el administrativo comunica. {pdp}Juntos son el PDP.",
-      "pauseAfterMs": 300
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "1.2",
+        "text": "PDP en el control plane; el PEP, en el data plane",
+        "at": "pdp",
+        "holdSec": 4
+      }
     },
     {
       "id": "s04-06",
       "scene": "s04-peticion",
       "text": "<thoughtful> {data-plane}Abajo, en el data plane, el PEP y el tráfico.",
-      "pauseAfterMs": 450,
-      "exam": {
-        "objective": "1.2",
-        "text": "PDP en el control plane; el PEP, en el data plane",
-        "at": "data-plane",
-        "holdSec": 5
-      }
+      "pauseAfterMs": 450
     },
     {
       "id": "s05-01",
