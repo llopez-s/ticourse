@@ -173,7 +173,7 @@ impacto de negocio. Ordenar la cola por puntuación es el error clásico.`,
     {
       t: 'video',
       title: 'Triaje de vulnerabilidades: el contexto manda sobre el número',
-      youtube: 'rE43EDA2_yE',
+      youtube: 'P9nft88qkZs',
       poster: 'videos/cvss-halden-poster.png',
       transcript: 'videos/cvss-halden-transcript.txt',
     },

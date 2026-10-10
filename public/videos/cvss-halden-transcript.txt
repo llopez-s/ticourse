@@ -4,17 +4,17 @@ Simulación educativa con datos ficticios · Alertópolis — material independi
 [00:00] I · El número y el contexto — Una cola, un solo parche
 Jueves, nueve de la mañana. El informe del mes trae tres filas rojas, y esta semana solo cabe un parche. ¿Qué se arregla primero? Hoy ves cómo se decide, qué haces con lo que no tiene parche y cuándo está cerrado de verdad.
 
-[00:17] I · El número y el contexto — El mismo fallo, dos servidores
+[00:16] I · El número y el contexto — El mismo fallo, dos servidores
 Dos servidores, el mismo fallo. Esta columna es el nombre público del fallo, el CVE. Esta es la nota base del CVSS, de cero a diez. Dice lo grave que sería el fallo en abstracto, sin saber nada de tu red. La misma nota, ¿y la misma prisa? Eso la nota no lo sabe. El primero se ve desde la red interna, y el segundo solo desde su equipo. Piensa en un agujero en el casco de un barco. La nota es su tamaño, y el contexto, el mar. El segundo, en dique seco, puede esperar a la reparación. El primero, en alta mar con temporal, no. Por eso el CVSS mide severidad, y el riesgo lo pone el contexto. Mismo número, distinta prisa.
 
-[01:02] I · El número y el contexto — ¿Y ahora, cuál?
+[00:59] I · El número y el contexto — ¿Y ahora, cuál?
 9.8 contra 9.8, y un solo parche. ¿Cuál va primero? Aquí se cuela SILENT PAGER, que cuenta con que tu SOC duerma. [Mensaje interceptado · SILENT PAGER] «Mismo 9,8, misma prisa. Que decida una moneda.» Una moneda no mira nada de esto. Mejor cuatro preguntas. ¿Se llega? El primero, desde la red interna. El segundo, solo desde su propio equipo. ¿Hay exploit? Sí, en los dos, desde hace nueve días. Es del fallo, no del servidor. ¿Hay algo que lo proteja? Nada, en los dos. ¿Y qué se para si cae? Lo mismo, los mensajes del puerto. Tres respuestas iguales y una distinta, y decide la que distingue. El primero, parche hoy. El segundo, al ciclo mensual. Esperar no es olvidar.
 
-[01:54] II · Sin parche y sin prueba — Lo que no tiene parche
+[01:50] II · Sin parche y sin prueba — Lo que no tiene parche
 Queda el grabador de las cámaras del recinto. Tiene un 8.1, pero el fabricante no publica parche. Mira las opciones, una por una. Parchear queda descartado. [Mensaje interceptado · SILENT PAGER] «¿Sin parche? Contrata un seguro y a otra cosa.» Un seguro paga parte de la factura, pero el fallo sigue igual de explotable. Y «a otra cosa» no es una decisión. Sin parche, lo aíslas, como los mamparos de un casco. Y lo compensas con alertas reforzadas, como las bombas de achique. El riesgo que queda lo acepta el negocio, no quien lo encontró. Lo firma el director de operaciones, en una excepción con controles. La excepción caduca en seis meses, y se revisa cada tres meses.
 
-[02:40] II · Sin parche y sin prueba — Después del parche
+[02:34] II · Sin parche y sin prueba — Después del parche
 El lunes repites el escaneo, y el primer servidor aparece otra vez, aunque Sistemas lo parcheó el jueves. Está parcheado, y aun así sigue saliendo. ¿Qué haces primero? Comprobar. El escaneo entra con credenciales, pero esta fila solo mira lo que el servicio anuncia por la red. En el equipo ya corre la versión nueva, y no falta ningún reinicio. El escáner leyó el letrero del casco, no el casco. Cuando el escáner avisa de un fallo que no existe, es un falso positivo. Se documenta, y Sistemas corrige el texto. Nuevo escaneo, limpio. Ahora sí, cerrado con prueba. O sea, se cierra al revalidar, no con un correo.
 
-[03:26] III · Para el examen — Tres reglas
+[03:18] III · Para el examen — Tres reglas
 Tres reglas. La nota dice lo grave que es el fallo, y el contexto, lo urgente. Si no hay parche, aíslas, compensas y firmas una excepción con caducidad. Un seguro no cierra el fallo. No está cerrado hasta que lo compruebas. Si sigue saliendo, mira qué corre de verdad. En el laboratorio lo aplicas con otros ocho hallazgos. Decide con contexto, no con una moneda.

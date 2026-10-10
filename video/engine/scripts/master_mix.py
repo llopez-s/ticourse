@@ -392,13 +392,20 @@ def music_bed(timeline, n, song):
 BED_STYLES = {"story": ambient_bed, "pad": pad_bed, "music": music_bed}
 
 
-def limit(x, ceiling_db, release_ms=60.0):
-    """True-peak limiter without latency: peaks detected 4x oversampled, gain looks ahead/behind 1.5 ms."""
+def limit(x, ceiling_db, release_ms=120.0, lookahead_ms=5.0):
+    """True-peak limiter without latency: peaks detected 4x oversampled. The gain reduction is held over
+    +-`lookahead_ms` (so it is in place before the peak) and then smoothed over the same window, so it never
+    steps: the old 1.5 ms hold moved the gain faster than a voice's own fundamental and was heard as
+    distortion on speech (V18/V19: the limiter was on 6-9 % of the time, up to 3 dB)."""
     ceiling = 10 ** (ceiling_db / 20)
     up = np.max(np.abs(signal.resample_poly(x, 4, 1, axis=0)), axis=1)
     peak = up.reshape(-1, 4).max(axis=1)[: len(x)]
     need = np.minimum(1.0, ceiling / (peak + 1e-12))
-    gain = minimum_filter1d(need, size=2 * int(0.0015 * SR) + 1)
+    half = int(lookahead_ms / 1000 * SR)
+    held = minimum_filter1d(need, size=2 * half + 1)
+    # A moving average of a minimum-held signal never exceeds `need` at any sample, so the ceiling still holds.
+    win = np.hanning(2 * half + 3)[1:-1]
+    gain = np.convolve(np.pad(held, half, mode="edge"), win / win.sum(), mode="valid")
     r = np.exp(-1.0 / (SR * release_ms / 1000))
     out = np.empty_like(gain)
     g = 1.0
@@ -454,11 +461,33 @@ def premaster(prog, timeline, meter, target=-14.0, bed_style="story", bed_db=0.0
     return mix * 10 ** ((target - meter.integrated_loudness(mix)) / 20)
 
 
-def deliver(unlimited, video_in, out, meter, ffmpeg, tmp, ceiling_db=-1.0):
+def auto_level(unlimited, ceiling, max_gr_db, max_active_pct, floor_db, step_db=0.5):
+    """How far to lower the programme so the limiter stays inaudible: the smallest drop (in `step_db` steps, at
+    most `floor_db`) for which the limiter works on at most `max_active_pct` % of the time and never takes
+    more than `max_gr_db`. A voice with 16 dB between its loudness and its peaks cannot be -14 LUFS under a
+    -1.5 dBTP ceiling without 3 dB of limiting on the loud syllables, and that is what was heard as saturation;
+    YouTube only turns louder files down, so a few dB less costs nothing."""
+    drop = 0.0
+    while True:
+        mix, gr = limit(unlimited * 10 ** (-drop / 20), ceiling)
+        active = 100 * float((gr < -0.1).mean())
+        worst = float(-gr.min())
+        print(f"  auto-level: -{drop:.1f} dB -> limiter active {active:.2f}% of the time, max {worst:.1f} dB")
+        if (active <= max_active_pct and worst <= max_gr_db) or drop >= floor_db:
+            return drop
+        drop = min(drop + step_db, floor_db)
+
+
+def deliver(unlimited, video_in, out, meter, ffmpeg, tmp, ceiling_db=-1.0, auto=None):
     """Stage 2, the light one: limit, encode AAC next to the untouched video stream, and check the delivered
     MP4. AAC can push the true peak past the PCM limiter's ceiling, so the MP4 is decoded and measured, and
-    limited again with a lower ceiling if it overshot (up to 3 passes). Returns the limited PCM."""
+    limited again with a lower ceiling if it overshot (up to 3 passes). Returns the limited PCM. With `auto`
+    ({max_gr, max_active, floor}) the programme is first lowered until the limiter stays inaudible."""
     ceiling = ceiling_db - AAC_HEADROOM_DB
+    if auto:
+        drop = auto_level(unlimited, ceiling, auto["max_gr"], auto["max_active"], auto["floor"])
+        unlimited = unlimited * 10 ** (-drop / 20)
+        print(f"  auto-level: programme lowered by {drop:.1f} dB")
     for _ in range(3):
         mix, gr = limit(unlimited, ceiling)
         active = gr < -0.1
@@ -499,6 +528,10 @@ def main():
     ap.add_argument("--out")
     ap.add_argument("--target", type=float, default=-14.0)
     ap.add_argument("--ceiling", type=float, default=-1.0)
+    ap.add_argument("--no-auto-level", action="store_true", help="deliver at exactly --target even if the limiter has to work hard")
+    ap.add_argument("--max-gr", type=float, default=1.2, help="auto-level: the most the limiter may take off a peak, dB")
+    ap.add_argument("--max-active", type=float, default=1.5, help="auto-level: the most % of the time the limiter may be working")
+    ap.add_argument("--auto-floor", type=float, default=4.0, help="auto-level: the most the programme may be lowered, dB")
     ap.add_argument("--bed-db", type=float, default=0.0, help="raise/lower the ambient bed from its default level")
     ap.add_argument("--no-bed", action="store_true")
     ap.add_argument("--bed-style", choices=sorted(BED_STYLES), default="story", help="story (default): moving chords that react to the timeline; pad: the first, one chord per chapter; music: a library track (--music) re-arranged to the story")
@@ -530,7 +563,8 @@ def main():
                 sf.write(args.premaster_out, unlimited, SR, subtype="FLOAT")
                 print(f"  premaster -> {args.premaster_out}")
                 return
-        mix = deliver(unlimited, args.video_in, args.out, meter, args.ffmpeg, tmp, args.ceiling)
+        auto = None if args.no_auto_level else {"max_gr": args.max_gr, "max_active": args.max_active, "floor": args.auto_floor}
+        mix = deliver(unlimited, args.video_in, args.out, meter, args.ffmpeg, tmp, args.ceiling, auto)
         if args.excerpt and args.excerpt_out:
             a, b = (float(v) for v in args.excerpt.split(":"))
             sf.write(args.excerpt_out, mix[int(a * SR) : int(b * SR)], SR, subtype="PCM_16")
