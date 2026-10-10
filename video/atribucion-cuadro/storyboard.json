@@ -1,0 +1,124 @@
+{
+  "title": "Atribución: ¿quién fue? Los tres niveles y las pistas falsas",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 218,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Los niveles"
+    },
+    {
+      "n": 2,
+      "title": "Pistas y decisión"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Un nombre para el informe",
+      "goal": "El diamante del evento E7 (el de V3, `video/diamond-e7`), en pequeño a un lado, con la esquina «Adversary · UNKNOWN» encendida y las otras tres atenuadas, sin datos legibles (`diamond`); junto a él, los rótulos de V13: «Meridian Dynamics · aeroespacial» y «tú, su analista de inteligencia». Al otro lado, la tira del CISO, la misma de V9 (`ciso`): «CISO» y «¿Quién está detrás? ¿Ponemos un país en el informe?». Es una pregunta, no una decisión, y nadie queda mal por hacerla. Título «Atribución: ¿quién fue?», con «tres niveles, pistas falsas y cuándo vale la pena» debajo (`title`, hacia los 10,5 s del estimado, siempre antes de los 12). La promesa en tres chips (`promise`): «hasta dónde puedes llegar · qué pista pesa de verdad · si hace falta un nombre». Ninguna fecha ni hora en pantalla. La voz dice «tu diamante del ataque»: no dice el evento, ni el equipo, ni el dominio, y no nombra al grupo",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "requiredCues": [
+        "diamond",
+        "ciso",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-niveles",
+      "chapter": 1,
+      "title": "Tres preguntas sobre un cuadro",
+      "goal": "Un cuadro en un caballete, con su firma y su fecha en una esquina (`canvas`), y debajo «atribuir un cuadro: tres preguntas». Las preguntas se encienden una a una y cada una abre su banda del lienzo, de abajo arriba (tres bandas del mismo lienzo, nunca escalones). Banda 1 (`machine`): «¿con qué se hizo?», con el lienzo y los pigmentos; rótulo MÁQUINA / INFRAESTRUCTURA, «qué equipos y herramientas actuaron»; la evidencia de la lección, «tu telemetría, el malware, el C2»; en pequeño, «llega cualquier defensor con visibilidad»; confianza «alta». Un chip sobre esa banda (`ours`): «tu caso: el programa y su servidor» (sin certificado, sin hash y sin dominio). Banda 2 (`hand`): «¿quién lo pintó?», con la mano y una huella en el barniz; rótulo OPERADOR, «quién tecleó» (`operator`); la evidencia (`slips`), «errores humanos: una cuenta personal desde la infraestructura, un alias reutilizado, hábitos propios años seguidos»; en pequeño, «llegan vendors con visibilidad global y años de seguimiento»; confianza «moderada». Banda 3 (`commission`): «¿quién lo encargó y lo pagó?», con un contrato guardado fuera del cuadro, en un archivo; rótulo SPONSOR, «por cuenta de quién» (`sponsor`); la evidencia, «dinero, órdenes, registros legales, años de victimología alineada con intereses» y, en pequeño, «la victimología sola no llega a quién dirige»; «llegan gobiernos, o fusión público-privada»; confianza «moderada, y solo con fuentes que tu red no tiene». Un chip hacia el diamante pequeño de s01 (`diamond`): «Capability + Infrastructure = máquina · Adversary = operator + customer», con «operator: teclea» y «customer: encarga». Tira (`other-kind`): «subir un nivel pide evidencia de otro tipo, no más de lo mismo». La tarjeta, al acabar esa frase y con las tres bandas ya quietas. Las confianzas son las de la tabla de la lección para cada tipo de evidencia, nunca un juicio sobre Meridian",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "requiredCues": [
+        "canvas",
+        "machine",
+        "ours",
+        "hand",
+        "operator",
+        "slips",
+        "commission",
+        "sponsor",
+        "diamond",
+        "other-kind"
+      ]
+    },
+    {
+      "id": "s03-techo",
+      "chapter": 1,
+      "title": "Hasta dónde llega lo que ves",
+      "goal": "Mensaje interceptado, sobre las tres bandas de s02. Respuesta (`reply-name`): la ficha de V9, «PAPER CRANE · célula de engaño · siembra pistas falsas», y, del mensaje, la palabra «país» unida a la banda SPONSOR con «el tercer nivel». Las tres bandas se vuelven un muro (`wall`) y entra un foco rotulado «tu telemetría» (`beam`): ilumina del todo la primera, apenas la segunda y nada la tercera. La tercera queda a oscuras (`dark`, con el efecto «lock») con «no deja rastro en tu red»; sobre ella, lo que haría falta para verla: «fuentes humanas (HUMINT) · comunicaciones interceptadas (SIGINT) · financiación y órdenes · registros legales», y «suelen tenerlas gobiernos, o fusión público-privada». Una ficha genérica (`vendor`), «así habla un informe serio: se detiene donde acaba su evidencia»: «[nombre del conjunto] · solapamiento a nivel de operador con actividad anterior · confianza moderada» y, debajo, «país: —»; el nombre va entre corchetes porque no existe ningún informe de ningún proveedor sobre Meridian. Junto a la ficha, el nombre INTRUSION SET, «el grupo, tal como se le ve trabajar». En el borde del haz (`ceiling`), «hasta aquí llega la evidencia técnica» y «no es debilidad, es rigor»; la tarjeta, al acabar la frase. Cierre del capítulo (`wrap-i`): las tres bandas juntas y solo la primera bien encendida, con «tres niveles · tu red ilumina bien el primero»",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "requiredCues": [
+        "reply-name",
+        "wall",
+        "beam",
+        "dark",
+        "vendor",
+        "ceiling",
+        "wrap-i"
+      ]
+    },
+    {
+      "id": "s04-binario",
+      "chapter": 2,
+      "title": "Un binario sobre la mesa",
+      "goal": "Desde el primer fotograma de la escena, y antes de que aparezca el mensaje, el binario de ejemplo está sobre la mesa con su rótulo bien visible: «Ejemplo de la lección · no es el caso de Meridian» (sin cue). Mensaje interceptado, encima. Respuesta corta (`reply-crane`): el mensaje se aparta y queda el binario; nada en pantalla ni en voz dice quién deja las pistas mientras están a la vista. Se subraya el rótulo (`sample`) y se encienden las dos pistas, sin idioma concreto, sin lugar y sin huso: «textos en otro idioma» (`lang`) y «horas de compilación de una jornada de oficina concreta» (`hours`). Pregunta para pensar («Idioma y horario: ¿bastan para un país?»), con las dos pistas quietas. Respuesta: vuelve el cuadro de s02 y se amplía su esquina, con la firma y la fecha (`signature`); una mano las pinta solas en un momento (`cheap`, con el efecto «glitch»), «un minuto». La tabla de la lección se rellena fila a fila (evidencia · falsificable · peso para atribuir): «strings o idioma · trivial · muy bajo, aislada», «compile times u horario · trivial · muy bajo, aislada» y «tooling de otro grupo · fácil si es público o robado · bajo». Nombre FALSE FLAG, «pistas dejadas a propósito para culpar a otro»; la tarjeta, al acabar esa frase. Un chip junto a las dos primeras filas: «aisladas pesan muy poco · dentro de un conjunto grande y coherente, suman». En contraste (`costly`), el historial del cuadro, su procedencia documentada año tras año, y las dos filas caras: «objetivos sostenidos durante años · cara de sostener · medio-alto» (con «sola no llega al sponsor») y «tradecraft de años con errores de opsec · muy cara · alto, en agregado»; chip «caro no es imposible». La pregunta final, la de V9 (`sensitivity`): «si esta pista fuera un señuelo, ¿cambia tu conclusión?»",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "requiredCues": [
+        "reply-crane",
+        "sample",
+        "lang",
+        "hours",
+        "signature",
+        "cheap",
+        "costly",
+        "sensitivity"
+      ]
+    },
+    {
+      "id": "s05-decision",
+      "chapter": 2,
+      "title": "El nombre y la decisión",
+      "goal": "Vuelve la tira del CISO de s01, con su pregunta (`ciso-again`). Dos columnas. La primera (`who-needs`), «a quién le sirve el país»: «gobiernos (respuesta diplomática o legal)» y «seguros». La segunda (`ours`), «qué cambia en tu defensa»: «detectar, cazar y proteger rara vez cambian con el país». Entre las dos, «¿qué decisión cambia con el nombre?»; la tarjeta, al acabar la frase que lo dice. La cartela del museo, junto al cuadro (`label`): «atribuido a…», con «lo que afirmas lleva su confianza». Una nota, lo que sí puedes escribir en el informe (`note`, con el efecto «check»), línea a línea: «cómo trabajan: lo ves en tu red» · «qué buscan: la propiedad intelectual de propulsión de Meridian» · «quién teclea: desconocido» (`unknown`, con el sello UNKNOWN de la esquina del diamante) · «para quién trabajan: tu red no tiene esa clase de prueba; el juicio se emite con su confianza y diciendo qué falta, no se calla». La nota describe al grupo sin nombrarlo y no lleva ninguna confianza concreta ni ningún país. Cierre del capítulo: «el nombre, al final, y solo si una decisión lo pide»",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "ciso-again",
+        "who-needs",
+        "ours",
+        "label",
+        "note",
+        "unknown"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, cada una con su viñeta en miniatura (`recap`): las tres bandas del cuadro (`rule-1`: «Máquina, operador y sponsor: cada nivel pide evidencia de otro tipo. Tu red llega a la máquina»), la firma de la esquina (`rule-2`: «Un idioma o una hora se falsifican en un minuto; años de objetivos y de rutina cuestan mucho más. ¿Y si esta pista es un señuelo?») y la cartela (`rule-3`: «Antes de poner un nombre, ¿qué decisión cambia? Y si lo pones, con su confianza»). Tarjeta final Alertópolis (`next`, `endcard`): «Tu turno: las preguntas de la lección» (s4m5, 10 preguntas). Ningún laboratorio",
+      "targetSec": 24,
+      "wordBudget": 65,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
