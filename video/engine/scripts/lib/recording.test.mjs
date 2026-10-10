@@ -14,6 +14,7 @@ import {
   clipArgs,
   clipWords,
   cutPoints,
+  stretchedWords,
   gainDb,
   importReport,
   keepRanges,
@@ -677,4 +678,19 @@ test('cutPoints keeps the old edge when the silence it would snap to ends after 
   const silences = [{ startMs: 200, endMs: 1500 }]; // would swallow «uno» whole: not an onset
   const [cut] = cutPoints([{ id: 'a', found: true, first: 0, last: 1 }], words, silences, 6000);
   assert.ok(cut.startMs <= 1000);
+});
+
+test('stretchedWords flags a word Whisper stretched over a dropped retake, and says where the clean take starts', () => {
+  const words = [
+    { text: 'protege', startMs: 77000, endMs: 77800 },
+    { text: 'disco', startMs: 78000, endMs: 83100 },
+    { text: 'si', startMs: 83200, endMs: 83400 },
+    { text: 'CVSS,', startMs: 84000, endMs: 86400 }, // a spelled acronym is slow on its own
+  ];
+  const silences = [{ startMs: 78350, endMs: 81150 }];
+  const found = [{ id: 's03-03', found: true, first: 0, last: 3 }];
+  const out = stretchedWords(found, words, silences);
+  assert.equal(out.length, 1);
+  assert.deepEqual(out[0], { id: 's03-03', text: 'disco', startMs: 78000, endMs: 83100, retakeMs: 81150 });
+  assert.deepEqual(stretchedWords([{ id: 'x', found: false }], words, silences), []);
 });

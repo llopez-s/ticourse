@@ -515,6 +515,34 @@ export function recutAdvice(gap, { file, out, slug, name, python, lufs }) {
   ];
 }
 
+/** Longest a spoken word can plausibly last; beyond it Whisper stretched it over voice it did not transcribe. */
+export const MAX_WORD_MS = 1200;
+
+/**
+ * Words of the found segments that last too long: the mark of a half-said sentence glued to its retake. Whisper
+ * drops the first words of the retake and stretches the word before them over it (V19 s03-03: «disco» lasted 5 s
+ * across 2.8 s of silence and the voice that followed), and the clip then keeps both takes. Spelled acronyms
+ * and numbers (CVSS, 9.8) are slow by nature and are left out. `retakeMs` is where the voice resumes after the
+ * last silence inside the word: the likely start of the clean take.
+ */
+export function stretchedWords(located, words, silences, { maxMs = MAX_WORD_MS, minPauseMs = 300 } = {}) {
+  const out = [];
+  for (const f of located) {
+    if (!f.found) continue;
+    for (const p of f.parts ?? [f]) {
+      for (let k = p.first; k <= p.last; k++) {
+        const w = words[k];
+        if (w.endMs - w.startMs <= maxMs) continue;
+        if (/^[A-Z0-9][A-Z0-9.,\-]*$/.test(w.text.replace(/[¿?¡!«»".;:]/g, ''))) continue;
+        const inside = silences.filter((s) => s.endMs - s.startMs >= minPauseMs && s.startMs > w.startMs - 1 && s.endMs < w.endMs + 1);
+        const last = inside.length ? inside[inside.length - 1] : null;
+        out.push({ id: f.id, text: w.text.replace(/[¿?¡!«»".,;:]/g, ''), startMs: w.startMs, endMs: w.endMs, retakeMs: last ? last.endMs : null });
+      }
+    }
+  }
+  return out;
+}
+
 /** Integrated loudness (LUFS) and true peak (dBTP) from ffmpeg loudnorm's print_format=json analysis. */
 export function parseLoudness(stderr) {
   const json = stderr.slice(stderr.lastIndexOf('{'), stderr.lastIndexOf('}') + 1);
