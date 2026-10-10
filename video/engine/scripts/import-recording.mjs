@@ -4,7 +4,7 @@
 //
 //   node video/engine/scripts/import-recording.mjs --video <slug> --file <wav> --name <name>
 //        [--only s02-03,s04-01] [--tts-dir <dir> --voice-dir <dir>] [--match <clip.mp3> | --lufs -18] [--noise -40dB]
-//        [--max-pause <ms>] [--tempo <x>] [--force-asr]
+//        [--max-pause <ms>] [--tempo <x>] [--lead-ms <ms>] [--force-asr]
 //
 // 1. Transcribes the recording with word timings (recording_asr.py, faster-whisper in the
 //    Chatterbox venv), cached in out/recording/<name>/asr-<file>.json by the file's hash. Long
@@ -15,6 +15,7 @@
 //    loudness, or --lufs) and encodes it like the Chatterbox clips (24 kHz mono, 96 kbps CBR).
 //    With --max-pause, every pause inside a sentence longer than that is shortened to it. With --tempo,
 //    every clip is sped up by that factor (ffmpeg atempo keeps the pitch) and its word timings with it.
+//    With --lead-ms, the air kept before a sentence's first word is capped at that (a breath no longer rides in).
 //    Both default to narration.json "recording": { "tempo": 1.08, "maxPauseMs": 250 } when set there.
 // 4. Writes out/recording/<name>/report-<file>.md: each segment's match, and what was left out.
 // Set narration.json "voice" to "recording/<name>" before build-timeline. Segments it could not
@@ -149,7 +150,7 @@ export function withTempo(record, tempo) {
   return { ...record, tempo, durationMs: scaled.durationMs, words: scaled.words };
 }
 
-export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir, voiceDir = PATHS.voiceDir, match, lufs = -18, noise = '-40dB', maxPauseMs, tempo, forceAsr = false, log = console }) {
+export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir, voiceDir = PATHS.voiceDir, match, lufs = -18, noise = '-40dB', maxPauseMs, tempo, maxLeadMs = null, forceAsr = false, log = console }) {
   const voice = `recording/${name}`;
   if (!isRecordingVoice(voice)) throw new Error(`--name must be lowercase letters, digits, "-" or "_" (got ${JSON.stringify(name)})`);
   if (!existsSync(file)) throw new Error(`recording not found: ${file}`);
@@ -179,7 +180,7 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
   // Cuts are placed from the words' edges, so first undo the pauses Whisper stretched a word over.
   const timed = repairSwallowedPauses(words, silences);
   const located = locateSegments(segments, timed);
-  const cuts = cutPoints(located, timed, silences, asr.durationMs);
+  const cuts = cutPoints(located, timed, silences, asr.durationMs, { maxLeadMs });
   const cutOf = new Map(cuts.map((c) => [c.id, c]));
   mkdirSync(ttsDir, { recursive: true });
   mkdirSync(voiceDir, { recursive: true });
@@ -243,6 +244,7 @@ function main() {
       noise: { type: 'string' },
       'max-pause': { type: 'string' },
       tempo: { type: 'string' },
+      'lead-ms': { type: 'string' },
       'force-asr': { type: 'boolean', default: false },
     },
   });
@@ -259,6 +261,7 @@ function main() {
     ...(values.noise ? { noise: values.noise } : {}),
     ...(values['max-pause'] ? { maxPauseMs: Number.parseInt(values['max-pause'], 10) } : {}),
     ...(values.tempo ? { tempo: Number.parseFloat(values.tempo) } : {}),
+    ...(values['lead-ms'] ? { maxLeadMs: Number.parseInt(values['lead-ms'], 10) } : {}),
     forceAsr: values['force-asr'],
   });
 }
