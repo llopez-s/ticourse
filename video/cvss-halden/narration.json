@@ -1,0 +1,252 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "tie": "ding",
+    "no-patch": "block",
+    "record": "lock",
+    "closed": "check"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<concerned> {report}Jueves, nueve de la mañana. El informe del mes trae {rows}tres filas rojas, y esta semana solo cabe un parche.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<engaging> {title}¿Qué se arregla primero? {promise}Hoy ves cómo se decide, qué haces con lo que no tiene parche y cuándo está cerrado de verdad.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-contexto",
+      "text": "<clear> {rows}Dos servidores, el mismo fallo. {cve}Esta columna es el nombre público del fallo, el CVE.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-contexto",
+      "text": "<focused> {score}Esta es la nota base del CVSS, de cero a diez. Dice lo grave que sería el fallo en abstracto, sin saber nada de tu red.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-contexto",
+      "text": "<curious> La misma nota, ¿y la misma prisa? {listens}Eso la nota no lo sabe. El primero se ve desde la red interna, y el segundo solo desde su equipo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-contexto",
+      "text": "<warm> {hull}Piensa en un agujero en el casco de un barco. La nota es su tamaño, y el contexto, el mar.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-contexto",
+      "text": "<thoughtful> El segundo, en dique seco, puede esperar a la reparación. El primero, en alta mar con temporal, no.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-contexto",
+      "text": "<confident> {names}Por eso el CVSS mide severidad, y el riesgo lo pone el contexto. Mismo número, distinta prisa.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "4.3",
+        "text": "CVSS mide severidad; el riesgo lo pone el contexto",
+        "at": "names",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-orden",
+      "text": "<curious> {tie}[9.8|Nueve coma ocho] contra [9.8|nueve coma ocho], y un solo parche. ¿Cuál va primero?",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-orden",
+      "text": "<ominous> Aquí se cuela SILENT PAGER, que cuenta con que tu SOC duerma.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-orden",
+      "text": "<sarcastic> {coin}Una moneda no mira nada de esto. Mejor cuatro preguntas.",
+      "pauseAfterMs": 350,
+      "intercept": {
+        "text": "Mismo 9,8, misma prisa. Que decida una moneda.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-orden",
+      "text": "<focused> {reach}¿Se llega? El primero, desde la red interna. El segundo, solo desde su propio equipo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-orden",
+      "text": "<clear> {exploit}¿Hay exploit? Sí, en los dos, desde hace nueve días. Es del fallo, no del servidor.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-orden",
+      "text": "<thoughtful> {front}¿Hay algo que lo proteja? Nada, en los dos. {impact}¿Y qué se para si cae? Lo mismo, los mensajes del puerto.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s03-07",
+      "scene": "s03-orden",
+      "text": "<confident> Tres respuestas iguales y una distinta, y decide la que distingue. {p1}El primero, parche hoy.",
+      "pauseAfterMs": 350,
+      "exam": {
+        "objective": "4.3",
+        "text": "Prioridad: exposición, exploit, controles e impacto",
+        "at": "p1",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-08",
+      "scene": "s03-orden",
+      "text": "<calm> {p3}El segundo, al ciclo mensual. Esperar no es olvidar.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-sinparche",
+      "text": "<concerned> {unpatchable}Queda el grabador de las cámaras del recinto. Tiene un [8.1|ocho coma uno], pero el fabricante no publica parche.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-sinparche",
+      "text": "<curious> {options}Mira las opciones, una por una. {no-patch}Parchear queda descartado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-sinparche",
+      "text": "<clear> {insurance}Un seguro paga parte de la factura, pero el fallo sigue igual de explotable. Y «a otra cosa» no es una decisión.",
+      "pauseAfterMs": 450,
+      "intercept": {
+        "text": "¿Sin parche? Contrata un seguro y a otra cosa.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-sinparche",
+      "text": "<serious> {isolate}Sin parche, lo aíslas, como los mamparos de un casco. Y lo compensas con alertas reforzadas, como las bombas de achique.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-sinparche",
+      "text": "<firm> {record}El riesgo que queda lo acepta el negocio, no quien lo encontró. {owner}Lo firma el director de operaciones, en una excepción con controles.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-sinparche",
+      "text": "<calm> {expiry}La excepción caduca en seis meses, y se revisa cada tres meses.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "4.3",
+        "text": "Sin parche: aislar, compensar y excepción con caducidad",
+        "at": "expiry",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-despues",
+      "text": "<casual> {rescan}El lunes repites el escaneo, y {still}el primer servidor aparece otra vez, aunque Sistemas lo parcheó el jueves.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-despues",
+      "text": "<curious> {question}Está parcheado, y aun así sigue saliendo. ¿Qué haces primero?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Parcheado y sigue saliendo. ¿Qué haces primero?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-despues",
+      "text": "<confident> Comprobar. {version}El escaneo entra con credenciales, pero esta fila solo mira lo que el servicio anuncia por la red.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-despues",
+      "text": "<focused> {running}En el equipo ya corre la versión nueva, y no falta ningún reinicio. {banner}El escáner leyó el letrero del casco, no el casco.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-despues",
+      "text": "<satisfied> {false-positive}Cuando el escáner avisa de un fallo que no existe, es un falso positivo. Se documenta, {fix}y Sistemas corrige el texto.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-despues",
+      "text": "<confident> {closed}Nuevo escaneo, limpio. Ahora sí, cerrado con prueba. O sea, se cierra al revalidar, no con un correo.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "4.3",
+        "text": "Se cierra al revalidar: rescan, verification o audit",
+        "at": "closed",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-recap",
+      "text": "<engaging> {recap}Tres reglas. {rule-1}La nota dice lo grave que es el fallo, y el contexto, lo urgente.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-recap",
+      "text": "<firm> {rule-2}Si no hay parche, aíslas, compensas y firmas una excepción con caducidad. Un seguro no cierra el fallo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-recap",
+      "text": "<clear> {rule-3}No está cerrado hasta que lo compruebas. Si sigue saliendo, mira qué corre de verdad.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-recap",
+      "text": "<cheerful> {next}En el laboratorio lo aplicas con otros ocho hallazgos. {endcard}Decide con contexto, no con una moneda.",
+      "pauseAfterMs": 600
+    }
+  ]
+}
