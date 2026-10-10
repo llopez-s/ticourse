@@ -1,0 +1,233 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "alarm": "alarm",
+    "deny": "block",
+    "visible": "error"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<intrigued> {chain}En Meridian, una aeroespacial, ya sabes en qué paso va la intrusión. {ask}Y el equipo de respuesta te pregunta qué hacemos con esto.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<engaging> {title}Tú, su analista de inteligencia, contestas con un menú de acciones, los Courses of Action. {promise}Verás qué verbos se confunden, cómo se lee su matriz y cuánto cuesta cada acción.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-atras",
+      "text": "<warm> {shop}Piensa en la tienda de tu barrio y en cómo se protege.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-atras",
+      "text": "<curious> {tape}Si ayer pasó algo raro, rebobinas la cinta y lo buscas en lo grabado. {discover}Eso es Discover, mirar hacia atrás.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-atras",
+      "text": "<focused> {alarm}La alarma hace otra cosa. {live}Con la cámara en directo, te avisa cuando vuelva a pasar. {detect}Es Detect, y mira hacia delante.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-atras",
+      "text": "<confident> {pair}Así que Discover busca en lo que ya pasó, y Detect avisa de lo que venga.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Discover mira atrás; Detect avisa hacia delante",
+        "at": "pair",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-impedir",
+      "text": "<sarcastic> {reply-alarm}En algo tiene razón, una alarma avisa. Pero ella sola no para a nadie. Para parar hay otros dos verbos.",
+      "pauseAfterMs": 350,
+      "intercept": {
+        "text": "Ponme todas las alarmas que quieras. Para pararme ya habrá tiempo.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-impedir",
+      "text": "<focused> {matrix}Están en tu matriz, donde cada fila es un paso del atacante y cada celda, una acción concreta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-impedir",
+      "text": "<clear> {shutter}Uno es echar la persiana antes de que entre nadie. {deny}Es Deny. En tu matriz, es impedir que el adjunto lance PowerShell.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-impedir",
+      "text": "<firm> {inside}El otro es sacar a alguien de la tienda en plena faena. {disrupt}Es Disrupt. En tu matriz, es aislar el equipo en cuanto aparece la tarea programada.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-impedir",
+      "text": "<confident> {pair-ii}Con Deny, la acción no llega a funcionar. Con Disrupt, cortas algo que ya estaba en marcha.",
+      "pauseAfterMs": 450,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Deny: no llega a funcionar; Disrupt: lo cortas en curso",
+        "at": "pair-ii",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-impedir",
+      "text": "<warm> {wrap-i}O sea, que Discover y Detect miran, y Deny y Disrupt paran.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-fase",
+      "text": "<engaging> {rows}Ahora, la matriz entera. Se lee por filas, y cada fila es una fase. {counts}Mira cuántas celdas tiene cada una.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-fase",
+      "text": "<thoughtful> {single}Imagina que en la entrega solo tuvieras una, bloquear el dominio del correo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-fase",
+      "text": "<serious> {fails}Llega un correo desde otro dominio, {unopposed}y la fase se queda sin defensa, como una puerta con solo una cerradura.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-fase",
+      "text": "<confident> {back}Con cerradura, alarma y vigilante, si una falla, otra avisa o atrapa. {many}Por eso quieres varias celdas por fase, unas que miran y otras que actúan.",
+      "pauseAfterMs": 550,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Una sola celda por fase es un punto único de fallo",
+        "at": "many",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-caminos",
+      "text": "<sarcastic> {reply-move}Cortar ya es lo más contundente, sí. Pero él se muda y tú dejas de verle. Por eso te lo pide.",
+      "pauseAfterMs": 350,
+      "intercept": {
+        "text": "Córtame ya. Me mudo en cinco minutos y vuelves a empezar.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-caminos",
+      "text": "<focused> {row-c2}Mira la fila de C2, las llamadas a su servidor. {visible}La celda marcada es una acción que él ve.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-caminos",
+      "text": "<clear> {sinkhole-deny}Es el sinkhole, dejar su dominio sin respuesta. No corta la llamada de hoy, pero las siguientes ya no llegan. Por eso es Deny.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-caminos",
+      "text": "<warm> {walkie}Es como dejar mudo el walkie de un sospechoso. O le dejas hablar por una línea con ruido, y escuchas.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-caminos",
+      "text": "<engaging> {supose}Supón que aún no han sacado nada y que lo importante está a salvo. ¿Cortas?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Nada robado y lo crítico a salvo: ¿cortas?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-caminos",
+      "text": "<confident> {answer}No, todavía no. {watch}Le frenas sin cortarle y sigues mirando, con Detect y Degrade. Se parece más a una red lenta que a un bloqueo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-caminos",
+      "text": "<serious> {flip}Pero si ya se llevan lo crítico, al revés. Cortas ya, y lo demás lo recoges después.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-08",
+      "scene": "s05-caminos",
+      "text": "<firm> {business}Lo que ganas mirando contra lo que arriesgas es el [intelligence gain/loss|intelligence gain loss]. Y lo decide el negocio, no el SOC.",
+      "pauseAfterMs": 450,
+      "exam": {
+        "objective": "Intrusion Analysis",
+        "text": "Intelligence gain/loss: lo visible avisa al atacante",
+        "at": "business",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-09",
+      "scene": "s05-caminos",
+      "text": "<warm> {wrap-ii}O sea, que cada acción que él ve tiene un precio.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-recap",
+      "text": "<engaging> {recap}Quédate con tres reglas. {rule-1}Discover mira atrás y Detect, adelante. Deny impide y Disrupt corta lo que ya está en marcha.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-recap",
+      "text": "<clear> {rule-2}Una fase con una sola celda es un punto único de fallo. Pon varias.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-recap",
+      "text": "<firm> {rule-3}Lo que él ve tiene un precio. Y si ya se llevan lo crítico, corta primero y mira después.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-recap",
+      "text": "<cheerful> {lab2c}Ahora clasifica tú, en el [Lab 2C|lab dos ce]. {endcard}Y antes de cortar, mira el precio.",
+      "pauseAfterMs": 700
+    }
+  ]
+}

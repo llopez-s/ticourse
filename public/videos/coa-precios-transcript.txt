@@ -1,0 +1,20 @@
+Courses of Action: ¿cortas o miras?
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC
+
+[00:00] I · Los verbos — Qué hacemos con esto
+En Meridian, una aeroespacial, ya sabes en qué paso va la intrusión. Y el equipo de respuesta te pregunta qué hacemos con esto. Tú, su analista de inteligencia, contestas con un menú de acciones, los Courses of Action. Verás qué verbos se confunden, cómo se lee su matriz y cuánto cuesta cada acción.
+
+[00:24] I · Los verbos — Atrás y adelante
+Piensa en la tienda de tu barrio y en cómo se protege. Si ayer pasó algo raro, rebobinas la cinta y lo buscas en lo grabado. Eso es Discover, mirar hacia atrás. La alarma hace otra cosa. Con la cámara en directo, te avisa cuando vuelva a pasar. Es Detect, y mira hacia delante. Así que Discover busca en lo que ya pasó, y Detect avisa de lo que venga.
+
+[00:55] I · Los verbos — Impedir o cortar
+[Mensaje interceptado · GLASS VIPER] «Ponme todas las alarmas que quieras. Para pararme ya habrá tiempo.» En algo tiene razón, una alarma avisa. Pero ella sola no para a nadie. Para parar hay otros dos verbos. Están en tu matriz, donde cada fila es un paso del atacante y cada celda, una acción concreta. Uno es echar la persiana antes de que entre nadie. Es Deny. En tu matriz, es impedir que el adjunto lance PowerShell. El otro es sacar a alguien de la tienda en plena faena. Es Disrupt. En tu matriz, es aislar el equipo en cuanto aparece la tarea programada. Con Deny, la acción no llega a funcionar. Con Disrupt, cortas algo que ya estaba en marcha. O sea, que Discover y Detect miran, y Deny y Disrupt paran.
+
+[01:48] II · Las celdas y su precio — Fase por fase
+Ahora, la matriz entera. Se lee por filas, y cada fila es una fase. Mira cuántas celdas tiene cada una. Imagina que en la entrega solo tuvieras una, bloquear el dominio del correo. Llega un correo desde otro dominio, y la fase se queda sin defensa, como una puerta con solo una cerradura. Con cerradura, alarma y vigilante, si una falla, otra avisa o atrapa. Por eso quieres varias celdas por fase, unas que miran y otras que actúan.
+
+[02:22] II · Las celdas y su precio — Dos caminos para el C2
+[Mensaje interceptado · GLASS VIPER] «Córtame ya. Me mudo en cinco minutos y vuelves a empezar.» Cortar ya es lo más contundente, sí. Pero él se muda y tú dejas de verle. Por eso te lo pide. Mira la fila de C2, las llamadas a su servidor. La celda marcada es una acción que él ve. Es el sinkhole, dejar su dominio sin respuesta. No corta la llamada de hoy, pero las siguientes ya no llegan. Por eso es Deny. Es como dejar mudo el walkie de un sospechoso. O le dejas hablar por una línea con ruido, y escuchas. Supón que aún no han sacado nada y que lo importante está a salvo. ¿Cortas? No, todavía no. Le frenas sin cortarle y sigues mirando, con Detect y Degrade. Se parece más a una red lenta que a un bloqueo. Pero si ya se llevan lo crítico, al revés. Cortas ya, y lo demás lo recoges después. Lo que ganas mirando contra lo que arriesgas es el intelligence gain/loss. Y lo decide el negocio, no el SOC. O sea, que cada acción que él ve tiene un precio.
+
+[03:44] III · Para el examen — Tres reglas
+Quédate con tres reglas. Discover mira atrás y Detect, adelante. Deny impide y Disrupt corta lo que ya está en marcha. Una fase con una sola celda es un punto único de fallo. Pon varias. Lo que él ve tiene un precio. Y si ya se llevan lo crítico, corta primero y mira después. Ahora clasifica tú, en el Lab 2C. Y antes de cortar, mira el precio.

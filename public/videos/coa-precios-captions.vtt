@@ -1,0 +1,239 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:06.400
+En Meridian, una aeroespacial,
+ya sabes en qué paso va la intrusión.
+
+2
+00:00:06.400 --> 00:00:10.967
+Y el equipo de respuesta te
+pregunta qué hacemos con esto.
+
+3
+00:00:10.967 --> 00:00:15.733
+Tú, su analista de inteligencia,
+contestas con un menú de acciones,
+
+4
+00:00:15.733 --> 00:00:17.333
+los Courses of Action.
+
+5
+00:00:17.333 --> 00:00:23.867
+Verás qué verbos se confunden, cómo se lee
+su matriz y cuánto cuesta cada acción.
+
+6
+00:00:24.633 --> 00:00:29.800
+Piensa en la tienda de tu barrio
+y en cómo se protege.
+
+7
+00:00:29.800 --> 00:00:35.000
+Si ayer pasó algo raro, rebobinas
+la cinta y lo buscas en lo grabado.
+
+8
+00:00:35.000 --> 00:00:38.167
+Eso es Discover, mirar hacia atrás.
+
+9
+00:00:38.167 --> 00:00:44.467
+La alarma hace otra cosa. Con la cámara en
+directo, te avisa cuando vuelva a pasar.
+
+10
+00:00:44.467 --> 00:00:47.333
+Es Detect, y mira hacia delante.
+
+11
+00:00:47.333 --> 00:00:54.633
+Así que Discover busca en lo que ya pasó,
+y Detect avisa de lo que venga.
+
+12
+00:00:58.800 --> 00:01:04.233
+En algo tiene razón, una alarma avisa.
+Pero ella sola no para a nadie.
+
+13
+00:01:04.233 --> 00:01:07.167
+Para parar hay otros dos verbos.
+
+14
+00:01:07.167 --> 00:01:12.700
+Están en tu matriz, donde cada fila
+es un paso del atacante y cada celda,
+
+15
+00:01:12.700 --> 00:01:14.667
+una acción concreta.
+
+16
+00:01:14.667 --> 00:01:19.067
+Uno es echar la persiana antes
+de que entre nadie. Es Deny.
+
+17
+00:01:19.067 --> 00:01:23.833
+En tu matriz, es impedir
+que el adjunto lance PowerShell.
+
+18
+00:01:23.833 --> 00:01:28.933
+El otro es sacar a alguien de la
+tienda en plena faena. Es Disrupt.
+
+19
+00:01:28.933 --> 00:01:35.000
+En tu matriz, es aislar el equipo
+en cuanto aparece la tarea programada.
+
+20
+00:01:35.000 --> 00:01:38.067
+Con Deny, la acción no llega a funcionar.
+
+21
+00:01:38.067 --> 00:01:42.267
+Con Disrupt, cortas algo
+que ya estaba en marcha.
+
+22
+00:01:42.267 --> 00:01:47.967
+O sea, que Discover y Detect
+miran, y Deny y Disrupt paran.
+
+23
+00:01:48.800 --> 00:01:53.933
+Ahora, la matriz entera. Se lee
+por filas, y cada fila es una fase.
+
+24
+00:01:53.933 --> 00:01:57.167
+Mira cuántas celdas tiene cada una.
+
+25
+00:01:57.167 --> 00:02:02.667
+Imagina que en la entrega solo tuvieras
+una, bloquear el dominio del correo.
+
+26
+00:02:02.667 --> 00:02:07.667
+Llega un correo desde otro dominio,
+y la fase se queda sin defensa,
+
+27
+00:02:07.667 --> 00:02:11.067
+como una puerta con solo una cerradura.
+
+28
+00:02:11.067 --> 00:02:16.133
+Con cerradura, alarma y vigilante,
+si una falla, otra avisa o atrapa.
+
+29
+00:02:16.133 --> 00:02:22.367
+Por eso quieres varias celdas por fase,
+unas que miran y otras que actúan.
+
+30
+00:02:26.600 --> 00:02:33.267
+Cortar ya es lo más contundente, sí.
+Pero él se muda y tú dejas de verle.
+
+31
+00:02:33.267 --> 00:02:35.367
+Por eso te lo pide.
+
+32
+00:02:35.367 --> 00:02:39.433
+Mira la fila de C2,
+las llamadas a su servidor.
+
+33
+00:02:39.433 --> 00:02:43.267
+La celda marcada es una acción que él ve.
+
+34
+00:02:43.267 --> 00:02:47.000
+Es el sinkhole, dejar
+su dominio sin respuesta.
+
+35
+00:02:47.000 --> 00:02:53.233
+No corta la llamada de hoy, pero las
+siguientes ya no llegan. Por eso es Deny.
+
+36
+00:02:53.233 --> 00:02:56.933
+Es como dejar mudo
+el walkie de un sospechoso.
+
+37
+00:02:56.933 --> 00:03:01.600
+O le dejas hablar por una línea
+con ruido, y escuchas.
+
+38
+00:03:01.600 --> 00:03:08.500
+Supón que aún no han sacado nada
+y que lo importante está a salvo. ¿Cortas?
+
+39
+00:03:12.400 --> 00:03:18.767
+No, todavía no. Le frenas sin cortarle
+y sigues mirando, con Detect y Degrade.
+
+40
+00:03:18.767 --> 00:03:22.767
+Se parece más a una red
+lenta que a un bloqueo.
+
+41
+00:03:22.767 --> 00:03:29.933
+Pero si ya se llevan lo crítico, al revés.
+Cortas ya, y lo demás lo recoges después.
+
+42
+00:03:29.933 --> 00:03:35.533
+Lo que ganas mirando contra lo que
+arriesgas es el intelligence gain/loss.
+
+43
+00:03:35.533 --> 00:03:38.400
+Y lo decide el negocio, no el SOC.
+
+44
+00:03:38.400 --> 00:03:43.700
+O sea, que cada acción
+que él ve tiene un precio.
+
+45
+00:03:44.533 --> 00:03:49.233
+Quédate con tres reglas.
+Discover mira atrás y Detect, adelante.
+
+46
+00:03:49.233 --> 00:03:53.300
+Deny impide y Disrupt corta
+lo que ya está en marcha.
+
+47
+00:03:53.300 --> 00:03:59.267
+Una fase con una sola celda es un
+punto único de fallo. Pon varias.
+
+48
+00:03:59.267 --> 00:04:01.733
+Lo que él ve tiene un precio.
+
+49
+00:04:01.733 --> 00:04:07.267
+Y si ya se llevan lo crítico,
+corta primero y mira después.
+
+50
+00:04:07.267 --> 00:04:13.767
+Ahora clasifica tú, en el Lab 2C.
+Y antes de cortar, mira el precio.
