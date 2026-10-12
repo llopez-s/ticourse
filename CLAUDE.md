@@ -215,7 +215,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   **library music** instead of the generated bed — `video.json` → `"music"` names a YouTube Audio Library track in
   the git-ignored `video/engine/music/library/` (licences in `music/LICENSES.md`), which `music_kit.py` re-arranges
   to the story. YouTube does not allow external links in the channel's descriptions, so `youtube-meta` writes none.
-  **V5 `video/ir-halden/`** (sp4m10, Security+, YouTube `S_nVqWYkKXM`, 8:19, published 2026-10-01) continues the
+  **V5 `video/ir-halden/`** (sp4m10, Security+, YouTube `AvtZI9iylQc`, 8:19, published 2026-10-01) continues the
   Halden case (the morning after V1/SIEM/V2) and is the reason for the **new production order** in the video plan §8
   «Orden de trabajo»: read the campaign's **canon registry** first (`docs/superpowers/canon/glass-harbor.md`,
   `velvet-cicada.md` — every on-screen fact of the published videos with `path:line`, plus the contradictions found
@@ -229,7 +229,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   passes queue; `RENDER_LOCK=0` skips it); Windows/worktree fixes (bundle rename/remove retries, repo-relative
   qa-frames folder for paths under `.claude`, `CHATTERBOX_PYTHON` to borrow the main checkout's venv, since this
   exFAT drive allows no junctions).
-  **V5b `video/ir-halden-pruebas/`** (sp4m10, Security+, `capsula-yt`, YouTube `vlJ9FRtSIlM`, 3:35, published
+  **V5b `video/ir-halden-pruebas/`** (sp4m10, Security+, `capsula-yt`, YouTube `dzLWHM7VpsI`, 3:33, published
   2026-10-01): tabletop vs simulation and threat hunting, the first capsule made with the §8 order end to end. Lessons:
   check the validator's arithmetic at design time (one exam card per scene and none in the closing one forced a sixth
   scene; think prompts ≤ 48 chars); Lidia's real reading lands at ~88 % of `--estimate`; `verify-voice` cannot hear a
@@ -245,7 +245,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   own take with `recut_recording.py --part` and re-import with `--only <id> --lufs=<excerpt LUFS + full import gain>`;
   in YouTube Studio, typed tags do not turn into chips — fill the field with `form_input`, then read the chips back and
   delete any garbled one.
-  **V6 `video/iam-halden/`** (sp4m8, Security+, `principal-yt`, YouTube `It1DrWKbFe4`, 9:17, published 2026-10-03):
+  **V6 `video/iam-halden/`** (sp4m8, Security+, `principal-yt`, YouTube `RdUWXFQxOkY`, 9:19, published 2026-10-03):
   identity and access in Halden from the 01:52 logon to the vault of 27-10 (lifecycle, SAML, OAuth, MFA, PAM; SILENT
   PAGER ×3). Lessons: when all three Whisper passes agree on a *different word* («el privilegio se pierde» for «se
   pide»), ask Lidia to listen before rendering — it was a misreading, re-recorded; an RMS envelope of the master
@@ -263,11 +263,19 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   lesson's «today» (2026-07-02) in the VELVET CICADA registry. Lidia's reading landed at 92 % of `--estimate`, as
   predicted; she uploaded it to YouTube herself, so the id came from the channel's public feed
   (`https://www.youtube.com/feeds/videos.xml?channel_id=UCe0XBMwoI3bI61K8qolacJA`).
-  **V9 `video/ach-matriz/`** (s4m3, GCTI, `principal-yt`, YouTube `TjVViiBTeds`, 8:25, published 2026-10-04): the
+  **V9 `video/ach-matriz/`** (s4m3, GCTI, `principal-yt`, YouTube `Q2-pG0ALFKI`, 8:17, published 2026-10-04): the
   analysis meeting's «todo encaja» earned the hard way — Key Assumptions Check and Devil's Advocacy, the lesson's
   ACH extract cell by cell, E1's null diagnosticity, «gana la menos inconsistente» (0/3/2) and the sensitivity check
   without E4 (0/2/1). First on-screen PAPER CRANE (×3), voiced `sapi/Microsoft Laura` + `machine` — no new effect.
   Sits after s4m3's checks and before the Lab 4B callout. Lidia's reading landed at 91 % of `--estimate` (9:14).
+  **Re-uploads (YouTube cannot swap a file).** After the take checks and the quiet master of 2026-10-10, V11
+  (2026-10-10, `SAx6KSeEOwU`) and V5, V5b, V6, V9 and V14 (2026-10-12; V14 is `pjGQiqy0CdE`) were uploaded again with
+  re-recorded sentences, so the ids in this file and in the lessons are the second uploads. The order that keeps the
+  site whole: upload as private → Lidia publishes → re-point the lesson, `content.test.ts`, the canon registry and the
+  transcript → merge → only then delete the old video (V11's was deleted first and sp1m6 embedded a dead id for two
+  days). The older video worktrees have no upload script: copy the MP4, timeline, captions and clips into a worktree
+  on main and upload from there. V4, V7, V8, V10, V12, V13, V15, V16 and V17 are re-mastered locally
+  (`<slug>.mp4` next to `<slug>-v1-master.mp4`, the old master) but the channel still has the −14 LUFS one.
   **Mastering** (Python, venv + `pedalboard pyloudnorm librosa soundfile scipy`): `scripts/master_voice.py`
   on the narrator's WAV *before* `import-recording` (time-aligned EQ/de-ess/compression, no denoise) and
   `scripts/master_mix.py` on the rendered MP4 (generated ambient bed ducked under speech, −14 LUFS,

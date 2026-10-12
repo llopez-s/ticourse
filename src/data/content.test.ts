@@ -271,17 +271,17 @@ describe('lesson videos', () => {
     // V4 continues V3's E7 pivots, before Lab 3A: the order is video, then lab
     expect(youtubeVideos.find((v) => v.block.youtube === '8pet46MOGmk')?.module).toBe('s3m3');
     // V5 walks the Halden case through the phases, right after the table of phases and classic errors
-    expect(youtubeVideos.find((v) => v.block.youtube === 'S_nVqWYkKXM')?.module).toBe('sp4m10');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'AvtZI9iylQc')?.module).toBe('sp4m10');
     // V5b tests the new plan and goes hunting, after the threat-hunting check and before the closing paragraph
-    expect(youtubeVideos.find((v) => v.block.youtube === 'vlJ9FRtSIlM')?.module).toBe('sp4m10');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'dzLWHM7VpsI')?.module).toBe('sp4m10');
     // V7 reads s2m5's process tree, right before the checks that ask about the same tree
     expect(youtubeVideos.find((v) => v.block.youtube === 'XCOAc7tlPTE')?.module).toBe('s2m5');
     // V6 gathers identity and access in the port, after the MFA check and before the exam note
-    expect(youtubeVideos.find((v) => v.block.youtube === 'It1DrWKbFe4')?.module).toBe('sp4m8');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'RdUWXFQxOkY')?.module).toBe('sp4m8');
     // V8 closes s3m5's STIX/TAXII half, after the TAXII-vs-STIX check and before YARA
     expect(youtubeVideos.find((v) => v.block.youtube === 'KO4REQeaKgM')?.module).toBe('s3m5');
     // V9 sums up s4m3 after its checks and hands over to Lab 4B: lesson, checks, video, lab
-    expect(youtubeVideos.find((v) => v.block.youtube === 'TjVViiBTeds')?.module).toBe('s4m3');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'Q2-pG0ALFKI')?.module).toBe('s4m3');
     // V10 reads one night's three trails in sp2m7, after the 900-accounts check and before the closing paragraph
     expect(youtubeVideos.find((v) => v.block.youtube === 'uHHv-1hTYTE')?.module).toBe('sp2m7');
     // V11 gathers sp1m6 at its end, after the steganography-to-blockchain list and before the paragraph that hands over to PKI
@@ -298,7 +298,7 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'R4bvB3FTrrE')?.module).toBe('sp3m5');
     // V14 turns s2m4's events into threads and groups, after the last check (Victim 2's partial thread) and before
     // the campaign callout that sends the learner to Labs 2A and 2B
-    expect(youtubeVideos.find((v) => v.block.youtube === 'WMhXfPe5zTE')?.module).toBe('s2m4');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'pjGQiqy0CdE')?.module).toBe('s2m4');
     // V15 triages the sandbox report after the triage paragraph and before the four checks on its data
     expect(youtubeVideos.find((v) => v.block.youtube === 'z9OLiWCphso')?.module).toBe('s3m2');
     // V18 triages a new report after sp4m5's September example and before the paragraph that closes the cycle
