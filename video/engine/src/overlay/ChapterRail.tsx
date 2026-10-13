@@ -45,6 +45,13 @@ const MARK = 20;
 const TEXT_LEFT = LEFT + MARK + 14;
 /** Titles stop short of the exam card zone (x ≥ 1000). */
 const MAX_TITLE_WIDTH = 1000 - 24 - TEXT_LEFT;
+/** Average advance of the title's glyphs (Inter 800), as a fraction of the font size; on the wide side. */
+const TITLE_ADVANCE = 0.56;
+
+/** A title's font size: TITLE_SIZE, or smaller when a long one (35+ characters) would run into the exam card zone. */
+export function titleSize(text: string): number {
+  return Math.min(TITLE_SIZE, Math.floor(MAX_TITLE_WIDTH / (TITLE_ADVANCE * Math.max(1, [...text].length))));
+}
 
 /** 0→1 over the scene transition: the outgoing text leaves in the first 60 %, the incoming arrives in the last 60 %. */
 function swap(t: number): { out: number; in: number } {
@@ -87,7 +94,7 @@ function TitleLine({ text, opacity, dy }: { text: string; opacity: number; dy: n
         left: TEXT_LEFT,
         top: TITLE_TOP,
         maxWidth: MAX_TITLE_WIDTH,
-        fontSize: TITLE_SIZE,
+        fontSize: titleSize(text),
         fontWeight: 800,
         letterSpacing: -0.5,
         lineHeight: 1.15,
