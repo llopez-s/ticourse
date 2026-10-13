@@ -353,7 +353,7 @@ const sp4m10: Module = {
     {
       t: 'video',
       title: 'Respuesta a incidentes: la mañana después',
-      youtube: 'S_nVqWYkKXM',
+      youtube: 'AvtZI9iylQc',
       poster: 'videos/ir-halden-poster.png',
       transcript: 'videos/ir-halden-transcript.txt',
     },
@@ -406,7 +406,7 @@ const sp4m10: Module = {
     {
       t: 'video',
       title: 'Antes del próximo incidente: tabletop, simulation y threat hunting',
-      youtube: 'vlJ9FRtSIlM',
+      youtube: 'dzLWHM7VpsI',
       poster: 'videos/ir-halden-pruebas-poster.png',
       transcript: 'videos/ir-halden-pruebas-transcript.txt',
     },

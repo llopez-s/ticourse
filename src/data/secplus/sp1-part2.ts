@@ -171,6 +171,17 @@ const sp1m3: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a lo físico, míralo en el puerto: una petición al ERP y quién decide qué.',
+    },
+    {
+      t: 'video',
+      title: 'Zero Trust: quién decide, quién comunica y quién aplica',
+      youtube: 'u87izuH2GJc',
+      poster: 'videos/zero-trust-halden-poster.png',
+      transcript: 'videos/zero-trust-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Zero Trust decide quién entra en cada recurso lógico, pero un atacante con acceso físico al armario de servidores o al despacho de la CFO se salta el PEP por completo. Por eso la siguiente lección baja al mundo físico: **bollards**, **vestíbulos de control de acceso**, **sensores** y, para atrapar a quien ya se coló, las **tecnologías de engaño**.',
     },
   ],
