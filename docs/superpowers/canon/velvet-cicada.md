@@ -455,7 +455,7 @@ adversario de los interceptados HOLLOW LANTERN (`video/stix-isac/video.json:8`).
   STIX de S4 (`src/data/s4.ts:1013-1021`), la campaña «PO-REVISION phishing wave» y `attributed-to`; el indicador
   propio de Meridian para este dominio (`src/data/s5.ts:596-607`) y la ola de phishing del 18-4.
 
-### V9 · `ach-matriz` · s4m3 · YouTube `TjVViiBTeds`
+### V9 · `ach-matriz` · s4m3 · YouTube `Q2-pG0ALFKI`
 
 Lección `src/data/s4.ts:503` (bloque `video` después del cuarto check, «Evidence that is consistent with every
 hypothesis in the matrix:», y antes del callout «🎖️ Campaña»); 8:25, publicado el 2026-10-04 en el canal Alertópolis.
@@ -575,7 +575,7 @@ intrusión:** todo lo que sale ya estaba en V3, V7 o en la lección. Canon nuevo
   E7, el informe MER-2026-019 y todo lo posterior (E9, la exfiltración, Orbital, los Labs 3A y 3B). No se culpa a nadie: ni a quien abrió el
   adjunto ni al SOC.
 
-### V14 · `hilos-pelicula` · s2m4 · YouTube `WMhXfPe5zTE`
+### V14 · `hilos-pelicula` · s2m4 · YouTube `pjGQiqy0CdE`
 
 Lección `src/data/s2.ts:945-951` (bloque `video` después del último check, «Victim 2's thread shows Delivery → Exploitation →
 Installation → C2 but no staging or exfil yet…», y antes del callout «🎖️ Campaña»); 7:51, subido a Alertópolis el 2026-10-06 y
