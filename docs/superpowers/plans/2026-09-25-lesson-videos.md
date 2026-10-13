@@ -472,15 +472,15 @@ Las exam cards se listan en el orden de las escenas:
 - **sp4m10 IR (Principal): abierta el 2026-09-30 como V5, ficha completa abajo.** Lidia eligió partirla en dos
   para no pasar de 4 conceptos: V5 cuenta el proceso (fases, contención, vuelta y revisión final) y el resto va a
   una cápsula aparte.
-- **sp4m10 V5b (Cápsula): publicada el 2026-10-01 (YouTube `vlJ9FRtSIlM`), ficha completa abajo.** Tabletop frente a simulation y threat
+- **sp4m10 V5b (Cápsula): publicada el 2026-10-01 (YouTube `dzLWHM7VpsI`), ficha completa abajo.** Tabletop frente a simulation y threat
   hunting, la otra mitad de la lección que V5 dejó fuera.
-- **sp4m8 IAM (Principal): V6, publicada el 2026-10-03 (YouTube `It1DrWKbFe4`), ficha completa abajo.** Identidad y acceso en
+- **sp4m8 IAM (Principal): V6, publicada el 2026-10-03 (YouTube `RdUWXFQxOkY`), ficha completa abajo.** Identidad y acceso en
   Halden del 19 al 28-10: altas, cambios y bajas, SAML, OAuth, MFA y la bóveda de cuentas de servicio.
 - **s2m5 ATT&CK + Pyramid (Cápsula): V7, publicada el 2026-10-03 (YouTube `XCOAc7tlPTE`), ficha completa abajo.** El árbol de procesos del
   2-3 en ATT&CK y en la pirámide, con los dos hashes del loader como prueba de su base.
 - **s3m5 STIX (Cápsula): V8, publicada el 2026-10-04 (YouTube `KO4REQeaKgM`), ficha completa abajo.** El aviso caducado del ISAC:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
-- **s4m3 ACH (Principal): V9, publicada el 2026-10-04 (YouTube `TjVViiBTeds`), ficha completa abajo.** La matriz del extracto de la
+- **s4m3 ACH (Principal): V9, publicada el 2026-10-04 (YouTube `Q2-pG0ALFKI`), ficha completa abajo.** La matriz del extracto de la
   lección, celda a celda, con supuestos clave, diagnosticidad y sensibilidad; primera aparición de PAPER CRANE.
 - **sp2m7 (Cápsula) «Ataques en los logs»: V10, publicada el 2026-10-05 (YouTube `uHHv-1hTYTE`, la primera subida por la
   API, con `youtube-upload.mjs`), ficha completa abajo.** La noche
@@ -504,7 +504,8 @@ Las exam cards se listan en el orden de las escenas:
 > de escenas y guion es `video/ir-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en
 > `video/ir-halden/out/script-notes.md`.
 >
-> **Producido y publicado el 2026-10-01**: YouTube `S_nVqWYkKXM`, 8:19, 10 escenas, 7 tarjetas, 2 preguntas, 3
+> **Producido y publicado el 2026-10-01**: YouTube `AvtZI9iylQc` (resubido el 2026-10-12 con s05-05 regrabada y el máster suave, −16,5 LUFS; la primera
+> subida fue `S_nVqWYkKXM`), 8:19, 10 escenas, 7 tarjetas, 2 preguntas, 3
 > mensajes de SILENT PAGER, voz de Lidia (2 frases regrabadas y 4 recortadas de sus propias tomas), música de V4,
 > −14,1 LUFS. En la lección sp4m10, tras la tabla de fases. El canon cambió dos veces después de las revisiones, por
 > los datos en pantalla del SIEM (la 01:52 desde `ADM-WS-07`, triaje por la mañana) y de V1 (alerta a las 16:04,
@@ -580,7 +581,8 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
 > versión vigente de escenas y guion es `video/ir-halden-pruebas/storyboard.json` + `narration.json`; qué se quedó
 > fuera, en `video/ir-halden-pruebas/out/script-notes.md`.
 >
-> **Producido y publicado el 2026-10-01**: YouTube `vlJ9FRtSIlM`, 3:35, 6 escenas, 4 tarjetas, 1 pregunta, 1 mensaje de
+> **Producido y publicado el 2026-10-01**: YouTube `dzLWHM7VpsI` (resubido el 2026-10-12 con s03-01 regrabada y el máster suave, −15,5 LUFS; la primera
+> subida, `vlJ9FRtSIlM`, duraba 3:35), 3:33, 6 escenas, 4 tarjetas, 1 pregunta, 1 mensaje de
 > SILENT PAGER, voz de Lidia en una sola toma (s04-03 recortada de sus propias tomas: arrastraba un «Pues… digo…»), música
 > de V4 y V5, −14,1 LUFS. En la lección sp4m10, tras el check de threat hunting. Dos frases dicen lo que se grabó: «un plan
 > contra incidentes» y «el atacante» (decisión de Lidia; la serie sigue con «la atacante»). El canon que vale es el de abajo
@@ -674,7 +676,8 @@ antes de la alerta. ¿Vale?»). Mensajes de SILENT PAGER en s05 (formatear ya), 
 > Lidia el 2026-10-03**, con el guion ya revisado, y congelada ese día. La versión vigente de escenas y guion es
 > `video/iam-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/iam-halden/out/script-notes.md`.
 >
-> **Producido y publicado el 2026-10-03**: YouTube `It1DrWKbFe4`, 9:17, 11 escenas, 8 tarjetas, 2 preguntas, 3 mensajes
+> **Producido y publicado el 2026-10-03**: YouTube `RdUWXFQxOkY` (resubido el 2026-10-12 con s06-05 regrabada y el máster suave, −18,0 LUFS; la primera
+> subida, `It1DrWKbFe4`, duraba 9:17), 9:19, 11 escenas, 8 tarjetas, 2 preguntas, 3 mensajes
 > de SILENT PAGER con la voz de V1 y V5, voz de Lidia (s10-02 regrabada: la primera toma decía «el privilegio se pierde»),
 > música de V4, −14,1 LUFS. La grabación quedó al 93 % del estimado, como V7. En la lección sp4m8, entre el check de MFA
 > y la nota de examen, con una frase de entrada. Dos frases dicen lo que se grabó: s10-01 «Al atacante» (decisión de
@@ -1204,7 +1207,8 @@ mensaje va en s10, no en s11.
 > vigente de escenas y guion es `video/ach-matriz/storyboard.json` + `narration.json`; qué se quedó fuera, en
 > `video/ach-matriz/out/script-notes.md`.
 >
-> **Producido y publicado el 2026-10-04**: YouTube `TjVViiBTeds`, 8:25, 10 escenas, 7 tarjetas, 2 preguntas, 3 mensajes
+> **Producido y publicado el 2026-10-04**: YouTube `Q2-pG0ALFKI` (resubido el 2026-10-12 con s05-03, s06-05 y s09-04 regrabadas y el máster suave,
+> −17,5 LUFS; la primera subida, `TjVViiBTeds`, duraba 8:25), 8:17, 10 escenas, 7 tarjetas, 2 preguntas, 3 mensajes
 > de PAPER CRANE (voz `sapi/Microsoft Laura` con `machine`), voz de Lidia, música de V4 y V5. En la lección s4m3, después
 > del cuarto check y antes del callout de campaña que manda al Lab 4B. La grabación quedó en 8:25 frente a los 9:14
 > estimados (91 %), en la línea de V7 y V8. El canon nuevo está en `docs/superpowers/canon/velvet-cicada.md` (§7).
@@ -1577,6 +1581,9 @@ un script.
 > **Producido y publicado**: subido por la API el 2026-10-05 (YouTube `6jyHqrkMOZQ`, privado) y publicado por Lidia;
 > 8:30, 10 escenas, 7 tarjetas, 2 preguntas, 3 mensajes de NULL CIPHER (voz `sapi/Microsoft Helena` con el efecto nuevo `cifrado`), voz de
 > Lidia, música de V4 y V5. En la lección sp1m6, donde dice «Inserción», con su línea de entrada.
+>
+> **Vuelto a subir el 2026-10-10** (YouTube `SAx6KSeEOwU`, público el mismo día; `6jyHqrkMOZQ` ya no existe): tres frases
+> regrabadas (s02-02, s07-02, s08-08, 8,3 s más cortas entre las tres) y el máster suave; queda en 8:22.
 >
 > **Revisada el 2026-10-05** (exactitud y canon, `revision-V11-V12.md`): la pintura ya dice su límite (no te dice con quién
 > has mezclado, y eso lo pone el sello del servidor: s08, s09 y concepto 5, «sin ningún secreto previo»); las dos preguntas

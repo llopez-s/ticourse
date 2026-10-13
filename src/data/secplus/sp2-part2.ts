@@ -331,10 +331,21 @@ Corrección: parameterized queries (prepared statements).
       },
     },
     {
+      t: 'p',
+      md: 'Antes de la nota de examen, míralo en una web de pruebas: dónde se cuela un texto y dónde se frena.',
+    },
+    {
+      t: 'video',
+      title: 'SQL injection y XSS: cuando un texto se vuelve orden',
+      youtube: '5yD7BO4UYGQ',
+      poster: 'videos/inyeccion-halden-poster.png',
+      transcript: 'videos/inyeccion-halden-transcript.txt',
+    },
+    {
       t: 'callout',
       kind: 'exam',
       title: 'Nota de examen: dos reflejos automáticos',
-      md: 'Primero: ante cualquier pregunta de la familia **injection** (SQLi, XSS, command injection, buffer overflow), si entre las opciones aparece **input validation** —o su versión específica, **parameterized queries** para SQLi y **output encoding** para XSS— esa es la respuesta; «un firewall», «cifrar la base de datos» o «contraseñas más largas» no impiden que el input se interprete como código. Segundo: cuando el escenario describe «se comprueba una condición y luego se actúa, y algo cambió entre medias», el término es **race condition**, y el nombre técnico que el examen quiere ver es **TOC/TOU**.',
+      md: 'Primero: ante cualquier pregunta de la familia **injection** (SQLi, XSS, command injection, buffer overflow), si entre las opciones aparece **input validation** —o su versión específica, **parameterized queries** para SQLi y **output encoding** para XSS— esa es la respuesta; «un firewall de red», «cifrar la base de datos» o «contraseñas más largas» no impiden que el input se interprete como código. Segundo: cuando el escenario describe «se comprueba una condición y luego se actúa, y algo cambió entre medias», el término es **race condition**, y el nombre técnico que el examen quiere ver es **TOC/TOU**.',
     },
     { t: 'h', text: 'Sistema operativo y hardware: lo que no puedes reescribir' },
     {

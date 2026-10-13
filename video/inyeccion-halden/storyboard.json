@@ -1,0 +1,137 @@
+{
+  "title": "SQL injection y XSS: cuando un texto se vuelve orden",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 210,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Cuando el texto manda"
+    },
+    {
+      "n": 2,
+      "title": "Lo que devuelve la página"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Tres cajas de texto",
+      "goal": "«05-11 · jueves · 10:00 · revisión antes de publicar» (`date`) y, bajo ella, el rótulo «Citas de camiones · entorno de pruebas · datos ficticios» (`app`): la copia de pruebas del portal de citas de camiones, sin dominio y sin decir dónde vivirá en la red. La copia aparece como tres pantallas pequeñas a media luz, con la caja de cada una resaltada (`boxes`): el login (usuario y contraseña), el buscador de citas (matrícula) y las observaciones para el personal de la puerta. Las dos primeras frases hablan del encargo entero; al acabarlas, título «Cuando un texto se vuelve orden» (`title`, hacia los 9 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «el login · la búsqueda · las observaciones». Después, las tres cajas se encienden juntas (la frase de las herramientas de la ficha se quitó para ajustar el tiempo; ver `out/script-notes.md`)",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "requiredCues": [
+        "date",
+        "app",
+        "boxes",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-sqli",
+      "chapter": 1,
+      "title": "Una comilla en el login",
+      "goal": "La pantalla de acceso de la copia (`login`). Primero, un intento normal, con un usuario de prueba y una contraseña equivocada: «usuario o contraseña incorrectos» (`fail`). Después, lo que hay detrás, con la consulta de la lección (`sp/sp2-part2.ts:301`): `SELECT * FROM users WHERE name = '<input>' AND pass = '<input>'`, con el texto de la persona en cian y el programa en blanco (`query`). Dónde mirar, por pasos y con el resto atenuado: el hueco del nombre (`hole`); lo que se escribe, `' OR 1=1 --`, cuya comilla cierra el nombre antes de tiempo (`quote`: lo cian pasa a blanco, ya es parte de la orden); `OR 1=1`, una condición que siempre se cumple (`always-true`); y `--`, que apaga el resto, la contraseña incluida (`comment`: se tacha en gris). La consulta resultante (`sp/sp2-part2.ts:306-307`): «devuelve todas las filas» (`result`). La web abre sesión «sin contraseña» (`bypass`). La imagen (`form`): el formulario del puerto con un hueco al que se pega el texto de la persona; si lo que se pega cambia la frase, redactas la pregunta. Nombre SQL INJECTION (`name`). La tarjeta de examen sale con la consulta ya quieta. La carga solo va en pantalla: la voz dice «una comilla, una condición que siempre se cumple y dos guiones»",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "login",
+        "fail",
+        "query",
+        "hole",
+        "quote",
+        "always-true",
+        "comment",
+        "result",
+        "bypass",
+        "form",
+        "name"
+      ]
+    },
+    {
+      "id": "s03-casilla",
+      "chapter": 1,
+      "title": "Cada dato en su casilla",
+      "goal": "«¿Cómo se arregla?» (`fix`). La narradora presenta a RED MARROW y llega el mensaje interceptado. Respuesta: «cifrar la base de datos» (el cifrado en reposo, el del disco) protege lo que hay en el disco si se lo llevan (rótulo «disco», `db-encrypt`), pero no cambia la consulta: la web abre la base con sus propios permisos y es ella quien lanza la consulta trucada (rótulo «la lanza la propia aplicación», `not-this`). Lo que arregla es separar la orden del dato: la consulta sale con marcadores, `WHERE name = ? AND pass = ?` (`sp/sp2-part2.ts:312-313`, `marks`), y el texto viaja aparte como dato (`data`). Se repite la misma entrada (`replay`): ahora se compara tal cual con un nombre y no hay nadie con ese nombre, «usuario o contraseña incorrectos» (`blocked`). La imagen (`form-box`): el formulario impreso de antemano, con su casilla. Nombre PARAMETERIZED QUERIES (`names`); debajo, pequeño y en gris, los complementos de la lección (`sp/sp2-part2.ts:316-317`): «validar la entrada (allow list)» y «cuenta de la base con los permisos justos». La tarjeta de examen sale con la entrada ya repetida",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "requiredCues": [
+        "fix",
+        "db-encrypt",
+        "not-this",
+        "marks",
+        "data",
+        "replay",
+        "blocked",
+        "form-box",
+        "names"
+      ]
+    },
+    {
+      "id": "s04-vuelve",
+      "chapter": 2,
+      "title": "Un texto que vuelve",
+      "goal": "«Segunda caja: el buscador de citas» (`search`). La dirección de la copia, sin dominio, con `buscar?matricula=` y detrás `<script>enviar(document.cookie)</script>` (`link`); la página de respuesta con «Resultados para:» y, en el código de la página, el mismo texto tal cual, sin tocar (`echo`). Pregunta para pensar, con la página quieta y dos botones, «servidor» y «navegador» (`question`), sin rótulo que la conteste. Respuesta: el navegador (`browser`). El servidor solo devolvió el texto dentro de la página; el que lo ejecuta es el navegador de quien pulsó el enlace. Un dibujo de ese navegador, con una cookie que sale hacia «sitio externo» (`cookie`; en condicional: puede salir, no sale siempre). Nombre CROSS-SITE SCRIPTING (`xss`); y REFLECTED (`reflected`): «viaja en el enlace · alguien tiene que pulsarlo · suele ir con phishing». «Tercera caja: las observaciones» (`notes`). El mismo script se guarda en la cita (`saved`); el listado del día del personal de la puerta (sin decir qué sistema de la puerta lo lee): rótulo «simulación · en la copia de pruebas» sobre el listado; lo abrirá una persona y su navegador lo ejecutaría, y otra, y otra, como siluetas, no cuentas (`opens`, en futuro y condicional: nada se ha ejecutado). Nombre STORED (`stored`): «queda guardado en el servidor · salta para todo el que abra la página». La imagen (`board`): el panel de avisos, con el cartel que repite lo que le preguntas y el tablón donde se clava lo que otro lee. La tarjeta de examen sale con los dos nombres ya quietos",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "requiredCues": [
+        "search",
+        "link",
+        "echo",
+        "question",
+        "browser",
+        "cookie",
+        "xss",
+        "reflected",
+        "notes",
+        "saved",
+        "opens",
+        "stored",
+        "board"
+      ]
+    },
+    {
+      "id": "s05-vitrina",
+      "chapter": 2,
+      "title": "Dentro de una vitrina",
+      "goal": "«¿Y esto cómo se arregla?» (`fix`). La narradora sigue con RED MARROW y llega el segundo mensaje interceptado. Respuesta: el navegador solo hace lo que la página le dice (`browser-obeys`), y la página la escribe el servidor, con tu texto dentro (`server-writes`). La misma página, ahora con el texto codificado (`encoded`): el `<script>` aparece como texto visible en pantalla y no se ejecuta (`vitrina`). Nombre OUTPUT ENCODING (`output-enc`). La imagen: el aviso dentro de una vitrina, que se lee pero no se obedece. Debajo, pequeño y en gris, los complementos (`sp/sp2-part2.ts:321`, `extras`): «validar la entrada · política de contenido (CSP)», y una línea (`exam-line`, `sp/sp2-part2.ts:337`): «en el examen: input validation (validar la entrada), o su versión específica (parameterized queries, output encoding), es la respuesta». Una línea de acción (`action`): «consultas parametrizadas y codificación de salida en el portal de citas · Desarrollo · 13-11». Cierre del capítulo (`same-root`): la casilla y la vitrina juntas, «el dato en su sitio». La tarjeta de examen sale con el cierre ya quieto",
+      "targetSec": 34,
+      "wordBudget": 92,
+      "requiredCues": [
+        "fix",
+        "browser-obeys",
+        "server-writes",
+        "encoded",
+        "vitrina",
+        "output-enc",
+        "extras",
+        "exam-line",
+        "action",
+        "same-root"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, cada una con su icono (la casilla · el enlace y el tablón · la vitrina); la de la regla 3 lleva en texto «parameterized queries en la consulta · output encoding en la página». Tarjeta final Alertópolis: «Tu turno: termina la lección y sus preguntas» (44)",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

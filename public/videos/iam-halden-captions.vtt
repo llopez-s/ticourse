@@ -342,320 +342,320 @@ Y para consultar la lista de cuentas
 de casa, el directorio, está LDAP.
 
 73
-00:04:47.667 --> 00:04:51.900
+00:04:47.667 --> 00:04:53.967
 O sea, que SAML te deja entrar,
 OAuth deja que una app actúe por ti,
 
 74
-00:04:51.900 --> 00:04:55.833
+00:04:53.967 --> 00:04:57.600
 y OpenID Connect añade quién eres.
 
 75
-00:04:57.267 --> 00:05:00.100
+00:04:59.067 --> 00:05:01.900
 Siguiente parada, demostrar que eres tú.
 
 76
-00:05:00.100 --> 00:05:05.900
+00:05:01.900 --> 00:05:07.700
 Un inicio de sesión te pide la contraseña
 y luego una pregunta secreta.
 
 77
-00:05:12.533 --> 00:05:18.167
+00:05:14.333 --> 00:05:19.967
 ¿Sobrada? Ni de lejos. Aquí no se cuentan
 pantallas, se cuentan tipos de prueba.
 
 78
-00:05:18.167 --> 00:05:23.633
+00:05:19.967 --> 00:05:25.433
 Algo que sabes, algo que tienes o algo
 que eres. Y a veces, dónde estás.
 
 79
-00:05:23.767 --> 00:05:24.933
+00:05:25.567 --> 00:05:26.733
 Mira el cajero.
 
 80
-00:05:24.933 --> 00:05:27.000
+00:05:26.733 --> 00:05:28.800
 La tarjeta la tienes y el PIN lo sabes,
 
 81
-00:05:27.000 --> 00:05:30.533
+00:05:28.800 --> 00:05:32.333
 así que el ladrón necesita
 dos robos distintos.
 
 82
-00:05:30.733 --> 00:05:34.633
+00:05:32.533 --> 00:05:36.433
 La contraseña y la pregunta,
 en cambio, son dos cosas que sabes,
 
 83
-00:05:34.633 --> 00:05:38.067
+00:05:36.433 --> 00:05:39.867
 y en una sola llamada te sacan las dos.
 
 84
-00:05:38.067 --> 00:05:39.833
+00:05:39.867 --> 00:05:41.633
 Dos pantallas, un solo factor.
 
 85
-00:05:39.833 --> 00:05:44.067
+00:05:41.633 --> 00:05:45.867
 Y lo mismo un token y una app
 de códigos, dos cosas que tienes.
 
 86
-00:05:44.067 --> 00:05:47.733
+00:05:45.867 --> 00:05:49.533
 Eso es lo que mira la MFA,
 la autenticación multifactor.
 
 87
-00:05:47.733 --> 00:05:50.733
+00:05:49.533 --> 00:05:52.533
 Tipos distintos, no más pantallas.
 
 88
-00:05:52.033 --> 00:05:54.200
+00:05:53.833 --> 00:05:56.000
 Imagina tu móvil a medianoche.
 
 89
-00:05:54.200 --> 00:05:59.100
+00:05:56.000 --> 00:06:00.900
 Alguien ya tiene tu contraseña,
 y solo le falta que apruebes un aviso.
 
 90
-00:05:59.100 --> 00:06:02.867
+00:06:00.900 --> 00:06:04.667
 Y empiezan a llegar, uno, diez, veinte.
 
 91
-00:06:02.867 --> 00:06:07.167
+00:06:04.667 --> 00:06:08.967
 Al final, por cansancio o por error,
 acabas pulsando aprobar.
 
 92
-00:06:07.167 --> 00:06:09.800
+00:06:08.967 --> 00:06:11.600
 Es la MFA fatigue, o push bombing.
 
 93
-00:06:09.800 --> 00:06:13.267
+00:06:11.600 --> 00:06:15.067
 No rompe nada, te agota
 hasta que dices que sí.
 
 94
-00:06:13.267 --> 00:06:18.167
+00:06:15.067 --> 00:06:19.967
 Para cortarlo, ¿códigos por SMS
 o una llave de seguridad FIDO2?
 
 95
-00:06:22.667 --> 00:06:24.767
+00:06:24.467 --> 00:06:26.567
 Con SMS no hay avisos,
 
 96
-00:06:24.767 --> 00:06:28.533
+00:06:26.567 --> 00:06:30.333
 pero el código se desvía a otro
 móvil o se teclea en una web falsa.
 
 97
-00:06:28.533 --> 00:06:30.533
+00:06:30.333 --> 00:06:32.333
 Solo cambia el ataque.
 
 98
-00:06:30.533 --> 00:06:32.833
+00:06:32.333 --> 00:06:34.633
 La llave hay que tocarla
 en el equipo donde entras,
 
 99
-00:06:32.833 --> 00:06:35.633
+00:06:34.633 --> 00:06:37.433
 y solo firma para la web de verdad.
 
 100
-00:06:35.633 --> 00:06:39.133
+00:06:37.433 --> 00:06:40.933
 En una web parecida no firma,
 por mucho que la imiten.
 
 101
-00:06:39.133 --> 00:06:41.567
+00:06:40.933 --> 00:06:43.367
 Por eso resiste al phishing.
 
 102
-00:06:41.567 --> 00:06:45.100
+00:06:43.367 --> 00:06:46.900
 O sea, que el segundo
 factor bueno ni se aprueba
 
 103
-00:06:45.100 --> 00:06:48.467
+00:06:46.900 --> 00:06:50.267
 desde lejos ni sirve en una web falsa.
 
 104
-00:06:49.867 --> 00:06:52.667
+00:06:51.667 --> 00:06:54.467
 Última parada, las llaves maestras.
 
 105
-00:06:52.667 --> 00:06:55.400
+00:06:54.467 --> 00:06:57.200
 Una mejora de septiembre
 era meter las cuentas
 
 106
-00:06:55.400 --> 00:06:58.467
+00:06:57.200 --> 00:07:00.267
 de servicio en un gestor
 de contraseñas. Hecho.
 
 107
-00:06:58.467 --> 00:07:01.300
+00:07:00.267 --> 00:07:03.100
 Es como el armario de llaves de la garita.
 
 108
-00:07:01.300 --> 00:07:05.567
+00:07:03.100 --> 00:07:07.367
 Nadie se queda ninguna,
 y se apunta quién usa cada una.
 
 109
-00:07:05.567 --> 00:07:10.333
+00:07:07.367 --> 00:07:12.133
 Ahora están en una bóveda así, con las
 de administrador, que ya vivían ahí.
 
 110
-00:07:10.333 --> 00:07:12.900
+00:07:12.133 --> 00:07:14.700
 Sus contraseñas no las sabe nadie,
 
 111
-00:07:12.900 --> 00:07:16.367
+00:07:14.700 --> 00:07:18.167
 y cambian solas cada día y cada vez
 que alguien devuelve una.
 
 112
-00:07:16.367 --> 00:07:22.567
+00:07:18.167 --> 00:07:24.367
 Gestionar así el acceso con privilegio es
 el PAM, y la bóveda, el password vaulting.
 
 113
-00:07:22.567 --> 00:07:24.900
+00:07:24.367 --> 00:07:26.700
 No hace milagros, pero pone un límite.
 
 114
-00:07:24.900 --> 00:07:28.633
+00:07:26.700 --> 00:07:30.433
 En septiembre la contraseña robada
 valió hasta que alguien se dio cuenta.
 
 115
-00:07:28.633 --> 00:07:31.767
+00:07:30.433 --> 00:07:33.567
 Ahora, un día como mucho,
 aunque nadie se entere.
 
 116
-00:07:31.800 --> 00:07:35.133
+00:07:33.600 --> 00:07:36.933
 Y la cuenta de septiembre,
 que solo sacaba informes,
 
 117
-00:07:35.133 --> 00:07:39.900
+00:07:36.933 --> 00:07:41.700
 pierde sus privilegios especiales.
 Least privilege, otra vez.
 
 118
-00:07:46.500 --> 00:07:48.900
+00:07:48.300 --> 00:07:50.700
 Al atacante le vendría de perlas.
 
 119
-00:07:48.900 --> 00:07:51.467
+00:07:50.700 --> 00:07:53.267
 Un administrador fijo
 es administrador todo el día,
 
 120
-00:07:51.467 --> 00:07:54.967
+00:07:53.267 --> 00:07:56.767
 y su contraseña robada
 vale cualquier noche.
 
 121
-00:07:55.133 --> 00:07:58.200
+00:07:56.933 --> 00:08:00.000
 En el puerto, el privilegio se pide.
 
 122
-00:07:58.200 --> 00:08:01.867
+00:08:00.000 --> 00:08:03.667
 Alguien de Infraestructura necesita ser
 administrador para un cambio aprobado,
 
 123
-00:08:01.867 --> 00:08:04.433
+00:08:03.667 --> 00:08:06.233
 de diez a once de la noche.
 
 124
-00:08:04.467 --> 00:08:05.933
+00:08:06.267 --> 00:08:07.733
 El jefe de sistemas lo aprueba,
 
 125
-00:08:05.933 --> 00:08:10.233
+00:08:07.733 --> 00:08:12.033
 y la bóveda le presta una contraseña
 que solo vale hasta las once.
 
 126
-00:08:10.333 --> 00:08:15.800
+00:08:12.133 --> 00:08:17.600
 A las once en punto, el privilegio
 desaparece y la contraseña cambia sola.
 
 127
-00:08:15.833 --> 00:08:20.667
+00:08:17.633 --> 00:08:22.467
 El privilegio dura lo que la ventana.
 Son los permisos just-in-time.
 
 128
-00:08:20.667 --> 00:08:24.267
+00:08:22.467 --> 00:08:26.067
 Si alguien copió esa contraseña,
 a las once y cinco ya no le sirve.
 
 129
-00:08:24.267 --> 00:08:28.000
+00:08:26.067 --> 00:08:29.800
 Es una ephemeral credential,
 una credencial efímera.
 
 130
-00:08:28.167 --> 00:08:32.100
+00:08:29.967 --> 00:08:33.900
 O sea, que en la garita te prestan
 la llave para el trabajo y, al devolverla,
 
 131
-00:08:32.100 --> 00:08:34.233
+00:08:33.900 --> 00:08:36.033
 cambian la cerradura.
 
 132
-00:08:35.600 --> 00:08:40.067
+00:08:37.400 --> 00:08:41.867
 Tres atajos te ha ofrecido SILENT
 PAGER, y con los tres entraba.
 
 133
-00:08:40.067 --> 00:08:42.700
+00:08:41.867 --> 00:08:44.500
 Contra cada uno, una regla.
 
 134
-00:08:42.700 --> 00:08:45.233
+00:08:44.500 --> 00:08:47.033
 Con las cuentas, cambiar
 de puesto también quita,
 
 135
-00:08:45.233 --> 00:08:48.967
+00:08:47.033 --> 00:08:50.767
 y la cuenta de quien
 se va se precinta ese día.
 
 136
-00:08:49.000 --> 00:08:52.533
+00:08:50.800 --> 00:08:54.333
 Con las contraseñas,
 la tuya solo la ve tu casa,
 
 137
-00:08:52.533 --> 00:08:58.767
+00:08:54.333 --> 00:09:00.567
 y la acompaña un factor de otro tipo.
 Al socio, un pase, y a la app, un permiso.
 
 138
-00:08:58.900 --> 00:09:01.933
+00:09:00.700 --> 00:09:03.733
 Y con las llaves maestras,
 nadie se las queda.
 
 139
-00:09:01.933 --> 00:09:06.567
+00:09:03.733 --> 00:09:08.367
 La bóveda las cambia sola y solo
 las presta durante la ventana.
 
 140
-00:09:06.667 --> 00:09:10.467
+00:09:08.467 --> 00:09:12.267
 Para ponerte a prueba, tienes
 las ocho preguntas de la lección.
 
 141
-00:09:10.467 --> 00:09:13.467
+00:09:12.267 --> 00:09:15.267
 Por hoy, cerramos la garita.
