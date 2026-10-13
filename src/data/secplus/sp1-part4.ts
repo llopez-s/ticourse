@@ -148,7 +148,7 @@ HÍBRIDO (lo que hace TLS en la práctica)
     {
       t: 'video',
       title: 'Criptografía: quién usa qué clave y por qué TLS es híbrido',
-      youtube: '6jyHqrkMOZQ',
+      youtube: 'SAx6KSeEOwU',
       poster: 'videos/cripto-halden-poster.png',
       transcript: 'videos/cripto-halden-transcript.txt',
     },

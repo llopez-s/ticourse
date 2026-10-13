@@ -1,0 +1,278 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:03.267
+Hoy, en el puerto de Halden,
+
+2
+00:00:03.267 --> 00:00:08.567
+la regla del cortafuegos deja llegar al
+ERP a cualquier portátil de Operaciones.
+
+3
+00:00:08.567 --> 00:00:10.300
+No mira quién eres.
+
+4
+00:00:10.300 --> 00:00:12.533
+Con Zero Trust, eso cambia.
+
+5
+00:00:12.533 --> 00:00:16.233
+Verás cómo se verifica cada petición,
+quién decide, quién comunica,
+
+6
+00:00:16.233 --> 00:00:18.700
+quién aplica y cómo se adapta.
+
+7
+00:00:18.700 --> 00:00:22.733
+Aquí aparece NULL CIPHER,
+una célula de acceso inicial.
+
+8
+00:00:22.733 --> 00:00:25.067
+Busca el primer hueco que no cierre.
+
+9
+00:00:25.867 --> 00:00:26.933
+Todos llevan chaleco.
+
+10
+00:00:26.933 --> 00:00:30.800
+Y el chaleco no debería abrir nada,
+solo dice que estás dentro.
+
+11
+00:00:30.800 --> 00:00:32.933
+La regla deja pasar a quien trabaja,
+
+12
+00:00:32.933 --> 00:00:38.033
+a quien usa una credencial robada desde
+dentro, y a un portátil comprometido.
+
+13
+00:00:44.467 --> 00:00:48.700
+Haber pasado el control solo dice
+que está dentro, no que sea de fiar.
+
+14
+00:00:48.700 --> 00:00:52.533
+El perímetro decide una vez,
+en la entrada, y luego confía.
+
+15
+00:00:52.533 --> 00:00:55.133
+Zero Trust decide en cada petición.
+
+16
+00:00:55.133 --> 00:00:59.867
+Es el lema, never trust, always verify.
+O sea, que dentro no es de fiar.
+
+17
+00:00:59.867 --> 00:01:04.400
+Y verificar no es negar, es pedir pruebas.
+
+18
+00:01:05.467 --> 00:01:08.367
+Imagina un almacén del puerto,
+con tres personas.
+
+19
+00:01:08.367 --> 00:01:12.267
+El mozo entrega la mercancía
+sin preguntar a nadie.
+
+20
+00:01:18.467 --> 00:01:21.033
+El mozo ve pasar toda la mercancía, claro.
+
+21
+00:01:21.033 --> 00:01:24.767
+Pero no tiene el historial
+de quien recoge ni las normas.
+
+22
+00:01:24.767 --> 00:01:27.833
+Eso lo tiene la oficina
+de pedidos, arriba.
+
+23
+00:01:27.833 --> 00:01:32.333
+El mozo le pasa el pedido, y ella
+decide con las mismas normas para todos.
+
+24
+00:01:32.333 --> 00:01:34.467
+Es el policy engine.
+
+25
+00:01:34.467 --> 00:01:36.900
+El administrativo de turno no decide.
+
+26
+00:01:36.900 --> 00:01:40.267
+Imprime la orden, con su caducidad,
+y se la deja al mozo.
+
+27
+00:01:40.267 --> 00:01:44.067
+Comunica, y es el policy administrator.
+
+28
+00:01:44.067 --> 00:01:46.667
+El mozo entrega solo lo que dice la orden.
+
+29
+00:01:46.667 --> 00:01:51.200
+Aplica, y es el policy
+enforcement point, el PEP.
+
+30
+00:01:51.200 --> 00:01:56.233
+O sea, que el engine decide,
+el administrator comunica y el PEP aplica.
+
+31
+00:01:57.200 --> 00:02:03.533
+Seguridad ha escrito una política
+para el ERP, y la pruebas en un simulador.
+
+32
+00:02:03.533 --> 00:02:05.233
+Nada está en marcha.
+
+33
+00:02:05.233 --> 00:02:09.967
+Primera petición, de una cuenta de prueba.
+Cuentan la persona y su portátil.
+
+34
+00:02:09.967 --> 00:02:14.367
+La petición llega al mozo, el PEP,
+y él pregunta a la oficina.
+
+35
+00:02:14.367 --> 00:02:17.567
+El engine, con cuenta,
+portátil y hora, diría que sí.
+
+36
+00:02:17.567 --> 00:02:21.167
+El administrator emite la orden,
+que es un token de media hora.
+
+37
+00:02:21.167 --> 00:02:25.233
+El PEP deja pasar la mercancía
+a una zona pequeña y delimitada.
+
+38
+00:02:25.233 --> 00:02:27.967
+Concedido, con lectura y escritura.
+
+39
+00:02:27.967 --> 00:02:33.133
+Arriba, en el control plane, la oficina
+decide y el administrativo comunica.
+
+40
+00:02:33.133 --> 00:02:35.400
+Juntos son el PDP.
+
+41
+00:02:35.400 --> 00:02:38.733
+Abajo, en el data plane,
+el PEP y el tráfico.
+
+42
+00:02:39.667 --> 00:02:44.233
+Otra petición, misma cuenta y mismo
+portátil, pero desde otro país,
+
+43
+00:02:44.233 --> 00:02:46.267
+a las tres de la madrugada.
+
+44
+00:02:46.267 --> 00:02:49.600
+En esta prueba, el engine
+pide un segundo factor.
+
+45
+00:02:49.600 --> 00:02:51.767
+En el puerto, el proveedor
+de identidad tiene
+
+46
+00:02:51.767 --> 00:02:55.033
+previsto exigirlo desde
+el treinta de noviembre.
+
+47
+00:02:55.033 --> 00:03:00.367
+La exigencia sube o baja según
+el contexto, y eso es adaptive identity.
+
+48
+00:03:00.367 --> 00:03:03.533
+Si lo supera, daría solo
+lectura durante media hora.
+
+49
+00:03:03.533 --> 00:03:09.300
+A los diez minutos, el EDR del portátil
+detecta malware. ¿Quién revoca la sesión?
+
+50
+00:03:13.533 --> 00:03:17.400
+El administrator. El engine
+ve el aviso y decide cerrar.
+
+51
+00:03:17.400 --> 00:03:21.733
+El administrator revoca la sesión.
+Y el PEP la corta.
+
+52
+00:03:21.733 --> 00:03:25.167
+Así, aunque robaran la sesión,
+valdría poco: solo lectura,
+
+53
+00:03:25.167 --> 00:03:30.467
+media hora y solo el ERP.
+Eso es threat scope reduction.
+
+54
+00:03:30.467 --> 00:03:33.733
+O sea, que se verifica,
+se adapta y se acota.
+
+55
+00:03:34.833 --> 00:03:39.967
+Resumiendo, tres reglas. Dentro
+no es de fiar, y verificar no es negar.
+
+56
+00:03:39.967 --> 00:03:44.133
+Decide el engine, comunica
+el administrator y aplica el PEP.
+
+57
+00:03:44.133 --> 00:03:47.700
+Y la tercera, sesión corta,
+alcance mínimo y revocable.
+
+58
+00:03:47.967 --> 00:03:50.300
+Te toca a ti,
+con las preguntas de la lección.
+
+59
+00:03:50.300 --> 00:03:54.000
+Y que ninguna petición pase
+solo por llevar chaleco.
