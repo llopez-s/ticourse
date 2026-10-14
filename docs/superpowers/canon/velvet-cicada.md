@@ -727,7 +727,7 @@ tira de V3. **La lección cambió con él:** `MapViewOfSection` pasa a `NtMapVie
 
 Lección `src/data/s4.ts:1113-1119` (bloque `video` después del tercer check, «For a private-sector defender, the MOST
 actionable attribution level is usually:», `:1098-1112`, y antes del callout «Nota de examen», `:1120-1125`); 3:49 (6866
-fotogramas a 30 fps, `video/atribucion-cuadro/src/timeline.json:4,7`), subido a Alertópolis el 2026-10-14 como privado
+fotogramas a 30 fps, `video/atribucion-cuadro/src/timeline.json:4,7`), subido a Alertópolis el 2026-10-14 como privado y publicado ese mismo día
 (`video/atribucion-cuadro/out/youtube-upload.json:2-4`). Cápsula (`capsula-yt`, `video/atribucion-cuadro/video.json:6`), guion
 congelado el 2026-10-13 (`:24`). Adversario de los interceptados PAPER CRANE (`video/atribucion-cuadro/video.json:8`), con la voz
 de V9, `sapi/Microsoft Laura` y el efecto `machine` (`video/atribucion-cuadro/narration.json:11-15`). Notas propias en
