@@ -386,6 +386,13 @@ ACTIONS ON OBJECTIVES
             'Interrupting an action in progress is Disrupt. Deny prevents the action from succeeding in the first place.',
         },
       },
+      {
+        t: 'video',
+        title: 'Courses of Action: ¿cortas o miras?',
+        youtube: 'ghNoHuq7GIk',
+        poster: 'videos/coa-precios-poster.png',
+        transcript: 'videos/coa-precios-transcript.txt',
+      },
     ],
     quiz: [
       {
