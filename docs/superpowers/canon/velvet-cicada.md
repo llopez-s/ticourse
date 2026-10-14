@@ -1,7 +1,7 @@
 # Canon de «Operación VELVET CICADA» (GCTI)
 
 Registro único de los datos ficticios de la campaña GCTI: la intrusión contra Meridian Dynamics que continúan
-las lecciones, los laboratorios y los vídeos. Estado a 2026-10-08 (vídeos con su canon aquí: V3, V4, V7, V8, V9, V13, V14 y V15).
+las lecciones, los laboratorios y los vídeos. Estado a 2026-10-14 (vídeos con su canon aquí: V3, V4, V7, V8, V9, V13, V14, V15 y V23).
 
 ## 1. Cómo se usa
 
@@ -13,7 +13,9 @@ las lecciones, los laboratorios y los vídeos. Estado a 2026-10-08 (vídeos con 
   corrige aquí y se anota en §5.
 
 Notas de lectura: todas las rutas son relativas a la raíz del repositorio. `video/pivot-infra/out/*` está
-ignorado por git y solo existe en la copia principal (`D:\LLM projects\TICourse`), no en los worktrees.
+ignorado por git y solo existe en la copia principal (`D:\LLM projects\TICourse`), no en los worktrees. Lo mismo
+vale para el `out/` de cualquier vídeo (`.gitignore:26`, `video/*/out/`): el de V23 (`video/atribucion-cuadro/out/*`,
+con `script-notes.md` y `youtube-upload.json`) se produjo en el worktree `video-atribucion-cuadro`.
 `[V3]` y `[V4]` marcan datos que están en pantalla en un vídeo publicado. Las rutas de Windows se escriben como
 se ven en la app (una barra); en los `.ts` van escapadas (`\\`).
 
@@ -24,8 +26,8 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 
 | Fecha y hora | Evento | Qué pasa | Fuente |
 |---|---|---|---|
-| 2025-11-03 | — | `first_seen` del intrusion set GLASS VIPER (STIX) | `src/data/s4.ts:1018` |
-| nov-2025 → mar-2026 (rango) | — | Ventana de actividad del Cluster-A (Meridian) | `src/data/s4.ts:732` |
+| 2025-11-03 | — | `first_seen` del intrusion set GLASS VIPER (STIX) | `src/data/s4.ts:1025` |
+| nov-2025 → mar-2026 (rango) | — | Ventana de actividad del Cluster-A (Meridian) | `src/data/s4.ts:739` |
 | 2025-11-18 | — | Se registra `update-svc-cdn.com` en NameFlow LLC [V4] | `video/pivot-infra/src/scenes/S07Whois.tsx:15-18` |
 | 2025 (sin día) | — | Ficha WHOIS histórica del C2 con `kazuo.tanji@protonmail.com` | `src/data/s2.ts:574-575`; `video/pivot-infra/src/scenes/S07Whois.tsx:141` |
 | 2026-01 | — | Variante anterior del loader (ssdeep 94 % similar) | `src/data/s3.ts:330` |
@@ -33,7 +35,7 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 | 2026-02-19 | — | Compile time de la muestra (la lección avisa: puede estar falseado) | `src/data/s3.ts:331` |
 | 2026-02-27 14:03:11Z | — | Se registra `cdn-sync-status.example` | `src/data/s3.ts:763` |
 | 2026-02-27 14:22:08 (sin zona) | — | pDNS first seen de `cdn-sync-status.example` en `203.0.113.27` | `src/data/s3.ts:775` |
-| 2026-02-27 | — | `first_seen` de la campaña STIX «PO-REVISION phishing wave» | `src/data/s4.ts:1026-1028` |
+| 2026-02-27 | — | `first_seen` de la campaña STIX «PO-REVISION phishing wave» | `src/data/s4.ts:1033-1035` |
 | 2026-03-01 09:40:51 → 10:02:13 (sin zona) | — | `cdn-sync-status.example` pasa de `203.0.113.27` a `198.51.100.84` («la primera IP se quemó») | `src/data/s3.ts:775-776,780` |
 | 2026-03-02 09:41 UTC | Delivery | Spearphish «Candidatura - Ingeniero de propulsion» a RR. HH.; el walkthrough de s2m4 usa el mismo correo (plan A de V14, `src/data/s2.ts:879`); V13 enseña sus cabeceras tal como las escribe la lección, con `Received: from mx1.cdn-sync-status.example (203.0.113.27) by mail.meridian.example; Mon, 2 Mar 2026 09:41:07 +0000` (`video/kill-chain-eslabon/src/scenes/parts/LessonLog.tsx:74-109`) | `src/data/s2.ts:68-74` |
 | 2026-03-02 09:44:12 → 09:45:02 (sin zona, «mismo dia») | Exploitation → C2 | En ENG-WS-041: LNK, PowerShell, `winhlp.exe`, tarea programada, primer beacon; s2m4: 09:44 LNK y `winhlp.exe` con la ruta del PDB, 09:45 beacon (`src/data/s2.ts:880-882`); V13 las enseña línea a línea, sin zona: 09:44:12 `explorer.exe`, 09:44:13 `powershell.exe`, 09:44:19 escribe `C:\ProgramData\winhlp.exe`, 09:44:20 `schtasks` (`WindowsUpdateCheck`), 09:45:02 beacon (`video/kill-chain-eslabon/src/scenes/parts/LessonLog.tsx:121-155`) | `src/data/s2.ts:76-83` |
@@ -49,7 +51,7 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 | 2026-03-09 (lunes), sin hora | V14 | El «hoy» del vídeo: Orbital le pasa a Meridian sus eventos de esa misma mañana (los de la fila anterior; no se dice cómo ni quién), y esa noche Meridian le pasa a Orbital qué buscar (compresión de archivos en carpetas temporales, transferencias salientes grandes) como hipótesis que se comprueba. Sin resultado: el vídeo no dice si se encontró algo | `video/hilos-pelicula/src/data/s01-fotos.ts:10-15`, `video/hilos-pelicula/src/data/s09-noche.ts:19-25` |
 | 2026-03-11 | — | El ISAC aeroespacial publica en una colección TAXII el indicador STIX de `cdn-sync-status.example` (válido hasta 2026-06-25); la TIP de Meridian lo recoge (pull) el 2026-07-02 | `src/data/s3.ts:1053`, `:1063-1070` |
 | marzo → mayo 2026 (rango) | — | Exfiltración de diseños de propulsión, según el BLUF | `src/data/s5.ts:312`; `src/data/labs.ts:1016` |
-| abr-2026 → hoy (rango) | — | Actividad del Cluster-B (Orbital-2) | `src/data/s4.ts:732` |
+| abr-2026 → hoy (rango) | — | Actividad del Cluster-B (Orbital-2) | `src/data/s4.ts:739` |
 | 2026-04-18 desde 06:00 UTC | — | 41 correos de phishing de credenciales a la cadena de suministro | `src/data/s5.ts:56-58` |
 | 2026-04-18 09:30Z | — | Indicador STIX «credential-harvest domain» (válido hasta 2026-07-18) | `src/data/s5.ts:600-605` |
 | 2026-04-18 11:31:55 (sin zona) | — | pDNS last seen de `cdn-sync-status.example` en `198.51.100.84` | `src/data/s3.ts:776` |
@@ -74,11 +76,11 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 | ENG-WS-041 | Workstation de ingeniería de propulsión; host de s2m1 y de E7 [V3] | `src/data/s2.ts:76,581-582`; `video/diamond-e7/src/scenes/S01Hook.tsx:227,277` |
 | «servidores CAD», «propulsion R&D file server» | Activos que busca el actor | `src/data/s2.ts:539`; `src/data/labs.ts:304` |
 | tú, «primera analista CTI» | La protagonista; la ficha el CISO | `src/data/s1.ts:749`; `src/data/tracks.ts:111` |
-| el CISO, el consejo (board) | Sin nombre. El CISO pide los PIR; el consejo decide al final | `src/data/labs.ts:57,187` |
+| el CISO, el consejo (board) | Sin nombre. El CISO pide los PIR; el consejo decide al final. En V23, tarjeta «CISO · responsable de seguridad» (V9 solo ponía «CISO») con «¿Quién está detrás?» y «¿Ponemos un país en el informe?»: pregunta, no decide | `src/data/labs.ts:57,187`; `video/atribucion-cuadro/src/scenes/parts/CisoStrip.tsx:23,25`; `video/ach-matriz/src/data/s01-hook.ts:24-28` |
 | «Laura Iglesias - Talent» `l.iglesias@meridian-careers.com` | Remitente falso del spearphish | `src/data/s2.ts:69` |
 | analistas de RR. HH. | Reciben el spearphish (cuatro buzones); una abre el LNK | `src/data/labs.ts:238,243,319` |
 | Orbital Components (`orbital.example`, `finance@orbital.example`) | Proveedor de Meridian; Víctima 2 | `src/data/s2.ts:879-880` |
-| «Orbital-2» | Etiqueta del Cluster-B en s4m4 | `src/data/s4.ts:723` |
+| «Orbital-2» | Etiqueta del Cluster-B en s4m4 | `src/data/s4.ts:730` |
 | tres proveedores de ingeniería con VPN | Proveedores de Meridian con acceso remoto | `src/data/labs.ts:531` |
 | «Bright Meridian Software Kft.» | Firmante desconocido de la muestra del sandbox | `src/data/s3.ts:334` |
 | NameFlow LLC (IANA ID 9999) · Privacy Guard Services | Registrador y servicio de privacidad del actor | `src/data/s3.ts:766-767` |
@@ -109,7 +111,7 @@ Stellar Dynamics también existe, pero es un hallazgo del Lab 3A: ver §4.
 | `meridian-sso-portal.com` | Portal falso de login de Meridian (phishing), en `141.98.6.10` | Nodo de partida del Lab 3A [V4] | `src/data/s1.ts:86`; `src/data/labs.ts:648-651`; `video/pivot-infra/src/scenes/parts/s05-cert/PdnsConsole.tsx:160` |
 | `cdn-sync-status.example` · `mx1.cdn-sync-status.example` | Entrega: relay del correo de s2m1, dominio de phishing (s3m4), harvest de credenciales (abril) | Canon de P4 | `src/data/s2.ts:70-71,89`; `src/data/s3.ts:754`; `src/data/s5.ts:58`; `docs/superpowers/plans/2026-09-25-lesson-videos.md:623` |
 | WHOIS de `cdn-sync-status.example` | Registro | Creación 2026-02-27T14:03:11Z, expira 2027-02-27; NameFlow LLC; `proxy-7f3a21@privacyguard.example`; `NS1.FASTPARK-DNS.EXAMPLE`, `NS2.FASTPARK-DNS.EXAMPLE` | `src/data/s3.ts:760-770` |
-| `203.0.113.27` → `198.51.100.84` | IP de `cdn-sync-status.example` | La segunda es hosting compartido (300+ dominios) en s4m4 | `src/data/s3.ts:775-776`; `src/data/s4.ts:731` |
+| `203.0.113.27` → `198.51.100.84` | IP de `cdn-sync-status.example` | La segunda es hosting compartido (300+ dominios) en s4m4 | `src/data/s3.ts:775-776`; `src/data/s4.ts:738` |
 | `meridian-careers.com` | Dominio verosímil del `From` del spearphish | | `src/data/s2.ts:69,89` |
 | `ocsp-verify-node.example` | Segundo C2 (fallback) de la muestra | | `src/data/s3.ts:341,348` |
 | `transfer-cdn-eu.example` | Destino de la exfiltración de Víctima 1 | | `src/data/s2.ts:877` |
@@ -120,12 +122,17 @@ Stellar Dynamics también existe, pero es un hallazgo del Lab 3A: ver §4.
 
 Documentos del caso: informe MER-2026-019 (E7, `src/data/s2.ts:564`), informe de sandbox MER-2026-023
 (`src/data/s3.ts:326`), referencia interna MER-2026-011 (`src/data/s5.ts:69,503,536`), flash alert
-MER-FA-2026-014 (`src/data/s5.ts:47`), campaña STIX «PO-REVISION phishing wave» (`src/data/s4.ts:1026`).
+MER-FA-2026-014 (`src/data/s5.ts:47`), campaña STIX «PO-REVISION phishing wave» (`src/data/s4.ts:1033`).
 
 Ficha completa de E7 (`src/data/s2.ts:565-587`): KC phase Command & Control, Result `success`, Direction
 `victim → infrastructure`, Methodology «beacon HTTPS, jitter 60s», Resources «hosting, dominio, cert TLS»
 (`src/data/s2.ts:567-571`); en V3 igual, con la dirección dibujada como flecha
-(`video/diamond-e7/src/scenes/S06Meta.tsx:27-32`).
+(`video/diamond-e7/src/scenes/S06Meta.tsx:27-32`). V23 redibuja el diamante sin ningún dato: Capability, Infrastructure y
+Victim como nodos atenuados con barras ilegibles y solo Adversary como tarjeta, con el sello `UNKNOWN`
+(`video/atribucion-cuadro/src/scenes/parts/Diamond.tsx:4-7`; `video/atribucion-cuadro/src/scenes/S01Hook.tsx:31-34,102`);
+la voz dice «tu diamante del ataque», nunca E7 (`video/atribucion-cuadro/narration.json:25`). Todo lo que Meridian tiene
+del primer nivel de atribución (el implante y su C2) queda en un chip sin nombres, «tu caso: el programa y su servidor»: ni
+hash, ni dominio, ni certificado (`video/atribucion-cuadro/src/data/s02-niveles.ts:5-6`).
 
 ### Capacidades
 
@@ -162,18 +169,20 @@ Los strings y muestras del Lab 3B (`vc_stage2.bin`, `VC_Loader_v1.dll`, `VC_Load
 | VELVET CICADA | Núcleo del grupo; intrusion set de espionaje contra el programa de propulsión; adversario de S5 | `src/data/course-gcti.ts:93-97`; `src/data/s3.ts:1048`; `src/data/s5.ts:312` |
 | «VC» | Firma de quien compra el acceso inicial (dossier de S1) | `src/data/course-gcti.ts:21` |
 | EMBER FOX | Célula de acceso inicial, spearphishing; adversario de S1 | `src/data/course-gcti.ts:17-19` |
-| GLASS VIPER | Operadores de intrusión (S2); también nombre del implante y de un intrusion set STIX (ver §5) | `src/data/course-gcti.ts:36-38`; `src/data/s2.ts:576`; `src/data/s4.ts:1016` |
+| GLASS VIPER | Operadores de intrusión (S2); también nombre del implante y de un intrusion set STIX (ver §5) | `src/data/course-gcti.ts:36-38`; `src/data/s2.ts:576`; `src/data/s4.ts:1023` |
 | HOLLOW LANTERN | Equipo de infraestructura del adversario; adversario de S3 | `src/data/course-gcti.ts:55-57` |
-| PAPER CRANE | Célula de engaño: siembra false flags; adversario de S4. Ficha en pantalla: «célula de engaño · siembra pistas falsas» [V9] | `src/data/course-gcti.ts:74-76`; `src/data/labs.ts:149`; `video/ach-matriz/src/data/s03-supuestos.ts:7` |
+| PAPER CRANE | Célula de engaño: siembra false flags; adversario de S4. Ficha en pantalla: «célula de engaño · siembra pistas falsas» [V9]; V23 repite la misma ficha | `src/data/course-gcti.ts:74-76`; `src/data/labs.ts:149`; `video/ach-matriz/src/data/s03-supuestos.ts:7`; `video/atribucion-cuadro/src/data/s03-techo.ts:4` |
 | `kazuo.tanji@protonmail.com` | Email de registro; sería el *operator* si el pivote confirma. El *customer* sigue sin conocerse | `src/data/s2.ts:575,591` |
 | horario laboral UTC+8 | Patrón del operador; baja diagnosticidad | `src/data/labs.ts:324,907` |
-| `resource_level: organization` · `primary_motivation: organizational-gain` | Perfil STIX de GLASS VIPER | `src/data/s4.ts:1019-1020` |
-| Cluster-A (Meridian) frente a Cluster-B (Orbital-2) | Se mantienen separados | `src/data/s4.ts:722-737` |
+| `resource_level: organization` · `primary_motivation: organizational-gain` | Perfil STIX de GLASS VIPER | `src/data/s4.ts:1026-1027` |
+| Cluster-A (Meridian) frente a Cluster-B (Orbital-2) | Se mantienen separados | `src/data/s4.ts:729-744` |
+| Adversary del diamante · `UNKNOWN` | Sin nombre: «no lo sabes» y «escribes UNKNOWN»; operator (teclea) y customer (encarga y se queda el botín) viven los dos ahí [V3]. V23 lo vuelve a dibujar igual, sin datos, y el customer de Meridian no lleva rótulo (§7) | `src/data/s2.ts:557,598`; `video/diamond-e7/narration.json:133,139,165,171`; `video/atribucion-cuadro/src/scenes/parts/Diamond.tsx:4-7`; `video/atribucion-cuadro/src/scenes/S01Hook.tsx:31-34` |
 
 Qué adversario habla en cada vídeo: el de la sección de la lección (`video.json` → `adversary`). V3 usa GLASS
 VIPER (`video/diamond-e7/video.json:8`) y V4 HOLLOW LANTERN (`video/pivot-infra/video.json:8`). V9 estrena a PAPER
 CRANE (`video/ach-matriz/video.json:8`) con otra voz: `sapi/Microsoft Laura` con el efecto `machine`, en lugar de
-Pablo (`video/ach-matriz/narration.json:11-15`).
+Pablo (`video/ach-matriz/narration.json:11-15`). V23 repite PAPER CRANE con esa misma voz
+(`video/atribucion-cuadro/video.json:8`; `video/atribucion-cuadro/narration.json:11-15`).
 
 Mensajes interceptados publicados. Son canon de la voz del adversario; un guion posterior no debe contradecirlos:
 
@@ -198,6 +207,8 @@ Mensajes interceptados publicados. Son canon de la voz del adversario; un guion 
 | PAPER CRANE | «Fíate de lo que ves, analista. Las pruebas nunca mienten.» | `video/ach-matriz/narration.json:89` (s03-01) |
 | PAPER CRANE | «Cuenta las que te dan la razón. La que más sume, gana.» | `video/ach-matriz/narration.json:277` (s07-01) |
 | PAPER CRANE | «Si una prueba es falsa, se te cae todo. Empieza de cero.» | `video/ach-matriz/narration.json:329` (s08-01) |
+| PAPER CRANE | «Ponle un país al informe, analista. Todo consejo adora un nombre.» | `video/atribucion-cuadro/narration.json:88` (s03-01) |
+| PAPER CRANE | «Con la primera pista que encaje ya tienes bastante. ¿Para qué más?» | `video/atribucion-cuadro/narration.json:128` (s04-01) |
 
 V3 explica en voz que GLASS VIPER es «un nombre de seguimiento para el implante y quien lo usa»
 (`video/diamond-e7/narration.json:139`).
@@ -270,7 +281,7 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
 4. **Vector de entrada.** Spearphish del CV a RR. HH. el 2026-03-02 09:41 UTC (`src/data/s2.ts:68-74`) frente a
    correo «PO revision» a `j.alvarez@` ese mismo día a las 09:14, sin zona (`src/data/s2.ts:872`), frente a cuenta
    VPN de proveedor (`src/data/labs.ts:329`) y «supplier portals» en el BLUF (`src/data/s5.ts:312`;
-   `src/data/labs.ts:1016`). Las horas de s2m4 no llevan zona horaria (`src/data/s2.ts:879-890`). **Resuelto en parte por V14 (plan A):** la Víctima 1 del walkthrough de s2m4 ya no recibe el «PO revision» a `j.alvarez@` a las 09:14, sino el mismo correo del CV a las 09:41 que s2m1 (`src/data/s2.ts:879`); «PO revision» queda solo para Orbital y para los proveedores de S4 y S5. Siguen abiertos la cuenta VPN de proveedor y los «supplier portals».
+   `src/data/labs.ts:1016`). Las horas de s2m4 no llevan zona horaria (`src/data/s2.ts:879-890`). **Resuelto en parte por V14 (plan A):** la Víctima 1 del walkthrough de s2m4 ya no recibe el «PO revision» a `j.alvarez@` a las 09:14, sino el mismo correo del CV a las 09:41 que s2m1 (`src/data/s2.ts:879`); «PO revision» queda solo para Orbital y para los proveedores de S4 y S5. Siguen abiertos la cuenta VPN de proveedor y los «supplier portals». **Con V23** (cambio de lección del 2026-10-10), el callout «¿Necesitas atribución?» de s4m5 ya no dice que VELVET CICADA «entra por proveedores», sino que «ataca también a sus proveedores» (`src/data/s4.ts:1008`), que no choca con el correo de s2m1 (`docs/reviews/2026-10-08-fichas-tanda4/decisiones-V22-V23.md:246`). V23 no cita esa frase: su nota solo dice cómo trabaja el grupo y qué busca (`video/atribucion-cuadro/src/data/s05-decision.ts:32-33`).
 5. **Quién abre el LNK.** Una analista de RR. HH. (`src/data/labs.ts:238,243`; `src/data/s2.ts:26`), pero la
    cadena ocurre en ENG-WS-041, workstation de ingeniería (`src/data/s2.ts:76,582`).
 6. **Cuál es «el dominio del phishing».** `meridian-sso-portal.com` es «el dominio del phishing inicial»
@@ -283,17 +294,25 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
    `video/diamond-e7/src/scenes/S10Thread.tsx:81`).
 8. **Duración de la operación.** «6 meses de acceso» (`src/data/s4.ts:429`; `src/data/labs.ts:883,919`) y
    exfiltración «between March and May» (`src/data/s5.ts:312`) frente a la actividad del Cluster-A
-   «nov-2025 → mar-2026» (`src/data/s4.ts:732`) y la ola de phishing del 2026-04-18 (`src/data/s5.ts:47-58`).
+   «nov-2025 → mar-2026» (`src/data/s4.ts:739`) y la ola de phishing del 2026-04-18 (`src/data/s5.ts:47-58`).
    V9 enseña «6 meses» en pantalla tal cual, sin fechas, así que hereda el hueco [V9]
    (`video/ach-matriz/src/data/matrix.ts:48`; `video/ach-matriz/src/scenes/parts/Whiteboard.tsx:26`).
 9. **Qué es GLASS VIPER.** Operadores de intrusión (`src/data/course-gcti.ts:36-40`); implante/loader
    (`src/data/s2.ts:576`; `src/data/s3.ts:62,326`; `src/data/s5.ts:491`); intrusion set STIX y grupo de vendor
-   (`src/data/s4.ts:814,1016,1048`). VELVET CICADA también es «intrusion set» (`src/data/s3.ts:1048`;
+   (`src/data/s4.ts:821,1023,1055`). VELVET CICADA también es «intrusion set» (`src/data/s3.ts:1048`;
    `src/data/s5.ts:312`). V3 lo explica como nombre de seguimiento del implante y quien lo usa [V3]
    (`video/diamond-e7/narration.json:139`).
    **Lectura que usa V8** (2026-10-03, decisión de Lidia: no se renombra el intrusion set STIX de S4,
-   `src/data/s4.ts:1016`): GLASS VIPER es el loader y el nombre que usan los vendors y el ISAC; VELVET CICADA es el
+   `src/data/s4.ts:1023`): GLASS VIPER es el loader y el nombre que usan los vendors y el ISAC; VELVET CICADA es el
    intrusion set en el modelo de Meridian, el que «uses» ese loader en su grafo.
+   **Sigue abierto tras V23.** La misma lección s4m5 enseña el objeto STIX con `"name": "GLASS VIPER"` como intrusion set,
+   la campaña «PO-REVISION phishing wave» `attributed-to` ese set con `"confidence": 75` (`src/data/s4.ts:1020-1045`) y,
+   en el callout, llama a VELVET CICADA «el cluster» (`:1008`). Además, el `75` cae en «alto» en la escala de STIX 2.1,
+   frente a la «confianza media» con que la prosa describe el ejemplo (`:1050`; señalado sin comprobar contra la
+   especificación en `docs/reviews/2026-10-08-fichas-tanda4/decisiones-V22-V23.md:251`). V23 deja fuera el STIX entero
+   (campaign frente a intrusion set, `attributed-to`, s4m5q7) y no nombra ni a GLASS VIPER ni a VELVET CICADA, ni en voz
+   ni en pantalla: dice «el grupo, el intrusion set» (`video/atribucion-cuadro/narration.json:107`;
+   `video/atribucion-cuadro/out/script-notes.md:63-66,86-88`).
 10. **«Tres C2» con el mismo certificado** (`src/data/s2.ts:841`; `src/data/labs.ts:314`) frente a las tres IP de
     V4: el C2, el VPS del phishing `141.98.6.10` y una desconocida [V4]
     (`video/pivot-infra/src/scenes/S05Cert.tsx:57-60`).
@@ -328,6 +347,27 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
     (`video/pivot-infra/src/scenes/S06Ct.tsx:436-437`).
 22. **Resto de P4 sin tocar.** El PDB genérico `C:\Users\kaz\dev\stage2\bin\release\st2.pdb` de una pregunta de
     s3m2 es de otro binario (`src/data/s3.ts:397`; `docs/superpowers/plans/2026-09-25-lesson-videos.md:627`).
+23. **Ficha de V23 frente a pantalla y voz (resuelto por la pantalla y la voz).** La ficha
+    (`docs/reviews/2026-10-08-fichas-tanda4/ficha-V23.md`) y el storyboard hablan del «diamante del evento E7 (el de V3)»
+    (`:88`; `video/atribucion-cuadro/storyboard.json:26`), pero en pantalla el diamante no lleva evento ni ningún dato y la
+    voz dice «tu diamante del ataque» (`video/atribucion-cuadro/src/scenes/parts/Diamond.tsx:4-7`;
+    `video/atribucion-cuadro/narration.json:25`). La tira del CISO iba a ser «la misma de V9» (`:88`), y añade el rol
+    «responsable de seguridad» (`video/atribucion-cuadro/src/scenes/parts/CisoStrip.tsx:23`) que V9 no ponía
+    (`video/ach-matriz/src/data/s01-hook.ts:24-28`). El «muro» de s03 (`:90`) no se dibuja: es el mismo cuadro bajo el foco
+    (`video/atribucion-cuadro/storyboard.json:60`; `video/atribucion-cuadro/out/script-notes.md:227`). Las respuestas a
+    PAPER CRANE cambian de forma: la ficha proponía «Claro que lo propone quien se dedica a sembrar pistas falsas…» y
+    «cuánto da una pista fácil» (`:108-112`), y la voz dice «Y PAPER CRANE, más. Vive de sembrar pistas falsas, y las prisas
+    le vienen de perlas.» y «cuánto pesa una pista fácil» (`video/atribucion-cuadro/narration.json:85,125`). La nota de s05
+    era «de tres líneas» en plural («cómo trabajan», «qué buscan», «para quién trabajan», `:92`), y en pantalla son cuatro, en
+    singular y con el grupo como sujeto: «cómo trabaja el grupo:», «qué busca:», «quién teclea:», «para quién trabaja:»
+    (`video/atribucion-cuadro/src/data/s05-decision.ts:31-36`; `video/atribucion-cuadro/out/script-notes.md:145`). La banda
+    1 dice «qué máquinas y herramientas actuaron», no «qué equipos» (`:89`), porque en la lección «equipo» es del segundo
+    nivel (`video/atribucion-cuadro/src/data/levels.ts:30`; `src/data/s4.ts:984`;
+    `video/atribucion-cuadro/out/script-notes.md:210`). La columna «a quién le sirve el país» suma «decisiones geopolíticas
+    de negocio», que es de la lección (`video/atribucion-cuadro/src/data/s05-decision.ts:13`; `src/data/s4.ts:1008`). Y las
+    confianzas de la tabla salen como «alta» y «moderada» (la palabra de V9), donde la lección pone «Alta» y «Media»
+    (`video/atribucion-cuadro/src/data/levels.ts:33,43,53-54`; `src/data/s4.ts:991-993`): mismo grado. La del sponsor va con
+    «, y solo con fuentes que tu red no tiene»; el «baja con solo telemetría» que la lección añadió con V23 (`:993`) no sale.
 
 ## 6. Nombres libres (relleno neutro ya usado)
 
@@ -452,7 +492,7 @@ adversario de los interceptados HOLLOW LANTERN (`video/stix-isac/video.json:8`).
 - Mensaje interceptado nuevo de HOLLOW LANTERN, sin fecha: «Ese dominio lo tiré hace meses. Ya no te sirve para nada.»
   (`video/stix-isac/narration.json`, s03-02). Encaja con el passive DNS y con V4 s08.
 - **No se toca** (sigue fuera): el C2, el certificado y el correo de registro del dosier de DEEP WELL; el intrusion set
-  STIX de S4 (`src/data/s4.ts:1013-1021`), la campaña «PO-REVISION phishing wave» y `attributed-to`; el indicador
+  STIX de S4 (`src/data/s4.ts:1020-1028`), la campaña «PO-REVISION phishing wave» y `attributed-to`; el indicador
   propio de Meridian para este dominio (`src/data/s5.ts:596-607`) y la ola de phishing del 18-4.
 
 ### V9 · `ach-matriz` · s4m3 · YouTube `Q2-pG0ALFKI`
@@ -518,7 +558,7 @@ la voz `sapi/Microsoft Laura` y el efecto `machine` (`video/ach-matriz/narration
   pruebas (loader propio, horario UTC+8, silencio público, exfiltración lenta), sus notas y su mecánica; el horario
   UTC+8; las ocho frases del Lab 4A (`src/data/labs.ts:447-499`). E4 **no** se identifica con el certificado
   `CN=updatesvc` (ni la tercera IP, §5 punto 15, ni el dosier de DEEP WELL). Cluster-A y Cluster-B no salen
-  (`src/data/s4.ts:722-737`). Nada del Lab 3A, del Lab 3B ni del final de la campaña.
+  (`src/data/s4.ts:729-744`). Nada del Lab 3A, del Lab 3B ni del final de la campaña.
 
 ### V13 · `kill-chain-eslabon` · s2m1 · YouTube `WidodMPEs24`
 
@@ -682,6 +722,127 @@ tira de V3. **La lección cambió con él:** `MapViewOfSection` pasa a `NtMapVie
   «una sola organización»; el de BROKEN CHAIN (`src/data/course-gcti.ts:40`): ni «el mismo PDB en tres muestras» ni cuántas lo comparten
   (§5 punto 11; las «3 muestras previas» del imphash son de la lección y no se relacionan con el PDB); y los dos loaders de s2m4 con el
   mismo PDB (`src/data/s2.ts:879-890`), que son la demo de V14.
+
+### V23 · `atribucion-cuadro` · s4m5 · YouTube `Q2Xk9Lczm6U`
+
+Lección `src/data/s4.ts:1113-1119` (bloque `video` después del tercer check, «For a private-sector defender, the MOST
+actionable attribution level is usually:», `:1098-1112`, y antes del callout «Nota de examen», `:1120-1125`); 3:49 (6866
+fotogramas a 30 fps, `video/atribucion-cuadro/src/timeline.json:4,7`), subido a Alertópolis el 2026-10-14 como privado
+(`video/atribucion-cuadro/out/youtube-upload.json:2-4`). Cápsula (`capsula-yt`, `video/atribucion-cuadro/video.json:6`), guion
+congelado el 2026-10-13 (`:24`). Adversario de los interceptados PAPER CRANE (`video/atribucion-cuadro/video.json:8`), con la voz
+de V9, `sapi/Microsoft Laura` y el efecto `machine` (`video/atribucion-cuadro/narration.json:11-15`). Notas propias en
+`video/atribucion-cuadro/out/script-notes.md`. **Sin fecha ni hora**, como V9 y V15: no se ordena contra §2. **La lección cambió
+con él** (commit `e86957e`): la confianza del sponsor en la tabla pasa a «Media para quien dispone de esas fuentes, con lenguaje
+estimativo explícito; baja con solo telemetría» (`src/data/s4.ts:993`), y el callout dice «ataca también a sus proveedores» en
+lugar de «entra por proveedores» (`:1008`; §5 punto 4). **No atribuye nada al caso:** ni país, ni grupo como culpable, ni
+persona, ni grado de confianza para Meridian. Canon nuevo, solo de pantalla y de voz:
+
+- **El punto de partida** (s01): «Meridian Dynamics · aeroespacial» y «tú, su analista de inteligencia»
+  (`video/atribucion-cuadro/src/data/s01-hook.ts:4`) sobre el diamante sin datos, con Adversary en `UNKNOWN` (ver §3, «Ficha
+  completa de E7»); en voz, «en tu diamante del ataque falta saber quién fue. El CISO quiere un nombre.»
+  (`video/atribucion-cuadro/narration.json:25`). **El CISO** (sin nombre, el de V9) sale con la tarjeta «CISO · responsable de
+  seguridad» y su pregunta, «¿Quién está detrás?» y «¿Ponemos un país en el informe?»
+  (`video/atribucion-cuadro/src/scenes/parts/CisoStrip.tsx:23,25`), en s01 y otra vez en s05, en tira
+  (`video/atribucion-cuadro/src/scenes/S05Decision.tsx:80`). Es una pregunta, no una decisión: el vídeo no dice si el informe
+  lleva un país.
+- **Los tres niveles, tres preguntas sobre un cuadro** (`video/atribucion-cuadro/src/data/levels.ts:26-57`): «¿con qué se
+  hizo?», MÁQUINA / INFRAESTRUCTURA, «qué máquinas y herramientas actuaron», «tu telemetría, el malware, el C2», «llega
+  cualquier defensor con visibilidad», confianza «alta»; «¿quién lo pintó?», OPERADOR, «quién tecleó», «errores humanos
+  (opsec): una cuenta personal desde la infraestructura, un alias reutilizado, hábitos propios años seguidos», «llegan vendors
+  con visibilidad global y años de seguimiento», «moderada»; «¿quién lo encargó y lo pagó?», SPONSOR, «por cuenta de quién»,
+  «dinero, órdenes, registros legales, años de victimología alineada con intereses», «la victimología sola no llega a quién
+  dirige», «llegan gobiernos, o fusión público-privada», «moderada, y solo con fuentes que tu red no tiene». Son las confianzas
+  de la tabla para cada tipo de evidencia, nunca un juicio sobre Meridian (`levels.ts:1-5`). Tira: «subir un nivel pide
+  evidencia de otro tipo, no más de lo mismo» (`video/atribucion-cuadro/src/data/s02-niveles.ts:20`); en voz, «Con mil
+  registros más de tu red, que son tu telemetría, rara vez sabrás quién lo encargó.» (`video/atribucion-cuadro/narration.json:79`).
+- **Meridian, solo en el primer nivel:** el chip «tu caso: el programa y su servidor» sobre la banda de la máquina
+  (`video/atribucion-cuadro/src/data/s02-niveles.ts:5-6`), y en voz «Ahí está lo que tienes de Meridian»
+  (`video/atribucion-cuadro/narration.json:43`). Nada del caso en los niveles de operador y sponsor. El certificado no sale,
+  para no acercarlo a la prueba plantable de V9 (`docs/reviews/2026-10-08-fichas-tanda4/ficha-V23.md:156`).
+- **El chip del diamante** (`video/atribucion-cuadro/src/data/s02-niveles.ts:8-17`;
+  `video/atribucion-cuadro/src/scenes/parts/s02-niveles/DiamondLink.tsx:10-16,56-67`): «Capability + Infrastructure = máquina» y
+  «Adversary = operator + customer», con conectores punteados hacia la banda OPERADOR («operator: teclea») y la banda SPONSOR
+  («customer: encarga»): correspondencia, no identidad, y el customer de Meridian sin rótulo. En voz, «Te sonará del diamante,
+  donde el operator teclea y el customer encarga.» (`video/atribucion-cuadro/narration.json:61`). Es una lectura del vídeo: la
+  lección separa operator y customer (`src/data/s2.ts:557`) y define el sponsor como quien «dirigió y se benefició»
+  (`src/data/s4.ts:984`), pero no los iguala; la revisión de exactitud la dio por buena
+  (`video/atribucion-cuadro/out/script-notes.md:203-206`). Un guion posterior puede usar la correspondencia, no «el customer es
+  el sponsor» como identidad.
+- **Hasta dónde llega lo que ves** (s03; `video/atribucion-cuadro/src/data/s03-techo.ts:7-40`): la palabra «país» del mensaje,
+  unida a la banda SPONSOR, «el tercer nivel»; el foco «tu telemetría» ilumina la primera banda, apenas roza la segunda y deja la
+  tercera a oscuras, «no deja rastro en tu red»; lo que haría falta para verla, «fuentes humanas · HUMINT», «comunicaciones
+  interceptadas · SIGINT», «financiación y órdenes», «registros legales», que «suelen tenerlas gobiernos, o fusión
+  público-privada»; en el borde del foco, «hasta aquí llega la evidencia técnica» y «no es debilidad, es rigor». En voz, «Verlo
+  suele pedir fuentes humanas y escuchas, HUMINT y SIGINT, cosa de gobiernos.» y «Por eso te paras en el grupo, el intrusion
+  set. No es debilidad, es rigor.» (`video/atribucion-cuadro/narration.json:101,107`). Nunca «imposible»: solo «rara vez basta».
+- **La ficha del «informe serio» es genérica** (`video/atribucion-cuadro/src/data/s03-techo.ts:25-37`): «así habla un informe
+  serio: se detiene donde acaba su evidencia», «[nombre del conjunto]», «solapamiento a nivel de operador con actividad
+  anterior», «confianza moderada» y «país: —» (un guion: dato ausente, no un nombre tapado); debajo, INTRUSION SET, «el grupo,
+  tal como se le ve trabajar». Solo en pantalla (`video/atribucion-cuadro/out/script-notes.md:44-46`). No existe ningún informe de
+  ningún proveedor sobre Meridian.
+- **El binario de s04 es el ejemplo de la lección, no de Meridian** (`video/atribucion-cuadro/src/data/s04-binario.ts:1-11`):
+  rótulo «Ejemplo de la lección · no es el caso de Meridian», legible desde el primer fotograma y durante el mensaje; sus dos
+  pistas son «textos en otro idioma» y «horas de compilación de una jornada de oficina concreta», sin idioma, alfabeto, lugar,
+  huso ni hora. En voz, «Este binario es de ejemplo, no de Meridian. Trae textos en otro idioma, y se compiló en horas de oficina
+  de allí.» (`video/atribucion-cuadro/narration.json:135`): «de allí» apunta a un sitio sin nombrarlo. No se relaciona con
+  ninguna muestra de Meridian ni con `9f3a...e1`. Pregunta: «Idioma y horario: ¿bastan para un país?»; respuesta, «No.»
+  (`:144`, `:151`).
+- **La tabla de false flags** es la de la lección (`src/data/s4.ts:1073-1081`;
+  `video/atribucion-cuadro/src/data/s04-binario.ts:30-44`), con «objetivos sostenidos durante años, alineados con unos intereses»
+  y «sola no llega al sponsor»; junto a ella, FALSE FLAG «pistas dejadas a propósito para culpar a otro», «aisladas pesan muy poco
+  · dentro de un conjunto grande y coherente, suman», «caro no es imposible», la «procedencia» del cuadro y la pregunta de V9, «si
+  esta pista fuera un señuelo, ¿cambia tu conclusión?» (`s04-binario.ts:47-59`). En voz, el false flag no tiene sujeto:
+  «Dejarlas a propósito para culpar a otro es un false flag» (`video/atribucion-cuadro/narration.json:157`).
+- **El nombre y la decisión** (s05; `video/atribucion-cuadro/src/data/s05-decision.ts:8-24,39`): «a quién le sirve el país»,
+  gobiernos «(respuesta diplomática o legal)», seguros y «decisiones geopolíticas de negocio»; «qué cambia en tu defensa»,
+  «detectar, cazar y proteger» «rara vez cambian» con el país (nunca «no cambian»); «¿qué decisión cambia con el nombre?»; la
+  cartela «atribuido a…», «lo que afirmas lleva su confianza»; y el cierre, «perseguir el nombre solo compensa si una decisión lo
+  pide». En voz, «Un país le sirve a un gobierno, que puede responder.» (`video/atribucion-cuadro/narration.json:186`).
+- **La nota de lo que sí va en el informe** (`video/atribucion-cuadro/src/data/s05-decision.ts:31-36`): «cómo trabaja el grupo:
+  lo ves en tu red» · «qué busca: la propiedad intelectual de propulsión de Meridian» · «quién teclea: desconocido», con el sello
+  `UNKNOWN` del diamante (`video/atribucion-cuadro/src/scenes/parts/s05-decision/Note.tsx:47`) · «para quién trabaja: tu red no
+  tiene esa clase de prueba; el juicio se emite con su confianza y diciendo qué falta, no se calla». En voz, «Del grupo escribes
+  cómo trabaja y qué busca. Quién teclea no lo sabes, y lo dices. Para quién trabaja, das tu juicio con su confianza y lo que
+  falta.» (`video/atribucion-cuadro/narration.json:215`). **Sin nombre de grupo, sin grado de confianza y sin país.** El sponsor
+  no se queda en «desconocido» a secas, porque el Lab 5B da por malo omitir el juicio (`src/data/labs.ts:1072-1074`), y tampoco
+  se adelanta el «low» que el laboratorio da al juicio de sponsor de su hallazgo 2 (`src/data/labs.ts:1058`). «Qué busca» es lo
+  de V3 (el customer quiere los diseños de propulsión, `video/diamond-e7/narration.json:171,231`), no el juicio H1 de V9 ni su
+  confianza. «Quién teclea: desconocido» no choca con `kazuo.tanji@` (§3): sería el operator solo «si el pivote confirma», y no
+  está confirmado.
+- **Ningún país, idioma, huso ni hora en todo el vídeo**: ni en el binario (`video/atribucion-cuadro/src/data/s04-binario.ts:1-4`)
+  ni en el cuadro, cuya firma es un garabato y cuya fecha son cuatro guiones
+  (`video/atribucion-cuadro/src/scenes/parts/painting/Art.tsx:6-7`), con fichas de procedencia sin años
+  (`video/atribucion-cuadro/src/scenes/parts/painting/Extras.tsx:54-57`). El póster enseña «¿Quién fue?», «Atribución: tres
+  niveles y pistas falsas» y el cuadro con el foco «tu telemetría» y la esquina firmada en ámbar, sin país, bandera, mapa ni idioma
+  (`video/atribucion-cuadro/src/Poster.tsx:48-59`; `video/atribucion-cuadro/src/PosterArt.tsx:12-17`).
+- **La voz no dice E7, C2, `UNKNOWN`, VELVET CICADA ni GLASS VIPER** (`video/atribucion-cuadro/out/script-notes.md:86-88`); el
+  grupo es «el grupo» o «el intrusion set». PAPER CRANE se nombra una vez (`video/atribucion-cuadro/narration.json:85`).
+- **PAPER CRANE**, dos mensajes nuevos, sin fecha, que pasan a ser canon de su voz (tutea, dice «analista», ironía; empuja atajos
+  de método, nunca una hipótesis, y no confiesa nada); ver la tabla de §3. Son otros dos errores que los de V9: poner un país
+  porque vende y pararse en la primera pista (`docs/reviews/2026-10-08-fichas-tanda4/decisiones-V22-V23.md:166-170`).
+  - «Ponle un país al informe, analista. Todo consejo adora un nombre.» (`video/atribucion-cuadro/narration.json:88`, s03-01);
+    respuesta: «Y PAPER CRANE, más. Vive de sembrar pistas falsas, y las prisas le vienen de perlas.» (`:85`) y «Pero un país es
+    el tercer nivel.» (`:95`).
+  - «Con la primera pista que encaje ya tienes bastante. ¿Para qué más?» (`video/atribucion-cuadro/narration.json:128`,
+    s04-01); respuesta: «Pues vamos a ver cuánto pesa una pista fácil.» (`:125`); la de verdad llega tras la pregunta.
+
+  La voz dice que PAPER CRANE «vive de sembrar pistas falsas» (su ficha de V9), nunca que sembrara algo en el caso de Meridian
+  ni en el binario de ejemplo.
+- **La imagen del cuadro** (el lienzo y los pigmentos, la mano y la huella en el barniz, el contrato en su archivo, la firma y la
+  fecha de la esquina, la procedencia, la cartela y el foco) es de la analogía, no del caso. El guion evita «escalera»,
+  «peldaño», «etiqueta» e «hilo» (`video/atribucion-cuadro/out/script-notes.md:124-125`). Sin personas, fechas, equipos, hashes,
+  dominios ni IP nuevos.
+- **No se toca** (sigue fuera; `docs/reviews/2026-10-08-fichas-tanda4/ficha-V23.md:171-187`): el dosier de HALL OF MIRRORS
+  (`src/data/course-gcti.ts:78`): ni strings en cirílico, ni horarios falsos, ni «PAPER CRANE las plantó», ni «espionaje
+  industrial sistemático»; **nada dice cuál de las pistas de Meridian podría estar plantada** (ni el E4 de V9 ni el certificado).
+  Los de BROKEN CHAIN y DEEP WELL (`src/data/course-gcti.ts:40,59`): ni el PDB, ni `kazuo.tanji@` como candidato a operador, ni
+  «una sola organización». Del Lab 4A, ninguna de sus frases (el informe que decía un país, las horas de compilación en UTC+8, lo
+  que atribuyó BigVendorCo; `src/data/labs.ts:461,481,486`); del Lab 4B, sus pruebas (`src/data/labs.ts:862-930`); del Lab 5B,
+  ningún juicio de sponsor sobre Meridian. El STIX de s4m5 (campaign, intrusion set, `attributed-to`, `confidence: 75`; §5
+  punto 9) y s4m5q7; Cluster-A y Cluster-B (`src/data/s4.ts:729-744`); los casos reales de S5 (`src/data/s5.ts:836,855`) y los
+  nombres de países: el check de la lección habla de Rusia y Moscú (`src/data/s4.ts:1086`) y el vídeo no. Tampoco la atribución
+  de un gobierno como una fuente más (s4m5q6, `video/atribucion-cuadro/out/script-notes.md:67-68`). No se culpa a nadie: ni al
+  CISO por pedir un nombre ni a la sala por querer uno.
 
 ### Plantilla para el siguiente
 
