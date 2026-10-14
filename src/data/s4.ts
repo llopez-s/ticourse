@@ -990,7 +990,7 @@ un weaponizer o cert compartido.`,
         rows: [
           ['**Máquina / infraestructura**', 'Telemetría propia, forense, malware, C2', 'Cualquier defensor con visibilidad', 'Alta'],
           ['**Operador**', 'Errores de opsec humanos: reuso de alias/cuentas, logins personales desde la infra, tradecraft idiosincrático sostenido', 'Vendors con visibilidad global + años de tracking', 'Media'],
-          ['**Sponsor**', 'HUMINT/SIGINT, financiación y tasking, registros legales, victimología plurianual alineada a intereses', 'Gobiernos, o fusión público-privada', 'Media, siempre con lenguaje estimativo explícito'],
+          ['**Sponsor**', 'HUMINT/SIGINT, financiación y tasking, registros legales, victimología plurianual alineada a intereses', 'Gobiernos, o fusión público-privada', 'Media para quien dispone de esas fuentes, con lenguaje estimativo explícito; baja con solo telemetría'],
         ],
       },
       {
@@ -1005,7 +1005,7 @@ un weaponizer o cert compartido.`,
         t: 'callout',
         kind: 'tip',
         title: '¿Necesitas atribución?',
-        md: 'Para defender Meridian, saber que «es el cluster VELVET CICADA, busca robo de IP de propulsión, entra por proveedores» vale oro **aunque jamás sepas el país**. La atribución a estado importa para gobiernos (respuesta diplomática/legal), seguros, y decisiones geopolíticas de negocio. Pregunta del examen y de la vida: ¿qué decisión cambia con el nombre del país?',
+        md: 'Para defender Meridian, saber que «es el cluster VELVET CICADA, busca robo de IP de propulsión, ataca también a sus proveedores» vale oro **aunque jamás sepas el país**. La atribución a estado importa para gobiernos (respuesta diplomática/legal), seguros, y decisiones geopolíticas de negocio. Pregunta del examen y de la vida: ¿qué decisión cambia con el nombre del país?',
       },
       { t: 'h', text: 'Campaña vs. intrusion set, formalizado' },
       {
@@ -1109,6 +1109,13 @@ un weaponizer o cert compartido.`,
           explain:
             'Group-level knowledge drives detection, hunting and risk decisions. Sponsor attribution mainly serves governments and policy.',
         },
+      },
+      {
+        t: 'video',
+        title: 'Atribución: ¿quién fue? Los tres niveles y las pistas falsas',
+        youtube: 'Q2Xk9Lczm6U',
+        poster: 'videos/atribucion-cuadro-poster.png',
+        transcript: 'videos/atribucion-cuadro-transcript.txt',
       },
       {
         t: 'callout',
