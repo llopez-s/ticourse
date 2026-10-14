@@ -1,7 +1,7 @@
 # Canon de «Operación VELVET CICADA» (GCTI)
 
 Registro único de los datos ficticios de la campaña GCTI: la intrusión contra Meridian Dynamics que continúan
-las lecciones, los laboratorios y los vídeos. Estado a 2026-10-08 (vídeos con su canon aquí: V3, V4, V7, V8, V9, V13, V14 y V15).
+las lecciones, los laboratorios y los vídeos. Estado a 2026-10-14 (vídeos con su canon aquí: V3, V4, V7, V8, V9, V13, V14, V15 y V22).
 
 ## 1. Cómo se usa
 
@@ -13,7 +13,9 @@ las lecciones, los laboratorios y los vídeos. Estado a 2026-10-08 (vídeos con 
   corrige aquí y se anota en §5.
 
 Notas de lectura: todas las rutas son relativas a la raíz del repositorio. `video/pivot-infra/out/*` está
-ignorado por git y solo existe en la copia principal (`D:\LLM projects\TICourse`), no en los worktrees.
+ignorado por git y solo existe en la copia principal (`D:\LLM projects\TICourse`), no en los worktrees. Lo mismo
+vale para el `out/` de cualquier vídeo (`.gitignore:26`, `video/*/out/`): el de V22 (`video/coa-precios/out/*`, con
+`script-notes.md` y `youtube-upload.json`) se produjo en el worktree `video-coa-precios`.
 `[V3]` y `[V4]` marcan datos que están en pantalla en un vídeo publicado. Las rutas de Windows se escriben como
 se ven en la app (una barra); en los `.ts` van escapadas (`\\`).
 
@@ -27,7 +29,7 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 | 2025-11-03 | — | `first_seen` del intrusion set GLASS VIPER (STIX) | `src/data/s4.ts:1018` |
 | nov-2025 → mar-2026 (rango) | — | Ventana de actividad del Cluster-A (Meridian) | `src/data/s4.ts:732` |
 | 2025-11-18 | — | Se registra `update-svc-cdn.com` en NameFlow LLC [V4] | `video/pivot-infra/src/scenes/S07Whois.tsx:15-18` |
-| 2025 (sin día) | — | Ficha WHOIS histórica del C2 con `kazuo.tanji@protonmail.com` | `src/data/s2.ts:574-575`; `video/pivot-infra/src/scenes/S07Whois.tsx:141` |
+| 2025 (sin día) | — | Ficha WHOIS histórica del C2 con `kazuo.tanji@protonmail.com` | `src/data/s2.ts:581-582`; `video/pivot-infra/src/scenes/S07Whois.tsx:141` |
 | 2026-01 | — | Variante anterior del loader (ssdeep 94 % similar) | `src/data/s3.ts:330` |
 | 2026-02-11 | — | pDNS: `update-svc-cdn.com` → `185.220.x.x`, first seen [V4] | `video/pivot-infra/src/scenes/S03Pdns.tsx:63-65` |
 | 2026-02-19 | — | Compile time de la muestra (la lección avisa: puede estar falseado) | `src/data/s3.ts:331` |
@@ -35,17 +37,17 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 | 2026-02-27 14:22:08 (sin zona) | — | pDNS first seen de `cdn-sync-status.example` en `203.0.113.27` | `src/data/s3.ts:775` |
 | 2026-02-27 | — | `first_seen` de la campaña STIX «PO-REVISION phishing wave» | `src/data/s4.ts:1026-1028` |
 | 2026-03-01 09:40:51 → 10:02:13 (sin zona) | — | `cdn-sync-status.example` pasa de `203.0.113.27` a `198.51.100.84` («la primera IP se quemó») | `src/data/s3.ts:775-776,780` |
-| 2026-03-02 09:41 UTC | Delivery | Spearphish «Candidatura - Ingeniero de propulsion» a RR. HH.; el walkthrough de s2m4 usa el mismo correo (plan A de V14, `src/data/s2.ts:879`); V13 enseña sus cabeceras tal como las escribe la lección, con `Received: from mx1.cdn-sync-status.example (203.0.113.27) by mail.meridian.example; Mon, 2 Mar 2026 09:41:07 +0000` (`video/kill-chain-eslabon/src/scenes/parts/LessonLog.tsx:74-109`) | `src/data/s2.ts:68-74` |
-| 2026-03-02 09:44:12 → 09:45:02 (sin zona, «mismo dia») | Exploitation → C2 | En ENG-WS-041: LNK, PowerShell, `winhlp.exe`, tarea programada, primer beacon; s2m4: 09:44 LNK y `winhlp.exe` con la ruta del PDB, 09:45 beacon (`src/data/s2.ts:880-882`); V13 las enseña línea a línea, sin zona: 09:44:12 `explorer.exe`, 09:44:13 `powershell.exe`, 09:44:19 escribe `C:\ProgramData\winhlp.exe`, 09:44:20 `schtasks` (`WindowsUpdateCheck`), 09:45:02 beacon (`video/kill-chain-eslabon/src/scenes/parts/LessonLog.tsx:121-155`) | `src/data/s2.ts:76-83` |
+| 2026-03-02 09:41 UTC | Delivery | Spearphish «Candidatura - Ingeniero de propulsion» a RR. HH.; el walkthrough de s2m4 usa el mismo correo (plan A de V14, `src/data/s2.ts:886`); V13 enseña sus cabeceras tal como las escribe la lección, con `Received: from mx1.cdn-sync-status.example (203.0.113.27) by mail.meridian.example; Mon, 2 Mar 2026 09:41:07 +0000` (`video/kill-chain-eslabon/src/scenes/parts/LessonLog.tsx:74-109`) | `src/data/s2.ts:68-74` |
+| 2026-03-02 09:44:12 → 09:45:02 (sin zona, «mismo dia») | Exploitation → C2 | En ENG-WS-041: LNK, PowerShell, `winhlp.exe`, tarea programada, primer beacon; s2m4: 09:44 LNK y `winhlp.exe` con la ruta del PDB, 09:45 beacon (`src/data/s2.ts:887-889`); V13 las enseña línea a línea, sin zona: 09:44:12 `explorer.exe`, 09:44:13 `powershell.exe`, 09:44:19 escribe `C:\ProgramData\winhlp.exe`, 09:44:20 `schtasks` (`WindowsUpdateCheck`), 09:45:02 beacon (`video/kill-chain-eslabon/src/scenes/parts/LessonLog.tsx:121-155`) | `src/data/s2.ts:76-83` |
 | 2026-03-05 02:11:47Z | antes de E7 [V3] | PROC_START de `C:\ProgramData\UpdSvc\updsvc.exe`; FILE_HASH `9f3a...e1` | `video/diamond-e7/src/data/s03-victim.ts:25-32` |
 | 2026-03-05 02:11:49Z | antes de E7 [V3] | PIPE_CREATE `\\.\pipe\vc_pipe_3a7f09c1` | `video/diamond-e7/src/data/s03-victim.ts:36-38` |
-| 2026-03-05 02:13 UTC | **E7** (C2) | Beacon HTTPS a `update-svc-cdn.com`; salta la alerta del SOC; informe MER-2026-019; V13 la dibuja como una alerta del SOC («SOC · Meridian Dynamics · turno de noche», tras «Sin alertas activas…»), con `ENG-WS-041` «ingeniería de propulsión» que «llama a» `update-svc-cdn.com` «dominio desconocido» (`video/kill-chain-eslabon/src/data/alert.ts:9-21`) | `src/data/s2.ts:559,564-566`; `video/diamond-e7/src/scenes/S01Hook.tsx:196-197` |
+| 2026-03-05 02:13 UTC | **E7** (C2) | Beacon HTTPS a `update-svc-cdn.com`; salta la alerta del SOC; informe MER-2026-019; V13 la dibuja como una alerta del SOC («SOC · Meridian Dynamics · turno de noche», tras «Sin alertas activas…»), con `ENG-WS-041` «ingeniería de propulsión» que «llama a» `update-svc-cdn.com` «dominio desconocido» (`video/kill-chain-eslabon/src/data/alert.ts:9-21`) | `src/data/s2.ts:566,571-573`; `video/diamond-e7/src/scenes/S01Hook.tsx:196-197` |
 | 2026-03-05 02:13:02Z y 02:14:01Z | E7 [V3] | Dos NET_CONN a `update-svc-cdn.com:443` | `video/diamond-e7/src/data/s03-victim.ts:42-45` |
-| 2026-03-07 (sin hora) | **E9** (AoO) | Mismo implante y metodología, dos días después de E7 [V3]; V14 (plan A) le da el contenido «compresión en una carpeta temporal · salida grande», sin tamaño ni destino en pantalla (`video/hilos-pelicula/src/scenes/parts/FilmRail.tsx:236`) | `src/data/s2.ts:623`; `video/diamond-e7/src/scenes/S10Thread.tsx:80-84` |
-| 2026-03-07 00:52 (sin zona) | AoO (s2m4) | Staging en `C:\Windows\Temp\~tmp4421.cab`. Antes la lección lo ponía el 4-3 a las 22:10; V14 (plan A) lo pasa a la madrugada del sábado 7-3, que es lo que E9 ya decía | `src/data/s2.ts:883` |
-| 2026-03-07 01:47 (sin zona) | AoO (s2m4) | Salen 1,2 GB hacia `transfer-cdn-eu.example` (antes, 5-3) | `src/data/s2.ts:884` |
+| 2026-03-07 (sin hora) | **E9** (AoO) | Mismo implante y metodología, dos días después de E7 [V3]; V14 (plan A) le da el contenido «compresión en una carpeta temporal · salida grande», sin tamaño ni destino en pantalla (`video/hilos-pelicula/src/scenes/parts/FilmRail.tsx:236`) | `src/data/s2.ts:630`; `video/diamond-e7/src/scenes/S10Thread.tsx:80-84` |
+| 2026-03-07 00:52 (sin zona) | AoO (s2m4) | Staging en `C:\Windows\Temp\~tmp4421.cab`. Antes la lección lo ponía el 4-3 a las 22:10; V14 (plan A) lo pasa a la madrugada del sábado 7-3, que es lo que E9 ya decía | `src/data/s2.ts:890` |
+| 2026-03-07 01:47 (sin zona) | AoO (s2m4) | Salen 1,2 GB hacia `transfer-cdn-eu.example` (antes, 5-3) | `src/data/s2.ts:891` |
 | 2026-03-07 | — | pDNS: last seen de `update-svc-cdn.com` en `185.220.x.x` [V4] | `video/pivot-infra/src/scenes/S03Pdns.tsx:66` |
-| 2026-03-09 08:05 → 08:23 (sin zona) | Víctima 2 | Orbital Components: «PO revision» a `finance@orbital.example`, `msdtcs.exe`, beacon a `portal-auth-check.example` | `src/data/s2.ts:887-890` |
+| 2026-03-09 08:05 → 08:23 (sin zona) | Víctima 2 | Orbital Components: «PO revision» a `finance@orbital.example`, `msdtcs.exe`, beacon a `portal-auth-check.example` | `src/data/s2.ts:894-897` |
 | 2026-03-09 (lunes), sin hora | V14 | El «hoy» del vídeo: Orbital le pasa a Meridian sus eventos de esa misma mañana (los de la fila anterior; no se dice cómo ni quién), y esa noche Meridian le pasa a Orbital qué buscar (compresión de archivos en carpetas temporales, transferencias salientes grandes) como hipótesis que se comprueba. Sin resultado: el vídeo no dice si se encontró algo | `video/hilos-pelicula/src/data/s01-fotos.ts:10-15`, `video/hilos-pelicula/src/data/s09-noche.ts:19-25` |
 | 2026-03-11 | — | El ISAC aeroespacial publica en una colección TAXII el indicador STIX de `cdn-sync-status.example` (válido hasta 2026-06-25); la TIP de Meridian lo recoge (pull) el 2026-07-02 | `src/data/s3.ts:1053`, `:1063-1070` |
 | marzo → mayo 2026 (rango) | — | Exfiltración de diseños de propulsión, según el BLUF | `src/data/s5.ts:312`; `src/data/labs.ts:1016` |
@@ -70,14 +72,14 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 |---|---|---|
 | Meridian Dynamics | Víctima. Aeroespacial, 8.000 empleados; programa de propulsión | `src/data/s1.ts:749`; `src/data/labs.ts:57` |
 | «8,000 endpoints» | Parque de equipos de Meridian (lab3c) | `src/data/labs.ts:426` |
-| `meridian.example` · `mail.meridian.example` | Dominio propio de Meridian y su servidor de correo | `src/data/s2.ts:72,872` |
-| ENG-WS-041 | Workstation de ingeniería de propulsión; host de s2m1 y de E7 [V3] | `src/data/s2.ts:76,581-582`; `video/diamond-e7/src/scenes/S01Hook.tsx:227,277` |
-| «servidores CAD», «propulsion R&D file server» | Activos que busca el actor | `src/data/s2.ts:539`; `src/data/labs.ts:304` |
+| `meridian.example` · `mail.meridian.example` | Dominio propio de Meridian y su servidor de correo | `src/data/s2.ts:72,879` |
+| ENG-WS-041 | Workstation de ingeniería de propulsión; host de s2m1 y de E7 [V3] | `src/data/s2.ts:76,588-589`; `video/diamond-e7/src/scenes/S01Hook.tsx:227,277` |
+| «servidores CAD», «propulsion R&D file server» | Activos que busca el actor | `src/data/s2.ts:546`; `src/data/labs.ts:304` |
 | tú, «primera analista CTI» | La protagonista; la ficha el CISO | `src/data/s1.ts:749`; `src/data/tracks.ts:111` |
 | el CISO, el consejo (board) | Sin nombre. El CISO pide los PIR; el consejo decide al final | `src/data/labs.ts:57,187` |
 | «Laura Iglesias - Talent» `l.iglesias@meridian-careers.com` | Remitente falso del spearphish | `src/data/s2.ts:69` |
 | analistas de RR. HH. | Reciben el spearphish (cuatro buzones); una abre el LNK | `src/data/labs.ts:238,243,319` |
-| Orbital Components (`orbital.example`, `finance@orbital.example`) | Proveedor de Meridian; Víctima 2 | `src/data/s2.ts:879-880` |
+| Orbital Components (`orbital.example`, `finance@orbital.example`) | Proveedor de Meridian; Víctima 2 | `src/data/s2.ts:886-887` |
 | «Orbital-2» | Etiqueta del Cluster-B en s4m4 | `src/data/s4.ts:723` |
 | tres proveedores de ingeniería con VPN | Proveedores de Meridian con acceso remoto | `src/data/labs.ts:531` |
 | «Bright Meridian Software Kft.» | Firmante desconocido de la muestra del sandbox | `src/data/s3.ts:334` |
@@ -91,65 +93,65 @@ Stellar Dynamics también existe, pero es un hallazgo del Lab 3A: ver §4.
 
 | Nombre | Qué hace | Fuente |
 |---|---|---|
-| SOC de Meridian («SOC · Meridian Dynamics») | Escala E7 y la intrusión del lab2a | `src/data/s2.ts:559`; `src/data/labs.ts:73`; `video/diamond-e7/src/scenes/S01Hook.tsx:183` |
+| SOC de Meridian («SOC · Meridian Dynamics») | Escala E7 y la intrusión del lab2a | `src/data/s2.ts:566`; `src/data/labs.ts:73`; `video/diamond-e7/src/scenes/S01Hook.tsx:183` |
 | Meridian CTI (`cti@meridian.example`) | Autor de flash alert, YARA y Sigma | `src/data/s5.ts:47,69,500` |
-| IR, IR lead, canal `#ir-hotline` | Respuesta; propone las medidas del lab2c | `src/data/s5.ts:66`; `src/data/labs.ts:96` |
+| IR, IR lead, canal `#ir-hotline` | Respuesta; propone las medidas del lab2c. En V22, «equipo de respuesta», sin persona ni postura: pregunta «¿qué hacemos con esto?» y no propone ni decide nada | `src/data/s5.ts:66`; `src/data/labs.ts:96`; `video/coa-precios/src/data/s01-hook.ts:9-10`; `video/coa-precios/narration.json:25` |
 | RR. HH. de Meridian | Destino del spearphish | `src/data/s2.ts:26` |
 
 ### Infraestructura
 
 | Dato exacto | Papel | Detalle | Fuente |
 |---|---|---|---|
-| `update-svc-cdn.com` | C2 del implante (HTTPS 443) | Beacon cada 60 s con jitter | `src/data/s2.ts:29,83,570,578`; `src/data/s3.ts:340` |
-| `185.220.x.x` | IP del C2 | Hosting compartido, ~14.000 dominios de terceros [V3][V4] | `src/data/s2.ts:578,591`; `src/data/labs.ts:736-739`; `video/diamond-e7/src/scenes/S09Quality.tsx:36` |
+| `update-svc-cdn.com` | C2 del implante (HTTPS 443) | Beacon cada 60 s con jitter. V22 rotula el paso de C2 «llama a casa cada minuto», sin dominio, y enseña el dominio solo en la celda Deny de C2 de la matriz, «sinkhole de `update-svc-cdn.com`» con `[!]` «quema tu visibilidad»: menú de la analista, no algo hecho | `src/data/s2.ts:29,83,577,585`; `src/data/s3.ts:340`; `video/coa-precios/src/data/s01-hook.ts:7`; `video/coa-precios/src/data/matrix.ts:88-95` |
+| `185.220.x.x` | IP del C2 | Hosting compartido, ~14.000 dominios de terceros [V3][V4] | `src/data/s2.ts:585,598`; `src/data/labs.ts:736-739`; `video/diamond-e7/src/scenes/S09Quality.tsx:36` |
 | pDNS de `update-svc-cdn.com` | Historial | `185.220.x.x`, first seen 2026-02-11, last seen 2026-03-07 [V4] | `video/pivot-infra/src/scenes/S03Pdns.tsx:63-66` |
 | WHOIS de `update-svc-cdn.com` | Registro | Creado 2025-11-18, NameFlow LLC; hoy Registrante y Email `REDACTED FOR PRIVACY`; ficha «WHOIS histórico · 2025»: Registrante «no consta», email `kazuo.tanji@protonmail.com` [V4] | `video/pivot-infra/src/scenes/S07Whois.tsx:15-19,141-144` |
-| `CN=updatesvc` · `SHA1 d4:7e:02…` | Certificado TLS autofirmado del C2 | Visto en 2 IP más: en total tres, `185.220.x.x`, `141.98.6.10` y una tercera sin revelar [V3][V4] | `src/data/s2.ts:579-580`; `video/pivot-infra/src/scenes/parts/s05-cert/bits.tsx:8-12`; `video/pivot-infra/src/scenes/S05Cert.tsx:57-60` |
+| `CN=updatesvc` · `SHA1 d4:7e:02…` | Certificado TLS autofirmado del C2 | Visto en 2 IP más: en total tres, `185.220.x.x`, `141.98.6.10` y una tercera sin revelar [V3][V4] | `src/data/s2.ts:586-587`; `video/pivot-infra/src/scenes/parts/s05-cert/bits.tsx:8-12`; `video/pivot-infra/src/scenes/S05Cert.tsx:57-60` |
 | `141.98.6.10` | VPS dedicado, muy pocos inquilinos | `pdns ip`: «3 dominios han resuelto a esta IP» [V4] | `src/data/labs.ts:664-667`; `video/pivot-infra/src/scenes/parts/s05-cert/PdnsConsole.tsx:84-85,123` |
 | `meridian-sso-portal.com` | Portal falso de login de Meridian (phishing), en `141.98.6.10` | Nodo de partida del Lab 3A [V4] | `src/data/s1.ts:86`; `src/data/labs.ts:648-651`; `video/pivot-infra/src/scenes/parts/s05-cert/PdnsConsole.tsx:160` |
-| `cdn-sync-status.example` · `mx1.cdn-sync-status.example` | Entrega: relay del correo de s2m1, dominio de phishing (s3m4), harvest de credenciales (abril) | Canon de P4 | `src/data/s2.ts:70-71,89`; `src/data/s3.ts:754`; `src/data/s5.ts:58`; `docs/superpowers/plans/2026-09-25-lesson-videos.md:623` |
+| `cdn-sync-status.example` · `mx1.cdn-sync-status.example` | Entrega: relay del correo de s2m1, dominio de phishing (s3m4), harvest de credenciales (abril) | Canon de P4. V22 lo enseña solo en la celda Deny de Delivery, «bloquear `cdn-sync-status.example` en el gateway» con `[!]`: menú, sin decir si está bloqueado | `src/data/s2.ts:70-71,89`; `src/data/s3.ts:754`; `src/data/s5.ts:58`; `docs/superpowers/plans/2026-09-25-lesson-videos.md:623`; `video/coa-precios/src/data/matrix.ts:53-59` |
 | WHOIS de `cdn-sync-status.example` | Registro | Creación 2026-02-27T14:03:11Z, expira 2027-02-27; NameFlow LLC; `proxy-7f3a21@privacyguard.example`; `NS1.FASTPARK-DNS.EXAMPLE`, `NS2.FASTPARK-DNS.EXAMPLE` | `src/data/s3.ts:760-770` |
 | `203.0.113.27` → `198.51.100.84` | IP de `cdn-sync-status.example` | La segunda es hosting compartido (300+ dominios) en s4m4 | `src/data/s3.ts:775-776`; `src/data/s4.ts:731` |
 | `meridian-careers.com` | Dominio verosímil del `From` del spearphish | | `src/data/s2.ts:69,89` |
 | `ocsp-verify-node.example` | Segundo C2 (fallback) de la muestra | | `src/data/s3.ts:341,348` |
-| `transfer-cdn-eu.example` | Destino de la exfiltración de Víctima 1 | | `src/data/s2.ts:877` |
-| `portal-auth-check.example` | C2 de Víctima 2 (Orbital) | | `src/data/s2.ts:883` |
+| `transfer-cdn-eu.example` | Destino de la exfiltración de Víctima 1 | | `src/data/s2.ts:884` |
+| `portal-auth-check.example` | C2 de Víctima 2 (Orbital) | | `src/data/s2.ts:890` |
 | `time.windows.com`, `ctldl.windowsupdate.com`, `www.msftconnecttest.com` | Ruido legítimo de Windows en el sandbox | No son del actor | `src/data/s3.ts:342-344` |
 | certificado de CT `f2:8c:37…` | Recién emitido para un dominio que «imita a Meridian»; nombre tapado entero [V4] | | `video/pivot-infra/src/scenes/S06Ct.tsx:437-438,467` |
 | cinco dominios hermanos | Lote con el mismo patrón y el mismo día, dormidos, todos tapados [V4] | | `video/pivot-infra/src/scenes/S09Preblock.tsx:35`; `video/pivot-infra/out/script-notes.md:66-67` |
 
-Documentos del caso: informe MER-2026-019 (E7, `src/data/s2.ts:564`), informe de sandbox MER-2026-023
+Documentos del caso: informe MER-2026-019 (E7, `src/data/s2.ts:571`), informe de sandbox MER-2026-023
 (`src/data/s3.ts:326`), referencia interna MER-2026-011 (`src/data/s5.ts:69,503,536`), flash alert
 MER-FA-2026-014 (`src/data/s5.ts:47`), campaña STIX «PO-REVISION phishing wave» (`src/data/s4.ts:1026`).
 
-Ficha completa de E7 (`src/data/s2.ts:565-587`): KC phase Command & Control, Result `success`, Direction
+Ficha completa de E7 (`src/data/s2.ts:572-594`): KC phase Command & Control, Result `success`, Direction
 `victim → infrastructure`, Methodology «beacon HTTPS, jitter 60s», Resources «hosting, dominio, cert TLS»
-(`src/data/s2.ts:567-571`); en V3 igual, con la dirección dibujada como flecha
+(`src/data/s2.ts:574-578`); en V3 igual, con la dirección dibujada como flecha
 (`video/diamond-e7/src/scenes/S06Meta.tsx:27-32`).
 
 ### Capacidades
 
 | Dato exacto | Qué es | Fuente |
 |---|---|---|
-| implante GLASS VIPER, «stage-1 loader» | La capability de E7 [V3] | `src/data/s2.ts:576`; `video/diamond-e7/src/scenes/S03Victim.tsx:316` |
-| SHA-256 `9f3a...e1` = `9f3a2c...e1` | Hash del implante de E7; es la misma muestra del sandbox | `src/data/s2.ts:577`; `src/data/s3.ts:328`; `docs/superpowers/plans/2026-09-25-lesson-videos.md:620` |
+| implante GLASS VIPER, «stage-1 loader» | La capability de E7 [V3] | `src/data/s2.ts:583`; `video/diamond-e7/src/scenes/S03Victim.tsx:316` |
+| SHA-256 `9f3a...e1` = `9f3a2c...e1` | Hash del implante de E7; es la misma muestra del sandbox | `src/data/s2.ts:584`; `src/data/s3.ts:328`; `docs/superpowers/plans/2026-09-25-lesson-videos.md:620` |
 | Imphash `1b8d4f2a...` | Comparte tabla de imports con 3 muestras previas | `src/data/s3.ts:329` |
 | ssdeep `3072:Ab9..:Xk2` | 94 % similar a la variante de 2026-01 | `src/data/s3.ts:330` |
-| PDB `D:\proj\cicada\loader\Release\ldr.pdb` | Ruta canónica (P4) | `src/data/s2.ts:881,889`; `src/data/s3.ts:332`; `src/data/s5.ts:510`; `src/data/labs.ts:294,772` |
+| PDB `D:\proj\cicada\loader\Release\ldr.pdb` | Ruta canónica (P4) | `src/data/s2.ts:888,896`; `src/data/s3.ts:332`; `src/data/s5.ts:510`; `src/data/labs.ts:294,772` |
 | `NtMapViewOfSection`, `CreateNamedPipeA`, `CreateProcessA` | Imports de la muestra; V15 cambió la lección de `MapViewOfSection` a `NtMapViewOfSection` (la regla YARA de S5 sigue encontrándola como subcadena, `src/data/s5.ts:507`) | `src/data/s3.ts:333` |
-| named pipe `vc_pipe_%08x` | Formato propio; instancias `vc_pipe_4f8a1c9e` (sandbox) y `vc_pipe_3a7f09c1` (E7) [V3] | `src/data/s2.ts:577`; `src/data/s3.ts:337`; `video/diamond-e7/src/data/s03-victim.ts:38` |
-| `schtasks /create /tn WindowsUpdateCheck /tr C:\ProgramData\winhlp.exe /sc onlogon` | Persistencia | `src/data/s2.ts:81-82,1167`; `src/data/s3.ts:338` |
-| `winhlp.exe` (`C:\ProgramData\winhlp.exe`) | Loader según las lecciones (canon P4) | `src/data/s2.ts:80,880`; `docs/superpowers/plans/2026-09-25-lesson-videos.md:621` |
-| `winhlp.exe   SHA-256 4c81...b3` | Hash del loader en el árbol de s2m5; lleva la ruta del PDB (decidido en V14, **solo para el registro**: nunca en pantalla ni en voz, por el dosier de BROKEN CHAIN, `src/data/course-gcti.ts:40`) | `src/data/s2.ts:1165,1354` |
+| named pipe `vc_pipe_%08x` | Formato propio; instancias `vc_pipe_4f8a1c9e` (sandbox) y `vc_pipe_3a7f09c1` (E7) [V3] | `src/data/s2.ts:584`; `src/data/s3.ts:337`; `video/diamond-e7/src/data/s03-victim.ts:38` |
+| `schtasks /create /tn WindowsUpdateCheck /tr C:\ProgramData\winhlp.exe /sc onlogon` | Persistencia | `src/data/s2.ts:81-82,1174`; `src/data/s3.ts:338` |
+| `winhlp.exe` (`C:\ProgramData\winhlp.exe`) | Loader según las lecciones (canon P4) | `src/data/s2.ts:80,887`; `docs/superpowers/plans/2026-09-25-lesson-videos.md:621` |
+| `winhlp.exe   SHA-256 4c81...b3` | Hash del loader en el árbol de s2m5; lleva la ruta del PDB (decidido en V14, **solo para el registro**: nunca en pantalla ni en voz, por el dosier de BROKEN CHAIN, `src/data/course-gcti.ts:40`) | `src/data/s2.ts:1172,1361` |
 | `C:\ProgramData\UpdSvc\updsvc.exe`, `signed=false` | Binario del implante en E7 [V3] | `video/diamond-e7/src/data/s03-victim.ts:29,32` |
-| `msdtcs.exe` | Loader en Orbital (Víctima 2) | `src/data/s2.ts:888` |
-| `wcssvc.exe -decode a.txt payload.bin` | `certutil` renombrado (`OriginalFileName` CertUtil.exe) | `src/data/s2.ts:1161-1162`; `src/data/s5.ts:555` |
-| `powershell.exe -nop -w hidden -enc SQBFAFgAKA...` | Ejecución tras abrir el LNK | `src/data/s2.ts:79,1158` |
+| `msdtcs.exe` | Loader en Orbital (Víctima 2) | `src/data/s2.ts:895` |
+| `wcssvc.exe -decode a.txt payload.bin` | `certutil` renombrado (`OriginalFileName` CertUtil.exe) | `src/data/s2.ts:1168-1169`; `src/data/s5.ts:555` |
+| `powershell.exe -nop -w hidden -enc SQBFAFgAKA...` | Ejecución tras abrir el LNK | `src/data/s2.ts:79,1165` |
 | `CV_Ingeniero.zip` con `CV_Ingeniero.pdf.lnk` | Artefacto de entrega | `src/data/s2.ts:74`; `src/data/labs.ts:228` |
 | mutex único (sin nombre) | Otro artefacto del loader | `src/data/s3.ts:310` |
 | `GLASSVIPER_Loader_MemMap` · `$op = { 6A 40 68 00 30 00 00 }` | Regla YARA de la lección | `src/data/s5.ts:497,509` |
 | «GLASS VIPER Staging via Renamed Certutil» | Regla Sigma, id `4b8d2f6a-9c31-4e02-b7aa-meridian0042` | `src/data/s5.ts:531-532` |
-| T1059.001 · T1140 · T1053.005 · T1071.001 | Técnicas ATT&CK del árbol de s2m5 | `src/data/s2.ts:1159,1163,1168,1173` |
+| T1059.001 · T1140 · T1053.005 · T1071.001 | Técnicas ATT&CK del árbol de s2m5 | `src/data/s2.ts:1166,1170,1175,1180` |
 | canal secundario por API de almacenamiento en la nube | C2 de respaldo del lab2a | `src/data/labs.ts:258` |
 | cuenta VPN de proveedor comprometida · webshell en el portal del proveedor | Evidencia del lab2b | `src/data/labs.ts:329,334` |
 
@@ -162,10 +164,10 @@ Los strings y muestras del Lab 3B (`vc_stage2.bin`, `VC_Loader_v1.dll`, `VC_Load
 | VELVET CICADA | Núcleo del grupo; intrusion set de espionaje contra el programa de propulsión; adversario de S5 | `src/data/course-gcti.ts:93-97`; `src/data/s3.ts:1048`; `src/data/s5.ts:312` |
 | «VC» | Firma de quien compra el acceso inicial (dossier de S1) | `src/data/course-gcti.ts:21` |
 | EMBER FOX | Célula de acceso inicial, spearphishing; adversario de S1 | `src/data/course-gcti.ts:17-19` |
-| GLASS VIPER | Operadores de intrusión (S2); también nombre del implante y de un intrusion set STIX (ver §5) | `src/data/course-gcti.ts:36-38`; `src/data/s2.ts:576`; `src/data/s4.ts:1016` |
+| GLASS VIPER | Operadores de intrusión (S2); también nombre del implante y de un intrusion set STIX (ver §5) | `src/data/course-gcti.ts:36-38`; `src/data/s2.ts:583`; `src/data/s4.ts:1016` |
 | HOLLOW LANTERN | Equipo de infraestructura del adversario; adversario de S3 | `src/data/course-gcti.ts:55-57` |
 | PAPER CRANE | Célula de engaño: siembra false flags; adversario de S4. Ficha en pantalla: «célula de engaño · siembra pistas falsas» [V9] | `src/data/course-gcti.ts:74-76`; `src/data/labs.ts:149`; `video/ach-matriz/src/data/s03-supuestos.ts:7` |
-| `kazuo.tanji@protonmail.com` | Email de registro; sería el *operator* si el pivote confirma. El *customer* sigue sin conocerse | `src/data/s2.ts:575,591` |
+| `kazuo.tanji@protonmail.com` | Email de registro; sería el *operator* si el pivote confirma. El *customer* sigue sin conocerse | `src/data/s2.ts:582,598` |
 | horario laboral UTC+8 | Patrón del operador; baja diagnosticidad | `src/data/labs.ts:324,907` |
 | `resource_level: organization` · `primary_motivation: organizational-gain` | Perfil STIX de GLASS VIPER | `src/data/s4.ts:1019-1020` |
 | Cluster-A (Meridian) frente a Cluster-B (Orbital-2) | Se mantienen separados | `src/data/s4.ts:722-737` |
@@ -189,6 +191,8 @@ Mensajes interceptados publicados. Son canon de la voz del adversario; un guion 
 | GLASS VIPER | «Otra empresa, otro dominio, otro correo. Eso no es cosa mía.» | `video/hilos-pelicula/narration.json:143` (s03-06) |
 | GLASS VIPER | «Ya me has metido en un grupo. Pues dime quién soy.» | `video/hilos-pelicula/narration.json:319` (s07-01) |
 | GLASS VIPER | «En Orbital solo llamo a casa. Ahí no va a pasar nada más.» | `video/hilos-pelicula/narration.json:359` (s08-01) |
+| GLASS VIPER | «Ponme todas las alarmas que quieras. Para pararme ya habrá tiempo.» | `video/coa-precios/narration.json:70` (s03-01) |
+| GLASS VIPER | «Córtame ya. Me mudo en cinco minutos y vuelves a empezar.» | `video/coa-precios/narration.json:146` (s05-01) |
 | HOLLOW LANTERN | «Mis certificados me los firmo yo. Nadie más tiene uno igual.» | `video/pivot-infra/narration.json:189` |
 | HOLLOW LANTERN | «Mi WHOIS está tapado. Privacidad, analista. Búscate otro hobby.» | `video/pivot-infra/narration.json:277` |
 | HOLLOW LANTERN | «¿Por qué no vienes a verme? Mi servidor te está esperando.» | `video/pivot-infra/narration.json:381` |
@@ -250,8 +254,8 @@ Cada dossier se lee tras ganar el boss de su sección, así que un vídeo de esa
 Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pantalla en un vídeo publicado.
 
 1. **Binario y hash del loader en ENG-WS-041.** Las lecciones dicen `C:\ProgramData\winhlp.exe`
-   (`src/data/s2.ts:80-83`) con SHA-256 `4c81...b3` en s2m5 (`src/data/s2.ts:1165,1354`); E7 usa `9f3a...e1`
-   (`src/data/s2.ts:577`; `src/data/s3.ts:328`); V3 enseña `C:\ProgramData\UpdSvc\updsvc.exe` con `9f3a...e1`
+   (`src/data/s2.ts:80-83`) con SHA-256 `4c81...b3` en s2m5 (`src/data/s2.ts:1172,1361`); E7 usa `9f3a...e1`
+   (`src/data/s2.ts:584`; `src/data/s3.ts:328`); V3 enseña `C:\ProgramData\UpdSvc\updsvc.exe` con `9f3a...e1`
    [V3] (`video/diamond-e7/src/data/s03-victim.ts:29-32`); el Lab 3B llama a la variante de Meridian
    `VC_Loader_v1.dll` (`src/data/labs.ts:816-819`). P4 dejó el `4c81...b3` sin tocar a propósito
    (`docs/superpowers/plans/2026-09-25-lesson-videos.md:626`).
@@ -265,21 +269,24 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
    (`src/data/s3.ts:334,533`); V3 muestra `signed=false` para el mismo hash [V3]
    (`video/diamond-e7/src/data/s03-victim.ts:32`). El plan dice que es la misma muestra
    (`docs/superpowers/plans/2026-09-25-lesson-videos.md:620`).
-3. **Intervalo del beacon.** 60 s en `src/data/s2.ts:83,236,570` y `src/data/s3.ts:340`, y [V3]
-   `video/diamond-e7/src/scenes/S06Meta.tsx:31`; 90 s en el lab2a (`src/data/labs.ts:253`).
+3. **Intervalo del beacon.** 60 s en `src/data/s2.ts:83,236,577` y `src/data/s3.ts:340`, y [V3]
+   `video/diamond-e7/src/scenes/S06Meta.tsx:31`; 90 s en el lab2a (`src/data/labs.ts:253`). V22 dice «llama a casa
+   cada minuto» en pantalla, sin jitter (`video/coa-precios/src/data/s01-hook.ts:7`).
 4. **Vector de entrada.** Spearphish del CV a RR. HH. el 2026-03-02 09:41 UTC (`src/data/s2.ts:68-74`) frente a
-   correo «PO revision» a `j.alvarez@` ese mismo día a las 09:14, sin zona (`src/data/s2.ts:872`), frente a cuenta
+   correo «PO revision» a `j.alvarez@` ese mismo día a las 09:14, sin zona (`src/data/s2.ts:879`), frente a cuenta
    VPN de proveedor (`src/data/labs.ts:329`) y «supplier portals» en el BLUF (`src/data/s5.ts:312`;
-   `src/data/labs.ts:1016`). Las horas de s2m4 no llevan zona horaria (`src/data/s2.ts:879-890`). **Resuelto en parte por V14 (plan A):** la Víctima 1 del walkthrough de s2m4 ya no recibe el «PO revision» a `j.alvarez@` a las 09:14, sino el mismo correo del CV a las 09:41 que s2m1 (`src/data/s2.ts:879`); «PO revision» queda solo para Orbital y para los proveedores de S4 y S5. Siguen abiertos la cuenta VPN de proveedor y los «supplier portals».
+   `src/data/labs.ts:1016`). Las horas de s2m4 no llevan zona horaria (`src/data/s2.ts:886-897`). **Resuelto en parte por V14 (plan A):** la Víctima 1 del walkthrough de s2m4 ya no recibe el «PO revision» a `j.alvarez@` a las 09:14, sino el mismo correo del CV a las 09:41 que s2m1 (`src/data/s2.ts:886`); «PO revision» queda solo para Orbital y para los proveedores de S4 y S5. Siguen abiertos la cuenta VPN de proveedor y los «supplier portals».
 5. **Quién abre el LNK.** Una analista de RR. HH. (`src/data/labs.ts:238,243`; `src/data/s2.ts:26`), pero la
-   cadena ocurre en ENG-WS-041, workstation de ingeniería (`src/data/s2.ts:76,582`).
+   cadena ocurre en ENG-WS-041, workstation de ingeniería (`src/data/s2.ts:76,589`). V22 solo deja «RR. HH.» en la
+   celda del buzón señuelo de la matriz, siempre atenuada y sin voz (`video/coa-precios/src/data/matrix.ts:60-66`); no
+   sale ningún equipo ni persona.
 6. **Cuál es «el dominio del phishing».** `meridian-sso-portal.com` es «el dominio del phishing inicial»
    (`src/data/labs.ts:648-651`); `cdn-sync-status.example` es «el dominio de phishing de la campaña»
    (`src/data/s3.ts:754`) y el relay del correo de s2m1 (`src/data/s2.ts:70-71,89`).
-7. **Exfiltración.** 1,2 GB a `transfer-cdn-eu.example` tras staging en `.cab` (`src/data/s2.ts:876-877`) frente a
+7. **Exfiltración.** 1,2 GB a `transfer-cdn-eu.example` tras staging en `.cab` (`src/data/s2.ts:883-884`) frente a
    650 MB a un servicio de ficheros tras staging en RAR bajo `C:\ProgramData\tmp` (`src/data/labs.ts:268,273,1037`).
-   Además, en s2m4 sale el 2026-03-05 a las 01:47, antes de E7 (C2, `src/data/s2.ts:566`), mientras que E9, el
-   evento de Actions on Objectives, es del 2026-03-07 (`src/data/s2.ts:623`; [V3]
+   Además, en s2m4 sale el 2026-03-05 a las 01:47, antes de E7 (C2, `src/data/s2.ts:573`), mientras que E9, el
+   evento de Actions on Objectives, es del 2026-03-07 (`src/data/s2.ts:630`; [V3]
    `video/diamond-e7/src/scenes/S10Thread.tsx:81`).
 8. **Duración de la operación.** «6 meses de acceso» (`src/data/s4.ts:429`; `src/data/labs.ts:883,919`) y
    exfiltración «between March and May» (`src/data/s5.ts:312`) frente a la actividad del Cluster-A
@@ -287,20 +294,20 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
    V9 enseña «6 meses» en pantalla tal cual, sin fechas, así que hereda el hueco [V9]
    (`video/ach-matriz/src/data/matrix.ts:48`; `video/ach-matriz/src/scenes/parts/Whiteboard.tsx:26`).
 9. **Qué es GLASS VIPER.** Operadores de intrusión (`src/data/course-gcti.ts:36-40`); implante/loader
-   (`src/data/s2.ts:576`; `src/data/s3.ts:62,326`; `src/data/s5.ts:491`); intrusion set STIX y grupo de vendor
+   (`src/data/s2.ts:583`; `src/data/s3.ts:62,326`; `src/data/s5.ts:491`); intrusion set STIX y grupo de vendor
    (`src/data/s4.ts:814,1016,1048`). VELVET CICADA también es «intrusion set» (`src/data/s3.ts:1048`;
    `src/data/s5.ts:312`). V3 lo explica como nombre de seguimiento del implante y quien lo usa [V3]
    (`video/diamond-e7/narration.json:139`).
    **Lectura que usa V8** (2026-10-03, decisión de Lidia: no se renombra el intrusion set STIX de S4,
    `src/data/s4.ts:1016`): GLASS VIPER es el loader y el nombre que usan los vendors y el ISAC; VELVET CICADA es el
    intrusion set en el modelo de Meridian, el que «uses» ese loader en su grafo.
-10. **«Tres C2» con el mismo certificado** (`src/data/s2.ts:841`; `src/data/labs.ts:314`) frente a las tres IP de
+10. **«Tres C2» con el mismo certificado** (`src/data/s2.ts:848`; `src/data/labs.ts:314`) frente a las tres IP de
     V4: el C2, el VPS del phishing `141.98.6.10` y una desconocida [V4]
     (`video/pivot-infra/src/scenes/S05Cert.tsx:57-60`).
 11. **Muestras con el mismo PDB.** Tres (`src/data/course-gcti.ts:40`) frente a dos loaders
-    (`src/data/s2.ts:840,874,882`) frente a solo la variante 1 del Lab 3B (`src/data/labs.ts:775,826`). **Resuelto en parte por V14 (plan A):** son tres compilaciones con la misma ruta, `winhlp.exe` `4c81...b3` (2-3), la muestra `9f3a...e1` de E7 (5-3, `src/data/s3.ts:332`) y `msdtcs.exe` en Orbital (9-3), que es lo que dice el dosier; la lección enseña dos (`src/data/s2.ts:881,889`) y nada en pantalla dice «tres».
-12. **Inquilinos de `185.220.x.x`.** «hundreds» en la explicación de un check (`src/data/s2.ts:617`) frente a
-    ~14.000 (`src/data/s2.ts:591`; `src/data/labs.ts:739`; [V3] `video/diamond-e7/src/scenes/S09Quality.tsx:36`).
+    (`src/data/s2.ts:847,881,889`) frente a solo la variante 1 del Lab 3B (`src/data/labs.ts:775,826`). **Resuelto en parte por V14 (plan A):** son tres compilaciones con la misma ruta, `winhlp.exe` `4c81...b3` (2-3), la muestra `9f3a...e1` de E7 (5-3, `src/data/s3.ts:332`) y `msdtcs.exe` en Orbital (9-3), que es lo que dice el dosier; la lección enseña dos (`src/data/s2.ts:888,896`) y nada en pantalla dice «tres».
+12. **Inquilinos de `185.220.x.x`.** «hundreds» en la explicación de un check (`src/data/s2.ts:624`) frente a
+    ~14.000 (`src/data/s2.ts:598`; `src/data/labs.ts:739`; [V3] `video/diamond-e7/src/scenes/S09Quality.tsx:36`).
 13. **IP del relay.** El correo sale de `mx1.cdn-sync-status.example (203.0.113.27)` el 2026-03-02
     (`src/data/s2.ts:71-72`), pero el pDNS dice que el dominio dejó esa IP el 2026-03-01 (`src/data/s3.ts:775-776,780`).
     Es un subdominio, así que puede no chocar, pero nadie lo explica. V13 enseña la IP en la línea `Received` sin comentarla (`video/kill-chain-eslabon/src/scenes/parts/LessonLog.tsx:95`).
@@ -316,18 +323,38 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
     (`src/data/s3.ts:769-770`). El patrón «mismos nameservers» de V4 no tiene valores
     (`video/pivot-infra/src/scenes/parts/s07-whois/shared.tsx:13`).
 17. **Numeración de informes.** MER-2026-011 se cita el 2026-04-18 (`src/data/s5.ts:69,503`), con número menor que
-    el MER-2026-019 de E7 (`src/data/s2.ts:564`) y el MER-2026-023 del sandbox (`src/data/s3.ts:326`).
+    el MER-2026-019 de E7 (`src/data/s2.ts:571`) y el MER-2026-023 del sandbox (`src/data/s3.ts:326`).
 18. **Opción mala del Lab 5B con otros datos.** «On 14 March … WKS-0211» (`src/data/labs.ts:1011`) frente a
     2 de marzo y ENG-WS-041 (`src/data/s2.ts:68,76`). Es una opción incorrecta por estilo, no por datos.
 19. **Paso de `certutil`.** El árbol de s2m5 dice ser el host de s2m1 e incluye `wcssvc.exe`
-    (`src/data/s2.ts:1151,1161`); la cadena de s2m1 no lo tiene (`src/data/s2.ts:79-80`). V13 enseña la cadena de s2m1, sin `certutil`, y la voz no dice qué proceso escribe `winhlp.exe`.
+    (`src/data/s2.ts:1158,1168`); la cadena de s2m1 no lo tiene (`src/data/s2.ts:79-80`). V13 enseña la cadena de s2m1, sin `certutil`, y la voz no dice qué proceso escribe `winhlp.exe`.
 20. **TLD mezclados.** Dominios del actor en `.com`/`.net` (`src/data/s2.ts:29`; `src/data/labs.ts:688,696`) y en
-    `.example` (`src/data/s2.ts:877,883`; `src/data/s3.ts:341,760`).
+    `.example` (`src/data/s2.ts:884,890`; `src/data/s3.ts:341,760`).
 21. **Brief frente a pantalla (resuelto por la pantalla).** El brief de V4 proponía un lookalike de CT con nombre
     parcial (`video/pivot-infra/out/scene-brief.md:52-53`); el vídeo lo tapa entero [V4]
     (`video/pivot-infra/src/scenes/S06Ct.tsx:436-437`).
 22. **Resto de P4 sin tocar.** El PDB genérico `C:\Users\kaz\dev\stage2\bin\release\st2.pdb` de una pregunta de
     s3m2 es de otro binario (`src/data/s3.ts:397`; `docs/superpowers/plans/2026-09-25-lesson-videos.md:627`).
+23. **Ficha de V22 frente a pantalla y voz (resuelto por la pantalla y la voz).** La ficha
+    (`docs/reviews/2026-10-08-fichas-tanda4/ficha-V22.md`) pedía: el sinkhole «no mata la llamada de hoy» (`:97`), y la voz
+    dice «No corta la llamada en curso, pero las siguientes ya no llegan» (`video/coa-precios/narration.json:159`;
+    `video/coa-precios/out/script-notes.md:53-54`); en s04, la celda única «bloquear el dominio del correo en el gateway» y
+    «un dominio que no está en la lista» (`:96`, `:172`), y la voz dice «bloquear el dominio del remitente» y «Si llega un
+    correo desde otro dominio» (`video/coa-precios/narration.json:119,125`), con un sobre sin ningún texto en pantalla
+    (`video/coa-precios/src/scenes/parts/s04-fase/Envelope.tsx:7-11`); «el actor lo sabrá en minutos» **en lugar** de «quema
+    el hilo» (`:168-170`), y la celda lleva el texto nuevo de la lección, «quema tu visibilidad», con «el actor lo sabrá en
+    minutos» como glosa aparte (`video/coa-precios/src/data/matrix.ts:94`; `video/coa-precios/src/data/s05-caminos.ts:6`); el
+    puente con V13 en voz (`:97`), y solo está en pantalla, «los pasos de antes ya no los puedes impedir»
+    (`video/coa-precios/src/data/s05-caminos.ts:4`; `video/coa-precios/out/script-notes.md:41-43`); y dejaba a la voz nombrar a
+    GLASS VIPER (`:59`), que no nombra ni a GLASS VIPER ni a VELVET CICADA (`video/coa-precios/out/script-notes.md:68`).
+    El punto condicional que preveían las decisiones («s2m2 limita el tráfico a la IP del C2»,
+    `docs/reviews/2026-10-08-fichas-tanda4/decisiones-V22-V23.md:129-130`) no hace falta: la lección de esta rama ya dice
+    «hacia el C2» (`src/data/s2.ts:343`).
+24. **La matriz de s2m2 frente a V22.** La lección la presenta como «la matriz CoA de Meridian para la intrusión de VELVET
+    CICADA» (`src/data/s2.ts:319`), que puede leerse como lo desplegado; V22 la fija como menú de trabajo de la analista
+    (§7). Y el ejemplo de la lección «lo monitorizas 48h» (`src/data/s2.ts:314`) coincide con los «+2 días» de E9 [V3]: si
+    un guion dijera que Meridian miró 48 horas, daría a entender que vio salir los datos (punto 7;
+    `docs/reviews/2026-10-08-fichas-tanda4/decisiones-V22-V23.md:52-56`). V22 no da ningún intervalo.
 
 ## 6. Nombres libres (relleno neutro ya usado)
 
@@ -354,7 +381,7 @@ Aquí se añade un bloque por vídeo cuando se produce: los datos que solo exist
 
 ### V3 · `diamond-e7` · s2m3 · YouTube `rwMIu0XBoWQ`
 
-Lección `src/data/s2.ts:594-596`; adversario de los interceptados GLASS VIPER (`video/diamond-e7/video.json:8`).
+Lección `src/data/s2.ts:601-603`; adversario de los interceptados GLASS VIPER (`video/diamond-e7/video.json:8`).
 No tiene notas de guion. Canon nuevo:
 
 - Líneas crudas del EDR (`video/diamond-e7/src/data/s03-victim.ts:20-45`): tenant «Meridian Dynamics · sensor
@@ -395,7 +422,7 @@ Lección `src/data/s3.ts:629-631`; adversario HOLLOW LANTERN (`video/pivot-infra
 
 ### V7 · `attack-piramide` · s2m5 · YouTube `XCOAc7tlPTE`
 
-Lección `src/data/s2.ts:1097` (bloque `youtube` entre el párrafo de la escalera de abstracción y el primer check del
+Lección `src/data/s2.ts:1104` (bloque `youtube` entre el párrafo de la escalera de abstracción y el primer check del
 árbol); adversario de los interceptados GLASS VIPER (`video/attack-piramide/video.json:8`). Notas propias en
 `video/attack-piramide/out/script-notes.md`. Canon nuevo:
 
@@ -413,7 +440,7 @@ Lección `src/data/s2.ts:1097` (bloque `youtube` entre el párrafo de la escaler
   estáticos sin definir y **no** es la variante 2 (`src/data/labs.ts:826`).
 - **Dos pruebas de la analista, sin fecha ni dueño:** una regla por el hash `4c81...b3` sobre la foto del 5-3 da
   «0 coincidencias»; la regla de comportamiento de la lección («PowerShell lanzado por explorer crea una tarea
-  programada no inventariada», `src/data/s2.ts:1179`), pasada por toda la cadena del 2-3, salta en la línea de la
+  programada no inventariada», `src/data/s2.ts:1186`), pasada por toda la cadena del 2-3, salta en la línea de la
   tarea, `09:44:20` (`src/data/s2.ts:81`). No se dice si el SOC las despliega.
 - **La imagen de la pirámide** continúa la de V3: la ropa es el hash; el acento, los nombres y las rutas (V3 lo usó
   para el patrón del named pipe, lo que sobrevive a recompilar); cómo anda, los TTPs. El 5-3 «cambió de ropa y
@@ -577,13 +604,13 @@ intrusión:** todo lo que sale ya estaba en V3, V7 o en la lección. Canon nuevo
 
 ### V14 · `hilos-pelicula` · s2m4 · YouTube `pjGQiqy0CdE`
 
-Lección `src/data/s2.ts:945-951` (bloque `video` después del último check, «Victim 2's thread shows Delivery → Exploitation →
+Lección `src/data/s2.ts:952-958` (bloque `video` después del último check, «Victim 2's thread shows Delivery → Exploitation →
 Installation → C2 but no staging or exfil yet…», y antes del callout «🎖️ Campaña»); 7:51, subido a Alertópolis el 2026-10-06 y
 público el 2026-10-08. Adversario de los interceptados GLASS VIPER (`video/hilos-pelicula/video.json:8`), con la voz
 `sapi/Microsoft Pablo` y el efecto `machine` (`video/hilos-pelicula/narration.json:11-15`). Notas propias en
 `video/hilos-pelicula/out/script-notes.md`. Va sin hora; el «hoy» es el lunes 9-3 (ver §2). **La lección cambió con él (plan A,
 decidido el 2026-10-05):** la Víctima 1 del walkthrough pasa a ser la de s2m1 (el CV de las 09:41, el LNK en `ENG-WS-041`, el
-beacon), con staging y salida el 7-3 (`src/data/s2.ts:879-884`); «PO revision» queda solo para Orbital (`:887`). Canon nuevo:
+beacon), con staging y salida el 7-3 (`src/data/s2.ts:886-891`); «PO revision» queda solo para Orbital (`:894`). Canon nuevo:
 
 - **El hilo de Meridian en pantalla** (`video/hilos-pelicula/src/scenes/parts/FilmRail.tsx:231-236`): cuatro eventos del 02-03
   sin número, hora, equipo ni archivo (Delivery «correo con un CV», Exploitation «se abre el adjunto», Installation «loader y
@@ -591,7 +618,7 @@ beacon), con staging y salida el 7-3 (`src/data/s2.ts:879-884`); «PO revision»
   «compresión en una carpeta temporal · salida grande»). Los del 2-3 no reciben número de evento: E1–E6 y E8 siguen sin
   definir. E9 sale dos veces: en s01 con la ficha de V3 tal cual («misma metodología») y en s02 con el contenido del plan A,
   sin tamaño ni destino. Hueco menor: V3 dice que E9 tiene la metodología de E7 (beacon HTTPS), y una salida de datos no es
-  eso (`src/data/s2.ts:570`).
+  eso (`src/data/s2.ts:577`).
 - **El hilo de Orbital** (`video/hilos-pelicula/src/scenes/parts/s03-orbital/OrbitalLog.tsx:36-60`): `2026-03-09 08:05` el
   correo «PO revision» a `finance@orbital.example` («un pedido falso a Finanzas»), `08:22` el adjunto que se ejecuta y deja
   `C:\Users\..\msdtcs.exe` con la ruta del PDB, `08:23` el beacon a `portal-auth-check.example`. El montón de Orbital lleva
@@ -681,7 +708,89 @@ tira de V3. **La lección cambió con él:** `MapViewOfSection` pasa a `NtMapVie
 - **No se toca** (sigue fuera): el dosier de DEEP WELL (`src/data/course-gcti.ts:59`): ni certificados compartidos, ni `kazuo.tanji@`, ni
   «una sola organización»; el de BROKEN CHAIN (`src/data/course-gcti.ts:40`): ni «el mismo PDB en tres muestras» ni cuántas lo comparten
   (§5 punto 11; las «3 muestras previas» del imphash son de la lección y no se relacionan con el PDB); y los dos loaders de s2m4 con el
-  mismo PDB (`src/data/s2.ts:879-890`), que son la demo de V14.
+  mismo PDB (`src/data/s2.ts:886-897`), que son la demo de V14.
+
+### V22 · `coa-precios` · s2m2 · YouTube `ghNoHuq7GIk`
+
+Lección `src/data/s2.ts:389-395` (bloque `video` después del tercer check, «Quarantining a host while its implant is actively
+beaconing is:», `:379-388`, como último bloque de la lección y antes del `quiz`, `:397`); 3:45 (6742 fotogramas a 30 fps,
+`video/coa-precios/src/timeline.json:7`), subido a Alertópolis el 2026-10-14 como privado (`video/coa-precios/out/youtube-upload.json:2-4`).
+Cápsula (`capsula-yt`). Adversario de los interceptados GLASS VIPER (`video/coa-precios/video.json:8`), con la voz
+`sapi/Microsoft Pablo` y el efecto `machine` (`video/coa-precios/narration.json:11-15`). Notas propias en
+`video/coa-precios/out/script-notes.md`. **Sin fecha ni hora**, como V9 y V15: es posterior a la reconstrucción de la cadena
+(V7 y V13), pero no se ordena contra §2. **La lección cambió con él:** «hacia el C2» en lugar de «hacia la IP del C2», «quema tu
+visibilidad» y «pierdes la visibilidad» en lugar de «el hilo», y «con poca firma» y «mucha de su operación» en la lectura de
+la matriz (`src/data/s2.ts:314,342-343,352`). Canon nuevo, solo de pantalla y de voz:
+
+- **El punto de partida** (`video/coa-precios/src/data/s01-hook.ts:4-10`): la fila de pasos de la intrusión, pequeña y
+  atenuada (Delivery, Exploitation, Installation, Command & Control, Actions on Objectives), con una marca en C2, «llama a casa
+  cada minuto» (`video/coa-precios/src/scenes/parts/s01-hook/Chain.tsx:72`), sin ficha de alerta, fecha, hora, equipo ni
+  dominio; «Meridian Dynamics · aeroespacial · tú, su analista de inteligencia»; y «equipo de respuesta: ¿qué hacemos con
+  esto?». En voz: «En Meridian, una aeroespacial, ya sabes en qué paso va la intrusión. Y el equipo de respuesta te pregunta
+  “¿qué hacemos con esto?”» (`video/coa-precios/narration.json:25`). El equipo de respuesta es el rol de §3, sin persona: pregunta
+  y no propone ni decide nada.
+- **La matriz es el menú de trabajo de la analista, nunca lo que Meridian tiene desplegado** (`video/coa-precios/src/data/matrix.ts:2-3`;
+  en voz, «tu matriz», `video/coa-precios/narration.json:77`). Título «Matriz Courses of Action · extracto de trabajo (ficticia)»
+  (`video/coa-precios/src/data/matrix.ts:126`; la lección añade «intrusión VELVET CICADA», `src/data/s2.ts:324`, que la pantalla
+  no pone). Cinco filas y cinco columnas (Detect, Deny, Disrupt, Degrade, Deceive), las trece celdas de la lección palabra
+  por palabra (`video/coa-precios/src/data/matrix.ts:31-116`; `src/data/s2.ts:325-348`), con sus tres `[!]` (Delivery·Deny,
+  Installation·Disrupt, C2·Deny) y el recuento 3 · 2 · 2 · 3 · 3 (`:123`); dos tiras, «Reconnaissance · Weaponization · casi
+  nunca a tu alcance» y «Discover y Destroy no ocupan celda en este extracto» (`:130-131`). El vídeo no dice si alguna celda
+  está puesta, ni si se corta el C2, se mira o se hace otra cosa.
+- **Lo que la pantalla cambia respecto a la lección**, aparte del título: «RR. HH.» con espacio (`video/coa-precios/src/data/matrix.ts:4,63`;
+  la lección pone «RR.HH.», `src/data/s2.ts:330`); la celda del buzón señuelo, siempre atenuada (`matrix.ts:60-66`); y la glosa
+  «el actor lo sabrá en minutos» junto al `[!]` de C2 (`video/coa-precios/src/data/s05-caminos.ts:6`), que resume
+  `src/data/s2.ts:352` y no sustituye el texto de la celda («quema tu visibilidad», `matrix.ts:94`). Ninguna acción cambia de celda.
+  Los otros dos retoques que la ficha pedía en pantalla («hacia el C2» y quitar «quema el hilo») ya están en la lección.
+- **Las celdas que nombra la voz:** Deny de Exploitation, «impide que un adjunto lance PowerShell»; Disrupt de Installation,
+  «aísla el ordenador en cuanto aparece la tarea programada» («el ordenador», porque «el equipo» es el de respuesta;
+  `video/coa-precios/narration.json:83,89`; `video/coa-precios/out/script-notes.md:58-59`); el sinkhole de C2, «Es hacer que su
+  dominio no conteste, el sinkhole. No corta la llamada en curso, pero las siguientes ya no llegan. Por eso es Deny.»
+  (`video/coa-precios/narration.json:159`; en pantalla, «no corta la llamada en curso · las siguientes no llegan a ninguna parte ·
+  DENY», `video/coa-precios/src/data/s05-caminos.ts:8`). El sinkhole es Deny, no Disrupt.
+- **El correo de s04 es hipotético:** «Imagina que la entrega solo tuviera una celda, bloquear el dominio del remitente» y «Si
+  llega un correo desde otro dominio, la fase se queda sin defensa» (`video/coa-precios/narration.json:119,125`); en pantalla, un
+  sobre con el remitente en blanco, sin ningún texto (`video/coa-precios/src/scenes/parts/s04-fase/Envelope.tsx:7-11`), y «la fase,
+  desprotegida» (`video/coa-precios/src/data/s04-fase.ts:4`). Sin nombre, sin fecha y sin relación con ningún dominio del caso (ni
+  con `meridian-hr-portal.com` del Lab 3A, `src/data/labs.ts:704-707`). No dice que el gateway de Meridian tenga un solo control.
+- **La pregunta y sus dos ramas son una suposición, no el estado de Meridian:** «Supón que todavía no han sacado nada» y «Supón que
+  lo importante está a salvo» (`video/coa-precios/src/data/s05-caminos.ts:9-12`); la pregunta «Nada robado y lo crítico a salvo:
+  ¿cortas?» (`video/coa-precios/narration.json:174`); la respuesta «No, todavía no. Sigues mirando, con Detect, y le frenas sin
+  cortarle, con Degrade. Para él es más una red lenta que un bloqueo.» (`:181`), con «ves su operación, avisas menos · mientras lo
+  valioso esté protegido» (`video/coa-precios/src/data/s05-caminos.ts:13`); y «Pero si ya se llevan lo crítico, al revés. Cortas
+  ya, y el resto lo averiguas después.» (`video/coa-precios/narration.json:187`), con una alarma **hipotética** sobre la fila de
+  Actions on Objectives y «si ya se llevan lo crítico: contener ahora, recoger después»
+  (`video/coa-precios/src/scenes/S05Caminos.tsx:43-46`; `video/coa-precios/src/data/s05-caminos.ts:15,18-19`). Esa alarma no es E9
+  ni ninguna salida de datos de Meridian.
+- **Decide la empresa:** «Y decide la empresa, no el SOC» (`video/coa-precios/narration.json:193`; «la empresa» para que no se oiga
+  como la tienda, `video/coa-precios/out/script-notes.md:59-60`); en pantalla, «la decisión final es del negocio, no del SOC · tú pones
+  los precios sobre la mesa» (`video/coa-precios/src/data/s05-caminos.ts:17`). No se enseña ninguna decisión
+  (`video/coa-precios/src/scenes/S05Caminos.tsx:46`).
+- **Ningún intervalo:** la voz no dice «48 horas» ni cuánto se mira (§5 punto 24); «cinco minutos» solo sale en el mensaje de
+  GLASS VIPER, que es el ejemplo de la lección (`src/data/s2.ts:314`).
+- **El puente con V13**, solo en pantalla: «los pasos de antes ya no los puedes impedir», junto a las filas de encima de C2
+  (`video/coa-precios/src/data/s05-caminos.ts:4`; `video/coa-precios/src/scenes/parts/s05-caminos/Glosses.tsx:11-22`).
+- **La voz no nombra ni a VELVET CICADA ni a GLASS VIPER** («el atacante», «él»; `video/coa-precios/out/script-notes.md:68`):
+  GLASS VIPER solo firma los mensajes.
+- **GLASS VIPER**, dos mensajes nuevos, sin fecha, que pasan a ser canon de su voz (tutea, dos frases cortas, cebo; nunca dice
+  «analista» ni quién es); ver la tabla de §3. La narradora le da la razón en el dato y se la quita en la conclusión
+  (`docs/reviews/2026-10-08-fichas-tanda4/ficha-V22.md:67-68`):
+  - «Ponme todas las alarmas que quieras. Para pararme ya habrá tiempo.» (`video/coa-precios/narration.json:70`, s03-01); respuesta:
+    «En algo tiene razón, una alarma sola no para a nadie. Eso lo hacen otros dos verbos.» (`:67`)
+  - «Córtame ya. Me mudo en cinco minutos y vuelves a empezar.» (`video/coa-precios/narration.json:146`, s05-01); respuesta:
+    «Cortarle ahora es lo más contundente, sí. Pero él se muda y tú dejas de verle. Por eso te lo pide.» (`:143`). Cortar sirve
+    y tiene un precio; un guion posterior no debe decir que «bloquear no sirve» (V15 dijo que bloquear sigue valiendo, `docs/reviews/2026-10-08-fichas-tanda4/decisiones-V22-V23.md:96-98`).
+- **La tienda del barrio** (la cinta, la alarma con su cámara en directo, la persiana, la cerradura, el vigilante, la caja fuerte, el
+  sospechoso y su walkie) es de la analogía, no del caso; el póster enseña la tienda, el walkie y las dos opciones (DENY · DETECT + DEGRADE), sin dominio, fecha ni equipo
+  (`video/coa-precios/src/PosterArt.tsx:66-70`; `video/coa-precios/src/Poster.tsx:23`). Sin personas, fechas, equipos, hashes ni IP nuevos.
+- **No se toca** (sigue fuera; `docs/reviews/2026-10-08-fichas-tanda4/ficha-V22.md:180-195`): el dosier de BROKEN CHAIN
+  (`src/data/course-gcti.ts:40`); E9, el 7-3, los «dos días» y el último `last seen` de `update-svc-cdn.com` (§5 punto 7): el vídeo
+  no dice cuándo ni si se corta el C2, ni que Meridian viera salir nada, y la séptima fase sigue como en V13; el indicador propio de
+  Meridian para `cdn-sync-status.example` (`src/data/s5.ts:596-607`) y la ola de abril: la celda de Delivery no dice si está
+  bloqueado; las retenciones del CMF de V8 (ni «90 días de EDR» sale); quién abrió el adjunto (§5 punto 5) y `ENG-WS-041`, que no
+  sale; el intervalo del beacon más allá de «cada minuto» (§5 punto 3); el Lab 2C (la matriz trae seis de sus ocho ítems, sin
+  clasificarlos ni dar su respuesta) y el Lab 2A; Destroy (ninguna acción ofensiva). No se culpa a nadie: ni al SOC por no cortar
+  ni al equipo de respuesta por preguntar.
 
 ### Plantilla para el siguiente
 
