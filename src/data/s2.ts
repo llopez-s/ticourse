@@ -311,7 +311,7 @@ Attachment: CV_Ingeniero.zip (contiene: CV_Ingeniero.pdf.lnk)       [Weaponizati
       {
         t: 'callout',
         kind: 'example',
-        md: 'Si bloqueas el dominio C2 a los 5 minutos, el actor registra otro y pierdes el hilo. Si lo monitorizas 48h (Degrade + Detect en lugar de Deny inmediato), mapeas sus hosts comprometidos y su horario de operación — y luego desmontas todo de golpe.',
+        md: 'Si bloqueas el dominio C2 a los 5 minutos, el actor registra otro y pierdes la visibilidad. Si lo monitorizas 48h (Degrade + Detect en lugar de Deny inmediato), mapeas sus hosts comprometidos y su horario de operación — y luego desmontas todo de golpe.',
       },
       { t: 'h', text: 'La matriz, rellena' },
       {
@@ -339,8 +339,8 @@ INSTALLATION
 
 COMMAND & CONTROL
   Detect : anomalía: beacon TLS periódico hacia dominio joven
-  Deny   : sinkhole de update-svc-cdn.com                           [!] quema el hilo
-  Degrade: throttling del egress hacia la IP del C2 (compra tiempo de mapeo)
+  Deny   : sinkhole de update-svc-cdn.com                           [!] quema tu visibilidad
+  Degrade: throttling del egress hacia el C2 (compra tiempo de mapeo)
 
 ACTIONS ON OBJECTIVES
   Detect : DLP: lecturas masivas en carpetas CAD de propulsión
@@ -349,7 +349,7 @@ ACTIONS ON OBJECTIVES
       },
       {
         t: 'p',
-        md: 'Lee la matriz como un **menú de decisiones con precios**. El sinkhole del C2 es la acción más contundente — y la más cara: el actor sabrá en minutos que fue descubierto y rotará infraestructura, quemando tu visibilidad. La combinación Detect + Degrade en C2 logra contención parcial *sin firma*: el actor ve una red lenta, tú ves su operación completa. Y la resiliencia se lee por filas: Exploitation con dos celdas pobladas sobrevive al fallo de una; una fase con celda única es un punto único de fallo. La decisión final (¿cuándo desmontar todo?) no es del SOC: es una decisión de riesgo del negocio, informada por tu análisis.',
+        md: 'Lee la matriz como un **menú de decisiones con precios**. El sinkhole del C2 es la acción más contundente — y la más cara: el actor sabrá en minutos que fue descubierto y rotará infraestructura, quemando tu visibilidad. La combinación Detect + Degrade en C2 logra contención parcial con poca firma: el actor ve una red lenta, tú ves mucha de su operación. Y la resiliencia se lee por filas: Exploitation con dos celdas pobladas sobrevive al fallo de una; una fase con celda única es un punto único de fallo. La decisión final (¿cuándo desmontar todo?) no es del SOC: es una decisión de riesgo del negocio, informada por tu análisis.',
       },
       {
         t: 'check',
@@ -385,6 +385,13 @@ ACTIONS ON OBJECTIVES
           explain:
             'Interrupting an action in progress is Disrupt. Deny prevents the action from succeeding in the first place.',
         },
+      },
+      {
+        t: 'video',
+        title: 'Courses of Action: ¿cortas o miras?',
+        youtube: 'ghNoHuq7GIk',
+        poster: 'videos/coa-precios-poster.png',
+        transcript: 'videos/coa-precios-transcript.txt',
       },
     ],
     quiz: [
