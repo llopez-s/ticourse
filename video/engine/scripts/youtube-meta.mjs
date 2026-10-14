@@ -113,8 +113,8 @@ export function buildYoutubeMeta() {
   const timeline = parseJsonText(readFileSync(PATHS.timeline, 'utf8'), PATHS.timeline);
   if (timeline.mode !== 'audio') errors.push('timeline.json is in estimate mode — run audio.mjs first');
   const storyboard = parseJsonText(readFileSync(PATHS.storyboard, 'utf8'), PATHS.storyboard);
-  const title = youtubeTitle(storyboard.title, MANIFEST.track);
-  if (title.length > TITLE_MAX) errors.push(`title is ${title.length} characters (YouTube max ${TITLE_MAX}): shorten storyboard.title`);
+  const title = youtubeTitle(MANIFEST.youtubeTitle ?? storyboard.title, MANIFEST.track);
+  if (title.length > TITLE_MAX) errors.push(`title is ${title.length} characters (YouTube max ${TITLE_MAX}): shorten storyboard.title or set a shorter video.json "youtubeTitle"`);
   errors.push(...youtubeChapters(timeline).errors);
   const { lexicon } = loadSources({ storyboard: PATHS.storyboard, narration: PATHS.narration, lexicon: PATHS.lexicon });
   const tags = youtubeTags(timeline, MANIFEST.track, Object.keys(lexicon), MANIFEST.tags ?? null);
