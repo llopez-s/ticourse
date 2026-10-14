@@ -322,6 +322,17 @@ const sp4m2: Module = {
           'Enterprise mode ties every session to an individual identity in the AAA server, which delivers per-user logging and per-user revocation instead of rotating one secret for the whole organization. Saying that encryption only appears with enterprise mode is wrong, since WPA2 and WPA3 personal modes also encrypt traffic; what they lack is individual identity.',
       },
     },
+    {
+      t: 'p',
+      md: 'Antes de pasar a los móviles, míralo en la terminal: hasta dónde llega la señal, qué se lleva quien la escucha y qué cambia con WPA3.',
+    },
+    {
+      t: 'video',
+      title: 'WPA3-Enterprise: de una clave para todos a una identidad para cada uno',
+      youtube: '9qoRWsqMzps',
+      poster: 'videos/wifi-halden-poster.png',
+      transcript: 'videos/wifi-halden-transcript.txt',
+    },
     { t: 'h', text: 'Movilidad: MDM y los modelos BYOD, COPE y CYOD' },
     {
       t: 'p',
