@@ -6,241 +6,253 @@ WEBVTT
 Enseguida. ¿Y cuántos datos se pierden?
 
 2
-00:00:06.467 --> 00:00:10.067
+00:00:06.467 --> 00:00:10.267
 Poca cosa. Dos respuestas,
 y ninguna es un número.
 
 3
-00:00:10.067 --> 00:00:15.167
+00:00:10.267 --> 00:00:15.367
 Y lo que no tiene número
 no se puede cumplir ni incumplir.
 
 4
-00:00:15.167 --> 00:00:20.467
+00:00:15.367 --> 00:00:20.667
 Vas a ver qué se promete,
 cómo se mide y cómo se compara.
 
 5
-00:00:20.467 --> 00:00:26.167
+00:00:20.667 --> 00:00:26.367
 Y vuelve PAPER GOVERNOR, que vive
 en los huecos de tu gobernanza.
 
 6
-00:00:26.600 --> 00:00:31.467
+00:00:26.800 --> 00:00:31.667
 Para ponerle número, empiezas preguntando
 al negocio, no a los servidores.
 
 7
-00:00:31.467 --> 00:00:34.467
+00:00:31.667 --> 00:00:34.667
 Eso es el business
 impact analysis, el BIA.
 
 8
-00:00:34.467 --> 00:00:37.467
+00:00:34.667 --> 00:00:37.667
 Facturación emite
 las facturas a las navieras.
 
 9
-00:00:37.467 --> 00:00:41.133
+00:00:37.667 --> 00:00:41.333
 Y Operaciones sigue las llegadas
 y salidas de buques.
 
 10
-00:00:41.133 --> 00:00:46.567
+00:00:41.333 --> 00:00:46.767
 A cada uno le preguntas cuánto aguanta
 parado y cuántos datos puede perder.
 
 11
-00:00:46.567 --> 00:00:50.833
+00:00:46.767 --> 00:00:51.033
 Y de paso, cuánto duele
 cada hora sin servicio.
 
 12
-00:00:54.000 --> 00:00:58.833
-Cero minutos para todo suena seguro,
-pero cuanto más corto es el plazo,
+00:00:54.200 --> 00:00:57.600
+Cero minutos para todo
+suena a lo más prudente,
 
 13
-00:00:58.833 --> 00:01:01.433
-más capacidad tienes que tener lista.
+00:00:57.600 --> 00:01:02.867
+pero cuanto más corto es el plazo,
+más capacidad tienes que comprar.
 
 14
-00:01:01.433 --> 00:01:06.100
-Por eso el análisis ordena
-qué proceso aguanta cuánto.
+00:01:02.867 --> 00:01:08.567
+Por eso el BIA ordena los procesos
+según cuánto aguanta cada uno.
 
 15
-00:01:06.867 --> 00:01:10.733
-Piensa en una cafetería
-a la que se le estropea la caja.
+00:01:09.333 --> 00:01:13.800
+Imagina esas dos preguntas en una
+cafetería, con la caja estropeada.
 
 16
-00:01:10.733 --> 00:01:14.567
-Una pregunta es cuánto puede
+00:01:13.800 --> 00:01:16.633
+Una es cuánto puede
 estar sin servir, y otra,
 
 17
-00:01:14.567 --> 00:01:17.933
-cuántas ventas apuntadas aceptas perder.
+00:01:16.633 --> 00:01:19.600
+cuántas ventas apuntadas puedes perder.
 
 18
-00:01:17.933 --> 00:01:21.233
-El plazo es el RTO,
+00:01:19.600 --> 00:01:22.833
+Ese reloj es el RTO,
 el recovery time objective,
 
 19
-00:01:21.233 --> 00:01:25.400
-y marca la capacidad
-de recuperación que tienes lista.
+00:01:22.833 --> 00:01:27.467
+y marca la capacidad de recuperación
+que necesitas tener lista.
 
 20
-00:01:25.400 --> 00:01:31.267
-Los datos son el RPO, el recovery point
-objective, y marcan cada cuánto copias.
+00:01:27.467 --> 00:01:33.433
+Y esa libreta es el RPO, el recovery point
+objective, los datos que puedes perder,
 
 21
-00:01:31.267 --> 00:01:34.500
+00:01:33.433 --> 00:01:35.733
+y marca cada cuánto copias.
+
+22
+00:01:35.733 --> 00:01:38.933
 Cada proceso tiene los suyos,
 y los rellenas.
 
-22
-00:01:34.500 --> 00:01:38.933
+23
+00:01:38.933 --> 00:01:43.300
 Operaciones aguanta media hora
 y puede perder un día de datos.
 
-23
-00:01:38.933 --> 00:01:43.133
-Facturas aguanta dos días,
+24
+00:01:43.300 --> 00:01:47.200
+Facturación, dos días,
 y casi no puede perder nada.
 
-24
-00:01:43.133 --> 00:01:48.433
-Facturas puede esperar dos días.
-¿Basta con una copia al día?
-
 25
-00:01:52.300 --> 00:01:55.500
-No, hay que copiar cada cinco minutos.
+00:01:47.200 --> 00:01:52.900
+Facturación puede esperar dos días.
+Entonces, ¿basta con una copia al día?
 
 26
-00:01:55.500 --> 00:01:59.900
-Los dos días son el RTO,
-que manda sobre la capacidad,
+00:01:56.767 --> 00:02:01.833
+No. Casi no puede perder nada,
+así que copias cada cinco minutos.
 
 27
-00:01:59.900 --> 00:02:02.700
-y el RPO manda sobre la copia.
+00:02:01.833 --> 00:02:08.500
+Los dos días son el RTO y mandan sobre la
+capacidad, y los cinco minutos, el RPO,
 
 28
-00:02:02.700 --> 00:02:07.200
-O sea, que esperar mucho
-no relaja la copia.
+00:02:08.500 --> 00:02:10.233
+sobre la copia.
 
 29
-00:02:07.867 --> 00:02:09.267
-Ahora, lo que mides.
+00:02:10.233 --> 00:02:15.533
+O sea, que poder esperar
+mucho no te deja perder datos.
 
 30
-00:02:09.267 --> 00:02:14.733
-El registro de averías de ese sistema,
-de los últimos doce meses, tiene cuatro.
+00:02:16.200 --> 00:02:17.633
+Ahora, lo que mides.
 
 31
-00:02:14.733 --> 00:02:19.733
-Cuarenta minutos, noventa y cinco,
-ciento veinte y sesenta y cinco.
+00:02:17.633 --> 00:02:22.067
+El registro de averías de llegadas
+y salidas tiene cuatro.
 
 32
-00:02:19.733 --> 00:02:22.500
-Operaciones había prometido media hora.
+00:02:22.067 --> 00:02:26.400
+La primera duró cuarenta minutos,
+la segunda noventa y cinco,
 
 33
-00:02:22.500 --> 00:02:27.467
+00:02:26.400 --> 00:02:30.333
+la tercera ciento veinte
+y la cuarta sesenta y cinco.
+
+34
+00:02:30.333 --> 00:02:34.200
+Y Operaciones, recuerda,
+tiene un RTO de media hora.
+
+35
+00:02:34.200 --> 00:02:39.700
 De media se tardan ochenta minutos
 en dejarlo funcionando, y eso es el MTTR,
 
-34
-00:02:27.467 --> 00:02:32.633
-el tiempo medio de reparación.
-Las cuatro pasaron de media hora.
-
-35
-00:02:35.800 --> 00:02:39.567
-Eso es poner en el papel lo que ya pasa.
-
 36
-00:02:39.567 --> 00:02:47.600
-El RTO sale de lo que el negocio aguanta,
-y el MTTR, de lo que hace tu equipo.
+00:02:39.700 --> 00:02:45.500
+el tiempo medio de reparación.
+Las cuatro tardan más de media hora.
 
 37
-00:02:47.600 --> 00:02:53.867
-El técnico de la caja tarda lo que tarda.
-Eso se mide, no se promete.
+00:02:48.667 --> 00:02:52.567
+Eso es poner en el papel lo que ya pasa.
 
 38
-00:02:53.867 --> 00:02:57.767
-Si estos fueran los números,
-el plan no se cumpliría,
+00:02:52.567 --> 00:03:00.067
+El RTO sale de lo que el negocio aguanta,
+y el MTTR, de lo que se mide.
 
 39
-00:02:57.767 --> 00:03:02.367
+00:03:00.067 --> 00:03:05.367
+Como en la cafetería, el técnico
+de la caja tarda lo que tarda.
+
+40
+00:03:05.367 --> 00:03:07.933
+Eso se mide, no se promete.
+
+41
+00:03:07.933 --> 00:03:11.400
+Si fueran tus números,
+el plan no se cumpliría,
+
+42
+00:03:11.400 --> 00:03:16.033
 y habría que mejorar
 la recuperación, no el papel.
 
-40
-00:03:03.033 --> 00:03:06.800
-En ese registro hay cuatro
-averías en doce meses.
+43
+00:03:16.700 --> 00:03:21.900
+Y ese mismo registro dice otra cosa.
+Hay cuatro averías en doce meses.
 
-41
-00:03:06.800 --> 00:03:10.433
+44
+00:03:21.900 --> 00:03:25.767
 Repartidas, es una cada tres
 meses, más o menos.
 
-42
-00:03:10.433 --> 00:03:14.100
+45
+00:03:25.767 --> 00:03:29.633
 Eso es el MTBF,
 el tiempo medio entre fallos.
 
-43
-00:03:14.100 --> 00:03:21.100
-El MTTR es cuánto tarda en volver, y el
-MTBF, cada cuánto falla. No se cambian.
-
-44
-00:03:21.100 --> 00:03:25.400
-O sea, que uno dice cuánto
-tardas en arreglarlo, y el otro,
-
-45
-00:03:25.400 --> 00:03:28.800
-cada cuánto tendrás que hacerlo.
-
 46
-00:03:29.467 --> 00:03:30.633
-Tres reglas.
+00:03:29.633 --> 00:03:36.633
+El MTTR es cuánto tarda en volver, y el
+MTBF, cada cuánto falla. No los confundas.
 
 47
-00:03:30.633 --> 00:03:37.333
-Primera, el RTO es de tiempo y el RPO,
-de datos, y los dos salen del negocio.
+00:03:36.633 --> 00:03:43.133
+O sea, que uno dice cuánto tarda
+el técnico en arreglar la caja, y el otro,
 
 48
-00:03:37.333 --> 00:03:45.200
-Segunda, el MTTR y el MTBF se miden, no se
-prometen, y el MTTR se compara con el RTO.
+00:03:43.133 --> 00:03:45.533
+lo fiable que es.
 
 49
-00:03:45.200 --> 00:03:51.067
+00:03:46.200 --> 00:03:51.667
+Tres reglas. Primera, el RTO
+es de tiempo y el RPO, de datos.
+
+50
+00:03:51.667 --> 00:03:59.533
+Segunda, el MTTR y el MTBF se miden, no se
+prometen. Y el MTTR se compara con el RTO.
+
+51
+00:03:59.533 --> 00:04:05.400
 Y tercera, si lo medido no llega
 a lo prometido, se mejora la recuperación,
 
-50
-00:03:51.067 --> 00:03:52.267
+52
+00:04:05.400 --> 00:04:06.600
 no el papel.
 
-51
-00:03:52.267 --> 00:03:57.167
+53
+00:04:06.600 --> 00:04:11.500
 Y para practicarlo, tu turno,
 las preguntas de la lección.

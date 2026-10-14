@@ -1,18 +1,18 @@
 {
   "mode": "estimate",
-  "sourceHash": "38232a141682b05599808941d93669248752b03530392a6b53bf1eeab313310c",
+  "sourceHash": "e51c21fdee4734666fd3c71b976edc686b66d7b921d5b1f26d638ba2af272e12",
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "durationInFrames": 7194,
+  "durationInFrames": 7624,
   "voice": "none",
   "scenes": [
-    {"id":"s01-hook","chapter":1,"chapterTitle":"Qué se promete","title":"Enseguida","from":0,"durationInFrames":789},
-    {"id":"s02-negocio","chapter":1,"chapterTitle":"Qué se promete","title":"Empiezas preguntando al negocio","from":789,"durationInFrames":1208},
-    {"id":"s03-promesas","chapter":1,"chapterTitle":"Qué se promete","title":"Dos promesas por proceso","from":1997,"durationInFrames":1830},
-    {"id":"s04-medida","chapter":2,"chapterTitle":"Qué se mide","title":"Lo prometido y lo que mides","from":3827,"durationInFrames":1655},
-    {"id":"s05-fallos","chapter":2,"chapterTitle":"Qué se mide","title":"Cada cuánto se cuelga","from":5482,"durationInFrames":793},
-    {"id":"s06-recap","chapter":3,"chapterTitle":"Para el examen","title":"Tres reglas","from":6275,"durationInFrames":919}
+    {"id":"s01-hook","chapter":1,"chapterTitle":"Qué se promete","title":"Enseguida","from":0,"durationInFrames":795},
+    {"id":"s02-negocio","chapter":1,"chapterTitle":"Qué se promete","title":"Empiezas preguntando al negocio","from":795,"durationInFrames":1276},
+    {"id":"s03-promesas","chapter":1,"chapterTitle":"Qué se promete","title":"Dos promesas por proceso","from":2071,"durationInFrames":2006},
+    {"id":"s04-medida","chapter":2,"chapterTitle":"Qué se mide","title":"Lo prometido y lo que mides","from":4077,"durationInFrames":1815},
+    {"id":"s05-fallos","chapter":2,"chapterTitle":"Qué se mide","title":"Cada cuánto se cuelga","from":5892,"durationInFrames":885},
+    {"id":"s06-recap","chapter":3,"chapterTitle":"Para el examen","title":"Tres reglas","from":6777,"durationInFrames":847}
   ],
   "segments": [
     {
@@ -21,7 +21,7 @@
       "text": "¿Cuánto tarda en volver un sistema? Enseguida. ¿Y cuántos datos se pierden? Poca cosa. Dos respuestas, y ninguna es un número.",
       "from": 45,
       "audioFrames": 252,
-      "durationInFrames": 260,
+      "durationInFrames": 266,
       "audio": null,
       "words": [
         {"text":"¿Cuánto","from":45,"to":62},
@@ -51,776 +51,863 @@
       "id": "s01-02",
       "scene": "s01-hook",
       "text": "Y lo que no tiene número no se puede cumplir ni incumplir. Vas a ver qué se promete, cómo se mide y cómo se compara.",
-      "from": 305,
+      "from": 311,
       "audioFrames": 300,
       "durationInFrames": 312,
       "audio": null,
       "words": [
-        {"text":"Y","from":305,"to":308},
-        {"text":"lo","from":308,"to":315},
-        {"text":"que","from":315,"to":325},
-        {"text":"no","from":325,"to":331},
-        {"text":"tiene","from":331,"to":347},
-        {"text":"número","from":347,"to":367},
-        {"text":"no","from":367,"to":373},
-        {"text":"se","from":373,"to":380},
-        {"text":"puede","from":380,"to":396},
-        {"text":"cumplir","from":396,"to":419},
-        {"text":"ni","from":419,"to":426},
-        {"text":"incumplir.","from":426,"to":458},
-        {"text":"Vas","from":458,"to":468},
-        {"text":"a","from":468,"to":471},
-        {"text":"ver","from":471,"to":481},
-        {"text":"qué","from":481,"to":491},
-        {"text":"se","from":491,"to":497},
-        {"text":"promete,","from":497,"to":523},
-        {"text":"cómo","from":523,"to":537},
-        {"text":"se","from":537,"to":543},
-        {"text":"mide","from":543,"to":556},
-        {"text":"y","from":556,"to":559},
-        {"text":"cómo","from":559,"to":572},
-        {"text":"se","from":572,"to":579},
-        {"text":"compara.","from":579,"to":605}
+        {"text":"Y","from":311,"to":314},
+        {"text":"lo","from":314,"to":321},
+        {"text":"que","from":321,"to":331},
+        {"text":"no","from":331,"to":337},
+        {"text":"tiene","from":337,"to":353},
+        {"text":"número","from":353,"to":373},
+        {"text":"no","from":373,"to":379},
+        {"text":"se","from":379,"to":386},
+        {"text":"puede","from":386,"to":402},
+        {"text":"cumplir","from":402,"to":425},
+        {"text":"ni","from":425,"to":432},
+        {"text":"incumplir.","from":432,"to":464},
+        {"text":"Vas","from":464,"to":474},
+        {"text":"a","from":474,"to":477},
+        {"text":"ver","from":477,"to":487},
+        {"text":"qué","from":487,"to":497},
+        {"text":"se","from":497,"to":503},
+        {"text":"promete,","from":503,"to":529},
+        {"text":"cómo","from":529,"to":543},
+        {"text":"se","from":543,"to":549},
+        {"text":"mide","from":549,"to":562},
+        {"text":"y","from":562,"to":565},
+        {"text":"cómo","from":565,"to":578},
+        {"text":"se","from":578,"to":585},
+        {"text":"compara.","from":585,"to":611}
       ]
     },
     {
       "id": "s01-03",
       "scene": "s01-hook",
       "text": "Y vuelve PAPER GOVERNOR, que vive en los huecos de tu gobernanza.",
-      "from": 617,
+      "from": 623,
       "audioFrames": 144,
       "durationInFrames": 152,
       "audio": null,
       "words": [
-        {"text":"Y","from":617,"to":620},
-        {"text":"vuelve","from":620,"to":636},
-        {"text":"PAPER","from":636,"to":649},
-        {"text":"GOVERNOR,","from":649,"to":673},
-        {"text":"que","from":673,"to":681},
-        {"text":"vive","from":681,"to":692},
-        {"text":"en","from":692,"to":697},
-        {"text":"los","from":697,"to":705},
-        {"text":"huecos","from":705,"to":721},
-        {"text":"de","from":721,"to":726},
-        {"text":"tu","from":726,"to":732},
-        {"text":"gobernanza.","from":732,"to":761}
+        {"text":"Y","from":623,"to":626},
+        {"text":"vuelve","from":626,"to":642},
+        {"text":"PAPER","from":642,"to":655},
+        {"text":"GOVERNOR,","from":655,"to":679},
+        {"text":"que","from":679,"to":687},
+        {"text":"vive","from":687,"to":698},
+        {"text":"en","from":698,"to":703},
+        {"text":"los","from":703,"to":711},
+        {"text":"huecos","from":711,"to":727},
+        {"text":"de","from":727,"to":732},
+        {"text":"tu","from":732,"to":738},
+        {"text":"gobernanza.","from":738,"to":767}
       ]
     },
     {
       "id": "s02-01",
       "scene": "s02-negocio",
       "text": "Para ponerle número, empiezas preguntando al negocio, no a los servidores. Eso es el business impact analysis, el BIA.",
-      "from": 801,
+      "from": 807,
       "audioFrames": 228,
       "durationInFrames": 236,
       "audio": null,
       "words": [
-        {"text":"Para","from":801,"to":810},
-        {"text":"ponerle","from":810,"to":826},
-        {"text":"número,","from":826,"to":842},
-        {"text":"empiezas","from":842,"to":860},
-        {"text":"preguntando","from":860,"to":885},
-        {"text":"al","from":885,"to":890},
-        {"text":"negocio,","from":890,"to":908},
-        {"text":"no","from":908,"to":913},
-        {"text":"a","from":913,"to":915},
-        {"text":"los","from":915,"to":922},
-        {"text":"servidores.","from":922,"to":947},
-        {"text":"Eso","from":947,"to":954},
-        {"text":"es","from":954,"to":958},
-        {"text":"el","from":958,"to":963},
-        {"text":"business","from":963,"to":981},
-        {"text":"impact","from":981,"to":995},
-        {"text":"analysis,","from":995,"to":1015},
-        {"text":"el","from":1015,"to":1020},
-        {"text":"BIA.","from":1020,"to":1029}
+        {"text":"Para","from":807,"to":816},
+        {"text":"ponerle","from":816,"to":832},
+        {"text":"número,","from":832,"to":848},
+        {"text":"empiezas","from":848,"to":866},
+        {"text":"preguntando","from":866,"to":891},
+        {"text":"al","from":891,"to":896},
+        {"text":"negocio,","from":896,"to":914},
+        {"text":"no","from":914,"to":919},
+        {"text":"a","from":919,"to":921},
+        {"text":"los","from":921,"to":928},
+        {"text":"servidores.","from":928,"to":953},
+        {"text":"Eso","from":953,"to":960},
+        {"text":"es","from":960,"to":964},
+        {"text":"el","from":964,"to":969},
+        {"text":"business","from":969,"to":987},
+        {"text":"impact","from":987,"to":1001},
+        {"text":"analysis,","from":1001,"to":1021},
+        {"text":"el","from":1021,"to":1026},
+        {"text":"BIA.","from":1026,"to":1035}
       ]
     },
     {
       "id": "s02-02",
       "scene": "s02-negocio",
       "text": "Facturación emite las facturas a las navieras. Y Operaciones sigue las llegadas y salidas de buques.",
-      "from": 1037,
+      "from": 1043,
       "audioFrames": 192,
       "durationInFrames": 200,
       "audio": null,
       "words": [
-        {"text":"Facturación","from":1037,"to":1062},
-        {"text":"emite","from":1062,"to":1073},
-        {"text":"las","from":1073,"to":1080},
-        {"text":"facturas","from":1080,"to":1098},
-        {"text":"a","from":1098,"to":1100},
-        {"text":"las","from":1100,"to":1107},
-        {"text":"navieras.","from":1107,"to":1127},
-        {"text":"Y","from":1127,"to":1130},
-        {"text":"Operaciones","from":1130,"to":1154},
-        {"text":"sigue","from":1154,"to":1166},
-        {"text":"las","from":1166,"to":1173},
-        {"text":"llegadas","from":1173,"to":1191},
-        {"text":"y","from":1191,"to":1193},
-        {"text":"salidas","from":1193,"to":1209},
-        {"text":"de","from":1209,"to":1213},
-        {"text":"buques.","from":1213,"to":1229}
+        {"text":"Facturación","from":1043,"to":1068},
+        {"text":"emite","from":1068,"to":1079},
+        {"text":"las","from":1079,"to":1086},
+        {"text":"facturas","from":1086,"to":1104},
+        {"text":"a","from":1104,"to":1106},
+        {"text":"las","from":1106,"to":1113},
+        {"text":"navieras.","from":1113,"to":1133},
+        {"text":"Y","from":1133,"to":1136},
+        {"text":"Operaciones","from":1136,"to":1160},
+        {"text":"sigue","from":1160,"to":1172},
+        {"text":"las","from":1172,"to":1179},
+        {"text":"llegadas","from":1179,"to":1197},
+        {"text":"y","from":1197,"to":1199},
+        {"text":"salidas","from":1199,"to":1215},
+        {"text":"de","from":1215,"to":1219},
+        {"text":"buques.","from":1219,"to":1235}
       ]
     },
     {
       "id": "s02-03",
       "scene": "s02-negocio",
       "text": "A cada uno le preguntas cuánto aguanta parado y cuántos datos puede perder. Y de paso, cuánto duele cada hora sin servicio.",
-      "from": 1237,
+      "from": 1243,
       "audioFrames": 264,
       "durationInFrames": 272,
       "audio": null,
       "words": [
-        {"text":"A","from":1237,"to":1240},
-        {"text":"cada","from":1240,"to":1250},
-        {"text":"uno","from":1250,"to":1258},
-        {"text":"le","from":1258,"to":1263},
-        {"text":"preguntas","from":1263,"to":1286},
-        {"text":"cuánto","from":1286,"to":1302},
-        {"text":"aguanta","from":1302,"to":1320},
-        {"text":"parado","from":1320,"to":1335},
-        {"text":"y","from":1335,"to":1338},
-        {"text":"cuántos","from":1338,"to":1356},
-        {"text":"datos","from":1356,"to":1369},
-        {"text":"puede","from":1369,"to":1382},
-        {"text":"perder.","from":1382,"to":1400},
-        {"text":"Y","from":1400,"to":1403},
-        {"text":"de","from":1403,"to":1408},
-        {"text":"paso,","from":1408,"to":1421},
-        {"text":"cuánto","from":1421,"to":1436},
-        {"text":"duele","from":1436,"to":1449},
-        {"text":"cada","from":1449,"to":1460},
-        {"text":"hora","from":1460,"to":1470},
-        {"text":"sin","from":1470,"to":1478},
-        {"text":"servicio.","from":1478,"to":1501}
+        {"text":"A","from":1243,"to":1246},
+        {"text":"cada","from":1246,"to":1256},
+        {"text":"uno","from":1256,"to":1264},
+        {"text":"le","from":1264,"to":1269},
+        {"text":"preguntas","from":1269,"to":1292},
+        {"text":"cuánto","from":1292,"to":1308},
+        {"text":"aguanta","from":1308,"to":1326},
+        {"text":"parado","from":1326,"to":1341},
+        {"text":"y","from":1341,"to":1344},
+        {"text":"cuántos","from":1344,"to":1362},
+        {"text":"datos","from":1362,"to":1375},
+        {"text":"puede","from":1375,"to":1388},
+        {"text":"perder.","from":1388,"to":1406},
+        {"text":"Y","from":1406,"to":1409},
+        {"text":"de","from":1409,"to":1414},
+        {"text":"paso,","from":1414,"to":1427},
+        {"text":"cuánto","from":1427,"to":1442},
+        {"text":"duele","from":1442,"to":1455},
+        {"text":"cada","from":1455,"to":1466},
+        {"text":"hora","from":1466,"to":1476},
+        {"text":"sin","from":1476,"to":1484},
+        {"text":"servicio.","from":1484,"to":1507}
       ]
     },
     {
       "id": "s02-04",
       "scene": "s02-negocio",
-      "text": "Cero minutos para todo suena seguro, pero cuanto más corto es el plazo, más capacidad tienes que tener lista. Por eso el análisis ordena qué proceso aguanta cuánto.",
-      "from": 1623,
-      "audioFrames": 336,
-      "durationInFrames": 354,
+      "text": "Cero minutos para todo suena a lo más prudente, pero cuanto más corto es el plazo, más capacidad tienes que comprar.",
+      "from": 1629,
+      "audioFrames": 252,
+      "durationInFrames": 260,
       "audio": null,
       "words": [
-        {"text":"Cero","from":1623,"to":1633},
-        {"text":"minutos","from":1633,"to":1650},
-        {"text":"para","from":1650,"to":1660},
-        {"text":"todo","from":1660,"to":1670},
-        {"text":"suena","from":1670,"to":1682},
-        {"text":"seguro,","from":1682,"to":1699},
-        {"text":"pero","from":1699,"to":1709},
-        {"text":"cuanto","from":1709,"to":1724},
-        {"text":"más","from":1724,"to":1731},
-        {"text":"corto","from":1731,"to":1743},
-        {"text":"es","from":1743,"to":1748},
-        {"text":"el","from":1748,"to":1753},
-        {"text":"plazo,","from":1753,"to":1768},
-        {"text":"más","from":1768,"to":1775},
-        {"text":"capacidad","from":1775,"to":1797},
-        {"text":"tienes","from":1797,"to":1812},
-        {"text":"que","from":1812,"to":1819},
-        {"text":"tener","from":1819,"to":1831},
-        {"text":"lista.","from":1831,"to":1846},
-        {"text":"Por","from":1846,"to":1854},
-        {"text":"eso","from":1854,"to":1861},
-        {"text":"el","from":1861,"to":1866},
-        {"text":"análisis","from":1866,"to":1885},
-        {"text":"ordena","from":1885,"to":1900},
-        {"text":"qué","from":1900,"to":1907},
-        {"text":"proceso","from":1907,"to":1925},
-        {"text":"aguanta","from":1925,"to":1942},
-        {"text":"cuánto.","from":1942,"to":1959}
+        {"text":"Cero","from":1629,"to":1640},
+        {"text":"minutos","from":1640,"to":1658},
+        {"text":"para","from":1658,"to":1668},
+        {"text":"todo","from":1668,"to":1679},
+        {"text":"suena","from":1679,"to":1692},
+        {"text":"a","from":1692,"to":1695},
+        {"text":"lo","from":1695,"to":1700},
+        {"text":"más","from":1700,"to":1708},
+        {"text":"prudente,","from":1708,"to":1731},
+        {"text":"pero","from":1731,"to":1742},
+        {"text":"cuanto","from":1742,"to":1758},
+        {"text":"más","from":1758,"to":1766},
+        {"text":"corto","from":1766,"to":1779},
+        {"text":"es","from":1779,"to":1784},
+        {"text":"el","from":1784,"to":1789},
+        {"text":"plazo,","from":1789,"to":1805},
+        {"text":"más","from":1805,"to":1813},
+        {"text":"capacidad","from":1813,"to":1836},
+        {"text":"tienes","from":1836,"to":1852},
+        {"text":"que","from":1852,"to":1860},
+        {"text":"comprar.","from":1860,"to":1881}
+      ]
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-negocio",
+      "text": "Por eso el BIA ordena los procesos según cuánto aguanta cada uno.",
+      "from": 1889,
+      "audioFrames": 144,
+      "durationInFrames": 162,
+      "audio": null,
+      "words": [
+        {"text":"Por","from":1889,"to":1897},
+        {"text":"eso","from":1897,"to":1905},
+        {"text":"el","from":1905,"to":1910},
+        {"text":"BIA","from":1910,"to":1918},
+        {"text":"ordena","from":1918,"to":1934},
+        {"text":"los","from":1934,"to":1942},
+        {"text":"procesos","from":1942,"to":1964},
+        {"text":"según","from":1964,"to":1977},
+        {"text":"cuánto","from":1977,"to":1993},
+        {"text":"aguanta","from":1993,"to":2012},
+        {"text":"cada","from":2012,"to":2022},
+        {"text":"uno.","from":2022,"to":2033}
       ]
     },
     {
       "id": "s03-01",
       "scene": "s03-promesas",
-      "text": "Piensa en una cafetería a la que se le estropea la caja. Una pregunta es cuánto puede estar sin servir, y otra, cuántas ventas apuntadas aceptas perder.",
-      "from": 2009,
-      "audioFrames": 324,
-      "durationInFrames": 332,
+      "text": "Imagina esas dos preguntas en una cafetería, con la caja estropeada. Una es cuánto puede estar sin servir, y otra, cuántas ventas apuntadas puedes perder.",
+      "from": 2083,
+      "audioFrames": 300,
+      "durationInFrames": 308,
       "audio": null,
       "words": [
-        {"text":"Piensa","from":2009,"to":2024},
-        {"text":"en","from":2024,"to":2030},
-        {"text":"una","from":2030,"to":2037},
-        {"text":"cafetería","from":2037,"to":2060},
-        {"text":"a","from":2060,"to":2063},
-        {"text":"la","from":2063,"to":2068},
-        {"text":"que","from":2068,"to":2076},
-        {"text":"se","from":2076,"to":2081},
-        {"text":"le","from":2081,"to":2086},
-        {"text":"estropea","from":2086,"to":2107},
-        {"text":"la","from":2107,"to":2112},
-        {"text":"caja.","from":2112,"to":2125},
-        {"text":"Una","from":2125,"to":2132},
-        {"text":"pregunta","from":2132,"to":2153},
-        {"text":"es","from":2153,"to":2158},
-        {"text":"cuánto","from":2158,"to":2174},
-        {"text":"puede","from":2174,"to":2186},
-        {"text":"estar","from":2186,"to":2199},
-        {"text":"sin","from":2199,"to":2207},
-        {"text":"servir,","from":2207,"to":2225},
-        {"text":"y","from":2225,"to":2228},
-        {"text":"otra,","from":2228,"to":2240},
-        {"text":"cuántas","from":2240,"to":2258},
-        {"text":"ventas","from":2258,"to":2274},
-        {"text":"apuntadas","from":2274,"to":2297},
-        {"text":"aceptas","from":2297,"to":2315},
-        {"text":"perder.","from":2315,"to":2333}
+        {"text":"Imagina","from":2083,"to":2099},
+        {"text":"esas","from":2099,"to":2108},
+        {"text":"dos","from":2108,"to":2115},
+        {"text":"preguntas","from":2115,"to":2136},
+        {"text":"en","from":2136,"to":2141},
+        {"text":"una","from":2141,"to":2148},
+        {"text":"cafetería,","from":2148,"to":2171},
+        {"text":"con","from":2171,"to":2178},
+        {"text":"la","from":2178,"to":2182},
+        {"text":"caja","from":2182,"to":2191},
+        {"text":"estropeada.","from":2191,"to":2217},
+        {"text":"Una","from":2217,"to":2224},
+        {"text":"es","from":2224,"to":2228},
+        {"text":"cuánto","from":2228,"to":2242},
+        {"text":"puede","from":2242,"to":2254},
+        {"text":"estar","from":2254,"to":2265},
+        {"text":"sin","from":2265,"to":2272},
+        {"text":"servir,","from":2272,"to":2288},
+        {"text":"y","from":2288,"to":2291},
+        {"text":"otra,","from":2291,"to":2302},
+        {"text":"cuántas","from":2302,"to":2318},
+        {"text":"ventas","from":2318,"to":2332},
+        {"text":"apuntadas","from":2332,"to":2353},
+        {"text":"puedes","from":2353,"to":2367},
+        {"text":"perder.","from":2367,"to":2383}
       ]
     },
     {
       "id": "s03-02",
       "scene": "s03-promesas",
-      "text": "El plazo es el RTO, el recovery time objective, y marca la capacidad de recuperación que tienes lista.",
-      "from": 2341,
-      "audioFrames": 216,
-      "durationInFrames": 224,
+      "text": "Ese reloj es el RTO, el recovery time objective, y marca la capacidad de recuperación que necesitas tener lista.",
+      "from": 2391,
+      "audioFrames": 228,
+      "durationInFrames": 236,
       "audio": null,
       "words": [
-        {"text":"El","from":2341,"to":2346},
-        {"text":"plazo","from":2346,"to":2359},
-        {"text":"es","from":2359,"to":2364},
-        {"text":"el","from":2364,"to":2369},
-        {"text":"RTO,","from":2369,"to":2379},
-        {"text":"el","from":2379,"to":2384},
-        {"text":"recovery","from":2384,"to":2405},
-        {"text":"time","from":2405,"to":2415},
-        {"text":"objective,","from":2415,"to":2440},
-        {"text":"y","from":2440,"to":2443},
-        {"text":"marca","from":2443,"to":2455},
-        {"text":"la","from":2455,"to":2460},
-        {"text":"capacidad","from":2460,"to":2483},
-        {"text":"de","from":2483,"to":2488},
-        {"text":"recuperación","from":2488,"to":2519},
-        {"text":"que","from":2519,"to":2527},
-        {"text":"tienes","from":2527,"to":2542},
-        {"text":"lista.","from":2542,"to":2557}
+        {"text":"Ese","from":2391,"to":2398},
+        {"text":"reloj","from":2398,"to":2410},
+        {"text":"es","from":2410,"to":2415},
+        {"text":"el","from":2415,"to":2420},
+        {"text":"RTO,","from":2420,"to":2430},
+        {"text":"el","from":2430,"to":2435},
+        {"text":"recovery","from":2435,"to":2454},
+        {"text":"time","from":2454,"to":2464},
+        {"text":"objective,","from":2464,"to":2488},
+        {"text":"y","from":2488,"to":2490},
+        {"text":"marca","from":2490,"to":2503},
+        {"text":"la","from":2503,"to":2507},
+        {"text":"capacidad","from":2507,"to":2529},
+        {"text":"de","from":2529,"to":2534},
+        {"text":"recuperación","from":2534,"to":2563},
+        {"text":"que","from":2563,"to":2570},
+        {"text":"necesitas","from":2570,"to":2592},
+        {"text":"tener","from":2592,"to":2604},
+        {"text":"lista.","from":2604,"to":2619}
       ]
     },
     {
       "id": "s03-03",
       "scene": "s03-promesas",
-      "text": "Los datos son el RPO, el recovery point objective, y marcan cada cuánto copias.",
-      "from": 2565,
-      "audioFrames": 168,
-      "durationInFrames": 176,
+      "text": "Y esa libreta es el RPO, el recovery point objective, los datos que puedes perder, y marca cada cuánto copias.",
+      "from": 2627,
+      "audioFrames": 240,
+      "durationInFrames": 248,
       "audio": null,
       "words": [
-        {"text":"Los","from":2565,"to":2573},
-        {"text":"datos","from":2573,"to":2585},
-        {"text":"son","from":2585,"to":2593},
-        {"text":"el","from":2593,"to":2598},
-        {"text":"RPO,","from":2598,"to":2608},
-        {"text":"el","from":2608,"to":2613},
-        {"text":"recovery","from":2613,"to":2634},
-        {"text":"point","from":2634,"to":2646},
-        {"text":"objective,","from":2646,"to":2672},
-        {"text":"y","from":2672,"to":2674},
-        {"text":"marcan","from":2674,"to":2690},
-        {"text":"cada","from":2690,"to":2700},
-        {"text":"cuánto","from":2700,"to":2715},
-        {"text":"copias.","from":2715,"to":2733}
+        {"text":"Y","from":2627,"to":2630},
+        {"text":"esa","from":2630,"to":2638},
+        {"text":"libreta","from":2638,"to":2656},
+        {"text":"es","from":2656,"to":2661},
+        {"text":"el","from":2661,"to":2667},
+        {"text":"RPO,","from":2667,"to":2677},
+        {"text":"el","from":2677,"to":2682},
+        {"text":"recovery","from":2682,"to":2703},
+        {"text":"point","from":2703,"to":2717},
+        {"text":"objective,","from":2717,"to":2743},
+        {"text":"los","from":2743,"to":2751},
+        {"text":"datos","from":2751,"to":2764},
+        {"text":"que","from":2764,"to":2772},
+        {"text":"puedes","from":2772,"to":2788},
+        {"text":"perder,","from":2788,"to":2806},
+        {"text":"y","from":2806,"to":2809},
+        {"text":"marca","from":2809,"to":2822},
+        {"text":"cada","from":2822,"to":2833},
+        {"text":"cuánto","from":2833,"to":2849},
+        {"text":"copias.","from":2849,"to":2867}
       ]
     },
     {
       "id": "s03-04",
       "scene": "s03-promesas",
-      "text": "Cada proceso tiene los suyos, y los rellenas. Operaciones aguanta media hora y puede perder un día de datos. Facturas aguanta dos días, y casi no puede perder nada.",
-      "from": 2741,
-      "audioFrames": 348,
-      "durationInFrames": 356,
+      "text": "Cada proceso tiene los suyos, y los rellenas. Operaciones aguanta media hora y puede perder un día de datos. Facturación, dos días, y casi no puede perder nada.",
+      "from": 2875,
+      "audioFrames": 336,
+      "durationInFrames": 344,
       "audio": null,
       "words": [
-        {"text":"Cada","from":2741,"to":2751},
-        {"text":"proceso","from":2751,"to":2769},
-        {"text":"tiene","from":2769,"to":2782},
-        {"text":"los","from":2782,"to":2790},
-        {"text":"suyos,","from":2790,"to":2805},
-        {"text":"y","from":2805,"to":2808},
-        {"text":"los","from":2808,"to":2815},
-        {"text":"rellenas.","from":2815,"to":2838},
-        {"text":"Operaciones","from":2838,"to":2866},
-        {"text":"aguanta","from":2866,"to":2884},
-        {"text":"media","from":2884,"to":2897},
-        {"text":"hora","from":2897,"to":2907},
-        {"text":"y","from":2907,"to":2910},
-        {"text":"puede","from":2910,"to":2923},
-        {"text":"perder","from":2923,"to":2938},
-        {"text":"un","from":2938,"to":2943},
-        {"text":"día","from":2943,"to":2951},
-        {"text":"de","from":2951,"to":2956},
-        {"text":"datos.","from":2956,"to":2971},
-        {"text":"Facturas","from":2971,"to":2992},
-        {"text":"aguanta","from":2992,"to":3010},
-        {"text":"dos","from":3010,"to":3017},
-        {"text":"días,","from":3017,"to":3030},
-        {"text":"y","from":3030,"to":3033},
-        {"text":"casi","from":3033,"to":3043},
-        {"text":"no","from":3043,"to":3048},
-        {"text":"puede","from":3048,"to":3061},
-        {"text":"perder","from":3061,"to":3076},
-        {"text":"nada.","from":3076,"to":3089}
+        {"text":"Cada","from":2875,"to":2885},
+        {"text":"proceso","from":2885,"to":2903},
+        {"text":"tiene","from":2903,"to":2915},
+        {"text":"los","from":2915,"to":2923},
+        {"text":"suyos,","from":2923,"to":2938},
+        {"text":"y","from":2938,"to":2941},
+        {"text":"los","from":2941,"to":2948},
+        {"text":"rellenas.","from":2948,"to":2971},
+        {"text":"Operaciones","from":2971,"to":2999},
+        {"text":"aguanta","from":2999,"to":3016},
+        {"text":"media","from":3016,"to":3029},
+        {"text":"hora","from":3029,"to":3039},
+        {"text":"y","from":3039,"to":3042},
+        {"text":"puede","from":3042,"to":3054},
+        {"text":"perder","from":3054,"to":3070},
+        {"text":"un","from":3070,"to":3075},
+        {"text":"día","from":3075,"to":3082},
+        {"text":"de","from":3082,"to":3087},
+        {"text":"datos.","from":3087,"to":3102},
+        {"text":"Facturación,","from":3102,"to":3133},
+        {"text":"dos","from":3133,"to":3140},
+        {"text":"días,","from":3140,"to":3153},
+        {"text":"y","from":3153,"to":3155},
+        {"text":"casi","from":3155,"to":3166},
+        {"text":"no","from":3166,"to":3171},
+        {"text":"puede","from":3171,"to":3183},
+        {"text":"perder","from":3183,"to":3198},
+        {"text":"nada.","from":3198,"to":3211}
       ]
     },
     {
       "id": "s03-05",
       "scene": "s03-promesas",
-      "text": "Facturas puede esperar dos días. ¿Basta con una copia al día?",
-      "from": 3097,
-      "audioFrames": 132,
-      "durationInFrames": 275,
+      "text": "Facturación puede esperar dos días. Entonces, ¿basta con una copia al día?",
+      "from": 3219,
+      "audioFrames": 144,
+      "durationInFrames": 287,
       "audio": null,
       "words": [
-        {"text":"Facturas","from":3097,"to":3118},
-        {"text":"puede","from":3118,"to":3131},
-        {"text":"esperar","from":3131,"to":3149},
-        {"text":"dos","from":3149,"to":3157},
-        {"text":"días.","from":3157,"to":3169},
-        {"text":"¿Basta","from":3169,"to":3185},
-        {"text":"con","from":3185,"to":3193},
-        {"text":"una","from":3193,"to":3201},
-        {"text":"copia","from":3201,"to":3213},
-        {"text":"al","from":3213,"to":3219},
-        {"text":"día?","from":3219,"to":3229}
+        {"text":"Facturación","from":3219,"to":3244},
+        {"text":"puede","from":3244,"to":3256},
+        {"text":"esperar","from":3256,"to":3272},
+        {"text":"dos","from":3272,"to":3278},
+        {"text":"días.","from":3278,"to":3290},
+        {"text":"Entonces,","from":3290,"to":3310},
+        {"text":"¿basta","from":3310,"to":3324},
+        {"text":"con","from":3324,"to":3331},
+        {"text":"una","from":3331,"to":3338},
+        {"text":"copia","from":3338,"to":3349},
+        {"text":"al","from":3349,"to":3354},
+        {"text":"día?","from":3354,"to":3363}
       ]
     },
     {
       "id": "s03-06",
       "scene": "s03-promesas",
-      "text": "No, hay que copiar cada cinco minutos. Los dos días son el RTO, que manda sobre la capacidad, y el RPO manda sobre la copia.",
-      "from": 3372,
-      "audioFrames": 300,
-      "durationInFrames": 312,
+      "text": "No. Casi no puede perder nada, así que copias cada cinco minutos.",
+      "from": 3506,
+      "audioFrames": 144,
+      "durationInFrames": 152,
       "audio": null,
       "words": [
-        {"text":"No,","from":3372,"to":3381},
-        {"text":"hay","from":3381,"to":3390},
-        {"text":"que","from":3390,"to":3399},
-        {"text":"copiar","from":3399,"to":3417},
-        {"text":"cada","from":3417,"to":3429},
-        {"text":"cinco","from":3429,"to":3444},
-        {"text":"minutos.","from":3444,"to":3468},
-        {"text":"Los","from":3468,"to":3477},
-        {"text":"dos","from":3477,"to":3486},
-        {"text":"días","from":3486,"to":3498},
-        {"text":"son","from":3498,"to":3507},
-        {"text":"el","from":3507,"to":3513},
-        {"text":"RTO,","from":3513,"to":3525},
-        {"text":"que","from":3525,"to":3534},
-        {"text":"manda","from":3534,"to":3549},
-        {"text":"sobre","from":3549,"to":3564},
-        {"text":"la","from":3564,"to":3570},
-        {"text":"capacidad,","from":3570,"to":3600},
-        {"text":"y","from":3600,"to":3603},
-        {"text":"el","from":3603,"to":3609},
-        {"text":"RPO","from":3609,"to":3618},
-        {"text":"manda","from":3618,"to":3633},
-        {"text":"sobre","from":3633,"to":3648},
-        {"text":"la","from":3648,"to":3654},
-        {"text":"copia.","from":3654,"to":3672}
+        {"text":"No.","from":3506,"to":3514},
+        {"text":"Casi","from":3514,"to":3525},
+        {"text":"no","from":3525,"to":3530},
+        {"text":"puede","from":3530,"to":3543},
+        {"text":"perder","from":3543,"to":3559},
+        {"text":"nada,","from":3559,"to":3573},
+        {"text":"así","from":3573,"to":3581},
+        {"text":"que","from":3581,"to":3589},
+        {"text":"copias","from":3589,"to":3605},
+        {"text":"cada","from":3605,"to":3615},
+        {"text":"cinco","from":3615,"to":3629},
+        {"text":"minutos.","from":3629,"to":3650}
       ]
     },
     {
       "id": "s03-07",
       "scene": "s03-promesas",
-      "text": "O sea, que esperar mucho no relaja la copia.",
-      "from": 3684,
-      "audioFrames": 108,
-      "durationInFrames": 123,
+      "text": "Los dos días son el RTO y mandan sobre la capacidad, y los cinco minutos, el RPO, sobre la copia.",
+      "from": 3658,
+      "audioFrames": 240,
+      "durationInFrames": 252,
       "audio": null,
       "words": [
-        {"text":"O","from":3684,"to":3687},
-        {"text":"sea,","from":3687,"to":3699},
-        {"text":"que","from":3699,"to":3708},
-        {"text":"esperar","from":3708,"to":3729},
-        {"text":"mucho","from":3729,"to":3744},
-        {"text":"no","from":3744,"to":3750},
-        {"text":"relaja","from":3750,"to":3768},
-        {"text":"la","from":3768,"to":3774},
-        {"text":"copia.","from":3774,"to":3792}
+        {"text":"Los","from":3658,"to":3667},
+        {"text":"dos","from":3667,"to":3676},
+        {"text":"días","from":3676,"to":3689},
+        {"text":"son","from":3689,"to":3698},
+        {"text":"el","from":3698,"to":3704},
+        {"text":"RTO","from":3704,"to":3713},
+        {"text":"y","from":3713,"to":3716},
+        {"text":"mandan","from":3716,"to":3735},
+        {"text":"sobre","from":3735,"to":3750},
+        {"text":"la","from":3750,"to":3756},
+        {"text":"capacidad,","from":3756,"to":3787},
+        {"text":"y","from":3787,"to":3790},
+        {"text":"los","from":3790,"to":3800},
+        {"text":"cinco","from":3800,"to":3815},
+        {"text":"minutos,","from":3815,"to":3840},
+        {"text":"el","from":3840,"to":3846},
+        {"text":"RPO,","from":3846,"to":3858},
+        {"text":"sobre","from":3858,"to":3873},
+        {"text":"la","from":3873,"to":3880},
+        {"text":"copia.","from":3880,"to":3898}
+      ]
+    },
+    {
+      "id": "s03-08",
+      "scene": "s03-promesas",
+      "text": "O sea, que poder esperar mucho no te deja perder datos.",
+      "from": 3910,
+      "audioFrames": 132,
+      "durationInFrames": 147,
+      "audio": null,
+      "words": [
+        {"text":"O","from":3910,"to":3913},
+        {"text":"sea,","from":3913,"to":3925},
+        {"text":"que","from":3925,"to":3933},
+        {"text":"poder","from":3933,"to":3948},
+        {"text":"esperar","from":3948,"to":3969},
+        {"text":"mucho","from":3969,"to":3983},
+        {"text":"no","from":3983,"to":3989},
+        {"text":"te","from":3989,"to":3995},
+        {"text":"deja","from":3995,"to":4007},
+        {"text":"perder","from":4007,"to":4024},
+        {"text":"datos.","from":4024,"to":4042}
       ]
     },
     {
       "id": "s04-01",
       "scene": "s04-medida",
-      "text": "Ahora, lo que mides. El registro de averías de ese sistema, de los últimos doce meses, tiene cuatro. Cuarenta minutos, noventa y cinco, ciento veinte y sesenta y cinco.",
-      "from": 3839,
-      "audioFrames": 348,
-      "durationInFrames": 356,
+      "text": "Ahora, lo que mides. El registro de averías de llegadas y salidas tiene cuatro.",
+      "from": 4089,
+      "audioFrames": 168,
+      "durationInFrames": 176,
       "audio": null,
       "words": [
-        {"text":"Ahora,","from":3839,"to":3854},
-        {"text":"lo","from":3854,"to":3859},
-        {"text":"que","from":3859,"to":3866},
-        {"text":"mides.","from":3866,"to":3881},
-        {"text":"El","from":3881,"to":3886},
-        {"text":"registro","from":3886,"to":3906},
-        {"text":"de","from":3906,"to":3911},
-        {"text":"averías","from":3911,"to":3928},
-        {"text":"de","from":3928,"to":3933},
-        {"text":"ese","from":3933,"to":3941},
-        {"text":"sistema,","from":3941,"to":3961},
-        {"text":"de","from":3961,"to":3966},
-        {"text":"los","from":3966,"to":3973},
-        {"text":"últimos","from":3973,"to":3991},
-        {"text":"doce","from":3991,"to":4001},
-        {"text":"meses,","from":4001,"to":4015},
-        {"text":"tiene","from":4015,"to":4028},
-        {"text":"cuatro.","from":4028,"to":4045},
-        {"text":"Cuarenta","from":4045,"to":4065},
-        {"text":"minutos,","from":4065,"to":4085},
-        {"text":"noventa","from":4085,"to":4102},
-        {"text":"y","from":4102,"to":4105},
-        {"text":"cinco,","from":4105,"to":4120},
-        {"text":"ciento","from":4120,"to":4135},
-        {"text":"veinte","from":4135,"to":4150},
-        {"text":"y","from":4150,"to":4152},
-        {"text":"sesenta","from":4152,"to":4170},
-        {"text":"y","from":4170,"to":4172},
-        {"text":"cinco.","from":4172,"to":4187}
+        {"text":"Ahora,","from":4089,"to":4104},
+        {"text":"lo","from":4104,"to":4109},
+        {"text":"que","from":4109,"to":4117},
+        {"text":"mides.","from":4117,"to":4132},
+        {"text":"El","from":4132,"to":4137},
+        {"text":"registro","from":4137,"to":4158},
+        {"text":"de","from":4158,"to":4163},
+        {"text":"averías","from":4163,"to":4181},
+        {"text":"de","from":4181,"to":4186},
+        {"text":"llegadas","from":4186,"to":4206},
+        {"text":"y","from":4206,"to":4209},
+        {"text":"salidas","from":4209,"to":4226},
+        {"text":"tiene","from":4226,"to":4239},
+        {"text":"cuatro.","from":4239,"to":4257}
       ]
     },
     {
       "id": "s04-02",
       "scene": "s04-medida",
-      "text": "Operaciones había prometido media hora. De media se tardan ochenta minutos en dejarlo funcionando, y eso es el MTTR, el tiempo medio de reparación. Las cuatro pasaron de media hora.",
-      "from": 4195,
-      "audioFrames": 360,
-      "durationInFrames": 368,
+      "text": "La primera duró cuarenta minutos, la segunda noventa y cinco, la tercera ciento veinte y la cuarta sesenta y cinco.",
+      "from": 4265,
+      "audioFrames": 240,
+      "durationInFrames": 248,
       "audio": null,
       "words": [
-        {"text":"Operaciones","from":4195,"to":4221},
-        {"text":"había","from":4221,"to":4233},
-        {"text":"prometido","from":4233,"to":4254},
-        {"text":"media","from":4254,"to":4266},
-        {"text":"hora.","from":4266,"to":4278},
-        {"text":"De","from":4278,"to":4283},
-        {"text":"media","from":4283,"to":4294},
-        {"text":"se","from":4294,"to":4299},
-        {"text":"tardan","from":4299,"to":4313},
-        {"text":"ochenta","from":4313,"to":4330},
-        {"text":"minutos","from":4330,"to":4347},
-        {"text":"en","from":4347,"to":4351},
-        {"text":"dejarlo","from":4351,"to":4368},
-        {"text":"funcionando,","from":4368,"to":4396},
-        {"text":"y","from":4396,"to":4399},
-        {"text":"eso","from":4399,"to":4406},
-        {"text":"es","from":4406,"to":4411},
-        {"text":"el","from":4411,"to":4415},
-        {"text":"MTTR,","from":4415,"to":4427},
-        {"text":"el","from":4427,"to":4432},
-        {"text":"tiempo","from":4432,"to":4446},
-        {"text":"medio","from":4446,"to":4458},
-        {"text":"de","from":4458,"to":4463},
-        {"text":"reparación.","from":4463,"to":4489},
-        {"text":"Las","from":4489,"to":4496},
-        {"text":"cuatro","from":4496,"to":4510},
-        {"text":"pasaron","from":4510,"to":4527},
-        {"text":"de","from":4527,"to":4531},
-        {"text":"media","from":4531,"to":4543},
-        {"text":"hora.","from":4543,"to":4555}
+        {"text":"La","from":4265,"to":4270},
+        {"text":"primera","from":4270,"to":4288},
+        {"text":"duró","from":4288,"to":4297},
+        {"text":"cuarenta","from":4297,"to":4318},
+        {"text":"minutos,","from":4318,"to":4338},
+        {"text":"la","from":4338,"to":4343},
+        {"text":"segunda","from":4343,"to":4360},
+        {"text":"noventa","from":4360,"to":4378},
+        {"text":"y","from":4378,"to":4380},
+        {"text":"cinco,","from":4380,"to":4395},
+        {"text":"la","from":4395,"to":4400},
+        {"text":"tercera","from":4400,"to":4418},
+        {"text":"ciento","from":4418,"to":4433},
+        {"text":"veinte","from":4433,"to":4448},
+        {"text":"y","from":4448,"to":4450},
+        {"text":"la","from":4450,"to":4455},
+        {"text":"cuarta","from":4455,"to":4470},
+        {"text":"sesenta","from":4470,"to":4488},
+        {"text":"y","from":4488,"to":4490},
+        {"text":"cinco.","from":4490,"to":4505}
       ]
     },
     {
       "id": "s04-03",
       "scene": "s04-medida",
-      "text": "Eso es poner en el papel lo que ya pasa. El RTO sale de lo que el negocio aguanta, y el MTTR, de lo que hace tu equipo.",
-      "from": 4677,
-      "audioFrames": 336,
-      "durationInFrames": 354,
+      "text": "Y Operaciones, recuerda, tiene un RTO de media hora.",
+      "from": 4513,
+      "audioFrames": 108,
+      "durationInFrames": 116,
       "audio": null,
       "words": [
-        {"text":"Eso","from":4677,"to":4688},
-        {"text":"es","from":4688,"to":4695},
-        {"text":"poner","from":4695,"to":4714},
-        {"text":"en","from":4714,"to":4721},
-        {"text":"el","from":4721,"to":4728},
-        {"text":"papel","from":4728,"to":4746},
-        {"text":"lo","from":4746,"to":4754},
-        {"text":"que","from":4754,"to":4765},
-        {"text":"ya","from":4765,"to":4772},
-        {"text":"pasa.","from":4772,"to":4790},
-        {"text":"El","from":4790,"to":4798},
-        {"text":"RTO","from":4798,"to":4808},
-        {"text":"sale","from":4808,"to":4823},
-        {"text":"de","from":4823,"to":4830},
-        {"text":"lo","from":4830,"to":4838},
-        {"text":"que","from":4838,"to":4849},
-        {"text":"el","from":4849,"to":4856},
-        {"text":"negocio","from":4856,"to":4882},
-        {"text":"aguanta,","from":4882,"to":4911},
-        {"text":"y","from":4911,"to":4914},
-        {"text":"el","from":4914,"to":4922},
-        {"text":"MTTR,","from":4922,"to":4940},
-        {"text":"de","from":4940,"to":4947},
-        {"text":"lo","from":4947,"to":4955},
-        {"text":"que","from":4955,"to":4966},
-        {"text":"hace","from":4966,"to":4980},
-        {"text":"tu","from":4980,"to":4987},
-        {"text":"equipo.","from":4987,"to":5013}
+        {"text":"Y","from":4513,"to":4515},
+        {"text":"Operaciones,","from":4515,"to":4545},
+        {"text":"recuerda,","from":4545,"to":4567},
+        {"text":"tiene","from":4567,"to":4579},
+        {"text":"un","from":4579,"to":4584},
+        {"text":"RTO","from":4584,"to":4592},
+        {"text":"de","from":4592,"to":4596},
+        {"text":"media","from":4596,"to":4609},
+        {"text":"hora.","from":4609,"to":4621}
       ]
     },
     {
       "id": "s04-04",
       "scene": "s04-medida",
-      "text": "El técnico de la caja tarda lo que tarda. Eso se mide, no se promete.",
-      "from": 5031,
-      "audioFrames": 180,
-      "durationInFrames": 188,
+      "text": "De media se tardan ochenta minutos en dejarlo funcionando, y eso es el MTTR, el tiempo medio de reparación. Las cuatro tardan más de media hora.",
+      "from": 4629,
+      "audioFrames": 312,
+      "durationInFrames": 320,
       "audio": null,
       "words": [
-        {"text":"El","from":5031,"to":5038},
-        {"text":"técnico","from":5038,"to":5060},
-        {"text":"de","from":5060,"to":5067},
-        {"text":"la","from":5067,"to":5074},
-        {"text":"caja","from":5074,"to":5087},
-        {"text":"tarda","from":5087,"to":5103},
-        {"text":"lo","from":5103,"to":5110},
-        {"text":"que","from":5110,"to":5119},
-        {"text":"tarda.","from":5119,"to":5139},
-        {"text":"Eso","from":5139,"to":5149},
-        {"text":"se","from":5149,"to":5155},
-        {"text":"mide,","from":5155,"to":5172},
-        {"text":"no","from":5172,"to":5178},
-        {"text":"se","from":5178,"to":5185},
-        {"text":"promete.","from":5185,"to":5211}
+        {"text":"De","from":4629,"to":4634},
+        {"text":"media","from":4634,"to":4647},
+        {"text":"se","from":4647,"to":4653},
+        {"text":"tardan","from":4653,"to":4668},
+        {"text":"ochenta","from":4668,"to":4687},
+        {"text":"minutos","from":4687,"to":4705},
+        {"text":"en","from":4705,"to":4710},
+        {"text":"dejarlo","from":4710,"to":4729},
+        {"text":"funcionando,","from":4729,"to":4760},
+        {"text":"y","from":4760,"to":4763},
+        {"text":"eso","from":4763,"to":4771},
+        {"text":"es","from":4771,"to":4776},
+        {"text":"el","from":4776,"to":4781},
+        {"text":"MTTR,","from":4781,"to":4794},
+        {"text":"el","from":4794,"to":4799},
+        {"text":"tiempo","from":4799,"to":4815},
+        {"text":"medio","from":4815,"to":4828},
+        {"text":"de","from":4828,"to":4834},
+        {"text":"reparación.","from":4834,"to":4862},
+        {"text":"Las","from":4862,"to":4870},
+        {"text":"cuatro","from":4870,"to":4886},
+        {"text":"tardan","from":4886,"to":4902},
+        {"text":"más","from":4902,"to":4910},
+        {"text":"de","from":4910,"to":4915},
+        {"text":"media","from":4915,"to":4928},
+        {"text":"hora.","from":4928,"to":4941}
       ]
     },
     {
       "id": "s04-05",
       "scene": "s04-medida",
-      "text": "Si estos fueran los números, el plan no se cumpliría, y habría que mejorar la recuperación, no el papel.",
-      "from": 5219,
-      "audioFrames": 228,
-      "durationInFrames": 243,
+      "text": "Eso es poner en el papel lo que ya pasa. El RTO sale de lo que el negocio aguanta, y el MTTR, de lo que se mide.",
+      "from": 5063,
+      "audioFrames": 324,
+      "durationInFrames": 342,
       "audio": null,
       "words": [
-        {"text":"Si","from":5219,"to":5224},
-        {"text":"estos","from":5224,"to":5238},
-        {"text":"fueran","from":5238,"to":5253},
-        {"text":"los","from":5253,"to":5261},
-        {"text":"números,","from":5261,"to":5283},
-        {"text":"el","from":5283,"to":5288},
-        {"text":"plan","from":5288,"to":5299},
-        {"text":"no","from":5299,"to":5304},
-        {"text":"se","from":5304,"to":5309},
-        {"text":"cumpliría,","from":5309,"to":5336},
-        {"text":"y","from":5336,"to":5338},
-        {"text":"habría","from":5338,"to":5354},
-        {"text":"que","from":5354,"to":5362},
-        {"text":"mejorar","from":5362,"to":5381},
-        {"text":"la","from":5381,"to":5386},
-        {"text":"recuperación,","from":5386,"to":5420},
-        {"text":"no","from":5420,"to":5426},
-        {"text":"el","from":5426,"to":5431},
-        {"text":"papel.","from":5431,"to":5447}
+        {"text":"Eso","from":5063,"to":5074},
+        {"text":"es","from":5074,"to":5082},
+        {"text":"poner","from":5082,"to":5101},
+        {"text":"en","from":5101,"to":5108},
+        {"text":"el","from":5108,"to":5116},
+        {"text":"papel","from":5116,"to":5135},
+        {"text":"lo","from":5135,"to":5142},
+        {"text":"que","from":5142,"to":5153},
+        {"text":"ya","from":5153,"to":5161},
+        {"text":"pasa.","from":5161,"to":5180},
+        {"text":"El","from":5180,"to":5187},
+        {"text":"RTO","from":5187,"to":5199},
+        {"text":"sale","from":5199,"to":5214},
+        {"text":"de","from":5214,"to":5221},
+        {"text":"lo","from":5221,"to":5229},
+        {"text":"que","from":5229,"to":5240},
+        {"text":"el","from":5240,"to":5248},
+        {"text":"negocio","from":5248,"to":5274},
+        {"text":"aguanta,","from":5274,"to":5304},
+        {"text":"y","from":5304,"to":5308},
+        {"text":"el","from":5308,"to":5315},
+        {"text":"MTTR,","from":5315,"to":5334},
+        {"text":"de","from":5334,"to":5342},
+        {"text":"lo","from":5342,"to":5349},
+        {"text":"que","from":5349,"to":5361},
+        {"text":"se","from":5361,"to":5368},
+        {"text":"mide.","from":5368,"to":5387}
+      ]
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-medida",
+      "text": "Como en la cafetería, el técnico de la caja tarda lo que tarda. Eso se mide, no se promete.",
+      "from": 5405,
+      "audioFrames": 228,
+      "durationInFrames": 236,
+      "audio": null,
+      "words": [
+        {"text":"Como","from":5405,"to":5417},
+        {"text":"en","from":5417,"to":5424},
+        {"text":"la","from":5424,"to":5430},
+        {"text":"cafetería,","from":5430,"to":5461},
+        {"text":"el","from":5461,"to":5467},
+        {"text":"técnico","from":5467,"to":5489},
+        {"text":"de","from":5489,"to":5496},
+        {"text":"la","from":5496,"to":5502},
+        {"text":"caja","from":5502,"to":5514},
+        {"text":"tarda","from":5514,"to":5530},
+        {"text":"lo","from":5530,"to":5536},
+        {"text":"que","from":5536,"to":5546},
+        {"text":"tarda.","from":5546,"to":5564},
+        {"text":"Eso","from":5564,"to":5574},
+        {"text":"se","from":5574,"to":5580},
+        {"text":"mide,","from":5580,"to":5596},
+        {"text":"no","from":5596,"to":5602},
+        {"text":"se","from":5602,"to":5608},
+        {"text":"promete.","from":5608,"to":5633}
+      ]
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-medida",
+      "text": "Si fueran tus números, el plan no se cumpliría, y habría que mejorar la recuperación, no el papel.",
+      "from": 5641,
+      "audioFrames": 216,
+      "durationInFrames": 231,
+      "audio": null,
+      "words": [
+        {"text":"Si","from":5641,"to":5646},
+        {"text":"fueran","from":5646,"to":5662},
+        {"text":"tus","from":5662,"to":5670},
+        {"text":"números,","from":5670,"to":5692},
+        {"text":"el","from":5692,"to":5697},
+        {"text":"plan","from":5697,"to":5708},
+        {"text":"no","from":5708,"to":5713},
+        {"text":"se","from":5713,"to":5718},
+        {"text":"cumpliría,","from":5718,"to":5745},
+        {"text":"y","from":5745,"to":5748},
+        {"text":"habría","from":5748,"to":5764},
+        {"text":"que","from":5764,"to":5772},
+        {"text":"mejorar","from":5772,"to":5790},
+        {"text":"la","from":5790,"to":5796},
+        {"text":"recuperación,","from":5796,"to":5830},
+        {"text":"no","from":5830,"to":5836},
+        {"text":"el","from":5836,"to":5841},
+        {"text":"papel.","from":5841,"to":5857}
       ]
     },
     {
       "id": "s05-01",
       "scene": "s05-fallos",
-      "text": "En ese registro hay cuatro averías en doce meses. Repartidas, es una cada tres meses, más o menos. Eso es el MTBF, el tiempo medio entre fallos.",
-      "from": 5494,
-      "audioFrames": 324,
-      "durationInFrames": 332,
+      "text": "Y ese mismo registro dice otra cosa. Hay cuatro averías en doce meses. Repartidas, es una cada tres meses, más o menos.",
+      "from": 5904,
+      "audioFrames": 264,
+      "durationInFrames": 272,
       "audio": null,
       "words": [
-        {"text":"En","from":5494,"to":5499},
-        {"text":"ese","from":5499,"to":5508},
-        {"text":"registro","from":5508,"to":5530},
-        {"text":"hay","from":5530,"to":5538},
-        {"text":"cuatro","from":5538,"to":5554},
-        {"text":"averías","from":5554,"to":5574},
-        {"text":"en","from":5574,"to":5579},
-        {"text":"doce","from":5579,"to":5590},
-        {"text":"meses.","from":5590,"to":5607},
-        {"text":"Repartidas,","from":5607,"to":5637},
-        {"text":"es","from":5637,"to":5642},
-        {"text":"una","from":5642,"to":5651},
-        {"text":"cada","from":5651,"to":5661},
-        {"text":"tres","from":5661,"to":5672},
-        {"text":"meses,","from":5672,"to":5689},
-        {"text":"más","from":5689,"to":5697},
-        {"text":"o","from":5697,"to":5700},
-        {"text":"menos.","from":5700,"to":5716},
-        {"text":"Eso","from":5716,"to":5725},
-        {"text":"es","from":5725,"to":5730},
-        {"text":"el","from":5730,"to":5736},
-        {"text":"MTBF,","from":5736,"to":5749},
-        {"text":"el","from":5749,"to":5755},
-        {"text":"tiempo","from":5755,"to":5771},
-        {"text":"medio","from":5771,"to":5785},
-        {"text":"entre","from":5785,"to":5799},
-        {"text":"fallos.","from":5799,"to":5818}
+        {"text":"Y","from":5904,"to":5907},
+        {"text":"ese","from":5907,"to":5915},
+        {"text":"mismo","from":5915,"to":5928},
+        {"text":"registro","from":5928,"to":5950},
+        {"text":"dice","from":5950,"to":5961},
+        {"text":"otra","from":5961,"to":5971},
+        {"text":"cosa.","from":5971,"to":5985},
+        {"text":"Hay","from":5985,"to":5993},
+        {"text":"cuatro","from":5993,"to":6009},
+        {"text":"averías","from":6009,"to":6028},
+        {"text":"en","from":6028,"to":6033},
+        {"text":"doce","from":6033,"to":6044},
+        {"text":"meses.","from":6044,"to":6060},
+        {"text":"Repartidas,","from":6060,"to":6090},
+        {"text":"es","from":6090,"to":6095},
+        {"text":"una","from":6095,"to":6103},
+        {"text":"cada","from":6103,"to":6114},
+        {"text":"tres","from":6114,"to":6125},
+        {"text":"meses,","from":6125,"to":6141},
+        {"text":"más","from":6141,"to":6149},
+        {"text":"o","from":6149,"to":6152},
+        {"text":"menos.","from":6152,"to":6168}
       ]
     },
     {
       "id": "s05-02",
       "scene": "s05-fallos",
-      "text": "El MTTR es cuánto tarda en volver, y el MTBF, cada cuánto falla. No se cambian.",
-      "from": 5826,
-      "audioFrames": 192,
-      "durationInFrames": 210,
+      "text": "Eso es el MTBF, el tiempo medio entre fallos.",
+      "from": 6176,
+      "audioFrames": 108,
+      "durationInFrames": 116,
       "audio": null,
       "words": [
-        {"text":"El","from":5826,"to":5832},
-        {"text":"MTTR","from":5832,"to":5844},
-        {"text":"es","from":5844,"to":5850},
-        {"text":"cuánto","from":5850,"to":5868},
-        {"text":"tarda","from":5868,"to":5883},
-        {"text":"en","from":5883,"to":5889},
-        {"text":"volver,","from":5889,"to":5910},
-        {"text":"y","from":5910,"to":5913},
-        {"text":"el","from":5913,"to":5919},
-        {"text":"MTBF,","from":5919,"to":5934},
-        {"text":"cada","from":5934,"to":5946},
-        {"text":"cuánto","from":5946,"to":5964},
-        {"text":"falla.","from":5964,"to":5982},
-        {"text":"No","from":5982,"to":5988},
-        {"text":"se","from":5988,"to":5994},
-        {"text":"cambian.","from":5994,"to":6018}
+        {"text":"Eso","from":6176,"to":6185},
+        {"text":"es","from":6185,"to":6191},
+        {"text":"el","from":6191,"to":6196},
+        {"text":"MTBF,","from":6196,"to":6211},
+        {"text":"el","from":6211,"to":6217},
+        {"text":"tiempo","from":6217,"to":6234},
+        {"text":"medio","from":6234,"to":6249},
+        {"text":"entre","from":6249,"to":6264},
+        {"text":"fallos.","from":6264,"to":6284}
       ]
     },
     {
       "id": "s05-03",
       "scene": "s05-fallos",
-      "text": "O sea, que uno dice cuánto tardas en arreglarlo, y el otro, cada cuánto tendrás que hacerlo.",
-      "from": 6036,
-      "audioFrames": 204,
-      "durationInFrames": 219,
+      "text": "El MTTR es cuánto tarda en volver, y el MTBF, cada cuánto falla. No los confundas.",
+      "from": 6292,
+      "audioFrames": 192,
+      "durationInFrames": 210,
       "audio": null,
       "words": [
-        {"text":"O","from":6036,"to":6039},
-        {"text":"sea,","from":6039,"to":6049},
-        {"text":"que","from":6049,"to":6057},
-        {"text":"uno","from":6057,"to":6066},
-        {"text":"dice","from":6066,"to":6076},
-        {"text":"cuánto","from":6076,"to":6092},
-        {"text":"tardas","from":6092,"to":6108},
-        {"text":"en","from":6108,"to":6114},
-        {"text":"arreglarlo,","from":6114,"to":6143},
-        {"text":"y","from":6143,"to":6146},
-        {"text":"el","from":6146,"to":6151},
-        {"text":"otro,","from":6151,"to":6165},
-        {"text":"cada","from":6165,"to":6176},
-        {"text":"cuánto","from":6176,"to":6192},
-        {"text":"tendrás","from":6192,"to":6210},
-        {"text":"que","from":6210,"to":6219},
-        {"text":"hacerlo.","from":6219,"to":6240}
+        {"text":"El","from":6292,"to":6298},
+        {"text":"MTTR","from":6298,"to":6309},
+        {"text":"es","from":6309,"to":6315},
+        {"text":"cuánto","from":6315,"to":6332},
+        {"text":"tarda","from":6332,"to":6346},
+        {"text":"en","from":6346,"to":6352},
+        {"text":"volver,","from":6352,"to":6372},
+        {"text":"y","from":6372,"to":6375},
+        {"text":"el","from":6375,"to":6381},
+        {"text":"MTBF,","from":6381,"to":6395},
+        {"text":"cada","from":6395,"to":6407},
+        {"text":"cuánto","from":6407,"to":6424},
+        {"text":"falla.","from":6424,"to":6441},
+        {"text":"No","from":6441,"to":6447},
+        {"text":"los","from":6447,"to":6455},
+        {"text":"confundas.","from":6455,"to":6484}
+      ]
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-fallos",
+      "text": "O sea, que uno dice cuánto tarda el técnico en arreglar la caja, y el otro, lo fiable que es.",
+      "from": 6502,
+      "audioFrames": 240,
+      "durationInFrames": 255,
+      "audio": null,
+      "words": [
+        {"text":"O","from":6502,"to":6505},
+        {"text":"sea,","from":6505,"to":6518},
+        {"text":"que","from":6518,"to":6528},
+        {"text":"uno","from":6528,"to":6538},
+        {"text":"dice","from":6538,"to":6551},
+        {"text":"cuánto","from":6551,"to":6570},
+        {"text":"tarda","from":6570,"to":6586},
+        {"text":"el","from":6586,"to":6593},
+        {"text":"técnico","from":6593,"to":6616},
+        {"text":"en","from":6616,"to":6622},
+        {"text":"arreglar","from":6622,"to":6648},
+        {"text":"la","from":6648,"to":6654},
+        {"text":"caja,","from":6654,"to":6671},
+        {"text":"y","from":6671,"to":6674},
+        {"text":"el","from":6674,"to":6680},
+        {"text":"otro,","from":6680,"to":6697},
+        {"text":"lo","from":6697,"to":6703},
+        {"text":"fiable","from":6703,"to":6723},
+        {"text":"que","from":6723,"to":6732},
+        {"text":"es.","from":6732,"to":6742}
       ]
     },
     {
       "id": "s06-01",
       "scene": "s06-recap",
-      "text": "Tres reglas. Primera, el RTO es de tiempo y el RPO, de datos, y los dos salen del negocio.",
-      "from": 6287,
-      "audioFrames": 228,
-      "durationInFrames": 236,
+      "text": "Tres reglas. Primera, el RTO es de tiempo y el RPO, de datos.",
+      "from": 6789,
+      "audioFrames": 156,
+      "durationInFrames": 164,
       "audio": null,
       "words": [
-        {"text":"Tres","from":6287,"to":6300},
-        {"text":"reglas.","from":6300,"to":6322},
-        {"text":"Primera,","from":6322,"to":6347},
-        {"text":"el","from":6347,"to":6354},
-        {"text":"RTO","from":6354,"to":6363},
-        {"text":"es","from":6363,"to":6369},
-        {"text":"de","from":6369,"to":6376},
-        {"text":"tiempo","from":6376,"to":6395},
-        {"text":"y","from":6395,"to":6398},
-        {"text":"el","from":6398,"to":6404},
-        {"text":"RPO,","from":6404,"to":6417},
-        {"text":"de","from":6417,"to":6423},
-        {"text":"datos,","from":6423,"to":6442},
-        {"text":"y","from":6442,"to":6445},
-        {"text":"los","from":6445,"to":6455},
-        {"text":"dos","from":6455,"to":6464},
-        {"text":"salen","from":6464,"to":6480},
-        {"text":"del","from":6480,"to":6490},
-        {"text":"negocio.","from":6490,"to":6515}
+        {"text":"Tres","from":6789,"to":6802},
+        {"text":"reglas.","from":6802,"to":6824},
+        {"text":"Primera,","from":6824,"to":6849},
+        {"text":"el","from":6849,"to":6856},
+        {"text":"RTO","from":6856,"to":6865},
+        {"text":"es","from":6865,"to":6872},
+        {"text":"de","from":6872,"to":6878},
+        {"text":"tiempo","from":6878,"to":6897},
+        {"text":"y","from":6897,"to":6900},
+        {"text":"el","from":6900,"to":6907},
+        {"text":"RPO,","from":6907,"to":6920},
+        {"text":"de","from":6920,"to":6926},
+        {"text":"datos.","from":6926,"to":6945}
       ]
     },
     {
       "id": "s06-02",
       "scene": "s06-recap",
-      "text": "Segunda, el MTTR y el MTBF se miden, no se prometen, y el MTTR se compara con el RTO.",
-      "from": 6523,
+      "text": "Segunda, el MTTR y el MTBF se miden, no se prometen. Y el MTTR se compara con el RTO.",
+      "from": 6953,
       "audioFrames": 228,
       "durationInFrames": 236,
       "audio": null,
       "words": [
-        {"text":"Segunda,","from":6523,"to":6550},
-        {"text":"el","from":6550,"to":6557},
-        {"text":"MTTR","from":6557,"to":6571},
-        {"text":"y","from":6571,"to":6574},
-        {"text":"el","from":6574,"to":6581},
-        {"text":"MTBF","from":6581,"to":6594},
-        {"text":"se","from":6594,"to":6601},
-        {"text":"miden,","from":6601,"to":6622},
-        {"text":"no","from":6622,"to":6628},
-        {"text":"se","from":6628,"to":6635},
-        {"text":"prometen,","from":6635,"to":6666},
-        {"text":"y","from":6666,"to":6669},
-        {"text":"el","from":6669,"to":6676},
-        {"text":"MTTR","from":6676,"to":6690},
-        {"text":"se","from":6690,"to":6697},
-        {"text":"compara","from":6697,"to":6720},
-        {"text":"con","from":6720,"to":6731},
-        {"text":"el","from":6731,"to":6737},
-        {"text":"RTO.","from":6737,"to":6751}
+        {"text":"Segunda,","from":6953,"to":6980},
+        {"text":"el","from":6980,"to":6987},
+        {"text":"MTTR","from":6987,"to":7001},
+        {"text":"y","from":7001,"to":7004},
+        {"text":"el","from":7004,"to":7011},
+        {"text":"MTBF","from":7011,"to":7024},
+        {"text":"se","from":7024,"to":7031},
+        {"text":"miden,","from":7031,"to":7052},
+        {"text":"no","from":7052,"to":7058},
+        {"text":"se","from":7058,"to":7065},
+        {"text":"prometen.","from":7065,"to":7096},
+        {"text":"Y","from":7096,"to":7099},
+        {"text":"el","from":7099,"to":7106},
+        {"text":"MTTR","from":7106,"to":7120},
+        {"text":"se","from":7120,"to":7127},
+        {"text":"compara","from":7127,"to":7150},
+        {"text":"con","from":7150,"to":7161},
+        {"text":"el","from":7161,"to":7167},
+        {"text":"RTO.","from":7167,"to":7181}
       ]
     },
     {
       "id": "s06-03",
       "scene": "s06-recap",
       "text": "Y tercera, si lo medido no llega a lo prometido, se mejora la recuperación, no el papel.",
-      "from": 6759,
+      "from": 7189,
       "audioFrames": 204,
       "durationInFrames": 212,
       "audio": null,
       "words": [
-        {"text":"Y","from":6759,"to":6762},
-        {"text":"tercera,","from":6762,"to":6785},
-        {"text":"si","from":6785,"to":6790},
-        {"text":"lo","from":6790,"to":6796},
-        {"text":"medido","from":6796,"to":6813},
-        {"text":"no","from":6813,"to":6819},
-        {"text":"llega","from":6819,"to":6833},
-        {"text":"a","from":6833,"to":6836},
-        {"text":"lo","from":6836,"to":6841},
-        {"text":"prometido,","from":6841,"to":6870},
-        {"text":"se","from":6870,"to":6875},
-        {"text":"mejora","from":6875,"to":6892},
-        {"text":"la","from":6892,"to":6898},
-        {"text":"recuperación,","from":6898,"to":6935},
-        {"text":"no","from":6935,"to":6940},
-        {"text":"el","from":6940,"to":6946},
-        {"text":"papel.","from":6946,"to":6963}
+        {"text":"Y","from":7189,"to":7192},
+        {"text":"tercera,","from":7192,"to":7215},
+        {"text":"si","from":7215,"to":7220},
+        {"text":"lo","from":7220,"to":7226},
+        {"text":"medido","from":7226,"to":7243},
+        {"text":"no","from":7243,"to":7249},
+        {"text":"llega","from":7249,"to":7263},
+        {"text":"a","from":7263,"to":7266},
+        {"text":"lo","from":7266,"to":7271},
+        {"text":"prometido,","from":7271,"to":7300},
+        {"text":"se","from":7300,"to":7305},
+        {"text":"mejora","from":7305,"to":7322},
+        {"text":"la","from":7322,"to":7328},
+        {"text":"recuperación,","from":7328,"to":7365},
+        {"text":"no","from":7365,"to":7370},
+        {"text":"el","from":7370,"to":7376},
+        {"text":"papel.","from":7376,"to":7393}
       ]
     },
     {
       "id": "s06-04",
       "scene": "s06-recap",
       "text": "Y para practicarlo, tu turno, las preguntas de la lección.",
-      "from": 6971,
+      "from": 7401,
       "audioFrames": 120,
       "durationInFrames": 128,
       "audio": null,
       "words": [
-        {"text":"Y","from":6971,"to":6973},
-        {"text":"para","from":6973,"to":6983},
-        {"text":"practicarlo,","from":6983,"to":7013},
-        {"text":"tu","from":7013,"to":7018},
-        {"text":"turno,","from":7018,"to":7032},
-        {"text":"las","from":7032,"to":7040},
-        {"text":"preguntas","from":7040,"to":7062},
-        {"text":"de","from":7062,"to":7067},
-        {"text":"la","from":7067,"to":7071},
-        {"text":"lección.","from":7071,"to":7091}
+        {"text":"Y","from":7401,"to":7403},
+        {"text":"para","from":7403,"to":7413},
+        {"text":"practicarlo,","from":7413,"to":7443},
+        {"text":"tu","from":7443,"to":7448},
+        {"text":"turno,","from":7448,"to":7462},
+        {"text":"las","from":7462,"to":7470},
+        {"text":"preguntas","from":7470,"to":7492},
+        {"text":"de","from":7492,"to":7497},
+        {"text":"la","from":7497,"to":7501},
+        {"text":"lección.","from":7501,"to":7521}
       ]
     }
   ],
@@ -849,7 +936,7 @@
     },
     {
       "from": 194,
-      "to": 302,
+      "to": 308,
       "lines": [
         [
           {"text":"Poca","from":197,"to":207},
@@ -867,973 +954,1029 @@
       ]
     },
     {
-      "from": 302,
-      "to": 455,
+      "from": 308,
+      "to": 461,
       "lines": [
         [
-          {"text":"Y","from":305,"to":308},
-          {"text":"lo","from":308,"to":315},
-          {"text":"que","from":315,"to":325},
-          {"text":"no","from":325,"to":331},
-          {"text":"tiene","from":331,"to":347},
-          {"text":"número","from":347,"to":367}
+          {"text":"Y","from":311,"to":314},
+          {"text":"lo","from":314,"to":321},
+          {"text":"que","from":321,"to":331},
+          {"text":"no","from":331,"to":337},
+          {"text":"tiene","from":337,"to":353},
+          {"text":"número","from":353,"to":373}
         ],
         [
-          {"text":"no","from":367,"to":373},
-          {"text":"se","from":373,"to":380},
-          {"text":"puede","from":380,"to":396},
-          {"text":"cumplir","from":396,"to":419},
-          {"text":"ni","from":419,"to":426},
-          {"text":"incumplir.","from":426,"to":458}
+          {"text":"no","from":373,"to":379},
+          {"text":"se","from":379,"to":386},
+          {"text":"puede","from":386,"to":402},
+          {"text":"cumplir","from":402,"to":425},
+          {"text":"ni","from":425,"to":432},
+          {"text":"incumplir.","from":432,"to":464}
         ]
       ]
     },
     {
-      "from": 455,
-      "to": 614,
+      "from": 461,
+      "to": 620,
       "lines": [
         [
-          {"text":"Vas","from":458,"to":468},
-          {"text":"a","from":468,"to":471},
-          {"text":"ver","from":471,"to":481},
-          {"text":"qué","from":481,"to":491},
-          {"text":"se","from":491,"to":497},
-          {"text":"promete,","from":497,"to":523}
+          {"text":"Vas","from":464,"to":474},
+          {"text":"a","from":474,"to":477},
+          {"text":"ver","from":477,"to":487},
+          {"text":"qué","from":487,"to":497},
+          {"text":"se","from":497,"to":503},
+          {"text":"promete,","from":503,"to":529}
         ],
         [
-          {"text":"cómo","from":523,"to":537},
-          {"text":"se","from":537,"to":543},
-          {"text":"mide","from":543,"to":556},
-          {"text":"y","from":556,"to":559},
-          {"text":"cómo","from":559,"to":572},
-          {"text":"se","from":572,"to":579},
-          {"text":"compara.","from":579,"to":605}
+          {"text":"cómo","from":529,"to":543},
+          {"text":"se","from":543,"to":549},
+          {"text":"mide","from":549,"to":562},
+          {"text":"y","from":562,"to":565},
+          {"text":"cómo","from":565,"to":578},
+          {"text":"se","from":578,"to":585},
+          {"text":"compara.","from":585,"to":611}
         ]
       ]
     },
     {
-      "from": 614,
-      "to": 785,
+      "from": 620,
+      "to": 791,
       "lines": [
         [
-          {"text":"Y","from":617,"to":620},
-          {"text":"vuelve","from":620,"to":636},
-          {"text":"PAPER","from":636,"to":649},
-          {"text":"GOVERNOR,","from":649,"to":673},
-          {"text":"que","from":673,"to":681},
-          {"text":"vive","from":681,"to":692}
+          {"text":"Y","from":623,"to":626},
+          {"text":"vuelve","from":626,"to":642},
+          {"text":"PAPER","from":642,"to":655},
+          {"text":"GOVERNOR,","from":655,"to":679},
+          {"text":"que","from":679,"to":687},
+          {"text":"vive","from":687,"to":698}
         ],
         [
-          {"text":"en","from":692,"to":697},
-          {"text":"los","from":697,"to":705},
-          {"text":"huecos","from":705,"to":721},
-          {"text":"de","from":721,"to":726},
-          {"text":"tu","from":726,"to":732},
-          {"text":"gobernanza.","from":732,"to":761}
+          {"text":"en","from":698,"to":703},
+          {"text":"los","from":703,"to":711},
+          {"text":"huecos","from":711,"to":727},
+          {"text":"de","from":727,"to":732},
+          {"text":"tu","from":732,"to":738},
+          {"text":"gobernanza.","from":738,"to":767}
         ]
       ]
     },
     {
-      "from": 798,
-      "to": 944,
+      "from": 804,
+      "to": 950,
       "lines": [
         [
-          {"text":"Para","from":801,"to":810},
-          {"text":"ponerle","from":810,"to":826},
-          {"text":"número,","from":826,"to":842},
-          {"text":"empiezas","from":842,"to":860},
-          {"text":"preguntando","from":860,"to":885}
+          {"text":"Para","from":807,"to":816},
+          {"text":"ponerle","from":816,"to":832},
+          {"text":"número,","from":832,"to":848},
+          {"text":"empiezas","from":848,"to":866},
+          {"text":"preguntando","from":866,"to":891}
         ],
         [
-          {"text":"al","from":885,"to":890},
-          {"text":"negocio,","from":890,"to":908},
-          {"text":"no","from":908,"to":913},
-          {"text":"a","from":913,"to":915},
-          {"text":"los","from":915,"to":922},
-          {"text":"servidores.","from":922,"to":947}
+          {"text":"al","from":891,"to":896},
+          {"text":"negocio,","from":896,"to":914},
+          {"text":"no","from":914,"to":919},
+          {"text":"a","from":919,"to":921},
+          {"text":"los","from":921,"to":928},
+          {"text":"servidores.","from":928,"to":953}
         ]
       ]
     },
     {
-      "from": 944,
-      "to": 1034,
+      "from": 950,
+      "to": 1040,
       "lines": [
         [
-          {"text":"Eso","from":947,"to":954},
-          {"text":"es","from":954,"to":958},
-          {"text":"el","from":958,"to":963},
-          {"text":"business","from":963,"to":981}
+          {"text":"Eso","from":953,"to":960},
+          {"text":"es","from":960,"to":964},
+          {"text":"el","from":964,"to":969},
+          {"text":"business","from":969,"to":987}
         ],
         [
-          {"text":"impact","from":981,"to":995},
-          {"text":"analysis,","from":995,"to":1015},
-          {"text":"el","from":1015,"to":1020},
-          {"text":"BIA.","from":1020,"to":1029}
+          {"text":"impact","from":987,"to":1001},
+          {"text":"analysis,","from":1001,"to":1021},
+          {"text":"el","from":1021,"to":1026},
+          {"text":"BIA.","from":1026,"to":1035}
         ]
       ]
     },
     {
-      "from": 1034,
-      "to": 1124,
+      "from": 1040,
+      "to": 1130,
       "lines": [
         [
-          {"text":"Facturación","from":1037,"to":1062},
-          {"text":"emite","from":1062,"to":1073}
+          {"text":"Facturación","from":1043,"to":1068},
+          {"text":"emite","from":1068,"to":1079}
         ],
         [
-          {"text":"las","from":1073,"to":1080},
-          {"text":"facturas","from":1080,"to":1098},
-          {"text":"a","from":1098,"to":1100},
-          {"text":"las","from":1100,"to":1107},
-          {"text":"navieras.","from":1107,"to":1127}
+          {"text":"las","from":1079,"to":1086},
+          {"text":"facturas","from":1086,"to":1104},
+          {"text":"a","from":1104,"to":1106},
+          {"text":"las","from":1106,"to":1113},
+          {"text":"navieras.","from":1113,"to":1133}
         ]
       ]
     },
     {
-      "from": 1124,
-      "to": 1234,
+      "from": 1130,
+      "to": 1240,
       "lines": [
         [
-          {"text":"Y","from":1127,"to":1130},
-          {"text":"Operaciones","from":1130,"to":1154},
-          {"text":"sigue","from":1154,"to":1166},
-          {"text":"las","from":1166,"to":1173},
-          {"text":"llegadas","from":1173,"to":1191}
+          {"text":"Y","from":1133,"to":1136},
+          {"text":"Operaciones","from":1136,"to":1160},
+          {"text":"sigue","from":1160,"to":1172},
+          {"text":"las","from":1172,"to":1179},
+          {"text":"llegadas","from":1179,"to":1197}
         ],
         [
-          {"text":"y","from":1191,"to":1193},
-          {"text":"salidas","from":1193,"to":1209},
-          {"text":"de","from":1209,"to":1213},
-          {"text":"buques.","from":1213,"to":1229}
+          {"text":"y","from":1197,"to":1199},
+          {"text":"salidas","from":1199,"to":1215},
+          {"text":"de","from":1215,"to":1219},
+          {"text":"buques.","from":1219,"to":1235}
         ]
       ]
     },
     {
-      "from": 1234,
-      "to": 1397,
+      "from": 1240,
+      "to": 1403,
       "lines": [
         [
-          {"text":"A","from":1237,"to":1240},
-          {"text":"cada","from":1240,"to":1250},
-          {"text":"uno","from":1250,"to":1258},
-          {"text":"le","from":1258,"to":1263},
-          {"text":"preguntas","from":1263,"to":1286},
-          {"text":"cuánto","from":1286,"to":1302},
-          {"text":"aguanta","from":1302,"to":1320}
+          {"text":"A","from":1243,"to":1246},
+          {"text":"cada","from":1246,"to":1256},
+          {"text":"uno","from":1256,"to":1264},
+          {"text":"le","from":1264,"to":1269},
+          {"text":"preguntas","from":1269,"to":1292},
+          {"text":"cuánto","from":1292,"to":1308},
+          {"text":"aguanta","from":1308,"to":1326}
         ],
         [
-          {"text":"parado","from":1320,"to":1335},
-          {"text":"y","from":1335,"to":1338},
-          {"text":"cuántos","from":1338,"to":1356},
-          {"text":"datos","from":1356,"to":1369},
-          {"text":"puede","from":1369,"to":1382},
-          {"text":"perder.","from":1382,"to":1400}
+          {"text":"parado","from":1326,"to":1341},
+          {"text":"y","from":1341,"to":1344},
+          {"text":"cuántos","from":1344,"to":1362},
+          {"text":"datos","from":1362,"to":1375},
+          {"text":"puede","from":1375,"to":1388},
+          {"text":"perder.","from":1388,"to":1406}
         ]
       ]
     },
     {
-      "from": 1397,
-      "to": 1525,
+      "from": 1403,
+      "to": 1531,
       "lines": [
         [
-          {"text":"Y","from":1400,"to":1403},
-          {"text":"de","from":1403,"to":1408},
-          {"text":"paso,","from":1408,"to":1421},
-          {"text":"cuánto","from":1421,"to":1436},
-          {"text":"duele","from":1436,"to":1449}
+          {"text":"Y","from":1406,"to":1409},
+          {"text":"de","from":1409,"to":1414},
+          {"text":"paso,","from":1414,"to":1427},
+          {"text":"cuánto","from":1427,"to":1442},
+          {"text":"duele","from":1442,"to":1455}
         ],
         [
-          {"text":"cada","from":1449,"to":1460},
-          {"text":"hora","from":1460,"to":1470},
-          {"text":"sin","from":1470,"to":1478},
-          {"text":"servicio.","from":1478,"to":1501}
+          {"text":"cada","from":1455,"to":1466},
+          {"text":"hora","from":1466,"to":1476},
+          {"text":"sin","from":1476,"to":1484},
+          {"text":"servicio.","from":1484,"to":1507}
         ]
       ]
     },
     {
-      "from": 1620,
-      "to": 1765,
+      "from": 1626,
+      "to": 1728,
       "lines": [
         [
-          {"text":"Cero","from":1623,"to":1633},
-          {"text":"minutos","from":1633,"to":1650},
-          {"text":"para","from":1650,"to":1660},
-          {"text":"todo","from":1660,"to":1670},
-          {"text":"suena","from":1670,"to":1682},
-          {"text":"seguro,","from":1682,"to":1699}
+          {"text":"Cero","from":1629,"to":1640},
+          {"text":"minutos","from":1640,"to":1658},
+          {"text":"para","from":1658,"to":1668},
+          {"text":"todo","from":1668,"to":1679}
         ],
         [
-          {"text":"pero","from":1699,"to":1709},
-          {"text":"cuanto","from":1709,"to":1724},
-          {"text":"más","from":1724,"to":1731},
-          {"text":"corto","from":1731,"to":1743},
-          {"text":"es","from":1743,"to":1748},
-          {"text":"el","from":1748,"to":1753},
-          {"text":"plazo,","from":1753,"to":1768}
+          {"text":"suena","from":1679,"to":1692},
+          {"text":"a","from":1692,"to":1695},
+          {"text":"lo","from":1695,"to":1700},
+          {"text":"más","from":1700,"to":1708},
+          {"text":"prudente,","from":1708,"to":1731}
         ]
       ]
     },
     {
-      "from": 1765,
-      "to": 1843,
+      "from": 1728,
+      "to": 1886,
       "lines": [
         [
-          {"text":"más","from":1768,"to":1775},
-          {"text":"capacidad","from":1775,"to":1797},
-          {"text":"tienes","from":1797,"to":1812},
-          {"text":"que","from":1812,"to":1819},
-          {"text":"tener","from":1819,"to":1831},
-          {"text":"lista.","from":1831,"to":1846}
-        ]
-      ]
-    },
-    {
-      "from": 1843,
-      "to": 1983,
-      "lines": [
-        [
-          {"text":"Por","from":1846,"to":1854},
-          {"text":"eso","from":1854,"to":1861},
-          {"text":"el","from":1861,"to":1866},
-          {"text":"análisis","from":1866,"to":1885},
-          {"text":"ordena","from":1885,"to":1900}
+          {"text":"pero","from":1731,"to":1742},
+          {"text":"cuanto","from":1742,"to":1758},
+          {"text":"más","from":1758,"to":1766},
+          {"text":"corto","from":1766,"to":1779},
+          {"text":"es","from":1779,"to":1784},
+          {"text":"el","from":1784,"to":1789},
+          {"text":"plazo,","from":1789,"to":1805}
         ],
         [
-          {"text":"qué","from":1900,"to":1907},
-          {"text":"proceso","from":1907,"to":1925},
-          {"text":"aguanta","from":1925,"to":1942},
-          {"text":"cuánto.","from":1942,"to":1959}
+          {"text":"más","from":1805,"to":1813},
+          {"text":"capacidad","from":1813,"to":1836},
+          {"text":"tienes","from":1836,"to":1852},
+          {"text":"que","from":1852,"to":1860},
+          {"text":"comprar.","from":1860,"to":1881}
         ]
       ]
     },
     {
-      "from": 2006,
-      "to": 2122,
+      "from": 1886,
+      "to": 2057,
       "lines": [
         [
-          {"text":"Piensa","from":2009,"to":2024},
-          {"text":"en","from":2024,"to":2030},
-          {"text":"una","from":2030,"to":2037},
-          {"text":"cafetería","from":2037,"to":2060}
+          {"text":"Por","from":1889,"to":1897},
+          {"text":"eso","from":1897,"to":1905},
+          {"text":"el","from":1905,"to":1910},
+          {"text":"BIA","from":1910,"to":1918},
+          {"text":"ordena","from":1918,"to":1934},
+          {"text":"los","from":1934,"to":1942},
+          {"text":"procesos","from":1942,"to":1964}
         ],
         [
-          {"text":"a","from":2060,"to":2063},
-          {"text":"la","from":2063,"to":2068},
-          {"text":"que","from":2068,"to":2076},
-          {"text":"se","from":2076,"to":2081},
-          {"text":"le","from":2081,"to":2086},
-          {"text":"estropea","from":2086,"to":2107},
-          {"text":"la","from":2107,"to":2112},
-          {"text":"caja.","from":2112,"to":2125}
+          {"text":"según","from":1964,"to":1977},
+          {"text":"cuánto","from":1977,"to":1993},
+          {"text":"aguanta","from":1993,"to":2012},
+          {"text":"cada","from":2012,"to":2022},
+          {"text":"uno.","from":2022,"to":2033}
         ]
       ]
     },
     {
-      "from": 2122,
-      "to": 2237,
+      "from": 2080,
+      "to": 2214,
       "lines": [
         [
-          {"text":"Una","from":2125,"to":2132},
-          {"text":"pregunta","from":2132,"to":2153},
-          {"text":"es","from":2153,"to":2158},
-          {"text":"cuánto","from":2158,"to":2174},
-          {"text":"puede","from":2174,"to":2186}
+          {"text":"Imagina","from":2083,"to":2099},
+          {"text":"esas","from":2099,"to":2108},
+          {"text":"dos","from":2108,"to":2115},
+          {"text":"preguntas","from":2115,"to":2136},
+          {"text":"en","from":2136,"to":2141},
+          {"text":"una","from":2141,"to":2148}
         ],
         [
-          {"text":"estar","from":2186,"to":2199},
-          {"text":"sin","from":2199,"to":2207},
-          {"text":"servir,","from":2207,"to":2225},
-          {"text":"y","from":2225,"to":2228},
-          {"text":"otra,","from":2228,"to":2240}
+          {"text":"cafetería,","from":2148,"to":2171},
+          {"text":"con","from":2171,"to":2178},
+          {"text":"la","from":2178,"to":2182},
+          {"text":"caja","from":2182,"to":2191},
+          {"text":"estropeada.","from":2191,"to":2217}
         ]
       ]
     },
     {
-      "from": 2237,
-      "to": 2338,
+      "from": 2214,
+      "to": 2299,
       "lines": [
         [
-          {"text":"cuántas","from":2240,"to":2258},
-          {"text":"ventas","from":2258,"to":2274},
-          {"text":"apuntadas","from":2274,"to":2297},
-          {"text":"aceptas","from":2297,"to":2315},
-          {"text":"perder.","from":2315,"to":2333}
-        ]
-      ]
-    },
-    {
-      "from": 2338,
-      "to": 2437,
-      "lines": [
-        [
-          {"text":"El","from":2341,"to":2346},
-          {"text":"plazo","from":2346,"to":2359},
-          {"text":"es","from":2359,"to":2364},
-          {"text":"el","from":2364,"to":2369},
-          {"text":"RTO,","from":2369,"to":2379}
+          {"text":"Una","from":2217,"to":2224},
+          {"text":"es","from":2224,"to":2228},
+          {"text":"cuánto","from":2228,"to":2242},
+          {"text":"puede","from":2242,"to":2254}
         ],
         [
-          {"text":"el","from":2379,"to":2384},
-          {"text":"recovery","from":2384,"to":2405},
-          {"text":"time","from":2405,"to":2415},
-          {"text":"objective,","from":2415,"to":2440}
+          {"text":"estar","from":2254,"to":2265},
+          {"text":"sin","from":2265,"to":2272},
+          {"text":"servir,","from":2272,"to":2288},
+          {"text":"y","from":2288,"to":2291},
+          {"text":"otra,","from":2291,"to":2302}
         ]
       ]
     },
     {
-      "from": 2437,
-      "to": 2562,
+      "from": 2299,
+      "to": 2388,
       "lines": [
         [
-          {"text":"y","from":2440,"to":2443},
-          {"text":"marca","from":2443,"to":2455},
-          {"text":"la","from":2455,"to":2460},
-          {"text":"capacidad","from":2460,"to":2483}
-        ],
-        [
-          {"text":"de","from":2483,"to":2488},
-          {"text":"recuperación","from":2488,"to":2519},
-          {"text":"que","from":2519,"to":2527},
-          {"text":"tienes","from":2527,"to":2542},
-          {"text":"lista.","from":2542,"to":2557}
+          {"text":"cuántas","from":2302,"to":2318},
+          {"text":"ventas","from":2318,"to":2332},
+          {"text":"apuntadas","from":2332,"to":2353},
+          {"text":"puedes","from":2353,"to":2367},
+          {"text":"perder.","from":2367,"to":2383}
         ]
       ]
     },
     {
-      "from": 2562,
-      "to": 2738,
+      "from": 2388,
+      "to": 2485,
       "lines": [
         [
-          {"text":"Los","from":2565,"to":2573},
-          {"text":"datos","from":2573,"to":2585},
-          {"text":"son","from":2585,"to":2593},
-          {"text":"el","from":2593,"to":2598},
-          {"text":"RPO,","from":2598,"to":2608},
-          {"text":"el","from":2608,"to":2613},
-          {"text":"recovery","from":2613,"to":2634},
-          {"text":"point","from":2634,"to":2646}
+          {"text":"Ese","from":2391,"to":2398},
+          {"text":"reloj","from":2398,"to":2410},
+          {"text":"es","from":2410,"to":2415},
+          {"text":"el","from":2415,"to":2420},
+          {"text":"RTO,","from":2420,"to":2430}
         ],
         [
-          {"text":"objective,","from":2646,"to":2672},
-          {"text":"y","from":2672,"to":2674},
-          {"text":"marcan","from":2674,"to":2690},
-          {"text":"cada","from":2690,"to":2700},
-          {"text":"cuánto","from":2700,"to":2715},
-          {"text":"copias.","from":2715,"to":2733}
+          {"text":"el","from":2430,"to":2435},
+          {"text":"recovery","from":2435,"to":2454},
+          {"text":"time","from":2454,"to":2464},
+          {"text":"objective,","from":2464,"to":2488}
         ]
       ]
     },
     {
-      "from": 2738,
-      "to": 2835,
+      "from": 2485,
+      "to": 2624,
       "lines": [
         [
-          {"text":"Cada","from":2741,"to":2751},
-          {"text":"proceso","from":2751,"to":2769},
-          {"text":"tiene","from":2769,"to":2782},
-          {"text":"los","from":2782,"to":2790},
-          {"text":"suyos,","from":2790,"to":2805}
+          {"text":"y","from":2488,"to":2490},
+          {"text":"marca","from":2490,"to":2503},
+          {"text":"la","from":2503,"to":2507},
+          {"text":"capacidad","from":2507,"to":2529},
+          {"text":"de","from":2529,"to":2534},
+          {"text":"recuperación","from":2534,"to":2563}
         ],
         [
-          {"text":"y","from":2805,"to":2808},
-          {"text":"los","from":2808,"to":2815},
-          {"text":"rellenas.","from":2815,"to":2838}
+          {"text":"que","from":2563,"to":2570},
+          {"text":"necesitas","from":2570,"to":2592},
+          {"text":"tener","from":2592,"to":2604},
+          {"text":"lista.","from":2604,"to":2619}
         ]
       ]
     },
     {
-      "from": 2835,
+      "from": 2624,
+      "to": 2803,
+      "lines": [
+        [
+          {"text":"Y","from":2627,"to":2630},
+          {"text":"esa","from":2630,"to":2638},
+          {"text":"libreta","from":2638,"to":2656},
+          {"text":"es","from":2656,"to":2661},
+          {"text":"el","from":2661,"to":2667},
+          {"text":"RPO,","from":2667,"to":2677},
+          {"text":"el","from":2677,"to":2682},
+          {"text":"recovery","from":2682,"to":2703},
+          {"text":"point","from":2703,"to":2717}
+        ],
+        [
+          {"text":"objective,","from":2717,"to":2743},
+          {"text":"los","from":2743,"to":2751},
+          {"text":"datos","from":2751,"to":2764},
+          {"text":"que","from":2764,"to":2772},
+          {"text":"puedes","from":2772,"to":2788},
+          {"text":"perder,","from":2788,"to":2806}
+        ]
+      ]
+    },
+    {
+      "from": 2803,
+      "to": 2872,
+      "lines": [
+        [
+          {"text":"y","from":2806,"to":2809},
+          {"text":"marca","from":2809,"to":2822},
+          {"text":"cada","from":2822,"to":2833},
+          {"text":"cuánto","from":2833,"to":2849},
+          {"text":"copias.","from":2849,"to":2867}
+        ]
+      ]
+    },
+    {
+      "from": 2872,
       "to": 2968,
       "lines": [
         [
-          {"text":"Operaciones","from":2838,"to":2866},
-          {"text":"aguanta","from":2866,"to":2884},
-          {"text":"media","from":2884,"to":2897},
-          {"text":"hora","from":2897,"to":2907}
+          {"text":"Cada","from":2875,"to":2885},
+          {"text":"proceso","from":2885,"to":2903},
+          {"text":"tiene","from":2903,"to":2915},
+          {"text":"los","from":2915,"to":2923},
+          {"text":"suyos,","from":2923,"to":2938}
         ],
         [
-          {"text":"y","from":2907,"to":2910},
-          {"text":"puede","from":2910,"to":2923},
-          {"text":"perder","from":2923,"to":2938},
-          {"text":"un","from":2938,"to":2943},
-          {"text":"día","from":2943,"to":2951},
-          {"text":"de","from":2951,"to":2956},
-          {"text":"datos.","from":2956,"to":2971}
+          {"text":"y","from":2938,"to":2941},
+          {"text":"los","from":2941,"to":2948},
+          {"text":"rellenas.","from":2948,"to":2971}
         ]
       ]
     },
     {
       "from": 2968,
-      "to": 3094,
+      "to": 3099,
       "lines": [
         [
-          {"text":"Facturas","from":2971,"to":2992},
-          {"text":"aguanta","from":2992,"to":3010},
-          {"text":"dos","from":3010,"to":3017},
-          {"text":"días,","from":3017,"to":3030}
+          {"text":"Operaciones","from":2971,"to":2999},
+          {"text":"aguanta","from":2999,"to":3016},
+          {"text":"media","from":3016,"to":3029},
+          {"text":"hora","from":3029,"to":3039}
         ],
         [
-          {"text":"y","from":3030,"to":3033},
-          {"text":"casi","from":3033,"to":3043},
-          {"text":"no","from":3043,"to":3048},
-          {"text":"puede","from":3048,"to":3061},
-          {"text":"perder","from":3061,"to":3076},
-          {"text":"nada.","from":3076,"to":3089}
+          {"text":"y","from":3039,"to":3042},
+          {"text":"puede","from":3042,"to":3054},
+          {"text":"perder","from":3054,"to":3070},
+          {"text":"un","from":3070,"to":3075},
+          {"text":"día","from":3075,"to":3082},
+          {"text":"de","from":3082,"to":3087},
+          {"text":"datos.","from":3087,"to":3102}
         ]
       ]
     },
     {
-      "from": 3094,
-      "to": 3253,
+      "from": 3099,
+      "to": 3216,
       "lines": [
         [
-          {"text":"Facturas","from":3097,"to":3118},
-          {"text":"puede","from":3118,"to":3131},
-          {"text":"esperar","from":3131,"to":3149},
-          {"text":"dos","from":3149,"to":3157},
-          {"text":"días.","from":3157,"to":3169}
+          {"text":"Facturación,","from":3102,"to":3133},
+          {"text":"dos","from":3133,"to":3140},
+          {"text":"días,","from":3140,"to":3153}
         ],
         [
-          {"text":"¿Basta","from":3169,"to":3185},
-          {"text":"con","from":3185,"to":3193},
-          {"text":"una","from":3193,"to":3201},
-          {"text":"copia","from":3201,"to":3213},
-          {"text":"al","from":3213,"to":3219},
-          {"text":"día?","from":3219,"to":3229}
+          {"text":"y","from":3153,"to":3155},
+          {"text":"casi","from":3155,"to":3166},
+          {"text":"no","from":3166,"to":3171},
+          {"text":"puede","from":3171,"to":3183},
+          {"text":"perder","from":3183,"to":3198},
+          {"text":"nada.","from":3198,"to":3211}
         ]
       ]
     },
     {
-      "from": 3369,
-      "to": 3465,
+      "from": 3216,
+      "to": 3387,
       "lines": [
         [
-          {"text":"No,","from":3372,"to":3381},
-          {"text":"hay","from":3381,"to":3390},
-          {"text":"que","from":3390,"to":3399},
-          {"text":"copiar","from":3399,"to":3417},
-          {"text":"cada","from":3417,"to":3429},
-          {"text":"cinco","from":3429,"to":3444},
-          {"text":"minutos.","from":3444,"to":3468}
-        ]
-      ]
-    },
-    {
-      "from": 3465,
-      "to": 3597,
-      "lines": [
-        [
-          {"text":"Los","from":3468,"to":3477},
-          {"text":"dos","from":3477,"to":3486},
-          {"text":"días","from":3486,"to":3498},
-          {"text":"son","from":3498,"to":3507},
-          {"text":"el","from":3507,"to":3513},
-          {"text":"RTO,","from":3513,"to":3525}
+          {"text":"Facturación","from":3219,"to":3244},
+          {"text":"puede","from":3244,"to":3256},
+          {"text":"esperar","from":3256,"to":3272},
+          {"text":"dos","from":3272,"to":3278},
+          {"text":"días.","from":3278,"to":3290}
         ],
         [
-          {"text":"que","from":3525,"to":3534},
-          {"text":"manda","from":3534,"to":3549},
-          {"text":"sobre","from":3549,"to":3564},
-          {"text":"la","from":3564,"to":3570},
-          {"text":"capacidad,","from":3570,"to":3600}
+          {"text":"Entonces,","from":3290,"to":3310},
+          {"text":"¿basta","from":3310,"to":3324},
+          {"text":"con","from":3324,"to":3331},
+          {"text":"una","from":3331,"to":3338},
+          {"text":"copia","from":3338,"to":3349},
+          {"text":"al","from":3349,"to":3354},
+          {"text":"día?","from":3354,"to":3363}
         ]
       ]
     },
     {
-      "from": 3597,
-      "to": 3681,
+      "from": 3503,
+      "to": 3655,
       "lines": [
         [
-          {"text":"y","from":3600,"to":3603},
-          {"text":"el","from":3603,"to":3609},
-          {"text":"RPO","from":3609,"to":3618},
-          {"text":"manda","from":3618,"to":3633},
-          {"text":"sobre","from":3633,"to":3648},
-          {"text":"la","from":3648,"to":3654},
-          {"text":"copia.","from":3654,"to":3672}
-        ]
-      ]
-    },
-    {
-      "from": 3681,
-      "to": 3816,
-      "lines": [
-        [
-          {"text":"O","from":3684,"to":3687},
-          {"text":"sea,","from":3687,"to":3699},
-          {"text":"que","from":3699,"to":3708},
-          {"text":"esperar","from":3708,"to":3729},
-          {"text":"mucho","from":3729,"to":3744}
+          {"text":"No.","from":3506,"to":3514},
+          {"text":"Casi","from":3514,"to":3525},
+          {"text":"no","from":3525,"to":3530},
+          {"text":"puede","from":3530,"to":3543},
+          {"text":"perder","from":3543,"to":3559},
+          {"text":"nada,","from":3559,"to":3573}
         ],
         [
-          {"text":"no","from":3744,"to":3750},
-          {"text":"relaja","from":3750,"to":3768},
-          {"text":"la","from":3768,"to":3774},
-          {"text":"copia.","from":3774,"to":3792}
+          {"text":"así","from":3573,"to":3581},
+          {"text":"que","from":3581,"to":3589},
+          {"text":"copias","from":3589,"to":3605},
+          {"text":"cada","from":3605,"to":3615},
+          {"text":"cinco","from":3615,"to":3629},
+          {"text":"minutos.","from":3629,"to":3650}
         ]
       ]
     },
     {
-      "from": 3836,
-      "to": 3878,
+      "from": 3655,
+      "to": 3855,
       "lines": [
         [
-          {"text":"Ahora,","from":3839,"to":3854},
-          {"text":"lo","from":3854,"to":3859},
-          {"text":"que","from":3859,"to":3866},
-          {"text":"mides.","from":3866,"to":3881}
-        ]
-      ]
-    },
-    {
-      "from": 3878,
-      "to": 4042,
-      "lines": [
-        [
-          {"text":"El","from":3881,"to":3886},
-          {"text":"registro","from":3886,"to":3906},
-          {"text":"de","from":3906,"to":3911},
-          {"text":"averías","from":3911,"to":3928},
-          {"text":"de","from":3928,"to":3933},
-          {"text":"ese","from":3933,"to":3941},
-          {"text":"sistema,","from":3941,"to":3961}
+          {"text":"Los","from":3658,"to":3667},
+          {"text":"dos","from":3667,"to":3676},
+          {"text":"días","from":3676,"to":3689},
+          {"text":"son","from":3689,"to":3698},
+          {"text":"el","from":3698,"to":3704},
+          {"text":"RTO","from":3704,"to":3713},
+          {"text":"y","from":3713,"to":3716},
+          {"text":"mandan","from":3716,"to":3735},
+          {"text":"sobre","from":3735,"to":3750},
+          {"text":"la","from":3750,"to":3756}
         ],
         [
-          {"text":"de","from":3961,"to":3966},
-          {"text":"los","from":3966,"to":3973},
-          {"text":"últimos","from":3973,"to":3991},
-          {"text":"doce","from":3991,"to":4001},
-          {"text":"meses,","from":4001,"to":4015},
-          {"text":"tiene","from":4015,"to":4028},
-          {"text":"cuatro.","from":4028,"to":4045}
+          {"text":"capacidad,","from":3756,"to":3787},
+          {"text":"y","from":3787,"to":3790},
+          {"text":"los","from":3790,"to":3800},
+          {"text":"cinco","from":3800,"to":3815},
+          {"text":"minutos,","from":3815,"to":3840},
+          {"text":"el","from":3840,"to":3846},
+          {"text":"RPO,","from":3846,"to":3858}
         ]
       ]
     },
     {
-      "from": 4042,
-      "to": 4192,
+      "from": 3855,
+      "to": 3907,
       "lines": [
         [
-          {"text":"Cuarenta","from":4045,"to":4065},
-          {"text":"minutos,","from":4065,"to":4085},
-          {"text":"noventa","from":4085,"to":4102},
-          {"text":"y","from":4102,"to":4105},
-          {"text":"cinco,","from":4105,"to":4120}
+          {"text":"sobre","from":3858,"to":3873},
+          {"text":"la","from":3873,"to":3880},
+          {"text":"copia.","from":3880,"to":3898}
+        ]
+      ]
+    },
+    {
+      "from": 3907,
+      "to": 4066,
+      "lines": [
+        [
+          {"text":"O","from":3910,"to":3913},
+          {"text":"sea,","from":3913,"to":3925},
+          {"text":"que","from":3925,"to":3933},
+          {"text":"poder","from":3933,"to":3948},
+          {"text":"esperar","from":3948,"to":3969}
         ],
         [
-          {"text":"ciento","from":4120,"to":4135},
-          {"text":"veinte","from":4135,"to":4150},
-          {"text":"y","from":4150,"to":4152},
-          {"text":"sesenta","from":4152,"to":4170},
-          {"text":"y","from":4170,"to":4172},
-          {"text":"cinco.","from":4172,"to":4187}
+          {"text":"mucho","from":3969,"to":3983},
+          {"text":"no","from":3983,"to":3989},
+          {"text":"te","from":3989,"to":3995},
+          {"text":"deja","from":3995,"to":4007},
+          {"text":"perder","from":4007,"to":4024},
+          {"text":"datos.","from":4024,"to":4042}
         ]
       ]
     },
     {
-      "from": 4192,
-      "to": 4275,
+      "from": 4086,
+      "to": 4129,
       "lines": [
         [
-          {"text":"Operaciones","from":4195,"to":4221},
-          {"text":"había","from":4221,"to":4233},
-          {"text":"prometido","from":4233,"to":4254},
-          {"text":"media","from":4254,"to":4266},
-          {"text":"hora.","from":4266,"to":4278}
+          {"text":"Ahora,","from":4089,"to":4104},
+          {"text":"lo","from":4104,"to":4109},
+          {"text":"que","from":4109,"to":4117},
+          {"text":"mides.","from":4117,"to":4132}
         ]
       ]
     },
     {
-      "from": 4275,
-      "to": 4424,
+      "from": 4129,
+      "to": 4262,
       "lines": [
         [
-          {"text":"De","from":4278,"to":4283},
-          {"text":"media","from":4283,"to":4294},
-          {"text":"se","from":4294,"to":4299},
-          {"text":"tardan","from":4299,"to":4313},
-          {"text":"ochenta","from":4313,"to":4330},
-          {"text":"minutos","from":4330,"to":4347}
+          {"text":"El","from":4132,"to":4137},
+          {"text":"registro","from":4137,"to":4158},
+          {"text":"de","from":4158,"to":4163},
+          {"text":"averías","from":4163,"to":4181},
+          {"text":"de","from":4181,"to":4186},
+          {"text":"llegadas","from":4186,"to":4206}
         ],
         [
-          {"text":"en","from":4347,"to":4351},
-          {"text":"dejarlo","from":4351,"to":4368},
-          {"text":"funcionando,","from":4368,"to":4396},
-          {"text":"y","from":4396,"to":4399},
-          {"text":"eso","from":4399,"to":4406},
-          {"text":"es","from":4406,"to":4411},
-          {"text":"el","from":4411,"to":4415},
-          {"text":"MTTR,","from":4415,"to":4427}
+          {"text":"y","from":4206,"to":4209},
+          {"text":"salidas","from":4209,"to":4226},
+          {"text":"tiene","from":4226,"to":4239},
+          {"text":"cuatro.","from":4239,"to":4257}
         ]
       ]
     },
     {
-      "from": 4424,
-      "to": 4579,
+      "from": 4262,
+      "to": 4392,
       "lines": [
         [
-          {"text":"el","from":4427,"to":4432},
-          {"text":"tiempo","from":4432,"to":4446},
-          {"text":"medio","from":4446,"to":4458},
-          {"text":"de","from":4458,"to":4463},
-          {"text":"reparación.","from":4463,"to":4489}
+          {"text":"La","from":4265,"to":4270},
+          {"text":"primera","from":4270,"to":4288},
+          {"text":"duró","from":4288,"to":4297},
+          {"text":"cuarenta","from":4297,"to":4318},
+          {"text":"minutos,","from":4318,"to":4338}
         ],
         [
-          {"text":"Las","from":4489,"to":4496},
-          {"text":"cuatro","from":4496,"to":4510},
-          {"text":"pasaron","from":4510,"to":4527},
-          {"text":"de","from":4527,"to":4531},
-          {"text":"media","from":4531,"to":4543},
-          {"text":"hora.","from":4543,"to":4555}
+          {"text":"la","from":4338,"to":4343},
+          {"text":"segunda","from":4343,"to":4360},
+          {"text":"noventa","from":4360,"to":4378},
+          {"text":"y","from":4378,"to":4380},
+          {"text":"cinco,","from":4380,"to":4395}
         ]
       ]
     },
     {
-      "from": 4674,
-      "to": 4787,
+      "from": 4392,
+      "to": 4510,
       "lines": [
         [
-          {"text":"Eso","from":4677,"to":4688},
-          {"text":"es","from":4688,"to":4695},
-          {"text":"poner","from":4695,"to":4714},
-          {"text":"en","from":4714,"to":4721},
-          {"text":"el","from":4721,"to":4728},
-          {"text":"papel","from":4728,"to":4746},
-          {"text":"lo","from":4746,"to":4754},
-          {"text":"que","from":4754,"to":4765},
-          {"text":"ya","from":4765,"to":4772},
-          {"text":"pasa.","from":4772,"to":4790}
-        ]
-      ]
-    },
-    {
-      "from": 4787,
-      "to": 5028,
-      "lines": [
-        [
-          {"text":"El","from":4790,"to":4798},
-          {"text":"RTO","from":4798,"to":4808},
-          {"text":"sale","from":4808,"to":4823},
-          {"text":"de","from":4823,"to":4830},
-          {"text":"lo","from":4830,"to":4838},
-          {"text":"que","from":4838,"to":4849},
-          {"text":"el","from":4849,"to":4856},
-          {"text":"negocio","from":4856,"to":4882},
-          {"text":"aguanta,","from":4882,"to":4911}
+          {"text":"la","from":4395,"to":4400},
+          {"text":"tercera","from":4400,"to":4418},
+          {"text":"ciento","from":4418,"to":4433},
+          {"text":"veinte","from":4433,"to":4448}
         ],
         [
-          {"text":"y","from":4911,"to":4914},
-          {"text":"el","from":4914,"to":4922},
-          {"text":"MTTR,","from":4922,"to":4940},
-          {"text":"de","from":4940,"to":4947},
-          {"text":"lo","from":4947,"to":4955},
-          {"text":"que","from":4955,"to":4966},
-          {"text":"hace","from":4966,"to":4980},
-          {"text":"tu","from":4980,"to":4987},
-          {"text":"equipo.","from":4987,"to":5013}
+          {"text":"y","from":4448,"to":4450},
+          {"text":"la","from":4450,"to":4455},
+          {"text":"cuarta","from":4455,"to":4470},
+          {"text":"sesenta","from":4470,"to":4488},
+          {"text":"y","from":4488,"to":4490},
+          {"text":"cinco.","from":4490,"to":4505}
         ]
       ]
     },
     {
-      "from": 5028,
-      "to": 5216,
+      "from": 4510,
+      "to": 4626,
       "lines": [
         [
-          {"text":"El","from":5031,"to":5038},
-          {"text":"técnico","from":5038,"to":5060},
-          {"text":"de","from":5060,"to":5067},
-          {"text":"la","from":5067,"to":5074},
-          {"text":"caja","from":5074,"to":5087},
-          {"text":"tarda","from":5087,"to":5103},
-          {"text":"lo","from":5103,"to":5110},
-          {"text":"que","from":5110,"to":5119},
-          {"text":"tarda.","from":5119,"to":5139}
+          {"text":"Y","from":4513,"to":4515},
+          {"text":"Operaciones,","from":4515,"to":4545},
+          {"text":"recuerda,","from":4545,"to":4567}
         ],
         [
-          {"text":"Eso","from":5139,"to":5149},
-          {"text":"se","from":5149,"to":5155},
-          {"text":"mide,","from":5155,"to":5172},
-          {"text":"no","from":5172,"to":5178},
-          {"text":"se","from":5178,"to":5185},
-          {"text":"promete.","from":5185,"to":5211}
+          {"text":"tiene","from":4567,"to":4579},
+          {"text":"un","from":4579,"to":4584},
+          {"text":"RTO","from":4584,"to":4592},
+          {"text":"de","from":4592,"to":4596},
+          {"text":"media","from":4596,"to":4609},
+          {"text":"hora.","from":4609,"to":4621}
         ]
       ]
     },
     {
-      "from": 5216,
-      "to": 5333,
+      "from": 4626,
+      "to": 4791,
       "lines": [
         [
-          {"text":"Si","from":5219,"to":5224},
-          {"text":"estos","from":5224,"to":5238},
-          {"text":"fueran","from":5238,"to":5253},
-          {"text":"los","from":5253,"to":5261},
-          {"text":"números,","from":5261,"to":5283}
+          {"text":"De","from":4629,"to":4634},
+          {"text":"media","from":4634,"to":4647},
+          {"text":"se","from":4647,"to":4653},
+          {"text":"tardan","from":4653,"to":4668},
+          {"text":"ochenta","from":4668,"to":4687},
+          {"text":"minutos","from":4687,"to":4705}
         ],
         [
-          {"text":"el","from":5283,"to":5288},
-          {"text":"plan","from":5288,"to":5299},
-          {"text":"no","from":5299,"to":5304},
-          {"text":"se","from":5304,"to":5309},
-          {"text":"cumpliría,","from":5309,"to":5336}
+          {"text":"en","from":4705,"to":4710},
+          {"text":"dejarlo","from":4710,"to":4729},
+          {"text":"funcionando,","from":4729,"to":4760},
+          {"text":"y","from":4760,"to":4763},
+          {"text":"eso","from":4763,"to":4771},
+          {"text":"es","from":4771,"to":4776},
+          {"text":"el","from":4776,"to":4781},
+          {"text":"MTTR,","from":4781,"to":4794}
         ]
       ]
     },
     {
-      "from": 5333,
-      "to": 5471,
+      "from": 4791,
+      "to": 4965,
       "lines": [
         [
-          {"text":"y","from":5336,"to":5338},
-          {"text":"habría","from":5338,"to":5354},
-          {"text":"que","from":5354,"to":5362},
-          {"text":"mejorar","from":5362,"to":5381}
+          {"text":"el","from":4794,"to":4799},
+          {"text":"tiempo","from":4799,"to":4815},
+          {"text":"medio","from":4815,"to":4828},
+          {"text":"de","from":4828,"to":4834},
+          {"text":"reparación.","from":4834,"to":4862}
         ],
         [
-          {"text":"la","from":5381,"to":5386},
-          {"text":"recuperación,","from":5386,"to":5420},
-          {"text":"no","from":5420,"to":5426},
-          {"text":"el","from":5426,"to":5431},
-          {"text":"papel.","from":5431,"to":5447}
+          {"text":"Las","from":4862,"to":4870},
+          {"text":"cuatro","from":4870,"to":4886},
+          {"text":"tardan","from":4886,"to":4902},
+          {"text":"más","from":4902,"to":4910},
+          {"text":"de","from":4910,"to":4915},
+          {"text":"media","from":4915,"to":4928},
+          {"text":"hora.","from":4928,"to":4941}
         ]
       ]
     },
     {
-      "from": 5491,
-      "to": 5604,
+      "from": 5060,
+      "to": 5177,
       "lines": [
         [
-          {"text":"En","from":5494,"to":5499},
-          {"text":"ese","from":5499,"to":5508},
-          {"text":"registro","from":5508,"to":5530},
-          {"text":"hay","from":5530,"to":5538},
-          {"text":"cuatro","from":5538,"to":5554}
+          {"text":"Eso","from":5063,"to":5074},
+          {"text":"es","from":5074,"to":5082},
+          {"text":"poner","from":5082,"to":5101},
+          {"text":"en","from":5101,"to":5108},
+          {"text":"el","from":5108,"to":5116},
+          {"text":"papel","from":5116,"to":5135},
+          {"text":"lo","from":5135,"to":5142},
+          {"text":"que","from":5142,"to":5153},
+          {"text":"ya","from":5153,"to":5161},
+          {"text":"pasa.","from":5161,"to":5180}
+        ]
+      ]
+    },
+    {
+      "from": 5177,
+      "to": 5402,
+      "lines": [
+        [
+          {"text":"El","from":5180,"to":5187},
+          {"text":"RTO","from":5187,"to":5199},
+          {"text":"sale","from":5199,"to":5214},
+          {"text":"de","from":5214,"to":5221},
+          {"text":"lo","from":5221,"to":5229},
+          {"text":"que","from":5229,"to":5240},
+          {"text":"el","from":5240,"to":5248},
+          {"text":"negocio","from":5248,"to":5274},
+          {"text":"aguanta,","from":5274,"to":5304}
         ],
         [
-          {"text":"averías","from":5554,"to":5574},
-          {"text":"en","from":5574,"to":5579},
-          {"text":"doce","from":5579,"to":5590},
-          {"text":"meses.","from":5590,"to":5607}
+          {"text":"y","from":5304,"to":5308},
+          {"text":"el","from":5308,"to":5315},
+          {"text":"MTTR,","from":5315,"to":5334},
+          {"text":"de","from":5334,"to":5342},
+          {"text":"lo","from":5342,"to":5349},
+          {"text":"que","from":5349,"to":5361},
+          {"text":"se","from":5361,"to":5368},
+          {"text":"mide.","from":5368,"to":5387}
         ]
       ]
     },
     {
-      "from": 5604,
-      "to": 5713,
+      "from": 5402,
+      "to": 5561,
       "lines": [
         [
-          {"text":"Repartidas,","from":5607,"to":5637},
-          {"text":"es","from":5637,"to":5642},
-          {"text":"una","from":5642,"to":5651},
-          {"text":"cada","from":5651,"to":5661},
-          {"text":"tres","from":5661,"to":5672}
+          {"text":"Como","from":5405,"to":5417},
+          {"text":"en","from":5417,"to":5424},
+          {"text":"la","from":5424,"to":5430},
+          {"text":"cafetería,","from":5430,"to":5461},
+          {"text":"el","from":5461,"to":5467},
+          {"text":"técnico","from":5467,"to":5489}
         ],
         [
-          {"text":"meses,","from":5672,"to":5689},
-          {"text":"más","from":5689,"to":5697},
-          {"text":"o","from":5697,"to":5700},
-          {"text":"menos.","from":5700,"to":5716}
+          {"text":"de","from":5489,"to":5496},
+          {"text":"la","from":5496,"to":5502},
+          {"text":"caja","from":5502,"to":5514},
+          {"text":"tarda","from":5514,"to":5530},
+          {"text":"lo","from":5530,"to":5536},
+          {"text":"que","from":5536,"to":5546},
+          {"text":"tarda.","from":5546,"to":5564}
         ]
       ]
     },
     {
-      "from": 5713,
-      "to": 5823,
+      "from": 5561,
+      "to": 5638,
       "lines": [
         [
-          {"text":"Eso","from":5716,"to":5725},
-          {"text":"es","from":5725,"to":5730},
-          {"text":"el","from":5730,"to":5736},
-          {"text":"MTBF,","from":5736,"to":5749}
+          {"text":"Eso","from":5564,"to":5574},
+          {"text":"se","from":5574,"to":5580},
+          {"text":"mide,","from":5580,"to":5596},
+          {"text":"no","from":5596,"to":5602},
+          {"text":"se","from":5602,"to":5608},
+          {"text":"promete.","from":5608,"to":5633}
+        ]
+      ]
+    },
+    {
+      "from": 5638,
+      "to": 5742,
+      "lines": [
+        [
+          {"text":"Si","from":5641,"to":5646},
+          {"text":"fueran","from":5646,"to":5662},
+          {"text":"tus","from":5662,"to":5670},
+          {"text":"números,","from":5670,"to":5692}
         ],
         [
-          {"text":"el","from":5749,"to":5755},
-          {"text":"tiempo","from":5755,"to":5771},
-          {"text":"medio","from":5771,"to":5785},
-          {"text":"entre","from":5785,"to":5799},
-          {"text":"fallos.","from":5799,"to":5818}
+          {"text":"el","from":5692,"to":5697},
+          {"text":"plan","from":5697,"to":5708},
+          {"text":"no","from":5708,"to":5713},
+          {"text":"se","from":5713,"to":5718},
+          {"text":"cumpliría,","from":5718,"to":5745}
         ]
       ]
     },
     {
-      "from": 5823,
-      "to": 6033,
+      "from": 5742,
+      "to": 5881,
       "lines": [
         [
-          {"text":"El","from":5826,"to":5832},
-          {"text":"MTTR","from":5832,"to":5844},
-          {"text":"es","from":5844,"to":5850},
-          {"text":"cuánto","from":5850,"to":5868},
-          {"text":"tarda","from":5868,"to":5883},
-          {"text":"en","from":5883,"to":5889},
-          {"text":"volver,","from":5889,"to":5910},
-          {"text":"y","from":5910,"to":5913},
-          {"text":"el","from":5913,"to":5919}
+          {"text":"y","from":5745,"to":5748},
+          {"text":"habría","from":5748,"to":5764},
+          {"text":"que","from":5764,"to":5772},
+          {"text":"mejorar","from":5772,"to":5790}
         ],
         [
-          {"text":"MTBF,","from":5919,"to":5934},
-          {"text":"cada","from":5934,"to":5946},
-          {"text":"cuánto","from":5946,"to":5964},
-          {"text":"falla.","from":5964,"to":5982},
-          {"text":"No","from":5982,"to":5988},
-          {"text":"se","from":5988,"to":5994},
-          {"text":"cambian.","from":5994,"to":6018}
+          {"text":"la","from":5790,"to":5796},
+          {"text":"recuperación,","from":5796,"to":5830},
+          {"text":"no","from":5830,"to":5836},
+          {"text":"el","from":5836,"to":5841},
+          {"text":"papel.","from":5841,"to":5857}
         ]
       ]
     },
     {
-      "from": 6033,
-      "to": 6162,
+      "from": 5901,
+      "to": 6057,
       "lines": [
         [
-          {"text":"O","from":6036,"to":6039},
-          {"text":"sea,","from":6039,"to":6049},
-          {"text":"que","from":6049,"to":6057},
-          {"text":"uno","from":6057,"to":6066},
-          {"text":"dice","from":6066,"to":6076},
-          {"text":"cuánto","from":6076,"to":6092}
+          {"text":"Y","from":5904,"to":5907},
+          {"text":"ese","from":5907,"to":5915},
+          {"text":"mismo","from":5915,"to":5928},
+          {"text":"registro","from":5928,"to":5950},
+          {"text":"dice","from":5950,"to":5961},
+          {"text":"otra","from":5961,"to":5971},
+          {"text":"cosa.","from":5971,"to":5985}
         ],
         [
-          {"text":"tardas","from":6092,"to":6108},
-          {"text":"en","from":6108,"to":6114},
-          {"text":"arreglarlo,","from":6114,"to":6143},
-          {"text":"y","from":6143,"to":6146},
-          {"text":"el","from":6146,"to":6151},
-          {"text":"otro,","from":6151,"to":6165}
+          {"text":"Hay","from":5985,"to":5993},
+          {"text":"cuatro","from":5993,"to":6009},
+          {"text":"averías","from":6009,"to":6028},
+          {"text":"en","from":6028,"to":6033},
+          {"text":"doce","from":6033,"to":6044},
+          {"text":"meses.","from":6044,"to":6060}
         ]
       ]
     },
     {
-      "from": 6162,
-      "to": 6264,
+      "from": 6057,
+      "to": 6173,
       "lines": [
         [
-          {"text":"cada","from":6165,"to":6176},
-          {"text":"cuánto","from":6176,"to":6192},
-          {"text":"tendrás","from":6192,"to":6210},
-          {"text":"que","from":6210,"to":6219},
-          {"text":"hacerlo.","from":6219,"to":6240}
-        ]
-      ]
-    },
-    {
-      "from": 6284,
-      "to": 6319,
-      "lines": [
-        [
-          {"text":"Tres","from":6287,"to":6300},
-          {"text":"reglas.","from":6300,"to":6322}
-        ]
-      ]
-    },
-    {
-      "from": 6319,
-      "to": 6520,
-      "lines": [
-        [
-          {"text":"Primera,","from":6322,"to":6347},
-          {"text":"el","from":6347,"to":6354},
-          {"text":"RTO","from":6354,"to":6363},
-          {"text":"es","from":6363,"to":6369},
-          {"text":"de","from":6369,"to":6376},
-          {"text":"tiempo","from":6376,"to":6395},
-          {"text":"y","from":6395,"to":6398},
-          {"text":"el","from":6398,"to":6404},
-          {"text":"RPO,","from":6404,"to":6417}
+          {"text":"Repartidas,","from":6060,"to":6090},
+          {"text":"es","from":6090,"to":6095},
+          {"text":"una","from":6095,"to":6103},
+          {"text":"cada","from":6103,"to":6114},
+          {"text":"tres","from":6114,"to":6125}
         ],
         [
-          {"text":"de","from":6417,"to":6423},
-          {"text":"datos,","from":6423,"to":6442},
-          {"text":"y","from":6442,"to":6445},
-          {"text":"los","from":6445,"to":6455},
-          {"text":"dos","from":6455,"to":6464},
-          {"text":"salen","from":6464,"to":6480},
-          {"text":"del","from":6480,"to":6490},
-          {"text":"negocio.","from":6490,"to":6515}
+          {"text":"meses,","from":6125,"to":6141},
+          {"text":"más","from":6141,"to":6149},
+          {"text":"o","from":6149,"to":6152},
+          {"text":"menos.","from":6152,"to":6168}
         ]
       ]
     },
     {
-      "from": 6520,
-      "to": 6756,
+      "from": 6173,
+      "to": 6289,
       "lines": [
         [
-          {"text":"Segunda,","from":6523,"to":6550},
-          {"text":"el","from":6550,"to":6557},
-          {"text":"MTTR","from":6557,"to":6571},
-          {"text":"y","from":6571,"to":6574},
-          {"text":"el","from":6574,"to":6581},
-          {"text":"MTBF","from":6581,"to":6594},
-          {"text":"se","from":6594,"to":6601},
-          {"text":"miden,","from":6601,"to":6622},
-          {"text":"no","from":6622,"to":6628},
-          {"text":"se","from":6628,"to":6635}
+          {"text":"Eso","from":6176,"to":6185},
+          {"text":"es","from":6185,"to":6191},
+          {"text":"el","from":6191,"to":6196},
+          {"text":"MTBF,","from":6196,"to":6211}
         ],
         [
-          {"text":"prometen,","from":6635,"to":6666},
-          {"text":"y","from":6666,"to":6669},
-          {"text":"el","from":6669,"to":6676},
-          {"text":"MTTR","from":6676,"to":6690},
-          {"text":"se","from":6690,"to":6697},
-          {"text":"compara","from":6697,"to":6720},
-          {"text":"con","from":6720,"to":6731},
-          {"text":"el","from":6731,"to":6737},
-          {"text":"RTO.","from":6737,"to":6751}
+          {"text":"el","from":6211,"to":6217},
+          {"text":"tiempo","from":6217,"to":6234},
+          {"text":"medio","from":6234,"to":6249},
+          {"text":"entre","from":6249,"to":6264},
+          {"text":"fallos.","from":6264,"to":6284}
         ]
       ]
     },
     {
-      "from": 6756,
-      "to": 6932,
+      "from": 6289,
+      "to": 6499,
       "lines": [
         [
-          {"text":"Y","from":6759,"to":6762},
-          {"text":"tercera,","from":6762,"to":6785},
-          {"text":"si","from":6785,"to":6790},
-          {"text":"lo","from":6790,"to":6796},
-          {"text":"medido","from":6796,"to":6813},
-          {"text":"no","from":6813,"to":6819},
-          {"text":"llega","from":6819,"to":6833}
+          {"text":"El","from":6292,"to":6298},
+          {"text":"MTTR","from":6298,"to":6309},
+          {"text":"es","from":6309,"to":6315},
+          {"text":"cuánto","from":6315,"to":6332},
+          {"text":"tarda","from":6332,"to":6346},
+          {"text":"en","from":6346,"to":6352},
+          {"text":"volver,","from":6352,"to":6372},
+          {"text":"y","from":6372,"to":6375},
+          {"text":"el","from":6375,"to":6381}
         ],
         [
-          {"text":"a","from":6833,"to":6836},
-          {"text":"lo","from":6836,"to":6841},
-          {"text":"prometido,","from":6841,"to":6870},
-          {"text":"se","from":6870,"to":6875},
-          {"text":"mejora","from":6875,"to":6892},
-          {"text":"la","from":6892,"to":6898},
-          {"text":"recuperación,","from":6898,"to":6935}
+          {"text":"MTBF,","from":6381,"to":6395},
+          {"text":"cada","from":6395,"to":6407},
+          {"text":"cuánto","from":6407,"to":6424},
+          {"text":"falla.","from":6424,"to":6441},
+          {"text":"No","from":6441,"to":6447},
+          {"text":"los","from":6447,"to":6455},
+          {"text":"confundas.","from":6455,"to":6484}
         ]
       ]
     },
     {
-      "from": 6932,
-      "to": 6968,
+      "from": 6499,
+      "to": 6694,
       "lines": [
         [
-          {"text":"no","from":6935,"to":6940},
-          {"text":"el","from":6940,"to":6946},
-          {"text":"papel.","from":6946,"to":6963}
-        ]
-      ]
-    },
-    {
-      "from": 6968,
-      "to": 7115,
-      "lines": [
-        [
-          {"text":"Y","from":6971,"to":6973},
-          {"text":"para","from":6973,"to":6983},
-          {"text":"practicarlo,","from":6983,"to":7013},
-          {"text":"tu","from":7013,"to":7018},
-          {"text":"turno,","from":7018,"to":7032}
+          {"text":"O","from":6502,"to":6505},
+          {"text":"sea,","from":6505,"to":6518},
+          {"text":"que","from":6518,"to":6528},
+          {"text":"uno","from":6528,"to":6538},
+          {"text":"dice","from":6538,"to":6551},
+          {"text":"cuánto","from":6551,"to":6570},
+          {"text":"tarda","from":6570,"to":6586}
         ],
         [
-          {"text":"las","from":7032,"to":7040},
-          {"text":"preguntas","from":7040,"to":7062},
-          {"text":"de","from":7062,"to":7067},
-          {"text":"la","from":7067,"to":7071},
-          {"text":"lección.","from":7071,"to":7091}
+          {"text":"el","from":6586,"to":6593},
+          {"text":"técnico","from":6593,"to":6616},
+          {"text":"en","from":6616,"to":6622},
+          {"text":"arreglar","from":6622,"to":6648},
+          {"text":"la","from":6648,"to":6654},
+          {"text":"caja,","from":6654,"to":6671},
+          {"text":"y","from":6671,"to":6674},
+          {"text":"el","from":6674,"to":6680},
+          {"text":"otro,","from":6680,"to":6697}
+        ]
+      ]
+    },
+    {
+      "from": 6694,
+      "to": 6766,
+      "lines": [
+        [
+          {"text":"lo","from":6697,"to":6703},
+          {"text":"fiable","from":6703,"to":6723},
+          {"text":"que","from":6723,"to":6732},
+          {"text":"es.","from":6732,"to":6742}
+        ]
+      ]
+    },
+    {
+      "from": 6786,
+      "to": 6950,
+      "lines": [
+        [
+          {"text":"Tres","from":6789,"to":6802},
+          {"text":"reglas.","from":6802,"to":6824},
+          {"text":"Primera,","from":6824,"to":6849},
+          {"text":"el","from":6849,"to":6856},
+          {"text":"RTO","from":6856,"to":6865}
+        ],
+        [
+          {"text":"es","from":6865,"to":6872},
+          {"text":"de","from":6872,"to":6878},
+          {"text":"tiempo","from":6878,"to":6897},
+          {"text":"y","from":6897,"to":6900},
+          {"text":"el","from":6900,"to":6907},
+          {"text":"RPO,","from":6907,"to":6920},
+          {"text":"de","from":6920,"to":6926},
+          {"text":"datos.","from":6926,"to":6945}
+        ]
+      ]
+    },
+    {
+      "from": 6950,
+      "to": 7186,
+      "lines": [
+        [
+          {"text":"Segunda,","from":6953,"to":6980},
+          {"text":"el","from":6980,"to":6987},
+          {"text":"MTTR","from":6987,"to":7001},
+          {"text":"y","from":7001,"to":7004},
+          {"text":"el","from":7004,"to":7011},
+          {"text":"MTBF","from":7011,"to":7024},
+          {"text":"se","from":7024,"to":7031},
+          {"text":"miden,","from":7031,"to":7052},
+          {"text":"no","from":7052,"to":7058},
+          {"text":"se","from":7058,"to":7065}
+        ],
+        [
+          {"text":"prometen.","from":7065,"to":7096},
+          {"text":"Y","from":7096,"to":7099},
+          {"text":"el","from":7099,"to":7106},
+          {"text":"MTTR","from":7106,"to":7120},
+          {"text":"se","from":7120,"to":7127},
+          {"text":"compara","from":7127,"to":7150},
+          {"text":"con","from":7150,"to":7161},
+          {"text":"el","from":7161,"to":7167},
+          {"text":"RTO.","from":7167,"to":7181}
+        ]
+      ]
+    },
+    {
+      "from": 7186,
+      "to": 7362,
+      "lines": [
+        [
+          {"text":"Y","from":7189,"to":7192},
+          {"text":"tercera,","from":7192,"to":7215},
+          {"text":"si","from":7215,"to":7220},
+          {"text":"lo","from":7220,"to":7226},
+          {"text":"medido","from":7226,"to":7243},
+          {"text":"no","from":7243,"to":7249},
+          {"text":"llega","from":7249,"to":7263}
+        ],
+        [
+          {"text":"a","from":7263,"to":7266},
+          {"text":"lo","from":7266,"to":7271},
+          {"text":"prometido,","from":7271,"to":7300},
+          {"text":"se","from":7300,"to":7305},
+          {"text":"mejora","from":7305,"to":7322},
+          {"text":"la","from":7322,"to":7328},
+          {"text":"recuperación,","from":7328,"to":7365}
+        ]
+      ]
+    },
+    {
+      "from": 7362,
+      "to": 7398,
+      "lines": [
+        [
+          {"text":"no","from":7365,"to":7370},
+          {"text":"el","from":7370,"to":7376},
+          {"text":"papel.","from":7376,"to":7393}
+        ]
+      ]
+    },
+    {
+      "from": 7398,
+      "to": 7545,
+      "lines": [
+        [
+          {"text":"Y","from":7401,"to":7403},
+          {"text":"para","from":7403,"to":7413},
+          {"text":"practicarlo,","from":7413,"to":7443},
+          {"text":"tu","from":7443,"to":7448},
+          {"text":"turno,","from":7448,"to":7462}
+        ],
+        [
+          {"text":"las","from":7462,"to":7470},
+          {"text":"preguntas","from":7470,"to":7492},
+          {"text":"de","from":7492,"to":7497},
+          {"text":"la","from":7497,"to":7501},
+          {"text":"lección.","from":7501,"to":7521}
         ]
       ]
     }
@@ -1842,75 +1985,75 @@
     {"scene":"s01-hook","id":"ask-time","frame":45},
     {"scene":"s01-hook","id":"ask-data","frame":140},
     {"scene":"s01-hook","id":"fade","frame":219},
-    {"scene":"s01-hook","id":"title","frame":305},
-    {"scene":"s01-hook","id":"promise","frame":458},
-    {"scene":"s01-hook","id":"adversary","frame":617},
-    {"scene":"s02-negocio","id":"bia","frame":801},
-    {"scene":"s02-negocio","id":"proc-bills","frame":1037},
-    {"scene":"s02-negocio","id":"proc-board","frame":1127},
-    {"scene":"s02-negocio","id":"hour","frame":1237},
-    {"scene":"s02-negocio","id":"order","frame":1846},
-    {"scene":"s03-promesas","id":"cafe","frame":2009},
-    {"scene":"s03-promesas","id":"till","frame":2076},
-    {"scene":"s03-promesas","id":"clock","frame":2125},
-    {"scene":"s03-promesas","id":"notebook","frame":2225},
-    {"scene":"s03-promesas","id":"rto","frame":2341},
-    {"scene":"s03-promesas","id":"rpo","frame":2565},
-    {"scene":"s03-promesas","id":"rows","frame":2741},
-    {"scene":"s03-promesas","id":"board","frame":2805},
-    {"scene":"s03-promesas","id":"both-set","frame":2838},
-    {"scene":"s03-promesas","id":"bills","frame":2971},
-    {"scene":"s03-promesas","id":"think","frame":3097},
-    {"scene":"s03-promesas","id":"rpo-five","frame":3372},
-    {"scene":"s03-promesas","id":"two-dials","frame":3468},
-    {"scene":"s04-medida","id":"log","frame":3839},
-    {"scene":"s04-medida","id":"rows","frame":4045},
-    {"scene":"s04-medida","id":"promise-line","frame":4195},
-    {"scene":"s04-medida","id":"mean","frame":4278},
-    {"scene":"s04-medida","id":"gap","frame":4489},
-    {"scene":"s04-medida","id":"correct","frame":4677},
-    {"scene":"s04-medida","id":"technician","frame":5031},
-    {"scene":"s04-medida","id":"fix","frame":5219},
-    {"scene":"s05-fallos","id":"four","frame":5494},
-    {"scene":"s05-fallos","id":"line","frame":5607},
-    {"scene":"s05-fallos","id":"mtbf","frame":5716},
-    {"scene":"s05-fallos","id":"side","frame":5826},
-    {"scene":"s05-fallos","id":"swap","frame":5982},
-    {"scene":"s06-recap","id":"recap","frame":6287},
-    {"scene":"s06-recap","id":"rule-1","frame":6322},
-    {"scene":"s06-recap","id":"rule-2","frame":6523},
-    {"scene":"s06-recap","id":"rule-3","frame":6759},
-    {"scene":"s06-recap","id":"next","frame":6971},
-    {"scene":"s06-recap","id":"endcard","frame":7032}
+    {"scene":"s01-hook","id":"title","frame":311},
+    {"scene":"s01-hook","id":"promise","frame":464},
+    {"scene":"s01-hook","id":"adversary","frame":623},
+    {"scene":"s02-negocio","id":"bia","frame":807},
+    {"scene":"s02-negocio","id":"proc-bills","frame":1043},
+    {"scene":"s02-negocio","id":"proc-board","frame":1133},
+    {"scene":"s02-negocio","id":"hour","frame":1243},
+    {"scene":"s02-negocio","id":"order","frame":1889},
+    {"scene":"s03-promesas","id":"cafe","frame":2083},
+    {"scene":"s03-promesas","id":"till","frame":2171},
+    {"scene":"s03-promesas","id":"clock","frame":2217},
+    {"scene":"s03-promesas","id":"notebook","frame":2288},
+    {"scene":"s03-promesas","id":"rto","frame":2391},
+    {"scene":"s03-promesas","id":"rpo","frame":2627},
+    {"scene":"s03-promesas","id":"rows","frame":2875},
+    {"scene":"s03-promesas","id":"board","frame":2938},
+    {"scene":"s03-promesas","id":"both-set","frame":2971},
+    {"scene":"s03-promesas","id":"bills","frame":3102},
+    {"scene":"s03-promesas","id":"think","frame":3219},
+    {"scene":"s03-promesas","id":"rpo-five","frame":3506},
+    {"scene":"s03-promesas","id":"two-dials","frame":3658},
+    {"scene":"s04-medida","id":"log","frame":4089},
+    {"scene":"s04-medida","id":"rows","frame":4265},
+    {"scene":"s04-medida","id":"promise-line","frame":4513},
+    {"scene":"s04-medida","id":"mean","frame":4629},
+    {"scene":"s04-medida","id":"gap","frame":4862},
+    {"scene":"s04-medida","id":"correct","frame":5063},
+    {"scene":"s04-medida","id":"technician","frame":5405},
+    {"scene":"s04-medida","id":"fix","frame":5641},
+    {"scene":"s05-fallos","id":"four","frame":5904},
+    {"scene":"s05-fallos","id":"line","frame":6060},
+    {"scene":"s05-fallos","id":"mtbf","frame":6176},
+    {"scene":"s05-fallos","id":"side","frame":6292},
+    {"scene":"s05-fallos","id":"swap","frame":6441},
+    {"scene":"s06-recap","id":"recap","frame":6789},
+    {"scene":"s06-recap","id":"rule-1","frame":6824},
+    {"scene":"s06-recap","id":"rule-2","frame":6953},
+    {"scene":"s06-recap","id":"rule-3","frame":7189},
+    {"scene":"s06-recap","id":"next","frame":7401},
+    {"scene":"s06-recap","id":"endcard","frame":7462}
   ],
   "exam": [
-    {"scene":"s02-negocio","from":1846,"durationInFrames":150,"objective":"5.2","text":"El BIA parte del negocio, no de los servidores"},
-    {"scene":"s03-promesas","from":3672,"durationInFrames":150,"objective":"5.2","text":"RPO fija cada cuánto copias; RTO, la capacidad"},
-    {"scene":"s04-medida","from":4790,"durationInFrames":150,"objective":"5.2","text":"MTTR es una medida: se compara con el RTO"},
-    {"scene":"s05-fallos","from":6018,"durationInFrames":150,"objective":"5.2","text":"MTBF mide fiabilidad; MTTR, lo que tardas en reparar"}
+    {"scene":"s02-negocio","from":1920,"durationInFrames":150,"objective":"5.2","text":"El BIA parte del negocio, no de los servidores"},
+    {"scene":"s03-promesas","from":3898,"durationInFrames":150,"objective":"5.2","text":"RPO fija cada cuánto copias; RTO, la capacidad"},
+    {"scene":"s04-medida","from":5180,"durationInFrames":150,"objective":"5.2","text":"MTTR es una medida: se compara con el RTO"},
+    {"scene":"s05-fallos","from":6484,"durationInFrames":150,"objective":"5.2","text":"MTBF mide fiabilidad; MTTR, lo que tardas en reparar"}
   ],
   "think": [
-    {"scene":"s03-promesas","from":3233,"durationInFrames":131,"q":"Dos días de espera: ¿basta una copia al día?"}
+    {"scene":"s03-promesas","from":3367,"durationInFrames":131,"q":"Dos días de espera: ¿basta una copia al día?"}
   ],
   "intercept": [
-    {"scene":"s02-negocio","from":1509,"durationInFrames":468,"adversary":"PAPER GOVERNOR","text":"Se acuerda: todo en cero minutos, sin excepciones. Queda en acta."},
-    {"scene":"s04-medida","from":4563,"durationInFrames":468,"adversary":"PAPER GOVERNOR","text":"Se acuerda: el RTO será lo que se tarda de media. Queda en acta."}
+    {"scene":"s02-negocio","from":1515,"durationInFrames":374,"adversary":"PAPER GOVERNOR","text":"Se acuerda: todo en cero minutos, sin excepciones. Queda en acta."},
+    {"scene":"s04-medida","from":4949,"durationInFrames":456,"adversary":"PAPER GOVERNOR","text":"Se acuerda: el RTO será lo que se tarda de media. Queda en acta."}
   ],
   "sfx": [
-    {"from":1509,"sound":"glitch","src":"sfx/glitch.mp3","durationInFrames":12,"volume":0.166},
-    {"from":1513,"sound":"typing","src":"sfx/typing.mp3","durationInFrames":65,"volume":0.08},
-    {"from":1846,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
-    {"from":2838,"sound":"lock","src":"sfx/lock.mp3","durationInFrames":15,"volume":0.115},
-    {"from":3372,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
-    {"from":3672,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
-    {"from":3812,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
-    {"from":4278,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
-    {"from":4489,"sound":"block","src":"sfx/block.mp3","durationInFrames":11,"volume":0.17},
-    {"from":4563,"sound":"glitch","src":"sfx/glitch.mp3","durationInFrames":12,"volume":0.166},
-    {"from":4567,"sound":"typing","src":"sfx/typing.mp3","durationInFrames":64,"volume":0.08},
-    {"from":4790,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
-    {"from":6018,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
-    {"from":6260,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058}
+    {"from":1515,"sound":"glitch","src":"sfx/glitch.mp3","durationInFrames":12,"volume":0.166},
+    {"from":1519,"sound":"typing","src":"sfx/typing.mp3","durationInFrames":65,"volume":0.08},
+    {"from":1920,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":2971,"sound":"lock","src":"sfx/lock.mp3","durationInFrames":15,"volume":0.115},
+    {"from":3506,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
+    {"from":3898,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":4062,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
+    {"from":4629,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":4862,"sound":"block","src":"sfx/block.mp3","durationInFrames":11,"volume":0.17},
+    {"from":4949,"sound":"glitch","src":"sfx/glitch.mp3","durationInFrames":12,"volume":0.166},
+    {"from":4953,"sound":"typing","src":"sfx/typing.mp3","durationInFrames":64,"volume":0.08},
+    {"from":5180,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":6484,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":6762,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058}
   ],
   "captionsOnScreen": false
 }
