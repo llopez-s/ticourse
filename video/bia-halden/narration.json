@@ -1,0 +1,216 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Laura",
+    "rate": -1,
+    "fx": "megafonia"
+  },
+  "sfx": {
+    "both-set": "lock",
+    "rpo-five": "check",
+    "mean": "ding",
+    "gap": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {ask-time}¿Cuánto tarda en volver un sistema? Enseguida. {ask-data}¿Y cuántos datos se pierden? Poca cosa. {fade}Dos respuestas, y ninguna es un número.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Y lo que no tiene número no se puede cumplir ni incumplir. {promise}Vas a ver qué se promete, cómo se mide y cómo se compara.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<ominous> {adversary}Y vuelve PAPER GOVERNOR, que vive en los huecos de tu gobernanza.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-negocio",
+      "text": "<engaging> {bia}Para ponerle número, empiezas preguntando al negocio, no a los servidores. Eso es el business impact analysis, el BIA.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-negocio",
+      "text": "<focused> {proc-bills}Facturación emite las facturas a las navieras. {proc-board}Y Operaciones sigue las llegadas y salidas de buques.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-negocio",
+      "text": "<clear> {hour}A cada uno le preguntas cuánto aguanta parado y cuántos datos puede perder. Y de paso, cuánto duele cada hora sin servicio.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-negocio",
+      "text": "<firm> Cero minutos para todo suena seguro, pero cuanto más corto es el plazo, más capacidad tienes que tener lista. {order}Por eso el análisis ordena qué proceso aguanta cuánto.",
+      "pauseAfterMs": 600,
+      "intercept": {
+        "text": "Se acuerda: todo en cero minutos, sin excepciones. Queda en acta.",
+        "holdMs": 3800
+      },
+      "exam": {
+        "objective": "5.2",
+        "text": "El BIA parte del negocio, no de los servidores",
+        "at": "order",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-promesas",
+      "text": "<curious> {cafe}Piensa en una cafetería a la que {till}se le estropea la caja. {clock}Una pregunta es cuánto puede estar sin servir, {notebook}y otra, cuántas ventas apuntadas aceptas perder.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-promesas",
+      "text": "<focused> {rto}El plazo es el RTO, el recovery time objective, y marca la capacidad de recuperación que tienes lista.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-promesas",
+      "text": "<clear> {rpo}Los datos son el RPO, el recovery point objective, y marcan cada cuánto copias.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-promesas",
+      "text": "<steady> {rows}Cada proceso tiene los suyos, {board}y los rellenas. {both-set}Operaciones aguanta media hora y puede perder un día de datos. {bills}Facturas aguanta dos días, y casi no puede perder nada.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-promesas",
+      "text": "<thoughtful> {think}Facturas puede esperar dos días. ¿Basta con una copia al día?",
+      "pauseAfterMs": 250,
+      "think": {
+        "q": "Dos días de espera: ¿basta una copia al día?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-promesas",
+      "text": "<firm> {rpo-five}No, hay que copiar cada cinco minutos. {two-dials}Los dos días son el RTO, que manda sobre la capacidad, y el RPO manda sobre la copia.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "5.2",
+        "text": "RPO fija cada cuánto copias; RTO, la capacidad",
+        "at": "two-dials",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-07",
+      "scene": "s03-promesas",
+      "text": "<cheerful> O sea, que esperar mucho no relaja la copia.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-medida",
+      "text": "<engaging> {log}Ahora, lo que mides. El registro de averías de ese sistema, de los últimos doce meses, tiene cuatro. {rows}Cuarenta minutos, noventa y cinco, ciento veinte y sesenta y cinco.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-medida",
+      "text": "<focused> {promise-line}Operaciones había prometido media hora. {mean}De media se tardan ochenta minutos en dejarlo funcionando, y eso es el MTTR, el tiempo medio de reparación. {gap}Las cuatro pasaron de media hora.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-medida",
+      "text": "<serious> {correct}Eso es poner en el papel lo que ya pasa. El RTO sale de lo que el negocio aguanta, y el MTTR, de lo que hace tu equipo.",
+      "pauseAfterMs": 600,
+      "intercept": {
+        "text": "Se acuerda: el RTO será lo que se tarda de media. Queda en acta.",
+        "holdMs": 3800
+      },
+      "exam": {
+        "objective": "5.2",
+        "text": "MTTR es una medida: se compara con el RTO",
+        "at": "correct",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-medida",
+      "text": "<steady> {technician}El técnico de la caja tarda lo que tarda. Eso se mide, no se promete.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-medida",
+      "text": "<firm> {fix}Si estos fueran los números, el plan no se cumpliría, y habría que mejorar la recuperación, no el papel.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-fallos",
+      "text": "<curious> {four}En ese registro hay cuatro averías en doce meses. {line}Repartidas, es una cada tres meses, más o menos. {mtbf}Eso es el MTBF, el tiempo medio entre fallos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-fallos",
+      "text": "<clear> {side}El MTTR es cuánto tarda en volver, y el MTBF, cada cuánto falla. {swap}No se cambian.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "5.2",
+        "text": "MTBF mide fiabilidad; MTTR, lo que tardas en reparar",
+        "at": "swap",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-fallos",
+      "text": "<steady> O sea, que uno dice cuánto tardas en arreglarlo, y el otro, cada cuánto tendrás que hacerlo.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-recap",
+      "text": "<cheerful> {recap}Tres reglas. {rule-1}Primera, el RTO es de tiempo y el RPO, de datos, y los dos salen del negocio.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-recap",
+      "text": "<clear> {rule-2}Segunda, el MTTR y el MTBF se miden, no se prometen, y el MTTR se compara con el RTO.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-recap",
+      "text": "<firm> {rule-3}Y tercera, si lo medido no llega a lo prometido, se mejora la recuperación, no el papel.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-recap",
+      "text": "<cheerful> {next}Y para practicarlo, tu turno, {endcard}las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

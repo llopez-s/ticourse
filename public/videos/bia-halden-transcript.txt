@@ -1,0 +1,20 @@
+RTO, RPO, MTTR y MTBF: lo que se promete y lo que se mide
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA
+
+[00:00] I · Qué se promete — Enseguida
+¿Cuánto tarda en volver un sistema? Enseguida. ¿Y cuántos datos se pierden? Poca cosa. Dos respuestas, y ninguna es un número. Y lo que no tiene número no se puede cumplir ni incumplir. Vas a ver qué se promete, cómo se mide y cómo se compara. Y vuelve PAPER GOVERNOR, que vive en los huecos de tu gobernanza.
+
+[00:26] I · Qué se promete — Empiezas preguntando al negocio
+Para ponerle número, empiezas preguntando al negocio, no a los servidores. Eso es el business impact analysis, el BIA. Facturación emite las facturas a las navieras. Y Operaciones sigue las llegadas y salidas de buques. A cada uno le preguntas cuánto aguanta parado y cuántos datos puede perder. Y de paso, cuánto duele cada hora sin servicio. [Mensaje interceptado · PAPER GOVERNOR] «Se acuerda: todo en cero minutos, sin excepciones. Queda en acta.» Cero minutos para todo suena seguro, pero cuanto más corto es el plazo, más capacidad tienes que tener lista. Por eso el análisis ordena qué proceso aguanta cuánto.
+
+[01:06] I · Qué se promete — Dos promesas por proceso
+Piensa en una cafetería a la que se le estropea la caja. Una pregunta es cuánto puede estar sin servir, y otra, cuántas ventas apuntadas aceptas perder. El plazo es el RTO, el recovery time objective, y marca la capacidad de recuperación que tienes lista. Los datos son el RPO, el recovery point objective, y marcan cada cuánto copias. Cada proceso tiene los suyos, y los rellenas. Operaciones aguanta media hora y puede perder un día de datos. Facturas aguanta dos días, y casi no puede perder nada. Facturas puede esperar dos días. ¿Basta con una copia al día? No, hay que copiar cada cinco minutos. Los dos días son el RTO, que manda sobre la capacidad, y el RPO manda sobre la copia. O sea, que esperar mucho no relaja la copia.
+
+[02:07] II · Qué se mide — Lo prometido y lo que mides
+Ahora, lo que mides. El registro de averías de ese sistema, de los últimos doce meses, tiene cuatro. Cuarenta minutos, noventa y cinco, ciento veinte y sesenta y cinco. Operaciones había prometido media hora. De media se tardan ochenta minutos en dejarlo funcionando, y eso es el MTTR, el tiempo medio de reparación. Las cuatro pasaron de media hora. [Mensaje interceptado · PAPER GOVERNOR] «Se acuerda: el RTO será lo que se tarda de media. Queda en acta.» Eso es poner en el papel lo que ya pasa. El RTO sale de lo que el negocio aguanta, y el MTTR, de lo que hace tu equipo. El técnico de la caja tarda lo que tarda. Eso se mide, no se promete. Si estos fueran los números, el plan no se cumpliría, y habría que mejorar la recuperación, no el papel.
+
+[03:02] II · Qué se mide — Cada cuánto se cuelga
+En ese registro hay cuatro averías en doce meses. Repartidas, es una cada tres meses, más o menos. Eso es el MTBF, el tiempo medio entre fallos. El MTTR es cuánto tarda en volver, y el MTBF, cada cuánto falla. No se cambian. O sea, que uno dice cuánto tardas en arreglarlo, y el otro, cada cuánto tendrás que hacerlo.
+
+[03:29] III · Para el examen — Tres reglas
+Tres reglas. Primera, el RTO es de tiempo y el RPO, de datos, y los dos salen del negocio. Segunda, el MTTR y el MTBF se miden, no se prometen, y el MTTR se compara con el RTO. Y tercera, si lo medido no llega a lo prometido, se mejora la recuperación, no el papel. Y para practicarlo, tu turno, las preguntas de la lección.

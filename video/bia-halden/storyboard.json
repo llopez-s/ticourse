@@ -1,0 +1,126 @@
+{
+  "title": "RTO, RPO, MTTR y MTBF: lo que se promete y lo que se mide",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 210,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Qué se promete"
+    },
+    {
+      "n": 2,
+      "title": "Qué se mide"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Enseguida",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "goal": "Sello «análisis de impacto en el negocio · propuesta · ejemplo · datos ficticios». Dos globos sin autor: «¿Cuánto tarda en volver?» → «Enseguida.» (`ask-time`) y «¿Y cuántos datos se pierden?» → «Poca cosa.» (`ask-data`). Los dos se apagan: no son números (`fade`). Hacia los 8 s, título «RTO y RPO» (`title`) y la promesa en tres chips (`promise`): «qué se promete · cómo se mide · se compara». Entra la etiqueta «PAPER GOVERNOR · sección 5» con «vive en los huecos de tu gobernanza» (`adversary`)",
+      "requiredCues": [
+        "ask-time",
+        "ask-data",
+        "fade",
+        "title",
+        "promise",
+        "adversary"
+      ]
+    },
+    {
+      "id": "s02-negocio",
+      "chapter": 1,
+      "title": "Empiezas preguntando al negocio",
+      "targetSec": 34,
+      "wordBudget": 92,
+      "goal": "Dos tarjetas de proceso: «Emitir facturas a las navieras · Facturación» (`proc-bills`) y «Seguir llegadas y salidas de buques · Operaciones» (`proc-board`). Bajo cada una, dos huecos: «cuánto puede estar parado» y «cuántos datos puede perder». A cada tarjeta le crece una barra de «cuánto duele cada hora parado» (`hour`), sin cifras ni euros. Nombre BIA (`bia`). Mensaje interceptado en acta. Respuesta: «cero minutos para todo» no es un plan; el análisis ordena qué proceso aguanta cuánto (`order`)",
+      "requiredCues": [
+        "bia",
+        "proc-bills",
+        "proc-board",
+        "hour",
+        "order"
+      ]
+    },
+    {
+      "id": "s03-promesas",
+      "chapter": 1,
+      "title": "Dos promesas por proceso",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "goal": "La cafetería (rotulada «imagen · no es del puerto», `cafe`): la caja se cae (`till`). A un lado un reloj (`clock`), al otro una libreta (`notebook`). «RTO · cuánto puede estar sin servir» (`rto`) y «RPO · cuántas ventas desde la última copia» (`rpo`). Vuelven las dos tarjetas de proceso con sus huecos (`rows`, `board`): Seguir llegadas y salidas se llena con «RTO 30 min · RPO 24 h» y «con una copia al día le basta» (`both-set`, sonido `lock`); Emitir facturas muestra «RTO 48 h» y «no puede perder casi nada» (`bills`). Pregunta para pensar (`think`) con dos botones «Basta una al día» y «Más a menudo». Respuesta: más a menudo, el RPO es de 5 min (`rpo-five`, sonido `check`); los dos días son el RTO. Dos mandos con palabras (`two-dials`): «RPO · cada cuánto copias» y «RTO · qué recuperación tienes lista»",
+      "requiredCues": [
+        "cafe",
+        "till",
+        "clock",
+        "notebook",
+        "rto",
+        "rpo",
+        "rows",
+        "board",
+        "both-set",
+        "bills",
+        "think",
+        "rpo-five",
+        "two-dials"
+      ]
+    },
+    {
+      "id": "s04-medida",
+      "chapter": 2,
+      "title": "Lo prometido y lo que mides",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "goal": "Consola «registro de averías · seguimiento de llegadas y salidas · últimos 12 meses · propuesta · ejemplo · datos ficticios» (`log`). Cuatro filas con su barra: «40 min», «95 min», «120 min», «65 min» (`rows`). Una línea marca la promesa, «RTO 30 min» (`promise-line`). La media sale como «MTTR 80 min» (`mean`, sonido `ding`): «las cuatro pasaron de 30» (`gap`, sonido `block`). Mensaje interceptado en acta. Respuesta: el RTO sale de lo que el negocio aguanta, el MTTR de lo que hace tu equipo (`correct`). El técnico de la caja tarda lo que tarda (`technician`). Cierre en condicional: si estos fueran los números, el plan no se cumpliría y habría que mejorar la recuperación (`fix`)",
+      "requiredCues": [
+        "log",
+        "rows",
+        "promise-line",
+        "mean",
+        "gap",
+        "correct",
+        "technician",
+        "fix"
+      ]
+    },
+    {
+      "id": "s05-fallos",
+      "chapter": 2,
+      "title": "Cada cuánto se cuelga",
+      "targetSec": 30,
+      "wordBudget": 81,
+      "goal": "La misma consola: «4 averías en 12 meses» (`four`). Se dibuja la línea de los 12 meses con cuatro marcas (`line`) y sale «MTBF · unos 3 meses» (`mtbf`). Dos etiquetas lado a lado, «cuánto tarda en volver · MTTR 80 min» y «cada cuánto falla · MTBF 3 meses» (`side`), con «no se cambian» en pequeño (`swap`)",
+      "requiredCues": [
+        "four",
+        "line",
+        "mtbf",
+        "side",
+        "swap"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres tarjetas de reglas, cada una con su icono (el reloj y la libreta · el técnico con su media · el papel que no cuadra) (`recap`, `rule-1`, `rule-2`, `rule-3`); tarjeta final Alertópolis: «Tu turno: las preguntas de la lección» (`next`, `endcard`)",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
