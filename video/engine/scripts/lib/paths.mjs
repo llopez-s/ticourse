@@ -43,6 +43,11 @@ export const OPTIONAL_MANIFEST_KEYS = Object.freeze({
    * recording sheet comes out as a draft, so the narrator never records a script that may still change.
    */
   frozen: /^\d{4}-\d{2}-\d{2}$/,
+  /**
+   * YouTube title before « | <track label>», for when storyboard.title would push the whole title past
+   * YouTube's 100 characters (V21). The video itself keeps the storyboard's title.
+   */
+  youtubeTitle: /^[^|\n]{5,80}$/,
 });
 
 /** Checks a parsed video.json; throws on the first problem. */

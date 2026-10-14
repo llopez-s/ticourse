@@ -10,6 +10,8 @@ export const LIMITS = Object.freeze({
   phraseWords: 3,
   longWordS: 1.3, // a spoken word never lasts this long: Whisper stretched it over a take it did not transcribe
   unheardS: 0.4, // voice, longer than this, that no word of the transcript covers
+  figureGapS: 0.3, // …unless it starts this close to the end of a number written in figures
+  figureDigitS: 0.25, // …and lasts no longer than this per digit of that figure
   gapS: 0.6, // a silence this long inside a sentence: a pause that was not cut, or two takes
 });
 
@@ -56,7 +58,17 @@ export function clipFindings({ id, script, heard, head, tail, dropped, words = [
     }
   }
   for (const [at, len] of unheard) {
-    if (len >= limits.unheardS) errors.push(`${id}: ${len.toFixed(1)} s of voice at ${at.toFixed(1)} s that the transcript does not cover (a leftover take or a stray remark)`);
+    if (len < limits.unheardS) continue;
+    // Whisper writes a spoken number in figures («2022» for «dos mil veintidós») and ends that word early, so the
+    // rest of the number shows up as voice nobody transcribed. Right after the figure and no longer than the figure
+    // could take, it is the number itself: listen, do not block.
+    const figure = words.find((w) => /\d/.test(w.text) && at >= w.end && at - w.end <= limits.figureGapS);
+    const digits = figure ? figure.text.replace(/\D/g, '').length : 0;
+    if (figure && len <= digits * limits.figureDigitS) {
+      warnings.push(`${id}: ${len.toFixed(1)} s of voice right after «${figure.text.replace(/[¿?¡!«»".,;:]/g, '')}» at ${at.toFixed(1)} s: Whisper times figures short, so it is probably the number itself (listen if in doubt)`);
+      continue;
+    }
+    errors.push(`${id}: ${len.toFixed(1)} s of voice at ${at.toFixed(1)} s that the transcript does not cover (a leftover take or a stray remark)`);
   }
   for (const [at, len] of gaps) {
     if (len >= limits.gapS) warnings.push(`${id}: a ${len.toFixed(1)} s silence at ${at.toFixed(1)} s inside the sentence: listen, it may be two takes glued together`);
