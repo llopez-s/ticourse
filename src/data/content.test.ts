@@ -282,6 +282,8 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'KO4REQeaKgM')?.module).toBe('s3m5');
     // V9 sums up s4m3 after its checks and hands over to Lab 4B: lesson, checks, video, lab
     expect(youtubeVideos.find((v) => v.block.youtube === 'Q2-pG0ALFKI')?.module).toBe('s4m3');
+    // V23 sums up s4m5 (the three levels, false flags and when a name is worth it) after its checks, before the exam note
+    expect(youtubeVideos.find((v) => v.block.youtube === 'Q2Xk9Lczm6U')?.module).toBe('s4m5');
     // V10 reads one night's three trails in sp2m7, after the 900-accounts check and before the closing paragraph
     expect(youtubeVideos.find((v) => v.block.youtube === 'uHHv-1hTYTE')?.module).toBe('sp2m7');
     // V11 gathers sp1m6 at its end, after the steganography-to-blockchain list and before the paragraph that hands over to PKI

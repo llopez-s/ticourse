@@ -1111,6 +1111,13 @@ un weaponizer o cert compartido.`,
         },
       },
       {
+        t: 'video',
+        title: 'Atribución: ¿quién fue? Los tres niveles y las pistas falsas',
+        youtube: 'Q2Xk9Lczm6U',
+        poster: 'videos/atribucion-cuadro-poster.png',
+        transcript: 'videos/atribucion-cuadro-transcript.txt',
+      },
+      {
         t: 'callout',
         kind: 'exam',
         title: 'Nota de examen',
