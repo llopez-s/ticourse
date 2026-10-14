@@ -1,0 +1,20 @@
+WPA3-Enterprise: de una clave para todos a una identidad para cada uno
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA
+
+[00:00] I · Lo que se oye fuera — Una clave para toda la terminal
+La clave del wifi de las tabletas la sabe toda la terminal, y no cambia desde dos mil veintidós. Hoy toca WPA3. Verás hasta dónde llega la señal, qué se lleva quien la escucha y cómo dar a cada uno su identidad. Y en el otro bando, SILENT PAGER, que cuenta con que tu SOC duerma.
+
+[00:20] I · Lo que se oye fuera — Un foco que alumbra al vecino
+Recorres la terminal midiendo la señal. Es el site survey, y su mapa de calor, el heat map. La mancha llega al aparcamiento de visitantes, como un foco que alumbra al vecino. Allí, tu portátil oye la red de las tabletas bastante fuerte, con −55 dBm. [Mensaje interceptado · SILENT PAGER] «Oculta el nombre de la red. Si no la ven, no existe.» Esconder el nombre no apaga el foco, y se ve en cuanto una tableta se conecta. Tampoco una clave más larga baja la señal. Se baja el foco y se gira hacia dentro, potencia y colocación. El martes ajustas dos antenas, y el miércoles el aparcamiento baja a −78 dBm. Se oye menos, pero se oye.
+
+[01:04] II · De una clave a una identidad — El apretón de manos
+Lo pruebas con permiso, en un punto de acceso de pruebas, con una clave de prueba. En WPA2 personal, tableta y punto de acceso comprueban la clave con un apretón de manos de cuatro mensajes, el four-way handshake. Cualquiera cerca lo graba. Quien lo graba se lo lleva a casa, como un candado de combinación, y prueba claves sin conexión, offline. La red no ve ningún intento. Una clave corriente acabaría cayendo, y una larga y aleatoria aguantaría. Con WPA3 personal el apretón cambia, y grabarlo ya no te sirve. Eso es SAE. Cada intento va contra el punto de acceso, uno a uno y a la vista. Con SAE, aunque averigües la clave hoy, no abre el tráfico que grabaste ayer. Eso es forward secrecy. Pero WPA3 personal sigue siendo una clave para todos.
+
+[01:58] II · De una clave a una identidad — La clave de todos
+[Mensaje interceptado · SILENT PAGER] «Pon una sola clave larga. Así nadie pregunta quién entra.» Larga aguanta las pruebas, sí. Pero mira quién la sabe. Es como el código de la escalera, que sabe todo el edificio. Si se pierde una tableta, toca cambiarlo en todas. En modo enterprise, cada una enseña su carné, un certificado, y un servidor decide si entra. Se anula el carné de esa tableta, y ya no entra. Las demás ni se enteran. Eso es WPA3 enterprise, con 802.1X y un servidor RADIUS que autentica, autoriza y registra. Al final, el puerto pasa a WPA3 en modo enterprise, y no en modo personal, el martes veintidós.
+
+[02:43] II · De una clave a una identidad — Dos formas de entrar
+Dentro de 802.1X, la forma de entrar la pone EAP, en dos grupos, EAP-TLS, y PEAP con TTLS. Las tabletas ya tienen certificado, así que, ¿cuál eliges? EAP-TLS, porque ya tienen certificado y pides lo más fuerte. PEAP y TTLS llevan usuario y contraseña dentro de un túnel TLS. Son más débiles que EAP-TLS, porque dependen de que la tableta valide el certificado del servidor. Si no, un punto de acceso falso recoge sus credenciales. EAP-TLS lleva certificado en los dos lados, y cada uno comprueba al otro. O sea, que no hay contraseña que robar, y PEAP depende de que valides al servidor.
+
+[03:33] III · Para el examen — Tres reglas
+Tres reglas. Si el foco alumbra al vecino, bájalo y gíralo. WPA3 personal pone SAE, que frena el ataque sin conexión y da forward secrecy, pero la clave sigue siendo de todos. Para un carné por tableta, enterprise con EAP-TLS, o PEAP si validas al servidor. Tu turno, y la próxima clave de wifi que te den, mira quién más la sabe.

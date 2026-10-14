@@ -57,6 +57,26 @@ test('clipFindings: V19 s03-03 hid a half-said take under a stretched word and u
   assert.equal(f.warnings.length, 0); // a 0.5 s silence alone is not enough to warn
 });
 
+test('clipFindings: V21 s01-01, the tail of a number Whisper wrote in figures is not a leftover take', () => {
+  const script = 'La clave del wifi de las tabletas la sabe toda la terminal, y no cambia desde dos mil veintidós.';
+  const heard = 'La clave del wifi de las tabletas la sabe toda la terminal y no cambia desde 2022.';
+  const words = [
+    { text: 'desde', start: 4.1, end: 4.4 },
+    { text: '2022.', start: 4.4, end: 4.94 }, // «dos mil veintidós» goes on until 5.54 s
+  ];
+  const f = clipFindings({ id: 's01-01', script, heard, ...ok, words, unheard: [[5.1, 0.44]], gaps: [] });
+  assert.deepEqual(f.errors, []);
+  assert.equal(f.warnings.length, 1);
+  assert.match(f.warnings[0], /0\.4 s of voice right after «2022»/);
+  // the same voice after a word in letters, far from the figure or much longer than the figure could take, is still an error
+  const inLetters = clipFindings({ id: 's01-01', script, heard, ...ok, words: [{ text: 'veintidós.', start: 4.4, end: 4.94 }], unheard: [[5.1, 0.44]] });
+  assert.equal(inLetters.errors.length, 1);
+  const far = clipFindings({ id: 's01-01', script, heard, ...ok, words, unheard: [[5.6, 0.44]] });
+  assert.equal(far.errors.length, 1);
+  const long = clipFindings({ id: 's01-01', script, heard, ...ok, words, unheard: [[5.1, 1.6]] });
+  assert.equal(long.errors.length, 1);
+});
+
 test('clipFindings: spelled acronyms may be long, a long silence only asks to listen', () => {
   const script = 'Esta es la nota base del CVSS, de cero a diez.';
   const words = [{ text: 'CVSS,', start: 1.5, end: 3.9 }];
