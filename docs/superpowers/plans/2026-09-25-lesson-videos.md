@@ -1545,7 +1545,7 @@ ordena contra la cronología del registro ni choca con ella; lo posterior debe r
 - s3m2 sandbox (Cápsula).
 - sp3m4 zonas (Principal).
 
-**Backlog:** filas 18–21 del ranking, todas como cápsulas. Las filas 18 a 20 forman la tanda 4 (2026-10-08); queda la 21.
+**Backlog:** filas 18–21 del ranking, todas como cápsulas. Las filas 18 a 20 forman la tanda 4 (2026-10-08); la 21 (ALE, YARA/Sigma, DR y RTO/RPO) es la tanda 5, con sus cuatro fichas (V24–V27) propuestas el 2026-10-14.
 
 **Tanda 3** (abierta el 2026-10-05; 5 principales y 2 cápsulas, 4 de Security+ y 3 de GCTI). Fichas completas abajo, de
 V11 a V17. Las decisiones de cada una, las preguntas para Lidia y lo que se decidió entre fichas, para aprobarlo en una
@@ -4474,6 +4474,1638 @@ precauciones.
 - Ningún identificador leído en voz. Sí.
 - `wordBudget` por escena: 54, 140, 103, 130, 97 y 65 (589 palabras); frases de voz de muestra de ≤ 22 palabras. El título
   de la escena de la pregunta no la destripa. Sí.
+
+### V24 · sp3m7 · Cápsula · «Recuperación ante desastres: dónde sigues, qué prueba demuestra qué y cuándo una copia es una copia»
+
+> Propuesta del 2026-10-14 (tanda 5), con las opciones recomendadas ya elegidas; falta que Lidia diga qué cambia. La versión
+> vigente de escenas y guion será `video/recuperacion-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en
+> `video/recuperacion-halden/out/script-notes.md`. Las decisiones, con lo descartado, están al final de esta ficha (no hay
+> fichero de decisiones de la tanda 5 para V24).
+>
+> **Orden del curso.** sp3m7 es la última lección de sp3 y va después de sp3m4 (V16) y sp3m5 (V17): quien sigue el curso ya
+> ha visto a BLIND ARCHITECT dos veces, así que «vuelve» es verdad en el orden del curso y en el del calendario. Va **antes**
+> que toda la sección sp4 (V1, V5, V5b, V6, V18, V21) y que sp5 (V25 y V26): V24 no remite a ningún vídeo ni al caso de
+> septiembre, y no dice «como viste en V5b» aunque V5b ya esté publicado.
+>
+> Rutas relativas a la raíz del repo; `sp/` = `src/data/secplus/`, `reg` = `docs/superpowers/canon/glass-harbor.md`,
+> `plan` = `docs/superpowers/plans/2026-09-25-lesson-videos.md`, `eng/` = `video/engine/`.
+
+- **Carpeta:** `recuperacion-halden` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) · objetivo
+  **3.4** (cabecera de la lección, `sp/sp3-part4.ts:4-5`) · adversario **BLIND ARCHITECT** (sección sp3, `sp/sections.ts:81-88`),
+  dos mensajes interceptados, con la voz de V16 y V17 (`sapi/Microsoft Helena`, `rate` −2, `megafonia`;
+  `video/zonas-halden/narration.json:11-15`, `video/fronteras-halden/narration.json:11-15`: una voz por adversario, para
+  siempre) · voz `recording/lidia` con `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · música
+  `Go On Going - Stayloose.mp3` · `"lexicon": "lexicon.chatterbox.json"` (solo siglas) · en `video.json`, `"lesson": "sp3m7"` y
+  `"adversary": "BLIND ARCHITECT"`.
+- **Etiquetas** (`video.json`, clave `"tags"`): disaster recovery, recuperación ante desastres, hot site, warm site, cold
+  site, geographic dispersion, tabletop exercise, simulation, parallel processing, fail over, backup, prueba de restauración,
+  Security+. Ninguna etiqueta sobre RTO, RPO ni ALE: son de V26 y V25.
+- **Efectos (`sfx`):** los automáticos del motor y cuatro momentos, todos de la biblioteca (`eng/sfx/sfx.json`: glitch,
+  typing, ding, whoosh, mail, check, error, block, alarm, ping2, lock; comprobado con Node contra `sounds`): `dark`
+  («error», el centro de datos principal se apaga, cue de s01), `swap` («whoosh», la producción cambia de sitio, cue de
+  s04), `green` («check», las copias salen en verde, cue de s05) y `unusable` («block», la restauración no vuelve, cue de
+  s05). Cada clave es un cue de **su** escena (la tabla de escenas los lista) y ninguna está en dos escenas
+  (`sfxMapErrors`, `eng/scripts/lib/sfx.mjs:36-60`). Ningún efecto nuevo ni ninguna voz nueva.
+- **`video.json`:** `"profile": "capsula-yt"`, `"track": "secplus"`, `"adversary": "BLIND ARCHITECT"`, `"lesson": "sp3m7"`,
+  `"slug": "recuperacion-halden"`, `"composition": "RecuperacionHalden"`, `"poster": "RecuperacionHaldenPoster"`, la música de
+  arriba y los `"tags"` de arriba. Título de YouTube (98 caracteres, tope de YouTube 100): «Recuperación ante desastres: hot,
+  warm y cold site, y cómo probarla | CompTIA Security+ en español». Ritmo: `"examTiming": "sentence-end"`; pregunta con
+  `think.holdMs` 4500; mensajes con `intercept.holdMs` 3800.
+- **Léxico** (`lexicon.chatterbox.json` es solo de siglas; los términos en inglés los dice Lidia en inglés y se confirman al
+  grabar): ya fijados `BLIND` («bláind»), `ARCHITECT` («árquitect») y `DNS` («de ene ese»); `tabletop exercise` y
+  `simulation` ya los dice Lidia en V5b. Nuevos, con la lectura habitual en España: `hot site` («jot sáit»), `warm site`
+  («uarm sáit»), `cold site` («cóuld sáit»), `parallel processing` («parálel prósesing»), `fail over` («féil óuver»),
+  `geographic dispersion` («yeográfic dispérshon») y `backup` («bákap»). **Colisión a vigilar:** V16 dice `fail-open`,
+  `fail-closed`, `fail-safe` y `fail-secure`; en V24 solo se dice `fail over` y nunca ninguno de los otros cuatro (ni `fail
+  back`, que sale en la lista de la lección pero no entra aquí). «CPD» y «DR» van solo en pantalla: la voz dice «centro de
+  datos» y «recuperación ante desastres».
+- **Lo que se lee no se deletrea:** no sale ningún host, IP, dominio ni cuenta. **No se dice ninguna cifra**: ni kilómetros
+  (el «40 km» de la lección, `sp/sp3-part4.ts:80`, queda fuera: ver H5 en «Cambios de la revisión»), ni minutos de espera
+  ni euros ni porcentajes. `CPD` y los rótulos HOT SITE, WARM SITE y COLD SITE son pantalla. Ninguna excepción.
+- **Duración:** suma de `s` **210 s** (6 escenas), la misma que V20 y V21; estimado ~260 s y **unos 235–250 s renderizados
+  (unos 4:00)**, dentro de 190–260. No se rellena. La suma predice mal (V5 salió a 0,89 veces la suya y V4 a 1,22): el
+  primer borrador se mide por los dos lados. Si el estimado pasa de 255 s, se recorta primero la mitad de la mesa y del
+  simulacro en s03 (a media frase cada uno) y luego el mapa de la dispersión de s02; si se acerca a 190 s, se alarga s04, la
+  escena que más cuenta. Esta cápsula **no tiene escenas de consola**, así que la estimación es menos fiable que la de V20.
+- **Inserción:** en `sp/sp3-part4.ts`, lección sp3m7, **después del tercer check (ransomware, `:123-137`) y antes del párrafo
+  que cierra el dominio (`:138-141`)**, como bloque `t: 'video'` con su id de YouTube, su póster y su transcripción propios en
+  `public/` (forma de `sp/sp3-part3.ts:219-225`), precedido de una línea: «Antes de cerrar el dominio, míralo en el puerto:
+  dónde sigue todo si falta el centro de datos, qué prueba demuestra qué y cuándo una copia es una copia». **La pauta «después
+  de los checks y antes de la nota de examen» no cabe en este fichero**: la nota de examen es `:117-122` y el tercer check
+  viene **después**, en `:123-137`. Las dos posiciones posibles:
+  1. **Entre la lista de activación y la nota (`:116`/`:117`).** Es lo que hacen V17, V6 y V23 (antes de la nota). Descartada:
+     el vídeo llegaría antes del check de ransomware, que habla de snapshots, réplica y copias aisladas (`:126`), y s05 toca
+     justo eso; V20 descartó expresamente poner un vídeo antes del check que su escena contesta (`decisiones-V20-V21.md:94-96`).
+  2. **Después del tercer check y antes del párrafo de cierre (`:137`/`:138`).** Es la pauta dominante del repo (V5b, V10, V11,
+     V16, V20: último check, vídeo, párrafo que da paso a lo siguiente). **Elegida.** Todo lo que enseña el vídeo va antes en la
+     lección: los sitios y la dispersión (`:47`, `:49-72`), las pruebas (`:95`), las copias (`:99`), la lista de activación
+     (`:101-116`), la nota de examen (`:117-122`) y los tres checks (`:29-43`, `:77-91`, `:123-137`). El vídeo **repasa en el
+     puerto** lo que ya has leído: no adelanta nada ni contesta ningún check de antemano.
+  Las citas de línea de esta ficha son las del fichero **sin** el bloque insertado; después van once líneas más abajo
+  (un párrafo de 4 líneas y un bloque de 7, como `sp/sp3-part3.ts:215-226`).
+  Se fija en la suite `lesson videos` de `src/data/content.test.ts` con una línea nueva junto a V21 (`:305-308`),
+  `expect(youtubeVideos.find((v) => v.block.youtube === '<id>')?.module).toBe('sp3m7');`, con su comentario de dónde va.
+- **Enfoque («si el centro de datos no está»):** sin fecha. La analista, en segunda persona y sin nombre, repasa el plan de
+  recuperación del puerto con una ficha de tres filas: tres servicios **sin nombre** (uno que no puede parar, uno que aguanta
+  una jornada y uno que aguanta semanas) y la pregunta de cada fila, que es la del examen: ¿qué sitio, a qué distancia y cómo
+  sabes que funciona? Tres movimientos: elegir el sitio por lo que ya funciona allí (y que esté lejos), saber qué demuestra
+  cada prueba (la mesa, el simulacro y el paralelo no tocan producción; solo el fail over cambia de sitio de verdad), y no
+  creer una copia hasta que se ha restaurado. BLIND ARCHITECT trae dos atajos de manual, sin atacar nada. Registro de revisión y
+  propuesta, como el «plan» de V16 y el simulador de V20: **nada se ejecuta, nada se mueve y no hay incidente**. Sin frase de
+  puente: el vídeo no continúa ningún otro y se entiende solo.
+
+**Conceptos (3) y su imagen:**
+
+Las dos imágenes salen de la vida diaria, no del puerto, y no se mezclan con las ocupadas (§6 del registro y fichas
+anteriores): ni valla, garita, puerta, llave, ventanilla, chaleco, almacén, foco, candado, carné, casco, temporal (V18), tienda (V22),
+cocina (V9), ni el ensayo con el guion en la mano ni el simulacro de incendio de V5b, ni la casa con los grifos de V5b.
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | El sitio se elige por lo que ya funciona allí, y se paga todo el año. **Hot**: réplica operativa, minutos, el más caro. **Warm**: espacio, conectividad y hardware, datos por restaurar, horas o un día. **Cold**: local con energía, refrigeración y red, hardware y datos los llevas tú, días o semanas, el más barato. Y debe estar **lo bastante lejos** para que un mismo suceso no alcance a los dos: el segundo sitio en el edificio de enfrente cumple el papeleo y no el objetivo (`sp/sp3-part4.ts:47`, tabla `:49-72`, nota `:121`, q1, q7) | **Un teatro de reserva.** Hot: otro teatro con el decorado montado y la función en cartel; warm: el escenario y la iluminación listos y el decorado guardado en el camerino, sin montar; cold: una sala vacía con luz y agua. El de enfrente, en la misma calle inundada, no es de reserva | «Hot minutos, warm horas, cold días: más rápido, más caro» |
+| 2 | Cada prueba demuestra una cosa distinta, de menos a más real y de menos a más arriesgada. **Tabletop** valida el plan (roles, quién declara, a quién se llama), no la tecnología. **Simulation** ejecuta acciones reales y controladas sin mover producción. **Parallel processing** hace que el respaldo procese lo mismo que producción y compara, **sin interrumpir**. **Fail over** conmuta la producción de verdad: es la única que prueba el cambio extremo a extremo (DNS, certificados, integraciones, permisos) y la que más arriesga, así que lleva ventana y plan de vuelta atrás (`:95`, nota `:121`, q3, q4) | **Los mismos teatros.** El paralelo: los dos teatros dan la misma función a la vez, uno con público y otro vacío, y se comparan. El fail over: esta noche el público entra en el otro | «Parallel processing: prueba el respaldo sin parar nada» · «Tabletop valida el plan; fail over valida el sistema» |
+| 3 | Una copia en verde no es una copia que vuelve. «Completada» solo prueba que el trabajo corrió; la copia se demuestra restaurándola, comprobando integridad y funcionamiento y cronometrando, de forma periódica y documentada. Y el snapshot (mismo almacenamiento) y la réplica (copia también el borrado y el cifrado) no son copias de seguridad (`:99`, nota `:121`, `:112`, q5) | **Un paraguas plegado en la entrada** con su pegatina «revisado» y que nadie ha abierto nunca. La prueba es abrirlo (paraguas: libre en el registro; sin gravedad y se prueba de verdad) | «Un backup que nunca se ha restaurado no es un backup» |
+
+**Escenas:** seis, en tres capítulos (El sitio de respaldo · Probarlo · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «Si el centro de datos no está» | I El sitio de respaldo | 22 | Sello «plan de recuperación · revisión · propuesta · sin efectos», **sin fecha**. Una sola caja, «CPD», que se apaga a media luz (`dark`), con un reloj sin hora y **sin pregunta** (el reloj corre; cuánto tarda es de s02, según el tipo de sitio, y el gancho de «cuánto tarda en volver» es de V26). **No sale ningún segundo CPD**: el hook es genérico. La primera frase dice la pregunta en llano («Si mañana el centro de datos del puerto ya no está, ¿dónde sigue todo? Y mientras tanto, el reloj corre.»); al acabarla, título «Recuperación ante desastres» (hacia los 8 s, siempre antes de los 12) y la promesa en tres chips: «qué sitio · qué prueba demuestra qué · una copia que vuelve». Entra la etiqueta «BLIND ARCHITECT · sección 3» con «los planos con atajos» | La promesa en los primeros 10 s: la pregunta, que el sitio se elige y se prueba · `stamp, dc, dark, title, promise, adversary` |
+| s02-sitios «Un teatro de reserva» | I | 48 | Tres teatros pequeños en fila, de izquierda a derecha: decorado montado y cartel (HOT SITE), escenario e iluminación listos con el decorado guardado en el camerino, sin montar (WARM SITE), sala vacía con luz y agua (COLD SITE). Debajo, el tiempo («minutos», «horas o un día», «días o semanas») y, en sentido contrario, lo que cuesta cada uno («todo el año», «medio», «lo más barato»). Rótulo fijo: «lo que necesitaría cada servicio · propuesta»: las tres filas de la ficha se acomodan, cada una con el suyo (sin nombre de servicio); **los teatros no son sitios que el puerto tenga**. Después, un mapa genérico: un CPD y, pegado a él «en la misma calle», un segundo; una inundación los cubre a los dos. Mensaje interceptado. Respuesta de la narradora, que concede lo cierto antes del pero: es verdad, más cerca es más fácil replicar; pero un mismo suceso los alcanza a los dos. Nombre GEOGRAPHIC DISPERSION. **No hay dato de distancia ni línea sobre el segundo centro del puerto**: la dispersión se enseña con el «edificio de enfrente» y se cierra ahí | El sitio se elige por lo que ya funciona allí y se paga todo el año; debe estar lejos · `theatres, hot, warm, cold, price, far, dispersion` · **intercept** |
+| s03-paralelo «Cuatro formas de probarlo» | II Probarlo | 40 | Cuatro escalones que suben en realismo y en riesgo, con una barra «toca producción» que se queda en «no». Primero, sentados a una mesa: TABLETOP EXERCISE, «el plan: roles, quién declara, a quién se llama». Segundo, el equipo con un escenario y acciones reales: SIMULATION, «sin mover producción». Tercero, los dos teatros dan la misma función a la vez, uno con público y el otro vacío, y se comparan columna a columna: PARALLEL PROCESSING, «el respaldo funciona, sin interrumpir». El cuarto escalón queda tapado con una interrogación | Las tres primeras no tocan producción; el paralelo prueba el respaldo sin parar nada, pero no el cambio · `ladder, tabletop, simulation, parallel, compare, hidden` |
+| s04-conmutar «Quién demuestra qué» | II | 40 | Una petición escrita en pantalla: «demostrar que el segundo centro de datos corre la aplicación principal, con sus usuarios dentro, su DNS, sus certificados, sus integraciones y sus permisos». Cuatro chips: DNS · certificados · integraciones · permisos. Pregunta para pensar, con dos botones: «parallel» y «fail over». Respuesta: fail over; el paralelo prueba el respaldo, pero no el cambio de sitio. Se enciende el cuarto escalón: esta noche el público entra de verdad en el otro teatro (`swap`), con su rótulo «ventana de mantenimiento» y su «plan de vuelta atrás». Nombre FAIL OVER. La mesa, abajo: valida el plan; el fail over valida el sistema | Solo el fail over demuestra el cambio extremo a extremo, y por eso se planifica · `ask, chips, think, answer, swap, window, back, ladder-top` · **think** |
+| s05-copia «La copia en verde» | II | 40 | Una cuadrícula de casillas, una por noche, todas «completada» en verde (`green`), **sin fechas ni horas y sin ser una tira de tres** (otra composición que la de V5, `v5/src/data/s07-recovery.ts:22-26`), con el rótulo fijo «ejemplo · sin fecha · no es el registro del puerto». Un paraguas plegado en la entrada con la pegatina «revisado» y que nadie ha abierto. Mensaje interceptado. Respuesta: verde dice que el trabajo corrió, no que la copia vuelva. El ejemplo de la lección: la restauración falla, «los archivos no sirven» (`unusable`). Después, la prueba: restaurar en un entorno aparte, comprobar que los datos están completos y que la aplicación responde, y cronometrar y apuntar. Dos chips: «snapshot · mismo almacenamiento» y «réplica · copia también el borrado y el cifrado» | Una copia solo es una copia cuando se ha restaurado; la réplica y el snapshot no cuentan (en la voz, el snapshot es «el que vive en el mismo almacenamiento», como el chip) · `green, umbrella, restore, unusable, check, copies` · **intercept** |
+| s06-recap «Tres reglas» | III Para el examen | 20 | Tres tarjetas de reglas, cada una con su icono (el teatro · los cuatro escalones · el paraguas); tarjeta final Alertópolis: «Tu turno: el laboratorio Continuity Ladder» | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+
+- **Tarjetas de examen** (objetivo 3.4), una por escena de s02 a s05, cada una con su cue antes de la última frase de la
+  escena (`examTiming: sentence-end`):
+  - «Hot minutos, warm horas, cold días: más rápido, más caro» (s02) (56). Es la nota de examen (`sp/sp3-part4.ts:121`,
+    reflejo cuatro). No lleva RTO ni RPO ni ninguna cifra.
+  - «Parallel processing: prueba el respaldo sin parar nada» (s03) (54). «Sin interrumpir producción» es el reflejo tres.
+  - «Tabletop valida el plan; fail over valida el sistema» (s04) (52). Es el reflejo tres de la nota (`:121`).
+  - «Un backup que nunca se ha restaurado no es un backup» (s05) (52). Es el reflejo uno (`:121`).
+- **Pregunta para pensar** (`holdMs` 4500): «Probar el cambio de DNS: ¿parallel o fail over?» (s04) (47). Llega con la
+  petición y los cuatro chips en pantalla y sin rótulo que la conteste; el título de la escena («Quién demuestra qué») tampoco
+  da la respuesta. Respuesta: fail over. La tentación es el paralelo, que también prueba el respaldo y no interrumpe, pero no
+  cambia a los usuarios de sitio: solo el fail over prueba el cambio extremo a extremo (`sp/sp3-part4.ts:95`, q4 `:184-198`).
+  La pregunta pone el discriminador en el **cambio de sitio**, no en «carga real», que se lee también como «datos reales»,
+  y el paralelo procesa los mismos datos que producción (`:95`). No es la pregunta de q3 (mesa primero) ni la del check de
+  platform diversity. **Descartadas:** «Con su DNS y carga real: ¿parallel o fail over?» (47), por la lectura de «carga
+  real» y porque es q4 casi palabra por palabra y contesta de antemano una pregunta del test (H6); y «Demostrar que
+  conmuta: ¿parallel o fail over?» (45): «conmutar» es la palabra con la que la lección define el fail over (`:95`) y la
+  pregunta se contestaría sola. Que el revisor de naturalidad mire si «Probar el cambio de DNS» se lee como pregunta de
+  verdad y no destripa la respuesta.
+- **Mensajes interceptados** (BLIND ARCHITECT, `holdMs` ~3800; uno por capítulo en I y II, ninguno en el cierre; el registro
+  de V16 y V17: un atajo de diseño que quita una pared o un paso, frases cortas, «Menos es más.» al final, sin cifrado, claves
+  ni certificados; no tutea):
+  - s02: «¿Un segundo centro lejos? Al lado replica mejor. Menos es más.» (62). Usa el contrapeso que da la lección, la
+    latencia («cuanto más lejos, más difícil es la replicación síncrona», `sp/sp3-part4.ts:47`), y no un coste que la
+    lección no menciona. La narradora lo concede («es verdad: más cerca, más fácil replicar») y corrige: un segundo centro
+    en el edificio de enfrente cumple el papeleo y no el objetivo, porque un mismo suceso (una inundación, un corte
+    regional) alcanza a los dos (`:47`, q7). La latencia sale una frase, sin tarjeta ni definición. «Respaldo» no aparece:
+    es la palabra del paralelo y de las copias.
+  - s05: «¿Probar las copias? Si salen en verde, ya valen. Menos es más.» (62). Un atajo que quita un paso sin describir
+    el estado de las copias del puerto. El error: dar por buena una copia porque el trabajo salió bien. Eso solo prueba
+    que el trabajo corrió; lo que prueba la copia es restaurarla (q5, `:212`).
+- **Cierre:** tres reglas y una sola tarea.
+  1. El sitio se elige por lo que ya funciona allí, y se paga todo el año: hot, minutos y el más caro; warm, horas; cold,
+     días y el más barato. Y lejos: que un mismo suceso no alcance a los dos.
+  2. Cada prueba demuestra una cosa: la mesa, el plan; el paralelo, que el respaldo funciona sin parar nada; el fail over, el
+     cambio de verdad, y por eso se planifica.
+  3. Una copia que no se ha restaurado no es una copia, y el snapshot y la réplica no cuentan: copian también el daño.
+
+  Tarea: el laboratorio **Continuity Ladder** (`spl3c`, ordena los 8 pasos de la activación). El vídeo deja el orden de la
+  activación a propósito para el laboratorio (penalización L del ranking). Alternativa: las 8 preguntas de la lección; el
+  vídeo toca q1 (`:144-153`), q3 (`:169-183`), q4 (`:184-198`), q5 (`:199-213`) y q7 (`:229-243`), y no toca q2 (`:154-168`,
+  load balancing y clustering), q6 (`:214-228`, UPS y generator) ni q8 (`:244-253`, capacity planning de personas).
+- **Se queda fuera** (sigue en la lección, que quien ve el vídeo ya ha leído, porque va al final):
+  - **RTO y RPO** como conceptos, su definición y su cálculo (`sp/sp3-part4.ts:47`, `:57`, `:99`; `:121`): **frontera con
+    V26**. V24 elige el sitio por «cuánto puede estar parado el puerto» y no pone nombre a la magnitud, no la define ni la
+    cuantifica; la voz y las tarjetas no dicen RTO ni RPO, y el vídeo no copia la celda «RTO/RPO cercanos a cero» de la tabla
+    (`:57`). La frecuencia de la copia como consecuencia del RPO (`:99`) también es de V26. V26 tiene su BIA, RTO, RPO, MTTR y
+    MTBF (`sp/sp5-part2.ts:400`, nota `:406`, check `:411`) y **no vuelve a hot, warm ni cold** ni a la escalera de sitios
+    (H13): la frontera es limpia en los dos sentidos.
+  - **ALE:** sp3m7 no lo toca. Frontera con V25 (sp5m3, `sp/sp5-part2.ts:8`): nada de pérdida esperada ni de coste por hora.
+  - Load balancing y clustering, active/active y active/passive (`:27`, check `:29-43`, q2): alta disponibilidad, no
+    recuperación.
+  - Platform diversity, multi-cloud, continuity of operations y las tres capacidades (`:75`, check `:77-91`, q8): fuera por
+    duración. Es el vecindario de la «diversidad»: el vídeo no distingue las tres diversidades del reflejo cinco (`:121`).
+  - Onsite y offsite, frecuencia, cifrado de las copias, journaling y el aislamiento con retención (`:99`, check `:123-137`):
+    solo salen el snapshot y la réplica como «no son copias», en un chip.
+  - UPS y generator (`:99`, q6): ni una palabra; BLIND ARCHITECT no aconseja nada sobre energía.
+  - La lista de activación de 10 pasos (`:101-116`). La latencia solo sale **una frase**, en el mensaje de s02 y la
+    concesión de la narradora, sin tarjeta, sin «replicación síncrona» y sin definirla (`:47`).
+  - **Cualquier distancia en kilómetros**, incluido el «40 km» del segundo centro de la lección (`:80`): la lección no da
+    un mínimo, el vídeo no afirma que una distancia sea suficiente ni dice de qué tipo es ese segundo centro (**a verificar
+    con el material oficial** si se quisiera decir; no va en ninguna tarjeta).
+- **Laboratorios:** `sp/labs-sp3.ts:36-45` (spl3c Continuity Ladder, `order`, datos `:202-247`) ejercita la **activación en
+  orden**: detectar y confirmar (`:207`), declarar (`:212`), avisar (`:217`), fail over al warm site (`:222`), restaurar la
+  copia verificada (`:227`), verificar (`:232`), redirigir (`:237`) y fail back con revisión (`:242`). **V24 no cuenta esa
+  secuencia ni la de la lección (`sp/sp3-part4.ts:101-116`)**: aporta el porqué (qué demuestra cada prueba, por qué una copia
+  en verde no basta) y deja el orden al laboratorio, que es la tarea. Ninguna escena es una lista de pasos. Tampoco usa su
+  escenario (la sala de servidores sin refrigeración, `:204`). Con spl3b (`:25-34`, classify de protección de datos; copia
+  y cintas en `:118` y `:139`) no hay solape: el vídeo no clasifica ninguna copia como cifrada, enmascarada ni restringida. Con
+  spl3a (Zone Defense) tampoco: no dibuja ninguna zona.
+
+**Canon nuevo que fija V24** (nada de esto estaba en los datos de los vídeos; lo posterior debe respetarlo):
+- **Un «plan de recuperación» sin fecha**, revisado por la analista en segunda persona y sin nombre, con tres servicios **sin
+  nombre** y una propuesta sin efectos. No es un incidente, no es un cambio y no hay dueño, plazo ni mejora con fecha (a
+  diferencia de V20 y V21). Ninguna prueba se ha ejecutado: la mesa, el simulacro, el paralelo y el fail over son lo que se
+  explica, no lo que se hizo.
+- **El segundo centro de datos del puerto (a 40 km en la lección, `sp/sp3-part4.ts:80`) no entra en el canon de vídeo.**
+  V24 no lo dibuja, no lo nombra y no da ninguna distancia (H5): el dato no hacía nada (sugería que 40 km es «lejos», que la
+  lección no afirma, y dejaba colgada la pregunta del tipo de sitio) y creaba canon sin función. La dispersión se enseña
+  con el «edificio de enfrente» y el mismo suceso (una inundación). Los tres teatros de s02 son lo que necesitaría cada
+  servicio, no sitios que el puerto tenga. Opción descartada: llamarlo «warm» (es lo que encajaría con el laboratorio,
+  `labs-sp3.ts:222`, y la definición de `:47` admite «replicación periódica»), pero fija un hecho de Halden que ninguna
+  fuente fija, y `:126` lo contradice. Alternativa no elegida (**decide Lidia** si la quiere): conservar el dato al
+  final de s02 con una frase de matiz («la lección no da una distancia mínima: lo que cuenta es qué suceso os alcanza a
+  los dos»); recomendada: no conservarlo.
+- **BLIND ARCHITECT, tercera aparición** (V16 y V17 la preceden en el calendario y en el curso), con el registro y la voz de
+  V16 y V17: dos atajos de diseño, «Menos es más.» al final, sin IP, dominio ni equipo; solo da consejos. **Es el primer
+  vídeo en el que BLIND ARCHITECT habla de copias** (el atajo de s05); al publicarlo se actualiza `reg:361` («no toca las
+  copias») y su nota. Aun así, el atajo no describe el estado de las copias del puerto (H9).
+- **«CPD» y «centro de datos» son la misma cosa** en el curso (`sp/sp1-part1.ts:114`, `sp/sp1-part2.ts:300`, «data centre»
+  en `sp/labs-sp5.ts:88`); en V24, «CPD» solo en pantalla y la voz dice «centro de datos». Se anota en `reg` al publicar (H33).
+- **«Ejemplo · sin fecha · no es el registro del puerto»** en la cuadrícula de copias de s05: el escenario de q5 (`:203`) es un
+  ejemplo rotulado, no un hecho de Halden (misma técnica que «tableta 07» en V21). **Roce lección/V5 para el registro (§5):**
+  q5 sí lo pone en el puerto («Nightly backup jobs at the Halden Port Authority … cannot be restored», `:203`) y V5
+  restauró con éxito una copia (`reg:76`). El vídeo no lo resuelve: lo rotula como ejemplo.
+- **Si Lidia prefiere fechar** (opción, no recomendada): **martes 12-01-2027** (Node: 2027-01-12 es martes; 11-01 es lunes).
+  Cae después de todo lo fechado de Halden salvo la caducidad del 1-04-2027 y hereda las reglas de «no la da por cumplida sin
+  enseñarla»: la MFA del 30-11 (V10, V20), el plan de zonas por fases desde el 1-12 (V16, V17), el piloto del ERP del 11-12
+  (V20), el WPA3-Enterprise del 22-12 (V21) y los plazos de V19 y V18. V24 no toca ninguno, pero un sello de enero lo hace
+  posterior a todos y obliga a no darlos por hechos. No se ata a ninguna fecha ya existente (añadirle algo al comité del
+  27-11 sería canon retroactivo). Coordinar con V25 y V26 que no elijan el mismo día.
+- **Tensión de la lección que V24 no resuelve** (para el registro, §5): el segundo centro de datos replica el clúster
+  (`sp/sp3-part4.ts:80`; la definición de warm admite «replicación periódica», `:47`, así que hasta aquí encaja) y su réplica
+  recibe los bloques «en segundos» (`:126`, un servidor de ficheros: afirmación más fuerte, propia de un sitio casi hot); el
+  laboratorio habla de «fail over to the warm site» (`sp/labs-sp3.ts:222`). V24 no clasifica ese sitio **ni lo menciona**:
+  la tensión sigue abierta en la lección, no en el vídeo.
+- **Comprobado contra la cronología:** al ser sin fecha no cae en ningún día; la alternativa de enero se comprobó con Node.
+
+**No se toca:**
+- **El dosier de BLIND ARCHITECT** (`sp/sections.ts:87`): los PLC de las esclusas, la wifi de invitados, «Segmentación y
+  backups probados le cerraron el paso», «derrotada» y «GH busca un punto único de fallo». Un vídeo sobre un segundo sitio
+  roza ese punto: **la voz y la pantalla no dicen «punto único de fallo» ni «single point of failure» ni «pilar»** (el pilar
+  salió una vez en V16, del anuncio del jefe, `reg:544-546`), y el cierre no es la derrota de nadie: ninguna regla dice que
+  probar las copias le «cierre el paso». Tampoco se usa el flavor del jefe («backups sin probar», `sp/sections.ts:85`) como
+  descripción del estado del puerto. Es el primero que trata las copias **como diseño**, no como recuperación de un caso (V5
+  elige entre tres copias y restaura una, `reg:76`); V16 las dejó fuera a propósito (`reg:361`).
+- **V5 y la restauración de septiembre:** V24 no dice que el puerto «nunca ha restaurado» una copia, ni que sus copias
+  fueran inservibles: V5 restauró `srv-tc-app03` desde la copia del 2-9 (la restauración, sin fecha) y «hash coincide»
+  (`reg:76`; `v5/src/data/s07-recovery.ts:51-57`). La tira de V5 era de tres copias con hora (1, 2 y 3-9 a las 23:00,
+  `s07-recovery.ts:22-26`); la de V24 es otra composición, sin fechas ni horas (H21). Por eso la copia que no vuelve de s05 es **un ejemplo rotulado**, y la prueba de restauración se
+  cuenta como una comprobación periódica que demuestra, no como un fallo descubierto. Tampoco elige entre copias (las tres
+  de `reg:47`, `:49`, `:61`).
+- **El caso `IR-2026-0147`** y sus equipos (`srv-tc-app03`, `ADM-WS-*`, `OPS-WS-*`), `svc_tosreport`, la 01:52, los 38 GB,
+  Lucía; nada de «habría ayudado». Ni los manifiestos de carga (el check de la lección los pone en un servidor, `:32`, y V5
+  verifica «manifiestos OK» tras la restauración, `reg:76`), ni `hpa-portal-web-01` (`:27`), ni la noche del 21-10.
+- **`backup01`** (`reg:913`): es el host del «Barrido interno» ruidoso de la cola del SIEM; las copias del vídeo no llevan
+  nombre de equipo.
+- **V16 y V17:** el plan de zonas y su jump server no salen ni se dan en marcha; ni fail-open, fail-closed, fail-safe ni
+  fail-secure; ni la barrera ni la puerta de la sala de servidores (V16 s08); ni la red de las bombas de las esclusas ni
+  «si se paran las bombas, se puede inundar un muelle» (V16 s07): la inundación de s02 es el ejemplo de la lección
+  (`:47`) y se dice en condicional. El túnel entre la sede y la terminal (V17, `reg:187`) no es el enlace con el segundo
+  centro de datos, y nadie los relaciona.
+- **V20, V21, V10 y V19:** ni el ERP, ni el segundo factor del 30-11, ni la wifi de las tabletas, ni los plazos del 13-11
+  y 11-12. Ninguna mejora de Halden se da por cumplida.
+- **V25 y V26:** ni el riesgo R-014 (el ransomware del servidor de grúas del muelle norte, `sp/sp5-part2.ts:113-114`) ni
+  el «sistema de asignación de atraques» de sp5m4 (`sp/sp5-part2.ts:355`, `:411`): V24 **no pone nombre a ningún servicio**
+  precisamente para no chocar con las cifras que V26 le dé a ese sistema.
+- **Contratistas, proveedores y mantenimiento:** ninguno en ninguna escena (PAPER GOVERNOR, `sp/sections.ts:125`; RED MARROW,
+  `:68`); nadie hospeda el segundo sitio ni lleva las copias. Nadie con nombre.
+- **Imágenes ocupadas:** ni «escalera» en la voz (es el «código de la escalera» de V21; la voz dice «escalón»), ni «peldaño»
+  (V7), ni cocina, tienda, casa, foco (ni «focos» en el teatro: la voz dice «iluminación»), candado, chaleco, almacén (el decorado del warm va «guardado en el camerino»), temporal (V18: «alta mar con temporal»; la voz dice «una inundación»), ensayo con el guion en la mano ni simulacro de incendio. Tampoco paracaídas (descartado en H23) ni llave (V10).
+- No se culpa a nadie de nada: no hay culpable de que una copia no se haya probado ni de que un sitio esté cerca.
+
+**Solapes con vídeos y lecciones ya hechas:**
+
+| Vídeo / lección | Qué cuenta | Qué solapa con V24 | Cómo se evita |
+|---|---|---|---|
+| V5b (sp4m10) | La mesa del 2-10 y el simulacro del 8-10; tarjetas «Tabletop: se habla, no se toca nada» y «Simulation: se ejecuta de verdad, con coste» (`plan:627-628`) | Los dos primeros escalones de la lista de pruebas | V24 los nombra en ~10 s cada uno, sin su caso (el correo a las 03:00, la suplente, el botón de aislar), con otra imagen y otra tarjeta; gasta el tiempo en paralelo y fail over, que V5b no toca |
+| V5 (sp4m10) | Recuperar `srv-tc-app03`: tres copias, elegir la del 2-9, verificar | La copia y la restauración | V24 no elige copia ni dice dónde se restauró; la verificación sale solo en genérico; la tira de tres copias con hora de V5 (`s07-recovery.ts:22-26`) no se repite: V24 dibuja una cuadrícula de noches sin fechas ni horas |
+| V1 (sp4m7) | Capas de defensa | Ninguno sobre recuperación; solo la palabra «copia» (la del tap) | No se usa |
+| V2 (sp4m11) | «los backups» en el orden de volatilidad (`video/forense-adquisicion/narration.json:57`) | La palabra | Es evidencia forense, otro uso; no se menciona |
+| V16 (sp3m4) | Fallo de un control: fail-open y fail-closed | «Al caerse» | Vocabulario separado (arriba); V24 habla de sitios y copias, no de controles en línea |
+| sp5m4 (V26) | BIA, RTO, RPO, MTTR y MTBF; el RTO «fija qué solución de recuperación» (`sp/sp5-part2.ts:400`, `:406`) | El «sitio alternativo caliente» | Frontera arriba |
+| sp4m10 (lección) | Tabletop, simulation y failover completo (`sp/sp4-part5.ts:363-377`) | Las mismas pruebas | Va después en el curso; V24 sigue la redacción de sp3m7 |
+
+**Decisiones y alternativas descartadas:**
+
+1. **Sin fecha.** Un plan de recuperación revisado sin día, como las pruebas de V21. Descartado: fechar en enero de 2027, que
+   hereda las reglas de todo lo de noviembre y diciembre sin aportar nada a la lección (queda como opción, arriba), y colgar la
+   revisión del comité del 27-11, que sería canon retroactivo.
+2. **Tres conceptos: sitios (con la dispersión), pruebas (con foco en paralelo y fail over) y copia restaurada.** Descartado
+   un cuarto, UPS y generator: tiene su pregunta (q6) pero la energía no lleva a ninguna imagen común con el resto y haría
+   pasar la cápsula de 260 s. También descartado repartir las cuatro pruebas a partes iguales: V5b ya cuenta la mesa y el
+   simulacro, y los escalones nuevos son los de arriba.
+3. **Los servicios no tienen nombre.** Tres filas genéricas por su espera, no el sistema de atraques ni los manifiestos.
+   Descartado nombrarlos: el de atraques es de V26 (con sus cifras) y los manifiestos ligan el vídeo a `srv-tc-app03` y a
+   septiembre. A cambio, la historia pesa menos; la sostiene el teatro y BLIND ARCHITECT.
+4. **La imagen es un teatro de reserva y un paraguas plegado, no el puerto.** Descartado el muelle alternativo (se confunde con la
+   operación portuaria real y con V16), el piso de reserva (la casa de V5b), la cocina de reserva (V9) y la rueda de repuesto
+   (no sirve para el paralelo, que es lo nuevo) y el paracaídas (nadie lo pliega cada noche ni lo prueba abriéndolo en el suelo, y suena a gravedad; H23).
+5. **Tarea: el laboratorio Continuity Ladder, no las preguntas.** Porque el vídeo deja el orden a propósito. Descartado
+   repetir la lista de activación en escena: es penalización L y el laboratorio ya la ejercita.
+6. **Dónde va: después del tercer check.** Descartado antes de la nota de examen (llegaría antes del check de snapshots y
+   réplica, que s05 toca).
+
+**Riesgos para quien escriba el guion y para el revisor:**
+
+- **«Hot» no es «el bueno».** Es el más rápido y el más caro; el warm es el equilibrio habitual y el cold, la opción más barata
+  para lo que aguanta semanas (`:49-72`). La voz no dice que haya que tener hot.
+- **Parallel no prueba el cambio.** Prueba que el respaldo funciona sin interrumpir; el cambio extremo a extremo es del fail
+  over. El revisor debe buscar frases que le atribuyan al paralelo DNS, certificados o integraciones.
+- **Simulation no mueve producción** (`:95`): V5b la presenta como «con coste»; V24 no dice que «cuesta» ni que «toca
+  producción».
+- **Tabletop valida el plan, no la tecnología.** Y se hace primero (q3), con el plan recién escrito.
+- **«Verde» no es mentira.** La copia salió bien; lo que no prueba es que vuelva. La narradora no llama «falsa» a una copia.
+- **Ninguna distancia en kilómetros.** No se dice «a 40 km ya vale» ni «hay que estar a más de» ni ninguna cifra: la dispersión es un principio (el mismo suceso alcanza a los dos), no una norma (H5).
+- **El ejemplo de la copia que no vuelve** (`:203`) es un ejemplo: rotulado y sin fecha. La lección sí lo pone en el puerto
+  (arriba, roce con V5); la voz de V24 no lo hace.
+- **Nada es un hecho de Halden.** La mesa, el paralelo y el fail over son «lo que se
+  haría»; ningún «se hizo». Y una prueba de fail over de verdad no se enseña ejecutada.
+- **«Fail over» y «fail-open».** Ver léxico: Lidia las dice parecido y V16 las usa; el guion cuida que solo salga la primera.
+- **Duración.** s02 lleva tres sitios, la dispersión y un mensaje en 48 s: si el borrador se pasa, se recorta primero el
+  mapa de la dispersión (a media frase) y se deja el mensaje con su respuesta. s03 y s04 son la columna del vídeo: no se tocan primero.
+
+**Comprobación de límites** (perfil `capsula-yt`; recuento con Node, `[...texto].length`, por un script que lee esta ficha):
+- Duración: suma 210 s; render esperado 235–250 s, dentro de 190–260. Los extremos conocidos (0,89 y 1,22 veces la suma)
+  dan 187–256 s: el alto cabe; el bajo queda 3 s por debajo del mínimo (esta cápsula no tiene consola, así que el
+  extremo bajo es más plausible que en V20: si pasa, se alarga s04).
+- 6 escenas en 3 capítulos (máximo 3). 3 conceptos (2–3).
+- 4 tarjetas de examen (3–5), una por escena de s02 a s05, ninguna en la última; de 52 a 56 caracteres (máximo 58), sin
+  `{}[]|<>`, flechas, marcas, viñetas ni emoji.
+- 1 pregunta para pensar (exactamente 1), «Probar el cambio de DNS: ¿parallel o fail over?», 47 caracteres (máximo 48), `holdMs` 4500 (recontada tras H6).
+- 2 mensajes interceptados (1–2), uno por capítulo (I y II), ninguno en la escena final; 62 y 62 caracteres (máximo 70; recontados tras H9 y H10);
+  `holdMs` ~3800 (2500–4500); `video.json` lleva `"adversary": "BLIND ARCHITECT"`.
+- `wordBudget` por escena (`s` × 2,7): s01 59 · s02 130 · s03 108 · s04 108 · s05 108 · s06 54 (total 567).
+- Sin identificadores en la voz: ningún host, IP, dominio ni cuenta; `CPD` y `DR` solo en pantalla. Siglas en voz que
+  necesitan léxico: DNS (ya fijada), BLIND y ARCHITECT (ya fijadas).
+- El título entra antes de los 12 s (s01: una frase corta y el título).
+- Efectos: `dark` (s01), `swap` (s04), `green` y `unusable` (s05) son cues de su escena y están en la biblioteca
+  (`error`, `whoosh`, `check`, `block` en `eng/sfx/sfx.json`, `sounds`); ninguna clave en dos escenas.
+- Recuento tras la revisión (script `check-v24-fix.mjs` del scratchpad, que lee esta ficha): tarjetas 56, 54, 52, 52;
+  pregunta 47; mensajes 62 y 62; suma de `s` 22 + 48 + 40 + 40 + 40 + 20 = 210; `wordBudget` 59 + 130 + 108 + 108 +
+  108 + 54 = 567. Ningún símbolo prohibido. La duración no cambia: ninguna escena cambia de `s` y el mensaje de s02
+  tiene 4 caracteres más que el anterior (la concesión de la narradora cabe en el presupuesto de s02).
+
+## Cambios de la revisión
+
+Aplicados de `revision-secplus.md` (H1 a H33 son sus identificadores) y de `reconciliacion.md` (apartado V24):
+
+- **H1 y reconciliación (almacén y foco):** el teatro warm lleva «escenario e iluminación listos» y el decorado «guardado en
+  el camerino, sin montar»; las dos palabras se añaden a las que el guion no dice (junto a «temporal»).
+- **H3 y reconciliación (cues):** `lights-out` pasa a `dark`; los cuatro cues de efectos comprobados contra `sfx.json`.
+- **H5:** fuera la línea del «40 km» y el segundo centro de datos del puerto; el canon nuevo, las cifras, el apartado de
+  lo que se queda fuera y los riesgos se corrigen en consecuencia. La alternativa, abajo, para Lidia.
+- **H6:** pregunta «Probar el cambio de DNS: ¿parallel o fail over?» (47); la petición de s04 dice «con sus usuarios
+  dentro» y no «carga real».
+- **H9:** mensaje de s05 «¿Probar las copias? Si salen en verde, ya valen. Menos es más.» (62); canon: primer vídeo en
+  el que BLIND ARCHITECT habla de copias y `reg:361` se actualiza al publicar.
+- **H10:** mensaje de s02 «¿Un segundo centro lejos? Al lado replica mejor. Menos es más.» (62), con la concesión de la
+  narradora; la latencia sale una frase, sin tarjeta.
+- **H11 (opcional):** en la voz de s05, el snapshot es «el que vive en el mismo almacenamiento».
+- **H12:** s01 deja el reloj sin pregunta («y mientras tanto, el reloj corre»); «cuánto tarda en volver» queda para V26.
+- **H13 (la parte de F24):** fuera el «puede enlazar con el sitio caliente»; V26 no vuelve a hot, warm ni cold.
+- **H21:** s05 dibuja una cuadrícula de noches sin fechas ni horas, no la tira de tres con hora de V5.
+- **H22:** «una inundación» en lugar de «un temporal»; «temporal» a la lista de lo que no se dice.
+- **H23:** el paracaídas pasa a un paraguas plegado en la entrada con su pegatina «revisado» (libre en el registro);
+  cue `parachute` pasa a `umbrella`, y el icono de la tarjeta final también.
+- **H31:** «once líneas» (párrafo de 4 y bloque de 7) en lugar de «unas trece».
+- **H33:** anotado en el canon que «CPD» y «centro de datos» son lo mismo; la voz sigue diciendo «centro de datos».
+
+**Pendiente para Lidia:**
+
+- **Decide Lidia:** conservar o no el dato «el segundo centro de datos del puerto está a 40 km» al cierre de s02. Recomendada:
+  no conservarlo (H5). Si lo conserva, con la frase de matiz «la lección no da una distancia mínima: lo que cuenta es qué
+  suceso os alcanza a los dos»; hay que devolver el dato al canon nuevo, a las cifras y a la lista de riesgos.
+- Que el revisor de naturalidad mire si «Probar el cambio de DNS» se lee como pregunta de verdad y no destripa la
+  respuesta, y si el paraguas funciona mejor que el paracaídas.
+- La voz de BLIND ARCHITECT no cambia (Helena + `megafonia`, `rate` −2): el revisor no dejó nada de voz para V24.
+
+## Hallazgos no aplicados
+
+Ninguno de los que citan F24 o V24. Los demás (H2, H4, H7, H8, H14 a H20, H24 a H30 y H32) son de V25 y V26. De H13 solo
+se aplica la parte que corrige a F24; la que corrige a F26 va en la ficha de V26. H11 era opcional y se aplica en su forma
+mínima (una nota para la voz, sin cambiar la regla 3 del cierre).
+
+### V25 · sp5m3 · Cápsula · «Riesgo en euros: de un evento al año»
+
+> Propuesta del 2026-10-14 (tanda 5), con las opciones recomendadas ya elegidas; falta que Lidia diga qué cambia. La versión
+> vigente de escenas y guion será `video/ale-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en
+> `video/ale-halden/out/script-notes.md`. Las decisiones, con la alternativa descartada de cada una, van al final de esta
+> ficha (apartado «Decisiones»); la ronda de la tanda las reúne en su archivo de decisiones. **Revisada el 2026-10-14** con
+> `revision-secplus.md` y `reconciliacion.md`: los cambios, en «Cambios de la revisión» (al final); lo que decide Lidia, en
+> «Preguntas para Lidia» (justo antes).
+>
+> **Orden del curso.** Es la primera aparición de PAPER GOVERNOR en un vídeo, en el calendario y en el orden del curso
+> (sp5m3 va antes que sp5m4, que será V26). Se presenta desde cero, sin «otra vez»; es V26 la que dice «Y vuelve PAPER
+> GOVERNOR…» (`reconciliacion.md`, «Compartido entre V25 y V26», 3). Quien siga el curso llega con todo
+> Halden de sp1 a sp4 ya visto, pero el vídeo no remite a ninguno: no nombra el caso de septiembre ni ningún vídeo.
+>
+> **Esta ficha es de la tanda 5 y se escribe a la vez que V24 (sp3m7, DR), V26 (sp5m4, RTO/RPO) y V27 (s5m3, YARA/Sigma).**
+> Dónde acaba V25 y qué deja a V26, en «Dónde acaba V25 y qué es de V26» (más abajo).
+>
+> Rutas relativas a la raíz del repo; `sp/` = `src/data/secplus/`, `registro` = `docs/superpowers/canon/glass-harbor.md`.
+
+- **Carpeta:** `ale-halden` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) · objetivo **5.2**
+  (cabecera de la lección, `sp/sp5-part2.ts:4-5`, y objetivos `:12-18`) · adversario **PAPER GOVERNOR** (sección sp5,
+  `sp/sections.ts:119-125`), dos mensajes interceptados · voz `recording/lidia` con
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · voz del adversario **nueva, con piezas que ya existen** (el motor
+  no tiene voz de PAPER GOVERNOR: `video/*/narration.json` → `adversaryVoice` solo la tiene en los otros cuatro): propuesta
+  de la reconciliación `"adversaryVoice": { "voice": "sapi/Microsoft Laura", "rate": -1, "fx": "megafonia" }`; reserva,
+  `sapi/Microsoft Pablo` con `cifrado` (la propuesta anterior de esta ficha), `rate` 0. Sin efectos nuevos: Laura es la voz
+  de RED MARROW (con `telefono`) y de PAPER CRANE (con `machine`) y `megafonia` la textura de BLIND ARCHITECT (con
+  Helena, `rate` −2); esta pareja no la usa nadie, y `rate` −1 («lee un acta») la separa de BLIND ARCHITECT (razones y riesgo
+  en «Decisiones», 2; **decide Lidia**, tras la prueba de oído) · música `Go On Going - Stayloose.mp3` ·
+  `"examTiming": "sentence-end"`; pregunta con `think.holdMs` 4500; mensajes con `intercept.holdMs` 3800.
+- **`video.json`:** `"profile": "capsula-yt"`, `"track": "secplus"`, `"adversary": "PAPER GOVERNOR"`, `"lesson": "sp5m3"`, la música de
+  arriba y `"tags"`: SLE, ALE, ARO, single loss expectancy, annualized loss expectancy, annualized rate of occurrence,
+  exposure factor, asset value, quantitative risk analysis, análisis cuantitativo del riesgo, gestión de riesgos, risk
+  management, Security+, SY0-701. Título de YouTube: «SLE, ARO y ALE: cuánto cuesta un riesgo al año | CompTIA Security+ en
+  español». Título del bloque de la lección: «Riesgo en euros: de un evento al año».
+- **Efectos (`sfx`):** los automáticos del motor (mensaje, tarjetas, capítulos) y cuatro momentos: `sle` («ding», sale el
+  coste de un evento), `ale` («ding», sale el coste al año), `fits` («check», el control cuesta menos que la ALE) y `over`
+  («block», la barra de 90.000 € pasa la línea de la ALE).
+- **Léxico nuevo** (lo confirma Lidia al grabar; **decide Lidia**, opción recomendada: la de abajo, igual que en V26): se
+  leen **por letras** `SLE` («ese ele e»), `ALE` («a ele e»), `ARO` («a erre o»), `EF` («e efe») y `AV` («a uve»), porque
+  «ale» y «aro» ya son palabras en español y un oyente las leería como «¡ale!» y «el aro». `GOVERNOR` («gávernor»; `PAPER`
+  ya está fijado, «péiper», en `video/ach-matriz/lexicon.json`). `GOVERNOR` y `ARO` se leen **igual en V25 y V26**
+  (V26 tenía «góvernor» y «aro»; la reconciliación los iguala a «gávernor» y «a erre o»).
+  `exposure factor`, `asset value` y `annualized rate of occurrence` se dicen en inglés, siempre después de la idea en
+  llano. `EDR` («e de erre») ya está fijado (V20).
+- **Lo que se lee no se deletrea:** `R-014`, las cifras en la tabla y las fórmulas van en pantalla; la voz dice «el riesgo del
+  servidor de planificación», «el paquete de copias y EDR», «la reconstrucción con alta disponibilidad» y las cifras en
+  palabras («cuatrocientos mil euros», «el veinticinco por ciento», «cero coma cinco»). `SLE = AV × EF` y `ALE = SLE × ARO` se
+  dicen «el SLE es el valor por el EF». Ninguna excepción. La voz no dice «muelle» a secas ni «muelle norte» (el «muelle 3»
+  de V1 y V5 es otra sala; «muelle norte» solo en pantalla, como en la lección) ni «gestionado»: dice «el servidor de
+  planificación de grúas» y «copias y EDR».
+- **Duración:** suma de `s` **210 s** (6 escenas; `wordBudget` a 2,7 palabras/s: 54, 108, 124, 124, 97 y 59, unas 566). Es la
+  estructura de V12, V18 y V20 (dos mensajes, una pregunta, dos escenas con cuenta en pantalla), que con 210 s estimaron unos
+  260 s y renderizaron unos 235–250 s (≈ 4:00): dentro de 190–260. Los extremos conocidos (0,89 y 1,22 veces la suma) dan
+  187–256 s. La suma predice mal el renderizado, así que el primer borrador se mide por los dos lados: si el estimado pasa de
+  255 s, se recorta en este orden: primero, en s05, la segunda palanca (el EF a 0,10; queda solo el ARO); después, en s04, la
+  frase que compara 90.000 con 100.000 (queda el mensaje y su respuesta corta). Si se acerca a 190 s, se alarga s03 (el
+  calendario de diez años, que es la imagen que más cuenta) o se añade el diagnóstico «200.000» que sigue en «Se queda
+  fuera». No se rellena.
+- **Inserción** (cambiada en la revisión, H7): en `sp/sp5-part2.ts`, lección sp5m3, **después del último check de la lección**
+  (el del ALE de 120.000 €, `:164-178`) y antes del párrafo que salta a sp5m4 (`:179-182`), como bloque
+  `{ t: 'video', title: 'Riesgo en euros: de un evento al año', youtube: '<id>', poster: 'videos/ale-halden-poster.png', transcript: 'videos/ale-halden-transcript.txt' }`,
+  precedido de una línea: «Antes de pasar a la siguiente lección, míralo en el puerto: lo que cuesta un evento, lo que cuesta
+  al año y cuándo un control sale a cuenta». Es la pauta del repo (último check, vídeo, párrafo: V5b, V10, V11, V16, V20, V24
+  y V26) y la que aplican V24 y V26. **La primera propuesta lo ponía entre el check del SLE (`:143-157`) y la nota de examen
+  (`:158-163`), con un check detrás** (`:164-178`), que el vídeo contestaba de antemano: s04 enseña justo su trampa,
+  comparar el control con lo que cuesta un evento. Ya no hay excepción: **todo lo que enseña el vídeo va antes en la
+  lección**, incluido el cálculo hacia atrás (la nota, `:162`, «Dos»), los cuatro términos y las dos fórmulas (`:105-108`),
+  el ejemplo de R-014 entero (`:109-142`), los tres checks anteriores (`:38-52`, `:89-103`, `:143-157`), el del ALE
+  (`:164-178`) y la tabla de cualitativo frente a cuantitativo (`:58-88`). El párrafo que sigue (`:179-182`) abre con «un
+  cálculo no es una decisión» (`:181`): s05 **no** lo dice con esas palabras ni en voz ni en el sello (ver s05). Se fija en la
+  suite `lesson videos` de `src/data/content.test.ts` (`:248`; las líneas de cada vídeo acaban en `:317` con V19) con su
+  línea `toBe('sp5m3')`; la suite no mira la posición del bloque. **Numeración:** el bloque ocupa **11 líneas** (el párrafo
+  de enlace, 4, y el bloque de vídeo, 7). Las citas de sp5m4 de V26 son las del archivo **sin** este vídeo; al fusionar
+  las dos ramas hay que sumarles 11 (`:301` en adelante pasa a `:312`). Las citas de esta ficha también son del archivo
+  sin el vídeo (las posteriores a `:178`, q1 a q8 incluidas, se desplazan igual).
+- **Enfoque («una casilla roja y un número»):** sin fecha, el comité de riesgos tiene delante el riesgo R-014 en la matriz
+  de riesgo (no «mapa de calor», que es el del site survey de V21), en la casilla roja, y alguien pregunta «¿cuánto?». La
+  jugadora, en segunda persona, le pone número: lo que cuesta
+  un evento, lo que cuesta al año y si el control que se estudia sale a cuenta. **Es un análisis, no un incidente: nada se ha
+  cifrado, nada se ha comprado ni se ha decidido.** Registro de análisis, como el «diseño y simulación» de V20: «si un
+  ransomware cifrara el servidor», «el control que se estudia». PAPER GOVERNOR llega con dos acuerdos de acta (atajos de despacho), uno por
+  capítulo. Sin frase de puente: el vídeo no continúa ningún otro y se entiende solo. Termina en el número y su comparación
+  con el coste anual del control; qué se hace con él es de la lección siguiente (sp5m4, V26).
+- **Dónde acaba V25 y qué es de V26.** V25 es dueño de **la aritmética** (AV, EF, SLE, ARO, ALE), de **«la ALE es lo que se
+  compara con el coste anual del control»** y del cálculo hacia atrás. Acaba con R-014 en **50.000 € al año** y el control de
+  20.000 € «sale a cuenta en los números», que es el número con que empieza sp5m4 (`sp/sp5-part2.ts:316`, «terminó con un
+  número: 50.000 €… R-014»). **V26 no recalcula** el SLE ni la ALE: arranca de ese número y lo que viene es suyo: el risk
+  register, el risk owner, los KRIs y el threshold, apetito frente a tolerancia, mitigate/transfer/accept/avoid (con
+  exception y exemption), el reporting y el BIA con RTO, RPO, MTTR y MTBF. V25 **no dice** ninguna de esas palabras ni
+  «seguro», ni «dueño del riesgo», ni de dónde sale el ARO más allá de «la frecuencia que se espera». **DR (V24, sp3m7) y
+  YARA/Sigma (V27) no se tocan:** las copias solo salen como el nombre de un control en una línea de coste («Backup
+  inmutable + EDR gestionado»); no se explica qué es una copia inmutable ni se prueba una restauración.
+
+**Conceptos (3) y su imagen:**
+
+La imagen es un móvil, de la vida cotidiana y a la escala de 1 a 1.000 de las cifras del puerto: 400 € el móvil, 100 € la
+pantalla, 50 € al año de golpes esperados, 20 € de funda que se amortiza en un año (se dice así **una sola vez**; no se
+repite «al año» en las dos fundas, que no es como se compra una funda). No es del puerto ni de nadie con nombre. No usa ninguna de
+las imágenes ocupadas del registro (casco, chaleco, almacén, foco, candado, carné, valla ni garita; §6) ni toca el aparcamiento
+(de V21): el móvil se cae en la mano, no se deja en ningún sitio.
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | Un evento no se lo lleva todo. El **asset value (AV)** es lo que vale el activo para el negocio (servidor, licencias y datos operativos: `sp/sp5-part2.ts:117`, `:107`); el **exposure factor (EF)** es el **porcentaje** de ese valor que se pierde en **un** evento (0,25: la cuarta parte); y el **SLE = AV × EF** es lo que cuesta **uno** (`:107`, `:122`, nota `:162` «Uno» y «Cuatro», q2 `:195-204`, q8 `:280-294`) | El móvil de 400 €: una caída no te lo destroza entero, se lleva la pantalla, que son 100 €. Perder el valor entero solo pasa con un EF de 1 | «SLE = AV × EF: lo que cuesta un solo evento» |
+| 2 | Del evento al año. El **annualized rate of occurrence (ARO)** es una **frecuencia**, no un trozo del valor: 0,5 es una vez cada dos años, nunca «dos veces al año»; y **ALE = SLE × ARO** va después del SLE, en ese orden (`:107`, `:123`, `:138-141`, nota `:162`, q1 `:185-194`, q3 `:205-219`). Hacia atrás, dada la ALE y el ARO, se divide para llegar al SLE (nota `:162`) | La misma caída: una cada dos años. En diez años, cinco golpes esperados; repartidos como caigan, no en fila. Con un golpe de 100 € cada dos años, son 50 € por año en los que no se nota ninguno | «ALE = SLE × ARO: lo que se espera perder al año» · «EF es un porcentaje del valor; ARO, veces al año» |
+| 3 | La ALE decide, y es una estimación. Se compara con el **coste anual** del control, porque los dos son anuales (`:107`, `:125-130`, `:132-136`, nota `:162` «Tres», check `:164-178`, q4 `:220-234`); si no sale a cuenta, hace falta otro argumento (obligación legal, seguridad de las personas, o que cubra además otros riesgos, `:107`). Y la cuenta vale lo que valen sus estimaciones: su valor está en obligar a escribir cuánto vale cada cosa y cada cuánto se cree que pasa (`:107`; falsa precisión, `:56`, `:80`) | La funda reforzada de 20 €, que se amortiza en un año, frente a los 50 € de golpes que espera evitarte: sale a cuenta. Una de 90 €, no, aunque «cueste menos que el móvil»: 90 frente a 50, y la cuenta es la que decide, no el precio a ojo. Y si te caes menos de lo que creías, la funda deja de compensar | «El control sale a cuenta si cuesta menos que la ALE» |
+
+**Escenas:** seis, en tres capítulos (Del adjetivo al euro · Del evento al año · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «Una casilla roja» | I Del adjetivo al euro | 20 | Sello «comité de riesgos · R-014 · datos ficticios», **sin fecha**. Una matriz de riesgo de tres por tres (no «mapa de calor») con una casilla roja rotulada «R-014 · ALTO». Al lado, la pregunta del comité, sin respuesta: «¿cuánto?». La primera frase habla del comité, no del cálculo («El comité de riesgos tiene una casilla roja, y con una casilla roja no se decide cuánto gastar»); al acabarla, título «El riesgo, en euros al año» (hacia los 8 s, siempre antes de los 12) y la promesa en tres chips: «lo que cuesta un evento · lo que cuesta al año · si el control sale a cuenta». Después la casilla roja se atenúa | La promesa en los primeros 10 s: un «alto» no se compara con el precio de nada (nota `:162` «Cinco»); al acabar sabrás poner el euro y compararlo · `heat, ask, title, promise` |
+| s02-evento «Un golpe no se lo lleva todo» | I | 40 | La línea de R-014 rotulada «si un ransomware cifrara el servidor de planificación de grúas del muelle norte» (la de la lección, `sp/sp5-part2.ts:114`), «análisis · sin efectos». El bloque «AV · 400.000 €» con la nota «servidor + licencias + datos operativos». Entra la etiqueta «PAPER GOVERNOR · sección 5» con «vive en los huecos de tu gobernanza» (`sp/sections.ts:123`), presentada desde cero. Mensaje interceptado, en acta: «Se acuerda: el valor del servidor es la pérdida. Queda en acta.». Respuesta de la narradora: poner el valor entero como pérdida es un EF de 1, la pérdida total. El bloque pierde su cuarta parte: «EF · 0,25 · el 25 % del valor, en un solo evento». Resultado, en la línea de debajo: «SLE = AV × EF = 400.000 × 0,25 = 100.000 €», con el rótulo «lo que cuesta UN evento» (`sle`). El móvil de 400 € en miniatura, con la pantalla rota | Un evento no se lo lleva todo; el SLE es lo que cuesta uno; el EF es un porcentaje · `asset, adversary, ef, bite, sle, phone` · **intercept** |
+| s03-año «Cuántas veces al año» | II Del evento al año | 46 | El SLE de 100.000 € baja a una línea de diez cuadrados, uno por año. «ARO · 0,5» y, debajo, «una vez cada dos años»; se marcan cinco años de diez, en posiciones desiguales y con el rótulo «esperados, no fijos». Debajo, «ALE = SLE × ARO = 100.000 × 0,5 = 50.000 € al año» (`ale`). Dos tarjetas pequeñas, lado a lado, que no se cruzan: «EF · 0,25 · un trozo del valor» y «ARO · 0,5 · veces al año». Pregunta para pensar, con dos botones: «12.000» y «108.000», sobre «otro riesgo · ejemplo · no es R-014» y «ALE 36.000 · ARO 3». Respuesta: 12.000, porque la ALE es el SLE por el ARO y, hacia atrás, se divide; los 108.000 salen de multiplicar | El ARO es una frecuencia; la ALE es el SLE por el ARO; hacia atrás se divide · `sle-in, years, aro, ale, factors, think, back` · **think** |
+| s04-control «Lo que cuesta el control» | II | 46 | Dos barras anuales sobre la misma escala: «ALE de R-014 · 50.000 € / año» y, debajo, «Backup inmutable + EDR gestionado · 20.000 € / año» (la de la lección, `:126-127`), con «ALE que elimina (estimación)». Entre las dos, «50.000 − 20.000 = 30.000 € al año» (`:128`) y el veredicto «en los números, sale a cuenta» (`fits`), con el sello «recomendación al comité · no contratado». Después, una segunda barra de «Reconstrucción en alta disponibilidad · 90.000 € / año» (`:133`) que se pasa de la línea de la ALE (`over`). Mensaje interceptado, en acta: «Se acuerda: el control cuesta menos que un incidente. Queda en acta.». Respuesta de la narradora: el coste del control se compara con la ALE de 50.000, no con los 100.000 de un incidente; una cosa es un golpe y otra, un año (con ese atajo hasta los 90.000 «pasarían»). «Solo con estos números, no sale» y la nota pequeña «o hace falta otro argumento: una obligación legal, la seguridad de las personas, o que cubra además otros riesgos». El móvil con la funda de 20 € y la de 90 € (la de 20 se dice «se amortiza en un año»; la de 90, sin repetir «al año») | La ALE se compara con el coste anual; una opción más cara que la ALE necesita otra razón · `bars, control, net, fits, alt, over, intercept, annual` · **intercept** |
+| s05-aguanta «¿Y si nos equivocamos?» | II | 36 | La misma cuenta, ahora con dos palancas que se mueven: «ARO 0,5, ahora 0,2» y la ALE cae a «20.000 €», **igual que el control**: el rótulo «aquí empata». Por debajo, el control cuesta más de lo que evita. Segunda palanca, «EF 0,25, ahora 0,10»: otra vez 20.000 €. Los dos ejes con su lectura: «0,2 · una vez cada cinco años» y «0,10 · el 10 % del valor». Rótulo: «la cuenta vale lo que valen sus estimaciones». Sello final: «R-014 · 50.000 € al año · una estimación para comparar». **Ya no cita «un cálculo no es una decisión»** (`:181`): con la inserción tras el último check, esa frase abre el párrafo que viene justo después del vídeo y no se adelanta ni en voz ni en pantalla (H7) | La ALE es una estimación; el EF y el ARO son cosas distintas aunque los dos se escriban 0,x; hasta dónde aguanta la cuenta · `lever, aro, empate, ef, below, estimate, stamp` |
+| s06-recap «Tres reglas» | III Para el examen | 22 | Tres tarjetas de reglas, cada una con su icono (el móvil con la pantalla rota · el calendario de diez años · las dos barras anuales); tarjeta final Alertópolis con **una sola tarea**: «Tu turno: Risk Math» (spl5c). Sin «las preguntas de la lección» en la tarjeta ni en la voz (H8) | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+
+- **Tarjetas de examen** (objetivo 5.2), una por escena de s02 a s05, cada una con su cue antes de la última frase de la
+  escena (`examTiming: sentence-end`):
+  - «SLE = AV × EF: lo que cuesta un solo evento» (s02) (43)
+  - «ALE = SLE × ARO: lo que se espera perder al año» (s03) (47)
+  - «El control sale a cuenta si cuesta menos que la ALE» (s04) (51)
+  - «EF es un porcentaje del valor; ARO, veces al año» (s05) (48). Es la nota de examen «Uno» (`sp/sp5-part2.ts:162`) y la
+    confusión que más puntos cuesta; sale en s05 y no en s03 porque s05 es donde los dos números 0,x se mueven por
+    separado, y en s03 solo se ponen lado a lado.
+- **Pregunta para pensar** (`holdMs` 4500): «ALE de 36.000 y ARO de 3: ¿cuánto es el SLE?» (s03) (44). Con dos botones
+  («12.000» y «108.000»), llega con las dos cifras en pantalla y sin nada que la conteste. Respuesta: 12.000, porque
+  ALE = SLE × ARO y, hacia atrás, SLE = ALE ÷ ARO (36.000 ÷ 3 = 12.000); los 108.000 son multiplicar. **No es una pregunta de
+  la lección**: el check `:164-178` pide la ALE a partir del SLE y el ARO, y q1 y q4 también van hacia delante; el cálculo
+  hacia atrás solo está en la nota (`:162`), sin ejercicio. Y **no usa cifras de R-014** a propósito: con las de R-014 se
+  contestaría de memoria (los 100.000 acaban de salir en pantalla). El título de la escena («Cuántas veces al año») no da
+  la respuesta. Las cifras son un ejemplo sin activo ni dueño: no son de Halden.
+- **Mensajes interceptados** (PAPER GOVERNOR, `holdMs` 3800; uno en I y otro en II, ninguno en el cierre; sin cifras ni siglas,
+  para que la voz de SAPI no tenga que leerlas, como el «9,8» de V18). **Registro de acta impersonal, sin tuteo**, de la
+  forma «Se acuerda: … Queda en acta.», el mismo en los cuatro mensajes de V25 y V26 (reconciliación, «Compartido», 2):
+  - s02: «Se acuerda: el valor del servidor es la pérdida. Queda en acta.» (63). El error concreto que corrige la narradora:
+    tomar el valor del activo como la pérdida de un evento (error 1 de `:139`, q2). Solo valdría con un EF de 1.
+  - s04: «Se acuerda: el control cuesta menos que un incidente. Queda en acta.» (68). El error: comparar el coste anual del
+    control con lo que cuesta **un** evento (el SLE) en vez de con la ALE, que es anual. Con ese atajo hasta el control de
+    90.000 € «pasa» (90.000 < 100.000) y no debería (nota `:162` «Tres», check `:164-178`).
+  Ninguno tutea ni da órdenes: son lo que el acta registra, como los mensajes sin persona de NULL CIPHER y BLIND ARCHITECT,
+  y no el imperativo de SILENT PAGER y RED MARROW. Ninguno llama «analista» a la jugadora (el anuncio del jefe de sp5
+  sí la llama «analista», `sp/sections.ts:123`, pero es del jefe, no de ella; es el tic de HOLLOW LANTERN en GCTI y no se
+  hereda). **«Queda en acta.» es una coletilla propuesta**, como el «Lógico.» de NULL CIPHER, el «Confía en mí.» de RED MARROW
+  y el «Menos es más.» de BLIND ARCHITECT; **decide Lidia** (ver «Preguntas para Lidia» y «Decisiones», 3), y V26 la hereda.
+  El primer mensaje es la frase de la prueba de oído (sin cifras ni siglas, 63 caracteres).
+- **Cierre:** tres reglas y una sola tarea.
+  1. Un evento no se lo lleva todo: el SLE es el valor del activo por el EF, y el EF es un porcentaje.
+  2. Al año, se multiplica por el ARO, y el ARO es cuántas veces al año: 0,5 es una vez cada dos años. Hacia atrás, se divide.
+  3. Se compara la ALE con lo que cuesta el control **al año**. Si no sale, hace falta otro argumento, y la cuenta vale lo que
+     valen sus estimaciones.
+
+  **Tarea (una sola, H8):** el laboratorio Risk Math (spl5c), que pone un riesgo del puerto y ocho afirmaciones
+  (`sp/labs-sp5.ts:36-45`, datos `:203-251`). La tarjeta final y la voz del cierre solo nombran esa. Las preguntas de la
+  lección (8) siguen en el texto de la lección y el vídeo no las propone: tocan el vídeo cinco, q1 (ALE), q2 (SLE), q3 (ARO),
+  q4 (decisión) y q8 (EF); q5, q6 y q7 son de cualitativo, cadencias y controles ya existentes, y el vídeo no las trata.
+- **Se queda fuera** (sigue en la lección, que quien ve el vídeo ya ha leído o leerá justo después):
+  - Identificación del riesgo (activos, amenazas, vulnerabilidades y controles existentes) y las magnitudes probability,
+    likelihood e impact (`sp/sp5-part2.ts:24-28`, q7 `:265-279`). El vídeo parte de un riesgo ya identificado.
+  - Las cuatro cadencias, ad hoc, recurring, one-time y continuous (`:29-37`, check `:38-52`, q6 `:250-264`).
+  - La tabla completa de cualitativo frente a cuantitativo y la falsa precisión como concepto con nombre (`:53-88`, check
+    `:89-103`, q5 `:235-249`); solo sale la idea de que «alto» no se compara con el precio de nada, en s01, y la frase de la
+    estimación en s05.
+  - El diagnóstico «200.000»: tres errores distintos (tomar el valor como SLE y multiplicar por 0,5; dividir el SLE por el
+    ARO; leer 0,5 como dos veces al año) dan la misma cifra, 200.000 €. Es la lista de errores de la lección (`:138-141`)
+    puesta en una línea. Candidato a entrar en s03 si el primer borrador queda corto; **si entra, destripa del todo dos
+    afirmaciones de spl5c** (`sp/labs-sp5.ts:234-243`).
+  - El nombre «risk register» y todo lo de la lección siguiente (ver «Dónde acaba V25»).
+  - Cuánto reduce un control real (parte de la ALE, no toda): la lección habla de «la ALE que elimina» (`:127`) y no desarrolla
+    el control que solo quita una parte. **A verificar con el material oficial; no entra en tarjetas ni en la voz.**
+- **Laboratorios:** el único relacionado es **spl5c, «Risk Math»** (`sp/labs-sp5.ts:36-45`, datos `:203-251`), de tipo `select`:
+  ocho afirmaciones, cuatro correctas. Comparte con la lección las cifras de R-014 (400.000 €, EF 0,25, ARO 0,5, control de
+  20.000 €) pero con **otro activo**: el laboratorio habla del «sistema de gestión de la terminal de contenedores»
+  (`:207`) y la lección, del «servidor de planificación de grúas del muelle norte» (`sp/sp5-part2.ts:114`); el vídeo usa
+  el de la lección (ver «Contradicción nueva»). Al ya ejercitar la misma decisión (penalización L), el vídeo no juega a
+  elegir cuatro de ocho, y aporta lo que el laboratorio no tiene: la cadena paso a paso con una imagen, el calendario de
+  diez años que enseña por qué 0,5 no es dos veces al año, el cálculo hacia atrás (que el laboratorio no pide) y hasta dónde
+  aguanta la cuenta. Tres precauciones:
+  - **El vídeo repasa lo que la lección y el laboratorio comparten, y no lo oculta (H17).** Dice los números de R-014
+    (100.000 y 50.000) y que 20.000 < 50.000, que son los de la lección (`:122-130`) y las tres primeras afirmaciones de
+    spl5c (`:210-223`), y nombra como errores los de dos incorrectas («el SLE es 400.000», s02, y «ARO 0,5 = dos veces al
+    año», s03 y s05). Por eso la tarea del cierre queda como repaso de lo que se acaba de ver, y se asume (penalización L): el
+    laboratorio aporta ahí lo que el vídeo no, elegir cuatro de ocho sin guía. No trata la cuarta afirmación (seguro,
+    transfer, `:225-228`) ni la del CVSS (`:245-247`, es de la lección sp4m5).
+  - **No sale «seguro»**: la cuarta afirmación del laboratorio es transfer, y es de sp5m4 (V26).
+  - **El ejemplo de la pregunta para pensar (36.000 y 3) no es ninguno de los de la lección ni del laboratorio**: ni
+    el del check (30.000 y 4, `:167`), ni q1 (40.000 y 3, `:189`), ni q4 (600.000, 0,5 y 75.000, `:224`).
+
+**Canon nuevo que fija V25** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- **El comité de riesgos mira R-014 con la cuenta de la lección, sin fecha en pantalla ni en voz.** La lección la fecha el
+  03-09-2026 (`sp/sp5-part2.ts:113`; registro §2, tabla «fondo», `registro:135`): V25 **no repite esa fecha** (ver «Decisiones», 1).
+  El vídeo solo fija que los números de R-014 (AV 400.000 €, EF 0,25, ARO 0,5, SLE 100.000 €, ALE 50.000 €, control de 20.000 €
+  al año y la alternativa de 90.000 €) son **un análisis que se presenta al comité, sin decisión tomada**: nada se ha
+  contratado ni puesto en marcha, y el vídeo lo dice con «recomendación al comité · no contratado».
+- **Canon deducido** (cálculo propio, no lo dice ninguna fuente; el registro lo anota como «(deducido)»): la ALE de R-014
+  iguala el coste del control con un ARO de 0,2 (una vez cada cinco años) o con un EF de 0,10; con ARO 0,5, en diez años se
+  esperan cinco eventos, 500.000 €, frente a 200.000 € de control (no sale en pantalla); el control de 90.000 € cuesta
+  40.000 € al año más de lo que evita (tampoco sale). Ninguna es una cifra de Halden: son aritmética de los datos de la lección.
+- **PAPER GOVERNOR**, primera aparición. Voz propuesta (reconciliación): Laura con `megafonia`, `rate` −1; reserva, Pablo con
+  `cifrado`, `rate` 0; decide Lidia tras la prueba de oído. Dos acuerdos, uno por capítulo, en **registro de acta
+  impersonal**: «Se acuerda: … Queda en acta.» (coletilla propuesta; V26 la hereda y dice «vuelve»). Presentación de la
+  narradora **desde cero** con la frase del anuncio del jefe de sp5 («vive en los huecos de tu gobernanza»,
+  `sp/sections.ts:123`) y, en pantalla, «PAPER GOVERNOR · sección 5». Sin IP, dominio ni equipo; no ataca nada.
+- **La valoración cualitativa «ALTO» de R-014** (la casilla roja de s01): la lección no da ninguna valoración cualitativa de R-014
+  (`:113-141` solo trae la cuantitativa); es un rótulo nuevo, solo en pantalla y sin voz. Si no se quiere, basta la casilla roja.
+- **El ejemplo de la pregunta para pensar** («ALE 36.000 · ARO 3»): rotulado «otro riesgo · ejemplo · no es R-014»; no es
+  de nadie ni del registro.
+- **Comprobado contra la cronología:** nada de V25 se fecha. El 3-9-2026 es jueves (Node), el día de la tarde de V1; por eso
+  no sale. Nada choca con ningún hecho fechado de §2. **La lección sí lo fecha** (`:113`, «03-09-2026 · comité de riesgos
+  del puerto»; `registro:135`) y quien ve el vídeo acaba de leerlo (H18): el vídeo no lo dice y la voz no lo vincula con
+  V1; **la voz no dice «hoy», «ese día» ni «aquel día»**.
+
+**Contradicción nueva (para el registro, §5):** el laboratorio spl5c y la lección usan **las mismas cuatro cifras** (400.000 €, EF
+0,25, ARO 0,5, control de 20.000 €) para dos activos distintos: «sistema de gestión de la terminal de contenedores»
+(`sp/labs-sp5.ts:207`) y «servidor de planificación de grúas del muelle norte» (`sp/sp5-part2.ts:114`). El primero se lee fácil
+como `srv-tc-app03` («servidor de la terminal de contenedores», `registro:178`). V25 no los junta ni arregla: usa el de la
+lección y calla el del laboratorio. Cambio propuesto, fuera de esta ficha: que el laboratorio hable del mismo servidor que la
+lección (o de otro activo con otras cifras).
+
+**No se toca:**
+- **La fecha del 3-9 y el caso.** La tarde de ese jueves es la de `OPS-WS-14`, Lucía y el correo (V1; `registro:50-52`):
+  V25 no fecha el comité, no dice «aquel día» ni «esa mañana», y **nunca** sugiere que el comité «lo vio venir» ni que R-014
+  guarde relación con septiembre. Tampoco `IR-2026-0147`, `srv-tc-app03`, `svc_tosreport`, los 38 GB ni el 4-9. Lo de
+  septiembre fue una salida de datos, otra cosa: el vídeo no lo compara con R-014 y la voz no dice «como pasó», «habría
+  frenado» ni si hubo o no ransomware.
+- **El servidor de R-014 es de planificación, no de control, y no se dibuja conectado a nada.** Ni OT, ni PLC, ni esclusas, ni
+  el servidor de control de grúas que habla con un dominio desconocido (`sp/sp2-part1.ts:147`; `registro:846`, `:800`), ni la
+  red de las bombas de V16, ni zonas ni VLAN ni equipo. Se dice «servidor de planificación», no «sistema de control».
+- **La vulnerabilidad del riesgo.** La lección escribe «aprovechando una VPN sin MFA» (`:27`): V25 **no la usa**. V17 no dice cómo se
+  inicia sesión en la VPN y la MFA del proveedor de identidad es del 30-11 (V10); el vídeo solo dice «un ransomware cifra el
+  servidor», que es la línea del ejemplo (`:114`).
+- **El dosier de PAPER GOVERNOR** (`sp/sections.ts:125`): ni «contratista con acceso perpetuo» ni «sin due diligence» ni «el
+  puerto vuelve a operar». Tampoco «GH». De su anuncio (`:123`) solo sale «vive en los huecos de tu gobernanza»; «riesgos sin
+  registro» queda para V26 y «un proveedor sin contrato» no sale. La narradora no dice quién es GLASS HARBOR.
+- **La voz de los otros cuatro:** ninguna textura nueva. Laura con `megafonia` no es la de RED MARROW (Laura con `telefono`),
+  ni la de PAPER CRANE (Laura con `machine`), ni la de BLIND ARCHITECT (Helena con `megafonia`, `rate` −2); si en la prueba
+  de oído se confunde con alguna, ver la reserva (Pablo con `cifrado`, que tampoco es la de SILENT PAGER ni la de NULL CIPHER).
+- **Seguro, transfer, mitigate, accept, avoid, risk register, risk owner, KRI, appetite, tolerance, RTO, RPO, MTTR, MTBF, BIA.**
+  Todo es de V26. «Control» sí; «mitigar» no se dice, porque en el examen es una estrategia con nombre. El puerto no tiene ni
+  deja de tener seguro (`registro:614`).
+- **Los equipos y los hechos de otros vídeos:** el ERP (V20), el portal de reservas y su noche (V10–V12, V16), `srv-msg01`,
+  `srv-msg02` y `cam-nvr-02` (V18), HALDEN-OPS y las tabletas (V21), el túnel y la VPN (V17), el proveedor de identidad y la
+  MFA del 30-11 (V10). R-014 sale como identificador **solo en pantalla**.
+- **La imagen del móvil no es el «móvil de guardia»** de V5b (`registro:86`) ni «tu móvil» del segundo factor hipotético de V6
+  (`registro:428-430`): aquí el móvil solo se cae. Sin segundo factor, sin guardia, sin llamadas.
+- **«El control que se estudia» no es la mejora de V5** («gestor de contraseñas con rotación» ni «agente en todas las estaciones
+  de administración», `registro:276`) ni dice nada de si el puerto tiene o no copias o EDR gestionado: es la línea de coste de
+  la lección (`:126`) y nada más. **«Gestionado» solo en pantalla** (H20): la voz dice «copias y EDR» y nunca «gestionado por
+  un proveedor» (un EDR gestionado es un servicio de tercero, territorio del dosier de PAPER GOVERNOR y de sp5m5); y V1 y V5
+  ya tienen un EDR (el que aísla `OPS-WS-14` a las 16:11, `registro:56`) y copias (V5 restaura la del 2-9, `registro:76`):
+  el vídeo no dice si el puerto las tiene.
+- No se culpa a nadie: ni a quien puso el valor del servidor ni a quien estimó la frecuencia. La cuenta es «una estimación
+  sobre estimaciones» (`:107`), no un reproche.
+- Ninguna IP, dominio, cuenta ni equipo con nombre en pantalla (R-014 y el «muelle norte» son identificadores de la lección).
+
+**Comprobación de límites** (perfil `capsula-yt`; recuento con Node, `[...texto].length`, por `check-v25-fix.mjs`, que lee
+esta ficha; tras la revisión de 2026-10-14):
+- Duración: suma 210 s; render esperado 235–250 s, dentro de 190–260. Los extremos conocidos (0,89 y 1,22 veces la suma)
+  dan 187–256 s: el alto cabe; el bajo queda 3 s por debajo del mínimo, pero V12, V18 y V20, con la misma estructura,
+  estimaron por encima de su suma (unos 260 s con 210), así que se espera lo contrario. Si el primer borrador se acerca a 190,
+  se alarga s03.
+- 6 escenas en 3 capítulos (máximo 3). 3 conceptos (2–3), cada uno con como mucho dos tarjetas (1, 2 y 1).
+- 4 tarjetas de examen (3–5), una por escena de s02 a s05, ninguna en la última; de 43 a 51 caracteres (máximo 58), sin
+  `{}[]|<>`, flechas, marcas, viñetas ni emoji (`×` y `;` no están en la lista de símbolos prohibidos).
+- 1 pregunta para pensar (exactamente 1), 44 caracteres (máximo 48), `holdMs` 4500.
+- 2 mensajes interceptados (1–2), uno por capítulo (I y II), ninguno en la escena final; de 63 y 68 caracteres (máximo 70),
+  sin cifras ni siglas ni `{}[]|<>`, flechas, marcas ni emoji (`:` y `.` no están en la lista); `holdMs` 3800 (2500–4500);
+  `video.json` lleva `"adversary": "PAPER GOVERNOR"`. Ninguno comparte segmento con la pregunta. Con `rate` −1 la voz
+  dura algo más: se mide al voicear y, si un mensaje no cabe en 3800, `holdMs` sube (máximo 4500).
+- Cues de `sfx`: `sle` («ding»), `ale` («ding»), `fits` («check») y `over` («block»), cada uno en su escena; los tres sonidos
+  existen en `video/engine/sfx/sfx.json` (`ding`, `check`, `block`); sin cue repetido ni inexistente.
+- Cierre: una sola tarea (Risk Math, spl5c); 3 reglas.
+- Inserción: tras el último check de la lección (`:164-178`), 11 líneas de bloque + párrafo de enlace.
+- `wordBudget` por escena (`s` × 2,7): s01 54 · s02 108 · s03 124 · s04 124 · s05 97 · s06 59 (total 566).
+- Título antes de los 12 s: la primera frase de s01 («El comité de riesgos tiene una casilla roja, y con una casilla roja no
+  se decide cuánto gastar») tiene 18 palabras, unos 7 s a 2,7 palabras/s; el título entra hacia los 8 s. Si cae después de los
+  12 s, se quita «y con una casilla roja no se decide cuánto gastar».
+- Sin identificadores en la voz: `R-014` solo en pantalla; sin hosts, IP ni cuentas.
+
+**Notas para el guion:**
+- **s02.** La narradora presenta a PAPER GOVERNOR con una sola frase y su etiqueta (el anuncio del jefe de sp5, `sp/sections.ts:123`,
+  sin el resto del texto). La corrección del mensaje es «eso sería un EF de uno: perderlo todo».
+- **s03, el ARO.** El calendario enseña un valor esperado, no un horario: «una vez cada dos años» no quiere decir «el año que
+  viene no pasa». Cinco marcas en diez años, en posiciones desiguales, y «esperados, no fijos».
+- **s04, «sale a cuenta».** Es una recomendación en los números, no una compra: «recomendación al comité · no contratado». El
+  vídeo no dice que el comité lo apruebe ni que el puerto lo contrate (el registro llama «plan» a lo que aún no funciona).
+- **s05, el empate.** Con la ALE igual al coste, el control «cuesta lo mismo que lo que evita»: no se dice ni «justificado» ni «no
+  justificado» en el empate, porque la lección no lo dice (`:107`: «menos que» y «más que»). La lectura por debajo de 0,2 sí:
+  «cuesta más de lo que evita». Es aritmética de la lección, **no un punto de examen**: sin tarjeta.
+- **Palabras que no se dicen:** «mitigar», «transferir», «aceptar», «seguro», «dueño del riesgo», «registro de riesgos» (V26);
+  «ransomware» sí, pero siempre en condicional («si cifrara»). Y, por la revisión: «hoy», «ese día» y «aquel día» (H18);
+  «muelle» a secas y «gestionado» (H32, H20); «mapa de calor» (H19; es «la matriz de riesgo»); «un cálculo no es una
+  decisión» (H7, ni en voz ni en pantalla); y «otra vez» y «vuelve» referidos a PAPER GOVERNOR (es su primera aparición).
+
+**Decisiones** (con la alternativa descartada):
+1. **Números de la lección, sin fecha en pantalla.** Los números salen de R-014 (`:116-136`), que son los que enlaza sp5m4 en su
+   primera línea (`:316`, 50.000 €) y los únicos con canon existente: ninguna cifra nueva de Halden. La fecha de la lección
+   (03-09-2026, `:113`) es la del jueves del correo de Lucía; V25 no la pone. Descartado **caso nuevo** (otro activo y otras
+   cifras, p. ej. otro riesgo del comité): serían cuatro cifras y un activo de canon nuevo, con riesgo de chocar con el registro
+   de riesgos que escribe V26 y con el hilo «50.000 €» con que empieza sp5m4; y la penalización L del ranking no se paga por
+   usar el mismo ejemplo (el laboratorio juega a elegir, el vídeo no). Descartado también **fechar el vídeo el 3-9 con una frase
+   de «sin relación con la tarde»**: la frase misma ya los junta. Descartado **volver a fechar R-014** más tarde: contradice
+   la cabecera de la lección. Lo que el caso nuevo habría dado y el vídeo da igual es la variación: la pregunta para pensar y
+   la sensibilidad usan cifras o palancas que ni la lección ni el laboratorio traen.
+2. **Voz de PAPER GOVERNOR: Laura con `megafonia`, `rate` −1 (reserva: Pablo con `cifrado`, `rate` 0).** Cambiada en la
+   reconciliación; la ficha original proponía Pablo con `cifrado`. Razón: el dosier dice «desenmascarada»
+   (`sp/sections.ts:125`) y la regla de la tanda 3 es que la voz fija el género (Helena para NULL CIPHER y BLIND ARCHITECT);
+   es una pareja que no usa nadie y no pide efecto nuevo (las cuatro texturas están ocupadas y no se admiten nuevas, así
+   que la nueva comparte una pieza). Comparte la voz base con RED MARROW (`telefono`) y PAPER CRANE (`machine`) y el efecto
+   con BLIND ARCHITECT (Helena, `rate` −2); `rate` −1 («lee un acta») la separa de BLIND ARCHITECT. Descartado **Pablo
+   con `cifrado`** como primaria (suena a hombre y, sin `machine`, nada enmascara el tono; queda de reserva: es la más
+   lejana de las cinco existentes en voz, textura y espacio), **Laura con `cifrado`** (más cerca de NULL CIPHER por la
+   textura, y Laura ya es de dos adversarios), **Helena con `telefono`** (Helena ya es de dos adversarios, y `telefono` y
+   `megafonia` son las dos bandas recortadas que la revisión de V16 y V17 ya vio parecidas) y **Pablo con `telefono` o
+   `megafonia`**. **Riesgo:** que suene a RED MARROW o a BLIND ARCHITECT; el dosier de sp5 es el que junta a GLASS HARBOR en
+   una sola operación (`registro:346`), y dos adversarios que suenan igual lo sugieren sin destriparlo. Es una decisión
+   de Lidia (ver «Preguntas para Lidia»). **Prueba de oído antes de congelar** (`revision-secplus.md`, «Voz»): el primer
+   mensaje, «Se acuerda: el valor del servidor es la pérdida. Queda en acta.», con las parejas candidatas y las tres anclas
+   (NULL CIPHER, BLIND ARCHITECT y RED MARROW), una detrás de otra, también en contexto y con la compresión de YouTube.
+3. **Coletilla «Queda en acta.».** Propuesta (y, en la reconciliación, ya puesta en los cuatro mensajes): cada adversario con
+   voz propia tiene una (NULL CIPHER, RED MARROW, BLIND ARCHITECT) y el registro de PAPER GOVERNOR es el del acta. Descartado
+   **sin coletilla**, como SILENT PAGER, cuyo registro se cuidó de no tener firma sin decidirla (`registro:616`): V18
+   explica que una coletilla es decisión de Lidia, y aquí es la primera aparición. Si Lidia no la quiere, los dos mensajes
+   acaban en el punto anterior («Se acuerda: …») y el resto no cambia. Con coma o sin coma delante, se prueba en la prueba
+   de oído.
+4. **El móvil, no un barco ni un almacén.** Imagen cotidiana a escala 1 a 1.000 de las cifras; no usa ninguna de las
+   ocupadas. Descartados un coche aparcado (V21 deja el aparcamiento «sin coches», `registro:774`), una temporal (el mar de V18) y
+   un contrato de mantenimiento (ningún proveedor ni técnico de mantenimiento con nombre, `registro:364`).
+5. **El cálculo hacia atrás como pregunta, con cifras ajenas.** La lección solo lo dice en la nota (`:162`) y no tiene ejercicio.
+   Descartada la pregunta «¿qué es el EF?» o «¿cuánto es el ARO?» (q3 y q8 las contestan) y descartada la misma pregunta con las
+   cifras de R-014 (se contesta de memoria).
+6. **El vídeo después del último check de la lección, no antes de la nota de examen.** (Cambiada en la revisión, H7.) El brief
+   pedía «después de los checks y antes de la nota», pero en esta lección hay un check detrás de la nota (`:164-178`) que
+   el vídeo contestaría de antemano: enseña la misma cadena y la trampa del check. Descartado **antes de la nota** (la
+   primera propuesta: «es lo que la nota resume») por esa razón, y porque V24 y V26 aplican el criterio contrario; descartado
+   **tras la nota y antes del check**, que lo deja igual de contestado. El vídeo va entre el check del ALE y el párrafo que
+   salta a sp5m4, con la línea de enlace «Antes de pasar a la siguiente lección, míralo en el puerto: …».
+
+**Riesgos de solape con V26 y los demás** (para quien revise la tanda):
+- **V26 (sp5m4, RTO/RPO), el principal.** (a) R-014 y 50.000 € salen en los dos; V26 empieza ahí (`:316`) y no debe recalcular. (b) La
+  tabla de V26 (`:349-377`) dice que mitigar es la respuesta equivocada cuando «el coste del control supera con creces la ALE»
+  (`:356`): es la regla de V25 s04; V26 la nombra como criterio de elección, V25 la enseña como cuenta. (c) PAPER GOVERNOR:
+  los dos vídeos usan **la misma voz, el mismo registro de acta y la misma coletilla** (reconciliación): V25 presenta
+  desde cero y V26 dice «Y vuelve PAPER GOVERNOR…» (V25 va justo antes en el curso, H4); `GOVERNOR` («gávernor») y `ARO`
+  («a erre o») se leen igual en los dos. Si V26 se viera antes que V25, su «vuelve» no tendría a qué volver, pero la
+  presentación completa de V26 sigue en pantalla y se entiende sola. (d) «Backup inmutable» aparece aquí como etiqueta de coste y
+  en la tabla de V26 como ejemplo de mitigación (`:355`, «copias inmutables» en «el sistema de asignación de atraques»):
+  son activos distintos; V25 no los junta.
+- **V24 (sp3m7, DR).** Ninguno salvo la palabra «copias» en la etiqueta del control. V25 no dice RTO ni «restaurar».
+- **V27 (s5m3, YARA/Sigma).** Ninguno: otra pista.
+
+**Preguntas para Lidia** (decide Lidia; la opción recomendada va primero):
+1. **Voz de PAPER GOVERNOR.** Recomendada: Laura con `megafonia`, `rate` −1 (femenina, como el dosier; pareja nueva sin efecto
+   nuevo). Alternativa: Pablo con `cifrado`, `rate` 0 (la más lejana en voz, textura y espacio, pero suena a hombre). Se
+   decide tras la prueba de oído de `revision-secplus.md` («Voz»), con el primer mensaje y las tres anclas, y vale para
+   V25 y V26.
+2. **Coletilla «Queda en acta.».** Recomendada: sí, en los cuatro mensajes de V25 y V26 (como «Lógico.», «Confía en mí.» y
+   «Menos es más.»). Alternativa: sin coletilla, y los mensajes acaban en «Se acuerda: …».
+3. **Pronunciaciones** al grabar. Recomendadas: `GOVERNOR` «gávernor»; `ARO` «a erre o»; `SLE` «ese ele e»; `ALE`
+   «a ele e»; `EF` «e efe»; `AV` «a uve»; y V26 las usa igual. Alternativa para `ARO`: «aro» (la de V26 antes de la
+   reconciliación), que un oyente confunde con «el aro».
+
+**Hallazgos no aplicados:**
+- **H17, segunda opción** (cambiar las cifras de s03 y s04 por unas propias y dejar R-014 solo en el hook): no se aplica. Rompería
+  el hilo «50.000 €» con que empieza sp5m4 (`sp/sp5-part2.ts:316`) y reabriría el caso nuevo que la decisión 1 descartó. Se
+  aplica la primera opción (decirlo con claridad en la ficha, precaución de «Laboratorios»).
+- **H3** no pide nada a esta ficha: sus cuatro cues (`sle`, `ale`, `fits`, `over`) ya son cues de su escena y los tres
+  sonidos existen en `sfx.json`.
+- **H4, «V26 dice vuelve»:** es de la ficha de V26; aquí solo se deja constancia (no se toca ese archivo).
+
+**Cambios de la revisión** (2026-10-14; `revision-secplus.md` y `reconciliacion.md`):
+- **H2** · Voz de PAPER GOVERNOR a Laura con `megafonia`, `rate` −1, con Pablo con `cifrado` de reserva; registro de acta
+  impersonal («Se acuerda: … Queda en acta.»); pronunciaciones `GOVERNOR` y `ARO` iguales a las de V26. Los dos mensajes
+  reescritos: «Se acuerda: el valor del servidor es la pérdida. Queda en acta.» (63) y «Se acuerda: el control cuesta menos
+  que un incidente. Queda en acta.» (68), cada uno con el error concreto que corrige la narradora. Decisiones 2 y 3,
+  canon nuevo, «No se toca» y enfoque coherentes; lo que decide Lidia, en «Preguntas para Lidia».
+- **H4** · Presentación desde cero (sin «otra vez»), V26 dice «vuelve»; reflejado en cabecera, canon nuevo, escena s02 y
+  riesgos de solape (c). `vuelve`/`otra vez` quedan en las palabras que no se dicen.
+- **H7** · El vídeo pasa a ir después del último check (`:164-178`) y antes del párrafo que salta a sp5m4 (`:179-182`), con
+  la línea «Antes de pasar a la siguiente lección, míralo en el puerto: …»; desaparece la excepción del cálculo hacia atrás;
+  decisión 6 reescrita; el sello final de s05 ya no cita «un cálculo no es una decisión» (`:181`).
+- **H8** · El cierre y la tarjeta final de s06 dan una sola tarea (Risk Math, spl5c); las preguntas de la lección quedan en
+  el texto de la lección.
+- **H17** · La precaución «el vídeo no trae ninguna afirmación del laboratorio» se sustituye por el reconocimiento de que
+  repasa lo que lección y laboratorio comparten (el cierre queda como repaso, asumido).
+- **H18** · Añadido que la lección fecha el comité el 3-9, que el vídeo no lo dice ni lo vincula con V1, y «hoy», «ese día»
+  y «aquel día» fuera de la voz.
+- **H19** · «Funda que se amortiza en un año», dicho una vez, sin repetir «al año» en las dos fundas; «matriz de riesgo»
+  en lugar de «mapa de calor» (eco con el site survey de V21).
+- **H20** · «Gestionado» solo en pantalla; la voz dice «copias y EDR».
+- **H31** · Numeración: el bloque más el párrafo de enlace ocupan 11 líneas (4 + 7); las citas de la ficha y las de V26 son
+  del archivo sin el vídeo.
+- **H32** · La voz no dice «muelle» a secas; «el servidor de planificación de grúas».
+- **Comprobación de límites** recontada con `check-v25-fix.mjs` (mensajes 63 y 68; tarjetas 43, 47, 51 y 48; pregunta 44;
+  `wordBudget` 566; suma 210 s); sin otro cambio de cifras.
+
+### V26 · sp5m4 · Cápsula · «RTO, RPO, MTTR y MTBF: lo que se promete y lo que se mide»
+
+> Propuesta del 2026-10-14 (tanda 5), con las opciones recomendadas ya elegidas; falta que Lidia diga qué cambia. La versión
+> vigente de escenas y guion será `video/bia-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en
+> `video/bia-halden/out/script-notes.md`. Las decisiones, con lo descartado, van dentro de esta ficha (apartado «Decisiones»);
+> no hay `decisiones-V26.md`.
+>
+> **Orden del curso.** sp5m4 es la segunda lección de riesgo de sp5, detrás de sp5m3 (ALE, V25) y antes de sp5m5 (terceros):
+> quien sigue el curso ve V25 antes que V26. **V25 presenta a PAPER GOVERNOR desde cero**; V26 dice «Y vuelve PAPER GOVERNOR,
+> que vive en los huecos de tu gobernanza» (reconciliación, punto 3; revisión H4), como V12 y V17 con NULL CIPHER y BLIND
+> ARCHITECT, que son lecciones contiguas. La presentación completa sigue en pantalla («PAPER GOVERNOR · sección 5» y la frase del
+> jefe de sección), así que el vídeo se entiende solo. Voz, registro y pronunciaciones son **canon compartido** con V25 (ver
+> «Adversaria y voz»). No nombra ningún vídeo ni el caso de septiembre; el único guiño a V25 es ese «vuelve».
+>
+> Rutas relativas a la raíz del repo; `sp/` = `src/data/secplus/`, `reg` = `docs/superpowers/canon/glass-harbor.md`,
+> `v5/` = `video/ir-halden/`, `v5b/` = `video/ir-halden-pruebas/`, `v6/` = `video/iam-halden/`.
+
+- **Carpeta:** `bia-halden` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) · objetivo **5.2**
+  (comentario de cabecera de la lección, `sp/sp5-part2.ts:298-299`) · adversaria **PAPER GOVERNOR** (sección sp5,
+  `sp/sections.ts:120-125`), dos mensajes interceptados · voz `recording/lidia` con
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · música `Go On Going - Stayloose.mp3` · `"examTiming": "sentence-end"`;
+  pregunta con `think.holdMs` 4500; mensajes con `intercept.holdMs` 3800 · en `video.json`, `"lesson": "sp5m4"` y
+  `"adversary": "PAPER GOVERNOR"`.
+- **Etiquetas** (`video.json`, clave `"tags"`): RTO, RPO, MTTR, MTBF, BIA, business impact analysis, recovery time objective,
+  recovery point objective, continuidad de negocio, business continuity, gestión de riesgos, Security+.
+- **Título de YouTube:** «RTO, RPO, MTTR y MTBF: lo que se promete y lo que se mide | CompTIA Security+ en español» (88
+  caracteres). Título del bloque de la lección y de la tarjeta final: «RTO, RPO, MTTR y MTBF: lo que se promete y lo que se
+  mide» (57). Composición `BiaHalden`, póster `BiaHaldenPoster`.
+- **Efectos (`sfx`):** los automáticos del motor y cuatro momentos. `sfx` es un mapa **cue → sonido**: la clave tiene que ser
+  un cue de una sola escena (`sfxMapErrors`, `video/engine/scripts/lib/sfx.mjs:36-60`) y el sonido, uno de `video/engine/sfx/sfx.json`
+  (glitch, typing, ding, whoosh, mail, check, error, block, alarm, ping2, lock). Comprobado con Node contra las dos cosas:
+  - `both-set` → «lock» (s03: la fila del panel queda escrita, «RTO 30 min · RPO 24 h»). Es un **cue nuevo de s03**; el
+    `promise` que había aquí es el de los chips de s01 y sonaría ahí.
+  - `rpo-five` → «check» (s03: el RPO de 5 min aparece en el hueco de facturas).
+  - `mean` → «ding» (s04: sale la media; la tarjeta de s04 suena con el `ding` automático, antes de la última frase).
+  - `gap` → «block» (s04: el 80 contra el 30).
+  Sin efecto nuevo. `promise` (s01) queda sin sonido propio.
+- **Léxico** (lo nuevo lo confirma Lidia al grabar, porque el importador ancla cada frase a lo que ella diga): `RTO` («erre te
+  o»), `RPO` («erre pe o»), `MTTR` («eme te te erre»), `MTBF` («eme te be efe») y `BIA` («bía» o «be i a»: a elegir en la
+  grabación). Ya fijado en V9: `PAPER` («péiper»). Nuevo, **igual que en V25**: `GOVERNOR` («gávernor») y `ARO` («a erre
+  o»; solo si se conserva la frase opcional de s05). Ninguna sigla de la lección anterior (`SLE`, `ALE`) sale en la voz.
+  **El léxico no llega a la voz del adversario**: `tts-adversary.mjs` escribe `intercept.text` tal cual para SAPI. El mensaje
+  de s04 lleva «RTO» sin léxico: va en la prueba de oído (ver «Adversaria y voz»).
+- **Lo que se lee no se deletrea:** no hay equipos, IP, dominios, hashes ni cuentas en el vídeo. Las cifras (`30 min`, `48 h`,
+  `5 min`, `24 h`, `80 min`) se dicen como cifras («media hora», «dos días», «cinco minutos», «un día», «ochenta minutos»), no
+  como identificadores. Ninguna excepción.
+- **Duración:** suma de `s` **210 s** (6 escenas), la misma estructura de V12, V18 y V20 (dos mensajes, una pregunta, una
+  escena de consola): estimado ~255–260 s y **unos 235–250 s renderizados (~4:00)**, dentro de 190–260. La suma predice
+  mal (0,89 y 1,22 veces la suya dan 187–256 s), así que el primer borrador se mide por los dos lados. Si el estimado pasa de
+  255 s, se recorta en este orden: primero la frase opcional del ARO (s05), después la frase del técnico de la caja en s04; si
+  se acerca a 190 s, se alarga s04 (la lectura de las cuatro averías una a una), que es la escena que más pesa. No se rellena.
+  **s03 y s04 son las densas** (140 palabras en 52 s: 2,7 palabras/s sin contar los 4,5 s de la pregunta ni los 3,8 s del
+  mensaje, es decir ~2,9–3,0 efectivas, igual que V24 s04 y V25 s03 y s04): cualquier recorte se decide en el borrador del
+  guion, **antes de que Lidia grabe**, no después, y no se cuenta con que ella lea más deprisa.
+- **Inserción:** en `sp/sp5-part2.ts`, lección sp5m4, **entre el último check (`:408-422`) y el párrafo que salta a sp5m5
+  (`:423-426`)**, como bloque
+  `{ t: 'video', title: 'RTO, RPO, MTTR y MTBF: lo que se promete y lo que se mide', youtube: '<id>', poster: 'videos/bia-halden-poster.png', transcript: 'videos/bia-halden-transcript.txt' }`,
+  precedido de una línea: «Antes de pasar a los proveedores, míralo con el negocio: qué dos números se prometen y cómo se
+  comprueba que se cumplen». **Ojo con la instrucción del encargo** («después de los checks y antes de la Nota de examen»): en
+  esta lección no se puede cumplir al pie de la letra, porque la nota (`:402-407`) va *antes* del último check (`:408-422`, el
+  de RTO y RPO). Poner el vídeo delante de la nota lo dejaría antes de un check que él mismo contesta (el de «qué valor manda
+  sobre cada cuánto se replica»), que es justo lo que se descartó en V20. Todo lo que enseña el vídeo va antes en la lección:
+  el BIA y las cuatro medidas (`:398-401`), la nota de examen (`:402-407`) y el check (`:408-422`). El vídeo **repasa y
+  añade lo que la lección solo nombra**: que los dos números del BIA son independientes y que el MTTR se lee contra el RTO.
+  Se fija en la suite `lesson videos` de `src/data/content.test.ts` (`:248`) con su línea `toBe('sp5m4')` junto a las de
+  `:268-317`. **Numeración sin V25:** todas las citas de `sp/sp5-part2.ts` de esta ficha (`:398-426`, `:400`, `:406`, `:411`,
+  q4 `:475-488`, q7 `:520-533`) son del archivo tal como está; al fusionar V25 se desplazan las once líneas de su bloque y su
+  párrafo de enlace (4 + 7), y hay que sumarlas.
+- **Cómo se diferencia de V24 (sp3m7) y de V25 (sp5m3):** las tres lecciones tocan RTO y RPO, y las tres son cápsulas de la
+  misma tanda. El reparto, para que ninguna pise a otra:
+
+  | | V24 · sp3m7 (DR) | V25 · sp5m3 (ALE) | **V26 · sp5m4 (BIA)** |
+  |---|---|---|---|
+  | Pregunta | ¿dónde se recupera y cómo se prueba? | ¿cuánto cuesta el riesgo y compensa el control? | **¿qué número se promete y cómo se lee frente a lo medido?** |
+  | Usa RTO y RPO como | **no los nombra**: elige el sitio por «cuánto puede estar parado el puerto» y por lo que ya funciona allí (la lección sí los usa, `sp/sp3-part4.ts:47`, `:57`, `:99`) | no los usa | **el objeto: qué son, de dónde salen, qué manda cada uno** |
+  | Unidad | sitios, copias, pruebas | euros al año (`sp/sp5-part2.ts:104-139`) | **minutos y horas, ningún euro** |
+  | No sale aquí | | | hot, warm, cold (ni «caliente»: «capacidad de recuperación» es una frase, no un sitio); onsite, offsite, snapshots, replication, journaling; tabletop, fail over; la escalera de activación; EF, SLE, ARO, ALE; el coste de un control |
+
+  «El RPO manda sobre cada cuánto se copia» está en las dos lecciones (`sp/sp5-part2.ts:400`, `sp/sp3-part4.ts:99`): en V26 es
+  **una frase** y el vídeo no explica ningún mecanismo. V24 deja la frecuencia de la copia como consecuencia del RPO para V26 y
+  trata el mecanismo (qué tipo de copia, dónde, cómo se prueba) sin nombrar RTO ni RPO. Otro reparto de gancho (revisión,
+  H12; es lo que pide a V24): V24 abre con «¿dónde sigue todo?» y un reloj **sin pregunta**; la pregunta «¿cuánto tarda en volver?» con su
+  «Enseguida.» y su «Poca cosa.» es de V26.
+- **Enfoque («dos promesas y una media»):** sin fecha. «Análisis de impacto en el negocio · propuesta · ejemplo · datos
+  ficticios» (el mismo sello en las dos consolas, ver canon).
+  Cuando alguien pregunta cuánto tarda en volver un sistema, la respuesta de siempre es «enseguida», y a cuántos datos se
+  pierden, «poca cosa»: ninguna de las dos es un número, y lo que no tiene número no se puede cumplir ni incumplir. Tú
+  preguntas al negocio, no a los servidores: Facturación y Operaciones dicen cuánto aguantan parados y cuántos datos pueden
+  perder en dos procesos, y de ahí salen las dos promesas. Después comparas la promesa de Operaciones con lo que dice el registro
+  de averías del último año, y la media no llega. PAPER GOVERNOR trae un atajo en cada mitad: pedir cero minutos para todo y
+  escribir de RTO lo que ya se tarda. Registro de diseño y propuesta, como V16 y V20: nada «funciona», nada «se cayó» en una
+  fecha. Sin frase de puente.
+
+**Conceptos (3) y su imagen:**
+
+La imagen sale de una cafetería con su caja registradora, no del puerto: es cotidiana, no se parece a ningún lugar ni equipo de
+Halden y no toma ninguna de las ocupadas (el almacén y el chaleco de V20, el foco y el candado de V21, el casco de V18, las
+pinturas de V11, la cadena de V12, la valla y la garita de V16, la lancha de V17). Un reloj para el tiempo, una libreta para los
+datos, el técnico de la caja para lo medido. **Vecinas, no iguales** (revisión, H30): «la tienda del barrio» de V22 (otra pista,
+GCTI) y «la cocina» de V9 son también un local de barrio con caja y cocina detrás; la cafetería no toma de ninguna ni dice
+«tienda» ni «cocina». Si la revisión de naturalidad la ve demasiado cerca, el cambio ya está decidido: **un taller o un puesto
+sin caja registradora**, y «el técnico de la caja» pasa a «el técnico de la máquina»; los conceptos no se tocan.
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | El BIA parte del negocio y saca dos promesas distintas. **RTO**: tiempo máximo tolerable desde el fallo hasta que el proceso vuelve a estar operativo; marca la capacidad de recuperación que hay que tener lista. **RPO**: la cantidad máxima de datos que se puede perder, medida en tiempo; marca cada cuánto se copia o se replica. Uno no dice nada del otro: un proceso puede esperar mucho y no perder nada, y otro, volver en media hora y perder un día (`sp/sp5-part2.ts:400`, `:406`, check `:411`; `sp/sp5-cards.ts:27`) | La cafetería: el **reloj** de la pared es cuánto puede estar la caja sin servir antes de que la clientela se vaya; la **libreta** es cuántas ventas apuntadas desde la última copia aceptas perder si la caja se estropea. Dos preguntas, dos objetos | «El BIA parte del negocio, no de los servidores» · «RPO fija cada cuánto copias; RTO, la capacidad» |
+| 2 | **Lo medido se compara con lo prometido.** El MTTR (tiempo medio de reparación) no es un objetivo, es una medida observada; se lee contra el RTO, y si el MTTR real es mayor, el plan de continuidad no se cumple y hay que mejorar la recuperación, no el papel. No se escribe de RTO lo que ya se tarda (`:400`, `:406` «Dos», q4 `:475-488`). **En la voz:** el MTTR es «lo que se tarda de media en dejarlo funcionando» y el RTO, «el plazo que se promete»; no se fija desde qué instante empieza a contar el cronómetro (revisión, H26) | Seguimos en la cafetería: el **técnico de la caja** tarda lo que tarda, y eso se mide; lo que el local aguanta sin servir lo decide el local, no el técnico | «MTTR es una medida: se compara con el RTO» |
+| 3 | **MTBF: cada cuánto falla.** Tiempo medio entre fallos; mide fiabilidad y ayuda a planificar el mantenimiento y la sustitución; no es un objetivo y no se confunde con el MTTR (cuánto tarda en volver) (`:400`, q7 `:520-533`). Una sola frase, opcional, lo liga con el ARO de la lección anterior | La misma caja: cada cuánto se cuelga, frente a cuánto tarda el técnico en dejarla andando | «MTBF mide fiabilidad; MTTR, lo que tardas en reparar» |
+
+**Escenas:** seis, en tres capítulos (Qué se promete · Qué se mide · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «Enseguida» | I Qué se promete | 22 | Sello «análisis de impacto en el negocio · propuesta · ejemplo · datos ficticios». Dos globos sin autor: «¿Cuánto tarda en volver?» → «Enseguida.» y «¿Y cuántos datos se pierden?» → «Poca cosa.». Los dos se apagan: no son números. Primera frase: la respuesta de siempre; hacia los 8 s (siempre antes de los 12), título «RTO y RPO» y la promesa en tres chips: «qué se promete · cómo se mide · se compara». Entra la etiqueta «PAPER GOVERNOR · sección 5» con «vive en los huecos de tu gobernanza» y la narradora dice «Y vuelve PAPER GOVERNOR, que vive en los huecos de tu gobernanza» (la etiqueta lleva la presentación completa) | «Enseguida» no es un número y lo que no tiene número no se cumple ni se incumple · `ask-time, ask-data, fade, title, promise, adversary` |
+| s02-negocio «Empiezas preguntando al negocio» | I | 34 | Dos tarjetas de proceso: «Emitir facturas a las navieras · Facturación» y «Seguir llegadas y salidas de buques · Operaciones». Bajo cada una, dos huecos: «cuánto puede estar parado» y «cuántos datos puede perder». A cada tarjeta le crece una barra de «cuánto duele cada hora parado», sin cifras ni euros. Mensaje interceptado. Respuesta: «cero minutos para todo» no es un plan: cuanto más corto el plazo, más capacidad hay que tener lista, y el análisis existe para ordenar qué proceso aguanta cuánto. Nombre BIA con «parte del negocio» | El BIA identifica procesos críticos y cuánto cuesta cada hora parados; de ahí salen los plazos, no de los servidores · `bia, proc-bills, proc-board, hour, intercept, order` · **intercept** |
+| s03-promesas «Dos promesas por proceso» | I | 52 | La cafetería (rotulada «imagen · no es del puerto»): la caja se cae. A un lado un reloj, al otro una libreta. «RTO · cuánto puede estar sin servir» y «RPO · cuántas ventas desde la última copia». Vuelven las dos tarjetas de proceso, con los huecos: **Seguir llegadas y salidas** se llena con «RTO 30 min · RPO 24 h» y la nota «con una copia al día le basta» (`both-set`); **Emitir facturas** muestra solo «RTO 48 h» y «no puede perder casi nada». Pregunta para pensar con dos botones. Respuesta: más a menudo: el RPO es de 5 min (aparece en el hueco, `rpo-five`), y los dos días son otra cosa, el RTO. Dos mandos: «RPO → cada cuánto copias» y «RTO → qué recuperación tienes lista» (con palabras, sin flechas) | RTO es tiempo, RPO son datos, y cada uno manda sobre algo distinto; que un proceso espere mucho no relaja la copia · `cafe, till, clock, notebook, rto, rpo, rows, board, both-set, bills, think, rpo-five, two-dials` · **think** |
+| s04-medida «Lo prometido y lo que mides» | II Qué se mide | 52 | Consola «registro de averías · seguimiento de llegadas y salidas · últimos 12 meses · propuesta · ejemplo · datos ficticios» (el mismo sello de las otras escenas). Cuatro filas con su barra: «40 min», «95 min», «120 min», «65 min». Una línea marca la promesa, «RTO 30 min». La media sale como «MTTR 80 min» (`mean`): «las cuatro pasaron de 30» (`gap`). Mensaje interceptado. Respuesta: el RTO sale de lo que el negocio aguanta, el MTTR de lo que hace tu equipo; si pones el 80 donde iba el 30, el papel cuadra y Operaciones no. Una frase: el técnico de la caja tarda lo que tarda, eso se mide, no se promete. Cierre en condicional: «si estos fueran los números, el plan no se cumpliría» y lo que habría que mejorar es la recuperación | El MTTR se compara con el RTO; si es mayor, el plan no se cumple y se invierte en la recuperación, no en el papel · `log, rows, promise-line, mean, gap, intercept, correct, fix, technician` · **intercept** |
+| s05-fallos «Cada cuánto se cuelga» | II | 30 | La misma consola: «4 averías en 12 meses». Se dibuja la línea de los 12 meses con cuatro marcas y sale «MTBF · unos 3 meses». Dos etiquetas lado a lado, «cuánto tarda en volver · MTTR 80 min» y «cada cuánto falla · MTBF 3 meses», con «no se cambian» en pequeño. Opcional: «alimenta el ARO de la lección anterior» como nota gris | MTBF mide fiabilidad y no es un objetivo; no se confunde con el MTTR; planifica mantenimiento y sustitución · `four, line, mtbf, side, swap, aro` |
+| s06-recap «Tres reglas» | III Para el examen | 20 | Tres tarjetas de reglas, cada una con su icono (el reloj y la libreta · el técnico con su media · el papel que no cuadra); tarjeta final Alertópolis: «Tu turno: las preguntas de la lección» (sp5m4, 8 preguntas) | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+
+- **Tarjetas de examen** (objetivo 5.2), una por escena de s02 a s05, cada una con su cue antes de la última frase de la
+  escena (`examTiming: sentence-end`):
+  - «El BIA parte del negocio, no de los servidores» (s02) (46)
+  - «RPO fija cada cuánto copias; RTO, la capacidad» (s03) (46)
+  - «MTTR es una medida: se compara con el RTO» (s04) (41)
+  - «MTBF mide fiabilidad; MTTR, lo que tardas en reparar» (s05) (52). La que se juega en s05 no la repite el recap: allí se
+    resume como regla. «RTO es tiempo, RPO son datos» no lleva tarjeta propia: es la voz de s03 y la regla 1 del cierre.
+- **Pregunta para pensar** (`holdMs` 4500): «Dos días de espera: ¿basta una copia al día?» (s03) (44). Botones: «Basta una al
+  día» y «Más a menudo». Llega con la fila de facturas a medias: se ve «RTO 48 h» y «no puede perder casi nada», y la
+  fila de al lado acaba de decir que a Operaciones le basta una copia al día. Respuesta: más a menudo; el RPO es de 5
+  minutos y manda sobre la copia, y los dos días son el RTO, que manda sobre otra cosa. La tentación es relajar la copia
+  porque se puede esperar mucho. **No repite el check de la lección** (`:408-422`): allí hay dos números a la vista y se
+  elige cuál manda; aquí solo se ve el que despista. Tampoco es la forma de la q5 del test de nivel (un compromiso cumplido y
+  otro no, `sp/placement-sp5.ts:119-132`).
+- **Mensajes interceptados** (PAPER GOVERNOR, `holdMs` ~3800; uno en el capítulo I y otro en el II, ninguno en el cierre;
+  todos en forma de acta, impersonal, con «Queda en acta.»; sin tuteo, sin seguro, sin «formatear», sin puertas ni llaves):
+  - s02: «Se acuerda: todo en cero minutos, sin excepciones. Queda en acta.» (65). El error que corrige la narradora: que el
+    plazo más corto para todo es la respuesta segura. La lección dice que el RTO «determina la capacidad de recuperación que
+    necesitas comprar» (`sp/sp5-part2.ts:400`) y que el BIA existe para saber qué procesos son críticos y cuánto cuesta cada hora
+    (`:400`); que cero para todo no se sostiene es la consecuencia, sin euros.
+  - s04: «Se acuerda: el RTO será lo que se tarda de media. Queda en acta.» (64). El error: confundir lo medido con lo
+    prometido. El MTTR «no es un objetivo, es una medida observada» (`:400`, nota «Dos», `:406`, q4). Antes decía «lo que
+    tardamos»: primera persona del plural, que no es de acta; ahora es impersonal («se tarda»), como «Se acuerda».
+  - **Comprobación del registro (acta):** los dos empiezan por «Se acuerda:», acaban en «Queda en acta.», no tutean ni usan
+    primera persona, y no llevan cifras, símbolos ni `{}[]|<>`. **El mensaje de s04 lleva «RTO» y SAPI lo recibe sin léxico**
+    (`video/engine/scripts/tts-adversary.mjs:100-111`): no se quita la sigla, que es el término de examen que enseña el
+    mensaje; entra en la prueba de oído y, solo si SAPI la deletrea mal, se prueba «R T O» o «el plazo» en el mensaje y la
+    narradora nombra el RTO en su respuesta (revisión, H15).
+- **Adversaria y voz (canon compartido con V25, ya decidido en la reconciliación, punto 1 a 4; lo confirma la prueba de oído).**
+  V25 la presenta desde cero, un vídeo antes en el curso. Lo que sigue es lo mismo que debe decir la ficha de V25:
+  - **Voz:** `"adversaryVoice": { "voice": "sapi/Microsoft Laura", "rate": -1, "fx": "megafonia" }`. Es una voz y un efecto que
+    ya existen (Laura es la de RED MARROW con `telefono`, `video/logs-halden/narration.json:11-15`, y la de PAPER CRANE con
+    `machine`, `video/ach-matriz/narration.json`; `megafonia` es el de BLIND ARCHITECT con Helena a `rate` −2,
+    `video/zonas-halden/narration.json:11-15`). Pareja nueva, sin efecto nuevo ni trabajo de motor. Un comunicado leído por
+    megafonía encaja con una gobernadora de papel, y el género sale del dosier («desenmascarada», `sp/sections.ts:125`) y de la
+    voz; ningún texto lo marca. **`rate` −1** porque lee un acta, y para separarla de BLIND ARCHITECT (`rate` −2: comparte
+    efecto, sala y otra voz femenina SAPI). Riesgo conocido: la revisión de la tanda 3 avisó de que «Laura no sirve para BLIND
+    ARCHITECT» porque `megafonia` también es una banda recortada y sonarían parecidas
+    (`docs/reviews/2026-10-05-fichas-tanda3/revision-V16-V17.md:236-240`); aquí es el mismo argumento al revés.
+  - **Reserva: Pablo + `cifrado`** (la propuesta original de V25: la pareja más lejana de las cinco en voz, textura y espacio).
+    Se descarta Laura + `machine` como reserva: es **PAPER CRANE** voz por voz, un duplicado (revisión, H16).
+  - **Prueba de oído antes de congelar** (20 s; `revision-secplus.md`, apartado «Voz de PAPER GOVERNOR»): la misma frase sin
+    cifras ni siglas («Se acuerda: el valor del servidor es la pérdida. Queda en acta.») en Laura + `megafonia` a `rate` −1, a
+    0 y a −2, Pablo + `cifrado`, y como anclas BLIND ARCHITECT, RED MARROW y NULL CIPHER; después, con la frase de s04 («el RTO
+    será lo que se tarda de media») para ver cómo lee SAPI la sigla (H15) y «Queda en acta.» con y sin coma. Si hay empate, se
+    separa por textura, espacio y ritmo, no por uno solo (tanda 3, `revision-V16-V17.md:241-247`).
+  - **Registro:** acta impersonal, sin tuteo: «Se acuerda…», «Se da por bueno…», frases cortas y siempre «Queda en acta.» al
+    final (el tic, como «Lógico.», «Menos es más.» y «Confía en mí.»). Solo da consejos que hacen que el papel cuadre sin que
+    cambie la realidad: lo que anuncia su jefe de sección es «políticas sin dueño, riesgos sin registro» (`sp/sections.ts:123`).
+    Los dos mensajes de esta ficha ya están en ese registro (comprobado arriba); los de V25 se reescriben a él.
+  - **Presentación:** V25 la presenta desde cero con la frase del jefe de sección. **V26 dice «Y vuelve PAPER GOVERNOR, que vive
+    en los huecos de tu gobernanza»** (como V12 con NULL CIPHER y V17 con BLIND ARCHITECT, `video/fronteras-halden/narration.json:50`),
+    y en pantalla lleva «PAPER GOVERNOR · sección 5» y «vive en los huecos de tu gobernanza», así que no depende de haber visto
+    V25. Sin IP, dominio ni equipo, sin contratos, proveedores ni contratistas.
+  - **Pronunciaciones, las mismas que en V25:** `GOVERNOR` «gávernor» y `ARO` «a erre o» (las confirma la audición de Lidia).
+  - **Quién decide:** ya decidido (reconciliación); si la prueba de oído cambia la voz, cambia en las dos fichas a la vez. Ver
+    «Preguntas para Lidia».
+- **Cierre:** tres reglas y una sola tarea.
+  1. Se pregunta al negocio y salen dos promesas distintas: el RTO es tiempo y manda sobre la capacidad de recuperación; el
+     RPO son datos y manda sobre cada cuánto se copia. Una no dice nada de la otra.
+  2. El MTTR y el MTBF se miden, no se prometen. El MTTR se compara con el RTO; el MTBF dice cada cuánto falla. No se cambian.
+  3. Si lo medido no llega a lo prometido, se mejora la recuperación, no el papel.
+
+  Tarea: las 8 preguntas de la lección sp5m4. Tres tocan lo que cuenta el vídeo: la q4 (el MTTR frente al RTO), la q7 (MTBF y
+  MTTR) y la q8 (para qué sirve un BIA); las otras cinco son del registro, el apetito y las estrategias, y siguen en la lección.
+- **Se queda fuera** (sigue en la lección, que quien ve el vídeo ya ha leído, porque va al final):
+  - El risk register con su dueño, los KRI y el umbral (`sp/sp5-part2.ts:318-337`), el apetito y la tolerancia (`:338-342`) y las
+    cuatro estrategias con su tabla (`:343-392`).
+  - El reporting a la dirección (`:393-397`).
+  - De qué dependen los procesos (el BIA «identifica… qué los sostiene», `:400`): el vídeo solo pregunta por el plazo y por el
+    dato; las dependencias son de la lección.
+  - El «transferir no te libera» y «aceptar exige dueño y fecha» de la nota (`:406`, «Tres» y «Cuatro»).
+  - El coste en euros de la parada y del control (V25, `:104-139`) y los sitios, las copias y las pruebas (V24,
+    `sp/sp3-part4.ts:47-116`).
+  - El MTTF, que solo está en la tarjeta de repaso (`sp/sp5-cards.ts:28`): no sale en el vídeo.
+- **Laboratorios y preguntas que ya ejercitan el tema (penalización L):** ningún lab de sp5 toca RTO, RPO, MTTR ni MTBF:
+  spl5a clasifica documentos de gobernanza (`sp/labs-sp5.ts:9-24`), spl5b elige acuerdos (`:25-35`) y spl5c, `select`, hace la
+  aritmética de SLE y ALE (`:36-45`, datos `:204-`): es el terreno de V25 y el vídeo no la pisa. El lab vecino es **spl3c**
+  (`sp/labs-sp3.ts:36-45`, datos `:202-`), un `order` de 8 pasos de activación del plan de recuperación que menciona el RPO y
+  el RTO de pasada en dos pasos (`:229`, `:244`): V26 **no ordena pasos** y no repite la escalera. L = 0. Preguntas de la
+  lección con las que el vídeo no coincide en datos: el check `:411` (4 h y 15 min, el sistema de asignación de atraques), la q4
+  (2 h frente a 5 h, `:478`), la q7 (nueve meses y seis horas, `:523`) y la q5 del test de nivel (`sp/placement-sp5.ts:122-131`,
+  2 h y 15 min). Ninguna cifra del vídeo es una de ellas: 30 min, 48 h, 5 min, 24 h, 40, 95, 120 y 65 min.
+
+**Canon nuevo que fija V26** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- **Un análisis de impacto en el negocio, sin fecha, como propuesta.** Rotulado «análisis de impacto en el negocio · propuesta ·
+  ejemplo · datos ficticios» (el mismo sello en las dos consolas: la del BIA, en s02 y s03, y la del registro de averías, en s04
+  y s05, que dibuja la línea de la promesa y por eso lleva también «propuesta»). Dos procesos, sin nombre de equipo: **«Emitir
+  facturas a las navieras»** (Facturación; RTO 48 h, RPO 5 min; «no puede perder casi nada») y **«Seguir llegadas y salidas de
+  buques»** (Operaciones; RTO 30 min, RPO 24 h; «con una copia al día le basta»). Los pone el negocio, no los servidores. Es una
+  propuesta: nada «se cumple» ni está en vigor, y lo que concluye s04 es condicional («si estos fueran los números, el plan no se
+  cumpliría»), porque la promesa es una propuesta y el registro de averías, un ejemplo: son dos cosas distintas.
+- **Un registro de averías de «los últimos 12 meses»** (relativo, sin fecha) del sistema que sostiene el seguimiento de llegadas y
+  salidas, rotulado «ejemplo · datos ficticios»: cuatro averías de 40, 95, 120 y 65 minutos (MTTR 80 min, las cuatro pasan de los 30
+  del RTO) y una media de una avería cada tres meses (MTBF unos 3 meses). Sin fechas, sin causa, sin equipo y sin responsable:
+  nadie tiene la culpa. **Si algún día se fecha el vídeo** (el 17-12, por ejemplo), el registro no cuenta «el último año» sino
+  «las cuatro últimas»: un año hacia atrás cubriría el 3 y el 4-9, y una avería de 95 o de 120 minutos podría leerse como la
+  recuperación de septiembre, que el registro deja sin dato (`reg:840`; revisión, H24).
+- **PAPER GOVERNOR**: segunda aparición en el curso (V25 la presenta; V26 dice «Y vuelve…»). Voz Laura+`megafonia` `rate` −1,
+  registro de acta con «Queda en acta.», pronunciaciones «gávernor» y «a erre o». **Compartido con V25**, que se ve antes en el
+  curso.
+- **Comprobado con Node** (`check-v26-fix.mjs`, en el scratchpad): MTTR = (40 + 95 + 120 + 65) / 4 = 80 min = 2,67 veces el RTO; con
+  365 días, 8 760 h menos 5,33 h de parada, entre 4 averías, el MTBF es de 2 188,7 h = 91,2 días = 3,0 meses; 48 h = 2 días; la
+  suma de `s` y los demás límites, abajo.
+
+**No se toca:**
+- **Septiembre y el caso `IR-2026-0147`.** Ni `srv-tc-app03` ni sus copias de las 23:00 (`v5/src/data/s07-recovery.ts:23-25`),
+  ni la restauración de la del 2-9 (`reg:76`). **Ningún vídeo dice cuánto tardó la recuperación ni qué datos faltaron**
+  (`reg:840`, «Fechas de erradicación y recuperación: ninguna»), y el registro pide no decir qué contenía
+  la copia del 3-9 (`reg:817-819`). El vídeo no dice que septiembre cumpliera o incumpliera un RTO o un RPO, ni «como pasó», ni «habría
+  evitado». El RPO de 24 h del panel no es el de ninguna copia del puerto.
+- **V5b:** ni «11 min» del simulacro como si fuera un MTTR (`v5b/src/data/s03-simulacro.ts:37-44`, `reg:420`), ni el
+  cronómetro que sale allí: V26 habla de «reloj» y «libreta». Ni la mesa ni el simulacro.
+- **V25 y sus euros:** nada de R-014, 400.000 €, 50.000 €, 20.000 €, 90.000 € ni de «alta disponibilidad» como compra
+  (`sp/sp5-part2.ts:104-139`): V26 no pone ninguna cifra en euros ni dice «cuánto cuesta» más que «cuánto duele cada hora». La
+  lección anterior solo se cita para el ARO, y sin cifras.
+- **V24:** ningún hot, warm ni cold; ninguna copia onsite u offsite, snapshot, replicación ni journaling; ninguna prueba
+  (tabletop, simulación, parallel processing, fail over); nada de la escalera de spl3c. «La capacidad de recuperación» es una
+  frase, no un sitio.
+- **El sistema de asignación de atraques** de la lección (`:355`, `:411`) y su 4 h y 15 min: el vídeo no lo usa, para no
+  contradecir al check que va justo antes. «Seguir llegadas y salidas de buques» **no es** el sistema de asignación, ni el
+  portal de reservas de atraque (`hpa-portal-web-01`, V10, V11, V12, V16), ni la app «Planificador de atraques» de un proveedor
+  externo (V6), ni el correo «Turnos de atraque» (V1), ni la API pública de posiciones de buques (`:373`, q2).
+- **Facturación** ya existe como área en V6 («Facturación · 2023», `v6/src/data/s02-creep.ts:15`): V26 la reutiliza, no la
+  inventa. No es el permiso «facturas a navieras · emitir» (`:29`, `:39`, `reg:92`): ni sale `c.navarro` ni «permission creep». Es el
+  área que emite las facturas, sin personas. El proceso «Emitir facturas a las navieras» se parece al rótulo de la puerta de V6
+  («facturas a navieras · emitir», `s02-creep.ts:30`): es un eco, no una contradicción, y la narradora **no dice «aquella
+  puerta»** ni remite a V6 (revisión, H29).
+- **Operaciones** va sin «sala de control»: es un lugar con historia (V1, muelle 3, Lucía, `OPS-WS-14`; V16). No sale ninguna
+  estación ni ninguna persona, y el panel de llegadas y salidas no está en el muelle 3 ni en ninguna sala.
+- **Las puertas de acceso:** `srv-accesos01`, `srv-bascula01` y los controladores de acceso de la q7 (`:523`, `reg:189`); la
+  voz no dice «controlador», «báscula» ni «acceso».
+- **El seguro y transferir** (V18, `reg:614`; `:346`): ni en los mensajes ni en la respuesta.
+- **El dosier de PAPER GOVERNOR** (`sp/sections.ts:125`): GLASS HARBOR, el contratista con acceso perpetuo, sin due diligence;
+  nada de proveedores, contratos, SLA ni terceros (es sp5m5). Tampoco «GH es una sola operación» ni la firma «GH» (`reg:346`).
+- **Culpas:** ni a Sistemas por el MTTR ni a nadie por el «enseguida». La respuesta de siempre es de siempre, sin autor.
+- **«Temporada alta»** (`:341`) es un ejemplo de tolerancia de la lección: el vídeo no dice temporada ni estacionalidad.
+- **Fecha.** Sin fecha (decidido; ver «Preguntas para Lidia»). Si Lidia prefiere un ancla, el **jueves 17-12** está libre en el
+  registro: entre el 16-12 de V21 y el 22-12 (Node: 16-12 miércoles, 17-12 jueves, 22-12 martes). Cuesta un hecho más que
+  coordinar con V24 y V25, que también pueden querer fecha, y obliga a cambiar el registro de averías de «el último año» a
+  «las cuatro últimas» (ver canon; revisión, H24).
+
+**Decisiones** (con la alternativa descartada y el motivo):
+1. **Procesos nuevos y sin fecha, ni septiembre ni el sistema de asignación de atraques.** Descartado:
+   - **Medir el RPO y el MTTR con la restauración de `srv-tc-app03` de V5** (copias de las 23:00, restaurada la del 2-9,
+     «hash coincide», «manifiestos OK», `v5/src/data/s07-recovery.ts:23-25`, `:50-57`). Es la salida natural y la peor: el
+     registro deja a propósito sin respuesta cuánto tardó y qué faltaba (`reg:840`), y poner un número convertiría un hueco
+     en un hecho (el puerto «perdió» un día de datos, o «tardó» tantas horas) que V5 no cuenta.
+   - **El sistema de asignación de atraques con los 4 h y 15 min de la lección.** Repetiría el check que va justo antes y,
+     con otras cifras, lo contradiría.
+2. **Dos procesos que separan el RTO del RPO, más una brecha medida.** Facturas espera mucho y no pierde casi nada; el
+   panel vuelve pronto y puede perder un día; y al panel se le compara la media con su plazo. Descartado: **un solo proceso con
+   los dos números** (más simple y más fiel al check), porque no deja ver que los dos números son independientes, que es lo que
+   cae («RTO = tiempo, RPO = datos», `:406`) y lo que la pregunta para pensar necesita.
+3. **PAPER GOVERNOR con Laura+`megafonia` a `rate` −1, el tic «Queda en acta.» y dos errores del propio tema.** «Todo en cero
+   minutos» y «el RTO será lo que se tarda de media» son errores de la lección (la capacidad que se compra y la medida que no es
+   objetivo). Descartado: **reutilizar Pablo+`machine`** (suena a SILENT PAGER y V18 ya tiene a SILENT PAGER aconsejando
+   un seguro), **Helena+`machine`** (la reserva de V11 y V16, que ya se descartó por sonar igual que SILENT PAGER, `docs/reviews/2026-10-05-fichas-tanda3/revision-V16-V17.md:248-253`),
+   **Laura+`machine`** (es PAPER CRANE) y mensajes sobre transferir o aceptar, que son de 5.2 pero de otra mitad de la lección y
+   chocarían con el seguro de V18. Reserva: **Pablo+`cifrado`**.
+4. **Una cafetería y su caja, no una oficina de registros ni un ascensor.** Descartado: **«la oficina de registros»** (el
+   check de V25 usa «the port records office», `sp/sp5-part2.ts:146`), **un ascensor** (los números de la q7 son los de un
+   ascensor en práctica: «cada nueve meses, seis horas») y **la ventanilla, la garita y la valla** (ocupadas). Vecinas que
+   se vigilan: la tienda de V22 y la cocina de V9; plan B, un taller o un puesto sin caja (ver «Conceptos»).
+5. **Inserción tras el último check, no antes de la nota** (ver «Inserción»). Descartado: delante de la nota o del
+   check, que lo contestarían.
+6. **«Y vuelve PAPER GOVERNOR» y no «aquí aparece».** V25 va justo antes en el curso (reconciliación, punto 3; H4). Descartado:
+   repetir la presentación de V25 palabra por palabra en dos lecciones seguidas. La etiqueta en pantalla la lleva entera.
+
+**Preguntas para Lidia** (**decide Lidia**; la opción recomendada ya está aplicada arriba):
+1. **Voz de PAPER GOVERNOR: decide Lidia tras la prueba de oído.** Recomendada: Laura + `megafonia`, `rate` −1 (igual en V25 y
+   V26). Alternativa ya preparada: Pablo + `cifrado`. Si cambia, cambia en las dos fichas a la vez.
+2. **Presentación: decide Lidia si V26 puede depender de V25.** Recomendada: «Y vuelve PAPER GOVERNOR…», con la etiqueta
+   completa en pantalla. Si prefiere que V26 no dependa de V25, hay que presentarla otra vez con otra frase del jefe de sección
+   y decirlo en las dos fichas.
+3. **Fecha: decide Lidia.** Recomendada: sin fecha. Con el 17-12, el registro cuenta «las cuatro últimas» y no «el último año».
+4. **Cómo se dice `BIA`: decide Lidia al grabar.** «Bía» o «be i a»; recomendada, «bía» si el reconocimiento de su grabación lo
+   acepta sin cortes (V26 es el único vídeo que la usa).
+5. **Frase opcional del ARO (s05): decide Lidia.** Recomendada: conservarla solo si el borrador queda por debajo de 255 s; si
+   se conserva, «a erre o».
+6. **Pregunta para pensar: decide Lidia si la cambia por la del MTTR frente al RTO** (revisión, H27, no aplicada; ver abajo).
+   Recomendada: mantener «Dos días de espera: ¿basta una copia al día?».
+7. **«RTO» dentro del mensaje de s04: decide Lidia con la audición.** Recomendada: dejar la sigla; si SAPI la deletrea mal,
+   probar «R T O» y, si tampoco, «el plazo» en el mensaje y el RTO en la respuesta.
+
+**A verificar con el material oficial** (no van en tarjetas ni se dicen como afirmación; el vídeo no depende de ellos):
+- Si el MTTR de CompTIA se cuenta desde el fallo o desde que se detecta, y si incluye el diagnóstico y la espera de la pieza. La
+  lección dice «reparar y devolver el servicio» (`:400`) y la tarjeta de repaso, «una vez ocurrido el fallo»
+  (`sp/sp5-cards.ts:28`). **La voz no fija desde cuándo cuenta** (revisión, H26): «lo que se tarda de media en dejarlo
+  funcionando» (MTTR) y «el plazo que se promete» (RTO); el argumento descansa en que **las cuatro** averías pasan de 30.
+- Que una **media** se compara con un **máximo tolerable**: es lo que hace la lección (`:400`, q4) y el vídeo; si la media
+  fuera 25 y una avería llegara a 45, el plan tampoco cumpliría. La lección no lo dice, así que el vídeo se apoya en que **las
+  cuatro** pasan de 30 y no en la media sola.
+- La fórmula exacta del MTBF (tiempo operativo entre averías, no tiempo total) y su relación con el MTTF: la lección dice
+  «cuánto aguanta de media un sistema entre fallos» (`:400`). El vídeo dice «una avería cada tres meses», que sale igual con
+  las dos cuentas (12 / 4 = 3,0; 91,2 días).
+- Que un RTO más corto cuesta más: es la consecuencia de «determina la capacidad de recuperación que necesitas comprar»
+  (`:400`), no una frase de la lección. La voz lo dice sin cifras.
+
+**Riesgos:**
+- **PAPER GOVERNOR: igual que V25, y no suena a nadie más.** Voz, tic, presentación, género y pronunciaciones están fijados en
+  la reconciliación; el riesgo que queda es que las dos fichas se escriban a la vez con un mensaje en otro registro: los
+  cuatro mensajes (dos de V25, dos de V26) tienen que ser actas impersonales con «Queda en acta.».
+- **Laura + `megafonia` se parece a dos vecinos.** Laura es la de RED MARROW (`telefono`) y PAPER CRANE (`machine`), y
+  `megafonia` es el efecto de BLIND ARCHITECT (Helena, `rate` −2). El `rate` −1 y la prueba de oído son lo que la separan; si
+  suena igual, la reserva es Pablo + `cifrado`, no Laura + `machine`.
+- **«RTO» en el mensaje de s04 sin léxico.** SAPI recibe el texto tal cual: puede deletrearlo o leerlo como palabra. Va en la
+  prueba de oído (ver «Adversaria y voz»).
+- **Solape con V24 en «el RPO manda sobre la copia».** Una frase en V26 y ningún mecanismo. V24 no nombra RTO ni RPO y trata el
+  mecanismo de la copia (dónde, cómo se prueba); no habla de frecuencia de copia («backups cada noche» no es de V24). La pregunta
+  para pensar dice «copia al día» y la de V24 es «parallel o fail over»: no se pisan.
+- **Un MTTR de 80 contra un RTO de 30 no es una avería real del puerto.** El rótulo «propuesta · ejemplo · datos ficticios» y la
+  falta de fecha lo evitan; ninguna frase dice «se cayó el…», y s04 concluye en condicional.
+- **«Cero minutos para todo no se sostiene» sin euros.** Cuesta no decir «caro»: «hay que tener lista más capacidad» es la
+  forma. Quien revise la exactitud debe comprobar que no suena a una cifra.
+- **El RTO no es lo que «se tarda»:** la respuesta al mensaje de s04 tiene que decir también que, si lo medido no llega, se mejora
+  la recuperación, no que se relaje el plazo; la lección solo da esa salida (`:400`).
+- **Dos objetos y una analogía.** La cafetería y el panel conviven en s03 y s04; la narradora los separa («en la cafetería…»,
+  «en el puerto…») y la cafetería sale rotulada «imagen · no es del puerto».
+- **s03 y s04 muy densas** (140 palabras cada una). Se recorta en el borrador, antes de grabar (ver «Duración»).
+
+**Comprobación de límites** (perfil `capsula-yt`; recuento con Node, `[...texto].length`, con `FORBIDDEN_SYMBOLS` y
+`/[{}[\]|<>]/` de `video/engine/scripts/lib/narration.mjs:23`, `:288`, `:323`; script `check-v26-fix.mjs` en el scratchpad de
+la sesión, con las cadenas copiadas de esta ficha, comprobadas luego una a una contra el texto del fichero y los cues y sonidos
+contra `video/engine/sfx/sfx.json`; **repetido tras la revisión de 2026-10-14, todo en verde**):
+- Duración: suma 210 s; render esperado 235–250 s, dentro de 190–260. Los extremos conocidos (0,89 y 1,22 veces la suma) dan
+  187–256 s: el alto cabe; el bajo queda 3 s por debajo del mínimo, pero V10 y V12, con la misma estructura, estimaron
+  por encima de su suma (273 s con 220 y unos 260 con 210, según la ficha de V20). Si el primer borrador se acerca a 190, se alarga s04.
+- 6 escenas en 3 capítulos (máximo 3). 3 conceptos (2–3).
+- 4 tarjetas de examen (3–5), una por escena de s02 a s05, ninguna en la última ni en s01; de 41 a 52 caracteres (máximo 58),
+  sin `{}[]|<>`, flechas, marcas, viñetas ni emoji. Sin cambios con la revisión: 46, 46, 41 y 52.
+- 1 pregunta para pensar (exactamente 1), 44 caracteres (máximo 48), `holdMs` 4500 (≥ 4000); botones de 16 y 12 caracteres.
+- 2 mensajes interceptados (1–2), uno por capítulo (I y II), ninguno en la escena final; **65 y 64 caracteres** (máximo 70; el de
+  s04 cambió «tardamos» por «se tarda» y sigue en 64); `holdMs` ~3800 (2500–4500); `video.json` lleva `"adversary": "PAPER
+  GOVERNOR"`. Los dos con la forma «Se acuerda: … Queda en acta.».
+- **Efectos:** cuatro claves de `sfx`, cada una cue de **una sola escena** y con un sonido que existe en `sfx.json`:
+  `both-set` (s03) → lock, `rpo-five` (s03) → check, `mean` (s04) → ding, `gap` (s04) → block. Los nombres anteriores
+  `promise` (cue de s01), `average` y `pass` (no existían) quedan fuera del mapa. Cues por escena sin repetirse dentro de
+  la escena: s01 6, s02 6, s03 13 (con `both-set`), s04 9, s05 6, s06 6.
+- `wordBudget` por escena (`s` × 2,7): s01 59 · s02 92 · s03 140 · s04 140 · s05 81 · s06 54 (total 566; 210 × 2,7 = 567).
+- Sin identificadores en la voz: ningún equipo, IP, dominio, cuenta ni nombre de fichero. Siglas en voz que necesitan léxico:
+  RTO, RPO, MTTR, MTBF, BIA y GOVERNOR (ARO, solo si se conserva la frase opcional). En el mensaje de s04, «RTO» llega a SAPI
+  sin léxico.
+- El título entra antes de los 12 s (s01: una frase corta y el título). Título de YouTube: 88 caracteres (YouTube admite 100);
+  título del bloque, 57. Título de s03 nuevo: «Dos promesas por proceso» (24).
+- Aritmética: MTTR 80 min = 2,67 × 30; las cuatro averías pasan de 30; MTBF 2 188,7 h = 91,2 días = 3,0 meses; 48 h = 2 días.
+
+**Cambios de la revisión** (`revision-secplus.md` y `reconciliacion.md`, 2026-10-14):
+- **H2 (PAPER GOVERNOR sin fijar):** voz Laura + `megafonia` `rate` −1, reserva Pablo + `cifrado`, registro de acta en los dos
+  mensajes (comprobado; «tardamos» pasa a «se tarda»), pronunciaciones «gávernor» y «a erre o», quién fija: ya decidido.
+- **H4 («primera aparición» y «sin otra vez»):** V25 presenta desde cero; V26 dice «Y vuelve PAPER GOVERNOR, que vive en los
+  huecos de tu gobernanza»; cabecera, escena s01, canon y decisión 6 coherentes.
+- **H3 (efectos que no son cue):** `promise` → `both-set` (cue nuevo de s03), `average` → `mean`, `pass` → `rpo-five`; `gap`
+  se queda. Verificado contra `sfx.json` y los cues por escena.
+- **H12 (mismo gancho que V24):** V26 se queda con «Enseguida.» y «Poca cosa.»; V24 deja el reloj sin pregunta.
+- **H13 (el cuadro de reparto describía mal a V24):** V24 no nombra RTO ni RPO; sin «caliente»; sin «backups cada noche».
+- **H14:** la escena s03 pasa de «Cuánto esperas y cuánto pierdes» a «Dos promesas por proceso».
+- **H15:** «RTO» en el mensaje de s04 se conserva; entra en la prueba de oído, con variantes de reserva.
+- **H16 (reserva = PAPER CRANE):** sustituida por Pablo + `cifrado`; Laura + `machine` descartada en las decisiones.
+- **H24 (fecharlo mete septiembre):** se mantiene sin fecha y el canon lo escribe: «las cuatro últimas» si se fecha.
+- **H25 («propuesta» y «ejemplo»):** mismo sello en las dos consolas y cierre de s04 en condicional.
+- **H26 (el cronómetro del MTTR):** la voz dice «lo que se tarda de media en dejarlo funcionando» y «el plazo que se
+  promete», sin fijar desde cuándo cuenta.
+- **H28 (s03 y s04 densas):** nota de recorte antes de grabar y ritmo efectivo de 2,9–3,0 palabras/s.
+- **H29:** la narradora no dice «aquella puerta»; el eco con V6 queda anotado.
+- **H30 (la cafetería):** vecinas anotadas (V22, V9) y plan B, un taller o puesto sin caja.
+- **H31 (numeración):** «numeración sin V25; sumar las once líneas de su bloque» en la inserción.
+- Arreglo menor: la frase rota de «Comprobación de límites» («script en el scratchpad de la sesión, que cadenas…»).
+
+**Hallazgos no aplicados:**
+- **H27 (la pregunta repite el check):** no se aplica el cambio propuesto («Si cada avería tarda 80 min y el RTO es de 30, ¿qué
+  cambias: el RTO o la recuperación?»). Verificado en la lección: esa pregunta es la q4 casi palabra por palabra (`:475-488`,
+  «RTO de dos horas frente a una media de cinco») y la misma que contesta la narradora en s04 después del mensaje; sería
+  contestar de antemano una pregunta del test de la lección (el criterio de V20) y repetir dentro del mismo vídeo la
+  respuesta de s04. Lo que el hallazgo señala (que quien acaba de resolver el check oiga una regla parecida) se mitiga con lo
+  que ya hace la pregunta actual: aquí no hay dos números que elegir sino uno que despista (los dos días del RTO frente a la
+  copia), y ni el check, ni la q4, ni la q5 del test de nivel (`sp/placement-sp5.ts:119-132`) tienen esa forma. Queda como
+  pregunta marcada «decide Lidia» (punto 6).
+- **H12, parte de V24** (que V24 deje el reloj sin pregunta) y **H13, parte de V24** (quitar el «puede enlazar» de F24): son
+  cambios en `ficha-V24.md`, que no se toca desde aquí; esta ficha ya los da por hechos en el cuadro de reparto.
+
+### V27 · s5m3 · Cápsula · «YARA y Sigma: del indicador a la regla»
+
+> Propuesta del 2026-10-14, con las opciones recomendadas ya elegidas; pendiente de que Lidia diga qué cambia. Tanda 5;
+> rama prevista `video-reglas-aeropuerto`, desde `main`. La versión vigente de escenas y guion será
+> `video/reglas-aeropuerto/storyboard.json` + `narration.json`; qué se quedó fuera, en
+> `video/reglas-aeropuerto/out/script-notes.md`. Las decisiones, con la alternativa descartada de cada una, van al final
+> de esta ficha («Decisiones de esta ficha»). **Revisada el 2026-10-14** contra `revision-gcti.md` y `reconciliacion.md`;
+> lo que cambió, al final («Cambios de la revisión»).
+>
+> **Es el único vídeo GCTI de la tanda y el primero de S5** (`src/data/s5.ts` no tiene ningún bloque `video`). Continúa a V7
+> (qué detectar: comportamiento antes que hash) con lo que V7 dejó sin contar: **cómo se escribe una regla** y qué mira cada
+> una. Recoge también la mitad que V8 dejó fuera de s3m5 («YARA entera… si hace falta, otra cápsula», plan
+> `docs/superpowers/plans/2026-09-25-lesson-videos.md:1153-1154`), aunque aquí la lección es la de S5.
+> **Dos penalizaciones mandan en el diseño:** el Lab 3B ya practica YARA (elegir cadenas y umbral frente a cuatro muestras,
+> `src/data/labs.ts:114-124,746-843`) y s3m5 ya enseña la anatomía (`src/data/s3.ts:1123-1163`). El vídeo **no enseña a elegir
+> cadenas**: lee dos reglas ya hechas, cuenta qué mira cada una y qué las rompe. **Ninguna fecha, ningún hash, ningún equipo
+> y ningún resultado:** la pared del canon (hashes, `winhlp.exe`, el PDB) manda en todo.
+> **Tercera penalización (V7):** el nombre original, el nombre del disco tachado y la regla de la cadena entera ya los contó
+> V7 (`video/attack-piramide`, s03 y s05). V27 los menciona con **una frase** y gasta el tiempo en lo que V7 no hizo: cómo se
+> lee una regla Sigma (`logsource`, `selection`, `filter_expected`, `condition`), la condición de la YARA y qué rompe cada
+> regla.
+
+- **Carpeta:** `reglas-aeropuerto` · perfil `capsula-yt` (190–260 s renderizados; objetivo ~4:00, sin rellenar) ·
+  objetivo GCTI **Dissemination** (dominio del curso de S5, `src/data/course-gcti.ts:89`, y de las diez preguntas de s5m3,
+  `src/data/s5.ts:671-811`); las tarjetas llevan `"objective": "Dissemination"` e insignia «GCTI» · adversario **VELVET
+  CICADA** (el de la sección, `src/data/course-gcti.ts:93`), dos mensajes interceptados · voz `recording/lidia` con
+  `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · **voz del adversario: ya existe, la de V3, V4, V7, V8, V13, V14, V15
+  y V22** (`"adversaryVoice": { "voice": "sapi/Microsoft Pablo", "rate": 0, "fx": "machine" }`,
+  `video/coa-precios/narration.json:11-15`) · música de V4 a V23 (`Go On Going - Stayloose.mp3`). No hace falta voz ni efecto
+  nuevos. **Es la primera vez que VELVET CICADA habla** (ver «Canon nuevo» y «Decisiones»).
+- **`video.json`:** `"profile": "capsula-yt"`, `"track": "gcti"`, `"adversary": "VELVET CICADA"`, `"lesson": "s5m3"`, la
+  música de arriba y `"tags"`: «YARA», «Sigma», «reglas de detección», «ingeniería de detección», «detection engineering»,
+  «inteligencia de amenazas», «threat intelligence», «diseminación», «SOC», «GCTI». Título de YouTube: «YARA y Sigma: del
+  indicador a la regla | GIAC GCTI en español».
+- **Ritmo:** `"examTiming": "sentence-end"`; pregunta con `think.holdMs` 4500; mensajes con `intercept.holdMs` 3500. En s04 el
+  mensaje abre la escena y la pregunta llega muchos segmentos después (el validador no los deja en el mismo segmento).
+- **Efectos (`sfx`):** los automáticos del motor y tres momentos con sonidos de la biblioteca que ya existen
+  (`video/engine/sfx/`: `alarm`, `error`, `check`): `flood` («alarm», la pila de avisos falsos de s03), `miss` («error», la
+  regla por nombre del fichero que no ve el nombre nuevo, s04) y `hit` («check», la regla por nombre original que sí avisa,
+  s04). Los tres ids son únicos en todo el guion, que es lo que pide la tabla `sfx`.
+- **Léxico nuevo** (formas propuestas; **se confirman con Lidia antes de congelar**, porque con su grabación el léxico solo
+  debe llevar lo que ella dice): `YARA` («yara»), `Sigma` («sigma»), `certutil` («certútil»; V7 lo dice en voz sin entrada de
+  léxico, `video/attack-piramide/narration.json`, s03-02). Reutiliza `SIEM` («síem», `video/capas-halden/lexicon.json`), `PDB`
+  («pe de be», `video/hilos-pelicula/lexicon.json`), `EDR` («e de erre», `video/diamond-e7/lexicon.json`) y `SOC` («soc»,
+  `video/attack-piramide/lexicon.json`). **Ninguna excepción de «lo que se lee no se deletrea»:** `OriginalFileName` va
+  escrito en pantalla y la voz dice «el nombre original, el que el programa lleva por dentro». La voz **no dice «loader»**
+  (sale solo en el nombre de la regla, como V8): dice «el programa».
+- **Duración:** suma de `s` **218 s** (como V7, V8, V15, V22 y V23); `wordBudget` a 2,7 palabras/s: 49, 92, 124, 162, 97 y 65
+  (589 palabras). El guion se queda en **unas 550**, por debajo del presupuesto, porque lleva dos mensajes (unos 4–5 s cada
+  uno) y una pregunta de 4,5 s. Estimado de `build-timeline --estimate` ~4:10–4:15; con el ritmo de Lidia (V8 al 92 %, V9 al
+  91 %), **~3:50–3:55** renderizados. Dentro de 190–260. No se rellena. s04 es la escena densa (60 s: mensaje, regla leída
+  línea a línea, tres eventos de tres campos, pregunta y respuesta); el aligeramiento del solape con V7 libera ~5 s de ella
+  (ya no explica el nombre original). Si el estimado pasa de ~255 s se recorta en este orden: primero, en s04, el evento del
+  nombre legítimo (pasa a pantalla sin voz); después, en s04, la lectura de `falsepositives` (ya no se lee en voz, solo
+  pantalla); después, en s05, los tres chips de la escalera (se quedan en pantalla, sin voz salvo la tira). **No se
+  recortan** la regla de que una cadena genérica sola salta con medio mundo (es el check de `:568-582`), la frase de «si
+  cambia de herramienta, la regla del nombre original ya no ve» (es s2m5q8, `src/data/s2.ts:1360-1373`) ni la de «una regla
+  de YARA vive mientras el programa conserve esas piezas» (es lo que impide prometer de más). Si baja de ~195 s, se alarga
+  s03, leyendo la condición línea a línea con más calma.
+- **Inserción:** en `src/data/s5.ts`, lección s5m3, **después del primer check** («A YARA rule with condition `any of ($s*)`…»,
+  `:568-582`) y **antes del encabezado «STIX/TAXII: el indicador empaquetado»** (`:583`), como bloque `youtube`:
+  `{ t: 'video', title: 'YARA y Sigma: del indicador a la regla', youtube: '<id>', poster: 'videos/reglas-aeropuerto-poster.png', transcript: 'videos/reglas-aeropuerto-transcript.txt' }`.
+  **El punto «después de los checks y antes de la Nota de examen» no existe en este fichero:** la nota de examen
+  (`:630-635`) va antes de dos de los tres checks (TLP `:640-654` y «LONGEST-lived» `:655-669`). Se elige este hueco porque
+  es el que cierra la mitad de la lección que el vídeo cuenta (`:488-567`, YARA, Sigma y su tabla) justo después de su check,
+  como V8 cerró la mitad de STIX de s3m5 (`src/data/s3.ts:1116-1123`); el vídeo no habla de STIX, TLP ni de caducidad de
+  indicadores, que son lo que viene después. **Coste que se acepta:** el vídeo queda antes del check 3 (`:655-669`, «¿qué
+  forma de diseminación vive más?»), cuya respuesta (reglas de comportamiento) ya está en el texto de la lección
+  (`:484`, `:564-565`) y es la idea del vídeo. Descartado ponerlo como último bloque, tras el check 3 y antes del `quiz`
+  (`:669-671`, como V22): quedaría a tres secciones de lo que resume. Hay un tercer hueco, entre la tabla (`:558-567`) y el
+  check 1, descartado porque destripa el check 1. Si Lidia prefiere no adelantar el check 3, el segundo hueco es el de
+  después del check 3. Se fija en la suite `lesson videos` de `src/data/content.test.ts` (`:267-319`) con una línea
+  `youtubeVideos.find(... '<id>')?.module → 's5m3'`.
+- **Lo que se lee no se deletrea:** los nombres de regla, de campo y de fichero (`GLASSVIPER_Loader_MemMap`,
+  `OriginalFileName`, `wcssvc.exe`, `vc_pipe_%08x`, la ruta del PDB) van en pantalla; la voz dice qué son («la regla del
+  programa», «el nombre original», «el molde del nombre del canal interno, no el nombre de cada ejecución», «la ruta del
+  PDB»). Las tres partes de YARA se dicen **una vez con el par** («el contexto, `meta`; las cadenas, `strings`; y la
+  condición, `condition`»), porque el examen las pregunta en inglés (s3m5q4, `src/data/s3.ts:1211-1224`) y la pantalla tiene
+  el término encendido. La voz **nunca** dice GLASS VIPER ni VELVET CICADA: dice «el atacante», «el programa de la primera
+  etapa» o «el grupo» (y **nunca «cargador»**, que se confunde con el objeto de la analogía; la analogía tampoco usa
+  cargadores). Los nombres de las reglas llevan GLASS VIPER en pantalla tal como los escribe la lección (la lectura de V8,
+  registro §5 punto 9: GLASS VIPER es el nombre del programa de primera etapa, el loader); la firma del mensaje es VELVET CICADA, como en
+  el grafo de V8.
+- **Enfoque («una regla que dure más que el hash»):** el SOC de Meridian (equipo que ya existe, registro §3) pregunta a la
+  analista qué se le puede dar que no caduque cada vez que el atacante cambia algo. La respuesta no es otra lista de
+  indicadores sino dos reglas del equipo de la analista (**el autor de la YARA es «Meridian CTI»**, `src/data/s5.ts:500`; la
+  regla Sigma de la lección **no lleva autor**, `:531-551`; `cti@` y el resto del contacto no salen): una que mira **dentro
+  de un fichero** y otra que mira **lo que ocurre en los registros**. VELVET CICADA empuja dos atajos (una palabra suelta;
+  fiarse del nombre del fichero) y la narradora los contesta con la condición de la regla de YARA y con el nombre original
+  de Sigma. El cierre dice honestamente que ninguna regla es para siempre: si el atacante cambia de herramienta, hay que
+  subir de nivel, y mides si dispara (`:636-639`). **El vídeo no dice que el SOC las despliegue, que hayan saltado alguna
+  vez ni cuándo se escribieron:** los eventos de pantalla son «evento de ejemplo» y la voz habla de lo que pasaría «si llega
+  un evento así», nunca en pasado. Una frase sitúa a quien no ha visto nada: eres la analista de inteligencia de Meridian,
+  una aeroespacial, y el SOC te pide algo que dure.
+
+**Conceptos (3) y su imagen:**
+
+Una sola imagen para todo el vídeo, con un detalle distinto en cada concepto: **el aeropuerto y sus dos controles**. El
+escáner de equipaje abre la maleta y mira lo que hay dentro (YARA); el registro de la puerta de embarque anota quién pasa,
+con qué tarjeta y con qué pasaporte (Sigma). **Regla de la imagen: un objeto, una función.** El escáner solo mira dentro
+(nunca «cámara» ni «registro»); la tarjeta de embarque es el nombre del fichero en el disco y el pasaporte es el nombre
+original que lleva por dentro; **una botella de agua, un paraguas o un libro** son las cadenas genéricas (los lleva
+cualquiera), y una pieza que casi nadie lleva es el artefacto único. **Ningún objeto con doble sentido** («cargador»,
+«llave», «carga»). No es la ropa, el acento ni «cómo anda» de V7, ni la casa, el taller o la etiqueta de V13 a V15, ni la
+tienda, la alarma y el walkie de V22, ni el cuadro y la cartela de V23, ni el diamante de V3, ni la carta de V8, ni el
+coche de V15. La voz no usa «alarma» para el escáner (es de V22): el escáner «salta» o «avisa».
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | **Dos reglas, dos miradas** (`src/data/s5.ts:491,525`, tabla `:558-567`). **YARA** describe contenido de ficheros o memoria; **Sigma** mira eventos de los registros. YARA corre en un escáner, un sandbox, un EDR o un repositorio de muestras; Sigma es un YAML genérico que **se convierte** al lenguaje del SIEM: no corre en el SIEM tal cual (`:525`, nota de examen `:634`). Primero la idea, luego el nombre: «mirar dentro» y «mirar lo que pasa» antes de decir YARA y Sigma | El escáner abre la maleta y mira dentro; el registro de la puerta anota quién pasa y con qué documento | «YARA mira contenido; Sigma mira eventos» · «Sigma no corre en el SIEM tal cual: se convierte» |
+| 2 | **La condición es el arte** (`:520`, check `:568-582`). Una cadena genérica como `MapViewOfSection` aparece en miles de programas legítimos y, sola, haría saltar a medio mundo; la regla pide **compañía** (`2 of ($api, $pipe, $op)`: dos señales corrientes juntas bajan mucho el ruido) o **una pieza única que va sola** (la ruta del PDB, `$pdb`). Ojo: `$pipe` y `$op` **tampoco van solos** en esta regla (`2 of`), y dos genéricas se bastan: lo raro de verdad es el PDB (`:520` dice que el pipe «puede disparar solo»; la regla en pantalla le pide compañía, y el vídeo lee la regla). `uint16(0) == 0x5A4D` ancla el ejecutable y `filesize` acota el coste. La voz dice que el PDB «a veces se queda escrito» (V14, V15) y que por eso la regla tiene un segundo camino. La pantalla marca `$pdb` «único» y `$api`, `$pipe`, `$op` «de compañía». **El vídeo lee una regla hecha; no pide elegir cadenas** (eso es el Lab 3B) | El escáner: una botella de agua o un paraguas los lleva cualquiera y, solos, no dicen nada; una pieza que casi nadie lleva pita sola; dos objetos corrientes juntos ya llaman la atención | «Cadena genérica, acompañada. El PDB, que es único, solo» |
+| 3 | **La regla mira lo que cuesta cambiar** (`:555`; s5m3q7 y q9, `:758-796`). La regla Sigma selecciona por `OriginalFileName` (que va en el programa, no en el nombre del disco) y excluye el uso con su nombre legítimo (`filter_expected`). El vídeo se apoya en V7 con una frase y se dedica a **qué rompe cada regla**: (a) una YARA **vive mientras el programa conserve esas piezas** (`:564` la hace sobrevivir a la *rotación de infraestructura*, no a un cambio de compilación; si compilan desde otra carpeta, `$pdb` desaparece); (b) la Sigma por nombre original **no ve otra herramienta** (s2m5q8 `:1360-1373`: «si cambia de herramienta, la regla del nombre original ya no ve»); (c) el filtro por nombre **admite cualquier carpeta** (`endswith '\certutil.exe'`). Tres escalones, **sin nombres de nivel de la pirámide**: «el nombre del disco», «el nombre original», «la cadena entera» (la regla del árbol de procesos que V7 ya contó, `src/data/s2.ts:1200`). Ninguna regla es para siempre: se mide si dispara (`s5.ts:636-639`) | La tarjeta de embarque lleva el nombre que cada cual quiera; el pasaporte no cambia al cambiar la tarjeta; quien viaja con su tarjeta normal pasa sin que el registro avise; si cambia de pasaporte, otro control | «OriginalFileName viene del PE header, no del disco» |
+
+**Qué regla es la más ruidosa o la más cara de esquivar (decidido):**
+
+| Regla | Más ruidosa o más barata de esquivar (sale en el vídeo) | Con menos ruido (sale en el vídeo) | Qué la rompe | Dónde está |
+|---|---|---|---|---|
+| YARA | Una cadena genérica sola (`any of`): ruido, no evasión | La condición de la lección: `$pdb or 2 of (...)` | La genérica sola: el SOC se cansa de avisos falsos. La de la lección: que el programa deje de conservar esas piezas (otra ruta de compilación quita `$pdb`; otro compilador cambia `$op`, de memoria) | `s5.ts:520,564,571-582` |
+| Sigma | `Image|endswith` sobre `wcssvc.exe`, la regla A (ejemplo, no de Meridian) | `OriginalFileName` + banderas de uso + filtro del uso legítimo | A: cambiar el nombre, que cuesta cero. B: cambiar de herramienta; y el filtro por nombre, que admite cualquier carpeta | `s5.ts:531-551,555,786-796`; `s2.ts:1360-1373` |
+| Hash | **No sale** (ni `4c81...b3` ni `9f3a...e1`, ni un valor ilegible) | — | — | V7 s04 y s05 ya lo hicieron: `video/attack-piramide/src/data/s05-otra-ropa.ts:24` («regla: hash», «0 coincidencias») |
+
+La regla por hash es el peldaño de la base de V7 y V27 no la repite: enseñarla de nuevo obligaría a decidir sobre qué foto
+pasa (§5 punto 1) y no aporta nada. **La pirámide no se redibuja ni se nombran sus niveles** (ni «artefactos», ni
+«herramienta», ni «cima»): la lección está partida (la tabla de s5m3 pone Sigma entera en TTPs, `s5.ts:565`; el árbol de
+s2m5 pone la propia línea `wcssvc.exe -decode …` en `TTP - tough`, `s2.ts:1182-1185`; V7 puso el nombre `wcssvc.exe
+(CertUtil)` en Tools, `s04-piramide.ts:38`) y cualquier nivel que V27 rotule contradice una de las tres. La escalera lleva
+solo tres rótulos de lo que mira cada regla (ver decisión 5).
+
+**Escenas:** seis, en tres capítulos (Dos miradas · Qué mira cada regla · Para el examen).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «¿Qué le damos al SOC?» | I Dos miradas | 18 | Tira de contexto: «Meridian Dynamics · aeroespacial · tú, su analista de inteligencia». Tres fichas de indicador sueltas y apagadas, sin ningún valor («un dominio», «una dirección IP», «un hash»), cada una con un reloj de caducidad. Tira del SOC: «el SOC: ¿y qué le damos que dure?». Título «YARA y Sigma» con «del indicador a la regla» debajo, antes de los 8 s. La promesa en tres chips: «qué mira cada una · cuándo salta de más · qué rompe cada regla» | La promesa en los primeros 10 s y el puente con V7 en una frase (ya sabes qué detectar; ahora, cómo se escribe) · `pile, soc, title, promise` |
+| s02-miradas «Un escáner y un registro» | I | 34 | El aeropuerto en alzado. El escáner de equipaje abre una maleta y mira dentro, rotulado YARA: «mira dentro: ficheros y memoria». El registro de la puerta de embarque anota un pasajero con su tarjeta, rotulado SIGMA: «mira lo que ocurre: los registros». Dos chips: «YARA: lo que hay dentro» y «Sigma: lo que ha pasado». La tarjeta | YARA y Sigma miran cosas distintas · `airport, scanner, yara-inside, gate, sigma-events, pair` |
+| s03-condicion «La condición decide» | I | 46 | **Mensaje interceptado** (VELVET CICADA) y su respuesta. Entra la regla YARA, `GLASSVIPER_Loader_MemMap`, con el rótulo «extracto de la lección · ficticia» y su `author = "Meridian CTI"` tal como está en la lección: contexto (`meta`), cadenas (`strings`) y condición (`condition`) se iluminan una a una, con el término del examen encendido. `$api` se resalta, «está en miles de programas legítimos», y una pila de avisos falsos cae sobre la tira del SOC (sfx `flood`). `$pdb` se rotula «único» y `$api`, `$pipe`, `$op` «de compañía». La condición se lee en tres líneas: «que sea un ejecutable (empieza por MZ)», «que no pese más de 250 KB» y «o el PDB, que es único y va solo, o dos señales de las otras tres». La tarjeta. Cierre del capítulo con el «o sea, que…» | Una cadena genérica sola salta con todos; la regla pide compañía o una pieza única · `reply-word, rule, meta, strings, generic, flood, tags-company, cond-mz, cond-size, cond-or, wrap-i` · **intercept** |
+| s04-sigma «Sigma, línea a línea» | II Qué mira cada regla | 60 | **Mensaje interceptado** que abre la escena; respuesta neutra («pues vamos a ver qué mira esta regla»). La regla Sigma, rotulada «extracto de la lección · ficticia» (**sin autor**: la lección no lo da), se lee por partes: de qué registro habla (creación de procesos de Windows), `selection` (el nombre original `CertUtil.exe` más una de dos banderas de uso, «decodificar o descargar»), `filter_expected` («el uso con su nombre normal no salta»; es lo que explica los eventos) y `condition`; `falsepositives` queda en pantalla sin voz. **Tres eventos de ejemplo** como tarjeta de tres campos (`Image`, `OriginalFileName`, `CommandLine`), rotulados «evento de ejemplo», sin equipo ni hora, con la misma línea de comando: el primero, `certutil.exe` / `CertUtil.exe` (el filtro lo cubre: «no avisa»); el segundo, `wcssvc.exe` / `CertUtil.exe` («avisa»). Después, la pregunta con las dos reglas a la vista, A por el nombre del fichero (`Image|endswith` `wcssvc.exe`) y B la de la lección, y un tercer evento: `otro-nombre.exe` / `CertUtil.exe` (placeholder de la analogía, no un fichero de Meridian). Respuesta: sobre ese evento, A no ve y B sí (sfx `miss` en A, `hit` en B), con el filtro marcado porque `otro-nombre.exe` no cuadra con él. La tarjeta, después de la respuesta | El nombre del disco lo cambia el atacante gratis; el nombre original va dentro del programa; el filtro por nombre admite cualquier carpeta · `reply-m2, sigma, logsource, selection, flags, filter, cond, ev-legit, ev-renamed, rule-a, rule-b, ev-new, answer, miss, hit` · **intercept** · **think** |
+| s05-aguanta «Dónde corre y qué la rompe» | II | 36 | Dos columnas: YARA, «corre en: escáner, sandbox, EDR, repositorio de muestras»; Sigma, «se traduce a la consulta de tu SIEM, y esa corre» (chips genéricos «tu SIEM»; sin nombres de producto, como V15 con el servicio público de análisis). La tarjeta. Después, **«qué la rompe»** en tres filas cortas: YARA, «el programa deja de conservar esas piezas»; Sigma por nombre original, «otra herramienta»; el filtro por nombre, «una copia en otra carpeta». Sigue una **tira de tres chips**, sin nombres de nivel: «el nombre del disco» · «el nombre original» · «la cadena entera» (en voz, «la regla del árbol de procesos, la que ya viste»: nunca un id de módulo leído), con la tira «si cambia de herramienta, la regla del nombre original ya no ve». Y una línea de cierre del capítulo: «mide si dispara» | Dónde corre cada una; qué rompe cada una; ninguna regla es para siempre · `where, yara-runs, sigma-runs, convert, breaks, breaks-yara, breaks-sigma, breaks-filter, ladder, limit, loop, wrap-ii` |
+| s06-recap «Tres reglas» | III Para el examen | 24 | Tres tarjetas de reglas con su viñeta en miniatura (el escáner y el registro, la maleta con una botella, el pasaporte); tarjeta final Alertópolis: «Tu turno: las preguntas de la lección (s5m3)» | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+
+- **Tarjetas de examen** (dominio Dissemination), una por escena de s02 a s05, ninguna en s01 ni en el cierre. Cada una espera
+  al final de su frase y lleva ~5 s de escena detrás (la de s05 lleva detrás la explicación del SIEM):
+  - «YARA mira contenido; Sigma mira eventos» (s02) (39)
+  - «Cadena genérica, acompañada. El PDB, que es único, solo» (s03) (55)
+  - «OriginalFileName viene del PE header, no del disco» (s04) (50; sale después de la respuesta a la pregunta)
+  - «Sigma no corre en el SIEM tal cual: se convierte» (s05) (48)
+- **Pregunta para pensar:** «Otro nombre de fichero: ¿cuál sigue saltando?» (s04) (45; `holdMs` 4500; las dos reglas, A por
+  el nombre del fichero y B por el nombre original, siguen a la vista, junto a un tercer evento de tres campos con un nombre
+  cualquiera, `otro-nombre.exe`, y el mismo nombre original). **La hipótesis va dicha en la propia pregunta**: en el evento
+  que ya se enseñó (`wcssvc.exe`) las dos reglas avisan, y la pregunta solo funciona si el nombre cambia otra vez. Es una
+  elección de verdad entre dos reglas, no un sí o no. Respuesta: B. El nombre del disco lo cambia el atacante cuando quiere;
+  el nombre original va dentro del programa y renombrar no lo toca (s5m3q9, `:782-796`); y B no se libra del filtro por
+  casualidad, sino porque `otro-nombre.exe` no es `certutil.exe`. **El título de la escena («Sigma, línea a línea») no da la
+  respuesta**, y el mensaje de VELVET CICADA se contesta en neutro («pues vamos a ver qué mira esta regla») para que la
+  pregunta no llegue ya contestada. La respuesta no promete que el campo sea inalterable: dice «renombrar no lo toca». **Aviso
+  de la revisión:** la pregunta casi se contesta sola (A pide `wcssvc.exe` y el evento es otro); la variante que obliga a
+  usar lo contado está en la decisión 7 y en la pregunta 4 para Lidia.
+- **Mensajes interceptados** (VELVET CICADA; tutea, ironía, **dice «analista»**: la sección ya lo hace en su ficha de jefe,
+  `src/data/course-gcti.ts:95`; empuja atajos de método, nunca una hipótesis, y no confiesa nada; no repite el «Bloquea…» de
+  V7 y V15 ni el «Córtame ya» de V22: el primero es un cebo en tono de burla y el segundo, una fanfarronada):
+  - s03 (cap. I): «Una palabra de mi programa y ya me pillas. Qué fácil, analista.» (63). El error: una regla de una sola
+    cadena. La voz, más o menos así: «Una palabra que lleva medio mundo salta con todos. Una que solo lleva él puede saltar sola.
+    Por eso la condición tiene dos caminos.» (la respuesta deja las dos ramas, para no contradecir la tarjeta de s03 ni la lección,
+    `:520`). Nada de «el atacante quiere que fallen tus reglas»: es un cebo, no una confesión.
+  - s04 (cap. II): «A mis herramientas las llamo como quiero. Tu regla no lo verá.» (62; «herramientas» y no «mi programa»,
+    porque lo que la regla B ve es una herramienta de Windows renombrada, y para que no se lea como si el grupo cambiase de
+    nombre, que es el «Llámame GLASS VIPER» de V3). El error: creer que renombrar esquiva cualquier regla. La respuesta
+    neutra de apertura: «Pues vamos a ver qué mira esta regla.»; la de verdad llega tras la pregunta («Una regla por el nombre
+    del fichero, quizá. Esta, no.»; **que no sea la frase de V22** «tiene razón en algo»: M2 es de la familia de «Bloquea mi
+    hash» de V7 y «Me mudo en cinco minutos» de V22, y la respuesta tiene que ser otra).
+- **Cierre:** tres reglas y una sola tarea.
+  1. YARA mira dentro de un fichero y Sigma mira lo que ocurre en los registros. Y Sigma no corre en el SIEM tal cual: se
+     convierte.
+  2. Una cadena genérica sola salta con medio mundo: pídele compañía, o apóyate en una pieza única, como el PDB.
+  3. Apóyate en lo que cuesta cambiar: el nombre original, no el del disco. Entre estas, la que más aguanta; pero ninguna dura
+     para siempre, así que mide si tu regla dispara.
+
+  Tarea: las diez preguntas de la lección s5m3 (las q7 y q9 contestan la base de este vídeo; la q10, STIX y TAXII, es de V8).
+  El Lab 3B queda como práctica de lo que el vídeo no hace (elegir cadenas y umbral): se nombra en las notas, no en el cierre,
+  porque el cierre lleva una sola acción.
+
+**Se queda fuera** (y dónde está):
+- **STIX y TAXII** (`src/data/s5.ts:583-623`, s5m3q8 y q10): es la mitad de la lección que V8 ya cuenta. Ni el indicador de
+  `cdn-sync-status.example` del JSON (`:592-618`, `confidence: 80`, `valid_until` de 2026-07-18): V8 y V22 lo dejaron fuera a
+  propósito (registro §7, V8).
+- **El TLP aplicado** (`:624-629`, check `:640-654`): solo asoma `tlp = "AMBER"` como texto de la regla, sin explicarlo. El
+  anexo técnico de la lección (`src/data/labs.ts:1032,1123`) es del Lab 5B.
+- **Los tres tipos de diseminación táctica y el contexto mínimo** (`:477-487`, s5m3q1 a q5): una frase en s01, «un indicador
+  caduca»; el detalle, en la lección.
+- **Los bytes `$op`** (`6A 40 68 00 30 00 00`), los modificadores `ascii` y `wide` y el significado de «section map»: la
+  lección no los explica y el vídeo tampoco (a verificar con el material oficial).
+- **Cómo se convierte Sigma** y a qué productos (Splunk, Sentinel, Elastic, `:525`): ni el proceso ni los nombres de producto
+  salen; la pantalla dice «tu SIEM». Tampoco sale que haya herramientas que evalúan Sigma sin SIEM (de memoria): por eso la
+  frase es «no corre en el SIEM tal cual» y no «no se ejecuta».
+- **El Lab 3B y las preguntas de YARA de s3m5** (`src/data/s3.ts:1123-1163,1209-1236`): ver «Laboratorios».
+- **La regla de s2m5 de la cadena entera como regla escrita ni los niveles de la pirámide**: sale como tercer escalón, solo
+  con su nombre; no se escribe en Sigma ni se muestra su texto (`src/data/s2.ts:1200`, V7).
+
+**Laboratorios y preguntas que ya ejercitan el tema (penalización L):**
+- **Lab 3B · YARA Forge** (`src/data/labs.ts:114-124`; datos `:746-843`; `src/components/labs/YaraLab.tsx`): elegir cadenas y
+  `any`/`2`/`all` frente a cuatro muestras. **No se repite** la selección, ni sus seis cadenas (`vc_stage2.bin`, los bytes
+  `{ 8B 45 FC 33 45 F8 8B 4D F4 }`, el user-agent con `MSIE 9.0`, `kernel32.dll`, `POST /api/v2/telemetry`), ni sus cuatro
+  muestras (`VC_Loader_v1.dll`, `VC_Loader_v2.dll`, `VendorUpdater.exe`, `ChatHelper.exe`), ni las palabras «variante 1» y
+  «variante 2». **Una coincidencia que se acepta:** su cadena `s1` es la misma ruta del PDB que `$pdb` de la regla de la lección
+  (`labs.ts:772`, con la nota «solo variante 1», `:775`); el vídeo la enseña como la enseña la lección y dice «a veces se
+  queda escrita», nunca «la llevan todas» ni «la regla encuentra la familia entera». Las otras tres cadenas de la regla
+  (`$api`, `$pipe`, `$op`) son de la lección, no del laboratorio.
+- **Lab 2C** (`labs.ts:88-97,340-393`, ítem `:363`: «Create a Sigma rule alerting whenever an LNK spawns PowerShell»,
+  Detect): **no sale** esa regla ni se clasifica nada en verbos de la matriz.
+- **Lab 5A** (`labs.ts:163-173`, calibración) y **Lab 5B** (`labs.ts:174-189`; anexo técnico y marcas TLP, `:1032,1115-1130`):
+  nada. No se pone TLP a ningún producto ni se valora ningún hallazgo.
+- **Preguntas de s3m5** (`src/data/s3.ts:1135-1163` y q4, q5 en `:1209-1236`): es el mismo tema en la sección anterior. El vídeo
+  da la misma idea (compañía) con otro ejemplo y otra pregunta; no repite «Mozilla/5.0» ni «any of them».
+- **Preguntas de colocación** `pl-s5q7` (`src/data/placement-gcti-s5.ts:131-144`), `pl-s3q10` (`placement-gcti-s3.ts:180-193`) y
+  `pl-s3q12` (`:210`): no se usan sus escenarios (un servidor de ficheros retirado, una cervecería, un operador de
+  transbordadores) ni se restan sus respuestas.
+- **s2m5** (`src/data/s2.ts:1212-1223`, q8 `:1360-1373`): V7 ya contestó el check de «dónde va el esfuerzo»; el vídeo cita la
+  frontera de q8 («si cambia de herramienta, esa regla ya no ve») y no la regla de la cadena entera.
+- **s5m3** (`src/data/s5.ts:568-582,655-669`, q7 `:758-772`, q9 `:782-796`): el vídeo es su explicación. El check de
+  `:568-582` llega **antes** que el vídeo; el de `:655-669` queda contestado (ver «Inserción»). La q7 dice «la inversión más
+  duradera» y el vídeo «ninguna regla es para siempre»: no se contradicen (la q7 compara con listas y hashes); la frase de
+  cierre dice «entre estas, la que más aguanta».
+
+**Canon nuevo que fija V27** (nada de esto estaba en los datos del curso; lo posterior debe respetarlo):
+- **Sin fecha ni hora**, como V9, V15, V22 y V23. No se ordena contra la cronología del registro. Es posterior a V7 en lo que
+  cuenta (la regla habla del `wcssvc.exe` que V7 enseñó) y no se coloca más.
+- **VELVET CICADA habla por primera vez**, con la voz de Pablo y el efecto `machine`, con dos mensajes sin fecha que pasan a ser
+  canon de su voz: «Una palabra de mi programa y ya me pillas. Qué fácil, analista.» y «A mis herramientas las llamo como
+  quiero. Tu regla no lo verá.» Ninguno confiesa nada ni dice qué es VELVET CICADA; la voz de la narradora sigue sin nombrarlo.
+- **El SOC de Meridian pregunta** «¿qué le damos que dure?»: es el equipo de §3, sin persona, con una pregunta y ninguna
+  decisión ni postura.
+- **Las dos reglas de la lección salen en pantalla como «extracto de la lección · ficticia»** (el rótulo que V9 usó para su
+  matriz), **sin cuatro líneas que la lección sí lleva** (retoque a propósito): `date = "2026-04-18"` y `reference =
+  "Internal report MER-2026-011"` de la regla YARA (`s5.ts:502-503`) y `id` y `references` de la regla Sigma (`:532,535-536`).
+  Motivos: la numeración MER-2026-011 choca con MER-2026-019 y MER-2026-023 (registro §5 punto 17), la fecha ordenaría el
+  vídeo y el `id` de la lección no es un UUID válido (`4b8d2f6a-9c31-4e02-b7aa-meridian0042`). Las dos reglas siguen siendo
+  válidas sin esas líneas (ver «Reglas en pantalla»). **El vídeo no dice que estén desplegadas ni que hayan saltado.**
+- **El autor «Meridian CTI» es solo el de la regla YARA** (`s5.ts:500`); la regla Sigma de la lección **no lleva autor** y el
+  vídeo no se lo pone. El registro (`velvet-cicada.md:98`) dice «autor de flash alert, YARA y Sigma»: al congelar, **apuntar
+  allí que el autor de la Sigma no consta** (esa edición no es de esta ficha).
+- **`wcssvc.exe` y su comando ya son canon** (V7 s03 y `s2.ts:1182`, registro §3 «Capacidades»): V27 no los inventa y no
+  añade nada sobre ellos. **Lo nuevo es** la regla A (`Image|endswith` `wcssvc.exe`, solo del vídeo), el evento con el
+  nombre normal (`certutil.exe` con el mismo comando) y el de `otro-nombre.exe`, que es un placeholder de la analogía y no
+  sugiere que el actor haya usado un tercer nombre. Los tres eventos son «evento de ejemplo», sin equipo, hora ni cuenta, y la
+  voz habla en condicional («si llega un evento así»), nunca «salta» en pasado: un acierto retrospectivo de una regla nueva es
+  justo lo que V7 declaró «sin fecha ni dueño».
+- **La imagen del aeropuerto** (escáner, registro de la puerta, tarjeta de embarque, pasaporte) es de la analogía, no del caso.
+- Ninguna persona, fecha, equipo, hash, dominio ni IP nuevos.
+
+**Reglas en pantalla (escritas completas y comprobadas con `check-v27-fix.mjs`, que las extrae de esta ficha y las compara con
+la plantilla de `src/data/s5.ts`):**
+
+Regla YARA, rótulo «extracto de la lección · ficticia» (`src/data/s5.ts:497-516`, sin `date` ni `reference`; llaves 2/2,
+paréntesis 3/3, las tres secciones presentes; la pantalla rotula `$pdb` «único» y `$api`, `$pipe`, `$op` «de compañía»):
+
+```
+rule GLASSVIPER_Loader_MemMap
+{
+    meta:
+        author      = "Meridian CTI"
+        description = "GLASS VIPER stage-1 loader: section map + named pipe"
+        tlp         = "AMBER"
+
+    strings:
+        $api  = "MapViewOfSection" ascii
+        $pipe = "vc_pipe_%08x" ascii wide
+        $op   = { 6A 40 68 00 30 00 00 }
+        $pdb  = "D:\\proj\\cicada\\loader\\Release\\ldr.pdb"
+
+    condition:
+        uint16(0) == 0x5A4D
+        and filesize < 250KB
+        and ( $pdb or 2 of ($api, $pipe, $op) )
+}
+```
+
+Regla Sigma, rótulo «extracto de la lección · ficticia», sin autor (`src/data/s5.ts:531-551`, sin `id` ni `references`; el
+`'\certutil.exe'` es como queda tras el escape de la plantilla de la lección):
+
+```
+title: GLASS VIPER Staging via Renamed Certutil
+status: experimental
+description: Renamed certutil.exe decoding a staged payload
+logsource:
+    product: windows
+    category: process_creation
+detection:
+    selection:
+        OriginalFileName: 'CertUtil.exe'
+        CommandLine|contains:
+            - '-decode'
+            - '-urlcache'
+    filter_expected:
+        Image|endswith: '\certutil.exe'
+    condition: selection and not filter_expected
+falsepositives:
+    - Admin tooling that copies certutil under another name (rare)
+level: high
+```
+
+Regla ingenua A de la pregunta (solo en pantalla, «ejemplo»; mismo formato, mismo `logsource`):
+
+```
+title: Renamed Certutil by file name (example)
+logsource:
+    product: windows
+    category: process_creation
+detection:
+    selection:
+        Image|endswith: '\wcssvc.exe'
+    condition: selection
+level: high
+```
+
+Los tres eventos de ejemplo, como tarjeta de tres campos (el evento legítimo lleva **el mismo nombre original** que el
+renombrado y distinta `Image`; lo que lo libra es el filtro, no el nombre original):
+
+| Evento de ejemplo | `Image` | `OriginalFileName` | `CommandLine` | Regla A | Regla B |
+|---|---|---|---|---|---|
+| 1 · nombre normal | `certutil.exe` | `CertUtil.exe` | `-decode a.txt payload.bin` | no avisa | no avisa (lo cubre `filter_expected`) |
+| 2 · ya conocido de V7 | `wcssvc.exe` | `CertUtil.exe` | `-decode a.txt payload.bin` | avisa | avisa |
+| 3 · el de la pregunta | `otro-nombre.exe` | `CertUtil.exe` | `-decode a.txt payload.bin` | no avisa | avisa |
+
+- **Qué no es de la lección:** solo la regla A y los tres eventos. El `$pdb` va con `\\` doble porque así se escribe una barra
+  en YARA; en la pantalla de V14 la ruta sale con una barra, que es como se escribe fuera de una regla. `MapViewOfSection` es
+  subcadena de `NtMapViewOfSection` (V15 cambió la lección de s3m2 a esa forma, `src/data/s3.ts:333`; registro §3
+  «Capacidades»), así que la cadena sigue valiendo.
+- **A verificar con el material oficial** (no van en tarjeta ni en voz): que `title`, `logsource` y `detection` sean los tres
+  campos obligatorios de una regla Sigma y que `id` y `references` sean opcionales (lo que se afirma aquí es solo «sigue siendo
+  YAML válido»); que `OriginalFileName` sea técnicamente un campo del recurso de versión del PE y no de su «header» (la lección
+  y la q9 lo llaman «PE header», `s5.ts:555,789`; V7 ya dijo «cabecera PE»; la tarjeta copia la lección y la voz dice «por
+  dentro del programa»); que un actor no pueda reescribir ese campo al recompilar (la lección solo dice «renombrar no lo
+  cambia»; en una copia de `certutil` no se puede tocar sin invalidar la firma de Microsoft, de memoria); que `-urlcache`
+  **descargue** y no decodifique (de memoria; por eso la voz dice «decodificar o descargar» y nunca «las banderas de
+  decodificar»); que Chainsaw, Hayabusa y Zircolite evalúen Sigma sin SIEM (de memoria; la frase es «no corre en el SIEM tal
+  cual»); que `$op` sea `push 0x40; push 0x3000` (de memoria; el vídeo no lo explica); y que `OriginalFileName` lo dé Sysmon
+  y la mayoría de EDR pero no el evento 4688 de Seguridad (aviso para las notas, no para la voz).
+- **Notas para `script-notes.md`:** el filtro `endswith '\certutil.exe'` admite cualquier carpeta (un `certutil.exe` copiado
+  a otra ruta queda filtrado) y sale en s05 como «una copia en otra carpeta»; `vc_pipe_%08x` es el molde que está en el
+  binario, no el nombre ya con número que enseñaron V3 y V15; la ruta del PDB es la «etiqueta del taller» de V13 a V15 y
+  V27 no la nombra así (decisión 9).
+
+**No se toca:**
+- **Ningún hash, en pantalla ni en voz:** ni `4c81...b3` ni `9f3a...e1`/`9f3a2c...e1`, ni un valor ilegible (registro §5
+  puntos 1 y 11; V7 s05 ya hizo la comparación). **No se dice qué muestra cumple la regla YARA**: V15 dejó dicho qué
+  significaría un acierto y no enseñó ninguno, y V14 decidió que `4c81...b3` lleva el PDB «solo para el registro». El vídeo
+  no pasa ninguna regla por ninguna foto. Los bytes de `$op` son código, no un hash.
+- **`winhlp.exe` y `updsvc.exe` no salen.** `wcssvc.exe` sí (V7 y la lección), pero **sin hora, sin equipo y sin añadirlo a la
+  cadena de s2m1/V13** (registro §5 punto 19). La voz dice «un programa de Windows, con otro nombre».
+- **El dosier de BROKEN CHAIN** (`src/data/course-gcti.ts:40`): ni «el mismo PDB en tres muestras», ni cuántas lo comparten, ni
+  «VELVET CICADA ya tiene cara técnica». La palabra «cicada» de la ruta sale tal cual y la voz no la comenta (como V14).
+- **La solución del Lab 3B** (registro §4, «sin regla escrita»): nada de lo que ya se enumeró arriba.
+- **El dosier de LAST WORD** (`src/data/course-gcti.ts:96-97`): ni «espionaje dirigido al programa de propulsión», ni «caso
+  cerrado», ni el informe al consejo. Los mensajes no dicen qué hará VELVET CICADA.
+- **Fecha 2026-04-18, MER-2026-011, el flash alert MER-FA-2026-014** (`src/data/s5.ts:47-69`) y la ola de phishing de abril.
+- **El C2, el certificado y el correo de registro** (`update-svc-cdn.com`, `CN=updatesvc`, `kazuo.tanji@`): no salen.
+- **Lab 5B**: ningún juicio ni marca TLP. **Los casos reales de S5** (`src/data/s5.ts:836,855`).
+- **Los niveles de la pirámide** («artefactos», «herramienta», «cima», «TTP»): no se rotula ninguno (decisión 5).
+- **La voz no dice «cargador» ni «loader»** y la analogía no tiene ningún objeto con ese nombre.
+- No se culpa a nadie: ni al SOC por pedir algo que dure ni al equipo por escribir primero la regla ingenua. Casi todo el mundo
+  empieza por el nombre.
+
+**Comprobación de límites** (recuentos hechos con un script de Node, `check-v27-fix.mjs` en el directorio temporal de la
+sesión, no a ojo; perfil `capsula-yt`, `profiles.mjs:58-70`; las reglas de pantalla se extraen de esta ficha y se comparan con
+la plantilla de la lección evaluada desde `src/data/s5.ts`):
+- Duración: suma 218 s (seis escenas: 18, 34, 46, 60, 36 y 24); estimado ~250 s; renderizado previsto ~230–235 s; ventana
+  190–260. Sí.
+- Capítulos: 3 (máximo 3). Sí.
+- Conceptos clave: 3 (2–3), con como mucho dos tarjetas por concepto (2, 1 y 1). Sí.
+- Tarjetas: 4 (3–5), una por escena de s02 a s05 y ninguna en s01 ni en s06, todas con `"objective": "Dissemination"`.
+  Caracteres: 39, 55, 50 y 48 (máximo 58, `EXAM_TEXT_MAX`). Sí.
+- Pregunta para pensar: 1, en s04; 45 caracteres (máximo 48); `holdMs` 4500 (mínimo 4000); es una elección entre dos reglas, no
+  un sí o no. Sí.
+- Mensajes interceptados: 2 (1–2), en s03 (cap. I) y s04 (cap. II), uno por capítulo, ninguno en la escena final; 63 y 62
+  caracteres (máximo 70); `holdMs` 3500 (2500–4500). Sí.
+- `video.json` lleva `"adversary": "VELVET CICADA"`, que es el de S5 (`course-gcti.ts:93`). Sí.
+- Sin flechas, marcas de verificación, viñetas ni emoji (`FORBIDDEN_SYMBOLS` de
+  `video/engine/scripts/lib/narration.mjs:23`) ni `{}[]|<>` en tarjetas, pregunta y mensajes (`:288,323`). El carácter `|` de
+  `Image|endswith` va solo en la pantalla de la regla, no en ninguno de esos tres campos. Sí.
+- Reglas en pantalla: YARA y Sigma idénticas a la lección salvo las cuatro líneas retiradas; llaves 2/2 y paréntesis 3/3 en la
+  YARA; las cuatro cadenas se usan; sin ningún hash en reglas, tarjetas, mensajes ni pregunta. Sí.
+- Ningún identificador leído en voz (`IDENTIFIER_PATTERNS`, `narration.mjs:135-143`): `certutil` suelto no encaja con el
+  patrón de dominio; `OriginalFileName`, `wcssvc.exe` y `vc_pipe_%08x` solo en pantalla. Sí.
+- `wordBudget` por escena: 49, 92, 124, 162, 97 y 65 (589 palabras); frases de voz de muestra de ≤ 22 palabras. El título de la
+  escena de la pregunta y el del capítulo II («Qué mira cada regla») no la destripan. Sí.
+
+**Decisiones de esta ficha** (con la alternativa descartada de cada una):
+1. **Se muestra la regla frágil de Sigma por nombre de fichero, no la de hash.** Alternativa descartada: repetir la regla por
+   hash de V7 como «suelo» (`s05-otra-ropa.ts:24`): ya está contada, obligaría a elegir qué foto y qué hash, y roza §5 puntos
+   1 y 11. La frágil de YARA es la cadena genérica sola (la del check de la lección).
+2. **VELVET CICADA habla, con la voz de Pablo.** Alternativas descartadas: (a) GLASS VIPER, que es el adversario de S2 y no
+   el de la sección (la lección lo nombra en las reglas, pero la convención es el de la sección, §1 del plan); (b) la voz de
+   Laura, que es la de PAPER CRANE y acaba de oírse en V23 el mismo día. Riesgo, y es mayor de lo que parecía: Pablo +
+   `machine` es la voz **por defecto** del adversario y la usan GLASS VIPER (V3, V7, V13, V14, V22), HOLLOW LANTERN (V4, V8,
+   V15) y SILENT PAGER en Security+, así que VELVET CICADA sonará igual que dos de los otros tres adversarios GCTI; se
+   compensa con la firma «VELVET CICADA» en pantalla y con el «analista». Si Lidia quiere que el jefe de S5 suene distinto, el
+   hueco es un `fx` propio (como en Security+: `cifrado`, `telefono`, `megafonia`), no otra voz.
+3. **El vídeo va tras el primer check y antes de STIX/TAXII**, no al final de la lección. Alternativa descartada: último
+   bloque tras el check 3 (como V22): resumiría lo que quedó a tres secciones de distancia. Coste aceptado: el check 3 queda
+   contestado.
+4. **Reglas en pantalla recortadas en cuatro líneas** (`date`, `reference`, `id`, `references`) y rotuladas «extracto».
+   Alternativa descartada: copiarlas tal cual, que afirma 2026-04-18 y MER-2026-011 en pantalla (§5 punto 17); y descartado
+   también el rótulo «ejemplo de la lección» a secas, que sugiere copia literal.
+5. **No se redibuja la pirámide y no se rotula ningún nivel.** Las fuentes se contradicen (la tabla de s5m3 pone Sigma en
+   TTPs, `s5.ts:565`; el árbol de s2m5 pone la línea de `wcssvc.exe` en `TTP - tough`, `s2.ts:1182-1185`; V7 puso el nombre
+   en Tools). Alternativas descartadas: (a) rotular el escalón 2 «herramienta» con los nombres de V7, que choca con las otras
+   dos; (b) nombrar las dos líneas y decir que V27 sigue a V7, que mete en un vídeo de reglas un debate de la pirámide. La
+   escalera lleva tres rótulos de lo que mira cada regla y la frase de s2m5q8.
+6. **La tarea es las diez preguntas de la lección, no el Lab 3B.** Alternativa descartada: mandar al Lab 3B, que es de S3
+   y practica algo que el vídeo no hace; sale en las notas, no en el cierre (una sola acción).
+7. **La pregunta se queda en «¿cuál sigue saltando?» con la regla A frente a la B, y el filtro es lo que la contesta.**
+   Es válida y sin error técnico, pero casi se contesta sola. Alternativa (no elegida, decisión de Lidia): «Decodificador
+   propio: ¿cuál sigue viéndolo?» (43), con A, B y el evento de un programa del actor con otro nombre *y* otro original;
+   respuesta «Ninguna de las dos. Hace falta subir un nivel», con `miss` en A y en B y `hit` en la regla de la cadena entera
+   (s2m5q8). Cambia el mensaje 2, la respuesta de s04 y la escalera de s05 (que pasaría a ser el cuerpo de la respuesta).
+8. **No se funde ni se recorta ninguna escena para quitar el solape con V7; se cambia lo que lleva s05.** El escalón del
+   nombre original y el del disco (V7 s03) pasan a una frase en s04; la escalera (V7 s05) queda en tres chips de ~6 s; el tiempo
+   de s05 va a «qué la rompe» (YARA, Sigma por nombre original, filtro). Alternativas descartadas: (a) quitar la escalera por
+   completo (se queda como puente a la q8 y a V7); (b) fundir s05 en s06, que dejaría la tarjeta de Sigma en el cierre, donde
+   el validador no admite tarjeta; (c) fundir s04 y s05 en una escena de 96 s, que supera el techo de densidad. La suma sigue
+   en 218 s.
+9. **La ruta del PDB no se nombra como «la etiqueta del taller» de V13 a V15.** La regla de «una imagen por concepto» lo
+   impide y el taller es de V14. Alternativa descartada: una referencia de una frase («la etiqueta del taller de V14»), que ata
+   el hilo pero añade una imagen más a un vídeo que ya tiene el aeropuerto.
+
+**Riesgos de solape:**
+- **V7** (`video/attack-piramide`): el nombre original, `wcssvc.exe` y la cadena entera ya salen en s03 y s05 de V7. V27 no
+  repite su tarjeta («Detecta el comportamiento: sobrevive a recompilar») ni la ropa, el acento y «cómo anda», ni la regla de la
+  cadena entera como texto; el nombre original va en **una frase**, la escalera en **tres chips**, y añade cómo se escribe la
+  regla de nombre original (lectura línea a línea del filtro y la condición) y qué rompe cada regla. Lo nuevo es más de la
+  mitad de s04 y s05; lo repetido es una frase y los tres chips.
+- **V3** (`video/diamond-e7/narration.json`, s03-04): ya dijo en voz que el patrón del pipe suele seguir aunque recompilen
+  (`vc_pipe_%08x`). V27 lo usa como línea de la regla, dice «el molde», sin repetir la frase y sin la imagen del acento.
+- **V8** (`video/stix-isac`): comparte la lección de origen en espíritu (reglas, indicadores). V27 no enseña STIX ni TAXII, ni
+  caducidad ni el indicador de `cdn-sync-status.example`.
+- **V22/V23**: tres vídeos con un adversario que empuja un atajo. M1 y M2 son uno de método («una palabra») y una
+  fanfarronada («me cambio el nombre»), no un «bloquea».
+
+**Preguntas para Lidia** (ninguna bloquea; recomendadas entre paréntesis): (1) ¿El vídeo va tras el primer check de la lección
+y antes de STIX/TAXII (**recomendado**), o al final, tras el check 3? (2) ¿VELVET CICADA habla ya en este vídeo, con la voz de
+Pablo (**recomendado**), o se queda en GLASS VIPER por ahora? (3) ¿Cómo dices YARA, Sigma y certutil? (4) ¿La pregunta se queda
+como «¿cuál sigue saltando?» (**recomendado**, es válida) o se cambia por la del decodificador propio, que obliga a usar la
+escalera (decisión 7)?
+
+**Cambios de la revisión** (2026-10-14, `revision-gcti.md` y `reconciliacion.md`):
+- **Corregir 1 · escalera:** quitados «artefactos», «herramienta» y «cima»; tres rótulos («el nombre del disco», «el nombre
+  original», «la cadena entera») y la frase de s2m5q8. Concepto 3, tabla de escenas, tabla frágil/robusta, párrafo de la
+  pirámide y decisión 5 reescritos.
+- **Corregir 2 · `wcssvc.exe`:** «no son hechos de Meridian» retirado; ahora el canon dice que `wcssvc.exe` y su comando ya
+  son de V7 y que lo nuevo es la regla A y los eventos con el nombre normal y `otro-nombre.exe`. Rótulo «evento de ejemplo»
+  en pantalla y condicional en voz.
+- **Corregir 3 · `-urlcache`:** «banderas de decodificar» fuera; «una de dos banderas de uso» y «decodificar o descargar»;
+  añadido a «A verificar».
+- **Corregir 4 · «cargador»:** analogía con botella de agua, paraguas y libro; la voz dice «el programa» y no «cargador» ni
+  «loader» (el nombre de la regla lleva «Loader» solo en pantalla).
+- **Corregir 5 · compañía y PDB:** tarjeta 2 «Cadena genérica, acompañada. El PDB, que es único, solo» (55); la pantalla marca
+  `$pdb` «único» y `$api`, `$pipe`, `$op` «de compañía»; la imagen ya no promete que cualquier pareja sea rara.
+- **Corregir 6 · autor:** «extracto de la lección · ficticia»; autor solo en la YARA; la Sigma, sin autor; apuntado el aviso
+  para el registro de §3.
+- **Corregir 7 · recompilar:** «sobrevive a recompilar» fuera; entra la frase «una regla de YARA vive mientras el programa
+  conserve esas piezas» (ya no se recorta); columna «Robusta» pasa a «Con menos ruido»; cierre regla 3 matizada.
+- **Corregir 8 · eventos:** tarjetas de tres campos (`Image`, `OriginalFileName`, `CommandLine`); el legítimo lleva el mismo
+  original; el filtro marcado; el hueco de «cualquier carpeta» sale en s05 y en las notas.
+- **Corregir 9 · mensaje 2:** «A mis herramientas las llamo como quiero. Tu regla no lo verá.» (62).
+- **Solape con V7:** una frase en s04 y tres chips en s05; s05 se dedica a «qué la rompe»; suma 218 s sin cambios; decisión 8.
+- **De «a tener en cuenta» (aplicados):** 2 (Sigma «no corre en el SIEM tal cual», tarjeta de 48 y columna «se traduce»), 4
+  (decisión 2 y respuesta distinta de la de V22), 5 (capítulo II «Qué mira cada regla»), 6 (`falsepositives` al orden de
+  recorte), 8 (par `meta`/`strings`/`condition` en voz), 9 (el molde del pipe), 10 (cierre «entre estas, la que más aguanta»).
+- **Recontado** con `check-v27-fix.mjs` (tarjetas 39, 55, 50, 48; pregunta 45; mensajes 63 y 62; suma 218 s).
+
+**Hallazgos no aplicados:**
+- **A tener en cuenta 3 (tarjeta «PE header»):** se deja la tarjeta como la lección y V7 (50 caracteres); el examen usa «PE
+  header» y la voz ya dice «por dentro del programa». Pasa a «A verificar» con el aviso de Sysmon, EDR y el evento 4688.
+- **A tener en cuenta 1 (pregunta que casi se contesta sola):** no aplicado en la propuesta, por ser decisión de Lidia según el
+  revisor; queda como decisión 7 y pregunta 4, con la variante lista.
+- **A tener en cuenta 7 (etiqueta del taller):** resuelto como decisión explícita (9), no como frase nueva.
+- Ninguna de las nueve correcciones resultó equivocada al contrastarla con `src/data/s5.ts` y `src/data/s2.ts`.
 
 ## 6. Prerrequisitos (bloqueantes, en orden)
 
