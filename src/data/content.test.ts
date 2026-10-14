@@ -301,6 +301,9 @@ describe('lesson videos', () => {
     // V20 replays sp1m3's flow in the port (a request to the ERP and who decides what), after the adaptive identity
     // check and before the paragraph that goes down to physical security
     expect(youtubeVideos.find((v) => v.block.youtube === 'u87izuH2GJc')?.module).toBe('sp1m3');
+    // V21 shows sp4m2's wireless section in the port (the signal that spills, SAE, enterprise mode and EAP), after the
+    // WPA3-Enterprise check and before mobile devices
+    expect(youtubeVideos.find((v) => v.block.youtube === '9qoRWsqMzps')?.module).toBe('sp4m2');
     // V14 turns s2m4's events into threads and groups, after the last check (Victim 2's partial thread) and before
     // the campaign callout that sends the learner to Labs 2A and 2B
     expect(youtubeVideos.find((v) => v.block.youtube === 'pjGQiqy0CdE')?.module).toBe('s2m4');
