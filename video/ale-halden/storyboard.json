@@ -1,0 +1,120 @@
+{
+  "title": "Riesgo en euros: de un evento al año",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 210,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Del adjetivo al euro"
+    },
+    {
+      "n": 2,
+      "title": "Del evento al año"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una casilla roja",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «comité de riesgos · R-014 · datos ficticios», sin fecha. Una matriz de riesgo de tres por tres (no «mapa de calor») con una casilla roja rotulada «R-014 · ALTO» (`heat`). Al lado, la pregunta del comité, sin respuesta: «¿cuánto?» (`ask`). La primera frase habla del comité, no del cálculo; al acabarla, título «El riesgo, en euros al año» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «lo que cuesta un evento · lo que cuesta al año · si el control sale a cuenta». Después la casilla roja se atenúa. La voz no dice R-014 ni «hoy»",
+      "requiredCues": [
+        "heat",
+        "ask",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-evento",
+      "chapter": 1,
+      "title": "Cuánto cuesta un evento",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "La línea de R-014 rotulada «si un ransomware cifrara el servidor de planificación de grúas del muelle norte», «análisis · sin efectos». El bloque «AV · 400.000 €» con la nota «servidor + licencias + datos operativos» (`asset`). Entra la etiqueta «PAPER GOVERNOR · sección 5» con «vive en los huecos de tu gobernanza» (`adversary`), presentada desde cero. Mensaje interceptado en acta. Respuesta: valor entero como pérdida es un EF de 1; el bloque pierde su cuarta parte (`ef`, `bite`: «EF · 0,25 · el 25 % del valor, en un solo evento»). Resultado «SLE = AV × EF = 400.000 × 0,25 = 100.000 €» con el rótulo «lo que cuesta UN evento» (`sle`, sonido `ding`). El móvil de 400 € en miniatura con la pantalla rota (`phone`)",
+      "requiredCues": [
+        "asset",
+        "adversary",
+        "ef",
+        "bite",
+        "sle",
+        "phone"
+      ]
+    },
+    {
+      "id": "s03-ano",
+      "chapter": 2,
+      "title": "Cuántas veces al año",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "El SLE de 100.000 € (`sle-in`) baja a una línea de diez cuadrados, uno por año (`years`). «ARO · 0,5» y, debajo, «una vez cada dos años» (`aro`); se marcan cinco años de diez en posiciones desiguales con el rótulo «esperados, no fijos». Debajo, «ALE = SLE × ARO = 100.000 × 0,5 = 50.000 € al año» (`ale`, sonido `ding`). Dos tarjetas lado a lado que no se cruzan: «EF · 0,25 · un trozo del valor» y «ARO · 0,5 · veces al año» (`factors`). Pregunta para pensar (`think`) con dos botones «12.000» y «108.000» sobre «otro riesgo · ejemplo · no es R-014» y «ALE 36.000 · ARO 3». El panel de la pregunta atenúa la cuenta de R-014 que queda debajo. Respuesta (`back`): 12.000, porque hacia atrás se divide; los 108.000 salen de multiplicar",
+      "requiredCues": [
+        "sle-in",
+        "years",
+        "aro",
+        "ale",
+        "factors",
+        "think",
+        "back"
+      ]
+    },
+    {
+      "id": "s04-control",
+      "chapter": 2,
+      "title": "Lo que cuesta el control",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "Dos barras anuales sobre la misma escala: «ALE de R-014 · 50.000 € / año» (`bars`) y, debajo, «Backup inmutable + EDR gestionado · 20.000 € / año» (`control`), con «ALE que elimina (estimación)». Entre las dos, «50.000 − 20.000 = 30.000 € al año» (`net`) y el veredicto «en los números, sale a cuenta» (`fits`, sonido `check`), con el sello «recomendación al comité · no contratado». Después, una segunda barra «Reconstrucción en alta disponibilidad · 90.000 € / año» (`alt`) que entra con la línea de la ALE tapada hasta `over`. Mensaje interceptado en acta; la barra sigue a la vista. En `over` se descubre la línea y la barra de 90.000 € la pasa (sonido `block`). Respuesta: el control se compara con la ALE anual, no con lo que cuesta un incidente. «Solo con estos números, no sale» y la nota «o hace falta otro argumento: una obligación legal, la seguridad de las personas, o que cubra además otros riesgos» (`annual`). El móvil con la funda de 20 € entra en `fits` (se dice una sola vez «se amortiza en un año»); la de 90 €, muda, entra con `alt`; las dos se atenúan en `annual`",
+      "requiredCues": [
+        "bars",
+        "control",
+        "net",
+        "fits",
+        "alt",
+        "over",
+        "annual"
+      ]
+    },
+    {
+      "id": "s05-aguanta",
+      "chapter": 2,
+      "title": "¿Y si nos equivocamos?",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "goal": "La misma cuenta con dos palancas que se mueven (`lever`): «ARO 0,5, ahora 0,2» y la ALE cae a «20.000 €», igual que el control: el rótulo «aquí empata» (`aro`, `empate`). Por debajo, el control cuesta más de lo que evita (`below`). Segunda palanca, «EF 0,25, ahora 0,10»: otra vez 20.000 € (`ef`). Los dos ejes con su lectura: «0,2 · una vez cada cinco años» y «0,10 · el 10 % del valor». Rótulo: «la cuenta vale lo que valen sus estimaciones» (`estimate`). Sello final: «R-014 · 50.000 € al año · una estimación para comparar» (`stamp`). No cita «un cálculo no es una decisión»",
+      "requiredCues": [
+        "lever",
+        "aro",
+        "empate",
+        "below",
+        "ef",
+        "estimate",
+        "stamp"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "goal": "Tres tarjetas de reglas, cada una con su icono (el móvil con la pantalla rota · el calendario de diez años · las dos barras anuales) (`recap`, `rule-1`, `rule-2`, `rule-3`); tarjeta final Alertópolis con una sola tarea: «Tu turno: Risk Math» (`next`, `endcard`)",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
