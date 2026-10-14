@@ -714,7 +714,7 @@ tira de V3. **La lección cambió con él:** `MapViewOfSection` pasa a `NtMapVie
 
 Lección `src/data/s2.ts:389-395` (bloque `video` después del tercer check, «Quarantining a host while its implant is actively
 beaconing is:», `:379-388`, como último bloque de la lección y antes del `quiz`, `:397`); 3:45 (6742 fotogramas a 30 fps,
-`video/coa-precios/src/timeline.json:7`), subido a Alertópolis el 2026-10-14 como privado (`video/coa-precios/out/youtube-upload.json:2-4`).
+`video/coa-precios/src/timeline.json:7`), subido a Alertópolis el 2026-10-14 como privado y publicado ese mismo día (`video/coa-precios/out/youtube-upload.json:2-4`).
 Cápsula (`capsula-yt`). Adversario de los interceptados GLASS VIPER (`video/coa-precios/video.json:8`), con la voz
 `sapi/Microsoft Pablo` y el efecto `machine` (`video/coa-precios/narration.json:11-15`). Notas propias en
 `video/coa-precios/out/script-notes.md`. **Sin fecha ni hora**, como V9 y V15: es posterior a la reconstrucción de la cadena
