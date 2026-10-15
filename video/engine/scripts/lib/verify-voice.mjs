@@ -18,7 +18,9 @@ export const LIMITS = Object.freeze({
 /** Words that may last long: spelled acronyms and numbers read letter by letter or digit by digit. */
 const SPELLED = /^[A-Z0-9][A-Z0-9.,\-]*$/;
 
-const keys = (text) => String(text ?? '').split(/\s+/).map(matchKey).filter(Boolean);
+// «50.000 €» in the script is heard as «50.000 euros»: compare the spoken form, or «euros al año» in two
+// sentences of one clip would look like a take that slipped in.
+const keys = (text) => String(text ?? '').replace(/€/g, ' euros ').split(/\s+/).map(matchKey).filter(Boolean);
 
 /**
  * Phrases of `n` words heard more often than the script says them, at least twice: the mark of a take that
@@ -53,7 +55,11 @@ export function clipFindings({ id, script, heard, head, tail, dropped, words = [
   for (const w of words) {
     const len = w.end - w.start;
     const bare = w.text.replace(/[¿?¡!«»".,;:]/g, '');
-    if (len > limits.longWordS && !SPELLED.test(bare) && !scriptTokens.has(bare.toUpperCase())) {
+    // Whisper glues the two words of a name («PaperGovernor») into one token: each extra capitalised part
+    // is another word, so it may last longer before it looks like a stretched half-said take.
+    const parts = (bare.match(/[A-ZÁÉÍÓÚÑ][a-záéíóúñü]*|[a-záéíóúñü]+/g) ?? []).length;
+    const allowed = limits.longWordS * (1 + 0.6 * Math.max(0, parts - 1));
+    if (len > allowed && !SPELLED.test(bare) && !scriptTokens.has(bare.toUpperCase())) {
       errors.push(`${id}: «${bare}» lasts ${len.toFixed(1)} s from ${w.start.toFixed(1)} s: a half-said take is hiding in the clip (map it with recut_recording.py --map)`);
     }
   }

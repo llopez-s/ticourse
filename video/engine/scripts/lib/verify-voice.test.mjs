@@ -85,3 +85,23 @@ test('clipFindings: spelled acronyms may be long, a long silence only asks to li
   assert.equal(f.warnings.length, 1);
   assert.match(f.warnings[0], /0\.7 s silence at 4\.0 s/);
 });
+
+test('clipFindings: V26 s01-03 «PaperGovernor» is two words glued by Whisper, not a stretched half-said take', () => {
+  const glued = clipFindings({
+    id: 's01-03',
+    script: 'Y vuelve PAPER GOVERNOR, que vive en los huecos de tu gobernanza.',
+    heard: 'Y vuelve PaperGovernor, que vive en los huecos de tu gobernanza.',
+    ...ok,
+    words: [{ text: 'PaperGovernor,', start: 0.7, end: 2.1 }],
+  });
+  assert.deepEqual(glued.errors, []);
+  // one word of the same length is still suspicious
+  const single = clipFindings({ id: 's01-03', script: 'Y vuelve.', heard: 'Y vuelve.', ...ok, words: [{ text: 'gobernanza', start: 0.7, end: 2.1 }] });
+  assert.ok(single.errors.some((e) => /lasts 1\.4 s/.test(e)));
+});
+
+test('repeatedPhrases: «50.000 € al año … 20.000 € al año» is the script saying «euros al año» twice', () => {
+  const script = 'La ALE son 50.000 € al año. Y el control cuesta 20.000 € al año.';
+  const heard = 'La ale son 50.000 euros al año y el control cuesta 20.000 euros al año.';
+  assert.deepEqual(repeatedPhrases(script, heard), []);
+});
