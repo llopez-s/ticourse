@@ -1,0 +1,20 @@
+Riesgo en euros: de un evento al año
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA
+
+[00:00] I · Del adjetivo al euro — Una casilla roja
+El comité de riesgos tiene una casilla roja, y así no se decide cuánto gastar. Alguien pregunta lo único que importa, ¿cuánto? Vas a ponerle número. Lo que cuesta un evento, lo que cuesta al año, y si el control sale a cuenta.
+
+[00:15] I · Del adjetivo al euro — Cuánto cuesta un evento
+Imagina que un ransomware cifrara el servidor de planificación de grúas. Su valor, el asset value, son 400.000 €. Y aquí llega PAPER GOVERNOR, que vive en los huecos de tu gobernanza. [Mensaje interceptado · PAPER GOVERNOR] «Se acuerda: el valor del servidor es la pérdida. Queda en acta.» Eso solo sería cierto si lo perdieras entero, y un evento casi nunca se lo lleva todo. Se pierde un porcentaje, el exposure factor, el EF. Aquí, 25 %. Multiplicas el valor por ese porcentaje y te salen 100.000 € por un solo evento, y eso es el SLE. O sea, que un golpe cuesta un trozo. Como cuando a un móvil de 400 € se le rompe la pantalla.
+
+[01:00] II · Del evento al año — Cuántas veces al año
+Un golpe cuesta 100.000 €, y tú quieres saber lo que pierdes al año. Fíjate en diez años. Necesitas saber cuántas veces pasa al año, el ARO, el annualized rate of occurrence. 0,5 es una vez cada dos años. Cinco golpes esperados en diez años. Multiplicas lo que cuesta un golpe por las veces al año, y esa es la ALE. Esperas perder 50.000 € cada año. Ojo, no los confundas. El EF es un trozo del valor, y el ARO, veces al año. Ahora al revés, con otro riesgo de ejemplo. Este espera perder 36.000 € al año, y le pasa tres veces. ¿Cuánto es el SLE? 12.000 €. Hacia atrás se divide, no se multiplica. Los 108.000 € son la trampa.
+
+[01:53] II · Del evento al año — Lo que cuesta el control
+La ALE son 50.000 € al año. Y el control, copias y EDR, cuesta 20.000 € al año. Los dos son anuales, así que se comparan sin más, y quedan 30.000 € de diferencia. En los números, sale a cuenta, como una funda de veinte euros que se amortiza en un año. Pero reconstruir con alta disponibilidad cuesta 90.000 € al año. [Mensaje interceptado · PAPER GOVERNOR] «Se acuerda: el control cuesta menos que un incidente. Queda en acta.» Menos que un incidente, vale. Pero un incidente es un solo golpe, y el control lo pagas cada año. Se compara con la ALE, y 90.000 € pasa de 50.000 €. Así no sale a cuenta. Haría falta otra razón: una obligación legal, la seguridad de las personas, o cubrir más riesgos.
+
+[02:41] II · Del evento al año — ¿Y si nos equivocamos?
+¿Y si nos equivocamos? Todo esto es estimación. Supón que el ARO baja a 0,2, una vez cada cinco años. La ALE cae a 20.000 €, justo lo que cuesta el control. Empata. Y con una ALE por debajo de veinte mil, el control cuesta más de lo que evita. Con el ARO de vuelta en 0,5, baja el EF al 10 %, y otra vez veinte mil. El EF es la parte que se pierde, y el ARO, las veces al año. La cuenta vale lo que valen sus estimaciones. O sea, que 50.000 € al año es una estimación para comparar.
+
+[03:14] III · Para el examen — Tres reglas
+Tres reglas. Primera, un evento no se lo lleva todo, y el EF es un porcentaje. Segunda, al año multiplicas por el ARO, que son veces al año, y hacia atrás divides. Y tercera, la ALE se compara con lo que cuesta el control al año. Si no sale, hace falta otra razón. Y para practicarlo, tu turno, el laboratorio Risk Math.

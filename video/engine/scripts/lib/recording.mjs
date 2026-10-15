@@ -323,10 +323,14 @@ export function cutPoints(located, words, silences, totalMs, { maxLeadMs = null 
 
 /** Clip edges of one run of words ({first, last}), as cutPoints describes. */
 function cutEdges(f, words, silences, totalMs, maxLeadMs = null) {
+  // Whisper writes a figure like «50.000» as «50» + «.000» and times the first part short, so the fragments that
+  // follow at once are the rest of the same word, not the next one (V25 s04-06 was cut inside «cincuenta mil»).
+  let last = f.last;
+  while (last + 1 < words.length && /^[.,]\d{1,3}[.,]?$/.test(words[last + 1].text.trim()) && words[last + 1].startMs - words[last].endMs <= 200) last++;
   const rawStart = words[f.first].startMs;
-  const rawEnd = words[f.last].endMs;
+  const rawEnd = words[last].endMs;
   const prevEnd = f.first > 0 ? words[f.first - 1].endMs : 0;
-  const nextStart = f.last + 1 < words.length ? words[f.last + 1].startMs : totalMs;
+  const nextStart = last + 1 < words.length ? words[last + 1].startMs : totalMs;
   // With no silence at an edge, a long pause that starts inside the word across it means that word is mistimed:
   // Whisper dropped a word and stretched its neighbour over the dropped audio (V4 s02-03: «júis» was never
   // transcribed, so «Y» got 70.12–71.18 s with the pause after «júis», 70.82–72.04, starting inside it). Both
@@ -362,7 +366,7 @@ function cutEdges(f, words, silences, totalMs, maxLeadMs = null) {
     (s) => s.startMs,
     rawEnd,
   );
-  const tailPause = tail ? null : mistimedPause(words[f.last + 1]);
+  const tailPause = tail ? null : mistimedPause(words[last + 1]);
   const endMs = tail
     ? Math.min(tail.endMs, nextStart, tail.startMs + POST_ROLL_MS)
     : tailPause
@@ -409,8 +413,11 @@ const rangesMs = (ranges) => ranges.reduce((sum, r) => sum + r.endMs - r.startMs
 
 /** Word boundaries of one clip (words[first..last]) made of `ranges`, in the TTS record format. */
 export function clipWords(words, first, last, ranges, parts = null) {
+  // The «.000» Whisper splits off a figure is part of the clip (cutEdges keeps its audio), so its word stays too.
+  let end = last;
+  while (end + 1 < words.length && /^[.,]\d{1,3}[.,]?$/.test(words[end + 1].text.trim()) && words[end + 1].startMs - words[end].endMs <= 200) end++;
   // A spliced take keeps only its parts' words; the dropped ones are not in the clip.
-  const kept = parts ? parts.flatMap((p) => words.slice(p.first, p.last + 1)) : words.slice(first, last + 1);
+  const kept = parts ? parts.flatMap((p) => words.slice(p.first, p.last + 1)) : words.slice(first, end + 1);
   return kept.map((w) => {
     const offsetMs = clipTime(w.startMs, ranges);
     return { text: w.text, offsetMs, durationMs: Math.max(1, clipTime(w.endMs, ranges) - offsetMs) };
