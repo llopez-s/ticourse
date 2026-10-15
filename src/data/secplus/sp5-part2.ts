@@ -178,6 +178,17 @@ R-014: un ransomware cifra el servidor de planificación de grúas del muelle no
     },
     {
       t: 'p',
+      md: 'Antes de pasar a la siguiente lección, míralo en el puerto: lo que cuesta un evento, lo que cuesta al año y cuándo un control sale a cuenta.',
+    },
+    {
+      t: 'video',
+      title: 'Riesgo en euros: de un evento al año',
+      youtube: 'KEDZnHP4rZE',
+      poster: 'videos/ale-halden-poster.png',
+      transcript: 'videos/ale-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Con esto ya sabes ponerle número a un riesgo, y eso es la mitad del objetivo 5.2. La otra mitad es que **un cálculo no es una decisión**: alguien tiene que escribir ese riesgo en algún sitio donde no se pierda, ponerle dueño, decidir cuánto está dispuesta la organización a asumir y elegir qué se hace con él. La siguiente lección cierra el objetivo por ese otro extremo —el **risk register** y sus **KRIs**, el **risk appetite** frente a la **risk tolerance**, las cuatro estrategias de respuesta (**mitigate**, **transfer**, **accept**, **avoid**), el **risk reporting** a la dirección— y termina traduciendo el riesgo a plazos concretos de recuperación con el **business impact analysis**: **RTO**, **RPO**, **MTTR** y **MTBF**.',
     },
   ],

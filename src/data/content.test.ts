@@ -315,6 +315,9 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'P9nft88qkZs')?.module).toBe('sp4m5');
     // V19 walks sp2m4's three text boxes after the stored-XSS check and before the exam note on the two reflexes
     expect(youtubeVideos.find((v) => v.block.youtube === '5yD7BO4UYGQ')?.module).toBe('sp2m4');
+    // V25 puts numbers on R-014 (SLE, ALE and the control against the ALE), after the last check of sp5m3 and before
+    // the paragraph that hands over to the risk register
+    expect(youtubeVideos.find((v) => v.block.youtube === 'KEDZnHP4rZE')?.module).toBe('sp5m3');
     // V26 replays sp5m4's BIA (what is promised and what is measured), after the last check and before the paragraph
     // that hands over to third parties
     expect(youtubeVideos.find((v) => v.block.youtube === 'szeeKG5zfYI')?.module).toBe('sp5m4');
