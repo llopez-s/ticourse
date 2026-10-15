@@ -16,6 +16,11 @@ fichas (`ficha-V24..V27.md`) y de las dos revisiones (`revision-secplus.md`, `re
 4. **Pronunciaciones:** `GOVERNOR` «gávernor» y `ARO` «a erre o» en las dos fichas. (Se confirman con la audición de Lidia.)
 5. **Cifras:** V25 usa las de R-014 de la lección, sin fecha. V26 no pone ninguna cifra en euros.
 
+## Decidido por Lidia (2026-10-15)
+
+- **Voz de PAPER GOVERNOR: Laura + `megafonia`, `rate` −1**, tras la prueba de oído (V25 y V26). Es la que ya llevan
+  `video/ale-halden/narration.json` y `video/bia-halden/narration.json`; la reserva (Pablo + `cifrado`) queda descartada.
+
 ## V24
 
 - El teatro no usa «almacén» ni «foco» (imágenes ocupadas por V20 y V21): el decorado «guardado en el camerino» o «en un camión»
