@@ -422,6 +422,17 @@ const sp5m4: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a los proveedores, míralo con el negocio: qué dos números se prometen y cómo se comprueba que se cumplen.',
+    },
+    {
+      t: 'video',
+      title: 'RTO, RPO, MTTR y MTBF: lo que se promete y lo que se mide',
+      youtube: 'szeeKG5zfYI',
+      poster: 'videos/bia-halden-poster.png',
+      transcript: 'videos/bia-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Ya tienes el ciclo de riesgo completo por dentro: identificar, evaluar, analizar, registrar, decidir, reportar y planificar la recuperación. Pero la Autoridad Portuaria de Halden no opera sola: el software de planificación lo hace un fabricante, la nube es de un proveedor, la seguridad física la lleva una contrata y los datos aduaneros viajan a una plataforma de un tercero. Cada uno de esos contratos importa riesgo que no controlas directamente y que, aun así, sigue siendo tuyo ante el regulador. La siguiente lección se ocupa precisamente de eso, el objetivo 5.3: cómo se evalúa a un proveedor **antes** de firmar, qué cláusulas hay que negociar mientras todavía tienes poder de negociación —empezando por la **right-to-audit clause**— y qué acuerdo sirve para cada cosa entre **SLA**, **MOU/MOA**, **MSA**, **SOW**, **NDA** y **BPA**.',
     },
   ],
