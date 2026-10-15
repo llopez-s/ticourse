@@ -1,258 +1,258 @@
 WEBVTT
 
 1
-00:00:01.400 --> 00:00:06.467
+00:00:01.400 --> 00:00:06.133
 ¿Cuánto tarda en volver un sistema?
 Enseguida. ¿Y cuántos datos se pierden?
 
 2
-00:00:06.467 --> 00:00:10.267
+00:00:06.133 --> 00:00:10.233
 Poca cosa. Dos respuestas,
 y ninguna es un número.
 
 3
-00:00:10.267 --> 00:00:15.367
+00:00:10.267 --> 00:00:13.067
 Y lo que no tiene número
 no se puede cumplir ni incumplir.
 
 4
-00:00:15.367 --> 00:00:20.667
+00:00:13.067 --> 00:00:17.300
 Vas a ver qué se promete,
 cómo se mide y cómo se compara.
 
 5
-00:00:20.667 --> 00:00:26.367
+00:00:17.300 --> 00:00:22.367
 Y vuelve PAPER GOVERNOR, que vive
 en los huecos de tu gobernanza.
 
 6
-00:00:26.800 --> 00:00:31.667
+00:00:23.133 --> 00:00:27.667
 Para ponerle número, empiezas preguntando
 al negocio, no a los servidores.
 
 7
-00:00:31.667 --> 00:00:34.667
+00:00:27.667 --> 00:00:31.167
 Eso es el business
 impact analysis, el BIA.
 
 8
-00:00:34.667 --> 00:00:37.667
+00:00:31.167 --> 00:00:33.833
 Facturación emite
 las facturas a las navieras.
 
 9
-00:00:37.667 --> 00:00:41.333
+00:00:33.833 --> 00:00:37.567
 Y Operaciones sigue las llegadas
 y salidas de buques.
 
 10
-00:00:41.333 --> 00:00:46.767
+00:00:37.567 --> 00:00:41.300
 A cada uno le preguntas cuánto aguanta
 parado y cuántos datos puede perder.
 
 11
-00:00:46.767 --> 00:00:51.033
+00:00:41.300 --> 00:00:45.267
 Y de paso, cuánto duele
 cada hora sin servicio.
 
 12
-00:00:54.200 --> 00:00:57.600
+00:00:52.567 --> 00:00:55.167
 Cero minutos para todo
 suena a lo más prudente,
 
 13
-00:00:57.600 --> 00:01:02.867
+00:00:55.167 --> 00:00:59.767
 pero cuanto más corto es el plazo,
 más capacidad tienes que comprar.
 
 14
-00:01:02.867 --> 00:01:08.567
+00:00:59.767 --> 00:01:04.067
 Por eso el BIA ordena los procesos
 según cuánto aguanta cada uno.
 
 15
-00:01:09.333 --> 00:01:13.800
+00:01:05.100 --> 00:01:09.300
 Imagina esas dos preguntas en una
 cafetería, con la caja estropeada.
 
 16
-00:01:13.800 --> 00:01:16.633
+00:01:09.300 --> 00:01:12.267
 Una es cuánto puede
 estar sin servir, y otra,
 
 17
-00:01:16.633 --> 00:01:19.600
+00:01:12.267 --> 00:01:15.033
 cuántas ventas apuntadas puedes perder.
 
 18
-00:01:19.600 --> 00:01:22.833
+00:01:15.033 --> 00:01:18.700
 Ese reloj es el RTO,
 el recovery time objective,
 
 19
-00:01:22.833 --> 00:01:27.467
+00:01:18.700 --> 00:01:22.667
 y marca la capacidad de recuperación
 que necesitas tener lista.
 
 20
-00:01:27.467 --> 00:01:33.433
+00:01:22.667 --> 00:01:28.567
 Y esa libreta es el RPO, el recovery point
 objective, los datos que puedes perder,
 
 21
-00:01:33.433 --> 00:01:35.733
+00:01:28.567 --> 00:01:31.233
 y marca cada cuánto copias.
 
 22
-00:01:35.733 --> 00:01:38.933
+00:01:31.233 --> 00:01:34.167
 Cada proceso tiene los suyos,
 y los rellenas.
 
 23
-00:01:38.933 --> 00:01:43.300
+00:01:34.167 --> 00:01:37.300
 Operaciones aguanta media hora
 y puede perder un día de datos.
 
 24
-00:01:43.300 --> 00:01:47.200
+00:01:37.300 --> 00:01:41.300
 Facturación, dos días,
 y casi no puede perder nada.
 
 25
-00:01:47.200 --> 00:01:52.900
+00:01:41.300 --> 00:01:46.967
 Facturación puede esperar dos días.
 Entonces, ¿basta con una copia al día?
 
 26
-00:01:56.767 --> 00:02:01.833
+00:01:51.200 --> 00:01:56.100
 No. Casi no puede perder nada,
 así que copias cada cinco minutos.
 
 27
-00:02:01.833 --> 00:02:08.500
+00:01:56.100 --> 00:02:02.433
 Los dos días son el RTO y mandan sobre la
 capacidad, y los cinco minutos, el RPO,
 
 28
-00:02:08.500 --> 00:02:10.233
+00:02:02.433 --> 00:02:04.067
 sobre la copia.
 
 29
-00:02:10.233 --> 00:02:15.533
+00:02:04.067 --> 00:02:08.167
 O sea, que poder esperar
 mucho no te deja perder datos.
 
 30
-00:02:16.200 --> 00:02:17.633
+00:02:09.267 --> 00:02:11.133
 Ahora, lo que mides.
 
 31
-00:02:17.633 --> 00:02:22.067
+00:02:11.133 --> 00:02:15.067
 El registro de averías de llegadas
 y salidas tiene cuatro.
 
 32
-00:02:22.067 --> 00:02:26.400
+00:02:15.067 --> 00:02:18.567
 La primera duró cuarenta minutos,
 la segunda noventa y cinco,
 
 33
-00:02:26.400 --> 00:02:30.333
+00:02:18.567 --> 00:02:22.333
 la tercera ciento veinte
 y la cuarta sesenta y cinco.
 
 34
-00:02:30.333 --> 00:02:34.200
+00:02:22.333 --> 00:02:26.567
 Y Operaciones, recuerda,
 tiene un RTO de media hora.
 
 35
-00:02:34.200 --> 00:02:39.700
+00:02:26.567 --> 00:02:32.167
 De media se tardan ochenta minutos
 en dejarlo funcionando, y eso es el MTTR,
 
 36
-00:02:39.700 --> 00:02:45.500
+00:02:32.167 --> 00:02:36.633
 el tiempo medio de reparación.
 Las cuatro tardan más de media hora.
 
 37
-00:02:48.667 --> 00:02:52.567
+00:02:43.267 --> 00:02:45.933
 Eso es poner en el papel lo que ya pasa.
 
 38
-00:02:52.567 --> 00:03:00.067
+00:02:45.933 --> 00:02:51.667
 El RTO sale de lo que el negocio aguanta,
 y el MTTR, de lo que se mide.
 
 39
-00:03:00.067 --> 00:03:05.367
+00:02:51.667 --> 00:02:55.433
 Como en la cafetería, el técnico
 de la caja tarda lo que tarda.
 
 40
-00:03:05.367 --> 00:03:07.933
+00:02:55.433 --> 00:02:57.600
 Eso se mide, no se promete.
 
 41
-00:03:07.933 --> 00:03:11.400
+00:02:57.600 --> 00:03:00.600
 Si fueran tus números,
 el plan no se cumpliría,
 
 42
-00:03:11.400 --> 00:03:16.033
+00:03:00.600 --> 00:03:04.400
 y habría que mejorar
 la recuperación, no el papel.
 
 43
-00:03:16.700 --> 00:03:21.900
+00:03:05.400 --> 00:03:09.800
 Y ese mismo registro dice otra cosa.
 Hay cuatro averías en doce meses.
 
 44
-00:03:21.900 --> 00:03:25.767
+00:03:09.800 --> 00:03:13.467
 Repartidas, es una cada tres
 meses, más o menos.
 
 45
-00:03:25.767 --> 00:03:29.633
+00:03:13.467 --> 00:03:17.900
 Eso es el MTBF,
 el tiempo medio entre fallos.
 
 46
-00:03:29.633 --> 00:03:36.633
+00:03:17.900 --> 00:03:25.167
 El MTTR es cuánto tarda en volver, y el
 MTBF, cada cuánto falla. No los confundas.
 
 47
-00:03:36.633 --> 00:03:43.133
+00:03:25.167 --> 00:03:29.500
 O sea, que uno dice cuánto tarda
 el técnico en arreglar la caja, y el otro,
 
 48
-00:03:43.133 --> 00:03:45.533
+00:03:29.500 --> 00:03:31.700
 lo fiable que es.
 
 49
-00:03:46.200 --> 00:03:51.667
+00:03:32.667 --> 00:03:38.200
 Tres reglas. Primera, el RTO
 es de tiempo y el RPO, de datos.
 
 50
-00:03:51.667 --> 00:03:59.533
+00:03:38.200 --> 00:03:46.667
 Segunda, el MTTR y el MTBF se miden, no se
 prometen. Y el MTTR se compara con el RTO.
 
 51
-00:03:59.533 --> 00:04:05.400
+00:03:46.667 --> 00:03:51.500
 Y tercera, si lo medido no llega
 a lo prometido, se mejora la recuperación,
 
 52
-00:04:05.400 --> 00:04:06.600
+00:03:51.500 --> 00:03:52.633
 no el papel.
 
 53
-00:04:06.600 --> 00:04:11.500
+00:03:52.633 --> 00:03:56.800
 Y para practicarlo, tu turno,
 las preguntas de la lección.

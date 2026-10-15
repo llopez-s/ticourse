@@ -54,6 +54,26 @@ def main(argv: list[str] | None = None) -> int:
     clips = parse_clips(args.clips)
 
     from faster_whisper import WhisperModel
+    from faster_whisper.transcribe import WhisperModel as _WhisperModel
+
+    # faster-whisper raises IndexError in find_alignment on a segment it cannot align (a few
+    # non-speech frames) and takes the whole batch down. Align the batch; if it fails, align the
+    # segments one by one and leave the failing ones without word timings (empty alignment).
+    _find_alignment = _WhisperModel.find_alignment
+
+    def _safe_find_alignment(self, tokenizer, text_tokens, *a, **k):
+        try:
+            return _find_alignment(self, tokenizer, text_tokens, *a, **k)
+        except IndexError:
+            out = []
+            for tokens in text_tokens:
+                try:
+                    out.extend(_find_alignment(self, tokenizer, [tokens], *a, **k))
+                except IndexError:
+                    out.append([])
+            return out
+
+    _WhisperModel.find_alignment = _safe_find_alignment
 
     started = time.monotonic()
     log(f"recording_asr: loading whisper {args.model} on CPU…")
