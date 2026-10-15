@@ -24,6 +24,8 @@ const TILL = 92;
 const TILL_TOP = 78;
 const CLUSTER_X = (i: number) => 120 + i * 84;
 const VIOLET = '#c4b5fd';
+const TAG_W = 200;
+const TAG_RIGHT = 1716;
 
 // ---- The two measures, side by side below the console.
 const CARD_TOP = 478;
@@ -53,6 +55,10 @@ export function S05Fallos(props: SceneProps) {
   const tagIn = progress(frame, fourAt + 14, 14);
   const mtbfIn = springIn(frame, 30, mtbfAt + 2, { damping: 15 });
   const sideDim = progress(frame, sideAt - 4, 18, EASE.inOut);
+  // The café tag rides beside the last till, wherever it is (cluster → its month).
+  const lastTill = MARK_MONTHS.length - 1;
+  const lastSlide = progress(frame, repartidasAt + 4 + lastTill * 9, 24, EASE.inOut);
+  const tagX = Math.min(TAG_RIGHT - TAG_W, mix(CLUSTER_X(lastTill), monthX(MARK_MONTHS[lastTill]), lastSlide) + TILL / 2 + 12);
   const swapIn = enter(frame, swapAt, { distance: 10, duration: 14 });
   const cardIn = [springIn(frame, 30, sideAt, { damping: 15 }), springIn(frame, 30, sideAt + 14, { damping: 15 })];
 
@@ -103,7 +109,33 @@ export function S05Fallos(props: SceneProps) {
           <div style={{ position: 'absolute', left: LINE_X0, top: LINE_Y - 2, width: (LINE_X1 - LINE_X0) * lineP, height: 4, borderRadius: 2, background: C.cyanSoft, boxShadow: `0 0 12px ${alpha(C.cyan, 0.45)}` }} />
           <div style={{ position: 'absolute', left: LINE_X0 - 8, top: LINE_Y + 24, fontFamily: FONT.sans, fontSize: 26, fontWeight: 600, color: C.muted, whiteSpace: 'nowrap', opacity: axisIn }}>{AXIS.start}</div>
           <div style={{ position: 'absolute', right: 1724 - LINE_X1 - 8, top: LINE_Y + 24, fontFamily: FONT.sans, fontSize: 26, fontWeight: 600, color: C.muted, whiteSpace: 'nowrap', opacity: axisIn }}>{AXIS.end}</div>
-          <div style={{ position: 'absolute', left: 0, width: 1724, top: LINE_Y + 28, textAlign: 'center', fontFamily: FONT.sans, fontSize: 22, fontWeight: 600, color: C.muted, letterSpacing: 0.4, opacity: tagIn }}>{TECHNICIAN.tag}</div>
+          {/* «imagen · no es del puerto»: it labels the little tills only (the café's), so it rides next to the last one */}
+          <div
+            style={{
+              position: 'absolute',
+              left: tagX,
+              top: TILL_TOP + 16,
+              width: TAG_W,
+              boxSizing: 'border-box',
+              padding: '5px 10px',
+              borderRadius: RADIUS.md,
+              border: `2px dashed ${alpha(C.muted, 0.7)}`,
+              fontFamily: FONT.sans,
+              fontSize: 22,
+              fontWeight: 650,
+              lineHeight: 1.2,
+              color: C.muted,
+              textAlign: 'center',
+              opacity: tagIn,
+            }}
+          >
+            {TECHNICIAN.tag.split(' · ').map((part, i, all) => (
+              <div key={part} style={{ whiteSpace: 'nowrap' }}>
+                {part}
+                {i < all.length - 1 ? ' ·' : ''}
+              </div>
+            ))}
+          </div>
 
           {/* the four faults: a cluster at `four`, spread over the line on `line` */}
           {MARK_MONTHS.map((m, i) => {

@@ -6,6 +6,7 @@ import { Icon, dimStyle, mix, windowWeight } from '../../../engine/src/ui';
 import { GLOBES, PROMISE, TITLE } from '../data/s01-hook';
 import { AdversaryTag } from './parts/s01-hook/AdversaryTag';
 import { GLOBE, GLOBE_ROW_W, GlobeRow, Seal } from './parts/s01-hook/Globes';
+import { TRANSITION_FRAMES } from '../../../engine/src/timeline/load';
 import { Stage, wordFrame } from './kit';
 
 const S = 's01-hook';
@@ -62,7 +63,12 @@ export function S01Hook(props: SceneProps) {
   const toTag = progress(frame, advAt - 8, 18, EASE.inOut);
   const groupY = mix(GROUP_Y_A, GROUP_Y_B, progress(frame, titleAt - 8, 26, EASE.inOut));
   // Dimmed on `fade`, a ghost once the title takes the room.
-  const groupStyle = { ...dimStyle(0.5 * hollow + 0.5 * toGhost), opacity: (1 - 0.6 * hollow) * (1 - 0.7 * toGhost) * (1 - 0.9 * toTag) };
+  const groupStyle = { ...dimStyle(0.5 * hollow + 0.5 * toGhost), opacity: (1 - 0.6 * hollow) * (1 - 0.7 * toGhost) * (1 - toTag) };
+
+  // The tag takes the room: nothing of the globes may remain behind it (not even a 1 % ghost).
+  const showGlobes = toTag < 0.999;
+  // Everything is gone before s02 starts to fade in, so none of its chips shows through the title or the tag.
+  const leave = progress(frame, props.durationInFrames - TRANSITION_FRAMES - 12, 12, EASE.inOut);
 
   // ---- Title and promise.
   const titleIn = enter(frame, titleAt, { distance: 22, duration: 18 });
@@ -75,21 +81,23 @@ export function S01Hook(props: SceneProps) {
   const gapGlow = windowWeight(frame, gapAt, Number.POSITIVE_INFINITY, { ramp: 14 });
 
   return (
-    <Stage>
+    <Stage style={{ opacity: 1 - leave }}>
       {/* The seal of the proposal */}
       <div style={{ position: 'absolute', left: 0, top: 0, width: W, display: 'flex', justifyContent: 'center', opacity: settle, ...dimStyle(0.35 * toGhost) }}>
         <Seal />
       </div>
 
       {/* The two globes: question, arrow, vague answer */}
-      <div style={{ position: 'absolute', left: GROUP_X, top: groupY, ...groupStyle }}>
-        {GLOBES.map((g, i) => (
-          <div key={g.cue} style={{ position: 'absolute', left: 0, top: i * (GLOBE.h + ROW_GAP) }}>
-            <GlobeRow ask={g.ask} answer={g.answer} askIn={askIn[i]} ansIn={ansIn[i]} hollow={hollow} />
-          </div>
-        ))}
-        <div style={{ width: GLOBE_ROW_W, height: 2 * GLOBE.h + ROW_GAP }} />
-      </div>
+      {showGlobes ? (
+        <div style={{ position: 'absolute', left: GROUP_X, top: groupY, ...groupStyle }}>
+          {GLOBES.map((g, i) => (
+            <div key={g.cue} style={{ position: 'absolute', left: 0, top: i * (GLOBE.h + ROW_GAP) }}>
+              <GlobeRow ask={g.ask} answer={g.answer} askIn={askIn[i]} ansIn={ansIn[i]} hollow={hollow} />
+            </div>
+          ))}
+          <div style={{ width: GLOBE_ROW_W, height: 2 * GLOBE.h + ROW_GAP }} />
+        </div>
+      ) : null}
 
       {/* Title */}
       {frame >= titleAt - 2 ? (
