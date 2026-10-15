@@ -1,8 +1,8 @@
 /** s01-hook «Una casilla roja» — on-screen strings (canon: out/scene-brief.md, «Canon strings»). */
 import type { IconName } from '../../../engine/src/ui';
 
-/** The committee's stamp, no date: «comité de riesgos · R-014 · datos ficticios». */
-export const STAMP = { what: 'comité de riesgos', id: 'R-014', seal: 'datos ficticios' } as const;
+/** The committee's stamp, no date and no «datos ficticios» (the engine's own tag already says it): «comité de riesgos · R-014». */
+export const STAMP = { what: 'comité de riesgos', id: 'R-014' } as const;
 
 /** The one lit cell of the 3 × 3 matrix. */
 export const CELL_LABEL = 'R-014 · ALTO';

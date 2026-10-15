@@ -9,7 +9,7 @@ function Dot() {
   return <span style={{ fontWeight: 700, color: C.faint }}>·</span>;
 }
 
-/** The committee's stamp: «comité de riesgos · R-014 · datos ficticios» (no date). */
+/** The committee's stamp: «comité de riesgos · R-014» (no date; «datos ficticios» is the engine's tag). */
 export function CommitteeStamp() {
   return (
     <div
@@ -32,8 +32,6 @@ export function CommitteeStamp() {
       <span style={{ fontWeight: 800, color: C.textStrong }}>{STAMP.what}</span>
       <Dot />
       <span style={{ fontFamily: FONT.mono, fontWeight: 800, color: C.cyanSoft }}>{STAMP.id}</span>
-      <Dot />
-      <span style={{ fontWeight: 650, color: C.muted }}>{STAMP.seal}</span>
     </div>
   );
 }
