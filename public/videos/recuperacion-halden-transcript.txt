@@ -1,0 +1,20 @@
+Recuperación ante desastres: dónde sigues, qué prueba demuestra qué y cuándo una copia es una copia
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA
+
+[00:00] I · El sitio de respaldo — Si el centro de datos no está
+Imagina que mañana el centro de datos del puerto ya no está. ¿Dónde sigue todo? Y el reloj corre. Vas a revisar su recuperación ante desastres. Qué sitio elegir, qué prueba demuestra qué, y cuándo una copia vuelve. Y vuelve BLIND ARCHITECT, que vive de los planos con atajos.
+
+[00:22] I · El sitio de respaldo — Un teatro de reserva
+Primero, dónde sigues. Piensa en teatros de reserva, de tres tipos según cuánto tengan montado. En el primero, el decorado está montado, y sigues en minutos. Es un hot site. En el segundo, el escenario está listo, como las máquinas, y el decorado, como los datos, sigue en el camerino. Tardas horas o un día. Es un warm site. El tercero es una sala vacía con luz. Máquinas y datos los llevas tú, y tardas días o semanas. Un cold site. Los tres se pagan todo el año, y cuanto más rápido, más caro. Eliges según lo que aguante parado cada servicio. [Mensaje interceptado · BLIND ARCHITECT] «¿Un segundo centro lejos? Al lado replica mejor. Menos es más.» Es verdad, cuanto más cerca, más fácil replicar. Pero si está enfrente, solo cumple el papeleo. Una inundación se lleva los dos teatros si están en la misma calle. O sea, que los pones lejos, y eso es la geographic dispersion.
+
+[01:27] II · Probarlo — Cuatro formas de probarlo
+Ahora, a probarlo, en cuatro escalones, cada uno más real y más arriesgado. Abajo del todo, el equipo repasa el plan hablando, sentado a una mesa. Lo llaman tabletop exercise. Un escalón más arriba, el equipo responde de verdad a un escenario, sin mover producción. Es la simulation. En el tercero, el respaldo procesa lo mismo que producción, a la vez. Como dos teatros con la misma función, uno sin público. Comparas, y si sale igual, el respaldo funciona sin parar nada. Se llama parallel processing. O sea, que hasta aquí nadie toca producción. Y eso deja algo sin probar.
+
+[02:10] II · Probarlo — Quién demuestra qué
+Te piden que la aplicación pase de verdad al sitio de reserva, con sus usuarios y todo lo que cuelga de ella. ¿Eso lo demuestra el paralelo, o el fail over? El fail over. El paralelo prueba el respaldo, pero nadie cambia de sitio, y te piden justo ese cambio. Conmutas la producción de verdad, como si el público entrara esta noche en el otro teatro. Es la única que prueba el cambio entero. Y es la que más arriesga, así que va en una ventana de mantenimiento, con su plan de vuelta atrás. La mesa valida el plan, y el fail over, el sistema.
+
+[03:00] II · Probarlo — La copia en verde
+Y las copias. Un trabajo de copia sale en verde cada noche. Como un paraguas plegado con su pegatina de revisado, que nadie ha abierto. [Mensaje interceptado · BLIND ARCHITECT] «¿Probar las copias? Si salen en verde, ya valen. Menos es más.» El verde dice que el trabajo terminó, no que la copia vuelva. Si la restauras el día que la necesitas y los archivos no sirven, te enteras en pleno chaparrón. Así que el paraguas se abre antes. Restauras una copia aparte, compruebas que funciona y cronometras cuánto tarda. Y dos que no cuentan como copias. El snapshot, en el mismo almacenamiento, y la réplica, que copia también el daño. O sea, que una copia es una copia cuando ha vuelto.
+
+[03:50] III · Para el examen — Tres reglas
+Tres reglas. Eliges el sitio por lo que ya tiene montado, y lo bastante lejos. Segunda, cada prueba demuestra una cosa, y solo el fail over, el cambio. Y tercera, una copia sin restaurar no es una copia. Tu turno, el laboratorio Continuity Ladder. Y si te dicen que menos es más, abre el paraguas.
