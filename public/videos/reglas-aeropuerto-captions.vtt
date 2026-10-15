@@ -1,0 +1,261 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:05.633
+Un dominio, una dirección,
+un hash… caducan enseguida.
+
+2
+00:00:05.633 --> 00:00:08.067
+Y el SOC te pide algo que dure.
+
+3
+00:00:08.067 --> 00:00:11.233
+Dale dos reglas, de YARA y de Sigma.
+
+4
+00:00:11.233 --> 00:00:16.833
+Verás qué mira cada una,
+cuándo salta de más y qué la rompe.
+
+5
+00:00:16.833 --> 00:00:21.000
+Eres la analista de Meridian,
+una aeroespacial. Ya sabes qué detectar.
+
+6
+00:00:21.000 --> 00:00:22.933
+Toca escribirlo.
+
+7
+00:00:23.567 --> 00:00:29.033
+Piensa en un aeropuerto. El escáner
+de equipaje mira dentro de la maleta.
+
+8
+00:00:29.033 --> 00:00:35.300
+Una regla que mira dentro de un fichero,
+o de la memoria, es de YARA.
+
+9
+00:00:35.300 --> 00:00:40.767
+La puerta de embarque apunta quién pasa,
+con qué tarjeta y qué pasaporte.
+
+10
+00:00:40.767 --> 00:00:46.233
+Una que lee lo que ha pasado,
+en los registros, es de Sigma.
+
+11
+00:00:46.233 --> 00:00:51.067
+O sea, YARA mira lo que hay
+dentro, y Sigma, lo que ocurre.
+
+12
+00:00:51.067 --> 00:00:54.333
+Empezamos por la de dentro.
+
+13
+00:00:58.467 --> 00:01:01.967
+Depende. Una palabra
+corriente salta con todos.
+
+14
+00:01:01.967 --> 00:01:05.933
+Una que solo lleva su programa,
+esa sí puede ir sola.
+
+15
+00:01:05.933 --> 00:01:11.000
+La regla tiene tres partes. El contexto,
+meta. Las cadenas que busca, strings.
+
+16
+00:01:11.000 --> 00:01:13.800
+Y la condición, condition, que decide.
+
+17
+00:01:13.800 --> 00:01:17.633
+La primera cadena la llevan
+miles de programas legítimos,
+
+18
+00:01:17.633 --> 00:01:21.767
+como una botella de agua.
+Sola, saltaría con medio mundo.
+
+19
+00:01:21.767 --> 00:01:24.967
+Así que pide compañía,
+como las dos siguientes.
+
+20
+00:01:24.967 --> 00:01:27.633
+Dos juntas hacen mucho menos ruido.
+
+21
+00:01:27.633 --> 00:01:33.600
+La única que va sola es una ruta
+que a veces queda escrita al compilar,
+
+22
+00:01:33.600 --> 00:01:36.700
+la del PDB. Casi nadie lleva esa.
+
+23
+00:01:36.700 --> 00:01:41.333
+La condición pide un ejecutable
+de menos de 250 KB.
+
+24
+00:01:41.333 --> 00:01:45.767
+Y luego, la ruta del PDB
+o dos de las otras tres.
+
+25
+00:01:45.767 --> 00:01:51.867
+O sea, que lo corriente pide compañía,
+y lo único puede ir solo.
+
+26
+00:01:56.100 --> 00:02:00.367
+Pues vamos a ver qué ve la regla de Sigma.
+
+27
+00:02:00.367 --> 00:02:03.367
+Mira los procesos que arrancan en Windows.
+
+28
+00:02:03.367 --> 00:02:07.833
+Y busca que su pasaporte,
+el nombre de dentro, sea certutil.
+
+29
+00:02:07.833 --> 00:02:11.700
+Y que lo lancen para decodificar
+o para descargar.
+
+30
+00:02:11.700 --> 00:02:15.933
+Si la tarjeta, el nombre del disco,
+también dice certutil,
+
+31
+00:02:15.933 --> 00:02:20.367
+el filtro lo descarta.
+Y la condición resta lo que filtra.
+
+32
+00:02:20.367 --> 00:02:25.433
+Mira dos eventos de ejemplo.
+El de la tarjeta cambiada sí avisaría.
+
+33
+00:02:25.433 --> 00:02:32.500
+Una regla solo mira la tarjeta, y busca
+ese nombre. La otra es la de la lección.
+
+34
+00:02:32.500 --> 00:02:38.600
+Imagina un tercero, con una tarjeta nueva.
+¿Cuál de las dos sigue saltando?
+
+35
+00:02:42.467 --> 00:02:44.000
+La de la lección.
+
+36
+00:02:44.000 --> 00:02:50.333
+La tarjeta la cambia el atacante
+cuando quiere, y la otra ya no lo ve.
+
+37
+00:02:50.333 --> 00:02:54.767
+Pero el pasaporte, el nombre
+original, va dentro del programa,
+
+38
+00:02:54.767 --> 00:02:56.600
+y renombrar no lo toca.
+
+39
+00:02:56.600 --> 00:03:04.300
+Ni el filtro la frena. ¿Que no lo verá?
+La de la tarjeta, quizá no. Esta, sí.
+
+40
+00:03:05.033 --> 00:03:10.500
+¿Dónde corre cada una? YARA,
+en un escáner, un sandbox o un EDR.
+
+41
+00:03:10.500 --> 00:03:16.367
+Sigma no corre en el SIEM tal cual.
+Antes se traduce a su consulta.
+
+42
+00:03:16.367 --> 00:03:22.633
+Las dos se pueden romper. La de YARA vive
+mientras la maleta lleve esas piezas.
+
+43
+00:03:22.633 --> 00:03:25.833
+A la de Sigma la rompe otro pasaporte.
+
+44
+00:03:25.833 --> 00:03:31.300
+Y a su filtro, una copia con el
+nombre normal en otra carpeta.
+
+45
+00:03:31.300 --> 00:03:35.833
+Si cambia de herramienta,
+la del nombre original ya no ve.
+
+46
+00:03:35.833 --> 00:03:39.567
+Queda la del árbol
+de procesos, que ya viste.
+
+47
+00:03:39.567 --> 00:03:41.600
+Ninguna es para siempre.
+
+48
+00:03:41.600 --> 00:03:47.667
+O sea, que cada una tiene su punto
+débil, así que mide si dispara.
+
+49
+00:03:48.400 --> 00:03:51.233
+Llévate tres ideas. YARA mira dentro.
+
+50
+00:03:51.233 --> 00:03:55.467
+Sigma mira lo que pasa,
+y se convierte antes de correr.
+
+51
+00:03:55.467 --> 00:03:58.833
+Una cadena corriente,
+sola, salta con cualquiera.
+
+52
+00:03:58.833 --> 00:04:02.133
+Pídele compañía,
+o una pieza única como el PDB.
+
+53
+00:04:02.133 --> 00:04:07.867
+Apóyate en lo que cuesta cambiar,
+el nombre original y no el del disco.
+
+54
+00:04:07.867 --> 00:04:09.700
+Y vigila si salta.
+
+55
+00:04:09.700 --> 00:04:15.400
+A por las diez preguntas de la lección.
+Hasta el próximo control.
