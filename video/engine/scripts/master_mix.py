@@ -392,14 +392,26 @@ def music_bed(timeline, n, song):
 BED_STYLES = {"story": ambient_bed, "pad": pad_bed, "music": music_bed}
 
 
+def _oversampled_abs_max(x, block=1 << 20, pad=4096):
+    """max over channels of |x| oversampled 4x, per input sample (shape (len(x),), max over the four phases too), computed in overlapping
+    blocks: the same values as one resample_poly over the whole file (it is an FIR), at a fraction of the memory."""
+    n = len(x)
+    out = np.empty(n, dtype=np.float64)
+    for a in range(0, n, block):
+        lo, hi = max(0, a - pad), min(n, a + block + pad)
+        up = np.max(np.abs(signal.resample_poly(x[lo:hi], 4, 1, axis=0)), axis=1).reshape(-1, 4).max(axis=1)
+        m = min(block, n - a)
+        out[a:a + m] = up[a - lo: a - lo + m]
+    return out
+
+
 def limit(x, ceiling_db, release_ms=120.0, lookahead_ms=5.0):
     """True-peak limiter without latency: peaks detected 4x oversampled. The gain reduction is held over
     +-`lookahead_ms` (so it is in place before the peak) and then smoothed over the same window, so it never
     steps: the old 1.5 ms hold moved the gain faster than a voice's own fundamental and was heard as
     distortion on speech (V18/V19: the limiter was on 6-9 % of the time, up to 3 dB)."""
     ceiling = 10 ** (ceiling_db / 20)
-    up = np.max(np.abs(signal.resample_poly(x, 4, 1, axis=0)), axis=1)
-    peak = up.reshape(-1, 4).max(axis=1)[: len(x)]
+    peak = _oversampled_abs_max(x)
     need = np.minimum(1.0, ceiling / (peak + 1e-12))
     half = int(lookahead_ms / 1000 * SR)
     held = minimum_filter1d(need, size=2 * half + 1)
@@ -416,7 +428,7 @@ def limit(x, ceiling_db, release_ms=120.0, lookahead_ms=5.0):
 
 
 def true_peak_db(x):
-    return 20 * np.log10(np.max(np.abs(signal.resample_poly(x, 4, 1, axis=0))) + 1e-12)
+    return 20 * np.log10(np.max(_oversampled_abs_max(x)) + 1e-12)
 
 
 # AAC pushes the true peak ~0.2-0.4 dB over the PCM limiter's (V4: -1.49 limited came out at -1.08), so the
