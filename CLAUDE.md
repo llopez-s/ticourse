@@ -214,7 +214,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   **V3 `video/diamond-e7/`** (s2m3, GCTI, YouTube `rwMIu0XBoWQ`, 7:54) is the first GCTI video: exam
   cards are track-aware (`EXAM_BADGE`/`GCTI_DOMAINS` in `scripts/lib/profiles.mjs` — a GCTI card names a
   course domain, badge «GCTI»), and every scene draws the shared `src/scenes/parts/Diamond.tsx`.
-  **V4 `video/pivot-infra/`** (s3m3, GCTI, YouTube `8pet46MOGmk`, 8:08, published 2026-09-30 on the Alertópolis
+  **V4 `video/pivot-infra/`** (s3m3, GCTI, YouTube `69gfP6duB00`, 8:08, published 2026-09-30 on the Alertópolis
   channel) is the first narrated by Lidia's own recording end to end: `verify-voice.mjs` re-transcribes every clip
   as the video plays it and `render.mjs` refuses a recording with cut words or leftover takes; and the first with
   **library music** instead of the generated bed — `video.json` → `"music"` names a YouTube Audio Library track in
@@ -242,7 +242,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   importing, compare the full-recording ASR with each clip and look for non-word speech inside clips; and a
   `--only` re-import must reuse the full import's gain (`--lufs=<excerpt LUFS + that gain>`), because `--match`
   measured on one sentence gave it ~1 dB more.
-  **V7 `video/attack-piramide/`** (s2m5, GCTI, `capsula-yt`, YouTube `XCOAc7tlPTE`, 3:59, published 2026-10-03): the
+  **V7 `video/attack-piramide/`** (s2m5, GCTI, `capsula-yt`, YouTube `mRNyVVrRujw`, 3:59, published 2026-10-03): the
   s2m5 process tree read with ATT&CK and the Pyramid of Pain, and the two loader hashes shown as two photos of
   `ENG-WS-041` (registry §5.1 resolved only in part; §7 has the rest). Lessons: Lidia's reading landed at 93 % of
   `--estimate` this time (V5 ~88 %, V5b 85 %), so aim the estimate near the profile's ceiling minus ~10 %; an abandoned first take
@@ -262,7 +262,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   either way). To preview a worktree, `preview_start` reads the **main checkout's** `.claude/launch.json`: add a
   temporary entry `cmd /c npm --prefix "<worktree, forward slashes>" run dev -- --port 5174 --strictPort`, start it,
   and restore the file at once.
-  **V8 `video/stix-isac/`** (s3m5, GCTI, `capsula-yt`, YouTube `KO4REQeaKgM`, 3:53, published 2026-10-04): the
+  **V8 `video/stix-isac/`** (s3m5, GCTI, `capsula-yt`, YouTube `jNqhrLgGFmY`, 3:53, published 2026-10-04): the
   ISAC's expired STIX indicator reaches Meridian's platform on 2-7 through its first TAXII pull — not blocked, hunted
   backwards; the graph («indicates», «uses») and «STIX describe, TAXII transporta» (HOLLOW LANTERN ×1). Fixes the
   lesson's «today» (2026-07-02) in the VELVET CICADA registry. Lidia's reading landed at 92 % of `--estimate`, as
@@ -279,7 +279,8 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   site whole: upload as private → Lidia publishes → re-point the lesson, `content.test.ts`, the canon registry and the
   transcript → merge → only then delete the old video (V11's was deleted first and sp1m6 embedded a dead id for two
   days). The older video worktrees have no upload script: copy the MP4, timeline, captions and clips into a worktree
-  on main and upload from there. V4, V7, V8, V10, V12, V13, V15, V16 and V17 are re-mastered locally
+  on main and upload from there. V4, V7, V8, V10 (`k51SLJxEiPc`) and V12 (`IlOHl8Lmq_w`) went up again on
+  2026-10-16 with the quiet master. V13, V15, V16 and V17 are re-mastered locally
   (`<slug>.mp4` next to `<slug>-v1-master.mp4`, the old master) but the channel still has the −14 LUFS one.
   **Mastering** (Python, venv + `pedalboard pyloudnorm librosa soundfile scipy`): `scripts/master_voice.py`
   on the narrator's WAV *before* `import-recording` (time-aligned EQ/de-ess/compression, no denoise) and

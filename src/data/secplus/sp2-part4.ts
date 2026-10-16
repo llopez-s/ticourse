@@ -136,7 +136,7 @@ GET /gate/viewdoc?file=%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fshadow   403     0
     {
       t: 'video',
       title: 'Ataques en los logs: spraying, traversal y amplificación DNS',
-      youtube: 'uHHv-1hTYTE',
+      youtube: 'k51SLJxEiPc',
       poster: 'videos/logs-halden-poster.png',
       transcript: 'videos/logs-halden-transcript.txt',
     },
