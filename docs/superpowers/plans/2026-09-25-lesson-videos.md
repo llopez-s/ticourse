@@ -6267,3 +6267,300 @@ La producción empieza tanda a tanda y con aprobación explícita, porque P0 (co
   - las comprobaciones de `render.mjs` (duración ±0,2 s, h264 1080p30, AAC, tamaño del perfil, sincronía A/V ±2 frames);
   - `npm run build`;
   - vista previa con `intelforge-dev`: reproducción, subtítulos en español, transcript desplegable, descarga y pantalla completa, en modo claro y oscuro y a ancho de móvil.
+
+## Tanda 6 · vídeos de casos y examen (Security+)
+
+Formato «caso y examen», perfiles `caso-yt` y `caso-principal-yt`, preguntas tipo examen y orden de las tandas 6 a 10: diseño
+`docs/superpowers/specs/2026-10-16-secplus-casos-examen-design.md`. Abre la tanda el **piloto del formato** (diseño §6 y §9.1),
+sp1m1, aunque no sea de D4: los cuatro vídeos de D4 (sp4m4, sp4m1, sp4m9, sp4m3) pueden tener ficha mientras tanto, pero ningún
+guion se congela hasta que Lidia dé por bueno el piloto en privado.
+
+### V28 · sp1m1 · Cápsula de casos · «Un control, dos etiquetas: categoría y tipo»
+
+> Propuesta del 2026-10-16 (tanda 6, piloto), con las opciones recomendadas ya elegidas; falta que Lidia diga qué cambia. Es la
+> ficha, no el guion: el guion se escribe cuando Lidia la apruebe, y Lidia ve el piloto dos veces (la ficha y el guion congelado
+> antes de grabar; el render con su voz, en privado, antes de publicar; diseño §9.1). La versión vigente de escenas y guion será
+> `video/controles-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/controles-halden/out/script-notes.md`.
+>
+> **Orden del curso.** sp1m1 es la primera lección de Security+, así que V28 pasa a ser **el primer vídeo de Halden en el orden
+> del curso**, por delante de V20 (sp1m3), que lo es hoy (`reg:37`). Presenta el puerto desde cero, con una frase, y no remite a
+> ningún vídeo, al caso de septiembre ni a ningún adversario.
+>
+> **Depende del PR de motor** (diseño §5 y §9.2): el perfil `caso-yt`, las preguntas en `narration.json` (`examQuestions`), el
+> componente de pregunta y las opciones en el VTT. Nada de eso existe todavía; las cifras de esta ficha son las del diseño §4.2.
+>
+> Rutas relativas a la raíz del repo; `sp/` = `src/data/secplus/`, `reg` = `docs/superpowers/canon/glass-harbor.md`,
+> `diseño` = el diseño de arriba.
+
+- **Carpeta:** `controles-halden` · perfil `caso-yt` (240–330 s renderizados; objetivo ~5:00, sin rellenar) · objetivo **1.1**
+  (cabecera de la lección, `sp/sp1-part1.ts:3-4`, y objetivos `:11-17`) · **sin adversario ni mensajes interceptados**
+  (decisión 1) · voz `recording/lidia` con `"recording": { "tempo": 1.08, "maxPauseMs": 250 }` · música de biblioteca, a elegir al
+  montar (otra que la de V25 y V26) · `"examTiming": "sentence-end"` · **sin think prompts**: las tres preguntas tipo examen
+  ocupan su sitio (diseño §4.2), cada una con 5 s de cuenta atrás.
+- **`video.json`:** `"profile": "caso-yt"`, `"track": "secplus"`, `"lesson": "sp1m1"`, sin `"adversary"`; `"tags"`: security
+  controls, control categories, control types, technical, managerial, operational, physical, preventive, deterrent, detective,
+  corrective, compensating, directive, controles de seguridad, Security+, SY0-701. Título de YouTube: «Categorías y tipos de
+  controles de seguridad | CompTIA Security+ en español» (75). Título del bloque de la lección y de la tarjeta final: «Un
+  control, dos etiquetas: categoría y tipo» (43). Composición `ControlesHalden`, póster `ControlesHaldenPoster`. **El título no
+  dice «aplica»**: V20, dos lecciones después, se llama «quién decide, quién comunica y quién aplica» (`reg:37`) y habla de otra
+  cosa (los planos de Zero Trust); con «aplica» en los dos, se leerían como el mismo tema.
+- **Efectos (`sfx`):** los automáticos del motor y, en cada pregunta, `ok-N` («check», sale la correcta) y `trap-N` («block», se
+  marca la trampa), N = 1, 2, 3; los dos sonidos existen en `video/engine/sfx/sfx.json`. Si el componente de pregunta del PR de
+  motor trae sus propios sonidos, estos seis cues se quitan.
+- **Léxico nuevo:** los diez términos del objetivo, que Lidia dice en inglés y que `verify-voice` tiene que reconocer: technical,
+  managerial, operational, physical, preventive, deterrent, detective, corrective, compensating y directive (los cuatro últimos
+  solo salen como opciones o de pasada). La pronunciación la fija la primera toma de Lidia; el léxico (`video/controles-halden/lexicon.json`,
+  como el de V25) la recoge después. «SY0-701» y «1.1» solo van en pantalla.
+- **Lo que se lee no se deletrea:** no hay equipos, IP, dominios ni cuentas. La voz lee el escenario y la pregunta, **no las
+  cuatro opciones** (diseño §4.3): van en pantalla y en el VTT. Ninguna excepción.
+- **Duración:** suma de `s` **258 s** (8 escenas, tres de ellas de pregunta). No hay precedente de `caso-yt`; con la razón
+  render/suma de `capsula-yt` (1,12–1,19 en V12, V18, V20 y V25) da **unos 290–305 s (~5:00)**, en mitad de 240–330; los
+  extremos conocidos (0,89 y 1,22) dan 230–315 s, y el bajo queda 10 s por debajo del mínimo. Esa razón **no está comprobada**
+  para este perfil (cada pregunta lleva 5 s de silencio y opciones que no se leen), así que el primer borrador se mide por los dos
+  lados con `build-timeline --estimate`. Si pasa de 325 s, se recorta en este orden: primero, en s04, la frase de la cerradura
+  que vuelve (queda solo en pantalla); después, en s06, la receta (queda la aplicación sola). Si se acerca a 240 s, se alarga
+  s04 con la regla de los verbos de la nota de examen (`sp/sp1-part1.ts:123`: «discourage», «identify», «stop») o s02 con la
+  pregunta que se hace el examen en cada categoría. No se rellena.
+- **`wordBudget`** (`s` × 2,7): s01 54 · s02 108 · s03 92 · s04 103 · s05 92 · s06 97 · s07 97 · s08 54 (697). **Propuesta para
+  el PR de motor** (el validador tiene que elegir una regla): en una escena de pregunta, lo hablado se cuenta sobre `s − 8`
+  (5 s de cuenta atrás y unos 3 s para leer las opciones, que la voz no dice), o sea 70, 70 y 76 palabras en s03, s05 y s07. El
+  escenario y la pregunta de las tres ocupan 48, 38 y 42 palabras (contadas con Node): la resolución tiene que caber en unas
+  20–30. El script de verificación del plan (§10) no conoce `caso-yt`; habrá que añadírselo o no pasarle esta ficha.
+- **Inserción:** en `sp/sp1-part1.ts`, lección sp1m1, **después del callout «Deterrent no es preventive» (`:176-181`)** y antes
+  del párrafo que salta a sp1m2 (`:182-185`), como bloque
+  `{ t: 'video', title: 'Un control, dos etiquetas: categoría y tipo', youtube: '<id>', poster: 'videos/controles-halden-poster.png', transcript: 'videos/controles-halden-transcript.txt' }`,
+  precedido de una línea: «Antes de pasar a la siguiente lección, míralo en el puerto y ponte a prueba con tres preguntas como
+  las del examen». Así **todo lo que enseña el vídeo va antes en la lección**: las cuatro categorías (`:23-49`) y el truco de
+  managerial frente a operational (`:50-55`), los seis tipos (`:66-77`) y la matriz (`:78-118`), la nota de examen (`:119-124`),
+  compensating (`:140-150`), el callout de deterrent y preventive (`:176-181`) y los cuatro checks (`:56-65`, `:125-139`,
+  `:151-160`, `:161-175`). El quiz de la lección (`:187-262`) queda después, y es la tarea del cierre. Es la pauta del repo
+  (último check, vídeo, párrafo); aquí el último check (`:161-175`) va seguido de un callout que el vídeo usa, y el vídeo se pone
+  detrás del callout. **Numeración:** 11 líneas (la línea de enlace, 4, y el bloque, 7); las citas de esta ficha son del archivo
+  sin el vídeo. Al publicarlo, la suite `lesson videos` de `src/data/content.test.ts` lleva su línea `toBe('sp1m1')`.
+- **Enfoque («tres casos cortos y tres preguntas»):** en vez de un caso largo, tres cosas pequeñas del día a día del puerto (diseño
+  §4.1, lecciones que son listas), cada una seguida de una pregunta tipo examen que la pone a prueba **con otro escenario**, para
+  que no se conteste de memoria (como la pregunta de V25 con «otro riesgo · ejemplo»). Cada control que sale lleva **una ficha con
+  dos casillas**, «¿quién lo hace funcionar?» y «¿qué hace aquí?», que es el hilo del vídeo: primero se rellena la de arriba
+  (categoría), luego la de abajo (tipo), y al final se aprende cuándo la de abajo dice compensating. Sin incidente, sin
+  adversario y sin fechas: «caso de ejemplo · sin fecha» en los casos y «pregunta tipo examen · ejemplo» en las preguntas.
+- **Qué añade** a la lección y al laboratorio. spl1a, «Control Matrix» (`sp/labs.ts:16-32`, ítems `:70-131`), ya entrena la
+  categoría con doce controles del puerto, y sigue siendo el ejercicio de esa casilla. El vídeo aporta lo que ni el laboratorio
+  ni las tablas tienen: **las dos casillas sobre el mismo control** (la lección las da en dos tablas y una matriz, `:24-49` y
+  `:78-118`); **la raya entre deterrent, preventive y detective decidida por el escenario**, con una misma cámara que hace dos
+  cosas; **compensating con su caso positivo y su límite** (la lección solo trae positivos, `:140-160`, y q1); y **tres preguntas
+  con la forma del examen**, una trampa marcada y el primer «MEJOR» explicado, que el laboratorio (de clasificar) no pone.
+
+**Conceptos (3) y su imagen:**
+
+| # | Concepto | Imagen que se mantiene | Tarjetas |
+|---|---|---|---|
+| 1 | **La categoría dice quién o qué hace funcionar el control.** Decidirlo, planificarlo o aprobarlo es **managerial**; hacerlo cada día una persona es **operational**; si lo hace un sistema solo, **technical**; si es algo que se toca, **physical** (`sp/sp1-part1.ts:21`, tabla `:24-49`, truco `:50-55`, q2 `:198-207`, q6 `:238-247`, q7 `:248-262`) | La puerta del cuarto de comunicaciones con sus cuatro respuestas, cada una con la casilla de arriba rellena | «Categoría: quién o qué lo hace funcionar» (s02) · «Decidir es managerial; hacerlo, operational» (s03) |
+| 2 | **El tipo dice qué hace el control en ese escenario, y cada control lleva las dos etiquetas a la vez.** Una misma cámara puede disuadir y descubrir; manda lo que hace en el caso. **Deterrent** solo funciona si la persona decide parar; **preventive** funciona aunque lo intente; **detective** descubre durante o después (`:21`, lista `:66-77`, nota `:119-124`, callout `:176-181`, q3 `:208-217`, q4 `:218-227`) | La cámara del depósito, de noche (quien se acerca la ve y se da la vuelta) y a la mañana siguiente (la grabación cuenta qué pasó) | «Tipo: lo que hace el control en ese escenario» (s04) · «Deterrent solo disuade: ni impide ni descubre» (s05) |
+| 3 | **Compensating es el control que va en lugar del que toca, cuando ese no se puede poner**, y cubre el mismo riesgo (`:140-144`, ejemplos `:145-150`, q1 `:188-197`). Lo que decide es el porqué, no la forma: la misma medida, sola, sería preventive. Y al revés: si el control principal está y funciona, lo que se añade **no** es compensating, aunque en español «compensar» suene a «poner algo más» | La receta sin huevo: algo tiene que ligar la masa y usas otra cosa que haga ese trabajo. Si tienes huevo y además le echas otra cosa, no sustituyes nada | «Compensating: solo si el que toca no se puede» (s07) |
+
+**Escenas:** ocho, en tres capítulos (Quién lo hace funcionar · Qué hace · Cuando lo que toca no se puede).
+
+| Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
+|---|---|---|---|---|
+| s01-hook «Una cerradura, dos preguntas» | I Quién lo hace funcionar | 20 | Sello «Autoridad Portuaria de Halden · caso de ejemplo · datos ficticios», sin fecha. Una cerradura de puerta en primer plano con una ficha colgada de dos casillas vacías: «¿quién lo hace funcionar?» y «¿qué hace aquí?». La primera frase presenta el puerto y el problema (el examen te pregunta por un mismo control de dos maneras, y mezclarlas cuesta puntos); al acabarla, título «Un control, dos etiquetas» (hacia los 8 s, siempre antes de los 12) y la promesa en tres chips: «quién lo hace funcionar · qué hace · cuándo compensa». Plaquita «SY0-701 · 1.1» | La promesa en los primeros 10 s · `lock, tag, title, promise` |
+| s02-cuarto «La puerta del cuarto de comunicaciones» | I | 40 | La planta del edificio de oficinas, en esquema y sin nombres de equipo. «Una mañana · sin fecha»: la puerta del cuarto de comunicaciones está abierta y nadie sabe quién la dejó así (no falta nada y no se dice que entrara nadie). Cuatro respuestas del puerto entran una a una, cada una con su ficha y solo la casilla de arriba rellena: «la dirección decide quién puede entrar» → Managerial; «el técnico de guardia acompaña a quien entre sin permiso propio» → Operational; «la puerta se cierra sola y lleva cerradura» → Physical; «los equipos de dentro solo aceptan cambios con una cuenta de Sistemas» → Technical. Al final, las cuatro fichas juntas con la regla en llano: «decidir · hacer · un sistema solo · algo que se toca» | La categoría dice quién o qué hace funcionar el control; decidir es managerial y hacerlo, operational · `open, decide, do, touch, system, four` · **tarjeta 1** |
+| s03-p1 «Al cerrar la oficina» | I | 34 | **Componente de pregunta** (diseño §5): rótulo «pregunta tipo examen · ejemplo», plaquita «SY0-701 · 1.1», el escenario y la pregunta 1 y las cuatro opciones; anillo de 5 s con «pausa si quieres»; revelación: la correcta en verde con su porqué, la trampa marcada «trampa» con su frase, las otras dos atenuadas. La tarjeta de examen entra después de la revelación, nunca durante la cuenta atrás ni mientras se leen las opciones | Practicar «decidir» frente a «hacer» · `q1, options, pause, ok-1, trap-1` · **pregunta 1** · **tarjeta 2** |
+| s04-camara «La cámara del depósito» | II Qué hace | 38 | Vuelve la cerradura de s01 y su ficha se completa: «Physical» arriba, «Preventive» abajo; dos etiquetas a la vez. Después, el depósito de contenedores vacíos con una cámara bien visible en la entrada (sin grabador ni nombre de equipo). Dos viñetas de la misma cámara: «de noche · quien se acerca la ve y se da la vuelta» → Deterrent; «a la mañana siguiente · la grabación cuenta qué pasó» → Detective. La regla: el tipo es lo que hace el control en ese escenario. Y la raya entre disuadir e impedir: la cámara depende de que la persona decida parar; la cerradura funciona aunque lo intente | El tipo depende de lo que hace en el escenario; categoría y tipo van a la vez; deterrent frente a preventive y detective · `both, depot, night, morning, scenario, line` · **tarjeta 3** |
+| s05-p2 «Otra entrada del depósito» | II | 34 | Componente de pregunta, pregunta 2. Es el **primer calificador**: «MEJOR» resaltado en la pregunta y, debajo, la línea «MEJOR: la que encaja con este caso, aunque otra suene bien»; la voz lo explica en una frase antes de la cuenta atrás. Tarjeta después de la revelación | Deterrent frente a detective cuando el escenario decide; qué cambia «MEJOR» · `q2, best, options, pause, ok-2, trap-2` · **pregunta 2** · **tarjeta 4** |
+| s06-sustituto «Una aplicación sin segundo factor» | III Cuando lo que toca no se puede | 36 | La pantalla de entrada de «una aplicación antigua de RR. HH. · expedientes de la plantilla», sin nombre de producto. La casilla «segundo factor» tachada, con «la aplicación no lo admite · se cambiará por otra» (sin fecha). La medida: «solo se entra desde tres ordenadores de RR. HH.; desde cualquier otro, no». Una contraseña robada, probada desde otro ordenador: la entrada se corta, así que cubre el mismo riesgo que cubriría el segundo factor. La ficha: «Technical» arriba, «Compensating» abajo, y a su lado, a media luz, «sola sería Preventive». La receta sin huevo, en miniatura | Compensating: lo que toca no se puede poner y otra medida cubre el mismo riesgo; manda el porqué, no la forma · `mfa, cannot, instead, stolen, same-risk, recipe` · sin tarjeta (la del concepto 3 llega en s07, con su límite) |
+| s07-p3 «El archivo de planos» | III | 36 | Componente de pregunta, pregunta 3. En la resolución vuelve la receta en una línea («tienes huevo y además echas otra cosa: no sustituyes nada»). Tarjeta después de la revelación | El límite de compensating: si no falta nada, no se compensa nada · `q3, options, pause, ok-3, trap-3` · **pregunta 3** · **tarjeta 5** |
+| s08-cierre «Para el examen» | III | 20 | Tres reglas, cada una con su icono (la ficha de dos casillas · la cámara de noche y de día · la receta sin huevo), y la frase para el examen: «Antes de contestar, pregúntate quién lo hace funcionar y qué hace en ese caso». Tarjeta final Alertópolis con **una sola tarea**: «Tu turno: las preguntas de la lección» (el quiz de sp1m1, siete preguntas, diseño §4.1). Sin tarjeta de examen | Reflejos · `recap, rule-1, rule-2, rule-3, phrase, next, endcard` |
+
+**Las tres preguntas tipo examen** (no van al quiz de la app, diseño §4.3; en pantalla, en el VTT y en `narration.json`, junto a
+su escena). Escenario y pregunta los lee la voz; las opciones solo se ven. Ninguna opción pasa de una palabra.
+
+**Pregunta 1 · s03 · managerial frente a operational** (la confusión del truco de la lección, `sp/sp1-part1.ts:50-55`)
+
+> La dirección del puerto aprueba una norma de mesa limpia. Cada tarde, al cerrar, alguien de la oficina repasa las mesas, guarda
+> los papeles que se han quedado a la vista y lo anota en una hoja.
+>
+> ¿A qué categoría de control pertenece el repaso de cada tarde?
+>
+> A) *Technical* · B) *Managerial* · C) *Operational* · D) *Physical*
+
+- **Correcta, C (*Operational*):** es una persona que cumple un procedimiento en el día a día.
+- **Trampa, B (*Managerial*):** tienta porque la norma la aprobó la dirección y el repaso existe por ella. Falla porque la pregunta
+  es por el repaso, no por la norma: aprobar la norma es managerial; hacerla cumplir cada tarde, operational.
+- **Las otras dos:** *Technical* (ningún sistema lo hace solo) y *Physical* (no hay barrera ni dispositivo: los papeles son lo que
+  se protege, no el control). Se apagan sin comentario.
+- **Banco más cercano y por qué no es copia:** q2 (`:198-207`, la política de formación es managerial, con la trampa operational),
+  q7 (`:248-262`, las rondas del vigilante son operational), el check del guardia (`:57-65`) y `pl-sp1q2`
+  (`sp/placement-sp1.ts:35-44`, el esquema de clasificación es managerial). Ninguno trae la mesa limpia ni un escenario con los
+  dos lados (la norma y quien la cumple) en el que se pregunte por el que hace. Sin vigilante, ronda ni formación. Tampoco es un
+  ítem de spl1a (`sp/labs.ts:70-131`), que ya tiene las copias de cada mañana, la escolta de visitas y las rondas.
+
+**Pregunta 2 · s05 · deterrent frente a detective** (el reflejo «cámara = detective»; primer «MEJOR»)
+
+> En una entrada del depósito de contenedores vacíos, seguridad cuelga una carcasa de cámara bien a la vista. Por dentro está
+> vacía: no graba ni manda imagen a ningún sitio.
+>
+> ¿Qué tipo de control describe MEJOR la carcasa?
+>
+> A) *Preventive* · B) *Detective* · C) *Corrective* · D) *Deterrent*
+
+- **Correcta, D (*Deterrent*):** lo único que puede hacer es que quien la vea se lo piense.
+- **Trampa, B (*Detective*):** tienta porque «cámara» suena a detective, y la de s04 lo era a la mañana siguiente. Falla porque esta
+  no graba: no puede descubrir nada, ni durante ni después.
+- **Las otras dos:** *Preventive* (no impide entrar a quien decida seguir) y *Corrective* (no arregla nada).
+- **Una sola respuesta:** la cámara de verdad es a la vez deterrent y detective (nota de examen, `:123`), y eso es lo que CompTIA
+  deja abierto (diseño §9.3); aquí el escenario lo cierra, porque la carcasa no graba.
+- **Se entiende sola** y pasa en el mismo depósito que s04 a propósito (la cámara de verdad y la que no lo es, lado a lado). La
+  carcasa es un ejemplo de pregunta, no canon: el depósito sí lo fija s04, la carcasa no.
+- **Banco más cercano y por qué no es copia:** q4 (`:218-227`, un cartel de «vigilancia 24 horas» es deterrent, con la trampa
+  detective) y q3 (`:208-217`, el CCTV revisado tras un robo es detective). q4 no tiene cámara, solo un cartel que la anuncia; q3
+  tiene una cámara de verdad que descubre. La pregunta 2 ataca el reflejo que deja q3: algo que parece una cámara y no lo es.
+
+**Pregunta 3 · s07 · compensating frente a un control que se suma** (compensating como trampa)
+
+> La sala del archivo de planos ya tiene lector de tarjetas en la puerta, y funciona bien. Aun así, la responsable del archivo
+> guarda los planos más delicados en armarios con llave.
+>
+> ¿Qué tipo de control describe MEJOR los armarios con llave?
+>
+> A) *Directive* · B) *Preventive* · C) *Detective* · D) *Compensating*
+
+- **Correcta, B (*Preventive*):** impiden abrirlos a quien no tiene la llave, y no sustituyen a nada.
+- **Trampa, D (*Compensating*):** tienta porque es un control de más y porque «compensar» suena a «añadir». Falla porque no falta
+  nada: el lector está y funciona. Compensating solo es el que va en lugar del que toca cuando ese no se puede poner; esto es una
+  capa más.
+- **Las otras dos:** *Directive* (no le dice a nadie cómo comportarse) y *Detective* (no descubre nada).
+- **Banco más cercano y por qué no es copia:** q1 (`:188-197`) y el check de las imágenes médicas (`:151-160`) son los dos el caso
+  positivo y con la misma forma (sistema antiguo sin parches, aislar y vigilar, la respuesta es compensating). La pregunta 3 es el
+  caso negativo: el control principal está en su sitio, no hay sistema, parche ni aislamiento, y compensating es la trampa.
+  `pl-sp1q1` (`sp/placement-sp1.ts:25-34`) lleva compensating como opción, pero su confusión es otra (las vacaciones obligatorias
+  son detective).
+
+**Comprobado contra «el banco»** (diseño §9.4): las siete preguntas del quiz, `sp1m1q1`–`sp1m1q7` (`sp/sp1-part1.ts:188-262`);
+los cuatro checks en línea (`:57-65` guardia y carnés, `:125-139` bolardos, `:151-160` imágenes médicas, `:161-175` banner de
+login); y las dos preguntas de 1.1 de la colocación, `pl-sp1q1` y `pl-sp1q2` (`sp/placement-sp1.ts:25-44`; el resto del bloque es
+de 1.2–1.4). Ninguna de las tres copia ni parafrasea a ninguna. Fuera del banco, pero mirado igual: spl1a, «Control Matrix»
+(`sp/labs.ts:16-32`, ítems `:70-131`), y los ejemplos de compensación de la lección (`:145-150`); ninguna pregunta usa sus
+escenarios. Ninguna es una flashcard con opciones.
+
+- **Tarjetas de examen** (objetivo 1.1), una por escena como mucho, ninguna en s01, s06 ni s08, y las de pregunta siempre
+  después de la revelación:
+  - «Categoría: quién o qué lo hace funcionar» (s02) (40)
+  - «Decidir es managerial; hacerlo, operational» (s03) (43)
+  - «Tipo: lo que hace el control en ese escenario» (s04) (45)
+  - «Deterrent solo disuade: ni impide ni descubre» (s05) (45)
+  - «Compensating: solo si el que toca no se puede» (s07) (45)
+- **Mensajes interceptados:** ninguno (decisión 1).
+- **Cierre:** tres reglas, la frase para el examen y una sola tarea.
+  1. La categoría es quién o qué lo hace funcionar: decidir es managerial y hacerlo, operational.
+  2. El tipo es lo que hace en ese caso, y cada control lleva las dos etiquetas.
+  3. Compensating es el que va en lugar del que no se puede poner; si no falta nada, no compensa nada.
+
+  Frase: «Antes de contestar, pregúntate quién lo hace funcionar y qué hace en ese caso». **Tarea:** las siete preguntas de la
+  lección (diseño §4.1). spl1a no se nombra (una sola tarea, plan §1, «Claridad y ritmo», 6).
+- **Se queda fuera** (sigue en la lección, que quien ve el vídeo acaba de leer):
+  - **Corrective y directive** como conceptos: salen como opciones, una vez cada uno, y la norma de s02 no se clasifica por tipo.
+    Están en la lista (`:66-77`), la matriz (`:78-118`) y q5 (`:228-237`).
+  - **La matriz entera** de categoría por tipo (`:78-118`): el vídeo rellena cinco fichas, no la tabla.
+  - **El banner con dos tipos** (check `:161-175`): un control que es dos tipos a la vez solo sale con la cámara de s04.
+  - **La lista de verbos** de la nota de examen (`:123`): solo si el primer borrador queda corto (ver «Duración»).
+  - **Los ejemplos de compensación de la lección** (`:145-150`) y el sistema sin parches de q1 y del check: el vídeo usa otro caso
+    para no repetirlos y porque V18 ya enseña ese («lo compensas con alertas reforzadas», `reg:85`).
+  - **El puente a sp1m2** (CIA, AAA, gap analysis, `:182-185`).
+
+**Canon que usa:**
+- **La Autoridad Portuaria de Halden** (`reg:1`), presentada desde cero en s01.
+- **El edificio de oficinas** (`reg:1039`, nombre libre de V16). El cuarto de comunicaciones es nuevo y **no** es la sala de
+  servidores de V16 (s08, la puerta fail-secure): otro cuarto, sin modo de fallo ni corte de luz.
+- **RR. HH. y la plantilla.** Las lecciones dicen que la nómina la calcula un SaaS (`sp/sp5-part3.ts:22`, `:147`;
+  `sp/sp5-part1.ts:312`): la aplicación de s06 es de **expedientes**, no de nóminas, y no es un SaaS ni un proveedor.
+- **El segundo factor.** El proveedor de identidad solo pide contraseña hasta el 30-11 (`reg:122-123`, `:198`): V28 no dice si el
+  puerto tiene segundo factor en otro sitio ni pone fecha; solo que esa aplicación no lo admite.
+- **Las cámaras.** `cam-nvr-02` es el grabador de las cámaras del recinto, con su excepción de V18 (`reg:85`, `:204`): la cámara
+  del depósito no se dibuja conectada a ningún grabador ni tiene nombre, y la voz no dice dónde graba.
+- **NULL CIPHER** es la adversaria de sp1 (`sp/sections.ts:43-50`, `reg:309`): no sale (decisión 1).
+
+**Canon nuevo que fija V28** (todo «caso de ejemplo · sin fecha», sin personas con nombre):
+- **Primer vídeo de Halden en el orden del curso** (sp1m1). La fila de V20 en `reg:37` deja de decir que es el primero.
+- **El cuarto de comunicaciones del edificio de oficinas**, con su puerta que se cierra sola, y la mañana sin fecha en que apareció
+  abierta. No falta nada, no se dice que entrara nadie y no es un incidente del caso de septiembre ni de ningún otro.
+- **El depósito de contenedores vacíos**, con una cámara visible en una entrada. Lugar nuevo; no es el aparcamiento de visitantes
+  (`reg:210`) ni el del USB de RED MARROW (`reg:369`).
+- **La aplicación antigua de expedientes de RR. HH.**, sin segundo factor, a la que solo se entra desde tres ordenadores de
+  RR. HH., hasta que se cambie (sin fecha). Sin nombre de producto ni de equipo.
+- **Los escenarios de las tres preguntas** (la mesa limpia, la carcasa en una entrada del depósito, el archivo de planos con
+  lector y armarios) van rotulados «pregunta tipo examen · ejemplo»: son ejemplos y no hechos del puerto, como «otro riesgo ·
+  ejemplo · no es R-014» de V25 (`reg:1052`).
+
+**No se toca:**
+- **La red.** Ni VLAN, ni segmento, ni zona, ni cortafuegos con nombre: V16 fija el plano de antes (cuatro VLAN sin filtro entre
+  ellas, `reg:117`, `:188-190`) y un plan de zonas que no funciona hasta el 1-12 (`reg:118`), y un vídeo sin fecha que «aísla en
+  su VLAN» chocaría con uno de los dos. La medida de s06 se dice como V18: «solo desde tres ordenadores», sin decir cómo.
+- **OT, grúas, esclusas y PLC** (sp3m3), **proveedores, contratistas y mantenimiento** (`reg:366-368`, `:652`) y **seguro**
+  (V18, `reg:85`).
+- **Las imágenes ocupadas** (`reg:1038-1056`): ni chaleco, foco, candado, carné, código de la escalera, móvil, funda, cuadrados,
+  cafetería, casco de barco, almacén, garita ni valla. El lector de s07 es «de tarjetas», nunca «carné» ni «badge» (`reg:1048`).
+- **La copia de cada mañana, la escolta y las rondas como pregunta** (son ítems de spl1a y del quiz); la escolta sí sale en s02,
+  como ejemplo, no como pregunta.
+- **«Suplente»**: es una persona y un hallazgo de V5b y V5 (`reg:90`, `:284`); por eso la imagen de compensating es la receta y
+  no el jugador suplente.
+- **«El técnico» de V26.** La cafetería de V26 tiene «el técnico» que «tarda lo que tarda» como imagen ocupada, rotulada «imagen ·
+  no es del puerto» (`reg:1053`). «El técnico de guardia» de s02 es un puesto del puerto, sin nombre, y no esa imagen: no tarda ni
+  arregla nada, solo acompaña a quien entra.
+- Ninguna IP, dominio, cuenta, equipo ni persona con nombre en pantalla.
+
+**Riesgos de solape** (para quien revise la tanda):
+- **V20 (sp1m3).** Su «quién decide, quién comunica y quién aplica» habla de Zero Trust (la oficina decide y el mozo aplica,
+  `reg:1041`); el «decidir frente a hacer» de V28 es de categorías. La voz de V28 dice «hacerlo», no «aplicarlo», y el título
+  evita «aplica».
+- **V18 (sp4m5).** Ya enseña a compensar un sistema sin parche con alertas reforzadas (`video/cvss-halden/narration.json:160`,
+  `reg:85`). V28 llega antes en el curso y usa otro caso (una aplicación sin segundo factor); lo que V18 dice cabe en la
+  definición de V28, así que no se pisan.
+- **sp1m4 (seguridad física, tanda 10).** La carcasa de cámara y la cámara del depósito quedan ocupadas; el vídeo de sp1m4 no las
+  repite para enseñar otra cosa.
+
+**Decisiones** (con la alternativa descartada):
+1. **Sin mensajes interceptados.** El caso no lo pide (diseño §4.2) y el piloto se juzga mejor limpio. Además, NULL CIPHER se
+   presenta desde cero en V20 (sp1m3); meterla aquí, dos lecciones antes, abriría la misma costura de V18 y V21 con SILENT PAGER
+   (`reg`, «Notas de V18»): dos presentaciones seguidas. Descartado **un mensaje de NULL CIPHER** (Helena con `cifrado`, «Lógico.»,
+   en infinitivo; p. ej. sobre que una cámara siempre es detective): si Lidia lo quiere, iría en s04, `video.json` llevaría
+   `"adversary": "NULL CIPHER"` y V20 tendría que dejar de presentarla desde cero.
+2. **La pregunta 3 es el caso negativo de compensating.** El banco ya trae dos positivos con la misma forma (q1 y el check de las
+   imágenes médicas); un tercero sería casi una paráfrasis. Y un positivo con una medida que, sola, es preventive deja dos
+   respuestas que alguien puede defender (diseño §9.3); el negativo solo tiene una. El positivo se enseña en s06, sin pregunta.
+   Descartados **el lector que no se puede instalar en un edificio protegido** (positivo, con la trampa preventive) y **la
+   separación de funciones en una oficina pequeña** (positivo, y demasiado cerca de `pl-sp1q1`: finanzas, pagos y una revisión).
+3. **La carcasa vacía para deterrent.** El escenario decide (no graba). Descartada **una cámara de verdad** «desde que está, hay
+   menos intentos»: es deterrent y detective a la vez, lo que CompTIA deja abierto (diseño §9.3).
+4. **La mesa limpia para managerial frente a operational.** No sale en la lección, el quiz, la colocación ni spl1a. Descartados
+   **la charla de formación** (es la otra mitad de q2 y del truco de la lección), **comprobar las copias de cada mañana** y **la
+   escolta** (ítems de spl1a), **las rondas** (q7) y **la revisión de cuentas nuevas** (rozaría la revisión trimestral de V6,
+   `reg:94`).
+5. **Tres casos cortos, no uno largo.** sp1m1 es una lista de cosas parecidas (diseño §4.1); un caso largo haría pasar las diez
+   palabras por la misma escena. Cada pregunta usa otro escenario que su caso, para que no se conteste de memoria.
+6. **El vídeo después del callout «Deterrent no es preventive»** (`:176-181`), no justo tras el último check (`:161-175`): el
+   callout es contenido que el vídeo usa (s04), y así todo lo que enseña va antes.
+
+**Preguntas para Lidia** (decide Lidia; la opción recomendada va primero):
+1. **Las opciones en inglés y solas** («A) *Managerial*»), como en el examen. Alternativa: con una glosa pequeña en español debajo
+   («decide la dirección»), que ayuda al principio pero no es como lo verás el día del examen.
+2. **Sin mensajes interceptados.** Alternativa: uno de NULL CIPHER en s04 (decisión 1), con el coste para V20.
+3. **La pregunta 3 como caso negativo** (compensating de trampa). Alternativa: un caso positivo (el lector que no se puede
+   instalar), que es como lo pregunta casi siempre el banco.
+4. **La receta sin huevo** como imagen de compensating. Alternativa: sin imagen cotidiana, solo la aplicación.
+5. **Pronunciación** de los diez términos en inglés: la que salga en tu primera toma; el léxico la recoge.
+
+**Comprobación de límites** (perfil `caso-yt` según diseño §4.2; recuento con Node, `[...texto].length` y palabras por espacios):
+- Duración: suma 258 s; render esperado 290–305 s (razón de `capsula-yt`, sin comprobar en este perfil); extremos 230–315 s.
+- 8 escenas en 3 capítulos. 3 conceptos (2–3), con 2, 2 y 1 tarjetas (como mucho dos por concepto).
+- 3 preguntas tipo examen (exactamente 3), cada una con cuatro opciones de una palabra, una correcta, una trampa marcada y una
+  explicación de cada; dos con «MEJOR» (s05 y s07), explicado la primera vez (s05). Correctas C, D y B; trampas B, B y D.
+  Escenario y pregunta: 48, 38 y 42 palabras (256, 219 y 239 caracteres).
+- 5 tarjetas de examen (3–5), como mucho una por escena, ninguna en la última ni durante una cuenta atrás; de 40 a 45 caracteres
+  (máximo 48 que pide el encargo; 58 en el plan), sin `{}[]|<>`, flechas, marcas ni emoji.
+- 0 think prompts (diseño §4.2) y 0 mensajes interceptados (0–1).
+- Títulos: del bloque, 43 caracteres; de YouTube, 75. Ningún título de escena de pregunta da la respuesta («Al cerrar la oficina»,
+  «Otra entrada del depósito», «El archivo de planos»).
+- `wordBudget` por escena (`s` × 2,7): 54 · 108 · 92 · 103 · 92 · 97 · 97 · 54 (697); en las escenas de pregunta, propuesta de
+  contar lo hablado sobre `s − 8`: 70 · 70 · 76.
+- Título antes de los 12 s (s01). Cierre: una sola tarea y tres reglas.
+- Sin identificadores en la voz ni en pantalla: no hay ninguno.

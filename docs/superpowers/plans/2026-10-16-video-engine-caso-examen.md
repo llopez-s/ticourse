@@ -97,7 +97,7 @@ Límites: `scenario` ≤ 160 caracteres, `q` ≤ 110, cada opción ≤ 70, `why`
   - `options must be exactly four non-empty strings` → error que contiene `question.options`.
   - `answer and trap are distinct indexes 0–3` → errores para `answer: 4` y para `trap === answer`.
   - `revealAt and trapAt must be cues of a later segment of the same scene` → error si la cue está en el propio segmento de la pregunta o en otra escena.
-  - `one question per scene, none in the closing scene, never with think, intercept or an exam card in the same scene` → un error por caso, con el id del segmento o de la escena.
+  - `one question per scene, none in the closing scene, never with think or intercept in the same scene` → un error por caso, con el id del segmento o de la escena. (Una exam card en la misma escena sí se permite, pero solo después de marcar la trampa: lo comprueba la tarea 3, que conoce los frames.)
   - `the objective is checked like an exam card's` → `objective: '9.9'` da el mismo mensaje que `examObjectiveError`.
   - `the voice should not read the options` → *warning* cuando el texto hablado de un segmento de esa escena contiene una opción literal (sin distinguir mayúsculas ni acentos, solo opciones de ≥ 2 palabras o ≥ 12 caracteres, para no saltar con «Preventive» dicho de pasada).
   - `question count outside the profile range warns` → con `examQuestions: [3, 3]` y 2 preguntas: warning `2 exam questions (style guide: 3–3)`.
@@ -149,6 +149,7 @@ y `Timeline.questions?: QuestionCue[]` («Present only when the narration has ex
   - `questions: the segment holds a silent countdown after its audio` → `countdownFrom === seg.from + seg.audioFrames`, `countdownFrames === toFrames(5000)`, y `seg.durationInFrames` incluye esa pausa.
   - `questions: the card lasts until its scene ends and reveals on its cue` → `from + durationInFrames === scene.from + scene.durationInFrames`, `revealFrame` = frame de la cue `revealAt`, `trapFrame >= revealFrame`.
   - `questions: a reveal cue inside the countdown fails the build` → error `… reveals before its countdown ends`.
+  - `questions: an exam card in a question scene enters only after the trap is marked` → con la cue de la tarjeta antes de `trapFrame`, error `exam card in <scene> enters before its question's trap is marked`; después, sin error. (La ficha del piloto V28 pone una tarjeta tras cada revelación.)
   - `questions: the VTT carries the four options while the countdown runs` → hay un cue de `countdownFrom` a `countdownFrom + countdownFrames` con el texto `A) …\nB) …\nC) …\nD) …`, y los cues del VTT siguen en orden de inicio.
   - `questions: a timeline without questions has no "questions" key and the same VTT as before` → el `timeline.json` de la fixture sin preguntas no tiene la clave y `buildVtt` da exactamente la cadena de antes (compárala con la salida actual guardada en el propio test).
   - En `validate-timeline`: `questions[k]` con 3 opciones o con `revealFrame` fuera de su escena → error con `questions[k]`.
@@ -177,6 +178,8 @@ Cómo se ve (lo demás, a criterio de quien lo construya, dentro del lenguaje de
 - En `revealFrame`: la correcta se marca (color de acierto de los tokens, icono de check) con `why` debajo; las otras se apagan al 40 %. En `trapFrame`: la trampa se marca en ámbar con la etiqueta «Trampa» y `trapWhy` debajo.
 - Sale en los 10 últimos frames de su escena.
 - Legible en móvil: ningún texto por debajo de 30 px a 1080p; una opción de 70 caracteres ocupa como mucho dos líneas.
+- El panel deja libre la franja donde entra `ExamCard` (`ExamCueLayer.tsx`), porque tras la trampa puede llegar una tarjeta de examen en la misma escena. La galería incluye un fotograma con las dos a la vez.
+- Sonidos: si la escena los quiere, se ponen con las cues de `sfx` del guion (la ficha V28 usa `check` en la revelación y `block` en la trampa); la capa no trae sonidos propios.
 
 - [ ] **Step 1:** añade `QUESTIONS` a `OverlayGallery.tsx` con dos preguntas: una normal y otra con el caso extremo (escenario de 160 caracteres, cuatro opciones de 70). Reparte fotogramas para: entrada, mitad de la cuenta atrás, revelación y trampa marcada. Apúntalos en el índice de la cabecera, como los demás.
 - [ ] **Step 2:** implementa la capa y móntala.
@@ -209,7 +212,7 @@ Cómo se ve (lo demás, a criterio de quien lo construya, dentro del lenguaje de
 
 **Files:**
 - Modify: `video/engine/README.md` (perfiles y el campo `question`, con el JSON de la tarea 2)
-- Modify: `docs/superpowers/plans/2026-09-25-lesson-videos.md` §1 (tabla de formatos: dos columnas nuevas, «Caso» y «Caso principal», con los números de Global Constraints)
+- Modify: `docs/superpowers/plans/2026-09-25-lesson-videos.md` §1 (tabla de formatos: dos columnas nuevas, «Caso» y «Caso principal», con los números de Global Constraints, y la regla de redacción de la ficha V28: en una escena con pregunta, `wordBudget` = (`s` − segundos de cuenta atrás − 3) × 2,7, porque las opciones se leen en silencio). El script de comprobación del §10 de ese plan aprende los dos perfiles.
 - Modify: `CLAUDE.md` (una frase en «Lesson videos»: los vídeos de casos usan `caso-yt`/`caso-principal-yt` y llevan preguntas tipo examen; spec y plan)
 
 - [ ] **Step 1:** escribe los tres cambios.
