@@ -1,0 +1,122 @@
+{
+  "title": "Recuperación ante desastres: dónde sigues, qué prueba demuestra qué y cuándo una copia es una copia",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 210,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "El sitio de respaldo"
+    },
+    {
+      "n": 2,
+      "title": "Probarlo"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Si el centro de datos no está",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "goal": "Sello «plan de recuperación · revisión · propuesta · sin efectos», sin fecha (`stamp`). Una sola caja, «CPD» (`dc`), que se apaga a media luz (`dark`, sonido `error`), con un reloj sin hora que corre y sin pregunta. No sale ningún segundo CPD. Al acabar la primera frase, título «Recuperación ante desastres» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «qué sitio · qué prueba demuestra qué · una copia que vuelve». Entra la etiqueta «BLIND ARCHITECT · sección 3» con «vive de los planos con atajos» (`adversary`). La voz dice «centro de datos», nunca «CPD»",
+      "requiredCues": [
+        "stamp",
+        "dc",
+        "dark",
+        "title",
+        "promise",
+        "adversary"
+      ]
+    },
+    {
+      "id": "s02-sitios",
+      "chapter": 1,
+      "title": "Un teatro de reserva",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "goal": "Tres teatros pequeños en fila (`theatres`), de izquierda a derecha: decorado montado y cartel, rótulo HOT SITE, «todo encendido · datos al día» y «minutos» (`hot`); escenario e iluminación listos con el decorado guardado en el camerino, sin montar, rótulo WARM SITE, «máquinas y red listas · datos por restaurar» y «horas o un día» (`warm`); sala vacía con luz, rótulo COLD SITE, «energía y red · nada más» y «días o semanas» (`cold`). En `price`, debajo y en sentido contrario, lo que cuesta cada uno, «todo el año»: «el más caro» · «medio» · «el más barato». Rótulo fijo: «lo que necesitaría cada servicio · propuesta»; las tres filas de la ficha de servicios (sin nombre: «no puede parar», «aguanta una jornada», «aguanta semanas») se acomodan cada una bajo su teatro. Los teatros no son sitios que el puerto tenga. Después, mensaje interceptado; con `far`, un mapa genérico: un CPD y, pegado a él, «en la misma calle», un segundo. En `dispersion`, una inundación los cubre a los dos y entra el rótulo GEOGRAPHIC DISPERSION. Ningún dato de distancia ni línea sobre el segundo centro del puerto",
+      "requiredCues": [
+        "theatres",
+        "hot",
+        "warm",
+        "cold",
+        "price",
+        "far",
+        "dispersion"
+      ]
+    },
+    {
+      "id": "s03-paralelo",
+      "chapter": 2,
+      "title": "Cuatro formas de probarlo",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Cuatro escalones que suben en realismo y en riesgo (`ladder`), con una barra «toca producción» que se queda en «no». Primero, gente sentada a una mesa: TABLETOP EXERCISE, «el plan: roles, quién declara, a quién se llama» (`tabletop`). Segundo, el equipo con un escenario y acciones reales: SIMULATION, «sin mover producción» (`simulation`). Tercero, los dos teatros dan la misma función a la vez, uno con público y el otro vacío (`parallel`), y se comparan columna a columna: PARALLEL PROCESSING, «el respaldo funciona, sin interrumpir» (`compare`). El cuarto escalón queda tapado con una interrogación (`hidden`)",
+      "requiredCues": [
+        "ladder",
+        "tabletop",
+        "simulation",
+        "parallel",
+        "compare",
+        "hidden"
+      ]
+    },
+    {
+      "id": "s04-conmutar",
+      "chapter": 2,
+      "title": "Quién demuestra qué",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Una petición escrita en pantalla (`ask`): «demostrar que la aplicación principal funciona en el sitio de reserva, con sus usuarios dentro, su DNS, sus certificados, sus integraciones y sus permisos». Cuatro chips (`chips`): DNS · certificados · integraciones · permisos. Pregunta para pensar (`think`) con dos botones, «parallel» y «fail over», y sin rótulo que la conteste. Respuesta (`answer`): fail over; el paralelo prueba el respaldo, pero no el cambio de sitio. Se enciende el cuarto escalón y su barra «toca producción» pasa a «sí»: esta noche el público entra de verdad en el otro teatro (`swap`, sonido `whoosh`), con su rótulo «ventana de mantenimiento» (`window`) y su «plan de vuelta atrás» (`back`). Nombre FAIL OVER. La mesa, abajo, y el fail over arriba (`ladder-top`): «valida el plan» · «valida el sistema»",
+      "requiredCues": [
+        "ask",
+        "chips",
+        "think",
+        "answer",
+        "swap",
+        "window",
+        "back",
+        "ladder-top"
+      ]
+    },
+    {
+      "id": "s05-copia",
+      "chapter": 2,
+      "title": "La copia en verde",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Una cuadrícula de casillas, una por noche, todas «completada» en verde (`green`, sonido `check`), sin fechas ni horas y sin ser una tira de tres, con el rótulo fijo «ejemplo · sin fecha · no es el registro del puerto». Un paraguas plegado en la entrada con la pegatina «revisado» y que nadie ha abierto (`umbrella`). Mensaje interceptado. Restauración de una de las copias (`restore`) que falla: «los archivos no sirven» (`unusable`, sonido `block`). Después, la prueba en tres pasos (`check`): «restaurar en un entorno aparte · cada cierto tiempo» · «datos completos y la aplicación responde» · «cronometrar y apuntar». Dos chips (`copies`): «snapshot · mismo almacenamiento» y «réplica · copia también el borrado y el cifrado del ransomware»",
+      "requiredCues": [
+        "green",
+        "umbrella",
+        "restore",
+        "unusable",
+        "check",
+        "copies"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres tarjetas de reglas (`recap`), cada una con su icono: el teatro (`rule-1`), los cuatro escalones (`rule-2`) y el paraguas (`rule-3`); con `next`, «Tu turno: el laboratorio Continuity Ladder»; tarjeta final Alertópolis (`endcard`)",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

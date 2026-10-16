@@ -1,0 +1,262 @@
+WEBVTT
+
+1
+00:00:01.467 --> 00:00:06.167
+Imagina que mañana el centro de datos
+del puerto ya no está. ¿Dónde sigue todo?
+
+2
+00:00:06.167 --> 00:00:07.933
+Y el reloj corre.
+
+3
+00:00:07.933 --> 00:00:10.733
+Vas a revisar su recuperación
+ante desastres.
+
+4
+00:00:10.733 --> 00:00:15.533
+Qué sitio elegir, qué prueba demuestra
+qué, y cuándo una copia vuelve.
+
+5
+00:00:15.533 --> 00:00:20.633
+Y vuelve BLIND ARCHITECT,
+que vive de los planos con atajos.
+
+6
+00:00:21.333 --> 00:00:23.067
+Primero, dónde sigues.
+
+7
+00:00:23.067 --> 00:00:28.000
+Piensa en teatros de reserva, de tres
+tipos según cuánto tengan montado.
+
+8
+00:00:28.000 --> 00:00:33.300
+En el primero, el decorado está montado,
+y sigues en minutos. Es un hot site.
+
+9
+00:00:33.300 --> 00:00:37.233
+En el segundo, el escenario está listo,
+como las máquinas, y el decorado,
+
+10
+00:00:37.233 --> 00:00:41.600
+como los datos, sigue en el camerino.
+Tardas horas o un día. Es un warm site.
+
+11
+00:00:41.600 --> 00:00:43.867
+El tercero es una sala vacía con luz.
+
+12
+00:00:43.867 --> 00:00:48.333
+Máquinas y datos los llevas tú,
+y tardas días o semanas. Un cold site.
+
+13
+00:00:48.333 --> 00:00:52.200
+Los tres se pagan todo el año,
+y cuanto más rápido, más caro.
+
+14
+00:00:52.200 --> 00:00:54.767
+Eliges según lo que aguante
+parado cada servicio.
+
+15
+00:01:02.567 --> 00:01:05.867
+Es verdad, cuanto más cerca,
+más fácil replicar.
+
+16
+00:01:05.867 --> 00:01:07.167
+Pero si está enfrente,
+solo cumple el papeleo.
+
+17
+00:01:07.167 --> 00:01:10.500
+Una inundación se lleva los dos
+teatros si están en la misma calle.
+
+18
+00:01:10.500 --> 00:01:14.533
+O sea, que los pones lejos,
+y eso es la geographic dispersion.
+
+19
+00:01:15.433 --> 00:01:21.233
+Ahora, a probarlo, en cuatro escalones,
+cada uno más real y más arriesgado.
+
+20
+00:01:21.233 --> 00:01:25.500
+Abajo del todo, el equipo repasa
+el plan hablando, sentado a una mesa.
+
+21
+00:01:25.500 --> 00:01:28.700
+Lo llaman tabletop exercise.
+
+22
+00:01:28.767 --> 00:01:32.867
+Un escalón más arriba, el equipo
+responde de verdad a un escenario,
+
+23
+00:01:32.867 --> 00:01:36.333
+sin mover producción. Es la simulation.
+
+24
+00:01:36.333 --> 00:01:40.567
+En el tercero, el respaldo procesa
+lo mismo que producción, a la vez.
+
+25
+00:01:40.567 --> 00:01:44.233
+Como dos teatros con la misma
+función, uno sin público.
+
+26
+00:01:44.233 --> 00:01:48.233
+Comparas, y si sale igual,
+el respaldo funciona sin parar nada.
+
+27
+00:01:48.233 --> 00:01:50.500
+Se llama parallel processing.
+
+28
+00:01:50.567 --> 00:01:55.733
+O sea, que hasta aquí nadie toca
+producción. Y eso deja algo sin probar.
+
+29
+00:01:56.467 --> 00:01:59.633
+Te piden que la aplicación pase
+de verdad al sitio de reserva,
+
+30
+00:01:59.633 --> 00:02:02.767
+con sus usuarios y todo
+lo que cuelga de ella.
+
+31
+00:02:02.767 --> 00:02:06.033
+¿Eso lo demuestra el paralelo,
+o el fail over?
+
+32
+00:02:10.333 --> 00:02:11.400
+El fail over.
+
+33
+00:02:11.400 --> 00:02:14.367
+El paralelo prueba el respaldo,
+pero nadie cambia de sitio,
+
+34
+00:02:14.367 --> 00:02:16.867
+y te piden justo ese cambio.
+
+35
+00:02:16.867 --> 00:02:18.367
+Conmutas la producción de verdad,
+
+36
+00:02:18.367 --> 00:02:21.767
+como si el público entrara
+esta noche en el otro teatro.
+
+37
+00:02:21.767 --> 00:02:24.567
+Es la única que prueba el cambio entero.
+
+38
+00:02:24.567 --> 00:02:28.433
+Y es la que más arriesga, así que va
+en una ventana de mantenimiento,
+
+39
+00:02:28.433 --> 00:02:30.467
+con su plan de vuelta atrás.
+
+40
+00:02:30.467 --> 00:02:34.833
+La mesa valida el plan,
+y el fail over, el sistema.
+
+41
+00:02:35.900 --> 00:02:40.800
+Y las copias. Un trabajo de copia
+sale en verde cada noche.
+
+42
+00:02:40.800 --> 00:02:45.733
+Como un paraguas plegado con su pegatina
+de revisado, que nadie ha abierto.
+
+43
+00:02:54.167 --> 00:02:58.200
+El verde dice que el trabajo
+terminó, no que la copia vuelva.
+
+44
+00:02:58.200 --> 00:03:02.067
+Si la restauras el día que la necesitas
+y los archivos no sirven,
+
+45
+00:03:02.067 --> 00:03:04.367
+te enteras en pleno chaparrón.
+
+46
+00:03:04.367 --> 00:03:06.500
+Así que el paraguas se abre antes.
+
+47
+00:03:06.500 --> 00:03:11.300
+Restauras una copia aparte, compruebas
+que funciona y cronometras cuánto tarda.
+
+48
+00:03:11.367 --> 00:03:13.233
+Y dos que no cuentan como copias.
+
+49
+00:03:13.233 --> 00:03:18.300
+El snapshot, en el mismo almacenamiento,
+y la réplica, que copia también el daño.
+
+50
+00:03:18.300 --> 00:03:21.900
+O sea, que una copia
+es una copia cuando ha vuelto.
+
+51
+00:03:22.767 --> 00:03:28.833
+Tres reglas. Eliges el sitio por lo que
+ya tiene montado, y lo bastante lejos.
+
+52
+00:03:28.833 --> 00:03:33.900
+Segunda, cada prueba demuestra una cosa,
+y solo el fail over, el cambio.
+
+53
+00:03:33.900 --> 00:03:37.500
+Y tercera, una copia
+sin restaurar no es una copia.
+
+54
+00:03:37.500 --> 00:03:40.733
+Tu turno, el laboratorio
+Continuity Ladder.
+
+55
+00:03:40.733 --> 00:03:44.167
+Y si te dicen que menos
+es más, abre el paraguas.

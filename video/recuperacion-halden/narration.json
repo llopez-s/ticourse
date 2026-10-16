@@ -1,0 +1,258 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Helena",
+    "rate": -2,
+    "fx": "megafonia"
+  },
+  "sfx": {
+    "dark": "error",
+    "swap": "whoosh",
+    "green": "check",
+    "unusable": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {stamp}Imagina que mañana {dc}el centro de datos del puerto {dark}ya no está. ¿Dónde sigue todo? Y el reloj corre.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Vas a revisar su recuperación ante desastres. {promise}Qué sitio elegir, qué prueba demuestra qué, y cuándo una copia vuelve.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<mischievously> {adversary}Y vuelve BLIND ARCHITECT, que vive de los planos con atajos.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-sitios",
+      "text": "<warm> {theatres}Primero, dónde sigues. Piensa en teatros de reserva, de tres tipos según cuánto tengan montado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-sitios",
+      "text": "<engaging> {hot}En el primero, el decorado está montado, y sigues en minutos. Es un hot site.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-sitios",
+      "text": "<clear> {warm}En el segundo, el escenario está listo, como las máquinas, y el decorado, como los datos, sigue en el camerino. Tardas horas o un día. Es un warm site.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-sitios",
+      "text": "<thoughtful> {cold}El tercero es una sala vacía con luz. Máquinas y datos los llevas tú, y tardas días o semanas. Un cold site.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-sitios",
+      "text": "<clear> Los tres se pagan todo el año, {price}y cuanto más rápido, más caro. Eliges según lo que aguante parado cada servicio.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "3.4",
+        "text": "Hot minutos, warm horas, cold días: más rápido, más caro",
+        "at": "price",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-sitios",
+      "text": "<firm> {far}Es verdad, cuanto más cerca, más fácil replicar. Pero si está enfrente, solo cumple el papeleo.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "¿Un segundo centro lejos? Al lado replica mejor. Menos es más.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-sitios",
+      "text": "<serious> Una inundación {dispersion}se lleva los dos teatros si están en la misma calle. O sea, que los pones lejos, y eso es la geographic dispersion.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-paralelo",
+      "text": "<engaging> {ladder}Ahora, a probarlo, en cuatro escalones, cada uno más real y más arriesgado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-paralelo",
+      "text": "<clear> {tabletop}Abajo del todo, el equipo repasa el plan hablando, sentado a una mesa. Lo llaman tabletop exercise.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-paralelo",
+      "text": "<focused> {simulation}Un escalón más arriba, el equipo responde de verdad a un escenario, sin mover producción. Es la simulation.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-paralelo",
+      "text": "<curious> {parallel}En el tercero, el respaldo procesa lo mismo que producción, a la vez. Como dos teatros con la misma función, uno sin público.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-paralelo",
+      "text": "<confident> {compare}Comparas, y si sale igual, el respaldo funciona sin parar nada. Se llama parallel processing.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "3.4",
+        "text": "Parallel processing: prueba el respaldo sin parar nada",
+        "at": "compare",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-paralelo",
+      "text": "<thoughtful> {hidden}O sea, que hasta aquí nadie toca producción. Y eso deja algo sin probar.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-conmutar",
+      "text": "<engaging> {ask}Te piden que la aplicación pase de verdad al sitio de reserva, con sus usuarios {chips}y todo lo que cuelga de ella.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-conmutar",
+      "text": "<thoughtful> {think}¿Eso lo demuestra el paralelo, o el fail over?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Probar el cambio de DNS: ¿parallel o fail over?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-conmutar",
+      "text": "<firm> {answer}El fail over. El paralelo prueba el respaldo, pero nadie cambia de sitio, y te piden justo ese cambio.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-conmutar",
+      "text": "<confident> {swap}Conmutas la producción de verdad, como si el público entrara esta noche en el otro teatro. Es la única que prueba el cambio entero.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-conmutar",
+      "text": "<serious> Y es la que más arriesga, así que {window}va en una ventana de mantenimiento, {back}con su plan de vuelta atrás.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-conmutar",
+      "text": "<satisfied> {ladder-top}La mesa valida el plan, y el fail over, el sistema.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "3.4",
+        "text": "Tabletop valida el plan; fail over valida el sistema",
+        "at": "ladder-top",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-copia",
+      "text": "<curious> {green}Y las copias. Un trabajo de copia sale en verde cada noche.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-copia",
+      "text": "<warm> {umbrella}Como un paraguas plegado con su pegatina de revisado, que nadie ha abierto.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-copia",
+      "text": "<firm> El verde dice que el trabajo terminó, no que la copia vuelva.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "¿Probar las copias? Si salen en verde, ya valen. Menos es más.",
+        "holdMs": 3800
+      }
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-copia",
+      "text": "<serious> {restore}Si la restauras el día que la necesitas {unusable}y los archivos no sirven, te enteras en pleno chaparrón.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-copia",
+      "text": "<confident> {check}Así que el paraguas se abre antes. Restauras una copia aparte, compruebas que funciona y cronometras cuánto tarda.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "3.4",
+        "text": "Un backup que nunca se ha restaurado no es un backup",
+        "at": "check",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-copia",
+      "text": "<clear> {copies}Y dos que no cuentan como copias. El snapshot, en el mismo almacenamiento, y la réplica, que copia también el daño.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-copia",
+      "text": "<steady> O sea, que una copia es una copia cuando ha vuelto.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-recap",
+      "text": "<cheerful> {recap}Tres reglas. {rule-1}Eliges el sitio por lo que ya tiene montado, y lo bastante lejos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-recap",
+      "text": "<clear> {rule-2}Segunda, cada prueba demuestra una cosa, y solo el fail over, el cambio.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-recap",
+      "text": "<firm> {rule-3}Y tercera, una copia sin restaurar no es una copia.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-recap",
+      "text": "<warm> {next}Tu turno, el laboratorio Continuity Ladder. {endcard}Y si te dicen que menos es más, abre el paraguas.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

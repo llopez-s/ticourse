@@ -137,6 +137,17 @@ const sp3m7: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de cerrar el dominio, míralo en el puerto: dónde sigue todo si falta el centro de datos, qué prueba demuestra qué y cuándo una copia es una copia.',
+    },
+    {
+      t: 'video',
+      title: 'Recuperación ante desastres: dónde sigues, qué prueba demuestra qué y cuándo una copia es una copia',
+      youtube: 'JPPAYkZb_ds',
+      poster: 'videos/recuperacion-halden-poster.png',
+      transcript: 'videos/recuperacion-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Con esta lección cierras el Dominio 3: sabes elegir un modelo de arquitectura, colocar cada sistema en su zona, seleccionar el appliance y el túnel adecuados, proteger los datos según su estado y su clasificación, y diseñar la resiliencia que sostiene todo lo anterior. El Dominio 4, **Security Operations**, es el turno de vivir dentro de esa arquitectura día a día: endurecer y gestionar activos, ejecutar la gestión de vulnerabilidades, monitorizar y alertar con un SIEM, administrar identidades y accesos, automatizar tareas repetitivas y —cuando la prevención falla— responder al incidente y preservar la evidencia. Los planes que aquí has aprendido a diseñar y a probar son exactamente los que allí vas a tener que ejecutar bajo presión.',
     },
   ],
