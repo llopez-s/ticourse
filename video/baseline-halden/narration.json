@@ -1,0 +1,310 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "still": "lock",
+    "ok-3": "check",
+    "trap-3": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {sheet}En el puerto de Halden hay un papel que dice cómo tiene que quedar cada máquina. {fleet}Y máquinas hay de todo tipo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}A ese papel se le llama secure baseline. {promise}Vas a ver cómo se escribe y se mantiene.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<engaging> Y luego, cómo llega a cada máquina y qué haces con lo que no se puede parar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-ciclo",
+      "text": "<clear> {guide}Sistemas parte de una guía pública, un CIS Benchmark o una STIG, {adapt}y la adapta al puerto, porque tal cual rompería aplicaciones. Eso es establish.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-ciclo",
+      "text": "<steady> {push}Luego la impone a la vez en los servidores Windows con Group Policy, y eso es deploy.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-ciclo",
+      "text": "<thoughtful> {compare}Y cada semana compara cada servidor con el papel. {maintain}Vigilar que siga igual es maintain.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.1",
+        "text": "Establish crea, deploy impone, maintain vigila",
+        "at": "maintain",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-ciclo",
+      "text": "<concerned> {drift}Pero una noche alguien enciende un servicio, solo para probar, y nadie lo apaga. Esa diferencia con el papel es configuration drift.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-ciclo",
+      "text": "<warm> {shop}Es como un maniquí movido en un escaparate, que ya no cuadra con la foto de la central.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-ciclo",
+      "text": "<firm> {two-ways}O vuelve la máquina al papel, o cambia el papel, aprobado y por escrito. {never}Lo que nunca vale es dejar la diferencia viva y sin dueño.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca. La nueva aplicación de cobros necesita un servicio que el baseline apaga. El comité de cambios aprobó encenderlo, para siempre, en todos los servidores de Contabilidad. Nadie actualizó el baseline, y la comparación los marca como desviados. ¿Qué es lo mejor que puede hacer Sistemas? {best}Fíjate en el «mejor»: pueden valer varias, pero gana la que encaja aquí.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "4.1",
+        "scenario": "Para la aplicación de cobros, el comité de cambios aprobó encender para siempre, en todos los servidores de Contabilidad, un servicio que el baseline apaga.",
+        "q": "Nadie actualizó el baseline y la comparación los marca desviados. ¿Qué es lo MEJOR que puede hacer Sistemas?",
+        "options": [
+          "Reinstalarlos desde la imagen maestra",
+          "Actualizar el baseline con el cambio aprobado",
+          "Apagar el servicio y volver al baseline",
+          "Sacarlos de la comparación semanal"
+        ],
+        "answer": 1,
+        "trap": 2,
+        "why": "El cambio está aprobado y es para siempre: lo que se ha quedado viejo es el papel",
+        "trapWhy": "Drift suena a volver atrás, pero así se rompen los cobros y se deshace lo aprobado",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Actualizar el baseline, porque el cambio está aprobado y es para siempre.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Apagar el servicio tienta, porque drift suena a volver atrás, pero rompería los cobros. {photo}Esta vez, la central cambia la foto.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "4.1",
+        "text": "Drift: vuelve la máquina o cambia el baseline",
+        "at": "photo",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-canal",
+      "text": "<clear> {paper}Quitar lo que sobra y proteger lo que queda se llama hardening, y cada máquina lo recibe por su canal.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-canal",
+      "text": "<engaging> {laptop}Al portátil, por Group Policy, y lo que más pesa es quitarle el administrador local.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-canal",
+      "text": "<steady> {phone}Al móvil, desde la consola de los móviles, el MDM. {cloud}Y a la nube, desde la suya.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-canal",
+      "text": "<warm> {remotes}Es como los mandos del salón: la tele no obedece al del aire acondicionado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-canal",
+      "text": "<thoughtful> {rule}O sea, si admite una consola de gestión, el baseline se impone desde ahí. {no-remote}Y hay aparatos sin mando.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Te toca otra vez. El puerto da móviles de empresa a los capataces de muelle. Su baseline pide cifrarlos, detectar jailbreak y poder borrarlos a distancia. Sistemas quiere imponerlo en todos y ver cuál no cumple. ¿Con qué herramienta lo despliega?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "4.1",
+        "scenario": "El puerto da móviles de empresa a los capataces de muelle. Su baseline pide cifrado, bloqueo de pantalla, detectar jailbreak y borrado a distancia.",
+        "q": "Sistemas quiere imponerlo en todos y ver cuál no cumple. ¿Con qué herramienta lo despliega?",
+        "options": [
+          "Group Policy",
+          "Imagen maestra",
+          "MDM",
+          "Infrastructure as code"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "Es la consola que manda en el móvil: impone, detecta, borra y dice cuál no cumple",
+        "trapWhy": "Así se despliega en los Windows del dominio, pero un móvil no la escucha",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Con el MDM, el mando de los móviles, que además te dice cuál no cumple.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Group Policy tienta, porque así se despliega en los Windows del dominio. {remote}Pero el móvil solo obedece a su mando.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "4.1",
+        "text": "Cada objetivo, por su canal: GPO, MDM o consola",
+        "at": "remote",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-esclusa",
+      "text": "<thoughtful> {lock-ship}Ahora vamos con lo que no se puede parar, como el sistema de las esclusas.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-esclusa",
+      "text": "<clear> {why-not}Su fabricante solo responde de una versión, se para una vez al año y no aguanta un agente.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-esclusa",
+      "text": "<serious> {still}Así que no se parchea en caliente. {name-ot}A lo que mueve cosas físicas se le llama OT.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-esclusa",
+      "text": "<clear> Y pasa igual con los embebidos y los de tiempo real, los RTOS.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-esclusa",
+      "text": "<confident> {compensate}Mientras, toca que solo le hable quien lo necesita y escuchar su tráfico sin tocarlo. Eso son compensating controls.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.1",
+        "text": "OT: ni parche en caliente ni agente; se compensa",
+        "at": "compensate",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-esclusa",
+      "text": "<warm> {plane}Es como un avión, que no se actualiza en vuelo sino en el hangar, y mientras vuela, la torre lo sigue por radar.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-07",
+      "scene": "s06-esclusa",
+      "text": "<firm> {inverse}Eso sí, desconectarlo del todo tampoco vale, si tiene que funcionar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Vamos con la última. El puente levadizo de la entrada se maneja a distancia, y su autómata, un PLC, tiene un fallo crítico. Sin parche aprobado, estaba apartado y vigilado. Ya hay parche certificado, y mañana empieza la parada anual. ¿Qué es lo mejor que puede hacer el puerto?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "4.1",
+        "scenario": "El puente levadizo de la entrada se maneja a distancia y lo mueve un PLC con un fallo crítico. Sin parche aprobado, estaba apartado y vigilado.",
+        "q": "El fabricante ya certificó el parche y mañana empieza la parada. ¿Qué es lo MEJOR que puede hacer el puerto?",
+        "options": [
+          "Instalar un antivirus en el PLC",
+          "Dejarlo sin parche y seguir compensando",
+          "Desconectarlo de la red para siempre",
+          "Aplicar el parche en la parada"
+        ],
+        "answer": 3,
+        "trap": 1,
+        "why": "Compensar era para mientras no se podía parchear, y ya hay parche certificado y parada",
+        "trapWhy": "Suena a regla de la OT, pero la regla es no parchear en caliente ni sin certificar",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Aplicar el parche en la parada, porque compensar era solo para mientras no se podía.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Seguir compensando tienta, porque suena a la regla de la OT. Pero la regla es no parchear en caliente.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-p3",
+      "text": "<warm> {hangar}O sea, el avión ya está en el hangar.",
+      "pauseAfterMs": 800,
+      "exam": {
+        "objective": "4.1",
+        "text": "Compensating: mientras no se pueda parchear",
+        "at": "hangar",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Una, el baseline se escribe, se impone y se vigila. Si algo se aparta, vuelve la máquina o cambia el papel.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Dos, cada sistema obedece a su mando. {rule-3}Y tres, lo que no se puede parar se compensa hasta la parada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Antes de contestar, pregúntate en qué verbo estás y qué admite ese sistema. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

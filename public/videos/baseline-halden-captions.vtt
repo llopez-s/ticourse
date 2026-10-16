@@ -1,0 +1,332 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:07.900
+En el puerto de Halden hay un papel que
+dice cómo tiene que quedar cada máquina.
+
+2
+00:00:07.900 --> 00:00:10.500
+Y máquinas hay de todo tipo.
+
+3
+00:00:10.500 --> 00:00:17.567
+A ese papel se le llama secure baseline.
+Vas a ver cómo se escribe y se mantiene.
+
+4
+00:00:17.567 --> 00:00:25.267
+Y luego, cómo llega a cada máquina y qué
+haces con lo que no se puede parar.
+
+5
+00:00:25.833 --> 00:00:30.267
+Sistemas parte de una guía pública,
+un CIS Benchmark o una STIG,
+
+6
+00:00:30.267 --> 00:00:36.133
+y la adapta al puerto, porque tal cual
+rompería aplicaciones. Eso es establish.
+
+7
+00:00:36.133 --> 00:00:43.200
+Luego la impone a la vez en los servidores
+Windows con Group Policy, y eso es deploy.
+
+8
+00:00:43.200 --> 00:00:49.600
+Y cada semana compara cada servidor con el
+papel. Vigilar que siga igual es maintain.
+
+9
+00:00:49.600 --> 00:00:53.800
+Pero una noche alguien enciende
+un servicio, solo para probar,
+
+10
+00:00:53.800 --> 00:00:58.700
+y nadie lo apaga. Esa diferencia
+con el papel es configuration drift.
+
+11
+00:00:58.700 --> 00:01:02.400
+Es como un maniquí
+movido en un escaparate,
+
+12
+00:01:02.400 --> 00:01:06.200
+que ya no cuadra
+con la foto de la central.
+
+13
+00:01:06.200 --> 00:01:12.000
+O vuelve la máquina al papel,
+o cambia el papel, aprobado y por escrito.
+
+14
+00:01:12.000 --> 00:01:17.500
+Lo que nunca vale es dejar
+la diferencia viva y sin dueño.
+
+15
+00:01:18.067 --> 00:01:18.600
+Te toca.
+
+16
+00:01:18.600 --> 00:01:23.467
+La nueva aplicación de cobros necesita
+un servicio que el baseline apaga.
+
+17
+00:01:23.467 --> 00:01:27.100
+El comité de cambios aprobó
+encenderlo, para siempre,
+
+18
+00:01:27.100 --> 00:01:29.833
+en todos los servidores de Contabilidad.
+
+19
+00:01:29.833 --> 00:01:34.600
+Nadie actualizó el baseline,
+y la comparación los marca como desviados.
+
+20
+00:01:34.600 --> 00:01:37.367
+¿Qué es lo mejor que puede hacer Sistemas?
+
+21
+00:01:37.367 --> 00:01:42.967
+Fíjate en el «mejor»: pueden valer
+varias, pero gana la que encaja aquí.
+
+22
+00:01:42.167 --> 00:01:47.167
+A) Reinstalarlos desde la imagen maestra
+B) Actualizar el baseline con el cambio aprobado
+C) Apagar el servicio y volver al baseline
+D) Sacarlos de la comparación semanal
+
+23
+00:01:47.333 --> 00:01:52.433
+Actualizar el baseline, porque el cambio
+está aprobado y es para siempre.
+
+24
+00:01:52.433 --> 00:01:56.633
+Apagar el servicio tienta,
+porque drift suena a volver atrás,
+
+25
+00:01:56.633 --> 00:02:01.733
+pero rompería los cobros.
+Esta vez, la central cambia la foto.
+
+26
+00:02:03.600 --> 00:02:08.600
+Quitar lo que sobra y proteger
+lo que queda se llama hardening,
+
+27
+00:02:08.600 --> 00:02:11.900
+y cada máquina lo recibe por su canal.
+
+28
+00:02:11.900 --> 00:02:14.133
+Al portátil, por Group Policy,
+
+29
+00:02:14.133 --> 00:02:18.167
+y lo que más pesa es quitarle
+el administrador local.
+
+30
+00:02:18.167 --> 00:02:25.267
+Al móvil, desde la consola de los móviles,
+el MDM. Y a la nube, desde la suya.
+
+31
+00:02:25.267 --> 00:02:31.167
+Es como los mandos del salón: la tele
+no obedece al del aire acondicionado.
+
+32
+00:02:31.167 --> 00:02:36.800
+O sea, si admite una consola de gestión,
+el baseline se impone desde ahí.
+
+33
+00:02:36.800 --> 00:02:39.667
+Y hay aparatos sin mando.
+
+34
+00:02:40.233 --> 00:02:45.167
+Te toca otra vez. El puerto da móviles
+de empresa a los capataces de muelle.
+
+35
+00:02:45.167 --> 00:02:50.500
+Su baseline pide cifrarlos, detectar
+jailbreak y poder borrarlos a distancia.
+
+36
+00:02:50.500 --> 00:02:54.233
+Sistemas quiere imponerlo
+en todos y ver cuál no cumple.
+
+37
+00:02:54.233 --> 00:02:57.533
+¿Con qué herramienta lo despliega?
+
+38
+00:02:56.733 --> 00:03:01.733
+A) Group Policy
+B) Imagen maestra
+C) MDM
+D) Infrastructure as code
+
+39
+00:03:01.900 --> 00:03:08.200
+Con el MDM, el mando de los móviles,
+que además te dice cuál no cumple.
+
+40
+00:03:08.200 --> 00:03:13.500
+Group Policy tienta, porque así
+se despliega en los Windows del dominio.
+
+41
+00:03:13.500 --> 00:03:17.100
+Pero el móvil solo obedece a su mando.
+
+42
+00:03:18.967 --> 00:03:25.233
+Ahora vamos con lo que no se puede parar,
+como el sistema de las esclusas.
+
+43
+00:03:25.233 --> 00:03:28.867
+Su fabricante solo
+responde de una versión,
+
+44
+00:03:28.867 --> 00:03:32.733
+se para una vez al año
+y no aguanta un agente.
+
+45
+00:03:32.733 --> 00:03:39.833
+Así que no se parchea en caliente. A lo
+que mueve cosas físicas se le llama OT.
+
+46
+00:03:39.833 --> 00:03:45.333
+Y pasa igual con los embebidos
+y los de tiempo real, los RTOS.
+
+47
+00:03:45.333 --> 00:03:49.300
+Mientras, toca que solo le hable
+quien lo necesita y escuchar
+
+48
+00:03:49.300 --> 00:03:53.333
+su tráfico sin tocarlo.
+Eso son compensating controls.
+
+49
+00:03:53.333 --> 00:04:00.167
+Es como un avión, que no se actualiza en
+vuelo sino en el hangar, y mientras vuela,
+
+50
+00:04:00.167 --> 00:04:02.800
+la torre lo sigue por radar.
+
+51
+00:04:02.800 --> 00:04:08.100
+Eso sí, desconectarlo del todo
+tampoco vale, si tiene que funcionar.
+
+52
+00:04:08.667 --> 00:04:10.133
+Vamos con la última.
+
+53
+00:04:10.133 --> 00:04:15.600
+El puente levadizo de la entrada se maneja
+a distancia, y su autómata, un PLC,
+
+54
+00:04:15.600 --> 00:04:20.900
+tiene un fallo crítico. Sin parche
+aprobado, estaba apartado y vigilado.
+
+55
+00:04:20.900 --> 00:04:25.267
+Ya hay parche certificado,
+y mañana empieza la parada anual.
+
+56
+00:04:25.267 --> 00:04:29.167
+¿Qué es lo mejor
+que puede hacer el puerto?
+
+57
+00:04:28.367 --> 00:04:33.367
+A) Instalar un antivirus en el PLC
+B) Dejarlo sin parche y seguir compensando
+C) Desconectarlo de la red para siempre
+D) Aplicar el parche en la parada
+
+58
+00:04:33.533 --> 00:04:35.767
+Aplicar el parche en la parada,
+
+59
+00:04:35.767 --> 00:04:39.833
+porque compensar era solo
+para mientras no se podía.
+
+60
+00:04:39.833 --> 00:04:44.367
+Seguir compensando tienta,
+porque suena a la regla de la OT.
+
+61
+00:04:44.367 --> 00:04:47.733
+Pero la regla es no parchear en caliente.
+
+62
+00:04:47.733 --> 00:04:52.233
+O sea, el avión ya está en el hangar.
+
+63
+00:04:53.200 --> 00:04:58.967
+Te llevas tres reglas. Una, el baseline
+se escribe, se impone y se vigila.
+
+64
+00:04:58.967 --> 00:05:03.467
+Si algo se aparta, vuelve
+la máquina o cambia el papel.
+
+65
+00:05:03.467 --> 00:05:06.567
+Dos, cada sistema obedece a su mando.
+
+66
+00:05:06.567 --> 00:05:11.767
+Y tres, lo que no se puede parar
+se compensa hasta la parada.
+
+67
+00:05:11.767 --> 00:05:17.533
+Antes de contestar, pregúntate en qué
+verbo estás y qué admite ese sistema.
+
+68
+00:05:17.533 --> 00:05:22.267
+Ahora te toca a ti,
+con las preguntas de la lección.
