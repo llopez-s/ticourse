@@ -156,7 +156,7 @@ hash, ni dominio, ni certificado (`video/atribucion-cuadro/src/data/s02-niveles.
 | `winhlp.exe   SHA-256 4c81...b3` | Hash del loader en el árbol de s2m5; lleva la ruta del PDB (decidido en V14, **solo para el registro**: nunca en pantalla ni en voz, por el dosier de BROKEN CHAIN, `src/data/course-gcti.ts:40`) | `src/data/s2.ts:1172,1361` |
 | `C:\ProgramData\UpdSvc\updsvc.exe`, `signed=false` | Binario del implante en E7 [V3] | `video/diamond-e7/src/data/s03-victim.ts:29,32` |
 | `msdtcs.exe` | Loader en Orbital (Víctima 2) | `src/data/s2.ts:895` |
-| `wcssvc.exe -decode a.txt payload.bin` | `certutil` renombrado (`OriginalFileName` CertUtil.exe). V27 lo enseña como el segundo «evento de ejemplo» (`Image` `…\wcssvc.exe`), sin equipo, hora ni cuenta, y sin añadirlo a la cadena de s2m1 (§5 punto 19) | `src/data/s2.ts:1168-1169`; `src/data/s5.ts:555`; `video/reglas-aeropuerto/src/data/s04-sigma.ts:28-32` |
+| `wcssvc.exe -decode a.txt payload.bin` | `certutil` renombrado (`OriginalFileName` CertUtil.exe). V27 lo enseña como el segundo «evento de ejemplo» (`Image` `…\wcssvc.exe`), sin equipo, hora ni cuenta, y sin añadirlo a la cadena de s2m1 (§5 punto 19) | `src/data/s2.ts:1182-1183`; `src/data/s5.ts:555`; `video/reglas-aeropuerto/src/data/s04-sigma.ts:28-32` |
 | `powershell.exe -nop -w hidden -enc SQBFAFgAKA...` | Ejecución tras abrir el LNK | `src/data/s2.ts:79,1165` |
 | `CV_Ingeniero.zip` con `CV_Ingeniero.pdf.lnk` | Artefacto de entrega | `src/data/s2.ts:74`; `src/data/labs.ts:228` |
 | mutex único (sin nombre) | Otro artefacto del loader | `src/data/s3.ts:310` |
@@ -993,51 +993,51 @@ voz:
   de Meridian, una aeroespacial. Ya sabes qué detectar. Toca escribirlo.» (`video/reglas-aeropuerto/narration.json:25`, `:37`). El SOC es el
   equipo de §3: pregunta y no decide. El vídeo no dice que las reglas estén desplegadas, que hayan saltado ni cuándo se escribieron.
 - **Las dos reglas, «extracto de la lección · ficticia»** (`video/reglas-aeropuerto/src/data/rules.ts:11`), carácter por carácter salvo cuatro
-  líneas que se quitan a propósito (`rules.ts:3-6`; `docs/reviews/2026-10-14-fichas-tanda5/ficha-V27.md:231-236`): de la YARA, `date = "2026-04-18"`
+  líneas que se quitan a propósito (`video/reglas-aeropuerto/src/data/rules.ts:3-6`; `docs/reviews/2026-10-14-fichas-tanda5/ficha-V27.md:231-236`): de la YARA, `date = "2026-04-18"`
   y `reference = "Internal report MER-2026-011"` (`src/data/s5.ts:502-503`); de la Sigma, `id` y `references` (`:532`, `:535-536`). Así el vídeo
   no se fecha, no choca con la numeración de los informes (§5 punto 17) y no enseña el `id` de la lección, que no es un UUID válido. La YARA sigue
-  con `author = "Meridian CTI"`, `description` y `tlp = "AMBER"` (`rules.ts:17-19`; el TLP sale como texto, sin voz); **la Sigma no tiene autor** y
-  la pantalla no se lo pone (§3, «Equipos»). La ruta del PDB va con barras dobles, como se escribe en YARA (`rules.ts:25`), y `$api` es
+  con `author = "Meridian CTI"`, `description` y `tlp = "AMBER"` (`video/reglas-aeropuerto/src/data/rules.ts:17-19`; el TLP sale como texto, sin voz); **la Sigma no tiene autor** y
+  la pantalla no se lo pone (§3, «Equipos»). La ruta del PDB va con barras dobles, como se escribe en YARA (`video/reglas-aeropuerto/src/data/rules.ts:25`), y `$api` es
   `MapViewOfSection`, que sigue encontrando el `NtMapViewOfSection` de la muestra (§3, «Capacidades»).
 - **El aeropuerto: un objeto, una función** (`video/reglas-aeropuerto/narration.json:43-67`). El escáner de equipaje mira dentro de la maleta
   (YARA, «mira dentro: ficheros y memoria»); la puerta de embarque «apunta quién pasa, con qué tarjeta y qué pasaporte», y Sigma es la lupa que
   **lee** ese registro («lee lo que ocurre: los registros»; `video/reglas-aeropuerto/src/data/s02-miradas.ts:2-8`). **La tarjeta de embarque es el
   nombre del fichero en el disco (`Image`) y el pasaporte, el nombre original que va por dentro (`OriginalFileName`)**: «Y busca que su pasaporte,
-  el nombre de dentro, sea certutil» y «Si la tarjeta, el nombre del disco, también dice certutil, el filtro lo descarta» (`narration.json:141`,
-  `:153`). La botella de agua, el paraguas y el libro de la maleta son las cadenas que lleva cualquiera (`s02-miradas.ts:17`; en voz, solo «como
-  una botella de agua», `narration.json:95`). El remate, «Hasta el próximo control» (`:265`), cierra la imagen. Es de la analogía, no del caso, y queda
+  el nombre de dentro, sea certutil» y «Si la tarjeta, el nombre del disco, también dice certutil, el filtro lo descarta» (`video/reglas-aeropuerto/narration.json:141`,
+  `:153`). La botella de agua, el paraguas y el libro de la maleta son las cadenas que lleva cualquiera (`video/reglas-aeropuerto/src/data/s02-miradas.ts:17`; en voz, solo «como
+  una botella de agua», `video/reglas-aeropuerto/narration.json:95`). El remate, «Hasta el próximo control» (`:265`), cierra la imagen. Es de la analogía, no del caso, y queda
   **ocupada**: un vídeo posterior no usa el escáner, la puerta de embarque, la tarjeta ni el pasaporte para otra cosa (el paraguas de la maleta es
   un objeto corriente; el paraguas plegado con su pegatina «revisado» es la imagen de V24, en Security+). La voz no dice «alarma» (de V22), «cámara», «cargador» ni «loader» (`video/reglas-aeropuerto/out/script-notes.md:53-55`).
 - **La condición de la YARA** (s03): tres partes, «El contexto, meta. Las cadenas que busca, strings. Y la condición, condition, que decide»
-  (`narration.json:89`); en pantalla, `$api` «está en miles de programas legítimos», `$pipe` «molde propio · aquí, de compañía» con «el molde, no
+  (`video/reglas-aeropuerto/narration.json:89`); en pantalla, `$api` «está en miles de programas legítimos», `$pipe` «molde propio · aquí, de compañía» con «el molde, no
   el nombre de cada ejecución», y `$pdb` «único» (`video/reglas-aeropuerto/src/data/s03-condicion.ts:22-28`); una tira «el SOC» que se llena de
   «aviso» (nunca «alarma», `:31`); y la condición en llano, «que sea un ejecutable (empieza por MZ)», «que pese menos de 250 KB» y «o el PDB, que
   es único y va solo, o dos señales de las otras tres» (`:34-38`). En voz, la ruta del PDB «a veces queda escrita al compilar» y «Casi nadie lleva
-  esa» (`narration.json:107`), nunca «la etiqueta del taller» de V13 a V15 ni qué muestra la lleva: **el vídeo no pasa ninguna regla por ninguna
+  esa» (`video/reglas-aeropuerto/narration.json:107`), nunca «la etiqueta del taller» de V13 a V15 ni qué muestra la lleva: **el vídeo no pasa ninguna regla por ninguna
   muestra ni hash de Meridian** (§5 puntos 1 y 11). Ver §5 punto 26 para el pipe.
 - **La Sigma, parte a parte, y tres eventos de ejemplo** (s04; `video/reglas-aeropuerto/src/data/s04-sigma.ts:22-58`): «creación de procesos de
   Windows», «pasaporte · el nombre de dentro», «decodificar o descargar», «tarjeta · el uso con su nombre normal no salta», «resta lo que filtra».
   Cada «evento de ejemplo» lleva `Image` con ruta, `OriginalFileName` y `CommandLine` con el programa delante: (1) `C:\Windows\System32\certutil.exe`,
   `CertUtil.exe`, `certutil.exe -decode a.txt payload.bin`, «no avisa», «el filtro lo cubre»; (2) `…\wcssvc.exe`, `CertUtil.exe`,
   `wcssvc.exe -decode a.txt payload.bin`, «avisa»; (3) `…\otro-nombre.exe`, `CertUtil.exe`, `otro-nombre.exe -decode a.txt payload.bin`, que entra
-  con la pregunta. Sin equipo, hora ni cuenta, y en voz siempre en condicional: «El de la tarjeta cambiada sí avisaría» (`narration.json:159`). La
+  con la pregunta. Sin equipo, hora ni cuenta, y en voz siempre en condicional: «El de la tarjeta cambiada sí avisaría» (`video/reglas-aeropuerto/narration.json:159`). La
   voz cuenta «dos eventos» y luego «un tercero»: el primero solo se ve.
 - **La regla A es solo del vídeo** (`video/reglas-aeropuerto/src/data/s04-sigma.ts:7-10`): una línea, `Image|endswith: '\wcssvc.exe'`, rotulada
-  «ejemplo» («Una regla solo mira la tarjeta, y busca ese nombre. La otra es la de la lección», `narration.json:165`). Pregunta: «Otro nombre de
+  «ejemplo» («Una regla solo mira la tarjeta, y busca ese nombre. La otra es la de la lección», `video/reglas-aeropuerto/narration.json:165`). Pregunta: «Otro nombre de
   fichero: ¿cuál sigue saltando?» (`:174`); respuesta: «La de la lección. La tarjeta la cambia el atacante cuando quiere, y la otra ya no lo ve.
   Pero el pasaporte, el nombre original, va dentro del programa, y renombrar no lo toca.» (`:181`, `:187`); con el tercer evento, la regla A «no lo
-  ve» y el filtro «no cuadra» (`s04-sigma.ts:56-58`). «Lo cambia el atacante cuando quiere», y no «gratis», para no contradecir a V7, que dijo que
+  ve» y el filtro «no cuadra» (`video/reglas-aeropuerto/src/data/s04-sigma.ts:56-58`). «Lo cambia el atacante cuando quiere», y no «gratis», para no contradecir a V7, que dijo que
   el nombre y la carpeta «ya le cuestan más» que el hash (`video/reglas-aeropuerto/out/script-notes.md:78-80`). No es una regla de Meridian.
 - **Dónde corre y qué rompe cada una** (s05; `video/reglas-aeropuerto/src/data/s05-aguanta.ts:7-43`): YARA corre en «escáner · sandbox · EDR ·
   repositorio de muestras» (en voz, los tres primeros); Sigma «se traduce a la consulta de tu SIEM, y esa corre» («Sigma no corre en el SIEM tal
-  cual. Antes se traduce a su consulta», `narration.json:211`), sin nombres de producto. «qué la rompe»: a la YARA, que «el programa deja de
+  cual. Antes se traduce a su consulta», `video/reglas-aeropuerto/narration.json:211`), sin nombres de producto. «qué la rompe»: a la YARA, que «el programa deja de
   conservar esas piezas (otra compilación, otro empaquetado)» (en voz, «vive mientras la maleta lleve esas piezas», `:223`); a la Sigma por nombre
   original, «otra herramienta»; a su filtro, «una copia con su nombre normal, en otra carpeta» (`:229`). Tres chips sin nombre de nivel: «el nombre
   del disco», «el nombre original», «la cadena entera» con «explorer, PowerShell, tarea programada» (§5 punto 27); en voz, «Queda la del árbol de
   procesos, que ya viste» (`:235`), que es la regla de comportamiento de V7. Cierre: «cada una tiene su punto débil», «mide si dispara» (`:241`).
 - **Las tarjetas de examen** (dominio Dissemination): «YARA mira contenido; Sigma mira eventos», «Cadena genérica, acompañada. El PDB, que es único,
   solo», «OriginalFileName viene del PE header, no del disco» (la forma de la lección y de V7) y «Sigma no corre en el SIEM tal cual: se convierte»
-  (`narration.json:71`, `:117`, `:191`, `:215`). Tarea: «las preguntas de la lección (s5m3)», «10 preguntas», sin laboratorio
+  (`video/reglas-aeropuerto/narration.json:71`, `:117`, `:191`, `:215`). Tarea: «las preguntas de la lección (s5m3)», «10 preguntas», sin laboratorio
   (`video/reglas-aeropuerto/src/data/s06-recap.ts:51`).
 - **La voz no dice** `OriginalFileName`, `wcssvc.exe`, `MapViewOfSection`, nombres de regla, GLASS VIPER ni VELVET CICADA; ningún hash, fecha, hora
   ni equipo (`video/reglas-aeropuerto/out/script-notes.md:53-55`). VELVET CICADA solo firma sus mensajes en pantalla, y en s01 no hay ficha de

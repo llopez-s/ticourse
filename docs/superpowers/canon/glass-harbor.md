@@ -889,7 +889,7 @@ propone atajos de diseño, la tutea una sola vez y firma siempre «Menos es más
   que el puerto tenga snapshots ni réplica (la lección sí, `sp/sp3-part4.ts:126`).
 - **Qué demuestra cada prueba.** Los roles de la mesa solo van en pantalla, «el plan: roles, quién declara, a quién se llama»
   (`v24/src/scenes/parts/Steps.tsx:54`); la simulación, «sin mover producción» (`:55`; en voz, «sin mover producción», `v24/narration.json:108`), y V24
-  no dice que «cueste», a diferencia de la tarjeta de V5b; el paralelo, «el respaldo funciona, sin interrumpir» (`Steps.tsx:56`), nunca DNS,
+  no dice que «cueste», a diferencia de la tarjeta de V5b; el paralelo, «el respaldo funciona, sin interrumpir» (`v24/src/scenes/parts/Steps.tsx:56`), nunca DNS,
   certificados ni integraciones; el fail over, «la producción cambia de sitio, de verdad» (`:57`), la única con «toca producción · sí»: «Es la única
   que prueba el cambio entero» (`v24/narration.json:160`). La voz no dice nunca «fail-open», «fail-closed», «fail-safe», «fail-secure» ni «fail back»
   (vocabulario de V16 y de la lección; `notas-v24:32-35`), ni «escalera» (de V21) ni «peldaño» (de V7): dice «escalón».
