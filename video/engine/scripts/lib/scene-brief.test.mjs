@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
+import { QUESTION_COUNTDOWN_DEFAULT_MS as NARRATION_COUNTDOWN_DEFAULT_MS } from './narration.mjs';
 import {
   REQUIRED_PLACEHOLDERS,
   TODO_MARK,
@@ -10,6 +11,7 @@ import {
   demoteHeadings,
   fillTemplate,
   gitBashPath,
+  QUESTION_COUNTDOWN_DEFAULT_MS,
   identifierCandidates,
   readTemplate,
   sceneBrief,
@@ -123,7 +125,7 @@ test('a video without think prompts or intercepts says so', () => {
   }
   const md = sceneBrief({ slug: 'mini', manifest, storyboard, narration, template: TEMPLATE });
   assert.ok(md.includes('  - nothing in this video: it has no think prompts or intercepted messages.'));
-  assert.ok(section(md, 's02-collect').includes('Timing notes: none'));
+  assert.ok(section(md, 's02-collect').includes('- Timing notes: none (no exam card, think prompt or intercepted message in this scene).'), 'original wording, byte for byte');
   assert.ok(md.includes('Work in the repository checkout (TODO: path and branch).'));
 });
 
@@ -138,6 +140,28 @@ test('exam cards: text, badge, objective and cue, in their own scene only', () =
   narration.examTiming = 'sentence-end';
   const late = sceneBrief({ slug: 'mini', manifest, storyboard, narration, template: TEMPLATE });
   assert.ok(section(late, 's01-hook').includes('on cue `needle`, once the sentence holding it has been heard'));
+});
+
+test('exam questions: the card covers the stage from its segment to the end of the scene, and says when it reveals', () => {
+  const { storyboard, narration, lexicon } = sources();
+  const q = { objective: '4.4', scenario: 'Un SIEM recibe avisos.', q: '¿Qué hace primero?', options: ['a', 'b', 'c', 'd'], answer: 1, trap: 2, why: 'x', trapWhy: 'y', revealAt: 'utc', trapAt: 'end' };
+  const build = (question) => {
+    const n = structuredClone(narration);
+    n.segments.find((s) => s.id === 's03-01').intercept = undefined;
+    n.segments.find((s) => s.id === 's03-01').question = question;
+    return sceneBrief({ slug: 'mini', manifest, storyboard, narration: n, lexicon, template: TEMPLATE });
+  };
+  const md = build(q);
+  const s3 = section(md, 's03-normalize');
+  assert.ok(s3.includes('Exam question (4.4, 5 s countdown) at `s03-01`: «¿Qué hace primero?»'), s3);
+  assert.ok(s3.includes('covers the stage from segment `s03-01` to the end of the scene'), 'cover range');
+  assert.ok(/keep (it|the scene) still and free of important text/.test(s3), 'still and without text');
+  assert.ok(s3.includes('reveals the answer on cue `utc`') && s3.includes('the trap on cue `end`'), 'reveal and trap cues');
+  assert.ok(!section(md, 's01-hook').includes('Exam question'));
+  assert.ok(md.includes('  - exam question from `s03-01` to the end of its scene'), 'keep-clear list');
+  assert.ok(md.includes('| exam question at s03-01 |'), 'overlay column');
+  const same = section(build({ ...q, trapAt: undefined, countdownMs: 6500 }), 's03-normalize');
+  assert.ok(same.includes('6.5 s countdown') && same.includes('reveals the answer and the trap on cue `utc`'), same);
 });
 
 test('the canon is a TODO block, seeded with identifier-like strings from the goals', () => {
@@ -200,4 +224,17 @@ test('helpers: component names, Git Bash paths, heading demotion', () => {
   assert.equal(gitBashPath('D:\\LLM projects\\TICourse'), '/d/LLM projects/TICourse');
   assert.equal(gitBashPath('/home/x'), '/home/x');
   assert.equal(demoteHeadings('# A\n###### F\n#nospace', 2), '### A\n###### F\n#nospace');
+});
+
+test('canon candidates also come from the explanations of an exam question', () => {
+  const { storyboard } = sources();
+  const sceneId = storyboard.scenes[0].id;
+  const question = { scenario: 'Un SOC recibe avisos.', q: '¿Qué hace primero?', options: ['a', 'b', 'c', 'd'], why: 'El host ENG-WS-041 lo prueba', trapWhy: 'Ni update-svc-cdn.com ni otro dominio' };
+  const found = identifierCandidates(storyboard, new Map([[sceneId, [{ parsed: { display: '' }, question }]]]));
+  assert.deepEqual(found.map((f) => f.text).sort(), ['ENG-WS-041', 'update-svc-cdn.com']);
+  assert.deepEqual(found[0].scenes, [sceneId]);
+});
+
+test('the scene-brief copy of the question countdown default matches narration.mjs', () => {
+  assert.equal(QUESTION_COUNTDOWN_DEFAULT_MS, NARRATION_COUNTDOWN_DEFAULT_MS);
 });

@@ -12,7 +12,7 @@ import { parseArgs } from 'node:util';
 import { ELEVENLABS_CREDIT, captionsPathFor } from './build-timeline.mjs';
 import { loadSources, parseJsonText } from './lib/narration.mjs';
 import { MANIFEST, PATHS, isMainModule } from './lib/paths.mjs';
-import { profileFor, trackNotice } from './lib/profiles.mjs';
+import { YOUTUBE_PROFILES, profileFor, trackNotice } from './lib/profiles.mjs';
 import { writeFileAtomic } from './lib/remotion.mjs';
 
 export const TITLE_MAX = 100;
@@ -109,7 +109,7 @@ export function youtubeDescription({ timeline, track, notice }) {
  */
 export function buildYoutubeMeta() {
   const errors = [];
-  if (profileFor(MANIFEST.profile).host !== 'youtube') errors.push(`profile "${MANIFEST.profile}" is not a YouTube profile (principal-yt / capsula-yt)`);
+  if (profileFor(MANIFEST.profile).host !== 'youtube') errors.push(`profile "${MANIFEST.profile}" is not a YouTube profile (${YOUTUBE_PROFILES.join(' / ')})`);
   const timeline = parseJsonText(readFileSync(PATHS.timeline, 'utf8'), PATHS.timeline);
   if (timeline.mode !== 'audio') errors.push('timeline.json is in estimate mode — run audio.mjs first');
   const storyboard = parseJsonText(readFileSync(PATHS.storyboard, 'utf8'), PATHS.storyboard);
