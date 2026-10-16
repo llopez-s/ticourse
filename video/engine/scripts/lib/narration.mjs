@@ -19,6 +19,13 @@ export const THINK_HOLD_YT_MIN = 4000;
  * too when narration.json has "adversaryVoice" (see adversary.mjs, tts-adversary.mjs). */
 export const INTERCEPT_TEXT_MAX = 70;
 export const INTERCEPT_HOLD_MS = [2500, 4500];
+/** On-screen exam question (caso profiles): length limits and the countdown window. */
+export const QUESTION_SCENARIO_MAX = 160;
+export const QUESTION_Q_MAX = 110;
+export const QUESTION_OPTION_MAX = 70;
+export const QUESTION_WHY_MAX = 90;
+export const QUESTION_COUNTDOWN_MS = [4000, 7000];
+export const QUESTION_COUNTDOWN_DEFAULT_MS = 5000;
 /** Symbols the style guide bans from anything that reaches the screen or the voice. */
 export const FORBIDDEN_SYMBOLS = /[→←↑↓↔⇒⇐⇔➔➜≠≈≤≥✓✔✗✘★☆•]|\p{Extended_Pictographic}/u;
 
@@ -126,6 +133,10 @@ export function sourceHash({ storyboardText, narrationText, lexiconText, sfxText
 }
 
 const isObj = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
+
+/** Lowercase, no accents, punctuation collapsed to single spaces: for comparing spoken text with on-screen options. */
+const foldForCompare = (s) =>
+  s.normalize('NFD').replace(/\p{M}+/gu, '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
 const countWords = (s) => s.split(/\s+/).filter(Boolean).length;
 
 /**
@@ -163,7 +174,7 @@ export const OPENER_MAX = 3;
  * @returns {{errors: string[], warnings: string[], voice: {voice: string, rate: string, pitch: string},
  *   scenes: {scene: object, index: number, segments: object[]}[], segments: object[]}}
  */
-export function analyzeNarration({ storyboard, narration, lexicon }, { examCards = [8, 11], thinkPrompts = 2, intercepts = null, chispa = false, track = 'secplus' } = {}) {
+export function analyzeNarration({ storyboard, narration, lexicon }, { examCards = [8, 11], thinkPrompts = 2, intercepts = null, examQuestions = [0, 0], chispa = false, track = 'secplus' } = {}) {
   const errors = [];
   const warnings = [];
 
@@ -328,6 +339,57 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
         intercept = { text: x.text, holdMs: x.holdMs };
       }
     }
+    let question = null;
+    if (raw.question !== undefined) {
+      const x = raw.question;
+      if (!isObj(x)) errors.push(`${label}: question must be an object`);
+      else {
+        const objectiveError = examObjectiveError(track, x.objective);
+        if (objectiveError) errors.push(`${label}: ${objectiveError}`);
+        const text = (field, max) => {
+          const v = x[field];
+          if (typeof v !== 'string' || !v.trim()) errors.push(`${label}: question.${field} must be a non-empty string`);
+          else {
+            if (v.length > max) errors.push(`${label}: question.${field} is ${v.length} characters (max ${max})`);
+            if (FORBIDDEN_SYMBOLS.test(v) || /[{}[\]|<>]/.test(v)) errors.push(`${label}: question.${field} contains a forbidden symbol`);
+          }
+        };
+        text('scenario', QUESTION_SCENARIO_MAX);
+        text('q', QUESTION_Q_MAX);
+        text('why', QUESTION_WHY_MAX);
+        text('trapWhy', QUESTION_WHY_MAX);
+        if (!Array.isArray(x.options) || x.options.length !== 4 || x.options.some((o) => typeof o !== 'string' || !o.trim())) {
+          errors.push(`${label}: question.options must be exactly four non-empty strings`);
+        } else {
+          x.options.forEach((o, n) => {
+            if (o.length > QUESTION_OPTION_MAX) errors.push(`${label}: question.options[${n}] is ${o.length} characters (max ${QUESTION_OPTION_MAX})`);
+            if (FORBIDDEN_SYMBOLS.test(o) || /[{}[\]|<>]/.test(o)) errors.push(`${label}: question.options[${n}] contains a forbidden symbol`);
+          });
+        }
+        const isIndex = (n) => Number.isInteger(n) && n >= 0 && n <= 3;
+        if (!isIndex(x.answer)) errors.push(`${label}: question.answer must be an index from 0 to 3`);
+        if (!isIndex(x.trap)) errors.push(`${label}: question.trap must be an index from 0 to 3`);
+        else if (x.trap === x.answer) errors.push(`${label}: question.trap must differ from question.answer`);
+        const [lo, hi] = QUESTION_COUNTDOWN_MS;
+        const countdownMs = x.countdownMs ?? QUESTION_COUNTDOWN_DEFAULT_MS;
+        if (typeof countdownMs !== 'number' || countdownMs < lo || countdownMs > hi) errors.push(`${label}: question.countdownMs must be between ${lo} and ${hi}`);
+        if (typeof x.revealAt !== 'string' || !x.revealAt) errors.push(`${label}: question.revealAt must be a cue id`);
+        if (x.trapAt !== undefined && (typeof x.trapAt !== 'string' || !x.trapAt)) errors.push(`${label}: question.trapAt must be a cue id`);
+        question = {
+          objective: x.objective,
+          scenario: x.scenario,
+          q: x.q,
+          options: x.options,
+          answer: x.answer,
+          trap: x.trap,
+          why: x.why,
+          trapWhy: x.trapWhy,
+          countdownMs,
+          revealAt: x.revealAt,
+          trapAt: x.trapAt ?? x.revealAt,
+        };
+      }
+    }
 
     // Style (warnings only)
     const displayWords = parsed.displayTokens.length;
@@ -353,7 +415,7 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
       }
     }
 
-    segments.push({ id: raw.id, scene: raw.scene, sceneIndex: si, text: raw.text, parsed, pauseMs, exam, think, intercept });
+    segments.push({ id: raw.id, scene: raw.scene, sceneIndex: si, text: raw.text, parsed, pauseMs, exam, think, intercept, question });
   });
 
   // Scenes
@@ -361,6 +423,7 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
   const lastScene = storyboard.scenes.at(-1).id;
   let examCount = 0;
   const thinkScenes = [];
+  let questionCount = 0;
   const interceptsByChapter = new Map();
   for (const { scene, segments: segs } of scenes) {
     if (!segs.length) {
@@ -394,6 +457,39 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
       if (s.exam.at && !counts.has(s.exam.at)) errors.push(`${s.id}: exam.at "${s.exam.at}" is not a cue of ${scene.id}`);
     }
     for (const s of segs) if (s.think) thinkScenes.push(scene.id);
+    const questions = segs.filter((s) => s.question);
+    questionCount += questions.length;
+    if (questions.length > 1) errors.push(`scene ${scene.id}: ${questions.length} exam questions (max 1 per scene)`);
+    if (questions.length) {
+      if (scene.id === lastScene) for (const s of questions) errors.push(`${s.id}: the closing scene must not carry an exam question`);
+      if (segs.some((s) => s.think)) errors.push(`scene ${scene.id}: an exam question cannot share the scene with a think prompt`);
+      if (segs.some((s) => s.intercept)) errors.push(`scene ${scene.id}: an exam question cannot share the scene with an intercepted message`);
+    }
+    for (const s of questions) {
+      const later = new Set(segs.slice(segs.indexOf(s) + 1).flatMap((x) => x.parsed.cues.map((c) => c.id)));
+      const q = s.question;
+      for (const field of ['revealAt', 'trapAt']) {
+        if (typeof q[field] === 'string' && q[field] && !later.has(q[field])) {
+          errors.push(`${s.id}: question.${field} "${q[field]}" must be a cue of a later segment of ${scene.id}`);
+        }
+      }
+      if (later.has(q.revealAt) && later.has(q.trapAt) && order.indexOf(q.trapAt) > order.indexOf(q.revealAt)) {
+        errors.push(`${s.id}: question.trapAt "${q.trapAt}" must fire before question.revealAt "${q.revealAt}"`);
+      }
+      // The voice explains the trap and the answer; reading the choices aloud duplicates what is on screen.
+      if (Array.isArray(q.options)) {
+        for (const opt of q.options) {
+          if (typeof opt !== 'string') continue;
+          const folded = foldForCompare(opt);
+          if (!folded || !(folded.split(' ').length >= 2 || folded.length >= 12)) continue;
+          for (const t of segs) {
+            if (` ${foldForCompare(t.parsed.spoken)} `.includes(` ${folded} `)) {
+              warnings.push(`${t.id}: the voice reads the option "${opt}" of the question — it is on screen, say the reasoning instead`);
+            }
+          }
+        }
+      }
+    }
     for (const s of segs.filter((x) => x.intercept)) {
       if (scene.id === lastScene) errors.push(`${s.id}: the closing scene must not carry an intercepted message`);
       interceptsByChapter.set(scene.chapter, (interceptsByChapter.get(scene.chapter) ?? 0) + 1);
@@ -409,6 +505,9 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
   }
   if (thinkScenes.length !== thinkPrompts) warnings.push(`${thinkScenes.length} think prompts (style guide: exactly ${thinkPrompts})`);
   if (examCount && (examCount < examCards[0] || examCount > examCards[1])) warnings.push(`${examCount} exam cards (style guide: ${examCards[0]}–${examCards[1]})`);
+  if (questionCount && (questionCount < examQuestions[0] || questionCount > examQuestions[1])) {
+    warnings.push(`${questionCount} exam questions (style guide: ${examQuestions[0]}–${examQuestions[1]})`);
+  }
   for (const [chapter, n] of interceptsByChapter) if (n > 1) errors.push(`chapter ${chapter}: ${n} intercepted messages (max 1 per chapter)`);
   const interceptCount = [...interceptsByChapter.values()].reduce((a, b) => a + b, 0);
   if (intercepts && (interceptCount < intercepts[0] || interceptCount > intercepts[1])) {
