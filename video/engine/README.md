@@ -32,7 +32,7 @@ video/<slug>/
 | --- | --- |
 | `output` | nombres del vídeo: `<output>.mp4` (dónde, según el perfil — ver «Perfiles»), `-poster.png`, `-transcript.txt`, `-captions.vtt`, todos bajo `public/videos/` salvo el MP4 de los perfiles `-yt` |
 | `composition`, `poster` | ids que registra `src/Root.tsx` (deben coincidir) |
-| `profile` | uno de los cuatro perfiles (`principal`, `capsula`, `principal-yt`, `capsula-yt`); ver «Perfiles» |
+| `profile` | uno de los seis perfiles (`principal`, `capsula`, `principal-yt`, `capsula-yt`, `caso-yt`, `caso-principal-yt`); ver «Perfiles» |
 | `track` | descargo de la transcripción: `secplus` (no afiliado a CompTIA) o `gcti` (no afiliado a SANS/GIAC) |
 | `adversary` | opcional; el adversario de la sección (p. ej. `SILENT PAGER`). Obligatorio en cuanto algún segmento de `narration.json` use `intercept` — ver «Mensaje interceptado» |
 | `lesson` | opcional; el id de módulo (p. ej. `sp4m7`) que enlaza la descripción de YouTube (`youtube-meta.mjs`) |
@@ -44,17 +44,26 @@ Todos los scripts eligen el vídeo con `--video <slug>` (o la variable `VIDEO`; 
 `video.json` → `"profile"` fija el formato del vídeo (`scripts/lib/profiles.mjs`; ver también el plan
 `docs/superpowers/plans/2026-09-25-lesson-videos.md` §1):
 
-| | `principal` | `capsula` | `principal-yt` | `capsula-yt` |
-| --- | --- | --- | --- | --- |
-| Duración (`minTotalSec`–`maxTotalSec`) | 280–340 s | 140–200 s | **380–600 s** (hasta 10 min desde V5) | **190–260 s** |
-| Capítulos (`maxChapters`) | 5 | 3 | 5 | 3 |
-| Tarjetas de examen (`examCards`) | 8–11 | 4–6 | **5–8** | **3–5** |
-| Pausas para pensar (`thinkPrompts`) | 2 | 1 | 2 | 1 |
-| Mensajes interceptados (`intercepts`) | 0 | 0 | **2–4, máx. 1/capítulo** | **1–2** |
-| Avisos de narración hablada (`chispa`) | no | no | **sí** | **sí** |
-| `host` | `repo` | `repo` | **`youtube`** | **`youtube`** |
-| `crf` | 23 | 27 | **18** | **18** |
-| Tamaño objetivo (`size`) | 15–25 MB (aviso > 30, error > 45) | 4–12 MB (aviso > 15, error > 25) | **sin objetivo** | **sin objetivo** |
+| | `principal` | `capsula` | `principal-yt` | `capsula-yt` | `caso-yt` | `caso-principal-yt` |
+| --- | --- | --- | --- | --- | --- | --- |
+| Duración (`minTotalSec`–`maxTotalSec`) | 280–340 s | 140–200 s | **380–600 s** (hasta 10 min desde V5) | **190–260 s** | **240–330 s** | **420–600 s** |
+| Capítulos (`maxChapters`) | 5 | 3 | 5 | 3 | 3 | 5 |
+| Tarjetas de examen (`examCards`) | 8–11 | 4–6 | **5–8** | **3–5** | **3–5** | **5–8** |
+| Pausas para pensar (`thinkPrompts`) | 2 | 1 | 2 | 1 | 0 | 0 |
+| Mensajes interceptados (`intercepts`) | 0 | 0 | **2–4, máx. 1/capítulo** | **1–2** | **0–1** | **0–2** |
+| Preguntas de examen (`examQuestions`) | 0 | 0 | 0 | 0 | **3** | **4–5** |
+| Avisos de narración hablada (`chispa`) | no | no | **sí** | **sí** | **sí** | **sí** |
+| `host` | `repo` | `repo` | **`youtube`** | **`youtube`** | **`youtube`** | **`youtube`** |
+| `crf` | 23 | 27 | **18** | **18** | **18** | **18** |
+| Tamaño objetivo (`size`) | 15–25 MB (aviso > 30, error > 45) | 4–12 MB (aviso > 15, error > 25) | **sin objetivo** | **sin objetivo** | **sin objetivo** | **sin objetivo** |
+
+Los dos perfiles `caso-*` son los del formato «caso y examen» (diseño
+`docs/superpowers/specs/2026-10-16-secplus-casos-examen-design.md`, plan
+`docs/superpowers/plans/2026-10-16-video-engine-caso-examen.md`): un caso contado en capítulos, con preguntas
+tipo examen en pantalla (ver «Pregunta de examen» más abajo). En todo lo demás se comportan como `capsula-yt` y
+`principal-yt`: `host: 'youtube'`, `crf` 18, preset `medium`, sin subtítulos grabados en la imagen y el aviso de
+marca `APP_NAME` (`trackNotice` solo mira el `host`). No llevan pausas para pensar (`thinkPrompts: 0`): la
+pregunta de examen ocupa ese hueco.
 
 **Claridad y ritmo** (revisión del 2026-09-29, `docs/reviews/2026-09-29-videos/`): `think.holdMs` admite hasta 5000 ms y
 los perfiles `-yt` avisan por debajo de 4000 (la entrada y la salida de la tarjeta se comen ~0,9 s);
@@ -186,6 +195,81 @@ El hueco (`holdMs`) crece: `voicedHoldFrames` (`scripts/lib/sfx.mjs`) usa el may
 hasta que acaba la respuesta de la narradora. `ENTER`, `EXIT`, `TYPE_START` y `TYPE_RATE` viven en
 `src/overlay/intercept-timing.json`, que leen tanto `build-timeline.mjs` como `InterceptLayer.tsx`, para que
 no se desalineen. Una voz de Pablo dura ~5–6 s por mensaje: tres mensajes alargan el vídeo ~5–8 s.
+
+## Pregunta de examen
+
+Solo para los perfiles `caso-yt` y `caso-principal-yt` (el formato «caso y examen»): una pregunta tipo examen en
+pantalla, con su escenario, cuatro opciones A–D, una cuenta atrás de silencio para que quien mira pause el vídeo y
+conteste, y después la respuesta correcta y la trampa más tentadora. Los textos los escribe el guion, en español y
+con los términos del examen en inglés; el motor no traduce nada. Diseño:
+`docs/superpowers/specs/2026-10-16-secplus-casos-examen-design.md`.
+
+- **`narration.json`**, en el segmento que plantea la pregunta (la voz cuenta el caso y la pregunta; las opciones
+  quedan para la pantalla):
+
+  ```json
+  "question": {
+    "objective": "1.1",
+    "scenario": "La grúa 4 corre un sistema que no admite parches…",
+    "q": "¿Qué tipo de control es el aislamiento en su VLAN?",
+    "options": ["Preventive", "Compensating", "Detective", "Directive"],
+    "answer": 1,
+    "trap": 0,
+    "why": "Sustituye al parche que no se puede aplicar",
+    "trapWhy": "Impide algo, pero su papel es suplir otro control",
+    "countdownMs": 5000,
+    "revealAt": "reveal-1"
+  }
+  ```
+
+  | Campo | Qué es |
+  | --- | --- |
+  | `objective` | objetivo SY0-701 (o dominio del curso en GCTI); se valida igual que el de una tarjeta de examen (`examObjectiveError`) |
+  | `scenario`, `q` | el caso en una frase (≤ 160 caracteres) y la pregunta (≤ 110) |
+  | `options` | exactamente cuatro, ≤ 70 caracteres cada una (como mucho dos líneas en pantalla) |
+  | `answer`, `trap` | índices 0–3 de la correcta y de la trampa; distintos |
+  | `why`, `trapWhy` | una frase para cada una (≤ 90): por qué es la correcta y por qué tienta la otra |
+  | `countdownMs` | el silencio tras el audio del segmento, entre 4000 y 7000 (5000 si falta) |
+  | `revealAt` | cue (`{reveal-1}`) de un segmento **posterior de la misma escena**: ahí se marca la correcta |
+  | `trapAt` | opcional; cue posterior donde se marca la trampa. Por defecto, `revealAt`; nunca antes de `revealAt` |
+
+  Los textos pasan el mismo filtro de símbolos prohibidos que las tarjetas de examen (sin flechas ni emoji).
+- **Reglas de `analyzeNarration`:** como mucho una pregunta por escena y ninguna en la escena final; no
+  comparte escena con una pausa para pensar ni con un mensaje interceptado; `revealAt`/`trapAt` deben ser cues de
+  un segmento posterior de su escena. Son avisos (no fallan) que la voz lea una opción literal —la ve en pantalla,
+  debe decir el razonamiento— y que el recuento de preguntas quede fuera de `examQuestions` del perfil (3 en
+  `caso-yt`, 4–5 en `caso-principal-yt`).
+- **`build-timeline.mjs`:**
+  - la cuenta atrás es silencio justo después del audio del segmento (como la pausa para pensar) y se suma a su
+    `durationInFrames`;
+  - escribe la clave opcional `timeline.questions[]` (`QuestionCue` en `src/timeline/types.ts`: `from`,
+    `durationInFrames` hasta el final de la escena, `countdownFrom`, `countdownFrames`, `revealFrame`,
+    `trapFrame`, `objective`, `badge` fuera de Security+, textos, `options`, `answer`, `trap`), **solo cuando hay
+    alguna**: el `timeline.json`, el VTT y la transcripción de un vídeo sin `question` salen byte a byte iguales
+    que antes. `validate-timeline.mjs` la trata como opcional;
+  - es error que la revelación caiga antes de que acabe la cuenta atrás, y que una tarjeta de examen entre en
+    la escena de una pregunta antes del fotograma de la trampa (después sí: la ficha del piloto pone una
+    tarjeta tras cada revelación);
+  - el VTT lleva las cuatro opciones (`A) …` a `D) …`) como un cue más durante la cuenta atrás, mezclado en
+    orden con las páginas de subtítulos.
+- **`src/overlay/ExamQuestionLayer.tsx`:** oscurece la escena y centra un panel con la plaquita
+  `EXAMEN · <badge> · <objetivo>`, el escenario, la pregunta y las cuatro opciones, que entran escalonadas. Durante
+  la cuenta atrás dibuja el anillo (`CountdownRing`, exportado de `ThinkPrompt.tsx`) con el rótulo «Pausa si
+  quieres». En `revealFrame` marca la correcta (esmeralda, check, «Correcta» y su `why`) y apaga las otras al 40 %;
+  en `trapFrame`, la trampa (ámbar, alerta, «Trampa» y su `trapWhy`). La correcta y la trampa se distinguen por
+  icono y etiqueta, no solo por color. Nada por debajo de 30 px a 1080p, y deja libre la franja donde entra la
+  tarjeta de examen. No trae sonidos propios: los pone el guion con `sfx` (la ficha del piloto usa `check` al
+  revelar y `block` en la trampa). Está en `OverlayGallery` (`QUESTIONS`: una pregunta normal y otra con el caso
+  extremo de 160 y 4 × 70 caracteres) con fotogramas de entrada, mitad de la cuenta atrás, revelación y trampa;
+  la cabecera del fichero los lista.
+- **Hoja de grabación:** bajo cada segmento con pregunta, «(En pantalla: la pregunta y sus cuatro opciones. Deja
+  cinco segundos de silencio.)», con los segundos de su `countdownMs`. Quien graba deja ese silencio en la toma.
+- **Brief de escena y canon:** `scene-brief.mjs` avisa de que la tarjeta cubre el escenario desde el segmento de la
+  pregunta hasta el final de la escena (la escena debe quedarse quieta y sin texto importante ahí) y de en qué cue
+  se revela cada cosa; `canon-check.mjs` incluye el escenario, la pregunta, las opciones y las dos explicaciones
+  entre los textos que cruza con la campaña.
+- **Regla de redacción (ficha V28, plan de vídeos §1):** en una escena con pregunta, `wordBudget` = (`s` −
+  segundos de cuenta atrás − 3) × 2,7, porque las opciones se leen en silencio.
 
 ## Efectos de sonido
 
@@ -618,7 +702,7 @@ node video/engine/scripts/youtube-meta.mjs --video <slug>
 
 Notas:
 
-- `voice-plan.mjs` y `youtube-meta.mjs` solo tienen sentido para los perfiles `principal-yt`/`capsula-yt`; en
+- `voice-plan.mjs` y `youtube-meta.mjs` solo tienen sentido para los perfiles `-yt` (`principal-yt`, `capsula-yt`, `caso-yt`, `caso-principal-yt`); en
   `principal`/`capsula` no hace falta ejecutarlos. `voice-plan.mjs` solo imprime la decisión (no toca
   `narration.json`); `youtube-meta.mjs` exige un timeline en modo audio y un póster ya renderizado, y escribe
   `video/<slug>/out/youtube.md` con el título, la descripción (con capítulos), las etiquetas y la lista de
@@ -710,7 +794,7 @@ node video/engine/scripts/youtube-upload.mjs --video <slug> --privacy unlisted
 | `video/engine/sfx/*.mp3`, `sfx.json` | biblioteca de efectos de sonido (`sfx_generate.py`, semilla fija) | sí |
 | `video/<slug>/public/sfx/*.mp3` | copia de los efectos que usa este vídeo (Remotion solo lee la carpeta pública del vídeo) | no — generada por `build-timeline.mjs` a partir de la biblioteca |
 | `public/videos/<output>.mp4` | vídeo final, perfiles `principal`/`capsula` | sí |
-| `video/<slug>/out/<output>.mp4` | vídeo final, perfiles `principal-yt`/`capsula-yt` (se sube a YouTube, no se commitea) | no |
+| `video/<slug>/out/<output>.mp4` | vídeo final, perfiles `-yt` (se sube a YouTube, no se commitea) | no |
 | `public/videos/<output>-poster.png` | póster (id `poster` de `video.json`); en `public/videos/` en los cuatro perfiles | sí |
 | `public/videos/<output>-transcript.txt` | transcripción por escenas | sí |
 | `public/videos/<output>-captions.vtt` | subtítulos WebVTT del reproductor (una entrada por página de subtítulo quemada en el vídeo) | sí |
@@ -743,7 +827,7 @@ paginación de subtítulos, receta de tiempos y validaciones del timeline. `reco
 grabación propia: localizar frases (última toma, arranques en falso, audio fuera del guion, números),
 cortes en silencios, ganancia e informe. `sfx.test.mjs` cubre `voicedHoldFrames`, `placeSfx` (sonidos
 automáticos y momentos clave) y `sfxMapErrors`; `adversary.test.mjs` cubre la validación de
-`adversaryVoice`, la clave de caché y el registro `tts/<segmento>-intercept.json`. La prueba de modo audio usa
+`adversaryVoice`, la clave de caché y el registro `tts/<segmento>-intercept.json`. `question.test.mjs` cubre la validación de `question` (campos, límites, cues, reglas por escena y avisos), y `build-timeline.test.mjs` el bloque `questions[]`, las opciones en el VTT y que un vídeo sin preguntas no cambie. La prueba de modo audio usa
 `out/test/tts2/`; si no existe se omite. Para generarla:
 
 ```bash

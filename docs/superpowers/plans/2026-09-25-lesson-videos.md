@@ -22,18 +22,23 @@ Resultado esperado: un ranking razonado de todo el curso, tres tandas priorizada
 
 ## 1. Formatos
 
-| | **Principal** | **Cápsula práctica** | **Principal YouTube (`principal-yt`)** | **Cápsula YouTube (`capsula-yt`)** |
-|---|---|---|---|---|
-| Suma de `targetSec` de las escenas | 270–300 s | 130–165 s | más que Principal: menos conceptos, mejor contados (lo acota la duración renderizada) | más que Cápsula, ídem |
-| Duración renderizada (`minTotalSec`–`maxTotalSec` de `scripts/lib/profiles.mjs`) | ≈ +20 s por márgenes de la tubería (entradas, colas y transiciones de escena, cierre): 290–320 s. En el SIEM, 305 s de escenas dieron 325 s | ≈ +15–20 s: 150–190 s | **380–600 s** (hasta 10 min desde V5, 2026-09-30: es un techo, no un objetivo) | **190–260 s** |
-| Estructura | 5 capítulos, 10–12 escenas | 3 capítulos, 5–6 escenas | 5 capítulos (sin cambios) | 3 capítulos (sin cambios) |
-| Exam cards (≤58 car., máx. 1 por escena, ninguna en la última) | 8–11 | 4–6 | **5–8** (4–6 conceptos clave) | **3–5** (2–3 conceptos clave) |
-| Think prompts (≤48 car.) | 2 | 1 | 2 (sin cambios) | 1 (sin cambios) |
-| Mensajes interceptados del adversario (§4) | — (perfil sin ellos) | — (perfil sin ellos) | **2–4, máx. 1 por capítulo** | **1–2** |
-| Demo práctica | 1–3 escenas de consola/log/diagrama | ≥50 % del vídeo | igual que Principal | igual que Cápsula |
-| crf | 23 (el SIEM dio 31 MB; subir a ~26 en el perfil y comprobarlo con `render --draft`) | 27 | **18** (YouTube vuelve a codificar; sube más calidad) | **18** |
-| Tamaño MP4 / dónde vive | ≤25 MB, en `public/videos/` (se commitea) | ≤12 MB, en `public/videos/` (se commitea) | **sin objetivo de tamaño: se sube a YouTube.** El MP4 va a `video/<slug>/out/`, que está **ignorado por git — nunca se commitea** | igual que Principal YouTube |
-| Cuándo usarlo | Concepto con flujo o espacio que exige explicar el *porqué* | Una destreza concreta y repetible (procedimiento, lectura de salida) | igual que Principal, para un vídeo nuevo que se publica en el canal de YouTube | igual que Cápsula, ídem |
+| | **Principal** | **Cápsula práctica** | **Principal YouTube (`principal-yt`)** | **Cápsula YouTube (`capsula-yt`)** | **Caso (`caso-yt`)** | **Caso principal (`caso-principal-yt`)** |
+|---|---|---|---|---|---|---|
+| Suma de `targetSec` de las escenas | 270–300 s | 130–165 s | más que Principal: menos conceptos, mejor contados (lo acota la duración renderizada) | más que Cápsula, ídem | lo acota la duración renderizada | ídem |
+| Duración renderizada (`minTotalSec`–`maxTotalSec` de `scripts/lib/profiles.mjs`) | ≈ +20 s por márgenes de la tubería (entradas, colas y transiciones de escena, cierre): 290–320 s. En el SIEM, 305 s de escenas dieron 325 s | ≈ +15–20 s: 150–190 s | **380–600 s** (hasta 10 min desde V5, 2026-09-30: es un techo, no un objetivo) | **190–260 s** | **240–330 s** (cada pregunta ocupa unos 25–35 s: leerla, dejar tiempo y resolverla; por eso dura más que `capsula-yt`) | **420–600 s** |
+| Estructura | 5 capítulos, 10–12 escenas | 3 capítulos, 5–6 escenas | 5 capítulos (sin cambios) | 3 capítulos (sin cambios) | 3 capítulos | 5 capítulos |
+| Exam cards (≤58 car., máx. 1 por escena, ninguna en la última) | 8–11 | 4–6 | **5–8** (4–6 conceptos clave) | **3–5** (2–3 conceptos clave) | **3–5** (2–3 conceptos clave) | **5–8** (4–6 conceptos clave) |
+| Think prompts (≤48 car.) | 2 | 1 | 2 (sin cambios) | 1 (sin cambios) | **0** (la pregunta de examen ocupa su hueco) | **0** |
+| Mensajes interceptados del adversario (§4) | — (perfil sin ellos) | — (perfil sin ellos) | **2–4, máx. 1 por capítulo** | **1–2** | **0–1** | **0–2** |
+| Preguntas de examen en pantalla (`question`, ≤1 por escena, ninguna en la última) | — | — | — | — | **3** | **4–5** |
+| Demo práctica | 1–3 escenas de consola/log/diagrama | ≥50 % del vídeo | igual que Principal | igual que Cápsula | no aplica: el vídeo cuenta un caso (spec §4.1) | ídem |
+| crf | 23 (el SIEM dio 31 MB; subir a ~26 en el perfil y comprobarlo con `render --draft`) | 27 | **18** (YouTube vuelve a codificar; sube más calidad) | **18** | **18** | **18** |
+| Tamaño MP4 / dónde vive | ≤25 MB, en `public/videos/` (se commitea) | ≤12 MB, en `public/videos/` (se commitea) | **sin objetivo de tamaño: se sube a YouTube.** El MP4 va a `video/<slug>/out/`, que está **ignorado por git — nunca se commitea** | igual que Principal YouTube | igual que Principal YouTube | igual que Principal YouTube |
+| Cuándo usarlo | Concepto con flujo o espacio que exige explicar el *porqué* | Una destreza concreta y repetible (procedimiento, lectura de salida) | igual que Principal, para un vídeo nuevo que se publica en el canal de YouTube | igual que Cápsula, ídem | Security+: la mayoría de las lecciones (spec §4.2) | Security+: sp2m3, sp2m6, sp5m7 y sp6m1 |
+
+**Regla de redacción con preguntas de examen (ficha V28):** en una escena con `question`, `wordBudget` = (`s` − segundos de
+cuenta atrás − 3) × 2,7, porque las opciones se leen en silencio: la cuenta atrás (5 s por defecto) y unos 3 s de
+revelación no llevan voz. Detalles del campo `question` en `video/engine/README.md`, «Pregunta de examen».
 
 Estilo común, heredado del SIEM:
 - 1920×1080 a 30 fps, sin flechas ni emoji en la narración.
@@ -6261,6 +6266,11 @@ La producción empieza tanda a tanda y con aprobación explícita, porque P0 (co
   - hay como máximo 1 exam card por escena y ninguna en la última;
   - la suma de segundos de cada vídeo cae en la ventana de su perfil;
   - ningún texto de narración o de exam card lleva flechas ni emoji.
+  - la ventana de duración de cada perfil, los seis: `principal` 280–340 s, `capsula` 140–200 s, `principal-yt` 380–600 s,
+    `capsula-yt` 190–260 s, `caso-yt` 240–330 s y `caso-principal-yt` 420–600 s (`scripts/lib/profiles.mjs`);
+  - en los perfiles `caso-*`: ninguna pausa para pensar, las preguntas del perfil (3 en `caso-yt`, 4–5 en
+    `caso-principal-yt`; ≤1 por escena y ninguna en la última) y los límites de `question` (escenario ≤160, pregunta
+    ≤110, opciones ≤70, `why`/`trapWhy` ≤90, cuenta atrás 4–7 s).
 - **De cada vídeo (al producirlo):**
   - `npm test`, con la suite generalizada de P3;
   - `node --test "video/<slug>/scripts/lib/*.test.mjs"` o los del motor compartido;
