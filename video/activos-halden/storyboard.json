@@ -1,0 +1,151 @@
+{
+  "title": "De la lista al desguace: la vida de un activo",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 260,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "La lista y quien mira"
+    },
+    {
+      "n": 2,
+      "title": "De quién es y qué trato"
+    },
+    {
+      "n": 3,
+      "title": "Cómo se va"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Un aparato que nadie apuntó",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · caso de ejemplo · datos ficticios», sin fecha. En una estantería de una oficina, un disco de red pequeño con sus luces parpadeando (`box`) y, al lado, la lista de equipos del puerto, en la que no aparece (`missing`). Al acabar la primera frase, título «De la lista al desguace» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «la lista y quien mira · de quién es y qué trato · cómo se va». Plaquita «SY0-701 · 4.2»",
+      "requiredCues": [
+        "box",
+        "missing",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-lista",
+      "chapter": 1,
+      "title": "Lo que la lista no sabe",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "«Caso de ejemplo · sin fecha». La oficina de la terminal de pasajeros paga el disco de red con su tarjeta (`bought`) y lo enchufa en su estantería para compartir las listas de embarque (`shelf`). Tres tachones a su lado: «sin parches · sin copias · sin vigilar» (`unpatched`). La lista de Sistemas (filas con dueño, ubicación, clasificación y estado) entra por la puerta de Compras: lo que se compra se apunta, y la lista está al día; el disco no pasó por esa puerta (`list`). Un barrido de la red cableada de la oficina pinta cada aparato que responde y lo cruza con la lista, sin cifras (`sweep`); uno sale en rojo, «responde · no está en la lista» (`extra`). La imagen del aula, en pequeño y rotulada «imagen · no es del puerto»: el profesor pasa lista y no falta nadie; mira las mesas y hay uno de más (`classroom`). Nombres (`names`): «inventory» bajo la lista, «enumeration» bajo el barrido, «shadow IT» bajo el disco",
+      "requiredCues": [
+        "bought",
+        "shelf",
+        "unpatched",
+        "list",
+        "sweep",
+        "extra",
+        "classroom",
+        "names"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Las pruebas de Desarrollo",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel de pregunta tapa la escena hasta el final, así que el fondo se queda quieto (la oficina de Desarrollo a media luz, sin texto ni nombres de equipo). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: varias suenan bien; elige la que resuelve este caso» (`best`), que la voz explica antes de la cuenta atrás. Cuenta atrás de 5 s; en `ok-1` sale la correcta (Enumeration) y en `trap-1` la trampa (Inventory). La voz cierra con el aula en una línea («pasando lista no ves al que sobra»). Sin tarjeta de examen: la del concepto 1 ya salió en s02",
+      "requiredCues": [
+        "q1",
+        "best",
+        "ok-1",
+        "trap-1"
+      ]
+    },
+    {
+      "id": "s04-dueno",
+      "chapter": 2,
+      "title": "De quién es y qué trato",
+      "targetSec": 34,
+      "wordBudget": 92,
+      "goal": "El disco de red entra en la lista: su fila se abre y aparecen dos campos vacíos, «owner» y «classification» (`row`). Primero «owner: responsable de la oficina de la terminal de pasajeros», un cargo y sin nombre (`owner`), con la nota «una persona, no un área» (`person`) y lo que eso significa en tres iconos: aprueba los cambios, decide quién entra, responde del parche y de la retirada (`duties`). Después, qué guarda: «listas de embarque · nombres y documentos de pasajeros» (`contents`), y el campo se rellena con «Private», el nivel que la tabla de sp3m6 da a los datos de personas; la voz no dice el nivel (`label`). De la etiqueta salen cuatro obligaciones: «cifrado · quién accede · copias · cómo se retira» (`obligations`). La maleta en la cinta del aeropuerto, rotulada «imagen · no es del puerto»: la etiqueta con el nombre junto al campo owner y la pegatina «frágil» junto a classification (`suitcase`). Nunca «una ficha con dos casillas» (es la imagen de V28): son dos campos de una fila",
+      "requiredCues": [
+        "row",
+        "owner",
+        "person",
+        "duties",
+        "contents",
+        "label",
+        "obligations",
+        "suitcase"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "El servidor del servicio médico",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 2 (`q2`). Fondo quieto: una puerta con el rótulo «servicio médico», sin texto ni nombres de equipo. En `ok-2` la correcta (Classification), en `trap-2` la trampa (Ownership). En la resolución vuelve la maleta en una línea, con nombre y sin la pegatina de frágil (`suitcase-back`); la tarjeta de examen entra después",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "suitcase-back"
+      ]
+    },
+    {
+      "id": "s06-retirada",
+      "chapter": 3,
+      "title": "Cuando el disco de red se jubila",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "«Más adelante · sin fecha»: el disco de red se cambia por uno nuevo (`replaced`) y el viejo sale del puerto hacia «un gestor autorizado», sin nombre ni contrato (`leaves`). Tiene dos discos magnéticos. Uno funciona y el gestor lo revenderá (`works`): sobrescritura completa y verificada, «sanitization» (`overwrite`). El otro está roto y no admite sobrescritura (`broken`): triturado, «destruction» (`shred`). Para los dos, una hoja del gestor con el número de serie de cada disco (sin números legibles), «certification» (`paper`). Tres tachones en un rincón: «borrar ficheros · vaciar la papelera · quick format: no valen». El coche, rotulado «imagen · no es del puerto» (`car`): «sigue rodando, se vende» y «no anda, al desguace, con su certificado de destrucción». Al final, solo en pantalla y sin voz (primer recorte de la ficha), una línea anuncia la pregunta: «los discos de estado sólido se borran de otra manera»",
+      "requiredCues": [
+        "replaced",
+        "leaves",
+        "works",
+        "overwrite",
+        "broken",
+        "shred",
+        "paper",
+        "car"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Discos camino del reciclaje",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 3 (`q3`), segundo «MEJOR» (ya explicado en s03). Fondo quieto: una caja de discos de estado sólido sin etiquetas legibles, sin texto. En `ok-3` la correcta (Triturado y certificate of destruction), en `trap-3` la trampa (Crypto erase). La voz dice después por qué la sobrescritura no es la respuesta y que el papel prueba lo que se hizo, no lo arregla (`magnetic`), y vuelve el coche en una línea, «este no se puede vender limpio» (`car-back`); la tarjeta de examen después",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "magnetic",
+        "car-back"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (el aula · la maleta · el coche) (`recap`, `rule-1`, `rule-2`, `rule-3`), y la frase para el examen (`phrase`): «Para cada activo, tres preguntas: ¿está en la lista?, ¿quién responde de él? y ¿adónde va cuando se retira?». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
