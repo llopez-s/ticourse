@@ -180,10 +180,15 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   < 50 MB, VTT header, no shared assets) and pins SIEM to sp4m6 and the forensics capsule to sp4m11.
 - **Lesson videos (`t: 'video'` blocks).** One shared Remotion engine in `video/engine/` (scripts,
   UI, overlays, theme, fonts, timeline types — see its `README.md`) and one folder per video with a
-  `video.json` (output name, composition/poster ids, `profile` principal|capsula|principal-yt|capsula-yt, `track`):
+  `video.json` (output name, composition/poster ids, `profile` principal|capsula|principal-yt|capsula-yt|caso-yt|caso-principal-yt, `track`):
   `video/siem/` (sp4m6, ~6:07, ElevenLabs voice Sarah) and `video/forense-adquisicion/` (sp4m11,
   capsule ~2:52, edge-tts Elvira until the ElevenLabs quota resets on 2026-10-25 — re-voice steps in
-  its README). Every script takes `--video <slug>`. Pipeline: `narration.json` →
+  its README). **Case-and-exam videos (Security+, from 2026-10-16)** use the `caso-yt` (240–330 s) /
+  `caso-principal-yt` (420–600 s) profiles: a case told in chapters with on-screen exam questions (a segment's
+  `question` in `narration.json`: scenario, four options, a silent countdown, the answer and its trap; no think
+  prompts; the engine README's «Pregunta de examen» has the fields). Spec
+  `docs/superpowers/specs/2026-10-16-secplus-casos-examen-design.md`, engine plan
+  `docs/superpowers/plans/2026-10-16-video-engine-caso-examen.md`, video plan «Tanda 6». Every script takes `--video <slug>`. Pipeline: `narration.json` →
   `scripts/tts-elevenlabs.mjs` (ElevenLabs v3, one request per scene with `<tag>` emotion
   directions; needs `ELEVENLABS_API_KEY` in the git-ignored `.env.local`; free plan = 10k chars/month,
   premade voices only + "Voz: ElevenLabs" credit) — or `scripts/tts-chatterbox.mjs` (Chatterbox, local

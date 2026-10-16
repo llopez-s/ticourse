@@ -580,6 +580,13 @@ level: high`,
             'Generic strings must earn their trigger together; unique developer artifacts can fire alone. That balance is the craft of the condition.',
         },
       },
+      {
+        t: 'video',
+        title: 'YARA y Sigma: del indicador a la regla',
+        youtube: 'OHxUu9cjnVA',
+        poster: 'videos/reglas-aeropuerto-poster.png',
+        transcript: 'videos/reglas-aeropuerto-transcript.txt',
+      },
       { t: 'h', text: 'STIX/TAXII: el indicador empaquetado' },
       {
         t: 'p',

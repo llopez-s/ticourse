@@ -4,7 +4,7 @@
 //   recordingSheet  -> out/guion-grabacion.md    the script as the narrator reads it
 //   rerecordSheet   -> out/guion-regrabacion.md  only the segments to record again
 //   voiceStudioSheet-> out/guion-voice-studio.md Voice Studio markup ([voice:…], [pause …ms])
-import { DEFAULT_PAUSE_MS, isRecordingVoice } from './narration.mjs';
+import { DEFAULT_PAUSE_MS, QUESTION_COUNTDOWN_DEFAULT_MS, isRecordingVoice } from './narration.mjs';
 import { parsePieces } from './text.mjs';
 
 /** A segment's pauseAfterMs from which the reading sheet asks for a long pause. */
@@ -15,6 +15,14 @@ export const STUDIO_VOICE = 'Narradora';
 export const STUDIO_PAUSE_MS = 400;
 /** Silence after an intercepted message in Voice Studio. */
 export const STUDIO_INTERCEPT_PAUSE_MS = 600;
+
+/** Whole seconds 1-10 as Spanish words; anything else as a digit with a decimal comma ("4,5"). */
+const SECONDS_ES = ['', 'un', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez'];
+function silenceLabel(ms) {
+  const s = ms / 1000;
+  const label = Number.isInteger(s) && SECONDS_ES[s] ? SECONDS_ES[s] : String(s).replace('.', ',');
+  return `${label} ${s === 1 ? 'segundo' : 'segundos'}`;
+}
 
 const collapse = (s) => s.replace(/\s+/g, ' ').trim();
 const lower = (s) => s.toLocaleLowerCase('es');
@@ -216,6 +224,10 @@ function readingBody(storyboard, narration, manifest, ids = null) {
       const pause = (seg.pauseAfterMs ?? DEFAULT_PAUSE_MS) >= LONG_PAUSE_MS ? ' **(pausa larga)**' : '';
       out.push(`**${seg.id}**${mood ? ` · *${toneLabel(mood)}*` : ''} — ${readingText(seg.text)}${pause}`, '');
       if (seg.think) out.push(`> *(En pantalla: «${seg.think.q}». Deja un segundo de silencio.)*`, '');
+      if (seg.question) {
+        const silence = silenceLabel(seg.question.countdownMs ?? QUESTION_COUNTDOWN_DEFAULT_MS);
+        out.push(`> *(En pantalla: la pregunta y sus cuatro opciones. Deja ${silence} de silencio.)*`, '');
+      }
     }
   }
   return out;
@@ -233,6 +245,7 @@ function onScreenOnly(narration) {
   if (narration.segments.some((s) => s.intercept)) kinds.push('los mensajes interceptados');
   if (narration.segments.some((s) => s.think)) kinds.push('las preguntas para pensar');
   if (narration.segments.some((s) => s.exam)) kinds.push('las tarjetas de examen');
+  if (narration.segments.some((s) => s.question)) kinds.push('las preguntas de examen');
   if (!kinds.length) return null;
   return kinds.length === 1 ? kinds[0] : `${kinds.slice(0, -1).join(', ')} y ${kinds.at(-1)}`;
 }

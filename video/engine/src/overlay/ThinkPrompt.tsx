@@ -38,7 +38,7 @@ function promptState(entry: ThinkEntry, frame: number) {
 }
 
 /** SVG countdown ring: a full cyan circle that empties clockwise as `remaining` goes 1 → 0. */
-function CountdownRing({ remaining, seconds }: { remaining: number; seconds: number }) {
+export function CountdownRing({ remaining, seconds }: { remaining: number; seconds: number }) {
   const r = (RING - STROKE) / 2;
   const circumference = 2 * Math.PI * r;
   return (

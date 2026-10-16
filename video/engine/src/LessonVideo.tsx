@@ -11,6 +11,7 @@ import { TransitionFrame } from './overlay/TransitionFrame';
 import { Captions } from './overlay/Captions';
 import { ChapterRail } from './overlay/ChapterRail';
 import { ExamCueLayer } from './overlay/ExamCueLayer';
+import { ExamQuestionLayer } from './overlay/ExamQuestionLayer';
 import { InterceptLayer } from './overlay/InterceptLayer';
 import { ProgressBar } from './overlay/ProgressBar';
 import { SfxLayer } from './overlay/SfxLayer';
@@ -84,6 +85,7 @@ export function LessonVideo({ timeline, scenes }: { timeline: Timeline; scenes: 
         <ChapterRail />
         <SimulationTag />
         <ThinkPrompt />
+        <ExamQuestionLayer />
         <InterceptLayer />
         <ExamCueLayer />
         <Captions />

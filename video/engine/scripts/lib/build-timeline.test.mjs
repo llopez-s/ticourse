@@ -5,7 +5,7 @@ import path from 'node:path';
 import { after, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { adversaryClipId, adversaryKey } from './adversary.mjs';
-import { TIMING, TRANSCRIPT_NOTICE, buildTimeline, captionsPathFor, formatJson, loadAdversary, playbackMs } from '../build-timeline.mjs';
+import { TIMING, TRANSCRIPT_NOTICE, buildTimeline, buildTranscript, buildVtt, captionsPathFor, formatJson, loadAdversary, playbackMs } from '../build-timeline.mjs';
 import { analyzeNarration, loadSources, sourceHash, ttsKey } from './narration.mjs';
 import { SFX_DIR } from './paths.mjs';
 import { INTERCEPT_TIMING, voicedHoldFrames } from './sfx.mjs';
@@ -425,4 +425,187 @@ test('sfx: without the key the timeline has none; with it, automatic sounds and 
 test('sfx: an unknown cue or sound stops the build', async () => {
   await assert.rejects(buildVariant((n) => { n.sfx = { flod: 'mail' }; }, 'sfx-bad-cue', { sfxDir: SFX_DIR }), /flod/);
   await assert.rejects(buildVariant((n) => { n.sfx = { flood: 'siren' }; }, 'sfx-bad-sound', { sfxDir: SFX_DIR }), /siren/);
+});
+
+// --- exam questions (caso profiles) ---------------------------------------------------------------
+
+const QUESTION = {
+  objective: '4.4',
+  scenario: 'Un SOC recibe seis mil avisos al día.',
+  q: '¿Qué hace el SIEM con ellos?',
+  options: ['Los borra', 'Los correlaciona', 'Los cifra', 'Los ignora'],
+  answer: 1,
+  trap: 2,
+  why: 'Correlaciona eventos de varias fuentes',
+  trapWhy: 'Cifrar no es analizar',
+  revealAt: 'reveal',
+  trapAt: 'title',
+};
+
+/** buildVariant on a storyboard whose first scene also requires the {reveal} cue. */
+function buildQuestion(mutate, name, extra = {}) {
+  const sb = read("storyboard.mini.json");
+  sb.scenes[0].requiredCues.push("reveal");
+  const file = path.join(tmp, name + "-storyboard.json");
+  writeFileSync(file, JSON.stringify(sb));
+  return buildVariant(mutate, name, { storyboard: file, ...extra });
+}
+
+/** Question on s01-01 (its exam card removed); the answer and the trap are cues of s01-02. */
+function withQuestion(n, extra = {}) {
+  delete n.segments[0].exam;
+  n.segments[0].question = { ...QUESTION, ...extra };
+  n.segments[1].text = '{reveal}Para encontrarlo, el equipo azul usa un SIEM. {title}Veamos cómo convierte el ruido en evidencia.';
+}
+
+const NO_QUESTIONS_VTT =
+  'WEBVTT\n\n1\n00:00:01.400 --> 00:00:06.600\nCada día llegan 6.000 avisos al SOC\nde la Autoridad Portuaria de Halden.\n\n2\n00:00:06.600 --> 00:00:09.200\nSolo uno importa de verdad.\n\n3\n00:00:09.200 --> 00:00:12.200\nPara encontrarlo,\nel equipo azul usa un SIEM.\n\n4\n00:00:12.200 --> 00:00:16.100\nVeamos cómo convierte\nel ruido en evidencia.\n\n5\n00:00:16.600 --> 00:00:20.200\nPrimero recogemos registros de servidores,\nestaciones y cortafuegos,\n\n6\n00:00:20.200 --> 00:00:23.333\ntambién por «NetFlow»,\nlos metadatos de cada conexión.\n\n7\n00:00:23.333 --> 00:00:26.133\nTodo con la hora sincronizada por NTP,\n\n8\n00:00:26.133 --> 00:00:31.033\nporque sin un reloj común\nno hay línea temporal fiable.\n\n9\n00:00:33.900 --> 00:00:36.533\nCada fuente escribe a su manera:\n\n10\n00:00:36.533 --> 00:00:41.433\nuna línea en bruto no se parece\na otra de otro fabricante.\n\n11\n00:00:41.433 --> 00:00:49.133\nEl SIEM extrae los campos y guarda la hora\nen UTC, igual para todos, a las 01:52.\n';
+
+const NO_QUESTIONS_TRANSCRIPT =
+  'SIEM en acción: del ruido a la evidencia\nSimulación educativa con datos ficticios · IntelForge Academy — material independiente, no afiliado a CompTIA\n\n[00:00] I · Qué es — Seis mil avisos, uno importa\nCada día llegan 6.000 avisos al SOC de la Autoridad Portuaria de Halden. Solo uno importa de verdad. Para encontrarlo, el equipo azul usa un SIEM. Veamos cómo convierte el ruido en evidencia.\n\n[00:16] II · Cómo funciona — Recoger\nPrimero recogemos registros de servidores, estaciones y cortafuegos, también por «NetFlow», los metadatos de cada conexión. Todo con la hora sincronizada por NTP, porque sin un reloj común no hay línea temporal fiable.\n\n[00:33] II · Cómo funciona — Normalizar\nCada fuente escribe a su manera: una línea en bruto no se parece a otra de otro fabricante. El SIEM extrae los campos y guarda la hora en UTC, igual para todos, a las 01:52.\n';
+
+test('questions: the segment holds a silent countdown after its audio', async () => {
+  const { timeline } = await buildQuestion((n) => withQuestion(n), 'q-countdown');
+  assert.deepEqual(validateTimeline(timeline), []);
+  const seg = timeline.segments.find((s) => s.id === 's01-01');
+  const [q] = timeline.questions;
+  assert.equal(timeline.questions.length, 1);
+  assert.equal(q.segment, 's01-01');
+  assert.equal(q.scene, 's01-hook');
+  assert.equal(q.from, seg.from);
+  assert.equal(q.countdownFrom, seg.from + seg.audioFrames);
+  assert.equal(q.countdownFrames, Math.round((5000 * 30) / 1000), 'countdownMs defaults to 5000');
+  assert.equal(seg.durationInFrames, seg.audioFrames + Math.round((600 * 30) / 1000) + q.countdownFrames, 'the hold is part of the segment');
+  assert.deepEqual(
+    { objective: q.objective, options: q.options, answer: q.answer, trap: q.trap, why: q.why, trapWhy: q.trapWhy, q: q.q, scenario: q.scenario },
+    { objective: '4.4', options: QUESTION.options, answer: 1, trap: 2, why: QUESTION.why, trapWhy: QUESTION.trapWhy, q: QUESTION.q, scenario: QUESTION.scenario },
+  );
+  for (const s of timeline.segments) assert.equal('question' in s, false, 'segments never carry the question');
+  const custom = await buildQuestion((n) => withQuestion(n, { countdownMs: 6000 }), 'q-countdown-6');
+  assert.equal(custom.timeline.questions[0].countdownFrames, 180);
+});
+
+test('questions: the card lasts until its scene ends and reveals on its cue', async () => {
+  const { timeline } = await buildQuestion((n) => withQuestion(n), 'q-reveal');
+  const [q] = timeline.questions;
+  const scene = timeline.scenes.find((s) => s.id === q.scene);
+  const cue = (id) => timeline.cues.find((c) => c.id === id).frame;
+  assert.equal(q.from + q.durationInFrames, scene.from + scene.durationInFrames);
+  assert.equal(q.revealFrame, cue('reveal'));
+  assert.equal(q.trapFrame, cue('title'));
+  assert.ok(q.trapFrame >= q.revealFrame);
+  assert.ok(q.revealFrame >= q.countdownFrom + q.countdownFrames);
+  const same = await buildQuestion((n) => withQuestion(n, { trapAt: undefined }), 'q-trap-default');
+  assert.equal(same.timeline.questions[0].trapFrame, same.timeline.questions[0].revealFrame, 'trapAt defaults to revealAt');
+});
+
+test('questions: the badge follows the track like the exam cards', async () => {
+  const gcti = await buildQuestion((n) => withQuestion(n, { objective: 'Intrusion Analysis' }), 'q-gcti', { track: 'gcti' });
+  assert.equal(gcti.timeline.questions[0].badge, 'GCTI');
+  const sp = await buildQuestion((n) => withQuestion(n), 'q-secplus', { track: 'secplus' });
+  assert.equal('badge' in sp.timeline.questions[0], false, 'Security+ keeps the implicit SY0-701 badge');
+});
+
+test('questions: a reveal cue inside the countdown fails the build', async () => {
+  // The builder places the countdown inside the question segment, so no narration can put a later cue
+  // before it; the check is the validator's net for a timeline edited or built by hand.
+  const { timeline } = await buildQuestion((n) => withQuestion(n), 'q-early');
+  const early = structuredClone(timeline);
+  early.questions[0].revealFrame = early.questions[0].countdownFrom + early.questions[0].countdownFrames - 1;
+  early.questions[0].trapFrame = early.questions[0].revealFrame;
+  assert.ok(validateTimeline(early).some((e) => /questions\[0\].*reveals before its countdown ends/.test(e)));
+});
+
+test('questions: an exam card in a question scene enters only after the trap is marked', async () => {
+  const card = (at) => (n) => {
+    withQuestion(n);
+    n.segments[1].text += ' Paso a paso, con un ejemplo real de una noche cualquiera en el puerto de la ciudad.';
+    n.segments[1].exam = { objective: '4.4', text: 'Un SIEM correlaciona eventos', at, holdSec: 4 };
+  };
+  await assert.rejects(buildQuestion(card('reveal'), 'q-exam-early'), /exam card in s01-hook enters before its question's trap is marked/);
+  const { timeline } = await buildQuestion(card('title'), 'q-exam-late');
+  assert.equal(timeline.exam.length, 1);
+  assert.ok(timeline.exam[0].from >= timeline.questions[0].trapFrame);
+});
+
+test('questions: the VTT carries the four options while the countdown runs', async () => {
+  const { timeline, vtt } = await buildQuestion((n) => withQuestion(n), 'q-vtt');
+  const [q] = timeline.questions;
+  const sec = (f) => (f / timeline.fps).toFixed(3).padStart(6, '0');
+  const timing = `00:00:${sec(q.countdownFrom)} --> 00:00:${sec(q.countdownFrom + q.countdownFrames)}`;
+  const blocks = vtt.trim().split(/\n\n/).slice(1);
+  const block = blocks.find((b) => b.includes('A) '));
+  assert.ok(block, vtt);
+  const [id, when, ...text] = block.split('\n');
+  assert.equal(when, timing);
+  assert.deepEqual(text, ['A) Los borra', 'B) Los correlaciona', 'C) Los cifra', 'D) Los ignora']);
+  assert.equal(blocks.length, timeline.captions.length + 1);
+  assert.deepEqual(blocks.map((b) => b.split('\n')[0]), blocks.map((_, k) => String(k + 1)), 'cue numbers run 1..n');
+  const starts = blocks.map((b) => b.split('\n')[1].split(' --> ')[0]);
+  assert.deepEqual(starts, [...starts].sort(), 'cues stay in start order');
+  assert.equal(id, String(blocks.indexOf(block) + 1));
+});
+
+test('questions: the transcript prints the question after its segment and the answer after the reveal segment', async () => {
+  const { timeline, transcript } = await buildQuestion((n) => withQuestion(n), 'q-transcript');
+  const [s1, s2] = timeline.segments;
+  const asked = '[Pregunta de examen · SY0-701 4.4] Un SOC recibe seis mil avisos al día. ¿Qué hace el SIEM con ellos? A) Los borra B) Los correlaciona C) Los cifra D) Los ignora';
+  const answered = 'Correcta: B — Correlaciona eventos de varias fuentes. Trampa: C — Cifrar no es analizar.';
+  assert.ok(transcript.includes(`${s1.text} ${asked} ${s2.text} ${answered}`), transcript);
+  const gcti = await buildQuestion((n) => withQuestion(n, { objective: 'Intrusion Analysis' }), 'q-transcript-gcti', { track: 'gcti' });
+  assert.ok(gcti.transcript.includes('[Pregunta de examen · GCTI Intrusion Analysis] '), gcti.transcript);
+});
+
+test('questions: a timeline without questions has no "questions" key and the same VTT as before', async () => {
+  const { timeline, vtt } = await buildVariant(() => {}, 'q-none');
+  assert.equal('questions' in timeline, false);
+  assert.equal(vtt, NO_QUESTIONS_VTT);
+  assert.equal(buildVtt(timeline), NO_QUESTIONS_VTT);
+});
+
+test('questions: a transcript without questions is unchanged', async () => {
+  const { timeline, transcript } = await buildVariant(() => {}, 'q-none-transcript');
+  assert.equal(transcript, NO_QUESTIONS_TRANSCRIPT);
+  assert.equal(buildTranscript(timeline, { title: 'SIEM en acción: del ruido a la evidencia', notice: TRANSCRIPT_NOTICE }), NO_QUESTIONS_TRANSCRIPT);
+});
+
+test('validateTimeline: a malformed question names questions[k]', async () => {
+  const { timeline } = await buildQuestion((n) => withQuestion(n), 'q-shape');
+  const mutate = (fn) => {
+    const t = structuredClone(timeline);
+    fn(t.questions[0]);
+    return validateTimeline(t);
+  };
+  assert.deepEqual(mutate(() => {}), []);
+  assert.ok(mutate((q) => (q.options = q.options.slice(0, 3))).some((e) => /questions\[0\]/.test(e)));
+  assert.ok(mutate((q) => (q.revealFrame = timeline.durationInFrames + 5)).some((e) => /questions\[0\]/.test(e)));
+  assert.ok(mutate((q) => (q.trapFrame = q.revealFrame - 1)).some((e) => /questions\[0\]/.test(e)));
+  assert.ok(mutate((q) => (q.answer = 4)).some((e) => /questions\[0\]/.test(e)));
+  assert.ok(mutate((q) => (q.trap = q.answer)).some((e) => /questions\[0\]/.test(e)));
+  assert.ok(mutate((q) => (q.scene = 'nope')).some((e) => /questions\[0\]/.test(e)));
+  assert.ok(mutate((q) => (q.extra = 1)).some((e) => /questions\[0\].*unexpected extra/.test(e)));
+  const empty = structuredClone(timeline);
+  empty.questions = [];
+  assert.ok(validateTimeline(empty).some((e) => /timeline\.questions/.test(e)));
+});
+
+test('questions: warns when the explanations get less than 3 s on screen after the trap is marked', async () => {
+  const run = async (name, extra, tail = false) => {
+    const warned = [];
+    const { timeline } = await buildQuestion((n) => {
+      withQuestion(n, extra);
+      if (tail) n.segments[1].text = '{reveal}Para encontrarlo, el equipo azul usa un SIEM. Veamos cómo convierte el ruido en evidencia. {title}';
+    }, name, { log: { warn: (m) => warned.push(m), log: () => {} } });
+    const [q] = timeline.questions;
+    const left = (q.from + q.durationInFrames - q.trapFrame) / timeline.fps;
+    return { left, warned: warned.filter((w) => /explanations stay on screen/.test(w)) };
+  };
+  // trap marked on the last cue of the scene: little time left
+  const late = await run('q-explain-late', {}, true);
+  assert.ok(late.left < 3, `fixture margin ${late.left}`);
+  assert.deepEqual(late.warned.map((w) => w.trim().replace(/^aviso: /, '')), [`s01-hook: the question's explanations stay on screen only ${late.left.toFixed(1)} s after the trap is marked (aim for 3 s)`]);
+  // trap marked together with the reveal, on the first cue of the segment: more time
+  const early = await run('q-explain-early', { trapAt: undefined });
+  assert.ok(early.left >= 3, `fixture margin ${early.left}`);
+  assert.deepEqual(early.warned, []);
 });

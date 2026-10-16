@@ -82,7 +82,7 @@ export function stringLiterals(src) {
   return out;
 }
 
-/** The shown side of a narration.json: segment texts without {cues}, <directions> or the [..|spoken] side, plus intercepts, exam cards and think prompts. */
+/** The shown side of a narration.json: segment texts without {cues}, <directions> or the [..|spoken] side, plus intercepts, exam cards, exam questions (scenario, question, options and both explanations) and think prompts. */
 export function narrationTexts(narration) {
   const shown = (t) =>
     t
@@ -97,6 +97,10 @@ export function narrationTexts(narration) {
     if (seg.intercept?.text) out.push(seg.intercept.text);
     if (seg.exam?.text) out.push(seg.exam.text);
     if (seg.think?.q) out.push(seg.think.q);
+    const x = seg.question;
+    if (x) {
+      for (const t of [x.scenario, x.q, ...(Array.isArray(x.options) ? x.options : []), x.why, x.trapWhy]) if (t) out.push(t);
+    }
   }
   return out;
 }
