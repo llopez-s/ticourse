@@ -57,7 +57,7 @@
       "title": "Las pruebas de Desarrollo",
       "targetSec": 38,
       "wordBudget": 81,
-      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel de pregunta tapa la escena hasta el final, así que el fondo se queda quieto (la oficina de Desarrollo a media luz, sin texto ni nombres de equipo). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: varias suenan bien; elige la que resuelve este caso» (`best`), que la voz explica antes de la cuenta atrás. Cuenta atrás de 5 s; en `ok-1` sale la correcta (Enumeration) y en `trap-1` la trampa (Inventory). La voz cierra con el aula en una línea («pasando lista no ves al que sobra»). Sin tarjeta de examen: la del concepto 1 ya salió en s02",
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel de pregunta tapa la escena hasta el final, así que el fondo se queda quieto (la oficina de Desarrollo a media luz, sin texto ni nombres de equipo). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: varias suenan bien; elige la que resuelve este caso» (`best`), que la voz explica antes de la cuenta atrás. Cuenta atrás de 5 s; en `ok-1` sale la correcta (Enumeration) y en `trap-1` la trampa (Inventory). La voz cierra con el aula en una línea («pasando lista, el que sobra no sale»). Sin tarjeta de examen: la del concepto 1 ya salió en s02",
       "requiredCues": [
         "q1",
         "best",
@@ -71,7 +71,7 @@
       "title": "De quién es y qué trato",
       "targetSec": 34,
       "wordBudget": 92,
-      "goal": "El disco de red entra en la lista: su fila se abre y aparecen dos campos vacíos, «owner» y «classification» (`row`). Primero «owner: responsable de la oficina de la terminal de pasajeros», un cargo y sin nombre (`owner`), con la nota «una persona, no un área» (`person`) y lo que eso significa en tres iconos: aprueba los cambios, decide quién entra, responde del parche y de la retirada (`duties`). Después, qué guarda: «listas de embarque · nombres y documentos de pasajeros» (`contents`), y el campo se rellena con «Private», el nivel que la tabla de sp3m6 da a los datos de personas; la voz no dice el nivel (`label`). De la etiqueta salen cuatro obligaciones: «cifrado · quién accede · copias · cómo se retira» (`obligations`). La maleta en la cinta del aeropuerto, rotulada «imagen · no es del puerto»: la etiqueta con el nombre junto al campo owner y la pegatina «frágil» junto a classification (`suitcase`). Nunca «una ficha con dos casillas» (es la imagen de V28): son dos campos de una fila",
+      "goal": "El disco de red entra en la lista: su fila se abre y aparecen dos campos vacíos, «owner» y «classification» (`row`). Primero «owner: responsable de la oficina de la terminal de pasajeros», un cargo y sin nombre (`owner`), con la nota «una persona, no un área» (`person`) y lo que eso significa en tres iconos: aprueba los cambios, decide quién entra, responde del parche y de la retirada (`duties`). Después, qué guarda: «listas de embarque · nombres de pasajeros» (`contents`; sin «documentos», para que «Private» no se discuta), y el campo se rellena con «Private», el nivel que la tabla de sp3m6 da a los datos de personas; la voz no dice el nivel (`label`). De la etiqueta salen cuatro obligaciones: «cifrado · quién accede · copias · cómo se retira» (`obligations`). La maleta en la cinta del aeropuerto, rotulada «imagen · no es del puerto»: la etiqueta con el nombre junto al campo owner y la pegatina «frágil» junto a classification (`suitcase`). Nunca «una ficha con dos casillas» (es la imagen de V28): son dos campos de una fila",
       "requiredCues": [
         "row",
         "owner",
@@ -103,7 +103,7 @@
       "title": "Cuando el disco de red se jubila",
       "targetSec": 38,
       "wordBudget": 103,
-      "goal": "«Más adelante · sin fecha»: el disco de red se cambia por uno nuevo (`replaced`) y el viejo sale del puerto hacia «un gestor autorizado», sin nombre ni contrato (`leaves`). Tiene dos discos magnéticos. Uno funciona y el gestor lo revenderá (`works`): sobrescritura completa y verificada, «sanitization» (`overwrite`). El otro está roto y no admite sobrescritura (`broken`): triturado, «destruction» (`shred`). Para los dos, una hoja del gestor con el número de serie de cada disco (sin números legibles), «certification» (`paper`). Tres tachones en un rincón: «borrar ficheros · vaciar la papelera · quick format: no valen». El coche, rotulado «imagen · no es del puerto» (`car`): «sigue rodando, se vende» y «no anda, al desguace, con su certificado de destrucción». Al final, solo en pantalla y sin voz (primer recorte de la ficha), una línea anuncia la pregunta: «los discos de estado sólido se borran de otra manera»",
+      "goal": "«Más adelante · sin fecha»: el disco de red se cambia por uno nuevo (`replaced`) y el viejo sale del puerto hacia «un gestor autorizado», sin nombre ni contrato (`leaves`). Tiene dos discos duros, con «magnético» bajo cada uno en `works` y en `broken`. Uno funciona y el gestor lo revenderá (`works`): sobrescritura completa y verificada, «sanitization» (`overwrite`). El otro está roto y no admite sobrescritura (`broken`): triturado, «destruction» (`shred`). Para los dos, una hoja del gestor con el número de serie de cada disco (sin números legibles), «certification» (`paper`). Tres tachones en un rincón: «borrar ficheros · vaciar la papelera · quick format: no valen». El coche, rotulado «imagen · no es del puerto» (`car`): «rueda y pasa la ITV, se vende» y «si no, al desguace, con su certificado de destrucción» (el certificado, solo en pantalla). Al final, solo en pantalla y sin voz (primer recorte de la ficha), una línea anuncia la pregunta: «los discos de estado sólido se borran de otra manera»",
       "requiredCues": [
         "replaced",
         "leaves",
@@ -121,7 +121,7 @@
       "title": "Discos camino del reciclaje",
       "targetSec": 36,
       "wordBudget": 76,
-      "goal": "Pregunta tipo examen 3 (`q3`), segundo «MEJOR» (ya explicado en s03). Fondo quieto: una caja de discos de estado sólido sin etiquetas legibles, sin texto. En `ok-3` la correcta (Triturado y certificate of destruction), en `trap-3` la trampa (Crypto erase). La voz dice después por qué la sobrescritura no es la respuesta y que el papel prueba lo que se hizo, no lo arregla (`magnetic`), y vuelve el coche en una línea, «este no se puede vender limpio» (`car-back`); la tarjeta de examen después",
+      "goal": "Pregunta tipo examen 3 (`q3`), segundo «MEJOR» (ya explicado en s03). Fondo quieto: una caja de discos de estado sólido sin etiquetas legibles, sin texto. En `ok-3` la correcta (Triturado y certificate of destruction), en `trap-3` la trampa (Crypto erase). La voz dice después que sobrescribir es el método de los discos magnéticos (`magnetic`, la opción C), y vuelve el coche en una línea, «a este no hay quien le pase la ITV» (`car-back`); la tarjeta de examen después",
       "requiredCues": [
         "q3",
         "ok-3",

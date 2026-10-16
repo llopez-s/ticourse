@@ -74,7 +74,7 @@ const sp4m3: Module = {
         ],
         [
           'Unidad de estado sólido (**SSD/NVMe**)',
-          '**Crypto erase** o el comando de sanitizado seguro del firmware',
+          '**Crypto erase** o el comando de sanitizado seguro del firmware; sobrescribir no basta, porque el disco reparte las escrituras y guarda copias en celdas a las que no llegas',
           'El firmware no soporta borrado seguro o el dato es crítico: triturado a partículas',
         ],
         [
@@ -253,7 +253,7 @@ const sp4m3: Module = {
       ],
       answer: 0,
       explain:
-        'The drive has to keep working for its new owner, so sanitization is required, and crypto erase is both the fastest and the most complete option on a self-encrypting device because the data is unreadable once the key is gone. Degaussing is the tempting technical answer, but it only affects magnetic media and on a solid-state drive it destroys the electronics without reliably erasing the flash cells.',
+        'The drive has to keep working for its new owner, so sanitization is required, and crypto erase is both the fastest and the most complete option on a self-encrypting device because the data is unreadable once the key is gone. Degaussing is the tempting technical answer, but it only affects magnetic media: on a solid-state drive it leaves the flash cells, and the data, untouched.',
     },
   ],
 };

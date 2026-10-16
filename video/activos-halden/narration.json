@@ -26,13 +26,13 @@
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}De la lista al desguace. El examen pregunta por toda la vida de un aparato, y mezcla las palabras de cada tramo.",
+      "text": "<confident> {title}De la lista al desguace. El examen pregunta por toda la vida de un aparato, y mezcla las palabras de cada etapa.",
       "pauseAfterMs": 250
     },
     {
       "id": "s01-03",
       "scene": "s01-hook",
-      "text": "<warm> {promise}Vas a ver cómo se encuentra, de quién es, qué trato merece y cómo se va.",
+      "text": "<warm> {promise}Vas a ver cómo encontrarlo, de quién es, qué trato merece y cómo se va.",
       "pauseAfterMs": 400
     },
     {
@@ -44,7 +44,7 @@
     {
       "id": "s02-02",
       "scene": "s02-lista",
-      "text": "<concerned> {unpatched}Nadie lo parchea ni le hace copias, porque nadie sabe que existe. {list}Sistemas lleva al día la lista de lo que entra por Compras, y este no entró por ahí.",
+      "text": "<concerned> {unpatched}Nadie lo parchea ni le hace copias, porque para Sistemas no existe. {list}Su lista apunta todo lo que pasa por Compras, y este no pasó por ahí.",
       "pauseAfterMs": 300
     },
     {
@@ -62,7 +62,7 @@
     {
       "id": "s02-05",
       "scene": "s02-lista",
-      "text": "<firm> {names}O sea, que la lista es el inventory, y mirar la red y comparar, la enumeration. Y lo que se compra por libre es shadow IT.",
+      "text": "<firm> {names}O sea, que la lista es el inventory, y mirar y comparar, la enumeration. Y lo que un área monta por su cuenta, sin pasar por Sistemas, es shadow IT.",
       "pauseAfterMs": 600,
       "exam": {
         "objective": "4.2",
@@ -74,7 +74,7 @@
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca, con otro caso. Lo que recibe Compras entra en el inventario, que está al día. Pero Desarrollo crea máquinas virtuales de pruebas sin pasar por Compras, y algunas siguen encendidas meses después. ¿Qué práctica encontraría mejor esas máquinas? {best}Ojo con ese «mejor». Varias suenan bien, pero vale la que resuelve este caso.",
+      "text": "<intrigued> {q1}Ahora tú, con otro caso. Lo que pasa por Compras entra en el inventario, que está al día. Pero Desarrollo crea máquinas virtuales de pruebas sin pasar por ahí, y algunas llevan meses encendidas. ¿Qué práctica las encontraría mejor? {best}Ojo con ese «mejor». Varias suenan bien, pero vale la de este caso.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "4.2",
@@ -98,7 +98,13 @@
     {
       "id": "s03-02",
       "scene": "s03-p1",
-      "text": "<confident> {ok-1}Es la enumeration, la única que busca. Recorre la red y da con ellas aunque nadie las apuntara. {trap-1}El inventory tienta, pero solo sabe lo que le apuntan. Pasando lista no ves al que sobra.",
+      "text": "<confident> {ok-1}Es la enumeration, la única que busca. Recorre la red y da con ellas aunque nadie las apuntara.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<thoughtful> {trap-1}El inventory tienta, pero solo sabe lo que le apuntan. Pasando lista, el que sobra no sale.",
       "pauseAfterMs": 1200
     },
     {
@@ -110,13 +116,19 @@
     {
       "id": "s04-02",
       "scene": "s04-dueno",
-      "text": "<steady> {owner}El primero es quién responde de él. {person}Una persona, no un área, porque lo que es de todos no es de nadie. {duties}Aprueba los cambios y decide quién entra. Eso es el owner.",
+      "text": "<steady> {owner}El primero es quién responde de él. {person}Una persona, no un área, porque lo que es de todos no es de nadie.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-03",
       "scene": "s04-dueno",
-      "text": "<thoughtful> {contents}El segundo depende de lo que guarda, aquí datos de pasajeros. {label}Cuánto importa eso es la classification, {obligations}y decide cómo se cifra, quién lo ve y cómo se retira.",
+      "text": "<clear> {duties}Aprueba los cambios y decide quién lo usa. Eso es el owner.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-dueno",
+      "text": "<thoughtful> {contents}El segundo depende de lo que guarda, aquí datos de pasajeros. {label}Decir cuánto importan es la classification, {obligations}y eso decide cómo se cifra, quién lo ve y cómo se retira.",
       "pauseAfterMs": 300,
       "exam": {
         "objective": "4.2",
@@ -126,15 +138,15 @@
       }
     },
     {
-      "id": "s04-04",
+      "id": "s04-05",
       "scene": "s04-dueno",
-      "text": "<warm> {suitcase}Es como tu maleta en el aeropuerto. La etiqueta dice de quién es, y la pegatina de frágil, cómo tratarla.",
+      "text": "<warm> {suitcase}Piensa en tu maleta en el aeropuerto. La etiqueta dice de quién es, y la pegatina de frágil, cómo tratarla.",
       "pauseAfterMs": 500
     },
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<engaging> {q2}El servidor del servicio médico está en el inventario, y su owner, la jefa del servicio, aprueba cada cambio. Guarda los reconocimientos médicos de la plantilla. Pero tiene los permisos y las copias del de los horarios públicos, y sin cifrar. ¿Qué práctica le falta?",
+      "text": "<engaging> {q2}El servidor del servicio médico está en el inventario, y su owner, la jefa del servicio, aprueba cada cambio. Guarda los reconocimientos médicos de la plantilla. Pero tiene los mismos permisos y copias que el servidor de los horarios públicos, y sin cifrar. ¿Qué práctica le falta?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "4.2",
@@ -149,7 +161,7 @@
         "answer": 0,
         "trap": 3,
         "why": "Nadie ha dicho cuánto importa lo que guarda, así que recibe el trato por defecto",
-        "trapWhy": "La dueña está y aprueba cada cambio: falta la etiqueta, no quién responde",
+        "trapWhy": "La dueña está y aprueba cada cambio: falta clasificarlo, no quién responde",
         "countdownMs": 5000,
         "revealAt": "ok-2",
         "trapAt": "trap-2"
@@ -158,7 +170,13 @@
     {
       "id": "s05-02",
       "scene": "s05-p2",
-      "text": "<firm> {ok-2}Le falta la classification, porque nadie ha dicho cuánto importa lo que guarda. {trap-2}Ownership tienta, pero dueña ya tiene, y hace su papel. {suitcase-back}O sea, que la maleta tiene nombre, pero no lleva la pegatina de frágil.",
+      "text": "<firm> {ok-2}Le falta la classification, porque nadie ha dicho cuánto importa lo que guarda. {trap-2}Lo de ownership no cuela, porque dueña ya tiene.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<warm> {suitcase-back}O sea, que la maleta lleva nombre, pero no la pegatina de frágil.",
       "pauseAfterMs": 1200,
       "exam": {
         "objective": "4.2",
@@ -170,19 +188,19 @@
     {
       "id": "s06-01",
       "scene": "s06-retirada",
-      "text": "<thoughtful> Llega el final. {replaced}El disco de red se cambia por uno nuevo, {leaves}y el viejo se va a un gestor autorizado.",
+      "text": "<thoughtful> Y un día toca jubilar el disco de red. {replaced}Se cambia por uno nuevo, {leaves}y el viejo se va a un gestor autorizado.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-02",
       "scene": "s06-retirada",
-      "text": "<curious> {works}Dentro lleva dos discos. Uno funciona y se va a revender. {overwrite}Se sobrescribe entero, se comprueba, y el disco sigue sirviendo sin el dato. Eso es la sanitization.",
+      "text": "<curious> {works}Dentro lleva dos discos duros, de los magnéticos. Uno funciona y se revende. {overwrite}Se sobrescribe entero, se comprueba, y sigue sirviendo sin los datos. Eso es la sanitization.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-03",
       "scene": "s06-retirada",
-      "text": "<serious> {broken}El otro está roto y no admite sobrescritura, {shred}así que se tritura. Se acaba el disco y el dato con él, y eso es la destruction.",
+      "text": "<serious> {broken}El otro está roto y no admite sobrescritura, {shred}así que se tritura. Se acaban el disco y los datos. A eso lo llaman destruction.",
       "pauseAfterMs": 300,
       "exam": {
         "objective": "4.2",
@@ -194,19 +212,19 @@
     {
       "id": "s06-04",
       "scene": "s06-retirada",
-      "text": "<clear> {paper}De los dos, el gestor entrega una hoja con el número de serie de cada disco. Esa prueba es la certification.",
+      "text": "<clear> {paper}Y el gestor da una hoja que prueba lo que hizo con cada disco, con su número de serie. Se llama certification.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-05",
       "scene": "s06-retirada",
-      "text": "<warm> {car}Pasa como con un coche viejo. Si aún rueda, lo vendes, y si no anda, al desguace, con su certificado.",
+      "text": "<warm> {car}Pasa como con un coche viejo. Si aún rueda y pasa la ITV, lo vendes, y si no, al desguace.",
       "pauseAfterMs": 500
     },
     {
       "id": "s07-01",
       "scene": "s07-p3",
-      "text": "<intrigued> {q3}El puerto retira los discos de estado sólido de un servidor de ficheros. Nunca estuvieron cifrados, su firmware no trae borrado seguro y se van a reciclar. ¿Cuál es la mejor forma de retirarlos?",
+      "text": "<intrigued> {q3}El puerto retira los discos de estado sólido de un servidor. Nunca estuvieron cifrados, su firmware no trae borrado seguro y se van a reciclar. ¿Cuál es la mejor forma de retirarlos?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "4.2",
@@ -230,13 +248,19 @@
     {
       "id": "s07-02",
       "scene": "s07-p3",
-      "text": "<firm> {ok-3}Toca triturarlos y pedir el certificado, porque no hay forma de borrarlos con garantías. {trap-3}Crypto erase es lo típico en estos discos, pero destruye la clave, y aquí no hay ninguna.",
+      "text": "<firm> {ok-3}Toca triturarlos, con su certificado, porque no se pueden borrar con garantías.",
       "pauseAfterMs": 300
     },
     {
       "id": "s07-03",
       "scene": "s07-p3",
-      "text": "<thoughtful> {magnetic}Sobrescribir es para los discos magnéticos, y un papel no arregla un mal borrado. {car-back}Este coche no se puede vender limpio, así que al desguace.",
+      "text": "<serious> {trap-3}Crypto erase es lo típico en estos discos, pero destruye la clave, y aquí no hay ninguna.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-p3",
+      "text": "<thoughtful> {magnetic}Y sobrescribir es para los discos magnéticos. {car-back}A este coche no hay quien le pase la ITV, así que al desguace.",
       "pauseAfterMs": 700,
       "exam": {
         "objective": "4.2",
@@ -248,25 +272,25 @@
     {
       "id": "s08-01",
       "scene": "s08-cierre",
-      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Lo que no está en la lista no se protege.",
+      "text": "<cheerful> {recap}Quédate con tres reglas. {rule-1}Lo que no está en la lista no se protege.",
       "pauseAfterMs": 250
     },
     {
       "id": "s08-02",
       "scene": "s08-cierre",
-      "text": "<clear> {rule-2}Cada activo lleva alguien que responde y una etiqueta que decide su trato.",
+      "text": "<clear> {rule-2}Cada activo tiene quien responde de él y una clasificación que decide su trato.",
       "pauseAfterMs": 250
     },
     {
       "id": "s08-03",
       "scene": "s08-cierre",
-      "text": "<firm> {rule-3}Y al retirarlo, si sigue sirviendo se sanitiza, y si no, se destruye, siempre con su papel.",
+      "text": "<firm> {rule-3}Y al retirarlo, si sigue sirviendo y se deja borrar, se borra a fondo. Si no, se destruye, siempre con su papel.",
       "pauseAfterMs": 300
     },
     {
       "id": "s08-04",
       "scene": "s08-cierre",
-      "text": "<engaging> {phrase}Para cada activo, pregúntate si está en la lista, quién responde y adónde va al retirarlo. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "text": "<engaging> {phrase}Para cada activo, pregúntate si está en la lista, quién responde y adónde va al retirarlo. {next}Y ahora, a por las preguntas {endcard}de la lección.",
       "pauseAfterMs": 250
     }
   ]
