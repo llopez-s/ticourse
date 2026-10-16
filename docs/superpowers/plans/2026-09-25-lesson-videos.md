@@ -6287,10 +6287,12 @@ guion se congela hasta que Lidia dé por bueno el piloto en privado.
 
 ### V28 · sp1m1 · Cápsula de casos · «Un control, dos etiquetas: categoría y tipo»
 
-> Propuesta del 2026-10-16 (tanda 6, piloto), con las opciones recomendadas ya elegidas; falta que Lidia diga qué cambia. Es la
-> ficha, no el guion: el guion se escribe cuando Lidia la apruebe, y Lidia ve el piloto dos veces (la ficha y el guion congelado
-> antes de grabar; el render con su voz, en privado, antes de publicar; diseño §9.1). La versión vigente de escenas y guion será
-> `video/controles-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/controles-halden/out/script-notes.md`.
+> **Aprobada por Lidia el 2026-10-16, tal como está** (tanda 6, piloto), con las opciones recomendadas; guion congelado el mismo
+> día, después de las revisiones de exactitud y naturalidad. Lidia ve el piloto dos veces (la ficha y el guion congelado antes de
+> grabar; el render con su voz, en privado, antes de publicar; diseño §9.1). La versión vigente de escenas y guion es
+> `video/controles-halden/storyboard.json` + `narration.json` (las revisiones cambiaron la pregunta 3, sin «aun así», y la tarjeta
+> de s07 y el título del capítulo 3, «el principal» en vez de «lo que toca»); qué se quedó fuera, en
+> `video/controles-halden/out/script-notes.md`.
 >
 > **Orden del curso.** sp1m1 es la primera lección de Security+, así que V28 pasa a ser **el primer vídeo de Halden en el orden
 > del curso**, por delante de V20 (sp1m3), que lo es hoy (`reg:37`). Presenta el puerto desde cero, con una frase, y no remite a
