@@ -1,0 +1,20 @@
+YARA y Sigma: del indicador a la regla
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC
+
+[00:00] I · Dos miradas — ¿Qué le damos al SOC?
+Un dominio, una dirección, un hash… caducan enseguida. Y el SOC te pide algo que dure. Dale dos reglas, de YARA y de Sigma. Verás qué mira cada una, cuándo salta de más y qué la rompe. Eres la analista de Meridian, una aeroespacial. Ya sabes qué detectar. Toca escribirlo.
+
+[00:20] I · Dos miradas — Un escáner y un registro
+Piensa en un aeropuerto. El escáner de equipaje mira dentro de la maleta. Una regla que mira dentro de un fichero, o de la memoria, es de YARA. La puerta de embarque apunta quién pasa, con qué tarjeta y qué pasaporte. Una que lee lo que ha pasado, en los registros, es de Sigma. O sea, YARA mira lo que hay dentro, y Sigma, lo que ocurre. Empezamos por la de dentro.
+
+[00:44] I · Dos miradas — La condición decide
+[Mensaje interceptado · VELVET CICADA] «Una palabra de mi programa y ya me pillas. Qué fácil, analista.» Depende. Una palabra corriente salta con todos. Una que solo lleva su programa, esa sí puede ir sola. La regla tiene tres partes. El contexto, meta. Las cadenas que busca, strings. Y la condición, condition, que decide. La primera cadena la llevan miles de programas legítimos, como una botella de agua. Sola, saltaría con medio mundo. Así que pide compañía, como las dos siguientes. Dos juntas hacen mucho menos ruido. La única que va sola es una ruta que a veces queda escrita al compilar, la del PDB. Casi nadie lleva esa. La condición pide un ejecutable de menos de 250 KB. Y luego, la ruta del PDB o dos de las otras tres. O sea, que lo corriente pide compañía, y lo único puede ir solo.
+
+[01:42] II · Qué mira cada regla — Sigma, línea a línea
+[Mensaje interceptado · VELVET CICADA] «A mis herramientas las llamo como quiero. Tu regla no lo verá.» Pues vamos a ver qué ve la regla de Sigma. Mira los procesos que arrancan en Windows. Y busca que su pasaporte, el nombre de dentro, sea certutil. Y que lo lancen para decodificar o para descargar. Si la tarjeta, el nombre del disco, también dice certutil, el filtro lo descarta. Y la condición resta lo que filtra. Mira dos eventos de ejemplo. El de la tarjeta cambiada sí avisaría. Una regla solo mira la tarjeta, y busca ese nombre. La otra es la de la lección. Imagina un tercero, con una tarjeta nueva. ¿Cuál de las dos sigue saltando? La de la lección. La tarjeta la cambia el atacante cuando quiere, y la otra ya no lo ve. Pero el pasaporte, el nombre original, va dentro del programa, y renombrar no lo toca. Ni el filtro la frena. ¿Que no lo verá? La de la tarjeta, quizá no. Esta, sí.
+
+[02:47] II · Qué mira cada regla — Dónde corre y qué la rompe
+¿Dónde corre cada una? YARA, en un escáner, un sandbox o un EDR. Sigma no corre en el SIEM tal cual. Antes se traduce a su consulta. Las dos se pueden romper. La de YARA vive mientras la maleta lleve esas piezas. A la de Sigma la rompe otro pasaporte. Y a su filtro, una copia con el nombre normal en otra carpeta. Si cambia de herramienta, la del nombre original ya no ve. Queda la del árbol de procesos, que ya viste. Ninguna es para siempre. O sea, que cada una tiene su punto débil, así que mide si dispara.
+
+[03:23] III · Para el examen — Tres reglas
+Llévate tres ideas. YARA mira dentro. Sigma mira lo que pasa, y se convierte antes de correr. Una cadena corriente, sola, salta con cualquiera. Pídele compañía, o una pieza única como el PDB. Apóyate en lo que cuesta cambiar, el nombre original y no el del disco. Y vigila si salta. A por las diez preguntas de la lección. Hasta el próximo control.

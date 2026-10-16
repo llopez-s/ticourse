@@ -1,0 +1,137 @@
+{
+  "title": "YARA y Sigma: del indicador a la regla",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 218,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Dos miradas"
+    },
+    {
+      "n": 2,
+      "title": "Qué mira cada regla"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "¿Qué le damos al SOC?",
+      "targetSec": 18,
+      "wordBudget": 49,
+      "goal": "Tira de contexto «Meridian Dynamics · aeroespacial · tú, su analista de inteligencia». Tres fichas de indicador sueltas y apagadas, sin ningún valor («un dominio», «una dirección IP», «un hash»), cada una con un reloj de caducidad (`pile`). Tira del SOC «el SOC: ¿y qué le damos que dure?» (`soc`). Título «YARA y Sigma» con «del indicador a la regla» debajo, antes de los 8 s (`title`, siempre antes de los 12). La promesa en tres chips (`promise`): «qué mira cada una · cuándo salta de más · qué rompe cada regla». El puente con V7 solo en voz (ya sabes qué detectar; ahora, cómo se escribe). Sin fecha, hora, equipo, hash ni dominio",
+      "requiredCues": [
+        "pile",
+        "soc",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-miradas",
+      "chapter": 1,
+      "title": "Un escáner y un registro",
+      "targetSec": 34,
+      "wordBudget": 92,
+      "goal": "El aeropuerto en alzado (`airport`). El escáner de equipaje mira dentro de una maleta (`scanner`), rotulado YARA: «mira dentro: ficheros y memoria» (`yara-inside`). La puerta de embarque anota un pasajero con su tarjeta y su pasaporte (`gate`); el rótulo SIGMA va sobre una lupa que lee ese libro de registro, no sobre el acto de anotar: «lee lo que ocurre: los registros» (`sigma-events`). Dos chips «YARA: lo que hay dentro» y «Sigma: lo que ha pasado» (`pair`) y la tarjeta. Un objeto, una función: el escáner solo mira dentro (nunca «cámara» ni «alarma»)",
+      "requiredCues": [
+        "airport",
+        "scanner",
+        "yara-inside",
+        "gate",
+        "sigma-events",
+        "pair"
+      ]
+    },
+    {
+      "id": "s03-condicion",
+      "chapter": 1,
+      "title": "La condición decide",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "Mensaje interceptado de VELVET CICADA y su respuesta (`reply-word`). Entra la regla YARA `GLASSVIPER_Loader_MemMap` con el rótulo «extracto de la lección · ficticia» y su `author = \"Meridian CTI\"`, sin `date` ni `reference` (`rule`); contexto `meta` (`meta`), cadenas `strings` y condición `condition` (`strings`) se iluminan una a una, con el término del examen encendido. `$api` se resalta, «está en miles de programas legítimos» (`generic`), y una pila de avisos falsos cae sobre la tira del SOC (`flood`, sfx alarm). La maleta con una botella de agua y un paraguas, en miniatura. `$pdb` se rotula «único» y `$api`, `$pipe`, `$op` «de compañía» (`tags-company`); `$pipe` lleva «molde propio · aquí, de compañía» y «el molde, no el nombre de cada ejecución». La condición en tres líneas: «que sea un ejecutable (empieza por MZ)» (`cond-mz`), «que pese menos de 250 KB» (`cond-size`) y «o el PDB, que es único y va solo, o dos señales de las otras tres» (`cond-or`). La tarjeta. Cierre del capítulo con el «o sea, que…» (`wrap-i`). Ningún hash; no se dice qué muestra cumple la regla",
+      "requiredCues": [
+        "reply-word",
+        "rule",
+        "meta",
+        "strings",
+        "generic",
+        "flood",
+        "tags-company",
+        "cond-mz",
+        "cond-size",
+        "cond-or",
+        "wrap-i"
+      ]
+    },
+    {
+      "id": "s04-sigma",
+      "chapter": 2,
+      "title": "Sigma, línea a línea",
+      "targetSec": 60,
+      "wordBudget": 162,
+      "goal": "Mensaje interceptado que abre la escena; respuesta neutra (`reply-m2`). La regla Sigma «GLASS VIPER Staging via Renamed Certutil», rotulada «extracto de la lección · ficticia», sin autor, sin `id` ni `references` (`sigma`), se lee por partes: `logsource`, creación de procesos de Windows (`logsource`); `selection`, `OriginalFileName: 'CertUtil.exe'` (`selection`) más una de dos banderas de uso, «decodificar o descargar» (`flags`); `filter_expected`, «el uso con su nombre normal no salta» (`filter`); `condition` (`cond`); `falsepositives` queda en pantalla sin voz. Primero dos eventos de ejemplo (el tercero entra en `ev-new`) como tarjeta de tres campos (`Image`, `OriginalFileName`, `CommandLine`), rotulados «evento de ejemplo», sin equipo ni hora, con `Image` como ruta completa (`C:\\Windows\\System32\\certutil.exe`, `…\\wcssvc.exe`, `…\\otro-nombre.exe`) y la misma línea con el programa delante (`certutil.exe -decode a.txt payload.bin`, `wcssvc.exe -decode …`, `otro-nombre.exe -decode …`): `certutil.exe` / `CertUtil.exe`, «no avisa», el filtro lo cubre (`ev-legit`); `wcssvc.exe` / `CertUtil.exe`, «avisa» (`ev-renamed`). Entra la regla A, «ejemplo», `Image|endswith: '\\wcssvc.exe'` (`rule-a`), junto a la B de la lección (`rule-b`), y un tercer evento `otro-nombre.exe` / `CertUtil.exe` (`ev-new`). La voz llama «tarjeta» al nombre del disco y «pasaporte» al nombre original: en pantalla, un icono de tarjeta junto a `Image` y uno de pasaporte junto a `OriginalFileName`. Pregunta para pensar con las dos reglas y el tercer evento a la vista. Respuesta (`answer`): sobre ese evento, A no ve (`miss`, sfx error) y B sí (`hit`, sfx check), con el filtro marcado porque `otro-nombre.exe` no cuadra con él. La tarjeta, después de la respuesta. La voz habla en condicional y nunca en pasado",
+      "requiredCues": [
+        "reply-m2",
+        "sigma",
+        "logsource",
+        "selection",
+        "flags",
+        "filter",
+        "cond",
+        "ev-legit",
+        "ev-renamed",
+        "rule-a",
+        "rule-b",
+        "ev-new",
+        "answer",
+        "miss",
+        "hit"
+      ]
+    },
+    {
+      "id": "s05-aguanta",
+      "chapter": 2,
+      "title": "Dónde corre y qué la rompe",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "goal": "Dos columnas (`where`): YARA, «corre en: escáner, sandbox, EDR, repositorio de muestras» (`yara-runs`); Sigma, «se traduce a la consulta de tu SIEM, y esa corre» (`sigma-runs`), con chips genéricos «tu SIEM», sin nombres de producto (`convert`). La tarjeta. Después, «qué la rompe» en tres filas cortas (`breaks`): YARA, «el programa deja de conservar esas piezas (otra compilación, otro empaquetado)», con la maleta en miniatura (`breaks-yara`); Sigma por nombre original, «otra herramienta», con el pasaporte en miniatura (`breaks-sigma`); el filtro por nombre, «una copia con su nombre normal, en otra carpeta» (`breaks-filter`). Tira de tres chips sin nombres de nivel de la pirámide (`ladder`): «el nombre del disco» · «el nombre original» · «la cadena entera» (debajo, «explorer, PowerShell, tarea programada»), con la tira «si cambia de herramienta, la regla del nombre original ya no ve» (`limit`). Línea «mide si dispara» (`loop`) y cierre del capítulo (`wrap-ii`)",
+      "requiredCues": [
+        "where",
+        "yara-runs",
+        "sigma-runs",
+        "convert",
+        "breaks",
+        "breaks-yara",
+        "breaks-sigma",
+        "breaks-filter",
+        "ladder",
+        "limit",
+        "loop",
+        "wrap-ii"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "targetSec": 24,
+      "wordBudget": 65,
+      "goal": "Tres tarjetas de reglas con su viñeta en miniatura (`recap`): el escáner y el registro (`rule-1`), la maleta con una botella (`rule-2`), el pasaporte (`rule-3`). Una sola tarea: las preguntas de la lección (`next`). Tarjeta final Alertópolis: «Tu turno: las preguntas de la lección (s5m3)» (`endcard`)",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

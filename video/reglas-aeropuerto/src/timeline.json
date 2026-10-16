@@ -1,0 +1,2139 @@
+{
+  "mode": "audio",
+  "sourceHash": "7da43ed2e0cd787864110a9330cf73f5d5d6f28f365a9ffa3522630ec574b0ce",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "durationInFrames": 6945,
+  "voice": "recording/lidia",
+  "scenes": [
+    {"id":"s01-hook","chapter":1,"chapterTitle":"Dos miradas","title":"¿Qué le damos al SOC?","from":0,"durationInFrames":625},
+    {"id":"s02-miradas","chapter":1,"chapterTitle":"Dos miradas","title":"Un escáner y un registro","from":625,"durationInFrames":722},
+    {"id":"s03-condicion","chapter":1,"chapterTitle":"Dos miradas","title":"La condición decide","from":1347,"durationInFrames":1732},
+    {"id":"s04-sigma","chapter":2,"chapterTitle":"Qué mira cada regla","title":"Sigma, línea a línea","from":3079,"durationInFrames":1942},
+    {"id":"s05-aguanta","chapter":2,"chapterTitle":"Qué mira cada regla","title":"Dónde corre y qué la rompe","from":5021,"durationInFrames":1074},
+    {"id":"s06-recap","chapter":3,"chapterTitle":"Para el examen","title":"Tres reglas","from":6095,"durationInFrames":850}
+  ],
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "Un dominio, una dirección, un hash… caducan enseguida. Y el SOC te pide algo que dure.",
+      "from": 45,
+      "audioFrames": 183,
+      "durationInFrames": 191,
+      "audio": "voice/s01-01.mp3",
+      "words": [
+        {"text":"Un","from":45,"to":53},
+        {"text":"dominio,","from":53,"to":68},
+        {"text":"una","from":75,"to":79},
+        {"text":"dirección,","from":79,"to":96},
+        {"text":"un","from":104,"to":107},
+        {"text":"hash…","from":107,"to":117},
+        {"text":"caducan","from":128,"to":142},
+        {"text":"enseguida.","from":142,"to":159},
+        {"text":"Y","from":167,"to":169},
+        {"text":"el","from":168,"to":172},
+        {"text":"SOC","from":172,"to":180},
+        {"text":"te","from":180,"to":184},
+        {"text":"pide","from":184,"to":192},
+        {"text":"algo","from":192,"to":200},
+        {"text":"que","from":200,"to":208},
+        {"text":"dure.","from":208,"to":217}
+      ]
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "Dale dos reglas, de YARA y de Sigma. Verás qué mira cada una, cuándo salta de más y qué la rompe.",
+      "from": 236,
+      "audioFrames": 182,
+      "durationInFrames": 193,
+      "audio": "voice/s01-02.mp3",
+      "words": [
+        {"text":"Dale","from":238,"to":243},
+        {"text":"dos","from":243,"to":251},
+        {"text":"reglas,","from":251,"to":263},
+        {"text":"de","from":263,"to":270},
+        {"text":"YARA","from":270,"to":277},
+        {"text":"y","from":277,"to":282},
+        {"text":"de","from":282,"to":285},
+        {"text":"Sigma.","from":285,"to":295},
+        {"text":"Verás","from":308,"to":319},
+        {"text":"qué","from":319,"to":323},
+        {"text":"mira","from":323,"to":329},
+        {"text":"cada","from":329,"to":336},
+        {"text":"una,","from":336,"to":345},
+        {"text":"cuándo","from":355,"to":363},
+        {"text":"salta","from":363,"to":375},
+        {"text":"de","from":375,"to":380},
+        {"text":"más","from":380,"to":385},
+        {"text":"y","from":385,"to":390},
+        {"text":"qué","from":390,"to":393},
+        {"text":"la","from":393,"to":395},
+        {"text":"rompe.","from":395,"to":409}
+      ]
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "Eres la analista de Meridian, una aeroespacial. Ya sabes qué detectar. Toca escribirlo.",
+      "from": 429,
+      "audioFrames": 162,
+      "durationInFrames": 176,
+      "audio": "voice/s01-03.mp3",
+      "words": [
+        {"text":"Eres","from":431,"to":436},
+        {"text":"la","from":436,"to":441},
+        {"text":"analista","from":441,"to":452},
+        {"text":"de","from":452,"to":458},
+        {"text":"Meridian,","from":458,"to":471},
+        {"text":"una","from":481,"to":485},
+        {"text":"aeroespacial.","from":485,"to":503},
+        {"text":"Ya","from":522,"to":524},
+        {"text":"sabes","from":524,"to":532},
+        {"text":"qué","from":532,"to":537},
+        {"text":"detectar.","from":537,"to":552},
+        {"text":"Toca","from":559,"to":563},
+        {"text":"escribirlo.","from":563,"to":583}
+      ]
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-miradas",
+      "text": "Piensa en un aeropuerto. El escáner de equipaje mira dentro de la maleta.",
+      "from": 637,
+      "audioFrames": 133,
+      "durationInFrames": 141,
+      "audio": "voice/s02-01.mp3",
+      "words": [
+        {"text":"Piensa","from":640,"to":655},
+        {"text":"en","from":655,"to":663},
+        {"text":"un","from":663,"to":667},
+        {"text":"aeropuerto.","from":667,"to":684},
+        {"text":"El","from":693,"to":695},
+        {"text":"escáner","from":695,"to":705},
+        {"text":"de","from":705,"to":710},
+        {"text":"equipaje","from":710,"to":721},
+        {"text":"mira","from":721,"to":729},
+        {"text":"dentro","from":729,"to":740},
+        {"text":"de","from":740,"to":746},
+        {"text":"la","from":746,"to":749},
+        {"text":"maleta.","from":749,"to":761}
+      ]
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-miradas",
+      "text": "Una regla que mira dentro de un fichero, o de la memoria, es de YARA.",
+      "from": 778,
+      "audioFrames": 111,
+      "durationInFrames": 119,
+      "audio": "voice/s02-02.mp3",
+      "words": [
+        {"text":"Una","from":778,"to":784},
+        {"text":"regla","from":784,"to":794},
+        {"text":"que","from":794,"to":800},
+        {"text":"mira","from":800,"to":806},
+        {"text":"dentro","from":806,"to":813},
+        {"text":"de","from":813,"to":818},
+        {"text":"un","from":818,"to":821},
+        {"text":"fichero,","from":821,"to":832},
+        {"text":"o","from":832,"to":834},
+        {"text":"de","from":832,"to":837},
+        {"text":"la","from":837,"to":841},
+        {"text":"memoria,","from":841,"to":853},
+        {"text":"es","from":853,"to":867},
+        {"text":"de","from":867,"to":871},
+        {"text":"YARA.","from":871,"to":878}
+      ]
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-miradas",
+      "text": "La puerta de embarque apunta quién pasa, con qué tarjeta y qué pasaporte.",
+      "from": 897,
+      "audioFrames": 116,
+      "durationInFrames": 124,
+      "audio": "voice/s02-03.mp3",
+      "words": [
+        {"text":"La","from":897,"to":904},
+        {"text":"puerta","from":904,"to":910},
+        {"text":"de","from":910,"to":915},
+        {"text":"embarque","from":915,"to":924},
+        {"text":"apunta","from":924,"to":932},
+        {"text":"quién","from":937,"to":939},
+        {"text":"pasa,","from":938,"to":948},
+        {"text":"con","from":957,"to":960},
+        {"text":"qué","from":960,"to":964},
+        {"text":"tarjeta","from":964,"to":978},
+        {"text":"y","from":978,"to":980},
+        {"text":"qué","from":980,"to":983},
+        {"text":"pasaporte.","from":983,"to":1002}
+      ]
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-miradas",
+      "text": "Una que lee lo que ha pasado, en los registros, es de Sigma.",
+      "from": 1021,
+      "audioFrames": 96,
+      "durationInFrames": 104,
+      "audio": "voice/s02-04.mp3",
+      "words": [
+        {"text":"Una","from":1021,"to":1028},
+        {"text":"que","from":1028,"to":1033},
+        {"text":"lee","from":1033,"to":1038},
+        {"text":"lo","from":1038,"to":1043},
+        {"text":"que","from":1043,"to":1045},
+        {"text":"ha","from":1045,"to":1048},
+        {"text":"pasado,","from":1048,"to":1056},
+        {"text":"en","from":1056,"to":1064},
+        {"text":"los","from":1064,"to":1066},
+        {"text":"registros,","from":1066,"to":1080},
+        {"text":"es","from":1080,"to":1092},
+        {"text":"de","from":1092,"to":1097},
+        {"text":"Sigma.","from":1097,"to":1107}
+      ]
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-miradas",
+      "text": "O sea, YARA mira lo que hay dentro, y Sigma, lo que ocurre. Empezamos por la de dentro.",
+      "from": 1125,
+      "audioFrames": 188,
+      "durationInFrames": 202,
+      "audio": "voice/s02-05.mp3",
+      "words": [
+        {"text":"O","from":1127,"to":1141},
+        {"text":"sea,","from":1141,"to":1148},
+        {"text":"YARA","from":1158,"to":1169},
+        {"text":"mira","from":1169,"to":1177},
+        {"text":"lo","from":1177,"to":1184},
+        {"text":"que","from":1184,"to":1187},
+        {"text":"hay","from":1187,"to":1189},
+        {"text":"dentro,","from":1189,"to":1198},
+        {"text":"y","from":1198,"to":1209},
+        {"text":"Sigma,","from":1209,"to":1220},
+        {"text":"lo","from":1220,"to":1231},
+        {"text":"que","from":1231,"to":1234},
+        {"text":"ocurre.","from":1234,"to":1249},
+        {"text":"Empezamos","from":1255,"to":1272},
+        {"text":"por","from":1272,"to":1282},
+        {"text":"la","from":1282,"to":1286},
+        {"text":"de","from":1286,"to":1290},
+        {"text":"dentro.","from":1290,"to":1301}
+      ]
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-condicion",
+      "text": "Depende. Una palabra corriente salta con todos. Una que solo lleva su programa, esa sí puede ir sola.",
+      "from": 1541,
+      "audioFrames": 212,
+      "durationInFrames": 220,
+      "audio": "voice/s03-01.mp3",
+      "words": [
+        {"text":"Depende.","from":1541,"to":1558},
+        {"text":"Una","from":1571,"to":1577},
+        {"text":"palabra","from":1577,"to":1586},
+        {"text":"corriente","from":1586,"to":1604},
+        {"text":"salta","from":1604,"to":1617},
+        {"text":"con","from":1617,"to":1623},
+        {"text":"todos.","from":1623,"to":1634},
+        {"text":"Una","from":1651,"to":1656},
+        {"text":"que","from":1656,"to":1661},
+        {"text":"solo","from":1661,"to":1667},
+        {"text":"lleva","from":1667,"to":1676},
+        {"text":"su","from":1676,"to":1684},
+        {"text":"programa,","from":1684,"to":1697},
+        {"text":"esa","from":1697,"to":1709},
+        {"text":"sí","from":1709,"to":1718},
+        {"text":"puede","from":1718,"to":1726},
+        {"text":"ir","from":1726,"to":1735},
+        {"text":"sola.","from":1735,"to":1744}
+      ]
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-condicion",
+      "text": "La regla tiene tres partes. El contexto, meta. Las cadenas que busca, strings. Y la condición, condition, que decide.",
+      "from": 1761,
+      "audioFrames": 256,
+      "durationInFrames": 264,
+      "audio": "voice/s03-02.mp3",
+      "words": [
+        {"text":"La","from":1761,"to":1768},
+        {"text":"regla","from":1768,"to":1779},
+        {"text":"tiene","from":1779,"to":1797},
+        {"text":"tres","from":1797,"to":1805},
+        {"text":"partes.","from":1805,"to":1818},
+        {"text":"El","from":1830,"to":1832},
+        {"text":"contexto,","from":1832,"to":1845},
+        {"text":"meta.","from":1845,"to":1862},
+        {"text":"Las","from":1877,"to":1881},
+        {"text":"cadenas","from":1881,"to":1890},
+        {"text":"que","from":1890,"to":1897},
+        {"text":"busca,","from":1897,"to":1906},
+        {"text":"strings.","from":1906,"to":1926},
+        {"text":"Y","from":1926,"to":1944},
+        {"text":"la","from":1944,"to":1948},
+        {"text":"condición,","from":1948,"to":1962},
+        {"text":"condition,","from":1962,"to":1979},
+        {"text":"que","from":1979,"to":1993},
+        {"text":"decide.","from":1993,"to":2007}
+      ]
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-condicion",
+      "text": "La primera cadena la llevan miles de programas legítimos, como una botella de agua. Sola, saltaría con medio mundo.",
+      "from": 2025,
+      "audioFrames": 222,
+      "durationInFrames": 233,
+      "audio": "voice/s03-03.mp3",
+      "words": [
+        {"text":"La","from":2025,"to":2030},
+        {"text":"primera","from":2030,"to":2039},
+        {"text":"cadena","from":2039,"to":2054},
+        {"text":"la","from":2054,"to":2059},
+        {"text":"llevan","from":2059,"to":2067},
+        {"text":"miles","from":2068,"to":2076},
+        {"text":"de","from":2076,"to":2083},
+        {"text":"programas","from":2083,"to":2098},
+        {"text":"legítimos,","from":2098,"to":2115},
+        {"text":"como","from":2115,"to":2125},
+        {"text":"una","from":2125,"to":2131},
+        {"text":"botella","from":2131,"to":2143},
+        {"text":"de","from":2143,"to":2148},
+        {"text":"agua.","from":2148,"to":2156},
+        {"text":"Sola,","from":2170,"to":2183},
+        {"text":"saltaría","from":2183,"to":2209},
+        {"text":"con","from":2209,"to":2216},
+        {"text":"medio","from":2216,"to":2225},
+        {"text":"mundo.","from":2225,"to":2237}
+      ]
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-condicion",
+      "text": "Así que pide compañía, como las dos siguientes. Dos juntas hacen mucho menos ruido.",
+      "from": 2258,
+      "audioFrames": 158,
+      "durationInFrames": 166,
+      "audio": "voice/s03-04.mp3",
+      "words": [
+        {"text":"Así","from":2258,"to":2265},
+        {"text":"que","from":2265,"to":2270},
+        {"text":"pide","from":2270,"to":2277},
+        {"text":"compañía,","from":2277,"to":2297},
+        {"text":"como","from":2297,"to":2306},
+        {"text":"las","from":2306,"to":2313},
+        {"text":"dos","from":2313,"to":2318},
+        {"text":"siguientes.","from":2318,"to":2336},
+        {"text":"Dos","from":2352,"to":2359},
+        {"text":"juntas","from":2359,"to":2372},
+        {"text":"hacen","from":2372,"to":2380},
+        {"text":"mucho","from":2380,"to":2389},
+        {"text":"menos","from":2389,"to":2396},
+        {"text":"ruido.","from":2396,"to":2407}
+      ]
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-condicion",
+      "text": "La única que va sola es una ruta que a veces queda escrita al compilar, la del PDB. Casi nadie lleva esa.",
+      "from": 2424,
+      "audioFrames": 218,
+      "durationInFrames": 226,
+      "audio": "voice/s03-05.mp3",
+      "words": [
+        {"text":"La","from":2424,"to":2431},
+        {"text":"única","from":2431,"to":2440},
+        {"text":"que","from":2440,"to":2447},
+        {"text":"va","from":2447,"to":2452},
+        {"text":"sola","from":2452,"to":2462},
+        {"text":"es","from":2462,"to":2480},
+        {"text":"una","from":2480,"to":2486},
+        {"text":"ruta","from":2486,"to":2495},
+        {"text":"que","from":2495,"to":2499},
+        {"text":"a","from":2499,"to":2502},
+        {"text":"veces","from":2502,"to":2508},
+        {"text":"queda","from":2508,"to":2517},
+        {"text":"escrita","from":2517,"to":2529},
+        {"text":"al","from":2529,"to":2533},
+        {"text":"compilar,","from":2533,"to":2547},
+        {"text":"la","from":2564,"to":2566},
+        {"text":"del","from":2565,"to":2570},
+        {"text":"PDB.","from":2570,"to":2595},
+        {"text":"Casi","from":2597,"to":2605},
+        {"text":"nadie","from":2605,"to":2614},
+        {"text":"lleva","from":2614,"to":2624},
+        {"text":"esa.","from":2624,"to":2633}
+      ]
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-condicion",
+      "text": "La condición pide un ejecutable de menos de 250 KB. Y luego, la ruta del PDB o dos de las otras tres.",
+      "from": 2650,
+      "audioFrames": 240,
+      "durationInFrames": 248,
+      "audio": "voice/s03-06.mp3",
+      "words": [
+        {"text":"La","from":2650,"to":2661},
+        {"text":"condición","from":2661,"to":2677},
+        {"text":"pide","from":2677,"to":2687},
+        {"text":"un","from":2687,"to":2690},
+        {"text":"ejecutable","from":2690,"to":2708},
+        {"text":"de","from":2708,"to":2714},
+        {"text":"menos","from":2714,"to":2719},
+        {"text":"de","from":2719,"to":2725},
+        {"text":"250","from":2725,"to":2740},
+        {"text":"KB.","from":2740,"to":2768},
+        {"text":"Y","from":2777,"to":2784},
+        {"text":"luego,","from":2784,"to":2793},
+        {"text":"la","from":2793,"to":2810},
+        {"text":"ruta","from":2810,"to":2818},
+        {"text":"del","from":2818,"to":2824},
+        {"text":"PDB","from":2824,"to":2839},
+        {"text":"o","from":2839,"to":2848},
+        {"text":"dos","from":2848,"to":2854},
+        {"text":"de","from":2854,"to":2857},
+        {"text":"las","from":2857,"to":2862},
+        {"text":"otras","from":2862,"to":2867},
+        {"text":"tres.","from":2867,"to":2877}
+      ]
+    },
+    {
+      "id": "s03-07",
+      "scene": "s03-condicion",
+      "text": "O sea, que lo corriente pide compañía, y lo único puede ir solo.",
+      "from": 2898,
+      "audioFrames": 144,
+      "durationInFrames": 161,
+      "audio": "voice/s03-07.mp3",
+      "words": [
+        {"text":"O","from":2899,"to":2906},
+        {"text":"sea,","from":2906,"to":2912},
+        {"text":"que","from":2925,"to":2930},
+        {"text":"lo","from":2930,"to":2934},
+        {"text":"corriente","from":2934,"to":2949},
+        {"text":"pide","from":2949,"to":2958},
+        {"text":"compañía,","from":2958,"to":2978},
+        {"text":"y","from":2978,"to":2990},
+        {"text":"lo","from":2990,"to":2994},
+        {"text":"único","from":2994,"to":3006},
+        {"text":"puede","from":3006,"to":3016},
+        {"text":"ir","from":3016,"to":3023},
+        {"text":"solo.","from":3023,"to":3031}
+      ]
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-sigma",
+      "text": "Pues vamos a ver qué ve la regla de Sigma.",
+      "from": 3249,
+      "audioFrames": 82,
+      "durationInFrames": 90,
+      "audio": "voice/s04-01.mp3",
+      "words": [
+        {"text":"Pues","from":3249,"to":3255},
+        {"text":"vamos","from":3255,"to":3262},
+        {"text":"a","from":3262,"to":3270},
+        {"text":"ver","from":3270,"to":3275},
+        {"text":"qué","from":3275,"to":3281},
+        {"text":"ve","from":3281,"to":3286},
+        {"text":"la","from":3286,"to":3292},
+        {"text":"regla","from":3292,"to":3303},
+        {"text":"de","from":3303,"to":3308},
+        {"text":"Sigma.","from":3308,"to":3317}
+      ]
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-sigma",
+      "text": "Mira los procesos que arrancan en Windows. Y busca que su pasaporte, el nombre de dentro, sea certutil.",
+      "from": 3339,
+      "audioFrames": 189,
+      "durationInFrames": 197,
+      "audio": "voice/s04-02.mp3",
+      "words": [
+        {"text":"Mira","from":3339,"to":3347},
+        {"text":"los","from":3347,"to":3356},
+        {"text":"procesos","from":3356,"to":3370},
+        {"text":"que","from":3370,"to":3374},
+        {"text":"arrancan","from":3374,"to":3384},
+        {"text":"en","from":3384,"to":3390},
+        {"text":"Windows.","from":3390,"to":3401},
+        {"text":"Y","from":3401,"to":3419},
+        {"text":"busca","from":3419,"to":3427},
+        {"text":"que","from":3427,"to":3433},
+        {"text":"su","from":3433,"to":3437},
+        {"text":"pasaporte,","from":3437,"to":3452},
+        {"text":"el","from":3456,"to":3458},
+        {"text":"nombre","from":3458,"to":3460},
+        {"text":"de","from":3458,"to":3461},
+        {"text":"dentro,","from":3461,"to":3470},
+        {"text":"sea","from":3489,"to":3496},
+        {"text":"certutil.","from":3496,"to":3502}
+      ]
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-sigma",
+      "text": "Y que lo lancen para decodificar o para descargar.",
+      "from": 3536,
+      "audioFrames": 138,
+      "durationInFrames": 146,
+      "audio": "voice/s04-03.mp3",
+      "words": [
+        {"text":"Y","from":3543,"to":3586},
+        {"text":"que","from":3586,"to":3589},
+        {"text":"lo","from":3589,"to":3592},
+        {"text":"lancen","from":3592,"to":3604},
+        {"text":"para","from":3604,"to":3611},
+        {"text":"decodificar","from":3611,"to":3630},
+        {"text":"o","from":3630,"to":3641},
+        {"text":"para","from":3641,"to":3647},
+        {"text":"descargar.","from":3647,"to":3666}
+      ]
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-sigma",
+      "text": "Si la tarjeta, el nombre del disco, también dice certutil, el filtro lo descarta. Y la condición resta lo que filtra.",
+      "from": 3682,
+      "audioFrames": 204,
+      "durationInFrames": 212,
+      "audio": "voice/s04-04.mp3",
+      "words": [
+        {"text":"Si","from":3682,"to":3689},
+        {"text":"la","from":3689,"to":3693},
+        {"text":"tarjeta,","from":3693,"to":3706},
+        {"text":"el","from":3706,"to":3710},
+        {"text":"nombre","from":3710,"to":3716},
+        {"text":"del","from":3716,"to":3722},
+        {"text":"disco,","from":3722,"to":3730},
+        {"text":"también","from":3730,"to":3741},
+        {"text":"dice","from":3741,"to":3750},
+        {"text":"certutil,","from":3750,"to":3770},
+        {"text":"el","from":3782,"to":3788},
+        {"text":"filtro","from":3788,"to":3797},
+        {"text":"lo","from":3797,"to":3803},
+        {"text":"descarta.","from":3803,"to":3818},
+        {"text":"Y","from":3818,"to":3830},
+        {"text":"la","from":3830,"to":3833},
+        {"text":"condición","from":3833,"to":3846},
+        {"text":"resta","from":3846,"to":3858},
+        {"text":"lo","from":3858,"to":3862},
+        {"text":"que","from":3862,"to":3865},
+        {"text":"filtra.","from":3865,"to":3877}
+      ]
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-sigma",
+      "text": "Mira dos eventos de ejemplo. El de la tarjeta cambiada sí avisaría.",
+      "from": 3894,
+      "audioFrames": 132,
+      "durationInFrames": 140,
+      "audio": "voice/s04-05.mp3",
+      "words": [
+        {"text":"Mira","from":3894,"to":3905},
+        {"text":"dos","from":3905,"to":3913},
+        {"text":"eventos","from":3913,"to":3927},
+        {"text":"de","from":3927,"to":3931},
+        {"text":"ejemplo.","from":3931,"to":3941},
+        {"text":"El","from":3954,"to":3957},
+        {"text":"de","from":3957,"to":3960},
+        {"text":"la","from":3960,"to":3963},
+        {"text":"tarjeta","from":3963,"to":3975},
+        {"text":"cambiada","from":3975,"to":3990},
+        {"text":"sí","from":3990,"to":3999},
+        {"text":"avisaría.","from":3999,"to":4016}
+      ]
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-sigma",
+      "text": "Una regla solo mira la tarjeta, y busca ese nombre. La otra es la de la lección.",
+      "from": 4034,
+      "audioFrames": 147,
+      "durationInFrames": 155,
+      "audio": "voice/s04-06.mp3",
+      "words": [
+        {"text":"Una","from":4034,"to":4041},
+        {"text":"regla","from":4041,"to":4051},
+        {"text":"solo","from":4051,"to":4058},
+        {"text":"mira","from":4058,"to":4065},
+        {"text":"la","from":4065,"to":4071},
+        {"text":"tarjeta,","from":4071,"to":4086},
+        {"text":"y","from":4086,"to":4088},
+        {"text":"busca","from":4088,"to":4096},
+        {"text":"ese","from":4096,"to":4102},
+        {"text":"nombre.","from":4102,"to":4112},
+        {"text":"La","from":4130,"to":4136},
+        {"text":"otra","from":4136,"to":4145},
+        {"text":"es","from":4145,"to":4152},
+        {"text":"la","from":4152,"to":4154},
+        {"text":"de","from":4152,"to":4156},
+        {"text":"la","from":4156,"to":4160},
+        {"text":"lección.","from":4160,"to":4172}
+      ]
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-sigma",
+      "text": "Imagina un tercero, con una tarjeta nueva. ¿Cuál de las dos sigue saltando?",
+      "from": 4189,
+      "audioFrames": 138,
+      "durationInFrames": 281,
+      "audio": "voice/s04-07.mp3",
+      "words": [
+        {"text":"Imagina","from":4191,"to":4206},
+        {"text":"un","from":4206,"to":4209},
+        {"text":"tercero,","from":4209,"to":4227},
+        {"text":"con","from":4230,"to":4236},
+        {"text":"una","from":4236,"to":4241},
+        {"text":"tarjeta","from":4241,"to":4255},
+        {"text":"nueva.","from":4255,"to":4264},
+        {"text":"¿Cuál","from":4277,"to":4283},
+        {"text":"de","from":4283,"to":4286},
+        {"text":"las","from":4286,"to":4291},
+        {"text":"dos","from":4291,"to":4294},
+        {"text":"sigue","from":4294,"to":4302},
+        {"text":"saltando?","from":4302,"to":4319}
+      ]
+    },
+    {
+      "id": "s04-08",
+      "scene": "s04-sigma",
+      "text": "La de la lección. La tarjeta la cambia el atacante cuando quiere, y la otra ya no lo ve.",
+      "from": 4470,
+      "audioFrames": 163,
+      "durationInFrames": 171,
+      "audio": "voice/s04-08.mp3",
+      "words": [
+        {"text":"La","from":4470,"to":4477},
+        {"text":"de","from":4477,"to":4481},
+        {"text":"la","from":4481,"to":4484},
+        {"text":"lección.","from":4484,"to":4500},
+        {"text":"La","from":4511,"to":4521},
+        {"text":"tarjeta","from":4521,"to":4535},
+        {"text":"la","from":4535,"to":4538},
+        {"text":"cambia","from":4538,"to":4546},
+        {"text":"el","from":4546,"to":4550},
+        {"text":"atacante","from":4550,"to":4563},
+        {"text":"cuando","from":4563,"to":4572},
+        {"text":"quiere,","from":4572,"to":4586},
+        {"text":"y","from":4586,"to":4594},
+        {"text":"la","from":4594,"to":4598},
+        {"text":"otra","from":4598,"to":4606},
+        {"text":"ya","from":4606,"to":4613},
+        {"text":"no","from":4613,"to":4617},
+        {"text":"lo","from":4617,"to":4621},
+        {"text":"ve.","from":4621,"to":4626}
+      ]
+    },
+    {
+      "id": "s04-09",
+      "scene": "s04-sigma",
+      "text": "Pero el pasaporte, el nombre original, va dentro del programa, y renombrar no lo toca.",
+      "from": 4641,
+      "audioFrames": 165,
+      "durationInFrames": 173,
+      "audio": "voice/s04-09.mp3",
+      "words": [
+        {"text":"Pero","from":4641,"to":4647},
+        {"text":"el","from":4647,"to":4651},
+        {"text":"pasaporte,","from":4651,"to":4667},
+        {"text":"el","from":4670,"to":4672},
+        {"text":"nombre","from":4672,"to":4678},
+        {"text":"original,","from":4678,"to":4693},
+        {"text":"va","from":4701,"to":4703},
+        {"text":"dentro","from":4703,"to":4711},
+        {"text":"del","from":4711,"to":4717},
+        {"text":"programa,","from":4717,"to":4731},
+        {"text":"y","from":4740,"to":4747},
+        {"text":"renombrar","from":4747,"to":4764},
+        {"text":"no","from":4764,"to":4780},
+        {"text":"lo","from":4780,"to":4784},
+        {"text":"toca.","from":4784,"to":4794}
+      ]
+    },
+    {
+      "id": "s04-10",
+      "scene": "s04-sigma",
+      "text": "Ni el filtro la frena. ¿Que no lo verá? La de la tarjeta, quizá no. Esta, sí.",
+      "from": 4814,
+      "audioFrames": 170,
+      "durationInFrames": 187,
+      "audio": "voice/s04-10.mp3",
+      "words": [
+        {"text":"Ni","from":4814,"to":4819},
+        {"text":"el","from":4819,"to":4823},
+        {"text":"filtro","from":4823,"to":4834},
+        {"text":"la","from":4834,"to":4838},
+        {"text":"frena.","from":4838,"to":4850},
+        {"text":"¿Que","from":4859,"to":4864},
+        {"text":"no","from":4864,"to":4867},
+        {"text":"lo","from":4867,"to":4871},
+        {"text":"verá?","from":4871,"to":4881},
+        {"text":"La","from":4888,"to":4893},
+        {"text":"de","from":4893,"to":4896},
+        {"text":"la","from":4896,"to":4899},
+        {"text":"tarjeta,","from":4899,"to":4915},
+        {"text":"quizá","from":4915,"to":4929},
+        {"text":"no.","from":4929,"to":4934},
+        {"text":"Esta,","from":4948,"to":4957},
+        {"text":"sí.","from":4957,"to":4974}
+      ]
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-aguanta",
+      "text": "¿Dónde corre cada una? YARA, en un escáner, un sandbox o un EDR.",
+      "from": 5033,
+      "audioFrames": 161,
+      "durationInFrames": 169,
+      "audio": "voice/s05-01.mp3",
+      "words": [
+        {"text":"¿Dónde","from":5036,"to":5052},
+        {"text":"corre","from":5052,"to":5061},
+        {"text":"cada","from":5061,"to":5069},
+        {"text":"una?","from":5069,"to":5079},
+        {"text":"YARA,","from":5088,"to":5096},
+        {"text":"en","from":5096,"to":5107},
+        {"text":"un","from":5107,"to":5111},
+        {"text":"escáner,","from":5111,"to":5124},
+        {"text":"un","from":5138,"to":5144},
+        {"text":"sandbox","from":5144,"to":5156},
+        {"text":"o","from":5156,"to":5168},
+        {"text":"un","from":5168,"to":5171},
+        {"text":"EDR.","from":5171,"to":5185}
+      ]
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-aguanta",
+      "text": "Sigma no corre en el SIEM tal cual. Antes se traduce a su consulta.",
+      "from": 5202,
+      "audioFrames": 126,
+      "durationInFrames": 134,
+      "audio": "voice/s05-02.mp3",
+      "words": [
+        {"text":"Sigma","from":5202,"to":5216},
+        {"text":"no","from":5216,"to":5222},
+        {"text":"corre","from":5222,"to":5231},
+        {"text":"en","from":5231,"to":5235},
+        {"text":"el","from":5235,"to":5239},
+        {"text":"SIEM","from":5239,"to":5248},
+        {"text":"tal","from":5248,"to":5255},
+        {"text":"cual.","from":5255,"to":5259},
+        {"text":"Antes","from":5267,"to":5274},
+        {"text":"se","from":5274,"to":5280},
+        {"text":"traduce","from":5280,"to":5293},
+        {"text":"a","from":5293,"to":5297},
+        {"text":"su","from":5297,"to":5301},
+        {"text":"consulta.","from":5301,"to":5321}
+      ]
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-aguanta",
+      "text": "Las dos se pueden romper. La de YARA vive mientras la maleta lleve esas piezas.",
+      "from": 5336,
+      "audioFrames": 140,
+      "durationInFrames": 148,
+      "audio": "voice/s05-03.mp3",
+      "words": [
+        {"text":"Las","from":5337,"to":5344},
+        {"text":"dos","from":5344,"to":5350},
+        {"text":"se","from":5350,"to":5355},
+        {"text":"pueden","from":5355,"to":5363},
+        {"text":"romper.","from":5363,"to":5375},
+        {"text":"La","from":5383,"to":5388},
+        {"text":"de","from":5388,"to":5393},
+        {"text":"YARA","from":5393,"to":5401},
+        {"text":"vive","from":5401,"to":5409},
+        {"text":"mientras","from":5409,"to":5420},
+        {"text":"la","from":5420,"to":5426},
+        {"text":"maleta","from":5426,"to":5436},
+        {"text":"lleve","from":5436,"to":5444},
+        {"text":"esas","from":5444,"to":5450},
+        {"text":"piezas.","from":5450,"to":5461}
+      ]
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-aguanta",
+      "text": "A la de Sigma la rompe otro pasaporte. Y a su filtro, una copia con el nombre normal en otra carpeta.",
+      "from": 5484,
+      "audioFrames": 196,
+      "durationInFrames": 204,
+      "audio": "voice/s05-04.mp3",
+      "words": [
+        {"text":"A","from":5484,"to":5496},
+        {"text":"la","from":5496,"to":5499},
+        {"text":"de","from":5499,"to":5504},
+        {"text":"Sigma","from":5504,"to":5511},
+        {"text":"la","from":5511,"to":5518},
+        {"text":"rompe","from":5518,"to":5529},
+        {"text":"otro","from":5529,"to":5534},
+        {"text":"pasaporte.","from":5534,"to":5553},
+        {"text":"Y","from":5562,"to":5573},
+        {"text":"a","from":5573,"to":5576},
+        {"text":"su","from":5576,"to":5579},
+        {"text":"filtro,","from":5579,"to":5592},
+        {"text":"una","from":5600,"to":5607},
+        {"text":"copia","from":5607,"to":5616},
+        {"text":"con","from":5616,"to":5621},
+        {"text":"el","from":5621,"to":5625},
+        {"text":"nombre","from":5625,"to":5631},
+        {"text":"normal","from":5631,"to":5644},
+        {"text":"en","from":5644,"to":5649},
+        {"text":"otra","from":5649,"to":5654},
+        {"text":"carpeta.","from":5654,"to":5672}
+      ]
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-aguanta",
+      "text": "Si cambia de herramienta, la del nombre original ya no ve. Queda la del árbol de procesos, que ya viste.",
+      "from": 5688,
+      "audioFrames": 180,
+      "durationInFrames": 188,
+      "audio": "voice/s05-05.mp3",
+      "words": [
+        {"text":"Si","from":5688,"to":5694},
+        {"text":"cambia","from":5694,"to":5703},
+        {"text":"de","from":5703,"to":5707},
+        {"text":"herramienta,","from":5707,"to":5722},
+        {"text":"la","from":5728,"to":5731},
+        {"text":"del","from":5731,"to":5736},
+        {"text":"nombre","from":5736,"to":5742},
+        {"text":"original","from":5742,"to":5757},
+        {"text":"ya","from":5757,"to":5768},
+        {"text":"no","from":5768,"to":5773},
+        {"text":"ve.","from":5773,"to":5778},
+        {"text":"Queda","from":5793,"to":5801},
+        {"text":"la","from":5801,"to":5806},
+        {"text":"del","from":5806,"to":5811},
+        {"text":"árbol","from":5811,"to":5818},
+        {"text":"de","from":5818,"to":5822},
+        {"text":"procesos,","from":5822,"to":5837},
+        {"text":"que","from":5837,"to":5842},
+        {"text":"ya","from":5842,"to":5847},
+        {"text":"viste.","from":5847,"to":5857}
+      ]
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-aguanta",
+      "text": "Ninguna es para siempre. O sea, que cada una tiene su punto débil, así que mide si dispara.",
+      "from": 5876,
+      "audioFrames": 182,
+      "durationInFrames": 199,
+      "audio": "voice/s05-06.mp3",
+      "words": [
+        {"text":"Ninguna","from":5876,"to":5890},
+        {"text":"es","from":5890,"to":5898},
+        {"text":"para","from":5898,"to":5903},
+        {"text":"siempre.","from":5903,"to":5915},
+        {"text":"O","from":5929,"to":5931},
+        {"text":"sea,","from":5930,"to":5937},
+        {"text":"que","from":5947,"to":5950},
+        {"text":"cada","from":5950,"to":5957},
+        {"text":"una","from":5957,"to":5965},
+        {"text":"tiene","from":5965,"to":5973},
+        {"text":"su","from":5973,"to":5980},
+        {"text":"punto","from":5980,"to":5987},
+        {"text":"débil,","from":5987,"to":6000},
+        {"text":"así","from":6007,"to":6016},
+        {"text":"que","from":6016,"to":6021},
+        {"text":"mide","from":6021,"to":6029},
+        {"text":"si","from":6029,"to":6035},
+        {"text":"dispara.","from":6035,"to":6048}
+      ]
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-recap",
+      "text": "Llévate tres ideas. YARA mira dentro. Sigma mira lo que pasa, y se convierte antes de correr.",
+      "from": 6107,
+      "audioFrames": 224,
+      "durationInFrames": 232,
+      "audio": "voice/s06-01.mp3",
+      "words": [
+        {"text":"Llévate","from":6118,"to":6135},
+        {"text":"tres","from":6143,"to":6147},
+        {"text":"ideas.","from":6147,"to":6164},
+        {"text":"YARA","from":6173,"to":6185},
+        {"text":"mira","from":6185,"to":6194},
+        {"text":"dentro.","from":6194,"to":6210},
+        {"text":"Sigma","from":6223,"to":6233},
+        {"text":"mira","from":6243,"to":6250},
+        {"text":"lo","from":6250,"to":6256},
+        {"text":"que","from":6256,"to":6260},
+        {"text":"pasa,","from":6260,"to":6270},
+        {"text":"y","from":6278,"to":6280},
+        {"text":"se","from":6280,"to":6283},
+        {"text":"convierte","from":6283,"to":6296},
+        {"text":"antes","from":6296,"to":6309},
+        {"text":"de","from":6309,"to":6314},
+        {"text":"correr.","from":6314,"to":6326}
+      ]
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-recap",
+      "text": "Una cadena corriente, sola, salta con cualquiera. Pídele compañía, o una pieza única como el PDB.",
+      "from": 6339,
+      "audioFrames": 202,
+      "durationInFrames": 210,
+      "audio": "voice/s06-02.mp3",
+      "words": [
+        {"text":"Una","from":6339,"to":6346},
+        {"text":"cadena","from":6346,"to":6356},
+        {"text":"corriente,","from":6356,"to":6369},
+        {"text":"sola,","from":6369,"to":6379},
+        {"text":"salta","from":6379,"to":6391},
+        {"text":"con","from":6391,"to":6398},
+        {"text":"cualquiera.","from":6398,"to":6414},
+        {"text":"Pídele","from":6422,"to":6434},
+        {"text":"compañía,","from":6434,"to":6457},
+        {"text":"o","from":6465,"to":6468},
+        {"text":"una","from":6468,"to":6474},
+        {"text":"pieza","from":6474,"to":6482},
+        {"text":"única","from":6482,"to":6494},
+        {"text":"como","from":6494,"to":6514},
+        {"text":"el","from":6514,"to":6519},
+        {"text":"PDB.","from":6519,"to":6533}
+      ]
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-recap",
+      "text": "Apóyate en lo que cuesta cambiar, el nombre original y no el del disco. Y vigila si salta.",
+      "from": 6549,
+      "audioFrames": 167,
+      "durationInFrames": 178,
+      "audio": "voice/s06-03.mp3",
+      "words": [
+        {"text":"Apóyate","from":6549,"to":6566},
+        {"text":"en","from":6566,"to":6570},
+        {"text":"lo","from":6570,"to":6573},
+        {"text":"que","from":6573,"to":6576},
+        {"text":"cuesta","from":6576,"to":6588},
+        {"text":"cambiar,","from":6588,"to":6599},
+        {"text":"el","from":6599,"to":6612},
+        {"text":"nombre","from":6612,"to":6620},
+        {"text":"original","from":6620,"to":6637},
+        {"text":"y","from":6637,"to":6650},
+        {"text":"no","from":6650,"to":6655},
+        {"text":"el","from":6655,"to":6660},
+        {"text":"del","from":6660,"to":6662},
+        {"text":"disco.","from":6660,"to":6670},
+        {"text":"Y","from":6670,"to":6680},
+        {"text":"vigila","from":6680,"to":6688},
+        {"text":"si","from":6688,"to":6695},
+        {"text":"salta.","from":6695,"to":6708}
+      ]
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-recap",
+      "text": "A por las diez preguntas de la lección. Hasta el próximo control.",
+      "from": 6727,
+      "audioFrames": 105,
+      "durationInFrames": 123,
+      "audio": "voice/s06-04.mp3",
+      "words": [
+        {"text":"A","from":6727,"to":6732},
+        {"text":"por","from":6732,"to":6736},
+        {"text":"las","from":6736,"to":6742},
+        {"text":"diez","from":6742,"to":6746},
+        {"text":"preguntas","from":6746,"to":6758},
+        {"text":"de","from":6758,"to":6767},
+        {"text":"la","from":6767,"to":6770},
+        {"text":"lección.","from":6770,"to":6783},
+        {"text":"Hasta","from":6789,"to":6796},
+        {"text":"el","from":6796,"to":6801},
+        {"text":"próximo","from":6801,"to":6806},
+        {"text":"control.","from":6806,"to":6819}
+      ]
+    }
+  ],
+  "captions": [
+    {
+      "from": 42,
+      "to": 164,
+      "lines": [
+        [
+          {"text":"Un","from":45,"to":53},
+          {"text":"dominio,","from":53,"to":68},
+          {"text":"una","from":75,"to":79},
+          {"text":"dirección,","from":79,"to":96}
+        ],
+        [
+          {"text":"un","from":104,"to":107},
+          {"text":"hash…","from":107,"to":117},
+          {"text":"caducan","from":128,"to":142},
+          {"text":"enseguida.","from":142,"to":159}
+        ]
+      ]
+    },
+    {
+      "from": 164,
+      "to": 235,
+      "lines": [
+        [
+          {"text":"Y","from":167,"to":169},
+          {"text":"el","from":168,"to":172},
+          {"text":"SOC","from":172,"to":180},
+          {"text":"te","from":180,"to":184},
+          {"text":"pide","from":184,"to":192},
+          {"text":"algo","from":192,"to":200},
+          {"text":"que","from":200,"to":208},
+          {"text":"dure.","from":208,"to":217}
+        ]
+      ]
+    },
+    {
+      "from": 235,
+      "to": 305,
+      "lines": [
+        [
+          {"text":"Dale","from":238,"to":243},
+          {"text":"dos","from":243,"to":251},
+          {"text":"reglas,","from":251,"to":263},
+          {"text":"de","from":263,"to":270},
+          {"text":"YARA","from":270,"to":277},
+          {"text":"y","from":277,"to":282},
+          {"text":"de","from":282,"to":285},
+          {"text":"Sigma.","from":285,"to":295}
+        ]
+      ]
+    },
+    {
+      "from": 305,
+      "to": 428,
+      "lines": [
+        [
+          {"text":"Verás","from":308,"to":319},
+          {"text":"qué","from":319,"to":323},
+          {"text":"mira","from":323,"to":329},
+          {"text":"cada","from":329,"to":336},
+          {"text":"una,","from":336,"to":345}
+        ],
+        [
+          {"text":"cuándo","from":355,"to":363},
+          {"text":"salta","from":363,"to":375},
+          {"text":"de","from":375,"to":380},
+          {"text":"más","from":380,"to":385},
+          {"text":"y","from":385,"to":390},
+          {"text":"qué","from":390,"to":393},
+          {"text":"la","from":393,"to":395},
+          {"text":"rompe.","from":395,"to":409}
+        ]
+      ]
+    },
+    {
+      "from": 428,
+      "to": 556,
+      "lines": [
+        [
+          {"text":"Eres","from":431,"to":436},
+          {"text":"la","from":436,"to":441},
+          {"text":"analista","from":441,"to":452},
+          {"text":"de","from":452,"to":458},
+          {"text":"Meridian,","from":458,"to":471}
+        ],
+        [
+          {"text":"una","from":481,"to":485},
+          {"text":"aeroespacial.","from":485,"to":503},
+          {"text":"Ya","from":522,"to":524},
+          {"text":"sabes","from":524,"to":532},
+          {"text":"qué","from":532,"to":537},
+          {"text":"detectar.","from":537,"to":552}
+        ]
+      ]
+    },
+    {
+      "from": 556,
+      "to": 607,
+      "lines": [
+        [
+          {"text":"Toca","from":559,"to":563},
+          {"text":"escribirlo.","from":563,"to":583}
+        ]
+      ]
+    },
+    {
+      "from": 637,
+      "to": 775,
+      "lines": [
+        [
+          {"text":"Piensa","from":640,"to":655},
+          {"text":"en","from":655,"to":663},
+          {"text":"un","from":663,"to":667},
+          {"text":"aeropuerto.","from":667,"to":684},
+          {"text":"El","from":693,"to":695},
+          {"text":"escáner","from":695,"to":705}
+        ],
+        [
+          {"text":"de","from":705,"to":710},
+          {"text":"equipaje","from":710,"to":721},
+          {"text":"mira","from":721,"to":729},
+          {"text":"dentro","from":729,"to":740},
+          {"text":"de","from":740,"to":746},
+          {"text":"la","from":746,"to":749},
+          {"text":"maleta.","from":749,"to":761}
+        ]
+      ]
+    },
+    {
+      "from": 775,
+      "to": 894,
+      "lines": [
+        [
+          {"text":"Una","from":778,"to":784},
+          {"text":"regla","from":784,"to":794},
+          {"text":"que","from":794,"to":800},
+          {"text":"mira","from":800,"to":806},
+          {"text":"dentro","from":806,"to":813},
+          {"text":"de","from":813,"to":818},
+          {"text":"un","from":818,"to":821},
+          {"text":"fichero,","from":821,"to":832}
+        ],
+        [
+          {"text":"o","from":832,"to":834},
+          {"text":"de","from":832,"to":837},
+          {"text":"la","from":837,"to":841},
+          {"text":"memoria,","from":841,"to":853},
+          {"text":"es","from":853,"to":867},
+          {"text":"de","from":867,"to":871},
+          {"text":"YARA.","from":871,"to":878}
+        ]
+      ]
+    },
+    {
+      "from": 894,
+      "to": 1018,
+      "lines": [
+        [
+          {"text":"La","from":897,"to":904},
+          {"text":"puerta","from":904,"to":910},
+          {"text":"de","from":910,"to":915},
+          {"text":"embarque","from":915,"to":924},
+          {"text":"apunta","from":924,"to":932},
+          {"text":"quién","from":937,"to":939},
+          {"text":"pasa,","from":938,"to":948}
+        ],
+        [
+          {"text":"con","from":957,"to":960},
+          {"text":"qué","from":960,"to":964},
+          {"text":"tarjeta","from":964,"to":978},
+          {"text":"y","from":978,"to":980},
+          {"text":"qué","from":980,"to":983},
+          {"text":"pasaporte.","from":983,"to":1002}
+        ]
+      ]
+    },
+    {
+      "from": 1018,
+      "to": 1124,
+      "lines": [
+        [
+          {"text":"Una","from":1021,"to":1028},
+          {"text":"que","from":1028,"to":1033},
+          {"text":"lee","from":1033,"to":1038},
+          {"text":"lo","from":1038,"to":1043},
+          {"text":"que","from":1043,"to":1045},
+          {"text":"ha","from":1045,"to":1048},
+          {"text":"pasado,","from":1048,"to":1056}
+        ],
+        [
+          {"text":"en","from":1056,"to":1064},
+          {"text":"los","from":1064,"to":1066},
+          {"text":"registros,","from":1066,"to":1080},
+          {"text":"es","from":1080,"to":1092},
+          {"text":"de","from":1092,"to":1097},
+          {"text":"Sigma.","from":1097,"to":1107}
+        ]
+      ]
+    },
+    {
+      "from": 1124,
+      "to": 1252,
+      "lines": [
+        [
+          {"text":"O","from":1127,"to":1141},
+          {"text":"sea,","from":1141,"to":1148},
+          {"text":"YARA","from":1158,"to":1169},
+          {"text":"mira","from":1169,"to":1177},
+          {"text":"lo","from":1177,"to":1184},
+          {"text":"que","from":1184,"to":1187},
+          {"text":"hay","from":1187,"to":1189}
+        ],
+        [
+          {"text":"dentro,","from":1189,"to":1198},
+          {"text":"y","from":1198,"to":1209},
+          {"text":"Sigma,","from":1209,"to":1220},
+          {"text":"lo","from":1220,"to":1231},
+          {"text":"que","from":1231,"to":1234},
+          {"text":"ocurre.","from":1234,"to":1249}
+        ]
+      ]
+    },
+    {
+      "from": 1252,
+      "to": 1325,
+      "lines": [
+        [
+          {"text":"Empezamos","from":1255,"to":1272},
+          {"text":"por","from":1272,"to":1282},
+          {"text":"la","from":1282,"to":1286},
+          {"text":"de","from":1286,"to":1290},
+          {"text":"dentro.","from":1290,"to":1301}
+        ]
+      ]
+    },
+    {
+      "from": 1538,
+      "to": 1648,
+      "lines": [
+        [
+          {"text":"Depende.","from":1541,"to":1558},
+          {"text":"Una","from":1571,"to":1577},
+          {"text":"palabra","from":1577,"to":1586}
+        ],
+        [
+          {"text":"corriente","from":1586,"to":1604},
+          {"text":"salta","from":1604,"to":1617},
+          {"text":"con","from":1617,"to":1623},
+          {"text":"todos.","from":1623,"to":1634}
+        ]
+      ]
+    },
+    {
+      "from": 1648,
+      "to": 1758,
+      "lines": [
+        [
+          {"text":"Una","from":1651,"to":1656},
+          {"text":"que","from":1656,"to":1661},
+          {"text":"solo","from":1661,"to":1667},
+          {"text":"lleva","from":1667,"to":1676},
+          {"text":"su","from":1676,"to":1684},
+          {"text":"programa,","from":1684,"to":1697}
+        ],
+        [
+          {"text":"esa","from":1697,"to":1709},
+          {"text":"sí","from":1709,"to":1718},
+          {"text":"puede","from":1718,"to":1726},
+          {"text":"ir","from":1726,"to":1735},
+          {"text":"sola.","from":1735,"to":1744}
+        ]
+      ]
+    },
+    {
+      "from": 1758,
+      "to": 1923,
+      "lines": [
+        [
+          {"text":"La","from":1761,"to":1768},
+          {"text":"regla","from":1768,"to":1779},
+          {"text":"tiene","from":1779,"to":1797},
+          {"text":"tres","from":1797,"to":1805},
+          {"text":"partes.","from":1805,"to":1818},
+          {"text":"El","from":1830,"to":1832},
+          {"text":"contexto,","from":1832,"to":1845}
+        ],
+        [
+          {"text":"meta.","from":1845,"to":1862},
+          {"text":"Las","from":1877,"to":1881},
+          {"text":"cadenas","from":1881,"to":1890},
+          {"text":"que","from":1890,"to":1897},
+          {"text":"busca,","from":1897,"to":1906},
+          {"text":"strings.","from":1906,"to":1926}
+        ]
+      ]
+    },
+    {
+      "from": 1923,
+      "to": 2022,
+      "lines": [
+        [
+          {"text":"Y","from":1926,"to":1944},
+          {"text":"la","from":1944,"to":1948},
+          {"text":"condición,","from":1948,"to":1962},
+          {"text":"condition,","from":1962,"to":1979},
+          {"text":"que","from":1979,"to":1993},
+          {"text":"decide.","from":1993,"to":2007}
+        ]
+      ]
+    },
+    {
+      "from": 2022,
+      "to": 2112,
+      "lines": [
+        [
+          {"text":"La","from":2025,"to":2030},
+          {"text":"primera","from":2030,"to":2039},
+          {"text":"cadena","from":2039,"to":2054},
+          {"text":"la","from":2054,"to":2059},
+          {"text":"llevan","from":2059,"to":2067}
+        ],
+        [
+          {"text":"miles","from":2068,"to":2076},
+          {"text":"de","from":2076,"to":2083},
+          {"text":"programas","from":2083,"to":2098},
+          {"text":"legítimos,","from":2098,"to":2115}
+        ]
+      ]
+    },
+    {
+      "from": 2112,
+      "to": 2255,
+      "lines": [
+        [
+          {"text":"como","from":2115,"to":2125},
+          {"text":"una","from":2125,"to":2131},
+          {"text":"botella","from":2131,"to":2143},
+          {"text":"de","from":2143,"to":2148},
+          {"text":"agua.","from":2148,"to":2156}
+        ],
+        [
+          {"text":"Sola,","from":2170,"to":2183},
+          {"text":"saltaría","from":2183,"to":2209},
+          {"text":"con","from":2209,"to":2216},
+          {"text":"medio","from":2216,"to":2225},
+          {"text":"mundo.","from":2225,"to":2237}
+        ]
+      ]
+    },
+    {
+      "from": 2255,
+      "to": 2349,
+      "lines": [
+        [
+          {"text":"Así","from":2258,"to":2265},
+          {"text":"que","from":2265,"to":2270},
+          {"text":"pide","from":2270,"to":2277},
+          {"text":"compañía,","from":2277,"to":2297}
+        ],
+        [
+          {"text":"como","from":2297,"to":2306},
+          {"text":"las","from":2306,"to":2313},
+          {"text":"dos","from":2313,"to":2318},
+          {"text":"siguientes.","from":2318,"to":2336}
+        ]
+      ]
+    },
+    {
+      "from": 2349,
+      "to": 2421,
+      "lines": [
+        [
+          {"text":"Dos","from":2352,"to":2359},
+          {"text":"juntas","from":2359,"to":2372},
+          {"text":"hacen","from":2372,"to":2380},
+          {"text":"mucho","from":2380,"to":2389},
+          {"text":"menos","from":2389,"to":2396},
+          {"text":"ruido.","from":2396,"to":2407}
+        ]
+      ]
+    },
+    {
+      "from": 2421,
+      "to": 2561,
+      "lines": [
+        [
+          {"text":"La","from":2424,"to":2431},
+          {"text":"única","from":2431,"to":2440},
+          {"text":"que","from":2440,"to":2447},
+          {"text":"va","from":2447,"to":2452},
+          {"text":"sola","from":2452,"to":2462},
+          {"text":"es","from":2462,"to":2480},
+          {"text":"una","from":2480,"to":2486},
+          {"text":"ruta","from":2486,"to":2495}
+        ],
+        [
+          {"text":"que","from":2495,"to":2499},
+          {"text":"a","from":2499,"to":2502},
+          {"text":"veces","from":2502,"to":2508},
+          {"text":"queda","from":2508,"to":2517},
+          {"text":"escrita","from":2517,"to":2529},
+          {"text":"al","from":2529,"to":2533},
+          {"text":"compilar,","from":2533,"to":2547}
+        ]
+      ]
+    },
+    {
+      "from": 2561,
+      "to": 2647,
+      "lines": [
+        [
+          {"text":"la","from":2564,"to":2566},
+          {"text":"del","from":2565,"to":2570},
+          {"text":"PDB.","from":2570,"to":2595},
+          {"text":"Casi","from":2597,"to":2605},
+          {"text":"nadie","from":2605,"to":2614},
+          {"text":"lleva","from":2614,"to":2624},
+          {"text":"esa.","from":2624,"to":2633}
+        ]
+      ]
+    },
+    {
+      "from": 2647,
+      "to": 2774,
+      "lines": [
+        [
+          {"text":"La","from":2650,"to":2661},
+          {"text":"condición","from":2661,"to":2677},
+          {"text":"pide","from":2677,"to":2687},
+          {"text":"un","from":2687,"to":2690},
+          {"text":"ejecutable","from":2690,"to":2708}
+        ],
+        [
+          {"text":"de","from":2708,"to":2714},
+          {"text":"menos","from":2714,"to":2719},
+          {"text":"de","from":2719,"to":2725},
+          {"text":"250","from":2725,"to":2740},
+          {"text":"KB.","from":2740,"to":2768}
+        ]
+      ]
+    },
+    {
+      "from": 2774,
+      "to": 2896,
+      "lines": [
+        [
+          {"text":"Y","from":2777,"to":2784},
+          {"text":"luego,","from":2784,"to":2793},
+          {"text":"la","from":2793,"to":2810},
+          {"text":"ruta","from":2810,"to":2818},
+          {"text":"del","from":2818,"to":2824},
+          {"text":"PDB","from":2824,"to":2839}
+        ],
+        [
+          {"text":"o","from":2839,"to":2848},
+          {"text":"dos","from":2848,"to":2854},
+          {"text":"de","from":2854,"to":2857},
+          {"text":"las","from":2857,"to":2862},
+          {"text":"otras","from":2862,"to":2867},
+          {"text":"tres.","from":2867,"to":2877}
+        ]
+      ]
+    },
+    {
+      "from": 2896,
+      "to": 3055,
+      "lines": [
+        [
+          {"text":"O","from":2899,"to":2906},
+          {"text":"sea,","from":2906,"to":2912},
+          {"text":"que","from":2925,"to":2930},
+          {"text":"lo","from":2930,"to":2934},
+          {"text":"corriente","from":2934,"to":2949},
+          {"text":"pide","from":2949,"to":2958},
+          {"text":"compañía,","from":2958,"to":2978}
+        ],
+        [
+          {"text":"y","from":2978,"to":2990},
+          {"text":"lo","from":2990,"to":2994},
+          {"text":"único","from":2994,"to":3006},
+          {"text":"puede","from":3006,"to":3016},
+          {"text":"ir","from":3016,"to":3023},
+          {"text":"solo.","from":3023,"to":3031}
+        ]
+      ]
+    },
+    {
+      "from": 3246,
+      "to": 3336,
+      "lines": [
+        [
+          {"text":"Pues","from":3249,"to":3255},
+          {"text":"vamos","from":3255,"to":3262},
+          {"text":"a","from":3262,"to":3270},
+          {"text":"ver","from":3270,"to":3275},
+          {"text":"qué","from":3275,"to":3281},
+          {"text":"ve","from":3281,"to":3286},
+          {"text":"la","from":3286,"to":3292},
+          {"text":"regla","from":3292,"to":3303},
+          {"text":"de","from":3303,"to":3308},
+          {"text":"Sigma.","from":3308,"to":3317}
+        ]
+      ]
+    },
+    {
+      "from": 3336,
+      "to": 3398,
+      "lines": [
+        [
+          {"text":"Mira","from":3339,"to":3347},
+          {"text":"los","from":3347,"to":3356},
+          {"text":"procesos","from":3356,"to":3370},
+          {"text":"que","from":3370,"to":3374},
+          {"text":"arrancan","from":3374,"to":3384},
+          {"text":"en","from":3384,"to":3390},
+          {"text":"Windows.","from":3390,"to":3401}
+        ]
+      ]
+    },
+    {
+      "from": 3398,
+      "to": 3526,
+      "lines": [
+        [
+          {"text":"Y","from":3401,"to":3419},
+          {"text":"busca","from":3419,"to":3427},
+          {"text":"que","from":3427,"to":3433},
+          {"text":"su","from":3433,"to":3437},
+          {"text":"pasaporte,","from":3437,"to":3452}
+        ],
+        [
+          {"text":"el","from":3456,"to":3458},
+          {"text":"nombre","from":3458,"to":3460},
+          {"text":"de","from":3458,"to":3461},
+          {"text":"dentro,","from":3461,"to":3470},
+          {"text":"sea","from":3489,"to":3496},
+          {"text":"certutil.","from":3496,"to":3502}
+        ]
+      ]
+    },
+    {
+      "from": 3540,
+      "to": 3679,
+      "lines": [
+        [
+          {"text":"Y","from":3543,"to":3586},
+          {"text":"que","from":3586,"to":3589},
+          {"text":"lo","from":3589,"to":3592},
+          {"text":"lancen","from":3592,"to":3604},
+          {"text":"para","from":3604,"to":3611},
+          {"text":"decodificar","from":3611,"to":3630}
+        ],
+        [
+          {"text":"o","from":3630,"to":3641},
+          {"text":"para","from":3641,"to":3647},
+          {"text":"descargar.","from":3647,"to":3666}
+        ]
+      ]
+    },
+    {
+      "from": 3679,
+      "to": 3779,
+      "lines": [
+        [
+          {"text":"Si","from":3682,"to":3689},
+          {"text":"la","from":3689,"to":3693},
+          {"text":"tarjeta,","from":3693,"to":3706},
+          {"text":"el","from":3706,"to":3710},
+          {"text":"nombre","from":3710,"to":3716},
+          {"text":"del","from":3716,"to":3722},
+          {"text":"disco,","from":3722,"to":3730}
+        ],
+        [
+          {"text":"también","from":3730,"to":3741},
+          {"text":"dice","from":3741,"to":3750},
+          {"text":"certutil,","from":3750,"to":3770}
+        ]
+      ]
+    },
+    {
+      "from": 3779,
+      "to": 3891,
+      "lines": [
+        [
+          {"text":"el","from":3782,"to":3788},
+          {"text":"filtro","from":3788,"to":3797},
+          {"text":"lo","from":3797,"to":3803},
+          {"text":"descarta.","from":3803,"to":3818}
+        ],
+        [
+          {"text":"Y","from":3818,"to":3830},
+          {"text":"la","from":3830,"to":3833},
+          {"text":"condición","from":3833,"to":3846},
+          {"text":"resta","from":3846,"to":3858},
+          {"text":"lo","from":3858,"to":3862},
+          {"text":"que","from":3862,"to":3865},
+          {"text":"filtra.","from":3865,"to":3877}
+        ]
+      ]
+    },
+    {
+      "from": 3891,
+      "to": 4031,
+      "lines": [
+        [
+          {"text":"Mira","from":3894,"to":3905},
+          {"text":"dos","from":3905,"to":3913},
+          {"text":"eventos","from":3913,"to":3927},
+          {"text":"de","from":3927,"to":3931},
+          {"text":"ejemplo.","from":3931,"to":3941}
+        ],
+        [
+          {"text":"El","from":3954,"to":3957},
+          {"text":"de","from":3957,"to":3960},
+          {"text":"la","from":3960,"to":3963},
+          {"text":"tarjeta","from":3963,"to":3975},
+          {"text":"cambiada","from":3975,"to":3990},
+          {"text":"sí","from":3990,"to":3999},
+          {"text":"avisaría.","from":3999,"to":4016}
+        ]
+      ]
+    },
+    {
+      "from": 4031,
+      "to": 4188,
+      "lines": [
+        [
+          {"text":"Una","from":4034,"to":4041},
+          {"text":"regla","from":4041,"to":4051},
+          {"text":"solo","from":4051,"to":4058},
+          {"text":"mira","from":4058,"to":4065},
+          {"text":"la","from":4065,"to":4071},
+          {"text":"tarjeta,","from":4071,"to":4086},
+          {"text":"y","from":4086,"to":4088},
+          {"text":"busca","from":4088,"to":4096}
+        ],
+        [
+          {"text":"ese","from":4096,"to":4102},
+          {"text":"nombre.","from":4102,"to":4112},
+          {"text":"La","from":4130,"to":4136},
+          {"text":"otra","from":4136,"to":4145},
+          {"text":"es","from":4145,"to":4152},
+          {"text":"la","from":4152,"to":4154},
+          {"text":"de","from":4152,"to":4156},
+          {"text":"la","from":4156,"to":4160},
+          {"text":"lección.","from":4160,"to":4172}
+        ]
+      ]
+    },
+    {
+      "from": 4188,
+      "to": 4343,
+      "lines": [
+        [
+          {"text":"Imagina","from":4191,"to":4206},
+          {"text":"un","from":4206,"to":4209},
+          {"text":"tercero,","from":4209,"to":4227},
+          {"text":"con","from":4230,"to":4236},
+          {"text":"una","from":4236,"to":4241},
+          {"text":"tarjeta","from":4241,"to":4255},
+          {"text":"nueva.","from":4255,"to":4264}
+        ],
+        [
+          {"text":"¿Cuál","from":4277,"to":4283},
+          {"text":"de","from":4283,"to":4286},
+          {"text":"las","from":4286,"to":4291},
+          {"text":"dos","from":4291,"to":4294},
+          {"text":"sigue","from":4294,"to":4302},
+          {"text":"saltando?","from":4302,"to":4319}
+        ]
+      ]
+    },
+    {
+      "from": 4467,
+      "to": 4508,
+      "lines": [
+        [
+          {"text":"La","from":4470,"to":4477},
+          {"text":"de","from":4477,"to":4481},
+          {"text":"la","from":4481,"to":4484},
+          {"text":"lección.","from":4484,"to":4500}
+        ]
+      ]
+    },
+    {
+      "from": 4508,
+      "to": 4638,
+      "lines": [
+        [
+          {"text":"La","from":4511,"to":4521},
+          {"text":"tarjeta","from":4521,"to":4535},
+          {"text":"la","from":4535,"to":4538},
+          {"text":"cambia","from":4538,"to":4546},
+          {"text":"el","from":4546,"to":4550},
+          {"text":"atacante","from":4550,"to":4563}
+        ],
+        [
+          {"text":"cuando","from":4563,"to":4572},
+          {"text":"quiere,","from":4572,"to":4586},
+          {"text":"y","from":4586,"to":4594},
+          {"text":"la","from":4594,"to":4598},
+          {"text":"otra","from":4598,"to":4606},
+          {"text":"ya","from":4606,"to":4613},
+          {"text":"no","from":4613,"to":4617},
+          {"text":"lo","from":4617,"to":4621},
+          {"text":"ve.","from":4621,"to":4626}
+        ]
+      ]
+    },
+    {
+      "from": 4638,
+      "to": 4737,
+      "lines": [
+        [
+          {"text":"Pero","from":4641,"to":4647},
+          {"text":"el","from":4647,"to":4651},
+          {"text":"pasaporte,","from":4651,"to":4667},
+          {"text":"el","from":4670,"to":4672},
+          {"text":"nombre","from":4672,"to":4678}
+        ],
+        [
+          {"text":"original,","from":4678,"to":4693},
+          {"text":"va","from":4701,"to":4703},
+          {"text":"dentro","from":4703,"to":4711},
+          {"text":"del","from":4711,"to":4717},
+          {"text":"programa,","from":4717,"to":4731}
+        ]
+      ]
+    },
+    {
+      "from": 4737,
+      "to": 4811,
+      "lines": [
+        [
+          {"text":"y","from":4740,"to":4747},
+          {"text":"renombrar","from":4747,"to":4764},
+          {"text":"no","from":4764,"to":4780},
+          {"text":"lo","from":4780,"to":4784},
+          {"text":"toca.","from":4784,"to":4794}
+        ]
+      ]
+    },
+    {
+      "from": 4811,
+      "to": 4998,
+      "lines": [
+        [
+          {"text":"Ni","from":4814,"to":4819},
+          {"text":"el","from":4819,"to":4823},
+          {"text":"filtro","from":4823,"to":4834},
+          {"text":"la","from":4834,"to":4838},
+          {"text":"frena.","from":4838,"to":4850},
+          {"text":"¿Que","from":4859,"to":4864},
+          {"text":"no","from":4864,"to":4867},
+          {"text":"lo","from":4867,"to":4871},
+          {"text":"verá?","from":4871,"to":4881}
+        ],
+        [
+          {"text":"La","from":4888,"to":4893},
+          {"text":"de","from":4893,"to":4896},
+          {"text":"la","from":4896,"to":4899},
+          {"text":"tarjeta,","from":4899,"to":4915},
+          {"text":"quizá","from":4915,"to":4929},
+          {"text":"no.","from":4929,"to":4934},
+          {"text":"Esta,","from":4948,"to":4957},
+          {"text":"sí.","from":4957,"to":4974}
+        ]
+      ]
+    },
+    {
+      "from": 5033,
+      "to": 5199,
+      "lines": [
+        [
+          {"text":"¿Dónde","from":5036,"to":5052},
+          {"text":"corre","from":5052,"to":5061},
+          {"text":"cada","from":5061,"to":5069},
+          {"text":"una?","from":5069,"to":5079},
+          {"text":"YARA,","from":5088,"to":5096}
+        ],
+        [
+          {"text":"en","from":5096,"to":5107},
+          {"text":"un","from":5107,"to":5111},
+          {"text":"escáner,","from":5111,"to":5124},
+          {"text":"un","from":5138,"to":5144},
+          {"text":"sandbox","from":5144,"to":5156},
+          {"text":"o","from":5156,"to":5168},
+          {"text":"un","from":5168,"to":5171},
+          {"text":"EDR.","from":5171,"to":5185}
+        ]
+      ]
+    },
+    {
+      "from": 5199,
+      "to": 5334,
+      "lines": [
+        [
+          {"text":"Sigma","from":5202,"to":5216},
+          {"text":"no","from":5216,"to":5222},
+          {"text":"corre","from":5222,"to":5231},
+          {"text":"en","from":5231,"to":5235},
+          {"text":"el","from":5235,"to":5239},
+          {"text":"SIEM","from":5239,"to":5248},
+          {"text":"tal","from":5248,"to":5255},
+          {"text":"cual.","from":5255,"to":5259}
+        ],
+        [
+          {"text":"Antes","from":5267,"to":5274},
+          {"text":"se","from":5274,"to":5280},
+          {"text":"traduce","from":5280,"to":5293},
+          {"text":"a","from":5293,"to":5297},
+          {"text":"su","from":5297,"to":5301},
+          {"text":"consulta.","from":5301,"to":5321}
+        ]
+      ]
+    },
+    {
+      "from": 5334,
+      "to": 5481,
+      "lines": [
+        [
+          {"text":"Las","from":5337,"to":5344},
+          {"text":"dos","from":5344,"to":5350},
+          {"text":"se","from":5350,"to":5355},
+          {"text":"pueden","from":5355,"to":5363},
+          {"text":"romper.","from":5363,"to":5375},
+          {"text":"La","from":5383,"to":5388},
+          {"text":"de","from":5388,"to":5393},
+          {"text":"YARA","from":5393,"to":5401},
+          {"text":"vive","from":5401,"to":5409}
+        ],
+        [
+          {"text":"mientras","from":5409,"to":5420},
+          {"text":"la","from":5420,"to":5426},
+          {"text":"maleta","from":5426,"to":5436},
+          {"text":"lleve","from":5436,"to":5444},
+          {"text":"esas","from":5444,"to":5450},
+          {"text":"piezas.","from":5450,"to":5461}
+        ]
+      ]
+    },
+    {
+      "from": 5481,
+      "to": 5559,
+      "lines": [
+        [
+          {"text":"A","from":5484,"to":5496},
+          {"text":"la","from":5496,"to":5499},
+          {"text":"de","from":5499,"to":5504},
+          {"text":"Sigma","from":5504,"to":5511},
+          {"text":"la","from":5511,"to":5518},
+          {"text":"rompe","from":5518,"to":5529},
+          {"text":"otro","from":5529,"to":5534},
+          {"text":"pasaporte.","from":5534,"to":5553}
+        ]
+      ]
+    },
+    {
+      "from": 5559,
+      "to": 5685,
+      "lines": [
+        [
+          {"text":"Y","from":5562,"to":5573},
+          {"text":"a","from":5573,"to":5576},
+          {"text":"su","from":5576,"to":5579},
+          {"text":"filtro,","from":5579,"to":5592},
+          {"text":"una","from":5600,"to":5607},
+          {"text":"copia","from":5607,"to":5616},
+          {"text":"con","from":5616,"to":5621},
+          {"text":"el","from":5621,"to":5625}
+        ],
+        [
+          {"text":"nombre","from":5625,"to":5631},
+          {"text":"normal","from":5631,"to":5644},
+          {"text":"en","from":5644,"to":5649},
+          {"text":"otra","from":5649,"to":5654},
+          {"text":"carpeta.","from":5654,"to":5672}
+        ]
+      ]
+    },
+    {
+      "from": 5685,
+      "to": 5790,
+      "lines": [
+        [
+          {"text":"Si","from":5688,"to":5694},
+          {"text":"cambia","from":5694,"to":5703},
+          {"text":"de","from":5703,"to":5707},
+          {"text":"herramienta,","from":5707,"to":5722}
+        ],
+        [
+          {"text":"la","from":5728,"to":5731},
+          {"text":"del","from":5731,"to":5736},
+          {"text":"nombre","from":5736,"to":5742},
+          {"text":"original","from":5742,"to":5757},
+          {"text":"ya","from":5757,"to":5768},
+          {"text":"no","from":5768,"to":5773},
+          {"text":"ve.","from":5773,"to":5778}
+        ]
+      ]
+    },
+    {
+      "from": 5790,
+      "to": 5873,
+      "lines": [
+        [
+          {"text":"Queda","from":5793,"to":5801},
+          {"text":"la","from":5801,"to":5806},
+          {"text":"del","from":5806,"to":5811},
+          {"text":"árbol","from":5811,"to":5818}
+        ],
+        [
+          {"text":"de","from":5818,"to":5822},
+          {"text":"procesos,","from":5822,"to":5837},
+          {"text":"que","from":5837,"to":5842},
+          {"text":"ya","from":5842,"to":5847},
+          {"text":"viste.","from":5847,"to":5857}
+        ]
+      ]
+    },
+    {
+      "from": 5873,
+      "to": 5926,
+      "lines": [
+        [
+          {"text":"Ninguna","from":5876,"to":5890},
+          {"text":"es","from":5890,"to":5898},
+          {"text":"para","from":5898,"to":5903},
+          {"text":"siempre.","from":5903,"to":5915}
+        ]
+      ]
+    },
+    {
+      "from": 5926,
+      "to": 6072,
+      "lines": [
+        [
+          {"text":"O","from":5929,"to":5931},
+          {"text":"sea,","from":5930,"to":5937},
+          {"text":"que","from":5947,"to":5950},
+          {"text":"cada","from":5950,"to":5957},
+          {"text":"una","from":5957,"to":5965},
+          {"text":"tiene","from":5965,"to":5973},
+          {"text":"su","from":5973,"to":5980},
+          {"text":"punto","from":5980,"to":5987}
+        ],
+        [
+          {"text":"débil,","from":5987,"to":6000},
+          {"text":"así","from":6007,"to":6016},
+          {"text":"que","from":6016,"to":6021},
+          {"text":"mide","from":6021,"to":6029},
+          {"text":"si","from":6029,"to":6035},
+          {"text":"dispara.","from":6035,"to":6048}
+        ]
+      ]
+    },
+    {
+      "from": 6115,
+      "to": 6220,
+      "lines": [
+        [
+          {"text":"Llévate","from":6118,"to":6135},
+          {"text":"tres","from":6143,"to":6147},
+          {"text":"ideas.","from":6147,"to":6164},
+          {"text":"YARA","from":6173,"to":6185},
+          {"text":"mira","from":6185,"to":6194},
+          {"text":"dentro.","from":6194,"to":6210}
+        ]
+      ]
+    },
+    {
+      "from": 6220,
+      "to": 6336,
+      "lines": [
+        [
+          {"text":"Sigma","from":6223,"to":6233},
+          {"text":"mira","from":6243,"to":6250},
+          {"text":"lo","from":6250,"to":6256},
+          {"text":"que","from":6256,"to":6260},
+          {"text":"pasa,","from":6260,"to":6270}
+        ],
+        [
+          {"text":"y","from":6278,"to":6280},
+          {"text":"se","from":6280,"to":6283},
+          {"text":"convierte","from":6283,"to":6296},
+          {"text":"antes","from":6296,"to":6309},
+          {"text":"de","from":6309,"to":6314},
+          {"text":"correr.","from":6314,"to":6326}
+        ]
+      ]
+    },
+    {
+      "from": 6336,
+      "to": 6419,
+      "lines": [
+        [
+          {"text":"Una","from":6339,"to":6346},
+          {"text":"cadena","from":6346,"to":6356},
+          {"text":"corriente,","from":6356,"to":6369}
+        ],
+        [
+          {"text":"sola,","from":6369,"to":6379},
+          {"text":"salta","from":6379,"to":6391},
+          {"text":"con","from":6391,"to":6398},
+          {"text":"cualquiera.","from":6398,"to":6414}
+        ]
+      ]
+    },
+    {
+      "from": 6419,
+      "to": 6546,
+      "lines": [
+        [
+          {"text":"Pídele","from":6422,"to":6434},
+          {"text":"compañía,","from":6434,"to":6457}
+        ],
+        [
+          {"text":"o","from":6465,"to":6468},
+          {"text":"una","from":6468,"to":6474},
+          {"text":"pieza","from":6474,"to":6482},
+          {"text":"única","from":6482,"to":6494},
+          {"text":"como","from":6494,"to":6514},
+          {"text":"el","from":6514,"to":6519},
+          {"text":"PDB.","from":6519,"to":6533}
+        ]
+      ]
+    },
+    {
+      "from": 6546,
+      "to": 6667,
+      "lines": [
+        [
+          {"text":"Apóyate","from":6549,"to":6566},
+          {"text":"en","from":6566,"to":6570},
+          {"text":"lo","from":6570,"to":6573},
+          {"text":"que","from":6573,"to":6576},
+          {"text":"cuesta","from":6576,"to":6588},
+          {"text":"cambiar,","from":6588,"to":6599}
+        ],
+        [
+          {"text":"el","from":6599,"to":6612},
+          {"text":"nombre","from":6612,"to":6620},
+          {"text":"original","from":6620,"to":6637},
+          {"text":"y","from":6637,"to":6650},
+          {"text":"no","from":6650,"to":6655},
+          {"text":"el","from":6655,"to":6660},
+          {"text":"del","from":6660,"to":6662},
+          {"text":"disco.","from":6660,"to":6670}
+        ]
+      ]
+    },
+    {
+      "from": 6667,
+      "to": 6724,
+      "lines": [
+        [
+          {"text":"Y","from":6670,"to":6680},
+          {"text":"vigila","from":6680,"to":6688},
+          {"text":"si","from":6688,"to":6695},
+          {"text":"salta.","from":6695,"to":6708}
+        ]
+      ]
+    },
+    {
+      "from": 6724,
+      "to": 6843,
+      "lines": [
+        [
+          {"text":"A","from":6727,"to":6732},
+          {"text":"por","from":6732,"to":6736},
+          {"text":"las","from":6736,"to":6742},
+          {"text":"diez","from":6742,"to":6746},
+          {"text":"preguntas","from":6746,"to":6758},
+          {"text":"de","from":6758,"to":6767},
+          {"text":"la","from":6767,"to":6770},
+          {"text":"lección.","from":6770,"to":6783}
+        ],
+        [
+          {"text":"Hasta","from":6789,"to":6796},
+          {"text":"el","from":6796,"to":6801},
+          {"text":"próximo","from":6801,"to":6806},
+          {"text":"control.","from":6806,"to":6819}
+        ]
+      ]
+    }
+  ],
+  "cues": [
+    {"scene":"s01-hook","id":"pile","frame":45},
+    {"scene":"s01-hook","id":"soc","frame":167},
+    {"scene":"s01-hook","id":"title","frame":238},
+    {"scene":"s01-hook","id":"promise","frame":308},
+    {"scene":"s02-miradas","id":"airport","frame":640},
+    {"scene":"s02-miradas","id":"scanner","frame":693},
+    {"scene":"s02-miradas","id":"yara-inside","frame":778},
+    {"scene":"s02-miradas","id":"gate","frame":897},
+    {"scene":"s02-miradas","id":"sigma-events","frame":1021},
+    {"scene":"s02-miradas","id":"pair","frame":1127},
+    {"scene":"s03-condicion","id":"reply-word","frame":1541},
+    {"scene":"s03-condicion","id":"rule","frame":1761},
+    {"scene":"s03-condicion","id":"meta","frame":1830},
+    {"scene":"s03-condicion","id":"strings","frame":1877},
+    {"scene":"s03-condicion","id":"generic","frame":2025},
+    {"scene":"s03-condicion","id":"flood","frame":2170},
+    {"scene":"s03-condicion","id":"tags-company","frame":2258},
+    {"scene":"s03-condicion","id":"cond-mz","frame":2650},
+    {"scene":"s03-condicion","id":"cond-size","frame":2708},
+    {"scene":"s03-condicion","id":"cond-or","frame":2777},
+    {"scene":"s03-condicion","id":"wrap-i","frame":2899},
+    {"scene":"s04-sigma","id":"reply-m2","frame":3249},
+    {"scene":"s04-sigma","id":"sigma","frame":3286},
+    {"scene":"s04-sigma","id":"logsource","frame":3339},
+    {"scene":"s04-sigma","id":"selection","frame":3401},
+    {"scene":"s04-sigma","id":"flags","frame":3543},
+    {"scene":"s04-sigma","id":"filter","frame":3682},
+    {"scene":"s04-sigma","id":"cond","frame":3818},
+    {"scene":"s04-sigma","id":"ev-legit","frame":3894},
+    {"scene":"s04-sigma","id":"ev-renamed","frame":3954},
+    {"scene":"s04-sigma","id":"rule-a","frame":4034},
+    {"scene":"s04-sigma","id":"rule-b","frame":4130},
+    {"scene":"s04-sigma","id":"ev-new","frame":4191},
+    {"scene":"s04-sigma","id":"answer","frame":4470},
+    {"scene":"s04-sigma","id":"miss","frame":4586},
+    {"scene":"s04-sigma","id":"hit","frame":4641},
+    {"scene":"s05-aguanta","id":"where","frame":5036},
+    {"scene":"s05-aguanta","id":"yara-runs","frame":5088},
+    {"scene":"s05-aguanta","id":"sigma-runs","frame":5202},
+    {"scene":"s05-aguanta","id":"convert","frame":5267},
+    {"scene":"s05-aguanta","id":"breaks","frame":5337},
+    {"scene":"s05-aguanta","id":"breaks-yara","frame":5383},
+    {"scene":"s05-aguanta","id":"breaks-sigma","frame":5484},
+    {"scene":"s05-aguanta","id":"breaks-filter","frame":5562},
+    {"scene":"s05-aguanta","id":"ladder","frame":5688},
+    {"scene":"s05-aguanta","id":"limit","frame":5728},
+    {"scene":"s05-aguanta","id":"loop","frame":5876},
+    {"scene":"s05-aguanta","id":"wrap-ii","frame":5929},
+    {"scene":"s06-recap","id":"recap","frame":6118},
+    {"scene":"s06-recap","id":"rule-1","frame":6173},
+    {"scene":"s06-recap","id":"rule-2","frame":6339},
+    {"scene":"s06-recap","id":"rule-3","frame":6549},
+    {"scene":"s06-recap","id":"next","frame":6727},
+    {"scene":"s06-recap","id":"endcard","frame":6789}
+  ],
+  "exam": [
+    {"scene":"s02-miradas","from":1196,"durationInFrames":150,"objective":"Dissemination","text":"YARA mira contenido; Sigma mira eventos","badge":"GCTI"},
+    {"scene":"s03-condicion","from":2877,"durationInFrames":150,"objective":"Dissemination","text":"Cadena genérica, acompañada. El PDB, que es único, solo","badge":"GCTI"},
+    {"scene":"s04-sigma","from":4794,"durationInFrames":150,"objective":"Dissemination","text":"OriginalFileName viene del PE header, no del disco","badge":"GCTI"},
+    {"scene":"s05-aguanta","from":5321,"durationInFrames":150,"objective":"Dissemination","text":"Sigma no corre en el SIEM tal cual: se convierte","badge":"GCTI"}
+  ],
+  "think": [
+    {"scene":"s04-sigma","from":4331,"durationInFrames":131,"q":"Otro nombre de fichero: ¿cuál sigue saltando?"}
+  ],
+  "intercept": [
+    {"scene":"s03-condicion","from":1359,"durationInFrames":402,"adversary":"VELVET CICADA","text":"Una palabra de mi programa y ya me pillas. Qué fácil, analista.","audio":"voice/s03-01-intercept.mp3","audioFrom":1363,"audioFrames":168},
+    {"scene":"s04-sigma","from":3091,"durationInFrames":248,"adversary":"VELVET CICADA","text":"A mis herramientas las llamo como quiero. Tu regla no lo verá.","audio":"voice/s04-01-intercept.mp3","audioFrom":3095,"audioFrames":144}
+  ],
+  "sfx": [
+    {"from":1196,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":1359,"sound":"glitch","src":"sfx/glitch.mp3","durationInFrames":12,"volume":0.166},
+    {"from":1363,"sound":"typing","src":"sfx/typing.mp3","durationInFrames":63,"volume":0.08},
+    {"from":2170,"sound":"alarm","src":"sfx/alarm.mp3","durationInFrames":29,"volume":0.024},
+    {"from":2877,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":3064,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
+    {"from":3091,"sound":"glitch","src":"sfx/glitch.mp3","durationInFrames":12,"volume":0.166},
+    {"from":3095,"sound":"typing","src":"sfx/typing.mp3","durationInFrames":62,"volume":0.08},
+    {"from":4586,"sound":"error","src":"sfx/error.mp3","durationInFrames":14,"volume":0.071},
+    {"from":4641,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
+    {"from":4794,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":5321,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":6080,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058}
+  ],
+  "captionsOnScreen": false
+}

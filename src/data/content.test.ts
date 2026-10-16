@@ -321,6 +321,9 @@ describe('lesson videos', () => {
     // V26 replays sp5m4's BIA (what is promised and what is measured), after the last check and before the paragraph
     // that hands over to third parties
     expect(youtubeVideos.find((v) => v.block.youtube === 'szeeKG5zfYI')?.module).toBe('sp5m4');
+    // V27 reads s5m3's YARA condition and Sigma rule (what each one looks at and what breaks it), after the first
+    // check (any of $s*) and before STIX/TAXII
+    expect(youtubeVideos.find((v) => v.block.youtube === 'OHxUu9cjnVA')?.module).toBe('s5m3');
   });
 
   it('every video block points at relative public assets that exist', async () => {

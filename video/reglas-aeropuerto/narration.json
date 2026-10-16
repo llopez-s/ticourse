@@ -1,0 +1,269 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "flood": "alarm",
+    "miss": "error",
+    "hit": "check"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {pile}Un dominio, una dirección, un hash… caducan enseguida. {soc}Y el SOC te pide algo que dure.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Dale dos reglas, de YARA y de Sigma. {promise}Verás qué mira cada una, cuándo salta de más y qué la rompe.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<calm> Eres la analista de Meridian, una aeroespacial. Ya sabes qué detectar. Toca escribirlo.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-miradas",
+      "text": "<engaging> {airport}Piensa en un aeropuerto. {scanner}El escáner de equipaje mira dentro de la maleta.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-miradas",
+      "text": "<clear> {yara-inside}Una regla que mira dentro de un fichero, o de la memoria, es de YARA.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-miradas",
+      "text": "<thoughtful> {gate}La puerta de embarque apunta quién pasa, con qué tarjeta y qué pasaporte.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-miradas",
+      "text": "<focused> {sigma-events}Una que lee lo que ha pasado, en los registros, es de Sigma.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-miradas",
+      "text": "<warm> {pair}O sea, YARA mira lo que hay dentro, y Sigma, lo que ocurre. Empezamos por la de dentro.",
+      "pauseAfterMs": 450,
+      "exam": {
+        "objective": "Dissemination",
+        "text": "YARA mira contenido; Sigma mira eventos",
+        "at": "pair",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-condicion",
+      "text": "<mischievously> {reply-word}Depende. Una palabra corriente salta con todos. Una que solo lleva su programa, esa sí puede ir sola.",
+      "pauseAfterMs": 250,
+      "intercept": {
+        "text": "Una palabra de mi programa y ya me pillas. Qué fácil, analista.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-condicion",
+      "text": "<focused> {rule}La regla tiene tres partes. {meta}El contexto, meta. {strings}Las cadenas que busca, strings. Y la condición, condition, que decide.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-condicion",
+      "text": "<curious> {generic}La primera cadena la llevan miles de programas legítimos, como una botella de agua. {flood}Sola, saltaría con medio mundo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-condicion",
+      "text": "<clear> {tags-company}Así que pide compañía, como las dos siguientes. Dos juntas hacen mucho menos ruido.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-condicion",
+      "text": "<thoughtful> La única que va sola es una ruta que a veces queda escrita al compilar, la del PDB. Casi nadie lleva esa.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-condicion",
+      "text": "<steady> {cond-mz}La condición pide un ejecutable {cond-size}de menos de [250 KB|doscientos cincuenta kilobytes]. {cond-or}Y luego, la ruta del PDB o dos de las otras tres.",
+      "pauseAfterMs": 250,
+      "exam": {
+        "objective": "Dissemination",
+        "text": "Cadena genérica, acompañada. El PDB, que es único, solo",
+        "at": "cond-or",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-07",
+      "scene": "s03-condicion",
+      "text": "<satisfied> {wrap-i}O sea, que lo corriente pide compañía, y lo único puede ir solo.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-sigma",
+      "text": "<casual> {reply-m2}Pues vamos a ver qué ve {sigma}la regla de Sigma.",
+      "pauseAfterMs": 250,
+      "intercept": {
+        "text": "A mis herramientas las llamo como quiero. Tu regla no lo verá.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-sigma",
+      "text": "<focused> {logsource}Mira los procesos que arrancan en Windows. {selection}Y busca que su pasaporte, el nombre de dentro, sea certutil.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-sigma",
+      "text": "<clear> {flags}Y que lo lancen para decodificar o para descargar.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-sigma",
+      "text": "<thoughtful> {filter}Si la tarjeta, el nombre del disco, también dice certutil, el filtro lo descarta. {cond}Y la condición resta lo que filtra.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-sigma",
+      "text": "<engaging> {ev-legit}Mira dos eventos de ejemplo. {ev-renamed}El de la tarjeta cambiada sí avisaría.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-sigma",
+      "text": "<steady> {rule-a}Una regla solo mira la tarjeta, y busca ese nombre. {rule-b}La otra es la de la lección.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-sigma",
+      "text": "<intrigued> {ev-new}Imagina un tercero, con una tarjeta nueva. ¿Cuál de las dos sigue saltando?",
+      "pauseAfterMs": 250,
+      "think": {
+        "q": "Otro nombre de fichero: ¿cuál sigue saltando?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-08",
+      "scene": "s04-sigma",
+      "text": "<confident> {answer}La de la lección. La tarjeta la cambia el atacante cuando quiere, {miss}y la otra ya no lo ve.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-09",
+      "scene": "s04-sigma",
+      "text": "<firm> {hit}Pero el pasaporte, el nombre original, va dentro del programa, y renombrar no lo toca.",
+      "pauseAfterMs": 250,
+      "exam": {
+        "objective": "Dissemination",
+        "text": "OriginalFileName viene del PE header, no del disco",
+        "at": "hit",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-10",
+      "scene": "s04-sigma",
+      "text": "<warm> Ni el filtro la frena. ¿Que no lo verá? La de la tarjeta, quizá no. Esta, sí.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-aguanta",
+      "text": "<curious> {where}¿Dónde corre cada una? {yara-runs}YARA, en un escáner, un sandbox o un EDR.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-aguanta",
+      "text": "<clear> {sigma-runs}Sigma no corre en el SIEM tal cual. {convert}Antes se traduce a su consulta.",
+      "pauseAfterMs": 250,
+      "exam": {
+        "objective": "Dissemination",
+        "text": "Sigma no corre en el SIEM tal cual: se convierte",
+        "at": "convert",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-aguanta",
+      "text": "<serious> {breaks}Las dos se pueden romper. {breaks-yara}La de YARA vive mientras la maleta lleve esas piezas.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-aguanta",
+      "text": "<focused> {breaks-sigma}A la de Sigma la rompe otro pasaporte. {breaks-filter}Y a su filtro, una copia con el nombre normal en otra carpeta.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-aguanta",
+      "text": "<thoughtful> {ladder}Si cambia de herramienta, {limit}la del nombre original ya no ve. Queda la del árbol de procesos, que ya viste.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-aguanta",
+      "text": "<steady> {loop}Ninguna es para siempre. {wrap-ii}O sea, que cada una tiene su punto débil, así que mide si dispara.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-recap",
+      "text": "<warm> {recap}Llévate tres ideas. {rule-1}YARA mira dentro. Sigma mira lo que pasa, y se convierte antes de correr.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-recap",
+      "text": "<clear> {rule-2}Una cadena corriente, sola, salta con cualquiera. Pídele compañía, o una pieza única como el PDB.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-recap",
+      "text": "<confident> {rule-3}Apóyate en lo que cuesta cambiar, el nombre original y no el del disco. Y vigila si salta.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-recap",
+      "text": "<cheerful> {next}A por las diez preguntas de la lección. {endcard}Hasta el próximo control.",
+      "pauseAfterMs": 600
+    }
+  ]
+}
