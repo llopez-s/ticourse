@@ -318,6 +318,9 @@ describe('lesson videos', () => {
     // V26 replays sp5m4's BIA (what is promised and what is measured), after the last check and before the paragraph
     // that hands over to third parties
     expect(youtubeVideos.find((v) => v.block.youtube === 'szeeKG5zfYI')?.module).toBe('sp5m4');
+    // V24 replays sp3m7's recovery in the port (sites, tests and the backup that is not a copy until restored), after
+    // the ransomware check and before the paragraph that closes Domain 3
+    expect(youtubeVideos.find((v) => v.block.youtube === 'JPPAYkZb_ds')?.module).toBe('sp3m7');
   });
 
   it('every video block points at relative public assets that exist', async () => {
