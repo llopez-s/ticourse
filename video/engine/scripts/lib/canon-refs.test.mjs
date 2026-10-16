@@ -44,6 +44,38 @@ test('narrationTexts: what is shown, without cues, directions or the spoken side
   assert.deepEqual(texts, ['Pero a las 01:52 entró.', 'Formatea ya.', 'Contener: 16:15', 'Hola.', '¿Copia de las 23:00?']);
 });
 
+test('narrationTexts: an exam question shows scenario, question, options and both explanations, not the indexes', () => {
+  const texts = narrationTexts({
+    segments: [
+      {
+        text: 'Hola.',
+        question: {
+          objective: '4.4',
+          scenario: 'A las 16:04 salta una alerta en ADM-WS-02.',
+          q: '¿Qué haces primero?',
+          options: ['Aislar el equipo', 'Apagarlo', 'Reiniciarlo', 'Ignorarlo'],
+          answer: 0,
+          trap: 1,
+          why: 'Aislar conserva la memoria.',
+          trapWhy: 'Apagar la pierde.',
+          revealAt: 'a',
+        },
+      },
+    ],
+  });
+  assert.deepEqual(texts, [
+    'Hola.',
+    'A las 16:04 salta una alerta en ADM-WS-02.',
+    '¿Qué haces primero?',
+    'Aislar el equipo',
+    'Apagarlo',
+    'Reiniciarlo',
+    'Ignorarlo',
+    'Aislar conserva la memoria.',
+    'Apagar la pierde.',
+  ]);
+});
+
 test('canonReport: tokens with history first, then the new ones to add to the registry', () => {
   const md = canonReport({
     video: 'ir-halden',

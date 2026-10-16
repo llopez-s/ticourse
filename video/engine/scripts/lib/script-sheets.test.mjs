@@ -72,6 +72,21 @@ test('recordingSheet: headings, one line per segment, long pauses, on-screen not
   assert.doesNotMatch(md, /\{|\}|\|/, 'no markup left');
 });
 
+test('recordingSheet: an exam question asks for the countdown as silence, in words', () => {
+  const question = { objective: '4.4', scenario: 'Un SIEM recibe avisos.', q: '¿Qué hace?', options: ['a', 'b', 'c', 'd'], answer: 1, trap: 2, why: 'x', trapWhy: 'y', revealAt: 'ntp' };
+  const withQ = (extra) => {
+    const src = sources();
+    src.narration.segments.find((s) => s.id === 's02-01').question = { ...question, ...extra };
+    return recordingSheet(src);
+  };
+  const five = withQ({});
+  assert.match(five, /\*\*s02-01\*\*[^\n]*\n\n> \*\(En pantalla: la pregunta y sus cuatro opciones\. Deja cinco segundos de silencio\.\)\*\n/);
+  assert.match(five, /Las preguntas para pensar, las tarjetas de examen y las preguntas de examen salen en pantalla: \*\*no se leen\*\*/);
+  assert.match(withQ({ countdownMs: 6000 }), /Deja seis segundos de silencio\./);
+  assert.match(withQ({ countdownMs: 4500 }), /Deja 4,5 segundos de silencio\./);
+  assert.doesNotMatch(recordingSheet(sources()), /la pregunta y sus cuatro opciones|las preguntas de examen/);
+});
+
 test('recordingSheet: the tempo from narration.json and the intercepted message before its answer', () => {
   const md = recordingSheet(sources({ intercept: true, narration: { recording: { tempo: 1.08 } } }));
   assert.match(md, /el vídeo se acelera un poco \(×1,08\) al montarlo/);
