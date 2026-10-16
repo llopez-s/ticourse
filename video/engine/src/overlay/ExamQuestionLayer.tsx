@@ -34,8 +34,8 @@ const DIMMED = 0.4;
 const ZONE_TOP = LAYOUT.topBarHeight + 16;
 const BORDER = 2;
 const PAD_X = 34;
-const PAD_TOP = 20;
-const PAD_BOTTOM = 22;
+const PAD_TOP = 16;
+const PAD_BOTTOM = 18;
 const INNER = STAGE.width - 2 * PAD_X - 2 * BORDER;
 
 /** Header: badge + scenario + question on the left, countdown column on the right. */
@@ -47,10 +47,10 @@ const SIDE_GAP = 28;
 const LABEL_SIZE = 30;
 const SIDE_H = 104 + 10 + LABEL_SIZE * 1.2;
 const HEADER_MAX = INNER - SIDE_W - SIDE_GAP;
-const HEADER_GAP = 20;
+const HEADER_GAP = 14;
 
 /** Option rows. */
-const ROW_GAP = 10;
+const ROW_GAP = 8;
 const ROW_PAD_X = 18;
 const ROW_PAD_Y = 8;
 const CHIP = 46;
@@ -62,7 +62,7 @@ const OPTION_MAX = INNER - 2 * BORDER - 2 * ROW_PAD_X - CHIP - CHIP_GAP - PILL_G
 const WHY_MAX = INNER - 2 * BORDER - 2 * ROW_PAD_X - CHIP - CHIP_GAP;
 const WHY_TOP = 4;
 
-const SCENARIO = { size: 32, weight: 500, lineHeight: 1.25 } as const;
+const SCENARIO = { size: 32, weight: 500, lineHeight: 1.2 } as const;
 const QUESTION = { size: 40, weight: 750, letterSpacing: -0.3, lineHeight: 1.18 } as const;
 const OPTION = { size: 32, weight: 600, lineHeight: 1.2 } as const;
 const WHY = { size: 30, weight: 550, lineHeight: 1.25 } as const;

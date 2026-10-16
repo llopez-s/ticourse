@@ -23,10 +23,10 @@ import { ThinkPromptView } from '../overlay/ThinkPrompt';
  *   250 long lines shrunk, chapter wipe     330  think prompt mid-countdown
  *   365 last page + think prompt            420  chapter V, one-line exam card
  *   40  intercepted message typing          100  intercepted message complete
- * Exam questions (scenes VI, after the captions end):
- *   464 entry, options staggering in        575 mid-countdown (3 s left)
+ * Exam questions (scenes s12/s13, after the captions end):
+ *   470 entry, options staggering in        575 mid-countdown (3 s left)
  *   670 reveal: correct marked, others dim  720 trap marked + exam card
- *   764 long question: entry                875 long question: mid-countdown
+ *   770 long question: entry                875 long question: mid-countdown
  *   970 long question: reveal               1020 long question: trap + exam card
  */
 export const GALLERY_DURATION = 1050;
@@ -38,8 +38,8 @@ const SCENES: SceneTiming[] = [
   { id: 's06-fatigue', chapter: 3, chapterTitle: 'Operar el SIEM', title: 'Alert fatigue', from: 255, durationInFrames: 45 },
   { id: 's09-pivot', chapter: 4, chapterTitle: 'El caso de Halden', title: 'Pivotar y correlacionar', from: 300, durationInFrames: 75 },
   { id: 's11-limits', chapter: 5, chapterTitle: 'Límites y examen', title: 'Lo que el SIEM no ve', from: 375, durationInFrames: 75 },
-  { id: 's12-p1', chapter: 6, chapterTitle: 'Ponte a prueba', title: 'Al cerrar la oficina', from: 450, durationInFrames: 300 },
-  { id: 's13-p2', chapter: 6, chapterTitle: 'Ponte a prueba', title: 'La copia que no llegó', from: 750, durationInFrames: 300 },
+  { id: 's12-p1', chapter: 5, chapterTitle: 'Límites y examen', title: 'Al cerrar la oficina', from: 450, durationInFrames: 300 },
+  { id: 's13-p2', chapter: 5, chapterTitle: 'Límites y examen', title: 'La copia que no llegó', from: 750, durationInFrames: 300 },
 ];
 
 /** Builds a caption page with evenly timed words (`step` frames per word, 1-frame gap). */
