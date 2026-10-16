@@ -81,7 +81,8 @@ test('recordingSheet: an exam question asks for the countdown as silence, in wor
   };
   const five = withQ({});
   assert.match(five, /\*\*s02-01\*\*[^\n]*\n\n> \*\(En pantalla: la pregunta y sus cuatro opciones\. Deja cinco segundos de silencio\.\)\*\n/);
-  assert.match(five, /Las preguntas para pensar, las tarjetas de examen y las preguntas de examen salen en pantalla: \*\*no se leen\*\*/);
+  assert.match(five, /Las preguntas para pensar, las tarjetas de examen y las opciones de las preguntas de examen salen en pantalla: \*\*no se leen\*\*/);
+  assert.match(five, /En cada pregunta de examen \*\*sí lees el caso y la pregunta\*\*/);
   assert.match(withQ({ countdownMs: 6000 }), /Deja seis segundos de silencio\./);
   assert.match(withQ({ countdownMs: 4500 }), /Deja 4,5 segundos de silencio\./);
   assert.doesNotMatch(recordingSheet(sources()), /la pregunta y sus cuatro opciones|las preguntas de examen/);
