@@ -245,7 +245,7 @@ function onScreenOnly(narration) {
   if (narration.segments.some((s) => s.intercept)) kinds.push('los mensajes interceptados');
   if (narration.segments.some((s) => s.think)) kinds.push('las preguntas para pensar');
   if (narration.segments.some((s) => s.exam)) kinds.push('las tarjetas de examen');
-  if (narration.segments.some((s) => s.question)) kinds.push('las preguntas de examen');
+  if (narration.segments.some((s) => s.question)) kinds.push('las opciones de las preguntas de examen');
   if (!kinds.length) return null;
   return kinds.length === 1 ? kinds[0] : `${kinds.slice(0, -1).join(', ')} y ${kinds.at(-1)}`;
 }
@@ -275,6 +275,9 @@ export function recordingSheet({ storyboard, narration, manifest }) {
     screen
       ? `${cap(screen)} salen en pantalla: **no se leen**. Los dominios, IP y correos tampoco: están en pantalla.`
       : 'Los dominios, IP y correos salen en pantalla: **no se leen**.',
+    ...(narration.segments.some((s) => s.question)
+      ? ['En cada pregunta de examen **sí lees el caso y la pregunta**, como vienen en la hoja; las cuatro opciones A–D solo se ven.']
+      : []),
     '',
     ...readingBody(storyboard, narration, manifest),
   ];
