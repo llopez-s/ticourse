@@ -1,0 +1,153 @@
+{
+  "title": "Una tarea o un flujo: automatizar y orquestar",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 265,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Una tarea o un flujo"
+    },
+    {
+      "n": 2,
+      "title": "Cada paso con su nombre"
+    },
+    {
+      "n": 3,
+      "title": "Lo que cuesta"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Cinco pantallas para lo mismo",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · caso de ejemplo · datos ficticios» y «una noche · sin fecha» (`night`). La persona de guardia del SOC (silueta, sin nombre ni género) con cinco ventanas abiertas, sin nombres de producto (`screens`): «EDR», «proveedor de identidad», «cola del SOC», «correo», «teléfono». Los mismos datos saltan a mano de una a otra mientras corre un reloj (`copy`). Al acabar la primera frase, título «Una tarea o un flujo» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «una tarea · el flujo entero · lo que cuesta». Plaquita «SY0-701 · 4.7»",
+      "requiredCues": [
+        "night",
+        "screens",
+        "copy",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-cadena",
+      "chapter": 1,
+      "title": "Del semáforo a la avenida",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Las cinco ventanas pasan a ser cinco pasos en fila. Se enciende uno solo (`one-task`): el caso se abre por su cuenta, siempre con los mismos campos rellenos; al lado, un semáforo con temporizador (`timer`) y el nombre AUTOMATION. La regla en llano (`same`): «sale siempre igual». Después los pasos se unen con flechas de diagrama (`chain`): «el EDR avisa» → «¿desde dónde entró esa cuenta? · proveedor de identidad» → «abre el caso con todo dentro» → rombo «¿riesgo alto?» (`condition`) → «avisa a la guardia · propone cortar sus sesiones» (el chip «propone · decide la analista»). Al lado, la avenida vista desde arriba con su central y la onda verde; llega una ambulancia y los semáforos le abren paso (`avenue`); nombre ORCHESTRATION. Debajo, «en el SOC: SOAR» (`soar`) y la receta, «playbook» (`playbook`). Imágenes «no son del puerto»",
+      "requiredCues": [
+        "one-task",
+        "timer",
+        "same",
+        "chain",
+        "condition",
+        "avenue",
+        "soar",
+        "playbook"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "El primer día de alguien",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel de pregunta tapa la escena hasta el final, así que el fondo se queda quieto (una oficina de Sistemas a media luz, sin texto). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: la que encaja con este caso, aunque otra suene bien» (`best`), que la voz explica antes de la cuenta atrás. Cuenta atrás de 5 s; en `ok-1` sale la correcta (Orchestration) y en `trap-1` la trampa (Automation). La tarjeta de examen entra después de la trampa (`flow`)",
+      "requiredCues": [
+        "q1",
+        "best",
+        "ok-1",
+        "trap-1",
+        "flow"
+      ]
+    },
+    {
+      "id": "s04-pasos",
+      "chapter": 2,
+      "title": "Un caso que nadie coge",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "goal": "Vuelve el flujo de s02, de noche (`queue`). El caso aparece en la cola del SOC con su hora (`ticket`): TICKET CREATION, «queda apuntado». Un contador de minutos, sin hora del día; nadie lo coge (`minutes`). Mensaje interceptado de SILENT PAGER (en el segmento que lo responde). Respuesta: un caso abierto que nadie mira es una alerta perdida en un buzón. Al lado, el timbre del hospital: la luz encima de la puerta, apuntado (`bell`); sin nadie, el aviso en el control de enfermería, sube (`station`). A los quince minutos, el flujo le sube la gravedad y avisa a la guardia: ESCALATION (`escalate`). Cierra con la tercera pieza en un chip (`cut`): «enabling/disabling access · tras confirmar la analista». Sin tarjeta de examen",
+      "requiredCues": [
+        "queue",
+        "ticket",
+        "minutes",
+        "bell",
+        "station",
+        "escalate",
+        "cut"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "El fallo del escaneo",
+      "targetSec": 35,
+      "wordBudget": 73,
+      "goal": "Pregunta tipo examen 2 (`q2`), rótulo «pregunta tipo examen · ejemplo». Fondo quieto: una cola de tickets de Sistemas, sin texto legible. Sin calificador. En `ok-2` la correcta (Escalation), en `trap-2` la trampa (Ticket creation); la tarjeta de examen después (`up`)",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "up"
+      ]
+    },
+    {
+      "id": "s06-precio",
+      "chapter": 3,
+      "title": "Toda la avenida en una central",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "goal": "El flujo de s02 y s04 se recoge en una sola caja, «plataforma de orquestación», sin nombre de producto (`one-box`). Vuelve la avenida. Primera cara (`central-down`): la central se apaga y los semáforos se atascan todos a la vez; en el flujo, tres pasos en gris (`grey`): «no se abre el caso · no se avisa a nadie · no se corta nada». Segunda cara (`central-taken`): alguien entra en la central y pone todos en verde; en el flujo, la cuenta de la plataforma con flechas a cada herramienta que toca, sin permisos, bóveda ni llaves. Nombre SINGLE POINT OF FAILURE, con «y objetivo privilegiado» debajo (`spof`). Después, dos fichas (`two-cards`): la avenida de cuarenta semáforos, bien llevada pero difícil de entender cuando se atasca → COMPLEXITY (`complexity`); el semáforo de una calle con la etiqueta «lo programó alguien que ya no trabaja aquí · sin planos · sin dueño» → TECHNICAL DEBT (`debt`). Chip final (`support`): ONGOING SUPPORTABILITY, «¿quién lo va a mantener?»",
+      "requiredCues": [
+        "one-box",
+        "central-down",
+        "grey",
+        "central-taken",
+        "spof",
+        "two-cards",
+        "complexity",
+        "debt",
+        "support"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Cuando el flujo falla",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 3 (`q3`), rótulo «pregunta tipo examen · ejemplo». Un diagrama con cinco cajas sin nombre de producto («directorio · EDR · correo · cortafuegos · tickets») cuando la voz dice «cinco herramientas distintas» (`five`); la voz no las lee. El panel de pregunta tapa la escena desde `q3`: dónde va el diagrama se decide al montar (ver `out/script-notes.md`). En `ok-3` la correcta (Complexity), en `trap-3` la trampa (Technical debt); la tarjeta de examen después (`neglect`)",
+      "requiredCues": [
+        "q3",
+        "five",
+        "ok-3",
+        "trap-3",
+        "neglect"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (el semáforo y la avenida · el timbre · la central) (`recap`, `rule-1`, `rule-2`, `rule-3`), y la frase para el examen (`phrase`): «Antes de contestar, pregúntate si es una tarea o un flujo, y qué hace ese paso en ese momento». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
