@@ -481,14 +481,15 @@ Las exam cards se listan en el orden de las escenas:
   hunting, la otra mitad de la lección que V5 dejó fuera.
 - **sp4m8 IAM (Principal): V6, publicada el 2026-10-03 (YouTube `RdUWXFQxOkY`), ficha completa abajo.** Identidad y acceso en
   Halden del 19 al 28-10: altas, cambios y bajas, SAML, OAuth, MFA y la bóveda de cuentas de servicio.
-- **s2m5 ATT&CK + Pyramid (Cápsula): V7, publicada el 2026-10-03 (YouTube `XCOAc7tlPTE`), ficha completa abajo.** El árbol de procesos del
+- **s2m5 ATT&CK + Pyramid (Cápsula): V7, publicada el 2026-10-03 (YouTube `mRNyVVrRujw`), ficha completa abajo.** El árbol de procesos del
   2-3 en ATT&CK y en la pirámide, con los dos hashes del loader como prueba de su base.
-- **s3m5 STIX (Cápsula): V8, publicada el 2026-10-04 (YouTube `KO4REQeaKgM`), ficha completa abajo.** El aviso caducado del ISAC:
+- **s3m5 STIX (Cápsula): V8, publicada el 2026-10-04 (YouTube `jNqhrLgGFmY`), ficha completa abajo.** El aviso caducado del ISAC:
   no se bloquea, se busca hacia atrás; el grafo y «STIX describe, TAXII transporta».
 - **s4m3 ACH (Principal): V9, publicada el 2026-10-04 (YouTube `Q2-pG0ALFKI`), ficha completa abajo.** La matriz del extracto de la
   lección, celda a celda, con supuestos clave, diagnosticidad y sensibilidad; primera aparición de PAPER CRANE.
-- **sp2m7 (Cápsula) «Ataques en los logs»: V10, publicada el 2026-10-05 (YouTube `uHHv-1hTYTE`, la primera subida por la
-  API, con `youtube-upload.mjs`), ficha completa abajo.** La noche
+- **sp2m7 (Cápsula) «Ataques en los logs»: V10, publicada el 2026-10-05 (YouTube `k51SLJxEiPc`, resubido el 2026-10-16 con el
+  máster suave; la primera subida, `uHHv-1hTYTE`, fue también la primera por la API, con `youtube-upload.mjs`), ficha
+  completa abajo.** La noche
   del 20 al 21-10: spraying, traversal y amplificación DNS; primera aparición de RED MARROW.
 
 **Orden propuesto para el resto de la tanda 2** (2026-10-01, pendiente de Lidia): V5b, V6, V7, V8, V9 y V10.
@@ -887,7 +888,8 @@ mensaje va en s10, no en s11.
 > dos no se pisan. La versión vigente de escenas y guion será `video/attack-piramide/storyboard.json` +
 > `narration.json`; qué se quedó fuera, en `video/attack-piramide/out/script-notes.md`.
 >
-> **Producido y publicado el 2026-10-03**: YouTube `XCOAc7tlPTE`, 3:59, 6 escenas, 4 tarjetas, 1 pregunta, 1 mensaje
+> **Producido y publicado el 2026-10-03**: YouTube `mRNyVVrRujw` (resubido el 2026-10-16 con el máster suave; la primera
+> subida fue `XCOAc7tlPTE`, con el máster de −14,1 LUFS), 3:59, 6 escenas, 4 tarjetas, 1 pregunta, 1 mensaje
 > de GLASS VIPER con la voz de V3, voz de Lidia (una frase recortada de sus propias tomas: a s04-02 se le pegaba el
 > arranque abandonado de s04-03), música de V4, −14,1 LUFS. En la lección s2m5, entre el párrafo de la escalera de
 > abstracción y el primer check del árbol. La grabación quedó al 93 % del estimado (V5b, 85 %). El canon nuevo está en
@@ -1043,7 +1045,8 @@ mensaje va en s10, no en s11.
 > desde `main` con V6 ya fusionado). La versión vigente de escenas y guion es `video/stix-isac/storyboard.json` +
 > `narration.json`; qué se quedó fuera, en `video/stix-isac/out/script-notes.md`.
 >
-> **Producido y publicado el 2026-10-04**: YouTube `KO4REQeaKgM` (lo subió Lidia), 3:53, 6 escenas, 4 tarjetas, 1
+> **Producido y publicado el 2026-10-04**: YouTube `jNqhrLgGFmY` (resubido el 2026-10-16 con el máster suave; la primera
+> subida, `KO4REQeaKgM`, la subió Lidia), 3:53, 6 escenas, 4 tarjetas, 1
 > pregunta, 1 mensaje de HOLLOW LANTERN con la voz de V4, voz de Lidia (31 de 31 frases importadas, sin las tomas repetidas; dos
 > frases del guion se ajustaron a lo grabado), música de V4. En la lección s3m5, después del check «TAXII ; STIX» y
 > antes de «YARA en 60 segundos». La grabación quedó al 92 % del estimado, como se calculó. El canon nuevo está en
@@ -1836,7 +1839,8 @@ Como en V6, el cierre vive dentro del último capítulo de contenido, así que e
 > (sp1m6) con una frase de puente. Se graba en la misma sesión que V13. La versión vigente de escenas y guion será
 > `video/pki-halden/storyboard.json` + `narration.json`; qué se quedó fuera, en `video/pki-halden/out/script-notes.md`.
 >
-> **Producido y subido**: por la API el 2026-10-06 (YouTube `zEhyYU7Vuwc`, privado hasta que Lidia lo publique); 3:53,
+> **Producido y publicado**: subido por la API el 2026-10-06 (YouTube `zEhyYU7Vuwc`) y publicado por Lidia; resubido el
+> 2026-10-16 con el máster suave (YouTube `IlOHl8Lmq_w`, el que lleva la lección); 3:53,
 > 6 escenas, 4 tarjetas, 1 pregunta, 2 mensajes de NULL CIPHER (voz `sapi/Microsoft Helena` con `cifrado`, como en V11),
 > voz de Lidia, música de V4 y V5. En la lección sp1m7, donde dice «Inserción», con su línea de entrada.
 >

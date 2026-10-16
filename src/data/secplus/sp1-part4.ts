@@ -397,7 +397,7 @@ El root ya está en el trust store del sistema; por eso la cadena "cierra".`,
     {
       t: 'video',
       title: 'PKI en la consola: el eslabón que falta, CRL y OCSP',
-      youtube: 'zEhyYU7Vuwc',
+      youtube: 'IlOHl8Lmq_w',
       poster: 'videos/pki-halden-poster.png',
       transcript: 'videos/pki-halden-transcript.txt',
     },

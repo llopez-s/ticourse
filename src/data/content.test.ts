@@ -269,27 +269,27 @@ describe('lesson videos', () => {
     expect(moduleOf('videos/forense-adquisicion.mp4')).toBe('sp4m11');
     expect(youtubeVideos.find((v) => v.block.youtube === 'rwMIu0XBoWQ')?.module).toBe('s2m3');
     // V4 continues V3's E7 pivots, before Lab 3A: the order is video, then lab
-    expect(youtubeVideos.find((v) => v.block.youtube === '8pet46MOGmk')?.module).toBe('s3m3');
+    expect(youtubeVideos.find((v) => v.block.youtube === '69gfP6duB00')?.module).toBe('s3m3');
     // V5 walks the Halden case through the phases, right after the table of phases and classic errors
     expect(youtubeVideos.find((v) => v.block.youtube === 'AvtZI9iylQc')?.module).toBe('sp4m10');
     // V5b tests the new plan and goes hunting, after the threat-hunting check and before the closing paragraph
     expect(youtubeVideos.find((v) => v.block.youtube === 'dzLWHM7VpsI')?.module).toBe('sp4m10');
     // V7 reads s2m5's process tree, right before the checks that ask about the same tree
-    expect(youtubeVideos.find((v) => v.block.youtube === 'XCOAc7tlPTE')?.module).toBe('s2m5');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'mRNyVVrRujw')?.module).toBe('s2m5');
     // V6 gathers identity and access in the port, after the MFA check and before the exam note
     expect(youtubeVideos.find((v) => v.block.youtube === 'RdUWXFQxOkY')?.module).toBe('sp4m8');
     // V8 closes s3m5's STIX/TAXII half, after the TAXII-vs-STIX check and before YARA
-    expect(youtubeVideos.find((v) => v.block.youtube === 'KO4REQeaKgM')?.module).toBe('s3m5');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'jNqhrLgGFmY')?.module).toBe('s3m5');
     // V9 sums up s4m3 after its checks and hands over to Lab 4B: lesson, checks, video, lab
     expect(youtubeVideos.find((v) => v.block.youtube === 'Q2-pG0ALFKI')?.module).toBe('s4m3');
     // V23 sums up s4m5 (the three levels, false flags and when a name is worth it) after its checks, before the exam note
     expect(youtubeVideos.find((v) => v.block.youtube === 'Q2Xk9Lczm6U')?.module).toBe('s4m5');
     // V10 reads one night's three trails in sp2m7, after the 900-accounts check and before the closing paragraph
-    expect(youtubeVideos.find((v) => v.block.youtube === 'uHHv-1hTYTE')?.module).toBe('sp2m7');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'k51SLJxEiPc')?.module).toBe('sp2m7');
     // V11 gathers sp1m6 at its end, after the steganography-to-blockchain list and before the paragraph that hands over to PKI
     expect(youtubeVideos.find((v) => v.block.youtube === 'SAx6KSeEOwU')?.module).toBe('sp1m6');
     // V12 replays sp1m7's chain and revocation in a console, after the OCSP stapling check and before key escrow
-    expect(youtubeVideos.find((v) => v.block.youtube === 'zEhyYU7Vuwc')?.module).toBe('sp1m7');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'IlOHl8Lmq_w')?.module).toBe('sp1m7');
     // V13 sums up s2m1 after the demo's checks and before the paragraph that hands over to Courses of Action and s2m4
     expect(youtubeVideos.find((v) => v.block.youtube === 'WidodMPEs24')?.module).toBe('s2m1');
     // V22 sums up s2m2 (the verbs, the matrix and the price of each action) after its checks and sends to Lab 2C

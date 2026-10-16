@@ -460,7 +460,7 @@ No tiene notas de guion. Canon nuevo:
 - E9: `2026-03-07`, «+2 días», Actions on Objectives (`video/diamond-e7/src/scenes/S10Thread.tsx:80-84`).
 - Ningún registrante ni IP extra en pantalla (`video/diamond-e7/src/data/s04-infra.ts:4`).
 
-### V4 · `pivot-infra` · s3m3 · YouTube `8pet46MOGmk`
+### V4 · `pivot-infra` · s3m3 · YouTube `69gfP6duB00`
 
 Lección `src/data/s3.ts:629-631`; adversario HOLLOW LANTERN (`video/pivot-infra/video.json:8`). Notas propias en
 `video/pivot-infra/out/script-notes.md:54-68`. Canon nuevo:
@@ -482,7 +482,7 @@ Lección `src/data/s3.ts:629-631`; adversario HOLLOW LANTERN (`video/pivot-infra
   (`video/pivot-infra/src/scenes/S08Lifecycle.tsx:328`); el bloqueo previo encuentra cinco hermanos tapados
   (`video/pivot-infra/src/scenes/S09Preblock.tsx:35`).
 
-### V7 · `attack-piramide` · s2m5 · YouTube `XCOAc7tlPTE`
+### V7 · `attack-piramide` · s2m5 · YouTube `mRNyVVrRujw`
 
 Lección `src/data/s2.ts:1104` (bloque `youtube` entre el párrafo de la escalera de abstracción y el primer check del
 árbol); adversario de los interceptados GLASS VIPER (`video/attack-piramide/video.json:8`). Notas propias en
@@ -511,7 +511,7 @@ Lección `src/data/s2.ts:1104` (bloque `youtube` entre el párrafo de la escaler
 - Mensaje interceptado nuevo de GLASS VIPER: «Bloquea mi hash. Así ya no me volverás a ver.»
   (`video/attack-piramide/narration.json`, s04-01).
 
-### V8 · `stix-isac` · s3m5 · YouTube `KO4REQeaKgM`
+### V8 · `stix-isac` · s3m5 · YouTube `jNqhrLgGFmY`
 
 Lección `src/data/s3.ts:1110` (bloque `youtube` después del check «TAXII ; STIX» y antes de «YARA en 60 segundos»);
 adversario de los interceptados HOLLOW LANTERN (`video/stix-isac/video.json:8`). Notas propias en
