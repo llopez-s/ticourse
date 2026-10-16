@@ -107,7 +107,7 @@ const THINK: ThinkEntry[] = [
   },
 ];
 
-/** A short question (one-word options) and the longest the validator allows (160 / 107 / 70 / 90 characters). */
+/** A short question (one-word options) and the longest the validator allows (scenario 160, question 110, options 70, why 90 characters). */
 const QUESTIONS: QuestionCue[] = [
   {
     scene: 's12-p1',
@@ -140,7 +140,7 @@ const QUESTIONS: QuestionCue[] = [
     objective: '1.1',
     scenario:
       'Tras un corte de luz en la terminal norte, el técnico de turno reinicia el servidor de grúas y ve que la copia de seguridad nocturna lleva tres días sin hacerse',
-    q: '¿Qué control habría descubierto ANTES el fallo de la copia nocturna, sin depender de que alguien lo revise?',
+    q: '¿Qué control habría descubierto ANTES el fallo de las copias nocturnas, sin depender de que alguien lo revise?',
     options: [
       'Una política firmada por la dirección que exige hacer copia cada noche',
       'Una alerta automática que avisa al equipo en cuanto una copia no acaba',
