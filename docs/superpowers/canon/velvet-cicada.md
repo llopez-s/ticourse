@@ -1,7 +1,9 @@
 # Canon de «Operación VELVET CICADA» (GCTI)
 
 Registro único de los datos ficticios de la campaña GCTI: la intrusión contra Meridian Dynamics que continúan
-las lecciones, los laboratorios y los vídeos. Estado a 2026-10-14 (vídeos con su canon aquí: V3, V4, V7, V8, V9, V13, V14, V15, V22 y V23).
+las lecciones, los laboratorios y los vídeos. Estado a 2026-10-16 (vídeos con su canon aquí: V3, V4, V7, V8, V9, V13, V14, V15, V22, V23 y V27). Las citas de
+`src/data/s5.ts` van con la numeración de `main` desde que #56 trajo el bloque de V27 (`:583-589`): las que pasan de la `:583`
+están siete líneas más abajo que antes.
 
 ## 1. Cómo se usa
 
@@ -15,8 +17,11 @@ las lecciones, los laboratorios y los vídeos. Estado a 2026-10-14 (vídeos con 
 Notas de lectura: todas las rutas son relativas a la raíz del repositorio. `video/pivot-infra/out/*` está
 ignorado por git y solo existe en la copia principal (`D:\LLM projects\TICourse`), no en los worktrees. Lo mismo
 vale para el `out/` de cualquier vídeo (`.gitignore:26`, `video/*/out/`): el de V22 (`video/coa-precios/out/*`, con
-`script-notes.md` y `youtube-upload.json`) se produjo en el worktree `video-coa-precios`, y el de V23
-(`video/atribucion-cuadro/out/*`, con los mismos archivos), en el worktree `video-atribucion-cuadro`.
+`script-notes.md` y `youtube-upload.json`) se produjo en el worktree `video-coa-precios`, el de V23
+(`video/atribucion-cuadro/out/*`, con los mismos archivos), en el worktree `video-atribucion-cuadro`, y el de V27
+(`video/reglas-aeropuerto/out/*`, con `script-notes.md` pero sin `youtube-upload.json`), en el worktree `video-reglas-aeropuerto`.
+Las fichas y revisiones de V27 están en `docs/reviews/2026-10-14-fichas-tanda5/` (`ficha-V27.md`, `guion-V27-exactitud.md`,
+`guion-V27-naturalidad.md`).
 `[V3]` y `[V4]` marcan datos que están en pantalla en un vídeo publicado. Las rutas de Windows se escriben como
 se ven en la app (una barra); en los `.ts` van escapadas (`\\`).
 
@@ -94,8 +99,8 @@ Stellar Dynamics también existe, pero es un hallazgo del Lab 3A: ver §4.
 
 | Nombre | Qué hace | Fuente |
 |---|---|---|
-| SOC de Meridian («SOC · Meridian Dynamics») | Escala E7 y la intrusión del lab2a | `src/data/s2.ts:566`; `src/data/labs.ts:73`; `video/diamond-e7/src/scenes/S01Hook.tsx:183` |
-| Meridian CTI (`cti@meridian.example`) | Autor de flash alert, YARA y Sigma | `src/data/s5.ts:47,69,500` |
+| SOC de Meridian («SOC · Meridian Dynamics») | Escala E7 y la intrusión del lab2a. En V27, «el SOC: ¿y qué le damos que dure?» (en voz, «el SOC te pide algo que dure»): pregunta, sin persona, y no decide ni despliega nada | `src/data/s2.ts:566`; `src/data/labs.ts:73`; `video/diamond-e7/src/scenes/S01Hook.tsx:183`; `video/reglas-aeropuerto/src/data/s01-hook.ts:17`; `video/reglas-aeropuerto/narration.json:25` |
+| Meridian CTI (`cti@meridian.example`) | Autor del flash alert y de la regla YARA. **La regla Sigma no lleva autor** (solo `references`, al informe interno MER-2026-011), y V27 no se lo pone | `src/data/s5.ts:47,69,500`; `src/data/s5.ts:531-551`; `video/reglas-aeropuerto/src/data/rules.ts:6` |
 | IR, IR lead, canal `#ir-hotline` | Respuesta; propone las medidas del lab2c. En V22, «equipo de respuesta», sin persona ni postura: pregunta «¿qué hacemos con esto?» y no propone ni decide nada | `src/data/s5.ts:66`; `src/data/labs.ts:96`; `video/coa-precios/src/data/s01-hook.ts:9-10`; `video/coa-precios/narration.json:25` |
 | RR. HH. de Meridian | Destino del spearphish | `src/data/s2.ts:26` |
 
@@ -151,12 +156,12 @@ hash, ni dominio, ni certificado (`video/atribucion-cuadro/src/data/s02-niveles.
 | `winhlp.exe   SHA-256 4c81...b3` | Hash del loader en el árbol de s2m5; lleva la ruta del PDB (decidido en V14, **solo para el registro**: nunca en pantalla ni en voz, por el dosier de BROKEN CHAIN, `src/data/course-gcti.ts:40`) | `src/data/s2.ts:1172,1361` |
 | `C:\ProgramData\UpdSvc\updsvc.exe`, `signed=false` | Binario del implante en E7 [V3] | `video/diamond-e7/src/data/s03-victim.ts:29,32` |
 | `msdtcs.exe` | Loader en Orbital (Víctima 2) | `src/data/s2.ts:895` |
-| `wcssvc.exe -decode a.txt payload.bin` | `certutil` renombrado (`OriginalFileName` CertUtil.exe) | `src/data/s2.ts:1168-1169`; `src/data/s5.ts:555` |
+| `wcssvc.exe -decode a.txt payload.bin` | `certutil` renombrado (`OriginalFileName` CertUtil.exe). V27 lo enseña como el segundo «evento de ejemplo» (`Image` `…\wcssvc.exe`), sin equipo, hora ni cuenta, y sin añadirlo a la cadena de s2m1 (§5 punto 19) | `src/data/s2.ts:1168-1169`; `src/data/s5.ts:555`; `video/reglas-aeropuerto/src/data/s04-sigma.ts:28-32` |
 | `powershell.exe -nop -w hidden -enc SQBFAFgAKA...` | Ejecución tras abrir el LNK | `src/data/s2.ts:79,1165` |
 | `CV_Ingeniero.zip` con `CV_Ingeniero.pdf.lnk` | Artefacto de entrega | `src/data/s2.ts:74`; `src/data/labs.ts:228` |
 | mutex único (sin nombre) | Otro artefacto del loader | `src/data/s3.ts:310` |
-| `GLASSVIPER_Loader_MemMap` · `$op = { 6A 40 68 00 30 00 00 }` | Regla YARA de la lección | `src/data/s5.ts:497,509` |
-| «GLASS VIPER Staging via Renamed Certutil» | Regla Sigma, id `4b8d2f6a-9c31-4e02-b7aa-meridian0042` | `src/data/s5.ts:531-532` |
+| `GLASSVIPER_Loader_MemMap` · `$op = { 6A 40 68 00 30 00 00 }` | Regla YARA de la lección. V27 la enseña entera salvo `date` y `reference` (§7) | `src/data/s5.ts:497,509`; `video/reglas-aeropuerto/src/data/rules.ts:13-32` |
+| «GLASS VIPER Staging via Renamed Certutil» | Regla Sigma, id `4b8d2f6a-9c31-4e02-b7aa-meridian0042`, sin autor. V27 la enseña entera salvo `id` y `references` (§7) | `src/data/s5.ts:531-532`; `video/reglas-aeropuerto/src/data/rules.ts:34-53` |
 | T1059.001 · T1140 · T1053.005 · T1071.001 | Técnicas ATT&CK del árbol de s2m5 | `src/data/s2.ts:1166,1170,1175,1180` |
 | canal secundario por API de almacenamiento en la nube | C2 de respaldo del lab2a | `src/data/labs.ts:258` |
 | cuenta VPN de proveedor comprometida · webshell en el portal del proveedor | Evidencia del lab2b | `src/data/labs.ts:329,334` |
@@ -167,7 +172,7 @@ Los strings y muestras del Lab 3B (`vc_stage2.bin`, `VC_Loader_v1.dll`, `VC_Load
 
 | Nombre | Qué es | Fuente |
 |---|---|---|
-| VELVET CICADA | Núcleo del grupo; intrusion set de espionaje contra el programa de propulsión; adversario de S5 | `src/data/course-gcti.ts:93-97`; `src/data/s3.ts:1048`; `src/data/s5.ts:312` |
+| VELVET CICADA | Núcleo del grupo; intrusion set de espionaje contra el programa de propulsión; adversario de S5. Habla por primera vez en V27 (dos mensajes, abajo); la voz de la narradora no lo nombra en ningún vídeo | `src/data/course-gcti.ts:93-97`; `src/data/s3.ts:1048`; `src/data/s5.ts:312`; `video/reglas-aeropuerto/video.json:8` |
 | «VC» | Firma de quien compra el acceso inicial (dossier de S1) | `src/data/course-gcti.ts:21` |
 | EMBER FOX | Célula de acceso inicial, spearphishing; adversario de S1 | `src/data/course-gcti.ts:17-19` |
 | GLASS VIPER | Operadores de intrusión (S2); también nombre del implante y de un intrusion set STIX (ver §5) | `src/data/course-gcti.ts:36-38`; `src/data/s2.ts:583`; `src/data/s4.ts:1023` |
@@ -183,7 +188,11 @@ Qué adversario habla en cada vídeo: el de la sección de la lección (`video.j
 VIPER (`video/diamond-e7/video.json:8`) y V4 HOLLOW LANTERN (`video/pivot-infra/video.json:8`). V9 estrena a PAPER
 CRANE (`video/ach-matriz/video.json:8`) con otra voz: `sapi/Microsoft Laura` con el efecto `machine`, en lugar de
 Pablo (`video/ach-matriz/narration.json:11-15`). V23 repite PAPER CRANE con esa misma voz
-(`video/atribucion-cuadro/video.json:8`; `video/atribucion-cuadro/narration.json:11-15`).
+(`video/atribucion-cuadro/video.json:8`; `video/atribucion-cuadro/narration.json:11-15`). V27, el primer vídeo de S5, estrena a VELVET
+CICADA (`video/reglas-aeropuerto/video.json:8`) con `sapi/Microsoft Pablo`, `rate` 0 y `machine`
+(`video/reglas-aeropuerto/narration.json:11-15`): la misma voz que GLASS VIPER y HOLLOW LANTERN
+(`video/diamond-e7/narration.json`, `video/pivot-infra/narration.json`, `adversaryVoice`); lo distingue la firma del mensaje en
+pantalla, no el timbre (`video/reglas-aeropuerto/out/script-notes.md:10-11`).
 
 Mensajes interceptados publicados. Son canon de la voz del adversario; un guion posterior no debe contradecirlos:
 
@@ -212,6 +221,8 @@ Mensajes interceptados publicados. Son canon de la voz del adversario; un guion 
 | PAPER CRANE | «Si una prueba es falsa, se te cae todo. Empieza de cero.» | `video/ach-matriz/narration.json:329` (s08-01) |
 | PAPER CRANE | «Ponle un país al informe, analista. Todo consejo adora un nombre.» | `video/atribucion-cuadro/narration.json:88` (s03-01) |
 | PAPER CRANE | «Con la primera pista que encaje ya tienes bastante. ¿Para qué más?» | `video/atribucion-cuadro/narration.json:128` (s04-01) |
+| VELVET CICADA | «Una palabra de mi programa y ya me pillas. Qué fácil, analista.» | `video/reglas-aeropuerto/narration.json:82` (s03-01) |
+| VELVET CICADA | «A mis herramientas las llamo como quiero. Tu regla no lo verá.» | `video/reglas-aeropuerto/narration.json:134` (s04-01) |
 
 V3 explica en voz que GLASS VIPER es «un nombre de seguimiento para el implante y quien lo usa»
 (`video/diamond-e7/narration.json:139`).
@@ -394,6 +405,14 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
     confianzas de la tabla salen como «alta» y «moderada» (la palabra de V9), donde la lección pone «Alta» y «Media»
     (`video/atribucion-cuadro/src/data/levels.ts:33,43,53-54`; `src/data/s4.ts:991-993`): mismo grado. La del sponsor va con
     «, y solo con fuentes que tu red no tiene»; el «baja con solo telemetría» que la lección añadió con V23 (`:993`) no sale.
+26. **¿El pipe dispara solo?** La prosa de s5m3 dice que los artefactos únicos, «PDB, pipe con formato propio, mutex», «pueden disparar solos»
+    (`src/data/s5.ts:520`), pero la regla que enseña le pide compañía al pipe: `$pdb or 2 of ($api, $pipe, $op)` (`:515`). V27 lee la regla, no la
+    prosa: `$pipe` lleva «molde propio · aquí, de compañía» y solo `$pdb` va «único» y solo (`video/reglas-aeropuerto/src/data/s03-condicion.ts:25`,
+    `:27`; en voz, «La única que va sola es una ruta que a veces queda escrita al compilar, la del PDB», `video/reglas-aeropuerto/narration.json:107`).
+27. **En qué nivel de la pirámide va cada regla.** La tabla de s5m3 pone la Sigma entera en TTPs (`src/data/s5.ts:565`); el árbol de s2m5 pone la línea
+    `wcssvc.exe -decode …` en «TTP - tough» (`src/data/s2.ts:1182-1185`); V7 puso `wcssvc.exe (CertUtil)` en Tools
+    (`video/attack-piramide/src/data/s04-piramide.ts:38`). V27 no rotula ningún nivel: sus tres chips dicen solo qué mira cada detección, «el nombre del
+    disco», «el nombre original» y «la cadena entera» (`video/reglas-aeropuerto/src/data/s05-aguanta.ts:34`; `docs/reviews/2026-10-14-fichas-tanda5/ficha-V27.md:122-127`).
 
 ## 6. Nombres libres (relleno neutro ya usado)
 
@@ -413,6 +432,10 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
 - «muestra B», «muestra C», «muestra D» en el bucle de pivotes de V3 (`video/diamond-e7/src/scenes/S08Pivot.tsx:36`).
 - Ojo: `198.51.100.84` y `203.0.113.27` ya son canon (`cdn-sync-status.example`, `src/data/s3.ts:775-776`); no
   se usan como relleno.
+- `otro-nombre.exe`: el tercer «evento de ejemplo» de V27, un nombre cualquiera para la tarjeta cambiada
+  (`video/reglas-aeropuerto/src/data/s04-sigma.ts:33-37`). Es relleno de la analogía, no un tercer nombre del actor.
+- El evento legítimo de V27, `C:\Windows\System32\certutil.exe` con `OriginalFileName` `CertUtil.exe` y el mismo comando que
+  `wcssvc.exe` (`video/reglas-aeropuerto/src/data/s04-sigma.ts:23-27`): de ejemplo, sin equipo ni hora; no es un hecho de Meridian.
 
 ## 7. Vídeos publicados y su canon nuevo
 
@@ -951,6 +974,88 @@ persona, ni grado de confianza para Meridian. Canon nuevo, solo de pantalla y de
   nombres de países: el check de la lección habla de Rusia y Moscú (`src/data/s4.ts:1086`) y el vídeo no. Tampoco la atribución
   de un gobierno como una fuente más (s4m5q6, `video/atribucion-cuadro/out/script-notes.md:67-68`). No se culpa a nadie: ni al
   CISO por pedir un nombre ni a la sala por querer uno.
+
+### V27 · `reglas-aeropuerto` · s5m3 · YouTube `OHxUu9cjnVA`
+
+Lección `src/data/s5.ts:583-589` (bloque `video` después del primer check, «A YARA rule with condition `any of ($s*)`…», `:568-582`, y
+antes del encabezado «STIX/TAXII: el indicador empaquetado», `:590`; llegó a `main` con #56, commit `7596f54`); 3:51 (6945 fotogramas a
+30 fps, `video/reglas-aeropuerto/src/timeline.json:4,7`), subido a Alertópolis como privado el 2026-10-16 (no hay `youtube-upload.json`
+en su `out/`). Cápsula (`capsula-yt`, `video/reglas-aeropuerto/video.json:6`), guion congelado el 2026-10-16 (`:23`). Primer vídeo de S5.
+Adversario de los interceptados VELVET CICADA (`video/reglas-aeropuerto/video.json:8`), con la voz `sapi/Microsoft Pablo` y el efecto
+`machine` (`video/reglas-aeropuerto/narration.json:11-15`). Notas propias en `video/reglas-aeropuerto/out/script-notes.md`. **Sin fecha ni
+hora**, como V9, V15, V22 y V23: es posterior a V7 en lo que cuenta (la regla Sigma habla del `wcssvc.exe` de V7) y no se ordena contra §2.
+**La lección no cambió con él**: el commit solo inserta el bloque y su prueba en `src/data/content.test.ts`. Canon nuevo, solo de pantalla y de
+voz:
+
+- **El punto de partida** (`video/reglas-aeropuerto/src/data/s01-hook.ts:7-17`): «Meridian Dynamics · aeroespacial · tú, su analista de
+  inteligencia»; tres indicadores **sin valor**, «un dominio», «una dirección IP», «un hash», cada uno con su reloj de caducidad; y «el SOC: ¿y
+  qué le damos que dure?». En voz: «Un dominio, una dirección, un hash… caducan enseguida. Y el SOC te pide algo que dure.» y «Eres la analista
+  de Meridian, una aeroespacial. Ya sabes qué detectar. Toca escribirlo.» (`video/reglas-aeropuerto/narration.json:25`, `:37`). El SOC es el
+  equipo de §3: pregunta y no decide. El vídeo no dice que las reglas estén desplegadas, que hayan saltado ni cuándo se escribieron.
+- **Las dos reglas, «extracto de la lección · ficticia»** (`video/reglas-aeropuerto/src/data/rules.ts:11`), carácter por carácter salvo cuatro
+  líneas que se quitan a propósito (`rules.ts:3-6`; `docs/reviews/2026-10-14-fichas-tanda5/ficha-V27.md:231-236`): de la YARA, `date = "2026-04-18"`
+  y `reference = "Internal report MER-2026-011"` (`src/data/s5.ts:502-503`); de la Sigma, `id` y `references` (`:532`, `:535-536`). Así el vídeo
+  no se fecha, no choca con la numeración de los informes (§5 punto 17) y no enseña el `id` de la lección, que no es un UUID válido. La YARA sigue
+  con `author = "Meridian CTI"`, `description` y `tlp = "AMBER"` (`rules.ts:17-19`; el TLP sale como texto, sin voz); **la Sigma no tiene autor** y
+  la pantalla no se lo pone (§3, «Equipos»). La ruta del PDB va con barras dobles, como se escribe en YARA (`rules.ts:25`), y `$api` es
+  `MapViewOfSection`, que sigue encontrando el `NtMapViewOfSection` de la muestra (§3, «Capacidades»).
+- **El aeropuerto: un objeto, una función** (`video/reglas-aeropuerto/narration.json:43-67`). El escáner de equipaje mira dentro de la maleta
+  (YARA, «mira dentro: ficheros y memoria»); la puerta de embarque «apunta quién pasa, con qué tarjeta y qué pasaporte», y Sigma es la lupa que
+  **lee** ese registro («lee lo que ocurre: los registros»; `video/reglas-aeropuerto/src/data/s02-miradas.ts:2-8`). **La tarjeta de embarque es el
+  nombre del fichero en el disco (`Image`) y el pasaporte, el nombre original que va por dentro (`OriginalFileName`)**: «Y busca que su pasaporte,
+  el nombre de dentro, sea certutil» y «Si la tarjeta, el nombre del disco, también dice certutil, el filtro lo descarta» (`narration.json:141`,
+  `:153`). La botella de agua, el paraguas y el libro de la maleta son las cadenas que lleva cualquiera (`s02-miradas.ts:17`; en voz, solo «como
+  una botella de agua», `narration.json:95`). El remate, «Hasta el próximo control» (`:265`), cierra la imagen. Es de la analogía, no del caso, y queda
+  **ocupada**: un vídeo posterior no usa el escáner, la puerta de embarque, la tarjeta ni el pasaporte para otra cosa (el paraguas de la maleta es
+  un objeto corriente; el paraguas plegado con su pegatina «revisado» es la imagen de V24, en Security+). La voz no dice «alarma» (de V22), «cámara», «cargador» ni «loader» (`video/reglas-aeropuerto/out/script-notes.md:53-55`).
+- **La condición de la YARA** (s03): tres partes, «El contexto, meta. Las cadenas que busca, strings. Y la condición, condition, que decide»
+  (`narration.json:89`); en pantalla, `$api` «está en miles de programas legítimos», `$pipe` «molde propio · aquí, de compañía» con «el molde, no
+  el nombre de cada ejecución», y `$pdb` «único» (`video/reglas-aeropuerto/src/data/s03-condicion.ts:22-28`); una tira «el SOC» que se llena de
+  «aviso» (nunca «alarma», `:31`); y la condición en llano, «que sea un ejecutable (empieza por MZ)», «que pese menos de 250 KB» y «o el PDB, que
+  es único y va solo, o dos señales de las otras tres» (`:34-38`). En voz, la ruta del PDB «a veces queda escrita al compilar» y «Casi nadie lleva
+  esa» (`narration.json:107`), nunca «la etiqueta del taller» de V13 a V15 ni qué muestra la lleva: **el vídeo no pasa ninguna regla por ninguna
+  muestra ni hash de Meridian** (§5 puntos 1 y 11). Ver §5 punto 26 para el pipe.
+- **La Sigma, parte a parte, y tres eventos de ejemplo** (s04; `video/reglas-aeropuerto/src/data/s04-sigma.ts:22-58`): «creación de procesos de
+  Windows», «pasaporte · el nombre de dentro», «decodificar o descargar», «tarjeta · el uso con su nombre normal no salta», «resta lo que filtra».
+  Cada «evento de ejemplo» lleva `Image` con ruta, `OriginalFileName` y `CommandLine` con el programa delante: (1) `C:\Windows\System32\certutil.exe`,
+  `CertUtil.exe`, `certutil.exe -decode a.txt payload.bin`, «no avisa», «el filtro lo cubre»; (2) `…\wcssvc.exe`, `CertUtil.exe`,
+  `wcssvc.exe -decode a.txt payload.bin`, «avisa»; (3) `…\otro-nombre.exe`, `CertUtil.exe`, `otro-nombre.exe -decode a.txt payload.bin`, que entra
+  con la pregunta. Sin equipo, hora ni cuenta, y en voz siempre en condicional: «El de la tarjeta cambiada sí avisaría» (`narration.json:159`). La
+  voz cuenta «dos eventos» y luego «un tercero»: el primero solo se ve.
+- **La regla A es solo del vídeo** (`video/reglas-aeropuerto/src/data/s04-sigma.ts:7-10`): una línea, `Image|endswith: '\wcssvc.exe'`, rotulada
+  «ejemplo» («Una regla solo mira la tarjeta, y busca ese nombre. La otra es la de la lección», `narration.json:165`). Pregunta: «Otro nombre de
+  fichero: ¿cuál sigue saltando?» (`:174`); respuesta: «La de la lección. La tarjeta la cambia el atacante cuando quiere, y la otra ya no lo ve.
+  Pero el pasaporte, el nombre original, va dentro del programa, y renombrar no lo toca.» (`:181`, `:187`); con el tercer evento, la regla A «no lo
+  ve» y el filtro «no cuadra» (`s04-sigma.ts:56-58`). «Lo cambia el atacante cuando quiere», y no «gratis», para no contradecir a V7, que dijo que
+  el nombre y la carpeta «ya le cuestan más» que el hash (`video/reglas-aeropuerto/out/script-notes.md:78-80`). No es una regla de Meridian.
+- **Dónde corre y qué rompe cada una** (s05; `video/reglas-aeropuerto/src/data/s05-aguanta.ts:7-43`): YARA corre en «escáner · sandbox · EDR ·
+  repositorio de muestras» (en voz, los tres primeros); Sigma «se traduce a la consulta de tu SIEM, y esa corre» («Sigma no corre en el SIEM tal
+  cual. Antes se traduce a su consulta», `narration.json:211`), sin nombres de producto. «qué la rompe»: a la YARA, que «el programa deja de
+  conservar esas piezas (otra compilación, otro empaquetado)» (en voz, «vive mientras la maleta lleve esas piezas», `:223`); a la Sigma por nombre
+  original, «otra herramienta»; a su filtro, «una copia con su nombre normal, en otra carpeta» (`:229`). Tres chips sin nombre de nivel: «el nombre
+  del disco», «el nombre original», «la cadena entera» con «explorer, PowerShell, tarea programada» (§5 punto 27); en voz, «Queda la del árbol de
+  procesos, que ya viste» (`:235`), que es la regla de comportamiento de V7. Cierre: «cada una tiene su punto débil», «mide si dispara» (`:241`).
+- **Las tarjetas de examen** (dominio Dissemination): «YARA mira contenido; Sigma mira eventos», «Cadena genérica, acompañada. El PDB, que es único,
+  solo», «OriginalFileName viene del PE header, no del disco» (la forma de la lección y de V7) y «Sigma no corre en el SIEM tal cual: se convierte»
+  (`narration.json:71`, `:117`, `:191`, `:215`). Tarea: «las preguntas de la lección (s5m3)», «10 preguntas», sin laboratorio
+  (`video/reglas-aeropuerto/src/data/s06-recap.ts:51`).
+- **La voz no dice** `OriginalFileName`, `wcssvc.exe`, `MapViewOfSection`, nombres de regla, GLASS VIPER ni VELVET CICADA; ningún hash, fecha, hora
+  ni equipo (`video/reglas-aeropuerto/out/script-notes.md:53-55`). VELVET CICADA solo firma sus mensajes en pantalla, y en s01 no hay ficha de
+  adversario.
+- **VELVET CICADA**, dos mensajes, sin fecha, los primeros de su voz (tutea, dice «analista», como su ficha de jefe, `src/data/course-gcti.ts:95`;
+  ironía; empuja atajos de método y no confiesa nada ni dice qué es); ver la tabla de §3:
+  - «Una palabra de mi programa y ya me pillas. Qué fácil, analista.» (`video/reglas-aeropuerto/narration.json:82`, s03-01); respuesta: «Depende.
+    Una palabra corriente salta con todos. Una que solo lleva su programa, esa sí puede ir sola.» (`:79`), que deja las dos ramas de la condición.
+  - «A mis herramientas las llamo como quiero. Tu regla no lo verá.» (`video/reglas-aeropuerto/narration.json:134`, s04-01; «herramientas», porque
+    lo que ve la Sigma es una herramienta de Windows renombrada, y para que no se lea como el «Llámame GLASS VIPER» de V3); respuesta de apertura,
+    «Pues vamos a ver qué ve la regla de Sigma.» (`:131`), y la de verdad tras la pregunta: «¿Que no lo verá? La de la tarjeta, quizá no. Esta,
+    sí.» (`:199`). No es la frase de V22 («tiene razón en algo»).
+- **No se toca** (sigue fuera; `docs/reviews/2026-10-14-fichas-tanda5/ficha-V27.md:342-360`): ningún hash, ni `4c81...b3` ni `9f3a...e1`, y no se
+  dice qué muestra cumple la YARA; `winhlp.exe` y `updsvc.exe`; el dosier de BROKEN CHAIN (`src/data/course-gcti.ts:40`): ni «el mismo PDB en tres
+  muestras» ni cuántas lo comparten (la palabra «cicada» de la ruta sale tal cual y la voz no la comenta, como en V14); la solución del Lab 3B (§4);
+  el dosier de LAST WORD (`src/data/course-gcti.ts:96-97`); la fecha 2026-04-18, MER-2026-011, el flash alert MER-FA-2026-014 y la ola de abril; el
+  C2, el certificado y `kazuo.tanji@`; STIX, TAXII y el indicador de `cdn-sync-status.example` (de V8); el TLP explicado; los niveles de la
+  pirámide; el Lab 5B y los casos reales de S5. No se culpa a nadie: ni al SOC por pedir algo que dure ni a quien escribe primero la regla ingenua.
 
 ### Plantilla para el siguiente
 
