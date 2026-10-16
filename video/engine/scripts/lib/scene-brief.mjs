@@ -10,6 +10,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { QUESTION_COUNTDOWN_DEFAULT_MS } from './narration.mjs';
 import { EXAM_BADGE } from './profiles.mjs';
 import { parseSegmentText } from './text.mjs';
 
@@ -173,6 +174,7 @@ function cueSnippet(parsed, displayIndex) {
 function keepClearLines(segments) {
   const intercepts = segments.filter((s) => s.intercept).map((s) => code(s.id));
   const thinks = segments.filter((s) => s.think).map((s) => code(s.id));
+  const questions = segments.filter((s) => s.question).map((s) => code(s.id));
   const lines = [];
   if (intercepts.length) {
     lines.push(
@@ -182,6 +184,11 @@ function keepClearLines(segments) {
   }
   if (thinks.length) {
     lines.push(`  - think prompt after ${joinAnd(thinks)} (the silent hold at the end of that segment, up to \`segment(props, id).to\`).`);
+  }
+  if (questions.length) {
+    lines.push(
+      `  - exam question from ${joinAnd(questions)} to the end of its scene (the question card covers the stage there: keep it still and free of important text).`,
+    );
   }
   if (!lines.length) lines.push('  - nothing in this video: it has no think prompts or intercepted messages.');
   return lines.join('\n');
@@ -201,6 +208,20 @@ function thinkNote(seg) {
   return (
     `Think prompt after ${code(seg.id)}: «${seg.think.q}» — a ${secs(seg.think.holdMs / 1000)} silent hold; keep the top-centre ` +
     `band clear from the end of that segment's speech to \`segment(props, '${seg.id}').to\`.`
+  );
+}
+
+function questionNote(seg) {
+  const x = seg.question;
+  const trapAt = x.trapAt ?? x.revealAt;
+  const reveal =
+    trapAt === x.revealAt
+      ? `reveals the answer and the trap on cue ${code(x.revealAt)}`
+      : `reveals the answer on cue ${code(x.revealAt)} and the trap on cue ${code(trapAt)}`;
+  return (
+    `Exam question (${x.objective}, ${secs((x.countdownMs ?? QUESTION_COUNTDOWN_DEFAULT_MS) / 1000)} countdown) at ${code(seg.id)}: «${x.q}» — ` +
+    `the question card covers the stage from segment ${code(seg.id)} to the end of the scene, so keep the scene still and free of important text there ` +
+    `(the viewer reads the card, not the scene); the card ${reveal}.`
   );
 }
 
@@ -250,12 +271,13 @@ function sceneSection(ctx, scene, segs) {
     if (seg.intercept) notes.push(interceptNote(seg, adversary, voiced));
     if (seg.exam) notes.push(examNote(seg, { badge, examTiming }));
     if (seg.think) notes.push(thinkNote(seg));
+    if (seg.question) notes.push(questionNote(seg));
   }
   if (notes.length) {
     out.push('- Timing notes:');
     for (const n of notes) out.push(`  - ${n}`);
   } else {
-    out.push('- Timing notes: none (no exam card, think prompt or intercepted message in this scene).');
+    out.push('- Timing notes: none (no exam card, exam question, think prompt or intercepted message in this scene).');
   }
   return out.join('\n');
 }
@@ -274,6 +296,7 @@ function scenesBlock(ctx, storyboard, byScene) {
     const flags = [
       ...segs.filter((s) => s.exam).map(() => 'exam'),
       ...segs.filter((s) => s.think).map((s) => `think after ${s.id}`),
+      ...segs.filter((s) => s.question).map((s) => `exam question at ${s.id}`),
       ...segs.filter((s) => s.intercept).map((s) => `intercept before ${s.id}`),
     ];
     out.push(
@@ -305,6 +328,7 @@ export function identifierCandidates(storyboard, byScene) {
       scan(seg.parsed.display, scene.id);
       scan(seg.exam?.text, scene.id);
       scan(seg.think?.q, scene.id);
+      if (seg.question) for (const t of [seg.question.scenario, seg.question.q, ...(seg.question.options ?? [])]) scan(t, scene.id);
       scan(seg.intercept?.text, scene.id);
     }
   }
