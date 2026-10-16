@@ -1,5 +1,5 @@
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
-import type { CaptionPage, ExamCue, InterceptCue, SceneTiming, ThinkPrompt as ThinkEntry } from '../timeline/types';
+import type { CaptionPage, ExamCue, InterceptCue, QuestionCue, SceneTiming, ThinkPrompt as ThinkEntry } from '../timeline/types';
 import { C, STAGE, TYPE } from '../theme/tokens';
 import { Backdrop } from '../ui/Backdrop';
 import { MonoLine } from '../ui/MonoLine';
@@ -8,6 +8,7 @@ import { SeverityBadge } from '../ui/Chip';
 import { CaptionsView } from '../overlay/Captions';
 import { ChapterRailView } from '../overlay/ChapterRail';
 import { ExamCueView } from '../overlay/ExamCueLayer';
+import { ExamQuestionView } from '../overlay/ExamQuestionLayer';
 import { InterceptView } from '../overlay/InterceptLayer';
 import { ProgressBarView } from '../overlay/ProgressBar';
 import { SimulationTagView } from '../overlay/SimulationTag';
@@ -22,8 +23,13 @@ import { ThinkPromptView } from '../overlay/ThinkPrompt';
  *   250 long lines shrunk, chapter wipe     330  think prompt mid-countdown
  *   365 last page + think prompt            420  chapter V, one-line exam card
  *   40  intercepted message typing          100  intercepted message complete
+ * Exam questions (scenes VI, after the captions end):
+ *   464 entry, options staggering in        575 mid-countdown (3 s left)
+ *   670 reveal: correct marked, others dim  720 trap marked + exam card
+ *   764 long question: entry                875 long question: mid-countdown
+ *   970 long question: reveal               1020 long question: trap + exam card
  */
-export const GALLERY_DURATION = 450;
+export const GALLERY_DURATION = 1050;
 
 const SCENES: SceneTiming[] = [
   { id: 's01-hook', chapter: 1, chapterTitle: 'Qué es', title: 'Seis mil avisos, uno importa', from: 0, durationInFrames: 90 },
@@ -32,6 +38,8 @@ const SCENES: SceneTiming[] = [
   { id: 's06-fatigue', chapter: 3, chapterTitle: 'Operar el SIEM', title: 'Alert fatigue', from: 255, durationInFrames: 45 },
   { id: 's09-pivot', chapter: 4, chapterTitle: 'El caso de Halden', title: 'Pivotar y correlacionar', from: 300, durationInFrames: 75 },
   { id: 's11-limits', chapter: 5, chapterTitle: 'Límites y examen', title: 'Lo que el SIEM no ve', from: 375, durationInFrames: 75 },
+  { id: 's12-p1', chapter: 6, chapterTitle: 'Ponte a prueba', title: 'Al cerrar la oficina', from: 450, durationInFrames: 300 },
+  { id: 's13-p2', chapter: 6, chapterTitle: 'Ponte a prueba', title: 'La copia que no llegó', from: 750, durationInFrames: 300 },
 ];
 
 /** Builds a caption page with evenly timed words (`step` frames per word, 1-frame gap). */
@@ -73,6 +81,21 @@ const EXAM: ExamCue[] = [
     objective: '4.4',
     text: 'NetFlow registra metadatos, no el payload.',
   },
+  // After each question's trap, in the same scene: the card shares the screen with the panel.
+  {
+    scene: 's12-p1',
+    from: 705,
+    durationInFrames: 40,
+    objective: '1.1',
+    text: 'Managerial decide la norma; operational la cumple cada día.',
+  },
+  {
+    scene: 's13-p2',
+    from: 1000,
+    durationInFrames: 44,
+    objective: '1.1',
+    text: 'Una alerta que avisa sola de un fallo es un control técnico de tipo detective.',
+  },
 ];
 
 const THINK: ThinkEntry[] = [
@@ -81,6 +104,53 @@ const THINK: ThinkEntry[] = [
     from: 292,
     durationInFrames: 120,
     q: '¿Qué dato te falta para saber si esos 38 GB son exfiltración?',
+  },
+];
+
+/** A short question (one-word options) and the longest the validator allows (160 / 107 / 70 / 90 characters). */
+const QUESTIONS: QuestionCue[] = [
+  {
+    scene: 's12-p1',
+    segment: 's12-01',
+    from: 456,
+    durationInFrames: 294,
+    countdownFrom: 500,
+    countdownFrames: 150,
+    revealFrame: 656,
+    trapFrame: 690,
+    objective: '1.1',
+    scenario:
+      'La dirección del puerto aprueba una norma de mesa limpia. Cada tarde, al cerrar, alguien de la oficina repasa las mesas y guarda los papeles a la vista.',
+    q: '¿A qué categoría de control pertenece el repaso de cada tarde?',
+    options: ['Technical', 'Managerial', 'Operational', 'Physical'],
+    answer: 2,
+    trap: 1,
+    why: 'Es una persona que cumple un procedimiento en el día a día.',
+    trapWhy: 'La norma es managerial, pero la pregunta es por el repaso: hacerla cumplir es operational.',
+  },
+  {
+    scene: 's13-p2',
+    segment: 's13-01',
+    from: 756,
+    durationInFrames: 294,
+    countdownFrom: 800,
+    countdownFrames: 150,
+    revealFrame: 956,
+    trapFrame: 990,
+    objective: '1.1',
+    scenario:
+      'Tras un corte de luz en la terminal norte, el técnico de turno reinicia el servidor de grúas y ve que la copia de seguridad nocturna lleva tres días sin hacerse',
+    q: '¿Qué control habría descubierto ANTES el fallo de la copia nocturna, sin depender de que alguien lo revise?',
+    options: [
+      'Una política firmada por la dirección que exige hacer copia cada noche',
+      'Una alerta automática que avisa al equipo en cuanto una copia no acaba',
+      'Un vigilante que hace rondas por la sala de servidores cada tres horas',
+      'Un cartel en la puerta de la sala que recuerda que se graba con cámara',
+    ],
+    answer: 1,
+    trap: 0,
+    why: 'Detecta sola y en el momento: avisa cuando la copia falla, sin esperar a que alguien mire.',
+    trapWhy: 'Tienta porque exige copias, pero una norma no descubre nada: es managerial, no detective.',
   },
 ];
 
@@ -131,6 +201,7 @@ export function OverlayGallery() {
       <ChapterRailView scenes={SCENES} frame={frame} />
       <SimulationTagView exam={EXAM} frame={frame} />
       <ThinkPromptView prompts={THINK} frame={frame} fps={fps} />
+      <ExamQuestionView questions={QUESTIONS} frame={frame} fps={fps} />
       <InterceptView entries={INTERCEPT} frame={frame} />
       <ExamCueView exam={EXAM} frame={frame} />
       <CaptionsView pages={CAPTIONS} frame={frame} />
