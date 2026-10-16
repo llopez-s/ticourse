@@ -39,7 +39,7 @@
       "title": "Un servidor, dos escaneos",
       "targetSec": 42,
       "wordBudget": 113,
-      "goal": "Un servidor de las oficinas, en esquema y sin nombre (`server`). Dos columnas sobre el mismo servidor. «Sin cuenta · desde la red» (`outside`): lo que se ve de fuera (puertos abiertos y lo que anuncia cada servicio) y filas «posible», con la etiqueta «deduce». «Con cuenta de escaneo» (`inside`): lo instalado y los parches que faltan, filas «confirmado», con la etiqueta «lee». Sin versiones, sin números de hallazgos y sin la palabra «banner». La consulta en miniatura, rotulada «imagen · no es del puerto» (`doctor`): mirarte desde la puerta frente a la analítica. Nombres (`names`): non-credentialed y credentialed. El chip «escaneo mensual del puerto · credentialed», sin fecha ni nombre de escáner, y debajo un rótulo pequeño «la cuenta de escaneo es privilegiada · se guarda bien» (`monthly`). Cómo llega: un servidor central que solo alcanza lo encendido y en la red en ese momento (`central`, agentless), frente a un portátil que pasa semanas fuera de la oficina con un agente de escaneo que informa desde donde esté (`agent`, agent-based); en miniatura, la consulta y el pulsómetro",
+      "goal": "Un servidor de las oficinas, en esquema y sin nombre (`server`). Dos columnas sobre el mismo servidor. «Sin cuenta · desde la red» (`outside`): lo que se ve de fuera (puertos abiertos y lo que anuncia cada servicio) y filas «posible», con la etiqueta «deduce». «Con cuenta de escaneo» (`inside`): lo instalado y los parches que faltan, filas «confirmado», con la etiqueta «lee». Sin versiones, sin números de hallazgos y sin la palabra «banner». La consulta en miniatura, rotulada «imagen · no es del puerto» (`doctor`): mirarte desde la puerta frente a la analítica. Nombres (`names`): non-credentialed y credentialed. El chip «escaneo mensual del puerto · credentialed», sin fecha ni nombre de escáner, y debajo un rótulo pequeño «la cuenta de escaneo es privilegiada · se guarda bien» (`monthly`, en la última palabra de la frase de los nombres; sin pisar la tarjeta de examen). Cómo llega: un servidor central que solo alcanza lo encendido y en la red en ese momento (`central`, agentless), frente a un portátil que pasa semanas fuera de la oficina con un agente de escaneo que informa desde donde esté (`agent`, agent-based); en miniatura, la consulta y el pulsómetro",
       "requiredCues": [
         "server",
         "outside",
@@ -57,7 +57,7 @@
       "title": "Una web antes de abrirla",
       "targetSec": 34,
       "wordBudget": 70,
-      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel de pregunta tapa la escena hasta el final, así que el fondo se queda quieto (una web nueva, a medio abrir, sin nombre ni texto). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: la que responde a lo que se pide, aunque otra encuentre más» (`best`), que la voz explica antes de la cuenta atrás. Cuenta atrás de 5 s; en `ok-1` sale la correcta (Non-credentialed scan) y en `trap-1` la trampa (Credentialed scan). En la resolución vuelve la consulta en una línea (`passerby`); la tarjeta de examen entra después de la trampa",
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel de pregunta tapa la escena hasta el final, así que el fondo se queda quieto (una web nueva, a medio abrir, sin nombre ni texto). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: la que responde a lo que se pide, aunque otra encuentre más» (`best`), que la voz explica antes de la cuenta atrás. Cuenta atrás de 5 s; en `ok-1` sale la correcta (Non-credentialed scan) y en `trap-1` la trampa (Credentialed scan). En la resolución vuelve la consulta en una línea (`passerby`): desde la puerta sobra la analítica; la tarjeta de examen entra después de la trampa",
       "requiredCues": [
         "q1",
         "best",
@@ -104,7 +104,7 @@
       "title": "Lo que pasa fuera",
       "targetSec": 38,
       "wordBudget": 103,
-      "goal": "Las tres siluetas de s01; se enciende la puerta a la calle (`door`): todo lo anterior mira dentro de casa. Cuatro fuentes en fila, cada una con su viñeta de la tienda de la calle, rotulada «imagen · no es del puerto»: «OSINT · publicado · gratis · hay que cribar» (el periódico) (`osint`); «fuentes de pago · proprietary · alguien criba por ti» (el servicio de avisos) (`paid`); «ISAC · el sector se lo cuenta · no se publica» (el grupo de las tiendas; en pequeño, «para un puerto, el ISAC marítimo») (`isac`); «dark web monitoring · lo tuyo a la venta» (el mercadillo) (`darkweb`), con «tus credenciales · tus datos · tu nombre como objetivo» y las llaves en un puesto (`keys`)",
+      "goal": "Las tres siluetas de s01; se enciende la puerta a la calle (`door`): todo lo anterior mira dentro de casa. Cuatro fuentes en fila, cada una con su viñeta de la tienda de la calle, rotulada «imagen · no es del puerto»: «OSINT · publicado · gratis · hay que cribar» (el periódico) (`osint`); «fuentes de pago · proprietary · alguien criba por ti» (el servicio de avisos) (`paid`); «ISAC · el sector se lo cuenta · no se publica» (el grupo de las tiendas; en pequeño, «para un puerto, el ISAC marítimo») (`isac`); «dark web monitoring · lo tuyo a la venta» (el mercadillo) (`darkweb`), con «tus credenciales · tus datos · tu nombre como objetivo»; en un puesto del mercadillo, un cartel «tus credenciales · tus datos · tu nombre» (`keys`). Sin llaves: son la imagen del spraying de V10",
       "requiredCues": [
         "door",
         "osint",
@@ -134,7 +134,7 @@
       "title": "Para el examen",
       "targetSec": 20,
       "wordBudget": 54,
-      "goal": "Tres reglas, cada una con su icono (la consulta · la casa · la tienda de la calle) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Con cuenta, el escaneo lee lo de dentro; sin cuenta, ves lo que ve cualquiera. Y el agente llega a lo que no está en la red» · «SAST necesita el código y llega antes; DAST solo necesita la aplicación en marcha» · «Lo de fuera te lo cuentan otros: el sector, en un ISAC; lo tuyo a la venta, la dark web». La frase para el examen (`phrase`): «Antes de elegir, pregúntate qué puede ver ese método y qué no». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "goal": "Tres reglas, cada una con su icono (la consulta · la casa · la tienda de la calle) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Con cuenta, el escaneo lee lo de dentro; sin cuenta, ves lo que ve cualquiera. Y el agente llega a lo que casi nunca está en la red del puerto» · «SAST necesita el código y llega antes; DAST solo necesita la aplicación en marcha» · «Lo que pasa fuera de casa te lo cuentan otros: el sector, en un ISAC; lo tuyo a la venta, la dark web». La frase para el examen (`phrase`): «Antes de elegir, pregúntate qué puede ver ese método y qué no». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
       "requiredCues": [
         "recap",
         "rule-1",

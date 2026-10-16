@@ -277,7 +277,7 @@ const sp4m4: Module = {
   blocks: [
     {
       t: 'p',
-      md: 'El objetivo 4.3 se divide en dos mitades naturales y esta lección cubre la primera: **cómo te enteras**. Antes de priorizar, parchear o aceptar un riesgo hace falta que el hallazgo exista, y ninguna técnica los ve todos. Un escáner de red conoce lo **ya publicado**; el análisis de código ve lo que aún no se ha desplegado; la vigilancia de dependencias ve lo que tu propio código importa sin mirar; las fuentes de inteligencia ven lo que ocurre **fuera** de tu red; y una prueba de intrusión ve lo que solo aparece cuando alguien encadena tres cosas menores con criterio. La pregunta de examen casi nunca es «¿cuál es la mejor?», sino **cuál responde a esta situación concreta**, así que conviene tener claro el punto ciego de cada una.',
+      md: 'El objetivo 4.3 se divide en dos mitades naturales y esta lección cubre la primera: **cómo te enteras**. Antes de priorizar, parchear o aceptar un riesgo hace falta que el hallazgo exista, y ninguna técnica los ve todos. Un escáner de red conoce lo **ya publicado**; el análisis de código ve lo que aún no se ha desplegado; la vigilancia de dependencias ve lo que tu propio código importa sin mirar; las fuentes de inteligencia ven lo que ocurre **fuera** de tu red; y una prueba de intrusión ve lo que solo aparece cuando alguien encadena tres cosas menores con criterio. La pregunta de examen casi nunca es «¿cuál es la más potente?», sino **cuál responde a esta situación concreta**, así que conviene tener claro el punto ciego de cada una.',
     },
     { t: 'h', text: 'Escanear: el barrido que encuentra lo conocido' },
     {

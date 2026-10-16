@@ -26,19 +26,19 @@
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Qué ve cada método. {promise}Lo vas a ver en las máquinas, en las aplicaciones y fuera de casa. Y el examen no pide el mejor, sino el que encaja.",
+      "text": "<confident> {title}Qué ve cada método. {promise}Lo vas a ver en las máquinas, en las aplicaciones y fuera de casa. Porque en el examen no siempre gana el que más ve.",
       "pauseAfterMs": 400
     },
     {
       "id": "s02-01",
       "scene": "s02-escaneo",
-      "text": "<engaging> {server}Empezamos por las máquinas, con un servidor escaneado dos veces.",
+      "text": "<engaging> {server}Empezamos por las máquinas. Este servidor lo escaneamos dos veces.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-02",
       "scene": "s02-escaneo",
-      "text": "<thoughtful> {outside}Sin cuenta, ve lo que vería cualquiera de fuera. Y como lo deduce, da avisos que no lo son.",
+      "text": "<thoughtful> {outside}Sin cuenta, ve lo que vería cualquiera desde fuera. El resto lo deduce, así que a veces avisa de fallos que no hay.",
       "pauseAfterMs": 250
     },
     {
@@ -50,7 +50,7 @@
     {
       "id": "s02-04",
       "scene": "s02-escaneo",
-      "text": "<warm> {doctor}Es el médico que te mira desde la puerta y adivina, frente a la analítica. {names}Sin cuenta es non-credentialed, y con cuenta, credentialed.",
+      "text": "<warm> {doctor}Es como el médico que te mira desde la puerta y adivina, frente a la analítica. {names}Sin cuenta es non-credentialed, y con cuenta, {monthly}credentialed.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "4.3",
@@ -62,7 +62,7 @@
     {
       "id": "s02-05",
       "scene": "s02-escaneo",
-      "text": "<steady> {monthly}El escaneo mensual del puerto va con cuenta. {central}Además, importa cómo llega. Desde un servidor central, solo ve lo encendido y conectado, como la consulta solo ve a quien va.",
+      "text": "<steady> {central}Y también importa desde dónde mira. Desde un servidor central, solo ve lo encendido y conectado, como la consulta, que solo ve a quien va.",
       "pauseAfterMs": 250
     },
     {
@@ -74,7 +74,7 @@
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca. El puerto va a abrir una web nueva. Seguridad quiere saber qué enseña a cualquiera, como lo vería una atacante sin cuenta. Alguien propone la cuenta de escaneo, que encuentra más. ¿Qué método responde mejor a lo que busca? {best}Ese «mejor» pide lo que responde, aunque otro encuentre más.",
+      "text": "<intrigued> {q1}Te toca. El puerto va a abrir una web nueva. Seguridad quiere saber qué enseña a cualquiera, como lo vería una atacante sin cuenta. Alguien propone la cuenta de escaneo. ¿Qué método responde mejor a lo que busca? {best}Fíjate, «mejor» no es el que más encuentra.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "4.3",
@@ -98,13 +98,13 @@
     {
       "id": "s03-02",
       "scene": "s03-p1",
-      "text": "<firm> {ok-1}Es non-credentialed, porque mira como ella, sin cuenta. {trap-1}Credentialed tienta porque encuentra más, pero ve lo de dentro, y ella no.",
+      "text": "<firm> {ok-1}Gana non-credentialed, que mira como ella. {trap-1}Con cuenta encontrarías más, pero mezclarías lo de dentro, que ella no ve.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-03",
       "scene": "s03-p1",
-      "text": "<warm> {passerby}Para saber qué ve quien pasa, no hace falta la analítica.",
+      "text": "<warm> {passerby}O sea, que para saber qué se ve desde la puerta, sobra la analítica.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "4.3",
@@ -116,13 +116,13 @@
     {
       "id": "s04-01",
       "scene": "s04-aplicacion",
-      "text": "<engaging> {code}Pasamos a las aplicaciones. Antes de desplegar una aplicación propia, una herramienta lee su código sin ejecutarlo.",
+      "text": "<engaging> {code}Pasamos a las aplicaciones. Antes de estrenar una propia, una herramienta lee su código sin ejecutarlo.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-02",
       "scene": "s04-aplicacion",
-      "text": "<clear> Encuentra una contraseña escrita dentro, y algo de ruido. {sast}Eso es static analysis, SAST, que llega pronto pero necesita el código.",
+      "text": "<clear> Pilla una contraseña escrita dentro. {sast}Se llama static analysis, SAST, y llega pronto, pero necesita el código.",
       "pauseAfterMs": 300
     },
     {
@@ -134,11 +134,17 @@
     {
       "id": "s04-04",
       "scene": "s04-aplicacion",
-      "text": "<curious> {parts}Y si sale un fallo en una biblioteca de otros, la lista de componentes dice qué aplicaciones la llevan. {sbom}Es el SBOM, y vigilar esas piezas es package monitoring.",
+      "text": "<curious> {parts}Y si sale un fallo en una pieza ajena, la lista de componentes de cada aplicación te dice cuáles la llevan.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-05",
+      "scene": "s04-aplicacion",
+      "text": "<thoughtful> {sbom}Esa lista es el SBOM, y vigilar esas piezas es package monitoring.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
       "scene": "s04-aplicacion",
       "text": "<warm> {house}Como en una casa, miras los planos antes de construir y abres los grifos cuando está hecha.",
       "pauseAfterMs": 600,
@@ -152,7 +158,7 @@
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<intrigued> {q2}Una web del puerto, con su código en casa, ya está publicada. Si le pides una página que no existe, el error enseña detalles internos del servidor. Y eso no viene del código, sino de cómo se configuró el servidor. ¿Con qué técnica es más probable encontrarlo? {likely}Ese «más probable» no pide la única posible, sino la que mejor encaja.",
+      "text": "<intrigued> {q2}Una web del puerto, con su código en casa, ya está publicada. Si le pides una página que no existe, el error enseña detalles internos del servidor. Y no es cosa del código, sino de cómo se configuró el servidor. ¿Con qué técnica es más probable encontrarlo? {likely}Ojo con «más probable», que no significa «la única».",
       "pauseAfterMs": 250,
       "question": {
         "objective": "4.3",
@@ -176,37 +182,43 @@
     {
       "id": "s05-02",
       "scene": "s05-p2",
-      "text": "<confident> {ok-2}DAST, porque prueba la aplicación en marcha. {trap-2}SAST tienta porque tienes el código, pero el fallo no está en él. {house-back}Los planos pueden estar perfectos y el grifo, mal montado.",
+      "text": "<confident> {ok-2}Es dynamic analysis, DAST, que la prueba en marcha. {trap-2}El código lo tienes, pero el fallo no está ahí. {house-back}Los planos pueden estar perfectos y el grifo, mal montado.",
       "pauseAfterMs": 1000
     },
     {
       "id": "s06-01",
       "scene": "s06-fuera",
-      "text": "<thoughtful> {door}Hasta aquí, todo mira dentro. Pero hay cosas que solo se saben fuera, y te las cuentan otros.",
+      "text": "<thoughtful> {door}Hasta aquí, todo mira dentro de casa. Pero hay cosas que pasan fuera, y te las cuentan otros.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-02",
       "scene": "s06-fuera",
-      "text": "<clear> {osint}Piensa en una tienda. Lo publicado es como el periódico, gratis pero hay que leerlo entero, y se llama OSINT. {paid}Si pagas, otro lo lee por ti.",
+      "text": "<clear> {osint}Piensa en una tienda. Lo publicado es como el periódico, gratis pero hay que leerlo entero, y se llama OSINT.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-03",
       "scene": "s06-fuera",
-      "text": "<warm> {isac}Las tiendas de la calle se avisan del billete falso que les intentan colar, y eso no sale en ningún periódico.",
+      "text": "<engaging> {paid}Si pagas, otro lo lee por ti y añade lo que sabe él.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-04",
       "scene": "s06-fuera",
-      "text": "<focused> Entre organizaciones de un sector, eso es un ISAC.",
+      "text": "<warm> {isac}Las tiendas de la calle se avisan del billete falso que les intentan colar, y eso no sale en ningún periódico.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-05",
       "scene": "s06-fuera",
-      "text": "<serious> {darkweb}Y el dark web monitoring busca lo tuyo, tus credenciales o tus datos, donde se vende lo robado. {keys}Es ir al mercadillo a ver si están tus llaves.",
+      "text": "<focused> Entre organizaciones de un sector, eso es un ISAC.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-fuera",
+      "text": "<serious> {darkweb}Y el dark web monitoring busca tus credenciales o tus datos donde se vende lo robado. {keys}Es ir al mercadillo a ver si está lo tuyo.",
       "pauseAfterMs": 600,
       "exam": {
         "objective": "4.3",
@@ -218,12 +230,12 @@
     {
       "id": "s07-01",
       "scene": "s07-p3",
-      "text": "<engaging> {q3}La última. Dos puertos de la misma costa sufren el mismo ataque y sacan una lista de direcciones y ficheros sospechosos. No la publican. La comparten solo con el sector, en un grupo que reparte avisos entre sus miembros. ¿Qué fuente le haría llegar esa lista al puerto?",
+      "text": "<engaging> {q3}La última. Dos puertos de la misma costa sufren el mismo ataque y sacan una lista de direcciones y ficheros sospechosos. No la publican, la comparten solo en un grupo del sector que se pasa avisos. ¿Qué fuente se la haría llegar a Halden?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "4.3",
         "scenario": "Dos puertos de la misma costa sufren el mismo ataque y sacan una lista de direcciones y ficheros sospechosos. No la publican: la comparten solo en el sector.",
-        "q": "Lo hacen en un grupo que reparte avisos entre sus miembros. ¿Qué fuente le haría llegar esa lista al puerto?",
+        "q": "Lo hacen en un grupo que reparte avisos entre sus miembros. ¿Qué fuente le haría llegar esa lista a Halden?",
         "options": [
           "Information-sharing organization (ISAC)",
           "OSINT",
@@ -242,13 +254,13 @@
     {
       "id": "s07-02",
       "scene": "s07-p3",
-      "text": "<firm> {ok-3}El ISAC, el grupo del sector que se pasa avisos. {trap-3}El dark web monitoring tienta porque suena a cerrado, pero busca lo tuyo a la venta.",
+      "text": "<firm> {ok-3}El ISAC, el grupo del sector. {trap-3}El dark web monitoring despista porque suena a cerrado, pero ahí se busca lo tuyo a la venta.",
       "pauseAfterMs": 300
     },
     {
       "id": "s07-03",
       "scene": "s07-p3",
-      "text": "<warm> {shops}Aquí son víctimas que se avisan. Es el grupo de las tiendas, no el mercadillo.",
+      "text": "<warm> {shops}Aquí son víctimas que se avisan. O sea, el grupo de las tiendas, no el mercadillo.",
       "pauseAfterMs": 700,
       "exam": {
         "objective": "4.3",
@@ -260,7 +272,7 @@
     {
       "id": "s08-01",
       "scene": "s08-cierre",
-      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Con cuenta se lee lo de dentro, y sin cuenta se ve lo de fuera.",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Con cuenta se lee lo de dentro, y sin cuenta, lo que ve cualquiera.",
       "pauseAfterMs": 250
     },
     {
@@ -272,7 +284,7 @@
     {
       "id": "s08-03",
       "scene": "s08-cierre",
-      "text": "<firm> {rule-3}Y lo de fuera te lo cuentan otros.",
+      "text": "<firm> {rule-3}Y lo que pasa fuera de casa te lo cuentan otros.",
       "pauseAfterMs": 300
     },
     {
