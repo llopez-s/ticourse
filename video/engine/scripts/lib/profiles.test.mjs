@@ -48,3 +48,17 @@ test('mp4PathFor: repo profiles render into public/videos, YouTube ones into the
   assert.equal(mp4PathFor({ profile: 'principal', output: 'x' }, dir, pub), path.join(pub, 'x.mp4'));
   assert.equal(mp4PathFor({ profile: 'principal-yt', output: 'x' }, dir, pub), path.join(dir, 'out', 'x.mp4'));
 });
+
+test('caso-yt and caso-principal-yt: the case-and-exam windows', () => {
+  const c = profileFor('caso-yt');
+  assert.deepEqual([c.minTotalSec, c.maxTotalSec, c.maxChapters], [240, 330, 3]);
+  assert.deepEqual([c.examCards, c.thinkPrompts, c.intercepts, c.examQuestions], [[3, 5], 0, [0, 1], [3, 3]]);
+  const p = profileFor('caso-principal-yt');
+  assert.deepEqual([p.minTotalSec, p.maxTotalSec, p.maxChapters], [420, 600, 5]);
+  assert.deepEqual([p.examCards, p.thinkPrompts, p.intercepts, p.examQuestions], [[5, 8], 0, [0, 2], [4, 5]]);
+  for (const x of [c, p]) assert.deepEqual([x.chispa, x.host, x.captionsOnScreen, x.size], [true, 'youtube', false, null]);
+});
+
+test('the older profiles expect no exam questions', () => {
+  for (const name of ['principal', 'capsula', 'principal-yt', 'capsula-yt']) assert.deepEqual(profileFor(name).examQuestions, [0, 0]);
+});

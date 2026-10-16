@@ -17,6 +17,7 @@ export const PROFILES = Object.freeze({
     examCards: [8, 11],
     thinkPrompts: 2,
     intercepts: [0, 0],
+    examQuestions: [0, 0],
     chispa: false,
     host: 'repo',
     crf: 23,
@@ -32,6 +33,7 @@ export const PROFILES = Object.freeze({
     examCards: [4, 6],
     thinkPrompts: 1,
     intercepts: [0, 0],
+    examQuestions: [0, 0],
     chispa: false,
     host: 'repo',
     crf: 27,
@@ -47,6 +49,7 @@ export const PROFILES = Object.freeze({
     examCards: [5, 8],
     thinkPrompts: 2,
     intercepts: [2, 4],
+    examQuestions: [0, 0],
     chispa: true,
     host: 'youtube',
     crf: 18,
@@ -62,6 +65,39 @@ export const PROFILES = Object.freeze({
     examCards: [3, 5],
     thinkPrompts: 1,
     intercepts: [1, 2],
+    examQuestions: [0, 0],
+    chispa: true,
+    host: 'youtube',
+    crf: 18,
+    x264Preset: 'medium', // YouTube re-encodes the upload: 'slow' bought nothing visible, at ~2× the encode time
+    captionsOnScreen: false, // YouTube shows the uploaded VTT (the app's embed forces it on): burned-in ones were redundant
+    size: null,
+  }),
+  /** Case-and-exam capsule for YouTube: ~4–5.5 min, the case told in chapters and three exam questions (spec 2026-10-16-secplus-casos-examen-design.md). */
+  'caso-yt': Object.freeze({
+    minTotalSec: 240,
+    maxTotalSec: 330,
+    maxChapters: 3,
+    examCards: [3, 5],
+    thinkPrompts: 0,
+    intercepts: [0, 1],
+    examQuestions: [3, 3],
+    chispa: true,
+    host: 'youtube',
+    crf: 18,
+    x264Preset: 'medium', // YouTube re-encodes the upload: 'slow' bought nothing visible, at ~2× the encode time
+    captionsOnScreen: false, // YouTube shows the uploaded VTT (the app's embed forces it on): burned-in ones were redundant
+    size: null,
+  }),
+  /** Case-and-exam explainer for YouTube: ~7–10 min, the case told in chapters and four or five exam questions (spec 2026-10-16-secplus-casos-examen-design.md). */
+  'caso-principal-yt': Object.freeze({
+    minTotalSec: 420,
+    maxTotalSec: 600,
+    maxChapters: 5,
+    examCards: [5, 8],
+    thinkPrompts: 0,
+    intercepts: [0, 2],
+    examQuestions: [4, 5],
     chispa: true,
     host: 'youtube',
     crf: 18,
