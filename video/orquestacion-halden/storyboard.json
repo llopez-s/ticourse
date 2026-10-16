@@ -58,7 +58,7 @@
       "title": "El primer día de alguien",
       "targetSec": 36,
       "wordBudget": 76,
-      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel de pregunta tapa la escena hasta el final, así que el fondo se queda quieto (una oficina de Sistemas a media luz, sin texto). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: la que encaja con este caso, aunque otra suene bien» (`best`), que la voz explica antes de la cuenta atrás. Cuenta atrás de 5 s; en `ok-1` sale la correcta (Orchestration) y en `trap-1` la trampa (Automation). La tarjeta de examen entra después de la trampa (`flow`)",
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel de pregunta tapa la escena hasta el final, así que el fondo se queda quieto (una oficina de Sistemas a media luz, sin texto). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: la que más encaja aquí, aunque otra también sea verdad en parte» (`best`), que la voz explica antes de la cuenta atrás. Cuenta atrás de 5 s; en `ok-1` sale la correcta (Orchestration) y en `trap-1` la trampa (Automation). La tarjeta de examen entra después de la trampa (`flow`)",
       "requiredCues": [
         "q1",
         "best",
@@ -73,7 +73,7 @@
       "title": "Un caso que nadie coge",
       "targetSec": 36,
       "wordBudget": 97,
-      "goal": "Vuelve el flujo de s02, de noche (`queue`). El caso aparece en la cola del SOC con su hora (`ticket`): TICKET CREATION, «queda apuntado». Un contador de minutos, sin hora del día; nadie lo coge (`minutes`). Mensaje interceptado de SILENT PAGER (en el segmento que lo responde). Respuesta: un caso abierto que nadie mira es una alerta perdida en un buzón. Al lado, el timbre del hospital: la luz encima de la puerta, apuntado (`bell`); sin nadie, el aviso en el control de enfermería, sube (`station`). A los quince minutos, el flujo le sube la gravedad y avisa a la guardia: ESCALATION (`escalate`). Cierra con la tercera pieza en un chip (`cut`): «enabling/disabling access · tras confirmar la analista». Sin tarjeta de examen",
+      "goal": "Vuelve el flujo de s02, de noche, esta vez por la rama «no» del rombo «¿riesgo alto?» (`queue`). El caso aparece en la cola del SOC con una marca relativa («+00:00» / «hace 0 min»), nunca con hora de reloj (`ticket`): TICKET CREATION, «queda apuntado». Un contador de minutos; nadie lo coge (`minutes`). Mensaje interceptado de SILENT PAGER (en el segmento que lo responde). Respuesta: apuntar un caso no es atenderlo. Al lado, el timbre del hospital: la luz encima de la puerta, apuntado (`bell`); sin nadie, el aviso en el control de enfermería, sube (`station`). A los quince minutos, el flujo le sube la prioridad y avisa a la guardia: ESCALATION (`escalate`). Cierra con la tercera pieza en un chip (`cut`): «enabling/disabling services and access · tras confirmar la analista», sobre las sesiones de la cuenta. Sin tarjeta de examen",
       "requiredCues": [
         "queue",
         "ticket",
@@ -104,7 +104,7 @@
       "title": "Toda la avenida en una central",
       "targetSec": 42,
       "wordBudget": 113,
-      "goal": "El flujo de s02 y s04 se recoge en una sola caja, «plataforma de orquestación», sin nombre de producto (`one-box`). Vuelve la avenida. Primera cara (`central-down`): la central se apaga y los semáforos se atascan todos a la vez; en el flujo, tres pasos en gris (`grey`): «no se abre el caso · no se avisa a nadie · no se corta nada». Segunda cara (`central-taken`): alguien entra en la central y pone todos en verde; en el flujo, la cuenta de la plataforma con flechas a cada herramienta que toca, sin permisos, bóveda ni llaves. Nombre SINGLE POINT OF FAILURE, con «y objetivo privilegiado» debajo (`spof`). Después, dos fichas (`two-cards`): la avenida de cuarenta semáforos, bien llevada pero difícil de entender cuando se atasca → COMPLEXITY (`complexity`); el semáforo de una calle con la etiqueta «lo programó alguien que ya no trabaja aquí · sin planos · sin dueño» → TECHNICAL DEBT (`debt`). Chip final (`support`): ONGOING SUPPORTABILITY, «¿quién lo va a mantener?»",
+      "goal": "El flujo de s02 y s04 se recoge en una sola caja, «plataforma de orquestación», sin nombre de producto (`one-box`). Vuelve la avenida. Primera cara (`central-down`): la central se apaga y los semáforos se atascan todos a la vez; en el flujo, tres pasos en gris (`grey`): «no se abre el caso · no se avisa a nadie · no se corta nada». Segunda cara (`central-taken`): alguien entra en la central y pone todos en verde; en el flujo, la cuenta de la plataforma con flechas a cada herramienta que toca, sin permisos, bóveda ni llaves. Dos nombres, cada uno junto a su cara (`spof`): SINGLE POINT OF FAILURE junto a la central apagada, OBJETIVO PRIVILEGIADO junto a la central tomada. Después, dos fichas (`two-cards`): la avenida de cuarenta semáforos, bien llevada pero difícil de entender cuando se atasca → COMPLEXITY (`complexity`); el semáforo de una calle con la etiqueta «lo programó alguien que ya no trabaja aquí · sin planos · sin dueño» → TECHNICAL DEBT (`debt`). Chip final (`support`): ONGOING SUPPORTABILITY, «¿quién lo va a mantener?»",
       "requiredCues": [
         "one-box",
         "central-down",
@@ -123,7 +123,7 @@
       "title": "Cuando el flujo falla",
       "targetSec": 36,
       "wordBudget": 76,
-      "goal": "Pregunta tipo examen 3 (`q3`), rótulo «pregunta tipo examen · ejemplo». Un diagrama con cinco cajas sin nombre de producto («directorio · EDR · correo · cortafuegos · tickets») cuando la voz dice «cinco herramientas distintas» (`five`); la voz no las lee. El panel de pregunta tapa la escena desde `q3`: dónde va el diagrama se decide al montar (ver `out/script-notes.md`). En `ok-3` la correcta (Complexity), en `trap-3` la trampa (Technical debt); la tarjeta de examen después (`neglect`)",
+      "goal": "Pregunta tipo examen 3 (`q3`), rótulo «pregunta tipo examen · ejemplo». Un diagrama con cinco cajas sin nombre de producto («directorio · EDR · correo · cortafuegos · tickets») cuando la voz dice «cinco herramientas distintas» (`five`); la voz no las lee. El panel de pregunta tapa la escena desde `q3`: dónde va el diagrama se decide al montar (ver `out/script-notes.md`). El escenario en pantalla dice «para dar con la pieza rota». En `ok-3` la correcta (Complexity), en `trap-3` la trampa (Technical debt); la tarjeta de examen después (`neglect`)",
       "requiredCues": [
         "q3",
         "five",

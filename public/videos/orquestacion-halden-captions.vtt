@@ -7,7 +7,7 @@ de Halden, salta una alerta.
 
 2
 00:00:05.233 --> 00:00:10.100
-Toca pasarla a mano por cinco
+Toca copiarla a mano en cinco
 pantallas, y nunca sale igual.
 
 3
@@ -20,324 +20,329 @@ Vas a ver qué hace una tarea sola,
 cómo se encadena el flujo y lo que cuesta.
 
 5
-00:00:20.367 --> 00:00:26.000
-Primero, un solo paso. El caso se abre
-solo, y siempre con los mismos campos.
+00:00:20.367 --> 00:00:24.033
+El caso se abre solo,
+siempre con los mismos campos,
 
 6
-00:00:26.000 --> 00:00:31.867
-Es como un semáforo con temporizador.
+00:00:24.033 --> 00:00:29.467
+como un semáforo con temporizador.
 Una tarea que va sola es automation.
 
 7
-00:00:31.867 --> 00:00:37.967
-Y lo que gana seguridad no es la prisa.
-Es que sale siempre igual.
+00:00:29.467 --> 00:00:36.367
+Y lo que gana la seguridad no es solo
+la rapidez. Es que sale siempre igual.
 
 8
-00:00:37.967 --> 00:00:39.467
+00:00:36.367 --> 00:00:37.867
 Ahora une los pasos.
 
 9
-00:00:39.467 --> 00:00:42.867
+00:00:37.867 --> 00:00:41.267
 El EDR avisa, y el flujo
 pregunta al proveedor
 
 10
-00:00:42.867 --> 00:00:46.267
+00:00:41.267 --> 00:00:44.667
 de identidad desde dónde entró la cuenta.
 
 11
-00:00:46.267 --> 00:00:51.767
-Abre el caso y, si el riesgo
-es alto, avisa a la guardia.
+00:00:44.667 --> 00:00:48.567
+Si el riesgo es alto, avisa a la guardia.
 
 12
-00:00:51.767 --> 00:00:55.667
-Es lo que hace la central
-de los semáforos de una avenida,
+00:00:48.567 --> 00:00:51.900
+Piensa en la central
+de tráfico de una avenida.
 
 13
-00:00:55.667 --> 00:00:58.000
-que le abre paso a una ambulancia.
+00:00:51.900 --> 00:00:57.267
+Coordina todos los semáforos y,
+si llega una ambulancia, le abre paso.
 
 14
-00:00:58.000 --> 00:01:02.867
-Varias tareas encadenadas
-y con condiciones son orchestration.
+00:00:57.267 --> 00:01:01.067
+Encadenar tareas de varias herramientas,
+con condiciones si hace falta,
 
 15
-00:01:02.867 --> 00:01:07.767
+00:01:01.067 --> 00:01:02.467
+es orchestration.
+
+16
+00:01:02.467 --> 00:01:07.367
 En el SOC se llama SOAR,
 y su receta, playbook.
 
-16
-00:01:08.433 --> 00:01:14.400
-Te toca. Sistemas tiene un script
-que crea cuentas, y ahora lo usa un flujo.
-
 17
-00:01:14.400 --> 00:01:20.200
-Con cada alta de Recursos Humanos,
-crea la cuenta y la mete en sus grupos.
+00:01:07.933 --> 00:01:12.733
+Te toca. Un flujo usa el script
+de Sistemas que crea cuentas.
 
 18
-00:01:20.200 --> 00:01:24.533
+00:01:12.733 --> 00:01:16.400
+Cuando Recursos Humanos
+da de alta a alguien,
+
+19
+00:01:16.400 --> 00:01:19.567
+le crea la cuenta y la mete en sus grupos.
+
+20
+00:01:19.567 --> 00:01:23.900
 Luego le abre el buzón y pide
 su portátil con un ticket.
 
-19
-00:01:24.533 --> 00:01:28.700
+21
+00:01:23.900 --> 00:01:28.033
 ¿Qué describe mejor ese flujo?
 Ojo con ese «mejor».
 
-20
-00:01:28.700 --> 00:01:33.733
-Pide la que más encaja aquí,
-aunque otra suene bien.
+22
+00:01:28.033 --> 00:01:34.433
+Pide la que más encaja aquí, aunque
+otra también sea verdad en parte.
 
-21
-00:01:32.933 --> 00:01:37.933
+23
+00:01:33.633 --> 00:01:38.633
 A) Automation
 B) Escalation
 C) Orchestration
 D) Guard rails
 
-22
-00:01:38.100 --> 00:01:43.567
-Orchestration, porque encadena tareas
+24
+00:01:38.800 --> 00:01:44.100
+Es orchestration. Encadena tareas
 en el directorio, el correo y los tickets.
 
-23
-00:01:43.567 --> 00:01:46.433
+25
+00:01:44.100 --> 00:01:47.067
 Automation tienta, porque todo pasa solo.
 
-24
-00:01:46.433 --> 00:01:50.600
+26
+00:01:47.067 --> 00:01:51.300
 Pero eso es el script,
 y te preguntan por el flujo.
 
-25
-00:01:51.967 --> 00:01:56.033
-Vuelve la alerta, y ahora
-cada paso tiene nombre.
-
-26
-00:01:56.033 --> 00:02:02.267
-El flujo la apunta en la cola del SOC,
-con su hora. Eso es ticket creation.
-
 27
-00:02:02.267 --> 00:02:05.367
-Pero pasan los minutos y nadie la coge.
+00:01:52.667 --> 00:01:58.800
+Vuelve la alerta, esta vez sin riesgo
+alto, y ahora cada paso tiene nombre.
 
 28
-00:02:05.367 --> 00:02:11.567
+00:01:58.800 --> 00:02:04.967
+El flujo la apunta en la cola del SOC
+con su hora, o sea, ticket creation.
+
+29
+00:02:04.967 --> 00:02:08.067
+Pero pasan los minutos y nadie la coge.
+
+30
+00:02:08.067 --> 00:02:14.267
 Justo lo que quiere SILENT PAGER,
 que cuenta con que tu SOC duerma.
 
-29
-00:02:14.467 --> 00:02:20.867
-Pues no basta. Un caso que nadie mira
-es una alerta perdida en un buzón.
+31
+00:02:17.167 --> 00:02:21.567
+Pues no basta, porque apuntar
+un caso no es atenderlo.
 
-30
-00:02:20.867 --> 00:02:23.533
+32
+00:02:21.567 --> 00:02:24.233
 Es como el timbre de un hospital.
 
-31
-00:02:23.533 --> 00:02:29.567
+33
+00:02:24.233 --> 00:02:30.267
 Se enciende la luz de la puerta y,
 si nadie entra, suena en enfermería.
 
-32
-00:02:29.567 --> 00:02:34.867
-A los quince minutos, el flujo sube
-la gravedad y avisa a la guardia.
-
-33
-00:02:34.867 --> 00:02:36.667
-Eso es escalation.
-
 34
-00:02:36.667 --> 00:02:40.033
-Y cuando la analista lo confirma,
-corta sus sesiones.
+00:02:30.267 --> 00:02:35.567
+A los quince minutos, el flujo sube
+la prioridad y avisa a la guardia.
 
 35
-00:02:40.033 --> 00:02:43.167
-Eso es enabling, disabling access.
+00:02:35.567 --> 00:02:37.367
+Eso es escalation.
 
 36
-00:02:43.833 --> 00:02:50.500
+00:02:37.367 --> 00:02:41.733
+Y cuando la analista lo confirma,
+corta las sesiones de la cuenta,
+
+37
+00:02:41.733 --> 00:02:45.867
+que es enabling,
+disabling services and access.
+
+38
+00:02:46.433 --> 00:02:53.033
 Un escaneo encuentra un fallo crítico
 y el flujo abre un ticket para Sistemas.
 
-37
-00:02:50.500 --> 00:02:53.300
+39
+00:02:53.033 --> 00:02:55.800
 A los dos días nadie lo ha cogido,
 
-38
-00:02:53.300 --> 00:02:57.900
-y el flujo lo marca urgente
+40
+00:02:55.800 --> 00:03:00.167
+así que lo marca urgente
 y se lo pasa al responsable.
 
-39
-00:02:57.900 --> 00:03:03.133
+41
+00:03:00.167 --> 00:03:05.333
 ¿Qué caso de uso describe
 lo que hace a los dos días?
 
-40
-00:03:02.333 --> 00:03:07.333
+42
+00:03:04.533 --> 00:03:09.533
 A) Ticket creation
 B) Resource provisioning
-C) Enabling/disabling access
+C) Enabling/disabling services and access
 D) Escalation
 
-41
-00:03:07.500 --> 00:03:12.433
+43
+00:03:09.700 --> 00:03:14.633
 Escalation, porque el flujo lo sube
 a otra persona y a más urgencia.
 
-42
-00:03:12.433 --> 00:03:16.600
+44
+00:03:14.633 --> 00:03:18.800
 La trampa es ticket creation,
 porque sale un ticket.
 
-43
-00:03:16.600 --> 00:03:21.900
-Pero ese ticket ya existía,
-y ahora el flujo lo sube.
+45
+00:03:18.800 --> 00:03:24.500
+Solo que ese ticket ya existía.
+Ahora no se crea, se sube.
 
-44
-00:03:23.267 --> 00:03:29.167
+46
+00:03:25.867 --> 00:03:31.767
 Y ahora, lo que cuesta. Todo esto pasa
 por una sola plataforma de orquestación.
 
-45
-00:03:29.167 --> 00:03:34.233
+47
+00:03:31.767 --> 00:03:36.833
 Si se apaga la central
 de la avenida, se atasca entera.
 
-46
-00:03:34.233 --> 00:03:40.267
+48
+00:03:36.833 --> 00:03:42.867
 Y aquí, ni se abre el caso,
 ni se avisa a nadie, ni se corta nada.
 
-47
-00:03:40.267 --> 00:03:44.833
-Y quien se mete en la central
-manda en todos los semáforos,
-
-48
-00:03:44.833 --> 00:03:48.567
-como quien toma la cuenta
-de la plataforma.
-
 49
-00:03:48.567 --> 00:03:53.867
-Eso es un single point of failure,
-y además un objetivo privilegiado.
+00:03:42.867 --> 00:03:47.467
+Y quien se cuela en la central
+manda en todos los semáforos.
 
 50
-00:03:53.867 --> 00:03:56.500
-Ojo con dos problemas que suenan parecido.
+00:03:47.467 --> 00:03:51.167
+Pues con la cuenta
+de la plataforma, igual.
 
 51
-00:03:56.500 --> 00:03:59.567
-Una avenida de cuarenta
-semáforos, bien llevada,
+00:03:51.167 --> 00:03:57.567
+Si cae, es un single point of failure.
+Y si la toman, un objetivo privilegiado.
 
 52
-00:03:59.567 --> 00:04:03.767
-hay que entenderla entera
-cuando se atasca. Eso es complexity.
+00:03:57.567 --> 00:04:00.033
+Hay dos problemas que suenan parecido.
 
 53
-00:04:03.767 --> 00:04:09.100
+00:04:00.033 --> 00:04:04.733
+Si una avenida de cuarenta semáforos
+se atasca, hay que entenderla entera,
+
+54
+00:04:04.733 --> 00:04:07.867
+aunque esté bien llevada.
+Eso es complexity.
+
+55
+00:04:07.867 --> 00:04:13.200
 Y el semáforo que programó alguien
 que ya no está, sin planos ni dueño,
 
-54
-00:04:09.100 --> 00:04:10.867
+56
+00:04:13.200 --> 00:04:14.967
 es technical debt.
 
-55
-00:04:10.867 --> 00:04:15.367
+57
+00:04:14.967 --> 00:04:19.467
 Por eso, pregúntate antes
 quién lo va a mantener.
 
-56
-00:04:16.033 --> 00:04:16.700
+58
+00:04:20.033 --> 00:04:20.733
 La última.
 
-57
-00:04:16.700 --> 00:04:20.800
+59
+00:04:20.733 --> 00:04:25.100
 Un flujo del SOC tiene dueño,
 documentación y control de versiones,
 
-58
-00:04:20.800 --> 00:04:24.800
+60
+00:04:25.100 --> 00:04:29.300
 y se revisa cada seis meses.
 Cruza cinco herramientas distintas.
 
-59
-00:04:24.800 --> 00:04:29.067
-Cuando falla, para encontrar la pieza
-rota hay que entenderlas todas.
+61
+00:04:29.300 --> 00:04:33.700
+Y cuando falla, hay que entenderlas
+todas para dar con la pieza rota.
 
-60
-00:04:29.067 --> 00:04:32.933
+62
+00:04:33.700 --> 00:04:37.733
 ¿Qué consideración
 describe mejor el problema?
 
-61
-00:04:32.133 --> 00:04:37.133
+63
+00:04:36.933 --> 00:04:41.933
 A) Complexity
 B) Technical debt
 C) Single point of failure
 D) Cost
 
-62
-00:04:37.300 --> 00:04:40.000
-Complexity, porque son
-muchas piezas que entender.
+64
+00:04:42.100 --> 00:04:44.400
+Complexity. Son muchas
+piezas que entender.
 
-63
-00:04:40.000 --> 00:04:43.600
+65
+00:04:44.400 --> 00:04:48.000
 Technical debt engancha, porque
 suena a automatización vieja.
 
-64
-00:04:43.600 --> 00:04:46.633
-Pero aquí no hay nada abandonado.
-
-65
-00:04:46.633 --> 00:04:53.300
-Y no es que todo dependa de él,
-es que cuesta dar con la pieza rota.
-
 66
+00:04:48.000 --> 00:04:53.300
+Y este flujo tiene dueño y se revisa.
+De abandonado, nada.
+
+67
 00:04:54.667 --> 00:05:00.133
 Te llevas tres reglas. Una tarea sola
 es automation, y el flujo, orchestration.
 
-67
+68
 00:05:00.133 --> 00:05:04.400
 Ticket creation apunta,
 y escalation sube lo que nadie coge.
 
-68
-00:05:04.400 --> 00:05:10.300
-Y la plataforma es un single point of
-failure, y complexity no es abandono.
-
 69
-00:05:10.300 --> 00:05:16.833
+00:05:04.400 --> 00:05:09.900
+La plataforma es un single point of
+failure. Y complexity no es abandono.
+
+70
+00:05:09.900 --> 00:05:16.600
 Antes de contestar, pregúntate si es una
 tarea o un flujo, y qué hace ese paso.
 
-70
-00:05:16.833 --> 00:05:21.600
-Y ahora, tú.
+71
+00:05:16.600 --> 00:05:22.000
+Ahora te toca a ti.
 A por las preguntas de la lección.
