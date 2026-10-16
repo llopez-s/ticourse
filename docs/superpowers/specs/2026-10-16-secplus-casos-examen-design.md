@@ -175,7 +175,32 @@ PR en uno.
 - Qué conceptos elige cada vídeo, con un criterio: los que más se confunden en el examen y los que más preguntas tienen
   en el banco de la lección.
 
-## 9. Cómo sabremos que funciona
+## 9. Decisiones tras la revisión del diseño *(todas de Claude)*
+
+1. **Qué es «el piloto terminado».** Lidia ve el piloto dos veces. Primero, la ficha y el guion congelado, antes de
+   grabar, porque cambiar el formato después de que ella grabe cuesta horas suyas. Después, el render final con su
+   voz, subido **en privado**. El formato puede cambiar hasta que lo apruebe en privado: hasta entonces no se publica
+   ni se enlaza en la lección. Mientras tanto se pueden escribir las fichas de la tanda 6, pero no se congela ningún
+   guion hasta que ella dé por bueno el piloto.
+2. **Orden respecto a V24 y V27.** V24 y V27 van primero: tienen el guion congelado y son lo siguiente que graba Lidia.
+   **El trabajo de motor** (perfiles `caso-yt` y `caso-principal-yt`, validador, componente de pregunta, opciones en
+   el VTT) va en **su propio PR**, con sus tests y una composición de prueba en `src/dev/`. Puede hacerse a la vez
+   que V24 y V27, porque no toca sus perfiles. El piloto se graba después de V27, en la misma sesión si a Lidia le
+   viene bien. Los números (V28…) se asignan cuando se aprueba cada ficha.
+3. **Qué decide «la respuesta de CompTIA».** Manda la lista oficial de objetivos de SY0-701 y, después, el texto de la
+   lección. No se pregunta lo que CompTIA deja abierto: si un concepto tiene dos respuestas razonables (una cámara es
+   a la vez *detective* y *deterrent*), la pregunta se reescribe para que el escenario decida, o se descarta. Si el
+   revisor encuentra que la lección, su quiz o sus flashcards contradicen a CompTIA, se corrige en **el mismo PR del
+   vídeo**, como hizo V10 con su lección, y se avisa en la descripción del PR.
+4. **Qué cuenta como «el banco» para no copiar.** Las preguntas del quiz (`Question[]`), los *checkpoints* en línea
+   de la lección y la colocación (`secplus/placement.ts`). Los labs y las flashcards no, porque tienen otra forma; aun
+   así, una pregunta del vídeo no puede ser una flashcard con opciones.
+5. **sp6m1 es la excepción.** No tiene caso de Halden. Su «caso» es el alumno delante del examen: cómo leer el
+   escenario, los calificadores (MEJOR, PRIMERO, MÁS probable), cómo descartar opciones y cómo encarar las preguntas
+   prácticas (*performance-based questions*). Sus 4–5 preguntas son de dominios distintos y sirven para practicar esa
+   estrategia, no para enseñar contenido nuevo. Usa el perfil `caso-principal-yt` sin excepciones en el validador.
+
+## 10. Cómo sabremos que funciona
 
 - El piloto: Lidia lo ve y dice si se entiende y si las preguntas se parecen a las del examen.
 - Cada pregunta pasa el revisor de exactitud (una sola respuesta defendible según CompTIA, trampa real, que no esté
