@@ -99,7 +99,7 @@ Stellar Dynamics también existe, pero es un hallazgo del Lab 3A: ver §4.
 
 | Nombre | Qué hace | Fuente |
 |---|---|---|
-| SOC de Meridian («SOC · Meridian Dynamics») | Escala E7 y la intrusión del lab2a. En V27, «el SOC: ¿y qué le damos que dure?» (en voz, «el SOC te pide algo que dure»): pregunta, sin persona, y no decide ni despliega nada | `src/data/s2.ts:566`; `src/data/labs.ts:73`; `video/diamond-e7/src/scenes/S01Hook.tsx:183`; `video/reglas-aeropuerto/src/data/s01-hook.ts:17`; `video/reglas-aeropuerto/narration.json:25` |
+| SOC de Meridian («SOC · Meridian Dynamics») | Escala E7 y la intrusión del lab2a. En V27, «el SOC: ¿y qué le damos que dure?» (en voz, «el SOC te pide algo que dure»): pregunta, sin persona, y no decide ni despliega nada | `src/data/s2.ts:573`; `src/data/labs.ts:73`; `video/diamond-e7/src/scenes/S01Hook.tsx:183`; `video/reglas-aeropuerto/src/data/s01-hook.ts:17`; `video/reglas-aeropuerto/narration.json:25` |
 | Meridian CTI (`cti@meridian.example`) | Autor del flash alert y de la regla YARA. **La regla Sigma no lleva autor** (solo `references`, al informe interno MER-2026-011), y V27 no se lo pone | `src/data/s5.ts:47,69,500`; `src/data/s5.ts:531-551`; `video/reglas-aeropuerto/src/data/rules.ts:6` |
 | IR, IR lead, canal `#ir-hotline` | Respuesta; propone las medidas del lab2c. En V22, «equipo de respuesta», sin persona ni postura: pregunta «¿qué hacemos con esto?» y no propone ni decide nada | `src/data/s5.ts:66`; `src/data/labs.ts:96`; `video/coa-precios/src/data/s01-hook.ts:9-10`; `video/coa-precios/narration.json:25` |
 | RR. HH. de Meridian | Destino del spearphish | `src/data/s2.ts:26` |
@@ -979,7 +979,7 @@ persona, ni grado de confianza para Meridian. Canon nuevo, solo de pantalla y de
 
 Lección `src/data/s5.ts:583-589` (bloque `video` después del primer check, «A YARA rule with condition `any of ($s*)`…», `:568-582`, y
 antes del encabezado «STIX/TAXII: el indicador empaquetado», `:590`; llegó a `main` con #56, commit `7596f54`); 3:51 (6945 fotogramas a
-30 fps, `video/reglas-aeropuerto/src/timeline.json:4,7`), subido a Alertópolis como privado el 2026-10-16 (no hay `youtube-upload.json`
+30 fps, `video/reglas-aeropuerto/src/timeline.json:4,7`), subido a Alertópolis el 2026-10-16 y ya público: sale en el feed del canal ese mismo día (no hay `youtube-upload.json`
 en su `out/`). Cápsula (`capsula-yt`, `video/reglas-aeropuerto/video.json:6`), guion congelado el 2026-10-16 (`:23`). Primer vídeo de S5.
 Adversario de los interceptados VELVET CICADA (`video/reglas-aeropuerto/video.json:8`), con la voz `sapi/Microsoft Pablo` y el efecto
 `machine` (`video/reglas-aeropuerto/narration.json:11-15`). Notas propias en `video/reglas-aeropuerto/out/script-notes.md`. **Sin fecha ni
