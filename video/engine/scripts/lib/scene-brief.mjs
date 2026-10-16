@@ -10,7 +10,6 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { QUESTION_COUNTDOWN_DEFAULT_MS } from './narration.mjs';
 import { EXAM_BADGE } from './profiles.mjs';
 import { parseSegmentText } from './text.mjs';
 
@@ -28,6 +27,9 @@ const TRACKS = {
   gcti: { label: 'GCTI track', campaign: 'VELVET CICADA' },
   secplus: { label: 'Security+ SY0-701 track', campaign: 'GLASS HARBOR, Autoridad Portuaria de Halden' },
 };
+
+// Copied from narration.mjs QUESTION_COUNTDOWN_DEFAULT_MS (same reason): the countdown of a question without "countdownMs".
+const QUESTION_COUNTDOWN_DEFAULT_MS = 5000;
 
 // Copied from narration.mjs IDENTIFIER_PATTERNS (importing it would load paths.mjs and a manifest).
 const IDENTIFIER_PATTERNS = [
@@ -277,7 +279,7 @@ function sceneSection(ctx, scene, segs) {
     out.push('- Timing notes:');
     for (const n of notes) out.push(`  - ${n}`);
   } else {
-    out.push('- Timing notes: none (no exam card, exam question, think prompt or intercepted message in this scene).');
+    out.push('- Timing notes: none (no exam card, think prompt or intercepted message in this scene).');
   }
   return out.join('\n');
 }

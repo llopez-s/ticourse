@@ -123,7 +123,7 @@ test('a video without think prompts or intercepts says so', () => {
   }
   const md = sceneBrief({ slug: 'mini', manifest, storyboard, narration, template: TEMPLATE });
   assert.ok(md.includes('  - nothing in this video: it has no think prompts or intercepted messages.'));
-  assert.ok(section(md, 's02-collect').includes('Timing notes: none'));
+  assert.ok(section(md, 's02-collect').includes('- Timing notes: none (no exam card, think prompt or intercepted message in this scene).'), 'original wording, byte for byte');
   assert.ok(md.includes('Work in the repository checkout (TODO: path and branch).'));
 });
 
