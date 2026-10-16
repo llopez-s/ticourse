@@ -1,261 +1,261 @@
 WEBVTT
 
 1
-00:00:01.400 --> 00:00:05.633
+00:00:01.400 --> 00:00:05.467
 Un dominio, una dirección,
 un hash… caducan enseguida.
 
 2
-00:00:05.633 --> 00:00:08.067
+00:00:05.467 --> 00:00:07.833
 Y el SOC te pide algo que dure.
 
 3
-00:00:08.067 --> 00:00:11.233
+00:00:07.833 --> 00:00:10.167
 Dale dos reglas, de YARA y de Sigma.
 
 4
-00:00:11.233 --> 00:00:16.833
+00:00:10.167 --> 00:00:14.267
 Verás qué mira cada una,
 cuándo salta de más y qué la rompe.
 
 5
-00:00:16.833 --> 00:00:21.000
+00:00:14.267 --> 00:00:18.533
 Eres la analista de Meridian,
 una aeroespacial. Ya sabes qué detectar.
 
 6
-00:00:21.000 --> 00:00:22.933
+00:00:18.533 --> 00:00:20.233
 Toca escribirlo.
 
 7
-00:00:23.567 --> 00:00:29.033
+00:00:21.233 --> 00:00:25.833
 Piensa en un aeropuerto. El escáner
 de equipaje mira dentro de la maleta.
 
 8
-00:00:29.033 --> 00:00:35.300
+00:00:25.833 --> 00:00:29.800
 Una regla que mira dentro de un fichero,
 o de la memoria, es de YARA.
 
 9
-00:00:35.300 --> 00:00:40.767
+00:00:29.800 --> 00:00:33.933
 La puerta de embarque apunta quién pasa,
 con qué tarjeta y qué pasaporte.
 
 10
-00:00:40.767 --> 00:00:46.233
+00:00:33.933 --> 00:00:37.467
 Una que lee lo que ha pasado,
 en los registros, es de Sigma.
 
 11
-00:00:46.233 --> 00:00:51.067
+00:00:37.467 --> 00:00:41.733
 O sea, YARA mira lo que hay
 dentro, y Sigma, lo que ocurre.
 
 12
-00:00:51.067 --> 00:00:54.333
+00:00:41.733 --> 00:00:44.167
 Empezamos por la de dentro.
 
 13
-00:00:58.467 --> 00:01:01.967
+00:00:51.267 --> 00:00:54.933
 Depende. Una palabra
 corriente salta con todos.
 
 14
-00:01:01.967 --> 00:01:05.933
+00:00:54.933 --> 00:00:58.600
 Una que solo lleva su programa,
 esa sí puede ir sola.
 
 15
-00:01:05.933 --> 00:01:11.000
+00:00:58.600 --> 00:01:04.100
 La regla tiene tres partes. El contexto,
 meta. Las cadenas que busca, strings.
 
 16
-00:01:11.000 --> 00:01:13.800
+00:01:04.100 --> 00:01:07.400
 Y la condición, condition, que decide.
 
 17
-00:01:13.800 --> 00:01:17.633
+00:01:07.400 --> 00:01:10.400
 La primera cadena la llevan
 miles de programas legítimos,
 
 18
-00:01:17.633 --> 00:01:21.767
+00:01:10.400 --> 00:01:15.167
 como una botella de agua.
 Sola, saltaría con medio mundo.
 
 19
-00:01:21.767 --> 00:01:24.967
+00:01:15.167 --> 00:01:18.300
 Así que pide compañía,
 como las dos siguientes.
 
 20
-00:01:24.967 --> 00:01:27.633
+00:01:18.300 --> 00:01:20.700
 Dos juntas hacen mucho menos ruido.
 
 21
-00:01:27.633 --> 00:01:33.600
+00:01:20.700 --> 00:01:25.367
 La única que va sola es una ruta
 que a veces queda escrita al compilar,
 
 22
-00:01:33.600 --> 00:01:36.700
+00:01:25.367 --> 00:01:28.233
 la del PDB. Casi nadie lleva esa.
 
 23
-00:01:36.700 --> 00:01:41.333
+00:01:28.233 --> 00:01:32.467
 La condición pide un ejecutable
 de menos de 250 KB.
 
 24
-00:01:41.333 --> 00:01:45.767
+00:01:32.467 --> 00:01:36.533
 Y luego, la ruta del PDB
 o dos de las otras tres.
 
 25
-00:01:45.767 --> 00:01:51.867
+00:01:36.533 --> 00:01:41.833
 O sea, que lo corriente pide compañía,
 y lo único puede ir solo.
 
 26
-00:01:56.100 --> 00:02:00.367
+00:01:48.200 --> 00:01:51.200
 Pues vamos a ver qué ve la regla de Sigma.
 
 27
-00:02:00.367 --> 00:02:03.367
+00:01:51.200 --> 00:01:53.267
 Mira los procesos que arrancan en Windows.
 
 28
-00:02:03.367 --> 00:02:07.833
+00:01:53.267 --> 00:01:57.533
 Y busca que su pasaporte,
 el nombre de dentro, sea certutil.
 
 29
-00:02:07.833 --> 00:02:11.700
+00:01:58.000 --> 00:02:02.633
 Y que lo lancen para decodificar
 o para descargar.
 
 30
-00:02:11.700 --> 00:02:15.933
+00:02:02.633 --> 00:02:05.967
 Si la tarjeta, el nombre del disco,
 también dice certutil,
 
 31
-00:02:15.933 --> 00:02:20.367
+00:02:05.967 --> 00:02:09.700
 el filtro lo descarta.
 Y la condición resta lo que filtra.
 
 32
-00:02:20.367 --> 00:02:25.433
+00:02:09.700 --> 00:02:14.367
 Mira dos eventos de ejemplo.
 El de la tarjeta cambiada sí avisaría.
 
 33
-00:02:25.433 --> 00:02:32.500
+00:02:14.367 --> 00:02:19.600
 Una regla solo mira la tarjeta, y busca
 ese nombre. La otra es la de la lección.
 
 34
-00:02:32.500 --> 00:02:38.600
+00:02:19.600 --> 00:02:24.767
 Imagina un tercero, con una tarjeta nueva.
 ¿Cuál de las dos sigue saltando?
 
 35
-00:02:42.467 --> 00:02:44.000
+00:02:28.900 --> 00:02:30.267
 La de la lección.
 
 36
-00:02:44.000 --> 00:02:50.333
+00:02:30.267 --> 00:02:34.600
 La tarjeta la cambia el atacante
 cuando quiere, y la otra ya no lo ve.
 
 37
-00:02:50.333 --> 00:02:54.767
+00:02:34.600 --> 00:02:37.900
 Pero el pasaporte, el nombre
 original, va dentro del programa,
 
 38
-00:02:54.767 --> 00:02:56.600
+00:02:37.900 --> 00:02:40.367
 y renombrar no lo toca.
 
 39
-00:02:56.600 --> 00:03:04.300
+00:02:40.367 --> 00:02:46.600
 Ni el filtro la frena. ¿Que no lo verá?
 La de la tarjeta, quizá no. Esta, sí.
 
 40
-00:03:05.033 --> 00:03:10.500
+00:02:47.767 --> 00:02:53.300
 ¿Dónde corre cada una? YARA,
 en un escáner, un sandbox o un EDR.
 
 41
-00:03:10.500 --> 00:03:16.367
+00:02:53.300 --> 00:02:57.800
 Sigma no corre en el SIEM tal cual.
 Antes se traduce a su consulta.
 
 42
-00:03:16.367 --> 00:03:22.633
+00:02:57.800 --> 00:03:02.700
 Las dos se pueden romper. La de YARA vive
 mientras la maleta lleve esas piezas.
 
 43
-00:03:22.633 --> 00:03:25.833
+00:03:02.700 --> 00:03:05.300
 A la de Sigma la rompe otro pasaporte.
 
 44
-00:03:25.833 --> 00:03:31.300
+00:03:05.300 --> 00:03:09.500
 Y a su filtro, una copia con el
 nombre normal en otra carpeta.
 
 45
-00:03:31.300 --> 00:03:35.833
+00:03:09.500 --> 00:03:13.000
 Si cambia de herramienta,
 la del nombre original ya no ve.
 
 46
-00:03:35.833 --> 00:03:39.567
+00:03:13.000 --> 00:03:15.767
 Queda la del árbol
 de procesos, que ya viste.
 
 47
-00:03:39.567 --> 00:03:41.600
+00:03:15.767 --> 00:03:17.533
 Ninguna es para siempre.
 
 48
-00:03:41.600 --> 00:03:47.667
+00:03:17.533 --> 00:03:22.400
 O sea, que cada una tiene su punto
 débil, así que mide si dispara.
 
 49
-00:03:48.400 --> 00:03:51.233
+00:03:23.833 --> 00:03:27.333
 Llévate tres ideas. YARA mira dentro.
 
 50
-00:03:51.233 --> 00:03:55.467
+00:03:27.333 --> 00:03:31.200
 Sigma mira lo que pasa,
 y se convierte antes de correr.
 
 51
-00:03:55.467 --> 00:03:58.833
+00:03:31.200 --> 00:03:33.967
 Una cadena corriente,
 sola, salta con cualquiera.
 
 52
-00:03:58.833 --> 00:04:02.133
+00:03:33.967 --> 00:03:38.200
 Pídele compañía,
 o una pieza única como el PDB.
 
 53
-00:04:02.133 --> 00:04:07.867
+00:03:38.200 --> 00:03:42.233
 Apóyate en lo que cuesta cambiar,
 el nombre original y no el del disco.
 
 54
-00:04:07.867 --> 00:04:09.700
+00:03:42.233 --> 00:03:44.133
 Y vigila si salta.
 
 55
-00:04:09.700 --> 00:04:15.400
+00:03:44.133 --> 00:03:48.100
 A por las diez preguntas de la lección.
 Hasta el próximo control.
