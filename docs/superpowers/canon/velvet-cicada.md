@@ -54,7 +54,7 @@ Los rangos y las duraciones van como rangos; no tienen fecha exacta.
 | marzo → mayo 2026 (rango) | — | Exfiltración de diseños de propulsión, según el BLUF | `src/data/s5.ts:312`; `src/data/labs.ts:1016` |
 | abr-2026 → hoy (rango) | — | Actividad del Cluster-B (Orbital-2) | `src/data/s4.ts:739` |
 | 2026-04-18 desde 06:00 UTC | — | 41 correos de phishing de credenciales a la cadena de suministro | `src/data/s5.ts:56-58` |
-| 2026-04-18 09:30Z | — | Indicador STIX «credential-harvest domain» (válido hasta 2026-07-18) | `src/data/s5.ts:600-605` |
+| 2026-04-18 09:30Z | — | Indicador STIX «credential-harvest domain» (válido hasta 2026-07-18) | `src/data/s5.ts:607-612` |
 | 2026-04-18 11:31:55 (sin zona) | — | pDNS last seen de `cdn-sync-status.example` en `198.51.100.84` | `src/data/s3.ts:776` |
 | 2026-04-18 11:40 UTC | — | Flash alert MER-FA-2026-014; acciones antes de las 18:00 UTC; siguiente parte a las 17:00 UTC | `src/data/s5.ts:47-48,63,68` |
 | 2026-04-18 | — | Fecha de la regla YARA `GLASSVIPER_Loader_MemMap` | `src/data/s5.ts:497,502` |
@@ -519,7 +519,7 @@ adversario de los interceptados HOLLOW LANTERN (`video/stix-isac/video.json:8`).
   (`video/stix-isac/narration.json`, s03-02). Encaja con el passive DNS y con V4 s08.
 - **No se toca** (sigue fuera): el C2, el certificado y el correo de registro del dosier de DEEP WELL; el intrusion set
   STIX de S4 (`src/data/s4.ts:1020-1028`), la campaña «PO-REVISION phishing wave» y `attributed-to`; el indicador
-  propio de Meridian para este dominio (`src/data/s5.ts:596-607`) y la ola de phishing del 18-4.
+  propio de Meridian para este dominio (`src/data/s5.ts:603-614`) y la ola de phishing del 18-4.
 
 ### V9 · `ach-matriz` · s4m3 · YouTube `Q2-pG0ALFKI`
 
@@ -825,7 +825,7 @@ la matriz (`src/data/s2.ts:314,342-343,352`). Canon nuevo, solo de pantalla y de
 - **No se toca** (sigue fuera; `docs/reviews/2026-10-08-fichas-tanda4/ficha-V22.md:180-195`): el dosier de BROKEN CHAIN
   (`src/data/course-gcti.ts:40`); E9, el 7-3, los «dos días» y el último `last seen` de `update-svc-cdn.com` (§5 punto 7): el vídeo
   no dice cuándo ni si se corta el C2, ni que Meridian viera salir nada, y la séptima fase sigue como en V13; el indicador propio de
-  Meridian para `cdn-sync-status.example` (`src/data/s5.ts:596-607`) y la ola de abril: la celda de Delivery no dice si está
+  Meridian para `cdn-sync-status.example` (`src/data/s5.ts:603-614`) y la ola de abril: la celda de Delivery no dice si está
   bloqueado; las retenciones del CMF de V8 (ni «90 días de EDR» sale); quién abrió el adjunto (§5 punto 5) y `ENG-WS-041`, que no
   sale; el intervalo del beacon más allá de «cada minuto» (§5 punto 3); el Lab 2C (la matriz trae seis de sus ocho ítems, sin
   clasificarlos ni dar su respuesta) y el Lab 2A; Destroy (ninguna acción ofensiva). No se culpa a nadie: ni al SOC por no cortar
@@ -947,7 +947,7 @@ persona, ni grado de confianza para Meridian. Canon nuevo, solo de pantalla y de
   «una sola organización». Del Lab 4A, ninguna de sus frases (el informe que decía un país, las horas de compilación en UTC+8, lo
   que atribuyó BigVendorCo; `src/data/labs.ts:461,481,486`); del Lab 4B, sus pruebas (`src/data/labs.ts:862-930`); del Lab 5B,
   ningún juicio de sponsor sobre Meridian. El STIX de s4m5 (campaign, intrusion set, `attributed-to`, `confidence: 75`; §5
-  punto 9) y s4m5q7; Cluster-A y Cluster-B (`src/data/s4.ts:729-744`); los casos reales de S5 (`src/data/s5.ts:836,855`) y los
+  punto 9) y s4m5q7; Cluster-A y Cluster-B (`src/data/s4.ts:729-744`); los casos reales de S5 (`src/data/s5.ts:843,862`) y los
   nombres de países: el check de la lección habla de Rusia y Moscú (`src/data/s4.ts:1086`) y el vídeo no. Tampoco la atribución
   de un gobierno como una fuente más (s4m5q6, `video/atribucion-cuadro/out/script-notes.md:67-68`). No se culpa a nadie: ni al
   CISO por pedir un nombre ni a la sala por querer uno.
