@@ -109,6 +109,31 @@ export interface InterceptCue {
   audioFrames?: number;
 }
 
+/** An on-screen exam question (caso profiles): the card enters with the voice, counts down in silence, then reveals. */
+export interface QuestionCue {
+  scene: SceneId;
+  segment: string;
+  /** Start of the question segment: the card enters with the voice. */
+  from: number;
+  /** Until the end of its scene. */
+  durationInFrames: number;
+  /** First silent frame after the segment's audio. */
+  countdownFrom: number;
+  countdownFrames: number;
+  revealFrame: number;
+  trapFrame: number;
+  objective: string;
+  /** Exam named on the badge; absent means "SY0-701", as on ExamCue. */
+  badge?: string;
+  scenario: string;
+  q: string;
+  options: [string, string, string, string];
+  answer: 0 | 1 | 2 | 3;
+  trap: 0 | 1 | 2 | 3;
+  why: string;
+  trapWhy: string;
+}
+
 export interface Timeline {
   mode: 'audio' | 'estimate';
   /** sha256 of narration.json + lexicon.json + storyboard.json used to build this file. */
@@ -126,6 +151,8 @@ export interface Timeline {
   think: ThinkPrompt[];
   /** Present only when the video has intercepted messages. */
   intercept?: InterceptCue[];
+  /** Present only when the narration has exam questions. */
+  questions?: QuestionCue[];
   /** Present only when narration.json has "sfx". */
   sfx?: SfxCue[];
   /** Present (false) only when captions are not burned in: YouTube videos, which carry the VTT instead. */

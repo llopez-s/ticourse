@@ -11,11 +11,17 @@ const SHAPES = {
   ExamCue: ['scene', 'from', 'durationInFrames', 'objective', 'text'],
   ThinkPrompt: ['scene', 'from', 'durationInFrames', 'q'],
   InterceptCue: ['scene', 'from', 'durationInFrames', 'adversary', 'text'],
+  QuestionCue: ['scene', 'segment', 'from', 'durationInFrames', 'countdownFrom', 'countdownFrames', 'revealFrame', 'trapFrame', 'objective', 'scenario', 'q', 'options', 'answer', 'trap', 'why', 'trapWhy'],
   SfxCue: ['from', 'sound', 'src', 'durationInFrames', 'volume'],
 };
 
 /** Keys a shape may carry in addition to SHAPES (only written when non-empty). */
-const OPTIONAL = { Timeline: ['intercept', 'sfx', 'captionsOnScreen'], InterceptCue: ['audio', 'audioFrom', 'audioFrames'], ExamCue: ['badge'] };
+const OPTIONAL = {
+  Timeline: ['intercept', 'questions', 'sfx', 'captionsOnScreen'],
+  InterceptCue: ['audio', 'audioFrom', 'audioFrames'],
+  ExamCue: ['badge'],
+  QuestionCue: ['badge'],
+};
 
 /**
  * @param {object} t timeline
@@ -179,6 +185,45 @@ export function validateTimeline(t, opts = {}) {
         }
         const sc = sceneOf.get(x.scene);
         if (sc && (x.from < sc.from || x.from + x.durationInFrames > sc.from + sc.durationInFrames)) errors.push(`${where}: outside its scene`);
+      });
+    }
+  }
+  if (t.questions !== undefined) {
+    if (!Array.isArray(t.questions) || !t.questions.length) errors.push('timeline.questions: when present, a non-empty array');
+    else {
+      const segOf = new Map(t.segments.map((x) => [x.id, x]));
+      const perScene = new Set();
+      t.questions.forEach((x, k) => {
+        const where = `questions[${k}]`;
+        if (!keys(x, 'QuestionCue', where)) return;
+        const sc = sceneOf.get(x.scene);
+        if (!sc) errors.push(`${where}.scene: not in scenes`);
+        if (perScene.has(x.scene)) errors.push(`${where}: a second question in ${x.scene} (max 1 per scene)`);
+        perScene.add(x.scene);
+        const seg = segOf.get(x.segment);
+        if (!seg || seg.scene !== x.scene) errors.push(`${where}.segment: not a segment of ${x.scene}`);
+        int(x.from, `${where}.from`);
+        int(x.durationInFrames, `${where}.durationInFrames`, 1);
+        int(x.countdownFrom, `${where}.countdownFrom`);
+        int(x.countdownFrames, `${where}.countdownFrames`, 1);
+        int(x.revealFrame, `${where}.revealFrame`);
+        int(x.trapFrame, `${where}.trapFrame`);
+        for (const f of ['objective', 'scenario', 'q', 'why', 'trapWhy']) str(x[f], `${where}.${f}`);
+        if (x.badge !== undefined) str(x.badge, `${where}.badge`);
+        if (!Array.isArray(x.options) || x.options.length !== 4 || x.options.some((o) => typeof o !== 'string' || !o)) errors.push(`${where}.options: expected exactly four non-empty strings`);
+        const idx = (v) => Number.isInteger(v) && v >= 0 && v <= 3;
+        if (!idx(x.answer)) errors.push(`${where}.answer: expected an index from 0 to 3`);
+        if (!idx(x.trap)) errors.push(`${where}.trap: expected an index from 0 to 3`);
+        else if (x.trap === x.answer) errors.push(`${where}.trap: must differ from answer`);
+        if (!sc) return;
+        const end = sc.from + sc.durationInFrames;
+        if (x.from < sc.from || x.from + x.durationInFrames > end) errors.push(`${where}: outside its scene`);
+        if (seg && seg.scene === x.scene && x.countdownFrom < seg.from + seg.audioFrames) errors.push(`${where}.countdownFrom: before its segment's audio ends`);
+        if (x.countdownFrom + x.countdownFrames > end) errors.push(`${where}: the countdown leaves its scene`);
+        if (x.revealFrame < sc.from || x.revealFrame >= end) errors.push(`${where}.revealFrame: ${x.revealFrame} outside its scene`);
+        else if (x.revealFrame < x.countdownFrom + x.countdownFrames) errors.push(`${where}: reveals before its countdown ends`);
+        if (x.trapFrame < x.revealFrame) errors.push(`${where}.trapFrame: before revealFrame`);
+        else if (x.trapFrame >= end) errors.push(`${where}.trapFrame: ${x.trapFrame} outside its scene`);
       });
     }
   }

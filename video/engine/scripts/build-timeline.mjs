@@ -267,9 +267,11 @@ export async function buildTimeline(options = {}) {
   const exam = [];
   const think = [];
   const intercept = [];
+  const questions = [];
   const segmentStarts = [];
   const allWords = [];
   const examSources = [];
+  const questionSources = [];
   let t = 0;
   analysis.scenes.forEach(({ scene, segments: segs }, sceneIdx) => {
     const sceneFrom = t;
@@ -300,7 +302,9 @@ export async function buildTimeline(options = {}) {
         sceneCues.set(cue.id, frame);
         cues.push({ scene: scene.id, id: cue.id, frame });
       }
-      const durationInFrames = audioFrames + pause + thinkFrames;
+      // The question's countdown is silence after the audio, held like a think prompt.
+      const countdownFrames = seg.question ? toFrames(seg.question.countdownMs) : 0;
+      const durationInFrames = audioFrames + pause + thinkFrames + countdownFrames;
       segments.push({
         id: seg.id,
         scene: scene.id,
@@ -312,6 +316,7 @@ export async function buildTimeline(options = {}) {
         words,
       });
       if (seg.exam) examSources.push({ seg, from });
+      if (seg.question) questionSources.push({ seg, from, audioFrames, countdownFrames });
       if (seg.think) {
         think.push({
           scene: scene.id,
@@ -352,6 +357,34 @@ export async function buildTimeline(options = {}) {
       });
     }
     t += TIMING.sceneTail;
+    for (const { seg, from, audioFrames, countdownFrames } of questionSources.filter((x) => x.seg.scene === scene.id)) {
+      const q = seg.question;
+      const frameOf = (cueId) => {
+        const frame = sceneCues.get(cueId);
+        if (frame === undefined) errors.push(`${seg.id}: question cue {${cueId}} is not timed`);
+        return frame;
+      };
+      questions.push({
+        scene: scene.id,
+        segment: seg.id,
+        from,
+        durationInFrames: t - from,
+        countdownFrom: from + audioFrames,
+        countdownFrames,
+        revealFrame: frameOf(q.revealAt),
+        trapFrame: frameOf(q.trapAt),
+        objective: q.objective,
+        // Same rule as the exam cards: Security+ keeps the implicit SY0-701 badge.
+        ...(opts.track === 'secplus' ? {} : { badge: EXAM_BADGE[opts.track] }),
+        scenario: q.scenario,
+        q: q.q,
+        options: q.options,
+        answer: q.answer,
+        trap: q.trap,
+        why: q.why,
+        trapWhy: q.trapWhy,
+      });
+    }
     scenes.push({
       id: scene.id,
       chapter: scene.chapter,
@@ -375,6 +408,10 @@ export async function buildTimeline(options = {}) {
       errors.push(
         `exam card in ${e.scene} (${e.from}–${e.from + e.durationInFrames}) leaves its scene (${s.from}–${s.from + s.durationInFrames}): use an earlier "at" cue or a shorter holdSec`,
       );
+    }
+    const asked = questions.find((x) => x.scene === e.scene);
+    if (asked && e.from < asked.trapFrame) {
+      errors.push(`exam card in ${e.scene} enters before its question's trap is marked: use a later "at" cue`);
     }
     const prev = exam[k - 1];
     if (prev && e.from - (prev.from + prev.durationInFrames) < TIMING.examGap) {
@@ -449,6 +486,7 @@ export async function buildTimeline(options = {}) {
     exam,
     think,
     ...(intercept.length ? { intercept } : {}),
+    ...(questions.length ? { questions } : {}),
     ...(sfx.length ? { sfx } : {}),
     // Written only when off, so the timelines of the videos that burn captions in stay byte-identical.
     ...(profile.captionsOnScreen === false ? { captionsOnScreen: false } : {}),
@@ -491,10 +529,18 @@ function vttTimestamp(frame, fps) {
  * video), one cue per burned-in caption page so both always show the same text.
  */
 export function buildVtt(timeline) {
-  const cues = timeline.captions.map((page, k) => {
-    const text = page.lines.map((line) => line.map((w) => w.text).join(' ')).join('\n');
-    return `${k + 1}\n${vttTimestamp(page.from, timeline.fps)} --> ${vttTimestamp(page.to, timeline.fps)}\n${text}`;
-  });
+  const entries = timeline.captions.map((page) => ({
+    from: page.from,
+    to: page.to,
+    text: page.lines.map((line) => line.map((w) => w.text).join(' ')).join('\n'),
+  }));
+  // An exam question shows its four options while the countdown runs: one cue each, merged in start order
+  // (Array.sort is stable, so a page and an options cue starting together keep the page first).
+  for (const q of timeline.questions ?? []) {
+    entries.push({ from: q.countdownFrom, to: q.countdownFrom + q.countdownFrames, text: q.options.map((o, k) => `${'ABCD'[k]}) ${o}`).join('\n') });
+  }
+  entries.sort((x, y) => x.from - y.from);
+  const cues = entries.map((e, k) => `${k + 1}\n${vttTimestamp(e.from, timeline.fps)} --> ${vttTimestamp(e.to, timeline.fps)}\n${e.text}`);
   return `WEBVTT\n\n${cues.join('\n\n')}\n`;
 }
 
@@ -588,7 +634,7 @@ async function main() {
   console.log(sceneTable(timeline, analysis));
   if (trailingNote) console.log(trailingNote);
   console.log(
-    `${timeline.mode} · ${timeline.segments.length} segmentos · ${timeline.captions.length} páginas de subtítulos · ${timeline.cues.length} cues · ${timeline.exam.length} tarjetas de examen · ${timeline.think.length} pausas para pensar`,
+    `${timeline.mode} · ${timeline.segments.length} segmentos · ${timeline.captions.length} páginas de subtítulos · ${timeline.cues.length} cues · ${timeline.exam.length} tarjetas de examen · ${timeline.think.length} pausas para pensar${timeline.questions?.length ? ` · ${timeline.questions.length} preguntas de examen` : ''}`,
   );
   if (opts.write !== false) {
     console.log(`timeline   -> ${opts.out ?? PATHS.timeline}`);
