@@ -73,7 +73,7 @@
       "title": "Cada aparato, su mando",
       "targetSec": 34,
       "wordBudget": 92,
-      "goal": "La hoja del baseline vuelve con su principio en una línea, «quitar lo que sobra · proteger lo que queda» → «Hardening» (`paper`), y sale hacia tres sitios, cada uno con su canal y su medida principal. Portátil (`laptop`): «Group Policy», con «sin administrador local» destacado y «disco cifrado · EDR» a media luz. Móvil (`phone`): «MDM», con «cifrado · bloqueo · borrado a distancia». Nube (`cloud`): «consola», con «permisos mínimos · registros activos · nada público». Los mandos del salón en miniatura, tele y aire acondicionado, cada uno apuntando a su aparato (`remotes`). La regla en llano (`rule`): «si admite una consola de gestión, el baseline se impone desde ahí». En la cuarta casilla, el puente levadizo con «sin mando» (`no-remote`), que adelanta el capítulo III. Sin tarjeta de examen",
+      "goal": "La hoja del baseline vuelve con su principio en una línea, «quitar lo que sobra · proteger lo que queda» → «Hardening» (`paper`), y sale hacia tres sitios, cada uno con su canal y su medida principal. Portátil del dominio (`laptop`): «Group Policy», con «usuaria sin derechos de admin» destacado y «disco cifrado · EDR» a media luz. Móvil (`phone`): «MDM», con «cifrado · bloqueo · borrado a distancia». Nube (`cloud`): «consola», con «permisos mínimos · registros activos · nada público». Los mandos del salón en miniatura, tele y aire acondicionado, cada uno apuntando a su aparato (`remotes`). La regla en llano (`rule`): «si admite una consola de gestión, el baseline se impone desde ahí». En la cuarta casilla, el puente levadizo con «sin mando» (`no-remote`), que adelanta el capítulo III. Sin tarjeta de examen",
       "requiredCues": [
         "paper",
         "laptop",
@@ -104,7 +104,7 @@
       "title": "Lo que no se puede parar",
       "targetSec": 36,
       "wordBudget": 97,
-      "goal": "«Caso de ejemplo · sin fecha»: el sistema que mueve las esclusas, dibujado como una esclusa con un barco dentro, sin nombre de equipo y sin ninguna línea de red (`lock-ship`). Tres chips de por qué no (`why-not`): «el fabricante solo responde de una versión» · «se para una vez al año» · «no aguanta un agente». La esclusa queda marcada «sin parche en caliente · sin agente» (`still`, sonido de candado). Lo que es se nombra después: «OT», y en un chip «lo mismo: embedded · RTOS» (`name-ot`). La respuesta, como propuesta y no como algo hecho, rotulada «propuesta · sin fecha» (`compensate`): «que solo le hable quien lo necesita» · «escuchar su tráfico sin tocarlo» → «Compensating controls». El avión en miniatura (`plane`): en vuelo no se toca, la cabina cerrada y la torre siguiéndolo por radar; el hangar, al fondo. Debajo, a media luz, la trampa inversa (`inverse`): «¿desconectarla del todo? no, si tiene que funcionar»",
+      "goal": "«Caso de ejemplo · sin fecha»: el sistema que mueve las esclusas, dibujado como una esclusa con un barco dentro, sin nombre de equipo y sin ninguna línea de red (`lock-ship`). Tres chips de por qué no (`why-not`): «el fabricante solo responde de una versión» · «se para una vez al año» · «no aguanta un agente». La esclusa queda marcada «sin parche en caliente · sin agente» (`still`, sonido de candado). Lo que es se nombra después: «OT», y en un chip «lo mismo: embedded · RTOS» (`name-ot`). La respuesta, como propuesta y no como algo hecho, rotulada «propuesta · sin fecha» (`compensate`): «que solo le hable quien lo necesita» · «escuchar su tráfico sin tocarlo» → «Compensating controls». El avión en miniatura (`plane`): en vuelo no se toca, la cabina cerrada y la torre siguiéndolo por radar; el hangar, al fondo. Debajo, a media luz, la trampa inversa (`inverse`): «¿desconectarlas del todo? no, si tienen que seguir conectadas»",
       "requiredCues": [
         "lock-ship",
         "why-not",
@@ -135,7 +135,7 @@
       "title": "Para el examen",
       "targetSec": 20,
       "wordBudget": 54,
-      "goal": "Tres reglas, cada una con su icono (el escaparate · los mandos · el avión) (`recap`, `rule-1`, `rule-2`, `rule-3`), y la frase para el examen (`phrase`): «Antes de contestar, pregúntate en qué verbo estás y qué admite ese sistema». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "goal": "Tres reglas, cada una con su icono (el escaparate · los mandos · el avión) (`recap`, `rule-1`, `rule-2`, `rule-3`; la tercera, «se compensa mientras no se pueda parchear»), y la frase para el examen (`phrase`): «Antes de contestar, pregúntate en qué verbo estás y qué admite ese sistema». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
       "requiredCues": [
         "recap",
         "rule-1",
