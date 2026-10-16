@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
+import { QUESTION_COUNTDOWN_DEFAULT_MS as NARRATION_COUNTDOWN_DEFAULT_MS } from './narration.mjs';
 import {
   REQUIRED_PLACEHOLDERS,
   TODO_MARK,
@@ -10,6 +11,7 @@ import {
   demoteHeadings,
   fillTemplate,
   gitBashPath,
+  QUESTION_COUNTDOWN_DEFAULT_MS,
   identifierCandidates,
   readTemplate,
   sceneBrief,
@@ -222,4 +224,17 @@ test('helpers: component names, Git Bash paths, heading demotion', () => {
   assert.equal(gitBashPath('D:\\LLM projects\\TICourse'), '/d/LLM projects/TICourse');
   assert.equal(gitBashPath('/home/x'), '/home/x');
   assert.equal(demoteHeadings('# A\n###### F\n#nospace', 2), '### A\n###### F\n#nospace');
+});
+
+test('canon candidates also come from the explanations of an exam question', () => {
+  const { storyboard } = sources();
+  const sceneId = storyboard.scenes[0].id;
+  const question = { scenario: 'Un SOC recibe avisos.', q: '¿Qué hace primero?', options: ['a', 'b', 'c', 'd'], why: 'El host ENG-WS-041 lo prueba', trapWhy: 'Ni update-svc-cdn.com ni otro dominio' };
+  const found = identifierCandidates(storyboard, new Map([[sceneId, [{ parsed: { display: '' }, question }]]]));
+  assert.deepEqual(found.map((f) => f.text).sort(), ['ENG-WS-041', 'update-svc-cdn.com']);
+  assert.deepEqual(found[0].scenes, [sceneId]);
+});
+
+test('the scene-brief copy of the question countdown default matches narration.mjs', () => {
+  assert.equal(QUESTION_COUNTDOWN_DEFAULT_MS, NARRATION_COUNTDOWN_DEFAULT_MS);
 });

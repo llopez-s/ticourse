@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { mp4PathFor } from './paths.mjs';
-import { APP_NAME, LEGACY_APP_NAME, profileFor, trackNotice } from './profiles.mjs';
+import { APP_NAME, LEGACY_APP_NAME, YOUTUBE_PROFILES, profileFor, trackNotice } from './profiles.mjs';
 
 test('the legacy profiles keep their numbers, stay in the repo and use no chispa checks', () => {
   const p = profileFor('principal');
@@ -61,4 +62,11 @@ test('caso-yt and caso-principal-yt: the case-and-exam windows', () => {
 
 test('the older profiles expect no exam questions', () => {
   for (const name of ['principal', 'capsula', 'principal-yt', 'capsula-yt']) assert.deepEqual(profileFor(name).examQuestions, [0, 0]);
+});
+
+test('the YouTube profiles are derived from the host, and youtube-meta names them all', () => {
+  assert.deepEqual([...YOUTUBE_PROFILES].sort(), ['capsula-yt', 'caso-principal-yt', 'caso-yt', 'principal-yt'].sort());
+  const source = readFileSync(new URL('../youtube-meta.mjs', import.meta.url), 'utf8');
+  assert.ok(source.includes("YOUTUBE_PROFILES.join(' / ')"), 'the error text lists every YouTube profile');
+  assert.ok(!source.includes('principal-yt / capsula-yt'), 'no hard-coded pair');
 });

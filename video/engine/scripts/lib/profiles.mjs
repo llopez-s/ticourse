@@ -124,6 +124,9 @@ export function examObjectiveError(track, objective) {
   return typeof objective === 'string' && /^[1-5]\.\d{1,2}$/.test(objective) ? null : 'exam.objective must be an SY0-701 objective like "4.4"';
 }
 
+/** The profiles that publish to YouTube (host "youtube"), for messages that name them. */
+export const YOUTUBE_PROFILES = Object.freeze(Object.keys(PROFILES).filter((name) => PROFILES[name].host === 'youtube'));
+
 export function profileFor(name) {
   const profile = PROFILES[name];
   if (!profile) throw new Error(`unknown video profile "${name}" (known: ${Object.keys(PROFILES).join(', ')})`);

@@ -29,7 +29,7 @@ const TRACKS = {
 };
 
 // Copied from narration.mjs QUESTION_COUNTDOWN_DEFAULT_MS (same reason): the countdown of a question without "countdownMs".
-const QUESTION_COUNTDOWN_DEFAULT_MS = 5000;
+export const QUESTION_COUNTDOWN_DEFAULT_MS = 5000;
 
 // Copied from narration.mjs IDENTIFIER_PATTERNS (importing it would load paths.mjs and a manifest).
 const IDENTIFIER_PATTERNS = [
@@ -330,7 +330,7 @@ export function identifierCandidates(storyboard, byScene) {
       scan(seg.parsed.display, scene.id);
       scan(seg.exam?.text, scene.id);
       scan(seg.think?.q, scene.id);
-      if (seg.question) for (const t of [seg.question.scenario, seg.question.q, ...(seg.question.options ?? [])]) scan(t, scene.id);
+      if (seg.question) for (const t of [seg.question.scenario, seg.question.q, ...(seg.question.options ?? []), seg.question.why, seg.question.trapWhy]) scan(t, scene.id);
       scan(seg.intercept?.text, scene.id);
     }
   }

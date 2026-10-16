@@ -5,7 +5,7 @@ import path from 'node:path';
 import { after, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { adversaryClipId, adversaryKey } from './adversary.mjs';
-import { TIMING, TRANSCRIPT_NOTICE, buildTimeline, buildVtt, captionsPathFor, formatJson, loadAdversary, playbackMs } from '../build-timeline.mjs';
+import { TIMING, TRANSCRIPT_NOTICE, buildTimeline, buildTranscript, buildVtt, captionsPathFor, formatJson, loadAdversary, playbackMs } from '../build-timeline.mjs';
 import { analyzeNarration, loadSources, sourceHash, ttsKey } from './narration.mjs';
 import { SFX_DIR } from './paths.mjs';
 import { INTERCEPT_TIMING, voicedHoldFrames } from './sfx.mjs';
@@ -461,6 +461,9 @@ function withQuestion(n, extra = {}) {
 const NO_QUESTIONS_VTT =
   'WEBVTT\n\n1\n00:00:01.400 --> 00:00:06.600\nCada día llegan 6.000 avisos al SOC\nde la Autoridad Portuaria de Halden.\n\n2\n00:00:06.600 --> 00:00:09.200\nSolo uno importa de verdad.\n\n3\n00:00:09.200 --> 00:00:12.200\nPara encontrarlo,\nel equipo azul usa un SIEM.\n\n4\n00:00:12.200 --> 00:00:16.100\nVeamos cómo convierte\nel ruido en evidencia.\n\n5\n00:00:16.600 --> 00:00:20.200\nPrimero recogemos registros de servidores,\nestaciones y cortafuegos,\n\n6\n00:00:20.200 --> 00:00:23.333\ntambién por «NetFlow»,\nlos metadatos de cada conexión.\n\n7\n00:00:23.333 --> 00:00:26.133\nTodo con la hora sincronizada por NTP,\n\n8\n00:00:26.133 --> 00:00:31.033\nporque sin un reloj común\nno hay línea temporal fiable.\n\n9\n00:00:33.900 --> 00:00:36.533\nCada fuente escribe a su manera:\n\n10\n00:00:36.533 --> 00:00:41.433\nuna línea en bruto no se parece\na otra de otro fabricante.\n\n11\n00:00:41.433 --> 00:00:49.133\nEl SIEM extrae los campos y guarda la hora\nen UTC, igual para todos, a las 01:52.\n';
 
+const NO_QUESTIONS_TRANSCRIPT =
+  'SIEM en acción: del ruido a la evidencia\nSimulación educativa con datos ficticios · IntelForge Academy — material independiente, no afiliado a CompTIA\n\n[00:00] I · Qué es — Seis mil avisos, uno importa\nCada día llegan 6.000 avisos al SOC de la Autoridad Portuaria de Halden. Solo uno importa de verdad. Para encontrarlo, el equipo azul usa un SIEM. Veamos cómo convierte el ruido en evidencia.\n\n[00:16] II · Cómo funciona — Recoger\nPrimero recogemos registros de servidores, estaciones y cortafuegos, también por «NetFlow», los metadatos de cada conexión. Todo con la hora sincronizada por NTP, porque sin un reloj común no hay línea temporal fiable.\n\n[00:33] II · Cómo funciona — Normalizar\nCada fuente escribe a su manera: una línea en bruto no se parece a otra de otro fabricante. El SIEM extrae los campos y guarda la hora en UTC, igual para todos, a las 01:52.\n';
+
 test('questions: the segment holds a silent countdown after its audio', async () => {
   const { timeline } = await buildQuestion((n) => withQuestion(n), 'q-countdown');
   assert.deepEqual(validateTimeline(timeline), []);
@@ -543,11 +546,27 @@ test('questions: the VTT carries the four options while the countdown runs', asy
   assert.equal(id, String(blocks.indexOf(block) + 1));
 });
 
+test('questions: the transcript prints the question after its segment and the answer after the reveal segment', async () => {
+  const { timeline, transcript } = await buildQuestion((n) => withQuestion(n), 'q-transcript');
+  const [s1, s2] = timeline.segments;
+  const asked = '[Pregunta de examen · SY0-701 4.4] Un SOC recibe seis mil avisos al día. ¿Qué hace el SIEM con ellos? A) Los borra B) Los correlaciona C) Los cifra D) Los ignora';
+  const answered = 'Correcta: B — Correlaciona eventos de varias fuentes. Trampa: C — Cifrar no es analizar.';
+  assert.ok(transcript.includes(`${s1.text} ${asked} ${s2.text} ${answered}`), transcript);
+  const gcti = await buildQuestion((n) => withQuestion(n, { objective: 'Intrusion Analysis' }), 'q-transcript-gcti', { track: 'gcti' });
+  assert.ok(gcti.transcript.includes('[Pregunta de examen · GCTI Intrusion Analysis] '), gcti.transcript);
+});
+
 test('questions: a timeline without questions has no "questions" key and the same VTT as before', async () => {
   const { timeline, vtt } = await buildVariant(() => {}, 'q-none');
   assert.equal('questions' in timeline, false);
   assert.equal(vtt, NO_QUESTIONS_VTT);
   assert.equal(buildVtt(timeline), NO_QUESTIONS_VTT);
+});
+
+test('questions: a transcript without questions is unchanged', async () => {
+  const { timeline, transcript } = await buildVariant(() => {}, 'q-none-transcript');
+  assert.equal(transcript, NO_QUESTIONS_TRANSCRIPT);
+  assert.equal(buildTranscript(timeline, { title: 'SIEM en acción: del ruido a la evidencia', notice: TRANSCRIPT_NOTICE }), NO_QUESTIONS_TRANSCRIPT);
 });
 
 test('validateTimeline: a malformed question names questions[k]', async () => {
@@ -568,4 +587,25 @@ test('validateTimeline: a malformed question names questions[k]', async () => {
   const empty = structuredClone(timeline);
   empty.questions = [];
   assert.ok(validateTimeline(empty).some((e) => /timeline\.questions/.test(e)));
+});
+
+test('questions: warns when the explanations get less than 3 s on screen after the trap is marked', async () => {
+  const run = async (name, extra, tail = false) => {
+    const warned = [];
+    const { timeline } = await buildQuestion((n) => {
+      withQuestion(n, extra);
+      if (tail) n.segments[1].text = '{reveal}Para encontrarlo, el equipo azul usa un SIEM. Veamos cómo convierte el ruido en evidencia. {title}';
+    }, name, { log: { warn: (m) => warned.push(m), log: () => {} } });
+    const [q] = timeline.questions;
+    const left = (q.from + q.durationInFrames - q.trapFrame) / timeline.fps;
+    return { left, warned: warned.filter((w) => /explanations stay on screen/.test(w)) };
+  };
+  // trap marked on the last cue of the scene: little time left
+  const late = await run('q-explain-late', {}, true);
+  assert.ok(late.left < 3, `fixture margin ${late.left}`);
+  assert.deepEqual(late.warned.map((w) => w.trim().replace(/^aviso: /, '')), [`s01-hook: the question's explanations stay on screen only ${late.left.toFixed(1)} s after the trap is marked (aim for 3 s)`]);
+  // trap marked together with the reveal, on the first cue of the segment: more time
+  const early = await run('q-explain-early', { trapAt: undefined });
+  assert.ok(early.left >= 3, `fixture margin ${early.left}`);
+  assert.deepEqual(early.warned, []);
 });

@@ -66,6 +66,8 @@ export function playbackMs({ probeMs, lastEnd, speechEndMs, tailMs, fullAudio = 
 export const EXAM_TIMINGS = Object.freeze(['cue', 'sentence-end']);
 /** The -yt profiles want the title cue (the topic and the promise) inside the first seconds. */
 export const TITLE_MAX_SEC = 12;
+/** Seconds the explanations of an exam question stay on screen after its trap is marked. */
+export const QUESTION_EXPLAIN_MIN_SEC = 3;
 
 /** Frame at which the sentence holding `cueId` (without one, the card segment's first sentence) has been heard. */
 function sentenceEndFrame(sceneSegs, timelineSegments, examSeg, cueId) {
@@ -426,6 +428,13 @@ export async function buildTimeline(options = {}) {
       }
     }
   }
+  // The explanations of the answer and the trap are read after the marks appear: leave them time on screen.
+  for (const q of questions) {
+    const left = q.from + q.durationInFrames - q.trapFrame;
+    if (left < QUESTION_EXPLAIN_MIN_SEC * fps) {
+      warnings.push(`${q.scene}: the question's explanations stay on screen only ${(left / fps).toFixed(1)} s after the trap is marked (aim for ${QUESTION_EXPLAIN_MIN_SEC} s)`);
+    }
+  }
   const totalSec = durationInFrames / fps;
   if (totalSec < profile.minTotalSec || totalSec > profile.maxTotalSec) {
     warnings.push(
@@ -544,6 +553,12 @@ export function buildVtt(timeline) {
   return `WEBVTT\n\n${cues.join('\n\n')}\n`;
 }
 
+/** The segment of the question's scene that is playing when its answer is revealed (the scene's last one if none is). */
+function revealSegmentOf(timeline, q) {
+  const segs = timeline.segments.filter((x) => x.scene === q.scene);
+  return segs.find((x) => x.from <= q.revealFrame && q.revealFrame < x.from + x.durationInFrames) ?? segs.at(-1);
+}
+
 export function buildTranscript(timeline, { title, notice = TRANSCRIPT_NOTICE }) {
   const lines = [title, notice, ...(isElevenLabsVoice(timeline.voice) ? [ELEVENLABS_CREDIT] : []), ''];
   timeline.scenes.forEach((s, k) => {
@@ -553,6 +568,15 @@ export function buildTranscript(timeline, { title, notice = TRANSCRIPT_NOTICE })
         pieces.push(`[Mensaje interceptado · ${i.adversary}] «${i.text}»`);
       }
       pieces.push(seg.text);
+      // An exam question: its text after the segment that asks it, the answer and the trap after the one that reveals it.
+      for (const q of (timeline.questions ?? []).filter((x) => x.scene === s.id)) {
+        if (q.segment === seg.id) {
+          pieces.push(`[Pregunta de examen · ${q.badge ?? 'SY0-701'} ${q.objective}] ${q.scenario} ${q.q} ${q.options.map((o, j) => `${'ABCD'[j]}) ${o}`).join(' ')}`);
+        }
+        if (revealSegmentOf(timeline, q)?.id === seg.id) {
+          pieces.push(`Correcta: ${'ABCD'[q.answer]} — ${q.why}. Trampa: ${'ABCD'[q.trap]} — ${q.trapWhy}.`);
+        }
+      }
     }
     const text = pieces.join(' ');
     lines.push(`[${mmss(s.from, timeline.fps)}] ${ROMAN[s.chapter]} · ${s.chapterTitle} — ${s.title}`);

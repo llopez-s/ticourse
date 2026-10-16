@@ -139,19 +139,57 @@ test("the objective is checked like an exam card's", () => {
   has(gcti.errors, new RegExp(escapeRe(examObjectiveError('gcti', '1.1'))));
 });
 
-test('the voice should not read the options', () => {
-  const read = scene2();
-  read[2] = { ...read[2], text: 'Entonces la respuesta es Compensating control, no otra cosa. {reveal-1}' };
-  has(run(full(read)).warnings, /s02-03: the voice reads the option "Compensating" of the question/);
+test('the voice should not read the options before the reveal', () => {
+  // in the question segment itself
+  const asked = scene2();
+  asked[0] = { ...asked[0], text: 'Piensa en el control Compensating en esta grúa, la respuesta es difícil.' };
+  has(run(full(asked)).warnings, /s02-01: the voice reads the option "Compensating" of the question/);
+
+  // in a segment before the reveal
+  const before = scene2();
+  before[1] = { ...before[1], text: 'Entonces la respuesta es Compensating control, no otra cosa. {trap-1}' };
+  has(run(full(before)).warnings, /s02-02: the voice reads the option "Compensating" of the question/);
 
   const accents = scene2({ ...question, options: ['Control preventivo', 'Control compensatorio', 'Detective', 'Directive'] });
   accents[1] = { ...accents[1], text: `${say} CONTROL COMPENSATORIO {trap-1}` };
   has(run(full(accents)).warnings, /s02-02: the voice reads the option "Control compensatorio"/);
 
+  // naming the answer while explaining it, from the reveal segment on, is wanted
+  const after = scene2();
+  after[2] = { ...after[2], text: 'Entonces la respuesta es Compensating control, no otra cosa. {reveal-1}' };
+  assert.ok(!run(full(after)).warnings.some((w) => /reads the option/.test(w)));
+  const afterReveal = [...scene2(), seg('s02-04', 's02-b', { text: 'Y por eso Compensating control era la respuesta correcta aquí, ya lo ves.' })];
+  assert.ok(!run(full(afterReveal)).warnings.some((w) => /reads the option/.test(w)));
+
   // a short one-word option said in passing does not trigger it
   const passing = scene2();
   passing[1] = { ...passing[1], text: 'Esto es muy preventive en realidad, o eso parece. {trap-1}' };
   assert.ok(!run(full(passing)).warnings.some((w) => /reads the option/.test(w)));
+});
+
+test('the voice reading each question does not count as an «¿Qué…?» formula', () => {
+  const n = 5;
+  const sn = (k) => `s0${k + 1}`;
+  const sb = {
+    chapters: [{ n: 1, title: 'Uno' }],
+    scenes: [...Array.from({ length: n }, (_, k) => ({ id: `${sn(k)}-q`, chapter: 1, requiredCues: [`rv${k + 1}`] })), { id: 's09-end', chapter: 1, requiredCues: [] }],
+  };
+  const open = (id, scene) => ({ id, scene, text: '¿Qué pasa con este control en la grúa de Halden? Es una pregunta de examen con texto suficiente.' });
+  const caso = [
+    ...Array.from({ length: n }, (_, k) => [
+      { ...open(`${sn(k)}-01`, `${sn(k)}-q`), question: { ...question, revealAt: `rv${k + 1}` } },
+      cued(`${sn(k)}-02`, `${sn(k)}-q`, `rv${k + 1}`),
+    ]).flat(),
+    seg('s09-01', 's09-end'),
+    seg('s09-02', 's09-end'),
+  ];
+  const analyze = (segments) => analyzeNarration({ storyboard: sb, narration: { voice: 'es-ES-ElviraNeural', segments }, lexicon: {} }, { chispa: true, examQuestions: [0, 9] });
+  const res = analyze(caso);
+  assert.deepEqual(res.errors, []);
+  assert.ok(!res.warnings.some((w) => /questions open with/.test(w)), res.warnings.join(' | '));
+  // the same openers in an ordinary video (no question objects) still trip the formula check
+  const plain = caso.map(({ question: _q, ...rest }) => rest);
+  assert.ok(analyze(plain).warnings.some((w) => /questions open with "¿qué"/.test(w)));
 });
 
 test('question count outside the profile range warns', () => {

@@ -5,6 +5,7 @@ import { EASE, progress } from '../theme/motion';
 import { ACCENT, C, FONT, LAYOUT, RADIUS, STAGE, alpha } from '../theme/tokens';
 import { Icon } from '../ui/Icon';
 import { twoLines, useFontsReady } from './Captions';
+import { trapRowDim } from './question-dim';
 import { CountdownRing } from './ThinkPrompt';
 
 /**
@@ -269,7 +270,8 @@ function QuestionPanel({ cue, frame, fps }: { cue: QuestionCue; frame: number; f
   const remaining = 1 - progress(frame, cue.countdownFrom, cue.countdownFrames, EASE.linear);
   const seconds = Math.max(0, Math.ceil((countdownEnd - frame) / fps));
 
-  // Reveal, then trap (trapFrame >= revealFrame; equal is allowed and never dips the trap).
+  // Reveal, then trap (trapFrame >= revealFrame; equal is allowed). The trap row dims only for the stretch
+  // between the two marks (see trapRowDim), so with equal frames it never dips.
   const reveal = progress(frame, cue.revealFrame, MARK_IN, EASE.out);
   const trapMark = progress(frame, cue.trapFrame, MARK_IN, EASE.out);
   const base = 1 - (1 - DIMMED) * reveal;
@@ -353,7 +355,7 @@ function QuestionPanel({ cue, frame, fps }: { cue: QuestionCue; frame: number; f
             const isAnswer = i === cue.answer;
             const isTrap = i === cue.trap;
             const enter = progress(frame, cue.from + OPTION_DELAY + i * OPTION_STEP, OPTION_IN, EASE.out);
-            const dim = isAnswer ? 1 : isTrap ? base + (1 - base) * trapMark : base;
+            const dim = isAnswer ? 1 : isTrap ? trapRowDim(reveal, trapMark, DIMMED) : base;
             const markKind = isAnswer ? 'answer' : isTrap ? 'trap' : null;
             const mark = isAnswer ? reveal : isTrap ? trapMark : 0;
             const markFrom = isAnswer ? cue.revealFrame : cue.trapFrame;

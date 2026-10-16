@@ -409,7 +409,8 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
       for (const t of parsed.displayTokens) {
         if (isSpelledIdentifier(t.text)) warnings.push(`${label}: "${bareToken(t.text)}" is read aloud — put it on screen and say what it is (spoken style)`);
       }
-      for (const sentence of parsed.display.split(/(?<=[.!?…])\s+/)) {
+      // The voice reads each exam question by design, so its sentences are not a formula.
+      for (const sentence of question ? [] : parsed.display.split(/(?<=[.!?…])\s+/)) {
         const opener = sentence.split(/\s+/)[0].toLowerCase().replace(/[.,;:!?…»"')]+$/, '');
         if (opener.startsWith('¿')) openers.set(opener, [...(openers.get(opener) ?? []), raw.id]);
       }
@@ -482,7 +483,9 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
           if (typeof opt !== 'string') continue;
           const folded = foldForCompare(opt);
           if (!folded || !(folded.split(' ').length >= 2 || folded.length >= 12)) continue;
-          for (const t of segs) {
+          // Only until the reveal: naming the right answer while explaining it afterwards is wanted.
+          const revealIdx = segs.findIndex((x) => x.parsed.cues.some((c) => c.id === q.revealAt));
+          for (const t of revealIdx >= 0 ? segs.slice(0, revealIdx) : segs) {
             if (` ${foldForCompare(t.parsed.spoken)} `.includes(` ${folded} `)) {
               warnings.push(`${t.id}: the voice reads the option "${opt}" of the question — it is on screen, say the reasoning instead`);
             }

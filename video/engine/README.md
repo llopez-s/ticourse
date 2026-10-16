@@ -234,11 +234,16 @@ con los términos del examen en inglés; el motor no traduce nada. Diseño:
   | `trapAt` | opcional; cue posterior donde se marca la trampa. Por defecto, `revealAt`; nunca antes de `revealAt` |
 
   Los textos pasan el mismo filtro de símbolos prohibidos que las tarjetas de examen (sin flechas ni emoji).
-- **Reglas de `analyzeNarration`:** como mucho una pregunta por escena y ninguna en la escena final; no
-  comparte escena con una pausa para pensar ni con un mensaje interceptado; `revealAt`/`trapAt` deben ser cues de
-  un segmento posterior de su escena. Son avisos (no fallan) que la voz lea una opción literal —la ve en pantalla,
-  debe decir el razonamiento— y que el recuento de preguntas quede fuera de `examQuestions` del perfil (3 en
-  `caso-yt`, 4–5 en `caso-principal-yt`).
+- **Reglas de `analyzeNarration`:**
+  - **errores:** campos mal formados (`options`, `answer`/`trap`, límites de texto, `countdownMs`, `objective`, símbolos
+    prohibidos); más de una pregunta por escena, o una en la escena final; pregunta en una escena con pausa para
+    pensar o con mensaje interceptado; `revealAt`/`trapAt` que no sean cues de un segmento posterior de su
+    escena, o `trapAt` antes de `revealAt`;
+  - **avisos** (no fallan): la voz lee una opción literal en el segmento de la pregunta o en los anteriores a la
+    revelación —la ve en pantalla, debe decir el razonamiento—; después de la revelación nombrar la correcta
+    al explicarla es lo deseado y no avisa; el recuento de preguntas fuera de `examQuestions` del perfil (3 en
+    `caso-yt`, 4–5 en `caso-principal-yt`); los segmentos con `question` no cuentan para el aviso de
+    «¿Qué…?» repetido (la voz lee cada pregunta por diseño).
 - **`build-timeline.mjs`:**
   - la cuenta atrás es silencio justo después del audio del segmento (como la pausa para pensar) y se suma a su
     `durationInFrames`;
@@ -251,7 +256,11 @@ con los términos del examen en inglés; el motor no traduce nada. Diseño:
     la escena de una pregunta antes del fotograma de la trampa (después sí: la ficha del piloto pone una
     tarjeta tras cada revelación);
   - el VTT lleva las cuatro opciones (`A) …` a `D) …`) como un cue más durante la cuenta atrás, mezclado en
-    orden con las páginas de subtítulos.
+    orden con las páginas de subtítulos;
+  - la transcripción añade tras el segmento de la pregunta `[Pregunta de examen · <insignia> <objetivo>] <escenario> <pregunta> A) … D) …`
+    y tras el segmento de la revelación `Correcta: <letra> — <why>. Trampa: <letra> — <trapWhy>.`;
+  - aviso (no falla) si a la escena de la pregunta le quedan menos de 3 s de pantalla tras marcar la trampa:
+    es el tiempo para leer las explicaciones.
 - **`src/overlay/ExamQuestionLayer.tsx`:** oscurece la escena y centra un panel con la plaquita
   `EXAMEN · <badge> · <objetivo>`, el escenario, la pregunta y las cuatro opciones, que entran escalonadas. Durante
   la cuenta atrás dibuja el anillo (`CountdownRing`, exportado de `ThinkPrompt.tsx`) con el rótulo «Pausa si
