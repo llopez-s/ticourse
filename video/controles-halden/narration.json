@@ -1,0 +1,273 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {lock}Esta es una cerradura del puerto de Halden. {tag}El examen te va a preguntar por ella de dos maneras, y se mezclan muy fácil.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Un control, dos etiquetas. {promise}Quién lo hace funcionar, qué hace, y cuándo un control compensa a otro.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-cuarto",
+      "text": "<engaging> {open}Una mañana, la puerta del cuarto de comunicaciones aparece abierta. No falta nada, pero nadie sabe quién la dejó así.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-cuarto",
+      "text": "<thoughtful> El puerto responde con cuatro controles. {decide}La dirección decide quién puede entrar, y decidir es managerial.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-cuarto",
+      "text": "<steady> {do}El técnico de guardia acompaña a quien entre sin permiso propio. Eso lo hace una persona cada día, así que es operational.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-cuarto",
+      "text": "<clear> {touch}La puerta se cierra sola y tiene cerradura. Es algo que se toca, así que physical.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-cuarto",
+      "text": "<warm> {system}Y los equipos de dentro solo aceptan cambios de una cuenta de Sistemas. Eso lo hace un sistema solo, technical.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-cuarto",
+      "text": "<firm> {four}O sea, que la categoría dice quién o qué hace funcionar el control.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "1.1",
+        "text": "Categoría: quién o qué lo hace funcionar",
+        "at": "four",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca, con otro caso. La dirección aprueba una norma de mesa limpia. Cada tarde, al cerrar, alguien de la oficina repasa las mesas y guarda los papeles que se han quedado a la vista. ¿A qué categoría pertenece ese repaso?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "1.1",
+        "scenario": "La dirección aprueba una norma de mesa limpia. Cada tarde, al cerrar, alguien de la oficina repasa las mesas y guarda los papeles a la vista.",
+        "q": "¿A qué categoría de control pertenece el repaso de cada tarde?",
+        "options": [
+          "Technical",
+          "Managerial",
+          "Operational",
+          "Physical"
+        ],
+        "answer": 2,
+        "trap": 1,
+        "why": "Una persona cumple un procedimiento en el día a día",
+        "trapWhy": "La norma es managerial, pero la pregunta es por el repaso, no por la norma",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Operational. Es una persona que cumple un procedimiento cada día. {trap-1}Managerial tienta, porque la norma la aprobó la dirección. {norm}Pero te preguntan por el repaso, no por la norma.",
+      "pauseAfterMs": 1200,
+      "exam": {
+        "objective": "1.1",
+        "text": "Decidir es managerial; hacerlo, operational",
+        "at": "norm",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-camara",
+      "text": "<warm> {both}Vuelve la cerradura del principio. Arriba pone physical, porque se toca. La casilla de abajo dice qué hace, y esta impide entrar, o sea, preventive.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-camara",
+      "text": "<curious> {depot}Ahora, una cámara bien a la vista en la entrada del depósito de contenedores vacíos. {night}De noche, quien se acerca la ve y se da la vuelta. Eso es deterrent.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-camara",
+      "text": "<focused> {morning}A la mañana siguiente, la grabación cuenta qué pasó, y eso es detective. Misma cámara, dos tipos. {scenario}El tipo es lo que hace el control en ese escenario.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "1.1",
+        "text": "Tipo: lo que hace el control en ese escenario",
+        "at": "scenario",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-camara",
+      "text": "<serious> {line}Y ojo con la raya. La cámara depende de que la persona decida parar, y la cerradura funciona aunque lo intente.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<engaging> {q2}En otra entrada del depósito cuelga una carcasa de cámara, bien a la vista. Por dentro está vacía y no graba nada. ¿Qué tipo de control describe mejor la carcasa? {best}Ese «mejor» quiere decir la que encaja con este caso, aunque otra suene bien.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "1.1",
+        "scenario": "En una entrada del depósito de contenedores vacíos cuelga una carcasa de cámara bien a la vista. Está vacía: no graba ni envía imagen.",
+        "q": "¿Qué tipo de control describe MEJOR la carcasa?",
+        "options": [
+          "Preventive",
+          "Detective",
+          "Corrective",
+          "Deterrent"
+        ],
+        "answer": 3,
+        "trap": 1,
+        "why": "Lo único que puede hacer es que quien la vea se lo piense",
+        "trapWhy": "Suena a cámara, pero no graba: no puede descubrir nada",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<firm> {ok-2}Deterrent. Lo único que puede hacer es que quien la vea se lo piense. {trap-2}Detective tienta, porque suena a cámara. {nothing}Pero esta no graba, así que no descubre nada.",
+      "pauseAfterMs": 1200,
+      "exam": {
+        "objective": "1.1",
+        "text": "Deterrent solo disuade: ni impide ni descubre",
+        "at": "nothing",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-sustituto",
+      "text": "<thoughtful> {mfa}Recursos Humanos tiene una aplicación antigua con los expedientes de la plantilla. Lo suyo sería pedir un segundo factor al entrar, {cannot}pero la aplicación no lo admite.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-sustituto",
+      "text": "<confident> {instead}Así que, hasta que se cambie, solo se entra desde tres ordenadores de Recursos Humanos. {stolen}Si alguien roba una contraseña y prueba desde otro, no entra.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-sustituto",
+      "text": "<steady> {same-risk}Cubre el mismo riesgo que el segundo factor, y va en su lugar. Eso es compensating.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-sustituto",
+      "text": "<serious> Ojo, que la misma medida sin ese motivo sería preventive. Lo que decide es el porqué.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-sustituto",
+      "text": "<warm> {recipe}Es como una receta sin huevo. Algo tiene que ligar la masa, y usas otra cosa que haga ese trabajo.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<curious> {q3}La sala del archivo de planos ya tiene un lector de tarjetas en la puerta, y funciona bien. Aun así, la responsable guarda los planos más delicados en armarios con llave. ¿Qué tipo de control describe mejor los armarios?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "1.1",
+        "scenario": "El archivo de planos ya tiene un lector de tarjetas en la puerta, y funciona bien. Aun así, los planos más delicados se guardan en armarios con llave.",
+        "q": "¿Qué tipo de control describe MEJOR los armarios con llave?",
+        "options": [
+          "Directive",
+          "Preventive",
+          "Detective",
+          "Compensating"
+        ],
+        "answer": 1,
+        "trap": 3,
+        "why": "Impiden abrirlos a quien no tiene la llave, y no sustituyen a nada",
+        "trapWhy": "Es un control de más, pero no falta nada: el lector está y funciona",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<firm> {ok-3}Preventive. Impiden abrirlos a quien no tiene la llave. {trap-3}Compensating tienta, porque compensar suena a añadir. Pero no falta nada, porque el lector funciona.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<warm> {recipe-back}Si tienes huevo y además le echas otra cosa, no sustituyes nada.",
+      "pauseAfterMs": 700,
+      "exam": {
+        "objective": "1.1",
+        "text": "Compensating: solo si el que toca no se puede",
+        "at": "recipe-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Tres reglas. {rule-1}La primera, la categoría es quién lo hace funcionar.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}La segunda, el tipo es lo que hace en ese caso, y las dos etiquetas van a la vez.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y compensating solo va en lugar de lo que no se puede poner.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Antes de contestar, pregúntate las dos cosas. {next}Y ahora, tu turno, {endcard}las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}
