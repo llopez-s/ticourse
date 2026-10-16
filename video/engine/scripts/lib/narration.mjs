@@ -372,7 +372,7 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
         else if (x.trap === x.answer) errors.push(`${label}: question.trap must differ from question.answer`);
         const [lo, hi] = QUESTION_COUNTDOWN_MS;
         const countdownMs = x.countdownMs ?? QUESTION_COUNTDOWN_DEFAULT_MS;
-        if (typeof countdownMs !== 'number' || countdownMs < lo || countdownMs > hi) errors.push(`${label}: question.countdownMs must be between ${lo} and ${hi}`);
+        if (!Number.isFinite(countdownMs) || countdownMs < lo || countdownMs > hi) errors.push(`${label}: question.countdownMs must be between ${lo} and ${hi}`);
         if (typeof x.revealAt !== 'string' || !x.revealAt) errors.push(`${label}: question.revealAt must be a cue id`);
         if (x.trapAt !== undefined && (typeof x.trapAt !== 'string' || !x.trapAt)) errors.push(`${label}: question.trapAt must be a cue id`);
         question = {
@@ -473,8 +473,8 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
           errors.push(`${s.id}: question.${field} "${q[field]}" must be a cue of a later segment of ${scene.id}`);
         }
       }
-      if (later.has(q.revealAt) && later.has(q.trapAt) && order.indexOf(q.trapAt) > order.indexOf(q.revealAt)) {
-        errors.push(`${s.id}: question.trapAt "${q.trapAt}" must fire before question.revealAt "${q.revealAt}"`);
+      if (later.has(q.revealAt) && later.has(q.trapAt) && order.indexOf(q.trapAt) < order.indexOf(q.revealAt)) {
+        errors.push(`${s.id}: question.trapAt "${q.trapAt}" must not fire before question.revealAt "${q.revealAt}"`);
       }
       // The voice explains the trap and the answer; reading the choices aloud duplicates what is on screen.
       if (Array.isArray(q.options)) {
@@ -505,7 +505,7 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
   }
   if (thinkScenes.length !== thinkPrompts) warnings.push(`${thinkScenes.length} think prompts (style guide: exactly ${thinkPrompts})`);
   if (examCount && (examCount < examCards[0] || examCount > examCards[1])) warnings.push(`${examCount} exam cards (style guide: ${examCards[0]}–${examCards[1]})`);
-  if (questionCount && (questionCount < examQuestions[0] || questionCount > examQuestions[1])) {
+  if ((questionCount || examQuestions[0] > 0) && (questionCount < examQuestions[0] || questionCount > examQuestions[1])) {
     warnings.push(`${questionCount} exam questions (style guide: ${examQuestions[0]}–${examQuestions[1]})`);
   }
   for (const [chapter, n] of interceptsByChapter) if (n > 1) errors.push(`chapter ${chapter}: ${n} intercepted messages (max 1 per chapter)`);

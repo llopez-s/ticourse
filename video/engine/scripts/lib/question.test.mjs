@@ -55,11 +55,12 @@ test('a valid question is parsed with trapAt defaulting to revealAt', () => {
 
 test('countdownMs defaults to 5000 and trapAt is kept when given', () => {
   const { countdownMs: _drop, ...noCount } = question;
-  const { errors, segments } = run(full(scene2({ ...noCount, trapAt: 'trap-1' })));
+  const { errors, segments } = run(full(scene2({ ...noCount, revealAt: 'trap-1', trapAt: 'reveal-1' })));
   assert.deepEqual(errors, []);
   const q = segments.find((s) => s.id === 's02-01').question;
   assert.equal(q.countdownMs, 5000);
-  assert.equal(q.trapAt, 'trap-1');
+  assert.equal(q.revealAt, 'trap-1');
+  assert.equal(q.trapAt, 'reveal-1');
 });
 
 test('options must be exactly four non-empty strings', () => {
@@ -102,8 +103,10 @@ test('revealAt and trapAt must be cues of a later segment of the same scene', ()
   // missing revealAt
   const { revealAt: _r, ...noReveal } = question;
   has(run(full(scene2(noReveal))).errors, /s02-01: question\.revealAt must be a cue id/);
-  // trapAt must not come after revealAt
-  has(run(full(scene2({ ...question, revealAt: 'trap-1', trapAt: 'reveal-1' }))).errors, /s02-01: question\.trapAt "reveal-1" must fire before question\.revealAt/);
+  // the answer is revealed first: trapAt may not fire before revealAt (same cue or later is fine)
+  has(run(full(scene2({ ...question, revealAt: 'reveal-1', trapAt: 'trap-1' }))).errors, /s02-01: question\.trapAt "trap-1" must not fire before question\.revealAt "reveal-1"/);
+  assert.deepEqual(run(full(scene2({ ...question, revealAt: 'trap-1', trapAt: 'reveal-1' }))).errors, []);
+  assert.deepEqual(run(full(scene2({ ...question, revealAt: 'reveal-1', trapAt: 'reveal-1' }))).errors, []);
 });
 
 test('one question per scene, none in the closing scene, never with think or intercept in the same scene', () => {
@@ -129,7 +132,7 @@ test('an exam card may share the scene (task 3 checks the order against frames)'
   assert.deepEqual(run(full(mid)).errors, []);
 });
 
-test('the objective is checked like an exam cards', () => {
+test("the objective is checked like an exam card's", () => {
   const { errors } = run(full(scene2({ ...question, objective: '9.9' })));
   has(errors, new RegExp(`s02-01: ${escapeRe(examObjectiveError('secplus', '9.9'))}`));
   const gcti = analyzeNarration({ storyboard, narration: { voice: 'es-ES-ElviraNeural', segments: full(scene2({ ...question, objective: '1.1' })) }, lexicon: {} }, { track: 'gcti' });
@@ -162,6 +165,8 @@ test('question count outside the profile range warns', () => {
   const { warnings, errors } = run(two, { examQuestions: [3, 3] });
   assert.deepEqual(errors, []);
   has(warnings, /2 exam questions \(style guide: 3–3\)/);
+  // a profile that expects questions warns when the video has none
+  has(run(full([seg('s02-01', 's02-b'), cued('s02-02', 's02-b', 'trap-1'), cued('s02-03', 's02-b', 'reveal-1')]), { examQuestions: [3, 3] }).warnings, /0 exam questions \(style guide: 3–3\)/);
   // old profiles ([0, 0]): a question warns, no question stays silent
   has(run(full(scene2())).warnings, /1 exam questions \(style guide: 0–0\)/);
   assert.ok(!run(full([seg('s02-01', 's02-b'), cued('s02-02', 's02-b', 'trap-1'), cued('s02-03', 's02-b', 'reveal-1')])).warnings.some((w) => /exam questions/.test(w)));
