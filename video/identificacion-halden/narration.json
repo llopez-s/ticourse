@@ -1,0 +1,285 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {three}En el puerto de Halden, para arreglar un fallo, primero hay que encontrarlo. {blind}Y cada forma de buscar tiene sus puntos ciegos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Qué ve cada método. {promise}Lo vas a ver en las máquinas, en las aplicaciones y fuera de casa. Y el examen no pide el mejor, sino el que encaja.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-escaneo",
+      "text": "<engaging> {server}Empezamos por las máquinas, con un servidor escaneado dos veces.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-escaneo",
+      "text": "<thoughtful> {outside}Sin cuenta, ve lo que vería cualquiera de fuera. Y como lo deduce, da avisos que no lo son.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-escaneo",
+      "text": "<clear> {inside}Con una cuenta preparada, lee lo instalado y los parches que faltan. Encuentra más y acierta más.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-escaneo",
+      "text": "<warm> {doctor}Es el médico que te mira desde la puerta y adivina, frente a la analítica. {names}Sin cuenta es non-credentialed, y con cuenta, credentialed.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.3",
+        "text": "Credentialed lee; non-credentialed deduce",
+        "at": "names",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-escaneo",
+      "text": "<steady> {monthly}El escaneo mensual del puerto va con cuenta. {central}Además, importa cómo llega. Desde un servidor central, solo ve lo encendido y conectado, como la consulta solo ve a quien va.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-escaneo",
+      "text": "<confident> {agent}Un portátil que pasa semanas fuera lleva un agente de escaneo, que informa desde donde esté, como un pulsómetro. Eso es agent-based, y lo otro, agentless.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca. El puerto va a abrir una web nueva. Seguridad quiere saber qué enseña a cualquiera, como lo vería una atacante sin cuenta. Alguien propone la cuenta de escaneo, que encuentra más. ¿Qué método responde mejor a lo que busca? {best}Ese «mejor» pide lo que responde, aunque otro encuentre más.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "4.3",
+        "scenario": "El puerto va a abrir una web nueva a internet. Seguridad quiere saber qué servicios y versiones enseña a cualquiera, como lo vería una atacante sin cuenta.",
+        "q": "Alguien propone la cuenta de escaneo («encuentra más»). ¿Qué método responde MEJOR a lo que busca Seguridad?",
+        "options": [
+          "Static analysis (SAST)",
+          "Credentialed scan",
+          "Agent-based scan",
+          "Non-credentialed scan"
+        ],
+        "answer": 3,
+        "trap": 1,
+        "why": "Mira sin cuenta y desde fuera: ve justo lo que la web enseña a cualquiera",
+        "trapWhy": "Encuentra más, pero mezcla lo de dentro, que una atacante sin cuenta no ve",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<firm> {ok-1}Es non-credentialed, porque mira como ella, sin cuenta. {trap-1}Credentialed tienta porque encuentra más, pero ve lo de dentro, y ella no.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<warm> {passerby}Para saber qué ve quien pasa, no hace falta la analítica.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "4.3",
+        "text": "Non-credentialed: lo que ve quien está fuera",
+        "at": "passerby",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-aplicacion",
+      "text": "<engaging> {code}Pasamos a las aplicaciones. Antes de desplegar una aplicación propia, una herramienta lee su código sin ejecutarlo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-aplicacion",
+      "text": "<clear> Encuentra una contraseña escrita dentro, y algo de ruido. {sast}Eso es static analysis, SAST, que llega pronto pero necesita el código.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-aplicacion",
+      "text": "<focused> {running}Con la aplicación en marcha, otra herramienta le hace peticiones y mira qué responde, sin el código. Así ve que la sesión no caduca. {dast}Eso es dynamic analysis, DAST.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-aplicacion",
+      "text": "<curious> {parts}Y si sale un fallo en una biblioteca de otros, la lista de componentes dice qué aplicaciones la llevan. {sbom}Es el SBOM, y vigilar esas piezas es package monitoring.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-aplicacion",
+      "text": "<warm> {house}Como en una casa, miras los planos antes de construir y abres los grifos cuando está hecha.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "4.3",
+        "text": "SAST lee el código; DAST prueba lo que corre",
+        "at": "house",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<intrigued> {q2}Una web del puerto, con su código en casa, ya está publicada. Si le pides una página que no existe, el error enseña detalles internos del servidor. Y eso no viene del código, sino de cómo se configuró el servidor. ¿Con qué técnica es más probable encontrarlo? {likely}Ese «más probable» no pide la única posible, sino la que mejor encaja.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "4.3",
+        "scenario": "Una web del puerto, con su código en casa, ya está publicada. Si le pides una página que no existe, el error enseña detalles internos del servidor.",
+        "q": "El fallo sale de cómo se configuró el servidor, no del código. ¿Con qué técnica es MÁS probable encontrarlo?",
+        "options": [
+          "Static analysis (SAST)",
+          "Package monitoring",
+          "Dynamic analysis (DAST)",
+          "OSINT"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "Prueba la aplicación en marcha y ve el servidor tal como está configurado",
+        "trapWhy": "Tienes el código, pero el fallo no está en él: solo aparece en marcha",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}DAST, porque prueba la aplicación en marcha. {trap-2}SAST tienta porque tienes el código, pero el fallo no está en él. {house-back}Los planos pueden estar perfectos y el grifo, mal montado.",
+      "pauseAfterMs": 1000
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-fuera",
+      "text": "<thoughtful> {door}Hasta aquí, todo mira dentro. Pero hay cosas que solo se saben fuera, y te las cuentan otros.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-fuera",
+      "text": "<clear> {osint}Piensa en una tienda. Lo publicado es como el periódico, gratis pero hay que leerlo entero, y se llama OSINT. {paid}Si pagas, otro lo lee por ti.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-fuera",
+      "text": "<warm> {isac}Las tiendas de la calle se avisan del billete falso que les intentan colar, y eso no sale en ningún periódico.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-fuera",
+      "text": "<focused> Entre organizaciones de un sector, eso es un ISAC.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-fuera",
+      "text": "<serious> {darkweb}Y el dark web monitoring busca lo tuyo, tus credenciales o tus datos, donde se vende lo robado. {keys}Es ir al mercadillo a ver si están tus llaves.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "4.3",
+        "text": "Dark web monitoring: tus datos a la venta",
+        "at": "darkweb",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<engaging> {q3}La última. Dos puertos de la misma costa sufren el mismo ataque y sacan una lista de direcciones y ficheros sospechosos. No la publican. La comparten solo con el sector, en un grupo que reparte avisos entre sus miembros. ¿Qué fuente le haría llegar esa lista al puerto?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "4.3",
+        "scenario": "Dos puertos de la misma costa sufren el mismo ataque y sacan una lista de direcciones y ficheros sospechosos. No la publican: la comparten solo en el sector.",
+        "q": "Lo hacen en un grupo que reparte avisos entre sus miembros. ¿Qué fuente le haría llegar esa lista al puerto?",
+        "options": [
+          "Information-sharing organization (ISAC)",
+          "OSINT",
+          "Dark web monitoring",
+          "Proprietary threat feed"
+        ],
+        "answer": 0,
+        "trap": 2,
+        "why": "Es un grupo del sector que se pasa avisos entre sus miembros",
+        "trapWhy": "Suena a cerrado, pero busca lo tuyo a la venta, no avisos entre víctimas",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<firm> {ok-3}El ISAC, el grupo del sector que se pasa avisos. {trap-3}El dark web monitoring tienta porque suena a cerrado, pero busca lo tuyo a la venta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<warm> {shops}Aquí son víctimas que se avisan. Es el grupo de las tiendas, no el mercadillo.",
+      "pauseAfterMs": 700,
+      "exam": {
+        "objective": "4.3",
+        "text": "ISAC: lo que el sector comparte sin publicarlo",
+        "at": "shops",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Con cuenta se lee lo de dentro, y sin cuenta se ve lo de fuera.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}SAST necesita el código, y DAST, solo la aplicación en marcha.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y lo de fuera te lo cuentan otros.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Antes de elegir, pregúntate qué puede ver ese método y qué no. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

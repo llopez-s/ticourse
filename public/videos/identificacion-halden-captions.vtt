@@ -1,0 +1,373 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:06.867
+En el puerto de Halden, para arreglar
+un fallo, primero hay que encontrarlo.
+
+2
+00:00:06.867 --> 00:00:10.500
+Y cada forma de buscar
+tiene sus puntos ciegos.
+
+3
+00:00:10.500 --> 00:00:12.233
+Qué ve cada método.
+
+4
+00:00:12.233 --> 00:00:17.900
+Lo vas a ver en las máquinas,
+en las aplicaciones y fuera de casa.
+
+5
+00:00:17.900 --> 00:00:23.000
+Y el examen no pide el mejor,
+sino el que encaja.
+
+6
+00:00:23.567 --> 00:00:27.867
+Empezamos por las máquinas,
+con un servidor escaneado dos veces.
+
+7
+00:00:27.867 --> 00:00:32.033
+Sin cuenta, ve lo que vería
+cualquiera de fuera.
+
+8
+00:00:32.033 --> 00:00:35.733
+Y como lo deduce, da avisos que no lo son.
+
+9
+00:00:35.733 --> 00:00:40.533
+Con una cuenta preparada,
+lee lo instalado y los parches que faltan.
+
+10
+00:00:40.533 --> 00:00:42.800
+Encuentra más y acierta más.
+
+11
+00:00:42.800 --> 00:00:47.733
+Es el médico que te mira desde la puerta
+y adivina, frente a la analítica.
+
+12
+00:00:47.733 --> 00:00:52.400
+Sin cuenta es non-credentialed,
+y con cuenta, credentialed.
+
+13
+00:00:52.400 --> 00:00:57.600
+El escaneo mensual del puerto va
+con cuenta. Además, importa cómo llega.
+
+14
+00:00:57.600 --> 00:01:01.933
+Desde un servidor central,
+solo ve lo encendido y conectado,
+
+15
+00:01:01.933 --> 00:01:04.667
+como la consulta solo ve a quien va.
+
+16
+00:01:04.667 --> 00:01:08.867
+Un portátil que pasa semanas
+fuera lleva un agente de escaneo,
+
+17
+00:01:08.867 --> 00:01:12.233
+que informa desde donde
+esté, como un pulsómetro.
+
+18
+00:01:12.233 --> 00:01:15.967
+Eso es agent-based, y lo otro, agentless.
+
+19
+00:01:16.633 --> 00:01:19.600
+Te toca. El puerto va
+a abrir una web nueva.
+
+20
+00:01:19.600 --> 00:01:23.033
+Seguridad quiere saber
+qué enseña a cualquiera,
+
+21
+00:01:23.033 --> 00:01:25.733
+como lo vería una atacante sin cuenta.
+
+22
+00:01:25.733 --> 00:01:29.800
+Alguien propone la cuenta
+de escaneo, que encuentra más.
+
+23
+00:01:29.800 --> 00:01:32.733
+¿Qué método responde mejor a lo que busca?
+
+24
+00:01:32.733 --> 00:01:37.933
+Ese «mejor» pide lo que responde,
+aunque otro encuentre más.
+
+25
+00:01:37.133 --> 00:01:42.133
+A) Static analysis (SAST)
+B) Credentialed scan
+C) Agent-based scan
+D) Non-credentialed scan
+
+26
+00:01:42.300 --> 00:01:45.967
+Es non-credentialed, porque
+mira como ella, sin cuenta.
+
+27
+00:01:45.967 --> 00:01:51.000
+Credentialed tienta porque encuentra
+más, pero ve lo de dentro, y ella no.
+
+28
+00:01:51.000 --> 00:01:56.300
+Para saber qué ve quien pasa,
+no hace falta la analítica.
+
+29
+00:01:57.467 --> 00:01:59.100
+Pasamos a las aplicaciones.
+
+30
+00:01:59.100 --> 00:02:01.600
+Antes de desplegar una aplicación propia,
+
+31
+00:02:01.600 --> 00:02:04.567
+una herramienta lee
+su código sin ejecutarlo.
+
+32
+00:02:04.567 --> 00:02:08.333
+Encuentra una contraseña
+escrita dentro, y algo de ruido.
+
+33
+00:02:08.333 --> 00:02:13.267
+Eso es static analysis, SAST,
+que llega pronto pero necesita el código.
+
+34
+00:02:13.267 --> 00:02:15.333
+Con la aplicación en marcha,
+
+35
+00:02:15.333 --> 00:02:20.500
+otra herramienta le hace peticiones
+y mira qué responde, sin el código.
+
+36
+00:02:20.500 --> 00:02:25.167
+Así ve que la sesión no caduca.
+Eso es dynamic analysis, DAST.
+
+37
+00:02:25.167 --> 00:02:28.433
+Y si sale un fallo
+en una biblioteca de otros,
+
+38
+00:02:28.433 --> 00:02:32.633
+la lista de componentes dice
+qué aplicaciones la llevan.
+
+39
+00:02:32.633 --> 00:02:37.067
+Es el SBOM, y vigilar esas
+piezas es package monitoring.
+
+40
+00:02:37.067 --> 00:02:40.067
+Como en una casa, miras los planos antes
+
+41
+00:02:40.067 --> 00:02:44.767
+de construir y abres
+los grifos cuando está hecha.
+
+42
+00:02:45.533 --> 00:02:49.967
+Una web del puerto, con su código
+en casa, ya está publicada.
+
+43
+00:02:49.967 --> 00:02:52.633
+Si le pides una página que no existe,
+
+44
+00:02:52.633 --> 00:02:56.233
+el error enseña detalles
+internos del servidor.
+
+45
+00:02:56.233 --> 00:03:00.933
+Y eso no viene del código, sino
+de cómo se configuró el servidor.
+
+46
+00:03:00.933 --> 00:03:04.400
+¿Con qué técnica
+es más probable encontrarlo?
+
+47
+00:03:04.400 --> 00:03:10.433
+Ese «más probable» no pide la única
+posible, sino la que mejor encaja.
+
+48
+00:03:09.633 --> 00:03:14.633
+A) Static analysis (SAST)
+B) Package monitoring
+C) Dynamic analysis (DAST)
+D) OSINT
+
+49
+00:03:14.800 --> 00:03:18.067
+DAST, porque prueba
+la aplicación en marcha.
+
+50
+00:03:18.067 --> 00:03:22.600
+SAST tienta porque tienes el código,
+pero el fallo no está en él.
+
+51
+00:03:22.600 --> 00:03:27.700
+Los planos pueden estar perfectos
+y el grifo, mal montado.
+
+52
+00:03:28.867 --> 00:03:31.233
+Hasta aquí, todo mira dentro.
+
+53
+00:03:31.233 --> 00:03:36.367
+Pero hay cosas que solo se saben
+fuera, y te las cuentan otros.
+
+54
+00:03:36.367 --> 00:03:38.100
+Piensa en una tienda.
+
+55
+00:03:38.100 --> 00:03:43.633
+Lo publicado es como el periódico,
+gratis pero hay que leerlo entero,
+
+56
+00:03:43.633 --> 00:03:47.467
+y se llama OSINT.
+Si pagas, otro lo lee por ti.
+
+57
+00:03:47.467 --> 00:03:53.267
+Las tiendas de la calle se avisan
+del billete falso que les intentan colar,
+
+58
+00:03:53.267 --> 00:03:56.167
+y eso no sale en ningún periódico.
+
+59
+00:03:56.167 --> 00:04:00.067
+Entre organizaciones
+de un sector, eso es un ISAC.
+
+60
+00:04:00.067 --> 00:04:05.633
+Y el dark web monitoring busca lo tuyo,
+tus credenciales o tus datos,
+
+61
+00:04:05.633 --> 00:04:12.167
+donde se vende lo robado. Es ir
+al mercadillo a ver si están tus llaves.
+
+62
+00:04:12.933 --> 00:04:13.700
+La última.
+
+63
+00:04:13.700 --> 00:04:18.633
+Dos puertos de la misma costa sufren
+el mismo ataque y sacan una lista
+
+64
+00:04:18.633 --> 00:04:22.700
+de direcciones y ficheros
+sospechosos. No la publican.
+
+65
+00:04:22.700 --> 00:04:25.033
+La comparten solo con el sector,
+
+66
+00:04:25.033 --> 00:04:28.667
+en un grupo que reparte
+avisos entre sus miembros.
+
+67
+00:04:28.667 --> 00:04:33.033
+¿Qué fuente le haría
+llegar esa lista al puerto?
+
+68
+00:04:32.233 --> 00:04:37.233
+A) Information-sharing organization (ISAC)
+B) OSINT
+C) Dark web monitoring
+D) Proprietary threat feed
+
+69
+00:04:37.400 --> 00:04:41.167
+El ISAC, el grupo del sector
+que se pasa avisos.
+
+70
+00:04:41.167 --> 00:04:48.100
+El dark web monitoring tienta porque suena
+a cerrado, pero busca lo tuyo a la venta.
+
+71
+00:04:48.100 --> 00:04:55.000
+Aquí son víctimas que se avisan. Es el
+grupo de las tiendas, no el mercadillo.
+
+72
+00:04:55.867 --> 00:04:58.000
+Te llevas tres reglas.
+
+73
+00:04:58.000 --> 00:05:03.733
+Con cuenta se lee lo de dentro,
+y sin cuenta se ve lo de fuera.
+
+74
+00:05:03.733 --> 00:05:08.400
+SAST necesita el código, y DAST,
+solo la aplicación en marcha.
+
+75
+00:05:08.400 --> 00:05:11.900
+Y lo de fuera te lo cuentan otros.
+
+76
+00:05:11.900 --> 00:05:16.933
+Antes de elegir, pregúntate qué
+puede ver ese método y qué no.
+
+77
+00:05:16.933 --> 00:05:22.000
+Ahora te toca a ti,
+con las preguntas de la lección.
