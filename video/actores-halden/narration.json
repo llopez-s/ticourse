@@ -20,13 +20,13 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {cards}En Halden, como en el examen, nadie te dice quién ataca. {pairs}Y seis actores se confunden de dos en dos.",
+      "text": "<curious> {cards}En el puerto de Halden, como en el examen, nadie te dice quién ataca. {pairs}Y seis actores se confunden de dos en dos.",
       "pauseAfterMs": 300
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Seis actores, tres parejas. {promise}Los de fuera con poco, los de fuera con mucho y los que ya están dentro.",
+      "text": "<confident> {title}Seis actores, tres parejas. {promise}Los de fuera con poco, con mucho, y los que ya están dentro.",
       "pauseAfterMs": 400
     },
     {
@@ -44,25 +44,25 @@
     {
       "id": "s02-03",
       "scene": "s02-pantallas",
-      "text": "<curious> {screens}Imagina dos mañanas en que las pantallas de la terminal amanecen cambiadas, con la misma herramienta.",
+      "text": "<curious> {screens}Imagina que, dos mañanas, alguien cambia las pantallas de la terminal de pasajeros con la misma herramienta.",
       "pauseAfterMs": 250
     },
     {
       "id": "s02-04",
       "scene": "s02-pantallas",
-      "text": "<thoughtful> {cause}Una protesta contra los cruceros. {nick}La otra lleva un mote y saludos a los del foro.",
+      "text": "<thoughtful> {cause}La primera vez, contra los cruceros. {nick}La segunda, con un mote y saludos a los del foro.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-05",
       "scene": "s02-pantallas",
-      "text": "<steady> Las barras salen casi iguales, {wants}y lo que cambia es lo que quiere cada uno.",
+      "text": "<steady> Las barras salen casi iguales. {wants}Cambia lo que quiere cada uno.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-06",
       "scene": "s02-pantallas",
-      "text": "<warm> {spray}Son como dos pintadas con el mismo spray. Una protesta por una causa, y la otra solo firma para presumir.",
+      "text": "<warm> {spray}Son como dos pintadas con el mismo spray. Una pinta su lema por una causa, y la otra es solo un mote para presumir.",
       "pauseAfterMs": 300
     },
     {
@@ -80,11 +80,11 @@
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca. En plena polémica entre vecinos, alguien entra en el perfil de una transportista con un script copiado de un foro. Lo llena de memes, nadie lo reivindica, y luego presume en ese foro de que quería ver si podía. ¿Qué actor es el más probable? {best}Fíjate en ese «más probable». No es el único posible, es el que mejor encaja.",
+      "text": "<intrigued> {q1}Te toca. En plena polémica con los vecinos, alguien entra en el perfil de una transportista con un script copiado de un foro. Lo llena de memes, sin ningún lema, y luego presume en ese foro de que quería ver si podía. ¿Qué actor es el más probable? {best}Ojo, «más probable» no es el único posible, sino el que mejor encaja.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "2.1",
-        "scenario": "En plena polémica vecinal, alguien entra con un script copiado de un foro en el perfil de una transportista y lo llena de memes. Nadie lo reivindica.",
+        "scenario": "En plena polémica vecinal, alguien entra con un script copiado de un foro en el perfil de una transportista y lo llena de memes, sin ningún lema.",
         "q": "En el foro presume: «quería ver si podía». ¿Qué actor es el MÁS probable?",
         "options": [
           "Hacktivist",
@@ -95,7 +95,7 @@
         "answer": 2,
         "trap": 0,
         "why": "No hay causa que firmar: solo ganas de probar y de presumir",
-        "trapWhy": "La polémica tienta, pero quien protesta firma su protesta, y aquí no firma nadie",
+        "trapWhy": "La polémica tienta, pero quien protesta pinta su lema, y aquí no hay ninguno",
         "countdownMs": 5000,
         "revealAt": "ok-1",
         "trapAt": "trap-1"
@@ -110,7 +110,7 @@
     {
       "id": "s03-03",
       "scene": "s03-p1",
-      "text": "<thoughtful> {trap-1}La polémica empuja hacia el hacktivist, {spray-back}pero quien protesta firma su pintada, y aquí nadie firma.",
+      "text": "<thoughtful> {trap-1}¿Hacktivist, por la polémica? {spray-back}Pues quien protesta pinta su lema, y aquí no hay ninguno.",
       "pauseAfterMs": 1000
     },
     {
@@ -122,26 +122,32 @@
     {
       "id": "s04-02",
       "scene": "s04-intrusos",
-      "text": "<tense> {ransom}El primero entra en una oficina y, en pocas horas, lo cifra todo. {note}Deja una nota, o pagáis o no recuperáis nada.",
+      "text": "<tense> {ransom}El primero entra en una oficina y en horas lo cifra todo. {note}Deja una nota, o pagáis o no recuperáis nada.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-03",
       "scene": "s04-intrusos",
-      "text": "<calm> {year}El segundo lleva más de un año dentro, con herramientas nunca vistas. {reports}Copia los informes que el puerto prepara para el Gobierno. {quiet}Ni pide ni rompe nada.",
+      "text": "<calm> {year}El segundo lleva más de un año colado en la red, {zero-day}con herramientas nunca vistas. {reports}Copia los informes del puerto para el Gobierno. {quiet}Ni pide ni rompe nada.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-04",
       "scene": "s04-intrusos",
-      "text": "<thoughtful> Las barras no los separan. Uno quiere cobrar, y pronto, y es organized crime. El otro quiere quedarse y saber, y es un nation-state.",
+      "text": "<thoughtful> Las barras no los separan, y lo que quieren, sí.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-05",
       "scene": "s04-intrusos",
-      "text": "<warm> {thief}Uno es un ladrón, que coge lo que se vende y se va. {mic}El otro, un micrófono escondido, que se queda y escucha.",
-      "pauseAfterMs": 400,
+      "text": "<warm> {thief}Uno es un ladrón, que va a por lo que da dinero y se va. Quiere cobrar, y pronto. Es organized crime.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-intrusos",
+      "text": "<confident> {mic}El otro, un micrófono escondido, que se queda a espiar. Es un nation-state.",
+      "pauseAfterMs": 600,
       "exam": {
         "objective": "2.1",
         "text": "Organized crime cobra; nation-state se queda",
@@ -150,15 +156,9 @@
       }
     },
     {
-      "id": "s04-06",
-      "scene": "s04-intrusos",
-      "text": "<focused> {zero-day}Y los dos pueden usar fallos que nadie conocía, los zero-day.",
-      "pauseAfterMs": 600
-    },
-    {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<curious> {q2}Otra. Un grupo entra con un zero-day en la web donde pagan los clientes de una naviera. A la semana, sus tarjetas están a la venta. ¿Qué actor es, otra vez, el más probable?",
+      "text": "<curious> {q2}Otra. Un grupo entra con un zero-day, un fallo que nadie conocía, en la web donde pagan los clientes de una naviera. A la semana, sus tarjetas están a la venta. ¿Qué actor es el más probable?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "2.1",
@@ -173,7 +173,7 @@
         "answer": 3,
         "trap": 1,
         "why": "Las tarjetas a la venta dicen el motivo: dinero",
-        "trapWhy": "El zero-day tienta, pero también se compra: dice cuánto sabe, no qué quiere",
+        "trapWhy": "El zero-day tienta, pero también se compra: dice cuánto puede, no qué quiere",
         "countdownMs": 5000,
         "revealAt": "ok-2",
         "trapAt": "trap-2"
@@ -182,13 +182,13 @@
     {
       "id": "s05-02",
       "scene": "s05-p2",
-      "text": "<firm> {ok-2}Quiere dinero, que para eso vende las tarjetas en una semana. Es organized crime.",
+      "text": "<firm> {ok-2}Quiere dinero, que para eso vende las tarjetas. Es organized crime.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-03",
       "scene": "s05-p2",
-      "text": "<focused> {trap-2}El zero-day te lleva al nation-state, pero también se compra. Dice cuánto sabe el atacante, no qué quiere.",
+      "text": "<focused> {trap-2}El zero-day te lleva al nation-state, pero también se compra. Dice cuánto puede el atacante, no qué quiere.",
       "pauseAfterMs": 300
     },
     {
@@ -206,7 +206,7 @@
     {
       "id": "s06-01",
       "scene": "s06-dentro",
-      "text": "<thoughtful> {inside}Ahora la barra salta a dentro, {access}y lo que cuenta es el acceso.",
+      "text": "<thoughtful> {inside}Ahora la barra salta a dentro, {access}y lo que importa es el acceso.",
       "pauseAfterMs": 300
     },
     {
@@ -218,25 +218,25 @@
     {
       "id": "s06-03",
       "scene": "s06-dentro",
-      "text": "<concerned> {wrong-mail}Otra persona manda por error la lista de turnos a alguien de fuera, creyendo que era un compañero.",
+      "text": "<concerned> {wrong-mail}Otra persona manda por error la lista de turnos a alguien de fuera.",
       "pauseAfterMs": 250
     },
     {
       "id": "s06-04",
       "scene": "s06-dentro",
-      "text": "<curious> {crew-chat}Y los amarradores montan un grupo de mensajería en sus móviles, para pasarse las listas de buques. Sistemas ni lo sabe.",
+      "text": "<curious> {crew-chat}Y los amarradores montan un grupo de mensajería para pasarse las listas de buques. Sistemas ni lo sabe.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-05",
       "scene": "s06-dentro",
-      "text": "<warm> {kitchen}Es como una cocina. Uno se lleva el jamón, otro se deja abierta la cámara y otro enchufa su freidora de casa.",
+      "text": "<warm> {kitchen}Es como una cocina. Uno se lleva el jamón, otro se deja abierta la nevera y otro enchufa su freidora de casa.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-06",
       "scene": "s06-dentro",
-      "text": "<firm> {names}Los dos primeros ya tenían acceso: son insiders, uno intentional y otro unintentional. Y el grupo, sin mala intención, es shadow IT, que nadie parchea ni vigila.",
+      "text": "<firm> {names}Los tres ya estaban dentro. Los dos primeros son insiders, uno intentional y otro unintentional. Y el grupo, sin malicia, es shadow IT, que Sistemas ni controla ni vigila.",
       "pauseAfterMs": 600,
       "exam": {
         "objective": "2.1",
@@ -248,7 +248,7 @@
     {
       "id": "s07-01",
       "scene": "s07-p3",
-      "text": "<intrigued> {q3}La última. Un empleado de esa misma naviera copia con su propio usuario los datos de pago de los clientes. Los vende en un foro, y lo hace él solo. ¿Qué describe mejor a este empleado? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
+      "text": "<intrigued> {q3}La última. Un empleado de una naviera copia con su propio usuario los datos de pago de los clientes. Los vende en un foro, y lo hace él solo. ¿Qué describe mejor a este empleado? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "2.1",
@@ -272,7 +272,7 @@
     {
       "id": "s07-02",
       "scene": "s07-p3",
-      "text": "<confident> {ok-3}Ya tenía acceso y lo usa a propósito, para cobrar. Es un intentional insider. {trap-3}Vender datos suena a organized crime. Pero las barras van primero, y este ya estaba dentro.",
+      "text": "<confident> {ok-3}Ya tenía acceso y lo usa a propósito, para cobrar. Es un intentional insider. {trap-3}¿Que vende datos, como el organized crime? Da igual, porque este ya estaba dentro.",
       "pauseAfterMs": 300
     },
     {
@@ -308,7 +308,7 @@
     {
       "id": "s08-04",
       "scene": "s08-cierre",
-      "text": "<engaging> {phrase}Primero, dónde está y con qué cuenta, y tienes la pareja. Luego, qué quiere, y sabes quién es. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "text": "<engaging> {phrase}Primero, dónde está y con qué medios cuenta, y tienes la pareja. Luego, qué quiere, y sabes quién es. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
       "pauseAfterMs": 250
     }
   ]

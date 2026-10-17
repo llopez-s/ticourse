@@ -39,7 +39,7 @@
       "title": "Dos pantallas, el mismo hueco",
       "targetSec": 38,
       "wordBudget": 103,
-      "goal": "Las tres barras, vacías (`bars`), con sus nombres en llano y luego en inglés (`attributes`): «fuera o dentro» (internal/external), «dinero detrás» (resources/funding), «saber hacer» (level of sophistication). «Imagina dos mañanas · caso de ejemplo · sin fecha» (`screens`): las pantallas de salidas de la terminal de pasajeros amanecen cambiadas, por el mismo hueco y con la misma herramienta descargada (sin hueco ni herramienta con nombre). La primera dice «Fuera los cruceros: la ciudad no es un aparcamiento» y enlaza un comunicado (`cause`); la segunda, un mote y «saludos a los del foro» (`nick`). Las barras de los dos se rellenan casi igual: fuera, pocos medios (la del hacktivist, «bajo o medio»), saber hacer modesto. Cuarta línea, «lo que quiere» (`wants`): «que se sepa su causa» (philosophical/political beliefs) y «ver si puede, presumir» (disruption/chaos). La pintada, rotulada «imagen · no es del puerto» (`spray`): el mismo spray, «No a…» y una firma. Nombres (`names`): hacktivist y unskilled attacker; la tarjeta de examen después",
+      "goal": "Las tres barras, vacías (`bars`), con sus nombres en llano y luego en inglés (`attributes`): «fuera o dentro» (internal/external), «dinero detrás» (resources/funding), «saber hacer» (level of sophistication). «Imagina dos mañanas · caso de ejemplo · sin fecha» (`screens`): las pantallas de salidas de la terminal de pasajeros amanecen cambiadas, por el mismo hueco y con la misma herramienta descargada (sin hueco ni herramienta con nombre). La primera dice «Fuera los cruceros: la ciudad no es un aparcamiento» y enlaza un comunicado (`cause`); la segunda, un mote y «saludos a los del foro» (`nick`). Las barras de los dos se rellenan casi igual: fuera, pocos medios (la del hacktivist, «bajo o medio»), saber hacer modesto. Cuarta línea, «lo que quiere» (`wants`): «que se sepa su causa» (philosophical/political beliefs) y «ver si puede, presumir» (disruption/chaos). La pintada, rotulada «imagen · no es del puerto» (`spray`): el mismo spray, un lema («No a…») y un mote. Nombres (`names`): hacktivist y unskilled attacker; la tarjeta de examen después",
       "requiredCues": [
         "bars",
         "attributes",
@@ -57,7 +57,7 @@
       "title": "Una cuenta en plena polémica",
       "targetSec": 38,
       "wordBudget": 81,
-      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel tapa la escena hasta el final, así que el fondo se queda quieto (un perfil de red social genérico, sin nombre ni texto legible). Primer calificador: «MÁS probable» resaltado en la pregunta y, debajo, «MÁS probable: no el único posible, el que mejor encaja» (`best`), que la voz explica antes de la cuenta atrás. Cuenta atrás de 5 s con «Pausa si quieres»; en `ok-1` la correcta (Unskilled attacker), en `trap-1` la trampa (Hacktivist), las otras dos atenuadas. En la resolución vuelve la pintada en una línea (`spray-back`): quien protesta firma su pintada. Sin tarjeta de examen",
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel tapa la escena hasta el final, así que el fondo se queda quieto (un perfil de red social genérico, sin nombre ni texto legible). Primer calificador: «MÁS probable» resaltado en la pregunta y, debajo, «MÁS probable: no el único posible, el que mejor encaja» (`best`), que la voz explica antes de la cuenta atrás. Cuenta atrás de 5 s con «Pausa si quieres»; en `ok-1` la correcta (Unskilled attacker), en `trap-1` la trampa (Hacktivist), las otras dos atenuadas. En la resolución vuelve la pintada en una línea (`spray-back`): quien protesta pinta su lema. Sin tarjeta de examen",
       "requiredCues": [
         "q1",
         "best",
@@ -72,17 +72,17 @@
       "title": "Un ladrón y un micrófono",
       "targetSec": 38,
       "wordBudget": 103,
-      "goal": "«Imagina dos intrusos · caso de ejemplo · sin fecha», los dos con las barras de dinero y de saber hacer llenas (`both-full`). El primero, en una oficina sin nombre (`ransom`): a las pocas horas, todo cifrado y una nota (`note`), «o pagáis, o no recuperáis nada» (sin «publicamos»: la doble extorsión es de V33); un solo chip, «ransomware». El segundo lleva más de un año dentro (`year`), con herramientas que nadie había visto, copiando los informes que el puerto prepara para el Gobierno (`reports`): no pide nada y no rompe nada (`quiet`). Nombres: organized crime (financial gain, blackmail) y nation-state (espionage; «APT» en pantalla; en un chip, «también: service disruption · war»). El ladrón (`thief`) y el micrófono escondido (`mic`), rotulados «imagen · no es del puerto»; la tarjeta de examen después del micrófono. Al final, en las herramientas de los dos, «fallos que nadie conocía · zero-day» (`zero-day`). Sin cifras, sin cripto, sin oficina con nombre",
+      "goal": "«Imagina dos intrusos · caso de ejemplo · sin fecha» (el sello, en pantalla al menos desde `year`, para que no se lea como el implante de catorce meses del callout de la lección), los dos con las barras de dinero y de saber hacer llenas (`both-full`). El primero, en una oficina sin nombre (`ransom`): a las pocas horas, todo cifrado y una nota (`note`), «o pagáis, o no recuperáis nada» (sin «publicamos»: la doble extorsión es de V33); un solo chip, «ransomware». El segundo lleva más de un año colado en la red (`year`), con herramientas que nadie había visto («fallos que nadie conocía · zero-day», `zero-day`), copiando los informes que el puerto prepara para el Gobierno (`reports`): no pide nada y no rompe nada (`quiet`). Nombres: organized crime (financial gain, blackmail) y nation-state (espionage; «APT» en pantalla; en un chip, «también: service disruption · war»). El ladrón (`thief`) y el micrófono escondido (`mic`), rotulados «imagen · no es del puerto»; la tarjeta de examen después del micrófono. El chip del zero-day queda en las herramientas de los dos; la voz no lo nombra hasta la pregunta 2. Sin cifras, sin cripto, sin oficina con nombre",
       "requiredCues": [
         "both-full",
         "ransom",
         "note",
         "year",
+        "zero-day",
         "reports",
         "quiet",
         "thief",
-        "mic",
-        "zero-day"
+        "mic"
       ]
     },
     {
@@ -105,7 +105,7 @@
       "title": "Los que ya están dentro",
       "targetSec": 40,
       "wordBudget": 108,
-      "goal": "La barra «fuera o dentro» salta a «dentro» (`inside`); las otras dos, a media luz, con la nota «su ventaja es el acceso» (`access`). «Imagina una semana · caso de ejemplo · sin fecha», tres caras: un empleado al que acaban de sancionar borra a propósito los pedidos de su sección (`sanction`, intentional insider, revenge); otra persona manda por error la lista de turnos y teléfonos de la plantilla a una dirección de fuera, creyendo que escribía a un compañero (`wrong-mail`, unintentional insider); y los amarradores se organizan en un grupo de una aplicación de mensajería que montó uno de ellos, en sus móviles, por donde pasan fotos de las listas de buques, sin que Sistemas lo sepa (`crew-chat`, shadow IT). La cocina, rotulada «imagen · no es del puerto» (`kitchen`): el jamón, la cámara frigorífica abierta y la freidora de casa (ni caja, ni reloj, ni libreta, ni técnico). Nombres (`names`): intentional insider, unintentional insider y shadow IT; la tarjeta de examen después",
+      "goal": "La barra «fuera o dentro» salta a «dentro» (`inside`); las otras dos, a media luz, con la nota «su ventaja es el acceso» (`access`). «Imagina una semana · caso de ejemplo · sin fecha», tres caras: un empleado al que acaban de sancionar borra a propósito los pedidos de su sección (`sanction`, intentional insider, revenge); otra persona manda por error la lista de turnos y teléfonos de la plantilla a una dirección de fuera, creyendo que escribía a un compañero (`wrong-mail`, unintentional insider); y los amarradores se organizan en un grupo de una aplicación de mensajería que montó uno de ellos, en sus móviles, por donde pasan fotos de las listas de buques, sin que Sistemas lo sepa (`crew-chat`, shadow IT). La cocina, rotulada «imagen · no es del puerto» (`kitchen`): el jamón, la nevera abierta y la freidora de casa (ni caja, ni reloj, ni libreta, ni técnico). Nombres (`names`): intentional insider, unintentional insider y shadow IT; la tarjeta de examen después",
       "requiredCues": [
         "inside",
         "access",
