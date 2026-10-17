@@ -30,7 +30,7 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {message}En el puerto de Halden, como en todas partes, casi todo empieza con un mensaje bien escrito.",
+      "text": "<curious> {message}En el puerto de Halden, como en todas partes, muchos ataques empiezan con un mensaje bien escrito.",
       "pauseAfterMs": 300
     },
     {
@@ -78,13 +78,13 @@
     {
       "id": "s02-05",
       "scene": "s02-canal",
-      "text": "<warm> {letter}Piensa en una carta que te llega en un sobre, en el móvil o leída por teléfono. O sea, que mira cómo llega, no lo que cuenta.",
+      "text": "<steady> {targeted}Y si va a por una persona concreta, es spear phishing. Si apunta a los altos cargos, whaling.",
       "pauseAfterMs": 400
     },
     {
       "id": "s02-06",
       "scene": "s02-canal",
-      "text": "<steady> {targeted}Y si va a por una persona concreta, se llama spear phishing. Si va a por la dirección, whaling.",
+      "text": "<warm> {letter}Piensa en una carta que te llega en un sobre, en el móvil o leída por teléfono. O sea, que mira cómo llega, no lo que cuenta.",
       "pauseAfterMs": 600
     },
     {
@@ -126,7 +126,7 @@
     {
       "id": "s03-07",
       "scene": "s03-bec",
-      "text": "<confident> {names}Esto es un business email compromise, un BEC. Solo una petición, sin nada técnico.",
+      "text": "<confident> {names}Esto es un business email compromise, un BEC.",
       "pauseAfterMs": 300,
       "exam": {
         "objective": "2.2",
@@ -144,7 +144,7 @@
     {
       "id": "s03-09",
       "scene": "s03-bec",
-      "text": "<steady> {lookalike}Si falsificaran el dominio del propio puerto, ahí sí ayudarían esas tres comprobaciones.",
+      "text": "<steady> {lookalike}Si falsificaran el dominio del propio puerto, eso sí lo cazaría DMARC.",
       "pauseAfterMs": 600
     },
     {
@@ -174,7 +174,7 @@
     {
       "id": "s04-02",
       "scene": "s04-p1",
-      "text": "<firm> {ok-1}Gana vishing, porque llega por teléfono. {trap-1}La trampa es el BEC, porque la historia es la de antes. Pero no hay ningún correo.",
+      "text": "<firm> {ok-1}Vishing, porque llega por teléfono. {trap-1}Y sí, la historia es la de un BEC, pero sin correo no hay BEC.",
       "pauseAfterMs": 300
     },
     {
@@ -238,11 +238,11 @@
     {
       "id": "s06-01",
       "scene": "s06-p2",
-      "text": "<engaging> {q2}Otro caso. A una empresa le escribe un proveedor de siempre desde su buzón de verdad, en el que alguien se ha colado. Le manda la factura del mes con un número de cuenta nuevo, y la empresa paga. ¿Qué control lo habría evitado mejor?",
+      "text": "<engaging> {q2}Otro caso. Un proveedor de siempre escribe a una empresa desde su buzón de verdad, pero alguien se ha colado dentro. Le manda la factura del mes con una cuenta nueva, y la empresa paga. ¿Qué control lo habría evitado mejor?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "2.2",
-        "scenario": "Un proveedor de siempre escribe a una empresa desde su buzón real, en el que alguien se ha colado, y le manda la factura con un número de cuenta nuevo.",
+        "scenario": "Un proveedor de siempre escribe a una empresa desde su buzón real, en el que alguien se ha colado, y le manda la factura con una cuenta bancaria nueva.",
         "q": "La empresa paga. ¿Qué control habría evitado MEJOR el pago?",
         "options": [
           "MFA en los buzones de la empresa",
@@ -268,11 +268,11 @@
     {
       "id": "s06-03",
       "scene": "s06-p2",
-      "text": "<warm> {sister-back}Como con el móvil de tu hermana, comprobar el número no sirve si el móvil es el suyo.",
+      "text": "<reassuring> {sister-back}Como con el móvil de tu hermana, que venga de su número no prueba que sea ella.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "2.2",
-        "text": "DMARC frena la suplantación, no el buzón robado",
+        "text": "DMARC caza remitentes falsos, no buzones robados",
         "at": "sister-back",
         "holdSec": 5
       }
@@ -286,7 +286,7 @@
     {
       "id": "s07-02",
       "scene": "s07-disfraz",
-      "text": "<clear> {person}Hacerse pasar por una persona o por un rol concreto, como la directora, el técnico o la auditora, es impersonation.",
+      "text": "<clear> {person}Hacerse pasar por una persona o por un cargo, como esa directora, es impersonation.",
       "pauseAfterMs": 300
     },
     {
@@ -298,13 +298,13 @@
     {
       "id": "s07-04",
       "scene": "s07-disfraz",
-      "text": "<engaging> {brand}Aquí el disfraz es de una organización entera, y eso se llama brand impersonation.",
+      "text": "<engaging> {brand}Aquí el disfraz es de toda una organización, y eso es brand impersonation.",
       "pauseAfterMs": 300
     },
     {
       "id": "s07-05",
       "scene": "s07-disfraz",
-      "text": "<serious> {intercept-reply}Pues no, y por dos motivos. {logo}El logo se copia en un minuto. {https}Y la conexión segura solo dice que hablas cifrado con esa dirección, no de quién es.",
+      "text": "<serious> {intercept-reply}Ni una cosa ni la otra. {logo}El logo se copia en un minuto. {https}Y la conexión segura solo dice que hablas cifrado con esa dirección, no de quién es.",
       "pauseAfterMs": 300,
       "intercept": {
         "text": "Lleva el logo del puerto y conexión segura. Es suya. Confía en mí.",
@@ -332,7 +332,7 @@
     {
       "id": "s08-02",
       "scene": "s08-abrevadero",
-      "text": "<engaging> Es una dirección casi igual, que espera a quien teclea deprisa o lee rápido. {typo}Eso es typosquatting.",
+      "text": "<engaging> {typo}El typosquatting es eso, una dirección casi igual que espera a quien teclea deprisa o lee rápido.",
       "pauseAfterMs": 300
     },
     {
@@ -356,13 +356,13 @@
     {
       "id": "s08-05",
       "scene": "s08-abrevadero",
-      "text": "<warm> {pond}Es como un abrevadero. O te ponen un charco falso al lado, o te envenenan el de siempre. Y el depredador espera donde todos beben.",
+      "text": "<warm> {pond}Es como un abrevadero. O te ponen un charco falso al lado, o te envenenan el de siempre.",
       "pauseAfterMs": 600
     },
     {
       "id": "s09-01",
       "scene": "s09-p3",
-      "text": "<intrigued> {q3}Te toca otra vez. Un perfil en redes copia el nombre, el logo y el tono de una naviera conocida. Contesta a las quejas de sus clientes y les pide datos de pago. ¿Qué técnica describe mejor lo que hace?",
+      "text": "<curious> {q3}Te toca otra vez. Un perfil en redes copia el nombre, el logo y el tono de una naviera conocida. Contesta a las quejas de sus clientes y les pide datos de pago. ¿Qué técnica describe mejor lo que hace?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "2.2",
@@ -386,25 +386,19 @@
     {
       "id": "s09-02",
       "scene": "s09-p3",
-      "text": "<confident> {ok-3}Gana brand impersonation, porque se disfraza de una organización entera.",
+      "text": "<confident> {ok-3}Brand impersonation. {trap-3}Impersonation a secas despista, pero aquí nadie finge ser alguien concreto.",
       "pauseAfterMs": 300
     },
     {
       "id": "s09-03",
       "scene": "s09-p3",
-      "text": "<firm> {trap-3}La trampa es impersonation a secas. Pero ese es el disfraz de una persona, y aquí nadie finge ser alguien concreto.",
-      "pauseAfterMs": 300
-    },
-    {
-      "id": "s09-04",
-      "scene": "s09-p3",
-      "text": "<warm> {disguise-back}O sea, que aquí el disfraz es de empresa, no de persona.",
+      "text": "<warm> {disguise-back}O sea, que el disfraz es de toda una empresa, no de una persona.",
       "pauseAfterMs": 1000
     },
     {
       "id": "s10-01",
       "scene": "s10-bulo",
-      "text": "<curious> Nos queda saber si quien lo difunde miente a sabiendas. {family}Piensa en un bulo del grupo de la familia.",
+      "text": "<curious> Y por último, ¿quien difunde algo falso sabe que miente? {family}Piensa en un bulo del grupo de la familia.",
       "pauseAfterMs": 300
     },
     {
@@ -422,7 +416,7 @@
     {
       "id": "s10-04",
       "scene": "s10-bulo",
-      "text": "<clear> {intent}Lo que decide el nombre es la intención. {names}Quien lo reenvía creyéndoselo hace misinformation. Y quien lo inventó sabiendo que es falso, disinformation.",
+      "text": "<clear> {intent}Lo que decide el nombre es la intención. {names}La tía, que se lo cree, difunde misinformation. Quien lo fabricó sabiendo que es falso, disinformation.",
       "pauseAfterMs": 300,
       "exam": {
         "objective": "2.2",
@@ -440,7 +434,7 @@
     {
       "id": "s11-01",
       "scene": "s11-p4",
-      "text": "<intrigued> {q4}La última. En una noche, decenas de cuentas recién creadas publican a la vez el mismo texto, que un banco cierra mañana sus oficinas. Es falso. Por la mañana, muchos clientes lo reenvían, convencidos. ¿Cómo se clasifica lo que hacen esas cuentas?",
+      "text": "<steady> {q4}La última. Una noche, decenas de cuentas nuevas publican a la vez el mismo bulo, que un banco cierra mañana sus oficinas. Por la mañana, muchos clientes lo reenvían, convencidos. ¿Cómo se clasifica lo que hacen esas cuentas?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "2.2",
@@ -464,19 +458,19 @@
     {
       "id": "s11-02",
       "scene": "s11-p4",
-      "text": "<confident> {ok-4}Gana disinformation, porque cuentas nuevas con el mismo texto a la vez son una campaña, y quien la monta sabe que miente.",
+      "text": "<confident> {ok-4}Disinformation. Tantas cuentas nuevas con el mismo texto y a la vez son una campaña, y quien la monta sabe que miente.",
       "pauseAfterMs": 300
     },
     {
       "id": "s11-03",
       "scene": "s11-p4",
-      "text": "<firm> {trap-4}La trampa, misinformation, es lo de los clientes. Pero te preguntan por las cuentas.",
+      "text": "<firm> {trap-4}Lo de los clientes sí sería misinformation, pero te preguntan por las cuentas.",
       "pauseAfterMs": 300
     },
     {
       "id": "s11-04",
       "scene": "s11-p4",
-      "text": "<warm> {family-back}Las cuentas son quien fabrica el bulo, y los clientes, la tía del grupo.",
+      "text": "<casual> {family-back}Las cuentas son las que fabrican el bulo, y los clientes, la tía del grupo.",
       "pauseAfterMs": 1000
     },
     {
@@ -500,7 +494,7 @@
     {
       "id": "s12-04",
       "scene": "s12-cierre",
-      "text": "<engaging> {phrase}Mira cómo llega, quién dice ser y qué te pide. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "text": "<engaging> {phrase}Mira cómo llega, quién dice ser y qué te pide. {next}Y ahora, a practicar. {endcard}A por las preguntas de la lección.",
       "pauseAfterMs": 250
     }
   ]

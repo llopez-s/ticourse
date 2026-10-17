@@ -43,24 +43,24 @@
       "title": "La misma carta, tres veces",
       "targetSec": 46,
       "wordBudget": 124,
-      "goal": "El mensaje de s01 (`lure`) se reparte en tres columnas que se encienden por turnos, con el resto atenuado: «Correo · a toda la plantilla» (`mail`, sonido «mail»), «SMS» (`sms`, sonido «ping2») y «Llamada · \"de Recursos Humanos\" · pide los datos de viva voz» (`call`; sin sonido de llamada, solo imagen). En `names`, los nombres bajo cada columna: PHISHING · SMISHING · VISHING. Debajo, la imagen (`letter`): la misma carta en un sobre, en un móvil y en un teléfono, con el rótulo «mira cómo llega, no lo que cuenta» (es el propio caso: sin el rótulo «no es del puerto»; no es la etiqueta de envío de V1). Una fila pequeña (`targeted`): «dirigido a una persona concreta: spear phishing · a la dirección: whaling». Sin dominios ni números de teléfono",
+      "goal": "El mensaje de s01 (`lure`) se reparte en tres columnas que se encienden por turnos, con el resto atenuado: «Correo · a toda la plantilla» (`mail`, sonido «mail»), «SMS» (`sms`, sonido «ping2») y «Llamada · \"de Recursos Humanos\" · pide los datos de viva voz» (`call`; sin sonido de llamada, solo imagen). En `names`, los nombres bajo cada columna: PHISHING · SMISHING · VISHING. Una fila pequeña (`targeted`): «dirigido a una persona concreta: spear phishing · a los altos cargos: whaling». Cierra el capítulo la imagen (`letter`): la misma carta en un sobre, en un móvil y en un teléfono, con el rótulo «mira cómo llega, no lo que cuenta» (es el propio caso: sin el rótulo «no es del puerto»; no es la etiqueta de envío de V1). Sin dominios ni números de teléfono",
       "requiredCues": [
         "lure",
         "mail",
         "sms",
         "call",
         "names",
-        "letter",
-        "targeted"
+        "targeted",
+        "letter"
       ]
     },
     {
       "id": "s03-bec",
       "chapter": 2,
-      "title": "Un correo de la dirección",
+      "title": "Un correo de un directivo",
       "targetSec": 48,
       "wordBudget": 130,
-      "goal": "«Supuesto · imagina · sin fecha». Llega a Finanzas un correo desde el buzón de verdad de un directivo, sin nombre ni cargo (`bec-mail`, sonido «mail»), en el que alguien se ha colado: un pago urgente a una cuenta nueva (`ask`) y la excusa «estoy en una reunión y no puedo hablar · que no se entere nadie hasta el cierre» (`excuse`). Un panel (`nothing`): «enlaces: ninguno · adjuntos: ninguno · el antivirus: nada que mirar». Tres chips en verde, SPF, DKIM y DMARC, con «es su buzón: todo cuadra» (`green`). La imagen en miniatura, rotulada «imagen · no es del puerto» (`sister`): el móvil de tu hermana, robado, con su número de verdad. Nombres: BUSINESS EMAIL COMPROMISE (BEC) (`names`) y, sobre la frase de la reunión, PRETEXTING «la excusa para saltarse el paso» (`pretext`). Rótulo pequeño (`lookalike`): «o suplantando el dominio del puerto · contra eso sí ayudan SPF, DKIM y DMARC». Sin explicar la alineación (es de V1) y sin dominios",
+      "goal": "«Supuesto · imagina · sin fecha». Llega a Finanzas un correo desde el buzón de verdad de un directivo, sin nombre ni cargo (`bec-mail`, sonido «mail»), en el que alguien se ha colado; al pie, una firma «¿dudas? a mi móvil nuevo · número en la firma», sin cifras: un pago urgente a una cuenta nueva (`ask`) y la excusa «estoy en una reunión y no puedo hablar · que no se entere nadie hasta el cierre» (`excuse`). Un panel (`nothing`): «enlaces: ninguno · adjuntos: ninguno · el antivirus: nada que mirar». Tres chips en verde, SPF, DKIM y DMARC, con «es su buzón: todo cuadra» (`green`). La imagen en miniatura, rotulada «imagen · no es del puerto» (`sister`): el móvil de tu hermana, robado, con su número de verdad. Nombres: BUSINESS EMAIL COMPROMISE (BEC) (`names`) y, sobre la frase de la reunión, PRETEXTING «la excusa para saltarse el paso» (`pretext`). Rótulo pequeño (`lookalike`): «o falsificando el dominio del puerto · eso sí lo caza DMARC». Sin explicar la alineación (es de V1) y sin dominios",
       "requiredCues": [
         "bec-mail",
         "ask",
@@ -94,7 +94,7 @@
       "title": "El número de siempre",
       "targetSec": 44,
       "wordBudget": 119,
-      "goal": "Vuelve el supuesto de s03 (`how`): «¿cómo se para algo que no tiene nada técnico?». Mensaje interceptado 1 de RED MARROW, antes de `intercept-reply`. Respuesta: ese teléfono lo ha puesto quien escribe, así que contesta quien escribe. La imagen, rotulada «imagen · no es del puerto» (`number`, `card`): la tarjeta del banco, girada, con el número del dorso resaltado. Nombre OUT-OF-BAND VERIFICATION «por un canal que ya tenías» (`oob`). Para pagos y cambios de cuenta, dos firmas: DUAL APPROVAL (`two`). Cierre del supuesto (`ends`): Finanzas llama al número de la agenda del puerto, el directivo está en su despacho y no ha pedido nada; el pago no sale. Cierre del capítulo (`wrap`): «contra un engaño sin código, el control es un paso que no se salta»",
+      "goal": "Vuelve el supuesto de s03, con su rótulo «supuesto · imagina · sin fecha», que se mantiene hasta `ends` (`how`): «¿cómo se para algo que no tiene nada técnico?». Mensaje interceptado 1 de RED MARROW, antes de `intercept-reply`. Respuesta: ese teléfono lo ha puesto quien escribe, así que contesta quien escribe. La imagen, rotulada «imagen · no es del puerto» (`number`, `card`): la tarjeta del banco, girada, con el número del dorso resaltado. Nombre OUT-OF-BAND VERIFICATION «por un canal que ya tenías» (`oob`). Para pagos y cambios de cuenta, dos firmas: DUAL APPROVAL (`two`). Cierre del supuesto (`ends`): Finanzas llama al número de la agenda del puerto, el directivo está en su despacho y no ha pedido nada; el pago no sale; en pantalla, «el pago no sale · al buzón se le cambia la contraseña». Cierre del capítulo (`wrap`): «contra un engaño sin código, el control es un paso que no se salta»",
       "requiredCues": [
         "how",
         "intercept-reply",
@@ -126,7 +126,7 @@
       "title": "Una persona o una empresa",
       "targetSec": 44,
       "wordBudget": 119,
-      "goal": "La llamada de la pregunta 1, en miniatura (`call-back`): además de vishing, quien llamaba se disfrazaba de otra persona. Nombre IMPERSONATION «una persona o un rol: la directora, el técnico, la auditora» (`person`). Después, «caso de ejemplo · sin fecha» (`web`): una web con el logo, los colores y el tono de la Autoridad Portuaria que pide a los transportistas renovar su acreditación de acceso, con tarjeta (no es la web de tasas de V35; nadie paga). El disfraz es de una organización entera: BRAND IMPERSONATION (`brand`). La imagen, rotulada «imagen · no es del puerto»: el disfraz, de una persona o de una empresa entera. Mensaje interceptado 2 de RED MARROW, antes de `intercept-reply`. Respuesta: el logo se copia en un minuto (`logo`) y la conexión segura solo dice que hablas cifrado con esa dirección, no de quién es (`https`; en pantalla, «conexión segura = cifrada · no dice de quién es»; nunca «candado»). La tarjeta de examen entra al final, después del mensaje, para no coincidir con él",
+      "goal": "La llamada de la pregunta 1, en miniatura (`call-back`): además de vishing, quien llamaba se disfrazaba de otra persona. Nombre IMPERSONATION «una persona o un cargo: la directora, el técnico, la auditora» (`person`). Después, «caso de ejemplo · sin fecha» (`web`): una web con el logo, los colores y el tono de la Autoridad Portuaria que pide a los transportistas renovar su acreditación de acceso, con tarjeta (no es la web de tasas de V35; nadie paga). El disfraz es de una organización entera: BRAND IMPERSONATION (`brand`). La imagen, rotulada «imagen · no es del puerto»: el disfraz, de una persona o de una empresa entera. Mensaje interceptado 2 de RED MARROW, antes de `intercept-reply`. Respuesta: el logo se copia en un minuto (`logo`) y la conexión segura solo dice que hablas cifrado con esa dirección, no de quién es (`https`; en pantalla, «conexión segura = cifrada · no dice de quién es»; nunca «candado»). La tarjeta de examen entra al final, después del mensaje, para no coincidir con él. En la última frase, el rótulo «nadie ha pagado · ni con la llamada ni con la web»",
       "requiredCues": [
         "call-back",
         "person",
@@ -174,7 +174,7 @@
       "title": "Quien lo inventa y quien lo reenvía",
       "targetSec": 38,
       "wordBudget": 103,
-      "goal": "La imagen, rotulada «imagen · no es del puerto» (`family`): el grupo de la familia, un bulo que alguien fabrica (`maker`) y una tía que lo reenvía, convencida (`forward`). «Caso de ejemplo · sin fecha» (`port`): en el grupo de un equipo del puerto alguien reenvía, de buena fe, que «hoy no funciona el fichaje y no cuenta la hora». Rótulo (`intent`): «el mismo bulo · dos nombres · manda la intención». Dos columnas (`names`): «lo reenvía creyéndoselo» MISINFORMATION; «lo inventó sabiendo que es falso» DISINFORMATION",
+      "goal": "La imagen, rotulada «imagen · no es del puerto» (`family`): el grupo de la familia, un bulo que alguien fabrica (`maker`) y una tía que lo reenvía, convencida (`forward`). «Caso de ejemplo · sin fecha» (`port`): en el grupo de un equipo del puerto alguien reenvía, de buena fe, que «hoy no funciona el fichaje y no cuenta la hora», con el rótulo «salió de un aviso viejo, mal leído». Rótulo (`intent`): «el mismo bulo · dos nombres · manda la intención». Dos columnas (`names`): «lo reenvía creyéndoselo» MISINFORMATION; «lo inventó sabiendo que es falso» DISINFORMATION",
       "requiredCues": [
         "family",
         "maker",
