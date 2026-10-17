@@ -327,6 +327,9 @@ describe('lesson videos', () => {
     // V27 reads s5m3's YARA condition and Sigma rule (what each one looks at and what breaks it), after the first
     // check (any of $s*) and before STIX/TAXII
     expect(youtubeVideos.find((v) => v.block.youtube === 'OHxUu9cjnVA')?.module).toBe('s5m3');
+    // V28, the first case-and-exam video, puts sp1m1's two labels (category and type) on three port controls with three
+    // exam-style questions, after the «Deterrent no es preventive» callout and before the paragraph that hands over to sp1m2
+    expect(youtubeVideos.find((v) => v.block.youtube === 'y9bjWKwN5fg')?.module).toBe('sp1m1');
   });
 
   it('every video block points at relative public assets that exist', async () => {

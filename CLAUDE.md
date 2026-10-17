@@ -188,7 +188,11 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `question` in `narration.json`: scenario, four options, a silent countdown, the answer and its trap; no think
   prompts; the engine README's «Pregunta de examen» has the fields). Spec
   `docs/superpowers/specs/2026-10-16-secplus-casos-examen-design.md`, engine plan
-  `docs/superpowers/plans/2026-10-16-video-engine-caso-examen.md`, video plan «Tanda 6». Every script takes `--video <slug>`. Pipeline: `narration.json` →
+  `docs/superpowers/plans/2026-10-16-video-engine-caso-examen.md`, video plan «Tanda 6». The pilot, **V28
+  `video/controles-halden/`** (sp1m1, YouTube `y9bjWKwN5fg`, 4:24), was approved by Lidia in private on 2026-10-17 and
+  is now the first Halden video in course order; V29–V38 were frozen the same day. The question panel shows only the
+  «EXAMEN · SY0-701 · N.N» badge, not the «pregunta tipo examen · ejemplo» label the fichas ask for (registry
+  contradiction 17): a scene that needs it draws it itself. Every script takes `--video <slug>`. Pipeline: `narration.json` →
   `scripts/tts-elevenlabs.mjs` (ElevenLabs v3, one request per scene with `<tag>` emotion
   directions; needs `ELEVENLABS_API_KEY` in the git-ignored `.env.local`; free plan = 10k chars/month,
   premade voices only + "Voz: ElevenLabs" credit) — or `scripts/tts-chatterbox.mjs` (Chatterbox, local
