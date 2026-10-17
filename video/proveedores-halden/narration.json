@@ -32,7 +32,7 @@
     {
       "id": "s02-01",
       "scene": "s02-pruebas",
-      "text": "<engaging> {case}El puerto busca una agencia que traduzca los papeles de las navieras y los avisos a pasajeros. {no-access}Verá documentos confidenciales, pero no entra en ningún sistema.",
+      "text": "<engaging> {case}El puerto busca una agencia que traduzca los documentos de las navieras y los avisos a pasajeros. {no-access}Verá cosas confidenciales, pero no tocará ningún sistema.",
       "pauseAfterMs": 300
     },
     {
@@ -50,25 +50,25 @@
     {
       "id": "s02-03",
       "scene": "s02-pruebas",
-      "text": "<thoughtful> {internal}La segunda manda su auditoría interna. Informa, pero la escribe la parte interesada. Son evidence of internal audits.",
+      "text": "<thoughtful> {internal}La segunda manda su auditoría interna. Sirve, pero la ha escrito ella misma. En inglés, evidence of internal audits.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-04",
       "scene": "s02-pruebas",
-      "text": "<confident> {independent}La tercera trae el informe de una firma sin vínculo con ella. Es una independent assessment, y pesa más. {scope-period}Pero mira qué cubre y qué meses.",
+      "text": "<confident> {independent}La tercera trae el informe de alguien de fuera, sin vínculo con ella. Es una independent assessment, y pesa más. {scope-period}Pero mira qué cubre y qué meses.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-05",
       "scene": "s02-pruebas",
-      "text": "<warm> {chips}Si la agencia subcontrata traductores, lo mira la supply chain analysis. {nursery}Es como elegir guardería, con su folleto, su propio informe y el sello de fuera.",
+      "text": "<warm> {chips}Si la agencia subcontrata traductores, lo mira la supply chain analysis. {nursery}Las tres pruebas son como elegir guardería, con su folleto, su propio informe y el sello de fuera.",
       "pauseAfterMs": 500
     },
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca. Una empresa evalúa a un proveedor de copias en la nube. El proveedor le manda un informe formal, firmado y con su metodología, hecho por su propio departamento de auditoría interna. ¿Qué describe mejor ese informe? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
+      "text": "<intrigued> {q1}Te toca. Una empresa evalúa a un proveedor de copias en la nube. El proveedor le manda un informe formal, firmado y con su metodología, hecho por su propio departamento de auditoría interna. ¿Qué describe mejor ese informe? {best}Y ese «mejor» va en serio. Puede que dos te valgan, pero una describe este caso mejor que la otra.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.3",
@@ -92,7 +92,7 @@
     {
       "id": "s03-02",
       "scene": "s03-p1",
-      "text": "<firm> {ok-1}Son evidence of internal audits, las del propio proveedor. {trap-1}Parece independiente de lo serio que es, pero lo firma el auditado.",
+      "text": "<firm> {ok-1}Evidence of internal audits. Es una auditoría del propio proveedor. {trap-1}Parece independiente de lo serio que es, pero lo hace el auditado.",
       "pauseAfterMs": 300
     },
     {
@@ -102,7 +102,7 @@
       "pauseAfterMs": 900,
       "exam": {
         "objective": "5.3",
-        "text": "Independiente es que no lo firme el auditado",
+        "text": "Independiente: lo hace un tercero sin vínculo",
         "at": "nursery-back",
         "holdSec": 5
       }
@@ -116,19 +116,19 @@
     {
       "id": "s04-02",
       "scene": "s04-antes",
-      "text": "<clear> {contract-terms}Y es cuando aún puedes pedir. Poder auditarla, que te avise de un incidente y que borre tus datos al final.",
+      "text": "<clear> {contract-terms}Y es cuando aún puedes pedir. Que te deje auditarla, que te avise de un incidente y que borre tus datos al final.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-03",
       "scene": "s04-antes",
-      "text": "<serious> {conflict}Si quien evalúa en Compras tiene familia en una candidata, lo declara y se aparta. Eso es un conflict of interest.",
+      "text": "<serious> {conflict}Si quien evalúa en Compras tiene familia en una de las agencias, hay un conflict of interest. Lo declara y se aparta.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-04",
       "scene": "s04-antes",
-      "text": "<confident> {after}Y después de firmar, no se deja de mirar. Repites el cuestionario, pides informes nuevos y vigilas si cambia de dueños. {monitoring}Eso es vendor monitoring.",
+      "text": "<confident> {after}Y después de firmar, no se deja de mirar. Repites el cuestionario, pides informes nuevos y vigilas si cambia de dueños. {monitoring}Todo eso entra en el vendor monitoring.",
       "pauseAfterMs": 300,
       "exam": {
         "objective": "5.3",
@@ -140,13 +140,13 @@
     {
       "id": "s04-05",
       "scene": "s04-antes",
-      "text": "<warm> {nursery-2}Con la guardería pasa igual. La visitas antes de la matrícula, y luego la sigues mirando cada día.",
+      "text": "<warm> {nursery-2}Con la guardería pasa igual. La visitas antes de decidirte, y luego, cada día, te fijas en cómo va.",
       "pauseAfterMs": 600
     },
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<curious> {q2}Otra. Una empresa lleva dos años con su proveedor de correo. A mitad de contrato, lee en la prensa que otra compañía lo ha comprado. Y que va a mover los datos a otro país. ¿Dentro de qué actividad le toca reevaluarlo ahora?",
+      "text": "<curious> {q2}La segunda. Una empresa lleva dos años con su proveedor de correo. A mitad de contrato, lee en la prensa que lo han comprado, y que va a mover los datos a otro país. ¿Dentro de qué actividad le toca reevaluarlo ahora?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.3",
@@ -170,13 +170,13 @@
     {
       "id": "s05-02",
       "scene": "s05-p2",
-      "text": "<firm> {ok-2}Es vendor monitoring, porque el contrato ya corre. {trap-2}La due diligence se le parece, pero va antes de firmar.",
+      "text": "<firm> {ok-2}Vendor monitoring, que el contrato ya corre. {trap-2}Suena a due diligence, pero esa va antes de firmar.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-03",
       "scene": "s05-p2",
-      "text": "<steady> {timeline-back}En la línea, esto cae detrás de la firma. O sea, que antes se investiga y después se vigila.",
+      "text": "<steady> {timeline-back}En la línea del tiempo, esto cae después de la firma. O sea, que con el contrato en marcha, mirar a fondo también es vigilar.",
       "pauseAfterMs": 900
     },
     {
@@ -212,7 +212,7 @@
     {
       "id": "s06-05",
       "scene": "s06-papeles",
-      "text": "<thoughtful> {others}Y si no se compra, sino que se colabora, el MOU dice la intención y el MOA reparte compromisos.",
+      "text": "<thoughtful> {others}Y si se colabora sin comprar, el MOU, con U de understanding, dice la intención. Y el MOA, con A de agreement, reparte compromisos.",
       "pauseAfterMs": 500
     },
     {
@@ -242,7 +242,7 @@
     {
       "id": "s07-02",
       "scene": "s07-p3",
-      "text": "<firm> {ok-3}Es el MOA, porque cada hospital se compromete a algo concreto. {trap-3}El MOU tienta, pero solo dice la intención.",
+      "text": "<firm> {ok-3}El MOA. Aquí cada hospital se compromete a algo concreto. {trap-3}El MOU se queda corto, porque solo dice la intención.",
       "pauseAfterMs": 300
     },
     {
@@ -260,7 +260,7 @@
     {
       "id": "s08-01",
       "scene": "s08-cierre",
-      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Lo que dice el proveedor de sí mismo informa, pero pesa más lo que firma alguien de fuera.",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Lo que el proveedor cuenta de sí mismo sirve, pero pesa más lo que firma alguien de fuera.",
       "pauseAfterMs": 250
     },
     {
