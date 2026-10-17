@@ -1,0 +1,153 @@
+{
+  "title": "Un camino o todos: vector y superficie de ataque",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 264,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Un camino o todos"
+    },
+    {
+      "n": 2,
+      "title": "El camino, no el cebo"
+    },
+    {
+      "n": 3,
+      "title": "Cuando entra un tercero"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una recepción, muchas entradas",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · caso de ejemplo · datos ficticios», sin fecha. La recepción del edificio de oficinas en esquema (`desk`): el mostrador, dos ordenadores, un teléfono y una impresora, sin nombres de equipo. Al acabar la primera frase, título «Un camino o todos» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «un camino o todos · el camino, no el cebo · cuando entra un tercero». Plaquita «SY0-701 · 2.2»",
+      "requiredCues": [
+        "desk",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-mapa",
+      "chapter": 1,
+      "title": "El mapa de la recepción",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "«Caso de ejemplo · sin fecha». Sistemas dibuja a mano el mapa de entradas de la recepción (`map`): cinco líneas llegan al mostrador (`lines`), cada una con lo que es y, al lado, su chip de examen (`names`): el correo de recepción (Message-based), el teléfono (Voice call), los puertos USB de los dos ordenadores (Removable device), un panel de administración de la impresora que nadie usa (Open service port) y las actualizaciones que manda cada mes el fabricante del programa de visitas (Supply chain). La voz no lee la lista. «Ninguna tiene hoy un fallo conocido · cuentan las cinco» (`none-broken`). Una línea se ilumina (`one`): un threat vector; el mapa entero (`all`): la attack surface. La mochila en pequeño, rotulada «imagen · no es del puerto» (`backpack`): los bolsillos con cremallera, la mano del carterista en uno; el que no usas, cosido (`sew`, en media frase y sin remate en pantalla: el panel de la impresora sigue en el mapa); y otro con un cascabel, que sigue abierto (`bell`). Sin wifi, sin red, sin decir desde dónde se llega al panel",
+      "requiredCues": [
+        "map",
+        "lines",
+        "names",
+        "none-broken",
+        "one",
+        "all",
+        "backpack",
+        "sew",
+        "bell"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Cuatro peticiones de Comercial",
+      "targetSec": 36,
+      "wordBudget": 70,
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel tapa la escena hasta el final, así que el fondo se queda quieto (una hoja de peticiones sin texto legible). Opciones en español, que son cambios y no términos; la voz no las lee («los tienes en pantalla»). Cuenta atrás de 7 s; en `ok-1` sale la correcta (publicar en internet el escritorio remoto) y en `trap-1` la trampa (retrasar el parche). En la resolución vuelve la mochila en una línea (`zipper`): la cremallera rota es el mismo bolsillo; uno nuevo, otro sitio. La tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "zipper"
+      ]
+    },
+    {
+      "id": "s04-pendrive",
+      "chapter": 2,
+      "title": "Un pendrive en el mostrador",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "goal": "«Caso de ejemplo · sin fecha». Vuelve la línea USB del mapa. En el mostrador aparece un pendrive (`counter`) con una pegatina, «Nóminas 2027» (`sticker`); nadie sabe quién lo dejó. Recepción no lo enchufa y se lo da a Sistemas (`handed`), que lo prueba en un ordenador viejo y sin red: la pantalla dice «teclado conectado» (`keyboard`) y una ventana se abre y escribe órdenes sola, más rápido que nadie (`typing`). «Ningún fichero abierto» (`no-file`). Dos etiquetas: «el cebo · la pegatina» (`bait`) y «el camino · el puerto USB» (`path`). La mochila, rotulada «imagen · no es del puerto» (`time`): te preguntan la hora y la mano entra por el bolsillo de fuera. Nombre (`name`): removable device, por el camino, aunque el cebo sea la curiosidad y aunque no haya fichero. No es un incidente: nada entra en un equipo del puerto; ni aparcamiento ni adversario",
+      "requiredCues": [
+        "counter",
+        "sticker",
+        "handed",
+        "keyboard",
+        "typing",
+        "no-file",
+        "bait",
+        "path",
+        "time",
+        "name"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "El curso de formación",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo examen 2 (`q2`), rótulo «pregunta tipo examen · ejemplo». Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: la que encaja con este caso, aunque otra suene bien» (`best`), que la voz explica con la frase de V28 antes de la cuenta atrás. Fondo quieto: una mesa con un móvil y un pendrive, sin texto legible y sin lugar. Cuenta atrás de 5 s; en `ok-2` la correcta (Removable device), en `trap-2` la trampa (Message-based). En la resolución vuelve la mochila en una línea (`hour`): el SMS te preguntó la hora; el pendrive fue el bolsillo. Sin tarjeta de examen",
+      "requiredCues": [
+        "q2",
+        "best",
+        "ok-2",
+        "trap-2",
+        "hour"
+      ]
+    },
+    {
+      "id": "s06-terceros",
+      "chapter": 3,
+      "title": "Lo que llega firmado",
+      "targetSec": 34,
+      "wordBudget": 92,
+      "goal": "Vuelve el mapa y se ilumina la última línea (`last-line`): las actualizaciones del programa de visitas, «las manda su fabricante · nadie de recepción hace nada» (`maker`). En condicional y rotulado «si pasara · no ha pasado» (`if`): alguien entra en el fabricante y cuela algo en una actualización, que llega firmada y por el camino de siempre (`signed`). Una tira con los tres terceros del objetivo (`three`), cada uno con su chip: «MSP · te administra en remoto», «vendor · te vende y actualiza el programa o el aparato», «supplier · más lejos en la cadena». Dos tachones: «no es insider: quien entra es un atacante con un acceso robado» (`not-insider`) y «aquí nadie ha hecho clic» (`no-click`). La consigna de la estación, con mostrador, rotulada «imagen · no es del puerto» (`cloakroom`). Sin nombre de programa ni de fabricante; no se dice que el programa haya recibido nada malo",
+      "requiredCues": [
+        "last-line",
+        "maker",
+        "if",
+        "signed",
+        "three",
+        "not-insider",
+        "no-click",
+        "cloakroom"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Las nóminas del astillero",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo examen 3 (`q3`), rótulo «pregunta tipo examen · ejemplo · no es del puerto». Fondo quieto: la silueta de un astillero sin nombre y una línea hasta una oficina, sin texto. Cuenta atrás de 5 s; en `ok-3` la correcta (Supply chain), en `trap-3` la trampa (Message-based). En la resolución vuelve la consigna en una línea (`cloak-back`): engañaron al de la consigna, pero tu mochila salió por la consigna. La tarjeta de examen después",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "cloak-back"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (los bolsillos · el reloj · la consigna) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Un vector es un camino; la superficie, todos. Se cuentan caminos, no fallos» · «El vector se nombra por el camino que llegó a tu equipo, no por el cebo» · «Si entran por alguien de confianza que ya tenía acceso, es supply chain, aunque lo engañaran con un correo». La frase para el examen (`phrase`): «Para la superficie, cuenta caminos; para el vector, pregúntate por dónde llegó hasta ti». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
