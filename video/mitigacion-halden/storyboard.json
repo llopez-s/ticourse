@@ -25,10 +25,11 @@
       "title": "Diez respuestas buenas",
       "targetSec": 20,
       "wordBudget": 54,
-      "goal": "Sello «Autoridad Portuaria de Halden · caso de ejemplo · datos ficticios», sin fecha. Diez fichas, una por técnica del objetivo 2.5 (segmentation, access control, allow list, isolation, patching, encryption, monitoring, least privilege, configuration enforcement, decommissioning) (`ten`), todas con un visto verde (`all-good`): las diez son buenas. Al acabar la primera frase, título «Mitigación y hardening» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «qué falló · dónde está el equipo · lo que sobra». Plaquita «SY0-701 · 2.5»",
+      "goal": "Diez fichas, una por técnica del objetivo 2.5 (segmentation, access control, allow list, isolation, patching, encryption, monitoring, least privilege, configuration enforcement, decommissioning) (`ten`), **sin sello del puerto**, bajo el rótulo «en el examen · las diez valen», todas con un visto verde (`all-good`). El sello «Autoridad Portuaria de Halden · caso de ejemplo · datos ficticios», sin fecha, entra con «puerto de Halden» (`port`), ya sin las fichas encima: nada dice que el puerto tenga puestas las diez. Al acabar la primera frase, título «Mitigación y hardening» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «qué falló · dónde está el equipo · lo que sobra». Plaquita «SY0-701 · 2.5»",
       "requiredCues": [
         "ten",
         "all-good",
+        "port",
         "title",
         "promise"
       ]
@@ -39,7 +40,7 @@
       "title": "La carpeta abierta",
       "targetSec": 42,
       "wordBudget": 113,
-      "goal": "«Caso de ejemplo · sin fecha»: la carpeta compartida de un departamento, con documentos de su trabajo, sin nombre de área ni de servidor (`folder`). Al crearla, alguien la dejó abierta a toda la plantilla: la ficha de permisos dice «todos · leer» (`everyone`). Cuatro propuestas sobre la mesa, todas con visto verde (`four`): «cifrar el servidor» · «vigilar quién la abre» · «segmentar la red» · «dejar los permisos solo a ese departamento». La planta del salón, a la derecha y rotulada «imagen · no es del puerto» (`plant`): si le falta agua, se riega; si tiene pulgón, regarla más no la salva. Lo que falla es el permiso, así que la respuesta es access control (`permission`; y, debajo, a media luz, «el principio: least privilege»). La de cifrar se apaga con su porqué (`not-encrypt`): «el servidor descifra para quien tiene permiso». Después, el mapa del verbo, en pantalla (`map`; la voz no lo lee entero): llegó · ejecutó · leyó · fallo conocido · nadie se enteró · la cuenta podía demasiado, cada uno con su técnica. Tarjeta 1 tras la frase del mapa",
+      "goal": "«Caso de ejemplo · sin fecha»: la carpeta compartida de un departamento, con documentos de su trabajo, sin nombre de área ni de servidor (`folder`). Al crearla, alguien la dejó abierta a toda la plantilla: la ficha de permisos dice «todos · leer» (`everyone`). Cuatro propuestas sobre la mesa, todas con visto verde (`four`): «cifrar el disco del servidor» · «vigilar quién la abre» · «segmentar la red» · «dejar los permisos solo a ese departamento». La planta del salón, a la derecha y rotulada «imagen · no es del puerto» (`plant`): si le falta agua, se riega; si tiene pulgón, regarla más no la salva. Lo que falla es el permiso, así que la respuesta es access control (`permission`; y, debajo, a media luz, «el principio: least privilege»). La de cifrar se apaga con su porqué (`not-encrypt`): «el servidor descifra para quien tiene permiso». Después, el mapa del verbo, en pantalla (`map`; la voz no lo lee entero): llegó · ejecutó · leyó · fallo conocido · nadie se enteró · la cuenta podía demasiado, cada uno con su técnica. Tarjeta 1 tras la frase del mapa",
       "requiredCues": [
         "folder",
         "everyone",
@@ -72,7 +73,7 @@
       "title": "Cuando el portátil sale",
       "targetSec": 36,
       "wordBudget": 97,
-      "goal": "«Caso de ejemplo · sin fecha». La oficina en esquema, sin nombres (`office`): entre la oficina e Internet, «el cortafuegos del perímetro» (`perimeter`). Un portátil sale por la puerta hacia tres sitios, en chips (`leaves`): «casa · una feria · la oficina de un cliente». El cortafuegos se queda atrás, en la oficina. En la red de fuera, los equipos de al lado llegan al portátil sin pasar por él (`neighbours`). Lo que va con el portátil, en tres chips (`travels`): «host-based firewall: quién se conecta» · «endpoint protection: qué se ejecuta» (a media luz, sin decir que todos los equipos del puerto la tengan) · «disco cifrado: si se pierde» (solo en pantalla). Debajo, una línea pequeña (`hips-hids`): «HIPS bloquea · HIDS solo avisa». La calefacción y el abrigo, en miniatura (`coat`), y la regla en llano: «fuera, solo te protege lo que llevas puesto». No sale ninguna VPN ni cómo se conecta el portátil al puerto. Sin tarjeta",
+      "goal": "«Caso de ejemplo · sin fecha». La oficina en esquema, sin nombres (`office`): entre la oficina e Internet, «el cortafuegos del perímetro» (`perimeter`). Un portátil sale por la puerta hacia tres sitios, en chips (`leaves`): «casa · una feria · la oficina de un cliente». El cortafuegos se queda atrás, en la oficina. En la red de fuera, los equipos de al lado llegan al portátil sin pasar por él (`neighbours`). Lo que va con el portátil, en tres chips (`travels`): «host-based firewall: quién se conecta» · «endpoint protection: qué se ejecuta» (a media luz, sin decir que todos los equipos del puerto la tengan) · «disco cifrado: si se pierde» (solo en pantalla). Debajo, una línea pequeña, solo en pantalla (la voz no la lee): «HIPS bloquea · HIDS solo avisa»; entra con `hips-hids`, en la frase de la endpoint protection. La calefacción y el abrigo, en miniatura (`coat`), y la regla en llano: «fuera, te protege lo que llevas puesto» (sin «solo»). No sale ninguna VPN ni cómo se conecta el portátil al puerto. Sin tarjeta",
       "requiredCues": [
         "office",
         "perimeter",
@@ -89,7 +90,7 @@
       "title": "Tres días en una feria",
       "targetSec": 36,
       "wordBudget": 76,
-      "goal": "Pregunta tipo examen 2 (`q2`), sin calificador. Fondo quieto: un recinto ferial en esquema, sin nombre ni texto. En `ok-2` la correcta (Host-based firewall), en `trap-2` la trampa (Network firewall). En la resolución vuelve el abrigo en una línea (`coat-back`): «la calefacción se quedó en la oficina». La tarjeta de examen después de la trampa",
+      "goal": "Pregunta tipo examen 2 (`q2`), rótulo «pregunta tipo examen · ejemplo · no es del puerto», sin calificador. Fondo quieto: un recinto ferial en esquema, sin nombre ni texto. En `ok-2` la correcta (Host-based firewall), en `trap-2` la trampa (Network firewall). En la resolución vuelve el abrigo en una línea (`coat-back`): «la calefacción se quedó en la oficina». La tarjeta de examen después de la trampa",
       "requiredCues": [
         "q2",
         "ok-2",
@@ -120,7 +121,7 @@
       "title": "El servidor de bases de datos",
       "targetSec": 40,
       "wordBudget": 86,
-      "goal": "Pregunta tipo examen 3 (`q3`), sin calificador nuevo (el «MEJOR» ya se explicó en s03). Fondo quieto: un servidor genérico, sin nombre ni texto. En `ok-3` la correcta (Removal of unnecessary software), en `trap-3` la trampa (Patching). En la resolución vuelve la cuota en una línea (`gym-back`, «date de baja») y, al lado (`intranet`), el servidor de la intranet de la pregunta 1 con «hace falta, se parchea», para que las dos preguntas se lean juntas. La tarjeta de examen después de la trampa",
+      "goal": "Pregunta tipo examen 3 (`q3`), rótulo «pregunta tipo examen · ejemplo · no es del puerto» (el servidor no es del puerto ni va al registro), sin calificador nuevo (el «MEJOR» ya se explicó en s03). Fondo quieto: un servidor genérico, sin nombre ni texto. En `ok-3` la correcta (Removal of unnecessary software), en `trap-3` la trampa (Patching). En la resolución vuelve la cuota en una línea (`gym-back`, «date de baja») y, al lado (`intranet`), el servidor de la intranet de la pregunta 1 con «hace falta, se parchea», para que las dos preguntas se lean juntas. La tarjeta de examen después de la trampa",
       "requiredCues": [
         "q3",
         "ok-3",
@@ -135,7 +136,7 @@
       "title": "Para el examen",
       "targetSec": 20,
       "wordBudget": 54,
-      "goal": "Tres reglas, cada una con su icono (la planta · el abrigo · la cuota) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Busca qué falló: cada técnica responde a un verbo, y si el caso trae dos, manda el de la pregunta» · «Lejos de la red, solo te protege lo que va en el equipo» · «Lo que hace falta se parchea; lo que sobra, se quita». La frase para el examen (`phrase`): «Antes de contestar, pregúntate qué falló, dónde y si hace falta». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`; el quiz de sp2m8, ocho preguntas). Sin tarjeta de examen",
+      "goal": "Tres reglas, cada una con su icono (la planta · el abrigo · la cuota) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Busca qué falló: cada técnica responde a un verbo, y si el caso trae dos, manda el de la pregunta» · «Lejos de la red, te protege lo que va en el equipo» · «Lo que hace falta se parchea; si sobra, se quita». La frase para el examen (`phrase`): «Antes de contestar, pregúntate qué falló, dónde y si hace falta». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`; el quiz de sp2m8, ocho preguntas). Sin tarjeta de examen",
       "requiredCues": [
         "recap",
         "rule-1",
