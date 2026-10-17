@@ -1,0 +1,291 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {list}En el puerto de Halden, la lista de pasajeros del ferry {hands}pasa por muchas manos. Pero solo una decide, y el examen pregunta cuál.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Quién decide. {promise}Lo verás a tres alturas, en casa, con la ley y arriba. Y en las tres, uno decide y otro hace el trabajo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-casa",
+      "text": "<engaging> {request}Empezamos dentro de la casa. Atención al Pasajero pide ver la lista, y alguien tiene que decir que sí.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-casa",
+      "text": "<thoughtful> {owner}Lo dice la jefa de la terminal de pasajeros, que la clasificó y responde de ella. Es un papel de negocio, y se llama data owner.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-casa",
+      "text": "<steady> {custodian}Sistemas da el permiso, cifra y hace las copias, pero no decide nada. Ese es el data custodian.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-casa",
+      "text": "<clear> {steward}Y la oficina de planificación cuida que esté bien hecha, sin nombres repetidos. Cuida el significado, y es el data steward.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-casa",
+      "text": "<warm> {album}Es como el álbum de fotos de la abuela. Ella decide quién se lleva copia, el nieto las escanea y la tía apunta quién sale.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "5.1",
+        "text": "El owner decide; el custodian lo aplica",
+        "at": "album",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca. Una cadena de clínicas tiene que decidir si los datos de sus citas pasan de uso interno a confidencial. Hay una persona que define cada campo y corrige los errores, y los conoce mejor que nadie. ¿Qué rol debe decidir la clasificación?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.1",
+        "scenario": "Unas clínicas deciden si sus datos de citas pasan de «uso interno» a «confidencial». Quien define cada campo y corrige errores los conoce mejor que nadie.",
+        "q": "¿Qué rol debe decidir la clasificación?",
+        "options": [
+          "Data custodian",
+          "Data steward",
+          "Data processor",
+          "Data owner"
+        ],
+        "answer": 3,
+        "trap": 1,
+        "why": "Clasificar es decidir sobre el dato, y eso es del owner, que responde de él",
+        "trapWhy": "El steward cuida la calidad y el significado del dato, pero no lo clasifica",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Decide el data owner, porque clasificar es decidir. {trap-1}Y la trampa es quien mejor lo conoce, el steward, que cuida su calidad pero no lo clasifica.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<warm> {album-back}O sea, que la tía sabe quién sale en cada foto, y aun así decide la abuela.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "5.1",
+        "text": "Clasificar es del owner, no del steward",
+        "at": "album-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-ley",
+      "text": "<engaging> {personal}Ahora, la ley. La lista lleva datos personales, y la pregunta cambia, quién decide para qué se usan.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-ley",
+      "text": "<clear> {controller}El puerto, como organización, decide qué se recoge, para qué y cuánto se guarda. Es el data controller.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-ley",
+      "text": "<steady> {processor}Los avisos de embarque los manda otra empresa, con lo que el puerto le dice. Es el data processor.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-ley",
+      "text": "<serious> {own-purpose}Si usara la lista para sus propias ofertas, ya decidiría por su cuenta, y pasaría a ser controller.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-ley",
+      "text": "<firm> {responsibility}O sea, que el trabajo se encarga, pero la responsabilidad se queda en el puerto. {legal-roles}Y son papeles entre organizaciones, no puestos de trabajo.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "5.1",
+        "text": "Externalizar no externaliza la responsabilidad",
+        "at": "responsibility",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-ley",
+      "text": "<cheerful> {moving}Como en una mudanza. Tú decides qué se lleva, y la empresa de mudanzas lo carga como le dices. Si se queda tu sofá, eso ya es cosa suya.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<intrigued> {q2}En una mutua de salud, un administrador de sistemas de la plantilla restaura las copias y aplica los parches. También revisa los registros de la base de afiliados, según lo que decide la responsable. ¿Qué rol describe mejor su trabajo? {best}Ojo con ese «mejor», que busca la que encaja con este caso, aunque otra también suene bien.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.1",
+        "scenario": "Un administrador de sistemas de una mutua restaura copias, aplica parches y revisa los registros de la base de afiliados, según decide la responsable.",
+        "q": "¿Qué rol describe MEJOR su trabajo?",
+        "options": [
+          "Data controller",
+          "Data custodian",
+          "Data owner",
+          "Data processor"
+        ],
+        "answer": 1,
+        "trap": 3,
+        "why": "Implementa y mantiene los controles que decide otra persona",
+        "trapWhy": "Trata datos personales con instrucciones, pero es de la casa, no un tercero",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<firm> {ok-2}Es el data custodian, que aplica los controles que decide otra persona. {trap-2}Trata datos personales con instrucciones, como un processor, pero es de la casa.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<thoughtful> {planes}Y el processor es otra organización. O sea, que esto es de dentro de la casa, no de la ley.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "5.1",
+        "text": "Aplica controles y es de la casa: custodian",
+        "at": "planes",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-arriba",
+      "text": "<curious> {board}Y arriba del todo está el consejo, que aprueba las políticas, supervisa y tiene la responsabilidad última. Es el board.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-arriba",
+      "text": "<steady> {committee}El comité de seguridad de la información revisa riesgos y recomienda al consejo. Es un committee, que recibe el trabajo, no la responsabilidad.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-arriba",
+      "text": "<serious> {regulator}Y desde fuera, la autoridad marítima nacional exige un plan de protección antes de dejar operar. Es una government entity.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-arriba",
+      "text": "<clear> {central-chip}Decidirlo todo en un sitio o repartirlo es otra cosa, centralized o decentralized.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-arriba",
+      "text": "<warm> {club}Como el club del barrio. La junta responde ante los socios, la comisión de fiestas propone, y el ayuntamiento da la licencia.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<engaging> {q3}La última. Una autoridad pública nombra a dos de los consejeros de una universidad pública. Y además le fija los requisitos que debe cumplir su plan de seguridad. ¿Qué describe mejor el papel de esa autoridad?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.1",
+        "scenario": "Una autoridad pública nombra a dos de los consejeros de una universidad pública y le fija los requisitos de su plan de seguridad.",
+        "q": "¿Qué describe MEJOR el papel de esa autoridad?",
+        "options": [
+          "Government entity",
+          "Committee",
+          "Board",
+          "Decentralized governance"
+        ],
+        "answer": 0,
+        "trap": 2,
+        "why": "Gobierna desde fuera: nombra consejeros e impone requisitos",
+        "trapWhy": "Tiene gente en el consejo, pero ella no es el consejo: actúa desde fuera",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Una government entity, que gobierna desde fuera. {trap-3}Con dos consejeros dentro, parece el board. Pero la autoridad no es el consejo, solo nombra a parte de él.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<warm> {club-back}Es como el ayuntamiento, que puede sentar a alguien en la junta del club, y sigue siendo el ayuntamiento.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "5.1",
+        "text": "Un regulador gobierna desde fuera",
+        "at": "club-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}En casa, el owner decide y el custodian aplica.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Con la ley, el controller decide para qué, aunque lo haga otro.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y arriba, el consejo responde y la autoridad gobierna desde fuera.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Pregunta siempre quién decide, porque saber más o hacer el trabajo no te da la decisión. {next}Ahora te toca, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}
