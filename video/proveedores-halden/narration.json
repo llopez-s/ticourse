@@ -1,0 +1,285 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {box}En el puerto de Halden, un trabajo lo puede hacer otra empresa, {rope}pero la responsabilidad no se va con ella.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Antes, al firmar y después. {promise}Vas a ver qué pesa cada prueba que te da un proveedor, qué toca y cuándo, y qué fija cada papel.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-pruebas",
+      "text": "<engaging> {case}El puerto busca una agencia que traduzca los papeles de las navieras y los avisos a pasajeros. {no-access}Verá documentos confidenciales, pero no entra en ningún sistema.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-pruebas",
+      "text": "<clear> {three}Se presentan tres. La primera rellena tu cuestionario de seguridad. Es barato, pero lo cuenta la propia agencia. {questionnaire}Eso es un questionnaire.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "5.3",
+        "text": "Cuestionario: lo dice el propio proveedor",
+        "at": "questionnaire",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-pruebas",
+      "text": "<thoughtful> {internal}La segunda manda su auditoría interna. Informa, pero la escribe la parte interesada. Son evidence of internal audits.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-pruebas",
+      "text": "<confident> {independent}La tercera trae el informe de una firma sin vínculo con ella. Es una independent assessment, y pesa más. {scope-period}Pero mira qué cubre y qué meses.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-pruebas",
+      "text": "<warm> {chips}Si la agencia subcontrata traductores, lo mira la supply chain analysis. {nursery}Es como elegir guardería, con su folleto, su propio informe y el sello de fuera.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca. Una empresa evalúa a un proveedor de copias en la nube. El proveedor le manda un informe formal, firmado y con su metodología, hecho por su propio departamento de auditoría interna. ¿Qué describe mejor ese informe? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.3",
+        "scenario": "Un proveedor de copias en la nube manda a un cliente un informe formal, firmado y con metodología, de su propio departamento de auditoría interna.",
+        "q": "¿Qué describe MEJOR ese informe?",
+        "options": [
+          "Independent assessment",
+          "Questionnaire",
+          "Evidence of internal audits",
+          "Right-to-audit clause"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "Lo hace el propio proveedor: informa, pero lo escribe la parte interesada",
+        "trapWhy": "Parece una auditoría seria, pero no es independiente: la hizo el auditado",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<firm> {ok-1}Son evidence of internal audits, las del propio proveedor. {trap-1}Parece independiente de lo serio que es, pero lo firma el auditado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<warm> {nursery-back}O sea, como el informe que se hace la guardería. Serio, pero suyo.",
+      "pauseAfterMs": 900,
+      "exam": {
+        "objective": "5.3",
+        "text": "Independiente es que no lo firme el auditado",
+        "at": "nursery-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-antes",
+      "text": "<engaging> {timeline}Pasamos al cuándo, con la firma en el centro. {before}Antes de firmar, investigas a fondo a la agencia elegida. Eso es la due diligence.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-antes",
+      "text": "<clear> {contract-terms}Y es cuando aún puedes pedir. Poder auditarla, que te avise de un incidente y que borre tus datos al final.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-antes",
+      "text": "<serious> {conflict}Si quien evalúa en Compras tiene familia en una candidata, lo declara y se aparta. Eso es un conflict of interest.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-antes",
+      "text": "<confident> {after}Y después de firmar, no se deja de mirar. Repites el cuestionario, pides informes nuevos y vigilas si cambia de dueños. {monitoring}Eso es vendor monitoring.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "5.3",
+        "text": "Due diligence antes; monitoring después",
+        "at": "monitoring",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-antes",
+      "text": "<warm> {nursery-2}Con la guardería pasa igual. La visitas antes de la matrícula, y luego la sigues mirando cada día.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Otra. Una empresa lleva dos años con su proveedor de correo. A mitad de contrato, lee en la prensa que otra compañía lo ha comprado. Y que va a mover los datos a otro país. ¿Dentro de qué actividad le toca reevaluarlo ahora?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.3",
+        "scenario": "A mitad de contrato, una empresa lee que han comprado a su proveedor de correo y que va a mover los datos a otro país.",
+        "q": "¿Dentro de qué actividad le toca reevaluarlo ahora?",
+        "options": [
+          "Rules of engagement",
+          "Conflict of interest",
+          "Due diligence",
+          "Vendor monitoring"
+        ],
+        "answer": 3,
+        "trap": 2,
+        "why": "El contrato ya corre: seguir los cambios de dueño o de país es monitoring",
+        "trapWhy": "Se parece a investigar al proveedor, pero due diligence es antes de firmar",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<firm> {ok-2}Es vendor monitoring, porque el contrato ya corre. {trap-2}La due diligence se le parece, pero va antes de firmar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<steady> {timeline-back}En la línea, esto cae detrás de la firma. O sea, que antes se investiga y después se vigila.",
+      "pauseAfterMs": 900
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-papeles",
+      "text": "<engaging> {nda}Vamos con lo que fija cada papel. Antes de enseñarle nada a la agencia, se firma la confidencialidad, el NDA.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-papeles",
+      "text": "<clear> {msa}Luego, el paraguas de la relación, con quién responde, cómo se paga y qué ley se aplica. Es el MSA, y se firma una vez.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-papeles",
+      "text": "<focused> {sow}Debajo cuelga cada encargo, como traducir el folleto de pasajeros, con sus entregables y sus fechas. Ese es el SOW.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "5.3",
+        "text": "SOW: el encargo; MSA: el paraguas",
+        "at": "sow",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-papeles",
+      "text": "<steady> {sla}Y lo que se mide va en el SLA. Por ejemplo, urgentes en un día, y si no, descuento en la factura.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-papeles",
+      "text": "<thoughtful> {others}Y si no se compra, sino que se colabora, el MOU dice la intención y el MOA reparte compromisos.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}La última. Dos hospitales comarcales firman un documento para cubrirse en las guardias de verano. Uno pone las ambulancias y el otro, el personal médico de refuerzo. Y cada uno se compromete a unas fechas concretas. No hay dinero ni negocio de por medio. ¿Qué documento encaja mejor?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.3",
+        "scenario": "Dos hospitales firman cómo se cubren en verano: uno pone las ambulancias y el otro, el personal médico, con fechas concretas. Sin dinero ni negocio.",
+        "q": "¿Qué documento encaja MEJOR?",
+        "options": [
+          "Service level agreement (SLA)",
+          "Memorandum of agreement (MOA)",
+          "Business partner agreement (BPA)",
+          "Memorandum of understanding (MOU)"
+        ],
+        "answer": 1,
+        "trap": 3,
+        "why": "Reparte tareas y recursos concretos que cada parte se compromete a cumplir",
+        "trapWhy": "Es una colaboración, pero un MOU solo dice la intención: aquí hay compromisos",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<firm> {ok-3}Es el MOA, porque cada hospital se compromete a algo concreto. {trap-3}El MOU tienta, pero solo dice la intención.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<warm> {moa-back}O sea, que no decide el dinero, sino si hay compromisos repartidos.",
+      "pauseAfterMs": 900,
+      "exam": {
+        "objective": "5.3",
+        "text": "MOA reparte compromisos; MOU, solo intención",
+        "at": "moa-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Lo que dice el proveedor de sí mismo informa, pero pesa más lo que firma alguien de fuera.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Antes de firmar, due diligence, y después, vendor monitoring.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y cada papel sirve para fijar una cosa distinta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Mira quién lo firma, mira si ya has firmado y mira qué tiene que fijar el papel. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}
