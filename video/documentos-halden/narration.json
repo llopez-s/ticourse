@@ -26,7 +26,7 @@
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Cuatro papeles. {promise}Y para ordenarlos te bastan dos preguntas, si obliga y qué responde cada uno.",
+      "text": "<confident> {title}Cuatro papeles. {promise}Y para ordenarlos te bastan dos preguntas. Si obliga, y si te dice qué, cuánto o cómo.",
       "pauseAfterMs": 400
     },
     {
@@ -38,7 +38,7 @@
     {
       "id": "s02-02",
       "scene": "s02-que",
-      "text": "<clear> {sheet-1}La primera hoja la aprueba la dirección. Dice que la información sale solo por canales aprobados y según su clasificación.",
+      "text": "<clear> {sheet-1}La primera hoja la aprueba la dirección. Para proteger lo que maneja el puerto, la información sale solo por canales aprobados y según su clasificación.",
       "pauseAfterMs": 250
     },
     {
@@ -50,7 +50,7 @@
     {
       "id": "s02-04",
       "scene": "s02-que",
-      "text": "<focused> {sheet-2}La segunda la escribe Seguridad, y baja al detalle. Lo confidencial sale con cifrado fuerte, por la plataforma aprobada, y los enlaces caducan a los siete días.",
+      "text": "<focused> {sheet-2}La segunda la escribe Seguridad, y baja al detalle. Lo confidencial sale con cifrado fuerte, por la plataforma aprobada, y los enlaces duran siete días.",
       "pauseAfterMs": 250
     },
     {
@@ -62,8 +62,8 @@
     {
       "id": "s02-06",
       "scene": "s02-que",
-      "text": "<warm> {pool-1}Como en la piscina municipal. El cartel grande pone que la seguridad de los bañistas va primero, y el de al lado, gorro obligatorio.",
-      "pauseAfterMs": 700,
+      "text": "<warm> {pool-1}Como en la piscina municipal. El cartel grande pone que la seguridad de los bañistas va primero.",
+      "pauseAfterMs": 250,
       "exam": {
         "objective": "5.1",
         "text": "Policy dice qué y por qué; standard, cuánto",
@@ -72,13 +72,19 @@
       }
     },
     {
+      "id": "s02-07",
+      "scene": "s02-que",
+      "text": "<clear> Y el de al lado, menores de diez años, siempre con un adulto.",
+      "pauseAfterMs": 700
+    },
+    {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca. El equipo de desarrollo de una empresa tiene un documento de buenas prácticas. Dice «os recomendamos usar [TLS 1.3|te ele ese uno punto tres] en las aplicaciones nuevas». Nadie lo ha hecho obligatorio. ¿Qué tipo de documento es?",
+      "text": "<intrigued> {q1}Primera pregunta. El equipo de desarrollo de una empresa tiene un documento interno. Dice «os recomendamos usar [TLS 1.3|te ele ese uno punto tres] en las aplicaciones nuevas». Nadie lo ha hecho obligatorio. ¿Qué tipo de documento es?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.1",
-        "scenario": "Una guía del equipo de desarrollo dice: «Os recomendamos usar TLS 1.3 en las aplicaciones nuevas». Nadie lo ha hecho obligatorio.",
+        "scenario": "Un documento del equipo de desarrollo de una empresa dice: «Os recomendamos usar TLS 1.3 en las aplicaciones nuevas». Nadie lo ha hecho obligatorio.",
         "q": "¿Qué tipo de documento es?",
         "options": [
           "Policy",
@@ -98,7 +104,7 @@
     {
       "id": "s03-02",
       "scene": "s03-p1",
-      "text": "<firm> {ok-1}Es una guideline, porque recomienda y no obliga. {trap-1}El standard tienta, porque nombra una versión. Pero un standard es obligatorio, y esto no.",
+      "text": "<firm> {ok-1}Guideline. Recomienda, y no obliga a nadie. {trap-1}La versión empuja hacia el standard, y ahí está la trampa, que un standard se cumple sí o sí.",
       "pauseAfterMs": 300
     },
     {
@@ -108,7 +114,7 @@
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.1",
-        "text": "Decide si obliga, no si es concreto",
+        "text": "Si no obliga, no es standard, aunque sea concreto",
         "at": "cream",
         "holdSec": 5
       }
@@ -146,7 +152,7 @@
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<intrigued> {q2}Otro caso. El centro de operaciones de un hospital tiene un documento aprobado por la dirección y firmado por todo el equipo. Explica, paso a paso, qué hacer si una cuenta aparece comprometida, y es obligatorio. ¿Qué describe mejor este documento? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
+      "text": "<intrigued> {q2}Otro caso. El equipo de seguridad de un hospital tiene un documento aprobado por la dirección y firmado por todos. Explica, paso a paso, qué hacer si una cuenta aparece comprometida, y es obligatorio. ¿Qué describe mejor este documento? {best}Ojo, que ese «mejor» va con segundas. Otra también encaja a medias.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.1",
@@ -170,23 +176,23 @@
     {
       "id": "s05-02",
       "scene": "s05-p2",
-      "text": "<firm> {ok-2}Es un procedure, un playbook, porque dice cómo, paso a paso.",
+      "text": "<firm> {ok-2}Un procedure. Y en concreto un playbook, porque te lleva paso a paso.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-03",
       "scene": "s05-p2",
-      "text": "<thoughtful> {trap-2}La policy tienta, porque obliga y la firma todo el mundo, como la acceptable use policy. Pero una policy dice qué y por qué, no cómo.",
+      "text": "<thoughtful> {trap-2}Con la dirección detrás y la firma de todos, parece una policy, como la acceptable use policy. Pero una policy nunca baja a cómo se hace.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-04",
       "scene": "s05-p2",
-      "text": "<warm> {lifeguard}Pasa como con la hoja del socorrista, que también obliga y sigue siendo el cómo.",
+      "text": "<warm> {lifeguard}O sea, que es como la hoja del socorrista, que también obliga y sigue siendo el cómo.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.1",
-        "text": "Un playbook es un procedure, aunque obligue",
+        "text": "Un playbook es un procedure, lo firme quien lo firme",
         "at": "lifeguard",
         "holdSec": 5
       }
@@ -206,19 +212,19 @@
     {
       "id": "s06-03",
       "scene": "s06-caducan",
-      "text": "<curious> {platform-change}Imagina que la plataforma cambia de producto. {standard-only}Se reescriben el standard y el procedure, y la policy se queda igual. Por eso no nombra tecnología.",
+      "text": "<curious> {platform-change}Imagina que la plataforma cambia de producto. {standard-only}Se revisan el standard y el procedure, y la policy se queda igual. Por eso no nombra tecnología.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-04",
       "scene": "s06-caducan",
-      "text": "<focused> {monitoring}Y monitorizar es comprobar que se cumple. Por ejemplo, que nadie mande documentos por correo en vez de por la plataforma.",
+      "text": "<focused> {monitoring}Y monitorizar es comprobar que se cumple. Por ejemplo, que nadie mande lo confidencial por correo en vez de por la plataforma.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-05",
       "scene": "s06-caducan",
-      "text": "<warm> {old-sign}O sea, que no te pase como en la piscina. Ahí sigue el cartel amarillento con el horario de la piscina pequeña, que ya no existe.",
+      "text": "<casual> {old-sign}Si nadie lo mira, acaba como ese cartel amarillento con el horario de la piscina pequeña, que ya ni existe.",
       "pauseAfterMs": 700,
       "exam": {
         "objective": "5.1",
@@ -230,12 +236,12 @@
     {
       "id": "s07-01",
       "scene": "s07-p3",
-      "text": "<engaging> {q3}La última. Una empresa revisa su política de protección de datos cada enero. Tiene una persona responsable y la aprobó la dirección. En marzo entra en vigor una ley nueva que le afecta. ¿Qué es lo mejor que se puede hacer?",
+      "text": "<engaging> {q3}La última. Una empresa revisa su política de protección de datos cada enero. La política tiene dueño y la aprobó la dirección. En marzo entra en vigor una ley nueva que le afecta. ¿Qué es lo mejor que se puede hacer?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.1",
-        "scenario": "La política de protección de datos de una empresa tiene una persona responsable y se revisa cada enero. En marzo entra en vigor una ley nueva que le afecta.",
-        "q": "¿Qué es lo MEJOR que puede hacer quien la tiene a su cargo?",
+        "scenario": "La política de protección de datos de una empresa tiene dueño y se revisa cada enero. En marzo entra en vigor una ley nueva que le afecta.",
+        "q": "¿Qué es lo MEJOR que se puede hacer?",
         "options": [
           "Convertirla en guideline hasta enero",
           "Esperar a la revisión de enero",
@@ -254,13 +260,13 @@
     {
       "id": "s07-02",
       "scene": "s07-p3",
-      "text": "<firm> {ok-3}Revisarla ahora, sin esperar. {trap-3}La revisión de enero tienta, porque todo parece en orden. Pero el ciclo es el mínimo, no el único momento.",
+      "text": "<firm> {ok-3}Revisarla ya. {trap-3}Aguantar hasta enero suena ordenado, con todo en regla. Pero una vez al año es lo mínimo, y la ley ha llegado antes.",
       "pauseAfterMs": 300
     },
     {
       "id": "s07-03",
       "scene": "s07-p3",
-      "text": "<warm> {closed}El cartel se cambia cuando cierra la piscina pequeña, no cuando toca revisarlo.",
+      "text": "<satisfied> {closed}O sea, que el cartel se cambia cuando cierra la piscina pequeña, no cuando toca revisarlo.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.1",
@@ -272,7 +278,7 @@
     {
       "id": "s08-01",
       "scene": "s08-cierre",
-      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Policy y standard obligan. Una dice qué y por qué, y el otro, cuánto.",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Policy y standard obligan. La policy dice qué y por qué, y el standard, cuánto.",
       "pauseAfterMs": 250
     },
     {
@@ -290,7 +296,7 @@
     {
       "id": "s08-04",
       "scene": "s08-cierre",
-      "text": "<engaging> {phrase}Primero, ¿obliga? Después, ¿qué responde? {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "text": "<engaging> {phrase}Primero, ¿obliga? Después, ¿dice qué, cuánto o cómo? {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
       "pauseAfterMs": 250
     }
   ]

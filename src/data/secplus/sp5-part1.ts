@@ -38,7 +38,7 @@ const sp5m1: Module = {
         ],
         answer: 0,
         explain:
-          'The first sentence states a mandatory organizational rule without naming any technology, which is a policy; the second fixes a specific mandatory technical requirement, which is a standard; the third is advice the reader may take or leave, which is a guideline. Calling the second one a policy is the common slip, but the moment a document names a version, a length or an algorithm it has stopped being technology-neutral and has become the standard that implements the policy.',
+          'The first sentence states a mandatory organizational rule without naming any technology, which is a policy; the second fixes a specific mandatory technical requirement, which is a standard; the third is advice the reader may take or leave, which is a guideline. Calling the second one a policy is the common slip, but the moment a mandatory document names a version, a length or an algorithm it has stopped being technology-neutral and has become the standard that implements the policy; a document that only recommends a version is still a guideline.',
       },
     },
     { t: 'h', text: 'Las políticas que el objetivo nombra por su nombre' },

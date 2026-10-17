@@ -39,7 +39,7 @@
       "title": "Qué y por qué, y cuánto",
       "targetSec": 40,
       "wordBudget": 108,
-      "goal": "El caso (`case`): el puerto necesita una regla para mandar documentos fuera (a navieras, aduanas, proveedores), sin nombres. La primera hoja se da la vuelta (`sheet-1`): «La información del puerto sale solo por canales aprobados y según su clasificación», con la firma de la dirección → POLICY («qué y por qué · obliga a todos · sin tecnología») (`policy`). La segunda, que escribe Seguridad (`sheet-2`): «Lo confidencial sale cifrado, por la plataforma de intercambio aprobada, con enlaces que caducan a los 7 días»; en pantalla, sin voz, «AES-256» junto a «cifrado» → STANDARD («cuánto exactamente · obliga · caduca con la tecnología») (`standard`). La piscina municipal en miniatura, rotulada «imagen · no es del puerto» (`pool-1`), con sus dos primeros carteles: el grande de la entrada, «En esta piscina, la seguridad de los bañistas va primero», y el de al lado, «Gorro obligatorio · menores de 10 años, siempre con un adulto». La plataforma de intercambio no tiene nombre ni producto. Tarjeta de examen después de la piscina",
+      "goal": "El caso (`case`): el puerto necesita una regla para mandar documentos fuera (a navieras, aduanas, proveedores), sin nombres. La primera hoja se da la vuelta (`sheet-1`): «La información del puerto sale solo por canales aprobados y según su clasificación, para protegerla», con la firma de la dirección → POLICY («qué y por qué · obliga a todos · sin tecnología») (`policy`). La segunda, que escribe Seguridad (`sheet-2`): «Lo confidencial sale cifrado, por la plataforma de intercambio aprobada, con enlaces que duran 7 días»; en pantalla, sin voz, «AES-256» junto a «cifrado» → STANDARD («cuánto exactamente · obliga · caduca con la tecnología») (`standard`). La piscina municipal en miniatura, rotulada «imagen · no es del puerto» (`pool-1`), con sus dos primeros carteles: el grande de la entrada, «En esta piscina, la seguridad de los bañistas va primero», y el de al lado, «Gorro obligatorio · menores de 10 años, siempre con un adulto». La plataforma de intercambio no tiene nombre ni producto. Tarjeta de examen después de la piscina",
       "requiredCues": [
         "case",
         "sheet-1",
@@ -52,10 +52,10 @@
     {
       "id": "s03-p1",
       "chapter": 1,
-      "title": "Una guía de desarrollo",
+      "title": "Un documento de desarrollo",
       "targetSec": 38,
       "wordBudget": 81,
-      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel de pregunta tapa la escena hasta el final, así que el fondo se queda quieto (una hoja genérica de buenas prácticas, sin texto legible). Sin calificador. Cuenta atrás de 5 s; en `ok-1` sale la correcta (Guideline) y en `trap-1` la trampa (Standard); las otras dos, atenuadas. En la resolución vuelve la piscina en una línea (`cream`): el cartel pequeño «Te recomendamos crema de factor 50»; la tarjeta de examen entra después de la trampa",
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel de pregunta tapa la escena hasta el final, así que el fondo se queda quieto (una hoja genérica sin texto legible). Sin calificador. Cuenta atrás de 5 s; en `ok-1` sale la correcta (Guideline) y en `trap-1` la trampa (Standard); las otras dos, atenuadas. En la resolución vuelve la piscina en una línea (`cream`): el cartel pequeño «Te recomendamos crema de factor 50»; la tarjeta de examen entra después de la trampa",
       "requiredCues": [
         "q1",
         "ok-1",
@@ -69,7 +69,7 @@
       "title": "El cómo y el consejo",
       "targetSec": 38,
       "wordBudget": 103,
-      "goal": "La tercera hoja, que escribe Sistemas (`sheet-3`): «Cómo mandar un fichero a una naviera: 1, clasifícalo; 2, súbelo a la plataforma; 3, manda el enlace; 4, comprueba que ha llegado» → PROCEDURE («cómo, paso a paso · obliga a quien lo hace») (`procedure`). Un chip (`playbook`): «playbook: un procedure para un caso concreto», con el ejemplo de la lección (una cuenta comprometida). La cuarta hoja (`sheet-4`): «Te recomendamos avisar por teléfono a quien recibe de que le llega un enlace» → GUIDELINE («un consejo · no obliga · no seguirlo no es un incumplimiento») (`guideline`). La piscina (`pool-2`): la hoja del socorrista, «Si alguien se hunde: 1, silbato; 2, al agua; 3, avisar al 112», y el cartel pequeño de la crema. Sin correos, adjuntos ni macros. Sin tarjeta de examen",
+      "goal": "La tercera hoja, que escribe Sistemas (`sheet-3`): «Cómo mandar un fichero a una naviera: 1, mira su clasificación; 2, súbelo a la plataforma; 3, manda el enlace; 4, comprueba que ha llegado» → PROCEDURE («cómo, paso a paso · obliga a quien lo hace») (`procedure`). Un chip (`playbook`): «playbook: un procedure para un caso concreto, como un ransomware» (el ejemplo de la lección que no regala la pregunta 2, que es una cuenta comprometida). La cuarta hoja (`sheet-4`): «Te recomendamos avisar por teléfono a quien recibe de que le llega un enlace» → GUIDELINE («un consejo · no obliga · no seguirlo no es un incumplimiento») (`guideline`). La piscina (`pool-2`): la hoja del socorrista, «Si alguien se hunde: 1, silbato; 2, al agua; 3, avisar al 112», y el cartel pequeño de la crema. Sin correos, adjuntos ni macros. Sin tarjeta de examen",
       "requiredCues": [
         "sheet-3",
         "procedure",
@@ -100,7 +100,7 @@
       "title": "Papeles que caducan",
       "targetSec": 34,
       "wordBudget": 92,
-      "goal": "Las cuatro hojas en fila, cada una con tres datos al pie (`owners`, `cycle`): «dueño: una persona · revisión: cada año · y cuando cambie la ley o el servicio». La plataforma de intercambio cambia de producto, como supuesto (`platform-change`): se iluminan el standard y el procedure, la policy se queda igual («por eso no nombra tecnología») (`standard-only`). Monitoring, en un chip (`monitoring`): «comprobar que se aplica: ¿salen documentos por correo y no por la plataforma?». La piscina (`old-sign`): el cartel amarillento con el horario de «la piscina pequeña», que ya no existe. Nada dice que al puerto le falte un dueño. Tarjeta de examen después del cartel viejo",
+      "goal": "Las cuatro hojas en fila, cada una con tres datos al pie (`owners`, `cycle`): «dueño: una persona · revisión: cada año · y cuando cambie la ley o el servicio». La plataforma de intercambio cambia de producto, como supuesto (`platform-change`): se iluminan el standard y el procedure, la policy se queda igual («por eso no nombra tecnología») (`standard-only`). Monitoring, en un chip (`monitoring`): «comprobar que se aplica: ¿sale lo confidencial por correo y no por la plataforma?». La piscina (`old-sign`): el cartel amarillento con el horario de «la piscina pequeña», que ya no existe. Nada dice que al puerto le falte un dueño. Tarjeta de examen después del cartel viejo",
       "requiredCues": [
         "owners",
         "cycle",
