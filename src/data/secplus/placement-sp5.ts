@@ -179,7 +179,7 @@ export const SP5_PLACEMENT: PlacementBlock = {
       id: 'pl-sp5q9',
       domain: 'Security Program Management & Oversight',
       prompt:
-        "A haulage company's schedule says personnel case files are destroyed three years after the case closes, and a job runs every month to carry that out. A former driver has brought a claim the company must defend, and its lawyers asked the HR team to keep everything relating to him; HR moved his current file into a folder of its own. Last month two older files about the same driver reached three years and the monthly job destroyed them. What should the company change?",
+        "A haulage company's schedule says personnel case files are destroyed three years after the case closes, and a job runs every month to carry that out. A former driver has brought a claim the company must defend, and its lawyers asked the HR team to keep everything relating to that driver; HR moved the driver's current file into a folder of its own. Last month two older files about the same driver reached three years and the monthly job destroyed them. What should the company change?",
       choices: [
         'Have the lawyers keep their own copies of anything they may need',
         'Check each file against the open preservation list before deleting',

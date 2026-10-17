@@ -374,7 +374,7 @@ const sp5m6: Module = {
     {
       t: 'check',
       q: {
-        q: 'A former contractor asks the Halden Port Authority to erase every piece of personal data it holds about him. Part of that data is invoicing records that national tax law requires the port to keep for ten years, and another part is frozen under a legal hold for ongoing litigation. What is the correct response?',
+        q: 'A former contractor asks the Halden Port Authority to erase every piece of personal data it holds about them. Part of that data is invoicing records that national tax law requires the port to keep for ten years, and another part is frozen under a legal hold for ongoing litigation. What is the correct response?',
         choices: [
           'Erase everything without exception, because the right to be forgotten overrides other duties',
           'Refuse the entire request, because one category of data is under a legal hold',

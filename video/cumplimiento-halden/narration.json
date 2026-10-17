@@ -20,7 +20,7 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {notebook}En Halden, el cuaderno de objetos perdidos va a pasar a un sistema. {screen}Son datos de personas, con reglas que no eliges tú.",
+      "text": "<curious> {notebook}En el puerto de Halden, el cuaderno de objetos perdidos pasa a un sistema. {screen}Son datos de personas, con reglas que no eliges tú.",
       "pauseAfterMs": 300
     },
     {
@@ -32,13 +32,13 @@
     {
       "id": "s02-01",
       "scene": "s02-antes",
-      "text": "<engaging> {timeline}Primero, el antes y el después. {before}En el mostrador de la terminal de pasajeros, quien reclama algo deja su nombre, su teléfono y su documento.",
+      "text": "<engaging> {timeline}Primero, el antes y el después. {before}En el mostrador de la terminal de pasajeros, quien reclama algo deja su nombre, su teléfono y su número de documento.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-02",
       "scene": "s02-antes",
-      "text": "<thoughtful> {questions}Antes de lanzar el sistema, el puerto se pregunta qué ley aplica, quién verá esos datos y cuánto se guardan.",
+      "text": "<thoughtful> {questions}Antes de lanzar el sistema, el puerto se pregunta qué ley se aplica, quién verá esos datos y cuánto tiempo se guardan.",
       "pauseAfterMs": 250
     },
     {
@@ -50,13 +50,13 @@
     {
       "id": "s02-04",
       "scene": "s02-antes",
-      "text": "<steady> {launch}Luego se lanza, {after}y toca seguir. {routines}Hay que revisar quién entra, borrar lo que caduca y arreglar lo que salga en las revisiones.",
+      "text": "<steady> {launch}Luego se lanza, {after}y toca seguir. {routines}Hay que comprobar quién tiene acceso, borrar lo que caduca y arreglar lo que salga en las revisiones.",
       "pauseAfterMs": 250
     },
     {
       "id": "s02-05",
       "scene": "s02-antes",
-      "text": "<firm> Y seguir haciéndolo bien, cada día y sin fecha de fin, es la due care.",
+      "text": "<firm> Y hacerlo bien cada día, sin parar, es la due care.",
       "pauseAfterMs": 300
     },
     {
@@ -74,7 +74,7 @@
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca, con otro caso. Antes de lanzar su aplicación, una empresa hizo un análisis legal impecable. Tres años después, nadie borra lo que caduca ni corrige lo que salió en la última revisión. ¿Qué describe mejor lo que le ha faltado? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
+      "text": "<intrigued> {q1}Te toca, con otro caso. Antes de lanzar su aplicación, una empresa hizo un análisis legal impecable. Tres años después, nadie borra lo que caduca ni corrige lo que salió en la última revisión. ¿Qué describe mejor lo que le ha faltado? {best}Ojo con ese «mejor», que pide la que más encaja, aunque otra también suene bien.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.4",
@@ -98,13 +98,13 @@
     {
       "id": "s03-02",
       "scene": "s03-p1",
-      "text": "<confident> {ok-1}Es la due care, lo de después, porque borrar y corregir son rutinas. {trap-1}La due diligence se hizo, y bien, pero era lo de antes.",
+      "text": "<confident> {ok-1}Le ha faltado la due care, lo de después, lo de cada día. {trap-1}La due diligence sí se hizo, y bien, pero era lo de antes.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-03",
       "scene": "s03-p1",
-      "text": "<warm> {cat-back}O sea, que te informaste de maravilla, y el gato sigue sin comer.",
+      "text": "<mischievously> {cat-back}O sea, que te informaste de maravilla, y el gato sigue sin comer.",
       "pauseAfterMs": 1000
     },
     {
@@ -116,19 +116,19 @@
     {
       "id": "s04-02",
       "scene": "s04-cuesta",
-      "text": "<focused> Lo que importa es quién lo impone. {authority}Una autoridad podría multarlo, {fines}y eso son fines.",
+      "text": "<focused> Y fíjate en quién se lo hace pagar. {authority}Una autoridad podría multarlo, {fines}y eso son fines.",
       "pauseAfterMs": 250
     },
     {
       "id": "s04-03",
       "scene": "s04-cuesta",
-      "text": "<clear> {sanctions}O prohibirle usar el registro hasta que lo corrija, y eso son sanctions.",
+      "text": "<clear> {sanctions}O prohibirle usar el sistema hasta que lo corrija, y eso son sanctions.",
       "pauseAfterMs": 250
     },
     {
       "id": "s04-04",
       "scene": "s04-cuesta",
-      "text": "<steady> {license}Quien le dio permiso para operar podría quitárselo, y eso es loss of license.",
+      "text": "<steady> {license}Quien le dio permiso para operar podría quitárselo. Perdería la licencia, la loss of license.",
       "pauseAfterMs": 250
     },
     {
@@ -152,17 +152,23 @@
     {
       "id": "s04-07",
       "scene": "s04-cuesta",
-      "text": "<warm> {salon}Como una peluquería del barrio. Sanidad la multa y le prohíbe los tintes, pierde la licencia de apertura y la exclusiva del champú, y las reseñas {reporting}rematan.",
+      "text": "<warm> {salon}Como una peluquería del barrio. Sanidad la multa y le prohíbe los tintes.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-08",
+      "scene": "s04-cuesta",
+      "text": "<casual> Luego pierde la licencia de apertura, la marca de champú le quita la exclusiva y las reseñas hacen el {reporting}resto.",
       "pauseAfterMs": 600
     },
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<engaging> {q2}La segunda. Tras una inspección, un regulador prohíbe a una empresa de mensajería presentarse a concursos públicos durante dos años. No le pone ninguna multa, y puede seguir trabajando con sus clientes privados. ¿Qué consecuencia del incumplimiento es?",
+      "text": "<engaging> {q2}La segunda. Tras una inspección, un regulador prohíbe a una empresa de paquetería presentarse a concursos públicos durante dos años. No le pone ninguna multa, y puede seguir trabajando con sus clientes privados. ¿Qué consecuencia del incumplimiento es?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.4",
-        "scenario": "Tras una inspección, un regulador prohíbe a una empresa de mensajería ir a concursos públicos dos años. Sin multa; sigue con sus clientes privados.",
+        "scenario": "Tras una inspección, un regulador prohíbe a una empresa de paquetería ir a concursos públicos dos años. Sin multa; sigue con sus clientes privados.",
         "q": "¿Qué consecuencia del incumplimiento es?",
         "options": [
           "Contractual impacts",
@@ -173,7 +179,7 @@
         "answer": 3,
         "trap": 0,
         "why": "La impone la autoridad y restringe una actividad: es una sanction",
-        "trapWhy": "Pierde contratos, pero no se los quita un cliente: se lo prohíbe el regulador",
+        "trapWhy": "Se queda sin contratos públicos, pero no por un cliente: lo prohíbe el regulador",
         "countdownMs": 5000,
         "revealAt": "ok-2",
         "trapAt": "trap-2"
@@ -182,13 +188,13 @@
     {
       "id": "s05-02",
       "scene": "s05-p2",
-      "text": "<firm> {ok-2}Son sanctions, porque las impone el regulador y le prohíben algo. {trap-2}Pierde contratos, sí, pero no se los quita un cliente con su contrato.",
+      "text": "<firm> {ok-2}Sanctions. Se lo prohíbe el regulador, y no le cobra nada. {trap-2}Sí, se queda sin concursos, pero no porque un cliente le aplique su contrato.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-03",
       "scene": "s05-p2",
-      "text": "<warm> {columns}O sea, que no importa tanto qué pierdes, sino quién te lo impone.",
+      "text": "<satisfied> {columns}O sea, que no importa tanto qué pierdes, sino quién te lo impone.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.4",
@@ -218,7 +224,7 @@
     {
       "id": "s06-03",
       "scene": "s06-guardar",
-      "text": "<clear> {retention}Luego decides cuánto se guardan, ni menos de lo que pide la ley ni más de lo que justifica el uso.",
+      "text": "<clear> {retention}Luego decides cuánto tiempo se guardan, ni menos de lo que pide la ley ni más de lo que justifica el uso.",
       "pauseAfterMs": 250
     },
     {
@@ -230,13 +236,19 @@
     {
       "id": "s06-05",
       "scene": "s06-guardar",
-      "text": "<engaging> {subject}Quien reclama, la data subject, puede pedir que borres sus datos. {rtbf-chip}Es el right to be forgotten, salvo lo que una ley o un legal hold obliguen a guardar.",
-      "pauseAfterMs": 300
+      "text": "<engaging> {subject}Quien reclama es la data subject, y puede pedir que borres sus datos.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s06-06",
       "scene": "s06-guardar",
-      "text": "<warm> {drawer}Como el archivador de casa, que primero miras qué hay y luego tiras lo que sobra.",
+      "text": "<clear> {rtbf-chip}Es el right to be forgotten. Pero lo que una ley o un legal hold obligan a guardar, se queda.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-07",
+      "scene": "s06-guardar",
+      "text": "<warm> {drawer}Como con el archivador de casa. Si no miras qué hay dentro, no sabes qué recibos sobran.",
       "pauseAfterMs": 600
     },
     {
@@ -266,13 +278,13 @@
     {
       "id": "s07-02",
       "scene": "s07-p3",
-      "text": "<confident> {ok-3}Es la retention, porque guarda mucho más de lo que justifica el uso. {trap-3}El right to be forgotten tienta, porque hay que borrar, pero nadie lo ha pedido.",
+      "text": "<confident> {ok-3}Falla la retention. Doce años, cuando su política dice dos. {trap-3}Sí, hay que borrar, pero el right to be forgotten lo pide alguien, y aquí nadie.",
       "pauseAfterMs": 300
     },
     {
       "id": "s07-03",
       "scene": "s07-p3",
-      "text": "<warm> {drawer-back}O sea, que nadie te pide que tires los recibos viejos, y aun así sobran.",
+      "text": "<casual> {drawer-back}O sea, que nadie te pide que tires los recibos viejos, y aun así sobran.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.4",
