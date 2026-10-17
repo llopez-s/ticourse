@@ -330,6 +330,10 @@ describe('lesson videos', () => {
     // V28, the first case-and-exam video, puts sp1m1's two labels (category and type) on three port controls with three
     // exam-style questions, after the «Deterrent no es preventive» callout and before the paragraph that hands over to sp1m2
     expect(youtubeVideos.find((v) => v.block.youtube === 'y9bjWKwN5fg')?.module).toBe('sp1m1');
+    // V29, a case-and-exam capsule, asks what each identification method can and cannot see (scans with and without an
+    // account, SAST/DAST/SBOM, threat feeds), after sp4m4's «En la Autoridad Portuaria de Halden» callout and before the
+    // paragraph that hands over to sp4m5
+    expect(youtubeVideos.find((v) => v.block.youtube === 'TuXDvIcJOj0')?.module).toBe('sp4m4');
     // V30 takes sp4m1's baseline to the port (establish, deploy and maintain, each target by its channel, and OT
     // compensated until it can be patched) with three exam-style questions, after the Halden callout and before the
     // paragraph that hands over to sp4m2
