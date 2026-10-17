@@ -1,0 +1,145 @@
+{
+  "title": "Un control, dos etiquetas: categoría y tipo",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 258,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Quién lo hace funcionar"
+    },
+    {
+      "n": 2,
+      "title": "Qué hace"
+    },
+    {
+      "n": 3,
+      "title": "Cuando el principal no se puede"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una cerradura, dos preguntas",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · caso de ejemplo · datos ficticios», sin fecha. Una cerradura de puerta en primer plano (`lock`) con una ficha colgada de dos casillas vacías, «¿quién lo hace funcionar?» y «¿qué hace aquí?» (`tag`). Al acabar la primera frase, título «Un control, dos etiquetas» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «quién lo hace funcionar · qué hace · cuándo compensa». Plaquita «SY0-701 · 1.1»",
+      "requiredCues": [
+        "lock",
+        "tag",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-cuarto",
+      "chapter": 1,
+      "title": "La puerta del cuarto de comunicaciones",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "La planta del edificio de oficinas, en esquema y sin nombres de equipo. «Una mañana · sin fecha»: la puerta del cuarto de comunicaciones abierta (`open`); no falta nada y no se dice que entrara nadie. Cuatro respuestas entran una a una, cada una con su ficha y solo la casilla de arriba rellena: «la dirección decide quién puede entrar» → Managerial (`decide`); «el técnico de guardia acompaña a quien entre sin permiso propio» → Operational (`do`); «la puerta se cierra sola y lleva cerradura» → Physical (`touch`); «los equipos de dentro solo aceptan cambios con una cuenta de Sistemas» → Technical (`system`). Al final, las cuatro fichas juntas con la regla en llano (`four`): «decidir · hacer · un sistema solo · algo que se toca»",
+      "requiredCues": [
+        "open",
+        "decide",
+        "do",
+        "touch",
+        "system",
+        "four"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Al cerrar la oficina",
+      "targetSec": 34,
+      "wordBudget": 70,
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel de pregunta tapa la escena hasta el final, así que el fondo se queda quieto (la oficina de noche, a media luz, sin texto). Cuenta atrás de 5 s; en `ok-1` sale la correcta (Operational) y en `trap-1` la trampa (Managerial). La tarjeta de examen entra después de la trampa (`norm`)",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "norm"
+      ]
+    },
+    {
+      "id": "s04-camara",
+      "chapter": 2,
+      "title": "La cámara del depósito",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Vuelve la cerradura de s01 y su ficha se completa (`both`): «Physical» arriba, «Preventive» abajo; dos etiquetas a la vez. Después, el depósito de contenedores vacíos con una cámara bien visible en la entrada, sin grabador ni nombre de equipo (`depot`). Dos viñetas de la misma cámara: «de noche · quien se acerca la ve y se da la vuelta» → Deterrent (`night`); «a la mañana siguiente · la grabación cuenta qué pasó» → Detective (`morning`). La regla (`scenario`): el tipo es lo que hace el control en ese escenario. Y la raya (`line`): la cámara depende de que la persona decida parar; la cerradura funciona aunque lo intente",
+      "requiredCues": [
+        "both",
+        "depot",
+        "night",
+        "morning",
+        "scenario",
+        "line"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Otra entrada del depósito",
+      "targetSec": 34,
+      "wordBudget": 70,
+      "goal": "Pregunta tipo examen 2 (`q2`). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: la que encaja con este caso, aunque otra suene bien» (`best`), que la voz explica antes de la cuenta atrás. Fondo quieto: la entrada del depósito, sin texto. En `ok-2` la correcta (Deterrent), en `trap-2` la trampa (Detective); la tarjeta de examen después (`nothing`)",
+      "requiredCues": [
+        "q2",
+        "best",
+        "ok-2",
+        "trap-2",
+        "nothing"
+      ]
+    },
+    {
+      "id": "s06-sustituto",
+      "chapter": 3,
+      "title": "Una aplicación sin segundo factor",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "goal": "La pantalla de entrada de «una aplicación antigua de RR. HH. · expedientes de la plantilla», sin nombre de producto (`mfa`). La casilla «segundo factor» tachada, con «la aplicación no lo admite · se cambiará por otra», sin fecha (`cannot`). La medida (`instead`): «solo se entra desde tres ordenadores de RR. HH.; desde cualquier otro, no». Una contraseña robada, probada desde otro ordenador: la entrada se corta (`stolen`). La ficha (`same-risk`): «Technical» arriba, «Compensating» abajo, y a su lado, a media luz, «sola sería Preventive». La receta sin huevo, en miniatura (`recipe`). Sin tarjeta de examen",
+      "requiredCues": [
+        "mfa",
+        "cannot",
+        "instead",
+        "stolen",
+        "same-risk",
+        "recipe"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "El archivo de planos",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 3 (`q3`). Fondo quieto: la puerta del archivo con su lector de tarjetas y, dentro, los armarios con llave (nunca «carné» ni «badge»), sin texto. En `ok-3` la correcta (Preventive), en `trap-3` la trampa (Compensating). En la resolución vuelve la receta en una línea (`recipe-back`): «tienes huevo y además echas otra cosa: no sustituyes nada»; la tarjeta de examen después",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "recipe-back"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (la ficha de dos casillas · la cámara de noche y de día · la receta sin huevo) (`recap`, `rule-1`, `rule-2`, `rule-3`), y la frase para el examen (`phrase`): «Antes de contestar, pregúntate quién lo hace funcionar y qué hace en ese caso». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
