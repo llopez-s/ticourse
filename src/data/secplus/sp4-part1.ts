@@ -149,6 +149,17 @@ const sp4m1: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a la siguiente lección, míralo en el puerto y ponte a prueba con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Baseline y hardening: imponer, mantener y compensar',
+      youtube: 'NO2ZOT2crCo',
+      poster: 'videos/baseline-halden-poster.png',
+      transcript: 'videos/baseline-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Ya tienes el baseline y el hardening por objetivo. La siguiente lección cierra el objetivo 4.1 con los tres frentes que quedan: el **wireless** (dónde poner los puntos de acceso y con qué protocolos protegerlos), la **movilidad** (MDM y los modelos BYOD, COPE y CYOD) y la **seguridad de aplicaciones** (validación de entrada, cookies seguras, análisis de código y firma). Después, el dominio 4 pasa a la gestión de activos y a las vulnerabilidades.',
     },
   ],
