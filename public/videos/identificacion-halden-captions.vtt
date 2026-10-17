@@ -1,364 +1,364 @@
 WEBVTT
 
 1
-00:00:01.400 --> 00:00:06.867
+00:00:01.400 --> 00:00:05.733
 En el puerto de Halden, para arreglar
 un fallo, primero hay que encontrarlo.
 
 2
-00:00:06.867 --> 00:00:10.500
+00:00:05.733 --> 00:00:08.567
 Y cada forma de buscar
 tiene sus puntos ciegos.
 
 3
-00:00:10.500 --> 00:00:12.200
+00:00:08.567 --> 00:00:09.833
 Qué ve cada método.
 
 4
-00:00:12.200 --> 00:00:17.833
+00:00:09.833 --> 00:00:13.100
 Lo vas a ver en las máquinas,
 en las aplicaciones y fuera de casa.
 
 5
-00:00:17.833 --> 00:00:23.000
+00:00:13.100 --> 00:00:16.167
 Porque en el examen
 no siempre gana el que más ve.
 
 6
-00:00:23.567 --> 00:00:27.867
+00:00:17.033 --> 00:00:21.500
 Empezamos por las máquinas.
 Este servidor lo escaneamos dos veces.
 
 7
-00:00:27.867 --> 00:00:32.133
+00:00:21.500 --> 00:00:24.433
 Sin cuenta, ve lo que vería
 cualquiera desde fuera.
 
 8
-00:00:32.133 --> 00:00:37.333
+00:00:24.433 --> 00:00:28.467
 El resto lo deduce, así que a veces
 avisa de fallos que no hay.
 
 9
-00:00:37.333 --> 00:00:42.133
+00:00:28.467 --> 00:00:32.533
 Con una cuenta preparada,
 lee lo instalado y los parches que faltan.
 
 10
-00:00:42.133 --> 00:00:44.400
+00:00:32.533 --> 00:00:34.833
 Encuentra más y acierta más.
 
 11
-00:00:44.400 --> 00:00:49.700
+00:00:34.833 --> 00:00:38.900
 Es como el médico que te mira desde la
 puerta y adivina, frente a la analítica.
 
 12
-00:00:49.700 --> 00:00:54.400
+00:00:38.900 --> 00:00:43.400
 Sin cuenta es non-credentialed,
 y con cuenta, credentialed.
 
 13
-00:00:54.400 --> 00:00:57.033
+00:00:43.400 --> 00:00:45.367
 Y también importa desde dónde mira.
 
 14
-00:00:57.033 --> 00:01:02.833
+00:00:45.367 --> 00:00:49.533
 Desde un servidor central, solo ve lo
 encendido y conectado, como la consulta,
 
 15
-00:01:02.833 --> 00:01:04.667
+00:00:49.533 --> 00:00:51.633
 que solo ve a quien va.
 
 16
-00:01:04.667 --> 00:01:08.867
+00:00:51.733 --> 00:00:55.200
 Un portátil que pasa semanas
 fuera lleva un agente de escaneo,
 
 17
-00:01:08.867 --> 00:01:12.233
+00:00:55.200 --> 00:00:58.567
 que informa desde donde
 esté, como un pulsómetro.
 
 18
-00:01:12.233 --> 00:01:15.967
+00:00:58.567 --> 00:01:02.133
 Eso es agent-based, y lo otro, agentless.
 
 19
-00:01:16.633 --> 00:01:19.700
+00:01:03.133 --> 00:01:06.433
 Te toca. El puerto va
 a abrir una web nueva.
 
 20
-00:01:19.700 --> 00:01:23.267
+00:01:06.433 --> 00:01:09.100
 Seguridad quiere saber
 qué enseña a cualquiera,
 
 21
-00:01:23.267 --> 00:01:28.833
+00:01:09.100 --> 00:01:13.667
 como lo vería una atacante sin cuenta.
 Alguien propone la cuenta de escaneo.
 
 22
-00:01:28.833 --> 00:01:31.900
+00:01:13.667 --> 00:01:16.433
 ¿Qué método responde mejor a lo que busca?
 
 23
-00:01:31.900 --> 00:01:35.933
+00:01:16.433 --> 00:01:19.833
 Fíjate, «mejor» no es
 el que más encuentra.
 
 24
-00:01:35.133 --> 00:01:40.133
+00:01:19.400 --> 00:01:24.400
 A) Static analysis (SAST)
 B) Credentialed scan
 C) Agent-based scan
 D) Non-credentialed scan
 
 25
-00:01:40.300 --> 00:01:43.133
+00:01:24.633 --> 00:01:27.033
 Gana non-credentialed, que mira como ella.
 
 26
-00:01:43.133 --> 00:01:48.200
+00:01:27.033 --> 00:01:31.633
 Con cuenta encontrarías más, pero
 mezclarías lo de dentro, que ella no ve.
 
 27
-00:01:48.200 --> 00:01:54.700
+00:01:31.633 --> 00:01:36.200
 O sea, que para saber qué se ve
 desde la puerta, sobra la analítica.
 
 28
-00:01:55.867 --> 00:01:57.600
+00:01:37.633 --> 00:01:39.700
 Pasamos a las aplicaciones.
 
 29
-00:01:57.600 --> 00:02:02.567
+00:01:39.700 --> 00:01:44.167
 Antes de estrenar una propia, una
 herramienta lee su código sin ejecutarlo.
 
 30
-00:02:02.567 --> 00:02:04.900
+00:01:44.167 --> 00:01:46.133
 Pilla una contraseña escrita dentro.
 
 31
-00:02:04.900 --> 00:02:09.667
+00:01:46.133 --> 00:01:50.967
 Se llama static analysis, SAST,
 y llega pronto, pero necesita el código.
 
 32
-00:02:09.667 --> 00:02:11.733
+00:01:50.967 --> 00:01:52.533
 Con la aplicación en marcha,
 
 33
-00:02:11.733 --> 00:02:16.900
+00:01:52.533 --> 00:01:56.100
 otra herramienta le hace peticiones
 y mira qué responde, sin el código.
 
 34
-00:02:16.900 --> 00:02:21.567
+00:01:56.100 --> 00:02:00.600
 Así ve que la sesión no caduca.
 Eso es dynamic analysis, DAST.
 
 35
-00:02:21.567 --> 00:02:24.467
+00:02:00.600 --> 00:02:02.800
 Y si sale un fallo en una pieza ajena,
 
 36
-00:02:24.467 --> 00:02:30.267
+00:02:02.800 --> 00:02:06.500
 la lista de componentes de cada
 aplicación te dice cuáles la llevan.
 
 37
-00:02:30.267 --> 00:02:35.367
-Esa lista es el SBOM, y vigilar
+00:02:06.500 --> 00:02:11.267
+Esa es la lista SBOM, y vigilar
 esas piezas es package monitoring.
 
 38
-00:02:35.367 --> 00:02:38.367
+00:02:11.267 --> 00:02:13.467
 Como en una casa, miras los planos antes
 
 39
-00:02:38.367 --> 00:02:43.067
+00:02:13.467 --> 00:02:17.200
 de construir y abres
 los grifos cuando está hecha.
 
 40
-00:02:43.833 --> 00:02:48.233
+00:02:18.267 --> 00:02:21.567
 Una web del puerto, con su código
 en casa, ya está publicada.
 
 41
-00:02:48.233 --> 00:02:50.867
+00:02:21.567 --> 00:02:23.700
 Si le pides una página que no existe,
 
 42
-00:02:50.867 --> 00:02:54.467
+00:02:23.700 --> 00:02:26.100
 el error enseña detalles
 internos del servidor.
 
 43
-00:02:54.467 --> 00:02:58.933
+00:02:26.100 --> 00:02:29.700
 Y no es cosa del código, sino
 de cómo se configuró el servidor.
 
 44
-00:02:58.933 --> 00:03:02.367
+00:02:29.700 --> 00:02:32.067
 ¿Con qué técnica
 es más probable encontrarlo?
 
 45
-00:03:02.367 --> 00:03:07.133
+00:02:32.067 --> 00:02:35.733
 Ojo con «más probable»,
 que no significa «la única».
 
 46
-00:03:06.333 --> 00:03:11.333
+00:02:35.300 --> 00:02:40.300
 A) Static analysis (SAST)
 B) Package monitoring
 C) Dynamic analysis (DAST)
 D) OSINT
 
 47
-00:03:11.500 --> 00:03:15.333
+00:02:40.467 --> 00:02:43.767
 Es dynamic analysis, DAST,
 que la prueba en marcha.
 
 48
-00:03:15.333 --> 00:03:18.733
+00:02:43.767 --> 00:02:46.300
 El código lo tienes,
 pero el fallo no está ahí.
 
 49
-00:03:18.733 --> 00:03:24.000
+00:02:46.300 --> 00:02:50.567
 Los planos pueden estar perfectos
 y el grifo, mal montado.
 
 50
-00:03:25.167 --> 00:03:28.100
+00:02:52.000 --> 00:02:54.400
 Hasta aquí, todo mira dentro de casa.
 
 51
-00:03:28.100 --> 00:03:32.667
+00:02:54.400 --> 00:02:58.100
 Pero hay cosas que pasan fuera,
 y te las cuentan otros.
 
 52
-00:03:32.667 --> 00:03:34.267
+00:02:58.100 --> 00:02:59.433
 Piensa en una tienda.
 
 53
-00:03:34.267 --> 00:03:39.433
+00:02:59.433 --> 00:03:02.433
 Lo publicado es como el periódico,
 gratis pero hay que leerlo entero,
 
 54
-00:03:39.433 --> 00:03:40.967
+00:03:02.433 --> 00:03:04.500
 y se llama OSINT.
 
 55
-00:03:40.967 --> 00:03:46.467
+00:03:04.500 --> 00:03:08.100
 Si pagas, otro lo lee por ti
 y añade lo que sabe él.
 
 56
-00:03:46.467 --> 00:03:52.267
+00:03:08.100 --> 00:03:12.133
 Las tiendas de la calle se avisan
 del billete falso que les intentan colar,
 
 57
-00:03:52.267 --> 00:03:55.167
+00:03:12.133 --> 00:03:14.167
 y eso no sale en ningún periódico.
 
 58
-00:03:55.167 --> 00:03:59.067
+00:03:14.167 --> 00:03:17.567
 Entre organizaciones
 de un sector, eso es un ISAC.
 
 59
-00:03:59.067 --> 00:04:04.533
+00:03:17.567 --> 00:03:21.033
 Y el dark web monitoring busca
 tus credenciales o tus datos donde
 
 60
-00:04:04.533 --> 00:04:10.367
+00:03:21.033 --> 00:03:25.667
 se vende lo robado.
 Es ir al mercadillo a ver si está lo tuyo.
 
 61
-00:04:11.133 --> 00:04:11.933
+00:03:26.667 --> 00:03:28.000
 La última.
 
 62
-00:04:11.933 --> 00:04:17.100
+00:03:28.000 --> 00:03:31.733
 Dos puertos de la misma costa sufren
 el mismo ataque y sacan una lista
 
 63
-00:04:17.100 --> 00:04:20.167
+00:03:31.733 --> 00:03:34.000
 de direcciones y ficheros sospechosos.
 
 64
-00:04:20.167 --> 00:04:25.767
+00:03:34.000 --> 00:03:38.767
 No la publican, la comparten solo
 en un grupo del sector que se pasa avisos.
 
 65
-00:04:25.767 --> 00:04:29.633
+00:03:38.767 --> 00:03:41.700
 ¿Qué fuente se la haría llegar a Halden?
 
 66
-00:04:28.833 --> 00:04:33.833
+00:03:41.167 --> 00:03:46.167
 A) Information-sharing organization (ISAC)
 B) OSINT
 C) Dark web monitoring
 D) Proprietary threat feed
 
 67
-00:04:34.000 --> 00:04:36.300
+00:03:46.333 --> 00:03:48.567
 El ISAC, el grupo del sector.
 
 68
-00:04:36.300 --> 00:04:40.800
+00:03:48.567 --> 00:03:51.733
 El dark web monitoring despista
 porque suena a cerrado,
 
 69
-00:04:40.800 --> 00:04:43.900
+00:03:51.733 --> 00:03:54.567
 pero ahí se busca lo tuyo a la venta.
 
 70
-00:04:43.900 --> 00:04:51.200
+00:03:54.567 --> 00:04:00.200
 Aquí son víctimas que se avisan. O sea,
 el grupo de las tiendas, no el mercadillo.
 
 71
-00:04:52.067 --> 00:04:53.933
+00:04:01.333 --> 00:04:03.367
 Te llevas tres reglas.
 
 72
-00:04:53.933 --> 00:04:59.533
+00:04:03.367 --> 00:04:07.333
 Con cuenta se lee lo de dentro,
 y sin cuenta, lo que ve cualquiera.
 
 73
-00:04:59.533 --> 00:05:04.200
+00:04:07.333 --> 00:04:10.967
 SAST necesita el código, y DAST,
 solo la aplicación en marcha.
 
 74
-00:05:04.200 --> 00:05:08.900
+00:04:10.967 --> 00:04:14.333
 Y lo que pasa fuera de casa
 te lo cuentan otros.
 
 75
-00:05:08.900 --> 00:05:13.933
+00:04:14.333 --> 00:04:18.033
 Antes de elegir, pregúntate qué
 puede ver ese método y qué no.
 
 76
-00:05:13.933 --> 00:05:19.000
+00:04:18.033 --> 00:04:21.467
 Ahora te toca a ti,
 con las preguntas de la lección.
