@@ -22,10 +22,10 @@ const D = { x: 20, y: 404, w: 320, h: 124 };
 const TERM_X = 420;
 const TERM_Y = 16;
 const SUB_Y = 104;
-const Q = { x: 430, y: 252, w: 720, h: 360 };
+const Q = { x: 430, y: 252, w: 720, h: 368 };
 const HEAD_H = 60;
 const ROW_Y = HEAD_H + 14;
-const ROW_H = 118;
+const ROW_H = 124;
 const OLD_ROWS = 3;
 // ---- Right column: the hospital bell.
 const RIGHT_X = 1190;
@@ -274,10 +274,10 @@ export function S04Pasos(props: SceneProps) {
                   {QUEUE.row}
                   <span style={{ marginLeft: 'auto', fontFamily: FONT.mono, fontSize: 32, fontWeight: 700, color: C.cyanSoft }}>{QUEUE.mark}</span>
                 </div>
-                <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 14, height: 44 }}>
+                <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 14, height: 48 }}>
                   {unassignedIn > 0.01 && high < 0.5 ? (
                     <div style={{ opacity: unassignedIn }}>
-                      <Pill text={QUEUE.unassigned} icon="user" tone={C.amber} size={30} height={44} on={0.5} />
+                      <Pill text={QUEUE.unassigned} icon="user" tone={C.amber} size={32} height={48} on={0.5} />
                     </div>
                   ) : null}
                   {high > 0.01 ? (

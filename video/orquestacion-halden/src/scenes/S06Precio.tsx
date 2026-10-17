@@ -49,7 +49,7 @@ const AVW_H = (AVW * AVENUE.h) / AVENUE.w;
  * avisa a nadie · no se corta nada». On `central-taken` the avenue on the right: someone inside the central (rose),
  * every light green; in the box the steps come back and «cuenta de la plataforma» sends arrows to every tool it touches
  * (icons only: no permissions, vault or keys). On `spof` each face gets its name: «Single point of failure» under the
- * switched-off central, «objetivo privilegiado» under the taken one. On `two-cards` two cards: the forty-light avenue,
+ * switched-off central (exam term, violet), «objetivo privilegiado» under the taken one (a Spanish label, neutral). On `two-cards` two cards: the forty-light avenue,
  * well kept — on «atasca» a knot of reds, on «entenderla» a sweep across all of it — named «Complexity»; the one
  * street light with its tag «lo programó alguien que ya no trabaja aquí · sin planos · sin dueño», named «Technical
  * debt». On `support`, «Ongoing supportability» with «¿quién lo va a mantener?».
@@ -232,7 +232,7 @@ export function S06Precio(props: SceneProps) {
             ) : null}
             {privIn > 0.01 ? (
               <div style={{ position: 'absolute', left: RIGHT_X, top: TERM_Y, opacity: privIn, transform: `translateY(${(1 - privIn) * 12}px)` }}>
-                <TermPill text={PRIVILEGED} on={privIn} size={34} />
+                <Pill text={PRIVILEGED} icon="target" tone={C.cyan} size={34} height={58} on={0.6 * privIn} />
               </div>
             ) : null}
             {downIn > 0.01 ? (

@@ -28,6 +28,9 @@ export function avenueLight(i: number, n: number): { x: number; y: number } {
 
 const wrap = (x: number, len: number) => ((x % len) + len) % len;
 
+/** Cars fade out at the drawing's edges instead of driving past its frame. */
+const edgeFade = (x: number) => clamp01(Math.min(x - 4, AVENUE.w - CAR_W - 4 - x) / 16);
+
 /** The ambulance's left edge (avenue units) at `t` 0–1: it stays inside the drawing. */
 export const ambulanceX = (t: number) => 6 + t * (AVENUE.w - 52);
 
@@ -131,8 +134,8 @@ export function Avenue({
       {/* cars */}
       {cars
         ? [
-            ...laneA.map((x, k) => <rect key={`a${k}`} x={x} y={LANE_A - CAR_H / 2} width={CAR_W} height={CAR_H} rx={4} fill={alpha(C.text, 0.55)} />),
-            ...laneB.map((x, k) => <rect key={`b${k}`} x={x} y={LANE_B - CAR_H / 2} width={CAR_W} height={CAR_H} rx={4} fill={alpha(C.text, 0.4)} />),
+            ...laneA.map((x, k) => <rect key={`a${k}`} x={x} y={LANE_A - CAR_H / 2} width={CAR_W} height={CAR_H} rx={4} fill={alpha(C.text, 0.55)} opacity={edgeFade(x)} />),
+            ...laneB.map((x, k) => <rect key={`b${k}`} x={x} y={LANE_B - CAR_H / 2} width={CAR_W} height={CAR_H} rx={4} fill={alpha(C.text, 0.4)} opacity={edgeFade(x)} />),
           ]
         : null}
 

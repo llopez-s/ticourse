@@ -59,7 +59,7 @@ export const RULES: readonly RecapRule[] = [
 export const PHRASE = {
   lead: 'Antes de contestar, pregúntate',
   flow: 'si es una tarea o un flujo,',
-  step: 'y qué hace ese paso en ese momento',
+  step: 'y qué hace ese paso',
 } as const;
 
 /** The one next step (the voice says «Ahora te toca a ti. A por las preguntas de la lección»). */
