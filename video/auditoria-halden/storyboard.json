@@ -33,7 +33,7 @@
       "title": "Decirlo no es demostrarlo",
       "targetSec": 20,
       "wordBudget": 54,
-      "goal": "Sello «Autoridad Portuaria de Halden · propuesta · sin fecha». Una mesa de consejo vista desde arriba, con un documento en el centro y un hueco para la firma (`table`). Tres frases en llano, una tras otra (`three`): «lo declaramos» · «lo comprobamos» · «lo probamos». La primera frase presenta el puerto y el problema (la dirección tiene que firmar ante la autoridad marítima, antes de su revisión anual, que sus controles funcionan); al acabarla, título «Cumplir o aguantar» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «quién lo firma · quién lo comprueba · cómo se prueba». Plaquita «SY0-701 · 5.5»",
+      "goal": "Sello «Autoridad Portuaria de Halden · propuesta · sin fecha». Una mesa de consejo vista desde arriba, con un documento en el centro y un hueco para la firma (`table`). Tres frases en llano, una tras otra (`three`): «lo declaramos» · «lo comprobamos» · «lo probamos». La primera frase presenta el puerto y el problema (la dirección tiene que firmar que sus controles funcionan, y el consejo quiere saber antes si cumplen y si aguantan); el título «Cumplir o aguantar» entra mientras la voz dice «si cumplen, y si aguantan» (`title`, hacia los 8 s, siempre antes de los 12) y, detrás, la promesa en tres chips (`promise`): «quién lo firma · quién lo comprueba · cómo se prueba». La voz cierra con ante quién y cuándo (la autoridad marítima, antes de su revisión anual) y «decirlo no es demostrarlo». Plaquita «SY0-701 · 5.5»",
       "requiredCues": [
         "table",
         "three",
@@ -63,7 +63,7 @@
       "title": "Quién lo comprueba",
       "targetSec": 40,
       "wordBudget": 108,
-      "goal": "Cuatro filas, de menos a más peso fuera. 1. La checklist que rellena Sistemas sobre su propia área (`checklist`) → SELF-ASSESSMENT, «barato · sin independencia» (`self`). 2. Auditoría interna, separada de Sistemas (`internal`) → INTERNAL AUDIT, con una flecha que no va a Sistemas sino a un comité del consejo → AUDIT COMMITTEE, «el comité no audita: protege a quien audita» (`committee`). 3. Una firma de fuera, «sin interés en el resultado» → INDEPENDENT THIRD-PARTY AUDIT (`third-party`). 4. La autoridad marítima, «no la contratas · el alcance lo fija la ley · puede sancionar» → REGULATORY EXAMINATION (`regulator`). El ascensor de la comunidad, pequeño y rotulado «imagen · no es del puerto» (`lift`), con sus cuatro revisiones: la hoja que rellena la comunidad, la revisión del administrador de la finca que da cuenta a la junta, el organismo de control que contrata la comunidad y firma su informe, e Industria, que no la llamas tú y puede abrir un expediente y multar a la comunidad. Sin «escalera», «portal», «llave» ni «código». La regla (`rule`): para convencer a alguien de fuera, cuenta quién mira, no cuánto mira. Tarjeta de examen 2 al acabar la regla",
+      "goal": "Cuatro filas, de menos a más peso fuera. 1. La checklist que rellena Sistemas sobre su propia área (`checklist`) → SELF-ASSESSMENT, «barato · sin independencia» (`self`). 2. Auditoría interna, separada de Sistemas (`internal`) → INTERNAL AUDIT, con una flecha que no va a Sistemas sino a un comité del consejo → AUDIT COMMITTEE, «el comité no audita: protege a quien audita» (`committee`). 3. Una empresa de fuera, «sin interés en el resultado» → INDEPENDENT THIRD-PARTY AUDIT (`third-party`). 4. La autoridad marítima, «no la contratas · el alcance lo fija la ley · puede sancionar» → REGULATORY EXAMINATION (`regulator`). El ascensor de la comunidad, pequeño y rotulado «imagen · no es del puerto» (`lift`), con sus cuatro revisiones: la hoja que rellena la comunidad, la revisión del administrador de la finca que da cuenta a la junta, el organismo de control que contrata la comunidad y firma su informe, e Industria, que no la llamas tú y puede abrir un expediente y multar a la comunidad. Sin «escalera», «portal», «llave» ni «código». La regla (`rule`): para convencer a alguien de fuera, importa quién mira, no cuánto mira. Tarjeta de examen 2 al acabar la regla",
       "requiredCues": [
         "checklist",
         "self",
@@ -81,7 +81,7 @@
       "title": "La visita",
       "targetSec": 38,
       "wordBudget": 81,
-      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo», plaquita «EXAMEN · SY0-701 · 5.5»: el panel tapa la escena hasta el final, así que el fondo se queda quieto (la silueta de una central eléctrica, sin nombre ni país). Sin calificador. Cuenta atrás de 5 s con «pausa si quieres»; en `ok-1` sale la correcta (Regulatory examination), en `trap-1` la trampa (Independent third-party audit), las otras dos atenuadas. En la resolución vuelve el ascensor en una línea (`lift-back`): es Industria con su expediente, no el organismo que contrata la comunidad. Sin tarjeta de examen",
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo», plaquita «EXAMEN · SY0-701 · 5.5»: el panel tapa la escena hasta el final, así que el fondo se queda quieto (la silueta de una central eléctrica, sin nombre ni país). Sin calificador. Cuenta atrás de 5 s con «pausa si quieres»; en `ok-1` sale la correcta (Regulatory examination), en `trap-1` la trampa (Independent third-party audit), las otras dos atenuadas. En la resolución vuelve el ascensor en una línea (`lift-back`): es Industria con su expediente, no la revisión que contrata la comunidad. Sin tarjeta de examen",
       "requiredCues": [
         "q1",
         "ok-1",
@@ -95,7 +95,7 @@
       "title": "Cumplir no es aguantar",
       "targetSec": 44,
       "wordBudget": 103,
-      "goal": "El consejo, con la auditoría de la firma independiente ya encargada (sin firma con nombre, sin resultado), pregunta: «¿y si alguien intenta entrar?» (`board-asks`). La voz presenta a PAPER GOVERNOR (`intercept`): su sello de papel, sin retrato, con «PAPER GOVERNOR · sección 5» y «vive en los huecos de tu gobernanza». Mensaje interceptado, con voz (Laura, megafonía): «Se acuerda: si pasamos la auditoría, no entra nadie. Queda en acta.» La voz lo contesta (`answer`). Dos columnas: AUDITORÍA «¿cumplimos el estándar? · evidencias y muestreo» (`audit`) y PENETRATION TEST «¿pueden romperlo? · intentándolo, con permiso» (`pentest`). El puente nuevo, pequeño y rotulado «imagen · no es del puerto» (`bridge`): el certificado y la prueba de carga, con camiones llenos parados encima; sin «levadizo». La frase de la lección (`neither`): aprobar una no dice nada de la otra. Tarjeta de examen 3",
+      "goal": "El consejo, con la auditoría de la empresa independiente ya encargada (sin empresa con nombre, sin resultado), pregunta: «¿y si alguien intenta entrar?» (`board-asks`). La voz presenta a PAPER GOVERNOR (`intercept`): su sello de papel, sin retrato, con «PAPER GOVERNOR · sección 5» y «vive en los huecos de tu gobernanza». Mensaje interceptado, con voz (Laura, megafonía): «Se acuerda: si se pasa la auditoría, no entra nadie. Queda en acta.» La voz lo contesta (`answer`). Dos columnas: AUDITORÍA «¿cumplimos el estándar? · evidencias y muestreo» (`audit`) y PENETRATION TEST «¿pueden romperlo? · intentándolo, con permiso» (`pentest`). El puente nuevo, pequeño y rotulado «imagen · no es del puerto» (`bridge`): el certificado y la prueba de carga, con camiones llenos parados encima; sin «levadizo». La frase de la lección (`neither`): aprobar una no dice nada de la otra. Tarjeta de examen 3",
       "requiredCues": [
         "board-asks",
         "intercept",
@@ -112,7 +112,7 @@
       "title": "El informe del pentest",
       "targetSec": 40,
       "wordBudget": 86,
-      "goal": "Pregunta tipo examen 2 (`q2`), rótulo «pregunta tipo examen · ejemplo»; fondo quieto (una nave de logística en esquema, sin nombre). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: la que encaja con este caso, aunque otra suene bien» (`best`), que la voz explica antes de la cuenta atrás con la frase de V28. En `ok-2` la correcta (Independent third-party audit), en `trap-2` la trampa (Penetration test report). En la resolución vuelve el puente en una línea (`bridge-back`): la prueba de carga no dice qué acero se usó. Tarjeta de examen 4 después de la trampa",
+      "goal": "Pregunta tipo examen 2 (`q2`), rótulo «pregunta tipo examen · ejemplo»; fondo quieto (una nave de logística en esquema, sin nombre). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: la que encaja con este caso, aunque otra suene bien» (`best`), que la voz explica antes de la cuenta atrás con una frase propia (no la de V28: `_revision.md` G-4). En `ok-2` la correcta (Independent third-party audit), en `trap-2` la trampa (Penetration test report). En la resolución vuelve el puente en una línea (`bridge-back`): la prueba de carga no dice qué acero se usó. Tarjeta de examen 4 después de la trampa",
       "requiredCues": [
         "q2",
         "best",
@@ -140,7 +140,7 @@
     {
       "id": "s08-p3",
       "chapter": 3,
-      "title": "Un ejercicio sin avisar",
+      "title": "Un ejercicio en el banco",
       "targetSec": 40,
       "wordBudget": 86,
       "goal": "Pregunta tipo examen 3 (`q3`), rótulo «pregunta tipo examen · ejemplo», con «MEJOR» resaltado (ya explicado en s06; sin glosa en voz ni línea debajo). Fondo quieto: una pantalla de centro de operaciones en esquema, sin texto legible, sin correo ni adjunto. En `ok-3` la correcta (Defensive (blue team)), en `trap-3` la trampa (Offensive (red team)). En la resolución, los cuatro modos de s07 en pequeño con BLUE encendido y la línea «nadie persigue nada: se mide al SOC» (`blue-back`). Tarjeta de examen 6 después de la trampa",
@@ -219,7 +219,7 @@
       "title": "Para el examen",
       "targetSec": 26,
       "wordBudget": 70,
-      "goal": "Tres reglas, cada una con su icono (los dos montones de firmas y el ascensor · el puente · la sala de escape y el registro vacío) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Una firma declara: la attestation compromete a la organización con un hecho y el acknowledgement, a una persona con una norma» · «Para convencer a alguien de fuera, cuenta quién comprueba: independiente, o el regulador. Y aprobar la auditoría no dice que aguantes, ni aguantar, que cumplas» · «En la prueba, mira qué se mide, cuánto se le cuenta a quien prueba y si se ha tocado al objetivo». La frase para el examen (`phrase`): «Una firma declara, una auditoría comprueba que cumples y un pentest, que aguantas». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "goal": "Tres reglas, cada una con su icono (los dos montones de firmas y el ascensor · el puente · la sala de escape y el registro vacío) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Una firma declara: la attestation compromete a la organización con un hecho y el acknowledgement, a una persona con una norma» · «Para convencer a alguien de fuera, importa quién comprueba: independiente, o el regulador. Y aprobar la auditoría no dice que aguantes, ni aguantar, que cumplas» · «En la prueba, mira qué se mide, cuánto se le cuenta a quien prueba y si se ha tocado al objetivo». La frase para el examen (`phrase`): «Una firma declara, una auditoría comprueba si cumples y un pentest, si aguantas». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
       "requiredCues": [
         "recap",
         "rule-1",

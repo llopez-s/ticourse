@@ -29,13 +29,19 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {table}La dirección del puerto de Halden debe firmar ante la autoridad marítima, antes de su revisión anual, {three}que sus controles funcionan.",
+      "text": "<curious> {table}La dirección del puerto de Halden debe firmar que sus controles funcionan. {three}Y el consejo quiere saber antes {title}si cumplen, y si aguantan.",
       "pauseAfterMs": 300
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Cumplir o aguantar. Porque el consejo quiere saber antes si el puerto cumple, y si aguanta. {promise}Vas a ver quién lo firma, quién lo comprueba y cómo se prueba.",
+      "text": "<confident> {promise}Vas a ver quién lo firma, quién lo comprueba y cómo se prueba.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<serious> Esa firma va a la autoridad marítima, antes de su revisión anual. Y decirlo no es demostrarlo.",
       "pauseAfterMs": 400
     },
     {
@@ -71,11 +77,11 @@
     {
       "id": "s02-06",
       "scene": "s02-firmas",
-      "text": "<thoughtful> {not-a-test}Pero fíjate, ninguna de las dos firmas comprueba nada. Si alguien pregunta si funciona de verdad, la respuesta no es otra firma.",
+      "text": "<thoughtful> {not-a-test}Pero fíjate, ninguna de estas dos firmas comprueba nada. Si alguien pregunta si funciona de verdad, la respuesta no es otra firma.",
       "pauseAfterMs": 600,
       "exam": {
         "objective": "5.5",
-        "text": "Attestation: un hecho firmado, no una prueba",
+        "text": "Attestation: declara, no pone a prueba",
         "at": "not-a-test",
         "holdSec": 5
       }
@@ -95,13 +101,13 @@
     {
       "id": "s03-03",
       "scene": "s03-quien",
-      "text": "<focused> {committee}Informa al audit committee del consejo, que no audita, pero protege a quien audita.",
+      "text": "<focused> {committee}Responde ante un comité del consejo, que no audita, pero la protege. Es el audit committee.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-04",
       "scene": "s03-quien",
-      "text": "<confident> {third-party}Una firma de fuera, sin interés en el resultado, hace un independent third-party audit.",
+      "text": "<confident> {third-party}Una empresa de fuera, sin interés en el resultado, hace un independent third-party audit.",
       "pauseAfterMs": 300
     },
     {
@@ -113,13 +119,13 @@
     {
       "id": "s03-06",
       "scene": "s03-quien",
-      "text": "<warm> {lift}Como en el ascensor de tu comunidad. Al organismo de control lo contratáis, a Industria no.",
+      "text": "<warm> {lift}Como con el ascensor de casa. La revisión la contrata la comunidad. A Industria, no.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-07",
       "scene": "s03-quien",
-      "text": "<firm> {rule}O sea, que para convencer a alguien de fuera, cuenta quién mira, no cuánto mira.",
+      "text": "<firm> {rule}O sea, que para convencer a alguien de fuera, importa quién mira, no cuánto mira.",
       "pauseAfterMs": 600,
       "exam": {
         "objective": "5.5",
@@ -161,7 +167,7 @@
     {
       "id": "s04-03",
       "scene": "s04-p1",
-      "text": "<warm> {lift-back}O sea, que es Industria con su expediente, no el organismo que contrata la comunidad.",
+      "text": "<satisfied> {lift-back}Vamos, que es Industria con su expediente, no la revisión que contrata la comunidad.",
       "pauseAfterMs": 1000
     },
     {
@@ -182,14 +188,14 @@
       "text": "<firm> {answer}Pues no. Una auditoría dice si cumples la norma. Si alguien puede entrar, eso no lo mira.",
       "pauseAfterMs": 400,
       "intercept": {
-        "text": "Se acuerda: si pasamos la auditoría, no entra nadie. Queda en acta.",
+        "text": "Se acuerda: si se pasa la auditoría, no entra nadie. Queda en acta.",
         "holdMs": 3500
       }
     },
     {
       "id": "s05-04",
       "scene": "s05-aguantar",
-      "text": "<clear> {audit}La auditoría comprueba que cumples el estándar, con evidencias y muestras.",
+      "text": "<clear> {audit}La auditoría va control a control, con evidencias y muestras.",
       "pauseAfterMs": 250
     },
     {
@@ -201,7 +207,7 @@
     {
       "id": "s05-06",
       "scene": "s05-aguantar",
-      "text": "<warm> {bridge}Es como un puente nuevo. El certificado dice que se hizo según la norma, y la prueba de carga, cuánto aguanta.",
+      "text": "<warm> {bridge}Es como un puente nuevo. El certificado dice que se hizo según la norma, y la prueba de carga, si aguanta.",
       "pauseAfterMs": 300,
       "exam": {
         "objective": "5.5",
@@ -219,12 +225,12 @@
     {
       "id": "s06-01",
       "scene": "s06-p2",
-      "text": "<intrigued> {q2}Vamos con otra. Un cliente grande pide a una empresa de logística que demuestre que cumple el estándar de seguridad del sector. La empresa le manda el informe de su último penetration test. En dos semanas, nadie consiguió entrar. ¿Qué documento responde mejor a lo que pide el cliente? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
+      "text": "<intrigued> {q2}Vamos con otra. Un cliente grande pide a una empresa de logística que demuestre que cumple el estándar de seguridad del sector. La empresa le manda el informe de su último penetration test. En dos semanas, nadie consiguió entrar. ¿Qué responde mejor a lo que pide el cliente? {best}Ese «mejor» tiene truco. Más de una vale algo, pero solo una encaja del todo con este caso.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.5",
         "scenario": "Un cliente pide a una empresa que demuestre que cumple el estándar del sector. La empresa le manda su último pentest: en dos semanas, nadie entró.",
-        "q": "¿Qué documento responde MEJOR a lo que pide el cliente?",
+        "q": "¿Qué responde MEJOR a lo que pide el cliente?",
         "options": [
           "Signed self-assessment",
           "Independent third-party audit",
@@ -261,7 +267,7 @@
     {
       "id": "s07-01",
       "scene": "s07-modos",
-      "text": "<engaging> {roe}Pasamos a cómo se prueba. Antes de tocar nada, se firma qué se puede probar, cuándo y cómo.",
+      "text": "<engaging> {roe}Pasamos a cómo se prueba. Antes de tocar nada, se firma qué se puede probar, cómo y en qué ventana de fechas.",
       "pauseAfterMs": 300
     },
     {
@@ -279,13 +285,13 @@
     {
       "id": "s07-04",
       "scene": "s07-modos",
-      "text": "<focused> {red}Si un equipo persigue un objetivo sin avisar a nadie, es offensive, el red team.",
+      "text": "<focused> {red}Otra es perseguir un objetivo sin avisar a quien defiende. Eso es offensive, el red team.",
       "pauseAfterMs": 250
     },
     {
       "id": "s07-05",
       "scene": "s07-modos",
-      "text": "<thoughtful> {blue}Si lo que se mide es si el SOC lo ve, lo entiende y lo contiene, es defensive, el blue team.",
+      "text": "<thoughtful> {blue}A veces se mide a quien defiende, a ver si el SOC lo ve, lo entiende y lo contiene. Es defensive, el blue team.",
       "pauseAfterMs": 250
     },
     {
@@ -309,11 +315,11 @@
     {
       "id": "s08-01",
       "scene": "s08-p3",
-      "text": "<curious> {q3}Te toca otra vez. Un banco reproduce en su red, una a una, técnicas de ataque ya conocidas. Nadie intenta llegar a ningún sitio. Solo se mide cuánto tarda su centro de operaciones en verlas, entenderlas y contenerlas. ¿Qué tipo de prueba describe mejor el ejercicio?",
+      "text": "<curious> {q3}Te toca otra vez. Un banco reproduce en su red técnicas de ataque ya conocidas. Nadie intenta llegar a ningún sitio, y nadie se sienta con su centro de operaciones a revisarlas. Solo se mide cuánto tarda ese centro en verlas, entenderlas y contenerlas. ¿Qué tipo de prueba describe mejor el ejercicio?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.5",
-        "scenario": "Un banco reproduce en su red técnicas de ataque conocidas, sin objetivo que alcanzar. Solo mide cuánto tarda su SOC en verlas y contenerlas.",
+        "scenario": "Un banco reproduce técnicas de ataque conocidas, sin objetivo y sin revisarlas con su SOC. Solo mide cuánto tarda el SOC en verlas y contenerlas.",
         "q": "¿Qué tipo de prueba describe MEJOR el ejercicio?",
         "options": [
           "Physical",
@@ -333,13 +339,13 @@
     {
       "id": "s08-02",
       "scene": "s08-p3",
-      "text": "<firm> {ok-3}Es defensive, el blue team, porque lo que se mide es la detección. {trap-3}Las técnicas de ataque empujan hacia el red team, pero nadie persigue nada.",
+      "text": "<firm> {ok-3}Se mide la detección, así que es defensive, el blue team. {trap-3}Con tanta técnica de ataque tienta el red team, pero nadie persigue nada.",
       "pauseAfterMs": 300
     },
     {
       "id": "s08-03",
       "scene": "s08-p3",
-      "text": "<warm> {blue-back}O sea, que aquí no se mide si entran. Se mide al SOC.",
+      "text": "<casual> {blue-back}Vamos, que aquí no se mide si entran. Se mide al SOC.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.5",
@@ -381,7 +387,7 @@
     {
       "id": "s09-06",
       "scene": "s09-contar",
-      "text": "<confident> {proposal}El puerto propone la aplicación nueva con todo, y lo que se ve desde fuera, sin nada.",
+      "text": "<confident> {proposal}Para la aplicación nueva, el puerto propone dárselo todo. Y para lo que se ve desde fuera, nada.",
       "pauseAfterMs": 600
     },
     {
@@ -391,7 +397,7 @@
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.5",
-        "scenario": "Una web de reservas quiere saber qué podría hacer un cliente. Al equipo de pruebas solo le da una cuenta de cliente: ni planos, ni código, ni acceso total.",
+        "scenario": "Una web de reservas quiere saber qué podría hacer un cliente. Al equipo de pruebas solo le da una cuenta de cliente: ni planos, ni código, ni más permisos.",
         "q": "¿Qué nivel de conocimiento del entorno encaja MEJOR?",
         "options": [
           "Partially known environment",
@@ -402,7 +408,7 @@
         "answer": 0,
         "trap": 2,
         "why": "Recibe una parte de la información, la de un usuario normal, y nada más",
-        "trapWhy": "Le dan una cuenta, pero known es tenerlo todo: planos, código y acceso total",
+        "trapWhy": "Le dan una cuenta, pero known es recibirlo todo: planos, código, documentación",
         "countdownMs": 5000,
         "revealAt": "ok-4",
         "trapAt": "trap-4"
@@ -411,13 +417,13 @@
     {
       "id": "s10-02",
       "scene": "s10-p4",
-      "text": "<firm> {ok-4}Es partially known, porque solo recibe lo que tendría cualquier cliente. {trap-4}La cuenta empuja hacia known, pero known es tenerlo todo.",
+      "text": "<firm> {ok-4}Partially known. Solo recibe lo que tendría cualquier cliente. {trap-4}Con una cuenta parece known, pero known es recibirlo todo.",
       "pauseAfterMs": 300
     },
     {
       "id": "s10-03",
       "scene": "s10-p4",
-      "text": "<warm> {room-back}O sea, que le das una pista para empezar, no el plano.",
+      "text": "<reassuring> {room-back}Total, que le das una pista para empezar, no el plano.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.5",
@@ -459,7 +465,7 @@
     {
       "id": "s12-01",
       "scene": "s12-p5",
-      "text": "<curious> {q5}La última. Ya dentro de la ventana pactada, un equipo de pruebas busca a una empresa en un buscador de aparatos conectados a internet. Ve sus equipos, con sus puertos abiertos y sus versiones. En los registros de la empresa no aparece nada. ¿Qué tipo de actividad es?",
+      "text": "<curious> {q5}La última. Ya dentro de la ventana pactada, un equipo de pruebas mira en un buscador de aparatos conectados a internet. Ahí ve las máquinas de una empresa, con sus puertos abiertos y sus versiones. En los registros de la empresa no aparece nada. ¿Qué tipo de actividad es?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.5",
@@ -474,7 +480,7 @@
         "answer": 2,
         "trap": 3,
         "why": "Consulta a un tercero que ya lo recogió: no toca a la empresa ni deja rastro",
-        "trapWhy": "Ve puertos y versiones, como en un escaneo, pero no ha tocado ni un equipo",
+        "trapWhy": "Ve puertos y versiones, como en un escaneo, pero no ha tocado ni una máquina",
         "countdownMs": 5000,
         "revealAt": "ok-5",
         "trapAt": "trap-5"
@@ -483,13 +489,13 @@
     {
       "id": "s12-02",
       "scene": "s12-p5",
-      "text": "<confident> {ok-5}Es passive reconnaissance, porque consulta a un tercero que ya lo recogió. {trap-5}Puertos y versiones suenan a escaneo, pero nadie ha tocado ni un equipo.",
+      "text": "<confident> {ok-5}Es passive reconnaissance, porque consulta a un tercero que ya lo recogió. {trap-5}Puertos y versiones suenan a escaneo, pero quien prueba no ha tocado ni una máquina.",
       "pauseAfterMs": 300
     },
     {
       "id": "s12-03",
       "scene": "s12-p5",
-      "text": "<warm> {log-back}El registro no miente. Nadie ha llamado a la puerta.",
+      "text": "<mischievously> {log-back}El registro no miente. Nadie ha llamado a la puerta.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.5",
@@ -501,13 +507,13 @@
     {
       "id": "s13-01",
       "scene": "s13-cierre",
-      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}La attestation compromete a la organización con un hecho, pero no prueba nada.",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}La attestation compromete a la organización con un hecho, pero firmarlo no es ponerlo a prueba.",
       "pauseAfterMs": 250
     },
     {
       "id": "s13-02",
       "scene": "s13-cierre",
-      "text": "<clear> {rule-2}Para convencer a alguien de fuera, cuenta quién comprueba. Y cumplir no es aguantar.",
+      "text": "<clear> {rule-2}Para convencer a alguien de fuera, importa quién comprueba. Y cumplir no es aguantar.",
       "pauseAfterMs": 250
     },
     {
@@ -519,7 +525,7 @@
     {
       "id": "s13-04",
       "scene": "s13-cierre",
-      "text": "<engaging> {phrase}Una firma declara, una auditoría comprueba que cumples y un pentest, que aguantas. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "text": "<engaging> {phrase}Una firma declara, una auditoría comprueba si cumples y un pentest, si aguantas. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
       "pauseAfterMs": 250
     }
   ]
