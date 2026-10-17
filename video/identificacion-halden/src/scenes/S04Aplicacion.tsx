@@ -15,14 +15,13 @@ const W = STAGE.width;
 const GAP = 24;
 const PANEL_W = (W - 2 * GAP) / 3;
 const PANEL_Y = 80;
-const PANEL_H = 432;
+const PANEL_H = 470;
 const PAD = 24;
 const INNER_W = PANEL_W - 2 * PAD;
 const AREA_Y = 108;
 const FIND_Y = 232;
-const TERM_Y = 368;
-const HOUSE_Y = 528;
-const HOUSE_W = 150;
+const HOUSE_Y = 566;
+const HOUSE_W = 124;
 const HOUSE_KIND: CasaKind[] = ['planos', 'grifo', 'lista'];
 const panelX = (i: number) => i * (PANEL_W + GAP);
 
@@ -125,14 +124,14 @@ export function S04Aplicacion(props: SceneProps) {
                 const e = enter(frame, at, { distance: 12, axis: 'x' });
                 const strike = f.noise ? progress(frame, at + 14, 12) : 0;
                 return (
-                  <div key={f.text} style={{ marginBottom: 8, display: 'flex', alignItems: 'flex-start', gap: 10, ...e }}>
+                  <div key={f.text} style={{ marginBottom: 4, display: 'flex', alignItems: 'flex-start', gap: 10, ...e }}>
                     <Icon name={f.noise ? 'x' : 'alert'} size={30} color={f.noise ? C.faint : tone} style={{ flexShrink: 0, marginTop: 3 }} />
                     <span
                       style={{
                         position: 'relative',
-                        fontSize: 30,
+                        fontSize: 32,
                         fontWeight: 750,
-                        lineHeight: 1.18,
+                        lineHeight: 1.12,
                         color: f.noise ? C.muted : C.textStrong,
                       }}
                     >
@@ -143,14 +142,14 @@ export function S04Aplicacion(props: SceneProps) {
                 );
               })}
               {i === 2 ? <AppsRow frame={frame} at={panelAt[2] + 30} litAt={appsAt} /> : null}
-            </div>
 
-            {/* the English name, on its word */}
-            {frame >= termAt[i] - 2 ? (
-              <div style={{ position: 'absolute', left: PAD, top: TERM_Y, ...enter(frame, termAt[i], { distance: 12 }) }}>
-                <TermChip text={p.term} size={30} on={progress(frame, termAt[i], 12) * (1 - 0.4 * all)} />
-              </div>
-            ) : null}
+              {/* the English name, on its word, in flow under the findings */}
+              {frame >= termAt[i] - 2 ? (
+                <div style={{ marginTop: 10, ...enter(frame, termAt[i], { distance: 12 }) }}>
+                  <TermChip text={p.term} size={32} on={progress(frame, termAt[i], 12) * (1 - 0.4 * all)} />
+                </div>
+              ) : null}
+            </div>
           </div>
         );
       })}

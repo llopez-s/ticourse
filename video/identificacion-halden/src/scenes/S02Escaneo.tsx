@@ -20,7 +20,7 @@ const LEFT_X = 0;
 const RIGHT_X = W - CARD_W;
 const MID_X = CARD_W;
 const MID_W = W - 2 * CARD_W;
-const SERVER = { x: MID_X + (MID_W - 300) / 2, y: 30, w: 300, h: 210 } as const;
+const SERVER = { x: MID_X + 20, y: 30, w: MID_W - 40, h: 210 } as const;
 const MINI_W = 216;
 const MINI_GAP = 24;
 const MINI_Y = 290;
@@ -232,7 +232,7 @@ function ServerBox({ label }: { label: string }) {
       }}
     >
       <Icon name="server" size={110} color={C.sky} strokeWidth={1.6} />
-      <span style={{ fontSize: 30, fontWeight: 750, color: C.text, whiteSpace: 'nowrap' }}>{label}</span>
+      <span style={{ fontSize: 32, fontWeight: 750, color: C.text, whiteSpace: 'nowrap' }}>{label}</span>
     </div>
   );
 }
@@ -439,7 +439,7 @@ function CentralPanel({ frame, show, dim, offAt }: { frame: number; show: number
               <Icon name={dv.state === 'off' ? 'power' : dv.icon} size={60} color={on ? C.sky : C.faint} />
             </div>
             {label ? (
-              <div style={{ marginTop: 6, fontSize: 30, fontWeight: 750, color: C.muted, whiteSpace: 'nowrap', opacity: offIn }}>{label}</div>
+              <div style={{ marginTop: 6, fontSize: 32, fontWeight: 750, color: C.muted, whiteSpace: 'nowrap', opacity: offIn }}>{label}</div>
             ) : null}
           </div>
         );
@@ -484,11 +484,11 @@ function AgentPanel({ frame, show, awayAt, reportAt, agentAt }: { frame: number;
           )}
           <rect x={62} y={124} width={26} height={22} fill={C.ink950} />
         </svg>
-        <div style={{ fontSize: 30, fontWeight: 750, color: C.muted, whiteSpace: 'nowrap' }}>{AGENT.office}</div>
+        <div style={{ fontSize: 32, fontWeight: 750, color: C.muted, whiteSpace: 'nowrap' }}>{AGENT.office}</div>
       </div>
       {/* the laptop, far away */}
       <div style={{ position: 'absolute', left: LAPTOP.x - 60, top: LAPTOP.y - 50, width: 340, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div style={{ fontSize: 30, fontWeight: 750, color: C.amber, whiteSpace: 'nowrap', opacity: awayIn, marginBottom: 8 }}>{AGENT.away}</div>
+        <div style={{ fontSize: 32, fontWeight: 750, color: C.amber, whiteSpace: 'nowrap', opacity: awayIn, marginBottom: 8 }}>{AGENT.away}</div>
         <div style={{ position: 'relative' }}>
           <Icon name="laptop" size={170} color={C.cyan} strokeWidth={1.5} />
           {/* signal arcs while it reports */}
@@ -499,7 +499,7 @@ function AgentPanel({ frame, show, awayAt, reportAt, agentAt }: { frame: number;
           </svg>
         </div>
         <div style={{ marginTop: 4, opacity: badgeIn, transform: `translateY(${(1 - badgeIn) * 10}px)` }}>
-          <Pill text={AGENT.badge} tone={C.emerald} icon="shield" size={30} />
+          <Pill text={AGENT.badge} tone={C.emerald} icon="shield" size={32} />
         </div>
       </div>
       <div style={{ position: 'absolute', right: 0, top: 440, fontSize: 34, fontWeight: 750, color: C.text, whiteSpace: 'nowrap', opacity: report }}>{AGENT.sub}</div>
