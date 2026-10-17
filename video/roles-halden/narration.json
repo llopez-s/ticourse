@@ -20,13 +20,13 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {list}En el puerto de Halden, la lista de pasajeros del ferry {hands}pasa por muchas manos. Pero solo una decide, y el examen pregunta cuál.",
+      "text": "<curious> {list}En el puerto de Halden, la lista de pasajeros del ferry {hands}pasa por muchas manos. {title}Pero solo una decide, y el examen pregunta cuál.",
       "pauseAfterMs": 300
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Quién decide. {promise}Lo verás a tres alturas, en casa, con la ley y arriba. Y en las tres, uno decide y otro hace el trabajo.",
+      "text": "<confident> {promise}Lo verás a tres alturas, en casa, con la ley y arriba. Y en las tres, uno decide y otro hace el trabajo.",
       "pauseAfterMs": 400
     },
     {
@@ -38,7 +38,7 @@
     {
       "id": "s02-02",
       "scene": "s02-casa",
-      "text": "<thoughtful> {owner}Lo decide la jefa de la terminal de pasajeros, que la clasificó y responde de ella. Es un papel de negocio, y se llama data owner.",
+      "text": "<thoughtful> {owner}Lo decide quien dirige la terminal de pasajeros, que clasificó la lista y responde de ella. Es un papel de negocio, y se llama data owner.",
       "pauseAfterMs": 300
     },
     {
@@ -50,7 +50,7 @@
     {
       "id": "s02-04",
       "scene": "s02-casa",
-      "text": "<clear> {steward}Y la oficina de planificación cuida que esté bien hecha, sin nombres repetidos. Cuida el significado, y es el data steward.",
+      "text": "<clear> {steward}Y la oficina de planificación la tiene limpia, sin nombres repetidos, y dice qué significa cada campo. Es el data steward.",
       "pauseAfterMs": 300
     },
     {
@@ -68,11 +68,11 @@
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca. Una cadena de clínicas tiene que decidir si los datos de sus citas pasan de uso interno a confidencial. Hay una persona que define cada campo y corrige los errores, y los conoce mejor que nadie. ¿Qué rol debe decidir la clasificación?",
+      "text": "<intrigued> {q1}Te toca. Una cadena de clínicas tiene que decidir si los datos de sus citas pasan de uso interno a confidencial. Hay una persona que define cada campo y corrige los errores, y conoce esos datos como nadie. ¿Qué rol debe decidir la clasificación?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.1",
-        "scenario": "Unas clínicas deciden si sus datos de citas pasan de «uso interno» a «confidencial». Quien define cada campo y corrige errores los conoce mejor que nadie.",
+        "scenario": "Unas clínicas deciden si sus datos de citas pasan de «uso interno» a «confidencial». Quien define cada campo y corrige errores conoce esos datos como nadie.",
         "q": "¿Qué rol debe decidir la clasificación?",
         "options": [
           "Data custodian",
@@ -83,7 +83,7 @@
         "answer": 3,
         "trap": 1,
         "why": "Clasificar es decidir sobre el dato, y eso es del owner, que responde de él",
-        "trapWhy": "El steward cuida la calidad y el significado del dato, pero no lo clasifica",
+        "trapWhy": "El steward cuida la calidad y el significado del dato, pero no decide su clasificación",
         "countdownMs": 5000,
         "revealAt": "ok-1",
         "trapAt": "trap-1"
@@ -92,7 +92,7 @@
     {
       "id": "s03-02",
       "scene": "s03-p1",
-      "text": "<confident> {ok-1}Decide el data owner, porque clasificar es decidir. {trap-1}Y la trampa es quien mejor lo conoce, el steward, que cuida su calidad pero no lo clasifica.",
+      "text": "<confident> {ok-1}Decide el data owner, porque clasificar es decidir. {trap-1}Y la trampa es quien mejor lo conoce, el steward, que cuida su calidad pero no decide su clasificación.",
       "pauseAfterMs": 300
     },
     {
@@ -102,7 +102,7 @@
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.1",
-        "text": "Clasificar es del owner, no del steward",
+        "text": "Clasificar lo decide el owner, no el steward",
         "at": "album-back",
         "holdSec": 5
       }
@@ -110,31 +110,31 @@
     {
       "id": "s04-01",
       "scene": "s04-ley",
-      "text": "<engaging> {personal}Ahora, la ley. La lista lleva datos personales, y la pregunta cambia, quién decide para qué se usan.",
+      "text": "<engaging> {personal}Ahora, la ley. Con datos personales, la pregunta es quién decide para qué se usan.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-02",
       "scene": "s04-ley",
-      "text": "<clear> {controller}El puerto, como organización, decide qué se recoge, para qué y cuánto se guarda. Es el data controller.",
+      "text": "<clear> {controller}El puerto, como organización, decide qué se recoge, para qué y cuánto tiempo se guarda. Es el data controller.",
       "pauseAfterMs": 250
     },
     {
       "id": "s04-03",
       "scene": "s04-ley",
-      "text": "<steady> {processor}Los avisos de embarque los manda otra empresa, con lo que el puerto le dice. Es el data processor.",
+      "text": "<steady> {processor}Los avisos de embarque los manda otra empresa, con lo que el puerto le dice. Hace de data processor.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-04",
       "scene": "s04-ley",
-      "text": "<serious> {own-purpose}Si usara la lista para sus propias ofertas, ya decidiría por su cuenta, y pasaría a ser controller.",
+      "text": "<serious> {own-purpose}Si usara la lista para sus propias ofertas, ya sería controller.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-05",
       "scene": "s04-ley",
-      "text": "<firm> {responsibility}O sea, que el trabajo se encarga, pero la responsabilidad se queda en el puerto. {legal-roles}Y son papeles entre organizaciones, no puestos de trabajo.",
+      "text": "<firm> {responsibility}Así que el puerto encarga el trabajo, pero no la responsabilidad. {legal-roles}Son papeles legales, no puestos de trabajo.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "5.1",
@@ -146,17 +146,17 @@
     {
       "id": "s04-06",
       "scene": "s04-ley",
-      "text": "<cheerful> {moving}Como en una mudanza. Tú decides qué se lleva, y la empresa de mudanzas lo carga como le dices. Si se queda tu sofá, eso ya es cosa suya.",
+      "text": "<cheerful> {moving}Como en una mudanza. Tú decides qué se lleva, y los de la mudanza lo cargan como les dices. Si se quedan con tu sofá, eso ya lo deciden ellos.",
       "pauseAfterMs": 600
     },
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<intrigued> {q2}En una mutua de salud, un administrador de sistemas de la plantilla restaura las copias y aplica los parches. También revisa los registros de la base de afiliados, según lo que decide la responsable. ¿Qué rol describe mejor su trabajo? {best}Ojo con ese «mejor», que busca la que encaja con este caso, aunque otra también suene bien.",
+      "text": "<intrigued> {q2}En una mutua de salud, alguien de sistemas de la plantilla restaura las copias y aplica los parches. También vigila los accesos a la base de afiliados, según lo que decide quien responde de ella. ¿Qué rol describe mejor su trabajo? {best}Ojo con ese «mejor». Otra puede sonar bien, pero vale la que encaja con este caso.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.1",
-        "scenario": "Un administrador de sistemas de una mutua restaura copias, aplica parches y revisa los registros de la base de afiliados, según decide la responsable.",
+        "scenario": "Alguien de sistemas de una mutua restaura copias, aplica parches y vigila los accesos a la base de afiliados, según decide quien responde de ella.",
         "q": "¿Qué rol describe MEJOR su trabajo?",
         "options": [
           "Data controller",
@@ -176,13 +176,13 @@
     {
       "id": "s05-02",
       "scene": "s05-p2",
-      "text": "<firm> {ok-2}Es el data custodian, que aplica los controles que decide otra persona. {trap-2}Trata datos personales con instrucciones, como un processor, pero es de la casa.",
+      "text": "<firm> {ok-2}Es el data custodian, que aplica los controles que decide otra persona. {trap-2}Trata datos personales siguiendo instrucciones, como un processor, pero es de la casa.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-03",
       "scene": "s05-p2",
-      "text": "<thoughtful> {planes}Y el processor es otra organización. O sea, que esto es de dentro de la casa, no de la ley.",
+      "text": "<thoughtful> {planes}Y el processor siempre es un tercero. O sea, que este es un papel de dentro de la casa, no uno de la ley.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.1",
@@ -206,13 +206,13 @@
     {
       "id": "s06-03",
       "scene": "s06-arriba",
-      "text": "<serious> {regulator}Y desde fuera, la autoridad marítima nacional exige un plan de protección antes de dejar operar. Es una government entity.",
+      "text": "<serious> {regulator}Y desde fuera, la autoridad marítima nacional exige un plan de protección antes de dejar operar. Esa es la government entity.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-04",
       "scene": "s06-arriba",
-      "text": "<clear> {central-chip}Decidirlo todo en un sitio o repartirlo es otra cosa, centralized o decentralized.",
+      "text": "<clear> {central-chip}Decidirlo todo en un sitio es centralized, y repartirlo, decentralized.",
       "pauseAfterMs": 300
     },
     {
@@ -272,7 +272,7 @@
     {
       "id": "s08-02",
       "scene": "s08-cierre",
-      "text": "<clear> {rule-2}Con la ley, el controller decide para qué, aunque lo haga otro.",
+      "text": "<clear> {rule-2}Con la ley, el controller decide para qué, aunque el trabajo lo haga otro.",
       "pauseAfterMs": 250
     },
     {
@@ -284,7 +284,7 @@
     {
       "id": "s08-04",
       "scene": "s08-cierre",
-      "text": "<engaging> {phrase}Pregunta siempre quién decide, porque saber más o hacer el trabajo no te da la decisión. {next}Ahora te toca, {endcard}con las preguntas de la lección.",
+      "text": "<engaging> {phrase}Pregúntate siempre quién decide, porque saber más o hacer el trabajo no te da la decisión. {next}Ahora prueba tú, {endcard}con las preguntas de la lección.",
       "pauseAfterMs": 250
     }
   ]
