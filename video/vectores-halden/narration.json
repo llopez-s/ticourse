@@ -20,31 +20,31 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {desk}La recepción de las oficinas del puerto de Halden tiene muchas entradas. Y el examen te pregunta por cuál se cuela alguien.",
+      "text": "<curious> {desk}En las oficinas del puerto de Halden, la recepción tiene muchas entradas. ¿Por cuál se cuela alguien?",
       "pauseAfterMs": 300
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Un camino o todos. {promise}Lo difícil es que mezcla el camino con el cebo, y con quien te abre la puerta. Aquí los vas a separar.",
+      "text": "<confident> {title}Un camino o todos. {promise}Lo difícil es que el examen mezcla el camino con el cebo, y con quien ya tenía acceso. Aquí los vas a separar.",
       "pauseAfterMs": 400
     },
     {
       "id": "s02-01",
       "scene": "s02-mapa",
-      "text": "<engaging> {map}Sistemas dibuja en una hoja todo lo que llega al mostrador de recepción. {lines}Y salen cinco líneas.",
+      "text": "<engaging> {map}Sistemas dibuja en una hoja todo lo que llega a recepción, {lines}y salen cinco líneas.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-02",
       "scene": "s02-mapa",
-      "text": "<clear> {names}Son cinco caminos, cada uno con su nombre de examen. {none-broken}Hoy ninguno tiene un fallo conocido, y cuentan los cinco.",
+      "text": "<clear> {names}Cada una lleva su nombre de examen. {none-broken}Hoy ninguna tiene un fallo conocido, pero las cinco suman.",
       "pauseAfterMs": 250
     },
     {
       "id": "s02-03",
       "scene": "s02-mapa",
-      "text": "<thoughtful> {one}Una sola línea, un camino para llegar a tus sistemas, es un threat vector. {all}Y el mapa entero, con todos los caminos, es la attack surface.",
+      "text": "<thoughtful> {one}Una sola línea, un camino hasta tus sistemas, es un threat vector. {all}Y el mapa entero, todos los caminos, es la attack surface.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "2.2",
@@ -56,25 +56,25 @@
     {
       "id": "s02-04",
       "scene": "s02-mapa",
-      "text": "<warm> {backpack}Es como una mochila en el metro. Cada bolsillo es un sitio por donde un carterista puede meter la mano.",
+      "text": "<warm> {backpack}Piensa en tu mochila, en el metro. El bolsillo por donde te mete la mano un carterista es el vector, y todos juntos, la superficie.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-05",
       "scene": "s02-mapa",
-      "text": "<curious> El bolsillo por donde entra la mano es el vector, y todos juntos, la superficie. {sew}Si coses el que no usas, queda uno menos.",
+      "text": "<curious> {sew}Si coses el que no usas, queda uno menos.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-06",
       "scene": "s02-mapa",
-      "text": "<steady> {bell}Y un cascabel te avisa, pero el bolsillo sigue ahí. O sea, que vigilar un camino no lo quita.",
+      "text": "<steady> {bell}Y si le cuelgas un cascabel, te avisa, pero el bolsillo sigue ahí. Vigilar un camino no lo quita.",
       "pauseAfterMs": 500
     },
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Ahora te toca a ti, con otro caso. La oficina Comercial le pide a Sistemas cuatro cambios para este mes, y los tienes en pantalla. ¿Cuál de ellos añade un punto de entrada a la superficie de ataque?",
+      "text": "<intrigued> {q1}Te toca a ti, con otro caso. Comercial le pide a Sistemas cuatro cambios este mes, y los tienes en pantalla. ¿Cuál de ellos añade un punto de entrada a la superficie de ataque?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "2.2",
@@ -116,19 +116,19 @@
     {
       "id": "s04-01",
       "scene": "s04-pendrive",
-      "text": "<engaging> {counter}En el mostrador aparece un pendrive {sticker}con una pegatina de nóminas, y nadie sabe quién lo ha dejado.",
+      "text": "<engaging> Ahora vamos con el camino y el cebo. {counter}En el mostrador aparece un pendrive {sticker}con una pegatina de nóminas, y nadie sabe quién lo ha dejado.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-02",
       "scene": "s04-pendrive",
-      "text": "<steady> {handed}Recepción no lo enchufa, se lo da a Sistemas, que lo prueba en un ordenador viejo y sin red. {keyboard}Y el equipo cree que es un teclado.",
+      "text": "<steady> {handed}Recepción no lo enchufa. Sistemas lo prueba en un ordenador viejo y sin red, {keyboard}y el pendrive se hace pasar por un teclado.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-03",
       "scene": "s04-pendrive",
-      "text": "<intrigued> {typing}Se abre una ventana que escribe órdenes sola, más rápido que nadie, {no-file}y sin abrir ningún fichero.",
+      "text": "<intrigued> {typing}Se abre una ventana que escribe órdenes sola, {no-file}sin que nadie abra ningún fichero.",
       "pauseAfterMs": 300
     },
     {
@@ -146,19 +146,19 @@
     {
       "id": "s04-05",
       "scene": "s04-pendrive",
-      "text": "<warm> {time}Es como cuando te preguntan la hora y, mientras miras el reloj, la mano entra por el bolsillo de fuera.",
+      "text": "<warm> {time}En el metro te preguntan la hora, y mientras miras el reloj, te abren el bolsillo de fuera.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-06",
       "scene": "s04-pendrive",
-      "text": "<confident> {name}Así que esto es removable device, aunque el cebo fuera la curiosidad.",
+      "text": "<confident> {name}Así que es removable device, por mucha curiosidad que dé la pegatina.",
       "pauseAfterMs": 600
     },
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<curious> {q2}Otro caso. Un SMS, sin enlace ni adjunto, le avisa a un administrativo de que tiene en su mesa el pendrive del curso. Lo enchufa, y el programa malicioso entra desde él. ¿Qué vector describe mejor cómo llegó al equipo? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
+      "text": "<curious> {q2}Otro caso, fuera del puerto. A un administrativo le llega un SMS, sin enlace ni adjunto. Le dice que tiene en su mesa el pendrive del curso. Lo enchufa, y el programa malicioso entra desde él. ¿Qué vector describe mejor cómo llegó al equipo? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "2.2",
@@ -182,19 +182,19 @@
     {
       "id": "s05-02",
       "scene": "s05-p2",
-      "text": "<firm> {ok-2}Es removable device, porque el programa llegó por el pendrive. {trap-2}El SMS tienta, pero no traía nada, solo la excusa.",
+      "text": "<confident> {ok-2}Removable device, porque el programa llegó por el pendrive. {trap-2}El SMS no traía nada, solo la excusa.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-03",
       "scene": "s05-p2",
-      "text": "<warm> {hour}O sea, el SMS te preguntó la hora, y el pendrive fue el bolsillo.",
+      "text": "<casual> {hour}O sea, el SMS te preguntó la hora, y el pendrive fue el bolsillo.",
       "pauseAfterMs": 1000
     },
     {
       "id": "s06-01",
       "scene": "s06-terceros",
-      "text": "<thoughtful> {last-line}Queda la última línea del mapa, las actualizaciones del programa de visitas. {maker}Las manda su fabricante, sin que recepción haga nada.",
+      "text": "<thoughtful> {last-line}Queda la última línea, las actualizaciones del programa de visitas. {maker}Las manda su fabricante, sin que recepción haga nada.",
       "pauseAfterMs": 300
     },
     {
@@ -210,7 +210,7 @@
       "pauseAfterMs": 300,
       "exam": {
         "objective": "2.2",
-        "text": "Supply chain: entra por alguien de confianza",
+        "text": "Supply chain: entra por un tercero de confianza",
         "at": "three",
         "holdSec": 5
       }
@@ -218,23 +218,23 @@
     {
       "id": "s06-04",
       "scene": "s06-terceros",
-      "text": "<firm> {not-insider}Y no es un insider, porque quien entra es un atacante con un acceso robado. {no-click}Aquí nadie ha hecho clic.",
+      "text": "<firm> {not-insider}Y no es un insider. Eso es un actor, no un camino, y quien entra es un atacante con un acceso robado. {no-click}Aquí nadie hace clic.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-05",
       "scene": "s06-terceros",
-      "text": "<warm> {cloakroom}Es como la consigna de la estación. Al carterista le basta con engañar al de la consigna, y se lleva tu mochila y la de todos.",
+      "text": "<warm> {cloakroom}Ahora deja la mochila en la consigna de la estación. Al carterista le basta con engañar al encargado, y se lleva la tuya y la de todos.",
       "pauseAfterMs": 600
     },
     {
       "id": "s07-01",
       "scene": "s07-p3",
-      "text": "<engaging> {q3}Último caso, y no es del puerto. Una empresa lleva las nóminas de un astillero y entra en su servidor por una VPN. Un atacante engaña por correo a una empleada de esa empresa y entra con su acceso. Para el astillero, ¿por qué vector entró?",
+      "text": "<engaging> {q3}Último caso, tampoco del puerto. Una empresa le lleva las nóminas a un astillero, y se conecta a su servidor por una VPN. Un atacante engaña por correo a una empleada de esa empresa y usa su acceso. Para el astillero, ¿por qué vector entró?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "2.2",
-        "scenario": "Una empresa lleva las nóminas de un astillero y entra en su servidor por VPN. Un atacante engaña por correo a una empleada suya y usa su acceso.",
+        "scenario": "Una empresa lleva las nóminas de un astillero y entra en su servidor por VPN. Un atacante engaña por correo a una empleada de esa empresa y usa su acceso.",
         "q": "Para el astillero, ¿por qué vector entró el atacante?",
         "options": [
           "Insider threat",
@@ -244,8 +244,8 @@
         ],
         "answer": 1,
         "trap": 3,
-        "why": "Entró por el acceso legítimo de un tercero de confianza",
-        "trapWhy": "El correo engañó al proveedor; al astillero se entró por su acceso",
+        "why": "El atacante entró con el acceso legítimo de un tercero de confianza",
+        "trapWhy": "El correo engañó a la empleada del proveedor, no al astillero",
         "countdownMs": 5000,
         "revealAt": "ok-3",
         "trapAt": "trap-3"
@@ -254,13 +254,13 @@
     {
       "id": "s07-02",
       "scene": "s07-p3",
-      "text": "<firm> {ok-3}Es supply chain, porque entró por el acceso de su proveedor. {trap-3}El correo tienta, pero engañó a la empleada del proveedor, no al astillero.",
+      "text": "<firm> {ok-3}El atacante usó el acceso del proveedor, así que es supply chain. {trap-3}Hubo un correo, sí, pero engañó al proveedor, no al astillero.",
       "pauseAfterMs": 300
     },
     {
       "id": "s07-03",
       "scene": "s07-p3",
-      "text": "<warm> {cloak-back}O sea, engañaron al de la consigna, pero tu mochila salió por la consigna.",
+      "text": "<satisfied> {cloak-back}O sea, engañaron al encargado, pero tu mochila salió por la consigna.",
       "pauseAfterMs": 700,
       "exam": {
         "objective": "2.2",
@@ -284,13 +284,13 @@
     {
       "id": "s08-03",
       "scene": "s08-cierre",
-      "text": "<firm> {rule-3}Y si entran por alguien de confianza que ya tenía acceso, es supply chain.",
+      "text": "<firm> {rule-3}Y si entran por un tercero de confianza que ya tenía acceso, es supply chain.",
       "pauseAfterMs": 300
     },
     {
       "id": "s08-04",
       "scene": "s08-cierre",
-      "text": "<engaging> {phrase}Para la superficie, cuenta caminos, y para el vector, pregúntate por dónde llegó hasta ti. {next}Ahora es tu turno, {endcard}con las preguntas de la lección.",
+      "text": "<engaging> {phrase}Para la superficie, cuenta caminos, y para el vector, pregúntate por dónde llegó. {next}Ahora es tu turno, {endcard}con las preguntas de la lección.",
       "pauseAfterMs": 250
     }
   ]
