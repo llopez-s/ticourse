@@ -92,7 +92,7 @@ export function S02Cadena(props: SceneProps) {
   const soarAt = props.cue('soar');
   const playAt = props.cue('playbook');
   const autoWord = wordFrame(S, 's02-01', 'automation') - 6;
-  const n1At = wordFrame(S, 's02-03', 'EDR') - 6;
+  const n1At = Math.min(chainAt + 2, wordFrame(S, 's02-03', 'EDR') - 6);
   const n2At = wordFrame(S, 's02-03', 'proveedor') - 6;
   const n3At = segment(props, 's02-03').to - 12;
   const n5At = wordFrame(S, 's02-04', 'avisa') - 6;
