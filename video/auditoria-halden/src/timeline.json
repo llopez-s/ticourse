@@ -1,0 +1,4425 @@
+{
+  "mode": "estimate",
+  "sourceHash": "c27355df28cff22b6eecb7cf97a0fcc3ade6b7c15251841241007fd7099cc093",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "durationInFrames": 16484,
+  "voice": "none",
+  "scenes": [
+    {"id":"s01-hook","chapter":1,"chapterTitle":"Quién lo firma y quién lo mira","title":"Decirlo no es demostrarlo","from":0,"durationInFrames":686},
+    {"id":"s02-firmas","chapter":1,"chapterTitle":"Quién lo firma y quién lo mira","title":"Dos montones de firmas","from":686,"durationInFrames":1305},
+    {"id":"s03-quien","chapter":1,"chapterTitle":"Quién lo firma y quién lo mira","title":"Quién lo comprueba","from":1991,"durationInFrames":1459},
+    {"id":"s04-p1","chapter":1,"chapterTitle":"Quién lo firma y quién lo mira","title":"La visita","from":3450,"durationInFrames":1261},
+    {"id":"s05-aguantar","chapter":2,"chapterTitle":"Cumplir no es aguantar","title":"Cumplir no es aguantar","from":4711,"durationInFrames":1509},
+    {"id":"s06-p2","chapter":2,"chapterTitle":"Cumplir no es aguantar","title":"El informe del pentest","from":6220,"durationInFrames":1369},
+    {"id":"s07-modos","chapter":3,"chapterTitle":"Cuatro maneras de probar","title":"Cuatro maneras de probar","from":7589,"durationInFrames":1565},
+    {"id":"s08-p3","chapter":3,"chapterTitle":"Cuatro maneras de probar","title":"Un ejercicio sin avisar","from":9154,"durationInFrames":1249},
+    {"id":"s09-contar","chapter":4,"chapterTitle":"Cuánto le cuentas","title":"Cuánto le cuentas","from":10403,"durationInFrames":1462},
+    {"id":"s10-p4","chapter":4,"chapterTitle":"Cuánto le cuentas","title":"Una cuenta de cliente","from":11865,"durationInFrames":1177},
+    {"id":"s11-mirar","chapter":5,"chapterTitle":"Mirar sin tocar","title":"Mirar sin tocar","from":13042,"durationInFrames":1213},
+    {"id":"s12-p5","chapter":5,"chapterTitle":"Mirar sin tocar","title":"Un buscador","from":14255,"durationInFrames":1225},
+    {"id":"s13-cierre","chapter":5,"chapterTitle":"Mirar sin tocar","title":"Para el examen","from":15480,"durationInFrames":1004}
+  ],
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "La dirección del puerto de Halden debe firmar ante la autoridad marítima, antes de su revisión anual, que sus controles funcionan.",
+      "from": 45,
+      "audioFrames": 252,
+      "durationInFrames": 261,
+      "audio": null,
+      "words": [
+        {"text":"La","from":45,"to":50},
+        {"text":"dirección","from":50,"to":70},
+        {"text":"del","from":70,"to":77},
+        {"text":"puerto","from":77,"to":91},
+        {"text":"de","from":91,"to":95},
+        {"text":"Halden","from":95,"to":109},
+        {"text":"debe","from":109,"to":118},
+        {"text":"firmar","from":118,"to":132},
+        {"text":"ante","from":132,"to":141},
+        {"text":"la","from":141,"to":146},
+        {"text":"autoridad","from":146,"to":166},
+        {"text":"marítima,","from":166,"to":187},
+        {"text":"antes","from":187,"to":198},
+        {"text":"de","from":198,"to":203},
+        {"text":"su","from":203,"to":208},
+        {"text":"revisión","from":208,"to":226},
+        {"text":"anual,","from":226,"to":240},
+        {"text":"que","from":240,"to":247},
+        {"text":"sus","from":247,"to":253},
+        {"text":"controles","from":253,"to":274},
+        {"text":"funcionan.","from":274,"to":297}
+      ]
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "Cumplir o aguantar. Porque el consejo quiere saber antes si el puerto cumple, y si aguanta. Vas a ver quién lo firma, quién lo comprueba y cómo se prueba.",
+      "from": 306,
+      "audioFrames": 348,
+      "durationInFrames": 360,
+      "audio": null,
+      "words": [
+        {"text":"Cumplir","from":306,"to":325},
+        {"text":"o","from":325,"to":328},
+        {"text":"aguantar.","from":328,"to":353},
+        {"text":"Porque","from":353,"to":370},
+        {"text":"el","from":370,"to":375},
+        {"text":"consejo","from":375,"to":394},
+        {"text":"quiere","from":394,"to":411},
+        {"text":"saber","from":411,"to":425},
+        {"text":"antes","from":425,"to":439},
+        {"text":"si","from":439,"to":444},
+        {"text":"el","from":444,"to":450},
+        {"text":"puerto","from":450,"to":466},
+        {"text":"cumple,","from":466,"to":486},
+        {"text":"y","from":486,"to":488},
+        {"text":"si","from":488,"to":494},
+        {"text":"aguanta.","from":494,"to":516},
+        {"text":"Vas","from":516,"to":524},
+        {"text":"a","from":524,"to":527},
+        {"text":"ver","from":527,"to":535},
+        {"text":"quién","from":535,"to":549},
+        {"text":"lo","from":549,"to":555},
+        {"text":"firma,","from":555,"to":571},
+        {"text":"quién","from":571,"to":585},
+        {"text":"lo","from":585,"to":590},
+        {"text":"comprueba","from":590,"to":615},
+        {"text":"y","from":615,"to":618},
+        {"text":"cómo","from":618,"to":629},
+        {"text":"se","from":629,"to":635},
+        {"text":"prueba.","from":635,"to":654}
+      ]
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-firmas",
+      "text": "Empezamos por las firmas, que en la mesa hay dos montones.",
+      "from": 698,
+      "audioFrames": 132,
+      "durationInFrames": 141,
+      "audio": null,
+      "words": [
+        {"text":"Empezamos","from":698,"to":723},
+        {"text":"por","from":723,"to":731},
+        {"text":"las","from":731,"to":739},
+        {"text":"firmas,","from":739,"to":759},
+        {"text":"que","from":759,"to":767},
+        {"text":"en","from":767,"to":772},
+        {"text":"la","from":772,"to":778},
+        {"text":"mesa","from":778,"to":789},
+        {"text":"hay","from":789,"to":797},
+        {"text":"dos","from":797,"to":805},
+        {"text":"montones.","from":805,"to":830}
+      ]
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-firmas",
+      "text": "En el de la izquierda, cada persona de la plantilla firma que ha leído la política de uso aceptable.",
+      "from": 839,
+      "audioFrames": 228,
+      "durationInFrames": 236,
+      "audio": null,
+      "words": [
+        {"text":"En","from":839,"to":845},
+        {"text":"el","from":845,"to":850},
+        {"text":"de","from":850,"to":856},
+        {"text":"la","from":856,"to":861},
+        {"text":"izquierda,","from":861,"to":889},
+        {"text":"cada","from":889,"to":900},
+        {"text":"persona","from":900,"to":920},
+        {"text":"de","from":920,"to":925},
+        {"text":"la","from":925,"to":931},
+        {"text":"plantilla","from":931,"to":956},
+        {"text":"firma","from":956,"to":970},
+        {"text":"que","from":970,"to":978},
+        {"text":"ha","from":978,"to":984},
+        {"text":"leído","from":984,"to":997},
+        {"text":"la","from":997,"to":1003},
+        {"text":"política","from":1003,"to":1025},
+        {"text":"de","from":1025,"to":1031},
+        {"text":"uso","from":1031,"to":1039},
+        {"text":"aceptable.","from":1039,"to":1067}
+      ]
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-firmas",
+      "text": "Una persona se compromete con una norma. Eso es un acknowledgement.",
+      "from": 1075,
+      "audioFrames": 132,
+      "durationInFrames": 141,
+      "audio": null,
+      "words": [
+        {"text":"Una","from":1075,"to":1082},
+        {"text":"persona","from":1082,"to":1098},
+        {"text":"se","from":1098,"to":1103},
+        {"text":"compromete","from":1103,"to":1126},
+        {"text":"con","from":1126,"to":1133},
+        {"text":"una","from":1133,"to":1140},
+        {"text":"norma.","from":1140,"to":1154},
+        {"text":"Eso","from":1154,"to":1161},
+        {"text":"es","from":1161,"to":1165},
+        {"text":"un","from":1165,"to":1170},
+        {"text":"acknowledgement.","from":1170,"to":1207}
+      ]
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-firmas",
+      "text": "A la derecha, un solo documento. La dirección declara que los controles funcionan, con su alcance y su periodo, y lo firma.",
+      "from": 1216,
+      "audioFrames": 264,
+      "durationInFrames": 272,
+      "audio": null,
+      "words": [
+        {"text":"A","from":1216,"to":1219},
+        {"text":"la","from":1219,"to":1224},
+        {"text":"derecha,","from":1224,"to":1244},
+        {"text":"un","from":1244,"to":1250},
+        {"text":"solo","from":1250,"to":1260},
+        {"text":"documento.","from":1260,"to":1286},
+        {"text":"La","from":1286,"to":1291},
+        {"text":"dirección","from":1291,"to":1314},
+        {"text":"declara","from":1314,"to":1332},
+        {"text":"que","from":1332,"to":1340},
+        {"text":"los","from":1340,"to":1348},
+        {"text":"controles","from":1348,"to":1371},
+        {"text":"funcionan,","from":1371,"to":1397},
+        {"text":"con","from":1397,"to":1405},
+        {"text":"su","from":1405,"to":1410},
+        {"text":"alcance","from":1410,"to":1428},
+        {"text":"y","from":1428,"to":1431},
+        {"text":"su","from":1431,"to":1436},
+        {"text":"periodo,","from":1436,"to":1457},
+        {"text":"y","from":1457,"to":1459},
+        {"text":"lo","from":1459,"to":1464},
+        {"text":"firma.","from":1464,"to":1480}
+      ]
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-firmas",
+      "text": "Aquí es la organización la que se compromete con un hecho, y eso es una attestation.",
+      "from": 1488,
+      "audioFrames": 192,
+      "durationInFrames": 201,
+      "audio": null,
+      "words": [
+        {"text":"Aquí","from":1488,"to":1499},
+        {"text":"es","from":1499,"to":1505},
+        {"text":"la","from":1505,"to":1510},
+        {"text":"organización","from":1510,"to":1544},
+        {"text":"la","from":1544,"to":1549},
+        {"text":"que","from":1549,"to":1558},
+        {"text":"se","from":1558,"to":1563},
+        {"text":"compromete","from":1563,"to":1591},
+        {"text":"con","from":1591,"to":1599},
+        {"text":"un","from":1599,"to":1605},
+        {"text":"hecho,","from":1605,"to":1622},
+        {"text":"y","from":1622,"to":1624},
+        {"text":"eso","from":1624,"to":1633},
+        {"text":"es","from":1633,"to":1638},
+        {"text":"una","from":1638,"to":1647},
+        {"text":"attestation.","from":1647,"to":1680}
+      ]
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-firmas",
+      "text": "Pero fíjate, ninguna de las dos firmas comprueba nada. Si alguien pregunta si funciona de verdad, la respuesta no es otra firma.",
+      "from": 1689,
+      "audioFrames": 264,
+      "durationInFrames": 282,
+      "audio": null,
+      "words": [
+        {"text":"Pero","from":1689,"to":1699},
+        {"text":"fíjate,","from":1699,"to":1716},
+        {"text":"ninguna","from":1716,"to":1733},
+        {"text":"de","from":1733,"to":1738},
+        {"text":"las","from":1738,"to":1746},
+        {"text":"dos","from":1746,"to":1753},
+        {"text":"firmas","from":1753,"to":1768},
+        {"text":"comprueba","from":1768,"to":1790},
+        {"text":"nada.","from":1790,"to":1802},
+        {"text":"Si","from":1802,"to":1807},
+        {"text":"alguien","from":1807,"to":1825},
+        {"text":"pregunta","from":1825,"to":1844},
+        {"text":"si","from":1844,"to":1849},
+        {"text":"funciona","from":1849,"to":1869},
+        {"text":"de","from":1869,"to":1874},
+        {"text":"verdad,","from":1874,"to":1891},
+        {"text":"la","from":1891,"to":1896},
+        {"text":"respuesta","from":1896,"to":1918},
+        {"text":"no","from":1918,"to":1923},
+        {"text":"es","from":1923,"to":1928},
+        {"text":"otra","from":1928,"to":1938},
+        {"text":"firma.","from":1938,"to":1953}
+      ]
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-quien",
+      "text": "Ahora, quién lo comprueba. Si Sistemas se revisa con su propia lista, es un self-assessment, sin independencia.",
+      "from": 2003,
+      "audioFrames": 204,
+      "durationInFrames": 213,
+      "audio": null,
+      "words": [
+        {"text":"Ahora,","from":2003,"to":2016},
+        {"text":"quién","from":2016,"to":2027},
+        {"text":"lo","from":2027,"to":2031},
+        {"text":"comprueba.","from":2031,"to":2052},
+        {"text":"Si","from":2052,"to":2057},
+        {"text":"Sistemas","from":2057,"to":2074},
+        {"text":"se","from":2074,"to":2078},
+        {"text":"revisa","from":2078,"to":2091},
+        {"text":"con","from":2091,"to":2097},
+        {"text":"su","from":2097,"to":2102},
+        {"text":"propia","from":2102,"to":2115},
+        {"text":"lista,","from":2115,"to":2128},
+        {"text":"es","from":2128,"to":2132},
+        {"text":"un","from":2132,"to":2136},
+        {"text":"self-assessment,","from":2136,"to":2170},
+        {"text":"sin","from":2170,"to":2177},
+        {"text":"independencia.","from":2177,"to":2207}
+      ]
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-quien",
+      "text": "Si lo revisa una función de la casa, pero separada de Sistemas, es internal audit.",
+      "from": 2216,
+      "audioFrames": 180,
+      "durationInFrames": 188,
+      "audio": null,
+      "words": [
+        {"text":"Si","from":2216,"to":2221},
+        {"text":"lo","from":2221,"to":2227},
+        {"text":"revisa","from":2227,"to":2242},
+        {"text":"una","from":2242,"to":2250},
+        {"text":"función","from":2250,"to":2269},
+        {"text":"de","from":2269,"to":2274},
+        {"text":"la","from":2274,"to":2280},
+        {"text":"casa,","from":2280,"to":2293},
+        {"text":"pero","from":2293,"to":2303},
+        {"text":"separada","from":2303,"to":2325},
+        {"text":"de","from":2325,"to":2330},
+        {"text":"Sistemas,","from":2330,"to":2354},
+        {"text":"es","from":2354,"to":2359},
+        {"text":"internal","from":2359,"to":2380},
+        {"text":"audit.","from":2380,"to":2396}
+      ]
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-quien",
+      "text": "Informa al audit committee del consejo, que no audita, pero protege a quien audita.",
+      "from": 2404,
+      "audioFrames": 168,
+      "durationInFrames": 177,
+      "audio": null,
+      "words": [
+        {"text":"Informa","from":2404,"to":2421},
+        {"text":"al","from":2421,"to":2426},
+        {"text":"audit","from":2426,"to":2438},
+        {"text":"committee","from":2438,"to":2459},
+        {"text":"del","from":2459,"to":2466},
+        {"text":"consejo,","from":2466,"to":2486},
+        {"text":"que","from":2486,"to":2493},
+        {"text":"no","from":2493,"to":2498},
+        {"text":"audita,","from":2498,"to":2514},
+        {"text":"pero","from":2514,"to":2524},
+        {"text":"protege","from":2524,"to":2541},
+        {"text":"a","from":2541,"to":2543},
+        {"text":"quien","from":2543,"to":2555},
+        {"text":"audita.","from":2555,"to":2572}
+      ]
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-quien",
+      "text": "Una firma de fuera, sin interés en el resultado, hace un independent third-party audit.",
+      "from": 2581,
+      "audioFrames": 168,
+      "durationInFrames": 177,
+      "audio": null,
+      "words": [
+        {"text":"Una","from":2581,"to":2588},
+        {"text":"firma","from":2588,"to":2599},
+        {"text":"de","from":2599,"to":2604},
+        {"text":"fuera,","from":2604,"to":2617},
+        {"text":"sin","from":2617,"to":2624},
+        {"text":"interés","from":2624,"to":2640},
+        {"text":"en","from":2640,"to":2645},
+        {"text":"el","from":2645,"to":2649},
+        {"text":"resultado,","from":2649,"to":2672},
+        {"text":"hace","from":2672,"to":2681},
+        {"text":"un","from":2681,"to":2685},
+        {"text":"independent","from":2685,"to":2710},
+        {"text":"third-party","from":2710,"to":2735},
+        {"text":"audit.","from":2735,"to":2749}
+      ]
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-quien",
+      "text": "Y la autoridad marítima llega sin que la llames, revisa lo que fija la ley y puede sancionar. Es una regulatory examination.",
+      "from": 2758,
+      "audioFrames": 264,
+      "durationInFrames": 273,
+      "audio": null,
+      "words": [
+        {"text":"Y","from":2758,"to":2761},
+        {"text":"la","from":2761,"to":2766},
+        {"text":"autoridad","from":2766,"to":2789},
+        {"text":"marítima","from":2789,"to":2809},
+        {"text":"llega","from":2809,"to":2822},
+        {"text":"sin","from":2822,"to":2830},
+        {"text":"que","from":2830,"to":2837},
+        {"text":"la","from":2837,"to":2843},
+        {"text":"llames,","from":2843,"to":2861},
+        {"text":"revisa","from":2861,"to":2876},
+        {"text":"lo","from":2876,"to":2881},
+        {"text":"que","from":2881,"to":2889},
+        {"text":"fija","from":2889,"to":2899},
+        {"text":"la","from":2899,"to":2904},
+        {"text":"ley","from":2904,"to":2912},
+        {"text":"y","from":2912,"to":2914},
+        {"text":"puede","from":2914,"to":2927},
+        {"text":"sancionar.","from":2927,"to":2953},
+        {"text":"Es","from":2953,"to":2958},
+        {"text":"una","from":2958,"to":2966},
+        {"text":"regulatory","from":2966,"to":2991},
+        {"text":"examination.","from":2991,"to":3022}
+      ]
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-quien",
+      "text": "Como en el ascensor de tu comunidad. Al organismo de control lo contratáis, a Industria no.",
+      "from": 3031,
+      "audioFrames": 192,
+      "durationInFrames": 201,
+      "audio": null,
+      "words": [
+        {"text":"Como","from":3031,"to":3041},
+        {"text":"en","from":3041,"to":3046},
+        {"text":"el","from":3046,"to":3051},
+        {"text":"ascensor","from":3051,"to":3071},
+        {"text":"de","from":3071,"to":3076},
+        {"text":"tu","from":3076,"to":3082},
+        {"text":"comunidad.","from":3082,"to":3107},
+        {"text":"Al","from":3107,"to":3112},
+        {"text":"organismo","from":3112,"to":3135},
+        {"text":"de","from":3135,"to":3140},
+        {"text":"control","from":3140,"to":3157},
+        {"text":"lo","from":3157,"to":3162},
+        {"text":"contratáis,","from":3162,"to":3190},
+        {"text":"a","from":3190,"to":3193},
+        {"text":"Industria","from":3193,"to":3215},
+        {"text":"no.","from":3215,"to":3223}
+      ]
+    },
+    {
+      "id": "s03-07",
+      "scene": "s03-quien",
+      "text": "O sea, que para convencer a alguien de fuera, cuenta quién mira, no cuánto mira.",
+      "from": 3232,
+      "audioFrames": 180,
+      "durationInFrames": 198,
+      "audio": null,
+      "words": [
+        {"text":"O","from":3232,"to":3235},
+        {"text":"sea,","from":3235,"to":3246},
+        {"text":"que","from":3246,"to":3254},
+        {"text":"para","from":3254,"to":3265},
+        {"text":"convencer","from":3265,"to":3289},
+        {"text":"a","from":3289,"to":3292},
+        {"text":"alguien","from":3292,"to":3311},
+        {"text":"de","from":3311,"to":3317},
+        {"text":"fuera,","from":3317,"to":3333},
+        {"text":"cuenta","from":3333,"to":3349},
+        {"text":"quién","from":3349,"to":3363},
+        {"text":"mira,","from":3363,"to":3377},
+        {"text":"no","from":3377,"to":3382},
+        {"text":"cuánto","from":3382,"to":3398},
+        {"text":"mira.","from":3398,"to":3412}
+      ]
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-p1",
+      "text": "Te toca. Una compañía eléctrica recibe la visita de la autoridad que le concedió la licencia. No la ha pedido ni la paga, y lo que se revisa lo fija la ley. Si algo falla, puede acabar en multa o sin licencia. ¿Qué tipo de evaluación es?",
+      "from": 3462,
+      "audioFrames": 564,
+      "durationInFrames": 722,
+      "audio": null,
+      "words": [
+        {"text":"Te","from":3462,"to":3468},
+        {"text":"toca.","from":3468,"to":3483},
+        {"text":"Una","from":3483,"to":3492},
+        {"text":"compañía","from":3492,"to":3515},
+        {"text":"eléctrica","from":3515,"to":3542},
+        {"text":"recibe","from":3542,"to":3559},
+        {"text":"la","from":3559,"to":3565},
+        {"text":"visita","from":3565,"to":3583},
+        {"text":"de","from":3583,"to":3589},
+        {"text":"la","from":3589,"to":3595},
+        {"text":"autoridad","from":3595,"to":3621},
+        {"text":"que","from":3621,"to":3630},
+        {"text":"le","from":3630,"to":3636},
+        {"text":"concedió","from":3636,"to":3660},
+        {"text":"la","from":3660,"to":3666},
+        {"text":"licencia.","from":3666,"to":3692},
+        {"text":"No","from":3692,"to":3698},
+        {"text":"la","from":3698,"to":3704},
+        {"text":"ha","from":3704,"to":3710},
+        {"text":"pedido","from":3710,"to":3728},
+        {"text":"ni","from":3728,"to":3734},
+        {"text":"la","from":3734,"to":3740},
+        {"text":"paga,","from":3740,"to":3754},
+        {"text":"y","from":3754,"to":3757},
+        {"text":"lo","from":3757,"to":3763},
+        {"text":"que","from":3763,"to":3772},
+        {"text":"se","from":3772,"to":3778},
+        {"text":"revisa","from":3778,"to":3796},
+        {"text":"lo","from":3796,"to":3802},
+        {"text":"fija","from":3802,"to":3813},
+        {"text":"la","from":3813,"to":3819},
+        {"text":"ley.","from":3819,"to":3831},
+        {"text":"Si","from":3831,"to":3837},
+        {"text":"algo","from":3837,"to":3849},
+        {"text":"falla,","from":3849,"to":3867},
+        {"text":"puede","from":3867,"to":3881},
+        {"text":"acabar","from":3881,"to":3899},
+        {"text":"en","from":3899,"to":3905},
+        {"text":"multa","from":3905,"to":3920},
+        {"text":"o","from":3920,"to":3923},
+        {"text":"sin","from":3923,"to":3932},
+        {"text":"licencia.","from":3932,"to":3958},
+        {"text":"¿Qué","from":3958,"to":3970},
+        {"text":"tipo","from":3970,"to":3982},
+        {"text":"de","from":3982,"to":3988},
+        {"text":"evaluación","from":3988,"to":4017},
+        {"text":"es?","from":4017,"to":4026}
+      ]
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-p1",
+      "text": "Es una regulatory examination, porque nadie la contrata y puede sancionar. La de terceros también es externa e independiente, pero esa la contratas tú.",
+      "from": 4184,
+      "audioFrames": 288,
+      "durationInFrames": 297,
+      "audio": null,
+      "words": [
+        {"text":"Es","from":4184,"to":4189},
+        {"text":"una","from":4189,"to":4195},
+        {"text":"regulatory","from":4195,"to":4218},
+        {"text":"examination,","from":4218,"to":4245},
+        {"text":"porque","from":4245,"to":4258},
+        {"text":"nadie","from":4258,"to":4270},
+        {"text":"la","from":4270,"to":4274},
+        {"text":"contrata","from":4274,"to":4292},
+        {"text":"y","from":4292,"to":4294},
+        {"text":"puede","from":4294,"to":4306},
+        {"text":"sancionar.","from":4306,"to":4328},
+        {"text":"La","from":4328,"to":4333},
+        {"text":"de","from":4333,"to":4337},
+        {"text":"terceros","from":4337,"to":4355},
+        {"text":"también","from":4355,"to":4371},
+        {"text":"es","from":4371,"to":4375},
+        {"text":"externa","from":4375,"to":4391},
+        {"text":"e","from":4391,"to":4393},
+        {"text":"independiente,","from":4393,"to":4425},
+        {"text":"pero","from":4425,"to":4434},
+        {"text":"esa","from":4434,"to":4441},
+        {"text":"la","from":4441,"to":4445},
+        {"text":"contratas","from":4445,"to":4465},
+        {"text":"tú.","from":4465,"to":4472}
+      ]
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-p1",
+      "text": "O sea, que es Industria con su expediente, no el organismo que contrata la comunidad.",
+      "from": 4481,
+      "audioFrames": 180,
+      "durationInFrames": 210,
+      "audio": null,
+      "words": [
+        {"text":"O","from":4481,"to":4484},
+        {"text":"sea,","from":4484,"to":4494},
+        {"text":"que","from":4494,"to":4501},
+        {"text":"es","from":4501,"to":4506},
+        {"text":"Industria","from":4506,"to":4529},
+        {"text":"con","from":4529,"to":4537},
+        {"text":"su","from":4537,"to":4542},
+        {"text":"expediente,","from":4542,"to":4570},
+        {"text":"no","from":4570,"to":4575},
+        {"text":"el","from":4575,"to":4580},
+        {"text":"organismo","from":4580,"to":4603},
+        {"text":"que","from":4603,"to":4610},
+        {"text":"contrata","from":4610,"to":4631},
+        {"text":"la","from":4631,"to":4636},
+        {"text":"comunidad.","from":4636,"to":4661}
+      ]
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-aguantar",
+      "text": "Con la auditoría independiente ya encargada, el consejo pregunta otra cosa. ¿Qué pasa si alguien intenta entrar?",
+      "from": 4723,
+      "audioFrames": 204,
+      "durationInFrames": 213,
+      "audio": null,
+      "words": [
+        {"text":"Con","from":4723,"to":4729},
+        {"text":"la","from":4729,"to":4734},
+        {"text":"auditoría","from":4734,"to":4753},
+        {"text":"independiente","from":4753,"to":4780},
+        {"text":"ya","from":4780,"to":4785},
+        {"text":"encargada,","from":4785,"to":4806},
+        {"text":"el","from":4806,"to":4810},
+        {"text":"consejo","from":4810,"to":4825},
+        {"text":"pregunta","from":4825,"to":4842},
+        {"text":"otra","from":4842,"to":4851},
+        {"text":"cosa.","from":4851,"to":4861},
+        {"text":"¿Qué","from":4861,"to":4870},
+        {"text":"pasa","from":4870,"to":4878},
+        {"text":"si","from":4878,"to":4882},
+        {"text":"alguien","from":4882,"to":4897},
+        {"text":"intenta","from":4897,"to":4912},
+        {"text":"entrar?","from":4912,"to":4927}
+      ]
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-aguantar",
+      "text": "Y vuelve PAPER GOVERNOR, que vive en los huecos de tu gobernanza.",
+      "from": 4936,
+      "audioFrames": 144,
+      "durationInFrames": 152,
+      "audio": null,
+      "words": [
+        {"text":"Y","from":4936,"to":4939},
+        {"text":"vuelve","from":4939,"to":4955},
+        {"text":"PAPER","from":4955,"to":4968},
+        {"text":"GOVERNOR,","from":4968,"to":4992},
+        {"text":"que","from":4992,"to":5000},
+        {"text":"vive","from":5000,"to":5011},
+        {"text":"en","from":5011,"to":5016},
+        {"text":"los","from":5016,"to":5024},
+        {"text":"huecos","from":5024,"to":5040},
+        {"text":"de","from":5040,"to":5045},
+        {"text":"tu","from":5045,"to":5051},
+        {"text":"gobernanza.","from":5051,"to":5080}
+      ]
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-aguantar",
+      "text": "Pues no. Una auditoría dice si cumples la norma. Si alguien puede entrar, eso no lo mira.",
+      "from": 5193,
+      "audioFrames": 204,
+      "durationInFrames": 216,
+      "audio": null,
+      "words": [
+        {"text":"Pues","from":5193,"to":5204},
+        {"text":"no.","from":5204,"to":5213},
+        {"text":"Una","from":5213,"to":5221},
+        {"text":"auditoría","from":5221,"to":5246},
+        {"text":"dice","from":5246,"to":5257},
+        {"text":"si","from":5257,"to":5263},
+        {"text":"cumples","from":5263,"to":5282},
+        {"text":"la","from":5282,"to":5288},
+        {"text":"norma.","from":5288,"to":5305},
+        {"text":"Si","from":5305,"to":5310},
+        {"text":"alguien","from":5310,"to":5330},
+        {"text":"puede","from":5330,"to":5344},
+        {"text":"entrar,","from":5344,"to":5363},
+        {"text":"eso","from":5363,"to":5372},
+        {"text":"no","from":5372,"to":5377},
+        {"text":"lo","from":5377,"to":5383},
+        {"text":"mira.","from":5383,"to":5397}
+      ]
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-aguantar",
+      "text": "La auditoría comprueba que cumples el estándar, con evidencias y muestras.",
+      "from": 5409,
+      "audioFrames": 132,
+      "durationInFrames": 140,
+      "audio": null,
+      "words": [
+        {"text":"La","from":5409,"to":5413},
+        {"text":"auditoría","from":5413,"to":5432},
+        {"text":"comprueba","from":5432,"to":5450},
+        {"text":"que","from":5450,"to":5456},
+        {"text":"cumples","from":5456,"to":5471},
+        {"text":"el","from":5471,"to":5475},
+        {"text":"estándar,","from":5475,"to":5494},
+        {"text":"con","from":5494,"to":5500},
+        {"text":"evidencias","from":5500,"to":5520},
+        {"text":"y","from":5520,"to":5522},
+        {"text":"muestras.","from":5522,"to":5541}
+      ]
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-aguantar",
+      "text": "Para saber si aguantas, alguien intenta romperlo, con permiso. Eso es un penetration test, un pentest.",
+      "from": 5549,
+      "audioFrames": 192,
+      "durationInFrames": 201,
+      "audio": null,
+      "words": [
+        {"text":"Para","from":5549,"to":5558},
+        {"text":"saber","from":5558,"to":5569},
+        {"text":"si","from":5569,"to":5573},
+        {"text":"aguantas,","from":5573,"to":5593},
+        {"text":"alguien","from":5593,"to":5609},
+        {"text":"intenta","from":5609,"to":5624},
+        {"text":"romperlo,","from":5624,"to":5644},
+        {"text":"con","from":5644,"to":5651},
+        {"text":"permiso.","from":5651,"to":5668},
+        {"text":"Eso","from":5668,"to":5675},
+        {"text":"es","from":5675,"to":5679},
+        {"text":"un","from":5679,"to":5684},
+        {"text":"penetration","from":5684,"to":5708},
+        {"text":"test,","from":5708,"to":5719},
+        {"text":"un","from":5719,"to":5723},
+        {"text":"pentest.","from":5723,"to":5741}
+      ]
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-aguantar",
+      "text": "Es como un puente nuevo. El certificado dice que se hizo según la norma, y la prueba de carga, cuánto aguanta.",
+      "from": 5750,
+      "audioFrames": 252,
+      "durationInFrames": 261,
+      "audio": null,
+      "words": [
+        {"text":"Es","from":5750,"to":5756},
+        {"text":"como","from":5756,"to":5767},
+        {"text":"un","from":5767,"to":5772},
+        {"text":"puente","from":5772,"to":5789},
+        {"text":"nuevo.","from":5789,"to":5806},
+        {"text":"El","from":5806,"to":5812},
+        {"text":"certificado","from":5812,"to":5842},
+        {"text":"dice","from":5842,"to":5854},
+        {"text":"que","from":5854,"to":5862},
+        {"text":"se","from":5862,"to":5868},
+        {"text":"hizo","from":5868,"to":5879},
+        {"text":"según","from":5879,"to":5893},
+        {"text":"la","from":5893,"to":5898},
+        {"text":"norma,","from":5898,"to":5915},
+        {"text":"y","from":5915,"to":5918},
+        {"text":"la","from":5918,"to":5924},
+        {"text":"prueba","from":5924,"to":5940},
+        {"text":"de","from":5940,"to":5946},
+        {"text":"carga,","from":5946,"to":5963},
+        {"text":"cuánto","from":5963,"to":5980},
+        {"text":"aguanta.","from":5980,"to":6002}
+      ]
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-aguantar",
+      "text": "O sea, que aprobar una no dice nada de la otra, en ningún sentido.",
+      "from": 6011,
+      "audioFrames": 168,
+      "durationInFrames": 189,
+      "audio": null,
+      "words": [
+        {"text":"O","from":6011,"to":6014},
+        {"text":"sea,","from":6014,"to":6027},
+        {"text":"que","from":6027,"to":6036},
+        {"text":"aprobar","from":6036,"to":6059},
+        {"text":"una","from":6059,"to":6068},
+        {"text":"no","from":6068,"to":6074},
+        {"text":"dice","from":6074,"to":6087},
+        {"text":"nada","from":6087,"to":6100},
+        {"text":"de","from":6100,"to":6106},
+        {"text":"la","from":6106,"to":6112},
+        {"text":"otra,","from":6112,"to":6128},
+        {"text":"en","from":6128,"to":6135},
+        {"text":"ningún","from":6135,"to":6154},
+        {"text":"sentido.","from":6154,"to":6179}
+      ]
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-p2",
+      "text": "Vamos con otra. Un cliente grande pide a una empresa de logística que demuestre que cumple el estándar de seguridad del sector. La empresa le manda el informe de su último penetration test. En dos semanas, nadie consiguió entrar. ¿Qué documento responde mejor a lo que pide el cliente? Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
+      "from": 6232,
+      "audioFrames": 780,
+      "durationInFrames": 938,
+      "audio": null,
+      "words": [
+        {"text":"Vamos","from":6232,"to":6245},
+        {"text":"con","from":6245,"to":6252},
+        {"text":"otra.","from":6252,"to":6265},
+        {"text":"Un","from":6265,"to":6270},
+        {"text":"cliente","from":6270,"to":6288},
+        {"text":"grande","from":6288,"to":6303},
+        {"text":"pide","from":6303,"to":6314},
+        {"text":"a","from":6314,"to":6316},
+        {"text":"una","from":6316,"to":6324},
+        {"text":"empresa","from":6324,"to":6342},
+        {"text":"de","from":6342,"to":6347},
+        {"text":"logística","from":6347,"to":6370},
+        {"text":"que","from":6370,"to":6377},
+        {"text":"demuestre","from":6377,"to":6400},
+        {"text":"que","from":6400,"to":6408},
+        {"text":"cumple","from":6408,"to":6423},
+        {"text":"el","from":6423,"to":6428},
+        {"text":"estándar","from":6428,"to":6449},
+        {"text":"de","from":6449,"to":6454},
+        {"text":"seguridad","from":6454,"to":6477},
+        {"text":"del","from":6477,"to":6484},
+        {"text":"sector.","from":6484,"to":6502},
+        {"text":"La","from":6502,"to":6507},
+        {"text":"empresa","from":6507,"to":6525},
+        {"text":"le","from":6525,"to":6530},
+        {"text":"manda","from":6530,"to":6543},
+        {"text":"el","from":6543,"to":6548},
+        {"text":"informe","from":6548,"to":6566},
+        {"text":"de","from":6566,"to":6571},
+        {"text":"su","from":6571,"to":6576},
+        {"text":"último","from":6576,"to":6591},
+        {"text":"penetration","from":6591,"to":6619},
+        {"text":"test.","from":6619,"to":6632},
+        {"text":"En","from":6632,"to":6637},
+        {"text":"dos","from":6637,"to":6645},
+        {"text":"semanas,","from":6645,"to":6665},
+        {"text":"nadie","from":6665,"to":6678},
+        {"text":"consiguió","from":6678,"to":6701},
+        {"text":"entrar.","from":6701,"to":6719},
+        {"text":"¿Qué","from":6719,"to":6729},
+        {"text":"documento","from":6729,"to":6752},
+        {"text":"responde","from":6752,"to":6772},
+        {"text":"mejor","from":6772,"to":6785},
+        {"text":"a","from":6785,"to":6788},
+        {"text":"lo","from":6788,"to":6793},
+        {"text":"que","from":6793,"to":6800},
+        {"text":"pide","from":6800,"to":6811},
+        {"text":"el","from":6811,"to":6816},
+        {"text":"cliente?","from":6816,"to":6836},
+        {"text":"Fíjate","from":6836,"to":6851},
+        {"text":"en","from":6851,"to":6857},
+        {"text":"ese","from":6857,"to":6864},
+        {"text":"«mejor».","from":6864,"to":6885},
+        {"text":"Pide","from":6885,"to":6895},
+        {"text":"la","from":6895,"to":6900},
+        {"text":"que","from":6900,"to":6907},
+        {"text":"más","from":6907,"to":6915},
+        {"text":"encaja","from":6915,"to":6930},
+        {"text":"con","from":6930,"to":6938},
+        {"text":"este","from":6938,"to":6948},
+        {"text":"caso,","from":6948,"to":6961},
+        {"text":"aunque","from":6961,"to":6976},
+        {"text":"otra","from":6976,"to":6987},
+        {"text":"suene","from":6987,"to":6999},
+        {"text":"bien.","from":6999,"to":7012}
+      ]
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-p2",
+      "text": "La auditoría independiente, porque el cliente pide cumplimiento. Que nadie entrara dice que aguantó, no que cumpla cada control.",
+      "from": 7170,
+      "audioFrames": 228,
+      "durationInFrames": 237,
+      "audio": null,
+      "words": [
+        {"text":"La","from":7170,"to":7174},
+        {"text":"auditoría","from":7174,"to":7193},
+        {"text":"independiente,","from":7193,"to":7222},
+        {"text":"porque","from":7222,"to":7234},
+        {"text":"el","from":7234,"to":7238},
+        {"text":"cliente","from":7238,"to":7253},
+        {"text":"pide","from":7253,"to":7261},
+        {"text":"cumplimiento.","from":7261,"to":7288},
+        {"text":"Que","from":7288,"to":7294},
+        {"text":"nadie","from":7294,"to":7305},
+        {"text":"entrara","from":7305,"to":7319},
+        {"text":"dice","from":7319,"to":7328},
+        {"text":"que","from":7328,"to":7334},
+        {"text":"aguantó,","from":7334,"to":7350},
+        {"text":"no","from":7350,"to":7354},
+        {"text":"que","from":7354,"to":7361},
+        {"text":"cumpla","from":7361,"to":7373},
+        {"text":"cada","from":7373,"to":7381},
+        {"text":"control.","from":7381,"to":7398}
+      ]
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-p2",
+      "text": "La prueba de carga no te dice qué acero se usó.",
+      "from": 7407,
+      "audioFrames": 132,
+      "durationInFrames": 162,
+      "audio": null,
+      "words": [
+        {"text":"La","from":7407,"to":7414},
+        {"text":"prueba","from":7414,"to":7436},
+        {"text":"de","from":7436,"to":7443},
+        {"text":"carga","from":7443,"to":7461},
+        {"text":"no","from":7461,"to":7468},
+        {"text":"te","from":7468,"to":7475},
+        {"text":"dice","from":7475,"to":7489},
+        {"text":"qué","from":7489,"to":7500},
+        {"text":"acero","from":7500,"to":7518},
+        {"text":"se","from":7518,"to":7525},
+        {"text":"usó.","from":7525,"to":7539}
+      ]
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-modos",
+      "text": "Pasamos a cómo se prueba. Antes de tocar nada, se firma qué se puede probar, cuándo y cómo.",
+      "from": 7601,
+      "audioFrames": 216,
+      "durationInFrames": 225,
+      "audio": null,
+      "words": [
+        {"text":"Pasamos","from":7601,"to":7621},
+        {"text":"a","from":7621,"to":7624},
+        {"text":"cómo","from":7624,"to":7636},
+        {"text":"se","from":7636,"to":7642},
+        {"text":"prueba.","from":7642,"to":7662},
+        {"text":"Antes","from":7662,"to":7677},
+        {"text":"de","from":7677,"to":7683},
+        {"text":"tocar","from":7683,"to":7697},
+        {"text":"nada,","from":7697,"to":7712},
+        {"text":"se","from":7712,"to":7718},
+        {"text":"firma","from":7718,"to":7732},
+        {"text":"qué","from":7732,"to":7741},
+        {"text":"se","from":7741,"to":7747},
+        {"text":"puede","from":7747,"to":7762},
+        {"text":"probar,","from":7762,"to":7782},
+        {"text":"cuándo","from":7782,"to":7799},
+        {"text":"y","from":7799,"to":7802},
+        {"text":"cómo.","from":7802,"to":7817}
+      ]
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-modos",
+      "text": "Son las rules of engagement, y sin ese papel no es una prueba.",
+      "from": 7826,
+      "audioFrames": 156,
+      "durationInFrames": 165,
+      "audio": null,
+      "words": [
+        {"text":"Son","from":7826,"to":7835},
+        {"text":"las","from":7835,"to":7845},
+        {"text":"rules","from":7845,"to":7860},
+        {"text":"of","from":7860,"to":7867},
+        {"text":"engagement,","from":7867,"to":7901},
+        {"text":"y","from":7901,"to":7904},
+        {"text":"sin","from":7904,"to":7913},
+        {"text":"ese","from":7913,"to":7923},
+        {"text":"papel","from":7923,"to":7938},
+        {"text":"no","from":7938,"to":7945},
+        {"text":"es","from":7945,"to":7951},
+        {"text":"una","from":7951,"to":7960},
+        {"text":"prueba.","from":7960,"to":7982}
+      ]
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-modos",
+      "text": "Hay cuatro maneras de probar. Si alguien intenta colarse en una oficina detrás de otra persona, es physical.",
+      "from": 7991,
+      "audioFrames": 216,
+      "durationInFrames": 224,
+      "audio": null,
+      "words": [
+        {"text":"Hay","from":7991,"to":7998},
+        {"text":"cuatro","from":7998,"to":8012},
+        {"text":"maneras","from":8012,"to":8029},
+        {"text":"de","from":8029,"to":8034},
+        {"text":"probar.","from":8034,"to":8050},
+        {"text":"Si","from":8050,"to":8055},
+        {"text":"alguien","from":8055,"to":8072},
+        {"text":"intenta","from":8072,"to":8088},
+        {"text":"colarse","from":8088,"to":8105},
+        {"text":"en","from":8105,"to":8110},
+        {"text":"una","from":8110,"to":8117},
+        {"text":"oficina","from":8117,"to":8133},
+        {"text":"detrás","from":8133,"to":8148},
+        {"text":"de","from":8148,"to":8152},
+        {"text":"otra","from":8152,"to":8162},
+        {"text":"persona,","from":8162,"to":8181},
+        {"text":"es","from":8181,"to":8186},
+        {"text":"physical.","from":8186,"to":8207}
+      ]
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-modos",
+      "text": "Si un equipo persigue un objetivo sin avisar a nadie, es offensive, el red team.",
+      "from": 8215,
+      "audioFrames": 180,
+      "durationInFrames": 188,
+      "audio": null,
+      "words": [
+        {"text":"Si","from":8215,"to":8220},
+        {"text":"un","from":8220,"to":8226},
+        {"text":"equipo","from":8226,"to":8242},
+        {"text":"persigue","from":8242,"to":8264},
+        {"text":"un","from":8264,"to":8270},
+        {"text":"objetivo","from":8270,"to":8291},
+        {"text":"sin","from":8291,"to":8300},
+        {"text":"avisar","from":8300,"to":8316},
+        {"text":"a","from":8316,"to":8319},
+        {"text":"nadie,","from":8319,"to":8335},
+        {"text":"es","from":8335,"to":8340},
+        {"text":"offensive,","from":8340,"to":8368},
+        {"text":"el","from":8368,"to":8373},
+        {"text":"red","from":8373,"to":8381},
+        {"text":"team.","from":8381,"to":8395}
+      ]
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-modos",
+      "text": "Si lo que se mide es si el SOC lo ve, lo entiende y lo contiene, es defensive, el blue team.",
+      "from": 8403,
+      "audioFrames": 252,
+      "durationInFrames": 260,
+      "audio": null,
+      "words": [
+        {"text":"Si","from":8403,"to":8410},
+        {"text":"lo","from":8410,"to":8417},
+        {"text":"que","from":8417,"to":8428},
+        {"text":"se","from":8428,"to":8435},
+        {"text":"mide","from":8435,"to":8449},
+        {"text":"es","from":8449,"to":8456},
+        {"text":"si","from":8456,"to":8463},
+        {"text":"el","from":8463,"to":8470},
+        {"text":"SOC","from":8470,"to":8480},
+        {"text":"lo","from":8480,"to":8487},
+        {"text":"ve,","from":8487,"to":8498},
+        {"text":"lo","from":8498,"to":8505},
+        {"text":"entiende","from":8505,"to":8533},
+        {"text":"y","from":8533,"to":8536},
+        {"text":"lo","from":8536,"to":8543},
+        {"text":"contiene,","from":8543,"to":8575},
+        {"text":"es","from":8575,"to":8582},
+        {"text":"defensive,","from":8582,"to":8617},
+        {"text":"el","from":8617,"to":8624},
+        {"text":"blue","from":8624,"to":8638},
+        {"text":"team.","from":8638,"to":8655}
+      ]
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-modos",
+      "text": "Y si ataque y defensa se sientan juntos y miran, técnica a técnica, qué se vio, es integrated, el purple team.",
+      "from": 8663,
+      "audioFrames": 252,
+      "durationInFrames": 261,
+      "audio": null,
+      "words": [
+        {"text":"Y","from":8663,"to":8666},
+        {"text":"si","from":8666,"to":8671},
+        {"text":"ataque","from":8671,"to":8688},
+        {"text":"y","from":8688,"to":8691},
+        {"text":"defensa","from":8691,"to":8711},
+        {"text":"se","from":8711,"to":8716},
+        {"text":"sientan","from":8716,"to":8736},
+        {"text":"juntos","from":8736,"to":8753},
+        {"text":"y","from":8753,"to":8755},
+        {"text":"miran,","from":8755,"to":8772},
+        {"text":"técnica","from":8772,"to":8792},
+        {"text":"a","from":8792,"to":8795},
+        {"text":"técnica,","from":8795,"to":8817},
+        {"text":"qué","from":8817,"to":8825},
+        {"text":"se","from":8825,"to":8831},
+        {"text":"vio,","from":8831,"to":8842},
+        {"text":"es","from":8842,"to":8848},
+        {"text":"integrated,","from":8848,"to":8879},
+        {"text":"el","from":8879,"to":8884},
+        {"text":"purple","from":8884,"to":8901},
+        {"text":"team.","from":8901,"to":8915}
+      ]
+    },
+    {
+      "id": "s07-07",
+      "scene": "s07-modos",
+      "text": "La propuesta del puerto es empezar por el purple y, después, un red team sin avisar.",
+      "from": 8924,
+      "audioFrames": 192,
+      "durationInFrames": 210,
+      "audio": null,
+      "words": [
+        {"text":"La","from":8924,"to":8930},
+        {"text":"propuesta","from":8930,"to":8955},
+        {"text":"del","from":8955,"to":8963},
+        {"text":"puerto","from":8963,"to":8980},
+        {"text":"es","from":8980,"to":8985},
+        {"text":"empezar","from":8985,"to":9005},
+        {"text":"por","from":9005,"to":9013},
+        {"text":"el","from":9013,"to":9019},
+        {"text":"purple","from":9019,"to":9035},
+        {"text":"y,","from":9035,"to":9041},
+        {"text":"después,","from":9041,"to":9063},
+        {"text":"un","from":9063,"to":9069},
+        {"text":"red","from":9069,"to":9077},
+        {"text":"team","from":9077,"to":9088},
+        {"text":"sin","from":9088,"to":9097},
+        {"text":"avisar.","from":9097,"to":9116}
+      ]
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-p3",
+      "text": "Te toca otra vez. Un banco reproduce en su red, una a una, técnicas de ataque ya conocidas. Nadie intenta llegar a ningún sitio. Solo se mide cuánto tarda su centro de operaciones en verlas, entenderlas y contenerlas. ¿Qué tipo de prueba describe mejor el ejercicio?",
+      "from": 9166,
+      "audioFrames": 552,
+      "durationInFrames": 710,
+      "audio": null,
+      "words": [
+        {"text":"Te","from":9166,"to":9171},
+        {"text":"toca","from":9171,"to":9181},
+        {"text":"otra","from":9181,"to":9191},
+        {"text":"vez.","from":9191,"to":9201},
+        {"text":"Un","from":9201,"to":9206},
+        {"text":"banco","from":9206,"to":9218},
+        {"text":"reproduce","from":9218,"to":9241},
+        {"text":"en","from":9241,"to":9246},
+        {"text":"su","from":9246,"to":9251},
+        {"text":"red,","from":9251,"to":9261},
+        {"text":"una","from":9261,"to":9268},
+        {"text":"a","from":9268,"to":9271},
+        {"text":"una,","from":9271,"to":9281},
+        {"text":"técnicas","from":9281,"to":9301},
+        {"text":"de","from":9301,"to":9306},
+        {"text":"ataque","from":9306,"to":9321},
+        {"text":"ya","from":9321,"to":9326},
+        {"text":"conocidas.","from":9326,"to":9351},
+        {"text":"Nadie","from":9351,"to":9363},
+        {"text":"intenta","from":9363,"to":9381},
+        {"text":"llegar","from":9381,"to":9396},
+        {"text":"a","from":9396,"to":9398},
+        {"text":"ningún","from":9398,"to":9413},
+        {"text":"sitio.","from":9413,"to":9428},
+        {"text":"Solo","from":9428,"to":9438},
+        {"text":"se","from":9438,"to":9443},
+        {"text":"mide","from":9443,"to":9453},
+        {"text":"cuánto","from":9453,"to":9468},
+        {"text":"tarda","from":9468,"to":9481},
+        {"text":"su","from":9481,"to":9486},
+        {"text":"centro","from":9486,"to":9501},
+        {"text":"de","from":9501,"to":9506},
+        {"text":"operaciones","from":9506,"to":9533},
+        {"text":"en","from":9533,"to":9538},
+        {"text":"verlas,","from":9538,"to":9556},
+        {"text":"entenderlas","from":9556,"to":9583},
+        {"text":"y","from":9583,"to":9586},
+        {"text":"contenerlas.","from":9586,"to":9616},
+        {"text":"¿Qué","from":9616,"to":9626},
+        {"text":"tipo","from":9626,"to":9636},
+        {"text":"de","from":9636,"to":9641},
+        {"text":"prueba","from":9641,"to":9656},
+        {"text":"describe","from":9656,"to":9676},
+        {"text":"mejor","from":9676,"to":9688},
+        {"text":"el","from":9688,"to":9693},
+        {"text":"ejercicio?","from":9693,"to":9718}
+      ]
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-p3",
+      "text": "Es defensive, el blue team, porque lo que se mide es la detección. Las técnicas de ataque empujan hacia el red team, pero nadie persigue nada.",
+      "from": 9876,
+      "audioFrames": 312,
+      "durationInFrames": 321,
+      "audio": null,
+      "words": [
+        {"text":"Es","from":9876,"to":9881},
+        {"text":"defensive,","from":9881,"to":9908},
+        {"text":"el","from":9908,"to":9913},
+        {"text":"blue","from":9913,"to":9924},
+        {"text":"team,","from":9924,"to":9937},
+        {"text":"porque","from":9937,"to":9953},
+        {"text":"lo","from":9953,"to":9959},
+        {"text":"que","from":9959,"to":9967},
+        {"text":"se","from":9967,"to":9972},
+        {"text":"mide","from":9972,"to":9983},
+        {"text":"es","from":9983,"to":9988},
+        {"text":"la","from":9988,"to":9993},
+        {"text":"detección.","from":9993,"to":10020},
+        {"text":"Las","from":10020,"to":10028},
+        {"text":"técnicas","from":10028,"to":10049},
+        {"text":"de","from":10049,"to":10055},
+        {"text":"ataque","from":10055,"to":10071},
+        {"text":"empujan","from":10071,"to":10089},
+        {"text":"hacia","from":10089,"to":10103},
+        {"text":"el","from":10103,"to":10108},
+        {"text":"red","from":10108,"to":10116},
+        {"text":"team,","from":10116,"to":10129},
+        {"text":"pero","from":10129,"to":10140},
+        {"text":"nadie","from":10140,"to":10153},
+        {"text":"persigue","from":10153,"to":10175},
+        {"text":"nada.","from":10175,"to":10188}
+      ]
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-p3",
+      "text": "O sea, que aquí no se mide si entran. Se mide al SOC.",
+      "from": 10197,
+      "audioFrames": 156,
+      "durationInFrames": 186,
+      "audio": null,
+      "words": [
+        {"text":"O","from":10197,"to":10201},
+        {"text":"sea,","from":10201,"to":10216},
+        {"text":"que","from":10216,"to":10227},
+        {"text":"aquí","from":10227,"to":10243},
+        {"text":"no","from":10243,"to":10250},
+        {"text":"se","from":10250,"to":10258},
+        {"text":"mide","from":10258,"to":10273},
+        {"text":"si","from":10273,"to":10281},
+        {"text":"entran.","from":10281,"to":10307},
+        {"text":"Se","from":10307,"to":10315},
+        {"text":"mide","from":10315,"to":10330},
+        {"text":"al","from":10330,"to":10338},
+        {"text":"SOC.","from":10338,"to":10353}
+      ]
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-contar",
+      "text": "Ahora, cuánto le cuentas a quien prueba. Hay tres sobres.",
+      "from": 10415,
+      "audioFrames": 120,
+      "durationInFrames": 129,
+      "audio": null,
+      "words": [
+        {"text":"Ahora,","from":10415,"to":10430},
+        {"text":"cuánto","from":10430,"to":10445},
+        {"text":"le","from":10445,"to":10450},
+        {"text":"cuentas","from":10450,"to":10468},
+        {"text":"a","from":10468,"to":10470},
+        {"text":"quien","from":10470,"to":10483},
+        {"text":"prueba.","from":10483,"to":10500},
+        {"text":"Hay","from":10500,"to":10508},
+        {"text":"tres","from":10508,"to":10518},
+        {"text":"sobres.","from":10518,"to":10535}
+      ]
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-contar",
+      "text": "Si no le das nada, prueba como alguien de fuera. Es lo más realista, pero cuesta mucho tiempo. Eso es unknown environment.",
+      "from": 10544,
+      "audioFrames": 264,
+      "durationInFrames": 273,
+      "audio": null,
+      "words": [
+        {"text":"Si","from":10544,"to":10549},
+        {"text":"no","from":10549,"to":10554},
+        {"text":"le","from":10554,"to":10560},
+        {"text":"das","from":10560,"to":10568},
+        {"text":"nada,","from":10568,"to":10581},
+        {"text":"prueba","from":10581,"to":10596},
+        {"text":"como","from":10596,"to":10607},
+        {"text":"alguien","from":10607,"to":10625},
+        {"text":"de","from":10625,"to":10630},
+        {"text":"fuera.","from":10630,"to":10646},
+        {"text":"Es","from":10646,"to":10651},
+        {"text":"lo","from":10651,"to":10656},
+        {"text":"más","from":10656,"to":10664},
+        {"text":"realista,","from":10664,"to":10688},
+        {"text":"pero","from":10688,"to":10698},
+        {"text":"cuesta","from":10698,"to":10714},
+        {"text":"mucho","from":10714,"to":10727},
+        {"text":"tiempo.","from":10727,"to":10745},
+        {"text":"Eso","from":10745,"to":10753},
+        {"text":"es","from":10753,"to":10758},
+        {"text":"unknown","from":10758,"to":10777},
+        {"text":"environment.","from":10777,"to":10808}
+      ]
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-contar",
+      "text": "Con una cuenta normal, ve lo que vería cualquier usuario o un socio. Es partially known.",
+      "from": 10817,
+      "audioFrames": 192,
+      "durationInFrames": 200,
+      "audio": null,
+      "words": [
+        {"text":"Con","from":10817,"to":10825},
+        {"text":"una","from":10825,"to":10833},
+        {"text":"cuenta","from":10833,"to":10849},
+        {"text":"normal,","from":10849,"to":10867},
+        {"text":"ve","from":10867,"to":10872},
+        {"text":"lo","from":10872,"to":10877},
+        {"text":"que","from":10877,"to":10885},
+        {"text":"vería","from":10885,"to":10899},
+        {"text":"cualquier","from":10899,"to":10922},
+        {"text":"usuario","from":10922,"to":10941},
+        {"text":"o","from":10941,"to":10943},
+        {"text":"un","from":10943,"to":10949},
+        {"text":"socio.","from":10949,"to":10964},
+        {"text":"Es","from":10964,"to":10970},
+        {"text":"partially","from":10970,"to":10993},
+        {"text":"known.","from":10993,"to":11009}
+      ]
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-contar",
+      "text": "Y con los planos y las credenciales, cubre muchísimo en poco tiempo, aunque no se parece a un atacante de fuera. Es known environment.",
+      "from": 11017,
+      "audioFrames": 288,
+      "durationInFrames": 297,
+      "audio": null,
+      "words": [
+        {"text":"Y","from":11017,"to":11020},
+        {"text":"con","from":11020,"to":11027},
+        {"text":"los","from":11027,"to":11035},
+        {"text":"planos","from":11035,"to":11051},
+        {"text":"y","from":11051,"to":11053},
+        {"text":"las","from":11053,"to":11061},
+        {"text":"credenciales,","from":11061,"to":11095},
+        {"text":"cubre","from":11095,"to":11108},
+        {"text":"muchísimo","from":11108,"to":11131},
+        {"text":"en","from":11131,"to":11136},
+        {"text":"poco","from":11136,"to":11147},
+        {"text":"tiempo,","from":11147,"to":11165},
+        {"text":"aunque","from":11165,"to":11180},
+        {"text":"no","from":11180,"to":11186},
+        {"text":"se","from":11186,"to":11191},
+        {"text":"parece","from":11191,"to":11206},
+        {"text":"a","from":11206,"to":11209},
+        {"text":"un","from":11209,"to":11214},
+        {"text":"atacante","from":11214,"to":11235},
+        {"text":"de","from":11235,"to":11240},
+        {"text":"fuera.","from":11240,"to":11256},
+        {"text":"Es","from":11256,"to":11261},
+        {"text":"known","from":11261,"to":11274},
+        {"text":"environment.","from":11274,"to":11305}
+      ]
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-contar",
+      "text": "Es como una sala de escape. Sin pistas es el juego de verdad, una pista te ayuda, y con el plano lo compruebas todo enseguida.",
+      "from": 11314,
+      "audioFrames": 300,
+      "durationInFrames": 309,
+      "audio": null,
+      "words": [
+        {"text":"Es","from":11314,"to":11320},
+        {"text":"como","from":11320,"to":11332},
+        {"text":"una","from":11332,"to":11340},
+        {"text":"sala","from":11340,"to":11352},
+        {"text":"de","from":11352,"to":11358},
+        {"text":"escape.","from":11358,"to":11379},
+        {"text":"Sin","from":11379,"to":11388},
+        {"text":"pistas","from":11388,"to":11405},
+        {"text":"es","from":11405,"to":11411},
+        {"text":"el","from":11411,"to":11417},
+        {"text":"juego","from":11417,"to":11432},
+        {"text":"de","from":11432,"to":11438},
+        {"text":"verdad,","from":11438,"to":11458},
+        {"text":"una","from":11458,"to":11467},
+        {"text":"pista","from":11467,"to":11482},
+        {"text":"te","from":11482,"to":11488},
+        {"text":"ayuda,","from":11488,"to":11505},
+        {"text":"y","from":11505,"to":11508},
+        {"text":"con","from":11508,"to":11517},
+        {"text":"el","from":11517,"to":11523},
+        {"text":"plano","from":11523,"to":11538},
+        {"text":"lo","from":11538,"to":11543},
+        {"text":"compruebas","from":11543,"to":11573},
+        {"text":"todo","from":11573,"to":11585},
+        {"text":"enseguida.","from":11585,"to":11614}
+      ]
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-contar",
+      "text": "El puerto propone la aplicación nueva con todo, y lo que se ve desde fuera, sin nada.",
+      "from": 11623,
+      "audioFrames": 204,
+      "durationInFrames": 222,
+      "audio": null,
+      "words": [
+        {"text":"El","from":11623,"to":11629},
+        {"text":"puerto","from":11629,"to":11647},
+        {"text":"propone","from":11647,"to":11667},
+        {"text":"la","from":11667,"to":11673},
+        {"text":"aplicación","from":11673,"to":11703},
+        {"text":"nueva","from":11703,"to":11718},
+        {"text":"con","from":11718,"to":11726},
+        {"text":"todo,","from":11726,"to":11741},
+        {"text":"y","from":11741,"to":11744},
+        {"text":"lo","from":11744,"to":11750},
+        {"text":"que","from":11750,"to":11759},
+        {"text":"se","from":11759,"to":11765},
+        {"text":"ve","from":11765,"to":11771},
+        {"text":"desde","from":11771,"to":11786},
+        {"text":"fuera,","from":11786,"to":11803},
+        {"text":"sin","from":11803,"to":11812},
+        {"text":"nada.","from":11812,"to":11827}
+      ]
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-p4",
+      "text": "A ver esta. Una plataforma de reservas quiere saber qué podría hacer alguien que ya es cliente suyo. Al equipo de pruebas solo le da una cuenta de cliente normal, ni planos, ni código, ni accesos de administración. ¿Qué nivel de conocimiento del entorno encaja mejor?",
+      "from": 11877,
+      "audioFrames": 552,
+      "durationInFrames": 710,
+      "audio": null,
+      "words": [
+        {"text":"A","from":11877,"to":11879},
+        {"text":"ver","from":11879,"to":11887},
+        {"text":"esta.","from":11887,"to":11899},
+        {"text":"Una","from":11899,"to":11907},
+        {"text":"plataforma","from":11907,"to":11932},
+        {"text":"de","from":11932,"to":11937},
+        {"text":"reservas","from":11937,"to":11957},
+        {"text":"quiere","from":11957,"to":11971},
+        {"text":"saber","from":11971,"to":11984},
+        {"text":"qué","from":11984,"to":11991},
+        {"text":"podría","from":11991,"to":12006},
+        {"text":"hacer","from":12006,"to":12019},
+        {"text":"alguien","from":12019,"to":12036},
+        {"text":"que","from":12036,"to":12044},
+        {"text":"ya","from":12044,"to":12049},
+        {"text":"es","from":12049,"to":12054},
+        {"text":"cliente","from":12054,"to":12071},
+        {"text":"suyo.","from":12071,"to":12083},
+        {"text":"Al","from":12083,"to":12088},
+        {"text":"equipo","from":12088,"to":12103},
+        {"text":"de","from":12103,"to":12108},
+        {"text":"pruebas","from":12108,"to":12126},
+        {"text":"solo","from":12126,"to":12136},
+        {"text":"le","from":12136,"to":12141},
+        {"text":"da","from":12141,"to":12146},
+        {"text":"una","from":12146,"to":12153},
+        {"text":"cuenta","from":12153,"to":12168},
+        {"text":"de","from":12168,"to":12173},
+        {"text":"cliente","from":12173,"to":12190},
+        {"text":"normal,","from":12190,"to":12208},
+        {"text":"ni","from":12208,"to":12213},
+        {"text":"planos,","from":12213,"to":12230},
+        {"text":"ni","from":12230,"to":12235},
+        {"text":"código,","from":12235,"to":12252},
+        {"text":"ni","from":12252,"to":12257},
+        {"text":"accesos","from":12257,"to":12275},
+        {"text":"de","from":12275,"to":12280},
+        {"text":"administración.","from":12280,"to":12317},
+        {"text":"¿Qué","from":12317,"to":12327},
+        {"text":"nivel","from":12327,"to":12339},
+        {"text":"de","from":12339,"to":12344},
+        {"text":"conocimiento","from":12344,"to":12374},
+        {"text":"del","from":12374,"to":12382},
+        {"text":"entorno","from":12382,"to":12399},
+        {"text":"encaja","from":12399,"to":12414},
+        {"text":"mejor?","from":12414,"to":12429}
+      ]
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-p4",
+      "text": "Es partially known, porque solo recibe lo que tendría cualquier cliente. La cuenta empuja hacia known, pero known es tenerlo todo.",
+      "from": 12587,
+      "audioFrames": 252,
+      "durationInFrames": 261,
+      "audio": null,
+      "words": [
+        {"text":"Es","from":12587,"to":12592},
+        {"text":"partially","from":12592,"to":12612},
+        {"text":"known,","from":12612,"to":12626},
+        {"text":"porque","from":12626,"to":12640},
+        {"text":"solo","from":12640,"to":12649},
+        {"text":"recibe","from":12649,"to":12663},
+        {"text":"lo","from":12663,"to":12667},
+        {"text":"que","from":12667,"to":12674},
+        {"text":"tendría","from":12674,"to":12690},
+        {"text":"cualquier","from":12690,"to":12711},
+        {"text":"cliente.","from":12711,"to":12729},
+        {"text":"La","from":12729,"to":12734},
+        {"text":"cuenta","from":12734,"to":12747},
+        {"text":"empuja","from":12747,"to":12761},
+        {"text":"hacia","from":12761,"to":12773},
+        {"text":"known,","from":12773,"to":12786},
+        {"text":"pero","from":12786,"to":12795},
+        {"text":"known","from":12795,"to":12807},
+        {"text":"es","from":12807,"to":12812},
+        {"text":"tenerlo","from":12812,"to":12828},
+        {"text":"todo.","from":12828,"to":12839}
+      ]
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-p4",
+      "text": "O sea, que le das una pista para empezar, no el plano.",
+      "from": 12848,
+      "audioFrames": 144,
+      "durationInFrames": 174,
+      "audio": null,
+      "words": [
+        {"text":"O","from":12848,"to":12851},
+        {"text":"sea,","from":12851,"to":12865},
+        {"text":"que","from":12865,"to":12875},
+        {"text":"le","from":12875,"to":12881},
+        {"text":"das","from":12881,"to":12892},
+        {"text":"una","from":12892,"to":12902},
+        {"text":"pista","from":12902,"to":12918},
+        {"text":"para","from":12918,"to":12932},
+        {"text":"empezar,","from":12932,"to":12959},
+        {"text":"no","from":12959,"to":12965},
+        {"text":"el","from":12965,"to":12972},
+        {"text":"plano.","from":12972,"to":12992}
+      ]
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-mirar",
+      "text": "Y para acabar, por dónde se empieza. Antes de la ventana pactada, el equipo de pruebas solo miraría lo que ya es público.",
+      "from": 13054,
+      "audioFrames": 276,
+      "durationInFrames": 285,
+      "audio": null,
+      "words": [
+        {"text":"Y","from":13054,"to":13057},
+        {"text":"para","from":13057,"to":13068},
+        {"text":"acabar,","from":13068,"to":13087},
+        {"text":"por","from":13087,"to":13096},
+        {"text":"dónde","from":13096,"to":13110},
+        {"text":"se","from":13110,"to":13115},
+        {"text":"empieza.","from":13115,"to":13138},
+        {"text":"Antes","from":13138,"to":13152},
+        {"text":"de","from":13152,"to":13157},
+        {"text":"la","from":13157,"to":13163},
+        {"text":"ventana","from":13163,"to":13182},
+        {"text":"pactada,","from":13182,"to":13205},
+        {"text":"el","from":13205,"to":13210},
+        {"text":"equipo","from":13210,"to":13227},
+        {"text":"de","from":13227,"to":13232},
+        {"text":"pruebas","from":13232,"to":13252},
+        {"text":"solo","from":13252,"to":13263},
+        {"text":"miraría","from":13263,"to":13283},
+        {"text":"lo","from":13283,"to":13288},
+        {"text":"que","from":13288,"to":13297},
+        {"text":"ya","from":13297,"to":13302},
+        {"text":"es","from":13302,"to":13308},
+        {"text":"público.","from":13308,"to":13330}
+      ]
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-mirar",
+      "text": "Lo consultaría sin tocar el puerto, así que el registro del SOC seguiría vacío. Eso es passive reconnaissance.",
+      "from": 13339,
+      "audioFrames": 216,
+      "durationInFrames": 225,
+      "audio": null,
+      "words": [
+        {"text":"Lo","from":13339,"to":13344},
+        {"text":"consultaría","from":13344,"to":13369},
+        {"text":"sin","from":13369,"to":13376},
+        {"text":"tocar","from":13376,"to":13388},
+        {"text":"el","from":13388,"to":13392},
+        {"text":"puerto,","from":13392,"to":13409},
+        {"text":"así","from":13409,"to":13416},
+        {"text":"que","from":13416,"to":13423},
+        {"text":"el","from":13423,"to":13427},
+        {"text":"registro","from":13427,"to":13446},
+        {"text":"del","from":13446,"to":13453},
+        {"text":"SOC","from":13453,"to":13460},
+        {"text":"seguiría","from":13460,"to":13478},
+        {"text":"vacío.","from":13478,"to":13492},
+        {"text":"Eso","from":13492,"to":13499},
+        {"text":"es","from":13499,"to":13504},
+        {"text":"passive","from":13504,"to":13520},
+        {"text":"reconnaissance.","from":13520,"to":13555}
+      ]
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-mirar",
+      "text": "Ya dentro de la ventana, escanearía las máquinas del puerto y les preguntaría qué versiones llevan. Eso es active reconnaissance.",
+      "from": 13564,
+      "audioFrames": 240,
+      "durationInFrames": 248,
+      "audio": null,
+      "words": [
+        {"text":"Ya","from":13564,"to":13568},
+        {"text":"dentro","from":13568,"to":13581},
+        {"text":"de","from":13581,"to":13586},
+        {"text":"la","from":13586,"to":13590},
+        {"text":"ventana,","from":13590,"to":13608},
+        {"text":"escanearía","from":13608,"to":13629},
+        {"text":"las","from":13629,"to":13636},
+        {"text":"máquinas","from":13636,"to":13653},
+        {"text":"del","from":13653,"to":13660},
+        {"text":"puerto","from":13660,"to":13673},
+        {"text":"y","from":13673,"to":13675},
+        {"text":"les","from":13675,"to":13682},
+        {"text":"preguntaría","from":13682,"to":13706},
+        {"text":"qué","from":13706,"to":13712},
+        {"text":"versiones","from":13712,"to":13732},
+        {"text":"llevan.","from":13732,"to":13747},
+        {"text":"Eso","from":13747,"to":13754},
+        {"text":"es","from":13754,"to":13758},
+        {"text":"active","from":13758,"to":13771},
+        {"text":"reconnaissance.","from":13771,"to":13804}
+      ]
+    },
+    {
+      "id": "s11-04",
+      "scene": "s11-mirar",
+      "text": "Y entonces el registro se llenaría de líneas. Se ve, y por eso solo se hace cuando está pactado.",
+      "from": 13812,
+      "audioFrames": 228,
+      "durationInFrames": 237,
+      "audio": null,
+      "words": [
+        {"text":"Y","from":13812,"to":13815},
+        {"text":"entonces","from":13815,"to":13838},
+        {"text":"el","from":13838,"to":13844},
+        {"text":"registro","from":13844,"to":13868},
+        {"text":"se","from":13868,"to":13873},
+        {"text":"llenaría","from":13873,"to":13897},
+        {"text":"de","from":13897,"to":13903},
+        {"text":"líneas.","from":13903,"to":13923},
+        {"text":"Se","from":13923,"to":13929},
+        {"text":"ve,","from":13929,"to":13938},
+        {"text":"y","from":13938,"to":13941},
+        {"text":"por","from":13941,"to":13949},
+        {"text":"eso","from":13949,"to":13958},
+        {"text":"solo","from":13958,"to":13970},
+        {"text":"se","from":13970,"to":13976},
+        {"text":"hace","from":13976,"to":13987},
+        {"text":"cuando","from":13987,"to":14005},
+        {"text":"está","from":14005,"to":14017},
+        {"text":"pactado.","from":14017,"to":14040}
+      ]
+    },
+    {
+      "id": "s11-05",
+      "scene": "s11-mirar",
+      "text": "O sea, que no importa qué información sale. Importa si has tocado al objetivo.",
+      "from": 14049,
+      "audioFrames": 168,
+      "durationInFrames": 186,
+      "audio": null,
+      "words": [
+        {"text":"O","from":14049,"to":14052},
+        {"text":"sea,","from":14052,"to":14062},
+        {"text":"que","from":14062,"to":14070},
+        {"text":"no","from":14070,"to":14075},
+        {"text":"importa","from":14075,"to":14093},
+        {"text":"qué","from":14093,"to":14101},
+        {"text":"información","from":14101,"to":14129},
+        {"text":"sale.","from":14129,"to":14142},
+        {"text":"Importa","from":14142,"to":14160},
+        {"text":"si","from":14160,"to":14165},
+        {"text":"has","from":14165,"to":14173},
+        {"text":"tocado","from":14173,"to":14189},
+        {"text":"al","from":14189,"to":14194},
+        {"text":"objetivo.","from":14194,"to":14217}
+      ]
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-p5",
+      "text": "La última. Ya dentro de la ventana pactada, un equipo de pruebas busca a una empresa en un buscador de aparatos conectados a internet. Ve sus equipos, con sus puertos abiertos y sus versiones. En los registros de la empresa no aparece nada. ¿Qué tipo de actividad es?",
+      "from": 14267,
+      "audioFrames": 576,
+      "durationInFrames": 734,
+      "audio": null,
+      "words": [
+        {"text":"La","from":14267,"to":14272},
+        {"text":"última.","from":14272,"to":14291},
+        {"text":"Ya","from":14291,"to":14296},
+        {"text":"dentro","from":14296,"to":14312},
+        {"text":"de","from":14312,"to":14317},
+        {"text":"la","from":14317,"to":14322},
+        {"text":"ventana","from":14322,"to":14340},
+        {"text":"pactada,","from":14340,"to":14361},
+        {"text":"un","from":14361,"to":14366},
+        {"text":"equipo","from":14366,"to":14382},
+        {"text":"de","from":14382,"to":14387},
+        {"text":"pruebas","from":14387,"to":14406},
+        {"text":"busca","from":14406,"to":14419},
+        {"text":"a","from":14419,"to":14421},
+        {"text":"una","from":14421,"to":14429},
+        {"text":"empresa","from":14429,"to":14448},
+        {"text":"en","from":14448,"to":14453},
+        {"text":"un","from":14453,"to":14458},
+        {"text":"buscador","from":14458,"to":14479},
+        {"text":"de","from":14479,"to":14484},
+        {"text":"aparatos","from":14484,"to":14505},
+        {"text":"conectados","from":14505,"to":14531},
+        {"text":"a","from":14531,"to":14534},
+        {"text":"internet.","from":14534,"to":14558},
+        {"text":"Ve","from":14558,"to":14563},
+        {"text":"sus","from":14563,"to":14571},
+        {"text":"equipos,","from":14571,"to":14592},
+        {"text":"con","from":14592,"to":14600},
+        {"text":"sus","from":14600,"to":14607},
+        {"text":"puertos","from":14607,"to":14626},
+        {"text":"abiertos","from":14626,"to":14647},
+        {"text":"y","from":14647,"to":14649},
+        {"text":"sus","from":14649,"to":14657},
+        {"text":"versiones.","from":14657,"to":14683},
+        {"text":"En","from":14683,"to":14689},
+        {"text":"los","from":14689,"to":14696},
+        {"text":"registros","from":14696,"to":14720},
+        {"text":"de","from":14720,"to":14725},
+        {"text":"la","from":14725,"to":14730},
+        {"text":"empresa","from":14730,"to":14749},
+        {"text":"no","from":14749,"to":14754},
+        {"text":"aparece","from":14754,"to":14772},
+        {"text":"nada.","from":14772,"to":14785},
+        {"text":"¿Qué","from":14785,"to":14796},
+        {"text":"tipo","from":14796,"to":14806},
+        {"text":"de","from":14806,"to":14812},
+        {"text":"actividad","from":14812,"to":14835},
+        {"text":"es?","from":14835,"to":14843}
+      ]
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-p5",
+      "text": "Es passive reconnaissance, porque consulta a un tercero que ya lo recogió. Puertos y versiones suenan a escaneo, pero nadie ha tocado ni un equipo.",
+      "from": 15001,
+      "audioFrames": 300,
+      "durationInFrames": 309,
+      "audio": null,
+      "words": [
+        {"text":"Es","from":15001,"to":15006},
+        {"text":"passive","from":15006,"to":15023},
+        {"text":"reconnaissance,","from":15023,"to":15060},
+        {"text":"porque","from":15060,"to":15074},
+        {"text":"consulta","from":15074,"to":15094},
+        {"text":"a","from":15094,"to":15096},
+        {"text":"un","from":15096,"to":15101},
+        {"text":"tercero","from":15101,"to":15118},
+        {"text":"que","from":15118,"to":15125},
+        {"text":"ya","from":15125,"to":15130},
+        {"text":"lo","from":15130,"to":15135},
+        {"text":"recogió.","from":15135,"to":15155},
+        {"text":"Puertos","from":15155,"to":15172},
+        {"text":"y","from":15172,"to":15174},
+        {"text":"versiones","from":15174,"to":15196},
+        {"text":"suenan","from":15196,"to":15211},
+        {"text":"a","from":15211,"to":15213},
+        {"text":"escaneo,","from":15213,"to":15233},
+        {"text":"pero","from":15233,"to":15242},
+        {"text":"nadie","from":15242,"to":15255},
+        {"text":"ha","from":15255,"to":15260},
+        {"text":"tocado","from":15260,"to":15274},
+        {"text":"ni","from":15274,"to":15279},
+        {"text":"un","from":15279,"to":15284},
+        {"text":"equipo.","from":15284,"to":15301}
+      ]
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-p5",
+      "text": "El registro no miente. Nadie ha llamado a la puerta.",
+      "from": 15310,
+      "audioFrames": 120,
+      "durationInFrames": 150,
+      "audio": null,
+      "words": [
+        {"text":"El","from":15310,"to":15316},
+        {"text":"registro","from":15316,"to":15338},
+        {"text":"no","from":15338,"to":15343},
+        {"text":"miente.","from":15343,"to":15363},
+        {"text":"Nadie","from":15363,"to":15377},
+        {"text":"ha","from":15377,"to":15383},
+        {"text":"llamado","from":15383,"to":15402},
+        {"text":"a","from":15402,"to":15405},
+        {"text":"la","from":15405,"to":15410},
+        {"text":"puerta.","from":15410,"to":15430}
+      ]
+    },
+    {
+      "id": "s13-01",
+      "scene": "s13-cierre",
+      "text": "Te llevas tres reglas. La attestation compromete a la organización con un hecho, pero no prueba nada.",
+      "from": 15492,
+      "audioFrames": 204,
+      "durationInFrames": 212,
+      "audio": null,
+      "words": [
+        {"text":"Te","from":15492,"to":15497},
+        {"text":"llevas","from":15497,"to":15511},
+        {"text":"tres","from":15511,"to":15521},
+        {"text":"reglas.","from":15521,"to":15538},
+        {"text":"La","from":15538,"to":15542},
+        {"text":"attestation","from":15542,"to":15569},
+        {"text":"compromete","from":15569,"to":15593},
+        {"text":"a","from":15593,"to":15595},
+        {"text":"la","from":15595,"to":15600},
+        {"text":"organización","from":15600,"to":15629},
+        {"text":"con","from":15629,"to":15636},
+        {"text":"un","from":15636,"to":15641},
+        {"text":"hecho,","from":15641,"to":15655},
+        {"text":"pero","from":15655,"to":15665},
+        {"text":"no","from":15665,"to":15670},
+        {"text":"prueba","from":15670,"to":15684},
+        {"text":"nada.","from":15684,"to":15696}
+      ]
+    },
+    {
+      "id": "s13-02",
+      "scene": "s13-cierre",
+      "text": "Para convencer a alguien de fuera, cuenta quién comprueba. Y cumplir no es aguantar.",
+      "from": 15704,
+      "audioFrames": 168,
+      "durationInFrames": 176,
+      "audio": null,
+      "words": [
+        {"text":"Para","from":15704,"to":15713},
+        {"text":"convencer","from":15713,"to":15735},
+        {"text":"a","from":15735,"to":15737},
+        {"text":"alguien","from":15737,"to":15754},
+        {"text":"de","from":15754,"to":15758},
+        {"text":"fuera,","from":15758,"to":15773},
+        {"text":"cuenta","from":15773,"to":15787},
+        {"text":"quién","from":15787,"to":15799},
+        {"text":"comprueba.","from":15799,"to":15822},
+        {"text":"Y","from":15822,"to":15825},
+        {"text":"cumplir","from":15825,"to":15841},
+        {"text":"no","from":15841,"to":15846},
+        {"text":"es","from":15846,"to":15851},
+        {"text":"aguantar.","from":15851,"to":15872}
+      ]
+    },
+    {
+      "id": "s13-03",
+      "scene": "s13-cierre",
+      "text": "Y en la prueba, mira qué se mide, cuánto se cuenta y si se toca al objetivo.",
+      "from": 15880,
+      "audioFrames": 204,
+      "durationInFrames": 213,
+      "audio": null,
+      "words": [
+        {"text":"Y","from":15880,"to":15883},
+        {"text":"en","from":15883,"to":15890},
+        {"text":"la","from":15890,"to":15897},
+        {"text":"prueba,","from":15897,"to":15921},
+        {"text":"mira","from":15921,"to":15934},
+        {"text":"qué","from":15934,"to":15945},
+        {"text":"se","from":15945,"to":15951},
+        {"text":"mide,","from":15951,"to":15968},
+        {"text":"cuánto","from":15968,"to":15989},
+        {"text":"se","from":15989,"to":15996},
+        {"text":"cuenta","from":15996,"to":16016},
+        {"text":"y","from":16016,"to":16019},
+        {"text":"si","from":16019,"to":16026},
+        {"text":"se","from":16026,"to":16033},
+        {"text":"toca","from":16033,"to":16047},
+        {"text":"al","from":16047,"to":16053},
+        {"text":"objetivo.","from":16053,"to":16084}
+      ]
+    },
+    {
+      "id": "s13-04",
+      "scene": "s13-cierre",
+      "text": "Una firma declara, una auditoría comprueba que cumples y un pentest, que aguantas. Ahora te toca a ti, con las preguntas de la lección.",
+      "from": 16093,
+      "audioFrames": 288,
+      "durationInFrames": 296,
+      "audio": null,
+      "words": [
+        {"text":"Una","from":16093,"to":16101},
+        {"text":"firma","from":16101,"to":16114},
+        {"text":"declara,","from":16114,"to":16134},
+        {"text":"una","from":16134,"to":16142},
+        {"text":"auditoría","from":16142,"to":16165},
+        {"text":"comprueba","from":16165,"to":16188},
+        {"text":"que","from":16188,"to":16196},
+        {"text":"cumples","from":16196,"to":16214},
+        {"text":"y","from":16214,"to":16216},
+        {"text":"un","from":16216,"to":16222},
+        {"text":"pentest,","from":16222,"to":16242},
+        {"text":"que","from":16242,"to":16250},
+        {"text":"aguantas.","from":16250,"to":16273},
+        {"text":"Ahora","from":16273,"to":16286},
+        {"text":"te","from":16286,"to":16291},
+        {"text":"toca","from":16291,"to":16301},
+        {"text":"a","from":16301,"to":16304},
+        {"text":"ti,","from":16304,"to":16312},
+        {"text":"con","from":16312,"to":16319},
+        {"text":"las","from":16319,"to":16327},
+        {"text":"preguntas","from":16327,"to":16350},
+        {"text":"de","from":16350,"to":16355},
+        {"text":"la","from":16355,"to":16360},
+        {"text":"lección.","from":16360,"to":16381}
+      ]
+    }
+  ],
+  "captions": [
+    {
+      "from": 42,
+      "to": 184,
+      "lines": [
+        [
+          {"text":"La","from":45,"to":50},
+          {"text":"dirección","from":50,"to":70},
+          {"text":"del","from":70,"to":77},
+          {"text":"puerto","from":77,"to":91},
+          {"text":"de","from":91,"to":95},
+          {"text":"Halden","from":95,"to":109},
+          {"text":"debe","from":109,"to":118}
+        ],
+        [
+          {"text":"firmar","from":118,"to":132},
+          {"text":"ante","from":132,"to":141},
+          {"text":"la","from":141,"to":146},
+          {"text":"autoridad","from":146,"to":166},
+          {"text":"marítima,","from":166,"to":187}
+        ]
+      ]
+    },
+    {
+      "from": 184,
+      "to": 303,
+      "lines": [
+        [
+          {"text":"antes","from":187,"to":198},
+          {"text":"de","from":198,"to":203},
+          {"text":"su","from":203,"to":208},
+          {"text":"revisión","from":208,"to":226},
+          {"text":"anual,","from":226,"to":240}
+        ],
+        [
+          {"text":"que","from":240,"to":247},
+          {"text":"sus","from":247,"to":253},
+          {"text":"controles","from":253,"to":274},
+          {"text":"funcionan.","from":274,"to":297}
+        ]
+      ]
+    },
+    {
+      "from": 303,
+      "to": 350,
+      "lines": [
+        [
+          {"text":"Cumplir","from":306,"to":325},
+          {"text":"o","from":325,"to":328},
+          {"text":"aguantar.","from":328,"to":353}
+        ]
+      ]
+    },
+    {
+      "from": 350,
+      "to": 513,
+      "lines": [
+        [
+          {"text":"Porque","from":353,"to":370},
+          {"text":"el","from":370,"to":375},
+          {"text":"consejo","from":375,"to":394},
+          {"text":"quiere","from":394,"to":411},
+          {"text":"saber","from":411,"to":425},
+          {"text":"antes","from":425,"to":439}
+        ],
+        [
+          {"text":"si","from":439,"to":444},
+          {"text":"el","from":444,"to":450},
+          {"text":"puerto","from":450,"to":466},
+          {"text":"cumple,","from":466,"to":486},
+          {"text":"y","from":486,"to":488},
+          {"text":"si","from":488,"to":494},
+          {"text":"aguanta.","from":494,"to":516}
+        ]
+      ]
+    },
+    {
+      "from": 513,
+      "to": 678,
+      "lines": [
+        [
+          {"text":"Vas","from":516,"to":524},
+          {"text":"a","from":524,"to":527},
+          {"text":"ver","from":527,"to":535},
+          {"text":"quién","from":535,"to":549},
+          {"text":"lo","from":549,"to":555},
+          {"text":"firma,","from":555,"to":571},
+          {"text":"quién","from":571,"to":585}
+        ],
+        [
+          {"text":"lo","from":585,"to":590},
+          {"text":"comprueba","from":590,"to":615},
+          {"text":"y","from":615,"to":618},
+          {"text":"cómo","from":618,"to":629},
+          {"text":"se","from":629,"to":635},
+          {"text":"prueba.","from":635,"to":654}
+        ]
+      ]
+    },
+    {
+      "from": 695,
+      "to": 836,
+      "lines": [
+        [
+          {"text":"Empezamos","from":698,"to":723},
+          {"text":"por","from":723,"to":731},
+          {"text":"las","from":731,"to":739},
+          {"text":"firmas,","from":739,"to":759}
+        ],
+        [
+          {"text":"que","from":759,"to":767},
+          {"text":"en","from":767,"to":772},
+          {"text":"la","from":772,"to":778},
+          {"text":"mesa","from":778,"to":789},
+          {"text":"hay","from":789,"to":797},
+          {"text":"dos","from":797,"to":805},
+          {"text":"montones.","from":805,"to":830}
+        ]
+      ]
+    },
+    {
+      "from": 836,
+      "to": 886,
+      "lines": [
+        [
+          {"text":"En","from":839,"to":845},
+          {"text":"el","from":845,"to":850},
+          {"text":"de","from":850,"to":856},
+          {"text":"la","from":856,"to":861},
+          {"text":"izquierda,","from":861,"to":889}
+        ]
+      ]
+    },
+    {
+      "from": 886,
+      "to": 1072,
+      "lines": [
+        [
+          {"text":"cada","from":889,"to":900},
+          {"text":"persona","from":900,"to":920},
+          {"text":"de","from":920,"to":925},
+          {"text":"la","from":925,"to":931},
+          {"text":"plantilla","from":931,"to":956},
+          {"text":"firma","from":956,"to":970}
+        ],
+        [
+          {"text":"que","from":970,"to":978},
+          {"text":"ha","from":978,"to":984},
+          {"text":"leído","from":984,"to":997},
+          {"text":"la","from":997,"to":1003},
+          {"text":"política","from":1003,"to":1025},
+          {"text":"de","from":1025,"to":1031},
+          {"text":"uso","from":1031,"to":1039},
+          {"text":"aceptable.","from":1039,"to":1067}
+        ]
+      ]
+    },
+    {
+      "from": 1072,
+      "to": 1213,
+      "lines": [
+        [
+          {"text":"Una","from":1075,"to":1082},
+          {"text":"persona","from":1082,"to":1098},
+          {"text":"se","from":1098,"to":1103},
+          {"text":"compromete","from":1103,"to":1126},
+          {"text":"con","from":1126,"to":1133},
+          {"text":"una","from":1133,"to":1140},
+          {"text":"norma.","from":1140,"to":1154}
+        ],
+        [
+          {"text":"Eso","from":1154,"to":1161},
+          {"text":"es","from":1161,"to":1165},
+          {"text":"un","from":1165,"to":1170},
+          {"text":"acknowledgement.","from":1170,"to":1207}
+        ]
+      ]
+    },
+    {
+      "from": 1213,
+      "to": 1283,
+      "lines": [
+        [
+          {"text":"A","from":1216,"to":1219},
+          {"text":"la","from":1219,"to":1224},
+          {"text":"derecha,","from":1224,"to":1244},
+          {"text":"un","from":1244,"to":1250},
+          {"text":"solo","from":1250,"to":1260},
+          {"text":"documento.","from":1260,"to":1286}
+        ]
+      ]
+    },
+    {
+      "from": 1283,
+      "to": 1454,
+      "lines": [
+        [
+          {"text":"La","from":1286,"to":1291},
+          {"text":"dirección","from":1291,"to":1314},
+          {"text":"declara","from":1314,"to":1332},
+          {"text":"que","from":1332,"to":1340},
+          {"text":"los","from":1340,"to":1348},
+          {"text":"controles","from":1348,"to":1371}
+        ],
+        [
+          {"text":"funcionan,","from":1371,"to":1397},
+          {"text":"con","from":1397,"to":1405},
+          {"text":"su","from":1405,"to":1410},
+          {"text":"alcance","from":1410,"to":1428},
+          {"text":"y","from":1428,"to":1431},
+          {"text":"su","from":1431,"to":1436},
+          {"text":"periodo,","from":1436,"to":1457}
+        ]
+      ]
+    },
+    {
+      "from": 1454,
+      "to": 1485,
+      "lines": [
+        [
+          {"text":"y","from":1457,"to":1459},
+          {"text":"lo","from":1459,"to":1464},
+          {"text":"firma.","from":1464,"to":1480}
+        ]
+      ]
+    },
+    {
+      "from": 1485,
+      "to": 1619,
+      "lines": [
+        [
+          {"text":"Aquí","from":1488,"to":1499},
+          {"text":"es","from":1499,"to":1505},
+          {"text":"la","from":1505,"to":1510},
+          {"text":"organización","from":1510,"to":1544}
+        ],
+        [
+          {"text":"la","from":1544,"to":1549},
+          {"text":"que","from":1549,"to":1558},
+          {"text":"se","from":1558,"to":1563},
+          {"text":"compromete","from":1563,"to":1591},
+          {"text":"con","from":1591,"to":1599},
+          {"text":"un","from":1599,"to":1605},
+          {"text":"hecho,","from":1605,"to":1622}
+        ]
+      ]
+    },
+    {
+      "from": 1619,
+      "to": 1686,
+      "lines": [
+        [
+          {"text":"y","from":1622,"to":1624},
+          {"text":"eso","from":1624,"to":1633},
+          {"text":"es","from":1633,"to":1638},
+          {"text":"una","from":1638,"to":1647},
+          {"text":"attestation.","from":1647,"to":1680}
+        ]
+      ]
+    },
+    {
+      "from": 1686,
+      "to": 1799,
+      "lines": [
+        [
+          {"text":"Pero","from":1689,"to":1699},
+          {"text":"fíjate,","from":1699,"to":1716},
+          {"text":"ninguna","from":1716,"to":1733},
+          {"text":"de","from":1733,"to":1738},
+          {"text":"las","from":1738,"to":1746},
+          {"text":"dos","from":1746,"to":1753}
+        ],
+        [
+          {"text":"firmas","from":1753,"to":1768},
+          {"text":"comprueba","from":1768,"to":1790},
+          {"text":"nada.","from":1790,"to":1802}
+        ]
+      ]
+    },
+    {
+      "from": 1799,
+      "to": 1977,
+      "lines": [
+        [
+          {"text":"Si","from":1802,"to":1807},
+          {"text":"alguien","from":1807,"to":1825},
+          {"text":"pregunta","from":1825,"to":1844},
+          {"text":"si","from":1844,"to":1849},
+          {"text":"funciona","from":1849,"to":1869},
+          {"text":"de","from":1869,"to":1874},
+          {"text":"verdad,","from":1874,"to":1891}
+        ],
+        [
+          {"text":"la","from":1891,"to":1896},
+          {"text":"respuesta","from":1896,"to":1918},
+          {"text":"no","from":1918,"to":1923},
+          {"text":"es","from":1923,"to":1928},
+          {"text":"otra","from":1928,"to":1938},
+          {"text":"firma.","from":1938,"to":1953}
+        ]
+      ]
+    },
+    {
+      "from": 2000,
+      "to": 2049,
+      "lines": [
+        [
+          {"text":"Ahora,","from":2003,"to":2016},
+          {"text":"quién","from":2016,"to":2027},
+          {"text":"lo","from":2027,"to":2031},
+          {"text":"comprueba.","from":2031,"to":2052}
+        ]
+      ]
+    },
+    {
+      "from": 2049,
+      "to": 2213,
+      "lines": [
+        [
+          {"text":"Si","from":2052,"to":2057},
+          {"text":"Sistemas","from":2057,"to":2074},
+          {"text":"se","from":2074,"to":2078},
+          {"text":"revisa","from":2078,"to":2091},
+          {"text":"con","from":2091,"to":2097},
+          {"text":"su","from":2097,"to":2102},
+          {"text":"propia","from":2102,"to":2115},
+          {"text":"lista,","from":2115,"to":2128}
+        ],
+        [
+          {"text":"es","from":2128,"to":2132},
+          {"text":"un","from":2132,"to":2136},
+          {"text":"self-assessment,","from":2136,"to":2170},
+          {"text":"sin","from":2170,"to":2177},
+          {"text":"independencia.","from":2177,"to":2207}
+        ]
+      ]
+    },
+    {
+      "from": 2213,
+      "to": 2401,
+      "lines": [
+        [
+          {"text":"Si","from":2216,"to":2221},
+          {"text":"lo","from":2221,"to":2227},
+          {"text":"revisa","from":2227,"to":2242},
+          {"text":"una","from":2242,"to":2250},
+          {"text":"función","from":2250,"to":2269},
+          {"text":"de","from":2269,"to":2274},
+          {"text":"la","from":2274,"to":2280},
+          {"text":"casa,","from":2280,"to":2293},
+          {"text":"pero","from":2293,"to":2303}
+        ],
+        [
+          {"text":"separada","from":2303,"to":2325},
+          {"text":"de","from":2325,"to":2330},
+          {"text":"Sistemas,","from":2330,"to":2354},
+          {"text":"es","from":2354,"to":2359},
+          {"text":"internal","from":2359,"to":2380},
+          {"text":"audit.","from":2380,"to":2396}
+        ]
+      ]
+    },
+    {
+      "from": 2401,
+      "to": 2511,
+      "lines": [
+        [
+          {"text":"Informa","from":2404,"to":2421},
+          {"text":"al","from":2421,"to":2426},
+          {"text":"audit","from":2426,"to":2438},
+          {"text":"committee","from":2438,"to":2459}
+        ],
+        [
+          {"text":"del","from":2459,"to":2466},
+          {"text":"consejo,","from":2466,"to":2486},
+          {"text":"que","from":2486,"to":2493},
+          {"text":"no","from":2493,"to":2498},
+          {"text":"audita,","from":2498,"to":2514}
+        ]
+      ]
+    },
+    {
+      "from": 2511,
+      "to": 2578,
+      "lines": [
+        [
+          {"text":"pero","from":2514,"to":2524},
+          {"text":"protege","from":2524,"to":2541},
+          {"text":"a","from":2541,"to":2543},
+          {"text":"quien","from":2543,"to":2555},
+          {"text":"audita.","from":2555,"to":2572}
+        ]
+      ]
+    },
+    {
+      "from": 2578,
+      "to": 2669,
+      "lines": [
+        [
+          {"text":"Una","from":2581,"to":2588},
+          {"text":"firma","from":2588,"to":2599},
+          {"text":"de","from":2599,"to":2604},
+          {"text":"fuera,","from":2604,"to":2617}
+        ],
+        [
+          {"text":"sin","from":2617,"to":2624},
+          {"text":"interés","from":2624,"to":2640},
+          {"text":"en","from":2640,"to":2645},
+          {"text":"el","from":2645,"to":2649},
+          {"text":"resultado,","from":2649,"to":2672}
+        ]
+      ]
+    },
+    {
+      "from": 2669,
+      "to": 2755,
+      "lines": [
+        [
+          {"text":"hace","from":2672,"to":2681},
+          {"text":"un","from":2681,"to":2685},
+          {"text":"independent","from":2685,"to":2710},
+          {"text":"third-party","from":2710,"to":2735},
+          {"text":"audit.","from":2735,"to":2749}
+        ]
+      ]
+    },
+    {
+      "from": 2755,
+      "to": 2858,
+      "lines": [
+        [
+          {"text":"Y","from":2758,"to":2761},
+          {"text":"la","from":2761,"to":2766},
+          {"text":"autoridad","from":2766,"to":2789},
+          {"text":"marítima","from":2789,"to":2809}
+        ],
+        [
+          {"text":"llega","from":2809,"to":2822},
+          {"text":"sin","from":2822,"to":2830},
+          {"text":"que","from":2830,"to":2837},
+          {"text":"la","from":2837,"to":2843},
+          {"text":"llames,","from":2843,"to":2861}
+        ]
+      ]
+    },
+    {
+      "from": 2858,
+      "to": 3028,
+      "lines": [
+        [
+          {"text":"revisa","from":2861,"to":2876},
+          {"text":"lo","from":2876,"to":2881},
+          {"text":"que","from":2881,"to":2889},
+          {"text":"fija","from":2889,"to":2899},
+          {"text":"la","from":2899,"to":2904},
+          {"text":"ley","from":2904,"to":2912},
+          {"text":"y","from":2912,"to":2914},
+          {"text":"puede","from":2914,"to":2927}
+        ],
+        [
+          {"text":"sancionar.","from":2927,"to":2953},
+          {"text":"Es","from":2953,"to":2958},
+          {"text":"una","from":2958,"to":2966},
+          {"text":"regulatory","from":2966,"to":2991},
+          {"text":"examination.","from":2991,"to":3022}
+        ]
+      ]
+    },
+    {
+      "from": 3028,
+      "to": 3104,
+      "lines": [
+        [
+          {"text":"Como","from":3031,"to":3041},
+          {"text":"en","from":3041,"to":3046},
+          {"text":"el","from":3046,"to":3051},
+          {"text":"ascensor","from":3051,"to":3071},
+          {"text":"de","from":3071,"to":3076},
+          {"text":"tu","from":3076,"to":3082},
+          {"text":"comunidad.","from":3082,"to":3107}
+        ]
+      ]
+    },
+    {
+      "from": 3104,
+      "to": 3229,
+      "lines": [
+        [
+          {"text":"Al","from":3107,"to":3112},
+          {"text":"organismo","from":3112,"to":3135},
+          {"text":"de","from":3135,"to":3140},
+          {"text":"control","from":3140,"to":3157}
+        ],
+        [
+          {"text":"lo","from":3157,"to":3162},
+          {"text":"contratáis,","from":3162,"to":3190},
+          {"text":"a","from":3190,"to":3193},
+          {"text":"Industria","from":3193,"to":3215},
+          {"text":"no.","from":3215,"to":3223}
+        ]
+      ]
+    },
+    {
+      "from": 3229,
+      "to": 3436,
+      "lines": [
+        [
+          {"text":"O","from":3232,"to":3235},
+          {"text":"sea,","from":3235,"to":3246},
+          {"text":"que","from":3246,"to":3254},
+          {"text":"para","from":3254,"to":3265},
+          {"text":"convencer","from":3265,"to":3289},
+          {"text":"a","from":3289,"to":3292},
+          {"text":"alguien","from":3292,"to":3311},
+          {"text":"de","from":3311,"to":3317}
+        ],
+        [
+          {"text":"fuera,","from":3317,"to":3333},
+          {"text":"cuenta","from":3333,"to":3349},
+          {"text":"quién","from":3349,"to":3363},
+          {"text":"mira,","from":3363,"to":3377},
+          {"text":"no","from":3377,"to":3382},
+          {"text":"cuánto","from":3382,"to":3398},
+          {"text":"mira.","from":3398,"to":3412}
+        ]
+      ]
+    },
+    {
+      "from": 3459,
+      "to": 3480,
+      "lines": [
+        [
+          {"text":"Te","from":3462,"to":3468},
+          {"text":"toca.","from":3468,"to":3483}
+        ]
+      ]
+    },
+    {
+      "from": 3480,
+      "to": 3689,
+      "lines": [
+        [
+          {"text":"Una","from":3483,"to":3492},
+          {"text":"compañía","from":3492,"to":3515},
+          {"text":"eléctrica","from":3515,"to":3542},
+          {"text":"recibe","from":3542,"to":3559},
+          {"text":"la","from":3559,"to":3565},
+          {"text":"visita","from":3565,"to":3583},
+          {"text":"de","from":3583,"to":3589}
+        ],
+        [
+          {"text":"la","from":3589,"to":3595},
+          {"text":"autoridad","from":3595,"to":3621},
+          {"text":"que","from":3621,"to":3630},
+          {"text":"le","from":3630,"to":3636},
+          {"text":"concedió","from":3636,"to":3660},
+          {"text":"la","from":3660,"to":3666},
+          {"text":"licencia.","from":3666,"to":3692}
+        ]
+      ]
+    },
+    {
+      "from": 3689,
+      "to": 3828,
+      "lines": [
+        [
+          {"text":"No","from":3692,"to":3698},
+          {"text":"la","from":3698,"to":3704},
+          {"text":"ha","from":3704,"to":3710},
+          {"text":"pedido","from":3710,"to":3728},
+          {"text":"ni","from":3728,"to":3734},
+          {"text":"la","from":3734,"to":3740},
+          {"text":"paga,","from":3740,"to":3754}
+        ],
+        [
+          {"text":"y","from":3754,"to":3757},
+          {"text":"lo","from":3757,"to":3763},
+          {"text":"que","from":3763,"to":3772},
+          {"text":"se","from":3772,"to":3778},
+          {"text":"revisa","from":3778,"to":3796},
+          {"text":"lo","from":3796,"to":3802},
+          {"text":"fija","from":3802,"to":3813},
+          {"text":"la","from":3813,"to":3819},
+          {"text":"ley.","from":3819,"to":3831}
+        ]
+      ]
+    },
+    {
+      "from": 3828,
+      "to": 4050,
+      "lines": [
+        [
+          {"text":"Si","from":3831,"to":3837},
+          {"text":"algo","from":3837,"to":3849},
+          {"text":"falla,","from":3849,"to":3867},
+          {"text":"puede","from":3867,"to":3881},
+          {"text":"acabar","from":3881,"to":3899},
+          {"text":"en","from":3899,"to":3905},
+          {"text":"multa","from":3905,"to":3920},
+          {"text":"o","from":3920,"to":3923}
+        ],
+        [
+          {"text":"sin","from":3923,"to":3932},
+          {"text":"licencia.","from":3932,"to":3958},
+          {"text":"¿Qué","from":3958,"to":3970},
+          {"text":"tipo","from":3970,"to":3982},
+          {"text":"de","from":3982,"to":3988},
+          {"text":"evaluación","from":3988,"to":4017},
+          {"text":"es?","from":4017,"to":4026}
+        ]
+      ]
+    },
+    {
+      "from": 4181,
+      "to": 4325,
+      "lines": [
+        [
+          {"text":"Es","from":4184,"to":4189},
+          {"text":"una","from":4189,"to":4195},
+          {"text":"regulatory","from":4195,"to":4218},
+          {"text":"examination,","from":4218,"to":4245},
+          {"text":"porque","from":4245,"to":4258}
+        ],
+        [
+          {"text":"nadie","from":4258,"to":4270},
+          {"text":"la","from":4270,"to":4274},
+          {"text":"contrata","from":4274,"to":4292},
+          {"text":"y","from":4292,"to":4294},
+          {"text":"puede","from":4294,"to":4306},
+          {"text":"sancionar.","from":4306,"to":4328}
+        ]
+      ]
+    },
+    {
+      "from": 4325,
+      "to": 4478,
+      "lines": [
+        [
+          {"text":"La","from":4328,"to":4333},
+          {"text":"de","from":4333,"to":4337},
+          {"text":"terceros","from":4337,"to":4355},
+          {"text":"también","from":4355,"to":4371},
+          {"text":"es","from":4371,"to":4375},
+          {"text":"externa","from":4375,"to":4391}
+        ],
+        [
+          {"text":"e","from":4391,"to":4393},
+          {"text":"independiente,","from":4393,"to":4425},
+          {"text":"pero","from":4425,"to":4434},
+          {"text":"esa","from":4434,"to":4441},
+          {"text":"la","from":4441,"to":4445},
+          {"text":"contratas","from":4445,"to":4465},
+          {"text":"tú.","from":4465,"to":4472}
+        ]
+      ]
+    },
+    {
+      "from": 4478,
+      "to": 4685,
+      "lines": [
+        [
+          {"text":"O","from":4481,"to":4484},
+          {"text":"sea,","from":4484,"to":4494},
+          {"text":"que","from":4494,"to":4501},
+          {"text":"es","from":4501,"to":4506},
+          {"text":"Industria","from":4506,"to":4529},
+          {"text":"con","from":4529,"to":4537},
+          {"text":"su","from":4537,"to":4542},
+          {"text":"expediente,","from":4542,"to":4570}
+        ],
+        [
+          {"text":"no","from":4570,"to":4575},
+          {"text":"el","from":4575,"to":4580},
+          {"text":"organismo","from":4580,"to":4603},
+          {"text":"que","from":4603,"to":4610},
+          {"text":"contrata","from":4610,"to":4631},
+          {"text":"la","from":4631,"to":4636},
+          {"text":"comunidad.","from":4636,"to":4661}
+        ]
+      ]
+    },
+    {
+      "from": 4720,
+      "to": 4858,
+      "lines": [
+        [
+          {"text":"Con","from":4723,"to":4729},
+          {"text":"la","from":4729,"to":4734},
+          {"text":"auditoría","from":4734,"to":4753},
+          {"text":"independiente","from":4753,"to":4780},
+          {"text":"ya","from":4780,"to":4785}
+        ],
+        [
+          {"text":"encargada,","from":4785,"to":4806},
+          {"text":"el","from":4806,"to":4810},
+          {"text":"consejo","from":4810,"to":4825},
+          {"text":"pregunta","from":4825,"to":4842},
+          {"text":"otra","from":4842,"to":4851},
+          {"text":"cosa.","from":4851,"to":4861}
+        ]
+      ]
+    },
+    {
+      "from": 4858,
+      "to": 4933,
+      "lines": [
+        [
+          {"text":"¿Qué","from":4861,"to":4870},
+          {"text":"pasa","from":4870,"to":4878},
+          {"text":"si","from":4878,"to":4882},
+          {"text":"alguien","from":4882,"to":4897},
+          {"text":"intenta","from":4897,"to":4912},
+          {"text":"entrar?","from":4912,"to":4927}
+        ]
+      ]
+    },
+    {
+      "from": 4933,
+      "to": 5104,
+      "lines": [
+        [
+          {"text":"Y","from":4936,"to":4939},
+          {"text":"vuelve","from":4939,"to":4955},
+          {"text":"PAPER","from":4955,"to":4968},
+          {"text":"GOVERNOR,","from":4968,"to":4992},
+          {"text":"que","from":4992,"to":5000},
+          {"text":"vive","from":5000,"to":5011}
+        ],
+        [
+          {"text":"en","from":5011,"to":5016},
+          {"text":"los","from":5016,"to":5024},
+          {"text":"huecos","from":5024,"to":5040},
+          {"text":"de","from":5040,"to":5045},
+          {"text":"tu","from":5045,"to":5051},
+          {"text":"gobernanza.","from":5051,"to":5080}
+        ]
+      ]
+    },
+    {
+      "from": 5190,
+      "to": 5302,
+      "lines": [
+        [
+          {"text":"Pues","from":5193,"to":5204},
+          {"text":"no.","from":5204,"to":5213},
+          {"text":"Una","from":5213,"to":5221},
+          {"text":"auditoría","from":5221,"to":5246}
+        ],
+        [
+          {"text":"dice","from":5246,"to":5257},
+          {"text":"si","from":5257,"to":5263},
+          {"text":"cumples","from":5263,"to":5282},
+          {"text":"la","from":5282,"to":5288},
+          {"text":"norma.","from":5288,"to":5305}
+        ]
+      ]
+    },
+    {
+      "from": 5302,
+      "to": 5406,
+      "lines": [
+        [
+          {"text":"Si","from":5305,"to":5310},
+          {"text":"alguien","from":5310,"to":5330},
+          {"text":"puede","from":5330,"to":5344},
+          {"text":"entrar,","from":5344,"to":5363},
+          {"text":"eso","from":5363,"to":5372},
+          {"text":"no","from":5372,"to":5377},
+          {"text":"lo","from":5377,"to":5383},
+          {"text":"mira.","from":5383,"to":5397}
+        ]
+      ]
+    },
+    {
+      "from": 5406,
+      "to": 5546,
+      "lines": [
+        [
+          {"text":"La","from":5409,"to":5413},
+          {"text":"auditoría","from":5413,"to":5432},
+          {"text":"comprueba","from":5432,"to":5450},
+          {"text":"que","from":5450,"to":5456},
+          {"text":"cumples","from":5456,"to":5471}
+        ],
+        [
+          {"text":"el","from":5471,"to":5475},
+          {"text":"estándar,","from":5475,"to":5494},
+          {"text":"con","from":5494,"to":5500},
+          {"text":"evidencias","from":5500,"to":5520},
+          {"text":"y","from":5520,"to":5522},
+          {"text":"muestras.","from":5522,"to":5541}
+        ]
+      ]
+    },
+    {
+      "from": 5546,
+      "to": 5665,
+      "lines": [
+        [
+          {"text":"Para","from":5549,"to":5558},
+          {"text":"saber","from":5558,"to":5569},
+          {"text":"si","from":5569,"to":5573},
+          {"text":"aguantas,","from":5573,"to":5593},
+          {"text":"alguien","from":5593,"to":5609}
+        ],
+        [
+          {"text":"intenta","from":5609,"to":5624},
+          {"text":"romperlo,","from":5624,"to":5644},
+          {"text":"con","from":5644,"to":5651},
+          {"text":"permiso.","from":5651,"to":5668}
+        ]
+      ]
+    },
+    {
+      "from": 5665,
+      "to": 5747,
+      "lines": [
+        [
+          {"text":"Eso","from":5668,"to":5675},
+          {"text":"es","from":5675,"to":5679},
+          {"text":"un","from":5679,"to":5684},
+          {"text":"penetration","from":5684,"to":5708},
+          {"text":"test,","from":5708,"to":5719},
+          {"text":"un","from":5719,"to":5723},
+          {"text":"pentest.","from":5723,"to":5741}
+        ]
+      ]
+    },
+    {
+      "from": 5747,
+      "to": 5803,
+      "lines": [
+        [
+          {"text":"Es","from":5750,"to":5756},
+          {"text":"como","from":5756,"to":5767},
+          {"text":"un","from":5767,"to":5772},
+          {"text":"puente","from":5772,"to":5789},
+          {"text":"nuevo.","from":5789,"to":5806}
+        ]
+      ]
+    },
+    {
+      "from": 5803,
+      "to": 5960,
+      "lines": [
+        [
+          {"text":"El","from":5806,"to":5812},
+          {"text":"certificado","from":5812,"to":5842},
+          {"text":"dice","from":5842,"to":5854},
+          {"text":"que","from":5854,"to":5862},
+          {"text":"se","from":5862,"to":5868},
+          {"text":"hizo","from":5868,"to":5879}
+        ],
+        [
+          {"text":"según","from":5879,"to":5893},
+          {"text":"la","from":5893,"to":5898},
+          {"text":"norma,","from":5898,"to":5915},
+          {"text":"y","from":5915,"to":5918},
+          {"text":"la","from":5918,"to":5924},
+          {"text":"prueba","from":5924,"to":5940},
+          {"text":"de","from":5940,"to":5946},
+          {"text":"carga,","from":5946,"to":5963}
+        ]
+      ]
+    },
+    {
+      "from": 5960,
+      "to": 6008,
+      "lines": [
+        [
+          {"text":"cuánto","from":5963,"to":5980},
+          {"text":"aguanta.","from":5980,"to":6002}
+        ]
+      ]
+    },
+    {
+      "from": 6008,
+      "to": 6203,
+      "lines": [
+        [
+          {"text":"O","from":6011,"to":6014},
+          {"text":"sea,","from":6014,"to":6027},
+          {"text":"que","from":6027,"to":6036},
+          {"text":"aprobar","from":6036,"to":6059},
+          {"text":"una","from":6059,"to":6068},
+          {"text":"no","from":6068,"to":6074},
+          {"text":"dice","from":6074,"to":6087}
+        ],
+        [
+          {"text":"nada","from":6087,"to":6100},
+          {"text":"de","from":6100,"to":6106},
+          {"text":"la","from":6106,"to":6112},
+          {"text":"otra,","from":6112,"to":6128},
+          {"text":"en","from":6128,"to":6135},
+          {"text":"ningún","from":6135,"to":6154},
+          {"text":"sentido.","from":6154,"to":6179}
+        ]
+      ]
+    },
+    {
+      "from": 6229,
+      "to": 6262,
+      "lines": [
+        [
+          {"text":"Vamos","from":6232,"to":6245},
+          {"text":"con","from":6245,"to":6252},
+          {"text":"otra.","from":6252,"to":6265}
+        ]
+      ]
+    },
+    {
+      "from": 6262,
+      "to": 6420,
+      "lines": [
+        [
+          {"text":"Un","from":6265,"to":6270},
+          {"text":"cliente","from":6270,"to":6288},
+          {"text":"grande","from":6288,"to":6303},
+          {"text":"pide","from":6303,"to":6314},
+          {"text":"a","from":6314,"to":6316},
+          {"text":"una","from":6316,"to":6324},
+          {"text":"empresa","from":6324,"to":6342}
+        ],
+        [
+          {"text":"de","from":6342,"to":6347},
+          {"text":"logística","from":6347,"to":6370},
+          {"text":"que","from":6370,"to":6377},
+          {"text":"demuestre","from":6377,"to":6400},
+          {"text":"que","from":6400,"to":6408},
+          {"text":"cumple","from":6408,"to":6423}
+        ]
+      ]
+    },
+    {
+      "from": 6420,
+      "to": 6499,
+      "lines": [
+        [
+          {"text":"el","from":6423,"to":6428},
+          {"text":"estándar","from":6428,"to":6449},
+          {"text":"de","from":6449,"to":6454},
+          {"text":"seguridad","from":6454,"to":6477},
+          {"text":"del","from":6477,"to":6484},
+          {"text":"sector.","from":6484,"to":6502}
+        ]
+      ]
+    },
+    {
+      "from": 6499,
+      "to": 6629,
+      "lines": [
+        [
+          {"text":"La","from":6502,"to":6507},
+          {"text":"empresa","from":6507,"to":6525},
+          {"text":"le","from":6525,"to":6530},
+          {"text":"manda","from":6530,"to":6543},
+          {"text":"el","from":6543,"to":6548},
+          {"text":"informe","from":6548,"to":6566}
+        ],
+        [
+          {"text":"de","from":6566,"to":6571},
+          {"text":"su","from":6571,"to":6576},
+          {"text":"último","from":6576,"to":6591},
+          {"text":"penetration","from":6591,"to":6619},
+          {"text":"test.","from":6619,"to":6632}
+        ]
+      ]
+    },
+    {
+      "from": 6629,
+      "to": 6716,
+      "lines": [
+        [
+          {"text":"En","from":6632,"to":6637},
+          {"text":"dos","from":6637,"to":6645},
+          {"text":"semanas,","from":6645,"to":6665},
+          {"text":"nadie","from":6665,"to":6678},
+          {"text":"consiguió","from":6678,"to":6701},
+          {"text":"entrar.","from":6701,"to":6719}
+        ]
+      ]
+    },
+    {
+      "from": 6716,
+      "to": 6882,
+      "lines": [
+        [
+          {"text":"¿Qué","from":6719,"to":6729},
+          {"text":"documento","from":6729,"to":6752},
+          {"text":"responde","from":6752,"to":6772},
+          {"text":"mejor","from":6772,"to":6785},
+          {"text":"a","from":6785,"to":6788},
+          {"text":"lo","from":6788,"to":6793},
+          {"text":"que","from":6793,"to":6800}
+        ],
+        [
+          {"text":"pide","from":6800,"to":6811},
+          {"text":"el","from":6811,"to":6816},
+          {"text":"cliente?","from":6816,"to":6836},
+          {"text":"Fíjate","from":6836,"to":6851},
+          {"text":"en","from":6851,"to":6857},
+          {"text":"ese","from":6857,"to":6864},
+          {"text":"«mejor».","from":6864,"to":6885}
+        ]
+      ]
+    },
+    {
+      "from": 6882,
+      "to": 7036,
+      "lines": [
+        [
+          {"text":"Pide","from":6885,"to":6895},
+          {"text":"la","from":6895,"to":6900},
+          {"text":"que","from":6900,"to":6907},
+          {"text":"más","from":6907,"to":6915},
+          {"text":"encaja","from":6915,"to":6930},
+          {"text":"con","from":6930,"to":6938},
+          {"text":"este","from":6938,"to":6948}
+        ],
+        [
+          {"text":"caso,","from":6948,"to":6961},
+          {"text":"aunque","from":6961,"to":6976},
+          {"text":"otra","from":6976,"to":6987},
+          {"text":"suene","from":6987,"to":6999},
+          {"text":"bien.","from":6999,"to":7012}
+        ]
+      ]
+    },
+    {
+      "from": 7167,
+      "to": 7285,
+      "lines": [
+        [
+          {"text":"La","from":7170,"to":7174},
+          {"text":"auditoría","from":7174,"to":7193},
+          {"text":"independiente,","from":7193,"to":7222}
+        ],
+        [
+          {"text":"porque","from":7222,"to":7234},
+          {"text":"el","from":7234,"to":7238},
+          {"text":"cliente","from":7238,"to":7253},
+          {"text":"pide","from":7253,"to":7261},
+          {"text":"cumplimiento.","from":7261,"to":7288}
+        ]
+      ]
+    },
+    {
+      "from": 7285,
+      "to": 7404,
+      "lines": [
+        [
+          {"text":"Que","from":7288,"to":7294},
+          {"text":"nadie","from":7294,"to":7305},
+          {"text":"entrara","from":7305,"to":7319},
+          {"text":"dice","from":7319,"to":7328},
+          {"text":"que","from":7328,"to":7334},
+          {"text":"aguantó,","from":7334,"to":7350}
+        ],
+        [
+          {"text":"no","from":7350,"to":7354},
+          {"text":"que","from":7354,"to":7361},
+          {"text":"cumpla","from":7361,"to":7373},
+          {"text":"cada","from":7373,"to":7381},
+          {"text":"control.","from":7381,"to":7398}
+        ]
+      ]
+    },
+    {
+      "from": 7404,
+      "to": 7563,
+      "lines": [
+        [
+          {"text":"La","from":7407,"to":7414},
+          {"text":"prueba","from":7414,"to":7436},
+          {"text":"de","from":7436,"to":7443},
+          {"text":"carga","from":7443,"to":7461},
+          {"text":"no","from":7461,"to":7468},
+          {"text":"te","from":7468,"to":7475}
+        ],
+        [
+          {"text":"dice","from":7475,"to":7489},
+          {"text":"qué","from":7489,"to":7500},
+          {"text":"acero","from":7500,"to":7518},
+          {"text":"se","from":7518,"to":7525},
+          {"text":"usó.","from":7525,"to":7539}
+        ]
+      ]
+    },
+    {
+      "from": 7598,
+      "to": 7659,
+      "lines": [
+        [
+          {"text":"Pasamos","from":7601,"to":7621},
+          {"text":"a","from":7621,"to":7624},
+          {"text":"cómo","from":7624,"to":7636},
+          {"text":"se","from":7636,"to":7642},
+          {"text":"prueba.","from":7642,"to":7662}
+        ]
+      ]
+    },
+    {
+      "from": 7659,
+      "to": 7823,
+      "lines": [
+        [
+          {"text":"Antes","from":7662,"to":7677},
+          {"text":"de","from":7677,"to":7683},
+          {"text":"tocar","from":7683,"to":7697},
+          {"text":"nada,","from":7697,"to":7712},
+          {"text":"se","from":7712,"to":7718},
+          {"text":"firma","from":7718,"to":7732},
+          {"text":"qué","from":7732,"to":7741}
+        ],
+        [
+          {"text":"se","from":7741,"to":7747},
+          {"text":"puede","from":7747,"to":7762},
+          {"text":"probar,","from":7762,"to":7782},
+          {"text":"cuándo","from":7782,"to":7799},
+          {"text":"y","from":7799,"to":7802},
+          {"text":"cómo.","from":7802,"to":7817}
+        ]
+      ]
+    },
+    {
+      "from": 7823,
+      "to": 7988,
+      "lines": [
+        [
+          {"text":"Son","from":7826,"to":7835},
+          {"text":"las","from":7835,"to":7845},
+          {"text":"rules","from":7845,"to":7860},
+          {"text":"of","from":7860,"to":7867},
+          {"text":"engagement,","from":7867,"to":7901}
+        ],
+        [
+          {"text":"y","from":7901,"to":7904},
+          {"text":"sin","from":7904,"to":7913},
+          {"text":"ese","from":7913,"to":7923},
+          {"text":"papel","from":7923,"to":7938},
+          {"text":"no","from":7938,"to":7945},
+          {"text":"es","from":7945,"to":7951},
+          {"text":"una","from":7951,"to":7960},
+          {"text":"prueba.","from":7960,"to":7982}
+        ]
+      ]
+    },
+    {
+      "from": 7988,
+      "to": 8047,
+      "lines": [
+        [
+          {"text":"Hay","from":7991,"to":7998},
+          {"text":"cuatro","from":7998,"to":8012},
+          {"text":"maneras","from":8012,"to":8029},
+          {"text":"de","from":8029,"to":8034},
+          {"text":"probar.","from":8034,"to":8050}
+        ]
+      ]
+    },
+    {
+      "from": 8047,
+      "to": 8212,
+      "lines": [
+        [
+          {"text":"Si","from":8050,"to":8055},
+          {"text":"alguien","from":8055,"to":8072},
+          {"text":"intenta","from":8072,"to":8088},
+          {"text":"colarse","from":8088,"to":8105},
+          {"text":"en","from":8105,"to":8110},
+          {"text":"una","from":8110,"to":8117},
+          {"text":"oficina","from":8117,"to":8133}
+        ],
+        [
+          {"text":"detrás","from":8133,"to":8148},
+          {"text":"de","from":8148,"to":8152},
+          {"text":"otra","from":8152,"to":8162},
+          {"text":"persona,","from":8162,"to":8181},
+          {"text":"es","from":8181,"to":8186},
+          {"text":"physical.","from":8186,"to":8207}
+        ]
+      ]
+    },
+    {
+      "from": 8212,
+      "to": 8400,
+      "lines": [
+        [
+          {"text":"Si","from":8215,"to":8220},
+          {"text":"un","from":8220,"to":8226},
+          {"text":"equipo","from":8226,"to":8242},
+          {"text":"persigue","from":8242,"to":8264},
+          {"text":"un","from":8264,"to":8270},
+          {"text":"objetivo","from":8270,"to":8291},
+          {"text":"sin","from":8291,"to":8300}
+        ],
+        [
+          {"text":"avisar","from":8300,"to":8316},
+          {"text":"a","from":8316,"to":8319},
+          {"text":"nadie,","from":8319,"to":8335},
+          {"text":"es","from":8335,"to":8340},
+          {"text":"offensive,","from":8340,"to":8368},
+          {"text":"el","from":8368,"to":8373},
+          {"text":"red","from":8373,"to":8381},
+          {"text":"team.","from":8381,"to":8395}
+        ]
+      ]
+    },
+    {
+      "from": 8400,
+      "to": 8614,
+      "lines": [
+        [
+          {"text":"Si","from":8403,"to":8410},
+          {"text":"lo","from":8410,"to":8417},
+          {"text":"que","from":8417,"to":8428},
+          {"text":"se","from":8428,"to":8435},
+          {"text":"mide","from":8435,"to":8449},
+          {"text":"es","from":8449,"to":8456},
+          {"text":"si","from":8456,"to":8463},
+          {"text":"el","from":8463,"to":8470},
+          {"text":"SOC","from":8470,"to":8480},
+          {"text":"lo","from":8480,"to":8487},
+          {"text":"ve,","from":8487,"to":8498}
+        ],
+        [
+          {"text":"lo","from":8498,"to":8505},
+          {"text":"entiende","from":8505,"to":8533},
+          {"text":"y","from":8533,"to":8536},
+          {"text":"lo","from":8536,"to":8543},
+          {"text":"contiene,","from":8543,"to":8575},
+          {"text":"es","from":8575,"to":8582},
+          {"text":"defensive,","from":8582,"to":8617}
+        ]
+      ]
+    },
+    {
+      "from": 8614,
+      "to": 8660,
+      "lines": [
+        [
+          {"text":"el","from":8617,"to":8624},
+          {"text":"blue","from":8624,"to":8638},
+          {"text":"team.","from":8638,"to":8655}
+        ]
+      ]
+    },
+    {
+      "from": 8660,
+      "to": 8839,
+      "lines": [
+        [
+          {"text":"Y","from":8663,"to":8666},
+          {"text":"si","from":8666,"to":8671},
+          {"text":"ataque","from":8671,"to":8688},
+          {"text":"y","from":8688,"to":8691},
+          {"text":"defensa","from":8691,"to":8711},
+          {"text":"se","from":8711,"to":8716},
+          {"text":"sientan","from":8716,"to":8736},
+          {"text":"juntos","from":8736,"to":8753}
+        ],
+        [
+          {"text":"y","from":8753,"to":8755},
+          {"text":"miran,","from":8755,"to":8772},
+          {"text":"técnica","from":8772,"to":8792},
+          {"text":"a","from":8792,"to":8795},
+          {"text":"técnica,","from":8795,"to":8817},
+          {"text":"qué","from":8817,"to":8825},
+          {"text":"se","from":8825,"to":8831},
+          {"text":"vio,","from":8831,"to":8842}
+        ]
+      ]
+    },
+    {
+      "from": 8839,
+      "to": 8921,
+      "lines": [
+        [
+          {"text":"es","from":8842,"to":8848},
+          {"text":"integrated,","from":8848,"to":8879},
+          {"text":"el","from":8879,"to":8884},
+          {"text":"purple","from":8884,"to":8901},
+          {"text":"team.","from":8901,"to":8915}
+        ]
+      ]
+    },
+    {
+      "from": 8921,
+      "to": 9140,
+      "lines": [
+        [
+          {"text":"La","from":8924,"to":8930},
+          {"text":"propuesta","from":8930,"to":8955},
+          {"text":"del","from":8955,"to":8963},
+          {"text":"puerto","from":8963,"to":8980},
+          {"text":"es","from":8980,"to":8985},
+          {"text":"empezar","from":8985,"to":9005},
+          {"text":"por","from":9005,"to":9013},
+          {"text":"el","from":9013,"to":9019}
+        ],
+        [
+          {"text":"purple","from":9019,"to":9035},
+          {"text":"y,","from":9035,"to":9041},
+          {"text":"después,","from":9041,"to":9063},
+          {"text":"un","from":9063,"to":9069},
+          {"text":"red","from":9069,"to":9077},
+          {"text":"team","from":9077,"to":9088},
+          {"text":"sin","from":9088,"to":9097},
+          {"text":"avisar.","from":9097,"to":9116}
+        ]
+      ]
+    },
+    {
+      "from": 9163,
+      "to": 9198,
+      "lines": [
+        [
+          {"text":"Te","from":9166,"to":9171},
+          {"text":"toca","from":9171,"to":9181},
+          {"text":"otra","from":9181,"to":9191},
+          {"text":"vez.","from":9191,"to":9201}
+        ]
+      ]
+    },
+    {
+      "from": 9198,
+      "to": 9348,
+      "lines": [
+        [
+          {"text":"Un","from":9201,"to":9206},
+          {"text":"banco","from":9206,"to":9218},
+          {"text":"reproduce","from":9218,"to":9241},
+          {"text":"en","from":9241,"to":9246},
+          {"text":"su","from":9246,"to":9251},
+          {"text":"red,","from":9251,"to":9261},
+          {"text":"una","from":9261,"to":9268},
+          {"text":"a","from":9268,"to":9271},
+          {"text":"una,","from":9271,"to":9281}
+        ],
+        [
+          {"text":"técnicas","from":9281,"to":9301},
+          {"text":"de","from":9301,"to":9306},
+          {"text":"ataque","from":9306,"to":9321},
+          {"text":"ya","from":9321,"to":9326},
+          {"text":"conocidas.","from":9326,"to":9351}
+        ]
+      ]
+    },
+    {
+      "from": 9348,
+      "to": 9425,
+      "lines": [
+        [
+          {"text":"Nadie","from":9351,"to":9363},
+          {"text":"intenta","from":9363,"to":9381},
+          {"text":"llegar","from":9381,"to":9396},
+          {"text":"a","from":9396,"to":9398},
+          {"text":"ningún","from":9398,"to":9413},
+          {"text":"sitio.","from":9413,"to":9428}
+        ]
+      ]
+    },
+    {
+      "from": 9425,
+      "to": 9553,
+      "lines": [
+        [
+          {"text":"Solo","from":9428,"to":9438},
+          {"text":"se","from":9438,"to":9443},
+          {"text":"mide","from":9443,"to":9453},
+          {"text":"cuánto","from":9453,"to":9468},
+          {"text":"tarda","from":9468,"to":9481}
+        ],
+        [
+          {"text":"su","from":9481,"to":9486},
+          {"text":"centro","from":9486,"to":9501},
+          {"text":"de","from":9501,"to":9506},
+          {"text":"operaciones","from":9506,"to":9533},
+          {"text":"en","from":9533,"to":9538},
+          {"text":"verlas,","from":9538,"to":9556}
+        ]
+      ]
+    },
+    {
+      "from": 9553,
+      "to": 9742,
+      "lines": [
+        [
+          {"text":"entenderlas","from":9556,"to":9583},
+          {"text":"y","from":9583,"to":9586},
+          {"text":"contenerlas.","from":9586,"to":9616},
+          {"text":"¿Qué","from":9616,"to":9626},
+          {"text":"tipo","from":9626,"to":9636}
+        ],
+        [
+          {"text":"de","from":9636,"to":9641},
+          {"text":"prueba","from":9641,"to":9656},
+          {"text":"describe","from":9656,"to":9676},
+          {"text":"mejor","from":9676,"to":9688},
+          {"text":"el","from":9688,"to":9693},
+          {"text":"ejercicio?","from":9693,"to":9718}
+        ]
+      ]
+    },
+    {
+      "from": 9873,
+      "to": 10017,
+      "lines": [
+        [
+          {"text":"Es","from":9876,"to":9881},
+          {"text":"defensive,","from":9881,"to":9908},
+          {"text":"el","from":9908,"to":9913},
+          {"text":"blue","from":9913,"to":9924},
+          {"text":"team,","from":9924,"to":9937}
+        ],
+        [
+          {"text":"porque","from":9937,"to":9953},
+          {"text":"lo","from":9953,"to":9959},
+          {"text":"que","from":9959,"to":9967},
+          {"text":"se","from":9967,"to":9972},
+          {"text":"mide","from":9972,"to":9983},
+          {"text":"es","from":9983,"to":9988},
+          {"text":"la","from":9988,"to":9993},
+          {"text":"detección.","from":9993,"to":10020}
+        ]
+      ]
+    },
+    {
+      "from": 10017,
+      "to": 10194,
+      "lines": [
+        [
+          {"text":"Las","from":10020,"to":10028},
+          {"text":"técnicas","from":10028,"to":10049},
+          {"text":"de","from":10049,"to":10055},
+          {"text":"ataque","from":10055,"to":10071},
+          {"text":"empujan","from":10071,"to":10089},
+          {"text":"hacia","from":10089,"to":10103}
+        ],
+        [
+          {"text":"el","from":10103,"to":10108},
+          {"text":"red","from":10108,"to":10116},
+          {"text":"team,","from":10116,"to":10129},
+          {"text":"pero","from":10129,"to":10140},
+          {"text":"nadie","from":10140,"to":10153},
+          {"text":"persigue","from":10153,"to":10175},
+          {"text":"nada.","from":10175,"to":10188}
+        ]
+      ]
+    },
+    {
+      "from": 10194,
+      "to": 10377,
+      "lines": [
+        [
+          {"text":"O","from":10197,"to":10201},
+          {"text":"sea,","from":10201,"to":10216},
+          {"text":"que","from":10216,"to":10227},
+          {"text":"aquí","from":10227,"to":10243},
+          {"text":"no","from":10243,"to":10250},
+          {"text":"se","from":10250,"to":10258},
+          {"text":"mide","from":10258,"to":10273}
+        ],
+        [
+          {"text":"si","from":10273,"to":10281},
+          {"text":"entran.","from":10281,"to":10307},
+          {"text":"Se","from":10307,"to":10315},
+          {"text":"mide","from":10315,"to":10330},
+          {"text":"al","from":10330,"to":10338},
+          {"text":"SOC.","from":10338,"to":10353}
+        ]
+      ]
+    },
+    {
+      "from": 10412,
+      "to": 10541,
+      "lines": [
+        [
+          {"text":"Ahora,","from":10415,"to":10430},
+          {"text":"cuánto","from":10430,"to":10445},
+          {"text":"le","from":10445,"to":10450},
+          {"text":"cuentas","from":10450,"to":10468}
+        ],
+        [
+          {"text":"a","from":10468,"to":10470},
+          {"text":"quien","from":10470,"to":10483},
+          {"text":"prueba.","from":10483,"to":10500},
+          {"text":"Hay","from":10500,"to":10508},
+          {"text":"tres","from":10508,"to":10518},
+          {"text":"sobres.","from":10518,"to":10535}
+        ]
+      ]
+    },
+    {
+      "from": 10541,
+      "to": 10643,
+      "lines": [
+        [
+          {"text":"Si","from":10544,"to":10549},
+          {"text":"no","from":10549,"to":10554},
+          {"text":"le","from":10554,"to":10560},
+          {"text":"das","from":10560,"to":10568},
+          {"text":"nada,","from":10568,"to":10581}
+        ],
+        [
+          {"text":"prueba","from":10581,"to":10596},
+          {"text":"como","from":10596,"to":10607},
+          {"text":"alguien","from":10607,"to":10625},
+          {"text":"de","from":10625,"to":10630},
+          {"text":"fuera.","from":10630,"to":10646}
+        ]
+      ]
+    },
+    {
+      "from": 10643,
+      "to": 10814,
+      "lines": [
+        [
+          {"text":"Es","from":10646,"to":10651},
+          {"text":"lo","from":10651,"to":10656},
+          {"text":"más","from":10656,"to":10664},
+          {"text":"realista,","from":10664,"to":10688},
+          {"text":"pero","from":10688,"to":10698},
+          {"text":"cuesta","from":10698,"to":10714},
+          {"text":"mucho","from":10714,"to":10727}
+        ],
+        [
+          {"text":"tiempo.","from":10727,"to":10745},
+          {"text":"Eso","from":10745,"to":10753},
+          {"text":"es","from":10753,"to":10758},
+          {"text":"unknown","from":10758,"to":10777},
+          {"text":"environment.","from":10777,"to":10808}
+        ]
+      ]
+    },
+    {
+      "from": 10814,
+      "to": 10961,
+      "lines": [
+        [
+          {"text":"Con","from":10817,"to":10825},
+          {"text":"una","from":10825,"to":10833},
+          {"text":"cuenta","from":10833,"to":10849},
+          {"text":"normal,","from":10849,"to":10867},
+          {"text":"ve","from":10867,"to":10872},
+          {"text":"lo","from":10872,"to":10877},
+          {"text":"que","from":10877,"to":10885},
+          {"text":"vería","from":10885,"to":10899}
+        ],
+        [
+          {"text":"cualquier","from":10899,"to":10922},
+          {"text":"usuario","from":10922,"to":10941},
+          {"text":"o","from":10941,"to":10943},
+          {"text":"un","from":10943,"to":10949},
+          {"text":"socio.","from":10949,"to":10964}
+        ]
+      ]
+    },
+    {
+      "from": 10961,
+      "to": 11014,
+      "lines": [
+        [
+          {"text":"Es","from":10964,"to":10970},
+          {"text":"partially","from":10970,"to":10993},
+          {"text":"known.","from":10993,"to":11009}
+        ]
+      ]
+    },
+    {
+      "from": 11014,
+      "to": 11162,
+      "lines": [
+        [
+          {"text":"Y","from":11017,"to":11020},
+          {"text":"con","from":11020,"to":11027},
+          {"text":"los","from":11027,"to":11035},
+          {"text":"planos","from":11035,"to":11051},
+          {"text":"y","from":11051,"to":11053},
+          {"text":"las","from":11053,"to":11061},
+          {"text":"credenciales,","from":11061,"to":11095}
+        ],
+        [
+          {"text":"cubre","from":11095,"to":11108},
+          {"text":"muchísimo","from":11108,"to":11131},
+          {"text":"en","from":11131,"to":11136},
+          {"text":"poco","from":11136,"to":11147},
+          {"text":"tiempo,","from":11147,"to":11165}
+        ]
+      ]
+    },
+    {
+      "from": 11162,
+      "to": 11311,
+      "lines": [
+        [
+          {"text":"aunque","from":11165,"to":11180},
+          {"text":"no","from":11180,"to":11186},
+          {"text":"se","from":11186,"to":11191},
+          {"text":"parece","from":11191,"to":11206},
+          {"text":"a","from":11206,"to":11209},
+          {"text":"un","from":11209,"to":11214},
+          {"text":"atacante","from":11214,"to":11235}
+        ],
+        [
+          {"text":"de","from":11235,"to":11240},
+          {"text":"fuera.","from":11240,"to":11256},
+          {"text":"Es","from":11256,"to":11261},
+          {"text":"known","from":11261,"to":11274},
+          {"text":"environment.","from":11274,"to":11305}
+        ]
+      ]
+    },
+    {
+      "from": 11311,
+      "to": 11376,
+      "lines": [
+        [
+          {"text":"Es","from":11314,"to":11320},
+          {"text":"como","from":11320,"to":11332},
+          {"text":"una","from":11332,"to":11340},
+          {"text":"sala","from":11340,"to":11352},
+          {"text":"de","from":11352,"to":11358},
+          {"text":"escape.","from":11358,"to":11379}
+        ]
+      ]
+    },
+    {
+      "from": 11376,
+      "to": 11502,
+      "lines": [
+        [
+          {"text":"Sin","from":11379,"to":11388},
+          {"text":"pistas","from":11388,"to":11405},
+          {"text":"es","from":11405,"to":11411},
+          {"text":"el","from":11411,"to":11417},
+          {"text":"juego","from":11417,"to":11432},
+          {"text":"de","from":11432,"to":11438},
+          {"text":"verdad,","from":11438,"to":11458}
+        ],
+        [
+          {"text":"una","from":11458,"to":11467},
+          {"text":"pista","from":11467,"to":11482},
+          {"text":"te","from":11482,"to":11488},
+          {"text":"ayuda,","from":11488,"to":11505}
+        ]
+      ]
+    },
+    {
+      "from": 11502,
+      "to": 11620,
+      "lines": [
+        [
+          {"text":"y","from":11505,"to":11508},
+          {"text":"con","from":11508,"to":11517},
+          {"text":"el","from":11517,"to":11523},
+          {"text":"plano","from":11523,"to":11538},
+          {"text":"lo","from":11538,"to":11543},
+          {"text":"compruebas","from":11543,"to":11573}
+        ],
+        [
+          {"text":"todo","from":11573,"to":11585},
+          {"text":"enseguida.","from":11585,"to":11614}
+        ]
+      ]
+    },
+    {
+      "from": 11620,
+      "to": 11800,
+      "lines": [
+        [
+          {"text":"El","from":11623,"to":11629},
+          {"text":"puerto","from":11629,"to":11647},
+          {"text":"propone","from":11647,"to":11667},
+          {"text":"la","from":11667,"to":11673},
+          {"text":"aplicación","from":11673,"to":11703},
+          {"text":"nueva","from":11703,"to":11718}
+        ],
+        [
+          {"text":"con","from":11718,"to":11726},
+          {"text":"todo,","from":11726,"to":11741},
+          {"text":"y","from":11741,"to":11744},
+          {"text":"lo","from":11744,"to":11750},
+          {"text":"que","from":11750,"to":11759},
+          {"text":"se","from":11759,"to":11765},
+          {"text":"ve","from":11765,"to":11771},
+          {"text":"desde","from":11771,"to":11786},
+          {"text":"fuera,","from":11786,"to":11803}
+        ]
+      ]
+    },
+    {
+      "from": 11800,
+      "to": 11851,
+      "lines": [
+        [
+          {"text":"sin","from":11803,"to":11812},
+          {"text":"nada.","from":11812,"to":11827}
+        ]
+      ]
+    },
+    {
+      "from": 11874,
+      "to": 11896,
+      "lines": [
+        [
+          {"text":"A","from":11877,"to":11879},
+          {"text":"ver","from":11879,"to":11887},
+          {"text":"esta.","from":11887,"to":11899}
+        ]
+      ]
+    },
+    {
+      "from": 11896,
+      "to": 12068,
+      "lines": [
+        [
+          {"text":"Una","from":11899,"to":11907},
+          {"text":"plataforma","from":11907,"to":11932},
+          {"text":"de","from":11932,"to":11937},
+          {"text":"reservas","from":11937,"to":11957},
+          {"text":"quiere","from":11957,"to":11971},
+          {"text":"saber","from":11971,"to":11984}
+        ],
+        [
+          {"text":"qué","from":11984,"to":11991},
+          {"text":"podría","from":11991,"to":12006},
+          {"text":"hacer","from":12006,"to":12019},
+          {"text":"alguien","from":12019,"to":12036},
+          {"text":"que","from":12036,"to":12044},
+          {"text":"ya","from":12044,"to":12049},
+          {"text":"es","from":12049,"to":12054},
+          {"text":"cliente","from":12054,"to":12071}
+        ]
+      ]
+    },
+    {
+      "from": 12068,
+      "to": 12080,
+      "lines": [
+        [
+          {"text":"suyo.","from":12071,"to":12083}
+        ]
+      ]
+    },
+    {
+      "from": 12080,
+      "to": 12249,
+      "lines": [
+        [
+          {"text":"Al","from":12083,"to":12088},
+          {"text":"equipo","from":12088,"to":12103},
+          {"text":"de","from":12103,"to":12108},
+          {"text":"pruebas","from":12108,"to":12126},
+          {"text":"solo","from":12126,"to":12136},
+          {"text":"le","from":12136,"to":12141},
+          {"text":"da","from":12141,"to":12146},
+          {"text":"una","from":12146,"to":12153},
+          {"text":"cuenta","from":12153,"to":12168}
+        ],
+        [
+          {"text":"de","from":12168,"to":12173},
+          {"text":"cliente","from":12173,"to":12190},
+          {"text":"normal,","from":12190,"to":12208},
+          {"text":"ni","from":12208,"to":12213},
+          {"text":"planos,","from":12213,"to":12230},
+          {"text":"ni","from":12230,"to":12235},
+          {"text":"código,","from":12235,"to":12252}
+        ]
+      ]
+    },
+    {
+      "from": 12249,
+      "to": 12453,
+      "lines": [
+        [
+          {"text":"ni","from":12252,"to":12257},
+          {"text":"accesos","from":12257,"to":12275},
+          {"text":"de","from":12275,"to":12280},
+          {"text":"administración.","from":12280,"to":12317},
+          {"text":"¿Qué","from":12317,"to":12327},
+          {"text":"nivel","from":12327,"to":12339}
+        ],
+        [
+          {"text":"de","from":12339,"to":12344},
+          {"text":"conocimiento","from":12344,"to":12374},
+          {"text":"del","from":12374,"to":12382},
+          {"text":"entorno","from":12382,"to":12399},
+          {"text":"encaja","from":12399,"to":12414},
+          {"text":"mejor?","from":12414,"to":12429}
+        ]
+      ]
+    },
+    {
+      "from": 12584,
+      "to": 12726,
+      "lines": [
+        [
+          {"text":"Es","from":12587,"to":12592},
+          {"text":"partially","from":12592,"to":12612},
+          {"text":"known,","from":12612,"to":12626},
+          {"text":"porque","from":12626,"to":12640},
+          {"text":"solo","from":12640,"to":12649},
+          {"text":"recibe","from":12649,"to":12663}
+        ],
+        [
+          {"text":"lo","from":12663,"to":12667},
+          {"text":"que","from":12667,"to":12674},
+          {"text":"tendría","from":12674,"to":12690},
+          {"text":"cualquier","from":12690,"to":12711},
+          {"text":"cliente.","from":12711,"to":12729}
+        ]
+      ]
+    },
+    {
+      "from": 12726,
+      "to": 12845,
+      "lines": [
+        [
+          {"text":"La","from":12729,"to":12734},
+          {"text":"cuenta","from":12734,"to":12747},
+          {"text":"empuja","from":12747,"to":12761},
+          {"text":"hacia","from":12761,"to":12773},
+          {"text":"known,","from":12773,"to":12786}
+        ],
+        [
+          {"text":"pero","from":12786,"to":12795},
+          {"text":"known","from":12795,"to":12807},
+          {"text":"es","from":12807,"to":12812},
+          {"text":"tenerlo","from":12812,"to":12828},
+          {"text":"todo.","from":12828,"to":12839}
+        ]
+      ]
+    },
+    {
+      "from": 12845,
+      "to": 13016,
+      "lines": [
+        [
+          {"text":"O","from":12848,"to":12851},
+          {"text":"sea,","from":12851,"to":12865},
+          {"text":"que","from":12865,"to":12875},
+          {"text":"le","from":12875,"to":12881},
+          {"text":"das","from":12881,"to":12892},
+          {"text":"una","from":12892,"to":12902},
+          {"text":"pista","from":12902,"to":12918}
+        ],
+        [
+          {"text":"para","from":12918,"to":12932},
+          {"text":"empezar,","from":12932,"to":12959},
+          {"text":"no","from":12959,"to":12965},
+          {"text":"el","from":12965,"to":12972},
+          {"text":"plano.","from":12972,"to":12992}
+        ]
+      ]
+    },
+    {
+      "from": 13051,
+      "to": 13135,
+      "lines": [
+        [
+          {"text":"Y","from":13054,"to":13057},
+          {"text":"para","from":13057,"to":13068},
+          {"text":"acabar,","from":13068,"to":13087},
+          {"text":"por","from":13087,"to":13096},
+          {"text":"dónde","from":13096,"to":13110},
+          {"text":"se","from":13110,"to":13115},
+          {"text":"empieza.","from":13115,"to":13138}
+        ]
+      ]
+    },
+    {
+      "from": 13135,
+      "to": 13336,
+      "lines": [
+        [
+          {"text":"Antes","from":13138,"to":13152},
+          {"text":"de","from":13152,"to":13157},
+          {"text":"la","from":13157,"to":13163},
+          {"text":"ventana","from":13163,"to":13182},
+          {"text":"pactada,","from":13182,"to":13205},
+          {"text":"el","from":13205,"to":13210},
+          {"text":"equipo","from":13210,"to":13227},
+          {"text":"de","from":13227,"to":13232}
+        ],
+        [
+          {"text":"pruebas","from":13232,"to":13252},
+          {"text":"solo","from":13252,"to":13263},
+          {"text":"miraría","from":13263,"to":13283},
+          {"text":"lo","from":13283,"to":13288},
+          {"text":"que","from":13288,"to":13297},
+          {"text":"ya","from":13297,"to":13302},
+          {"text":"es","from":13302,"to":13308},
+          {"text":"público.","from":13308,"to":13330}
+        ]
+      ]
+    },
+    {
+      "from": 13336,
+      "to": 13489,
+      "lines": [
+        [
+          {"text":"Lo","from":13339,"to":13344},
+          {"text":"consultaría","from":13344,"to":13369},
+          {"text":"sin","from":13369,"to":13376},
+          {"text":"tocar","from":13376,"to":13388},
+          {"text":"el","from":13388,"to":13392},
+          {"text":"puerto,","from":13392,"to":13409},
+          {"text":"así","from":13409,"to":13416}
+        ],
+        [
+          {"text":"que","from":13416,"to":13423},
+          {"text":"el","from":13423,"to":13427},
+          {"text":"registro","from":13427,"to":13446},
+          {"text":"del","from":13446,"to":13453},
+          {"text":"SOC","from":13453,"to":13460},
+          {"text":"seguiría","from":13460,"to":13478},
+          {"text":"vacío.","from":13478,"to":13492}
+        ]
+      ]
+    },
+    {
+      "from": 13489,
+      "to": 13561,
+      "lines": [
+        [
+          {"text":"Eso","from":13492,"to":13499},
+          {"text":"es","from":13499,"to":13504},
+          {"text":"passive","from":13504,"to":13520},
+          {"text":"reconnaissance.","from":13520,"to":13555}
+        ]
+      ]
+    },
+    {
+      "from": 13561,
+      "to": 13605,
+      "lines": [
+        [
+          {"text":"Ya","from":13564,"to":13568},
+          {"text":"dentro","from":13568,"to":13581},
+          {"text":"de","from":13581,"to":13586},
+          {"text":"la","from":13586,"to":13590},
+          {"text":"ventana,","from":13590,"to":13608}
+        ]
+      ]
+    },
+    {
+      "from": 13605,
+      "to": 13744,
+      "lines": [
+        [
+          {"text":"escanearía","from":13608,"to":13629},
+          {"text":"las","from":13629,"to":13636},
+          {"text":"máquinas","from":13636,"to":13653},
+          {"text":"del","from":13653,"to":13660},
+          {"text":"puerto","from":13660,"to":13673}
+        ],
+        [
+          {"text":"y","from":13673,"to":13675},
+          {"text":"les","from":13675,"to":13682},
+          {"text":"preguntaría","from":13682,"to":13706},
+          {"text":"qué","from":13706,"to":13712},
+          {"text":"versiones","from":13712,"to":13732},
+          {"text":"llevan.","from":13732,"to":13747}
+        ]
+      ]
+    },
+    {
+      "from": 13744,
+      "to": 13809,
+      "lines": [
+        [
+          {"text":"Eso","from":13747,"to":13754},
+          {"text":"es","from":13754,"to":13758},
+          {"text":"active","from":13758,"to":13771},
+          {"text":"reconnaissance.","from":13771,"to":13804}
+        ]
+      ]
+    },
+    {
+      "from": 13809,
+      "to": 13920,
+      "lines": [
+        [
+          {"text":"Y","from":13812,"to":13815},
+          {"text":"entonces","from":13815,"to":13838},
+          {"text":"el","from":13838,"to":13844},
+          {"text":"registro","from":13844,"to":13868}
+        ],
+        [
+          {"text":"se","from":13868,"to":13873},
+          {"text":"llenaría","from":13873,"to":13897},
+          {"text":"de","from":13897,"to":13903},
+          {"text":"líneas.","from":13903,"to":13923}
+        ]
+      ]
+    },
+    {
+      "from": 13920,
+      "to": 14046,
+      "lines": [
+        [
+          {"text":"Se","from":13923,"to":13929},
+          {"text":"ve,","from":13929,"to":13938},
+          {"text":"y","from":13938,"to":13941},
+          {"text":"por","from":13941,"to":13949},
+          {"text":"eso","from":13949,"to":13958},
+          {"text":"solo","from":13958,"to":13970}
+        ],
+        [
+          {"text":"se","from":13970,"to":13976},
+          {"text":"hace","from":13976,"to":13987},
+          {"text":"cuando","from":13987,"to":14005},
+          {"text":"está","from":14005,"to":14017},
+          {"text":"pactado.","from":14017,"to":14040}
+        ]
+      ]
+    },
+    {
+      "from": 14046,
+      "to": 14241,
+      "lines": [
+        [
+          {"text":"O","from":14049,"to":14052},
+          {"text":"sea,","from":14052,"to":14062},
+          {"text":"que","from":14062,"to":14070},
+          {"text":"no","from":14070,"to":14075},
+          {"text":"importa","from":14075,"to":14093},
+          {"text":"qué","from":14093,"to":14101},
+          {"text":"información","from":14101,"to":14129}
+        ],
+        [
+          {"text":"sale.","from":14129,"to":14142},
+          {"text":"Importa","from":14142,"to":14160},
+          {"text":"si","from":14160,"to":14165},
+          {"text":"has","from":14165,"to":14173},
+          {"text":"tocado","from":14173,"to":14189},
+          {"text":"al","from":14189,"to":14194},
+          {"text":"objetivo.","from":14194,"to":14217}
+        ]
+      ]
+    },
+    {
+      "from": 14264,
+      "to": 14288,
+      "lines": [
+        [
+          {"text":"La","from":14267,"to":14272},
+          {"text":"última.","from":14272,"to":14291}
+        ]
+      ]
+    },
+    {
+      "from": 14288,
+      "to": 14358,
+      "lines": [
+        [
+          {"text":"Ya","from":14291,"to":14296},
+          {"text":"dentro","from":14296,"to":14312},
+          {"text":"de","from":14312,"to":14317},
+          {"text":"la","from":14317,"to":14322},
+          {"text":"ventana","from":14322,"to":14340},
+          {"text":"pactada,","from":14340,"to":14361}
+        ]
+      ]
+    },
+    {
+      "from": 14358,
+      "to": 14528,
+      "lines": [
+        [
+          {"text":"un","from":14361,"to":14366},
+          {"text":"equipo","from":14366,"to":14382},
+          {"text":"de","from":14382,"to":14387},
+          {"text":"pruebas","from":14387,"to":14406},
+          {"text":"busca","from":14406,"to":14419},
+          {"text":"a","from":14419,"to":14421},
+          {"text":"una","from":14421,"to":14429},
+          {"text":"empresa","from":14429,"to":14448}
+        ],
+        [
+          {"text":"en","from":14448,"to":14453},
+          {"text":"un","from":14453,"to":14458},
+          {"text":"buscador","from":14458,"to":14479},
+          {"text":"de","from":14479,"to":14484},
+          {"text":"aparatos","from":14484,"to":14505},
+          {"text":"conectados","from":14505,"to":14531}
+        ]
+      ]
+    },
+    {
+      "from": 14528,
+      "to": 14680,
+      "lines": [
+        [
+          {"text":"a","from":14531,"to":14534},
+          {"text":"internet.","from":14534,"to":14558},
+          {"text":"Ve","from":14558,"to":14563},
+          {"text":"sus","from":14563,"to":14571},
+          {"text":"equipos,","from":14571,"to":14592}
+        ],
+        [
+          {"text":"con","from":14592,"to":14600},
+          {"text":"sus","from":14600,"to":14607},
+          {"text":"puertos","from":14607,"to":14626},
+          {"text":"abiertos","from":14626,"to":14647},
+          {"text":"y","from":14647,"to":14649},
+          {"text":"sus","from":14649,"to":14657},
+          {"text":"versiones.","from":14657,"to":14683}
+        ]
+      ]
+    },
+    {
+      "from": 14680,
+      "to": 14867,
+      "lines": [
+        [
+          {"text":"En","from":14683,"to":14689},
+          {"text":"los","from":14689,"to":14696},
+          {"text":"registros","from":14696,"to":14720},
+          {"text":"de","from":14720,"to":14725},
+          {"text":"la","from":14725,"to":14730},
+          {"text":"empresa","from":14730,"to":14749},
+          {"text":"no","from":14749,"to":14754},
+          {"text":"aparece","from":14754,"to":14772}
+        ],
+        [
+          {"text":"nada.","from":14772,"to":14785},
+          {"text":"¿Qué","from":14785,"to":14796},
+          {"text":"tipo","from":14796,"to":14806},
+          {"text":"de","from":14806,"to":14812},
+          {"text":"actividad","from":14812,"to":14835},
+          {"text":"es?","from":14835,"to":14843}
+        ]
+      ]
+    },
+    {
+      "from": 14998,
+      "to": 15152,
+      "lines": [
+        [
+          {"text":"Es","from":15001,"to":15006},
+          {"text":"passive","from":15006,"to":15023},
+          {"text":"reconnaissance,","from":15023,"to":15060},
+          {"text":"porque","from":15060,"to":15074}
+        ],
+        [
+          {"text":"consulta","from":15074,"to":15094},
+          {"text":"a","from":15094,"to":15096},
+          {"text":"un","from":15096,"to":15101},
+          {"text":"tercero","from":15101,"to":15118},
+          {"text":"que","from":15118,"to":15125},
+          {"text":"ya","from":15125,"to":15130},
+          {"text":"lo","from":15130,"to":15135},
+          {"text":"recogió.","from":15135,"to":15155}
+        ]
+      ]
+    },
+    {
+      "from": 15152,
+      "to": 15307,
+      "lines": [
+        [
+          {"text":"Puertos","from":15155,"to":15172},
+          {"text":"y","from":15172,"to":15174},
+          {"text":"versiones","from":15174,"to":15196},
+          {"text":"suenan","from":15196,"to":15211},
+          {"text":"a","from":15211,"to":15213},
+          {"text":"escaneo,","from":15213,"to":15233}
+        ],
+        [
+          {"text":"pero","from":15233,"to":15242},
+          {"text":"nadie","from":15242,"to":15255},
+          {"text":"ha","from":15255,"to":15260},
+          {"text":"tocado","from":15260,"to":15274},
+          {"text":"ni","from":15274,"to":15279},
+          {"text":"un","from":15279,"to":15284},
+          {"text":"equipo.","from":15284,"to":15301}
+        ]
+      ]
+    },
+    {
+      "from": 15307,
+      "to": 15454,
+      "lines": [
+        [
+          {"text":"El","from":15310,"to":15316},
+          {"text":"registro","from":15316,"to":15338},
+          {"text":"no","from":15338,"to":15343},
+          {"text":"miente.","from":15343,"to":15363}
+        ],
+        [
+          {"text":"Nadie","from":15363,"to":15377},
+          {"text":"ha","from":15377,"to":15383},
+          {"text":"llamado","from":15383,"to":15402},
+          {"text":"a","from":15402,"to":15405},
+          {"text":"la","from":15405,"to":15410},
+          {"text":"puerta.","from":15410,"to":15430}
+        ]
+      ]
+    },
+    {
+      "from": 15489,
+      "to": 15535,
+      "lines": [
+        [
+          {"text":"Te","from":15492,"to":15497},
+          {"text":"llevas","from":15497,"to":15511},
+          {"text":"tres","from":15511,"to":15521},
+          {"text":"reglas.","from":15521,"to":15538}
+        ]
+      ]
+    },
+    {
+      "from": 15535,
+      "to": 15652,
+      "lines": [
+        [
+          {"text":"La","from":15538,"to":15542},
+          {"text":"attestation","from":15542,"to":15569},
+          {"text":"compromete","from":15569,"to":15593}
+        ],
+        [
+          {"text":"a","from":15593,"to":15595},
+          {"text":"la","from":15595,"to":15600},
+          {"text":"organización","from":15600,"to":15629},
+          {"text":"con","from":15629,"to":15636},
+          {"text":"un","from":15636,"to":15641},
+          {"text":"hecho,","from":15641,"to":15655}
+        ]
+      ]
+    },
+    {
+      "from": 15652,
+      "to": 15701,
+      "lines": [
+        [
+          {"text":"pero","from":15655,"to":15665},
+          {"text":"no","from":15665,"to":15670},
+          {"text":"prueba","from":15670,"to":15684},
+          {"text":"nada.","from":15684,"to":15696}
+        ]
+      ]
+    },
+    {
+      "from": 15701,
+      "to": 15877,
+      "lines": [
+        [
+          {"text":"Para","from":15704,"to":15713},
+          {"text":"convencer","from":15713,"to":15735},
+          {"text":"a","from":15735,"to":15737},
+          {"text":"alguien","from":15737,"to":15754},
+          {"text":"de","from":15754,"to":15758},
+          {"text":"fuera,","from":15758,"to":15773},
+          {"text":"cuenta","from":15773,"to":15787}
+        ],
+        [
+          {"text":"quién","from":15787,"to":15799},
+          {"text":"comprueba.","from":15799,"to":15822},
+          {"text":"Y","from":15822,"to":15825},
+          {"text":"cumplir","from":15825,"to":15841},
+          {"text":"no","from":15841,"to":15846},
+          {"text":"es","from":15846,"to":15851},
+          {"text":"aguantar.","from":15851,"to":15872}
+        ]
+      ]
+    },
+    {
+      "from": 15877,
+      "to": 16090,
+      "lines": [
+        [
+          {"text":"Y","from":15880,"to":15883},
+          {"text":"en","from":15883,"to":15890},
+          {"text":"la","from":15890,"to":15897},
+          {"text":"prueba,","from":15897,"to":15921},
+          {"text":"mira","from":15921,"to":15934},
+          {"text":"qué","from":15934,"to":15945},
+          {"text":"se","from":15945,"to":15951},
+          {"text":"mide,","from":15951,"to":15968}
+        ],
+        [
+          {"text":"cuánto","from":15968,"to":15989},
+          {"text":"se","from":15989,"to":15996},
+          {"text":"cuenta","from":15996,"to":16016},
+          {"text":"y","from":16016,"to":16019},
+          {"text":"si","from":16019,"to":16026},
+          {"text":"se","from":16026,"to":16033},
+          {"text":"toca","from":16033,"to":16047},
+          {"text":"al","from":16047,"to":16053},
+          {"text":"objetivo.","from":16053,"to":16084}
+        ]
+      ]
+    },
+    {
+      "from": 16090,
+      "to": 16270,
+      "lines": [
+        [
+          {"text":"Una","from":16093,"to":16101},
+          {"text":"firma","from":16101,"to":16114},
+          {"text":"declara,","from":16114,"to":16134},
+          {"text":"una","from":16134,"to":16142},
+          {"text":"auditoría","from":16142,"to":16165},
+          {"text":"comprueba","from":16165,"to":16188}
+        ],
+        [
+          {"text":"que","from":16188,"to":16196},
+          {"text":"cumples","from":16196,"to":16214},
+          {"text":"y","from":16214,"to":16216},
+          {"text":"un","from":16216,"to":16222},
+          {"text":"pentest,","from":16222,"to":16242},
+          {"text":"que","from":16242,"to":16250},
+          {"text":"aguantas.","from":16250,"to":16273}
+        ]
+      ]
+    },
+    {
+      "from": 16270,
+      "to": 16405,
+      "lines": [
+        [
+          {"text":"Ahora","from":16273,"to":16286},
+          {"text":"te","from":16286,"to":16291},
+          {"text":"toca","from":16291,"to":16301},
+          {"text":"a","from":16301,"to":16304},
+          {"text":"ti,","from":16304,"to":16312}
+        ],
+        [
+          {"text":"con","from":16312,"to":16319},
+          {"text":"las","from":16319,"to":16327},
+          {"text":"preguntas","from":16327,"to":16350},
+          {"text":"de","from":16350,"to":16355},
+          {"text":"la","from":16355,"to":16360},
+          {"text":"lección.","from":16360,"to":16381}
+        ]
+      ]
+    }
+  ],
+  "cues": [
+    {"scene":"s01-hook","id":"table","frame":45},
+    {"scene":"s01-hook","id":"three","frame":240},
+    {"scene":"s01-hook","id":"title","frame":306},
+    {"scene":"s01-hook","id":"promise","frame":516},
+    {"scene":"s02-firmas","id":"piles","frame":698},
+    {"scene":"s02-firmas","id":"ack","frame":839},
+    {"scene":"s02-firmas","id":"attest","frame":1216},
+    {"scene":"s02-firmas","id":"period","frame":1397},
+    {"scene":"s02-firmas","id":"signature","frame":1457},
+    {"scene":"s02-firmas","id":"not-a-test","frame":1689},
+    {"scene":"s03-quien","id":"checklist","frame":2003},
+    {"scene":"s03-quien","id":"self","frame":2128},
+    {"scene":"s03-quien","id":"internal","frame":2216},
+    {"scene":"s03-quien","id":"committee","frame":2404},
+    {"scene":"s03-quien","id":"third-party","frame":2581},
+    {"scene":"s03-quien","id":"regulator","frame":2758},
+    {"scene":"s03-quien","id":"lift","frame":3031},
+    {"scene":"s03-quien","id":"rule","frame":3232},
+    {"scene":"s04-p1","id":"q1","frame":3462},
+    {"scene":"s04-p1","id":"ok-1","frame":4184},
+    {"scene":"s04-p1","id":"trap-1","frame":4328},
+    {"scene":"s04-p1","id":"lift-back","frame":4481},
+    {"scene":"s05-aguantar","id":"board-asks","frame":4723},
+    {"scene":"s05-aguantar","id":"intercept","frame":4936},
+    {"scene":"s05-aguantar","id":"answer","frame":5193},
+    {"scene":"s05-aguantar","id":"audit","frame":5409},
+    {"scene":"s05-aguantar","id":"pentest","frame":5549},
+    {"scene":"s05-aguantar","id":"bridge","frame":5750},
+    {"scene":"s05-aguantar","id":"neither","frame":6011},
+    {"scene":"s06-p2","id":"q2","frame":6232},
+    {"scene":"s06-p2","id":"best","frame":6836},
+    {"scene":"s06-p2","id":"ok-2","frame":7170},
+    {"scene":"s06-p2","id":"trap-2","frame":7288},
+    {"scene":"s06-p2","id":"bridge-back","frame":7407},
+    {"scene":"s07-modos","id":"roe","frame":7601},
+    {"scene":"s07-modos","id":"physical","frame":7991},
+    {"scene":"s07-modos","id":"red","frame":8215},
+    {"scene":"s07-modos","id":"blue","frame":8403},
+    {"scene":"s07-modos","id":"purple","frame":8663},
+    {"scene":"s07-modos","id":"proposal","frame":8924},
+    {"scene":"s08-p3","id":"q3","frame":9166},
+    {"scene":"s08-p3","id":"ok-3","frame":9876},
+    {"scene":"s08-p3","id":"trap-3","frame":10020},
+    {"scene":"s08-p3","id":"blue-back","frame":10197},
+    {"scene":"s09-contar","id":"envelopes","frame":10415},
+    {"scene":"s09-contar","id":"unknown","frame":10544},
+    {"scene":"s09-contar","id":"partial","frame":10817},
+    {"scene":"s09-contar","id":"known","frame":11017},
+    {"scene":"s09-contar","id":"boxes","frame":11256},
+    {"scene":"s09-contar","id":"escape-room","frame":11314},
+    {"scene":"s09-contar","id":"proposal","frame":11623},
+    {"scene":"s10-p4","id":"q4","frame":11877},
+    {"scene":"s10-p4","id":"ok-4","frame":12587},
+    {"scene":"s10-p4","id":"trap-4","frame":12729},
+    {"scene":"s10-p4","id":"room-back","frame":12848},
+    {"scene":"s11-mirar","id":"before","frame":13054},
+    {"scene":"s11-mirar","id":"passive","frame":13339},
+    {"scene":"s11-mirar","id":"empty-log","frame":13409},
+    {"scene":"s11-mirar","id":"window","frame":13564},
+    {"scene":"s11-mirar","id":"active","frame":13747},
+    {"scene":"s11-mirar","id":"log-lines","frame":13812},
+    {"scene":"s11-mirar","id":"rule","frame":14049},
+    {"scene":"s12-p5","id":"q5","frame":14267},
+    {"scene":"s12-p5","id":"ok-5","frame":15001},
+    {"scene":"s12-p5","id":"trap-5","frame":15155},
+    {"scene":"s12-p5","id":"log-back","frame":15310},
+    {"scene":"s13-cierre","id":"recap","frame":15492},
+    {"scene":"s13-cierre","id":"rule-1","frame":15538},
+    {"scene":"s13-cierre","id":"rule-2","frame":15704},
+    {"scene":"s13-cierre","id":"rule-3","frame":15880},
+    {"scene":"s13-cierre","id":"phrase","frame":16093},
+    {"scene":"s13-cierre","id":"next","frame":16273},
+    {"scene":"s13-cierre","id":"endcard","frame":16312}
+  ],
+  "exam": [
+    {"scene":"s02-firmas","from":1802,"durationInFrames":150,"objective":"5.5","text":"Attestation: un hecho firmado, no una prueba"},
+    {"scene":"s03-quien","from":3299,"durationInFrames":150,"objective":"5.5","text":"Fuera solo convence lo independiente"},
+    {"scene":"s05-aguantar","from":5806,"durationInFrames":150,"objective":"5.5","text":"Auditoría: cumples. Pentest: aguantas"},
+    {"scene":"s06-p2","from":7438,"durationInFrames":150,"objective":"5.5","text":"Un pentest limpio no demuestra cumplimiento"},
+    {"scene":"s07-modos","from":8915,"durationInFrames":150,"objective":"5.5","text":"Red ataca, blue detecta, purple juntos"},
+    {"scene":"s08-p3","from":10252,"durationInFrames":150,"objective":"5.5","text":"Si se mide a quien defiende: defensive"},
+    {"scene":"s10-p4","from":12891,"durationInFrames":150,"objective":"5.5","text":"Cuenta de usuario normal: partially known"},
+    {"scene":"s12-p5","from":15329,"durationInFrames":150,"objective":"5.5","text":"Pasivo es no tocar, aunque veas puertos"}
+  ],
+  "think": [],
+  "intercept": [
+    {"scene":"s05-aguantar","from":5088,"durationInFrames":321,"adversary":"PAPER GOVERNOR","text":"Se acuerda: si pasamos la auditoría, no entra nadie. Queda en acta."}
+  ],
+  "questions": [
+    {
+      "scene": "s04-p1",
+      "segment": "s04-01",
+      "from": 3462,
+      "durationInFrames": 1249,
+      "countdownFrom": 4026,
+      "countdownFrames": 150,
+      "revealFrame": 4184,
+      "trapFrame": 4328,
+      "objective": "5.5",
+      "scenario": "Llega a una eléctrica la autoridad que le dio la licencia. Nadie la contrató, el alcance lo fija la ley y puede acabar en multa o sin licencia.",
+      "q": "¿Qué tipo de evaluación es?",
+      "options": ["Regulatory examination","Self-assessment","Internal audit","Independent third-party audit"],
+      "answer": 0,
+      "trap": 3,
+      "why": "La impone quien tiene potestad legal: no se contrata y puede sancionar",
+      "trapWhy": "Es externa e independiente, pero esa la contratas tú y no puede sancionarte"
+    },
+    {
+      "scene": "s06-p2",
+      "segment": "s06-01",
+      "from": 6232,
+      "durationInFrames": 1357,
+      "countdownFrom": 7012,
+      "countdownFrames": 150,
+      "revealFrame": 7170,
+      "trapFrame": 7288,
+      "objective": "5.5",
+      "scenario": "Un cliente pide a una empresa que demuestre que cumple el estándar del sector. La empresa le manda su último pentest: en dos semanas, nadie entró.",
+      "q": "¿Qué documento responde MEJOR a lo que pide el cliente?",
+      "options": ["Signed self-assessment","Independent third-party audit","Penetration test report","Purple team exercise"],
+      "answer": 1,
+      "trap": 2,
+      "why": "Comprueba con independencia que se cumple el estándar, que es lo que se pide",
+      "trapWhy": "Que nadie entrara dice que aguantó, no que cumpla cada control del estándar"
+    },
+    {
+      "scene": "s08-p3",
+      "segment": "s08-01",
+      "from": 9166,
+      "durationInFrames": 1237,
+      "countdownFrom": 9718,
+      "countdownFrames": 150,
+      "revealFrame": 9876,
+      "trapFrame": 10020,
+      "objective": "5.5",
+      "scenario": "Un banco reproduce en su red técnicas de ataque conocidas, sin objetivo que alcanzar. Solo mide cuánto tarda su SOC en verlas y contenerlas.",
+      "q": "¿Qué tipo de prueba describe MEJOR el ejercicio?",
+      "options": ["Physical","Offensive (red team)","Integrated (purple team)","Defensive (blue team)"],
+      "answer": 3,
+      "trap": 1,
+      "why": "Lo que se pone a prueba es la detección y la respuesta del equipo defensor",
+      "trapWhy": "Hay técnicas de ataque, pero nadie busca un objetivo: se mide al SOC"
+    },
+    {
+      "scene": "s10-p4",
+      "segment": "s10-01",
+      "from": 11877,
+      "durationInFrames": 1165,
+      "countdownFrom": 12429,
+      "countdownFrames": 150,
+      "revealFrame": 12587,
+      "trapFrame": 12729,
+      "objective": "5.5",
+      "scenario": "Una web de reservas quiere saber qué podría hacer un cliente. Al equipo de pruebas solo le da una cuenta de cliente: ni planos, ni código, ni acceso total.",
+      "q": "¿Qué nivel de conocimiento del entorno encaja MEJOR?",
+      "options": ["Partially known environment","Unknown environment","Known environment","Integrated (purple team)"],
+      "answer": 0,
+      "trap": 2,
+      "why": "Recibe una parte de la información, la de un usuario normal, y nada más",
+      "trapWhy": "Le dan una cuenta, pero known es tenerlo todo: planos, código y acceso total"
+    },
+    {
+      "scene": "s12-p5",
+      "segment": "s12-01",
+      "from": 14267,
+      "durationInFrames": 1213,
+      "countdownFrom": 14843,
+      "countdownFrames": 150,
+      "revealFrame": 15001,
+      "trapFrame": 15155,
+      "objective": "5.5",
+      "scenario": "Ya en la ventana pactada, un equipo de pruebas busca a una empresa en un buscador de aparatos expuestos: ve puertos y versiones. Sus registros, vacíos.",
+      "q": "¿Qué tipo de actividad es?",
+      "options": ["Port scanning","Defensive (blue team)","Passive reconnaissance","Active reconnaissance"],
+      "answer": 2,
+      "trap": 3,
+      "why": "Consulta a un tercero que ya lo recogió: no toca a la empresa ni deja rastro",
+      "trapWhy": "Ve puertos y versiones, como en un escaneo, pero no ha tocado ni un equipo"
+    }
+  ],
+  "sfx": [
+    {"from":1802,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":3299,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":4184,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
+    {"from":4328,"sound":"block","src":"sfx/block.mp3","durationInFrames":11,"volume":0.17},
+    {"from":4696,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
+    {"from":5088,"sound":"glitch","src":"sfx/glitch.mp3","durationInFrames":12,"volume":0.166},
+    {"from":5092,"sound":"typing","src":"sfx/typing.mp3","durationInFrames":67,"volume":0.08},
+    {"from":5806,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":7170,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
+    {"from":7288,"sound":"block","src":"sfx/block.mp3","durationInFrames":11,"volume":0.17},
+    {"from":7438,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":7574,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
+    {"from":8915,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":9876,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
+    {"from":10020,"sound":"block","src":"sfx/block.mp3","durationInFrames":11,"volume":0.17},
+    {"from":10252,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":10388,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
+    {"from":12587,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
+    {"from":12729,"sound":"block","src":"sfx/block.mp3","durationInFrames":11,"volume":0.17},
+    {"from":12891,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":13027,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
+    {"from":15001,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
+    {"from":15155,"sound":"block","src":"sfx/block.mp3","durationInFrames":11,"volume":0.17},
+    {"from":15329,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097}
+  ],
+  "captionsOnScreen": false
+}
