@@ -1,0 +1,375 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:06.600
+El puerto de Halden comparte servidores,
+usa una nube pública y reparte móviles.
+
+2
+00:00:06.600 --> 00:00:10.500
+Cuando algo falla, mira dónde
+nació antes de nombrarlo.
+
+3
+00:00:10.500 --> 00:00:12.100
+Dónde nace el fallo.
+
+4
+00:00:12.100 --> 00:00:16.967
+Lo vemos en la máquina compartida,
+en la nube y en el bolsillo,
+
+5
+00:00:16.967 --> 00:00:21.000
+con tres preguntas como las del examen.
+
+6
+00:00:21.567 --> 00:00:23.967
+Empezamos por la máquina compartida.
+
+7
+00:00:23.967 --> 00:00:29.467
+Piensa en un edificio de alquiler, donde
+las paredes entre pisos son el hipervisor.
+
+8
+00:00:29.467 --> 00:00:34.567
+Abrir un agujero al piso
+de al lado es salirte del tuyo.
+
+9
+00:00:34.567 --> 00:00:39.867
+Mudarte y encontrar en un cajón
+los papeles del anterior es otra cosa.
+
+10
+00:00:39.867 --> 00:00:42.467
+Ahí no has roto ninguna pared.
+
+11
+00:00:42.467 --> 00:00:44.500
+En un servidor pasa igual.
+
+12
+00:00:44.500 --> 00:00:50.000
+Si el código de una máquina cruza
+al hipervisor o a otra, es un VM escape.
+
+13
+00:00:50.000 --> 00:00:53.167
+Se cierra parcheando el hipervisor.
+
+14
+00:00:53.167 --> 00:00:58.067
+Si el hipervisor da a una máquina
+nueva el disco de otra sin borrarlo,
+
+15
+00:00:58.067 --> 00:01:02.667
+es resource reuse. Se cierra
+limpiando antes de reasignar.
+
+16
+00:01:02.667 --> 00:01:08.367
+Así que la pregunta es si alguien
+ha salido de su máquina.
+
+17
+00:01:09.133 --> 00:01:13.500
+Primera pregunta. Imagina
+un servidor de virtualización.
+
+18
+00:01:13.500 --> 00:01:16.367
+Alguien da de baja una máquina virtual,
+
+19
+00:01:16.367 --> 00:01:20.200
+y el hipervisor le da su espacio
+de disco a otra nueva.
+
+20
+00:01:20.200 --> 00:01:25.533
+En la nueva aparecen datos de la anterior,
+y nadie ha salido de su máquina.
+
+21
+00:01:25.533 --> 00:01:29.967
+¿Qué control lo habría evitado
+mejor? Fíjate en ese «mejor».
+
+22
+00:01:29.967 --> 00:01:35.233
+Pide la que más encaja con este
+caso, aunque otra suene bien.
+
+23
+00:01:34.433 --> 00:01:39.433
+A) Patch the hypervisor
+B) Segment the virtual network
+C) Sanitize resources before reallocating them
+D) Install an EDR agent in each VM
+
+24
+00:01:39.600 --> 00:01:43.000
+La buena es limpiar el espacio
+antes de reasignarlo.
+
+25
+00:01:43.000 --> 00:01:47.067
+Parchear el hipervisor tienta,
+pero eso cierra el escape.
+
+26
+00:01:47.067 --> 00:01:53.167
+O sea, que no había ninguna pared
+rota, sino un cajón sin vaciar.
+
+27
+00:01:54.333 --> 00:01:57.433
+Pasamos a la nube, y volvemos al edificio.
+
+28
+00:01:57.433 --> 00:02:01.433
+El casero responde de la
+estructura y las paredes.
+
+29
+00:02:01.433 --> 00:02:07.333
+Y cada inquilino, de quién entra,
+de cómo cierra y de lo que guarda.
+
+30
+00:02:07.333 --> 00:02:09.467
+Pues la nube funciona así.
+
+31
+00:02:09.467 --> 00:02:15.400
+El hardware, la red del centro de datos
+y el hipervisor son del proveedor.
+
+32
+00:02:15.400 --> 00:02:17.633
+Esa pared no la pones tú.
+
+33
+00:02:17.633 --> 00:02:20.067
+Lo del medio cambia según el servicio.
+
+34
+00:02:20.067 --> 00:02:25.633
+Pero lo de encima, configuración, datos
+e identidades, es del cliente, siempre.
+
+35
+00:02:25.633 --> 00:02:27.633
+Por eso un bucket público,
+
+36
+00:02:27.633 --> 00:02:31.600
+una clave filtrada o un rol
+de más le tocan al cliente.
+
+37
+00:02:31.600 --> 00:02:35.633
+Ese reparto es el shared
+responsibility model.
+
+38
+00:02:35.633 --> 00:02:37.033
+Y queda el hueco.
+
+39
+00:02:37.033 --> 00:02:40.600
+La puerta de la calle
+la cierra cada vecino,
+
+40
+00:02:40.600 --> 00:02:46.333
+pero todos creen que la cierra el casero.
+Así que se queda abierta.
+
+41
+00:02:46.333 --> 00:02:53.000
+En la nube, lo que cada uno cree
+que hace el otro no lo hace nadie.
+
+42
+00:02:53.000 --> 00:02:59.133
+Y en tu lado pasa algo parecido, cientos
+de claves y roles que nadie revisa.
+
+43
+00:02:59.133 --> 00:03:01.500
+Eso es IAM sprawl.
+
+44
+00:03:02.267 --> 00:03:06.100
+Segunda. Una empresa guarda
+sus documentos en un SaaS.
+
+45
+00:03:06.100 --> 00:03:10.500
+Alguien borra unos por error,
+y ya no hay forma de recuperarlos.
+
+46
+00:03:10.500 --> 00:03:14.067
+La empresa creía que el
+proveedor guardaba copias,
+
+47
+00:03:14.067 --> 00:03:17.800
+pero él solo se compromete
+a que el servicio funcione.
+
+48
+00:03:17.800 --> 00:03:20.767
+¿Qué tendría que haber hecho?
+
+49
+00:03:19.967 --> 00:03:24.967
+A) Keep its own backups of the data
+B) Rely on the SaaS provider's copies
+C) Enable MFA on the SaaS
+D) Encrypt the documents
+
+50
+00:03:25.133 --> 00:03:29.967
+Guardar sus propias copias, porque
+los datos son siempre del cliente.
+
+51
+00:03:29.967 --> 00:03:33.033
+Fiarse de las del proveedor era el hueco.
+
+52
+00:03:33.033 --> 00:03:39.933
+O sea, que era la puerta de la calle,
+y le tocaba a cada vecino.
+
+53
+00:03:41.100 --> 00:03:43.000
+Y acabamos en el bolsillo.
+
+54
+00:03:43.000 --> 00:03:48.600
+Piensa en un concierto, con control
+en la entrada y seguridad por dentro.
+
+55
+00:03:48.600 --> 00:03:53.467
+Si alguien se cuela por la puerta
+de atrás, se salta el control,
+
+56
+00:03:53.467 --> 00:03:56.100
+pero dentro todo sigue igual.
+
+57
+00:03:56.100 --> 00:04:02.000
+Muy distinto es mandar a casa
+a la seguridad y abrir todas las puertas.
+
+58
+00:04:02.000 --> 00:04:03.300
+Ahora, el móvil.
+
+59
+00:04:03.300 --> 00:04:09.100
+Si instalas una app de fuera de la tienda
+oficial, te saltas su revisión.
+
+60
+00:04:09.100 --> 00:04:13.000
+Pero el sistema sigue entero.
+Eso es side loading.
+
+61
+00:04:13.000 --> 00:04:16.933
+Quitarle al sistema
+sus protecciones va mucho más allá.
+
+62
+00:04:16.933 --> 00:04:21.100
+Cae el aislamiento entre apps,
+y a menudo el control del MDM.
+
+63
+00:04:21.100 --> 00:04:25.500
+En Android es rooting,
+y en iPhone, jailbreaking.
+
+64
+00:04:26.267 --> 00:04:30.733
+La última. Tienes un móvil Android
+de empresa con el sistema intacto.
+
+65
+00:04:30.733 --> 00:04:35.433
+Quien lo lleva permite instalar
+aplicaciones de origen desconocido y se
+
+66
+00:04:35.433 --> 00:04:41.567
+instala una que le han pasado por mensaje.
+¿Qué vulnerabilidad describe el caso?
+
+67
+00:04:40.767 --> 00:04:45.767
+A) Jailbreaking
+B) VM escape
+C) Rooting
+D) Side loading
+
+68
+00:04:45.933 --> 00:04:50.167
+Es side loading, porque solo
+se ha saltado la tienda.
+
+69
+00:04:50.167 --> 00:04:54.233
+Y el rooting no, que nadie
+ha tocado el sistema.
+
+70
+00:04:54.233 --> 00:05:00.333
+O sea, que se ha colado por detrás,
+pero la seguridad sigue dentro.
+
+71
+00:05:01.500 --> 00:05:02.533
+Tres reglas.
+
+72
+00:05:02.533 --> 00:05:07.633
+Si sales de tu máquina, es un escape,
+y si heredas restos sin salir,
+
+73
+00:05:07.633 --> 00:05:09.367
+es resource reuse.
+
+74
+00:05:09.367 --> 00:05:13.533
+En la nube, configuración, datos
+e identidades son tuyos siempre,
+
+75
+00:05:13.533 --> 00:05:14.833
+también en SaaS.
+
+76
+00:05:14.833 --> 00:05:18.733
+Y saltarse la tienda
+no es rootear el móvil.
+
+77
+00:05:18.733 --> 00:05:22.667
+Antes de nombrarlo,
+pregúntate dónde nació el fallo.
+
+78
+00:05:22.667 --> 00:05:27.233
+Ahora te toca a ti,
+con las preguntas de la lección.

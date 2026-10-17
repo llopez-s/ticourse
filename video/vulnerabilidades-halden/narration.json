@@ -20,13 +20,13 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {three}El puerto de Halden comparte servidores, usa una nube pública y reparte móviles. {cracks}Pero antes de nombrar un fallo, mira dónde nació.",
+      "text": "<curious> {three}El puerto de Halden comparte servidores, usa una nube pública y reparte móviles. {cracks}Cuando algo falla, mira dónde nació antes de nombrarlo.",
       "pauseAfterMs": 300
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Dónde nace el fallo. {promise}Lo vemos en la máquina compartida, en la nube y en el bolsillo, con tres preguntas de examen.",
+      "text": "<confident> {title}Dónde nace el fallo. {promise}Lo vemos en la máquina compartida, en la nube y en el bolsillo, con tres preguntas como las del examen.",
       "pauseAfterMs": 400
     },
     {
@@ -62,7 +62,7 @@
     {
       "id": "s02-06",
       "scene": "s02-maquina",
-      "text": "<warm> {question}O sea, que la pregunta es si alguien ha salido de su máquina.",
+      "text": "<warm> {question}Así que la pregunta es si alguien ha salido de su máquina.",
       "pauseAfterMs": 600,
       "exam": {
         "objective": "2.3",
@@ -98,7 +98,13 @@
     {
       "id": "s03-02",
       "scene": "s03-p1",
-      "text": "<firm> {ok-1}La buena es limpiar el espacio antes de reasignarlo. {trap-1}Parchear el hipervisor tienta, pero eso cierra el escape. {drawer-back}No había ninguna pared rota, sino un cajón sin vaciar.",
+      "text": "<firm> {ok-1}La buena es limpiar el espacio antes de reasignarlo. {trap-1}Parchear el hipervisor tienta, pero eso cierra el escape.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<warm> {drawer-back}O sea, que no había ninguna pared rota, sino un cajón sin vaciar.",
       "pauseAfterMs": 1000
     },
     {
@@ -110,7 +116,7 @@
     {
       "id": "s04-02",
       "scene": "s04-nube",
-      "text": "<warm> {tenant}Y cada inquilino, de a quién deja entrar, de cómo cierra y de lo que guarda.",
+      "text": "<warm> {tenant}Y cada inquilino, de quién entra, de cómo cierra y de lo que guarda.",
       "pauseAfterMs": 300
     },
     {
@@ -122,13 +128,13 @@
     {
       "id": "s04-04",
       "scene": "s04-nube",
-      "text": "<thoughtful> {middle}Lo del medio cambia según el servicio. {above}Pero la configuración, los datos y las identidades son del cliente, {always}siempre.",
+      "text": "<thoughtful> {middle}Lo del medio cambia según el servicio. {above}Pero lo de encima, configuración, datos e identidades, es del cliente, {always}siempre.",
       "pauseAfterMs": 400
     },
     {
       "id": "s04-05",
       "scene": "s04-nube",
-      "text": "<firm> {reflex}Por eso un bucket público, una clave filtrada o un rol de más son cosa suya. Ese reparto es el shared responsibility model.",
+      "text": "<firm> {reflex}Por eso un bucket público, una clave filtrada o un rol de más le tocan al cliente. Ese reparto es el shared responsibility model.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "3.1",
@@ -140,19 +146,25 @@
     {
       "id": "s04-06",
       "scene": "s04-nube",
-      "text": "<curious> {door}Y queda el hueco. La puerta de la calle la cierra cada vecino, pero todos creen que es cosa del casero. Así que se queda abierta.",
+      "text": "<curious> {door}Y queda el hueco. La puerta de la calle la cierra cada vecino, pero todos creen que la cierra el casero. Así que se queda abierta.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-07",
       "scene": "s04-nube",
-      "text": "<serious> {strip}En la nube, lo que cada uno cree que hace el otro no lo hace nadie. {sprawl}Como cientos de claves y roles que nadie revisa. Eso es IAM sprawl.",
+      "text": "<serious> {strip}En la nube, lo que cada uno cree que hace el otro no lo hace nadie.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-08",
+      "scene": "s04-nube",
+      "text": "<steady> {sprawl}Y en tu lado pasa algo parecido, cientos de claves y roles que nadie revisa. Eso es IAM sprawl.",
       "pauseAfterMs": 600
     },
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<intrigued> {q2}Segunda. Una empresa guarda sus documentos en un servicio SaaS. Alguien borra unos documentos por error y ya no hay forma de recuperarlos. La empresa creía que el proveedor guardaba copias, pero el proveedor solo se compromete a que el servicio funcione. ¿Qué tendría que haber hecho?",
+      "text": "<curious> {q2}Segunda. Una empresa guarda sus documentos en un SaaS. Alguien borra unos por error, y ya no hay forma de recuperarlos. La empresa creía que el proveedor guardaba copias, pero él solo se compromete a que el servicio funcione. ¿Qué tendría que haber hecho?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "3.1",
@@ -176,13 +188,13 @@
     {
       "id": "s05-02",
       "scene": "s05-p2",
-      "text": "<confident> {ok-2}Guardar sus propias copias, porque los datos son del cliente en cualquier modelo. {trap-2}Fiarse de las del proveedor era el hueco.",
+      "text": "<confident> {ok-2}Guardar sus propias copias, porque los datos son siempre del cliente. {trap-2}Fiarse de las del proveedor era el hueco.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-03",
       "scene": "s05-p2",
-      "text": "<warm> {door-back}Como la puerta de la calle, que le tocaba a cada vecino.",
+      "text": "<warm> {door-back}O sea, que era la puerta de la calle, y le tocaba a cada vecino.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "3.1",
@@ -194,7 +206,7 @@
     {
       "id": "s06-01",
       "scene": "s06-bolsillo",
-      "text": "<engaging> {concert}Y acabamos en el bolsillo, con un concierto. Hay un control en la entrada, y seguridad repartida por dentro.",
+      "text": "<engaging> {concert}Y acabamos en el bolsillo. Piensa en un concierto, con control en la entrada y seguridad por dentro.",
       "pauseAfterMs": 300
     },
     {
@@ -206,13 +218,13 @@
     {
       "id": "s06-03",
       "scene": "s06-bolsillo",
-      "text": "<serious> {guards}Otra cosa es mandar a casa a la seguridad y abrir todas las puertas.",
+      "text": "<serious> {guards}Muy distinto es mandar a casa a la seguridad y abrir todas las puertas.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-04",
       "scene": "s06-bolsillo",
-      "text": "<clear> {phone}Ahora, el móvil. {store}Si instalas una app de fuera de la tienda oficial, te saltas la revisión y la firma.",
+      "text": "<clear> {phone}Ahora, el móvil. {store}Si instalas una app de fuera de la tienda oficial, te saltas su revisión.",
       "pauseAfterMs": 300
     },
     {
@@ -224,7 +236,7 @@
     {
       "id": "s06-06",
       "scene": "s06-bolsillo",
-      "text": "<focused> {root}Quitarle al sistema sus protecciones es otra cosa. Cae el aislamiento entre apps, y a menudo el control del MDM. {jailbreak}En Android es rooting, y en iPhone, jailbreaking.",
+      "text": "<focused> {root}Quitarle al sistema sus protecciones va mucho más allá. Cae el aislamiento entre apps, y a menudo el control del MDM. {jailbreak}En Android es rooting, y en iPhone, jailbreaking.",
       "pauseAfterMs": 600,
       "exam": {
         "objective": "2.3",
@@ -236,12 +248,12 @@
     {
       "id": "s07-01",
       "scene": "s07-p3",
-      "text": "<intrigued> {q3}La última. Un móvil Android de empresa, sin tocar, con todas sus protecciones. Su usuario permite instalar aplicaciones de origen desconocido y se instala una que le han pasado por mensaje. ¿Qué vulnerabilidad describe el caso?",
+      "text": "<intrigued> {q3}La última. Tienes un móvil Android de empresa con el sistema intacto. Quien lo lleva permite instalar aplicaciones de origen desconocido y se instala una que le han pasado por mensaje. ¿Qué vulnerabilidad describe el caso?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "2.3",
         "scenario": "Un móvil Android de empresa, sin modificar. Su usuario permite instalar apps de origen desconocido y se instala una que le pasan por mensaje.",
-        "q": "El sistema conserva todas sus protecciones. ¿Qué vulnerabilidad describe el caso?",
+        "q": "El sistema operativo sigue intacto. ¿Qué vulnerabilidad describe el caso?",
         "options": [
           "Jailbreaking",
           "VM escape",
@@ -251,7 +263,7 @@
         "answer": 3,
         "trap": 2,
         "why": "Instalar fuera de la tienda oficial es side loading, aunque el sistema siga intacto",
-        "trapWhy": "Rooting es quitarle al sistema sus protecciones, y aquí siguen todas",
+        "trapWhy": "Rooting es quitarle al sistema sus protecciones, y aquí el sistema está intacto",
         "countdownMs": 5000,
         "revealAt": "ok-3",
         "trapAt": "trap-3"
@@ -260,7 +272,7 @@
     {
       "id": "s07-02",
       "scene": "s07-p3",
-      "text": "<firm> {ok-3}Es side loading, porque solo se ha saltado la tienda. {trap-3}El rooting tienta, pero nadie ha tocado el sistema.",
+      "text": "<satisfied> {ok-3}Es side loading, porque solo se ha saltado la tienda. {trap-3}Y el rooting no, que nadie ha tocado el sistema.",
       "pauseAfterMs": 300
     },
     {
@@ -272,7 +284,7 @@
     {
       "id": "s08-01",
       "scene": "s08-cierre",
-      "text": "<cheerful> {recap}Tres reglas. {rule-1}Si algo sale de su máquina, es un escape, y si heredas restos sin salir, es reuse.",
+      "text": "<cheerful> {recap}Tres reglas. {rule-1}Si sales de tu máquina, es un escape, y si heredas restos sin salir, es resource reuse.",
       "pauseAfterMs": 250
     },
     {
