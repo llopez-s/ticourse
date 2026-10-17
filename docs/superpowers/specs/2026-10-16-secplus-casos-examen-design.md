@@ -21,7 +21,7 @@ practica cómo se lo van a preguntar.
 | Dominio (peso) | Lecciones |
 |---|---|
 | D1 (12 %) | sp1m1 categorías y tipos de controles · sp1m2 CIA, non-repudiation, AAA, gap analysis · sp1m4 seguridad física y engaño · sp1m5 change management |
-| D2 (22 %) | sp2m1 actores y motivaciones · sp2m2 vectores y superficie de ataque · sp2m3 ingeniería social · sp2m5 nota de examen: shared responsibility · sp2m6 malware e indicadores · sp2m8 mitigación y hardening |
+| D2 (22 %) | sp2m1 actores y motivaciones · sp2m2 vectores y superficie de ataque · sp2m3 ingeniería social · sp2m5 vulnerabilidades II (virtualización, cloud, supply chain, cripto, móviles) · sp2m6 malware e indicadores · sp2m8 mitigación y hardening |
 | D3 (18 %) | sp3m1 cloud, IaC, serverless, microservicios · sp3m2 red, virtualización y contenedores · sp3m3 IoT, ICS/SCADA, RTOS, embedded · sp3m6 protección de datos |
 | D4 (28 %) | sp4m1 baselines y hardening · sp4m3 gestión de activos · sp4m4 vulnerabilidades I: identificación · sp4m9 automatización y orquestación |
 | D5 (20 %) | sp5m1 políticas, estándares, procedimientos, guidelines · sp5m2 estructuras de gobernanza y roles sobre los datos · sp5m5 riesgo de terceros · sp5m6 cumplimiento y privacidad · sp5m7 auditorías y pentest · sp5m8 concienciación |
@@ -108,6 +108,11 @@ aparece si el caso lo pide (por ejemplo, ingeniería social).
 - Todo lo que salga en pantalla y ya exista en Halden (personas, equipos, dominios, fechas) se comprueba contra el
   registro de canon `docs/superpowers/canon/glass-harbor.md` con `canon-check.mjs`, como siempre (plan §8). Lo poco
   nuevo que fije cada vídeo se añade al registro.
+- **En el puerto, nada sale bien al atacante** *(decisión de Claude, 2026-10-16, al cruzar las fichas de la tanda 7)*:
+  en Halden solo pasan exposiciones, intentos frustrados y decisiones. Un ataque con éxito (cuenta asaltada, datos
+  vendidos, pago hecho, fuga, pérdida sin copia) va sin lugar («una empresa», «otro puerto») o como supuesto
+  («imagina»), con el rótulo «pregunta tipo examen · ejemplo». Así ningún vídeo de casos le añade incidentes a la
+  campaña ni le pone actor a lo que la campaña deja abierto.
 - **Realistas y del día a día de un puerto:** turnos, proveedores, grúas, oficinas, sistemas de control (ICS/SCADA en
   sp3m3), Compras, Legal y RR. HH.
 
@@ -149,8 +154,10 @@ Después, tandas por peso del dominio en el examen, cada una con su ficha por v�
 | 9 | D3 (18 %) | sp3m1, sp3m2, sp3m3, sp3m6 |
 | 10 | D1 (12 %) + cierre | sp1m2, sp1m4, sp1m5, sp6m1 (principal) |
 
-Numeración: siguen a V27 (piloto = V28, y así), en el orden en que se aprueben las fichas. sp2m5 es una nota corta
-sobre shared responsibility: su vídeo es una cápsula en el extremo corto del perfil.
+Numeración: siguen a V27 (piloto = V28, y así), en el orden en que se aprueben las fichas. sp2m5 es la lección
+«Vulnerabilidades II» (virtualización, cloud, supply chain, criptografía, misconfiguración y móviles, 13 min); una
+versión anterior de este diseño la tomó por una nota corta de shared responsibility (corregido el 2026-10-16, al
+escribir su ficha). Su vídeo es una cápsula normal que elige tres de esas familias.
 
 Dentro de cada tanda se graba como hasta ahora (un principal con una cápsula por sesión cuando los haya) y se va de un
 PR en uno.

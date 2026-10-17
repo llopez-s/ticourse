@@ -181,6 +181,17 @@ const sp1m1: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a la siguiente lección, míralo en el puerto y ponte a prueba con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Un control, dos etiquetas: categoría y tipo',
+      youtube: 'y9bjWKwN5fg',
+      poster: 'videos/controles-halden-poster.png',
+      transcript: 'videos/controles-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Con las categorías y los tipos claros ya puedes describir *qué* hace un control y *quién* lo opera. La siguiente lección responde a la pregunta previa: **qué propiedad de la información** estamos protegiendo con cada control — confidentiality, integrity, availability y non-repudiation — y cómo la triple **AAA** y el **gap analysis** te ayudan a decidir dónde faltan controles.',
     },
   ],
