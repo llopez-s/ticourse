@@ -1,0 +1,145 @@
+{
+  "title": "Cuatro papeles: qué obliga y qué solo aconseja",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 266,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Qué y cuánto"
+    },
+    {
+      "n": 2,
+      "title": "Cómo y qué te aconsejo"
+    },
+    {
+      "n": 3,
+      "title": "Papeles que caducan"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Cuatro papeles",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · documentación del programa · propuesta · sin fecha». Cuatro hojas boca abajo sobre una mesa (`sheets`), todas con el rótulo «política» (`wrong-label`). La primera frase presenta el puerto y el problema; al acabarla, título «Cuatro papeles» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en dos chips (`promise`): «¿obliga? · ¿qué responde?». Plaquita «SY0-701 · 5.1»",
+      "requiredCues": [
+        "sheets",
+        "wrong-label",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-que",
+      "chapter": 1,
+      "title": "Qué y por qué, y cuánto",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "El caso (`case`): el puerto necesita una regla para mandar documentos fuera (a navieras, aduanas, proveedores), sin nombres. La primera hoja se da la vuelta (`sheet-1`): «La información del puerto sale solo por canales aprobados y según su clasificación», con la firma de la dirección → POLICY («qué y por qué · obliga a todos · sin tecnología») (`policy`). La segunda, que escribe Seguridad (`sheet-2`): «Lo confidencial sale cifrado, por la plataforma de intercambio aprobada, con enlaces que caducan a los 7 días»; en pantalla, sin voz, «AES-256» junto a «cifrado» → STANDARD («cuánto exactamente · obliga · caduca con la tecnología») (`standard`). La piscina municipal en miniatura, rotulada «imagen · no es del puerto» (`pool-1`), con sus dos primeros carteles: el grande de la entrada, «En esta piscina, la seguridad de los bañistas va primero», y el de al lado, «Gorro obligatorio · menores de 10 años, siempre con un adulto». La plataforma de intercambio no tiene nombre ni producto. Tarjeta de examen después de la piscina",
+      "requiredCues": [
+        "case",
+        "sheet-1",
+        "policy",
+        "sheet-2",
+        "standard",
+        "pool-1"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Una guía de desarrollo",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel de pregunta tapa la escena hasta el final, así que el fondo se queda quieto (una hoja genérica de buenas prácticas, sin texto legible). Sin calificador. Cuenta atrás de 5 s; en `ok-1` sale la correcta (Guideline) y en `trap-1` la trampa (Standard); las otras dos, atenuadas. En la resolución vuelve la piscina en una línea (`cream`): el cartel pequeño «Te recomendamos crema de factor 50»; la tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "cream"
+      ]
+    },
+    {
+      "id": "s04-como",
+      "chapter": 2,
+      "title": "El cómo y el consejo",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "La tercera hoja, que escribe Sistemas (`sheet-3`): «Cómo mandar un fichero a una naviera: 1, clasifícalo; 2, súbelo a la plataforma; 3, manda el enlace; 4, comprueba que ha llegado» → PROCEDURE («cómo, paso a paso · obliga a quien lo hace») (`procedure`). Un chip (`playbook`): «playbook: un procedure para un caso concreto», con el ejemplo de la lección (una cuenta comprometida). La cuarta hoja (`sheet-4`): «Te recomendamos avisar por teléfono a quien recibe de que le llega un enlace» → GUIDELINE («un consejo · no obliga · no seguirlo no es un incumplimiento») (`guideline`). La piscina (`pool-2`): la hoja del socorrista, «Si alguien se hunde: 1, silbato; 2, al agua; 3, avisar al 112», y el cartel pequeño de la crema. Sin correos, adjuntos ni macros. Sin tarjeta de examen",
+      "requiredCues": [
+        "sheet-3",
+        "procedure",
+        "playbook",
+        "sheet-4",
+        "guideline",
+        "pool-2"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Un documento firmado por todos",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo examen 2 (`q2`), rótulo «pregunta tipo examen · ejemplo». Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: la que encaja con este caso, aunque otra suene bien» (`best`), que la voz explica antes de la cuenta atrás. Fondo quieto: una hoja con una lista numerada sin texto legible. En `ok-2` la correcta (Procedure), en `trap-2` la trampa (Policy). En la resolución vuelve la piscina en una línea (`lifeguard`): la hoja del socorrista; la tarjeta de examen después de la trampa",
+      "requiredCues": [
+        "q2",
+        "best",
+        "ok-2",
+        "trap-2",
+        "lifeguard"
+      ]
+    },
+    {
+      "id": "s06-caducan",
+      "chapter": 3,
+      "title": "Papeles que caducan",
+      "targetSec": 34,
+      "wordBudget": 92,
+      "goal": "Las cuatro hojas en fila, cada una con tres datos al pie (`owners`, `cycle`): «dueño: una persona · revisión: cada año · y cuando cambie la ley o el servicio». La plataforma de intercambio cambia de producto, como supuesto (`platform-change`): se iluminan el standard y el procedure, la policy se queda igual («por eso no nombra tecnología») (`standard-only`). Monitoring, en un chip (`monitoring`): «comprobar que se aplica: ¿salen documentos por correo y no por la plataforma?». La piscina (`old-sign`): el cartel amarillento con el horario de «la piscina pequeña», que ya no existe. Nada dice que al puerto le falte un dueño. Tarjeta de examen después del cartel viejo",
+      "requiredCues": [
+        "owners",
+        "cycle",
+        "platform-change",
+        "standard-only",
+        "monitoring",
+        "old-sign"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Una ley en marzo",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 3 (`q3`), rótulo «pregunta tipo examen · ejemplo», con «MEJOR» resaltado (ya explicado en s05; sin glosa). Fondo quieto: un calendario sin año con enero y marzo marcados, sin texto legible. En `ok-3` la correcta (Revisarla ahora), en `trap-3` la trampa (Esperar a la revisión de enero). En la resolución vuelve el cartel viejo en una línea (`closed`); la tarjeta de examen después de la trampa",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "closed"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (los dos carteles grandes · la hoja del socorrista y la crema · el cartel viejo) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Policy y standard obligan: la policy dice qué y por qué, sin tecnología; el standard, cuánto exactamente» · «El procedure dice cómo, paso a paso, y obliga a quien lo hace, también si es un playbook; la guideline aconseja y no obliga» · «Cada papel tiene dueño y ciclo, y se revisa antes si cambia la ley o el servicio». La frase para el examen (`phrase`): «Primero, ¿obliga? Después, ¿qué responde: qué, cuánto o cómo?». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
