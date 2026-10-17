@@ -1,0 +1,152 @@
+{
+  "title": "Seis actores, tres parejas: el porqué decide",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 268,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Fuera y con poco"
+    },
+    {
+      "n": 2,
+      "title": "Fuera y con mucho"
+    },
+    {
+      "n": 3,
+      "title": "Ya dentro"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Seis actores, tres parejas",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · caso de ejemplo · datos ficticios», sin fecha. Seis tarjetas de actor boca abajo sobre una mesa (`cards`); se dan la vuelta con su nombre y se juntan de dos en dos (`pairs`). Al acabar la primera frase, título «Seis actores, tres parejas» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «fuera y con poco · fuera y con mucho · ya dentro». Plaquita «SY0-701 · 2.1»",
+      "requiredCues": [
+        "cards",
+        "pairs",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-pantallas",
+      "chapter": 1,
+      "title": "Dos pantallas, el mismo hueco",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Las tres barras, vacías (`bars`), con sus nombres en llano y luego en inglés (`attributes`): «fuera o dentro» (internal/external), «dinero detrás» (resources/funding), «saber hacer» (level of sophistication). «Imagina dos mañanas · caso de ejemplo · sin fecha» (`screens`): las pantallas de salidas de la terminal de pasajeros amanecen cambiadas, por el mismo hueco y con la misma herramienta descargada (sin hueco ni herramienta con nombre). La primera dice «Fuera los cruceros: la ciudad no es un aparcamiento» y enlaza un comunicado (`cause`); la segunda, un mote y «saludos a los del foro» (`nick`). Las barras de los dos se rellenan casi igual: fuera, pocos medios (la del hacktivist, «bajo o medio»), saber hacer modesto. Cuarta línea, «lo que quiere» (`wants`): «que se sepa su causa» (philosophical/political beliefs) y «ver si puede, presumir» (disruption/chaos). La pintada, rotulada «imagen · no es del puerto» (`spray`): el mismo spray, «No a…» y una firma. Nombres (`names`): hacktivist y unskilled attacker; la tarjeta de examen después",
+      "requiredCues": [
+        "bars",
+        "attributes",
+        "screens",
+        "cause",
+        "nick",
+        "wants",
+        "spray",
+        "names"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Una cuenta en plena polémica",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel tapa la escena hasta el final, así que el fondo se queda quieto (un perfil de red social genérico, sin nombre ni texto legible). Primer calificador: «MÁS probable» resaltado en la pregunta y, debajo, «MÁS probable: no el único posible, el que mejor encaja» (`best`), que la voz explica antes de la cuenta atrás. Cuenta atrás de 5 s con «Pausa si quieres»; en `ok-1` la correcta (Unskilled attacker), en `trap-1` la trampa (Hacktivist), las otras dos atenuadas. En la resolución vuelve la pintada en una línea (`spray-back`): quien protesta firma su pintada. Sin tarjeta de examen",
+      "requiredCues": [
+        "q1",
+        "best",
+        "ok-1",
+        "trap-1",
+        "spray-back"
+      ]
+    },
+    {
+      "id": "s04-intrusos",
+      "chapter": 2,
+      "title": "Un ladrón y un micrófono",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "«Imagina dos intrusos · caso de ejemplo · sin fecha», los dos con las barras de dinero y de saber hacer llenas (`both-full`). El primero, en una oficina sin nombre (`ransom`): a las pocas horas, todo cifrado y una nota (`note`), «o pagáis, o no recuperáis nada» (sin «publicamos»: la doble extorsión es de V33); un solo chip, «ransomware». El segundo lleva más de un año dentro (`year`), con herramientas que nadie había visto, copiando los informes que el puerto prepara para el Gobierno (`reports`): no pide nada y no rompe nada (`quiet`). Nombres: organized crime (financial gain, blackmail) y nation-state (espionage; «APT» en pantalla; en un chip, «también: service disruption · war»). El ladrón (`thief`) y el micrófono escondido (`mic`), rotulados «imagen · no es del puerto»; la tarjeta de examen después del micrófono. Al final, en las herramientas de los dos, «fallos que nadie conocía · zero-day» (`zero-day`). Sin cifras, sin cripto, sin oficina con nombre",
+      "requiredCues": [
+        "both-full",
+        "ransom",
+        "note",
+        "year",
+        "reports",
+        "quiet",
+        "thief",
+        "mic",
+        "zero-day"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Una web de pagos",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 2 (`q2`), rótulo «pregunta tipo examen · ejemplo», sin explicar el calificador (ya salió en s03). Fondo quieto: una página de pago genérica, sin nombre ni texto legible. En `ok-2` la correcta (Organized crime), en `trap-2` la trampa (Nation-state). En la resolución vuelve el ladrón en una línea (`thief-back`), y las barras de los dos intrusos, iguales, con «lo que quiere: dinero» encendido; la tarjeta de examen después",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "thief-back"
+      ]
+    },
+    {
+      "id": "s06-dentro",
+      "chapter": 3,
+      "title": "Los que ya están dentro",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "La barra «fuera o dentro» salta a «dentro» (`inside`); las otras dos, a media luz, con la nota «su ventaja es el acceso» (`access`). «Imagina una semana · caso de ejemplo · sin fecha», tres caras: un empleado al que acaban de sancionar borra a propósito los pedidos de su sección (`sanction`, intentional insider, revenge); otra persona manda por error la lista de turnos y teléfonos de la plantilla a una dirección de fuera, creyendo que escribía a un compañero (`wrong-mail`, unintentional insider); y los amarradores se organizan en un grupo de una aplicación de mensajería que montó uno de ellos, en sus móviles, por donde pasan fotos de las listas de buques, sin que Sistemas lo sepa (`crew-chat`, shadow IT). La cocina, rotulada «imagen · no es del puerto» (`kitchen`): el jamón, la cámara frigorífica abierta y la freidora de casa (ni caja, ni reloj, ni libreta, ni técnico). Nombres (`names`): intentional insider, unintentional insider y shadow IT; la tarjeta de examen después",
+      "requiredCues": [
+        "inside",
+        "access",
+        "sanction",
+        "wrong-mail",
+        "crew-chat",
+        "kitchen",
+        "names"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Un usuario y un foro",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo examen 3 (`q3`), rótulo «pregunta tipo examen · ejemplo». Segundo calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: la que más encaja con este caso, aunque otra suene bien» (`best`), que la voz explica antes de la cuenta atrás. Fondo quieto: un puesto de oficina genérico, sin nombre ni texto legible. En `ok-3` la correcta (Intentional insider), en `trap-3` la trampa (Organized crime). En la resolución, las barras del empleado («dentro») junto a las del grupo de la pregunta 2 («fuera»), con el mismo «lo que quiere: dinero» en las dos, y vuelve la cocina en una línea (`kitchen-back`): el del jamón no tuvo que colarse; la tarjeta de examen después",
+      "requiredCues": [
+        "q3",
+        "best",
+        "ok-3",
+        "trap-3",
+        "kitchen-back"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (la pintada · el ladrón y el micrófono · la cocina) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Fuera y con pocos medios: si firma una causa, hacktivist; si solo quiere ver si puede o presumir, unskilled attacker» · «Fuera y con muchos: si quiere cobrar, organized crime; si quiere quedarse y saber, nation-state. Un zero-day no decide» · «Si ya estaba dentro, insider, a propósito o por error, aunque busque dinero; y si un área se monta lo suyo sin Sistemas, shadow IT». La frase para el examen (`phrase`): «Primero, dónde está y con qué cuenta: eso te da la pareja. Después, qué quiere: eso te dice quién es». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
