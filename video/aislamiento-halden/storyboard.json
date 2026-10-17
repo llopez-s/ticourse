@@ -1,0 +1,154 @@
+{
+  "title": "Contenedores, VMs y quién gestiona",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 272,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Qué se arregla en la imagen"
+    },
+    {
+      "n": 2,
+      "title": "Lo que comparten todos"
+    },
+    {
+      "n": 3,
+      "title": "Dónde vive y quién decide"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Dos aplicaciones de oficina",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · Sistemas · propuesta · sin fecha». Una sala de máquinas esquemática, rotulada «centro de datos del puerto», con varias máquinas virtuales encendidas, sin número (`datacenter`). Dos de ellas se iluminan (`two-apps`): «tablón interno de anuncios» y «expedientes de la plantilla · RR. HH.» (la aplicación antigua de RR. HH. de V28; nada de su segundo factor ni de sus tres ordenadores). En `not-shipping`, la voz aclara que el contenedor es de software: ninguna imagen del vídeo es un contenedor de mercancías, un camión ni una caja. Al acabar esa frase, título «Contenedores, VMs y quién gestiona» (`title`, antes de los 12 s) y la promesa en tres chips (`promise`): «qué se arregla dónde · quién aísla más · quién decide». Plaquita «SY0-701 · 3.1»",
+      "requiredCues": [
+        "datacenter",
+        "two-apps",
+        "not-shipping",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-imagen",
+      "chapter": 1,
+      "title": "Se cambia, no se parchea",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "El tablón interno, ya en contenedores de prueba, sin desplegar: una imagen («imagen del tablón») (`image`) y, debajo, tres copias que salen de ella (`copies`). Cuatro rótulos junto a la imagen, que se encienden de uno en uno: «de nuestro registro interno» con el chip REGISTRY TRUST (`registry`), «firmada: se sabe de dónde viene» con IMAGE PROVENANCE (`provenance`), «escaneada antes de desplegar» (`scan`) y «nada corre como root» (`no-root`); los dos nombres en inglés, solo en pantalla. El escaneo marca, antes de desplegar, «un componente con un fallo ya publicado», sin nombre ni versión (`finding`). Dos caminos (`two-paths`): entrar en cada copia y corregirlo dentro (tachado: «la próxima copia sale igual») o corregir la imagen, escanearla otra vez y desplegar copias nuevas, que sustituyen a las de prueba (`rebuild`, resaltado). El molde de galletas con su muesca, en pequeño, rotulado «imagen · no es del puerto» (`mould`). Nada se despliega con el fallo",
+      "requiredCues": [
+        "image",
+        "copies",
+        "registry",
+        "provenance",
+        "scan",
+        "no-root",
+        "finding",
+        "two-paths",
+        "rebuild",
+        "mould"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "La tienda en internet",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo examen 1 (`q1`). La escena dibuja ella misma el rótulo «pregunta tipo examen · ejemplo» (`ExamQuestionLayer` no lo pinta, contradicción 17) y, bajo la pregunta, la línea «MEJOR: la que encaja con este caso, aunque otra suene bien» (`best`), porque el panel no la pinta; la voz dice su propia glosa antes de la cuenta atrás. El panel tapa la escena hasta el final, así que el fondo se queda quieto (una tienda en internet esquemática, sin nombre ni texto). Cuenta atrás de 5 s; en `ok-1` sale la correcta (D, rehacer la imagen) y en `trap-1` la trampa (B, actualizar en cada contenedor en marcha). En la resolución vuelve el molde en una línea (`mould-back`). Sin tarjeta de examen",
+      "requiredCues": [
+        "q1",
+        "best",
+        "ok-1",
+        "trap-1",
+        "mould-back"
+      ]
+    },
+    {
+      "id": "s04-escalera",
+      "chapter": 2,
+      "title": "Tres niveles y su precio",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "La segunda propuesta (`proposal`): poner los expedientes de la plantilla en el mismo host que el tablón. Una escalera de tres niveles, de más a menos aislamiento (`ladder`), cada uno con lo que comparte y lo que cuesta: AIR GAP («ningún camino de red · todo entra y sale a mano») (`air-gap`), sin ningún sistema del puerto dentro; VIRTUAL MACHINE («su sistema y su kernel, con el hypervisor en medio · cada una carga su sistema entero») (`vm`); CONTAINER («comparte el kernel del host · ligero y rápido · un fallo del kernel o un contenedor con privilegios llega a los vecinos») (`container`), con la palabra «kernel» resaltada (`shared-kernel`) y el chip «container escape» solo en pantalla. La decisión, en una línea (`decision`): «los expedientes se quedan en su VM: no comparten kernel con el tablón, al que entra toda la plantilla». El tren en pequeño, rotulado «imagen · no es del puerto»: una locomotora, varios vagones (`train`)",
+      "requiredCues": [
+        "proposal",
+        "ladder",
+        "air-gap",
+        "vm",
+        "container",
+        "shared-kernel",
+        "decision",
+        "train"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Treinta contenedores",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo examen 2 (`q2`), con «MEJOR» resaltado (ya explicado) y el rótulo «pregunta tipo examen · ejemplo», dibujado por la escena. Fondo quieto: un host esquemático con muchos contenedores iguales, sin nombre ni texto. En `ok-2` la correcta (B, el kernel del host), en `trap-2` la trampa (C, las imágenes con el kernel corregido). En la resolución vuelve el tren en una línea (`train-back`) y la palabra «kernel» de s04 encendida; la tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "train-back"
+      ]
+    },
+    {
+      "id": "s06-ejes",
+      "chapter": 3,
+      "title": "Dónde vive y quién decide",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "«¿Por qué no llevarlas a la nube?» (`cloud-question`). Una cuadrícula de dos ejes (`grid`). En horizontal, DÓNDE VIVE: ON-PREMISES («control · latencia baja · datos dentro · se compra antes de usar (capex) · escalar es esperar») (`on-prem`) frente a NUBE («se paga por uso (opex) · escala ya · menos visibilidad · dependes de otro») (`cloud`). En vertical, QUIÉN LA GESTIONA: CENTRALIZED («una consola · la misma política · una sola vista · si cae la consola, todas a ciegas · y es un objetivo») (`centralized`) frente a DECENTRALIZED («cada sede decide rápido · si cae una, no arrastra al resto · políticas distintas · registros que nadie junta») (`decentralized`). El puerto, un punto solo en el eje de dónde, para sus aplicaciones de oficina: «oficina: en su centro de datos (on-premises)» (`port-dot`); en el eje de quién, sin punto. No dice que todo el puerto sea on-premises. El equipo de fútbol en pequeño, con su campo y su entrenador, rotulado «imagen · no es del puerto» (`football`)",
+      "requiredCues": [
+        "cloud-question",
+        "grid",
+        "on-prem",
+        "cloud",
+        "centralized",
+        "decentralized",
+        "port-dot",
+        "football"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Doce oficinas",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 3 (`q3`), con «MEJOR» resaltado y el rótulo «pregunta tipo examen · ejemplo», dibujado por la escena. Fondo quieto: un mapa esquemático con doce puntos, sin nombres de ciudad ni texto. En `ok-3` la correcta (C, centralizar la gestión), en `trap-3` la trampa (A, llevar los servidores a la nube). En la resolución vuelve el fútbol en una línea (`football-back`) y el eje vertical de s06 encendido; la tarjeta de examen después de la trampa",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "football-back"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (el molde · el tren · la cuadrícula) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Un contenedor no se parchea en marcha: se arregla la imagen y se despliega otra vez, y la imagen sale de tu registro, firmada y escaneada» · «Aísla más el air gap, luego la máquina virtual y al final el contenedor, que comparte el kernel del host; eso se arregla en el host» · «On-premises o nube dice dónde vive; centralizado o descentralizado, quién lo gestiona. Si cada sede tiene su política, centraliza». La frase para el examen (`phrase`): «Lo de dentro se arregla en la imagen; lo de todos, en el host; y mudarse no cambia quién decide». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen y sin nombrar la lección siguiente",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
