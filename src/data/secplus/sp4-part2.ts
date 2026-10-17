@@ -414,6 +414,17 @@ const sp4m4: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a priorizar, ponte a prueba: qué ve cada método y qué no, con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Encontrar vulnerabilidades: qué ve cada método',
+      youtube: 'TuXDvIcJOj0',
+      poster: 'videos/identificacion-halden-poster.png',
+      transcript: 'videos/identificacion-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Con esto ya tienes hallazgos, y probablemente demasiados. La siguiente lección aborda la mitad difícil del objetivo 4.3: confirmar si un hallazgo es real —**false positive** frente a **false negative**—, priorizarlo con **CVSS**, **CVE**, exposición y contexto de negocio, decidir la respuesta entre parche, segmentación, control compensatorio o **exception** documentada, y sobre todo **revalidar**, porque una vulnerabilidad no está cerrada hasta que un nuevo escaneo lo demuestra.',
     },
   ],
