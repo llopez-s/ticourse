@@ -334,6 +334,10 @@ describe('lesson videos', () => {
     // account, SAST/DAST/SBOM, threat feeds), after sp4m4's «En la Autoridad Portuaria de Halden» callout and before the
     // paragraph that hands over to sp4m5
     expect(youtubeVideos.find((v) => v.block.youtube === 'TuXDvIcJOj0')?.module).toBe('sp4m4');
+    // V30 takes sp4m1's baseline to the port (establish, deploy and maintain, each target by its channel, and OT
+    // compensated until it can be patched) with three exam-style questions, after the Halden callout and before the
+    // paragraph that hands over to sp4m2
+    expect(youtubeVideos.find((v) => v.block.youtube === 'NO2ZOT2crCo')?.module).toBe('sp4m1');
   });
 
   it('every video block points at relative public assets that exist', async () => {

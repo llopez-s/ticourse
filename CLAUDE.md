@@ -194,7 +194,9 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   «EXAMEN · SY0-701 · N.N» badge, not the «pregunta tipo examen · ejemplo» label the fichas ask for (registry
   contradiction 17): a scene that needs it draws it itself. **V29 `video/identificacion-halden/`** (sp4m4, YouTube
   `TuXDvIcJOj0`, 4:24, published 2026-10-17) is the first to do so (`parts/Tags.tsx` `QuestionTag`, under the panel); the tanda 6
-  fichas (V29–V32) are in `docs/superpowers/plans/fichas-tanda6/`. Every script takes `--video <slug>`. Pipeline: `narration.json` →
+  fichas (V29–V32) are in `docs/superpowers/plans/fichas-tanda6/`.
+  **V30 `video/baseline-halden/`** (sp4m1, YouTube `NO2ZOT2crCo`, 4:22, published 2026-10-17) is the first video of sp4
+  in course order (no adversary, so V21 stays SILENT PAGER's first). Every script takes `--video <slug>`. Pipeline: `narration.json` →
   `scripts/tts-elevenlabs.mjs` (ElevenLabs v3, one request per scene with `<tag>` emotion
   directions; needs `ELEVENLABS_API_KEY` in the git-ignored `.env.local`; free plan = 10k chars/month,
   premade voices only + "Voz: ElevenLabs" credit) — or `scripts/tts-chatterbox.mjs` (Chatterbox, local

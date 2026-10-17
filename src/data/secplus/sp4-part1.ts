@@ -13,7 +13,7 @@ const sp4m1: Module = {
     'Recorrer el ciclo de vida de un **secure baseline**: establish, deploy y maintain',
     'Reconocer el **configuration drift** y saber qué lo provoca y cómo se detecta',
     'Elegir las medidas de hardening que de verdad corresponden a cada objetivo: workstations, servers, switches, routers, cloud, móviles, ICS/SCADA, embedded, RTOS e IoT',
-    'Justificar por qué en entornos OT la respuesta esperada son compensating controls y no parchear',
+    'Justificar por qué en entornos OT la respuesta esperada son compensating controls mientras no se pueda parchear',
     'Explicar el papel del **sandboxing** y de la **monitorización** como refuerzo continuo del baseline',
   ],
   blocks: [
@@ -67,7 +67,7 @@ const sp4m1: Module = {
     },
     {
       t: 'p',
-      md: 'Y ahí empieza la parte incómoda. Los **ICS/SCADA** que gobiernan grúas, esclusas y bombas priorizan la **disponibilidad y la seguridad física** por encima de todo: un parche mal probado no provoca una pantalla azul, provoca una parada de producción o un accidente. El fabricante suele condicionar el soporte a una versión concreta, las ventanas de mantenimiento son anuales y muchos equipos no aguantan un agente. Lo mismo pasa con los **embedded systems** (firmware fijo, ciclos de vida de quince años, a veces sin mecanismo de actualización) y con los **RTOS**, sistemas operativos de tiempo real donde el determinismo temporal es el requisito y añadir un antivirus rompe el propósito del sistema. En los tres casos la respuesta del examen **no es parchear**: es **compensating controls** —segmentación estricta con acceso mínimo, monitorización pasiva del tráfico, control férreo de medios extraíbles y de accesos de proveedor, y sustitución planificada cuando el equipo llega al final de soporte—. Los **IoT devices** son el caso más doméstico y más frecuente: cámaras, sensores y controladoras que llegan con **credenciales por defecto** publicadas en internet, servicios abiertos y un fabricante que deja de publicar firmware a los dos años. Aquí sí hay una primera acción clara y barata: **cambiar las credenciales por defecto**, **aislarlos en su propia VLAN** sin salida a internet ni acceso a la red corporativa, y **sustituirlos** cuando el soporte se acaba.',
+      md: 'Y ahí empieza la parte incómoda. Los **ICS/SCADA** que gobiernan grúas, esclusas y bombas priorizan la **disponibilidad y la seguridad física** por encima de todo: un parche mal probado no provoca una pantalla azul, provoca una parada de producción o un accidente. El fabricante suele condicionar el soporte a una versión concreta, las ventanas de mantenimiento son anuales y muchos equipos no aguantan un agente. Lo mismo pasa con los **embedded systems** (firmware fijo, ciclos de vida de quince años, a veces sin mecanismo de actualización) y con los **RTOS**, sistemas operativos de tiempo real donde el determinismo temporal es el requisito y añadir un antivirus rompe el propósito del sistema. En los tres casos la respuesta del examen **no es parchear en caliente**: mientras no haya parche certificado y una parada, es **compensating controls** —segmentación estricta con acceso mínimo, monitorización pasiva del tráfico, control férreo de medios extraíbles y de accesos de proveedor, y sustitución planificada cuando el equipo llega al final de soporte—. Los **IoT devices** son el caso más doméstico y más frecuente: cámaras, sensores y controladoras que llegan con **credenciales por defecto** publicadas en internet, servicios abiertos y un fabricante que deja de publicar firmware a los dos años. Aquí sí hay una primera acción clara y barata: **cambiar las credenciales por defecto**, **aislarlos en su propia VLAN** sin salida a internet ni acceso a la red corporativa, y **sustituirlos** cuando el soporte se acaba.',
     },
     {
       t: 'table',
@@ -149,6 +149,17 @@ const sp4m1: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a la siguiente lección, míralo en el puerto y ponte a prueba con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Baseline y hardening: imponer, mantener y compensar',
+      youtube: 'NO2ZOT2crCo',
+      poster: 'videos/baseline-halden-poster.png',
+      transcript: 'videos/baseline-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Ya tienes el baseline y el hardening por objetivo. La siguiente lección cierra el objetivo 4.1 con los tres frentes que quedan: el **wireless** (dónde poner los puntos de acceso y con qué protocolos protegerlos), la **movilidad** (MDM y los modelos BYOD, COPE y CYOD) y la **seguridad de aplicaciones** (validación de entrada, cookies seguras, análisis de código y firma). Después, el dominio 4 pasa a la gestión de activos y a las vulnerabilidades.',
     },
   ],
@@ -196,7 +207,7 @@ const sp4m1: Module = {
       ],
       answer: 3,
       explain:
-        'Operational technology prioritizes availability and safety and often cannot be patched on the defender timetable, so the expected answer is compensating controls that reduce exposure without touching the system. Disconnecting it permanently is tempting because it sounds maximally safe, but shutting down the process the system controls is an availability decision the security team is not entitled to make unilaterally.',
+        'Operational technology prioritizes availability and safety and often cannot be patched on the defender timetable, so the expected answer is compensating controls that reduce exposure without touching the system. Disconnecting it permanently is tempting because it sounds maximally safe, but cutting off the connectivity the process depends on is an availability decision the security team is not entitled to make unilaterally.',
     },
     {
       id: 'sp4m1q4',
