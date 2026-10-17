@@ -1202,7 +1202,7 @@ winhlp.exe → TLS update-svc-cdn.com:443
       {
         t: 'video',
         title: 'Del comando al TTP: ATT&CK y la Pyramid of Pain',
-        youtube: 'XCOAc7tlPTE',
+        youtube: 'mRNyVVrRujw',
         poster: 'videos/attack-piramide-poster.png',
         transcript: 'videos/attack-piramide-transcript.txt',
       },

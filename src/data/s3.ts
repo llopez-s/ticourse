@@ -635,7 +635,7 @@ Hosts contactados:
       {
         t: 'video',
         title: 'Pivotar por la infraestructura: passive DNS, WHOIS y certificados',
-        youtube: '8pet46MOGmk',
+        youtube: '69gfP6duB00',
         poster: 'videos/pivot-infra-poster.png',
         transcript: 'videos/pivot-infra-transcript.txt',
       },
@@ -1116,7 +1116,7 @@ first_seen           last_seen            type  rdata
       {
         t: 'video',
         title: '¿Bloqueo este dominio? Indicadores, STIX y TAXII',
-        youtube: 'KO4REQeaKgM',
+        youtube: 'jNqhrLgGFmY',
         poster: 'videos/stix-isac-poster.png',
         transcript: 'videos/stix-isac-transcript.txt',
       },
