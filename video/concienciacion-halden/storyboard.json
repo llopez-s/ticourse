@@ -1,0 +1,148 @@
+{
+  "title": "Que la gente avise: concienciación que funciona",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 272,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Por qué lo hizo"
+    },
+    {
+      "n": 2,
+      "title": "Avisar, no pillar"
+    },
+    {
+      "n": 3,
+      "title": "Para quién y cada cuánto"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Sensores, no eslabones",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · programa de concienciación · propuesta · sin fecha». Un plano de puntos, uno por persona de la plantilla, sin contar cuántos (`dots`), que se encienden como sensores (`sensors`). Al acabar la primera frase, título «Que la gente avise» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «por qué lo hizo · qué se mide · para quién y cada cuánto». Plaquita «SY0-701 · 5.6». Sin personas con nombre ni cifras de plantilla",
+      "requiredCues": [
+        "dots",
+        "sensors",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-intencion",
+      "chapter": 1,
+      "title": "Tres caras",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "«Tres avisos que llegan a Seguridad · imagina · sin fecha» (`week`), tres caras sin nombre ni género marcado, rotuladas «uno · dos · tres»; no repite el marco «imagina una semana» de V35. **Uno** (`risky`): reenvía documentos de trabajo a su correo personal para acabarlos en casa, sabiendo que no se puede → RISKY BEHAVIOR, «lo sabe y lo hace · política y controles que impidan el atajo». **Dos** (`unexpected`): una cuenta de Compras abre, de pronto, las nóminas de otra sección, que nunca toca → UNEXPECTED BEHAVIOR, «no encaja · se investiga antes de acusar»; sin hora ni país, y sin decir si la cuenta está robada o no. **Tres** (`unintentional`): sube a las redes una foto del equipo y detrás se ve una pizarra con nombres de sistemas, ilegibles → UNINTENTIONAL BEHAVIOR, «error honesto · diseño y formación», con un chip OPSEC. La regla en una línea (`intent`): «por la intención, no por el daño». Un rótulo pequeño (`not-actor`): «aquí, unintentional es un comportamiento · no un tipo de atacante». Nadie sancionado ni investigado de verdad",
+      "requiredCues": [
+        "week",
+        "risky",
+        "unexpected",
+        "unintentional",
+        "intent",
+        "not-actor"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Una extensión",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo», plaquita «EXAMEN · SY0-701 · 5.6»: el panel tapa la escena hasta el final, así que el fondo se queda quieto (un navegador genérico con una pieza añadida, sin nombre de producto ni de servidor). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: la que encaja con este caso, aunque otra suene bien» (`best`), que la voz explica antes de la cuenta atrás con otras palabras que V28. Cuenta atrás de 5 s; en `ok-1` sale la correcta (Risky behavior) y en `trap-1` la trampa (Unintentional behavior). En la resolución (`first-face`), la cara uno de s02 junto a la del escenario, con la línea «en los dos casos, se sabía que no se podía»; la tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q1",
+        "best",
+        "ok-1",
+        "trap-1",
+        "first-face"
+      ]
+    },
+    {
+      "id": "s04-avisar",
+      "chapter": 2,
+      "title": "Avisar, no pillar",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "La primera campaña de phishing simulado del puerto, «propuesta · ejemplo · datos ficticios» (`campaign`), con «autorizada por escrito». El señuelo (`lure`), «la nueva aplicación del comedor: entra con tu usuario», sin remitente ni dirección; el rótulo (`no-cruel`) «sin señuelos crueles: ni despidos, ni nóminas, ni resultados médicos». Nada de turnos, atraques ni muelle 3. Dos contadores (`counters`): «pican: 2 de cada 10» (click rate) y «avisan: 1 de cada 10, y el primero a los 4 minutos» (report rate); el segundo se resalta (`report-rate`). Las cifras solo en pantalla. Debajo, «publicar nombres» tachado (`no-names`) y lo que sí (`coaching`): «a quien pica, dos minutos de explicación en el momento». El circuito de avisar, en cuatro pasos (`loop`): «botón en el correo · triaje · si es real, quitarlo de los demás buzones · contestar a quien avisó, aunque fuera un falso positivo». La farola rota en miniatura, rotulada «imagen · no es del puerto» (`streetlight`): un aviso al ayuntamiento que nadie contesta y la farola igual; sin «foco» ni luz que alumbre a nadie",
+      "requiredCues": [
+        "campaign",
+        "lure",
+        "no-cruel",
+        "counters",
+        "report-rate",
+        "no-names",
+        "coaching",
+        "loop",
+        "streetlight"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Uno de cada veinte",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo examen 2 (`q2`), «MEJOR» resaltado en la pregunta (ya explicado en s03: sin glosa ni cue `best`). Fondo quieto: una bandeja de correo genérica, sin remitentes ni texto legible. En `ok-2` la correcta (Un botón para avisar en el propio correo), en `trap-2` la trampa (Más formación para reconocer el phishing). En la resolución (`streetlight-back`) vuelve la farola en una línea, «si para avisar tienes que buscar el teléfono del ayuntamiento, la farola sigue apagada», y el primer paso del circuito de s04 («botón en el correo») encendido. Sin tarjeta de examen",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "streetlight-back"
+      ]
+    },
+    {
+      "id": "s06-programa",
+      "chapter": 3,
+      "title": "Un programa, no un vídeo",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Una línea del año (`year`): un punto grande al entrar, INITIAL, «antes de dar accesos · con su acknowledgement» (`initial`), y puntos más pequeños a lo largo del año, RECURRING, «porque se olvida y los ataques cambian» (`recurring`). Debajo, cinco audiencias del puerto (`audiences`), cada una con su riesgo y su formación: Finanzas «facturas falsas · verificar por otro canal», Sistemas «credenciales · peticiones de acceso que no has pedido» (sin MFA, rev8 D-2), Dirección «lo que no se publica», quien trabaja fuera «redes de casa, pantallas en el tren» y quien acaba de llegar «la política y a quién avisar». En pantalla, sin voz (`topics`), los ocho temas del objetivo: «policy/handbooks · situational awareness · insider threat · password management · removable media and cables · social engineering · OPSEC · hybrid/remote work». El inglés del instituto en miniatura, rotulado «imagen · no es del puerto» (`english`): una taza de café que no sabes pedir y, al lado, «servir mesas» frente a «negociar contratos»; sin aula, pizarra de clase ni examen",
+      "requiredCues": [
+        "year",
+        "initial",
+        "recurring",
+        "audiences",
+        "topics",
+        "english"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Las facturas de Finanzas",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 3 (`q3`), «MEJOR» resaltado en la pregunta (sin glosa). Fondo quieto: una factura genérica sin datos legibles. En `ok-3` la correcta (Formar a Finanzas en verificar pagos), en `trap-3` la trampa (Dar el mismo curso cada mes, no cada trimestre). En la resolución (`english-back`) vuelve el inglés en una línea, «repetir el inglés de servir mesas no te enseña a negociar», y la audiencia de Finanzas de s06 encendida; la tarjeta de examen después de la trampa",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "english-back"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (las tres caras · la farola · la línea del año) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Clasifica por la intención: si lo sabía y lo hizo, risky; si no encaja, se investiga; si fue un error honesto, diseño y formación» · «Lo que hay que subir es cuánta gente avisa: avisar cuesta un clic, se contesta siempre y no se castiga a quien pica» · «La formación es de todo el año y para cada audiencia, según su riesgo». La frase para el examen (`phrase`): «Busca la intención, sube los avisos y forma a cada uno en su riesgo, todo el año». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen y sin nombrar sp6, el simulacro ni las flashcards",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
