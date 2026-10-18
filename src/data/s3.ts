@@ -350,7 +350,7 @@ Hosts contactados:
       {
         t: 'video',
         title: 'Lo que cuenta una muestra: triaje de malware en sandbox',
-        youtube: 'z9OLiWCphso',
+        youtube: 'Xbd_x8mOAqc',
         poster: 'videos/sandbox-muestra-poster.png',
         transcript: 'videos/sandbox-muestra-transcript.txt',
       },

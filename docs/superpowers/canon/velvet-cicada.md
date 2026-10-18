@@ -609,7 +609,7 @@ la voz `sapi/Microsoft Laura` y el efecto `machine` (`video/ach-matriz/narration
   `CN=updatesvc` (ni la tercera IP, §5 punto 15, ni el dosier de DEEP WELL). Cluster-A y Cluster-B no salen
   (`src/data/s4.ts:729-744`). Nada del Lab 3A, del Lab 3B ni del final de la campaña.
 
-### V13 · `kill-chain-eslabon` · s2m1 · YouTube `WidodMPEs24`
+### V13 · `kill-chain-eslabon` · s2m1 · YouTube `5pGLeaGeT7c`
 
 Lección `src/data/s2.ts:117-122` (bloque `video` entre el segundo check de la demo, «In the EDR chain, the schtasks line and the
 winhlp.exe→443 line…», y el párrafo de cierre «Cada intrusión analizada produce una kill chain documentada…»); 8:04, subido a
@@ -720,7 +720,7 @@ beacon), con staging y salida el 7-3 (`src/data/s2.ts:886-891`); «PO revision»
   por un proveedor (cuenta VPN, portales del BLUF), quién abrió el adjunto (§5 punto 5) y todo lo posterior al 9-3 (el indicador
   del ISAC del 11-3 es de V8). Nadie tiene nombre y no se culpa a nadie.
 
-### V15 · `sandbox-muestra` · s3m2 · YouTube `z9OLiWCphso`
+### V15 · `sandbox-muestra` · s3m2 · YouTube `Xbd_x8mOAqc`
 
 Lección `src/data/s3.ts:350-356` (bloque `video` después del párrafo del triaje, «El triaje empieza separando infraestructura del
 actor de ruido del sistema…», y antes del primer check, «Of the five contacted hosts…»); 3:35, subido a Alertópolis el 2026-10-06

@@ -219,7 +219,7 @@ SPLIT TUNNEL — solo lo corporativo entra en el tunel
     {
       t: 'video',
       title: 'Por dónde se entra: 802.1X, VPN e IPSec',
-      youtube: 'R4bvB3FTrrE',
+      youtube: 'HzzY9C4cDNw',
       poster: 'videos/fronteras-halden-poster.png',
       transcript: 'videos/fronteras-halden-transcript.txt',
     },
