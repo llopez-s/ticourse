@@ -116,7 +116,7 @@ Attachment: CV_Ingeniero.zip (contiene: CV_Ingeniero.pdf.lnk)       [Weaponizati
       {
         t: 'video',
         title: 'La Cyber Kill Chain: basta con romper un eslabón',
-        youtube: 'WidodMPEs24',
+        youtube: '5pGLeaGeT7c',
         poster: 'videos/kill-chain-eslabon-poster.png',
         transcript: 'videos/kill-chain-eslabon-transcript.txt',
       },

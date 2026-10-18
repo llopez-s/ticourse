@@ -288,8 +288,9 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   transcript → merge → only then delete the old video (V11's was deleted first and sp1m6 embedded a dead id for two
   days). The older video worktrees have no upload script: copy the MP4, timeline, captions and clips into a worktree
   on main and upload from there. V4, V7, V8, V10 (`k51SLJxEiPc`) and V12 (`IlOHl8Lmq_w`) went up again on
-  2026-10-16 with the quiet master. V13, V15, V16 and V17 are re-mastered locally
-  (`<slug>.mp4` next to `<slug>-v1-master.mp4`, the old master) but the channel still has the −14 LUFS one.
+  2026-10-16 with the quiet master. V13 (`5pGLeaGeT7c`), V15 (`Xbd_x8mOAqc`), V16 (`64jGEA0_ttM`) and V17 (`HzzY9C4cDNw`)
+  were also uploaded again with the quiet master and published on 2026-10-16/17. Their lessons,
+  `content.test.ts` and canon registries point at these public uploads (verified with the YouTube API on 2026-10-18).
   **Mastering** (Python, venv + `pedalboard pyloudnorm librosa soundfile scipy`): `scripts/master_voice.py`
   on the narrator's WAV *before* `import-recording` (time-aligned EQ/de-ess/compression, no denoise) and
   `scripts/master_mix.py` on the rendered MP4 (generated ambient bed ducked under speech, −14 LUFS,

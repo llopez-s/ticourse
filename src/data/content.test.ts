@@ -291,15 +291,15 @@ describe('lesson videos', () => {
     // V12 replays sp1m7's chain and revocation in a console, after the OCSP stapling check and before key escrow
     expect(youtubeVideos.find((v) => v.block.youtube === 'IlOHl8Lmq_w')?.module).toBe('sp1m7');
     // V13 sums up s2m1 after the demo's checks and before the paragraph that hands over to Courses of Action and s2m4
-    expect(youtubeVideos.find((v) => v.block.youtube === 'WidodMPEs24')?.module).toBe('s2m1');
+    expect(youtubeVideos.find((v) => v.block.youtube === '5pGLeaGeT7c')?.module).toBe('s2m1');
     // V22 sums up s2m2 (the verbs, the matrix and the price of each action) after its checks and sends to Lab 2C
     expect(youtubeVideos.find((v) => v.block.youtube === 'ghNoHuq7GIk')?.module).toBe('s2m2');
     // V16 draws sp3m4's zones, placement and failure modes on the port, after the mirror-port check and before the
     // paragraph that hands over to firewalls and VPNs (sp3m5)
-    expect(youtubeVideos.find((v) => v.block.youtube === 'PcNk_XCJmOM')?.module).toBe('sp3m4');
+    expect(youtubeVideos.find((v) => v.block.youtube === '64jGEA0_ttM')?.module).toBe('sp3m4');
     // V17 walks sp3m5's three ways in (802.1X, site-to-site IPSec, remote access), after the full-tunnel check and
     // before the exam note
-    expect(youtubeVideos.find((v) => v.block.youtube === 'R4bvB3FTrrE')?.module).toBe('sp3m5');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'HzzY9C4cDNw')?.module).toBe('sp3m5');
     // V20 replays sp1m3's flow in the port (a request to the ERP and who decides what), after the adaptive identity
     // check and before the paragraph that goes down to physical security
     expect(youtubeVideos.find((v) => v.block.youtube === 'u87izuH2GJc')?.module).toBe('sp1m3');
@@ -310,7 +310,7 @@ describe('lesson videos', () => {
     // the campaign callout that sends the learner to Labs 2A and 2B
     expect(youtubeVideos.find((v) => v.block.youtube === 'pjGQiqy0CdE')?.module).toBe('s2m4');
     // V15 triages the sandbox report after the triage paragraph and before the four checks on its data
-    expect(youtubeVideos.find((v) => v.block.youtube === 'z9OLiWCphso')?.module).toBe('s3m2');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'Xbd_x8mOAqc')?.module).toBe('s3m2');
     // V18 triages a new report after sp4m5's September example and before the paragraph that closes the cycle
     expect(youtubeVideos.find((v) => v.block.youtube === 'P9nft88qkZs')?.module).toBe('sp4m5');
     // V19 walks sp2m4's three text boxes after the stored-XSS check and before the exam note on the two reflexes
