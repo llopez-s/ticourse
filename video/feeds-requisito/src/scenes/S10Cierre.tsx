@@ -81,11 +81,11 @@ export function S10Cierre(props: SceneProps) {
           </div>
         </div>
       </Reveal>
-      <Reveal frame={frame} at={at('s10-07')} x={0} y={566} w={1728}>
+      <Reveal frame={frame} at={at('s10-07')} x={0} y={552} w={1728}>
         <Pill icon="split" tone="cyan" size={32}>si mañana cambia la base, la decisión también puede cambiar</Pill>
       </Reveal>
       {credits > 0 ? (
-        <div style={{ position: 'absolute', left: 0, top: 630, width: 1728, opacity: credits, fontFamily: FONT.sans, fontSize: TYPE.micro + 2, fontWeight: 560, color: C.faint }}>
+        <div style={{ position: 'absolute', left: 0, top: 636, width: 1728, opacity: credits, fontFamily: FONT.sans, fontSize: TYPE.micro + 2, fontWeight: 560, color: C.faint }}>
           Alertópolis · material independiente, no afiliado a SANS/GIAC · datos y participantes ficticios
         </div>
       ) : null}

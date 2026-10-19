@@ -38,7 +38,7 @@ function Quad({ frame, at, lit, tone, abbr, name, x, y }: { frame: number; at: n
   return (
     <div style={{ position: 'absolute', left: x, top: y, width: 300, height: 120, boxSizing: 'border-box', padding: '10px 16px', borderRadius: RADIUS.md, background: alpha(tone, 0.06 + 0.12 * lit), border: `2px solid ${alpha(tone, 0.3 + 0.65 * lit)}`, boxShadow: lit > 0 ? `0 0 ${18 + 22 * lit}px ${alpha(tone, 0.3 * lit)}` : 'none', opacity: p * (0.55 + 0.45 * Math.max(lit, 0)), transform: `translateY(${(1 - p) * 12}px)` }}>
       <div style={{ fontFamily: FONT.mono, fontSize: 46, fontWeight: 800, color: tone, lineHeight: 1.1 }}>{abbr}</div>
-      <div style={{ marginTop: 4, fontSize: 28, fontWeight: 650, color: C.text }}>{name}</div>
+      <div style={{ marginTop: 4, fontSize: 26, fontWeight: 650, color: C.text, whiteSpace: 'nowrap' }}>{name}</div>
     </div>
   );
 }
@@ -85,8 +85,8 @@ export function S03Errores(props: SceneProps) {
         <Reveal frame={frame} at={tRows} x={0} y={0} w={900} distance={8}>
           <div style={{ position: 'relative', width: 900, height: HEAD_H }}>
             <Head label="Archivo" x={0} w={COLS.file} lit={0} />
-            <Head label="¿Debe entrar?" x={X_WANT} w={COLS.want} lit={headWant} />
-            <Head label="¿Coincide?" x={X_GOT} w={COLS.got} lit={headGot} />
+            <Head label="Esperado" x={X_WANT} w={COLS.want} lit={headWant} />
+            <Head label="Obtenido" x={X_GOT} w={COLS.got} lit={headGot} />
             <Head label="Lectura" x={X_READ} w={COLS.read} lit={headRead} />
           </div>
         </Reveal>

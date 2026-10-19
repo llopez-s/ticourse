@@ -29,7 +29,7 @@ export function S10Cierre(props: SceneProps) {
     <Stage>
       <RuleCards
         width={1728}
-        height={330}
+        height={300}
         slotAt={at('s10-01') - 20}
         dimFrom={action}
         titleSize={44}
@@ -41,7 +41,7 @@ export function S10Cierre(props: SceneProps) {
           { title: ['Documenta', 'los límites'], sub: 'conserva las dudas abiertas', icon: 'flag', tone: 'emerald', at: at('s10-02') },
         ]}
       />
-      <Reveal frame={frame} at={w('s10-03', 'conviertes') - 10} outAt={w('s10-04', 'objetivo') - 6} x={0} y={372} w={1728}>
+      <Reveal frame={frame} at={w('s10-03', 'conviertes') - 10} outAt={w('s10-04', 'objetivo') - 6} x={0} y={332} w={1728}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           {[
             ['una puntuación', w('s10-03', 'puntuación,')],
@@ -54,13 +54,13 @@ export function S10Cierre(props: SceneProps) {
           ))}
         </div>
       </Reveal>
-      <Reveal frame={frame} at={w('s10-03', 'familia') - 8} outAt={w('s10-04', 'objetivo') - 6} x={0} y={448} w={1728}>
+      <Reveal frame={frame} at={w('s10-03', 'familia') - 8} outAt={w('s10-04', 'objetivo') - 6} x={0} y={410} w={1728}>
         <Pill icon="x" tone="amber" size={34}>no es una familia confirmada</Pill>
       </Reveal>
-      <Reveal frame={frame} at={w('s10-04', 'objetivo')} outAt={out} x={0} y={372} w={1728}>
+      <Reveal frame={frame} at={w('s10-04', 'objetivo')} outAt={out} x={0} y={332} w={1728}>
         <Pill icon="x" tone="muted" size={34}>el objetivo no es llenar el grafo</Pill>
       </Reveal>
-      <Reveal frame={frame} at={w('s10-04', 'sostener') - 8} outAt={out} x={0} y={448} w={1728}>
+      <Reveal frame={frame} at={w('s10-04', 'sostener') - 8} outAt={out} x={0} y={410} w={1728}>
         <Pill icon="check" tone="emerald" size={34}>sostener una relación que resista las alternativas</Pill>
       </Reveal>
 

@@ -15,7 +15,7 @@ function Link({ frame, at, x, label, tone }: { frame: number; at: number; x: num
   if (p <= 0.001) return null;
   return (
     <div style={{ position: 'absolute', left: x, top: ROW, transform: 'translate(-50%, -50%)', opacity: p }}>
-      <div style={{ padding: '6px 18px', borderRadius: RADIUS.pill, background: C.ink950, border: `2px solid ${alpha(tone, 0.8)}` }}>
+      <div style={{ padding: '4px 6px', borderRadius: RADIUS.pill, background: C.ink950 }}>
         <Tag tone={tone} size={30}>{label}</Tag>
       </div>
     </div>
@@ -60,8 +60,8 @@ export function S04Noventa(props: SceneProps) {
       <Link frame={frame} at={l1 + 10} x={640} label="imphash · I1" tone={C.cyan} />
       <Link frame={frame} at={l2 + 6} x={1088} label="ssdeep · 94" tone={C.cyan} />
 
-      <Reveal frame={frame} at={lib} x={654} y={340} w={420}>
-        <InfoCard icon="layers" title="Biblioteca común" sub="origen de ambos rasgos" tone="sky" w={420} h={84} titleSize={34} subSize={26} lit={progress(frame, at('s04-04'), 14) * (1 - progress(frame, verdict, 14))} />
+      <Reveal frame={frame} at={lib} x={604} y={340} w={520}>
+        <InfoCard icon="layers" title="Biblioteca común" sub="origen de ambos rasgos" tone="sky" w={520} h={84} titleSize={34} subSize={26} lit={progress(frame, at('s04-04'), 14) * (1 - progress(frame, verdict, 14))} />
       </Reveal>
       <Reveal frame={frame} at={w('s04-03', 'noventa') - 10} outAt={verdict} x={564} y={436} w={600}>
         <div style={{ textAlign: 'center' }}>

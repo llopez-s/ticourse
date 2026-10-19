@@ -93,7 +93,7 @@ export function S08Casilla(props: SceneProps) {
       </Reveal>
 
       {/* what it does not prove */}
-      <Reveal frame={frame} at={w('s08-03', 'ausencia') - 14} outAt={empty - 8} x={0} y={490} w={1728}>
+      <Reveal frame={frame} at={w('s08-03', 'ausencia') - 14} outAt={empty - 8} x={0} y={504} w={1728}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <span style={{ fontFamily: FONT.sans, fontSize: 30, fontWeight: 800, color: C.textStrong }}>No demuestra</span>
           <Pill icon="x" tone="amber" size={30}>ausencia de relaciones</Pill>
@@ -121,7 +121,7 @@ export function S08Casilla(props: SceneProps) {
         </div>
       </Reveal>
 
-      <Reveal frame={frame} at={empty} outAt={fill - 6} x={0} y={490} w={1728}>
+      <Reveal frame={frame} at={empty} outAt={fill - 6} x={0} y={504} w={1728}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <Pill icon="search" tone="muted" size={30}>una búsqueda sin resultados puede deberse a</Pill>
           {[
@@ -136,7 +136,7 @@ export function S08Casilla(props: SceneProps) {
         </div>
       </Reveal>
 
-      <Reveal frame={frame} at={fill} x={0} y={490} w={1728}>
+      <Reveal frame={frame} at={fill} x={0} y={504} w={1728}>
         <Pill icon="x" tone="amber" size={32}>no rellenes un hueco inventando un resultado</Pill>
       </Reveal>
       <Reveal frame={frame} at={w('s08-06', 'Registrar') - 6} x={0} y={572} w={1728}>

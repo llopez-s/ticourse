@@ -17,8 +17,8 @@ function Field({ frame, at, icon, label, bar, lit = 0 }: { frame: number; at: nu
   return (
     <div style={{ boxSizing: 'border-box', height: ROW, display: 'flex', alignItems: 'center', gap: 16, padding: '0 22px', borderBottom: `2px solid ${C.ink700}`, background: lit > 0 ? alpha(C.cyan, 0.1 * lit) : 'transparent', opacity: p, transform: `translateX(${(1 - p) * -16}px)`, fontFamily: FONT.sans }}>
       <Icon name={icon} size={32} color={lit > 0 ? C.cyan : C.muted} />
-      <span style={{ width: 280, fontSize: 28, fontWeight: 700, color: lit > 0 ? C.textStrong : C.text, whiteSpace: 'nowrap' }}>{label}</span>
-      <div style={{ height: 14, width: 480 * bar, borderRadius: 7, background: lit > 0 ? alpha(C.cyan, 0.6) : C.ink600 }} />
+      <span style={{ width: 330, fontSize: 28, fontWeight: 700, color: lit > 0 ? C.textStrong : C.text, whiteSpace: 'nowrap' }}>{label}</span>
+      <div style={{ height: 14, width: 400 * bar, borderRadius: 7, background: lit > 0 ? alpha(C.cyan, 0.6) : C.ink600 }} />
     </div>
   );
 }

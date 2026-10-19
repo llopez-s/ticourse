@@ -61,7 +61,7 @@ export function S03Etiqueta(props: SceneProps) {
           <Pill icon="gear" tone="cyan" size={28}>símbolos de depuración</Pill>
         </Reveal>
         <Reveal frame={frame} at={w('s03-02', 'pistas') - 6} outAt={copy} x={24} y={272} w={452}>
-          <Pill icon="search" tone="sky" size={28}>puede dar pistas del proyecto</Pill>
+          <Pill icon="search" tone="sky" size={28}>pista sobre el proyecto</Pill>
         </Reveal>
         <Reveal frame={frame} at={copy} x={24} y={272} w={452}>
           <Pill icon="alert" tone="amber" size={28}>puede copiarse o falsearse</Pill>
@@ -76,19 +76,19 @@ export function S03Etiqueta(props: SceneProps) {
         <Reveal frame={frame} at={w('s03-03', 'configuración') - 6} x={24} y={74} w={512}>
           <Pill icon="gear" tone="sky" size={28}>estructura de configuración</Pill>
         </Reveal>
-        <Reveal frame={frame} at={cmp} outAt={reuse - 6} x={24} y={160} w={512}>
+        <Reveal frame={frame} at={cmp} outAt={reuse - 6} x={24} y={148} w={512}>
           <Value frame={frame} at={cmp} label="palabra genérica" fill={0.22} tone={C.faint} />
         </Reveal>
-        <Reveal frame={frame} at={cmp + 30} outAt={reuse - 6} x={24} y={238} w={512}>
+        <Reveal frame={frame} at={cmp + 30} outAt={reuse - 6} x={24} y={222} w={512}>
           <Value frame={frame} at={cmp + 30} label="estructura poco común" fill={0.9} tone={C.sky} />
         </Reveal>
-        <Reveal frame={frame} at={w('s03-04', 'reutilizado') - 8} x={24} y={160} w={512}>
+        <Reveal frame={frame} at={w('s03-04', 'reutilizado') - 8} x={24} y={150} w={512}>
           <Pill icon="layers" tone="amber" size={28}>código reutilizado</Pill>
         </Reveal>
-        <Reveal frame={frame} at={w('s03-04', 'señuelos.') - 8} x={24} y={220} w={512}>
+        <Reveal frame={frame} at={w('s03-04', 'señuelos.') - 8} x={24} y={208} w={512}>
           <Pill icon="target" tone="amber" size={28}>señuelos</Pill>
         </Reveal>
-        <Reveal frame={frame} at={w('s03-04', 'Pregunta')} x={24} y={286} w={512}>
+        <Reveal frame={frame} at={w('s03-04', 'Pregunta')} x={24} y={266} w={512}>
           <Pill icon="split" tone="cyan" size={28}>¿distingue las explicaciones?</Pill>
         </Reveal>
       </ColPanel>
@@ -122,9 +122,6 @@ export function S03Etiqueta(props: SceneProps) {
         </Reveal>
         <Reveal frame={frame} at={w('s03-06', 'benignidad.') - 14} x={24} y={226} w={592}>
           <Pill icon="x" tone="amber" size={28}>una firma no prueba benignidad</Pill>
-        </Reveal>
-        <Reveal frame={frame} at={w('s03-06', 'campaña') - 24} x={24} y={292} w={592}>
-          <Pill icon="x" tone="amber" size={28}>un certificado no prueba un actor</Pill>
         </Reveal>
       </ColPanel>
 

@@ -4,13 +4,13 @@ import { C, FONT, RADIUS, alpha } from '../../../engine/src/theme/tokens';
 import { EASE, progress } from '../../../engine/src/theme/motion';
 import { windowWeight } from '../../../engine/src/ui/Focus';
 import { Choices, InfoCard, LearningCard, Pill, Reveal } from './parts/bits';
-import { COBALTO, FAMILIES, fmt, leader } from './parts/data';
+import { COBALTO, FAMILIES, fmt } from './parts/data';
 import { DataTable, type TCol } from './parts/Table';
 import { Stage, audioEnd, segment, wordFrame } from './kit';
 
 const S = 's08-caso';
 const LOW = 180; // the engine's pause card owns the first 170 px of the stage
-const NOW = 400;
+const NOW = 384;
 
 function Confidence({ frame, at }: { frame: number; at: number }) {
   const p = progress(frame, at, 16);
@@ -47,7 +47,7 @@ export function S08Caso(props: SceneProps) {
 
   const t0 = at('s08-01') - 6;
   const cols: TCol[] = [
-    { label: 'Muestras', sub: 'hashes', w: 190, at: t0, win: leader('muestras'), winAt: w('s08-01', 'lidera') },
+    { label: 'Muestras', sub: 'hashes', w: 190, at: t0 },
     { label: 'Del sector', sub: 'dispositivos', w: 260, at: t0, win: 1, winAt: reveal },
     { label: 'Última semana', sub: 'dispositivos', w: 280, at: t0, win: 1, winAt: reveal },
     { label: 'Capacidad descrita', w: 798, at: t0, text: true, win: 1, winAt: reveal },
@@ -92,13 +92,13 @@ export function S08Caso(props: SceneProps) {
       <Reveal frame={frame} at={changes - 4} x={0} y={NOW + 6} w={1728}>
         <Pill icon="search" tone="sky" size={34}>lo que cambiaría la prioridad</Pill>
       </Reveal>
-      <Reveal frame={frame} at={w('s08-05', 'independiente') - 14} x={0} y={NOW + 82} w={544}>
+      <Reveal frame={frame} at={w('s08-05', 'independiente') - 14} x={0} y={NOW + 80} w={544}>
         <InfoCard icon="globe" title="Fuente independiente" tone="sky" w={544} h={104} titleSize={34} />
       </Reveal>
-      <Reveal frame={frame} at={w('s08-05', 'evidencia') - 14} x={592} y={NOW + 82} w={544}>
+      <Reveal frame={frame} at={w('s08-05', 'evidencia') - 14} x={592} y={NOW + 80} w={544}>
         <InfoCard icon="search" title="Evidencia interna nueva" tone="sky" w={544} h={104} titleSize={32} />
       </Reveal>
-      <Reveal frame={frame} at={w('s08-05', 'corrección') - 14} x={1184} y={NOW + 82} w={544}>
+      <Reveal frame={frame} at={w('s08-05', 'corrección') - 14} x={1184} y={NOW + 80} w={544}>
         <InfoCard icon="merge" title="Corrección de duplicados" tone="sky" w={544} h={104} titleSize={32} />
       </Reveal>
 

@@ -7,7 +7,7 @@ import { Pill, Reveal } from './parts/bits';
 import { Stage, segment, wordFrame } from './kit';
 
 const S = 's05-caso';
-const ROW_H = 72;
+const ROW_H = 76;
 const ROW_Y = 92 + 64 + 8;
 
 // Illustrative syntax only: placeholder values, never executed.
@@ -84,7 +84,7 @@ export function S05Consultas(props: SceneProps) {
                 opacity: p,
                 transform: `translateX(${(1 - p) * -16}px)`,
                 fontFamily: FONT.mono,
-                fontSize: 30,
+                fontSize: 32,
                 fontWeight: 600,
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
@@ -107,7 +107,7 @@ export function S05Consultas(props: SceneProps) {
       </Reveal>
 
       {/* availability and fallback */}
-      <Reveal frame={frame} at={avail} outAt={end - 4} x={0} y={536} w={1728}>
+      <Reveal frame={frame} at={avail} outAt={end - 4} x={0} y={548} w={1728}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
           <span style={{ fontFamily: FONT.sans, fontSize: 32, fontWeight: 800, color: C.textStrong }}>El acceso depende de</span>
           {[
@@ -121,7 +121,7 @@ export function S05Consultas(props: SceneProps) {
           ))}
         </div>
       </Reveal>
-      <Reveal frame={frame} at={at('s05-06')} outAt={end - 4} x={0} y={598} w={1728}>
+      <Reveal frame={frame} at={at('s05-06')} outAt={end - 4} x={0} y={604} w={1728}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
           <span style={{ fontFamily: FONT.sans, fontSize: 32, fontWeight: 800, color: C.textStrong }}>Sin esas funciones</span>
           <span style={{ opacity: progress(frame, w('s05-06', 'fichas') - 8, 14) }}>

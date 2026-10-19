@@ -84,7 +84,7 @@ export function S09Caso(props: SceneProps) {
           </div>
         </Panel>
       </Reveal>
-      <Reveal frame={frame} at={w('s09-02', 'incremento') - 8} outAt={phase1Out} x={0} y={440} w={1728}>
+      <Reveal frame={frame} at={w('s09-02', 'incremento') - 8} outAt={phase1Out} x={0} y={566} w={1728}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
           <Tag tone="emerald" size={32}>incremento del feed</Tag>
           <div style={{ position: 'relative', width: barW, height: 34 }}>

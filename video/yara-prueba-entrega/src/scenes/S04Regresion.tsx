@@ -121,7 +121,7 @@ export function S04Regresion(props: SceneProps) {
           </div>
         </div>
       </Reveal>
-      <Reveal frame={frame} at={tPart + 20} x={1130} y={slotY + 72} w={598}>
+      <Reveal frame={frame} at={tPart + 20} x={1160} y={slotY + 72} w={568}>
         <span style={{ fontFamily: FONT.sans, fontSize: 28, fontWeight: 650, color: C.muted, whiteSpace: 'nowrap' }}>los nombres no garantizan independencia</span>
       </Reveal>
       <LearningCard frame={frame} at={cardAt} text="Una regla más restrictiva puede perder variantes" />

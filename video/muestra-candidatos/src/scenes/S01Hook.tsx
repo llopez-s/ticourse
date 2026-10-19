@@ -19,9 +19,9 @@ const FLOW: { icon: IconName; label: string }[] = [
   { icon: 'flag', label: 'Conclusión' },
 ];
 
-function FileTile({ frame, at, x, label }: { frame: number; at: number; x: number; label: string }) {
+function FileTile({ frame, at, outAt, x, label }: { frame: number; at: number; outAt: number; x: number; label: string }) {
   return (
-    <Reveal frame={frame} at={at} x={x} y={104} w={170}>
+    <Reveal frame={frame} at={at} outAt={outAt} x={x} y={104} w={170}>
       <div style={{ display: 'grid', justifyItems: 'center', gap: 8, fontFamily: FONT.sans }}>
         <div style={{ width: 120, height: 120, borderRadius: RADIUS.md, display: 'grid', placeItems: 'center', background: C.ink850, border: `2px solid ${alpha(C.cyan, 0.5)}` }}>
           <Icon name="file" size={68} color={C.cyan} />
@@ -56,8 +56,8 @@ export function S01Hook(props: SceneProps) {
       </div>
 
       {/* two files that look alike */}
-      <FileTile frame={frame} at={w('s01-01', 'archivos') - 8} x={0} label="archivo 1" />
-      <FileTile frame={frame} at={w('s01-01', 'archivos') + 10} x={380} label="archivo 2" />
+      <FileTile frame={frame} at={w('s01-01', 'archivos') - 8} outAt={at('s01-02') - 8} x={0} label="archivo 1" />
+      <FileTile frame={frame} at={w('s01-01', 'archivos') + 10} outAt={at('s01-02') - 8} x={380} label="archivo 2" />
       <Reveal frame={frame} at={w('s01-01', 'parecen')} outAt={at('s01-02') - 8} x={178} y={140}>
         <Pill tone="amber" size={30}>se parecen</Pill>
       </Reveal>

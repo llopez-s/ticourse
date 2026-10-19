@@ -79,25 +79,25 @@ export function S06Relaciones(props: SceneProps) {
       {/* phase 1 · four kinds of relation around A */}
       <Reveal frame={frame} at={rel - 14} outAt={p2} x={0} y={0} w={1728} h={500}>
         <svg width={1728} height={500} style={{ position: 'absolute', left: 0, top: 0 }}>
-          <Edge frame={frame} at={rel + 6} x1={380} y1={232} x2={706} y2={232} color={C.muted} label="lo ejecutó" />
-          <Edge frame={frame} at={rel + 20} x1={1020} y1={222} x2={1380} y2={62} color={C.amber} dash="10 8" label="contiene" />
-          <Edge frame={frame} at={rel + 34} x1={1020} y1={232} x2={1380} y2={232} color={C.sky} label="contactó" />
-          <Edge frame={frame} at={rel + 48} x1={1020} y1={242} x2={1380} y2={402} color={C.cyan} label="soltó" />
+          <Edge frame={frame} at={rel + 6} x1={430} y1={232} x2={706} y2={232} color={C.muted} label="lo ejecutó" />
+          <Edge frame={frame} at={rel + 20} x1={1020} y1={222} x2={1300} y2={62} color={C.amber} dash="10 8" label="contiene" />
+          <Edge frame={frame} at={rel + 34} x1={1020} y1={232} x2={1300} y2={232} color={C.sky} label="contactó" />
+          <Edge frame={frame} at={rel + 48} x1={1020} y1={242} x2={1300} y2={402} color={C.cyan} label="soltó" />
         </svg>
         <div style={{ position: 'absolute', left: 714, top: 182 }}>
           <Ficha letter="A" tone={C.cyan} title="Muestra A" sub="el archivo" w={300} h={100} tile={60} titleSize={32} subSize={26} />
         </div>
-        <div style={{ position: 'absolute', left: 40, top: 190 }}>
-          <Node icon="play" title="Padre de ejecución" sub="quién lo lanzó" tone={C.muted} />
+        <div style={{ position: 'absolute', left: 0, top: 190 }}>
+          <Node icon="play" title="Padre de ejecución" sub="quién lo lanzó" tone={C.muted} w={420} />
         </div>
-        <div style={{ position: 'absolute', left: 1388, top: 20, opacity: progress(frame, rel + 20, 14) }}>
-          <Node icon="file" title="Dominio incrustado" sub="texto dentro del archivo" tone={C.amber} />
+        <div style={{ position: 'absolute', left: 1308, top: 20, opacity: progress(frame, rel + 20, 14) }}>
+          <Node icon="file" title="Dominio incrustado" sub="texto en el archivo" tone={C.amber} w={420} />
         </div>
-        <div style={{ position: 'absolute', left: 1388, top: 190, opacity: progress(frame, rel + 34, 14) }}>
-          <Node icon="globe" title="Contacto observado" sub="visto al ejecutarlo" tone={C.sky} />
+        <div style={{ position: 'absolute', left: 1308, top: 190, opacity: progress(frame, rel + 34, 14) }}>
+          <Node icon="globe" title="Contacto observado" sub="visto al ejecutarlo" tone={C.sky} w={420} />
         </div>
-        <div style={{ position: 'absolute', left: 1388, top: 360, opacity: progress(frame, rel + 48, 14) }}>
-          <Node icon="archive" title="Archivo soltado" sub="creado por A" tone={C.cyan} />
+        <div style={{ position: 'absolute', left: 1308, top: 360, opacity: progress(frame, rel + 48, 14) }}>
+          <Node icon="archive" title="Archivo soltado" sub="creado por A" tone={C.cyan} w={420} />
         </div>
       </Reveal>
       <Reveal frame={frame} at={w('s06-01', 'prueba') - 8} outAt={p2} x={0} y={500} w={1728}>
@@ -120,7 +120,6 @@ export function S06Relaciones(props: SceneProps) {
         <svg width={1728} height={620} style={{ position: 'absolute', left: 0, top: 0 }}>
           <Edge frame={frame} at={w('s06-03', 'con') + 4} x1={380} y1={90} x2={552} y2={150} color={C.cyan} />
           <Edge frame={frame} at={w('s06-03', 'comparte')} x1={380} y1={240} x2={552} y2={190} color={C.sky} />
-          <line x1={60} y1={440} x2={940} y2={440} stroke={alpha(C.muted, 0.6)} strokeWidth={3} />
         </svg>
         <div style={{ position: 'absolute', left: 0, top: 40, opacity: progress(frame, at('s06-03') + 4, 14) }}>
           <Ficha letter="A" tone={C.cyan} title="Muestra A" w={360} h={100} tile={60} titleSize={32} />
@@ -143,6 +142,7 @@ export function S06Relaciones(props: SceneProps) {
         </Reveal>
         <Reveal frame={frame} at={w('s06-03', 'intervalo') - 6} x={0} y={372} w={1000}>
           <div style={{ position: 'relative', width: 1000, height: 100 }}>
+            <div style={{ position: 'absolute', left: 60, top: 81, width: 880, height: 3, background: alpha(C.muted, 0.6) }} />
             <div style={{ position: 'absolute', left: 60, top: 0, width: 880, height: 44, borderRadius: 22, background: alpha(C.amber, 0.18), border: `2px solid ${alpha(C.amber, 0.8)}`, display: 'grid', placeItems: 'center', fontFamily: FONT.sans, fontSize: 28, fontWeight: 700, color: '#fcd34d' }}>intervalo amplio</div>
             {[
               ['A', 190, C.cyan],
