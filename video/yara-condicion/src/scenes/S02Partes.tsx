@@ -62,7 +62,7 @@ export function S02Partes(props: SceneProps) {
         <InfoCard icon="file" title="meta" sub="documenta: autoría, versión, alcance" tone={PART.meta} w={648} h={120} lit={on('meta')} />
       </Reveal>
       <Reveal frame={frame} at={at('s02-02')} x={1080} y={130}>
-        <Pill icon="x" tone="amber" size={28}>nombre de familia en meta ≠ detección</Pill>
+        <Pill icon="x" tone="amber" size={28}>el nombre de familia en meta no es una detección</Pill>
       </Reveal>
 
       <Reveal frame={frame} at={b} x={1080} y={200}>

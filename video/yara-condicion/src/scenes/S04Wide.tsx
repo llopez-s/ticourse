@@ -69,13 +69,13 @@ export function S04Wide(props: SceneProps) {
       </Reveal>
       <div style={{ position: 'absolute', left: 0, top: TOP + 352, display: 'flex', gap: 18 }}>
         <Reveal frame={frame} at={asciiAt + 6} x={0} y={0}>
-          <Pill tone="cyan" size={28}>ascii → A</Pill>
+          <Pill tone="cyan" size={28}>ascii: A</Pill>
         </Reveal>
         <Reveal frame={frame} at={wideAt + 6} x={290} y={0}>
-          <Pill tone="sky" size={28}>wide → B, con su byte nulo</Pill>
+          <Pill tone="sky" size={28}>wide: B, con su byte nulo</Pill>
         </Reveal>
         <Reveal frame={frame} at={nocaseAt + 6} x={800} y={0}>
-          <Pill tone="amber" size={28}>nocase → ignora mayúsculas</Pill>
+          <Pill tone="amber" size={28}>nocase: ignora mayúsculas</Pill>
         </Reveal>
       </div>
 

@@ -94,7 +94,7 @@ export function S06Caso(props: SceneProps) {
       </Reveal>
 
       <Reveal frame={frame} at={vig + 30} x={0} y={540} w={1728}>
-        <Pill icon="clock" tone="amber" size={34}>caduca → la aplicación necesita otro token</Pill>
+        <Pill icon="clock" tone="amber" size={34}>al caducar, la aplicación necesita otro token</Pill>
       </Reveal>
       <Reveal frame={frame} at={at('s06-06')} x={0} y={602} w={1728}>
         <div style={{ display: 'flex', gap: 22 }}>
