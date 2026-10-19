@@ -27,11 +27,11 @@ export function Poster() {
   return (
     <AbsoluteFill style={{ fontFamily: FONT.sans, color: C.text }}>
       <Backdrop />
-      <div style={{ position: 'absolute', left: 1030, top: 150, width: 800, height: 790 }}>
+      <div style={{ position: 'absolute', left: 960, top: 150, width: 800, height: 790 }}>
         <svg width={800} height={790} style={{ position: 'absolute', left: 0, top: 0 }}>
           {LINES.map((n) => {
             const col = CAND[n.l];
-            return <line key={n.l} x1={190} y1={395} x2={560} y2={n.y + 52} stroke={alpha(col, 0.9)} strokeWidth={n.w} strokeDasharray={n.dash} strokeLinecap="round" />;
+            return <line key={n.l} x1={176} y1={395} x2={560} y2={n.y + 52} stroke={alpha(col, 0.9)} strokeWidth={n.w} strokeDasharray={n.dash} strokeLinecap="round" />;
           })}
         </svg>
         <div style={{ position: 'absolute', left: 0, top: 315, display: 'grid', placeItems: 'center', gap: 10 }}>

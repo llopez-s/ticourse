@@ -33,7 +33,7 @@ function Edge({ frame, at, x1, y1, x2, y2, color, dash, label, dim = 0, labelSiz
 }
 
 function Node({ icon, title, sub, tone, w = 340 }: { icon: IconName; title: string; sub?: string; tone: string; w?: number }) {
-  return <InfoCard icon={icon} title={title} sub={sub} tone={tone} w={w} h={84} titleSize={30} subSize={24} style={{ gap: 14 }} />;
+  return <InfoCard icon={icon} title={title} sub={sub} tone={tone} w={w} h={84} titleSize={28} subSize={24} style={{ gap: 14 }} />;
 }
 
 /** A small hub-and-spoke graph for the closing comparison. */

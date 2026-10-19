@@ -52,7 +52,7 @@ export function S02Huellas(props: SceneProps) {
   return (
     <Stage>
       {/* 1 · exact hash */}
-      <ColPanel frame={frame} at={props.cue('s02-a')} x={0} w={PW} h={560} tone="cyan" icon="lock" title="Hash criptográfico" sub="huella exacta del contenido" dim={d1}>
+      <ColPanel frame={frame} at={props.cue('s02-a')} x={0} w={PW} h={600} tone="cyan" icon="lock" title="Hash criptográfico" sub="huella exacta del contenido" dim={d1}>
         <Reveal frame={frame} at={w('s02-01', 'huella') - 10} x={24} y={22} w={512}>
           <Label>Archivo A</Label>
         </Reveal>
@@ -77,7 +77,7 @@ export function S02Huellas(props: SceneProps) {
       </ColPanel>
 
       {/* 2 · imphash */}
-      <ColPanel frame={frame} at={p2} x={PW + GAP} w={PW} h={560} tone="sky" icon="plug" title="Imphash" sub="imports normalizados" dim={d2}>
+      <ColPanel frame={frame} at={p2} x={PW + GAP} w={PW} h={600} tone="sky" icon="plug" title="Imphash" sub="imports normalizados" dim={d2}>
         <Reveal frame={frame} at={w('s02-03', 'funciones')} x={24} y={22} w={512}>
           <Label>Programa 1 · usa bibliotecas</Label>
         </Reveal>
@@ -105,7 +105,7 @@ export function S02Huellas(props: SceneProps) {
       </ColPanel>
 
       {/* 3 · fuzzy hash */}
-      <ColPanel frame={frame} at={p3} x={2 * (PW + GAP)} w={PW - 0} h={560} tone="emerald" icon="layers" title="Hashing difuso" sub="ssdeep · busca parecidos" dim={0}>
+      <ColPanel frame={frame} at={p3} x={2 * (PW + GAP)} w={PW - 0} h={600} tone="emerald" icon="layers" title="Hashing difuso" sub="ssdeep · busca parecidos" dim={0}>
         <Reveal frame={frame} at={w('s02-05', 'parecidos')} x={24} y={22} w={512}>
           <Label>Archivo A</Label>
         </Reveal>
