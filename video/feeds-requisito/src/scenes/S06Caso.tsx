@@ -33,7 +33,7 @@ export function S06Caso(props: SceneProps) {
 
   const cols = [
     { title: 'p95 de entrega', sub: 'R1 · límite 24 h', w: 350, at: at('s06-02') - 6 },
-    { title: 'Completitud', sub: 'campos completos', w: 270, at: at('s06-03') },
+    { title: 'Completitud', sub: '% de campos', w: 270, at: at('s06-03') },
     { title: 'Licencia', sub: 'al mes', w: 240, at: w('s06-06', 'licencia') - 6 },
     { title: 'Triaje', sub: 'horas al mes', w: 270, at: w('s06-06', 'revisar') - 6 },
     { title: 'Integración', sub: 'inicial', w: 270, at: w('s06-07', 'integración') - 6 },
