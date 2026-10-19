@@ -23,7 +23,7 @@ function Row({ frame, f }: { frame: number; f: Field }) {
   const p = progress(frame, f.at, 12);
   return (
     <div style={{ boxSizing: 'border-box', height: ROW_H, display: 'flex', alignItems: 'center', gap: 20, padding: '0 24px', borderBottom: `2px solid ${C.ink700}`, background: alpha(C.cyan, 0.12 * f.lit), opacity: p, transform: `translateX(${(1 - p) * 14}px)` }}>
-      <span style={{ width: 190, fontSize: 26, fontWeight: 700, letterSpacing: 1, color: f.lit > 0.3 ? C.cyanSoft : C.faint, textTransform: 'uppercase', flexShrink: 0 }}>{f.label}</span>
+      <span style={{ width: 220, fontSize: 26, fontWeight: 700, letterSpacing: 0.4, color: f.lit > 0.3 ? C.cyanSoft : C.faint, textTransform: 'uppercase', flexShrink: 0 }}>{f.label}</span>
       <span style={{ fontSize: 30, fontWeight: 750, color: C.textStrong, whiteSpace: 'nowrap' }}>{f.value}</span>
       {f.bar ? <div style={{ width: 150, height: 18, borderRadius: 9, background: `repeating-linear-gradient(90deg, ${C.ink600} 0 12px, ${C.ink700} 12px 20px)` }} /> : null}
     </div>
@@ -100,7 +100,7 @@ export function S09Ficha(props: SceneProps) {
         <Pill icon="play" tone="emerald" size={30}>repites las pruebas</Pill>
       </Reveal>
       <Reveal frame={frame} at={w('s09-03', 'registra') - 8} x={1060} y={508}>
-        <Pill icon="record" tone="sky" size={30}>cambia el corpus: registra qué y por qué</Pill>
+        <Pill icon="record" tone="sky" size={28}>cambias el corpus: registra qué y por qué</Pill>
       </Reveal>
 
       {/* hash, then the promise of the delivery */}

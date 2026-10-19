@@ -9,9 +9,9 @@ import { CASES } from './scenes/parts/data';
 
 ensureFonts();
 
-const TILE_W = 190;
+const TILE_W = 180;
 const TILE_H = 150;
-const GAP = 20;
+const GAP = 18;
 
 /**
  * Poster / YouTube thumbnail for «Tu YARA compila: ahora demuestra qué detecta». Title on the left; on the right
@@ -23,7 +23,7 @@ export function Poster() {
   return (
     <AbsoluteFill style={{ fontFamily: FONT.sans, color: C.text }}>
       <Backdrop />
-      <div style={{ position: 'absolute', left: 1020, top: 200, width: 4 * TILE_W + 3 * GAP, height: 3 * TILE_H + 2 * GAP }}>
+      <div style={{ position: 'absolute', left: 1050, top: 200, width: 4 * TILE_W + 3 * GAP, height: 3 * TILE_H + 2 * GAP }}>
         {CASES.map((c, i) => {
           const hit = c.hits.length > 0;
           const limit = c.file === 'future-uncovered.dat';
@@ -50,10 +50,10 @@ export function Poster() {
           );
         })}
       </div>
-      <div style={{ position: 'absolute', left: 1020, top: 200 + 3 * TILE_H + 2 * GAP + 36, display: 'flex', gap: 14 }}>
-        <Chip accent="cyan" size={30}>debe coincidir</Chip>
-        <Chip accent="muted" size={30}>debe quedar fuera</Chip>
-        <Chip accent="amber" size={30}>límite conocido</Chip>
+      <div style={{ position: 'absolute', left: 1050, top: 200 + 3 * TILE_H + 2 * GAP + 36, display: 'flex', gap: 14 }}>
+        <Chip accent="cyan" size={26}>debe coincidir</Chip>
+        <Chip accent="muted" size={26}>debe quedar fuera</Chip>
+        <Chip accent="amber" size={26}>límite conocido</Chip>
       </div>
 
       <div style={{ position: 'absolute', left, top: 250, display: 'flex', alignItems: 'center', gap: 16 }}>
@@ -61,8 +61,8 @@ export function Poster() {
         <span style={{ fontSize: TYPE.small, fontWeight: 800, letterSpacing: 5, color: C.cyanSoft }}>ALERTÓPOLIS</span>
       </div>
       <div style={{ position: 'absolute', left: left - 6, top: 298, fontWeight: 850, letterSpacing: -2.5, color: C.textStrong }}>
-        <div style={{ fontSize: 112, lineHeight: 1.04, whiteSpace: 'nowrap' }}>Tu YARA compila</div>
-        <div style={{ fontSize: 112, lineHeight: 1.04, color: C.cyan, whiteSpace: 'nowrap' }}>¿qué detecta?</div>
+        <div style={{ fontSize: 104, lineHeight: 1.06, whiteSpace: 'nowrap' }}>Tu YARA compila</div>
+        <div style={{ fontSize: 104, lineHeight: 1.06, color: C.cyan, whiteSpace: 'nowrap' }}>¿qué detecta?</div>
       </div>
       <div style={{ position: 'absolute', left, top: 562, fontSize: 50, fontWeight: 650, lineHeight: 1.2, color: C.text, whiteSpace: 'nowrap' }}>compilar no es validar</div>
       <div style={{ position: 'absolute', left, top: 676, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 16 }}>
