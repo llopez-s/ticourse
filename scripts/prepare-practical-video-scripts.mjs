@@ -15,6 +15,7 @@ const DOC = path.join(ROOT, 'docs/superpowers/plans/2026-10-19-videos-ampliacion
 const EPISODES = [...EPISODES_01_03, ...EPISODES_04_05, ...EPISODES_06_07];
 const checking = process.argv.includes('--check');
 const frozen = process.argv.find((arg) => arg.startsWith('--freeze='))?.slice(9);
+const CARD_HOLD_MS = 5000;
 const moods = ['curious', 'warm', 'focused', 'calm', 'confident', 'thoughtful', 'engaging', 'firm', 'reassuring'];
 const lexiconPool = { YARA: 'yara', PDB: 'pe de be', ID: 'ai di', OpenID: 'óupen ai di', OAuth: 'ó-auth', VirusTotal: 'virus total' };
 const words = (s) => s.trim().split(/\s+/u).filter(Boolean).length;
@@ -87,7 +88,7 @@ for (const episode of EPISODES) {
         const last = p === scene.text.length - 1 && k === pieces.length - 1;
         const segment = {
           id: `${prefix}-${String(segmentIndex++).padStart(2, '0')}`, scene: id, text,
-          pauseAfterMs: last ? 600 : 300,
+          pauseAfterMs: last ? (scene.card ? 600 + CARD_HOLD_MS : 600) : 300, // a closing card is held in the silence after the last segment
         };
         if (p === 0 && k === 0 && scene.intercept) segment.intercept = { text: scene.intercept, holdMs: 3500 };
         if (p === 0 && k === pieces.length - 1 && scene.think) segment.think = { q: scene.think.q, holdMs: 4500 };
@@ -96,12 +97,12 @@ for (const episode of EPISODES) {
     }
     const n = scene.text.reduce((sum, part) => sum + words(part), 0);
     const duration = Math.ceil(n / 2.5 + sceneSegments.reduce((sum, s) => sum + s.pauseAfterMs / 1000, 0)
-      + (scene.intercept ? 3.5 : 0) + (scene.think ? 4.5 : 0) + (scene.card ? 5 : 0) + 1.1);
+      + (scene.intercept ? 3.5 : 0) + (scene.think ? 4.5 : 0) + 1.1);
     totalWords += n;
     storyboard.scenes.push({
       id, chapter: Math.floor(i / 2) + 1, title: scene.title, goal: scene.visual,
       targetSec: duration, wordBudget: Math.ceil(duration * 2.7), requiredCues,
-      ...(scene.card ? { learningCard: { label: 'PRÁCTICA COMPLEMENTARIA', text: scene.card, afterSegment: sceneSegments.at(-1).id, holdSec: 5 } } : {}),
+      ...(scene.card ? { learningCard: { label: 'PRÁCTICA COMPLEMENTARIA', text: scene.card, afterSegment: sceneSegments.at(-1).id, holdSec: CARD_HOLD_MS / 1000 } } : {}),
       ...(scene.think ? { decision: { ...scene.think, revealAt: `${prefix}-b`, holdMs: 4500 } } : {}),
     });
     narration.segments.push(...sceneSegments);
