@@ -30,7 +30,7 @@ El conjunto ronda los **62 minutos de montaje** y contiene 7.973 palabras de nar
 - Cierre con tres reglas y una actividad concreta en la lección.
 - Datos ficticios identificados y descargo de la pista: sin afiliación a CompTIA o SANS/GIAC.
 
-Se conserva el perfil temporal y narrativo `principal-yt`. Las tarjetas propias de esta tanda están descritas en `storyboard.json`; habrá que dibujarlas en sus escenas de producción. Los JSON contienen cero campos `exam`/`question`, de modo que estas ampliaciones no reciben insignias ni preguntas de examen.
+Se conserva el perfil temporal y narrativo `principal-yt`. Las tarjetas propias de esta tanda están descritas en `storyboard.json` y cada escena las dibuja (`LearningCard`, con velo sobre la escena y sin insignia de examen). Su lectura se mantiene en la pausa que sigue al último segmento de la escena: `pauseAfterMs` pasa de 600 a 5.600 ms en esas cinco escenas (el validador del motor admite ahora hasta 6.000 ms), de modo que el timeline reserva los 5 s sin tocar el texto que lee Lidia. Los JSON contienen cero campos `exam`/`question`, de modo que estas ampliaciones no reciben insignias ni preguntas de examen.
 
 ## Casos y orden recomendado
 
@@ -70,3 +70,12 @@ node video/engine/scripts/build-timeline.mjs --video tokens-correo --estimate --
 Una modificación sustancial exige repetir las revisiones antes de grabar y actualizar la fecha de congelación. `--freeze=AAAA-MM-DD` fija esa fecha después de aplicar las revisiones y leer los informes de canon, según el [orden de producción de la serie](../2026-09-25-lesson-videos.md#8-flujo-de-producción-por-vídeo-recetario).
 
 La [validación estructural](validacion-estructural.json) resume palabras, segmentos, tiempos, errores y avisos. Los informes detallados de canon y las estimaciones temporales se regeneran en `video/<slug>/out/`. El informe de revisión conserva la interpretación humana de sus coincidencias.
+
+## Estado de producción de las escenas
+
+| ID | Composición | Escenas | Póster |
+|---|---|---|---|
+| AP01 | `PracticaAP01` | 10 escenas dibujadas y revisadas con fotogramas sobre el timeline estimado | `PracticaAP01Poster` |
+| AP02–AP07 | reservadas | pendientes | pendientes |
+
+Los fotogramas se revisan con `node video/engine/scripts/qa-frames.mjs --video <slug> --extra <frames>`. Falta, por episodio: grabación de Lidia, `import-recording`, `audio.mjs`, render y masterización.
