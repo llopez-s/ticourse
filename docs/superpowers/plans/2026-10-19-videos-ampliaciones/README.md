@@ -76,6 +76,13 @@ La [validación estructural](validacion-estructural.json) resume palabras, segme
 | ID | Composición | Escenas | Póster |
 |---|---|---|---|
 | AP01 | `PracticaAP01` | 10 escenas dibujadas y revisadas con fotogramas sobre el timeline estimado | `PracticaAP01Poster` |
-| AP02–AP07 | reservadas | pendientes | pendientes |
+| AP02 | `PracticaAP02` | ídem | `PracticaAP02Poster` |
+| AP03 | `PracticaAP03` | ídem | `PracticaAP03Poster` |
+| AP04 | `PracticaAP04` | ídem | `PracticaAP04Poster` |
+| AP05 | `PracticaAP05` | ídem | `PracticaAP05Poster` |
+| AP06 | `PracticaAP06` | ídem (la salida de terminal de s02 y la línea 12/12 de s06 son extractos de `verify.py` con yara-python 4.5.4) | `PracticaAP06Poster` |
+| AP07 | `PracticaAP07` | ídem (dataset copiado en `parts/data.ts`: mantenerlo igual que `analysis-yara.ts`) | `PracticaAP07Poster` |
+
+Las piezas comunes están en `video/engine/src/practica/`. Todas las sincronías se calibraron con el timeline estimado: al importar la grabación hay que repasar los desfases fijos (`+6`, `-8`) y las llamadas a `wordFrame`.
 
 Los fotogramas se revisan con `node video/engine/scripts/qa-frames.mjs --video <slug> --extra <frames>`. Falta, por episodio: grabación de Lidia, `import-recording`, `audio.mjs`, render y masterización.
