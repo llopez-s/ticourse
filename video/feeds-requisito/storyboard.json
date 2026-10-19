@@ -1,0 +1,213 @@
+{
+  "title": "Tres feeds, dos preguntas: comprar información que añada valor",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "editorialScope": "complementary",
+  "notice": "Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC · Práctica complementaria",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "La compra"
+    },
+    {
+      "n": 2,
+      "title": "Qué estamos midiendo"
+    },
+    {
+      "n": 3,
+      "title": "Comparar tres ofertas"
+    },
+    {
+      "n": 4,
+      "title": "Probar antes de renovar"
+    },
+    {
+      "n": 5,
+      "title": "La decisión"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una oferta que parece ganadora",
+      "goal": "Meridian, aeroespacial, ejercicio de compra. Tres ofertas ficticias Faro/Atlas/Eco. No usar logotipos reales. Mostrar dos sobres cerrados R1/R2 y mantener la tabla de resultados oculta hasta definir la pregunta.",
+      "targetSec": 42,
+      "wordBudget": 114,
+      "requiredCues": [
+        "title",
+        "s01-b",
+        "s01-c"
+      ]
+    },
+    {
+      "id": "s02-caso",
+      "chapter": 1,
+      "title": "Primero la pregunta",
+      "goal": "R1 literal: investigar indicios sectoriales de cuentas expuestas en menos de 24 h. R2: investigar infraestructura retrospectivamente en 90 días. Matriz fuente/dato/requisito del CMF, con línea base existente visible.",
+      "targetSec": 55,
+      "wordBudget": 149,
+      "requiredCues": [
+        "s02-a",
+        "s02-b",
+        "s02-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Evalúa cada fuente contra un requisito concreto",
+        "afterSegment": "s02-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-caso",
+      "chapter": 2,
+      "title": "Conocido no significa confirmado",
+      "goal": "Separar ficha de fuente y ficha de afirmación. Historial/acceso/método frente a evidencia/coherencia/corroboración. El mensaje del adversario no atribuye a Faro ningún fallo concreto.",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "s03-a",
+        "s03-b",
+        "s03-c"
+      ]
+    },
+    {
+      "id": "s04-caso",
+      "chapter": 2,
+      "title": "El mismo recorte en tres sobres",
+      "goal": "Faro observa → Atlas cita → Eco reproduce → blog. Dos publicaciones no añaden una observación. Pregunta con dos opciones, origen marcado solo después. Conservar horas de entrega distintas para no borrar valor de anticipación.",
+      "targetSec": 60,
+      "wordBudget": 162,
+      "requiredCues": [
+        "s04-a",
+        "s04-b",
+        "s04-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Sigue el origen; republicar no corrobora",
+        "afterSegment": "s04-06",
+        "holdSec": 5
+      },
+      "decision": {
+        "q": "¿Tres publicaciones o tres observaciones?",
+        "choices": [
+          "Tres confirmaciones independientes",
+          "Una observación de origen"
+        ],
+        "answer": 1,
+        "revealAt": "s04-b",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s05-caso",
+      "chapter": 3,
+      "title": "Abrimos los resultados",
+      "goal": "Piloto ficticio de 30 días, 100 revisados por feed para R1: Faro 60 útiles/40 incrementales/10 desconocidos; Atlas 90/3/0; Eco 80/1/5. R2 incrementales Faro2/Atlas45/Eco1. Una columna a la vez; no mostrar rankings sin requisito.",
+      "targetSec": 51,
+      "wordBudget": 138,
+      "requiredCues": [
+        "s05-a",
+        "s05-b",
+        "s05-c"
+      ]
+    },
+    {
+      "id": "s06-caso",
+      "chapter": 3,
+      "title": "El precio que no sale en la licencia",
+      "goal": "Mostrar p95 de R1: Faro8h/Atlas36h/Eco12h. Completitud95/99/70%. Licencia900/600/200€; triaje6/4/18h mes; integración inicial8/4/2h. Definir p95 en texto y en voz. Evitar inferir p95 de R2.",
+      "targetSec": 61,
+      "wordBudget": 165,
+      "requiredCues": [
+        "s06-a",
+        "s06-b",
+        "s06-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Calidad, puntualidad y coste total importan",
+        "afterSegment": "s06-07",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-caso",
+      "chapter": 4,
+      "title": "Antes de llamar éxito al piloto",
+      "goal": "Criterios R1 fijados antes de observar resultados: ≥20 útiles incrementales, p95<24h, completitud≥90%, triaje≤8h/mes. Precio/contrato como condición separada. Símbolos solo en pantalla. Mostrar controles de calidad y adjudicación, no dar feed por verdad absoluta.",
+      "targetSec": 53,
+      "wordBudget": 144,
+      "requiredCues": [
+        "s07-a",
+        "s07-b",
+        "s07-c"
+      ]
+    },
+    {
+      "id": "s08-caso",
+      "chapter": 4,
+      "title": "Una decisión para cada requisito",
+      "goal": "R1 se ilumina antes de preguntar. Opciones Faro/Atlas. Después resolución R1=Faro sujeto a presupuesto y contrato; R2=Atlas puede aportar más. Eco no se descarta por ser barato, sino por incumplimientos concretos.",
+      "targetSec": 59,
+      "wordBudget": 160,
+      "requiredCues": [
+        "s08-a",
+        "s08-b",
+        "s08-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "La elección depende del incremento útil y del plazo",
+        "afterSegment": "s08-06",
+        "holdSec": 5
+      },
+      "decision": {
+        "q": "Para R1, ¿Faro o Atlas?",
+        "choices": [
+          "Faro",
+          "Atlas"
+        ],
+        "answer": 0,
+        "revealAt": "s08-b",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s09-caso",
+      "chapter": 5,
+      "title": "La renovación cambia de base",
+      "goal": "Mes del piloto / renovación futura sin fecha fija. Base inicial incorpora ahora otros datos; recalcular incremento. Tabla renovar/ajustar/cancelar y coste de integración hundido marcado como histórico, no obligación.",
+      "targetSec": 57,
+      "wordBudget": 154,
+      "requiredCues": [
+        "s09-a",
+        "s09-b",
+        "s09-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Renueva por valor actual, no por lo que ya pagaste",
+        "afterSegment": "s09-07",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-cierre",
+      "chapter": 5,
+      "title": "La compra que puedes defender",
+      "goal": "Tres reglas: requisito primero / incremento con origen / piloto y coste total. Acción única: resolver comparación de feeds de s3m1. Aviso GCTI no afiliado, sin insignia de examen para contenido complementario.",
+      "targetSec": 53,
+      "wordBudget": 144,
+      "requiredCues": [
+        "s10-a",
+        "s10-b",
+        "s10-c"
+      ]
+    }
+  ],
+  "targetTotalSec": 545
+}

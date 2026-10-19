@@ -42,9 +42,9 @@ export const FLASHCARDS: Flashcard[] = [
   { id: 'fc302', sectionId: 's3', front: 'Collection gap', back: 'A requirement with no source capable of answering it. Close with new collection or document the limitation.' },
   { id: 'fc303', sectionId: 's3', front: 'Most valuable collection source for most teams', back: 'Internal telemetry and own incidents — ground truth about adversaries that actually target you.' },
   { id: 'fc304', sectionId: 's3', front: 'Static vs dynamic malware analysis', back: 'Static: examine without executing (strings, imports, structure). Dynamic: detonate and observe behavior (sandbox).' },
-  { id: 'fc305', sectionId: 's3', front: 'Imphash', back: 'Hash of a PE\'s import table; clusters binaries with similar functionality/toolchain across different file hashes.' },
-  { id: 'fc306', sectionId: 's3', front: 'Fuzzy hashing (ssdeep)', back: 'Similarity hashing: finds recompiled/modified variants that cryptographic hashes miss.' },
-  { id: 'fc307', sectionId: 's3', front: 'PDB path', back: 'Debug symbol path leaking the developer\'s build environment — often unique; strong link between samples.' },
+  { id: 'fc305', sectionId: 's3', front: 'Imphash', back: 'Hash of normalized PE imports; finds candidates with shared imports. Does not prove common compiler, family, campaign or actor; unrelated binaries may share it.' },
+  { id: 'fc306', sectionId: 's3', front: 'Fuzzy hashing (ssdeep)', back: 'Approximate similarity for candidate prioritization. Shared libraries or packing affect results; a high score is not proof of recompilation or family membership.' },
+  { id: 'fc307', sectionId: 's3', front: 'PDB path', back: 'Debug symbol path: a build-environment clue. Distinctive paths help prioritize pivots, but may be reused, copied or forged and need corroboration.' },
   { id: 'fc308', sectionId: 's3', front: 'OPSEC risk of uploading samples publicly', back: 'Adversaries monitor for their hashes: uploads reveal discovery. Search by hash first; upload deliberately.' },
   { id: 'fc309', sectionId: 's3', front: 'Passive DNS', back: 'Historical record of domain↔IP resolutions. Answers: what did this resolve to; what else resolved to this IP.' },
   { id: 'fc310', sectionId: 's3', front: 'Pivoting despite WHOIS privacy', back: 'Historical WHOIS + registration patterns: registrar, nameservers, creation timing, naming convention.' },
@@ -53,7 +53,7 @@ export const FLASHCARDS: Flashcard[] = [
   { id: 'fc313', sectionId: 's3', front: 'Malicious domain lifecycle', back: 'Register (often in batches) → park/age → activate → use → burned → abandon/resell. Registration patterns enable pre-emptive blocking.' },
   { id: 'fc314', sectionId: 's3', front: 'TLP 2.0 levels', back: 'RED (named individuals only), AMBER (org + clients need-to-know), AMBER+STRICT (org only), GREEN (community), CLEAR (public).' },
   { id: 'fc315', sectionId: 's3', front: 'STIX vs TAXII', back: 'STIX = the language (objects + relationships expressing threat info). TAXII = the transport protocol (collections/channels).' },
-  { id: 'fc316', sectionId: 's3', front: 'YARA rule anatomy + robust condition', back: 'meta / strings / condition. Robust: require combinations of rare independent strings, e.g. "2 of ($a,$b,$c)".' },
+  { id: 'fc316', sectionId: 's3', front: 'YARA rule anatomy + justified condition', back: 'meta / strings / condition. Justify patterns, grouping and scope against variants and controls. "2 of" is a corpus-dependent choice, not a universal guarantee.' },
 
   // ---- S4 ------------------------------------------------------------------
   { id: 'fc401', sectionId: 's4', front: 'Confirmation bias', back: 'Seeking/weighting evidence that confirms the existing hypothesis. The #1 attribution killer. Counter: ACH.' },

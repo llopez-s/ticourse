@@ -1,0 +1,386 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {title}Tu regla compila. Ahora vas a comprobar qué detecta, qué se le escapa y qué debes entregar para que otra persona pueda evaluarla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<warm> {s01-b}Estamos en el laboratorio didáctico de Meridian, una empresa aeroespacial. Los archivos son inertes. Una regla YARA expresa patrones y condiciones.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<focused> Que el motor acepte su sintaxis no significa que cumpla el objetivo de detección.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<calm> {s01-c}Usamos el mismo paquete de práctica que la lección. Incluye tres variantes dentro del alcance, controles parecidos y casos que revelan límites.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-hook",
+      "text": "<confident> No necesitas malware real ni una cuenta de pago. Lo que necesitas es comparar resultados esperados con resultados observados.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-caso",
+      "text": "<thoughtful> {s02-a}Primero descargas la regla que has escrito. El editor del navegador no la ejecuta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-caso",
+      "text": "<engaging> El verificador local la compila con YARA real y la aplica al conjunto de archivos de prueba. Ese conjunto se llama corpus. El paquete explica cómo preparar el entorno.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-caso",
+      "text": "<firm> {s02-b}Registra qué motor y qué versión utilizaste. Conserva también la versión de la regla y los archivos de prueba.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-caso",
+      "text": "<reassuring> Si cambias la regla o el corpus, has cambiado la prueba. La evidencia anterior no cubre automáticamente el cambio.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-caso",
+      "text": "<curious> {s02-c}Un error de compilación no es una ausencia de coincidencia. La regla no llegó a evaluarse como esperabas. Una discrepancia significa otra cosa.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-caso",
+      "text": "<warm> El motor produjo un resultado que no coincide con la expectativa del caso. Esa diferencia debe quedar visible.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-caso",
+      "text": "<focused> {s03-a}Más coincidencias pueden significar más errores. Si un archivo queda fuera de tu objetivo y la regla lo acepta, tienes un falso positivo.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "Cuantas más coincidencias salgan, mejor es la regla.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-caso",
+      "text": "<calm> Si uno que debería entrar no coincide, tienes un falso negativo. Las etiquetas dependen del objetivo declarado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-caso",
+      "text": "<confident> {s03-b}En el paquete hay controles con una ruta sola, un marcador solo o unos bytes coincidentes. Una condición demasiado permisiva puede aceptarlos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-caso",
+      "text": "<thoughtful> Si los aceptas por accidente, no has descubierto más variantes. Has ampliado la regla más de lo que justificaban tus datos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-caso",
+      "text": "<engaging> {s03-c}Por eso revisas cada archivo, incluidos los negativos. Una pantalla llena de aciertos parciales no basta. Necesitas saber qué se esperaba, qué ocurrió y por qué.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-caso",
+      "text": "<firm> El verificador compara resultados completos y devuelve un fallo cuando hay discrepancias.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-caso",
+      "text": "<reassuring> {s04-a}C cambia la ruta pero conserva otros rasgos del objetivo. Ya lo usamos al escribir la condición.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-caso",
+      "text": "<curious> Si ahora exiges todas las cadenas, ¿mejora siempre la regla o puedes perder una variante que querías detectar?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Exigir todo mejora siempre la cobertura?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-caso",
+      "text": "<warm> {s04-b}Puedes perderla. Volver a probar C comprueba un ejemplo conocido. Es una prueba de regresión: ayuda a descubrir si un cambio rompe algo que antes funcionaba.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-caso",
+      "text": "<focused> No demuestra que la regla detecte variantes nuevas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-caso",
+      "text": "<calm> {s04-c}Ajustar hasta memorizar ejemplos se llama sobreajuste. Para evaluar generalización, reserva casos nuevos que no hayan influido en el diseño.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-caso",
+      "text": "<confident> Aquí los archivos son públicos y sintéticos. Sus resultados enseñan el método, sin demostrar cobertura de malware real.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-caso",
+      "text": "<thoughtful> {s05-a}El paquete incluye una regla estrecha para una muestra, otra para el conjunto de variantes y otra para buscar candidatos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-caso",
+      "text": "<engaging> La primera exige un rasgo concreto del archivo A. Es útil para ese alcance, pero pierde B y C.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-caso",
+      "text": "<firm> {s05-b}La regla de familia del ejercicio cubre A, B y C dentro del contrato sintético. No acredita cobertura de una familia real.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-caso",
+      "text": "<reassuring> La regla de hunting es más amplia. Recupera también controles que comparten un rasgo y necesitan revisión.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-caso",
+      "text": "<curious> {s05-c}La diferencia no se decide por un nombre bonito en la regla. Se decide por el objetivo, los requisitos y los resultados.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-caso",
+      "text": "<warm> Una regla amplia puede ser útil para investigar candidatos y ser inadecuada para bloquear automáticamente. La acción prevista forma parte de la entrega.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-caso",
+      "text": "<focused> {s06-a}La referencia obtiene los doce resultados previstos del paquete. Eso incluye archivos que deben coincidir y archivos que no deben hacerlo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-caso",
+      "text": "<calm> No significa que detecte doce infecciones. Tampoco significa que tenga una sensibilidad perfecta frente a una familia real.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-caso",
+      "text": "<confident> {s06-b}La variante futura del ejercicio cambia el marcador y la ruta. La referencia no la cubre.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-caso",
+      "text": "<thoughtful> Si tu objetivo incluye esa versión, tienes un falso negativo conocido. Los archivos fuera del tamaño pactado también muestran un límite cuando amplías el objetivo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-caso",
+      "text": "<engaging> {s06-c}Conserva esos resultados al informar. Decir que todo salió conforme a un contrato pequeño es correcto. Convertirlo en una promesa de producción no lo es.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-caso",
+      "text": "<firm> Tu conclusión debe llevar el alcance con el que interpretaste cada coincidencia y cada ausencia.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-caso",
+      "text": "<reassuring> {s07-a}Queda mejor hasta que otra persona necesita entender qué probaste. Entrega la regla versionada, el objetivo y la procedencia de sus patrones.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "Manda la regla y escribe cien por cien. Queda mejor.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-caso",
+      "text": "<curious> Añade el motor, el corpus y la matriz de resultados. El receptor debe poder reproducir lo que afirmas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-caso",
+      "text": "<warm> {s07-b}Explica las limitaciones y los errores conocidos. Di si una coincidencia necesita revisión humana o alguna acción específica.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-caso",
+      "text": "<focused> Una captura de YARA Forge solo demuestra la simulación por etiquetas. No sustituye una compilación y una ejecución reales de tu archivo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-caso",
+      "text": "<calm> {s07-c}Revisa también quién puede recibir la evidencia y qué uso está permitido. Los datos sintéticos de este ejercicio no contienen secretos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-caso",
+      "text": "<confident> Eso no permite olvidar los derechos y la protección de evidencias cuando entregas reglas apoyadas en material de terceros.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-caso",
+      "text": "<thoughtful> {s08-a}El receptor ve los doce resultados conformes y propone bloquear toda la flota.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-caso",
+      "text": "<engaging> ¿El paquete sintético justifica ese uso, o necesitas una validación que corresponda a los archivos y a la acción de producción?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Estos resultados justifican bloquear la flota?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-caso",
+      "text": "<firm> {s08-b}Necesitas validar ese uso. El ejercicio demuestra la mecánica y los resultados de unos archivos preparados.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-caso",
+      "text": "<reassuring> Antes de una acción real necesitas controles representativos, cobertura adecuada y una respuesta autorizada. El coste de una coincidencia equivocada también cambia con la acción.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-caso",
+      "text": "<curious> {s08-c}No estás rechazando la regla por haber nacido en un laboratorio. Estás delimitando qué evidencia existe. Puedes entregarla como práctica o punto de partida.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-caso",
+      "text": "<warm> No puedes presentar el resultado sintético como prueba suficiente de eficacia en toda la organización.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-caso",
+      "text": "<focused> {s09-a}Añade un responsable y un criterio de revisión. La regla puede dejar de cubrir lo que interesa o empezar a coincidir con contenido legítimo nuevo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-caso",
+      "text": "<calm> Quien recibe la entrega necesita saber cómo comunicar esos errores y cuándo revisarla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-caso",
+      "text": "<confident> {s09-b}Si cambias un patrón, conserva la versión anterior y repite las pruebas. Si cambias el corpus, registra qué se añadió y por qué.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-caso",
+      "text": "<thoughtful> Los hashes ayudan a identificar los archivos exactos usados. No prueban por sí solos que el conjunto sea representativo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-caso",
+      "text": "<engaging> {s09-c}Así entregas una detección que otra persona puede evaluar, repetir y mantener. El paquete permite reproducir resultados y discutir límites.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-caso",
+      "text": "<firm> Quien lo recibe no debería necesitar toda tu conversación para entender qué puede hacer con la regla.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-cierre",
+      "text": "<reassuring> {s10-a}Tres reglas de cierre. Compilar valida sintaxis, no eficacia. Revisar positivos y negativos evita esconder errores.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-cierre",
+      "text": "<curious> Y una entrega técnica necesita alcance, reproducción y acción prevista, además del archivo de la regla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-cierre",
+      "text": "<warm> {s10-b}El resultado útil no es una cifra grande. Es una afirmación concreta que otra persona puede comprobar. Si sabes dónde falla, dilo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-cierre",
+      "text": "<focused> Esa información ayuda a decidir cómo usarla y qué evidencia recoger después.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-cierre",
+      "text": "<calm> {s10-c}Ejecuta ahora el verificador sobre tu regla descargada y prepara su ficha de entrega. Incluye los casos que no cubre.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-06",
+      "scene": "s10-cierre",
+      "text": "<confident> En la lección de diseminación tienes el modelo. Tu trabajo termina cuando la siguiente persona puede evaluar la detección sin adivinar tus supuestos.",
+      "pauseAfterMs": 600
+    }
+  ]
+}

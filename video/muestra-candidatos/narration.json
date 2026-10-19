@@ -1,0 +1,392 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {title}Dos archivos se parecen. ¿Son de la misma familia? Vas a seguir una muestra hasta una conclusión que puedas defender, sin saltarte las dudas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<warm> {s01-b}Trabajas con fichas inventadas en un ejercicio de Meridian, una empresa aeroespacial. No vas a descargar ni ejecutar malware. La muestra inicial se llama A.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<focused> Lo que tenemos de ella son observaciones que pueden abrir otras búsquedas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<calm> {s01-c}Buscar a partir de una observación es pivotar. Pero lo que recuperas son candidatos. Después necesitas contrastarlos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-hook",
+      "text": "<confident> El recorrido no termina cuando el buscador devuelve una lista. Termina cuando puedes explicar qué relación sostienes, con qué confianza y qué falta por comprobar.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-caso",
+      "text": "<thoughtful> {s02-a}Puedes calcular una huella del contenido de un archivo. Se llama hash criptográfico y ayuda a reconocer los mismos bytes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-caso",
+      "text": "<engaging> Cambiar el contenido puede cambiar completamente esa huella. Otro hash no significa automáticamente otra familia.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-caso",
+      "text": "<firm> {s02-b}Algunos ejecutables toman funciones de otras bibliotecas. El imphash resume esas importaciones y ayuda a encontrar archivos que las comparten.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-caso",
+      "text": "<reassuring> No demuestra que se usara el mismo compilador. Programas no relacionados también pueden coincidir en ellas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-caso",
+      "text": "<curious> {s02-c}Otros métodos buscan parecidos en lugar de una huella exacta. Lo llamamos hashing difuso. Ssdeep es uno de esos métodos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-caso",
+      "text": "<warm> Prioriza semejanzas, sin asignar una probabilidad de parentesco. Una biblioteca común puede explicar parte del parecido. Necesitas contexto para concluir.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-caso",
+      "text": "<focused> {s03-a}No sabes quién lo escribió solo por esa ruta. Un PDB es un archivo de símbolos de depuración.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "Mismo PDB. Ya sabes quién lo escribió.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-caso",
+      "text": "<calm> Algunos binarios conservan una ruta que puede dar pistas sobre el proyecto. Esa ruta también puede copiarse o falsearse.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-caso",
+      "text": "<confident> {s03-b}Las cadenas distintivas y la configuración aportan otras pistas. Una estructura poco común puede ser más útil que una palabra genérica.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-caso",
+      "text": "<thoughtful> Aun así, considera código reutilizado y señuelos. Pregunta si el rasgo distingue de verdad las explicaciones que estás comparando.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-caso",
+      "text": "<engaging> {s03-c}Con las firmas de código ocurre algo parecido. Comprueba el certificado y la validez de la firma. El material puede ser robado o compartido entre productos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-caso",
+      "text": "<firm> Una firma no demuestra benignidad. Un mismo certificado tampoco demuestra por sí solo una familia, campaña o actor.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-caso",
+      "text": "<reassuring> {s04-a}El candidato C comparte imports y tiene una puntuación alta de similitud. La ficha explica que ambos rasgos vienen de una biblioteca común.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-caso",
+      "text": "<curious> ¿Confirmas la familia o buscas evidencia que distinga esa explicación de un parentesco real?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Confirmas C o buscas qué lo distingue?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-caso",
+      "text": "<warm> {s04-b}Buscas evidencia que las distinga. La cifra no dice que exista un noventa y cuatro por ciento de probabilidad de pertenecer a la familia.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-caso",
+      "text": "<focused> Y si dos señales salen del mismo componente, no tienes dos corroboraciones independientes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-caso",
+      "text": "<calm> {s04-c}C queda como una coincidencia débil. No lo incorporas al conjunto por ahora. Tampoco lo declaras benigno. Has aprendido algo más limitado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-caso",
+      "text": "<confident> Ese parecido concreto tiene una explicación alternativa que todavía no has descartado.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-caso",
+      "text": "<thoughtful> {s05-a}En VirusTotal puedes partir del hash de un informe existente. Eso es distinto de subir el archivo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-caso",
+      "text": "<engaging> Las búsquedas avanzadas permiten usar imports, contenido o metadatos como claves. Aquí ves consultas ilustrativas. Los valores son inventados y no las ejecutamos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-caso",
+      "text": "<firm> {s05-b}Cada consulta debe responder una pregunta. Buscar una cadena concreta puede recuperar candidatos que la contienen.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-caso",
+      "text": "<reassuring> Buscar metadatos puede encontrar una ruta de depuración, pero también otros campos. Abre el resultado y comprueba qué coincidió antes de sacar conclusiones.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-caso",
+      "text": "<curious> {s05-c}El acceso a contenido, relaciones y búsquedas depende del producto, los permisos y los datos disponibles.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-caso",
+      "text": "<warm> Si no tienes esas funciones, usa las fichas del ejercicio o informes públicos con procedencia.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-caso",
+      "text": "<focused> No necesitas pagar para practicar el razonamiento ni subir datos sensibles para completar la lección.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-caso",
+      "text": "<calm> {s06-a}Las relaciones también tienen significado. Una dirección escrita dentro de un archivo no prueba que se contactara.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-caso",
+      "text": "<confident> Un contacto observado no demuestra que ese servidor lo controle el atacante. Puede ser un servicio compartido o una comprobación legítima.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-caso",
+      "text": "<thoughtful> {s06-b}D comparte una dirección de alojamiento con A durante un intervalo amplio. El servidor tiene varios clientes. Esa coincidencia no basta para unirlos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-caso",
+      "text": "<engaging> Antes revisas cuándo resolvió cada dominio, qué servicio era y qué evidencia vincula realmente las actividades.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-caso",
+      "text": "<firm> {s06-c}Distingue también los certificados del servidor de los certificados de firma de código. Vinculan objetos diferentes. Mantén la dirección y la fuente de cada relación.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-caso",
+      "text": "<reassuring> Si dibujas todas las líneas iguales, el grafo parece más concluyente de lo que es.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-caso",
+      "text": "<curious> {s07-a}Encajar en el dibujo no basta. B comparte una cadena distintiva y la estructura de configuración. Además presenta una secuencia de carga y un comportamiento concordantes.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "Si encaja en tu grafo, mételo ya en la campaña.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-caso",
+      "text": "<warm> Dos informes de origen distinto aportan observaciones que puedes contrastar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-caso",
+      "text": "<focused> {s07-b}B sostiene mejor la hipótesis de código relacionado. Aun así, revisa si las fuentes son independientes y si un componente reutilizado explicaría las coincidencias.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-caso",
+      "text": "<calm> Puedes mantenerlo como relacionado probable con confianza moderada, dentro de ese alcance.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-caso",
+      "text": "<confident> {s07-c}No has demostrado que pertenezca a la misma campaña ni que lo use el mismo operador. Código, actividad y autoría son niveles diferentes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-caso",
+      "text": "<thoughtful> Tu conclusión debe nombrar el nivel que la evidencia permite, en lugar de subir todos los escalones de una vez.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-caso",
+      "text": "<engaging> {s08-a}Para E, alguien menciona la misma ruta de depuración, pero no aporta bytes ni procedencia del dato. No tienes acceso a un informe que permita contrastarlo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-caso",
+      "text": "<firm> ¿Escribes que no tiene relaciones o que el dato no está disponible?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Sin relaciones o dato no disponible?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-caso",
+      "text": "<reassuring> {s08-b}Que no está disponible. Eso describe tu limitación de colección. No demuestra ausencia de relaciones, benignidad ni pertenencia al conjunto.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-caso",
+      "text": "<curious> Conservas E como una pista pendiente, con confianza baja, y pides la evidencia que falta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-caso",
+      "text": "<warm> {s08-c}Una búsqueda sin resultados merece el mismo cuidado. Puede depender de la cobertura, los filtros o la falta de datos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-caso",
+      "text": "<focused> No rellenes un hueco inventando un resultado. Registrar una limitación también es avanzar, porque deja claro qué necesitas para decidir.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-caso",
+      "text": "<calm> {s09-a}Deja una bitácora que otra analista pueda seguir. Qué consultaste, con qué filtros y cuándo. Qué fecha corresponde a la observación.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-caso",
+      "text": "<confident> Qué evidencia conservaste y cuál es su origen. Incluye las búsquedas fallidas y las funciones que no estaban disponibles.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-caso",
+      "text": "<thoughtful> {s09-b}La conclusión del caso mantiene B como relacionado probable por código. C y D no se incorporan con la evidencia actual. E sigue pendiente.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-caso",
+      "text": "<engaging> Esa decisión no mezcla un candidato débil con uno descartado para siempre.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-caso",
+      "text": "<firm> {s09-c}Escribe también qué cambiaría tu juicio. Validar más variantes, contrastar configuración o conseguir una observación independiente. La confianza no es una decoración del informe.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-caso",
+      "text": "<reassuring> Resume cuánto sostienen los datos y qué tan abiertas siguen las alternativas.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-cierre",
+      "text": "<curious> {s10-a}Tres reglas. El hash exacto identifica bytes y los pivotes generan candidatos. Las coincidencias necesitan contexto e independencia.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-cierre",
+      "text": "<warm> Y tu conclusión debe conservar las dudas que los datos todavía no resuelven.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-cierre",
+      "text": "<focused> {s10-b}No has perdido rigor por decir que algo falta. Lo pierdes si conviertes una puntuación, una ruta o una dirección compartida en una familia confirmada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-cierre",
+      "text": "<calm> El objetivo no es llenar el grafo. Es sostener una relación que resista las alternativas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-cierre",
+      "text": "<confident> {s10-c}Abre ahora el caso de candidatos de la lección de malware como colección. Decide qué harías con cada ficha y escribe el motivo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-06",
+      "scene": "s10-cierre",
+      "text": "<thoughtful> Si tu conclusión llega hasta un actor, revisa qué evidencia te permitió llegar tan lejos. Una línea en el grafo no lo decide por ti.",
+      "pauseAfterMs": 600
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 /// <reference types="vite/client" />
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import YaraPractice from './YaraPractice';
 import type { Block, CheckQ, VideoFileBlock, YouTubeVideoBlock } from '../lib/types';
 import { isYouTubeBlock, youtubeEmbedUrl, youtubeWatchUrl } from '../lib/youtube';
 import { md } from '../lib/md';
@@ -234,14 +236,14 @@ function CheckBlock({
   const submit = () => {
     if (chosen === null || submitted) return;
     setSubmitted(true);
-    if (chosen === q.answer && rewardEnabled) awardCheckpoint();
-    onAnswered();
+    if (chosen === q.answer && rewardEnabled && !q.optional) awardCheckpoint();
+    if (!q.optional) onAnswered();
   };
 
   return (
     <div className="my-5 rounded-xl border border-cyan-500/30 bg-ink-900 p-4">
       <div className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-400">
-        ⚡ Checkpoint
+        {q.optional ? 'Práctica complementaria · opcional' : '⚡ Checkpoint'}
       </div>
       <p className="mb-3 font-medium text-slate-100">{q.q}</p>
       <div className="flex flex-col gap-2">
@@ -327,6 +329,25 @@ export default function BlockRenderer({
     <div ref={rootRef} className="space-y-1">
       {blocks.map((b, i) => {
         switch (b.t) {
+          case 'yara-practice':
+            return <YaraPractice key={i} />;
+          case 'links':
+            return (
+              <nav key={i} aria-label={b.title} className="my-5 rounded-xl border border-ink-700 p-4">
+                <h3 className="mb-2 font-semibold text-slate-100">{b.title}</h3>
+                <ul className="space-y-2 text-sm">
+                  {b.items.map((item) => (
+                    <li key={item.href}>
+                      {item.href.startsWith('/') ? (
+                        <Link className="text-cyan-300 underline" to={item.href}>{item.label}</Link>
+                      ) : (
+                        <a className="text-cyan-300 underline" href={item.href} target="_blank" rel="noreferrer">{item.label}</a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            );
           case 'p':
             return (
               <p key={i} className="my-4 leading-relaxed text-slate-300">

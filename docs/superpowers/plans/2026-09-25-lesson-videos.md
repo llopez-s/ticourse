@@ -6580,3 +6580,14 @@ escenarios. Ninguna es una flashcard con opciones.
   contar lo hablado sobre `s − 8`: 70 · 70 · 76.
 - Título antes de los 12 s (s01). Cierre: una sola tarea y tres reglas.
 - Sin identificadores en la voz ni en pantalla: no hay ninguno.
+
+## Ampliaciones prácticas · AP01–AP07 (19-10-2026)
+
+Los [siete guiones de las ampliaciones prácticas](2026-10-19-videos-ampliaciones/README.md)
+cubren identidad y tokens, respuesta a infostealers, evaluación de feeds, pivotes,
+escritura YARA, validación y entrega, y métricas de infostealers. Conservan el
+patrón narrativo `principal-yt` con cinco capítulos, diez escenas, dos decisiones
+y dos mensajes interceptados. Sus cinco tarjetas por vídeo llevan rótulo de
+práctica complementaria y no emplean insignias de examen. AP es una numeración
+independiente de las reservas V29–V38. Las fichas, hojas de grabación y fuentes de
+producción están enlazadas en el índice de la tanda.

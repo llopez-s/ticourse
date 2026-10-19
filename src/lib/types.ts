@@ -63,6 +63,8 @@ export interface PlacementResult {
 }
 
 export interface CheckQ {
+  /** Professional practice: excluded from lesson completion and XP requirements. */
+  optional?: boolean;
   q: string;
   choices: string[];
   answer: number;
@@ -93,6 +95,8 @@ export interface YouTubeVideoBlock {
 }
 
 export type Block =
+  | { t: 'links'; title: string; items: { label: string; href: string }[] }
+  | { t: 'yara-practice' }
   | { t: 'p'; md: string }
   | { t: 'h'; text: string }
   | { t: 'list'; items: string[]; ordered?: boolean }

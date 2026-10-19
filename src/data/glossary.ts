@@ -47,9 +47,9 @@ export const GLOSSARY: GlossaryEntry[] = [
   { sectionId: 's3', term: 'Collection Management Framework (CMF)', def: 'Matriz fuentes ↔ datos ↔ requirements. Revela gaps (requirements sin fuente) y desperdicio (fuentes sin requirement).' },
   { sectionId: 's3', term: 'Collection gap', def: 'Requirement sin fuente capaz de responderlo: se cierra con nueva colección o se documenta como limitación.' },
   { sectionId: 's3', term: 'Static / dynamic analysis', def: 'Examinar sin ejecutar (strings, imports) vs. detonar y observar comportamiento (sandbox).' },
-  { sectionId: 's3', term: 'Imphash', def: 'Hash de la tabla de imports de un PE: agrupa binarios del mismo toolchain aunque cambie el hash del fichero.' },
-  { sectionId: 's3', term: 'Fuzzy hashing (ssdeep)', def: 'Hash de similitud: encuentra variantes recompiladas que los hashes criptográficos pierden.' },
-  { sectionId: 's3', term: 'PDB path', def: 'Ruta de símbolos de depuración que filtra el entorno de desarrollo del autor. Enlace fuerte entre muestras.' },
+  { sectionId: 's3', term: 'Imphash', def: 'Hash de imports normalizados de un PE. Genera candidatos con imports compartidos; no demuestra compilador, familia, campaña ni actor común.' },
+  { sectionId: 's3', term: 'Fuzzy hashing (ssdeep)', def: 'Similitud aproximada para priorizar candidatos. Una puntuación alta puede deberse a código compartido; no confirma variante ni parentesco.' },
+  { sectionId: 's3', term: 'PDB path', def: 'Ruta de símbolos de depuración: pista de entorno de compilación que puede copiarse o falsearse. Su valor depende de especificidad y corroboración.' },
   { sectionId: 's3', term: 'Passive DNS', def: 'Historial global de resoluciones dominio↔IP. Pivote básico de infraestructura.' },
   { sectionId: 's3', term: 'WHOIS (histórico)', def: 'Datos de registro de dominios. Con privacidad activa, pivota por histórico y patrones (registrar, NS, fechas, naming).' },
   { sectionId: 's3', term: 'Certificate Transparency', def: 'Logs públicos de cada certificado TLS emitido: descubre infraestructura nueva casi en tiempo real.' },
@@ -63,7 +63,7 @@ export const GLOSSARY: GlossaryEntry[] = [
   { sectionId: 's3', term: 'Indicator lifecycle', def: 'Creación → despliegue → envejecimiento → retirada. Sin retirada, las blocklists generan falsos positivos contra dueños actuales.' },
   { sectionId: 's3', term: 'STIX', def: 'Lenguaje estructurado de threat intel: objetos (indicator, malware, intrusion-set…) + relationships. El contexto viaja con el dato.' },
   { sectionId: 's3', term: 'TAXII', def: 'Protocolo de transporte para intercambiar contenido STIX (collections y channels). STIX describe, TAXII transporta.' },
-  { sectionId: 's3', term: 'YARA', def: 'Reglas de patrones para ficheros/memoria: meta + strings + condition. Robustez: combinaciones de strings raros ("2 of them").' },
+  { sectionId: 's3', term: 'YARA', def: 'Reglas de patrones para ficheros/memoria: meta + strings + condition. Justificar patrones y lógica con variantes, controles y alcance; ningún umbral garantiza robustez universal.' },
   { sectionId: 's3', term: 'Sigma', def: 'Formato genérico de reglas de detección sobre logs, convertible a cada SIEM.' },
 
   // ---- S4 ------------------------------------------------------------------

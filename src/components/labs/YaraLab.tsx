@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { YARA } from '../../data/labs';
 
 type Cond = 'any' | 'two' | 'all';
@@ -36,10 +37,6 @@ export default function YaraLab({ onComplete }: { onComplete: () => void }) {
     return { sample, hits, match, ok };
   });
   const success = tested && valid && results.every((r) => r.ok);
-  const rareSelected = [...selected].filter(
-    (id) => YARA.strings.find((s) => s.id === id)?.rarity === 'rare',
-  ).length;
-  const robust = success && rareSelected >= 2 && cond === 'two';
 
   const test = () => {
     setTested(true);
@@ -56,6 +53,11 @@ export default function YaraLab({ onComplete }: { onComplete: () => void }) {
 
   return (
     <div>
+      <p className="mb-4 rounded-lg border border-amber-500/40 p-3 text-sm text-amber-200">
+        Simulación didáctica por etiquetas: no compila ni ejecuta YARA, no busca bytes
+        ni valida sintaxis. Los resultados solo representan este pequeño corpus ficticio.
+        {' '}<Link className="underline" to="/learn/s3m5">Abrir la práctica de escritura libre con motor real</Link>.
+      </p>
       <p className="mb-4 text-sm text-slate-300">
         Strings extraídos de <code className="font-mono text-cyan-300">VC_Loader_v1.dll</code>.
         Elige los strings y la condición de tu regla; luego pruébala contra el
@@ -138,7 +140,7 @@ ${[...selected].map((id) => `    $${id} = ${YARA.strings.find((s) => s.id === id
         disabled={selected.size === 0}
         className="rounded-lg bg-cyan-500 px-5 py-2 text-sm font-bold text-ink-950 hover:bg-cyan-400 disabled:cursor-not-allowed disabled:bg-ink-700 disabled:text-slate-500"
       >
-        ▶ Ejecutar contra el corpus
+        ▶ Evaluar simulación
       </button>
 
       {tested && (
@@ -177,14 +179,13 @@ ${[...selected].map((id) => `    $${id} = ${YARA.strings.find((s) => s.id === id
           {success && (
             <div className="animate-pop-in rounded-xl border border-emerald-500/50 bg-emerald-950/30 p-4">
               <div className="font-bold text-emerald-300">
-                📜 Regla operativa — lab completado
+                📜 Objetivo de la simulación cumplido
               </div>
               <p className="mt-1 text-xs leading-relaxed text-slate-300">
-                {robust
-                  ? '🏅 Y además robusta: combinación de strings raros con "2 of them" — cubre variantes sin falsos positivos. Así se escribe YARA de producción.'
-                  : selected.size === 1
-                    ? 'Funciona… pero con un solo string es frágil: si el actor lo renombra, pierdes la familia entera. En producción, cubre con combinaciones: "2 of" strings raros.'
-                    : 'Funciona. Para máxima robustez: solo strings raros e independientes, condición "2 of them".'}
+                Esta combinación satisface las etiquetas de este ejercicio. No demuestra
+                cobertura de una familia real ni validez de producción. Justifica qué
+                patrones necesitas, qué variaciones admites y qué errores aparecen en
+                otros corpus. «2 of them» es una opción, no una garantía de calidad.
               </p>
             </div>
           )}

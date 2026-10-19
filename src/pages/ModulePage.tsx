@@ -24,7 +24,7 @@ function LessonView({ mod }: { mod: Module }) {
   useSyncTrack(mod.sectionId);
 
   const totalChecks = useMemo(
-    () => mod.blocks.filter((b) => b.t === 'check').length,
+    () => mod.blocks.filter((b) => b.t === 'check' && !b.q.optional).length,
     [mod],
   );
 
@@ -47,7 +47,7 @@ function LessonView({ mod }: { mod: Module }) {
         </Link>
         <h1 className="mt-1 text-2xl font-bold text-slate-50">{mod.title}</h1>
         <div className="mt-1 text-xs text-slate-500">
-          ⏱ {mod.minutes} min de lectura
+          ⏱ {mod.minutes} min de lectura y práctica
           {completed && (
             <span className="ml-2 font-semibold text-emerald-400">
               ✓ completada
