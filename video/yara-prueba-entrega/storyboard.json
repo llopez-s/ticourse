@@ -1,0 +1,213 @@
+{
+  "title": "Tu YARA compila: ahora demuestra qué detecta",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "editorialScope": "complementary",
+  "notice": "Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC · Práctica complementaria",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "La prueba pendiente"
+    },
+    {
+      "n": 2,
+      "title": "Errores que importan"
+    },
+    {
+      "n": 3,
+      "title": "Cambiar el alcance"
+    },
+    {
+      "n": 4,
+      "title": "Preparar la entrega"
+    },
+    {
+      "n": 5,
+      "title": "Una conclusión reproducible"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "La sintaxis está bien",
+      "goal": "Meridian, práctica inerte ALRTDEMO. Terminal rotulada motor real solo cuando se capture una ejecución real. Estado de la regla: sintaxis aceptada, resultados pendientes. Título y promesa tempranos.",
+      "targetSec": 43,
+      "wordBudget": 117,
+      "requiredCues": [
+        "title",
+        "s01-b",
+        "s01-c"
+      ]
+    },
+    {
+      "id": "s02-caso",
+      "chapter": 1,
+      "title": "El motor y el archivo importan",
+      "goal": "Captura real del comando documentado para regla del alumno y para reference.yar. Registrar YARA4.5.4 si es el motor capturado, sin fijar esa versión para siempre. Error sintaxis exit2 / discrepancia exit1 / conformidad exit0. No simular terminal como ejecución real.",
+      "targetSec": 57,
+      "wordBudget": 154,
+      "requiredCues": [
+        "s02-a",
+        "s02-b",
+        "s02-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Compilar valida sintaxis; ejecutar contrasta coincidencias",
+        "afterSegment": "s02-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-caso",
+      "chapter": 2,
+      "title": "Acertar algo y detectar de más",
+      "goal": "Matriz por archivo A/B/C/control ruta/control hex/manual. Etiquetas objetivo y match separadas. Regla ingenua amplia detecta controles. Mantener términos TP/FP/FN/TN en pantalla definidos, sin recitar lista de cuatro.",
+      "targetSec": 56,
+      "wordBudget": 152,
+      "requiredCues": [
+        "s03-a",
+        "s03-b",
+        "s03-c"
+      ]
+    },
+    {
+      "id": "s04-caso",
+      "chapter": 2,
+      "title": "Volver al ejemplo conocido",
+      "goal": "C ya se usó al diseñar en AP05: cambia ruta, conserva marcador y hex. Exigir todo falla C; la referencia alternativa lo cubre. Tras la pausa, distinguir regresión de caso conocido y evaluación con casos nuevos. El paquete agrupa training6 / held-out5 / challenge1, pero todos son públicos y sus nombres no garantizan independencia del diseño.",
+      "targetSec": 56,
+      "wordBudget": 152,
+      "requiredCues": [
+        "s04-a",
+        "s04-b",
+        "s04-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Una regla más restrictiva puede perder variantes",
+        "afterSegment": "s04-06",
+        "holdSec": 5
+      },
+      "decision": {
+        "q": "¿Exigir todo mejora siempre la cobertura?",
+        "choices": [
+          "Sí, más condiciones siempre ayuda",
+          "No, puede perder una variante"
+        ],
+        "answer": 1,
+        "revealAt": "s04-b",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s05-caso",
+      "chapter": 3,
+      "title": "Tres reglas, tres trabajos",
+      "goal": "Referencia Sample→A; Family→A/B/C; Hunt→A/B/C+benign-route/marker/hex. Casos y hash de corpus al pie. No describir Hunt con0FP. Diferenciar objetivos de sus etiquetas de evaluación.",
+      "targetSec": 53,
+      "wordBudget": 144,
+      "requiredCues": [
+        "s05-a",
+        "s05-b",
+        "s05-c"
+      ]
+    },
+    {
+      "id": "s06-caso",
+      "chapter": 3,
+      "title": "Doce de doce, con denominador",
+      "goal": "Salida real12/12 conforme al alcance; mostrar que incluye no-matches. future-uncovered v2 queda sin match; límite4096bytes. Contrato v1 separado de objetivo ampliado v2. No usar100% malware real.",
+      "targetSec": 57,
+      "wordBudget": 154,
+      "requiredCues": [
+        "s06-a",
+        "s06-b",
+        "s06-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Doce resultados esperados no son cobertura universal",
+        "afterSegment": "s06-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-caso",
+      "chapter": 4,
+      "title": "Mandar la regla no basta",
+      "goal": "Paquete de entrega: regla/version/hash, motor, corpus/hash, matriz, alcance/FP-FN, acción, responsable/revisión/derechos. Mensaje como atajo de método firmadoVELVET CICADA; no confesión ni adelanto de dossier.",
+      "targetSec": 55,
+      "wordBudget": 149,
+      "requiredCues": [
+        "s07-a",
+        "s07-b",
+        "s07-c"
+      ]
+    },
+    {
+      "id": "s08-caso",
+      "chapter": 4,
+      "title": "El receptor quiere bloquear",
+      "goal": "Propuesta ficticia del SOC: desplegar a toda la flota por12/12. Pregunta laboratorio/producción. Resolver con validación representativa y acción autorizada sin exigir implementación en esta tanda.",
+      "targetSec": 59,
+      "wordBudget": 160,
+      "requiredCues": [
+        "s08-a",
+        "s08-b",
+        "s08-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "La validación tiene que corresponder al uso previsto",
+        "afterSegment": "s08-06",
+        "holdSec": 5
+      },
+      "decision": {
+        "q": "¿Estos resultados justifican bloquear la flota?",
+        "choices": [
+          "Sí, pasó todo el paquete",
+          "No, falta validar ese uso real"
+        ],
+        "answer": 1,
+        "revealAt": "s08-b",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s09-caso",
+      "chapter": 5,
+      "title": "Una entrega que puede mantenerse",
+      "goal": "Ficha de entrega con versión1.0, fecha editorial, alcanceALRTDEMOv1; dueño didáctico; revisión ante nuevos fixtures. No inventar fecha de despliegue. Mostrar reejecución tras cambio y revisión de errores.",
+      "targetSec": 55,
+      "wordBudget": 149,
+      "requiredCues": [
+        "s09-a",
+        "s09-b",
+        "s09-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Versión, resultados, acción y responsable viajan juntos",
+        "afterSegment": "s09-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-cierre",
+      "chapter": 5,
+      "title": "De la regla al producto",
+      "goal": "Tres reglas: compilar no es validar / medir positivos y negativos / entregar alcance y reproducción. Acción única: ejecutar verificador sobre MiRegla y completar una ficha de entrega. Aviso complementario y fuentes.",
+      "targetSec": 47,
+      "wordBudget": 127,
+      "requiredCues": [
+        "s10-a",
+        "s10-b",
+        "s10-c"
+      ]
+    }
+  ],
+  "targetTotalSec": 538
+}

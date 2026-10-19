@@ -1,0 +1,213 @@
+{
+  "title": "El infostealer número uno depende de qué estés contando",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "editorialScope": "complementary",
+  "notice": "Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC · Práctica complementaria",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "El titular"
+    },
+    {
+      "n": 2,
+      "title": "Qué cuenta cada columna"
+    },
+    {
+      "n": 3,
+      "title": "Qué puede observar la fuente"
+    },
+    {
+      "n": 4,
+      "title": "Qué importa a Meridian"
+    },
+    {
+      "n": 5,
+      "title": "La conclusión útil"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Tres ganadores en una tabla",
+      "goal": "Dataset ficticio septiembre2026 UTC; Demo-P, dos regiones, sin cobertura global. Tres columnas aparecen por turnos, cada una con ganador distinto. Nada indica ranking vigente del mundo. Título temprano.",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "requiredCues": [
+        "title",
+        "s01-b",
+        "s01-c"
+      ]
+    },
+    {
+      "id": "s02-caso",
+      "chapter": 1,
+      "title": "El programa y quien lo usa",
+      "goal": "Familia/código → varios operadores; operador → varias familias; distribuidor entrega; campaña agrupa actividad; broker vende acceso. Relaciones muchos-a-muchos. No atribuir a PAPERCRANE las familias ficticias por firmar mensajes.",
+      "targetSec": 58,
+      "wordBudget": 157,
+      "requiredCues": [
+        "s02-a",
+        "s02-b",
+        "s02-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Familia, operador y campaña no son equivalentes",
+        "afterSegment": "s02-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-caso",
+      "chapter": 2,
+      "title": "Miles de registros no son miles de equipos",
+      "goal": "Bruma1200muestras/130episodios/100dispositivos/8000registros/40organizaciones/4sector. Mostrar80registros por dispositivo como cociente del dataset, no todas las distribuciones individuales. Un equipo puede producir muchos registros.",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "s03-a",
+        "s03-b",
+        "s03-c"
+      ]
+    },
+    {
+      "id": "s04-caso",
+      "chapter": 2,
+      "title": "Ordenar otra columna",
+      "goal": "Tabla exacta curso: Bruma1200/130/100/8000/40/4; Cobalto300/540/450/3000/60/90; Duna80/260/220/12000/100/22. Primero solo hashes, luego dispositivos. Pregunta no revela respuesta en título.",
+      "targetSec": 57,
+      "wordBudget": 154,
+      "requiredCues": [
+        "s04-a",
+        "s04-b",
+        "s04-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Muestras, dispositivos y registros cambian la clasificación",
+        "afterSegment": "s04-06",
+        "holdSec": 5
+      },
+      "decision": {
+        "q": "Por dispositivos, ¿Bruma o Cobalto?",
+        "choices": [
+          "Bruma",
+          "Cobalto"
+        ],
+        "answer": 1,
+        "revealAt": "s04-b",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s05-caso",
+      "chapter": 3,
+      "title": "Una cifra necesita su método",
+      "goal": "Ventana1–30septiembre2026 UTC. Claves: muestrasSHA256; episodios dispositivo/día; dispositivosID estable; registros dispositivo/artefacto/fecha obtención; organizacionesID validada. Señalar sesgos de identificadores, reventas y definiciones. No presentar como estándar universal.",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "s05-a",
+        "s05-b",
+        "s05-c"
+      ]
+    },
+    {
+      "id": "s06-caso",
+      "chapter": 3,
+      "title": "Lo que ve el proveedor",
+      "goal": "Demo-P: población parcial, clientes sectoriales y anuncios. No global. Comparación entre meses tachada si cambian sensores/etiquetas. Actividad reciente: Bruma10/Cobalto180/Duna20 dispositivos última semana, sin sumarla a totalmensual por ser subconjunto.",
+      "targetSec": 55,
+      "wordBudget": 149,
+      "requiredCues": [
+        "s06-a",
+        "s06-b",
+        "s06-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "La prevalencia observada depende de cobertura y sesgo",
+        "afterSegment": "s06-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-caso",
+      "chapter": 4,
+      "title": "La pregunta de Meridian",
+      "goal": "Requisito: investigar exposición de sesión en su sector. Cobalto90dispositivossector/180últimasemana/capacidad de material sesión. Bruma4sector/10recientes; Duna22/20, archivosregistros. Capacidad no prueba materialrobado ni infección propia.",
+      "targetSec": 55,
+      "wordBudget": 149,
+      "requiredCues": [
+        "s07-a",
+        "s07-b",
+        "s07-c"
+      ]
+    },
+    {
+      "id": "s08-caso",
+      "chapter": 4,
+      "title": "Qué investigar primero",
+      "goal": "Pregunta con opciones «Bruma»/«Cobalto», sin color ni ranking de respuesta antes de la pausa. Mantener visibles las columnas sector, recencia y capacidad. Resolver prioridad Cobalto con confianza moderada y necesidad de corroboración. No pedir deshabilitar cuentas o bloquear por ranking.",
+      "targetSec": 58,
+      "wordBudget": 157,
+      "requiredCues": [
+        "s08-a",
+        "s08-b",
+        "s08-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "La relevancia combina capacidad, recencia y exposición",
+        "afterSegment": "s08-06",
+        "holdSec": 5
+      },
+      "decision": {
+        "q": "Para Meridian, ¿Bruma o Cobalto primero?",
+        "choices": [
+          "Bruma",
+          "Cobalto"
+        ],
+        "answer": 1,
+        "revealAt": "s08-b",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s09-caso",
+      "chapter": 5,
+      "title": "El equipo no vale más por recibir más muestras",
+      "goal": "Dos paneles separados: métricas de amenaza / valor CTI. A la izquierda dispositivos/episodios/registros; derecha requisito/producto/decisión/resultado. Más volumen no produce flecha causal automática a menos riesgo.",
+      "targetSec": 55,
+      "wordBudget": 149,
+      "requiredCues": [
+        "s09-a",
+        "s09-b",
+        "s09-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Actividad de amenazas no mide por sí sola el valor CTI",
+        "afterSegment": "s09-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-cierre",
+      "chapter": 5,
+      "title": "Un titular con sus bordes",
+      "goal": "Tres reglas: unidad y ventana / método y cobertura / requisito y límites. Conclusión modelo acotada a Demo-Psept2026, sin ranking actual. Acción única: ordenar dataset s4m4 en dos métricas y justificar prioridad.",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "s10-a",
+        "s10-b",
+        "s10-c"
+      ]
+    }
+  ],
+  "targetTotalSec": 536
+}

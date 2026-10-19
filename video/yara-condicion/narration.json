@@ -1,0 +1,398 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {title}Vas a escribir una regla YARA y explicar por qué exige esas coincidencias. Empezamos con archivos inertes, sin malware ni cuentas reales.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<warm> {s01-b}El ejercicio acompaña a Meridian, una empresa aeroespacial. Aquí una regla expresa una hipótesis sobre el contenido de un archivo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<focused> No decide por sí sola si algo es malicioso. Detecta los patrones y condiciones que tú hayas definido.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<calm> {s01-c}Trabajamos con un conjunto de archivos de prueba. Lo llamamos corpus. Queremos reconocer tres variantes de un formato de demostración y rechazar controles parecidos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-hook",
+      "text": "<confident> Los archivos se llaman A, B y C en la explicación. Sus nombres no forman parte de la condición.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-caso",
+      "text": "<thoughtful> {s02-a}La regla tiene tres partes habituales. El contexto se escribe en meta. Documenta autoría, versión y alcance. No hace que el archivo coincida.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-caso",
+      "text": "<engaging> Poner el nombre de una familia ahí no demuestra que la detectes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-caso",
+      "text": "<firm> {s02-b}Los patrones se declaran en strings. Cada uno recibe un identificador para poder usarlo después. Pueden ser cadenas textuales o secuencias de bytes, entre otras formas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-caso",
+      "text": "<reassuring> Elegirlos necesita evidencia sobre lo que quieres reconocer.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-caso",
+      "text": "<curious> {s02-c}La decisión se expresa en condition. Ahí combinas los patrones y los límites que correspondan. Esa combinación es la promesa de la regla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-caso",
+      "text": "<warm> Si dices que cubre variantes, deberás comprobar variantes. Que el texto parezca razonable todavía no lo demuestra.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-caso",
+      "text": "<focused> {s03-a}Dos cadenas corrientes pueden aparecer juntas en mucho software legítimo. La cantidad no sustituye la elección.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "Pon dos cadenas. Dos siempre es mejor que una.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-caso",
+      "text": "<calm> Primero necesitas explicar qué aporta cada patrón y qué controles podrían contenerlo sin pertenecer a tu objetivo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-caso",
+      "text": "<confident> {s03-b}En nuestro corpus hay un archivo con dos nombres comunes. No queremos que coincida. Si solo cuentas cuántas cadenas aparecen, puedes detectar ese control.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-caso",
+      "text": "<thoughtful> El problema no se arregla eligiendo un número por costumbre.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-caso",
+      "text": "<engaging> {s03-c}Una regla estrecha para una muestra puede usar un rasgo muy específico. Una que busca variantes necesita justificar qué se conserva y qué puede cambiar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-caso",
+      "text": "<firm> El objetivo y la evidencia mandan. Ningún umbral convierte por sí solo cadenas débiles en una identificación fiable.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-caso",
+      "text": "<reassuring> {s04-a}A conserva el marcador en texto sencillo. B lo lleva en mayúsculas y con bytes nulos intercalados. Sigue dentro del objetivo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-caso",
+      "text": "<curious> ¿Lo dejarías fuera o necesitas expresar esa variación en el patrón?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿B queda fuera o debes cubrir otra forma?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-caso",
+      "text": "<warm> {s04-b}Necesitas contemplarla. Una cadena textual busca sus bytes y distingue mayúsculas por defecto. El modificador ascii busca la representación sencilla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-caso",
+      "text": "<focused> Wide busca los caracteres con un byte nulo intercalado. Usar ambos contempla las dos formas de este ejemplo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-caso",
+      "text": "<calm> {s04-c}Nocase permite ignorar las diferencias de mayúsculas y minúsculas del patrón. Aquí ayuda con B. Pero cada ampliación puede incluir más coincidencias.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-caso",
+      "text": "<confident> Y wide no interpreta todo Unicode. Estás cubriendo una representación concreta, no cualquier manera posible de escribir el texto.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-caso",
+      "text": "<thoughtful> {s05-a}Ahora compara la secuencia de bytes de A y C. Hay una posición que cambia.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-caso",
+      "text": "<engaging> Una cadena hexadecimal permite describir bytes concretos y dejar una variación donde la evidencia la justifica. Fíjate en la posición que cambia en pantalla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-caso",
+      "text": "<firm> {s05-b}En el patrón de pantalla, el comodín de dos interrogaciones acepta cualquier valor para ese byte. El resto permanece fijo. También existen comodines para medio byte.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-caso",
+      "text": "<reassuring> Pero poner más comodines no es mejorar automáticamente la regla. Es permitir más contenido.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-caso",
+      "text": "<curious> {s05-c}En este ejercicio sabemos por qué dejamos variar esa posición. Con datos reales necesitarías una razón equivalente.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-caso",
+      "text": "<warm> Si el patrón queda demasiado amplio, controles ajenos pueden compartirlo. La condición tendrá que combinarlo con otras evidencias del objetivo.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-caso",
+      "text": "<focused> {s06-a}Las tres variantes conservan el marcador. Dos tienen la misma ruta de demostración.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-caso",
+      "text": "<calm> C cambia esa ruta, pero conserva la secuencia de bytes con la variación que acabas de contemplar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-caso",
+      "text": "<confident> Eso sugiere una condición con una parte necesaria y dos alternativas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-caso",
+      "text": "<thoughtful> {s06-b}Exiges el marcador y, además, la ruta o el patrón de bytes. Los paréntesis agrupan las alternativas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-caso",
+      "text": "<engaging> Si los colocas de otra manera, podrías permitir que los bytes solos bastaran. Y tenemos un control que contiene solo esos bytes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-caso",
+      "text": "<firm> {s06-c}Esta es la hipótesis, dicha antes del código. Un marcador junto a una evidencia alternativa. No todas las cadenas a la vez, porque perderías C.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-07",
+      "scene": "s06-caso",
+      "text": "<reassuring> Tampoco cualquiera de ellas, porque aceptarías controles. La combinación se justifica por el objetivo y los ejemplos.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-caso",
+      "text": "<curious> {s07-a}El manual del ejercicio copia todas las cadenas y sigue fuera del objetivo. Necesitamos mirar también dónde están y qué estamos describiendo.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "Si contiene todas tus cadenas, ya está demostrado.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-caso",
+      "text": "<warm> En este formato inventado, la cabecera debe estar al principio. En el manual no lo está.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-caso",
+      "text": "<focused> {s07-b}Añadimos ese requisito y un tamaño menor de cuatro kilobytes, porque forman parte del contrato del ejercicio. Ninguno demuestra malicia. Solo acotan el contenido que buscamos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-caso",
+      "text": "<calm> Una restricción útil para este objetivo puede excluir algo relevante para otro.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-caso",
+      "text": "<confident> {s07-c}Esto no es una validación de ejecutables reales. La cabecera es inventada y los datos son inertes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-caso",
+      "text": "<thoughtful> Si el objetivo fueran ejecutables, justificarías una comprobación del formato. Ver solo las letras iniciales de un supuesto ejecutable no basta para validar toda su estructura.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-caso",
+      "text": "<engaging> {s08-a}La condición pide un tamaño menor de cuatro kilobytes. El siguiente archivo mide exactamente cuatro mil noventa y seis bytes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-caso",
+      "text": "<firm> ¿Cumple ese límite estricto o queda fuera? La palabra menor también forma parte de la regla.",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Qué pasa con cuatro mil noventa y seis bytes?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-caso",
+      "text": "<reassuring> {s08-b}Queda fuera. En este corpus es lo esperado por el alcance declarado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-caso",
+      "text": "<curious> Pero si mañana te piden cubrir variantes más grandes, habrás encontrado una limitación que puede producir falsos negativos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-caso",
+      "text": "<warm> No puedes mantener la misma promesa sin volver a comprobarla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-caso",
+      "text": "<focused> {s08-c}Lo mismo ocurre si cambia el marcador. La regla no adivina que una versión nueva conserva la intención del programa. Solo evalúa las condiciones escritas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-07",
+      "scene": "s08-caso",
+      "text": "<calm> Necesitas revisar evidencia, objetivo y pruebas antes de ampliar lo que afirmas que detecta.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-caso",
+      "text": "<confident> {s09-a}Ahora puedes escribir la regla en el editor de la lección. El navegador permite preparar y descargar texto. No lo compila ni lo ejecuta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-caso",
+      "text": "<thoughtful> YARA Forge es otra actividad. Simula resultados mediante etiquetas preparadas para su pequeño ejercicio.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-caso",
+      "text": "<engaging> {s09-b}Para comprobar sintaxis y coincidencias necesitas un motor real. El paquete de la práctica incluye datos inertes, instrucciones y un verificador.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-caso",
+      "text": "<firm> Compilar comprueba la sintaxis para ese motor. Ejecutar aplica la regla a los archivos. Son comprobaciones distintas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-caso",
+      "text": "<reassuring> {s09-c}Aunque compile, todavía puede fallar en lo que quieres detectar. Puede coincidir con controles o perder variantes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-caso",
+      "text": "<curious> La validación exige resultados por archivo y una explicación de esos errores. Es lo que haremos al contrastar la regla completa.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-cierre",
+      "text": "<warm> {s10-a}Tres reglas antes de escribir. Define qué entra en el objetivo. Justifica los patrones y su combinación.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-cierre",
+      "text": "<focused> Y trata cada restricción como una decisión de cobertura que tendrás que comprobar. No como una garantía automática de calidad.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-cierre",
+      "text": "<calm> {s10-b}En este caso, la condición exige un marcador y una evidencia alternativa, dentro de un formato y un tamaño pactados.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-cierre",
+      "text": "<confident> Eso explica por qué algunas cadenas son necesarias y otras pueden variar. La explicación tiene que sobrevivir a la lectura del código.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-cierre",
+      "text": "<thoughtful> {s10-c}Abre ahora el editor de la lección y escribe tu versión antes de desplegar la solución. Descárgala para conservarla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-06",
+      "scene": "s10-cierre",
+      "text": "<engaging> Si no puedes explicar por qué un control debería quedar fuera, vuelve al objetivo. La condición debe expresar una razón, no una cifra elegida por costumbre.",
+      "pauseAfterMs": 600
+    }
+  ]
+}

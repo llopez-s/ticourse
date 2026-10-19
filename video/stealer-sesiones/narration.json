@@ -1,0 +1,386 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {title}La contraseña ya está cambiada. ¿Puedes cerrar el incidente? Vas a comprobar qué falta cuando un programa roba información de un equipo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<warm> {s01-b}Estás en un ejercicio de respuesta de Halden, una autoridad portuaria. La alerta describe un infostealer. Es malware orientado a robar información del dispositivo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<focused> No todos estos programas buscan lo mismo, y sus capacidades cambian entre versiones.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<calm> {s01-c}La ficha describe el equipo de Ana, datos de su navegador y su cuenta de correo. Todavía no sabemos qué salió ni si alguien lo utilizó.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-hook",
+      "text": "<confident> Necesitas separar esas preguntas para decidir cómo contener el riesgo.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-caso",
+      "text": "<thoughtful> {s02-a}Una ficha técnica dice que la familia puede robar contraseñas. Eso describe capacidad. Una evidencia del incidente puede mostrar que ciertos datos salieron del equipo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-caso",
+      "text": "<engaging> Eso describe exposición. Un registro del servicio puede mostrar un acceso posterior. Eso permite investigar uso.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-caso",
+      "text": "<firm> {s02-b}La primera afirmación no demuestra automáticamente las otras dos. Una detección en el equipo no identifica por sí sola todos los datos robados.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-caso",
+      "text": "<reassuring> Y un listado que alguien vende tampoco acredita un acceso reciente a tu organización.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-caso",
+      "text": "<curious> {s02-c}Necesitas fechas y procedencia. Un dato antiguo puede revenderse, duplicarse o estar mal atribuido. Mantén lo desconocido como desconocido. Eso no impide responder con prudencia.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-caso",
+      "text": "<warm> Impide presentar una sospecha como si ya fuera una secuencia demostrada.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-caso",
+      "text": "<focused> {s03-a}No has comprobado que todo esté cerrado. Una contraseña puede servir para iniciar una autenticación nueva. Una cookie de sesión puede mantener un acceso web existente.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "Con cambiar la contraseña ya has cerrado todo.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-caso",
+      "text": "<calm> Un token de acceso permite operaciones sobre un recurso concreto mientras sea aceptado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-caso",
+      "text": "<confident> {s03-b}Un token de renovación cumple otro trabajo. Se presenta al servidor de autorización para solicitar nuevos tokens bajo las condiciones aplicables.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-caso",
+      "text": "<thoughtful> Si solo sabes que había credenciales, aún no sabes cuál de estas situaciones estás conteniendo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-caso",
+      "text": "<engaging> {s03-c}Por eso cambiar la contraseña puede ser necesario y seguir siendo insuficiente. Tampoco debes afirmar que todas las credenciales funcionan. Identifica el artefacto y su emisor.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-caso",
+      "text": "<firm> Después comprueba vigencia, permisos y controles, sin probar una credencial expuesta contra el servicio.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-caso",
+      "text": "<reassuring> {s04-a}El programa puede seguir activo. Tienes que cambiar secretos expuestos. ¿Lo harías desde el mismo equipo afectado, o prepararías un entorno confiable mientras contienes el dispositivo?",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-caso",
+      "text": "<curious> Piensa también en lo que podría volver a observar el programa.",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Cambias secretos desde el equipo afectado?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-caso",
+      "text": "<warm> {s04-b}Usas un entorno confiable y coordinas la contención del equipo. Si sigue comprometido, podría capturar los secretos nuevos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-caso",
+      "text": "<focused> El procedimiento autorizado debe preservar las evidencias que hagan falta y limitar la capacidad de seguir causando daño.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-caso",
+      "text": "<calm> {s04-c}No confundas aislar el dispositivo con contener todas las identidades. Una sesión ya expuesta puede existir fuera de ese equipo. La respuesta tiene dos frentes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-caso",
+      "text": "<confident> El dispositivo y las cuentas, aplicaciones y recursos que pudieron quedar afectados.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-caso",
+      "text": "<thoughtful> {s05-a}Construye una línea temporal con lo que sí conoces. Cuándo se detectó el programa, qué periodo pudo estar activo y qué ocurrió después.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-caso",
+      "text": "<engaging> Diferencia la hora de observación de la hora en que recibiste una alerta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-caso",
+      "text": "<firm> {s05-b}Revisa qué cuentas y aplicaciones estuvieron expuestas. Busca actividad de identidad y del recurso. En el correo pueden importar los accesos y cambios relevantes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-caso",
+      "text": "<reassuring> En las aplicaciones, los permisos y consentimientos. Una dirección de red nueva, aislada, no basta para demostrar abuso.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-caso",
+      "text": "<curious> {s05-c}También registra lo que no puedes revisar. Tal vez los registros antiguos ya se hayan borrado al terminar su plazo de conservación.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-caso",
+      "text": "<warm> Ese hueco no demuestra que nada ocurriera. Afecta al alcance y a la confianza con que explicas el incidente. La investigación debe conservar ese límite.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-caso",
+      "text": "<focused> {s06-a}Ahora eliges acciones según el escenario. Los secretos expuestos se cambian desde un entorno confiable. Las sesiones se invalidan donde se gestionan.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-caso",
+      "text": "<calm> Una concesión sospechosa se revisa y retira cuando corresponde. Cada acción necesita su responsable y su comprobación.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-caso",
+      "text": "<confident> {s06-b}Impedir una renovación no demuestra que todos los tokens de acceso emitidos antes hayan dejado de funcionar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-caso",
+      "text": "<thoughtful> Y cerrar una sesión del proveedor de identidad no acredita cerrar todas las sesiones propias de las aplicaciones. Hay que comprobar ambos niveles.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-caso",
+      "text": "<engaging> {s06-c}Si una aplicación accede sin un usuario presente, puede depender de permisos y credenciales propios. Cambiar la contraseña de una persona no los elimina.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-caso",
+      "text": "<firm> Vas cerrando las vías de acceso que indique la investigación y compruebas el efecto de cada medida.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-caso",
+      "text": "<reassuring> {s07-a}Pulsarlo no demuestra su resultado en todas partes. En Microsoft, revocar las sesiones de inicio invalida tokens de renovación y cookies gestionadas por ese servicio.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "Has pulsado revocar. Ya no necesitas mirar más.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-caso",
+      "text": "<curious> Puede haber un retraso. Las sesiones que una aplicación mantiene por su cuenta requieren atención específica.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-caso",
+      "text": "<warm> {s07-b}Algunos clientes y recursos compatibles pueden reaccionar a ciertos eventos antes de la caducidad ordinaria. Esa capacidad se llama evaluación continua del acceso.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-caso",
+      "text": "<focused> No significa que toda aplicación reaccione a cualquier evento ni que todo el acceso se corte al instante.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-caso",
+      "text": "<calm> {s07-c}También varían los efectos de cambiar una contraseña según el tipo de credencial y cómo se hizo el cambio.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-caso",
+      "text": "<confident> Por eso no sustituyas la verificación por una espera fija. Registra la acción y comprueba los efectos que deberían producirse en este escenario.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-caso",
+      "text": "<thoughtful> {s08-a}Tienes un correo que confirma el cambio de contraseña. También puedes revisar los controles aplicados, la actividad posterior y la recuperación del equipo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-caso",
+      "text": "<engaging> ¿Qué sostiene mejor una decisión de cierre? Elige la evidencia que responde al alcance investigado.",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Cambio confirmado o controles verificados?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-caso",
+      "text": "<firm> {s08-b}El conjunto de comprobaciones. El correo confirma una acción concreta. No acredita el cierre de todas las sesiones.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-caso",
+      "text": "<reassuring> Necesitas valorar si las medidas fueron eficaces, qué acceso pudo persistir y qué dudas siguen abiertas por falta de datos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-caso",
+      "text": "<curious> {s08-c}Eso no exige afirmar que sabes todo. Exige explicar qué verificaste y por qué puedes pasar a recuperación o cierre bajo el procedimiento del equipo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-caso",
+      "text": "<warm> La vigilancia posterior y los criterios de reapertura también forman parte de una respuesta defendible.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-caso",
+      "text": "<focused> {s09-a}En el ejercicio de Ana, el equipo queda contenido y el cambio se hace desde otro dispositivo confiable.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-caso",
+      "text": "<calm> Después se revisan las sesiones del servicio de identidad, los permisos de la aplicación y la actividad de acceso al correo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-caso",
+      "text": "<confident> {s09-b}La recuperación del equipo sigue el procedimiento autorizado. La revisión busca si las medidas funcionaron y si aparecen nuevas señales.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-caso",
+      "text": "<thoughtful> No se reutiliza ninguna credencial expuesta para intentar entrar. El ejercicio enseña a responder, no a comprobar accesos robados.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-caso",
+      "text": "<engaging> {s09-c}En el informe queda la diferencia entre lo confirmado, lo probable y lo que falta por observar. Así la siguiente persona entiende el alcance real.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-caso",
+      "text": "<firm> Una lista de acciones completadas ayuda, pero solo tiene sentido junto a sus efectos y sus límites.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-cierre",
+      "text": "<reassuring> {s10-a}Tres reglas para llevarte. La capacidad de robar no demuestra extracción ni uso. Aislar un equipo no cierra por sí solo todas las sesiones.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-cierre",
+      "text": "<curious> Y cambiar una contraseña no prueba la invalidación inmediata de toda credencial.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-cierre",
+      "text": "<warm> {s10-b}La respuesta une lo que le pasó al dispositivo con lo que pudieron hacer sus identidades y aplicaciones. Primero acotas el caso. Después eliges acciones adecuadas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-cierre",
+      "text": "<focused> Y antes de dar por logrado el corte, compruebas sus efectos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-cierre",
+      "text": "<calm> {s10-c}Ve ahora a la práctica complementaria de respuesta a incidentes. Decide qué evidencias necesitarías para cerrar el caso de Ana.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-06",
+      "scene": "s10-cierre",
+      "text": "<confident> Si tu respuesta solo dice contraseña cambiada, vuelve a mirar las sesiones y el equipo. Aún faltan preguntas.",
+      "pauseAfterMs": 600
+    }
+  ]
+}

@@ -31,6 +31,10 @@ const clean = (value: string) => value.replace(/[*`_]/g, '').replace(/\s+/g, ' '
 
 function blockText(block: Block): string {
   switch (block.t) {
+    case 'links':
+      return `${block.title} ${block.items.map((item) => item.label).join(' ')}`;
+    case 'yara-practice':
+      return 'Práctica complementaria de escritura libre YARA con corpus sintético e inerte';
     case 'p':
     case 'quote':
     case 'callout':

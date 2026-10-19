@@ -1,0 +1,213 @@
+{
+  "title": "Escribir YARA: qué debe coincidir y qué puede cambiar",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "editorialScope": "complementary",
+  "notice": "Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC · Práctica complementaria",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Antes del código"
+    },
+    {
+      "n": 2,
+      "title": "Patrones que se pueden justificar"
+    },
+    {
+      "n": 3,
+      "title": "Combinar las evidencias"
+    },
+    {
+      "n": 4,
+      "title": "Los bordes del objetivo"
+    },
+    {
+      "n": 5,
+      "title": "Escribir y comprobar"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una regla con una promesa concreta",
+      "goal": "Mesa de Meridian con editor YARA y corpus ALRTDEMO. Sello «Corpus sintético e inerte · no es malware». A/B/C como archivos de práctica, distintos de los candidatos de AP04. Título y promesa antes de 12 s.",
+      "targetSec": 45,
+      "wordBudget": 122,
+      "requiredCues": [
+        "title",
+        "s01-b",
+        "s01-c"
+      ]
+    },
+    {
+      "id": "s02-caso",
+      "chapter": 1,
+      "title": "Tres partes con trabajos distintos",
+      "goal": "Referencia real del laboratorio sin otras reglas todavía. Resaltar meta/strings/condition por turnos. No mostrar condiciones resueltas del lab guiado. Autoría, versión, fecha y alcance en meta, no como factores de match.",
+      "targetSec": 52,
+      "wordBudget": 141,
+      "requiredCues": [
+        "s02-a",
+        "s02-b",
+        "s02-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Meta documenta; strings define; condition decide",
+        "afterSegment": "s02-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-caso",
+      "chapter": 2,
+      "title": "Dos palabras corrientes no hacen una familia",
+      "goal": "Control benign-common con Mozilla/5.0 y kernel32.dll. Condición ingenua «2 of them» coincide con ambas cadenas comunes. No marcar corpus como malware real. Contrastar con patrón distintivo y estructura.",
+      "targetSec": 51,
+      "wordBudget": 138,
+      "requiredCues": [
+        "s03-a",
+        "s03-b",
+        "s03-c"
+      ]
+    },
+    {
+      "id": "s04-caso",
+      "chapter": 2,
+      "title": "El mismo texto, otros bytes",
+      "goal": "A texto de un byte; B cadena CICADA-DEMO-V1 en UTF-16LE con 00 intercalados y ruta wide. Mostrar ascii wide nocase en código. Dos opciones para la pausa. Tras resolver, advertir que wide no implementa Unicode general.",
+      "targetSec": 58,
+      "wordBudget": 157,
+      "requiredCues": [
+        "s04-a",
+        "s04-b",
+        "s04-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "ASCII, wide y nocase amplían formas concretas",
+        "afterSegment": "s04-06",
+        "holdSec": 5
+      },
+      "decision": {
+        "q": "¿B queda fuera o debes cubrir otra forma?",
+        "choices": [
+          "Ignorar su representación",
+          "Contemplar la variación prevista"
+        ],
+        "answer": 1,
+        "revealAt": "s04-b",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s05-caso",
+      "chapter": 3,
+      "title": "El byte que cambia",
+      "goal": "Comparar hex de A:41 4C 52 54 22 7F y C:41 4C 52 54 99 7F. Highlight solo el quinto byte. Patrón final41 4C 52 54 ?? 7F. Mostrar A? como nota de medio byte, sin ampliar a firmas reales.",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "s05-a",
+        "s05-b",
+        "s05-c"
+      ]
+    },
+    {
+      "id": "s06-caso",
+      "chapter": 3,
+      "title": "La ruta cambia, el marcador permanece",
+      "goal": "A/B marcador+ruta; C marcador+hex con ruta cambiada. Construir $family and ($route or $hex). Comparar brevemente ($family and $route) or $hex con control benign-hex. Identificadores y operadores se leen visualmente, sin narrar código carácter a carácter.",
+      "targetSec": 58,
+      "wordBudget": 157,
+      "requiredCues": [
+        "s06-a",
+        "s06-b",
+        "s06-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Exige el marcador y una alternativa justificada",
+        "afterSegment": "s06-07",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-caso",
+      "chapter": 4,
+      "title": "El manual que copia los patrones",
+      "goal": "benign-manual contiene todos los patrones pero ALRTDEMO no está en offset0. Cabecera inventada al inicio + filesize<4KB. Aviso no es PE, no ejecutable; MZ por sí solo no valida PE. Módulo pe.is_pe queda como nota visual con fuente.",
+      "targetSec": 55,
+      "wordBudget": 149,
+      "requiredCues": [
+        "s07-a",
+        "s07-b",
+        "s07-c"
+      ]
+    },
+    {
+      "id": "s08-caso",
+      "chapter": 4,
+      "title": "Lo que dejas fuera también es una decisión",
+      "goal": "Archivo de4096bytes y archivo mayor fuera de filesize<4KB. Pregunta dos opciones. Después diferenciar límite declarado de FN si objetivo ampliado. No ocultar future-uncovered v2.",
+      "targetSec": 59,
+      "wordBudget": 160,
+      "requiredCues": [
+        "s08-a",
+        "s08-b",
+        "s08-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Un límite también puede excluir variantes deseadas",
+        "afterSegment": "s08-07",
+        "holdSec": 5
+      },
+      "decision": {
+        "q": "¿Qué pasa con cuatro mil noventa y seis bytes?",
+        "choices": [
+          "Cumple el límite estricto",
+          "Queda fuera del límite"
+        ],
+        "answer": 1,
+        "revealAt": "s08-b",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s09-caso",
+      "chapter": 5,
+      "title": "Escribir no es ejecutar",
+      "goal": "Editor del curso con aviso no compila/ejecuta. ZIP inerte y regla descargada. Tres etapas escribir / compilar / ejecutar, con la última futura y no falsos resultados terminales. Forge rotulado simulación por etiquetas.",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "s09-a",
+        "s09-b",
+        "s09-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Escribir, compilar y ejecutar son comprobaciones distintas",
+        "afterSegment": "s09-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-cierre",
+      "chapter": 5,
+      "title": "Tu hipótesis, escrita",
+      "goal": "Tres reglas: alcance antes del código / combinar con razones / medir límites. Acción única: escribir MiRegla sin copiar todavía la solución. No incluir resultado de ejecución nuevo; aviso de complementario y no afiliación.",
+      "targetSec": 53,
+      "wordBudget": 144,
+      "requiredCues": [
+        "s10-a",
+        "s10-b",
+        "s10-c"
+      ]
+    }
+  ],
+  "targetTotalSec": 535
+}

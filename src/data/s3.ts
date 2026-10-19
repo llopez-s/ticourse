@@ -47,7 +47,7 @@ export const S3_MODULES: Module[] = [
         t: 'callout',
         kind: 'exam',
         title: 'Nota de examen',
-        md: 'CMF = mapear fuentes ↔ datos ↔ requirements. Evalúa fuentes por **cobertura, puntualidad, precisión y completitud** — no por volumen ni precio.',
+        md: 'CMF = mapear fuentes ↔ datos ↔ requirements. Evalúa fuentes por **cobertura, puntualidad, precisión y completitud** — no solo por volumen ni precio.',
       },
       { t: 'h', text: 'Un CMF sobre la mesa' },
       {
@@ -77,7 +77,7 @@ PIR-3 (proveedores)  | -- SIN FUENTE --     |    --      |    --     |  --      
       },
       {
         t: 'p',
-        md: 'Dos hallazgos clásicos, uno en cada extremo. El **GAP** (PIR-3): ninguna fuente ve la seguridad de tus proveedores. No se cierra comprando más IOCs — se cierra **instrumentando** la fuente adecuada (un programa de third-party monitoring, telemetría compartida por contrato con proveedores clave, o un ISAC de la cadena de suministro) o, si no es viable, **documentando la limitación** en cada informe que toque proveedores. El **WASTE** (Feed comercial X): entra un volumen enorme de IOCs genéricos que no responde a ningún PIR. Es candidato a cancelación — libera presupuesto para cerrar el gap. Y observa el patrón general: lo interno (EDR, proxy, sandbox) alimenta el PIR más accionable; lo externo da anticipación. Evalúa cada fuente por **cobertura, puntualidad, precisión y completitud** — nunca por volumen ni precio.',
+        md: 'Dos hallazgos clásicos, uno en cada extremo. El **GAP** (PIR-3): ninguna fuente ve la seguridad de tus proveedores. No se cierra comprando más IOCs — se cierra **instrumentando** la fuente adecuada (un programa de third-party monitoring, telemetría compartida por contrato con proveedores clave, o un ISAC de la cadena de suministro) o, si no es viable, **documentando la limitación** en cada informe que toque proveedores. El **WASTE** (Feed comercial X): entra un volumen enorme de IOCs genéricos que no responde a ningún PIR. Es candidato a cancelación — libera presupuesto para cerrar el gap. Y observa el patrón general: lo interno (EDR, proxy, sandbox) alimenta el PIR más accionable; lo externo da anticipación. Evalúa cada fuente por **cobertura, puntualidad, precisión y completitud** — no solo por volumen ni precio.',
       },
       {
         t: 'check',
@@ -250,12 +250,12 @@ PIR-3 (proveedores)  | -- SIN FUENTE --     |    --      |    --     |  --      
         choices: [
           'Coverage of the requirement',
           'Timeliness and accuracy',
-          'Indicators delivered per day and subscription price',
+          'Only indicators per day and subscription price, ignoring requirements and analyst effort',
           'Completeness of the data it provides',
         ],
         answer: 2,
         explain:
-          'Volume-per-day and price are vanity/cost metrics, not value. Sources are judged by coverage, timeliness, accuracy and completeness against the requirements they serve.',
+          'Volume and license price alone cannot establish value. Evaluate requirement coverage, quality, incremental contribution and total cost, including integration and analyst effort.',
       },
       {
         id: 's3m1q10',
@@ -295,10 +295,10 @@ PIR-3 (proveedores)  | -- SIN FUENTE --     |    --      |    --     |  --      
         t: 'list',
         items: [
           '**Hashes criptográficos** (`MD5`, `SHA-256`) — identidad exacta del fichero; cambian con un solo byte.',
-          '**Imphash** — hash de la tabla de imports de un PE; agrupa binarios compilados con el mismo toolchain/funcionalidad.',
-          '**Fuzzy hashing** (`ssdeep`) — similitud aproximada entre ficheros; encuentra variantes recompiladas.',
+          '**Imphash** — hash de imports normalizados de un Portable Executable (PE); genera candidatos por imports compartidos, sin demostrar familia ni compilador común.',
+          '**Fuzzy hashing** (`ssdeep`) — similitud aproximada entre ficheros; prioriza candidatos, sin confirmar parentesco ni recompilación.',
           '**Strings y configs** — C2 hardcodeados, user-agents, mutexes, rutas, claves.',
-          '**PDB paths** — ruta del símbolo de depuración: filtra el entorno de desarrollo del autor (`C:\\Users\\dev\\proj\\loader\\...`).',
+          '**PDB paths (Program Database)** — ruta del símbolo de depuración: filtra el entorno de desarrollo del autor (`C:\\Users\\dev\\proj\\loader\\...`).',
           '**Certificados de firma** — robados o propios: pivote excelente.',
           '**Sandbox reports** — dominios/IPs contactados, persistencia creada, ficheros soltados.',
         ],
@@ -307,7 +307,7 @@ PIR-3 (proveedores)  | -- SIN FUENTE --     |    --      |    --     |  --      
         t: 'callout',
         kind: 'example',
         title: 'Pivote desde la muestra',
-        md: 'Del loader de VELVET CICADA extraes: C2 `update-svc-cdn.com` (→ pivote de infraestructura), PDB `...\\loader\\Release\\ldr.pdb` (→ link fuerte entre variantes) y un mutex único (→ regla de detección host). Una muestra alimenta tres vértices del diamante.',
+        md: 'Del loader de VELVET CICADA extraes: C2 `update-svc-cdn.com` (→ pivote de infraestructura), PDB `...\\loader\\Release\\ldr.pdb` (→ pista entre variantes que exige corroboración) y un mutex único (→ regla de detección host). Una muestra alimenta tres vértices del diamante.',
       },
       {
         t: 'callout',
@@ -327,7 +327,7 @@ PIR-3 (proveedores)  | -- SIN FUENTE --     |    --      |    --     |  --      
         text: `=== ESTÁTICO ===
 SHA-256      : 9f3a2c...e1
 Imphash      : 1b8d4f2a...      (comparte tabla de imports con 3 muestras previas)
-ssdeep       : 3072:Ab9..:Xk2   (94% similar a variante de 2026-01)
+ssdeep       : 3072:Ab9..:Xk2   (puntuación 94 frente a candidato de 2026-01; no probabilidad)
 Compile time : 2026-02-19 (plausible; los actores lo falsean a veces)
 PDB path     : D:\\proj\\cicada\\loader\\Release\\ldr.pdb
 Imports      : NtMapViewOfSection, CreateNamedPipeA, CreateProcessA
@@ -345,7 +345,7 @@ Hosts contactados:
       },
       {
         t: 'p',
-        md: 'El triaje empieza separando **infraestructura del actor** de **ruido del sistema**. De los cinco hosts, solo dos son del actor (`update-svc-cdn.com`, `ocsp-verify-node.example`); los otros tres son telemetría normal de Windows que cualquier proceso genera. Bloquear los cinco a ciegas rompería la resolución de hora y las comprobaciones de conectividad de toda la flota — un autogol clásico. Después vienen los pivotes: el **imphash** te lleva a la familia por toolchain (mismo compilador/estructura, aunque el SHA-256 difiera); el **ssdeep** al 94% confirma que es una variante recompilada; el **PDB path** es el link fuerte hacia el entorno del desarrollador; y cada C2 alimenta el vértice Infrastructure del diamante. Nota también el certificado: estar *firmado* no lo hace benigno — un firmante desconocido con nombre plausible es una bandera, no un salvoconducto.',
+        md: 'En este caso ficticio, la ficha clasifica dos hosts como C2 y tres como servicios legítimos de Windows. En una investigación real, un contacto observado exige validar función, contexto y tiempo antes de bloquear. El **imphash** encuentra imports compartidos; una puntuación **ssdeep** de 94 prioriza semejanzas, pero no confirma recompilación ni familia. Un **PDB** distintivo y un certificado reutilizado son pistas que también admiten copia, reutilización o engaño. Corrobora con configuración, código y comportamiento, revisa independencia de fuentes y documenta alternativas. Estar firmado no demuestra benignidad; un nombre de firmante desconocido tampoco demuestra malicia. El flujo complementario desarrolla cómo pasar de estas observaciones a una conclusión acotada. **Aclaración del vídeo (02:02):** las frases «delata una variante recompilada» y «salen del mismo taller» son simplificaciones de la grabación. Ni ssdeep ni la ruta PDB confirman eso por sí solos; aplica la corroboración descrita aquí.',
       },
       {
         t: 'video',
@@ -375,23 +375,23 @@ Hosts contactados:
           q: 'A second sample shows the SAME imphash but a DIFFERENT SHA-256; a third shows a 92% ssdeep match. These respectively indicate:',
           choices: [
             'Both are unrelated files',
-            'Shared toolchain/import structure (imphash) and a recompiled near-variant (ssdeep) — both link the samples',
+            'Shared normalized imports and approximate similarity — candidates requiring corroboration',
             'The samples are identical',
             'A false positive in the sandbox',
           ],
           answer: 1,
           explain:
-            'Imphash groups by import table (same toolchain/functionality despite a new file hash); a high ssdeep score flags a recompiled variant. Together they build the family cluster.',
+            'Imphash summarizes normalized imports; ssdeep measures approximate similarity. Neither proves shared compiler, family, campaign or actor. Shared components and packing can affect both; corroborate with distinguishing evidence.',
         },
       },
       {
         t: 'check',
         q: {
-          q: 'Which artifact lets you find RECOMPILED variants of the same malware family despite different cryptographic hashes?',
+          q: 'Which artifact lets you prioritize potentially related variants despite different cryptographic hashes?',
           choices: ['SHA-256', 'Fuzzy hashing (ssdeep)', 'The file name', 'The PE timestamp'],
           answer: 1,
           explain:
-            'Fuzzy hashes measure similarity between files, surviving small changes that completely alter SHA-256.',
+            'Fuzzy hashes measure similarity between files, sometimes tolerating changes that alter SHA-256; it does not prove family membership.',
         },
       },
       {
@@ -404,13 +404,13 @@ Hosts contactados:
           q: 'A PDB path like C:\\Users\\kaz\\dev\\stage2\\bin\\release\\st2.pdb found in two different samples is valuable because:',
           choices: [
             'It reveals the victim\'s username',
-            'It is a development-environment artifact that strongly links samples to the same author/toolchain',
+            'It is a possible build-environment clue to corroborate; it can be copied or forged',
             'It contains the C2 address',
             'It proves nation-state involvement',
           ],
           answer: 1,
           explain:
-            'PDB paths leak the author\'s build environment — rare, often unique, and costly to vary. A classic strong link (and pivot).',
+            'A distinctive PDB path can prioritize candidates, but paths can be copied, reused or forged. It does not reveal the victim, contain the C2 by definition or prove a nation-state author.',
         },
       },
     ],
@@ -435,13 +435,13 @@ Hosts contactados:
         prompt: 'Imphash groups PE files by:',
         choices: [
           'Their compile timestamp',
-          'A hash of their import table, reflecting shared functionality/toolchain',
+          'A hash of normalized imported libraries/functions, useful for candidate generation',
           'Their file size',
           'Their icon resources',
         ],
         answer: 1,
         explain:
-          'Import-table hashing clusters binaries built from similar codebases even when file hashes differ.',
+          'Imphash summarizes imports, not file identity or authorship. Unrelated binaries may share it and related variants may differ; corroboration is required.',
       },
       {
         id: 's3m2q3',
@@ -495,19 +495,19 @@ Hosts contactados:
           'Two samples share an identical, unusual code-signing certificate. The BEST interpretation is:',
         choices: [
           'Coincidence — certificates are commonly shared',
-          'A strong pivot/link: same stolen or actor-owned signing material',
+          'A useful pivot on signing material, requiring validation and independent context',
           'The samples are benign because they are signed',
           'The certificate authority is the adversary',
         ],
         answer: 1,
         explain:
-          'Signing material is rare and controlled; reuse strongly links samples and enables certificate-based pivoting/hunting.',
+          'Verify certificate fingerprint and signature validity, then seek independent context. Shared or stolen signing material does not by itself establish the same family, campaign or actor, nor benignity.',
       },
       {
         id: 's3m2q7',
         domain: 'Collection',
         prompt:
-          'For linking two samples to the SAME author/build environment, which artifact is the strongest?',
+          'Which artifact offers the most specific build-environment pivot among these options, subject to corroboration?',
         choices: [
           'The compile timestamp',
           'The PDB path revealing the developer\'s project directory',
@@ -516,7 +516,7 @@ Hosts contactados:
         ],
         answer: 1,
         explain:
-          'A PDB path leaks the author\'s build tree — rare, often unique, costly to vary. Compile timestamps are trivially forged and weak as links.',
+          'A distinctive project path is more specific than size, timestamp or an import count in this comparison. It can still be copied or forged and does not prove the same author.',
       },
       {
         id: 's3m2q8',
@@ -1129,7 +1129,7 @@ first_seen           last_seen            type  rdata
         t: 'callout',
         kind: 'tip',
         title: 'El arte de la condición',
-        md: 'Una regla con un solo string es frágil (el actor lo cambia) o peligrosa (matchea software legítimo). Las buenas reglas exigen **combinaciones**: `2 of ($a,$b,$c)` con strings raros e independientes entre sí. Diseñarás esto en el **Lab 3B: YARA Forge** contra muestras con trampas de falso positivo.',
+        md: 'Justifica las cadenas, su combinación y la cobertura buscada. Un único patrón muy específico puede servir para una muestra; un umbral como `2 of ($a,$b,$c)` puede servir para un corpus concreto, pero no es una receta universal. Dos cadenas comunes también producen falsos positivos. El **Lab 3B: YARA Forge** es una simulación por etiquetas, sin compilación ni ejecución real; la ampliación de esta lección añade escritura libre y un corpus inerte verificable con YARA real.',
       },
       {
         t: 'check',
@@ -1223,7 +1223,7 @@ first_seen           last_seen            type  rdata
         id: 's3m5q5',
         domain: 'Collection',
         prompt:
-          'Which YARA condition is MOST robust for detecting a malware family while avoiding false positives?',
+          'For a corpus where each target preserves at least two of three tested rare patterns and controls contain at most one, which condition fits that evidence?',
         choices: [
           'any of them — with three strings including common library names',
           '2 of ($rare1,$rare2,$rare3) — requiring two of three rare, independent artifacts',
@@ -1232,7 +1232,7 @@ first_seen           last_seen            type  rdata
         ],
         answer: 1,
         explain:
-          'Requiring combinations of rare independent strings balances variant coverage against false positives. "All of" ten strings breaks on any variant change.',
+          'The stated corpus supports a two-pattern threshold. Common strings, filesize alone and requiring every changing pattern do not fit this evidence. This is not a universal recipe; re-test against new variants and benign controls.',
       },
       {
         id: 's3m5q6',

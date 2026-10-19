@@ -1,0 +1,213 @@
+{
+  "title": "Del hash a los candidatos: pivotar sin inventar parentescos",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "editorialScope": "complementary",
+  "notice": "Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC · Práctica complementaria",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Una muestra, varias preguntas"
+    },
+    {
+      "n": 2,
+      "title": "Buscar parecidos"
+    },
+    {
+      "n": 3,
+      "title": "Leer las relaciones"
+    },
+    {
+      "n": 4,
+      "title": "Decidir con alternativas"
+    },
+    {
+      "n": 5,
+      "title": "Dejar el razonamiento"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "El parecido no termina el caso",
+      "goal": "Mesa didáctica de Meridian. Fichas A/B/C/D/E, distintas de las muestras históricas de GLASS VIPER. Sin hashes ni fechas del canon publicado. Flujo completo muestra/observaciones/hipótesis/pivotes/candidatos/corroboración/conclusión. Título y promesa tempranos.",
+      "targetSec": 45,
+      "wordBudget": 122,
+      "requiredCues": [
+        "title",
+        "s01-b",
+        "s01-c"
+      ]
+    },
+    {
+      "id": "s02-caso",
+      "chapter": 1,
+      "title": "Los mismos bytes o rasgos parecidos",
+      "goal": "Hash criptográfico exacto frente a imphash y ssdeep. Animar cambio de un byte → hash distinto, sin deducir familia distinta. «Imphash = imports normalizados»; biblioteca compartida genera coincidencia débil.",
+      "targetSec": 53,
+      "wordBudget": 144,
+      "requiredCues": [
+        "s02-a",
+        "s02-b",
+        "s02-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Hash exacto identifica bytes; similitud genera candidatos",
+        "afterSegment": "s02-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-caso",
+      "chapter": 2,
+      "title": "La etiqueta y la firma",
+      "goal": "PDB explicado como Program Database/ruta de símbolos. Firma de código con huella/validación/contexto, separada de TLS. Strings/config distintivas. Compartir un rasgo no cambia automáticamente estado de candidato a familia.",
+      "targetSec": 56,
+      "wordBudget": 152,
+      "requiredCues": [
+        "s03-a",
+        "s03-b",
+        "s03-c"
+      ]
+    },
+    {
+      "id": "s04-caso",
+      "chapter": 2,
+      "title": "Qué significa ese noventa y cuatro",
+      "goal": "C comparte imphash I1 y score ssdeep94. Mostrar biblioteca común, configuración distinta. Dos opciones antes de pausa; después mantener C en candidato débil, sin clasificar como benigno.",
+      "targetSec": 56,
+      "wordBudget": 152,
+      "requiredCues": [
+        "s04-a",
+        "s04-b",
+        "s04-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Dos señales dependientes no son dos corroboraciones",
+        "afterSegment": "s04-06",
+        "holdSec": 5
+      },
+      "decision": {
+        "q": "¿Confirmas C o buscas qué lo distingue?",
+        "choices": [
+          "Confirmar misma familia",
+          "Buscar evidencia que discrimine"
+        ],
+        "answer": 1,
+        "revealAt": "s04-b",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s05-caso",
+      "chapter": 3,
+      "title": "La consulta conserva su pregunta",
+      "goal": "Consultas ilustrativas oficiales de VT en pantalla: imphash:11111111111111111111111111111111; content:\"cicada-demo-v1\"; metadata:\"ldr.pdb\"; signature:\"Meridian Demo Signing\". Valores ficticios, sin ejecución. Buscar hash exacto no sube archivo. Mostrar disponibilidad dependiente de producto/permisos.",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "s05-a",
+        "s05-b",
+        "s05-c"
+      ]
+    },
+    {
+      "id": "s06-caso",
+      "chapter": 3,
+      "title": "Una línea no cuenta cómo ocurrió",
+      "goal": "Relaciones: dominio incrustado / contacto observado / archivo soltado / padre de ejecución. Conservar dirección, tiempo y fuente. D comparte IP de alojamiento; resolver ventana temporal y multiinquilino. TLS de servidor separado del certificado de código.",
+      "targetSec": 55,
+      "wordBudget": 149,
+      "requiredCues": [
+        "s06-a",
+        "s06-b",
+        "s06-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Comprueba función, dirección y tiempo de la relación",
+        "afterSegment": "s06-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-caso",
+      "chapter": 4,
+      "title": "El candidato que sí gana peso",
+      "goal": "B: I1, cadena DEMO-CFG-7, configuración y conducta concordantes, dos orígenes de informes distintos. Hipótesis código compartido frente a componente público. Confianza moderada, no atribución a operador.",
+      "targetSec": 53,
+      "wordBudget": 144,
+      "requiredCues": [
+        "s07-a",
+        "s07-b",
+        "s07-c"
+      ]
+    },
+    {
+      "id": "s08-caso",
+      "chapter": 4,
+      "title": "La casilla vacía",
+      "goal": "E solo tiene una mención de PDB sin bytes ni procedencia. Campo de relación «no disponible», distinto de «sin relaciones». Pregunta y luego pista pendiente/confianza baja. No intentar eludir acceso premium.",
+      "targetSec": 58,
+      "wordBudget": 157,
+      "requiredCues": [
+        "s08-a",
+        "s08-b",
+        "s08-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "No disponible no equivale a inexistente",
+        "afterSegment": "s08-06",
+        "holdSec": 5
+      },
+      "decision": {
+        "q": "¿Sin relaciones o dato no disponible?",
+        "choices": [
+          "No tiene relaciones",
+          "No hay dato accesible"
+        ],
+        "answer": 1,
+        "revealAt": "s08-b",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s09-caso",
+      "chapter": 5,
+      "title": "Que otra persona pueda seguirte",
+      "goal": "Bitácora consulta/filtros/fecha consulta/fecha observación/fuente/evidencia/juicio/confianza/alternativa/próxima acción. Ejemplo sin nuevos timestamps del canon. Resultado B probable; C y D no incorporados; E pendiente.",
+      "targetSec": 53,
+      "wordBudget": 144,
+      "requiredCues": [
+        "s09-a",
+        "s09-b",
+        "s09-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Registra consulta, evidencia, alternativas y confianza",
+        "afterSegment": "s09-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-cierre",
+      "chapter": 5,
+      "title": "La investigación que puedes explicar",
+      "goal": "Tres reglas: candidato no atribución / corroborar con alternativas / documentar límites. Acción única: resolver B/C/D/E en s3m2. Aviso no afiliado SANS/GIAC. No desvelar el Lab3A ni usar sus respuestas.",
+      "targetSec": 51,
+      "wordBudget": 138,
+      "requiredCues": [
+        "s10-a",
+        "s10-b",
+        "s10-c"
+      ]
+    }
+  ],
+  "targetTotalSec": 534
+}

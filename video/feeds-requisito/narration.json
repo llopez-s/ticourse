@@ -1,0 +1,404 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {title}Un proveedor entrega más datos. Otro cuesta menos. ¿Cuál compras? Vas a elegir entre tres feeds sin confundir volumen con valor.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<warm> {s01-b}Eres la analista de Meridian, una empresa aeroespacial. En este ejercicio comparas tres suministros de información. Los llamamos feeds porque entregan datos de forma recurrente.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<focused> Faro, Atlas y Eco son inventados. No estamos recomendando marcas reales.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<calm> {s01-c}La compra empieza antes de abrir las ofertas. Meridian necesita investigar exposición de cuentas con rapidez. También quiere buscar infraestructura en datos históricos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-hook",
+      "text": "<confident> Son dos preguntas diferentes. Un proveedor puede ayudar mucho con una y poco con la otra.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-caso",
+      "text": "<thoughtful> {s02-a}La primera pregunta exige recibir indicios útiles antes de un día. La segunda necesita datos para mirar atrás. Esa diferencia cambia lo que valoras.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-caso",
+      "text": "<engaging> Años de historial pueden servir para investigar el pasado y llegar demasiado tarde para una decisión urgente.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-caso",
+      "text": "<firm> {s02-b}El requisito de inteligencia deja claro para qué necesitas la fuente. Después miras la cobertura. Qué sector, regiones, plataformas y tipos de dato puede observar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-caso",
+      "text": "<reassuring> Un catálogo grande no responde automáticamente a la pregunta de Meridian.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-caso",
+      "text": "<curious> {s02-c}Apunta también lo que ya tienes. Los registros internos, el intercambio sectorial y los feeds actuales forman tu línea base.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-caso",
+      "text": "<warm> Para justificar otra compra, necesitas saber qué añade respecto a esa base. Más documentos no siempre son más respuestas.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-caso",
+      "text": "<focused> {s03-a}Conocer al proveedor ayuda, pero no confirma cada dato. La fiabilidad de una fuente se apoya en su historial, su acceso y su método.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "Lo dice un proveedor conocido. Ya está confirmado.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-caso",
+      "text": "<calm> La credibilidad de una información depende de la evidencia de esa afirmación concreta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-caso",
+      "text": "<confident> {s03-b}Una fuente con buen historial puede publicar una pista débil. Una nueva puede aportar evidencia verificable. Por eso registras dos juicios.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-caso",
+      "text": "<thoughtful> Qué confianza merece la fuente y qué sostiene este dato. No uses la reputación como sustituto de corroboración.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-caso",
+      "text": "<engaging> {s03-c}En el informe busca periodo observado, población, método y referencias. Distingue observación propia de interpretación y cita.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-caso",
+      "text": "<firm> Si el proveedor no explica qué cuenta, no conviertas su porcentaje en una medida del mundo entero. Puede describir solo lo que sus sensores ven.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-caso",
+      "text": "<reassuring> {s04-a}Faro publica una observación. Atlas la cita y Eco reproduce la cita. ¿Tienes tres confirmaciones independientes o una observación que viajó por tres publicaciones?",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-caso",
+      "text": "<curious> Antes de contar, sigue el origen de lo que estás leyendo.",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Tres publicaciones o tres observaciones?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-caso",
+      "text": "<warm> {s04-b}Una observación de origen conocida. Es como recibir el mismo recorte en tres sobres. Cambia el sobre, no el hecho observado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-caso",
+      "text": "<focused> Conservas las publicaciones porque pueden añadir contexto o rapidez. Pero no multiplicas la corroboración por tres.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-caso",
+      "text": "<calm> {s04-c}Esto es el eco de feeds. Puede ocultar que todos dependen del mismo origen. Para medir lo nuevo, deduplicas entidades y eventos, conservando procedencia y tiempos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-caso",
+      "text": "<confident> Dos filas con texto diferente pueden describir la misma exposición. Y dos alertas parecidas pueden corresponder a hechos distintos.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-caso",
+      "text": "<thoughtful> {s05-a}Ahora sí, abre el piloto. Durante el mismo mes se revisaron cien elementos de cada feed con criterios compartidos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-caso",
+      "text": "<engaging> La tabla separa los útiles de los que además aportan algo nuevo a Meridian. A ese aporte nuevo lo llamamos incremental. Conservamos también los casos desconocidos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-caso",
+      "text": "<firm> {s05-b}Faro aporta cuarenta hallazgos útiles que no estaban en la base dentro del plazo requerido. Atlas aporta tres y Eco, uno.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-caso",
+      "text": "<reassuring> Atlas tiene más elementos útiles en la muestra. Pero casi todos ya estaban disponibles por otras vías.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-caso",
+      "text": "<curious> {s05-c}Para investigar infraestructura histórica, la comparación cambia. Atlas añade cuarenta y cinco hallazgos. Los otros dos aportan mucho menos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-caso",
+      "text": "<warm> No hemos encontrado un proveedor ganador para todo. Hemos encontrado aportaciones distintas frente a dos requisitos distintos.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-caso",
+      "text": "<focused> {s06-a}Mira el retraso de entrega. El percentil noventa y cinco indica el tiempo dentro del que llegó el noventa y cinco por ciento de los elementos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-caso",
+      "text": "<calm> Faro queda en ocho horas. Atlas, en treinta y seis. Para la pregunta urgente, llegar después del plazo pesa mucho.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-caso",
+      "text": "<confident> {s06-b}También miras si los elementos incluyen los campos necesarios y permiten rastrear la evidencia.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-caso",
+      "text": "<thoughtful> Una dirección sin fecha ni contexto puede exigir más trabajo del que ahorra.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-caso",
+      "text": "<engaging> El porcentaje de campos completos no mide cuánto del mundo ha descubierto el proveedor.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-caso",
+      "text": "<firm> {s06-c}Eco tiene la licencia más barata, pero revisar sus alertas exige dieciocho horas al mes en este ejercicio. Con Faro son seis.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-07",
+      "scene": "s06-caso",
+      "text": "<reassuring> A la licencia le sumas integración, mantenimiento y trabajo del analista. Comprar barato y revisar lo mismo toda la semana también cuesta.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-caso",
+      "text": "<curious> {s07-a}Si eliges los criterios después, puedes hacer que gane quien prefieras. Acuérdalos antes de medir.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "El piloto ha ido bien. Pon ahora los criterios.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-caso",
+      "text": "<warm> Aquí se piden veinte hallazgos útiles incrementales, puntualidad suficiente y campos completos. También un esfuerzo de revisión que el equipo pueda sostener.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-caso",
+      "text": "<focused> {s07-b}También defines qué significa útil y cómo se resuelven los casos dudosos. Evalúas una muestra comparable. Conservas las discrepancias y los desconocidos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-caso",
+      "text": "<calm> El propio feed no puede ser la única verdad con la que juzgas si el feed acierta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-caso",
+      "text": "<confident> {s07-c}Durante el piloto registras errores de integración, indisponibilidad y cuotas. Compruebas los derechos de uso y retención. La compra necesita calidad y viabilidad.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-caso",
+      "text": "<thoughtful> Un buen dato al que no puedes dar el uso necesario puede no resolver tu requisito.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-caso",
+      "text": "<engaging> {s08-a}Meridian ya recibe casi todos los datos de Atlas y necesita indicios nuevos antes de un día.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-caso",
+      "text": "<firm> Con este piloto, ¿priorizas Faro o Atlas para esa primera pregunta? No cambies el requisito a mitad de la decisión.",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Para R1, ¿Faro o Atlas?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-caso",
+      "text": "<reassuring> {s08-b}Faro cumple los umbrales ilustrativos de incremento, rapidez, completitud y esfuerzo. La contratación sigue dependiendo del presupuesto y del contrato.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-caso",
+      "text": "<curious> Atlas puede aportar más a la investigación histórica. No se cancela una posibilidad solo porque responda peor a otra pregunta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-caso",
+      "text": "<warm> {s08-c}Eco tampoco pierde por tener una licencia barata. Pierde para estos criterios porque añade muy poco, entrega campos incompletos y consume más revisión.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-caso",
+      "text": "<focused> La explicación compara evidencias con una necesidad concreta. No reparte medallas abstractas a proveedores.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-caso",
+      "text": "<calm> {s09-a}La compra de hoy no demuestra el valor del año que viene.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-caso",
+      "text": "<confident> Si otra fuente empieza a entregar lo mismo con derechos y tiempos equivalentes, el incremento cambia.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-caso",
+      "text": "<thoughtful> Si el proveedor pierde cobertura o añade ruido, también cambia la decisión.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-caso",
+      "text": "<engaging> {s09-b}Antes de renovar, repites una comparación con la base actual. Revisas calidad, tiempos y trabajo del equipo. Puedes renovar, ajustar o cancelar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-caso",
+      "text": "<firm> Lo que ya costó integrar el feed no obliga a seguir pagando algo que dejó de aportar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-caso",
+      "text": "<reassuring> {s09-c}Deja por escrito el requisito, los resultados y las limitaciones de colección. Si la evidencia depende de una sola cadena de citas, dilo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-07",
+      "scene": "s09-caso",
+      "text": "<curious> Y si no puedes evaluar una afirmación, no la conviertas en verdadera para que la tabla quede más bonita.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-cierre",
+      "text": "<warm> {s10-a}Tres reglas. Empieza por la pregunta que hay que responder. Cuenta lo que añade la fuente, sin convertir citas en confirmaciones.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-cierre",
+      "text": "<focused> Y decide con un piloto cuyos criterios y coste total estén claros antes de mirar quién gana.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-cierre",
+      "text": "<calm> {s10-b}Así puedes explicar por qué compras Faro para una necesidad y valoras Atlas para otra.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-cierre",
+      "text": "<confident> También puedes explicar por qué renovarías una fuente o dejarías de pagarla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-cierre",
+      "text": "<thoughtful> La respuesta se apoya en utilidad observable, no en una marca ni en un porcentaje aislado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-06",
+      "scene": "s10-cierre",
+      "text": "<engaging> {s10-c}Vuelve ahora a la comparación de la lección de colección. Elige una fuente para cada requisito y escribe qué evidencia cambiaría tu elección.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-07",
+      "scene": "s10-cierre",
+      "text": "<firm> Si mañana cambia la base, la decisión también puede cambiar. Eso es evaluar una fuente, no casarte con ella.",
+      "pauseAfterMs": 600
+    }
+  ]
+}

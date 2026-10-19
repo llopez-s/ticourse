@@ -136,6 +136,21 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
 
 ## State & gotchas
 
+- **Practical curriculum (2026-10-19).** Twelve existing lessons append typed blocks
+  from `data/practical/` through `withPracticalExpansion` in `tracks.ts`. Original
+  block indices and lesson/question/lab IDs stay stable. New totals: GCTI 96 cards /
+  107 glossary entries; Security+ 160 cards / 242 entries, 134 base checkpoints plus
+  2 optional. Fourteen professional checks across tracks use `CheckQ.optional`:
+  excluded from lesson completion and XP, never added to exam/placement pools.
+  Fundamentals are base; Microsoft-specific and CTI professional practice are
+  labelled complementary. `links` and `yara-practice` are searchable block types.
+  The YARA editor only downloads text; Forge remains a label-based simulation.
+  Real `yara-python==4.5.4` validation is optional tooling in `.venv-yara/` (ignored).
+  `scripts/package-yara-practice.py --check` detects a stale downloadable ZIP;
+  regenerate after changing its five source files. `scripts/test-yara-practice.py`
+  exercises real compilation, controls, missed variants, syntax errors and ZIP
+  portability. Map and study route: `docs/practical-curriculum.md`.
+
 - **Complete / functional** product, not a scaffold. GCTI: 27 lessons, 174 quiz questions, 12
   labs, 80 flashcards, ~95 glossary terms. Security+: all 5 domains (see above). Fresh `dist/`
   build present. The weighted 90-question mock samples 11/20/16/25/18 across the five SY0-701

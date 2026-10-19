@@ -28,3 +28,7 @@ video/*/.audition/
 
 # YouTube upload credentials (youtube-upload.mjs --auth): the OAuth client and its refresh token
 video/engine/youtube/
+
+# Local validation engine and Python caches (never shipped)
+.venv-yara/
+__pycache__/

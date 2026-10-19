@@ -1,0 +1,62 @@
+import type { Flashcard, GlossaryEntry, TrackId } from '../../lib/types';
+
+export const PRACTICAL_CARDS: Record<TrackId, Flashcard[]> = {
+  secplus: [
+    { id: 'fcp-p01', sectionId: 'sp4', front: 'Authentication vs authorization', back: 'Authentication establishes identity; authorization limits permitted actions. Completing MFA does not automatically grant permissions.' },
+    { id: 'fcp-p02', sectionId: 'sp4', front: 'Access token vs refresh token', back: 'Access token: present to the intended resource/API for scoped, time-limited access. Refresh token: present to the authorization server to request new tokens subject to policy; not to the resource API.' },
+    { id: 'fcp-p03', sectionId: 'sp4', front: 'ID token vs session cookie', back: 'An OIDC ID token informs the client about authentication; it is not an API access token. A session cookie maintains web state and may carry an opaque session identifier; not every cookie authenticates.' },
+    { id: 'fcp-p04', sectionId: 'sp4', front: 'Why does MFA not eliminate session theft?', back: 'MFA protects authentication. A later stolen bearer credential might still be accepted within its scope and lifetime unless other controls stop it. Exposure is not proof of use.' },
+    { id: 'fcp-p05', sectionId: 'sp2', front: 'Infostealer: capability vs theft vs use', back: 'A malware capability does not prove which artifacts were extracted. A stolen artifact does not prove successful use. Investigate the endpoint, dates, artifact type, identity and application activity.' },
+    { id: 'fcp-p06', sectionId: 'sp4', front: 'Complementary · Graph mail example roles', back: 'Ana: user; Resumen del turno: client app; Entra ID: identity provider/authorization server; Microsoft Graph: resource API. Delegated Mail.Read is not global administration or permission to send mail.' },
+    { id: 'fcp-p07', sectionId: 'sp4', front: 'Complementary · Password reset and token revocation', back: 'A password change is not evidence that every access token and application session immediately stopped. Effects depend on token/client/reset method. Revoke appropriately, inspect application sessions and verify controls.' },
+    { id: 'fcp-p08', sectionId: 'sp4', front: 'Complementary · Entra session revocation and CAE', back: 'revokeSignInSessions invalidates refresh tokens and Entra-managed session cookies with possible delay. Existing access tokens and app-owned sessions need specific attention. CAE helps with supported events/resources/clients, not universally.' },
+  ],
+  gcti: [
+    { id: 'fc-p01', sectionId: 's3', front: 'Complementary · Source reliability vs information credibility', back: 'Reliability: track record, access and method of the source. Credibility: quality and corroboration of this particular claim. Evaluate separately; reputation alone does not confirm an item.' },
+    { id: 'fc-p02', sectionId: 's3', front: 'Complementary · Incremental value of a feed', back: 'Useful coverage, timeliness or context added beyond the existing baseline after deduplication. Evaluate against a requirement and total cost, including integration and analyst effort.' },
+    { id: 'fc-p03', sectionId: 's3', front: 'Complementary · Feed pilot acceptance', back: 'Agree requirements, baseline, evaluation sample, clocks, quality definitions, incremental targets and effort/cost limits before collecting results. Reassess against the current baseline before renewal.' },
+    { id: 'fc-p04', sectionId: 's3', front: 'Exact hash vs imphash vs fuzzy hash', back: 'Cryptographic hash identifies bytes. Imphash summarizes normalized PE imports. Fuzzy hashes prioritize approximate similarity. Neither shared imports nor a similarity score proves family, campaign or actor.' },
+    { id: 'fc-p05', sectionId: 's3', front: 'Complementary · Sample investigation flow', back: 'Initial sample → observations → hypotheses → pivots → candidates → corroboration → conclusion and limits. Preserve queries, dates, evidence provenance, alternatives and confidence.' },
+    { id: 'fc-p06', sectionId: 's3', front: 'PDB or signing certificate as a pivot', back: 'Useful candidate-generation keys with context; paths can be copied or forged and signing certificates can be stolen or shared. A matching path or signature alone is not author attribution.' },
+    { id: 'fc-p07', sectionId: 's3', front: 'Complementary · YARA ascii, wide and nocase', back: 'Text defaults to byte text and case-sensitive. ascii wide matches both byte text and null-interleaved form; wide does not implement general Unicode. nocase ignores letter case and can increase matches.' },
+    { id: 'fc-p08', sectionId: 's3', front: 'Complementary · YARA grouping', back: '$marker and ($route or $hex) requires marker plus either alternative. ($marker and $route) or $hex also allows hex alone. Justify the grouping against variants and benign controls.' },
+    { id: 'fc-p09', sectionId: 's3', front: 'Why is “2 of them” not a universal YARA recipe?', back: 'A threshold counts patterns, not distinctiveness or independence. Two common strings can collide. Scope, combinations, format/size restrictions and corpus results determine whether it is suitable.' },
+    { id: 'fc-p10', sectionId: 's3', front: 'Complementary · Sample, family and hunting rules', back: 'Sample: narrow build-specific match. Family: stable features tested against variants and controls within stated coverage. Hunting: broader candidate generation with more review. None proves an actor.' },
+    { id: 'fc-p11', sectionId: 's4', front: 'Complementary · Feed echo and independence', back: 'Several publications citing one observation are not independent corroboration. Trace original evidence and collection method, retain citation chains and identify unknown upstream dependencies.' },
+    { id: 'fc-p12', sectionId: 's4', front: 'Complementary · Infostealer measurement units', back: 'Samples, infection episodes, devices, stolen records and victim people/organizations count different things. State temporal window, denominator, deduplication, collection coverage and bias before ranking.' },
+    { id: 'fc-p13', sectionId: 's4', front: 'Complementary · Family vs operator vs distributor vs broker', back: 'Family groups code/capabilities; operator uses it; distributor delivers it; campaign groups scoped activity; access broker sells access. Relationships are many-to-many, not automatic actor identities.' },
+    { id: 'fc-p14', sectionId: 's4', front: 'Complementary · Observed prevalence vs organizational relevance', back: 'Counts reflect a source’s visibility. Prioritize by relevant capabilities, recency and exposure of the organization/sector; the top sample count need not be the highest organizational priority.' },
+    { id: 'fc-p15', sectionId: 's5', front: 'Complementary · Distributing a YARA rule', back: 'Supply version, scope, provenance, engine, reproducible corpus/matrix, FP/FN limits, intended action, sharing rights, owner and review date. Compilation or a simulation screenshot is not efficacy evidence.' },
+    { id: 'fc-p16', sectionId: 's5', front: 'Complementary · Threat metrics vs CTI team value', back: 'Threat metrics describe observed malware/exposure. Team metrics assess useful products, decisions and outcomes against requirements. More collected samples alone does not demonstrate CTI value.' },
+  ],
+};
+
+export const PRACTICAL_GLOSSARY: Record<TrackId, GlossaryEntry[]> = {
+  secplus: [
+    { sectionId: 'sp4', term: 'Access token', def: 'Credencial emitida por un servidor de autorización para acceso limitado a una API destinataria, con permisos y vigencia. La valida el recurso.' },
+    { sectionId: 'sp4', term: 'Refresh token', def: 'Credencial de renovación presentada al servidor de autorización para solicitar nuevos tokens según concesión y políticas; no se envía a la API del recurso.' },
+    { sectionId: 'sp4', term: 'ID token', def: 'Token de OpenID Connect dirigido a la aplicación cliente con información sobre la autenticación. No sustituye el access token de una API.' },
+    { sectionId: 'sp4', term: 'Session cookie', def: 'Cookie usada para mantener una sesión web; puede contener un identificador opaco. Su gestión corresponde al servicio emisor; no toda cookie es de autenticación.' },
+    { sectionId: 'sp4', term: 'Token audience / scope', def: 'Destinatario o recurso previsto / permisos de la concesión. Un token para una API y lectura no autoriza todas las APIs ni escritura.' },
+    { sectionId: 'sp4', term: 'Bearer token', def: 'Credencial cuya posesión puede bastar para presentarla mientras sea válida y los controles aplicables la acepten. El robo posterior a MFA sigue siendo un riesgo.' },
+    { sectionId: 'sp4', term: 'Microsoft Graph (complementario)', def: 'API para acceder a recursos de Microsoft 365 con autorización. En el caso de sp4m8, la aplicación lee correo de Ana con permiso delegado; Entra ID emite los tokens.' },
+    { sectionId: 'sp4', term: 'Continuous Access Evaluation / CAE (complementario)', def: 'Evaluación continua del acceso: recursos/clientes compatibles pueden reaccionar a ciertos eventos antes de la caducidad ordinaria. No promete revocación universal instantánea.' },
+    { sectionId: 'sp2', term: 'Infostealer', def: 'Malware orientado al robo de información del dispositivo. Las capacidades varían; detectar la familia no prueba qué artefactos se extrajeron ni cuáles se usaron.' },
+  ],
+  gcti: [
+    { sectionId: 's3', term: 'Source reliability / information credibility', def: 'Fiabilidad del historial, acceso y método de la fuente / credibilidad de una afirmación concreta por su evidencia y corroboración. Se juzgan por separado.' },
+    { sectionId: 's3', term: 'Incremental feed value (complementario)', def: 'Valor útil que una fuente añade respecto a la línea base existente, tras deduplicar y considerar contexto y anticipación frente al requisito.' },
+    { sectionId: 's3', term: 'Feed pilot (complementario)', def: 'Evaluación acotada con requisitos, línea base, criterios de aceptación, medición comparable y coste total definidos antes de decidir contratación o renovación.' },
+    { sectionId: 's3', term: 'Collection bias', def: 'Sesgo debido a qué población, regiones, plataformas y actividad puede observar una fuente y qué excluye. Ausencia en el feed no demuestra ausencia de amenaza.' },
+    { sectionId: 's3', term: 'Pivot candidate', def: 'Elemento recuperado por una clave de búsqueda que debe corroborarse antes de agruparlo o atribuirlo. Compartir imphash, similitud o infraestructura no basta.' },
+    { sectionId: 's3', term: 'YARA ascii / wide / nocase', def: 'Patrones textuales en bytes / con 00 intercalados / sin distinguir mayúsculas. ascii wide admite ambas representaciones; no interpreta Unicode general.' },
+    { sectionId: 's3', term: 'YARA hex wildcard', def: 'Comodín de una cadena hexadecimal: ?? permite cualquier byte; A? fija su mitad alta. Debe representar una variación justificada por el objetivo.' },
+    { sectionId: 's3', term: 'False positive / false negative', def: 'Coincidencia fuera del objetivo / elemento dentro del objetivo que no coincide. Dependen de las etiquetas y del alcance declarado.' },
+    { sectionId: 's3', term: 'Overfitting (YARA)', def: 'Sobreajuste: elegir patrones para memorizar ejemplos conocidos que fallan ante variantes. Separar diseño y validación y documentar límites.' },
+    { sectionId: 's4', term: 'Feed echo (complementario)', def: 'Republicaciones de una observación que aparentan corroboración independiente. Trazar la cadena de citas y el origen antes de contar fuentes.' },
+    { sectionId: 's4', term: 'Observed prevalence (complementario)', def: 'Frecuencia dentro de una fuente y población observada, con unidad, periodo y deduplicación explícitos. No equivale a cuota global ni a prioridad organizativa.' },
+    { sectionId: 's4', term: 'Infostealer ecosystem roles (complementario)', def: 'Familia: código/capacidades; operador: lo usa; distribuidor: lo entrega; campaña: actividad acotada; broker: comercializa acceso. No hay correspondencia uno a uno.' },
+    { sectionId: 's4', term: 'Deduplication unit (complementario)', def: 'Clave y ventana usadas para decidir qué cuenta una sola vez. Hashes, episodios, dispositivos, registros y organizaciones requieren criterios distintos.' },
+    { sectionId: 's5', term: 'Detection rule handoff (complementario)', def: 'Entrega de una regla con objetivo, versión, evidencias, pruebas reproducibles, límites, acción, derechos de uso, responsable y revisión.' },
+  ],
+};
