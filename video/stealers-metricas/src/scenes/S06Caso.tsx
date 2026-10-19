@@ -50,7 +50,7 @@ function Months({ frame, at, strikeAt, askAt }: { frame: number; at: number; str
   const strike = progress(frame, strikeAt, 14);
   const ask = progress(frame, askAt, 14);
   return (
-    <div style={{ boxSizing: 'border-box', position: 'relative', width: 820, height: 256, borderRadius: RADIUS.md, background: C.ink850, border: `2px solid ${C.ink700}`, opacity: p, fontFamily: FONT.sans }}>
+    <div style={{ boxSizing: 'border-box', position: 'relative', width: 850, height: 256, borderRadius: RADIUS.md, background: C.ink850, border: `2px solid ${C.ink700}`, opacity: p, fontFamily: FONT.sans }}>
       <svg width={420} height={250} style={{ position: 'absolute', left: 0, top: 0 }}>
         <line x1={30} y1={190} x2={390} y2={190} stroke={C.ink600} strokeWidth={3} />
         <rect x={60} y={190 - 70 * grow} width={120} height={70 * grow} fill={alpha(C.cyan, 0.75)} />
@@ -59,11 +59,11 @@ function Months({ frame, at, strikeAt, askAt }: { frame: number; at: number; str
         <text x={120} y={226} fontSize={28} fontWeight={700} fill={C.text} textAnchor="middle">mes 1</text>
         <text x={300} y={226} fontSize={28} fontWeight={700} fill={C.text} textAnchor="middle">mes 2</text>
       </svg>
-      <div style={{ position: 'absolute', left: 440, top: 24, display: 'grid', gap: 12, justifyItems: 'start' }}>
+      <div style={{ position: 'absolute', left: 420, top: 24, display: 'grid', gap: 12, justifyItems: 'start' }}>
         <Pill icon="x" tone="muted" size={28} strike={strike > 0.5}>comparar mes con mes</Pill>
         <div style={{ display: 'flex', gap: 12, opacity: strike }}>
-          <Tag tone="amber" size={28}>+ sensores</Tag>
-          <Tag tone="amber" size={28}>+ etiquetas</Tag>
+          <Tag tone="amber" size={26}>+ sensores</Tag>
+          <Tag tone="amber" size={26}>+ etiquetas</Tag>
         </div>
         <div style={{ position: 'relative', width: 350, height: 76 }}>
           <div style={{ position: 'absolute', opacity: strike * (1 - ask), fontSize: 29, fontWeight: 650, color: '#fcd34d', lineHeight: 1.2 }}>la cifra sube sin que crezca la amenaza</div>
@@ -101,13 +101,13 @@ export function S06Caso(props: SceneProps) {
         <Months frame={frame} at={props.cue('s06-b') - 6} strikeAt={w('s06-03', 'sensores') - 6} askAt={at('s06-04') + 40} />
       </Reveal>
 
-      <Reveal frame={frame} at={w('s06-05', 'prevalencia') - 8} x={870} y={340} w={858}>
-        <InfoCard icon="eye" title="Prevalencia observada" sub="frecuencia dentro de esa visibilidad y esa definición" tone="cyan" w={858} h={130} />
+      <Reveal frame={frame} at={w('s06-05', 'prevalencia') - 8} x={900} y={340} w={828}>
+        <InfoCard icon="eye" title="Prevalencia observada" sub="frecuencia dentro de esa visibilidad y esa definición" tone="cyan" w={828} h={130} />
       </Reveal>
-      <Reveal frame={frame} at={w('s06-05', 'cuota') - 8} x={870} y={484} w={858}>
+      <Reveal frame={frame} at={w('s06-05', 'cuota') - 8} x={900} y={484} w={828}>
         <Pill icon="x" tone="amber" size={32}>no es automáticamente una cuota global</Pill>
       </Reveal>
-      <Reveal frame={frame} at={w('s06-05', 'Tampoco') - 6} x={870} y={546} w={858}>
+      <Reveal frame={frame} at={w('s06-05', 'Tampoco') - 6} x={900} y={546} w={828}>
         <Pill icon="x" tone="amber" size={32}>tampoco es la prioridad de Meridian</Pill>
       </Reveal>
       <Reveal frame={frame} at={at('s06-06')} x={0} y={606} w={1728}>

@@ -8,11 +8,11 @@ import { CASES, type RuleKey } from './parts/data';
 import { Stage, segment, wordFrame } from './kit';
 
 const S = 's05-caso';
-const CELL_W = 160;
-const GRID_X = 420;
+const CELL_W = 150;
+const GRID_X = 400;
 const ROW_H = 116;
 const ROW_Y = (i: number) => 112 + i * (ROW_H + 10);
-const NOTE_X = GRID_X + 6 * CELL_W + 24;
+const NOTE_X = GRID_X + 6 * CELL_W + 20;
 
 /** The six files the scene reads, in column order (A, B, C, then the three single-feature controls). */
 const COLS = [CASES[0], CASES[1], CASES[2], CASES[3], CASES[4], CASES[5]];

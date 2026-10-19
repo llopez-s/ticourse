@@ -44,7 +44,7 @@ export function S10Cierre(props: SceneProps) {
 
       {/* the bounded model conclusion */}
       <Reveal frame={frame} at={model} outAt={action - 8} x={0} y={Y} w={1728}>
-        <div style={{ boxSizing: 'border-box', width: 1728, height: 192, padding: '16px 34px', borderRadius: RADIUS.lg, background: C.ink850, border: `2px solid ${alpha(C.cyan, 0.5)}`, fontFamily: FONT.sans }}>
+        <div style={{ boxSizing: 'border-box', width: 1728, height: 216, padding: '16px 34px', borderRadius: RADIUS.lg, background: C.ink850, border: `2px solid ${alpha(C.cyan, 0.5)}`, fontFamily: FONT.sans }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
             <Icon name="flag" size={30} color={C.cyan} />
             <span style={{ fontSize: 28, fontWeight: 800, letterSpacing: 1, color: C.cyanSoft }}>CONCLUSIÓN MODELO · Demo-P, septiembre de 2026</span>
@@ -59,7 +59,7 @@ export function S10Cierre(props: SceneProps) {
           </div>
         </div>
       </Reveal>
-      <Reveal frame={frame} at={at('s10-04') + 10} outAt={action - 8} x={0} y={Y + 212} w={1728}>
+      <Reveal frame={frame} at={at('s10-04') + 10} outAt={action - 8} x={0} y={Y + 234} w={1728}>
         <Pill icon="check" tone="emerald" size={34}>afirmaciones compatibles: unidad y propósito claros</Pill>
       </Reveal>
 
