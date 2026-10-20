@@ -198,183 +198,183 @@ Una máquina virtual lleva
 la suya y cuesta más.
 
 42
-00:02:26.667 --> 00:02:30.733
+00:02:26.533 --> 00:02:31.167
 Otro caso. Se publica un fallo grave
 en el kernel del sistema operativo.
 
 43
-00:02:30.733 --> 00:02:33.667
+00:02:31.167 --> 00:02:34.133
 Un periódico tiene treinta
 contenedores en un mismo host,
 
 44
-00:02:33.667 --> 00:02:36.533
+00:02:34.133 --> 00:02:37.167
 y todas sus imágenes
 se reconstruyeron ayer.
 
 45
-00:02:36.533 --> 00:02:39.500
+00:02:37.167 --> 00:02:40.667
 ¿Qué tiene que actualizar
-para protegerlos?
+para protegerlos mejor?
 
 46
-00:02:39.100 --> 00:02:44.100
+00:02:40.200 --> 00:02:45.200
 A) Las reglas de red entre contenedores
 B) El kernel del host
 C) Las imágenes, con el kernel corregido
 D) Los permisos de cada contenedor
 
 47
-00:02:44.267 --> 00:02:47.500
+00:02:45.367 --> 00:02:48.600
 El kernel del host, porque
 los contenedores no traen el suyo.
 
 48
-00:02:47.500 --> 00:02:50.567
+00:02:48.600 --> 00:02:51.667
 Rehacer las imágenes es el reflejo
 de la primera pregunta,
 
 49
-00:02:50.567 --> 00:02:52.933
+00:02:51.667 --> 00:02:54.033
 pero la imagen no lleva el kernel.
 
 50
-00:02:52.933 --> 00:02:54.400
+00:02:54.033 --> 00:02:55.500
 Con el tren pasa igual.
 
 51
-00:02:54.400 --> 00:02:56.133
+00:02:55.500 --> 00:02:57.233
 Si la avería está en la locomotora,
 
 52
-00:02:56.133 --> 00:02:59.033
+00:02:57.233 --> 00:03:00.133
 cambiar la carga de los
 vagones no la arregla.
 
 53
-00:03:00.467 --> 00:03:04.633
+00:03:01.567 --> 00:03:05.733
 ¿Por qué no llevar las aplicaciones
 a la nube? Esa es otra pregunta.
 
 54
-00:03:04.633 --> 00:03:06.067
+00:03:05.733 --> 00:03:07.167
 Una cosa es dónde viven.
 
 55
-00:03:06.067 --> 00:03:09.967
+00:03:07.167 --> 00:03:11.067
 En casa tienes control y los datos
 dentro, pero compras antes de usar.
 
 56
-00:03:09.967 --> 00:03:12.000
+00:03:11.067 --> 00:03:13.100
 Eso es on-premises.
 
 57
-00:03:12.000 --> 00:03:14.767
+00:03:13.100 --> 00:03:15.867
 En la nube pagas por uso
 y escalas enseguida,
 
 58
-00:03:14.767 --> 00:03:17.100
+00:03:15.867 --> 00:03:18.200
 pero ves menos y dependes de otro.
 
 59
-00:03:17.100 --> 00:03:19.067
+00:03:18.200 --> 00:03:20.167
 Otra, quién las gestiona.
 
 60
-00:03:19.067 --> 00:03:23.700
+00:03:20.167 --> 00:03:24.800
 Con una sola consola, las sedes siguen
 la misma política, pero si la consola cae,
 
 61
-00:03:23.700 --> 00:03:25.333
+00:03:24.800 --> 00:03:26.433
 se quedan a ciegas.
 
 62
-00:03:25.333 --> 00:03:27.967
+00:03:26.433 --> 00:03:29.067
 Si cada sede va a su aire, decide rápido,
 
 63
-00:03:27.967 --> 00:03:32.467
+00:03:29.067 --> 00:03:33.567
 pero las políticas no coinciden
 y los registros no los junta nadie.
 
 64
-00:03:32.467 --> 00:03:35.133
+00:03:33.567 --> 00:03:36.233
 El puerto tiene sus aplicaciones
 de oficina en casa.
 
 65
-00:03:35.133 --> 00:03:38.367
+00:03:36.233 --> 00:03:39.467
 Como en el fútbol, una cosa
 es el campo donde juegas, y otra,
 
 66
-00:03:38.367 --> 00:03:40.500
+00:03:39.467 --> 00:03:41.600
 quién marca las jugadas.
 
 67
-00:03:41.700 --> 00:03:45.933
+00:03:42.800 --> 00:03:47.033
 La última. Una inmobiliaria
 tiene oficinas en doce ciudades.
 
 68
-00:03:45.933 --> 00:03:48.133
+00:03:47.033 --> 00:03:49.233
 Cada una configura
 sus equipos a su manera,
 
 69
-00:03:48.133 --> 00:03:51.333
+00:03:49.233 --> 00:03:52.433
 y nadie vio que el mismo
 correo falso llegó a cinco.
 
 70
-00:03:51.333 --> 00:03:53.767
+00:03:52.433 --> 00:03:54.867
 ¿Qué cambio lo resuelve mejor?
 
 71
-00:03:53.300 --> 00:03:58.300
+00:03:54.400 --> 00:03:59.400
 A) Llevar los servidores a la nube
 B) Segmentar la red de cada oficina
 C) Centralizar la gestión
 D) Dar más autonomía a cada oficina
 
 72
-00:03:58.467 --> 00:04:01.767
+00:03:59.567 --> 00:04:02.867
 Hay que centralizar la gestión,
 porque lo que falla es quién decide.
 
 73
-00:04:01.767 --> 00:04:06.567
+00:04:02.867 --> 00:04:07.667
 La nube cambia dónde viven los servidores,
 pero no quién pone sus reglas.
 
 74
-00:04:06.567 --> 00:04:11.833
+00:04:07.667 --> 00:04:12.933
 O sea, que si cada uno juega a su aire,
 cambiar de campo no los pone de acuerdo.
 
 75
-00:04:13.100 --> 00:04:18.033
+00:04:14.200 --> 00:04:19.133
 Te llevas tres reglas. Un contenedor
 no se parchea, se rehace su imagen.
 
 76
-00:04:18.033 --> 00:04:22.367
+00:04:19.133 --> 00:04:23.467
 El air gap aísla más, luego
 la VM y al final el contenedor.
 
 77
-00:04:22.367 --> 00:04:25.000
+00:04:23.467 --> 00:04:26.100
 Y dónde vive no es quién lo gestiona.
 
 78
-00:04:25.000 --> 00:04:28.633
+00:04:26.100 --> 00:04:29.733
 Lo de dentro se arregla en la imagen.
 Lo de todos, en el host.
 
 79
-00:04:28.633 --> 00:04:34.533
+00:04:29.733 --> 00:04:35.633
 Y mudarse no cambia quién decide. Ahora
 te toca, con las preguntas de la lección.
