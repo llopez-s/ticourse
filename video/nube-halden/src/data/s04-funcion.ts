@@ -12,7 +12,7 @@ export const BIKE = {
 } as const;
 
 /** Who patches the system in each model (s04-03), one chip each on its word; never named as a series. */
-export const LADDER_HEAD = '¿quién parchea el sistema?';
+export const LADDER_HEAD = 'quién parchea el sistema';
 export const LADDER = [
   { text: 'IaaS · el sistema invitado, tuyo', word: 'IaaS', mine: true },
   { text: 'PaaS · SaaS · lo parchea el proveedor', word: 'PaaS', mine: false },
