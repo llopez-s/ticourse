@@ -8,13 +8,14 @@ import { CaseTag, ExamChip } from './parts/Labels';
 import { HostStack } from './parts/Software';
 import { VmStack } from './parts/VmStack';
 import { AirGap } from './parts/s04-escalera/AirGap';
+import { ProposalSketch } from './parts/s04-escalera/ProposalSketch';
 import { Rung } from './parts/s04-escalera/Rung';
 import { TrainStrip } from './parts/s04-escalera/TrainStrip';
 import { Stage, wordFrame } from './kit';
 
 const S = 's04-escalera';
-const ROW_Y = [110, 216, 376];
-const ROW_H = [96, 150, 150];
+const ROW_Y = [110, 214, 380];
+const ROW_H = [94, 156, 146];
 
 /** A short flicker for the glitch on `spill` (≤ 1 s), then a steady rose. */
 function flicker(frame: number, at: number): number {
@@ -86,6 +87,10 @@ export function S04Escalera(props: SceneProps) {
           </div>
           <div style={{ marginTop: 4, marginLeft: 50, fontSize: 32, fontWeight: 750, color: C.textStrong, opacity: progress(frame, line2At, 12) }}>{DECISION[1]}</div>
         </div>
+      ) : null}
+
+      {frame < ladderAt + 10 ? (
+        <ProposalSketch show={progress(frame, proposalAt - 4, 16) * (1 - progress(frame, ladderAt - 12, 14, EASE.inOut))} files={progress(frame, wordFrame(S, 's04-01', 'expedientes') - 6, 14)} />
       ) : null}
 
       {/* «de más a menos aislamiento» */}

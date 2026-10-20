@@ -15,7 +15,7 @@ const S = 's08-cierre';
 const W = STAGE.width;
 const CARDS_H = 430;
 const ART_H = 140;
-const PHRASE_TOP = 418;
+const PHRASE_TOP = 452;
 const PHRASE_W = 1300;
 const NEXT_TOP = 500;
 

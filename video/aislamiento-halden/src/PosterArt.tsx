@@ -1,5 +1,5 @@
 import { C, FONT, alpha } from '../../engine/src/theme/tokens';
-import { TRAIN_ANCHORS, TRAIN_H, Train, trainWidth } from './scenes/parts/Train';
+import { TRAIN_ANCHORS, Train, trainWidth } from './scenes/parts/Train';
 
 /** The poster's image, in its own units. */
 export const POSTER_ART = { w: 640, h: 520 } as const;
@@ -36,7 +36,6 @@ export function PosterArt() {
       </div>
       {label('kernel', TRAIN_ANCHORS.loco, '#7dd3fc')}
       {label('contenedores', (cars.from + cars.to) / 2, C.cyanSoft)}
-      <div style={{ position: 'absolute', left: TRAIN_X, top: TRAIN_Y + TRAIN_H * SCALE + 30, width: 600, height: 4, borderRadius: 2, background: alpha(C.muted, 0.25) }} />
     </div>
   );
 }

@@ -155,10 +155,10 @@ export function S06Ejes(props: SceneProps) {
           <div style={{ position: 'absolute', left: FB.x, top: FB.y }}>
             <Football width={FB.w} field={progress(frame, campoAt, 12)} coach={progress(frame, quienAt, 12)} />
           </div>
-          <div style={{ position: 'absolute', left: BOTTOM.x + BOTTOM.w + 22, top: FB.y + 50, fontFamily: FONT.sans, fontSize: 32, fontWeight: 850, color: '#7dd3fc', opacity: 0.3 + 0.7 * progress(frame, campoAt, 12) }}>
+          <div style={{ position: 'absolute', left: FB.x - 120, top: FB.y + 52, fontFamily: FONT.sans, fontSize: 32, fontWeight: 850, color: '#7dd3fc', opacity: 0.3 + 0.7 * progress(frame, campoAt, 12) }}>
             {FOOTBALL_WHERE}
           </div>
-          <div style={{ position: 'absolute', left: BOTTOM.x + BOTTOM.w + 22, top: FB.y + 112, fontFamily: FONT.sans, fontSize: 32, fontWeight: 850, color: '#fcd34d', opacity: 0.3 + 0.7 * progress(frame, quienAt, 12) }}>
+          <div style={{ position: 'absolute', left: FB.x - 120, top: FB.y + 118, fontFamily: FONT.sans, fontSize: 32, fontWeight: 850, color: '#fcd34d', opacity: 0.3 + 0.7 * progress(frame, quienAt, 12) }}>
             {FOOTBALL_WHO}
           </div>
         </div>

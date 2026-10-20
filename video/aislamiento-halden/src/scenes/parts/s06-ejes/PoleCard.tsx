@@ -53,7 +53,7 @@ export function PoleCard({
         width: w,
         height: h,
         boxSizing: 'border-box',
-        padding: '12px 22px',
+        padding: '9px 22px',
         borderRadius: RADIUS.lg,
         border: `2px solid ${alpha(tone, 0.35 + 0.4 * (1 - d))}`,
         background: alpha(C.ink850, 0.92),
@@ -63,11 +63,11 @@ export function PoleCard({
         transform: `translateY(${(1 - s) * 14}px)`,
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 36, fontWeight: 900, color: '#c4b5fd', whiteSpace: 'nowrap', letterSpacing: 0.5 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 34, fontWeight: 900, color: '#c4b5fd', whiteSpace: 'nowrap', letterSpacing: 0.5 }}>
         <Icon name={icon} size={34} color={tone} />
         {title}
       </div>
-      <div style={{ marginTop: 6, display: 'flex', flexDirection: 'column', gap: 2 }}>
+      <div style={{ marginTop: 3, display: 'flex', flexDirection: 'column', gap: 0 }}>
         {lines.map((l, k) => {
           const a = clamp01(l.alarm ?? 0);
           return (
@@ -75,7 +75,7 @@ export function PoleCard({
               key={k}
               style={{
                 fontSize: 32,
-                lineHeight: 1.12,
+                lineHeight: 1.08,
                 fontWeight: 720,
                 whiteSpace: 'nowrap',
                 color: a > 0.5 ? C.roseSoft : l.con ? '#fcd34d' : C.textStrong,
