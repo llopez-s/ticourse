@@ -354,6 +354,10 @@ describe('lesson videos', () => {
     // pretends to be and whether it knows it lies, with four exam-style questions, after the «Misinformation no es
     // disinformation» callout and before the paragraph that hands over to vulnerabilities
     expect(youtubeVideos.find((v) => v.block.youtube === 'JEKT8yGqCx4')?.module).toBe('sp2m3');
+    // V38 asks where sp2m5's flaw was born (the shared machine, the cloud's layers, the phone in the pocket) with three
+    // exam-style questions, after the «Cómo clasificar rápido en el examen» callout and before the rooting and side
+    // loading check
+    expect(youtubeVideos.find((v) => v.block.youtube === 'l0uQFtEGN4s')?.module).toBe('sp2m5');
   });
 
   it('every video block points at relative public assets that exist', async () => {

@@ -146,6 +146,17 @@ const sp2m5: Module = {
       md: 'Pregúntate **dónde nació el fallo**. ¿En el hypervisor o en recursos compartidos entre VMs? *Virtualization*. ¿En un bucket, una API o un rol de la nube? *Cloud*. ¿En algo que te vendió, fabricó o actualizó un tercero? *Supply chain*. ¿En el algoritmo, la longitud de clave o su custodia? *Cryptographic*. ¿En un ajuste que alguien dejó como venía? *Misconfiguration*. ¿En una app fuera de la tienda o en un teléfono rooteado o con jailbreak? *Mobile*. Si el escenario encaja en dos, elige la que el enunciado subraya con su verbo principal.',
     },
     {
+      t: 'p',
+      md: 'Antes del último check, ponte a prueba con tres de estas familias: la máquina compartida, la nube y el móvil, con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Dónde nace el fallo: hipervisor, nube y móvil',
+      youtube: 'l0uQFtEGN4s',
+      poster: 'videos/vulnerabilidades-halden-poster.png',
+      transcript: 'videos/vulnerabilidades-halden-transcript.txt',
+    },
+    {
       t: 'check',
       q: {
         q: 'A warehouse supervisor at the Halden Port Authority roots his corporate Android phone to install a modified inventory app downloaded from a forum. Which TWO mobile vulnerabilities are present?',

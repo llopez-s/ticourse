@@ -218,7 +218,9 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   4:38, published 2026-10-20) sorts the six threat actors into three pairs. **V36 `video/vectores-halden/`** (sp2m2,
   YouTube `8pYBEcZk7SQ`, 4:22, published 2026-10-20) maps the ways into the port's front desk (vector vs. attack surface).
   **V34 `video/ingenieria-halden/`** (sp2m3, `caso-principal-yt`, YouTube `JEKT8yGqCx4`, 7:25, published 2026-10-20) reads
-  social engineering by channel, request, disguise and intent, with four exam-style questions.
+  social engineering by channel, request, disguise and intent, with four exam-style questions. **V38
+  `video/vulnerabilidades-halden/`** (sp2m5, YouTube `l0uQFtEGN4s`, 4:41, published 2026-10-20) asks where the flaw was
+  born (hypervisor, cloud, phone) and sits before the lesson's last check, not before its closing paragraph.
   Every script takes `--video <slug>`. Pipeline: `narration.json` →
   `scripts/tts-elevenlabs.mjs` (ElevenLabs v3, one request per scene with `<tag>` emotion
   directions; needs `ELEVENLABS_API_KEY` in the git-ignored `.env.local`; free plan = 10k chars/month,
