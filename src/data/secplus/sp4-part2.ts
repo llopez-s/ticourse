@@ -147,6 +147,17 @@ const sp4m3: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a las vulnerabilidades, míralo en el puerto y ponte a prueba con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'De la lista al desguace: la vida de un activo',
+      youtube: '1JFdRT7Gkxs',
+      poster: 'videos/activos-halden-poster.png',
+      transcript: 'videos/activos-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Ya sabes qué tienes, de quién es y cómo termina. La siguiente lección se ocupa de lo que le pasa a un activo mientras vive: cómo se **identifican** sus vulnerabilidades. Verás escaneos con y sin credenciales, análisis estático y dinámico de aplicaciones, vigilancia de dependencias, fuentes de inteligencia y pruebas de intrusión, es decir, todas las maneras distintas de enterarte de un problema antes de que se entere otro.',
     },
   ],
