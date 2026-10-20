@@ -26,7 +26,7 @@
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Construir en la nube. {promise}Son tres decisiones, la plantilla, la función y las piezas. Y en cada una hay algo que ganas y algo que arriesgas.",
+      "text": "<confident> {title}Construir en la nube. {promise}Son tres decisiones. La plantilla, la función y las piezas. Y en cada una hay algo que ganas y algo que arriesgas.",
       "pauseAfterMs": 400
     },
     {
@@ -38,7 +38,7 @@
     {
       "id": "s02-02",
       "scene": "s02-plantilla",
-      "text": "<thoughtful> {removed}Lo quitas a la hora, pero quien pasó por la cocina ya la sabe. Así que cambias la clave.",
+      "text": "<thoughtful> {removed}Lo quitas al rato, pero quien pasó por la cocina ya la sabe. Así que cambias la clave.",
       "pauseAfterMs": 400
     },
     {
@@ -68,11 +68,11 @@
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca. Un técnico de una agencia de viajes sube al repositorio una plantilla con una clave de acceso a la nube escrita dentro. A la hora se da cuenta y la quita con otro cambio. ¿Qué es lo mejor que puede hacer? {best}Ojo con ese «mejor». Aquí más de una ayuda, así que quédate con la que resuelve este caso.",
+      "text": "<intrigued> {q1}Te toca. Un técnico de una agencia de viajes sube al repositorio una plantilla con una clave de acceso a la nube escrita dentro. Al rato se da cuenta y la quita con otro cambio. ¿Qué es lo mejor que puede hacer? {best}Ojo con ese «mejor». Más de una opción ayuda, pero quédate con la que resuelve este caso.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "3.1",
-        "scenario": "Un técnico de una agencia de viajes sube al repositorio una plantilla de IaC con una clave de acceso a la nube en claro. A la hora, la quita con otro cambio.",
+        "scenario": "Un técnico de una agencia de viajes sube al repositorio una plantilla de IaC con una clave de acceso a la nube en claro. Al rato, la quita con otro cambio.",
         "q": "¿Qué es lo MEJOR que puede hacer?",
         "options": [
           "Borrar la clave del historial",
@@ -92,17 +92,17 @@
     {
       "id": "s03-02",
       "scene": "s03-p1",
-      "text": "<firm> {ok-1}Lo bueno es anular esa clave y crear otra, ya fuera de la plantilla. {trap-1}Limpiar el historial parece rematarlo, pero quien la copió ya la tiene.",
+      "text": "<firm> {ok-1}Lo mejor es anular esa clave y crear otra, ya fuera de la plantilla. {trap-1}Limpiar el historial parece arreglarlo, pero quien la copió ya la tiene.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-03",
       "scene": "s03-p1",
-      "text": "<warm> {postit-back}O sea, que como con la alarma, la clave se cambia.",
+      "text": "<warm> {postit-back}O sea, que como con la alarma, hay que anular la clave.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "3.1",
-        "text": "Un secreto subido se anula, no se borra",
+        "text": "Un secreto subido se anula: borrarlo no basta",
         "at": "postit-back",
         "holdSec": 5
       }
@@ -110,13 +110,13 @@
     {
       "id": "s04-01",
       "scene": "s04-funcion",
-      "text": "<engaging> Ahora, la función. {bike}Piensa en una bici pública. No la mantienes tú, la arregla el servicio.",
+      "text": "<engaging> Ahora, la función. Es código que corre sin que gestiones servidores. {bike}Piensa en una bici pública. No la mantienes tú, la arregla el servicio.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-02",
       "scene": "s04-funcion",
-      "text": "<curious> {route}No le puedes atornillar tu localizador. El recorrido te lo da su aplicación. {pass}Y el abono solo vale allí.",
+      "text": "<curious> {route}No le puedes atornillar tu localizador. El recorrido te lo da su aplicación. {pass}El abono solo vale allí.",
       "pauseAfterMs": 400
     },
     {
@@ -128,7 +128,7 @@
     {
       "id": "s04-04",
       "scene": "s04-funcion",
-      "text": "<thoughtful> {port}En el puerto, una tarea nocturna irá a una función serverless, {function}que el proveedor arranca y escala. {yours}Tuyos siguen siendo el código, el permiso y los datos.",
+      "text": "<thoughtful> {port}En el puerto, una tarea nocturna irá a una función serverless, {function}que el proveedor arranca y escala. {yours}Tuyos siguen siendo el código, los permisos y los datos.",
       "pauseAfterMs": 300
     },
     {
@@ -146,7 +146,7 @@
     {
       "id": "s04-06",
       "scene": "s04-funcion",
-      "text": "<firm> {decision}Por eso el puerto los manda a Seguridad desde el primer día. {lockin}Y como el abono, la función queda atada a ese proveedor, el vendor lock-in.",
+      "text": "<firm> {decision}Por eso el puerto los manda a Seguridad desde el primer día. {lockin}Como el abono, la función queda atada a ese proveedor, el vendor lock-in.",
       "pauseAfterMs": 500
     },
     {
@@ -176,19 +176,19 @@
     {
       "id": "s05-02",
       "scene": "s05-p2",
-      "text": "<confident> {ok-2}De los registros que le da el proveedor, porque ahí no hay ninguna máquina suya. {trap-2}Y un agente no tendría dónde ponerlo.",
+      "text": "<confident> {ok-2}De los registros que le da el proveedor, porque en una función no hay máquina suya. {trap-2}Y un agente no tendría dónde ponerlo.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-03",
       "scene": "s05-p2",
       "text": "<warm> {bike-back}O sea, que como en la bici, el recorrido te lo da la aplicación del servicio, no tu localizador.",
-      "pauseAfterMs": 1000
+      "pauseAfterMs": 600
     },
     {
       "id": "s06-01",
       "scene": "s06-piezas",
-      "text": "<engaging> Queda una decisión, cómo se parte. {branches}Imagina las sucursales de un banco. {robbed}Si roban una, las demás no pierden nada.",
+      "text": "<engaging> Queda cómo se parte la aplicación. {branches}Imagina las sucursales de un banco. {robbed}Si roban una, las demás no pierden nada.",
       "pauseAfterMs": 400
     },
     {
@@ -200,7 +200,7 @@
     {
       "id": "s06-03",
       "scene": "s06-piezas",
-      "text": "<warm> {blast}Si cae una, las otras dos siguen, como las sucursales. Hasta dónde llega el daño es el blast radius. {monolith}En una sola pieza, llegaría a todo.",
+      "text": "<warm> {blast}Si atacan una, las otras dos siguen, como las sucursales. El alcance del daño se llama blast radius. {monolith}En una sola pieza, llegaría a todo.",
       "pauseAfterMs": 300
     },
     {
@@ -248,7 +248,7 @@
     {
       "id": "s07-02",
       "scene": "s07-p3",
-      "text": "<firm> {ok-3}Que cada servicio compruebe quién le llama y qué le deja pedir. {trap-3}El perímetro tienta, pero el atacante entró por la puerta pública y el salto fue por dentro.",
+      "text": "<firm> {ok-3}Gana service-to-service authentication, que cada servicio compruebe quién le llama y qué puede pedir. {trap-3}El perímetro tienta, pero el atacante entró por la puerta pública. El salto fue por dentro.",
       "pauseAfterMs": 300
     },
     {
@@ -284,13 +284,13 @@
     {
       "id": "s08-04",
       "scene": "s08-cierre",
-      "text": "<engaging> {phrase}Lo que ganas trae su riesgo. Mira qué copia la plantilla, qué ves de la función y quién llama a cada pieza.",
+      "text": "<engaging> {phrase}Lo que ganas trae su riesgo. Pregúntate qué copia la plantilla, qué ves de la función y quién llama a cada pieza.",
       "pauseAfterMs": 300
     },
     {
       "id": "s08-05",
       "scene": "s08-cierre",
-      "text": "<warm> {next}Y ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "text": "<warm> {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
       "pauseAfterMs": 250
     }
   ]
