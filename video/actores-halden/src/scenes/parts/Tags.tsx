@@ -6,10 +6,8 @@ import { Icon } from '../../../../engine/src/ui';
 export const IMAGE_TAG = 'imagen · no es del puerto';
 /** Drawn by each question scene's background: the engine's panel only prints «EXAMEN · SY0-701 · 2.1». */
 export const QUESTION_TAG = 'pregunta tipo examen · ejemplo';
-/** Added to the question label when the example is not the port's (s05, s07). */
+/** Optional suffix for an off-port question label (V36 uses it; V35 keeps the ficha-literal label, see the brief). */
 export const OUTSIDE_TAG = 'no es del puerto';
-/** «caso de ejemplo · sin fecha»: the port cases (s02, s04, s06), after «Imagina …». */
-export const CASE_TAG = 'Caso de ejemplo · sin fecha';
 
 /** The small dashed pill that marks an everyday image as an image, not a fact of the port. */
 export function ImageTag({ size = 26, style }: { size?: number; style?: CSSProperties }) {
