@@ -1,0 +1,313 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "finding": "alarm",
+    "air-gap": "lock",
+    "spill": "glitch",
+    "down": "error"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {datacenter}En el puerto de Halden, Sistemas quiere pasar {two-apps}dos aplicaciones de oficina de máquinas virtuales a contenedores.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<warm> {not-shipping}De software, nada que ver con los del muelle. {title}Contenedores, VMs y quién gestiona.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<confident> {promise}Vas a ver qué se arregla dónde, qué aísla más y quién decide.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-imagen",
+      "text": "<engaging> {image}Empezamos por el tablón de anuncios, ya en contenedores de prueba. Todo sale de una imagen, la aplicación con lo que necesita.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-imagen",
+      "text": "<clear> {copies}Sus copias, los contenedores, arrancan en segundos y duran poco. No se parchean por dentro, se cambian por otras.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-imagen",
+      "text": "<steady> Por eso se cuida la imagen. {registry}Sale de nuestro registro de imágenes, {provenance}con su firma, {scan}se escanea antes de desplegar {no-root}y nada corre como root.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-imagen",
+      "text": "<concerned> {finding}El escaneo encuentra un componente con un fallo ya publicado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-imagen",
+      "text": "<thoughtful> {two-paths}Corregirlo en cada copia no basta, porque la próxima sale igual. {rebuild}Se corrige la imagen, se escanea otra vez y salen copias nuevas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-imagen",
+      "text": "<warm> {mould}Es como un molde de galletas con una muesca. Lijar las galletas no salva la hornada siguiente, se arregla el molde.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "3.1",
+        "text": "Contenedores: se cambian, no se parchean",
+        "at": "mould",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca. Imagina una tienda en internet. El escaneo encuentra una biblioteca con un fallo grave dentro de sus contenedores. Y esos contenedores se sustituyen por copias nuevas varias veces al día. ¿Cuál es la mejor forma de corregirlo? {best}Ese «mejor» avisa de que varias ayudan, pero solo una arregla lo que pide el caso.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "3.1",
+        "scenario": "En una tienda en internet, el escaneo encuentra una biblioteca con un fallo grave en sus contenedores, que se cambian por copias nuevas varias veces al día.",
+        "q": "¿Cuál es la MEJOR forma de corregirlo?",
+        "options": [
+          "Reiniciar todos los contenedores",
+          "Actualizar la biblioteca en cada contenedor en marcha",
+          "Pasar la tienda a máquinas virtuales",
+          "Rehacer la imagen y desplegarla"
+        ],
+        "answer": 3,
+        "trap": 1,
+        "why": "El fallo viene de la imagen: se corrige ahí y cada copia nueva sale limpia",
+        "trapWhy": "Arregla los que corren, pero la siguiente copia sale de la imagen, con el fallo",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<firm> {ok-1}Se rehace la imagen, y cada copia nueva sale limpia. {trap-1}Actualizar cada contenedor en marcha tapa el agujero un rato, pero la siguiente copia trae el fallo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<warm> {mould-back}O sea, que lijar la galleta no salva la hornada siguiente.",
+      "pauseAfterMs": 1000
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-escalera",
+      "text": "<curious> {proposal}Segunda idea, meter también los expedientes de Recursos Humanos en el servidor del tablón.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-escalera",
+      "text": "<thoughtful> {ladder}Hay tres niveles de aislamiento. {air-gap}El más fuerte es no tener ningún camino de red, un air gap, aunque todo entra y sale a mano.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-escalera",
+      "text": "<clear> {vm}Luego, la máquina virtual. Lleva su propio sistema, con un núcleo que manda sobre todo lo demás, el kernel.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-escalera",
+      "text": "<focused> {container}El contenedor es ligero, {shared-kernel}pero comparte el kernel del servidor, el host. {spill}Un fallo en ese kernel puede llegar a los vecinos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-escalera",
+      "text": "<firm> {decision}Así que los expedientes se quedan en su máquina virtual, sin compartir kernel con el tablón, donde entra toda la plantilla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-escalera",
+      "text": "<warm> {train}Piensa en un tren. {train-map}La locomotora es el kernel, y los vagones, los contenedores. Una máquina virtual lleva la suya y cuesta más.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "3.1",
+        "text": "Air gap, luego VM, luego contenedor",
+        "at": "train-map",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<engaging> {q2}Otro caso. Se publica un fallo grave en el kernel del sistema operativo. Un periódico tiene treinta contenedores en un mismo host, y todas sus imágenes se reconstruyeron ayer. ¿Qué tiene que actualizar para protegerlos mejor?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "3.1",
+        "scenario": "Se publica un fallo grave en el kernel del sistema operativo. Un periódico tiene treinta contenedores en un mismo host, con imágenes reconstruidas ayer.",
+        "q": "¿Qué tiene que actualizar para protegerlos MEJOR?",
+        "options": [
+          "Las reglas de red entre contenedores",
+          "El kernel del host",
+          "Las imágenes, con el kernel corregido",
+          "Los permisos de cada contenedor"
+        ],
+        "answer": 1,
+        "trap": 2,
+        "why": "Los contenedores no traen kernel propio: usan el del host, y ahí está el fallo",
+        "trapWhy": "La imagen lleva la aplicación y sus bibliotecas, no el kernel que comparten todos",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}El kernel del host, porque los contenedores no traen el suyo. {trap-2}Rehacer las imágenes es el reflejo de la primera pregunta, pero la imagen no lleva el kernel.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<warm> {train-back}Con el tren pasa igual. Si la avería está en la locomotora, cambiar la carga de los vagones no la arregla.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "3.1",
+        "text": "El kernel es del host, no de la imagen",
+        "at": "train-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-ejes",
+      "text": "<curious> {cloud-question}¿Por qué no llevar las aplicaciones a la nube? {grid}Esa es otra pregunta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-ejes",
+      "text": "<clear> {on-prem}Una cosa es dónde viven. En casa tienes control y los datos dentro, pero compras antes de usar. Eso es on-premises.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-ejes",
+      "text": "<engaging> {cloud}En la nube pagas por uso y escalas enseguida, pero ves menos y dependes de otro.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-ejes",
+      "text": "<thoughtful> {centralized}Otra, quién las gestiona. Con una sola consola, las sedes siguen la misma política, pero {down}si la consola cae, se quedan a ciegas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-ejes",
+      "text": "<steady> {decentralized}Si cada sede va a su aire, decide rápido, pero las políticas no coinciden y los registros no los junta nadie.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-ejes",
+      "text": "<warm> {port-dot}El puerto tiene sus aplicaciones de oficina en casa. {football}Como en el fútbol, una cosa es el campo donde juegas, y otra, quién marca las jugadas.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "3.1",
+        "text": "On-premises es dónde; centralizar es quién",
+        "at": "football",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}La última. Una inmobiliaria tiene oficinas en doce ciudades. Cada una configura sus equipos a su manera, y nadie vio que el mismo correo falso llegó a cinco. ¿Qué cambio lo resuelve mejor?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "3.1",
+        "scenario": "Una inmobiliaria tiene oficinas en doce ciudades. Cada una configura sus equipos a su manera, y nadie vio que el mismo correo falso llegó a cinco.",
+        "q": "¿Qué cambio lo resuelve MEJOR?",
+        "options": [
+          "Llevar los servidores a la nube",
+          "Segmentar la red de cada oficina",
+          "Centralizar la gestión",
+          "Dar más autonomía a cada oficina"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "Falla quién decide: con una sola gestión hay una política y una vista de todo",
+        "trapWhy": "La nube cambia dónde viven los servidores, no quién decide sus reglas",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<firm> {ok-3}Hay que centralizar la gestión, porque lo que falla es quién decide. {trap-3}La nube cambia dónde viven los servidores, pero no quién pone sus reglas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<warm> {football-back}O sea, que si cada uno juega a su aire, cambiar de campo no los pone de acuerdo.",
+      "pauseAfterMs": 700,
+      "exam": {
+        "objective": "3.1",
+        "text": "Mudarse a la nube no cambia quién decide",
+        "at": "football-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Un contenedor no se parchea, se rehace su imagen.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}El air gap aísla más, luego la VM y al final el contenedor.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y dónde vive no es quién lo gestiona.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Lo de dentro se arregla en la imagen. Lo de todos, en el host. Y mudarse no cambia quién decide. {next}Ahora te toca, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}
