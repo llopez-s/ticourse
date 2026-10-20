@@ -374,7 +374,7 @@ const sp2m2: Module = {
     {
       t: 'video',
       title: 'Un camino o todos: vector y superficie de ataque',
-      youtube: '8pYBEcZk7SQ',
+      youtube: 'E0iZgu8LxHo',
       poster: 'videos/vectores-halden-poster.png',
       transcript: 'videos/vectores-halden-transcript.txt',
     },

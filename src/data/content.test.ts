@@ -349,11 +349,11 @@ describe('lesson videos', () => {
     // V36 draws sp2m2's map of ways in at the port (the attack surface, one path seen up close, the supplier nobody at
     // the desk controls) with three exam-style questions, after the managed-service-provider check and before the
     // paragraph that hands over to social engineering
-    expect(youtubeVideos.find((v) => v.block.youtube === '8pYBEcZk7SQ')?.module).toBe('sp2m2');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'E0iZgu8LxHo')?.module).toBe('sp2m2');
     // V34, a case-and-exam principal, reads sp2m3's social engineering by how it arrives, what it asks for, who it
     // pretends to be and whether it knows it lies, with four exam-style questions, after the «Misinformation no es
     // disinformation» callout and before the paragraph that hands over to vulnerabilities
-    expect(youtubeVideos.find((v) => v.block.youtube === 'JEKT8yGqCx4')?.module).toBe('sp2m3');
+    expect(youtubeVideos.find((v) => v.block.youtube === '-a8r3pd_Ilo')?.module).toBe('sp2m3');
     // V38 asks where sp2m5's flaw was born (the shared machine, the cloud's layers, the phone in the pocket) with three
     // exam-style questions, after the «Cómo clasificar rápido en el examen» callout and before the rooting and side
     // loading check

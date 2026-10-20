@@ -216,8 +216,8 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   missing from the main recording, so Lidia recorded it alone on 2026-10-20 and it went in with `--only` and `--lufs` =
   the excerpt's LUFS + the full import's gain (1.8 dB). **V35 `video/actores-halden/`** (sp2m1, YouTube `aODnqnaMy7w`,
   4:38, published 2026-10-20) sorts the six threat actors into three pairs. **V36 `video/vectores-halden/`** (sp2m2,
-  YouTube `8pYBEcZk7SQ`, 4:22, published 2026-10-20) maps the ways into the port's front desk (vector vs. attack surface).
-  **V34 `video/ingenieria-halden/`** (sp2m3, `caso-principal-yt`, YouTube `JEKT8yGqCx4`, 7:25, published 2026-10-20) reads
+  YouTube `E0iZgu8LxHo`, 4:23, published 2026-10-20; re-uploaded the same day with her last take of s05-01, `8pYBEcZk7SQ` is obsolete) maps the ways into the port's front desk (vector vs. attack surface).
+  **V34 `video/ingenieria-halden/`** (sp2m3, `caso-principal-yt`, YouTube `-a8r3pd_Ilo`, 7:23, published 2026-10-20; re-uploaded the same day with her last take of s11-01, `JEKT8yGqCx4` is obsolete) reads
   social engineering by channel, request, disguise and intent, with four exam-style questions. **V38
   `video/vulnerabilidades-halden/`** (sp2m5, YouTube `l0uQFtEGN4s`, 4:41, published 2026-10-20) asks where the flaw was
   born (hypervisor, cloud, phone) and sits before the lesson's last check, not before its closing paragraph.
