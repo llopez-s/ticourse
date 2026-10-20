@@ -1,0 +1,313 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "cross": "glitch",
+    "open-door": "error",
+    "store": "ping2",
+    "falls": "alarm"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {three}El puerto de Halden comparte servidores, usa una nube pública y reparte móviles. {cracks}Cuando algo falla, mira dónde nació antes de nombrarlo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Dónde nace el fallo. {promise}Lo vemos en la máquina compartida, en la nube y en el bolsillo, con tres preguntas como las del examen.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-maquina",
+      "text": "<engaging> {building}Empezamos por la máquina compartida. Piensa en un edificio de alquiler, {wall}donde las paredes entre pisos son el hipervisor.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-maquina",
+      "text": "<thoughtful> {hole}Abrir un agujero al piso de al lado es salirte del tuyo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-maquina",
+      "text": "<casual> {drawer}Mudarte y encontrar en un cajón los papeles del anterior es otra cosa. Ahí no has roto ninguna pared.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-maquina",
+      "text": "<clear> {server}En un servidor pasa igual. {escape}Si el código de una máquina {cross}cruza al hipervisor o a otra, es un VM escape. Se cierra parcheando el hipervisor.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-maquina",
+      "text": "<focused> {reuse}Si el hipervisor da a una máquina nueva el disco de otra sin borrarlo, es resource reuse. Se cierra limpiando antes de reasignar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-maquina",
+      "text": "<warm> {question}Así que la pregunta es si alguien ha salido de su máquina.",
+      "pauseAfterMs": 1400,
+      "exam": {
+        "objective": "2.3",
+        "text": "VM escape sale; resource reuse hereda restos",
+        "at": "question",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Primera pregunta. Imagina un servidor de virtualización. Alguien da de baja una máquina virtual, y el hipervisor le da su espacio de disco a otra nueva. En la nueva aparecen datos de la anterior, y nadie ha salido de su máquina. ¿Qué control lo habría evitado mejor? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "2.3",
+        "scenario": "En un servidor de virtualización, el hipervisor reasigna el espacio de disco de una VM dada de baja a otra nueva, que encuentra datos de la anterior.",
+        "q": "Nadie ha salido de su máquina. ¿Qué control habría evitado MEJOR el problema?",
+        "options": [
+          "Patch the hypervisor",
+          "Segment the virtual network",
+          "Sanitize resources before reallocating them",
+          "Install an EDR agent in each VM"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "El espacio pasó a otra máquina sin borrar: había que limpiarlo antes de reasignarlo",
+        "trapWhy": "Parchear cierra el VM escape, pero aquí nadie ha salido de su máquina",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<firm> {ok-1}La buena es limpiar el espacio antes de reasignarlo. {trap-1}Parchear el hipervisor tienta, pero eso cierra el escape.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<warm> {drawer-back}O sea, que no había ninguna pared rota, sino un cajón sin vaciar.",
+      "pauseAfterMs": 1000
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-nube",
+      "text": "<engaging> {building}Pasamos a la nube, y volvemos al edificio. {landlord}El casero responde de la estructura y las paredes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-nube",
+      "text": "<warm> {tenant}Y cada inquilino, de quién entra, de cómo cierra y de lo que guarda.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-nube",
+      "text": "<clear> {cloud}Pues la nube funciona así. {below}El hardware, la red del centro de datos y el hipervisor son del proveedor. Esa pared no la pones tú.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-nube",
+      "text": "<thoughtful> {middle}Lo del medio cambia según el servicio. {above}Pero lo de encima, configuración, datos e identidades, es del cliente, {always}siempre.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-nube",
+      "text": "<firm> {reflex}Por eso un bucket público, una clave filtrada o un rol de más le tocan al cliente. Ese reparto es el shared responsibility model.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "3.1",
+        "text": "Datos, identidades y configuración: del cliente",
+        "at": "reflex",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-nube",
+      "text": "<curious> {door}Y queda el hueco. La puerta de la calle la cierra cada vecino, pero todos creen que la cierra el casero. {open-door}Así que se queda abierta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-nube",
+      "text": "<serious> {strip}En la nube, lo que cada uno cree que hace el otro no lo hace nadie.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-08",
+      "scene": "s04-nube",
+      "text": "<steady> {sprawl}Y en tu lado pasa algo parecido, cientos de claves y roles que nadie revisa. Eso es IAM sprawl.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Segunda. Una empresa guarda sus documentos en un SaaS. Alguien borra unos por error, y ya no hay forma de recuperarlos. La empresa creía que el proveedor guardaba copias, pero él solo se compromete a que el servicio funcione. ¿Qué tendría que haber hecho?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "3.1",
+        "scenario": "Una empresa guarda sus documentos en un SaaS. Alguien borra unos por error y no se pueden recuperar. El proveedor solo se compromete a dar el servicio.",
+        "q": "La empresa creía que el proveedor guardaba copias. ¿Qué tendría que haber hecho?",
+        "options": [
+          "Keep its own backups of the data",
+          "Rely on the SaaS provider's copies",
+          "Enable MFA on the SaaS",
+          "Encrypt the documents"
+        ],
+        "answer": 0,
+        "trap": 1,
+        "why": "Los datos son del cliente en cualquier modelo, y sus copias también",
+        "trapWhy": "En SaaS el proveedor lleva casi todo, pero no tus datos ni sus copias",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Guardar sus propias copias, porque los datos son siempre del cliente. {trap-2}Fiarse de las del proveedor era el hueco.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<warm> {door-back}O sea, que era la puerta de la calle, y le tocaba a cada vecino.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "3.1",
+        "text": "Si nadie lo tiene apuntado, no lo hace nadie",
+        "at": "door-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-bolsillo",
+      "text": "<engaging> {concert}Y acabamos en el bolsillo. Piensa en un concierto, con control en la entrada y seguridad por dentro.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-bolsillo",
+      "text": "<curious> {back-door}Si alguien se cuela por la puerta de atrás, se salta el control, pero dentro todo sigue igual.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-bolsillo",
+      "text": "<serious> {guards}Muy distinto es mandar a casa a la seguridad y abrir todas las puertas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-bolsillo",
+      "text": "<clear> {phone}Ahora, el móvil. {store}Si instalas una app de fuera de la tienda oficial, te saltas su revisión.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-bolsillo",
+      "text": "<steady> Pero el sistema sigue entero. {sideload}Eso es side loading.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-bolsillo",
+      "text": "<focused> {root}Quitarle al sistema sus protecciones va mucho más allá. {falls}Cae el aislamiento entre apps, y a menudo el control del MDM. {jailbreak}En Android es rooting, y en iPhone, jailbreaking.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "2.3",
+        "text": "Side loading salta la tienda; rooting, el SO",
+        "at": "root",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}La última. Tienes un móvil Android de empresa con el sistema intacto. Quien lo lleva permite instalar aplicaciones de origen desconocido y se instala una que le han pasado por mensaje. ¿Qué vulnerabilidad describe el caso?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "2.3",
+        "scenario": "Un móvil Android de empresa, sin modificar. Su usuario permite instalar apps de origen desconocido y se instala una que le pasan por mensaje.",
+        "q": "El sistema operativo sigue intacto. ¿Qué vulnerabilidad describe el caso?",
+        "options": [
+          "Jailbreaking",
+          "VM escape",
+          "Rooting",
+          "Side loading"
+        ],
+        "answer": 3,
+        "trap": 2,
+        "why": "Instalar fuera de la tienda oficial es side loading, aunque el sistema siga intacto",
+        "trapWhy": "Rooting es quitarle al sistema sus protecciones, y aquí el sistema está intacto",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<satisfied> {ok-3}Es side loading, porque solo se ha saltado la tienda. {trap-3}Y el rooting no, que nadie ha tocado el sistema.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<warm> {concert-back}O sea, que se ha colado por detrás, pero la seguridad sigue dentro.",
+      "pauseAfterMs": 1000
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Tres reglas. {rule-1}Si sales de tu máquina, es un escape, y si heredas restos sin salir, es resource reuse.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}En la nube, configuración, datos e identidades son tuyos siempre, también en SaaS.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y saltarse la tienda no es rootear el móvil.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Antes de nombrarlo, pregúntate dónde nació el fallo. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}
