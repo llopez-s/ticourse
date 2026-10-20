@@ -20,7 +20,7 @@ const MON = { x: 650, y: 130, w: 400, h: 240 } as const;
 export function S07P3(_props: SceneProps) {
   return (
     <Stage>
-      <QuestionStill>
+      <QuestionStill outside>
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: 'absolute', left: 0, top: 0 }}>
           <rect x={0} y={20} width={W} height={H - 40} rx={18} fill="#0e182b" />
           <rect x={0} y={FLOOR_Y} width={W} height={H - 20 - FLOOR_Y} fill="#0a1222" />

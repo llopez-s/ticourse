@@ -20,7 +20,7 @@ export function S05P2(_props: SceneProps) {
   const sx = WIN.x + 70;
   return (
     <Stage>
-      <QuestionStill>
+      <QuestionStill outside>
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: 'absolute', left: 0, top: 0 }}>
           <rect x={0} y={20} width={W} height={H - 40} rx={18} fill={C.ink900} />
           {/* browser window, empty address bar */}

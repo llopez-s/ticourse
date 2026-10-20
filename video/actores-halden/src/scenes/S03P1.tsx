@@ -44,7 +44,7 @@ function MemeTile({ x, y, k }: { x: number; y: number; k: number }) {
 export function S03P1(_props: SceneProps) {
   return (
     <Stage>
-      <QuestionStill>
+      <QuestionStill outside>
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: 'absolute', left: 0, top: 0 }}>
           <rect x={0} y={20} width={W} height={H - 40} rx={18} fill={C.ink900} />
           <rect x={PAGE.x} y={PAGE.y} width={PAGE.w} height={PAGE.h} rx={20} fill="#111b2e" stroke={C.ink600} strokeWidth={3} />
