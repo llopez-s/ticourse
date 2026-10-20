@@ -362,6 +362,10 @@ describe('lesson videos', () => {
     // there at all) with three exam-style questions, after the «Nota de examen: tres reflejos» callout and before the
     // paragraph that closes Domain 2
     expect(youtubeVideos.find((v) => v.block.youtube === 'H7-dijBeFfs')?.module).toBe('sp2m8');
+    // V45, now the first video of sp3 in course order, walks sp3m1's three decisions before a new cloud app (IaC with
+    // the secrets outside, a serverless function and how to watch it, microservices that check who calls) with three
+    // exam-style questions, after the Halden callout and before the paragraph that hands over to sp3m2
+    expect(youtubeVideos.find((v) => v.block.youtube === 'vUBVKXDS9HM')?.module).toBe('sp3m1');
   });
 
   it('every video block points at relative public assets that exist', async () => {

@@ -144,6 +144,17 @@ const sp3m1: Module = {
     },
     {
       t: 'p',
+      md: 'Tres preguntas como las del examen sobre la plantilla, la función y las piezas, antes de bajar a la red.',
+    },
+    {
+      t: 'video',
+      title: 'Construir en la nube: qué ganas y qué arriesgas',
+      youtube: 'vUBVKXDS9HM',
+      poster: 'videos/nube-halden-poster.png',
+      transcript: 'videos/nube-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Ya tienes la mitad moderna de la arquitectura. La siguiente lección baja al cable y al hipervisor: cómo se aísla una red con **air gap** o con **segmentación lógica**, qué aporta el **SDN**, qué se gana y se pierde quedándose **on-premises**, y por qué un **contenedor** nunca aísla tanto como una **máquina virtual**.',
     },
   ],
