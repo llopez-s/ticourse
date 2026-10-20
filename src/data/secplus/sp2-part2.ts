@@ -146,6 +146,17 @@ const sp2m3: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a las vulnerabilidades, ponte a prueba: cómo llega, quién dice ser y qué te pide, con cuatro preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Ingeniería social: por dónde llega y quién finge ser',
+      youtube: 'JEKT8yGqCx4',
+      poster: 'videos/ingenieria-halden-poster.png',
+      transcript: 'videos/ingenieria-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Con los vectores técnicos y los humanos ya en tu radar, sabes por dónde entra un atacante. La siguiente lección cambia de pregunta: una vez dentro, **qué debilidad explota**. Empezamos con las vulnerabilidades de aplicación, web, sistema operativo y hardware, y con el caso especial en el que nadie tiene todavía el parche: el **zero-day**.',
     },
   ],

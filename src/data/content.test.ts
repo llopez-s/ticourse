@@ -350,6 +350,10 @@ describe('lesson videos', () => {
     // the desk controls) with three exam-style questions, after the managed-service-provider check and before the
     // paragraph that hands over to social engineering
     expect(youtubeVideos.find((v) => v.block.youtube === '8pYBEcZk7SQ')?.module).toBe('sp2m2');
+    // V34, a case-and-exam principal, reads sp2m3's social engineering by how it arrives, what it asks for, who it
+    // pretends to be and whether it knows it lies, with four exam-style questions, after the «Misinformation no es
+    // disinformation» callout and before the paragraph that hands over to vulnerabilities
+    expect(youtubeVideos.find((v) => v.block.youtube === 'JEKT8yGqCx4')?.module).toBe('sp2m3');
   });
 
   it('every video block points at relative public assets that exist', async () => {
