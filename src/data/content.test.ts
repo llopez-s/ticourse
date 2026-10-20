@@ -338,6 +338,10 @@ describe('lesson videos', () => {
     // compensated until it can be patched) with three exam-style questions, after the Halden callout and before the
     // paragraph that hands over to sp4m2
     expect(youtubeVideos.find((v) => v.block.youtube === 'NO2ZOT2crCo')?.module).toBe('sp4m1');
+    // V32 follows one network disk through sp4m3's asset life (found by enumeration, given an owner and a classification,
+    // retired by sanitization or destruction with its certificate) with three exam-style questions, after the Halden
+    // callout and before the paragraph that hands over to sp4m4
+    expect(youtubeVideos.find((v) => v.block.youtube === '1JFdRT7Gkxs')?.module).toBe('sp4m3');
   });
 
   it('every video block points at relative public assets that exist', async () => {
