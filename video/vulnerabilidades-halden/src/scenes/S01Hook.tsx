@@ -59,12 +59,14 @@ export function S01Hook(props: SceneProps) {
 
       {/* The three silhouettes */}
       {THREE.map((t, i) => {
+        // Faint from the first frame (never an empty stage), full on `three`.
         const e = enter(frame, inAt[i], { distance: 24, duration: 18 });
+        const op = 0.3 + 0.7 * e.opacity;
         const crack = progress(frame, cracksAt + i * 8, 22, EASE.inOut);
         const chipOn = progress(frame, chipAt[i], 10) * (1 - 0.5 * progress(frame, (chipAt[i + 1] ?? lastWord) - 2, 12, EASE.inOut));
         return (
           <div key={t.kind}>
-            <div style={{ position: 'absolute', left: CX[i] - size / 2, top, ...e }}>
+            <div style={{ position: 'absolute', left: CX[i] - size / 2, top, transform: e.transform, opacity: op }}>
               <Silhouette kind={t.kind} size={size} crack={crack} glow={0.15 + 0.55 * progress(frame, litAt[i], 12) * (1 - progress(frame, cracksAt, 12)) + 0.7 * Math.max(born, chipOn)} />
             </div>
             {frame >= chipAt[i] - 2 ? (

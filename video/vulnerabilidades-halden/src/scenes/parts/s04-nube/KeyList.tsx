@@ -81,9 +81,9 @@ export function KeyList({ frame, at, keysAt, termAt }: { frame: number; at: numb
             <Icon name="key" size={32} color={gone ? C.faint : C.cyan} />
             <div style={{ width: BARS[i], height: 14, borderRadius: 7, background: alpha(gone ? C.muted : C.text, gone ? 0.22 : 0.4) }} />
             {kind === 'admin' ? (
-              <span style={{ fontSize: 28, fontWeight: 800, color: '#fcd34d', padding: '2px 14px', borderRadius: RADIUS.pill, border: `2px solid ${alpha(C.amber, 0.7)}`, background: alpha(C.amber, 0.1) }}>{KEYS.admin}</span>
+              <span style={{ fontSize: 30, fontWeight: 800, color: '#fcd34d', padding: '2px 14px', borderRadius: RADIUS.pill, border: `2px solid ${alpha(C.amber, 0.7)}`, background: alpha(C.amber, 0.1) }}>{KEYS.admin}</span>
             ) : null}
-            {gone ? <span style={{ fontSize: 28, fontWeight: 700, color: C.faint, fontStyle: 'italic' }}>{KEYS.gone}</span> : null}
+            {gone ? <span style={{ fontSize: 30, fontWeight: 700, color: C.muted, fontStyle: 'italic' }}>{KEYS.gone}</span> : null}
           </div>
         );
       })}
