@@ -214,7 +214,19 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   in course order (no adversary, so V21 stays SILENT PAGER's first). **V32 `video/activos-halden/`** (sp4m3, YouTube
   `1JFdRT7Gkxs`, 4:25, published 2026-10-20) follows one network disk through the asset's life; its trap line s07-03 was
   missing from the main recording, so Lidia recorded it alone on 2026-10-20 and it went in with `--only` and `--lufs` =
-  the excerpt's LUFS + the full import's gain (1.8 dB). Every script takes `--video <slug>`. Pipeline: `narration.json` →
+  the excerpt's LUFS + the full import's gain (1.8 dB). **V35 `video/actores-halden/`** (sp2m1, YouTube `aODnqnaMy7w`,
+  4:38, published 2026-10-20) sorts the six threat actors into three pairs. **V36 `video/vectores-halden/`** (sp2m2,
+  YouTube `E0iZgu8LxHo`, 4:23, published 2026-10-20; re-uploaded the same day with her last take of s05-01, `8pYBEcZk7SQ` is obsolete) maps the ways into the port's front desk (vector vs. attack surface).
+  **V34 `video/ingenieria-halden/`** (sp2m3, `caso-principal-yt`, YouTube `-a8r3pd_Ilo`, 7:23, published 2026-10-20; re-uploaded the same day with her last take of s11-01, `JEKT8yGqCx4` is obsolete) reads
+  social engineering by channel, request, disguise and intent, with four exam-style questions. **V38
+  `video/vulnerabilidades-halden/`** (sp2m5, YouTube `l0uQFtEGN4s`, 4:41, published 2026-10-20) asks where the flaw was
+  born (hypervisor, cloud, phone) and sits before the lesson's last check, not before its closing paragraph.
+  **V37 `video/mitigacion-halden/`** (sp2m8, YouTube `H7-dijBeFfs`, 4:30, published 2026-10-20) picks the BEST
+  mitigation by the cause, just before the paragraph that closes Domain 2. **V45 `video/nube-halden/`** (sp3m1, YouTube
+  `vUBVKXDS9HM`, 4:44, published 2026-10-20) is now the first video of sp3 in course order (IaC, serverless, microservices;
+  no BLIND ARCHITECT, so V16 stays her first). **V46 `video/aislamiento-halden/`** (sp3m2, YouTube `8r0OvoLgKTk`, 4:39,
+  published 2026-10-20) moves two office apps from VMs to containers: what the image fixes and what the host keeps.
+  Every script takes `--video <slug>`. Pipeline: `narration.json` →
   `scripts/tts-elevenlabs.mjs` (ElevenLabs v3, one request per scene with `<tag>` emotion
   directions; needs `ELEVENLABS_API_KEY` in the git-ignored `.env.local`; free plan = 10k chars/month,
   premade voices only + "Voz: ElevenLabs" credit) — or `scripts/tts-chatterbox.mjs` (Chatterbox, local

@@ -90,7 +90,7 @@ const sp3m1: Module = {
     },
     {
       t: 'p',
-      md: '**Infrastructure as code (IaC)** es definir redes, servidores, reglas de firewall y permisos en **ficheros de texto versionados** en lugar de crearlos a mano en una consola. La ventaja de seguridad es triple: los despliegues son **repetibles** (el entorno de pruebas y el de producción salen de la misma plantilla), son **revisables** (un cambio pasa por control de versiones y revisión de código igual que cualquier software) y eliminan el **configuration drift**, esa deriva silenciosa en la que un servidor lleva tres años con una regla temporal que nadie recuerda. Pero el mismo mecanismo amplifica los errores: una plantilla mal escrita **despliega el mismo fallo en cien sitios a la vez** y con una sola orden. El otro riesgo clásico es el de los **secrets in the repo** —contraseñas, claves de API o tokens escritos dentro de la plantilla y subidos al repositorio—, porque cualquiera con acceso al código, o al historial, se lleva las credenciales de producción. Las plantillas se tratan como código sensible: revisión obligatoria, análisis automático de configuración y secretos en un gestor externo referenciados por nombre, nunca en claro.',
+      md: '**Infrastructure as code (IaC)** es definir redes, servidores, reglas de firewall y permisos en **ficheros de texto versionados** en lugar de crearlos a mano en una consola. La ventaja de seguridad es triple: los despliegues son **repetibles** (el entorno de pruebas y el de producción salen de la misma plantilla), son **revisables** (un cambio pasa por control de versiones y revisión de código igual que cualquier software) y eliminan el **configuration drift**, esa deriva silenciosa en la que un servidor lleva tres años con una regla temporal que nadie recuerda. Pero el mismo mecanismo amplifica los errores: una plantilla mal escrita **despliega el mismo fallo en cien sitios a la vez** y con una sola orden. El otro riesgo clásico es el de los **secrets in the repo** —contraseñas, claves de API o tokens escritos dentro de la plantilla y subidos al repositorio—, porque cualquiera con acceso al código, o al historial, se lleva las credenciales de producción. Una credencial que llega a subirse se da por comprometida: se revoca y se sustituye, aunque luego se borre. Las plantillas se tratan como código sensible: revisión obligatoria, análisis automático de configuración y secretos en un gestor externo referenciados por nombre, nunca en claro.',
     },
     {
       t: 'check',
@@ -141,6 +141,17 @@ const sp3m1: Module = {
       kind: 'example',
       title: 'En la Autoridad Portuaria de Halden',
       md: 'El puerto ha partido su viejo sistema de atraques en seis **microservicios** desplegados con **IaC** sobre **IaaS**, y ha movido el portal público a **serverless**. La auditoría encuentra tres cosas: una plantilla de Terraform con la clave del proveedor de pagos en claro; las máquinas del clúster con **dos meses sin parchear**, porque el equipo daba por hecho que «eso lo hace la nube»; y un servicio interno que acepta peticiones de cualquier otro servicio sin autenticación, porque «están en la misma red». Tres hallazgos, tres lecciones del objetivo 3.1: los secretos fuera del repositorio, el **guest OS** en IaaS es tuyo, y en microservicios el tráfico este-oeste también se autentica.',
+    },
+    {
+      t: 'p',
+      md: 'Tres preguntas como las del examen sobre la plantilla, la función y las piezas, antes de bajar a la red.',
+    },
+    {
+      t: 'video',
+      title: 'Construir en la nube: qué ganas y qué arriesgas',
+      youtube: 'vUBVKXDS9HM',
+      poster: 'videos/nube-halden-poster.png',
+      transcript: 'videos/nube-halden-transcript.txt',
     },
     {
       t: 'p',
@@ -328,7 +339,7 @@ const sp3m2: Module = {
     },
     {
       t: 'p',
-      md: 'La **containerization** empaqueta una aplicación con sus dependencias, pero **todos los contenedores de un host comparten el mismo kernel**. Eso los hace ligerísimos y rapidísimos de arrancar —y, al ser **efímeros**, se reemplazan en lugar de parchearse: se reconstruye la imagen y se redespliega—, pero también significa que **su aislamiento es más débil que el de una VM**: una vulnerabilidad del kernel o un contenedor lanzado como privilegiado abren la puerta a un **container escape** hacia el host y hacia sus vecinos. Los controles propios de este modelo miran a la **imagen**: **image provenance** (de dónde viene y quién la firma), **registry trust** (usar registros internos y aprobados en lugar de descargar cualquier imagen pública), escaneo de vulnerabilidades de la imagen antes de desplegarla, y no ejecutar como root ni con privilegios innecesarios.',
+      md: 'La **containerization** empaqueta una aplicación con sus dependencias, pero **todos los contenedores de un host comparten el mismo kernel**. Eso los hace ligerísimos y rapidísimos de arrancar —y, al ser **efímeros**, se reemplazan en lugar de parchearse: se reconstruye la imagen y se redespliega—, pero también significa que **su aislamiento es más débil que el de una VM**: una vulnerabilidad del kernel o un contenedor lanzado como privilegiado abren la puerta a un **container escape** hacia el host y hacia sus vecinos. Los controles propios de este modelo miran a la **imagen**: **image provenance** (de dónde viene y quién la firma), **registry trust** (usar registros internos y aprobados en lugar de descargar cualquier imagen pública), escaneo de vulnerabilidades de la imagen antes de desplegarla, y no ejecutar como root ni con privilegios innecesarios. Y como el kernel es del host, un fallo del kernel se corrige en el host.',
     },
     {
       t: 'table',
@@ -392,6 +403,17 @@ const sp3m2: Module = {
       kind: 'example',
       title: 'En la Autoridad Portuaria de Halden',
       md: 'El puerto tiene los tres modelos a la vez. Los **sistemas de control de las grúas** están **air-gapped** y se actualizan con medios del fabricante, así que el control real está en quién toca ese USB. Las aplicaciones de oficina viven en **VMs on-premises**, donde la auditoría encuentra once máquinas encendidas de un piloto de 2023 que nadie apagó: **VM sprawl** puro, sin parchear y fuera del inventario. Y el nuevo portal de reservas corre en **contenedores** construidos sobre una imagen base descargada de un registro público sin verificar, con un servicio ejecutándose como root. Tres arquitecturas, tres controles distintos: medios extraíbles, ciclo de vida de las VM y procedencia de las imágenes.',
+    },
+    {
+      t: 'p',
+      md: 'Antes del quiz, ponte a prueba con otro caso del puerto: qué se arregla en la imagen, qué en el host y quién gestiona, con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Contenedores, VMs y quién gestiona',
+      youtube: '8r0OvoLgKTk',
+      poster: 'videos/aislamiento-halden-poster.png',
+      transcript: 'videos/aislamiento-halden-transcript.txt',
     },
     {
       t: 'p',

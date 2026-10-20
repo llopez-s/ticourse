@@ -385,6 +385,17 @@ const sp2m8: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de cerrar el Dominio 2, míralo en el puerto y ponte a prueba con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Mitigación y hardening: la técnica que ataca la causa',
+      youtube: 'H7-dijBeFfs',
+      poster: 'videos/mitigacion-halden-poster.png',
+      transcript: 'videos/mitigacion-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Con esto cierras el Dominio 2: sabes quién ataca y por qué, por dónde entra, qué debilidades busca, cómo se ven sus ataques en los logs y qué técnica reduce cada riesgo. El Dominio 3, **Security Architecture**, toma estas mitigaciones y las convierte en diseño: dónde colocar la segmentación y los firewalls en una arquitectura empresarial, cómo aplicar aislamiento y least privilege en la nube, en infraestructura como código y en entornos OT, y cómo proteger los datos según su estado y su clasificación. Lo que aquí era «la mitigación correcta para un escenario» pasa a ser «la arquitectura correcta para una organización».',
     },
   ],

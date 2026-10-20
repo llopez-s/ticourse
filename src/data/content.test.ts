@@ -342,6 +342,34 @@ describe('lesson videos', () => {
     // retired by sanitization or destruction with its certificate) with three exam-style questions, after the Halden
     // callout and before the paragraph that hands over to sp4m4
     expect(youtubeVideos.find((v) => v.block.youtube === '1JFdRT7Gkxs')?.module).toBe('sp4m3');
+    // V35 sorts sp2m1's six threat actors into three pairs (the attributes give the pair, the motivation picks one of
+    // the two) with three exam-style questions, after the Halden callout and before the paragraph that hands over to
+    // sp2m2's vectors
+    expect(youtubeVideos.find((v) => v.block.youtube === 'aODnqnaMy7w')?.module).toBe('sp2m1');
+    // V36 draws sp2m2's map of ways in at the port (the attack surface, one path seen up close, the supplier nobody at
+    // the desk controls) with three exam-style questions, after the managed-service-provider check and before the
+    // paragraph that hands over to social engineering
+    expect(youtubeVideos.find((v) => v.block.youtube === 'E0iZgu8LxHo')?.module).toBe('sp2m2');
+    // V34, a case-and-exam principal, reads sp2m3's social engineering by how it arrives, what it asks for, who it
+    // pretends to be and whether it knows it lies, with four exam-style questions, after the «Misinformation no es
+    // disinformation» callout and before the paragraph that hands over to vulnerabilities
+    expect(youtubeVideos.find((v) => v.block.youtube === '-a8r3pd_Ilo')?.module).toBe('sp2m3');
+    // V38 asks where sp2m5's flaw was born (the shared machine, the cloud's layers, the phone in the pocket) with three
+    // exam-style questions, after the «Cómo clasificar rápido en el examen» callout and before the rooting and side
+    // loading check
+    expect(youtubeVideos.find((v) => v.block.youtube === 'l0uQFtEGN4s')?.module).toBe('sp2m5');
+    // V37 picks sp2m8's BEST mitigation by the cause (what really failed, where the device is, whether it should be
+    // there at all) with three exam-style questions, after the «Nota de examen: tres reflejos» callout and before the
+    // paragraph that closes Domain 2
+    expect(youtubeVideos.find((v) => v.block.youtube === 'H7-dijBeFfs')?.module).toBe('sp2m8');
+    // V45, now the first video of sp3 in course order, walks sp3m1's three decisions before a new cloud app (IaC with
+    // the secrets outside, a serverless function and how to watch it, microservices that check who calls) with three
+    // exam-style questions, after the Halden callout and before the paragraph that hands over to sp3m2
+    expect(youtubeVideos.find((v) => v.block.youtube === 'vUBVKXDS9HM')?.module).toBe('sp3m1');
+    // V46 takes sp3m2's proposal to move two office apps from VMs to containers (what is fixed in the image, what the
+    // shared host kernel keeps, where it lives vs. who manages it) with three exam-style questions, after the Halden
+    // callout and before the paragraph that hands over to sp3m3
+    expect(youtubeVideos.find((v) => v.block.youtube === '8r0OvoLgKTk')?.module).toBe('sp3m2');
   });
 
   it('every video block points at relative public assets that exist', async () => {

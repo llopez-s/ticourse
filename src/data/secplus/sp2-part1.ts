@@ -92,7 +92,7 @@ const sp2m1: Module = {
     { t: 'h', text: 'Insider threat y shadow IT: la amenaza que ya tiene acceso' },
     {
       t: 'p',
-      md: 'El **insider threat** es cualquier persona con **acceso legítimo** —empleada, contratista, proveedor con cuenta— que lo usa contra la organización. El examen distingue dos variantes. El insider **intencional** actúa a propósito: la administradora despedida que borra backups por venganza, el comercial que copia la lista de clientes antes de irse a la competencia, quien vende su acceso a un grupo criminal. El insider **no intencional** causa el daño por error o negligencia: reenvía un fichero confidencial a la dirección equivocada, cae en un phishing, conecta un USB encontrado en el aparcamiento. En ambos casos el rasgo definitorio es el mismo: **los controles perimetrales no lo detienen**, porque ya está dentro y sus acciones parecen legítimas. **Shadow IT** es un caso especial: sistemas, aplicaciones o servicios cloud que un departamento **adquiere y usa sin aprobación ni conocimiento de TI**. Nadie lo hace con mala intención —se busca rapidez o una función que la herramienta corporativa no tiene—, pero el resultado es que existen datos de la organización en lugares que **nadie parchea, monitoriza ni incluye en los backups**. El SY0-701 lo lista como actor porque **amplía la attack surface** desde dentro: una cuenta de almacenamiento personal con documentos del puerto es un vector que el SOC ni siquiera sabe que debe vigilar.',
+      md: 'El **insider threat** es cualquier persona con **acceso legítimo** —empleada, contratista, proveedor con cuenta— que lo usa contra la organización. El examen distingue dos variantes. El insider **intencional** actúa a propósito: la administradora despedida que borra backups por venganza, el comercial que copia la lista de clientes antes de irse a la competencia, quien vende su acceso a un grupo criminal. El insider **no intencional** causa el daño por error o negligencia: reenvía un fichero confidencial a la dirección equivocada, cae en un phishing, conecta un USB encontrado en el aparcamiento. En ambos casos el rasgo definitorio es el mismo: **los controles perimetrales no lo detienen**, porque ya está dentro y sus acciones parecen legítimas. **Shadow IT** es un caso especial: sistemas, aplicaciones o servicios cloud que un departamento **adquiere o usa sin aprobación ni conocimiento de TI**. Nadie lo hace con mala intención —se busca rapidez o una función que la herramienta corporativa no tiene—, pero el resultado es que existen datos de la organización en lugares que **nadie parchea, monitoriza ni incluye en los backups**. El SY0-701 lo lista como actor porque **amplía la attack surface** desde dentro: una cuenta de almacenamiento personal con documentos del puerto es un vector que el SOC ni siquiera sabe que debe vigilar.',
     },
     {
       t: 'check',
@@ -138,13 +138,24 @@ const sp2m1: Module = {
       t: 'callout',
       kind: 'exam',
       title: 'Nota de examen: identifica al actor por la pista',
-      md: 'El SY0-701 nunca te dice «es un nation-state»; te da un rasgo y espera que lo deduzcas. Memoriza estas correspondencias: **mensaje ideológico o protesta** → hacktivist; **exploit a medida, zero-day y años de persistencia** → nation-state; **exige un rescate o desvía pagos** → organized crime; **empleada que copia datos antes de marcharse** → insider intencional; **clic en un enlace o USB conectado por error** → insider no intencional; **herramienta descargada, sin objetivo claro, rastro torpe** → unskilled attacker; **SaaS o dispositivo contratado por un departamento sin aprobación** → shadow IT. Si dos opciones encajan, elige la que explique la **motivación** del escenario.',
+      md: 'El SY0-701 nunca te dice «es un nation-state»; te da un rasgo y espera que lo deduzcas. Memoriza estas correspondencias: **mensaje ideológico o protesta** → hacktivist; **exploit a medida, zero-day y años de persistencia** → nation-state; **exige un rescate o desvía pagos** → organized crime; **empleada que copia datos antes de marcharse** → insider intencional; **clic en un enlace o USB conectado por error** → insider no intencional; **herramienta descargada, sin objetivo claro, rastro torpe** → unskilled attacker; **SaaS o dispositivo que un departamento contrata o usa sin aprobación** → shadow IT. Si dos opciones encajan, elige la que explique la **motivación** del escenario.',
     },
     {
       t: 'callout',
       kind: 'example',
       title: 'En la Autoridad Portuaria de Halden',
       md: 'El SOC del puerto recibe tres alertas la misma semana. Un servidor de control de grúas lleva **catorce meses** comunicándose con un dominio que no aparece en ninguna lista pública, con un implante que nadie había visto antes: eso huele a **nation-state** interesado en la infraestructura. El departamento de aduanas recibe un correo del «director financiero» pidiendo cambiar la cuenta bancaria de un proveedor: patrón de **organized crime** por **financial gain**. Y un escaneo de puertos ruidoso desde una IP residencial, usando una herramienta con la firma por defecto: **unskilled attacker**. Mismo puerto, tres respuestas defensivas distintas.',
+    },
+    {
+      t: 'p',
+      md: 'Antes de pasar a los vectores, míralo en el puerto y ponte a prueba con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Seis actores, tres parejas: el porqué decide',
+      youtube: 'aODnqnaMy7w',
+      poster: 'videos/actores-halden-poster.png',
+      transcript: 'videos/actores-halden-transcript.txt',
     },
     {
       t: 'p',
@@ -353,8 +364,19 @@ const sp2m2: Module = {
         choices: ['Insider threat', 'Message-based', 'Removable device', 'Supply chain (managed service provider)'],
         answer: 3,
         explain:
-          'The attacker reached the victims through a trusted third party that legitimately manages their systems, which is the managed service provider form of the supply chain vector. Insider threat is the tempting distractor because the technician had access, but the technician belongs to an external provider and was compromised, not acting maliciously.',
+          'The attacker reached the victims through a trusted third party that legitimately manages their systems, which is the managed service provider form of the supply chain vector. Insider threat is the tempting distractor because the technician had access, but an insider is someone misusing their own access; here an outside attacker used the compromised account, and the path in was the provider.',
       },
+    },
+    {
+      t: 'p',
+      md: 'Antes de pasar a la ingeniería social, míralo en el puerto y ponte a prueba con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Un camino o todos: vector y superficie de ataque',
+      youtube: 'E0iZgu8LxHo',
+      poster: 'videos/vectores-halden-poster.png',
+      transcript: 'videos/vectores-halden-transcript.txt',
     },
     {
       t: 'p',

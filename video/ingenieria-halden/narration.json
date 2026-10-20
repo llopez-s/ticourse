@@ -1,0 +1,501 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Laura",
+    "rate": 0,
+    "fx": "telefono"
+  },
+  "sfx": {
+    "mail": "mail",
+    "sms": "ping2",
+    "bec-mail": "mail",
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "ok-4": "check",
+    "trap-4": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {message}En el puerto de Halden, como en todas partes, muchos ataques empiezan con un mensaje bien escrito.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Ingeniería social, que ataca a la persona. {promise}Vas a ver cómo llega, qué te pide, quién dice ser y si sabe que miente.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<sarcastic> {adversary}Y por aquí ronda RED MARROW, que vive de engañar. Ya verás qué consejos da.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-canal",
+      "text": "<engaging> {lure}Empezamos por cómo llega. El cebo es una ayuda de transporte que hay que cobrar antes del viernes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-canal",
+      "text": "<clear> {mail}Primero llega por correo, a toda la plantilla. {sms}Luego, el mismo texto, en un SMS al móvil.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-canal",
+      "text": "<thoughtful> {call}Y al final, una llamada. Alguien dice ser de Recursos Humanos y te pide los datos de viva voz.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-canal",
+      "text": "<confident> Es el mismo engaño, con tres nombres. {names}Por correo es phishing, por SMS es smishing, y por teléfono, vishing.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "2.2",
+        "text": "El canal pone el nombre: correo, SMS o voz",
+        "at": "names",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-canal",
+      "text": "<steady> {targeted}Y si va a por una persona concreta, es spear phishing. Si apunta a los altos cargos, whaling.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-canal",
+      "text": "<warm> {letter}Piensa en una carta que te llega en un sobre, en el móvil o leída por teléfono. O sea, que mira cómo llega, no lo que cuenta.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-bec",
+      "text": "<intrigued> Ahora, sin nada técnico. {bec-mail}Imagina que a Finanzas le llega un correo del buzón de verdad de un directivo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-bec",
+      "text": "<serious> Pero alguien se ha colado en ese buzón, {ask}y pide un pago urgente a una cuenta nueva.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-bec",
+      "text": "<curious> {excuse}Y se excusa. Está en una reunión, no puede hablar, y que no se entere nadie.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-bec",
+      "text": "<thoughtful> {nothing}No hay enlace ni adjunto, así que el antivirus no tiene nada que mirar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-bec",
+      "text": "<clear> {green}Y SPF, DKIM y DMARC salen en verde, porque el buzón es el suyo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-bec",
+      "text": "<warm> {sister}Es como el móvil robado de tu hermana. Te escribe desde su número, pero no es ella.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-07",
+      "scene": "s03-bec",
+      "text": "<confident> {names}Esto es un business email compromise, un BEC.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "2.2",
+        "text": "BEC: ni enlace ni adjunto, solo una petición",
+        "at": "names",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-08",
+      "scene": "s03-bec",
+      "text": "<focused> {pretext}Y la excusa de la reunión, para saltarse el paso de siempre, es el pretexting.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-09",
+      "scene": "s03-bec",
+      "text": "<steady> {lookalike}Si falsificaran el dominio del propio puerto, eso sí lo cazaría DMARC.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-p1",
+      "text": "<intrigued> {q1}Te toca. Alguien de Finanzas recibe una llamada. Quien llama dice ser la directora de Compras. Hay que pagar hoy una reparación urgente, y la cuenta la dicta ella. ¿Qué ataque describe mejor este caso? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "2.2",
+        "scenario": "Alguien de Finanzas recibe una llamada. Quien llama dice ser la directora de Compras: hay que pagar hoy una reparación urgente, a la cuenta que ella dicta.",
+        "q": "¿Qué ataque describe MEJOR este caso?",
+        "options": [
+          "Business email compromise (BEC)",
+          "Smishing",
+          "Vishing",
+          "Whaling"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "Llega por una llamada de voz, y el canal pone el nombre",
+        "trapWhy": "La historia es la de un BEC, pero sin correo no hay BEC",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-p1",
+      "text": "<firm> {ok-1}Vishing, porque llega por teléfono. {trap-1}Y sí, la historia es la de un BEC, pero sin correo no hay BEC.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-p1",
+      "text": "<warm> {letter-back}Vuelve la carta de antes. Mira cómo llega, no lo que cuenta.",
+      "pauseAfterMs": 1000
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-fuera",
+      "text": "<curious> {how}Volvemos al directivo. ¿Cómo se para algo sin nada técnico? RED MARROW tiene una idea.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-fuera",
+      "text": "<firm> {intercept-reply}Pues justo eso no. Ese teléfono lo ha puesto quien escribe, así que te contesta quien escribe.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "¿Dudas? Llama al teléfono que viene en el correo. Confía en mí.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-fuera",
+      "text": "<warm> {number}Es como cuando te llama «tu banco». Cuelgas, {card}giras la tarjeta y llamas tú al número de detrás.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-fuera",
+      "text": "<clear> {oob}Confirmar por un canal que ya tenías, nunca por el que trae el mensaje, es out-of-band verification.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "2.2",
+        "text": "Fuera de banda: llama tú al número que ya tenías",
+        "at": "oob",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-fuera",
+      "text": "<steady> {two}Y para pagos y cambios de cuenta, firma una segunda persona. Eso es dual approval.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-fuera",
+      "text": "<relieved> {ends}Así que Finanzas llama al número de la agenda. El directivo está en su despacho, no ha pedido nada, y el pago no sale.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-fuera",
+      "text": "<confident> {wrap}O sea, que contra un engaño sin código, el control es un paso que no se salta.",
+      "pauseAfterMs": 700
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-p2",
+      "text": "<engaging> {q2}Otro caso. Un proveedor de siempre escribe a una empresa desde su buzón de verdad, pero alguien se ha colado dentro. Le manda la factura del mes con una cuenta nueva, y la empresa paga. ¿Qué control lo habría evitado mejor?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "2.2",
+        "scenario": "Un proveedor de siempre escribe a una empresa desde su buzón real, en el que alguien se ha colado, y le manda la factura con una cuenta bancaria nueva.",
+        "q": "La empresa paga. ¿Qué control habría evitado MEJOR el pago?",
+        "options": [
+          "MFA en los buzones de la empresa",
+          "Rechazar todo correo que no pase DMARC",
+          "Formación de concienciación una vez al año",
+          "Out-of-band verification: llamar al número de siempre"
+        ],
+        "answer": 3,
+        "trap": 1,
+        "why": "Confirma el cambio por un canal que la empresa ya tenía, no por el del correo",
+        "trapWhy": "DMARC caza a quien falsifica el dominio; este sale del buzón real y lo pasa",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-p2",
+      "text": "<firm> {ok-2}Llamar al proveedor, al número de siempre. {trap-2}DMARC tienta, pero solo comprueba que nadie falsifica el dominio. Y este correo sale del buzón de verdad, así que lo pasa.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-p2",
+      "text": "<reassuring> {sister-back}Como con el móvil de tu hermana, que venga de su número no prueba que sea ella.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "2.2",
+        "text": "DMARC caza remitentes falsos, no buzones robados",
+        "at": "sister-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-disfraz",
+      "text": "<curious> Ahora, los disfraces. {call-back}Vuelve la llamada de la reparación. Además de vishing, quien llamaba se disfrazaba de otra persona.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-disfraz",
+      "text": "<clear> {person}Hacerse pasar por una persona o por un cargo, como esa directora, es impersonation.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-disfraz",
+      "text": "<thoughtful> {web}Y mira esta web, con el logo, los colores y el tono de la Autoridad Portuaria. Pide a los transportistas renovar su acreditación, con tarjeta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-disfraz",
+      "text": "<engaging> {brand}Aquí el disfraz es de toda una organización, y eso es brand impersonation.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-disfraz",
+      "text": "<serious> {intercept-reply}Ni una cosa ni la otra. {logo}El logo se copia en un minuto. {https}Y la conexión segura solo dice que hablas cifrado con esa dirección, no de quién es.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "Lleva el logo del puerto y conexión segura. Es suya. Confía en mí.",
+        "holdMs": 3500
+      },
+      "exam": {
+        "objective": "2.2",
+        "text": "Impersonation, una persona; brand, una empresa",
+        "at": "https",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-disfraz",
+      "text": "<relieved> Por suerte, aquí nadie ha picado. Y fíjate, disfrazarse de una persona o de una empresa cambia el nombre.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-abrevadero",
+      "text": "<focused> {address}Mira ahora la dirección de esa web. Parece la del puerto, {letter}pero tiene una o cambiada por un cero.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-abrevadero",
+      "text": "<engaging> {typo}El typosquatting es eso, una dirección casi igual que espera a quien teclea deprisa o lee rápido.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-abrevadero",
+      "text": "<thoughtful> {real-site}Lo contrario es no montar nada falso. {waves}Imagina que alguien mete código malicioso en la web del oleaje que medio puerto mira cada mañana.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-abrevadero",
+      "text": "<steady> La web es la de verdad. Quien la envenena no persigue a nadie, espera a que lleguen. {wait}Eso es un watering hole.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "2.2",
+        "text": "Watering hole: envenenan el sitio de siempre",
+        "at": "wait",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-abrevadero",
+      "text": "<warm> {pond}Es como un abrevadero. O te ponen un charco falso al lado, o te envenenan el de siempre.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-p3",
+      "text": "<curious> {q3}Te toca otra vez. Un perfil en redes copia el nombre, el logo y el tono de una naviera conocida. Contesta a las quejas de sus clientes y les pide datos de pago. ¿Qué técnica describe mejor lo que hace?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "2.2",
+        "scenario": "Un perfil en redes copia el nombre, el logo y el tono de una naviera conocida, contesta a las quejas de sus clientes y les pide datos de pago.",
+        "q": "¿Qué técnica describe MEJOR lo que hace el perfil?",
+        "options": [
+          "Brand impersonation",
+          "Typosquatting",
+          "Impersonation",
+          "Watering hole"
+        ],
+        "answer": 0,
+        "trap": 2,
+        "why": "Se hace pasar por una organización entera: su nombre, su logo y su tono",
+        "trapWhy": "Impersonation es fingir ser una persona o un rol, no una marca",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-p3",
+      "text": "<confident> {ok-3}Brand impersonation. {trap-3}Impersonation a secas despista, pero aquí nadie finge ser alguien concreto.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-p3",
+      "text": "<warm> {disguise-back}O sea, que el disfraz es de toda una empresa, no de una persona.",
+      "pauseAfterMs": 1000
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-bulo",
+      "text": "<curious> Y por último, ¿quien difunde algo falso sabe que miente? {family}Piensa en un bulo del grupo de la familia.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-bulo",
+      "text": "<thoughtful> {maker}Alguien lo fabrica sabiendo que es mentira. {forward}Y tu tía lo reenvía, convencida de que es verdad.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-bulo",
+      "text": "<engaging> {port}En el puerto pasa igual. En el grupo de un equipo, alguien reenvía de buena fe que hoy el fichaje no funciona.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-bulo",
+      "text": "<clear> {intent}Lo que decide el nombre es la intención. {names}La tía, que se lo cree, difunde misinformation. Quien lo fabricó sabiendo que es falso, disinformation.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "2.2",
+        "text": "Disinformation miente adrede; misinformation, no",
+        "at": "names",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-bulo",
+      "text": "<warm> O sea, que el mismo bulo puede ser las dos cosas, según quién lo mueva.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-p4",
+      "text": "<steady> {q4}La última. Una noche, decenas de cuentas nuevas publican a la vez el mismo bulo, que un banco cierra mañana sus oficinas. Por la mañana, muchos clientes lo reenvían, convencidos. ¿Cómo se clasifica lo que hacen esas cuentas?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "2.2",
+        "scenario": "Una noche, decenas de cuentas nuevas publican a la vez el mismo bulo: un banco cierra mañana sus oficinas. Luego, muchos clientes lo reenvían, convencidos.",
+        "q": "¿Cómo se clasifica lo que hacen las cuentas nuevas?",
+        "options": [
+          "Misinformation",
+          "Disinformation",
+          "Pretexting",
+          "Watering hole"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "Una campaña coordinada difunde a propósito algo que sabe falso",
+        "trapWhy": "Es lo que hacen los clientes, que se lo creen; preguntan por las cuentas",
+        "countdownMs": 5000,
+        "revealAt": "ok-4",
+        "trapAt": "trap-4"
+      }
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-p4",
+      "text": "<confident> {ok-4}Disinformation. Tantas cuentas nuevas con el mismo texto y a la vez son una campaña, y quien la monta sabe que miente.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-p4",
+      "text": "<firm> {trap-4}Lo de los clientes sí sería misinformation, pero te preguntan por las cuentas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s11-04",
+      "scene": "s11-p4",
+      "text": "<casual> {family-back}Las cuentas son las que fabrican el bulo, y los clientes, la tía del grupo.",
+      "pauseAfterMs": 1000
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-cierre",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}La primera, mira cómo llega, porque el canal le pone el nombre.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-cierre",
+      "text": "<clear> {rule-2}La segunda, si no hay nada técnico, la defensa es un paso que no se salta. Llamas tú, y firma otra persona.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-cierre",
+      "text": "<firm> {rule-3}Y la tercera, mira de qué va disfrazado y si sabe que miente.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s12-04",
+      "scene": "s12-cierre",
+      "text": "<engaging> {phrase}Mira cómo llega, quién dice ser y qué te pide. {next}Y ahora, a practicar. {endcard}A por las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

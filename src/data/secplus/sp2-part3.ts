@@ -101,7 +101,7 @@ const sp2m5: Module = {
     { t: 'h', text: 'Misconfiguración y dispositivos móviles' },
     {
       t: 'p',
-      md: 'La **misconfiguration** es la vulnerabilidad más común y la más barata de corregir: **default settings** (contraseñas de fábrica, servicios de ejemplo activos), **open shares** accesibles sin credenciales, **verbose errors** que revelan versiones, rutas internas o consultas SQL, y **permissive ACLs** que conceden más de lo necesario. No hace falta ningún exploit: el atacante simplemente usa el sistema tal como quedó. En el frente móvil, dos prácticas del usuario desmontan las protecciones del fabricante. El **side loading** instala aplicaciones desde fuera de la tienda oficial, saltándose la revisión de código y la firma; es la vía habitual del spyware disfrazado de app útil. El **jailbreaking** (iOS) y el **rooting** (Android) eliminan las restricciones del sistema operativo para obtener control total, lo que también anula el sandboxing de aplicaciones, el arranque verificado y a menudo la capacidad del MDM corporativo de aplicar políticas.',
+      md: 'La **misconfiguration** es la vulnerabilidad más común y la más barata de corregir: **default settings** (contraseñas de fábrica, servicios de ejemplo activos), **open shares** accesibles sin credenciales, **verbose errors** que revelan versiones, rutas internas o consultas SQL, y **permissive ACLs** que conceden más de lo necesario. No hace falta ningún exploit: el atacante simplemente usa el sistema tal como quedó. En el frente móvil, dos prácticas del usuario desmontan las protecciones del fabricante. El **side loading** instala aplicaciones desde fuera de la tienda oficial, saltándose la revisión de seguridad de la tienda; es la vía habitual del spyware disfrazado de app útil. El **jailbreaking** (iOS) y el **rooting** (Android) eliminan las restricciones del sistema operativo para obtener control total, lo que también debilita el sandboxing de aplicaciones y, según el método, el arranque verificado, y a menudo deja al MDM corporativo sin capacidad de aplicar políticas.',
     },
     {
       t: 'table',
@@ -144,6 +144,17 @@ const sp2m5: Module = {
       kind: 'tip',
       title: 'Cómo clasificar rápido en el examen',
       md: 'Pregúntate **dónde nació el fallo**. ¿En el hypervisor o en recursos compartidos entre VMs? *Virtualization*. ¿En un bucket, una API o un rol de la nube? *Cloud*. ¿En algo que te vendió, fabricó o actualizó un tercero? *Supply chain*. ¿En el algoritmo, la longitud de clave o su custodia? *Cryptographic*. ¿En un ajuste que alguien dejó como venía? *Misconfiguration*. ¿En una app fuera de la tienda o en un teléfono rooteado o con jailbreak? *Mobile*. Si el escenario encaja en dos, elige la que el enunciado subraya con su verbo principal.',
+    },
+    {
+      t: 'p',
+      md: 'Antes del último check, ponte a prueba con tres de estas familias: la máquina compartida, la nube y el móvil, con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Dónde nace el fallo: hipervisor, nube y móvil',
+      youtube: 'l0uQFtEGN4s',
+      poster: 'videos/vulnerabilidades-halden-poster.png',
+      transcript: 'videos/vulnerabilidades-halden-transcript.txt',
     },
     {
       t: 'check',
@@ -238,13 +249,13 @@ const sp2m5: Module = {
         'Which of the following BEST explains why a jailbroken corporate iPhone is a security concern even when the user has installed no malicious apps?',
       choices: [
         'The device can no longer connect to Wi-Fi networks',
-        'Operating system protections such as sandboxing and verified boot are removed, and MDM policies may no longer be enforceable',
+        'OS protections such as app sandboxing and code signing are bypassed, and MDM policies may no longer be enforceable',
         'The device automatically becomes part of a botnet',
         'The provider takes over responsibility for the device under the shared responsibility model',
       ],
       answer: 1,
       explain:
-        'Jailbreaking strips the OS of the restrictions that isolate apps and validate the boot chain, and it commonly breaks the ability of MDM to enforce corporate policy, so the device is exposed regardless of what is installed later. The botnet option is tempting because jailbroken devices are more easily infected, but infection is a possible consequence, not an automatic one.',
+        'Jailbreaking strips the OS of the restrictions that isolate apps and allow only signed code to run, and it commonly breaks the ability of MDM to enforce corporate policy, so the device is exposed regardless of what is installed later. The botnet option is tempting because jailbroken devices are more easily infected, but infection is a possible consequence, not an automatic one.',
     },
     {
       id: 'sp2m5q7',

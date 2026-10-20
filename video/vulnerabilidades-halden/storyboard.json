@@ -1,0 +1,158 @@
+{
+  "title": "Dónde nace el fallo: hipervisor, nube y móvil",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 281,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "La máquina compartida"
+    },
+    {
+      "n": 2,
+      "title": "La nube"
+    },
+    {
+      "n": 3,
+      "title": "El bolsillo"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Dónde nació",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · caso de ejemplo · datos ficticios», sin fecha. Tres siluetas en fila (`three`): un servidor con varias máquinas dentro, una nube y un móvil; cada una con una grieta marcada (`cracks`). La primera frase presenta el puerto (comparte servidores, tiene parte de sus sistemas en una nube pública y da móviles de empresa, sin proveedor ni desde cuándo) y el problema. Al acabarla, título «Dónde nace el fallo» (`title`, antes de los 12 s) y la promesa en tres chips (`promise`): «la máquina compartida · la nube · el bolsillo». Plaquita «SY0-701 · 2.3»",
+      "requiredCues": [
+        "three",
+        "cracks",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-maquina",
+      "chapter": 1,
+      "title": "Una pared y un cajón",
+      "targetSec": 41,
+      "wordBudget": 111,
+      "goal": "El edificio de alquiler en sección, rotulado «imagen · no es del puerto» (`building`): las paredes entre pisos, rotuladas «hipervisor» (`wall`). Un agujero en una pared hacia el piso de al lado (`hole`). Un inquilino nuevo que abre un cajón y encuentra papeles del anterior; las paredes, intactas (`drawer`). Luego el esquema: un servidor con tres máquinas virtuales (`server`). Primera fila: una flecha que sale de una máquina y cruza al hipervisor y a la de al lado → «VM escape · se cierra parcheando el hipervisor» (`escape`). Segunda fila: el hipervisor toma el espacio de disco de una máquina que se da de baja y se lo da a una nueva, con restos dentro → «resource reuse · se cierra borrando antes de reasignar» (`reuse`). Entre las dos, la pregunta que las separa (`question`): «¿alguien ha salido de su máquina?». Tarjeta de examen después de esa frase",
+      "requiredCues": [
+        "building",
+        "wall",
+        "hole",
+        "drawer",
+        "server",
+        "escape",
+        "cross",
+        "reuse",
+        "question"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "El disco de segunda mano",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo», plaquita «SY0-701 · 2.3». El panel tapa la escena hasta el final, así que el fondo se queda quieto (un servidor en esquema, sin nombre ni sitio). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: la que más encaja con este caso, aunque otra suene bien» (`best`), que la voz explica antes de la cuenta atrás con la frase de V28. Cuenta atrás de 5 s; en `ok-1` sale la correcta (Sanitize resources before reallocating them) y en `trap-1` la trampa (Patch the hypervisor). En la resolución vuelve el cajón en una línea (`drawer-back`): nadie ha tirado ninguna pared, había que vaciar el cajón. Sin tarjeta de examen",
+      "requiredCues": [
+        "q1",
+        "best",
+        "ok-1",
+        "trap-1",
+        "drawer-back"
+      ]
+    },
+    {
+      "id": "s04-nube",
+      "chapter": 2,
+      "title": "Lo de abajo, lo de encima y lo de nadie",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "goal": "Vuelve el edificio (`building`): el casero señala estructura, instalación y paredes (`landlord`); el inquilino, sus tres iconos (quién entra, puertas y ventanas, lo que guarda) (`tenant`). La nube en tres franjas (`cloud`). Abajo, «proveedor» (`below`): hardware · red del centro de datos · hipervisor (la pared de s02). En medio, a media luz y sin detalle (`middle`): «según el servicio». Encima, «cliente» (`above`): configuración · datos · identidades, con el sello «siempre» (`always`), y los tres reflejos de la nota (`reflex`): «bucket público · clave filtrada · rol con permisos de más». Nombre: shared responsibility model. Tarjeta de examen tras la frase de los reflejos. La puerta de la calle (`door`) con dos bocadillos (el del casero, «la cierra cada vecino al entrar: lo dice el contrato», y el de un vecino, «eso es cosa del casero») y la puerta abierta de noche; sin portero automático, teclado ni código. En la nube, la franja entre las dos capas iluminada (`strip`): «lo que cada uno cree que hace el otro · no lo hace nadie». Ejemplo rotulado «ejemplo · lado del cliente · no es el registro del puerto» (`sprawl`): una lista de claves de acceso a la nube, muchas de gente que ya no está y varias con «administrador», sin número, nombres ni fechas. Nombre: IAM sprawl. Y la regla del hueco, debajo: «en la duda: configuración, datos o identidades → del cliente»",
+      "requiredCues": [
+        "building",
+        "landlord",
+        "tenant",
+        "cloud",
+        "below",
+        "middle",
+        "above",
+        "always",
+        "reflex",
+        "door",
+        "open-door",
+        "strip",
+        "sprawl"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Lo que no vuelve",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 2 (`q2`), plaquita «SY0-701 · 3.1», sin calificador. Fondo quieto: una nube con unos documentos sin nombre ni texto. En `ok-2` la correcta (Keep its own backups of the data), en `trap-2` la trampa (Rely on the SaaS provider's copies). En la resolución vuelve la puerta de la calle en una línea (`door-back`); la tarjeta de examen después de la trampa",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "door-back"
+      ]
+    },
+    {
+      "id": "s06-bolsillo",
+      "chapter": 3,
+      "title": "La puerta de atrás",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "El recinto de un concierto, rotulado «imagen · no es del puerto» (`concert`): la entrada con su control y, dentro, el personal de seguridad repartido. Alguien se cuela por la puerta de atrás (`back-door`): el control no lo ha visto, pero dentro todo sigue igual. Después, el personal se va a casa y se abren todas las puertas (`guards`). Luego un móvil en esquema (`phone`): una app que llega de fuera de la tienda oficial («sin pasar por la revisión de la tienda») (`store`), con el sistema intacto → side loading (`sideload`); el mismo móvil con sus protecciones tachadas («aislamiento entre apps» y, más pequeño, «a menudo: arranque verificado · MDM») → rooting en Android (`root`) y jailbreaking en iPhone (`jailbreak`), uno al lado del otro. Tarjeta de examen al final. Ni spyware, ni móvil que se cae o se rompe",
+      "requiredCues": [
+        "concert",
+        "back-door",
+        "guards",
+        "phone",
+        "store",
+        "sideload",
+        "root",
+        "falls",
+        "jailbreak"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Una app que llega por mensaje",
+      "targetSec": 32,
+      "wordBudget": 65,
+      "goal": "Pregunta tipo examen 3 (`q3`), plaquita «SY0-701 · 2.3», sin calificador. Fondo quieto: un móvil en esquema con un aviso de mensaje, sin texto legible ni app con nombre. En `ok-3` la correcta (Side loading), en `trap-3` la trampa (Rooting). En la resolución vuelve el concierto en una línea (`concert-back`): se ha colado por detrás, pero la seguridad sigue dentro. Sin tarjeta de examen",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "concert-back"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (el cajón · la puerta de la calle · la puerta de atrás del concierto) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Si algo salta de una máquina a otra, es un escape y se parchea el hipervisor; si heredas restos sin salir de la tuya, es reuse y se limpia antes de reasignar» · «En la nube, lo de abajo es del proveedor; configuración, datos e identidades, tuyos siempre, también en SaaS. Y lo que nadie tiene apuntado no lo hace nadie» · «Instalar fuera de la tienda es side loading; quitarle al sistema sus protecciones es rooting en Android y jailbreaking en iPhone». La frase para el examen (`phrase`): «Antes de nombrarlo, pregúntate dónde nació el fallo». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
