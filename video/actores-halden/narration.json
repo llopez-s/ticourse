@@ -14,7 +14,13 @@
     "ok-2": "check",
     "trap-2": "block",
     "ok-3": "check",
-    "trap-3": "block"
+    "trap-3": "block",
+    "swap": "glitch",
+    "encrypt": "lock",
+    "reports": "typing",
+    "wipe": "error",
+    "sent": "mail",
+    "chat-ping": "ping2"
   },
   "segments": [
     {
@@ -44,7 +50,7 @@
     {
       "id": "s02-03",
       "scene": "s02-pantallas",
-      "text": "<curious> {screens}Imagina que, dos mañanas, alguien cambia las pantallas de la terminal de pasajeros con la misma herramienta.",
+      "text": "<curious> {screens}Imagina que, dos mañanas, alguien {swap}cambia las pantallas de la terminal de pasajeros con la misma herramienta.",
       "pauseAfterMs": 250
     },
     {
@@ -122,7 +128,7 @@
     {
       "id": "s04-02",
       "scene": "s04-intrusos",
-      "text": "<tense> {ransom}El primero entra en una oficina y en horas lo cifra todo. {note}Deja una nota, o pagáis o no recuperáis nada.",
+      "text": "<tense> {ransom}El primero entra en una oficina y en horas {encrypt}lo cifra todo. {note}Deja una nota, o pagáis o no recuperáis nada.",
       "pauseAfterMs": 300
     },
     {
@@ -195,7 +201,7 @@
       "id": "s05-04",
       "scene": "s05-p2",
       "text": "<warm> {thief-back}O sea, el ladrón, que en cuanto puede, vende.",
-      "pauseAfterMs": 1000,
+      "pauseAfterMs": 1600,
       "exam": {
         "objective": "2.1",
         "text": "Un zero-day no dice quién: lo dice el motivo",
@@ -212,19 +218,19 @@
     {
       "id": "s06-02",
       "scene": "s06-dentro",
-      "text": "<engaging> Imagina una semana. {sanction}A un empleado lo sancionan, y borra a propósito los pedidos de su sección.",
+      "text": "<engaging> Imagina una semana. {sanction}A un empleado lo sancionan, y {wipe}borra a propósito los pedidos de su sección.",
       "pauseAfterMs": 250
     },
     {
       "id": "s06-03",
       "scene": "s06-dentro",
-      "text": "<concerned> {wrong-mail}Otra persona manda por error la lista de turnos a alguien de fuera.",
+      "text": "<concerned> {wrong-mail}Otra persona {sent}manda por error la lista de turnos a alguien de fuera.",
       "pauseAfterMs": 250
     },
     {
       "id": "s06-04",
       "scene": "s06-dentro",
-      "text": "<curious> {crew-chat}Y los amarradores montan un grupo de mensajería para pasarse las listas de buques. Sistemas ni lo sabe.",
+      "text": "<curious> {crew-chat}Y los amarradores montan {chat-ping}un grupo de mensajería para pasarse las listas de buques. Sistemas ni lo sabe.",
       "pauseAfterMs": 300
     },
     {
@@ -279,7 +285,7 @@
       "id": "s07-03",
       "scene": "s07-p3",
       "text": "<warm> {kitchen-back}O sea, que el del jamón no tuvo que colarse.",
-      "pauseAfterMs": 1000,
+      "pauseAfterMs": 1200,
       "exam": {
         "objective": "2.1",
         "text": "Si ya estaba dentro, es insider aunque venda",
