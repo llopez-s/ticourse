@@ -358,6 +358,10 @@ describe('lesson videos', () => {
     // exam-style questions, after the «Cómo clasificar rápido en el examen» callout and before the rooting and side
     // loading check
     expect(youtubeVideos.find((v) => v.block.youtube === 'l0uQFtEGN4s')?.module).toBe('sp2m5');
+    // V37 picks sp2m8's BEST mitigation by the cause (what really failed, where the device is, whether it should be
+    // there at all) with three exam-style questions, after the «Nota de examen: tres reflejos» callout and before the
+    // paragraph that closes Domain 2
+    expect(youtubeVideos.find((v) => v.block.youtube === 'H7-dijBeFfs')?.module).toBe('sp2m8');
   });
 
   it('every video block points at relative public assets that exist', async () => {

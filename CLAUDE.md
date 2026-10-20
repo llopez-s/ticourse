@@ -221,6 +221,8 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   social engineering by channel, request, disguise and intent, with four exam-style questions. **V38
   `video/vulnerabilidades-halden/`** (sp2m5, YouTube `l0uQFtEGN4s`, 4:41, published 2026-10-20) asks where the flaw was
   born (hypervisor, cloud, phone) and sits before the lesson's last check, not before its closing paragraph.
+  **V37 `video/mitigacion-halden/`** (sp2m8, YouTube `H7-dijBeFfs`, 4:30, published 2026-10-20) picks the BEST
+  mitigation by the cause, just before the paragraph that closes Domain 2.
   Every script takes `--video <slug>`. Pipeline: `narration.json` →
   `scripts/tts-elevenlabs.mjs` (ElevenLabs v3, one request per scene with `<tag>` emotion
   directions; needs `ELEVENLABS_API_KEY` in the git-ignored `.env.local`; free plan = 10k chars/month,
