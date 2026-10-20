@@ -36,7 +36,7 @@ export function PostitBeat({ frame, t }: { frame: number; t: PostitBeatTimes }) 
   // The hand reaches the post-it, then both leave up and to the right.
   const reach = progress(frame, t.removed - 8, 14, EASE.out);
   const pull = progress(frame, t.removed + 8, 30, EASE.inOut);
-  const size = mix(220, 190, onDoor);
+  const size = mix(220, 176, onDoor);
   const px = SPOT[0] - size / 2 + pull * 520;
   const py = SPOT[1] - size / 2 - pull * 230;
   const handX = mix(SPOT[0] + 360, SPOT[0] + 34, reach) + pull * 520;

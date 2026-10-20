@@ -30,9 +30,13 @@ function CloudBack({ show }: { show: number }) {
         <circle key={`f${x}`} cx={x} cy={y} r={r - 3} fill={fill} />
       ))}
       <rect x={153} y={253} width={514} height={124} rx={58} fill={fill} />
-      {LOBES.map(([x, y, r]) => (
-        <circle key={`g${x}`} cx={x} cy={y} r={r - 3} fill={alpha(C.sky, 0.07)} />
-      ))}
+      {/* One uniform tint over the union (stacked translucent circles would show their overlaps). */}
+      <g opacity={0.07}>
+        {LOBES.map(([x, y, r]) => (
+          <circle key={`g${x}`} cx={x} cy={y} r={r - 3} fill={C.sky} />
+        ))}
+        <rect x={153} y={253} width={514} height={124} rx={58} fill={C.sky} />
+      </g>
     </g>
   );
 }
