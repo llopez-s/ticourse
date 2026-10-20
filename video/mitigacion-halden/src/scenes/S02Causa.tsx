@@ -22,7 +22,7 @@ const PROP_TOP = 112;
 const PROP_GAP = 16;
 
 /** A line with an emerald tick or a rose cross, lit on its word. */
-function Reading({ text, good, show, size = 30 }: { text: string; good: boolean; show: number; size?: number }) {
+function Reading({ text, good, show, size = 32 }: { text: string; good: boolean; show: number; size?: number }) {
   return (
     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, opacity: show, transform: `translateY(${(1 - show) * 10}px)`, fontFamily: FONT.sans }}>
       <div style={{ marginTop: 2 }}>

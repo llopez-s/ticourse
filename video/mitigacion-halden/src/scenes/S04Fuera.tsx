@@ -128,11 +128,11 @@ export function S04Fuera(props: SceneProps) {
         <>
           <div style={{ position: 'absolute', left: 20, top: 440, textAlign: 'center', fontFamily: FONT.sans, ...heaterIn }}>
             <Heater width={124} frame={frame} />
-            <div style={{ fontSize: 28, fontWeight: 750, color: C.amber }}>{HEATER_LABEL}</div>
+            <div style={{ fontSize: 32, fontWeight: 750, color: C.amber, whiteSpace: 'nowrap' }}>{HEATER_LABEL}</div>
           </div>
           <div style={{ position: 'absolute', left: 200, top: 420, display: 'flex', flexDirection: 'column', alignItems: 'center', fontFamily: FONT.sans, ...coatIn }}>
             <Coat width={100} glow={progress(frame, abrigoAt + 6, 14)} />
-            <div style={{ fontSize: 28, fontWeight: 750, color: C.cyanSoft, whiteSpace: 'nowrap' }}>{COAT_LABEL}</div>
+            <div style={{ fontSize: 32, fontWeight: 750, color: C.cyanSoft, whiteSpace: 'nowrap' }}>{COAT_LABEL}</div>
           </div>
           <div style={{ position: 'absolute', left: 400, top: 446, ...heaterIn }}>
             <ImageTag size={24} />
