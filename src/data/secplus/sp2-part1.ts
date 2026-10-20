@@ -148,6 +148,17 @@ const sp2m1: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a los vectores, míralo en el puerto y ponte a prueba con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Seis actores, tres parejas: el porqué decide',
+      youtube: 'aODnqnaMy7w',
+      poster: 'videos/actores-halden-poster.png',
+      transcript: 'videos/actores-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Ya sabes quién ataca y por qué. La siguiente lección responde a la pregunta natural: **por dónde entra**. Verás los **threat vectors** técnicos del objetivo 2.2 —mensajes, ficheros, dispositivos extraíbles, software sin soporte, redes inseguras, puertos abiertos, credenciales por defecto y la **supply chain**— y cómo cada uno amplía la **attack surface** que como analista tienes que reducir.',
     },
   ],

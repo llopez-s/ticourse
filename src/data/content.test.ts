@@ -342,6 +342,10 @@ describe('lesson videos', () => {
     // retired by sanitization or destruction with its certificate) with three exam-style questions, after the Halden
     // callout and before the paragraph that hands over to sp4m4
     expect(youtubeVideos.find((v) => v.block.youtube === '1JFdRT7Gkxs')?.module).toBe('sp4m3');
+    // V35 sorts sp2m1's six threat actors into three pairs (the attributes give the pair, the motivation picks one of
+    // the two) with three exam-style questions, after the Halden callout and before the paragraph that hands over to
+    // sp2m2's vectors
+    expect(youtubeVideos.find((v) => v.block.youtube === 'aODnqnaMy7w')?.module).toBe('sp2m1');
   });
 
   it('every video block points at relative public assets that exist', async () => {
