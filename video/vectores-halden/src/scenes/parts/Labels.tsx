@@ -1,0 +1,265 @@
+import type { CSSProperties, ReactNode } from 'react';
+import { C, FONT, RADIUS, alpha } from '../../../../engine/src/theme/tokens';
+import { Icon, clamp01, type IconName } from '../../../../engine/src/ui';
+
+export const STAMP_H = 60;
+export const CHIP_H = 58;
+
+function Dot() {
+  return <span style={{ fontWeight: 700, color: C.faint }}>·</span>;
+}
+
+/**
+ * A case stamp: «Autoridad Portuaria de Halden · caso de ejemplo» (s01).
+ * Never a date; the «datos ficticios» tag is the engine's own.
+ */
+export function CaseStamp({ what, kind }: { what: string; kind: string }) {
+  return (
+    <div
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 14,
+        height: STAMP_H,
+        padding: '0 28px 0 18px',
+        boxSizing: 'border-box',
+        borderRadius: RADIUS.md,
+        border: `2px solid ${alpha(C.cyan, 0.7)}`,
+        background: alpha(C.cyan, 0.1),
+        fontFamily: FONT.sans,
+        fontSize: 32,
+        whiteSpace: 'nowrap',
+      }}
+    >
+      <Icon name="flag" size={32} color={C.cyan} />
+      <span style={{ fontWeight: 800, color: C.textStrong }}>{what}</span>
+      <Dot />
+      <span style={{ fontWeight: 700, color: C.cyanSoft }}>{kind}</span>
+    </div>
+  );
+}
+
+/** The objective plate «SY0-701 · 2.2» (violet = exam), only in s01. */
+export function PlaqueChip({ text }: { text: string }) {
+  return (
+    <div
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 12,
+        height: 50,
+        padding: '0 22px 0 16px',
+        boxSizing: 'border-box',
+        borderRadius: RADIUS.pill,
+        border: `2px solid ${alpha(C.violet, 0.7)}`,
+        background: alpha(C.violet, 0.12),
+        fontFamily: FONT.sans,
+        fontSize: 32,
+        fontWeight: 800,
+        color: '#c4b5fd',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      <Icon name="mortarboard" size={30} color={C.violet} />
+      <span>{text}</span>
+    </div>
+  );
+}
+
+/** A rounded pill with an optional icon; `on` 0–1 brightens border and glow (the voice is on it). */
+export function Pill({
+  text,
+  tone,
+  icon,
+  on = 1,
+  size = 34,
+  height = CHIP_H,
+  weight = 750,
+  color,
+  style,
+}: {
+  text: ReactNode;
+  tone: string;
+  icon?: IconName;
+  on?: number;
+  size?: number;
+  height?: number;
+  weight?: number;
+  color?: string;
+  style?: CSSProperties;
+}) {
+  const o = clamp01(on);
+  return (
+    <div
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 14,
+        height,
+        padding: icon ? '0 28px 0 20px' : '0 28px',
+        boxSizing: 'border-box',
+        borderRadius: RADIUS.pill,
+        border: `2px solid ${alpha(tone, 0.4 + 0.5 * o)}`,
+        background: alpha(tone, 0.06 + 0.12 * o),
+        boxShadow: o > 0.02 ? `0 0 ${Math.round(22 * o)}px ${alpha(tone, 0.3 * o)}` : undefined,
+        fontFamily: FONT.sans,
+        fontSize: size,
+        fontWeight: weight,
+        color: color ?? C.textStrong,
+        whiteSpace: 'nowrap',
+        ...style,
+      }}
+    >
+      {icon ? <Icon name={icon} size={Math.round(size * 0.94)} color={tone} /> : null}
+      <span>{text}</span>
+    </div>
+  );
+}
+
+/** The small grey tag of an everyday image: «imagen · no es del puerto». */
+export function ImageTag({ text = 'imagen · no es del puerto' }: { text?: string }) {
+  return (
+    <div
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 10,
+        height: 44,
+        padding: '0 20px 0 14px',
+        boxSizing: 'border-box',
+        borderRadius: RADIUS.pill,
+        border: `2px dashed ${alpha(C.muted, 0.6)}`,
+        background: alpha(C.ink800, 0.8),
+        fontFamily: FONT.sans,
+        fontSize: 28,
+        fontWeight: 650,
+        color: C.muted,
+        whiteSpace: 'nowrap',
+      }}
+    >
+      <Icon name="eye" size={26} color={C.muted} />
+      <span>{text}</span>
+    </div>
+  );
+}
+
+/** «Caso de ejemplo · sin fecha»: the port's case scenes (s02, s04, s06), top-left, quiet. */
+export function CaseTag({ text = 'Caso de ejemplo · sin fecha' }: { text?: string }) {
+  return (
+    <div
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 10,
+        height: 46,
+        padding: '0 22px 0 16px',
+        boxSizing: 'border-box',
+        borderRadius: RADIUS.pill,
+        border: `2px solid ${alpha(C.cyan, 0.45)}`,
+        background: alpha(C.cyan, 0.07),
+        fontFamily: FONT.sans,
+        fontSize: 28,
+        fontWeight: 700,
+        color: C.cyanSoft,
+        whiteSpace: 'nowrap',
+      }}
+    >
+      <Icon name="flag" size={26} color={C.cyan} />
+      <span>{text}</span>
+    </div>
+  );
+}
+
+/** An exam term named on its word (violet = exam), e.g. «Threat vector». `on` 0–1 as in Pill. */
+export function TermPill({ text, on = 1, size = 40, style }: { text: string; on?: number; size?: number; style?: CSSProperties }) {
+  return <Pill text={text} tone={C.violet} icon="mortarboard" on={on} size={size} height={Math.round(size * 1.6)} weight={850} style={style} />;
+}
+
+/** The small violet chip of an exam name (the map's lines, the third parties). */
+export function ExamChip({ text, on = 1, size = 30 }: { text: string; on?: number; size?: number }) {
+  const o = clamp01(on);
+  return (
+    <div
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        height: Math.round(size * 1.5),
+        padding: `0 ${Math.round(size * 0.6)}px`,
+        boxSizing: 'border-box',
+        borderRadius: RADIUS.pill,
+        border: `2px solid ${alpha(C.violet, 0.45 + 0.45 * o)}`,
+        background: alpha(C.violetDeep, 0.35 + 0.35 * o),
+        fontFamily: FONT.sans,
+        fontSize: size,
+        fontWeight: 800,
+        color: '#c4b5fd',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      {text}
+    </div>
+  );
+}
+
+/**
+ * One of s06's two crossings-out: on the left, the wrong idea as a small box (a word such as «insider», or an icon
+ * such as the click cursor) that a rose line strikes through with `strike` 0–1; on the right, the caption in full
+ * («no es insider: es un actor, no un camino», «aquí nadie hace clic»). Lands with `show` 0–1.
+ */
+export function StrikeTag({
+  word,
+  icon,
+  text,
+  show,
+  strike,
+  size = 34,
+}: {
+  word?: string;
+  icon?: IconName;
+  text: string;
+  show: number;
+  strike: number;
+  size?: number;
+}) {
+  const s = clamp01(strike);
+  const h = Math.round(size * 1.7);
+  return (
+    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 20, opacity: clamp01(show), fontFamily: FONT.sans, whiteSpace: 'nowrap' }}>
+      <div
+        style={{
+          position: 'relative',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: h,
+          minWidth: h,
+          padding: word ? `0 ${Math.round(size * 0.6)}px` : 0,
+          boxSizing: 'border-box',
+          borderRadius: RADIUS.md,
+          border: `2px solid ${alpha(C.muted, 0.6)}`,
+          background: alpha(C.ink800, 0.9),
+          fontSize: size,
+          fontWeight: 800,
+          color: s > 0.5 ? C.muted : C.textStrong,
+        }}
+      >
+        {icon ? <Icon name={icon} size={Math.round(size * 1.05)} color={s > 0.5 ? C.muted : C.text} /> : word}
+        <div
+          style={{
+            position: 'absolute',
+            left: 8,
+            top: '50%',
+            height: 5,
+            width: `calc(${s * 100}% - ${16 * s}px)`,
+            borderRadius: 3,
+            background: C.rose,
+            boxShadow: `0 0 10px ${alpha(C.rose, 0.6)}`,
+            transform: 'translateY(-50%) rotate(-8deg)',
+            transformOrigin: '0 50%',
+          }}
+        />
+      </div>
+      <span style={{ fontSize: size, fontWeight: 750, color: C.textStrong }}>{text}</span>
+    </div>
+  );
+}
