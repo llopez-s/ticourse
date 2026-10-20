@@ -14,7 +14,11 @@
     "ok-2": "check",
     "trap-2": "block",
     "ok-3": "check",
-    "trap-3": "block"
+    "trap-3": "block",
+    "template": "typing",
+    "robbed": "alarm",
+    "monolith": "error",
+    "verify": "lock"
   },
   "segments": [
     {
@@ -218,7 +222,7 @@
     {
       "id": "s06-05",
       "scene": "s06-piezas",
-      "text": "<firm> {decision}Así que cada pieza comprueba quién la llama, aunque venga de dentro. Eso es service-to-service authentication.",
+      "text": "<firm> {decision}Así que {verify}cada pieza comprueba quién la llama, aunque venga de dentro. Eso es service-to-service authentication.",
       "pauseAfterMs": 500
     },
     {
@@ -255,7 +259,7 @@
       "id": "s07-03",
       "scene": "s07-p3",
       "text": "<warm> {branch-back}Como en el banco, el robo tenía que quedarse en una sucursal.",
-      "pauseAfterMs": 700,
+      "pauseAfterMs": 1000,
       "exam": {
         "objective": "3.1",
         "text": "Entre servicios también se pregunta quién llama",
