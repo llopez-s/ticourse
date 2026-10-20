@@ -1,0 +1,301 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "template": "typing",
+    "robbed": "alarm",
+    "monolith": "error",
+    "verify": "lock"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {app}El puerto de Halden va a estrenar una aplicación {cloud}en la nube. Y antes de construirla, toca decidir cómo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Construir en la nube. {promise}Son tres decisiones. La plantilla, la función y las piezas. Y en cada una hay algo que ganas y algo que arriesgas.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-plantilla",
+      "text": "<engaging> Primero, la plantilla. {postit}En una oficina, alguien deja la clave de la alarma en un pósit, {fridge}pegado en la nevera.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-plantilla",
+      "text": "<thoughtful> {removed}Lo quitas al rato, pero quien pasó por la cocina ya la sabe. Así que cambias la clave.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-plantilla",
+      "text": "<clear> {port}En el puerto, Sistemas escribe en una plantilla {template}la red, las máquinas y los permisos de la aplicación nueva. Pruebas y producción salen iguales, y cada cambio se revisa.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-plantilla",
+      "text": "<confident> {iac}Eso es infrastructure as code, o IaC. {risk}Pero copia lo malo igual que lo bueno, así que un error sale en todas partes a la vez.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "3.1",
+        "text": "IaC: la plantilla repite lo bueno y lo malo",
+        "at": "risk",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-plantilla",
+      "text": "<serious> Y lo que escribes se queda en el historial, a la vista, como el pósit. {decision}Por eso la plantilla dice dónde está la clave, no la clave.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca. Un técnico de una agencia de viajes sube al repositorio una plantilla con una clave de acceso a la nube escrita dentro. Al rato se da cuenta y la quita con otro cambio. ¿Qué es lo mejor que puede hacer? {best}Ojo con ese «mejor». Más de una opción ayuda, pero quédate con la que resuelve este caso.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "3.1",
+        "scenario": "Un técnico de una agencia de viajes sube al repositorio una plantilla de IaC con una clave de acceso a la nube en claro. Al rato, la quita con otro cambio.",
+        "q": "¿Qué es lo MEJOR que puede hacer?",
+        "options": [
+          "Borrar la clave del historial",
+          "Hacer privado el repositorio",
+          "Anular la clave y crear otra",
+          "Activar la detección de drift"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "La clave pudo copiarse ya: se anula y la nueva se guarda fuera de la plantilla",
+        "trapWhy": "Limpiar el historial no recoge las copias que alguien ya se llevó",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<firm> {ok-1}Lo mejor es anular esa clave y crear otra, ya fuera de la plantilla. {trap-1}Limpiar el historial parece arreglarlo, pero quien la copió ya la tiene.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<warm> {postit-back}O sea, que como con la alarma, hay que anular la clave.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "3.1",
+        "text": "Un secreto subido se anula: borrarlo no basta",
+        "at": "postit-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-funcion",
+      "text": "<engaging> Ahora, la función. Es código que corre sin que gestiones servidores. {bike}Piensa en una bici pública. No la mantienes tú, la arregla el servicio.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-funcion",
+      "text": "<curious> {route}No le puedes atornillar tu localizador. El recorrido te lo da su aplicación. {pass}El abono solo vale allí.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-funcion",
+      "text": "<clear> {ladder}En la nube, depende del modelo. En IaaS, el sistema operativo invitado es tuyo. En PaaS, en SaaS y en serverless, lo parchea el proveedor.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-funcion",
+      "text": "<thoughtful> {port}En el puerto, una tarea nocturna irá a una función serverless, {function}que el proveedor arranca y escala. {yours}Tuyos siguen siendo el código, los permisos y los datos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-funcion",
+      "text": "<focused> Pero no hay máquina donde poner un agente ni capturar tráfico. {logs}Lo que pasó lo cuentan los registros del proveedor.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "3.1",
+        "text": "Serverless: ves lo que te deja ver el proveedor",
+        "at": "logs",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-funcion",
+      "text": "<firm> {decision}Por eso el puerto los manda a Seguridad desde el primer día. {lockin}Como el abono, la función queda atada a ese proveedor, el vendor lock-in.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<intrigued> {q2}Otra más. El equipo de seguridad de una aseguradora investiga un aviso en una función serverless. Quiere saber qué hizo esa función, igual que lo averiguaría en un servidor. ¿De dónde puede sacar esa información?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "3.1",
+        "scenario": "El equipo de seguridad de una aseguradora investiga un aviso en una función serverless. Quiere saber qué hizo la función, como haría con un servidor.",
+        "q": "¿De dónde puede sacar esa información?",
+        "options": [
+          "Una imagen del disco del host",
+          "Los registros que da el proveedor",
+          "Una captura de tráfico en el host",
+          "Un agente EDR en el sistema operativo de la función"
+        ],
+        "answer": 1,
+        "trap": 3,
+        "why": "Sin máquina propia, lo que pasó lo cuentan los registros que da el proveedor",
+        "trapWhy": "En una función no hay máquina tuya donde poner un agente: eso era en tus servidores",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}De los registros que le da el proveedor, porque en una función no hay máquina suya. {trap-2}Y un agente no tendría dónde ponerlo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<warm> {bike-back}O sea, que como en la bici, el recorrido te lo da la aplicación del servicio, no tu localizador.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-piezas",
+      "text": "<engaging> Queda cómo se parte la aplicación. {branches}Imagina las sucursales de un banco. {robbed}Si roban una, las demás no pierden nada.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-piezas",
+      "text": "<clear> {port}En el puerto, la aplicación nueva irá en tres piezas, {pieces}cada una con su despliegue. Eso son microservices.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-piezas",
+      "text": "<warm> {blast}Si atacan una, las otras dos siguen, como las sucursales. El alcance del daño se llama blast radius. {monolith}En una sola pieza, llegaría a todo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-piezas",
+      "text": "<thoughtful> {calls}El precio es que las piezas se hablan por la red, y cada llamada es una puerta más que proteger.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "3.1",
+        "text": "Microservices: menos daño, más puertas",
+        "at": "calls",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-piezas",
+      "text": "<firm> {decision}Así que {verify}cada pieza comprueba quién la llama, aunque venga de dentro. Eso es service-to-service authentication.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<curious> {q3}La última. Una aplicación de comida a domicilio está partida en microservicios. Un atacante entra por un fallo de las reseñas. Y desde ahí, el servicio de pagos le da las tarjetas. ¿Qué control habría limitado mejor el daño?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "3.1",
+        "scenario": "Una app de reparto usa microservicios. Un atacante entra por un fallo del servicio de reseñas y, desde ahí, el servicio de pagos le da las tarjetas.",
+        "q": "¿Qué control habría limitado MEJOR el daño?",
+        "options": [
+          "Service-to-service authentication",
+          "Más réplicas del servicio de reseñas",
+          "Reglas más estrictas en el firewall perimetral",
+          "Un balanceador delante de pagos"
+        ],
+        "answer": 0,
+        "trap": 2,
+        "why": "Pagos comprueba quién le llama, y reseñas no está entre los que pueden pedir tarjetas",
+        "trapWhy": "El atacante entró por la puerta pública: el perímetro no ve las llamadas de dentro",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<firm> {ok-3}Gana service-to-service authentication, que cada servicio compruebe quién le llama y qué puede pedir. {trap-3}El perímetro tienta, pero el atacante entró por la puerta pública. El salto fue por dentro.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<warm> {branch-back}Como en el banco, el robo tenía que quedarse en una sucursal.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "3.1",
+        "text": "Entre servicios también se pregunta quién llama",
+        "at": "branch-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}La plantilla copia también lo malo, y un secreto subido se anula.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}En serverless, ves lo que te dan los registros del proveedor.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y con microservicios, cada pieza comprueba quién la llama.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Lo que ganas trae su riesgo. Pregúntate qué copia la plantilla, qué ves de la función y quién llama a cada pieza.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-cierre",
+      "text": "<warm> {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

@@ -1,0 +1,369 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:04.367
+El puerto de Halden va a estrenar
+una aplicación en la nube.
+
+2
+00:00:04.367 --> 00:00:07.633
+Y antes de construirla, toca decidir cómo.
+
+3
+00:00:07.633 --> 00:00:12.733
+Construir en la nube. Son tres decisiones.
+La plantilla, la función y las piezas.
+
+4
+00:00:12.733 --> 00:00:16.933
+Y en cada una hay algo
+que ganas y algo que arriesgas.
+
+5
+00:00:17.967 --> 00:00:19.900
+Primero, la plantilla.
+
+6
+00:00:19.900 --> 00:00:23.500
+En una oficina, alguien deja
+la clave de la alarma en un pósit,
+
+7
+00:00:23.500 --> 00:00:25.100
+pegado en la nevera.
+
+8
+00:00:25.100 --> 00:00:28.433
+Lo quitas al rato, pero quien
+pasó por la cocina ya la sabe.
+
+9
+00:00:28.433 --> 00:00:30.200
+Así que cambias la clave.
+
+10
+00:00:30.200 --> 00:00:33.667
+En el puerto, Sistemas escribe
+en una plantilla la red,
+
+11
+00:00:33.667 --> 00:00:36.467
+las máquinas y los permisos
+de la aplicación nueva.
+
+12
+00:00:36.467 --> 00:00:41.300
+Pruebas y producción salen iguales,
+y cada cambio se revisa.
+
+13
+00:00:41.300 --> 00:00:44.400
+Eso es infrastructure as code, o IaC.
+
+14
+00:00:44.400 --> 00:00:46.600
+Pero copia lo malo igual que lo bueno,
+
+15
+00:00:46.600 --> 00:00:49.233
+así que un error sale
+en todas partes a la vez.
+
+16
+00:00:49.233 --> 00:00:54.000
+Y lo que escribes se queda en el
+historial, a la vista, como el pósit.
+
+17
+00:00:54.000 --> 00:00:57.900
+Por eso la plantilla dice dónde
+está la clave, no la clave.
+
+18
+00:00:58.833 --> 00:00:59.833
+Te toca.
+
+19
+00:00:59.833 --> 00:01:04.367
+Un técnico de una agencia de viajes sube
+al repositorio una plantilla con una clave
+
+20
+00:01:04.367 --> 00:01:06.533
+de acceso a la nube escrita dentro.
+
+21
+00:01:06.533 --> 00:01:11.600
+Al rato se da cuenta y la quita con otro
+cambio. ¿Qué es lo mejor que puede hacer?
+
+22
+00:01:11.600 --> 00:01:13.100
+Ojo con ese «mejor».
+
+23
+00:01:13.100 --> 00:01:17.567
+Más de una opción ayuda, pero quédate
+con la que resuelve este caso.
+
+24
+00:01:17.200 --> 00:01:22.200
+A) Borrar la clave del historial
+B) Hacer privado el repositorio
+C) Anular la clave y crear otra
+D) Activar la detección de drift
+
+25
+00:01:22.367 --> 00:01:27.067
+Lo mejor es anular esa clave y crear
+otra, ya fuera de la plantilla.
+
+26
+00:01:27.067 --> 00:01:31.467
+Limpiar el historial parece arreglarlo,
+pero quien la copió ya la tiene.
+
+27
+00:01:31.467 --> 00:01:35.467
+O sea, que como con la alarma,
+hay que anular la clave.
+
+28
+00:01:36.900 --> 00:01:41.467
+Ahora, la función. Es código que corre
+sin que gestiones servidores.
+
+29
+00:01:41.467 --> 00:01:47.000
+Piensa en una bici pública. No la
+mantienes tú, la arregla el servicio.
+
+30
+00:01:47.000 --> 00:01:52.333
+No le puedes atornillar tu localizador.
+El recorrido te lo da su aplicación.
+
+31
+00:01:52.333 --> 00:01:54.533
+El abono solo vale allí.
+
+32
+00:01:54.533 --> 00:02:00.000
+En la nube, depende del modelo. En IaaS,
+el sistema operativo invitado es tuyo.
+
+33
+00:02:00.000 --> 00:02:04.233
+En PaaS, en SaaS y en serverless,
+lo parchea el proveedor.
+
+34
+00:02:04.233 --> 00:02:07.667
+En el puerto, una tarea nocturna
+irá a una función serverless,
+
+35
+00:02:07.667 --> 00:02:09.933
+que el proveedor arranca y escala.
+
+36
+00:02:09.933 --> 00:02:13.833
+Tuyos siguen siendo el código,
+los permisos y los datos.
+
+37
+00:02:14.100 --> 00:02:17.767
+Pero no hay máquina donde poner
+un agente ni capturar tráfico.
+
+38
+00:02:17.767 --> 00:02:20.733
+Lo que pasó lo cuentan
+los registros del proveedor.
+
+39
+00:02:20.733 --> 00:02:24.267
+Por eso el puerto los manda
+a Seguridad desde el primer día.
+
+40
+00:02:24.267 --> 00:02:29.400
+Como el abono, la función queda atada
+a ese proveedor, el vendor lock-in.
+
+41
+00:02:30.300 --> 00:02:31.433
+Otra más.
+
+42
+00:02:31.433 --> 00:02:35.233
+El equipo de seguridad de una aseguradora
+investiga un aviso en una función
+
+43
+00:02:35.233 --> 00:02:36.467
+serverless.
+
+44
+00:02:36.467 --> 00:02:40.833
+Quiere saber qué hizo esa función,
+igual que lo averiguaría en un servidor.
+
+45
+00:02:40.833 --> 00:02:43.500
+¿De dónde puede sacar esa información?
+
+46
+00:02:43.267 --> 00:02:48.267
+A) Una imagen del disco del host
+B) Los registros que da el proveedor
+C) Una captura de tráfico en el host
+D) Un agente EDR en el sistema operativo de la función
+
+47
+00:02:48.433 --> 00:02:52.867
+De los registros que le da el proveedor,
+porque en una función no hay máquina suya.
+
+48
+00:02:52.867 --> 00:02:55.467
+Y un agente no tendría dónde ponerlo.
+
+49
+00:02:55.467 --> 00:02:59.700
+O sea, que como en la bici, el recorrido
+te lo da la aplicación del servicio,
+
+50
+00:02:59.700 --> 00:03:01.433
+no tu localizador.
+
+51
+00:03:02.533 --> 00:03:06.767
+Queda cómo se parte la aplicación.
+Imagina las sucursales de un banco.
+
+52
+00:03:06.767 --> 00:03:09.500
+Si roban una, las demás no pierden nada.
+
+53
+00:03:09.500 --> 00:03:14.933
+En el puerto, la aplicación nueva irá en
+tres piezas, cada una con su despliegue.
+
+54
+00:03:14.933 --> 00:03:17.400
+Eso son microservices.
+
+55
+00:03:17.400 --> 00:03:21.533
+Si atacan una, las otras dos
+siguen, como las sucursales.
+
+56
+00:03:21.533 --> 00:03:26.733
+El alcance del daño se llama blast radius.
+En una sola pieza, llegaría a todo.
+
+57
+00:03:26.733 --> 00:03:29.567
+El precio es que las piezas
+se hablan por la red,
+
+58
+00:03:29.567 --> 00:03:32.367
+y cada llamada es una puerta
+más que proteger.
+
+59
+00:03:32.367 --> 00:03:35.567
+Así que cada pieza comprueba quién
+la llama, aunque venga de dentro.
+
+60
+00:03:35.567 --> 00:03:39.200
+Eso es service-to-service authentication.
+
+61
+00:03:40.200 --> 00:03:45.600
+La última. Una aplicación de comida a
+domicilio está partida en microservicios.
+
+62
+00:03:45.600 --> 00:03:48.200
+Un atacante entra
+por un fallo de las reseñas.
+
+63
+00:03:48.200 --> 00:03:51.400
+Y desde ahí, el servicio
+de pagos le da las tarjetas.
+
+64
+00:03:51.400 --> 00:03:54.633
+¿Qué control habría
+limitado mejor el daño?
+
+65
+00:03:54.100 --> 00:03:59.100
+A) Service-to-service authentication
+B) Más réplicas del servicio de reseñas
+C) Reglas más estrictas en el firewall perimetral
+D) Un balanceador delante de pagos
+
+66
+00:03:59.267 --> 00:04:01.633
+Gana service-to-service authentication,
+
+67
+00:04:01.633 --> 00:04:05.233
+que cada servicio compruebe
+quién le llama y qué puede pedir.
+
+68
+00:04:05.233 --> 00:04:09.333
+El perímetro tienta, pero el atacante
+entró por la puerta pública.
+
+69
+00:04:09.333 --> 00:04:11.167
+El salto fue por dentro.
+
+70
+00:04:11.167 --> 00:04:15.367
+Como en el banco, el robo tenía
+que quedarse en una sucursal.
+
+71
+00:04:16.867 --> 00:04:18.700
+Te llevas tres reglas.
+
+72
+00:04:18.700 --> 00:04:22.767
+La plantilla copia también lo malo,
+y un secreto subido se anula.
+
+73
+00:04:22.767 --> 00:04:26.467
+En serverless, ves lo que te
+dan los registros del proveedor.
+
+74
+00:04:26.467 --> 00:04:29.867
+Y con microservicios,
+cada pieza comprueba quién la llama.
+
+75
+00:04:29.867 --> 00:04:32.000
+Lo que ganas trae su riesgo.
+
+76
+00:04:32.000 --> 00:04:36.600
+Pregúntate qué copia la plantilla, qué ves
+de la función y quién llama a cada pieza.
+
+77
+00:04:36.600 --> 00:04:40.733
+Ahora te toca a ti,
+con las preguntas de la lección.

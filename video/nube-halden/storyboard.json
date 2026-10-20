@@ -1,0 +1,154 @@
+{
+  "title": "Construir en la nube: qué ganas y qué arriesgas",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 266,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "La plantilla"
+    },
+    {
+      "n": 2,
+      "title": "La función"
+    },
+    {
+      "n": 3,
+      "title": "Las piezas"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Tres decisiones antes de estrenar",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · aplicación nueva · propuesta · sin fecha». Una ventana de aplicación vacía, sin nombre (`app`), con una nube detrás (`cloud`) y tres casillas sin marcar. Al acabar la primera frase (el puerto va a estrenar una aplicación en la nube y antes hay que decidir cómo), título «Construir en la nube» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «la plantilla · la función · las piezas». Plaquita «SY0-701 · 3.1». Sin adversario",
+      "requiredCues": [
+        "app",
+        "cloud",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-plantilla",
+      "chapter": 1,
+      "title": "Un pósit en la nevera",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Primero el pósit, rotulado «imagen · no es del puerto»: la nevera de una oficina (`fridge`) con un pósit, «clave de la alarma» (`postit`); una mano lo quita (`removed`) y, al lado, «quien pasó ya la sabe» → «cambias la clave» (el texto de pantalla sin flecha: «quien pasó ya la sabe · cambias la clave»). Ninguna copia en el dibujo, ni central, foto ni molde. Después, el puerto (`port`): Sistemas escribe en una plantilla la red, las máquinas y los permisos de la aplicación nueva (`template`), con tres chips: «pruebas y producción, de la misma plantilla» · «cada cambio, revisado» · «nada a mano» (y, pequeño, «sin deriva»). Nombre (`iac`): infrastructure as code · IaC. Debajo, el riesgo en dos chips (`risk`): «un error, en todas partes a la vez» · «lo que escribes, en el historial»; la tarjeta de examen entra al acabar la frase del error copiado. La decisión, en una tarjeta (`decision`): «la plantilla dice dónde está la clave, no la clave», con el rótulo «gestor de secretos» y, tachado, «secrets in the repo» (los dos rótulos, solo en pantalla)",
+      "requiredCues": [
+        "postit",
+        "fridge",
+        "removed",
+        "port",
+        "template",
+        "iac",
+        "risk",
+        "decision"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Una hora en el repositorio",
+      "targetSec": 42,
+      "wordBudget": 92,
+      "goal": "Pregunta tipo examen 1 (`q1`). La escena dibuja el rótulo «pregunta tipo examen · ejemplo» (el panel solo pinta «EXAMEN · SY0-701 · 3.1», contradicción 17) y, debajo de la pregunta, la línea de «MEJOR» (`best`): «MEJOR: la que encaja con este caso, aunque otra suene bien», que la voz explica antes de la cuenta atrás con otras palabras. El panel tapa la escena hasta el final, así que el fondo se queda quieto (un repositorio genérico, sin nombre ni texto legible). Cuenta atrás de 5 s; en `ok-1` sale la correcta (C, Anular la clave y crear otra) y en `trap-1` la trampa (A, Borrar la clave del historial). En la resolución vuelve el pósit en una línea de pantalla (`postit-back`): «quitar el pósit no se la borra a quien la leyó» (la voz no la dice); la tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q1",
+        "best",
+        "ok-1",
+        "trap-1",
+        "postit-back"
+      ]
+    },
+    {
+      "id": "s04-funcion",
+      "chapter": 2,
+      "title": "Sin máquina",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Una frase llana define la función antes de la bici (`bike`): código que corre sin que gestiones ningún servidor. La bici pública, rotulada «imagen · no es del puerto»: la bici en su anclaje con «la arregla el servicio» (`bike`); el recorrido en la aplicación del servicio y, tachado, «tu localizador» (`route`); y el abono con «solo en esta ciudad» (`pass`). Después, sin pregunta, quién parchea el sistema en cada modelo (`ladder`), en tres chips: «IaaS · el sistema invitado, tuyo» · «PaaS · SaaS · lo parchea el proveedor» · «serverless · también el proveedor» (sin ponerle nombre a la serie de modelos). Luego, el puerto (`port`): una tarea nocturna de la aplicación nueva, sin nombre, pasa a una función serverless (`function`). Dos franjas: «tuyo: el código, los permisos y los datos» (`yours`), a media luz y sin desarrollar; y, resaltada, «sin agente · sin captura de tráfico» (entra con el segmento, sin cue propio) y «los registros del proveedor» (`logs`); la tarjeta de examen entra al acabar esa frase. La decisión (`decision`): «sus registros, a la consola de Seguridad desde el primer día». Al final, a media luz, «atada a ese proveedor» con su nombre, vendor lock-in (`lockin`). Sin agentes del puerto dibujados",
+      "requiredCues": [
+        "bike",
+        "route",
+        "pass",
+        "ladder",
+        "port",
+        "function",
+        "yours",
+        "logs",
+        "decision",
+        "lockin"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Un aviso en una función",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 2 (`q2`), con el rótulo «pregunta tipo examen · ejemplo» dibujado por la escena. Sin calificador. Fondo quieto: una función genérica con un aviso, sin nombre, proveedor ni datos. En `ok-2` la correcta (B, Los registros que da el proveedor), en `trap-2` la trampa (D, Un agente EDR en el sistema operativo de la función). En la resolución vuelve la bici en una línea (`bike-back`): «como en la bici, el recorrido te lo da la aplicación del servicio, no tu localizador», y la franja de los registros de s04, encendida. Sin tarjeta de examen (la del concepto 2 ya salió en s04)",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "bike-back"
+      ]
+    },
+    {
+      "id": "s06-piezas",
+      "chapter": 3,
+      "title": "Una puerta por pieza",
+      "targetSec": 34,
+      "wordBudget": 92,
+      "goal": "Las sucursales, rotuladas «imagen · no es del puerto»: un mapa con cuatro sucursales de un banco (`branches`), una con la persiana forzada y las otras tres intactas, «las demás no pierden nada» (`robbed`). Sin teléfono, tarjetas, clientes ni llamadas entre ellas. Luego, el puerto (`port`): la aplicación nueva en tres piezas sin nombre («recibe las peticiones · guarda los datos · manda los avisos»), cada una con su propio despliegue (`pieces`), con el nombre microservices. Una pieza en ámbar y las otras dos en verde, con el nombre blast radius (`blast`); a media luz, el monolito, una sola pieza entera en ámbar (`monolith`). Entre las piezas, las llamadas como líneas por la red, cada una con una etiqueta «API» (nunca un candado), y el rótulo «más puertas · más registros» (`calls`); la tarjeta de examen entra al acabar esa frase. La decisión, contada sobre el esquema y sin imagen (`decision`): «cada pieza comprueba quién la llama, aunque venga de dentro», con «mTLS · tokens» en pequeño (solo en pantalla) y el nombre service-to-service authentication",
+      "requiredCues": [
+        "branches",
+        "robbed",
+        "port",
+        "pieces",
+        "blast",
+        "monolith",
+        "calls",
+        "decision",
+        "verify"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Reseñas y pagos",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo examen 3 (`q3`), con el rótulo «pregunta tipo examen · ejemplo» dibujado por la escena y «MEJOR» resaltado (ya explicado en s03; sin glosa ni línea). Fondo quieto: tres piezas genéricas de una app de reparto, sin nombre ni datos. En `ok-3` la correcta (A, Service-to-service authentication), en `trap-3` la trampa (C, Reglas más estrictas en el firewall perimetral). En la resolución vuelve la sucursal en una línea (`branch-back`): «como en el banco, el robo tenía que quedarse en una sucursal», y la decisión de s06 encendida; la tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "branch-back"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (el pósit · la bici · la sucursal) (`recap`, `rule-1`, `rule-2`, `rule-3`), en pantalla con el texto completo de la ficha: «La plantilla copia lo bueno y lo malo, así que se revisa, los secretos van fuera y, si uno se sube, se anula» · «En serverless no hay máquina que parchear ni donde mirar. Ves lo que te dan los registros del proveedor, y dependes de él» · «Con microservicios, un fallo hace menos daño, pero cada pieza es una puerta, y cada una comprueba quién la llama» (la voz dice una versión corta de cada una). La frase para el examen (`phrase`): «Lo que ganas trae su riesgo. Pregúntate qué copia la plantilla, qué ves de la función y quién llama a cada pieza». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
