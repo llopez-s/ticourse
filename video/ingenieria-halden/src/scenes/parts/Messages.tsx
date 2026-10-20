@@ -120,7 +120,7 @@ export function BecMail({
         {inside > 0.01 ? (
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginLeft: 108, marginTop: -2, height: 44, opacity: clamp01(inside) }}>
             <Icon name="user" size={30} color={C.rose} />
-            <span style={{ fontSize: 30, fontWeight: 750, color: C.roseSoft }}>{BEC.inside}</span>
+            <span style={{ fontSize: 32, fontWeight: 750, color: C.roseSoft }}>{BEC.inside}</span>
           </div>
         ) : null}
         <HeadRow k="Para:">
