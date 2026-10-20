@@ -29,7 +29,7 @@ const PKG = 76;
 const CARD_W = 548;
 const CARD_GAP = (1728 - 3 * CARD_W) / 2;
 const CARDS_TOP = 136;
-const CARD_H = 170;
+const CARD_H = 196;
 // ---- Phase C: the cloakroom.
 const CLOAK_W = 860;
 
