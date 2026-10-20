@@ -224,7 +224,8 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   **V37 `video/mitigacion-halden/`** (sp2m8, YouTube `H7-dijBeFfs`, 4:30, published 2026-10-20) picks the BEST
   mitigation by the cause, just before the paragraph that closes Domain 2. **V45 `video/nube-halden/`** (sp3m1, YouTube
   `vUBVKXDS9HM`, 4:44, published 2026-10-20) is now the first video of sp3 in course order (IaC, serverless, microservices;
-  no BLIND ARCHITECT, so V16 stays her first).
+  no BLIND ARCHITECT, so V16 stays her first). **V46 `video/aislamiento-halden/`** (sp3m2, YouTube `8r0OvoLgKTk`, 4:39,
+  published 2026-10-20) moves two office apps from VMs to containers: what the image fixes and what the host keeps.
   Every script takes `--video <slug>`. Pipeline: `narration.json` →
   `scripts/tts-elevenlabs.mjs` (ElevenLabs v3, one request per scene with `<tag>` emotion
   directions; needs `ELEVENLABS_API_KEY` in the git-ignored `.env.local`; free plan = 10k chars/month,

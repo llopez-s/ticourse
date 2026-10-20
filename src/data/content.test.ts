@@ -366,6 +366,10 @@ describe('lesson videos', () => {
     // the secrets outside, a serverless function and how to watch it, microservices that check who calls) with three
     // exam-style questions, after the Halden callout and before the paragraph that hands over to sp3m2
     expect(youtubeVideos.find((v) => v.block.youtube === 'vUBVKXDS9HM')?.module).toBe('sp3m1');
+    // V46 takes sp3m2's proposal to move two office apps from VMs to containers (what is fixed in the image, what the
+    // shared host kernel keeps, where it lives vs. who manages it) with three exam-style questions, after the Halden
+    // callout and before the paragraph that hands over to sp3m3
+    expect(youtubeVideos.find((v) => v.block.youtube === '8r0OvoLgKTk')?.module).toBe('sp3m2');
   });
 
   it('every video block points at relative public assets that exist', async () => {

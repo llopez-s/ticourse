@@ -406,6 +406,17 @@ const sp3m2: Module = {
     },
     {
       t: 'p',
+      md: 'Antes del quiz, ponte a prueba con otro caso del puerto: qué se arregla en la imagen, qué en el host y quién gestiona, con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Contenedores, VMs y quién gestiona',
+      youtube: '8r0OvoLgKTk',
+      poster: 'videos/aislamiento-halden-poster.png',
+      transcript: 'videos/aislamiento-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Con los modelos ya ordenados, el objetivo 3.1 se cierra en la próxima lección con los sistemas que no puedes rediseñar a voluntad: **IoT**, **ICS/SCADA**, **RTOS** y **embedded**, donde la disponibilidad manda y parchear a veces no es una opción. Allí verás también la lista completa de **consideraciones de arquitectura** —de la resiliencia al coste, de la escalabilidad a la **inability to patch**— que el examen usa para justificar cada decisión.',
     },
   ],
