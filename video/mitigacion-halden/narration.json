@@ -15,7 +15,10 @@
     "trap-2": "block",
     "gone": "whoosh",
     "ok-3": "check",
-    "trap-3": "block"
+    "trap-3": "block",
+    "everyone": "error",
+    "neighbours": "glitch",
+    "fw": "lock"
   },
   "segments": [
     {
@@ -129,7 +132,7 @@
     {
       "id": "s04-03",
       "scene": "s04-fuera",
-      "text": "<clear> {travels}Así que su protección tiene que viajar con él. Un cortafuegos en el propio portátil decide quién se le conecta. Se llama host-based firewall.",
+      "text": "<clear> {travels}Así que su protección tiene que viajar con él. {fw}Un cortafuegos en el propio portátil decide quién se le conecta. Se llama host-based firewall.",
       "pauseAfterMs": 300
     },
     {
