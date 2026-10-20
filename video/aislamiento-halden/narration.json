@@ -32,7 +32,7 @@
     {
       "id": "s01-03",
       "scene": "s01-hook",
-      "text": "<confident> {promise}Vas a ver qué se arregla dónde, quién aísla más y quién decide.",
+      "text": "<confident> {promise}Vas a ver qué se arregla dónde, qué aísla más y quién decide.",
       "pauseAfterMs": 400
     },
     {
@@ -44,25 +44,25 @@
     {
       "id": "s02-02",
       "scene": "s02-imagen",
-      "text": "<clear> {copies}Sus copias arrancan en segundos y duran poco. No se parchean por dentro, se cambian por otras.",
+      "text": "<clear> {copies}Sus copias, los contenedores, arrancan en segundos y duran poco. No se parchean por dentro, se cambian por otras.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-03",
       "scene": "s02-imagen",
-      "text": "<steady> Por eso se cuida la imagen. {registry}Sale de nuestro registro, {provenance}con su firma, {scan}se escanea antes de desplegar {no-root}y nada corre como root.",
+      "text": "<steady> Por eso se cuida la imagen. {registry}Sale de nuestro registro de imágenes, {provenance}con su firma, {scan}se escanea antes de desplegar {no-root}y nada corre como root.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-04",
       "scene": "s02-imagen",
-      "text": "<concerned> {finding}Y el escaneo encuentra algo, un componente con un fallo ya publicado.",
+      "text": "<concerned> {finding}El escaneo encuentra un componente con un fallo ya publicado.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-05",
       "scene": "s02-imagen",
-      "text": "<thoughtful> {two-paths}Corregirlo en cada copia no sirve, porque la próxima sale igual. {rebuild}Se corrige la imagen, se escanea otra vez y salen copias nuevas.",
+      "text": "<thoughtful> {two-paths}Corregirlo en cada copia no basta, porque la próxima sale igual. {rebuild}Se corrige la imagen, se escanea otra vez y salen copias nuevas.",
       "pauseAfterMs": 300
     },
     {
@@ -80,7 +80,7 @@
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca. Imagina una tienda en internet. El escaneo encuentra una biblioteca con un fallo grave dentro de sus contenedores. Y esos contenedores se sustituyen por copias nuevas varias veces al día. ¿Cuál es la mejor forma de corregirlo? {best}Ese «mejor» avisa de que más de una ayuda, pero solo una arregla lo que cuenta el caso.",
+      "text": "<intrigued> {q1}Te toca. Imagina una tienda en internet. El escaneo encuentra una biblioteca con un fallo grave dentro de sus contenedores. Y esos contenedores se sustituyen por copias nuevas varias veces al día. ¿Cuál es la mejor forma de corregirlo? {best}Ese «mejor» avisa de que varias ayudan, pero solo una arregla lo que pide el caso.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "3.1",
@@ -116,25 +116,25 @@
     {
       "id": "s04-01",
       "scene": "s04-escalera",
-      "text": "<curious> {proposal}Segunda idea, meter también los expedientes de Recursos Humanos en la máquina del tablón.",
+      "text": "<curious> {proposal}Segunda idea, meter también los expedientes de Recursos Humanos en el servidor del tablón.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-02",
       "scene": "s04-escalera",
-      "text": "<thoughtful> {ladder}Hay tres niveles. {air-gap}Lo máximo es no tener ningún camino de red, un air gap, aunque todo entra y sale a mano.",
+      "text": "<thoughtful> {ladder}Hay tres niveles de aislamiento. {air-gap}El más fuerte es no tener ningún camino de red, un air gap, aunque todo entra y sale a mano.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-03",
       "scene": "s04-escalera",
-      "text": "<clear> {vm}Luego, la máquina virtual, con su propio sistema y su núcleo, el kernel, y el hypervisor en medio.",
+      "text": "<clear> {vm}Luego, la máquina virtual. Lleva su propio sistema, con un núcleo que manda sobre todo lo demás, el kernel.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-04",
       "scene": "s04-escalera",
-      "text": "<focused> {container}El contenedor es ligero y rápido, {shared-kernel}pero comparte el kernel de su máquina, el host. Un fallo en ese kernel llega a todos los vecinos.",
+      "text": "<focused> {container}El contenedor es ligero, {shared-kernel}pero comparte el kernel del servidor, el host. Un fallo en ese kernel puede llegar a los vecinos.",
       "pauseAfterMs": 300
     },
     {
@@ -146,12 +146,12 @@
     {
       "id": "s04-06",
       "scene": "s04-escalera",
-      "text": "<warm> {train}Piensa en un tren, con una locomotora para todos los vagones. Varios trenes, cada uno con la suya, cuestan más.",
+      "text": "<warm> {train}Piensa en un tren. {train-map}La locomotora es el kernel, y los vagones, los contenedores. Una máquina virtual lleva la suya y cuesta más.",
       "pauseAfterMs": 600,
       "exam": {
         "objective": "3.1",
         "text": "Air gap, luego VM, luego contenedor",
-        "at": "train",
+        "at": "train-map",
         "holdSec": 5
       }
     },
@@ -200,7 +200,7 @@
     {
       "id": "s06-01",
       "scene": "s06-ejes",
-      "text": "<curious> {cloud-question}¿Por qué no llevarlas a la nube? {grid}Porque esa es otra pregunta.",
+      "text": "<curious> {cloud-question}¿Por qué no llevar las aplicaciones a la nube? {grid}Esa es otra pregunta.",
       "pauseAfterMs": 300
     },
     {
@@ -218,7 +218,7 @@
     {
       "id": "s06-04",
       "scene": "s06-ejes",
-      "text": "<thoughtful> {centralized}Otra, quién las gestiona. Con una sola consola, todas las sedes siguen la misma política, pero si cae, se quedan todas a ciegas.",
+      "text": "<thoughtful> {centralized}Otra, quién las gestiona. Con una sola consola, las sedes siguen la misma política, pero si la consola cae, se quedan a ciegas.",
       "pauseAfterMs": 300
     },
     {
@@ -242,7 +242,7 @@
     {
       "id": "s07-01",
       "scene": "s07-p3",
-      "text": "<intrigued> {q3}La última. Una inmobiliaria tiene oficinas en doce ciudades. Cada una configura sus equipos a su manera, y nadie se dio cuenta de que el mismo correo falso llegó a cinco. ¿Qué cambio lo resuelve mejor?",
+      "text": "<intrigued> {q3}La última. Una inmobiliaria tiene oficinas en doce ciudades. Cada una configura sus equipos a su manera, y nadie vio que el mismo correo falso llegó a cinco. ¿Qué cambio lo resuelve mejor?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "3.1",
@@ -302,7 +302,7 @@
     {
       "id": "s08-04",
       "scene": "s08-cierre",
-      "text": "<engaging> {phrase}Lo de dentro se arregla en la imagen, lo de todos, en el host, y mudarse no cambia quién decide. {next}Ahora te toca, {endcard}con las preguntas de la lección.",
+      "text": "<engaging> {phrase}Lo de dentro se arregla en la imagen. Lo de todos, en el host. Y mudarse no cambia quién decide. {next}Ahora te toca, {endcard}con las preguntas de la lección.",
       "pauseAfterMs": 250
     }
   ]

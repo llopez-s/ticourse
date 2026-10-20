@@ -7,11 +7,11 @@
   "chapters": [
     {
       "n": 1,
-      "title": "Qué se arregla en la imagen"
+      "title": "Qué se arregla y dónde"
     },
     {
       "n": 2,
-      "title": "Lo que comparten todos"
+      "title": "Qué aísla más"
     },
     {
       "n": 3,
@@ -25,7 +25,7 @@
       "title": "Dos aplicaciones de oficina",
       "targetSec": 20,
       "wordBudget": 54,
-      "goal": "Sello «Autoridad Portuaria de Halden · Sistemas · propuesta · sin fecha». Una sala de máquinas esquemática, rotulada «centro de datos del puerto», con varias máquinas virtuales encendidas, sin número (`datacenter`). Dos de ellas se iluminan (`two-apps`): «tablón interno de anuncios» y «expedientes de la plantilla · RR. HH.» (la aplicación antigua de RR. HH. de V28; nada de su segundo factor ni de sus tres ordenadores). En `not-shipping`, la voz aclara que el contenedor es de software: ninguna imagen del vídeo es un contenedor de mercancías, un camión ni una caja. Al acabar esa frase, título «Contenedores, VMs y quién gestiona» (`title`, antes de los 12 s) y la promesa en tres chips (`promise`): «qué se arregla dónde · quién aísla más · quién decide». Plaquita «SY0-701 · 3.1»",
+      "goal": "Sello «Autoridad Portuaria de Halden · Sistemas · propuesta · sin fecha». Una sala de máquinas esquemática, rotulada «centro de datos del puerto», con varias máquinas virtuales encendidas, sin número (`datacenter`). Dos de ellas se iluminan (`two-apps`): «tablón interno de anuncios» y «expedientes de la plantilla · RR. HH.» (la aplicación antigua de RR. HH. de V28; nada de su segundo factor ni de sus tres ordenadores). En `not-shipping`, la voz aclara que el contenedor es de software: ninguna imagen del vídeo es un contenedor de mercancías, un camión ni una caja. Al acabar esa frase, título «Contenedores, VMs y quién gestiona» (`title`, antes de los 12 s) y la promesa en tres chips (`promise`): «qué se arregla dónde · qué aísla más · quién decide». Plaquita «SY0-701 · 3.1»",
       "requiredCues": [
         "datacenter",
         "two-apps",
@@ -75,7 +75,7 @@
       "title": "Tres niveles y su precio",
       "targetSec": 40,
       "wordBudget": 108,
-      "goal": "La segunda propuesta (`proposal`): poner los expedientes de la plantilla en el mismo host que el tablón. Una escalera de tres niveles, de más a menos aislamiento (`ladder`), cada uno con lo que comparte y lo que cuesta: AIR GAP («ningún camino de red · todo entra y sale a mano») (`air-gap`), sin ningún sistema del puerto dentro; VIRTUAL MACHINE («su sistema y su kernel, con el hypervisor en medio · cada una carga su sistema entero») (`vm`); CONTAINER («comparte el kernel del host · ligero y rápido · un fallo del kernel o un contenedor con privilegios llega a los vecinos») (`container`), con la palabra «kernel» resaltada (`shared-kernel`) y el chip «container escape» solo en pantalla. La decisión, en una línea (`decision`): «los expedientes se quedan en su VM: no comparten kernel con el tablón, al que entra toda la plantilla». El tren en pequeño, rotulado «imagen · no es del puerto»: una locomotora, varios vagones (`train`)",
+      "goal": "La segunda propuesta (`proposal`): poner los expedientes de la plantilla en el mismo servidor (host) que el tablón. Una escalera de tres niveles, de más a menos aislamiento (`ladder`), cada uno con lo que comparte y lo que cuesta: AIR GAP («ningún camino de red · todo entra y sale a mano») (`air-gap`), sin ningún sistema del puerto dentro; VIRTUAL MACHINE («su sistema y su kernel, con el hypervisor en medio · cada una carga su sistema entero») (`vm`); CONTAINER («comparte el kernel del host · ligero y rápido · un fallo del kernel o un contenedor con privilegios llega a los vecinos») (`container`), con la palabra «kernel» resaltada (`shared-kernel`) y el chip «container escape» solo en pantalla. La decisión, en una línea (`decision`): «los expedientes se quedan en su VM: no comparten kernel con el tablón, al que entra toda la plantilla». El tren en pequeño, rotulado «imagen · no es del puerto»: una locomotora y varios vagones (`train`); al decir que la locomotora es el kernel y los vagones los contenedores (`train-map`), se rotulan así, y la tarjeta de examen entra al acabar esa frase. Una máquina virtual lleva su propia locomotora, y por eso cuesta más",
       "requiredCues": [
         "proposal",
         "ladder",
@@ -84,7 +84,8 @@
         "container",
         "shared-kernel",
         "decision",
-        "train"
+        "train",
+        "train-map"
       ]
     },
     {
