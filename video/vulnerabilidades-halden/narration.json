@@ -14,7 +14,11 @@
     "ok-2": "check",
     "trap-2": "block",
     "ok-3": "check",
-    "trap-3": "block"
+    "trap-3": "block",
+    "cross": "glitch",
+    "open-door": "error",
+    "store": "ping2",
+    "falls": "alarm"
   },
   "segments": [
     {
@@ -50,7 +54,7 @@
     {
       "id": "s02-04",
       "scene": "s02-maquina",
-      "text": "<clear> {server}En un servidor pasa igual. {escape}Si el código de una máquina cruza al hipervisor o a otra, es un VM escape. Se cierra parcheando el hipervisor.",
+      "text": "<clear> {server}En un servidor pasa igual. {escape}Si el código de una máquina {cross}cruza al hipervisor o a otra, es un VM escape. Se cierra parcheando el hipervisor.",
       "pauseAfterMs": 300
     },
     {
@@ -63,7 +67,7 @@
       "id": "s02-06",
       "scene": "s02-maquina",
       "text": "<warm> {question}Así que la pregunta es si alguien ha salido de su máquina.",
-      "pauseAfterMs": 600,
+      "pauseAfterMs": 1400,
       "exam": {
         "objective": "2.3",
         "text": "VM escape sale; resource reuse hereda restos",
@@ -146,7 +150,7 @@
     {
       "id": "s04-06",
       "scene": "s04-nube",
-      "text": "<curious> {door}Y queda el hueco. La puerta de la calle la cierra cada vecino, pero todos creen que la cierra el casero. Así que se queda abierta.",
+      "text": "<curious> {door}Y queda el hueco. La puerta de la calle la cierra cada vecino, pero todos creen que la cierra el casero. {open-door}Así que se queda abierta.",
       "pauseAfterMs": 300
     },
     {
@@ -236,7 +240,7 @@
     {
       "id": "s06-06",
       "scene": "s06-bolsillo",
-      "text": "<focused> {root}Quitarle al sistema sus protecciones va mucho más allá. Cae el aislamiento entre apps, y a menudo el control del MDM. {jailbreak}En Android es rooting, y en iPhone, jailbreaking.",
+      "text": "<focused> {root}Quitarle al sistema sus protecciones va mucho más allá. {falls}Cae el aislamiento entre apps, y a menudo el control del MDM. {jailbreak}En Android es rooting, y en iPhone, jailbreaking.",
       "pauseAfterMs": 600,
       "exam": {
         "objective": "2.3",
