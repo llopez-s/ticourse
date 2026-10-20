@@ -1,0 +1,380 @@
+WEBVTT
+
+1
+00:00:01.567 --> 00:00:02.867
+En el puerto de Halden,
+
+2
+00:00:02.867 --> 00:00:04.833
+Sistemas quiere pasar dos aplicaciones
+
+3
+00:00:04.833 --> 00:00:08.067
+de oficina de máquinas
+virtuales a contenedores.
+
+4
+00:00:08.067 --> 00:00:10.267
+De software, nada que ver
+con los del muelle.
+
+5
+00:00:10.267 --> 00:00:13.133
+Contenedores, VMs y quién gestiona.
+
+6
+00:00:13.133 --> 00:00:17.267
+Vas a ver qué se arregla dónde,
+qué aísla más y quién decide.
+
+7
+00:00:18.333 --> 00:00:21.433
+Empezamos por el tablón de anuncios,
+ya en contenedores de prueba.
+
+8
+00:00:21.433 --> 00:00:25.633
+Todo sale de una imagen,
+la aplicación con lo que necesita.
+
+9
+00:00:25.633 --> 00:00:30.100
+Sus copias, los contenedores,
+arrancan en segundos y duran poco.
+
+10
+00:00:30.100 --> 00:00:33.333
+No se parchean por dentro,
+se cambian por otras.
+
+11
+00:00:33.333 --> 00:00:35.100
+Por eso se cuida la imagen.
+
+12
+00:00:35.100 --> 00:00:37.933
+Sale de nuestro registro
+de imágenes, con su firma,
+
+13
+00:00:37.933 --> 00:00:41.933
+se escanea antes de desplegar
+y nada corre como root.
+
+14
+00:00:41.933 --> 00:00:45.433
+El escaneo encuentra un componente
+con un fallo ya publicado.
+
+15
+00:00:45.433 --> 00:00:49.367
+Corregirlo en cada copia no basta,
+porque la próxima sale igual.
+
+16
+00:00:49.367 --> 00:00:53.300
+Se corrige la imagen, se escanea
+otra vez y salen copias nuevas.
+
+17
+00:00:53.300 --> 00:00:55.933
+Es como un molde
+de galletas con una muesca.
+
+18
+00:00:55.933 --> 00:01:00.900
+Lijar las galletas no salva la hornada
+siguiente, se arregla el molde.
+
+19
+00:01:02.200 --> 00:01:05.533
+Te toca. Imagina una tienda en internet.
+
+20
+00:01:05.533 --> 00:01:09.633
+El escaneo encuentra una biblioteca con
+un fallo grave dentro de sus contenedores.
+
+21
+00:01:09.633 --> 00:01:13.867
+Y esos contenedores se sustituyen
+por copias nuevas varias veces al día.
+
+22
+00:01:13.867 --> 00:01:16.367
+¿Cuál es la mejor forma de corregirlo?
+
+23
+00:01:16.367 --> 00:01:22.133
+Ese «mejor» avisa de que varias ayudan,
+pero solo una arregla lo que pide el caso.
+
+24
+00:01:21.600 --> 00:01:26.600
+A) Reiniciar todos los contenedores
+B) Actualizar la biblioteca en cada contenedor en marcha
+C) Pasar la tienda a máquinas virtuales
+D) Rehacer la imagen y desplegarla
+
+25
+00:01:26.767 --> 00:01:30.467
+Se rehace la imagen,
+y cada copia nueva sale limpia.
+
+26
+00:01:30.467 --> 00:01:33.833
+Actualizar cada contenedor
+en marcha tapa el agujero un rato,
+
+27
+00:01:33.833 --> 00:01:36.467
+pero la siguiente copia trae el fallo.
+
+28
+00:01:36.467 --> 00:01:40.867
+O sea, que lijar la galleta
+no salva la hornada siguiente.
+
+29
+00:01:42.633 --> 00:01:45.067
+Segunda idea, meter
+también los expedientes
+
+30
+00:01:45.067 --> 00:01:47.933
+de Recursos Humanos
+en el servidor del tablón.
+
+31
+00:01:47.933 --> 00:01:49.967
+Hay tres niveles de aislamiento.
+
+32
+00:01:49.967 --> 00:01:53.467
+El más fuerte es no tener ningún
+camino de red, un air gap,
+
+33
+00:01:53.467 --> 00:01:55.500
+aunque todo entra y sale a mano.
+
+34
+00:01:55.500 --> 00:01:57.500
+Luego, la máquina virtual.
+
+35
+00:01:57.500 --> 00:02:02.733
+Lleva su propio sistema, con un núcleo
+que manda sobre todo lo demás, el kernel.
+
+36
+00:02:02.733 --> 00:02:06.867
+El contenedor es ligero, pero comparte
+el kernel del servidor, el host.
+
+37
+00:02:06.867 --> 00:02:09.900
+Un fallo en ese kernel
+puede llegar a los vecinos.
+
+38
+00:02:09.900 --> 00:02:12.767
+Así que los expedientes
+se quedan en su máquina virtual,
+
+39
+00:02:12.767 --> 00:02:17.133
+sin compartir kernel con el tablón,
+donde entra toda la plantilla.
+
+40
+00:02:17.133 --> 00:02:22.233
+Piensa en un tren. La locomotora es el
+kernel, y los vagones, los contenedores.
+
+41
+00:02:22.233 --> 00:02:25.367
+Una máquina virtual lleva
+la suya y cuesta más.
+
+42
+00:02:26.667 --> 00:02:30.733
+Otro caso. Se publica un fallo grave
+en el kernel del sistema operativo.
+
+43
+00:02:30.733 --> 00:02:33.667
+Un periódico tiene treinta
+contenedores en un mismo host,
+
+44
+00:02:33.667 --> 00:02:36.533
+y todas sus imágenes
+se reconstruyeron ayer.
+
+45
+00:02:36.533 --> 00:02:39.500
+¿Qué tiene que actualizar
+para protegerlos?
+
+46
+00:02:39.100 --> 00:02:44.100
+A) Las reglas de red entre contenedores
+B) El kernel del host
+C) Las imágenes, con el kernel corregido
+D) Los permisos de cada contenedor
+
+47
+00:02:44.267 --> 00:02:47.500
+El kernel del host, porque
+los contenedores no traen el suyo.
+
+48
+00:02:47.500 --> 00:02:50.567
+Rehacer las imágenes es el reflejo
+de la primera pregunta,
+
+49
+00:02:50.567 --> 00:02:52.933
+pero la imagen no lleva el kernel.
+
+50
+00:02:52.933 --> 00:02:54.400
+Con el tren pasa igual.
+
+51
+00:02:54.400 --> 00:02:56.133
+Si la avería está en la locomotora,
+
+52
+00:02:56.133 --> 00:02:59.033
+cambiar la carga de los
+vagones no la arregla.
+
+53
+00:03:00.467 --> 00:03:04.633
+¿Por qué no llevar las aplicaciones
+a la nube? Esa es otra pregunta.
+
+54
+00:03:04.633 --> 00:03:06.067
+Una cosa es dónde viven.
+
+55
+00:03:06.067 --> 00:03:09.967
+En casa tienes control y los datos
+dentro, pero compras antes de usar.
+
+56
+00:03:09.967 --> 00:03:12.000
+Eso es on-premises.
+
+57
+00:03:12.000 --> 00:03:14.767
+En la nube pagas por uso
+y escalas enseguida,
+
+58
+00:03:14.767 --> 00:03:17.100
+pero ves menos y dependes de otro.
+
+59
+00:03:17.100 --> 00:03:19.067
+Otra, quién las gestiona.
+
+60
+00:03:19.067 --> 00:03:23.700
+Con una sola consola, las sedes siguen
+la misma política, pero si la consola cae,
+
+61
+00:03:23.700 --> 00:03:25.333
+se quedan a ciegas.
+
+62
+00:03:25.333 --> 00:03:27.967
+Si cada sede va a su aire, decide rápido,
+
+63
+00:03:27.967 --> 00:03:32.467
+pero las políticas no coinciden
+y los registros no los junta nadie.
+
+64
+00:03:32.467 --> 00:03:35.133
+El puerto tiene sus aplicaciones
+de oficina en casa.
+
+65
+00:03:35.133 --> 00:03:38.367
+Como en el fútbol, una cosa
+es el campo donde juegas, y otra,
+
+66
+00:03:38.367 --> 00:03:40.500
+quién marca las jugadas.
+
+67
+00:03:41.700 --> 00:03:45.933
+La última. Una inmobiliaria
+tiene oficinas en doce ciudades.
+
+68
+00:03:45.933 --> 00:03:48.133
+Cada una configura
+sus equipos a su manera,
+
+69
+00:03:48.133 --> 00:03:51.333
+y nadie vio que el mismo
+correo falso llegó a cinco.
+
+70
+00:03:51.333 --> 00:03:53.767
+¿Qué cambio lo resuelve mejor?
+
+71
+00:03:53.300 --> 00:03:58.300
+A) Llevar los servidores a la nube
+B) Segmentar la red de cada oficina
+C) Centralizar la gestión
+D) Dar más autonomía a cada oficina
+
+72
+00:03:58.467 --> 00:04:01.767
+Hay que centralizar la gestión,
+porque lo que falla es quién decide.
+
+73
+00:04:01.767 --> 00:04:06.567
+La nube cambia dónde viven los servidores,
+pero no quién pone sus reglas.
+
+74
+00:04:06.567 --> 00:04:11.833
+O sea, que si cada uno juega a su aire,
+cambiar de campo no los pone de acuerdo.
+
+75
+00:04:13.100 --> 00:04:18.033
+Te llevas tres reglas. Un contenedor
+no se parchea, se rehace su imagen.
+
+76
+00:04:18.033 --> 00:04:22.367
+El air gap aísla más, luego
+la VM y al final el contenedor.
+
+77
+00:04:22.367 --> 00:04:25.000
+Y dónde vive no es quién lo gestiona.
+
+78
+00:04:25.000 --> 00:04:28.633
+Lo de dentro se arregla en la imagen.
+Lo de todos, en el host.
+
+79
+00:04:28.633 --> 00:04:34.533
+Y mudarse no cambia quién decide. Ahora
+te toca, con las preguntas de la lección.

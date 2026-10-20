@@ -14,7 +14,11 @@
     "ok-2": "check",
     "trap-2": "block",
     "ok-3": "check",
-    "trap-3": "block"
+    "trap-3": "block",
+    "finding": "alarm",
+    "air-gap": "lock",
+    "spill": "glitch",
+    "down": "error"
   },
   "segments": [
     {
@@ -134,7 +138,7 @@
     {
       "id": "s04-04",
       "scene": "s04-escalera",
-      "text": "<focused> {container}El contenedor es ligero, {shared-kernel}pero comparte el kernel del servidor, el host. Un fallo en ese kernel puede llegar a los vecinos.",
+      "text": "<focused> {container}El contenedor es ligero, {shared-kernel}pero comparte el kernel del servidor, el host. {spill}Un fallo en ese kernel puede llegar a los vecinos.",
       "pauseAfterMs": 300
     },
     {
@@ -158,7 +162,7 @@
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<engaging> {q2}Otro caso. Se publica un fallo grave en el kernel del sistema operativo. Un periódico tiene treinta contenedores en un mismo host, y todas sus imágenes se reconstruyeron ayer. ¿Qué tiene que actualizar para protegerlos mejor?",
+      "text": "<engaging> {q2}Otro caso. Se publica un fallo grave en el kernel del sistema operativo. Un periódico tiene treinta contenedores en un mismo host, y todas sus imágenes se reconstruyeron ayer. ¿Qué tiene que actualizar para protegerlos?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "3.1",
@@ -218,7 +222,7 @@
     {
       "id": "s06-04",
       "scene": "s06-ejes",
-      "text": "<thoughtful> {centralized}Otra, quién las gestiona. Con una sola consola, las sedes siguen la misma política, pero si la consola cae, se quedan a ciegas.",
+      "text": "<thoughtful> {centralized}Otra, quién las gestiona. Con una sola consola, las sedes siguen la misma política, pero {down}si la consola cae, se quedan a ciegas.",
       "pauseAfterMs": 300
     },
     {
