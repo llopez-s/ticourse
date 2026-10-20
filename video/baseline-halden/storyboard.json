@@ -1,0 +1,150 @@
+{
+  "title": "Baseline y hardening: imponer, mantener y compensar",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 272,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Escribirlo y que siga ahí"
+    },
+    {
+      "n": 2,
+      "title": "Cada uno, su canal"
+    },
+    {
+      "n": 3,
+      "title": "Lo que no se puede parar"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Un papel, muchas máquinas",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · caso de ejemplo · datos ficticios», sin fecha. Una hoja rotulada «baseline» con tres líneas legibles: «solo los servicios necesarios · contraseñas · qué se registra» (`sheet`). Detrás, en silueta y sin nombre de equipo, seis cosas del puerto: un portátil, un servidor, un móvil, una nube, un switch y un puente levadizo (`fleet`). Al acabar la primera frase, título «Baseline y hardening» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «escribirlo y mantenerlo · cada uno, su canal · lo que no se puede parar». Plaquita «SY0-701 · 4.1»",
+      "requiredCues": [
+        "sheet",
+        "fleet",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-ciclo",
+      "chapter": 1,
+      "title": "Escribirlo, imponerlo y que siga ahí",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "goal": "Sistemas parte de una guía pública, con los chips «CIS Benchmark» y «STIG» (`guide`), y la adapta: dos líneas tachadas con la nota «rompería una aplicación del puerto · escrito por qué» → «Establish» (`adapt`). La hoja llega a la vez a todos los servidores Windows por un canal rotulado «Group Policy», no uno a uno → «Deploy» (`push`). Una comparación semanal pone cada servidor junto al papel (`compare`) → «Maintain» (`maintain`; la tarjeta de examen después). Una noche, en un servidor sin nombre, alguien enciende un servicio «solo para probar» y nadie lo apaga; la comparación lo marca y sale el nombre, «configuration drift» (`drift`). A la derecha, el escaparate rotulado «imagen · no es del puerto»: la foto que manda la central, tiendas iguales y, en una, un maniquí movido que ya no cuadra con la foto (`shop`). Las dos salidas lado a lado (`two-ways`): «la máquina vuelve al papel» · «el papel cambia, aprobado y por escrito» (en el escaparate: el maniquí vuelve a su sitio · la central cambia la foto). Debajo, tachado (`never`): «la diferencia, viva y sin dueño»",
+      "requiredCues": [
+        "guide",
+        "adapt",
+        "push",
+        "compare",
+        "maintain",
+        "drift",
+        "shop",
+        "two-ways",
+        "never"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "La aplicación de cobros",
+      "targetSec": 42,
+      "wordBudget": 92,
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo»: el panel de pregunta tapa la escena hasta el final, así que el fondo se queda quieto (una fila de servidores a media luz, sin texto ni nombres). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: puede servir más de una; vale la que encaja con este caso» (`best`), que la voz explica antes de la cuenta atrás. Cuenta atrás de 5 s; en `ok-1` sale la correcta (actualizar el baseline) y en `trap-1` la trampa (apagar el servicio). Vuelve el escaparate en una línea, «esta vez, la central cambia la foto», y la tarjeta de examen entra después de la trampa (`photo`)",
+      "requiredCues": [
+        "q1",
+        "best",
+        "ok-1",
+        "trap-1",
+        "photo"
+      ]
+    },
+    {
+      "id": "s04-canal",
+      "chapter": 2,
+      "title": "Cada aparato, su mando",
+      "targetSec": 34,
+      "wordBudget": 92,
+      "goal": "La hoja del baseline vuelve con su principio en una línea, «quitar lo que sobra · proteger lo que queda» → «Hardening» (`paper`), y sale hacia tres sitios, cada uno con su canal y su medida principal. Portátil del dominio (`laptop`): «Group Policy», con «usuaria sin derechos de admin» destacado y «disco cifrado · EDR» a media luz. Móvil (`phone`): «MDM», con «cifrado · bloqueo · borrado a distancia». Nube (`cloud`): «consola», con «permisos mínimos · registros activos · nada público». Los mandos del salón en miniatura, tele y aire acondicionado, cada uno apuntando a su aparato (`remotes`). La regla en llano (`rule`): «si admite una consola de gestión, el baseline se impone desde ahí». En la cuarta casilla, el puente levadizo con «sin mando» (`no-remote`), que adelanta el capítulo III. Sin tarjeta de examen",
+      "requiredCues": [
+        "paper",
+        "laptop",
+        "phone",
+        "cloud",
+        "remotes",
+        "rule",
+        "no-remote"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Los móviles de los capataces",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 2 (`q2`), sin calificador. Fondo quieto: un móvil de empresa sobre la mesa de la caseta del muelle, sin texto. En `ok-2` la correcta (MDM), en `trap-2` la trampa (Group Policy). En la resolución, el mando del móvil en una línea, «el móvil solo obedece a su mando», y la tarjeta de examen después (`remote`)",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "remote"
+      ]
+    },
+    {
+      "id": "s06-esclusa",
+      "chapter": 3,
+      "title": "Lo que no se puede parar",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "goal": "«Caso de ejemplo · sin fecha»: el sistema que mueve las esclusas, dibujado como una esclusa con un barco dentro, sin nombre de equipo y sin ninguna línea de red (`lock-ship`). Tres chips de por qué no (`why-not`): «el fabricante solo responde de una versión» · «se para una vez al año» · «no aguanta un agente». La esclusa queda marcada «sin parche en caliente · sin agente» (`still`, sonido de candado). Lo que es se nombra después: «OT», y en un chip «lo mismo: embedded · RTOS» (`name-ot`). La respuesta, como propuesta y no como algo hecho, rotulada «propuesta · sin fecha» (`compensate`): «que solo le hable quien lo necesita» · «escuchar su tráfico sin tocarlo» → «Compensating controls». El avión en miniatura (`plane`): en vuelo no se toca, la cabina cerrada y la torre siguiéndolo por radar; el hangar, al fondo. Debajo, a media luz, la trampa inversa (`inverse`): «¿desconectarlas del todo? no, si tienen que seguir conectadas»",
+      "requiredCues": [
+        "lock-ship",
+        "why-not",
+        "still",
+        "name-ot",
+        "compensate",
+        "plane",
+        "inverse"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "El puente levadizo",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo examen 3 (`q3`), con «MEJOR» (ya explicado en s03). Fondo quieto: el puente levadizo de la entrada del puerto, bajado, sin texto ni línea de red. En `ok-3` la correcta (aplicar el parche en la parada), en `trap-3` la trampa (seguir compensando). En la resolución vuelve el avión en una línea, «el puente entra en el hangar», y la tarjeta de examen después (`hangar`)",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "hangar"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (el escaparate · los mandos · el avión) (`recap`, `rule-1`, `rule-2`, `rule-3`; la tercera, «se compensa mientras no se pueda parchear»), y la frase para el examen (`phrase`): «Antes de contestar, pregúntate en qué verbo estás y qué admite ese sistema». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

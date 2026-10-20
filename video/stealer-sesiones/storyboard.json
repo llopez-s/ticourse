@@ -1,0 +1,213 @@
+{
+  "title": "Cambiar la contraseña no cierra todo: responder a un infostealer",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "editorialScope": "complementary",
+  "notice": "Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA · Práctica complementaria",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "La alerta"
+    },
+    {
+      "n": 2,
+      "title": "Qué puede estar expuesto"
+    },
+    {
+      "n": 3,
+      "title": "Dos frentes de contención"
+    },
+    {
+      "n": 4,
+      "title": "Comprobar el corte"
+    },
+    {
+      "n": 5,
+      "title": "Cerrar con evidencia"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "La casilla verde",
+      "goal": "Ejercicio independiente en Halden. Alerta ficticia de infostealer y casilla «contraseña cambiada». La ficha del equipo continúa abierta. Sin fechas, equipos ni cuentas del incidente publicado. Título y promesa antes de 12 s.",
+      "targetSec": 41,
+      "wordBudget": 111,
+      "requiredCues": [
+        "title",
+        "s01-b",
+        "s01-c"
+      ]
+    },
+    {
+      "id": "s02-caso",
+      "chapter": 1,
+      "title": "Tres afirmaciones distintas",
+      "goal": "Tres columnas: puede robar / hay evidencia de extracción / hay evidencia de uso. Mover evidencias ficticias sin rellenar automáticamente las siguientes columnas. Mostrar ausencia de datos como desconocido.",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "s02-a",
+        "s02-b",
+        "s02-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Capacidad, exposición y uso requieren evidencia distinta",
+        "afterSegment": "s02-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-caso",
+      "chapter": 2,
+      "title": "No todas las credenciales abren igual",
+      "goal": "Contraseña, cookie, access token y refresh token en filas distintas. Recurso, vigencia y controles como campos pendientes. No mostrar bytes ni secretos. El mensaje empuja una única acción insuficiente.",
+      "targetSec": 53,
+      "wordBudget": 144,
+      "requiredCues": [
+        "s03-a",
+        "s03-b",
+        "s03-c"
+      ]
+    },
+    {
+      "id": "s04-caso",
+      "chapter": 2,
+      "title": "El equipo continúa comprometido",
+      "goal": "Equipo afectado y dispositivo confiable separados. Dos opciones de decisión: cambiar secretos desde el afectado / contener y usar entorno confiable. Mostrar aislamiento autorizado, preservación y coordinación, sin instrucciones de extracción.",
+      "targetSec": 57,
+      "wordBudget": 154,
+      "requiredCues": [
+        "s04-a",
+        "s04-b",
+        "s04-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Contener el equipo y proteger la identidad son dos tareas",
+        "afterSegment": "s04-06",
+        "holdSec": 5
+      },
+      "decision": {
+        "q": "¿Cambias secretos desde el equipo afectado?",
+        "choices": [
+          "Sí, es más rápido",
+          "No, usar un entorno confiable"
+        ],
+        "answer": 1,
+        "revealAt": "s04-b",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s05-caso",
+      "chapter": 3,
+      "title": "Ampliar el alcance con preguntas",
+      "goal": "Línea temporal didáctica sin horas inventadas: posible extracción / detección / contención / accesos posteriores. Lista visual de fuentes: endpoint, identidad, aplicaciones, auditoría de correo. Un hueco de retención se marca como límite.",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "s05-a",
+        "s05-b",
+        "s05-c"
+      ]
+    },
+    {
+      "id": "s06-caso",
+      "chapter": 3,
+      "title": "Elegir la revocación que corresponde",
+      "goal": "Matriz escenario/acción/verificación de sp4m10. Contraseña → rotación; sesión web → servicio emisor; refresh → revocación de renovación; access → controles del recurso. Consentimiento y credenciales de aplicación en fila aparte.",
+      "targetSec": 57,
+      "wordBudget": 154,
+      "requiredCues": [
+        "s06-a",
+        "s06-b",
+        "s06-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "La acción depende del artefacto y del servicio emisor",
+        "afterSegment": "s06-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-caso",
+      "chapter": 4,
+      "title": "El botón no es el resultado",
+      "goal": "Panel conceptual Microsoft, sin interfaz real ni botones ejecutables. Revocación solicitada / efectos por verificar. Nombre revokeSignInSessions solo en pantalla. CAE con rótulo «recursos, clientes y eventos compatibles». Sin cronómetro universal de una hora.",
+      "targetSec": 57,
+      "wordBudget": 154,
+      "requiredCues": [
+        "s07-a",
+        "s07-b",
+        "s07-c"
+      ]
+    },
+    {
+      "id": "s08-caso",
+      "chapter": 4,
+      "title": "¿Qué te permite avanzar?",
+      "goal": "Dos evidencias: correo de confirmación del cambio / conjunto de controles y revisión comprobados. No presentar el segundo como garantía absoluta de ausencia. Pausa y después evidencia + límites + vigilancia.",
+      "targetSec": 60,
+      "wordBudget": 162,
+      "requiredCues": [
+        "s08-a",
+        "s08-b",
+        "s08-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Verifica los efectos; documenta los límites",
+        "afterSegment": "s08-06",
+        "holdSec": 5
+      },
+      "decision": {
+        "q": "¿Cambio confirmado o controles verificados?",
+        "choices": [
+          "Correo de confirmación",
+          "Controles y actividad revisados"
+        ],
+        "answer": 1,
+        "revealAt": "s08-b",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s09-caso",
+      "chapter": 5,
+      "title": "Volver al caso de Ana",
+      "goal": "Ana y Resumen del turno identificados como datos del ejercicio, sin elevarlos a incidente de GLASS HARBOR. Revisiones de equipo, identidad, Graph y sesión de aplicación separadas. Informe de conclusión breve.",
+      "targetSec": 57,
+      "wordBudget": 154,
+      "requiredCues": [
+        "s09-a",
+        "s09-b",
+        "s09-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Recuperación y cierre se apoyan en evidencia del caso",
+        "afterSegment": "s09-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-cierre",
+      "chapter": 5,
+      "title": "Cerrar los dos frentes",
+      "goal": "Tres reglas: distinguir evidencia / contener dispositivo e identidad / verificar efectos. Acción única: checkpoint complementario de sp4m10. Descargo independiente de CompTIA. Créditos de fuentes al final, sin narrar URLs.",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "requiredCues": [
+        "s10-a",
+        "s10-b",
+        "s10-c"
+      ]
+    }
+  ],
+  "targetTotalSec": 538
+}

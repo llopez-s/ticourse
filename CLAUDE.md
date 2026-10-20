@@ -136,6 +136,21 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
 
 ## State & gotchas
 
+- **Practical curriculum (2026-10-19).** Twelve existing lessons append typed blocks
+  from `data/practical/` through `withPracticalExpansion` in `tracks.ts`. Original
+  block indices and lesson/question/lab IDs stay stable. New totals: GCTI 96 cards /
+  107 glossary entries; Security+ 160 cards / 242 entries, 134 base checkpoints plus
+  2 optional. Fourteen professional checks across tracks use `CheckQ.optional`:
+  excluded from lesson completion and XP, never added to exam/placement pools.
+  Fundamentals are base; Microsoft-specific and CTI professional practice are
+  labelled complementary. `links` and `yara-practice` are searchable block types.
+  The YARA editor only downloads text; Forge remains a label-based simulation.
+  Real `yara-python==4.5.4` validation is optional tooling in `.venv-yara/` (ignored).
+  `scripts/package-yara-practice.py --check` detects a stale downloadable ZIP;
+  regenerate after changing its five source files. `scripts/test-yara-practice.py`
+  exercises real compilation, controls, missed variants, syntax errors and ZIP
+  portability. Map and study route: `docs/practical-curriculum.md`.
+
 - **Complete / functional** product, not a scaffold. GCTI: 27 lessons, 174 quiz questions, 12
   labs, 80 flashcards, ~95 glossary terms. Security+: all 5 domains (see above). Fresh `dist/`
   build present. The weighted 90-question mock samples 11/20/16/25/18 across the five SY0-701
@@ -188,7 +203,15 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `question` in `narration.json`: scenario, four options, a silent countdown, the answer and its trap; no think
   prompts; the engine README's «Pregunta de examen» has the fields). Spec
   `docs/superpowers/specs/2026-10-16-secplus-casos-examen-design.md`, engine plan
-  `docs/superpowers/plans/2026-10-16-video-engine-caso-examen.md`, video plan «Tanda 6». Every script takes `--video <slug>`. Pipeline: `narration.json` →
+  `docs/superpowers/plans/2026-10-16-video-engine-caso-examen.md`, video plan «Tanda 6». The pilot, **V28
+  `video/controles-halden/`** (sp1m1, YouTube `y9bjWKwN5fg`, 4:24), was approved by Lidia in private on 2026-10-17 and
+  is now the first Halden video in course order; V29–V38 were frozen the same day. The question panel shows only the
+  «EXAMEN · SY0-701 · N.N» badge, not the «pregunta tipo examen · ejemplo» label the fichas ask for (registry
+  contradiction 17): a scene that needs it draws it itself. **V29 `video/identificacion-halden/`** (sp4m4, YouTube
+  `TuXDvIcJOj0`, 4:24, published 2026-10-17) is the first to do so (`parts/Tags.tsx` `QuestionTag`, under the panel); the tanda 6
+  fichas (V29–V32) are in `docs/superpowers/plans/fichas-tanda6/`.
+  **V30 `video/baseline-halden/`** (sp4m1, YouTube `NO2ZOT2crCo`, 4:22, published 2026-10-17) is the first video of sp4
+  in course order (no adversary, so V21 stays SILENT PAGER's first). Every script takes `--video <slug>`. Pipeline: `narration.json` →
   `scripts/tts-elevenlabs.mjs` (ElevenLabs v3, one request per scene with `<tag>` emotion
   directions; needs `ELEVENLABS_API_KEY` in the git-ignored `.env.local`; free plan = 10k chars/month,
   premade voices only + "Voz: ElevenLabs" credit) — or `scripts/tts-chatterbox.mjs` (Chatterbox, local
@@ -280,8 +303,9 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   transcript → merge → only then delete the old video (V11's was deleted first and sp1m6 embedded a dead id for two
   days). The older video worktrees have no upload script: copy the MP4, timeline, captions and clips into a worktree
   on main and upload from there. V4, V7, V8, V10 (`k51SLJxEiPc`) and V12 (`IlOHl8Lmq_w`) went up again on
-  2026-10-16 with the quiet master. V13, V15, V16 and V17 are re-mastered locally
-  (`<slug>.mp4` next to `<slug>-v1-master.mp4`, the old master) but the channel still has the −14 LUFS one.
+  2026-10-16 with the quiet master. V13 (`5pGLeaGeT7c`), V15 (`Xbd_x8mOAqc`), V16 (`64jGEA0_ttM`) and V17 (`HzzY9C4cDNw`)
+  were also uploaded again with the quiet master and published on 2026-10-16/17. Their lessons,
+  `content.test.ts` and canon registries point at these public uploads (verified with the YouTube API on 2026-10-18).
   **Mastering** (Python, venv + `pedalboard pyloudnorm librosa soundfile scipy`): `scripts/master_voice.py`
   on the narrator's WAV *before* `import-recording` (time-aligned EQ/de-ess/compression, no denoise) and
   `scripts/master_mix.py` on the rendered MP4 (generated ambient bed ducked under speech, −14 LUFS,

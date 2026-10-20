@@ -7,8 +7,8 @@ comparten el mismo motor (XP, rachas, flashcards SM-2, bosses, simulacros):
 
 | Track | Certificación | Estado |
 |---|---|---|
-| **CTI · GCTI** | GIAC GCTI (asociada a SANS FOR578: Cyber Threat Intelligence) | Completo: 27 lecciones, 174 preguntas, 12 labs, 80 flashcards, prueba de nivel |
-| **Security+** | CompTIA Security+ (SY0-701) | **Completo: los 5 dominios** — 41 lecciones + exam prep, 305 preguntas, 132 checkpoints, 15 labs, 152 flashcards, 233 términos |
+| **CTI · GCTI** | GIAC GCTI (asociada a SANS FOR578: Cyber Threat Intelligence) | Completo: 27 lecciones, 174 preguntas, 12 labs, 96 flashcards, prueba de nivel y ampliaciones prácticas |
+| **Security+** | CompTIA Security+ (SY0-701) | **Completo: los 5 dominios** — 41 lecciones + exam prep, 305 preguntas, 134 checkpoints base + 2 complementarios, 15 labs, 160 flashcards, 242 términos |
 
 **▶ En vivo: https://llopez-s.github.io/ticourse/** — se despliega solo en cada
 push a `main` (GitHub Actions: tests → build → Pages).
@@ -73,10 +73,10 @@ preguntas de quiz y las flashcards van en inglés, como en el examen real.
 |---|---|---|
 | **Lecciones** | 27 | 41 + exam prep |
 | **Preguntas de quiz** | 174 | 305 |
-| **Checkpoints en lección** | sí | 132 |
+| **Checkpoints en lección** | base + 12 complementarios opcionales | 134 base + 2 complementarios opcionales |
 | **Labs interactivos** | 12 | 15 |
-| **Flashcards (SM-2)** | 80 | 152 |
-| **Glosario** | ~95 términos | 233 términos |
+| **Flashcards (SM-2)** | 96 | 160 |
+| **Glosario** | 107 términos | 242 términos |
 | **Boss battles** | 5 | 5 |
 | **Prueba de nivel** | 5 bloques · 60 preguntas | 5 bloques · 60 preguntas |
 
@@ -97,6 +97,28 @@ preguntas de quiz y las flashcards van en inglés, como en el examen real.
   esperándote igual, nunca se dan por hechos. Es totalmente reversible: puedes
   anular una convalidación cuando quieras desde el perfil o desde la propia
   sección.
+
+## Ampliaciones prácticas de identidad y CTI
+
+Doce lecciones incorporan material nuevo: identidad, OAuth y sesiones (sp4m8),
+infostealers y respuesta (sp2m6/sp4m10), evaluación de feeds (s3m1), pivoting
+desde muestras (s3m2/s3m3), reporting e independencia de fuentes (s3m4/s4m2),
+escritura y entrega de YARA (s3m5/s5m3), y métricas de infostealers en S4
+(s4m4, conectada con s5m5). Incluyen casos resueltos, decisiones explicadas,
+enlaces oficiales, objetivos y tiempos actualizados.
+
+Los fundamentos de identidad y respuesta defensiva son base. Los detalles
+Microsoft y las prácticas profesionales se identifican como **complementarios**:
+sus checkpoints son opcionales y no se incorporan a simulacros, bosses ni pruebas
+de nivel. Se conservan IDs, pesos, enlaces y progreso guardado.
+
+**YARA Forge es una simulación por etiquetas.** La práctica de escritura libre
+de s3m5 incorpora editor, descarga del borrador y un ZIP con corpus sintético
+inerte, tres reglas de referencia y un verificador con YARA real. El navegador
+no compila ni ejecuta las reglas. No se necesitan muestras maliciosas ni cuentas.
+
+Consulta el [mapa, las fuentes y el itinerario de 5 sesiones](docs/practical-curriculum.md)
+y los [resultados de verificación](docs/reviews/2026-10-19-practical-curriculum.md).
 
 ## 🎮 Gamificación
 

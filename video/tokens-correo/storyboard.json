@@ -1,0 +1,213 @@
+{
+  "title": "La sesión sigue abierta: identidad, permisos y tokens",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "editorialScope": "complementary",
+  "notice": "Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA · Práctica complementaria",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "La aplicación de Ana"
+    },
+    {
+      "n": 2,
+      "title": "Quién concede el acceso"
+    },
+    {
+      "n": 3,
+      "title": "Qué lleva cada credencial"
+    },
+    {
+      "n": 4,
+      "title": "La sesión que continúa"
+    },
+    {
+      "n": 5,
+      "title": "Explicar el riesgo"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "La contraseña no cuenta toda la historia",
+      "goal": "Sello permanente «Práctica complementaria · datos ficticios». Halden, ejercicio de formación sin fecha de incidente. Ana abre Resumen del turno. Dos preguntas separadas: quién eres / qué permite la aplicación. Título antes de 12 s. No mostrar credenciales ni un JWT de ejemplo.",
+      "targetSec": 39,
+      "wordBudget": 106,
+      "requiredCues": [
+        "title",
+        "s01-b",
+        "s01-c"
+      ]
+    },
+    {
+      "id": "s02-caso",
+      "chapter": 1,
+      "title": "Entrar y tener permiso",
+      "goal": "Ana se identifica ante el servicio de identidad. Un pase de lectura abre una sala concreta; la sala de administración queda cerrada. Definiciones en orden. La analogía termina aquí: el servicio aplica controles técnicos, no un vigilante humano.",
+      "targetSec": 52,
+      "wordBudget": 141,
+      "requiredCues": [
+        "s02-a",
+        "s02-b",
+        "s02-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Autenticar identifica; autorizar limita acciones",
+        "afterSegment": "s02-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-caso",
+      "chapter": 2,
+      "title": "Cuatro participantes en la misma pantalla",
+      "goal": "Cuatro columnas persistentes: Ana / Resumen del turno / Entra ID / Microsoft Graph. Animar solicitud, autenticación y concesión. Mostrar Mail.Read solo en pantalla. No presentar consentimiento y autenticación como una sola acción.",
+      "targetSec": 49,
+      "wordBudget": 133,
+      "requiredCues": [
+        "s03-a",
+        "s03-b",
+        "s03-c"
+      ]
+    },
+    {
+      "id": "s04-caso",
+      "chapter": 2,
+      "title": "¿Qué presentarías al correo?",
+      "goal": "Mantener cuatro columnas. Pregunta con dos opciones «Access token» / «Refresh token», sin color de respuesta antes de terminar la pausa. Después iluminar aplicación → Graph para acceso y aplicación → Entra ID para renovación.",
+      "targetSec": 56,
+      "wordBudget": 152,
+      "requiredCues": [
+        "s04-a",
+        "s04-b",
+        "s04-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Acceso a la API; renovación ante el emisor",
+        "afterSegment": "s04-06",
+        "holdSec": 5
+      },
+      "decision": {
+        "q": "Para leer correo, ¿acceso o renovación?",
+        "choices": [
+          "Token de acceso",
+          "Token de renovación"
+        ],
+        "answer": 0,
+        "revealAt": "s04-b",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s05-caso",
+      "chapter": 3,
+      "title": "Tres credenciales que se parecen desde fuera",
+      "goal": "Tabla separada: contraseña / cookie de sesión / ID token. Identificar emisor y destinatario de cada uno. Resaltar «no toda cookie autentica» y «ID token dirigido al cliente». No usar material real ni secuencias con aspecto de token utilizable.",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "s05-a",
+        "s05-b",
+        "s05-c"
+      ]
+    },
+    {
+      "id": "s06-caso",
+      "chapter": 3,
+      "title": "Un permiso con bordes",
+      "goal": "Ficha conceptual sin datos de token: emisor=Entra ID; destinatario=Graph; permiso delegado=Mail.Read; vigencia=según emisión y política. El botón enviar permanece deshabilitado. Un reloj representa caducidad sin fijarla en una hora universal.",
+      "targetSec": 53,
+      "wordBudget": 144,
+      "requiredCues": [
+        "s06-a",
+        "s06-b",
+        "s06-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Destinatario, permisos y vigencia acotan el acceso",
+        "afterSegment": "s06-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-caso",
+      "chapter": 4,
+      "title": "Después de la comprobación",
+      "goal": "MFA al inicio; después, emisión y uso del token. Separar robo hipotético posterior de prueba de uso. Contrato de lectura del buzón visible. Mensaje firmado por SILENT PAGER como atajo de método, no como confesión del caso de septiembre.",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "s07-a",
+        "s07-b",
+        "s07-c"
+      ]
+    },
+    {
+      "id": "s08-caso",
+      "chapter": 4,
+      "title": "¿Qué demuestra la alerta?",
+      "goal": "Alerta sintética: «posible exposición de un access token de Graph con lectura delegada». Pregunta «¿Acceso a todo o alcance por comprobar?». Tras la pausa, abrir solo la zona de lectura y dejar interrogación en uso/renovación.",
+      "targetSec": 57,
+      "wordBudget": 154,
+      "requiredCues": [
+        "s08-a",
+        "s08-b",
+        "s08-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "Exposición no demuestra uso ni acceso permanente",
+        "afterSegment": "s08-06",
+        "holdSec": 5
+      },
+      "decision": {
+        "q": "¿Acceso a todo o alcance por comprobar?",
+        "choices": [
+          "Acceso a todo",
+          "Alcance por comprobar"
+        ],
+        "answer": 1,
+        "revealAt": "s08-b",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s09-caso",
+      "chapter": 5,
+      "title": "Explicarlo sin prometer de más",
+      "goal": "Reconstruir el flujo completo con cuatro participantes y dos destinos distintos para acceso/renovación. Mostrar una conclusión modelo con evidencia, alcance y pendiente. Borde complementario siempre visible.",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": [
+        "s09-a",
+        "s09-b",
+        "s09-c"
+      ],
+      "learningCard": {
+        "label": "PRÁCTICA COMPLEMENTARIA",
+        "text": "El permiso concedido no prueba qué ocurrió después",
+        "afterSegment": "s09-06",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-cierre",
+      "chapter": 5,
+      "title": "Tres comprobaciones y una decisión",
+      "goal": "Tres reglas sin tarjeta nueva: identificar artefacto / acotar permiso / buscar evidencia de uso. Acción única: checkpoint complementario de sp4m8. Créditos y descargo de CompTIA; no reproducir badges de examen.",
+      "targetSec": 45,
+      "wordBudget": 122,
+      "requiredCues": [
+        "s10-a",
+        "s10-b",
+        "s10-c"
+      ]
+    }
+  ],
+  "targetTotalSec": 505
+}

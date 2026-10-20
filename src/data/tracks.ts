@@ -35,6 +35,8 @@ import { SP_FLASHCARDS } from './secplus/flashcards';
 import { SP_GLOSSARY } from './secplus/glossary';
 import { SP_LABS } from './secplus/labs';
 import { SP_PLACEMENT } from './secplus/placement';
+import { withPracticalExpansion } from './practical';
+import { PRACTICAL_CARDS, PRACTICAL_GLOSSARY } from './practical/study-aids';
 
 export type { TrackId };
 
@@ -91,10 +93,10 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
       ...S4_MODULES,
       ...S5_MODULES,
       ...S6_MODULES,
-    ],
+    ].map(withPracticalExpansion),
     placement: GCTI_PLACEMENT,
-    flashcards: GCTI_FLASHCARDS,
-    glossary: GCTI_GLOSSARY,
+    flashcards: [...GCTI_FLASHCARDS, ...PRACTICAL_CARDS.gcti],
+    glossary: [...GCTI_GLOSSARY, ...PRACTICAL_GLOSSARY.gcti],
     labs: GCTI_LABS,
     ranks: RANKS,
     exam: {
@@ -129,10 +131,10 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
       ...SP4_MODULES,
       ...SP5_MODULES,
       ...SP6_MODULES,
-    ],
+    ].map(withPracticalExpansion),
     placement: SP_PLACEMENT,
-    flashcards: SP_FLASHCARDS,
-    glossary: SP_GLOSSARY,
+    flashcards: [...SP_FLASHCARDS, ...PRACTICAL_CARDS.secplus],
+    glossary: [...SP_GLOSSARY, ...PRACTICAL_GLOSSARY.secplus],
     labs: SP_LABS,
     ranks: SP_RANKS,
     exam: {

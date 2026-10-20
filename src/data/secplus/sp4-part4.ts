@@ -351,13 +351,13 @@ const sp4m8: Module = {
         ],
         answer: 1,
         explain:
-          'Same-day disabling removes access instantly while preserving the mailbox, files and logs that an investigation or a retention obligation may require. Immediate deletion is the tempting distractor because it feels safer, but it destroys evidence and cannot be undone, and account removal is a later step governed by the retention schedule.',
+          'Same-day disabling prevents new authentication; existing sessions may also require revocation. Retention preserves the mailbox, files and logs that an investigation or a retention obligation may require. Immediate deletion is the tempting distractor because it feels safer, but it destroys evidence and cannot be undone, and account removal is a later step governed by the retention schedule.',
       },
     },
     { t: 'h', text: 'Federación y SSO: LDAP, SAML y OAuth' },
     {
       t: 'p',
-      md: 'El **single sign-on (SSO)** permite autenticarse una vez y acceder a varias aplicaciones sin repetir credenciales; reduce la fatiga de contraseñas y centraliza el corte de acceso, a cambio de concentrar el riesgo en una sola autenticación —que por eso debe llevar **MFA**—. La **federation** lleva la idea más allá de la organización: se establece una **relación de confianza** entre un proveedor de identidad (**IdP**) y proveedores de servicio de otra entidad, de modo que la plantilla de la Autoridad Portuaria entra en la plataforma aduanera del socio con **sus propias cuentas** y el socio **nunca custodia esas contraseñas**; cuando la cuenta se deshabilita en el IdP, el acceso al servicio externo muere con ella. Los tres protocolos que el examen confunde a propósito hacen cosas distintas. **LDAP** es el **protocolo de directorio**: consultar y mantener el árbol de usuarias, grupos y atributos, y hacer *bind* para validar credenciales dentro de la organización. **SAML** transporta **aserciones de autenticación** en XML entre el IdP y el proveedor de servicio, y es el estándar clásico del **SSO web empresarial** y de la federación con socios. **OAuth** no autentica: **autoriza y delega**, entregando a una aplicación un token de acceso con un alcance limitado para actuar en nombre de la usuaria sin conocer su contraseña; para obtener además identidad se usa **OpenID Connect**, la capa de autenticación construida sobre OAuth. La **interoperabilidad** es lo que hace todo esto posible: son estándares abiertos, y por eso un IdP puede servir a decenas de aplicaciones de fabricantes distintos.',
+      md: 'El **single sign-on (SSO)** permite autenticarse una vez y acceder a varias aplicaciones sin repetir credenciales; reduce la fatiga de contraseñas y centraliza el corte de acceso, a cambio de concentrar el riesgo en una sola autenticación —que por eso debe llevar **MFA**—. La **federation** lleva la idea más allá de la organización: se establece una **relación de confianza** entre un proveedor de identidad (**IdP**) y proveedores de servicio de otra entidad, de modo que la plantilla de la Autoridad Portuaria entra en la plataforma aduanera del socio con **sus propias cuentas** y el socio **nunca custodia esas contraseñas**; deshabilitar la cuenta en el IdP bloquea nuevas autenticaciones; para cortar accesos existentes hay que revisar también tokens y sesiones propias del servicio externo. Los tres protocolos que el examen confunde a propósito hacen cosas distintas. **LDAP** es el **protocolo de directorio**: consultar y mantener el árbol de usuarias, grupos y atributos, y hacer *bind* para validar credenciales dentro de la organización. **SAML** transporta **aserciones de autenticación** en XML entre el IdP y el proveedor de servicio, y es el estándar clásico del **SSO web empresarial** y de la federación con socios. **OAuth** no autentica: **autoriza y delega**, entregando a una aplicación un token de acceso con un alcance limitado para actuar en nombre de la usuaria sin conocer su contraseña; para obtener además identidad se usa **OpenID Connect**, la capa de autenticación construida sobre OAuth. La **interoperabilidad** es lo que hace todo esto posible: son estándares abiertos, y por eso un IdP puede servir a decenas de aplicaciones de fabricantes distintos.',
     },
     {
       t: 'table',
@@ -462,8 +462,10 @@ const sp4m8: Module = {
       },
     },
     {
-      t: 'p',
-      md: 'Antes de la nota de examen, júntalo todo en el puerto: quién entra, cómo lo demuestra y hasta dónde llega.',
+      t: 'callout',
+      kind: 'warn',
+      title: 'Aclaración del vídeo · baja y sesiones (01:35)',
+      md: 'La frase grabada «desde ese momento no abre nada» simplifica el deprovisioning. Deshabilitar la cuenta impide nuevas autenticaciones, pero cortar el acceso existente requiere revisar tokens, revocación y sesiones propias de las aplicaciones. La ampliación de esta lección y sp4m10 desarrollan esos límites. Antes de la nota de examen, júntalo todo en el puerto: quién entra, cómo lo demuestra y hasta dónde llega.',
     },
     {
       t: 'video',

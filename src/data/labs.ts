@@ -120,7 +120,7 @@ export const GCTI_LABS: LabMeta[] = [
     xp: 125,
     kind: 'yara',
     brief:
-      'Construye una regla YARA seleccionando strings y condición. Debe detectar las 2 variantes del loader sin un solo falso positivo en software legítimo.',
+      'Simulación por etiquetas: selecciona strings y condición para cubrir dos variantes ficticias y rechazar los controles. No compila ni ejecuta YARA. En s3m5 tienes escritura libre y validación con un motor real.',
   },
   {
     id: 'lab3c',

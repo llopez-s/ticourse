@@ -283,8 +283,9 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
     const collision = /(?<![\p{L}])(el|la|las|los)\s+(el|la|las|los)(?![\p{L}])/iu.exec(parsed.spoken);
     if (collision) warnings.push(`${label}: the voice will say "${collision[0]}" — move the article inside the [..|..] group, e.g. [a las 01:52|a la una y cincuenta y dos]`);
 
+    // Up to 6000: a scene that closes on an on-screen card (practical videos) holds it in the pause that follows the last segment.
     const pauseMs = raw.pauseAfterMs ?? DEFAULT_PAUSE_MS;
-    if (typeof pauseMs !== 'number' || !Number.isFinite(pauseMs) || pauseMs < 0 || pauseMs > 3000) errors.push(`${label}: pauseAfterMs must be a number between 0 and 3000`);
+    if (typeof pauseMs !== 'number' || !Number.isFinite(pauseMs) || pauseMs < 0 || pauseMs > 6000) errors.push(`${label}: pauseAfterMs must be a number between 0 and 6000`);
 
     let exam = null;
     if (raw.exam !== undefined) {
