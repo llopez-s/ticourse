@@ -353,7 +353,7 @@ const sp2m2: Module = {
         choices: ['Insider threat', 'Message-based', 'Removable device', 'Supply chain (managed service provider)'],
         answer: 3,
         explain:
-          'The attacker reached the victims through a trusted third party that legitimately manages their systems, which is the managed service provider form of the supply chain vector. Insider threat is the tempting distractor because the technician had access, but the technician belongs to an external provider and was compromised, not acting maliciously.',
+          'The attacker reached the victims through a trusted third party that legitimately manages their systems, which is the managed service provider form of the supply chain vector. Insider threat is the tempting distractor because the technician had access, but an insider is someone misusing their own access; here an outside attacker used the compromised account, and the path in was the provider.',
       },
     },
     {
