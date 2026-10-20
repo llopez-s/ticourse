@@ -346,6 +346,10 @@ describe('lesson videos', () => {
     // the two) with three exam-style questions, after the Halden callout and before the paragraph that hands over to
     // sp2m2's vectors
     expect(youtubeVideos.find((v) => v.block.youtube === 'aODnqnaMy7w')?.module).toBe('sp2m1');
+    // V36 draws sp2m2's map of ways in at the port (the attack surface, one path seen up close, the supplier nobody at
+    // the desk controls) with three exam-style questions, after the managed-service-provider check and before the
+    // paragraph that hands over to social engineering
+    expect(youtubeVideos.find((v) => v.block.youtube === '8pYBEcZk7SQ')?.module).toBe('sp2m2');
   });
 
   it('every video block points at relative public assets that exist', async () => {

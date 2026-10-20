@@ -215,7 +215,8 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `1JFdRT7Gkxs`, 4:25, published 2026-10-20) follows one network disk through the asset's life; its trap line s07-03 was
   missing from the main recording, so Lidia recorded it alone on 2026-10-20 and it went in with `--only` and `--lufs` =
   the excerpt's LUFS + the full import's gain (1.8 dB). **V35 `video/actores-halden/`** (sp2m1, YouTube `aODnqnaMy7w`,
-  4:38, published 2026-10-20) sorts the six threat actors into three pairs.
+  4:38, published 2026-10-20) sorts the six threat actors into three pairs. **V36 `video/vectores-halden/`** (sp2m2,
+  YouTube `8pYBEcZk7SQ`, 4:22, published 2026-10-20) maps the ways into the port's front desk (vector vs. attack surface).
   Every script takes `--video <slug>`. Pipeline: `narration.json` →
   `scripts/tts-elevenlabs.mjs` (ElevenLabs v3, one request per scene with `<tag>` emotion
   directions; needs `ELEVENLABS_API_KEY` in the git-ignored `.env.local`; free plan = 10k chars/month,

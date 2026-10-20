@@ -369,6 +369,17 @@ const sp2m2: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a la ingeniería social, míralo en el puerto y ponte a prueba con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Un camino o todos: vector y superficie de ataque',
+      youtube: '8pYBEcZk7SQ',
+      poster: 'videos/vectores-halden-poster.png',
+      transcript: 'videos/vectores-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Con el catálogo de vectores técnicos en la cabeza ya puedes mirar cualquier sistema del puerto y enumerar sus puntos de entrada. Falta el vector que ningún parche cierra: la **persona**. La siguiente lección cubre la segunda mitad del objetivo 2.2, la **ingeniería social** —phishing, vishing, smishing, business email compromise, pretexting, watering hole y typosquatting— y los principios psicológicos que hacen que funcione.',
     },
   ],
