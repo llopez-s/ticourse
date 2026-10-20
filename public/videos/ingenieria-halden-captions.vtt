@@ -1,0 +1,565 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:03.933
+En el puerto de Halden,
+como en todas partes,
+
+2
+00:00:03.933 --> 00:00:07.200
+muchos ataques empiezan
+con un mensaje bien escrito.
+
+3
+00:00:07.200 --> 00:00:09.667
+Ingeniería social, que ataca a la persona.
+
+4
+00:00:09.667 --> 00:00:14.600
+Vas a ver cómo llega, qué te pide,
+quién dice ser y si sabe que miente.
+
+5
+00:00:14.600 --> 00:00:20.233
+Y por aquí ronda RED MARROW, que vive
+de engañar. Ya verás qué consejos da.
+
+6
+00:00:21.200 --> 00:00:23.033
+Empezamos por cómo llega.
+
+7
+00:00:23.033 --> 00:00:26.867
+El cebo es una ayuda de transporte
+que hay que cobrar antes del viernes.
+
+8
+00:00:26.867 --> 00:00:29.533
+Primero llega por correo,
+a toda la plantilla.
+
+9
+00:00:29.533 --> 00:00:33.300
+Luego, el mismo texto, en un SMS al móvil.
+
+10
+00:00:33.300 --> 00:00:35.267
+Y al final, una llamada.
+
+11
+00:00:35.267 --> 00:00:39.767
+Alguien dice ser de Recursos Humanos
+y te pide los datos de viva voz.
+
+12
+00:00:39.767 --> 00:00:41.933
+Es el mismo engaño, con tres nombres.
+
+13
+00:00:41.933 --> 00:00:47.900
+Por correo es phishing, por SMS
+es smishing, y por teléfono, vishing.
+
+14
+00:00:47.900 --> 00:00:51.667
+Y si va a por una persona
+concreta, es spear phishing.
+
+15
+00:00:51.667 --> 00:00:54.733
+Si apunta a los altos cargos, whaling.
+
+16
+00:00:55.233 --> 00:00:59.800
+Piensa en una carta que te llega en un
+sobre, en el móvil o leída por teléfono.
+
+17
+00:00:59.800 --> 00:01:03.300
+O sea, que mira cómo llega,
+no lo que cuenta.
+
+18
+00:01:04.400 --> 00:01:06.400
+Ahora, sin nada técnico.
+
+19
+00:01:06.400 --> 00:01:11.300
+Imagina que a Finanzas le llega un correo
+del buzón de verdad de un directivo.
+
+20
+00:01:11.300 --> 00:01:16.400
+Pero alguien se ha colado en ese buzón,
+y pide un pago urgente a una cuenta nueva.
+
+21
+00:01:16.400 --> 00:01:21.500
+Y se excusa. Está en una reunión,
+no puede hablar, y que no se entere nadie.
+
+22
+00:01:21.500 --> 00:01:26.333
+No hay enlace ni adjunto, así
+que el antivirus no tiene nada que mirar.
+
+23
+00:01:26.333 --> 00:01:31.967
+Y SPF, DKIM y DMARC salen en verde,
+porque el buzón es el suyo.
+
+24
+00:01:31.967 --> 00:01:36.900
+Es como el móvil robado de tu hermana. Te
+escribe desde su número, pero no es ella.
+
+25
+00:01:36.900 --> 00:01:40.133
+Esto es un business
+email compromise, un BEC.
+
+26
+00:01:40.133 --> 00:01:45.333
+Y la excusa de la reunión, para saltarse
+el paso de siempre, es el pretexting.
+
+27
+00:01:45.333 --> 00:01:50.133
+Si falsificaran el dominio del propio
+puerto, eso sí lo cazaría DMARC.
+
+28
+00:01:51.233 --> 00:01:54.600
+Te toca. Alguien de Finanzas
+recibe una llamada.
+
+29
+00:01:54.600 --> 00:01:56.833
+Quien llama dice ser
+la directora de Compras.
+
+30
+00:01:56.833 --> 00:02:00.900
+Hay que pagar hoy una reparación
+urgente, y la cuenta la dicta ella.
+
+31
+00:02:00.900 --> 00:02:04.500
+¿Qué ataque describe mejor este
+caso? Fíjate en ese «mejor».
+
+32
+00:02:04.500 --> 00:02:08.700
+Pide la que más encaja con este
+caso, aunque otra suene bien.
+
+33
+00:02:08.233 --> 00:02:13.233
+A) Business email compromise (BEC)
+B) Smishing
+C) Vishing
+D) Whaling
+
+34
+00:02:13.400 --> 00:02:15.700
+Vishing, porque llega por teléfono.
+
+35
+00:02:15.700 --> 00:02:20.133
+Y sí, la historia es la de un BEC,
+pero sin correo no hay BEC.
+
+36
+00:02:20.133 --> 00:02:24.100
+Vuelve la carta de antes.
+Mira cómo llega, no lo que cuenta.
+
+37
+00:02:25.900 --> 00:02:29.400
+Volvemos al directivo.
+¿Cómo se para algo sin nada técnico?
+
+38
+00:02:29.400 --> 00:02:31.467
+RED MARROW tiene una idea.
+
+39
+00:02:37.600 --> 00:02:39.133
+Pues justo eso no.
+
+40
+00:02:39.133 --> 00:02:43.567
+Ese teléfono lo ha puesto quien escribe,
+así que te contesta quien escribe.
+
+41
+00:02:43.567 --> 00:02:46.000
+Es como cuando te llama «tu banco».
+
+42
+00:02:46.000 --> 00:02:49.633
+Cuelgas, giras la tarjeta
+y llamas tú al número de detrás.
+
+43
+00:02:49.633 --> 00:02:53.167
+Confirmar por un canal que ya tenías,
+nunca por el que trae el mensaje,
+
+44
+00:02:53.167 --> 00:02:55.833
+es out-of-band verification.
+
+45
+00:02:55.833 --> 00:03:01.000
+Y para pagos y cambios de cuenta, firma
+una segunda persona. Eso es dual approval.
+
+46
+00:03:01.000 --> 00:03:04.033
+Así que Finanzas llama
+al número de la agenda.
+
+47
+00:03:04.033 --> 00:03:08.400
+El directivo está en su despacho,
+no ha pedido nada, y el pago no sale.
+
+48
+00:03:08.400 --> 00:03:14.200
+O sea, que contra un engaño sin código,
+el control es un paso que no se salta.
+
+49
+00:03:15.167 --> 00:03:16.133
+Otro caso.
+
+50
+00:03:16.133 --> 00:03:19.733
+Un proveedor de siempre escribe
+a una empresa desde su buzón de verdad,
+
+51
+00:03:19.733 --> 00:03:21.867
+pero alguien se ha colado dentro.
+
+52
+00:03:21.867 --> 00:03:25.467
+Le manda la factura del mes
+con una cuenta nueva, y la empresa paga.
+
+53
+00:03:25.467 --> 00:03:28.567
+¿Qué control lo habría evitado mejor?
+
+54
+00:03:28.067 --> 00:03:33.067
+A) MFA en los buzones de la empresa
+B) Rechazar todo correo que no pase DMARC
+C) Formación de concienciación una vez al año
+D) Out-of-band verification: llamar al número de siempre
+
+55
+00:03:33.233 --> 00:03:35.800
+Llamar al proveedor, al número de siempre.
+
+56
+00:03:35.800 --> 00:03:39.867
+DMARC tienta, pero solo comprueba
+que nadie falsifica el dominio.
+
+57
+00:03:39.867 --> 00:03:43.667
+Y este correo sale del buzón
+de verdad, así que lo pasa.
+
+58
+00:03:43.667 --> 00:03:48.300
+Como con el móvil de tu hermana, que venga
+de su número no prueba que sea ella.
+
+59
+00:03:49.733 --> 00:03:53.933
+Ahora, los disfraces. Vuelve
+la llamada de la reparación.
+
+60
+00:03:53.933 --> 00:03:57.700
+Además de vishing, quien llamaba
+se disfrazaba de otra persona.
+
+61
+00:03:57.700 --> 00:04:01.067
+Hacerse pasar por una persona
+o por un cargo, como esa directora,
+
+62
+00:04:01.067 --> 00:04:02.700
+es impersonation.
+
+63
+00:04:02.700 --> 00:04:07.767
+Y mira esta web, con el logo, los colores
+y el tono de la Autoridad Portuaria.
+
+64
+00:04:07.767 --> 00:04:11.533
+Pide a los transportistas renovar
+su acreditación, con tarjeta.
+
+65
+00:04:11.533 --> 00:04:13.767
+Aquí el disfraz es de toda
+una organización,
+
+66
+00:04:13.767 --> 00:04:17.033
+y eso es brand impersonation.
+
+67
+00:04:23.567 --> 00:04:26.667
+Ni una cosa ni la otra.
+El logo se copia en un minuto.
+
+68
+00:04:26.667 --> 00:04:32.000
+Y la conexión segura solo dice que hablas
+cifrado con esa dirección, no de quién es.
+
+69
+00:04:32.000 --> 00:04:34.467
+Por suerte, aquí nadie ha picado.
+
+70
+00:04:34.467 --> 00:04:39.233
+Y fíjate, disfrazarse de una persona
+o de una empresa cambia el nombre.
+
+71
+00:04:40.267 --> 00:04:42.400
+Mira ahora la dirección de esa web.
+
+72
+00:04:42.400 --> 00:04:46.667
+Parece la del puerto, pero tiene
+una o cambiada por un cero.
+
+73
+00:04:46.667 --> 00:04:48.400
+El typosquatting es eso,
+
+74
+00:04:48.400 --> 00:04:53.100
+una dirección casi igual que espera
+a quien teclea deprisa o lee rápido.
+
+75
+00:04:53.100 --> 00:04:55.867
+Lo contrario es no montar nada falso.
+
+76
+00:04:55.867 --> 00:04:58.233
+Imagina que alguien mete
+código malicioso en la web
+
+77
+00:04:58.233 --> 00:05:01.633
+del oleaje que medio
+puerto mira cada mañana.
+
+78
+00:05:01.633 --> 00:05:06.433
+La web es la de verdad. Quien la envenena
+no persigue a nadie, espera a que lleguen.
+
+79
+00:05:06.433 --> 00:05:08.567
+Eso es un watering hole.
+
+80
+00:05:08.567 --> 00:05:10.067
+Es como un abrevadero.
+
+81
+00:05:10.067 --> 00:05:14.067
+O te ponen un charco falso al lado,
+o te envenenan el de siempre.
+
+82
+00:05:15.133 --> 00:05:16.567
+Te toca otra vez.
+
+83
+00:05:16.567 --> 00:05:21.367
+Un perfil en redes copia el nombre,
+el logo y el tono de una naviera conocida.
+
+84
+00:05:21.367 --> 00:05:25.200
+Contesta a las quejas de sus clientes
+y les pide datos de pago.
+
+85
+00:05:25.200 --> 00:05:28.200
+¿Qué técnica describe mejor lo que hace?
+
+86
+00:05:27.667 --> 00:05:32.667
+A) Brand impersonation
+B) Typosquatting
+C) Impersonation
+D) Watering hole
+
+87
+00:05:32.867 --> 00:05:34.400
+Brand impersonation.
+
+88
+00:05:34.400 --> 00:05:38.867
+Impersonation a secas despista, pero aquí
+nadie finge ser alguien concreto.
+
+89
+00:05:38.867 --> 00:05:43.000
+O sea, que el disfraz es de toda
+una empresa, no de una persona.
+
+90
+00:05:44.467 --> 00:05:48.200
+Y por último, ¿quien difunde
+algo falso sabe que miente?
+
+91
+00:05:48.200 --> 00:05:50.700
+Piensa en un bulo del grupo de la familia.
+
+92
+00:05:50.700 --> 00:05:52.967
+Alguien lo fabrica
+sabiendo que es mentira.
+
+93
+00:05:52.967 --> 00:05:56.600
+Y tu tía lo reenvía,
+convencida de que es verdad.
+
+94
+00:05:56.600 --> 00:05:58.033
+En el puerto pasa igual.
+
+95
+00:05:58.033 --> 00:05:59.033
+En el grupo de un equipo,
+
+96
+00:05:59.033 --> 00:06:03.567
+alguien reenvía de buena fe
+que hoy el fichaje no funciona.
+
+97
+00:06:03.567 --> 00:06:06.567
+Lo que decide el nombre es la intención.
+
+98
+00:06:06.567 --> 00:06:09.733
+La tía, que se lo cree,
+difunde misinformation.
+
+99
+00:06:09.833 --> 00:06:13.433
+Quien lo fabricó sabiendo
+que es falso, disinformation.
+
+100
+00:06:13.433 --> 00:06:18.300
+O sea, que el mismo bulo puede ser
+las dos cosas, según quién lo mueva.
+
+101
+00:06:19.400 --> 00:06:20.433
+La última.
+
+102
+00:06:20.433 --> 00:06:24.367
+Una noche, decenas de cuentas nuevas
+publican a la vez el mismo bulo,
+
+103
+00:06:24.367 --> 00:06:27.333
+que un banco cierra mañana sus oficinas.
+
+104
+00:06:27.333 --> 00:06:30.400
+Por la mañana, muchos clientes
+lo reenvían, convencidos.
+
+105
+00:06:30.400 --> 00:06:34.300
+¿Cómo se clasifica
+lo que hacen esas cuentas?
+
+106
+00:06:33.767 --> 00:06:38.767
+A) Misinformation
+B) Disinformation
+C) Pretexting
+D) Watering hole
+
+107
+00:06:39.133 --> 00:06:40.233
+Disinformation.
+
+108
+00:06:40.233 --> 00:06:43.767
+Tantas cuentas nuevas con el mismo
+texto y a la vez son una campaña,
+
+109
+00:06:43.767 --> 00:06:46.067
+y quien la monta sabe que miente.
+
+110
+00:06:46.067 --> 00:06:49.200
+Lo de los clientes sí
+sería misinformation,
+
+111
+00:06:49.200 --> 00:06:51.633
+pero te preguntan por las cuentas.
+
+112
+00:06:51.633 --> 00:06:56.533
+Las cuentas son las que fabrican el bulo,
+y los clientes, la tía del grupo.
+
+113
+00:06:58.000 --> 00:06:59.467
+Te llevas tres reglas.
+
+114
+00:06:59.467 --> 00:07:03.100
+La primera, mira cómo llega,
+porque el canal le pone el nombre.
+
+115
+00:07:03.100 --> 00:07:07.867
+La segunda, si no hay nada técnico,
+la defensa es un paso que no se salta.
+
+116
+00:07:07.867 --> 00:07:10.133
+Llamas tú, y firma otra persona.
+
+117
+00:07:10.133 --> 00:07:14.733
+Y la tercera, mira de qué va
+disfrazado y si sabe que miente.
+
+118
+00:07:14.733 --> 00:07:18.733
+Mira cómo llega, quién dice ser
+y qué te pide. Y ahora, a practicar.
+
+119
+00:07:18.733 --> 00:07:21.167
+A por las preguntas de la lección.

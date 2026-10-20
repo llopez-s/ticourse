@@ -70,7 +70,7 @@ const sp2m3: Module = {
         choices: ['Vishing', 'Whaling', 'Smishing', 'Watering hole'],
         answer: 2,
         explain:
-          'The lure arrives by SMS, which makes it smishing regardless of the story it tells. Vishing would require a voice call, and whaling targets executives by email; the delivery channel is the discriminator the exam expects you to use.',
+          'The lure arrives by SMS, which makes it smishing regardless of the story it tells. Vishing would require a voice call, and whaling would need a senior executive as the target; the delivery channel is the discriminator the exam expects you to use.',
       },
     },
     { t: 'h', text: 'Los principios que hacen que el engaño funcione' },
@@ -95,13 +95,13 @@ const sp2m3: Module = {
     { t: 'h', text: 'BEC y pretexting: el ataque que no necesita malware' },
     {
       t: 'p',
-      md: 'El **business email compromise (BEC)** es el fraude por ingeniería social que más dinero mueve. El atacante escribe desde el buzón **real comprometido** de un directivo, o desde un dominio suplantado casi idéntico, y pide a finanzas una transferencia urgente, un cambio de cuenta bancaria de un proveedor o el envío de datos de nómina. No hay adjunto malicioso ni enlace: el antivirus no ve nada porque no hay nada técnico que ver. El BEC casi siempre se apoya en un **pretexting**: una historia inventada pero verosímil que justifica la petición y explica por qué no se puede seguir el procedimiento normal («estoy en una reunión con el comprador y no puedo llamar», «la auditoría exige que esto sea confidencial»). El pretexto también funciona solo, sin correo: alguien que llama diciendo ser del proveedor de grúas y necesita «confirmar» las credenciales del portal de mantenimiento está haciendo pretexting por voz.',
+      md: 'El **business email compromise (BEC)** es el fraude por ingeniería social que más dinero mueve. El atacante escribe desde el buzón **real comprometido** de un directivo, o desde un dominio casi idéntico que ha registrado él mismo (typosquatting), y pide a finanzas una transferencia urgente, un cambio de cuenta bancaria de un proveedor o el envío de datos de nómina. No hay adjunto malicioso ni enlace: el antivirus no ve nada porque no hay nada técnico que ver. El BEC casi siempre se apoya en un **pretexting**: una historia inventada pero verosímil que justifica la petición y explica por qué no se puede seguir el procedimiento normal («estoy en una reunión con el comprador y no puedo llamar», «la auditoría exige que esto sea confidencial»). El pretexto también funciona solo, sin correo: alguien que llama diciendo ser del proveedor de grúas y necesita «confirmar» las credenciales del portal de mantenimiento está haciendo pretexting por voz.',
     },
     {
       t: 'callout',
       kind: 'exam',
       title: 'Nota de examen: cómo se detiene un BEC',
-      md: 'Cuando la pregunta dice «el CFO pidió por correo una transferencia urgente y se envió el dinero», la respuesta correcta a «¿qué control lo habría evitado?» es siempre **procedimental**: **verificación fuera de banda** (llamar al directivo a un número ya conocido, nunca al que aparece en el correo) y **dual approval** para pagos o cambios de cuenta bancaria. Las opciones «más antivirus», «un firewall mejor» o «cifrar el correo» son distractores: el ataque no contiene código y el mensaje puede ser técnicamente legítimo si el buzón está comprometido. **DMARC, SPF y DKIM** ayudan contra el *spoofing* del dominio, pero no contra un buzón real secuestrado.',
+      md: 'Cuando la pregunta dice «el CFO pidió por correo una transferencia urgente y se envió el dinero», la respuesta correcta a «¿qué control lo habría evitado?» es siempre **procedimental**: **verificación fuera de banda** (llamar al directivo a un número ya conocido, nunca al que aparece en el correo) y **dual approval** para pagos o cambios de cuenta bancaria. Las opciones «más antivirus», «un firewall mejor» o «cifrar el correo» son distractores: el ataque no contiene código y el mensaje puede ser técnicamente legítimo si el buzón está comprometido. **DMARC, SPF y DKIM** ayudan contra el *spoofing* del dominio real del remitente, pero no contra un dominio parecido registrado por el atacante (pasa sus propias comprobaciones) ni contra un buzón real secuestrado.',
     },
     {
       t: 'check',
@@ -173,7 +173,7 @@ const sp2m3: Module = {
       choices: ['Vishing', 'Whaling', 'Typosquatting', 'Watering hole'],
       answer: 0,
       explain:
-        'Social engineering delivered over a voice call is vishing, and harvesting an MFA code in real time is one of its most common goals. Whaling is a tempting distractor because the request is urgent, but whaling specifically targets executives and is delivered by email.',
+        'Social engineering delivered over a voice call is vishing, and harvesting an MFA code in real time is one of its most common goals. Whaling is a tempting distractor because the request is urgent, but whaling specifically targets senior executives, and this employee is not one.',
     },
     {
       id: 'sp2m3q3',
