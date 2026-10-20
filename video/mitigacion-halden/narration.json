@@ -1,0 +1,301 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "gone": "whoosh",
+    "ok-3": "check",
+    "trap-3": "block",
+    "everyone": "error",
+    "neighbours": "glitch",
+    "fw": "lock"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {ten}Diez técnicas para frenar un ataque, {all-good}y funcionan todas. Pero el examen pide la mejor, y {port}empezamos en el puerto de Halden.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Mitigación y hardening. {promise}Vas a ver qué falló, dónde está el equipo y qué sobra. Porque la mejor es la que ataca la causa.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-causa",
+      "text": "<engaging> {folder}Empezamos por lo que falló. Un departamento comparte sus documentos en una carpeta. {everyone}Al crearla, alguien la dejó abierta a toda la plantilla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-causa",
+      "text": "<thoughtful> {four}Hay cuatro propuestas, y las cuatro son controles que funcionan.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-causa",
+      "text": "<warm> {plant}Piensa en una planta del salón que se pone pocha. Si le falta agua, la riegas. Pero si tiene pulgón, regarla no la salva.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-causa",
+      "text": "<clear> {permission}Aquí falla el permiso, así que se arregla el permiso. Dejar la carpeta solo para ese departamento es access control.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-causa",
+      "text": "<firm> {not-encrypt}Cifrar el disco te protege si alguien se lo lleva, pero el servidor descifra para quien tiene permiso. Y aquí lo tiene toda la plantilla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-causa",
+      "text": "<confident> {map}O sea, que el remedio sale de lo que pasó. Gana la técnica que ataca la causa.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "2.5",
+        "text": "Gana la técnica que ataca la causa del caso",
+        "at": "map",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Otro caso, en una empresa. Un atacante entra en el servidor de la intranet por un fallo conocido. El parche llevaba tres meses publicado y seguía sin poner. Pasa seis semanas dentro sin que nadie lo note. ¿Qué habría impedido mejor que entrara? {verb}Fíjate en «impedido», que impedir no es enterarse. {best}Y en ese «mejor», que pide la que más encaja, aunque otra suene bien.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "2.5",
+        "scenario": "En una empresa, un atacante entra en el servidor de la intranet por un fallo con parche de hace tres meses, sin poner. Pasa seis semanas sin que nadie lo vea.",
+        "q": "¿Qué habría impedido MEJOR que entrara?",
+        "options": [
+          "Segmentation",
+          "Monitoring",
+          "Patching",
+          "Encryption"
+        ],
+        "answer": 2,
+        "trap": 1,
+        "why": "El fallo era conocido y tenía parche: instalarlo cierra la puerta por la que entró",
+        "trapWhy": "Las seis semanas tientan, pero vigilar acorta el daño: no impide entrar",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<firm> {ok-1}Gana patching. Tenía parche, y ponerlo cerraba la puerta. {trap-1}Monitoring tienta, porque seis semanas pesan.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<warm> {sensor}Pero vigilar es el sensor de humedad, que avisa y no riega.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "2.5",
+        "text": "Monitoring acorta el daño; no impide la entrada",
+        "at": "sensor",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-fuera",
+      "text": "<curious> {office}Ahora, dónde está el equipo. {perimeter}En la oficina, el cortafuegos del perímetro filtra lo que pasa por él.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-fuera",
+      "text": "<engaging> {leaves}Pero el portátil sale, a casa o a una feria. {neighbours}Allí, los equipos de al lado llegan a él sin pasar por ese cortafuegos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-fuera",
+      "text": "<clear> {travels}Así que su protección tiene que viajar con él. {fw}Un cortafuegos en el propio portátil decide quién se le conecta. Se llama host-based firewall.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-fuera",
+      "text": "<focused> {hips-hids}Y con él viaja lo que vigila qué se ejecuta, la endpoint protection.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-fuera",
+      "text": "<warm> {coat}O sea, que la calefacción se queda en la oficina, y fuera te protege el abrigo que llevas puesto.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<engaging> {q2}Vamos con otra. Una comercial pasa tres días en una feria, conectada a la red del recinto. Desde esa red, alguien intenta conectarse a su portátil. Un compañero propone una regla en el cortafuegos del perímetro. ¿Qué control habría parado esos intentos?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "2.5",
+        "scenario": "En una feria, desde la red del recinto, alguien intenta conectarse al portátil de una comercial. Un compañero propone una regla en el cortafuegos del perímetro.",
+        "q": "¿Qué control habría parado esos intentos?",
+        "options": [
+          "HIDS",
+          "Host-based firewall",
+          "Network firewall",
+          "Full-disk encryption"
+        ],
+        "answer": 1,
+        "trap": 2,
+        "why": "Va en el portátil y decide quién se conecta a él, esté donde esté",
+        "trapWhy": "Es un cortafuegos, pero esos intentos no pasan por el perímetro: van de equipo a equipo",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}El host-based firewall, que decide quién se le conecta al portátil, esté donde esté. {trap-2}La trampa es el del perímetro.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<thoughtful> {coat-back}Es un cortafuegos, pero esos intentos nunca pasaron por él. La calefacción se quedó en la oficina.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "2.5",
+        "text": "Lejos de la red, protege lo que va en el equipo",
+        "at": "coat-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-sobra",
+      "text": "<engaging> {new-server}Vamos con lo que sobra. Sistemas monta un servidor nuevo, {defaults}y de fábrica trae de todo, hasta un navegador.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-sobra",
+      "text": "<clear> {three-verbs}Hay que quitar lo que no se usa, {gone}como el navegador. Eso es removal of unnecessary software.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-sobra",
+      "text": "<steady> También cierras lo que escucha sin uso y cambias las contraseñas de fábrica.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-sobra",
+      "text": "<focused> {shrink}Quitar, cerrar y cambiar también es hardening. La lista encoge, y con ella la attack surface, que ya conoces. Y de paso, los parches pendientes.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "2.5",
+        "text": "Hardening: menos software, menos que parchear",
+        "at": "shrink",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-sobra",
+      "text": "<casual> {gym}Parchear lo que nadie usa es pagar la cuota del gimnasio al que no vas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-sobra",
+      "text": "<firm> {rule}Lo que hace falta, se parchea. Lo que sobra, se quita.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Y la última. Un servidor de bases de datos trae de fábrica un navegador. Quien administra la base confirma que nadie lo usa. El navegador ya lleva tres parches este año, y hoy sale otro por un fallo crítico. ¿Qué es lo mejor para que esto no se repita?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "2.5",
+        "scenario": "Un servidor de bases de datos trae de fábrica un navegador que nadie usa. El navegador ya lleva tres parches este año, y hoy sale otro por un fallo crítico.",
+        "q": "¿Qué es lo MEJOR para que esto no se repita?",
+        "options": [
+          "HIPS",
+          "Patching",
+          "Monitoring",
+          "Removal of unnecessary software"
+        ],
+        "answer": 3,
+        "trap": 1,
+        "why": "Si nadie lo usa, quitarlo cierra este fallo y todos los que vengan",
+        "trapWhy": "Un fallo con parche suena a parchear, pero el navegador seguiría ahí para el próximo",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Quitar el navegador. Si nadie lo usa, cierras este fallo y los que vengan. {trap-3}El parche suena bien, pero solo arregla el de hoy.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<cheerful> {gym-back}Así que date de baja. {intranet}En la intranet sí tocaba parchear, porque el servidor hacía falta. Este navegador, no.",
+      "pauseAfterMs": 700,
+      "exam": {
+        "objective": "2.5",
+        "text": "Si sobra, no se parchea: se quita",
+        "at": "gym-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<satisfied> {recap}Tres reglas. {rule-1}Busca qué falló, y si hay dos fallos, manda el de la pregunta.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Lejos de la red, te protege lo que va en el equipo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y si sobra, no se parchea, se quita.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Antes de contestar, pregúntate qué falló, dónde y si hace falta. {next}Y ahora, vamos a por {endcard}las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}
