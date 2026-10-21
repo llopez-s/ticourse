@@ -209,7 +209,11 @@ function TopBar() {
         {[
           ['/', 'Panel'],
           ...sectionsOf(track.id).map(
-            (s) => [`/section/${s.id}`, `S${s.num}`] as [string, string],
+            (s) =>
+              [
+                `/section/${s.id}`,
+                `S${s.num}${isOptionalSection(s.id) ? ' · opc.' : ''}`,
+              ] as [string, string],
           ),
           ['/exam', 'Examen'],
           ['/cards', 'Cards'],

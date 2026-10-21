@@ -49,6 +49,23 @@ export const questionsOfTrack = (track: TrackId): Question[] =>
 export const OPTIONAL_SECTIONS: readonly string[] = ['sp7'];
 export const isOptionalSection = (sectionId: string): boolean =>
   OPTIONAL_SECTIONS.includes(sectionId);
+/**
+ * The lesson that follows `mod` in its track. Inside an optional section it
+ * only follows that section's own lessons; elsewhere it skips optional
+ * sections, so the exam path never leads into them.
+ */
+export const nextLessonAfter = (track: TrackId, mod: Module): Module | undefined => {
+  const mods = modulesOfTrack(track);
+  const idx = mods.findIndex((m) => m.id === mod.id);
+  const optional = isOptionalSection(mod.sectionId);
+  return mods
+    .slice(idx + 1)
+    .find((m) =>
+      optional
+        ? m.sectionId === mod.sectionId
+        : !isOptionalSection(m.sectionId),
+    );
+};
 export const nextModule = (
   track: TrackId,
   s: Pick<ProgressSnapshot, 'lessons' | 'exempt'>,

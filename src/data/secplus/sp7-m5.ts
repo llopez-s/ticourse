@@ -24,7 +24,7 @@ export const SP7M5: Module = {
       t: 'callout',
       kind: 'warn',
       title: 'Fuera del SY0-701 · novedad del SY0-801',
-      md: 'Esta lección es material complementario y **opcional**. Se basa en el listado de objetivos del SY0-801 en su versión 2.0, un **borrador previo al lanzamiento**: CompTIA prevé el examen para el **17 de noviembre de 2026 o alrededor**, y el listado final puede cambiar. Si te presentas al SY0-701, esto no sustituye al temario del 701; lo que ya estudiaste sigue siendo válido. Contenido original y no oficial, sin afiliación con CompTIA.',
+      md: 'Esta lección es material complementario y **opcional**. Se basa en el listado de objetivos del SY0-801 en su versión 2.0, un **borrador previo al lanzamiento**: CompTIA prevé el examen para el **17 de noviembre de 2026 o alrededor**, y el listado final puede cambiar. Si te presentas al SY0-701, esto no sustituye al temario del 701; lo que ya estudiaste sigue siendo válido. Contenido original y no oficial, sin afiliación con CompTIA. Leerla cuenta como cualquier lección (XP y progreso normales), pero sus comprobaciones son opcionales, no dan XP y nada de lo que contiene entra en los bancos de preguntas, los jefes, el simulacro ni el examen de nivel.',
     },
     {
       t: 'p',
@@ -90,7 +90,7 @@ export const SP7M5: Module = {
     { t: 'h', text: 'Unsafe exception handling' },
     {
       t: 'p',
-      md: 'Una excepción es el programa diciendo "algo ha ido mal". El **unsafe exception handling** aparece cuando la forma de gestionar ese error ayuda al atacante, de dos maneras distintas:',
+      md: 'Una excepción es el programa diciendo "algo ha ido mal". El **unsafe exception handling** aparece cuando la forma de gestionar ese error ayuda al atacante, de tres maneras distintas:',
     },
     {
       t: 'table',
@@ -368,13 +368,19 @@ export const SP7M5: Module = {
       md: 'Un secreto escrito en un repositorio público, un servicio que corre con una contraseña vieja y una cuenta que acumuló permisos durante años son tres versiones del mismo error: **un acceso que dura más y llega más lejos de lo que nadie decidió**. Las defensas de esta lección apuntan al mismo sitio: que el secreto no esté donde se pueda leer (secrets scanning, secrets manager), que no se pueda reutilizar (passkey, gMSA, credenciales de vida corta) y que el poder se revise (least privilege, access review).',
     },
     {
+      t: 'callout',
+      kind: 'tip',
+      title: 'Tarea breve',
+      md: 'Haz una lista de dónde vive hoy cada secreto de un proyecto tuyo y cuál rotarías primero si se filtrara.',
+    },
+    {
       t: 'links',
       title: 'Complementa',
       items: [
         { label: 'Vulnerabilidades I: aplicaciones, web, sistema operativo, hardware y zero-day (sp2m4)', href: '/learn/sp2m4' },
         { label: 'Vulnerabilidades II: virtualización, cloud, supply chain, criptografía, misconfiguración y móviles (sp2m5)', href: '/learn/sp2m5' },
         { label: 'Identidad y acceso (sp4m8)', href: '/learn/sp4m8' },
-        { label: 'Cloud e infraestructura como código: secretos (sp3m1)', href: '/learn/sp3m1' },
+        { label: 'Modelos de arquitectura: cloud, IaC, serverless y microservicios (sp3m1)', href: '/learn/sp3m1' },
       ],
     },
   ],

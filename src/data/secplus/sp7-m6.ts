@@ -22,7 +22,7 @@ export const SP7M6: Module = {
       t: 'callout',
       kind: 'warn',
       title: 'Fuera del SY0-701 · novedad del SY0-801',
-      md: 'Esta lección es material **complementario y opcional**. Los temas salen del borrador de objetivos del SY0-801 (documento v2.0, 2025), un listado **previo al lanzamiento** que puede cambiar: el examen se espera «on or around 17 November 2026», es decir, hacia el 17 de noviembre de 2026. No forma parte del SY0-701. Leerla cuenta como cualquier lección (XP y progreso normales), pero sus comprobaciones son opcionales, no dan XP y nada de aquí entra en los bancos de preguntas, los jefes, el simulacro ni el examen de nivel; además, que el 801 nombre o deje de nombrar un tema no cambia lo que cae en el 701. Alertópolis es un proyecto independiente, sin relación con CompTIA.',
+      md: 'Esta lección es material **complementario y opcional**. Los temas salen del borrador de objetivos del SY0-801 (documento v2.0, 2025), un listado **previo al lanzamiento** que puede cambiar: el examen se espera «on or around November 17, 2026», es decir, hacia el 17 de noviembre de 2026. No forma parte del SY0-701. Leerla cuenta como cualquier lección (XP y progreso normales), pero sus comprobaciones son opcionales, no dan XP y nada de aquí entra en los bancos de preguntas, los jefes, el simulacro ni el examen de nivel; además, que el 801 nombre o deje de nombrar un tema no cambia lo que cae en el 701. Alertópolis es un proyecto independiente, sin relación con CompTIA.',
     },
     {
       t: 'p',
@@ -269,6 +269,12 @@ export const SP7M6: Module = {
     {
       t: 'p',
       md: 'Con MTBF y MTTR se estima la disponibilidad: MTBF / (MTBF + MTTR). Un sistema con un MTBF de 1 000 horas y un MTTR de 4 horas está disponible aproximadamente el 99,6 % del tiempo. Para mejorar, puedes fallar menos (subir el MTBF) o reparar más deprisa (bajar el MTTR). Si el RTO acordado es de dos horas y el MTTR medido es de cinco, el diseño no cumple la promesa por más que el papel diga lo contrario; ahí es donde el restoration testing, el capacity planning y el out-of-band management se encuentran.',
+    },
+    {
+      t: 'callout',
+      kind: 'tip',
+      title: 'Tarea breve',
+      md: 'Para un conjunto de datos que conozcas, asigna owner, custodian y steward y elige la técnica para compartirlo con terceros.',
     },
     {
       t: 'links',

@@ -11,20 +11,20 @@ export const SP7M7: Module = {
   title: 'Operaciones y gobierno',
   minutes: 22,
   objectives: [
-    'Explicar qué es un **fail forward**, cuándo puede ser aceptable frente a un backout plan y por qué el **CAB** sigue decidiendo',
-    'Distinguir **IPAM**, **CSPM**, source code review y escaneo como formas de identificar vulnerabilidades, y usar el pentest report para priorizar',
-    'Diferenciar un **bounty program** de una política de **responsible disclosure** y separar el reporte interno del externo',
-    'Situar la fase de **negotiation** en la respuesta a incidentes y enumerar los factores que pesan en una decisión de extorsión',
+    'Explicar qué es un fail forward, cuándo puede ser aceptable frente a un backout plan y por qué el CAB sigue decidiendo',
+    'Distinguir IPAM, CSPM, source code review y escaneo como formas de identificar vulnerabilidades, y usar el pentest report para priorizar',
+    'Diferenciar un bounty program de una política de responsible disclosure y separar el reporte interno del externo',
+    'Situar la fase de negotiation en la respuesta a incidentes y enumerar los factores que pesan en una decisión de extorsión',
     'Planificar la notificación a stakeholders, customers, law enforcement y organismos con reporte mandatory',
-    'Usar **MITRE ATT&CK**, la Cyber Kill Chain y el **Diamond Model** como fuentes de referencia en una auditoría o evaluación',
-    'Elegir el tipo de formación de concienciación, su canal de entrega y las métricas, incluido el personnel **behavior** risk scoring',
+    'Usar MITRE ATT&CK, la Cyber Kill Chain y el Diamond Model como fuentes de referencia en una auditoría o evaluación',
+    'Elegir el tipo de formación de concienciación, su canal de entrega y las métricas, incluido el personnel behavior risk scoring',
   ],
   blocks: [
     {
       t: 'callout',
       kind: 'warn',
       title: 'Fuera del SY0-701 · novedad del SY0-801',
-      md: 'Esta lección es **material complementario y opcional**: no forma parte del SY0-701. Leerla cuenta como cualquier lección (XP y progreso normales), pero sus comprobaciones son opcionales, no dan XP y nada de lo que contiene entra en los bancos de preguntas, los jefes, el simulacro ni el examen de nivel. Está escrita a partir del **borrador previo al lanzamiento** del listado de objetivos del SY0-801 (documento v2.0), que puede cambiar antes de publicarse. El lanzamiento del examen está previsto «on or around 17 November 2026». Lo que el borrador no nombra de nuevo sigue siendo materia del SY0-701. Proyecto independiente, sin afiliación con CompTIA.',
+      md: 'Esta lección es **material complementario y opcional**: no forma parte del SY0-701. Leerla cuenta como cualquier lección (XP y progreso normales), pero sus comprobaciones son opcionales, no dan XP y nada de lo que contiene entra en los bancos de preguntas, los jefes, el simulacro ni el examen de nivel. Está escrita a partir del **borrador previo al lanzamiento** del listado de objetivos del SY0-801 (documento v2.0), que puede cambiar antes de publicarse. El lanzamiento del examen está previsto «on or around November 17, 2026». Lo que el borrador no nombra de nuevo sigue siendo materia del SY0-701. Proyecto independiente, sin afiliación con CompTIA.',
     },
     {
       t: 'p',
@@ -266,6 +266,12 @@ export const SP7M7: Module = {
         answer: 3,
         explain: 'Risk scoring is a prioritization tool for targeted and corrective training, ideally transparent, proportionate and aggregated. Public rankings and discipline-only use damage the reporting culture that early detection depends on.',
       },
+    },
+    {
+      t: 'callout',
+      kind: 'tip',
+      title: 'Tarea breve',
+      md: 'En tres líneas: quién decide, quién aporta hechos y a quién se notifica en una extorsión como la del ejemplo.',
     },
     {
       t: 'links',

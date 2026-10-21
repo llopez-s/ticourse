@@ -80,6 +80,10 @@ preguntas de quiz y las flashcards van en inglés, como en el examen real.
 | **Boss battles** | 5 | 5 |
 | **Prueba de nivel** | 5 bloques · 60 preguntas | 5 bloques · 60 preguntas |
 
+Las cifras de Security+ son solo del SY0-701. Además, la sección opcional SY0-801
+(ver más abajo) añade 7 lecciones, 73 tarjetas y 102 términos, que no figuran
+en la tabla.
+
 - **Labs GCTI**: kill chain mapping, Diamond, Courses of Action, Pivot Hunt
   (grafo de infraestructura), YARA Forge, CMF, caza de sesgos, matriz ACH,
   calibración ICD 203, Report Forge.

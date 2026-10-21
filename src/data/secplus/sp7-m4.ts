@@ -198,6 +198,12 @@ export const SP7M4: Module = {
       md: 'Si te presentas al SY0-701, esta lección no sustituye nada: es un mapa de lo que viene. Lo útil para ambos exámenes es el método: ante cualquier vector nuevo pregúntate **qué es, qué rastro deja y qué hábito o control lo frena**. Esta lección solo recoge lo que el borrador añade o refuerza en el 2.3; los demás vectores que nombra (como los dispositivos IoT) siguen siendo materia del 701, en las lecciones del Dominio 2. Y recuerda que las fuentes pueden cambiar: contrasta siempre con el listado de objetivos oficial vigente de CompTIA.',
     },
     {
+      t: 'callout',
+      kind: 'tip',
+      title: 'Tarea breve',
+      md: 'Escribe la primera comprobación que harías ante un QR sospechoso y ante una llamada con la voz de tu directora, y por qué canal.',
+    },
+    {
       t: 'links',
       title: 'Complementa',
       items: [

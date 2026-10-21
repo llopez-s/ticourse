@@ -135,7 +135,7 @@ export const SP7M1: Module = {
     { t: 'h', text: 'Lo que el 801 no nombra sigue cayendo en el 701' },
     {
       t: 'p',
-      md: 'Al comparar los dos listados verás temas del 701 que el borrador del 801 **no menciona**: por ejemplo la **containerización**, **ICS/SCADA** y los sistemas **OT**, los **RTOS**, los **embedded systems**, las redes definidas por software (**SDN**) o el control de acceso basado en atributos (**ABAC**). Cuidado con la conclusión apresurada. Hay dos razones para no descartarlos:',
+      md: 'Al comparar los dos listados verás temas del 701 que el borrador del 801 **no menciona**: por ejemplo la **containerización**, **ICS/SCADA**, los **RTOS**, los **embedded systems**, las redes definidas por software (**SDN**) o el control de acceso basado en atributos (**ABAC**). Cuidado con la conclusión apresurada. Hay dos razones para no descartarlos:',
     },
     {
       t: 'list',
@@ -148,7 +148,7 @@ export const SP7M1: Module = {
       t: 'callout',
       kind: 'warn',
       title: 'No recortes tu 701 por lo que lees del 801',
-      md: 'Tampoco hay que sacar la conclusión contraria: que un tema esté **ausente** de un listado no prueba que haya dejado de importar en la práctica. Fíjate además en que otros conceptos próximos sí se nombran en el borrador, como los dispositivos IoT como vector (2.3) o la virtualización (2.4 y 3.4). El borrador cambia el énfasis, no vacía el temario del 701.',
+      md: 'Tampoco hay que sacar la conclusión contraria: que un tema esté **ausente** de un listado no prueba que haya dejado de importar en la práctica. Fíjate además en que otros conceptos próximos sí se nombran en el borrador, como los vectores IoT y OT (operational technology) del 2.3 o la virtualización (2.4 y 3.4). El borrador cambia el énfasis, no vacía el temario del 701.',
     },
     {
       t: 'check',
@@ -199,6 +199,12 @@ export const SP7M1: Module = {
         explain:
           'The draft places gap analysis in objective 5.5, among the engagement types of audit and assessment activities. Moving between objectives is common between versions.',
       },
+    },
+    {
+      t: 'callout',
+      kind: 'tip',
+      title: 'Tarea breve',
+      md: 'Marca en tu plan del 701 los tres temas que más te cuestan; ninguno sale del plan aunque el borrador del 801 no lo nombre.',
     },
     {
       t: 'links',

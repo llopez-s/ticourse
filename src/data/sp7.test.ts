@@ -3,7 +3,10 @@ import {
   contentSections,
   isOptionalSection,
   modulesOf,
+  moduleById,
+  nextLessonAfter,
   nextModule,
+  OPTIONAL_SECTIONS,
   placementBlocks,
   sampleExam,
   sectionById,
@@ -66,13 +69,33 @@ describe('sp7 optional section', () => {
     expect(nextModule('secplus', { lessons, exempt: {} })).toBeUndefined();
   });
 
+  it('every optional section exists in the section list and has no boss', () => {
+    for (const id of OPTIONAL_SECTIONS) {
+      const sec = sectionById(id);
+      expect(sec, `${id} is a real section`).toBeDefined();
+      expect(sec?.boss, `${id} has no boss`).toBeNull();
+    }
+  });
+
   it('placement and exam sampling are unchanged', () => {
-    expect(placementBlocks('secplus')).toHaveLength(5);
-    const exam = sampleExam('secplus', 90, '1');
-    expect(exam).toHaveLength(90);
-    const sp7Ids = new Set(modulesOf('sp7').flatMap((m) => m.quiz.map((q) => q.id)));
-    expect(exam.filter((q) => sp7Ids.has(q.id)).length).toBe(0);
-    expect(exam.some((q) => /^sp7m/.test(q.id))).toBe(false);
+    const blocks = placementBlocks('secplus');
+    expect(blocks).toHaveLength(5);
+    expect(blocks.some((b) => b.sectionId === 'sp7')).toBe(false);
+    // The sp7 lessons carry `quiz: []` (asserted above), so no question can reach
+    // the exam bank; the mock still samples its full size.
+    expect(sampleExam('secplus', 90, '1')).toHaveLength(90);
+  });
+
+  it('nextLessonAfter follows the exam path and stays inside optional sections', () => {
+    const next = (id: string) => {
+      const m = moduleById(id);
+      expect(m, id).toBeDefined();
+      return nextLessonAfter('secplus', m!)?.id;
+    };
+    expect(next('sp6m1')).toBeUndefined();
+    expect(next('sp7m1')).toBe('sp7m2');
+    expect(next('sp7m7')).toBeUndefined();
+    expect(next('sp5m8')).toBe('sp6m1');
   });
 
   it('sp7 flashcards come last and ids are unique', () => {
@@ -91,6 +114,11 @@ describe('sp7 optional section', () => {
     const terms = SP7_GLOSSARY.map((g) => g.term.toLowerCase());
     expect(new Set(terms).size).toBe(terms.length);
     for (const g of SP7_GLOSSARY) expect(g.sectionId).toBe('sp7');
+    // No sp7 term repeats a term of the 701 glossary (case-insensitive).
+    const base = new Set(
+      secplus.glossary.filter((g) => g.sectionId !== 'sp7').map((g) => g.term.toLowerCase()),
+    );
+    expect(terms.filter((t) => base.has(t))).toEqual([]);
     const gl = secplus.glossary;
     expect(gl.slice(gl.length - SP7_GLOSSARY.length)).toEqual(SP7_GLOSSARY);
   });
@@ -146,4 +174,3 @@ describe('sp7 optional section', () => {
     expect(Object.keys(COVERAGE).sort()).toEqual(modulesOf('sp7').map((m) => m.id).sort());
   });
 });
-

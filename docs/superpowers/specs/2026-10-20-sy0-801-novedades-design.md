@@ -1,6 +1,6 @@
 # Novedades del SY0-801 en el curso de Security+ (diseño)
 
-Fecha: 2026-10-20. Estado: **propuesta, pendiente de aprobación de Lidia**. Rama de trabajo: `sy0-801-novedades`.
+Fecha: 2026-10-20. Estado: **aprobado por Lidia el 2026-10-21**. Rama de trabajo: `sy0-801-novedades`.
 
 ## Intención y por qué
 

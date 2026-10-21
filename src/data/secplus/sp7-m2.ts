@@ -224,6 +224,12 @@ export const SP7M2: Module = {
       },
     },
     {
+      t: 'callout',
+      kind: 'tip',
+      title: 'Tarea breve',
+      md: 'Elige una herramienta de IA que uses y anota, para cada uno de los cuatro bloques, el riesgo más probable y un control que viva fuera del modelo.',
+    },
+    {
       t: 'links',
       title: 'Complementa',
       items: [

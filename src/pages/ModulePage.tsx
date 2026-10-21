@@ -2,9 +2,8 @@ import { useMemo, useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import type { Module } from '../lib/types';
 import {
-  isOptionalSection,
   moduleById,
-  modulesOfTrack,
+  nextLessonAfter,
   sectionById,
   trackOf,
 } from '../data/course';
@@ -33,15 +32,9 @@ function LessonView({ mod }: { mod: Module }) {
   const completed = !!lessons[mod.id];
   const convalidated = !completed && exemptActive({ exempt }, mod.id);
   const canComplete = answered >= totalChecks;
-  const trackMods = modulesOfTrack(trackOf(mod.sectionId));
-  const globalIdx = trackMods.findIndex((m) => m.id === mod.id);
   // The exam path never leads into an optional section; inside one, "next"
   // simply follows its own lessons.
-  const nextMod = trackMods
-    .slice(globalIdx + 1)
-    .find(
-      (m) => isOptionalSection(mod.sectionId) || !isOptionalSection(m.sectionId),
-    );
+  const nextMod = nextLessonAfter(trackOf(mod.sectionId), mod);
 
   return (
     <div>
