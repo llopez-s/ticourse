@@ -18,7 +18,7 @@ export const SP7M1: Module = {
       t: 'callout',
       kind: 'warn',
       title: 'Fuera del SY0-701 · novedad del SY0-801',
-      md: 'Esta lección es **material complementario y opcional**. El SY0-801 (Security+ V8) tiene prevista su salida **«on or around 17 November 2026»**, es decir, el 17 de noviembre de 2026 o alrededor, y lo que sigue se apoya en un **borrador previo al lanzamiento**: el documento de objetivos v2.0, que CompTIA puede cambiar antes o después de esa fecha. Nada de esto entra en el SY0-701, ni en los quizzes, bosses, simulacros o exámenes de nivel de esta app. Contrasta siempre con `comptia.org`. Material no oficial, sin afiliación con CompTIA.',
+      md: 'Esta lección es **material complementario y opcional**. El SY0-801 (Security+ V8) tiene prevista su salida **«on or around November 17, 2026»**, es decir, el 17 de noviembre de 2026 o alrededor, y lo que sigue se apoya en un **borrador previo al lanzamiento**: el documento de objetivos v2.0, que CompTIA puede cambiar antes o después de esa fecha. Nada de esto forma parte del SY0-701. Leerla cuenta como cualquier lección (XP y progreso normales), pero sus comprobaciones son opcionales, no dan XP y nada de lo que contiene entra en los bancos de preguntas, los jefes, el simulacro ni el examen de nivel. Contrasta siempre con `comptia.org`. Material no oficial, sin afiliación con CompTIA.',
     },
     {
       t: 'p',
@@ -28,7 +28,7 @@ export const SP7M1: Module = {
     {
       t: 'list',
       items: [
-        '**Lanzamiento del 801**: previsto «on or around» el **17 de noviembre de 2026**. Cuando se escribió esta lección, la página oficial todavía decía «coming soon».',
+        '**Lanzamiento del 801**: previsto «on or around November 17, 2026», es decir, el **17 de noviembre de 2026** o alrededor. Cuando se escribió esta lección, la página oficial todavía decía «coming soon».',
         '**Formato anunciado**: hasta 90 preguntas (test y performance-based), 90 minutos y 750 puntos sobre una escala de 100 a 900. Es el mismo formato que el 701.',
         '**Público objetivo**: administradores de seguridad con unos dos años de experiencia práctica.',
         '**Retirada del SY0-701**: el **11 de junio de 2027** en inglés y el **13 de agosto de 2027** en japonés, portugués, español y tailandés. Hasta entonces el 701 sigue siendo un examen válido y vigente.',
@@ -41,7 +41,7 @@ export const SP7M1: Module = {
       headers: ['Dominio', 'SY0-701', 'SY0-801 (borrador)', 'Cambio'],
       rows: [
         ['1 · General Security Concepts', '12%', '16%', '+4'],
-        ['2 · Threats, Vulnerabilities (and Mitigations en el 701 / and Attacks en el 801)', '22%', '24%', '+2'],
+        ['2 · Threats, Vulnerabilities, and Mitigations (701) / and Attacks (801)', '22%', '24%', '+2'],
         ['3 · Security Architecture', '18%', '19%', '+1'],
         ['4 · Security Operations', '28%', '27%', '-1'],
         ['5 · Security Program Management and Oversight', '20%', '14%', '-6'],
@@ -49,7 +49,7 @@ export const SP7M1: Module = {
     },
     {
       t: 'p',
-      md: 'Dos lecturas útiles. La primera: **gobierno, riesgo y cumplimiento (dominio 5) pierde seis puntos** y el dominio 1 gana cuatro, así que el examen se inclina hacia los conceptos y las amenazas. La segunda: **Operaciones sigue siendo el dominio más pesado** (27%), por lo que lo que ya has trabajado en la sección 4 conserva casi todo su valor. Y fíjate en el nombre del dominio 2: pasa de «Mitigations» a «Attacks» porque las técnicas de mitigación ya no viven allí.',
+      md: 'Dos lecturas útiles. La primera: **gobierno, riesgo y cumplimiento (dominio 5) pierde seis puntos** y el dominio 1 gana cuatro, así que el examen se inclina hacia los conceptos y las amenazas. La segunda: **Operaciones sigue siendo el dominio más pesado** (27%), por lo que lo que ya has trabajado en la sección 4 conserva casi todo su valor. Y fíjate en el nombre del dominio 2: pasa de «Mitigations» a «Attacks», y en el borrador las técnicas de mitigación cuelgan del objetivo 4.1.',
     },
     { t: 'h', text: 'Lo que cambia de sitio' },
     {
@@ -63,10 +63,10 @@ export const SP7M1: Module = {
         ['Gap analysis', '`sp1m2`', '5.5, entre los tipos de engagement de auditoría y evaluación'],
         ['CVSS, CVE y priorización', '`sp4m5`', '2.1, características de amenazas y vulnerabilidades'],
         ['RTO, RPO, MTTR y MTBF', '`sp5m4` y `sp3m7`', '3.4, resiliencia y recuperación'],
-        ['Seguridad física: lock and key, access vestibule, access passes', '`sp1m4`', '2.3, como vector de amenaza (physical-based)'],
-        ['Honeypot, honeynet, honeyfile, honeytoken y canary account', '`sp1m4`', '4.1, controles de mitigación'],
+        ['Seguridad física: access vestibule y access badges (el borrador habla de lock and key, access vestibule y access passes)', '`sp1m4`', '2.3, como vector de amenaza (physical-based)'],
+        ['Honeypot, honeynet, honeyfile y honeytoken (el borrador añade canary account)', '`sp1m4`', '4.1, controles de mitigación'],
         ['Técnicas de mitigación y hardening', '`sp2m8`', '4.1, que pasa a ser el objetivo central de mitigación'],
-        ['Roles de datos: owner, custodian, steward, operator, controller, subprocessor', '`sp3m6` y `sp5m1`', '3.3, protección de datos'],
+        ['Roles de datos: owner, custodian, steward y controller (el borrador añade data operator y data subprocessor)', '`sp5m2`', '3.3, protección de datos (controller vs. processor sigue también en el 5.4)'],
       ],
     },
     {
@@ -75,14 +75,14 @@ export const SP7M1: Module = {
       title: 'Lo que sigue igual',
       md: 'Los cimientos del dominio 1 se mantienen en el 1.1 del borrador: **defense in depth**, CIA, AAA, non-repudiation, **Zero Trust**, least privilege, y las categorías y tipos de control. Zero Trust, de hecho, aparece dos veces: como principio en el 1.1 y como arquitectura en el 3.2 (autenticación de usuario, gestión de dispositivos y control de acceso a aplicaciones). Todo lo que estudiaste en `sp1m1` y `sp1m3` es base común a ambos exámenes.',
     },
-    { t: 'h', text: 'Lo que es nuevo de verdad' },
+    { t: 'h', text: 'Lo que añade o refuerza el borrador' },
     {
       t: 'p',
-      md: 'Estas son las áreas que el borrador añade o refuerza. Cada una tiene su lección en esta sección; aquí solo ves el mapa.',
+      md: 'Estas son las áreas que el borrador añade o refuerza. Cada una tiene su lección en esta sección; aquí solo ves el mapa. Ojo: no todo lo que aparece es nuevo para ti. Algunos términos ya los enseña el curso del 701 y el borrador solo los vuelve a nombrar, a veces en otro objetivo; van marcados con «ya en el 701».',
     },
     {
       t: 'table',
-      headers: ['Área', 'Novedades que nombra el borrador', 'Objetivos'],
+      headers: ['Área', 'Lo que nombra el borrador', 'Objetivos'],
       rows: [
         [
           'Inteligencia artificial',
@@ -91,12 +91,12 @@ export const SP7M1: Module = {
         ],
         [
           'Vectores e indicadores',
-          '**Quishing**, **deepfake**, **RCS**, herramientas de colaboración, **living-off-the-land**, **impossible travel**, **log manipulation**, **session tokens**',
+          '**Quishing**, **deepfake**, **RCS**, herramientas de colaboración, **living-off-the-land**, **log manipulation**, **session tokens**; también nombra impossible travel y concurrent sessions (ya en el 701, `sp2m6`)',
           '2.3, 2.5',
         ],
         [
           'Código, repositorios e identidad',
-          '**Hardcoded secrets**, unsafe exception handling, **malicious update**, **TOC/TOU**, repositorios y almacenamiento de objetos públicos, **secrets scanning**, **passkeys**, **passwordless**, cuentas de **emergency access**, **gMSA**, **privilege creep**, monitorización de credenciales comprometidas',
+          '**Hardcoded secrets**, unsafe exception handling, repositorios y almacenamiento de objetos públicos, **secrets scanning**, **passkeys** como punto propio, cuentas de **emergency access**, **gMSA**, **privilege creep** (el permission creep de `sp4m8` con otro nombre), monitorización de credenciales comprometidas; también nombra malicious update y TOC/TOU (ya en el 701, `sp2m4`) y passwordless (ya en el 701, `sp4m8`)',
           '2.4, 4.1, 4.5, 3.2',
         ],
         [
@@ -106,12 +106,12 @@ export const SP7M1: Module = {
         ],
         [
           'Resiliencia',
-          '**Autoscaling**, **immutability** de los backups, **restoration testing**, **capacity planning**',
+          '**Autoscaling**, **immutability** de los backups y **restoration testing** como puntos propios (la idea de probar la restauración ya está en `sp3m7`); también nombra capacity planning (ya en el 701, `sp3m7`)',
           '3.4',
         ],
         [
           'Operaciones y gobierno',
-          '**CSPM**, **IPAM**, programas de **bounty** y **responsible disclosure**, **negotiation** y notificación externa en la respuesta a incidentes, **fail forward** y **CAB** en el change management, **MITRE ATT&CK**, Cyber Kill Chain y **Diamond Model** como fuentes de referencia, **BEC** y puntuación de riesgo por comportamiento del personal',
+          '**CSPM**, **IPAM**, **negotiation** y notificación externa en la respuesta a incidentes, **fail forward** en el change management, **MITRE ATT&CK**, Cyber Kill Chain y **Diamond Model** como fuentes de referencia de una auditoría y puntuación de riesgo por comportamiento del personal; también nombra el CAB (ya en `sp1m5`), los programas de bounty y responsible disclosure (ya en `sp4m4`) y el BEC, ahora como tema de formación (como ataque, ya en `sp2m3`)',
           '1.2, 4.3, 4.7, 5.5, 5.6',
         ],
       ],
@@ -135,13 +135,13 @@ export const SP7M1: Module = {
     { t: 'h', text: 'Lo que el 801 no nombra sigue cayendo en el 701' },
     {
       t: 'p',
-      md: 'Al comparar los dos listados verás temas del 701 que el borrador del 801 **no menciona**: por ejemplo la **containerización**, **ICS/SCADA**, los **RTOS**, los **embedded systems**, las redes definidas por software (**SDN**) o el control de acceso basado en atributos (**ABAC**). Cuidado con la conclusión apresurada. Hay dos razones para no descartarlos:',
+      md: 'Al comparar los dos listados verás temas del 701 que el borrador del 801 **no menciona**: por ejemplo la **containerización**, **ICS/SCADA** y los sistemas **OT**, los **RTOS**, los **embedded systems**, las redes definidas por software (**SDN**) o el control de acceso basado en atributos (**ABAC**). Cuidado con la conclusión apresurada. Hay dos razones para no descartarlos:',
     },
     {
       t: 'list',
       items: [
         'El propio documento aclara que **sus listas no son exhaustivas**: pueden aparecer otros ejemplos aunque no estén escritos.',
-        'Y, sobre todo, **tú no te examinas del 801**. Mientras prepares el **SY0-701**, tus objetivos son los del 701, y ahí esos temas siguen contando con todo su peso. Que otro examen no los nombre no cambia el tuyo.',
+        'Y, sobre todo, **si te presentas al 701, tu examen no es el 801**. Mientras prepares el **SY0-701**, tus objetivos son los del 701, y ahí esos temas siguen contando con todo su peso. Que otro examen no los nombre no cambia el tuyo.',
       ],
     },
     {
@@ -188,7 +188,7 @@ export const SP7M1: Module = {
       t: 'check',
       q: {
         optional: true,
-        q: 'In the SY0-801 draft, under which kind of activity does gap analysis appear, when in the SY0-701 course it sits among the general security concepts?',
+        q: 'This course teaches gap analysis among the general security concepts of the SY0-701. In the SY0-801 draft, under which kind of activity is it named?',
         choices: [
           'Vulnerability scanning',
           'Incident response preparation',
@@ -211,6 +211,10 @@ export const SP7M1: Module = {
         { label: 'Gestión de vulnerabilidades II: análisis, respuesta y validación', href: '/learn/sp4m5' },
         { label: 'Protección de datos: tipos, clasificaciones, estados y métodos', href: '/learn/sp3m6' },
         { label: 'Resiliencia y recuperación: HA, sitios, backups, pruebas y energía', href: '/learn/sp3m7' },
+        { label: 'Estructuras de gobernanza, roles sobre los datos y factores externos', href: '/learn/sp5m2' },
+        { label: 'Vulnerabilidades I: aplicaciones, web, sistema operativo, hardware y zero-day', href: '/learn/sp2m4' },
+        { label: 'Malware e indicadores de actividad maliciosa', href: '/learn/sp2m6' },
+        { label: 'IAM: identidades, federación, control de acceso, MFA y PAM', href: '/learn/sp4m8' },
       ],
     },
   ],

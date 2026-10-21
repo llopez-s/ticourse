@@ -15,7 +15,7 @@ export const SP7M2: Module = {
     'Distinguir model manipulation, poisoning, evasion, jailbreaking y prompt injection por lo que atacan y por dónde entran',
     'Reconocer los riesgos de la salida y del uso de la IA: hallucinations, bias, explainability, privacy, data loss y ethical considerations',
     'Describir cómo session hijacking y code execution aparecen en aplicaciones que rodean al modelo',
-    'Asociar cada riesgo con la propiedad de la tríada CIA que rompe y con un control típico',
+    'Asociar cada riesgo con la propiedad de la tríada CIA que rompe (o, cuando no encaja en la tríada, con la confianza o la accountability que afecta) y con un control típico',
     'Razonar por qué una defensa ingenua de un asistente interno falla y por qué funcionan los controles en capas',
   ],
   blocks: [
@@ -23,7 +23,7 @@ export const SP7M2: Module = {
       t: 'callout',
       kind: 'warn',
       title: 'Fuera del SY0-701 · novedad del SY0-801',
-      md: 'Esta lección es **material complementario y opcional**. El tema viene del listado de objetivos del SY0-801 en su versión de borrador previa al lanzamiento (documento v2.0), con lanzamiento previsto **el 17 de noviembre de 2026 o alrededor**. Un borrador puede cambiar y este contenido es independiente y no oficial: no lo tomes como definitivo y contrástalo con los objetivos publicados por CompTIA cuando salgan. No sustituye nada del SY0-701 y no suma XP obligatorio.',
+      md: 'Esta lección es **material complementario y opcional**. El tema viene del listado de objetivos del SY0-801 en su versión de borrador previa al lanzamiento (documento v2.0), con lanzamiento previsto **el 17 de noviembre de 2026 o alrededor**. Un borrador puede cambiar y este contenido es independiente y no oficial: no lo tomes como definitivo y contrástalo con los objetivos publicados por CompTIA cuando salgan. No forma parte del SY0-701. Leerla cuenta como cualquier lección (XP y progreso normales), pero sus comprobaciones son opcionales, no dan XP y nada de aquí entra en los bancos de preguntas, los jefes, el simulacro ni el examen de nivel.',
     },
     {
       t: 'p',
@@ -40,7 +40,7 @@ export const SP7M2: Module = {
     },
     {
       t: 'p',
-      md: '**Poisoning** (envenenamiento) ocurre **antes** de usar el modelo: el atacante introduce datos manipulados en el entrenamiento, en el ajuste fino (fine-tuning) o en los documentos que el sistema consulta, para que aprenda algo equivocado. Un clasificador de alertas entrenado con muestras que alguien colaba a propósito puede aprender a ver como "normal" justo lo que el atacante va a hacer. Rompe sobre todo **integrity**, y su peligro es que es silencioso: el modelo parece funcionar bien. Se reduce con **data provenance** (saber de dónde sale cada dato y quién lo aprobó), validación y revisión de los conjuntos de entrenamiento, y pruebas periódicas del modelo contra casos conocidos.',
+      md: '**Poisoning** (envenenamiento) corrompe lo que el modelo aprende o en lo que se apoya: el atacante introduce datos manipulados en el entrenamiento, en el ajuste fino (fine-tuning) o en una fuente que el sistema consulta de forma permanente, para que aprenda o se fíe de algo equivocado. Si lo que se corrompe es una fuente de consulta permanente (una base documental que el asistente usa siempre), el efecto dura hasta que se limpia; un documento suelto con órdenes escondidas es, en cambio, prompt injection indirecta. Un clasificador de alertas entrenado con muestras que alguien colaba a propósito puede aprender a ver como "normal" justo lo que el atacante va a hacer. Rompe sobre todo **integrity**, y su peligro es que es silencioso: el modelo parece funcionar bien. Se reduce con **data provenance** (saber de dónde sale cada dato y quién lo aprobó), validación y revisión de los conjuntos de entrenamiento, y pruebas periódicas del modelo contra casos conocidos.',
     },
     {
       t: 'p',
@@ -48,13 +48,13 @@ export const SP7M2: Module = {
     },
     {
       t: 'p',
-      md: '**Jailbreaking** es convencer a un modelo para que ignore las reglas de seguridad con las que fue configurado, normalmente mediante una conversación diseñada con ese fin. Quien lo intenta es el propio usuario de la sesión, y lo que busca es que el modelo diga o haga algo que su diseño prohíbe. **Prompt injection** es parecido pero distinto: las instrucciones maliciosas llegan **escondidas en el contenido** que el modelo procesa. En la forma **directa** las escribe el usuario; en la **indirecta** viajan dentro de un correo, una página web, un PDF o un registro que el asistente lee por encargo de otra persona. La indirecta es la más peligrosa en entornos corporativos, porque la víctima es un usuario legítimo que no escribió nada raro. Cuando es el propio usuario quien escribe la orden, ambos conceptos se solapan: se habla de jailbreaking si el objetivo es que el modelo rompa sus reglas de seguridad (lo que se niega a hacer), y de prompt injection directa si el objetivo es desviarlo de la tarea o de las instrucciones que le dio la aplicación. Cuando aparezca en un escenario, la pista decisiva es de dónde viene la orden: de la conversación del usuario o escondida en datos de un tercero.',
+      md: '**Jailbreaking** es convencer a un modelo para que ignore las reglas de seguridad con las que fue configurado, normalmente mediante una conversación diseñada con ese fin. Quien lo intenta es el propio usuario de la sesión, y lo que busca es que el modelo diga o haga algo que su diseño prohíbe. No lo confundas con el **jailbreaking** de móviles que viste en `sp2m5` (quitar las restricciones del sistema de un iPhone): mismo nombre, otra cosa. En el 2.6 del borrador se refiere a modelos de IA. **Prompt injection** es parecido pero distinto: las instrucciones maliciosas llegan **escondidas en el contenido** que el modelo procesa. En la forma **directa** las escribe el usuario; en la **indirecta** viajan dentro de un correo, una página web, un PDF o un registro que el asistente lee por encargo de otra persona. La indirecta es la más peligrosa en entornos corporativos, porque la víctima es un usuario legítimo que no escribió nada raro. Cuando es el propio usuario quien escribe la orden, ambos conceptos se solapan: se habla de jailbreaking si el objetivo es que el modelo rompa sus reglas de seguridad (lo que se niega a hacer), y de prompt injection directa si el objetivo es desviarlo de la tarea o de las instrucciones que le dio la aplicación. Cuando aparezca en un escenario, la pista decisiva es de dónde viene la orden: de la conversación del usuario o escondida en datos de un tercero.',
     },
     {
       t: 'callout',
       kind: 'tip',
       title: 'Cómo distinguirlos en un escenario',
-      md: 'Pregunta **quién ataca y por dónde entra**. Si el propio usuario fuerza al modelo, en su conversación, a saltarse sus reglas de seguridad: **jailbreaking** (con la variante de prompt injection directa si lo que busca es desviar la tarea de la aplicación). Si la orden llega escondida en datos que el modelo procesa (un documento, una web): **prompt injection**. Si se corrompen los datos con los que aprende o consulta: **poisoning**. Si se tocan las entradas de un modelo ya desplegado para que clasifique mal: **evasion**. La pista suele estar en el verbo: "aprendió" apunta a poisoning, "al resumir un documento" apunta a prompt injection.',
+      md: 'Pregunta **quién ataca y por dónde entra**. Si el propio usuario fuerza al modelo, en su conversación, a saltarse sus reglas de seguridad: **jailbreaking**; si lo que busca es desviar la tarea de la aplicación, se habla de prompt injection directa. Si la orden llega escondida en datos que el modelo procesa (un documento, una web): **prompt injection**. Si se corrompen los datos con los que aprende o consulta: **poisoning**. Si se tocan las entradas de un modelo ya desplegado para que clasifique mal: **evasion**. La pista suele estar en el verbo: "aprendió" apunta a poisoning, "al resumir un documento" apunta a prompt injection.',
     },
     {
       t: 'check',
@@ -69,7 +69,7 @@ export const SP7M2: Module = {
         ],
         answer: 2,
         explain:
-          'The instructions travel inside the data the assistant processes on behalf of someone else, which is indirect prompt injection. Poisoning is the tempting distractor, but nothing was learned or retrained: the effect lasts only while the assistant reads that document. Jailbreaking needs the user of the session to push the model past its rules, and here the vendor never talks to the assistant.',
+          'The instructions travel inside the data the assistant processes on behalf of someone else, which is indirect prompt injection. Poisoning is the tempting distractor, but poisoning corrupts the data a model learns from or a knowledge source it keeps relying on; here a single uploaded document carries instructions, and the effect lasts only while the assistant reads it. Jailbreaking needs the user of the session to push the model past its rules, and here the vendor never talks to the assistant.',
       },
     },
     { t: 'h', text: 'Fallos en lo que el modelo responde' },
@@ -88,7 +88,7 @@ export const SP7M2: Module = {
     },
     {
       t: 'p',
-      md: 'Las **ethical considerations** son lo que queda cuando algo es técnicamente posible y legal pero no es adecuado: vigilar a empleados con un modelo sin que lo sepan, tomar decisiones sobre personas sin supervisión humana, usar datos recopilados con otro propósito. No rompen una propiedad CIA concreta; afectan a la confianza, al cumplimiento y a la reputación. En el examen suelen aparecer como la respuesta que añade **transparencia, supervisión humana y responsabilidad asignada**.',
+      md: 'Las **ethical considerations** son lo que queda cuando algo es técnicamente posible y legal pero no es adecuado: vigilar a empleados con un modelo sin que lo sepan, tomar decisiones sobre personas sin supervisión humana, usar datos recopilados con otro propósito. No rompen una propiedad CIA concreta; afectan a la confianza, al cumplimiento y a la reputación. Cuando aparecen en un escenario, lo razonable es la respuesta que añade **transparencia, supervisión humana y responsabilidad asignada**.',
     },
     { t: 'h', text: 'Riesgos de la aplicación que rodea al modelo' },
     {
@@ -101,7 +101,7 @@ export const SP7M2: Module = {
     },
     {
       t: 'p',
-      md: '**Code execution**: muchas aplicaciones de IA ejecutan lo que el modelo produce (un intérprete de código, un agente que lanza comandos, una plantilla que se renderiza). Si una orden inyectada consigue que el modelo genere código o comandos maliciosos y la aplicación los ejecuta sin más, el resultado es ejecución de código en un entorno que probablemente tiene más permisos de los necesarios. La regla de oro: la **salida del modelo es entrada no confiable**, igual que lo que escribe un usuario anónimo. Se trata con ejecución en un **sandbox** aislado, sin credenciales de producción ni acceso libre a la red, con **least privilege** y aprobación humana para lo que tenga efectos. Es el mismo principio que evita una inyección SQL: nunca pasar lo no confiable a un intérprete poderoso.',
+      md: '**Code execution**: muchas aplicaciones de IA ejecutan lo que el modelo produce (un intérprete de código, un agente que lanza comandos, una plantilla que se renderiza). Si una orden inyectada consigue que el modelo genere código o comandos maliciosos y la aplicación los ejecuta sin más, el resultado es ejecución de código en un entorno que probablemente tiene más permisos de los necesarios. La regla de oro: la **salida del modelo es entrada no confiable**, igual que lo que escribe un usuario anónimo. Se trata con ejecución en un **sandbox** aislado, sin credenciales de producción ni acceso libre a la red, con **least privilege** y aprobación humana para lo que tenga efectos. Se parece a lo que ocurre con la inyección SQL: lo no confiable nunca se trata como código sin barreras. Las consultas parametrizadas separan el código de los datos; aquí esa separación técnica no existe, y por eso la barrera es el sandbox y los permisos.',
     },
     {
       t: 'table',
@@ -110,7 +110,7 @@ export const SP7M2: Module = {
         ['Model manipulation', 'Integrity del comportamiento del modelo', 'Control de cambios, firma y verificación del modelo, acceso restringido a pesos y configuración'],
         ['Poisoning', 'Integrity (datos de entrenamiento o consulta)', 'Data provenance, validación de datos, pruebas contra casos conocidos'],
         ['Prompt injection', 'Confidentiality e integrity (el modelo obedece a un tercero)', 'Filtrado de entradas y salidas, least privilege, aprobación humana, registro'],
-        ['Jailbreaking', 'Integrity de las reglas de seguridad del modelo', 'Guardrails por capas, filtrado de salida, monitoreo de abuso, límites de uso'],
+        ['Jailbreaking', 'Integrity de las reglas de seguridad del modelo', 'Guardrails por capas, filtrado de salida, monitorización de abuso, límites de uso'],
         ['Evasion', 'Integrity de la decisión (lo malicioso pasa por legítimo)', 'Defensa en profundidad, reentrenamiento con casos esquivados, vigilancia de deriva'],
         ['Hallucinations', 'Integrity de la información y de las decisiones', 'Respuestas ancladas a fuentes, verificación humana, formación'],
         ['Bias', 'Integrity y equidad de las decisiones', 'Datos representativos, pruebas de equidad, revisión humana'],
@@ -129,7 +129,7 @@ export const SP7M2: Module = {
         '**Filtrado de entrada y de salida**: detectar patrones sospechosos antes y después del modelo. Reduce riesgo, no lo elimina, porque un filtro basado en listas se rodea reformulando.',
         '**Least privilege para las herramientas del modelo**: el asistente solo debe poder hacer lo mínimo, y con los permisos de quien pregunta, no con una cuenta de servicio omnipotente.',
         '**Aprobación humana** para acciones con efectos (enviar, borrar, ejecutar, pagar).',
-        '**Registro y monitoreo** de prompts, respuestas, herramientas invocadas y volumen de uso; sin registros no hay investigación posible.',
+        '**Registro y monitorización** de prompts, respuestas, herramientas invocadas y volumen de uso; sin registros no hay investigación posible.',
         '**Data governance**: qué datos pueden entrar, quién los aprueba, cuánto tiempo se guardan.',
         '**Procedencia de datos y de modelos** (provenance): saber de dónde viene cada conjunto de datos y cada modelo, y verificar su integridad antes de usarlo.',
       ],
@@ -229,6 +229,7 @@ export const SP7M2: Module = {
       items: [
         { label: 'Vulnerabilidades II: virtualización, cloud, supply chain, criptografía, misconfiguración y móviles', href: '/learn/sp2m5' },
         { label: 'Malware e indicadores de actividad maliciosa', href: '/learn/sp2m6' },
+        { label: 'Vulnerabilidades I: aplicaciones, web, sistema operativo, hardware y zero-day', href: '/learn/sp2m4' },
       ],
     },
   ],
