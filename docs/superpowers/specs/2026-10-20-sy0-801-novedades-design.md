@@ -43,7 +43,7 @@ en la página de lanzamiento. Pesos: 16 % conceptos generales · 24 % amenazas, 
 - Que `sp7` entre en `contentSections`, en la preparación por dominio o en el simulacro del 701.
 - Que una tarjeta de `sp7` se cuele **antes** que las del 701 en la cola diaria de repaso.
 - Presentar el borrador de objetivos como definitivo, o dar a entender que lo que el 801 deja de nombrar
-  (virtualización, contenedores, IoT, ICS/SCADA, RTOS, embedded, SDN, attribute-based access control)
+  (containerization, ICS/SCADA, RTOS, embedded systems, SDN, attribute-based access control; IoT y virtualization sí siguen nombrados en 2.3, 2.4 y 3.4)
   **ya no cae en el 701**: sigue cayendo, y sus lecciones no cambian.
 - Afirmar afiliación con CompTIA o copiar texto del documento de objetivos. El material es original y se conserva el aviso
   de no afiliación.
@@ -71,7 +71,7 @@ novedad del SY0-801» y, al final, enlaces a las lecciones del 701 que complemen
 | sp7m2 | IA: riesgos y ataques | 2.6, 2.4 | model manipulation, poisoning, prompt injection, jailbreaking, evasion, hallucinations, bias, explainability, privacy y data loss, session hijacking, code execution, ethical considerations; LLM como superficie de ataque | `sp2m5`, `sp2m6` |
 | sp7m3 | IA en las operaciones | 4.6 | automatización y scripting, guardrails, automation logic; IA agentic, chatbot, predictive analysis, baselines aumentados con IA; resultados esperados; CI/CD y flujos | `sp4m9` |
 | sp7m4 | Vectores e indicadores nuevos | 2.3, 2.5, 5.6 | quishing (QR), deepfake, RCS y herramientas de colaboración, living-off-the-land, extensiones y session tokens del navegador, señales (Bluetooth, RF, NFC), impossible travel, log manipulation, BEC | `sp2m1`–`sp2m4`, `sp2m7` |
-| sp7m5 | Código, repositorios y credenciales | 2.4, 4.1, 4.5, 3.2 | hardcoded secrets, unsafe exception handling, malicious update, TOC/TOU, repositorios y almacenamiento públicos, secrets scanning; passkeys y passwordless, cuentas de emergencia, gMSA, privilege creep, vigilancia de credenciales comprometidas | `sp2m5`, `sp4m8`, `sp3m1` |
+| sp7m5 | Código, repositorios y credenciales | 2.4, 4.1, 4.5, 3.2 | hardcoded secrets, unsafe exception handling, malicious update, TOC/TOU, repositorios y almacenamiento públicos, secrets scanning; passkeys y passwordless, cuentas de emergencia, gMSA, privilege creep, vigilancia de credenciales comprometidas | `sp2m4`, `sp2m5`, `sp4m8`, `sp3m1` |
 | sp7m6 | Arquitectura y datos | 3.2, 3.3, 3.4 | Zero Trust como arquitectura (autenticación, gestión de dispositivos, acceso a aplicaciones), security service edge, E2E encrypted messaging, out-of-band management; roles de datos (owner, custodian, steward, operator, controller, subprocessor), ciclo de vida, deidentification y data transpose, cumplimiento por tipo de dato; autoscaling, immutability, restoration testing, capacity planning | `sp1m3`, `sp3m4`–`sp3m7` |
 | sp7m7 | Operaciones y gobierno | 1.2, 4.3, 4.7, 5.5, 5.6 | fail forward y CAB; CSPM, IPAM, revisión de código fuente, bounty y responsible disclosure; fase de negociación y notificación externa en respuesta a incidentes; MITRE ATT&CK, Cyber Kill Chain y Diamond Model como fuentes de una auditoría; formación dirigida y puntuación de riesgo por comportamiento | `sp1m5`, `sp4m10`, `sp5m7` |
 
