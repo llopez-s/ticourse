@@ -94,7 +94,7 @@ export const SP7M6: Module = {
     { t: 'h', text: 'Parte 2 · Datos: roles, ciclo de vida y técnicas' },
     {
       t: 'p',
-      md: 'En el 701 viste el reparto básico entre **owner**, **custodian** y **steward** (sp3m6 y el Dominio 5). El borrador del 801 amplía la lista a **seis roles**. Los tres últimos vienen del lenguaje de la protección de datos personales y marcan una cadena de responsabilidad que sale de la organización. Una advertencia: los nombres cambian de una norma o empresa a otra, así que usa esta tabla como mapa de preguntas («¿quién decide?», «¿quién opera?», «¿quién responde?») más que como definición legal.',
+      md: 'En el 701 ya viste owner, custodian y steward (sp3m6 y sp5m2) y también controller y processor (sp5m2). El borrador del 801 nombra seis roles: owner, custodian, steward, controller, data operator y data subprocessor. Los dos últimos no los define el borrador: vienen del lenguaje de la protección de datos personales y apuntan a una cadena de responsabilidad que sale de la organización. Una advertencia: los nombres cambian de una norma o empresa a otra, así que usa esta tabla como mapa de preguntas («¿quién decide?», «¿quién opera?», «¿quién responde?») más que como definición legal.',
     },
     {
       t: 'table',
@@ -103,14 +103,14 @@ export const SP7M6: Module = {
         ['**Data owner**', 'Él: clasificación, quién accede, cuánto se conserva', 'Delega en otros', 'Ante la organización, de que el dato esté bien gobernado'],
         ['**Data custodian**', 'No decide el qué: aplica lo que fija el owner', 'Almacenamiento, copias, cifrado y accesos concedidos', 'De que los controles técnicos funcionen'],
         ['**Data steward**', 'Definiciones, calidad y reglas de uso del dato', 'Catálogo, metadatos, corrección de errores', 'De que el dato sea coherente y se entienda igual en todas partes'],
-        ['**Data operator**', 'Nada: sigue instrucciones', 'Introduce, consulta o procesa el dato en el trabajo diario', 'De usarlo según las reglas y el procedimiento'],
+        ['**Data operator**', 'Nada: sigue instrucciones', 'Trata el dato en su trabajo diario, a menudo por cuenta de otro (el borrador no lo define; en algunas normas equivale al processor)', 'De usarlo según las reglas y el procedimiento'],
         ['**Data controller**', 'Para qué se tratan los datos personales y con qué medios', 'Directamente o a través de terceros', 'Ante el regulador y las personas afectadas'],
         ['**Data subprocessor**', 'Nada propio: trabaja por encargo de otro encargado', 'Parte del tratamiento, en nombre de la cadena anterior', 'Ante quien lo contrata, por contrato'],
       ],
     },
     {
       t: 'p',
-      md: 'En Halden, imagina un conjunto de registros de mercancías. La dirección responsable del negocio es el **data owner**; el equipo de infraestructura es el **data custodian** (guarda, copia, cifra); una persona de operaciones que mantiene el catálogo de campos y corrige códigos mal escritos es la **data steward**; el personal de aduanas que introduce declaraciones es **data operator**. Si el registro incluye datos de personas, la Autoridad actúa como **data controller**; un proveedor logístico que trata esos datos por encargo es su encargado, y la empresa de análisis en la nube a la que ese proveedor subcontrata una parte es un **data subprocessor**. El examen gira casi siempre en torno a una confusión: el custodian guarda, el steward da sentido, el owner decide.',
+      md: 'En Halden, imagina un conjunto de registros de mercancías. La dirección responsable del negocio es el **data owner**; el equipo de infraestructura es el **data custodian** (guarda, copia, cifra); una persona de operaciones que mantiene el catálogo de campos y corrige códigos mal escritos es la **data steward**; el personal de aduanas que introduce declaraciones es **data operator**. El borrador no define este rol: en algunas normas «operator» es sinónimo de processor, y en otras es quien maneja el dato a diario. Si el examen lo define, manda su definición. Si el registro incluye datos de personas, la Autoridad actúa como **data controller**; un proveedor logístico que trata esos datos por encargo es su **processor** (el término del 701), y la empresa de análisis en la nube a la que ese proveedor subcontrata una parte es un **data subprocessor**. El examen gira casi siempre en torno a una confusión: el custodian guarda, el steward da sentido, el owner decide.',
     },
     {
       t: 'check',
@@ -278,6 +278,7 @@ export const SP7M6: Module = {
         { label: 'Asegurar la infraestructura: colocación, zonas, failure modes y appliances', href: '/learn/sp3m4' },
         { label: 'Protección de datos: tipos, clasificaciones, estados y métodos', href: '/learn/sp3m6' },
         { label: 'Resiliencia y recuperación: HA, sitios, backups, pruebas y energía', href: '/learn/sp3m7' },
+        { label: 'Gobernanza: roles sobre los datos (owner, controller, processor…)', href: '/learn/sp5m2' },
       ],
     },
   ],
