@@ -95,9 +95,40 @@ describe('sp7 optional section', () => {
     expect(gl.slice(gl.length - SP7_GLOSSARY.length)).toEqual(SP7_GLOSSARY);
   });
 
-  // Task 9 unskips this once the seven lessons are written (until then the
-  // provisional scaffold lessons do not carry the topic keywords).
-  it.skip('sp7 lessons mention their topics', () => {
+  it('sp7 has at least 38 flashcards and 48 glossary terms', () => {
+    expect(SP7_FLASHCARDS.length).toBeGreaterThanOrEqual(38);
+    expect(SP7_GLOSSARY.length).toBeGreaterThanOrEqual(48);
+    for (const c of SP7_FLASHCARDS) {
+      expect(c.front.trim().length, c.id).toBeGreaterThan(0);
+      expect(c.back.trim().length, c.id).toBeGreaterThan(0);
+    }
+    for (const g of SP7_GLOSSARY) {
+      expect(g.term.trim().length, g.term).toBeGreaterThan(0);
+      expect(g.def.trim().length, g.term).toBeGreaterThan(0);
+    }
+  });
+
+  it('sp7 flashcard ids are unique across the whole track', () => {
+    const ids = secplus.flashcards.map((c) => c.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    // Sequential, gap-free numbering fcp701, fcp702, ...
+    expect(SP7_FLASHCARDS.map((c) => c.id)).toEqual(
+      SP7_FLASHCARDS.map((_, i) => `fcp7${String(i + 1).padStart(2, '0')}`),
+    );
+  });
+
+  it('every sp7 coverage keyword has a flashcard or glossary entry for the AI lessons', () => {
+    const cardText = SP7_FLASHCARDS.map((c) => `${c.front} ${c.back}`).join(' ');
+    const termText = SP7_GLOSSARY.map((g) => g.term).join(' ');
+    const corpus = `${cardText} ${termText}`.toLowerCase();
+    for (const id of ['sp7m2', 'sp7m3']) {
+      for (const kw of COVERAGE[id]) {
+        expect(corpus, `${id} keyword "${kw}" needs a card or glossary term`).toContain(kw.toLowerCase());
+      }
+    }
+  });
+
+  it('sp7 lessons mention their topics', () => {
     for (const m of modulesOf('sp7')) {
       const text = JSON.stringify(m.blocks).toLowerCase();
       for (const kw of COVERAGE[m.id] ?? []) {
