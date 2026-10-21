@@ -128,6 +128,14 @@ describe('sp7 optional section', () => {
     }
   });
 
+  it('no sp7 card or term says that an omitted topic stops being tested in the 701', () => {
+    const text = [
+      ...SP7_FLASHCARDS.map((c) => `${c.front} ${c.back}`),
+      ...SP7_GLOSSARY.map((g) => `${g.term} ${g.def}`),
+    ].join('\n');
+    expect(text).not.toMatch(/no longer (tested|assessed|covered)|stops? being tested|ya no (cae|entra|se examina)|dejó de caer/i);
+  });
+
   it('sp7 lessons mention their topics', () => {
     for (const m of modulesOf('sp7')) {
       const text = JSON.stringify(m.blocks).toLowerCase();
