@@ -10,19 +10,19 @@ export const SP7M6: Module = {
   title: 'Arquitectura y datos',
   minutes: 25,
   objectives: [
-    'Explicar los tres pilares de una Zero Trust architecture (usuario, dispositivo, acceso a la aplicación) y qué protege y qué no cada uno',
+    'Explicar las tres piezas de una Zero Trust architecture que destaca el borrador (user authentication, device management, application access control) y qué protege y qué no cada una',
     'Situar Security Service Edge, end-to-end encrypted messaging y out-of-band management dentro de una arquitectura segura, con su límite principal',
     'Distinguir los seis roles de protección de datos (data owner, data custodian, data steward, data operator, data controller, data subprocessor)',
     'Recorrer el data management life cycle y comparar deidentification, data transpose, masking, tokenization, hashing, encryption y obfuscation',
     'Aplicar marking and labeling, geofencing, data location y data placement, y asociar cada tipo de dato con su presión de compliance',
-    'Añadir autoscaling, immutability, restoration testing y capacity planning al diseño de resiliencia, y leer RTO, RPO, MTTR y MTBF como un conjunto',
+    'Añadir autoscaling e immutability al diseño de resiliencia y repasar, con lo ya visto en sp3m7 y sp5m4, el restoration testing, el capacity planning y las métricas RTO, RPO, MTTR y MTBF leídas como un conjunto',
   ],
   blocks: [
     {
       t: 'callout',
       kind: 'warn',
       title: 'Fuera del SY0-701 · novedad del SY0-801',
-      md: 'Esta lección es material **complementario y opcional**. Los temas salen del borrador de objetivos del SY0-801 (documento v2.0, 2025), un listado **previo al lanzamiento** que puede cambiar: el examen se espera «on or around 17 November 2026», es decir, hacia el 17 de noviembre de 2026. No forma parte del SY0-701, no cuenta para tu progreso ni para ningún examen de Alertópolis, y que el 801 nombre o deje de nombrar un tema no cambia lo que cae en el 701. Alertópolis es un proyecto independiente, sin relación con CompTIA.',
+      md: 'Esta lección es material **complementario y opcional**. Los temas salen del borrador de objetivos del SY0-801 (documento v2.0, 2025), un listado **previo al lanzamiento** que puede cambiar: el examen se espera «on or around 17 November 2026», es decir, hacia el 17 de noviembre de 2026. No forma parte del SY0-701. Leerla cuenta como cualquier lección (XP y progreso normales), pero sus comprobaciones son opcionales, no dan XP y nada de aquí entra en los bancos de preguntas, los jefes, el simulacro ni el examen de nivel; además, que el 801 nombre o deje de nombrar un tema no cambia lo que cae en el 701. Alertópolis es un proyecto independiente, sin relación con CompTIA.',
     },
     {
       t: 'p',
@@ -94,7 +94,7 @@ export const SP7M6: Module = {
     { t: 'h', text: 'Parte 2 · Datos: roles, ciclo de vida y técnicas' },
     {
       t: 'p',
-      md: 'En el 701 ya viste owner, custodian y steward (sp3m6 y sp5m2) y también controller y processor (sp5m2). El borrador del 801 nombra seis roles: owner, custodian, steward, controller, data operator y data subprocessor. Los dos últimos no los define el borrador: vienen del lenguaje de la protección de datos personales y apuntan a una cadena de responsabilidad que sale de la organización. Una advertencia: los nombres cambian de una norma o empresa a otra, así que usa esta tabla como mapa de preguntas («¿quién decide?», «¿quién opera?», «¿quién responde?») más que como definición legal.',
+      md: 'En el 701 ya viste owner, custodian y steward (los dos primeros en sp3m6, los tres en sp5m2) y también controller y processor (sp5m2). El borrador del 801 nombra seis roles: owner, custodian, steward, controller, data operator y data subprocessor. El borrador solo da los nombres, sin definir ninguno; owner, custodian, steward y controller tienen un sentido asentado (el que viste en el 701), pero data operator y data subprocessor no aparecían en el 701 y vienen del lenguaje de la protección de datos personales y apuntan a una cadena de responsabilidad que sale de la organización. Una advertencia: los nombres cambian de una norma o empresa a otra, así que usa esta tabla como mapa de preguntas («¿quién decide?», «¿quién opera?», «¿quién responde?») más que como definición legal.',
     },
     {
       t: 'table',
@@ -105,12 +105,12 @@ export const SP7M6: Module = {
         ['**Data steward**', 'Definiciones, calidad y reglas de uso del dato', 'Catálogo, metadatos, corrección de errores', 'De que el dato sea coherente y se entienda igual en todas partes'],
         ['**Data operator**', 'Nada: sigue instrucciones', 'Trata el dato en su trabajo diario, a menudo por cuenta de otro (el borrador no lo define; en algunas normas equivale al processor)', 'De usarlo según las reglas y el procedimiento'],
         ['**Data controller**', 'Para qué se tratan los datos personales y con qué medios', 'Directamente o a través de terceros', 'Ante el regulador y las personas afectadas'],
-        ['**Data subprocessor**', 'Nada propio: trabaja por encargo de otro encargado', 'Parte del tratamiento, en nombre de la cadena anterior', 'Ante quien lo contrata, por contrato'],
+        ['**Data subprocessor**', 'Nada propio: trabaja por encargo de un processor', 'Parte del tratamiento, en nombre del processor que lo contrata', 'Ante el processor que lo contrata, por contrato'],
       ],
     },
     {
       t: 'p',
-      md: 'En Halden, imagina un conjunto de registros de mercancías. La dirección responsable del negocio es el **data owner**; el equipo de infraestructura es el **data custodian** (guarda, copia, cifra); una persona de operaciones que mantiene el catálogo de campos y corrige códigos mal escritos es la **data steward**; el personal de aduanas que introduce declaraciones es **data operator**. El borrador no define este rol: en algunas normas «operator» es sinónimo de processor, y en otras es quien maneja el dato a diario. Si el examen lo define, manda su definición. Si el registro incluye datos de personas, la Autoridad actúa como **data controller**; un proveedor logístico que trata esos datos por encargo es su **processor** (el término del 701), y la empresa de análisis en la nube a la que ese proveedor subcontrata una parte es un **data subprocessor**. El examen gira casi siempre en torno a una confusión: el custodian guarda, el steward da sentido, el owner decide.',
+      md: 'En Halden, imagina un conjunto de registros de mercancías. La dirección responsable del negocio es el **data owner**; el equipo de infraestructura es el **data custodian** (guarda, copia, cifra); una persona de operaciones que mantiene el catálogo de campos y corrige códigos mal escritos es la **data steward**; el personal de aduanas que introduce declaraciones es **data operator**. El borrador no define este rol: en algunas normas «operator» es sinónimo de processor, y en otras es quien maneja el dato a diario. Si el examen lo define, manda su definición. Si el registro incluye datos de personas, la Autoridad actúa como **data controller**; un proveedor logístico que trata esos datos por encargo es su **processor** (el término del 701), y la empresa de análisis en la nube a la que ese proveedor subcontrata una parte es un **data subprocessor**. La confusión que más se repite en el 701 es esta: el custodian guarda, el steward da sentido, el owner decide.',
     },
     {
       t: 'check',
@@ -150,7 +150,7 @@ export const SP7M6: Module = {
     { t: 'h', text: 'Técnicas para proteger el dato' },
     {
       t: 'p',
-      md: 'El borrador nombra ocho técnicas. Seis las conoces; las nuevas en el listado son **deidentification** y **data transpose**. La deidentification quita o altera los identificadores de un conjunto de datos para que no se pueda enlazar con una persona concreta, mediante supresión, generalización (la fecha exacta pasa a «la semana») o sustitución. Su límite es la reidentificación: cruzando datos «anónimos» con otras fuentes, a veces se vuelve a la persona. Sobre el **data transpose**, el documento lo nombra sin definirlo; aquí lo tratamos en su sentido habitual de **reordenar** el contenido (permutar posiciones de caracteres o de campos, o intercambiar filas y columnas) de modo que el original solo se reconstruye con la regla. Si el examen lo define de otra manera, manda su definición. Para ordenar todo, compara por la pregunta que más importa: ¿se puede volver al valor original?',
+      md: 'El borrador nombra ocho técnicas. Cinco las conoces de sp3m6 (masking, hashing, tokenization, encryption y obfuscation); las nuevas en el listado son **filtering**, **deidentification** y **data transpose**. La deidentification quita o altera los identificadores de un conjunto de datos para que no se pueda enlazar con una persona concreta, mediante supresión, generalización (la fecha exacta pasa a «la semana») o sustitución. Su límite es la reidentificación: cruzando datos «anónimos» con otras fuentes, a veces se vuelve a la persona. Sobre el **data transpose**, el documento lo nombra sin definirlo; aquí lo tratamos en su sentido habitual de **reordenar** el contenido (permutar posiciones de caracteres o de campos, o intercambiar filas y columnas) de modo que el original solo se reconstruye con la regla. Si el examen lo define de otra manera, manda su definición. Para ordenar todo, compara por la pregunta que más importa: ¿se puede volver al valor original?',
     },
     {
       t: 'table',
@@ -163,7 +163,7 @@ export const SP7M6: Module = {
         ['**Obfuscation**', 'Hace el dato difícil de entender, sin garantía criptográfica', 'Depende; a menudo sí', 'Disuasión, código, ofuscar campos'],
         ['**Deidentification**', 'Quita o generaliza identificadores', 'Por diseño, no (con riesgo de reidentificación)', 'Compartir datos con investigadores'],
         ['**Data transpose**', 'Reordena el contenido según una regla', 'Sí, si se conoce la regla', 'Capa ligera de ocultación'],
-        ['**Filtering**', 'Deja pasar o retiene datos según criterios', 'No aplica', 'Evitar que salgan campos sensibles'],
+        ['**Filtering**', 'Deja pasar o retiene datos según criterios (nueva en el listado; el borrador no la define)', 'No aplica', 'Evitar que salgan campos sensibles'],
       ],
     },
     {
@@ -184,7 +184,7 @@ export const SP7M6: Module = {
     { t: 'h', text: 'Manejo del dato y cumplimiento' },
     {
       t: 'p',
-      md: 'El **data handling** es lo que se hace con el dato en su día a día. **Marking and labeling** pone la clasificación a la vista, en el documento y en sus metadatos, para que las personas y las herramientas de DLP sepan qué hacer sin adivinar. El **geofencing** restringe el acceso o el tratamiento según la ubicación geográfica, por ejemplo bloqueando accesos a un expediente desde fuera de ciertos países. La **data location** es dónde está físicamente el dato, que importa por la jurisdicción y las normas de residencia; la **data placement** es en qué sistema, zona o nivel de almacenamiento se coloca dentro de esa ubicación, de modo que el dato más sensible quede en el sitio mejor protegido. El borrador menciona también los **endpoints**: un dato bien gobernado en el servidor se escapa si se copia a un portátil sin cifrar.',
+      md: 'El **data handling** es lo que se hace con el dato en su día a día. **Marking and labeling** pone la clasificación a la vista, en el documento y en sus metadatos, para que las personas y las herramientas de DLP sepan qué hacer sin adivinar. El **geofencing** restringe el acceso o el tratamiento según la ubicación geográfica, por ejemplo bloqueando accesos a un expediente desde fuera de ciertos países. El borrador nombra **data location** y **data placement** sin definirlos; la lectura habitual es esta: la data location es dónde está físicamente el dato, que importa por la jurisdicción y las normas de residencia, y la data placement, en qué sistema, zona o nivel de almacenamiento se coloca dentro de esa ubicación, de modo que el dato más sensible quede en el sitio mejor protegido. Si el examen los define de otra manera, manda su definición. El borrador menciona también los **endpoints**: un dato bien gobernado en el servidor se escapa si se copia a un portátil sin cifrar.',
     },
     {
       t: 'p',
@@ -205,14 +205,14 @@ export const SP7M6: Module = {
     },
 
     // ---------------------------------------------------------------- Parte 3
-    { t: 'h', text: 'Parte 3 · Resiliencia: lo que se añade' },
+    { t: 'h', text: 'Parte 3 · Resiliencia: lo que el borrador destaca' },
     {
       t: 'p',
-      md: 'Sitios hot, warm y cold, load balancing, clustering, UPS y generadores ya están en sp3m7. Aquí solo van las piezas que el borrador destaca. El **autoscaling** añade o retira instancias automáticamente según la demanda: protege la disponibilidad ante picos, como la llegada simultánea de varios buques, sin pagar capacidad ociosa. Sus límites: tarda en arrancar las instancias nuevas, no arregla servicios con estado, y un ataque de denegación de servicio puede disparar la factura, porque el sistema escala para atender tráfico que no debería existir.',
+      md: 'Sitios hot, warm y cold, load balancing, clustering, UPS y generadores ya están en sp3m7, y también el capacity planning, las cuatro pruebas de recuperación y las pruebas de restauración; RTO, RPO, MTTR y MTBF los viste en el BIA de sp5m4. Lo que el borrador añade de verdad en esta parte son el **autoscaling** y la **immutability** de las copias; lo demás se repasa porque cambia de objetivo o de agrupación. El **autoscaling** añade o retira instancias automáticamente según la demanda: protege la disponibilidad ante picos, como la llegada simultánea de varios buques, sin pagar capacidad ociosa. Sus límites: tarda en arrancar las instancias nuevas, encaja peor con servicios con estado, como una base de datos, que tienen que replicar ese estado, y un ataque de denegación de servicio puede disparar la factura, porque el sistema escala para atender tráfico que no debería existir.',
     },
     {
       t: 'p',
-      md: 'En las copias de seguridad, el borrador subraya **retention**, **scope**, **immutability** y **restoration testing**. La **immutability** impide modificar o borrar una copia durante un periodo fijado (almacenamiento tipo WORM o bloqueo de objetos): protege frente al ransomware y frente a un administrador con credenciales robadas, que no pueden cifrar ni borrar las copias. Su límite: también conserva inmutable un dato erróneo o infectado, cuesta espacio y puede chocar con obligaciones de borrado. El **restoration testing** demuestra que la copia se puede restaurar de verdad y en el tiempo prometido; una copia que nadie ha restaurado es una hipótesis. Su límite: probar una muestra pequeña no garantiza restaurar todo en un día malo.',
+      md: 'En las copias de seguridad, el borrador subraya **retention**, **scope**, **immutability** y **restoration testing**. La **retention** es cuánto tiempo se conserva cada copia: equilibra poder volver atrás con el coste y con las obligaciones de borrado. El **scope** es qué cubre la copia, es decir, qué sistemas, datos y entornos entran y cuáles quedan fuera; lo que no está en el alcance no se puede restaurar. La **immutability** impide modificar o borrar una copia durante un periodo fijado (almacenamiento tipo WORM o bloqueo de objetos): protege frente al ransomware y frente a un administrador con credenciales robadas, que no pueden cifrar ni borrar las copias (en el modo estricto, que ni un administrador puede levantar). Su límite: también conserva inmutable un dato erróneo o infectado, cuesta espacio y puede chocar con obligaciones de borrado. El **restoration testing** demuestra que la copia se puede restaurar de verdad y en el tiempo prometido; una copia que nadie ha restaurado es una hipótesis. Su límite: probar una muestra pequeña no garantiza restaurar todo en un día malo.',
     },
     {
       t: 'check',
@@ -233,7 +233,7 @@ export const SP7M6: Module = {
       t: 'check',
       q: {
         optional: true,
-        q: 'The nightly backup job at the port authority has reported success for a full year, but nobody has ever restored from it. Which activity gives real evidence that recovery will meet the recovery time objective?',
+        q: 'The nightly backup job at a logistics company has reported success for a full year, but nobody has ever restored from it. Which activity gives real evidence that recovery will meet the recovery time objective?',
         choices: [
           'Periodic restoration testing against the target RTO',
           'Keeping the backup job logs for longer',
@@ -246,7 +246,7 @@ export const SP7M6: Module = {
     },
     {
       t: 'p',
-      md: 'Para las **pruebas**, el borrador nombra tres: el **failover** pasa de verdad el servicio al sistema secundario; la **simulation** ensaya un escenario con el equipo, sin tocar producción; y el **parallel processing** ejecuta el entorno de recuperación a la vez que producción, para comparar resultados sin cortar el servicio. De menor a mayor riesgo para producción: simulación, procesamiento en paralelo, failover. La elección depende de cuánto pueda arriesgarse la organización en la prueba.',
+      md: 'Para las **pruebas**, el borrador nombra tres que ya conoces de sp3m7 (el tabletop exercise pasa a la preparación de la respuesta a incidentes, 4.7): el **failover** pasa de verdad el servicio al sistema secundario; la **simulation** ensaya un escenario con el equipo, sin tocar producción; y el **parallel processing** ejecuta el entorno de recuperación a la vez que producción, para comparar resultados sin cortar el servicio. De menor a mayor riesgo para producción: simulación, procesamiento en paralelo, failover. La elección depende de cuánto pueda arriesgarse la organización en la prueba.',
     },
     {
       t: 'p',
@@ -254,7 +254,7 @@ export const SP7M6: Module = {
     },
     {
       t: 'p',
-      md: 'Las **recovery metrics** quedan agrupadas en cuatro. Léelas como un conjunto: dos son objetivos que se prometen y dos son medidas que se observan.',
+      md: 'Las **recovery metrics**, que en el 701 estaban en el BIA (sp5m4), quedan agrupadas aquí en cuatro. Léelas como un conjunto: dos son objetivos que se prometen y dos son medidas que se observan.',
     },
     {
       t: 'table',
@@ -262,7 +262,7 @@ export const SP7M6: Module = {
       rows: [
         ['**RTO** (recovery time objective)', '¿Cuánto tarda en volver el servicio?', 'Objetivo', 'Tiempo máximo tolerable de caída'],
         ['**RPO** (recovery point objective)', '¿Cuántos datos se pierden?', 'Objetivo', 'Antigüedad máxima aceptable de la última copia'],
-        ['**MTTR** (mean time to repair)', '¿Cuánto cuesta reparar de media?', 'Medida', 'Si supera el RTO, la promesa es falsa'],
+        ['**MTTR** (mean time to repair)', '¿Cuánto tarda en repararse de media?', 'Medida', 'Si supera el RTO, la promesa es falsa'],
         ['**MTBF** (mean time between failures)', '¿Cada cuánto falla de media?', 'Medida', 'Mide fiabilidad; guía mantenimiento y sustitución'],
       ],
     },
@@ -278,6 +278,7 @@ export const SP7M6: Module = {
         { label: 'Asegurar la infraestructura: colocación, zonas, failure modes y appliances', href: '/learn/sp3m4' },
         { label: 'Protección de datos: tipos, clasificaciones, estados y métodos', href: '/learn/sp3m6' },
         { label: 'Resiliencia y recuperación: HA, sitios, backups, pruebas y energía', href: '/learn/sp3m7' },
+        { label: 'Gestión de riesgos II: registro, apetito, estrategias, reporting y BIA', href: '/learn/sp5m4' },
         { label: 'Gobernanza: roles sobre los datos (owner, controller, processor…)', href: '/learn/sp5m2' },
       ],
     },

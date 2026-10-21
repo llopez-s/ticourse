@@ -32,9 +32,13 @@ export const SP7M5: Module = {
     },
     {
       t: 'p',
-      md: 'No repetimos lo que ya está en el 701. Las vulnerabilidades de aplicación están en la lección sp2m5, el ciclo de vida de la identidad y el SSO en la lección sp4m8, y los secretos en infraestructura como código en la lección sp3m1. Aquí nos quedamos con lo que el borrador del 801 nombra de forma explícita y que conviene tener claro.',
+      md: 'No repetimos lo que ya está en el 701. TOC/TOU y malicious update ya los viste en la lección sp2m4 y aquí se repasan con la mirada del código; los buckets públicos y la cadena de suministro están en sp2m5, el ciclo de vida de la identidad, el permission creep y el SSO en sp4m8, y los secretos en infraestructura como código en sp3m1. Aquí nos quedamos con lo que el borrador del 801 nombra de forma explícita y que conviene tener claro.',
     },
     { t: 'h', text: 'Primera mitad: código y repositorios' },
+    {
+      t: 'p',
+      md: 'Empezamos por los sitios donde un secreto se queda escrito: el código, los repositorios y el almacenamiento de objetos. Después veremos cómo se firman y se actualizan los programas, y qué falla cuando el código decide mal.',
+    },
     { t: 'h', text: 'Hardcoded secrets' },
     {
       t: 'p',
@@ -134,7 +138,7 @@ export const SP7M5: Module = {
     { t: 'h', text: 'Malicious update y code signing' },
     {
       t: 'p',
-      md: 'Una **malicious update** es código dañino que llega por el canal de actualización legítimo: el atacante compromete al proveedor, su servidor de distribución, su canalización de compilación o una dependencia, y el software de confianza instala el cambio por su cuenta. Es un ataque de cadena de suministro con un efecto muy concreto: la víctima hizo "lo correcto" (actualizar) y aun así se infectó. En la lección sp2m5 ya viste la variante de examen del 701; aquí lo importante son las defensas.',
+      md: 'Una **malicious update** es código dañino que llega por el canal de actualización legítimo: el atacante compromete al proveedor, su servidor de distribución, su canalización de compilación o una dependencia, y el software de confianza instala el cambio por su cuenta. Es un ataque de cadena de suministro con un efecto muy concreto: la víctima hizo "lo correcto" (actualizar) y aun así se infectó. En la lección sp2m4 ya viste la variante de examen del 701 (y la cadena de suministro en sp2m5); aquí lo importante son las defensas.',
     },
     {
       t: 'list',
@@ -154,7 +158,7 @@ export const SP7M5: Module = {
     { t: 'h', text: 'Race conditions: TOC/TOU' },
     {
       t: 'p',
-      md: 'Una **race condition** ocurre cuando el resultado depende del orden en que se ejecutan dos operaciones que compiten. La versión que nombra el temario es **time-of-check / time-of-use**: el programa comprueba una condición (**TOC**, time-of-check) y actúa sobre ella un instante después (**TOU**, time-of-use). Si el recurso cambia en ese hueco, la comprobación ya no vale. Piensa en un portero que mira tu entrada, se da la vuelta, y para cuando te deja pasar ya tienes otra entrada en la mano.',
+      md: 'Una **race condition** ocurre cuando el resultado depende del orden en que se ejecutan dos operaciones que compiten. La versión que nombra el borrador del 801, y que ya viste en sp2m4, es **time-of-check / time-of-use**: el programa comprueba una condición (**TOC**, time-of-check) y actúa sobre ella un instante después (**TOU**, time-of-use). Si el recurso cambia en ese hueco, la comprobación ya no vale. Piensa en un portero que mira tu entrada, se da la vuelta, y para cuando te deja pasar ya tienes otra entrada en la mano.',
     },
     {
       t: 'code',
@@ -164,7 +168,7 @@ export const SP7M5: Module = {
     },
     {
       t: 'p',
-      md: 'La corrección no es "ir más rápido", sino **eliminar el hueco**: hacer la comprobación y el uso en una sola operación **atómica** (abrir el recurso una vez y trabajar con ese identificador), usar **bloqueos** sobre el recurso mientras se trabaja y dejar que el sistema aplique el permiso en el momento de la operación en lugar de preguntarlo antes. El mismo patrón se ve en operaciones de negocio: comprobar el saldo y descontarlo como dos pasos separados permite gastar dos veces el mismo importe si dos peticiones llegan a la vez.',
+      md: 'La corrección no es "ir más rápido", sino **eliminar el hueco**: hacer la comprobación y el uso en una sola operación **atómica** (abrir el recurso una vez y trabajar con ese identificador), usar **bloqueos** sobre el recurso mientras se trabaja (ojo: muchos bloqueos de ficheros son solo consultivos, es decir, protegen únicamente a los programas que deciden respetarlos) y dejar que el sistema aplique el permiso en el momento de la operación en lugar de preguntarlo antes. El mismo patrón se ve en operaciones de negocio: comprobar el saldo y descontarlo como dos pasos separados permite gastar dos veces el mismo importe si dos peticiones llegan a la vez.',
     },
     {
       t: 'check',
@@ -188,6 +192,10 @@ export const SP7M5: Module = {
       md: 'Con SSO y federación, el **identity provider (IdP)** es la puerta de entrada a casi todas las aplicaciones. Es cómodo, pero concentra el riesgo: si un atacante controla el IdP, o consigue una cuenta administradora, o roba los tokens de sesión, o altera una relación de federación, entra en muchas aplicaciones con un único movimiento. Las defensas son las ya conocidas de la lección sp4m8, reforzadas donde más duele: **autenticación resistente al phishing** para los administradores del IdP, alertas sobre cambios de configuración y de federación, y un plan para cuando el propio IdP no esté disponible. Ese último punto enlaza con la segunda mitad.',
     },
     { t: 'h', text: 'Segunda mitad: identidad moderna' },
+    {
+      t: 'p',
+      md: 'Ahora cambiamos de mirada: de dónde se escapan los secretos a cómo se reduce la dependencia de ellos y cómo se controla el poder de las cuentas, sobre todo las privilegiadas, las de servicio y las de emergencia.',
+    },
     { t: 'h', text: 'Passkey y passwordless' },
     {
       t: 'p',
@@ -238,8 +246,8 @@ export const SP7M5: Module = {
     {
       t: 'list',
       items: [
-        '**Pocas y de función**, no personales: dos son suficientes para evitar quedarse sin ninguna.',
-        '**Independientes de la ruta normal**: no deben depender del mismo IdP o del mismo método de MFA que se supone que han fallado.',
+        '**Pocas y de función**, no personales: al menos dos, para no quedarse sin ninguna.',
+        '**Independientes de la ruta normal**: no deben depender del mismo IdP o del mismo método de MFA que se supone que han fallado. Eso no significa una exención permanente de MFA: lo habitual es que tengan su propio factor, como una llave de seguridad física dedicada guardada con la credencial.',
         '**Credencial larga y aleatoria**, custodiada fuera de línea (por ejemplo, partida entre dos personas o en un sobre en una caja fuerte), nunca en el gestor de contraseñas diario.',
         '**Vigiladas**: cualquier inicio de sesión genera una alerta inmediata al equipo de seguridad. Si se usa una vez sin incidente declarado, es una investigación.',
         '**Probadas** de forma periódica en un ejercicio controlado, para saber que funcionan antes de necesitarlas.',
@@ -249,6 +257,22 @@ export const SP7M5: Module = {
     {
       t: 'p',
       md: 'La tensión de diseño es clara: una cuenta que salta los controles normales para poder rescatar al equipo es exactamente lo que un atacante querría tener. Sin vigilancia, una cuenta de emergencia es una puerta trasera con permiso.',
+    },
+    {
+      t: 'check',
+      q: {
+        optional: true,
+        q: 'Which statement best describes a well-run emergency access (break-glass) account?',
+        choices: [
+          'A shared administrator account used daily so everyone knows its password',
+          'A rarely used privileged account kept offline, independent of the normal MFA path, alerted on any sign-in and tested periodically',
+          'A personal account of the CISO with MFA permanently disabled',
+          'A service account whose password never changes so it never fails',
+        ],
+        answer: 1,
+        explain:
+          'The account exists for failures of the normal path, so it must not depend on it, and because it is so powerful every use must be alerted and rehearsed in advance. Daily shared use destroys accountability, and a permanent MFA exemption or a never-changing password are weaknesses, not safeguards.',
+      },
     },
     { t: 'h', text: 'Cuentas de servicio y gMSA' },
     {
@@ -268,6 +292,22 @@ export const SP7M5: Module = {
       t: 'p',
       md: 'La última fila es la misma idea trasladada a la nube (en el borrador del 801 el nombre explícito es gMSA): quitar al humano de la gestión del secreto. Una cuenta bien gestionada con permisos excesivos sigue siendo un riesgo, por eso el siguiente tema es el alcance.',
     },
+    {
+      t: 'check',
+      q: {
+        optional: true,
+        q: 'A Windows service runs on three application servers with one shared service-account password that nobody has changed in four years. Which change best reduces the risk?',
+        choices: [
+          'Migrate the service to a gMSA so the domain rotates the password automatically',
+          'Move the password into a shared spreadsheet that the whole operations team can open',
+          'Add the service account to the Domain Admins group so that permission errors can never stop the service',
+          'Allow the account to sign in interactively so administrators can test it whenever they like',
+        ],
+        answer: 0,
+        explain:
+          'A gMSA removes the human from password management: the domain rotates the secret automatically and only the authorized hosts receive it, and the account cannot be used for interactive sign-in. A shared spreadsheet spreads the secret, Domain Admins grants far more power than the service needs, and interactive sign-in reopens the path a gMSA closes.',
+      },
+    },
     { t: 'h', text: 'Least privilege access accounts y privilege creep' },
     {
       t: 'p',
@@ -275,7 +315,7 @@ export const SP7M5: Module = {
     },
     {
       t: 'p',
-      md: 'El **privilege creep** (también *permission creep*) es la acumulación silenciosa de permisos. Nace de lo cotidiano: alguien cambia de puesto y conserva los accesos del anterior, recibe un permiso temporal para una incidencia y nadie lo retira, o se le añade "por si acaso" a un grupo. Con los años, una cuenta ordinaria acaba reuniendo un poder que nadie aprobó de una sola vez. Es difícil de ver porque cada paso era razonable por separado.',
+      md: 'El **privilege creep** (también *permission creep*) es la acumulación silenciosa de permisos. Nace de lo cotidiano: alguien cambia de puesto y conserva los accesos del anterior, recibe un permiso temporal para una incidencia y nadie lo retira, o se le añade "por si acaso" a un grupo. Con los años, una cuenta ordinaria acaba reuniendo un poder que nadie aprobó de una sola vez. Es difícil de ver porque cada paso era razonable por separado. En el 701 lo viste en sp4m8 con el nombre de permission creep; el borrador del 801 lo llama privilege creep.',
     },
     {
       t: 'table',
@@ -322,22 +362,6 @@ export const SP7M5: Module = {
       ],
     },
     {
-      t: 'check',
-      q: {
-        optional: true,
-        q: 'Which statement best describes a well-run emergency access (break-glass) account?',
-        choices: [
-          'A shared administrator account used daily so everyone knows its password',
-          'A rarely used privileged account kept offline, independent of the normal MFA path, alerted on any sign-in and tested periodically',
-          'A personal account of the CISO with MFA permanently disabled',
-          'A service account whose password never changes so it never fails',
-        ],
-        answer: 1,
-        explain:
-          'The account exists for failures of the normal path, so it must not depend on it, and because it is so powerful every use must be alerted and rehearsed in advance. Daily shared use destroys accountability, and a permanent MFA exemption or a never-changing password are weaknesses, not safeguards.',
-      },
-    },
-    {
       t: 'callout',
       kind: 'example',
       title: 'Cómo encaja todo',
@@ -347,7 +371,8 @@ export const SP7M5: Module = {
       t: 'links',
       title: 'Complementa',
       items: [
-        { label: 'Vulnerabilidades de aplicación y de código (sp2m5)', href: '/learn/sp2m5' },
+        { label: 'Vulnerabilidades I: aplicaciones, web, sistema operativo, hardware y zero-day (sp2m4)', href: '/learn/sp2m4' },
+        { label: 'Vulnerabilidades II: virtualización, cloud, supply chain, criptografía, misconfiguración y móviles (sp2m5)', href: '/learn/sp2m5' },
         { label: 'Identidad y acceso (sp4m8)', href: '/learn/sp4m8' },
         { label: 'Cloud e infraestructura como código: secretos (sp3m1)', href: '/learn/sp3m1' },
       ],

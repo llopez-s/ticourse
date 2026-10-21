@@ -24,11 +24,11 @@ export const SP7M7: Module = {
       t: 'callout',
       kind: 'warn',
       title: 'Fuera del SY0-701 · novedad del SY0-801',
-      md: 'Esta lección es **material complementario y opcional**: no forma parte del SY0-701 ni suma XP obligatorio, y nada de lo que contiene entra en los bancos de preguntas, los jefes, el simulacro ni el examen de nivel. Está escrita a partir del **borrador previo al lanzamiento** del listado de objetivos del SY0-801 (documento v2.0), que puede cambiar antes de publicarse. El lanzamiento del examen está previsto «on or around 17 November 2026». Lo que el borrador no nombra de nuevo sigue siendo materia del SY0-701. Proyecto independiente, sin afiliación con CompTIA.',
+      md: 'Esta lección es **material complementario y opcional**: no forma parte del SY0-701. Leerla cuenta como cualquier lección (XP y progreso normales), pero sus comprobaciones son opcionales, no dan XP y nada de lo que contiene entra en los bancos de preguntas, los jefes, el simulacro ni el examen de nivel. Está escrita a partir del **borrador previo al lanzamiento** del listado de objetivos del SY0-801 (documento v2.0), que puede cambiar antes de publicarse. El lanzamiento del examen está previsto «on or around 17 November 2026». Lo que el borrador no nombra de nuevo sigue siendo materia del SY0-701. Proyecto independiente, sin afiliación con CompTIA.',
     },
     {
       t: 'p',
-      md: 'Los objetivos de operaciones y gobierno del borrador del 801 se parecen mucho a los del 701, y ahí está la trampa: conviene leerlos buscando **lo que se añade o cambia de sitio**, no lo que ya sabes. Esta lección recorre cinco cosas: el **fail forward** dentro de la gestión de cambios, tres formas nuevas de identificar y reportar vulnerabilidades, la fase de **negotiation** en la respuesta a incidentes, los marcos **MITRE ATT&CK**, Cyber Kill Chain y Diamond Model como fuentes de referencia en las auditorías, y cómo medir la concienciación mirando el comportamiento de las personas. Las bases (CAB, backout plan, severidad, fases del incidente, tipos de formación) están en las lecciones del 701 enlazadas al final; aquí solo se construye encima.',
+      md: 'Los objetivos de operaciones y gobierno del borrador del 801 se parecen mucho a los del 701, y ahí está la trampa: conviene leerlos buscando **lo que se añade o cambia de sitio**, no lo que ya sabes. Esta lección recorre cinco cosas: el **fail forward** dentro de la gestión de cambios, tres formas de identificar vulnerabilidades que el borrador pone junto al escaneo (IPAM y CSPM son nuevas; la source code review amplía el SAST que viste en sp4m4) y dónde coloca ahora el bounty y el responsible disclosure, la fase de **negotiation** en la respuesta a incidentes, los marcos **MITRE ATT&CK**, Cyber Kill Chain y Diamond Model como fuentes de referencia en las auditorías, y cómo medir la concienciación mirando el comportamiento de las personas. Las bases (CAB, backout plan, severidad, fases del incidente, formación inicial y recurrente) están en las lecciones del 701 enlazadas al final; aquí solo se construye encima.',
     },
     { t: 'h', text: 'Gestión de cambios: el fail forward' },
     {
@@ -55,7 +55,7 @@ export const SP7M7: Module = {
     {
       t: 'callout',
       kind: 'exam',
-      title: 'Cómo suele plantearse',
+      title: 'Cómo podría plantearse',
       md: 'Un enunciado del tipo «el cambio falla a mitad y revertir pondría en riesgo los datos ya migrados» apunta al **fail forward**; uno donde la causa es desconocida y hay una copia reciente apunta al **backout**. Fíjate siempre en si el enunciado dice que el fallo está entendido y acotado.',
     },
     { t: 'h', text: 'Vulnerabilidades: cómo se identifican, se priorizan y se reportan' },
@@ -65,13 +65,13 @@ export const SP7M7: Module = {
     },
     {
       t: 'table',
-      headers: ['Método', 'Qué descubre', 'Qué no ve', 'Ejemplo en el puerto'],
+      headers: ['Método', 'Qué descubre', 'Qué no ve', 'Ejemplo (ficticio)'],
       rows: [
         [
           '**Scanning**',
           'Fallos conocidos y versiones desactualizadas en activos del alcance',
           'Activos que no conoces; errores de lógica; configuración cloud',
-          'El escáner mensual sobre la red de oficinas',
+          'Un escaneo mensual que solo cubre las subredes de su lista',
         ],
         [
           '**IPAM** (IP address management)',
@@ -95,11 +95,11 @@ export const SP7M7: Module = {
     },
     {
       t: 'p',
-      md: 'La idea que une las tres filas nuevas es que **un escáner solo audita una lista**. IPAM te ayuda a que la lista esté completa (un activo desconocido no se parchea), CSPM vigila de forma continua una superficie que cambia con cada clic en una consola cloud, y la revisión de código llega a la causa antes de que haya algo desplegado que escanear. Para **priorizar**, la severity assessment (una puntuación tipo CVSS combinada con el contexto del activo) se complementa con la **revisión del informe de una prueba de intrusión**: un fallo de severidad media que el equipo de pentest logró **encadenar** con otros hasta alcanzar un sistema crítico merece más prioridad que su puntuación aislada, porque demuestra explotabilidad real en tu entorno.',
+      md: 'La idea que une las tres filas que acompañan al escaneo es que **un escáner solo audita una lista**. IPAM te ayuda a que la lista esté completa (un activo desconocido no se parchea), CSPM vigila de forma continua una superficie que cambia con cada clic en una consola cloud, y la revisión de código llega a la causa antes de que haya algo desplegado que escanear. Para **priorizar**, la severity assessment (una puntuación tipo CVSS combinada con el contexto del activo) se complementa con la **revisión del informe de una prueba de intrusión**: un fallo de severidad media que el equipo de pentest logró **encadenar** con otros hasta alcanzar un sistema crítico merece más prioridad que su puntuación aislada, porque demuestra explotabilidad real en tu entorno.',
     },
     {
       t: 'p',
-      md: 'En el reporte, el borrador distingue lo **interno** (hallazgos que viajan por el proceso normal de remediación, verificación e informe a la dirección) de lo **externo**, donde entran dos conceptos que se confunden a menudo. Un **bounty program** es una oferta **de pago**: la organización recompensa a investigadores independientes por hallazgos válidos, con alcance y reglas publicados. Una política de **responsible disclosure** es el marco que dice **cómo** se informa de una vulnerabilidad, a qué canal, qué compromiso hay de no emprender acciones legales contra quien actúa de buena fe, en qué plazo se responde y cuándo se hace público el detalle. Puede existir una política de divulgación **sin** recompensa; un programa de recompensas serio **necesita** una política de divulgación. Los matices del bug bounty frente al pentest los tienes en la lección de gestión de activos y vulnerabilidades del 701.',
+      md: 'En el reporte, el borrador distingue lo **interno** (hallazgos que viajan por el proceso normal de remediación, verificación e informe a la dirección) de lo **externo**, donde entran dos conceptos que se confunden a menudo. Un **bounty program** es una oferta **de pago**: la organización recompensa a investigadores independientes por hallazgos válidos, con alcance y reglas publicados. Una política de **responsible disclosure** es el marco que dice **cómo** se informa de una vulnerabilidad, a qué canal, qué compromiso hay de no emprender acciones legales contra quien actúa de buena fe, en qué plazo se responde y cuándo se hace público el detalle. Puede existir una política de divulgación **sin** recompensa; un programa de recompensas serio **necesita** una política de divulgación. El bug bounty y el responsible disclosure program ya están en el 701 (sp4m4, «Gestión de vulnerabilidades I: identificación», donde también se comparan con el pentest); el borrador los coloca en el reporte externo.',
     },
     { t: 'h', text: 'Respuesta a incidentes: negotiation y notificación' },
     {
@@ -114,7 +114,7 @@ export const SP7M7: Module = {
       t: 'list',
       items: [
         '**Capacidad de recuperación**: si las copias de seguridad se restauran dentro del RTO, el argumento económico para pagar se debilita mucho.',
-        '**Exfiltración previa**: si los datos ya salieron (doble extorsión), pagar no los devuelve; la notificación a afectados sigue siendo obligatoria igualmente.',
+        '**Exfiltración previa**: si los datos ya salieron (doble extorsión), pagar no los devuelve; la notificación a afectados puede seguir siendo obligatoria según la normativa.',
         '**Marco legal y sanciones**: algunos pagos pueden estar restringidos o ser ilegales según quién sea el beneficiario, y por eso se consulta antes a asesoría jurídica y a las autoridades.',
         '**Cobertura del seguro**: la póliza puede imponer condiciones, avisos previos o contratar a sus propios especialistas.',
         '**Impacto en servicios esenciales o en seguridad de las personas**: cambia el peso de cada riesgo, pero no elimina los anteriores.',
@@ -128,8 +128,8 @@ export const SP7M7: Module = {
     {
       t: 'callout',
       kind: 'story',
-      title: 'Mini-caso: la oferta del atacante',
-      md: 'Una noche, el puerto de Halden recibe una nota de extorsión después de que varios sistemas queden cifrados. El equipo de respuesta ya ha contenido el incidente, y TI confirma que las copias se restauran dentro del RTO, aunque hay indicios de que parte de los datos salieron antes del cifrado. El analista de guardia **no responde** al atacante: pasa la nota al comité de crisis con la evidencia. El comité, asesorado por legal y la aseguradora, avisa a las fuerzas del orden, decide no pagar por la capacidad de restauración, y pone en marcha la notificación a las personas afectadas y a los organismos que exigen reporte, mientras continúa la erradicación. La **negotiation**, aquí, fue sobre todo tiempo bien usado y decisiones tomadas por quien le correspondía.',
+      title: 'Autoridad Portuaria de Halden · caso de ejemplo',
+      md: '*Caso inventado para practicar, no un hecho del puerto.* Imagina que una organización portuaria recibe de madrugada una nota de extorsión después de que varios sistemas queden cifrados. El equipo de respuesta ya ha contenido el incidente, y TI confirma que las copias se restauran dentro del RTO, aunque hay indicios de que parte de los datos salieron antes del cifrado. El analista de guardia **no responde** al atacante: pasa la nota, con la evidencia, a la dirección. La dirección, asesorada por legal y por la aseguradora, avisa a las fuerzas del orden, decide no pagar porque puede restaurar, y pone en marcha la notificación a las personas afectadas y a los organismos que exigen reporte, mientras continúa la erradicación. La **negotiation**, aquí, fue sobre todo tiempo bien usado y decisiones tomadas por quien le correspondía.',
     },
     { t: 'h', text: 'Auditorías: ATT&CK, Kill Chain y Diamond Model como referencias' },
     {
@@ -213,10 +213,10 @@ export const SP7M7: Module = {
         optional: true,
         q: 'Which statement about a responsible disclosure policy and a bounty program is MOST accurate?',
         choices: [
-          'A bounty program replaces the need for any disclosure policy',
-          'A disclosure policy always pays researchers for every report',
-          'Both are limited to internal reporting by employees',
-          'A disclosure policy defines how to report and what protections apply, and a bounty adds payment for valid findings',
+          'A bounty program replaces the need for any separate disclosure policy or reporting rules',
+          'A disclosure policy always pays researchers for every report, whether or not it is valid',
+          'Both are limited to internal reporting by employees of the organization itself',
+          'A disclosure policy sets how to report; a bounty adds payment for valid findings',
         ],
         answer: 3,
         explain: 'The policy sets channel, scope, good-faith protections and timelines, and it can exist without any payment. A bounty is the paid layer built on top of it. Neither is limited to employees, because both exist to receive external reports.',
@@ -228,10 +228,10 @@ export const SP7M7: Module = {
         optional: true,
         q: 'An organization hit by ransomware is considering paying. Who should make the decision, and with what input?',
         choices: [
-          'The on-call SOC analyst, as soon as the attacker sends terms',
-          'Senior leadership, advised by legal counsel and informed by backups, exfiltration and law enforcement guidance',
-          'The attacker, who sets the deadline and the amount',
-          'The help desk, because it receives the first user reports',
+          'The on-call SOC analyst, as soon as the attacker sends the ransom terms and a deadline',
+          'Senior leadership, advised by legal counsel and informed by the technical facts',
+          'The attacker, who sets the deadline and the amount and decides what happens to the data',
+          'The help desk, because it receives the first reports from affected users',
         ],
         answer: 1,
         explain: 'It is a business and legal decision taken by leadership with counsel, insurer and authorities, informed by technical facts such as restoration capability and data theft. An analyst supplies evidence but does not commit the organization.',
@@ -258,10 +258,10 @@ export const SP7M7: Module = {
         optional: true,
         q: 'A company combines simulation results, policy violations and privilege level into a score per team. What is the MOST appropriate use of that behavior risk score?',
         choices: [
-          'Publish individual rankings to motivate people through peer pressure',
-          'Use it as the only basis for disciplinary action',
-          'Replace all awareness training with a single annual course',
-          'Prioritize targeted or corrective training where the risk is highest, with privacy safeguards',
+          'Publish individual rankings of every employee to motivate people through peer pressure',
+          'Use it as the only basis for disciplinary action against the highest-scoring people',
+          'Replace all awareness training with a single annual course for the whole workforce',
+          'Prioritize targeted training where risk is highest, with privacy safeguards',
         ],
         answer: 3,
         explain: 'Risk scoring is a prioritization tool for targeted and corrective training, ideally transparent, proportionate and aggregated. Public rankings and discipline-only use damage the reporting culture that early detection depends on.',
@@ -274,6 +274,8 @@ export const SP7M7: Module = {
         { label: 'Change management: proceso, implicaciones técnicas y documentación', href: '/learn/sp1m5' },
         { label: 'Respuesta a incidentes: proceso, pruebas, RCA y threat hunting', href: '/learn/sp4m10' },
         { label: 'Auditorías, evaluaciones y penetration testing', href: '/learn/sp5m7' },
+        { label: 'Gestión de vulnerabilidades I: identificación', href: '/learn/sp4m4' },
+        { label: 'Concienciación: programa, phishing y comportamiento anómalo', href: '/learn/sp5m8' },
       ],
     },
   ],
