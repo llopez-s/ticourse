@@ -120,6 +120,25 @@ no compila ni ejecuta las reglas. No se necesitan muestras maliciosas ni cuentas
 Consulta el [mapa, las fuentes y el itinerario de 5 sesiones](docs/practical-curriculum.md)
 y los [resultados de verificación](docs/reviews/2026-10-19-practical-curriculum.md).
 
+## Novedades del SY0-801 (sección opcional de Security+)
+
+CompTIA prepara el SY0-801 (Security+ V8), con lanzamiento previsto hacia el
+17 de noviembre de 2026. Quien estudia aquí se prepara para el SY0-701, pero
+puede querer ver qué añade el examen nuevo. La sección **S7 · SY0-801** reúne
+7 lecciones (unas 2,4 horas), 73 tarjetas y 102 términos de glosario: el mapa
+701 → 801, un bloque nuevo de IA (riesgos y ataques, e IA en las operaciones),
+vectores e indicadores nuevos, código, repositorios y credenciales, arquitectura
+y datos, y operaciones y gobierno.
+
+Es **opcional y queda fuera de todo cálculo del 701**: no entra en el simulacro,
+la prueba de nivel, los bosses, la campaña ni la preparación por dominio, y el
+botón «Continuar» del panel nunca lleva a ella. Sus comprobaciones son opcionales
+y no dan XP; leer una lección sí cuenta como lección. Se basa en el borrador de
+objetivos v2.0 (previo al lanzamiento), que puede cambiar: tras el lanzamiento
+conviene contrastarla con los objetivos finales. Diseño y plan en
+`docs/superpowers/specs/2026-10-20-sy0-801-novedades-design.md` y
+`docs/superpowers/plans/2026-10-21-sy0-801-novedades.md`.
+
 ## 🎮 Gamificación
 
 - **Apuestas de confianza** ⭐: cada respuesta se apuesta a confianza
