@@ -65,6 +65,8 @@ for (const episode of EPISODES) {
     voice: 'recording/lidia', rate: '+0%', pitch: '+0Hz',
     recording: { tempo: 1.08, maxPauseMs: 250 },
     adversaryVoice: { voice: 'sapi/Microsoft Pablo', rate: 0, fx: 'machine' },
+    // Content effects: each `{fx-…}` cue written inside the scene text plays its sound (the engine adds glitch, typing and whoosh itself).
+    sfx: episode.sfx ?? {},
     segments: [],
   };
   const storyboard = {
@@ -78,13 +80,17 @@ for (const episode of EPISODES) {
   for (const [i, scene] of episode.scenes.entries()) {
     const prefix = `s${String(i + 1).padStart(2, '0')}`;
     const id = `${prefix}-${i === 0 ? 'hook' : i === 9 ? 'cierre' : 'caso'}`;
-    const requiredCues = scene.text.map((_, j) => i === 0 && j === 0 ? 'title' : `${prefix}-${'abc'[j]}`);
+    // In the order they fire: each paragraph's own cue, then the effect cues written inside it.
+    const sfxIn = (paragraph) => [...paragraph.matchAll(/\{(fx-[a-z0-9-]+)\}/gu)].map((m) => m[1]);
+    const paragraphCues = scene.text.map((_, j) => i === 0 && j === 0 ? 'title' : `${prefix}-${'abc'[j]}`);
+    const requiredCues = scene.text.flatMap((paragraph, j) => [paragraphCues[j], ...sfxIn(paragraph)]);
+    for (const cue of requiredCues.filter((c) => c.startsWith('fx-'))) if (!episode.sfx?.[cue]) errors.push(`${episode.id}: cue ${cue} in ${prefix} has no sound in episode.sfx`);
     let segmentIndex = 1;
     const sceneSegments = [];
     for (const [p, paragraph] of scene.text.entries()) {
       const pieces = chunks(paragraph);
       for (const [k, piece] of pieces.entries()) {
-        const text = `<${moods[moodIndex++ % moods.length]}> ${k === 0 ? `{${requiredCues[p]}}` : ''}${piece}`;
+        const text = `<${moods[moodIndex++ % moods.length]}> ${k === 0 ? `{${paragraphCues[p]}}` : ''}${piece}`;
         const last = p === scene.text.length - 1 && k === pieces.length - 1;
         const segment = {
           id: `${prefix}-${String(segmentIndex++).padStart(2, '0')}`, scene: id, text,
@@ -114,6 +120,9 @@ for (const episode of EPISODES) {
     chispa: true, track: episode.track, examCards: [0, 0], thinkPrompts: 2, intercepts: [2, 4], examQuestions: [0, 0],
   });
   errors.push(...analysis.errors.map((e) => `${episode.id}: ${e}`));
+  const usedSfx = episode.scenes.flatMap((s) => [...s.text.join(' ').matchAll(/\{(fx-[a-z0-9-]+)\}/gu)].map((m) => m[1]));
+  for (const cue of Object.keys(episode.sfx ?? {})) if (usedSfx.filter((c) => c === cue).length !== 1) errors.push(`${episode.id}: sfx cue ${cue} must appear exactly once in the scene text`);
+  if (usedSfx.length < 3 || usedSfx.length > 6) errors.push(`${episode.id}: ${usedSfx.length} content effects (3-6 expected)`);
   if (episode.scenes.length !== 10 || episode.chapters.length !== 5 || episode.concepts.length < 4 || episode.concepts.length > 6) errors.push(`${episode.id}: invalid editorial structure`);
   if (storyboard.scenes.filter((s) => s.learningCard).length !== 5) errors.push(`${episode.id}: must have 5 complementary cards`);
   if (narration.segments.some((s) => s.exam || s.question)) errors.push(`${episode.id}: complementary material must not receive exam badges`);

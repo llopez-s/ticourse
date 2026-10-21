@@ -2,6 +2,7 @@
 export const EPISODES_01_03 = [
   {
     id: 'AP01', slug: 'tokens-correo', track: 'secplus', lessons: ['sp4m8'],
+    sfx: { 'fx-mail': 'mail', 'fx-lock': 'lock', 'fx-error': 'error', 'fx-check': 'check', 'fx-ping': 'ping2' },
     title: 'La sesión sigue abierta: identidad, permisos y tokens',
     promise: 'Seguir el acceso al correo y distinguir qué permite cada credencial.',
     adversary: 'SILENT PAGER',
@@ -15,7 +16,7 @@ export const EPISODES_01_03 = [
         title: 'La contraseña no cuenta toda la historia',
         visual: 'Sello permanente «Práctica complementaria · datos ficticios». Halden, ejercicio de formación sin fecha de incidente. Ana abre Resumen del turno. Dos preguntas separadas: quién eres / qué permite la aplicación. Título antes de 12 s. No mostrar credenciales ni un JWT de ejemplo.',
         text: [
-          'Ana cambia su contraseña y la aplicación sigue mostrando correo. Vas a ver por qué puede pasar y qué necesitas comprobar.',
+          'Ana cambia su contraseña y la aplicación sigue mostrando {fx-mail}correo. Vas a ver por qué puede pasar y qué necesitas comprobar.',
           'Estamos en un ejercicio de Halden, la autoridad portuaria. Ana usa una aplicación que resume el correo del turno. El caso es inventado. No vamos a entrar en ninguna cuenta real.',
           'La aplicación se llama Resumen del turno. Para explicar qué ocurre, separa dos decisiones. Una comprueba que quien entra es Ana. La otra limita lo que la aplicación puede hacer. Son distintas, aunque aparezcan seguidas en la pantalla.',
         ],
@@ -67,7 +68,7 @@ export const EPISODES_01_03 = [
         text: [
           'Ahora lee los límites del pase. Quién lo emite, a qué recurso va dirigido, qué permite y cuándo deja de ser válido. Un token destinado a una interfaz no sirve automáticamente para todas las demás.',
           'En el caso, la concesión permite leer correo en el contexto autorizado de Ana. No concede administración global. Tampoco permite enviar mensajes por tener lectura. El recurso comprueba la credencial y decide si acepta la petición concreta.',
-          'No le pongas una hora fija por costumbre. La vigencia depende de cómo se emitió y de las políticas aplicables. Cuando caduca, la aplicación necesita otro. Puede obtenerlo sin interacción o tener que pedir que Ana vuelva a identificarse.',
+          'No le pongas una hora fija por costumbre. La vigencia depende de cómo se emitió y de las políticas aplicables. Cuando {fx-lock}caduca, la aplicación necesita otro. Puede obtenerlo sin interacción o tener que pedir que Ana vuelva a identificarse.',
         ],
       },
       {
@@ -75,7 +76,7 @@ export const EPISODES_01_03 = [
         visual: 'MFA al inicio; después, emisión y uso del token. Separar robo hipotético posterior de prueba de uso. Contrato de lectura del buzón visible. Mensaje firmado por SILENT PAGER como atajo de método, no como confesión del caso de septiembre.',
         intercept: 'Ya pasaste el segundo factor. Ningún token robado sirve.',
         text: [
-          'El segundo factor no borra lo que ocurra después. La autenticación multifactor refuerza la comprobación de identidad. Pero una credencial de sesión puede ser robada cuando esa comprobación ya terminó. Es otro momento del acceso.',
+          'El segundo factor no borra lo que ocurra después. La autenticación multifactor refuerza la comprobación de identidad. Pero una credencial de sesión puede ser {fx-error}robada cuando esa comprobación ya terminó. Es otro momento del acceso.',
           'Muchos tokens de acceso pueden utilizarse por el hecho de tenerlos. Se llaman tokens de tipo bearer. Aun así, deben seguir válidos y superar los controles aplicables. Hay que comprobar esos controles, no darlos por supuestos.',
           'Esto no significa que cualquier token robado funcione. Puede estar caducado, revocado o limitado de otra manera. Tampoco prueba que alguien lo utilizara. El riesgo de acceso y la evidencia de uso son conclusiones distintas.',
         ],
@@ -96,7 +97,7 @@ export const EPISODES_01_03 = [
         visual: 'Reconstruir el flujo completo con cuatro participantes y dos destinos distintos para acceso/renovación. Mostrar una conclusión modelo con evidencia, alcance y pendiente. Borde complementario siempre visible.',
         card: 'El permiso concedido no prueba qué ocurrió después',
         text: [
-          'Cuenta ahora el recorrido sin mezclar las columnas. Ana se identifica. El servicio de identidad aplica las condiciones y emite credenciales. La aplicación presenta la de acceso a Graph. Graph permite las operaciones autorizadas.',
+          'Cuenta ahora el recorrido sin mezclar las columnas. {fx-check}Ana se identifica. El servicio de identidad aplica las condiciones y emite credenciales. La aplicación {fx-ping}presenta la de acceso a Graph. Graph permite las operaciones autorizadas.',
           'Si hace falta renovar, la aplicación vuelve al servidor de autorización. Si la aplicación conserva además una sesión web, esa sesión tiene su propio funcionamiento. Cerrar una de estas piezas no acredita que todas las demás estén cerradas.',
           'Tu explicación puede ser sencilla sin ser absoluta. Di qué artefacto consta, qué recurso y permisos tiene, y qué evidencia falta. El nombre del proveedor no amplía los permisos. Haber superado el segundo factor tampoco resuelve por sí solo un robo posterior.',
         ],
@@ -114,6 +115,7 @@ export const EPISODES_01_03 = [
   },
   {
     id: 'AP02', slug: 'stealer-sesiones', track: 'secplus', lessons: ['sp2m6', 'sp4m10'],
+    sfx: { 'fx-check-1': 'check', 'fx-alarm': 'alarm', 'fx-error': 'error', 'fx-lock': 'lock', 'fx-check-2': 'check' },
     title: 'Cambiar la contraseña no cierra todo: responder a un infostealer',
     promise: 'Separar lo que pudo robarse, lo que se usó y las acciones que realmente cortan el acceso.',
     adversary: 'SILENT PAGER',
@@ -126,8 +128,8 @@ export const EPISODES_01_03 = [
       {
         title: 'La casilla verde', visual: 'Ejercicio independiente en Halden. Alerta ficticia de infostealer y casilla «contraseña cambiada». La ficha del equipo continúa abierta. Sin fechas, equipos ni cuentas del incidente publicado. Título y promesa antes de 12 s.',
         text: [
-          'La contraseña ya está cambiada. ¿Puedes cerrar el incidente? Vas a comprobar qué falta cuando un programa roba información de un equipo.',
-          'Estás en un ejercicio de respuesta de Halden, una autoridad portuaria. La alerta describe un infostealer. Es malware orientado a robar información del dispositivo. No todos estos programas buscan lo mismo, y sus capacidades cambian entre versiones.',
+          'La contraseña ya está {fx-check-1}cambiada. ¿Puedes cerrar el incidente? Vas a comprobar qué falta cuando un programa roba información de un equipo.',
+          'Estás en un ejercicio de respuesta de Halden, una autoridad portuaria. La {fx-alarm}alerta describe un infostealer. Es malware orientado a robar información del dispositivo. No todos estos programas buscan lo mismo, y sus capacidades cambian entre versiones.',
           'La ficha describe el equipo de Ana, datos de su navegador y su cuenta de correo. Todavía no sabemos qué salió ni si alguien lo utilizó. Necesitas separar esas preguntas para decidir cómo contener el riesgo.',
         ],
       },
@@ -164,14 +166,14 @@ export const EPISODES_01_03 = [
         text: [
           'Construye una línea temporal con lo que sí conoces. Cuándo se detectó el programa, qué periodo pudo estar activo y qué ocurrió después. Diferencia la hora de observación de la hora en que recibiste una alerta.',
           'Revisa qué cuentas y aplicaciones estuvieron expuestas. Busca actividad de identidad y del recurso. En el correo pueden importar los accesos y cambios relevantes. En las aplicaciones, los permisos y consentimientos. Una dirección de red nueva, aislada, no basta para demostrar abuso.',
-          'También registra lo que no puedes revisar. Tal vez los registros antiguos ya se hayan borrado al terminar su plazo de conservación. Ese hueco no demuestra que nada ocurriera. Afecta al alcance y a la confianza con que explicas el incidente. La investigación debe conservar ese límite.',
+          'También registra lo que no puedes revisar. Tal vez los registros antiguos ya se hayan {fx-error}borrado al terminar su plazo de conservación. Ese hueco no demuestra que nada ocurriera. Afecta al alcance y a la confianza con que explicas el incidente. La investigación debe conservar ese límite.',
         ],
       },
       {
         title: 'Elegir la revocación que corresponde', visual: 'Matriz escenario/acción/verificación de sp4m10. Contraseña → rotación; sesión web → servicio emisor; refresh → revocación de renovación; access → controles del recurso. Consentimiento y credenciales de aplicación en fila aparte.',
         card: 'La acción depende del artefacto y del servicio emisor',
         text: [
-          'Ahora eliges acciones según el escenario. Los secretos expuestos se cambian desde un entorno confiable. Las sesiones se invalidan donde se gestionan. Una concesión sospechosa se revisa y retira cuando corresponde. Cada acción necesita su responsable y su comprobación.',
+          'Ahora eliges acciones según el escenario. Los secretos expuestos se cambian desde un entorno {fx-lock}confiable. Las sesiones se invalidan donde se gestionan. Una concesión sospechosa se revisa y retira cuando corresponde. Cada acción necesita su responsable y su comprobación.',
           'Impedir una renovación no demuestra que todos los tokens de acceso emitidos antes hayan dejado de funcionar. Y cerrar una sesión del proveedor de identidad no acredita cerrar todas las sesiones propias de las aplicaciones. Hay que comprobar ambos niveles.',
           'Si una aplicación accede sin un usuario presente, puede depender de permisos y credenciales propios. Cambiar la contraseña de una persona no los elimina. Vas cerrando las vías de acceso que indique la investigación y compruebas el efecto de cada medida.',
         ],
@@ -199,7 +201,7 @@ export const EPISODES_01_03 = [
         title: 'Volver al caso de Ana', visual: 'Ana y Resumen del turno identificados como datos del ejercicio, sin elevarlos a incidente de GLASS HARBOR. Revisiones de equipo, identidad, Graph y sesión de aplicación separadas. Informe de conclusión breve.',
         card: 'Recuperación y cierre se apoyan en evidencia del caso',
         text: [
-          'En el ejercicio de Ana, el equipo queda contenido y el cambio se hace desde otro dispositivo confiable. Después se revisan las sesiones del servicio de identidad, los permisos de la aplicación y la actividad de acceso al correo.',
+          'En el ejercicio de Ana, el equipo queda {fx-check-2}contenido y el cambio se hace desde otro dispositivo confiable. Después se revisan las sesiones del servicio de identidad, los permisos de la aplicación y la actividad de acceso al correo.',
           'La recuperación del equipo sigue el procedimiento autorizado. La revisión busca si las medidas funcionaron y si aparecen nuevas señales. No se reutiliza ninguna credencial expuesta para intentar entrar. El ejercicio enseña a responder, no a comprobar accesos robados.',
           'En el informe queda la diferencia entre lo confirmado, lo probable y lo que falta por observar. Así la siguiente persona entiende el alcance real. Una lista de acciones completadas ayuda, pero solo tiene sentido junto a sus efectos y sus límites.',
         ],
@@ -216,6 +218,7 @@ export const EPISODES_01_03 = [
   },
   {
     id: 'AP03', slug: 'feeds-requisito', track: 'gcti', lessons: ['s3m1', 's3m4', 's4m2'],
+    sfx: { 'fx-mail': 'mail', 'fx-check-1': 'check', 'fx-ping': 'ping2', 'fx-error': 'error', 'fx-check-2': 'check' },
     title: 'Tres feeds, dos preguntas: comprar información que añada valor',
     promise: 'Elegir fuentes por el requisito y el valor incremental, y diseñar una decisión de renovación.',
     adversary: 'HOLLOW LANTERN',
@@ -228,7 +231,7 @@ export const EPISODES_01_03 = [
       {
         title: 'Una oferta que parece ganadora', visual: 'Meridian, aeroespacial, ejercicio de compra. Tres ofertas ficticias Faro/Atlas/Eco. No usar logotipos reales. Mostrar dos sobres cerrados R1/R2 y mantener la tabla de resultados oculta hasta definir la pregunta.',
         text: [
-          'Un proveedor entrega más datos. Otro cuesta menos. ¿Cuál compras? Vas a elegir entre tres feeds sin confundir volumen con valor.',
+          'Un proveedor entrega más {fx-mail}datos. Otro cuesta menos. ¿Cuál compras? Vas a elegir entre tres feeds sin confundir volumen con valor.',
           'Eres la analista de Meridian, una empresa aeroespacial. En este ejercicio comparas tres suministros de información. Los llamamos feeds porque entregan datos de forma recurrente. Faro, Atlas y Eco son inventados. No estamos recomendando marcas reales.',
           'La compra empieza antes de abrir las ofertas. Meridian necesita investigar exposición de cuentas con rapidez. También quiere buscar infraestructura en datos históricos. Son dos preguntas diferentes. Un proveedor puede ayudar mucho con una y poco con la otra.',
         ],
@@ -265,7 +268,7 @@ export const EPISODES_01_03 = [
         title: 'Abrimos los resultados', visual: 'Piloto ficticio de 30 días, 100 revisados por feed para R1: Faro 60 útiles/40 incrementales/10 desconocidos; Atlas 90/3/0; Eco 80/1/5. R2 incrementales Faro2/Atlas45/Eco1. Una columna a la vez; no mostrar rankings sin requisito.',
         text: [
           'Ahora sí, abre el piloto. Durante el mismo mes se revisaron cien elementos de cada feed con criterios compartidos. La tabla separa los útiles de los que además aportan algo nuevo a Meridian. A ese aporte nuevo lo llamamos incremental. Conservamos también los casos desconocidos.',
-          'Faro aporta cuarenta hallazgos útiles que no estaban en la base dentro del plazo requerido. Atlas aporta tres y Eco, uno. Atlas tiene más elementos útiles en la muestra. Pero casi todos ya estaban disponibles por otras vías.',
+          'Faro aporta cuarenta {fx-check-1}hallazgos útiles que no estaban en la base dentro del plazo requerido. Atlas aporta tres y Eco, uno. Atlas tiene más elementos útiles en la muestra. Pero casi todos ya estaban disponibles por otras vías.',
           'Para investigar infraestructura histórica, la comparación cambia. Atlas añade cuarenta y cinco hallazgos. Los otros dos aportan mucho menos. No hemos encontrado un proveedor ganador para todo. Hemos encontrado aportaciones distintas frente a dos requisitos distintos.',
         ],
       },
@@ -273,9 +276,9 @@ export const EPISODES_01_03 = [
         title: 'El precio que no sale en la licencia', visual: 'Mostrar p95 de R1: Faro8h/Atlas36h/Eco12h. Completitud95/99/70%. Licencia900/600/200€; triaje6/4/18h mes; integración inicial8/4/2h. Definir p95 en texto y en voz. Evitar inferir p95 de R2.',
         card: 'Calidad, puntualidad y coste total importan',
         text: [
-          'Mira el retraso de entrega. El percentil noventa y cinco indica el tiempo dentro del que llegó el noventa y cinco por ciento de los elementos. Faro queda en ocho horas. Atlas, en treinta y seis. Para la pregunta urgente, llegar después del plazo pesa mucho.',
+          'Mira el retraso de entrega. El percentil noventa y cinco indica el tiempo dentro del que llegó el noventa y cinco por ciento de los elementos. {fx-ping}Faro queda en ocho horas. Atlas, en treinta y seis. Para la pregunta urgente, llegar después del plazo pesa mucho.',
           'También miras si los elementos incluyen los campos necesarios y permiten rastrear la evidencia. Una dirección sin fecha ni contexto puede exigir más trabajo del que ahorra. El porcentaje de campos completos no mide cuánto del mundo ha descubierto el proveedor.',
-          'Eco tiene la licencia más barata, pero revisar sus alertas exige dieciocho horas al mes en este ejercicio. Con Faro son seis. A la licencia le sumas integración, mantenimiento y trabajo del analista. Comprar barato y revisar lo mismo toda la semana también cuesta.',
+          'Eco tiene la licencia más barata, pero revisar sus alertas exige {fx-error}dieciocho horas al mes en este ejercicio. Con Faro son seis. A la licencia le sumas integración, mantenimiento y trabajo del analista. Comprar barato y revisar lo mismo toda la semana también cuesta.',
         ],
       },
       {
@@ -310,7 +313,7 @@ export const EPISODES_01_03 = [
         title: 'La compra que puedes defender', visual: 'Tres reglas: requisito primero / incremento con origen / piloto y coste total. Acción única: resolver comparación de feeds de s3m1. Aviso GCTI no afiliado, sin insignia de examen para contenido complementario.',
         text: [
           'Tres reglas. Empieza por la pregunta que hay que responder. Cuenta lo que añade la fuente, sin convertir citas en confirmaciones. Y decide con un piloto cuyos criterios y coste total estén claros antes de mirar quién gana.',
-          'Así puedes explicar por qué compras Faro para una necesidad y valoras Atlas para otra. También puedes explicar por qué renovarías una fuente o dejarías de pagarla. La respuesta se apoya en utilidad observable, no en una marca ni en un porcentaje aislado.',
+          'Así puedes explicar por qué compras {fx-check-2}Faro para una necesidad y valoras Atlas para otra. También puedes explicar por qué renovarías una fuente o dejarías de pagarla. La respuesta se apoya en utilidad observable, no en una marca ni en un porcentaje aislado.',
           'Vuelve ahora a la comparación de la lección de colección. Elige una fuente para cada requisito y escribe qué evidencia cambiaría tu elección. Si mañana cambia la base, la decisión también puede cambiar. Eso es evaluar una fuente, no casarte con ella.',
         ],
       },

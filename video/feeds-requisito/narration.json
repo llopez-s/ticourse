@@ -11,11 +11,18 @@
     "rate": 0,
     "fx": "machine"
   },
+  "sfx": {
+    "fx-mail": "mail",
+    "fx-check-1": "check",
+    "fx-ping": "ping2",
+    "fx-error": "error",
+    "fx-check-2": "check"
+  },
   "segments": [
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {title}Un proveedor entrega más datos. Otro cuesta menos. ¿Cuál compras? Vas a elegir entre tres feeds sin confundir volumen con valor.",
+      "text": "<curious> {title}Un proveedor entrega más {fx-mail}datos. Otro cuesta menos. ¿Cuál compras? Vas a elegir entre tres feeds sin confundir volumen con valor.",
       "pauseAfterMs": 300
     },
     {
@@ -173,7 +180,7 @@
     {
       "id": "s05-03",
       "scene": "s05-caso",
-      "text": "<firm> {s05-b}Faro aporta cuarenta hallazgos útiles que no estaban en la base dentro del plazo requerido. Atlas aporta tres y Eco, uno.",
+      "text": "<firm> {s05-b}Faro aporta cuarenta {fx-check-1}hallazgos útiles que no estaban en la base dentro del plazo requerido. Atlas aporta tres y Eco, uno.",
       "pauseAfterMs": 300
     },
     {
@@ -203,7 +210,7 @@
     {
       "id": "s06-02",
       "scene": "s06-caso",
-      "text": "<calm> Faro queda en ocho horas. Atlas, en treinta y seis. Para la pregunta urgente, llegar después del plazo pesa mucho.",
+      "text": "<calm> {fx-ping}Faro queda en ocho horas. Atlas, en treinta y seis. Para la pregunta urgente, llegar después del plazo pesa mucho.",
       "pauseAfterMs": 300
     },
     {
@@ -227,7 +234,7 @@
     {
       "id": "s06-06",
       "scene": "s06-caso",
-      "text": "<firm> {s06-c}Eco tiene la licencia más barata, pero revisar sus alertas exige dieciocho horas al mes en este ejercicio. Con Faro son seis.",
+      "text": "<firm> {s06-c}Eco tiene la licencia más barata, pero revisar sus alertas exige {fx-error}dieciocho horas al mes en este ejercicio. Con Faro son seis.",
       "pauseAfterMs": 300
     },
     {
@@ -373,7 +380,7 @@
     {
       "id": "s10-03",
       "scene": "s10-cierre",
-      "text": "<calm> {s10-b}Así puedes explicar por qué compras Faro para una necesidad y valoras Atlas para otra.",
+      "text": "<calm> {s10-b}Así puedes explicar por qué compras {fx-check-2}Faro para una necesidad y valoras Atlas para otra.",
       "pauseAfterMs": 300
     },
     {

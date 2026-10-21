@@ -11,11 +11,18 @@
     "rate": 0,
     "fx": "machine"
   },
+  "sfx": {
+    "fx-ping-1": "ping2",
+    "fx-typing-1": "typing",
+    "fx-ping-2": "ping2",
+    "fx-check": "check",
+    "fx-typing-2": "typing"
+  },
   "segments": [
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {title}Dos archivos se parecen. ¿Son de la misma familia? Vas a seguir una muestra hasta una conclusión que puedas defender, sin saltarte las dudas.",
+      "text": "<curious> {title}Dos archivos se {fx-ping-1}parecen. ¿Son de la misma familia? Vas a seguir una muestra hasta una conclusión que puedas defender, sin saltarte las dudas.",
       "pauseAfterMs": 300
     },
     {
@@ -167,7 +174,7 @@
     {
       "id": "s05-02",
       "scene": "s05-caso",
-      "text": "<engaging> Las búsquedas avanzadas permiten usar imports, contenido o metadatos como claves. Aquí ves consultas ilustrativas. Los valores son inventados y no las ejecutamos.",
+      "text": "<engaging> Las búsquedas avanzadas permiten usar imports, contenido o metadatos como claves. Aquí ves {fx-typing-1}consultas ilustrativas. Los valores son inventados y no las ejecutamos.",
       "pauseAfterMs": 300
     },
     {
@@ -215,7 +222,7 @@
     {
       "id": "s06-03",
       "scene": "s06-caso",
-      "text": "<thoughtful> {s06-b}D comparte una dirección de alojamiento con A durante un intervalo amplio. El servidor tiene varios clientes. Esa coincidencia no basta para unirlos.",
+      "text": "<thoughtful> {s06-b}D {fx-ping-2}comparte una dirección de alojamiento con A durante un intervalo amplio. El servidor tiene varios clientes. Esa coincidencia no basta para unirlos.",
       "pauseAfterMs": 300
     },
     {
@@ -261,7 +268,7 @@
     {
       "id": "s07-04",
       "scene": "s07-caso",
-      "text": "<calm> Puedes mantenerlo como relacionado probable con confianza moderada, dentro de ese alcance.",
+      "text": "<calm> Puedes mantenerlo como {fx-check}relacionado probable con confianza moderada, dentro de ese alcance.",
       "pauseAfterMs": 300
     },
     {
@@ -319,7 +326,7 @@
     {
       "id": "s09-01",
       "scene": "s09-caso",
-      "text": "<calm> {s09-a}Deja una bitácora que otra analista pueda seguir. Qué consultaste, con qué filtros y cuándo. Qué fecha corresponde a la observación.",
+      "text": "<calm> {s09-a}Deja una {fx-typing-2}bitácora que otra analista pueda seguir. Qué consultaste, con qué filtros y cuándo. Qué fecha corresponde a la observación.",
       "pauseAfterMs": 300
     },
     {

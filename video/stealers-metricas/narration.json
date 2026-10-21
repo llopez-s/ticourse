@@ -11,11 +11,17 @@
     "rate": 0,
     "fx": "machine"
   },
+  "sfx": {
+    "fx-ping-1": "ping2",
+    "fx-ping-2": "ping2",
+    "fx-check": "check",
+    "fx-error": "error"
+  },
   "segments": [
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {title}Una tabla tiene tres ganadores distintos. Vas a ver cómo pasa y cuál de sus métricas ayuda a decidir una prioridad para tu organización.",
+      "text": "<curious> {title}Una tabla tiene {fx-ping-1}tres ganadores distintos. Vas a ver cómo pasa y cuál de sus métricas ayuda a decidir una prioridad para tu organización.",
       "pauseAfterMs": 300
     },
     {
@@ -161,7 +167,7 @@
     {
       "id": "s05-01",
       "scene": "s05-caso",
-      "text": "<thoughtful> {s05-a}El proveedor de ejemplo ve dos regiones y una selección de anuncios. No observa todo el mundo. Las cifras describen esa cobertura.",
+      "text": "<thoughtful> {s05-a}El proveedor de ejemplo ve {fx-ping-2}dos regiones y una selección de anuncios. No observa todo el mundo. Las cifras describen esa cobertura.",
       "pauseAfterMs": 300
     },
     {
@@ -185,7 +191,7 @@
     {
       "id": "s05-05",
       "scene": "s05-caso",
-      "text": "<curious> {s05-c}Los registros repetidos se deduplican según dispositivo, artefacto y fecha de obtención. Una reventa no suma otra infección.",
+      "text": "<curious> {s05-c}Los registros repetidos se {fx-check}deduplican según dispositivo, artefacto y fecha de obtención. Una reventa no suma otra infección.",
       "pauseAfterMs": 300
     },
     {
@@ -209,7 +215,7 @@
     {
       "id": "s06-03",
       "scene": "s06-caso",
-      "text": "<confident> {s06-b}Si añade sensores o cambia etiquetas entre meses, sus cifras pueden subir sin que haya crecido la amenaza.",
+      "text": "<confident> {s06-b}Si añade sensores o cambia etiquetas entre meses, sus cifras pueden {fx-error}subir sin que haya crecido la amenaza.",
       "pauseAfterMs": 300
     },
     {

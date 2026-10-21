@@ -11,11 +11,19 @@
     "rate": 0,
     "fx": "machine"
   },
+  "sfx": {
+    "fx-check-1": "check",
+    "fx-typing": "typing",
+    "fx-error-1": "error",
+    "fx-check-2": "check",
+    "fx-error-2": "error",
+    "fx-mail": "mail"
+  },
   "segments": [
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {title}Tu regla compila. Ahora vas a comprobar qué detecta, qué se le escapa y qué debes entregar para que otra persona pueda evaluarla.",
+      "text": "<curious> {title}Tu regla {fx-check-1}compila. Ahora vas a comprobar qué detecta, qué se le escapa y qué debes entregar para que otra persona pueda evaluarla.",
       "pauseAfterMs": 300
     },
     {
@@ -45,7 +53,7 @@
     {
       "id": "s02-01",
       "scene": "s02-caso",
-      "text": "<thoughtful> {s02-a}Primero descargas la regla que has escrito. El editor del navegador no la ejecuta.",
+      "text": "<thoughtful> {s02-a}Primero {fx-typing}descargas la regla que has escrito. El editor del navegador no la ejecuta.",
       "pauseAfterMs": 300
     },
     {
@@ -69,7 +77,7 @@
     {
       "id": "s02-05",
       "scene": "s02-caso",
-      "text": "<curious> {s02-c}Un error de compilación no es una ausencia de coincidencia. La regla no llegó a evaluarse como esperabas. Una discrepancia significa otra cosa.",
+      "text": "<curious> {s02-c}Un error de compilación no es una ausencia de coincidencia. La regla no llegó a {fx-error-1}evaluarse como esperabas. Una discrepancia significa otra cosa.",
       "pauseAfterMs": 300
     },
     {
@@ -197,7 +205,7 @@
     {
       "id": "s06-01",
       "scene": "s06-caso",
-      "text": "<focused> {s06-a}La referencia obtiene los doce resultados previstos del paquete. Eso incluye archivos que deben coincidir y archivos que no deben hacerlo.",
+      "text": "<focused> {s06-a}La referencia obtiene los {fx-check-2}doce resultados previstos del paquete. Eso incluye archivos que deben coincidir y archivos que no deben hacerlo.",
       "pauseAfterMs": 300
     },
     {
@@ -209,7 +217,7 @@
     {
       "id": "s06-03",
       "scene": "s06-caso",
-      "text": "<confident> {s06-b}La variante futura del ejercicio cambia el marcador y la ruta. La referencia no la cubre.",
+      "text": "<confident> {s06-b}La variante futura del ejercicio cambia el marcador y la ruta. La referencia {fx-error-2}no la cubre.",
       "pauseAfterMs": 300
     },
     {
@@ -337,7 +345,7 @@
     {
       "id": "s09-05",
       "scene": "s09-caso",
-      "text": "<engaging> {s09-c}Así entregas una detección que otra persona puede evaluar, repetir y mantener. El paquete permite reproducir resultados y discutir límites.",
+      "text": "<engaging> {s09-c}Así {fx-mail}entregas una detección que otra persona puede evaluar, repetir y mantener. El paquete permite reproducir resultados y discutir límites.",
       "pauseAfterMs": 300
     },
     {
