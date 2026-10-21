@@ -60,7 +60,7 @@ export const EPISODES_04_05 = [
         card: 'Comprueba función, dirección y tiempo de la relación',
         text: [
           'Las relaciones también tienen significado. Una dirección escrita dentro de un archivo no prueba que se contactara. Un contacto observado no demuestra que ese servidor lo controle el atacante. Puede ser un servicio compartido o una comprobación legítima.',
-          'D {fx-ping-2}comparte una dirección de alojamiento con A durante un intervalo amplio. El servidor tiene varios clientes. Esa coincidencia no basta para unirlos. Antes revisas cuándo resolvió cada dominio, qué servicio era y qué evidencia vincula realmente las actividades.',
+          'D comparte una dirección de alojamiento con {fx-ping-2}A durante un intervalo amplio. El servidor tiene varios clientes. Esa coincidencia no basta para unirlos. Antes revisas cuándo resolvió cada dominio, qué servicio era y qué evidencia vincula realmente las actividades.',
           'Distingue también los certificados del servidor de los certificados de firma de código. Vinculan objetos diferentes. Mantén la dirección y la fuente de cada relación. Si dibujas todas las líneas iguales, el grafo parece más concluyente de lo que es.',
         ],
       },
@@ -87,7 +87,7 @@ export const EPISODES_04_05 = [
         title: 'Que otra persona pueda seguirte', visual: 'Bitácora consulta/filtros/fecha consulta/fecha observación/fuente/evidencia/juicio/confianza/alternativa/próxima acción. Ejemplo sin nuevos timestamps del canon. Resultado B probable; C y D no incorporados; E pendiente.',
         card: 'Registra consulta, evidencia, alternativas y confianza',
         text: [
-          'Deja una {fx-typing-2}bitácora que otra analista pueda seguir. Qué consultaste, con qué filtros y cuándo. Qué fecha corresponde a la observación. Qué evidencia conservaste y cuál es su origen. Incluye las búsquedas fallidas y las funciones que no estaban disponibles.',
+          'Deja una bitácora que otra analista pueda seguir. Qué {fx-typing-2}consultaste, con qué filtros y cuándo. Qué fecha corresponde a la observación. Qué evidencia conservaste y cuál es su origen. Incluye las búsquedas fallidas y las funciones que no estaban disponibles.',
           'La conclusión del caso mantiene B como relacionado probable por código. C y D no se incorporan con la evidencia actual. E sigue pendiente. Esa decisión no mezcla un candidato débil con uno descartado para siempre.',
           'Escribe también qué cambiaría tu juicio. Validar más variantes, contrastar configuración o conseguir una observación independiente. La confianza no es una decoración del informe. Resume cuánto sostienen los datos y qué tan abiertas siguen las alternativas.',
         ],
