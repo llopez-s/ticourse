@@ -1,4 +1,4 @@
-import { check, code, complement, h, links, list, p, table, type LessonExpansion } from './shared';
+import { check, code, complement, h, links, list, p, table, video, type LessonExpansion } from './shared';
 
 const MS = 'https://learn.microsoft.com/en-us/';
 export const IDENTITY_EXPANSIONS: Record<string, LessonExpansion> = {
@@ -41,6 +41,8 @@ export const IDENTITY_EXPANSIONS: Record<string, LessonExpansion> = {
         'Cuando el token de acceso caduca, la aplicación puede pedir otro al servidor de autorización usando el refresh token. La renovación no supone repetir MFA en cada petición, y puede fallar por revocación o política. La sesión propia de la aplicación tiene su ciclo de vida.',
       ),
       code('Flujo conceptual · sin tokens ni llamadas reales', 'Ana → Resumen del turno → Entra ID: inicio de sesión y autorización\nEntra ID → aplicación: access token para Graph (+ otros tokens según el flujo)\nAplicación → Graph: solicitud de lectura de /v1.0/me/messages\nGraph → aplicación: mensajes permitidos\nAplicación → Entra ID: renovación si está permitida'),
+      p('Antes de resolver el caso, recórrelo en vídeo: Ana, Resumen del turno, Entra ID y Graph, y por qué entrar no lo permite todo.'),
+      video('La sesión sigue abierta: identidad, permisos y tokens', '-aOzQ-PWcnk', 'tokens-correo'),
       p('**Caso resuelto.** Se sospecha que un stealer copió un access token de Graph de la aplicación de Ana. Paso 1: identificar qué artefacto era; la etiqueta «token Microsoft» es insuficiente. Paso 2: determinar destinatario, permisos, vigencia y controles a partir de registros autorizados. Paso 3: buscar actividad compatible, aplicaciones implicadas y alcance. Con Mail.Read podría haber riesgo de lectura mientras el token fuese aceptado; no puedes concluir envío de correo, administración ni renovación indefinida. Si lo copiado fuera un refresh token, habría que evaluar además la posibilidad de obtener nuevos access tokens. No se prueba su uso presentando la credencial robada.'),
       check('Práctica · Solo consta un access token destinado a Graph con lectura delegada del correo. ¿Qué juicio es defendible?', [
         'El atacante tiene acceso permanente a todos los servicios Microsoft', 'MFA garantiza que el token no puede ser utilizado',
@@ -106,6 +108,8 @@ export const IDENTITY_EXPANSIONS: Record<string, LessonExpansion> = {
       complement('Revocación en Microsoft'),
       p('En Microsoft Entra ID, **revokeSignInSessions** invalida los refresh tokens y cookies de sesión del usuario gestionados por ese servicio. Puede haber un retraso de unos minutos. No garantiza por sí solo el cierre de todas las sesiones que las aplicaciones hayan emitido por su cuenta; las cuentas externas requieren considerar su tenant de origen. Los access tokens ya emitidos y las sesiones de aplicaciones necesitan atención específica.'),
       p('La **evaluación continua del acceso (CAE)** permite que recursos y clientes compatibles reaccionen a ciertos eventos antes de la caducidad ordinaria. No presupongas que cualquier recurso o cliente la soporta, ni una revocación universal e instantánea. Los efectos de cambiar una contraseña varían según el tipo de token, el cliente y la acción de restablecimiento. Por eso «contraseña cambiada» no equivale a «todos los tokens invalidados inmediatamente».'),
+      p('Antes de resolver el caso, míralo contado: qué demuestra un infostealer, qué contener primero y qué comprobar antes de dar el caso por cerrado.'),
+      video('Infostealers: contener el dispositivo y la identidad', 'JE-2-VAlUL4', 'stealer-sesiones'),
       p('**Caso resuelto.** Halden aísla el equipo de Ana y cambia su contraseña desde otro dispositivo confiable. Paso 1: el equipo queda contenido, pero falta la identidad. Paso 2: se revocan las sesiones del servicio de identidad y se revisan permisos y consentimientos de Resumen del turno. Paso 3: se examinan accesos a Graph y las sesiones propias de la aplicación durante la ventana de riesgo. Paso 4: se verifica la revocación y se mantiene vigilancia según los tiempos y registros disponibles. Si hubo acceso de aplicación sin usuario, la respuesta incluye sus credenciales y permisos; resetear la contraseña de Ana no lo resuelve.'),
       check('Práctica · Tras cambiar la contraseña de Ana, ¿qué evidencia permite cerrar mejor el caso?', [
         'El correo de confirmación del cambio, sin revisar nada más', 'El simple transcurso de una hora para cualquier token',

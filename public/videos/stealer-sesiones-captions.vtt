@@ -1,0 +1,628 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:05.067
+La contraseña ya está cambiada.
+¿Puedes cerrar el incidente?
+
+2
+00:00:05.067 --> 00:00:09.333
+Vas a comprobar qué falta cuando un
+programa roba información de un equipo.
+
+3
+00:00:09.333 --> 00:00:14.000
+Estás en un ejercicio de respuesta
+de Halden, una autoridad portuaria.
+
+4
+00:00:14.000 --> 00:00:16.433
+La alerta describe un infostealer.
+
+5
+00:00:16.433 --> 00:00:20.133
+Es malware orientado a robar
+información del dispositivo.
+
+6
+00:00:20.133 --> 00:00:25.600
+No todos estos programas buscan lo mismo,
+y sus capacidades cambian entre versiones.
+
+7
+00:00:25.600 --> 00:00:30.200
+La ficha describe el equipo de Ana, datos
+de su navegador y su cuenta de correo.
+
+8
+00:00:30.200 --> 00:00:34.033
+Todavía no sabemos qué salió
+ni si alguien lo utilizó.
+
+9
+00:00:34.033 --> 00:00:38.900
+Necesitas separar esas preguntas
+para decidir cómo contener el riesgo.
+
+10
+00:00:39.967 --> 00:00:43.900
+Una ficha técnica dice que la
+familia puede robar contraseñas.
+
+11
+00:00:43.900 --> 00:00:45.667
+Eso describe capacidad.
+
+12
+00:00:45.667 --> 00:00:50.300
+Una evidencia del incidente puede mostrar
+que ciertos datos salieron del equipo.
+
+13
+00:00:50.300 --> 00:00:52.533
+Eso describe exposición.
+
+14
+00:00:52.533 --> 00:00:55.933
+Un registro del servicio puede
+mostrar un acceso posterior.
+
+15
+00:00:55.933 --> 00:00:58.433
+Eso permite investigar uso.
+
+16
+00:00:58.433 --> 00:01:01.733
+La primera afirmación no demuestra
+automáticamente las otras dos.
+
+17
+00:01:01.733 --> 00:01:07.033
+Una detección en el equipo no identifica
+por sí sola todos los datos robados.
+
+18
+00:01:07.033 --> 00:01:09.367
+Y un listado que alguien vende tampoco
+
+19
+00:01:09.367 --> 00:01:12.733
+acredita un acceso
+reciente a tu organización.
+
+20
+00:01:12.733 --> 00:01:15.233
+Necesitas fechas y procedencia.
+
+21
+00:01:15.233 --> 00:01:19.767
+Un dato antiguo puede revenderse,
+duplicarse o estar mal atribuido.
+
+22
+00:01:19.767 --> 00:01:25.400
+Mantén lo desconocido como desconocido.
+Eso no impide responder con prudencia.
+
+23
+00:01:25.400 --> 00:01:30.133
+Impide presentar una sospecha
+como si ya fuera una secuencia demostrada.
+
+24
+00:01:40.100 --> 00:01:42.433
+No has comprobado que todo esté cerrado.
+
+25
+00:01:42.433 --> 00:01:46.433
+Una contraseña puede servir
+para iniciar una autenticación nueva.
+
+26
+00:01:46.433 --> 00:01:50.733
+Una cookie de sesión puede
+mantener un acceso web existente.
+
+27
+00:01:50.733 --> 00:01:52.800
+Un token de acceso permite operaciones
+
+28
+00:01:52.800 --> 00:01:55.833
+sobre un recurso concreto
+mientras sea aceptado.
+
+29
+00:01:55.833 --> 00:01:59.000
+Un token de renovación
+cumple otro trabajo.
+
+30
+00:01:59.000 --> 00:02:02.133
+Se presenta al servidor
+de autorización para solicitar
+
+31
+00:02:02.133 --> 00:02:05.367
+nuevos tokens bajo las
+condiciones aplicables.
+
+32
+00:02:05.367 --> 00:02:08.100
+Si solo sabes que había credenciales,
+
+33
+00:02:08.100 --> 00:02:11.667
+aún no sabes cuál de estas
+situaciones estás conteniendo.
+
+34
+00:02:11.667 --> 00:02:16.833
+Por eso cambiar la contraseña puede ser
+necesario y seguir siendo insuficiente.
+
+35
+00:02:16.833 --> 00:02:20.967
+Tampoco debes afirmar que todas
+las credenciales funcionan.
+
+36
+00:02:20.967 --> 00:02:23.900
+Identifica el artefacto y su emisor.
+
+37
+00:02:23.900 --> 00:02:27.800
+Después comprueba vigencia,
+permisos y controles,
+
+38
+00:02:27.800 --> 00:02:31.567
+sin probar una credencial
+expuesta contra el servicio.
+
+39
+00:02:32.700 --> 00:02:37.567
+El programa puede seguir activo.
+Tienes que cambiar secretos expuestos.
+
+40
+00:02:37.567 --> 00:02:39.467
+¿Lo harías desde el mismo equipo afectado,
+
+41
+00:02:39.467 --> 00:02:44.400
+o prepararías un entorno confiable
+mientras contienes el dispositivo?
+
+42
+00:02:44.400 --> 00:02:48.300
+Piensa también en lo que podría
+volver a observar el programa.
+
+43
+00:02:52.567 --> 00:02:56.067
+Usas un entorno confiable
+y coordinas la contención del equipo.
+
+44
+00:02:56.067 --> 00:03:00.067
+Si sigue comprometido, podría
+capturar los secretos nuevos.
+
+45
+00:03:00.067 --> 00:03:02.933
+El procedimiento autorizado
+debe preservar las evidencias
+
+46
+00:03:02.933 --> 00:03:06.700
+que hagan falta y limitar
+la capacidad de seguir causando daño.
+
+47
+00:03:06.700 --> 00:03:11.533
+No confundas aislar el dispositivo
+con contener todas las identidades.
+
+48
+00:03:11.533 --> 00:03:14.800
+Una sesión ya expuesta puede
+existir fuera de ese equipo.
+
+49
+00:03:14.800 --> 00:03:17.233
+La respuesta tiene dos frentes.
+
+50
+00:03:17.233 --> 00:03:22.433
+El dispositivo y las cuentas, aplicaciones
+y recursos que pudieron quedar afectados.
+
+51
+00:03:29.000 --> 00:03:32.067
+Construye una línea temporal
+con lo que sí conoces.
+
+52
+00:03:32.067 --> 00:03:37.633
+Cuándo se detectó el programa, qué periodo
+pudo estar activo y qué ocurrió después.
+
+53
+00:03:37.633 --> 00:03:41.900
+Diferencia la hora de observación
+de la hora en que recibiste una alerta.
+
+54
+00:03:41.900 --> 00:03:45.867
+Revisa qué cuentas y aplicaciones
+estuvieron expuestas.
+
+55
+00:03:45.867 --> 00:03:47.933
+Busca actividad
+de identidad y del recurso.
+
+56
+00:03:47.933 --> 00:03:52.700
+En el correo pueden importar
+los accesos y cambios relevantes.
+
+57
+00:03:52.700 --> 00:03:55.733
+En las aplicaciones,
+los permisos y consentimientos.
+
+58
+00:03:55.733 --> 00:04:00.267
+Una dirección de red nueva, aislada,
+no basta para demostrar abuso.
+
+59
+00:04:00.267 --> 00:04:02.800
+También registra lo que no puedes revisar.
+
+60
+00:04:02.800 --> 00:04:04.767
+Tal vez los registros antiguos ya se hayan
+
+61
+00:04:04.767 --> 00:04:07.633
+borrado al terminar
+su plazo de conservación.
+
+62
+00:04:07.633 --> 00:04:10.900
+Ese hueco no demuestra que nada ocurriera.
+
+63
+00:04:10.900 --> 00:04:14.800
+Afecta al alcance y a la confianza
+con que explicas el incidente.
+
+64
+00:04:14.800 --> 00:04:18.167
+La investigación debe
+conservar ese límite.
+
+65
+00:04:19.267 --> 00:04:22.533
+Ahora eliges acciones según el escenario.
+
+66
+00:04:22.533 --> 00:04:25.933
+Los secretos expuestos se cambian
+desde un entorno confiable.
+
+67
+00:04:25.933 --> 00:04:28.700
+Las sesiones se invalidan
+donde se gestionan.
+
+68
+00:04:28.700 --> 00:04:32.533
+Una concesión sospechosa se revisa
+y retira cuando corresponde.
+
+69
+00:04:32.533 --> 00:04:36.400
+Cada acción necesita
+su responsable y su comprobación.
+
+70
+00:04:36.400 --> 00:04:39.533
+Impedir una renovación
+no demuestra que todos los tokens
+
+71
+00:04:39.533 --> 00:04:43.200
+de acceso emitidos antes
+hayan dejado de funcionar.
+
+72
+00:04:43.200 --> 00:04:47.000
+Y cerrar una sesión del proveedor
+de identidad no acredita cerrar todas
+
+73
+00:04:47.000 --> 00:04:52.533
+las sesiones propias de las aplicaciones.
+Hay que comprobar ambos niveles.
+
+74
+00:04:52.533 --> 00:04:55.467
+Si una aplicación accede
+sin un usuario presente,
+
+75
+00:04:55.467 --> 00:04:58.800
+puede depender de permisos
+y credenciales propios.
+
+76
+00:04:58.800 --> 00:05:02.167
+Cambiar la contraseña
+de una persona no los elimina.
+
+77
+00:05:02.167 --> 00:05:04.233
+Vas cerrando las vías
+de acceso que indique
+
+78
+00:05:04.233 --> 00:05:08.300
+la investigación y compruebas
+el efecto de cada medida.
+
+79
+00:05:19.233 --> 00:05:22.167
+Pulsarlo no demuestra
+su resultado en todas partes.
+
+80
+00:05:22.167 --> 00:05:25.100
+En Microsoft, revocar
+las sesiones de inicio invalida
+
+81
+00:05:25.100 --> 00:05:29.067
+tokens de renovación y cookies
+gestionadas por ese servicio.
+
+82
+00:05:29.067 --> 00:05:30.700
+Puede haber un retraso.
+
+83
+00:05:30.700 --> 00:05:32.300
+Las sesiones que una aplicación mantiene
+
+84
+00:05:32.300 --> 00:05:35.400
+por su cuenta requieren
+atención específica.
+
+85
+00:05:35.400 --> 00:05:40.767
+Algunos clientes y recursos compatibles
+pueden reaccionar a ciertos eventos antes
+
+86
+00:05:40.767 --> 00:05:46.967
+de la caducidad ordinaria. Esa capacidad
+se llama evaluación continua del acceso.
+
+87
+00:05:46.967 --> 00:05:50.067
+No significa que toda
+aplicación reaccione a cualquier
+
+88
+00:05:50.067 --> 00:05:53.733
+evento ni que todo el acceso
+se corte al instante.
+
+89
+00:05:53.733 --> 00:05:56.433
+También varían los efectos
+de cambiar una contraseña
+
+90
+00:05:56.433 --> 00:05:59.933
+según el tipo de credencial
+y cómo se hizo el cambio.
+
+91
+00:05:59.933 --> 00:06:04.400
+Por eso no sustituyas
+la verificación por una espera fija.
+
+92
+00:06:04.400 --> 00:06:09.800
+Registra la acción y comprueba los efectos
+que deberían producirse en este escenario.
+
+93
+00:06:10.933 --> 00:06:13.933
+Tienes un correo que confirma
+el cambio de contraseña.
+
+94
+00:06:13.933 --> 00:06:16.867
+También puedes revisar
+los controles aplicados,
+
+95
+00:06:16.867 --> 00:06:20.200
+la actividad posterior
+y la recuperación del equipo.
+
+96
+00:06:20.200 --> 00:06:22.867
+¿Qué sostiene mejor
+una decisión de cierre?
+
+97
+00:06:22.867 --> 00:06:26.467
+Elige la evidencia que responde
+al alcance investigado.
+
+98
+00:06:30.700 --> 00:06:35.667
+El conjunto de comprobaciones.
+El correo confirma una acción concreta.
+
+99
+00:06:35.667 --> 00:06:38.233
+No acredita el cierre
+de todas las sesiones.
+
+100
+00:06:38.233 --> 00:06:41.467
+Necesitas valorar si las
+medidas fueron eficaces,
+
+101
+00:06:41.467 --> 00:06:46.433
+qué acceso pudo persistir y qué dudas
+siguen abiertas por falta de datos.
+
+102
+00:06:46.433 --> 00:06:48.500
+Eso no exige afirmar que sabes todo.
+
+103
+00:06:48.500 --> 00:06:51.833
+Exige explicar qué verificaste
+y por qué puedes pasar
+
+104
+00:06:51.833 --> 00:06:55.833
+a recuperación o cierre
+bajo el procedimiento del equipo.
+
+105
+00:06:55.833 --> 00:06:59.100
+La vigilancia posterior
+y los criterios de reapertura
+
+106
+00:06:59.100 --> 00:07:02.900
+también forman parte
+de una respuesta defendible.
+
+107
+00:07:09.033 --> 00:07:10.500
+En el ejercicio de Ana,
+
+108
+00:07:10.500 --> 00:07:15.600
+el equipo queda contenido y el cambio
+se hace desde otro dispositivo confiable.
+
+109
+00:07:15.600 --> 00:07:19.233
+Después se revisan las sesiones
+del servicio de identidad,
+
+110
+00:07:19.233 --> 00:07:23.233
+los permisos de la aplicación
+y la actividad de acceso al correo.
+
+111
+00:07:23.233 --> 00:07:26.867
+La recuperación del equipo sigue
+el procedimiento autorizado.
+
+112
+00:07:26.867 --> 00:07:31.700
+La revisión busca si las medidas
+funcionaron y si aparecen nuevas señales.
+
+113
+00:07:31.700 --> 00:07:35.433
+No se reutiliza ninguna credencial
+expuesta para intentar entrar.
+
+114
+00:07:35.433 --> 00:07:40.400
+El ejercicio enseña a responder,
+no a comprobar accesos robados.
+
+115
+00:07:40.400 --> 00:07:44.100
+En el informe queda la diferencia
+entre lo confirmado,
+
+116
+00:07:44.100 --> 00:07:46.800
+lo probable y lo que falta por observar.
+
+117
+00:07:46.800 --> 00:07:49.967
+Así la siguiente persona
+entiende el alcance real.
+
+118
+00:07:49.967 --> 00:07:52.200
+Una lista de acciones completadas ayuda,
+
+119
+00:07:52.200 --> 00:07:56.600
+pero solo tiene sentido junto
+a sus efectos y sus límites.
+
+120
+00:08:02.833 --> 00:08:08.533
+Tres reglas para llevarte. La capacidad
+de robar no demuestra extracción ni uso.
+
+121
+00:08:08.533 --> 00:08:12.433
+Aislar un equipo no cierra
+por sí solo todas las sesiones.
+
+122
+00:08:12.433 --> 00:08:17.900
+Y cambiar una contraseña no prueba la
+invalidación inmediata de toda credencial.
+
+123
+00:08:17.900 --> 00:08:22.400
+La respuesta une lo que le pasó
+al dispositivo con lo que pudieron hacer
+
+124
+00:08:22.400 --> 00:08:26.433
+sus identidades y aplicaciones.
+Primero acotas el caso.
+
+125
+00:08:26.433 --> 00:08:28.667
+Después eliges acciones adecuadas.
+
+126
+00:08:28.667 --> 00:08:33.400
+Y antes de dar por logrado el corte,
+compruebas sus efectos.
+
+127
+00:08:33.400 --> 00:08:37.100
+Ve ahora a la práctica complementaria
+de respuesta a incidentes.
+
+128
+00:08:37.100 --> 00:08:41.400
+Decide qué evidencias necesitarías
+para cerrar el caso de Ana.
+
+129
+00:08:41.400 --> 00:08:45.167
+Si tu respuesta solo
+dice contraseña cambiada,
+
+130
+00:08:45.167 --> 00:08:49.500
+vuelve a mirar las sesiones
+y el equipo. Aún faltan preguntas.

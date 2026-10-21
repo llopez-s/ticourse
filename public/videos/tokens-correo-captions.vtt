@@ -1,0 +1,548 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:05.700
+Ana cambia su contraseña
+y la aplicación sigue mostrando correo.
+
+2
+00:00:05.700 --> 00:00:09.867
+Vas a ver por qué puede pasar
+y qué necesitas comprobar.
+
+3
+00:00:09.867 --> 00:00:13.433
+Estamos en un ejercicio de Halden,
+la autoridad portuaria.
+
+4
+00:00:13.433 --> 00:00:18.467
+Ana usa una aplicación que resume
+el correo del turno. El caso es inventado.
+
+5
+00:00:18.467 --> 00:00:21.133
+No vamos a entrar en ninguna cuenta real.
+
+6
+00:00:21.133 --> 00:00:23.700
+La aplicación se llama Resumen del turno.
+
+7
+00:00:23.700 --> 00:00:26.967
+Para explicar qué ocurre,
+separa dos decisiones.
+
+8
+00:00:26.967 --> 00:00:29.600
+Una comprueba que quien entra es Ana.
+
+9
+00:00:29.600 --> 00:00:32.300
+La otra limita lo que la
+aplicación puede hacer.
+
+10
+00:00:32.300 --> 00:00:36.133
+Son distintas, aunque aparezcan
+seguidas en la pantalla.
+
+11
+00:00:37.267 --> 00:00:40.367
+Cuando el sistema comprueba
+quién eres, te está autenticando.
+
+12
+00:00:40.367 --> 00:00:44.000
+Cuando decide qué puedes
+hacer, te está autorizando.
+
+13
+00:00:44.000 --> 00:00:47.167
+Ana puede demostrar su identidad
+perfectamente y seguir
+
+14
+00:00:47.167 --> 00:00:50.067
+sin permiso para administrar
+el correo del puerto.
+
+15
+00:00:50.067 --> 00:00:52.800
+Piensa en un pase para una sala concreta.
+
+16
+00:00:52.800 --> 00:00:55.933
+Que sepan quién eres
+no abre todas las puertas.
+
+17
+00:00:55.933 --> 00:01:00.633
+Y que una aplicación tenga permiso para
+leer tampoco le permite enviar mensajes.
+
+18
+00:01:00.633 --> 00:01:04.133
+Cada acción necesita
+la autorización que corresponda.
+
+19
+00:01:04.133 --> 00:01:05.900
+Aquí aparece OAuth.
+
+20
+00:01:05.900 --> 00:01:09.567
+Es un marco para conceder
+acceso limitado a una aplicación
+
+21
+00:01:09.567 --> 00:01:14.267
+sin darle la contraseña de Ana.
+No convierte a la aplicación en Ana.
+
+22
+00:01:14.267 --> 00:01:19.233
+Le permite actuar dentro de una concesión
+que el sistema puede limitar.
+
+23
+00:01:29.667 --> 00:01:35.267
+No, entrar no lo permite todo. Mira
+las cuatro columnas. Ana es la usuaria.
+
+24
+00:01:35.267 --> 00:01:37.667
+Resumen del turno es la aplicación.
+
+25
+00:01:37.667 --> 00:01:40.167
+Microsoft Entra ID gestiona la identidad
+
+26
+00:01:40.167 --> 00:01:43.467
+y emite las credenciales
+del acceso autorizado.
+
+27
+00:01:43.467 --> 00:01:47.733
+Microsoft Graph es la interfaz
+que recibe las peticiones al correo.
+
+28
+00:01:47.733 --> 00:01:51.233
+La aplicación pide leer
+mensajes en nombre de Ana.
+
+29
+00:01:51.233 --> 00:01:53.267
+Esa concesión depende del consentimiento
+
+30
+00:01:53.267 --> 00:01:56.267
+y las políticas del entorno
+de su organización.
+
+31
+00:01:56.267 --> 00:01:59.333
+Ana demuestra su identidad
+ante el servicio de identidad.
+
+32
+00:01:59.333 --> 00:02:02.500
+La aplicación no necesita
+recoger su contraseña.
+
+33
+00:02:02.500 --> 00:02:07.600
+Después obtiene una credencial
+para pedir a Graph la lectura permitida.
+
+34
+00:02:07.600 --> 00:02:13.100
+La identidad, la aplicación y el recurso
+siguen siendo cosas distintas.
+
+35
+00:02:14.200 --> 00:02:18.367
+Un sistema puede emitir una credencial
+digital para permitir una operación.
+
+36
+00:02:18.367 --> 00:02:22.667
+La llamamos token.
+El de acceso se presenta al recurso.
+
+37
+00:02:22.667 --> 00:02:27.500
+El de renovación permite solicitar
+tokens nuevos al servicio que los emite.
+
+38
+00:02:27.500 --> 00:02:31.433
+Para leer mensajes,
+¿cuál presentarías a Graph?
+
+39
+00:02:35.600 --> 00:02:38.833
+El de acceso, porque la petición
+va al recurso que recibe
+
+40
+00:02:38.833 --> 00:02:43.467
+las solicitudes de correo.
+Graph comprueba si permite esa operación.
+
+41
+00:02:43.467 --> 00:02:46.500
+La renovación se pide
+al servidor de autorización.
+
+42
+00:02:46.500 --> 00:02:51.767
+En la imagen, uno es el pase limitado
+y el otro permite solicitar un pase nuevo.
+
+43
+00:02:51.767 --> 00:02:57.267
+Solicitarlo no garantiza conseguirlo.
+El servidor puede rechazar la renovación.
+
+44
+00:02:57.267 --> 00:03:02.300
+No son dos llaves intercambiables,
+ni la segunda abre cualquier puerta.
+
+45
+00:03:08.467 --> 00:03:12.800
+La contraseña sirve para demostrar
+identidad ante el sistema que la verifica.
+
+46
+00:03:12.800 --> 00:03:15.233
+Una cookie puede mantener una sesión web.
+
+47
+00:03:15.233 --> 00:03:18.567
+Pero también puede guardar
+otras preferencias.
+
+48
+00:03:18.567 --> 00:03:23.567
+Encontrar una cookie no demuestra que
+hayas encontrado una sesión autenticada.
+
+49
+00:03:23.567 --> 00:03:26.100
+Hay además un token de identidad.
+
+50
+00:03:26.100 --> 00:03:28.467
+Cuando se usa OpenID Connect,
+
+51
+00:03:28.467 --> 00:03:31.800
+informa a la aplicación sobre
+la autenticación de la usuaria.
+
+52
+00:03:31.800 --> 00:03:34.733
+Esa capa añade identidad sobre OAuth.
+
+53
+00:03:34.733 --> 00:03:39.400
+El token de identidad no sustituye
+al de acceso para pedir mensajes.
+
+54
+00:03:39.400 --> 00:03:43.333
+Por eso la etiqueta token
+de Microsoft se queda corta.
+
+55
+00:03:43.333 --> 00:03:47.267
+Necesitas saber qué artefacto
+es y para quién se emitió.
+
+56
+00:03:47.267 --> 00:03:50.000
+También importa quién
+mantiene la sesión web.
+
+57
+00:03:50.000 --> 00:03:52.567
+La aplicación puede
+tener una sesión propia,
+
+58
+00:03:52.567 --> 00:03:55.600
+distinta de la del proveedor de identidad.
+
+59
+00:03:56.667 --> 00:03:59.067
+Ahora lee los límites del pase.
+
+60
+00:03:59.067 --> 00:04:04.033
+Quién lo emite, a qué recurso va dirigido,
+qué permite y cuándo deja de ser válido.
+
+61
+00:04:04.033 --> 00:04:09.433
+Un token destinado a una interfaz no sirve
+automáticamente para todas las demás.
+
+62
+00:04:09.433 --> 00:04:13.900
+En el caso, la concesión permite leer
+correo en el contexto autorizado de Ana.
+
+63
+00:04:13.900 --> 00:04:19.533
+No concede administración global. Tampoco
+permite enviar mensajes por tener lectura.
+
+64
+00:04:19.533 --> 00:04:24.667
+El recurso comprueba la credencial
+y decide si acepta la petición concreta.
+
+65
+00:04:24.667 --> 00:04:27.800
+No le pongas una hora fija por costumbre.
+
+66
+00:04:27.800 --> 00:04:32.067
+La vigencia depende de cómo se emitió
+y de las políticas aplicables.
+
+67
+00:04:32.067 --> 00:04:35.333
+Cuando caduca,
+la aplicación necesita otro.
+
+68
+00:04:35.333 --> 00:04:41.167
+Puede obtenerlo sin interacción o tener
+que pedir que Ana vuelva a identificarse.
+
+69
+00:04:52.800 --> 00:04:56.233
+El segundo factor no borra
+lo que ocurra después.
+
+70
+00:04:56.233 --> 00:05:00.500
+La autenticación multifactor refuerza
+la comprobación de identidad.
+
+71
+00:05:00.500 --> 00:05:05.267
+Pero una credencial de sesión puede ser
+robada cuando esa comprobación ya terminó.
+
+72
+00:05:05.267 --> 00:05:07.333
+Es otro momento del acceso.
+
+73
+00:05:07.333 --> 00:05:10.967
+Muchos tokens de acceso pueden
+utilizarse por el hecho de tenerlos.
+
+74
+00:05:10.967 --> 00:05:13.400
+Se llaman tokens de tipo bearer.
+
+75
+00:05:13.400 --> 00:05:17.867
+Aun así, deben seguir válidos
+y superar los controles aplicables.
+
+76
+00:05:17.867 --> 00:05:21.133
+Hay que comprobar esos controles,
+no darlos por supuestos.
+
+77
+00:05:21.133 --> 00:05:24.233
+Esto no significa que cualquier
+token robado funcione.
+
+78
+00:05:24.233 --> 00:05:27.767
+Puede estar caducado, revocado
+o limitado de otra manera.
+
+79
+00:05:27.767 --> 00:05:31.133
+Tampoco prueba que alguien lo utilizara.
+
+80
+00:05:31.133 --> 00:05:35.900
+El riesgo de acceso y la evidencia
+de uso son conclusiones distintas.
+
+81
+00:05:36.900 --> 00:05:40.833
+La ficha dice que pudo exponerse
+un token de acceso destinado a Graph,
+
+82
+00:05:40.833 --> 00:05:44.767
+con lectura delegada.
+No menciona un token de renovación.
+
+83
+00:05:44.767 --> 00:05:50.267
+¿Concluyes acceso permanente a todo,
+o un alcance que todavía debes comprobar?
+
+84
+00:05:54.433 --> 00:05:55.767
+Lo segundo.
+
+85
+00:05:55.867 --> 00:05:59.200
+Hay un riesgo de lectura dentro
+de los permisos y la vigencia
+
+86
+00:05:59.200 --> 00:06:03.733
+que resulten aplicables.
+Falta investigar si el recurso lo aceptó.
+
+87
+00:06:03.733 --> 00:06:07.700
+También falta saber si había
+otras credenciales expuestas.
+
+88
+00:06:07.700 --> 00:06:10.033
+La ficha no responde a todo.
+
+89
+00:06:10.033 --> 00:06:14.567
+Si apareciera un token de renovación,
+añadirías otra pregunta.
+
+90
+00:06:14.567 --> 00:06:18.633
+¿Se podía obtener con él un nuevo
+token bajo esa concesión?
+
+91
+00:06:18.633 --> 00:06:21.233
+No asumirías acceso infinito.
+
+92
+00:06:21.233 --> 00:06:26.667
+Y no comprobarías el riesgo reutilizando
+la credencial robada en una cuenta real.
+
+93
+00:06:32.700 --> 00:06:37.333
+Cuenta ahora el recorrido sin mezclar
+las columnas. Ana se identifica.
+
+94
+00:06:37.333 --> 00:06:41.733
+El servicio de identidad aplica
+las condiciones y emite credenciales.
+
+95
+00:06:41.733 --> 00:06:44.267
+La aplicación presenta
+la de acceso a Graph.
+
+96
+00:06:44.267 --> 00:06:47.433
+Graph permite las operaciones autorizadas.
+
+97
+00:06:47.433 --> 00:06:51.767
+Si hace falta renovar, la aplicación
+vuelve al servidor de autorización.
+
+98
+00:06:51.767 --> 00:06:54.833
+Si la aplicación conserva
+además una sesión web,
+
+99
+00:06:54.833 --> 00:06:57.733
+esa sesión tiene su propio funcionamiento.
+
+100
+00:06:57.733 --> 00:07:02.200
+Cerrar una de estas piezas no acredita
+que todas las demás estén cerradas.
+
+101
+00:07:02.200 --> 00:07:05.600
+Tu explicación puede ser
+sencilla sin ser absoluta.
+
+102
+00:07:05.600 --> 00:07:10.933
+Di qué artefacto consta, qué recurso
+y permisos tiene, y qué evidencia falta.
+
+103
+00:07:10.933 --> 00:07:13.867
+El nombre del proveedor
+no amplía los permisos.
+
+104
+00:07:13.867 --> 00:07:18.767
+Haber superado el segundo factor tampoco
+resuelve por sí solo un robo posterior.
+
+105
+00:07:24.967 --> 00:07:30.167
+Quédate con tres comprobaciones. Primero,
+identifica qué credencial tienes delante.
+
+106
+00:07:30.167 --> 00:07:35.000
+Una contraseña, una cookie y un token
+no cuentan la misma historia.
+
+107
+00:07:35.000 --> 00:07:38.600
+Segundo, mira para quién
+se emitió y qué permite.
+
+108
+00:07:38.600 --> 00:07:44.100
+Tercero, separa la posibilidad de acceso
+de la evidencia de que alguien accedió.
+
+109
+00:07:44.100 --> 00:07:48.000
+Esa diferencia evita tanto
+cerrar el caso demasiado pronto
+
+110
+00:07:48.000 --> 00:07:51.833
+como anunciar un compromiso
+que todavía no has demostrado.
+
+111
+00:07:51.833 --> 00:07:55.467
+Abre ahora la práctica complementaria
+de identidad de la lección.
+
+112
+00:07:55.467 --> 00:07:58.800
+Decide qué puedes afirmar
+sobre el acceso al correo de Ana.
+
+113
+00:07:58.800 --> 00:08:02.867
+Esta vez, antes de responder,
+vuelve a las cuatro columnas.
+
+114
+00:08:02.867 --> 00:08:07.400
+Cada participante tiene su trabajo
+y cada credencial, su destino.
