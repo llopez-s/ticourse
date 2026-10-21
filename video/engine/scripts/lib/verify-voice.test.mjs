@@ -117,6 +117,16 @@ test('clipFindings: V26 s01-03 «PaperGovernor» is two words glued by Whisper, 
   assert.ok(single.errors.some((e) => /lasts 1\.4 s/.test(e)));
 });
 
+test('clipFindings: AP04 s02-01 «hash criptográfico» written «Hascriptográfico» is two words, not a stretched half-said take', () => {
+  const script = 'Se llama hash criptográfico y ayuda a reconocer los mismos bytes.';
+  const heard = 'Se llama Hascriptográfico y ayuda a reconocer los mismos bytes.';
+  const glued = clipFindings({ id: 's02-01', script, heard, ...ok, words: [{ text: 'Hascriptográfico', start: 3.8, end: 5.3 }] });
+  assert.deepEqual(glued.errors, []);
+  // the same length on a word the script does not have twice is still suspicious
+  const single = clipFindings({ id: 's02-01', script, heard, ...ok, words: [{ text: 'bytes', start: 3.8, end: 5.3 }] });
+  assert.equal(single.errors.length, 1);
+});
+
 test('repeatedPhrases: a word the ASR writes the same wrong way twice is not a leftover take (AP01 s08-01, «token» heard as «toque»)', () => {
   const script = 'La ficha dice que pudo exponerse un token de acceso, con lectura delegada. No menciona un token de renovación.';
   const heard = 'La ficha dice que pudo exponerse un toque de acceso, con lectura delegada. No menciona un toque de renovación.';
