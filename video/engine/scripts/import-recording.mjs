@@ -42,6 +42,7 @@ import {
   gainDb,
   importReport,
   keepRanges,
+  laterTakes,
   locateSegments,
   missingGaps,
   parseDuration,
@@ -213,13 +214,20 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
     writeFileAtomic(path.join(ttsDir, `${seg.id}.json`), `${JSON.stringify(record, null, 1)}\n`);
   }
 
-  const report = importReport({ located, cuts, words, gain, pausesRemovedMs });
+  const later = laterTakes(segments, located, timed);
+  const report = importReport({ located, cuts, words, gain, pausesRemovedMs, later });
   const reportPath = path.join(workDir, `report-${fileSlug(file)}.md`);
   writeFileAtomic(reportPath, report);
   const missing = located.filter((f) => !f.found).map((f) => f.id);
   const weak = located.filter((f) => f.found && f.score < REVIEW_SCORE).map((f) => `${f.id} (${f.score.toFixed(2)})`);
   log.log(`import-recording: ${cuts.length}/${located.length} clips -> ${voiceDir} (gain ${gain} dB${pausesRemovedMs ? `, ${(pausesRemovedMs / 1000).toFixed(1)} s of pauses removed` : ''}${settings.tempo !== 1 ? `, tempo ${settings.tempo}` : ''})`);
   if (weak.length) log.warn(`  aviso: listen to these, they differ from the script: ${weak.join(', ')}`);
+  // The narrator's last take is the good one: a reading of a segment AFTER the one used is a clip to rebuild.
+  for (const lt of later) {
+    log.warn(`  aviso: ${lt.id}: hay una toma POSTERIOR a la usada (${clock(lt.startMs)}–${clock(lt.endMs)}, ${lt.sentence ? 'una frase' : 'entera'}, coincide ${lt.score.toFixed(2)}): la última es la buena`);
+    const gap = { ids: [lt.id], startMs: Math.max(0, lt.startMs - 300), endMs: lt.endMs + 300 };
+    for (const line of recutAdvice(gap, recutOptions(gap, { file, name, gain }))) log.warn(`    ${line}`);
+  }
   // A half-said sentence glued to its retake shows as one word stretched over the dropped words.
   for (const sw of stretchedWords(located, timed, silences)) {
     const cut = cutOf.get(sw.id);

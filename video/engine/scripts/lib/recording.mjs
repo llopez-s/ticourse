@@ -17,6 +17,7 @@ const ANCHOR_SLACK = 0.1; // first pass: the earliest take within this of the be
 const NEAR_BEST = 0.05; // second pass: takes within this of the best count as equally good; the last wins
 const SENTENCE_SCORE = 0.8; // third pass: every sentence of a segment must be found at least this well to splice
 const EDGE_SLACK = 0.02; // within a take, an extra first word is kept if it costs at most this much score
+const EDGE_PAUSE_MS = 700; // ...and if it is not cut off from the take by a pause this long
 const LOOKAHEAD = 300; // words searched past the previous segment for the next one
 const MIN_LEN = 0.6; // candidate span length, relative to the segment text (in characters)
 const MAX_LEN = 1.5;
@@ -130,24 +131,50 @@ function scanStarts(forms, tokens, from, to, limit, longestOnTie = false) {
 const bestScore = (cands) => cands.reduce((m, c) => Math.max(m, c.score), -Infinity);
 
 /**
- * Candidates (sorted by start) that overlap are the same take read with a word more or less
- * at the start; only one that starts after the previous take ends is a new take. Returns one
- * candidate per take, in recording order: the earliest-starting one within EDGE_SLACK of the
- * take's best, because a clip that loses its first word («¿Y…») is worse than one that keeps
- * a word the ASR misheard.
+ * Candidates that overlap are the same take read with a word more or less at the start; one
+ * that starts after a take ends is a new take. Returns one candidate per take, in recording
+ * order: the earliest-starting one within EDGE_SLACK of the take's best, because a clip that
+ * loses its first word («¿Y…») is worse than one that keeps a word the ASR misheard.
+ *
+ * A take is a cluster around its best-scoring span, not a chain of overlaps: when a paragraph is
+ * read again right away, a span that holds the last word of one reading and the start of the next
+ * scores within a few points of both and overlaps both, so chaining by overlap fused consecutive
+ * readings into one and the first always won (AP01 s01-04, read three times: the first reading
+ * was kept). A candidate joins the seed it shares at least half its words with, or seeds a take.
+ * The extra first word is only kept when it is said in one go with the rest: with `words`, a
+ * pause of EDGE_PAUSE_MS or more between the extra words and the next candidate's start means they
+ * belong to the take before (the tail of one reading glued to the next), so they are left out.
+ * @param {{first: number, last: number, score: number}[]} cands
+ * @param {{startMs: number, endMs: number}[]} [words] the ASR words the candidates index
  */
-function groupTakes(cands) {
-  const groups = [];
-  let end = -1;
-  for (const c of cands) {
-    if (c.first > end) groups.push([c]);
-    else groups[groups.length - 1].push(c);
-    end = Math.max(end, c.last);
+function groupTakes(cands, words = null) {
+  const overlap = (a, b) => Math.min(a.last, b.last) - Math.max(a.first, b.first) + 1;
+  const size = (c) => c.last - c.first + 1;
+  const seeds = [];
+  const members = [];
+  for (const c of [...cands].sort((a, b) => b.score - a.score || a.first - b.first)) {
+    let join = -1;
+    for (let k = 0; k < seeds.length; k++) {
+      const shared = overlap(c, seeds[k]);
+      if (shared >= Math.min(size(c), size(seeds[k])) / 2 && (join < 0 || shared > overlap(c, seeds[join]))) join = k;
+    }
+    if (join < 0) {
+      seeds.push(c);
+      members.push([c]);
+    } else {
+      members[join].push(c);
+    }
   }
-  return groups.map((g) => {
-    const top = bestScore(g);
-    return g.find((c) => c.score >= top - EDGE_SLACK);
-  });
+  const joined = (from, to) => !words || ![...Array(to - from).keys()].some((k) => words[from + k + 1].startMs - words[from + k].endMs >= EDGE_PAUSE_MS);
+  return seeds
+    .map((seed, k) => ({ seed, group: members[k].sort((a, b) => a.first - b.first) }))
+    .sort((a, b) => a.seed.first - b.seed.first)
+    .map(({ seed, group }) => {
+      const near = group.filter((c) => c.score >= seed.score - EDGE_SLACK);
+      let pick = near[near.length - 1];
+      for (let k = near.length - 2; k >= 0 && joined(near[k].first, pick.first); k--) pick = near[k];
+      return pick;
+    });
 }
 
 /**
@@ -171,7 +198,7 @@ export function locateSegments(segments, words, { minScore = MIN_SCORE, lookahea
       anchors.push(null);
       continue;
     }
-    const [pick] = groupTakes(cands.filter((c) => c.score >= best - ANCHOR_SLACK));
+    const [pick] = groupTakes(cands.filter((c) => c.score >= best - ANCHOR_SLACK), words);
     anchors.push(pick);
     cursor = pick.last + 1;
   }
@@ -184,7 +211,7 @@ export function locateSegments(segments, words, { minScore = MIN_SCORE, lookahea
     const limit = next ? next.first : n;
     const cands = scanStarts(forms[k], tokens, anchor.first, limit, limit, true);
     const best = bestScore(cands);
-    const takes = groupTakes(cands.filter((c) => c.score >= best - NEAR_BEST));
+    const takes = groupTakes(cands.filter((c) => c.score >= best - NEAR_BEST), words);
     return takes.length ? takes[takes.length - 1] : anchor;
   });
 
@@ -198,7 +225,7 @@ export function locateSegments(segments, words, { minScore = MIN_SCORE, lookahea
     // can make pass 2 begin the take late, after the first sentence.
     const prev = picks.slice(0, k).reverse().find(Boolean);
     const next = picks.slice(k + 1).find(Boolean);
-    const parts = sentenceTakes(s, tokens, prev ? prev.last + 1 : 0, next ? next.first : n);
+    const parts = sentenceTakes(s, tokens, prev ? prev.last + 1 : 0, next ? next.first : n, words);
     const spliced = parts && parts.length > 1 ? parts : null;
     const whole = { first: pick.first, last: pick.last };
     const heard = heardOf(spliced ?? [whole]);
@@ -232,7 +259,7 @@ function sentenceForms(segment) {
  * backwards so they stay in order, as merged runs of words ({first, last}); null when the segment has a
  * single sentence or some sentence is not there.
  */
-function sentenceTakes(segment, tokens, from, limit) {
+function sentenceTakes(segment, tokens, from, limit, words) {
   const sentences = sentenceForms(segment);
   if (sentences.length < 2 || sentences.some((f) => !f.length)) return null;
   const chosen = [];
@@ -241,7 +268,7 @@ function sentenceTakes(segment, tokens, from, limit) {
     const cands = scanStarts(sentences[j], tokens, from, end, end, true);
     const best = bestScore(cands);
     if (!(best >= SENTENCE_SCORE)) return null;
-    const takes = groupTakes(cands.filter((c) => c.score >= best - NEAR_BEST));
+    const takes = groupTakes(cands.filter((c) => c.score >= best - NEAR_BEST), words);
     const take = takes[takes.length - 1];
     chosen.unshift({ first: take.first, last: take.last });
     end = take.first;
@@ -429,6 +456,41 @@ function usedWords(located, count) {
   const used = new Array(count).fill(false);
   for (const f of located) if (f.found) for (const p of f.parts ?? [f]) for (let k = p.first; k <= p.last; k++) used[k] = true;
   return used;
+}
+
+/**
+ * Readings of a found segment (or of one of its sentences) that the import left out although they come AFTER
+ * the one it used and before the next segment's: the narrator's last take is the good one, so each of these is a
+ * clip to check or rebuild (`recutAdvice`). Only unused stretches that read the text at least `minScore` are listed.
+ * @returns {{id: string, startMs: number, endMs: number, score: number, sentence: boolean}[]}
+ */
+export function laterTakes(segments, located, words, { minScore = 0.85, minWords = 4 } = {}) {
+  const tokens = words.map((w) => asrKey(w.text));
+  const used = usedWords(located, words.length);
+  const out = [];
+  located.forEach((f, k) => {
+    if (!f.found) return;
+    const whole = [...new Set([matchKey(segments[k].parsed.display), matchKey(segments[k].parsed.spoken)])].filter(Boolean);
+    const sentences = sentenceForms(segments[k]).filter((forms) => forms.length && Math.min(...forms.map((x) => x.length)) >= minWords * 3);
+    const targets = [{ forms: whole, sentence: false }, ...(sentences.length > 1 ? sentences.map((forms) => ({ forms, sentence: true })) : [])].filter((t) => t.forms.length);
+    const end = Math.max(...(f.parts ?? [f]).map((p) => p.last));
+    const nextUsed = located.slice(k + 1).find((g) => g.found);
+    const limit = nextUsed ? Math.min(...(nextUsed.parts ?? [nextUsed]).map((p) => p.first)) : words.length;
+    for (let i = end + 1; i < limit; i++) {
+      if (used[i]) continue;
+      let j = i;
+      while (j + 1 < limit && !used[j + 1]) j++;
+      for (const t of targets) {
+        const spans = scanStarts(t.forms, tokens, i, j + 1, j + 1, true);
+        const best = bestScore(spans);
+        if (!(best >= minScore)) continue;
+        const span = spans.filter((s) => s.score === best).reduce((a, b) => (b.first > a.first ? b : a));
+        out.push({ id: f.id, startMs: words[span.first].startMs, endMs: words[span.last].endMs, score: Math.round(best * 100) / 100, sentence: t.sentence });
+      }
+      i = j;
+    }
+  });
+  return out.filter((h) => !h.sentence || !out.some((o) => !o.sentence && o.id === h.id && o.startMs <= h.endMs && h.startMs <= o.endMs));
 }
 
 /** Runs of recorded words that no found segment uses (what was skipped), for the import report. */
@@ -725,7 +787,7 @@ export function clock(ms) {
 }
 
 /** Markdown report of one import: every segment's match, and the recorded audio that no segment uses. */
-export function importReport({ located, cuts, words, gain, pausesRemovedMs = 0 }) {
+export function importReport({ located, cuts, words, gain, pausesRemovedMs = 0, later = [] }) {
   const cutOf = new Map(cuts.map((c) => [c.id, c]));
   const rows = located.map((f) => {
     if (!f.found) return `| ${f.id} | — | — | no encontrada |`;
@@ -743,6 +805,16 @@ export function importReport({ located, cuts, words, gain, pausesRemovedMs = 0 }
     '|---|---|---|---|',
     ...rows,
     '',
+    ...(later.length
+      ? [
+          '## Tomas posteriores sin usar',
+          '',
+          'La última toma de cada párrafo es la buena. Estas lecturas son POSTERIORES a la que se usó: escúchalas y, si valen, reconstruye el clip con ellas.',
+          '',
+          ...later.map((l) => `- ${l.id} · ${clock(l.startMs)}–${clock(l.endMs)} · ${l.sentence ? 'una frase' : 'entera'} (${l.score.toFixed(2)})`),
+          '',
+        ]
+      : []),
     '## Trozos de la grabación que no se han usado',
     '',
     ...(unused.length ? unused : ['(ninguno)']),

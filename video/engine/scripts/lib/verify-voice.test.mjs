@@ -77,6 +77,23 @@ test('clipFindings: V21 s01-01, the tail of a number Whisper wrote in figures is
   assert.equal(long.errors.length, 1);
 });
 
+test('clipFindings: AP03 s06-01, «95 %» is spoken «noventa y cinco por ciento»: the voice after the % is the number itself', () => {
+  const script = 'El percentil noventa y cinco indica el tiempo dentro del que llegó el noventa y cinco por ciento de los elementos.';
+  const words = [
+    { text: '95', start: 6.1, end: 6.6 },
+    { text: '%', start: 6.6, end: 7.0 },
+  ];
+  const f = clipFindings({ id: 's06-01', script, heard: script, ...ok, words, unheard: [[7.1, 0.45]] });
+  assert.deepEqual(f.errors, []);
+  assert.equal(f.warnings.length, 1);
+  // the ASR often writes «95%» as one word, ending early: «por ciento» follows it
+  const glued = [{ text: '95%', start: 6.1, end: 6.9 }];
+  assert.deepEqual(clipFindings({ id: 's06-01', script, heard: script, ...ok, words: glued, unheard: [[7.5, 0.4]] }).errors, []);
+  // far from the percent sign, or longer than «por ciento» can take, it is still an error
+  assert.equal(clipFindings({ id: 's06-01', script, heard: script, ...ok, words, unheard: [[8.3, 0.45]] }).errors.length, 1);
+  assert.equal(clipFindings({ id: 's06-01', script, heard: script, ...ok, words, unheard: [[7.1, 1.9]] }).errors.length, 1);
+});
+
 test('clipFindings: spelled acronyms may be long, a long silence only asks to listen', () => {
   const script = 'Esta es la nota base del CVSS, de cero a diez.';
   const words = [{ text: 'CVSS,', start: 1.5, end: 3.9 }];
@@ -98,6 +115,12 @@ test('clipFindings: V26 s01-03 «PaperGovernor» is two words glued by Whisper, 
   // one word of the same length is still suspicious
   const single = clipFindings({ id: 's01-03', script: 'Y vuelve.', heard: 'Y vuelve.', ...ok, words: [{ text: 'gobernanza', start: 0.7, end: 2.1 }] });
   assert.ok(single.errors.some((e) => /lasts 1\.4 s/.test(e)));
+});
+
+test('repeatedPhrases: a word the ASR writes the same wrong way twice is not a leftover take (AP01 s08-01, «token» heard as «toque»)', () => {
+  const script = 'La ficha dice que pudo exponerse un token de acceso, con lectura delegada. No menciona un token de renovación.';
+  const heard = 'La ficha dice que pudo exponerse un toque de acceso, con lectura delegada. No menciona un toque de renovación.';
+  assert.deepEqual(repeatedPhrases(script, heard), []);
 });
 
 test('repeatedPhrases: «50.000 € al año … 20.000 € al año» is the script saying «euros al año» twice', () => {
