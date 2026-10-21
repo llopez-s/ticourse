@@ -42,10 +42,20 @@ export const modulesOfTrack = (track: TrackId) => TRACKS[track].modules;
 export const placementBlocks = (track: TrackId) => TRACKS[track].placement;
 export const questionsOfTrack = (track: TrackId): Question[] =>
   TRACKS[track].modules.flatMap((m) => m.quiz);
+/**
+ * Sections outside the exam path: never suggested as "next lesson" and never
+ * counted in readiness. Today only the SY0-801 novelties (sp7).
+ */
+export const OPTIONAL_SECTIONS: readonly string[] = ['sp7'];
+export const isOptionalSection = (sectionId: string): boolean =>
+  OPTIONAL_SECTIONS.includes(sectionId);
 export const nextModule = (
   track: TrackId,
   s: Pick<ProgressSnapshot, 'lessons' | 'exempt'>,
-) => TRACKS[track].modules.find((m) => !isDone(s, m.id));
+) =>
+  TRACKS[track].modules.find(
+    (m) => !isOptionalSection(m.sectionId) && !isDone(s, m.id),
+  );
 
 type Prog = Pick<
   ProgressSnapshot,

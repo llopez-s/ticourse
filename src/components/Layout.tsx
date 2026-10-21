@@ -6,7 +6,7 @@ import { levelInfo, nextRank, rankFor } from '../lib/xp';
 import { buildQueue, NEW_PER_DAY } from '../lib/srs';
 import { todayStr } from '../lib/util';
 import { isDone } from '../lib/placement';
-import { modulesOf, sectionsOf, trackOf } from '../data/course';
+import { isOptionalSection, modulesOf, sectionsOf, trackOf } from '../data/course';
 import { TRACKS, TRACK_IDS, type TrackMeta } from '../data/tracks';
 import { Bar } from './Bits';
 import { BrandMark, Wordmark } from './Brand';
@@ -97,14 +97,24 @@ function TrackSwitcher({ compact = false }: { compact?: boolean }) {
   );
 }
 
-function SectionLinks() {
+/**
+ * Section links of the active track. The regular list leaves out the optional
+ * sections; `optional` renders only those, under their own «Opcional» header
+ * (nothing at all when the track has none).
+ */
+function SectionLinks({ optional = false }: { optional?: boolean }) {
   const lessons = useStore((s) => s.lessons);
   const exempt = useStore((s) => s.exempt);
   const bosses = useStore((s) => s.bosses);
   const track = useTrack();
+  const secs = sectionsOf(track.id).filter(
+    (sec) => isOptionalSection(sec.id) === optional,
+  );
+  if (optional && secs.length === 0) return null;
   return (
     <>
-      {sectionsOf(track.id).map((sec) => {
+      {optional && <GroupLabel>Opcional</GroupLabel>}
+      {secs.map((sec) => {
         const mods = modulesOf(sec.id);
         // Convalidated theory counts as done here too, or the permanent nav
         // contradicts the Dashboard card for the very same section.
@@ -255,6 +265,8 @@ export default function Layout({ children }: { children: ReactNode }) {
           <NavLink to="/exam" className={navLink}>
             <span className="text-base leading-none">⏱️</span> Examen de práctica
           </NavLink>
+
+          <SectionLinks optional />
 
           <GroupLabel>Entrenamiento</GroupLabel>
           <NavLink to="/cards" className={navLink}>

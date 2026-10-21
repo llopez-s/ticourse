@@ -137,4 +137,15 @@ export const SP_SECTIONS: SectionMeta[] = [
     icon: '📋',
     boss: null,
   },
+  {
+    id: 'sp7',
+    track: 'secplus',
+    num: 7,
+    title: 'Novedades del SY0-801',
+    short: 'SY0-801',
+    subtitle: 'Opcional: lo que añade el SY0-801 y el SY0-701 no enseña',
+    domain: null,
+    icon: '🆕',
+    boss: null,
+  },
 ];
