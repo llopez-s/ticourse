@@ -1,6 +1,7 @@
 export const EPISODES_06_07 = [
   {
     id: 'AP06', slug: 'yara-prueba-entrega', track: 'gcti', lessons: ['s3m5', 's5m3'],
+    sfx: { 'fx-check-1': 'check', 'fx-typing': 'typing', 'fx-error-1': 'error', 'fx-check-2': 'check', 'fx-error-2': 'error', 'fx-mail': 'mail' },
     title: 'Tu YARA compila: ahora demuestra qué detecta',
     promise: 'Validar una regla con un motor real y entregarla con resultados reproducibles y límites.',
     adversary: 'VELVET CICADA',
@@ -13,7 +14,7 @@ export const EPISODES_06_07 = [
       {
         title: 'La sintaxis está bien', visual: 'Meridian, práctica inerte ALRTDEMO. Terminal rotulada motor real solo cuando se capture una ejecución real. Estado de la regla: sintaxis aceptada, resultados pendientes. Título y promesa tempranos.',
         text: [
-          'Tu regla compila. Ahora vas a comprobar qué detecta, qué se le escapa y qué debes entregar para que otra persona pueda evaluarla.',
+          'Tu regla {fx-check-1}compila. Ahora vas a comprobar qué detecta, qué se le escapa y qué debes entregar para que otra persona pueda evaluarla.',
           'Estamos en el laboratorio didáctico de Meridian, una empresa aeroespacial. Los archivos son inertes. Una regla YARA expresa patrones y condiciones. Que el motor acepte su sintaxis no significa que cumpla el objetivo de detección.',
           'Usamos el mismo paquete de práctica que la lección. Incluye tres variantes dentro del alcance, controles parecidos y casos que revelan límites. No necesitas malware real ni una cuenta de pago. Lo que necesitas es comparar resultados esperados con resultados observados.',
         ],
@@ -22,9 +23,9 @@ export const EPISODES_06_07 = [
         title: 'El motor y el archivo importan', visual: 'Captura real del comando documentado para regla del alumno y para reference.yar. Registrar YARA4.5.4 si es el motor capturado, sin fijar esa versión para siempre. Error sintaxis exit2 / discrepancia exit1 / conformidad exit0. No simular terminal como ejecución real.',
         card: 'Compilar valida sintaxis; ejecutar contrasta coincidencias',
         text: [
-          'Primero descargas la regla que has escrito. El editor del navegador no la ejecuta. El verificador local la compila con YARA real y la aplica al conjunto de archivos de prueba. Ese conjunto se llama corpus. El paquete explica cómo preparar el entorno.',
+          'Primero {fx-typing}descargas la regla que has escrito. El editor del navegador no la ejecuta. El verificador local la compila con YARA real y la aplica al conjunto de archivos de prueba. Ese conjunto se llama corpus. El paquete explica cómo preparar el entorno.',
           'Registra qué motor y qué versión utilizaste. Conserva también la versión de la regla y los archivos de prueba. Si cambias la regla o el corpus, has cambiado la prueba. La evidencia anterior no cubre automáticamente el cambio.',
-          'Un error de compilación no es una ausencia de coincidencia. La regla no llegó a evaluarse como esperabas. Una discrepancia significa otra cosa. El motor produjo un resultado que no coincide con la expectativa del caso. Esa diferencia debe quedar visible.',
+          'Un error de compilación no es una ausencia de coincidencia. La regla no llegó a {fx-error-1}evaluarse como esperabas. Una discrepancia significa otra cosa. El motor produjo un resultado que no coincide con la expectativa del caso. Esa diferencia debe quedar visible.',
         ],
       },
       {
@@ -58,8 +59,8 @@ export const EPISODES_06_07 = [
         title: 'Doce de doce, con denominador', visual: 'Salida real12/12 conforme al alcance; mostrar que incluye no-matches. future-uncovered v2 queda sin match; límite4096bytes. Contrato v1 separado de objetivo ampliado v2. No usar100% malware real.',
         card: 'Doce resultados esperados no son cobertura universal',
         text: [
-          'La referencia obtiene los doce resultados previstos del paquete. Eso incluye archivos que deben coincidir y archivos que no deben hacerlo. No significa que detecte doce infecciones. Tampoco significa que tenga una sensibilidad perfecta frente a una familia real.',
-          'La variante futura del ejercicio cambia el marcador y la ruta. La referencia no la cubre. Si tu objetivo incluye esa versión, tienes un falso negativo conocido. Los archivos fuera del tamaño pactado también muestran un límite cuando amplías el objetivo.',
+          'La referencia obtiene los {fx-check-2}doce resultados previstos del paquete. Eso incluye archivos que deben coincidir y archivos que no deben hacerlo. No significa que detecte doce infecciones. Tampoco significa que tenga una sensibilidad perfecta frente a una familia real.',
+          'La variante futura del ejercicio cambia el marcador y la ruta. La referencia {fx-error-2}no la cubre. Si tu objetivo incluye esa versión, tienes un falso negativo conocido. Los archivos fuera del tamaño pactado también muestran un límite cuando amplías el objetivo.',
           'Conserva esos resultados al informar. Decir que todo salió conforme a un contrato pequeño es correcto. Convertirlo en una promesa de producción no lo es. Tu conclusión debe llevar el alcance con el que interpretaste cada coincidencia y cada ausencia.',
         ],
       },
@@ -88,7 +89,7 @@ export const EPISODES_06_07 = [
         text: [
           'Añade un responsable y un criterio de revisión. La regla puede dejar de cubrir lo que interesa o empezar a coincidir con contenido legítimo nuevo. Quien recibe la entrega necesita saber cómo comunicar esos errores y cuándo revisarla.',
           'Si cambias un patrón, conserva la versión anterior y repite las pruebas. Si cambias el corpus, registra qué se añadió y por qué. Los hashes ayudan a identificar los archivos exactos usados. No prueban por sí solos que el conjunto sea representativo.',
-          'Así entregas una detección que otra persona puede evaluar, repetir y mantener. El paquete permite reproducir resultados y discutir límites. Quien lo recibe no debería necesitar toda tu conversación para entender qué puede hacer con la regla.',
+          'Así {fx-mail}entregas una detección que otra persona puede evaluar, repetir y mantener. El paquete permite reproducir resultados y discutir límites. Quien lo recibe no debería necesitar toda tu conversación para entender qué puede hacer con la regla.',
         ],
       },
       {
@@ -103,6 +104,7 @@ export const EPISODES_06_07 = [
   },
   {
     id: 'AP07', slug: 'stealers-metricas', track: 'gcti', lessons: ['s4m4', 's5m5'],
+    sfx: { 'fx-ping-1': 'ping2', 'fx-ping-2': 'ping2', 'fx-check': 'check', 'fx-error': 'error' },
     title: 'El infostealer número uno depende de qué estés contando',
     promise: 'Comparar unidades y decidir relevancia para una organización sin fabricar un ranking permanente.',
     adversary: 'PAPER CRANE',
@@ -115,7 +117,7 @@ export const EPISODES_06_07 = [
       {
         title: 'Tres ganadores en una tabla', visual: 'Dataset ficticio septiembre2026 UTC; Demo-P, dos regiones, sin cobertura global. Tres columnas aparecen por turnos, cada una con ganador distinto. Nada indica ranking vigente del mundo. Título temprano.',
         text: [
-          'Una tabla tiene tres ganadores distintos. Vas a ver cómo pasa y cuál de sus métricas ayuda a decidir una prioridad para tu organización.',
+          'Una tabla tiene {fx-ping-1}tres ganadores distintos. Vas a ver cómo pasa y cuál de sus métricas ayuda a decidir una prioridad para tu organización.',
           'Comparas programas pensados para robar información del dispositivo. Ese tipo de malware se llama infostealer. Estamos en un ejercicio de Meridian, una empresa aeroespacial. Las familias Bruma, Cobalto y Duna son inventadas. Sus datos de septiembre tampoco son un ranking real.',
           'Una familia destaca por archivos distintos. Otra por dispositivos observados. La tercera por registros robados. Antes de preguntar cuál es la primera, pregunta qué estás contando. Esas columnas describen cosas diferentes y pueden conducir a decisiones diferentes.',
         ],
@@ -151,9 +153,9 @@ export const EPISODES_06_07 = [
       {
         title: 'Una cifra necesita su método', visual: 'Ventana1–30septiembre2026 UTC. Claves: muestrasSHA256; episodios dispositivo/día; dispositivosID estable; registros dispositivo/artefacto/fecha obtención; organizacionesID validada. Señalar sesgos de identificadores, reventas y definiciones. No presentar como estándar universal.',
         text: [
-          'El proveedor de ejemplo ve dos regiones y una selección de anuncios. No observa todo el mundo. Las cifras describen esa cobertura. Para compararlas, necesitas la ventana temporal y la forma en que se han eliminado duplicados.',
+          'El proveedor de ejemplo ve {fx-ping-2}dos regiones y una selección de anuncios. No observa todo el mundo. Las cifras describen esa cobertura. Para compararlas, necesitas la ventana temporal y la forma en que se han eliminado duplicados.',
           'Aquí los archivos se separan por hash. Los episodios se agrupan por equipo y día. Los dispositivos usan un identificador estable. Son decisiones del ejercicio, no reglas universales. Identificadores que cambian pueden dividir un mismo equipo o unir varios por error.',
-          'Los registros repetidos se deduplican según dispositivo, artefacto y fecha de obtención. Una reventa no suma otra infección. Y obtener los datos, publicarlos y venderlos son momentos distintos. Confundir esas fechas puede hacer parecer reciente una exposición antigua.',
+          'Los registros repetidos se {fx-check}deduplican según dispositivo, artefacto y fecha de obtención. Una reventa no suma otra infección. Y obtener los datos, publicarlos y venderlos son momentos distintos. Confundir esas fechas puede hacer parecer reciente una exposición antigua.',
         ],
       },
       {
@@ -161,7 +163,7 @@ export const EPISODES_06_07 = [
         card: 'La prevalencia observada depende de cobertura y sesgo',
         text: [
           'Un proveedor puede observar más Cobalto porque tiene más clientes del sector donde aparece. Puede recibir más Bruma porque circulan muchos archivos reempaquetados. También puede recibir anuncios repetidos de Duna por reventas. Esos anuncios no deben aumentar los registros únicos de la tabla.',
-          'Si añade sensores o cambia etiquetas entre meses, sus cifras pueden subir sin que haya crecido la amenaza. Antes de comparar, revisa si el método y la población siguen siendo comparables.',
+          'Si añade sensores o cambia etiquetas entre meses, sus cifras pueden {fx-error}subir sin que haya crecido la amenaza. Antes de comparar, revisa si el método y la población siguen siendo comparables.',
           'Llamamos prevalencia observada a la frecuencia dentro de esa visibilidad y esa definición. No es automáticamente una cuota global. Tampoco es la prioridad de Meridian. Para esa decisión todavía falta conectar los datos con la exposición y las necesidades de la empresa.',
         ],
       },

@@ -542,6 +542,15 @@ git) y `scripts/import-recording.mjs` lo convierte en los mismos clips que escri
    cuenta (`parts` en el resultado; el informe marca esas frases como «empalme»). El empalme solo se hace
    si se lee al menos tan bien como la toma entera, contra el texto mostrado o el hablado; en un empate
    gana la lectura posterior.
+   **La última toma es la buena** (Lidia, 2026-10-20). Una toma es un grupo de tramos alrededor de su mejor
+   lectura, no una cadena de tramos que se solapan: antes, un párrafo repetido sin pausa larga (AP01 s01-04,
+   leído tres veces) fusionaba las lecturas por un tramo «puente» (las últimas palabras de una toma más el
+   principio de la siguiente, a 2–5 puntos de ambas) y se quedaba con la primera. Una palabra de más al principio
+   solo cuenta si se dice de seguido con el resto (`EDGE_PAUSE_MS`, 700 ms): si una pausa la separa, es la cola de
+   la toma anterior. Como red de seguridad, `laterTakes` avisa de toda lectura de una frase (o de una oración) que
+   queda sin usar **después** de la que se usó y antes de la siguiente frase: aparece en la consola con los
+   comandos de `recut_recording.py` e `import-recording --only` y en el informe como «Tomas posteriores sin usar».
+   Si sale alguna, escúchala y reconstruye el clip con ella (salvo que esa última toma se lea mal el guion).
 3. **Corta** cada clip en el silencio más cercano a sus palabras (o, si se habla de corrido, a medio camino
    de la palabra vecina). Antes corrige los tiempos que Whisper estira sobre una pausa: una palabra que se
    traga una pausa larga entera se queda en el lado más largo (`repairSwallowedPauses`), y si una pausa larga

@@ -11,11 +11,18 @@
     "rate": 0,
     "fx": "machine"
   },
+  "sfx": {
+    "fx-mail": "mail",
+    "fx-lock": "lock",
+    "fx-error": "error",
+    "fx-check": "check",
+    "fx-ping": "ping2"
+  },
   "segments": [
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {title}Ana cambia su contraseña y la aplicación sigue mostrando correo. Vas a ver por qué puede pasar y qué necesitas comprobar.",
+      "text": "<curious> {title}Ana cambia su contraseña y la aplicación sigue mostrando {fx-mail}correo. Vas a ver por qué puede pasar y qué necesitas comprobar.",
       "pauseAfterMs": 300
     },
     {
@@ -221,7 +228,7 @@
     {
       "id": "s06-05",
       "scene": "s06-caso",
-      "text": "<engaging> {s06-c}No le pongas una hora fija por costumbre. La vigencia depende de cómo se emitió y de las políticas aplicables. Cuando caduca, la aplicación necesita otro.",
+      "text": "<engaging> {s06-c}No le pongas una hora fija por costumbre. La vigencia depende de cómo se emitió y de las políticas aplicables. Cuando {fx-lock}caduca, la aplicación necesita otro.",
       "pauseAfterMs": 300
     },
     {
@@ -243,7 +250,7 @@
     {
       "id": "s07-02",
       "scene": "s07-caso",
-      "text": "<curious> Pero una credencial de sesión puede ser robada cuando esa comprobación ya terminó. Es otro momento del acceso.",
+      "text": "<curious> Pero una credencial de sesión puede ser {fx-error}robada cuando esa comprobación ya terminó. Es otro momento del acceso.",
       "pauseAfterMs": 300
     },
     {
@@ -313,13 +320,13 @@
     {
       "id": "s09-01",
       "scene": "s09-caso",
-      "text": "<focused> {s09-a}Cuenta ahora el recorrido sin mezclar las columnas. Ana se identifica. El servicio de identidad aplica las condiciones y emite credenciales.",
+      "text": "<focused> {s09-a}Cuenta ahora el recorrido sin mezclar las columnas. {fx-check}Ana se identifica. El servicio de identidad aplica las condiciones y emite credenciales.",
       "pauseAfterMs": 300
     },
     {
       "id": "s09-02",
       "scene": "s09-caso",
-      "text": "<calm> La aplicación presenta la de acceso a Graph. Graph permite las operaciones autorizadas.",
+      "text": "<calm> La aplicación {fx-ping}presenta la de acceso a Graph. Graph permite las operaciones autorizadas.",
       "pauseAfterMs": 300
     },
     {

@@ -18,6 +18,7 @@ import {
   gainDb,
   importReport,
   keepRanges,
+  laterTakes,
   locateSegments,
   matchKey,
   missingGaps,
@@ -138,6 +139,42 @@ test('locateSegments keeps the last take of a repeated sentence', () => {
   ];
   const found = locateSegments([seg('a', 'Ninguna lo para sola.'), seg('b', 'Enfrente, SILENT PAGER.')], words);
   assert.deepEqual(found.map((f) => [f.first, f.last]), [[4, 7], [8, 10]]);
+});
+
+test('locateSegments keeps the last of several readings of a paragraph read again straight away (AP01 s01-04, three readings)', () => {
+  const text = 'La aplicación se llama Resumen del turno. Para explicar qué ocurre, separa dos decisiones. Una comprueba que quien entra es Ana.';
+  const n = text.split(' ').length;
+  const words = [...spoken(text), ...spoken(text, 12000), ...spoken(text, 24000), ...spoken('La otra limita lo que la aplicación puede hacer.', 36000)];
+  const found = locateSegments([seg('a', text), seg('b', 'La otra limita lo que la aplicación puede hacer.')], words);
+  assert.deepEqual([found[0].first, found[0].last], [2 * n, 3 * n - 1]);
+  assert.equal(found[0].parts, undefined);
+});
+
+test('locateSegments keeps the last reading when the ASR garbles the opening and the tail of one reading sits next to the next', () => {
+  // «Lo segundo.» came out as «2.» and was followed by a long pause: a span that starts at the end of the first reading
+  // and runs through the second scores as well as either reading, and must not drag «lo aceptó» into the clip.
+  const reading = (t0) => [
+    ['2.', t0, t0 + 400],
+    ...spoken('Hay un riesgo de lectura dentro de los permisos aplicables.', t0 + 1900),
+    ...spoken('Falta investigar si el recurso lo aceptó.', t0 + 6000),
+  ];
+  const words = W([...reading(0), ...reading(10400)].map((w) => (Array.isArray(w) ? w : [w.text, w.startMs, w.endMs])));
+  const found = locateSegments([seg('a', 'Lo segundo. Hay un riesgo de lectura dentro de los permisos aplicables. Falta investigar si el recurso lo aceptó.')], words);
+  assert.equal(found[0].first, words.length / 2);
+  assert.equal(found[0].last, words.length - 1);
+});
+
+test('laterTakes lists a reading of a segment that comes after the one used, and nothing when the last one was used', () => {
+  const text = 'Una comprueba que quien entra es Ana y la otra limita lo que puede hacer.';
+  const n = text.split(' ').length;
+  const words = [...spoken(text), ...spoken(text, 9000), ...spoken('Son distintas, aunque aparezcan seguidas.', 18000)];
+  const segments = [seg('a', text), seg('b', 'Son distintas, aunque aparezcan seguidas.')];
+  const used = (first) => [{ id: 'a', found: true, first, last: first + n - 1, score: 1 }, { id: 'b', found: true, first: 2 * n, last: words.length - 1, score: 1 }];
+  const later = laterTakes(segments, used(0), words);
+  assert.equal(later.length, 1);
+  assert.equal(later[0].id, 'a');
+  assert.equal(later[0].startMs, 9000);
+  assert.deepEqual(laterTakes(segments, used(n), words), []);
 });
 
 test('locateSegments keeps a short first word: the same take minus a word is not a second take', () => {

@@ -11,11 +11,19 @@
     "rate": 0,
     "fx": "machine"
   },
+  "sfx": {
+    "fx-check-1": "check",
+    "fx-typing-1": "typing",
+    "fx-block": "block",
+    "fx-ping": "ping2",
+    "fx-check-2": "check",
+    "fx-typing-2": "typing"
+  },
   "segments": [
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {title}Vas a escribir una regla YARA y explicar por qué exige esas coincidencias. Empezamos con archivos inertes, sin malware ni cuentas reales.",
+      "text": "<curious> {title}Vas a escribir una regla YARA y explicar por qué exige esas coincidencias. Empezamos con archivos {fx-check-1}inertes, sin malware ni cuentas reales.",
       "pauseAfterMs": 300
     },
     {
@@ -57,7 +65,7 @@
     {
       "id": "s02-03",
       "scene": "s02-caso",
-      "text": "<firm> {s02-b}Los patrones se declaran en strings. Cada uno recibe un identificador para poder usarlo después. Pueden ser cadenas textuales o secuencias de bytes, entre otras formas.",
+      "text": "<firm> {s02-b}Los patrones se {fx-typing-1}declaran en strings. Cada uno recibe un identificador para poder usarlo después. Pueden ser cadenas textuales o secuencias de bytes, entre otras formas.",
       "pauseAfterMs": 300
     },
     {
@@ -97,7 +105,7 @@
     {
       "id": "s03-03",
       "scene": "s03-caso",
-      "text": "<confident> {s03-b}En nuestro corpus hay un archivo con dos nombres comunes. No queremos que coincida. Si solo cuentas cuántas cadenas aparecen, puedes detectar ese control.",
+      "text": "<confident> {s03-b}En nuestro corpus hay un archivo con dos nombres comunes. No queremos que {fx-block}coincida. Si solo cuentas cuántas cadenas aparecen, puedes detectar ese control.",
       "pauseAfterMs": 300
     },
     {
@@ -173,7 +181,7 @@
     {
       "id": "s05-03",
       "scene": "s05-caso",
-      "text": "<firm> {s05-b}En el patrón de pantalla, el comodín de dos interrogaciones acepta cualquier valor para ese byte. El resto permanece fijo. También existen comodines para medio byte.",
+      "text": "<firm> {s05-b}En el patrón de pantalla, el {fx-ping}comodín de dos interrogaciones acepta cualquier valor para ese byte. El resto permanece fijo. También existen comodines para medio byte.",
       "pauseAfterMs": 300
     },
     {
@@ -215,7 +223,7 @@
     {
       "id": "s06-04",
       "scene": "s06-caso",
-      "text": "<thoughtful> {s06-b}Exiges el marcador y, además, la ruta o el patrón de bytes. Los paréntesis agrupan las alternativas.",
+      "text": "<thoughtful> {s06-b}Exiges el marcador y, {fx-check-2}además, la ruta o el patrón de bytes. Los paréntesis agrupan las alternativas.",
       "pauseAfterMs": 300
     },
     {
@@ -325,7 +333,7 @@
     {
       "id": "s09-01",
       "scene": "s09-caso",
-      "text": "<confident> {s09-a}Ahora puedes escribir la regla en el editor de la lección. El navegador permite preparar y descargar texto. No lo compila ni lo ejecuta.",
+      "text": "<confident> {s09-a}Ahora puedes {fx-typing-2}escribir la regla en el editor de la lección. El navegador permite preparar y descargar texto. No lo compila ni lo ejecuta.",
       "pauseAfterMs": 300
     },
     {

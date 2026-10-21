@@ -11,17 +11,24 @@
     "rate": 0,
     "fx": "machine"
   },
+  "sfx": {
+    "fx-check-1": "check",
+    "fx-alarm": "alarm",
+    "fx-error": "error",
+    "fx-lock": "lock",
+    "fx-check-2": "check"
+  },
   "segments": [
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {title}La contraseña ya está cambiada. ¿Puedes cerrar el incidente? Vas a comprobar qué falta cuando un programa roba información de un equipo.",
+      "text": "<curious> {title}La contraseña ya está {fx-check-1}cambiada. ¿Puedes cerrar el incidente? Vas a comprobar qué falta cuando un programa roba información de un equipo.",
       "pauseAfterMs": 300
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<warm> {s01-b}Estás en un ejercicio de respuesta de Halden, una autoridad portuaria. La alerta describe un infostealer. Es malware orientado a robar información del dispositivo.",
+      "text": "<warm> {s01-b}Estás en un ejercicio de respuesta de Halden, una autoridad portuaria. La {fx-alarm}alerta describe un infostealer. Es malware orientado a robar información del dispositivo.",
       "pauseAfterMs": 300
     },
     {
@@ -185,7 +192,7 @@
     {
       "id": "s05-05",
       "scene": "s05-caso",
-      "text": "<curious> {s05-c}También registra lo que no puedes revisar. Tal vez los registros antiguos ya se hayan borrado al terminar su plazo de conservación.",
+      "text": "<curious> {s05-c}También registra lo que no puedes revisar. Tal vez los registros antiguos ya se hayan {fx-error}borrado al terminar su plazo de conservación.",
       "pauseAfterMs": 300
     },
     {
@@ -197,7 +204,7 @@
     {
       "id": "s06-01",
       "scene": "s06-caso",
-      "text": "<focused> {s06-a}Ahora eliges acciones según el escenario. Los secretos expuestos se cambian desde un entorno confiable. Las sesiones se invalidan donde se gestionan.",
+      "text": "<focused> {s06-a}Ahora eliges acciones según el escenario. Los secretos expuestos se cambian desde un entorno {fx-lock}confiable. Las sesiones se invalidan donde se gestionan.",
       "pauseAfterMs": 300
     },
     {
@@ -313,7 +320,7 @@
     {
       "id": "s09-01",
       "scene": "s09-caso",
-      "text": "<focused> {s09-a}En el ejercicio de Ana, el equipo queda contenido y el cambio se hace desde otro dispositivo confiable.",
+      "text": "<focused> {s09-a}En el ejercicio de Ana, el equipo queda {fx-check-2}contenido y el cambio se hace desde otro dispositivo confiable.",
       "pauseAfterMs": 300
     },
     {

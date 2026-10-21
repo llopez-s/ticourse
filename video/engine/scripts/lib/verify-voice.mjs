@@ -8,10 +8,12 @@ export const LIMITS = Object.freeze({
   dropped: 0.15,
   similarity: 0.75,
   phraseWords: 3,
+  extraWords: 2, // a leftover take adds at least this many words to what the script says
   longWordS: 1.3, // a spoken word never lasts this long: Whisper stretched it over a take it did not transcribe
   unheardS: 0.4, // voice, longer than this, that no word of the transcript covers
   figureGapS: 0.3, // …unless it starts this close to the end of a number written in figures
   figureDigitS: 0.25, // …and lasts no longer than this per digit of that figure
+  percentS: 0.7, // …plus this when the figure is followed by «%» («por ciento» is spoken after it)
   gapS: 0.6, // a silence this long inside a sentence: a pause that was not cut, or two takes
 });
 
@@ -24,9 +26,12 @@ const keys = (text) => String(text ?? '').replace(/€/g, ' euros ').split(/\s+/
 
 /**
  * Phrases of `n` words heard more often than the script says them, at least twice: the mark of a take that
- * slipped into the clip. Mishearings replace words; they do not repeat a phrase.
+ * slipped into the clip. Mishearings replace words; they do not repeat a phrase. A slipped take also adds words,
+ * so a clip heard with about as many words as the script has none, however the ASR wrote a repeated word
+ * («un token de acceso… un token de renovación» heard as «un toque de… un toque de»: AP01 s08-01).
  */
 export function repeatedPhrases(script, heard, n = LIMITS.phraseWords) {
+  if (keys(heard).length - keys(script).length < LIMITS.extraWords) return [];
   const count = (ws) => {
     const m = new Map();
     for (let k = 0; k + n <= ws.length; k++) {
@@ -68,9 +73,12 @@ export function clipFindings({ id, script, heard, head, tail, dropped, words = [
     // Whisper writes a spoken number in figures («2022» for «dos mil veintidós») and ends that word early, so the
     // rest of the number shows up as voice nobody transcribed. Right after the figure and no longer than the figure
     // could take, it is the number itself: listen, do not block.
-    const figure = words.find((w) => /\d/.test(w.text) && at >= w.end && at - w.end <= limits.figureGapS);
-    const digits = figure ? figure.text.replace(/\D/g, '').length : 0;
-    if (figure && len <= digits * limits.figureDigitS) {
+    // «95 %» or «95%»: «por ciento» is spoken after the figure, so a percent sign makes the figure last longer.
+    const extra = (w) => (w.text.includes('%') ? limits.percentS : 0);
+    const at_ = words.findIndex((w) => (/\d/.test(w.text) || /^%/.test(w.text)) && at >= w.end && at - w.end <= limits.figureGapS + extra(w));
+    const figure = at_ >= 0 ? words[at_] : undefined;
+    const digits = figure ? (/^%/.test(figure.text) ? words[at_ - 1]?.text ?? '' : figure.text).replace(/\D/g, '').length : 0;
+    if (figure && len <= digits * limits.figureDigitS + extra(figure)) {
       warnings.push(`${id}: ${len.toFixed(1)} s of voice right after «${figure.text.replace(/[¿?¡!«»".,;:]/g, '')}» at ${at.toFixed(1)} s: Whisper times figures short, so it is probably the number itself (listen if in doubt)`);
       continue;
     }
