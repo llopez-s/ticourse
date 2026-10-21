@@ -1,4 +1,4 @@
-import { check, code, complement, h, links, list, p, table, type LessonExpansion } from './shared';
+import { check, code, complement, h, links, list, p, table, video, type LessonExpansion } from './shared';
 
 export const COLLECTION_EXPANSIONS: Record<string, LessonExpansion> = {
   s3m1: {
@@ -26,6 +26,8 @@ export const COLLECTION_EXPANSIONS: Record<string, LessonExpansion> = {
         ['Atlas', '90 útiles/100; solo 3 incrementales; 0 desconocidos', '70 útiles/100; 45 incrementales', 'R1 p95 36 h; 99% con campos; historial y fuentes enlazadas', '600 € + 4 h; integración inicial 4 h'],
         ['Eco', '80 útiles/100; 1 incremental; 5 desconocidos', '50 útiles/100; 1 incremental', 'R1 p95 12 h; 70% con campos; suele citar a Faro/Atlas', '200 € + 18 h; integración inicial 2 h'],
       ]),
+      p('Antes de la resolución, míralo contado: tres proveedores, dos requisitos y por qué el que entrega más no siempre es el que más aporta.'),
+      video('Evaluar feeds por requisito y valor nuevo', 'vRin6Wc8kcw', 'feeds-requisito'),
       p('**Resolución paso a paso.** Para R1, Faro añade 40 hallazgos dentro de 24 h y satisface la necesidad de rapidez; Atlas tiene mayor precisión aparente en la muestra, pero casi todo duplica la línea base y llega tarde. Eco parece barato, pero añade poco y exige más triaje. Para R2, Atlas añade 45 hallazgos históricos y puede ser la elección razonable. Si ya tenemos Faro por otra vía con los mismos derechos y tiempos, su valor incremental debe recalcularse. Ninguno es «el mejor» para toda organización.'),
       p('En R1, usando útiles/revisados como precisión operacional del piloto: Faro 60%, Atlas 90%, Eco 80%. Los desconocidos siguen en el denominador para esta definición conservadora; no se etiquetan automáticamente como falsos. No interpretes estos porcentajes como tasa de detección global. Deduplica por entidad y evento (por ejemplo, dispositivo, cuenta, artefacto y ventana), no solo por texto o hash de una fila; conserva la procedencia y la primera hora de cada fuente para medir anticipación.'),
       list(
@@ -70,6 +72,8 @@ export const COLLECTION_EXPANSIONS: Record<string, LessonExpansion> = {
       code('Consultas ilustrativas · no se ejecutan desde el curso', 'SHA-256 exacto: pegar el hash completo en Search, sin subir el archivo\n\nimphash:11111111111111111111111111111111\nsimilar-to:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nssdeep:"3072:ABCDEFGH:ABCD"\ncontent:"cicada-demo-v1"\nmetadata:"ldr.pdb"\nsignature:"Meridian Demo Signing"\ncontacted_ip:192.0.2.10'),
       p('**Cómo leerlas.** imphash busca ese valor de imports; similar-to busca similitud estructural respecto a un hash, y ssdeep usa un hash difuso. content busca bytes o texto; metadata puede encontrar un PDB indexado, pero también otros campos: hay que abrir el informe y comprobar la coincidencia. signature busca campos de firma, no una identidad de actor. contacted_ip recupera observaciones de contacto: la IP de documentación del ejemplo no representa un servidor adversario real. En Relations examina por separado archivos soltados, padres de ejecución y objetos de red, conservando dirección y fuente de la relación.'),
       p('**Sin premium o sin datos.** Usa la ficha y las relaciones visibles de un hash ya conocido, informes públicos con procedencia o el inventario interno autorizado. Para aprender aquí, usa la tabla siguiente y un registro local. En archivos benignos propios puedes comparar hashes y cadenas sin red. Si una relación o metadato no está visible, anota «no disponible»; no lo conviertas en «no existe» ni inventes un resultado. La falta de sandbox o una búsqueda vacía tampoco demuestra benignidad.'),
+      p('Antes del caso resuelto, sigue una muestra en vídeo desde el hash hasta una relación que puedas defender, sin saltarte las dudas.'),
+      video('Del hash a una relación defendible', 'lKLGa2eQSbg', 'muestra-candidatos'),
       h('Caso resuelto · candidatos fuertes, débiles y sin datos'),
       p('Datos completamente ficticios. La muestra inicial A presenta imports I1, cadena poco común DEMO-CFG-7, PDB de un proyecto demo y comportamiento descrito de envío a un endpoint de laboratorio. Hipótesis H1: parte de los candidatos pertenece al mismo conjunto de código que A. Hipótesis alternativa H2: comparten componentes públicos o infraestructura común. No identificamos actores.'),
       table(['Candidato', 'Observaciones', 'Decisión y razón'], [
