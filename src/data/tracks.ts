@@ -31,6 +31,8 @@ import { SP3_MODULES } from './secplus/sp3';
 import { SP4_MODULES } from './secplus/sp4';
 import { SP5_MODULES } from './secplus/sp5';
 import { SP6_MODULES } from './secplus/sp6';
+import { SP7_MODULES } from './secplus/sp7';
+import { SP7_FLASHCARDS, SP7_GLOSSARY } from './secplus/sp7-cards';
 import { SP_FLASHCARDS } from './secplus/flashcards';
 import { SP_GLOSSARY } from './secplus/glossary';
 import { SP_LABS } from './secplus/labs';
@@ -118,9 +120,9 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
     name: 'Security+',
     icon: '🛡️',
     tagline:
-      'Preparación CompTIA Security+ (SY0-701) — los 5 dominios, labs y simulacros.',
+      'Preparación CompTIA Security+ (SY0-701) — los 5 dominios, labs y simulacros, más una sección opcional con las novedades del SY0-801.',
     disclaimer:
-      'Material de estudio no oficial e independiente para preparar los objetivos públicos del SY0-701. No afiliado a CompTIA. CompTIA y Security+ son marcas de CompTIA, Inc.',
+      'Material de estudio no oficial e independiente para preparar los objetivos públicos del SY0-701, con una sección opcional sobre las novedades del SY0-801 (objetivos publicados antes del lanzamiento, sujetos a cambios). No afiliado a CompTIA. CompTIA y Security+ son marcas de CompTIA, Inc.',
     domains: SP_DOMAINS,
     domainWeights: SP_DOMAIN_WEIGHTS,
     sections: SP_SECTIONS,
@@ -131,10 +133,11 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
       ...SP4_MODULES,
       ...SP5_MODULES,
       ...SP6_MODULES,
+      ...SP7_MODULES,
     ].map(withPracticalExpansion),
     placement: SP_PLACEMENT,
-    flashcards: [...SP_FLASHCARDS, ...PRACTICAL_CARDS.secplus],
-    glossary: [...SP_GLOSSARY, ...PRACTICAL_GLOSSARY.secplus],
+    flashcards: [...SP_FLASHCARDS, ...PRACTICAL_CARDS.secplus, ...SP7_FLASHCARDS],
+    glossary: [...SP_GLOSSARY, ...PRACTICAL_GLOSSARY.secplus, ...SP7_GLOSSARY],
     labs: SP_LABS,
     ranks: SP_RANKS,
     exam: {

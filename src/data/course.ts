@@ -42,10 +42,37 @@ export const modulesOfTrack = (track: TrackId) => TRACKS[track].modules;
 export const placementBlocks = (track: TrackId) => TRACKS[track].placement;
 export const questionsOfTrack = (track: TrackId): Question[] =>
   TRACKS[track].modules.flatMap((m) => m.quiz);
+/**
+ * Sections outside the exam path: never suggested as "next lesson" and never
+ * counted in readiness. Today only the SY0-801 novelties (sp7).
+ */
+export const OPTIONAL_SECTIONS: readonly string[] = ['sp7'];
+export const isOptionalSection = (sectionId: string): boolean =>
+  OPTIONAL_SECTIONS.includes(sectionId);
+/**
+ * The lesson that follows `mod` in its track. Inside an optional section it
+ * only follows that section's own lessons; elsewhere it skips optional
+ * sections, so the exam path never leads into them.
+ */
+export const nextLessonAfter = (track: TrackId, mod: Module): Module | undefined => {
+  const mods = modulesOfTrack(track);
+  const idx = mods.findIndex((m) => m.id === mod.id);
+  const optional = isOptionalSection(mod.sectionId);
+  return mods
+    .slice(idx + 1)
+    .find((m) =>
+      optional
+        ? m.sectionId === mod.sectionId
+        : !isOptionalSection(m.sectionId),
+    );
+};
 export const nextModule = (
   track: TrackId,
   s: Pick<ProgressSnapshot, 'lessons' | 'exempt'>,
-) => TRACKS[track].modules.find((m) => !isDone(s, m.id));
+) =>
+  TRACKS[track].modules.find(
+    (m) => !isOptionalSection(m.sectionId) && !isDone(s, m.id),
+  );
 
 type Prog = Pick<
   ProgressSnapshot,

@@ -3,6 +3,7 @@ import { useStore } from '../lib/store';
 import {
   contentSections,
   examReadiness,
+  isOptionalSection,
   labsOf,
   modulesOf,
   nextModule,
@@ -147,6 +148,49 @@ function CampaignPanel() {
   );
 }
 
+/** Optional sections (SY0-801 novelties): outside the exam path, so a card of their own below the grid. */
+function OptionalSections() {
+  const s = useStore();
+  const track = useTrack();
+  const secs = sectionsOf(track.id).filter((sec) => isOptionalSection(sec.id));
+  if (secs.length === 0) return null;
+  return (
+    <div className="mt-6">
+      <h2 className="mb-3 text-sm font-bold uppercase tracking-wider text-slate-400">
+        Opcional
+      </h2>
+      <div className="grid gap-3">
+        {secs.map((sec) => {
+          const mods = modulesOf(sec.id);
+          const done = mods.filter((m) => isDone(s, m.id)).length;
+          return (
+            <div
+              key={sec.id}
+              className="flex flex-wrap items-center gap-4 rounded-xl border border-dashed border-ink-600 bg-ink-900/60 p-4"
+            >
+              <div className="min-w-0 flex-1">
+                <div className="text-sm font-bold text-slate-100">
+                  {sec.icon} {sec.title} · opcional
+                </div>
+                <div className="mt-0.5 text-xs text-slate-400">{sec.subtitle}</div>
+                <div className="mt-1 font-mono text-[11px] text-slate-500">
+                  {done}/{mods.length} lecciones hechas
+                </div>
+              </div>
+              <Link
+                to={`/section/${sec.id}`}
+                className="rounded-lg border border-ink-600 px-4 py-2 text-sm font-semibold text-slate-200 hover:bg-ink-800"
+              >
+                {done > 0 ? 'Continuar' : 'Empezar'} →
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function Dashboard() {
   const s = useStore();
   const track = useTrack();
@@ -247,7 +291,9 @@ export default function Dashboard() {
         Secciones del curso
       </h2>
       <div className="grid gap-3 sm:grid-cols-2">
-        {sectionsOf(track.id).map((sec) => {
+        {sectionsOf(track.id)
+          .filter((sec) => !isOptionalSection(sec.id))
+          .map((sec) => {
           const mods = modulesOf(sec.id);
           const labs = labsOf(sec.id);
           if (mods.length === 0 && sec.boss) {
@@ -302,6 +348,8 @@ export default function Dashboard() {
           );
         })}
       </div>
+
+      <OptionalSections />
     </div>
   );
 }

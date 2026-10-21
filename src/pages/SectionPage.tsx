@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useStore } from '../lib/store';
 import {
+  isOptionalSection,
   labsOf,
   modulesOf,
   sectionById,
@@ -41,8 +42,9 @@ export default function SectionPage() {
         <div className="flex-1 text-sm text-slate-300">
           <div className="font-semibold text-slate-100">Dominio de sección</div>
           <div className="mt-1 text-xs text-slate-400">
-            Se calcula con lecciones (40%), mejores quizzes (30%), labs (15%) y
-            boss (15%). Súbelo por encima del 80% antes del examen.
+            {isOptionalSection(section.id)
+              ? 'Sección opcional: se calcula solo con las lecciones que has hecho.'
+              : 'Se calcula con lecciones (40%), mejores quizzes (30%), labs (15%) y boss (15%). Súbelo por encima del 80% antes del examen.'}
           </div>
         </div>
       </Panel>
@@ -225,7 +227,7 @@ export default function SectionPage() {
         </>
       )}
 
-      {section.boss === null && mods.length > 0 && (
+      {section.boss === null && mods.length > 0 && !isOptionalSection(section.id) && (
         <Panel className="mt-2">
           <div className="text-sm font-bold text-slate-100">
             ⏱️ Examen de práctica

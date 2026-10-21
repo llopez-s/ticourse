@@ -136,6 +136,23 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
 
 ## State & gotchas
 
+- **SY0-801 novelties, section `sp7` (2026-10-21).** Optional Security+ section «Novedades SY0-801»: 7 lessons
+  `sp7m1`–`sp7m7` (`data/secplus/sp7-m1.ts`…`sp7-m7.ts`, aggregated in `sp7.ts`), 73 cards `fcp701`–`fcp773` and 102
+  glossary terms in `sp7-cards.ts`. It follows the `sp6` precedent (domain `null`, boss `null`), so it is outside
+  `contentSections`, placement, campaign, the mock exam and the per-domain readiness; the 701 numbers are untouched.
+  `OPTIONAL_SECTIONS = ['sp7']` / `isOptionalSection` in `course.ts` keep it out of `nextModule` (the Dashboard
+  «Continuar» never lands there), out of the «siguiente lección» link at the end of `sp6m1`, out of the Dashboard grid
+  (own «Novedades del SY0-801 · opcional» card) and in its own «Opcional» sidebar group; `SectionPage` hides the exam
+  panel for it. Lessons have `quiz: []`, every `check` is `optional` (the flag lives in `q`, not on the block), and
+  reading a lesson gives normal XP and counts as a lesson. Its cards come last in `track.flashcards`, so `buildQueue`
+  serves them after the 701 deck. Source: CompTIA's SY0-801 objectives **v2.0 draft** (pre-launch, expected launch
+  «on or around» 2026-11-17), kept out of git; the text was extracted with `pdftotext -layout`. IoT and virtualization are
+  still named by the 801; truly absent from its lists: containerization, ICS/SCADA, RTOS, embedded systems, SDN and
+  attribute-based access control — they still count for the 701. `sp7.test.ts` pins the isolation, the structure and a
+  per-lesson keyword coverage table. **Follow-up:** after the launch, compare the section with the final objectives.
+  Design `docs/superpowers/specs/2026-10-20-sy0-801-novedades-design.md`, plan
+  `docs/superpowers/plans/2026-10-21-sy0-801-novedades.md`.
+
 - **Practical curriculum (2026-10-19).** Twelve existing lessons append typed blocks
   from `data/practical/` through `withPracticalExpansion` in `tracks.ts`. Original
   block indices and lesson/question/lab IDs stay stable. New totals: GCTI 96 cards /
@@ -186,7 +203,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   and each device keeps its own copy locally, but it is the one place where a device whose
   `localStorage` was cleared *before* its next push can lose data. Retrying once after a 404 on
   the first sync for a code would shrink the window.
-- **Tests:** vitest, `npm test` (158 tests in `src/**/*.test.ts`, 13 files). Content tests assert
+- **Tests:** vitest, `npm test` (176 tests in `src/**/*.test.ts`, 15 files). Content tests assert
   Domain 1–5 completeness, that every Security+ boss section has ≥12 questions, 4 choices + valid
   answer per question, ids unique, lab data present, and (placement blocks) that every content
   section has exactly one 12-question block with contiguous ids and non-empty text. Partial

@@ -42,6 +42,7 @@ describe('track scoping', () => {
       'sp4',
       'sp5',
       'sp6',
+      'sp7',
     ]);
     expect(modulesOfTrack('gcti').every((m) => /^s\d/.test(m.id))).toBe(true);
     expect(modulesOfTrack('secplus').every((m) => m.id.startsWith('sp'))).toBe(

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { contentSections, sectionById } from '../data/course';
+import { isOptionalSection, sectionById, sectionsOf } from '../data/course';
 import { PageTitle } from '../components/Bits';
 import { useTrack } from '../components/Layout';
 import { APP_NAME } from '../lib/brand';
@@ -48,15 +48,17 @@ export default function GlossaryPage() {
           >
             Todas
           </button>
-          {contentSections(track.id).map((s) => (
-            <button
-              key={s.id}
-              onClick={() => setFilter(filter === s.id ? null : s.id)}
-              className={`rounded-full px-3 py-1.5 text-xs font-semibold ${filter === s.id ? 'bg-cyan-500 text-ink-950' : 'bg-ink-800 text-slate-400 hover:bg-ink-700'}`}
-            >
-              S{s.num}
-            </button>
-          ))}
+          {sectionsOf(track.id)
+            .filter((s) => s.boss !== null || isOptionalSection(s.id))
+            .map((s) => (
+              <button
+                key={s.id}
+                onClick={() => setFilter(filter === s.id ? null : s.id)}
+                className={`rounded-full px-3 py-1.5 text-xs font-semibold ${filter === s.id ? 'bg-cyan-500 text-ink-950' : 'bg-ink-800 text-slate-400 hover:bg-ink-700'}`}
+              >
+                S{s.num}
+              </button>
+            ))}
           <button
             onClick={() => window.print()}
             className="ml-auto rounded-lg border border-emerald-500/50 px-3 py-1.5 text-xs font-bold text-emerald-300 hover:bg-emerald-950/40"
