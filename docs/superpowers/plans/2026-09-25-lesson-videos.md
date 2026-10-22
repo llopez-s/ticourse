@@ -6187,6 +6187,18 @@ Sale de lo que costó V5: tres versiones de la hoja de grabación y dos frases r
 vídeos publicados vivía solo en sus datos en pantalla; cuatro horas de escenas con tres agentes y Whisper peleando
 por la misma CPU; cuatro cortes a mano en la grabación. Los pasos detallados siguen más abajo.
 
+0. **Saber en qué estado está cada vídeo antes de encargar nada** (desde el 2026-10-22). `node
+   scripts/pending-scripts.mjs <salida.html>` (y se republica en la página «Guiones pendientes») hace `git fetch` y
+   compara con **`origin/main`**, no con el `main` local de la copia principal, que puede ir muy por detrás (134 commits
+   el 2026-10-22). Busca cada vídeo en **todas sus ramas** (`video-<slug>`, `video-<slug>-voz`…) y en **todos los
+   worktrees** de `git worktree list`, también los de los scratchpads, porque la voz se importa y se renderiza en una
+   rama `-voz` en un repo NTFS, no en el worktree del guion: el `tts/` vacío de `.claude/worktrees/video-<slug>` no
+   quiere decir que esté sin importar. Un vídeo está en su lección cuando un bloque `t: 'video'` de `src/data` en
+   `origin/main` lleva su póster (`videos/<slug>-poster.png`); si no, el id de YouTube sale del `youtube-upload.json`
+   más reciente o de un commit propio de la rama `-voz`, y `oembed` dice si es público. Ese día, un encargo de
+   «importar y producir nueve voces sin importar» salió de la página anterior, que solo miraba el worktree del guion y
+   el `main` local: los nueve llevaban dos días renderizados, publicados y, ocho de ellos, enlazados en su lección.
+   Si un encargo no cuadra con lo que dice la página, manda la página, después de regenerarla.
 1. **Diseño en una ronda.** Claude pasa la ficha entera (conceptos e imágenes, historia y canon nuevo, escenas,
    producción) con las opciones recomendadas ya elegidas; Lidia dice solo qué cambia.
 2. **Guion contra el registro de canon.** Antes de escribir, se lee `docs/superpowers/canon/<campaña>.md`
