@@ -58,6 +58,7 @@ for (const episode of EPISODES) {
     composition: `Practica${episode.id}`, poster: `Practica${episode.id}Poster`,
     profile: 'principal-yt', track: episode.track, adversary: episode.adversary,
     lesson: episode.lessons[0],
+    music: 'Go On Going - Stayloose.mp3', // render.mjs --master refuses a video without it (README «Masterización»)
     tags: ['práctica complementaria', ...episode.concepts.map((s) => s.replaceAll(',', '').slice(0, 60))],
     ...(frozen || priorFrozen ? { frozen: frozen || priorFrozen } : {}),
   };

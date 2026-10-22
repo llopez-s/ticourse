@@ -7,7 +7,9 @@
 //     -yt profiles (principal-yt/capsula-yt): video/<slug>/out/<output>.mp4 (git-ignored,
 //       uploaded to YouTube instead) + public/videos/<output>-poster.png (poster always goes there)
 //   node video/engine/scripts/render.mjs --video <slug> --draft  # half scale, crf 30 -> video/<slug>/out/draft.mp4
-//   node video/engine/scripts/render.mjs --video <slug> --master [--bed-db <n>]
+//   node video/engine/scripts/render.mjs --video <slug> --master [--bed-db <n>] [--generated-bed]
+//     (--master needs video.json "music", the library track under the voice; --generated-bed masters over
+//     master_mix's generated bed instead, on purpose only: it is louder and sounds like background noise)
 //     also masters the audio (master_mix.py) WHILE the frames render: Remotion's audio-only render
 //     (seconds) feeds master_mix's heavy stage (ambient bed, loudness) in parallel with the video render;
 //     at the end only the light stage runs (limit, AAC, mux, delivered-peak check). The unmastered
@@ -100,11 +102,16 @@ function masterPython(music) {
 }
 
 /**
- * The library track video.json names ("music"), or null: master_mix then uses its generated story bed. Throws
- * before anything renders when the file is missing (music/library is git-ignored: a fresh clone lacks it).
+ * The library track video.json names ("music"). Throws before anything renders when video.json names none, unless
+ * `generatedBed` asks for master_mix's generated story bed on purpose (it sits ~8 LU under the programme against
+ * the music's ~13 and sounds like background noise: V47, AP01–AP04, V49/V50 first masters, 2026-10-22), and when
+ * the file is missing (music/library is git-ignored: a fresh clone lacks it).
  */
-export function musicTrack(manifest, engineDir = ENGINE_DIR) {
-  if (!manifest.music) return null;
+export function musicTrack(manifest, engineDir = ENGINE_DIR, { generatedBed = false } = {}) {
+  if (!manifest.music) {
+    if (generatedBed) return null;
+    throw new Error('video.json has no "music": add "music": "Go On Going - Stayloose.mp3" (the library track every video uses), or pass --generated-bed to master over the generated bed on purpose');
+  }
   const file = path.join(engineDir, 'music', 'library', manifest.music);
   if (!existsSync(file)) throw new Error(`video.json names the music "${manifest.music}", but ${file} is missing: download it again (music/LICENSES.md says from where)`);
   return file;
@@ -122,6 +129,7 @@ async function main() {
       draft: { type: 'boolean', default: false },
       master: { type: 'boolean', default: false },
       'bed-db': { type: 'string' },
+      'generated-bed': { type: 'boolean', default: false },
       'skip-voice-check': { type: 'boolean', default: false },
       'no-bundle-cache': { type: 'boolean', default: false },
       concurrency: { type: 'string' },
@@ -131,7 +139,7 @@ async function main() {
   const draft = values.draft;
   const master = values.master;
   if (master && draft) throw new Error('--master is for the final render, not a --draft');
-  const music = master ? musicTrack(MANIFEST) : null;
+  const music = master ? musicTrack(MANIFEST, undefined, { generatedBed: values['generated-bed'] }) : null;
   const py = master ? masterPython(music) : null;
   const fresh = checkTimelineFresh();
   if (!fresh.ok) {

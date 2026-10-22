@@ -5,10 +5,11 @@ import os from 'node:os';
 import path from 'node:path';
 import { clipOnset, masterPaths, musicTrack, parseSilenceEnds, syncReport } from '../render.mjs';
 
-test('musicTrack: the library file video.json names, or null; a missing file stops the render early', () => {
+test('musicTrack: the library file video.json names; no "music" or a missing file stops the render early', () => {
   const engine = mkdtempSync(path.join(os.tmpdir(), 'music-'));
   try {
-    assert.equal(musicTrack({ slug: 'x' }, engine), null);
+    assert.throws(() => musicTrack({ slug: 'x' }, engine), /has no "music"/);
+    assert.equal(musicTrack({ slug: 'x' }, engine, { generatedBed: true }), null);
     assert.throws(() => musicTrack({ music: 'song.mp3' }, engine), /is missing: download it again/);
     mkdirSync(path.join(engine, 'music', 'library'), { recursive: true });
     writeFileSync(path.join(engine, 'music', 'library', 'song.mp3'), '');
