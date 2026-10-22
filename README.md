@@ -8,7 +8,7 @@ comparten el mismo motor (XP, rachas, flashcards SM-2, bosses, simulacros):
 | Track | Certificación | Estado |
 |---|---|---|
 | **CTI · GCTI** | GIAC GCTI (asociada a SANS FOR578: Cyber Threat Intelligence) | Completo: 27 lecciones, 174 preguntas, 12 labs, 96 flashcards, prueba de nivel y ampliaciones prácticas |
-| **Security+** | CompTIA Security+ (SY0-701) | **Completo: los 5 dominios** — 41 lecciones + exam prep, 305 preguntas, 134 checkpoints base + 2 complementarios, 15 labs, 160 flashcards, 242 términos |
+| **Security+** | CompTIA Security+ (SY0-701) | **Completo: los 5 dominios** — 41 lecciones + exam prep, 308 preguntas, 135 checkpoints base + 2 complementarios, 15 labs, 163 flashcards, 246 términos |
 
 **▶ En vivo: https://llopez-s.github.io/ticourse/** — se despliega solo en cada
 push a `main` (GitHub Actions: tests → build → Pages).
@@ -72,11 +72,11 @@ preguntas de quiz y las flashcards van en inglés, como en el examen real.
 | Pieza | CTI · GCTI | Security+ (SY0-701) |
 |---|---|---|
 | **Lecciones** | 27 | 41 + exam prep |
-| **Preguntas de quiz** | 174 | 305 |
-| **Checkpoints en lección** | base + 12 complementarios opcionales | 134 base + 2 complementarios opcionales |
+| **Preguntas de quiz** | 174 | 308 |
+| **Checkpoints en lección** | base + 12 complementarios opcionales | 135 base + 2 complementarios opcionales |
 | **Labs interactivos** | 12 | 15 |
-| **Flashcards (SM-2)** | 96 | 160 |
-| **Glosario** | 107 términos | 242 términos |
+| **Flashcards (SM-2)** | 96 | 163 |
+| **Glosario** | 107 términos | 246 términos |
 | **Boss battles** | 5 | 5 |
 | **Prueba de nivel** | 5 bloques · 60 preguntas | 5 bloques · 60 preguntas |
 

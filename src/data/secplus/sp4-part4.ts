@@ -318,10 +318,11 @@ const sp4m8: Module = {
   id: 'sp4m8',
   sectionId: 'sp4',
   title: 'IAM: identidades, federación, control de acceso, MFA y PAM',
-  minutes: 13,
+  minutes: 15,
   objectives: [
     'Describir el ciclo de vida de la identidad —provisioning, cambios de puesto y deprovisioning— y el papel de la attestation frente al permission creep',
     'Distinguir LDAP, SAML y OAuth y explicar qué aporta la federación al single sign-on',
+    'Explicar cómo reparte Kerberos los tickets (KDC, TGT, ticket de servicio), por qué depende del reloj y qué aprovecha el Kerberoasting',
     'Comparar los modelos de control de acceso MAC, DAC, RBAC, rule-based y ABAC identificando quién decide en cada uno',
     'Clasificar correctamente los factores de autenticación y reconocer cuándo una combinación no es MFA real',
     'Aplicar la orientación actual sobre contraseñas y explicar qué resuelve el PAM con JIT, vaulting y credenciales efímeras',
@@ -398,6 +399,26 @@ const sp4m8: Module = {
         answer: 0,
         explain:
           'OAuth is the delegation standard: it issues a scoped access token that lets an application act on the user\'s behalf for one defined resource without ever seeing the credentials. SAML is the tempting distractor because it also avoids sharing passwords, but it carries an authentication assertion so a user can sign in to a service, not a scoped grant for an application to read specific data.',
+      },
+    },
+    { t: 'h', text: 'Kerberos: el SSO de dentro de la red' },
+    {
+      t: 'p',
+      md: 'SAML y OAuth viven en la web. Dentro de la red de Halden, cuando una operadora enciende su equipo del dominio y luego abre una carpeta compartida o la aplicación de atraques sin volver a escribir la contraseña, lo que trabaja por debajo es **Kerberos**, el protocolo de autenticación de **Active Directory**. Su idea central es que **la contraseña no viaja por la red**: en su lugar se usan **tickets** cifrados y con fecha de caducidad, emitidos por un tercero en el que todos confían, el **key distribution center (KDC)**, que en Active Directory es el propio controlador de dominio. El reparto ocurre en tres pasos. Primero, al iniciar sesión, la usuaria demuestra quién es ante el servicio de autenticación del KDC y recibe un **ticket-granting ticket (TGT)**, una especie de pase de jornada. Después, cada vez que quiere entrar en un servicio, presenta ese TGT al KDC y recibe un **ticket de servicio** solo para ese servicio. Por último, entrega el ticket de servicio al servidor, que lo acepta sin preguntarle nada al KDC. Dos datos que el examen da por sabidos: Kerberos escucha en el **puerto 88** (TCP y UDP), y los tickets llevan marcas de tiempo para que no se puedan **reutilizar en un replay**, así que los relojes del cliente, el servidor y el KDC tienen que estar **sincronizados**. Por defecto, Active Directory tolera **cinco minutos** de diferencia; si un equipo se desajusta más, la autenticación falla aunque la contraseña sea correcta, y por eso el **NTP** fiable es parte de la seguridad del dominio. Y como todo lo valioso, los tickets también se atacan. En el **pass-the-ticket**, alguien que ya controla un equipo saca de su memoria un ticket válido de otra usuaria, normalmente un TGT, y lo presenta tal cual: no necesita la contraseña y el ticket sirve hasta que caduca. Por eso las cuentas de administración no deberían iniciar sesión nunca en equipos de uso diario, donde su ticket quedaría expuesto, y herramientas como **Credential Guard** o el grupo **Protected Users** ponen más difícil sacar esos secretos de la memoria. En el **Kerberoasting**, cualquier cuenta del dominio, aunque no tenga privilegios, pide tickets de servicio para cuentas de servicio; como una parte del ticket va cifrada con una clave derivada de la contraseña de esa cuenta, el atacante se lleva el ticket y prueba contraseñas **sin conexión**, sin generar fallos de inicio de sesión. Funciona porque las cuentas de servicio suelen tener contraseñas viejas, débiles y con muchos privilegios. Se mitiga con contraseñas largas y aleatorias o, mejor, con **cuentas de servicio gestionadas** (gMSA) que las rotan solas, con cifrado AES en lugar de RC4 y vigilando picos de peticiones de tickets de servicio. Y el **golden ticket** es el peor caso: si alguien consigue la clave de la cuenta *krbtgt*, la que firma todos los TGT del dominio, ya no necesita robar tickets, porque los **fabrica** a su gusto, para cualquier usuaria, con los privilegios que quiera y con la caducidad que quiera. Fíjate en la diferencia: en el pass-the-ticket el ticket es **robado** y caduca; el golden ticket es **falsificado** y sigue valiendo mientras no cambie esa clave. Conseguir la clave de *krbtgt* exige haber comprometido ya un controlador de dominio, así que la prevención pasa por blindar esos servidores. Si se sospecha que ha ocurrido, cambiar las contraseñas de las usuarias no basta: hay que restablecer la contraseña de *krbtgt* **dos veces**, porque el dominio acepta también la clave anterior, y dejar pasar la replicación entre un cambio y otro.',
+    },
+    {
+      t: 'check',
+      q: {
+        q: 'After a hypervisor migration, several domain-joined workstations at Halden can no longer authenticate to file shares, although users are typing the correct passwords. The logs show the workstations\' clocks are twelve minutes behind the domain controller. What is the MOST likely cause?',
+        choices: [
+          'The LDAP bind is failing because LDAPS was not enabled',
+          'Kerberos rejects the requests because the clock skew exceeds the allowed tolerance',
+          'The SAML assertions have expired at the identity provider',
+          'Port 389 is blocked between the workstations and the domain controller',
+        ],
+        answer: 1,
+        explain:
+          'Kerberos tickets and authenticators carry timestamps to prevent replay, and Active Directory rejects them when client and KDC clocks differ by more than five minutes by default, so correct passwords still fail. The LDAP options are tempting distractors because they also involve the domain controller, but nothing in the scenario points to directory lookups, and the fix here is reliable NTP synchronisation, not a protocol change.',
       },
     },
     { t: 'h', text: 'Modelos de control de acceso' },
@@ -478,7 +499,7 @@ const sp4m8: Module = {
       t: 'callout',
       kind: 'exam',
       title: 'Nota de examen: las pistas de IAM son casi siempre literales',
-      md: '**«Alguien se marcha»** → **deshabilitar la cuenta el mismo día** y borrarla más tarde según retención; borrar de inmediato destruye pruebas. **«Acumula permisos de tres puestos anteriores»** → **permission creep**, y la respuesta es **least privilege** más **attestation** periódica. **«Los responsables revisan y confirman los accesos cada trimestre»** → **attestation**, no auditoría ni provisioning. **«Aplicación de terceros que necesita acceder a un recurso sin conocer la contraseña»** → **OAuth**; **«entrar en la web de un socio con nuestra cuenta corporativa»** → **SAML** y **federation**; **«consultar el directorio»** → **LDAP**. **«Condiciones combinadas: departamento, proyecto, dispositivo, hora»** → **ABAC**; **«permisos según el puesto»** → **RBAC**; **«etiquetas que ni el propietario puede cambiar»** → **MAC**; **«el propietario comparte lo que quiere»** → **DAC**. **Dos cosas que tienes siguen siendo un factor**, y dos cosas que sabes también. **«Push aprobado por error tras decenas de avisos»** → **MFA fatigue**, y la mitigación fuerte es una **security key** resistente al phishing. En contraseñas, la respuesta correcta favorece **longitud**, listas de contraseñas filtradas y **password manager**, y desaconseja la **caducidad forzada**. Y **«privilegio solo durante la ventana aprobada, credenciales en bóveda que rotan»** → **PAM** con **just-in-time** y **vaulting**.',
+      md: '**«Alguien se marcha»** → **deshabilitar la cuenta el mismo día** y borrarla más tarde según retención; borrar de inmediato destruye pruebas. **«Acumula permisos de tres puestos anteriores»** → **permission creep**, y la respuesta es **least privilege** más **attestation** periódica. **«Los responsables revisan y confirman los accesos cada trimestre»** → **attestation**, no auditoría ni provisioning. **«Aplicación de terceros que necesita acceder a un recurso sin conocer la contraseña»** → **OAuth**; **«entrar en la web de un socio con nuestra cuenta corporativa»** → **SAML** y **federation**; **«consultar el directorio»** → **LDAP**. **«Inicio de sesión en el dominio, tickets, puerto 88»** → **Kerberos**, y si falla con la contraseña correcta, sospecha del **reloj**; **«una cuenta sin privilegios pide tickets de servicio y descifra la contraseña sin conexión»** → **Kerberoasting**; **«ticket robado de la memoria»** → **pass-the-ticket**, **«TGT falsificado con la clave de krbtgt»** → **golden ticket**, y se responde restableciendo **krbtgt dos veces**. **«Condiciones combinadas: departamento, proyecto, dispositivo, hora»** → **ABAC**; **«permisos según el puesto»** → **RBAC**; **«etiquetas que ni el propietario puede cambiar»** → **MAC**; **«el propietario comparte lo que quiere»** → **DAC**. **Dos cosas que tienes siguen siendo un factor**, y dos cosas que sabes también. **«Push aprobado por error tras decenas de avisos»** → **MFA fatigue**, y la mitigación fuerte es una **security key** resistente al phishing. En contraseñas, la respuesta correcta favorece **longitud**, listas de contraseñas filtradas y **password manager**, y desaconseja la **caducidad forzada**. Y **«privilegio solo durante la ventana aprobada, credenciales en bóveda que rotan»** → **PAM** con **just-in-time** y **vaulting**.',
     },
     {
       t: 'p',
@@ -595,6 +616,46 @@ const sp4m8: Module = {
       answer: 1,
       explain:
         'SAML transports a signed authentication assertion from the organisation\'s identity provider to the partner acting as service provider, which is the standard pattern for federated enterprise web SSO. LDAP is the tempting distractor because it is the directory where those accounts actually live, but it is a directory access protocol used inside the organisation, not a means of asserting an authenticated identity to an external service.',
+    },
+    {
+      id: 'sp4m8q9',
+      domain: 'Security Operations',
+      prompt:
+        'A Halden employee logs on to a domain-joined workstation in the morning and later opens the berth-planning file share without being asked for a password again. In Kerberos terms, what does the workstation present to the key distribution center to obtain access to that share?',
+      choices: [
+        'The user\'s password hash, sent to the file server',
+        'The ticket-granting ticket, in exchange for a service ticket for the file share',
+        'A SAML assertion signed by the identity provider',
+        'An OAuth refresh token issued at logon',
+      ],
+      answer: 1,
+      explain:
+        'At logon the KDC issues a ticket-granting ticket; for each service the client presents that TGT to the ticket-granting service and receives a service ticket, which it then hands to the file server, so the password never crosses the network. The password hash option is the tempting distractor because pass-the-hash attacks reuse hashes, but the whole point of Kerberos is that clients prove identity with tickets rather than sending credentials to each server.',
+    },
+    {
+      id: 'sp4m8q10',
+      domain: 'Security Operations',
+      prompt:
+        'The SOC notices that a low-privilege domain account requested service tickets for dozens of service accounts within a few minutes. No failed logons were recorded. A week later, one of those service accounts is used to log on to the database servers. Which attack BEST explains this sequence?',
+      choices: ['Password spraying', 'Golden ticket', 'Kerberoasting', 'Pass-the-hash'],
+      answer: 2,
+      explain:
+        'Kerberoasting lets any authenticated user request service tickets for accounts with service principal names, then crack the portion encrypted with the service account\'s password-derived key offline, which is why no failed logons appear before the account is reused. Password spraying is the tempting distractor because it also targets weak passwords, but it tries them online against many accounts and leaves failed authentication attempts behind.',
+    },
+    {
+      id: 'sp4m8q11',
+      domain: 'Security Operations',
+      prompt:
+        'During the investigation of a domain controller compromise at Halden, analysts find Kerberos TGTs for a non-existent administrator account, with a ten-year lifetime, that the domain controllers keep accepting even after every user password was reset. Which attack is this, and what must the response include?',
+      choices: [
+        'Pass-the-ticket; purge the cached tickets from the affected workstations',
+        'Golden ticket; reset the krbtgt account password twice, allowing replication between resets',
+        'Kerberoasting; give the service accounts long random passwords',
+        'Pass-the-hash; enable Credential Guard on the workstations',
+      ],
+      answer: 1,
+      explain:
+        'Tickets for an account that does not exist, with an arbitrary lifetime, cannot have been stolen: they were forged with the krbtgt key, which is a golden ticket, and user password resets do not invalidate them. Because the domain also accepts the previous krbtgt key, it must be reset twice. Pass-the-ticket is the tempting distractor because it also replays TGTs, but a stolen ticket belongs to a real user and expires on its normal schedule.',
     },
   ],
 };
