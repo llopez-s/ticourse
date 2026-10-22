@@ -1,0 +1,303 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {plan}En el puerto de Halden, Seguridad escribe lo que pediría a cualquier entrada. {title}Y antes de poner controles, se pregunta qué quiere frenar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {promise}Qué frena cada control, dónde falla cada sensor y qué es un cebo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<warm> Todo sobre un plano de ejemplo, con tres preguntas tipo examen por el camino.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-frena",
+      "text": "<engaging> {car}Empieza por la calle. Un coche llega a la fachada. ¿Puede entrar?",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-frena",
+      "text": "<clear> {bollards}Eso lo frenan los bollards, unos postes fijos que paran un vehículo, pero no a quien va a pie.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-frena",
+      "text": "<thoughtful> {door}Luego, la puerta. ¿Cuántos pasan a la vez? Si solo debe pasar uno, hay dos puertas y se abre una cada vez. {vestibule}Eso es un access control vestibule.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "1.2",
+        "text": "Bollards: vehículos. Vestibule: de uno en uno",
+        "at": "vestibule",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-frena",
+      "text": "<clear> {badge}Junto a la puerta, un lector de tarjetas. ¿Quién es esa persona y adónde puede ir? Lo decide su tarjeta, el access badge, y cada acceso queda apuntado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-frena",
+      "text": "<casual> {rest}Hay más controles, pero con estos tres se ve la idea.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-frena",
+      "text": "<firm> {line}Cada uno responde a una pregunta distinta, y cada uno tapa un hueco.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca. En un centro de distribución, cualquiera abre cualquier zona y nadie sabe quién entra. Quieren que cada uno abra solo las suyas, con registro automático. ¿Qué control resuelve ese problema?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "1.2",
+        "scenario": "En un centro de distribución, cualquiera abre cualquier zona y nadie sabe quién entra. Quieren que cada uno abra solo las suyas, con registro automático.",
+        "q": "¿Qué control resuelve ese problema?",
+        "options": [
+          "Video surveillance",
+          "Fencing",
+          "Access badge",
+          "Security guard"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "Cada persona abre solo sus zonas y cada acceso se apunta automáticamente",
+        "trapWhy": "La cámara graba quién entra, pero no decide quién puede abrir",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<firm> {ok-1}Access badge, porque cada persona abre solo sus zonas y cada acceso se apunta automáticamente. {trap-1}La cámara tienta por lo de saber quién entra, pero no decide quién puede abrir.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<warm> {plan-back}O sea, que el badge decide y apunta, y la cámara solo graba.",
+      "pauseAfterMs": 700,
+      "exam": {
+        "objective": "1.2",
+        "text": "Access badge: quién, adónde y con registro",
+        "at": "plan-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-sensor",
+      "text": "<engaging> {rooms}Ahora, dentro. Un sensor mide una sola cosa, y cada uno falla de su manera. Vamos con cuatro.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-sensor",
+      "text": "<clear> {infrared}Infrared nota el calor de una persona. Pero se confunde con el sol directo, con la calefacción y con los animales.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-sensor",
+      "text": "<thoughtful> {pressure}Pressure pesa. Funciona bien, pero solo cubre el suelo que pisas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-sensor",
+      "text": "<focused> {microwave}Microwave manda ondas de radio y escucha el eco. Cubre mucho, pero atraviesa los tabiques finos y salta con lo que se mueve al otro lado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-sensor",
+      "text": "<clear> {ultrasonic}Ultrasonic hace lo mismo con sonido. Sirve en un cuarto pequeño y cerrado, porque el sonido no atraviesa las paredes. Las corrientes de aire sí lo confunden.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-sensor",
+      "text": "<firm> {rule}O sea, que cubrir mucho no basta. Se elige el que no falla en tu cuarto.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<intrigued> {q2}Otra más. Un despacho pequeño y cerrado recibe sol directo por la ventana. Su pared fina da a otro con gente yendo y viniendo. Quieren detectar movimiento dentro. ¿Qué sensor encaja mejor? {best}Cuando una pregunta pide el “mejor”, casi todas las opciones valen a medias. Vale la que no falla en nada de lo que cuenta el caso.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "1.2",
+        "scenario": "Un despacho pequeño y cerrado recibe sol directo por la ventana. Su pared fina da a otro con gente yendo y viniendo. Quieren detectar movimiento dentro.",
+        "q": "¿Qué sensor encaja MEJOR?",
+        "options": [
+          "Ultrasonic",
+          "Pressure",
+          "Infrared (PIR)",
+          "Microwave"
+        ],
+        "answer": 0,
+        "trap": 3,
+        "why": "Su sonido no pasa la pared y el sol no lo confunde",
+        "trapWhy": "Suena al más completo, pero atraviesa la pared y saltaría con el despacho vecino",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Ultrasonic, porque su sonido no atraviesa la pared. {trap-2}Microwave parece lo natural, pero cruzaría el tabique y saltaría con la gente del despacho vecino.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<casual> {rooms-back}Vamos, que no valía el que más cubre, sino el que no fallaba en ese despacho.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "1.2",
+        "text": "Elige el sensor por dónde falla",
+        "at": "rooms-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-cebo",
+      "text": "<engaging> {inside}Lo de antes intenta frenar o detectar a quien llega. Un cebo parte de otra idea, que ya hay alguien dentro.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-cebo",
+      "text": "<clear> {four}Es algo falso, y se pone donde ningún usuario legítimo tocaría. Hay cuatro, según lo que ofrecen.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-cebo",
+      "text": "<thoughtful> {honeypot}Un sistema que no sirve a nadie, un honeypot. {honeynet}Varios que se hablan entre sí, una honeynet.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-cebo",
+      "text": "<focused> {honeyfile}Un fichero con un nombre irresistible, un honeyfile. {honeytoken}Y un dato que no existe, como una cuenta, una clave o un registro, un honeytoken.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "1.2",
+        "text": "Cebo: sistema, red, fichero o dato",
+        "at": "honeytoken",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-cebo",
+      "text": "<firm> {rule}Los cuatro tienen algo en común. Nadie legítimo los toca, así que cualquier toque avisa.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<curious> {q3}La última. Un estudio de arquitectura quiere enterarse en cuanto un ransomware empiece a cifrar los ficheros de su servidor. Va a dejar cebos donde ese ransomware pase. ¿Qué cebo encaja mejor?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "1.2",
+        "scenario": "Un estudio de arquitectura quiere enterarse en cuanto un ransomware empiece a cifrar los ficheros de su servidor. Va a dejar cebos donde ese ransomware pase.",
+        "q": "¿Qué cebo encaja MEJOR?",
+        "options": [
+          "Honeytoken",
+          "Honeypot",
+          "Honeynet",
+          "Honeyfile"
+        ],
+        "answer": 3,
+        "trap": 1,
+        "why": "El fichero cebo está donde el ransomware tiene que pasar",
+        "trapWhy": "Honeypot también es cebo, pero es un sistema aparte que quizá no toque",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<firm> {ok-3}Honeyfile, porque el fichero cebo queda entre los ficheros que recorre el ransomware. {trap-3}Un honeypot también es cebo, pero es un sistema aparte, y puede que ni lo toque.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<warm> {four-back}O sea, que el fichero va por donde pasa el ransomware.",
+      "pauseAfterMs": 700,
+      "exam": {
+        "objective": "1.2",
+        "text": "Ransomware que recorre carpetas: honeyfile",
+        "at": "four-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Una, cada control tapa un hueco. {rule-1}Los bollards frenan coches y el badge apunta quién entra.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Dos, un sensor se elige por dónde falla. El de radio cruza tabiques y el de sonido no.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y tres, un cebo parte de que ya hay alguien dentro, y cualquier toque avisa.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Cada cosa tapa un hueco y falla por algún sitio. {next}Tu turno, con las preguntas de la lección. {endcard}",
+      "pauseAfterMs": 250
+    }
+  ]
+}
