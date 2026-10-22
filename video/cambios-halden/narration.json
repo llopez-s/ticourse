@@ -1,0 +1,315 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {request}En el puerto de Halden, un cambio no se toca sin que alguien lo haya pedido, mirado y {stamp}firmado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<engaging> {title}Vamos a seguir un cambio de principio a fin. {promise}Qué hace falta antes, qué toca y qué queda por escrito.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<confident> Porque lo que se rompe no siempre es lo que ibas a tocar.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-antes",
+      "text": "<thoughtful> Se rellena la petición. {owner}Primero va el dueño del cambio, el change owner, una persona de Sistemas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-antes",
+      "text": "<clear> {who}Responde de que se justifique, se pruebe y se cierre, aunque lo aplique otra persona.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-antes",
+      "text": "<firm> Antes de que firme el comité de cambios, hacen falta tres cosas. {check-impact}Una, saber qué toca y a quién, el impact analysis.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-antes",
+      "text": "<confident> {check-tests}Dos, las pruebas, en un entorno de prueba y no en producción. {check-backout}Y tres, los pasos para deshacerlo, escritos antes de tocar. Eso es el backout plan.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-antes",
+      "text": "<satisfied> Con las tres, puede {stamp}firmar el comité. Y quien pide el cambio no lo firma.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "1.3",
+        "text": "Antes del comité: impacto, pruebas y backout",
+        "at": "stamp",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-antes",
+      "text": "<curious> {window}Después se elige cuándo, fuera del horario de las oficinas. Es la maintenance window. {exam-line}Si el examen dice «antes de implementar», piensa en esas tres.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-antes",
+      "text": "<serious> {rollback}El plan de vuelta atrás no es un adorno. Si la comprobación falla en la ventana, se activa.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca. Una cadena de ópticas actualiza su programa de citas dentro de la ventana aprobada. Al comprobarlo, no guarda las citas nuevas, y quedan cuarenta minutos. ¿Qué es lo mejor que puede hacer el equipo? {best}Si piden el “mejor”, ojo, que varias arreglan algo, pero una arregla lo que cuenta el caso.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "1.3",
+        "scenario": "Una cadena de ópticas actualiza su programa de citas en la ventana aprobada. Al comprobarlo, no guarda las citas nuevas. Quedan 40 minutos de ventana.",
+        "q": "¿Qué es lo MEJOR que puede hacer el equipo ahora?",
+        "options": [
+          "Ejecutar el backout plan aprobado",
+          "Pedir al CAB que apruebe un arreglo urgente",
+          "Seguir ajustando hasta que funcione",
+          "Dejarlo así y avisar a los usuarios"
+        ],
+        "answer": 0,
+        "trap": 2,
+        "why": "Para eso se escribió el plan: volver a lo que funcionaba, sin improvisar",
+        "trapWhy": "Parece aprovechar la ventana, pero retocar en producción es otro cambio, sin probar",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<firm> {ok-1}El backout plan, para volver a lo que funcionaba.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<thoughtful> {trap-1}Retocar en producción sería otro cambio sin probar.",
+      "pauseAfterMs": 3000,
+      "exam": {
+        "objective": "1.3",
+        "text": "Si falla en la ventana: revertir antes que retocar",
+        "at": "trap-1",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-toca",
+      "text": "<engaging> Ahora, lo que toca. {service}La petición es poner al día las carpetas compartidas de las oficinas, y de ahí cuelgan cosas. {hangs}Dos programas guardan ahí sus informes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-toca",
+      "text": "<curious> {old-program}Y hay un programa antiguo que solo entiende la versión anterior. Se anota, para decidir qué hacer con él.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-toca",
+      "text": "<thoughtful> {ask}Eso sale al preguntar quién más lo usa, no al fallar. A esas cosas que cuelgan las llaman dependencies.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "1.3",
+        "text": "Antes de aprobar, pregunta quién más lo usa",
+        "at": "ask",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-toca",
+      "text": "<clear> {list}Más abajo, la petición pide dar de alta un servidor nuevo en la lista de permitidos, la allow list.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-toca",
+      "text": "<warm> {site-list}Piensa en un capataz de obra con su lista en la puerta. Quien no figura no pasa, aunque sea de confianza.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-toca",
+      "text": "<focused> Si hoy viene un fontanero, apuntas a ese fontanero y a nadie más de su empresa. {one-line}Aquí, una sola línea, el servidor nuevo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-toca",
+      "text": "<firm> {chips}O sea, que se pregunta quién más lo usa, y a las listas solo va lo justo.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<intrigued> {q2}Otra más. Una ferretería cambia de proveedor de pagos. Su cortafuegos solo deja salir hacia destinos de una lista, y el destino del proveedor nuevo no está. ¿Cuál es la mejor forma de resolverlo?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "1.3",
+        "scenario": "Una ferretería cambia de proveedor de pagos. Su cortafuegos solo deja salir hacia destinos de una lista, y el destino del proveedor nuevo no está.",
+        "q": "¿Cuál es la MEJOR forma de resolverlo?",
+        "options": [
+          "Quitar el filtro mientras dura la ventana",
+          "Permitir la red entera del proveedor",
+          "Añadir solo el destino que se necesita",
+          "Instalar un segundo cortafuegos"
+        ],
+        "answer": 2,
+        "trap": 1,
+        "why": "La lista deja pasar solo lo que el cambio necesita, y nada más",
+        "trapWhy": "Ahorra trabajo, pero deja pasar mucho más de lo que el cambio necesita",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Añadir solo el destino que hace falta. {trap-2}Permitir la red entera tienta porque ahorra trabajo, pero deja pasar más de lo que el cambio necesita.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<warm> {site-back}Se apunta al fontanero, no a toda su empresa.",
+      "pauseAfterMs": 3000,
+      "exam": {
+        "objective": "1.3",
+        "text": "Allow list: añade lo justo para el cambio",
+        "at": "site-back",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-queda",
+      "text": "<engaging> Y llegamos a lo que queda. {verify}La comprobación sale bien y la petición pasa a «comprobado», pero todavía no se cierra.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-queda",
+      "text": "<clear> Falta que lo escrito diga lo que hay. {diagram}Primero, el diagrama de servicios, con el servidor nuevo en su sitio.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-queda",
+      "text": "<thoughtful> {procedure}Luego, el procedimiento paso a paso, con el paso que cambió. {sop}Así lo hace igual quien lo haga.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-queda",
+      "text": "<warm> {version}Y la versión guardada, con quién cambió qué y cuándo. Es el version control, y permite volver a la anterior.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-queda",
+      "text": "<firm> {close}Cuando las tres coinciden con lo que hay, el sello cambia a «cerrado».",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "1.3",
+        "text": "Cerrado: diagramas y procedimientos al día",
+        "at": "close",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-queda",
+      "text": "<steady> O sea, que un cambio no se cierra cuando funciona, sino cuando lo escrito dice lo que hay.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<curious> {q3}La última. Una floristería cambió de programa de encargos, en un servidor nuevo. Todo funciona, pero cada empleada cursa los urgentes a su manera y algunos no salen. ¿Qué actualización pendiente explica el problema?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "1.3",
+        "scenario": "Una floristería cambió de programa de encargos, en un servidor nuevo. Todo funciona, pero cada empleada cursa los urgentes a su manera y algunos no salen.",
+        "q": "¿Qué actualización pendiente explica el problema?",
+        "options": [
+          "El control de versiones",
+          "Los procedimientos",
+          "El inventario de servicios",
+          "El diagrama de servicios"
+        ],
+        "answer": 1,
+        "trap": 3,
+        "why": "Cambió cómo se cursa un encargo, y nadie lo dejó escrito para todas",
+        "trapWhy": "El diagrama también debe estar al día, pero no explica que cada una lo haga a su manera",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<firm> {ok-3}Los procedimientos. {request-back}Cambió cómo se cursa un encargo y nadie lo dejó escrito para todas. {trap-3}El diagrama también hace falta, pero no explica eso.",
+      "pauseAfterMs": 1000
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Tres reglas. Una, antes de que firme el comité {rule-1}hacen falta impacto, pruebas y plan de vuelta atrás.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Dos, pregunta quién más lo usa, y a las listas entra solo lo que el cambio necesita.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y tres, un cambio no se cierra hasta que lo escrito dice lo que hay.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Antes de tocar, tres cosas. Al tocar, lo necesario. {next}Al acabar, todo al día. {endcard}Tu turno.",
+      "pauseAfterMs": 250
+    }
+  ]
+}
