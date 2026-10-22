@@ -14,7 +14,12 @@
     "ok-2": "check",
     "trap-2": "block",
     "ok-3": "check",
-    "trap-3": "block"
+    "trap-3": "block",
+    "request": "mail",
+    "old-program": "glitch",
+    "fail": "error",
+    "one-line": "typing",
+    "close": "lock"
   },
   "segments": [
     {
@@ -80,7 +85,7 @@
     {
       "id": "s02-07",
       "scene": "s02-antes",
-      "text": "<serious> {rollback}El plan de vuelta atrás no es un adorno. Si la comprobación falla en la ventana, se activa.",
+      "text": "<serious> {rollback}El plan de vuelta atrás no es un adorno. Si la comprobación {fail}falla en la ventana, se activa.",
       "pauseAfterMs": 500
     },
     {
