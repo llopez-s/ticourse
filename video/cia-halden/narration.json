@@ -14,7 +14,12 @@
     "ok-2": "check",
     "trap-2": "block",
     "ok-3": "check",
-    "trap-3": "block"
+    "trap-3": "block",
+    "tamper": "glitch",
+    "blaze": "alarm",
+    "cert": "lock",
+    "logged": "typing",
+    "missing": "error"
   },
   "segments": [
     {
@@ -38,13 +43,13 @@
     {
       "id": "s02-02",
       "scene": "s02-propiedades",
-      "text": "<thoughtful> {change}La segunda, que nadie la cambie sin permiso. Si la hoja pasa de mil kilos a cien, eso es integrity.",
+      "text": "<thoughtful> {change}La segunda, que nadie la cambie sin permiso. Si la hoja {tamper}pasa de mil kilos a cien, eso es integrity.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-03",
       "scene": "s02-propiedades",
-      "text": "<curious> {fire}La tercera, que esté cuando hace falta. Imagina que de noche hay un fuego y quien va a apagarlo no puede abrirla. Eso es availability.",
+      "text": "<curious> {fire}La tercera, que esté cuando hace falta. Imagina que de noche hay un {blaze}fuego y quien va a apagarlo no puede abrirla. Eso es availability.",
       "pauseAfterMs": 300
     },
     {
@@ -146,7 +151,7 @@
     {
       "id": "s04-06",
       "scene": "s04-aaa",
-      "text": "<firm> {log}La tercera, ¿qué hiciste? Queda apuntado quién la abrió, quién la cambió y cuándo. Eso es accounting.",
+      "text": "<firm> {log}La tercera, ¿qué hiciste? Queda {logged}apuntado quién la abrió, quién la cambió y cuándo. Eso es accounting.",
       "pauseAfterMs": 300
     },
     {
@@ -224,7 +229,7 @@
     {
       "id": "s06-04",
       "scene": "s06-falta",
-      "text": "<thoughtful> {table}Imagina una norma para estas hojas. {rows}Un requisito se cumple, otro va a medias y el tercero falta, porque la hoja llega sin firma.",
+      "text": "<thoughtful> {table}Imagina una norma para estas hojas. {rows}Un requisito se cumple, otro va a medias y el tercero {missing}falta, porque la hoja llega sin firma.",
       "pauseAfterMs": 300
     },
     {
