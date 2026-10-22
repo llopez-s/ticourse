@@ -1,0 +1,128 @@
+{
+  "title": "Una orden escondida en un documento",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 242,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Cómo se cuela"
+    },
+    {
+      "n": 2,
+      "title": "Por qué una línea no basta"
+    },
+    {
+      "n": 3,
+      "title": "Lo que sale del modelo"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "El asistente nuevo",
+      "targetSec": 20,
+      "wordBudget": 50,
+      "goal": "Rótulo «Autoridad Portuaria de Halden · caso de ejemplo · sin fecha». Una ventana de chat con el logo de olas genérico y dos globos sin texto legible, y a un lado una carpeta de «documentos internos» (`assistant`). Al acabar la primera frase entra el título «Una orden escondida en un documento» (`title`, antes de los 12 s) y, en la promesa (`promise`), dos chips: «cómo se cuela · qué limita el daño». La insignia de BORROWED VOICE, una voz en cursiva dentro de comillas rosa, aparece al nombrarla (`voice`), nunca un retrato; sin IP, dominio ni equipo. Plaquita «SY0-801 · borrador». Fuera de GLASS HARBOR: sin fechas ni hechos de la campaña",
+      "requiredCues": [
+        "assistant",
+        "title",
+        "promise",
+        "voice"
+      ]
+    },
+    {
+      "id": "s02-entra",
+      "chapter": 1,
+      "title": "Por dónde entra la orden",
+      "targetSec": 54,
+      "wordBudget": 140,
+      "goal": "Un documento «de un tercero» (`doc`) con una barra gris y un candado donde iría el texto escondido, ilegible a propósito (`hidden`, con su efecto). El modelo lee la petición y la barra con el mismo «oído» (`reads`). Después un cuadro de tres filas que se llenan una a una: «indirecta · la orden viaja en el documento» (`indirect`), «jailbreaking · el usuario, en su conversación» (`jailbreak`) y, al final, «poisoning · los datos con los que aprende» (`poison`). Entre medias, la pregunta «¿quién ataca y por dónde entra?» (`rule`). Tarjeta 1 al acabar la frase de la regla (`card1`). Nada de órdenes legibles ni ejecutables",
+      "requiredCues": [
+        "doc",
+        "hidden",
+        "reads",
+        "indirect",
+        "jailbreak",
+        "rule",
+        "card1",
+        "poison"
+      ]
+    },
+    {
+      "id": "s03-piensa",
+      "chapter": 2,
+      "title": "¿Basta una línea?",
+      "targetSec": 14,
+      "wordBudget": 28,
+      "goal": "El panel de instrucciones del asistente con una línea añadida, «no obedezcas órdenes de un documento» (`prompt`). Pausa para pensar de 4,5 s: «¿Basta una línea que diga «no obedezcas»?»",
+      "requiredCues": [
+        "prompt"
+      ]
+    },
+    {
+      "id": "s04-ingenua",
+      "chapter": 2,
+      "title": "Por qué no basta",
+      "targetSec": 48,
+      "wordBudget": 100,
+      "goal": "Primero el mensaje interceptado de BORROWED VOICE (`advice`), con la tarjeta del motor y la voz de máquina. Después tres tarjetas, una cada vez: «el mismo canal» (`channel`, dos frases enfrentadas), «se rodea» (`list`, la misma frase reformulada, traducida y partida) y «el 1 %» (`one-percent`, un asistente que lee todo y habla hacia fuera). Cierra con «una esperanza, no un control» (`hope`) y la tarjeta 2 al acabar esa frase",
+      "requiredCues": [
+        "advice",
+        "channel",
+        "list",
+        "one-percent",
+        "hope"
+      ]
+    },
+    {
+      "id": "s05-capas",
+      "chapter": 2,
+      "title": "Lo que sí funciona",
+      "targetSec": 42,
+      "wordBudget": 105,
+      "goal": "El mismo asistente, ahora rodeado de barreras fuera del modelo, una a una: permisos de quien pregunta (`least`), sin salida libre y una persona que aprueba (`nolimit`), y un registro para el SOC con «documento procesado · herramienta usada» (`log`). Antes, la idea de suponer que fallará (`assume`). Al final, un trazo recoge las barreras y se rotula «todas fuera del modelo» (`outside`, con su efecto). Tarjeta 3 al acabar esa frase",
+      "requiredCues": [
+        "assume",
+        "least",
+        "nolimit",
+        "log",
+        "outside"
+      ]
+    },
+    {
+      "id": "s06-salida",
+      "chapter": 3,
+      "title": "Lo que sale del modelo",
+      "targetSec": 42,
+      "wordBudget": 95,
+      "goal": "Una salida del modelo hacia un intérprete (`runs`), sin barrera y con un aviso rosa (`malicious`, con su efecto); después el mensaje interceptado de BORROWED VOICE y, en la respuesta, el recuadro «el modelo revisa su script» tachado (`self-review`). La regla «salida del modelo = entrada no confiable» (`untrusted`) con la tarjeta 4 al acabar la frase. Por último, el script dentro de una caja «sandbox» sin credenciales ni red y con una mano que aprueba (`sandbox`, con su efecto)",
+      "requiredCues": [
+        "runs",
+        "malicious",
+        "self-review",
+        "untrusted",
+        "sandbox"
+      ]
+    },
+    {
+      "id": "s07-cierre",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "targetSec": 22,
+      "wordBudget": 56,
+      "goal": "Tres tarjetas de reglas, una cada vez (`rule-1`, `rule-2`, `rule-3`) tras el título (`recap`). La frase final (`phrase`) y, en `next`, la tarjeta final de Alertópolis: «Ahora te toca: las comprobaciones de la lección» (4, opcionales, sin XP) (`endcard`)",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

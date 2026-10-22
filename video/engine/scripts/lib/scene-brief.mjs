@@ -418,7 +418,7 @@ export function sceneBrief({
     slug,
     chapters,
     sfx: narration.sfx ?? {},
-    badge: EXAM_BADGE[manifest.track] ?? manifest.track,
+    badge: manifest.examBadge ?? EXAM_BADGE[manifest.track] ?? manifest.track,
     examTiming: narration.examTiming ?? 'cue',
     adversary: manifest.adversary ?? 'the adversary',
     voiced: narration.adversaryVoice !== undefined,
