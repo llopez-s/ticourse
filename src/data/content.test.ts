@@ -389,7 +389,7 @@ describe('lesson videos', () => {
     // V47 asks three questions of what must not stop (what rules, does it answer in time and fit, is there a patch and can
     // it go on) over a crane on the port's quay, with three exam-style questions, after sp3m3's last check (the buoy
     // sensors) and before the paragraph that hands over to sp3m4
-    expect(youtubeVideos.find((v) => v.block.youtube === '5VbbpEGktdI')?.module).toBe('sp3m3');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'qANC8-P3v1Y')?.module).toBe('sp3m3');
   });
 
   it('every video block points at relative public assets that exist', async () => {
