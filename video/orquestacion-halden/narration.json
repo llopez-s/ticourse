@@ -1,0 +1,318 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {night}De noche, en el puerto de Halden, salta una alerta. {screens}Toca copiarla a mano en cinco pantallas, {copy}y nunca sale igual.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Una tarea o un flujo. {promise}Vas a ver qué hace una tarea sola, cómo se encadena el flujo y lo que cuesta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-cadena",
+      "text": "<thoughtful> {one-task}El caso se abre solo, siempre con los mismos campos, {timer}como un semáforo con temporizador. Una tarea que va sola es automation.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-cadena",
+      "text": "<firm> Y lo que gana la seguridad no es solo la rapidez. {same}Es que sale siempre igual.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "4.7",
+        "text": "Beneficio de seguridad: que salga siempre igual",
+        "at": "same",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-cadena",
+      "text": "<engaging> {chain}Ahora une los pasos. El EDR avisa, y el flujo pregunta al proveedor de identidad desde dónde entró la cuenta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-cadena",
+      "text": "<focused> {condition}Si el riesgo es alto, avisa a la guardia.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-cadena",
+      "text": "<warm> {avenue}Piensa en la central de tráfico de una avenida. Coordina todos los semáforos y, si llega una ambulancia, le abre paso.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-cadena",
+      "text": "<clear> Encadenar tareas de varias herramientas, con condiciones si hace falta, es orchestration.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-cadena",
+      "text": "<confident> {soar}En el SOC se llama SOAR, {playbook}y su receta, playbook.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca. Un flujo usa el script de Sistemas que crea cuentas. Cuando Recursos Humanos da de alta a alguien, le crea la cuenta y la mete en sus grupos. Luego le abre el buzón y pide su portátil con un ticket. ¿Qué describe mejor ese flujo? {best}Ojo con ese «mejor». Pide la que más encaja aquí, aunque otra también sea verdad en parte.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "4.7",
+        "scenario": "Un flujo usa el script que crea cuentas. Con cada alta de RR. HH., crea la cuenta, la mete en sus grupos, le abre el buzón y pide su portátil con un ticket.",
+        "q": "¿Qué describe MEJOR ese flujo?",
+        "options": [
+          "Automation",
+          "Escalation",
+          "Orchestration",
+          "Guard rails"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "Encadena varias tareas en herramientas distintas cuando RR. HH. registra un alta",
+        "trapWhy": "El script del que parte sí es automation, pero la pregunta es por el flujo",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Es orchestration. Encadena tareas en el directorio, el correo y los tickets. {trap-1}Automation tienta, porque todo pasa solo. {flow}Pero eso es el script, y te preguntan por el flujo.",
+      "pauseAfterMs": 1600,
+      "exam": {
+        "objective": "4.7",
+        "text": "Automation: una tarea; orchestration: el flujo",
+        "at": "flow",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-pasos",
+      "text": "<clear> {queue}Vuelve la alerta, esta vez sin riesgo alto, y ahora cada paso tiene nombre. {ticket}El flujo la apunta en la cola del SOC con su hora, o sea, ticket creation.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-pasos",
+      "text": "<concerned> {minutes}Pero pasan los minutos y nadie la coge. Justo lo que quiere SILENT PAGER, que cuenta con que tu SOC duerma.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-pasos",
+      "text": "<firm> Pues no basta, porque apuntar un caso no es atenderlo.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "Deja que el flujo abra el ticket. Mañana lo leerá alguien.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-pasos",
+      "text": "<warm> {bell}Es como el timbre de un hospital. Se enciende la luz de la puerta {station}y, si nadie entra, suena en enfermería.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-pasos",
+      "text": "<confident> {escalate}A los quince minutos, el flujo sube la prioridad y avisa a la guardia. Eso es escalation.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-pasos",
+      "text": "<clear> {cut}Y cuando la analista lo confirma, corta las sesiones de la cuenta, que es enabling, disabling services and access.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Un escaneo encuentra un fallo crítico y el flujo abre un ticket para Sistemas. A los dos días nadie lo ha cogido, así que lo marca urgente y se lo pasa al responsable. ¿Qué caso de uso describe lo que hace a los dos días?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "4.7",
+        "scenario": "Un escaneo halla un fallo crítico y el flujo abre un ticket a Sistemas. A los dos días nadie lo ha cogido, y el flujo lo marca urgente y lo pasa al responsable.",
+        "q": "¿Qué caso de uso describe lo que hace el flujo a los dos días?",
+        "options": [
+          "Ticket creation",
+          "Resource provisioning",
+          "Enabling/disabling services and access",
+          "Escalation"
+        ],
+        "answer": 3,
+        "trap": 0,
+        "why": "Nadie lo ha cogido, y el flujo lo sube a otra persona y a más urgencia",
+        "trapWhy": "Se habla de un ticket, pero se creó dos días antes: ahora se sube",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<firm> {ok-2}Escalation, porque el flujo lo sube a otra persona y a más urgencia. {trap-2}La trampa es ticket creation, porque sale un ticket.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<clear> {up}Solo que ese ticket ya existía. Ahora no se crea, se sube.",
+      "pauseAfterMs": 1200,
+      "exam": {
+        "objective": "4.7",
+        "text": "Ticket creation lo apunta; escalation lo sube",
+        "at": "up",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-precio",
+      "text": "<thoughtful> {one-box}Y ahora, lo que cuesta. Todo esto pasa por una sola plataforma de orquestación.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-precio",
+      "text": "<concerned> {central-down}Si se apaga la central de la avenida, se atasca entera. {grey}Y aquí, ni se abre el caso, ni se avisa a nadie, ni se corta nada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-precio",
+      "text": "<serious> {central-taken}Y quien se cuela en la central manda en todos los semáforos. Pues con la cuenta de la plataforma, igual.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-precio",
+      "text": "<firm> {spof}Si cae, es un single point of failure. Y si la toman, un objetivo privilegiado.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.7",
+        "text": "SPOF si cae; objetivo privilegiado si la toman",
+        "at": "spof",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-precio",
+      "text": "<clear> {two-cards}Hay dos problemas que suenan parecido. {complexity}Si una avenida de cuarenta semáforos se atasca, hay que entenderla entera, aunque esté bien llevada. Eso es complexity.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-precio",
+      "text": "<casual> {debt}Y el semáforo que programó alguien que ya no está, sin planos ni dueño, es technical debt.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-07",
+      "scene": "s06-precio",
+      "text": "<warm> {support}Por eso, pregúntate antes quién lo va a mantener.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}La última. Un flujo del SOC tiene dueño, documentación y control de versiones, y se revisa cada seis meses. {five}Cruza cinco herramientas distintas. Y cuando falla, hay que entenderlas todas para dar con la pieza rota. ¿Qué consideración describe mejor el problema?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "4.7",
+        "scenario": "Un flujo del SOC tiene dueño, documentación, versiones y revisión semestral. Cruza cinco herramientas: para dar con la pieza rota, hay que entenderlas todas.",
+        "q": "¿Qué consideración describe MEJOR el problema?",
+        "options": [
+          "Complexity",
+          "Technical debt",
+          "Single point of failure",
+          "Cost"
+        ],
+        "answer": 0,
+        "trap": 1,
+        "why": "Son muchas piezas que entender para arreglarlo, aunque estén bien cuidadas",
+        "trapWhy": "Suena a automatización vieja, pero aquí no hay nada abandonado",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Complexity. Son muchas piezas que entender. {trap-3}Technical debt engancha, porque suena a automatización vieja.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<warm> {neglect}Y este flujo tiene dueño y se revisa. De abandonado, nada.",
+      "pauseAfterMs": 1200,
+      "exam": {
+        "objective": "4.7",
+        "text": "Complexity no es abandono: eso es technical debt",
+        "at": "neglect",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Una tarea sola es automation, y el flujo, orchestration.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Ticket creation apunta, y escalation sube lo que nadie coge.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}La plataforma es un single point of failure. Y complexity no es abandono.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Antes de contestar, pregúntate si es una tarea o un flujo, y qué hace ese paso. {next}Ahora te toca a ti. {endcard}A por las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}
