@@ -13,9 +13,9 @@ sharing one engine:
   questions, 12 labs, 80 flashcards, 60 placement questions. Campaign "Operación VELVET CICADA".
 - **`secplus`** — CompTIA Security+ SY0-701. Skeleton for all 5 domains (`sp1`–`sp5`) + exam
   prep (`sp6`). **COMPLETE — all five domains** (2026-09-05): 41 content lessons + 1 exam-prep,
-  305 questions, 132 checkpoints, 15 labs, 152 flashcards, 233 glossary terms.
+  308 questions, 133 checkpoints, 15 labs, 155 flashcards, 237 glossary terms.
   Per domain: D1 7 lessons / 51 q / 26 cards / 40 terms; D2 8 / 60 / 28 / 44; D3 7 / 53 / 30 / 46;
-  D4 (largest, 28%) 11 lessons `sp4m1–11` across `sp4-part1..6.ts` / 82 q / 36 cards / 55 terms;
+  D4 (largest, 28%) 11 lessons `sp4m1–11` across `sp4-part1..6.ts` / 85 q / 39 cards / 59 terms;
   D5 8 lessons / 59 q / 32 cards / 48 terms. Every section has 3 labs (`splNa/b/c`) and a
   playable boss. Campaign "Operación GLASS HARBOR" (Autoridad Portuaria de Halden) is
   completable end to end. Spec + per-domain plans in `docs/superpowers/`
@@ -156,7 +156,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
 - **Practical curriculum (2026-10-19).** Twelve existing lessons append typed blocks
   from `data/practical/` through `withPracticalExpansion` in `tracks.ts`. Original
   block indices and lesson/question/lab IDs stay stable. New totals: GCTI 96 cards /
-  107 glossary entries; Security+ 160 cards / 242 entries, 134 base checkpoints plus
+  107 glossary entries; Security+ 163 cards / 246 entries, 135 base checkpoints plus
   2 optional. Fourteen professional checks across tracks use `CheckQ.optional`:
   excluded from lesson completion and XP, never added to exam/placement pools.
   Fundamentals are base; Microsoft-specific and CTI professional practice are
