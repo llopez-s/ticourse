@@ -453,6 +453,17 @@ const sp2m6: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a los ataques, ponte a prueba: del síntoma al nombre, con cinco preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Malware e indicadores: del síntoma al nombre',
+      youtube: 'PbBKS_xuJ68',
+      poster: 'videos/malware-halden-poster.png',
+      transcript: 'videos/malware-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Ya puedes poner nombre al malware a partir de su comportamiento y leer los nueve indicadores como lo haría una analista de SOC. La siguiente lección completa el objetivo 2.4 con los ataques que no necesitan un programa malicioso instalado: **ataques de red**, **de aplicación**, **criptográficos** y **de contraseña**, muchos de los cuales producen precisamente los indicadores que acabas de aprender.',
     },
   ],

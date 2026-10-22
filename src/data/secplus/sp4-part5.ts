@@ -138,6 +138,17 @@ const sp4m9: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a la respuesta a incidentes, míralo en el puerto y ponte a prueba con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Una tarea o un flujo: automatizar y orquestar',
+      youtube: 'G5ywhPJ7LbQ',
+      poster: 'videos/orquestacion-halden-poster.png',
+      transcript: 'videos/orquestacion-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'La automatización bien hecha te compra algo muy concreto: tiempo y consistencia para el momento en que la prevención falle. Y va a fallar. La siguiente lección es la que da sentido a todas las demás del dominio —el proceso de **respuesta a incidentes**—, y verás que sus dos primeras palabras, *preparation* y *detection*, son exactamente lo que has estado construyendo: baselines aplicados sin deriva, logs centralizados, alertas afinadas, accesos que se cortan en segundos y playbooks probados. Cuando suene la alarma de verdad en la terminal de contenedores, no vas a improvisar: vas a ejecutar.',
     },
   ],
