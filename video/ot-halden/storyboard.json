@@ -1,0 +1,151 @@
+{
+  "title": "En marcha, a tiempo y con parche",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 270,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Que no se pare"
+    },
+    {
+      "n": 2,
+      "title": "A tiempo, y lo que cabe"
+    },
+    {
+      "n": 3,
+      "title": "¿Hay parche? ¿Se puede poner?"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una grúa sobre el papel",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · requisitos para el control del muelle · propuesta · sin fecha». Una grúa pórtico de perfil, en línea, sin número, muelle, cables ni red, con un contenedor colgado del gancho (un dibujo, sin peso ni movimiento) (`crane`). Cuatro piezas señaladas con un punto, sin texto todavía: los controladores, el anticolisión, el sensor de viento de la pluma y un sensor sin cables (`parts`). Al acabar la primera frase, título «En marcha, a tiempo y con parche» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «¿qué va primero? · ¿llega a tiempo? · ¿hay parche y se puede poner?». Plaquita «SY0-701 · 3.1»",
+      "requiredCues": [
+        "crane",
+        "parts",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-manda",
+      "chapter": 1,
+      "title": "Primero, que no se pare",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "El caso, una decisión sin incidente: Seguridad escribe lo que el puerto pedirá a cualquier sistema de control nuevo del muelle y lo repasa sobre la grúa del dibujo (`case`). Tres palabras se ordenan junto a ella (`order`): AVAILABILITY («que siga moviendo carga mientras haya barco») · INTEGRITY («que nadie cambie una orden») · CONFIDENTIALITY («la velocidad del viento no es ningún secreto»). Los nombres, después de la idea, en un chip (`names`): «lo que gobierna el proceso, controladores incluidos: ICS · la capa que los supervisa: SCADA · todo junto: OT». El rótulo «en OT, la CIA se lee al revés» (`cia`; la tarjeta de examen cuelga de aquí). Una línea para el examen (`exam-line`): «la opción que detiene el proceso suele ser la mala». El primer requisito de diseño: los controladores se duplican y cada uno lleva su alimentación, sin ninguna línea de red (`ha`) → HIGH AVAILABILITY («se diseña, no se compra»). Los bomberos en miniatura, rotulados «imagen · no es del puerto»: dos camiones de guardia, cada uno con su dotación (`firehouse-1`). Ninguna grúa se para ni falla",
+      "requiredCues": [
+        "case",
+        "order",
+        "names",
+        "cia",
+        "exam-line",
+        "ha",
+        "firehouse-1"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "La ventilación de un túnel",
+      "targetSec": 42,
+      "wordBudget": 92,
+      "goal": "Pregunta tipo examen 1 (`q1`). La escena dibuja bajo el panel el rótulo «pregunta tipo examen · ejemplo» (el motor no lo pinta, contradicción 17). El panel tapa la escena hasta el final, así que el fondo se queda quieto: la boca de un túnel de carretera, sin nombre, ciudad ni fabricante, y sin texto. Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, dibujada por la escena (el panel no la pinta), la línea «MEJOR: la que encaja con este caso, aunque otra suene bien» (`best`); la voz dice la idea con palabras propias antes de la cuenta atrás. Cuenta atrás de 5 s con «Pausa si quieres»; en `ok-1` sale la correcta (D, un segundo controlador funcionando a la vez) y en `trap-1` la trampa (A, otro controlador en el almacén); las otras dos, atenuadas. En la resolución vuelven los bomberos en una línea (`fire-back-1`): «un camión en la nave, sin dotación, no está de guardia»; la tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q1",
+        "best",
+        "ok-1",
+        "trap-1",
+        "fire-back-1"
+      ]
+    },
+    {
+      "id": "s04-tiempo",
+      "chapter": 2,
+      "title": "A tiempo, y lo que cabe",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "La grúa del dibujo. Se enciende el anticolisión (`anticollision`): «debe reaccionar en milisegundos» → RESPONSIVENESS («llegar a tiempo · no es lo mismo que estar en marcha») (`responsiveness`); debajo, «por eso lleva un RTOS: nada que le quite tiempo», con «agentes · escaneos» tachados (`rtos`). Se enciende el sensor de viento de la pluma (`wind`): «firmware del fabricante · una sola función» → EMBEDDED (`embedded`), y «procesador justo para medir» → COMPUTE («no le cabe un agente») (`compute`). El sensor sin cables (`battery`): «va con batería» → POWER («cada cálculo de más, menos batería») (`power`). Un chip (`iot`): «cámaras y sensores conectados, a cientos: IoT». Los bomberos en miniatura, rotulados «imagen · no es del puerto»: el camión libre y un reloj de diez minutos (`firehouse-2`). Sin tarjeta de examen (la del concepto 2 llega en s05, después de la pregunta)",
+      "requiredCues": [
+        "anticollision",
+        "responsiveness",
+        "rtos",
+        "wind",
+        "embedded",
+        "compute",
+        "battery",
+        "power",
+        "iot",
+        "firehouse-2"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "La barrera de luz",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo examen 2 (`q2`), con el rótulo «pregunta tipo examen · ejemplo» dibujado por la escena. «MEJOR» resaltado en la pregunta (ya explicado en s03: sin línea debajo ni glosa en la voz). Fondo quieto: la silueta de una prensa con la cortina de luz delante, sin fábrica, nombre ni texto. Cuenta atrás de 5 s; en `ok-2` la correcta (D, Responsiveness), en `trap-2` la trampa (B, Availability). En la resolución vuelven los bomberos en una línea (`fire-back-2`): «el camión estaba libre, y aun así llegó tarde»; la tarjeta de examen después de la trampa",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "fire-back-2"
+      ]
+    },
+    {
+      "id": "s06-parche",
+      "chapter": 3,
+      "title": "Dos preguntas al fabricante",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "goal": "El último requisito de la lista, en dos líneas, junto a la grúa del dibujo. «¿Publicará parches, cada cuánto y hasta cuándo?» (`patch-q1`) → PATCH AVAILABILITY (`availability`), con el chip «si el producto llega al final de su vida, no hay más» (`eol`). «¿Se podrán instalar con el muelle trabajando, o en sus paradas?» (`patch-q2`) → INABILITY TO PATCH, si la respuesta es «nunca» (`inability`). Debajo, en una línea (`compensate`): «sin parche que se pueda poner: compensating controls», sin decir cuáles ni dibujar la red; los parches son del fabricante, sin decir por dónde llegan. Los bomberos, rotulados «imagen · no es del puerto»: la pieza nueva en una caja y el camión, que no sale nunca de guardia (`firehouse-3`)",
+      "requiredCues": [
+        "patch-q1",
+        "availability",
+        "eol",
+        "patch-q2",
+        "inability",
+        "compensate",
+        "firehouse-3"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Una fábrica de vidrio",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 3 (`q3`), con el rótulo «pregunta tipo examen · ejemplo» dibujado por la escena. Sin calificador, a propósito: la definición decide. Fondo quieto: la silueta de un horno de vidrio encendido, sin fábrica, nombre ni texto. Cuenta atrás de 5 s; en `ok-3` la correcta (A, Inability to patch), en `trap-3` la trampa (D, Patch availability). En la resolución vuelven los bomberos en una línea (`fire-back-3`): «la pieza está en la caja; lo que falta es que el camión pueda ir al taller»; la tarjeta de examen después de la trampa",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "fire-back-3"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (los dos camiones de guardia · el reloj de diez minutos · la pieza en su caja) (`recap`, `rule-1`, `rule-2`, `rule-3`): «En lo que mueve cosas físicas, primero que no se pare, después que nadie cambie una orden y al final el secreto. Y la alta disponibilidad se diseña duplicando lo que no puede fallar» · «Estar en marcha es availability; responder a tiempo es responsiveness; y lo que cabe en el aparato es compute y power» · «Patch availability pregunta si hay parches; inability to patch, si se pueden poner. Y lo que no se puede parchear, se compensa». La frase para el examen (`phrase`): «Primero, que no se pare; después, que llegue a tiempo; y al parche, dos preguntas: ¿hay? ¿se puede poner?». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

@@ -243,6 +243,9 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `vUBVKXDS9HM`, 4:44, published 2026-10-20) is now the first video of sp3 in course order (IaC, serverless, microservices;
   no BLIND ARCHITECT, so V16 stays her first). **V46 `video/aislamiento-halden/`** (sp3m2, YouTube `8r0OvoLgKTk`, 4:39,
   published 2026-10-20) moves two office apps from VMs to containers: what the image fixes and what the host keeps.
+  **V47 `video/ot-halden/`** (sp3m3, YouTube `5VbbpEGktdI`, 4:52, published 2026-10-22) asks three questions of what must
+  not stop (what rules, does it answer in time and fit, is there a patch and can it go on) over a drawn quay crane, after
+  the lesson's last check; no network and no BLIND ARCHITECT, so V16 stays the first of both.
   Every script takes `--video <slug>`. Pipeline: `narration.json` →
   `scripts/tts-elevenlabs.mjs` (ElevenLabs v3, one request per scene with `<tag>` emotion
   directions; needs `ELEVENLABS_API_KEY` in the git-ignored `.env.local`; free plan = 10k chars/month,

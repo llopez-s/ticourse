@@ -1,0 +1,315 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {crane}En el puerto de Halden hay máquinas que mueven cuarenta toneladas. {parts}Y no se protegen como un ordenador.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}En marcha, a tiempo y con parche. {promise}Tres preguntas para esta grúa. Qué va primero, si llega a tiempo, y si hay parche y se puede poner.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-manda",
+      "text": "<engaging> {case}Seguridad escribe lo que el puerto pedirá a cualquier sistema de control nuevo del muelle, y lo repasa con esta grúa.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-manda",
+      "text": "<thoughtful> {order}Lo primero, que siga moviendo carga. Después, que nadie cambie una orden. Y el secreto, lo último.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-manda",
+      "text": "<clear> {names}Lo que gobierna la grúa, con sus controladores, es un ICS. La capa que los supervisa es SCADA, y todo junto, la OT.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-manda",
+      "text": "<firm> {cia}O sea, que en la OT la tríada CIA va al revés, availability, integrity y confidentiality. {exam-line}Y en el examen, la opción que detiene el proceso suele ser la mala.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "3.1",
+        "text": "En OT: availability, integrity, confidentiality",
+        "at": "cia",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-manda",
+      "text": "<confident> {ha}El primer requisito es duplicar los controladores, cada uno con su alimentación, para que si uno falla, el otro siga.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-manda",
+      "text": "<warm> {firehouse-1}Como un parque de bomberos con dos camiones de guardia, cada uno con su dotación. Eso es high availability, y se diseña.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}La ventilación de un túnel de carretera depende de un solo controlador. Si se avería, el túnel se cierra hasta que llega otro y lo sustituyen. ¿Qué cambio es el mejor para que no se pare? {best}Si dice «mejor», no busques la única opción que sirve, sino la que más sirve aquí.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "3.1",
+        "scenario": "La ventilación de un túnel depende de un solo controlador. Si se avería, el túnel se cierra hasta que llega otro y lo sustituyen.",
+        "q": "¿Qué cambio es el MEJOR para que no se pare?",
+        "options": [
+          "Guardar otro controlador igual en el almacén",
+          "Contratar un seguro que cubra la parada",
+          "Cifrar lo que viaja por su cable",
+          "Un segundo controlador funcionando a la vez"
+        ],
+        "answer": 3,
+        "trap": 0,
+        "why": "Si uno falla, el otro ya está trabajando: el túnel no llega a pararse",
+        "trapWhy": "Un repuesto sirve para volver después de caer, no para no caer",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<firm> {ok-1}Es el segundo controlador funcionando a la vez, que ya trabaja cuando el otro falla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<thoughtful> {trap-1}El del almacén tienta porque acorta la parada, pero sirve para volver después de caer, no para evitarlo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-p1",
+      "text": "<warm> {fire-back-1}O sea, que un camión en la nave, sin dotación, no está de guardia.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "3.1",
+        "text": "HA se diseña: duplica lo que no puede fallar",
+        "at": "fire-back-1",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-tiempo",
+      "text": "<engaging> {anticollision}Ahora, si llega a tiempo. El sistema anticolisión de la grúa debe reaccionar en milisegundos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-tiempo",
+      "text": "<clear> {responsiveness}Responder dentro del plazo es responsiveness, que no es lo mismo que estar en marcha.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-tiempo",
+      "text": "<focused> {rtos}Por eso lleva un sistema operativo de tiempo real, un RTOS, y nada que le quite tiempo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-tiempo",
+      "text": "<casual> {wind}El sensor de viento trae un programa fijo de fábrica y solo mide. {embedded}Eso se llama sistema embedded.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-tiempo",
+      "text": "<thoughtful> {compute}Va justo de procesador, no le cabe un agente. Eso es compute. {battery}Como el sensor sin cables va con batería, {power}cada cálculo de más la gasta. Ahí entra el power.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-tiempo",
+      "text": "<engaging> {iot}Y cuando son aparatos así conectados, a cientos, es IoT. {firehouse-2}Pero quédate con el plazo. Un camión de bomberos libre no basta. Tiene que llegar en diez minutos.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<intrigued> {q2}Mira este requisito del control de una prensa. Si alguien cruza la barrera de luz, la prensa se detiene en menos de diez milisegundos. Siempre. ¿Qué consideración describe mejor ese requisito?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "3.1",
+        "scenario": "Un requisito del control de una prensa dice: «Si alguien cruza la barrera de luz, la prensa se detiene en menos de 10 milisegundos, siempre».",
+        "q": "¿Qué consideración describe MEJOR ese requisito?",
+        "options": [
+          "Compute",
+          "Availability",
+          "Ease of recovery",
+          "Responsiveness"
+        ],
+        "answer": 3,
+        "trap": 1,
+        "why": "Pide un plazo de respuesta: llegar a tiempo, no solo estar en marcha",
+        "trapWhy": "«Siempre» tienta, pero aquí es siempre a tiempo, no siempre en marcha",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Es responsiveness, porque lo que fija es un plazo. {trap-2}El «siempre» te lleva a availability, pero una prensa que nunca se apaga y frena en un segundo lo incumple.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<warm> {fire-back-2}El camión estaba libre, y aun así llegó tarde. Por eso estos sistemas suelen llevar un RTOS.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "3.1",
+        "text": "A tiempo es responsiveness, no availability",
+        "at": "fire-back-2",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-parche",
+      "text": "<thoughtful> {patch-q1}Y por último, dos cosas que saber del fabricante. Primero, si publicará parches, cada cuánto y hasta cuándo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-parche",
+      "text": "<clear> {availability}Eso es patch availability. {eol}Y si el producto llega al final de su vida, no hay más.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-parche",
+      "text": "<focused> {patch-q2}Segundo, si se podrán instalar con el muelle trabajando, o en sus paradas. {inability}Si la respuesta es nunca, eso es inability to patch.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "3.1",
+        "text": "¿Hay parche? ¿Se puede poner? Son dos preguntas",
+        "at": "inability",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-parche",
+      "text": "<firm> {compensate}Y sin parche que se pueda poner, otros controles hacen el trabajo del parche. Son los compensating controls.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-parche",
+      "text": "<warm> {firehouse-3}Como con los bomberos, la pieza nueva existe, pero si el camión nunca puede ir al taller, de poco sirve.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<curious> {q3}Una fábrica de vidrio recibe cada mes parches para el control de su horno. Pero solo se instalan con el horno apagado, y ese horno no se apaga en años. ¿Qué consideración de arquitectura describe el problema?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "3.1",
+        "scenario": "Una fábrica de vidrio recibe cada mes parches para el control de su horno, pero solo se instalan con el horno apagado, y ese horno no se apaga en años.",
+        "q": "¿Qué consideración de arquitectura describe el problema?",
+        "options": [
+          "Inability to patch",
+          "Compute",
+          "Ease of deployment",
+          "Patch availability"
+        ],
+        "answer": 0,
+        "trap": 3,
+        "why": "Los parches existen; lo que falta es poder instalarlos",
+        "trapWhy": "Hay parches cada mes: el problema no es que falten, es ponerlos",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<firm> {ok-3}Es inability to patch. Los parches existen, y lo que falta es poder ponerlos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<thoughtful> {trap-3}La de patch availability despista, pero esa ya está contestada, porque llegan cada mes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-p3",
+      "text": "<warm> {fire-back-3}O sea, la pieza está en su caja. Lo que falta es que el camión pueda ir al taller.",
+      "pauseAfterMs": 700,
+      "exam": {
+        "objective": "3.1",
+        "text": "Hay parche, pero no se puede poner: inability",
+        "at": "fire-back-3",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}En lo que mueve cosas físicas, la alta disponibilidad se diseña.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Estar en marcha es availability, y llegar a tiempo, responsiveness.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y lo que no se puede parchear, se compensa.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Primero, que no se pare. Después, que llegue a tiempo. Y al parche, dos preguntas, si lo hay y si se puede poner.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-cierre",
+      "text": "<warm> {next}Y ahora, tu turno, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

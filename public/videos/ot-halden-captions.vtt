@@ -1,0 +1,371 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:04.700
+En el puerto de Halden hay máquinas
+que mueven cuarenta toneladas.
+
+2
+00:00:04.700 --> 00:00:07.433
+Y no se protegen como un ordenador.
+
+3
+00:00:07.433 --> 00:00:10.667
+En marcha, a tiempo y con parche.
+Tres preguntas para esta grúa.
+
+4
+00:00:10.667 --> 00:00:15.433
+Qué va primero, si llega a tiempo,
+y si hay parche y se puede poner.
+
+5
+00:00:16.300 --> 00:00:18.900
+Seguridad escribe lo que el puerto
+pedirá a cualquier sistema
+
+6
+00:00:18.900 --> 00:00:22.733
+de control nuevo del muelle,
+y lo repasa con esta grúa.
+
+7
+00:00:22.800 --> 00:00:27.567
+Lo primero, que siga moviendo carga.
+Después, que nadie cambie una orden.
+
+8
+00:00:27.567 --> 00:00:29.867
+Y el secreto, lo último.
+
+9
+00:00:29.867 --> 00:00:33.733
+Lo que gobierna la grúa,
+con sus controladores, es un ICS.
+
+10
+00:00:33.733 --> 00:00:38.433
+La capa que los supervisa
+es SCADA, y todo junto, la OT.
+
+11
+00:00:38.433 --> 00:00:43.400
+O sea, que en la OT la tríada
+CIA va al revés, availability,
+
+12
+00:00:43.400 --> 00:00:45.633
+integrity y confidentiality.
+
+13
+00:00:45.633 --> 00:00:49.633
+Y en el examen, la opción que detiene
+el proceso suele ser la mala.
+
+14
+00:00:49.633 --> 00:00:52.500
+El primer requisito
+es duplicar los controladores,
+
+15
+00:00:52.500 --> 00:00:56.733
+cada uno con su alimentación,
+para que si uno falla, el otro siga.
+
+16
+00:00:56.733 --> 00:01:00.300
+Como un parque de bomberos
+con dos camiones de guardia,
+
+17
+00:01:00.300 --> 00:01:05.900
+cada uno con su dotación.
+Eso es high availability, y se diseña.
+
+18
+00:01:06.833 --> 00:01:10.867
+La ventilación de un túnel de carretera
+depende de un solo controlador.
+
+19
+00:01:10.867 --> 00:01:15.100
+Si se avería, el túnel se cierra
+hasta que llega otro y lo sustituyen.
+
+20
+00:01:15.100 --> 00:01:17.833
+¿Qué cambio es el mejor
+para que no se pare?
+
+21
+00:01:17.833 --> 00:01:21.300
+Si dice «mejor», no busques
+la única opción que sirve,
+
+22
+00:01:21.300 --> 00:01:23.867
+sino la que más sirve aquí.
+
+23
+00:01:23.400 --> 00:01:28.400
+A) Guardar otro controlador igual en el almacén
+B) Contratar un seguro que cubra la parada
+C) Cifrar lo que viaja por su cable
+D) Un segundo controlador funcionando a la vez
+
+24
+00:01:28.633 --> 00:01:33.700
+Es el segundo controlador funcionando a la
+vez, que ya trabaja cuando el otro falla.
+
+25
+00:01:33.700 --> 00:01:36.433
+El del almacén tienta
+porque acorta la parada,
+
+26
+00:01:36.433 --> 00:01:40.400
+pero sirve para volver después
+de caer, no para evitarlo.
+
+27
+00:01:40.400 --> 00:01:44.867
+O sea, que un camión en la nave,
+sin dotación, no está de guardia.
+
+28
+00:01:46.367 --> 00:01:48.600
+Ahora, si llega a tiempo.
+
+29
+00:01:48.600 --> 00:01:53.533
+El sistema anticolisión de la grúa
+debe reaccionar en milisegundos.
+
+30
+00:01:53.533 --> 00:01:56.333
+Responder dentro del plazo
+es responsiveness,
+
+31
+00:01:56.333 --> 00:01:58.767
+que no es lo mismo que estar en marcha.
+
+32
+00:01:58.767 --> 00:02:03.067
+Por eso lleva un sistema
+operativo de tiempo real, un RTOS,
+
+33
+00:02:03.067 --> 00:02:05.167
+y nada que le quite tiempo.
+
+34
+00:02:05.167 --> 00:02:08.767
+El sensor de viento trae un programa
+fijo de fábrica y solo mide.
+
+35
+00:02:08.767 --> 00:02:11.267
+Eso se llama sistema embedded.
+
+36
+00:02:11.267 --> 00:02:15.433
+Va justo de procesador,
+no le cabe un agente. Eso es compute.
+
+37
+00:02:15.433 --> 00:02:19.733
+Como el sensor sin cables va con batería,
+cada cálculo de más la gasta.
+
+38
+00:02:19.733 --> 00:02:21.733
+Ahí entra el power.
+
+39
+00:02:21.733 --> 00:02:26.200
+Y cuando son aparatos así
+conectados, a cientos, es IoT.
+
+40
+00:02:26.200 --> 00:02:30.167
+Pero quédate con el plazo.
+Un camión de bomberos libre no basta.
+
+41
+00:02:30.167 --> 00:02:32.467
+Tiene que llegar en diez minutos.
+
+42
+00:02:33.600 --> 00:02:36.767
+Mira este requisito
+del control de una prensa.
+
+43
+00:02:36.767 --> 00:02:38.933
+Si alguien cruza la barrera de luz,
+
+44
+00:02:38.933 --> 00:02:42.933
+la prensa se detiene en menos
+de diez milisegundos. Siempre.
+
+45
+00:02:42.933 --> 00:02:46.567
+¿Qué consideración describe
+mejor ese requisito?
+
+46
+00:02:46.133 --> 00:02:51.133
+A) Compute
+B) Availability
+C) Ease of recovery
+D) Responsiveness
+
+47
+00:02:51.633 --> 00:02:54.867
+Es responsiveness, porque
+lo que fija es un plazo.
+
+48
+00:02:54.867 --> 00:02:57.467
+El «siempre» te lleva a availability,
+
+49
+00:02:57.467 --> 00:03:02.600
+pero una prensa que nunca se apaga
+y frena en un segundo lo incumple.
+
+50
+00:03:02.600 --> 00:03:05.133
+El camión estaba libre,
+y aun así llegó tarde.
+
+51
+00:03:05.133 --> 00:03:08.933
+Por eso estos sistemas
+suelen llevar un RTOS.
+
+52
+00:03:10.533 --> 00:03:13.767
+Y por último, dos cosas
+que saber del fabricante.
+
+53
+00:03:13.767 --> 00:03:18.133
+Primero, si publicará parches,
+cada cuánto y hasta cuándo.
+
+54
+00:03:18.133 --> 00:03:19.500
+Eso es patch availability.
+
+55
+00:03:19.500 --> 00:03:23.200
+Y si el producto llega al final
+de su vida, no hay más.
+
+56
+00:03:23.200 --> 00:03:27.967
+Segundo, si se podrán instalar con el
+muelle trabajando, o en sus paradas.
+
+57
+00:03:27.967 --> 00:03:31.833
+Si la respuesta es nunca,
+eso es inability to patch.
+
+58
+00:03:31.833 --> 00:03:35.800
+Y sin parche que se pueda poner, otros
+controles hacen el trabajo del parche.
+
+59
+00:03:35.800 --> 00:03:38.233
+Son los compensating controls.
+
+60
+00:03:38.267 --> 00:03:41.600
+Como con los bomberos,
+la pieza nueva existe,
+
+61
+00:03:41.600 --> 00:03:46.100
+pero si el camión nunca puede
+ir al taller, de poco sirve.
+
+62
+00:03:47.033 --> 00:03:51.467
+Una fábrica de vidrio recibe cada mes
+parches para el control de su horno.
+
+63
+00:03:51.467 --> 00:03:56.567
+Pero solo se instalan con el horno
+apagado, y ese horno no se apaga en años.
+
+64
+00:03:56.567 --> 00:04:00.233
+¿Qué consideración de arquitectura
+describe el problema?
+
+65
+00:03:59.900 --> 00:04:04.900
+A) Inability to patch
+B) Compute
+C) Ease of deployment
+D) Patch availability
+
+66
+00:04:05.067 --> 00:04:10.567
+Es inability to patch. Los parches
+existen, y lo que falta es poder ponerlos.
+
+67
+00:04:10.567 --> 00:04:14.367
+La de patch availability despista,
+pero esa ya está contestada,
+
+68
+00:04:14.367 --> 00:04:16.333
+porque llegan cada mes.
+
+69
+00:04:16.333 --> 00:04:22.067
+O sea, la pieza está en su caja. Lo que
+falta es que el camión pueda ir al taller.
+
+70
+00:04:23.400 --> 00:04:25.200
+Te llevas tres reglas.
+
+71
+00:04:25.200 --> 00:04:29.667
+En lo que mueve cosas físicas,
+la alta disponibilidad se diseña.
+
+72
+00:04:29.667 --> 00:04:33.933
+Estar en marcha es availability,
+y llegar a tiempo, responsiveness.
+
+73
+00:04:33.933 --> 00:04:36.967
+Y lo que no se puede
+parchear, se compensa.
+
+74
+00:04:36.967 --> 00:04:40.233
+Primero, que no se pare.
+Después, que llegue a tiempo.
+
+75
+00:04:40.233 --> 00:04:44.800
+Y al parche, dos preguntas,
+si lo hay y si se puede poner.
+
+76
+00:04:44.800 --> 00:04:48.833
+Y ahora, tu turno,
+con las preguntas de la lección.
