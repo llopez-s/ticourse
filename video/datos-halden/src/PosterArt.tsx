@@ -1,10 +1,13 @@
 import { C } from '../../engine/src/theme/tokens';
 import { RECORD, Record } from './scenes/parts/Record';
 
-const SCALE = 1.18;
+// At 1.18 the chip under the record ran past the poster's right edge.
+const SCALE = 1.0;
+/** The chip is wider than the record: reserve its overhang so a right-aligned poster keeps it on the canvas. */
+const CHIP_OVERHANG = 120;
 
 /** The poster's image, in its own units. */
-export const POSTER_ART = { w: Math.round(RECORD.w * SCALE), h: Math.round((RECORD.h + RECORD.chipH + 18) * SCALE) } as const;
+export const POSTER_ART = { w: Math.round(RECORD.w * SCALE) + CHIP_OVERHANG, h: Math.round((RECORD.h + RECORD.chipH + 18) * SCALE) } as const;
 
 /**
  * The video in one image: the clock-in record — «nombre · DNI · horas», every value a redacted bar, the DNI row lit —
