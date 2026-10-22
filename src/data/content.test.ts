@@ -374,6 +374,10 @@ describe('lesson videos', () => {
     // shared host kernel keeps, where it lives vs. who manages it) with three exam-style questions, after the Halden
     // callout and before the paragraph that hands over to sp3m3
     expect(youtubeVideos.find((v) => v.block.youtube === '8r0OvoLgKTk')?.module).toBe('sp3m2');
+    // V47 asks three questions of what must not stop (what rules, does it answer in time and fit, is there a patch and can
+    // it go on) over a crane on the port's quay, with three exam-style questions, after sp3m3's last check (the buoy
+    // sensors) and before the paragraph that hands over to sp3m4
+    expect(youtubeVideos.find((v) => v.block.youtube === '5VbbpEGktdI')?.module).toBe('sp3m3');
   });
 
   it('every video block points at relative public assets that exist', async () => {

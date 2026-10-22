@@ -50,7 +50,7 @@ const sp3m3: Module = {
       t: 'callout',
       kind: 'exam',
       title: 'Nota de examen: OT invierte la CIA y «no se puede parchear» tiene una respuesta fija',
-      md: 'Dos automatismos que valen puntos. **Uno:** en cualquier escenario de ICS/SCADA/OT el orden de prioridad es **availability → integrity → confidentiality**; si una opción propone algo que interrumpe el proceso (reiniciar el PLC, cortar el tráfico con un IPS, forzar un parche en horario laboral), casi siempre es la incorrecta. **Dos:** cuando el enunciado dice que el sistema **no se puede parchear** —**inability to patch**, porque el fabricante desapareció, porque el parche invalida la certificación o porque no hay ventana de parada—, la respuesta esperada son **controles compensatorios**: segmentar y aislar la red OT, restringir el acceso a un único camino administrativo, monitorizar de forma pasiva y controlar los medios extraíbles. Nunca «parchearlo igualmente», nunca «reemplazarlo esta semana» y nunca «desconectarlo» si el proceso lo necesita. Y ojo con **risk transference**: es una decisión de gestión (seguro, cláusula contractual), no un control técnico, así que no reduce la vulnerabilidad, solo reparte la pérdida.',
+      md: 'Dos automatismos que valen puntos. **Uno:** en cualquier escenario de ICS/SCADA/OT el orden de prioridad es **availability → integrity → confidentiality**; si una opción propone algo que interrumpe el proceso (reiniciar el PLC, cortar el tráfico con un IPS, forzar un parche en horario laboral), casi siempre es la incorrecta. **Dos:** cuando el enunciado dice que el sistema **no se puede parchear** —**inability to patch**, porque el parche invalida la certificación o porque no hay ventana de parada; si el fabricante ya no publica parches, eso es **patch availability**, y la respuesta es la misma—, la respuesta esperada son **controles compensatorios**: segmentar y aislar la red OT, restringir el acceso a un único camino administrativo, monitorizar de forma pasiva y controlar los medios extraíbles. Nunca «parchearlo igualmente», nunca «reemplazarlo esta semana» y nunca «desconectarlo» si el proceso lo necesita. Y ojo con **risk transference**: es una decisión de gestión (seguro, cláusula contractual), no un control técnico, así que no reduce la vulnerabilidad, solo reparte la pérdida.',
     },
     {
       t: 'check',
@@ -189,6 +189,17 @@ const sp3m3: Module = {
         explain:
           'Battery operation and a minimal processor mean the devices cannot run agents, heavy cryptography or continuous logging, which is exactly what the power and compute considerations describe. Scalability is the tempting distractor because the fleet may grow, but the constraint in the scenario is what each individual device can physically sustain.',
       },
+    },
+    {
+      t: 'p',
+      md: 'Pon a prueba lo que no se para con tres preguntas de examen.',
+    },
+    {
+      t: 'video',
+      title: 'En marcha, a tiempo y con parche',
+      youtube: '5VbbpEGktdI',
+      poster: 'videos/ot-halden-poster.png',
+      transcript: 'videos/ot-halden-transcript.txt',
     },
     {
       t: 'p',
