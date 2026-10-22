@@ -45,6 +45,7 @@
         "door",
         "vestibule",
         "badge",
+        "beep",
         "rest",
         "line"
       ]
@@ -75,6 +76,7 @@
         "infrared",
         "pressure",
         "microwave",
+        "false",
         "ultrasonic",
         "rule"
       ]
@@ -102,13 +104,15 @@
       "wordBudget": 103,
       "goal": "El mismo plano y el mismo sello de propuesta (lo que Seguridad pediría, sobre el papel). La idea primero (`inside`): lo de antes intenta frenar o detectar a quien llega; un cebo parte de que ya hay alguien dentro. Cuatro cebos en fila (`four`), cada uno con su idea y después su nombre: «un sistema que no sirve a nadie» → HONEYPOT (`honeypot`); «varios que se hablan entre sí» → HONEYNET (`honeynet`); «un fichero con un nombre irresistible» → HONEYFILE (`honeyfile`); «un dato que no existe: una cuenta, una clave, un registro» → HONEYTOKEN (`honeytoken`); la tarjeta de examen entra al acabar esa frase. La marca común (`rule`): «nadie legítimo lo toca · cualquier toque avisa». Un chip a media luz, sin voz: «creíble, nunca con datos reales». Nada se coloca, pica ni se detecta en el puerto",
       "requiredCues": [
+        "rule",
         "inside",
+        "intruder",
         "four",
         "honeypot",
         "honeynet",
         "honeyfile",
         "honeytoken",
-        "rule"
+        "touch"
       ]
     },
     {

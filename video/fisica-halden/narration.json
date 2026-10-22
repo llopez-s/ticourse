@@ -14,7 +14,12 @@
     "ok-2": "check",
     "trap-2": "block",
     "ok-3": "check",
-    "trap-3": "block"
+    "trap-3": "block",
+    "vestibule": "lock",
+    "beep": "ping2",
+    "false": "error",
+    "intruder": "glitch",
+    "touch": "alarm"
   },
   "segments": [
     {
@@ -62,7 +67,7 @@
     {
       "id": "s02-04",
       "scene": "s02-frena",
-      "text": "<clear> {badge}Junto a la puerta, un lector de tarjetas. ¿Quién es esa persona y adónde puede ir? Lo decide su tarjeta, el access badge, y cada acceso queda apuntado.",
+      "text": "<clear> {badge}Junto a la puerta, un lector de tarjetas. ¿Quién es esa persona y adónde puede ir? Lo decide su tarjeta, el access badge, y cada acceso {beep}queda apuntado.",
       "pauseAfterMs": 300
     },
     {
@@ -111,7 +116,7 @@
       "id": "s03-03",
       "scene": "s03-p1",
       "text": "<warm> {plan-back}O sea, que el badge decide y apunta, y la cámara solo graba.",
-      "pauseAfterMs": 700,
+      "pauseAfterMs": 1400,
       "exam": {
         "objective": "1.2",
         "text": "Access badge: quién, adónde y con registro",
@@ -140,7 +145,7 @@
     {
       "id": "s04-04",
       "scene": "s04-sensor",
-      "text": "<focused> {microwave}Microwave manda ondas de radio y escucha el eco. Cubre mucho, pero atraviesa los tabiques finos y salta con lo que se mueve al otro lado.",
+      "text": "<focused> {microwave}Microwave manda ondas de radio y escucha el eco. Cubre mucho, pero atraviesa los tabiques finos y {false}salta con lo que se mueve al otro lado.",
       "pauseAfterMs": 300
     },
     {
@@ -200,7 +205,7 @@
     {
       "id": "s06-01",
       "scene": "s06-cebo",
-      "text": "<engaging> {inside}Lo de antes intenta frenar o detectar a quien llega. Un cebo parte de otra idea, que ya hay alguien dentro.",
+      "text": "<engaging> {inside}Lo de antes intenta frenar o detectar a quien llega. Un cebo parte de otra idea, que ya hay alguien {intruder}dentro.",
       "pauseAfterMs": 300
     },
     {
@@ -230,7 +235,7 @@
     {
       "id": "s06-05",
       "scene": "s06-cebo",
-      "text": "<firm> {rule}Los cuatro tienen algo en común. Nadie legítimo los toca, así que cualquier toque avisa.",
+      "text": "<firm> {rule}Los cuatro tienen algo en común. Nadie legítimo los toca, así que cualquier toque {touch}avisa.",
       "pauseAfterMs": 500
     },
     {
@@ -267,7 +272,7 @@
       "id": "s07-03",
       "scene": "s07-p3",
       "text": "<warm> {four-back}O sea, que el fichero va por donde pasa el ransomware.",
-      "pauseAfterMs": 700,
+      "pauseAfterMs": 1700,
       "exam": {
         "objective": "1.2",
         "text": "Ransomware que recorre carpetas: honeyfile",

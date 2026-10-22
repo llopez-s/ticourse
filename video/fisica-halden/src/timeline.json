@@ -1,20 +1,20 @@
 {
-  "mode": "estimate",
-  "sourceHash": "38c58d97acfbbf47eff76804e8b9245636dbb49e99ef48cd6ab0f696a61a8ebf",
+  "mode": "audio",
+  "sourceHash": "c3a931e2e383cbb0bf728a7d5eccb12176e479de2ff44345c6e3a785ed28f09e",
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "durationInFrames": 9388,
-  "voice": "none",
+  "durationInFrames": 8121,
+  "voice": "recording/lidia",
   "scenes": [
-    {"id":"s01-hook","chapter":1,"chapterTitle":"Quién entra","title":"Un plano, tres preguntas","from":0,"durationInFrames":695},
-    {"id":"s02-frena","chapter":1,"chapterTitle":"Quién entra","title":"Qué frena cada control","from":695,"durationInFrames":1422},
-    {"id":"s03-p1","chapter":1,"chapterTitle":"Quién entra","title":"Un centro de distribución","from":2117,"durationInFrames":1120},
-    {"id":"s04-sensor","chapter":2,"chapterTitle":"Qué se mueve","title":"Cada sensor falla distinto","from":3237,"durationInFrames":1520},
-    {"id":"s05-p2","chapter":2,"chapterTitle":"Qué se mueve","title":"Un despacho con ventana","from":4757,"durationInFrames":1393},
-    {"id":"s06-cebo","chapter":3,"chapterTitle":"Quién pica","title":"Un cebo que nadie toca","from":6150,"durationInFrames":1210},
-    {"id":"s07-p3","chapter":3,"chapterTitle":"Quién pica","title":"Un estudio de arquitectura","from":7360,"durationInFrames":1084},
-    {"id":"s08-cierre","chapter":3,"chapterTitle":"Quién pica","title":"Para el examen","from":8444,"durationInFrames":944}
+    {"id":"s01-hook","chapter":1,"chapterTitle":"Quién entra","title":"Un plano, tres preguntas","from":0,"durationInFrames":551},
+    {"id":"s02-frena","chapter":1,"chapterTitle":"Quién entra","title":"Qué frena cada control","from":551,"durationInFrames":1121},
+    {"id":"s03-p1","chapter":1,"chapterTitle":"Quién entra","title":"Un centro de distribución","from":1672,"durationInFrames":1027},
+    {"id":"s04-sensor","chapter":2,"chapterTitle":"Qué se mueve","title":"Cada sensor falla distinto","from":2699,"durationInFrames":1328},
+    {"id":"s05-p2","chapter":2,"chapterTitle":"Qué se mueve","title":"Un despacho con ventana","from":4027,"durationInFrames":1237},
+    {"id":"s06-cebo","chapter":3,"chapterTitle":"Quién pica","title":"Un cebo que nadie toca","from":5264,"durationInFrames":1074},
+    {"id":"s07-p3","chapter":3,"chapterTitle":"Quién pica","title":"Un estudio de arquitectura","from":6338,"durationInFrames":955},
+    {"id":"s08-cierre","chapter":3,"chapterTitle":"Quién pica","title":"Para el examen","from":7293,"durationInFrames":828}
   ],
   "segments": [
     {
@@ -22,2450 +22,2454 @@
       "scene": "s01-hook",
       "text": "En el puerto de Halden, Seguridad escribe lo que pediría a cualquier entrada. Y antes de poner controles, se pregunta qué quiere frenar.",
       "from": 45,
-      "audioFrames": 276,
-      "durationInFrames": 285,
-      "audio": null,
+      "audioFrames": 219,
+      "durationInFrames": 228,
+      "audio": "voice/s01-01.mp3",
       "words": [
-        {"text":"En","from":45,"to":50},
-        {"text":"el","from":50,"to":55},
-        {"text":"puerto","from":55,"to":69},
-        {"text":"de","from":69,"to":74},
-        {"text":"Halden,","from":74,"to":91},
-        {"text":"Seguridad","from":91,"to":113},
-        {"text":"escribe","from":113,"to":130},
-        {"text":"lo","from":130,"to":135},
-        {"text":"que","from":135,"to":142},
-        {"text":"pediría","from":142,"to":159},
-        {"text":"a","from":159,"to":161},
-        {"text":"cualquier","from":161,"to":183},
-        {"text":"entrada.","from":183,"to":202},
-        {"text":"Y","from":202,"to":205},
-        {"text":"antes","from":205,"to":217},
-        {"text":"de","from":217,"to":222},
-        {"text":"poner","from":222,"to":234},
-        {"text":"controles,","from":234,"to":258},
-        {"text":"se","from":258,"to":263},
-        {"text":"pregunta","from":263,"to":282},
-        {"text":"qué","from":282,"to":290},
-        {"text":"quiere","from":290,"to":304},
-        {"text":"frenar.","from":304,"to":321}
+        {"text":"En","from":45,"to":51},
+        {"text":"el","from":51,"to":55},
+        {"text":"puerto","from":55,"to":63},
+        {"text":"de","from":63,"to":68},
+        {"text":"Halden,","from":68,"to":79},
+        {"text":"Seguridad","from":85,"to":105},
+        {"text":"escribe","from":105,"to":118},
+        {"text":"lo","from":118,"to":123},
+        {"text":"que","from":123,"to":126},
+        {"text":"pediría","from":126,"to":140},
+        {"text":"a","from":140,"to":143},
+        {"text":"cualquier","from":143,"to":148},
+        {"text":"entrada.","from":148,"to":162},
+        {"text":"Y","from":172,"to":174},
+        {"text":"antes","from":174,"to":179},
+        {"text":"de","from":179,"to":183},
+        {"text":"poner","from":183,"to":189},
+        {"text":"controles,","from":189,"to":206},
+        {"text":"se","from":215,"to":220},
+        {"text":"pregunta","from":220,"to":230},
+        {"text":"qué","from":230,"to":236},
+        {"text":"quiere","from":236,"to":243},
+        {"text":"frenar.","from":243,"to":258}
       ]
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
       "text": "Qué frena cada control, dónde falla cada sensor y qué es un cebo.",
-      "from": 330,
-      "audioFrames": 156,
-      "durationInFrames": 165,
-      "audio": null,
+      "from": 273,
+      "audioFrames": 120,
+      "durationInFrames": 129,
+      "audio": "voice/s01-02.mp3",
       "words": [
-        {"text":"Qué","from":330,"to":339},
-        {"text":"frena","from":339,"to":354},
-        {"text":"cada","from":354,"to":365},
-        {"text":"control,","from":365,"to":389},
-        {"text":"dónde","from":389,"to":404},
-        {"text":"falla","from":404,"to":418},
-        {"text":"cada","from":418,"to":430},
-        {"text":"sensor","from":430,"to":448},
-        {"text":"y","from":448,"to":451},
-        {"text":"qué","from":451,"to":460},
-        {"text":"es","from":460,"to":465},
-        {"text":"un","from":465,"to":471},
-        {"text":"cebo.","from":471,"to":486}
+        {"text":"Qué","from":276,"to":281},
+        {"text":"frena","from":281,"to":292},
+        {"text":"cada","from":295,"to":299},
+        {"text":"control,","from":299,"to":314},
+        {"text":"dónde","from":324,"to":329},
+        {"text":"falla","from":329,"to":339},
+        {"text":"cada","from":339,"to":345},
+        {"text":"sensor","from":345,"to":356},
+        {"text":"y","from":356,"to":364},
+        {"text":"qué","from":364,"to":366},
+        {"text":"es","from":366,"to":370},
+        {"text":"un","from":370,"to":374},
+        {"text":"cebo.","from":374,"to":384}
       ]
     },
     {
       "id": "s01-03",
       "scene": "s01-hook",
       "text": "Todo sobre un plano de ejemplo, con tres preguntas tipo examen por el camino.",
-      "from": 495,
-      "audioFrames": 168,
-      "durationInFrames": 180,
-      "audio": null,
+      "from": 402,
+      "audioFrames": 117,
+      "durationInFrames": 129,
+      "audio": "voice/s01-03.mp3",
       "words": [
-        {"text":"Todo","from":495,"to":506},
-        {"text":"sobre","from":506,"to":519},
-        {"text":"un","from":519,"to":524},
-        {"text":"plano","from":524,"to":537},
-        {"text":"de","from":537,"to":542},
-        {"text":"ejemplo,","from":542,"to":563},
-        {"text":"con","from":563,"to":571},
-        {"text":"tres","from":571,"to":582},
-        {"text":"preguntas","from":582,"to":605},
-        {"text":"tipo","from":605,"to":616},
-        {"text":"examen","from":616,"to":632},
-        {"text":"por","from":632,"to":639},
-        {"text":"el","from":639,"to":645},
-        {"text":"camino.","from":645,"to":663}
+        {"text":"Todo","from":402,"to":407},
+        {"text":"sobre","from":407,"to":417},
+        {"text":"un","from":418,"to":421},
+        {"text":"plano","from":421,"to":428},
+        {"text":"de","from":428,"to":433},
+        {"text":"ejemplo,","from":433,"to":443},
+        {"text":"con","from":449,"to":453},
+        {"text":"tres","from":453,"to":458},
+        {"text":"preguntas","from":458,"to":472},
+        {"text":"tipo","from":476,"to":481},
+        {"text":"examen","from":481,"to":494},
+        {"text":"por","from":494,"to":498},
+        {"text":"el","from":498,"to":503},
+        {"text":"camino.","from":503,"to":509}
       ]
     },
     {
       "id": "s02-01",
       "scene": "s02-frena",
       "text": "Empieza por la calle. Un coche llega a la fachada. ¿Puede entrar?",
-      "from": 707,
-      "audioFrames": 144,
-      "durationInFrames": 152,
-      "audio": null,
+      "from": 563,
+      "audioFrames": 118,
+      "durationInFrames": 126,
+      "audio": "voice/s02-01.mp3",
       "words": [
-        {"text":"Empieza","from":707,"to":726},
-        {"text":"por","from":726,"to":734},
-        {"text":"la","from":734,"to":739},
-        {"text":"calle.","from":739,"to":755},
-        {"text":"Un","from":755,"to":760},
-        {"text":"coche","from":760,"to":774},
-        {"text":"llega","from":774,"to":787},
-        {"text":"a","from":787,"to":790},
-        {"text":"la","from":790,"to":795},
-        {"text":"fachada.","from":795,"to":816},
-        {"text":"¿Puede","from":816,"to":832},
-        {"text":"entrar?","from":832,"to":851}
+        {"text":"Empieza","from":565,"to":578},
+        {"text":"por","from":578,"to":588},
+        {"text":"la","from":588,"to":592},
+        {"text":"calle.","from":592,"to":602},
+        {"text":"Un","from":611,"to":616},
+        {"text":"coche","from":616,"to":624},
+        {"text":"llega","from":624,"to":629},
+        {"text":"a","from":629,"to":634},
+        {"text":"la","from":634,"to":636},
+        {"text":"fachada.","from":635,"to":646},
+        {"text":"¿Puede","from":655,"to":660},
+        {"text":"entrar?","from":660,"to":667}
       ]
     },
     {
       "id": "s02-02",
       "scene": "s02-frena",
       "text": "Eso lo frenan los bollards, unos postes fijos que paran un vehículo, pero no a quien va a pie.",
-      "from": 859,
-      "audioFrames": 228,
-      "durationInFrames": 237,
-      "audio": null,
+      "from": 689,
+      "audioFrames": 160,
+      "durationInFrames": 169,
+      "audio": "voice/s02-02.mp3",
       "words": [
-        {"text":"Eso","from":859,"to":868},
-        {"text":"lo","from":868,"to":874},
-        {"text":"frenan","from":874,"to":892},
-        {"text":"los","from":892,"to":901},
-        {"text":"bollards,","from":901,"to":928},
-        {"text":"unos","from":928,"to":940},
-        {"text":"postes","from":940,"to":958},
-        {"text":"fijos","from":958,"to":973},
-        {"text":"que","from":973,"to":982},
-        {"text":"paran","from":982,"to":997},
-        {"text":"un","from":997,"to":1003},
-        {"text":"vehículo,","from":1003,"to":1030},
-        {"text":"pero","from":1030,"to":1042},
-        {"text":"no","from":1042,"to":1048},
-        {"text":"a","from":1048,"to":1051},
-        {"text":"quien","from":1051,"to":1066},
-        {"text":"va","from":1066,"to":1072},
-        {"text":"a","from":1072,"to":1075},
-        {"text":"pie.","from":1075,"to":1087}
+        {"text":"Eso","from":689,"to":696},
+        {"text":"lo","from":696,"to":700},
+        {"text":"frenan","from":700,"to":710},
+        {"text":"los","from":710,"to":716},
+        {"text":"bollards,","from":716,"to":731},
+        {"text":"unos","from":743,"to":747},
+        {"text":"postes","from":747,"to":760},
+        {"text":"fijos","from":760,"to":770},
+        {"text":"que","from":770,"to":774},
+        {"text":"paran","from":774,"to":780},
+        {"text":"un","from":780,"to":785},
+        {"text":"vehículo,","from":785,"to":797},
+        {"text":"pero","from":804,"to":812},
+        {"text":"no","from":812,"to":818},
+        {"text":"a","from":818,"to":824},
+        {"text":"quien","from":824,"to":827},
+        {"text":"va","from":827,"to":832},
+        {"text":"a","from":832,"to":837},
+        {"text":"pie.","from":837,"to":842}
       ]
     },
     {
       "id": "s02-03",
       "scene": "s02-frena",
       "text": "Luego, la puerta. ¿Cuántos pasan a la vez? Si solo debe pasar uno, hay dos puertas y se abre una cada vez. Eso es un access control vestibule.",
-      "from": 1096,
-      "audioFrames": 336,
-      "durationInFrames": 345,
-      "audio": null,
+      "from": 858,
+      "audioFrames": 274,
+      "durationInFrames": 283,
+      "audio": "voice/s02-03.mp3",
       "words": [
-        {"text":"Luego,","from":1096,"to":1114},
-        {"text":"la","from":1114,"to":1119},
-        {"text":"puerta.","from":1119,"to":1140},
-        {"text":"¿Cuántos","from":1140,"to":1163},
-        {"text":"pasan","from":1163,"to":1178},
-        {"text":"a","from":1178,"to":1181},
-        {"text":"la","from":1181,"to":1187},
-        {"text":"vez?","from":1187,"to":1198},
-        {"text":"Si","from":1198,"to":1204},
-        {"text":"solo","from":1204,"to":1216},
-        {"text":"debe","from":1216,"to":1227},
-        {"text":"pasar","from":1227,"to":1242},
-        {"text":"uno,","from":1242,"to":1254},
-        {"text":"hay","from":1254,"to":1263},
-        {"text":"dos","from":1263,"to":1271},
-        {"text":"puertas","from":1271,"to":1292},
-        {"text":"y","from":1292,"to":1295},
-        {"text":"se","from":1295,"to":1301},
-        {"text":"abre","from":1301,"to":1312},
-        {"text":"una","from":1312,"to":1321},
-        {"text":"cada","from":1321,"to":1333},
-        {"text":"vez.","from":1333,"to":1344},
-        {"text":"Eso","from":1344,"to":1353},
-        {"text":"es","from":1353,"to":1359},
-        {"text":"un","from":1359,"to":1365},
-        {"text":"access","from":1365,"to":1382},
-        {"text":"control","from":1382,"to":1403},
-        {"text":"vestibule.","from":1403,"to":1432}
+        {"text":"Luego,","from":858,"to":872},
+        {"text":"la","from":872,"to":882},
+        {"text":"puerta.","from":882,"to":890},
+        {"text":"¿Cuántos","from":909,"to":919},
+        {"text":"pasan","from":919,"to":932},
+        {"text":"a","from":932,"to":935},
+        {"text":"la","from":935,"to":937},
+        {"text":"vez?","from":936,"to":944},
+        {"text":"Si","from":960,"to":964},
+        {"text":"solo","from":964,"to":970},
+        {"text":"debe","from":970,"to":976},
+        {"text":"pasar","from":976,"to":985},
+        {"text":"uno,","from":985,"to":993},
+        {"text":"hay","from":1005,"to":1009},
+        {"text":"dos","from":1009,"to":1014},
+        {"text":"puertas","from":1014,"to":1024},
+        {"text":"y","from":1024,"to":1030},
+        {"text":"se","from":1030,"to":1033},
+        {"text":"abre","from":1033,"to":1038},
+        {"text":"una","from":1038,"to":1040},
+        {"text":"cada","from":1038,"to":1044},
+        {"text":"vez.","from":1044,"to":1054},
+        {"text":"Eso","from":1064,"to":1071},
+        {"text":"es","from":1071,"to":1077},
+        {"text":"un","from":1077,"to":1082},
+        {"text":"access","from":1082,"to":1088},
+        {"text":"control","from":1088,"to":1101},
+        {"text":"vestibule.","from":1101,"to":1121}
       ]
     },
     {
       "id": "s02-04",
       "scene": "s02-frena",
       "text": "Junto a la puerta, un lector de tarjetas. ¿Quién es esa persona y adónde puede ir? Lo decide su tarjeta, el access badge, y cada acceso queda apuntado.",
-      "from": 1441,
-      "audioFrames": 336,
-      "durationInFrames": 345,
-      "audio": null,
+      "from": 1141,
+      "audioFrames": 260,
+      "durationInFrames": 269,
+      "audio": "voice/s02-04.mp3",
       "words": [
-        {"text":"Junto","from":1441,"to":1455},
-        {"text":"a","from":1455,"to":1457},
-        {"text":"la","from":1457,"to":1463},
-        {"text":"puerta,","from":1463,"to":1482},
-        {"text":"un","from":1482,"to":1487},
-        {"text":"lector","from":1487,"to":1503},
-        {"text":"de","from":1503,"to":1509},
-        {"text":"tarjetas.","from":1509,"to":1533},
-        {"text":"¿Quién","from":1533,"to":1549},
-        {"text":"es","from":1549,"to":1555},
-        {"text":"esa","from":1555,"to":1563},
-        {"text":"persona","from":1563,"to":1582},
-        {"text":"y","from":1582,"to":1585},
-        {"text":"adónde","from":1585,"to":1601},
-        {"text":"puede","from":1601,"to":1614},
-        {"text":"ir?","from":1614,"to":1623},
-        {"text":"Lo","from":1623,"to":1628},
-        {"text":"decide","from":1628,"to":1644},
-        {"text":"su","from":1644,"to":1650},
-        {"text":"tarjeta,","from":1650,"to":1671},
-        {"text":"el","from":1671,"to":1677},
-        {"text":"access","from":1677,"to":1693},
-        {"text":"badge,","from":1693,"to":1709},
-        {"text":"y","from":1709,"to":1712},
-        {"text":"cada","from":1712,"to":1723},
-        {"text":"acceso","from":1723,"to":1739},
-        {"text":"queda","from":1739,"to":1753},
-        {"text":"apuntado.","from":1753,"to":1777}
+        {"text":"Junto","from":1141,"to":1149},
+        {"text":"a","from":1149,"to":1153},
+        {"text":"la","from":1153,"to":1155},
+        {"text":"puerta,","from":1155,"to":1160},
+        {"text":"un","from":1160,"to":1169},
+        {"text":"lector","from":1169,"to":1178},
+        {"text":"de","from":1178,"to":1181},
+        {"text":"tarjetas.","from":1181,"to":1200},
+        {"text":"¿Quién","from":1207,"to":1212},
+        {"text":"es","from":1212,"to":1216},
+        {"text":"esa","from":1216,"to":1221},
+        {"text":"persona","from":1221,"to":1236},
+        {"text":"y","from":1236,"to":1243},
+        {"text":"adónde","from":1243,"to":1250},
+        {"text":"puede","from":1250,"to":1259},
+        {"text":"ir?","from":1259,"to":1267},
+        {"text":"Lo","from":1278,"to":1285},
+        {"text":"decide","from":1285,"to":1295},
+        {"text":"su","from":1295,"to":1302},
+        {"text":"tarjeta,","from":1302,"to":1320},
+        {"text":"el","from":1325,"to":1327},
+        {"text":"access","from":1326,"to":1333},
+        {"text":"badge,","from":1333,"to":1341},
+        {"text":"y","from":1341,"to":1351},
+        {"text":"cada","from":1351,"to":1357},
+        {"text":"acceso","from":1357,"to":1367},
+        {"text":"queda","from":1367,"to":1377},
+        {"text":"apuntado.","from":1377,"to":1392}
       ]
     },
     {
       "id": "s02-05",
       "scene": "s02-frena",
       "text": "Hay más controles, pero con estos tres se ve la idea.",
-      "from": 1786,
-      "audioFrames": 132,
-      "durationInFrames": 140,
-      "audio": null,
+      "from": 1410,
+      "audioFrames": 89,
+      "durationInFrames": 97,
+      "audio": "voice/s02-05.mp3",
       "words": [
-        {"text":"Hay","from":1786,"to":1795},
-        {"text":"más","from":1795,"to":1804},
-        {"text":"controles,","from":1804,"to":1835},
-        {"text":"pero","from":1835,"to":1847},
-        {"text":"con","from":1847,"to":1857},
-        {"text":"estos","from":1857,"to":1872},
-        {"text":"tres","from":1872,"to":1884},
-        {"text":"se","from":1884,"to":1890},
-        {"text":"ve","from":1890,"to":1897},
-        {"text":"la","from":1897,"to":1903},
-        {"text":"idea.","from":1903,"to":1918}
+        {"text":"Hay","from":1412,"to":1416},
+        {"text":"más","from":1416,"to":1421},
+        {"text":"controles,","from":1421,"to":1438},
+        {"text":"pero","from":1438,"to":1448},
+        {"text":"con","from":1448,"to":1454},
+        {"text":"estos","from":1454,"to":1459},
+        {"text":"tres","from":1459,"to":1469},
+        {"text":"se","from":1469,"to":1476},
+        {"text":"ve","from":1476,"to":1478},
+        {"text":"la","from":1476,"to":1479},
+        {"text":"idea.","from":1479,"to":1489}
       ]
     },
     {
       "id": "s02-06",
       "scene": "s02-frena",
       "text": "Cada uno responde a una pregunta distinta, y cada uno tapa un hueco.",
-      "from": 1926,
-      "audioFrames": 156,
-      "durationInFrames": 171,
-      "audio": null,
+      "from": 1507,
+      "audioFrames": 130,
+      "durationInFrames": 145,
+      "audio": "voice/s02-06.mp3",
       "words": [
-        {"text":"Cada","from":1926,"to":1937},
-        {"text":"uno","from":1937,"to":1946},
-        {"text":"responde","from":1946,"to":1968},
-        {"text":"a","from":1968,"to":1971},
-        {"text":"una","from":1971,"to":1979},
-        {"text":"pregunta","from":1979,"to":2001},
-        {"text":"distinta,","from":2001,"to":2026},
-        {"text":"y","from":2026,"to":2029},
-        {"text":"cada","from":2029,"to":2040},
-        {"text":"uno","from":2040,"to":2049},
-        {"text":"tapa","from":2049,"to":2060},
-        {"text":"un","from":2060,"to":2065},
-        {"text":"hueco.","from":2065,"to":2082}
+        {"text":"Cada","from":1511,"to":1518},
+        {"text":"uno","from":1518,"to":1527},
+        {"text":"responde","from":1527,"to":1544},
+        {"text":"a","from":1544,"to":1546},
+        {"text":"una","from":1545,"to":1547},
+        {"text":"pregunta","from":1547,"to":1556},
+        {"text":"distinta,","from":1556,"to":1575},
+        {"text":"y","from":1585,"to":1591},
+        {"text":"cada","from":1591,"to":1596},
+        {"text":"uno","from":1596,"to":1605},
+        {"text":"tapa","from":1605,"to":1615},
+        {"text":"un","from":1615,"to":1621},
+        {"text":"hueco.","from":1621,"to":1630}
       ]
     },
     {
       "id": "s03-01",
       "scene": "s03-p1",
       "text": "Te toca. En un centro de distribución, cualquiera abre cualquier zona y nadie sabe quién entra. Quieren que cada uno abra solo las suyas, con registro automático. ¿Qué control resuelve ese problema?",
-      "from": 2129,
-      "audioFrames": 384,
-      "durationInFrames": 542,
-      "audio": null,
+      "from": 1684,
+      "audioFrames": 382,
+      "durationInFrames": 540,
+      "audio": "voice/s03-01.mp3",
       "words": [
-        {"text":"Te","from":2129,"to":2134},
-        {"text":"toca.","from":2134,"to":2145},
-        {"text":"En","from":2145,"to":2150},
-        {"text":"un","from":2150,"to":2154},
-        {"text":"centro","from":2154,"to":2168},
-        {"text":"de","from":2168,"to":2173},
-        {"text":"distribución,","from":2173,"to":2203},
-        {"text":"cualquiera","from":2203,"to":2226},
-        {"text":"abre","from":2226,"to":2235},
-        {"text":"cualquier","from":2235,"to":2255},
-        {"text":"zona","from":2255,"to":2265},
-        {"text":"y","from":2265,"to":2267},
-        {"text":"nadie","from":2267,"to":2278},
-        {"text":"sabe","from":2278,"to":2288},
-        {"text":"quién","from":2288,"to":2299},
-        {"text":"entra.","from":2299,"to":2313},
-        {"text":"Quieren","from":2313,"to":2329},
-        {"text":"que","from":2329,"to":2336},
-        {"text":"cada","from":2336,"to":2345},
-        {"text":"uno","from":2345,"to":2352},
-        {"text":"abra","from":2352,"to":2361},
-        {"text":"solo","from":2361,"to":2370},
-        {"text":"las","from":2370,"to":2377},
-        {"text":"suyas,","from":2377,"to":2391},
-        {"text":"con","from":2391,"to":2398},
-        {"text":"registro","from":2398,"to":2416},
-        {"text":"automático.","from":2416,"to":2442},
-        {"text":"¿Qué","from":2442,"to":2451},
-        {"text":"control","from":2451,"to":2467},
-        {"text":"resuelve","from":2467,"to":2485},
-        {"text":"ese","from":2485,"to":2492},
-        {"text":"problema?","from":2492,"to":2513}
+        {"text":"Te","from":1686,"to":1689},
+        {"text":"toca.","from":1689,"to":1697},
+        {"text":"En","from":1712,"to":1716},
+        {"text":"un","from":1716,"to":1721},
+        {"text":"centro","from":1721,"to":1732},
+        {"text":"de","from":1732,"to":1737},
+        {"text":"distribución,","from":1737,"to":1757},
+        {"text":"cualquiera","from":1764,"to":1781},
+        {"text":"abre","from":1781,"to":1788},
+        {"text":"cualquier","from":1788,"to":1796},
+        {"text":"zona","from":1796,"to":1813},
+        {"text":"y","from":1813,"to":1826},
+        {"text":"nadie","from":1826,"to":1832},
+        {"text":"sabe","from":1832,"to":1842},
+        {"text":"quién","from":1842,"to":1850},
+        {"text":"entra.","from":1850,"to":1862},
+        {"text":"Quieren","from":1871,"to":1882},
+        {"text":"que","from":1882,"to":1889},
+        {"text":"cada","from":1889,"to":1896},
+        {"text":"uno","from":1896,"to":1905},
+        {"text":"abra","from":1905,"to":1913},
+        {"text":"solo","from":1913,"to":1921},
+        {"text":"las","from":1921,"to":1928},
+        {"text":"suyas,","from":1928,"to":1941},
+        {"text":"con","from":1941,"to":1949},
+        {"text":"registro","from":1949,"to":1963},
+        {"text":"automático.","from":1964,"to":1986},
+        {"text":"¿Qué","from":1999,"to":2006},
+        {"text":"control","from":2006,"to":2018},
+        {"text":"resuelve","from":2018,"to":2036},
+        {"text":"ese","from":2036,"to":2042},
+        {"text":"problema?","from":2042,"to":2053}
       ]
     },
     {
       "id": "s03-02",
       "scene": "s03-p1",
       "text": "Access badge, porque cada persona abre solo sus zonas y cada acceso se apunta automáticamente. La cámara tienta por lo de saber quién entra, pero no decide quién puede abrir.",
-      "from": 2671,
-      "audioFrames": 360,
-      "durationInFrames": 369,
-      "audio": null,
+      "from": 2224,
+      "audioFrames": 306,
+      "durationInFrames": 315,
+      "audio": "voice/s03-02.mp3",
       "words": [
-        {"text":"Access","from":2671,"to":2686},
-        {"text":"badge,","from":2686,"to":2701},
-        {"text":"porque","from":2701,"to":2716},
-        {"text":"cada","from":2716,"to":2726},
-        {"text":"persona","from":2726,"to":2743},
-        {"text":"abre","from":2743,"to":2753},
-        {"text":"solo","from":2753,"to":2763},
-        {"text":"sus","from":2763,"to":2770},
-        {"text":"zonas","from":2770,"to":2783},
-        {"text":"y","from":2783,"to":2785},
-        {"text":"cada","from":2785,"to":2795},
-        {"text":"acceso","from":2795,"to":2810},
-        {"text":"se","from":2810,"to":2815},
-        {"text":"apunta","from":2815,"to":2830},
-        {"text":"automáticamente.","from":2830,"to":2870},
-        {"text":"La","from":2870,"to":2875},
-        {"text":"cámara","from":2875,"to":2889},
-        {"text":"tienta","from":2889,"to":2904},
-        {"text":"por","from":2904,"to":2912},
-        {"text":"lo","from":2912,"to":2917},
-        {"text":"de","from":2917,"to":2922},
-        {"text":"saber","from":2922,"to":2934},
-        {"text":"quién","from":2934,"to":2947},
-        {"text":"entra,","from":2947,"to":2961},
-        {"text":"pero","from":2961,"to":2971},
-        {"text":"no","from":2971,"to":2976},
-        {"text":"decide","from":2976,"to":2991},
-        {"text":"quién","from":2991,"to":3004},
-        {"text":"puede","from":3004,"to":3016},
-        {"text":"abrir.","from":3016,"to":3031}
+        {"text":"Access","from":2224,"to":2232},
+        {"text":"badge,","from":2232,"to":2245},
+        {"text":"porque","from":2253,"to":2260},
+        {"text":"cada","from":2260,"to":2266},
+        {"text":"persona","from":2266,"to":2280},
+        {"text":"abre","from":2280,"to":2292},
+        {"text":"solo","from":2292,"to":2301},
+        {"text":"sus","from":2301,"to":2308},
+        {"text":"zonas","from":2308,"to":2321},
+        {"text":"y","from":2321,"to":2332},
+        {"text":"cada","from":2332,"to":2338},
+        {"text":"acceso","from":2338,"to":2347},
+        {"text":"se","from":2347,"to":2354},
+        {"text":"apunta","from":2354,"to":2362},
+        {"text":"automáticamente.","from":2362,"to":2389},
+        {"text":"La","from":2398,"to":2404},
+        {"text":"cámara","from":2404,"to":2413},
+        {"text":"tienta","from":2413,"to":2427},
+        {"text":"por","from":2427,"to":2433},
+        {"text":"lo","from":2433,"to":2436},
+        {"text":"de","from":2436,"to":2439},
+        {"text":"saber","from":2439,"to":2445},
+        {"text":"quién","from":2445,"to":2454},
+        {"text":"entra,","from":2454,"to":2465},
+        {"text":"pero","from":2475,"to":2482},
+        {"text":"no","from":2482,"to":2487},
+        {"text":"decide","from":2487,"to":2496},
+        {"text":"quién","from":2496,"to":2506},
+        {"text":"puede","from":2506,"to":2513},
+        {"text":"abrir.","from":2513,"to":2521}
       ]
     },
     {
       "id": "s03-03",
       "scene": "s03-p1",
       "text": "O sea, que el badge decide y apunta, y la cámara solo graba.",
-      "from": 3040,
-      "audioFrames": 156,
-      "durationInFrames": 177,
-      "audio": null,
+      "from": 2539,
+      "audioFrames": 98,
+      "durationInFrames": 140,
+      "audio": "voice/s03-03.mp3",
       "words": [
-        {"text":"O","from":3040,"to":3043},
-        {"text":"sea,","from":3043,"to":3056},
-        {"text":"que","from":3056,"to":3066},
-        {"text":"el","from":3066,"to":3072},
-        {"text":"badge","from":3072,"to":3089},
-        {"text":"decide","from":3089,"to":3108},
-        {"text":"y","from":3108,"to":3112},
-        {"text":"apunta,","from":3112,"to":3134},
-        {"text":"y","from":3134,"to":3138},
-        {"text":"la","from":3138,"to":3144},
-        {"text":"cámara","from":3144,"to":3164},
-        {"text":"solo","from":3164,"to":3177},
-        {"text":"graba.","from":3177,"to":3196}
+        {"text":"O","from":2539,"to":2544},
+        {"text":"sea,","from":2544,"to":2549},
+        {"text":"que","from":2549,"to":2556},
+        {"text":"el","from":2556,"to":2560},
+        {"text":"badge","from":2560,"to":2564},
+        {"text":"decide","from":2564,"to":2575},
+        {"text":"y","from":2575,"to":2581},
+        {"text":"apunta,","from":2581,"to":2591},
+        {"text":"y","from":2591,"to":2595},
+        {"text":"la","from":2595,"to":2598},
+        {"text":"cámara","from":2598,"to":2609},
+        {"text":"solo","from":2609,"to":2617},
+        {"text":"graba.","from":2617,"to":2634}
       ]
     },
     {
       "id": "s04-01",
       "scene": "s04-sensor",
       "text": "Ahora, dentro. Un sensor mide una sola cosa, y cada uno falla de su manera. Vamos con cuatro.",
-      "from": 3249,
-      "audioFrames": 216,
-      "durationInFrames": 225,
-      "audio": null,
+      "from": 2711,
+      "audioFrames": 196,
+      "durationInFrames": 205,
+      "audio": "voice/s04-01.mp3",
       "words": [
-        {"text":"Ahora,","from":3249,"to":3266},
-        {"text":"dentro.","from":3266,"to":3286},
-        {"text":"Un","from":3286,"to":3292},
-        {"text":"sensor","from":3292,"to":3309},
-        {"text":"mide","from":3309,"to":3320},
-        {"text":"una","from":3320,"to":3329},
-        {"text":"sola","from":3329,"to":3340},
-        {"text":"cosa,","from":3340,"to":3354},
-        {"text":"y","from":3354,"to":3357},
-        {"text":"cada","from":3357,"to":3368},
-        {"text":"uno","from":3368,"to":3377},
-        {"text":"falla","from":3377,"to":3391},
-        {"text":"de","from":3391,"to":3397},
-        {"text":"su","from":3397,"to":3402},
-        {"text":"manera.","from":3402,"to":3422},
-        {"text":"Vamos","from":3422,"to":3437},
-        {"text":"con","from":3437,"to":3445},
-        {"text":"cuatro.","from":3445,"to":3465}
+        {"text":"Ahora,","from":2711,"to":2722},
+        {"text":"dentro.","from":2733,"to":2737},
+        {"text":"Un","from":2754,"to":2758},
+        {"text":"sensor","from":2758,"to":2767},
+        {"text":"mide","from":2767,"to":2777},
+        {"text":"una","from":2777,"to":2784},
+        {"text":"sola","from":2784,"to":2790},
+        {"text":"cosa,","from":2790,"to":2800},
+        {"text":"y","from":2800,"to":2809},
+        {"text":"cada","from":2809,"to":2815},
+        {"text":"uno","from":2815,"to":2823},
+        {"text":"falla","from":2823,"to":2835},
+        {"text":"de","from":2835,"to":2839},
+        {"text":"su","from":2839,"to":2843},
+        {"text":"manera.","from":2843,"to":2850},
+        {"text":"Vamos","from":2867,"to":2877},
+        {"text":"con","from":2877,"to":2886},
+        {"text":"cuatro.","from":2886,"to":2896}
       ]
     },
     {
       "id": "s04-02",
       "scene": "s04-sensor",
       "text": "Infrared nota el calor de una persona. Pero se confunde con el sol directo, con la calefacción y con los animales.",
-      "from": 3474,
-      "audioFrames": 252,
-      "durationInFrames": 261,
-      "audio": null,
+      "from": 2916,
+      "audioFrames": 218,
+      "durationInFrames": 227,
+      "audio": "voice/s04-02.mp3",
       "words": [
-        {"text":"Infrared","from":3474,"to":3495},
-        {"text":"nota","from":3495,"to":3506},
-        {"text":"el","from":3506,"to":3512},
-        {"text":"calor","from":3512,"to":3525},
-        {"text":"de","from":3525,"to":3530},
-        {"text":"una","from":3530,"to":3538},
-        {"text":"persona.","from":3538,"to":3560},
-        {"text":"Pero","from":3560,"to":3571},
-        {"text":"se","from":3571,"to":3576},
-        {"text":"confunde","from":3576,"to":3597},
-        {"text":"con","from":3597,"to":3605},
-        {"text":"el","from":3605,"to":3611},
-        {"text":"sol","from":3611,"to":3619},
-        {"text":"directo,","from":3619,"to":3640},
-        {"text":"con","from":3640,"to":3648},
-        {"text":"la","from":3648,"to":3654},
-        {"text":"calefacción","from":3654,"to":3683},
-        {"text":"y","from":3683,"to":3686},
-        {"text":"con","from":3686,"to":3694},
-        {"text":"los","from":3694,"to":3702},
-        {"text":"animales.","from":3702,"to":3726}
+        {"text":"Infrared","from":2918,"to":2937},
+        {"text":"nota","from":2937,"to":2952},
+        {"text":"el","from":2952,"to":2959},
+        {"text":"calor","from":2959,"to":2966},
+        {"text":"de","from":2966,"to":2970},
+        {"text":"una","from":2970,"to":2972},
+        {"text":"persona.","from":2972,"to":2986},
+        {"text":"Pero","from":2999,"to":3007},
+        {"text":"se","from":3007,"to":3012},
+        {"text":"confunde","from":3012,"to":3026},
+        {"text":"con","from":3026,"to":3033},
+        {"text":"el","from":3033,"to":3036},
+        {"text":"sol","from":3036,"to":3043},
+        {"text":"directo,","from":3043,"to":3060},
+        {"text":"con","from":3062,"to":3065},
+        {"text":"la","from":3065,"to":3068},
+        {"text":"calefacción","from":3068,"to":3085},
+        {"text":"y","from":3085,"to":3097},
+        {"text":"con","from":3097,"to":3101},
+        {"text":"los","from":3101,"to":3106},
+        {"text":"animales.","from":3106,"to":3118}
       ]
     },
     {
       "id": "s04-03",
       "scene": "s04-sensor",
       "text": "Pressure pesa. Funciona bien, pero solo cubre el suelo que pisas.",
-      "from": 3735,
-      "audioFrames": 132,
-      "durationInFrames": 141,
-      "audio": null,
+      "from": 3143,
+      "audioFrames": 124,
+      "durationInFrames": 133,
+      "audio": "voice/s04-03.mp3",
       "words": [
-        {"text":"Pressure","from":3735,"to":3754},
-        {"text":"pesa.","from":3754,"to":3766},
-        {"text":"Funciona","from":3766,"to":3785},
-        {"text":"bien,","from":3785,"to":3797},
-        {"text":"pero","from":3797,"to":3807},
-        {"text":"solo","from":3807,"to":3817},
-        {"text":"cubre","from":3817,"to":3829},
-        {"text":"el","from":3829,"to":3833},
-        {"text":"suelo","from":3833,"to":3845},
-        {"text":"que","from":3845,"to":3853},
-        {"text":"pisas.","from":3853,"to":3867}
+        {"text":"Pressure","from":3143,"to":3158},
+        {"text":"pesa.","from":3158,"to":3172},
+        {"text":"Funciona","from":3180,"to":3190},
+        {"text":"bien,","from":3190,"to":3199},
+        {"text":"pero","from":3207,"to":3209},
+        {"text":"solo","from":3208,"to":3215},
+        {"text":"cubre","from":3215,"to":3227},
+        {"text":"el","from":3227,"to":3231},
+        {"text":"suelo","from":3231,"to":3238},
+        {"text":"que","from":3238,"to":3243},
+        {"text":"pisas.","from":3243,"to":3254}
       ]
     },
     {
       "id": "s04-04",
       "scene": "s04-sensor",
       "text": "Microwave manda ondas de radio y escucha el eco. Cubre mucho, pero atraviesa los tabiques finos y salta con lo que se mueve al otro lado.",
-      "from": 3876,
-      "audioFrames": 312,
-      "durationInFrames": 321,
-      "audio": null,
+      "from": 3276,
+      "audioFrames": 255,
+      "durationInFrames": 264,
+      "audio": "voice/s04-04.mp3",
       "words": [
-        {"text":"Microwave","from":3876,"to":3901},
-        {"text":"manda","from":3901,"to":3915},
-        {"text":"ondas","from":3915,"to":3929},
-        {"text":"de","from":3929,"to":3935},
-        {"text":"radio","from":3935,"to":3948},
-        {"text":"y","from":3948,"to":3951},
-        {"text":"escucha","from":3951,"to":3971},
-        {"text":"el","from":3971,"to":3976},
-        {"text":"eco.","from":3976,"to":3987},
-        {"text":"Cubre","from":3987,"to":4001},
-        {"text":"mucho,","from":4001,"to":4018},
-        {"text":"pero","from":4018,"to":4029},
-        {"text":"atraviesa","from":4029,"to":4054},
-        {"text":"los","from":4054,"to":4063},
-        {"text":"tabiques","from":4063,"to":4085},
-        {"text":"finos","from":4085,"to":4099},
-        {"text":"y","from":4099,"to":4102},
-        {"text":"salta","from":4102,"to":4116},
-        {"text":"con","from":4116,"to":4124},
-        {"text":"lo","from":4124,"to":4130},
-        {"text":"que","from":4130,"to":4138},
-        {"text":"se","from":4138,"to":4143},
-        {"text":"mueve","from":4143,"to":4157},
-        {"text":"al","from":4157,"to":4163},
-        {"text":"otro","from":4163,"to":4174},
-        {"text":"lado.","from":4174,"to":4188}
+        {"text":"Microwave","from":3277,"to":3296},
+        {"text":"manda","from":3296,"to":3314},
+        {"text":"ondas","from":3314,"to":3321},
+        {"text":"de","from":3321,"to":3324},
+        {"text":"radio","from":3324,"to":3335},
+        {"text":"y","from":3335,"to":3343},
+        {"text":"escucha","from":3343,"to":3354},
+        {"text":"el","from":3354,"to":3357},
+        {"text":"eco.","from":3357,"to":3362},
+        {"text":"Cubre","from":3371,"to":3380},
+        {"text":"mucho,","from":3380,"to":3391},
+        {"text":"pero","from":3399,"to":3401},
+        {"text":"atraviesa","from":3400,"to":3416},
+        {"text":"los","from":3416,"to":3419},
+        {"text":"tabiques","from":3419,"to":3430},
+        {"text":"finos","from":3430,"to":3447},
+        {"text":"y","from":3447,"to":3464},
+        {"text":"salta","from":3464,"to":3474},
+        {"text":"con","from":3474,"to":3480},
+        {"text":"lo","from":3480,"to":3483},
+        {"text":"que","from":3483,"to":3486},
+        {"text":"se","from":3486,"to":3490},
+        {"text":"mueve","from":3490,"to":3499},
+        {"text":"al","from":3499,"to":3504},
+        {"text":"otro","from":3504,"to":3512},
+        {"text":"lado.","from":3512,"to":3521}
       ]
     },
     {
       "id": "s04-05",
       "scene": "s04-sensor",
       "text": "Ultrasonic hace lo mismo con sonido. Sirve en un cuarto pequeño y cerrado, porque el sonido no atraviesa las paredes. Las corrientes de aire sí lo confunden.",
-      "from": 4197,
-      "audioFrames": 324,
-      "durationInFrames": 333,
-      "audio": null,
+      "from": 3540,
+      "audioFrames": 300,
+      "durationInFrames": 309,
+      "audio": "voice/s04-05.mp3",
       "words": [
-        {"text":"Ultrasonic","from":4197,"to":4222},
-        {"text":"hace","from":4222,"to":4232},
-        {"text":"lo","from":4232,"to":4237},
-        {"text":"mismo","from":4237,"to":4249},
-        {"text":"con","from":4249,"to":4256},
-        {"text":"sonido.","from":4256,"to":4274},
-        {"text":"Sirve","from":4274,"to":4286},
-        {"text":"en","from":4286,"to":4291},
-        {"text":"un","from":4291,"to":4296},
-        {"text":"cuarto","from":4296,"to":4311},
-        {"text":"pequeño","from":4311,"to":4328},
-        {"text":"y","from":4328,"to":4331},
-        {"text":"cerrado,","from":4331,"to":4350},
-        {"text":"porque","from":4350,"to":4365},
-        {"text":"el","from":4365,"to":4370},
-        {"text":"sonido","from":4370,"to":4385},
-        {"text":"no","from":4385,"to":4390},
-        {"text":"atraviesa","from":4390,"to":4412},
-        {"text":"las","from":4412,"to":4420},
-        {"text":"paredes.","from":4420,"to":4439},
-        {"text":"Las","from":4439,"to":4447},
-        {"text":"corrientes","from":4447,"to":4472},
-        {"text":"de","from":4472,"to":4476},
-        {"text":"aire","from":4476,"to":4486},
-        {"text":"sí","from":4486,"to":4491},
-        {"text":"lo","from":4491,"to":4496},
-        {"text":"confunden.","from":4496,"to":4521}
+        {"text":"Ultrasonic","from":3545,"to":3561},
+        {"text":"hace","from":3561,"to":3572},
+        {"text":"lo","from":3572,"to":3576},
+        {"text":"mismo","from":3576,"to":3584},
+        {"text":"con","from":3584,"to":3591},
+        {"text":"sonido.","from":3591,"to":3607},
+        {"text":"Sirve","from":3618,"to":3628},
+        {"text":"en","from":3628,"to":3633},
+        {"text":"un","from":3633,"to":3636},
+        {"text":"cuarto","from":3636,"to":3643},
+        {"text":"pequeño","from":3643,"to":3657},
+        {"text":"y","from":3657,"to":3667},
+        {"text":"cerrado,","from":3667,"to":3679},
+        {"text":"porque","from":3695,"to":3697},
+        {"text":"el","from":3696,"to":3700},
+        {"text":"sonido","from":3700,"to":3710},
+        {"text":"no","from":3710,"to":3716},
+        {"text":"atraviesa","from":3716,"to":3732},
+        {"text":"las","from":3732,"to":3740},
+        {"text":"paredes.","from":3740,"to":3756},
+        {"text":"Las","from":3770,"to":3775},
+        {"text":"corrientes","from":3775,"to":3786},
+        {"text":"de","from":3786,"to":3793},
+        {"text":"aire","from":3793,"to":3799},
+        {"text":"sí","from":3799,"to":3809},
+        {"text":"lo","from":3809,"to":3814},
+        {"text":"confunden.","from":3814,"to":3830}
       ]
     },
     {
       "id": "s04-06",
       "scene": "s04-sensor",
       "text": "O sea, que cubrir mucho no basta. Se elige el que no falla en tu cuarto.",
-      "from": 4530,
-      "audioFrames": 192,
-      "durationInFrames": 207,
-      "audio": null,
+      "from": 3849,
+      "audioFrames": 143,
+      "durationInFrames": 158,
+      "audio": "voice/s04-06.mp3",
       "words": [
-        {"text":"O","from":4530,"to":4533},
-        {"text":"sea,","from":4533,"to":4547},
-        {"text":"que","from":4547,"to":4557},
-        {"text":"cubrir","from":4557,"to":4577},
-        {"text":"mucho","from":4577,"to":4594},
-        {"text":"no","from":4594,"to":4601},
-        {"text":"basta.","from":4601,"to":4621},
-        {"text":"Se","from":4621,"to":4628},
-        {"text":"elige","from":4628,"to":4645},
-        {"text":"el","from":4645,"to":4651},
-        {"text":"que","from":4651,"to":4661},
-        {"text":"no","from":4661,"to":4668},
-        {"text":"falla","from":4668,"to":4685},
-        {"text":"en","from":4685,"to":4692},
-        {"text":"tu","from":4692,"to":4698},
-        {"text":"cuarto.","from":4698,"to":4722}
+        {"text":"O","from":3850,"to":3853},
+        {"text":"sea,","from":3853,"to":3860},
+        {"text":"que","from":3860,"to":3874},
+        {"text":"cubrir","from":3874,"to":3884},
+        {"text":"mucho","from":3884,"to":3894},
+        {"text":"no","from":3894,"to":3900},
+        {"text":"basta.","from":3900,"to":3909},
+        {"text":"Se","from":3918,"to":3926},
+        {"text":"elige","from":3926,"to":3934},
+        {"text":"el","from":3934,"to":3943},
+        {"text":"que","from":3943,"to":3947},
+        {"text":"no","from":3947,"to":3952},
+        {"text":"falla","from":3952,"to":3963},
+        {"text":"en","from":3963,"to":3967},
+        {"text":"tu","from":3967,"to":3971},
+        {"text":"cuarto.","from":3971,"to":3981}
       ]
     },
     {
       "id": "s05-01",
       "scene": "s05-p2",
       "text": "Otra más. Un despacho pequeño y cerrado recibe sol directo por la ventana. Su pared fina da a otro con gente yendo y viniendo. Quieren detectar movimiento dentro. ¿Qué sensor encaja mejor? Cuando una pregunta pide el “mejor”, casi todas las opciones valen a medias. Vale la que no falla en nada de lo que cuenta el caso.",
-      "from": 4769,
-      "audioFrames": 696,
-      "durationInFrames": 854,
-      "audio": null,
+      "from": 4039,
+      "audioFrames": 613,
+      "durationInFrames": 771,
+      "audio": "voice/s05-01.mp3",
       "words": [
-        {"text":"Otra","from":4769,"to":4780},
-        {"text":"más.","from":4780,"to":4790},
-        {"text":"Un","from":4790,"to":4795},
-        {"text":"despacho","from":4795,"to":4817},
-        {"text":"pequeño","from":4817,"to":4835},
-        {"text":"y","from":4835,"to":4838},
-        {"text":"cerrado","from":4838,"to":4856},
-        {"text":"recibe","from":4856,"to":4872},
-        {"text":"sol","from":4872,"to":4880},
-        {"text":"directo","from":4880,"to":4899},
-        {"text":"por","from":4899,"to":4907},
-        {"text":"la","from":4907,"to":4912},
-        {"text":"ventana.","from":4912,"to":4933},
-        {"text":"Su","from":4933,"to":4938},
-        {"text":"pared","from":4938,"to":4952},
-        {"text":"fina","from":4952,"to":4962},
-        {"text":"da","from":4962,"to":4967},
-        {"text":"a","from":4967,"to":4970},
-        {"text":"otro","from":4970,"to":4981},
-        {"text":"con","from":4981,"to":4989},
-        {"text":"gente","from":4989,"to":5002},
-        {"text":"yendo","from":5002,"to":5015},
-        {"text":"y","from":5015,"to":5018},
-        {"text":"viniendo.","from":5018,"to":5042},
-        {"text":"Quieren","from":5042,"to":5060},
-        {"text":"detectar","from":5060,"to":5081},
-        {"text":"movimiento","from":5081,"to":5108},
-        {"text":"dentro.","from":5108,"to":5126},
-        {"text":"¿Qué","from":5126,"to":5137},
-        {"text":"sensor","from":5137,"to":5153},
-        {"text":"encaja","from":5153,"to":5169},
-        {"text":"mejor?","from":5169,"to":5184},
-        {"text":"Cuando","from":5184,"to":5200},
-        {"text":"una","from":5200,"to":5208},
-        {"text":"pregunta","from":5208,"to":5229},
-        {"text":"pide","from":5229,"to":5240},
-        {"text":"el","from":5240,"to":5245},
-        {"text":"“mejor”,","from":5245,"to":5267},
-        {"text":"casi","from":5267,"to":5277},
-        {"text":"todas","from":5277,"to":5290},
-        {"text":"las","from":5290,"to":5298},
-        {"text":"opciones","from":5298,"to":5319},
-        {"text":"valen","from":5319,"to":5333},
-        {"text":"a","from":5333,"to":5335},
-        {"text":"medias.","from":5335,"to":5354},
-        {"text":"Vale","from":5354,"to":5364},
-        {"text":"la","from":5364,"to":5370},
-        {"text":"que","from":5370,"to":5378},
-        {"text":"no","from":5378,"to":5383},
-        {"text":"falla","from":5383,"to":5396},
-        {"text":"en","from":5396,"to":5401},
-        {"text":"nada","from":5401,"to":5412},
-        {"text":"de","from":5412,"to":5417},
-        {"text":"lo","from":5417,"to":5423},
-        {"text":"que","from":5423,"to":5431},
-        {"text":"cuenta","from":5431,"to":5446},
-        {"text":"el","from":5446,"to":5452},
-        {"text":"caso.","from":5452,"to":5465}
+        {"text":"Otra","from":4039,"to":4050},
+        {"text":"más.","from":4050,"to":4060},
+        {"text":"Un","from":4072,"to":4078},
+        {"text":"despacho","from":4078,"to":4092},
+        {"text":"pequeño","from":4092,"to":4102},
+        {"text":"y","from":4102,"to":4110},
+        {"text":"cerrado","from":4110,"to":4122},
+        {"text":"recibe","from":4122,"to":4141},
+        {"text":"sol","from":4141,"to":4149},
+        {"text":"directo","from":4149,"to":4162},
+        {"text":"por","from":4162,"to":4169},
+        {"text":"la","from":4169,"to":4172},
+        {"text":"ventana.","from":4172,"to":4184},
+        {"text":"Su","from":4197,"to":4201},
+        {"text":"pared","from":4201,"to":4207},
+        {"text":"fina","from":4207,"to":4222},
+        {"text":"da","from":4222,"to":4232},
+        {"text":"a","from":4232,"to":4234},
+        {"text":"otro","from":4232,"to":4239},
+        {"text":"con","from":4239,"to":4245},
+        {"text":"gente","from":4245,"to":4254},
+        {"text":"yendo","from":4254,"to":4267},
+        {"text":"y","from":4267,"to":4270},
+        {"text":"viniendo.","from":4270,"to":4283},
+        {"text":"Quieren","from":4297,"to":4306},
+        {"text":"detectar","from":4306,"to":4321},
+        {"text":"movimiento","from":4321,"to":4327},
+        {"text":"dentro.","from":4327,"to":4344},
+        {"text":"¿Qué","from":4356,"to":4360},
+        {"text":"sensor","from":4360,"to":4372},
+        {"text":"encaja","from":4372,"to":4386},
+        {"text":"mejor?","from":4386,"to":4395},
+        {"text":"Cuando","from":4410,"to":4419},
+        {"text":"una","from":4419,"to":4425},
+        {"text":"pregunta","from":4425,"to":4434},
+        {"text":"pide","from":4434,"to":4448},
+        {"text":"el","from":4448,"to":4457},
+        {"text":"“mejor”,","from":4457,"to":4468},
+        {"text":"casi","from":4483,"to":4487},
+        {"text":"todas","from":4487,"to":4493},
+        {"text":"las","from":4493,"to":4500},
+        {"text":"opciones","from":4500,"to":4513},
+        {"text":"valen","from":4513,"to":4526},
+        {"text":"a","from":4526,"to":4529},
+        {"text":"medias.","from":4529,"to":4544},
+        {"text":"Vale","from":4557,"to":4566},
+        {"text":"la","from":4566,"to":4575},
+        {"text":"que","from":4575,"to":4580},
+        {"text":"no","from":4580,"to":4585},
+        {"text":"falla","from":4585,"to":4596},
+        {"text":"en","from":4596,"to":4599},
+        {"text":"nada","from":4599,"to":4607},
+        {"text":"de","from":4607,"to":4614},
+        {"text":"lo","from":4614,"to":4618},
+        {"text":"que","from":4618,"to":4622},
+        {"text":"cuenta","from":4622,"to":4630},
+        {"text":"el","from":4630,"to":4635},
+        {"text":"caso.","from":4635,"to":4642}
       ]
     },
     {
       "id": "s05-02",
       "scene": "s05-p2",
       "text": "Ultrasonic, porque su sonido no atraviesa la pared. Microwave parece lo natural, pero cruzaría el tabique y saltaría con la gente del despacho vecino.",
-      "from": 5623,
-      "audioFrames": 288,
-      "durationInFrames": 297,
-      "audio": null,
+      "from": 4810,
+      "audioFrames": 254,
+      "durationInFrames": 263,
+      "audio": "voice/s05-02.mp3",
       "words": [
-        {"text":"Ultrasonic,","from":5623,"to":5648},
-        {"text":"porque","from":5648,"to":5662},
-        {"text":"su","from":5662,"to":5666},
-        {"text":"sonido","from":5666,"to":5680},
-        {"text":"no","from":5680,"to":5684},
-        {"text":"atraviesa","from":5684,"to":5705},
-        {"text":"la","from":5705,"to":5709},
-        {"text":"pared.","from":5709,"to":5723},
-        {"text":"Microwave","from":5723,"to":5743},
-        {"text":"parece","from":5743,"to":5757},
-        {"text":"lo","from":5757,"to":5761},
-        {"text":"natural,","from":5761,"to":5779},
-        {"text":"pero","from":5779,"to":5789},
-        {"text":"cruzaría","from":5789,"to":5807},
-        {"text":"el","from":5807,"to":5811},
-        {"text":"tabique","from":5811,"to":5827},
-        {"text":"y","from":5827,"to":5829},
-        {"text":"saltaría","from":5829,"to":5848},
-        {"text":"con","from":5848,"to":5854},
-        {"text":"la","from":5854,"to":5859},
-        {"text":"gente","from":5859,"to":5870},
-        {"text":"del","from":5870,"to":5877},
-        {"text":"despacho","from":5877,"to":5895},
-        {"text":"vecino.","from":5895,"to":5911}
+        {"text":"Ultrasonic,","from":4817,"to":4833},
+        {"text":"porque","from":4852,"to":4858},
+        {"text":"su","from":4858,"to":4863},
+        {"text":"sonido","from":4863,"to":4873},
+        {"text":"no","from":4873,"to":4879},
+        {"text":"atraviesa","from":4879,"to":4895},
+        {"text":"la","from":4895,"to":4898},
+        {"text":"pared.","from":4898,"to":4906},
+        {"text":"Microwave","from":4913,"to":4929},
+        {"text":"parece","from":4929,"to":4939},
+        {"text":"lo","from":4939,"to":4945},
+        {"text":"natural,","from":4945,"to":4956},
+        {"text":"pero","from":4956,"to":4964},
+        {"text":"cruzaría","from":4964,"to":4978},
+        {"text":"el","from":4978,"to":4984},
+        {"text":"tabique","from":4984,"to":4992},
+        {"text":"y","from":4992,"to":4999},
+        {"text":"saltaría","from":4999,"to":5010},
+        {"text":"con","from":5010,"to":5017},
+        {"text":"la","from":5017,"to":5021},
+        {"text":"gente","from":5021,"to":5027},
+        {"text":"del","from":5027,"to":5033},
+        {"text":"despacho","from":5033,"to":5043},
+        {"text":"vecino.","from":5043,"to":5054}
       ]
     },
     {
       "id": "s05-03",
       "scene": "s05-p2",
       "text": "Vamos, que no valía el que más cubre, sino el que no fallaba en ese despacho.",
-      "from": 5920,
-      "audioFrames": 192,
-      "durationInFrames": 210,
-      "audio": null,
+      "from": 5073,
+      "audioFrames": 153,
+      "durationInFrames": 171,
+      "audio": "voice/s05-03.mp3",
       "words": [
-        {"text":"Vamos,","from":5920,"to":5939},
-        {"text":"que","from":5939,"to":5948},
-        {"text":"no","from":5948,"to":5954},
-        {"text":"valía","from":5954,"to":5970},
-        {"text":"el","from":5970,"to":5976},
-        {"text":"que","from":5976,"to":5985},
-        {"text":"más","from":5985,"to":5994},
-        {"text":"cubre,","from":5994,"to":6013},
-        {"text":"sino","from":6013,"to":6025},
-        {"text":"el","from":6025,"to":6031},
-        {"text":"que","from":6031,"to":6041},
-        {"text":"no","from":6041,"to":6047},
-        {"text":"fallaba","from":6047,"to":6069},
-        {"text":"en","from":6069,"to":6075},
-        {"text":"ese","from":6075,"to":6084},
-        {"text":"despacho.","from":6084,"to":6112}
+        {"text":"Vamos,","from":5073,"to":5083},
+        {"text":"que","from":5100,"to":5105},
+        {"text":"no","from":5105,"to":5109},
+        {"text":"valía","from":5109,"to":5120},
+        {"text":"el","from":5120,"to":5127},
+        {"text":"que","from":5127,"to":5130},
+        {"text":"más","from":5130,"to":5135},
+        {"text":"cubre,","from":5135,"to":5147},
+        {"text":"sino","from":5156,"to":5163},
+        {"text":"el","from":5163,"to":5168},
+        {"text":"que","from":5168,"to":5170},
+        {"text":"no","from":5170,"to":5174},
+        {"text":"fallaba","from":5174,"to":5188},
+        {"text":"en","from":5188,"to":5196},
+        {"text":"ese","from":5196,"to":5201},
+        {"text":"despacho.","from":5201,"to":5216}
       ]
     },
     {
       "id": "s06-01",
       "scene": "s06-cebo",
       "text": "Lo de antes intenta frenar o detectar a quien llega. Un cebo parte de otra idea, que ya hay alguien dentro.",
-      "from": 6162,
-      "audioFrames": 252,
-      "durationInFrames": 261,
-      "audio": null,
+      "from": 5276,
+      "audioFrames": 197,
+      "durationInFrames": 206,
+      "audio": "voice/s06-01.mp3",
       "words": [
-        {"text":"Lo","from":6162,"to":6168},
-        {"text":"de","from":6168,"to":6174},
-        {"text":"antes","from":6174,"to":6188},
-        {"text":"intenta","from":6188,"to":6208},
-        {"text":"frenar","from":6208,"to":6226},
-        {"text":"o","from":6226,"to":6229},
-        {"text":"detectar","from":6229,"to":6252},
-        {"text":"a","from":6252,"to":6255},
-        {"text":"quien","from":6255,"to":6269},
-        {"text":"llega.","from":6269,"to":6287},
-        {"text":"Un","from":6287,"to":6292},
-        {"text":"cebo","from":6292,"to":6304},
-        {"text":"parte","from":6304,"to":6318},
-        {"text":"de","from":6318,"to":6324},
-        {"text":"otra","from":6324,"to":6336},
-        {"text":"idea,","from":6336,"to":6350},
-        {"text":"que","from":6350,"to":6359},
-        {"text":"ya","from":6359,"to":6365},
-        {"text":"hay","from":6365,"to":6373},
-        {"text":"alguien","from":6373,"to":6394},
-        {"text":"dentro.","from":6394,"to":6414}
+        {"text":"Lo","from":5276,"to":5282},
+        {"text":"de","from":5282,"to":5288},
+        {"text":"antes","from":5288,"to":5295},
+        {"text":"intenta","from":5295,"to":5313},
+        {"text":"frenar","from":5313,"to":5328},
+        {"text":"o","from":5328,"to":5333},
+        {"text":"detectar","from":5333,"to":5348},
+        {"text":"a","from":5348,"to":5351},
+        {"text":"quien","from":5351,"to":5354},
+        {"text":"llega.","from":5354,"to":5365},
+        {"text":"Un","from":5377,"to":5382},
+        {"text":"cebo","from":5382,"to":5390},
+        {"text":"parte","from":5394,"to":5399},
+        {"text":"de","from":5399,"to":5406},
+        {"text":"otra","from":5406,"to":5410},
+        {"text":"idea,","from":5410,"to":5419},
+        {"text":"que","from":5428,"to":5433},
+        {"text":"ya","from":5433,"to":5439},
+        {"text":"hay","from":5439,"to":5443},
+        {"text":"alguien","from":5443,"to":5452},
+        {"text":"dentro.","from":5452,"to":5463}
       ]
     },
     {
       "id": "s06-02",
       "scene": "s06-cebo",
       "text": "Es algo falso, y se pone donde ningún usuario legítimo tocaría. Hay cuatro, según lo que ofrecen.",
-      "from": 6423,
-      "audioFrames": 204,
-      "durationInFrames": 212,
-      "audio": null,
+      "from": 5482,
+      "audioFrames": 186,
+      "durationInFrames": 194,
+      "audio": "voice/s06-02.mp3",
       "words": [
-        {"text":"Es","from":6423,"to":6428},
-        {"text":"algo","from":6428,"to":6438},
-        {"text":"falso,","from":6438,"to":6453},
-        {"text":"y","from":6453,"to":6456},
-        {"text":"se","from":6456,"to":6461},
-        {"text":"pone","from":6461,"to":6471},
-        {"text":"donde","from":6471,"to":6483},
-        {"text":"ningún","from":6483,"to":6499},
-        {"text":"usuario","from":6499,"to":6516},
-        {"text":"legítimo","from":6516,"to":6536},
-        {"text":"tocaría.","from":6536,"to":6556},
-        {"text":"Hay","from":6556,"to":6564},
-        {"text":"cuatro,","from":6564,"to":6582},
-        {"text":"según","from":6582,"to":6594},
-        {"text":"lo","from":6594,"to":6599},
-        {"text":"que","from":6599,"to":6607},
-        {"text":"ofrecen.","from":6607,"to":6627}
+        {"text":"Es","from":5482,"to":5487},
+        {"text":"algo","from":5487,"to":5497},
+        {"text":"falso,","from":5497,"to":5510},
+        {"text":"y","from":5510,"to":5524},
+        {"text":"se","from":5524,"to":5528},
+        {"text":"pone","from":5528,"to":5534},
+        {"text":"donde","from":5534,"to":5541},
+        {"text":"ningún","from":5541,"to":5551},
+        {"text":"usuario","from":5551,"to":5563},
+        {"text":"legítimo","from":5563,"to":5581},
+        {"text":"tocaría.","from":5581,"to":5601},
+        {"text":"Hay","from":5613,"to":5618},
+        {"text":"cuatro,","from":5618,"to":5628},
+        {"text":"según","from":5628,"to":5639},
+        {"text":"lo","from":5639,"to":5645},
+        {"text":"que","from":5645,"to":5649},
+        {"text":"ofrecen.","from":5649,"to":5661}
       ]
     },
     {
       "id": "s06-03",
       "scene": "s06-cebo",
       "text": "Un sistema que no sirve a nadie, un honeypot. Varios que se hablan entre sí, una honeynet.",
-      "from": 6635,
-      "audioFrames": 204,
-      "durationInFrames": 213,
-      "audio": null,
+      "from": 5676,
+      "audioFrames": 178,
+      "durationInFrames": 187,
+      "audio": "voice/s06-03.mp3",
       "words": [
-        {"text":"Un","from":6635,"to":6641},
-        {"text":"sistema","from":6641,"to":6660},
-        {"text":"que","from":6660,"to":6668},
-        {"text":"no","from":6668,"to":6674},
-        {"text":"sirve","from":6674,"to":6687},
-        {"text":"a","from":6687,"to":6690},
-        {"text":"nadie,","from":6690,"to":6707},
-        {"text":"un","from":6707,"to":6712},
-        {"text":"honeypot.","from":6712,"to":6737},
-        {"text":"Varios","from":6737,"to":6754},
-        {"text":"que","from":6754,"to":6762},
-        {"text":"se","from":6762,"to":6767},
-        {"text":"hablan","from":6767,"to":6784},
-        {"text":"entre","from":6784,"to":6798},
-        {"text":"sí,","from":6798,"to":6806},
-        {"text":"una","from":6806,"to":6814},
-        {"text":"honeynet.","from":6814,"to":6839}
+        {"text":"Un","from":5683,"to":5691},
+        {"text":"sistema","from":5691,"to":5701},
+        {"text":"que","from":5701,"to":5710},
+        {"text":"no","from":5710,"to":5714},
+        {"text":"sirve","from":5714,"to":5722},
+        {"text":"a","from":5722,"to":5725},
+        {"text":"nadie,","from":5725,"to":5733},
+        {"text":"un","from":5740,"to":5743},
+        {"text":"honeypot.","from":5743,"to":5758},
+        {"text":"Varios","from":5772,"to":5782},
+        {"text":"que","from":5782,"to":5787},
+        {"text":"se","from":5787,"to":5791},
+        {"text":"hablan","from":5791,"to":5797},
+        {"text":"entre","from":5797,"to":5806},
+        {"text":"sí,","from":5806,"to":5812},
+        {"text":"una","from":5823,"to":5828},
+        {"text":"honeynet.","from":5828,"to":5841}
       ]
     },
     {
       "id": "s06-04",
       "scene": "s06-cebo",
       "text": "Un fichero con un nombre irresistible, un honeyfile. Y un dato que no existe, como una cuenta, una clave o un registro, un honeytoken.",
-      "from": 6848,
-      "audioFrames": 288,
-      "durationInFrames": 297,
-      "audio": null,
+      "from": 5863,
+      "audioFrames": 253,
+      "durationInFrames": 262,
+      "audio": "voice/s06-04.mp3",
       "words": [
-        {"text":"Un","from":6848,"to":6853},
-        {"text":"fichero","from":6853,"to":6871},
-        {"text":"con","from":6871,"to":6879},
-        {"text":"un","from":6879,"to":6884},
-        {"text":"nombre","from":6884,"to":6900},
-        {"text":"irresistible,","from":6900,"to":6934},
-        {"text":"un","from":6934,"to":6939},
-        {"text":"honeyfile.","from":6939,"to":6965},
-        {"text":"Y","from":6965,"to":6967},
-        {"text":"un","from":6967,"to":6973},
-        {"text":"dato","from":6973,"to":6983},
-        {"text":"que","from":6983,"to":6991},
-        {"text":"no","from":6991,"to":6996},
-        {"text":"existe,","from":6996,"to":7014},
-        {"text":"como","from":7014,"to":7024},
-        {"text":"una","from":7024,"to":7032},
-        {"text":"cuenta,","from":7032,"to":7050},
-        {"text":"una","from":7050,"to":7058},
-        {"text":"clave","from":7058,"to":7071},
-        {"text":"o","from":7071,"to":7074},
-        {"text":"un","from":7074,"to":7079},
-        {"text":"registro,","from":7079,"to":7102},
-        {"text":"un","from":7102,"to":7107},
-        {"text":"honeytoken.","from":7107,"to":7136}
+        {"text":"Un","from":5863,"to":5869},
+        {"text":"fichero","from":5869,"to":5883},
+        {"text":"con","from":5883,"to":5889},
+        {"text":"un","from":5889,"to":5893},
+        {"text":"nombre","from":5893,"to":5900},
+        {"text":"irresistible,","from":5900,"to":5919},
+        {"text":"un","from":5926,"to":5929},
+        {"text":"honeyfile.","from":5929,"to":5950},
+        {"text":"Y","from":5965,"to":5973},
+        {"text":"un","from":5973,"to":5976},
+        {"text":"dato","from":5976,"to":5982},
+        {"text":"que","from":5982,"to":5988},
+        {"text":"no","from":5988,"to":5992},
+        {"text":"existe,","from":5992,"to":6003},
+        {"text":"como","from":6003,"to":6013},
+        {"text":"una","from":6013,"to":6018},
+        {"text":"cuenta,","from":6018,"to":6028},
+        {"text":"una","from":6037,"to":6039},
+        {"text":"clave","from":6039,"to":6050},
+        {"text":"o","from":6050,"to":6055},
+        {"text":"un","from":6056,"to":6058},
+        {"text":"registro,","from":6058,"to":6073},
+        {"text":"un","from":6082,"to":6085},
+        {"text":"honeytoken.","from":6085,"to":6102}
       ]
     },
     {
       "id": "s06-05",
       "scene": "s06-cebo",
       "text": "Los cuatro tienen algo en común. Nadie legítimo los toca, así que cualquier toque avisa.",
-      "from": 7145,
-      "audioFrames": 180,
-      "durationInFrames": 195,
-      "audio": null,
+      "from": 6125,
+      "audioFrames": 178,
+      "durationInFrames": 193,
+      "audio": "voice/s06-05.mp3",
       "words": [
-        {"text":"Los","from":7145,"to":7152},
-        {"text":"cuatro","from":7152,"to":7167},
-        {"text":"tienen","from":7167,"to":7181},
-        {"text":"algo","from":7181,"to":7191},
-        {"text":"en","from":7191,"to":7196},
-        {"text":"común.","from":7196,"to":7211},
-        {"text":"Nadie","from":7211,"to":7223},
-        {"text":"legítimo","from":7223,"to":7242},
-        {"text":"los","from":7242,"to":7250},
-        {"text":"toca,","from":7250,"to":7262},
-        {"text":"así","from":7262,"to":7269},
-        {"text":"que","from":7269,"to":7276},
-        {"text":"cualquier","from":7276,"to":7298},
-        {"text":"toque","from":7298,"to":7310},
-        {"text":"avisa.","from":7310,"to":7325}
+        {"text":"Los","from":6130,"to":6142},
+        {"text":"cuatro","from":6142,"to":6153},
+        {"text":"tienen","from":6153,"to":6164},
+        {"text":"algo","from":6164,"to":6172},
+        {"text":"en","from":6172,"to":6177},
+        {"text":"común.","from":6177,"to":6185},
+        {"text":"Nadie","from":6196,"to":6205},
+        {"text":"legítimo","from":6205,"to":6223},
+        {"text":"los","from":6223,"to":6229},
+        {"text":"toca,","from":6229,"to":6238},
+        {"text":"así","from":6246,"to":6254},
+        {"text":"que","from":6254,"to":6258},
+        {"text":"cualquier","from":6258,"to":6266},
+        {"text":"toque","from":6266,"to":6278},
+        {"text":"avisa.","from":6280,"to":6292}
       ]
     },
     {
       "id": "s07-01",
       "scene": "s07-p3",
       "text": "La última. Un estudio de arquitectura quiere enterarse en cuanto un ransomware empiece a cifrar los ficheros de su servidor. Va a dejar cebos donde ese ransomware pase. ¿Qué cebo encaja mejor?",
-      "from": 7372,
-      "audioFrames": 384,
-      "durationInFrames": 542,
-      "audio": null,
+      "from": 6350,
+      "audioFrames": 345,
+      "durationInFrames": 503,
+      "audio": "voice/s07-01.mp3",
       "words": [
-        {"text":"La","from":7372,"to":7377},
-        {"text":"última.","from":7377,"to":7393},
-        {"text":"Un","from":7393,"to":7398},
-        {"text":"estudio","from":7398,"to":7415},
-        {"text":"de","from":7415,"to":7420},
-        {"text":"arquitectura","from":7420,"to":7448},
-        {"text":"quiere","from":7448,"to":7463},
-        {"text":"enterarse","from":7463,"to":7484},
-        {"text":"en","from":7484,"to":7489},
-        {"text":"cuanto","from":7489,"to":7503},
-        {"text":"un","from":7503,"to":7508},
-        {"text":"ransomware","from":7508,"to":7532},
-        {"text":"empiece","from":7532,"to":7548},
-        {"text":"a","from":7548,"to":7551},
-        {"text":"cifrar","from":7551,"to":7565},
-        {"text":"los","from":7565,"to":7572},
-        {"text":"ficheros","from":7572,"to":7591},
-        {"text":"de","from":7591,"to":7596},
-        {"text":"su","from":7596,"to":7601},
-        {"text":"servidor.","from":7601,"to":7622},
-        {"text":"Va","from":7622,"to":7627},
-        {"text":"a","from":7627,"to":7630},
-        {"text":"dejar","from":7630,"to":7642},
-        {"text":"cebos","from":7642,"to":7653},
-        {"text":"donde","from":7653,"to":7665},
-        {"text":"ese","from":7665,"to":7673},
-        {"text":"ransomware","from":7673,"to":7696},
-        {"text":"pase.","from":7696,"to":7708},
-        {"text":"¿Qué","from":7708,"to":7718},
-        {"text":"cebo","from":7718,"to":7727},
-        {"text":"encaja","from":7727,"to":7742},
-        {"text":"mejor?","from":7742,"to":7756}
+        {"text":"La","from":6350,"to":6358},
+        {"text":"última.","from":6358,"to":6369},
+        {"text":"Un","from":6383,"to":6387},
+        {"text":"estudio","from":6387,"to":6398},
+        {"text":"de","from":6398,"to":6406},
+        {"text":"arquitectura","from":6406,"to":6426},
+        {"text":"quiere","from":6426,"to":6442},
+        {"text":"enterarse","from":6442,"to":6459},
+        {"text":"en","from":6459,"to":6467},
+        {"text":"cuanto","from":6467,"to":6471},
+        {"text":"un","from":6471,"to":6480},
+        {"text":"ransomware","from":6480,"to":6496},
+        {"text":"empiece","from":6496,"to":6504},
+        {"text":"a","from":6504,"to":6509},
+        {"text":"cifrar","from":6509,"to":6519},
+        {"text":"los","from":6519,"to":6525},
+        {"text":"ficheros","from":6525,"to":6540},
+        {"text":"de","from":6540,"to":6543},
+        {"text":"su","from":6543,"to":6547},
+        {"text":"servidor.","from":6547,"to":6561},
+        {"text":"Va","from":6568,"to":6576},
+        {"text":"a","from":6576,"to":6579},
+        {"text":"dejar","from":6579,"to":6582},
+        {"text":"cebos","from":6582,"to":6594},
+        {"text":"donde","from":6594,"to":6598},
+        {"text":"ese","from":6598,"to":6606},
+        {"text":"ransomware","from":6606,"to":6620},
+        {"text":"pase.","from":6620,"to":6631},
+        {"text":"¿Qué","from":6631,"to":6642},
+        {"text":"cebo","from":6652,"to":6662},
+        {"text":"encaja","from":6662,"to":6676},
+        {"text":"mejor?","from":6676,"to":6685}
       ]
     },
     {
       "id": "s07-02",
       "scene": "s07-p3",
       "text": "Honeyfile, porque el fichero cebo queda entre los ficheros que recorre el ransomware. Un honeypot también es cebo, pero es un sistema aparte, y puede que ni lo toque.",
-      "from": 7914,
-      "audioFrames": 348,
-      "durationInFrames": 357,
-      "audio": null,
+      "from": 6853,
+      "audioFrames": 273,
+      "durationInFrames": 282,
+      "audio": "voice/s07-02.mp3",
       "words": [
-        {"text":"Honeyfile,","from":7914,"to":7939},
-        {"text":"porque","from":7939,"to":7954},
-        {"text":"el","from":7954,"to":7959},
-        {"text":"fichero","from":7959,"to":7977},
-        {"text":"cebo","from":7977,"to":7987},
-        {"text":"queda","from":7987,"to":8000},
-        {"text":"entre","from":8000,"to":8012},
-        {"text":"los","from":8012,"to":8020},
-        {"text":"ficheros","from":8020,"to":8040},
-        {"text":"que","from":8040,"to":8048},
-        {"text":"recorre","from":8048,"to":8065},
-        {"text":"el","from":8065,"to":8070},
-        {"text":"ransomware.","from":8070,"to":8098},
-        {"text":"Un","from":8098,"to":8103},
-        {"text":"honeypot","from":8103,"to":8123},
-        {"text":"también","from":8123,"to":8141},
-        {"text":"es","from":8141,"to":8146},
-        {"text":"cebo,","from":8146,"to":8159},
-        {"text":"pero","from":8159,"to":8169},
-        {"text":"es","from":8169,"to":8174},
-        {"text":"un","from":8174,"to":8179},
-        {"text":"sistema","from":8179,"to":8196},
-        {"text":"aparte,","from":8196,"to":8214},
-        {"text":"y","from":8214,"to":8217},
-        {"text":"puede","from":8217,"to":8229},
-        {"text":"que","from":8229,"to":8237},
-        {"text":"ni","from":8237,"to":8242},
-        {"text":"lo","from":8242,"to":8247},
-        {"text":"toque.","from":8247,"to":8262}
+        {"text":"Honeyfile,","from":6853,"to":6870},
+        {"text":"porque","from":6883,"to":6889},
+        {"text":"el","from":6889,"to":6893},
+        {"text":"fichero","from":6893,"to":6902},
+        {"text":"cebo","from":6902,"to":6913},
+        {"text":"queda","from":6913,"to":6923},
+        {"text":"entre","from":6923,"to":6930},
+        {"text":"los","from":6930,"to":6934},
+        {"text":"ficheros","from":6934,"to":6948},
+        {"text":"que","from":6948,"to":6952},
+        {"text":"recorre","from":6952,"to":6963},
+        {"text":"el","from":6963,"to":6966},
+        {"text":"ransomware.","from":6966,"to":6982},
+        {"text":"Un","from":6992,"to":6999},
+        {"text":"honeypot","from":6999,"to":7012},
+        {"text":"también","from":7012,"to":7021},
+        {"text":"es","from":7021,"to":7028},
+        {"text":"cebo,","from":7028,"to":7035},
+        {"text":"pero","from":7047,"to":7055},
+        {"text":"es","from":7055,"to":7059},
+        {"text":"un","from":7059,"to":7061},
+        {"text":"sistema","from":7061,"to":7071},
+        {"text":"aparte,","from":7071,"to":7087},
+        {"text":"y","from":7087,"to":7092},
+        {"text":"puede","from":7092,"to":7098},
+        {"text":"que","from":7098,"to":7103},
+        {"text":"ni","from":7103,"to":7107},
+        {"text":"lo","from":7107,"to":7110},
+        {"text":"toque.","from":7110,"to":7119}
       ]
     },
     {
       "id": "s07-03",
       "scene": "s07-p3",
       "text": "O sea, que el fichero va por donde pasa el ransomware.",
-      "from": 8271,
-      "audioFrames": 132,
-      "durationInFrames": 153,
-      "audio": null,
+      "from": 7135,
+      "audioFrames": 87,
+      "durationInFrames": 138,
+      "audio": "voice/s07-03.mp3",
       "words": [
-        {"text":"O","from":8271,"to":8274},
-        {"text":"sea,","from":8274,"to":8286},
-        {"text":"que","from":8286,"to":8295},
-        {"text":"el","from":8295,"to":8301},
-        {"text":"fichero","from":8301,"to":8322},
-        {"text":"va","from":8322,"to":8328},
-        {"text":"por","from":8328,"to":8337},
-        {"text":"donde","from":8337,"to":8352},
-        {"text":"pasa","from":8352,"to":8364},
-        {"text":"el","from":8364,"to":8370},
-        {"text":"ransomware.","from":8370,"to":8403}
+        {"text":"O","from":7135,"to":7139},
+        {"text":"sea,","from":7139,"to":7145},
+        {"text":"que","from":7154,"to":7160},
+        {"text":"el","from":7160,"to":7162},
+        {"text":"fichero","from":7162,"to":7171},
+        {"text":"va","from":7171,"to":7176},
+        {"text":"por","from":7176,"to":7181},
+        {"text":"donde","from":7181,"to":7185},
+        {"text":"pasa","from":7185,"to":7194},
+        {"text":"el","from":7194,"to":7201},
+        {"text":"ransomware.","from":7201,"to":7216}
       ]
     },
     {
       "id": "s08-01",
       "scene": "s08-cierre",
       "text": "Una, cada control tapa un hueco. Los bollards frenan coches y el badge apunta quién entra.",
-      "from": 8456,
-      "audioFrames": 192,
-      "durationInFrames": 200,
-      "audio": null,
+      "from": 7305,
+      "audioFrames": 168,
+      "durationInFrames": 176,
+      "audio": "voice/s08-01.mp3",
       "words": [
-        {"text":"Una,","from":8456,"to":8466},
-        {"text":"cada","from":8466,"to":8476},
-        {"text":"control","from":8476,"to":8494},
-        {"text":"tapa","from":8494,"to":8505},
-        {"text":"un","from":8505,"to":8510},
-        {"text":"hueco.","from":8510,"to":8525},
-        {"text":"Los","from":8525,"to":8533},
-        {"text":"bollards","from":8533,"to":8553},
-        {"text":"frenan","from":8553,"to":8569},
-        {"text":"coches","from":8569,"to":8584},
-        {"text":"y","from":8584,"to":8587},
-        {"text":"el","from":8587,"to":8592},
-        {"text":"badge","from":8592,"to":8604},
-        {"text":"apunta","from":8604,"to":8620},
-        {"text":"quién","from":8620,"to":8633},
-        {"text":"entra.","from":8633,"to":8648}
+        {"text":"Una,","from":7305,"to":7312},
+        {"text":"cada","from":7329,"to":7331},
+        {"text":"control","from":7329,"to":7343},
+        {"text":"tapa","from":7343,"to":7350},
+        {"text":"un","from":7350,"to":7355},
+        {"text":"hueco.","from":7355,"to":7364},
+        {"text":"Los","from":7372,"to":7380},
+        {"text":"bollards","from":7380,"to":7392},
+        {"text":"frenan","from":7392,"to":7404},
+        {"text":"coches","from":7404,"to":7417},
+        {"text":"y","from":7417,"to":7423},
+        {"text":"el","from":7423,"to":7427},
+        {"text":"badge","from":7427,"to":7433},
+        {"text":"apunta","from":7433,"to":7445},
+        {"text":"quién","from":7445,"to":7452},
+        {"text":"entra.","from":7452,"to":7462}
       ]
     },
     {
       "id": "s08-02",
       "scene": "s08-cierre",
       "text": "Dos, un sensor se elige por dónde falla. El de radio cruza tabiques y el de sonido no.",
-      "from": 8656,
-      "audioFrames": 216,
-      "durationInFrames": 224,
-      "audio": null,
+      "from": 7481,
+      "audioFrames": 185,
+      "durationInFrames": 193,
+      "audio": "voice/s08-02.mp3",
       "words": [
-        {"text":"Dos,","from":8656,"to":8669},
-        {"text":"un","from":8669,"to":8675},
-        {"text":"sensor","from":8675,"to":8694},
-        {"text":"se","from":8694,"to":8700},
-        {"text":"elige","from":8700,"to":8715},
-        {"text":"por","from":8715,"to":8725},
-        {"text":"dónde","from":8725,"to":8741},
-        {"text":"falla.","from":8741,"to":8759},
-        {"text":"El","from":8759,"to":8766},
-        {"text":"de","from":8766,"to":8772},
-        {"text":"radio","from":8772,"to":8787},
-        {"text":"cruza","from":8787,"to":8803},
-        {"text":"tabiques","from":8803,"to":8828},
-        {"text":"y","from":8828,"to":8831},
-        {"text":"el","from":8831,"to":8838},
-        {"text":"de","from":8838,"to":8844},
-        {"text":"sonido","from":8844,"to":8863},
-        {"text":"no.","from":8863,"to":8872}
+        {"text":"Dos,","from":7481,"to":7498},
+        {"text":"un","from":7498,"to":7510},
+        {"text":"sensor","from":7510,"to":7520},
+        {"text":"se","from":7520,"to":7527},
+        {"text":"elige","from":7527,"to":7534},
+        {"text":"por","from":7534,"to":7541},
+        {"text":"dónde","from":7541,"to":7547},
+        {"text":"falla.","from":7547,"to":7561},
+        {"text":"El","from":7561,"to":7580},
+        {"text":"de","from":7580,"to":7584},
+        {"text":"radio","from":7584,"to":7593},
+        {"text":"cruza","from":7593,"to":7605},
+        {"text":"tabiques","from":7605,"to":7618},
+        {"text":"y","from":7618,"to":7629},
+        {"text":"el","from":7629,"to":7633},
+        {"text":"de","from":7633,"to":7635},
+        {"text":"sonido","from":7635,"to":7646},
+        {"text":"no.","from":7647,"to":7657}
       ]
     },
     {
       "id": "s08-03",
       "scene": "s08-cierre",
       "text": "Y tres, un cebo parte de que ya hay alguien dentro, y cualquier toque avisa.",
-      "from": 8880,
-      "audioFrames": 180,
-      "durationInFrames": 189,
-      "audio": null,
+      "from": 7674,
+      "audioFrames": 155,
+      "durationInFrames": 164,
+      "audio": "voice/s08-03.mp3",
       "words": [
-        {"text":"Y","from":8880,"to":8883},
-        {"text":"tres,","from":8883,"to":8897},
-        {"text":"un","from":8897,"to":8903},
-        {"text":"cebo","from":8903,"to":8915},
-        {"text":"parte","from":8915,"to":8929},
-        {"text":"de","from":8929,"to":8935},
-        {"text":"que","from":8935,"to":8944},
-        {"text":"ya","from":8944,"to":8950},
-        {"text":"hay","from":8950,"to":8958},
-        {"text":"alguien","from":8958,"to":8979},
-        {"text":"dentro,","from":8979,"to":8999},
-        {"text":"y","from":8999,"to":9002},
-        {"text":"cualquier","from":9002,"to":9028},
-        {"text":"toque","from":9028,"to":9043},
-        {"text":"avisa.","from":9043,"to":9060}
+        {"text":"Y","from":7674,"to":7682},
+        {"text":"tres,","from":7682,"to":7688},
+        {"text":"un","from":7705,"to":7711},
+        {"text":"cebo","from":7711,"to":7721},
+        {"text":"parte","from":7721,"to":7737},
+        {"text":"de","from":7737,"to":7744},
+        {"text":"que","from":7744,"to":7748},
+        {"text":"ya","from":7748,"to":7754},
+        {"text":"hay","from":7754,"to":7757},
+        {"text":"alguien","from":7757,"to":7765},
+        {"text":"dentro,","from":7765,"to":7776},
+        {"text":"y","from":7776,"to":7786},
+        {"text":"cualquier","from":7786,"to":7794},
+        {"text":"toque","from":7794,"to":7807},
+        {"text":"avisa.","from":7807,"to":7819}
       ]
     },
     {
       "id": "s08-04",
       "scene": "s08-cierre",
       "text": "Cada cosa tapa un hueco y falla por algún sitio. Tu turno, con las preguntas de la lección.",
-      "from": 9069,
-      "audioFrames": 216,
-      "durationInFrames": 224,
-      "audio": null,
+      "from": 7838,
+      "audioFrames": 180,
+      "durationInFrames": 188,
+      "audio": "voice/s08-04.mp3",
       "words": [
-        {"text":"Cada","from":9069,"to":9081},
-        {"text":"cosa","from":9081,"to":9092},
-        {"text":"tapa","from":9092,"to":9104},
-        {"text":"un","from":9104,"to":9110},
-        {"text":"hueco","from":9110,"to":9124},
-        {"text":"y","from":9124,"to":9127},
-        {"text":"falla","from":9127,"to":9142},
-        {"text":"por","from":9142,"to":9151},
-        {"text":"algún","from":9151,"to":9165},
-        {"text":"sitio.","from":9165,"to":9183},
-        {"text":"Tu","from":9183,"to":9189},
-        {"text":"turno,","from":9189,"to":9206},
-        {"text":"con","from":9206,"to":9215},
-        {"text":"las","from":9215,"to":9224},
-        {"text":"preguntas","from":9224,"to":9250},
-        {"text":"de","from":9250,"to":9256},
-        {"text":"la","from":9256,"to":9262},
-        {"text":"lección.","from":9262,"to":9285}
+        {"text":"Cada","from":7838,"to":7844},
+        {"text":"cosa","from":7844,"to":7855},
+        {"text":"tapa","from":7855,"to":7865},
+        {"text":"un","from":7865,"to":7870},
+        {"text":"hueco","from":7870,"to":7878},
+        {"text":"y","from":7878,"to":7883},
+        {"text":"falla","from":7883,"to":7894},
+        {"text":"por","from":7894,"to":7900},
+        {"text":"algún","from":7900,"to":7909},
+        {"text":"sitio.","from":7909,"to":7920},
+        {"text":"Tu","from":7937,"to":7941},
+        {"text":"turno,","from":7941,"to":7954},
+        {"text":"con","from":7954,"to":7960},
+        {"text":"las","from":7960,"to":7965},
+        {"text":"preguntas","from":7965,"to":7977},
+        {"text":"de","from":7977,"to":7988},
+        {"text":"la","from":7988,"to":7992},
+        {"text":"lección.","from":7992,"to":8004}
       ]
     }
   ],
   "captions": [
     {
       "from": 42,
-      "to": 199,
+      "to": 169,
       "lines": [
         [
-          {"text":"En","from":45,"to":50},
-          {"text":"el","from":50,"to":55},
-          {"text":"puerto","from":55,"to":69},
-          {"text":"de","from":69,"to":74},
-          {"text":"Halden,","from":74,"to":91},
-          {"text":"Seguridad","from":91,"to":113},
-          {"text":"escribe","from":113,"to":130}
+          {"text":"En","from":45,"to":51},
+          {"text":"el","from":51,"to":55},
+          {"text":"puerto","from":55,"to":63},
+          {"text":"de","from":63,"to":68},
+          {"text":"Halden,","from":68,"to":79},
+          {"text":"Seguridad","from":85,"to":105},
+          {"text":"escribe","from":105,"to":118}
         ],
         [
-          {"text":"lo","from":130,"to":135},
-          {"text":"que","from":135,"to":142},
-          {"text":"pediría","from":142,"to":159},
-          {"text":"a","from":159,"to":161},
-          {"text":"cualquier","from":161,"to":183},
-          {"text":"entrada.","from":183,"to":202}
+          {"text":"lo","from":118,"to":123},
+          {"text":"que","from":123,"to":126},
+          {"text":"pediría","from":126,"to":140},
+          {"text":"a","from":140,"to":143},
+          {"text":"cualquier","from":143,"to":148},
+          {"text":"entrada.","from":148,"to":162}
         ]
       ]
     },
     {
-      "from": 199,
-      "to": 327,
+      "from": 169,
+      "to": 273,
       "lines": [
         [
-          {"text":"Y","from":202,"to":205},
-          {"text":"antes","from":205,"to":217},
-          {"text":"de","from":217,"to":222},
-          {"text":"poner","from":222,"to":234},
-          {"text":"controles,","from":234,"to":258}
+          {"text":"Y","from":172,"to":174},
+          {"text":"antes","from":174,"to":179},
+          {"text":"de","from":179,"to":183},
+          {"text":"poner","from":183,"to":189},
+          {"text":"controles,","from":189,"to":206}
         ],
         [
-          {"text":"se","from":258,"to":263},
-          {"text":"pregunta","from":263,"to":282},
-          {"text":"qué","from":282,"to":290},
-          {"text":"quiere","from":290,"to":304},
-          {"text":"frenar.","from":304,"to":321}
+          {"text":"se","from":215,"to":220},
+          {"text":"pregunta","from":220,"to":230},
+          {"text":"qué","from":230,"to":236},
+          {"text":"quiere","from":236,"to":243},
+          {"text":"frenar.","from":243,"to":258}
         ]
       ]
     },
     {
-      "from": 327,
-      "to": 492,
+      "from": 273,
+      "to": 399,
       "lines": [
         [
-          {"text":"Qué","from":330,"to":339},
-          {"text":"frena","from":339,"to":354},
-          {"text":"cada","from":354,"to":365},
-          {"text":"control,","from":365,"to":389},
-          {"text":"dónde","from":389,"to":404}
+          {"text":"Qué","from":276,"to":281},
+          {"text":"frena","from":281,"to":292},
+          {"text":"cada","from":295,"to":299},
+          {"text":"control,","from":299,"to":314},
+          {"text":"dónde","from":324,"to":329}
         ],
         [
-          {"text":"falla","from":404,"to":418},
-          {"text":"cada","from":418,"to":430},
-          {"text":"sensor","from":430,"to":448},
-          {"text":"y","from":448,"to":451},
-          {"text":"qué","from":451,"to":460},
-          {"text":"es","from":460,"to":465},
-          {"text":"un","from":465,"to":471},
-          {"text":"cebo.","from":471,"to":486}
+          {"text":"falla","from":329,"to":339},
+          {"text":"cada","from":339,"to":345},
+          {"text":"sensor","from":345,"to":356},
+          {"text":"y","from":356,"to":364},
+          {"text":"qué","from":364,"to":366},
+          {"text":"es","from":366,"to":370},
+          {"text":"un","from":370,"to":374},
+          {"text":"cebo.","from":374,"to":384}
         ]
       ]
     },
     {
-      "from": 492,
-      "to": 687,
+      "from": 399,
+      "to": 533,
       "lines": [
         [
-          {"text":"Todo","from":495,"to":506},
-          {"text":"sobre","from":506,"to":519},
-          {"text":"un","from":519,"to":524},
-          {"text":"plano","from":524,"to":537},
-          {"text":"de","from":537,"to":542},
-          {"text":"ejemplo,","from":542,"to":563},
-          {"text":"con","from":563,"to":571},
-          {"text":"tres","from":571,"to":582}
+          {"text":"Todo","from":402,"to":407},
+          {"text":"sobre","from":407,"to":417},
+          {"text":"un","from":418,"to":421},
+          {"text":"plano","from":421,"to":428},
+          {"text":"de","from":428,"to":433},
+          {"text":"ejemplo,","from":433,"to":443},
+          {"text":"con","from":449,"to":453},
+          {"text":"tres","from":453,"to":458}
         ],
         [
-          {"text":"preguntas","from":582,"to":605},
-          {"text":"tipo","from":605,"to":616},
-          {"text":"examen","from":616,"to":632},
-          {"text":"por","from":632,"to":639},
-          {"text":"el","from":639,"to":645},
-          {"text":"camino.","from":645,"to":663}
+          {"text":"preguntas","from":458,"to":472},
+          {"text":"tipo","from":476,"to":481},
+          {"text":"examen","from":481,"to":494},
+          {"text":"por","from":494,"to":498},
+          {"text":"el","from":498,"to":503},
+          {"text":"camino.","from":503,"to":509}
         ]
       ]
     },
     {
-      "from": 704,
-      "to": 856,
+      "from": 562,
+      "to": 686,
       "lines": [
         [
-          {"text":"Empieza","from":707,"to":726},
-          {"text":"por","from":726,"to":734},
-          {"text":"la","from":734,"to":739},
-          {"text":"calle.","from":739,"to":755},
-          {"text":"Un","from":755,"to":760},
-          {"text":"coche","from":760,"to":774}
+          {"text":"Empieza","from":565,"to":578},
+          {"text":"por","from":578,"to":588},
+          {"text":"la","from":588,"to":592},
+          {"text":"calle.","from":592,"to":602},
+          {"text":"Un","from":611,"to":616},
+          {"text":"coche","from":616,"to":624}
         ],
         [
-          {"text":"llega","from":774,"to":787},
-          {"text":"a","from":787,"to":790},
-          {"text":"la","from":790,"to":795},
-          {"text":"fachada.","from":795,"to":816},
-          {"text":"¿Puede","from":816,"to":832},
-          {"text":"entrar?","from":832,"to":851}
+          {"text":"llega","from":624,"to":629},
+          {"text":"a","from":629,"to":634},
+          {"text":"la","from":634,"to":636},
+          {"text":"fachada.","from":635,"to":646},
+          {"text":"¿Puede","from":655,"to":660},
+          {"text":"entrar?","from":660,"to":667}
         ]
       ]
     },
     {
-      "from": 856,
-      "to": 1027,
+      "from": 686,
+      "to": 801,
       "lines": [
         [
-          {"text":"Eso","from":859,"to":868},
-          {"text":"lo","from":868,"to":874},
-          {"text":"frenan","from":874,"to":892},
-          {"text":"los","from":892,"to":901},
-          {"text":"bollards,","from":901,"to":928}
+          {"text":"Eso","from":689,"to":696},
+          {"text":"lo","from":696,"to":700},
+          {"text":"frenan","from":700,"to":710},
+          {"text":"los","from":710,"to":716},
+          {"text":"bollards,","from":716,"to":731}
         ],
         [
-          {"text":"unos","from":928,"to":940},
-          {"text":"postes","from":940,"to":958},
-          {"text":"fijos","from":958,"to":973},
-          {"text":"que","from":973,"to":982},
-          {"text":"paran","from":982,"to":997},
-          {"text":"un","from":997,"to":1003},
-          {"text":"vehículo,","from":1003,"to":1030}
+          {"text":"unos","from":743,"to":747},
+          {"text":"postes","from":747,"to":760},
+          {"text":"fijos","from":760,"to":770},
+          {"text":"que","from":770,"to":774},
+          {"text":"paran","from":774,"to":780},
+          {"text":"un","from":780,"to":785},
+          {"text":"vehículo,","from":785,"to":797}
         ]
       ]
     },
     {
-      "from": 1027,
-      "to": 1093,
+      "from": 801,
+      "to": 855,
       "lines": [
         [
-          {"text":"pero","from":1030,"to":1042},
-          {"text":"no","from":1042,"to":1048},
-          {"text":"a","from":1048,"to":1051},
-          {"text":"quien","from":1051,"to":1066},
-          {"text":"va","from":1066,"to":1072},
-          {"text":"a","from":1072,"to":1075},
-          {"text":"pie.","from":1075,"to":1087}
+          {"text":"pero","from":804,"to":812},
+          {"text":"no","from":812,"to":818},
+          {"text":"a","from":818,"to":824},
+          {"text":"quien","from":824,"to":827},
+          {"text":"va","from":827,"to":832},
+          {"text":"a","from":832,"to":837},
+          {"text":"pie.","from":837,"to":842}
         ]
       ]
     },
     {
-      "from": 1093,
-      "to": 1195,
+      "from": 855,
+      "to": 957,
       "lines": [
         [
-          {"text":"Luego,","from":1096,"to":1114},
-          {"text":"la","from":1114,"to":1119},
-          {"text":"puerta.","from":1119,"to":1140},
-          {"text":"¿Cuántos","from":1140,"to":1163},
-          {"text":"pasan","from":1163,"to":1178},
-          {"text":"a","from":1178,"to":1181},
-          {"text":"la","from":1181,"to":1187},
-          {"text":"vez?","from":1187,"to":1198}
+          {"text":"Luego,","from":858,"to":872},
+          {"text":"la","from":872,"to":882},
+          {"text":"puerta.","from":882,"to":890},
+          {"text":"¿Cuántos","from":909,"to":919},
+          {"text":"pasan","from":919,"to":932},
+          {"text":"a","from":932,"to":935},
+          {"text":"la","from":935,"to":937},
+          {"text":"vez?","from":936,"to":944}
         ]
       ]
     },
     {
-      "from": 1195,
-      "to": 1341,
+      "from": 957,
+      "to": 1061,
       "lines": [
         [
-          {"text":"Si","from":1198,"to":1204},
-          {"text":"solo","from":1204,"to":1216},
-          {"text":"debe","from":1216,"to":1227},
-          {"text":"pasar","from":1227,"to":1242},
-          {"text":"uno,","from":1242,"to":1254},
-          {"text":"hay","from":1254,"to":1263},
-          {"text":"dos","from":1263,"to":1271}
+          {"text":"Si","from":960,"to":964},
+          {"text":"solo","from":964,"to":970},
+          {"text":"debe","from":970,"to":976},
+          {"text":"pasar","from":976,"to":985},
+          {"text":"uno,","from":985,"to":993},
+          {"text":"hay","from":1005,"to":1009},
+          {"text":"dos","from":1009,"to":1014}
         ],
         [
-          {"text":"puertas","from":1271,"to":1292},
-          {"text":"y","from":1292,"to":1295},
-          {"text":"se","from":1295,"to":1301},
-          {"text":"abre","from":1301,"to":1312},
-          {"text":"una","from":1312,"to":1321},
-          {"text":"cada","from":1321,"to":1333},
-          {"text":"vez.","from":1333,"to":1344}
+          {"text":"puertas","from":1014,"to":1024},
+          {"text":"y","from":1024,"to":1030},
+          {"text":"se","from":1030,"to":1033},
+          {"text":"abre","from":1033,"to":1038},
+          {"text":"una","from":1038,"to":1040},
+          {"text":"cada","from":1038,"to":1044},
+          {"text":"vez.","from":1044,"to":1054}
         ]
       ]
     },
     {
-      "from": 1341,
-      "to": 1438,
+      "from": 1061,
+      "to": 1138,
       "lines": [
         [
-          {"text":"Eso","from":1344,"to":1353},
-          {"text":"es","from":1353,"to":1359},
-          {"text":"un","from":1359,"to":1365},
-          {"text":"access","from":1365,"to":1382},
-          {"text":"control","from":1382,"to":1403},
-          {"text":"vestibule.","from":1403,"to":1432}
+          {"text":"Eso","from":1064,"to":1071},
+          {"text":"es","from":1071,"to":1077},
+          {"text":"un","from":1077,"to":1082},
+          {"text":"access","from":1082,"to":1088},
+          {"text":"control","from":1088,"to":1101},
+          {"text":"vestibule.","from":1101,"to":1121}
         ]
       ]
     },
     {
-      "from": 1438,
-      "to": 1620,
+      "from": 1138,
+      "to": 1275,
       "lines": [
         [
-          {"text":"Junto","from":1441,"to":1455},
-          {"text":"a","from":1455,"to":1457},
-          {"text":"la","from":1457,"to":1463},
-          {"text":"puerta,","from":1463,"to":1482},
-          {"text":"un","from":1482,"to":1487},
-          {"text":"lector","from":1487,"to":1503},
-          {"text":"de","from":1503,"to":1509},
-          {"text":"tarjetas.","from":1509,"to":1533}
+          {"text":"Junto","from":1141,"to":1149},
+          {"text":"a","from":1149,"to":1153},
+          {"text":"la","from":1153,"to":1155},
+          {"text":"puerta,","from":1155,"to":1160},
+          {"text":"un","from":1160,"to":1169},
+          {"text":"lector","from":1169,"to":1178},
+          {"text":"de","from":1178,"to":1181},
+          {"text":"tarjetas.","from":1181,"to":1200}
         ],
         [
-          {"text":"¿Quién","from":1533,"to":1549},
-          {"text":"es","from":1549,"to":1555},
-          {"text":"esa","from":1555,"to":1563},
-          {"text":"persona","from":1563,"to":1582},
-          {"text":"y","from":1582,"to":1585},
-          {"text":"adónde","from":1585,"to":1601},
-          {"text":"puede","from":1601,"to":1614},
-          {"text":"ir?","from":1614,"to":1623}
+          {"text":"¿Quién","from":1207,"to":1212},
+          {"text":"es","from":1212,"to":1216},
+          {"text":"esa","from":1216,"to":1221},
+          {"text":"persona","from":1221,"to":1236},
+          {"text":"y","from":1236,"to":1243},
+          {"text":"adónde","from":1243,"to":1250},
+          {"text":"puede","from":1250,"to":1259},
+          {"text":"ir?","from":1259,"to":1267}
         ]
       ]
     },
     {
-      "from": 1620,
-      "to": 1783,
+      "from": 1275,
+      "to": 1409,
       "lines": [
         [
-          {"text":"Lo","from":1623,"to":1628},
-          {"text":"decide","from":1628,"to":1644},
-          {"text":"su","from":1644,"to":1650},
-          {"text":"tarjeta,","from":1650,"to":1671},
-          {"text":"el","from":1671,"to":1677},
-          {"text":"access","from":1677,"to":1693},
-          {"text":"badge,","from":1693,"to":1709}
+          {"text":"Lo","from":1278,"to":1285},
+          {"text":"decide","from":1285,"to":1295},
+          {"text":"su","from":1295,"to":1302},
+          {"text":"tarjeta,","from":1302,"to":1320},
+          {"text":"el","from":1325,"to":1327},
+          {"text":"access","from":1326,"to":1333},
+          {"text":"badge,","from":1333,"to":1341}
         ],
         [
-          {"text":"y","from":1709,"to":1712},
-          {"text":"cada","from":1712,"to":1723},
-          {"text":"acceso","from":1723,"to":1739},
-          {"text":"queda","from":1739,"to":1753},
-          {"text":"apuntado.","from":1753,"to":1777}
+          {"text":"y","from":1341,"to":1351},
+          {"text":"cada","from":1351,"to":1357},
+          {"text":"acceso","from":1357,"to":1367},
+          {"text":"queda","from":1367,"to":1377},
+          {"text":"apuntado.","from":1377,"to":1392}
         ]
       ]
     },
     {
-      "from": 1783,
-      "to": 1923,
+      "from": 1409,
+      "to": 1508,
       "lines": [
         [
-          {"text":"Hay","from":1786,"to":1795},
-          {"text":"más","from":1795,"to":1804},
-          {"text":"controles,","from":1804,"to":1835}
+          {"text":"Hay","from":1412,"to":1416},
+          {"text":"más","from":1416,"to":1421},
+          {"text":"controles,","from":1421,"to":1438}
         ],
         [
-          {"text":"pero","from":1835,"to":1847},
-          {"text":"con","from":1847,"to":1857},
-          {"text":"estos","from":1857,"to":1872},
-          {"text":"tres","from":1872,"to":1884},
-          {"text":"se","from":1884,"to":1890},
-          {"text":"ve","from":1890,"to":1897},
-          {"text":"la","from":1897,"to":1903},
-          {"text":"idea.","from":1903,"to":1918}
+          {"text":"pero","from":1438,"to":1448},
+          {"text":"con","from":1448,"to":1454},
+          {"text":"estos","from":1454,"to":1459},
+          {"text":"tres","from":1459,"to":1469},
+          {"text":"se","from":1469,"to":1476},
+          {"text":"ve","from":1476,"to":1478},
+          {"text":"la","from":1476,"to":1479},
+          {"text":"idea.","from":1479,"to":1489}
         ]
       ]
     },
     {
-      "from": 1923,
-      "to": 2106,
+      "from": 1508,
+      "to": 1654,
       "lines": [
         [
-          {"text":"Cada","from":1926,"to":1937},
-          {"text":"uno","from":1937,"to":1946},
-          {"text":"responde","from":1946,"to":1968},
-          {"text":"a","from":1968,"to":1971},
-          {"text":"una","from":1971,"to":1979},
-          {"text":"pregunta","from":1979,"to":2001}
+          {"text":"Cada","from":1511,"to":1518},
+          {"text":"uno","from":1518,"to":1527},
+          {"text":"responde","from":1527,"to":1544},
+          {"text":"a","from":1544,"to":1546},
+          {"text":"una","from":1545,"to":1547},
+          {"text":"pregunta","from":1547,"to":1556}
         ],
         [
-          {"text":"distinta,","from":2001,"to":2026},
-          {"text":"y","from":2026,"to":2029},
-          {"text":"cada","from":2029,"to":2040},
-          {"text":"uno","from":2040,"to":2049},
-          {"text":"tapa","from":2049,"to":2060},
-          {"text":"un","from":2060,"to":2065},
-          {"text":"hueco.","from":2065,"to":2082}
+          {"text":"distinta,","from":1556,"to":1575},
+          {"text":"y","from":1585,"to":1591},
+          {"text":"cada","from":1591,"to":1596},
+          {"text":"uno","from":1596,"to":1605},
+          {"text":"tapa","from":1605,"to":1615},
+          {"text":"un","from":1615,"to":1621},
+          {"text":"hueco.","from":1621,"to":1630}
         ]
       ]
     },
     {
-      "from": 2126,
-      "to": 2142,
+      "from": 1683,
+      "to": 1709,
       "lines": [
         [
-          {"text":"Te","from":2129,"to":2134},
-          {"text":"toca.","from":2134,"to":2145}
+          {"text":"Te","from":1686,"to":1689},
+          {"text":"toca.","from":1689,"to":1697}
         ]
       ]
     },
     {
-      "from": 2142,
-      "to": 2200,
+      "from": 1709,
+      "to": 1761,
       "lines": [
         [
-          {"text":"En","from":2145,"to":2150},
-          {"text":"un","from":2150,"to":2154},
-          {"text":"centro","from":2154,"to":2168},
-          {"text":"de","from":2168,"to":2173},
-          {"text":"distribución,","from":2173,"to":2203}
+          {"text":"En","from":1712,"to":1716},
+          {"text":"un","from":1716,"to":1721},
+          {"text":"centro","from":1721,"to":1732},
+          {"text":"de","from":1732,"to":1737},
+          {"text":"distribución,","from":1737,"to":1757}
         ]
       ]
     },
     {
-      "from": 2200,
-      "to": 2310,
+      "from": 1761,
+      "to": 1868,
       "lines": [
         [
-          {"text":"cualquiera","from":2203,"to":2226},
-          {"text":"abre","from":2226,"to":2235},
-          {"text":"cualquier","from":2235,"to":2255}
+          {"text":"cualquiera","from":1764,"to":1781},
+          {"text":"abre","from":1781,"to":1788},
+          {"text":"cualquier","from":1788,"to":1796}
         ],
         [
-          {"text":"zona","from":2255,"to":2265},
-          {"text":"y","from":2265,"to":2267},
-          {"text":"nadie","from":2267,"to":2278},
-          {"text":"sabe","from":2278,"to":2288},
-          {"text":"quién","from":2288,"to":2299},
-          {"text":"entra.","from":2299,"to":2313}
+          {"text":"zona","from":1796,"to":1813},
+          {"text":"y","from":1813,"to":1826},
+          {"text":"nadie","from":1826,"to":1832},
+          {"text":"sabe","from":1832,"to":1842},
+          {"text":"quién","from":1842,"to":1850},
+          {"text":"entra.","from":1850,"to":1862}
         ]
       ]
     },
     {
-      "from": 2310,
-      "to": 2439,
+      "from": 1868,
+      "to": 1996,
       "lines": [
         [
-          {"text":"Quieren","from":2313,"to":2329},
-          {"text":"que","from":2329,"to":2336},
-          {"text":"cada","from":2336,"to":2345},
-          {"text":"uno","from":2345,"to":2352},
-          {"text":"abra","from":2352,"to":2361},
-          {"text":"solo","from":2361,"to":2370}
+          {"text":"Quieren","from":1871,"to":1882},
+          {"text":"que","from":1882,"to":1889},
+          {"text":"cada","from":1889,"to":1896},
+          {"text":"uno","from":1896,"to":1905},
+          {"text":"abra","from":1905,"to":1913},
+          {"text":"solo","from":1913,"to":1921}
         ],
         [
-          {"text":"las","from":2370,"to":2377},
-          {"text":"suyas,","from":2377,"to":2391},
-          {"text":"con","from":2391,"to":2398},
-          {"text":"registro","from":2398,"to":2416},
-          {"text":"automático.","from":2416,"to":2442}
+          {"text":"las","from":1921,"to":1928},
+          {"text":"suyas,","from":1928,"to":1941},
+          {"text":"con","from":1941,"to":1949},
+          {"text":"registro","from":1949,"to":1963},
+          {"text":"automático.","from":1964,"to":1986}
         ]
       ]
     },
     {
-      "from": 2439,
-      "to": 2537,
+      "from": 1996,
+      "to": 2077,
       "lines": [
         [
-          {"text":"¿Qué","from":2442,"to":2451},
-          {"text":"control","from":2451,"to":2467},
-          {"text":"resuelve","from":2467,"to":2485},
-          {"text":"ese","from":2485,"to":2492},
-          {"text":"problema?","from":2492,"to":2513}
+          {"text":"¿Qué","from":1999,"to":2006},
+          {"text":"control","from":2006,"to":2018},
+          {"text":"resuelve","from":2018,"to":2036},
+          {"text":"ese","from":2036,"to":2042},
+          {"text":"problema?","from":2042,"to":2053}
         ]
       ]
     },
     {
-      "from": 2668,
-      "to": 2827,
+      "from": 2221,
+      "to": 2359,
       "lines": [
         [
-          {"text":"Access","from":2671,"to":2686},
-          {"text":"badge,","from":2686,"to":2701},
-          {"text":"porque","from":2701,"to":2716},
-          {"text":"cada","from":2716,"to":2726},
-          {"text":"persona","from":2726,"to":2743},
-          {"text":"abre","from":2743,"to":2753}
+          {"text":"Access","from":2224,"to":2232},
+          {"text":"badge,","from":2232,"to":2245},
+          {"text":"porque","from":2253,"to":2260},
+          {"text":"cada","from":2260,"to":2266},
+          {"text":"persona","from":2266,"to":2280},
+          {"text":"abre","from":2280,"to":2292}
         ],
         [
-          {"text":"solo","from":2753,"to":2763},
-          {"text":"sus","from":2763,"to":2770},
-          {"text":"zonas","from":2770,"to":2783},
-          {"text":"y","from":2783,"to":2785},
-          {"text":"cada","from":2785,"to":2795},
-          {"text":"acceso","from":2795,"to":2810},
-          {"text":"se","from":2810,"to":2815},
-          {"text":"apunta","from":2815,"to":2830}
+          {"text":"solo","from":2292,"to":2301},
+          {"text":"sus","from":2301,"to":2308},
+          {"text":"zonas","from":2308,"to":2321},
+          {"text":"y","from":2321,"to":2332},
+          {"text":"cada","from":2332,"to":2338},
+          {"text":"acceso","from":2338,"to":2347},
+          {"text":"se","from":2347,"to":2354},
+          {"text":"apunta","from":2354,"to":2362}
         ]
       ]
     },
     {
-      "from": 2827,
-      "to": 2867,
+      "from": 2359,
+      "to": 2395,
       "lines": [
         [
-          {"text":"automáticamente.","from":2830,"to":2870}
+          {"text":"automáticamente.","from":2362,"to":2389}
         ]
       ]
     },
     {
-      "from": 2867,
-      "to": 3037,
+      "from": 2395,
+      "to": 2536,
       "lines": [
         [
-          {"text":"La","from":2870,"to":2875},
-          {"text":"cámara","from":2875,"to":2889},
-          {"text":"tienta","from":2889,"to":2904},
-          {"text":"por","from":2904,"to":2912},
-          {"text":"lo","from":2912,"to":2917},
-          {"text":"de","from":2917,"to":2922},
-          {"text":"saber","from":2922,"to":2934},
-          {"text":"quién","from":2934,"to":2947}
+          {"text":"La","from":2398,"to":2404},
+          {"text":"cámara","from":2404,"to":2413},
+          {"text":"tienta","from":2413,"to":2427},
+          {"text":"por","from":2427,"to":2433},
+          {"text":"lo","from":2433,"to":2436},
+          {"text":"de","from":2436,"to":2439},
+          {"text":"saber","from":2439,"to":2445},
+          {"text":"quién","from":2445,"to":2454}
         ],
         [
-          {"text":"entra,","from":2947,"to":2961},
-          {"text":"pero","from":2961,"to":2971},
-          {"text":"no","from":2971,"to":2976},
-          {"text":"decide","from":2976,"to":2991},
-          {"text":"quién","from":2991,"to":3004},
-          {"text":"puede","from":3004,"to":3016},
-          {"text":"abrir.","from":3016,"to":3031}
+          {"text":"entra,","from":2454,"to":2465},
+          {"text":"pero","from":2475,"to":2482},
+          {"text":"no","from":2482,"to":2487},
+          {"text":"decide","from":2487,"to":2496},
+          {"text":"quién","from":2496,"to":2506},
+          {"text":"puede","from":2506,"to":2513},
+          {"text":"abrir.","from":2513,"to":2521}
         ]
       ]
     },
     {
-      "from": 3037,
-      "to": 3220,
+      "from": 2536,
+      "to": 2658,
       "lines": [
         [
-          {"text":"O","from":3040,"to":3043},
-          {"text":"sea,","from":3043,"to":3056},
-          {"text":"que","from":3056,"to":3066},
-          {"text":"el","from":3066,"to":3072},
-          {"text":"badge","from":3072,"to":3089},
-          {"text":"decide","from":3089,"to":3108},
-          {"text":"y","from":3108,"to":3112},
-          {"text":"apunta,","from":3112,"to":3134}
+          {"text":"O","from":2539,"to":2544},
+          {"text":"sea,","from":2544,"to":2549},
+          {"text":"que","from":2549,"to":2556},
+          {"text":"el","from":2556,"to":2560},
+          {"text":"badge","from":2560,"to":2564},
+          {"text":"decide","from":2564,"to":2575},
+          {"text":"y","from":2575,"to":2581},
+          {"text":"apunta,","from":2581,"to":2591}
         ],
         [
-          {"text":"y","from":3134,"to":3138},
-          {"text":"la","from":3138,"to":3144},
-          {"text":"cámara","from":3144,"to":3164},
-          {"text":"solo","from":3164,"to":3177},
-          {"text":"graba.","from":3177,"to":3196}
+          {"text":"y","from":2591,"to":2595},
+          {"text":"la","from":2595,"to":2598},
+          {"text":"cámara","from":2598,"to":2609},
+          {"text":"solo","from":2609,"to":2617},
+          {"text":"graba.","from":2617,"to":2634}
         ]
       ]
     },
     {
-      "from": 3246,
-      "to": 3419,
+      "from": 2708,
+      "to": 2864,
       "lines": [
         [
-          {"text":"Ahora,","from":3249,"to":3266},
-          {"text":"dentro.","from":3266,"to":3286},
-          {"text":"Un","from":3286,"to":3292},
-          {"text":"sensor","from":3292,"to":3309},
-          {"text":"mide","from":3309,"to":3320},
-          {"text":"una","from":3320,"to":3329},
-          {"text":"sola","from":3329,"to":3340}
+          {"text":"Ahora,","from":2711,"to":2722},
+          {"text":"dentro.","from":2733,"to":2737},
+          {"text":"Un","from":2754,"to":2758},
+          {"text":"sensor","from":2758,"to":2767},
+          {"text":"mide","from":2767,"to":2777},
+          {"text":"una","from":2777,"to":2784},
+          {"text":"sola","from":2784,"to":2790}
         ],
         [
-          {"text":"cosa,","from":3340,"to":3354},
-          {"text":"y","from":3354,"to":3357},
-          {"text":"cada","from":3357,"to":3368},
-          {"text":"uno","from":3368,"to":3377},
-          {"text":"falla","from":3377,"to":3391},
-          {"text":"de","from":3391,"to":3397},
-          {"text":"su","from":3397,"to":3402},
-          {"text":"manera.","from":3402,"to":3422}
+          {"text":"cosa,","from":2790,"to":2800},
+          {"text":"y","from":2800,"to":2809},
+          {"text":"cada","from":2809,"to":2815},
+          {"text":"uno","from":2815,"to":2823},
+          {"text":"falla","from":2823,"to":2835},
+          {"text":"de","from":2835,"to":2839},
+          {"text":"su","from":2839,"to":2843},
+          {"text":"manera.","from":2843,"to":2850}
         ]
       ]
     },
     {
-      "from": 3419,
-      "to": 3471,
+      "from": 2864,
+      "to": 2915,
       "lines": [
         [
-          {"text":"Vamos","from":3422,"to":3437},
-          {"text":"con","from":3437,"to":3445},
-          {"text":"cuatro.","from":3445,"to":3465}
+          {"text":"Vamos","from":2867,"to":2877},
+          {"text":"con","from":2877,"to":2886},
+          {"text":"cuatro.","from":2886,"to":2896}
         ]
       ]
     },
     {
-      "from": 3471,
-      "to": 3557,
+      "from": 2915,
+      "to": 2996,
       "lines": [
         [
-          {"text":"Infrared","from":3474,"to":3495},
-          {"text":"nota","from":3495,"to":3506},
-          {"text":"el","from":3506,"to":3512},
-          {"text":"calor","from":3512,"to":3525},
-          {"text":"de","from":3525,"to":3530},
-          {"text":"una","from":3530,"to":3538},
-          {"text":"persona.","from":3538,"to":3560}
+          {"text":"Infrared","from":2918,"to":2937},
+          {"text":"nota","from":2937,"to":2952},
+          {"text":"el","from":2952,"to":2959},
+          {"text":"calor","from":2959,"to":2966},
+          {"text":"de","from":2966,"to":2970},
+          {"text":"una","from":2970,"to":2972},
+          {"text":"persona.","from":2972,"to":2986}
         ]
       ]
     },
     {
-      "from": 3557,
-      "to": 3732,
+      "from": 2996,
+      "to": 3140,
       "lines": [
         [
-          {"text":"Pero","from":3560,"to":3571},
-          {"text":"se","from":3571,"to":3576},
-          {"text":"confunde","from":3576,"to":3597},
-          {"text":"con","from":3597,"to":3605},
-          {"text":"el","from":3605,"to":3611},
-          {"text":"sol","from":3611,"to":3619},
-          {"text":"directo,","from":3619,"to":3640}
+          {"text":"Pero","from":2999,"to":3007},
+          {"text":"se","from":3007,"to":3012},
+          {"text":"confunde","from":3012,"to":3026},
+          {"text":"con","from":3026,"to":3033},
+          {"text":"el","from":3033,"to":3036},
+          {"text":"sol","from":3036,"to":3043},
+          {"text":"directo,","from":3043,"to":3060}
         ],
         [
-          {"text":"con","from":3640,"to":3648},
-          {"text":"la","from":3648,"to":3654},
-          {"text":"calefacción","from":3654,"to":3683},
-          {"text":"y","from":3683,"to":3686},
-          {"text":"con","from":3686,"to":3694},
-          {"text":"los","from":3694,"to":3702},
-          {"text":"animales.","from":3702,"to":3726}
+          {"text":"con","from":3062,"to":3065},
+          {"text":"la","from":3065,"to":3068},
+          {"text":"calefacción","from":3068,"to":3085},
+          {"text":"y","from":3085,"to":3097},
+          {"text":"con","from":3097,"to":3101},
+          {"text":"los","from":3101,"to":3106},
+          {"text":"animales.","from":3106,"to":3118}
         ]
       ]
     },
     {
-      "from": 3732,
-      "to": 3873,
+      "from": 3140,
+      "to": 3274,
       "lines": [
         [
-          {"text":"Pressure","from":3735,"to":3754},
-          {"text":"pesa.","from":3754,"to":3766},
-          {"text":"Funciona","from":3766,"to":3785},
-          {"text":"bien,","from":3785,"to":3797}
+          {"text":"Pressure","from":3143,"to":3158},
+          {"text":"pesa.","from":3158,"to":3172},
+          {"text":"Funciona","from":3180,"to":3190},
+          {"text":"bien,","from":3190,"to":3199}
         ],
         [
-          {"text":"pero","from":3797,"to":3807},
-          {"text":"solo","from":3807,"to":3817},
-          {"text":"cubre","from":3817,"to":3829},
-          {"text":"el","from":3829,"to":3833},
-          {"text":"suelo","from":3833,"to":3845},
-          {"text":"que","from":3845,"to":3853},
-          {"text":"pisas.","from":3853,"to":3867}
+          {"text":"pero","from":3207,"to":3209},
+          {"text":"solo","from":3208,"to":3215},
+          {"text":"cubre","from":3215,"to":3227},
+          {"text":"el","from":3227,"to":3231},
+          {"text":"suelo","from":3231,"to":3238},
+          {"text":"que","from":3238,"to":3243},
+          {"text":"pisas.","from":3243,"to":3254}
         ]
       ]
     },
     {
-      "from": 3873,
-      "to": 3984,
+      "from": 3274,
+      "to": 3368,
       "lines": [
         [
-          {"text":"Microwave","from":3876,"to":3901},
-          {"text":"manda","from":3901,"to":3915},
-          {"text":"ondas","from":3915,"to":3929}
+          {"text":"Microwave","from":3277,"to":3296},
+          {"text":"manda","from":3296,"to":3314},
+          {"text":"ondas","from":3314,"to":3321}
         ],
         [
-          {"text":"de","from":3929,"to":3935},
-          {"text":"radio","from":3935,"to":3948},
-          {"text":"y","from":3948,"to":3951},
-          {"text":"escucha","from":3951,"to":3971},
-          {"text":"el","from":3971,"to":3976},
-          {"text":"eco.","from":3976,"to":3987}
+          {"text":"de","from":3321,"to":3324},
+          {"text":"radio","from":3324,"to":3335},
+          {"text":"y","from":3335,"to":3343},
+          {"text":"escucha","from":3343,"to":3354},
+          {"text":"el","from":3354,"to":3357},
+          {"text":"eco.","from":3357,"to":3362}
         ]
       ]
     },
     {
-      "from": 3984,
-      "to": 4096,
+      "from": 3368,
+      "to": 3444,
       "lines": [
         [
-          {"text":"Cubre","from":3987,"to":4001},
-          {"text":"mucho,","from":4001,"to":4018},
-          {"text":"pero","from":4018,"to":4029},
-          {"text":"atraviesa","from":4029,"to":4054}
+          {"text":"Cubre","from":3371,"to":3380},
+          {"text":"mucho,","from":3380,"to":3391},
+          {"text":"pero","from":3399,"to":3401},
+          {"text":"atraviesa","from":3400,"to":3416}
         ],
         [
-          {"text":"los","from":4054,"to":4063},
-          {"text":"tabiques","from":4063,"to":4085},
-          {"text":"finos","from":4085,"to":4099}
+          {"text":"los","from":3416,"to":3419},
+          {"text":"tabiques","from":3419,"to":3430},
+          {"text":"finos","from":3430,"to":3447}
         ]
       ]
     },
     {
-      "from": 4096,
+      "from": 3444,
+      "to": 3542,
+      "lines": [
+        [
+          {"text":"y","from":3447,"to":3464},
+          {"text":"salta","from":3464,"to":3474},
+          {"text":"con","from":3474,"to":3480},
+          {"text":"lo","from":3480,"to":3483},
+          {"text":"que","from":3483,"to":3486},
+          {"text":"se","from":3486,"to":3490},
+          {"text":"mueve","from":3490,"to":3499},
+          {"text":"al","from":3499,"to":3504},
+          {"text":"otro","from":3504,"to":3512},
+          {"text":"lado.","from":3512,"to":3521}
+        ]
+      ]
+    },
+    {
+      "from": 3542,
+      "to": 3615,
+      "lines": [
+        [
+          {"text":"Ultrasonic","from":3545,"to":3561},
+          {"text":"hace","from":3561,"to":3572},
+          {"text":"lo","from":3572,"to":3576},
+          {"text":"mismo","from":3576,"to":3584},
+          {"text":"con","from":3584,"to":3591},
+          {"text":"sonido.","from":3591,"to":3607}
+        ]
+      ]
+    },
+    {
+      "from": 3615,
+      "to": 3767,
+      "lines": [
+        [
+          {"text":"Sirve","from":3618,"to":3628},
+          {"text":"en","from":3628,"to":3633},
+          {"text":"un","from":3633,"to":3636},
+          {"text":"cuarto","from":3636,"to":3643},
+          {"text":"pequeño","from":3643,"to":3657},
+          {"text":"y","from":3657,"to":3667},
+          {"text":"cerrado,","from":3667,"to":3679}
+        ],
+        [
+          {"text":"porque","from":3695,"to":3697},
+          {"text":"el","from":3696,"to":3700},
+          {"text":"sonido","from":3700,"to":3710},
+          {"text":"no","from":3710,"to":3716},
+          {"text":"atraviesa","from":3716,"to":3732},
+          {"text":"las","from":3732,"to":3740},
+          {"text":"paredes.","from":3740,"to":3756}
+        ]
+      ]
+    },
+    {
+      "from": 3767,
+      "to": 3847,
+      "lines": [
+        [
+          {"text":"Las","from":3770,"to":3775},
+          {"text":"corrientes","from":3775,"to":3786},
+          {"text":"de","from":3786,"to":3793},
+          {"text":"aire","from":3793,"to":3799},
+          {"text":"sí","from":3799,"to":3809},
+          {"text":"lo","from":3809,"to":3814},
+          {"text":"confunden.","from":3814,"to":3830}
+        ]
+      ]
+    },
+    {
+      "from": 3847,
+      "to": 4005,
+      "lines": [
+        [
+          {"text":"O","from":3850,"to":3853},
+          {"text":"sea,","from":3853,"to":3860},
+          {"text":"que","from":3860,"to":3874},
+          {"text":"cubrir","from":3874,"to":3884},
+          {"text":"mucho","from":3884,"to":3894},
+          {"text":"no","from":3894,"to":3900},
+          {"text":"basta.","from":3900,"to":3909}
+        ],
+        [
+          {"text":"Se","from":3918,"to":3926},
+          {"text":"elige","from":3926,"to":3934},
+          {"text":"el","from":3934,"to":3943},
+          {"text":"que","from":3943,"to":3947},
+          {"text":"no","from":3947,"to":3952},
+          {"text":"falla","from":3952,"to":3963},
+          {"text":"en","from":3963,"to":3967},
+          {"text":"tu","from":3967,"to":3971},
+          {"text":"cuarto.","from":3971,"to":3981}
+        ]
+      ]
+    },
+    {
+      "from": 4036,
       "to": 4194,
       "lines": [
         [
-          {"text":"y","from":4099,"to":4102},
-          {"text":"salta","from":4102,"to":4116},
-          {"text":"con","from":4116,"to":4124},
-          {"text":"lo","from":4124,"to":4130},
-          {"text":"que","from":4130,"to":4138},
-          {"text":"se","from":4138,"to":4143},
-          {"text":"mueve","from":4143,"to":4157},
-          {"text":"al","from":4157,"to":4163},
-          {"text":"otro","from":4163,"to":4174},
-          {"text":"lado.","from":4174,"to":4188}
+          {"text":"Otra","from":4039,"to":4050},
+          {"text":"más.","from":4050,"to":4060},
+          {"text":"Un","from":4072,"to":4078},
+          {"text":"despacho","from":4078,"to":4092},
+          {"text":"pequeño","from":4092,"to":4102},
+          {"text":"y","from":4102,"to":4110},
+          {"text":"cerrado","from":4110,"to":4122}
+        ],
+        [
+          {"text":"recibe","from":4122,"to":4141},
+          {"text":"sol","from":4141,"to":4149},
+          {"text":"directo","from":4149,"to":4162},
+          {"text":"por","from":4162,"to":4169},
+          {"text":"la","from":4169,"to":4172},
+          {"text":"ventana.","from":4172,"to":4184}
         ]
       ]
     },
     {
       "from": 4194,
-      "to": 4271,
+      "to": 4294,
       "lines": [
         [
-          {"text":"Ultrasonic","from":4197,"to":4222},
-          {"text":"hace","from":4222,"to":4232},
-          {"text":"lo","from":4232,"to":4237},
-          {"text":"mismo","from":4237,"to":4249},
-          {"text":"con","from":4249,"to":4256},
-          {"text":"sonido.","from":4256,"to":4274}
-        ]
-      ]
-    },
-    {
-      "from": 4271,
-      "to": 4436,
-      "lines": [
-        [
-          {"text":"Sirve","from":4274,"to":4286},
-          {"text":"en","from":4286,"to":4291},
-          {"text":"un","from":4291,"to":4296},
-          {"text":"cuarto","from":4296,"to":4311},
-          {"text":"pequeño","from":4311,"to":4328},
-          {"text":"y","from":4328,"to":4331},
-          {"text":"cerrado,","from":4331,"to":4350}
+          {"text":"Su","from":4197,"to":4201},
+          {"text":"pared","from":4201,"to":4207},
+          {"text":"fina","from":4207,"to":4222},
+          {"text":"da","from":4222,"to":4232},
+          {"text":"a","from":4232,"to":4234},
+          {"text":"otro","from":4232,"to":4239}
         ],
         [
-          {"text":"porque","from":4350,"to":4365},
-          {"text":"el","from":4365,"to":4370},
-          {"text":"sonido","from":4370,"to":4385},
-          {"text":"no","from":4385,"to":4390},
-          {"text":"atraviesa","from":4390,"to":4412},
-          {"text":"las","from":4412,"to":4420},
-          {"text":"paredes.","from":4420,"to":4439}
+          {"text":"con","from":4239,"to":4245},
+          {"text":"gente","from":4245,"to":4254},
+          {"text":"yendo","from":4254,"to":4267},
+          {"text":"y","from":4267,"to":4270},
+          {"text":"viniendo.","from":4270,"to":4283}
         ]
       ]
     },
     {
-      "from": 4436,
-      "to": 4527,
+      "from": 4294,
+      "to": 4407,
       "lines": [
         [
-          {"text":"Las","from":4439,"to":4447},
-          {"text":"corrientes","from":4447,"to":4472},
-          {"text":"de","from":4472,"to":4476},
-          {"text":"aire","from":4476,"to":4486},
-          {"text":"sí","from":4486,"to":4491},
-          {"text":"lo","from":4491,"to":4496},
-          {"text":"confunden.","from":4496,"to":4521}
-        ]
-      ]
-    },
-    {
-      "from": 4527,
-      "to": 4746,
-      "lines": [
-        [
-          {"text":"O","from":4530,"to":4533},
-          {"text":"sea,","from":4533,"to":4547},
-          {"text":"que","from":4547,"to":4557},
-          {"text":"cubrir","from":4557,"to":4577},
-          {"text":"mucho","from":4577,"to":4594},
-          {"text":"no","from":4594,"to":4601},
-          {"text":"basta.","from":4601,"to":4621}
+          {"text":"Quieren","from":4297,"to":4306},
+          {"text":"detectar","from":4306,"to":4321},
+          {"text":"movimiento","from":4321,"to":4327},
+          {"text":"dentro.","from":4327,"to":4344}
         ],
         [
-          {"text":"Se","from":4621,"to":4628},
-          {"text":"elige","from":4628,"to":4645},
-          {"text":"el","from":4645,"to":4651},
-          {"text":"que","from":4651,"to":4661},
-          {"text":"no","from":4661,"to":4668},
-          {"text":"falla","from":4668,"to":4685},
-          {"text":"en","from":4685,"to":4692},
-          {"text":"tu","from":4692,"to":4698},
-          {"text":"cuarto.","from":4698,"to":4722}
+          {"text":"¿Qué","from":4356,"to":4360},
+          {"text":"sensor","from":4360,"to":4372},
+          {"text":"encaja","from":4372,"to":4386},
+          {"text":"mejor?","from":4386,"to":4395}
         ]
       ]
     },
     {
-      "from": 4766,
-      "to": 4930,
+      "from": 4407,
+      "to": 4554,
       "lines": [
         [
-          {"text":"Otra","from":4769,"to":4780},
-          {"text":"más.","from":4780,"to":4790},
-          {"text":"Un","from":4790,"to":4795},
-          {"text":"despacho","from":4795,"to":4817},
-          {"text":"pequeño","from":4817,"to":4835},
-          {"text":"y","from":4835,"to":4838},
-          {"text":"cerrado","from":4838,"to":4856}
+          {"text":"Cuando","from":4410,"to":4419},
+          {"text":"una","from":4419,"to":4425},
+          {"text":"pregunta","from":4425,"to":4434},
+          {"text":"pide","from":4434,"to":4448},
+          {"text":"el","from":4448,"to":4457},
+          {"text":"“mejor”,","from":4457,"to":4468}
         ],
         [
-          {"text":"recibe","from":4856,"to":4872},
-          {"text":"sol","from":4872,"to":4880},
-          {"text":"directo","from":4880,"to":4899},
-          {"text":"por","from":4899,"to":4907},
-          {"text":"la","from":4907,"to":4912},
-          {"text":"ventana.","from":4912,"to":4933}
+          {"text":"casi","from":4483,"to":4487},
+          {"text":"todas","from":4487,"to":4493},
+          {"text":"las","from":4493,"to":4500},
+          {"text":"opciones","from":4500,"to":4513},
+          {"text":"valen","from":4513,"to":4526},
+          {"text":"a","from":4526,"to":4529},
+          {"text":"medias.","from":4529,"to":4544}
         ]
       ]
     },
     {
-      "from": 4930,
-      "to": 5039,
+      "from": 4554,
+      "to": 4666,
       "lines": [
         [
-          {"text":"Su","from":4933,"to":4938},
-          {"text":"pared","from":4938,"to":4952},
-          {"text":"fina","from":4952,"to":4962},
-          {"text":"da","from":4962,"to":4967},
-          {"text":"a","from":4967,"to":4970},
-          {"text":"otro","from":4970,"to":4981}
+          {"text":"Vale","from":4557,"to":4566},
+          {"text":"la","from":4566,"to":4575},
+          {"text":"que","from":4575,"to":4580},
+          {"text":"no","from":4580,"to":4585},
+          {"text":"falla","from":4585,"to":4596},
+          {"text":"en","from":4596,"to":4599},
+          {"text":"nada","from":4599,"to":4607}
         ],
         [
-          {"text":"con","from":4981,"to":4989},
-          {"text":"gente","from":4989,"to":5002},
-          {"text":"yendo","from":5002,"to":5015},
-          {"text":"y","from":5015,"to":5018},
-          {"text":"viniendo.","from":5018,"to":5042}
+          {"text":"de","from":4607,"to":4614},
+          {"text":"lo","from":4614,"to":4618},
+          {"text":"que","from":4618,"to":4622},
+          {"text":"cuenta","from":4622,"to":4630},
+          {"text":"el","from":4630,"to":4635},
+          {"text":"caso.","from":4635,"to":4642}
         ]
       ]
     },
     {
-      "from": 5039,
-      "to": 5181,
+      "from": 4814,
+      "to": 4910,
       "lines": [
         [
-          {"text":"Quieren","from":5042,"to":5060},
-          {"text":"detectar","from":5060,"to":5081},
-          {"text":"movimiento","from":5081,"to":5108},
-          {"text":"dentro.","from":5108,"to":5126}
+          {"text":"Ultrasonic,","from":4817,"to":4833},
+          {"text":"porque","from":4852,"to":4858},
+          {"text":"su","from":4858,"to":4863},
+          {"text":"sonido","from":4863,"to":4873}
         ],
         [
-          {"text":"¿Qué","from":5126,"to":5137},
-          {"text":"sensor","from":5137,"to":5153},
-          {"text":"encaja","from":5153,"to":5169},
-          {"text":"mejor?","from":5169,"to":5184}
+          {"text":"no","from":4873,"to":4879},
+          {"text":"atraviesa","from":4879,"to":4895},
+          {"text":"la","from":4895,"to":4898},
+          {"text":"pared.","from":4898,"to":4906}
         ]
       ]
     },
     {
-      "from": 5181,
-      "to": 5351,
+      "from": 4910,
+      "to": 4953,
       "lines": [
         [
-          {"text":"Cuando","from":5184,"to":5200},
-          {"text":"una","from":5200,"to":5208},
-          {"text":"pregunta","from":5208,"to":5229},
-          {"text":"pide","from":5229,"to":5240},
-          {"text":"el","from":5240,"to":5245},
-          {"text":"“mejor”,","from":5245,"to":5267}
+          {"text":"Microwave","from":4913,"to":4929},
+          {"text":"parece","from":4929,"to":4939},
+          {"text":"lo","from":4939,"to":4945},
+          {"text":"natural,","from":4945,"to":4956}
+        ]
+      ]
+    },
+    {
+      "from": 4953,
+      "to": 5070,
+      "lines": [
+        [
+          {"text":"pero","from":4956,"to":4964},
+          {"text":"cruzaría","from":4964,"to":4978},
+          {"text":"el","from":4978,"to":4984},
+          {"text":"tabique","from":4984,"to":4992},
+          {"text":"y","from":4992,"to":4999},
+          {"text":"saltaría","from":4999,"to":5010}
         ],
         [
-          {"text":"casi","from":5267,"to":5277},
-          {"text":"todas","from":5277,"to":5290},
-          {"text":"las","from":5290,"to":5298},
-          {"text":"opciones","from":5298,"to":5319},
-          {"text":"valen","from":5319,"to":5333},
-          {"text":"a","from":5333,"to":5335},
-          {"text":"medias.","from":5335,"to":5354}
+          {"text":"con","from":5010,"to":5017},
+          {"text":"la","from":5017,"to":5021},
+          {"text":"gente","from":5021,"to":5027},
+          {"text":"del","from":5027,"to":5033},
+          {"text":"despacho","from":5033,"to":5043},
+          {"text":"vecino.","from":5043,"to":5054}
         ]
       ]
     },
     {
-      "from": 5351,
-      "to": 5489,
+      "from": 5070,
+      "to": 5240,
       "lines": [
         [
-          {"text":"Vale","from":5354,"to":5364},
-          {"text":"la","from":5364,"to":5370},
-          {"text":"que","from":5370,"to":5378},
-          {"text":"no","from":5378,"to":5383},
-          {"text":"falla","from":5383,"to":5396},
-          {"text":"en","from":5396,"to":5401},
-          {"text":"nada","from":5401,"to":5412}
+          {"text":"Vamos,","from":5073,"to":5083},
+          {"text":"que","from":5100,"to":5105},
+          {"text":"no","from":5105,"to":5109},
+          {"text":"valía","from":5109,"to":5120},
+          {"text":"el","from":5120,"to":5127},
+          {"text":"que","from":5127,"to":5130},
+          {"text":"más","from":5130,"to":5135},
+          {"text":"cubre,","from":5135,"to":5147}
         ],
         [
-          {"text":"de","from":5412,"to":5417},
-          {"text":"lo","from":5417,"to":5423},
-          {"text":"que","from":5423,"to":5431},
-          {"text":"cuenta","from":5431,"to":5446},
-          {"text":"el","from":5446,"to":5452},
-          {"text":"caso.","from":5452,"to":5465}
+          {"text":"sino","from":5156,"to":5163},
+          {"text":"el","from":5163,"to":5168},
+          {"text":"que","from":5168,"to":5170},
+          {"text":"no","from":5170,"to":5174},
+          {"text":"fallaba","from":5174,"to":5188},
+          {"text":"en","from":5188,"to":5196},
+          {"text":"ese","from":5196,"to":5201},
+          {"text":"despacho.","from":5201,"to":5216}
         ]
       ]
     },
     {
-      "from": 5620,
-      "to": 5720,
+      "from": 5273,
+      "to": 5374,
       "lines": [
         [
-          {"text":"Ultrasonic,","from":5623,"to":5648},
-          {"text":"porque","from":5648,"to":5662},
-          {"text":"su","from":5662,"to":5666},
-          {"text":"sonido","from":5666,"to":5680}
+          {"text":"Lo","from":5276,"to":5282},
+          {"text":"de","from":5282,"to":5288},
+          {"text":"antes","from":5288,"to":5295},
+          {"text":"intenta","from":5295,"to":5313},
+          {"text":"frenar","from":5313,"to":5328}
         ],
         [
-          {"text":"no","from":5680,"to":5684},
-          {"text":"atraviesa","from":5684,"to":5705},
-          {"text":"la","from":5705,"to":5709},
-          {"text":"pared.","from":5709,"to":5723}
+          {"text":"o","from":5328,"to":5333},
+          {"text":"detectar","from":5333,"to":5348},
+          {"text":"a","from":5348,"to":5351},
+          {"text":"quien","from":5351,"to":5354},
+          {"text":"llega.","from":5354,"to":5365}
         ]
       ]
     },
     {
-      "from": 5720,
-      "to": 5776,
+      "from": 5374,
+      "to": 5479,
       "lines": [
         [
-          {"text":"Microwave","from":5723,"to":5743},
-          {"text":"parece","from":5743,"to":5757},
-          {"text":"lo","from":5757,"to":5761},
-          {"text":"natural,","from":5761,"to":5779}
-        ]
-      ]
-    },
-    {
-      "from": 5776,
-      "to": 5917,
-      "lines": [
-        [
-          {"text":"pero","from":5779,"to":5789},
-          {"text":"cruzaría","from":5789,"to":5807},
-          {"text":"el","from":5807,"to":5811},
-          {"text":"tabique","from":5811,"to":5827},
-          {"text":"y","from":5827,"to":5829},
-          {"text":"saltaría","from":5829,"to":5848}
+          {"text":"Un","from":5377,"to":5382},
+          {"text":"cebo","from":5382,"to":5390},
+          {"text":"parte","from":5394,"to":5399},
+          {"text":"de","from":5399,"to":5406},
+          {"text":"otra","from":5406,"to":5410},
+          {"text":"idea,","from":5410,"to":5419}
         ],
         [
-          {"text":"con","from":5848,"to":5854},
-          {"text":"la","from":5854,"to":5859},
-          {"text":"gente","from":5859,"to":5870},
-          {"text":"del","from":5870,"to":5877},
-          {"text":"despacho","from":5877,"to":5895},
-          {"text":"vecino.","from":5895,"to":5911}
+          {"text":"que","from":5428,"to":5433},
+          {"text":"ya","from":5433,"to":5439},
+          {"text":"hay","from":5439,"to":5443},
+          {"text":"alguien","from":5443,"to":5452},
+          {"text":"dentro.","from":5452,"to":5463}
         ]
       ]
     },
     {
-      "from": 5917,
-      "to": 6136,
+      "from": 5479,
+      "to": 5610,
       "lines": [
         [
-          {"text":"Vamos,","from":5920,"to":5939},
-          {"text":"que","from":5939,"to":5948},
-          {"text":"no","from":5948,"to":5954},
-          {"text":"valía","from":5954,"to":5970},
-          {"text":"el","from":5970,"to":5976},
-          {"text":"que","from":5976,"to":5985},
-          {"text":"más","from":5985,"to":5994},
-          {"text":"cubre,","from":5994,"to":6013}
+          {"text":"Es","from":5482,"to":5487},
+          {"text":"algo","from":5487,"to":5497},
+          {"text":"falso,","from":5497,"to":5510},
+          {"text":"y","from":5510,"to":5524},
+          {"text":"se","from":5524,"to":5528},
+          {"text":"pone","from":5528,"to":5534},
+          {"text":"donde","from":5534,"to":5541}
         ],
         [
-          {"text":"sino","from":6013,"to":6025},
-          {"text":"el","from":6025,"to":6031},
-          {"text":"que","from":6031,"to":6041},
-          {"text":"no","from":6041,"to":6047},
-          {"text":"fallaba","from":6047,"to":6069},
-          {"text":"en","from":6069,"to":6075},
-          {"text":"ese","from":6075,"to":6084},
-          {"text":"despacho.","from":6084,"to":6112}
+          {"text":"ningún","from":5541,"to":5551},
+          {"text":"usuario","from":5551,"to":5563},
+          {"text":"legítimo","from":5563,"to":5581},
+          {"text":"tocaría.","from":5581,"to":5601}
         ]
       ]
     },
     {
-      "from": 6159,
-      "to": 6284,
+      "from": 5610,
+      "to": 5680,
       "lines": [
         [
-          {"text":"Lo","from":6162,"to":6168},
-          {"text":"de","from":6168,"to":6174},
-          {"text":"antes","from":6174,"to":6188},
-          {"text":"intenta","from":6188,"to":6208},
-          {"text":"frenar","from":6208,"to":6226}
+          {"text":"Hay","from":5613,"to":5618},
+          {"text":"cuatro,","from":5618,"to":5628},
+          {"text":"según","from":5628,"to":5639},
+          {"text":"lo","from":5639,"to":5645},
+          {"text":"que","from":5645,"to":5649},
+          {"text":"ofrecen.","from":5649,"to":5661}
+        ]
+      ]
+    },
+    {
+      "from": 5680,
+      "to": 5769,
+      "lines": [
+        [
+          {"text":"Un","from":5683,"to":5691},
+          {"text":"sistema","from":5691,"to":5701},
+          {"text":"que","from":5701,"to":5710},
+          {"text":"no","from":5710,"to":5714},
+          {"text":"sirve","from":5714,"to":5722}
         ],
         [
-          {"text":"o","from":6226,"to":6229},
-          {"text":"detectar","from":6229,"to":6252},
-          {"text":"a","from":6252,"to":6255},
-          {"text":"quien","from":6255,"to":6269},
-          {"text":"llega.","from":6269,"to":6287}
+          {"text":"a","from":5722,"to":5725},
+          {"text":"nadie,","from":5725,"to":5733},
+          {"text":"un","from":5740,"to":5743},
+          {"text":"honeypot.","from":5743,"to":5758}
         ]
       ]
     },
     {
-      "from": 6284,
-      "to": 6420,
+      "from": 5769,
+      "to": 5860,
       "lines": [
         [
-          {"text":"Un","from":6287,"to":6292},
-          {"text":"cebo","from":6292,"to":6304},
-          {"text":"parte","from":6304,"to":6318},
-          {"text":"de","from":6318,"to":6324},
-          {"text":"otra","from":6324,"to":6336},
-          {"text":"idea,","from":6336,"to":6350}
+          {"text":"Varios","from":5772,"to":5782},
+          {"text":"que","from":5782,"to":5787},
+          {"text":"se","from":5787,"to":5791},
+          {"text":"hablan","from":5791,"to":5797}
         ],
         [
-          {"text":"que","from":6350,"to":6359},
-          {"text":"ya","from":6359,"to":6365},
-          {"text":"hay","from":6365,"to":6373},
-          {"text":"alguien","from":6373,"to":6394},
-          {"text":"dentro.","from":6394,"to":6414}
+          {"text":"entre","from":5797,"to":5806},
+          {"text":"sí,","from":5806,"to":5812},
+          {"text":"una","from":5823,"to":5828},
+          {"text":"honeynet.","from":5828,"to":5841}
         ]
       ]
     },
     {
-      "from": 6420,
-      "to": 6553,
+      "from": 5860,
+      "to": 5962,
       "lines": [
         [
-          {"text":"Es","from":6423,"to":6428},
-          {"text":"algo","from":6428,"to":6438},
-          {"text":"falso,","from":6438,"to":6453},
-          {"text":"y","from":6453,"to":6456},
-          {"text":"se","from":6456,"to":6461},
-          {"text":"pone","from":6461,"to":6471},
-          {"text":"donde","from":6471,"to":6483}
+          {"text":"Un","from":5863,"to":5869},
+          {"text":"fichero","from":5869,"to":5883},
+          {"text":"con","from":5883,"to":5889},
+          {"text":"un","from":5889,"to":5893},
+          {"text":"nombre","from":5893,"to":5900}
         ],
         [
-          {"text":"ningún","from":6483,"to":6499},
-          {"text":"usuario","from":6499,"to":6516},
-          {"text":"legítimo","from":6516,"to":6536},
-          {"text":"tocaría.","from":6536,"to":6556}
+          {"text":"irresistible,","from":5900,"to":5919},
+          {"text":"un","from":5926,"to":5929},
+          {"text":"honeyfile.","from":5929,"to":5950}
         ]
       ]
     },
     {
-      "from": 6553,
-      "to": 6632,
+      "from": 5962,
+      "to": 6126,
       "lines": [
         [
-          {"text":"Hay","from":6556,"to":6564},
-          {"text":"cuatro,","from":6564,"to":6582},
-          {"text":"según","from":6582,"to":6594},
-          {"text":"lo","from":6594,"to":6599},
-          {"text":"que","from":6599,"to":6607},
-          {"text":"ofrecen.","from":6607,"to":6627}
-        ]
-      ]
-    },
-    {
-      "from": 6632,
-      "to": 6734,
-      "lines": [
-        [
-          {"text":"Un","from":6635,"to":6641},
-          {"text":"sistema","from":6641,"to":6660},
-          {"text":"que","from":6660,"to":6668},
-          {"text":"no","from":6668,"to":6674},
-          {"text":"sirve","from":6674,"to":6687}
+          {"text":"Y","from":5965,"to":5973},
+          {"text":"un","from":5973,"to":5976},
+          {"text":"dato","from":5976,"to":5982},
+          {"text":"que","from":5982,"to":5988},
+          {"text":"no","from":5988,"to":5992},
+          {"text":"existe,","from":5992,"to":6003},
+          {"text":"como","from":6003,"to":6013},
+          {"text":"una","from":6013,"to":6018},
+          {"text":"cuenta,","from":6018,"to":6028}
         ],
         [
-          {"text":"a","from":6687,"to":6690},
-          {"text":"nadie,","from":6690,"to":6707},
-          {"text":"un","from":6707,"to":6712},
-          {"text":"honeypot.","from":6712,"to":6737}
+          {"text":"una","from":6037,"to":6039},
+          {"text":"clave","from":6039,"to":6050},
+          {"text":"o","from":6050,"to":6055},
+          {"text":"un","from":6056,"to":6058},
+          {"text":"registro,","from":6058,"to":6073},
+          {"text":"un","from":6082,"to":6085},
+          {"text":"honeytoken.","from":6085,"to":6102}
         ]
       ]
     },
     {
-      "from": 6734,
-      "to": 6845,
+      "from": 6127,
+      "to": 6193,
       "lines": [
         [
-          {"text":"Varios","from":6737,"to":6754},
-          {"text":"que","from":6754,"to":6762},
-          {"text":"se","from":6762,"to":6767},
-          {"text":"hablan","from":6767,"to":6784}
+          {"text":"Los","from":6130,"to":6142},
+          {"text":"cuatro","from":6142,"to":6153},
+          {"text":"tienen","from":6153,"to":6164},
+          {"text":"algo","from":6164,"to":6172},
+          {"text":"en","from":6172,"to":6177},
+          {"text":"común.","from":6177,"to":6185}
+        ]
+      ]
+    },
+    {
+      "from": 6193,
+      "to": 6316,
+      "lines": [
+        [
+          {"text":"Nadie","from":6196,"to":6205},
+          {"text":"legítimo","from":6205,"to":6223},
+          {"text":"los","from":6223,"to":6229},
+          {"text":"toca,","from":6229,"to":6238}
         ],
         [
-          {"text":"entre","from":6784,"to":6798},
-          {"text":"sí,","from":6798,"to":6806},
-          {"text":"una","from":6806,"to":6814},
-          {"text":"honeynet.","from":6814,"to":6839}
+          {"text":"así","from":6246,"to":6254},
+          {"text":"que","from":6254,"to":6258},
+          {"text":"cualquier","from":6258,"to":6266},
+          {"text":"toque","from":6266,"to":6278},
+          {"text":"avisa.","from":6280,"to":6292}
         ]
       ]
     },
     {
-      "from": 6845,
-      "to": 6962,
+      "from": 6347,
+      "to": 6380,
       "lines": [
         [
-          {"text":"Un","from":6848,"to":6853},
-          {"text":"fichero","from":6853,"to":6871},
-          {"text":"con","from":6871,"to":6879},
-          {"text":"un","from":6879,"to":6884},
-          {"text":"nombre","from":6884,"to":6900}
+          {"text":"La","from":6350,"to":6358},
+          {"text":"última.","from":6358,"to":6369}
+        ]
+      ]
+    },
+    {
+      "from": 6380,
+      "to": 6501,
+      "lines": [
+        [
+          {"text":"Un","from":6383,"to":6387},
+          {"text":"estudio","from":6387,"to":6398},
+          {"text":"de","from":6398,"to":6406},
+          {"text":"arquitectura","from":6406,"to":6426},
+          {"text":"quiere","from":6426,"to":6442}
         ],
         [
-          {"text":"irresistible,","from":6900,"to":6934},
-          {"text":"un","from":6934,"to":6939},
-          {"text":"honeyfile.","from":6939,"to":6965}
+          {"text":"enterarse","from":6442,"to":6459},
+          {"text":"en","from":6459,"to":6467},
+          {"text":"cuanto","from":6467,"to":6471},
+          {"text":"un","from":6471,"to":6480},
+          {"text":"ransomware","from":6480,"to":6496},
+          {"text":"empiece","from":6496,"to":6504}
         ]
       ]
     },
     {
-      "from": 6962,
-      "to": 7142,
+      "from": 6501,
+      "to": 6628,
       "lines": [
         [
-          {"text":"Y","from":6965,"to":6967},
-          {"text":"un","from":6967,"to":6973},
-          {"text":"dato","from":6973,"to":6983},
-          {"text":"que","from":6983,"to":6991},
-          {"text":"no","from":6991,"to":6996},
-          {"text":"existe,","from":6996,"to":7014},
-          {"text":"como","from":7014,"to":7024},
-          {"text":"una","from":7024,"to":7032},
-          {"text":"cuenta,","from":7032,"to":7050}
+          {"text":"a","from":6504,"to":6509},
+          {"text":"cifrar","from":6509,"to":6519},
+          {"text":"los","from":6519,"to":6525},
+          {"text":"ficheros","from":6525,"to":6540},
+          {"text":"de","from":6540,"to":6543},
+          {"text":"su","from":6543,"to":6547},
+          {"text":"servidor.","from":6547,"to":6561},
+          {"text":"Va","from":6568,"to":6576}
         ],
         [
-          {"text":"una","from":7050,"to":7058},
-          {"text":"clave","from":7058,"to":7071},
-          {"text":"o","from":7071,"to":7074},
-          {"text":"un","from":7074,"to":7079},
-          {"text":"registro,","from":7079,"to":7102},
-          {"text":"un","from":7102,"to":7107},
-          {"text":"honeytoken.","from":7107,"to":7136}
+          {"text":"a","from":6576,"to":6579},
+          {"text":"dejar","from":6579,"to":6582},
+          {"text":"cebos","from":6582,"to":6594},
+          {"text":"donde","from":6594,"to":6598},
+          {"text":"ese","from":6598,"to":6606},
+          {"text":"ransomware","from":6606,"to":6620},
+          {"text":"pase.","from":6620,"to":6631}
         ]
       ]
     },
     {
-      "from": 7142,
-      "to": 7208,
+      "from": 6628,
+      "to": 6709,
       "lines": [
         [
-          {"text":"Los","from":7145,"to":7152},
-          {"text":"cuatro","from":7152,"to":7167},
-          {"text":"tienen","from":7167,"to":7181},
-          {"text":"algo","from":7181,"to":7191},
-          {"text":"en","from":7191,"to":7196},
-          {"text":"común.","from":7196,"to":7211}
+          {"text":"¿Qué","from":6631,"to":6642},
+          {"text":"cebo","from":6652,"to":6662},
+          {"text":"encaja","from":6662,"to":6676},
+          {"text":"mejor?","from":6676,"to":6685}
         ]
       ]
     },
     {
-      "from": 7208,
-      "to": 7349,
+      "from": 6850,
+      "to": 6960,
       "lines": [
         [
-          {"text":"Nadie","from":7211,"to":7223},
-          {"text":"legítimo","from":7223,"to":7242},
-          {"text":"los","from":7242,"to":7250},
-          {"text":"toca,","from":7250,"to":7262}
+          {"text":"Honeyfile,","from":6853,"to":6870},
+          {"text":"porque","from":6883,"to":6889},
+          {"text":"el","from":6889,"to":6893},
+          {"text":"fichero","from":6893,"to":6902},
+          {"text":"cebo","from":6902,"to":6913}
         ],
         [
-          {"text":"así","from":7262,"to":7269},
-          {"text":"que","from":7269,"to":7276},
-          {"text":"cualquier","from":7276,"to":7298},
-          {"text":"toque","from":7298,"to":7310},
-          {"text":"avisa.","from":7310,"to":7325}
+          {"text":"queda","from":6913,"to":6923},
+          {"text":"entre","from":6923,"to":6930},
+          {"text":"los","from":6930,"to":6934},
+          {"text":"ficheros","from":6934,"to":6948},
+          {"text":"que","from":6948,"to":6952},
+          {"text":"recorre","from":6952,"to":6963}
+        ]
+      ]
+    },
+    {
+      "from": 6960,
+      "to": 6989,
+      "lines": [
+        [
+          {"text":"el","from":6963,"to":6966},
+          {"text":"ransomware.","from":6966,"to":6982}
+        ]
+      ]
+    },
+    {
+      "from": 6989,
+      "to": 7132,
+      "lines": [
+        [
+          {"text":"Un","from":6992,"to":6999},
+          {"text":"honeypot","from":6999,"to":7012},
+          {"text":"también","from":7012,"to":7021},
+          {"text":"es","from":7021,"to":7028},
+          {"text":"cebo,","from":7028,"to":7035},
+          {"text":"pero","from":7047,"to":7055},
+          {"text":"es","from":7055,"to":7059},
+          {"text":"un","from":7059,"to":7061}
+        ],
+        [
+          {"text":"sistema","from":7061,"to":7071},
+          {"text":"aparte,","from":7071,"to":7087},
+          {"text":"y","from":7087,"to":7092},
+          {"text":"puede","from":7092,"to":7098},
+          {"text":"que","from":7098,"to":7103},
+          {"text":"ni","from":7103,"to":7107},
+          {"text":"lo","from":7107,"to":7110},
+          {"text":"toque.","from":7110,"to":7119}
+        ]
+      ]
+    },
+    {
+      "from": 7132,
+      "to": 7240,
+      "lines": [
+        [
+          {"text":"O","from":7135,"to":7139},
+          {"text":"sea,","from":7139,"to":7145},
+          {"text":"que","from":7154,"to":7160},
+          {"text":"el","from":7160,"to":7162},
+          {"text":"fichero","from":7162,"to":7171},
+          {"text":"va","from":7171,"to":7176}
+        ],
+        [
+          {"text":"por","from":7176,"to":7181},
+          {"text":"donde","from":7181,"to":7185},
+          {"text":"pasa","from":7185,"to":7194},
+          {"text":"el","from":7194,"to":7201},
+          {"text":"ransomware.","from":7201,"to":7216}
+        ]
+      ]
+    },
+    {
+      "from": 7302,
+      "to": 7369,
+      "lines": [
+        [
+          {"text":"Una,","from":7305,"to":7312},
+          {"text":"cada","from":7329,"to":7331},
+          {"text":"control","from":7329,"to":7343},
+          {"text":"tapa","from":7343,"to":7350},
+          {"text":"un","from":7350,"to":7355},
+          {"text":"hueco.","from":7355,"to":7364}
         ]
       ]
     },
     {
       "from": 7369,
-      "to": 7390,
+      "to": 7478,
       "lines": [
         [
-          {"text":"La","from":7372,"to":7377},
-          {"text":"última.","from":7377,"to":7393}
-        ]
-      ]
-    },
-    {
-      "from": 7390,
-      "to": 7545,
-      "lines": [
-        [
-          {"text":"Un","from":7393,"to":7398},
-          {"text":"estudio","from":7398,"to":7415},
-          {"text":"de","from":7415,"to":7420},
-          {"text":"arquitectura","from":7420,"to":7448},
-          {"text":"quiere","from":7448,"to":7463}
+          {"text":"Los","from":7372,"to":7380},
+          {"text":"bollards","from":7380,"to":7392},
+          {"text":"frenan","from":7392,"to":7404},
+          {"text":"coches","from":7404,"to":7417}
         ],
         [
-          {"text":"enterarse","from":7463,"to":7484},
-          {"text":"en","from":7484,"to":7489},
-          {"text":"cuanto","from":7489,"to":7503},
-          {"text":"un","from":7503,"to":7508},
-          {"text":"ransomware","from":7508,"to":7532},
-          {"text":"empiece","from":7532,"to":7548}
+          {"text":"y","from":7417,"to":7423},
+          {"text":"el","from":7423,"to":7427},
+          {"text":"badge","from":7427,"to":7433},
+          {"text":"apunta","from":7433,"to":7445},
+          {"text":"quién","from":7445,"to":7452},
+          {"text":"entra.","from":7452,"to":7462}
         ]
       ]
     },
     {
-      "from": 7545,
-      "to": 7705,
+      "from": 7478,
+      "to": 7558,
       "lines": [
         [
-          {"text":"a","from":7548,"to":7551},
-          {"text":"cifrar","from":7551,"to":7565},
-          {"text":"los","from":7565,"to":7572},
-          {"text":"ficheros","from":7572,"to":7591},
-          {"text":"de","from":7591,"to":7596},
-          {"text":"su","from":7596,"to":7601},
-          {"text":"servidor.","from":7601,"to":7622},
-          {"text":"Va","from":7622,"to":7627}
+          {"text":"Dos,","from":7481,"to":7498},
+          {"text":"un","from":7498,"to":7510},
+          {"text":"sensor","from":7510,"to":7520},
+          {"text":"se","from":7520,"to":7527},
+          {"text":"elige","from":7527,"to":7534},
+          {"text":"por","from":7534,"to":7541},
+          {"text":"dónde","from":7541,"to":7547},
+          {"text":"falla.","from":7547,"to":7561}
+        ]
+      ]
+    },
+    {
+      "from": 7558,
+      "to": 7671,
+      "lines": [
+        [
+          {"text":"El","from":7561,"to":7580},
+          {"text":"de","from":7580,"to":7584},
+          {"text":"radio","from":7584,"to":7593},
+          {"text":"cruza","from":7593,"to":7605},
+          {"text":"tabiques","from":7605,"to":7618}
         ],
         [
-          {"text":"a","from":7627,"to":7630},
-          {"text":"dejar","from":7630,"to":7642},
-          {"text":"cebos","from":7642,"to":7653},
-          {"text":"donde","from":7653,"to":7665},
-          {"text":"ese","from":7665,"to":7673},
-          {"text":"ransomware","from":7673,"to":7696},
-          {"text":"pase.","from":7696,"to":7708}
+          {"text":"y","from":7618,"to":7629},
+          {"text":"el","from":7629,"to":7633},
+          {"text":"de","from":7633,"to":7635},
+          {"text":"sonido","from":7635,"to":7646},
+          {"text":"no.","from":7647,"to":7657}
         ]
       ]
     },
     {
-      "from": 7705,
-      "to": 7780,
+      "from": 7671,
+      "to": 7835,
       "lines": [
         [
-          {"text":"¿Qué","from":7708,"to":7718},
-          {"text":"cebo","from":7718,"to":7727},
-          {"text":"encaja","from":7727,"to":7742},
-          {"text":"mejor?","from":7742,"to":7756}
-        ]
-      ]
-    },
-    {
-      "from": 7911,
-      "to": 8062,
-      "lines": [
-        [
-          {"text":"Honeyfile,","from":7914,"to":7939},
-          {"text":"porque","from":7939,"to":7954},
-          {"text":"el","from":7954,"to":7959},
-          {"text":"fichero","from":7959,"to":7977},
-          {"text":"cebo","from":7977,"to":7987}
+          {"text":"Y","from":7674,"to":7682},
+          {"text":"tres,","from":7682,"to":7688},
+          {"text":"un","from":7705,"to":7711},
+          {"text":"cebo","from":7711,"to":7721},
+          {"text":"parte","from":7721,"to":7737},
+          {"text":"de","from":7737,"to":7744},
+          {"text":"que","from":7744,"to":7748},
+          {"text":"ya","from":7748,"to":7754},
+          {"text":"hay","from":7754,"to":7757}
         ],
         [
-          {"text":"queda","from":7987,"to":8000},
-          {"text":"entre","from":8000,"to":8012},
-          {"text":"los","from":8012,"to":8020},
-          {"text":"ficheros","from":8020,"to":8040},
-          {"text":"que","from":8040,"to":8048},
-          {"text":"recorre","from":8048,"to":8065}
+          {"text":"alguien","from":7757,"to":7765},
+          {"text":"dentro,","from":7765,"to":7776},
+          {"text":"y","from":7776,"to":7786},
+          {"text":"cualquier","from":7786,"to":7794},
+          {"text":"toque","from":7794,"to":7807},
+          {"text":"avisa.","from":7807,"to":7819}
         ]
       ]
     },
     {
-      "from": 8062,
-      "to": 8095,
+      "from": 7835,
+      "to": 7934,
       "lines": [
         [
-          {"text":"el","from":8065,"to":8070},
-          {"text":"ransomware.","from":8070,"to":8098}
-        ]
-      ]
-    },
-    {
-      "from": 8095,
-      "to": 8268,
-      "lines": [
-        [
-          {"text":"Un","from":8098,"to":8103},
-          {"text":"honeypot","from":8103,"to":8123},
-          {"text":"también","from":8123,"to":8141},
-          {"text":"es","from":8141,"to":8146},
-          {"text":"cebo,","from":8146,"to":8159},
-          {"text":"pero","from":8159,"to":8169},
-          {"text":"es","from":8169,"to":8174},
-          {"text":"un","from":8174,"to":8179}
+          {"text":"Cada","from":7838,"to":7844},
+          {"text":"cosa","from":7844,"to":7855},
+          {"text":"tapa","from":7855,"to":7865},
+          {"text":"un","from":7865,"to":7870},
+          {"text":"hueco","from":7870,"to":7878}
         ],
         [
-          {"text":"sistema","from":8179,"to":8196},
-          {"text":"aparte,","from":8196,"to":8214},
-          {"text":"y","from":8214,"to":8217},
-          {"text":"puede","from":8217,"to":8229},
-          {"text":"que","from":8229,"to":8237},
-          {"text":"ni","from":8237,"to":8242},
-          {"text":"lo","from":8242,"to":8247},
-          {"text":"toque.","from":8247,"to":8262}
+          {"text":"y","from":7878,"to":7883},
+          {"text":"falla","from":7883,"to":7894},
+          {"text":"por","from":7894,"to":7900},
+          {"text":"algún","from":7900,"to":7909},
+          {"text":"sitio.","from":7909,"to":7920}
         ]
       ]
     },
     {
-      "from": 8268,
-      "to": 8427,
+      "from": 7934,
+      "to": 8028,
       "lines": [
         [
-          {"text":"O","from":8271,"to":8274},
-          {"text":"sea,","from":8274,"to":8286},
-          {"text":"que","from":8286,"to":8295},
-          {"text":"el","from":8295,"to":8301},
-          {"text":"fichero","from":8301,"to":8322},
-          {"text":"va","from":8322,"to":8328}
-        ],
-        [
-          {"text":"por","from":8328,"to":8337},
-          {"text":"donde","from":8337,"to":8352},
-          {"text":"pasa","from":8352,"to":8364},
-          {"text":"el","from":8364,"to":8370},
-          {"text":"ransomware.","from":8370,"to":8403}
-        ]
-      ]
-    },
-    {
-      "from": 8453,
-      "to": 8522,
-      "lines": [
-        [
-          {"text":"Una,","from":8456,"to":8466},
-          {"text":"cada","from":8466,"to":8476},
-          {"text":"control","from":8476,"to":8494},
-          {"text":"tapa","from":8494,"to":8505},
-          {"text":"un","from":8505,"to":8510},
-          {"text":"hueco.","from":8510,"to":8525}
-        ]
-      ]
-    },
-    {
-      "from": 8522,
-      "to": 8653,
-      "lines": [
-        [
-          {"text":"Los","from":8525,"to":8533},
-          {"text":"bollards","from":8533,"to":8553},
-          {"text":"frenan","from":8553,"to":8569},
-          {"text":"coches","from":8569,"to":8584}
-        ],
-        [
-          {"text":"y","from":8584,"to":8587},
-          {"text":"el","from":8587,"to":8592},
-          {"text":"badge","from":8592,"to":8604},
-          {"text":"apunta","from":8604,"to":8620},
-          {"text":"quién","from":8620,"to":8633},
-          {"text":"entra.","from":8633,"to":8648}
-        ]
-      ]
-    },
-    {
-      "from": 8653,
-      "to": 8756,
-      "lines": [
-        [
-          {"text":"Dos,","from":8656,"to":8669},
-          {"text":"un","from":8669,"to":8675},
-          {"text":"sensor","from":8675,"to":8694},
-          {"text":"se","from":8694,"to":8700},
-          {"text":"elige","from":8700,"to":8715},
-          {"text":"por","from":8715,"to":8725},
-          {"text":"dónde","from":8725,"to":8741},
-          {"text":"falla.","from":8741,"to":8759}
-        ]
-      ]
-    },
-    {
-      "from": 8756,
-      "to": 8877,
-      "lines": [
-        [
-          {"text":"El","from":8759,"to":8766},
-          {"text":"de","from":8766,"to":8772},
-          {"text":"radio","from":8772,"to":8787},
-          {"text":"cruza","from":8787,"to":8803},
-          {"text":"tabiques","from":8803,"to":8828}
-        ],
-        [
-          {"text":"y","from":8828,"to":8831},
-          {"text":"el","from":8831,"to":8838},
-          {"text":"de","from":8838,"to":8844},
-          {"text":"sonido","from":8844,"to":8863},
-          {"text":"no.","from":8863,"to":8872}
-        ]
-      ]
-    },
-    {
-      "from": 8877,
-      "to": 9066,
-      "lines": [
-        [
-          {"text":"Y","from":8880,"to":8883},
-          {"text":"tres,","from":8883,"to":8897},
-          {"text":"un","from":8897,"to":8903},
-          {"text":"cebo","from":8903,"to":8915},
-          {"text":"parte","from":8915,"to":8929},
-          {"text":"de","from":8929,"to":8935},
-          {"text":"que","from":8935,"to":8944},
-          {"text":"ya","from":8944,"to":8950},
-          {"text":"hay","from":8950,"to":8958}
-        ],
-        [
-          {"text":"alguien","from":8958,"to":8979},
-          {"text":"dentro,","from":8979,"to":8999},
-          {"text":"y","from":8999,"to":9002},
-          {"text":"cualquier","from":9002,"to":9028},
-          {"text":"toque","from":9028,"to":9043},
-          {"text":"avisa.","from":9043,"to":9060}
-        ]
-      ]
-    },
-    {
-      "from": 9066,
-      "to": 9180,
-      "lines": [
-        [
-          {"text":"Cada","from":9069,"to":9081},
-          {"text":"cosa","from":9081,"to":9092},
-          {"text":"tapa","from":9092,"to":9104},
-          {"text":"un","from":9104,"to":9110},
-          {"text":"hueco","from":9110,"to":9124}
-        ],
-        [
-          {"text":"y","from":9124,"to":9127},
-          {"text":"falla","from":9127,"to":9142},
-          {"text":"por","from":9142,"to":9151},
-          {"text":"algún","from":9151,"to":9165},
-          {"text":"sitio.","from":9165,"to":9183}
-        ]
-      ]
-    },
-    {
-      "from": 9180,
-      "to": 9309,
-      "lines": [
-        [
-          {"text":"Tu","from":9183,"to":9189},
-          {"text":"turno,","from":9189,"to":9206},
-          {"text":"con","from":9206,"to":9215},
-          {"text":"las","from":9215,"to":9224},
-          {"text":"preguntas","from":9224,"to":9250},
-          {"text":"de","from":9250,"to":9256},
-          {"text":"la","from":9256,"to":9262},
-          {"text":"lección.","from":9262,"to":9285}
+          {"text":"Tu","from":7937,"to":7941},
+          {"text":"turno,","from":7941,"to":7954},
+          {"text":"con","from":7954,"to":7960},
+          {"text":"las","from":7960,"to":7965},
+          {"text":"preguntas","from":7965,"to":7977},
+          {"text":"de","from":7977,"to":7988},
+          {"text":"la","from":7988,"to":7992},
+          {"text":"lección.","from":7992,"to":8004}
         ]
       ]
     }
   ],
   "cues": [
     {"scene":"s01-hook","id":"plan","frame":45},
-    {"scene":"s01-hook","id":"title","frame":202},
-    {"scene":"s01-hook","id":"promise","frame":330},
-    {"scene":"s02-frena","id":"car","frame":707},
-    {"scene":"s02-frena","id":"bollards","frame":859},
-    {"scene":"s02-frena","id":"door","frame":1096},
-    {"scene":"s02-frena","id":"vestibule","frame":1344},
-    {"scene":"s02-frena","id":"badge","frame":1441},
-    {"scene":"s02-frena","id":"rest","frame":1786},
-    {"scene":"s02-frena","id":"line","frame":1926},
-    {"scene":"s03-p1","id":"q1","frame":2129},
-    {"scene":"s03-p1","id":"ok-1","frame":2671},
-    {"scene":"s03-p1","id":"trap-1","frame":2870},
-    {"scene":"s03-p1","id":"plan-back","frame":3040},
-    {"scene":"s04-sensor","id":"rooms","frame":3249},
-    {"scene":"s04-sensor","id":"infrared","frame":3474},
-    {"scene":"s04-sensor","id":"pressure","frame":3735},
-    {"scene":"s04-sensor","id":"microwave","frame":3876},
-    {"scene":"s04-sensor","id":"ultrasonic","frame":4197},
-    {"scene":"s04-sensor","id":"rule","frame":4530},
-    {"scene":"s05-p2","id":"q2","frame":4769},
-    {"scene":"s05-p2","id":"best","frame":5184},
-    {"scene":"s05-p2","id":"ok-2","frame":5623},
-    {"scene":"s05-p2","id":"trap-2","frame":5723},
-    {"scene":"s05-p2","id":"rooms-back","frame":5920},
-    {"scene":"s06-cebo","id":"inside","frame":6162},
-    {"scene":"s06-cebo","id":"four","frame":6423},
-    {"scene":"s06-cebo","id":"honeypot","frame":6635},
-    {"scene":"s06-cebo","id":"honeynet","frame":6737},
-    {"scene":"s06-cebo","id":"honeyfile","frame":6848},
-    {"scene":"s06-cebo","id":"honeytoken","frame":6965},
-    {"scene":"s06-cebo","id":"rule","frame":7145},
-    {"scene":"s07-p3","id":"q3","frame":7372},
-    {"scene":"s07-p3","id":"ok-3","frame":7914},
-    {"scene":"s07-p3","id":"trap-3","frame":8098},
-    {"scene":"s07-p3","id":"four-back","frame":8271},
-    {"scene":"s08-cierre","id":"recap","frame":8456},
-    {"scene":"s08-cierre","id":"rule-1","frame":8525},
-    {"scene":"s08-cierre","id":"rule-2","frame":8656},
-    {"scene":"s08-cierre","id":"rule-3","frame":8880},
-    {"scene":"s08-cierre","id":"phrase","frame":9069},
-    {"scene":"s08-cierre","id":"next","frame":9183},
-    {"scene":"s08-cierre","id":"endcard","frame":9285}
+    {"scene":"s01-hook","id":"title","frame":172},
+    {"scene":"s01-hook","id":"promise","frame":276},
+    {"scene":"s02-frena","id":"car","frame":565},
+    {"scene":"s02-frena","id":"bollards","frame":689},
+    {"scene":"s02-frena","id":"door","frame":858},
+    {"scene":"s02-frena","id":"vestibule","frame":1064},
+    {"scene":"s02-frena","id":"badge","frame":1141},
+    {"scene":"s02-frena","id":"beep","frame":1367},
+    {"scene":"s02-frena","id":"rest","frame":1412},
+    {"scene":"s02-frena","id":"line","frame":1511},
+    {"scene":"s03-p1","id":"q1","frame":1686},
+    {"scene":"s03-p1","id":"ok-1","frame":2224},
+    {"scene":"s03-p1","id":"trap-1","frame":2398},
+    {"scene":"s03-p1","id":"plan-back","frame":2539},
+    {"scene":"s04-sensor","id":"rooms","frame":2711},
+    {"scene":"s04-sensor","id":"infrared","frame":2918},
+    {"scene":"s04-sensor","id":"pressure","frame":3143},
+    {"scene":"s04-sensor","id":"microwave","frame":3277},
+    {"scene":"s04-sensor","id":"false","frame":3464},
+    {"scene":"s04-sensor","id":"ultrasonic","frame":3545},
+    {"scene":"s04-sensor","id":"rule","frame":3850},
+    {"scene":"s05-p2","id":"q2","frame":4039},
+    {"scene":"s05-p2","id":"best","frame":4410},
+    {"scene":"s05-p2","id":"ok-2","frame":4817},
+    {"scene":"s05-p2","id":"trap-2","frame":4913},
+    {"scene":"s05-p2","id":"rooms-back","frame":5073},
+    {"scene":"s06-cebo","id":"inside","frame":5276},
+    {"scene":"s06-cebo","id":"intruder","frame":5452},
+    {"scene":"s06-cebo","id":"four","frame":5482},
+    {"scene":"s06-cebo","id":"honeypot","frame":5683},
+    {"scene":"s06-cebo","id":"honeynet","frame":5772},
+    {"scene":"s06-cebo","id":"honeyfile","frame":5863},
+    {"scene":"s06-cebo","id":"honeytoken","frame":5965},
+    {"scene":"s06-cebo","id":"rule","frame":6130},
+    {"scene":"s06-cebo","id":"touch","frame":6280},
+    {"scene":"s07-p3","id":"q3","frame":6350},
+    {"scene":"s07-p3","id":"ok-3","frame":6853},
+    {"scene":"s07-p3","id":"trap-3","frame":6992},
+    {"scene":"s07-p3","id":"four-back","frame":7135},
+    {"scene":"s08-cierre","id":"recap","frame":7305},
+    {"scene":"s08-cierre","id":"rule-1","frame":7372},
+    {"scene":"s08-cierre","id":"rule-2","frame":7481},
+    {"scene":"s08-cierre","id":"rule-3","frame":7674},
+    {"scene":"s08-cierre","id":"phrase","frame":7838},
+    {"scene":"s08-cierre","id":"next","frame":7937},
+    {"scene":"s08-cierre","id":"endcard","frame":8018}
   ],
   "exam": [
-    {"scene":"s02-frena","from":1432,"durationInFrames":150,"objective":"1.2","text":"Bollards: vehículos. Vestibule: de uno en uno"},
-    {"scene":"s03-p1","from":3086,"durationInFrames":150,"objective":"1.2","text":"Access badge: quién, adónde y con registro"},
-    {"scene":"s05-p2","from":5999,"durationInFrames":150,"objective":"1.2","text":"Elige el sensor por dónde falla"},
-    {"scene":"s06-cebo","from":7136,"durationInFrames":150,"objective":"1.2","text":"Cebo: sistema, red, fichero o dato"},
-    {"scene":"s07-p3","from":8293,"durationInFrames":150,"objective":"1.2","text":"Ransomware que recorre carpetas: honeyfile"}
+    {"scene":"s02-frena","from":1121,"durationInFrames":150,"objective":"1.2","text":"Bollards: vehículos. Vestibule: de uno en uno"},
+    {"scene":"s03-p1","from":2548,"durationInFrames":150,"objective":"1.2","text":"Access badge: quién, adónde y con registro"},
+    {"scene":"s05-p2","from":5113,"durationInFrames":150,"objective":"1.2","text":"Elige el sensor por dónde falla"},
+    {"scene":"s06-cebo","from":6102,"durationInFrames":150,"objective":"1.2","text":"Cebo: sistema, red, fichero o dato"},
+    {"scene":"s07-p3","from":7142,"durationInFrames":150,"objective":"1.2","text":"Ransomware que recorre carpetas: honeyfile"}
   ],
   "think": [],
   "questions": [
     {
       "scene": "s03-p1",
       "segment": "s03-01",
-      "from": 2129,
-      "durationInFrames": 1108,
-      "countdownFrom": 2513,
+      "from": 1684,
+      "durationInFrames": 1015,
+      "countdownFrom": 2066,
       "countdownFrames": 150,
-      "revealFrame": 2671,
-      "trapFrame": 2870,
+      "revealFrame": 2224,
+      "trapFrame": 2398,
       "objective": "1.2",
       "scenario": "En un centro de distribución, cualquiera abre cualquier zona y nadie sabe quién entra. Quieren que cada uno abra solo las suyas, con registro automático.",
       "q": "¿Qué control resuelve ese problema?",
@@ -2478,12 +2482,12 @@
     {
       "scene": "s05-p2",
       "segment": "s05-01",
-      "from": 4769,
-      "durationInFrames": 1381,
-      "countdownFrom": 5465,
+      "from": 4039,
+      "durationInFrames": 1225,
+      "countdownFrom": 4652,
       "countdownFrames": 150,
-      "revealFrame": 5623,
-      "trapFrame": 5723,
+      "revealFrame": 4817,
+      "trapFrame": 4913,
       "objective": "1.2",
       "scenario": "Un despacho pequeño y cerrado recibe sol directo por la ventana. Su pared fina da a otro con gente yendo y viniendo. Quieren detectar movimiento dentro.",
       "q": "¿Qué sensor encaja MEJOR?",
@@ -2496,12 +2500,12 @@
     {
       "scene": "s07-p3",
       "segment": "s07-01",
-      "from": 7372,
-      "durationInFrames": 1072,
-      "countdownFrom": 7756,
+      "from": 6350,
+      "durationInFrames": 943,
+      "countdownFrom": 6695,
       "countdownFrames": 150,
-      "revealFrame": 7914,
-      "trapFrame": 8098,
+      "revealFrame": 6853,
+      "trapFrame": 6992,
       "objective": "1.2",
       "scenario": "Un estudio de arquitectura quiere enterarse en cuanto un ransomware empiece a cifrar los ficheros de su servidor. Va a dejar cebos donde ese ransomware pase.",
       "q": "¿Qué cebo encaja MEJOR?",
@@ -2513,19 +2517,24 @@
     }
   ],
   "sfx": [
-    {"from":1432,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
-    {"from":2671,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
-    {"from":2870,"sound":"block","src":"sfx/block.mp3","durationInFrames":11,"volume":0.17},
-    {"from":3086,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
-    {"from":3222,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
-    {"from":5623,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
-    {"from":5723,"sound":"block","src":"sfx/block.mp3","durationInFrames":11,"volume":0.17},
-    {"from":5999,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
-    {"from":6135,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
-    {"from":7136,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
-    {"from":7914,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
-    {"from":8098,"sound":"block","src":"sfx/block.mp3","durationInFrames":11,"volume":0.17},
-    {"from":8293,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097}
+    {"from":1064,"sound":"lock","src":"sfx/lock.mp3","durationInFrames":15,"volume":0.115},
+    {"from":1121,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":1367,"sound":"ping2","src":"sfx/ping2.mp3","durationInFrames":37,"volume":0.044},
+    {"from":2224,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
+    {"from":2398,"sound":"block","src":"sfx/block.mp3","durationInFrames":11,"volume":0.17},
+    {"from":2548,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":2684,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
+    {"from":3464,"sound":"error","src":"sfx/error.mp3","durationInFrames":14,"volume":0.071},
+    {"from":4817,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
+    {"from":4913,"sound":"block","src":"sfx/block.mp3","durationInFrames":11,"volume":0.17},
+    {"from":5113,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":5249,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
+    {"from":5452,"sound":"glitch","src":"sfx/glitch.mp3","durationInFrames":12,"volume":0.166},
+    {"from":6102,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
+    {"from":6280,"sound":"alarm","src":"sfx/alarm.mp3","durationInFrames":29,"volume":0.024},
+    {"from":6853,"sound":"check","src":"sfx/check.mp3","durationInFrames":9,"volume":0.156},
+    {"from":6992,"sound":"block","src":"sfx/block.mp3","durationInFrames":11,"volume":0.17},
+    {"from":7142,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097}
   ],
   "captionsOnScreen": false
 }
