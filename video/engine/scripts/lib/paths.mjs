@@ -48,6 +48,8 @@ export const OPTIONAL_MANIFEST_KEYS = Object.freeze({
    * YouTube's 100 characters (V21). The video itself keeps the storyboard's title.
    */
   youtubeTitle: /^[^|\n]{5,80}$/,
+  /** Exam named on the exam cards' badge when it is not the track's (the SY0-801 novelties: "SY0-801 · borrador"). */
+  examBadge: /^[^\n]{1,30}$/,
 });
 
 /** Checks a parsed video.json; throws on the first problem. */

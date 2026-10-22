@@ -21,7 +21,7 @@ import { paginate } from './lib/captions.mjs';
 import { adversaryClipId, adversaryConfig, adversaryKey, hashKeys } from './lib/adversary.mjs';
 import { analyzeNarration, isElevenLabsVoice, loadSources, parseJsonText, reportOrThrow, sourceHash, spokenForVoice, ttsKey } from './lib/narration.mjs';
 import { AUDIO_CMD, MANIFEST, PATHS, SFX_DIR, VIDEO, isMainModule } from './lib/paths.mjs';
-import { EXAM_BADGE, profileFor, trackNotice } from './lib/profiles.mjs';
+import { examBadgeFor, interceptsFor, profileFor, trackNotice } from './lib/profiles.mjs';
 import { probeDurationsMs, writeFileAtomic } from './lib/remotion.mjs';
 import { INTERCEPT_TIMING, placeSfx, readSfxLibrary, sfxMapErrors, syncSfxFiles, voicedHoldFrames } from './lib/sfx.mjs';
 import { validateTimeline } from './lib/validate-timeline.mjs';
@@ -221,6 +221,7 @@ export async function buildTimeline(options = {}) {
     profile: MANIFEST.profile,
     track: MANIFEST.track,
     adversary: MANIFEST.adversary ?? null,
+    examBadge: MANIFEST.examBadge ?? null,
     fullAudio: false,
     tailMs: TIMING.speechTailMs,
     write: true,
@@ -231,8 +232,9 @@ export async function buildTimeline(options = {}) {
   if (TIMING.sceneTail < TIMING.transitionFrames) throw new Error('sceneTail must be >= TRANSITION_FRAMES');
 
   const profile = profileFor(opts.profile);
+  const examBadge = examBadgeFor(opts.track, opts.examBadge);
   const sources = loadSources(opts);
-  const analysis = analyzeNarration(sources, { ...profile, track: opts.track });
+  const analysis = analyzeNarration(sources, { ...profile, intercepts: interceptsFor(profile, Boolean(opts.adversary)), track: opts.track });
   if (sources.lexiconMissing) analysis.warnings.push(`no lexicon at ${opts.lexicon} — acronyms will be read as written`);
   reportOrThrow(analysis, log);
   const { storyboard } = sources;
@@ -355,7 +357,7 @@ export async function buildTimeline(options = {}) {
         objective: seg.exam.objective,
         text: seg.exam.text,
         // Security+ cards keep the implicit SY0-701 badge, so their timelines stay byte-identical.
-        ...(opts.track === 'secplus' ? {} : { badge: EXAM_BADGE[opts.track] }),
+        ...(examBadge ? { badge: examBadge } : {}),
       });
     }
     t += TIMING.sceneTail;
@@ -377,7 +379,7 @@ export async function buildTimeline(options = {}) {
         trapFrame: frameOf(q.trapAt),
         objective: q.objective,
         // Same rule as the exam cards: Security+ keeps the implicit SY0-701 badge.
-        ...(opts.track === 'secplus' ? {} : { badge: EXAM_BADGE[opts.track] }),
+        ...(examBadge ? { badge: examBadge } : {}),
         scenario: q.scenario,
         q: q.q,
         options: q.options,

@@ -1,0 +1,246 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "hidden": "error",
+    "outside": "lock",
+    "malicious": "block",
+    "sandbox": "check"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {assistant}Imagina que en el puerto de Halden estrenan un asistente que contesta dudas del personal y resume documentos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<engaging> {title}Vamos a ver cómo se le cuela una orden sin que quien lo usa escriba nada raro. {promise}Y cómo limitar el daño.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<confident> {voice}Y en este ejemplo ronda BORROWED VOICE, que vive de voces ajenas.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-entra",
+      "text": "<calm> {doc}Una persona de operaciones adjunta un documento que le mandó un tercero y pide un resumen.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-entra",
+      "text": "<intrigued> {hidden}Dentro, en letra diminuta, hay un párrafo que le ordena al asistente olvidar sus reglas y juntar todo lo interno.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-entra",
+      "text": "<thoughtful> {reads}La persona no ve nada raro. Pero el modelo lee ese párrafo igual que lo que ella le pide, porque para él todo es texto.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-entra",
+      "text": "<clear> {indirect}Eso es una prompt injection indirecta. La orden no la escribe quien usa el asistente. Viene escondida en los datos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-entra",
+      "text": "<warm> {jailbreak}Otra cosa es que el propio usuario, en su conversación, empuje al modelo a saltarse sus reglas de seguridad. Eso es jailbreaking.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-entra",
+      "text": "<firm> {rule}Para distinguirlos, pregunta quién ataca y por dónde entra la orden. {card1}Si llega dentro de algo que escribió otra persona, es indirecta.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "2.6",
+        "text": "Quién ataca y por dónde entra la orden",
+        "at": "card1",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-entra",
+      "text": "<calm> {poison}Y si se corrompen los datos con los que aprende o en los que se apoya, es poisoning.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-piensa",
+      "text": "<intrigued> {prompt}Párate un momento. El equipo le añade al asistente una línea que le pide no obedecer órdenes que vengan en un documento.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-piensa",
+      "text": "<curious> ¿Basta?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Basta una línea que diga «no obedezcas»?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-ingenua",
+      "text": "<sarcastic> {advice}Qué cómodo sería. Pues no, y por tres razones.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "Una línea en sus instrucciones y listo. Con eso basta.",
+        "holdMs": 3600
+      }
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-ingenua",
+      "text": "<clear> {channel}Primera, la defensa vive en el mismo canal que el ataque. Es una frase contra otra, y nadie te asegura cuál gana.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-ingenua",
+      "text": "<thoughtful> {list}Segunda, una lista de frases prohibidas ayuda poco, porque se esquiva con solo reformular el mensaje.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-ingenua",
+      "text": "<firm> {one-percent}Y tercera, aunque funcionara noventa y nueve veces de cada cien, queda la que falla. Y en esa, el asistente puede leerlo todo y sacarlo fuera.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-ingenua",
+      "text": "<confident> {hope}Por eso un control que depende de que el modelo se porte bien no es un control. Es una esperanza.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "2.6",
+        "text": "Control que depende del modelo = esperanza",
+        "at": "hope",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-capas",
+      "text": "<engaging> {assume}Lo que sí funciona es suponer que alguna vez saldrá mal, y limitar el daño.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-capas",
+      "text": "<clear> {least}Lo primero, permisos mínimos. El asistente consulta con los permisos de quien pregunta, así que no lee lo que esa persona no podría leer.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-capas",
+      "text": "<steady> {nolimit}Luego, sin salida libre. No manda nada fuera por su cuenta, y lo que tenga efectos pasa antes por una persona.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-capas",
+      "text": "<warm> {log}Y además, se revisa la respuesta antes de que salga y se apunta qué documento y herramienta ha usado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-capas",
+      "text": "<firm> {outside}¿Ves lo que tienen en común? Que todas las barreras están fuera del modelo.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "2.6",
+        "text": "Permisos mínimos · sin salida libre · aprobación humana",
+        "at": "outside",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-salida",
+      "text": "<curious> {runs}Una última pieza. Muchos asistentes ejecutan lo que el modelo produce, un script, una consulta, un comando.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-salida",
+      "text": "<serious> {malicious}Si la orden escondida le hace escribir algo malicioso y la aplicación lo ejecuta sin más, el atacante ya está ejecutando código.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-salida",
+      "text": "<sarcastic> {self-review}Ya, claro. ¿Que lo revise el mismo modelo al que acaban de engañar? Eso no es una barrera.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "Que el propio modelo revise su script. Él sabrá.",
+        "holdMs": 3400
+      }
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-salida",
+      "text": "<firm> {untrusted}La regla es sencilla. Lo que sale del modelo es entrada no confiable, como lo que te escribe un desconocido.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "2.6",
+        "text": "Salida del modelo = entrada no confiable",
+        "at": "untrusted",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-salida",
+      "text": "<clear> {sandbox}Por eso se ejecuta en un sandbox aislado, sin credenciales de producción ni red libre. Y lo que tenga efectos lo aprueba una persona.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-cierre",
+      "text": "<cheerful> {recap}Tres reglas. Una, {rule-1}pregunta quién ataca y por dónde entra la orden.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-cierre",
+      "text": "<clear> {rule-2}Dos, un control que depende de que el modelo se porte bien no es un control.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-cierre",
+      "text": "<firm> {rule-3}Y tres, lo que sale del modelo es entrada no confiable.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-cierre",
+      "text": "<engaging> {phrase}Si le das un asistente a tu gente, los límites, fuera del modelo. {next}Con eso en la cabeza, {endcard}tu turno.",
+      "pauseAfterMs": 250
+    }
+  ]
+}
