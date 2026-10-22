@@ -302,7 +302,7 @@ const sp2m6: Module = {
     },
     {
       t: 'p',
-      md: 'Los siguientes se definen por **lo que hacen** una vez dentro. El **ransomware** cifra los datos y exige un rescate; la variante **double extortion** roba los datos antes de cifrar y amenaza con publicarlos, de modo que tener backups ya no basta. El **spyware** recopila información del usuario (hábitos, credenciales, capturas) y la envía fuera; el **keylogger** es su forma más específica, registrando cada pulsación de teclado, sea por software o por un dispositivo físico entre el teclado y el equipo. La **logic bomb** es código dormido que se activa cuando se cumple una **condición**: una fecha, la eliminación de un usuario, un contador; es típica del **insider** con acceso de administración. El **rootkit** se instala en el **kernel** o en el proceso de **arranque** para ocultar su presencia y la de otros programas al sistema operativo, por lo que las herramientas del propio sistema no lo ven. Y el **bloatware** es software preinstalado no deseado: no es malicioso en sí, pero amplía la superficie de ataque, consume recursos y a veces incluye componentes vulnerables o de telemetría agresiva.',
+      md: 'Los siguientes se definen por **lo que hacen** una vez dentro. El **ransomware** cifra los datos y exige un rescate; la variante **double extortion** roba los datos antes de cifrar y amenaza con publicarlos, de modo que tener backups ya no basta. El **spyware** recopila información del usuario (hábitos, credenciales, capturas) y la envía fuera; el **keylogger** es su forma más específica, registrando cada pulsación de teclado, sea por software o por un dispositivo físico entre el teclado y el equipo. La **logic bomb** es código dormido que se activa cuando se cumple una **condición**: una fecha, la eliminación de un usuario, un contador; es típica del **insider** con acceso de administración. El **rootkit** se instala en el **kernel** o en el proceso de **arranque** para ocultar su presencia y la de otros programas al sistema operativo, por lo que las herramientas del propio sistema no lo ven. Y el **bloatware** es software preinstalado no deseado: no es malicioso en sí, pero amplía la superficie de ataque, consume recursos y a veces incluye componentes vulnerables o que mandan datos de uso al fabricante. La frontera la marca lo que hace, no de dónde viene: si una aplicación preinstalada recoge datos del usuario (contactos, ubicación, lo que escribe) y los manda a escondidas a un tercero, ya no es bloatware, es **spyware**.',
     },
     {
       t: 'table',
@@ -450,6 +450,17 @@ const sp2m6: Module = {
       kind: 'story',
       title: 'Halden, turno de noche',
       md: 'A las 02:40 el SIEM del puerto muestra tres cosas a la vez: el servidor de facturación ha dejado de enviar eventos (**missing logs**), la CPU del servidor de aplicaciones está al 95 % con un proceso llamado *svchost32* que no figura en el inventario (**resource consumption**), y el proxy registra bloqueos repetidos de conexiones a un dominio recién registrado (**blocked content**). Ninguna de las tres señales por separado sería concluyente. Juntas describen a un atacante que ya está dentro, minando o exfiltrando, y que intenta borrar sus huellas. La lección para ti como analista: los indicadores se leen **en conjunto**, y el primero que debes investigar es siempre el que implica pérdida de visibilidad.',
+    },
+    {
+      t: 'p',
+      md: 'Antes de pasar a los ataques, ponte a prueba: del síntoma al nombre, con cinco preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Malware e indicadores: del síntoma al nombre',
+      youtube: 'PbBKS_xuJ68',
+      poster: 'videos/malware-halden-poster.png',
+      transcript: 'videos/malware-halden-transcript.txt',
     },
     {
       t: 'p',

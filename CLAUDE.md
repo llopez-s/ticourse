@@ -243,6 +243,11 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `vUBVKXDS9HM`, 4:44, published 2026-10-20) is now the first video of sp3 in course order (IaC, serverless, microservices;
   no BLIND ARCHITECT, so V16 stays her first). **V46 `video/aislamiento-halden/`** (sp3m2, YouTube `8r0OvoLgKTk`, 4:39,
   published 2026-10-20) moves two office apps from VMs to containers: what the image fixes and what the host keeps.
+  **V33 `video/malware-halden/`** (sp2m6, `caso-principal-yt`, YouTube `PbBKS_xuJ68`, 7:28, −16.0 LUFS) names malware
+  from what it does, with five exam-style questions; **V31 `video/orquestacion-halden/`** (sp4m9, `caso-yt`, YouTube
+  `G5ywhPJ7LbQ`, 4:26, −16.5 LUFS, SILENT PAGER intercept) tells automation from orchestration. Both were rendered on
+  2026-10-17 and waited for her review; they went up through the API with `--privacy public` on 2026-10-22 and YouTube
+  honoured it. Their lessons got the blocks in this PR, after the Halden callout (V33) and the last check (V31).
   **V47 `video/ot-halden/`** (sp3m3, YouTube `5VbbpEGktdI`, 4:52, published 2026-10-22) asks three questions of what must
   not stop (what rules, does it answer in time and fit, is there a patch and can it go on) over a drawn quay crane, after
   the lesson's last check; no network and no BLIND ARCHITECT, so V16 stays the first of both.

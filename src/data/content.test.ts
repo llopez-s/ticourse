@@ -374,6 +374,14 @@ describe('lesson videos', () => {
     // shared host kernel keeps, where it lives vs. who manages it) with three exam-style questions, after the Halden
     // callout and before the paragraph that hands over to sp3m3
     expect(youtubeVideos.find((v) => v.block.youtube === '8r0OvoLgKTk')?.module).toBe('sp3m2');
+    // V33 names sp2m6's malware from what it does (how it moves, what it does inside, what it hides or waits for, what
+    // betrays a machine) with five exam-style questions, after the «Halden, turno de noche» callout and before the
+    // paragraph that hands over to sp2m7's attacks
+    expect(youtubeVideos.find((v) => v.block.youtube === 'PbBKS_xuJ68')?.module).toBe('sp2m6');
+    // V31 tells sp4m9's automation from its orchestration (one task or a whole flow, SOAR, what a failing flow costs) with
+    // three exam-style questions, after the last check (the service account of the orchestration platform) and before the
+    // paragraph that hands over to incident response
+    expect(youtubeVideos.find((v) => v.block.youtube === 'G5ywhPJ7LbQ')?.module).toBe('sp4m9');
     // V47 asks three questions of what must not stop (what rules, does it answer in time and fit, is there a patch and can
     // it go on) over a crane on the port's quay, with three exam-style questions, after sp3m3's last check (the buoy
     // sensors) and before the paragraph that hands over to sp3m4
