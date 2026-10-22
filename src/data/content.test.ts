@@ -382,6 +382,10 @@ describe('lesson videos', () => {
     // three exam-style questions, after the last check (the service account of the orchestration platform) and before the
     // paragraph that hands over to incident response
     expect(youtubeVideos.find((v) => v.block.youtube === 'G5ywhPJ7LbQ')?.module).toBe('sp4m9');
+    // V47 asks three questions of what must not stop (what rules, does it answer in time and fit, is there a patch and can
+    // it go on) over a crane on the port's quay, with three exam-style questions, after sp3m3's last check (the buoy
+    // sensors) and before the paragraph that hands over to sp3m4
+    expect(youtubeVideos.find((v) => v.block.youtube === '5VbbpEGktdI')?.module).toBe('sp3m3');
   });
 
   it('every video block points at relative public assets that exist', async () => {
