@@ -662,6 +662,21 @@ Dos pasos opcionales, en Python (venv de Chatterbox con `pip install pedalboard 
   cada momento. Para probar sin renderizar la imagen: `scripts/render-audio.mjs` escribe solo el audio del programa
   (`out/<slug>-program.wav`, ~6 min en V4) y `master_mix.py --audio-in … --premaster-out …` mezcla en ~1 min.
 
+- **La música es obligatoria** (desde el 2026-10-22). Todos los vídeos publicados van sobre «Go On Going –
+  Stayloose» (`"music": "Go On Going - Stayloose.mp3"`). V47 (`ot-halden`), AP01–AP04 y los primeros masters de
+  V49/V50 se masterizaron por etapas, a mano, sin `--music`, y `master_mix` usó su ambiente generado: quedó a
+  ~8 LU del programa en vez de ~13, sonaba a ruido de fondo, y el nivel automático bajó todo 4 dB (−18 LUFS
+  entregados en vez de −15). Medido en los MP4: 14 dB entre la voz y los silencios, frente a 20 dB con la música.
+  Por eso `render.mjs --master` se para si `video.json` no tiene `"music"` (`--generated-bed` lo salta a
+  propósito), y `master_mix.py` avisa en la etapa 1 si no se le pasa la música. Comprueba en el registro que dice
+  `bed (music)` y que el MP4 sale hacia −15/−16 LUFS. Si un master salió con el ambiente generado, no hace falta
+  renderizar la imagen otra vez: programa (`render-audio.mjs`) → etapa 1 con `--bed-style music --music …` →
+  etapa 2 sobre el `<slug>-premaster.mp4` que ya existe, y se sube como vídeo nuevo (YouTube no deja cambiar el
+  archivo; antes, `out/youtube-upload.json` se aparta como `youtube-upload.v1.json`).
+- **No se solapan con la etapa 1:** `master_mix` necesita ~2 GB libres. Con Whisper transcribiendo otra
+  grabación a la vez, V49 se quedó sin memoria (`ArrayMemoryError`) y hubo que repetirlo; la etapa 1 no toma el
+  candado de trabajos pesados, así que espera a que acabe la importación.
+
 ```bash
 python video/engine/scripts/master_voice.py --in "video/engine/voices/<grabación>.wav" --out "video/engine/voices/<grabación> (master).wav" --ab video/<slug>/out/voz-antes-despues.wav
 # ... import-recording con el WAV masterizado, audio.mjs y render.mjs ...

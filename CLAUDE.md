@@ -348,8 +348,11 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `content.test.ts` and canon registries point at these public uploads (verified with the YouTube API on 2026-10-18).
   **Mastering** (Python, venv + `pedalboard pyloudnorm librosa soundfile scipy`): `scripts/master_voice.py`
   on the narrator's WAV *before* `import-recording` (time-aligned EQ/de-ess/compression, no denoise) and
-  `scripts/master_mix.py` on the rendered MP4 (generated ambient bed ducked under speech, −14 LUFS,
-  −1 dBTP); see the engine README «Masterización». In a git worktree, run `render.mjs` with
+  `scripts/master_mix.py` on the rendered MP4 (the library track «Go On Going - Stayloose.mp3» ducked under
+  speech, about −15 LUFS delivered, −1.5 dBTP); see the engine README «Masterización». **Every `video.json` needs
+  `"music"`**: without it `master_mix` falls back to its generated ambient bed, which sounded like background noise
+  and lowered the voice to −18 LUFS (V47, AP01–AP04, first V49/V50 masters, 2026-10-22), so `render.mjs --master`
+  now refuses to run (`--generated-bed` overrides) and a hand-run stage 1 warns. In a git worktree, run `render.mjs` with
   `GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=safe.directory GIT_CONFIG_VALUE_0=*` (its git-ignore check
   otherwise trips on "dubious ownership"), and `npm ci` there first — the scripts resolve Remotion and
   ffmpeg from the worktree's own `node_modules`.
