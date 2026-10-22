@@ -346,6 +346,10 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === '-aOzQ-PWcnk')?.module).toBe('sp4m8');
     // AP02 closes sp4m10's practical expansion in the same way: after revocation and CAE, before the solved case
     expect(youtubeVideos.find((v) => v.block.youtube === 'JE-2-VAlUL4')?.module).toBe('sp4m10');
+    // AP03 compares Faro, Atlas and Eco against two requirements, after s3m1's pilot table and before the step-by-step resolution
+    expect(youtubeVideos.find((v) => v.block.youtube === 'vRin6Wc8kcw')?.module).toBe('s3m1');
+    // AP04 follows sample A from the hash to a defensible relation, after s3m2's «sin premium o sin datos» paragraph and before the solved case
+    expect(youtubeVideos.find((v) => v.block.youtube === 'lKLGa2eQSbg')?.module).toBe('s3m2');
     // V35 sorts sp2m1's six threat actors into three pairs (the attributes give the pair, the motivation picks one of
     // the two) with three exam-style questions, after the Halden callout and before the paragraph that hands over to
     // sp2m2's vectors

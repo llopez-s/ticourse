@@ -62,7 +62,14 @@ export function clipFindings({ id, script, heard, head, tail, dropped, words = [
     const bare = w.text.replace(/[¿?¡!«»".,;:]/g, '');
     // Whisper glues the two words of a name («PaperGovernor») into one token: each extra capitalised part
     // is another word, so it may last longer before it looks like a stretched half-said take.
-    const parts = (bare.match(/[A-ZÁÉÍÓÚÑ][a-záéíóúñü]*|[a-záéíóúñü]+/g) ?? []).length;
+    const caseParts = (bare.match(/[A-ZÁÉÍÓÚÑ][a-záéíóúñü]*|[a-záéíóúñü]+/g) ?? []).length;
+    // …or in lower case («hash criptográfico» written «Hascriptográfico»): it is as long as the script words it glues.
+    const scriptWords = String(script ?? '').split(/\s+/).filter(Boolean);
+    let glued = 1;
+    for (const n of [2, 3]) {
+      for (let k = 0; k + n <= scriptWords.length; k++) if (similarity(scriptWords.slice(k, k + n).join(' '), bare) >= 0.85) glued = Math.max(glued, n);
+    }
+    const parts = Math.max(caseParts, glued);
     const allowed = limits.longWordS * (1 + 0.6 * Math.max(0, parts - 1));
     if (len > allowed && !SPELLED.test(bare) && !scriptTokens.has(bare.toUpperCase())) {
       errors.push(`${id}: «${bare}» lasts ${len.toFixed(1)} s from ${w.start.toFixed(1)} s: a half-said take is hiding in the clip (map it with recut_recording.py --map)`);

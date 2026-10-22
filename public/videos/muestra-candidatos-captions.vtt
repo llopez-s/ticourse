@@ -1,0 +1,628 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:04.700
+Dos archivos se parecen.
+¿Son de la misma familia?
+
+2
+00:00:04.700 --> 00:00:08.233
+Vas a seguir una muestra hasta una
+conclusión que puedas defender,
+
+3
+00:00:08.233 --> 00:00:10.200
+sin saltarte las dudas.
+
+4
+00:00:10.200 --> 00:00:13.267
+Trabajas con fichas inventadas
+en un ejercicio de Meridian,
+
+5
+00:00:13.267 --> 00:00:17.100
+una empresa aeroespacial. No vas
+a descargar ni ejecutar malware.
+
+6
+00:00:17.100 --> 00:00:19.467
+La muestra inicial se llama A.
+
+7
+00:00:19.467 --> 00:00:24.200
+Lo que tenemos de ella son observaciones
+que pueden abrir otras búsquedas.
+
+8
+00:00:24.200 --> 00:00:26.767
+Buscar a partir de una
+observación es pivotar.
+
+9
+00:00:26.767 --> 00:00:31.567
+Pero lo que recuperas son candidatos.
+Después necesitas contrastarlos.
+
+10
+00:00:31.567 --> 00:00:34.767
+El recorrido no termina cuando
+el buscador devuelve una lista.
+
+11
+00:00:34.767 --> 00:00:37.933
+Termina cuando puedes explicar
+qué relación sostienes,
+
+12
+00:00:37.933 --> 00:00:41.067
+con qué confianza y qué
+falta por comprobar.
+
+13
+00:00:42.133 --> 00:00:45.333
+Puedes calcular una huella
+del contenido de un archivo.
+
+14
+00:00:45.333 --> 00:00:50.133
+Se llama hash criptográfico y ayuda
+a reconocer los mismos bytes.
+
+15
+00:00:50.133 --> 00:00:53.267
+Cambiar el contenido puede
+cambiar completamente esa huella.
+
+16
+00:00:53.267 --> 00:00:57.033
+Otro hash no significa
+automáticamente otra familia.
+
+17
+00:00:57.033 --> 00:01:00.467
+Algunos ejecutables toman
+funciones de otras bibliotecas.
+
+18
+00:01:00.467 --> 00:01:03.433
+El imphash resume esas
+importaciones y ayuda
+
+19
+00:01:03.433 --> 00:01:06.000
+a encontrar archivos que las comparten.
+
+20
+00:01:06.000 --> 00:01:08.800
+No demuestra que se usara
+el mismo compilador.
+
+21
+00:01:08.800 --> 00:01:12.467
+Programas no relacionados también
+pueden coincidir en ellas.
+
+22
+00:01:12.467 --> 00:01:16.167
+Otros métodos buscan parecidos
+en lugar de una huella exacta.
+
+23
+00:01:16.167 --> 00:01:21.000
+Lo llamamos hashing difuso.
+Ssdeep es uno de esos métodos.
+
+24
+00:01:21.000 --> 00:01:25.333
+Prioriza semejanzas, sin asignar
+una probabilidad de parentesco.
+
+25
+00:01:25.333 --> 00:01:28.667
+Una biblioteca común puede
+explicar parte del parecido.
+
+26
+00:01:28.667 --> 00:01:31.633
+Necesitas contexto para concluir.
+
+27
+00:01:42.033 --> 00:01:44.933
+No sabes quién lo escribió
+solo por esa ruta.
+
+28
+00:01:44.933 --> 00:01:48.400
+Un PDB es un archivo
+de símbolos de depuración.
+
+29
+00:01:48.400 --> 00:01:52.400
+Algunos binarios conservan una ruta
+que puede dar pistas sobre el proyecto.
+
+30
+00:01:52.400 --> 00:01:55.667
+Esa ruta también puede
+copiarse o falsearse.
+
+31
+00:01:55.667 --> 00:01:59.800
+Las cadenas distintivas
+y la configuración aportan otras pistas.
+
+32
+00:01:59.800 --> 00:02:03.900
+Una estructura poco común puede ser
+más útil que una palabra genérica.
+
+33
+00:02:03.900 --> 00:02:07.500
+Aun así, considera código
+reutilizado y señuelos.
+
+34
+00:02:07.500 --> 00:02:12.000
+Pregunta si el rasgo distingue de verdad
+las explicaciones que estás comparando.
+
+35
+00:02:12.000 --> 00:02:15.000
+Con las firmas de código
+ocurre algo parecido.
+
+36
+00:02:15.000 --> 00:02:17.633
+Comprueba el certificado
+y la validez de la firma.
+
+37
+00:02:17.633 --> 00:02:21.767
+El material puede ser robado
+o compartido entre productos.
+
+38
+00:02:21.767 --> 00:02:24.233
+Una firma no demuestra benignidad.
+
+39
+00:02:24.233 --> 00:02:30.100
+Un mismo certificado tampoco demuestra
+por sí solo una familia, campaña o actor.
+
+40
+00:02:31.233 --> 00:02:35.833
+El candidato C comparte imports y tiene
+una puntuación alta de similitud.
+
+41
+00:02:35.833 --> 00:02:39.867
+La ficha explica que ambos rasgos
+vienen de una biblioteca común.
+
+42
+00:02:39.867 --> 00:02:42.067
+¿Confirmas la familia o buscas evidencia
+
+43
+00:02:42.067 --> 00:02:45.833
+que distinga esa explicación
+de un parentesco real?
+
+44
+00:02:50.133 --> 00:02:52.800
+Buscas evidencia que las distinga.
+
+45
+00:02:52.800 --> 00:02:54.800
+La cifra no dice que exista
+un noventa y cuatro
+
+46
+00:02:54.800 --> 00:02:57.900
+por ciento de probabilidad
+de pertenecer a la familia.
+
+47
+00:02:57.900 --> 00:03:00.400
+Y si dos señales salen
+del mismo componente,
+
+48
+00:03:00.400 --> 00:03:03.433
+no tienes dos corroboraciones
+independientes.
+
+49
+00:03:03.467 --> 00:03:08.500
+C queda como una coincidencia débil.
+No lo incorporas al conjunto por ahora.
+
+50
+00:03:08.500 --> 00:03:12.667
+Tampoco lo declaras benigno.
+Has aprendido algo más limitado.
+
+51
+00:03:12.667 --> 00:03:15.033
+Ese parecido concreto
+tiene una explicación
+
+52
+00:03:15.033 --> 00:03:18.233
+alternativa que todavía no has descartado.
+
+53
+00:03:24.300 --> 00:03:27.933
+En VirusTotal puedes partir
+del hash de un informe existente.
+
+54
+00:03:27.933 --> 00:03:30.500
+Eso es distinto de subir el archivo.
+
+55
+00:03:30.500 --> 00:03:33.067
+Las búsquedas avanzadas
+permiten usar imports,
+
+56
+00:03:33.067 --> 00:03:37.967
+contenido o metadatos como claves.
+Aquí ves consultas ilustrativas.
+
+57
+00:03:37.967 --> 00:03:41.267
+Los valores son inventados
+y no las ejecutamos.
+
+58
+00:03:41.267 --> 00:03:43.933
+Cada consulta debe responder una pregunta.
+
+59
+00:03:43.933 --> 00:03:47.833
+Buscar una cadena concreta puede
+recuperar candidatos que la contienen.
+
+60
+00:03:47.833 --> 00:03:53.000
+Buscar metadatos puede encontrar una ruta
+de depuración, pero también otros campos.
+
+61
+00:03:53.000 --> 00:03:57.300
+Abre el resultado y comprueba qué
+coincidió antes de sacar conclusiones.
+
+62
+00:03:57.300 --> 00:04:01.333
+El acceso a contenido, relaciones
+y búsquedas depende del producto,
+
+63
+00:04:01.333 --> 00:04:04.333
+los permisos y los datos disponibles.
+
+64
+00:04:04.367 --> 00:04:06.333
+Si no tienes esas funciones,
+
+65
+00:04:06.333 --> 00:04:10.433
+usa las fichas del ejercicio
+o informes públicos con procedencia.
+
+66
+00:04:10.433 --> 00:04:13.133
+No necesitas pagar
+para practicar el razonamiento
+
+67
+00:04:13.133 --> 00:04:17.067
+ni subir datos sensibles
+para completar la lección.
+
+68
+00:04:18.267 --> 00:04:21.267
+Las relaciones también tienen significado.
+
+69
+00:04:21.267 --> 00:04:26.000
+Una dirección escrita dentro de un
+archivo no prueba que se contactara.
+
+70
+00:04:26.000 --> 00:04:30.800
+Un contacto observado no demuestra
+que ese servidor lo controle el atacante.
+
+71
+00:04:30.800 --> 00:04:35.433
+Puede ser un servicio compartido
+o una comprobación legítima.
+
+72
+00:04:35.433 --> 00:04:39.867
+D comparte una dirección de alojamiento
+con A durante un intervalo amplio.
+
+73
+00:04:39.867 --> 00:04:44.767
+El servidor tiene varios clientes.
+Esa coincidencia no basta para unirlos.
+
+74
+00:04:44.767 --> 00:04:47.700
+Antes revisas cuándo
+resolvió cada dominio,
+
+75
+00:04:47.700 --> 00:04:52.067
+qué servicio era y qué evidencia
+vincula realmente las actividades.
+
+76
+00:04:52.067 --> 00:04:55.933
+Distingue también los certificados
+del servidor de los certificados de firma
+
+77
+00:04:55.933 --> 00:04:59.400
+de código. Vinculan objetos diferentes.
+
+78
+00:04:59.400 --> 00:05:02.500
+Mantén la dirección
+y la fuente de cada relación.
+
+79
+00:05:02.500 --> 00:05:08.533
+Si dibujas todas las líneas iguales, el
+grafo parece más concluyente de lo que es.
+
+80
+00:05:19.100 --> 00:05:21.367
+Encajar en el dibujo no basta.
+
+81
+00:05:21.367 --> 00:05:25.700
+B comparte una cadena distintiva
+y la estructura de configuración.
+
+82
+00:05:25.700 --> 00:05:30.600
+Además presenta una secuencia de carga
+y un comportamiento concordantes.
+
+83
+00:05:30.600 --> 00:05:35.667
+Dos informes de origen distinto aportan
+observaciones que puedes contrastar.
+
+84
+00:05:35.667 --> 00:05:39.033
+B sostiene mejor la hipótesis
+de código relacionado.
+
+85
+00:05:39.033 --> 00:05:42.467
+Aun así, revisa si las fuentes
+son independientes
+
+86
+00:05:42.467 --> 00:05:46.767
+y si un componente reutilizado
+explicaría las coincidencias.
+
+87
+00:05:46.767 --> 00:05:50.767
+Puedes mantenerlo como relacionado
+probable con confianza moderada,
+
+88
+00:05:50.767 --> 00:05:52.767
+dentro de ese alcance.
+
+89
+00:05:52.767 --> 00:05:56.100
+No has demostrado que pertenezca
+a la misma campaña ni que lo use
+
+90
+00:05:56.100 --> 00:06:01.300
+el mismo operador. Código, actividad
+y autoría son niveles diferentes.
+
+91
+00:06:01.300 --> 00:06:04.567
+Tu conclusión debe nombrar
+el nivel que la evidencia permite,
+
+92
+00:06:04.567 --> 00:06:08.433
+en lugar de subir todos
+los escalones de una vez.
+
+93
+00:06:09.400 --> 00:06:13.067
+Para E, alguien menciona
+la misma ruta de depuración,
+
+94
+00:06:13.067 --> 00:06:16.267
+pero no aporta bytes
+ni procedencia del dato.
+
+95
+00:06:16.267 --> 00:06:19.767
+No tienes acceso a un informe
+que permita contrastarlo.
+
+96
+00:06:19.767 --> 00:06:23.767
+¿Escribes que no tiene relaciones
+o que el dato no está disponible?
+
+97
+00:06:27.933 --> 00:06:31.700
+Que no está disponible.
+Eso describe tu limitación de colección.
+
+98
+00:06:31.700 --> 00:06:36.667
+No demuestra ausencia de relaciones,
+benignidad ni pertenencia al conjunto.
+
+99
+00:06:36.667 --> 00:06:39.833
+Conservas E como una pista
+pendiente, con confianza baja,
+
+100
+00:06:39.833 --> 00:06:42.400
+y pides la evidencia que falta.
+
+101
+00:06:42.400 --> 00:06:45.667
+Una búsqueda sin resultados
+merece el mismo cuidado.
+
+102
+00:06:45.667 --> 00:06:49.800
+Puede depender de la cobertura,
+los filtros o la falta de datos.
+
+103
+00:06:49.800 --> 00:06:52.433
+No rellenes un hueco
+inventando un resultado.
+
+104
+00:06:52.433 --> 00:06:54.800
+Registrar una limitación
+también es avanzar,
+
+105
+00:06:54.800 --> 00:06:58.133
+porque deja claro qué
+necesitas para decidir.
+
+106
+00:07:04.167 --> 00:07:07.233
+Deja una bitácora que otra
+analista pueda seguir.
+
+107
+00:07:07.233 --> 00:07:12.067
+Qué consultaste, con qué filtros y cuándo.
+Qué fecha corresponde a la observación.
+
+108
+00:07:12.067 --> 00:07:14.500
+Qué evidencia conservaste
+y cuál es su origen.
+
+109
+00:07:14.500 --> 00:07:18.533
+Incluye las búsquedas fallidas y las
+funciones que no estaban disponibles.
+
+110
+00:07:18.533 --> 00:07:22.667
+La conclusión del caso mantiene B
+como relacionado probable por código.
+
+111
+00:07:22.667 --> 00:07:27.067
+C y D no se incorporan con la evidencia
+actual. E sigue pendiente.
+
+112
+00:07:27.067 --> 00:07:31.667
+Esa decisión no mezcla un candidato
+débil con uno descartado para siempre.
+
+113
+00:07:31.733 --> 00:07:34.633
+Escribe también qué cambiaría tu juicio.
+
+114
+00:07:34.633 --> 00:07:35.900
+Validar más variantes,
+
+115
+00:07:35.900 --> 00:07:39.167
+contrastar configuración o conseguir
+una observación independiente.
+
+116
+00:07:39.167 --> 00:07:42.067
+La confianza no es una
+decoración del informe.
+
+117
+00:07:42.067 --> 00:07:46.900
+Resume cuánto sostienen los datos y qué
+tan abiertas siguen las alternativas.
+
+118
+00:07:53.167 --> 00:07:58.433
+Tres reglas. El hash exacto identifica
+bytes y los pivotes generan candidatos.
+
+119
+00:07:58.433 --> 00:08:02.400
+Las coincidencias necesitan
+contexto e independencia.
+
+120
+00:08:02.400 --> 00:08:07.167
+Y tu conclusión debe conservar las dudas
+que los datos todavía no resuelven.
+
+121
+00:08:07.167 --> 00:08:09.933
+No has perdido rigor
+por decir que algo falta.
+
+122
+00:08:09.933 --> 00:08:12.333
+Lo pierdes si conviertes una puntuación,
+
+123
+00:08:12.333 --> 00:08:16.567
+una ruta o una dirección compartida
+en una familia confirmada.
+
+124
+00:08:16.567 --> 00:08:18.433
+El objetivo no es llenar el grafo.
+
+125
+00:08:18.433 --> 00:08:22.333
+Es sostener una relación
+que resista las alternativas.
+
+126
+00:08:22.500 --> 00:08:26.267
+Abre ahora el caso de candidatos
+de la lección de malware como colección.
+
+127
+00:08:26.267 --> 00:08:30.000
+Decide qué harías con cada
+ficha y escribe el motivo.
+
+128
+00:08:30.000 --> 00:08:32.367
+Si tu conclusión llega hasta un actor,
+
+129
+00:08:32.367 --> 00:08:35.500
+revisa qué evidencia te
+permitió llegar tan lejos.
+
+130
+00:08:35.500 --> 00:08:38.733
+Una línea en el grafo no lo decide por ti.
