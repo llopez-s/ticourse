@@ -14,7 +14,12 @@
     "ok-2": "check",
     "trap-2": "block",
     "ok-3": "check",
-    "trap-3": "block"
+    "trap-3": "block",
+    "clock": "ping2",
+    "transit": "mail",
+    "corridor": "alarm",
+    "autolock": "lock",
+    "shuffle": "glitch"
   },
   "segments": [
     {
@@ -62,7 +67,7 @@
     {
       "id": "s02-05",
       "scene": "s02-estados",
-      "text": "<confident> {decision}Así que se propone girarla y que se bloquee sola. Y que cada jefa vea solo a su equipo, que es least privilege.",
+      "text": "<confident> {decision}Así que se propone girarla y que {autolock}se bloquee sola. Y que cada jefa vea solo a su equipo, que es least privilege.",
       "pauseAfterMs": 300
     },
     {
@@ -140,7 +145,7 @@
     {
       "id": "s04-05",
       "scene": "s04-metodos",
-      "text": "<curious> {export}Para la exportación mensual, alguien propone desordenar las columnas en vez de cifrarla.",
+      "text": "<curious> {export}Para la exportación mensual, alguien propone {shuffle}desordenar las columnas en vez de cifrarla.",
       "pauseAfterMs": 300
     },
     {
