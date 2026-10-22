@@ -32,13 +32,13 @@
     {
       "id": "s02-01",
       "scene": "s02-estados",
-      "text": "<engaging> {three}Ese fichaje pasa por tres sitios. {rest}Se queda guardado en la base de datos, y eso es data at rest. Lo protegen el cifrado y los permisos.",
+      "text": "<engaging> {three}Ese fichaje pasa por tres estados. {rest}Se queda guardado en la base de datos, y eso es data at rest. Lo protegen el cifrado y los permisos.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-02",
       "scene": "s02-estados",
-      "text": "<clear> {transit}Para llegar, cruzó la red desde el reloj. Cruzar una red es data in transit, y se cifra la conexión.",
+      "text": "<clear> {transit}Para llegar a esa base, cruza la red desde el reloj. Cruzar una red es data in transit, y se cifra la conexión.",
       "pauseAfterMs": 300
     },
     {
@@ -62,13 +62,13 @@
     {
       "id": "s02-05",
       "scene": "s02-estados",
-      "text": "<confident> {decision}Así que se propone girarla, que se bloquee sola y que cada jefa vea solo a su equipo. Eso es least privilege.",
+      "text": "<confident> {decision}Así que se propone girarla y que se bloquee sola. Y que cada jefa vea solo a su equipo, que es least privilege.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-06",
       "scene": "s02-estados",
-      "text": "<warm> {piggybank}Como el dinero, guardado en la hucha o viajando en una transferencia. En tu mano, al pagar, ya no hay hucha.",
+      "text": "<warm> {piggybank}Es como el dinero. Guardado, en la hucha. Viajando, en una transferencia. Y en tu mano, al pagar, ya no hay hucha.",
       "pauseAfterMs": 600
     },
     {
@@ -110,7 +110,7 @@
     {
       "id": "s04-01",
       "scene": "s04-metodos",
-      "text": "<engaging> {same-id}Ahora, qué se ve y qué se guarda, con el mismo DNI de tres maneras.",
+      "text": "<engaging> {same-id}Ahora, qué se ve y qué se guarda, con el DNI del fichaje, de tres maneras.",
       "pauseAfterMs": 300
     },
     {
@@ -146,7 +146,7 @@
     {
       "id": "s04-06",
       "scene": "s04-metodos",
-      "text": "<firm> {crossed}Eso es obfuscation, que estorba pero no protege, así que la exportación {chip}se cifra igual.",
+      "text": "<firm> {crossed}Eso es obfuscation, un estorbo, no una barrera, así que la exportación {chip}se cifra igual.",
       "pauseAfterMs": 600
     },
     {
@@ -182,7 +182,7 @@
     {
       "id": "s05-03",
       "scene": "s05-p2",
-      "text": "<warm> {export-back}O sea, como la exportación de antes. Que no se lea no la protege.",
+      "text": "<casual> {export-back}Igual que la exportación de antes. Que no se lea no la protege.",
       "pauseAfterMs": 1200,
       "exam": {
         "objective": "3.3",
@@ -194,7 +194,7 @@
     {
       "id": "s06-01",
       "scene": "s06-pais",
-      "text": "<thoughtful> {suppose}Nos queda en qué país vive. Imagina que el sistema se alojara en la nube.",
+      "text": "<thoughtful> {suppose}Nos queda saber en qué país vive. Imagina que el sistema se alojara en la nube.",
       "pauseAfterMs": 300
     },
     {
@@ -206,7 +206,7 @@
     {
       "id": "s06-03",
       "scene": "s06-pais",
-      "text": "<serious> {law}Y allí manda la ley del país donde reside el dato, no la de la sede. Eso es data sovereignty.",
+      "text": "<serious> {law}Y allí manda la ley del país donde reside el dato, no la del país de la sede. Eso es data sovereignty.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "3.3",
@@ -218,19 +218,19 @@
     {
       "id": "s06-04",
       "scene": "s06-pais",
-      "text": "<confident> {tie}Para cumplirla, se ata a una región de la Unión Europea, sin entradas desde fuera. Eso son las geographic restrictions.",
+      "text": "<confident> {tie}Para cumplirla, se ata a una región de la Unión Europea, sin entradas desde fuera. Son las geographic restrictions.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-05",
       "scene": "s06-pais",
-      "text": "<firm> {order}Fíjate en el orden, primero se mira y después se limita.",
+      "text": "<firm> {order}Fíjate en el orden. Primero se mira, y después se limita.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-06",
       "scene": "s06-pais",
-      "text": "<warm> {storage}Es como un trastero al otro lado de la frontera. Lo que guardas es tuyo, pero allí mandan sus normas.",
+      "text": "<warm> {storage}Piensa en un trastero al otro lado de la frontera. Lo que guardas es tuyo, pero allí mandan sus normas.",
       "pauseAfterMs": 600
     },
     {
@@ -260,13 +260,13 @@
     {
       "id": "s07-02",
       "scene": "s07-p3",
-      "text": "<firm> {ok-3}Es geolocation, porque solo mira. {trap-3}Con tanto país, las restricciones tientan, pero restringir es bloquear o atar a una región, y aquí no se bloquea nada.",
+      "text": "<firm> {ok-3}Es geolocation, porque solo mira. {trap-3}Los países suenan a restricciones, pero restringir es bloquear o atar a una región, y aquí no se bloquea nada.",
       "pauseAfterMs": 300
     },
     {
       "id": "s07-03",
       "scene": "s07-p3",
-      "text": "<warm> {storage-back}O sea, saber en qué ciudad está cada trastero no cierra ninguno. Mirar no es limitar.",
+      "text": "<reassuring> {storage-back}Vamos, que saber en qué ciudad está cada trastero no te prohíbe ninguno. Mirar no es limitar.",
       "pauseAfterMs": 1200,
       "exam": {
         "objective": "3.3",
@@ -284,7 +284,7 @@
     {
       "id": "s08-02",
       "scene": "s08-cierre",
-      "text": "<clear> {rule-2}Masking oculta una parte, tokenization deja un código que solo traduce la vault, y obfuscation estorba sin proteger.",
+      "text": "<clear> {rule-2}Masking oculta una parte, tokenization deja un código que solo traduce la vault, y obfuscation, un estorbo, no una barrera.",
       "pauseAfterMs": 250
     },
     {
