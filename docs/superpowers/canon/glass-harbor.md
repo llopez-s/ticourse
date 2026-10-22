@@ -463,7 +463,7 @@ propone atajos de diseño, la tutea una sola vez y firma siempre «Menos es más
    en la copia central y así encuentra la 01:52 (`siem/narration.json:60`, `:72`, `:237`).
 8. **RCA de la lección frente a V5.** La lección empieza en «la analista abrió un adjunto» y pasa por el gateway de correo (`sp/sp4-part5.ts:383`); V5 empieza
    en «Lucía abrió un adjunto» (Operaciones) y no nombra el gateway (`v5/src/data/s08-rca.ts:47-52`).
-9. **Día de la semana.** CHG-2041: «Sábado 2026-09-06» (`sp/sp1-part3.ts:77`); el 6-9-2026 es domingo (calendario).
+9. **Día de la semana.** CHG-2041: «Sábado 2026-09-06» (`sp/sp1-part3.ts:77`); el 6-9-2026 es domingo (calendario). (Resuelta el 2026-10-20, en la rama de V51: la lección dice «Domingo 2026-09-06».)
 10. **Terminal de V1.** El panel dice `lucia@ops:~$ dig TXT _dmarc.haldenport.example` y el prompt marca `[05:41]` (`v1/src/scenes/S03Dmarc.tsx:130`, `:309`):
     no encaja con «3-9 por la tarde», y 05:41 es la hora del hash de V2 (`v2/src/scenes/S03Image.tsx:157`).
 11. **Mapa UBA del SIEM.** La fórmula de fin de semana (`siem/src/data/s09-pivot.ts:69`) hace que «hoy» (`:60`) sea jueves; la 01:52 es del viernes 4-9
