@@ -51,7 +51,7 @@ export function S03Reloj(props: SceneProps) {
   const docsAt = w('s03-03', 'página') - 18;
   const drop = progress(frame, docsAt, 26, EASE.inOut);
   const axisY = mix(AXIS.yMid, AXIS.yLow, drop);
-  const span = AXIS.x1 - AXIS.x0 - 40;
+  const span = AXIS.x1 - AXIS.x0 - 200;
   const nowX = AXIS.x0 + span * run;
   const barW = 330 + span * run * 0.36;
 

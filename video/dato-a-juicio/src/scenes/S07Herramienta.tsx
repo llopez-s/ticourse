@@ -27,7 +27,7 @@ export function S07Herramienta(props: SceneProps) {
   const human = props.cue('human');
 
   // ---- Pair (file + silhouette).
-  const fileAt = wordFrame(S, 's07-01', 'fichero') - 8;
+  const fileAt = Math.min(wordFrame(S, 's07-01', 'fichero') - 8, 40);
   const whoAt = wordFrame(S, 's07-01', 'usa') - 8;
   const adversaryAt = wordFrame(S, 's07-02', 'adversario') - 8;
   const pairOut = progress(frame, rod - 8, 16, EASE.inOut);

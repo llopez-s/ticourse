@@ -66,7 +66,7 @@ export function S10Cierre(props: SceneProps) {
     <Stage style={{ fontFamily: FONT.sans }}>
       {rulesOut < 1 ? (
         <div style={{ position: 'absolute', inset: 0, opacity: 1 - rulesOut }}>
-          <RuleCards rules={rules} width={W} height={430} gap={40} slotAt={recap} dimFrom={next} titleSize={56} subSize={32} artHeight={190} style={{ position: 'absolute', left: 0, top: 18 }} />
+          <RuleCards rules={rules} width={W} height={430} gap={40} slotAt={recap} dimFrom={next} titleSize={56} subSize={32} artHeight={190} style={{ position: 'absolute', left: 0, top: 84 - 66 * progress(frame, next - 8, 20, EASE.inOut) }} />
           {lab > 0 ? (
             <div style={{ position: 'absolute', left: 120, top: 470, width: W - 240, height: 150, boxSizing: 'border-box', display: 'flex', alignItems: 'center', gap: 36, padding: '0 54px', borderRadius: RADIUS.lg, border: `3px solid ${alpha(C.cyan, 0.85)}`, background: `linear-gradient(90deg, ${alpha(C.cyan, 0.16)} 0%, ${alpha(C.ink900, 0.97)} 70%)`, boxShadow: `0 0 46px ${alpha(C.cyan, 0.25)}, 0 26px 60px ${alpha('#000000', 0.45)}`, ...enter(frame, labAt, { distance: 36, duration: 20 }) }}>
               <div style={{ width: 92, height: 92, borderRadius: 46, display: 'grid', placeItems: 'center', background: alpha(C.cyan, 0.14), border: `4px solid ${alpha(C.cyan, 0.8)}` }}>

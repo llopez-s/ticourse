@@ -172,7 +172,7 @@ function Ficha({ left, top, at, frame, icon, tag, children }: { left: number; to
 }
 
 const INST = { x: 960, y: 410, w: 300, h: 150 } as const;
-const EXT = { x: 1560, y: 435 } as const;
+const EXT = { x: 1580, y: 435 } as const;
 
 /** The isolated installation (a box with a server and a lock), the outside world and the cable between them. */
 function Installation({ frame, fps, at, lockAt, noRemoteAt, noPathAt, joined }: { frame: number; fps: number; at: number; lockAt: number; noRemoteAt: number; noPathAt: number; joined: number }) {
@@ -203,7 +203,7 @@ function Installation({ frame, fps, at, lockAt, noRemoteAt, noPathAt, joined }: 
           </g>
         ) : null}
       </svg>
-      <div style={{ position: 'absolute', left: (gapA + gapB) / 2 - 140, top: cableY - 84, width: 280, textAlign: 'center', fontSize: 30, fontWeight: 800, color: '#fcd34d', opacity: cut, whiteSpace: 'nowrap' }}>sin acceso remoto</div>
+      <div style={{ position: 'absolute', left: (gapA + gapB) / 2 - 140, top: cableY - 84, width: 280, textAlign: 'center', fontSize: 28, fontWeight: 800, color: '#fcd34d', opacity: cut, whiteSpace: 'nowrap' }}>sin acceso remoto</div>
       {label > 0.01 ? (
         <div style={{ position: 'absolute', left: (gapA + gapB) / 2 - 200, top: cableY + 56, width: 400, textAlign: 'center', fontSize: 32, fontWeight: 800, color: '#fcd34d', opacity: label, whiteSpace: 'nowrap' }}>sin camino hasta ellos</div>
       ) : null}

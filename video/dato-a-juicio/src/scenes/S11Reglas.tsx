@@ -36,6 +36,7 @@ const TONES = ['emerald', 'rose', 'cyan'] as const;
 export function S11Reglas(props: SceneProps) {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const recap = props.cue('recap');
   const ruleAt = [props.cue('rule-1'), props.cue('rule-2'), props.cue('rule-3')];
   const next = props.cue('next');
   const endcard = props.cue('endcard');
@@ -53,7 +54,7 @@ export function S11Reglas(props: SceneProps) {
     <Stage>
       {boardOut < 1 ? (
         <div style={{ position: 'absolute', inset: 0, opacity: 1 - boardOut, fontFamily: FONT.sans }}>
-          <RuleCards rules={rules} width={W} height={CARDS_H} gap={28} slotAt={-14} dimFrom={next} subSize={32} artHeight={ART_H} frame={frame} fps={fps} style={{ position: 'absolute', left: 0, top: CARDS_TOP }} />
+          <RuleCards rules={rules} width={W} height={CARDS_H} gap={28} slotAt={recap - 14} dimFrom={next} subSize={32} artHeight={ART_H} frame={frame} fps={fps} style={{ position: 'absolute', left: 0, top: CARDS_TOP }} />
           <NextAction frame={frame} fps={fps} at={next} />
         </div>
       ) : null}

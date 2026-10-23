@@ -58,7 +58,7 @@ export function S03Kent(props: SceneProps) {
   const ring = point > 0 ? mix(150, 70, progress(frame, corrigeAt + 18, 34, EASE.inOut)) * (0.6 + 0.4 * point) : 0;
   const star = progress(frame, corrigeAt, 24);
   const landAt = wordFrame(S, 's03-05', 'tierra') - 4;
-  const chartDim = 0.93 * progress(frame, never - 4, 16);
+  const chartDim = 1 * progress(frame, never - 4, 16);
 
   return (
     <Stage>
@@ -66,7 +66,7 @@ export function S03Kent(props: SceneProps) {
       {phaseA > 0.001 ? (
         <div style={{ position: 'absolute', inset: 0, opacity: phaseA, fontFamily: FONT.sans }}>
           <div style={{ position: 'absolute', left: barX, top: 0, width: BAR.w }}>
-            <div style={{ position: 'absolute', left: 0, top: BAR.top - 64, fontSize: 40, fontWeight: 800, color: C.cyanSoft, whiteSpace: 'nowrap', opacity: progress(frame, 4, 12) }}>evidencia disponible</div>
+            <div style={{ position: 'absolute', left: 0, top: BAR.top + BAR.h + 14, fontSize: 40, fontWeight: 800, color: C.cyanSoft, whiteSpace: 'nowrap', opacity: progress(frame, 4, 12) }}>evidencia disponible</div>
             <div style={{ position: 'absolute', left: 0, top: BAR.top, width: BAR.w, height: BAR.h, borderRadius: 18, border: `3px solid ${C.ink500}`, background: alpha(C.ink800, 0.8), boxSizing: 'border-box', overflow: 'hidden' }}>
               <div style={{ width: `${fill * 100}%`, height: '100%', background: `linear-gradient(90deg, ${alpha(C.cyanDeep, 0.9)} 0%, ${C.cyan} 100%)`, borderRadius: '14px 0 0 14px', boxShadow: `0 0 30px ${alpha(C.cyan, 0.4)}` }} />
               {/* the gap: hatched, amber */}
@@ -75,7 +75,7 @@ export function S03Kent(props: SceneProps) {
             {/* bracket over the gap + its label */}
             <div style={{ position: 'absolute', left: BAR.w * fill, top: BAR.top - 16, width: BAR.w * (1 - fill), height: 12, borderTop: `4px solid ${C.amber}`, borderLeft: `4px solid ${C.amber}`, borderRight: `4px solid ${C.amber}`, boxSizing: 'border-box', opacity: gapLabel }} />
             <div style={{ position: 'absolute', right: 0, top: BAR.top - 74, fontSize: 40, fontWeight: 850, color: '#fcd34d', whiteSpace: 'nowrap', opacity: gapLabel, transform: `translateY(${(1 - gapLabel) * 8}px)` }}>incertidumbre irreducible</div>
-            <div style={{ position: 'absolute', left: 0, top: BAR.top + BAR.h + 22, width: BAR.w, display: 'flex', alignItems: 'center', gap: 14, fontSize: 32, fontWeight: 650, color: C.muted, opacity: progress(frame, uncertainAt, 14), whiteSpace: 'nowrap' }}>
+            <div style={{ position: 'absolute', left: 0, top: BAR.top + BAR.h + 78, width: BAR.w, display: 'flex', alignItems: 'center', gap: 14, fontSize: 32, fontWeight: 650, color: C.muted, opacity: progress(frame, uncertainAt, 14), whiteSpace: 'nowrap' }}>
               <Icon name="clock" size={32} color={C.amber} />
               esperar a tenerlo todo claro es esperar para siempre
             </div>
@@ -108,7 +108,7 @@ export function S03Kent(props: SceneProps) {
       ) : null}
 
       {/* The captain's chart */}
-      {chartIn > 0 ? (
+      {chartIn > 0 && chartDim < 0.999 ? (
         <div style={{ position: 'absolute', left: (W - CHART_W) / 2, top: 150, opacity: 1 - chartDim }}>
           <Chart show={chartIn} rumbo={rumbo} point={point} ring={ring} star={star} />
           <div style={{ position: 'absolute', left: 34, top: CHART_H - 66, fontSize: 32, fontWeight: 650, color: C.muted, opacity: progress(frame, landAt, 14) * chartIn, whiteSpace: 'nowrap' }}>sin tierra a la vista</div>

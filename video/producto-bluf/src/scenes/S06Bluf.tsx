@@ -104,7 +104,7 @@ export function S06Bluf(props: SceneProps) {
       ) : null}
       {paperIn > 0 ? (
         <div style={{ position: 'absolute', left: paperX, top: paperY, transform: `scale(${paperScale}) rotate(${(1 - paperIn) * 6 + 2}deg)`, transformOrigin: '0 0', opacity: paperIn }}>
-          <Newspaper />
+          <Newspaper caption={1 - progress(frame, order - 14, 12, EASE.inOut)} />
         </div>
       ) : null}
 
@@ -218,7 +218,7 @@ function Thumb({ pick }: { pick: number }) {
 }
 
 /** A newspaper in miniature: masthead, a big headline, a picture and columns. No legible text but the label. */
-function Newspaper() {
+function Newspaper({ caption }: { caption: number }) {
   return (
     <div style={{ width: 300, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
       <div style={{ position: 'relative', width: 300, height: 232, boxSizing: 'border-box', padding: 18, borderRadius: 10, background: '#e8edf5', boxShadow: `0 20px 40px ${alpha('#000000', 0.5)}` }}>
@@ -235,7 +235,7 @@ function Newspaper() {
           </div>
         </div>
       </div>
-      <div style={{ fontSize: 34, fontWeight: 800, color: C.text }}>el titular</div>
+      <div style={{ fontSize: 34, fontWeight: 800, color: C.text, opacity: caption }}>el titular</div>
     </div>
   );
 }

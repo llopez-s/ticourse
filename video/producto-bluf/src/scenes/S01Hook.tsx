@@ -110,7 +110,7 @@ export function S01Hook(props: SceneProps) {
             <line x1={0} y1={0} x2={0} y2={CLOCK.r - 58} stroke={C.amber} strokeWidth={8} strokeLinecap="round" />
             <circle r={8} fill={C.amber} />
           </svg>
-          <div style={{ position: 'absolute', left: 0, right: 0, top: 2 * CLOCK.r + 40 + 2, textAlign: 'center', whiteSpace: 'nowrap' }}>
+          <div style={{ position: 'absolute', left: 0, right: 0, top: 2 * CLOCK.r + 40 + 14, textAlign: 'center', whiteSpace: 'nowrap' }}>
             <span style={{ fontSize: 76, fontWeight: 850, color: C.textStrong, letterSpacing: -1, textShadow: `0 0 24px ${alpha(C.ink950, 1)}, 0 0 8px ${alpha(C.ink950, 1)}` }}>{S01.clock.time}</span>
             <span style={{ marginLeft: 14, fontSize: 44, fontWeight: 800, color: C.amber, textShadow: `0 0 18px ${alpha(C.ink950, 1)}` }}>{S01.clock.zone}</span>
           </div>
@@ -130,7 +130,7 @@ export function S01Hook(props: SceneProps) {
           style={{
             position: 'absolute',
             left: 0,
-            top: mix(64, 0, toTop),
+            top: mix(78, 0, toTop),
             width: W,
             textAlign: 'center',
             opacity: titleP,

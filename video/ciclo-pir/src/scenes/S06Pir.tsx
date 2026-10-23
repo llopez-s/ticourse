@@ -39,6 +39,8 @@ export function S06Pir(props: SceneProps) {
   // ---- The CISO.
   const cisoIn = p(backAt - 6, 18);
   const cisoDim = Math.max(0.45 * p(comandaAt, 20), 0.2 * p(consumerAt, 20));
+  // Alone and a little larger while the voice goes back to the task; up into the corner when the slips arrive.
+  const lift = progress(frame, comandaAt - 14, 24, EASE.inOut);
 
   // ---- The two slips.
   const vagueAt = at('s06-02', 'tráeme') - 8;
@@ -81,7 +83,7 @@ export function S06Pir(props: SceneProps) {
   return (
     <Stage>
       {/* The CISO's strip */}
-      <div style={{ position: 'absolute', left: 0, top: 0, opacity: cisoIn, transform: `translateY(${(1 - cisoIn) * -16}px)` }}>
+      <div style={{ position: 'absolute', left: mix(30, 0, lift), top: mix(250, 0, lift), opacity: cisoIn, transformOrigin: '0 0', transform: `scale(${mix(1.12, 1, lift)})` }}>
         <Ciso width={1500} layout="strip" size={40} text={CISO_ASK} dim={cisoDim} />
       </div>
 

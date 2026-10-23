@@ -147,8 +147,10 @@ export function S08Conducta(props: SceneProps) {
             </span>
           </Close>
           {frame >= personAt - 4 ? (
-            <div style={{ position: 'absolute', left: (W - 1000) / 2, top: 486, width: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 34, padding: '18px 34px', borderRadius: RADIUS.lg, border: `3px solid ${alpha(C.rose, 0.8)}`, background: `linear-gradient(90deg, ${alpha(C.rose, 0.14)}, ${alpha(C.ink900, 0.96)})`, boxShadow: `0 0 44px ${alpha(C.rose, 0.22)}`, ...enter(frame, personAt, { distance: 20 }) }}>
-              <Silhouette width={96} />
+            <div style={{ position: 'absolute', left: (W - 1200) / 2, top: 486, width: 1200, boxSizing: 'border-box', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 34, padding: '18px 34px', borderRadius: RADIUS.lg, border: `3px solid ${alpha(C.rose, 0.8)}`, background: `linear-gradient(90deg, ${alpha(C.rose, 0.14)}, ${alpha(C.ink900, 0.96)})`, boxShadow: `0 0 44px ${alpha(C.rose, 0.22)}`, ...enter(frame, personAt, { distance: 20 }) }}>
+              <div style={{ flexShrink: 0 }}>
+                <Silhouette width={96} />
+              </div>
               <span style={{ fontSize: 64, fontWeight: 850, letterSpacing: -1, color: C.textStrong, whiteSpace: 'nowrap' }}>
                 una <span style={{ color: C.roseSoft }}>persona</span>, no un programa
               </span>

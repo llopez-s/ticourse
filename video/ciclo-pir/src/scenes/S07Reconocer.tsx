@@ -125,9 +125,9 @@ export function S07Reconocer(props: SceneProps) {
             <Candidate width={W - 620} height={240} letter="B" lit={lit} show={bIn}>
               <span style={{ fontSize: 38 }}>
                 <span style={{ borderBottom: `5px solid ${alpha(C.cyan, half1)}`, paddingBottom: 2 }}>{S07_B[0]}</span>
-                <span style={{ position: 'relative', display: 'inline-block', width: 22, textAlign: 'center' }}>
-                  <span style={{ position: 'absolute', left: -14, top: -16, width: 50, height: 50, borderRadius: 25, background: alpha(C.cyan, 0.32 * comma), boxShadow: comma > 0.02 ? `0 0 ${Math.round(30 * comma)}px ${alpha(C.cyan, 0.8 * comma)}` : undefined, transform: `scale(${comma})` }} />
-                  <span style={{ position: 'relative', fontWeight: 900, color: comma > 0.3 ? C.cyan : C.textStrong, fontSize: `${1 + 0.5 * comma}em`, lineHeight: 0 }}>{S07_B[1]}</span>
+                {/* The comma: its box never changes size (no reflow); a bigger glowing cyan glyph lights it */}
+                <span style={{ position: 'relative', display: 'inline-block', width: 34, height: '1em', lineHeight: 1, textAlign: 'center' }}>
+                  <span style={{ position: 'relative', display: 'inline-block', fontWeight: 900, color: comma > 0.3 ? C.cyan : C.textStrong, textShadow: comma > 0.02 ? `0 0 ${Math.round(20 * comma)}px ${alpha(C.cyan, 0.9 * comma)}` : undefined, transform: `scale(${1 + 1.2 * comma})`, transformOrigin: '50% 75%' }}>{S07_B[1]}</span>
                 </span>
                 <span style={{ borderBottom: `5px solid ${alpha(C.emerald, half2)}`, paddingBottom: 2 }}>{S07_B[2].trimStart()}</span>
               </span>

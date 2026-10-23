@@ -86,7 +86,7 @@ export function S10Ventaja(props: SceneProps) {
 
       {/* «rastro» legend */}
       {eyes[0] > 0.5 ? (
-        <div style={{ position: 'absolute', left: 0, top: CHAIN_TOP + NODE_H + 104, width: W, textAlign: 'center', fontFamily: FONT.sans, fontSize: 38, fontWeight: 750, color: C.cyanSoft, opacity: progress(frame, rastroAt, 14) }}>
+        <div style={{ position: 'absolute', left: 0, top: CHAIN_TOP + NODE_H + 94, width: W, textAlign: 'center', fontFamily: FONT.sans, fontSize: 38, fontWeight: 750, color: C.cyanSoft, opacity: progress(frame, rastroAt, 14) }}>
           cada paso puede dejar rastro
         </div>
       ) : null}
@@ -108,7 +108,7 @@ export function S10Ventaja(props: SceneProps) {
 
       {/* defender's advantage */}
       {advIn > 0.001 ? (
-        <div style={{ position: 'absolute', left: 0, top: 446, width: W, display: 'flex', justifyContent: 'center', gap: 28, alignItems: 'center', fontFamily: FONT.sans, opacity: advIn, transform: `translateY(${(1 - advIn) * 14}px)` }}>
+        <div style={{ position: 'absolute', left: 0, top: 428, width: W, display: 'flex', justifyContent: 'center', gap: 28, alignItems: 'center', fontFamily: FONT.sans, opacity: advIn, transform: `translateY(${(1 - advIn) * 14}px)` }}>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 20, padding: '12px 46px 12px 30px', borderRadius: 999, border: `4px solid ${alpha(C.emerald, 0.9)}`, background: alpha(C.emerald, 0.14), boxShadow: `0 0 40px ${alpha(C.emerald, 0.25)}`, fontSize: 62, fontWeight: 850, letterSpacing: -0.5, color: C.textStrong, whiteSpace: 'nowrap' }}>
             <Icon name="shield" size={64} color={C.emerald} strokeWidth={2.2} />
             defender&apos;s advantage
@@ -124,7 +124,7 @@ export function S10Ventaja(props: SceneProps) {
 
       {/* Bridge to section 2 */}
       {bridge > 0.001 ? (
-        <div style={{ position: 'absolute', left: (W - 1380) / 2, top: 548, width: 1380, boxSizing: 'border-box', display: 'flex', alignItems: 'center', gap: 28, padding: '18px 38px', borderRadius: RADIUS.lg, border: `3px solid ${alpha(C.sky, 0.8)}`, background: `linear-gradient(90deg, ${alpha(C.sky, 0.14)}, ${alpha(C.ink900, 0.96)})`, fontFamily: FONT.sans, opacity: bridge, transform: `translateY(${(1 - bridge) * 22}px)` }}>
+        <div style={{ position: 'absolute', left: (W - 1380) / 2, top: 550, width: 1380, boxSizing: 'border-box', display: 'flex', alignItems: 'center', gap: 28, padding: '18px 38px', borderRadius: RADIUS.lg, border: `3px solid ${alpha(C.sky, 0.8)}`, background: `linear-gradient(90deg, ${alpha(C.sky, 0.14)}, ${alpha(C.ink900, 0.96)})`, fontFamily: FONT.sans, opacity: bridge, transform: `translateY(${(1 - bridge) * 22}px)` }}>
           <Icon name="link" size={58} color={C.sky} strokeWidth={2.2} />
           <div style={{ lineHeight: 1.22 }}>
             <div style={{ fontSize: 44, fontWeight: 850, color: C.textStrong, whiteSpace: 'nowrap' }}>
