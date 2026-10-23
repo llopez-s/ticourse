@@ -198,11 +198,11 @@ export function S02Pasos(props: SceneProps) {
       {/* The IP: pinned in each rung it has reached, climbing between them */}
       {frame >= ipWord ? (
         <>
-          <Pin pos={chipAt(0)} show={progress(frame, ipWord, 12)} dim={Math.max(g1.t * 0.65, goOut)} />
+          <Pin pos={chipAt(0)} show={progress(frame, ipWord, 12)} dim={g1.t * 0.65} out={goOut} />
           {g1.t > 0 && g1.t < 1 ? <Pin pos={{ x: g1.x, y: g1.y }} show={1} /> : null}
-          {g1.t >= 1 ? <Pin pos={chipAt(1)} show={1} dim={Math.max(g2.t * 0.65, goOut)} /> : null}
+          {g1.t >= 1 ? <Pin pos={chipAt(1)} show={1} dim={g2.t * 0.65} out={goOut} /> : null}
           {g2.t > 0 && g2.t < 1 ? <Pin pos={{ x: g2.x, y: g2.y }} show={1} /> : null}
-          {g2.t >= 1 ? <Pin pos={chipAt(2)} show={1} dim={goOut} /> : null}
+          {g2.t >= 1 ? <Pin pos={chipAt(2)} show={1} out={goOut} /> : null}
         </>
       ) : null}
 
@@ -273,9 +273,9 @@ function Line({ at, frame, top, size, color, weight, wrap = false, mono = false,
 }
 
 /** The IP chip at stage position `pos` (the chip's top-left). */
-function Pin({ pos, show, dim = 0 }: { pos: { x: number; y: number }; show: number; dim?: number }) {
+function Pin({ pos, show, dim = 0, out = 0 }: { pos: { x: number; y: number }; show: number; dim?: number; out?: number }) {
   return (
-    <div style={{ position: 'absolute', left: pos.x, top: pos.y, opacity: show, transform: `scale(${0.9 + 0.1 * show})`, transformOrigin: '0 50%' }}>
+    <div style={{ position: 'absolute', left: pos.x, top: pos.y, opacity: show * (1 - out), transform: `scale(${0.9 + 0.1 * show})`, transformOrigin: '0 50%' }}>
       <IpChip ip={IP} dim={dim} />
     </div>
   );

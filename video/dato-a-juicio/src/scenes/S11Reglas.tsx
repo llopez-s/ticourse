@@ -20,9 +20,9 @@ const S11_END = { disclaimer: 'Simulación educativa con datos ficticios. Materi
 
 const W = STAGE.width;
 const CARDS_TOP = 18;
-const CARDS_H = 430;
-const NEXT_TOP = 488;
-const ART_H = 170;
+const CARDS_H = 468;
+const NEXT_TOP = 524;
+const ART_H = 200;
 const TONES = ['emerald', 'rose', 'cyan'] as const;
 
 /**
@@ -46,7 +46,7 @@ export function S11Reglas(props: SceneProps) {
     sub: [r.sub[0], r.sub[1]],
     tone: TONES[i],
     at: ruleAt[i],
-    art: i === 0 ? <StairsArt width={250} labels={false} lit={progress(frame, ruleAt[0], 40) * 3} /> : i === 1 ? <TriangleIcon /> : <ChainIcon broken={progress(frame, ruleAt[2] + 8, 18)} />,
+    art: i === 0 ? <StairsArt width={290} labels={false} lit={progress(frame, ruleAt[0], 40) * 3} /> : i === 1 ? <TriangleIcon /> : <ChainIcon broken={progress(frame, ruleAt[2] + 8, 18)} />,
   }));
 
   return (
@@ -66,7 +66,7 @@ export function S11Reglas(props: SceneProps) {
 function TriangleIcon() {
   const disc = (x: number, y: number, hot: boolean) => <circle cx={x} cy={y} r={17} fill={alpha(hot ? C.amber : C.rose, 0.25)} stroke={hot ? C.amber : C.rose} strokeWidth={4} />;
   return (
-    <svg width={260} height={160} viewBox="0 0 260 160" style={{ overflow: 'visible' }}>
+    <svg width={300} height={185} viewBox="0 0 260 160" style={{ overflow: 'visible' }}>
       <polygon points="130,20 52,134 208,134" fill={alpha(C.rose, 0.12)} stroke={C.rose} strokeWidth={5} strokeLinejoin="round" />
       {disc(130, 20, false)}
       {disc(52, 134, true)}
@@ -85,7 +85,7 @@ function TriangleIcon() {
 function ChainIcon({ broken }: { broken: number }) {
   const xs = [14, 66, 118, 170, 222];
   return (
-    <svg width={260} height={160} viewBox="0 0 260 160" style={{ overflow: 'visible' }}>
+    <svg width={300} height={185} viewBox="0 0 260 160" style={{ overflow: 'visible' }}>
       {xs.map((x, i) => {
         const gone = i === 2 ? broken : 0;
         return <rect key={x} x={x - 4 + (i > 2 ? 10 * broken : -6 * broken * (i === 2 ? 0 : 1))} y={92 + (i > 2 ? 8 * broken : 0)} width={44} height={36} rx={14} fill={alpha(C.sky, 0.12)} stroke={gone > 0.2 ? C.rose : C.sky} strokeWidth={5} strokeDasharray={gone > 0.2 ? '10 8' : undefined} />;
@@ -153,8 +153,8 @@ function EndCard({ frame, fps, at }: { frame: number; fps: number; at: number })
       <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: 4, background: `linear-gradient(90deg, transparent 0%, ${C.cyan} 50%, transparent 100%)`, opacity: 0.8 }} />
       {/* the IP of the start, a loose datum far back */}
       <div style={{ position: 'absolute', right: 40, bottom: 30, fontFamily: FONT.mono, fontSize: 40, fontWeight: 700, color: alpha(C.cyan, 0.2 * ip) }}>{IP}</div>
-      <div style={{ flexShrink: 0, width: 360, ...art }}>
-        <StairsArt width={360} labels labelSize={34} lit={3} />
+      <div style={{ flexShrink: 0, width: 420, ...art }}>
+        <StairsArt width={420} labels labelSize={30} lit={3} />
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, ...brand }}>

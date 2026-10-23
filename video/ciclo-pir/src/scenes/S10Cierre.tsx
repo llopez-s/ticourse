@@ -14,8 +14,8 @@ import { Stage } from './kit';
 const W = STAGE.width;
 const STRIP_H = 84;
 const CARDS_TOP = 116;
-const CARDS_H = 400;
-const NEXT_TOP = 548;
+const CARDS_H = 380;
+const NEXT_TOP = 566;
 const STRIP_KINDS: readonly StationKind[] = ['ticket', 'board', 'notebook'];
 
 /**
@@ -101,7 +101,7 @@ function NextAction({ frame, fps, at }: { frame: number; fps: number; at: number
   const p = springIn(frame, fps, at - 4, { damping: 16 });
   const twelve = enter(frame, at + 12, { distance: 10, duration: 16 });
   return (
-    <div style={{ position: 'absolute', left: 0, top: NEXT_TOP - 30, width: W, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, opacity: Math.min(1, p * 1.4), transform: `translateY(${(1 - Math.min(1, p)) * 18}px)` }}>
+    <div style={{ position: 'absolute', left: 0, top: NEXT_TOP - 36, width: W, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, opacity: Math.min(1, p * 1.4), transform: `translateY(${(1 - Math.min(1, p)) * 18}px)` }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 24, padding: '14px 40px 16px 30px', borderRadius: 32, background: alpha(C.cyan, 0.08), border: `3px solid ${alpha(C.cyan, 0.7)}`, boxShadow: `0 0 34px ${alpha(C.cyan, 0.22)}` }}>
         <Icon name="play" size={46} color={C.cyan} strokeWidth={2} />
         <span style={{ fontSize: 52, fontWeight: 850, color: C.textStrong, whiteSpace: 'nowrap' }}>{S10_NEXT.lab}</span>

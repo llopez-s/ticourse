@@ -74,7 +74,7 @@ export function S04Final(props: SceneProps) {
   // ---- The line, small at the bottom, then the whole chain.
   const big = progress(frame, wrapAt - 10, 26, EASE.inOut);
   const tile = mix(76, 130, big);
-  const lineY = mix(540, 170, big);
+  const lineY = mix(540, 215, big);
   const label = 32;
   const cur = [windowWeight(frame, 0, boardAt), windowWeight(frame, boardAt, fbWord), windowWeight(frame, fbWord, wrapAt)];
   const states: StationState[] = [0, 1, 2, 3, 4, 5].map((i) => {

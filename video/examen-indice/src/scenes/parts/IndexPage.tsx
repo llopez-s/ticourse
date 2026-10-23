@@ -43,7 +43,7 @@ export function IndexPage({ frame, at, where = 0, style }: { frame: number; at: 
         {['TERM', 'NOTE', 'WHERE'].map((h, i) => (
           <div key={h} style={{ width: colW[i], display: 'flex', alignItems: 'center', gap: 10, ...mono, fontSize: 28, fontWeight: 800, letterSpacing: 2, color: i === 2 && where > 0.4 ? PAPER.cyan : PAPER.soft }}>
             {h}
-            {i === 1 ? <span style={{ fontSize: 22, fontWeight: 600, letterSpacing: 0, opacity: 0.8 }}>(answers w/o opening)</span> : null}
+            {i === 1 ? <span style={{ fontSize: 26, fontWeight: 600, letterSpacing: 0, opacity: 0.8 }}>(answers w/o opening)</span> : null}
           </div>
         ))}
       </div>

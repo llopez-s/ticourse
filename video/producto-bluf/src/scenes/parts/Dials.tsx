@@ -52,8 +52,8 @@ export interface DialsState {
 }
 
 const sizes = (c: number) => ({
-  h1: mix(190, 118, c),
-  h2: mix(238, 128, c),
+  h1: mix(190, 112, c),
+  h2: mix(238, 122, c),
   labelW: mix(430, 330, c),
   main: mix(54, 34, c),
   sub: mix(40, 26, c),
@@ -110,8 +110,8 @@ export function Dials(s: DialsState) {
           ) : null}
           {s.probPtr > 0.01 ? (
             <g opacity={s.probPtr}>
-              <line x1={ptrX} y1={barTop - 6} x2={ptrX} y2={barTop + barH + 6} stroke={C.textStrong} strokeWidth={5} strokeLinecap="round" />
-              <path d={`M${ptrX - 13} ${barTop - 22} L${ptrX + 13} ${barTop - 22} L${ptrX} ${barTop - 4} Z`} fill={C.textStrong} />
+              <path d={`M${ptrX - 14} ${barTop - 24} L${ptrX + 14} ${barTop - 24} L${ptrX} ${barTop - 5} Z`} fill={C.textStrong} />
+              <rect x={ptrX - 5} y={barTop + barH + 5} width={10} height={14} rx={3} fill={C.textStrong} />
             </g>
           ) : null}
         </svg>
@@ -152,8 +152,8 @@ export function Dials(s: DialsState) {
         })}
         {s.confPtr > 0.01 ? (
           <svg width={W} height={z.h2} viewBox={`0 0 ${W} ${z.h2}`} style={{ position: 'absolute', left: 0, top: 0, overflow: 'visible', opacity: s.confPtr }}>
-            <path d={`M${posX - 13} ${segTop - 20} L${posX + 13} ${segTop - 20} L${posX} ${segTop - 3} Z`} fill={C.textStrong} />
-            <line x1={posX} y1={segTop - 2} x2={posX} y2={segTop + segH + 4} stroke={C.textStrong} strokeWidth={5} strokeLinecap="round" />
+            <path d={`M${posX - 14} ${segTop - 24} L${posX + 14} ${segTop - 24} L${posX} ${segTop - 5} Z`} fill={C.textStrong} />
+            <rect x={posX - 5} y={segTop + segH + 5} width={10} height={14} rx={3} fill={C.textStrong} />
           </svg>
         ) : null}
         {/* the satellite and the person at the window */}
@@ -177,7 +177,7 @@ export function Dials(s: DialsState) {
               const knob = 0.12 + 0.76 * s.leverPos;
               return (
                 <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 20, height: 62, opacity: on, transform: `translateX(${(1 - on) * 18}px)` }}>
-                  <div style={{ width: 210, fontSize: 36, fontWeight: 750, color: C.textStrong, whiteSpace: 'nowrap' }}>{name}</div>
+                  <div style={{ width: 252, fontSize: 36, fontWeight: 750, color: C.textStrong, whiteSpace: 'nowrap' }}>{name}</div>
                   <div style={{ position: 'relative', flex: 1, height: 14, borderRadius: 7, background: C.ink600 }}>
                     <div style={{ position: 'absolute', left: 0, top: 0, height: 14, width: `${knob * 100}%`, borderRadius: 7, background: alpha(C.emerald, 0.55) }} />
                     <div style={{ position: 'absolute', left: `calc(${knob * 100}% - 18px)`, top: -11, width: 36, height: 36, borderRadius: 18, background: C.ink950, border: `4px solid ${C.emerald}`, boxShadow: `0 0 14px ${alpha(C.emerald, 0.4)}` }} />

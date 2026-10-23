@@ -13,7 +13,7 @@ const W = STAGE.width;
 // Columns of the table (stage px): qualifier 290 | qué exige 640 | error típico 640 | marks (rest).
 const COL_W = [360, 600, 620, W - 1580] as const;
 const HEAD_H = 56;
-const ROW_H = 94;
+const ROW_H = 92;
 
 /** The lesson's qualifier table (s6m1), in the order the narration goes through it. */
 const ROWS = [
@@ -129,7 +129,7 @@ export function S04Calificadores(props: SceneProps) {
 
       {/* the EXCEPT example */}
       {exampleIn > 0 && exOut < 1 ? (
-        <div style={{ position: 'absolute', left: 0, top: 540, width: W, opacity: exampleIn * (1 - exOut), fontFamily: FONT.sans }}>
+        <div style={{ position: 'absolute', left: 0, top: 528, width: W, opacity: exampleIn * (1 - exOut), fontFamily: FONT.sans }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, fontSize: 36, fontWeight: 800, color: C.textStrong, transform: `translateY(${(1 - exampleIn) * 14}px)` }}>
             <Tag color={C.cyan} size={30} solid>
               EXCEPT
@@ -161,7 +161,7 @@ export function S04Calificadores(props: SceneProps) {
 
       {/* wrap */}
       {frame >= wrap - 4 ? (
-        <div style={{ position: 'absolute', left: 0, top: 548, width: W, display: 'flex', justifyContent: 'center', ...enter(frame, wrap, { distance: 24 }) }}>
+        <div style={{ position: 'absolute', left: 0, top: 540, width: W, display: 'flex', justifyContent: 'center', ...enter(frame, wrap, { distance: 24 }) }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 24, padding: '14px 44px 18px 32px', borderRadius: 32, background: alpha(C.cyan, 0.1), border: `3px solid ${alpha(C.cyan, 0.75)}`, boxShadow: `0 0 36px ${alpha(C.cyan, 0.25)}`, fontFamily: FONT.sans }}>
             <Icon name="target" size={64} color={C.cyan} strokeWidth={2.1} />
             <span style={{ fontSize: 58, fontWeight: 850, color: C.textStrong, letterSpacing: -1, whiteSpace: 'nowrap' }}>

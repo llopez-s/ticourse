@@ -251,7 +251,7 @@ export function S02Abierto(props: SceneProps) {
       {/* time: pile of pages, the index, the dial */}
       {pileIn > 0 && timeOut < 1 ? (
         <div style={{ position: 'absolute', inset: 0, opacity: pileIn * (1 - timeOut), transform: `translateY(${timeOut * -20}px)`, fontFamily: FONT.sans }}>
-          <div style={{ position: 'absolute', left: 40, top: 252, transform: `translateY(${(1 - pileIn) * 30}px)` }}>
+          <div style={{ position: 'absolute', left: 40, top: 268, transform: `translateY(${(1 - pileIn) * 30}px)` }}>
             <PagePile w={210} n={8} />
           </div>
           <div style={{ position: 'absolute', left: 20, top: 196, width: 380 }}>
@@ -260,18 +260,18 @@ export function S02Abierto(props: SceneProps) {
             </Tag>
           </div>
           {frame >= idxAt - 4 ? (
-            <div style={{ position: 'absolute', left: 350, top: 236, ...enter(frame, idxAt, { distance: 30, axis: 'x' }) }}>
+            <div style={{ position: 'absolute', left: 400, top: 236, ...enter(frame, idxAt, { distance: 30, axis: 'x' }) }}>
               <Binder w={190} glow={0.5} tabs={progress(frame, idxAt + 4, 26)} />
               <div style={{ marginTop: 22, fontSize: 36, fontWeight: 800, color: C.cyanSoft, letterSpacing: 4, textAlign: 'center', width: 190 }}>ÍNDICE</div>
             </div>
           ) : null}
           {frame >= time - 6 ? (
-            <div style={{ position: 'absolute', left: 620, top: 150, opacity: dialIn, transform: `translateY(${(1 - dialIn) * 24}px)` }}>
+            <div style={{ position: 'absolute', left: 660, top: 150, opacity: dialIn, transform: `translateY(${(1 - dialIn) * 24}px)` }}>
               <Dial size={290} sweep={sweep} hand={sweep} color={C.emerald} stopwatch glow={sweep > 0.95 ? 0.8 + 0.2 * pulse(frame, 30, 0.8) : 0.3} />
             </div>
           ) : null}
           {frame >= secAt + 10 ? (
-            <div style={{ position: 'absolute', left: 970, top: 170, width: W - 970, ...enter(frame, secAt + 10, { distance: 24, axis: 'x' }) }}>
+            <div style={{ position: 'absolute', left: 1010, top: 170, width: W - 1010, ...enter(frame, secAt + 10, { distance: 24, axis: 'x' }) }}>
               <div style={{ fontSize: 120, fontWeight: 850, color: C.emerald, letterSpacing: -3, lineHeight: 1, whiteSpace: 'nowrap', textShadow: `0 0 36px ${alpha(C.emerald, 0.4)}` }}>−60 s</div>
               <div style={{ marginTop: 18, fontSize: 42, fontWeight: 750, color: C.textStrong, lineHeight: 1.18 }}>cuando dudas entre dos respuestas</div>
               <div style={{ marginTop: 16, fontSize: 34, fontWeight: 650, color: C.muted }}>lo que ahorra el índice</div>

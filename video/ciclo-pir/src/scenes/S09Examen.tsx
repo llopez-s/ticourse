@@ -42,7 +42,7 @@ export function S09Examen(props: SceneProps) {
   const fadeRows = 0.6 * direct;
 
   return (
-    <Stage>
+    <Stage style={{ top: STAGE.top + 28, height: STAGE.height - 28 }}>
       {/* The card of a classification question */}
       <div style={{ position: 'absolute', left: 0, top: 0, width: W, opacity: cardIn, transform: `translateY(${(1 - cardIn) * 16}px)` }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 26, padding: '0 6px', fontFamily: FONT.sans }}>

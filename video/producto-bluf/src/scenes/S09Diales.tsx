@@ -11,9 +11,9 @@ const W = STAGE.width;
 
 // The folded dials sit low under the phrase and its notes; unfolded they start under the message's band.
 const TOP_FULL = 204;
-const TOP_FOLDED = 396;
+const TOP_FOLDED = 408;
 const TOP_WRAP = 214;
-const PHRASE = { top: 204, h: 96 } as const;
+const PHRASE = { top: 204, h: 92 } as const;
 
 /**
  * s09-diales «Cómo se lee un juicio». VELVET CICADA's message and the think prompt own the top of
@@ -67,7 +67,6 @@ export function S09Diales(props: SceneProps) {
     win(segAt[1] - 4, segAt[2] - 4),
     Math.max(win(segAt[2] - 4, segAt[2] + 40), progress(frame, w('s09-08', 'subir') + 30, 14) * wrapP),
   ];
-  const confIn = Math.max(progress(frame, conf, 14), 0);
   const sat = progress(frame, w('s09-04', 'satélite') - 6, 16);
   const win2 = progress(frame, w('s09-04', 'ventana') - 6, 16);
   // pointer: moderada → alta (satellite) → baja (window); then hidden while the dials are folded; back on `wrap`.
@@ -133,7 +132,7 @@ export function S09Diales(props: SceneProps) {
 
       {/* The answer: what the phrase says, and the opposite example */}
       {hl > 0.01 && answerOut < 1 ? (
-        <div style={{ position: 'absolute', left: 0, top: 312, width: W, height: 76, opacity: 1 - answerOut }}>
+        <div style={{ position: 'absolute', left: 0, top: 308, width: W, height: 90, opacity: 1 - answerOut }}>
           <div style={{ position: 'absolute', left: 30, top: 0, width: 1120, fontSize: 36, fontWeight: 700, lineHeight: 1.22, color: C.textStrong }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, ...enter(frame, poco, { distance: 10, duration: 14 }) }}>
               <Icon name="arrowRight" size={34} color={C.emerald} />
@@ -155,8 +154,8 @@ export function S09Diales(props: SceneProps) {
 
       {/* ICD 203 note */}
       {note > 0.01 ? (
-        <div style={{ position: 'absolute', left: 0, top: 308, width: W, display: 'flex', justifyContent: 'center', opacity: note, transform: `translateY(${(1 - note) * 12}px)` }}>
-          <div style={{ width: 1600, boxSizing: 'border-box', display: 'flex', alignItems: 'center', gap: 20, padding: '10px 30px 12px', borderRadius: RADIUS.lg, border: `2px solid ${alpha(C.sky, 0.8)}`, background: alpha(C.sky, 0.1), fontSize: 31, fontWeight: 700, lineHeight: 1.22, color: C.textStrong }}>
+        <div style={{ position: 'absolute', left: 0, top: 304, width: W, display: 'flex', justifyContent: 'center', opacity: note, transform: `translateY(${(1 - note) * 12}px)` }}>
+          <div style={{ width: 1600, boxSizing: 'border-box', display: 'flex', alignItems: 'center', gap: 20, padding: '8px 30px 10px', borderRadius: RADIUS.lg, border: `2px solid ${alpha(C.sky, 0.8)}`, background: alpha(C.sky, 0.1), fontSize: 30, fontWeight: 700, lineHeight: 1.22, color: C.textStrong }}>
             <Icon name="file" size={50} color={C.sky} />
             <span>
               <span style={{ color: C.sky, fontWeight: 850 }}>ICD 203:</span> en un producto real, probabilidad y confianza van en frases separadas
