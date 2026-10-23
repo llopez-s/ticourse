@@ -1,0 +1,446 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "ciso": "ping2",
+    "intel": "check",
+    "isolated": "lock",
+    "break": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-ip",
+      "text": "<curious> {meridian}Es tu primera mañana en Meridian, una aeroespacial, y eres la analista de inteligencia que acaban de fichar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-ip",
+      "text": "<intrigued> {title}Hoy vas a pasar de un dato suelto a un juicio que sirva para decidir. {ciso}Y todo empieza cuando el CISO te enseña una línea del registro del proxy.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-ip",
+      "text": "<serious> {ip}En esa línea solo hay una dirección IP, y la pregunta es qué sabemos de ella.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-ip",
+      "text": "<concerned> En el sector corren rumores de robo de diseños y el consejo está nervioso, así que contestar «nada» no vale.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-ip",
+      "text": "<engaging> {promise}Vas a ver cuándo un dato ya es inteligencia, qué es una amenaza de verdad y qué parte del riesgo es tuya.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-pasos",
+      "text": "<sarcastic> Se cuela EMBER FOX, una célula que abre la puerta con correos trucados y siempre trae un atajo.",
+      "pauseAfterMs": 450,
+      "intercept": {
+        "text": "Es solo una IP. Bloquéala y no te compliques.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-pasos",
+      "text": "<steady> Bloquear una IP se puede, claro. Pero el CISO no te ha pedido eso, te ha preguntado qué sabemos de ella.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-pasos",
+      "text": "<calm> {data}Mira lo que tienes. Una IP en un registro, y nada más. Eso es un dato, un hecho en crudo y sin contexto.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-pasos",
+      "text": "<curious> {info}Lo cruzas con otras fuentes y resulta que esa IP alojó un panel de phishing el martes. Eso se llama información, un dato con contexto.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-pasos",
+      "text": "<confident> {intel}Falta el juicio, algo así como «valoramos que el atacante probablemente volverá a usar este proveedor de alojamiento»",
+      "pauseAfterMs": 150
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-pasos",
+      "text": "<clear> «y recomendamos vigilar los dominios nuevos que se registren en esa red». Eso ya es inteligencia.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-pasos",
+      "text": "<firm> {decision}O sea, que lo que cambia no es que haya más datos. Es que alguien ha analizado y juzgado qué significan, para decidir qué hacer.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Requirements",
+        "text": "Intelligence: info analizada que ayuda a decidir",
+        "at": "decision",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-08",
+      "scene": "s02-pasos",
+      "text": "<clear> Y un truco para el examen. Si la frase trae un juicio analítico, con su «probablemente» o una recomendación, es inteligencia. Si es un hecho suelto, es dato o información.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-kent",
+      "text": "<mischievously> Otra vez EMBER FOX, y ahora te pide que calles. Suena prudente, pero esperar a tenerlo todo claro es esperar para siempre.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "Si dudas, no digas nada y espera a tener pruebas. Así es más fácil.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-kent",
+      "text": "<thoughtful> {kent}A Sherman Kent lo llaman el padre del análisis de inteligencia moderno, y lo tenía claro. Analizar es trabajar con una incertidumbre que no se puede eliminar.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-kent",
+      "text": "<calm> Nunca vas a tener la evidencia completa. Por eso tu trabajo no es dar certezas.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-kent",
+      "text": "<confident> {calibrated}Es dar juicios calibrados, ajustados a lo que sabes, y decir con claridad cuánto te fías de ellos.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Requirements",
+        "text": "Kent: juicios calibrados, con confianza explícita",
+        "at": "calibrated",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-kent",
+      "text": "<warm> {captain}Mira a un capitán sin GPS. No espera a ver tierra para fijar el rumbo. Estima dónde está con lo que tiene, y corrige si algo cambia.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-kent",
+      "text": "<satisfied> {never-certain}Nadie te pide certeza. Te piden un juicio, y que digas cuánto te fías.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-pruebas",
+      "text": "<engaging> {hyp}Retoma tu IP. Hay dos formas de decírselo al CISO. «El atacante volverá a usar este proveedor», o «probablemente volverá a usarlo». ¿Cuál mandas?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Cuál mandas: «volverá» o «probablemente»?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-pruebas",
+      "text": "<firm> {answer}La segunda. Con pruebas a medias, «volverá» promete una certeza que no tienes, y «probablemente» dice lo que sabes de verdad.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-pruebas",
+      "text": "<clear> {words}Eso es lenguaje estimativo, palabras que le ponen un grado a lo que afirmas. Y además dices cuánto te fías de tu propio juicio.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-pruebas",
+      "text": "<reassuring> {blind}Callarte no es una opción. El consejo decidirá igual, y la diferencia es si decide con tu juicio o a ciegas.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-triada",
+      "text": "<curious> {threat}Vamos con la amenaza. En la calle, amenaza es cualquier cosa mala. En inteligencia, la palabra es mucho más precisa.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-triada",
+      "text": "<focused> Hay amenaza cuando un adversario reúne tres cosas. {intent}La primera es la intención. Quiere algo de ti, ya sea dinero, propiedad intelectual o parar tu actividad.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-triada",
+      "text": "<confident> {capability}La segunda es la capacidad. Tiene herramientas, infraestructura y la habilidad para conseguirlo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-triada",
+      "text": "<clear> {opportunity}Y la tercera es la oportunidad. Hay un camino hasta tus sistemas o tus personas, y un momento para usarlo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-triada",
+      "text": "<confident> {fire}Hacen falta las tres a la vez, igual que el fuego necesita calor, combustible y oxígeno. Quita una y se apaga.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-triada",
+      "text": "<thoughtful> {names}En el examen están en inglés, intent, capability y opportunity. Una amenaza real es la combinación de las tres.",
+      "pauseAfterMs": 650,
+      "exam": {
+        "objective": "Requirements",
+        "text": "Threat = intent + capability + opportunity",
+        "at": "names",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-caso",
+      "text": "<engaging> Fíjate en otro caso, que no es de Meridian. Hay un grupo con un ransomware que funciona, y anuncia en público que va a por empresas de cierto sector.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-caso",
+      "text": "<suspicious> {isolated}Pero los sistemas de una de esas empresas están en una instalación aislada, sin acceso remoto. ¿Qué pieza falta?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Instalación aislada: ¿qué pieza falta?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-caso",
+      "text": "<firm> {opp}Falta la oportunidad. Hay intención y hay capacidad, pero ningún camino hasta esos sistemas. Hoy no hay una amenaza completa.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Requirements",
+        "text": "Sin opportunity, la threat está incompleta",
+        "at": "opp",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-caso",
+      "text": "<thoughtful> {others}Y puede fallar cualquiera de las tres. Un exploit público para un programa que no usas es otra forma de quedarte sin oportunidad.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-caso",
+      "text": "<casual> Un grupo que detesta tu sector, pero no tiene un malware que funcione, tiene intención sin capacidad.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-caso",
+      "text": "<clear> Y uno con herramientas y acceso, pero al que tus datos no le sirven, tiene capacidad y oportunidad sin intención.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-07",
+      "scene": "s06-caso",
+      "text": "<reassuring> {watch}Pero «hoy no» no es «nunca». Si esa empresa abre un acceso remoto, aparece la pieza que faltaba. Así que sigues vigilando.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-herramienta",
+      "text": "<sarcastic> EMBER FOX vuelve con otro atajo. Quiere que mires el fichero y no a quien lo usa.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "Quita el programa y se acabó la amenaza. Persigue el fichero y listo.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-herramienta",
+      "text": "<focused> {tool}Pero un malware es solo una herramienta, una parte de la capacidad. La amenaza es el adversario, la persona que la maneja con una intención.",
+      "pauseAfterMs": 350,
+      "exam": {
+        "objective": "Requirements",
+        "text": "El malware es parte de la capability, no la threat",
+        "at": "tool",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-herramienta",
+      "text": "<warm> {rod}Es como una caña de pescar. La caña sola no pesca. Hace falta el pescador, que decide dónde, cuándo y con qué cebo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-herramienta",
+      "text": "<clear> {human}Por eso en inteligencia estudias a los actores y sus comportamientos, y no solo los ficheros.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-herramienta",
+      "text": "<calm> Esos comportamientos son las tácticas, técnicas y procedimientos del atacante, lo que verás escrito como TTPs.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-conducta",
+      "text": "<steady> {change}El pescador cambia de caña en una tarde. Un programa nuevo, otro nombre, otra versión, y el fichero de ayer ya no vale.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-conducta",
+      "text": "<curious> {habit}Lo que le cuesta mucho más es cambiar cómo pesca. Sus hábitos, sus pasos, su forma de trabajar.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-conducta",
+      "text": "<confident> {bet}Por eso el comportamiento es la pista que más aguanta, aunque bloquear ficheros sigue valiendo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-conducta",
+      "text": "<satisfied> O sea, que la herramienta cambia en horas y la forma de trabajar tarda mucho más. Quien te amenaza es una persona, no un programa.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-riesgo",
+      "text": "<clear> {risk}Hasta aquí, la amenaza. Pero el consejo piensa en riesgo. Y una forma habitual de verlo mezcla tres factores. La amenaza, la vulnerabilidad y la consecuencia.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-riesgo",
+      "text": "<steady> Cada factor lo responde alguien distinto. {who}Quién querría atacarte y cómo opera lo responde la inteligencia de amenazas. Es decir, tú.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Requirements",
+        "text": "CTI alimenta el factor threat del riesgo",
+        "at": "who",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-riesgo",
+      "text": "<calm> {vuln}Dónde eres débil lo dice la gestión de vulnerabilidades. {cons}Y qué perderías si ocurre lo dice el negocio.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-riesgo",
+      "text": "<warm> {evidence}Lo que tú pones sobre la mesa son pruebas de verdad. Qué actores existen, a quién apuntan y cómo trabajan.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-riesgo",
+      "text": "<confident> {ghosts}Así la empresa no gasta en defenderse de fantasmas mientras ignora a quien sí va a por ella.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-riesgo",
+      "text": "<calm> O sea, que tú no mides el riesgo entero. Alimentas el factor de la amenaza, y los otros dos los ponen otros.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-ventaja",
+      "text": "<curious> {myth}Seguro que has oído que el atacante solo necesita acertar una vez. Suena fatal, pero tiene truco.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-ventaja",
+      "text": "<steady> {steps}Para llegar a lo que busca, tiene que encadenar muchos pasos dentro de tu terreno. Y cada uno puede dejar rastro.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-ventaja",
+      "text": "<confident> {advantage}Eso es la ventaja del defensor, que en inglés es defender's advantage. {break}Y te basta con romper un eslabón para frustrar la intrusión.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Requirements",
+        "text": "Defender's advantage: cada paso es una ocasión de detectar",
+        "at": "advantage",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-ventaja",
+      "text": "<warm> Para eso existe la inteligencia de amenazas, para conocer los pasos probables del adversario y ponerle avisos en el camino.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-ventaja",
+      "text": "<calm> {s2}La sección dos lo desarrolla con la kill chain, la cadena de un ataque.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-reglas",
+      "text": "<engaging> {recap}Antes de irte, tres ideas. {rule-1}Un dato se vuelve inteligencia cuando sostiene un juicio para decidir, y dices cuánto te fías.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-reglas",
+      "text": "<clear> {rule-2}Una amenaza necesita intención, capacidad y oportunidad a la vez. Y el malware es una parte de la capacidad, no el adversario.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-reglas",
+      "text": "<focused> {rule-3}Y tu trabajo alimenta la amenaza dentro del riesgo, y juegas en tu terreno, que es una ventaja.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s11-04",
+      "scene": "s11-reglas",
+      "text": "<cheerful> {next}Ahora toca resolver las doce preguntas de las dos lecciones. {endcard}Y la próxima vez que alguien te pase una IP, pregunta qué se va a decidir con ella.",
+      "pauseAfterMs": 700
+    }
+  ]
+}

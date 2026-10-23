@@ -1,0 +1,209 @@
+{
+  "title": "Tu índice vale sesenta segundos: preguntas, micronotas y examen open-book",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 521,
+  "notice": "Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "La noche antes"
+    },
+    {
+      "n": 2,
+      "title": "Cómo se lee una pregunta"
+    },
+    {
+      "n": 3,
+      "title": "La micronota"
+    },
+    {
+      "n": 4,
+      "title": "Hazlo mientras estudias"
+    },
+    {
+      "n": 5,
+      "title": "Hechos, no juicios"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-noche",
+      "chapter": 1,
+      "title": "Una mesa y un índice",
+      "goal": "Una mesa vista desde arriba, de noche, con luz cálida: tu índice impreso y encuadernado (portada «ÍNDICE · GCTI», solapas de colores) y un montón de micronotas sueltas alrededor (`notes`, `index`). Sin caso de Meridian, sin fechas ni hora. Entra el título «Tu índice vale 60 segundos», con «preguntas · micronotas · hechos y juicios» debajo, antes de los 10 s (`title`). La promesa en tres chips (`promise`): «leer una pregunta de verdad · escribir notas que respondan solas · saber qué no entra en el índice»",
+      "targetSec": 28,
+      "wordBudget": 86,
+      "requiredCues": [
+        "notes",
+        "index",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-abierto",
+      "chapter": 1,
+      "title": "A libro abierto, sin tiempo para todo",
+      "goal": "Una ficha «lo que dice el temario de la app» (`format`) con tres chips: «examen con vigilancia (proctored) · material impreso permitido · sin dispositivos electrónicos». Un sello encima, «según el temario de la app · el formato puede cambiar», y a su lado un recuadro «giac.org · compruébalo tú: preguntas, tiempo y reglas» (`verify`). Ninguna cifra de preguntas, de tiempo ni de aprobado, ni en voz ni en pantalla. Sello fijo de descargo (`indep`): «Alertópolis · material independiente · no afiliado a SANS/GIAC». Rótulo «open-book» sobre un libro grueso (`open`). Mensaje interceptado (`reply-a`): el libro crece hasta tapar la pantalla y lo detiene el mensaje. Un montón de páginas y un reloj con la etiqueta «−60 s cuando dudas entre dos respuestas», lo que ahorra el índice (`time`). La imagen de la cuerda (`rope`): una cuerda de escalador atada a la mochila-índice, «para las dudas · no sube por ti». Cierre (`wrap-open`): «open-book = cuerda para las dudas · no sustituye al estudio»",
+      "targetSec": 58,
+      "wordBudget": 154,
+      "requiredCues": [
+        "format",
+        "verify",
+        "indep",
+        "open",
+        "reply-a",
+        "time",
+        "rope",
+        "wrap-open"
+      ]
+    },
+    {
+      "id": "s03-anatomia",
+      "chapter": 2,
+      "title": "Las tres partes de una pregunta",
+      "goal": "Una pregunta-esqueleto, hecha de barras grises sin texto (no reproduce ninguna pregunta de la lección), dividida, «según el temario de la app», en tres bloques rotulados ESCENARIO · PREGUNTA · CUATRO OPCIONES (`shape`). Escenario (`scenario`): tres barras se iluminan como «hechos» y una se atenúa como «relleno a propósito»; un ojo con «una lectura, rápida». Pregunta (`question`): una sola barra con «dos lecturas» y una palabra que se marca en cian. Esa palabra recibe el rótulo «calificador» y a su lado aparecen best · first · except (`qualifier`). Opciones (`options`): dos de las cuatro se marcan «defendible» y las otras dos se apagan. Cierre (`wrap-shape`): «cierta no basta · tiene que responder justo lo que piden»",
+      "targetSec": 50,
+      "wordBudget": 138,
+      "requiredCues": [
+        "shape",
+        "scenario",
+        "question",
+        "qualifier",
+        "options",
+        "wrap-shape"
+      ]
+    },
+    {
+      "id": "s04-calificadores",
+      "chapter": 2,
+      "title": "Una palabra cambia la respuesta",
+      "goal": "La tabla de calificadores de la lección (`table`), que se rellena fila a fila: BEST, FIRST / NEXT, EXCEPT / NOT, PRIMARY / MAIN y MOST likely, con las columnas «qué exige» y «error típico» (`src/data/s6.ts:73-82`). Se ilumina cada fila al ser nombrada (`best`, `first`, `except`): la de FIRST con un mini reloj de proceso, la de EXCEPT con tres marcas verdes y una roja. Ejemplo de EXCEPT (`example`): cuatro enlaces para agrupar intrusiones en chips, «rasgo único», «certificado propio», «registro inusual» y «herramienta comercial popular», este último en ámbar con «la usan muchísimos grupos» (reformulado a partir del check de la lección, sin PDB). La tarjeta. Las dos filas restantes se quedan en pantalla (`others`). Cierre (`wrap-qual`): «primera lectura = cazar el calificador»",
+      "targetSec": 51,
+      "wordBudget": 140,
+      "requiredCues": [
+        "table",
+        "best",
+        "first",
+        "except",
+        "example",
+        "others",
+        "wrap-qual"
+      ]
+    },
+    {
+      "id": "s05-descartar",
+      "chapter": 2,
+      "title": "Quitar y decidir",
+      "goal": "Cuatro opciones genéricas A a D (barras sin texto). Dos se tachan con una X (`discard`) y quedan dos. Entre las dos que quedan, la pregunta «¿cuál responde justo lo que piden?» (`decide`); la tarjeta. Una de las dos brilla con un anzuelo pequeño y el rótulo «suena más sofisticada» (`bait`). Mensaje interceptado (`reply-b`): la opción de más arriba se marca y se tacha con «error típico de BEST». Una bandera en una pregunta atascada: «marca · mejor opción por ahora · sigue · vuelves al final» (`mark`). Pregunta para pensar: dos chips en frío, «recoger datos» y «planificar», sin resaltar ninguno ni ninguna pista",
+      "targetSec": 59,
+      "wordBudget": 162,
+      "requiredCues": [
+        "discard",
+        "decide",
+        "bait",
+        "reply-b",
+        "mark"
+      ]
+    },
+    {
+      "id": "s06-micronota",
+      "chapter": 3,
+      "title": "Una nota de bolsillo",
+      "goal": "Respuesta (`answer`): «recoger datos» se atenúa («fuera de turno») y «planificar: definir qué necesitas saber» se marca primero; la tarjeta. Una línea de índice en grande, con tres huecos «término · nota · dónde» (`micro`). Dos ejemplos genéricos lado a lado (`test`): «nota que responde» con un check y «nota que solo apunta» con una cruz. Dos post-its (`postit`): uno con la respuesta escrita y otro con «busca la respuesta». Pregunta para pensar (`ach`): dos entradas de índice juntas, «ACH: gana la menos inconsistente · S4M3» y «ACH: ver página 12 · S4M3», sin marcar cuál es la buena. Sin pistas en pantalla",
+      "targetSec": 42,
+      "wordBudget": 119,
+      "requiredCues": [
+        "answer",
+        "micro",
+        "test",
+        "postit",
+        "ach"
+      ]
+    },
+    {
+      "id": "s07-buena",
+      "chapter": 3,
+      "title": "Qué hace buena a una nota",
+      "goal": "Respuesta (`good`): la nota «ACH: gana la menos inconsistente» se ilumina con un cronómetro «5 s»; la tarjeta. La otra se apaga con «ver página 12: solo suma un viaje» (`pointer`). Una página de índice terminada, copiada de la lección (`page`, `src/data/s6.ts:193-210`): «INDEX — page 7 of 12 · [TAB: ANALYSIS = yellow]» con ACH, ACH: diagnosticity, Anchoring bias, attributed-to (STIX), Attribution levels y Mirror imaging, columnas TERM · NOTE · WHERE (S4M3, S4M1, S4M5); la columna WHERE se resalta (`where`) con la nota «B4 = tu libro oficial + página». Una entrada inventada que se alarga a tres líneas («razones por las que deberías sospechar de esta atribución…», no una de la página de la lección), con una lupa y «¿juicio?» (`oneline`). Cierre (`wrap-note`): «corta · responde sola · un hecho»",
+      "targetSec": 42,
+      "wordBudget": 122,
+      "requiredCues": [
+        "good",
+        "pointer",
+        "page",
+        "where",
+        "oneline",
+        "wrap-note"
+      ]
+    },
+    {
+      "id": "s08-mientras",
+      "chapter": 4,
+      "title": "Hazlo mientras estudias",
+      "goal": "Mensaje interceptado (`reply-c`) y, debajo, dos mapas: una ciudad ajena y sin nombre, tachada, y un barrio con calles conocidas (`map`). Tres peldaños (`pass1`, `pass2`, `pass3`): «1 · apuntar términos y dónde viven», «2 · orden alfabético + micronota de una línea», «3 · un color por sección». Anillas y candado sobre las hojas (`bind`): «imprime y encuaderna». Etiqueta «pasadas 1 y 2 = estudio» (`study`). Una entrada de ejemplo de la lección (`tlp`, `src/data/s6.ts:235`): «TLP:AMBER+STRICT · solo tu organización, sin clientes · S3M4», presentada como una nota de las que valen. La tarjeta",
+      "targetSec": 59,
+      "wordBudget": 167,
+      "requiredCues": [
+        "reply-c",
+        "map",
+        "pass1",
+        "pass2",
+        "pass3",
+        "bind",
+        "study",
+        "tlp"
+      ]
+    },
+    {
+      "id": "s09-semilla",
+      "chapter": 4,
+      "title": "Sin partir de cero",
+      "goal": "Maqueta de la página Glosario de la app con los términos agrupados por sección (`seed`). Botón «Imprimir índice» y una hoja con la columna «tus referencias» vacía (`print`). El examen de práctica de la app y, al lado, «prácticas de GIAC · si tienes acceso» (`rehearse`). Cuatro pasos en fila, «duda · índice · localizar · decidir», con un cronómetro que baja a «segundos» (`gesture`). Cierre (`extension`): el índice como extensión de tu mano, frente a un mapa nuevo tachado",
+      "targetSec": 37,
+      "wordBudget": 103,
+      "requiredCues": [
+        "seed",
+        "print",
+        "rehearse",
+        "gesture",
+        "extension"
+      ]
+    },
+    {
+      "id": "s10-hechos",
+      "chapter": 5,
+      "title": "Qué rescata el índice",
+      "goal": "Mensaje interceptado (`reply-d`). Dos columnas: «hechos» y «juicios». En hechos (`facts`), tres entradas de la lección que se iluminan: «very likely = 80–95 %», «las fases de la kill chain, en orden» y «TLP: quién puede redistribuir»; la tarjeta. En juicios (`judgment`), una pregunta genérica, «¿qué respuesta equilibra mejor llegar a tiempo y llegar completa?», con un candado y «no está en el libro». Un contador «las preguntas que ya habrás peleado» (`train`). Vuelve la cuerda de la escena 2 (`rope-2`): agarra el hecho que se escapa, y el juicio sube con la persona. Lista de los diez imprescindibles de la lección, con su ubicación (`src/data/s6.ts:249-260`), que se van marcando (`essentials`)",
+      "targetSec": 51,
+      "wordBudget": 146,
+      "requiredCues": [
+        "reply-d",
+        "facts",
+        "judgment",
+        "train",
+        "rope-2",
+        "essentials"
+      ]
+    },
+    {
+      "id": "s11-reglas",
+      "chapter": 5,
+      "title": "Tres reglas para mañana",
+      "goal": "Tres tarjetas de reglas, una cada vez (`recap`, `rule-1`, `rule-2`, `rule-3`): «lee dos veces · caza el calificador · descarta dos», «notas cortas que respondan solas» y «índice para hechos · juicios con entrenamiento». Sello de descargo (`indep-2`): «material independiente · no afiliado a SANS/GIAC · lo vigente, en giac.org». Tarjeta final Alertópolis (`next`, `endcard`): «Tu turno: un examen de práctica de la app, con tu índice». Sin laboratorio",
+      "targetSec": 44,
+      "wordBudget": 116,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "indep-2",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

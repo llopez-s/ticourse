@@ -1,0 +1,433 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "ask": "mail",
+    "pile": "error",
+    "board": "block",
+    "loop": "ping2",
+    "reveal": "check"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-encargo",
+      "text": "<serious> Tu primer encargo en Meridian, la aeroespacial, llega del CISO y cabe en una frase. {ask}«Propónme nuestros primeros PIRs».",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-encargo",
+      "text": "<curious> {title}Antes de recoger un solo dato, hace falta la pregunta. Un PIR es de esas pocas preguntas cuya respuesta le cambia a alguien una decisión.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-encargo",
+      "text": "<engaging> {promise}Hoy recorres las seis fases del ciclo de inteligencia. Ves dónde falla cada una cuando nadie definió la pregunta, y cómo se escribe un buen PIR.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-encargo",
+      "text": "<concerned> {worry}Y no es un trámite. Al sector le llegan rumores de robo de diseños, y el consejo anda inquieto.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-ciclo",
+      "text": "<sarcastic> {reply-i}Llega un mensaje de EMBER FOX, con un consejo muy amable. Y es tentador, porque recoger datos parece avanzar.",
+      "pauseAfterMs": 650,
+      "intercept": {
+        "text": "Tú recoge de todo y no te compliques, que la pregunta ya saldrá.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-ciclo",
+      "text": "<calm> {order}Vamos a verlo en un restaurante. Alguien pide, con una comanda.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-ciclo",
+      "text": "<steady> Después se compra, se prepara, se guisa en el fogón y se sirve. Y al final, alguien pregunta qué tal estuvo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-ciclo",
+      "text": "<focused> {six}El ciclo de inteligencia funciona igual. Convierte preguntas en respuestas que se pueden usar. Son seis fases, y las que más se olvidan son la primera y la última.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-ciclo",
+      "text": "<firm> {planning}La primera se llama [Planning & Direction|Planning and Direction]. Ahí te sientas con quien decide, acordáis qué necesita saber y planificas cómo recogerlo.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Requirements",
+        "text": "Todo empieza con requirements: Planning & Direction",
+        "at": "planning",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-ciclo",
+      "text": "<serious> Lo que necesita saber son los requirements. Si no están, ninguna fase siguiente tiene a qué contestar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-ciclo",
+      "text": "<satisfied> {wrap-i}En pocas palabras, el ciclo convierte preguntas en respuestas. Y sin la pregunta, no hay ciclo.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-pedido",
+      "text": "<engaging> {nobody}Imagina que nadie escribe la comanda. Para no perder tiempo, te apuntas a doce fuentes de datos, doce feeds que no paran de mandarte cosas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-pedido",
+      "text": "<curious> Doce feeds para tenerlo todo, y ninguna pregunta detrás. ¿Qué fase te has saltado?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Doce feeds sin pregunta. ¿Qué fase falta?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-pedido",
+      "text": "<firm> {hoard}La primera, Planning. Collection es obtener los datos crudos de las fuentes que habías planificado, y sin plan solo acaparas.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-pedido",
+      "text": "<steady> {process}Esos datos todavía no valen. Hay que dejarlos listos para analizar. Traducirlos, ordenarlos y hasta detonar un programa sospechoso en un entorno aislado. Eso es [Processing & Exploitation|Processing and Exploitation].",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Requirements",
+        "text": "Convert, decode, normalize, detonate: Processing",
+        "at": "process",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-pedido",
+      "text": "<concerned> {pile}Y si no sabes qué buscas, aquí te ahogas. Terabytes de datos crudos que nadie va a analizar nunca.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-final",
+      "text": "<thoughtful> {judge}Supón que aun así llegas a la fase de los juicios, [Analysis & Production|Analysis and Production]. Aquí aplicas técnicas y escribes una valoración, diciendo cuánto te fías.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-final",
+      "text": "<firm> Pero ¿valoración de qué? Un análisis impecable de una pregunta que nadie hizo es como un plato perfecto que nadie ha pedido.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-final",
+      "text": "<warning> {board}Y lo mandas. Dissemination es entregar el producto correcto a la audiencia correcta, a tiempo. Un informe técnico al consejo es llevar el plato a otra mesa.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-final",
+      "text": "<steady> {reply-ii}Que nadie se queje no es un aplauso. Feedback es comprobar si la necesidad quedó cubierta, y ajustar los requirements para la siguiente vuelta.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "Si nadie se queja, es que el informe ha gustado. No te compliques.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-final",
+      "text": "<concerned> {feedback}Sin eso, tu equipo produce informes que nadie usa, y ni se entera. El ciclo nunca mejora.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Requirements",
+        "text": "Feedback: ¿cubierta la necesidad? Refina requirements",
+        "at": "feedback",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-final",
+      "text": "<satisfied> {wrap-ii}O sea, que sin pregunta el ciclo falla en cadena, y sin feedback ni te enteras.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-final",
+      "text": "<calm> Por eso se descuidan justo la primera fase y la última, porque su fallo no hace ruido.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-f3ead",
+      "text": "<serious> {reply-iii}Ojo con esa prisa en cuanto el equipo de respuesta contiene un incidente. Parece que ya está, pero queda trabajo con la evidencia capturada.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "Incidente cerrado, pasa página, que mirar atrás es perder tiempo.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-f3ead",
+      "text": "<focused> {letters}Para eso existe F3EAD, un ciclo que nació en operaciones militares y encaja muy bien con la respuesta a incidentes. Son seis verbos, tres y tres.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-f3ead",
+      "text": "<steady> {ops}Los tres primeros son la operación. Localizar al adversario, fijarlo y neutralizarlo, hasta contener el incidente. En inglés, Find, Fix y Finish.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-f3ead",
+      "text": "<clear> {halves}Los tres últimos son la inteligencia. Explotar la evidencia capturada, analizarla y difundirla, que en inglés son Exploit, Analyze y Disseminate.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Requirements",
+        "text": "F3EAD: F3 operaciones, EAD inteligencia",
+        "at": "halves",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-f3ead",
+      "text": "<thoughtful> {loop}Y justo después del Finish, la evidencia forense se explota. Eso alimenta el siguiente ciclo, y así el bucle no se para.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-f3ead",
+      "text": "<engaging> {gear}¿Cómo encaja con las seis fases? Como dos engranajes. El grande marca el ritmo del equipo de inteligencia, y el pequeño gira rápido cuando hay un incidente activo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-f3ead",
+      "text": "<confident> {wrap-iii}Dicho de otra manera, no compiten. Uno marca el ritmo de siempre, y el otro acelera cuando arde algo.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-pir",
+      "text": "<engaging> {back}Vuelves al encargo del CISO. Ya sabes que sin pregunta falla todo el ciclo, así que toca aprender a reconocer una bien formada.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-pir",
+      "text": "<clear> {comanda}En el restaurante no vale «tráeme algo de comer». Vale «mesa cuatro, un pescado sin gluten, antes de las diez». Con un PIR pasa igual.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-pir",
+      "text": "<confident> {criteria}La sigla viene de Priority Intelligence Requirement. Uno bien formado es una sola pregunta, concreta, que nombra un sector, un actor o una tecnología.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-pir",
+      "text": "<firm> {decision}Además, tiene una decisión detrás. Alguien va a hacer algo distinto según la respuesta. Si nadie va a cambiar nada, no es un PIR.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Requirements",
+        "text": "PIR: una pregunta, específica, ligada a una decisión",
+        "at": "decision",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-pir",
+      "text": "<thoughtful> {feasible}Tiene que poder responderse, con la colección que tienes o con una que puedas conseguir. Y si hace falta, lleva fecha, porque las prioridades caducan.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-pir",
+      "text": "<steady> {consumer}Una cosa más. Tú redactas el PIR, pero quien decide si de verdad es prioritario es quien lo va a usar. Tú propones, y esa persona valida.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-reconocer",
+      "text": "<mischievously> {reply-iv}Dos asuntos distintos pegados con un «y también» son dos requirements, no uno. Y entonces nadie sabe cuál se está respondiendo.",
+      "pauseAfterMs": 450,
+      "intercept": {
+        "text": "Mete todas tus dudas en una sola pregunta y no te compliques.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-reconocer",
+      "text": "<curious> {pair}Mira estas dos candidatas de la lección, las dos sobre ransomware. No son del caso de Meridian, son solo un ejemplo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-reconocer",
+      "text": "<engaging> Las dos hablan del mismo tema, pero solo una está bien formada. ¿Cuál?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Dos candidatas, ¿cuál es el PIR bien formado?",
+        "holdMs": 5000
+      }
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-reconocer",
+      "text": "<clear> {reveal}La segunda. La primera es un tema, no una pregunta, y nadie cambia nada por oírla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-reconocer",
+      "text": "<steady> La segunda tiene dos mitades, pero es un solo asunto. Cómo entran esos grupos y qué debería hacer saltar la alarma.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-reconocer",
+      "text": "<firm> No es un «y también», porque la segunda mitad es lo que harás con la respuesta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-07",
+      "scene": "s07-reconocer",
+      "text": "<serious> {not-same}Ojo, que una pregunta bien formada no es automáticamente la prioritaria de tu empresa. Eso lo valida quien decide, y puede que prefiera otra.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-permanentes",
+      "text": "<warm> {standing}Hay preguntas que no se responden una vez y se acabó. «¿Qué actores apuntan a nuestro sector?» es una de ellas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-permanentes",
+      "text": "<steady> Se revisa cada cierto tiempo. Son los standing requirements, el pedido fijo de cada semana.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-permanentes",
+      "text": "<curious> {adhoc}Otras nacen de un suceso, como una fusión o un incidente. Son el encargo de un banquete, y se acaban cuando las respondes. Esas son las ad hoc.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Requirements",
+        "text": "Standing: permanente. Ad hoc: nace de un evento",
+        "at": "adhoc",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-permanentes",
+      "text": "<clear> {collection}Y las dos sirven para lo mismo, dirigir la colección. Cada PIR se descompone en preguntas más pequeñas, y cada una se asigna a una fuente concreta.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-permanentes",
+      "text": "<thoughtful> {framework}Eso se organiza en un Collection Management Framework, que construirás más adelante.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-permanentes",
+      "text": "<confident> {callback}Así, si una fuente no sirve a ningún requirement, sobra. Y si un requirement no tiene fuentes, hay que conseguirlas. Justo lo contrario de aquellos doce feeds.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-examen",
+      "text": "<engaging> {verbs}Una pregunta típica te da una actividad y te pide la fase. Fíjate en el verbo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-examen",
+      "text": "<clear> {words}Los de convertir, decodificar o normalizar son de Processing. Los de juzgar o suponer, de Analysis. Y los de pedir o encargar, de Planning.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-examen",
+      "text": "<firm> Pero manda lo que se hace con el dato, no la palabra suelta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-examen",
+      "text": "<confident> {direct}Y recuerda quién manda aquí. Los requirements dirigen la colección, no al revés.",
+      "pauseAfterMs": 650,
+      "exam": {
+        "objective": "Requirements",
+        "text": "Requirements dirigen el plan de colección",
+        "at": "direct",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-cierre",
+      "text": "<calm> {recap}Te llevas tres reglas. {rule-1}Una, la pregunta va primero. Sin requirements, ninguna otra fase tiene sentido.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-cierre",
+      "text": "<confident> {rule-2}Dos, un PIR se prueba con una decisión. Una pregunta concreta, y alguien que hará algo distinto según la respuesta.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-cierre",
+      "text": "<warm> {rule-3}Tres, el ciclo se cierra con feedback, y en un incidente entra F3EAD, un bucle más rápido.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-cierre",
+      "text": "<cheerful> {next}Lo siguiente es el [Lab 1B|laboratorio uno be], el taller de PIRs, donde los eliges tú. Y repasa las doce preguntas de las dos lecciones. {endcard}Ninguna colección empieza sin una pregunta.",
+      "pauseAfterMs": 700
+    }
+  ]
+}

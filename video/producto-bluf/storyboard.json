@@ -1,0 +1,187 @@
+{
+  "title": "Escribir para quien decide: productos, BLUF y lenguaje estimativo",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "notice": "Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC",
+  "targetTotalSec": 538,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Un hallazgo, tres lectores"
+    },
+    {
+      "n": 2,
+      "title": "El reloj y el flash"
+    },
+    {
+      "n": 3,
+      "title": "La conclusión, primero"
+    },
+    {
+      "n": 4,
+      "title": "Palabras con número"
+    },
+    {
+      "n": 5,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Un hallazgo, tres lectores",
+      "goal": "Marco de siempre: «Meridian Dynamics · aeroespacial · tú, su analista de inteligencia» y la fecha «18-04-2026». Un reloj «06:00 UTC» y sobres que caen como lluvia, rotulados «correos de phishing · cadena de suministro», sin dominio ni cifra (`day`; el sonido `mail` va en la escena siguiente, no aquí). Título «Escribir para quien decide», con «productos, BLUF y lenguaje estimativo» debajo, antes de los 10 s (`title`). Una tarjeta única, «un hallazgo», en el centro, y tres siluetas sin cara ni nombre a su alrededor (`readers`): «SOC · vigila la red», «CISO · responsable de seguridad», «consejo de dirección». La promesa en tres chips (`promise`): «escribirlo para cada lector · decidir cuánto puedes tardar · ponerle números a tus juicios». Al final, la tarjeta se parte en tres copias que apuntan a cada silueta, cada una con un hueco sin rellenar (`differ`). No sale ninguna cifra de correos ni ninguna hora distinta de 06:00 UTC",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "day",
+        "title",
+        "readers",
+        "promise",
+        "differ"
+      ]
+    },
+    {
+      "id": "s02-lectores",
+      "chapter": 1,
+      "title": "Quién lo lee",
+      "goal": "Tarjeta del mensaje interceptado al abrir. Debajo, a la izquierda, un taco de papeles rotulado «40 páginas técnicas» llega a una silueta de directivo sin cara y se queda sobre la mesa, con un sello «sin acción» (`dump`). Entran después las cuatro preguntas como cuatro tarjetas (`questions`): «¿quién lo lee?», «¿qué decisión tiene delante?», «¿cuánto tiempo tiene?» y «¿en qué formato lo consume?» (incidencia del SOC, informe, charla). Luego se monta una tabla de tres filas, una por lector, con producto, qué recibe y de dónde sale: SOC (`soc`): «Flash alert / advisory · SOC, IR, IT · 1 página, BLUF + acciones», recibe «acciones»; CISO (`ciso`): «extracto de la lección» con «Riesgo principal: acceso a diseño de propulsión vía cuentas de terceros. Recomendamos adelantar la revisión de accesos de proveedores.» (sin la primera frase de la lección, «continúa y se acelera», y sin «prevista para Q4»: la lección no fija el calendario de Meridian), rotulado «ejemplo de la lección · recomendación de CTI, no decisión de Meridian»; recibe «riesgo y decisión que se le propone»; consejo (`board`; la frase siguiente de la voz, sin cue, cuenta que el producto es la valoración estratégica y que también lo lee el CISO): «Assessment estratégico · CISO, dirección, board · 2–5 págs, juicios + implicaciones», decisión que habilita «presupuesto, postura, apetito de riesgo», disparador «ciclo periódico o decisión concreta» (trimestral o ligado a una decisión), recibe «juicios e implicaciones» en su propio ciclo, no a la hora del flash. Remate (`storm`): el mismo icono de tormenta sobre las tres filas, y debajo, pequeño, «el volcado de datos no lo recibe nadie». La tarjeta de examen entra en la franja libre al acabar la frase de `storm`. Ningún nombre ni cara en el CISO ni en el consejo",
+      "targetSec": 78,
+      "wordBudget": 211,
+      "requiredCues": [
+        "dump",
+        "questions",
+        "soc",
+        "ciso",
+        "board",
+        "storm"
+      ]
+    },
+    {
+      "id": "s03-reloj",
+      "chapter": 2,
+      "title": "El reloj corre",
+      "goal": "Una línea de tiempo que arranca en «06:00 UTC» y en la que siguen cayendo sobres (`wave`, sonido `mail`); sin cifras ni más horas. Una barra gris «informe perfecto» crece despacio hacia la derecha mientras el reloj sigue y se tiñe de «tarde» (idea de la lección: la inteligencia perfecta y tardía no existe). Pregunta para pensar, con dos documentos a la vista y ninguno resaltado: «Flash alert · 1 página» y «Informe de campaña · 3–10 págs». Respuesta: el flash se enciende con «qué pasa · qué hacer · cuándo habrá más» y la regla «≤ 2–4 h desde confirmación» rotulada «SLA típico» (la voz dice «lo normal», no «como máximo»), sin colocar la confirmación en el reloj (`flash-first`); el informe aparece después, «3–5 días tras consolidar el cluster», «TTPs + IOCs anexos» (`report`). Remate (`forecast`): dos iconos de tormenta, «aviso de tormenta» (el flash, «bloqueo y contención inmediatos») y «estudio de la tormenta» (el informe, «hunting, ingeniería de detección, priorización»), con las dos filas de la tabla de SLA de la lección. La tarjeta de examen al acabar la frase de `forecast`. El título de la escena no da la respuesta",
+      "targetSec": 63,
+      "wordBudget": 170,
+      "requiredCues": [
+        "wave",
+        "flash-first",
+        "report",
+        "forecast"
+      ]
+    },
+    {
+      "id": "s04-flash",
+      "chapter": 2,
+      "title": "Un flash por dentro",
+      "goal": "El flash alert entero, como una hoja a la que se acercan por zonas, con el texto de la lección carácter por carácter (`src/data/s5.ts:47-68`), salvo la línea final: se quita `Ref: MER-2026-011` y queda `Contact: cti@meridian.example`, como hizo V27 con esa referencia (canon §5 punto 17). Cabecera: «MERIDIAN CTI — FLASH ALERT MER-FA-2026-014 · TLP:AMBER», «Issued: 2026-04-18 11:40 UTC | Next review: 2026-04-25» (`issue`, sonido `ping2`); el TLP sale como texto, sin voz ni explicación. Bloques que se encienden de uno en uno: el BLUF (`bluf`), «WHAT WE KNOW» con sus tres líneas (`know`) y «WHAT WE DO NOT KNOW YET» en ámbar con su única línea (`unknown`); el resto, atenuado. Antes de que entre la tarjeta del mensaje interceptado (justo antes de `unknown`), la hoja ya está acercada al bloque ámbar «WHAT WE DO NOT KNOW YET», de modo que el BLUF (con el nombre del grupo, texto literal de la lección) queda fuera de plano y nunca comparte plano con la tarjeta de VELVET CICADA; la tarjeta se queda hasta que acaba la respuesta de la narradora y la hoja se queda quieta debajo. La frase siguiente de la voz (sin cue) dice qué es lo que no se sabe: si alguien llegó a enviar sus credenciales En `why`, dos chips pequeños junto al bloque ámbar: «el lector no supone de más» y «sabe que habrá actualización». La tarjeta de examen entra al acabar la frase de `why`, con la hoja ya acercada al bloque ámbar (no hay que leer nada más mientras sale). La voz no lee dominios, cuentas ni canales; el nombre del grupo que sale en el BLUF del texto no se dice. El nombre del grupo del BLUF se ve en pantalla sin voz y no se subraya ni se rotula (canon §5 punto 9 sigue abierto)",
+      "targetSec": 60,
+      "wordBudget": 162,
+      "requiredCues": [
+        "issue",
+        "bluf",
+        "know",
+        "unknown",
+        "why"
+      ]
+    },
+    {
+      "id": "s05-plazo",
+      "chapter": 2,
+      "title": "Acciones con hora",
+      "goal": "Se acerca la hoja al bloque «ACTIONS REQUESTED (by 18:00 UTC)» con el texto de la lección (`actions`): una barra de plazo «hasta 18:00 UTC» cruza el ancho. Las tres acciones se iluminan una a una: «Block domain + URL set (annex A) at proxy and gateway» (`block`, sonido `block`), «Force password reset + MFA re-enroll: portal users» (`reset`, sonido `lock`) y «Report clicks to IR via #ir-hotline» (`clicks`). Ninguna acción nueva ni destinatarios nuevos. Debajo, una regla horaria con tres marcas fijas: «11:40 UTC · emitido», «17:00 UTC · próximo parte» y «18:00 UTC · plazo» (`next`), y la línea «NEXT UPDATE: 2026-04-18 17:00 UTC or on material change» destacada. `silence`: dos casillas: «hay parte previsto: sin noticias = sin cambios» (verde) frente a «no hay parte previsto: ¿alguien está mirando?» (ámbar, tachada), idea del q8 de la lección. La tarjeta de examen al acabar la frase de `silence`. Al final, una nota pequeña «atribución fina · narrativa · ACH → informe de campaña» que se desliza hacia el icono del informe. Sin resultados de las acciones ni del parte de las 17:00: no se sabe qué pasó después",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "requiredCues": [
+        "actions",
+        "block",
+        "reset",
+        "clicks",
+        "next",
+        "silence"
+      ]
+    },
+    {
+      "id": "s06-bluf",
+      "chapter": 3,
+      "title": "Arriba del todo",
+      "goal": "Tarjeta del mensaje interceptado al abrir. Debajo, un informe hecho solo de bloques grises en columna, sin texto legible, rotulado «cronología» (`chrono`); a su lado, un reloj de «30 s» y un pulgar que decide «sigo / paro». Aparece el informe con la conclusión arriba, y la palabra BLUF a gran tamaño con «Bottom Line Up Front» debajo (`bluf-def`). Un titular de periódico en miniatura junto a la palabra (`headline`). Debajo, las seis capas apiladas, del juicio a los anexos (`order`): «juicio principal (con confianza)», «hallazgos clave», «evidencia / análisis», «implicaciones», «recomendaciones», «anexos técnicos». En `rest`, el lector se detiene tras la primera capa con una marca «ya tiene lo importante». No sale la cronología del Lab 5B ni el BLUF «de manual» de la lección de s5m2",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "requiredCues": [
+        "chrono",
+        "bluf-def",
+        "headline",
+        "order",
+        "rest"
+      ]
+    },
+    {
+      "id": "s07-bluf-flash",
+      "chapter": 3,
+      "title": "Dos BLUF frente a frente",
+      "goal": "Dos tarjetas lado a lado (`compare`). A la izquierda, el BLUF flojo de la lección (opción del q9): «Suspicious activity has been observed in the environment.» A la derecha, el BLUF del flash, tal como está en el texto de la lección: «We assess with moderate confidence that GLASS VIPER is running an active credential-phishing wave against Meridian supplier portals. Block the indicators in annex A and force MFA re-enrollment for supplier accounts TODAY.» La izquierda se marca «cierto, pero no dice qué hacer» (`weak`, sonido `error`). La derecha se descompone en tres piezas de color (`parts`): juicio («a credential-phishing wave against supplier portals»), confianza («moderate confidence») y acción con plazo («block … force MFA re-enrollment … TODAY»). En `rule`, tres chips bajo el rótulo «BLUF de un flash», «juicio · confianza · acción con plazo» (la regla es la del flash, no la de todo BLUF), y si se quita uno aparece una interrogación («el lector adivina»). La tarjeta de examen al acabar la frase de `rule`. En `owner`, se subraya «We assess» con la glosa «valoramos» y debajo «los hechos se citan · los juicios se asumen» (lista de s5m2). La voz no dice el nombre del grupo. No sale el BLUF «de manual» de s5m2 ni «High confidence»",
+      "targetSec": 45,
+      "wordBudget": 122,
+      "requiredCues": [
+        "compare",
+        "weak",
+        "parts",
+        "rule",
+        "owner"
+      ]
+    },
+    {
+      "id": "s08-bandas",
+      "chapter": 4,
+      "title": "Un número detrás de cada palabra",
+      "goal": "Dos lectores, sin cara, oyen la misma palabra «probable» y cada uno se imagina una cifra distinta, con interrogaciones en lugar de cifras (`words`). Rótulo «ICD 203 · comunidad de inteligencia de EE. UU.» (`icd`). La tabla de la lección, carácter por carácter, como una escala vertical 0–100 con siete bandas (`table`): «almost no chance / remote · 01–05%», «very unlikely / highly improbable · 05–20%», «unlikely / improbable · 20–45%», «roughly even chance · 45–55%», «likely / probable · 55–80%», «very likely / highly probable · 80–95%», «almost certain / nearly certain · 95–99%». Un icono pequeño de pronóstico del tiempo junto a la escala. Por pasos: `likely` enciende 55–80%; `vlikely` enciende 80–95% (la tarjeta de examen sale al acabar esa frase); `unlikely` enciende 20–45% y, después, 95–99%; `memo` deja las siete encendidas con el chip «Nota de examen · memoriza las bandas». La voz no lee la tabla entera; no sale la solución del Lab 5A",
+      "targetSec": 57,
+      "wordBudget": 154,
+      "requiredCues": [
+        "words",
+        "icd",
+        "table",
+        "likely",
+        "vlikely",
+        "unlikely",
+        "memo"
+      ]
+    },
+    {
+      "id": "s09-diales",
+      "chapter": 4,
+      "title": "Cómo se lee un juicio",
+      "goal": "Tarjeta del mensaje interceptado al abrir. Debajo, dos diales, uno encima del otro (`dials`): «probabilidad · del evento» y «confianza · de tu base». El primero, con el pronóstico «70 % de lluvia» (`prob`). El segundo, con las tres posiciones «baja · moderada · alta» y tres palancas «fuentes · evidencia · razonamiento» (`conf`), y dos imágenes pequeñas: un satélite y una persona mirando por la ventana. Pregunta para pensar, con la frase de la lección a la vista y ningún dial resaltado: «We assess it is LIKELY the actor will target suppliers (LOW confidence).» Respuesta (`answer`): el dial de probabilidad se queda en 55–80%, el de confianza en «baja», con «la evidencia escasa apunta hacia aquí · puede cambiar con pruebas nuevas», y una segunda frase de ejemplo pequeña, «unlikely · high confidence» (evidencia sólida que dice que no). Nota pequeña (`real`): «ICD 203: en un producto real, probabilidad y confianza van en frases separadas · en el examen de la app las verás juntas». Remate (`wrap`): los dos diales con un candado entre ellos para mostrar que no se mueven juntos y el aviso «subir la confianza no sube la probabilidad». La tarjeta de examen al acabar la frase de `wrap`. La frase de ejemplo es la del check de la lección: no sale el BLUF de manual ni nada de «90 días»",
+      "targetSec": 72,
+      "wordBudget": 194,
+      "requiredCues": [
+        "dials",
+        "prob",
+        "conf",
+        "answer",
+        "real",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s10-cierre",
+      "chapter": 5,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas, una cada vez (`recap`): `rule-1` el lector y su decisión primero, con el icono de las cuatro preguntas; `rule-2` el flash con acciones y plazo y el informe detrás, con el icono del aviso de tormenta; `rule-3` la conclusión primero y los dos diales, con la banda y la confianza por separado. Tarjeta de siguiente paso (`next`): «Laboratorio: Calibration Range» (lab5a), sin más acciones. Tarjeta final «ALERTÓPOLIS» con el descargo «no afiliado a SANS/GIAC» (`endcard`). Ningún laboratorio más, ningún dato de campaña nuevo",
+      "targetSec": 35,
+      "wordBudget": 95,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

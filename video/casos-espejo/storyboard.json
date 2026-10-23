@@ -1,0 +1,192 @@
+{
+  "title": "Cinco casos históricos y lo que enseñó cada uno",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 438,
+  "notice": "Alertópolis — material independiente, no afiliado a SANS/GIAC · Casos reales resumidos de la lección; las atribuciones son las que hicieron públicamente los informes y gobiernos citados · Meridian Dynamics y VELVET CICADA son ficticios",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "¿Esto ya ha pasado?"
+    },
+    {
+      "n": 2,
+      "title": "Un informe con pruebas"
+    },
+    {
+      "n": 3,
+      "title": "Destruir y atribuir"
+    },
+    {
+      "n": 4,
+      "title": "Dentro de la red de la víctima"
+    },
+    {
+      "n": 5,
+      "title": "El proveedor, de puente"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-pregunta",
+      "chapter": 1,
+      "title": "Una pregunta del CISO",
+      "goal": "Sello «Meridian Dynamics · aeroespacial · tú, su analista de inteligencia», sin fecha ni hora. Entra la tarjeta del CISO, sin nombre (`ciso`): «CISO · responsable de seguridad» con su pregunta «¿Esto ya ha pasado antes?»; es una pregunta, no una decisión. Al acabar la primera frase, título «Casos históricos» con «cinco casos, cinco lecciones» debajo, antes de los 10 s (`title`). La promesa en tres chips (`promise`): «qué enseñó cada caso · dónde encaja en tu trabajo · sin memorizar fechas». Al final (`mirrors`), cinco fichas vacías en fila, cada una con una palabra clave y sin ningún dato: «persiste», «se acumula», «lo dice un gobierno», «dos en una red», «el proveedor». Sin años, banderas, logos, fotos ni personas",
+      "targetSec": 32,
+      "wordBudget": 86,
+      "requiredCues": [
+        "ciso",
+        "title",
+        "promise",
+        "mirrors"
+      ]
+    },
+    {
+      "id": "s02-moonlight",
+      "chapter": 1,
+      "title": "Un actor que no se va",
+      "goal": "Una carpeta de caso con el rótulo MOONLIGHT MAZE (`mm-case`) y, debajo, «espionaje prolongado · redes de gobierno e investigación de EE. UU. · documentación en grandes volúmenes» (texto de la lección, sin año). Dos fichas: «suele considerarse una de las primeras intrusiones estatales investigadas a gran escala» y «años de investigación · cooperación multiagencia». Una línea de tiempo abstracta, sin fechas, donde una herramienta de aquella carpeta aparece de nuevo mucho más a la derecha con la nota «análisis posteriores vincularon su tooling con actividad muy posterior (Turla)» (`mm-tool`). Regla en grande (`mm-persist`): «el actor persiste más que la memoria del defensor». Tras el mensaje del adversario (`mm-reply`), el cuaderno: a la izquierda la carpeta, a la derecha el cuaderno del grupo que ataca a Meridian, con el sello VELVET CICADA y «un intrusion set (lo que hace un mismo grupo) atraviesa varias campañas» (`mm-notebook`). Sin país en la carpeta más allá de lo que dice la lección",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "mm-case",
+        "mm-tool",
+        "mm-persist",
+        "mm-reply",
+        "mm-notebook"
+      ]
+    },
+    {
+      "id": "s03-informe",
+      "chapter": 2,
+      "title": "Un informe con las pruebas a la vista",
+      "goal": "Un informe publicado, dibujado como documento abierto con el rótulo APT1 (`a1-report`) y «espionaje económico documentado durante años · empresa privada». Cuatro hojas anexas salen del documento (`a1-evidence`): «infraestructura», «personas», «horarios», «victimología», y una etiqueta «atribuido, según el informe, a una unidad militar concreta (Unidad 61398 del PLA)». Sello «según la lección: primera gran atribución pública privada con evidencia publicada» (`a1-first`), con «naming and shaming» al lado. Última tarjeta (`a1-standard`): «el estándar del informe de actor: TTPs + infraestructura + victimología + apéndice de indicadores» y, aparte, «después, acusación formal de EE. UU. a oficiales del PLA». Sin logos de empresas, fotos, personas ni año",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "a1-report",
+        "a1-evidence",
+        "a1-first",
+        "a1-standard"
+      ]
+    },
+    {
+      "id": "s04-convergencia",
+      "chapter": 2,
+      "title": "Cuatro esquinas, años de datos",
+      "goal": "Sigue el documento de APT1, atenuado (`a1-reply` marca el mensaje del adversario sobre él). El diamante de cuatro vértices, como el de V3, pero ahora con la tabla de la lección (`a1-diamond`): Adversary «Unidad 61398 del PLA», Capability «familias de malware propias y TTPs», Infrastructure «bloques de red en Shanghai · dominios y C2 reutilizados», Victim «~141 organizaciones», con una banda de tiempo «años» que los atraviesa y una etiqueta «según la lección, el informe señala al sponsor · casi nadie llega». Debajo, tres meta-features (`a1-meta`), presentadas como lo que decía el informe: «horarios coherentes con Shanghai», «configuración de teclado e idioma», «victimología leída desde el eje socio-político: ¿a quién beneficia?». Un expediente (`a1-weight`): cada hoja suelta pesa poco (los horarios y el idioma, «muy poco aislados», como en la lección de atribución) y el expediente se va engrosando. Al apuntar todas al mismo sitio, el expediente pesa (`converge`) con la regla «no hay pistola humeante · hay peso de evidencia». Cierre (`a1-mirror`): «tu diamante, cuatro esquinas» y una nota pequeña, «hasta dónde llegas depende de tus fuentes». Sin balanza, sin báscula y sin año; la mención a Shanghai es la de la lección",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "requiredCues": [
+        "a1-reply",
+        "a1-diamond",
+        "a1-meta",
+        "a1-weight",
+        "converge",
+        "a1-mirror"
+      ]
+    },
+    {
+      "id": "s05-destructivo",
+      "chapter": 3,
+      "title": "Cuando el ataque destruye",
+      "goal": "Carpeta con el rótulo «Sony Pictures · en la lección, junto al nombre Lazarus» (`sony-case`) y la línea «hasta aquí, espionaje callado». Una fila de equipos genéricos (rectángulos sin nombre) que se apagan uno a uno al ejecutarse un programa que borra, con el rótulo «wiper» (`wiper`), y un panel de documentos que se derraman: «filtraciones masivas». Tarjeta de atribución (`sony-attr`): «atribuido públicamente por el gobierno de EE. UU. a Corea del Norte». Después (`sony-motive`), el móvil en dos casillas: «político: en el curso, represalia por una película» marcado y «económico» tachado. Cierre: «la lección: los estados no solo espían, también pueden atacar para destruir o presionar». Sin logos reales, capturas de película, fotos ni personas. Sony es la víctima; Lazarus es solo el nombre que da la lección",
+      "targetSec": 32,
+      "wordBudget": 86,
+      "requiredCues": [
+        "sony-case",
+        "wiper",
+        "sony-attr",
+        "sony-motive"
+      ]
+    },
+    {
+      "id": "s06-fuentes",
+      "chapter": 3,
+      "title": "Lo que no se ve",
+      "goal": "Un documento de atribución del gobierno con partes tachadas en negro; solo se lee la conclusión (`redacted`). Un rótulo «puede apoyarse en fuentes como…» con dos clases de fuente (`unseen`): «SIGINT · comunicaciones interceptadas» y «evidencia técnica parcial», presentadas como clases posibles, no como el contenido de ese documento, con el recordatorio «tu red no tiene esta clase de fuente» (V23). Pausa para pensar: «Sin ver su fuente, ¿ignoras o pesas su juicio?», con dos casillas, «ignorar» y «pesar», sin marcar ninguna. Respuesta (`weigh`): se marca «pesar» y el documento pasa a una pila de fuentes como una más, evaluada, con «peso único · base opaca · fines propios». Una pareja de piezas que encajan, «empresa privada» y «gobierno»: papeles complementarios. El título de la escena no da la respuesta",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "requiredCues": [
+        "redacted",
+        "unseen",
+        "weigh"
+      ]
+    },
+    {
+      "id": "s07-dos-grupos",
+      "chapter": 4,
+      "title": "Lo que apareció en la misma red",
+      "goal": "Un recuadro «red de la víctima · Democratic National Committee, comité nacional del Partido Demócrata de EE. UU.» (`dnc-case`), sin logos ni capturas. Entra un conjunto de intrusión, «vinculado a Rusia», con sus herramientas, su infraestructura y su tradecraft dibujados como tres iconos; luego entra otro, con iconos distintos (`second`), rotulados «conjunto 1» y «conjunto 2» (nunca «Cluster-A» ni «Cluster-B»). Una línea punteada entre ellos tachada: «sin coordinación aparente» (`two-sets`). Una tira gris debajo: «informes públicos posteriores los asociaron a servicios distintos (GRU y SVR)». Pausa para pensar: «Misma víctima, mismo país. ¿Los juntas?», con dos casillas, «juntar» y «separar», sin marcar ninguna. Respuesta (`dnc-answer`): se marca «separar» y se queda cada conjunto con su color. Imagen (`garage`): dos abrigos distintos colgados en el mismo perchero, «misma víctima: enlace débil · sin enlace fuerte no se agrupa (S4M4)». El título de la escena no da la respuesta",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "requiredCues": [
+        "dnc-case",
+        "second",
+        "two-sets",
+        "dnc-answer",
+        "garage"
+      ]
+    },
+    {
+      "id": "s08-arma",
+      "chapter": 4,
+      "title": "Lo robado, convertido en arma",
+      "goal": "Sigue el recuadro de la víctima. Sale de él un montón de documentos que pasan a un sitio de publicación, con tarjetas «identidades falsas» y «sitios de filtraciones» (`leak`) y el rótulo «hack-and-leak · operación de influencia». Debajo, «los datos robados pueden ser munición pública». Después (`indict`), una acusación formal, dibujada como documento sellado que señala a «oficiales del GRU», y una línea con punta hacia la tira «coincide en buena parte con el clustering técnico privado». Cierre (`cycle`): tres piezas en fila, «informe de una empresa · atribución de un gobierno · acusación formal», con «sirve para contrastar el análisis privado». Sin año ni personas",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "leak",
+        "indict",
+        "cycle"
+      ]
+    },
+    {
+      "id": "s09-puente",
+      "chapter": 5,
+      "title": "El proveedor como puente",
+      "goal": "Rótulo «APT10 / Cloud Hopper» (`hop-case`). Una empresa pequeña, «proveedor de servicios gestionados (MSP)», con las redes de varios clientes colgando de ella, sin nombres (`hop`): según la lección, la campaña entra en el proveedor y salta a «docenas de clientes finales · varios países». La imagen del administrador de fincas con un llavero grande y muchos edificios (`keys`), sin la palabra «portales». Regla (`hop-scale`): «un proveedor abre la puerta a toda su cartera». Después una tira de la lección: «lo destapó una investigación conjunta público-privada · después, acusación formal de EE. UU.». Tras el mensaje del adversario (`hop-reply`), tres chips: «vigilar su acceso · limitarlo · regularlo por contrato». Cierre (`hop-mirror`): el perímetro de Meridian dibujado con los accesos de los proveedores dentro, la nota «el grupo que te ataca también ataca a tus proveedores» y «tus requisitos de inteligencia lo cubren». No se dibuja ningún proveedor real ni Orbital; no se dice que el grupo entrara por un proveedor",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "hop-case",
+        "hop",
+        "keys",
+        "hop-scale",
+        "hop-reply",
+        "hop-mirror"
+      ]
+    },
+    {
+      "id": "s10-mapa",
+      "chapter": 5,
+      "title": "Los cinco, lado a lado",
+      "goal": "La tabla «Los cinco casos, lado a lado» de la lección, sin la columna de época y con los años quitados de las demás celdas (por ejemplo «Operator a sponsor (acusación formal)», sin «2018»; `map`): caso, atribución alcanzada, evidencia clave y lección central, de MOONLIGHT MAZE a APT10 / Cloud Hopper, en un solo plano. Debajo (`evolution`), la evolución de la atribución pública como tres piezas: «informe privado (APT1) · declaración de un gobierno (Sony) · investigación conjunta y acusación formal (APT10)», con «se apoyan unas en otras» (`joint`). Última tira (`vc-patterns`): el sello VELVET CICADA con tres marcas tomadas del callout de la lección, «espionaje persistente», «evidencia técnica acumulada» y «ataca también a los proveedores de sus víctimas», y una cuarta casilla en gris con interrogante: «¿puente? aún sin respuesta». Sin año",
+      "targetSec": 32,
+      "wordBudget": 86,
+      "requiredCues": [
+        "map",
+        "evolution",
+        "joint",
+        "vc-patterns"
+      ]
+    },
+    {
+      "id": "s11-cierre",
+      "chapter": 5,
+      "title": "Para el examen",
+      "goal": "Tres tarjetas de reglas, una cada vez, con sus iconos: `rule-1` el cuaderno del grupo («el actor persiste: apúntalo todo»), `rule-2` el expediente que engrosa («atribuir es pesar evidencia, también la de un gobierno»), `rule-3` el perchero con dos abrigos y el llavero («misma víctima no es mismo grupo · tus proveedores están en tu perímetro»). Vuelve la tarjeta del CISO con «¿Esto ya ha pasado antes?» y la respuesta «sí, y cada vez dejó una lección» (`recap`). Tarjeta final Alertópolis (`next`, `endcard`) con su descargo escrito a mano: «Casos reales resumidos de la lección; las atribuciones son las que hicieron públicamente los informes y gobiernos citados · Meridian y VELVET CICADA son ficticios · material independiente, no afiliado a SANS/GIAC» (no el «datos ficticios» a secas) y «Tu turno: las preguntas de la lección» (s5m4, 10 preguntas). Ningún laboratorio",
+      "targetSec": 28,
+      "wordBudget": 76,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

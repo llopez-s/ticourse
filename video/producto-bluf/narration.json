@@ -1,0 +1,469 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "wave": "mail",
+    "issue": "ping2",
+    "block": "block",
+    "reset": "lock",
+    "weak": "error"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<serious> {day}Dieciocho de abril. Desde las seis de la mañana, a Meridian le llueven correos de phishing.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<intrigued> {title}Eres su analista, y tienes un solo hallazgo. Pero lo van a leer tres personas.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<engaging> {readers}El SOC, que vigila la red. El CISO, responsable de seguridad. Y el consejo de dirección.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<warm> {promise}Hoy aprendes a escribirlo para cada uno, a decidir cuánto puedes tardar y a ponerle números a tus juicios.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-hook",
+      "text": "<curious> {differ}Porque ninguno de los tres necesita lo mismo, ni a la misma hora.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-lectores",
+      "text": "<sarcastic> {dump}Cuarenta páginas técnicas para un directivo, y no se mueve nadie.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "Escribe cuarenta páginas, analista. Así nadie dirá que falta algo.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-lectores",
+      "text": "<steady> Muchas veces el problema no es el análisis. Es a quién se lo escribes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-lectores",
+      "text": "<clear> {questions}Antes de escribir, hazte cuatro preguntas. Quién lo lee, y qué decisión tiene delante.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-lectores",
+      "text": "<focused> Cuánto tiempo tiene, y cómo le llega. En una incidencia del SOC, en un informe o en una charla.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-lectores",
+      "text": "<steady> {soc}Al SOC le das acciones, porque tiene que actuar ya. Una página con lo que pasa y qué hacer. Eso se llama flash alert.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-lectores",
+      "text": "<warm> {ciso}Al CISO no le sirve una lista de bloqueos. Le cuentas el riesgo y la decisión que le propones.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-lectores",
+      "text": "<clear> En el ejemplo de la lección, adelantar la revisión de accesos de los proveedores.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-08",
+      "scene": "s02-lectores",
+      "text": "<thoughtful> {board}Y el consejo quiere juicios y lo que significan para el negocio, en pocas páginas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-09",
+      "scene": "s02-lectores",
+      "text": "<steady> Lo que recibe es una valoración estratégica, el assessment, que también lee el CISO. Va por su cuenta, no a la hora del flash.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-10",
+      "scene": "s02-lectores",
+      "text": "<casual> {storm}O sea, que es la misma tormenta contada a tres personas, y cada una se queda con lo que puede usar.",
+      "pauseAfterMs": 650,
+      "exam": {
+        "objective": "Dissemination",
+        "text": "Antes de escribir: quién lo lee y qué decisión tiene",
+        "at": "storm",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-reloj",
+      "text": "<tense> {wave}Ahora, el reloj. La ola sigue en marcha, y el SOC necesita algo ya, no dentro de una semana.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-reloj",
+      "text": "<thoughtful> Lo tentador es esperar a tenerlo todo claro. Pero una inteligencia perfecta que llega tarde ya no es inteligencia.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-reloj",
+      "text": "<curious> Con la ola en marcha y el SOC esperando, ¿qué mandas primero, una página con lo esencial o el informe completo?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Flash de una página o informe completo?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-reloj",
+      "text": "<confident> {flash-first}El flash primero. Una página que dice qué pasa, qué hacer y cuándo habrá más. Lo normal es que salga de dos a cuatro horas después de confirmarlo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-reloj",
+      "text": "<steady> {report}El informe de campaña llega después, a los tres o cinco días. Ya con la campaña bien atada, y con todo el detalle técnico.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-reloj",
+      "text": "<warm> {forecast}Es como el aviso de tormenta y el estudio de la tormenta. El aviso sale con lo que sabes ahora. El estudio, cuando hay calma para escribirlo.",
+      "pauseAfterMs": 650,
+      "exam": {
+        "objective": "Dissemination",
+        "text": "Flash ya, informe después: tarde, ya no es inteligencia",
+        "at": "forecast",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-flash",
+      "text": "<calm> {issue}Son las once y cuarenta, hora UTC, y sale el flash alert. Cabe en una página, sin tener que bajar, y cada parte tiene su trabajo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-flash",
+      "text": "<focused> {bluf}Arriba, la conclusión. Una ola de phishing para robar credenciales contra los portales de proveedores, y qué hacer hoy.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-flash",
+      "text": "<confident> Y el juicio va con confianza moderada. Es decir, cuánto aguanta la evidencia que tienes.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-flash",
+      "text": "<steady> {know}Debajo, lo que sabes. [41|Cuarenta y un] correos al personal de la cadena de suministro, desde las seis. El señuelo, una falsa revisión urgente de un pedido.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-flash",
+      "text": "<mischievously> {unknown}Cállalo, dice. Pues no. Lo que no sabes también va en el papel.",
+      "pauseAfterMs": 400,
+      "intercept": {
+        "text": "Lo que no sabes, cállalo. Así pareces más seguro.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-flash",
+      "text": "<clear> Aquí, lo que no sabes es si alguien llegó a enviar sus credenciales.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-flash",
+      "text": "<steady> {why}Esa sección evita que el lector suponga más de lo que hay, y le avisa de que vendrá una actualización.",
+      "pauseAfterMs": 650,
+      "exam": {
+        "objective": "Dissemination",
+        "text": "Flash alert: incluye lo que aún NO sabes",
+        "at": "why",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-plazo",
+      "text": "<urgent> {actions}Después van las acciones, y todas con la misma hora límite, las seis de la tarde.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-plazo",
+      "text": "<focused> {block}Primera, bloquear los indicadores del anexo en el proxy y en la pasarela.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-plazo",
+      "text": "<steady> {reset}Segunda, cambiar la contraseña de quienes usan el portal y pedirles que registren de nuevo el doble factor.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-plazo",
+      "text": "<clear> {clicks}Y tercera, que quien haya hecho clic en uno de esos correos se lo diga a respuesta a incidentes.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-plazo",
+      "text": "<firm> {next}Y al final, cuándo habrá otro parte. A las cinco de la tarde, o antes si cambia algo importante.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-plazo",
+      "text": "<reassuring> {silence}Así el silencio deja de ser duda. Si no hay noticias, es que no hay cambios.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Dissemination",
+        "text": "Próximo parte: sin noticias, quiere decir sin cambios",
+        "at": "silence",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-plazo",
+      "text": "<thoughtful> O sea, que el flash es corto a propósito. La atribución fina se queda para el informe de campaña.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-bluf",
+      "text": "<firm> {chrono}Pues no. Quien decide no quiere vivir la cronología contigo. Quiere la conclusión, y en treinta segundos saber si tiene que seguir leyendo.",
+      "pauseAfterMs": 350,
+      "intercept": {
+        "text": "Empieza por el principio. La conclusión puede esperar.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-bluf",
+      "text": "<clear> {bluf-def}Eso es poner la conclusión delante, y se llama BLUF, de bottom line up front. Es decir, la conclusión por delante.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-bluf",
+      "text": "<warm> {headline}Es como el titular de un periódico. Lo lees, y decides si sigues con la noticia.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-bluf",
+      "text": "<steady> {order}Detrás va lo demás, en orden, del juicio principal a los anexos técnicos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-bluf",
+      "text": "<confident> {rest}Quien no siga leyendo ya se ha llevado lo importante.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-bluf-flash",
+      "text": "<curious> {compare}Mira el BLUF del flash junto a uno flojo. El flojo dice que se ha observado actividad sospechosa en el entorno.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-bluf-flash",
+      "text": "<sarcastic> {weak}Muy cierto, y de ninguna utilidad, porque no le dice al lector qué hacer.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-bluf-flash",
+      "text": "<focused> {parts}El del flash lleva tres piezas. Un juicio, que es una ola de phishing contra los portales. Su confianza, moderada. Y una acción con plazo, hoy.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-bluf-flash",
+      "text": "<clear> {rule}En un flash, juicio, confianza y acción con plazo. Si falta una de las tres, el lector tiene que adivinarla.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Dissemination",
+        "text": "BLUF de un flash: juicio, confianza y acción con plazo",
+        "at": "rule",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-bluf-flash",
+      "text": "<warm> {owner}Y el BLUF del flash empieza con we assess, que significa valoramos. Se nota que es el juicio de alguien, no un hecho suelto.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-bandas",
+      "text": "<thoughtful> {words}Ahora, las palabras. Si cada lector le pone su propio número a probable, el mismo informe dice cosas distintas a cada uno.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-bandas",
+      "text": "<clear> {icd}Por eso la comunidad de inteligencia de Estados Unidos fijó unas bandas en una directiva, la ICD [203|doscientos tres]. Cada expresión equivale a una banda de probabilidad.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-bandas",
+      "text": "<casual> {table}Como en el pronóstico del tiempo, detrás de cada lluvia probable hay un porcentaje.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-bandas",
+      "text": "<focused> {likely}Likely, o probable, va [del 55 al 80 %|del cincuenta y cinco al ochenta por ciento]. {vlikely}Very likely sube hasta la banda [del 80 al 95 %|del ochenta al noventa y cinco por ciento].",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Dissemination",
+        "text": "Very likely: 80 a 95 %. Likely: 55 a 80 %",
+        "at": "vlikely",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-bandas",
+      "text": "<steady> {unlikely}Unlikely, o improbable, va [del 20 al 45 %|del veinte al cuarenta y cinco por ciento]. Y almost certain, casi seguro, va arriba del todo, [del 95 al 99 %|del noventa y cinco al noventa y nueve por ciento].",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-bandas",
+      "text": "<warm> {memo}La tabla entera tiene siete bandas, y la tienes en pantalla y en la lección. Apréndetela bien, porque es de las entradas imprescindibles de tu índice del examen.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-diales",
+      "text": "<firm> {dials}No funciona así, porque son dos diales distintos.",
+      "pauseAfterMs": 350,
+      "intercept": {
+        "text": "Pon confianza alta y tu probable pasa a casi seguro.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-diales",
+      "text": "<clear> {prob}El primero es la probabilidad, y dice cuánto es de probable que pase algo. Es el [70 %|setenta por ciento] de lluvia del pronóstico.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-diales",
+      "text": "<thoughtful> {conf}El segundo es la confianza, y dice en qué te apoyas. Cuánta evidencia tienes, de qué calidad y si el razonamiento aguanta. Se dice baja, moderada o alta.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-diales",
+      "text": "<warm> Es cuánto se fía el pronosticador de su previsión, según venga de un satélite o de alguien que mira por la ventana.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-diales",
+      "text": "<curious> Fíjate en esta frase. Probable, pero con confianza baja. ¿Se contradicen?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "Likely con confianza baja: ¿se contradice?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-diales",
+      "text": "<reassuring> {answer}No se contradicen. La frase dice que lo poco que tienes apunta a probable, pero que otra prueba lo cambiaría con facilidad.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-07",
+      "scene": "s09-diales",
+      "text": "<clear> {real}Eso sí, en un producto real, la ICD [203|doscientos tres] pide poner la probabilidad y la confianza en frases separadas. En el examen de la app los verás juntos.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-08",
+      "scene": "s09-diales",
+      "text": "<confident> {wrap}Y recuerda que subir la confianza no sube la probabilidad. Son dos diales distintos.",
+      "pauseAfterMs": 650,
+      "exam": {
+        "objective": "Dissemination",
+        "text": "Probabilidad es del evento; confianza, de la evidencia",
+        "at": "wrap",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-cierre",
+      "text": "<engaging> {recap}Antes de irte, tres reglas. {rule-1}Primero el lector y su decisión, y después el texto.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-cierre",
+      "text": "<clear> {rule-2}Segunda, lo que sabes ahora vale más que lo perfecto que llega tarde. O sea, flash con acciones y plazo, y el informe, después.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-cierre",
+      "text": "<focused> {rule-3}Y tercera, la conclusión primero, con su probabilidad en una banda y su confianza aparte.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-cierre",
+      "text": "<cheerful> {next}Lo siguiente, un laboratorio para practicar las bandas, el Calibration Range. {endcard}Y que ninguna tormenta te pille sin parte.",
+      "pauseAfterMs": 700
+    }
+  ]
+}
