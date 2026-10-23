@@ -32,37 +32,43 @@
     {
       "id": "s02-01",
       "scene": "s02-antes",
-      "text": "<engaging> {timeline}Mira esta línea del tiempo, con un botón de lanzar en medio. {before}Antes del botón, el puerto investiga. {questions}Qué ley aplica, quién verá los datos, cuánto tiempo se guardan.",
-      "pauseAfterMs": 300
+      "text": "<engaging> {timeline}Mira esta línea del tiempo, con un botón de lanzar en medio. {before}Antes del botón, el puerto investiga.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s02-02",
       "scene": "s02-antes",
-      "text": "<clear> Investigar antes de comprometerte, eso es la due diligence. Mirar antes de saltar.",
+      "text": "<curious> {questions}Por ejemplo, qué ley aplica, quién verá los datos y cuánto tiempo se guardan.",
       "pauseAfterMs": 250
     },
     {
       "id": "s02-03",
       "scene": "s02-antes",
-      "text": "<thoughtful> {launch}Se pulsa el botón y el sistema se lanza. {after}Y empieza lo otro, que no se acaba.",
+      "text": "<clear> Investigar antes de comprometerte, eso es la due diligence. Mirar antes de saltar.",
       "pauseAfterMs": 250
     },
     {
       "id": "s02-04",
       "scene": "s02-antes",
-      "text": "<focused> {routines}Revisar quién entra, borrar lo que caduca, arreglar lo que salga en las revisiones.",
+      "text": "<thoughtful> {launch}Se lanza el sistema. {after}Y empieza lo otro, que no se acaba.",
       "pauseAfterMs": 250
     },
     {
       "id": "s02-05",
       "scene": "s02-antes",
-      "text": "<confident> Seguir haciéndolo bien, de forma continua, es la due care.",
-      "pauseAfterMs": 300
+      "text": "<focused> {routines}Como revisar quién entra, borrar lo que caduca y arreglar lo que salga en las revisiones.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s02-06",
       "scene": "s02-antes",
-      "text": "<warm> {cat}Es como adoptar un gato. Antes te informas de lo que necesita, y después le das de comer cada día. {cat-rule}Haberlo mirado muy bien no te exime de cuidarlo.",
+      "text": "<confident> Seguir haciéndolo bien, de forma continua, es la due care.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-antes",
+      "text": "<warm> {cat}Es como adoptar un gato. Antes te informas, y después le das de comer cada día. {cat-rule}Haberlo mirado muy bien no te exime de cuidarlo.",
       "pauseAfterMs": 800,
       "exam": {
         "objective": "5.4",
@@ -110,7 +116,7 @@
     {
       "id": "s04-01",
       "scene": "s04-cuesta",
-      "text": "<engaging> {suppose}Imagina que el puerto no hiciera nada de esto. {authority}No cumplir cuesta distinto según quién te lo impone.",
+      "text": "<engaging> {suppose}Imagina que el puerto se saltara las reglas. {authority}Lo que cuesta depende de quién te lo impone.",
       "pauseAfterMs": 300
     },
     {
@@ -122,13 +128,13 @@
     {
       "id": "s04-03",
       "scene": "s04-cuesta",
-      "text": "<focused> {license}Quien te habilitó puede quitarte la habilitación. Es la loss of license, y dejas de operar.",
+      "text": "<focused> {license}Quien te dio el permiso para operar puede quitártelo. Eso es la loss of license.",
       "pauseAfterMs": 250
     },
     {
       "id": "s04-04",
       "scene": "s04-cuesta",
-      "text": "<thoughtful> {contract}Una naviera aplica su cláusula, retiene pagos o resuelve el contrato. Son los contractual impacts.",
+      "text": "<thoughtful> {contract}La otra parte del contrato, una naviera, retiene pagos o resuelve. Son los contractual impacts.",
       "pauseAfterMs": 300,
       "exam": {
         "objective": "5.4",
@@ -146,13 +152,13 @@
     {
       "id": "s04-06",
       "scene": "s04-cuesta",
-      "text": "<steady> {reporting}Y se informa. El reporting interno va a la dirección, y el externo, a reguladores y clientes.",
+      "text": "<steady> {reporting}Contar cómo vas es el reporting, interno para la dirección y externo para reguladores y clientes.",
       "pauseAfterMs": 250
     },
     {
       "id": "s04-07",
       "scene": "s04-cuesta",
-      "text": "<casual> {salon}Sería como una peluquería. Sanidad la multa, le prohíbe los tintes, y las reseñas hacen el resto.",
+      "text": "<casual> {salon}Piensa en una peluquería del barrio. Sanidad la multa y le prohíbe los tintes, y las reseñas hacen el resto.",
       "pauseAfterMs": 500
     },
     {
@@ -206,7 +212,7 @@
     {
       "id": "s06-01",
       "scene": "s06-guardar",
-      "text": "<engaging> {three-places}Vuelve el registro. Quien reclama deja nombre, teléfono y documento, y eso vive en tres sitios. El sistema, su copia y el aviso.",
+      "text": "<engaging> {three-places}Volvemos a los objetos perdidos. Quien reclama deja nombre, teléfono y documento, y eso vive en tres sitios. El sistema, su copia y el aviso que se le manda.",
       "pauseAfterMs": 300
     },
     {
@@ -224,7 +230,7 @@
     {
       "id": "s06-03",
       "scene": "s06-guardar",
-      "text": "<clear> {retention}Se guardan mientras el objeto está en la oficina y unos meses más. {backups}Y se borran en los tres, copia incluida. Eso es la retention.",
+      "text": "<clear> {retention}Después, cuánto se guardan, mientras el objeto esté en la oficina y unos meses más. {backups}Y luego se borran en los tres, copia incluida. Eso es la retention.",
       "pauseAfterMs": 300
     },
     {
