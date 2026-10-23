@@ -445,6 +445,17 @@ const sp1m4: Module = {
     },
     {
       t: 'p',
+      md: 'Un recorrido por el plano, de la calle al cebo, y tres preguntas de examen.',
+    },
+    {
+      t: 'video',
+      title: 'Quién entra, qué se mueve y quién pica',
+      youtube: 'DOxNzxPHibQ',
+      poster: 'videos/fisica-halden-poster.png',
+      transcript: 'videos/fisica-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Con los controles físicos y los señuelos cierras la parte «defensiva» del objetivo 1.2. Pero cada bollard nuevo, cada regla de firewall y cada honeypot es un **cambio** en el entorno, y los cambios sin proceso son la fuente número uno de incidentes autoinfligidos. La siguiente lección trata precisamente eso: **change management**, con su aprobación, su análisis de impacto y su **backout plan**.',
     },
   ],

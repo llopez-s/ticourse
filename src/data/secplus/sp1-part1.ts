@@ -445,6 +445,17 @@ const sp1m2: Module = {
     },
     {
       t: 'p',
+      md: 'Las cuatro ideas de esta lección, en un caso del puerto y tres preguntas de examen.',
+    },
+    {
+      t: 'video',
+      title: 'Qué se rompe, quién toca y cuánto falta',
+      youtube: 'X-ObxPQZZHc',
+      poster: 'videos/cia-halden-poster.png',
+      transcript: 'videos/cia-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Ya sabes nombrar la propiedad que protege cada control, distinguir las tres A y medir la distancia entre lo que tienes y lo que el marco exige. La siguiente lección lleva estas ideas al modelo de arquitectura que domina el SY0-701: **Zero Trust**, donde authentication, authorization y accounting se aplican a cada petición, no solo en el perímetro.',
     },
   ],

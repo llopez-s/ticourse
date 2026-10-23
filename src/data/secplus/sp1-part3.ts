@@ -177,6 +177,17 @@ Document:         Actualizar inventario de certificados, diagrama de servicios,
     },
     {
       t: 'p',
+      md: 'Un cambio de principio a fin, con tres preguntas de examen por el camino.',
+    },
+    {
+      t: 'video',
+      title: 'Antes, durante y después de un cambio',
+      youtube: 'ZLeS-1X4ypg',
+      poster: 'videos/cambios-halden-poster.png',
+      transcript: 'videos/cambios-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Con el proceso de cambios claro, ya sabes *cómo* introducir un control nuevo en producción sin romper nada. La siguiente lección entra en uno de los controles técnicos que más aparece en esos tickets: la **criptografía** — simétrica, asimétrica, hashing y firmas digitales — y por qué renovar un certificado es, como acabas de ver, mucho más que cambiar un fichero.',
     },
   ],
