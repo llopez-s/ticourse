@@ -45,6 +45,25 @@ export function repeatedPhrases(script, heard, n = LIMITS.phraseWords) {
   return [...got].filter(([g, c]) => c >= 2 && c > (want.get(g) ?? 0)).map(([g]) => g);
 }
 
+/**
+ * The first one or two words of the script when the clip is heard from the following ones: the first word does
+ * not match, and the next three heard words match the script's words after the skipped ones. That shape is a clip
+ * that lost its opening («Empezamos con un caso» heard as «Con un caso…», documentos s02-01); the ASR garbling a
+ * word does not shift the whole sentence by one. Needs enough words to be sure.
+ * @returns {{skipped: number, words: string} | null}
+ */
+export function missingOpening(script, heard, { first = 0.6, rest = 0.8, minScriptWords = 6 } = {}) {
+  const scriptWords = String(script ?? '').split(/\s+/).filter((w) => matchKey(w));
+  const heardWords = String(heard ?? '').split(/\s+/).filter((w) => matchKey(w));
+  if (scriptWords.length < minScriptWords || heardWords.length < 3) return null;
+  if (similarity(heardWords[0], scriptWords[0]) >= first) return null;
+  for (const skipped of [1, 2]) {
+    const fits = [0, 1, 2].every((i) => similarity(heardWords[i], scriptWords[skipped + i] ?? '') >= rest);
+    if (fits) return { skipped, words: scriptWords.slice(0, skipped).join(' ').replace(/[¿?¡!«»".,;:]/g, '') };
+  }
+  return null;
+}
+
 /** Errors (cuts, leftover takes) and warnings (differs from the script: listen) for one measured clip. */
 export function clipFindings({ id, script, heard, head, tail, dropped, words = [], unheard = [], gaps = [] }, limits = LIMITS) {
   const errors = [];
@@ -93,6 +112,10 @@ export function clipFindings({ id, script, heard, head, tail, dropped, words = [
   }
   for (const [at, len] of gaps) {
     if (len >= limits.gapS) warnings.push(`${id}: a ${len.toFixed(1)} s silence at ${at.toFixed(1)} s inside the sentence: listen, it may be two takes glued together`);
+  }
+  const lost = missingOpening(script, heard);
+  if (lost) {
+    warnings.push(`${id}: the clip seems to start at its ${lost.skipped + 1}${lost.skipped === 1 ? 'nd' : 'rd'} word, «${lost.words}» is not heard: listen; if the first words were cut, rebuild the clip from the take (recut_recording.py)`);
   }
   const sim = similarity(script, heard);
   if (sim < limits.similarity) warnings.push(`${id}: heard «${heard}» (similarity ${sim.toFixed(2)}): listen, it may only be the ASR`);
