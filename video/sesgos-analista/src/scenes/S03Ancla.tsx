@@ -84,18 +84,22 @@ export function S03Ancla(props: SceneProps) {
   const msgFrom = segment(props, 's03-02').to; // the silent lead starts where s03-02 ends; the card enters here
   const msgOn = progress(frame, msgFrom - 4, 10, EASE.inOut) * (1 - progress(frame, replyAt - 2, 14, EASE.inOut));
 
+  // The picture steps back as «esto también lo confirma» is said and leaves on «Ancla».
+  const dimDEarly = Math.max(0.55 * progress(frame, togetherAt - 20, 16, EASE.inOut), progress(frame, at('s03-06', 'Ancla') - 18, 16, EASE.inOut));
+
+  const anclaAt = at('s03-02', 'ancla');
+
   // ---- A → B: the report, the table, the sea.
   const dropIn = progress(frame, reportAt - 8, 18, EASE.out);
   const grupoAt = at('s03-01', 'grupo');
   const claim = p(grupoAt - 4, 12);
-  const quoteIn = p(grupoAt + 2, 16) * (1 - progress(frame, anchorAt - 4, 14, EASE.inOut));
+  const quoteIn = p(at('s03-01', 'dice') - 4, 16) * (1 - progress(frame, anclaAt + 26, 16, EASE.inOut));
   const shrink = progress(frame, anchorAt - 6, 30, EASE.inOut);
-  const anclaAt = at('s03-02', 'ancla');
   const sink = progress(frame, anclaAt - 2, 34, EASE.in);
   const seaRise = progress(frame, anchorAt - 4, 40, EASE.inOut);
   const toD = progress(frame, bendAt - 10, 34, EASE.inOut); // the sea drains, the report comes back
   const sea = seaRise * (1 - toD);
-  const table = (1 - progress(frame, anchorAt - 4, 24, EASE.inOut)) + progress(frame, bendAt + 10, 24, EASE.inOut);
+  const table = Math.min(1, (1 - progress(frame, anchorAt - 4, 24, EASE.inOut)) + progress(frame, bendAt + 10, 24, EASE.inOut)) * (1 - dimDEarly);
   const repCx = mix(REP_A.cx, REP_B.cx, shrink);
   const repW = mix(mix(REP_A.w, REP_B.w, shrink), REP_D.w, toD);
   const repCyAB = mix(TABLE_Y - (REP_A.w * 0.76) / 2, REP_B.cy, Math.max(shrink * 0.45, sink));
@@ -143,7 +147,7 @@ export function S03Ancla(props: SceneProps) {
   const fingerY = LOG.cy + tabTip.y - 90 * (1 - fingerIn);
   const socket = p(bendAt - 8, 20);
   const forced = p(at('s03-04', 'calzador') - 2, 12);
-  const dimD = progress(frame, togetherAt - 20, 16, EASE.inOut);
+  const dimD = dimDEarly;
 
   // ---- E: the biggest name and the lesson's box.
   const confirmIn = enter(frame, confirmAt - 6, { distance: 16, duration: 16 });
@@ -166,7 +170,7 @@ export function S03Ancla(props: SceneProps) {
       <ExampleLabel width={W} />
 
       {/* The table */}
-      <div style={{ position: 'absolute', left: 150, top: TABLE_Y + 6, width: W - 300, height: 12, borderRadius: 6, background: `linear-gradient(180deg, ${C.ink600} 0%, ${C.ink700} 100%)`, opacity: Math.min(1, table) * 0.9 }} />
+      <div style={{ position: 'absolute', left: 150, top: TABLE_Y + 6, width: W - 300, height: 12, borderRadius: 6, background: `linear-gradient(180deg, ${C.ink600} 0%, ${C.ink700} 100%)`, opacity: table * 0.9 }} />
 
       {/* The sea of data and its sheets */}
       <Sea width={W} surface={SURFACE} bottom={SEA_BOTTOM} frame={frame} rise={sea} />
@@ -212,7 +216,7 @@ export function S03Ancla(props: SceneProps) {
       {/* The quote under the report on the table */}
       {quoteIn > 0.01 ? (
         <div style={{ position: 'absolute', left: 0, top: 536, width: W, textAlign: 'center', fontFamily: FONT.sans, fontSize: 46, fontWeight: 800, color: C.text, whiteSpace: 'nowrap', opacity: quoteIn, transform: `translateY(${(1 - quoteIn) * 12}px)` }}>
-          «el primer informe decía: <span style={{ color: AMBER }}>grupo X</span>»
+          «el primer informe decía: <span style={{ color: AMBER, opacity: 0.5 + 0.5 * claim }}>grupo X</span>»
         </div>
       ) : null}
 

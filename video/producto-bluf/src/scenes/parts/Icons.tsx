@@ -214,3 +214,43 @@ export function rand(seed: number): number {
   const x = Math.sin(seed * 127.1 + 311.7) * 43758.5453;
   return x - Math.floor(x);
 }
+
+/** A satellite (solar panels, body, dish): the confident forecaster's source. */
+export function SatelliteIcon({ size = 100, tone = C.emerald, style }: { size?: number; tone?: string; style?: CSSProperties }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" stroke={tone} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block', flexShrink: 0, ...style }} aria-hidden>
+      <rect x={38} y={36} width={24} height={30} rx={5} fill={alpha(tone, 0.2)} />
+      <rect x={4} y={42} width={28} height={20} rx={2} fill={alpha(tone, 0.12)} />
+      <rect x={68} y={42} width={28} height={20} rx={2} fill={alpha(tone, 0.12)} />
+      <path d="M18 42 V62 M4 52 H32 M82 42 V62 M68 52 H96" strokeWidth={2.6} />
+      <path d="M32 52 H38 M62 52 H68" />
+      <path d="M50 36 V24 M38 20 Q50 8 62 20" />
+      <circle cx={50} cy={22} r={3} fill={tone} stroke="none" />
+      <path d="M44 66 V80 M56 66 V80 M40 80 H60" strokeWidth={3} />
+    </svg>
+  );
+}
+
+/** Someone looking out of a window (seen from behind): the thin source. */
+export function WindowWatcherIcon({ size = 100, tone = C.amber, style }: { size?: number; tone?: string; style?: CSSProperties }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" stroke={tone} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block', flexShrink: 0, ...style }} aria-hidden>
+      <rect x={14} y={8} width={72} height={84} rx={4} fill={alpha(tone, 0.08)} />
+      <path d="M50 8 V92 M14 44 H86" strokeWidth={3} />
+      <path d="M62 22 a8 8 0 0 1 14 -3 a6 6 0 0 1 2 11 H60 a6 6 0 0 1 2 -8Z" strokeWidth={2.6} />
+      <circle cx={34} cy={62} r={8} fill={alpha(tone, 0.3)} />
+      <path d="M20 92 C20 76 26 70 34 70 C42 70 48 76 48 92" fill={alpha(tone, 0.3)} />
+    </svg>
+  );
+}
+
+/** A padlock that ties two things together (closed). */
+export function LockIcon({ size = 80, tone = C.amber, style }: { size?: number; tone?: string; style?: CSSProperties }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={tone} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block', flexShrink: 0, ...style }} aria-hidden>
+      <rect x={5} y={10.5} width={14} height={10} rx={2} fill={alpha(tone, 0.18)} />
+      <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" />
+      <path d="M12 14.5v2.5" />
+    </svg>
+  );
+}

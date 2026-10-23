@@ -148,7 +148,7 @@ export function S10Hechos(props: SceneProps) {
                 const next = factAt[i + 1] ?? 1e9;
                 const dim = hot * progress(frame, next, 12) * 0.35;
                 return (
-                  <div key={f.text} style={{ position: 'absolute', left: 24, top: 100 + i * 112, width: PANEL_W - 48, height: 96, boxSizing: 'border-box', display: 'flex', alignItems: 'center', gap: 20, padding: '0 22px', borderRadius: RADIUS.md, background: alpha(C.cyan, 0.05 + 0.12 * hot), border: `3px solid ${alpha(C.cyan, 0.25 + 0.65 * hot)}`, boxShadow: hot > 0.05 ? `0 0 ${Math.round(26 * hot)}px ${alpha(C.cyan, 0.28 * hot)}` : undefined, opacity: 0.55 + 0.45 * hot - dim, transform: `scale(${1 + 0.03 * hot})` }}>
+                  <div key={f.text} style={{ position: 'absolute', left: 24, top: 20 + i * 112, width: PANEL_W - 48, height: 96, boxSizing: 'border-box', display: 'flex', alignItems: 'center', gap: 20, padding: '0 22px', borderRadius: RADIUS.md, background: alpha(C.cyan, 0.05 + 0.12 * hot), border: `3px solid ${alpha(C.cyan, 0.25 + 0.65 * hot)}`, boxShadow: hot > 0.05 ? `0 0 ${Math.round(26 * hot)}px ${alpha(C.cyan, 0.28 * hot)}` : undefined, opacity: 0.55 + 0.45 * hot - dim, transform: `scale(${1 + 0.03 * hot})` }}>
                     <Icon name={hot > 0.5 ? 'check' : 'search'} size={46} color={hot > 0.5 ? C.emerald : C.cyan} strokeWidth={hot > 0.5 ? 3.2 : 2.2} />
                     <span style={{ fontSize: 40, fontWeight: 760, lineHeight: 1.1, color: C.textStrong }}>{f.text}</span>
                   </div>
@@ -164,12 +164,12 @@ export function S10Hechos(props: SceneProps) {
             judgHead,
             <div style={{ position: 'relative' }}>
               {frame >= judgment - 4 ? (
-                <div style={{ position: 'absolute', left: 28, top: 100, width: PANEL_W - 56, ...withOpacity(enter(frame, judgment, { distance: 24 }), 1 - 0.7 * trainP) }}>
+                <div style={{ position: 'absolute', left: 28, top: 24, width: PANEL_W - 56, ...withOpacity(enter(frame, judgment, { distance: 24 }), 1 - trainP) }}>
                   <div style={{ fontSize: 46, fontWeight: 760, lineHeight: 1.18, color: C.textStrong }}>¿qué respuesta equilibra mejor llegar a tiempo y llegar completa?</div>
                 </div>
               ) : null}
               {lockP > 0.02 ? (
-                <div style={{ position: 'absolute', left: 28, top: 296, display: 'flex', alignItems: 'center', gap: 18, opacity: lockP * (1 - 0.7 * trainP), transform: `scale(${0.8 + 0.2 * lockP})`, transformOrigin: 'left center' }}>
+                <div style={{ position: 'absolute', left: 28, top: 214, display: 'flex', alignItems: 'center', gap: 18, opacity: lockP * (1 - trainP), transform: `scale(${0.8 + 0.2 * lockP})`, transformOrigin: 'left center' }}>
                   <div style={{ width: 84, height: 84, borderRadius: 42, display: 'grid', placeItems: 'center', background: alpha(C.rose, 0.18), border: `4px solid ${C.rose}` }}>
                     <Icon name="lock" size={48} color={C.rose} strokeWidth={2.4} />
                   </div>
@@ -179,7 +179,7 @@ export function S10Hechos(props: SceneProps) {
                 </div>
               ) : null}
               {trainP > 0.02 ? (
-                <div style={{ position: 'absolute', left: 0, top: 80, width: '100%', height: PANEL_H - 100, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6, opacity: trainP, transform: `scale(${0.9 + 0.1 * trainP})` }}>
+                <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: PANEL_H - 90, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6, opacity: trainP, transform: `scale(${0.9 + 0.1 * trainP})` }}>
                   <div style={{ fontSize: 150, fontWeight: 850, letterSpacing: -4, color: C.emerald, lineHeight: 1, fontVariantNumeric: 'tabular-nums', textShadow: `0 0 40px ${alpha(C.emerald, 0.4)}` }}>+{count}</div>
                   <div style={{ fontSize: 40, fontWeight: 750, color: C.textStrong, textAlign: 'center', lineHeight: 1.15 }}>las preguntas que ya habrás peleado</div>
                   {frame >= calibAt - 4 ? (

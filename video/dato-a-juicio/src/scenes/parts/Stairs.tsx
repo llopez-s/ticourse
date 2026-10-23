@@ -100,7 +100,6 @@ export function StairsArt({ width = 300, lit = 3, labels = false, labelSize = 30
           return (
             <g key={r.id}>
               <rect x={i * bw + 3} y={top} width={bw - 6} height={h - top} rx={8} fill={alpha(r.tone, 0.08 + 0.3 * on)} stroke={alpha(r.tone, 0.35 + 0.6 * on)} strokeWidth={3} />
-              {i < dotAt ? null : null}
             </g>
           );
         })}

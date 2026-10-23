@@ -79,7 +79,7 @@ export function S05Tejado(props: SceneProps) {
   const houseOpacity = 1 - clearP;
 
   // ---- The multiplication.
-  const head = enter(frame, multAt - 2, { distance: 14, duration: 16 });
+  const head = enter(frame, multAt + 4, { distance: 14, duration: 16 });
   const arcs = progress(frame, multiplicaAt, 24, EASE.inOut);
   const halves = progress(frame, firstAt, 16);
   const halfRight = progress(frame, afterAt, 16);
@@ -91,7 +91,7 @@ export function S05Tejado(props: SceneProps) {
   const label = enter(frame, roofAt + 10, { distance: 18, duration: 16 });
 
   // ---- Destinations.
-  const destAt = [w('s05-04', 'SOC') - 10, w('s05-04', 'respuesta') - 10, 0, 0, w('s05-04', 'dirección') - 10];
+  const destAt = [w('s05-04', 'sirve') - 8, w('s05-04', 'respuesta') - 12, 0, 0, w('s05-04', 'dirección') - 12];
   destAt[2] = Math.round(destAt[1] + (destAt[4] - destAt[1]) / 3);
   destAt[3] = Math.round(destAt[1] + (2 * (destAt[4] - destAt[1])) / 3);
 
@@ -109,8 +109,8 @@ export function S05Tejado(props: SceneProps) {
         <div style={{ position: 'absolute', left: HOUSE_POS.x, top: HOUSE_POS.y, opacity: houseOpacity }}>
           <SlidingHouse frame={frame} at={ALL_BUILT} dim={houseDim} bodyOut={bodyOut} roofLift={roofLift} glow={{ intel: intelFocus }} />
           {/* The report lying on the roof */}
-          {report > 0.01 && enableP < 0.6 ? (
-            <div style={{ position: 'absolute', left: 260 - 100, top: 176 - 70 - roofLift - (1 - report) * 40, opacity: report * (1 - enableP * 1.6) }}>
+          {report > 0.01 && enableP < 0.3 ? (
+            <div style={{ position: 'absolute', left: 260 - 118, top: 176 - 70 - roofLift - (1 - report) * 40, opacity: report * Math.max(0, 1 - enableP * 3.5) }}>
               <Report />
             </div>
           ) : null}
@@ -225,7 +225,7 @@ function Report() {
   return (
     <div
       style={{
-        width: 200,
+        width: 236,
         height: 140,
         boxSizing: 'border-box',
         padding: '12px 16px',
@@ -237,11 +237,11 @@ function Report() {
         transform: 'rotate(-4deg)',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 28, fontWeight: 850, lineHeight: 1.1, color: C.textStrong }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 28, fontWeight: 850, lineHeight: 1.1, color: C.textStrong, whiteSpace: 'nowrap' }}>
         <Icon name="file" size={30} color={C.cyan} strokeWidth={2.2} />
-        <span>informe</span>
+        <span>informe de</span>
       </div>
-      <div style={{ marginTop: 6, fontSize: 28, fontWeight: 700, lineHeight: 1.1, color: C.cyanSoft }}>de inteligencia</div>
+      <div style={{ marginTop: 6, fontSize: 28, fontWeight: 750, lineHeight: 1.1, color: C.cyanSoft, whiteSpace: 'nowrap' }}>inteligencia</div>
       <div style={{ marginTop: 10, height: 8, borderRadius: 4, background: alpha(C.cyan, 0.4), width: '86%' }} />
       <div style={{ marginTop: 8, height: 8, borderRadius: 4, background: alpha(C.cyan, 0.3), width: '64%' }} />
     </div>
@@ -297,7 +297,7 @@ function Destinations({ frame, at }: { frame: number; at: readonly number[] }) {
               border: `${p > 0.5 ? 3 : 2}px solid ${alpha(C.cyan, 0.25 + 0.6 * p)}`,
               background: `linear-gradient(90deg, ${alpha(C.cyan, 0.04 + 0.1 * p)} 0%, ${alpha(C.ink900, 0.95)} 55%)`,
               boxShadow: p > 0.02 ? `0 0 ${Math.round(26 * p)}px ${alpha(C.cyan, 0.2 * p)}` : undefined,
-              opacity: 0.25 + 0.75 * p,
+              opacity: 0.1 + 0.9 * p,
               fontFamily: FONT.sans,
             }}
           >

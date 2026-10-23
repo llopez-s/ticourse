@@ -30,7 +30,8 @@ const STEPS: readonly { icon: IconName; text: string; word: string }[] = [
 
 /**
  * s02-instrumento «La báscula eres tú».
- *   scale      a kitchen scale marking two kilos too many («2,0 kg») with nothing on it; on «mires» an eye
+ *   scale      a kitchen scale, empty, reads «0,0»; on the cue it flips to «2,0 kg» — two kilos too many with
+ *              nothing on it (amber, a halo); on «mires» an eye
  *              looks at it and a finger presses the platform twice: the reading does not move — «mirarla
  *              más no la arregla»
  *   brain      the scale melts into the head of s01 (the same silhouette): inside, three nodes and three
@@ -46,6 +47,7 @@ const STEPS: readonly { icon: IconName; text: string; word: string }[] = [
  */
 export function S02Instrumento(props: SceneProps) {
   const frame = useCurrentFrame();
+  const scaleAt = props.cue('scale');
   const brainAt = props.cue('brain');
   const failAt = props.cue('fail');
   const heuerAt = props.cue('heuer');
@@ -113,7 +115,7 @@ export function S02Instrumento(props: SceneProps) {
             transformOrigin: '50% 60%',
           }}
         >
-          <Scale width={BIG.w} reading="2,0" press={press} />
+          <Scale width={BIG.w} reading={frame >= scaleAt ? '2,0' : '0,0'} readingTone={frame >= scaleAt ? 'amber' : 'muted'} press={press} glow={0.6 * swell(scaleAt, 24)} />
         </div>
       ) : null}
       {melt < 1 && fingerIn > 0.01 ? (

@@ -44,7 +44,7 @@ export function S06Micronota(props: SceneProps) {
 
   const card = (x: number, ok: boolean, at: number, term: string, note: string, where: string) => {
     const tone = ok ? C.emerald : C.amber;
-    const e = enter(frame, at - 14, { distance: 26 });
+    const e = enter(frame, test - 2 + (ok ? 0 : 8), { distance: 26 });
     return (
       <div style={{ position: 'absolute', left: x, top: 196, width: 836, ...e }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20, fontFamily: FONT.sans }}>
@@ -74,10 +74,10 @@ export function S06Micronota(props: SceneProps) {
       {/* an index line, three slots */}
       {frame >= micro - 6 && lineOut < 1 ? (
         <div style={{ position: 'absolute', inset: 0, opacity: (1 - lineOut) * progress(frame, micro - 6, 14), fontFamily: FONT.sans }}>
-          <div style={{ position: 'absolute', left: (W - 1500) / 2, top: 230, transform: `translateY(${(1 - progress(frame, micro - 6, 18)) * 24}px)` }}>
-            <IndexLine empty={['término', 'nota', 'dónde']} fill={fill} width={1500} size={48} />
+          <div style={{ position: 'absolute', left: (W - 1560) / 2, top: 220, transform: `translateY(${(1 - progress(frame, micro - 6, 18)) * 24}px)` }}>
+            <IndexLine empty={['término', 'nota', 'dónde']} fill={fill} width={1560} size={66} />
           </div>
-          <div style={{ position: 'absolute', left: 0, top: 440, width: W, display: 'flex', justifyContent: 'center', ...enter(frame, sinAbrirAt, { distance: 18 }) }}>
+          <div style={{ position: 'absolute', left: 0, top: 470, width: W, display: 'flex', justifyContent: 'center', ...enter(frame, sinAbrirAt, { distance: 18 }) }}>
             <Tag color={C.cyan} size={46} icon="file">
               una línea que responde sin abrir el libro
             </Tag>
@@ -118,11 +118,11 @@ export function S06Micronota(props: SceneProps) {
       {/* think prompt: two index entries, neither marked */}
       {frame >= ach - 6 ? (
         <div style={{ position: 'absolute', inset: 0, fontFamily: FONT.sans }}>
-          <div style={{ position: 'absolute', left: (W - 1500) / 2, top: 250, ...enter(frame, ach, { distance: 24 }) }}>
-            <IndexLine term="ACH" note="gana la menos inconsistente" where="S4M3" width={1500} size={46} />
+          <div style={{ position: 'absolute', left: (W - 1560) / 2, top: 240, ...enter(frame, ach, { distance: 24 }) }}>
+            <IndexLine term="ACH" note="gana la menos inconsistente" where="S4M3" width={1560} size={54} />
           </div>
-          <div style={{ position: 'absolute', left: (W - 1500) / 2, top: 410, ...enter(frame, ach + 10, { distance: 24 }) }}>
-            <IndexLine term="ACH" note="ver página 12" where="S4M3" width={1500} size={46} />
+          <div style={{ position: 'absolute', left: (W - 1560) / 2, top: 410, ...enter(frame, ach + 10, { distance: 24 }) }}>
+            <IndexLine term="ACH" note="ver página 12" where="S4M3" width={1560} size={54} />
           </div>
         </div>
       ) : null}

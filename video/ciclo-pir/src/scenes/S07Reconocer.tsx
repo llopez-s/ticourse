@@ -2,10 +2,9 @@ import { useCurrentFrame } from 'remotion';
 import type { SceneProps } from '../../../engine/src/timeline/types';
 import { C, FONT, RADIUS, STAGE, alpha } from '../../../engine/src/theme/tokens';
 import { EASE, enter, progress } from '../../../engine/src/theme/motion';
-import { Icon, mix } from '../../../engine/src/ui';
+import { Icon } from '../../../engine/src/ui';
 import { S07_A, S07_B, S07_DOUBLE, S07_END, S07_LABEL, S07_REVEAL } from '../data/s07-reconocer';
 import { Candidate } from './parts/Candidate';
-import { Person } from './parts/PirCard';
 import { Stage, wordFrame } from './kit';
 
 const S = 's07-reconocer';
@@ -50,8 +49,9 @@ export function S07Reconocer(props: SceneProps) {
   const dimA = p(revealAt, 14);
   const goodAt = S07_REVEAL.good.map((_, i) => revealAt + 6 + i * 12);
   const topicIn = enter(frame, revealAt + 12, { distance: 12, duration: 16 });
-  const commaAt = at('s07-05', 'mitades') - 6;
-  const comma = p(commaAt, 12);
+  const half1 = p(at('s07-05', 'entran') - 6, 12);
+  const half2 = p(at('s07-05', 'saltar') - 6, 12);
+  const comma = p(at('s07-06', 'también') - 8, 12);
   const commaNote = enter(frame, at('s07-06', 'también') - 6, { distance: 12, duration: 16 });
   const pairOut = 1 - progress(frame, notSameAt - 10, 14, EASE.inOut);
 
@@ -59,58 +59,51 @@ export function S07Reconocer(props: SceneProps) {
   const stamp = p(notSameAt, 12);
   const who = p(at('s07-07', 'quien') - 6, 16);
 
-  const double = (
-    <>
-      <div style={{ position: 'absolute', left: mix(0, -6, split), top: mix(0, -16, split), opacity: 1 }}>
-        <Chunk text={S07_DOUBLE.a} split={split} />
-      </div>
-      <div style={{ position: 'absolute', left: mix(612, 720, split), top: mix(0, 16, split) }}>
-        <Chunk text={S07_DOUBLE.b} split={split} />
-      </div>
-    </>
-  );
-
   return (
     <Stage>
       {/* ---- One question with a «y también» glued in, then two */}
       {doubleOut > 0.01 ? (
-        <div style={{ position: 'absolute', left: 44, top: 310, width: W - 88, height: 180, opacity: doubleIn * doubleOut, transform: `translateY(${(1 - doubleIn) * 16}px)` }}>
-          {double}
-          {/* the loose «y también» */}
-          <div
-            style={{
-              position: 'absolute',
-              left: mix(528, 548, split),
-              top: mix(0, 112, split),
-              transform: `rotate(${split * 6}deg)`,
-              padding: '8px 24px 10px',
-              borderRadius: RADIUS.pill,
-              border: `3px ${split > 0.5 ? 'dashed' : 'solid'} ${alpha(C.amber, 0.9)}`,
-              background: alpha(C.amberDeep, 0.85),
-              boxShadow: glueGlow > 0.02 ? `0 0 ${Math.round(30 * glueGlow)}px ${alpha(C.amber, 0.6 * glueGlow)}` : undefined,
-              fontFamily: FONT.sans,
-              fontSize: 38,
-              fontWeight: 850,
-              color: '#fde68a',
-              whiteSpace: 'nowrap',
-              zIndex: 2,
-            }}
-          >
-            {S07_DOUBLE.glue}
-          </div>
-          {/* two requirements, and nobody knows which is answered */}
-          {tagIn > 0.01
-            ? S07_DOUBLE.tags.map((t, i) => (
-                <div key={t} style={{ position: 'absolute', left: i === 0 ? 0 : 720, top: -62, fontFamily: FONT.sans, fontSize: 32, fontWeight: 800, color: C.cyanSoft, opacity: tagIn, whiteSpace: 'nowrap' }}>
-                  {t}
-                </div>
-              ))
-            : null}
-          {unknown > 0.01 ? (
-            <div style={{ position: 'absolute', left: 0, width: W - 88, top: 150, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 16, opacity: unknown, fontFamily: FONT.sans, fontSize: 44, fontWeight: 900, color: C.amber }}>
-              <span style={{ fontSize: 70, lineHeight: 1 }}>?</span>
+        <div style={{ position: 'absolute', left: 0, top: 330, width: W, display: 'flex', justifyContent: 'center', opacity: doubleIn * doubleOut, transform: `translateY(${(1 - doubleIn) * 16}px)` }}>
+          <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+            <Chunk text={S07_DOUBLE.a} split={split} dx={-34} dy={-14} tag={S07_DOUBLE.tags[0]} tagShow={tagIn} />
+            {/* the loose «y también» sits in the gap; it falls out when the question comes apart */}
+            <div style={{ position: 'relative', width: 240, height: 80, flexShrink: 0 }}>
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  top: 8 + 124 * split,
+                  width: 240,
+                  textAlign: 'center',
+                  transform: `rotate(${split * 7}deg)`,
+                  zIndex: 2,
+                }}
+              >
+                <span
+                  style={{
+                    display: 'inline-block',
+                    padding: '8px 24px 10px',
+                    borderRadius: RADIUS.pill,
+                    border: `3px ${split > 0.5 ? 'dashed' : 'solid'} ${alpha(C.amber, 0.9)}`,
+                    background: alpha(C.amberDeep, 0.9),
+                    boxShadow: glueGlow > 0.02 ? `0 0 ${Math.round(30 * glueGlow)}px ${alpha(C.amber, 0.6 * glueGlow)}` : undefined,
+                    fontFamily: FONT.sans,
+                    fontSize: 36,
+                    fontWeight: 850,
+                    color: '#fde68a',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {S07_DOUBLE.glue}
+                </span>
+              </div>
+              {/* nobody knows which of the two is being answered */}
+              {unknown > 0.01 ? (
+                <div style={{ position: 'absolute', left: 0, top: -16, width: 240, textAlign: 'center', fontFamily: FONT.sans, fontSize: 96, fontWeight: 900, lineHeight: 1, color: C.amber, opacity: unknown * split, textShadow: `0 0 30px ${alpha(C.amber, 0.4)}` }}>?</div>
+              ) : null}
             </div>
-          ) : null}
+            <Chunk text={S07_DOUBLE.b} split={split} dx={34} dy={14} tag={S07_DOUBLE.tags[1]} tagShow={tagIn} />
+          </div>
         </div>
       ) : null}
 
@@ -131,9 +124,12 @@ export function S07Reconocer(props: SceneProps) {
           <div style={{ position: 'absolute', left: 620, top: TOP + 56 }}>
             <Candidate width={W - 620} height={240} letter="B" lit={lit} show={bIn}>
               <span style={{ fontSize: 38 }}>
-                {S07_B[0]}
-                <span style={{ display: 'inline-block', padding: '0 7px', margin: '0 1px', borderRadius: 8, fontWeight: 900, color: comma > 0.3 ? C.cyan : C.textStrong, background: alpha(C.cyan, 0.28 * comma), boxShadow: comma > 0.02 ? `0 0 ${Math.round(24 * comma)}px ${alpha(C.cyan, 0.7 * comma)}` : undefined, transform: `scale(${1 + 0.35 * comma})`, transformOrigin: '50% 80%' }}>{S07_B[1]}</span>
-                {S07_B[2]}
+                <span style={{ borderBottom: `5px solid ${alpha(C.cyan, half1)}`, paddingBottom: 2 }}>{S07_B[0]}</span>
+                <span style={{ position: 'relative', display: 'inline-block', width: 22, textAlign: 'center' }}>
+                  <span style={{ position: 'absolute', left: -14, top: -16, width: 50, height: 50, borderRadius: 25, background: alpha(C.cyan, 0.32 * comma), boxShadow: comma > 0.02 ? `0 0 ${Math.round(30 * comma)}px ${alpha(C.cyan, 0.8 * comma)}` : undefined, transform: `scale(${comma})` }} />
+                  <span style={{ position: 'relative', fontWeight: 900, color: comma > 0.3 ? C.cyan : C.textStrong, fontSize: `${1 + 0.5 * comma}em`, lineHeight: 0 }}>{S07_B[1]}</span>
+                </span>
+                <span style={{ borderBottom: `5px solid ${alpha(C.emerald, half2)}`, paddingBottom: 2 }}>{S07_B[2].trimStart()}</span>
               </span>
             </Candidate>
           </div>
@@ -159,11 +155,25 @@ export function S07Reconocer(props: SceneProps) {
       {/* ---- Remate: well formed is not the same as priority */}
       {stamp > 0.01 ? (
         <>
-          <div style={{ position: 'absolute', left: 0, top: TOP + 26, width: W, display: 'flex', justifyContent: 'center', opacity: stamp, transform: `rotate(-2deg) scale(${1 + (1 - stamp) * 0.12})` }}>
+          <div style={{ position: 'absolute', left: 0, top: 150, width: W, display: 'flex', justifyContent: 'center', opacity: stamp, transform: `rotate(-2deg) scale(${1 + (1 - stamp) * 0.12})` }}>
             <span style={{ display: 'inline-block', padding: '12px 44px 16px', borderRadius: RADIUS.md, border: `6px solid ${alpha(C.amber, 0.92)}`, background: alpha(C.amberDeep, 0.5), fontFamily: FONT.sans, fontSize: 66, fontWeight: 900, letterSpacing: -1, color: C.amber, whiteSpace: 'nowrap' }}>{S07_END.stamp}</span>
           </div>
-          <div style={{ position: 'absolute', left: 0, top: TOP + 190, width: W, display: 'flex', justifyContent: 'center' }}>
-            <Person size={150} who={S07_END.who} does="" tone={C.emerald} show={who} check={who} glow={who * 0.7} style={{ flexDirection: 'row', gap: 36 }} />
+          <div style={{ position: 'absolute', left: 0, top: 350, width: W, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 48, opacity: who, transform: `translateY(${(1 - who) * 16}px)` }}>
+            <Candidate width={420} height={130} letter="B" lit={1}>
+              <span style={{ fontSize: 40 }}>bien formada</span>
+            </Candidate>
+            <Icon name="arrowRight" size={64} color={C.emerald} strokeWidth={2.6} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
+              <div style={{ position: 'relative', width: 130, height: 130 }}>
+                <div style={{ position: 'absolute', inset: 0, borderRadius: 65, display: 'grid', placeItems: 'center', background: alpha(C.emerald, 0.1), border: `4px solid ${alpha(C.emerald, 0.85)}`, boxShadow: `0 0 ${Math.round(34 * who)}px ${alpha(C.emerald, 0.35 * who)}` }}>
+                  <Icon name="user" size={74} color={C.emerald} strokeWidth={2} />
+                </div>
+                <div style={{ position: 'absolute', right: -6, bottom: -6, width: 46, height: 46, borderRadius: 23, display: 'grid', placeItems: 'center', background: C.emerald, border: `4px solid ${C.ink950}` }}>
+                  <Icon name="check" size={28} color={C.ink950} strokeWidth={3.4} />
+                </div>
+              </div>
+              <span style={{ fontFamily: FONT.sans, fontSize: 54, fontWeight: 850, letterSpacing: -0.8, color: C.textStrong, whiteSpace: 'nowrap' }}>{S07_END.who}</span>
+            </div>
           </div>
         </>
       ) : null}
@@ -171,11 +181,14 @@ export function S07Reconocer(props: SceneProps) {
   );
 }
 
-/** One half of the double question: a plain card; `split` pulls them apart. */
-function Chunk({ text, split }: { text: string; split: number }) {
+/** One half of the double question: a plain card with its tag; `split` pulls it apart by (dx, dy). */
+function Chunk({ text, split, dx, dy, tag, tagShow }: { text: string; split: number; dx: number; dy: number; tag: string; tagShow: number }) {
   return (
-    <div style={{ boxSizing: 'border-box', padding: '22px 36px 26px', borderRadius: RADIUS.lg, border: `3px solid ${alpha(C.cyan, 0.5 + 0.3 * split)}`, background: `linear-gradient(180deg, ${alpha(C.cyan, 0.08)} 0%, ${alpha(C.ink900, 0.97)} 70%)`, boxShadow: `0 20px 50px ${alpha('#000000', 0.4)}`, fontFamily: FONT.sans, fontSize: 42, fontWeight: 800, color: C.textStrong, whiteSpace: 'nowrap', letterSpacing: -0.4 }}>
-      {text}
+    <div style={{ position: 'relative', transform: `translate(${dx * split}px, ${dy * split}px)` }}>
+      <div style={{ position: 'absolute', left: 6, top: -56, fontFamily: FONT.sans, fontSize: 32, fontWeight: 800, color: C.cyanSoft, opacity: tagShow, whiteSpace: 'nowrap' }}>{tag}</div>
+      <div style={{ boxSizing: 'border-box', padding: '20px 34px 24px', borderRadius: RADIUS.lg, border: `3px solid ${alpha(C.cyan, 0.5 + 0.3 * split)}`, background: `linear-gradient(180deg, ${alpha(C.cyan, 0.08)} 0%, ${alpha(C.ink900, 0.97)} 70%)`, boxShadow: `0 20px 50px ${alpha('#000000', 0.4)}`, fontFamily: FONT.sans, fontSize: 36, fontWeight: 800, color: C.textStrong, whiteSpace: 'nowrap', letterSpacing: -0.4 }}>
+        {text}
+      </div>
     </div>
   );
 }

@@ -27,7 +27,7 @@ export function HypothesisStone({ thrown = 0, wobble = 0, tone = C.cyan }: { thr
           <path d="M 4 6 H 34 M 4 22 H 28 M 4 38 H 22" stroke={alpha(tone, 0.8)} strokeWidth={5} strokeLinecap="round" />
         </g>
       </g>
-      {thrown > 0.01 && thrown < 1 ? <polygon points={`${sx - 12},${sy + 4} ${sx - 6},${sy - 10} ${sx + 8},${sy - 11} ${sx + 13},${sy + 2} ${sx + 4},${sy + 11} ${sx - 8},${sy + 11}`} fill={STONE} stroke="#e2e8f0" strokeWidth={2} strokeLinejoin="round" /> : null}
+      {thrown > 0.01 && thrown < 1 ? <polygon points={`${sx - 18},${sy + 6} ${sx - 9},${sy - 15} ${sx + 12},${sy - 16} ${sx + 19},${sy + 3} ${sx + 6},${sy + 16} ${sx - 12},${sy + 16}`} fill={STONE} stroke="#e2e8f0" strokeWidth={2} strokeLinejoin="round" /> : null}
     </svg>
   );
 }

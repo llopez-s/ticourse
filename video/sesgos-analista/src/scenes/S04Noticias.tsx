@@ -96,14 +96,14 @@ export function S04Noticias(props: SceneProps) {
   // ---- Phase 2: the player and the board.
   const verdict = progress(frame, verdictAt - 4, 40, EASE.inOut);
   const px = mix(PLAYER.l.x, PLAYER.r.x, verdict);
-  const py = PLAYER.l.y - 215 * Math.sin(Math.PI * verdict);
+  const py = PLAYER.l.y - 300 * Math.sin(Math.PI * verdict);
   const realIn = progress(frame, verdictAt + 14, 40, EASE.out);
   const ghostOut = 1 - progress(frame, verdictAt + 4, 22, EASE.inOut);
   const bubblePop = p(mirrorAt - 4, 22);
-  const bubbleShrink = progress(frame, verdictAt + 4, 24, EASE.inOut);
+  const bubbleShrink = progress(frame, verdictAt - 2, 16, EASE.inOut);
   const gaze = p(mirrorAt + 10, 18) * (1 - verdict);
   const mirrorName = enter(frame, at('s04-06', 'mirror') - 6, { distance: 16, duration: 16 });
-  const says1 = enter(frame, at('s04-06', 'hecho') - 6, { distance: 12, duration: 16 });
+  const says1 = enter(frame, Math.max(at('s04-06', 'hecho') - 6, verdictAt + 18), { distance: 12, duration: 16 });
   const says2 = enter(frame, at('s04-06', 'actores') - 6, { distance: 12, duration: 16 });
 
   return (

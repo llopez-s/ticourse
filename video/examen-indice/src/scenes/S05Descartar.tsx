@@ -12,7 +12,7 @@ const W = STAGE.width;
 const ROW0 = 214;
 const STEP = 100;
 const ROW_H = 76;
-const BAR_W = 540;
+const BAR_W = 470;
 const RIGHT = 1090;
 
 // Question tiles for the «marca y sigue» strip.
@@ -59,6 +59,7 @@ export function S05Descartar(props: SceneProps) {
   // ---- the think prompt chips
   const recogerAt = wordFrame(S, 's05-06', 'Recoger') - 6;
   const planificarAt = wordFrame(S, 's05-06', 'planificar') - 6;
+  const requisitoAt = wordFrame(S, 's05-06', 'requisito') - 6;
 
   const optionRow = (i: number) => {
     const letter = 'ABCD'[i];
@@ -95,27 +96,20 @@ export function S05Descartar(props: SceneProps) {
       >
         <div style={{ width: 52, height: 52, borderRadius: 26, display: 'grid', placeItems: 'center', background: C.ink700, border: `2px solid ${C.ink500}`, fontSize: 30, fontWeight: 850, color: C.text }}>{letter}</div>
         <Bar w={BAR_W} h={28} color={accent === C.ink600 ? C.ink600 : alpha(accent, 0.8)} />
-        {/* discard cross */}
-        {isOut && outP > 0.02 ? (
-          <svg width={BAR_W + 120} height={ROW_H} style={{ position: 'absolute', left: 76, top: 0, overflow: 'visible' }} aria-hidden>
-            <path d={`M20 12 L${20 + (BAR_W + 60) * outP} ${12 + (ROW_H - 24) * outP}`} stroke={C.rose} strokeWidth={7} strokeLinecap="round" />
-            <path d={`M${BAR_W + 80} 12 L${BAR_W + 80 - (BAR_W + 60) * outP} ${12 + (ROW_H - 24) * outP}`} stroke={C.rose} strokeWidth={7} strokeLinecap="round" />
-          </svg>
-        ) : null}
         {/* the first-defensible mark: struck through */}
         {isTop && strikeP > 0.02 ? (
           <div style={{ position: 'absolute', left: 70, top: ROW_H / 2 - 3, width: (BAR_W + 40) * strikeP, height: 6, borderRadius: 3, background: C.rose, boxShadow: `0 0 16px ${alpha(C.rose, 0.7)}` }} />
         ) : null}
         {isTop && strikeP > 0.4 ? (
-          <div style={{ position: 'absolute', left: BAR_W + 120, top: 14, opacity: strikeP }}>
+          <div style={{ position: 'absolute', left: BAR_W + 100, top: 14, opacity: strikeP }}>
             <Tag color={C.rose} size={30} icon="x">
               error típico de BEST
             </Tag>
           </div>
         ) : null}
         {isBait && baitP > 0.05 ? (
-          <div style={{ position: 'absolute', left: BAR_W + 100, top: 10, display: 'flex', alignItems: 'center', gap: 14, opacity: baitP, transform: `translateX(${(1 - baitP) * -16}px)` }}>
-            <svg width={44} height={56} viewBox="0 0 24 30" fill="none" stroke={C.amber} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <div style={{ position: 'absolute', left: BAR_W + 96, top: 6, display: 'flex', alignItems: 'center', gap: 12, opacity: baitP, transform: `translateX(${(1 - baitP) * -16}px)` }}>
+            <svg width={52} height={66} viewBox="0 0 24 30" fill="none" stroke={C.amber} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M12 1v16a5.5 5.5 0 1 1-5.5-5.5" />
               <path d="M6.5 11.5l-2.8 3" />
               <circle cx={12} cy={3} r={1.6} fill={C.amber} />
@@ -134,6 +128,16 @@ export function S05Descartar(props: SceneProps) {
       {optionsOut < 1 ? (
         <div style={{ position: 'absolute', inset: 0, opacity: 1 - optionsOut, transform: `translateY(${-optionsOut * 30}px)` }}>
           {[0, 1, 2, 3].map(optionRow)}
+          {[0, 3].map((i) => {
+            const outP = progress(frame, i === 0 ? xA : xD, 12, EASE.out);
+            if (outP < 0.02) return null;
+            return (
+              <svg key={`x${i}`} width={BAR_W + 130} height={ROW_H} style={{ position: 'absolute', left: 76, top: ROW0 + i * STEP, overflow: 'visible' }} aria-hidden>
+                <path d={`M20 10 L${20 + (BAR_W + 60) * outP} ${10 + (ROW_H - 20) * outP}`} stroke={C.rose} strokeWidth={8} strokeLinecap="round" style={{ filter: `drop-shadow(0 0 8px ${alpha(C.rose, 0.6)})` }} />
+                <path d={`M${BAR_W + 80} 10 L${BAR_W + 80 - (BAR_W + 60) * outP} ${10 + (ROW_H - 20) * outP}`} stroke={C.rose} strokeWidth={8} strokeLinecap="round" style={{ filter: `drop-shadow(0 0 8px ${alpha(C.rose, 0.6)})` }} />
+              </svg>
+            );
+          })}
           {frame >= decide - 4 ? (
             <div style={{ position: 'absolute', left: RIGHT, top: ROW0 + 6, width: W - RIGHT, fontFamily: FONT.sans, ...enter(frame, decide, { distance: 26, axis: 'x' }) }}>
               <Icon name="target" size={78} color={C.cyan} strokeWidth={2} />
@@ -247,7 +251,7 @@ export function S05Descartar(props: SceneProps) {
             </svg>
           ) : null}
           {frame >= vuelvesAt + 10 ? (
-            <div style={{ position: 'absolute', left: 40 + 6 * (TILE_W + TILE_GAP) - 60, top: TILE_Y - 128, ...enter(frame, vuelvesAt + 10, { distance: 14 }) }}>
+            <div style={{ position: 'absolute', left: 40 + 6 * (TILE_W + TILE_GAP) - 60, top: TILE_Y - 176, ...enter(frame, vuelvesAt + 10, { distance: 14 }) }}>
               <Tag color={C.cyan} size={34}>
                 vuelves al final
               </Tag>
@@ -256,6 +260,14 @@ export function S05Descartar(props: SceneProps) {
         </div>
       ) : null}
 
+      {/* the new requirement that opens the question (no clue about the answer) */}
+      {frame >= requisitoAt - 4 && stripOut > 0.5 ? (
+        <div style={{ position: 'absolute', left: 0, top: 530, width: W, display: 'flex', justifyContent: 'center', ...enter(frame, requisitoAt, { distance: 16 }) }}>
+          <Tag color={C.cyan} size={40} icon="file">
+            requisito nuevo de inteligencia
+          </Tag>
+        </div>
+      ) : null}
       {/* the think prompt: two cold chips */}
       {frame >= recogerAt - 4 ? <FirstChips frame={frame} appearAt={[recogerAt, planificarAt]} /> : null}
     </Stage>

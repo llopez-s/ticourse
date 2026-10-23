@@ -137,13 +137,13 @@ export function AskCard({ text, tone, at, frame, slotLabel }: { text: string; to
         padding: '14px 16px 16px',
         borderRadius: 18,
         border: `3px solid ${alpha(tone, 0.8)}`,
-        background: alpha(tone, 0.08),
+        background: `linear-gradient(0deg, ${alpha(tone, 0.08)}, ${alpha(tone, 0.08)}), ${C.ink900}`,
         fontFamily: FONT.sans,
         opacity: p,
         transform: `translateX(${(1 - p) * 30}px)`,
       }}
     >
-      <div style={{ fontSize: 30, fontWeight: 800, lineHeight: 1.15, color: C.textStrong }}>{text}</div>
+      <div style={{ fontSize: 28, fontWeight: 800, lineHeight: 1.15, color: C.textStrong }}>{text}</div>
       <div
         style={{
           marginTop: 12,
@@ -176,7 +176,7 @@ export function EmptyRulesCell({ at, frame }: { at: number; frame: number }) {
           height: 116,
           borderRadius: 16,
           border: `3px dashed ${alpha(TONE.tactical, 0.6)}`,
-          background: alpha(TONE.tactical, 0.05),
+          background: `linear-gradient(0deg, ${alpha(TONE.tactical, 0.05)}, ${alpha(TONE.tactical, 0.05)}), ${C.ink900}`,
           display: 'grid',
           placeItems: 'center',
         }}

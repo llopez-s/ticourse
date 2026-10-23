@@ -43,7 +43,8 @@ export function S07Buena(props: SceneProps) {
 
   const whereP = progress(frame, where, 16);
   const alphaAt = wordFrame(S, 's07-03', 'alfabético') - 6;
-  const pageOut = progress(frame, wrap - 12, 14, EASE.inOut);
+  const chipAt0 = wordFrame(S, 's07-06', 'corta') - 8;
+  const pageOut = progress(frame, Math.max(wrap, chipAt0 - 14), 14, EASE.inOut);
   const toSide = progress(frame, oneline - 10, 24, EASE.inOut);
   const pageScale = 1 - 0.4 * toSide;
 
@@ -58,28 +59,28 @@ export function S07Buena(props: SceneProps) {
           <div
             style={{
               position: 'absolute',
-              left: 114 * (1 - shift),
-              top: 250,
+              left: 84 * (1 - shift),
+              top: 240,
               filter: goodP > 0.05 ? undefined : undefined,
               transform: `scale(${1 + 0.02 * goodP})`,
               transformOrigin: 'left center',
             }}
           >
             <div style={{ position: 'relative' }}>
-              <IndexLine term="ACH" note="gana la menos inconsistente" where="S4M3" width={1500} size={46} state={goodP > 0.3 ? 'good' : 'plain'} style={{ borderColor: goodP > 0.05 ? alpha(C.emerald, 0.9) : undefined, boxShadow: goodP > 0.05 ? `0 0 ${Math.round(40 * goodP)}px ${alpha(C.emerald, 0.6 * goodP)}, 0 14px 30px ${alpha('#000000', 0.45)}` : undefined }} />
+              <IndexLine term="ACH" note="gana la menos inconsistente" where="S4M3" width={1560} size={54} state={goodP > 0.3 ? 'good' : 'plain'} style={{ borderColor: goodP > 0.05 ? alpha(C.emerald, 0.9) : undefined, boxShadow: goodP > 0.05 ? `0 0 ${Math.round(40 * goodP)}px ${alpha(C.emerald, 0.6 * goodP)}, 0 14px 30px ${alpha('#000000', 0.45)}` : undefined }} />
             </div>
           </div>
-          <div style={{ position: 'absolute', left: 114 * (1 - shift), top: 410, opacity: 1 - 0.58 * ptrP, filter: ptrP > 0.05 ? `saturate(${1 - 0.7 * ptrP})` : undefined }}>
-            <IndexLine term="ACH" note="ver página 12" where="S4M3" width={1500} size={46} state={ptrP > 0.3 ? 'pointer' : 'plain'} />
+          <div style={{ position: 'absolute', left: 84 * (1 - shift), top: 410, opacity: 1 - 0.58 * ptrP, filter: ptrP > 0.05 ? `saturate(${1 - 0.7 * ptrP})` : undefined }}>
+            <IndexLine term="ACH" note="ver página 12" where="S4M3" width={1560} size={54} state={ptrP > 0.3 ? 'pointer' : 'plain'} />
             {ptrP > 0.02 ? (
-              <div style={{ position: 'absolute', left: 90, top: 50 - 3, width: 640 * ptrP, height: 6, borderRadius: 3, background: C.rose }} />
+              <div style={{ position: 'absolute', left: 450, top: 54 - 3, width: 470 * ptrP, height: 6, borderRadius: 3, background: C.rose }} />
             ) : null}
           </div>
           {/* stopwatch for the good one */}
           {goodP > 0.02 ? (
-            <div style={{ position: 'absolute', left: 1522, top: 214, opacity: goodP, transform: `scale(${0.7 + 0.3 * goodP})`, transformOrigin: 'left top' }}>
-              <Dial size={170} sweep={secP / 12} hand={secP / 12} color={C.emerald} stopwatch glow={0.6} />
-              <div style={{ marginTop: 6, textAlign: 'center', width: 170, fontFamily: FONT.sans, fontSize: 64, fontWeight: 850, color: C.emerald, lineHeight: 1 }}>5 s</div>
+            <div style={{ position: 'absolute', left: 1592, top: 214, opacity: goodP, transform: `scale(${0.7 + 0.3 * goodP})`, transformOrigin: 'left top' }}>
+              <Dial size={140} sweep={secP / 12} hand={secP / 12} color={C.emerald} stopwatch glow={0.6} />
+              <div style={{ marginTop: 6, textAlign: 'center', width: 140, fontFamily: FONT.sans, fontSize: 58, fontWeight: 850, color: C.emerald, lineHeight: 1 }}>5 s</div>
             </div>
           ) : null}
           {ptrP > 0.02 ? (
@@ -143,7 +144,7 @@ export function S07Buena(props: SceneProps) {
       ) : null}
 
       {/* wrap */}
-      {frame >= wrap - 4 ? (
+      {frame >= chipAt0 - 4 ? (
         <div style={{ position: 'absolute', left: 0, top: 250, width: W, display: 'flex', justifyContent: 'center', gap: 36, fontFamily: FONT.sans }}>
           {WRAP_CHIPS.map((c) => {
             const at = wordFrame(S, 's07-06', c.word) - 8;

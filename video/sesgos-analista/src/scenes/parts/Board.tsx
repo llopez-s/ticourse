@@ -18,16 +18,16 @@ export type Cell = readonly [col: number, row: number];
 function Piece({ cx, cy, r, color, solid = true }: { cx: number; cy: number; r: number; color: string; solid?: boolean }) {
   return (
     <g>
-      <ellipse cx={cx} cy={cy + r * 0.95} rx={r * 0.95} ry={r * 0.32} fill={solid ? alpha(color, 0.75) : 'none'} stroke={color} strokeWidth={solid ? 0 : 2.5} strokeDasharray={solid ? undefined : '5 4'} />
+      <ellipse cx={cx} cy={cy + r * 0.95} rx={r * 0.95} ry={r * 0.32} fill={solid ? alpha(color, 0.75) : alpha(color, 0.14)} stroke={color} strokeWidth={solid ? 0 : 3} strokeDasharray={solid ? undefined : '7 5'} />
       <path
         d={`M ${cx - r * 0.55} ${cy + r * 0.9} L ${cx - r * 0.25} ${cy - r * 0.1} L ${cx + r * 0.25} ${cy - r * 0.1} L ${cx + r * 0.55} ${cy + r * 0.9} Z`}
-        fill={solid ? alpha(color, 0.9) : 'none'}
+        fill={solid ? alpha(color, 0.9) : alpha(color, 0.14)}
         stroke={color}
-        strokeWidth={solid ? 0 : 2.5}
-        strokeDasharray={solid ? undefined : '5 4'}
+        strokeWidth={solid ? 0 : 3}
+        strokeDasharray={solid ? undefined : '7 5'}
         strokeLinejoin="round"
       />
-      <circle cx={cx} cy={cy - r * 0.45} r={r * 0.42} fill={solid ? color : 'none'} stroke={color} strokeWidth={solid ? 0 : 2.5} strokeDasharray={solid ? undefined : '5 4'} />
+      <circle cx={cx} cy={cy - r * 0.45} r={r * 0.42} fill={solid ? color : alpha(color, 0.14)} stroke={color} strokeWidth={solid ? 0 : 3} strokeDasharray={solid ? undefined : '7 5'} />
     </g>
   );
 }

@@ -6,7 +6,8 @@ import { Icon } from '../../../engine/src/ui';
 import { PagePile } from './parts/Book';
 import { TAB_COLORS } from './parts/Binder';
 import { MAP_H, MAP_W, MapArt } from './parts/MapArt';
-import { IndexLine, Tag, Verdict } from './parts/paper';
+import { Dial } from './parts/Dial';
+import { Bar, IndexLine, PAPER, Paper, Tag, Verdict } from './parts/paper';
 import { Stage, wordFrame } from './kit';
 
 const S = 's08-mientras';
@@ -47,6 +48,7 @@ export function S08Mientras(props: SceneProps) {
   const crossAt = wordFrame(S, 's08-01', 'conoces') - 4;
   const gainedAt = wordFrame(S, 's08-02', 'ganado') - 20;
   const mapsOut = progress(frame, pass[0] - 14, 16, EASE.inOut);
+  const hastyOut = progress(frame, cityAt - 4, 14, EASE.inOut);
 
   const stairsOut = progress(frame, tlp - 14, 16, EASE.inOut);
   const ringsAt = wordFrame(S, 's08-04', 'encuadernas') - 10;
@@ -55,6 +57,30 @@ export function S08Mientras(props: SceneProps) {
 
   return (
     <Stage>
+      {/* the hasty list the message asks for: a sheet filling up fast against the clock */}
+      {frame < cityAt + 12 ? (
+        <div style={{ position: 'absolute', inset: 0, opacity: 1 - hastyOut, fontFamily: FONT.sans }}>
+          <div style={{ position: 'absolute', left: 330, top: 232, ...enter(frame, 4, { distance: 20 }) }}>
+            <Paper w={560} h={380} rotate={-3} style={{ padding: '22px 30px' }}>
+              <div style={{ fontSize: 42, fontWeight: 850, color: PAPER.ink, letterSpacing: -0.5 }}>una lista</div>
+              <div style={{ marginTop: 16, display: 'grid', gap: 18 }}>
+                {[420, 360, 470, 300, 440, 380, 330].map((w, i) => (
+                  <Bar key={i} w={w * progress(frame, 14 + i * 9, 9, EASE.linear)} h={12} color={alpha(PAPER.soft, 0.6)} />
+                ))}
+              </div>
+            </Paper>
+          </div>
+          <div style={{ position: 'absolute', left: 1000, top: 240, ...enter(frame, 10, { distance: 20, axis: 'x' }) }}>
+            <Dial size={230} sweep={((frame * 0.011) % 1) * 0.999} hand={(frame * 0.011) % 1} color={C.amber} glow={0.3} />
+          </div>
+          <div style={{ position: 'absolute', left: 990, top: 520, ...enter(frame, 22, { distance: 14 }) }}>
+            <Tag color={C.amber} size={40} icon="clock">
+              a la carrera
+            </Tag>
+          </div>
+        </div>
+      ) : null}
+
       {/* two maps */}
       {mapsOut < 1 ? (
         <div style={{ position: 'absolute', inset: 0, opacity: 1 - mapsOut, transform: `translateY(${-mapsOut * 20}px)` }}>
@@ -169,7 +195,7 @@ export function S08Mientras(props: SceneProps) {
             <span style={{ fontSize: 54, fontWeight: 850, color: C.emerald, letterSpacing: -1 }}>una nota que vale</span>
           </div>
           <div style={{ position: 'absolute', left: 44, top: 330, transform: `translateY(${(1 - noteIn) * 30}px)` }}>
-            <IndexLine term="TLP:AMBER+STRICT" note="solo tu organización, sin clientes" where="S3M4" width={1640} size={44} state="good" cols={[0.34, 0.49, 0.17]} />
+            <IndexLine term="TLP:AMBER+STRICT" note="solo tu organización, sin clientes" where="S3M4" width={1640} size={46} state="good" cols={[0.31, 0.53, 0.16]} />
           </div>
         </div>
       ) : null}

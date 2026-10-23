@@ -22,7 +22,7 @@ interface Pos {
 
 // Where each envelope lives in each phase (component box, stage-local). The closed envelope draws
 // nothing above its body, so the empty top of the box may sit under the intercepted message.
-const POS_A: Record<EnvelopeId, Pos> = { board: { x: 20, y: 225, w: 335 }, soc: { x: 400, y: 225, w: 335 } };
+const POS_A: Record<EnvelopeId, Pos> = { board: { x: 20, y: 215, w: 357 }, soc: { x: 410, y: 215, w: 357 } };
 const POS_B: Record<EnvelopeId, Pos> = { board: { x: 400, y: 167, w: 421 }, soc: { x: 907, y: 167, w: 421 } };
 // A station: badge (envelope), the sheet that came out of it, and the reader's question(s).
 const STATION_X: Record<EnvelopeId, number> = { board: 0, soc: 888 };
@@ -30,7 +30,7 @@ const SY = 20;
 const SHEET_DX = 186;
 const ASK_DX = SHEET_DX + SHEET.w + 16;
 const POS_D: Record<EnvelopeId, Pos> = { board: { x: 0, y: SY, w: 170 }, soc: { x: 888, y: SY, w: 170 } };
-const POS_F: Record<EnvelopeId, Pos> = { board: { x: 469, y: 225, w: 335 }, soc: { x: 924, y: 225, w: 335 } };
+const POS_F: Record<EnvelopeId, Pos> = { board: { x: 452, y: 215, w: 357 }, soc: { x: 919, y: 215, w: 357 } };
 const TAG_TOP = 606;
 
 const lerpPos = (a: Pos, b: Pos, t: number): Pos => ({ x: mix(a.x, b.x, t), y: mix(a.y, b.y, t), w: mix(a.w, b.w, t) });
@@ -74,11 +74,11 @@ export function S03Error(props: SceneProps) {
   const foxOut = progress(frame, asideAt, 18, EASE.inOut);
   const foxGlow = progress(frame, Math.max(replyAt, nameAt - 4), 12) * (1 - progress(frame, nameAt + 40, 24, EASE.inOut));
   const lift = progress(frame, liftAt, 22, EASE.inOut);
-  const fly = progress(frame, swapAt, 40, EASE.inOut);
-  const toStation = progress(frame, swapAt + 40, 30, EASE.inOut);
+  const fly = progress(frame, swapAt, 46, EASE.inOut);
+  const toStation = progress(frame, swapAt + 50, 30, EASE.inOut);
   const back = progress(frame, mixAt - 4, 28, EASE.inOut);
-  const opened = progress(frame, swapAt + 56, 20, EASE.inOut) * (1 - progress(frame, mixAt - 8, 18, EASE.inOut));
-  const stations = progress(frame, swapAt + 52, 16) * (1 - progress(frame, mixAt - 10, 16, EASE.inOut));
+  const opened = progress(frame, swapAt + 64, 20, EASE.inOut) * (1 - progress(frame, mixAt - 8, 18, EASE.inOut));
+  const stations = progress(frame, swapAt + 66, 16) * (1 - progress(frame, mixAt - 10, 16, EASE.inOut));
 
   const place = (id: EnvelopeId): Pos => lerpPos(lerpPos(lerpPos(POS_A[id], POS_B[id], lift), POS_D[id], toStation), POS_F[id], back);
 
@@ -117,20 +117,6 @@ export function S03Error(props: SceneProps) {
         </div>
       ) : null}
 
-      {/* Documents in flight */}
-      {fly > 0 && fly < 1
-        ? (['soc', 'board'] as const).map((from) => {
-            const to: EnvelopeId = from === 'soc' ? 'board' : 'soc';
-            const p = arc(from, to, from === 'soc' ? 150 : -170, fly);
-            const k = fly < 0.15 ? fly / 0.15 : fly > 0.85 ? (1 - fly) / 0.15 : 1;
-            return (
-              <div key={from} style={{ position: 'absolute', left: p.x - 47, top: p.y - 60, opacity: Math.min(1, k * 1.5), transform: `rotate(${(from === 'soc' ? -1 : 1) * (14 - 28 * fly)}deg) scale(${0.7 + 0.3 * k})` }}>
-                <FlyingDoc tone={from === 'soc' ? TONE.tactical : TONE.strategic} icon={from === 'soc' ? 'shield' : 'chart'} />
-              </div>
-            );
-          })
-        : null}
-
       {/* The envelopes */}
       {(['board', 'soc'] as const).map((id) => {
         const e = ENVELOPES[id];
@@ -141,11 +127,11 @@ export function S03Error(props: SceneProps) {
             <Envelope
               width={p.w}
               label={e.label}
-              sub={frame < swapAt + 36 || back > 0.05 ? (id === 'board' ? '¿dónde invertimos?' : '¿qué bloqueamos hoy?') : undefined}
+              sub={frame < swapAt + 50 || back > 0.05 ? (id === 'board' ? '¿dónde invertimos?' : '¿qué bloqueamos hoy?') : undefined}
               tone={e.tone}
               icon={id === 'board' ? 'users' : 'bell'}
               open={opened}
-              sealOpacity={1 - progress(frame, swapAt + 36, 10)}
+              sealOpacity={1 - progress(frame, swapAt + 46, 10)}
               glow={0.25 * lift * (1 - toStation)}
               check={checkIn}
               hideLabel={toStation > 0.5 && back < 0.05}
@@ -154,6 +140,20 @@ export function S03Error(props: SceneProps) {
           </div>
         );
       })}
+
+      {/* Documents in flight */}
+      {fly > 0 && fly < 1
+        ? (['soc', 'board'] as const).map((from) => {
+            const to: EnvelopeId = from === 'soc' ? 'board' : 'soc';
+            const p = arc(from, to, from === 'soc' ? 210 : -230, fly);
+            const k = fly < 0.15 ? fly / 0.15 : fly > 0.85 ? (1 - fly) / 0.15 : 1;
+            return (
+              <div key={from} style={{ position: 'absolute', left: p.x - 58, top: p.y - 75, opacity: Math.min(1, k * 1.5), transform: `rotate(${(from === 'soc' ? -1 : 1) * (14 - 28 * fly)}deg) scale(${0.7 + 0.3 * k})` }}>
+                <FlyingDoc size={150} tone={from === 'soc' ? TONE.tactical : TONE.strategic} icon={from === 'soc' ? 'shield' : 'chart'} />
+              </div>
+            );
+          })
+        : null}
 
       {/* Station chips under the badges */}
       {stations > 0.01
@@ -181,8 +181,8 @@ export function S03Error(props: SceneProps) {
       {/* Board's station: the long list and its two questions */}
       {stations > 0.01 ? (
         <>
-          <Unfold at={swapAt + 52} frame={frame} out={1 - stations} left={STATION_X.board + SHEET_DX} top={SY}>
-            <IpSheet f={Math.max(0, frame - swapAt - 52)} countFrom={Math.max(0, ipCountAt - swapAt - 52)} />
+          <Unfold at={swapAt + 66} frame={frame} out={1 - stations} left={STATION_X.board + SHEET_DX} top={SY}>
+            <IpSheet f={Math.max(0, frame - swapAt - 66)} countFrom={Math.max(0, ipCountAt - swapAt - 66)} />
           </Unfold>
           <div style={{ position: 'absolute', left: STATION_X.board + ASK_DX, top: SY + 6, opacity: stations }}>
             <AskCard text={S03.boardQuestions[0]} tone={TONE.strategic} at={boardGetsAt} frame={frame} />

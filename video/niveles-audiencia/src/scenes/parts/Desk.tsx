@@ -22,7 +22,7 @@ export function Desk({ opacity = 1 }: { opacity?: number }) {
         }}
       />
       {/* notebook, right edge */}
-      <svg width={150} height={210} viewBox="0 0 150 210" style={{ position: 'absolute', right: 26, top: 120, opacity: 0.55, transform: 'rotate(6deg)' }} aria-hidden>
+      <svg width={150} height={210} viewBox="0 0 150 210" style={{ position: 'absolute', right: 44, bottom: 14, opacity: 0.55, transform: 'rotate(6deg)' }} aria-hidden>
         <rect x={4} y={4} width={142} height={202} rx={12} fill={C.ink850} stroke={C.ink600} strokeWidth={3} />
         <path d="M32 4 V206" stroke={C.ink600} strokeWidth={3} />
         {[44, 74, 104, 134, 164].map((y) => (
@@ -30,7 +30,7 @@ export function Desk({ opacity = 1 }: { opacity?: number }) {
         ))}
       </svg>
       {/* pen */}
-      <svg width={230} height={40} viewBox="0 0 230 40" style={{ position: 'absolute', right: 150, bottom: 54, opacity: 0.55, transform: 'rotate(-18deg)' }} aria-hidden>
+      <svg width={230} height={40} viewBox="0 0 230 40" style={{ position: 'absolute', left: 156, bottom: 40, opacity: 0.55, transform: 'rotate(-14deg)' }} aria-hidden>
         <rect x={4} y={10} width={190} height={20} rx={10} fill={C.ink700} stroke={C.ink500} strokeWidth={3} />
         <path d="M194 10 L226 20 L194 30 Z" fill={C.ink600} stroke={C.ink500} strokeWidth={3} strokeLinejoin="round" />
       </svg>

@@ -136,9 +136,9 @@ export function LogStrip({ bodyW = 560, tabW = 150, h = 100, tab = 0, glitch = 0
         </>
       ) : null}
       <div style={{ ...piece({}), left: tabW, width: bodyW }}>
-        {[0, 1, 2].map((i) => (
-          <div key={i} style={{ position: 'absolute', left: 26 + i * 120, top: h / 2 - 7, width: 90, height: 14, borderRadius: 7, background: alpha('#1e293b', 0.55) }} />
-        ))}
+        {[0, 1, 2].map((i) =>
+          26 + i * 120 + 90 <= bodyW - 10 ? <div key={i} style={{ position: 'absolute', left: 26 + i * 120, top: h / 2 - 7, width: 90, height: 14, borderRadius: 7, background: alpha('#1e293b', 0.55) }} /> : null,
+        )}
       </div>
       <div style={{ position: 'absolute', left: 0, top: 0, width: tabW + 14, height: h, transform: `rotate(${tab}deg)`, transformOrigin: `${tabW}px 50%` }}>
         <div style={{ ...piece({}), left: 0, width: tabW + 14, borderRadius: '14px 6px 6px 14px', background: `linear-gradient(180deg, #a3b1c4 0%, #7a8ba2 100%)` }}>

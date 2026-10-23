@@ -114,3 +114,28 @@ export function ClockArt({ size = 120, fill = 0.15, color = C.amber }: { size?: 
     </svg>
   );
 }
+
+/** A little ghost (the threat nobody has evidence for). */
+export function Ghost({ size = 120, color = C.muted }: { size?: number; color?: string }) {
+  return (
+    <svg width={size} height={size * 1.16} viewBox="0 0 120 140">
+      <path d="M12 130V60C12 26 34 8 60 8s48 18 48 52v70l-14-12-17 12-17-12-17 12-17-12Z" fill={alpha(color, 0.12)} stroke={color} strokeWidth={4} strokeLinejoin="round" />
+      <circle cx="44" cy="58" r="8" fill={color} />
+      <circle cx="76" cy="58" r="8" fill={color} />
+      <path d="M48 84Q60 94 72 84" fill="none" stroke={color} strokeWidth={4} strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/** A person under a spotlight: the one who really is coming for you. */
+export function Spotlit({ width = 150, color = C.rose, beam = 1 }: { width?: number; color?: string; beam?: number }) {
+  const h = Math.round(width * 1.2);
+  return (
+    <svg width={width} height={h} viewBox="0 0 150 180" style={{ overflow: 'visible' }}>
+      <polygon points="75,0 8,172 142,172" fill={alpha(C.cyan, 0.12 * beam)} stroke={alpha(C.cyan, 0.4 * beam)} strokeWidth={2} />
+      <circle cx="75" cy="78" r="19" fill={alpha(color, 0.3)} stroke={color} strokeWidth={4} />
+      <path d="M38 168C38 134 54 114 75 114s37 20 37 54Z" fill={alpha(color, 0.3)} stroke={color} strokeWidth={4} strokeLinejoin="round" />
+      <circle cx="75" cy="6" r="8" fill={C.cyanSoft} opacity={beam} />
+    </svg>
+  );
+}

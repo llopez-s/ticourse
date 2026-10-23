@@ -48,7 +48,7 @@ export function S09Semilla(props: SceneProps) {
   const sheetAt = wordFrame(S, 's09-02', 'completas') - 6;
   const printOut = progress(frame, rehearse - 12, 14, EASE.inOut);
 
-  const appAt = wordFrame(S, 's09-03', 'práctica') - 8;
+  const appAt = rehearse + 4;
   const giacAt = wordFrame(S, 's09-03', 'GIAC') - 8;
   const handAt = wordFrame(S, 's09-03', 'mano') - 8;
   const rehearseOut = progress(frame, gesture - 12, 14, EASE.inOut);
@@ -228,8 +228,8 @@ export function S09Semilla(props: SceneProps) {
       {/* extension of you vs a new map */}
       {frame >= extension - 8 ? (
         <div style={{ position: 'absolute', inset: 0, opacity: progress(frame, extension - 8, 14), fontFamily: FONT.sans }}>
-          <div style={{ position: 'absolute', left: 30, top: 190, ...enter(frame, extension, { distance: 30, axis: 'x' }) }}>
-            <div style={{ position: 'relative', width: 760, height: 330 }}>
+          <div style={{ position: 'absolute', left: 20, top: 214, ...enter(frame, extension, { distance: 30, axis: 'x' }) }}>
+            <div style={{ position: 'relative', width: 760, height: 330, transform: 'scale(1.2)', transformOrigin: 'left top' }}>
               <div style={{ position: 'absolute', left: 0, top: 36, width: 200, height: 200, borderRadius: 100, display: 'grid', placeItems: 'center', background: alpha(C.cyan, 0.1), border: `4px solid ${alpha(C.cyan, 0.75)}` }}>
                 <Icon name="user" size={140} color={C.cyan} strokeWidth={1.8} />
               </div>
@@ -247,7 +247,7 @@ export function S09Semilla(props: SceneProps) {
               </div>
             </div>
           </div>
-          <div style={{ position: 'absolute', left: 900, top: 222, ...enter(frame, wordFrame(S, 's09-05', 'mapa') - 8, { distance: 30, axis: 'x' }) }}>
+          <div style={{ position: 'absolute', left: 960, top: 222, ...enter(frame, wordFrame(S, 's09-05', 'no') - 8, { distance: 30, axis: 'x' }) }}>
             <div style={{ transform: 'scale(0.9)', transformOrigin: 'left top', width: MAP_W * 0.9, height: MAP_H * 0.9 }}>
               <MapArt kind="foreign" cross={progress(frame, wordFrame(S, 's09-05', 'nuevo') - 4, 22, EASE.inOut)} />
             </div>

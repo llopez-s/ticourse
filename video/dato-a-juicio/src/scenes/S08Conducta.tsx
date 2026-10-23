@@ -10,7 +10,7 @@ import { Stage, wordFrame } from './kit';
 const S = 's08-conducta';
 const W = STAGE.width;
 
-const ROD_X = [150, 420, 690, 960, 1230] as const;
+const ROD_X = [110, 380, 650, 920, 1190] as const;
 
 /**
  * s08-conducta «Lo que cuesta cambiar». The fisherman changes rods in an afternoon: a row of five rods, each one struck out
@@ -29,7 +29,7 @@ export function S08Conducta(props: SceneProps) {
 
   // ---- Rods.
   const rodAt = [
-    Math.max(change, wordFrame(S, 's08-01', 'cambia') - 8),
+    change,
     wordFrame(S, 's08-01', 'tarde') - 8,
     wordFrame(S, 's08-01', 'programa') - 8,
     wordFrame(S, 's08-01', 'nombre') - 8,
@@ -68,12 +68,12 @@ export function S08Conducta(props: SceneProps) {
             const e = enter(frame, rodAt[i], { distance: 26 });
             const struck = progress(frame, (rodAt[i + 1] ?? 1e9) + 6, 12);
             return (
-              <div key={x} style={{ position: 'absolute', left: x, top: 232, ...e, opacity: e.opacity * (1 - 0.55 * struck) }}>
-                <RodMini size={200} struck={struck} color={i % 2 ? C.amber : '#fcd34d'} />
+              <div key={x} style={{ position: 'absolute', left: x, top: 226, ...e, opacity: e.opacity * (1 - 0.55 * struck) }}>
+                <RodMini size={250} struck={struck} color={i % 2 ? C.amber : '#fcd34d'} />
               </div>
             );
           })}
-          <div style={{ position: 'absolute', left: 1450, top: 226, width: 220, textAlign: 'center', opacity: progress(frame, horasAt, 14), transform: `translateY(${(1 - progress(frame, horasAt, 14)) * 14}px)` }}>
+          <div style={{ position: 'absolute', left: 1470, top: 236, width: 220, textAlign: 'center', opacity: progress(frame, horasAt, 14), transform: `translateY(${(1 - progress(frame, horasAt, 14)) * 14}px)` }}>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <ClockArt size={150} fill={0.14} />
             </div>
@@ -117,9 +117,9 @@ export function S08Conducta(props: SceneProps) {
       {barsIn > 0 && barsOut < 1 ? (
         <div style={{ position: 'absolute', inset: 0, opacity: barsIn * (1 - barsOut), fontFamily: FONT.sans }}>
           <Bar top={216} label="el fichero: poco" value={0.2 * fileBar} tone={C.amber} />
-          <Bar top={366} label="el comportamiento: más" value={0.86 * behaviourBar} tone={C.cyan} />
+          <Bar top={382} label="el comportamiento: más" value={0.86 * behaviourBar} tone={C.cyan} />
           {frame >= stillAt - 2 ? (
-            <div style={{ position: 'absolute', left: 0, top: 540, width: W, display: 'flex', justifyContent: 'center', ...enter(frame, stillAt, { distance: 16 }) }}>
+            <div style={{ position: 'absolute', left: 0, top: 560, width: W, display: 'flex', justifyContent: 'center', ...enter(frame, stillAt, { distance: 16 }) }}>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 16, padding: '12px 38px 12px 26px', borderRadius: 999, border: `3px solid ${alpha(C.emerald, 0.85)}`, background: alpha(C.emerald, 0.12), fontSize: 44, fontWeight: 800, color: '#d1fae5', whiteSpace: 'nowrap' }}>
                 <Icon name="check" size={46} color={C.emerald} strokeWidth={2.6} />
                 bloquear ficheros sigue valiendo
@@ -132,7 +132,7 @@ export function S08Conducta(props: SceneProps) {
       {/* The close */}
       {frame >= toolAt - 4 ? (
         <div style={{ position: 'absolute', inset: 0, fontFamily: FONT.sans }}>
-          <Close top={206} at={toolAt} frame={frame}>
+          <Close top={190} at={toolAt} frame={frame}>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 18 }}>
               <RodMini size={78} />
               <span style={{ fontSize: 54, fontWeight: 850, color: C.textStrong }}>
@@ -147,7 +147,7 @@ export function S08Conducta(props: SceneProps) {
             </span>
           </Close>
           {frame >= personAt - 4 ? (
-            <div style={{ position: 'absolute', left: (W - 1000) / 2, top: 450, width: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 34, padding: '18px 34px', borderRadius: RADIUS.lg, border: `3px solid ${alpha(C.rose, 0.8)}`, background: `linear-gradient(90deg, ${alpha(C.rose, 0.14)}, ${alpha(C.ink900, 0.96)})`, boxShadow: `0 0 44px ${alpha(C.rose, 0.22)}`, ...enter(frame, personAt, { distance: 20 }) }}>
+            <div style={{ position: 'absolute', left: (W - 1000) / 2, top: 486, width: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 34, padding: '18px 34px', borderRadius: RADIUS.lg, border: `3px solid ${alpha(C.rose, 0.8)}`, background: `linear-gradient(90deg, ${alpha(C.rose, 0.14)}, ${alpha(C.ink900, 0.96)})`, boxShadow: `0 0 44px ${alpha(C.rose, 0.22)}`, ...enter(frame, personAt, { distance: 20 }) }}>
               <Silhouette width={96} />
               <span style={{ fontSize: 64, fontWeight: 850, letterSpacing: -1, color: C.textStrong, whiteSpace: 'nowrap' }}>
                 una <span style={{ color: C.roseSoft }}>persona</span>, no un programa

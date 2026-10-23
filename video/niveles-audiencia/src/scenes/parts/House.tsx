@@ -42,7 +42,7 @@ export function SlidingHouse({ frame, at, glow = {}, answer = 0, dim = 0, bodyOu
   const door = progress(frame, at.passive, 22, EASE.out);
   const guard = progress(frame, at.active, 18);
   const roof = progress(frame, at.intel, 24, EASE.out);
-  const off = noOffense ? 0 : progress(frame, at.offense, 20);
+  const off = noOffense ? 0 : progress(frame, at.offense, 20) * (1 - clamp01(bodyOut));
 
   const bodyOpacity = 1 - bodyOut;
   const sink = bodyOut * 50;

@@ -11,8 +11,8 @@ import { EnvelopeAsk } from './scenes/parts/EnvelopeCards';
 
 ensureFonts();
 
-const BOARD = { x: 1010, y: 190, w: 520 };
-const SOC = { x: 1290, y: 450, w: 520 };
+const BOARD = { x: 960, y: 196, w: 480 };
+const SOC = { x: 1360, y: 470, w: 480 };
 
 /**
  * Poster / YouTube thumbnail for «Niveles de CTI y la Sliding Scale». Big title on the left for
@@ -38,7 +38,7 @@ export function Poster() {
       </div>
 
       {/* swap badge */}
-      <svg width={190} height={190} viewBox="0 0 190 190" style={{ position: 'absolute', left: 1230, top: 610 }} aria-hidden>
+      <svg width={190} height={190} viewBox="0 0 190 190" style={{ position: 'absolute', left: 1236, top: 640 }} aria-hidden>
         <circle cx={95} cy={95} r={86} fill={alpha(C.ink950, 0.92)} stroke={C.rose} strokeWidth={8} />
         <path d="M50 76 H128" stroke={C.rose} strokeWidth={10} strokeLinecap="round" />
         <path d="M110 54 L134 76 L110 98" fill="none" stroke={C.rose} strokeWidth={10} strokeLinecap="round" strokeLinejoin="round" />
@@ -54,8 +54,8 @@ export function Poster() {
 
       {/* title */}
       <div style={{ position: 'absolute', left: left - 6, top: 296, fontWeight: 850, letterSpacing: -2.5, color: C.textStrong, whiteSpace: 'nowrap' }}>
-        <div style={{ fontSize: 124, lineHeight: 1.04 }}>Niveles de CTI</div>
-        <div style={{ fontSize: 84, lineHeight: 1.1, color: '#c4b5fd', letterSpacing: -1.5 }}>y la Sliding Scale</div>
+        <div style={{ fontSize: 112, lineHeight: 1.04 }}>Niveles de CTI</div>
+        <div style={{ fontSize: 80, lineHeight: 1.1, color: '#c4b5fd', letterSpacing: -1.5 }}>y la Sliding Scale</div>
       </div>
 
       {/* subtitle */}
