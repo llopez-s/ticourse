@@ -17,6 +17,7 @@ import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'no
 import os from 'node:os';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
+import { warnIfEngineBehind } from './lib/engine-freshness.mjs';
 import { acquireHeavyLock } from './lib/heavy-lock.mjs';
 import { ENGINE_DIR, PATHS, REPO_ROOT, SCRIPTS_DIR, VIDEO, isMainModule } from './lib/paths.mjs';
 import { writeFileAtomic } from './lib/remotion.mjs';
@@ -30,6 +31,7 @@ const CACHE = path.join(PATHS.outDir, 'verify-voice-cache.json');
 export function verifyVoice({ warnOnly = false, force = false, log = console } = {}) {
   const timeline = JSON.parse(readFileSync(PATHS.timeline, 'utf8'));
   if (timeline.mode !== 'audio') throw new Error('the timeline is in estimate mode: run audio.mjs first');
+  warnIfEngineBehind(log, { cwd: REPO_ROOT });
   const jobs = timeline.segments.map((seg) => {
     const file = path.join(PATHS.publicDir, seg.audio);
     const playMs = Math.round(((seg.audioFrames + 2) / timeline.fps) * 1000);
