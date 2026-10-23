@@ -3,7 +3,7 @@ import { useCurrentFrame, useVideoConfig } from 'remotion';
 import type { SceneProps } from '../../../engine/src/timeline/types';
 import { C, FONT, RADIUS, STAGE, alpha } from '../../../engine/src/theme/tokens';
 import { EASE, enter, progress, springIn } from '../../../engine/src/theme/motion';
-import { Icon, dimStyle, focusWeights, mix, type IconName } from '../../../engine/src/ui';
+import { Icon, dimStyle, focusWeights, mix, windowWeight, type IconName } from '../../../engine/src/ui';
 import { S02 } from '../data/s02-lectores';
 import { PageIcon, Silhouette, StormIcon } from './parts/Icons';
 import { Stage, wordFrame } from './kit';
@@ -12,16 +12,17 @@ const S = 's02-lectores';
 const W = STAGE.width;
 
 // The dump: one long table, the pile starts at its left end and slides to the director at the right.
-const DESK = { x: 110, w: 1508, y: 566 } as const;
-const PILE = { w: 200, from: 270, to: 930 } as const;
+const DESK = { x: 110, w: 1508, y: 592 } as const;
+const PILE = { w: 230, from: 290, to: 930 } as const;
 const EXEC_X = 1290;
 
 // The reader table: rows, their collapsed height, the gap, and how much each one grows when it is explained.
 const ROW_GAP = 14;
 const ROW_H = 134;
-const ROW_H_STORM = 146;
+const ROW_H_STORM = 158;
 const BODY_H = { soc: 122, ciso: 240, board: 222 } as const;
 const COLS = { who: 0.17, product: 0.37, gets: 0.46 } as const;
+const COLS_STORM = { who: 0.215, product: 0.35, gets: 0.435 } as const;
 
 /**
  * s02-lectores «Quién lo lee». The intercepted message owns the top of the stage, so the scene
@@ -66,21 +67,11 @@ export function S02Lectores(props: SceneProps) {
   const qOut = progress(frame, soc - 26, 18, EASE.inOut);
 
   // ---- The reader table.
-  const tableIn = progress(frame, soc - 16, 18);
-  const { weights: ex, dims } = focusWeights(frame, [soc - 4, ciso - 4, board - 4], { end: storm - 6, ramp: 14, lead: 0 });
-  const stormP = progress(frame, storm - 8, 28, EASE.inOut);
-  const rowH = mix(ROW_H, ROW_H_STORM, stormP);
-  const heights = [rowH + BODY_H.soc * ex[0], rowH + BODY_H.ciso * ex[1], rowH + BODY_H.board * ex[2]];
-  const total = heights[0] + heights[1] + heights[2] + 2 * ROW_GAP;
-  const top0 = mix(Math.max(8, Math.round((660 - total) / 2) - 10), 36, stormP);
-  const tops = [top0, top0 + heights[0] + ROW_GAP, top0 + heights[0] + heights[1] + 2 * ROW_GAP];
-  const rowX = mix(0, 300, stormP);
-  const rowW = W - rowX;
-
   // What each row says, each on its own words.
   const socGets = w('s02-05', 'acciones') - 6;
   const socBody = w('s02-05', 'página') - 8;
   const socProduct = w('s02-05', 'flash') - 6;
+  const socBody0 = w('s02-05', 'actuar') - 8;
   const cisoGets = w('s02-06', 'riesgo') - 6;
   const cisoProduct = w('s02-07', 'ejemplo') - 8;
   const cisoQuote2 = w('s02-07', 'adelantar') - 8;
@@ -89,6 +80,23 @@ export function S02Lectores(props: SceneProps) {
   const boardProduct = w('s02-09', 'assessment') - 10;
   const boardAlso = w('s02-09', 'también') - 6;
   const boardOwn = w('s02-09', 'cuenta') - 8;
+
+  const tableIn = progress(frame, soc - 16, 18);
+  // Focus (glow, dimming the others) follows the cue of each reader; the row only grows once its first body line is due.
+  const { weights: foc, dims } = focusWeights(frame, [soc - 4, ciso - 4, board - 4], { end: storm - 6, ramp: 14, lead: 0 });
+  const stormP = progress(frame, storm - 8, 28, EASE.inOut);
+  const ex = [
+    windowWeight(frame, socBody0 - 10, ciso - 4, { ramp: 14, lead: 0 }),
+    windowWeight(frame, cisoProduct - 14, board - 4, { ramp: 14, lead: 0 }),
+    windowWeight(frame, boardPages - 10, storm - 6, { ramp: 14, lead: 0 }),
+  ];
+  const rowH = mix(ROW_H, ROW_H_STORM, stormP);
+  const heights = [rowH + BODY_H.soc * ex[0], rowH + BODY_H.ciso * ex[1], rowH + BODY_H.board * ex[2]];
+  const total = heights[0] + heights[1] + heights[2] + 2 * ROW_GAP;
+  const top0 = mix(Math.max(8, Math.round((660 - total) / 2) - 10), 28, stormP);
+  const tops = [top0, top0 + heights[0] + ROW_GAP, top0 + heights[0] + heights[1] + 2 * ROW_GAP];
+  const rowX = mix(0, 270, stormP);
+  const rowW = W - rowX;
 
   // ---- The storm.
   const cloudIn = progress(frame, storm + 10, 20);
@@ -103,16 +111,16 @@ export function S02Lectores(props: SceneProps) {
           {/* the long table */}
           <div style={{ position: 'absolute', left: DESK.x, top: DESK.y, width: DESK.w, height: 14, borderRadius: 7, background: `linear-gradient(180deg, ${C.ink600} 0%, ${C.ink700} 100%)`, boxShadow: `0 20px 40px ${alpha('#000000', 0.4)}` }} />
           {[DESK.x + 40, DESK.x + DESK.w - 60].map((x) => (
-            <div key={x} style={{ position: 'absolute', left: x, top: DESK.y + 14, width: 12, height: 80, background: C.ink700, borderRadius: 4 }} />
+            <div key={x} style={{ position: 'absolute', left: x, top: DESK.y + 14, width: 12, height: 50, background: C.ink700, borderRadius: 4 }} />
           ))}
           {/* the director, no face */}
-          <div style={{ position: 'absolute', left: EXEC_X - 125, top: DESK.y - 252 }}>
-            <Silhouette kind="exec" size={210} tone={C.cyan} glow={0.25} />
+          <div style={{ position: 'absolute', left: EXEC_X - 140, top: DESK.y - 282 }}>
+            <Silhouette kind="exec" size={236} tone={C.cyan} glow={0.25} />
           </div>
           {/* the pile and its label */}
           <Pile x={pileX} />
           {stamp > 0 ? (
-            <div style={{ position: 'absolute', left: PILE.to - 195, top: DESK.y - 250, transform: `rotate(-9deg) scale(${0.6 + 0.4 * Math.min(1, stamp)})`, opacity: Math.min(1, stamp * 1.5) }}>
+            <div style={{ position: 'absolute', left: PILE.to - 195, top: DESK.y - 285, transform: `rotate(-9deg) scale(${0.6 + 0.4 * Math.min(1, stamp)})`, opacity: Math.min(1, stamp * 1.5) }}>
               <div style={{ padding: '6px 30px 10px', border: `6px solid ${C.rose}`, borderRadius: 14, background: alpha(C.ink950, 0.82), color: C.rose, fontSize: 64, fontWeight: 900, letterSpacing: 2, whiteSpace: 'nowrap', textTransform: 'uppercase', boxShadow: `0 0 30px ${alpha(C.rose, 0.35)}` }}>{S02.dump.stamp}</div>
             </div>
           ) : null}
@@ -153,16 +161,16 @@ export function S02Lectores(props: SceneProps) {
       {/* The reader table */}
       {tableIn > 0 ? (
         <div style={{ position: 'absolute', inset: 0, opacity: tableIn }}>
-          <Row top={tops[0]} h={heights[0]} headH={rowH} x={rowX} w={rowW} dim={dims[0]} focus={ex[0]} kind="soc" name={S02.soc.name}
+          <Row top={tops[0]} h={heights[0]} headH={rowH} x={rowX} w={rowW} dim={dims[0]} focus={foc[0]} grow={ex[0]} storm={stormP} kind="soc" name={S02.soc.name}
             product={S02.soc.product} productAt={socProduct} frame={frame}
             gets={<GetsChip text={S02.soc.gets} at={socGets} frame={frame} />}
             bodyNode={
               <>
+                <Line frame={frame} at={socBody0} size={34} color={C.cyanSoft} label="sale de">{S02.soc.from}</Line>
                 <Line frame={frame} at={socBody} size={38} color={C.text}>{S02.soc.detail}</Line>
-                <Line frame={frame} at={socBody + 14} size={34} color={C.cyanSoft} label="sale de">{S02.soc.from}</Line>
               </>
             } />
-          <Row top={tops[1]} h={heights[1]} headH={rowH} x={rowX} w={rowW} dim={dims[1]} focus={ex[1]} kind="ciso" name={S02.ciso.name}
+          <Row top={tops[1]} h={heights[1]} headH={rowH} x={rowX} w={rowW} dim={dims[1]} focus={foc[1]} grow={ex[1]} storm={stormP} kind="ciso" name={S02.ciso.name}
             product={S02.ciso.product} productAt={cisoProduct} frame={frame}
             gets={<GetsChip text={S02.ciso.gets} at={cisoGets} frame={frame} />}
             bodyNode={
@@ -174,7 +182,7 @@ export function S02Lectores(props: SceneProps) {
                 </div>
               </>
             } />
-          <Row top={tops[2]} h={heights[2]} headH={rowH} x={rowX} w={rowW} dim={dims[2]} focus={ex[2]} kind="board" name={S02.board.name}
+          <Row top={tops[2]} h={heights[2]} headH={rowH} x={rowX} w={rowW} dim={dims[2]} focus={foc[2]} grow={ex[2]} storm={stormP} kind="board" name={S02.board.name}
             product={S02.board.product} productAt={boardProduct} frame={frame}
             gets={<GetsChip text={S02.board.gets} sub={S02.board.getsSub} subAt={boardOwn} subHide={stormP} at={boardGets} frame={frame} />}
             bodyNode={
@@ -254,6 +262,8 @@ function Row({
   w,
   dim,
   focus,
+  grow,
+  storm,
   kind,
   name,
   product,
@@ -269,6 +279,8 @@ function Row({
   w: number;
   dim: number;
   focus: number;
+  grow: number;
+  storm: number;
   kind: 'soc' | 'ciso' | 'board';
   name: string;
   product: string;
@@ -281,14 +293,14 @@ function Row({
   return (
     <div style={{ position: 'absolute', left: x, top, width: w, height: h, boxSizing: 'border-box', borderRadius: RADIUS.lg, border: `3px solid ${alpha(C.cyan, 0.3 + 0.55 * focus)}`, background: `linear-gradient(180deg, ${alpha(C.cyan, 0.04 + 0.1 * focus)} 0%, ${alpha(C.ink900, 0.97)} 75%)`, boxShadow: focus > 0.05 ? `0 0 ${Math.round(34 * focus)}px ${alpha(C.cyan, 0.22 * focus)}` : undefined, overflow: 'hidden', ...dimStyle(dim) }}>
       <div style={{ display: 'flex', alignItems: 'center', height: headH, boxSizing: 'border-box', padding: '0 30px' }}>
-        <div style={{ width: `${COLS.who * 100}%`, display: 'flex', alignItems: 'center', gap: 16, flexShrink: 0 }}>
-          <Silhouette kind={kind} size={64} glow={0.5 * focus} />
-          <span style={{ fontSize: 46, fontWeight: 850, color: C.textStrong, lineHeight: 1.05 }}>{name}</span>
+        <div style={{ width: `${mix(COLS.who, COLS_STORM.who, storm) * 100}%`, display: 'flex', alignItems: 'center', gap: 16, flexShrink: 0 }}>
+          <Silhouette kind={kind} size={mix(64, 54, storm)} glow={0.5 * focus} />
+          <span style={{ fontSize: mix(46, 40, storm), fontWeight: 850, color: C.textStrong, lineHeight: 1.05 }}>{name}</span>
         </div>
-        <div style={{ width: `${COLS.product * 100}%`, fontSize: 44, fontWeight: 800, color: C.cyanSoft, lineHeight: 1.12, paddingRight: 24, ...prod }}>{product}</div>
-        <div style={{ width: `${COLS.gets * 100}%` }}>{gets}</div>
+        <div style={{ width: `${mix(COLS.product, COLS_STORM.product, storm) * 100}%`, fontSize: mix(44, 40, storm), fontWeight: 800, color: C.cyanSoft, lineHeight: 1.12, paddingRight: 20, ...prod }}>{product}</div>
+        <div style={{ width: `${mix(COLS.gets, COLS_STORM.gets, storm) * 100}%` }}>{gets}</div>
       </div>
-      <div style={{ padding: '0 30px 0 30px', opacity: Math.max(0, focus * 1.4 - 0.4) }}>{bodyNode}</div>
+      <div style={{ padding: '0 30px 0 30px', opacity: Math.max(0, grow * 1.4 - 0.4) }}>{bodyNode}</div>
     </div>
   );
 }

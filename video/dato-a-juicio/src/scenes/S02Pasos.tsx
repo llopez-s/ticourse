@@ -3,9 +3,8 @@ import type { CSSProperties, ReactNode } from 'react';
 import type { SceneProps } from '../../../engine/src/timeline/types';
 import { C, FONT, RADIUS, STAGE, alpha } from '../../../engine/src/theme/tokens';
 import { EASE, enter, progress } from '../../../engine/src/theme/motion';
-import { dimStyle, mix } from '../../../engine/src/ui';
+import { Icon, dimStyle, mix } from '../../../engine/src/ui';
 import { EMBER, IP } from '../data/canon';
-import { CisoStrip } from './parts/CisoStrip';
 import { FoxGlyph } from './parts/Glyphs';
 import { IpChip, RUNGS, RungCard } from './parts/Stairs';
 import { Stage, wordFrame } from './kit';
@@ -92,23 +91,23 @@ export function S02Pasos(props: SceneProps) {
     <Stage>
       {/* The adversary's card, low: the top band belongs to the intercepted message */}
       {fichaOut < 1 ? (
-        <div style={{ position: 'absolute', left: (W - 940) / 2, top: 262, width: 940, ...fichaIn, opacity: fichaIn.opacity * (1 - fichaOut), fontFamily: FONT.sans }}>
+        <div style={{ position: 'absolute', left: (W - 1120) / 2, top: 300, width: 1120, ...fichaIn, opacity: fichaIn.opacity * (1 - fichaOut), fontFamily: FONT.sans }}>
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
               gap: 34,
-              padding: '26px 40px',
+              padding: '30px 48px',
               borderRadius: RADIUS.lg,
               border: `2px solid ${alpha(C.rose, 0.6)}`,
               background: `linear-gradient(90deg, ${alpha(C.rose, 0.12)} 0%, ${alpha(C.ink900, 0.96)} 70%)`,
               boxShadow: `0 24px 60px ${alpha('#000000', 0.4)}`,
             }}
           >
-            <FoxGlyph size={128} />
+            <FoxGlyph size={156} />
             <div style={{ whiteSpace: 'nowrap' }}>
-              <div style={{ fontSize: 70, fontWeight: 900, letterSpacing: 2, lineHeight: 1.05, color: '#fecdd3' }}>{EMBER.name}</div>
-              <div style={{ marginTop: 10, fontSize: 38, fontWeight: 650, color: C.text }}>
+              <div style={{ fontSize: 86, fontWeight: 900, letterSpacing: 2, lineHeight: 1.05, color: '#fecdd3' }}>{EMBER.name}</div>
+              <div style={{ marginTop: 12, fontSize: 44, fontWeight: 650, color: C.text }}>
                 {EMBER.role} <span style={{ color: C.faint }}>·</span> <span style={{ color: C.roseSoft }}>{EMBER.craft}</span>
               </div>
             </div>
@@ -118,8 +117,10 @@ export function S02Pasos(props: SceneProps) {
 
       {/* The CISO's question, parked top left */}
       {cisoIn > 0 ? (
-        <div style={{ position: 'absolute', left: 0, top: 40, opacity: 1 - goOut, transform: `translateY(${(1 - cisoIn) * 20}px)`, ...dimStyle(0.45 * progress(frame, data, 16), cisoIn) }}>
-          <CisoStrip width={470} question={['¿qué sabemos', 'de esto?']} questionShow={[1, progress(frame, askAt, 14)]} questionSize={46} show={1} />
+        <div style={{ position: 'absolute', left: 0, top: 40, opacity: (1 - goOut) * cisoIn, transform: `translateY(${(1 - cisoIn) * 20}px)` }}>
+          <div style={{ ...dimStyle(0.45 * progress(frame, data, 16)) }}>
+            <CisoNote ask={progress(frame, askAt, 14)} />
+          </div>
         </div>
       ) : null}
 
@@ -174,9 +175,8 @@ export function S02Pasos(props: SceneProps) {
                   key={k}
                   style={{
                     padding: '1px 8px',
-                    margin: '0 -2px',
                     borderRadius: 10,
-                    fontWeight: 850,
+                    fontWeight: on > 0.5 ? 850 : 650,
                     color: on > 0.5 ? '#ecfdf5' : C.text,
                     background: alpha(C.emerald, 0.55 * on),
                     boxShadow: on > 0.05 ? `0 0 ${Math.round(24 * on)}px ${alpha(C.emerald, 0.55 * on)}` : undefined,
@@ -209,6 +209,35 @@ export function S02Pasos(props: SceneProps) {
       {/* The one sign that stays, and the exam trick under it */}
       {progress(frame, decision - 4, 16) > 0 ? <ChangeSign frame={frame} at={decision} trickAt={trickAt} /> : null}
     </Stage>
+  );
+}
+
+/** The CISO's question, small (the long «responsable de seguridad» line was already shown in s01). */
+function CisoNote({ ask }: { ask: number }) {
+  return (
+    <div
+      style={{
+        width: 470,
+        boxSizing: 'border-box',
+        padding: '22px 30px 26px',
+        borderRadius: RADIUS.lg,
+        border: `2px solid ${alpha(C.cyan, 0.5)}`,
+        background: `linear-gradient(180deg, ${alpha(C.cyan, 0.12)} 0%, ${alpha(C.ink900, 0.96)} 60%)`,
+        fontFamily: FONT.sans,
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+        <div style={{ width: 64, height: 64, borderRadius: 32, display: 'grid', placeItems: 'center', background: alpha(C.cyan, 0.12), border: `3px solid ${alpha(C.cyan, 0.7)}` }}>
+          <Icon name="user" size={38} color={C.cyan} strokeWidth={2} />
+        </div>
+        <span style={{ fontSize: 36, fontWeight: 850, letterSpacing: 4, color: '#c4b5fd' }}>CISO</span>
+      </div>
+      <div style={{ marginTop: 16, fontSize: 46, fontWeight: 850, letterSpacing: -0.6, lineHeight: 1.14, color: C.textStrong, whiteSpace: 'nowrap', opacity: ask, transform: `translateY(${(1 - ask) * 10}px)` }}>
+        ¿qué sabemos
+        <br />
+        de esto?
+      </div>
+    </div>
   );
 }
 

@@ -16,7 +16,7 @@ const W = STAGE.width;
 /** Phase 1: the big scale, centred. */
 const BIG = { w: 720, x: 504, y: 96 } as const;
 /** Phases 2–4: the head on the left, the steps and the cards on the right. */
-const HEAD = { w: 360, x: 110, y: 110 } as const;
+const HEAD = { w: 420, x: 90, y: 60 } as const;
 const RIGHT_X = 650;
 /** Phase 5: the scale back on the left, the weight and its certificate outside it. */
 const BACK = { w: 600, x: 70, y: 214 } as const;
@@ -61,7 +61,7 @@ export function S02Instrumento(props: SceneProps) {
   const kilosAt = at('s02-01', 'kilos');
   const tap = (t0: number) => progress(frame, t0, 7, EASE.in) * (1 - progress(frame, t0 + 9, 10, EASE.out));
   const press = Math.max(tap(miresAt + 4), tap(miresAt + 38));
-  const fingerIn = progress(frame, miresAt - 6, 14) * (1 - progress(frame, at('s02-01', 'arregla') + 40, 16, EASE.inOut));
+  const fingerIn = progress(frame, miresAt - 6, 14) * (1 - progress(frame, miresAt + 62, 14, EASE.inOut));
   const eyeIn = p(miresAt - 8, 16) * (1 - progress(frame, brainAt - 10, 14, EASE.inOut));
   const melt = progress(frame, brainAt - 10, 28, EASE.inOut);
   const caption1 = p(kilosAt - 4, 16) * (1 - p(miresAt - 6, 12));
