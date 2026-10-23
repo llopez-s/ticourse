@@ -213,7 +213,7 @@ export function S01Hook(props: SceneProps) {
           const on = progress(frame, chipAt[i], 10) * (1 - 0.5 * progress(frame, (chipAt[i + 1] ?? differ) - 2, 12, EASE.inOut));
           return (
             <div key={c.text} style={{ display: 'inline-flex', alignItems: 'center', gap: 12, height: 60, boxSizing: 'border-box', padding: '0 24px 0 16px', borderRadius: RADIUS.pill, border: `2px solid ${alpha(C.cyan, 0.4 + 0.5 * on)}`, background: alpha(C.cyan, 0.07 + 0.12 * on), boxShadow: on > 0.02 ? `0 0 ${Math.round(20 * on)}px ${alpha(C.cyan, 0.3 * on)}` : undefined, fontSize: 30, fontWeight: 750, color: C.textStrong, whiteSpace: 'nowrap', ...e, opacity: e.opacity * (1 - chipsDim) }}>
-              <span style={{ width: 34, height: 34, borderRadius: 17, display: 'grid', placeItems: 'center', background: alpha(C.cyan, 0.2), border: `2px solid ${alpha(C.cyan, 0.7)}`, fontSize: 22, fontWeight: 900, color: C.cyanSoft }}>{i + 1}</span>
+              <span style={{ width: 40, height: 40, borderRadius: 20, display: 'grid', placeItems: 'center', background: alpha(C.cyan, 0.2), border: `2px solid ${alpha(C.cyan, 0.7)}`, fontSize: 26, fontWeight: 900, color: C.cyanSoft }}>{i + 1}</span>
               {c.text}
             </div>
           );

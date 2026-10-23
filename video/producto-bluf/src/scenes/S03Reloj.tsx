@@ -263,7 +263,7 @@ function Rule({ frame, at, label, tone, children }: { frame: number; at: number;
   const e = enter(frame, at, { distance: 12, duration: 14 });
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 0, ...e }}>
-      <span style={{ fontSize: 24, fontWeight: 850, letterSpacing: 2, color: tone, textTransform: 'uppercase', whiteSpace: 'nowrap', lineHeight: 1.2 }}>{label}</span>
+      <span style={{ fontSize: 26, fontWeight: 850, letterSpacing: 2, color: tone, textTransform: 'uppercase', whiteSpace: 'nowrap', lineHeight: 1.2 }}>{label}</span>
       <span style={{ fontSize: 38, fontWeight: 800, color: C.textStrong, lineHeight: 1.12, whiteSpace: 'nowrap' }}>{children}</span>
     </div>
   );

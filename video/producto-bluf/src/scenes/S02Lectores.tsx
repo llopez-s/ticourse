@@ -246,7 +246,7 @@ function GetsChip({ text, sub, subAt, subHide = 0, at, frame }: { text: string; 
   const s = subAt === undefined ? 0 : progress(frame, subAt, 14);
   return (
     <div style={{ ...e }}>
-      <div style={{ fontSize: 24, fontWeight: 800, letterSpacing: 2, color: C.faint, textTransform: 'uppercase', marginBottom: 4 }}>recibe</div>
+      <div style={{ fontSize: 26, fontWeight: 800, letterSpacing: 2, color: C.faint, textTransform: 'uppercase', marginBottom: 2 }}>recibe</div>
       <div style={{ display: 'inline-block', padding: '4px 20px 6px', borderRadius: RADIUS.md, border: `2px solid ${alpha(C.cyan, 0.75)}`, background: alpha(C.cyan, 0.14), fontSize: 34, fontWeight: 800, lineHeight: 1.15, color: C.cyanSoft }}>{text}</div>
       {sub ? <div style={{ marginTop: 6, fontSize: 28, fontWeight: 600, color: C.muted, opacity: s * (1 - subHide), height: subHide > 0.95 ? 0 : undefined }}>{sub}</div> : null}
     </div>

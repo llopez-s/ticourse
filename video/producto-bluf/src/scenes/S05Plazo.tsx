@@ -51,7 +51,7 @@ export function S05Plazo(props: SceneProps) {
   const toNext = progress(frame, next - 16, 30, EASE.inOut);
   let cam = mixCam(CAM_UNK, CAM_ACTIONS, toActions);
   cam = mixCam(cam, CAM_NEXT, toNext);
-  const clipTop = mix(mix(CLIP_TOP_MSG, 150, toActions), 100, toNext);
+  const clipTop = mix(mix(CLIP_TOP_MSG, 176, toActions), 100, toNext);
   const clipBottom = mix(660, 300, toNext);
   const sheetOut = progress(frame, silence - 18, 16, EASE.inOut);
 
@@ -144,8 +144,8 @@ export function S05Plazo(props: SceneProps) {
       {/* Silence: with a stated update, or without */}
       {boxIn > 0 && boxesOut < 1 ? (
         <div style={{ position: 'absolute', inset: 0, opacity: boxIn * (1 - boxesOut) }}>
-          <Box x={868} y={150} tone={C.amber} icon="eye" lines={['no hay parte previsto:', '¿alguien está mirando?']} strike={strike} at={w('s05-06', 'silencio') - 8} frame={frame} />
-          <Box x={40} y={150} tone={C.emerald} icon="check" lines={['hay parte previsto:', 'sin noticias = sin cambios']} strike={0} at={greenAt} lit={green} frame={frame} />
+          <Box x={868} y={150} tone={C.amber} icon="eye" lines={['no hay parte previsto:', '¿alguien está mirando?']} strike={strike} at={silence - 6} frame={frame} />
+          <Box x={40} y={150} tone={C.emerald} icon="check" lines={['hay parte previsto:', 'sin noticias = sin cambios']} strike={0} at={silence + 2} lit={green} frame={frame} />
         </div>
       ) : null}
 

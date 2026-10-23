@@ -119,7 +119,7 @@ export function S06Bluf(props: SceneProps) {
         const swept = progress(frame, wordsAt[0] + (i / 5) * (wordsAt[1] - wordsAt[0]) - 6, 12) * (1 - progress(frame, wordsAt[0] + ((i + 1) / 5) * (wordsAt[1] - wordsAt[0]) + 10, 12)) * sweep;
         return (
           <div key={text} style={{ position: 'absolute', left: LAYER.x, top: LAYER.top + i * (LAYER.h + LAYER.gap), width: LAYER.w, height: LAYER.h, boxSizing: 'border-box', display: 'flex', alignItems: 'center', gap: 20, padding: '0 24px', borderRadius: RADIUS.md, border: `2px solid ${alpha(tone, first ? 0.9 : 0.45 + 0.3 * swept)}`, background: alpha(tone, tint + 0.1 * swept), boxShadow: glow > 0.05 ? `0 0 ${Math.round(30 * glow)}px ${alpha(C.cyan, 0.3 * glow)}` : undefined, ...e, opacity: e.opacity * (1 - dimmed) }}>
-            <span style={{ width: 34, height: 34, borderRadius: 17, display: 'grid', placeItems: 'center', flexShrink: 0, background: alpha(tone, 0.2), border: `2px solid ${alpha(tone, 0.8)}`, fontSize: 22, fontWeight: 900, color: first ? C.cyanSoft : C.text }}>{i + 1}</span>
+            <span style={{ width: 40, height: 40, borderRadius: 20, display: 'grid', placeItems: 'center', flexShrink: 0, background: alpha(tone, 0.2), border: `2px solid ${alpha(tone, 0.8)}`, fontSize: 26, fontWeight: 900, color: first ? C.cyanSoft : C.text }}>{i + 1}</span>
             <span style={{ fontSize: 36, fontWeight: first ? 850 : 700, color: first ? C.textStrong : C.text, whiteSpace: 'nowrap' }}>{text}</span>
           </div>
         );
