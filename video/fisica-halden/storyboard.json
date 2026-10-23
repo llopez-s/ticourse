@@ -1,0 +1,150 @@
+{
+  "title": "Quién entra, qué se mueve y quién pica",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 276,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Quién entra"
+    },
+    {
+      "n": 2,
+      "title": "Qué se mueve"
+    },
+    {
+      "n": 3,
+      "title": "Quién pica"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Un plano, tres preguntas",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · lo que Seguridad pediría a cualquier entrada · propuesta · sin fecha». Un plano visto desde arriba, en esquema (`plan`): una calle con un coche, una puerta, un pasillo y un cuarto, con el rótulo «plano de ejemplo · sobre el papel · no es un edificio del puerto». Sin nombres, sin lectores, cámaras ni vallas. La primera frase presenta el puerto y el problema (Seguridad escribe lo que pediría a una entrada, sea cual sea); al acabarla, título «Quién entra, qué se mueve y quién pica» (`title`, hacia los 7-8 s, siempre antes de los 12) y, con la segunda frase, la promesa en tres chips (`promise`): «qué frena cada control · dónde falla cada sensor · qué es un cebo». Plaquita «SY0-701 · 1.2». Sin adversario",
+      "requiredCues": [
+        "plan",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-frena",
+      "chapter": 1,
+      "title": "Qué frena cada control",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "goal": "El plano, con cada parada abriéndose con su pregunta arriba (no alrededor del dibujo). Un coche llega a la fachada (`car`): «¿Puede entrar un vehículo?» → BOLLARDS (`bollards`), «postes fijos · paran un vehículo, no a quien va a pie». La puerta (`door`): «¿Cuántos pasan a la vez?» → ACCESS CONTROL VESTIBULE (`vestibule`), «dos puertas, una sola abierta · pasa una persona» (sin «tailgating» en pantalla); la tarjeta de examen entra al acabar esa frase. Un lector de tarjetas en la jamba y una persona delante (`badge`): «¿Quién es y adónde puede ir?» → ACCESS BADGE, «cada persona, sus zonas · cada acceso queda apuntado». A media luz, un chip (`rest`): «security guard · video surveillance · fencing · lighting» con «las demás, en la lección». Al pie (`line`): «cada control tapa un hueco». Sin cámara dibujada en el plano de esta escena",
+      "requiredCues": [
+        "car",
+        "bollards",
+        "door",
+        "vestibule",
+        "badge",
+        "beep",
+        "rest",
+        "line"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Un centro de distribución",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 1 (`q1`). La escena dibuja el rótulo «pregunta tipo examen · ejemplo» (abajo a la derecha, como V30; el panel solo pinta «EXAMEN · SY0-701 · 1.2», contradicción 17), con la plaquita, el escenario, la pregunta y las cuatro opciones; sin calificador, a propósito. Las opciones y la cuenta atrás de 5 s con «Pausa si quieres» las pone el motor. El panel tapa la escena hasta el final, así que el fondo se queda quieto (el plano, sin texto importante). En `ok-1` sale la correcta (C, Access badge) y en `trap-1` la trampa (A, Video surveillance). En la resolución vuelve el plano en una línea (`plan-back`): «el badge decide y apunta; la cámara solo graba»; la tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "plan-back"
+      ]
+    },
+    {
+      "id": "s04-sensor",
+      "chapter": 2,
+      "title": "Cada sensor falla distinto",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "goal": "Cuatro cuartos pequeños (`rooms`), uno por sensor, con el punto débil dibujado, en el estilo del plano. INFRARED (`infrared`): una figura con halo de calor y un rayo de sol en la pared, «nota el calor de una persona · se confunde con el sol, la calefacción y los animales». PRESSURE (`pressure`): una alfombra con una huella de peso, «pesa · solo cubre el suelo que pisas». MICROWAVE (`microwave`): ondas que cruzan un tabique fino hacia la sala de al lado, «eco de radio · cubre mucho · atraviesa tabiques finos». ULTRASONIC (`ultrasonic`): ondas que rebotan en cuatro paredes, «eco de sonido · cuarto pequeño y cerrado · no pasa las paredes · las corrientes de aire lo confunden». Regla al pie (`rule`): «elige el que no falla en tu cuarto». «Sensor» es siempre de movimiento, calor o peso, nunca el de red. Sin tarjeta de examen (la del concepto 2 llega en s05, después de la pregunta)",
+      "requiredCues": [
+        "rooms",
+        "infrared",
+        "pressure",
+        "microwave",
+        "false",
+        "ultrasonic",
+        "rule"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Un despacho con ventana",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo examen 2 (`q2`), con su rótulo «pregunta tipo examen · ejemplo» dibujado por la escena. Es el primer calificador del vídeo: «MEJOR» resaltado y, debajo, dibujada por la escena (el panel no la pinta, `reg:1358-1359`), la línea de V28 (`best`): «MEJOR: la que encaja con este caso, aunque otra suene bien»; la voz lo dice con palabras propias antes de la cuenta atrás. Fondo quieto: el plano, sin texto importante. En `ok-2` la correcta (A, Ultrasonic) y en `trap-2` la trampa (D, Microwave). En la resolución vuelven los cuatro cuartos en una línea (`rooms-back`): «no valía el que más cubre, sino el que no fallaba en ese despacho»; la tarjeta de examen entra después de la revelación",
+      "requiredCues": [
+        "q2",
+        "best",
+        "ok-2",
+        "trap-2",
+        "rooms-back"
+      ]
+    },
+    {
+      "id": "s06-cebo",
+      "chapter": 3,
+      "title": "Un cebo que nadie toca",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "El mismo plano y el mismo sello de propuesta (lo que Seguridad pediría, sobre el papel). La idea primero (`inside`): lo de antes intenta frenar o detectar a quien llega; un cebo parte de que ya hay alguien dentro. Cuatro cebos en fila (`four`), cada uno con su idea y después su nombre: «un sistema que no sirve a nadie» → HONEYPOT (`honeypot`); «varios que se hablan entre sí» → HONEYNET (`honeynet`); «un fichero con un nombre irresistible» → HONEYFILE (`honeyfile`); «un dato que no existe: una cuenta, una clave, un registro» → HONEYTOKEN (`honeytoken`); la tarjeta de examen entra al acabar esa frase. La marca común (`rule`): «nadie legítimo lo toca · cualquier toque avisa». Un chip a media luz, sin voz: «creíble, nunca con datos reales». Nada se coloca, pica ni se detecta en el puerto",
+      "requiredCues": [
+        "rule",
+        "inside",
+        "intruder",
+        "four",
+        "honeypot",
+        "honeynet",
+        "honeyfile",
+        "honeytoken",
+        "touch"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Un estudio de arquitectura",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 3 (`q3`), con su rótulo «pregunta tipo examen · ejemplo» dibujado por la escena y «MEJOR» resaltado (ya explicado en s05; solo resaltado, sin glosa ni línea). Fondo quieto: los cuatro cebos de s06 a media luz, sin texto importante. En `ok-3` la correcta (D, Honeyfile) y en `trap-3` la trampa (B, Honeypot). En la resolución vuelven los cuatro cebos en una línea (`four-back`): «el fichero va por donde pasa el ransomware»; la tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "four-back"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (el plano con sus tres controles · los cuatro cuartos · los cuatro cebos) (`recap`, `rule-1`, `rule-2`, `rule-3`), en pantalla con el texto completo de la ficha: «Cada control tapa un hueco. Los bollards frenan vehículos, el vestíbulo deja pasar de uno en uno, y el access badge decide quién abre qué y lo deja apuntado» · «Un sensor se elige por dónde falla. El de radio atraviesa un tabique fino y el de sonido no; el de calor se confunde con el sol, y el de peso solo cubre donde pisas» · «Un cebo parte de que ya hay alguien dentro. Se llama por lo que ofrece, un sistema, una red, un fichero o un dato, y cualquier toque avisa» (la voz dice una versión corta de cada una). La frase para el examen (`phrase`): «Cada cosa tapa un hueco y falla por algún sitio». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next` entra con «Tu turno», y `endcard`, al acabar «…de la lección»; la voz dice la tarea). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
