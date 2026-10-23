@@ -7,8 +7,8 @@ import { TABLE, TABLE_HEAD } from '../../data/niveles';
  * The lesson's table (Nivel · Audiencia · Pregunta típica · Productos · Horizonte), filled row by row.
  * Stage-local geometry, shared with the threads that join each row to its vignette.
  */
-export const TBL = { x: 56, w: 1672, headerY: 250, headerH: 38, rowY0: 294, rowH: 96, rowGap: 6 } as const;
-export const COLS = [240, 292, 430, 480, 230] as const;
+export const TBL = { x: 56, w: 1672, headerY: 250, headerH: 38, rowY0: 294, rowH: 92, rowGap: 6 } as const;
+export const COLS = [236, 292, 420, 462, 262] as const;
 
 export function rowCenterY(i: number): number {
   return TBL.rowY0 + i * (TBL.rowH + TBL.rowGap) + TBL.rowH / 2;
@@ -98,7 +98,7 @@ export function LevelTable({
                       padding: '0 16px',
                       opacity: p,
                       transform: `translateX(${(1 - p) * 14}px)`,
-                      fontSize: c === 0 ? 38 : 26,
+                      fontSize: c === 0 ? 36 : 26,
                       fontWeight: c === 0 ? 850 : 620,
                       lineHeight: 1.2,
                       letterSpacing: c === 0 ? -0.5 : 0,

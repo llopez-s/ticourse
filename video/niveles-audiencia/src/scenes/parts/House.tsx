@@ -28,12 +28,14 @@ export interface HouseProps {
   roofLift?: number;
   /** Hide the Offense piece. */
   noOffense?: boolean;
+  /** Frame at which the watchman stops walking (the house stays still while a question is open). */
+  freezeAt?: number;
 }
 
 const SKY = C.sky;
 const GROUND_Y = 500;
 
-export function SlidingHouse({ frame, at, glow = {}, answer = 0, dim = 0, bodyOut = 0, roofLift = 0, noOffense = false }: HouseProps) {
+export function SlidingHouse({ frame, at, glow = {}, answer = 0, dim = 0, bodyOut = 0, roofLift = 0, noOffense = false, freezeAt = Number.POSITIVE_INFINITY }: HouseProps) {
   const g = (id: PieceId) => clamp01(glow[id] ?? 0);
   const slab = progress(frame, at.arch, 22, EASE.out);
   const walls = progress(frame, at.arch + 16, 30, EASE.out);
@@ -48,7 +50,7 @@ export function SlidingHouse({ frame, at, glow = {}, answer = 0, dim = 0, bodyOu
   const wallStroke = alpha(SKY, 0.55 + 0.45 * archGlow);
 
   // The watchman walks the ground in front of the house, back and forth.
-  const f = Math.max(0, frame - at.active);
+  const f = Math.max(0, Math.min(frame, freezeAt) - at.active);
   const tri = (t: number) => Math.abs(((t / 140) % 2) - 1); // 0..1..0
   const gx = 96 + 330 * tri(f + 40);
   const dir = Math.floor(((f + 40) / 140) % 2) === 0 ? -1 : 1; // moving left when 1 - ... flips at the ends

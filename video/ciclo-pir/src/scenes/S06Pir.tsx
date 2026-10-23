@@ -1,6 +1,6 @@
 import { useCurrentFrame } from 'remotion';
 import type { SceneProps } from '../../../engine/src/timeline/types';
-import { C, FONT, RADIUS, STAGE, alpha } from '../../../engine/src/theme/tokens';
+import { C, FONT, STAGE, alpha } from '../../../engine/src/theme/tokens';
 import { EASE, enter, progress } from '../../../engine/src/theme/motion';
 import { Icon, mix } from '../../../engine/src/ui';
 import { CISO_ASK } from '../data/canon';
@@ -12,6 +12,8 @@ import { Stage, wordFrame } from './kit';
 
 const S = 's06-pir';
 const W = STAGE.width;
+const CX_L = 420;
+const CX_R = W - 420;
 
 /**
  * s06-pir «Una pregunta bien pedida». On `back` the CISO's strip returns with the same sentence. On `comanda` two
@@ -121,20 +123,23 @@ export function S06Pir(props: SceneProps) {
       {/* The two people */}
       {people > 0.01 ? (
         <>
-          <div style={{ position: 'absolute', left: 120, top: 175 }}>
-            <Person size={170} who={S06_PEOPLE.you.who} does={S06_PEOPLE.you.does} tone={C.cyan} show={people} />
+          <div style={{ position: 'absolute', left: CX_L - 250, top: 170, width: 500, display: 'flex', justifyContent: 'center' }}>
+            <Person size={220} who={S06_PEOPLE.you.who} does={S06_PEOPLE.you.does} tone={C.cyan} show={people} />
           </div>
-          <div style={{ position: 'absolute', left: W - 120 - 480, top: 175 }}>
-            <Person size={170} who={S06_PEOPLE.boss.who} does={S06_PEOPLE.boss.does} tone={C.emerald} show={people} check={check} glow={check * 0.8} />
+          <div style={{ position: 'absolute', left: CX_R - 250, top: 170, width: 500, display: 'flex', justifyContent: 'center' }}>
+            <Person size={220} who={S06_PEOPLE.boss.who} does={S06_PEOPLE.boss.does} tone={C.emerald} show={people} check={check} glow={check * 0.8} />
           </div>
-          {/* The sheet that travels */}
+          {/* The sheet that travels from one to the other */}
           <svg width={W} height={STAGE.height} style={{ position: 'absolute', left: 0, top: 0, overflow: 'visible' }} aria-hidden>
-            <path d={`M 560 260 H 1130`} stroke={alpha(C.cyan, 0.5)} strokeWidth={4} strokeDasharray="4 12" strokeLinecap="round" opacity={people} />
-            <path d="M 1114 244 L 1136 260 L 1114 276" fill="none" stroke={alpha(C.cyan, 0.8)} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" opacity={people} />
+            <path d={`M ${CX_L + 140} 280 H ${CX_R - 140}`} stroke={alpha(C.cyan, 0.5)} strokeWidth={4} strokeDasharray="4 12" strokeLinecap="round" opacity={people} />
+            <path d={`M ${CX_R - 162} 262 L ${CX_R - 138} 280 L ${CX_R - 162} 298`} fill="none" stroke={alpha(C.cyan, 0.8)} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" opacity={people} />
           </svg>
           {send > 0 && send < 1 ? (
-            <div style={{ position: 'absolute', left: mix(540, 1060, send), top: 218, opacity: Math.sin(Math.PI * Math.min(1, send * 1.05)) * 1.4 }}>
-              <Icon name="file" size={80} color={C.cyan} strokeWidth={2} />
+            <div style={{ position: 'absolute', left: mix(CX_L + 120, CX_R - 220, send), top: 222, opacity: Math.sin(Math.PI * Math.min(1, send * 1.05)) * 1.4 }}>
+              <div style={{ position: 'relative', width: 100, height: 100, display: 'grid', placeItems: 'center' }}>
+                <Icon name="file" size={100} color={C.cyan} strokeWidth={1.8} />
+                <span style={{ position: 'absolute', fontFamily: FONT.mono, fontSize: 28, fontWeight: 800, color: C.cyanSoft, marginTop: 14 }}>PIR</span>
+              </div>
             </div>
           ) : null}
         </>

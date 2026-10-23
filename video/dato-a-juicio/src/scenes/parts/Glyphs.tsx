@@ -99,3 +99,18 @@ export function RodMini({ size = 150, color = C.amber, struck = 0 }: { size?: nu
     </svg>
   );
 }
+
+/** A clock face whose arc is filled up to `fill` (0..1) from 12 o'clock: a short span or a long one. */
+export function ClockArt({ size = 120, fill = 0.15, color = C.amber }: { size?: number; fill?: number; color?: string }) {
+  const r = 40;
+  const circ = 2 * Math.PI * r;
+  const a = fill * 2 * Math.PI - Math.PI / 2;
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r={r} fill={alpha(color, 0.08)} stroke={C.ink600} strokeWidth={5} />
+      <circle cx="50" cy="50" r={r} fill="none" stroke={color} strokeWidth={9} strokeLinecap="round" strokeDasharray={`${circ * fill} ${circ}`} transform="rotate(-90 50 50)" />
+      <path d={`M50 50L${50 + 26 * Math.cos(a)} ${50 + 26 * Math.sin(a)}`} stroke={C.textStrong} strokeWidth={5} strokeLinecap="round" />
+      <circle cx="50" cy="50" r={4.5} fill={C.textStrong} />
+    </svg>
+  );
+}

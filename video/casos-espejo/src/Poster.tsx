@@ -9,10 +9,10 @@ import { BrandMark } from '../../engine/src/overlay/ChapterRail';
 ensureFonts();
 
 const CASES = ['MOONLIGHT MAZE', 'APT1', 'Sony Pictures', 'DNC', 'APT10 / Cloud Hopper'] as const;
-const CARD_W = 700;
+const CARD_W = 690;
 const CARD_H = 142;
 const STEP = 150;
-const STACK_X = 1040;
+const STACK_X = 1090;
 const STACK_Y = 140;
 
 /**
@@ -46,12 +46,12 @@ export function Poster() {
             boxShadow: `0 24px 50px ${alpha('#000000', 0.5)}`,
             display: 'flex',
             alignItems: 'center',
-            gap: 24,
-            padding: '0 34px',
+            gap: 20,
+            padding: '0 28px',
           }}
         >
           <Icon name="archive" size={56} color={C.sky} strokeWidth={2} />
-          <span style={{ fontSize: name.length > 16 ? 50 : 58, fontWeight: 900, letterSpacing: -1, color: C.textStrong, whiteSpace: 'nowrap' }}>{name}</span>
+          <span style={{ fontSize: name.length > 16 ? 44 : 56, fontWeight: 900, letterSpacing: -1, color: C.textStrong, whiteSpace: 'nowrap' }}>{name}</span>
         </div>
       ))}
 
@@ -63,9 +63,9 @@ export function Poster() {
 
       {/* title */}
       <div style={{ position: 'absolute', left: left - 8, top: 252, fontWeight: 850, letterSpacing: -2.5, color: C.textStrong }}>
-        <div style={{ fontSize: 176, lineHeight: 1, color: C.cyan, whiteSpace: 'nowrap', textShadow: `0 0 40px ${alpha(C.cyan, 0.3)}` }}>Cinco casos</div>
-        <div style={{ marginTop: 10, fontSize: 118, lineHeight: 1.02, whiteSpace: 'nowrap' }}>históricos</div>
-        <div style={{ marginTop: 18, fontSize: 66, lineHeight: 1.06, whiteSpace: 'nowrap', color: C.text }}>y lo que enseñó cada uno</div>
+        <div style={{ fontSize: 150, lineHeight: 1, color: C.cyan, whiteSpace: 'nowrap', textShadow: `0 0 40px ${alpha(C.cyan, 0.3)}` }}>Cinco casos</div>
+        <div style={{ marginTop: 12, fontSize: 112, lineHeight: 1.02, whiteSpace: 'nowrap' }}>históricos</div>
+        <div style={{ marginTop: 18, fontSize: 60, lineHeight: 1.06, whiteSpace: 'nowrap', color: C.text }}>y lo que enseñó cada uno</div>
       </div>
 
       {/* chips */}

@@ -31,6 +31,7 @@ export function Envelope({
   card,
   cardTone,
   check = 0,
+  hideLabel = false,
   style,
 }: {
   width?: number;
@@ -56,6 +57,8 @@ export function Envelope({
   cardTone?: string;
   /** 0–1: an emerald check on the pocket (the right product reached the right reader). */
   check?: number;
+  /** Leaves the pocket bare (the envelope is a small badge). */
+  hideLabel?: boolean;
   style?: CSSProperties;
 }) {
   const s = width / ENV.w;
@@ -152,6 +155,7 @@ export function Envelope({
         </svg>
 
         {/* label on the pocket */}
+        {hideLabel ? null : (
         <div
           style={{
             position: 'absolute',
@@ -165,6 +169,7 @@ export function Envelope({
           <div style={{ fontSize: 62, fontWeight: 850, letterSpacing: label === 'SOC' ? 6 : -1, color: C.textStrong, lineHeight: 1 }}>{label}</div>
           {sub ? <div style={{ marginTop: 10, fontSize: 40, fontWeight: 700, color: alpha(tone, 1), lineHeight: 1.05 }}>{sub}</div> : null}
         </div>
+        )}
 
         {!flapBehind ? Flap : null}
 
@@ -194,8 +199,8 @@ export function Envelope({
           <div
             style={{
               position: 'absolute',
-              right: 20,
-              top: ENV.bodyY + ENV.bodyH - 20 - 66,
+              right: -16,
+              top: ENV.bodyY - 28,
               width: 66,
               height: 66,
               borderRadius: 33,

@@ -13,8 +13,8 @@ const S = 's01-hook';
 const W = STAGE.width;
 
 // Big: two envelopes side by side on the desk. Small: left cluster, the title column on the right.
-const BIG = { w: 486, gap: 100, y: 112 } as const;
-const SMALL = { w: 356, gap: 40, x: 20, y: 236 } as const;
+const BIG = { w: 540, gap: 100, y: 96 } as const;
+const SMALL = { w: 356, gap: 40, x: 20, y: 150 } as const;
 const BIG_X = (W - (2 * BIG.w + BIG.gap)) / 2;
 const COL_X = 860;
 

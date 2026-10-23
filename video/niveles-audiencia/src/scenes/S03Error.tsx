@@ -22,10 +22,14 @@ interface Pos {
 
 // Where each envelope lives in each phase (component box, stage-local). The closed envelope draws
 // nothing above its body, so the empty top of the box may sit under the intercepted message.
-const POS_A: Record<EnvelopeId, Pos> = { board: { x: 90, y: 225, w: 335 }, soc: { x: 475, y: 225, w: 335 } };
+const POS_A: Record<EnvelopeId, Pos> = { board: { x: 20, y: 225, w: 335 }, soc: { x: 400, y: 225, w: 335 } };
 const POS_B: Record<EnvelopeId, Pos> = { board: { x: 400, y: 167, w: 421 }, soc: { x: 907, y: 167, w: 421 } };
+// A station: badge (envelope), the sheet that came out of it, and the reader's question(s).
 const STATION_X: Record<EnvelopeId, number> = { board: 0, soc: 888 };
-const POS_D: Record<EnvelopeId, Pos> = { board: { x: 0, y: 0, w: 200 }, soc: { x: 888, y: 0, w: 200 } };
+const SY = 20;
+const SHEET_DX = 186;
+const ASK_DX = SHEET_DX + SHEET.w + 16;
+const POS_D: Record<EnvelopeId, Pos> = { board: { x: 0, y: SY, w: 170 }, soc: { x: 888, y: SY, w: 170 } };
 const POS_F: Record<EnvelopeId, Pos> = { board: { x: 469, y: 225, w: 335 }, soc: { x: 924, y: 225, w: 335 } };
 const TAG_TOP = 606;
 
@@ -103,13 +107,13 @@ export function S03Error(props: SceneProps) {
         <div
           style={{
             position: 'absolute',
-            left: 930,
+            left: 840,
             top: 340,
             opacity: Math.min(1, foxIn * 1.4) * (1 - foxOut),
             transform: `translateX(${(1 - Math.min(1, foxIn)) * 70 + foxOut * 90}px) scale(${0.95 + 0.05 * Math.min(1, foxIn)})`,
           }}
         >
-          <FoxCard width={740} glow={foxGlow} />
+          <FoxCard width={880} glow={foxGlow} />
         </div>
       ) : null}
 
@@ -144,6 +148,7 @@ export function S03Error(props: SceneProps) {
               sealOpacity={1 - progress(frame, swapAt + 36, 10)}
               glow={0.25 * lift * (1 - toStation)}
               check={checkIn}
+              hideLabel={toStation > 0.5 && back < 0.05}
               card={null}
             />
           </div>
@@ -158,8 +163,8 @@ export function S03Error(props: SceneProps) {
               style={{
                 position: 'absolute',
                 left: STATION_X[id],
-                top: 178,
-                width: 200,
+                top: SY + 152,
+                width: 170,
                 textAlign: 'center',
                 fontFamily: FONT.sans,
                 fontSize: 36,
@@ -176,13 +181,13 @@ export function S03Error(props: SceneProps) {
       {/* Board's station: the long list and its two questions */}
       {stations > 0.01 ? (
         <>
-          <Unfold at={swapAt + 52} frame={frame} out={1 - stations} left={STATION_X.board + 224} top={0}>
+          <Unfold at={swapAt + 52} frame={frame} out={1 - stations} left={STATION_X.board + SHEET_DX} top={SY}>
             <IpSheet f={Math.max(0, frame - swapAt - 52)} countFrom={Math.max(0, ipCountAt - swapAt - 52)} />
           </Unfold>
-          <div style={{ position: 'absolute', left: STATION_X.board + 608, top: 6, opacity: stations }}>
+          <div style={{ position: 'absolute', left: STATION_X.board + ASK_DX, top: SY + 6, opacity: stations }}>
             <AskCard text={S03.boardQuestions[0]} tone={TONE.strategic} at={boardGetsAt} frame={frame} />
           </div>
-          <div style={{ position: 'absolute', left: STATION_X.board + 608, top: 180, opacity: stations }}>
+          <div style={{ position: 'absolute', left: STATION_X.board + ASK_DX, top: SY + 184, opacity: stations }}>
             <AskCard text={S03.boardQuestions[1]} tone={TONE.strategic} at={boardGetsAt + 16} frame={frame} />
           </div>
         </>
@@ -191,13 +196,13 @@ export function S03Error(props: SceneProps) {
       {/* SOC's station: the trends and its question beside an empty cell */}
       {stations > 0.01 ? (
         <>
-          <Unfold at={socGetsAt} frame={frame} out={1 - stations} left={STATION_X.soc + 224} top={0}>
+          <Unfold at={socGetsAt} frame={frame} out={1 - stations} left={STATION_X.soc + SHEET_DX} top={SY}>
             <TrendSheet f={Math.max(0, frame - socGetsAt)} />
           </Unfold>
-          <div style={{ position: 'absolute', left: STATION_X.soc + 608, top: 6, opacity: stations }}>
+          <div style={{ position: 'absolute', left: STATION_X.soc + ASK_DX, top: SY + 6, opacity: stations }}>
             <AskCard text={S03.socQuestion} tone={TONE.tactical} at={socNoneAt} frame={frame} />
           </div>
-          <div style={{ position: 'absolute', left: STATION_X.soc + 608, top: 190, opacity: stations }}>
+          <div style={{ position: 'absolute', left: STATION_X.soc + ASK_DX, top: SY + 198, opacity: stations }}>
             <EmptyRulesCell at={socNoneAt + 18} frame={frame} />
           </div>
         </>
@@ -206,8 +211,8 @@ export function S03Error(props: SceneProps) {
       {/* The two stamps */}
       {stations > 0.01
         ? (['board', 'soc'] as const).map((id) => (
-            <div key={id} style={{ position: 'absolute', left: STATION_X[id] + 14, top: 236, opacity: stations }}>
-              <QuestionStamp at={errorAt + (id === 'soc' ? 6 : 0)} frame={frame} size={124} />
+            <div key={id} style={{ position: 'absolute', left: STATION_X[id] + 22, top: SY + 214, opacity: stations }}>
+              <QuestionStamp at={errorAt + (id === 'soc' ? 6 : 0)} frame={frame} size={112} />
             </div>
           ))
         : null}

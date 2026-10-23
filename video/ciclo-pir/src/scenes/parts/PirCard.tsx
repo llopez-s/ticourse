@@ -43,11 +43,20 @@ export function PirCard({
           const r = rows[i];
           const l = lit[i];
           return (
-            <div key={c.title} style={{ display: 'flex', alignItems: 'flex-start', gap: 18, padding: '8px 14px 9px 12px', margin: '4px 0', borderRadius: RADIUS.md, background: l > 0.02 ? alpha(C.cyan, 0.05 + 0.1 * l) : 'transparent', border: `2px solid ${alpha(C.cyan, l > 0.02 ? 0.25 + 0.55 * l : 0)}`, opacity: r * (0.62 + 0.38 * l), transform: `translateX(${(1 - r) * 26}px)`, minHeight: 56, boxSizing: 'border-box' }}>
+            <div key={c.title} style={{ position: 'relative' }}>
+              {/* The empty slot waiting for its criterion */}
+              {r < 0.99 ? (
+                <div style={{ position: 'absolute', left: 12, top: 12, display: 'flex', alignItems: 'center', gap: 18, opacity: 0.9 * (1 - r) }}>
+                  <div style={{ width: 42, height: 42, borderRadius: 21, boxSizing: 'border-box', border: `2px dashed ${C.ink600}` }} />
+                  <div style={{ width: 300, height: 12, borderRadius: 6, background: alpha(C.ink700, 0.8) }} />
+                </div>
+              ) : null}
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 18, padding: '8px 14px 9px 12px', margin: '4px 0', borderRadius: RADIUS.md, background: l > 0.02 ? alpha(C.cyan, 0.05 + 0.1 * l) : 'transparent', border: `2px solid ${alpha(C.cyan, l > 0.02 ? 0.25 + 0.55 * l : 0)}`, opacity: r * (0.62 + 0.38 * l), transform: `translateX(${(1 - r) * 26}px)`, minHeight: c.sub ? 92 : 62, boxSizing: 'border-box' }}>
               <div style={{ flexShrink: 0, width: 42, height: 42, marginTop: 2, borderRadius: 21, display: 'grid', placeItems: 'center', background: l > 0.5 ? C.cyan : alpha(C.cyan, 0.16), border: `2px solid ${alpha(C.cyan, 0.7)}`, fontSize: 26, fontWeight: 850, color: l > 0.5 ? C.ink950 : C.cyanSoft }}>{i + 1}</div>
               <div>
                 <div style={{ fontSize: 40, fontWeight: 800, lineHeight: 1.12, color: C.textStrong, whiteSpace: 'nowrap' }}>{c.title}</div>
                 {c.sub ? <div style={{ marginTop: 2, fontSize: 30, fontWeight: 650, lineHeight: 1.2, color: C.cyanSoft, whiteSpace: 'nowrap' }}>{c.sub}</div> : null}
+              </div>
               </div>
             </div>
           );

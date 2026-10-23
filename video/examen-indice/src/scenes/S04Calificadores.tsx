@@ -11,9 +11,9 @@ const S = 's04-calificadores';
 const W = STAGE.width;
 
 // Columns of the table (stage px): qualifier 290 | qué exige 640 | error típico 640 | marks (rest).
-const COL_W = [290, 640, 640, W - 1570] as const;
+const COL_W = [360, 600, 620, W - 1580] as const;
 const HEAD_H = 56;
-const ROW_H = 88;
+const ROW_H = 94;
 
 /** The lesson's qualifier table (s6m1), in the order the narration goes through it. */
 const ROWS = [
@@ -103,10 +103,10 @@ export function S04Calificadores(props: SceneProps) {
               opacity: appear.opacity * (dimmed ? 0.72 : 1),
             }}
           >
-            <div style={{ width: COL_W[0], boxSizing: 'border-box', padding: '0 22px', display: 'flex', alignItems: 'center', fontSize: 36, fontWeight: 850, letterSpacing: -0.3, color: fill > 0.3 ? C.textStrong : C.muted }}>{r.q}</div>
-            <div style={{ width: COL_W[1], boxSizing: 'border-box', padding: '0 22px', display: 'flex', alignItems: 'center', fontSize: 30, fontWeight: 600, lineHeight: 1.14, color: C.text, opacity: fill }}>{r.exige}</div>
-            <div style={{ width: COL_W[2], boxSizing: 'border-box', padding: '0 22px', display: 'flex', alignItems: 'center', fontSize: 30, fontWeight: 600, lineHeight: 1.14, color: '#fcd34d', opacity: fill }}>{r.error}</div>
-            <div style={{ width: COL_W[3], display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+            <div style={{ width: COL_W[0], boxSizing: 'border-box', padding: '0 22px', display: 'flex', alignItems: 'center', fontSize: 34, fontWeight: 850, letterSpacing: -0.3, color: fill > 0.3 ? C.textStrong : C.muted }}>{r.q}</div>
+            <div style={{ width: COL_W[1], boxSizing: 'border-box', padding: '0 22px', display: 'flex', alignItems: 'center', fontSize: 33, fontWeight: 600, lineHeight: 1.14, color: C.text, opacity: fill }}>{r.exige}</div>
+            <div style={{ width: COL_W[2], boxSizing: 'border-box', padding: '0 22px', display: 'flex', alignItems: 'center', fontSize: 33, fontWeight: 600, lineHeight: 1.14, color: '#fcd34d', opacity: fill }}>{r.error}</div>
+            <div style={{ width: COL_W[3], display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
               {i === 1 ? (
                 <div style={{ opacity: fill }}>
                   <Dial size={62} sweep={progress(frame, first, 70, EASE.inOut) * 0.75} hand={progress(frame, first, 70, EASE.inOut) * 0.75} color={C.cyan} />
@@ -117,7 +117,7 @@ export function S04Calificadores(props: SceneProps) {
                     const p = progress(frame, marksAt + k * 12, 10, EASE.out);
                     return p > 0 ? (
                       <div key={k} style={{ opacity: p, transform: `scale(${0.6 + 0.4 * p})` }}>
-                        <Verdict ok={ok} size={30} />
+                        <Verdict ok={ok} size={28} />
                       </div>
                     ) : null;
                   })
@@ -129,14 +129,14 @@ export function S04Calificadores(props: SceneProps) {
 
       {/* the EXCEPT example */}
       {exampleIn > 0 && exOut < 1 ? (
-        <div style={{ position: 'absolute', left: 0, top: 524, width: W, opacity: exampleIn * (1 - exOut), fontFamily: FONT.sans }}>
+        <div style={{ position: 'absolute', left: 0, top: 540, width: W, opacity: exampleIn * (1 - exOut), fontFamily: FONT.sans }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, fontSize: 36, fontWeight: 800, color: C.textStrong, transform: `translateY(${(1 - exampleIn) * 14}px)` }}>
             <Tag color={C.cyan} size={30} solid>
               EXCEPT
             </Tag>
             ¿qué enlace para agrupar intrusiones no es fuerte?
           </div>
-          <div style={{ marginTop: 18, display: 'flex', alignItems: 'center', gap: 20 }}>
+          <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 20 }}>
             {LINKS.map((l, i) => {
               const e = enter(frame, linkAt[i], { distance: 20 });
               const color = l.strong ? C.emerald : C.amber;
@@ -161,7 +161,7 @@ export function S04Calificadores(props: SceneProps) {
 
       {/* wrap */}
       {frame >= wrap - 4 ? (
-        <div style={{ position: 'absolute', left: 0, top: 530, width: W, display: 'flex', justifyContent: 'center', ...enter(frame, wrap, { distance: 24 }) }}>
+        <div style={{ position: 'absolute', left: 0, top: 548, width: W, display: 'flex', justifyContent: 'center', ...enter(frame, wrap, { distance: 24 }) }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 24, padding: '14px 44px 18px 32px', borderRadius: 32, background: alpha(C.cyan, 0.1), border: `3px solid ${alpha(C.cyan, 0.75)}`, boxShadow: `0 0 36px ${alpha(C.cyan, 0.25)}`, fontFamily: FONT.sans }}>
             <Icon name="target" size={64} color={C.cyan} strokeWidth={2.1} />
             <span style={{ fontSize: 58, fontWeight: 850, color: C.textStrong, letterSpacing: -1, whiteSpace: 'nowrap' }}>

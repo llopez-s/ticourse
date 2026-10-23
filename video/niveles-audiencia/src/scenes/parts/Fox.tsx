@@ -30,9 +30,9 @@ export function FoxGlyph({ size = 120, color = C.rose, style }: { size?: number;
   );
 }
 
-/** The card. Natural size 760×170; `width` scales it. */
-export function FoxCard({ width = 760, glow = 0, style }: { width?: number; glow?: number; style?: CSSProperties }) {
-  const s = width / 760;
+/** The card. Natural size 940×170; `width` scales it. */
+export function FoxCard({ width = 940, glow = 0, style }: { width?: number; glow?: number; style?: CSSProperties }) {
+  const s = width / 940;
   const g = clamp01(glow);
   return (
     <div style={{ position: 'relative', width, height: 170 * s, ...style }}>
@@ -41,7 +41,7 @@ export function FoxCard({ width = 760, glow = 0, style }: { width?: number; glow
           position: 'absolute',
           left: 0,
           top: 0,
-          width: 760,
+          width: 940,
           height: 170,
           transform: `scale(${s})`,
           transformOrigin: '0 0',

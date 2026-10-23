@@ -8,7 +8,9 @@ import { TONE } from '../../data/niveles';
  * Pieces of the crossed delivery (s03). Nothing here is real data: the rows of the 4.000 list are
  * grey bars, each with an «IP» chip and no value; the trend chart has no numbers.
  */
-export const SHEET = { w: 360, h: 380 } as const;
+export const SHEET = { w: 340, h: 380 } as const;
+/** Width of the question column of a station. */
+export const ASK_W = 298;
 
 function SheetFrame({ tone, children, style }: { tone: string; children: ReactNode; style?: CSSProperties }) {
   return (
@@ -106,7 +108,7 @@ export function TrendSheet({ f }: { f: number }) {
   const line2 = 'M20 120 C60 128 90 126 120 132 C160 140 200 124 240 128 C264 130 284 126 300 122';
   return (
     <SheetFrame tone={TONE.strategic}>
-      <div style={{ padding: '16px 18px 0', fontSize: 28, fontWeight: 800, lineHeight: 1.2, color: C.textStrong }}>
+      <div style={{ padding: '16px 18px 0', fontSize: 26, fontWeight: 800, lineHeight: 1.2, color: C.textStrong }}>
         <div>evaluación de</div>
         <div>tendencias del sector</div>
       </div>
@@ -130,7 +132,7 @@ export function AskCard({ text, tone, at, frame, slotLabel }: { text: string; to
   return (
     <div
       style={{
-        width: 232,
+        width: ASK_W,
         boxSizing: 'border-box',
         padding: '14px 16px 16px',
         borderRadius: 18,
@@ -167,7 +169,7 @@ export function EmptyRulesCell({ at, frame }: { at: number; frame: number }) {
   const p = progress(frame, at, 16);
   if (p <= 0) return null;
   return (
-    <div style={{ width: 232, fontFamily: FONT.sans, opacity: p, transform: `translateX(${(1 - p) * 30}px)` }}>
+    <div style={{ width: ASK_W, fontFamily: FONT.sans, opacity: p, transform: `translateX(${(1 - p) * 30}px)` }}>
       <div style={{ fontSize: 26, fontWeight: 800, letterSpacing: 1.5, textTransform: 'uppercase', color: C.faint, marginBottom: 8 }}>reglas</div>
       <div
         style={{
@@ -210,7 +212,7 @@ export function QuestionStamp({ at, frame, size = 150 }: { at: number; frame: nu
       >
         ?
       </div>
-      <div style={{ fontSize: 28, fontWeight: 850, letterSpacing: 1, color: C.roseSoft, whiteSpace: 'nowrap' }}>sin respuesta</div>
+      <div style={{ width: size + 36, textAlign: 'center', fontSize: 28, fontWeight: 850, letterSpacing: 0.5, lineHeight: 1.05, color: C.roseSoft }}>sin respuesta</div>
     </div>
   );
 }

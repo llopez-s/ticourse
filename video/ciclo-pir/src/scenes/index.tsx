@@ -7,6 +7,7 @@ import { S03Pedido } from './S03Pedido';
 import { S04Final } from './S04Final';
 import { S05F3ead } from './S05F3ead';
 import { S06Pir } from './S06Pir';
+import { S07Reconocer } from './S07Reconocer';
 
 const stub = (id: string): ComponentType<SceneProps> => (props) => <Placeholder id={id} props={props} />;
 
@@ -17,7 +18,7 @@ export const SCENES: Record<SceneId, ComponentType<SceneProps>> = {
   's04-final': S04Final,
   's05-f3ead': S05F3ead,
   's06-pir': S06Pir,
-  's07-reconocer': stub('s07-reconocer'),
+  's07-reconocer': S07Reconocer,
   's08-permanentes': stub('s08-permanentes'),
   's09-examen': stub('s09-examen'),
   's10-cierre': stub('s10-cierre'),

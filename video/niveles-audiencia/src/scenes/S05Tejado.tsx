@@ -14,10 +14,10 @@ import { Stage, wordFrame } from './kit';
 
 const S = 's05-tejado';
 const W = STAGE.width;
-const HOUSE_POS = { x: 4, y: 100 } as const;
+const HOUSE_POS = { x: 4, y: 114 } as const;
 const COL_X = 650;
 const COL_W = W - COL_X;
-const BAR_Y = 190;
+const BAR_Y = 206;
 const STEP = COL_W / 5;
 const NEVER = -100000;
 const ALL_BUILT = { arch: NEVER, passive: NEVER, active: NEVER, intel: NEVER, offense: NEVER } as const;
@@ -162,8 +162,8 @@ export function S05Tejado(props: SceneProps) {
 
       {/* Fox's card while the message is up */}
       {foxIn > 0.001 && foxOut < 1 ? (
-        <div style={{ position: 'absolute', left: COL_X + (COL_W - 740) / 2, top: 430, opacity: Math.min(1, foxIn * 1.4) * (1 - foxOut), transform: `translateX(${(1 - Math.min(1, foxIn)) * 70 + foxOut * 90}px)` }}>
-          <FoxCard width={740} glow={0} />
+        <div style={{ position: 'absolute', left: COL_X + (COL_W - 880) / 2, top: 430, opacity: Math.min(1, foxIn * 1.4) * (1 - foxOut), transform: `translateX(${(1 - Math.min(1, foxIn)) * 70 + foxOut * 90}px)` }}>
+          <FoxCard width={880} glow={0} />
         </div>
       ) : null}
 

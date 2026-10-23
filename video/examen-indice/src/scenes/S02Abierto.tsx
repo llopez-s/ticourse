@@ -66,7 +66,9 @@ export function S02Abierto(props: SceneProps) {
   const ribbonAt = wordFrame(S, 's02-03', 'open-book') - 6;
 
   // ---- time: pile, index, dial
-  const pileIn = progress(frame, time - 4, 18);
+  const viajeAt = wordFrame(S, 's02-04', 'viaje') - 14;
+  const pileIn = progress(frame, viajeAt, 18);
+  const dialIn = progress(frame, time - 4, 16);
   const idxAt = wordFrame(S, 's02-05', 'índice') - 8;
   const secAt = wordFrame(S, 's02-05', 'sesenta') - 6;
   const sweep = progress(frame, secAt, 60, EASE.inOut);
@@ -249,27 +251,27 @@ export function S02Abierto(props: SceneProps) {
       {/* time: pile of pages, the index, the dial */}
       {pileIn > 0 && timeOut < 1 ? (
         <div style={{ position: 'absolute', inset: 0, opacity: pileIn * (1 - timeOut), transform: `translateY(${timeOut * -20}px)`, fontFamily: FONT.sans }}>
-          <div style={{ position: 'absolute', left: 36, top: 40, transform: `translateY(${(1 - pileIn) * 30}px)` }}>
-            <PagePile w={300} n={14} />
+          <div style={{ position: 'absolute', left: 40, top: 252, transform: `translateY(${(1 - pileIn) * 30}px)` }}>
+            <PagePile w={210} n={8} />
           </div>
-          <div style={{ position: 'absolute', left: 20, top: 516, width: 380 }}>
+          <div style={{ position: 'absolute', left: 20, top: 196, width: 380 }}>
             <Tag color={C.amber} size={34}>
               cada duda, un viaje
             </Tag>
           </div>
           {frame >= idxAt - 4 ? (
-            <div style={{ position: 'absolute', left: 470, top: 200, ...enter(frame, idxAt, { distance: 30, axis: 'x' }) }}>
+            <div style={{ position: 'absolute', left: 350, top: 236, ...enter(frame, idxAt, { distance: 30, axis: 'x' }) }}>
               <Binder w={190} glow={0.5} tabs={progress(frame, idxAt + 4, 26)} />
               <div style={{ marginTop: 22, fontSize: 36, fontWeight: 800, color: C.cyanSoft, letterSpacing: 4, textAlign: 'center', width: 190 }}>ÍNDICE</div>
             </div>
           ) : null}
-          {frame >= secAt - 6 ? (
-            <div style={{ position: 'absolute', left: 806, top: 130, ...enter(frame, secAt - 4, { distance: 24 }) }}>
+          {frame >= time - 6 ? (
+            <div style={{ position: 'absolute', left: 620, top: 150, opacity: dialIn, transform: `translateY(${(1 - dialIn) * 24}px)` }}>
               <Dial size={290} sweep={sweep} hand={sweep} color={C.emerald} stopwatch glow={sweep > 0.95 ? 0.8 + 0.2 * pulse(frame, 30, 0.8) : 0.3} />
             </div>
           ) : null}
           {frame >= secAt + 10 ? (
-            <div style={{ position: 'absolute', left: 1160, top: 150, width: W - 1160, ...enter(frame, secAt + 10, { distance: 24, axis: 'x' }) }}>
+            <div style={{ position: 'absolute', left: 970, top: 170, width: W - 970, ...enter(frame, secAt + 10, { distance: 24, axis: 'x' }) }}>
               <div style={{ fontSize: 120, fontWeight: 850, color: C.emerald, letterSpacing: -3, lineHeight: 1, whiteSpace: 'nowrap', textShadow: `0 0 36px ${alpha(C.emerald, 0.4)}` }}>−60 s</div>
               <div style={{ marginTop: 18, fontSize: 42, fontWeight: 750, color: C.textStrong, lineHeight: 1.18 }}>cuando dudas entre dos respuestas</div>
               <div style={{ marginTop: 16, fontSize: 34, fontWeight: 650, color: C.muted }}>lo que ahorra el índice</div>
@@ -283,7 +285,7 @@ export function S02Abierto(props: SceneProps) {
         <div style={{ position: 'absolute', left: 0, top: 22, opacity: climberIn, transform: `translateX(${(1 - climberIn) * -40}px)` }}>
           <Climber climb={climb} rope={progress(frame, rope, 34, EASE.inOut)} glow={0.6 * progress(frame, dudasAt, 12) * (1 - 0.6 * progress(frame, wrap, 12))}>
             {frame >= dudasAt - 4 ? (
-              <div style={{ position: 'absolute', left: 40, top: 330, ...enter(frame, dudasAt, { distance: 20 }) }}>
+              <div style={{ position: 'absolute', left: 30, top: 262, ...enter(frame, dudasAt, { distance: 20 }) }}>
                 <Tag color={C.emerald} size={38} icon="shield">
                   para las dudas
                 </Tag>

@@ -9,10 +9,10 @@ import { ScaleBar } from './parts/ScaleBar';
 import { Stage } from './kit';
 
 const W = STAGE.width;
-const HOUSE_POS = { x: 4, y: 100 } as const;
+const HOUSE_POS = { x: 4, y: 114 } as const;
 const COL_X = 650;
 const COL_W = W - COL_X;
-const BAR_Y = 190;
+const BAR_Y = 206;
 const DETAIL_Y = 478;
 const CARD_W = 1000;
 const CARD_H = 188;
@@ -78,6 +78,7 @@ export function S04Escala(props: SceneProps) {
           glow={glow}
           answer={answer}
           dim={0.3 * off}
+          freezeAt={classifyAt}
         />
       </div>
 
@@ -111,8 +112,7 @@ export function S04Escala(props: SceneProps) {
       ) : null}
       {tagIn > 0.01 ? (
         <div style={{ position: 'absolute', left: COL_X + 692, top: 372, width: 380, opacity: tagIn, transform: `translateX(${(1 - tagIn) * 24}px)`, fontFamily: FONT.sans }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16, boxSizing: 'border-box', height: 124, padding: '0 22px 0 18px', borderRadius: 22, border: `3px solid ${alpha(C.emerald, 0.85)}`, background: alpha(C.emerald, 0.12), fontSize: 36, fontWeight: 800, lineHeight: 1.15, color: '#a7f3d0' }}>
-            <Icon name="shield" size={40} color={C.emerald} strokeWidth={2.2} />
+          <div style={{ display: 'flex', alignItems: 'center', boxSizing: 'border-box', height: 124, padding: '0 24px', borderRadius: 22, border: `3px solid ${alpha(C.emerald, 0.85)}`, background: alpha(C.emerald, 0.12), fontSize: 36, fontWeight: 800, lineHeight: 1.15, color: '#a7f3d0' }}>
             <span>{CLASSIFY.answerTag}</span>
           </div>
         </div>
@@ -152,7 +152,7 @@ function Detail({ index, frame, at }: { index: number; frame: number; at: number
               borderRadius: stop.detail.length === 1 ? 22 : RADIUS.pill,
               border: `2px solid ${alpha(tone, locked ? 0.55 : 0.6)}`,
               background: alpha(tone, 0.1),
-              fontSize: 34,
+              fontSize: 32,
               fontWeight: 700,
               lineHeight: 1.15,
               color: C.text,

@@ -100,10 +100,10 @@ export function S03Anatomia(props: SceneProps) {
 
   // scenario bars: [width px, lit by `hechos`, relleno]
   const barDefs = [
-    { w: 780, fact: true },
+    { w: 690, fact: true },
+    { w: 560, fact: true },
     { w: 640, fact: true },
-    { w: 720, fact: true },
-    { w: 470, fact: false },
+    { w: 440, fact: false },
   ];
   const factLit = progress(frame, hechosAt, 14);
   const fillerLit = progress(frame, rellenoAt, 14);
@@ -140,7 +140,7 @@ export function S03Anatomia(props: SceneProps) {
           })}
           {/* bracket + «hechos» */}
           {factLit > 0.01 ? (
-            <div style={{ position: 'absolute', left: 836, top: ROW_A0 - A.top - 2, opacity: factLit }}>
+            <div style={{ position: 'absolute', left: 750, top: ROW_A0 - A.top - 2, opacity: factLit }}>
               <div style={{ position: 'absolute', left: 0, top: 0, width: 16, height: 3 * 36 - 10, borderRight: `5px solid ${C.cyan}`, borderTop: `5px solid ${C.cyan}`, borderBottom: `5px solid ${C.cyan}`, borderRadius: '0 10px 10px 0', boxSizing: 'border-box' }} />
               <div style={{ position: 'absolute', left: 36, top: 24 }}>
                 <Tag color={C.cyan} size={32}>
@@ -150,7 +150,7 @@ export function S03Anatomia(props: SceneProps) {
             </div>
           ) : null}
           {fillerLit > 0.01 ? (
-            <div style={{ position: 'absolute', left: 540, top: ROW_A0 - A.top + 3 * 36 - 18, opacity: fillerLit, transform: `translateX(${(1 - fillerLit) * -16}px)` }}>
+            <div style={{ position: 'absolute', left: 500, top: ROW_A0 - A.top + 3 * 36 - 8, opacity: fillerLit, transform: `translateX(${(1 - fillerLit) * -16}px)` }}>
               <Tag color={C.amber} size={28}>
                 relleno a propósito
               </Tag>

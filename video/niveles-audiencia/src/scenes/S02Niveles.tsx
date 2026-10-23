@@ -16,7 +16,7 @@ const VIG_GAP = (W - 3 * VIGNETTE.w) / 2;
 const vigX = (i: number) => i * (VIGNETTE.w + VIG_GAP);
 const LANE_X = 26;
 const BUS_Y = VIG_TOP + VIGNETTE.h + 12;
-const LENS_TOP = 606;
+const LENS_TOP = 604;
 
 /**
  * s02-niveles «Tres lectores, tres plazos». On `club` the small label «la inteligencia es para alguien»
