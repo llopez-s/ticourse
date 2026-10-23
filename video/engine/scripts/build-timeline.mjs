@@ -43,7 +43,7 @@ export const TIMING = Object.freeze({
 
 const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 /** Disclaimer line of the active video's transcript (depends on its track). */
-export const TRANSCRIPT_NOTICE = trackNotice(MANIFEST.track, MANIFEST.profile);
+export const TRANSCRIPT_NOTICE = trackNotice(MANIFEST.track, MANIFEST.profile, MANIFEST.simulationLabel);
 /** Credit line added to the transcript when the narration is voiced by ElevenLabs. */
 export const ELEVENLABS_CREDIT = 'Voz: ElevenLabs (elevenlabs.io)';
 
@@ -222,6 +222,7 @@ export async function buildTimeline(options = {}) {
     track: MANIFEST.track,
     adversary: MANIFEST.adversary ?? null,
     examBadge: MANIFEST.examBadge ?? null,
+    simulationLabel: MANIFEST.simulationLabel ?? null,
     fullAudio: false,
     tailMs: TIMING.speechTailMs,
     write: true,
@@ -501,12 +502,14 @@ export async function buildTimeline(options = {}) {
     ...(sfx.length ? { sfx } : {}),
     // Written only when off, so the timelines of the videos that burn captions in stay byte-identical.
     ...(profile.captionsOnScreen === false ? { captionsOnScreen: false } : {}),
+    // Same rule: only a video that overrides the corner tag (video.json "simulationLabel") carries it.
+    ...(opts.simulationLabel ? { simulationLabel: opts.simulationLabel } : {}),
   };
   errors.push(...validateTimeline(timeline, { sceneIds: opts.sceneIds ?? storyboard.scenes.map((s) => s.id), maxChapters: profile.maxChapters }));
   if ((storyboard.chapters ?? []).length > profile.maxChapters) errors.push(`storyboard has ${storyboard.chapters.length} chapters; the "${opts.profile}" profile allows ${profile.maxChapters}`);
   reportOrThrow({ errors, warnings }, log);
 
-  const transcript = buildTranscript(timeline, { title: storyboard.title, notice: trackNotice(opts.track, opts.profile) });
+  const transcript = buildTranscript(timeline, { title: storyboard.title, notice: trackNotice(opts.track, opts.profile, opts.simulationLabel) });
   const vtt = buildVtt(timeline);
   if (opts.write) {
     writeFileAtomic(opts.out, `${formatJson(timeline)}\n`);

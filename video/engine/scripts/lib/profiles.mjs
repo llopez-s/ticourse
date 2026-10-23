@@ -152,10 +152,16 @@ export function profileFor(name) {
   return profile;
 }
 
-/** Disclaimer line of a video: its track's affiliation, under the name its host shows. */
-export function trackNotice(track, profile = 'principal') {
+/** Opening words of every disclaimer line; a video that tells real cases replaces them (video.json "simulationLabel"). */
+export const DEFAULT_NOTICE_LEAD = 'Simulación educativa con datos ficticios';
+
+/**
+ * Disclaimer line of a video: its track's affiliation, under the name its host shows. `lead` replaces the
+ * «Simulación educativa con datos ficticios» opening for a video whose cases are real (its "simulationLabel").
+ */
+export function trackNotice(track, profile = 'principal', lead = null) {
   const affiliation = AFFILIATION[track];
   if (!affiliation) throw new Error(`unknown track "${track}" (known: ${Object.keys(AFFILIATION).join(', ')})`);
   const brand = profileFor(profile).host === 'youtube' ? APP_NAME : LEGACY_APP_NAME;
-  return `Simulación educativa con datos ficticios · ${brand} — material independiente, no afiliado a ${affiliation}`;
+  return `${lead ?? DEFAULT_NOTICE_LEAD} · ${brand} — material independiente, no afiliado a ${affiliation}`;
 }
