@@ -1,0 +1,366 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:02.767
+En el puerto de Halden,
+
+2
+00:00:02.767 --> 00:00:06.367
+cada barco con mercancías
+peligrosas avisa antes de llegar.
+
+3
+00:00:06.367 --> 00:00:09.167
+Lo hace con una hoja,
+y hay que protegerla.
+
+4
+00:00:09.167 --> 00:00:12.033
+Qué se rompe, quién toca y cuánto falta.
+
+5
+00:00:12.033 --> 00:00:15.900
+Son las tres cosas que el examen
+quiere saber de una hoja así.
+
+6
+00:00:16.900 --> 00:00:21.400
+Primero, lo que no puede romperse.
+La hoja tiene que cumplir cuatro cosas.
+
+7
+00:00:21.400 --> 00:00:26.800
+La primera, que solo la lea quien esté
+autorizado. Eso es confidentiality.
+
+8
+00:00:26.800 --> 00:00:29.700
+La segunda, que nadie
+la cambie sin permiso.
+
+9
+00:00:29.700 --> 00:00:34.133
+Si la hoja pasa de mil kilos
+a cien, eso es integrity.
+
+10
+00:00:34.133 --> 00:00:36.400
+La tercera, que esté cuando hace falta.
+
+11
+00:00:36.400 --> 00:00:40.633
+Imagina que de noche hay un fuego
+y quien va a apagarlo no puede abrirla.
+
+12
+00:00:40.633 --> 00:00:42.600
+Eso es availability.
+
+13
+00:00:42.600 --> 00:00:46.067
+Y la cuarta, que quien la manda
+no pueda negar que la mandó.
+
+14
+00:00:46.067 --> 00:00:49.933
+Eso es non-repudiation,
+y lo da la firma digital.
+
+15
+00:00:49.933 --> 00:00:54.000
+El examen te cuenta lo que ha pasado,
+y tú lo traduces a su verbo.
+
+16
+00:00:54.000 --> 00:00:58.500
+O sea, que se lee, se cambia,
+no se puede usar o se niega.
+
+17
+00:00:59.533 --> 00:01:00.267
+Te toca.
+
+18
+00:01:00.267 --> 00:01:01.100
+En una cooperativa,
+
+19
+00:01:01.100 --> 00:01:05.100
+un fallo de disco cambia algunos kilos
+de los socios sin que nadie lo note.
+
+20
+00:01:05.100 --> 00:01:08.333
+El sistema sigue en marcha,
+y nadie de fuera ha entrado.
+
+21
+00:01:08.333 --> 00:01:11.033
+¿Qué propiedad de esos datos se ha roto?
+
+22
+00:01:10.500 --> 00:01:15.500
+A) Confidentiality
+B) Integrity
+C) Non-repudiation
+D) Availability
+
+23
+00:01:15.833 --> 00:01:19.133
+Integrity, porque los kilos
+ya no son los que eran.
+
+24
+00:01:19.133 --> 00:01:23.067
+El fallo del disco te empuja
+hacia availability, el caso de manual.
+
+25
+00:01:23.067 --> 00:01:25.500
+Pero el sistema no se ha parado.
+
+26
+00:01:27.167 --> 00:01:32.033
+Ahora, quién toca esa hoja.
+Son tres preguntas, siempre en este orden.
+
+27
+00:01:32.033 --> 00:01:34.133
+La primera, ¿quién eres?
+
+28
+00:01:34.133 --> 00:01:37.900
+Aquí nadie teclea, porque el sistema
+de la naviera se identifica solo.
+
+29
+00:01:37.900 --> 00:01:43.100
+Eso es authentication, y las máquinas
+también se autentican, con un certificado.
+
+30
+00:01:43.100 --> 00:01:45.433
+La segunda, ¿qué puedes hacer?
+
+31
+00:01:45.433 --> 00:01:49.100
+Quien declara envía y corrige la hoja,
+y Operaciones solo la lee.
+
+32
+00:01:49.100 --> 00:01:54.500
+Eso es authorization. Si el permiso
+va con el puesto, es role-based.
+
+33
+00:01:54.500 --> 00:01:59.100
+Pero quien acude a una emergencia solo la
+abre mientras ese barco está en el puerto.
+
+34
+00:01:59.100 --> 00:02:04.600
+Ahí importa quién es, qué hoja y cuándo.
+Eso ya es attribute-based.
+
+35
+00:02:04.600 --> 00:02:10.133
+Y a cada uno, solo lo justo.
+Se llama least privilege.
+
+36
+00:02:10.133 --> 00:02:14.667
+La tercera, ¿qué hiciste? Queda apuntado
+quién la abrió, quién la cambió y cuándo.
+
+37
+00:02:14.667 --> 00:02:16.467
+Eso es accounting.
+
+38
+00:02:16.467 --> 00:02:22.233
+Son las tres A. Primero quién,
+luego qué, y todo apuntado.
+
+39
+00:02:23.267 --> 00:02:28.200
+Otra más. En una notaría, el sistema
+decide quién abre cada escritura.
+
+40
+00:02:28.200 --> 00:02:30.167
+Mira a la vez el puesto de quien la pide,
+
+41
+00:02:30.167 --> 00:02:33.167
+si lleva a ese cliente
+y lo delicada que es.
+
+42
+00:02:33.167 --> 00:02:36.500
+¿Qué modelo de autorización
+describe mejor esa decisión?
+
+43
+00:02:36.500 --> 00:02:40.667
+Ese «mejor» quiere decir que alguna
+otra también tiene algo de razón.
+
+44
+00:02:40.667 --> 00:02:44.300
+Elige la que cubre el caso
+entero, no solo un trozo.
+
+45
+00:02:43.767 --> 00:02:48.767
+A) Role-based
+B) Least privilege
+C) Accounting
+D) Attribute-based
+
+46
+00:02:48.933 --> 00:02:52.200
+Attribute-based, porque
+junta varias cosas a la vez.
+
+47
+00:02:52.200 --> 00:02:56.467
+Role-based tienta por el puesto,
+pero el puesto solo no decide.
+
+48
+00:02:58.167 --> 00:03:02.200
+Queda lo último, cuánto falta.
+Piensa en el botiquín de casa.
+
+49
+00:03:02.200 --> 00:03:06.167
+Coges la lista de lo que debería
+llevar y abres el tuyo.
+
+50
+00:03:06.167 --> 00:03:10.667
+Tiritas, sí. El termómetro,
+sin pilas. El suero, ni rastro.
+
+51
+00:03:10.667 --> 00:03:13.400
+Y compras primero
+lo que más falta te haría.
+
+52
+00:03:13.400 --> 00:03:15.367
+Eso es un gap analysis.
+
+53
+00:03:15.367 --> 00:03:20.500
+Comparas lo que tienes con lo que pide
+un marco, como una norma o una política.
+
+54
+00:03:20.500 --> 00:03:22.933
+Imagina una norma para estas hojas.
+
+55
+00:03:22.933 --> 00:03:26.433
+Un requisito se cumple, otro
+va a medias y el tercero falta,
+
+56
+00:03:26.433 --> 00:03:29.200
+porque la hoja llega sin firma.
+
+57
+00:03:29.200 --> 00:03:33.033
+No acaba en una lista de quejas,
+sino en un plan con prioridades,
+
+58
+00:03:33.033 --> 00:03:35.900
+con alguien que cierre
+cada hueco y una fecha.
+
+59
+00:03:35.900 --> 00:03:38.100
+Se hace cuando llega una norma nueva,
+
+60
+00:03:38.100 --> 00:03:41.233
+antes de una auditoría
+o cada cierto tiempo.
+
+61
+00:03:42.267 --> 00:03:43.600
+La última.
+
+62
+00:03:43.600 --> 00:03:47.400
+Antes de certificarse, una residencia
+repasa los requisitos de una norma.
+
+63
+00:03:47.400 --> 00:03:50.800
+Apunta cuáles cumple,
+cuáles a medias y cuáles no.
+
+64
+00:03:50.800 --> 00:03:54.133
+Y lo que le falta, lo ordena
+por lo que más le preocupa.
+
+65
+00:03:54.133 --> 00:03:57.200
+¿Qué actividad describe
+mejor lo que está haciendo?
+
+66
+00:03:56.733 --> 00:04:01.733
+A) Gap analysis
+B) Business impact analysis
+C) Risk assessment
+D) Penetration test
+
+67
+00:04:02.300 --> 00:04:06.233
+Gap analysis, porque compara
+lo que tiene con lo que pide la norma.
+
+68
+00:04:06.233 --> 00:04:07.900
+Risk assessment tienta.
+
+69
+00:04:07.900 --> 00:04:11.233
+El gap analysis también ordena,
+pero esto se mide contra una lista,
+
+70
+00:04:11.233 --> 00:04:13.000
+como el botiquín.
+
+71
+00:04:14.133 --> 00:04:17.300
+Tres reglas. Una, traduce
+el caso a lo que se rompe.
+
+72
+00:04:17.300 --> 00:04:19.767
+Se lee, se cambia o no se puede usar.
+
+73
+00:04:19.767 --> 00:04:24.967
+Dos, las tres A van en orden.
+Quién eres, qué puedes y qué hiciste.
+
+74
+00:04:24.967 --> 00:04:30.033
+Y tres, el gap analysis compara
+lo que tienes con lo que pide el marco.
+
+75
+00:04:30.033 --> 00:04:33.433
+Busca qué se ha roto, qué se está
+preguntando y cuánto falta.
+
+76
+00:04:33.433 --> 00:04:36.533
+Ahora, tu turno, con las preguntas.
