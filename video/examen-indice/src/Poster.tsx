@@ -43,7 +43,7 @@ export function Poster() {
         <Binder w={400} glow={0.7} tabs={1} rotate={-3} />
       </div>
       <div style={{ position: 'absolute', left: 1040, top: 650 }}>
-        <Dial size={290} sweep={1 / 12} hand={1 / 12} color={C.emerald} stopwatch glow={0.9}>
+        <Dial size={290} sweep={0} hand={0} color={C.emerald} stopwatch glow={0.9}>
           <span style={{ fontSize: 104, fontWeight: 850, color: C.textStrong, letterSpacing: -3, marginTop: 24 }}>60 s</span>
         </Dial>
       </div>

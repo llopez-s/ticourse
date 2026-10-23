@@ -56,9 +56,9 @@ export function S06Recap(props: SceneProps) {
   const boardOut = progress(frame, endcardAt - 14, 14, EASE.inOut);
   const { weights, dims } = focusWeights(frame, [...ruleAt], { end: nextAt });
   const allDim = p(nextAt - 4, 14);
-  const glow = weights.map((w, i) => w * (0.75 + 0.25 * pulse(frame, fps, 0.5)) * (1 - 0 * i));
-  const pics = Math.min(recapAt + 2, ruleAt[0] - 24);
-  const thumbIn = (i: number) => p(pics + i * 5, 14);
+  const glow = weights.map((w) => w * (0.75 + 0.25 * pulse(frame, fps, 0.5)));
+  // The three pictures come into their waiting slots with «tres reglas», always before rule 1 lights.
+  const waitAt = Math.min(recapAt + 2, ruleAt[0] - 24);
   const rowDim = (i: number) => Math.max(dims[i], 0.55 * allDim);
 
   // Rule 1
@@ -89,11 +89,9 @@ export function S06Recap(props: SceneProps) {
         <div style={{ position: 'absolute', inset: 0, opacity: 1 - boardOut, fontFamily: FONT.sans }}>
           <div style={{ position: 'absolute', left: 0, top: 0, width: W, height: BOARD_H, transform: `scale(${mix(1, BACK, back)})`, transformOrigin: '50% 0%' }}>
             {/* Rule 1: the instrument is you */}
-            <RuleRow index={0} top={ROWS[0].top} height={ROWS[0].h} frame={frame} fps={fps} slotAt={-14} at={ruleAt[0]} dim={rowDim(0)} glow={glow[0]}>
+            <RuleRow index={0} top={ROWS[0].top} height={ROWS[0].h} frame={frame} fps={fps} slotAt={-14} waitAt={waitAt} at={ruleAt[0]} dim={rowDim(0)} glow={glow[0]}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 34, height: '100%' }}>
-                <div style={{ opacity: Math.max(0.5 * thumbIn(0), 1) }}>
-                  <ScaleAndWeight lit={Math.max(thumbIn(0) * 0.4, weights[0])} />
-                </div>
+                <ScaleAndWeight lit={weights[0]} />
                 <div>
                   <div style={lineStyle(56, 850, C.textStrong, 1, 0.45)}>El instrumento eres tú:</div>
                   <div style={{ marginTop: 4, ...lineStyle(44, 750, C.text, rest1) }}>
@@ -104,7 +102,7 @@ export function S06Recap(props: SceneProps) {
             </RuleRow>
 
             {/* Rule 2: the phrase that gives each shortcut away */}
-            <RuleRow index={1} top={ROWS[1].top} height={ROWS[1].h} frame={frame} fps={fps} slotAt={-14} at={ruleAt[1]} dim={rowDim(1)} glow={glow[1]}>
+            <RuleRow index={1} top={ROWS[1].top} height={ROWS[1].h} frame={frame} fps={fps} slotAt={-14} waitAt={waitAt} at={ruleAt[1]} dim={rowDim(1)} glow={glow[1]}>
               <div style={{ paddingTop: 18 }}>
                 <div style={lineStyle(52, 850, C.textStrong, 1, 0.45)}>Aprende la frase que delata cada atajo</div>
                 <div style={{ marginTop: 18, display: 'flex', gap: 18 }}>
@@ -143,9 +141,9 @@ export function S06Recap(props: SceneProps) {
             </RuleRow>
 
             {/* Rule 3: knock your first answer down before defending it */}
-            <RuleRow index={2} top={ROWS[2].top} height={ROWS[2].h} frame={frame} fps={fps} slotAt={-14} at={ruleAt[2]} dim={rowDim(2)} glow={glow[2]}>
+            <RuleRow index={2} top={ROWS[2].top} height={ROWS[2].h} frame={frame} fps={fps} slotAt={-14} waitAt={waitAt} at={ruleAt[2]} dim={rowDim(2)} glow={glow[2]}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 34, height: '100%' }}>
-                <div style={{ width: 210, height: 130, opacity: Math.max(0.5 * thumbIn(2), 1) }}>
+                <div style={{ width: 210, height: 130 }}>
                   <HypothesisStone thrown={thrown} wobble={wobble} />
                 </div>
                 <div>

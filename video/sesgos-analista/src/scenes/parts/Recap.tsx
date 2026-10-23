@@ -30,6 +30,7 @@ export function RuleRow({
   frame,
   fps,
   slotAt,
+  waitAt,
   at,
   dim,
   glow,
@@ -41,6 +42,8 @@ export function RuleRow({
   frame: number;
   fps: number;
   slotAt: number;
+  /** Frame the card's content comes into its waiting slot, dim (the `recap` cue). */
+  waitAt: number;
   at: number;
   dim: number;
   glow: number;
@@ -87,7 +90,7 @@ export function RuleRow({
       >
         {index + 1}
       </div>
-      <div style={{ position: 'absolute', left: 96, right: 20, top: 0, height, opacity: Math.max(0.35 * slot, lit), transform: `translateX(${(1 - Math.min(1, p)) * 18}px)` }}>{children}</div>
+      <div style={{ position: 'absolute', left: 96, right: 20, top: 0, height, opacity: Math.max(0.4 * progress(frame, waitAt + index * 5, 14), lit), transform: `translateX(${(1 - Math.min(1, p)) * 18}px)` }}>{children}</div>
     </div>
   );
 }

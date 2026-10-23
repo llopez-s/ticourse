@@ -36,8 +36,13 @@ export function Poster() {
       />
       <div style={{ position: 'absolute', left: ART.x, top: ART.y }}>
         <StairsArt width={ART.w} labels labelSize={46} lit={3} dotAt={0} />
-        <div style={{ position: 'absolute', left: 10, top: -22 }}>
-          <IpChip ip={IP} size={36} />
+        {/* the same IP, climbing to the judgment */}
+        <svg width={ART.w} height={490} style={{ position: 'absolute', left: 0, top: 0, overflow: 'visible' }}>
+          <path d="M150 236C190 80 380 40 590 22" fill="none" stroke={alpha(C.cyanSoft, 0.8)} strokeWidth={6} strokeDasharray="4 16" strokeLinecap="round" />
+          <circle cx="598" cy="22" r="13" fill={C.cyanSoft} style={{ filter: `drop-shadow(0 0 14px ${alpha(C.cyan, 0.9)})` }} />
+        </svg>
+        <div style={{ position: 'absolute', left: 4, top: 254 }}>
+          <IpChip ip={IP} size={27} />
         </div>
       </div>
 
