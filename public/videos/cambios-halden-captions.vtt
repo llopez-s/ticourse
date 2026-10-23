@@ -1,0 +1,370 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:04.900
+En el puerto de Halden, un cambio
+no se toca sin que alguien lo haya pedido,
+
+2
+00:00:04.900 --> 00:00:06.367
+mirado y firmado.
+
+3
+00:00:06.367 --> 00:00:09.233
+Vamos a seguir un cambio
+de principio a fin.
+
+4
+00:00:09.233 --> 00:00:12.333
+Qué hace falta antes,
+qué toca y qué queda por escrito.
+
+5
+00:00:12.333 --> 00:00:15.733
+Porque lo que se rompe no siempre
+es lo que ibas a tocar.
+
+6
+00:00:16.967 --> 00:00:18.533
+Se rellena la petición.
+
+7
+00:00:18.533 --> 00:00:22.900
+Primero va el dueño del cambio,
+el change owner, una persona de Sistemas.
+
+8
+00:00:22.900 --> 00:00:27.867
+Responde de que se justifique, se pruebe y
+se cierre, aunque lo aplique otra persona.
+
+9
+00:00:27.867 --> 00:00:31.967
+Antes de que firme el comité
+de cambios, hacen falta tres cosas.
+
+10
+00:00:31.967 --> 00:00:35.233
+Una, saber qué toca y a quién,
+el impact analysis.
+
+11
+00:00:35.233 --> 00:00:39.000
+Dos, las pruebas, en un entorno
+de prueba y no en producción.
+
+12
+00:00:39.000 --> 00:00:43.367
+Y tres, los pasos para deshacerlo,
+escritos antes de tocar.
+
+13
+00:00:43.367 --> 00:00:45.633
+Eso es el backout plan.
+
+14
+00:00:45.633 --> 00:00:50.600
+Con las tres, puede firmar el comité.
+Y quien pide el cambio no lo firma.
+
+15
+00:00:50.633 --> 00:00:55.467
+Después se elige cuándo, fuera del horario
+de las oficinas. Es la maintenance window.
+
+16
+00:00:55.467 --> 00:00:59.567
+Si el examen dice «antes
+de implementar», piensa en esas tres.
+
+17
+00:00:59.567 --> 00:01:02.200
+El plan de vuelta atrás no es un adorno.
+
+18
+00:01:02.200 --> 00:01:05.900
+Si la comprobación falla
+en la ventana, se activa.
+
+19
+00:01:06.833 --> 00:01:07.667
+Te toca.
+
+20
+00:01:07.667 --> 00:01:11.300
+Una cadena de ópticas actualiza
+su programa de citas dentro de la ventana
+
+21
+00:01:11.300 --> 00:01:16.700
+aprobada. Al comprobarlo, no guarda las
+citas nuevas, y quedan cuarenta minutos.
+
+22
+00:01:16.700 --> 00:01:18.467
+¿Qué es lo mejor
+que puede hacer el equipo?
+
+23
+00:01:18.467 --> 00:01:22.533
+Si piden el “mejor”, ojo,
+que varias arreglan algo,
+
+24
+00:01:22.533 --> 00:01:25.600
+pero una arregla lo que cuenta el caso.
+
+25
+00:01:25.133 --> 00:01:30.133
+A) Ejecutar el backout plan aprobado
+B) Pedir al CAB que apruebe un arreglo urgente
+C) Seguir ajustando hasta que funcione
+D) Dejarlo así y avisar a los usuarios
+
+26
+00:01:30.367 --> 00:01:33.933
+El backout plan,
+para volver a lo que funcionaba.
+
+27
+00:01:33.933 --> 00:01:37.400
+Retocar en producción sería
+otro cambio sin probar.
+
+28
+00:01:40.800 --> 00:01:42.367
+Ahora, lo que toca.
+
+29
+00:01:42.367 --> 00:01:45.700
+La petición es poner al día las carpetas
+compartidas de las oficinas,
+
+30
+00:01:45.700 --> 00:01:50.467
+y de ahí cuelgan cosas.
+Dos programas guardan ahí sus informes.
+
+31
+00:01:50.467 --> 00:01:54.133
+Y hay un programa antiguo que solo
+entiende la versión anterior.
+
+32
+00:01:54.133 --> 00:01:57.100
+Se anota, para decidir qué hacer con él.
+
+33
+00:01:57.100 --> 00:02:00.400
+Eso sale al preguntar quién
+más lo usa, no al fallar.
+
+34
+00:02:00.400 --> 00:02:04.200
+A esas cosas que cuelgan
+las llaman dependencies.
+
+35
+00:02:04.200 --> 00:02:08.933
+Más abajo, la petición pide dar de alta un
+servidor nuevo en la lista de permitidos,
+
+36
+00:02:08.933 --> 00:02:10.533
+la allow list.
+
+37
+00:02:10.533 --> 00:02:13.867
+Piensa en un capataz de obra
+con su lista en la puerta.
+
+38
+00:02:13.867 --> 00:02:17.033
+Quien no figura no pasa,
+aunque sea de confianza.
+
+39
+00:02:17.033 --> 00:02:21.533
+Si hoy viene un fontanero, apuntas a ese
+fontanero y a nadie más de su empresa.
+
+40
+00:02:21.533 --> 00:02:24.800
+Aquí, una sola línea, el servidor nuevo.
+
+41
+00:02:24.800 --> 00:02:30.233
+O sea, que se pregunta quién más lo usa,
+y a las listas solo va lo justo.
+
+42
+00:02:31.267 --> 00:02:35.000
+Otra más. Una ferretería
+cambia de proveedor de pagos.
+
+43
+00:02:35.000 --> 00:02:38.133
+Su cortafuegos solo deja salir
+hacia destinos de una lista,
+
+44
+00:02:38.133 --> 00:02:42.933
+y el destino del proveedor nuevo no está.
+¿Cuál es la mejor forma de resolverlo?
+
+45
+00:02:42.367 --> 00:02:47.367
+A) Quitar el filtro mientras dura la ventana
+B) Permitir la red entera del proveedor
+C) Añadir solo el destino que se necesita
+D) Instalar un segundo cortafuegos
+
+46
+00:02:47.533 --> 00:02:49.733
+Añadir solo el destino que hace falta.
+
+47
+00:02:49.733 --> 00:02:52.933
+Permitir la red entera
+tienta porque ahorra trabajo,
+
+48
+00:02:52.933 --> 00:02:55.733
+pero deja pasar más de lo
+que el cambio necesita.
+
+49
+00:02:55.733 --> 00:02:59.033
+Se apunta al fontanero,
+no a toda su empresa.
+
+50
+00:03:02.600 --> 00:03:04.300
+Y llegamos a lo que queda.
+
+51
+00:03:04.300 --> 00:03:07.667
+La comprobación sale bien
+y la petición pasa a «comprobado»,
+
+52
+00:03:07.667 --> 00:03:09.600
+pero todavía no se cierra.
+
+53
+00:03:09.600 --> 00:03:11.533
+Falta que lo escrito diga lo que hay.
+
+54
+00:03:11.533 --> 00:03:15.533
+Primero, el diagrama de servicios,
+con el servidor nuevo en su sitio.
+
+55
+00:03:15.533 --> 00:03:18.933
+Luego, el procedimiento paso
+a paso, con el paso que cambió.
+
+56
+00:03:18.933 --> 00:03:20.867
+Así lo hace igual quien lo haga.
+
+57
+00:03:20.867 --> 00:03:24.167
+Y la versión guardada,
+con quién cambió qué y cuándo.
+
+58
+00:03:24.167 --> 00:03:27.533
+Es el version control,
+y permite volver a la anterior.
+
+59
+00:03:27.533 --> 00:03:31.600
+Cuando las tres coinciden con lo que hay,
+el sello cambia a «cerrado».
+
+60
+00:03:31.600 --> 00:03:34.333
+O sea, que un cambio
+no se cierra cuando funciona,
+
+61
+00:03:34.333 --> 00:03:37.133
+sino cuando lo escrito dice lo que hay.
+
+62
+00:03:38.200 --> 00:03:39.433
+La última.
+
+63
+00:03:39.433 --> 00:03:43.567
+Una floristería cambió de programa
+de encargos, en un servidor nuevo.
+
+64
+00:03:43.567 --> 00:03:47.200
+Todo funciona, pero cada empleada
+cursa los urgentes a su manera
+
+65
+00:03:47.200 --> 00:03:52.233
+y algunos no salen. ¿Qué actualización
+pendiente explica el problema?
+
+66
+00:03:51.800 --> 00:03:56.800
+A) El control de versiones
+B) Los procedimientos
+C) El inventario de servicios
+D) El diagrama de servicios
+
+67
+00:03:56.967 --> 00:03:58.333
+Los procedimientos.
+
+68
+00:03:58.333 --> 00:04:02.567
+Cambió cómo se cursa un encargo
+y nadie lo dejó escrito para todas.
+
+69
+00:04:02.567 --> 00:04:06.267
+El diagrama también hace
+falta, pero no explica eso.
+
+70
+00:04:07.800 --> 00:04:08.933
+Tres reglas.
+
+71
+00:04:08.933 --> 00:04:12.533
+Una, antes de que firme
+el comité hacen falta impacto,
+
+72
+00:04:12.533 --> 00:04:15.267
+pruebas y plan de vuelta atrás.
+
+73
+00:04:15.267 --> 00:04:17.567
+Dos, pregunta quién más lo usa,
+
+74
+00:04:17.567 --> 00:04:20.900
+y a las listas entra solo
+lo que el cambio necesita.
+
+75
+00:04:20.900 --> 00:04:25.167
+Y tres, un cambio no se cierra
+hasta que lo escrito dice lo que hay.
+
+76
+00:04:25.167 --> 00:04:30.233
+Antes de tocar, tres cosas. Al tocar,
+lo necesario. Al acabar, todo al día.
+
+77
+00:04:30.233 --> 00:04:31.700
+Tu turno.
