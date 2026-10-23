@@ -20,7 +20,7 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {notebook}Los objetos perdidos de la terminal de pasajeros de Halden se apuntan en un cuaderno. {screen}Pasarlos a un sistema trae reglas que no has elegido tú.",
+      "text": "<curious> {notebook}Los objetos perdidos de la terminal de pasajeros de Halden van en un cuaderno. {screen}Pasarlos a un sistema trae reglas que no eliges tú.",
       "pauseAfterMs": 300
     },
     {
@@ -44,17 +44,23 @@
     {
       "id": "s02-03",
       "scene": "s02-antes",
-      "text": "<thoughtful> {launch}Se lanza. {after}Y empieza lo otro, que no se acaba. {routines}Revisar quién entra, borrar lo que caduca, arreglar lo que salga en las revisiones.",
+      "text": "<thoughtful> {launch}Se pulsa el botón y el sistema se lanza. {after}Y empieza lo otro, que no se acaba.",
       "pauseAfterMs": 250
     },
     {
       "id": "s02-04",
       "scene": "s02-antes",
+      "text": "<focused> {routines}Revisar quién entra, borrar lo que caduca, arreglar lo que salga en las revisiones.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-antes",
       "text": "<confident> Seguir haciéndolo bien, de forma continua, es la due care.",
       "pauseAfterMs": 300
     },
     {
-      "id": "s02-05",
+      "id": "s02-06",
       "scene": "s02-antes",
       "text": "<warm> {cat}Es como adoptar un gato. Antes te informas de lo que necesita, y después le das de comer cada día. {cat-rule}Haberlo mirado muy bien no te exime de cuidarlo.",
       "pauseAfterMs": 800,
@@ -68,7 +74,7 @@
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca. Antes de lanzar su aplicación, una empresa hizo un análisis legal impecable. Tres años después, nadie borra lo que caduca ni corrige lo que salió en la última revisión. ¿Qué describe mejor lo que le ha faltado? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
+      "text": "<intrigued> {q1}Antes de lanzar su aplicación, una empresa hizo un análisis legal impecable. Tres años después, nadie borra lo que caduca ni corrige lo que salió en la última revisión. ¿Qué describe mejor lo que le ha faltado? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.4",
@@ -104,7 +110,7 @@
     {
       "id": "s04-01",
       "scene": "s04-cuesta",
-      "text": "<engaging> {suppose}Imagina que el puerto no hiciera nada de esto. Es un supuesto. {authority}No cumplir cuesta distinto según quién te lo impone.",
+      "text": "<engaging> {suppose}Imagina que el puerto no hiciera nada de esto. {authority}No cumplir cuesta distinto según quién te lo impone.",
       "pauseAfterMs": 300
     },
     {
@@ -140,7 +146,7 @@
     {
       "id": "s04-06",
       "scene": "s04-cuesta",
-      "text": "<steady> {reporting}Y se informa. El reporting interno va a la dirección, y el externo, a reguladores y clientes, con plazo.",
+      "text": "<steady> {reporting}Y se informa. El reporting interno va a la dirección, y el externo, a reguladores y clientes.",
       "pauseAfterMs": 250
     },
     {
@@ -176,14 +182,20 @@
     {
       "id": "s05-02",
       "scene": "s05-p2",
-      "text": "<firm> {ok-2}Es una sanction, porque la impone la autoridad y restringe lo que puedes hacer. {trap-2}Contractual impacts tienta, porque pierde contratos. Pero no se los quita un cliente, se lo prohíbe el regulador.",
-      "pauseAfterMs": 300
+      "text": "<firm> {ok-2}Es una sanction, porque la impone la autoridad y restringe lo que puedes hacer.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s05-03",
       "scene": "s05-p2",
-      "text": "<clear> {regulator}O sea, una sanction restringe, no multa.",
-      "pauseAfterMs": 800,
+      "text": "<thoughtful> {trap-2}Contractual impacts tienta, porque pierde contratos. Pero ningún cliente se los quita, se los prohíbe el regulador.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-p2",
+      "text": "<clear> {regulator}Recuerda, una sanction restringe, no multa. Y en el examen, mira quién la impone.",
+      "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.4",
         "text": "Sanctions: la autoridad restringe, no multa",
@@ -194,7 +206,13 @@
     {
       "id": "s06-01",
       "scene": "s06-guardar",
-      "text": "<engaging> {three-places}Vuelve el registro de objetos perdidos. Quien reclama deja nombre, teléfono y documento, y esos datos viven en tres sitios. El sistema, su copia y el aviso. {inventory}Ese mapa es el data inventory, y no proteges lo que no sabes que tienes.",
+      "text": "<engaging> {three-places}Vuelve el registro. Quien reclama deja nombre, teléfono y documento, y eso vive en tres sitios. El sistema, su copia y el aviso.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-guardar",
+      "text": "<intrigued> {inventory}Ese mapa es el data inventory, y no proteges lo que no sabes que tienes.",
       "pauseAfterMs": 300,
       "exam": {
         "objective": "5.4",
@@ -204,21 +222,27 @@
       }
     },
     {
-      "id": "s06-02",
-      "scene": "s06-guardar",
-      "text": "<clear> {retention}Después, cuánto se guardan, mientras el objeto esté en la oficina y unos meses más. {backups}Y se borran en los tres sitios, también en la copia. Eso es la retention.",
-      "pauseAfterMs": 300
-    },
-    {
       "id": "s06-03",
       "scene": "s06-guardar",
-      "text": "<thoughtful> {subject}Quien reclama es la data subject. {rtbf-chip}Puede pedir que se borren sus datos, el right to be forgotten, pero no siempre. Una ley o un legal hold lo pueden parar, y se borra lo demás.",
+      "text": "<clear> {retention}Se guardan mientras el objeto está en la oficina y unos meses más. {backups}Y se borran en los tres, copia incluida. Eso es la retention.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-04",
       "scene": "s06-guardar",
-      "text": "<warm> {drawer}Es el archivador de casa. Para tirar recibos, primero sabes qué hay dentro.",
+      "text": "<thoughtful> {subject}Quien reclama es la data subject. {rtbf-chip}Puede pedir que se borren sus datos, el right to be forgotten, pero no siempre.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-guardar",
+      "text": "<steady> Una ley o un legal hold lo pueden parar, y se borra lo demás.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-guardar",
+      "text": "<warm> {drawer}Como en el archivador de casa, primero hay que saber qué hay dentro.",
       "pauseAfterMs": 500
     },
     {
@@ -248,11 +272,17 @@
     {
       "id": "s07-02",
       "scene": "s07-p3",
-      "text": "<firm> {ok-3}Es la retention, porque guarda mucho más de lo que su plazo permite. {trap-3}El right to be forgotten tienta, porque hay que borrar. Pero se ejerce a petición, y aquí nadie ha pedido nada.",
-      "pauseAfterMs": 300
+      "text": "<firm> {ok-3}Es la retention, porque guarda mucho más de lo que su plazo permite.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<thoughtful> {trap-3}El right to be forgotten tienta, porque hay que borrar. Pero se ejerce a petición, y aquí nadie ha pedido nada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
       "scene": "s07-p3",
       "text": "<warm> {drawer-back}Como en el archivador, nadie te pide que tires los recibos viejos, y aun así sobran.",
       "pauseAfterMs": 800,
@@ -266,19 +296,19 @@
     {
       "id": "s08-01",
       "scene": "s08-cierre",
-      "text": "<cheerful> {recap}Tres reglas. {rule-1}Due diligence antes, due care después, y una no cubre la otra.",
+      "text": "<cheerful> {recap}Tres reglas. {rule-1}Una, due diligence antes, due care después, y una no cubre la otra.",
       "pauseAfterMs": 250
     },
     {
       "id": "s08-02",
       "scene": "s08-cierre",
-      "text": "<clear> {rule-2}Mira quién te impone cada consecuencia.",
+      "text": "<clear> {rule-2}Dos, mira quién te impone cada consecuencia.",
       "pauseAfterMs": 250
     },
     {
       "id": "s08-03",
       "scene": "s08-cierre",
-      "text": "<firm> {rule-3}Sin inventario no hay retención, y se borra en todas las copias.",
+      "text": "<firm> {rule-3}Y tres, sin inventario no hay retención, y se borra en todas las copias.",
       "pauseAfterMs": 300
     },
     {

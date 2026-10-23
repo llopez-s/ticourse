@@ -25,13 +25,19 @@
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Dónde está el dato. {promise}Son tres preguntas. Si está guardado, en camino o en uso. Qué se ve y qué se guarda. Y en qué país vive.",
+      "text": "<confident> {title}Dónde está el dato. Protegerlo depende de dónde esté.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<clear> {promise}Son tres preguntas. Si está guardado, en camino o en uso. Qué se ve y qué se guarda. Y en qué país vive.",
       "pauseAfterMs": 400
     },
     {
       "id": "s02-01",
       "scene": "s02-estados",
-      "text": "<engaging> {three}Un fichaje pasa por tres sitios, {piggybank}como el dinero de una hucha. {rest}Guardado en la base de datos, es data at rest, y se protege cifrando el almacenamiento.",
+      "text": "<engaging> {three}Un fichaje pasa por tres sitios, {piggybank}como el dinero de una hucha. {rest}Guardado, es data at rest, y se protege cifrando el almacenamiento.",
       "pauseAfterMs": 300
     },
     {
@@ -43,8 +49,8 @@
     {
       "id": "s02-03",
       "scene": "s02-estados",
-      "text": "<thoughtful> {use}Y en la pantalla de la jefa de turno, como el dinero en la mano, ya está descifrado. Es data in use, y ni el disco ni la conexión lo cubren.",
-      "pauseAfterMs": 300,
+      "text": "<thoughtful> {use}Y abierto en la pantalla de la jefa de turno, el fichaje ya está descifrado, y eso es data in use.",
+      "pauseAfterMs": 250,
       "exam": {
         "objective": "3.3",
         "text": "In use: el dato ya está descifrado",
@@ -55,7 +61,19 @@
     {
       "id": "s02-04",
       "scene": "s02-estados",
-      "text": "<serious> {corridor}Pero esa pantalla da al pasillo, y cualquiera que pasara podría leerla. {decision}Así que se gira, se bloquea sola a los pocos minutos y cada jefa ve solo a su equipo. Eso es least privilege.",
+      "text": "<clear> Como el dinero en la mano, ahí ya no hay hucha. Ni el disco ni la conexión lo cubren.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-estados",
+      "text": "<serious> {corridor}Pero esa pantalla da al pasillo, y cualquiera que pasara podría leerla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-estados",
+      "text": "<firm> {decision}Se gira, se bloquea sola a los pocos minutos y cada jefa ve solo a su equipo. Eso es least privilege.",
       "pauseAfterMs": 500
     },
     {
@@ -109,13 +127,25 @@
     {
       "id": "s04-02",
       "scene": "s04-metodos",
-      "text": "<clear> {report}En el informe de horas para Dirección, cada DNI es un código sin sentido. {token}La tabla que traduce cada código a su persona la guarda Recursos Humanos. {vault}Es la vault, y eso es tokenization. Solo quien la tiene vuelve al DNI.",
+      "text": "<clear> {report}En el informe de horas para Dirección, cada DNI es un código sin sentido. {token}La tabla que traduce cada código a su persona la guarda Recursos Humanos.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-03",
       "scene": "s04-metodos",
-      "text": "<focused> {export}Para la exportación mensual, alguien propone enredar columnas y campos, para que no se entienda. {crossed}Eso es obfuscation. Estorba, pero no protege, y un formato que no se lee a simple vista tampoco es un control. {chip}Se cifra igual.",
+      "text": "<warm> {vault}Esa tabla es la vault, y eso es tokenization. Solo quien la tiene vuelve al DNI.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-metodos",
+      "text": "<focused> {export}Para la exportación mensual, alguien propone enredar columnas y campos, para que no se entienda. {crossed}Eso es obfuscation.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-metodos",
+      "text": "<firm> Estorba, pero no protege, y un formato que no se lee a simple vista tampoco es un control. {chip}Se cifra igual.",
       "pauseAfterMs": 500
     },
     {
@@ -175,7 +205,13 @@
     {
       "id": "s06-03",
       "scene": "s06-pais",
-      "text": "<thoughtful> Las cajas son tuyas, pero el trastero está allí, y allí mandan sus normas. Con el dato pasa igual. {law}Le aplica la ley del país donde reside, no la de la sede, y eso es data sovereignty.",
+      "text": "<thoughtful> Las cajas son tuyas, pero el trastero está allí, y allí mandan sus normas. Con el dato pasa igual.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-pais",
+      "text": "<serious> {law}Le aplica la ley del país donde reside, no la de la sede, y eso es data sovereignty.",
       "pauseAfterMs": 300,
       "exam": {
         "objective": "3.3",
@@ -185,7 +221,7 @@
       }
     },
     {
-      "id": "s06-04",
+      "id": "s06-05",
       "scene": "s06-pais",
       "text": "<firm> {tie}Y para atarlo, el dato se queda en una región de la Unión Europea y nadie entra desde fuera. Son las geographic restrictions. {order}Primero se mira, y después se limita.",
       "pauseAfterMs": 500
@@ -193,7 +229,7 @@
     {
       "id": "s07-01",
       "scene": "s07-p3",
-      "text": "<curious> {q3}Antes de poner ninguna regla, una editorial averigua en qué país está cada almacenamiento de su nube, y desde dónde entra cada cuenta. De momento, no bloquea nada. ¿Qué describe mejor lo que está usando?",
+      "text": "<curious> {q3}Antes de poner ninguna regla, una editorial averigua en qué país está cada almacenamiento de su nube. Y desde dónde entra cada cuenta. De momento, no bloquea nada. ¿Qué describe mejor lo que está usando?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "3.3",
@@ -241,13 +277,13 @@
     {
       "id": "s08-02",
       "scene": "s08-cierre",
-      "text": "<clear> {rule-2}Masking oculta una parte. Tokenization guarda un sustituto que solo traduce la vault. Y obfuscation solo estorba.",
+      "text": "<clear> {rule-2}Masking oculta una parte. Tokenization sustituye, y solo la vault traduce. Obfuscation solo estorba.",
       "pauseAfterMs": 250
     },
     {
       "id": "s08-03",
       "scene": "s08-cierre",
-      "text": "<firm> {rule-3}Primero se mira dónde vive el dato, y después se ata a una región.",
+      "text": "<firm> {rule-3}Primero se mira dónde vive el dato, y luego se ata a una región.",
       "pauseAfterMs": 300
     },
     {

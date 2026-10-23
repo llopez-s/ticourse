@@ -29,19 +29,19 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {table}En el puerto de Halden, antes de la revisión anual, la dirección tiene que firmar ante la autoridad marítima que sus controles funcionan. {three}Y el consejo quiere saber antes si cumple y si aguanta.",
+      "text": "<curious> {table}En el puerto de Halden, la dirección va a firmar ante la autoridad marítima que {three}sus controles funcionan.",
       "pauseAfterMs": 300
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Cumplir o aguantar. {promise}Vas a ver quién lo firma, quién lo comprueba y cómo se prueba.",
-      "pauseAfterMs": 400
+      "text": "<confident> {title}Pero antes de la revisión anual, el consejo quiere saber si cumplen y si aguantan.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s01-03",
       "scene": "s01-hook",
-      "text": "<warm> Porque decirlo no es demostrarlo.",
+      "text": "<warm> {promise}Vas a ver quién lo firma, quién lo comprueba y cómo se prueba. Porque decirlo no es demostrarlo.",
       "pauseAfterMs": 500
     },
     {
@@ -53,17 +53,23 @@
     {
       "id": "s02-02",
       "scene": "s02-firmas",
-      "text": "<clear> {ack}A la izquierda, la firma de cada persona de la plantilla, que ha leído la política de uso aceptable. Una persona, una norma. Eso es un acknowledgement.",
+      "text": "<clear> {ack}A la izquierda, cada persona de la plantilla firma que ha leído la política de uso aceptable. Una persona, una norma. Eso es un acknowledgement.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-03",
       "scene": "s02-firmas",
-      "text": "<thoughtful> {attest}A la derecha, un solo documento, con fecha, {period}con el alcance y el periodo: los controles del programa, durante los últimos doce meses. {signature}Y la firma de la dirección. Eso es una attestation: la organización se compromete con un hecho.",
+      "text": "<thoughtful> {attest}A la derecha, un solo documento, con fecha, alcance y periodo. {period}Dirá que los controles del programa han funcionado durante los últimos doce meses.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-04",
+      "scene": "s02-firmas",
+      "text": "<steady> {signature}Lo firmará la dirección. Eso es una attestation, la organización comprometida con un hecho.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
       "scene": "s02-firmas",
       "text": "<firm> {not-a-test}Pero ninguna de las dos comprueba nada. Si alguien pregunta «¿y funciona?», la respuesta no es otra firma.",
       "pauseAfterMs": 600,
@@ -77,35 +83,41 @@
     {
       "id": "s03-01",
       "scene": "s03-quien",
-      "text": "<curious> {checklist}Ahora, quién lo comprueba. La opción barata es que Sistemas rellene una checklist sobre su propia área. {self}Eso es un self-assessment. Sirve para prepararse, pero no tiene independencia.",
+      "text": "<curious> {checklist}Ahora, quién lo comprueba. Lo más barato es que Sistemas rellene una checklist de su propia área. {self}Eso es un self-assessment, y no tiene independencia.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-02",
       "scene": "s03-quien",
-      "text": "<steady> {internal}Un paso más es una internal audit, una función separada de Sistemas. {committee}Y no le cuenta a Sistemas, le cuenta a un comité del consejo, el audit committee. El comité no audita. Protege a quien audita.",
+      "text": "<steady> {internal}Más peso tiene una internal audit, separada de Sistemas. {committee}No le cuenta a Sistemas, sino a un comité del consejo, el audit committee.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-03",
       "scene": "s03-quien",
-      "text": "<clear> {third-party}Después, una firma de fuera, que contratas y que no tiene interés en el resultado. Es una independent third-party audit.",
+      "text": "<thoughtful> Ese comité no audita. Protege a quien audita.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-04",
       "scene": "s03-quien",
-      "text": "<serious> {regulator}Y la última no la contratas. Es la autoridad marítima, la ley fija el alcance y puede acabar en sanción. Es una regulatory examination.",
+      "text": "<clear> {third-party}Después, una firma de fuera, que contratas y no tiene interés en el resultado. Es una independent third-party audit.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-05",
       "scene": "s03-quien",
-      "text": "<warm> {lift}Piensa en el ascensor de una comunidad. La hoja que rellenan los vecinos, la revisión del administrador, el organismo que contratan, e Industria, que no la llama nadie y puede multar.",
+      "text": "<serious> {regulator}Y la última no la contratas. La hace la autoridad marítima, la ley fija el alcance y puede acabar en sanción. Es una regulatory examination.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-06",
+      "scene": "s03-quien",
+      "text": "<warm> {lift}Piensa en el ascensor de una comunidad. Su hoja, su administrador, el organismo que contratan e Industria, que puede multar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-07",
       "scene": "s03-quien",
       "text": "<firm> {rule}O sea, que para convencer a alguien de fuera, cuenta quién mira, no cuánto mira.",
       "pauseAfterMs": 600,
@@ -283,37 +295,19 @@
       "pauseAfterMs": 600
     },
     {
-      "id": "s08-01",
-      "scene": "s08-p3",
-      "text": "<curious> {q3}Otro más. Un banco reproduce en su red, una a una, técnicas de ataque ya conocidas. Nadie intenta llegar a ningún sitio. Solo se mide cuánto tarda su centro de operaciones en verlas, entenderlas y contenerlas. ¿Qué tipo de prueba describe mejor el ejercicio?",
-      "pauseAfterMs": 250,
-      "question": {
-        "objective": "5.5",
-        "scenario": "Un banco reproduce en su red técnicas de ataque conocidas, sin objetivo que alcanzar. Solo mide cuánto tarda su SOC en verlas y contenerlas.",
-        "q": "¿Qué tipo de prueba describe MEJOR el ejercicio?",
-        "options": [
-          "Physical",
-          "Offensive (red team)",
-          "Integrated (purple team)",
-          "Defensive (blue team)"
-        ],
-        "answer": 3,
-        "trap": 1,
-        "why": "Lo que se pone a prueba es la detección y la respuesta del equipo defensor",
-        "trapWhy": "Hay técnicas de ataque, pero nadie busca un objetivo: se mide al SOC",
-        "countdownMs": 5000,
-        "revealAt": "ok-3",
-        "trapAt": "trap-3"
-      }
-    },
-    {
       "id": "s08-02",
       "scene": "s08-p3",
-      "text": "<firm> {ok-3}Defensive, el blue team, porque se mide la detección y la respuesta. {trap-3}El red team tienta, por las técnicas de ataque. Pero un red team persigue un objetivo, y aquí nadie persigue nada.",
+      "text": "<firm> {ok-3}Defensive, el blue team, porque se mide la detección y la respuesta.",
       "pauseAfterMs": 300
     },
     {
       "id": "s08-03",
+      "scene": "s08-p3",
+      "text": "<serious> {trap-3}El red team tienta, por las técnicas de ataque. Pero un red team persigue un objetivo, y aquí nadie persigue nada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
       "scene": "s08-p3",
       "text": "<casual> {blue-back}Se mide al SOC, y no a quien ataca.",
       "pauseAfterMs": 1000,
@@ -327,13 +321,13 @@
     {
       "id": "s09-01",
       "scene": "s09-contar",
-      "text": "<curious> {envelopes}Ahora, cuánto le cuentas al equipo que prueba. Hay tres sobres.",
+      "text": "<curious> {envelopes}Y ahora, cuánto le cuentas a quien prueba. Hay tres sobres.",
       "pauseAfterMs": 300
     },
     {
       "id": "s09-02",
       "scene": "s09-contar",
-      "text": "<clear> {unknown}En el primero no hay nada. Es el unknown environment. Es lo más realista frente a alguien de fuera, pero se va mucho tiempo en descubrir.",
+      "text": "<clear> {unknown}En el primero, nada. Es el unknown environment, lo más realista, pero se va mucho tiempo en descubrir.",
       "pauseAfterMs": 300
     },
     {
@@ -345,13 +339,13 @@
     {
       "id": "s09-04",
       "scene": "s09-contar",
-      "text": "<thoughtful> {known}En el tercero, planos, código y credenciales. Es el known environment. Da la máxima cobertura por hora, pero {boxes}no se parece a un atacante de fuera.",
+      "text": "<thoughtful> {known}En el tercero, planos, código y credenciales. Es el known environment. Da la máxima cobertura, pero {boxes}no se parece a un atacante de fuera.",
       "pauseAfterMs": 300
     },
     {
       "id": "s09-05",
       "scene": "s09-contar",
-      "text": "<warm> {escape-room}Piensa en una sala de escape. Sin pistas, se juega de verdad, aunque se acabe la hora sin abrir todas las puertas. Con el plano, compruebas cada cerradura enseguida, pero ya no es el juego.",
+      "text": "<warm> {escape-room}Piensa en una sala de escape. Sin pistas se juega de verdad, con una pista tienes ayuda, y con el plano compruebas cada cerradura enseguida, pero ya no es el juego.",
       "pauseAfterMs": 300
     },
     {
@@ -471,19 +465,19 @@
     {
       "id": "s13-01",
       "scene": "s13-cierre",
-      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}La primera, una firma declara. La attestation compromete a la organización con un hecho, y el acknowledgement, a una persona con una norma.",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Una firma declara. La attestation compromete a la organización, y el acknowledgement, a una persona.",
       "pauseAfterMs": 250
     },
     {
       "id": "s13-02",
       "scene": "s13-cierre",
-      "text": "<clear> {rule-2}La segunda, para convencer a alguien de fuera, cuenta quién comprueba. Y aprobar la auditoría no dice que aguantes, ni aguantar, que cumplas.",
+      "text": "<clear> {rule-2}Para convencer a alguien de fuera, cuenta quién comprueba. Y cumplir no dice que aguantes, ni al revés.",
       "pauseAfterMs": 250
     },
     {
       "id": "s13-03",
       "scene": "s13-cierre",
-      "text": "<firm> {rule-3}Y la tercera, en la prueba, mira qué se mide, cuánto se le cuenta a quien prueba y si se ha tocado al objetivo.",
+      "text": "<firm> {rule-3}En la prueba, mira qué se mide, cuánto cuentas y si se ha tocado al objetivo.",
       "pauseAfterMs": 300
     },
     {
