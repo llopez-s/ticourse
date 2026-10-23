@@ -1,0 +1,308 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "tamper": "glitch",
+    "blaze": "alarm",
+    "cert": "lock",
+    "logged": "typing",
+    "missing": "error"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {ship}En el puerto de Halden, cada barco con mercancías peligrosas avisa antes de llegar. {sheet}Lo hace con una hoja, y hay que protegerla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Qué se rompe, quién toca y cuánto falta. {promise}Son las tres cosas que el examen quiere saber de una hoja así.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-propiedades",
+      "text": "<engaging> {sheet}Primero, lo que no puede romperse. La hoja tiene que cumplir cuatro cosas. {read}La primera, que solo la lea quien esté autorizado. Eso es confidentiality.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-propiedades",
+      "text": "<thoughtful> {change}La segunda, que nadie la cambie sin permiso. Si la hoja {tamper}pasa de mil kilos a cien, eso es integrity.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-propiedades",
+      "text": "<curious> {fire}La tercera, que esté cuando hace falta. Imagina que de noche hay un {blaze}fuego y quien va a apagarlo no puede abrirla. Eso es availability.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-propiedades",
+      "text": "<firm> {deny}Y la cuarta, que quien la manda no pueda negar que la mandó. Eso es non-repudiation, y lo da la firma digital.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-propiedades",
+      "text": "<clear> {verbs}El examen te cuenta lo que ha pasado, y tú lo traduces a su verbo.",
+      "pauseAfterMs": 250,
+      "exam": {
+        "objective": "1.2",
+        "text": "Leer es C; cambiar es I; no poder usarlo es A",
+        "at": "verbs",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-propiedades",
+      "text": "<warm> O sea, que se lee, se cambia, no se puede usar o se niega.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca. En una cooperativa, un fallo de disco cambia algunos kilos de los socios sin que nadie lo note. El sistema sigue en marcha, y nadie de fuera ha entrado. ¿Qué propiedad de esos datos se ha roto?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "1.2",
+        "scenario": "En una cooperativa, un fallo de disco cambia algunos kilos de los socios sin que nadie lo note. El sistema sigue en marcha y nadie de fuera ha entrado.",
+        "q": "¿Qué propiedad de esos datos se ha roto?",
+        "options": [
+          "Confidentiality",
+          "Integrity",
+          "Non-repudiation",
+          "Availability"
+        ],
+        "answer": 1,
+        "trap": 3,
+        "why": "Los kilos ya no son los que eran, aunque nadie los tocara: integrity",
+        "trapWhy": "Un fallo de disco suena a availability, pero el sistema sigue en marcha",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Integrity, porque los kilos ya no son los que eran.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}El fallo del disco te empuja hacia availability, el caso de manual. Pero el sistema no se ha parado.",
+      "pauseAfterMs": 1200,
+      "exam": {
+        "objective": "1.2",
+        "text": "Manda lo que se rompe, no lo que lo causó",
+        "at": "trap-1",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-aaa",
+      "text": "<engaging> {doors}Ahora, quién toca esa hoja. Son tres preguntas, siempre en este orden.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-aaa",
+      "text": "<curious> {who}La primera, ¿quién eres? Aquí nadie teclea, porque el sistema de la naviera se identifica solo. {cert}Eso es authentication, y las máquinas también se autentican, con un certificado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-aaa",
+      "text": "<clear> {what}La segunda, ¿qué puedes hacer? Quien declara envía y corrige la hoja, y Operaciones solo la lee. Eso es authorization. {role}Si el permiso va con el puesto, es role-based.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-aaa",
+      "text": "<thoughtful> {attr}Pero quien acude a una emergencia solo la abre mientras ese barco está en el puerto. Ahí importa quién es, qué hoja y cuándo. Eso ya es attribute-based.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-aaa",
+      "text": "<warm> Y a cada uno, solo lo justo. Se llama least privilege.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-aaa",
+      "text": "<firm> {log}La tercera, ¿qué hiciste? Queda {logged}apuntado quién la abrió, quién la cambió y cuándo. Eso es accounting.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-aaa",
+      "text": "<serious> {order}Son las tres A. Primero quién, luego qué, y todo apuntado.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "1.2",
+        "text": "AAA: quién eres, qué puedes, qué hiciste",
+        "at": "order",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Otra más. En una notaría, el sistema decide quién abre cada escritura. Mira a la vez el puesto de quien la pide, si lleva a ese cliente y lo delicada que es. ¿Qué modelo de autorización describe mejor esa decisión? {best}Ese «mejor» quiere decir que alguna otra también tiene algo de razón. Elige la que cubre el caso entero, no solo un trozo.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "1.2",
+        "scenario": "En una notaría, para abrir una escritura, el sistema mira a la vez el puesto de quien la pide, si lleva a ese cliente y lo delicada que es la escritura.",
+        "q": "¿Qué modelo de autorización describe MEJOR esa decisión?",
+        "options": [
+          "Role-based",
+          "Least privilege",
+          "Accounting",
+          "Attribute-based"
+        ],
+        "answer": 3,
+        "trap": 0,
+        "why": "Junta algo de la persona, del cliente y del documento: attribute-based",
+        "trapWhy": "El puesto cuenta, pero no decide solo: también el cliente y la escritura",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Attribute-based, porque junta varias cosas a la vez. {trap-2}Role-based tienta por el puesto, pero el puesto solo no decide.",
+      "pauseAfterMs": 1200,
+      "exam": {
+        "objective": "1.2",
+        "text": "Si mira más que el puesto, es attribute-based",
+        "at": "trap-2",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-falta",
+      "text": "<engaging> {kit}Queda lo último, cuánto falta. Piensa en el botiquín de casa. {list}Coges la lista de lo que debería llevar y abres el tuyo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-falta",
+      "text": "<casual> {marks}Tiritas, sí. El termómetro, sin pilas. El suero, ni rastro. Y compras primero lo que más falta te haría.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-falta",
+      "text": "<confident> {name}Eso es un gap analysis. Comparas lo que tienes con lo que pide un marco, como una norma o una política.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "1.2",
+        "text": "Gap analysis: lo que tienes frente al marco",
+        "at": "name",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-falta",
+      "text": "<thoughtful> {table}Imagina una norma para estas hojas. {rows}Un requisito se cumple, otro va a medias y el tercero {missing}falta, porque la hoja llega sin firma.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-falta",
+      "text": "<firm> {plan}No acaba en una lista de quejas, sino en un plan con prioridades, con alguien que cierre cada hueco y una fecha.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-falta",
+      "text": "<warm> {when}Se hace cuando llega una norma nueva, antes de una auditoría o cada cierto tiempo.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}La última. Antes de certificarse, una residencia repasa los requisitos de una norma. Apunta cuáles cumple, cuáles a medias y cuáles no. Y lo que le falta, lo ordena por lo que más le preocupa. ¿Qué actividad describe mejor lo que está haciendo?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "1.2",
+        "scenario": "Antes de certificarse, una residencia apunta qué requisitos de la norma cumple, cuáles a medias y cuáles no. Ordena lo que falta por lo que más le preocupa.",
+        "q": "¿Qué actividad describe MEJOR lo que está haciendo?",
+        "options": [
+          "Gap analysis",
+          "Business impact analysis",
+          "Risk assessment",
+          "Penetration test"
+        ],
+        "answer": 0,
+        "trap": 2,
+        "why": "Compara lo que tiene con lo que pide la norma, punto por punto: gap analysis",
+        "trapWhy": "Ordenar por lo que preocupa suena a riesgo, pero se mide contra una norma",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<firm> {ok-3}Gap analysis, porque compara lo que tiene con lo que pide la norma.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<warm> {trap-3}Risk assessment tienta. El gap analysis también ordena, pero esto se mide contra una lista, como el botiquín.",
+      "pauseAfterMs": 700
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Tres reglas. {rule-1}Una, traduce el caso a lo que se rompe. Se lee, se cambia o no se puede usar.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Dos, las tres A van en orden. Quién eres, qué puedes y qué hiciste.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y tres, el gap analysis compara lo que tienes con lo que pide el marco.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Busca qué se ha roto, qué se está preguntando y cuánto falta. {next}Ahora, tu turno, con las preguntas. {endcard}",
+      "pauseAfterMs": 250
+    }
+  ]
+}

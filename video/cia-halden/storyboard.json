@@ -1,0 +1,150 @@
+{
+  "title": "Qué se rompe, quién toca y cuánto falta",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 276,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Qué se rompe"
+    },
+    {
+      "n": 2,
+      "title": "Quién toca"
+    },
+    {
+      "n": 3,
+      "title": "Cuánto falta"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una hoja antes de atracar",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · caso de ejemplo · sin fecha». Un barco sin nombre se acerca a la bocana (`ship`); delante, una hoja (`sheet`): «declaración de mercancías peligrosas», con tres líneas, «qué trae · cuánto · adónde va», sin naviera, barco ni cifras. Al acabar la primera frase, título «Qué se rompe, quién toca y cuánto falta» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «qué no puede romperse · quién la toca · cuánto falta». Plaquita «SY0-701 · 1.2». Sin adversario ni mensajes interceptados",
+      "requiredCues": [
+        "ship",
+        "sheet",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-propiedades",
+      "chapter": 1,
+      "title": "Cuatro cosas que no pueden fallar",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "La hoja en el centro (`sheet`) y cuatro preguntas que entran una a una a su alrededor. «¿Quién la lee?» (`read`) con CONFIDENTIALITY y «solo quien está autorizado». «¿La ha tocado alguien?» (`change`) con INTEGRITY, «1.000 kg» que pasa a «100 kg» y una marca que salta, y «que nadie lo cambie sin permiso». «¿Está cuando hace falta?» (`fire`) con AVAILABILITY y, rotulado «supuesto», «un fuego de noche · quien va a apagarlo tiene que abrirla». «¿Puede negar que la mandó?» (`deny`) con NON-REPUDIATION y el chip «firma digital» y nada más (cómo firma es de otro vídeo). Al pie, los cuatro verbos (`verbs`): «leer · cambiar · no poder usar · negar»; la tarjeta de examen entra al acabar la frase del cue. La voz nunca dice la sigla CIA",
+      "requiredCues": [
+        "sheet",
+        "read",
+        "change",
+        "tamper",
+        "fire",
+        "blaze",
+        "deny",
+        "verbs"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Los kilos de la cosecha",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 1 (`q1`). La escena dibuja el rótulo «pregunta tipo examen · ejemplo» (abajo a la derecha, como V30; el panel solo pinta «EXAMEN · SY0-701 · 1.2», contradicción 17). Sin calificador, a propósito: el escenario de pantalla conserva «el sistema sigue en marcha» y «nadie de fuera ha entrado». Fondo quieto y genérico, sin nombre ni texto legible. Cuenta atrás de 5 s con «Pausa si quieres»; en `ok-1` sale la correcta (B, Integrity) y en `trap-1` la trampa (D, Availability). En la resolución vuelve la hoja del puerto en una línea de pantalla, sin cue propio: «1.000 kg que pasan a 100: integrity, aunque nadie los toque». La tarjeta de examen entra al acabar la frase de `trap-1`",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1"
+      ]
+    },
+    {
+      "id": "s04-aaa",
+      "chapter": 2,
+      "title": "Quién, qué y qué queda",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "goal": "Sello «propuesta · sin fecha». La hoja recorre tres puertas de pantalla (`doors`), cada una con su pregunta: tres preguntas dibujadas, sin cerradura, lector ni vestíbulo. ¿Quién eres? (`who`): nadie teclea, el sistema de la naviera se identifica solo, y AUTHENTICATION con el chip «también las máquinas, con un certificado» (`cert`). ¿Qué puedes hacer? (`what`): rótulo de la segunda puerta, AUTHORIZATION, igual que AUTHENTICATION y ACCOUNTING en las otras dos, del que cuelgan los modelos. «quien la declara · enviar y corregir» y «Operaciones · solo leer» con ROLE-BASED y «el permiso va con el puesto» (`role`); «quien acude a una emergencia · solo mientras ese barco está en el puerto» con ATTRIBUTE-BASED y «varias cosas a la vez: quién, qué hoja, cuándo» (`attr`); y a media luz, «a cada uno, lo justo: least privilege» (sin cue propio). ¿Qué hiciste? (`log`): «quién la abrió · quién la cambió · cuándo» con ACCOUNTING. Al pie (`order`): «primero quién, luego qué, y todo apuntado»; la tarjeta de examen entra al acabar esa frase",
+      "requiredCues": [
+        "doors",
+        "who",
+        "cert",
+        "what",
+        "role",
+        "attr",
+        "log",
+        "logged",
+        "order"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Quién abre una escritura",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo examen 2 (`q2`), con el rótulo «pregunta tipo examen · ejemplo» dibujado por la escena. Es el primer calificador del vídeo: «MEJOR» resaltado y, debajo, dibujada por la escena (el panel no la pinta), la línea de V28 (`best`): «MEJOR: la que encaja con este caso, aunque otra suene bien»; la voz lo explica antes de la cuenta atrás con palabras propias. Fondo quieto y genérico. Cuenta atrás de 5 s; en `ok-2` sale la correcta (D, Attribute-based) y en `trap-2` la trampa (A, Role-based). La tarjeta de examen entra al acabar la frase de `trap-2`",
+      "requiredCues": [
+        "q2",
+        "best",
+        "ok-2",
+        "trap-2"
+      ]
+    },
+    {
+      "id": "s06-falta",
+      "chapter": 3,
+      "title": "Cuánto falta",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "El botiquín, rotulado «imagen · no es del puerto»: la lista de lo que debería tener junto al botiquín abierto (`kit`, `list`), con tres marcas (`marks`): tiritas, sí · termómetro, sin pilas · suero, falta; y un orden de compra (primero lo que más falta haría). Nombre en pantalla (`name`): gap analysis · lo que hay frente al marco; la tarjeta de examen entra al acabar esa frase. Después, una tabla (`table`) con el sello «gap analysis · ejemplo · datos ficticios» y la frase «imagina una norma para estas hojas», con cuatro columnas «lo que pide · lo que hay · hueco · prioridad» y tres filas (`rows`): «solo la leen quienes la necesitan · permisos por puesto · ninguno · mantener»; «queda apuntado quién la abre y quién la cambia · solo quién la cambia · parcial · media»; «quien la declara no puede negarla · llega sin firma · total · alta». La fila de arriba del plan se enciende con «responsable · fecha», sin nombres (`plan`). Al pie, en chips y sin voz larga (`when`): «norma nueva · fusión · antes de una auditoría · cada cierto tiempo». La tabla no es el estado del puerto",
+      "requiredCues": [
+        "kit",
+        "list",
+        "marks",
+        "name",
+        "table",
+        "rows",
+        "missing",
+        "plan",
+        "when"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Antes de certificarse",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 3 (`q3`), con el rótulo «pregunta tipo examen · ejemplo» dibujado por la escena y «MEJOR» resaltado (ya explicado en s05; solo resaltado, sin glosa ni línea). Fondo quieto y genérico. Cuenta atrás de 5 s; en `ok-3` sale la correcta (A, Gap analysis) y en `trap-3` la trampa (C, Risk assessment). En la resolución vuelve el botiquín en una línea de pantalla, sin cue propio: «se mira contra una lista, no contra lo que da miedo». Sin tarjeta de examen",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (la hoja con sus cuatro preguntas · las tres puertas · el botiquín) (`recap`, `rule-1`, `rule-2`, `rule-3`); la voz dice la versión corta de cada una y la larga queda en pantalla junto al icono: regla 1, traducir el caso a lo que se rompe, con el matiz de la non-repudiation y la firma digital; regla 2, las tres A en orden, con sus tres nombres (authentication · authorization · accounting) y role-based frente a attribute-based; regla 3, el gap analysis compara lo que tienes con lo que pide el marco y acaba en un plan con prioridades. La frase para el examen (`phrase`): «Busca qué se ha roto, qué se está preguntando y cuánto falta». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`, el quiz de sp1m2, siete preguntas). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
