@@ -1,0 +1,234 @@
+{
+  "title": "Cumplir o aguantar: auditorías y pentest",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 480,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Quién lo firma y quién lo mira"
+    },
+    {
+      "n": 2,
+      "title": "Cumplir no es aguantar"
+    },
+    {
+      "n": 3,
+      "title": "Cuatro maneras de probar"
+    },
+    {
+      "n": 4,
+      "title": "Cuánto le cuentas"
+    },
+    {
+      "n": 5,
+      "title": "Mirar sin tocar"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Decirlo no es demostrarlo",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · propuesta · sin fecha», sin día. Una mesa de consejo vista desde arriba, con un documento en el centro y un hueco para la firma (`table`). Tres frases en llano, una tras otra (`three`): «lo declaramos» · «lo comprobamos» · «lo probamos». La primera frase presenta el puerto y el problema (la dirección tiene que firmar ante la autoridad marítima, antes de su revisión anual, que sus controles funcionan, y el consejo quiere saber antes si cumple y si aguanta); al acabarla, título «Cumplir o aguantar» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «quién lo firma · quién lo comprueba · cómo se prueba». Plaquita «SY0-701 · 5.5». Nada está firmado todavía",
+      "requiredCues": [
+        "table",
+        "three",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-firmas",
+      "chapter": 1,
+      "title": "Dos montones de firmas",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "goal": "Dos montones de papel sobre la mesa del consejo (`piles`). A la izquierda, las firmas de cada persona de la plantilla bajo la política de uso aceptable, una por persona (`ack`) → ACKNOWLEDGEMENT, «una persona · una norma». A la derecha, un solo documento con fecha, alcance («los controles del programa») y periodo («los últimos doce meses», `period`) y la firma de la dirección (`attest`, `signature`) → ATTESTATION, «la organización · un hecho». Debajo, un chip: «management attestation». Sin imagen cotidiana: son los dos montones del caso. La voz cierra con la tercera idea (`not-a-test`): una firma no comprueba nada; si alguien pregunta «¿y funciona?», la respuesta no es otra firma. La tarjeta de examen entra al final, en `not-a-test`. Ningún nombre de persona, equipo ni empresa",
+      "requiredCues": [
+        "piles",
+        "ack",
+        "attest",
+        "period",
+        "signature",
+        "not-a-test"
+      ]
+    },
+    {
+      "id": "s03-quien",
+      "chapter": 1,
+      "title": "Quién lo comprueba",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Cuatro filas, de menos a más peso fuera. **1.** La checklist que rellena Sistemas sobre su propia área (`checklist`) → SELF-ASSESSMENT, «barato · sin independencia» (`self`). **2.** Auditoría interna, separada de Sistemas, con una flecha que no va a Sistemas sino a un comité del consejo (`internal`) → INTERNAL AUDIT + AUDIT COMMITTEE (`committee`): «el comité no audita: protege a quien audita». **3.** Una firma de fuera, «sin interés en el resultado» (`third-party`) → INDEPENDENT THIRD-PARTY AUDIT. **4.** La autoridad marítima, «no la contratas · el alcance lo fija la ley · puede sancionar» (`regulator`) → REGULATORY EXAMINATION; sin visita en pantalla y sin resultado. Imagen, rotulada «imagen · no es del puerto» (`lift`): el ascensor de una comunidad de vecinos con sus cuatro revisiones en miniatura (la hoja que rellena la propia comunidad; la revisión del administrador de la finca, que da cuenta a la junta; el organismo de control que contrata la comunidad y firma su informe; e Industria, que no la llama nadie y puede abrir un expediente y multar a la comunidad). La voz deja la regla (`rule`): para convencer a alguien de fuera, cuenta quién mira, no cuánto mira. La tarjeta de examen entra en `rule`. Sin las palabras «escalera», «portal», «portero», «casero», «llave», «código» ni «alquiler»",
+      "requiredCues": [
+        "checklist",
+        "self",
+        "internal",
+        "committee",
+        "third-party",
+        "regulator",
+        "lift",
+        "rule"
+      ]
+    },
+    {
+      "id": "s04-p1",
+      "chapter": 1,
+      "title": "La visita",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo examen 1 (`q1`), rótulo «pregunta tipo examen · ejemplo», plaquita «EXAMEN · SY0-701 · 5.5»: el panel tapa la escena hasta el final, así que el fondo se queda quieto (una torre de líneas eléctricas, sin nombre ni texto). Sin calificador, a propósito: es la primera y la definición decide. Pasa fuera del puerto: una compañía eléctrica sin nombre ni país, y su autoridad, que no es la autoridad marítima del caso. En `ok-1` sale la correcta (Regulatory examination), en `trap-1` la trampa (Independent third-party audit). En la resolución vuelve el ascensor en una línea (`lift-back`): «es Industria con su expediente, no el organismo que contrata la comunidad». Sin tarjeta de examen: la regla es la de s03",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "lift-back"
+      ]
+    },
+    {
+      "id": "s05-aguantar",
+      "chapter": 2,
+      "title": "Cumplir no es aguantar",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "goal": "El consejo, con la auditoría de una firma independiente ya encargada (sin firma auditora con nombre, sin resultado y sin informe), pregunta «¿y si alguien intenta entrar?» (`board-asks`). Entra la etiqueta «PAPER GOVERNOR · sección 5» con «vive en los huecos de tu gobernanza» (`adversary`), la narradora la presenta con «Y vuelve…» y se entiende sin otros vídeos. Mensaje interceptado de PAPER GOVERNOR («Se acuerda: si pasamos la auditoría, no entra nadie. Queda en acta.», con su voz), antes de `intercept-reply`: la voz lo contesta con la idea, sin reproche. Dos columnas: AUDITORÍA «¿cumplimos el estándar? · evidencias y muestreo» (`audit`) y PENETRATION TEST «¿pueden romperlo? · intentándolo, con permiso» (`pentest`). Imagen, rotulada «imagen · no es del puerto» (`bridge`): el puente nuevo, con el certificado de que se construyó según la norma (la auditoría) y la prueba de carga con camiones llenos encima (el pentest). Cierre (`neither`): aprobar una no dice nada de la otra, en ninguno de los dos sentidos. La tarjeta de examen entra en `neither`, después del acta. El puerto no ha superado ni suspendido nada",
+      "requiredCues": [
+        "board-asks",
+        "adversary",
+        "intercept-reply",
+        "audit",
+        "pentest",
+        "bridge",
+        "neither"
+      ]
+    },
+    {
+      "id": "s06-p2",
+      "chapter": 2,
+      "title": "El informe del pentest",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo examen 2 (`q2`), rótulo «pregunta tipo examen · ejemplo», con el primer calificador: «MEJOR» resaltado en la pregunta y, debajo, «MEJOR: la que encaja con este caso, aunque otra suene bien» (`best`), que la voz explica antes de la cuenta atrás de 5 s. Pasa fuera del puerto: un cliente grande y una empresa de logística, sin nombres. Fondo quieto: un camión de carga genérico de perfil, sin texto. En `ok-2` la correcta (Independent third-party audit), en `trap-2` la trampa (Penetration test report). En la resolución vuelve el puente en una línea (`bridge-back`): «la prueba de carga no dice qué acero se usó». La tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q2",
+        "best",
+        "ok-2",
+        "trap-2",
+        "bridge-back"
+      ]
+    },
+    {
+      "id": "s07-modos",
+      "chapter": 3,
+      "title": "Cuatro maneras de probar",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "El plan del pentest del puerto, «propuesta · sin fecha»; nada se ejecuta. Arriba, un papel que va antes que todo: RULES OF ENGAGEMENT, con cinco casillas «alcance · ventana · técnicas · contactos · quién autoriza» y la frase «sin este papel no es una prueba» (`roe`). Debajo, cuatro modos, uno a uno: PHYSICAL «alguien intenta entrar en una oficina detrás de otra persona» (`physical`), OFFENSIVE · RED TEAM «un objetivo: llegar a un fichero marcado en un servidor de pruebas · sin avisar» (`red`), DEFENSIVE · BLUE TEAM «lo que se mide: si el SOC lo ve, lo entiende y lo contiene» (`blue`) e INTEGRATED · PURPLE TEAM «ataque y SOC en la misma sala, técnica a técnica: ¿se vio? → regla nueva» (`purple`). La propuesta del puerto, en un chip (`proposal`): «primero purple; después, un red team sin avisar». Sin imagen cotidiana. La tarjeta de examen entra en `purple`. Ni «escalón» ni «peldaño»: son modos; sin sala de control, muelle, chaleco ni estibador",
+      "requiredCues": [
+        "roe",
+        "physical",
+        "red",
+        "blue",
+        "purple",
+        "proposal"
+      ]
+    },
+    {
+      "id": "s08-p3",
+      "chapter": 3,
+      "title": "Un ejercicio en el banco",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo examen 3 (`q3`), rótulo «pregunta tipo examen · ejemplo», con «MEJOR» resaltado (ya explicado en s06; solo resaltado, sin la línea de glosa). Pasa fuera del puerto: un banco sin nombre, sin correo, adjunto ni macro, y sin nadie que «pique». Fondo quieto: una sala de operaciones con pantallas a oscuras, sin texto legible. En `ok-3` la correcta (Defensive (blue team)), en `trap-3` la trampa (Offensive (red team)). En la resolución (`blue-back`), los cuatro modos de s07 en miniatura con BLUE encendido y la línea «nadie persigue nada: se mide al SOC». La tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "blue-back"
+      ]
+    },
+    {
+      "id": "s09-contar",
+      "chapter": 4,
+      "title": "Cuánto le cuentas",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Tres sobres para el equipo de pruebas (`envelopes`). UNKNOWN «nada» · «lo más realista frente a alguien de fuera» · «se va tiempo en descubrir» (`unknown`), PARTIALLY KNOWN «una cuenta de usuario normal» · «lo que tendría un socio o un usuario» (`partial`) y KNOWN «planos, código, credenciales» · «máxima cobertura por hora» · «no se parece a un atacante de fuera» (`known`). En pantalla, sin voz (`boxes`): «white box · grey box · black box». La sala de escape, rotulada «imagen · no es del puerto» (`escape-room`): sin pistas, una pista, el plano; solo «puertas» y «cerraduras» de juego, sin candados ni llaves. La propuesta del puerto, en un chip (`proposal`): «la aplicación nueva, known; lo que se ve desde fuera, unknown». Sin tarjeta de examen (la del concepto llega en s10). Ni contratista, ni proveedor, ni empleado descontento",
+      "requiredCues": [
+        "envelopes",
+        "unknown",
+        "partial",
+        "known",
+        "boxes",
+        "escape-room",
+        "proposal"
+      ]
+    },
+    {
+      "id": "s10-p4",
+      "chapter": 4,
+      "title": "Una cuenta de cliente",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo examen 4 (`q4`), rótulo «pregunta tipo examen · ejemplo», con «MEJOR» resaltado (sin línea de glosa). Pasa fuera del puerto: una plataforma de reservas sin nombre, sin puerto, buques ni camiones. Fondo quieto: una cuadrícula de reservas genérica, sin texto legible. En `ok-4` la correcta (Partially known environment), en `trap-4` la trampa (Known environment). En la resolución vuelve la sala de escape en una línea (`escape-back`): «una pista, no el plano». La tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q4",
+        "ok-4",
+        "trap-4",
+        "escape-back"
+      ]
+    },
+    {
+      "id": "s11-mirar",
+      "chapter": 5,
+      "title": "Mirar sin tocar",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "goal": "Dos semanas del plan de pruebas del puerto, en dos columnas; nada se ejecuta. Antes de la ventana (`before`): lo que el equipo de pruebas consultaría sin tocar el puerto, «registros públicos · certificados publicados · ofertas de empleo · buscadores de aparatos expuestos» (`passive`) → PASSIVE RECONNAISSANCE; a su lado, el registro del SOC, vacío (`empty-log`). Dentro de la ventana pactada (`window`): escanear y preguntar versiones (`active`) → ACTIVE RECONNAISSANCE; el registro del SOC, con líneas (`log-lines`), y una etiqueta «ventana pactada · se reconoce». En pantalla, sin voz: «WHOIS · banner grabbing». La voz deja la regla (`rule`): la diferencia no es qué información sale, es si se ha tocado al objetivo. Sin tarjeta de examen (la del concepto llega en s12). Sin equipos, direcciones ni dominios",
+      "requiredCues": [
+        "before",
+        "passive",
+        "empty-log",
+        "window",
+        "active",
+        "log-lines",
+        "rule"
+      ]
+    },
+    {
+      "id": "s12-p5",
+      "chapter": 5,
+      "title": "Un buscador",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 5 (`q5`), rótulo «pregunta tipo examen · ejemplo», sin calificador a propósito. Pasa fuera del puerto: una empresa sin nombre, sin equipos ni direcciones, ya dentro de la ventana pactada. Fondo quieto: una lupa sobre una cuadrícula de puntos, sin texto legible. En `ok-5` la correcta (Passive reconnaissance), en `trap-5` la trampa (Active reconnaissance). En la resolución vuelve el registro vacío de s11 en una línea (`log-back`): «el registro no miente: nadie ha llamado a la puerta». La tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q5",
+        "ok-5",
+        "trap-5",
+        "log-back"
+      ]
+    },
+    {
+      "id": "s13-cierre",
+      "chapter": 5,
+      "title": "Para el examen",
+      "targetSec": 26,
+      "wordBudget": 70,
+      "goal": "Tres reglas, cada una con su icono (los dos montones de firmas y el ascensor · el puente · la sala de escape y el registro vacío) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Una firma declara: la attestation compromete a la organización con un hecho; el acknowledgement, a una persona con una norma» · «Para convencer a alguien de fuera, cuenta quién comprueba: independiente, o el regulador. Aprobar la auditoría no dice que aguantes, ni aguantar, que cumplas» · «En la prueba, mira qué se mide, cuánto se le cuenta a quien prueba y si se ha tocado al objetivo». La frase para el examen (`phrase`): «Una firma declara, una auditoría comprueba que cumples y un pentest, que aguantas». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen y sin nombrar otra lección",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

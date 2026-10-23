@@ -1,0 +1,148 @@
+{
+  "title": "Proveedores: antes de firmar, al firmar y después",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 270,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Cuánto pesa cada prueba"
+    },
+    {
+      "n": 2,
+      "title": "Antes y después"
+    },
+    {
+      "n": 3,
+      "title": "Qué fija cada papel"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Fuera, pero tuyo",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · selección de un proveedor · propuesta · sin fecha». Una caja de documentos sale del puerto hacia una oficina sin nombre (`box`), y una cuerda los sigue uniendo (`rope`). La primera frase presenta el puerto y el problema: el trabajo puede hacerlo otro, y lo que no se va con él es la responsabilidad. Al acabarla, título «Antes, al firmar y después» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «qué pesa cada prueba · qué toca y cuándo · qué fija cada papel». Plaquita «SY0-701 · 5.3». Sin adversario",
+      "requiredCues": [
+        "box",
+        "rope",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-pruebas",
+      "chapter": 1,
+      "title": "Tres candidatas, tres pruebas",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "El caso (`case`): el puerto busca una agencia de traducción para los documentos de las navieras extranjeras y los avisos a pasajeros; recibirá documentos confidenciales y no entra en ningún sistema del puerto (`no-access`, rótulo fijo, sin cuentas ni accesos). Tres candidatas sin nombre (`three`), cada una con lo que manda: la primera rellena el cuestionario de seguridad → QUESTIONNAIRE, «lo dice ella» (`questionnaire`); en miniatura, la guardería con su folleto, rotulada «imagen · no es del puerto» (`nursery`; sin aula ni clase). La segunda manda el informe de su propia auditoría interna → EVIDENCE OF INTERNAL AUDITS, «lo escribe la interesada» (`internal`). La tercera, el informe de una firma independiente → INDEPENDENT ASSESSMENT (`independent`), con dos preguntas al lado: «¿qué cubre? · ¿qué meses?» (`scope-period`); «SOC 2 Type II» e «ISO 27001» solo en pantalla, como ejemplos del sello de fuera. Dos chips (`chips`): «¿subcontrata traductores? → supply chain analysis» y «¿quieres poder entrar a mirar? → right-to-audit clause, firmada antes» (el texto de pantalla sin flecha). Tarjeta de examen 1 al acabar la frase del cuestionario",
+      "requiredCues": [
+        "case",
+        "no-access",
+        "three",
+        "questionnaire",
+        "nursery",
+        "internal",
+        "independent",
+        "scope-period",
+        "chips"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Un informe con firma",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo examen 1 (`q1`). La escena dibuja el rótulo «pregunta tipo examen · ejemplo» (el panel solo pinta «EXAMEN · SY0-701 · 5.3», contradicción 17). Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, dibujada por la escena (el panel no la pinta), la línea «MEJOR: la que encaja con este caso, aunque otra suene bien» (`best`); la voz dice la idea con palabras propias antes de la cuenta atrás. El panel tapa la escena hasta el final, así que el fondo se queda quieto (un montón de informes encuadernados, sin texto legible). Cuenta atrás de 5 s con «Pausa si quieres»; en `ok-1` sale la correcta (C, Evidence of internal audits) y en `trap-1` la trampa (A, Independent assessment); las otras dos, atenuadas. En la resolución vuelve la guardería en una línea (`nursery-back`): «el informe que se hace la guardería a sí misma puede ser muy serio, y sigue siendo suyo». Tarjeta de examen 2 después de la trampa",
+      "requiredCues": [
+        "q1",
+        "best",
+        "ok-1",
+        "trap-1",
+        "nursery-back"
+      ]
+    },
+    {
+      "id": "s04-antes",
+      "chapter": 2,
+      "title": "Antes de firmar y después",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Una línea del tiempo con una firma en el centro (`timeline`). Antes (`before`): la due diligence de la agencia elegida, con cinco rótulos «cuentas · dueños · historial de brechas · certificaciones · referencias»; y, mientras se puede, lo que se mete en el contrato (`contract-terms`): «right-to-audit · avisar de un incidente en 24 h · borrar los datos al terminar». Un chip (`conflict`): «quien evalúa tiene a un familiar en una candidata → lo declara y se aparta» (sin flecha en pantalla), rotulado CONFLICT OF INTEREST; sin nombre ni género. Después (`after`): VENDOR MONITORING (`monitoring`), con cuatro rutinas, «cuestionario cada año · informe independiente nuevo · métricas del SLA · noticias, dueños y subcontratas», y «reevaluar al renovar». La guardería, en miniatura y rotulada «imagen · no es del puerto» (`nursery-2`): la visita antes de apuntarse y la mirada de cada día. Tarjeta de examen 3 al acabar la frase de la guardería",
+      "requiredCues": [
+        "timeline",
+        "before",
+        "contract-terms",
+        "conflict",
+        "after",
+        "monitoring",
+        "nursery-2"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "A mitad de contrato",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 2 (`q2`), sin calificador. La escena dibuja bajo el panel el rótulo «pregunta tipo examen · ejemplo». El panel tapa la escena hasta el final, así que el fondo se queda quieto (una pila de contratos con una pinza, sin texto). Cuenta atrás de 5 s con «Pausa si quieres»; en `ok-2` sale la correcta (D, Vendor monitoring) y en `trap-2` la trampa (C, Due diligence); las otras dos, atenuadas. En la resolución vuelve la línea del tiempo de s04 con la marca «aquí» después de la firma (`timeline-back`). Sin tarjeta de examen (la del concepto ya salió en s04)",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "timeline-back"
+      ]
+    },
+    {
+      "id": "s06-papeles",
+      "chapter": 3,
+      "title": "Cuatro papeles",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Los papeles de la agencia, en el orden en que se firman. Antes de mandarle los documentos de prueba, NDA: «confidencialidad · antes de enseñar nada» (`nda`). La relación, MSA: «el paraguas: responsabilidad, pagos, ley aplicable · se firma una vez» (`msa`). Cada encargo, SOW: «la traducción del folleto de pasajeros: entregables, fechas, aceptación»; en pantalla, «o WO» (`sow`). Lo que se mide, SLA: «urgentes en 24 h · si no, descuento en la factura» (`sla`). En un chip, para lo que no es comprar (`others`): «MOU: intención · MOA: compromisos repartidos · BPA: socios que reparten el negocio». Tarjeta de examen 4 al acabar la frase del SOW",
+      "requiredCues": [
+        "nda",
+        "msa",
+        "sow",
+        "sla",
+        "others"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Dos hospitales en verano",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 3 (`q3`) con «MEJOR» resaltado (ya explicado; solo resaltado). La escena dibuja bajo el panel el rótulo «pregunta tipo examen · ejemplo». El panel tapa la escena hasta el final, así que el fondo se queda quieto (un calendario de verano en esquema, sin texto). Cuenta atrás de 5 s con «Pausa si quieres»; en `ok-3` sale la correcta (B, MOA) y en `trap-3` la trampa (D, MOU); las otras dos, atenuadas. En la resolución vuelve el chip de s06 con MOA encendido (`chip-back`). Tarjeta de examen 5 después de la trampa",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "chip-back"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (la guardería y su sello · la línea del tiempo con la firma · los cuatro papeles) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Lo que dice el proveedor de sí mismo informa; lo que firma alguien de fuera pesa más, y se mira qué cubre y qué meses» · «Antes de firmar, due diligence, y se pide todo lo que luego querrás; después, vendor monitoring» · «NDA para lo que vas a enseñar, MSA para la relación, SOW para cada encargo, SLA para lo que se mide; entre quienes colaboran, MOU si es intención y MOA si son compromisos». La frase para el examen (`phrase`): «Mira quién lo firma, mira si ya has firmado y mira qué tiene que fijar el papel». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

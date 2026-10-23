@@ -1,0 +1,151 @@
+{
+  "title": "Mirar antes, cuidar después y borrar a tiempo",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 270,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Antes y después"
+    },
+    {
+      "n": 2,
+      "title": "Lo que cuesta"
+    },
+    {
+      "n": 3,
+      "title": "Qué tienes y cuánto lo guardas"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Un cuaderno que se va",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · objetos perdidos · propuesta · sin fecha». Un cuaderno de objetos perdidos de la terminal de pasajeros, con nombres y teléfonos escritos a mano, sin ninguna persona ni fecha (`notebook`), se convierte en una pantalla (`screen`). Al acabar la primera frase, título «Antes, después y a tiempo» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «antes de lanzarlo · mientras funciona · cuánto se guarda». Plaquita «SY0-701 · 5.4». Es una propuesta: no dice que el sistema ya funcione",
+      "requiredCues": [
+        "notebook",
+        "screen",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-antes",
+      "chapter": 1,
+      "title": "Antes de lanzarlo y después",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Una línea del tiempo con un botón «lanzar» en medio (`timeline`). Antes (`before`): cinco preguntas que se hace el puerto (`questions`): «¿qué ley aplica? · ¿con qué base guardamos el documento? · ¿quién lo verá? · ¿cuánto se guarda? · ¿quién responde?» → DUE DILIGENCE, «mirar antes de saltar». El botón (`launch`). Después (`after`): cuatro rutinas, cada una con su repetición (`routines`): «revisar quién entra, cada trimestre · borrar lo que caduca · formar a quien llega al mostrador · arreglar lo que salga en la revisión» → DUE CARE, «seguir haciéndolo bien». Adoptar un gato, en miniatura, rotulado «imagen · no es del puerto» (`cat`); la frase de la tarjeta (`cat-rule`: la tarjeta de examen cuelga de aquí)",
+      "requiredCues": [
+        "timeline",
+        "before",
+        "questions",
+        "launch",
+        "after",
+        "routines",
+        "cat",
+        "cat-rule"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Tres años después",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo examen 1 (`q1`). La escena dibuja bajo el panel el rótulo «pregunta tipo examen · ejemplo» (el motor no lo pinta, contradicción 17). El panel tapa la escena hasta el final, así que el fondo se queda quieto: una pantalla de aplicación con un calendario que pasa de página, sin nombre, texto ni cifras. Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, dibujada por la escena (el panel no la pinta), la línea «MEJOR: la que encaja con este caso, aunque otra suene bien» (`best`); la voz dice la frase de V28 antes de la cuenta atrás. Cuenta atrás de 5 s con «Pausa si quieres»; en `ok-1` sale la correcta (A, Due care) y en `trap-1` la trampa (C, Due diligence); las otras dos, atenuadas. En la resolución vuelve el gato en una línea (`cat-back`): «te informaste de maravilla, y el gato sigue sin comer». Sin tarjeta de examen (la del concepto 1 salió en s02)",
+      "requiredCues": [
+        "q1",
+        "best",
+        "ok-1",
+        "trap-1",
+        "cat-back"
+      ]
+    },
+    {
+      "id": "s04-cuesta",
+      "chapter": 2,
+      "title": "Lo que cuesta no cumplir",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "«Imagina que no se hiciera» (rótulo «supuesto · sin efectos», `suppose`). Cinco rótulos en tres columnas, según quién los impone (`authority`). Una autoridad: FINES («dinero», `fines`) y SANCTIONS («te prohíbe o te limita algo: parar el registro hasta corregirlo», `sanctions`). Quien te habilitó: LOSS OF LICENSE («dejas de poder operar»; en un puerto, que ciertos buques no puedan atracar, como dice la lección) (`license`). La otra parte del contrato: CONTRACTUAL IMPACTS («una naviera aplica su cláusula: retiene pagos o resuelve»; la tarjeta de examen cuelga de aquí) (`contract`). Nadie formalmente: REPUTATIONAL DAMAGE («prensa, clientes, plantilla») (`reputation`). En un chip (`reporting`): «reporting interno: dirección y comité · externo: reguladores y clientes, con plazo». La peluquería del barrio, en miniatura, rotulada «imagen · no es del puerto» (`salon`). Ninguna multa, sanción, licencia, contrato ni reputación del puerto se pone en juego de verdad",
+      "requiredCues": [
+        "suppose",
+        "authority",
+        "fines",
+        "sanctions",
+        "license",
+        "contract",
+        "reputation",
+        "reporting",
+        "salon"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Fuera de los concursos",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 2 (`q2`), con el rótulo «pregunta tipo examen · ejemplo» dibujado por la escena y **sin calificador**, a propósito: el escenario cierra las otras tres. Fondo quieto: un tablón de concursos con un sello de prohibido, sin empresa, nombre ni texto. Cuenta atrás de 5 s; en `ok-2` sale la correcta (D, Sanctions) y en `trap-2` la trampa (A, Contractual impacts). En la resolución, las tres columnas de s04 con la de la autoridad encendida y la línea «la impone el regulador, no un cliente» (`regulator`); la tarjeta de examen cuelga de aquí, después de la trampa",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "regulator"
+      ]
+    },
+    {
+      "id": "s06-guardar",
+      "chapter": 3,
+      "title": "Qué tienes y cuánto lo guardas",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "El inventario del registro de objetos perdidos: los datos de quien reclama (nombre, teléfono, documento) viven en **tres sitios**, el sistema, su copia de seguridad y el aviso que se manda a quien reclama (`three-places`) → DATA INVENTORY, «no borras lo que no sabes que tienes» (`inventory`: la tarjeta de examen cuelga de aquí). Al lado, una regla de conservación para los tres (`retention`): «se guarda mientras el objeto está en la oficina y unos meses después; y se borra también en la copia» (`backups`) → RETENTION («ni menos que la ley, ni más que el para qué»). La persona que reclama, rotulada DATA SUBJECT (`subject`). En un chip (`rtbf-chip`): «puede pedir que se borren sus datos (right to be forgotten) · no es absoluto: una ley o un legal hold lo paran · se borra lo demás y se le explica». El archivador de casa, en miniatura, rotulado «imagen · no es del puerto» (`drawer`). Sin plazo exacto en meses",
+      "requiredCues": [
+        "three-places",
+        "inventory",
+        "retention",
+        "backups",
+        "subject",
+        "rtbf-chip",
+        "drawer"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Doce años de currículos",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 3 (`q3`), con el rótulo «pregunta tipo examen · ejemplo» dibujado por la escena. «MEJOR» resaltado en la pregunta (ya explicado en s03: sin línea debajo ni glosa en la voz). Fondo quieto: una pila de carpetas que crece, sin empresa, nombre ni texto. Cuenta atrás de 5 s; en `ok-3` la correcta (C, Retention), en `trap-3` la trampa (B, Right to be forgotten). En la resolución vuelve el archivador en una línea (`drawer-back`): «nadie te ha pedido que tires los recibos viejos, y aun así sobran»; la tarjeta de examen cuelga de aquí, después de la trampa",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "drawer-back"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (el gato · la peluquería · el archivador) (`recap`, `rule-1`, `rule-2`, `rule-3`): «La due diligence es mirar antes de comprometerte; la due care, seguir cuidando después. Hacer bien una no cubre la otra» · «Mira quién te lo impone: la autoridad (fines y sanctions), quien te habilitó (la licencia), la otra parte del contrato (impactos contractuales) o todo el mundo (la reputación)» · «Sin inventario no hay retención: se guarda lo que pide la ley o justifica el uso y se borra lo que sobra, en todas las copias; si alguien pide que lo borren, se borra salvo lo que una ley o un legal hold obliguen a guardar». La frase para el examen (`phrase`): «Antes, mira; después, cuida; y guarda lo que pide la ley o el uso, ni un día más». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

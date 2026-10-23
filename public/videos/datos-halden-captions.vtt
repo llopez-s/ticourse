@@ -1,0 +1,330 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:07.033
+En el puerto de Halden, Recursos Humanos
+prepara un control de horario nuevo.
+
+2
+00:00:07.033 --> 00:00:10.100
+Cada fichaje es un dato de una persona.
+
+3
+00:00:10.100 --> 00:00:17.033
+Dónde está el dato. Son tres preguntas.
+Si está guardado, en camino o en uso.
+
+4
+00:00:17.033 --> 00:00:21.800
+Qué se ve y qué se guarda.
+Y en qué país vive.
+
+5
+00:00:22.367 --> 00:00:26.967
+Un fichaje pasa por tres sitios,
+como el dinero de una hucha.
+
+6
+00:00:26.967 --> 00:00:30.367
+Guardado en la base de datos,
+es data at rest,
+
+7
+00:00:30.367 --> 00:00:33.867
+y se protege cifrando el almacenamiento.
+
+8
+00:00:33.867 --> 00:00:38.167
+Del reloj al servidor cruza
+la red, como una transferencia.
+
+9
+00:00:38.167 --> 00:00:42.567
+Eso es data in transit,
+y se protege cifrando la conexión.
+
+10
+00:00:42.567 --> 00:00:50.133
+Y en la pantalla de la jefa de turno, como
+el dinero en la mano, ya está descifrado.
+
+11
+00:00:50.133 --> 00:00:55.267
+Es data in use, y ni el disco
+ni la conexión lo cubren.
+
+12
+00:00:55.267 --> 00:01:00.967
+Pero esa pantalla da al pasillo,
+y cualquiera que pasara podría leerla.
+
+13
+00:01:00.967 --> 00:01:04.967
+Así que se gira, se bloquea
+sola a los pocos minutos
+
+14
+00:01:04.967 --> 00:01:10.167
+y cada jefa ve solo a su equipo.
+Eso es least privilege.
+
+15
+00:01:10.833 --> 00:01:16.767
+Una abogada lleva en el bolso un disco
+externo con los contratos de un cliente,
+
+16
+00:01:16.767 --> 00:01:22.133
+del despacho al juzgado. El disco
+no se conecta a nada en todo el camino.
+
+17
+00:01:22.133 --> 00:01:27.333
+¿En qué estado están
+los contratos durante el trayecto?
+
+18
+00:01:26.533 --> 00:01:31.533
+A) Data in use
+B) Data at rest
+C) Data in transit
+D) Data sovereignty
+
+19
+00:01:31.700 --> 00:01:36.600
+Es data at rest, porque están
+guardados en un disco, aunque viaje.
+
+20
+00:01:36.600 --> 00:01:41.200
+In transit tienta por el trayecto,
+pero es cruzar una red.
+
+21
+00:01:41.200 --> 00:01:46.500
+O sea, como la hucha cerrada
+que llevas en el bolso.
+
+22
+00:01:47.667 --> 00:01:50.667
+Ahora, el mismo DNI de tres maneras.
+
+23
+00:01:50.667 --> 00:01:54.367
+En la pantalla de la jefa
+solo se ve una parte,
+
+24
+00:01:54.367 --> 00:01:59.567
+mientras el sistema guarda
+el DNI entero, y eso es masking.
+
+25
+00:01:59.567 --> 00:02:05.100
+En el informe de horas para Dirección,
+cada DNI es un código sin sentido.
+
+26
+00:02:05.100 --> 00:02:10.700
+La tabla que traduce cada código
+a su persona la guarda Recursos Humanos.
+
+27
+00:02:10.700 --> 00:02:16.267
+Es la vault, y eso es tokenization.
+Solo quien la tiene vuelve al DNI.
+
+28
+00:02:16.267 --> 00:02:21.500
+Para la exportación mensual, alguien
+propone enredar columnas y campos,
+
+29
+00:02:21.500 --> 00:02:24.600
+para que no se entienda.
+Eso es obfuscation.
+
+30
+00:02:24.600 --> 00:02:26.467
+Estorba, pero no protege,
+
+31
+00:02:26.467 --> 00:02:32.767
+y un formato que no se lee a simple vista
+tampoco es un control. Se cifra igual.
+
+32
+00:02:33.433 --> 00:02:39.300
+Una distribuidora va a mandar por correo
+su lista de clientes a una gestoría.
+
+33
+00:02:39.300 --> 00:02:43.900
+Antes, la convierte a un formato
+que no se lee a simple vista.
+
+34
+00:02:43.900 --> 00:02:49.333
+Pero cualquiera la devuelve a texto
+en un segundo, y sin ninguna clave.
+
+35
+00:02:49.333 --> 00:02:52.367
+¿Qué describe mejor lo que ha aplicado?
+
+36
+00:02:52.367 --> 00:02:56.133
+Con un «mejor» delante,
+alguna otra sonará bien,
+
+37
+00:02:56.133 --> 00:03:00.333
+pero vale la que describe
+lo que se ha hecho.
+
+38
+00:02:59.533 --> 00:03:04.533
+A) Obfuscation
+B) Hashing
+C) Tokenization
+D) Encryption
+
+39
+00:03:04.700 --> 00:03:07.433
+Es obfuscation, porque solo cuesta leerla.
+
+40
+00:03:07.433 --> 00:03:10.600
+Parece cifrada,
+pero sin clave no hay cifrado.
+
+41
+00:03:10.600 --> 00:03:15.500
+Como la exportación,
+que no se lea no la protege.
+
+42
+00:03:16.667 --> 00:03:20.333
+Imagina que el sistema
+se alojara en la nube.
+
+43
+00:03:20.333 --> 00:03:26.167
+Es como guardar tus cajas en un trastero
+al otro lado de la frontera.
+
+44
+00:03:26.167 --> 00:03:30.367
+Lo primero es mirar en qué región
+viviría cada almacenamiento,
+
+45
+00:03:30.367 --> 00:03:34.067
+y desde qué países se entraría.
+Eso es geolocation.
+
+46
+00:03:34.067 --> 00:03:40.200
+Las cajas son tuyas, pero el trastero
+está allí, y allí mandan sus normas.
+
+47
+00:03:40.200 --> 00:03:42.133
+Con el dato pasa igual.
+
+48
+00:03:42.133 --> 00:03:49.167
+Le aplica la ley del país donde reside, no
+la de la sede, y eso es data sovereignty.
+
+49
+00:03:49.167 --> 00:03:54.800
+Y para atarlo, el dato se queda en una
+región de la Unión Europea y nadie entra
+
+50
+00:03:54.800 --> 00:03:58.400
+desde fuera.
+Son las geographic restrictions.
+
+51
+00:03:58.400 --> 00:04:02.067
+Primero se mira, y después se limita.
+
+52
+00:04:02.733 --> 00:04:04.800
+Antes de poner ninguna regla,
+
+53
+00:04:04.800 --> 00:04:09.767
+una editorial averigua en qué país
+está cada almacenamiento de su nube,
+
+54
+00:04:09.767 --> 00:04:14.000
+y desde dónde entra cada cuenta.
+De momento, no bloquea nada.
+
+55
+00:04:14.000 --> 00:04:17.633
+¿Qué describe mejor lo que está usando?
+
+56
+00:04:16.833 --> 00:04:21.833
+A) Segmentation
+B) Geographic restrictions
+C) Geolocation
+D) Data sovereignty
+
+57
+00:04:22.000 --> 00:04:27.200
+Es geolocation, que es saber dónde
+vive el dato y desde dónde se entra.
+
+58
+00:04:27.200 --> 00:04:31.100
+Restringir sería bloquear,
+y aquí solo se mira.
+
+59
+00:04:31.100 --> 00:04:36.800
+O sea, saber en qué ciudad está
+cada trastero no cierra ninguno.
+
+60
+00:04:37.967 --> 00:04:41.933
+Te llevas tres reglas.
+Guardado y en camino, se cifra.
+
+61
+00:04:41.933 --> 00:04:46.633
+En uso, ya está descifrado,
+y lo protege el least privilege.
+
+62
+00:04:46.633 --> 00:04:48.167
+Masking oculta una parte.
+
+63
+00:04:48.167 --> 00:04:51.767
+Tokenization guarda un sustituto
+que solo traduce la vault.
+
+64
+00:04:51.767 --> 00:04:53.700
+Y obfuscation solo estorba.
+
+65
+00:04:53.700 --> 00:04:59.600
+Primero se mira dónde vive el dato,
+y después se ata a una región.
+
+66
+00:04:59.600 --> 00:05:04.700
+Antes de elegir un método, pregúntate
+dónde está el dato ahora mismo.
+
+67
+00:05:04.700 --> 00:05:10.000
+Ahora te toca a ti,
+con las preguntas de la lección.

@@ -1,0 +1,144 @@
+{
+  "title": "Quién decide, quién aplica y quién responde",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 270,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Dentro de la casa"
+    },
+    {
+      "n": 2,
+      "title": "Con la ley"
+    },
+    {
+      "n": 3,
+      "title": "Arriba"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una lista, muchas manos",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Autoridad Portuaria de Halden · lista de pasajeros · propuesta · sin fecha». Una hoja, «lista de pasajeros del ferry» (`list`), y a su alrededor cinco manos que se acercan (`hands`). Al acabar la primera frase (muchos tocan un dato, pero solo uno decide, y el examen pregunta casi siempre quién), título «Quién decide» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «dentro de la casa · con la ley · arriba». Plaquita «SY0-701 · 5.1». Sin adversario",
+      "requiredCues": [
+        "list",
+        "hands",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-casa",
+      "chapter": 1,
+      "title": "Quién decide y quién aplica",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Atención al Pasajero pide ver la lista (`request`). Tres puestos en fila, sin personas con nombre ni género: el puesto responsable de la oficina de la terminal de pasajeros, que la clasificó y responde de ella, decide → DATA OWNER, con el rótulo «rol de negocio · clasifica · aprueba accesos · asume el riesgo» (`owner`); Sistemas da el permiso, cifra y hace las copias → DATA CUSTODIAN, «aplica · no decide» (`custodian`); la oficina de planificación cuida que la lista esté bien (un solo formato de fecha, nombres sin duplicar) → DATA STEWARD, «calidad y significado» (`steward`). La tarjeta de examen entra al acabar la frase del steward. Después, el álbum de fotos de la abuela, rotulado «imagen · no es del puerto» (`album`): ella decide qué copias salen de casa (owner), el nieto las escanea, las guarda y les pone contraseña (custodian) y la tía escribe detrás de cada foto quién sale y en qué año (steward). Ni «grupo» ni «mensajes» ni «familia» en pantalla",
+      "requiredCues": [
+        "request",
+        "owner",
+        "custodian",
+        "steward",
+        "album"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Uso interno o confidencial",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo examen 1 (`q1`). La escena dibuja el rótulo «pregunta tipo examen · ejemplo» (el panel solo pinta «EXAMEN · SY0-701 · 5.1», contradicción 17). Sin calificador, a propósito. El panel tapa la escena hasta el final, así que el fondo se queda quieto (la oficina de una clínica, genérica y sin texto legible). Cuenta atrás de 5 s con «Pausa si quieres»; en `ok-1` sale la correcta (D, Data owner) y en `trap-1` la trampa (B, Data steward). En la resolución vuelve el álbum en una línea (`album-back`): «la tía sabe quién sale en cada foto, y aun así decide la abuela»; la tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "album-back"
+      ]
+    },
+    {
+      "id": "s04-ley",
+      "chapter": 2,
+      "title": "Quién decide para qué",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "La lista es de datos personales (`personal`). Arriba, el puerto como organización: decide qué se recoge, para qué y cuánto se guarda → DATA CONTROLLER (`controller`). A la derecha, una empresa sin nombre que manda los avisos de embarque a los pasajeros, solo con lo que el puerto le dice → DATA PROCESSOR, con el chip «por encargo del puerto, con sus instrucciones» (`processor`; sin decir «contrato» ni «proveedor»; sin portal, sin acceso a ningún sistema dibujado). Una flecha punteada: si esa empresa usara la lista para mandar ofertas suyas, ya decidiría ella → «pasa a ser controller» (`own-purpose`). Debajo, la frase «externalizar el trabajo no externaliza la responsabilidad» (`responsibility`) y, en un chip, «papeles legales entre organizaciones, no puestos de trabajo» (`legal-roles`); la tarjeta de examen entra al acabar esa frase. La mudanza, rotulada «imagen · no es del puerto» (`moving`): tú decides qué se lleva y adónde, la empresa de mudanzas lo carga como le dices; si se queda tu sofá para venderlo, ya decide ella, y de eso responde ella",
+      "requiredCues": [
+        "personal",
+        "controller",
+        "processor",
+        "own-purpose",
+        "responsibility",
+        "legal-roles",
+        "moving"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "La base de afiliados",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo examen 2 (`q2`), con el rótulo «pregunta tipo examen · ejemplo» dibujado por la escena. Primer calificador: «MEJOR» resaltado y, debajo de la pregunta, la línea (`best`) «MEJOR: la que encaja con este caso, aunque otra suene bien», que la voz explica antes de la cuenta atrás. Fondo quieto: una sala de servidores genérica, sin nombre ni datos. En `ok-2` la correcta (B, Data custodian) y en `trap-2` la trampa (D, Data processor). En la resolución (`planes`), los dos planos de s02 y s04 juntos: el administrador cae en el de dentro de la casa, no en el de la ley; la tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q2",
+        "best",
+        "ok-2",
+        "trap-2",
+        "planes"
+      ]
+    },
+    {
+      "id": "s06-arriba",
+      "chapter": 3,
+      "title": "Quién decide arriba",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "goal": "Tres niveles sobre el puerto: el consejo, «aprueba · responde · supervisa» → BOARD (`board`); el comité de seguridad de la información, que revisa riesgos, aprueba excepciones y recomienda al consejo → COMMITTEE, «la delegación es de trabajo, no de responsabilidad» (`committee`; sin día de reunión ni cadencia); y, fuera de la línea, la autoridad marítima nacional, que exige un plan de protección aprobado antes de dejar operar → GOVERNMENT ENTITY (`regulator`). En un chip, sin voz larga (`central-chip`): «centralized: lo mismo en todas partes, más lento · decentralized: rápido y local, desigual». El club del barrio, rotulado «imagen · no es del puerto» (`club`): la junta que aprueba las cuentas (board), la comisión de fiestas que prepara y propone (committee) y el ayuntamiento que da la licencia del local y fija sus normas (government entity). Sin tarjeta de examen",
+      "requiredCues": [
+        "board",
+        "committee",
+        "regulator",
+        "central-chip",
+        "club"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Dos consejeros",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo examen 3 (`q3`), con el rótulo «pregunta tipo examen · ejemplo» dibujado por la escena y «MEJOR» resaltado (ya explicado en s05; sin glosa ni línea). Fondo quieto: una sala de consejo genérica, sin nombre ni texto legible. En `ok-3` la correcta (A, Government entity) y en `trap-3` la trampa (C, Board). En la resolución vuelve el club en una línea (`club-back`): «el ayuntamiento puede tener a alguien en la junta, y sigue siendo el ayuntamiento»; la tarjeta de examen entra después de la trampa",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "club-back"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el examen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Tres reglas, cada una con su icono (el álbum · la mudanza · el club) (`recap`, `rule-1`, `rule-2`, `rule-3`), en pantalla con el texto completo de la ficha: «Dentro de la casa, el owner decide (clasifica y aprueba), el custodian aplica y el steward cuida el significado» · «Con la ley de privacidad, el controller decide para qué, el processor de fuera trata con sus instrucciones y la responsabilidad no se va con el trabajo» · «Arriba, el consejo responde, el comité recomienda y la autoridad gobierna desde fuera» (la voz dice una versión corta de cada una). La frase para el examen (`phrase`): «Pregunta quién decide: saber más o hacer el trabajo no te da la decisión». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
