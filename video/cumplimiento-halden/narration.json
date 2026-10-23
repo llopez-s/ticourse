@@ -50,7 +50,7 @@
     {
       "id": "s02-04",
       "scene": "s02-antes",
-      "text": "<thoughtful> {launch}El día que se lance el sistema, {after}empieza lo otro, que no se acaba.",
+      "text": "<thoughtful> {launch}Se lanza el sistema. {after}Y empieza lo otro, que no se acaba.",
       "pauseAfterMs": 250
     },
     {
@@ -150,15 +150,9 @@
       "pauseAfterMs": 250
     },
     {
-      "id": "s04-06",
-      "scene": "s04-cuesta",
-      "text": "<steady> {reporting}Contar cómo vas es el reporting, interno para la dirección y externo para reguladores y clientes.",
-      "pauseAfterMs": 250
-    },
-    {
       "id": "s04-07",
       "scene": "s04-cuesta",
-      "text": "<casual> {salon}Piensa en una peluquería del barrio. Sanidad la multa y le prohíbe los tintes, y las reseñas hacen el resto.",
+      "text": "<casual> {reporting}{salon}Piensa en una peluquería del barrio. Sanidad la multa y le prohíbe los tintes, y las reseñas hacen el resto.",
       "pauseAfterMs": 500
     },
     {
@@ -200,7 +194,7 @@
     {
       "id": "s05-04",
       "scene": "s05-p2",
-      "text": "<clear> {regulator}En el examen, mira quién la impone, porque aquí es el regulador y no un cliente. Y recuerda, una sanction restringe, no multa.",
+      "text": "<clear> {regulator}En el examen, mira quién la impone, que aquí es el regulador. Y recuerda, una sanction restringe, no multa.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.4",
@@ -212,7 +206,7 @@
     {
       "id": "s06-01",
       "scene": "s06-guardar",
-      "text": "<engaging> {three-places}Volvemos a los objetos perdidos. Quien reclama deja nombre, teléfono y documento de identidad, y eso vive en tres sitios. El sistema, su copia de seguridad y el aviso que se le manda.",
+      "text": "<engaging> {three-places}Volvemos a los objetos perdidos. Quien reclama deja nombre, teléfono y documento de identidad, y eso vive en tres sitios. El sistema, su copia de seguridad y el aviso.",
       "pauseAfterMs": 300
     },
     {
@@ -242,7 +236,7 @@
     {
       "id": "s06-05",
       "scene": "s06-guardar",
-      "text": "<steady> Si una ley te obliga a guardarlos, no se borran. Con un legal hold, una orden de guardar por un juicio, igual. Lo demás sí se borra.",
+      "text": "<steady> Si una ley te obliga a guardarlos, no se borran. Con un legal hold, una orden de guardar por un juicio, tampoco.",
       "pauseAfterMs": 300
     },
     {

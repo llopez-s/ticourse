@@ -53,7 +53,7 @@
     {
       "id": "s02-02",
       "scene": "s02-firmas",
-      "text": "<clear> {ack}A la izquierda, cada persona de la plantilla firma que ha leído la política de uso aceptable. Una persona, una norma. Eso es un acknowledgement.",
+      "text": "<clear> {ack}A la izquierda, cada persona de la plantilla firma que ha leído la política de uso aceptable. Eso es un acknowledgement.",
       "pauseAfterMs": 300
     },
     {
@@ -261,7 +261,7 @@
     {
       "id": "s07-02",
       "scene": "s07-modos",
-      "text": "<clear> {physical}Hay cuatro modos. En el physical, alguien intenta entrar en una oficina detrás de otra persona.",
+      "text": "<clear> {physical}Hay cuatro modos. El primero es el physical.",
       "pauseAfterMs": 300
     },
     {
@@ -411,7 +411,7 @@
     {
       "id": "s10-02",
       "scene": "s10-p4",
-      "text": "<firm> {ok-4}Partially known, porque recibe la información de un alumno normal, y nada más. {trap-4}Known tienta, porque le dan una cuenta. Pero known es tenerlo todo.",
+      "text": "<firm> {ok-4}Partially known, porque recibe la información de un alumno normal. {trap-4}Known tienta, porque le dan una cuenta. Pero known es tenerlo todo.",
       "pauseAfterMs": 300
     },
     {
@@ -429,7 +429,13 @@
     {
       "id": "s11-01",
       "scene": "s11-mirar",
-      "text": "<curious> {before}Mira las dos semanas del plan. Antes de la ventana, el equipo de pruebas solo miraría lo público, como certificados, ofertas de empleo y buscadores de aparatos expuestos. {passive}Eso es passive reconnaissance.",
+      "text": "<curious> {before}Mira las dos semanas del plan. Antes de la ventana, el equipo de pruebas solo miraría lo público.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s11-01b",
+      "scene": "s11-mirar",
+      "text": "<steady> Serían certificados, ofertas de empleo y buscadores de aparatos expuestos. {passive}Eso es passive reconnaissance.",
       "pauseAfterMs": 300
     },
     {
