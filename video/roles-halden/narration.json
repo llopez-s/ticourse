@@ -26,7 +26,7 @@
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Quién decide, que es lo que el examen casi siempre pregunta. {promise}Lo vemos a tres alturas. Dentro de la casa, con la ley y arriba.",
+      "text": "<confident> {title}Quién decide. Es lo que el examen suele preguntar. {promise}Lo vemos a tres alturas. Dentro de la casa, con la ley y arriba.",
       "pauseAfterMs": 400
     },
     {
@@ -38,7 +38,7 @@
     {
       "id": "s02-02",
       "scene": "s02-casa",
-      "text": "<clear> {owner}La persona responsable de la oficina de la terminal de pasajeros la clasificó y responde de ella. Eso es el data owner, un rol de negocio.",
+      "text": "<clear> {owner}La persona responsable de la oficina de la terminal de pasajeros clasificó la lista y responde de ella. Eso es el data owner, un rol de negocio.",
       "pauseAfterMs": 300
     },
     {
@@ -50,29 +50,29 @@
     {
       "id": "s02-04",
       "scene": "s02-casa",
-      "text": "<thoughtful> {steward}La oficina de planificación cuida que la lista esté bien, con un solo formato de fecha y sin nombres repetidos. Es el data steward.",
+      "text": "<thoughtful> {steward}La oficina de planificación cuida que la lista esté bien, con un solo formato de fecha y sin nombres repetidos. {steward-name}Es el data steward.",
       "pauseAfterMs": 500,
       "exam": {
         "objective": "5.1",
         "text": "El owner decide; el custodian lo aplica",
-        "at": "steward",
+        "at": "steward-name",
         "holdSec": 5
       }
     },
     {
       "id": "s02-05",
       "scene": "s02-casa",
-      "text": "<warm> {album}Como en el álbum de la abuela. Ella decide qué copias salen, el nieto las escanea y la tía anota detrás quién sale.",
+      "text": "<warm> {album}Piensa en el álbum de fotos de la abuela. Ella decide qué fotos salen de casa. El nieto las escanea, y la tía apunta detrás quién aparece.",
       "pauseAfterMs": 500
     },
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca. Una cadena de clínicas tiene que decidir si los datos de sus citas pasan de uso interno a confidencial. Hay una persona que define cada campo y corrige los errores, y los conoce mejor que nadie. ¿Qué rol debe decidir la clasificación?",
+      "text": "<intrigued> {q1}Te toca. Una cadena de clínicas tiene que decidir si los datos de sus citas se clasifican como confidenciales. Hay una persona que define cada campo y corrige los errores, y los conoce mejor que nadie. ¿Qué rol debe decidir la clasificación?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.1",
-        "scenario": "Unas clínicas deciden si sus datos de citas pasan de «uso interno» a «confidencial». Quien define cada campo y corrige errores los conoce mejor que nadie.",
+        "scenario": "Unas clínicas deciden si sus datos de citas se clasifican como «confidenciales». Quien define cada campo y corrige errores los conoce mejor que nadie.",
         "q": "¿Qué rol debe decidir la clasificación?",
         "options": [
           "Data custodian",
@@ -83,7 +83,7 @@
         "answer": 3,
         "trap": 1,
         "why": "Clasificar es decidir sobre el dato, y eso es del owner, que responde de él",
-        "trapWhy": "El steward cuida la calidad y el significado del dato, pero no lo clasifica",
+        "trapWhy": "El steward cuida la calidad y el significado del dato, pero no decide su clasificación",
         "countdownMs": 5000,
         "revealAt": "ok-1",
         "trapAt": "trap-1"
@@ -98,11 +98,11 @@
     {
       "id": "s03-03",
       "scene": "s03-p1",
-      "text": "<warm> {album-back}O sea, como la tía del álbum. Sabe quién sale en cada foto, y aun así decide la abuela.",
+      "text": "<warm> {album-back}O sea, que la tía sabe quién aparece en cada foto, y aun así decide la abuela.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.1",
-        "text": "Clasificar es del owner, no del steward",
+        "text": "Decidir la clasificación es del owner",
         "at": "album-back",
         "holdSec": 5
       }
@@ -116,13 +116,13 @@
     {
       "id": "s04-02",
       "scene": "s04-ley",
-      "text": "<curious> {processor}Ahora, una empresa manda a los pasajeros los avisos de embarque, solo con lo que el puerto le dice.",
+      "text": "<curious> {processor}Ahora, una empresa manda a los pasajeros los avisos de embarque.",
       "pauseAfterMs": 250
     },
     {
       "id": "s04-03",
       "scene": "s04-ley",
-      "text": "<clear> Trata los datos por encargo y con sus instrucciones. Es el data processor.",
+      "text": "<clear> Trata esos datos por encargo del puerto, siguiendo sus instrucciones. Es el data processor.",
       "pauseAfterMs": 300
     },
     {
@@ -152,11 +152,11 @@
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<engaging> {q2}Otra. En una mutua de salud, un administrador de sistemas restaura copias, aplica parches y revisa los registros de la base de afiliados. Lo hace según lo que decide la responsable del área. ¿Qué rol describe mejor su trabajo? {best}Fíjate en ese «mejor». Pide la que encaja con este caso, aunque otra suene bien.",
+      "text": "<engaging> {q2}Otra. En una mutua de salud hay un administrador de sistemas. Restaura copias, aplica parches y vigila los accesos a la base de datos de afiliados. Lo hace según lo que decide la responsable del área. ¿Qué rol describe mejor su trabajo? {best}Fíjate en ese «mejor». Pide la que encaja con este caso, aunque otra suene bien.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.1",
-        "scenario": "Un administrador de sistemas de una mutua restaura copias, aplica parches y revisa los registros de la base de afiliados, según decide la responsable.",
+        "scenario": "Un administrador de sistemas de una mutua restaura copias, aplica parches y vigila los accesos a la base de afiliados, según decide la responsable.",
         "q": "¿Qué rol describe MEJOR su trabajo?",
         "options": [
           "Data controller",
@@ -194,7 +194,7 @@
     {
       "id": "s06-01",
       "scene": "s06-arriba",
-      "text": "<engaging> {board}Arriba, el consejo del puerto aprueba lo más importante y responde de todo. Eso es el board.",
+      "text": "<engaging> {board}Arriba, el consejo del puerto aprueba lo más importante y responde en última instancia. Eso es el board.",
       "pauseAfterMs": 300
     },
     {
@@ -206,13 +206,13 @@
     {
       "id": "s06-03",
       "scene": "s06-arriba",
-      "text": "<firm> {regulator}Fuera de esa línea, la autoridad marítima nacional puede exigir un plan de protección aprobado. Es una government entity, y gobierna desde fuera.",
+      "text": "<firm> {regulator}Y luego está la autoridad marítima nacional, que puede exigir un plan de protección aprobado. Es una government entity, y gobierna desde fuera.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-04",
       "scene": "s06-arriba",
-      "text": "<casual> {central-chip}Y repartir las decisiones puede ser centralized, igual en todas partes, o decentralized, rápido y local.",
+      "text": "<casual> {central-chip}Y además, centralized es igual en todas partes, pero más lento. Decentralized, rápido y local, pero desigual.",
       "pauseAfterMs": 300
     },
     {
@@ -224,11 +224,11 @@
     {
       "id": "s07-01",
       "scene": "s07-p3",
-      "text": "<curious> {q3}La última. Una autoridad pública nombra a dos de los consejeros de una universidad pública. Además, le fija los requisitos de su plan de seguridad. ¿Qué describe mejor el papel de esa autoridad?",
+      "text": "<curious> {q3}La última. Una autoridad pública nombra a dos de los consejeros de una universidad pública. Además, fija los requisitos del plan de seguridad de la universidad. ¿Qué describe mejor el papel de esa autoridad?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.1",
-        "scenario": "Una autoridad pública nombra a dos de los consejeros de una universidad pública y le fija los requisitos de su plan de seguridad.",
+        "scenario": "Una autoridad pública nombra a dos de los consejeros de una universidad pública y fija los requisitos del plan de seguridad de la universidad.",
         "q": "¿Qué describe MEJOR el papel de esa autoridad?",
         "options": [
           "Government entity",
@@ -254,7 +254,7 @@
     {
       "id": "s07-03",
       "scene": "s07-p3",
-      "text": "<warm> {club-back}Como el ayuntamiento del club. Puede tener a alguien en la junta, y sigue siendo el ayuntamiento.",
+      "text": "<warm> {club-back}Como el ayuntamiento del club, que puede tener a alguien en la junta y aun así sigue siendo el ayuntamiento.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.1",

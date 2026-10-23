@@ -25,7 +25,7 @@
       "title": "Una lista, muchas manos",
       "targetSec": 20,
       "wordBudget": 54,
-      "goal": "Sello «Autoridad Portuaria de Halden · lista de pasajeros · propuesta · sin fecha». Una hoja, «lista de pasajeros del ferry» (`list`), y a su alrededor cinco manos que se acercan (`hands`). Al acabar la primera frase (muchos tocan un dato, pero solo uno decide, y el examen pregunta casi siempre quién), título «Quién decide» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «dentro de la casa · con la ley · arriba». Plaquita «SY0-701 · 5.1». Sin adversario",
+      "goal": "Sello «Autoridad Portuaria de Halden · lista de pasajeros · propuesta · sin fecha». Una hoja, «lista de pasajeros del ferry» (`list`), y a su alrededor cinco manos que se acercan (`hands`). Al acabar la primera frase (muchos tocan un dato, pero solo uno decide, y es lo que el examen suele preguntar), título «Quién decide» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «dentro de la casa · con la ley · arriba». Plaquita «SY0-701 · 5.1». Sin adversario",
       "requiredCues": [
         "list",
         "hands",
@@ -39,22 +39,23 @@
       "title": "Quién decide y quién aplica",
       "targetSec": 40,
       "wordBudget": 108,
-      "goal": "Atención al Pasajero pide ver la lista (`request`). Tres puestos en fila, sin personas con nombre ni género: el puesto responsable de la oficina de la terminal de pasajeros, que la clasificó y responde de ella, decide → DATA OWNER, con el rótulo «rol de negocio · clasifica · aprueba accesos · asume el riesgo» (`owner`); Sistemas da el permiso, cifra y hace las copias → DATA CUSTODIAN, «aplica · no decide» (`custodian`); la oficina de planificación cuida que la lista esté bien (un solo formato de fecha, nombres sin duplicar) → DATA STEWARD, «calidad y significado» (`steward`). La tarjeta de examen entra al acabar la frase del steward. Después, el álbum de fotos de la abuela, rotulado «imagen · no es del puerto» (`album`): ella decide qué copias salen de casa (owner), el nieto las escanea, las guarda y les pone contraseña (custodian) y la tía escribe detrás de cada foto quién sale y en qué año (steward). Ni «grupo» ni «mensajes» ni «familia» en pantalla",
+      "goal": "Atención al Pasajero pide ver la lista (`request`). Tres puestos en fila, sin personas con nombre ni género: el puesto responsable de la oficina de la terminal de pasajeros, que la clasificó y responde de ella, decide → DATA OWNER, con el rótulo «rol de negocio · clasifica · aprueba accesos · asume el riesgo» (`owner`); Sistemas da el permiso, cifra y hace las copias → DATA CUSTODIAN, «aplica · no decide» (`custodian`); la oficina de planificación cuida que la lista esté bien (un solo formato de fecha, nombres sin duplicar) → DATA STEWARD, «calidad y significado» (`steward`). La tarjeta de examen entra al acabar la frase del steward (`steward-name`, «Es el data steward»). Después, el álbum de fotos de la abuela, rotulado «imagen · no es del puerto» (`album`): ella decide qué fotos salen de casa (owner), el nieto las escanea, las guarda y les pone contraseña (custodian) y la tía apunta detrás de cada foto quién aparece y en qué año (steward). Ni «grupo» ni «mensajes» ni «familia» en pantalla",
       "requiredCues": [
         "request",
         "owner",
         "custodian",
         "steward",
+        "steward-name",
         "album"
       ]
     },
     {
       "id": "s03-p1",
       "chapter": 1,
-      "title": "Uso interno o confidencial",
+      "title": "Qué nivel de clasificación",
       "targetSec": 38,
       "wordBudget": 81,
-      "goal": "Pregunta tipo examen 1 (`q1`). La escena dibuja el rótulo «pregunta tipo examen · ejemplo» (el panel solo pinta «EXAMEN · SY0-701 · 5.1», contradicción 17). Sin calificador, a propósito. El panel tapa la escena hasta el final, así que el fondo se queda quieto (la oficina de una clínica, genérica y sin texto legible). Cuenta atrás de 5 s con «Pausa si quieres»; en `ok-1` sale la correcta (D, Data owner) y en `trap-1` la trampa (B, Data steward). En la resolución vuelve el álbum en una línea (`album-back`): «la tía sabe quién sale en cada foto, y aun así decide la abuela»; la tarjeta de examen entra después de la trampa",
+      "goal": "Pregunta tipo examen 1 (`q1`). La escena dibuja el rótulo «pregunta tipo examen · ejemplo» (el panel solo pinta «EXAMEN · SY0-701 · 5.1», contradicción 17). Sin calificador, a propósito. El panel tapa la escena hasta el final, así que el fondo se queda quieto (la oficina de una clínica, genérica y sin texto legible). Cuenta atrás de 5 s con «Pausa si quieres»; en `ok-1` sale la correcta (D, Data owner) y en `trap-1` la trampa (B, Data steward). En la resolución vuelve el álbum en una línea (`album-back`): «la tía sabe quién aparece en cada foto, y aun así decide la abuela»; la tarjeta de examen entra después de la trampa",
       "requiredCues": [
         "q1",
         "ok-1",
@@ -68,7 +69,7 @@
       "title": "Quién decide para qué",
       "targetSec": 40,
       "wordBudget": 108,
-      "goal": "La lista es de datos personales (`personal`). Arriba, el puerto como organización: decide qué se recoge, para qué y cuánto se guarda → DATA CONTROLLER (`controller`). A la derecha, una empresa sin nombre que manda los avisos de embarque a los pasajeros, solo con lo que el puerto le dice → DATA PROCESSOR, con el chip «por encargo del puerto, con sus instrucciones» (`processor`; sin decir «contrato» ni «proveedor»; sin portal, sin acceso a ningún sistema dibujado). Una flecha punteada: si esa empresa usara la lista para mandar ofertas suyas, ya decidiría ella → «pasa a ser controller» (`own-purpose`). Debajo, la frase «externalizar el trabajo no externaliza la responsabilidad» (`responsibility`) y, en un chip, «papeles legales entre organizaciones, no puestos de trabajo» (`legal-roles`); la tarjeta de examen entra al acabar esa frase. La mudanza, rotulada «imagen · no es del puerto» (`moving`): tú decides qué se lleva y adónde, la empresa de mudanzas lo carga como le dices; si se queda tu sofá para venderlo, ya decide ella, y de eso responde ella",
+      "goal": "La lista es de datos personales (`personal`). Arriba, el puerto como organización: decide qué se recoge, para qué y cómo se trata → DATA CONTROLLER (`controller`). A la derecha, una empresa sin nombre que manda los avisos de embarque a los pasajeros, solo con lo que el puerto le dice → DATA PROCESSOR, con el chip «por encargo del puerto, con sus instrucciones» (`processor`; sin decir «contrato» ni «proveedor»; sin portal, sin acceso a ningún sistema dibujado). Una flecha punteada: si esa empresa usara la lista para mandar ofertas suyas, ya decidiría ella → «pasa a ser controller» (`own-purpose`). Debajo, la frase «externalizar el trabajo no externaliza la responsabilidad» (`responsibility`) y, en un chip, «papeles legales entre organizaciones, no puestos de trabajo» (`legal-roles`); la tarjeta de examen entra al acabar esa frase. La mudanza, rotulada «imagen · no es del puerto» (`moving`): tú decides qué se lleva y adónde, la empresa de mudanzas lo carga como le dices; si se queda tu sofá para venderlo, ya decide ella, y de eso responde ella",
       "requiredCues": [
         "personal",
         "controller",

@@ -73,13 +73,13 @@
     {
       "id": "s02-06",
       "scene": "s02-estados",
-      "text": "<firm> {decision}Se gira, se bloquea sola a los pocos minutos y cada jefa ve solo a su equipo, que es el least privilege.",
+      "text": "<firm> {decision}Se gira, se bloquea sola a los pocos minutos y cada jefa ve solo a su equipo. {least}Esto último es el least privilege.",
       "pauseAfterMs": 500
     },
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Una abogada lleva en el bolso un disco externo con los contratos de un cliente, del despacho al juzgado. El disco no se conecta a nada en todo el camino. ¿En qué estado están los contratos durante el trayecto?",
+      "text": "<intrigued> {q1}Te toca. Una abogada lleva en el bolso un disco externo con los contratos de un cliente, del despacho al juzgado. El disco no se conecta a nada en todo el camino. ¿En qué estado están los contratos durante el trayecto?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "3.3",
@@ -115,7 +115,7 @@
     {
       "id": "s04-01",
       "scene": "s04-metodos",
-      "text": "<casual> {same-id}Ahora, el mismo DNI de tres maneras. {mask}En la pantalla de la jefa solo se ve una parte, mientras el sistema guarda el DNI entero, y eso es masking.",
+      "text": "<casual> {same-id}Volvemos al fichaje, y al DNI que lleva. Te lo enseño de tres maneras. {mask}En la pantalla de la jefa solo se ve una parte, mientras el sistema guarda el DNI entero, y eso es masking.",
       "pauseAfterMs": 300,
       "exam": {
         "objective": "3.3",
@@ -133,25 +133,25 @@
     {
       "id": "s04-03",
       "scene": "s04-metodos",
-      "text": "<warm> {vault}Esa tabla es la vault, y eso es tokenization. Solo quien la tiene vuelve al DNI.",
+      "text": "<warm> {vault}Esa tabla es la vault. Cambiar el DNI por un código es tokenization. Solo quien la tiene vuelve al DNI.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-04",
       "scene": "s04-metodos",
-      "text": "<focused> {export}Para la exportación mensual, alguien propone enredar columnas y campos, para que no se entienda. {crossed}Eso es obfuscation.",
+      "text": "<focused> {export}Para la exportación mensual, alguien propone, en vez de cifrarla, enredar columnas y campos para que no se entienda. {crossed}Eso es obfuscation.",
       "pauseAfterMs": 250
     },
     {
       "id": "s04-05",
       "scene": "s04-metodos",
-      "text": "<firm> Estorba, pero no protege, y un formato que no se lee a simple vista tampoco es un control. {chip}Se cifra igual.",
+      "text": "<firm> Estorba, pero por sí sola no protege. Y un formato que no se lee a simple vista tampoco es un control. {chip}Se cifra de todas formas.",
       "pauseAfterMs": 500
     },
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<intrigued> {q2}Una distribuidora va a mandar por correo su lista de clientes a una gestoría. Antes, la convierte a un formato que no se lee a simple vista. Pero cualquiera la devuelve a texto en un segundo, y sin ninguna clave. ¿Qué describe mejor lo que ha aplicado? {best}Con un «mejor» delante, alguna otra sonará bien, pero vale la que describe lo que se ha hecho.",
+      "text": "<intrigued> {q2}Otra más. Una distribuidora va a mandar por correo su lista de clientes a una gestoría. Antes, la convierte a un formato que no se lee a simple vista. Pero cualquiera la devuelve a texto en un segundo, y sin ninguna clave. ¿Qué describe mejor lo que ha aplicado? {best}Con un «mejor» delante, alguna otra sonará bien, pero vale la que describe lo que se ha hecho.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "3.3",
@@ -165,7 +165,7 @@
         ],
         "answer": 0,
         "trap": 3,
-        "why": "Solo la hace difícil de leer, sin clave ni garantía: es obfuscation",
+        "why": "Solo la hace ilegible a simple vista, sin clave ni garantía: es obfuscation",
         "trapWhy": "Parece cifrada, pero sin clave no hay cifrado: cualquiera la deshace",
         "countdownMs": 5000,
         "revealAt": "ok-2",
@@ -193,7 +193,7 @@
     {
       "id": "s06-01",
       "scene": "s06-pais",
-      "text": "<engaging> {suppose}Imagina que el sistema se alojara en la nube. {storage}Es como guardar tus cajas en un trastero al otro lado de la frontera.",
+      "text": "<engaging> {suppose}Ahora imagina que el sistema de fichajes se alojara en la nube. {storage}Es como guardar tus cajas en un trastero al otro lado de la frontera.",
       "pauseAfterMs": 300
     },
     {
@@ -223,13 +223,13 @@
     {
       "id": "s06-05",
       "scene": "s06-pais",
-      "text": "<firm> {tie}Y para atarlo, el dato se queda en una región de la Unión Europea y nadie entra desde fuera. Son las geographic restrictions. {order}Primero se mira, y después se limita.",
+      "text": "<firm> {tie}Y para atarlo, el dato se queda en una región de la Unión Europea. Y nadie entra desde fuera de ella. Son las geographic restrictions. {order}Primero se mira, y después se limita.",
       "pauseAfterMs": 500
     },
     {
       "id": "s07-01",
       "scene": "s07-p3",
-      "text": "<curious> {q3}Antes de poner ninguna regla, una editorial averigua en qué país está cada almacenamiento de su nube. Y desde dónde entra cada cuenta. De momento, no bloquea nada. ¿Qué describe mejor lo que está usando?",
+      "text": "<curious> {q3}La última. Antes de poner ninguna regla, una editorial averigua en qué país está cada almacenamiento de su nube. Y desde dónde entra cada cuenta. De momento, no bloquea nada. ¿Qué describe mejor lo que está usando?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "3.3",
@@ -259,7 +259,7 @@
     {
       "id": "s07-03",
       "scene": "s07-p3",
-      "text": "<warm> {storage-back}O sea, saber en qué ciudad está cada trastero no cierra ninguno.",
+      "text": "<warm> {storage-back}O sea, saber en qué país está cada trastero no bloquea ninguno.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "3.3",

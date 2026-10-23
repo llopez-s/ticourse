@@ -25,37 +25,37 @@
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Que la gente avise. {promise}Tres preguntas. Por qué lo hizo cada uno, qué se mide, y a quién se forma y cada cuánto.",
+      "text": "<confident> {title}Que la gente avise. {promise}Hoy, tres preguntas. Por qué hace cada uno lo que hace, qué se mide, y a quién se forma y cada cuánto.",
       "pauseAfterMs": 400
     },
     {
       "id": "s02-01",
       "scene": "s02-intencion",
-      "text": "<engaging> Primero, por qué lo hizo. {faces}Imagina tres avisos que llegan a Seguridad.",
+      "text": "<engaging> Primero, por qué lo hizo. {faces}Imagina tres casos que llegan a Seguridad.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-02",
       "scene": "s02-intencion",
-      "text": "<clear> {risky}La primera reenvía documentos al correo personal. Sabe que no se puede, y lo hace por comodidad. Es risky behavior, y se corrige con política y controles.",
+      "text": "<clear> {risky}En el primero, alguien reenvía documentos de trabajo a su correo personal. Sabe que no se puede, y lo hace por comodidad. Es risky behavior, y se corrige con política y controles.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-03",
       "scene": "s02-intencion",
-      "text": "<thoughtful> {unexpected}La segunda, una cuenta de Compras, abre de pronto las nóminas de otra sección. No encaja con ella. Es unexpected behavior. No se acusa, se investiga.",
+      "text": "<thoughtful> {unexpected}En el segundo, una cuenta de Compras abre de pronto las nóminas de otra sección. No encaja con ella. Es unexpected behavior. No se acusa, se investiga.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-04",
       "scene": "s02-intencion",
-      "text": "<warm> {unintentional}La tercera sube una foto del equipo, con una pizarra de sistemas al fondo. Fue sin querer. Es unintentional behavior, y se previene con diseño y formación.",
+      "text": "<warm> {unintentional}En el tercero, alguien sube una foto del equipo, con una pizarra de sistemas al fondo. Ni se dio cuenta de lo que enseñaba. Es unintentional behavior, y se previene con diseño y formación.",
       "pauseAfterMs": 400
     },
     {
       "id": "s02-05",
       "scene": "s02-intencion",
-      "text": "<firm> {intent}Lo que separa a las tres es la intención, no el daño. {not-actor}Y ojo, que aquí unintentional es un comportamiento, no un tipo de atacante.",
+      "text": "<firm> {intent}Lo que separa a los tres es la intención, no el daño. {not-actor}Y ojo, que aquí unintentional es un comportamiento, no un tipo de insider.",
       "pauseAfterMs": 500,
       "exam": {
         "objective": "5.6",
@@ -67,11 +67,11 @@
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}En otra empresa, para no esperar al técnico, un empleado instala en el navegador una extensión que convierte documentos. Acepta el aviso de que no está aprobada. Resulta que subía cada documento a un servidor de fuera, y él no lo sabía. ¿Cómo se clasifica mejor su comportamiento? {best}Ojo con ese «mejor». Pide la que más encaja aquí, aunque otra también suene bien.",
+      "text": "<intrigued> {q1}En otra empresa, para no esperar al técnico, un empleado instala en el navegador una extensión que convierte documentos. La política no la permite, y él acepta la advertencia. Resulta que subía cada documento a un servidor de fuera, y él no lo sabía. ¿Cómo se clasifica mejor su comportamiento? {best}Ojo con ese «mejor». No busca una que valga, sino la que más sirve en este caso.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.6",
-        "scenario": "Para no esperar, un empleado instala una extensión de conversión; acepta el aviso de que no está aprobada. Subía cada documento fuera, y él no lo sabía.",
+        "scenario": "Para no esperar, un empleado instala una extensión que la política prohíbe y acepta la advertencia. Subía cada documento fuera, y él no lo sabía.",
         "q": "¿Cómo se clasifica MEJOR su comportamiento?",
         "options": [
           "Unexpected behavior",
@@ -81,8 +81,8 @@
         ],
         "answer": 1,
         "trap": 3,
-        "why": "Se saltó un aviso a sabiendas para ir más rápido: es un atajo consciente",
-        "trapWhy": "No sabía que subía los documentos, pero sí decidió saltarse el aviso",
+        "why": "Se saltó una advertencia a sabiendas para ir más rápido: es un atajo consciente",
+        "trapWhy": "No sabía que subía los documentos, pero sí decidió saltarse la advertencia",
         "countdownMs": 5000,
         "revealAt": "ok-1",
         "trapAt": "trap-1"
@@ -91,17 +91,17 @@
     {
       "id": "s03-02",
       "scene": "s03-p1",
-      "text": "<firm> {ok-1}Es risky behavior: se saltó un aviso a sabiendas. {trap-1}Unintentional tienta por el daño, pero lo que clasificas es lo que decidió.",
+      "text": "<firm> {ok-1}Es risky behavior, porque sabía que no estaba permitida y la instaló igual. {trap-1}Unintentional tienta, porque lo que subía no lo sabía. Pero se clasifica lo que decidió, no lo que pasó después.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-03",
       "scene": "s03-p1",
-      "text": "<warm> {face-back}O sea, que como la primera cara, lo sabía.",
+      "text": "<warm> {face-back}O sea, igual que quien reenvía documentos a su correo personal. Los dos sabían que no se podía.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.6",
-        "text": "Saltarse un aviso a sabiendas es risky",
+        "text": "Saltarse una advertencia a sabiendas es risky",
         "at": "face-back",
         "holdSec": 5
       }
@@ -109,7 +109,7 @@
     {
       "id": "s04-01",
       "scene": "s04-avisar",
-      "text": "<engaging> Segundo, qué se mide. {campaign}El puerto prepara su primera campaña de phishing simulado, autorizada por escrito. {lure}El señuelo es la nueva aplicación del comedor, {no-cruel}y ninguno es cruel.",
+      "text": "<engaging> Segundo, qué se mide. {campaign}El puerto prepara su primera campaña de phishing simulado, o sea, correos falsos que manda él mismo y que autoriza por escrito. {lure}El señuelo es la nueva aplicación del comedor. {no-cruel}Nada cruel, a propósito.",
       "pauseAfterMs": 300
     },
     {
@@ -127,19 +127,19 @@
     {
       "id": "s04-03",
       "scene": "s04-avisar",
-      "text": "<thoughtful> El segundo avisa de un ataque real, y el castigo lo apaga. {no-names}Por eso no se publican nombres, y {coaching}a quien pica, una explicación en el momento.",
+      "text": "<thoughtful> El que hay que subir es el segundo, porque es el que te avisa de un ataque real. Si castigas a quien pica, la gente deja de avisar. {no-names}Por eso no se publican nombres, y {coaching}a quien pica, una explicación en el momento.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-04",
       "scene": "s04-avisar",
-      "text": "<confident> {loop}Avisar tiene que costar un clic. Botón en el correo, triaje y, si era real, quitarlo de los demás buzones. Y contestar siempre, aunque fuera falso.",
+      "text": "<confident> {loop}Avisar tiene que costar un clic: un botón en el correo. Luego alguien lo revisa, y si era real, lo quita de los demás buzones. Y a quien avisó se le contesta siempre, aunque fuera una falsa alarma.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-05",
       "scene": "s04-avisar",
-      "text": "<warm> {streetlight}Como avisar de que la farola de tu calle no funciona. Nadie contesta, y a la tercera dejas de avisar.",
+      "text": "<warm> {streetlight}Es como avisar al ayuntamiento de que la farola de tu calle no funciona. Nadie contesta, y a la tercera vez dejas de avisar.",
       "pauseAfterMs": 500
     },
     {
@@ -149,11 +149,11 @@
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.6",
-        "scenario": "En los simulacros casi nadie pica, pero solo avisa 1 de cada 20. Para avisar hay que reenviar el correo a una dirección que pocos recuerdan.",
+        "scenario": "En los simulacros casi nadie pica, porque reconocen el señuelo. Pero solo avisa 1 de cada 20: hay que reenviar el correo a una dirección que pocos recuerdan.",
         "q": "¿Qué cambio es el MEJOR para que avise más gente?",
         "options": [
           "Más formación para reconocer el phishing",
-          "Sancionar a quien no avise",
+          "Una sanción a quien no avise",
           "Un botón para avisar en el propio correo",
           "Señuelos más difíciles"
         ],
@@ -169,7 +169,7 @@
     {
       "id": "s05-02",
       "scene": "s05-p2",
-      "text": "<confident> {ok-2}Es el botón en el propio correo, porque lo que frena es lo que cuesta avisar. {trap-2}Más formación tienta, pero reconocerlo ya lo saben.",
+      "text": "<confident> {ok-2}Es el botón en el propio correo, porque lo que frena es lo difícil que resulta avisar. {trap-2}Más formación parece lo lógico, pero ya saben reconocerlo.",
       "pauseAfterMs": 300
     },
     {
@@ -199,23 +199,23 @@
     {
       "id": "s06-03",
       "scene": "s06-programa",
-      "text": "<clear> {audiences}Y a cada audiencia, su riesgo. Finanzas, facturas falsas y verificar por otro canal. Sistemas, credenciales y no dar un acceso que no han pedido ellos.",
+      "text": "<clear> {audiences}Y la formación se adapta a cada grupo, según su riesgo. A Finanzas le toca aprender a verificar una factura por otro canal. A Sistemas, a cuidar sus credenciales y a no aprobar accesos que no han pedido ellos.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-04",
       "scene": "s06-programa",
-      "text": "<casual> Dirección, lo que no se publica. Quien trabaja fuera, las redes de casa. Quien acaba de llegar, la política y a quién avisar. {topics}Los ocho temas, en pantalla.",
+      "text": "<casual> Con Dirección, con quien trabaja fuera o con quien acaba de llegar pasa igual: cada grupo, lo suyo, y lo tienes en pantalla. {topics}Ahí también están los ocho temas que pide el examen.",
       "pauseAfterMs": 500
     },
     {
       "id": "s07-01",
       "scene": "s07-p3",
-      "text": "<intrigued> {q3}Una empresa da cada trimestre el mismo curso de concienciación a toda la plantilla. Todo mejora menos en Finanzas, que sigue cayendo en facturas falsas que piden cambiar la cuenta bancaria. ¿Qué cambio ataca mejor el problema?",
+      "text": "<intrigued> {q3}Una empresa da cada trimestre el mismo curso de concienciación a toda la plantilla. Los resultados mejoran en todas las áreas, menos en Finanzas. Siguen cayendo en facturas falsas que piden cambiar la cuenta bancaria. ¿Qué cambio ataca mejor el problema?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.6",
-        "scenario": "Una empresa da cada trimestre el mismo curso a toda la plantilla. Todo mejora menos Finanzas, que sigue cayendo en facturas falsas.",
+        "scenario": "El mismo curso, cada trimestre, para toda la plantilla. Los resultados mejoran en todas las áreas menos en Finanzas, que sigue cayendo en facturas falsas.",
         "q": "¿Qué cambio ataca MEJOR el problema?",
         "options": [
           "Formar a Finanzas en verificar pagos",
@@ -235,13 +235,13 @@
     {
       "id": "s07-02",
       "scene": "s07-p3",
-      "text": "<firm> {ok-3}Es formar a Finanzas en verificar pagos, porque cada audiencia tiene su riesgo. {trap-3}Repetir tienta, pero esa empresa ya repite, y lo genérico no toca el riesgo de Finanzas.",
+      "text": "<firm> {ok-3}Es formar a Finanzas en verificar los pagos por otro canal, porque cada grupo tiene su riesgo. {trap-3}Repetir tienta, pero esa empresa ya repite, y lo genérico no toca el riesgo de Finanzas.",
       "pauseAfterMs": 300
     },
     {
       "id": "s07-03",
       "scene": "s07-p3",
-      "text": "<warm> {english-back}Repetir el curso de camarero no te enseña a negociar.",
+      "text": "<warm> {english-back}Repetir el inglés del instituto no te enseña a negociar un contrato.",
       "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.6",
@@ -253,7 +253,7 @@
     {
       "id": "s08-01",
       "scene": "s08-cierre",
-      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}La primera, mira la intención: si lo sabía, es risky.",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}La primera, mira la intención: si lo sabía, es risky, y si no encaja, se investiga.",
       "pauseAfterMs": 250
     },
     {

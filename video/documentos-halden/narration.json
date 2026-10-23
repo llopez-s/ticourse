@@ -25,13 +25,13 @@
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Cuatro papeles. {promise}Casi todo el mundo llama política a cualquier papel, y eso sale caro. Pero con dos preguntas los ordenas todos. Primero, ¿obliga? Después, ¿qué responde?",
+      "text": "<confident> {title}Cuatro papeles. {promise}Casi todo el mundo llama política a cualquier papel, y eso sale caro. Pero con dos preguntas los ordenas todos. Primero, ¿obliga? Después, ¿a qué pregunta contesta?",
       "pauseAfterMs": 400
     },
     {
       "id": "s02-01",
       "scene": "s02-que",
-      "text": "<engaging> {case}El puerto necesita una regla para mandar documentos fuera, y la escribe en cuatro hojas.",
+      "text": "<engaging> {case}El puerto quiere ordenar cómo manda documentos fuera, y lo escribe en cuatro hojas.",
       "pauseAfterMs": 300
     },
     {
@@ -79,11 +79,11 @@
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca. Un equipo de desarrollo tiene un documento de buenas prácticas, y dice «Os recomendamos usar TLS [1.3|uno punto tres] en las aplicaciones nuevas». Nadie lo ha hecho obligatorio. ¿Qué tipo de documento es?",
+      "text": "<intrigued> {q1}Te toca. El equipo de desarrollo de una empresa tiene un documento, y dice «Os recomendamos usar TLS [1.3|uno punto tres] en las aplicaciones nuevas». Nadie lo ha hecho obligatorio. ¿Qué tipo de documento es?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.1",
-        "scenario": "Una guía del equipo de desarrollo dice: «Os recomendamos usar TLS 1.3 en las aplicaciones nuevas». Nadie lo ha hecho obligatorio.",
+        "scenario": "Un documento del equipo de desarrollo de una empresa dice: «Os recomendamos usar TLS 1.3 en las aplicaciones nuevas». Nadie lo ha hecho obligatorio.",
         "q": "¿Qué tipo de documento es?",
         "options": [
           "Policy",
@@ -94,7 +94,7 @@
         "answer": 2,
         "trap": 3,
         "why": "Recomienda y no obliga: no seguirlo no es un incumplimiento",
-        "trapWhy": "Nombra una versión, pero lo que hace a un standard es que obliga",
+        "trapWhy": "Es concreto, pero un standard también tiene que obligar",
         "countdownMs": 5000,
         "revealAt": "ok-1",
         "trapAt": "trap-1"
@@ -103,7 +103,7 @@
     {
       "id": "s03-02",
       "scene": "s03-p1",
-      "text": "<firm> {ok-1}Es una guideline. Recomienda y no obliga. {trap-1}Standard tienta, porque nombra una versión. Pero un standard lo es porque obliga, no porque sea concreto.",
+      "text": "<firm> {ok-1}Es una guideline. Recomienda y no obliga. {trap-1}Standard tienta, porque nombra una versión. Pero un standard, además de concreto, obliga. Y este no.",
       "pauseAfterMs": 300
     },
     {
@@ -113,7 +113,7 @@
       "pauseAfterMs": 1200,
       "exam": {
         "objective": "5.1",
-        "text": "Decide si obliga, no si es concreto",
+        "text": "Concreto no basta: un standard también obliga",
         "at": "sunscreen",
         "holdSec": 5
       }
@@ -127,35 +127,35 @@
     {
       "id": "s04-02",
       "scene": "s04-como",
-      "text": "<clear> {procedure}Eso es un procedure. Dice cómo, paso a paso, y obliga a quien lo hace.",
+      "text": "<clear> {procedure}Ese es el procedure. Dice cómo, paso a paso, y obliga a quien lo hace.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-03",
       "scene": "s04-como",
-      "text": "<thoughtful> {playbook}Si es para un caso concreto, como una cuenta comprometida, se llama playbook. Sigue siendo un procedure, y obliga igual.",
+      "text": "<thoughtful> {playbook}Si un procedure es para un caso concreto, como un ransomware, se llama playbook. Sigue siendo un procedure, y obliga igual.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-04",
       "scene": "s04-como",
-      "text": "<curious> {sheet-4}La cuarta hoja recomienda avisar por teléfono a quien recibe. {guideline}Eso es una guideline. Aconseja, no obliga, y no seguirla no es incumplir nada.",
+      "text": "<curious> {sheet-4}La cuarta hoja recomienda avisar por teléfono a quien recibe. {guideline}Y eso, una guideline. Aconseja, no obliga, y no seguirla no es incumplir nada.",
       "pauseAfterMs": 400
     },
     {
       "id": "s04-05",
       "scene": "s04-como",
-      "text": "<warm> {pool-2}En la piscina, la hoja del socorrista dice paso a paso qué hacer si alguien se hunde, y obliga. El cartel de la crema solo aconseja.",
+      "text": "<warm> {pool-2}En la piscina, la hoja del socorrista dice paso a paso cómo actuar si alguien se hunde, y obliga. El cartel de la crema solo aconseja.",
       "pauseAfterMs": 500
     },
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<intrigued> {q2}El centro de operaciones de un hospital tiene un documento aprobado por la dirección y firmado por todo el equipo. Dice qué hacer, paso a paso, si una cuenta aparece comprometida. Es obligatorio. ¿Qué describe mejor este documento? {best}Ojo con ese «mejor». Pide la que encaja con este caso, aunque otra suene bien.",
+      "text": "<intrigued> {q2}Otra más. El equipo de seguridad de un hospital tiene un documento aprobado por la dirección y firmado por todos. Explica, paso a paso, cómo actuar si una cuenta aparece comprometida. Es obligatorio. ¿Qué describe mejor este documento? {best}Ojo con ese «mejor». Aquí una opción encaja a medias, y solo otra encaja del todo.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.1",
-        "scenario": "Un documento aprobado por la dirección y firmado por todo el SOC dice qué hacer, paso a paso, si una cuenta aparece comprometida. Es obligatorio.",
+        "scenario": "Un documento aprobado por la dirección y firmado por todo el SOC explica, paso a paso, cómo actuar si una cuenta aparece comprometida. Es obligatorio.",
         "q": "¿Qué describe MEJOR este documento?",
         "options": [
           "Procedure",
@@ -181,7 +181,7 @@
     {
       "id": "s05-03",
       "scene": "s05-p2",
-      "text": "<focused> {trap-2}Policy tienta, porque obliga y lo aprueba la dirección. Pero una policy dice qué y por qué, no cómo.",
+      "text": "<focused> {trap-2}Policy suena bien, porque obliga y lo aprueba la dirección. Pero una policy dice qué y por qué, no cómo.",
       "pauseAfterMs": 300
     },
     {
@@ -199,17 +199,17 @@
     {
       "id": "s06-01",
       "scene": "s06-caducan",
-      "text": "<thoughtful> {owners}Los cuatro papeles tienen un dueño, una persona y no un departamento.",
+      "text": "<thoughtful> {owners}Cada uno de los cuatro papeles necesita un dueño. Una persona, no un departamento.",
       "pauseAfterMs": 250
     },
     {
       "id": "s06-02",
       "scene": "s06-caducan",
-      "text": "<clear> {cycle}Y se revisan al menos cada año, y antes si cambia la ley o llega un servicio nuevo.",
+      "text": "<clear> {cycle}Y cada uno se revisa al menos una vez al año, o antes si cambia la ley o llega un servicio nuevo.",
       "pauseAfterMs": 300,
       "exam": {
         "objective": "5.1",
-        "text": "Cada papel: dueño, ciclo y revisión",
+        "text": "Cada papel: un dueño y un ciclo de revisión",
         "at": "cycle",
         "holdSec": 5
       }
@@ -217,19 +217,19 @@
     {
       "id": "s06-03",
       "scene": "s06-caducan",
-      "text": "<confident> {platform-change}Imagina que el puerto cambia de producto en la plataforma. {standard-only}Se reescribe el standard. La policy se queda igual, y por eso no nombra tecnología.",
+      "text": "<confident> {platform-change}Imagina que el puerto cambia la plataforma por otro producto. {standard-only}Se reescribe el standard. La policy se queda igual, porque no nombra tecnología.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-04",
       "scene": "s06-caducan",
-      "text": "<engaging> El examen lo llama monitoring and revision. {monitoring}Monitorizar es comprobar que lo escrito se aplica. Por ejemplo, si salen documentos por correo y no por la plataforma.",
+      "text": "<engaging> Eso, en el examen, es monitoring and revision. {monitoring}Y monitorizar es comprobar que lo escrito se aplica. Por ejemplo, si salen documentos por correo y no por la plataforma.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-05",
       "scene": "s06-caducan",
-      "text": "<warm> {old-sign}Y si nadie lo mira, pasa como con el cartel de la piscina pequeña, que ya no existe y sigue ahí.",
+      "text": "<warm> {old-sign}Y si nadie lo mira, pasa como con la piscina pequeña. Ya no existe, pero su cartel sigue colgado.",
       "pauseAfterMs": 500
     },
     {
@@ -265,7 +265,7 @@
     {
       "id": "s07-03",
       "scene": "s07-p3",
-      "text": "<focused> {trap-3}Esperar tienta, porque todo parece en orden. Pero el ciclo no basta si la ley cambia antes.",
+      "text": "<focused> {trap-3}Esperar parece lo normal, porque todo está en orden. Pero el ciclo no basta si la ley cambia antes.",
       "pauseAfterMs": 300
     },
     {
@@ -301,7 +301,7 @@
     {
       "id": "s08-04",
       "scene": "s08-cierre",
-      "text": "<engaging> {phrase}Primero, ¿obliga? Después, ¿qué responde? ¿Qué, cuánto o cómo?",
+      "text": "<engaging> {phrase}Primero, ¿obliga? Después, ¿contesta al qué, al cuánto o al cómo?",
       "pauseAfterMs": 300
     },
     {

@@ -39,7 +39,7 @@
       "title": "Guardado, en camino, en pantalla",
       "targetSec": 40,
       "wordBudget": 108,
-      "goal": "La ficha recorre tres sitios, de izquierda a derecha (`three`), con la hucha en miniatura, rotulada «imagen · no es del puerto» (`piggybank`): el dinero dentro de la hucha cerrada, la transferencia que viaja por el banco y el dinero en la mano al pagar. Guardada en la base de datos del sistema nuevo (`rest`) → DATA AT REST, «cifrar el almacenamiento · permisos». En camino del reloj al servidor, por la red (`transit`) → DATA IN TRANSIT, «cifrar la conexión» (TLS solo en pantalla). Abierta en la pantalla de la jefa de turno, que revisa los fichajes de su equipo (`use`) → DATA IN USE, «ya está descifrada: ni el disco ni la conexión la cubren»; la tarjeta de examen entra al acabar esa frase. La exposición (`corridor`): la pantalla da al pasillo y cualquiera que pasara podría leerla (nadie lee nada). La decisión (`decision`): girarla, bloqueo automático a los pocos minutos, cada jefa ve solo a su equipo → LEAST PRIVILEGE. En un chip, sin voz: «secure enclaves · cifrado en memoria: entornos avanzados»",
+      "goal": "La ficha recorre tres sitios, de izquierda a derecha (`three`), con la hucha en miniatura, rotulada «imagen · no es del puerto» (`piggybank`): el dinero dentro de la hucha cerrada, la transferencia que viaja por el banco y el dinero en la mano al pagar. Guardada en la base de datos del sistema nuevo (`rest`) → DATA AT REST, «cifrar el almacenamiento · permisos». En camino del reloj al servidor, por la red (`transit`) → DATA IN TRANSIT, «cifrar la conexión» (TLS solo en pantalla). Abierta en la pantalla de la jefa de turno, que revisa los fichajes de su equipo (`use`) → DATA IN USE, «ya está descifrada: ni el disco ni la conexión la cubren»; la tarjeta de examen entra al acabar esa frase. La exposición (`corridor`): la pantalla da al pasillo y cualquiera que pasara podría leerla (nadie lee nada). La decisión (`decision`): girarla (control físico) y bloqueo automático a los pocos minutos (control de sesión), sin rótulo de least privilege; y, solo en la tercera medida, cada jefa ve solo a su equipo → LEAST PRIVILEGE (`least`, cue justo antes de «Esto último»). En un chip, sin voz: «secure enclaves · cifrado en memoria: entornos avanzados»",
       "requiredCues": [
         "three",
         "piggybank",
@@ -47,7 +47,8 @@
         "transit",
         "use",
         "corridor",
-        "decision"
+        "decision",
+        "least"
       ]
     },
     {
@@ -70,7 +71,7 @@
       "title": "Lo que se ve y lo que se guarda",
       "targetSec": 40,
       "wordBudget": 108,
-      "goal": "El mismo DNI de la ficha, de tres maneras (`same-id`); el DNI es un fragmento inventado que solo se ve, sin voz. En la pantalla de la jefa de turno sale como `*****678Z` y, debajo, a media luz, el sistema con el DNI entero (`mask`) → MASKING, «se ve una parte · el original sigue intacto»; la tarjeta de examen entra al acabar esa frase. En el informe de horas que va a Dirección, cada DNI es un código sin sentido (`report`), y la tabla que traduce cada código a su persona la guarda RR. HH. (`token`) → TOKENIZATION, con la tabla rotulada VAULT (`vault`): «solo quien tiene la vault vuelve al DNI». La exportación mensual (`export`): alguien propone, en vez de cifrarla, renombrar las columnas con nombres sin sentido y desordenar los campos «para que no se entienda», y la propuesta se tacha (`crossed`) → OBFUSCATION, «estorba, no protege»; debajo, en el mismo rótulo, «y un formato que no se lee a simple vista, lo mismo: no es un control». Se cifra igual (propuesta). En un chip (`chip`): «encryption: vuelve con la clave · hashing: no vuelve nunca». Sin imagen",
+      "goal": "El mismo DNI de la ficha, de tres maneras (`same-id`); el DNI es un fragmento inventado que solo se ve, sin voz. En la pantalla de la jefa de turno sale como `*****678Z` y, debajo, a media luz, el sistema con el DNI entero (`mask`) → MASKING, «se ve una parte · el original sigue intacto»; la tarjeta de examen entra al acabar esa frase. En el informe de horas que va a Dirección, cada DNI es un código sin sentido (`report`), y la tabla que traduce cada código a su persona la guarda RR. HH. (`token`) → TOKENIZATION, con la tabla rotulada VAULT (`vault`): «solo quien tiene la vault vuelve al DNI». La exportación mensual (`export`): alguien propone, en vez de cifrarla, renombrar las columnas con nombres sin sentido y desordenar los campos «para que no se entienda», y la propuesta se tacha (`crossed`) → OBFUSCATION, «estorba, por sí sola no protege»; debajo, en el mismo rótulo, «y un formato que no se lee a simple vista, lo mismo: no es un control». Se cifra de todas formas (propuesta; la voz lo dice en `chip`). En un chip (`chip`): «encryption: vuelve con la clave · hashing: no vuelve nunca». Sin imagen",
       "requiredCues": [
         "same-id",
         "mask",
@@ -88,7 +89,7 @@
       "title": "La lista para la gestoría",
       "targetSec": 40,
       "wordBudget": 86,
-      "goal": "Pregunta tipo examen 2 (`q2`), con su rótulo «pregunta tipo examen · ejemplo» dibujado por la escena. Es el primer calificador: «MEJOR» resaltado y, debajo de la pregunta, dibujada por la escena (`best`), la línea «MEJOR: la que encaja con este caso, aunque otra suene bien», que la voz glosa con otras palabras antes de la cuenta atrás. «Base64» solo en pantalla, dentro del escenario. Fondo quieto (una lista genérica y un sobre, sin texto legible). En `ok-2` la correcta (A, Obfuscation) y en `trap-2` la trampa (D, Encryption). En la resolución vuelve la exportación tachada de s04 en una línea (`export-back`): «como la exportación, que no se lea no la protege». La tarjeta de examen entra después de la trampa",
+      "goal": "Pregunta tipo examen 2 (`q2`), con su rótulo «pregunta tipo examen · ejemplo» dibujado por la escena. Es el primer calificador: «MEJOR» resaltado y, debajo de la pregunta, dibujada por la escena (`best`), la línea «MEJOR: la que encaja con este caso, aunque otra suene bien», que la voz glosa con otras palabras antes de la cuenta atrás. «Base64» solo en pantalla, dentro del escenario, con la glosa «Base64 · una codificación, sin clave» (sin dar la respuesta). Fondo quieto (una lista genérica y un sobre, sin texto legible). En `ok-2` la correcta (A, Obfuscation) y en `trap-2` la trampa (D, Encryption). En la resolución vuelve la exportación tachada de s04 en una línea (`export-back`): «como la exportación, que no se lea no la protege». La tarjeta de examen entra después de la trampa",
       "requiredCues": [
         "q2",
         "best",
@@ -103,7 +104,7 @@
       "title": "En qué país vive",
       "targetSec": 38,
       "wordBudget": 103,
-      "goal": "«Imagina que el sistema se alojara en la nube» (`suppose`, rótulo «supuesto · sin efectos»), sin proveedor ni logotipo. El trastero al otro lado de la frontera, rotulado «imagen · no es del puerto» (`storage`): cajas tuyas en un trastero de otro país, sin candado, llave ni cerradura. Un mapa de Europa (`map`) con tres pasos en fila. Mirar (`look`): en qué región viviría cada almacenamiento y desde qué países se entraría → GEOLOCATION. La ley que manda (`law`): «la del país donde reside el dato, no la de la sede» → DATA SOVEREIGNTY; la tarjeta de examen entra al acabar esa frase. Atarlo (`tie`): «solo en una región de la UE · nadie entra desde fuera» → GEOGRAPHIC RESTRICTIONS (geofencing). Al pie (`order`): «primero se mira, después se limita»",
+      "goal": "«Imagina que el sistema se alojara en la nube» (`suppose`, rótulo «supuesto · sin efectos»), sin proveedor ni logotipo. El trastero al otro lado de la frontera, rotulado «imagen · no es del puerto» (`storage`): cajas tuyas en un trastero de otro país, sin candado, llave ni cerradura. Un mapa de Europa (`map`) con tres pasos en fila. Mirar (`look`): en qué región viviría cada almacenamiento y desde qué países se entraría → GEOLOCATION. La ley que manda (`law`): «la del país donde reside el dato, no la de la sede» → DATA SOVEREIGNTY; la tarjeta de examen entra al acabar esa frase. Atarlo (`tie`): «solo en una región de la UE · nadie entra desde fuera de la UE» → GEOGRAPHIC RESTRICTIONS (geofencing). Al pie (`order`): «primero se mira, después se limita»",
       "requiredCues": [
         "suppose",
         "storage",
@@ -120,7 +121,7 @@
       "title": "La nube de una editorial",
       "targetSec": 36,
       "wordBudget": 76,
-      "goal": "Pregunta tipo examen 3 (`q3`), con su rótulo «pregunta tipo examen · ejemplo» dibujado por la escena y «MEJOR» resaltado (ya explicado en s05; solo resaltado, sin glosa). Fondo quieto: un mapa genérico con almacenamientos, sin país, proveedor ni nombres. En `ok-3` la correcta (C, Geolocation) y en `trap-3` la trampa (B, Geographic restrictions). En la resolución vuelve el trastero en una línea (`storage-back`): «saber en qué ciudad está cada trastero no cierra ninguno». La tarjeta de examen entra después de la trampa",
+      "goal": "Pregunta tipo examen 3 (`q3`), con su rótulo «pregunta tipo examen · ejemplo» dibujado por la escena y «MEJOR» resaltado (ya explicado en s05; solo resaltado, sin glosa). Fondo quieto: un mapa genérico con almacenamientos, sin país, proveedor ni nombres. En `ok-3` la correcta (C, Geolocation) y en `trap-3` la trampa (B, Geographic restrictions). En la resolución vuelve el trastero en una línea (`storage-back`): «saber en qué país está cada trastero no bloquea ninguno». La tarjeta de examen entra después de la trampa",
       "requiredCues": [
         "q3",
         "ok-3",
