@@ -27,6 +27,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
+import { warnIfEngineBehind } from './lib/engine-freshness.mjs';
 import { acquireHeavyLock } from './lib/heavy-lock.mjs';
 import { analyzeNarration, isRecordingVoice, loadSources, reportOrThrow, spokenForVoice } from './lib/narration.mjs';
 import { ENGINE_DIR, MANIFEST, PATHS, REPO_ROOT, SCRIPTS_DIR, isMainModule } from './lib/paths.mjs';
@@ -44,6 +45,8 @@ import {
   keepRanges,
   laterTakes,
   locateSegments,
+  mergeAsrWords,
+  midSentenceStarts,
   missingGaps,
   parseDuration,
   parseLoudness,
@@ -53,6 +56,7 @@ import {
   recutAdvice,
   recutLoudnessFilter,
   repairSwallowedPauses,
+  retryTargets,
   trailingSpeechEnd,
   selectSegments,
   stretchedWords,
@@ -79,6 +83,14 @@ function transcribe(file, sha256, prompt, clips, workDir, { force, log }) {
   if (clips) log.log(`import-recording: long silences left out, Whisper hears ${clips.map((c) => `${clock(c.startMs)}–${clock(c.endMs)}`).join(', ')}`);
   if (!existsSync(VENV_PYTHON)) throw new Error(`Chatterbox venv not found at ${VENV_PYTHON} — it also runs Whisper; create it as in video/engine/README.md`);
   const raw = path.join(workDir, `asr-${fileSlug(file)}.raw.json`);
+  const asr = { sha256, ...runWhisper(file, raw, prompt, clips) };
+  writeFileAtomic(cache, `${JSON.stringify(asr, null, 1)}\n`);
+  return asr;
+}
+
+/** One recording_asr.py run over the `clips` of `file` (null: all of it); its JSON, also left in `raw`. */
+function runWhisper(file, raw, prompt, clips) {
+  if (!existsSync(VENV_PYTHON)) throw new Error(`Chatterbox venv not found at ${VENV_PYTHON} — it also runs Whisper; create it as in video/engine/README.md`);
   // Whisper on the CPU is a heavy job: wait for any render to finish instead of slowing both (lib/heavy-lock.mjs).
   const releaseLock = acquireHeavyLock(`import-recording (Whisper) ${path.basename(file)}`);
   let res;
@@ -101,9 +113,33 @@ function transcribe(file, sha256, prompt, clips, workDir, { force, log }) {
   }
   if (res.error) throw new Error(`cannot run recording_asr.py: ${res.error.message}`);
   if (res.status !== 0) throw new Error(`recording_asr.py failed (exit ${res.status})`);
-  const asr = { sha256, ...JSON.parse(readFileSync(raw, 'utf8')) };
-  writeFileAtomic(cache, `${JSON.stringify(asr, null, 1)}\n`);
-  return asr;
+  return JSON.parse(readFileSync(raw, 'utf8'));
+}
+
+/**
+ * Whisper skips a sentence that repeats the start of its prompt (documentos s01-01, V10, V28: the opening of
+ * the script is the prompt's first sentence), or a window that is mostly silence. For each run of segments the first
+ * pass left out where there is voice, hear that stretch again alone and WITHOUT the prompt, and put the words it
+ * hears in place of the ones that were there. The patched transcript is saved in the cache, so the next import
+ * does not repeat it.
+ * @returns {{words: object[], retried: {ids: string[], startMs: number, endMs: number}[]} | null} null: nothing to retry
+ */
+function retryMissing({ file, workDir, asr, cachePath, gaps, log }) {
+  const tried = new Set((asr.patches ?? []).map((q) => q.startMs));
+  const targets = retryTargets(gaps).filter((q) => !tried.has(q.startMs));
+  if (!targets.length) return null;
+  let words = asr.words;
+  const done = [];
+  for (const t of targets) {
+    log.log(`import-recording: ${t.ids.join(', ')} not found; hearing ${clock(t.startMs)}–${clock(t.endMs)} again without Whisper's prompt`);
+    const raw = path.join(workDir, `asr-${fileSlug(file)}.retry-${t.startMs}.json`);
+    const again = runWhisper(file, raw, '', [{ startMs: t.startMs, endMs: t.endMs }]);
+    words = mergeAsrWords(words, again.words, t);
+    done.push(t);
+  }
+  const patches = [...(asr.patches ?? []), ...done.map((t) => ({ startMs: t.startMs, endMs: t.endMs, ids: t.ids }))];
+  writeFileAtomic(cachePath, `${JSON.stringify({ ...asr, words, patches }, null, 1)}\n`);
+  return { words, retried: done };
 }
 
 /** "Narración entera lidia.wav" -> "narracion-entera-lidia": names this recording's cache and report. */
@@ -152,7 +188,8 @@ export function withTempo(record, tempo) {
   return { ...record, tempo, durationMs: scaled.durationMs, words: scaled.words };
 }
 
-export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir, voiceDir = PATHS.voiceDir, match, lufs = -18, noise = '-40dB', maxPauseMs, tempo, maxLeadMs = null, forceAsr = false, log = console }) {
+export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir, voiceDir = PATHS.voiceDir, match, lufs = -18, noise = '-40dB', maxPauseMs, tempo, maxLeadMs = null, forceAsr = false, retry = true, log = console }) {
+  warnIfEngineBehind(log, { cwd: REPO_ROOT });
   const voice = `recording/${name}`;
   if (!isRecordingVoice(voice)) throw new Error(`--name must be lowercase letters, digits, "-" or "_" (got ${JSON.stringify(name)})`);
   if (!existsSync(file)) throw new Error(`recording not found: ${file}`);
@@ -173,16 +210,29 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
   const clips = fileMs === null ? null : asrClips(parseSilences(silenceLog, fileMs), fileMs);
   const prompt = asrPrompt({ opening: analysis.segments[0]?.parsed.display, adversary: MANIFEST.adversary, lexicon: sources.lexicon });
   const asr = transcribe(file, sha256, prompt, clips, workDir, { force: forceAsr, log });
-  const words = asr.words;
+  let words = asr.words;
 
   const silences = parseSilences(silenceLog, asr.durationMs);
   const target = match ? parseLoudness(analyse(match, 'loudnorm=print_format=json')).integrated : lufs;
   const gain = gainDb(parseLoudness(analyse(file, 'loudnorm=print_format=json')), target);
 
   // Cuts are placed from the words' edges, so first undo the pauses Whisper stretched a word over.
-  const timed = repairSwallowedPauses(words, silences);
-  const located = locateSegments(segments, timed);
-  const cuts = cutPoints(located, timed, silences, asr.durationMs, { maxLeadMs });
+  let timed = repairSwallowedPauses(words, silences);
+  let located = locateSegments(segments, timed);
+  let cuts = cutPoints(located, timed, silences, asr.durationMs, { maxLeadMs });
+  // A sentence Whisper skipped is heard again alone, without its prompt; if that finds it, everything is placed again.
+  let retried = [];
+  if (retry && located.some((f) => !f.found)) {
+    const again = retryMissing({ file, workDir, asr, cachePath: path.join(workDir, `asr-${fileSlug(file)}.json`), gaps: missingGaps(located, cuts, timed, silences, asr.durationMs), log });
+    if (again) {
+      words = again.words;
+      timed = repairSwallowedPauses(words, silences);
+      located = locateSegments(segments, timed);
+      cuts = cutPoints(located, timed, silences, asr.durationMs, { maxLeadMs });
+      retried = again.retried.map((r) => ({ ...r, recovered: r.ids.filter((id) => located.find((f) => f.id === id)?.found) }));
+      for (const r of retried) log.log(`import-recording: second hearing of ${clock(r.startMs)}–${clock(r.endMs)}: ${r.recovered.length ? `found ${r.recovered.join(', ')}` : 'still not found'}`);
+    }
+  }
   const cutOf = new Map(cuts.map((c) => [c.id, c]));
   mkdirSync(ttsDir, { recursive: true });
   mkdirSync(voiceDir, { recursive: true });
@@ -215,7 +265,8 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
   }
 
   const later = laterTakes(segments, located, timed);
-  const report = importReport({ located, cuts, words, gain, pausesRemovedMs, later });
+  const midStarts = midSentenceStarts(segments, located, timed);
+  const report = importReport({ located, cuts, words, gain, pausesRemovedMs, later, midStarts, retried });
   const reportPath = path.join(workDir, `report-${fileSlug(file)}.md`);
   writeFileAtomic(reportPath, report);
   const missing = located.filter((f) => !f.found).map((f) => f.id);
@@ -241,6 +292,14 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
     );
     for (const line of recutAdvice(gap, recutOptions(gap, { file, name, gain }))) log.warn(`    ${line}`);
   }
+  // A clip that begins after the script's first word, with that word said just before it: the opening was lost.
+  for (const ms of midStarts) {
+    const cut = cutOf.get(ms.id);
+    const gap = { ids: [ms.id], startMs: Math.max(0, ms.startMs - 300), endMs: cut.endMs + 300 };
+    log.warn(`  aviso: ${ms.id}: the clip starts mid-sentence: «${ms.word}» is said right before it (${clock(ms.startMs)}–${clock(ms.endMs)}, heard as «${ms.missed}») and is left out.`);
+    const cause = 'the clip should include the opening that is just before it';
+    for (const line of recutAdvice(gap, { ...recutOptions(gap, { file, name, gain }), cause })) log.warn(`    ${line}`);
+  }
   if (missing.length) {
     log.warn(`  aviso: not found in the recording (no clip written): ${missing.join(', ')}`);
     for (const gap of missingGaps(located, cuts, timed, silences, asr.durationMs)) {
@@ -249,7 +308,7 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
   }
   if (sources.narration.voice !== voice) log.warn(`  aviso: narration.json "voice" is "${sources.narration.voice}" — set it to "${voice}" before build-timeline`);
   log.log(`report -> ${reportPath}`);
-  return { located, cuts, gain, missing, weak };
+  return { located, cuts, gain, missing, weak, midStarts, retried };
 }
 
 function main() {
@@ -268,9 +327,10 @@ function main() {
       tempo: { type: 'string' },
       'lead-ms': { type: 'string' },
       'force-asr': { type: 'boolean', default: false },
+      'no-retry': { type: 'boolean', default: false },
     },
   });
-  if (!values.file || !values.name) throw new Error('usage: import-recording.mjs --video <slug> --file <wav> --name <name> [--only s02-03,s04-01] [--tts-dir <dir> --voice-dir <dir>] [--match <clip> | --lufs <n>] [--noise -40dB] [--max-pause 300] [--tempo 1.08] [--force-asr]');
+  if (!values.file || !values.name) throw new Error('usage: import-recording.mjs --video <slug> --file <wav> --name <name> [--only s02-03,s04-01] [--tts-dir <dir> --voice-dir <dir>] [--match <clip> | --lufs <n>] [--noise -40dB] [--max-pause 300] [--tempo 1.08] [--force-asr] [--no-retry]');
   const abs = (p) => (p ? path.resolve(p) : undefined);
   importRecording({
     file: path.resolve(values.file),
@@ -285,6 +345,7 @@ function main() {
     ...(values.tempo ? { tempo: Number.parseFloat(values.tempo) } : {}),
     ...(values['lead-ms'] ? { maxLeadMs: Number.parseInt(values['lead-ms'], 10) } : {}),
     forceAsr: values['force-asr'],
+    retry: !values['no-retry'],
   });
 }
 

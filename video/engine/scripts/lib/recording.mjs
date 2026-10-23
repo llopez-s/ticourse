@@ -493,6 +493,58 @@ export function laterTakes(segments, located, words, { minScore = 0.85, minWords
   return out.filter((h) => !h.sentence || !out.some((o) => !o.sentence && o.id === h.id && o.startMs <= h.endMs && h.startMs <= o.endMs));
 }
 
+/**
+ * Segments whose clip starts after the first word of the script. The mark is a clip that begins at a word the
+ * script does not start with, while the words right before it (unused, said without a pause) include one that does:
+ * Whisper garbled the opening and the best match began a little late (documentos s02-01: «Empezamos con un caso»
+ * was heard as "Empezamos con el examen. Con un caso", the clip began at «Con» and the narrator's first word was
+ * left out; nothing else flagged it). The clip is cut at the voice, so it really misses those words.
+ * @returns {{id: string, word: string, missed: string, startMs: number, endMs: number}[]}
+ */
+export function midSentenceStarts(segments, located, words, { maxGapMs = 600, lookback = 4, minSimilarity = 0.75 } = {}) {
+  const tokens = words.map((w) => asrKey(w.text));
+  const used = usedWords(located, words.length);
+  const out = [];
+  located.forEach((f, k) => {
+    if (!f.found) return;
+    const openers = [...new Set([segments[k].parsed.display, segments[k].parsed.spoken].map((t) => matchKey(String(t).trim().split(/\s+/)[0] ?? '')).filter(Boolean))];
+    if (!openers.length) return;
+    const first = (f.parts ?? [f])[0].first;
+    const fits = (i) => openers.some((o) => tokens[i] && similarity(tokens[i], o) >= minSimilarity);
+    if (fits(first)) return;
+    let from = first;
+    for (let i = first - 1; i >= 0 && first - i <= lookback; i--) {
+      if (used[i] || !tokens[i] || words[i + 1].startMs - words[i].endMs > maxGapMs) break;
+      if (fits(i)) from = i;
+    }
+    if (from === first) return;
+    out.push({
+      id: f.id,
+      word: words[from].text.replace(/[¿?¡!«»".,;:]/g, ''),
+      missed: words.slice(from, first).map((w) => w.text).join(' '),
+      startMs: words[from].startMs,
+      endMs: words[first - 1].endMs,
+    });
+  });
+  return out;
+}
+
+/**
+ * The stretches to transcribe again after the first pass left segments out: each run of missing segments with voice
+ * where it should be (missingGaps), at least `minMs` long and at most `maxMs`.
+ */
+export function retryTargets(gaps, { minMs = 800, maxMs = 120000 } = {}) {
+  return gaps
+    .filter((g) => g.startMs !== null && g.endMs - g.startMs >= minMs)
+    .map((g) => ({ ids: g.ids, startMs: g.startMs, endMs: Math.min(g.endMs, g.startMs + maxMs) }));
+}
+
+/** `words` with those of `range` replaced by `patch` (the words of a second transcription of that stretch). */
+export function mergeAsrWords(words, patch, { startMs, endMs }) {
+  const inside = (w) => (w.startMs + w.endMs) / 2 >= startMs && (w.startMs + w.endMs) / 2 < endMs;
+  return [...words.filter((w) => !inside(w)), ...patch.filter(inside)].sort((a, b) => a.startMs - b.startMs || a.endMs - b.endMs);
+}
+
 /** Runs of recorded words that no found segment uses (what was skipped), for the import report. */
 export function unusedRanges(located, words) {
   const used = usedWords(located, words.length);
@@ -567,14 +619,14 @@ export function missingGaps(located, cuts, words, silences, totalMs) {
  * full import's gain (`lufs` = that excerpt's loudness + the gain; --match measured on one sentence gives more).
  * Paths are as the commands are run, from the repo root.
  */
-export function recutAdvice(gap, { file, out, slug, name, python, lufs }) {
+export function recutAdvice(gap, { file, out, slug, name, python, lufs, cause: given }) {
   const ids = gap.ids.join(', ');
   if (gap.startMs === null) {
     return [`${ids}: no voice between the sentences around it — was it recorded? Record it and import that file with --only ${gap.ids.join(',')}`];
   }
-  const cause = gap.heard
+  const cause = given ?? (gap.heard
     ? `Whisper heard «${gap.heard}» there, too far from the script — listen to it, and if it was misread, re-record it`
-    : 'there is voice there but Whisper heard nothing (it drops audio after a long silence, more so when it repeats the start of its prompt)';
+    : 'there is voice there but Whisper heard nothing (it drops audio after a long silence, more so when it repeats the start of its prompt)');
   const sec = (ms) => (ms / 1000).toFixed(2);
   const quote = (p) => (/\s/.test(p) ? `"${p}"` : p);
   return [
@@ -787,7 +839,7 @@ export function clock(ms) {
 }
 
 /** Markdown report of one import: every segment's match, and the recorded audio that no segment uses. */
-export function importReport({ located, cuts, words, gain, pausesRemovedMs = 0, later = [] }) {
+export function importReport({ located, cuts, words, gain, pausesRemovedMs = 0, later = [], midStarts = [], retried = [] }) {
   const cutOf = new Map(cuts.map((c) => [c.id, c]));
   const rows = located.map((f) => {
     if (!f.found) return `| ${f.id} | — | — | no encontrada |`;
@@ -805,6 +857,26 @@ export function importReport({ located, cuts, words, gain, pausesRemovedMs = 0, 
     '|---|---|---|---|',
     ...rows,
     '',
+    ...(retried.length
+      ? [
+          '## Frases que Whisper se saltó y se buscaron otra vez',
+          '',
+          'La primera pasada no las encontró; se volvió a transcribir ese tramo sin pista inicial (Whisper se salta la frase que repite su pista).',
+          '',
+          ...retried.map((r) => `- ${clock(r.startMs)}–${clock(r.endMs)} · ${r.ids.join(', ')} · ${r.recovered.length ? `recuperadas: ${r.recovered.join(', ')}` : 'siguen sin encontrarse'}`),
+          '',
+        ]
+      : []),
+    ...(midStarts.length
+      ? [
+          '## Clips que empiezan a mitad de frase',
+          '',
+          'El clip no empieza por la primera palabra del guion y justo antes hay voz sin usar que sí lo hace: se pierde el principio. Reconstruye el clip desde la toma (recut_recording.py).',
+          '',
+          ...midStarts.map((m) => `- ${m.id} · falta «${m.missed}» (${clock(m.startMs)}–${clock(m.endMs)})`),
+          '',
+        ]
+      : []),
     ...(later.length
       ? [
           '## Tomas posteriores sin usar',
