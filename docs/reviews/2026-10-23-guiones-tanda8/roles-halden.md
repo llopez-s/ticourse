@@ -116,7 +116,7 @@ El registro (§6) tiene «el grupo de la familia · quien fabrica el bulo · **l
 - **Límites del motor**: escenarios 154/147/142 (≤160), preguntas 39/35/46, opciones 5-24, `why` ≤75, `trapWhy` ≤86 (≤90), tarjetas 33-46 caracteres, cinco tarjetas, ninguna en s01/s06/s08, las de pregunta tras la trampa.
 - **Palabras vetadas por la ficha** (proveedor, contrato, grupo, mensajes, familia, dueño, almacén, data subject, plano de control): ninguna en la voz. «Riesgos» aparece una vez (s06-02), como prevé la ficha.
 - **Imágenes**: el álbum, la mudanza y el club del barrio no están ocupadas en §6 ni en ningún guion de `video/*`. El club y el ayuntamiento no chocan con el campo de fútbol de V46 ni con la farola de V44 (otro papel del ayuntamiento; la revisión previa C-2/C-5 ya lo arregló al dejar «da la licencia del local»).
-- **Duración**: 711 palabras, estimación 323,9 s, techo 330. Las correcciones de abajo suman +3 palabras (+8 con el opcional B-8); la lectura real de Lidia (~0,89 de la estimación) deja ~288-295 s. Sin riesgo.
+- **Duración**: 711 palabras, estimación 323,9 s, techo 330. Las correcciones de abajo suman +3 palabras (+8 con el opcional B-8); la lectura real de Lidia (~0,89 de la estimación) deja ~288-295 s. Sin riesgo; el único margen estrecho es la estimación del validador (ver B-8).
 
 ---
 
