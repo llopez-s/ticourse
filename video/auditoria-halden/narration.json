@@ -295,6 +295,30 @@
       "pauseAfterMs": 600
     },
     {
+      "id": "s08-01",
+      "scene": "s08-p3",
+      "text": "<curious> {q3}Otro más. Un banco reproduce en su red, una a una, técnicas de ataque ya conocidas. Nadie intenta llegar a ningún sitio. Solo se mide cuánto tarda su centro de operaciones en verlas, entenderlas y contenerlas. ¿Qué tipo de prueba describe mejor el ejercicio?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.5",
+        "scenario": "Un banco reproduce en su red técnicas de ataque conocidas, sin objetivo que alcanzar. Solo mide cuánto tarda su SOC en verlas y contenerlas.",
+        "q": "¿Qué tipo de prueba describe MEJOR el ejercicio?",
+        "options": [
+          "Physical",
+          "Offensive (red team)",
+          "Integrated (purple team)",
+          "Defensive (blue team)"
+        ],
+        "answer": 3,
+        "trap": 1,
+        "why": "Lo que se pone a prueba es la detección y la respuesta del equipo defensor",
+        "trapWhy": "Hay técnicas de ataque, pero nadie busca un objetivo: se mide al SOC",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
       "id": "s08-02",
       "scene": "s08-p3",
       "text": "<firm> {ok-3}Defensive, el blue team, porque se mide la detección y la respuesta.",
@@ -345,11 +369,17 @@
     {
       "id": "s09-05",
       "scene": "s09-contar",
-      "text": "<warm> {escape-room}Piensa en una sala de escape. Sin pistas se juega de verdad, con una pista tienes ayuda, y con el plano compruebas cada cerradura enseguida, pero ya no es el juego.",
+      "text": "<warm> {escape-room}Piensa en una sala de escape. Sin pistas, se juega de verdad.",
       "pauseAfterMs": 300
     },
     {
       "id": "s09-06",
+      "scene": "s09-contar",
+      "text": "<thoughtful> Con una pista, tienes ayuda. Y con el plano, compruebas cada cerradura enseguida, pero ya no es el juego.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-07",
       "scene": "s09-contar",
       "text": "<confident> {proposal}Para el puerto, la aplicación nueva, known. Y lo que se ve desde fuera, unknown.",
       "pauseAfterMs": 600
