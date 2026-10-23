@@ -70,7 +70,7 @@
       "title": "Avisar, no pillar",
       "targetSec": 40,
       "wordBudget": 108,
-      "goal": "La primera campaña de phishing simulado del puerto, «propuesta · ejemplo · datos ficticios» (`campaign`): «autorizada por escrito». El señuelo (`lure`), «la nueva aplicación del comedor: entra con tu usuario», sin remitente ni dirección en pantalla, con el rótulo «sin señuelos crueles: ni despidos, ni nóminas, ni resultados médicos» (`no-cruel`). Dos contadores (`counters`): «pican: 2 de cada 10» (click rate) y «avisan: 1 de cada 10, y el primero a los 4 minutos» (report rate), con el segundo resaltado (`report-rate`); las cifras, solo en pantalla. Debajo, lo que no se hace («publicar nombres», tachado, `no-names`) y lo que sí: «a quien pica, dos minutos de explicación en el momento» (`coaching`). El circuito de avisar, en cuatro pasos (`loop`): «botón en el correo · triaje · si es real, quitarlo de los demás buzones · contestar a quien avisó, aunque fuera un falso positivo». La farola rota, rotulada «imagen · no es del puerto», en miniatura (`streetlight`): avisas de que no funciona, nadie contesta, la farola sigue igual. La tarjeta de examen entra al acabar la frase del report rate",
+      "goal": "La primera campaña de phishing simulado del puerto, «propuesta · ejemplo · datos ficticios» (`campaign`): «autorizada por escrito». El señuelo (`lure`), «la nueva aplicación del comedor: entra con tu usuario», sin remitente ni dirección en pantalla, con el rótulo «sin señuelos crueles: ni despidos, ni nóminas, ni resultados médicos» (`no-cruel`). Dos contadores (`counters`): «pican: 2 de cada 10» (click rate) y «avisan: 1 de cada 10, y el primero a los 4 minutos» (report rate), con el segundo resaltado (`report-rate`); las cifras, solo en pantalla. Debajo, lo que no se hace («publicar nombres», tachado, `no-names`) y lo que sí: «a quien pica, dos minutos de explicación en el momento» (`coaching`). El circuito de avisar, en cuatro pasos (`loop`): «botón en el correo · triaje · si es real, quitarlo de los demás buzones · contestar a quien avisó, aunque fuera un falso positivo». La tarjeta de examen entra al acabar la frase del report rate",
       "requiredCues": [
         "campaign",
         "lure",
@@ -79,8 +79,7 @@
         "report-rate",
         "no-names",
         "coaching",
-        "loop",
-        "streetlight"
+        "loop"
       ]
     },
     {
@@ -89,12 +88,11 @@
       "title": "Uno de cada veinte",
       "targetSec": 38,
       "wordBudget": 81,
-      "goal": "Pregunta tipo examen 2 (`q2`), con el rótulo «pregunta tipo examen · ejemplo» dibujado por la escena y «MEJOR» resaltado (ya explicado en s03; sin glosa ni línea). Fondo quieto: un buzón de correo genérico, sin nombre ni texto legible. En `ok-2` la correcta (C, Un botón para avisar en el propio correo), en `trap-2` la trampa (A, Más formación para reconocer el phishing). En la resolución vuelve la farola en una línea (`streetlight-back`): «si para avisar tienes que buscar el teléfono del ayuntamiento, la farola sigue apagada», y el primer paso del circuito de s04 encendido. Sin tarjeta de examen (la del concepto 2 ya salió en s04)",
+      "goal": "Pregunta tipo examen 2 (`q2`), con el rótulo «pregunta tipo examen · ejemplo» dibujado por la escena y «MEJOR» resaltado (ya explicado en s03; sin glosa ni línea). Fondo quieto: un buzón de correo genérico, sin nombre ni texto legible. En `ok-2` la correcta (C, Un botón para avisar en el propio correo), en `trap-2` la trampa (A, Más formación para reconocer el phishing). En la resolución, el primer paso del circuito de s04 (el botón en el correo) encendido. Sin tarjeta de examen (la del concepto 2 ya salió en s04)",
       "requiredCues": [
         "q2",
         "ok-2",
-        "trap-2",
-        "streetlight-back"
+        "trap-2"
       ]
     },
     {
@@ -133,7 +131,7 @@
       "title": "Para el examen",
       "targetSec": 20,
       "wordBudget": 54,
-      "goal": "Tres reglas, cada una con su icono (las tres caras · la farola · la línea del año) (`recap`, `rule-1`, `rule-2`, `rule-3`), en pantalla con el texto completo de la ficha: «Clasifica por la intención: si lo sabía y lo hizo, risky; si no encaja, se investiga; si fue un error honesto, diseño y formación» · «Lo que hay que subir es cuánta gente avisa: avisar tiene que costar un clic, se contesta siempre y no se castiga a quien pica» · «La formación es de todo el año y para cada audiencia, según su riesgo» (la voz dice una versión corta de cada una). La frase para el examen (`phrase`): «Busca la intención, sube los avisos y forma a cada uno en su riesgo, todo el año». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen y sin nombrar sp6",
+      "goal": "Tres reglas, cada una con su icono (las tres caras · el botón de avisar · la línea del año) (`recap`, `rule-1`, `rule-2`, `rule-3`), en pantalla con el texto completo de la ficha: «Clasifica por la intención: si lo sabía y lo hizo, risky; si no encaja, se investiga; si fue un error honesto, diseño y formación» · «Lo que hay que subir es cuánta gente avisa: avisar tiene que costar un clic, se contesta siempre y no se castiga a quien pica» · «La formación es de todo el año y para cada audiencia, según su riesgo» (la voz dice una versión corta de cada una). La frase para el examen (`phrase`): «Busca la intención, sube los avisos y forma a cada uno en su riesgo, todo el año». Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen y sin nombrar sp6",
       "requiredCues": [
         "recap",
         "rule-1",
