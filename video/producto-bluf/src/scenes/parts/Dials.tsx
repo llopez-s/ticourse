@@ -68,7 +68,7 @@ export function Dials(s: DialsState) {
   const z = sizes(s.c);
   const trackX = z.labelW + 20;
   const trackW = W - trackX - 24;
-  const ghost = 0.3 + 0.7 * s.labels;
+  const ghost = 0.45 + 0.55 * s.labels;
   const row2Top = z.h1 + s.gap;
 
   // ---- Probability bar.

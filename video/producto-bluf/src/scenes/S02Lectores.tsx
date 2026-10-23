@@ -58,8 +58,9 @@ export function S02Lectores(props: SceneProps) {
   const stampAt = w('s02-01', 'nadie') - 6;
   const stamp = frame < stampAt ? 0 : springIn(frame, fps, stampAt, { damping: 11 });
   // The pile stays (dimmed) until the first question card is in, so the stage is never empty.
-  const dumpOut = progress(frame, w('s02-03', 'Quién') - 12, 16, EASE.inOut);
-  const dumpDim = 0.7 * progress(frame, questions - 10, 22, EASE.inOut);
+  const dumpOut = progress(frame, questions + 4, 18, EASE.inOut);
+  const dumpDim = 0.45 * progress(frame, questions - 8, 12, EASE.inOut);
+  const slotsIn = progress(frame, questions - 4, 14);
 
   // ---- The four questions.
   const qAt = S02.questions.map((q) => w(q.seg, q.word) - 8);
@@ -128,8 +129,18 @@ export function S02Lectores(props: SceneProps) {
       ) : null}
 
       {/* The four questions */}
-      {frame >= qAt[0] - 4 && qOut < 1 ? (
+      {frame >= questions - 6 && qOut < 1 ? (
         <div style={{ position: 'absolute', inset: 0, opacity: 1 - qOut, transform: `translateY(${-qOut * 24}px)` }}>
+          {/* four waiting slots until each question is asked */}
+          {S02.questions.map((q, i) => {
+            const gone = progress(frame, qAt[i] - 6, 10);
+            if (gone >= 1) return null;
+            return (
+              <div key={`slot-${q.text}`} style={{ position: 'absolute', left: (i % 2) * (836 + 56), top: 110 + Math.floor(i / 2) * (170 + 26), width: 836, height: 170, boxSizing: 'border-box', display: 'grid', placeItems: 'center', borderRadius: RADIUS.lg, border: `2px dashed ${C.ink600}`, opacity: slotsIn * (1 - gone) }}>
+                <span style={{ fontSize: 100, fontWeight: 850, color: C.ink700 }}>{i + 1}</span>
+              </div>
+            );
+          })}
           {S02.questions.map((q, i) => {
             const e = enter(frame, qAt[i], { distance: 26, duration: 18 });
             const on = progress(frame, qAt[i], 10) * (1 - 0.45 * progress(frame, (qAt[i + 1] ?? Number.MAX_SAFE_INTEGER) - 2, 14, EASE.inOut));

@@ -60,6 +60,8 @@ export function S08Bandas(props: SceneProps) {
   const icdIn = progress(frame, icd - 4, 18);
   const icdPhaseA = progress(frame, icd - 8, 18, EASE.inOut);
   const badgeTop = progress(frame, table - 6, 26, EASE.inOut);
+  const bandsAt = w('s08-02', 'bandas') - 6;
+  const cadaAt = w('s08-02', 'Cada') - 6;
 
   // ---- Table.
   const rowAt = BANDS.map((_, i) => table + 4 + i * 7);
@@ -115,7 +117,7 @@ export function S08Bandas(props: SceneProps) {
           style={{
             position: 'absolute',
             left: mix(W / 2 - 520, RIGHT_X, badgeTop),
-            top: mix(244, 24, badgeTop),
+            top: mix(206, 24, badgeTop),
             width: mix(1040, W - RIGHT_X, badgeTop),
             display: 'flex',
             flexDirection: 'column',
@@ -131,6 +133,21 @@ export function S08Bandas(props: SceneProps) {
             </div>
           </div>
           <div style={{ marginTop: 8, fontSize: mix(52, 36, badgeTop), fontWeight: 750, color: C.cyanSoft, lineHeight: 1.12, textAlign: badgeTop > 0.5 ? 'left' : 'center' }}>comunidad de inteligencia de EE. UU.</div>
+        </div>
+      ) : null}
+
+      {/* «bandas»: the seven bands as a row, one per expression, under the badge */}
+      {icdIn > 0 && badgeTop < 0.98 ? (
+        <div style={{ position: 'absolute', left: (W - 1120) / 2, top: 470, width: 1120, opacity: icdIn * (1 - badgeTop) }}>
+          <div style={{ display: 'flex', gap: 6, height: 70 }}>
+            {[4, 15, 25, 10, 25, 15, 4].map((k, i) => {
+              const a = progress(frame, bandsAt + i * 5, 12);
+              return <div key={i} style={{ flex: k, borderRadius: 8, background: alpha(C.cyan, 0.12 + 0.05 * i), border: `3px solid ${alpha(C.cyan, 0.6)}`, opacity: a, transform: `scaleY(${0.4 + 0.6 * a})`, transformOrigin: '50% 100%' }} />;
+            })}
+          </div>
+          <div style={{ marginTop: 18, textAlign: 'center', fontSize: 42, fontWeight: 750, color: C.textStrong, opacity: progress(frame, cadaAt, 14), transform: `translateY(${(1 - progress(frame, cadaAt, 14)) * 10}px)` }}>
+            cada expresión, <span style={{ color: C.cyan }}>una banda</span> de probabilidad
+          </div>
         </div>
       ) : null}
 
