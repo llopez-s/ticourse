@@ -107,13 +107,13 @@
     {
       "id": "s03-05",
       "scene": "s03-quien",
-      "text": "<serious> {regulator}Y la última no la contratas. La hace la autoridad marítima, la ley fija el alcance y puede acabar en sanción. Es una regulatory examination.",
+      "text": "<serious> {regulator}Y la última no la contratas. La hace la autoridad marítima, el alcance lo fija la ley y puede acabar en sanción. Es una regulatory examination.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-06",
       "scene": "s03-quien",
-      "text": "<warm> {lift}Piensa en el ascensor de una comunidad. Su hoja, su administrador, el organismo que contratan e Industria, que puede multar.",
+      "text": "<warm> {lift}Piensa en el ascensor de una comunidad. La hoja de los vecinos pesa poco. Industria, que no la llama nadie, puede multar.",
       "pauseAfterMs": 300
     },
     {
@@ -161,7 +161,7 @@
     {
       "id": "s04-03",
       "scene": "s04-p1",
-      "text": "<warm> {lift-back}Es Industria con su expediente, no el organismo que contrata la comunidad.",
+      "text": "<warm> {lift-back}Como en el ascensor: es Industria con su expediente, no el organismo que contrata la comunidad.",
       "pauseAfterMs": 1000
     },
     {
@@ -189,19 +189,25 @@
     {
       "id": "s05-04",
       "scene": "s05-aguantar",
-      "text": "<clear> {audit}La auditoría comprueba, con evidencias y muestras, que cumples el estándar. {pentest}El penetration test intenta romperlo, con permiso.",
+      "text": "<clear> {audit}Esta mira evidencias y toma muestras, para ver si cumples el estándar.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-05",
       "scene": "s05-aguantar",
-      "text": "<warm> {bridge}Es como un puente nuevo. Tiene el certificado de que se construyó según la norma, y la prueba de carga, con camiones llenos encima.",
+      "text": "<steady> {pentest}El penetration test pregunta otra cosa, si pueden romperlo, y lo responde intentándolo, con permiso.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-06",
       "scene": "s05-aguantar",
-      "text": "<steady> {neither}El certificado no dice cuánto aguanta. Aprobar una no dice nada de la otra.",
+      "text": "<warm> {bridge}Es como un puente nuevo. Tiene el certificado de que se construyó según la norma, y la prueba de carga, con camiones llenos encima.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-aguantar",
+      "text": "<firm> {neither}O sea, que aprobar la auditoría no dice nada del pentest, ni al revés.",
       "pauseAfterMs": 700,
       "exam": {
         "objective": "5.5",
@@ -213,7 +219,7 @@
     {
       "id": "s06-01",
       "scene": "s06-p2",
-      "text": "<engaging> {q2}Otro caso. Un cliente grande pide a una empresa de logística que demuestre que cumple el estándar de seguridad del sector. La empresa le manda el informe de su último penetration test: en dos semanas, nadie consiguió entrar. ¿Qué documento responde mejor a lo que pide el cliente? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
+      "text": "<engaging> {q2}Un cliente grande pide a una empresa de logística que demuestre que cumple el estándar de seguridad del sector. La empresa le manda el informe de su último penetration test: en dos semanas, nadie consiguió entrar. ¿Qué documento responde mejor a lo que pide el cliente? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.5",
@@ -237,7 +243,7 @@
     {
       "id": "s06-02",
       "scene": "s06-p2",
-      "text": "<firm> {ok-2}La independent third-party audit, porque piden cumplir un estándar. {trap-2}El pentest limpio dice que aguantó, no que cumpla cada control.",
+      "text": "<firm> {ok-2}La independent third-party audit, porque piden cumplir un estándar. {trap-2}El pentest limpio tienta, pero dice que aguantó, no que cumpla cada control.",
       "pauseAfterMs": 300
     },
     {
@@ -255,13 +261,13 @@
     {
       "id": "s07-01",
       "scene": "s07-modos",
-      "text": "<engaging> {roe}El puerto también quiere probarse. Pero antes hay un papel, las rules of engagement: alcance, ventana, técnicas, contactos y quién autoriza. Sin ese papel no es una prueba.",
+      "text": "<engaging> {roe}Ahora, probar el puerto. Antes hay un papel, las rules of engagement: alcance, ventana, técnicas, contactos y quién autoriza. Sin ese papel no es una prueba.",
       "pauseAfterMs": 300
     },
     {
       "id": "s07-02",
       "scene": "s07-modos",
-      "text": "<clear> {physical}Después hay cuatro modos. El physical es que alguien intente entrar en una oficina detrás de otra persona.",
+      "text": "<clear> {physical}Hay cuatro modos. El physical es que alguien intente entrar en una oficina detrás de otra persona.",
       "pauseAfterMs": 300
     },
     {
@@ -297,7 +303,7 @@
     {
       "id": "s08-01",
       "scene": "s08-p3",
-      "text": "<curious> {q3}Otro más. Un banco reproduce en su red, una a una, técnicas de ataque ya conocidas. Nadie intenta llegar a ningún sitio. Solo se mide cuánto tarda su centro de operaciones en verlas, entenderlas y contenerlas. ¿Qué tipo de prueba describe mejor el ejercicio?",
+      "text": "<curious> {q3}Un banco reproduce en su red, una a una, técnicas de ataque ya conocidas. Nadie intenta llegar a ningún sitio. Solo se mide cuánto tarda su centro de operaciones de seguridad en verlas, entenderlas y contenerlas. ¿Qué tipo de prueba describe mejor el ejercicio?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.5",
@@ -345,7 +351,7 @@
     {
       "id": "s09-01",
       "scene": "s09-contar",
-      "text": "<curious> {envelopes}Y ahora, cuánto le cuentas a quien prueba. Hay tres sobres.",
+      "text": "<curious> {envelopes}Ahora, cuánto le cuentas a quien prueba. Hay tres sobres.",
       "pauseAfterMs": 300
     },
     {
@@ -363,7 +369,7 @@
     {
       "id": "s09-04",
       "scene": "s09-contar",
-      "text": "<thoughtful> {known}En el tercero, planos, código y credenciales. Es el known environment. Da la máxima cobertura, pero {boxes}no se parece a un atacante de fuera.",
+      "text": "<thoughtful> {known}En el tercero, planos, código fuente y credenciales. Es el known environment. Da la máxima cobertura por hora, pero {boxes}no se parece a un atacante de fuera.",
       "pauseAfterMs": 300
     },
     {
@@ -375,7 +381,7 @@
     {
       "id": "s09-06",
       "scene": "s09-contar",
-      "text": "<thoughtful> Con una pista, tienes ayuda. Y con el plano, compruebas cada cerradura enseguida, pero ya no es el juego.",
+      "text": "<thoughtful> Con una pista, tienes ayuda. Con el plano, compruebas cada cerradura enseguida, pero ya no es el juego.",
       "pauseAfterMs": 300
     },
     {
@@ -387,7 +393,7 @@
     {
       "id": "s10-01",
       "scene": "s10-p4",
-      "text": "<engaging> {q4}Otro caso. Una plataforma de reservas quiere saber qué podría hacer alguien que ya es cliente suyo. Al equipo de pruebas solo le da una cuenta de cliente normal: ni planos, ni código, ni accesos de administración. ¿Qué nivel de conocimiento del entorno encaja mejor?",
+      "text": "<engaging> {q4}Una plataforma de reservas quiere saber qué podría hacer alguien que ya es cliente suyo. Al equipo de pruebas solo le da una cuenta de cliente normal: ni planos, ni código fuente, ni accesos de administración. ¿Qué nivel de conocimiento del entorno encaja mejor?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.5",
@@ -435,13 +441,13 @@
     {
       "id": "s11-02",
       "scene": "s11-mirar",
-      "text": "<thoughtful> {empty-log}Y el registro del SOC está vacío, porque no ha tocado el puerto.",
+      "text": "<thoughtful> {empty-log}Y el registro del SOC está vacío, porque nadie ha tocado nada del puerto.",
       "pauseAfterMs": 300
     },
     {
       "id": "s11-03",
       "scene": "s11-mirar",
-      "text": "<steady> {window}Dentro de la ventana pactada ya puede escanear y preguntar versiones. {active}Eso es active reconnaissance. {log-lines}Y ahora el registro sí tiene líneas.",
+      "text": "<steady> {window}Dentro de la ventana pactada ya podría escanear y preguntar versiones. {active}Eso es active reconnaissance. {log-lines}Y ahora el registro sí tiene líneas.",
       "pauseAfterMs": 300
     },
     {
@@ -477,7 +483,7 @@
     {
       "id": "s12-02",
       "scene": "s12-p5",
-      "text": "<firm> {ok-5}Passive reconnaissance, porque consulta a un tercero que ya lo recogió. {trap-5}Parece un escaneo, pero nadie ha escaneado nada.",
+      "text": "<firm> {ok-5}Passive reconnaissance, porque consulta a un tercero que ya lo recogió. {trap-5}La active reconnaissance tienta, porque salen puertos y versiones. Pero nadie ha escaneado nada.",
       "pauseAfterMs": 300
     },
     {
