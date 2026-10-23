@@ -70,7 +70,7 @@ export function S01Ip(props: SceneProps) {
   const rightBack = 0.6 * progress(frame, promise, 18, EASE.inOut);
 
   // ---- Promise chips.
-  const chipAt = PROMISE.map((p) => wordFrame(S, 's01-05', p.word, p.nth) - 6);
+  const chipAt = PROMISE.map((p, i) => (i === 0 ? promise + 6 : wordFrame(S, 's01-05', p.word, p.nth) - 6));
   const lastLit = progress(frame, chipAt[2] + 54, 16, EASE.inOut);
 
   // ---- Title.
@@ -120,7 +120,7 @@ export function S01Ip(props: SceneProps) {
       {/* The CISO's strip, the proxy window in front of it, the rumour */}
       {frame >= ciso - 8 ? (
         <div style={{ position: 'absolute', inset: 0 }}>
-          <div style={{ position: 'absolute', left: RIGHT.x, top: COL_TOP, ...cisoIn, ...dimStyle(cisoDim + rightBack * 0, cisoIn.opacity) }}>
+          <div style={{ position: 'absolute', left: RIGHT.x, top: COL_TOP, ...cisoIn, ...dimStyle(cisoDim, cisoIn.opacity) }}>
             <CisoStrip width={RIGHT.w} question={CISO_QUESTION} questionShow={progress(frame, questionAt, 14)} questionSize={52} />
           </div>
           {frame >= logAt - 2 ? (
@@ -134,17 +134,17 @@ export function S01Ip(props: SceneProps) {
                 position: 'absolute',
                 left: RIGHT.x,
                 top: RUMOUR_TOP,
-                width: RIGHT.w,
+                width: 864,
                 display: 'flex',
                 alignItems: 'center',
-                gap: 14,
-                padding: '8px 22px',
+                gap: 12,
+                padding: '8px 20px',
                 boxSizing: 'border-box',
                 borderRadius: RADIUS.pill,
                 border: `2px solid ${alpha(C.faint, 0.45)}`,
                 background: alpha(C.ink900, 0.7),
                 fontFamily: FONT.sans,
-                fontSize: 28,
+                fontSize: 26,
                 fontWeight: 600,
                 color: C.muted,
                 whiteSpace: 'nowrap',
@@ -161,7 +161,7 @@ export function S01Ip(props: SceneProps) {
 
       {/* The promise: three chips, one per sentence */}
       {frame >= chipAt[0] - 2 ? (
-        <div style={{ position: 'absolute', left: 0, top: COL_TOP + 70, width: LEFT_W, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
+        <div style={{ position: 'absolute', left: 0, top: 240, width: LEFT_W, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 30 }}>
           {PROMISE.map((p, i) => {
             const e = enter(frame, chipAt[i], { distance: 18 });
             const on = Math.max(lastLit, progress(frame, chipAt[i], 10) * (1 - 0.55 * progress(frame, (chipAt[i + 1] ?? chipAt[i] + 400) - 2, 12, EASE.inOut)));
@@ -171,15 +171,15 @@ export function S01Ip(props: SceneProps) {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  height: 70,
-                  padding: '0 34px',
+                  height: 78,
+                  padding: '0 36px',
                   boxSizing: 'border-box',
                   borderRadius: RADIUS.pill,
                   border: `2px solid ${alpha(C.cyan, 0.4 + 0.5 * on)}`,
                   background: alpha(C.cyan, 0.06 + 0.12 * on),
                   boxShadow: on > 0.02 ? `0 0 ${Math.round(24 * on)}px ${alpha(C.cyan, 0.3 * on)}` : undefined,
                   fontFamily: FONT.sans,
-                  fontSize: 40,
+                  fontSize: 44,
                   fontWeight: 750,
                   color: alpha(C.textStrong, 0.6 + 0.4 * on),
                   whiteSpace: 'nowrap',

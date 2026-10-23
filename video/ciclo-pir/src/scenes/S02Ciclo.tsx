@@ -12,8 +12,8 @@ import { Stage, interceptWindow, segment, wordFrame } from './kit';
 const S = 's02-ciclo';
 const W = STAGE.width;
 
-const TICKET = { x: 0, y: 215, w: 250, h: 290 } as const;
-const LINE = { x: 320, y: 240, w: W - 320, tile: 128 } as const;
+const TICKET = { x: 0, y: 150, w: 250, h: 290 } as const;
+const LINE = { x: 310, y: 120, w: W - 310, tile: 150, label: 34 } as const;
 
 /**
  * s02-ciclo «El ciclo, como un restaurante». While EMBER FOX's message is up (`reply-i`) its card sits low,
@@ -54,8 +54,8 @@ export function S02Ciclo(props: SceneProps) {
   const nameAt = [0, 1, 2, 3, 4, 5].map((i) => sixAt + 6 + i * 14);
   const firstAmber = at('s02-04', 'primera') - 6;
   const lastAmber = at('s02-04', 'ultima') - 6;
-  // The bracket draws as the last station turns amber, leaves for the first station's explanation and comes back with the chapter's line.
-  const bk = Math.max(p(lastAmber, 22) * (1 - progress(frame, planningAt - 10, 14, EASE.inOut)), p(wrapAt + 24, 22));
+  // The bracket draws as the last station turns amber, leaves for the first station's explanation and does not come back.
+  const bk = p(lastAmber, 22) * (1 - progress(frame, planningAt - 10, 14, EASE.inOut));
   const grow = p(planningAt - 6, 18) * (1 - progress(frame, wrapAt - 6, 18, EASE.inOut));
 
   const states: StationState[] = [0, 1, 2, 3, 4, 5].map((i) => {
@@ -107,15 +107,15 @@ export function S02Ciclo(props: SceneProps) {
       ) : null}
 
       {/* The six stations */}
-      <StationLine width={LINE.w} tile={LINE.tile} labelSize={30} states={states} style={{ position: 'absolute', left: LINE.x, top: LINE.y }} />
+      <StationLine width={LINE.w} tile={LINE.tile} labelSize={LINE.label} states={states} style={{ position: 'absolute', left: LINE.x, top: LINE.y }} />
 
       {/* «las que más se olvidan»: one bracket under the first and the last */}
       {bk > 0.01 ? (
         <div style={{ position: 'absolute', left: 0, top: 0, width: W, height: STAGE.height }}>
           <svg width={W} height={STAGE.height} style={{ position: 'absolute', left: 0, top: 0 }} aria-hidden>
-            <path d={`M ${c0} ${LINE.y + 226} V ${LINE.y + 256} H ${c5} V ${LINE.y + 226}`} pathLength={1} stroke={C.amber} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" fill="none" strokeDasharray="1" strokeDashoffset={1 - bk} />
+            <path d={`M ${c0} ${LINE.y + 252} V ${LINE.y + 280} H ${c5} V ${LINE.y + 252}`} pathLength={1} stroke={C.amber} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" fill="none" strokeDasharray="1" strokeDashoffset={1 - bk} />
           </svg>
-          <div style={{ position: 'absolute', left: 0, width: W, top: LINE.y + 268, textAlign: 'center', fontFamily: FONT.sans, fontSize: 42, fontWeight: 850, color: C.amber, whiteSpace: 'nowrap', opacity: bk }}>{S02_FORGOTTEN}</div>
+          <div style={{ position: 'absolute', left: 0, width: W, top: LINE.y + 290, textAlign: 'center', fontFamily: FONT.sans, fontSize: 42, fontWeight: 850, color: C.amber, whiteSpace: 'nowrap', opacity: bk }}>{S02_FORGOTTEN}</div>
         </div>
       ) : null}
 
@@ -125,7 +125,7 @@ export function S02Ciclo(props: SceneProps) {
           style={{
             position: 'absolute',
             left: LINE.x,
-            top: LINE.y + 258,
+            top: LINE.y + 304,
             width: W - LINE.x,
             display: 'flex',
             justifyContent: 'center',
@@ -151,7 +151,7 @@ export function S02Ciclo(props: SceneProps) {
 
       {/* The chapter's line */}
       {frame >= wrapAt - 2 ? (
-        <div style={{ position: 'absolute', left: LINE.x, top: LINE.y + 330, width: W - LINE.x, display: 'flex', justifyContent: 'center', ...wrapIn }}>
+        <div style={{ position: 'absolute', left: LINE.x, top: LINE.y + 320, width: W - LINE.x, display: 'flex', justifyContent: 'center', ...wrapIn }}>
           <span style={{ fontFamily: FONT.sans, fontSize: 52, fontWeight: 850, letterSpacing: -0.8, color: C.textStrong, whiteSpace: 'nowrap' }}>
             {S02_WRAP[0]}
             <span style={{ color: C.amber }}>{S02_WRAP[1]}</span>

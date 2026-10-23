@@ -14,13 +14,13 @@ const S = 's02-instrumento';
 const W = STAGE.width;
 
 /** Phase 1: the big scale, centred. */
-const BIG = { w: 560, x: 584, y: 150 } as const;
+const BIG = { w: 720, x: 504, y: 96 } as const;
 /** Phases 2–4: the head on the left, the steps and the cards on the right. */
 const HEAD = { w: 360, x: 110, y: 110 } as const;
 const RIGHT_X = 650;
 /** Phase 5: the scale back on the left, the weight and its certificate outside it. */
-const BACK = { w: 500, x: 190, y: 250 } as const;
-const FLOOR = 552;
+const BACK = { w: 600, x: 70, y: 214 } as const;
+const FLOOR = 574;
 
 const STEPS: readonly { icon: IconName; text: string; word: string }[] = [
   { icon: 'eye', text: 'percibe', word: 'Percibe' },
@@ -96,7 +96,7 @@ export function S02Instrumento(props: SceneProps) {
   const linkLabel = p(at('s02-04', 'contrastar') + 10, 14);
   const dispX = BACK.x + 0.75 * BACK.w + 12;
   const dispY = BACK.y + 0.4625 * BACK.w;
-  const WEIGHT = { cx: 1170, size: 170 } as const;
+  const WEIGHT = { cx: 1130, size: 210 } as const;
   const weightTop = FLOOR - WEIGHT.size * 1.2;
 
   return (
@@ -120,16 +120,16 @@ export function S02Instrumento(props: SceneProps) {
         <div
           style={{
             position: 'absolute',
-            left: BIG.x + bigG.plat.cx - 67 + 40,
-            top: BIG.y + bigG.plat.top + press * 0.028 * BIG.w - 170 - 90 * (1 - fingerIn) - 8,
+            left: BIG.x + bigG.plat.cx - 72 + 70,
+            top: BIG.y + bigG.plat.top + press * 0.028 * BIG.w - 190 - 90 * (1 - fingerIn) - 8,
             opacity: fingerIn * (1 - melt),
           }}
         >
-          <Finger length={170} />
+          <Finger length={190} />
         </div>
       ) : null}
       {eyeIn > 0.01 ? (
-        <div style={{ position: 'absolute', left: 250, top: 236, opacity: eyeIn, display: 'flex', alignItems: 'center', gap: 22 }}>
+        <div style={{ position: 'absolute', left: 150, top: 150, opacity: eyeIn, display: 'flex', alignItems: 'center', gap: 22 }}>
           <div style={{ filter: `drop-shadow(0 0 ${Math.round(18 * swell(miresAt, 50))}px ${alpha(C.cyan, 0.7)})` }}>
             <Icon name="eye" size={112} color={C.cyanSoft} strokeWidth={1.8} />
           </div>
@@ -138,7 +138,7 @@ export function S02Instrumento(props: SceneProps) {
           </svg>
         </div>
       ) : null}
-      <div style={{ position: 'absolute', left: 0, top: 512, width: W, textAlign: 'center', fontFamily: FONT.sans, fontSize: 46, fontWeight: 800, color: C.textStrong, whiteSpace: 'nowrap' }}>
+      <div style={{ position: 'absolute', left: 0, top: 548, width: W, textAlign: 'center', fontFamily: FONT.sans, fontSize: 46, fontWeight: 800, color: C.textStrong, whiteSpace: 'nowrap' }}>
         <div style={{ position: 'absolute', left: 0, right: 0, opacity: caption1, transform: `translateY(${(1 - caption1) * 12}px)` }}>
           marca <span style={{ color: '#fcd34d' }}>dos kilos de más</span>
         </div>
@@ -242,10 +242,10 @@ export function S02Instrumento(props: SceneProps) {
             ) : null}
           </svg>
           {link > 0.2 ? (
-            <div style={{ position: 'absolute', left: 640, top: 330, fontFamily: FONT.sans, fontSize: 40, fontWeight: 800, color: C.cyanSoft, opacity: linkLabel, whiteSpace: 'nowrap' }}>contrastar</div>
+            <div style={{ position: 'absolute', left: 735, top: 336, fontFamily: FONT.sans, fontSize: 40, fontWeight: 800, color: C.cyanSoft, opacity: linkLabel, whiteSpace: 'nowrap' }}>contrastar</div>
           ) : null}
-          <div style={{ position: 'absolute', left: 1318, top: FLOOR - 200, ...certIn }}>
-            <Certificate width={270} lit={certIn.opacity} />
+          <div style={{ position: 'absolute', left: 1300, top: FLOOR - 236, ...certIn }}>
+            <Certificate width={320} lit={certIn.opacity} />
           </div>
         </>
       ) : null}
@@ -259,7 +259,7 @@ function VerdictCard({ icon, tone, text, show, glow = 0 }: { icon: IconName; ton
   return (
     <div
       style={{
-        width: 420,
+        width: 500,
         minHeight: 190,
         boxSizing: 'border-box',
         padding: '26px 30px',

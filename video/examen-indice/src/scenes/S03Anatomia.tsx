@@ -11,6 +11,8 @@ const S = 's03-anatomia';
 const W = STAGE.width;
 const CARD_W = 1010;
 const RIGHT = 1070;
+/** Right edge of the cyan chunk of the question bar (card x 40 + 520 + 12 + 150). */
+const CHUNK_R = 722;
 
 // Block geometry in stage coordinates.
 const A = { top: 12, h: 220 } as const;
@@ -236,7 +238,7 @@ export function S03Anatomia(props: SceneProps) {
         {qLabel > 0.01 ? (
           <>
             {/* connector from the cyan chunk to the label */}
-            <div style={{ position: 'absolute', left: -(RIGHT - 712), top: 327, width: RIGHT - 712 + 14, height: 4, background: C.cyan, transformOrigin: 'left center', transform: `scaleX(${qLabel})`, borderRadius: 2 }} />
+            <div style={{ position: 'absolute', left: -(RIGHT - CHUNK_R), top: 325, width: RIGHT - CHUNK_R + 14, height: 4, background: C.cyan, transformOrigin: 'left center', transform: `scaleX(${qLabel})`, borderRadius: 2 }} />
             <div style={{ position: 'absolute', left: 14, top: 300, opacity: qLabel }}>
               <Tag color={C.cyan} size={36} solid>
                 calificador
