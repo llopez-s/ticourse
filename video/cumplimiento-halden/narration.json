@@ -1,0 +1,327 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {notebook}Los objetos perdidos de la terminal de pasajeros de Halden van en un cuaderno. {screen}Pasarlos a un sistema trae reglas que no eliges tú.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Antes, después y a tiempo. {promise}Vas a ver qué hacer antes de lanzarlo, mientras funciona y cuánto se guarda. Y tres preguntas como las del examen.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-antes",
+      "text": "<engaging> {timeline}Mira esta línea del tiempo, con un botón de lanzar en medio. {before}Antes del botón, el puerto investiga.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-antes",
+      "text": "<curious> {questions}Por ejemplo, qué ley aplica, quién verá los datos y cuánto tiempo se guardan.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-antes",
+      "text": "<clear> Investigar antes de comprometerte, eso es la due diligence.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-antes",
+      "text": "<thoughtful> {launch}Se lanza el sistema. {after}Y empieza lo otro, que no se acaba.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-antes",
+      "text": "<focused> {routines}Cosas como revisar quién entra, poner el sistema al día y arreglar lo que salga en las revisiones.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-antes",
+      "text": "<confident> Seguir haciéndolo bien, de forma continua, es la due care.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-antes",
+      "text": "<warm> {cat}Es como adoptar un gato. Antes te informas, y después le das de comer cada día. {cat-rule}Haberlo mirado muy bien no te libra de cuidarlo.",
+      "pauseAfterMs": 800,
+      "exam": {
+        "objective": "5.4",
+        "text": "Haberlo mirado bien no te libra de cuidarlo",
+        "at": "cat-rule",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Antes de lanzar su aplicación, una empresa hizo un análisis legal impecable. Tres años después, nadie vuelve a revisar quién tiene acceso ni corrige lo que salió en la última revisión. ¿Qué describe mejor lo que le ha faltado? {best}Fíjate en ese «mejor». Pide la que más encaja con este caso, aunque otra suene bien.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.4",
+        "scenario": "Antes de lanzar su app, una empresa hizo un análisis legal impecable. Tres años después, nadie revisa los accesos ni corrige lo que salió en la revisión.",
+        "q": "¿Qué describe MEJOR lo que le ha faltado?",
+        "options": [
+          "Due care",
+          "Attestation",
+          "Due diligence",
+          "Data inventory"
+        ],
+        "answer": 0,
+        "trap": 2,
+        "why": "Due care es seguir actuando con cuidado, día a día, después de decidir",
+        "trapWhy": "La due diligence se hizo, y bien: era lo de antes, y falta lo de después",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<firm> {ok-1}Le ha faltado la due care, porque revisar y corregir son rutinas que no se acaban. {trap-1}Ojo con la due diligence, que esa ya se hizo, y bien.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<warm> {cat-back}Te informaste de maravilla, y el gato sigue sin comer.",
+      "pauseAfterMs": 1000
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-cuesta",
+      "text": "<engaging> {suppose}Imagina que el puerto se saltara las reglas. {authority}Lo que cuesta depende de quién te lo impone.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-cuesta",
+      "text": "<clear> {fines}Una autoridad puede multarte, y eso son las fines. {sanctions}O prohibirte algo, como parar el sistema hasta corregirlo. Eso son las sanctions.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-cuesta",
+      "text": "<focused> {license}Quien te dio el permiso para operar puede quitártelo, y eso es la loss of license.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-cuesta",
+      "text": "<thoughtful> {contract}La otra parte del contrato, una naviera, retiene pagos o cancela el contrato. Son los contractual impacts.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "5.4",
+        "text": "Contractual impacts: los pone la otra parte",
+        "at": "contract",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-cuesta",
+      "text": "<warm> {reputation}Y nadie lo impone, pero todos lo notan. Eso es el reputational damage.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-cuesta",
+      "text": "<casual> {salon}Piensa en una peluquería del barrio. {reporting}Sanidad la multa y le prohíbe los tintes, y las reseñas hacen el resto.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Otra más. Tras una inspección, un regulador prohíbe a una empresa de transporte presentarse a concursos públicos durante dos años. No le pone multa, y sigue con sus clientes privados. ¿Qué consecuencia del incumplimiento es?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.4",
+        "scenario": "Tras una inspección, un regulador prohíbe a una empresa de transporte ir a concursos públicos dos años. Sin multa; sigue con sus clientes privados.",
+        "q": "¿Qué consecuencia del incumplimiento es?",
+        "options": [
+          "Contractual impacts",
+          "Fines",
+          "Loss of license",
+          "Sanctions"
+        ],
+        "answer": 3,
+        "trap": 0,
+        "why": "Restringe una actividad sin quitar la licencia: es una sanction",
+        "trapWhy": "Pierde contratos, pero no se los quita un cliente: se lo prohíbe el regulador",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<firm> {ok-2}Es una sanction, porque la impone la autoridad y restringe lo que puedes hacer.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<thoughtful> {trap-2}Contractual impacts tienta, porque pierde contratos. Pero ningún cliente se los quita, se los prohíbe el regulador.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-p2",
+      "text": "<clear> {regulator}En el examen, mira quién la impone, que aquí es el regulador. Y recuerda, una sanction restringe, no multa.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "5.4",
+        "text": "Sanctions: la autoridad restringe, no multa",
+        "at": "regulator",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-guardar",
+      "text": "<engaging> {three-places}Volvemos a los objetos perdidos. Quien reclama deja nombre, teléfono y documento de identidad, y eso vive en tres sitios. El sistema, su copia de seguridad y el aviso que le mandan.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-guardar",
+      "text": "<intrigued> {inventory}Saber qué datos tienes y dónde están, eso es el data inventory. Y no proteges lo que no sabes que tienes.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "5.4",
+        "text": "No proteges lo que no has inventariado",
+        "at": "inventory",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-guardar",
+      "text": "<clear> {retention}Después, cuánto tiempo se guardan. Mientras el objeto esté en la oficina y unos meses más. {backups}Y luego se borran en los tres, copia incluida. Eso es la retention.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-guardar",
+      "text": "<thoughtful> {subject}Quien reclama es la data subject. {rtbf-chip}Puede pedir que se borren sus datos, el right to be forgotten, pero no siempre.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-guardar",
+      "text": "<steady> Si una ley te obliga a guardarlos, no se borran. Con un legal hold, una orden de guardar por un juicio, tampoco.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-guardar",
+      "text": "<warm> {drawer}Como en tu archivador, primero hay que saber qué hay dentro.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}La última. Una empresa guarda los currículos de todos sus candidatos desde hace doce años, por si acaso. Su política dice dos años. Nadie ha pedido nada. ¿Qué describe mejor el problema?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.4",
+        "scenario": "Una empresa guarda los currículos de todos sus candidatos desde hace 12 años, «por si acaso». Su política dice 2 años. Nadie ha pedido nada.",
+        "q": "¿Qué describe MEJOR el problema?",
+        "options": [
+          "Legal hold",
+          "Right to be forgotten",
+          "Retention",
+          "Data inventory"
+        ],
+        "answer": 2,
+        "trap": 1,
+        "why": "Guarda mucho más de lo que su plazo permite: falla la retention",
+        "trapWhy": "Hay que borrar, pero nadie lo ha pedido: no es un right to be forgotten",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<firm> {ok-3}Es la retention, porque guarda mucho más de lo que su plazo permite.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<thoughtful> {trap-3}El right to be forgotten confunde, porque hay que borrar. Pero se ejerce a petición, y aquí nadie ha pedido nada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-p3",
+      "text": "<warm> {drawer-back}Como en el archivador, nadie te pide que tires los recibos viejos, y aun así sobran.",
+      "pauseAfterMs": 800,
+      "exam": {
+        "objective": "5.4",
+        "text": "Retention: lo que pide la ley o el propósito, nada más",
+        "at": "drawer-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Tres reglas. {rule-1}Una, due diligence antes, due care después, y una no cubre la otra.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Dos, mira siempre quién te impone cada consecuencia.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y tres, sin inventario no hay retención, y se borra en todas las copias.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Antes, mira. Después, cuida. Y guarda lo que pide la ley o el propósito, ni un día más.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-cierre",
+      "text": "<warm> {next}Y ahora, tu turno, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

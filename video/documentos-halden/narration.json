@@ -1,0 +1,314 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {sheets}En el puerto de Halden hay cuatro papeles sobre una mesa. {wrong-label}Los cuatro dicen «política» arriba, y solo uno lo es.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Cuatro papeles. {promise}Casi todo el mundo llama política a cualquier papel, y eso sale caro. Pero con dos preguntas los ordenas todos. Primero, ¿obliga? Después, ¿a qué pregunta contesta?",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-que",
+      "text": "<engaging> {case}El puerto quiere ordenar cómo manda documentos fuera, y lo escribe en cuatro hojas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-que",
+      "text": "<clear> {sheet-1}La primera la aprueba la dirección. Dice que la información sale solo por canales aprobados.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-que",
+      "text": "<confident> {policy}Eso es una policy. Dice qué y por qué, obliga a todos y no nombra tecnología.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-que",
+      "text": "<thoughtful> {sheet-2}La segunda la escribe Seguridad. Lo confidencial sale con cifrado fuerte, por la plataforma aprobada, con enlaces que caducan a los siete días.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-que",
+      "text": "<firm> {standard}Eso es un standard. Dice cuánto, y también obliga.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-que",
+      "text": "<warm> {pool-1}Es como en una piscina. El cartel de la entrada dice que la seguridad va primero. El de al lado, que los menores de diez años entran con un adulto.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-que",
+      "text": "<confident> {pool-both}Uno dice qué y por qué. El otro, cuánto. Los dos obligan.",
+      "pauseAfterMs": 1200,
+      "exam": {
+        "objective": "5.1",
+        "text": "Policy dice qué y por qué; standard, cuánto",
+        "at": "pool-both",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca. El equipo de desarrollo de una empresa tiene un documento, y dice «Os recomendamos usar TLS [1.3|uno punto tres] en las aplicaciones nuevas». Nadie lo ha hecho obligatorio. ¿Qué tipo de documento es?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.1",
+        "scenario": "Un documento del equipo de desarrollo de una empresa dice: «Os recomendamos usar TLS 1.3 en las aplicaciones nuevas». Nadie lo ha hecho obligatorio.",
+        "q": "¿Qué tipo de documento es?",
+        "options": [
+          "Policy",
+          "Procedure",
+          "Guideline",
+          "Standard"
+        ],
+        "answer": 2,
+        "trap": 3,
+        "why": "Recomienda y no obliga: no seguirlo no es un incumplimiento",
+        "trapWhy": "Es concreto, pero un standard también tiene que obligar",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<firm> {ok-1}Es una guideline. Recomienda y no obliga. {trap-1}Standard tienta, porque nombra una versión. Pero un standard, además de concreto, obliga. Y este no.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<warm> {sunscreen}Como la crema de factor cincuenta de la piscina. Tiene un número, y nadie te echa por no ponértela.",
+      "pauseAfterMs": 1200,
+      "exam": {
+        "objective": "5.1",
+        "text": "Concreto no basta: un standard también obliga",
+        "at": "sunscreen",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-como",
+      "text": "<engaging> {sheet-3}La tercera hoja la escribe Sistemas. Explica cómo mandar un fichero a una naviera, en cuatro pasos, de clasificarlo a comprobar que ha llegado.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-como",
+      "text": "<clear> {procedure}Ese es el procedure. Dice cómo, paso a paso, y obliga a quien lo hace.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-como",
+      "text": "<thoughtful> {playbook}Si un procedure es para un caso concreto, como un ransomware, se llama playbook. Sigue siendo un procedure, y obliga igual.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-como",
+      "text": "<curious> {sheet-4}La cuarta hoja recomienda avisar por teléfono a quien recibe. {guideline}Y eso, una guideline. Aconseja, no obliga, y no seguirla no es incumplir nada.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-como",
+      "text": "<warm> {pool-2}En la piscina, la hoja del socorrista dice paso a paso cómo actuar si alguien se hunde, y obliga. El cartel de la crema solo aconseja.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<intrigued> {q2}Otra más. El equipo de seguridad de un hospital tiene un documento aprobado por la dirección y firmado por todos. Explica, paso a paso, cómo actuar si una cuenta aparece comprometida. Es obligatorio. ¿Qué describe mejor este documento? {best}Ojo con ese «mejor». Aquí una opción encaja a medias, y solo otra encaja del todo.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.1",
+        "scenario": "Un documento aprobado por la dirección y firmado por todo el SOC explica, paso a paso, cómo actuar si una cuenta aparece comprometida. Es obligatorio.",
+        "q": "¿Qué describe MEJOR este documento?",
+        "options": [
+          "Procedure",
+          "Standard",
+          "Policy",
+          "Guideline"
+        ],
+        "answer": 0,
+        "trap": 2,
+        "why": "Es un playbook: dice cómo, paso a paso, a quien tiene que hacerlo",
+        "trapWhy": "Obliga y lo aprueba la dirección, pero una policy dice qué y por qué, no cómo",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<firm> {ok-2}Es un procedure, un playbook. Dice cómo, paso a paso, a quien lo ejecuta.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<focused> {trap-2}Policy suena bien, porque obliga y lo aprueba la dirección. Pero una policy dice qué y por qué, no cómo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-p2",
+      "text": "<warm> {lifeguard}Como la hoja del socorrista. Obliga, y sigue siendo el cómo.",
+      "pauseAfterMs": 1200,
+      "exam": {
+        "objective": "5.1",
+        "text": "Un playbook es un procedure, aunque obligue",
+        "at": "lifeguard",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-caducan",
+      "text": "<thoughtful> {owners}Cada uno de los cuatro papeles necesita un dueño. Una persona, no un departamento.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-caducan",
+      "text": "<clear> {cycle}Y cada uno se revisa al menos una vez al año, o antes si cambia la ley o llega un servicio nuevo.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "5.1",
+        "text": "Cada papel: un dueño y un ciclo de revisión",
+        "at": "cycle",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-caducan",
+      "text": "<confident> {platform-change}Imagina que el puerto cambia la plataforma por otro producto. {standard-only}Se reescribe el standard. La policy se queda igual, porque no nombra tecnología.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-caducan",
+      "text": "<engaging> Eso, en el examen, es monitoring and revision. {monitoring}Y monitorizar es comprobar que lo escrito se aplica. Por ejemplo, si salen documentos por correo y no por la plataforma.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-caducan",
+      "text": "<warm> {old-sign}Y si nadie lo mira, pasa como con la piscina pequeña. Ya no existe, pero su cartel sigue colgado.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<curious> {q3}La última. Una empresa revisa su política de protección de datos cada enero. Tiene dueña y aprobación de la dirección. En marzo entra en vigor una ley nueva que le afecta. ¿Qué es lo mejor que puede hacer la dueña?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.1",
+        "scenario": "La política de protección de datos de una empresa tiene dueña y se revisa cada enero. En marzo entra en vigor una ley nueva que le afecta.",
+        "q": "¿Qué es lo MEJOR que puede hacer la dueña de la política?",
+        "options": [
+          "Convertirla en guideline hasta enero",
+          "Esperar a la revisión de enero",
+          "Pedir a la plantilla que vuelva a firmarla",
+          "Revisarla ahora"
+        ],
+        "answer": 3,
+        "trap": 1,
+        "why": "Además del ciclo fijo, se revisa cuando cambia la ley o el servicio",
+        "trapWhy": "Tener ciclo es necesario, pero no basta si la ley cambia antes",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<firm> {ok-3}Revisarla ya. El ciclo es el mínimo, y una ley nueva no espera.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<focused> {trap-3}Esperar parece lo normal, porque todo está en orden. Pero el ciclo no basta si la ley cambia antes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-p3",
+      "text": "<warm> {sign-back}Como el cartel de la piscina pequeña. Había que cambiarlo cuando cerró, no cuando tocaba revisarlo.",
+      "pauseAfterMs": 1200,
+      "exam": {
+        "objective": "5.1",
+        "text": "Si cambia la ley, se revisa sin esperar",
+        "at": "sign-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Tres reglas. {rule-1}Policy y standard obligan. Uno dice qué y por qué, y el otro, cuánto.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}El procedure dice cómo y obliga, aunque sea un playbook. La guideline solo aconseja.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y cada papel tiene dueño y ciclo, y se revisa antes si cambia la ley.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Primero, ¿obliga? Después, ¿contesta al qué, al cuánto o al cómo?",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-cierre",
+      "text": "<warm> {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}
