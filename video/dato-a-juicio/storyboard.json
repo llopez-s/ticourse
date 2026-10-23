@@ -1,0 +1,192 @@
+{
+  "title": "De un dato a un juicio: inteligencia, amenaza y riesgo",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 447,
+  "notice": "Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "De la IP al juicio"
+    },
+    {
+      "n": 2,
+      "title": "Juzgar sin certeza"
+    },
+    {
+      "n": 3,
+      "title": "Qué es una amenaza"
+    },
+    {
+      "n": 4,
+      "title": "El malware no es la amenaza"
+    },
+    {
+      "n": 5,
+      "title": "Riesgo y ventaja"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-ip",
+      "chapter": 1,
+      "title": "Una línea del registro",
+      "goal": "A un lado, los rótulos de V13 y V23: «Meridian Dynamics · aeroespacial» y «tú, su analista de inteligencia» (`meridian`), con «primera analista de inteligencia de la empresa» (de la lección; la voz dice «la analista de inteligencia que acaban de fichar»). Título «De un dato a un juicio», con «qué es inteligencia, qué es una amenaza y dónde encaja tu trabajo» debajo, antes de los 10 s (`title`). Después entra, al otro lado, la tira del CISO de V23 (`video/atribucion-cuadro/src/scenes/parts/CisoStrip.tsx`): «CISO · responsable de seguridad», sin nombre (`ciso`), y delante de ella una ventana de terminal con UNA sola línea de registro, etiqueta «registro del proxy» y solo `141.98.6.10` (nada de hora, equipo, usuario ni dominio). La pregunta de la tira: «¿qué sabemos de esto?». Una tira pequeña y atenuada, de la lección: «rumores de robo de diseños en el sector · el consejo, nervioso». La IP se resalta cuando la voz dice «una dirección IP» (`ip`; la voz nunca la lee: solo aparece en pantalla). La promesa en tres chips (`promise`): «cuándo un dato es inteligencia · qué es una amenaza de verdad · qué parte del riesgo es tuya»",
+      "targetSec": 37,
+      "wordBudget": 100,
+      "requiredCues": [
+        "meridian",
+        "title",
+        "ciso",
+        "ip",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-pasos",
+      "chapter": 1,
+      "title": "Dato, información, inteligencia",
+      "goal": "Mensaje interceptado de EMBER FOX (tarjeta automática) con una ficha sobria bajo el nombre, «EMBER FOX · célula de acceso inicial · spearphishing» (la descripción de la sección, `src/data/course-gcti.ts:17-19`; la misma ficha que en G02 y G03; sin destinatarios, sin objetivos y sin ninguna pista de qué hay en su dosier). La voz la presenta como una célula que abre la puerta con correos trucados; ni la voz ni la pantalla dicen ni insinúan que la IP sea suya, y la IP no está a la vista mientras suena el mensaje. Después, tres escalones de abajo arriba, uno por cada paso de la voz, con la misma IP subiendo por ellos y la tabla de la lección (`src/data/s1.ts:22-39`): DATA, «una IP en un log: 141.98.6.10 · hecho crudo, sin contexto» (`data`); INFORMATION, la IP unida a «alojó un panel de phishing el martes» (sin fecha, sin víctima y sin dominio), «datos correlacionados que responden a una pregunta de hechos» (`info`); INTELLIGENCE, la frase de la lección en inglés, «We assess the actor will likely reuse this hosting provider; recommend monitoring new registrations on that ASN» (`src/data/s1.ts:37`), con su glosa en español debajo, pequeña («valoramos que el atacante probablemente volverá a usar este proveedor de alojamiento y recomendamos vigilar los dominios nuevos que se registren en esa red»), y tres marcas que se iluminan: «we assess», «likely», «recommend» (`intel`). Después se apaga todo menos un cartel: «lo que cambia: alguien analiza y juzga qué significan los datos, para decidir» (`decision`). La tarjeta («Intelligence: info analizada que ayuda a decidir»). Debajo, pequeño, el truco de examen de la lección: «¿juicio analítico, «probablemente» o recomendación? inteligencia · ¿hecho suelto? dato o información»",
+      "targetSec": 56,
+      "wordBudget": 151,
+      "requiredCues": [
+        "data",
+        "info",
+        "intel",
+        "decision"
+      ]
+    },
+    {
+      "id": "s03-kent",
+      "chapter": 2,
+      "title": "Esperar no es gratis",
+      "goal": "Mensaje interceptado de EMBER FOX. Una barra de «evidencia disponible» que sube sin llegar nunca al 100 %, con el rótulo «incertidumbre irreducible» sobre el hueco que queda; al lado la cita de la lección, como paráfrasis y atribuida a la escuela de Kent (`src/data/s1.ts:57-60`): «Intelligence analysis is the business of making careful judgments with incomplete information, and saying clearly how sure you are» (`kent`; ficha tipográfica, sin retrato ni fecha: «Sherman Kent · considerado el padre del análisis de inteligencia moderno», con «paráfrasis de la escuela de Kent» siempre visible bajo la cita). Después la fórmula en tres piezas (`calibrated`): «juicio calibrado = lo que sabes + cuánto te fías»; la tarjeta. La imagen del capitán sin GPS (`captain`): una carta náutica sin tierra a la vista, con un punto «estima» y un círculo de duda a su alrededor que se afina cuando llega un dato nuevo; sin porcentajes ni probabilidades (la diferencia entre probabilidad y confianza es de la sección 5). Cierre del capítulo (`never-certain`): dos fichas, «no pidas certeza» tachada y «da un juicio y di cuánto te fías» encendida",
+      "targetSec": 47,
+      "wordBudget": 127,
+      "requiredCues": [
+        "kent",
+        "calibrated",
+        "captain",
+        "never-certain"
+      ]
+    },
+    {
+      "id": "s04-pruebas",
+      "chapter": 2,
+      "title": "Pruebas a medias",
+      "goal": "Pregunta para pensar, con la ficha de la IP y dos frases al CISO una junto a la otra, sin ninguna resaltada (`hyp`): «El atacante volverá a usar este proveedor» y «Probablemente volverá a usarlo». Respuesta: la primera se marca «promete una certeza que no tienes» y la segunda «dice lo que sabes de verdad» (`answer`). Después «probablemente» se resalta con la etiqueta «lenguaje estimativo» y, aparte, «y dices cuánto te fías de tu juicio» (`words`; sin escala de grados: la lección no la da en esta sección). Dos columnas para el consejo (`blind`): «decide con tu juicio» frente a «decide a ciegas», con «callarte» tachado. Sin ningún dato nuevo de la IP ni del caso",
+      "targetSec": 35,
+      "wordBudget": 94,
+      "requiredCues": [
+        "hyp",
+        "answer",
+        "words",
+        "blind"
+      ]
+    },
+    {
+      "id": "s05-triada",
+      "chapter": 3,
+      "title": "Tres piezas a la vez",
+      "goal": "Dos rótulos, «en la calle: cualquier cosa mala» (atenuado) y «en inteligencia: tres cosas a la vez» (`threat`). La palabra AMENAZA en el centro de un triángulo con tres huecos; las piezas entran una a una al compás de la voz, con glosa corta: INTENT, «quiere algo de ti · dinero · propiedad intelectual · parar tu actividad» (`intent`); CAPABILITY, «herramientas · infraestructura · habilidad» (`capability`); OPPORTUNITY, «un camino hasta tus sistemas o tus personas · y el momento» (`opportunity`). La imagen del fuego (`fire`): un triángulo de llama con calor, combustible y oxígeno que se apaga al quitar un lado; sin asignar cada lado a un componente. Los tres nombres en inglés y la fórmula (`names`; «combinación de las tres», no suma): «threat = intent + capability + opportunity»; la tarjeta",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "requiredCues": [
+        "threat",
+        "intent",
+        "capability",
+        "opportunity",
+        "fire",
+        "names"
+      ]
+    },
+    {
+      "id": "s06-caso",
+      "chapter": 3,
+      "title": "Un caso para practicar",
+      "goal": "Una empresa genérica, con el rótulo «otra empresa · no es Meridian», y sobre el triángulo de la escena anterior un grupo con dos fichas encendidas, «ransomware que funciona» (capacidad) y «lo proclama en público» (intención). Una instalación aislada, sin cable al exterior, con un candado (`isolated`). Pregunta para pensar («Instalación aislada: ¿qué pieza falta?») con el triángulo a la vista, el tercer hueco vacío y sin resaltar. Respuesta (`opp`): el hueco OPPORTUNITY se señala, «sin camino hasta ellos»; «hoy: amenaza incompleta»; la tarjeta. Tres esquemas rápidos, uno por cada pieza que falta (`others`): «exploit público · programa que no usas = capability sin opportunity», «odia tu sector · sin malware que funcione = intent sin capability» y «herramientas y acceso · tus datos no le sirven = capability + opportunity sin intent». Cierre (`watch`; «Pero «hoy no» no es «nunca»»): «hoy no» no es «nunca», y una puerta de acceso remoto que se abre en la instalación y enciende el hueco: «sigue vigilando»",
+      "targetSec": 49,
+      "wordBudget": 132,
+      "requiredCues": [
+        "isolated",
+        "opp",
+        "others",
+        "watch"
+      ]
+    },
+    {
+      "id": "s07-herramienta",
+      "chapter": 4,
+      "title": "La herramienta y quien la usa",
+      "goal": "Mensaje interceptado de EMBER FOX. Un fichero con la etiqueta «malware» y una chapa «una parte de la capability» (`tool`; la tarjeta aparece aquí, al final de esa frase); al lado, una silueta humana sin cara, con la chapa «adversario · persona con una intención». La imagen común de la escena y de la siguiente (`rod`): una caña de pescar apoyada sola, sin pescador; después entra el pescador y decide dónde, cuándo y con qué cebo. Una fila (`human`): «actores · comportamientos · no solo ficheros» y, con la frase siguiente, «tácticas, técnicas y procedimientos = TTPs». Sin ningún nombre de familia de malware ni de grupo, y sin relación con las muestras de la campaña",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "tool",
+        "rod",
+        "human"
+      ]
+    },
+    {
+      "id": "s08-conducta",
+      "chapter": 4,
+      "title": "Lo que cuesta cambiar",
+      "goal": "Una fila de cañas que se sustituyen unas a otras con un reloj corto, «horas» (`change`). Después el pescador, que sigue pescando igual, con tres etiquetas, «hábitos · pasos · forma de trabajar» y un reloj largo, «mucho más» (`habit`). Dos barras de cuánto dura una pista: «el fichero: poco» y «el comportamiento: más», con la nota «bloquear ficheros sigue valiendo» (`bet`; no debe leerse como «bloquear no sirve»). Cierre del capítulo: «la herramienta cambia en horas · la forma de trabajar, no» y «una persona, no un programa»",
+      "targetSec": 32,
+      "wordBudget": 86,
+      "requiredCues": [
+        "change",
+        "habit",
+        "bet"
+      ]
+    },
+    {
+      "id": "s09-riesgo",
+      "chapter": 5,
+      "title": "Quién responde a qué",
+      "goal": "La fórmula de la lección, «risk = f(threat × vulnerability × consequence)» (`src/data/s1.ts:218`), con tres huecos (`risk`). Debajo, la tabla de la lección (`src/data/s1.ts:221-227`) que se rellena fila a fila: «¿quién querría atacarnos y cómo opera?» con «CTI (tú)» (`who`; la tarjeta); «¿dónde somos débiles?» con «gestión de vulnerabilidades» (`vuln`); «¿qué perderíamos si ocurre?» con «negocio · BIA» (`cons`). La contribución de CTI se ve como la fila iluminada, sin flechas. Un rótulo (`evidence`): «evidencia real: qué actores existen · a quién apuntan · cómo operan». Dos figuras (`ghosts`): un fantasma tachado, «defenderse de fantasmas», y una figura con foco, «ignorar a quien sí va a por ti», tachado también como error. Cierre: «CTI alimenta un factor de tres»",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "requiredCues": [
+        "risk",
+        "who",
+        "vuln",
+        "cons",
+        "evidence",
+        "ghosts"
+      ]
+    },
+    {
+      "id": "s10-ventaja",
+      "chapter": 5,
+      "title": "Muchos pasos en tu terreno",
+      "goal": "La frase en gris, «el atacante solo necesita acertar una vez», con un signo de duda (`myth`). La fila de pasos de la lección (`src/data/s1.ts:248`), «delivery · ejecución · persistencia · C2 · movimiento lateral», con un ojo de «rastro» en cada uno (`steps`; sin dominios, hosts, fechas ni hora). Etiqueta «defender's advantage» y la tarjeta (`advantage`). Después un eslabón se rompe y la cadena se parte (`break`). Un chip de puente (`s2`): «sección 2: Kill Chain (la cadena de un ataque) y matriz de Courses of Action» (`src/data/s1.ts:253`). Ninguna intrusión concreta de Meridian",
+      "targetSec": 33,
+      "wordBudget": 89,
+      "requiredCues": [
+        "myth",
+        "steps",
+        "advantage",
+        "break",
+        "s2"
+      ]
+    },
+    {
+      "id": "s11-reglas",
+      "chapter": 5,
+      "title": "Tres ideas",
+      "goal": "Tres tarjetas de reglas, una cada vez, con sus iconos (`rule-1` tres escalones de dato a inteligencia, `rule-2` el triángulo con la pieza del malware marcada como una parte de la capacidad, `rule-3` el eslabón o la lupa en el terreno propio). Tarjeta final Alertópolis (`next`, `endcard`): «Tu turno: las preguntas de las lecciones» (s1m1 y s1m2 · 12 preguntas), con la IP del principio como un dato suelto al fondo y el aviso «Simulación educativa con datos ficticios · material independiente, no afiliado a SANS/GIAC». Ningún laboratorio",
+      "targetSec": 34,
+      "wordBudget": 92,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

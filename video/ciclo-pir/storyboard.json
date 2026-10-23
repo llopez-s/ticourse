@@ -1,0 +1,107 @@
+{
+  "title": "Antes de recoger nada, la pregunta: el ciclo de inteligencia y los PIRs",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 446,
+  "notice": "Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC",
+  "chapters": [
+    { "n": 1, "title": "El encargo del CISO" },
+    { "n": 2, "title": "Seis fases, seis maneras de fallar" },
+    { "n": 3, "title": "Dos ciclos, un engranaje" },
+    { "n": 4, "title": "Escribir un buen PIR" },
+    { "n": 5, "title": "Para el examen" }
+  ],
+  "scenes": [
+    {
+      "id": "s01-encargo",
+      "chapter": 1,
+      "title": "Un encargo de una frase",
+      "goal": "Marco de siempre, «Meridian Dynamics · aeroespacial · tú, su analista de inteligencia» (como en V22 y V23). Una tira «CISO · responsable de seguridad», sin nombre ni cara (V23), con el mensaje que llega tecleado (`ask`): «Propónme nuestros primeros PIRs» (la frase del bloque de VELVET CICADA de s1m5, `src/data/s1.ts:749`, con tuteo; no la del Lab 1B). Título «Antes de recoger nada: la pregunta», con «el ciclo de inteligencia y los PIRs» debajo, antes de los 10 s (`title`), y bajo él la definición en una línea: «PIR · una de las pocas preguntas cuya respuesta cambia una decisión». La promesa en tres chips (`promise`): «las seis fases y dónde falla cada una · el ciclo rápido de los incidentes · cómo se escribe un buen PIR». Al final, dos notas pequeñas (`worry`): «rumores de robo de diseños en el sector» y «consejo: inquieto» (ideas de la lección; ni un hecho más del caso). Sin fechas, equipos, dominios, hashes ni nombres de personas. Nada de la intrusión: es el principio, antes de cualquier alerta",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "requiredCues": ["ask", "title", "promise", "worry"]
+    },
+    {
+      "id": "s02-ciclo",
+      "chapter": 1,
+      "title": "El ciclo, como un restaurante",
+      "goal": "Mensaje interceptado (`reply-i`), con la misma ficha del adversario que en G01 y G02, «EMBER FOX · célula de acceso inicial · spearphishing» (course-gcti.ts:17-19; ni plantillas ni dosier). Luego la imagen del restaurante, que se mantiene en todo el vídeo (`order`): una comanda a la izquierda, y sobre una línea de seis estaciones con iconos genéricos (comanda, mercado, tabla de cortar, fogón, bandeja, libreta de opiniones). Las seis estaciones se encienden de izquierda a derecha con su nombre oficial debajo (`six`): Planning & Direction, Collection, Processing & Exploitation, Analysis & Production, Dissemination, Feedback; la primera y la última, en ámbar, con «las que más se olvidan». La primera crece (`planning`): «Planning & Direction · con quien decide, qué necesita saber = requirements». Cierre del capítulo (`wrap-i`): «el ciclo convierte preguntas en respuestas», con la comanda en blanco y un signo de interrogación. Sin datos del caso",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "requiredCues": ["reply-i", "order", "six", "planning", "wrap-i"]
+    },
+    {
+      "id": "s03-pedido",
+      "chapter": 2,
+      "title": "El almacén se llena",
+      "goal": "La línea de estaciones con la comanda en blanco (`nobody`): suposición, no un hecho de Meridian (rótulo «Imagina que nadie la escribe»). A la izquierda, un panel con doce filas rotuladas solo «feed 1» a «feed 12» (sin nombres de fuentes ni de proveedores) que no paran de llegar. Pausa para pensar: «Doce feeds sin pregunta. ¿Qué fase falta?». Respuesta (`hoard`): la primera estación se apaga con «sin comanda · sin dirección» y la segunda se desborda, con «Collection · datos crudos de fuentes planificadas» y, solo en pantalla, el sello «data hoarding». La tercera (`process`): sobre ella, los verbos de la lección, «parsear · decodificar · traducir · normalizar · detonar muestras», con «convertir lo crudo en analizable» y «Processing & Exploitation». Remate (`pile`): una barra de almacenamiento que se llena de «terabytes crudos» con el sello «sin analizar». Todo hipotético: sin hosts, dominios ni fechas",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "requiredCues": ["nobody", "hoard", "process", "pile"]
+    },
+    {
+      "id": "s04-final",
+      "chapter": 2,
+      "title": "De la valoración al aplauso",
+      "goal": "Las tres estaciones finales. La cuarta (`judge`): una tarjeta de valoración con «juicio · valoración · hipótesis» y un indicador de confianza, pero con el encabezado vacío, «¿valoración de qué?», y el plato impecable sobre una mesa sin comanda. La quinta (`board`): un informe lleno de tablas técnicas sube a una bandeja que llega a la silla del «consejo» (la lección: «informes técnicos al board»), a la mesa equivocada. Mensaje interceptado (`reply-ii`). La sexta (`feedback`): una libreta de opiniones vacía con «sin feedback · el ciclo nunca mejora» y «¿se cubrió la necesidad? · refina los requirements». Cierre del capítulo (`wrap-ii`): la cadena entera, con la primera y la última en ámbar, «sin pregunta falla en cadena · sin feedback ni te enteras». Es imagen y suposición; el vídeo no dice que un informe de Meridian haya fallado",
+      "targetSec": 56,
+      "wordBudget": 151,
+      "requiredCues": ["judge", "board", "reply-ii", "feedback", "wrap-ii"]
+    },
+    {
+      "id": "s05-f3ead",
+      "chapter": 3,
+      "title": "Cuando hay un incidente",
+      "goal": "Mensaje interceptado (`reply-iii`). Una escena de respuesta a incidentes genérica, sin nombre de equipo ni de caso: un icono de incidente que pasa a «contenido» y, a su lado, una caja de «evidencia capturada». La tira F3EAD con sus seis palabras (`letters`): Find · Fix · Finish · Exploit · Analyze · Disseminate, y la nota «nació en operaciones militares». Las tres primeras (`ops`) bajo «operación» con «localizar · fijar · neutralizar → hasta contener el incidente»; las tres últimas (`halves`) bajo «inteligencia» con «explotar la evidencia capturada · analizarla · difundirla». Un anillo une Finish con Exploit y Disseminate con el siguiente Find (`loop`), «la evidencia alimenta el siguiente ciclo». Dos engranajes (`gear`): el grande, «ciclo de inteligencia · ritmo del equipo», con las seis estaciones; el pequeño, «F3EAD · incidente activo», que gira más deprisa. Cierre (`wrap-iii`): «uno marca el ritmo, el otro acelera». Ningún incidente de Meridian, ni E7 ni fechas: es el caso en general",
+      "targetSec": 60,
+      "wordBudget": 162,
+      "requiredCues": ["reply-iii", "letters", "ops", "halves", "loop", "gear", "wrap-iii"]
+    },
+    {
+      "id": "s06-pir",
+      "chapter": 4,
+      "title": "Una pregunta bien pedida",
+      "goal": "Vuelve la tira del CISO (`back`) con la misma frase. Dos comandas (`comanda`): una gris, «tráeme algo de comer», y otra resaltada, «mesa cuatro · pescado sin gluten · antes de las diez». Tarjeta «Priority Intelligence Requirement» con los cinco criterios de la lección, que van entrando de uno en uno (`criteria`): una sola pregunta · específico (sector, actor, tecnología, geografía) · ligado a una decisión · factible · acotado en el tiempo cuando haga falta. La voz nombra los tres primeros aquí; (`decision`) enciende el tercero, con «¿qué decisión cambia con la respuesta?»; (`feasible`) enciende «factible» y «acotado en el tiempo», con un reloj pequeño y «las prioridades caducan». (`consumer`): dos figuras, «tú · redactas y propones» y «quien decide · valida la prioridad» (s1m5q6). Sin ningún PIR de Meridian: el vídeo no propone la lista del CISO",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "requiredCues": ["back", "comanda", "criteria", "decision", "feasible", "consumer"]
+    },
+    {
+      "id": "s07-reconocer",
+      "chapter": 4,
+      "title": "Dos candidatas",
+      "goal": "Mensaje interceptado (`reply-iv`). Una pregunta con «y también» se parte en dos tarjetas (la mitad de «y también» se separa y queda suelta); sin ejemplos del laboratorio. Dos candidatas lado a lado (`pair`), con el rótulo «Ejemplo de la lección · no es el caso de Meridian» (como el binario de ejemplo de V23): A «Tell me about ransomware.» y B «Which ransomware affiliates exploit internet-facing VPN appliances like ours, and which initial-access behaviors should our SOC alert on?» (la segunda pareja de la tabla de la lección, `src/data/s1.ts:735-738`; la frase larga, solo en pantalla). Pausa para pensar: «Dos candidatas, ¿cuál es el PIR bien formado?». Respuesta (`reveal`): B se enciende con «concreta · acaba en algo que vigilar · se puede responder», y su coma se resalta con «misma pregunta, su consecuencia de detección» (no es un «y también»); A se apaga con «un tema, no una pregunta». Remate (`not-same`): el sello «bien formado no es lo mismo que prioritario» y la figura de quien decide, «lo valida quien decide». No sale la pareja de aeroespacial ni ninguna opción del Lab 1B",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "requiredCues": ["reply-iv", "pair", "reveal", "not-same"]
+    },
+    {
+      "id": "s08-permanentes",
+      "chapter": 4,
+      "title": "El pedido fijo y el banquete",
+      "goal": "Dos tarjetas. El pedido fijo de cada semana del restaurante (`standing`): «¿Qué actores apuntan a nuestro sector?» (la pregunta de la lección) con un reloj de «se revisa cada cierto tiempo» y el rótulo «standing requirement». El encargo de un banquete (`adhoc`): «una fusión · un incidente · una tecnología nueva» (los ejemplos de la lección), con una cuenta atrás que se apaga al responderse y el rótulo «ad hoc requirement · expira al responderse». Un PIR se parte en preguntas de colección más pequeñas (`collection`), cada una unida a una fuente genérica («fuente A», «fuente B»; ningún nombre real). La tabla de ese reparto lleva el rótulo «Collection Management Framework» (`framework`) y debajo, pequeño, «lo construirás en la sección tres». Vuelven atenuados los doce feeds (`callback`): los que no sirven a ningún requirement se apagan, «sobra», y un requirement sin fuente lleva un hueco, «hay que conseguirlas». Sin nombres de proveedores ni de feeds reales",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": ["standing", "adhoc", "collection", "framework", "callback"]
+    },
+    {
+      "id": "s09-examen",
+      "chapter": 5,
+      "title": "Fíjate en el verbo",
+      "goal": "Una tarjeta de «pregunta de clasificar» genérica: una actividad en una línea y las tres fases en columna (`verbs`). Tres filas (`words`) con las palabras clave de la lección, cada una junto a su fase: «convert · decode · translate · normalize · detonate» con Processing & Exploitation; «judgment · assessment · hypothesis» con Analysis & Production; «requirements · tasking» con Planning & Direction. Cierre (`direct`): el sello «los requirements dirigen la colección, no al revés». Sin ninguna pregunta real del banco de la lección",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "requiredCues": ["verbs", "words", "direct"]
+    },
+    {
+      "id": "s10-cierre",
+      "chapter": 5,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, una cada vez, con sus iconos: (`rule-1`) la comanda va primero; (`rule-2`) un PIR se prueba con una decisión; (`rule-3`) el ciclo se cierra con feedback y, en un incidente, gira más rápido con F3EAD. Resumen en tira (`recap`), antes de la primera. Tarjeta final Alertópolis (`next`, `endcard`): «Tu turno: Lab 1B · PIR Workshop · y las doce preguntas de las dos lecciones». El vídeo no resuelve el laboratorio ni da su lista de PIRs. Descargo: no afiliado a SANS/GIAC",
+      "targetSec": 28,
+      "wordBudget": 76,
+      "requiredCues": ["recap", "rule-1", "rule-2", "rule-3", "next", "endcard"]
+    }
+  ]
+}

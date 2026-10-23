@@ -1,0 +1,234 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "adversaryVoice": {
+    "voice": "sapi/Microsoft Pablo",
+    "rate": 0,
+    "fx": "machine"
+  },
+  "sfx": {
+    "board": "mail",
+    "soc": "ping2",
+    "error": "error",
+    "back": "check"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> Hoy te llegan dos sobres. {board}En uno, el consejo pregunta hacia dónde va el sector. {soc}En el otro, el SOC, qué tiene que bloquear ya.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Los dos piden inteligencia, pero no la misma. {promise}Verás los tres niveles, la escala de la seguridad y por qué no se empieza por el tejado.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-niveles",
+      "text": "<warm> {club}La inteligencia no es para todos, es para alguien. Como en un club de fútbol. {pitch}El jugador en el campo necesita la jugada de ahora.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-niveles",
+      "text": "<curious> {rival}El entrenador estudia al rival toda la semana, {years}y la directiva decide en qué invertir los próximos años.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-niveles",
+      "text": "<clear> {tactical}Con las amenazas pasa igual. Lo de ahora es el nivel tactical, el del SOC, con indicadores y reglas de horas o días.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-niveles",
+      "text": "<focused> {operational}Estudiar al rival es el operational, para quien caza amenazas y pregunta cómo opera este grupo. Informes de campaña de semanas o meses.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-niveles",
+      "text": "<confident> {strategic}Y lo de la directiva es el strategic, para el CISO y el consejo, que deciden dónde invertir. Tendencias de meses o años.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-niveles",
+      "text": "<firm> {lens}O sea, el nivel lo marca quién lee, qué decide y para cuándo.",
+      "pauseAfterMs": 600,
+      "exam": {
+        "objective": "Requirements",
+        "text": "Tactical: SOC. Operational: hunters. Strategic: dirección",
+        "at": "lens",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-error",
+      "text": "<sarcastic> {reply-fox}Seria, sí, EMBER FOX. Útil, ya es otra cosa. Imagina que cruzas los sobres.",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "Mándale al consejo las IP, tranquilo. Cuantas más, más seria parece.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-error",
+      "text": "<tense> {swap}Al consejo le llega una lista de [4.000|cuatro mil] direcciones IP. {board-gets}Con eso no puede decidir dónde invertir ni qué riesgo aceptar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-error",
+      "text": "<casual> {soc-gets}Y al SOC, un análisis de tendencias del sector. {soc-none}Muy interesante, pero ni una regla ni un indicador para hoy.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-error",
+      "text": "<firm> {error}Los dos se quedan sin respuesta. Es el error clásico, darle a cada uno lo del otro.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-error",
+      "text": "<calm> {mix-rule}Por eso hay una regla que no se negocia, producto correcto para audiencia correcta. Antes de escribir, mira quién lee.",
+      "pauseAfterMs": 650,
+      "exam": {
+        "objective": "Requirements",
+        "text": "Producto correcto para la audiencia correcta",
+        "at": "mix-rule",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-escala",
+      "text": "<engaging> {scale}Ahora, la escala que ordena las inversiones de seguridad en cinco categorías, la Sliding Scale of Cyber Security. Imagínate una casa.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-escala",
+      "text": "<clear> {arch}Primero, cimientos y paredes, o sea, Architecture, con segmentación y parcheo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-escala",
+      "text": "<focused> {passive}Luego, la puerta blindada, que protege sin que nadie la maneje. Eso es Passive Defense, como un cortafuegos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-escala",
+      "text": "<curious> {active}Después, el vigilante que hace la ronda, una persona al mando. Eso es Active Defense, con monitorización y caza de amenazas.",
+      "pauseAfterMs": 350,
+      "exam": {
+        "objective": "Requirements",
+        "text": "Active Defense: hunting y monitorización",
+        "at": "active",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-escala",
+      "text": "<confident> {intel}Encima va el tejado, Intelligence, que es conocer al adversario para informar al resto.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-escala",
+      "text": "<clear> {offense}Y fuera de la casa queda Offense, acciones legales de respuesta contra el adversario, casi siempre cosa de estados.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-escala",
+      "text": "<engaging> {classify}Un EDR bloquea malware conocido sin que nadie intervenga. ¿En qué categoría va?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "EDR que bloquea solo: ¿qué categoría?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s04-08",
+      "scene": "s04-escala",
+      "text": "<firm> {answer}Passive Defense, porque protege sin que intervenga nadie.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-tejado",
+      "text": "<sarcastic> {reply-fox2}Qué buen atajo, saltarte los parches. Pero ¿quién va a usar esa inteligencia?",
+      "pauseAfterMs": 300,
+      "intercept": {
+        "text": "Compra buena inteligencia y no te compliques. Los parches, ya si eso.",
+        "holdMs": 3500
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-tejado",
+      "text": "<thoughtful> {multiplies}La inteligencia multiplica lo demás, no lo sustituye. Lo primero de la escala da la base, y lo de después solo rinde si esa base existe.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Requirements",
+        "text": "Intelligence multiplica lo demás, no lo sustituye",
+        "at": "multiplies",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-tejado",
+      "text": "<serious> {roof}Sin una base defendible, tu informe es un tejado sin casa. Llega y no hay quién lo use. Es empezar por el tejado.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-tejado",
+      "text": "<warm> {enable}Con base, en cambio, tu informe sirve al SOC, a la respuesta y a la dirección. {back}Y los dos sobres llevan lo suyo.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-recap",
+      "text": "<engaging> {recap}Tres reglas. {rule-1}El nivel lo marca quién lee, qué decide y para cuándo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-recap",
+      "text": "<clear> {rule-2}Producto correcto para audiencia correcta, sin cruzar los sobres.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-recap",
+      "text": "<confident> {rule-3}Y en la escala, primero la base, y encima la inteligencia.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-recap",
+      "text": "<warm> {next}Te quedan las seis preguntas de la lección. {endcard}Y que cada sobre llegue a quien lo abre.",
+      "pauseAfterMs": 700
+    }
+  ]
+}

@@ -104,7 +104,7 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
     exam: {
       name: 'Simulacro GCTI',
       realFormat:
-        'Preguntas muestreadas de los 5 dominios del curso, cronometradas y sin feedback inmediato — como el examen real (75 preguntas, 2 h, open-book).',
+        'Preguntas muestreadas de los 5 dominios del curso, cronometradas y sin feedback inmediato — como el examen real (82 preguntas, 3 h, open-book; cifras de la página oficial en octubre de 2026).',
       passPct: 75,
       sprint: { n: 25, minutes: 30 },
       full: { n: 50, minutes: 60 },
