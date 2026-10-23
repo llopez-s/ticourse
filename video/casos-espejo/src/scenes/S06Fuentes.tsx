@@ -47,7 +47,7 @@ export function S06Fuentes(props: SceneProps) {
   const sweep = progress(frame, redacted + 6, 34, EASE.inOut);
   const youAt = segment(props, 's06-03').from + 4;
   const choiceAt = wordFrame(S, 's06-04', 'haces') - 4;
-  const shift = progress(frame, Math.min(think.from, choiceAt) - 20, 20, EASE.inOut) * 96;
+  const shift = progress(frame, Math.min(think.from, choiceAt) - 20, 20, EASE.inOut) * 170;
   const w = progress(frame, weigh, 14, EASE.inOut);
   const pair = progress(frame, pairAt - 4, 16, EASE.inOut);
   const evalAt = wordFrame(S, 's06-06', 'fuente') - 6;
@@ -57,14 +57,14 @@ export function S06Fuentes(props: SceneProps) {
     <Stage>
       <div style={{ position: 'absolute', left: 0, top: 0, width: W, height: STAGE.height, transform: `translateY(${shift}px)` }}>
         {/* The document, with its black bars */}
-        <Pop at={redacted - 4} frame={frame} x={0} y={10} w={540} h={470} out={w} distance={24}>
-          <Paper w={540} h={470} tone="sky" light kicker="documento del gobierno" title="Atribución" titleSize={50} lines={8} redact={[0, 1, 3, 4, 6, 7]} sweep={sweep} legible={<>Conclusión: atribuida a un estado</>} legibleSize={31} glow={0.2} />
+        <Pop at={redacted - 4} frame={frame} x={0} y={10} w={540} h={440} out={w} distance={24}>
+          <Paper w={540} h={440} tone="sky" light kicker="documento del gobierno" title="Atribución" titleSize={50} lines={6} redact={[0, 1, 3, 4]} sweep={sweep} legible={<>Conclusión: atribuida a un estado</>} legibleSize={31} glow={0.2} />
         </Pop>
 
-        {/* The pile: the same document as one more source */}
-        <Pop at={weigh + 6} frame={frame} x={0} y={40} w={540} h={440} distance={30}>
+        {/* The pile: the same document as one more source, evaluated */}
+        <Pop at={weigh + 6} frame={frame} x={0} y={40} w={540} h={330} out={pair * 0} distance={30}>
           {[2, 1, 0].map((k) => (
-            <div key={k} style={{ position: 'absolute', left: k * 18, top: 40 + (2 - k) * 0, width: 470, height: 150, transform: `translateY(${-k * 18 + 20}px)` }}>
+            <div key={k} style={{ position: 'absolute', left: k * 18, top: 40, width: 470, height: 150, transform: `translateY(${-k * 18 + 20}px)` }}>
               <Card tone={k === 0 ? 'sky' : 'muted'} pad={0} style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '0 24px', opacity: k === 0 ? 1 : 0.9 }}>
                 <Icon name="file" size={52} color={k === 0 ? C.sky : C.muted} strokeWidth={2} />
                 <span style={{ fontSize: 36, fontWeight: 800, color: k === 0 ? C.textStrong : C.muted }}>{k === 0 ? 'documento del gobierno' : 'otra fuente'}</span>
@@ -75,14 +75,17 @@ export function S06Fuentes(props: SceneProps) {
             <Tick size={44} />
             una fuente más, evaluada
           </div>
-          <div style={{ position: 'absolute', left: 0, top: 296, display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {['peso único', 'base opaca', 'fines propios'].map((c, i) => (
-              <div key={c} style={{ opacity: progress(frame, chipAt[i], 12), transform: `translateX(${(1 - progress(frame, chipAt[i], 12)) * -20}px)`, display: 'inline-flex', alignSelf: 'flex-start', padding: '4px 22px', borderRadius: RADIUS.pill, border: `2px solid ${alpha(C.sky, 0.7)}`, background: alpha(C.sky, 0.1), fontFamily: FONT.sans, fontSize: 34, fontWeight: 800, color: C.textStrong }}>
+        </Pop>
+        <div style={{ position: 'absolute', left: COL_X, top: 40, width: COL_W, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 22, opacity: 1 - pair }}>
+          {['peso único', 'base opaca', 'fines propios'].map((c, i) => {
+            const e = progress(frame, chipAt[i], 12);
+            return (
+              <div key={c} style={{ opacity: e, transform: `translateX(${(1 - e) * -30}px)`, display: 'inline-flex', padding: '8px 34px', borderRadius: RADIUS.pill, border: `3px solid ${alpha(C.sky, 0.75)}`, background: alpha(C.sky, 0.12), fontFamily: FONT.sans, fontSize: 48, fontWeight: 850, color: C.textStrong }}>
                 {c}
               </div>
-            ))}
-          </div>
-        </Pop>
+            );
+          })}
+        </div>
 
         {/* Classes of source the public cannot review */}
         <Pop at={unseen - 8} frame={frame} x={COL_X} y={10} distance={16} out={w}>
@@ -90,19 +93,19 @@ export function S06Fuentes(props: SceneProps) {
             puede apoyarse en fuentes <span style={{ color: C.sky }}>como…</span>
           </div>
         </Pop>
-        <Pop at={unseen} frame={frame} x={COL_X} y={76} w={COL_W} h={108} out={w} axis="x" distance={50}>
+        <Pop at={unseen} frame={frame} x={COL_X} y={74} w={COL_W} h={94} out={w} axis="x" distance={50}>
           <Card tone="sky" pad={0} style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '0 26px' }}>
             <Disc icon="radar" size={70} tone="sky" />
             <span style={{ fontSize: 40, fontWeight: 850, color: C.textStrong }}>SIGINT <span style={{ color: C.muted, fontWeight: 650, fontSize: 34 }}>· comunicaciones interceptadas</span></span>
           </Card>
         </Pop>
-        <Pop at={unseen + 16} frame={frame} x={COL_X} y={198} w={COL_W} h={108} out={w} axis="x" distance={50}>
+        <Pop at={unseen + 16} frame={frame} x={COL_X} y={180} w={COL_W} h={94} out={w} axis="x" distance={50}>
           <Card tone="sky" pad={0} style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '0 26px' }}>
             <Disc icon="search" size={70} tone="sky" />
             <span style={{ fontSize: 40, fontWeight: 850, color: C.textStrong }}>evidencia técnica parcial</span>
           </Card>
         </Pop>
-        <Pop at={youAt} frame={frame} x={COL_X} y={326} w={COL_W} h={72} out={Math.max(w, progress(frame, choiceAt - 2, 10))} distance={16}>
+        <Pop at={youAt} frame={frame} x={COL_X} y={292} w={COL_W} h={64} out={Math.max(w, progress(frame, choiceAt - 2, 10))} distance={16}>
           <Card tone="amber" pad={0} radius={RADIUS.pill} style={{ display: 'flex', alignItems: 'center', gap: 18, padding: '0 28px' }}>
             <Icon name="eyeOff" size={40} color={C.amber} strokeWidth={2} />
             <span style={{ fontSize: 34, fontWeight: 800, color: '#fde68a' }}>tu red no tiene esta clase de fuente</span>
@@ -110,8 +113,8 @@ export function S06Fuentes(props: SceneProps) {
         </Pop>
 
         {/* The question: two boxes, unmarked until the answer */}
-        <div style={{ position: 'absolute', left: COL_X, top: 408, width: COL_W, height: 110, opacity: (1 - pair) }}>
-          {frame >= choiceAt ? <Choices frame={frame} at={choiceAt} markAt={weigh} options={['ignorar', 'pesar']} chosen={1} width={COL_W} /> : null}
+        <div style={{ position: 'absolute', left: COL_X, top: 366, width: COL_W, height: 96, opacity: (1 - pair) }}>
+          {frame >= choiceAt ? <Choices frame={frame} at={choiceAt} markAt={weigh} options={['ignorar', 'pesar']} chosen={1} width={COL_W} height={96} /> : null}
         </div>
 
         {/* A private company and a government: complementary papers */}

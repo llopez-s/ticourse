@@ -50,6 +50,8 @@ export function S02Abierto(props: SceneProps) {
   const stampAt = wordFrame(S, 's02-02', 'cambiar') - 4;
   const boxAt = wordFrame(S, 's02-02', 'web') - 6;
   const cardOut = progress(frame, open - 12, 18, EASE.inOut);
+  // At `verify` the format card steps back: the eye goes to the stamp and the giac.org box.
+  const cardBack = progress(frame, verify, 14);
 
   // ---- the book
   const bookIn = progress(frame, open, 22);
@@ -91,6 +93,7 @@ export function S02Abierto(props: SceneProps) {
               left: 0,
               top: 24,
               width: 1020,
+              filter: cardBack > 0.02 ? `saturate(${1 - 0.4 * cardBack}) brightness(${1 - 0.25 * cardBack})` : undefined,
               height: 432,
               boxSizing: 'border-box',
               borderRadius: RADIUS.lg,

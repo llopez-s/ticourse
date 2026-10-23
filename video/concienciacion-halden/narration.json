@@ -49,7 +49,7 @@
     {
       "id": "s02-04",
       "scene": "s02-intencion",
-      "text": "<warm> {unintentional}En el tercero, alguien sube una foto del equipo, con una pizarra de sistemas al fondo. Ni se dio cuenta de lo que enseñaba. Es unintentional behavior, y se previene con diseño y formación.",
+      "text": "<warm> {unintentional}En el tercero, alguien sube una foto de grupo, con una pizarra de sistemas al fondo. Ni se dio cuenta de lo que enseñaba. Es unintentional behavior, y se previene con diseño y formación.",
       "pauseAfterMs": 400
     },
     {
@@ -67,11 +67,11 @@
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}En otra empresa, para no esperar al técnico, un empleado instala en el navegador una extensión que convierte documentos. La política no la permite, y él acepta la advertencia. Resulta que subía cada documento a un servidor de fuera, y él no lo sabía. ¿Cómo se clasifica mejor su comportamiento? {best}Ojo con ese «mejor». No busca una que valga, sino la que más sirve en este caso.",
+      "text": "<intrigued> {q1}En otra empresa, para no esperar al técnico, un empleado instala en el navegador una extensión que convierte documentos. La advertencia dice que la empresa no la permite, y él la acepta. Resulta que subía cada documento a un servidor de fuera, y él no lo sabía. ¿Cómo se clasifica mejor su comportamiento? {best}Ojo con ese «mejor». No busca una que valga, sino la que más sirve en este caso.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.6",
-        "scenario": "Para no esperar, un empleado instala una extensión que la política prohíbe y acepta la advertencia. Subía cada documento fuera, y él no lo sabía.",
+        "scenario": "Para no esperar, un empleado instala una extensión que la empresa prohíbe, y acepta la advertencia. Subía cada documento fuera, y él no lo sabía.",
         "q": "¿Cómo se clasifica MEJOR su comportamiento?",
         "options": [
           "Unexpected behavior",
@@ -179,7 +179,7 @@
       "pauseAfterMs": 300,
       "exam": {
         "objective": "5.6",
-        "text": "Initial al entrar; recurring, siempre",
+        "text": "Initial al entrar; recurring, periódica",
         "at": "recurring",
         "holdSec": 5
       }

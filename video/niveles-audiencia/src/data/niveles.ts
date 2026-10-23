@@ -172,15 +172,16 @@ export const S05 = {
   multiplies: ['Intelligence multiplica el valor', 'de las demás, no las sustituye'] as const,
   left: 'base, mejor retorno',
   right: 'solo rinde si la base existe',
+  rightLines: ['solo rinde si', 'la base existe'] as const,
   roof: 'sin base defendible, nadie lo aplica',
   report: 'informe de inteligencia',
   /** The lesson's «La inteligencia habilita a otros equipos» list. */
   enables: [
-    { name: 'SOC', sub: 'priorización con contexto de actor y campaña' },
-    { name: 'IR', sub: 'saber quién es y qué hará cambia la contención' },
+    { name: 'SOC', sub: 'priorización de alertas con contexto de actor y campaña' },
+    { name: 'IR', sub: 'saber quién probablemente es y qué hará cambia la contención' },
     { name: 'Gestión de vulnerabilidades', sub: 'priorizar los CVEs que las amenazas reales explotan' },
-    { name: 'Red team', sub: 'emulación de adversarios con TTPs observados' },
-    { name: 'Dirección', sub: 'inversión y riesgo según el panorama real' },
+    { name: 'Red team', sub: 'emulación de adversarios basada en TTPs observados' },
+    { name: 'Dirección', sub: 'decisiones de inversión y riesgo basadas en el panorama real' },
   ],
 } as const;
 

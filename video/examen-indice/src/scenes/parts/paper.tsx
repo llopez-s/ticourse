@@ -115,6 +115,7 @@ export function IndexLine({
   empty,
   fill = 1,
   rotate = 0,
+  cols = [0.27, 0.52, 0.21],
   style,
 }: {
   term?: string;
@@ -128,9 +129,10 @@ export function IndexLine({
   /** 0–1: how much of an empty template is filled in (slots light one by one). */
   fill?: number;
   rotate?: number;
+  /** Column widths as fractions of the line (term, note, where). */
+  cols?: readonly [number, number, number];
   style?: CSSProperties;
 }) {
-  const cols = [0.27, 0.52, 0.21];
   const cells = empty ? empty : [term ?? '', note ?? '', where ?? ''];
   const tone = state === 'good' ? PAPER.green : state === 'pointer' ? PAPER.amber : PAPER.cyan;
   return (
@@ -300,4 +302,9 @@ export function Tag({
       {children}
     </span>
   );
+}
+
+/** Multiplies the opacity of an `enter(...)` result by `k` (so a second opacity does not overwrite the first). */
+export function withOpacity(e: { opacity: number; transform: string }, k: number): { opacity: number; transform: string } {
+  return { ...e, opacity: e.opacity * k };
 }

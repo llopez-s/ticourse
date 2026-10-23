@@ -1,8 +1,8 @@
 import { useCurrentFrame } from 'remotion';
 import type { SceneProps } from '../../../engine/src/timeline/types';
 import { C, FONT, RADIUS, STAGE, alpha } from '../../../engine/src/theme/tokens';
-import { EASE, enter, progress } from '../../../engine/src/theme/motion';
-import { Icon, mix, type IconName } from '../../../engine/src/ui';
+import { EASE, progress } from '../../../engine/src/theme/motion';
+import { Icon, type IconName } from '../../../engine/src/ui';
 import { Arrow, Card, Disc, Pop } from './parts/bits';
 import { Diamond4 } from './parts/Diamond4';
 import { Dossier } from './parts/Dossier';
@@ -67,29 +67,29 @@ export function S04Convergencia(props: SceneProps) {
   const heavy = progress(frame, converge, 20);
   const lines = progress(frame, converge - 6, 24, EASE.inOut);
   const ruleIn = progress(frame, converge + 8, 18);
-  const dossierX = 760;
+  const dossierX = 800;
 
   return (
     <Stage>
       {/* The APT1 report, dim and low under the message */}
-      <Pop at={-10} frame={frame} x={500} y={210} out={docOut} dim={0.5}>
+      <Pop at={-10} frame={frame} x={500} y={210} out={docOut} dim={0.5 * progress(frame, reply, 12)}>
         <Paper w={700} h={420} tone="sky" kicker="informe publicado" title="APT1" titleSize={92} lines={4} legible={<>espionaje económico documentado durante años</>} legibleSize={34} />
       </Pop>
 
       {/* The diamond with the lesson's table */}
       <div style={{ position: 'absolute', left: 0, top: 0, opacity: big }}>
+        {/* the band «años» crossing the four vertices (behind the cards) */}
+        {frame >= yearsAt - 4 ? (
+          <div style={{ position: 'absolute', left: 6, top: BIG.cy - 22, width: 1100 * progress(frame, yearsAt, 36, EASE.inOut), height: 44, borderRadius: RADIUS.pill, background: `linear-gradient(90deg, ${alpha(C.amber, 0.05)} 0%, ${alpha(C.amber, 0.5)} 100%)` }} />
+        ) : null}
         <Diamond4
           {...BIG}
-          cardW={340}
+          cardW={360}
           items={ITEMS}
           show={[progress(frame, diamond, 14), progress(frame, diamond + 5, 14), progress(frame, diamond + 10, 14), progress(frame, diamond + 15, 14)]}
           itemShow={itemP}
           edges={progress(frame, diamond, 40, EASE.inOut)}
         />
-        {/* the band «años» crossing the four vertices */}
-        {frame >= yearsAt - 4 ? (
-          <div style={{ position: 'absolute', left: 6, top: BIG.cy - 22, width: 1100 * progress(frame, yearsAt, 36, EASE.inOut), height: 44, borderRadius: RADIUS.pill, background: `linear-gradient(90deg, ${alpha(C.amber, 0.05)} 0%, ${alpha(C.amber, 0.5)} 100%)`, zIndex: 0 }} />
-        ) : null}
         <Pop at={yearsAt + 18} frame={frame} x={BIG.cx - 90} y={BIG.cy - 30} distance={10}>
           <div style={{ fontFamily: FONT.sans, fontSize: 44, fontWeight: 900, letterSpacing: 4, color: '#fde68a', background: alpha(C.ink900, 0.9), padding: '2px 22px', borderRadius: RADIUS.pill, border: `2px solid ${alpha(C.amber, 0.7)}` }}>años</div>
         </Pop>
@@ -111,10 +111,10 @@ export function S04Convergencia(props: SceneProps) {
         <div style={{ fontFamily: FONT.sans, fontSize: 28, fontWeight: 700, letterSpacing: 2, color: C.muted, textTransform: 'uppercase' }}>según el informe, además</div>
       </Pop>
       {META.map((m, i) => (
-        <Pop key={m.text} at={metaAt[i]} frame={frame} x={i * 580} y={536} w={568} h={114} out={metaOut} distance={20}>
+        <Pop key={m.text} at={metaAt[i]} frame={frame} x={[0, 546, 1122][i]} y={534} w={[530, 560, 606][i]} h={118} out={metaOut} distance={20}>
           <Card tone="cyan" pad={0} style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '0 20px' }}>
             <Disc icon={m.icon} size={60} />
-            <span style={{ fontSize: i === 2 ? 28 : 31, fontWeight: 750, lineHeight: 1.16, color: C.textStrong }}>{m.text}</span>
+            <span style={{ fontSize: 30, fontWeight: 750, lineHeight: 1.16, color: C.textStrong }}>{m.text}</span>
           </Card>
         </Pop>
       ))}
@@ -130,10 +130,10 @@ export function S04Convergencia(props: SceneProps) {
         const at = littleAt + i * 8;
         const go = join;
         return (
-          <Pop key={s} at={at} frame={frame} x={1290 - go * 360} y={86 + i * 112 + go * (110 - i * 60)} w={420} h={96} out={join > 0.98 ? 1 : 0} style={{ opacity: Math.min(progress(frame, at, 16), 1 - 0.8 * go) }} distance={30} axis="x">
-            <Card tone="cyan" pad={0} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 14, padding: '0 22px' }}>
-              <span style={{ fontSize: 36, fontWeight: 800, color: C.textStrong }}>{s}</span>
-              <span style={{ fontSize: 26, fontWeight: 700, color: C.muted }}>pesa muy poco</span>
+          <Pop key={s} at={at} frame={frame} x={1330 - go * 380} y={86 + i * 112 + go * (110 - i * 60)} w={398} h={100} out={join > 0.98 ? 1 : 0} style={{ opacity: Math.min(progress(frame, at, 16), 1 - 0.8 * go) }} distance={30} axis="x">
+            <Card tone="cyan" pad={0} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2, padding: '0 24px' }}>
+              <span style={{ fontSize: 38, fontWeight: 800, color: C.textStrong, lineHeight: 1.1 }}>{s}</span>
+              <span style={{ fontSize: 28, fontWeight: 700, color: C.muted }}>pesa muy poco</span>
             </Card>
           </Pop>
         );
@@ -142,16 +142,16 @@ export function S04Convergencia(props: SceneProps) {
       {/* Convergence: every line to the same place */}
       <div style={{ position: 'absolute', left: 0, top: 0 }}>
         {[0, 1, 2].map((i) => (
-          <Arrow key={`l${i}`} x1={560} y1={80 + i * 90} x2={dossierX - 6} y2={170 + i * 70} p={lines} color={C.emerald} width={5} />
+          <Arrow key={`l${i}`} x1={650} y1={90 + i * 90} x2={dossierX - 6} y2={170 + i * 70} p={lines} color={C.emerald} width={5} />
         ))}
         {[0, 1, 2].map((i) => (
-          <Arrow key={`r${i}`} x1={1690} y1={90 + i * 100} x2={dossierX + 470 + 6} y2={170 + i * 70} p={lines} color={C.emerald} width={5} />
+          <Arrow key={`r${i}`} x1={1700} y1={90 + i * 100} x2={dossierX + 470 + 6} y2={170 + i * 70} p={lines} color={C.emerald} width={5} />
         ))}
       </div>
 
       {/* The rule */}
       {ruleIn > 0 ? (
-        <div style={{ position: 'absolute', left: 560, top: 478, width: W - 560, height: 150, opacity: ruleIn, transform: `translateY(${(1 - ruleIn) * 18}px)` }}>
+        <div style={{ position: 'absolute', left: 640, top: 478, width: W - 640, height: 150, opacity: ruleIn, transform: `translateY(${(1 - ruleIn) * 18}px)` }}>
           <Card tone="emerald" glow={heavy * 0.6} pad={0} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 6, padding: '0 34px' }}>
             <div style={{ fontSize: 40, fontWeight: 800, color: C.muted, textDecoration: 'line-through', textDecorationColor: C.rose, textDecorationThickness: 4 }}>no hay pistola humeante</div>
             <div style={{ fontSize: 56, fontWeight: 900, letterSpacing: -1, color: C.textStrong }}>
@@ -162,10 +162,10 @@ export function S04Convergencia(props: SceneProps) {
       ) : null}
 
       {/* The mirror */}
-      <Pop at={mirror} frame={frame} x={0} y={398} w={520} distance={18}>
+      <Pop at={mirror} frame={frame} x={0} y={396} w={620} distance={18}>
         <div style={{ fontFamily: FONT.sans }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 40, fontWeight: 850, color: C.textStrong }}>
-            <Icon name="target" size={42} color={C.cyan} strokeWidth={2} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 36, fontWeight: 850, color: C.textStrong, whiteSpace: 'nowrap' }}>
+            <Icon name="target" size={40} color={C.cyan} strokeWidth={2} />
             tu diamante, cuatro esquinas
           </div>
           <div style={{ marginTop: 12, fontSize: 30, fontWeight: 650, color: C.muted, lineHeight: 1.2 }}>hasta dónde llegas depende de tus fuentes</div>

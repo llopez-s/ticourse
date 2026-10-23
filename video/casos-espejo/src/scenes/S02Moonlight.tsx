@@ -6,7 +6,7 @@ import { Icon } from '../../../engine/src/ui';
 import { Arrow, Card, Disc, Pop, VcStamp } from './parts/bits';
 import { Folder } from './parts/Folder';
 import { Notebook } from './parts/Notebook';
-import { Stage, interceptWindow, wordFrame } from './kit';
+import { Stage, wordFrame } from './kit';
 
 const S = 's02-moonlight';
 const W = STAGE.width;
@@ -35,7 +35,6 @@ export function S02Moonlight(props: SceneProps) {
   const persist = props.cue('mm-persist');
   const reply = props.cue('mm-reply');
   const notebook = props.cue('mm-notebook');
-  const icp = interceptWindow(S, 's02-05');
 
   const lineAt = CASE_LINES.map((l) => Math.max(mmCase + 4, wordFrame(S, l.seg, l.word) - 6));
   const firstAt = wordFrame(S, 's02-02', 'Suele') - 6;
@@ -59,13 +58,13 @@ export function S02Moonlight(props: SceneProps) {
     <Stage>
       {/* A: the folder, its lines and two cards */}
       <Pop at={mmCase} frame={frame} x={0} y={20} out={Math.max(aOut, phaseB)} distance={26}>
-        <Folder w={820} h={332} title="MOONLIGHT MAZE" titleSize={62} tone="sky">
-          <div style={{ marginTop: 22, display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <Folder w={880} h={372} title="MOONLIGHT MAZE" titleSize={70} tone="sky">
+          <div style={{ marginTop: 26, display: 'flex', flexDirection: 'column', gap: 18 }}>
             {CASE_LINES.map((l, i) => {
               const e = enter(frame, lineAt[i], { distance: 16, axis: 'x' });
               return (
-                <div key={l.text} style={{ display: 'flex', alignItems: 'center', gap: 16, fontSize: 32, fontWeight: 700, color: C.text, whiteSpace: 'nowrap', ...e }}>
-                  <Icon name={l.icon} size={34} color={C.sky} strokeWidth={2} />
+                <div key={l.text} style={{ display: 'flex', alignItems: 'center', gap: 18, fontSize: 35, fontWeight: 700, color: C.text, whiteSpace: 'nowrap', ...e }}>
+                  <Icon name={l.icon} size={38} color={C.sky} strokeWidth={2} />
                   {l.text}
                 </div>
               );
@@ -73,32 +72,32 @@ export function S02Moonlight(props: SceneProps) {
           </div>
         </Folder>
       </Pop>
-      <Pop at={firstAt} frame={frame} x={880} y={20} w={848} h={170} out={Math.max(aOut, phaseB)}>
+      <Pop at={firstAt} frame={frame} x={940} y={20} w={788} h={190} out={Math.max(aOut, phaseB)}>
         <Card tone="cyan" pad={0} style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '0 28px' }}>
           <Disc icon="flag" size={72} />
-          <span style={{ fontSize: 34, fontWeight: 750, lineHeight: 1.2, color: C.textStrong }}>suele considerarse una de las primeras intrusiones estatales investigadas a gran escala</span>
+          <span style={{ fontSize: 36, fontWeight: 750, lineHeight: 1.2, color: C.textStrong }}>suele considerarse una de las primeras intrusiones estatales investigadas a gran escala</span>
         </Card>
       </Pop>
-      <Pop at={yearsAt} frame={frame} x={880} y={212} w={848} h={140} out={Math.max(aOut, phaseB)}>
+      <Pop at={yearsAt} frame={frame} x={940} y={228} w={788} h={150} out={Math.max(aOut, phaseB)}>
         <Card tone="cyan" pad={0} style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '0 28px' }}>
           <Disc icon="users" size={72} />
-          <span style={{ fontSize: 36, fontWeight: 750, lineHeight: 1.2, color: C.textStrong }}>años de investigación · cooperación multiagencia</span>
+          <span style={{ fontSize: 38, fontWeight: 750, lineHeight: 1.2, color: C.textStrong }}>años de investigación · cooperación multiagencia</span>
         </Card>
       </Pop>
 
       {/* The tool's timeline: dateless, along the bottom */}
       <div style={{ position: 'absolute', left: 0, top: 0, width: W, height: STAGE.height, opacity: Math.max(0, 1 - phaseB) * (frame >= mmTool - 12 ? 1 : 0) }}>
-        <div style={{ position: 'absolute', left: 150, top: 584, width: (1560 - 150) * tlDraw, height: 6, borderRadius: 3, background: `linear-gradient(90deg, ${C.sky}, ${alpha(C.sky, 0.4)})` }} />
-        <div style={{ position: 'absolute', left: 150, top: 538, width: 1410, textAlign: 'center', fontFamily: FONT.sans, fontSize: 30, fontWeight: 650, color: C.muted, opacity: progress(frame, mmTool + 20, 14) }}>mucho tiempo después</div>
-        <div style={{ position: 'absolute', left: 30, top: 540, opacity: progress(frame, mmTool - 6, 14), fontFamily: FONT.sans, textAlign: 'center' }}>
+        <div style={{ position: 'absolute', left: 150, top: 590, width: (1560 - 150) * tlDraw, height: 6, borderRadius: 3, background: `linear-gradient(90deg, ${C.sky}, ${alpha(C.sky, 0.4)})` }} />
+        <div style={{ position: 'absolute', left: 150, top: 546, width: 1410, textAlign: 'center', fontFamily: FONT.sans, fontSize: 30, fontWeight: 650, color: C.muted, opacity: progress(frame, mmTool + 20, 14) }}>mucho tiempo después</div>
+        <div style={{ position: 'absolute', left: 30, top: 546, opacity: progress(frame, mmTool - 6, 14), fontFamily: FONT.sans, textAlign: 'center' }}>
           <Disc icon="gear" size={92} tone="sky" glow={toolGlow * 0.6} />
         </div>
-        <div style={{ position: 'absolute', left: 130, top: 612, fontFamily: FONT.sans, fontSize: 28, fontWeight: 700, color: C.sky, opacity: progress(frame, mmTool - 6, 14), whiteSpace: 'nowrap' }}>la herramienta de la carpeta</div>
-        <div style={{ position: 'absolute', left: 1584, top: 540, opacity: rightNode, transform: `scale(${0.8 + 0.2 * rightNode})` }}>
+        <div style={{ position: 'absolute', left: 130, top: 618, fontFamily: FONT.sans, fontSize: 28, fontWeight: 700, color: C.sky, opacity: progress(frame, mmTool - 6, 14), whiteSpace: 'nowrap' }}>la herramienta de la carpeta</div>
+        <div style={{ position: 'absolute', left: 1584, top: 546, opacity: rightNode, transform: `scale(${0.8 + 0.2 * rightNode})` }}>
           <Disc icon="gear" size={92} tone="sky" glow={0.3 + 0.6 * toolGlow} />
         </div>
       </div>
-      <Pop at={noteAt} frame={frame} x={980} y={398} w={748} h={128} out={Math.max(aOut, phaseB) * (1 - noteBack)} dim={0}>
+      <Pop at={noteAt} frame={frame} x={900} y={410} w={828} h={120} out={Math.max(aOut, phaseB) * (1 - noteBack)} dim={0}>
         <Card tone="sky" glow={toolGlow} pad={0} style={{ display: 'flex', alignItems: 'center', padding: '0 26px' }}>
           <span style={{ fontSize: 33, fontWeight: 700, lineHeight: 1.2, color: C.textStrong }}>
             análisis posteriores vincularon su tooling con actividad muy posterior <span style={{ color: C.roseSoft }}>(Turla)</span>
@@ -121,15 +120,15 @@ export function S02Moonlight(props: SceneProps) {
       ) : null}
 
       {/* B: the folder (left) and the group's notebook (right) */}
-      <Pop at={notebook - 6} frame={frame} x={0} y={170} distance={22}>
+      <Pop at={notebook - 6} frame={frame} x={0} y={210} distance={22}>
         <div style={{ opacity: phaseB }}>
           <Folder w={600} h={300} title="MOONLIGHT MAZE" titleSize={44} tone="sky">
             <div style={{ marginTop: 16, fontSize: 30, fontWeight: 650, color: C.muted, fontFamily: FONT.sans }}>caso cerrado, cuaderno abierto</div>
           </Folder>
         </div>
       </Pop>
-      <Pop at={notebook} frame={frame} x={900} y={100} w={640} h={360} distance={22}>
-        <Notebook w={640} h={360} tabs={tabs} label="cuaderno del grupo" glow={0.4}>
+      <Pop at={notebook} frame={frame} x={900} y={130} w={640} h={380} distance={22}>
+        <Notebook w={640} h={380} tabs={tabs} label="cuaderno del grupo" glow={0.4}>
           <div style={{ marginTop: 18 }}>
             <VcStamp size={30} />
           </div>
@@ -140,11 +139,11 @@ export function S02Moonlight(props: SceneProps) {
           </div>
         </Notebook>
       </Pop>
-      <Pop at={notebook + 14} frame={frame} x={900} y={64} out={0}>
+      <Pop at={notebook + 14} frame={frame} x={900} y={84} out={0}>
         <div style={{ fontFamily: FONT.sans, fontSize: 30, fontWeight: 700, color: C.cyanSoft }}>el grupo que ataca a Meridian</div>
       </Pop>
-      {phaseB > 0.5 ? <Arrow x1={620} y1={300} x2={880} y2={300} p={progress(frame, notebook + 8, 20)} color={C.cyan} dashed width={6} /> : null}
-      <Pop at={notebook + 24} frame={frame} x={0} y={512} w={W} distance={18}>
+      {phaseB > 0.5 ? <Arrow x1={620} y1={340} x2={880} y2={340} p={progress(frame, notebook + 8, 20)} color={C.cyan} dashed width={6} /> : null}
+      <Pop at={notebook + 24} frame={frame} x={0} y={556} w={W} distance={18}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, fontFamily: FONT.sans }}>
           <div style={{ fontSize: 42, fontWeight: 850, color: C.textStrong, whiteSpace: 'nowrap' }}>
             un <span style={{ color: C.cyan }}>intrusion set</span> <span style={{ color: C.muted, fontWeight: 650 }}>(lo que hace un mismo grupo)</span> atraviesa varias campañas

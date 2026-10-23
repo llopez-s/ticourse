@@ -38,7 +38,7 @@ export function FeedPanel({
   style?: CSSProperties;
 }) {
   const pad = 12;
-  const labelW = 104;
+  const labelW = 112;
   const track = width - 2 * pad - labelW - 12;
   return (
     <div
@@ -62,7 +62,7 @@ export function FeedPanel({
         const phase = hash(i, 2);
         return (
           <div key={i} style={{ height: rowH, display: 'flex', alignItems: 'center', gap: 12, opacity: p, transform: `translateX(${(1 - p) * -24}px)` }}>
-            <span style={{ width: labelW, flexShrink: 0, fontSize: 26, fontWeight: 700, color: C.text, whiteSpace: 'nowrap' }}>{`feed ${i + 1}`}</span>
+            <span style={{ width: labelW, flexShrink: 0, fontSize: 28, fontWeight: 700, color: C.text, whiteSpace: 'nowrap' }}>{`feed ${i + 1}`}</span>
             <div style={{ position: 'relative', width: track, height: 12, borderRadius: 6, background: alpha(C.ink700, 0.9), overflow: 'hidden' }}>
               {[0, 1, 2].map((k) => {
                 const x = (((frame - at) * speed + phase + k / 3) % 1 + 1) % 1;

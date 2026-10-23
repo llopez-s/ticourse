@@ -123,3 +123,19 @@ las de después de la revisión: **58 segmentos, 1.225 palabras, 558,8 s estimad
 **Dudas del autor (decisiones del informe):** 1) pregunta 3 se conserva con el escenario reforzado (A-1). 2) pregunta 5 se conserva, «Port scanning» como segunda trampa (A-2). 3) management attestation se conserva (A-6). 4) audit committee y regulatory examination siguen la lección (A-9). 5) el condicional es lo correcto (A-3).
 
 **Pendiente, sin hacer (fuera de este encargo):** ningún cambio de lección ni de flashcards. Canon nuevo por apuntar al cerrar (A-9): la firma de la management attestation ante la autoridad marítima antes de la revisión anual; la independent third-party audit «ya encargada»; el audit committee; el plan de pentest (rules of engagement, primero purple y después red team sin avisar, objetivo «un fichero marcado en un servidor de pruebas», «aplicación nueva known / lo que se ve desde fuera unknown», dos semanas de reconocimiento); las tres imágenes (ascensor, puente, sala de escape); la quinta acta de PAPER GOVERNOR; los cinco escenarios.
+
+## Comparación con la rama (2026-10-23)
+
+Se comparó el guion congelado de `main` con la versión de `origin/video-auditoria-halden` (2026-10-17) y se decidió quedarse con `main`, añadiendo solo lo que el informe de comparación marcó como recomendado. `"frozen"` sigue en `2026-10-23`. No cambia ninguna clave ni trampa de las cinco preguntas, ningún id de segmento, ningún cue ni `requiredCues`, y `narration.json` y `storyboard.json` conservan su número de líneas.
+
+**Aplicados (4, los recomendados).**
+- `s05-04`, «control a control»: «Esta va control a control, con evidencias y muestras.» (cue `audit` intacto; −3 palabras). «Cumples el estándar» ya está en `s05-03` y en el rótulo de la columna.
+- `s11-03`, nexo causal: se añade «Se ve, por eso se pacta.» tras el cue `log-lines` (+6 palabras). No lleva cue propio: la pantalla sigue en `log-lines`. El `goal` de s11 lo anota.
+- `s12-01` y `trapWhy` de la pregunta 5, «máquinas» en vez de «equipos» (0 palabras). `s12-02`, `s12-03` y el `goal` de s12 no cambian («el equipo no ha llamado a la puerta» sigue siendo del equipo de pruebas; el escenario del panel ya no dice «equipos»).
+- `s13-04`, frase final: «una auditoría comprueba **si** cumples y un pentest, **si** aguantas». También en el `goal` de s13 del storyboard (cue `phrase`). Es la variante que ya proponía el informe de exactitud (A-5) y la ficha dice «que»; no es bloqueante.
+
+**No aplicados (opcionales).** Physical con ejemplo en voz (+8 palabras), «Una persona, una norma» en `s02-02` (+4), «Pues no.» en `s05-03` (+2), acta impersonal («si se pasa»; 0 palabras, pero obliga a tocar el registro) y glosa propia de «mejor» en `s06-01` (+2). Con las cuatro mejoras aplicadas el guion queda en el umbral de 560 s de la ficha; cualquier palabra más lo pasa, y las dos primeras ya figuraban en el orden de recortes de la ficha.
+
+**Duración final.** `build-timeline --video auditoria-halden --check --estimate`: 0 errores, 5 avisos (los de siempre, segmentos de pregunta largos), **1.228 palabras, 560,0 s (9:20)** estimados (antes 1.225 y 558,8 s), dentro del umbral de 560 s de la ficha y de la ventana `caso-principal-yt` (420–600 s). Con la razón ~0,89 de Lidia, unos 498 s. `canon-check`: 0 coincidencias.
+
+**Registro de canon** (`docs/superpowers/canon/glass-harbor.md`): fila de la pregunta 5 de V39 («máquinas»), «Notas de V39» (cifras 1.228 palabras y 560,0 s; lista de revisiones: lo aplicado el 2026-10-23, con citas `v39/narration.json:186`, `:444`, `:456`, `:471`, `:516`). Ninguna cita de línea se desplaza.

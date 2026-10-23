@@ -139,3 +139,17 @@ hecho y no entra en el banco.
 **Pendiente fuera del guion (sin hacer).** Actualizar `docs/superpowers/plans/fichas-tanda8/V43-sp5m6.md` (líneas 77, 86, 100,
 107, 113: «borrar cuando toca / borrar lo que caduca» como due care, escenario de la pregunta 1, y «Banco más cercano») y
 alinear la ficha con los cambios opcionales (transporte, propósito, libra). Ningún cambio de lección ni de PR.
+
+## Comparación con la rama (2026-10-23)
+
+Se comparó el guion congelado de `main` con `origin/video-cumplimiento-halden` (2026-10-17). La rama conserva «borrar lo que caduca» como due care, que es el fallo bloqueante A-1 de la revisión (el borrado es solo de la retention); también deja sin explicar el legal hold (opción A de la pregunta 3) y sin nombrar los tres sitios. `main` se queda como está salvo una imprecisión que la rama sí tenía bien. `"frozen"` sigue en `2026-10-23`; ids, cues, claves, trampas y número de líneas no cambian.
+
+**Aplicado (C1, recomendado).** `s06-01`: el tercer sitio de los datos de quien reclama es **el registro de avisos que le mandan**, no el aviso ya entregado: «El sistema, su copia de seguridad y el registro de avisos que le mandan.» (+2 palabras; cue `three-places` intacto). La voz de `s06-03` dice «se borran en los tres, copia incluida», y un aviso ya entregado no se puede borrar; sí su registro. El `goal` de s06 del storyboard (cue `three-places`) lo dice igual.
+
+**Compensación.** Con +2 palabras el guion pasaba de 330 s. Se quitó el «muy» de `s02-07` («Haberlo mirado bien no te libra de cuidarlo», −1 palabra), que además hace que la voz coincida con la tarjeta del cue `cat-rule`. No se perdió sustancia. No hicieron falta las otras dos compensaciones del informe («Por ejemplo,» de `s02-02` y «Y recuerda,» de `s05-04`), que el informe ligaba a C2.
+
+**No aplicado (C2, opcional).** La entrada «Te toca.» de `s03-01` (+2 palabras): cosmético, y obligaría a aplicar las tres compensaciones. Tampoco se recuperan «datos de personas» en el gancho (rompe el cue `title` de 12 s), «mirar antes de saltar» en voz, la peluquería de cinco elementos ni el archivador de la rama (no caben).
+
+**Duración final.** `build-timeline --video cumplimiento-halden --check --estimate`: 0 errores, 4 avisos «N words» (los de siempre), **723 palabras, 329,8 s (5:29)** estimados (antes 722 y 329,4 s); queda a 0,2 s del techo de 330 s del perfil `caso-yt`. Con la razón ~0,89, unos 294 s. `canon-check`: 0 coincidencias. `out/script-notes.md` (git-ignorado) todavía dice «el aviso a quien reclama» y 329,0 s: no se ha tocado.
+
+**Registro de canon:** fila de los tres sitios (§3, «Equipos»: «el registro de avisos que le mandan»; el tercero es el registro de los avisos enviados), «Notas de V43» (pantalla y voz, revisiones: N-1 con su cambio posterior, cifras 723 palabras, 329,8 s y margen de 0,2 s) y la fila del gato («Haberlo mirado bien…», §6). Citas `v43/narration.json:71` y `:209`; ninguna se desplaza.

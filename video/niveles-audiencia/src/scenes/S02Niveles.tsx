@@ -52,10 +52,10 @@ export function S02Niveles(props: SceneProps) {
   // ---- Which row the voice is on.
   const next = [rowAt[1], rowAt[2], lensAt];
   const rowGlow = rowAt.map((a, i) => progress(frame, a - 4, 12) * (1 - progress(frame, next[i] - 4, 12)));
-  const rowDim = rowAt.map((a, i) => 0.4 * progress(frame, next[i] - 4, 14) * (1 - progress(frame, lensAt - 4, 14)) * (i === 2 ? 0 : 1));
+  const rowDim = rowAt.map((_, i) => 0.4 * progress(frame, next[i] - 4, 14) * (1 - progress(frame, lensAt - 4, 14)) * (i === 2 ? 0 : 1));
   const vigGlow = rowGlow;
   const lensIn = progress(frame, lensAt - 4, 14);
-  const vigDim = vigAt.map((a, i) => 0.45 * progress(frame, next[i] - 4, 14) + 0.2 * lensIn);
+  const vigDim = vigAt.map((_, i) => 0.45 * progress(frame, next[i] - 4, 14) + 0.2 * lensIn);
 
   // ---- The lens: the sentence and the three columns it names.
   const lensWords = [

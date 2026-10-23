@@ -3,14 +3,18 @@ import type { SceneId, SceneProps } from '../../../engine/src/timeline/types';
 import { Placeholder } from './Placeholder';
 import { S01Ip } from './S01Ip';
 import { S02Pasos } from './S02Pasos';
+import { S03Kent } from './S03Kent';
+import { S04Pruebas } from './S04Pruebas';
+import { S05Triada } from './S05Triada';
+import { S06Caso } from './S06Caso';
 
 export const SCENES: Record<SceneId, ComponentType<SceneProps>> = {
   's01-ip': S01Ip,
   's02-pasos': S02Pasos,
-  's03-kent': (p) => <Placeholder id="s03-kent" props={p} />,
-  's04-pruebas': (p) => <Placeholder id="s04-pruebas" props={p} />,
-  's05-triada': (p) => <Placeholder id="s05-triada" props={p} />,
-  's06-caso': (p) => <Placeholder id="s06-caso" props={p} />,
+  's03-kent': S03Kent,
+  's04-pruebas': S04Pruebas,
+  's05-triada': S05Triada,
+  's06-caso': S06Caso,
   's07-herramienta': (p) => <Placeholder id="s07-herramienta" props={p} />,
   's08-conducta': (p) => <Placeholder id="s08-conducta" props={p} />,
   's09-riesgo': (p) => <Placeholder id="s09-riesgo" props={p} />,

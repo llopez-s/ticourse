@@ -1,7 +1,7 @@
 import { useCurrentFrame } from 'remotion';
 import type { SceneProps } from '../../../engine/src/timeline/types';
 import { C, FONT, RADIUS, STAGE, alpha } from '../../../engine/src/theme/tokens';
-import { EASE, enter, progress } from '../../../engine/src/theme/motion';
+import { EASE, progress } from '../../../engine/src/theme/motion';
 import { Chip, Icon, type IconName } from '../../../engine/src/ui';
 import { Card, Disc, Pop } from './parts/bits';
 import { Paper } from './parts/Paper';
@@ -119,9 +119,11 @@ export function S03Informe(props: SceneProps) {
       <Pop at={afterAt - 10} frame={frame} x={COL_X} y={516} w={COL_W} h={4} duration={20}>
         <div style={{ height: 4, borderRadius: 2, background: `repeating-linear-gradient(90deg, ${alpha(C.muted, 0.7)} 0 18px, transparent 18px 32px)` }} />
       </Pop>
+      <Pop at={afterAt - 6} frame={frame} x={COL_X + 24} y={498} distance={10}>
+        <span style={{ display: 'inline-block', padding: '0 16px', background: C.ink950, fontFamily: FONT.sans, fontSize: 26, fontWeight: 800, letterSpacing: 4, color: C.muted, textTransform: 'uppercase' }}>después</span>
+      </Pop>
       <Pop at={afterAt} frame={frame} x={COL_X} y={536} w={COL_W} h={112} distance={22}>
         <Card tone="rose" pad={0} style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '0 26px' }}>
-          <span style={{ fontSize: 26, fontWeight: 800, letterSpacing: 3, color: C.muted, textTransform: 'uppercase', writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>después</span>
           <Disc icon="file" size={64} tone="rose" />
           <span style={{ fontSize: 34, fontWeight: 750, lineHeight: 1.2, color: C.textStrong }}>acusación formal de EE. UU. a oficiales del PLA</span>
         </Card>

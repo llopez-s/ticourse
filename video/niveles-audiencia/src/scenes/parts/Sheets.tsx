@@ -2,7 +2,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import { C, FONT, alpha } from '../../../../engine/src/theme/tokens';
 import { EASE, fmtInt, progress } from '../../../../engine/src/theme/motion';
 import { Icon, type IconName } from '../../../../engine/src/ui';
-import { S03, TONE } from '../../data/niveles';
+import { TONE } from '../../data/niveles';
 
 /**
  * Pieces of the crossed delivery (s03). Nothing here is real data: the rows of the 4.000 list are

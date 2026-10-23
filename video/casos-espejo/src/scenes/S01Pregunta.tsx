@@ -64,7 +64,7 @@ export function S01Pregunta(props: SceneProps) {
 
       {/* The CISO's card: big in the middle, then a slim bar under the title */}
       {down < 1 ? (
-        <div style={{ position: 'absolute', left: (W - 1300) / 2, top: mix(150, 250, down), width: 1300, height: 330, transformOrigin: '50% 0', transform: `translateY(${(1 - cisoIn) * 26}px) scale(${mix(1, 0.5, down)})`, opacity: cisoIn * (1 - down) }}>
+        <div style={{ position: 'absolute', left: (W - 1300) / 2, top: mix(210, 270, down), width: 1300, height: 330, transformOrigin: '50% 0', transform: `translateY(${(1 - cisoIn) * 26}px) scale(${mix(1, 0.5, down)})`, opacity: cisoIn * (1 - down) }}>
           <Card tone="cyan" pad={0} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 26, padding: '0 56px', background: `linear-gradient(180deg, ${alpha(C.cyan, 0.12)} 0%, ${alpha(C.ink900, 0.96)} 55%)` }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 22 }}>
               <Disc icon="user" size={96} />
@@ -75,7 +75,7 @@ export function S01Pregunta(props: SceneProps) {
         </div>
       ) : null}
       {down > 0 ? (
-        <div style={{ position: 'absolute', left: (W - 1340) / 2, top: 262, width: 1340, height: 78, opacity: down }}>
+        <div style={{ position: 'absolute', left: (W - 1340) / 2, top: 278, width: 1340, height: 78, opacity: down }}>
           <Card tone="cyan" pad={0} radius={RADIUS.pill} style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '0 22px' }}>
             <Disc icon="user" size={52} />
             <span style={{ fontSize: 30, fontWeight: 800, letterSpacing: 2, color: C.cyanSoft, whiteSpace: 'nowrap' }}>{CISO_ROLE}</span>
@@ -95,7 +95,7 @@ export function S01Pregunta(props: SceneProps) {
       ) : null}
 
       {/* Promise */}
-      <div style={{ position: 'absolute', left: 0, top: 356, width: W, display: 'flex', justifyContent: 'center', gap: 22, fontFamily: FONT.sans }}>
+      <div style={{ position: 'absolute', left: 0, top: 376, width: W, display: 'flex', justifyContent: 'center', gap: 22, fontFamily: FONT.sans }}>
         {PROMISE.map((c, i) => {
           const e = enter(frame, chipAt[i], { distance: 16 });
           const on = progress(frame, chipAt[i], 10) * (1 - 0.5 * progress(frame, (chipAt[i + 1] ?? mirrors) - 2, 12, EASE.inOut));
@@ -114,7 +114,7 @@ export function S01Pregunta(props: SceneProps) {
         const at = mirrors + i * 7;
         const mine = i === 0 ? lit : 0;
         return (
-          <Pop key={i} at={at} frame={frame} x={i * (cw + 24)} y={462} w={cw} h={190} dim={i === 0 ? 0 : 0.45 * lit}>
+          <Pop key={i} at={at} frame={frame} x={i * (cw + 24)} y={470} w={cw} h={186} dim={i === 0 ? 0 : 0.45 * lit}>
             <Card tone="cyan" dashed glow={mine} pad={0} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 14 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: C.muted, fontSize: 26, fontWeight: 800, letterSpacing: 3 }}>
                 <Icon name="archive" size={30} color={C.muted} strokeWidth={2} />

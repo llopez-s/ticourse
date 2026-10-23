@@ -123,3 +123,17 @@ Informe: `docs/reviews/2026-10-23-guiones-tanda8/documentos-halden.md`. Sin `fro
 - `src/data/secplus/sp5-cards.ts:6` (fcp501): «…in a mandatory document is a standard; anything phrased as a suggestion is a guideline, however specific.»
 - `sp5-part1.ts:103` (nota de examen): «Dos trampas frecuentes» pasa a «Tres», con la de «lo concreto no basta».
 - A-15 (registro al publicar): corregir la cita de V36 (`sp5-part1.ts:312` es de sp5m2); anotar V40 en §1, §3, §4, §5, §6; las citas posteriores a `:130` de `sp5-part1.ts` bajan 11 líneas al insertar el bloque del vídeo.
+
+## Comparación con la rama (2026-10-23)
+
+Se comparó el guion congelado de `main` con la versión de `origin/video-documentos-halden` (2026-10-17). `main` es mejor en lo que importa (el `trapWhy` bloqueante A-1, el mapeo de la piscina, «monitoring and revision», «obliga igual»); de la rama se toman solo los dos detalles de sustancia que `main` había dejado fuera por presupuesto. `"frozen"` sigue en `2026-10-23`; ids, cues, claves, trampas y número de líneas no cambian.
+
+**Aplicados (2, los recomendados).**
+- `s02-02`, el porqué en la hoja: «Dice que la información sale solo por canales aprobados, para protegerla.» (+2 palabras; cue `sheet-1` intacto). La hoja de la policy en el storyboard (`goal` de s02) pasa a «…según su clasificación, para protegerla». Era el A-10 del informe de exactitud.
+- `s02-05`, «exactamente»: «Eso es un standard. Dice cuánto, exactamente, y también obliga.» (+1 palabra; cue `standard` intacto). Era el A-9; la tarjeta de s02 se queda como estaba.
+
+**No aplicados.** La promesa de `s01-02` que nombra las tres respuestas («¿dice qué, cuánto o cómo?», opcional, +1 palabra y cambio del chip `promise`): el informe B-1 ya aprobó la redacción actual y es de gusto. Tampoco «caduca con la tecnología» en `s02-05` (+5, dejaría el guion sobre 330 s y `s06-03` ya lo enseña), la acceptable use policy en voz ni «se revisan el standard y el procedure» en `s06-03` (la rama invierte la causa).
+
+**Duración final.** `build-timeline --video documentos-halden --check --estimate`: 0 errores, 3 avisos esperados, **718 palabras, 328,8 s (5:28)** estimados (antes 715 y 327,6 s), bajo el techo de 330 s del perfil `caso-yt`. Con la razón ~0,89, unos 293 s. `canon-check`: 0 coincidencias.
+
+**Registro de canon:** fila del guion de V40 (§1) y fila de la policy (§3, «Casos»), «Notas de V40» (pantalla y voz, revisiones: A-9 y A-10 pasan de «no aplicados» a aplicados; cifras 718 palabras y 328,8 s) y la entrada de «Solo en planes o notas» que listaba A-9 y A-10 como opcionales sin aplicar. Citas `v40/narration.json:40` y `:58`; ninguna se desplaza.

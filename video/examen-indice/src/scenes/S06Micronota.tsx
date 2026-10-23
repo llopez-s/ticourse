@@ -27,7 +27,7 @@ export function S06Micronota(props: SceneProps) {
   const postit = props.cue('postit');
   const ach = props.cue('ach');
 
-  const reveal = progress(frame, wordFrame(S, 's06-01', 'Planificar') - 2, 16, EASE.out);
+  const reveal = progress(frame, answer + 2, 16, EASE.out);
   const chipsOut = progress(frame, micro - 12, 14, EASE.inOut);
 
   const fill = progress(frame, micro + 6, 120, EASE.inOut);

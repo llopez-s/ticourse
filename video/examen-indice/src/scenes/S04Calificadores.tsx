@@ -1,6 +1,6 @@
 import { useCurrentFrame } from 'remotion';
 import type { SceneProps } from '../../../engine/src/timeline/types';
-import { C, FONT, RADIUS, STAGE, alpha } from '../../../engine/src/theme/tokens';
+import { C, FONT, STAGE, alpha } from '../../../engine/src/theme/tokens';
 import { EASE, enter, progress } from '../../../engine/src/theme/motion';
 import { Icon } from '../../../engine/src/ui';
 import { Dial } from './parts/Dial';
@@ -10,8 +10,7 @@ import { Stage, wordFrame } from './kit';
 const S = 's04-calificadores';
 const W = STAGE.width;
 
-// Columns of the table (stage px): qualifier | qué exige | error típico | marks.
-const COL = [0, 290, 930, 1570] as const;
+// Columns of the table (stage px): qualifier 290 | qué exige 640 | error típico 640 | marks (rest).
 const COL_W = [290, 640, 640, W - 1570] as const;
 const HEAD_H = 56;
 const ROW_H = 88;
@@ -53,7 +52,7 @@ export function S04Calificadores(props: SceneProps) {
 
   // The frame each row is named (fills in and lights); rows 4–5 together on `others`.
   const named = [best, first, except, others, others + 24];
-  const nextOf = (i: number) => (i < 2 ? named[i + 1] : i === 2 ? example + 400 : Number.POSITIVE_INFINITY);
+  const nextOf = (i: number) => (i < 2 ? named[i + 1] : i === 2 ? example + 400 : 1e9);
 
   const marksAt = wordFrame(S, 's04-04', 'verdad') - 8;
   const linkAt = [

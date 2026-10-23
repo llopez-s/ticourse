@@ -131,3 +131,18 @@ del PR se mantiene. 3 «sin vínculo con ella»: suficiente. 4 «las hace» / «
 re-checked at renewal as part of vendor monitoring.» y avisarlo en la descripción del PR. Resto de condiciones de la ficha (bloque y línea de entrada en `sp5-part3.ts`
 tras `:148`, `toBe('sp5m5')` en `content.test.ts`, canon nuevo al registro al cerrar el vídeo) siguen como estaban. Tras la grabación: la pronunciación de MOU/MOA
 en `lexicon.json` y el peso del «uve/a» final (B-2, alternativa).
+
+## Comparación con la rama (2026-10-23)
+
+Se comparó el guion congelado de `main` con `origin/video-proveedores-halden` (2026-10-17). `main` es claramente mejor en las preguntas 2 y 3 (la rama deja P3 sin lo exigible en pantalla y P2 con el traslado de datos a otro país), en no cargar «firma» con tres sentidos, en la definición del SLA y en el cierre con los cuatro papeles. De la rama se toman tres cosas. `"frozen"` sigue en `2026-10-23`; ids, cues, claves, trampas y número de líneas no cambian.
+
+**Aplicados (3, los recomendados).**
+- D1, `s02-05`: «Si subcontrata, se mira la supply chain analysis. Y si quieres poder entrar a mirar, pide una right-to-audit clause, firmada antes.» Devuelve a la voz el término que se recortó por presupuesto (cue `chips` intacto). El `goal` de s02 ya no dice que «la voz solo dice el segundo».
+- D2, tarjeta 2 de `s03-03`: «Independiente: lo hace un tercero sin vínculo» (45 caracteres), como la lección y el «sin vínculo con ella» de `s02-04`. «Que no lo haga el auditado» dejaba pasar un informe encargado a una filial.
+- D3, `s07-03`: «O sea, que no decide el dinero, sino el compromiso de cada uno. Eso es un MOA.» Es la regla transferible contra el reflejo «colaboración sin dinero = MOU». Se usó la versión corta; el cue `chip-back`, la tarjeta y el pie no cambian.
+
+**No aplicados.** D4 (opcional, `s02-02`: «Es barato, pero lo dice ella», +3 palabras; llevaría la estimación a unos 329,1 s sin margen). Descartado por el informe: las preguntas 2 y 3 de la rama, «va a mover los datos a otro país», «lo que firma alguien de fuera» y «Mira quién lo firma», «cuentas», «qué toca y cuándo», el s08 de la rama, y el orden idea-antes-que-nombre en s06.
+
+**Duración final.** `build-timeline --video proveedores-halden --check --estimate`: 0 errores, 3 avisos esperados, **721 palabras, 327,9 s (5:27)** estimados (antes 711 y 323,9 s; el informe contaba +9 palabras y el motor cuenta +10), dentro de 240–330 s. Con la razón ~0,89, unos 292 s. `canon-check`: 0 coincidencias.
+
+**Registro de canon:** §3 (la fila de las tres pruebas del proveedor: la supply chain analysis ya se dice en voz), «Notas de V42» (tarjetas, cifras 721 palabras y 327,9 s, por escena 48 · 116 · 97 · 113 · 80 · 111 · 91 · 65, «Lo que V42 calla a propósito» sin la supply chain) y «Solo en planes o notas» (chips, tarjeta 2, «Aquí cada hospital pone algo»). Citas `v42/narration.json:64`, `:104`, `:250`; ninguna se desplaza.

@@ -4,7 +4,7 @@ import { C, FONT, RADIUS, STAGE, alpha } from '../../../engine/src/theme/tokens'
 import { EASE, enter, progress, pulse } from '../../../engine/src/theme/motion';
 import { Icon } from '../../../engine/src/ui';
 import { FirstChips } from './parts/FirstChips';
-import { Bar, Tag } from './parts/paper';
+import { Bar, Tag, withOpacity } from './parts/paper';
 import { Stage, segment, wordFrame } from './kit';
 
 const S = 's05-descartar';
@@ -89,9 +89,8 @@ export function S05Descartar(props: SceneProps) {
           background: alpha(C.ink850, 0.8),
           border: `3px solid ${alpha(accent, isOut ? 0.4 : 0.45 + 0.4 * Math.max(keep, baitP, strikeP))}`,
           boxShadow: baitP > 0.05 ? `0 0 ${Math.round(38 * baitP)}px ${alpha(C.amber, 0.35 * baitP)}` : undefined,
-          opacity: 1 - 0.68 * (isOut ? outP : 0),
           filter: isOut && outP > 0.05 ? `saturate(${1 - 0.6 * outP})` : undefined,
-          ...enter(frame, discard - 4 + i * 5, { distance: 16 }),
+          ...withOpacity(enter(frame, discard - 4 + i * 5, { distance: 16 }), 1 - 0.68 * (isOut ? outP : 0)),
         }}
       >
         <div style={{ width: 52, height: 52, borderRadius: 26, display: 'grid', placeItems: 'center', background: C.ink700, border: `2px solid ${C.ink500}`, fontSize: 30, fontWeight: 850, color: C.text }}>{letter}</div>
@@ -173,8 +172,11 @@ export function S05Descartar(props: SceneProps) {
                   background: alpha(color, flag > 0.05 || answered > 0.5 || i < FLAGGED ? 0.13 : 0.05),
                   border: `3px solid ${alpha(color, flag > 0.05 ? 0.95 : 0.55)}`,
                   boxShadow: flag > 0.05 ? `0 0 ${Math.round(24 + 18 * back)}px ${alpha(C.amber, 0.35 + 0.3 * back)}` : undefined,
-                  transform: stuck > 0 && flag < 0.05 ? `translateX(${Math.sin(frame * 1.6) * 4 * stuck}px)` : undefined,
-                  ...enter(frame, mark - 2 + i * 3, { distance: 12 }),
+                  ...(() => {
+                    const e = enter(frame, mark - 2 + i * 3, { distance: 12 });
+                    const shake = stuck > 0 && flag < 0.05 ? ` translateX(${Math.sin(frame * 1.6) * 4 * stuck}px)` : '';
+                    return { opacity: e.opacity, transform: e.transform + shake };
+                  })(),
                 }}
               >
                 <div style={{ position: 'absolute', left: 18, top: 20, display: 'grid', gap: 10 }}>

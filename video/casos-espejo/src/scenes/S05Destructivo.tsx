@@ -58,7 +58,7 @@ export function S05Destructivo(props: SceneProps) {
           wiper
         </Chip>
       </Pop>
-      <Pop at={wiper} frame={frame} x={680} y={68} w={680} h={140} distance={0}>
+      <Pop at={wiper} frame={frame} x={680} y={80} w={680} h={130} distance={0}>
         <div style={{ display: 'flex', gap: 16, height: '100%' }}>
           {Array.from({ length: MACHINES }).map((_, i) => {
             const off = progress(frame, wiper + 12 + i * 11, 8);
@@ -73,7 +73,7 @@ export function S05Destructivo(props: SceneProps) {
           })}
         </div>
       </Pop>
-      <Pop at={wiper + 10} frame={frame} x={680} y={224} distance={10}>
+      <Pop at={wiper + 10} frame={frame} x={680} y={228} distance={10}>
         <span style={{ fontFamily: FONT.sans, fontSize: 30, fontWeight: 650, color: C.muted }}>un programa pensado para borrar</span>
       </Pop>
 
@@ -82,18 +82,18 @@ export function S05Destructivo(props: SceneProps) {
         const at = leakAt + i * 6;
         const p = progress(frame, at, 22, EASE.out);
         if (p <= 0) return null;
-        const x = 1404 + (i % 3) * 96 + (i > 2 ? 40 : 0);
-        const y = 20 + i * 44 + p * (i > 2 ? 120 : 60);
+        const x = 1404 + (i % 3) * 92 + (i > 2 ? 44 : 0);
+        const y = 10 + (i % 3) * 22 + (i > 2 ? 96 : 0) + p * (i > 2 ? 36 : 18);
         return (
-          <div key={i} style={{ position: 'absolute', left: x, top: y, width: 120, height: 150, boxSizing: 'border-box', borderRadius: 8, border: `2px solid ${alpha('#e2e8f0', 0.5)}`, background: `linear-gradient(180deg, ${alpha('#e2e8f0', 0.14)} 0%, ${alpha('#e2e8f0', 0.06)} 100%), ${C.ink900}`, transform: `rotate(${(i - 2) * 9 * p}deg)`, opacity: p, padding: 14 }}>
+          <div key={i} style={{ position: 'absolute', left: x, top: y, width: 96, height: 124, boxSizing: 'border-box', borderRadius: 8, border: `2px solid ${alpha('#e2e8f0', 0.5)}`, background: `linear-gradient(180deg, ${alpha('#e2e8f0', 0.14)} 0%, ${alpha('#e2e8f0', 0.06)} 100%), ${C.ink900}`, transform: `rotate(${(i - 2) * 9 * p}deg)`, opacity: p, padding: 14 }}>
             {[0.9, 0.7, 0.8, 0.6].map((k, j) => (
               <div key={j} style={{ height: 8, width: `${k * 100}%`, borderRadius: 4, background: alpha('#e2e8f0', 0.3), marginBottom: 10 }} />
             ))}
           </div>
         );
       })}
-      <Pop at={massAt} frame={frame} x={1380} y={296} w={348} distance={10}>
-        <div style={{ textAlign: 'center', fontFamily: FONT.sans, fontSize: 36, fontWeight: 850, color: C.amber }}>filtraciones masivas</div>
+      <Pop at={massAt} frame={frame} x={1360} y={340} w={368} distance={10}>
+        <div style={{ textAlign: 'center', fontFamily: FONT.sans, fontSize: 32, fontWeight: 850, color: C.amber, whiteSpace: 'nowrap' }}>filtraciones masivas</div>
       </Pop>
 
       {/* Who said it */}

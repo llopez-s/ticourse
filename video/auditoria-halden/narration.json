@@ -183,7 +183,7 @@
     {
       "id": "s05-04",
       "scene": "s05-aguantar",
-      "text": "<clear> {audit}Esta mira evidencias y toma muestras, para ver si cumples el estándar.",
+      "text": "<clear> {audit}Esta va control a control, con evidencias y muestras.",
       "pauseAfterMs": 300
     },
     {
@@ -441,7 +441,7 @@
     {
       "id": "s11-03",
       "scene": "s11-mirar",
-      "text": "<steady> {window}Dentro de la ventana pactada ya podría escanear y preguntar versiones. {active}Eso es active reconnaissance. {log-lines}Y entonces el registro sí tendría líneas.",
+      "text": "<steady> {window}Dentro de la ventana pactada ya podría escanear y preguntar versiones. {active}Eso es active reconnaissance. {log-lines}Y entonces el registro sí tendría líneas. Se ve, por eso se pacta.",
       "pauseAfterMs": 300
     },
     {
@@ -453,7 +453,7 @@
     {
       "id": "s12-01",
       "scene": "s12-p5",
-      "text": "<intrigued> {q5}La última. Ya dentro de la ventana pactada, un equipo de pruebas busca a una empresa en un buscador de aparatos conectados a internet. Ve sus equipos, con sus puertos abiertos y sus versiones. En los registros de la empresa no aparece nada. ¿Qué tipo de actividad es?",
+      "text": "<intrigued> {q5}La última. Ya dentro de la ventana pactada, un equipo de pruebas busca a una empresa en un buscador de aparatos conectados a internet. Ve sus máquinas, con sus puertos abiertos y sus versiones. En los registros de la empresa no aparece nada. ¿Qué tipo de actividad es?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.5",
@@ -468,7 +468,7 @@
         "answer": 2,
         "trap": 3,
         "why": "Consulta a un tercero que ya lo recogió: no toca a la empresa ni deja rastro",
-        "trapWhy": "Ve puertos y versiones, como en un escaneo, pero no ha tocado ni un equipo",
+        "trapWhy": "Ve puertos y versiones, como en un escaneo, pero no ha tocado ni una máquina",
         "countdownMs": 5000,
         "revealAt": "ok-5",
         "trapAt": "trap-5"
@@ -513,7 +513,7 @@
     {
       "id": "s13-04",
       "scene": "s13-cierre",
-      "text": "<engaging> {phrase}Una firma declara, una auditoría comprueba que cumples y un pentest, que aguantas. {next}Y ahora, a practicar. {endcard}A por las preguntas de la lección.",
+      "text": "<engaging> {phrase}Una firma declara, una auditoría comprueba si cumples y un pentest, si aguantas. {next}Y ahora, a practicar. {endcard}A por las preguntas de la lección.",
       "pauseAfterMs": 250
     }
   ]

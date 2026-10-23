@@ -87,7 +87,7 @@ export function Diamond4({
           >
             <div style={{ fontSize: compact ? 28 : 36, fontWeight: 850, color: m.tint, lineHeight: 1.1, whiteSpace: 'nowrap' }}>{m.label}</div>
             {!compact && text ? (
-              <div style={{ marginTop: 6, fontSize: 28, fontWeight: 650, lineHeight: 1.18, color: C.textStrong, opacity: vis }}>{text}</div>
+              <div style={{ marginTop: 6, fontSize: 30, fontWeight: 650, lineHeight: 1.16, color: C.textStrong, opacity: vis }}>{text}</div>
             ) : null}
           </div>
         );

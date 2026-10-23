@@ -4,7 +4,7 @@ import type { SceneProps } from '../../../engine/src/timeline/types';
 import { C, FONT, RADIUS, STAGE, alpha } from '../../../engine/src/theme/tokens';
 import { EASE, enter, progress } from '../../../engine/src/theme/motion';
 import { Icon } from '../../../engine/src/ui';
-import { Bar, Tag } from './parts/paper';
+import { Bar, Tag, withOpacity } from './parts/paper';
 import { Stage, wordFrame } from './kit';
 
 const S = 's03-anatomia';
@@ -134,7 +134,7 @@ export function S03Anatomia(props: SceneProps) {
                 h={22}
                 color={b.fact ? (lit > 0.05 ? C.cyan : C.ink600) : dim > 0.05 ? C.amber : C.ink600}
                 glow={b.fact ? lit * 0.6 : 0}
-                style={{ position: 'absolute', left: 40, top, opacity: b.fact ? 1 : 1 - 0.5 * dim, ...enter(frame, shape + 6 + i * 4, { distance: 10 }) }}
+                style={{ position: 'absolute', left: 40, top, ...withOpacity(enter(frame, shape + 6 + i * 4, { distance: 10 }), b.fact ? 1 : 1 - 0.5 * dim) }}
               />
             );
           })}
@@ -191,9 +191,8 @@ export function S03Anatomia(props: SceneProps) {
                   display: 'flex',
                   alignItems: 'center',
                   gap: 18,
-                  opacity: 1 - 0.62 * off,
                   filter: off > 0.05 ? `saturate(${1 - 0.5 * off})` : undefined,
-                  ...enter(frame, shape + 34 + i * 4, { distance: 10 }),
+                  ...withOpacity(enter(frame, shape + 34 + i * 4, { distance: 10 }), 1 - 0.62 * off),
                 }}
               >
                 <div style={{ width: 40, height: 40, borderRadius: 20, display: 'grid', placeItems: 'center', background: defendible && tagIn > 0.05 ? alpha(C.cyan, 0.9) : C.ink700, border: `2px solid ${defendible && tagIn > 0.05 ? C.cyan : C.ink600}`, color: defendible && tagIn > 0.05 ? C.ink950 : C.text, fontFamily: FONT.sans, fontSize: 26, fontWeight: 850 }}>{l}</div>

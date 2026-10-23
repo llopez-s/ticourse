@@ -149,7 +149,7 @@ export function S01Noche(props: SceneProps) {
       {/* the promise */}
       {PROMISE.map((p, i) => {
         const e = enter(frame, itemAt[i], { distance: 40, axis: 'x' });
-        const next = itemAt[i + 1] ?? Number.POSITIVE_INFINITY;
+        const next = itemAt[i + 1] ?? 1e9;
         const hot = progress(frame, itemAt[i], 10) * (1 - 0.55 * progress(frame, next - 2, 12, EASE.inOut));
         return (
           <div

@@ -11,7 +11,7 @@ import { C, FONT, alpha } from '../../../../engine/src/theme/tokens';
  */
 export const CHART_W = 1200;
 export const CHART_H = 500;
-export const SHIP = { x: 560, y: 290 } as const;
+export const SHIP = { x: 560, y: 262 } as const;
 const STAR = { x: 250, y: 130 } as const;
 const AIM = { x: 930, y: 120 } as const;
 
@@ -20,7 +20,6 @@ export function Chart({ show = 1, rumbo = 0, point = 0, ring = 0, star = 0 }: { 
   for (let x = 100; x < CHART_W; x += 100) lines.push(x);
   const rows: number[] = [];
   for (let y = 100; y < CHART_H; y += 100) rows.push(y);
-  const len = Math.hypot(AIM.x - SHIP.x, AIM.y - SHIP.y);
   const ang = (Math.atan2(AIM.y - SHIP.y, AIM.x - SHIP.x) * 180) / Math.PI;
   const slen = Math.hypot(SHIP.x - STAR.x, SHIP.y - STAR.y);
   return (
@@ -40,12 +39,12 @@ export function Chart({ show = 1, rumbo = 0, point = 0, ring = 0, star = 0 }: { 
           <line key={`h${y}`} x1={4} y1={y} x2={CHART_W - 4} y2={y} stroke={alpha(C.cyan, 0.13)} strokeWidth={2} />
         ))}
         {/* compass rose */}
-        <g transform="translate(1100 110)" stroke={alpha(C.cyanSoft, 0.7)} strokeWidth={3} fill="none" strokeLinecap="round">
+        <g transform="translate(1100 392)" stroke={alpha(C.cyanSoft, 0.7)} strokeWidth={3} fill="none" strokeLinecap="round">
           <circle r={46} />
           <path d="M0 -62V62M-62 0H62" />
           <path d="M0 -46L10 0L0 46L-10 0Z" fill={alpha(C.cyan, 0.2)} />
         </g>
-        <text x={1100} y={36} textAnchor="middle" fontFamily={FONT.sans} fontSize={30} fontWeight={800} fill={alpha(C.cyanSoft, 0.8)}>
+        <text x={1100} y={318} textAnchor="middle" fontFamily={FONT.sans} fontSize={30} fontWeight={800} fill={alpha(C.cyanSoft, 0.8)}>
           N
         </text>
 

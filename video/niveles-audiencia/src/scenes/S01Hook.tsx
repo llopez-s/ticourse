@@ -5,7 +5,7 @@ import { EASE, enter, progress } from '../../../engine/src/theme/motion';
 import { Icon, mix } from '../../../engine/src/ui';
 import { ENVELOPES, PROMISE, S01_TITLE, type EnvelopeId } from '../data/niveles';
 import { ContextStrip, Desk } from './parts/Desk';
-import { ENV, Envelope, envelopeHeight } from './parts/Envelope';
+import { ENV, Envelope } from './parts/Envelope';
 import { EnvelopeAsk } from './parts/EnvelopeCards';
 import { Stage, wordFrame } from './kit';
 

@@ -38,7 +38,7 @@
     {
       "id": "s02-02",
       "scene": "s02-casa",
-      "text": "<clear> {owner}La persona responsable de la oficina de la terminal de pasajeros clasificó la lista y responde de ella. Eso es el data owner, un rol de negocio.",
+      "text": "<clear> {owner}Lo decide la persona responsable de la oficina de la terminal de pasajeros, que clasificó la lista y responde de ella. Eso es el data owner, un rol de negocio.",
       "pauseAfterMs": 300
     },
     {
@@ -50,7 +50,7 @@
     {
       "id": "s02-04",
       "scene": "s02-casa",
-      "text": "<thoughtful> {steward}La oficina de planificación cuida que la lista esté bien, con un solo formato de fecha y sin nombres repetidos. {steward-name}Es el data steward.",
+      "text": "<thoughtful> {steward}La oficina de planificación cuida que la lista esté bien, sin nombres repetidos, y dice qué significa cada campo. {steward-name}Es el data steward.",
       "pauseAfterMs": 500,
       "exam": {
         "objective": "5.1",
@@ -68,11 +68,11 @@
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca. Una cadena de clínicas tiene que decidir si los datos de sus citas se clasifican como confidenciales. Hay una persona que define cada campo y corrige los errores, y los conoce mejor que nadie. ¿Qué rol debe decidir la clasificación?",
+      "text": "<intrigued> {q1}Te toca. Una cadena de clínicas tiene que decidir si los datos de sus citas se clasifican como confidenciales. Hay una persona que define cada campo y corrige los errores, y conoce esos datos como nadie. ¿Qué rol debe decidir la clasificación?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.1",
-        "scenario": "Unas clínicas deciden si sus datos de citas se clasifican como «confidenciales». Quien define cada campo y corrige errores los conoce mejor que nadie.",
+        "scenario": "Unas clínicas deciden si sus datos de citas se clasifican como «confidenciales». Quien define cada campo y corrige errores conoce esos datos como nadie.",
         "q": "¿Qué rol debe decidir la clasificación?",
         "options": [
           "Data custodian",
@@ -152,11 +152,11 @@
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<engaging> {q2}Otra. En una mutua de salud hay un administrador de sistemas. Restaura copias, aplica parches y vigila los accesos a la base de datos de afiliados. Lo hace según lo que decide la responsable del área. ¿Qué rol describe mejor su trabajo? {best}Fíjate en ese «mejor». Pide la que encaja con este caso, aunque otra suene bien.",
+      "text": "<engaging> {q2}Otra. En una mutua de salud hay un administrador de sistemas de la plantilla. Restaura copias, aplica parches y vigila los accesos a la base de datos de afiliados. Lo hace según lo que decide la responsable del área. ¿Qué rol describe mejor su trabajo? {best}Fíjate en ese «mejor». Pide la que encaja con este caso, aunque otra suene bien.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.1",
-        "scenario": "Un administrador de sistemas de una mutua restaura copias, aplica parches y vigila los accesos a la base de afiliados, según decide la responsable.",
+        "scenario": "Un administrador de sistemas empleado en una mutua restaura copias, aplica parches y vigila los accesos a la base de afiliados, según decide la responsable.",
         "q": "¿Qué rol describe MEJOR su trabajo?",
         "options": [
           "Data controller",
