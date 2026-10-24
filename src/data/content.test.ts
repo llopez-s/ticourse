@@ -403,6 +403,15 @@ describe('lesson videos', () => {
     // it go on) over a crane on the port's quay, with three exam-style questions, after sp3m3's last check (the buoy
     // sensors) and before the paragraph that hands over to sp3m4
     expect(youtubeVideos.find((v) => v.block.youtube === 'qANC8-P3v1Y')?.module).toBe('sp3m3');
+    // V40 sorts four papers into policy, standard, procedure and guideline, with three exam-style questions, after the
+    // port callout and before the paragraph that hands over to sp5m2
+    expect(youtubeVideos.find((v) => v.block.youtube === 'OiJ6X0-nKGY')?.module).toBe('sp5m1');
+    // V41 asks who decides, who applies and who answers over the passenger list, with three exam-style questions, after
+    // sp5m2's last check and before the paragraph that hands over to sp5m3
+    expect(youtubeVideos.find((v) => v.block.youtube === '1Im0etwQFE8')?.module).toBe('sp5m2');
+    // V42 weighs a vendor's evidence, what falls before and after signing and what each paper fixes, with three
+    // exam-style questions, after the port callout and before the paragraph that hands over to sp5m6
+    expect(youtubeVideos.find((v) => v.block.youtube === 'gJ6zP3VOesw')?.module).toBe('sp5m5');
   });
 
   it('every video block points at relative public assets that exist', async () => {
