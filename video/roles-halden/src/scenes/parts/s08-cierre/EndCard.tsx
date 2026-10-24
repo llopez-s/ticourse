@@ -37,7 +37,7 @@ export function NextAction({ frame, fps, at, top }: { frame: number; fps: number
 }
 
 const CARD_W = 1620;
-const ART_W = 440;
+const ART_W = 520;
 
 /** The video's image for the closing card: the passenger list with the hand that decides lit. */
 export function EndArt({ glow }: { glow: number }) {

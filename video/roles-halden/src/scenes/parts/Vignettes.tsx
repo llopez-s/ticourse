@@ -245,15 +245,15 @@ export function ClubBoard({ t }: { t: number }) {
         {[0, 1, 2].map((i) => (
           <circle key={`b${i}`} cx={210 + i * 60} cy={266} r={22} fill={C.ink800} stroke={alpha(C.cyan, 0.85)} strokeWidth={4} />
         ))}
-        <rect x={396} y={80} width={124} height={170} rx={12} fill={C.ink850} stroke={alpha(C.cyan, 0.75)} strokeWidth={4} />
+        <rect x={388} y={80} width={116} height={170} rx={12} fill={C.ink850} stroke={alpha(C.cyan, 0.75)} strokeWidth={4} />
         {[0, 1, 2, 3].map((i) => (
           <g key={i}>
-            <rect x={414} y={104 + i * 34} width={60} height={9} rx={4.5} fill={alpha(C.muted, 0.3)} />
-            <rect x={482} y={104 + i * 34} width={22} height={9} rx={4.5} fill={alpha(C.muted, 0.2)} />
+            <rect x={404} y={104 + i * 34} width={56} height={9} rx={4.5} fill={alpha(C.muted, 0.3)} />
+            <rect x={468} y={104 + i * 34} width={20} height={9} rx={4.5} fill={alpha(C.muted, 0.2)} />
           </g>
         ))}
       </Svg>
-      <Badge cx={500} cy={236} icon="check" tone={C.emerald} show={clamp01(t * 2)} r={24} />
+      <Badge cx={486} cy={236} icon="check" tone={C.emerald} show={clamp01(t * 2)} r={24} />
     </Box>
   );
 }
@@ -300,12 +300,12 @@ export function ClubTownHall({ t }: { t: number }) {
           <rect key={i} x={158 + i * 52} y={146} width={20} height={104} rx={4} fill={alpha(C.sky, 0.18)} stroke={alpha(C.sky, 0.6)} strokeWidth={3} />
         ))}
         <rect x={120} y={266} width={268} height={14} rx={4} fill={alpha(C.sky, 0.25)} stroke={alpha(C.sky, 0.8)} strokeWidth={3} />
-        <path d="M384 200 H416" stroke={alpha(C.emerald, 0.9)} strokeWidth={5} strokeLinecap="round" strokeDasharray="8 8" opacity={s} />
+        <path d="M384 200 H412" stroke={alpha(C.emerald, 0.9)} strokeWidth={5} strokeLinecap="round" strokeDasharray="8 8" opacity={s} />
         <g opacity={0.35 + 0.65 * s}>
-          <rect x={424} y={120} width={100} height={132} rx={10} fill={C.ink850} stroke={alpha(C.emerald, 0.85)} strokeWidth={4} />
-          <rect x={440} y={138} width={68} height={9} rx={4.5} fill={alpha(C.muted, 0.35)} />
-          <rect x={440} y={158} width={50} height={9} rx={4.5} fill={alpha(C.muted, 0.28)} />
-          <circle cx={474} cy={212} r={20} fill={alpha(C.emerald, 0.2)} stroke={alpha(C.emerald, 0.95)} strokeWidth={4} />
+          <rect x={418} y={120} width={92} height={132} rx={10} fill={C.ink850} stroke={alpha(C.emerald, 0.85)} strokeWidth={4} />
+          <rect x={432} y={138} width={64} height={9} rx={4.5} fill={alpha(C.muted, 0.35)} />
+          <rect x={432} y={158} width={46} height={9} rx={4.5} fill={alpha(C.muted, 0.28)} />
+          <circle cx={464} cy={212} r={20} fill={alpha(C.emerald, 0.2)} stroke={alpha(C.emerald, 0.95)} strokeWidth={4} />
         </g>
       </Svg>
     </Box>

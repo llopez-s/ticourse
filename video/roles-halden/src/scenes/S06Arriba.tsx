@@ -12,10 +12,10 @@ import { ClubBoard, ClubCommittee, ClubTownHall } from './parts/Vignettes';
 import { Stage, wordFrame } from './kit';
 
 const S = 's06-arriba';
-const PORT = { x: 0, y: 78, w: 1060, h: 434 } as const;
-const BOARD_BOX = { x: 24, y: 106, w: 1012, h: 150 } as const;
-const COMMITTEE_BOX = { x: 24, y: 326, w: 1012, h: 160 } as const;
-const REG = { x: 1100, y: 106, w: 628, h: 330 } as const;
+const PORT = { x: 0, y: 78, w: 1100, h: 434 } as const;
+const BOARD_BOX = { x: 24, y: 106, w: 1052, h: 150 } as const;
+const COMMITTEE_BOX = { x: 24, y: 326, w: 1052, h: 160 } as const;
+const REG = { x: 1140, y: 106, w: 588, h: 330 } as const;
 const CHIP_Y = 548;
 
 /**
@@ -87,6 +87,8 @@ export function S06Arriba(props: SceneProps) {
             tone={C.sky}
             icon="layers"
             who={COMMITTEE.who}
+            whoSize={28}
+            termSize={38}
             term={COMMITTEE.term}
             chips={COMMITTEE.chips.map((c) => ({ text: c.text, at: w(c.seg, c.word) + (c.word === 'riesgos' ? 12 : 0) - 6 }))}
             skeleton={portIn}
@@ -109,8 +111,8 @@ export function S06Arriba(props: SceneProps) {
             />
             <Arrow
               points={[
-                [960, BOARD_BOX.y + BOARD_BOX.h + 6],
-                [960, COMMITTEE_BOX.y - 6],
+                [1000, BOARD_BOX.y + BOARD_BOX.h + 6],
+                [1000, COMMITTEE_BOX.y - 6],
               ]}
               draw={progress(frame, downAt, 18)}
               color={C.sky}
@@ -129,7 +131,7 @@ export function S06Arriba(props: SceneProps) {
             />
           </svg>
           {frame >= downAt - 4 ? (
-            <div style={{ position: 'absolute', left: 150, top: BOARD_BOX.y + BOARD_BOX.h + 14, width: 760, display: 'flex', justifyContent: 'center', ...enter(frame, downAt, { distance: 10 }) }}>
+            <div style={{ position: 'absolute', left: 170, top: BOARD_BOX.y + BOARD_BOX.h + 6, width: 760, display: 'flex', justifyContent: 'center', ...enter(frame, downAt, { distance: 10 }) }}>
               <Pill text={COMMITTEE.delegation} tone={C.emerald} icon="shield" size={28} height={56} on={shield} />
             </div>
           ) : null}
