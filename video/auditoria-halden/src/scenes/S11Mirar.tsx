@@ -13,9 +13,9 @@ const COL_W = 840;
 const COL_X = [0, STAGE.width - COL_W] as const;
 const HEAD_TOP = 76;
 const CARD_TOP = 150;
-const CARD_H = 252;
-const LOG_TOP = 424;
-const LOG_H = 226;
+const CARD_H = 262;
+const LOG_TOP = 436;
+const LOG_H = 212;
 
 const SOURCES: readonly { text: string; word: string; seg: string }[] = [
   { text: 'registros públicos', word: 'público', seg: 's11-01' },
@@ -32,11 +32,11 @@ const ACTIONS: readonly { text: string; icon: IconName; word: string }[] = [
 function Target({ touched, label, status, tone }: { touched: number; label: string; status: string | null; tone: string }) {
   return (
     <div style={{ width: 200, display: 'flex', flexDirection: 'column', alignItems: 'center', fontFamily: FONT.sans, whiteSpace: 'nowrap' }}>
-      <div style={{ position: 'relative', width: 136, height: 104, borderRadius: 20, display: 'grid', placeItems: 'center', border: `3px solid ${alpha(touched > 0.5 ? C.rose : C.muted, 0.8)}`, background: alpha(touched > 0.5 ? C.rose : C.ink800, 0.14), boxShadow: touched > 0.05 ? `0 0 ${Math.round(26 * touched)}px ${alpha(C.rose, 0.4 * touched)}` : undefined }}>
-        <Icon name="server" size={62} color={touched > 0.5 ? C.roseSoft : C.text} strokeWidth={2} />
+      <div style={{ position: 'relative', width: 116, height: 86, borderRadius: 18, display: 'grid', placeItems: 'center', border: `3px solid ${alpha(touched > 0.5 ? C.rose : C.muted, 0.8)}`, background: alpha(touched > 0.5 ? C.rose : C.ink800, 0.14), boxShadow: touched > 0.05 ? `0 0 ${Math.round(26 * touched)}px ${alpha(C.rose, 0.4 * touched)}` : undefined }}>
+        <Icon name="server" size={54} color={touched > 0.5 ? C.roseSoft : C.text} strokeWidth={2} />
       </div>
-      <div style={{ marginTop: 8, fontSize: 30, fontWeight: 750, color: C.text }}>{label}</div>
-      <div style={{ marginTop: 4, height: 38, fontSize: 32, fontWeight: 850, color: tone, opacity: status ? 1 : 0 }}>{status ?? '.'}</div>
+      <div style={{ marginTop: 6, fontSize: 30, fontWeight: 750, color: C.text }}>{label}</div>
+      <div style={{ marginTop: 2, height: 38, fontSize: 32, fontWeight: 850, color: tone, opacity: status ? 1 : 0 }}>{status ?? '.'}</div>
     </div>
   );
 }
@@ -121,11 +121,11 @@ export function S11Mirar(props: SceneProps) {
             })}
           </div>
           {/* the line to the target stays cut: it never touches it */}
-          <svg width={120} height={40} viewBox="0 0 120 40" style={{ position: 'absolute', left: 530, top: 130, opacity: cardL }} fill="none" aria-hidden>
-            <path d="M4 20 H46" stroke={alpha(C.muted, 0.7)} strokeWidth={4} strokeDasharray="8 7" strokeLinecap="round" />
-            <path d="M70 12 L82 28 M82 12 L70 28" stroke={alpha(C.muted, 0.7)} strokeWidth={4} strokeLinecap="round" opacity={termL} />
+          <svg width={120} height={40} viewBox="0 0 120 40" style={{ position: 'absolute', left: 520, top: 124, opacity: cardL }} fill="none" aria-hidden>
+            <path d="M4 20 H52" stroke={alpha(C.muted, 0.85)} strokeWidth={5} strokeDasharray="9 8" strokeLinecap="round" />
+            <path d="M70 8 L90 32 M90 8 L70 32" stroke={alpha(C.emerald, 0.9)} strokeWidth={6} strokeLinecap="round" opacity={termL} />
           </svg>
-          <div style={{ position: 'absolute', left: 620, top: 66 }}>
+          <div style={{ position: 'absolute', left: 620, top: 58 }}>
             <Target touched={0} label="objetivo" status={rule > 0.5 ? 'sin tocar' : null} tone={C.emerald} />
           </div>
         </div>
@@ -157,7 +157,7 @@ export function S11Mirar(props: SceneProps) {
               <path d={`M4 20 H${12 + 112 * touch}`} stroke={C.rose} strokeWidth={5} strokeLinecap="round" />
               <path d="M104 8 L126 20 L104 32" stroke={C.rose} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" opacity={touch > 0.9 ? 1 : 0} />
             </svg>
-            <div style={{ position: 'absolute', left: 620, top: 66 }}>
+            <div style={{ position: 'absolute', left: 620, top: 58 }}>
               <Target touched={touch} label="objetivo" status={rule > 0.5 ? 'tocado' : null} tone={C.roseSoft} />
             </div>
           </div>

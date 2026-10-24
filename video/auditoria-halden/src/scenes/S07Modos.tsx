@@ -29,9 +29,9 @@ function Description({ id }: { id: (typeof MODES)[number]['id'] }) {
   return (
     <>
       <div>ataque y SOC en la misma sala, técnica a técnica</div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 4 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 4, fontSize: 30, whiteSpace: 'nowrap' }}>
         <span>¿se vio?</span>
-        <svg width={40} height={20} viewBox="0 0 40 20" fill="none" aria-hidden>
+        <svg width={34} height={20} viewBox="0 0 40 20" fill="none" aria-hidden>
           <path d="M2 10 H34 M26 3 L35 10 L26 17" stroke={C.cyan} strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         <span style={{ color: C.cyanSoft, fontWeight: 800 }}>regla nueva</span>

@@ -12,15 +12,16 @@ const S = 's09-contar';
 const W = STAGE.width;
 const COL_GAP = 36;
 const COL_W = (W - 2 * COL_GAP) / 3;
-const CARD_H = 322;
-const ROOM_TAG_TOP = 340;
-const ROOM_TOP = 388;
-const ROOM_W = 216;
-const CAPTION_TOP = 548;
-const CHIP_TOP = 600;
+const CARD_H = 338;
+const ROOM_TAG_TOP = 352;
+const ROOM_TOP = 400;
+const ROOM_W = 226;
+const CAPTION_TOP = 556;
+const CHIP_TOP = 604;
 
 interface Level {
   id: 'unknown' | 'partial' | 'known';
+  /** The term in bold and the rest of its name (the exam says «unknown environment»). */
   term: string;
   tone: string;
   /** Sheets peeking out of the envelope: 0 = empty and sealed. */
@@ -35,7 +36,7 @@ interface Level {
 const LEVELS: readonly Level[] = [
   {
     id: 'unknown',
-    term: 'UNKNOWN',
+    term: 'Unknown',
     tone: C.rose,
     sheets: 0,
     lead: 'nada',
@@ -46,7 +47,7 @@ const LEVELS: readonly Level[] = [
   },
   {
     id: 'partial',
-    term: 'PARTIALLY KNOWN',
+    term: 'Partially known',
     tone: C.cyan,
     sheets: 1,
     lead: 'una cuenta de usuario normal',
@@ -57,7 +58,7 @@ const LEVELS: readonly Level[] = [
   },
   {
     id: 'known',
-    term: 'KNOWN',
+    term: 'Known',
     tone: C.emerald,
     sheets: 3,
     lead: 'planos, código, credenciales',
@@ -69,10 +70,10 @@ const LEVELS: readonly Level[] = [
 ];
 
 /** An envelope: sealed when it holds nothing, open with `sheets` papers peeking out otherwise (150 × 100). */
-function Envelope({ tone, sheets, open }: { tone: string; sheets: number; open: number }) {
+function Envelope({ tone, sheets, open, width = 150 }: { tone: string; sheets: number; open: number; width?: number }) {
   const o = sheets > 0 ? open : 0;
   return (
-    <svg width={150} height={106} viewBox="0 0 150 106" fill="none" aria-hidden style={{ display: 'block', overflow: 'visible' }}>
+    <svg width={width} height={(width * 106) / 150} viewBox="0 0 150 106" fill="none" aria-hidden style={{ display: 'block', overflow: 'visible' }}>
       {Array.from({ length: sheets }, (_, k) => {
         const lift = (14 + k * 9) * o;
         return <rect key={k} x={26 + k * 24} y={12 - lift} width={64} height={56} rx={6} fill={C.ink800} stroke={alpha(tone, 0.8)} strokeWidth={3.5} transform={`rotate(${(k - (sheets - 1) / 2) * 7} 75 60)`} />;
@@ -141,12 +142,11 @@ export function S09Contar(props: SceneProps) {
                 ...dimStyle(dim),
               }}
             >
-              <div style={{ height: 104, display: 'flex', justifyContent: 'center' }}>
-                <Envelope tone={lv.tone} sheets={lv.sheets} open={open} />
+              <div style={{ height: 98, display: 'flex', justifyContent: 'center' }}>
+                <Envelope tone={lv.tone} sheets={lv.sheets} open={open} width={132} />
               </div>
-              <div style={{ marginTop: 6, display: 'flex', alignItems: 'baseline', gap: 12, opacity: 0.35 + 0.65 * open }}>
-                <span style={{ fontSize: 42, fontWeight: 900, letterSpacing: 0.5, color: lv.tone }}>{lv.term}</span>
-                <span style={{ fontSize: 28, fontWeight: 700, color: C.muted }}>environment</span>
+              <div style={{ marginTop: 6, fontSize: 38, fontWeight: 900, lineHeight: 1.15, color: lv.tone, whiteSpace: 'normal', opacity: 0.35 + 0.65 * open }}>
+                {lv.term} <span style={{ fontSize: 28, fontWeight: 700, color: C.muted }}>environment</span>
               </div>
               <Line size={32} weight={850} color={C.textStrong} show={lead}>
                 {lv.lead}
