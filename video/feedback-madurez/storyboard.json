@@ -1,0 +1,127 @@
+{
+  "title": "Métricas, feedback y madurez: cómo demuestra su valor un equipo CTI",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 238,
+  "notice": "Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Qué medir y a quién preguntar"
+    },
+    {
+      "n": 2,
+      "title": "Cómo madura un equipo"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "¿Sirve de algo el equipo?",
+      "goal": "Una mesa de trabajo vista desde arriba con el rótulo «Meridian Dynamics · aeroespacial · tú, su analista de inteligencia» (el mismo de V22, V23, V27 y G02), sin fecha ni hora y sin ninguna alerta, equipo, dominio o IP. Entra una tira del CISO (`ask`, con el efecto «mail»): «el CISO: ¿sirve de algo el equipo de inteligencia?». Es una pregunta, no una decisión: el CISO no decide ni recorta nada en pantalla, ningún rostro ni nombre, y nadie queda mal por preguntar. A continuación aparece un panel sobre la mesa (`panel`) rotulado «panel de ejemplo · cifras ficticias» y se llena (`numbers`) de tres contadores sin valor legible, con los rótulos «indicadores procesados», «informes publicados» y «feeds contratados» (columna de la izquierda de la tabla de la lección); los dígitos son borrones que suben, ningún número leíble y ninguno del check de la lección (ni 2,4 millones ni 40 %). Título «Métricas, feedback y madurez» con «cómo demuestra su valor un equipo de inteligencia» debajo (`title`, hacia los 8-9 s del estimado, siempre antes de los 12). La promesa en tres chips (`promise`): «qué medir · a quién preguntar · cómo madura un equipo». El panel de contadores es la imagen de «contar», no un dato de Meridian. Sin autobús todavía: la línea de autobús llega en la escena siguiente",
+      "targetSec": 18,
+      "wordBudget": 49,
+      "requiredCues": [
+        "ask",
+        "panel",
+        "numbers",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-medir",
+      "chapter": 1,
+      "title": "Kilómetros y viajeros",
+      "goal": "Una línea de autobús abstracta, de izquierda a derecha, con tres paradas y un autobús de formas simples; sin número de línea, sin marcas, sin ciudad ni mapa real (`route`). Encima, un contador de kilómetros que sube (`km`, con el efecto «typing»), con el rótulo de la tabla de la lección «Nº de IOCs ingeridos». El autobús recorre la línea con todos los asientos vacíos y el contador sigue subiendo (`empty`): rótulo «nadie a bordo». En la parada final bajan viajeros abstractos (siluetas, sin rostros) y se unen con un hilo a dos filas de la columna de valor de la tabla de la lección (`arrive`): «Detecciones/hunts originados por intel que encontraron actividad real» y «Requirements respondidos y decisiones informadas (con feedback del consumidor)». Mensaje interceptado de VELVET CICADA (con la firma «VELVET CICADA», sin ficha de rol: el registro no fija ninguna; el mismo estilo que en G05, G06 y V27) y su respuesta (`reply`): la tabla de la lección, cuatro filas, columna izquierda «métrica vanidosa» (Nº de IOCs ingeridos, Nº de informes publicados, Feeds contratados, Páginas por informe) y derecha «métrica de valor», sin los emoji de la lección (chips rojo y verde). `target`: las filas de la izquierda se apagan una a una con el rótulo «el equipo hace lo que se mide». `value`: se enciende la derecha, filas 1 y 2 (hunts/detecciones y requirements respondidos). `wait`: se enciende la fila 4 de valor, escrita «Tiempo de requisito a respuesta; satisfacción del consumidor» (sin flecha: la lección escribe «requisito→respuesta»), y el autobús vuelve a la primera parada con un reloj de espera. Al final (`lens`) quedan quietas las tres métricas de valor con un rótulo, «resultados sobre decisiones y detección, no volumen»; la tarjeta de examen, al acabar esa frase. Ningún valor numérico real, ninguna fecha, ningún indicador: los rótulos son nombres de categoría. La tabla se muestra tal como la lección; no se inventa ninguna fila. No es la báscula de G04 ni el aeropuerto de V27: el autobús es un solo dibujo",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "requiredCues": [
+        "route",
+        "km",
+        "empty",
+        "arrive",
+        "reply",
+        "target",
+        "value",
+        "wait",
+        "lens"
+      ]
+    },
+    {
+      "id": "s03-bucle",
+      "chapter": 1,
+      "title": "Preguntar al viajero",
+      "goal": "La parada final de s02. Un viajero abstracto se baja del autobús y recibe una pregunta (`survey`). Cuatro fichas aparecen al compás de la voz con el texto de la lección: «¿Respondió tu pregunta?» (`q1`), «¿Llegó a tiempo?» (`q2`), «¿Qué decisión apoyó?» (`q3`) y «¿Qué falta?» (`q4`). Después (`loop`) un lazo de tres nodos, sin las seis fases del ciclo ni ningún restaurante ni hilo de estaciones (eso es G03): «producto» → «feedback» → «requirements ajustados», con la flecha de vuelta al producto, y el rótulo «una fase del ciclo, no una cortesía». Un cuaderno se abre (`record`) con una frase de ejemplo rotulada todo el tiempo «Ejemplo de la lección · no es el caso de Meridian»: «esta búsqueda de amenazas nació del informe X y encontró la intrusión Y». X e Y quedan como letras en pantalla, sin ningún valor real; cuando se resuelve Y suena el efecto «check» (`win`). El rótulo «la frase que financia equipos» (`fund`); la tarjeta de examen, al acabar esa frase. Debajo, dos esquemas: «atribuible», tres cajas (informe, búsqueda, hallazgo) unidas por un hilo continuo, y «solo coincide en el tiempo», dos cajas sin hilo y con línea discontinua; es la cautela de AP07 («coincidencia temporal no es causa demostrada») contada con la imagen. Cierre del capítulo (`wrap`): dos rótulos, «preguntas para mejorar» y «éxitos para demostrar». Ni el SOC ni el CISO deciden nada en pantalla; no hay ningún hunt de Meridian que haya encontrado nada. Ninguna cifra, fecha, equipo, dominio ni IP",
+      "targetSec": 47,
+      "wordBudget": 127,
+      "requiredCues": [
+        "survey",
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "loop",
+        "record",
+        "win",
+        "fund",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s04-madurez",
+      "chapter": 2,
+      "title": "Cómo crece un servicio",
+      "goal": "Mensaje interceptado de VELVET CICADA, con la misma firma, y su respuesta (`reply2`): el mensaje se aparta y una moneda y una persona (iconos de gasto y de plantilla) quedan tachadas en una esquina durante toda la escena, con el rótulo «no se compra». Aparece la barra de tres estadios con el rótulo de la lección (`stages`, con el efecto «ding»): «Madurez típica». Primer estadio, «1 · reactivo» (`s1`): un autobús suelto y avisos de avería que se apagan, con el texto de la lección «consume feeds, apaga fuegos». Segundo, «2 · en desarrollo» (`s2`): tres líneas con horario y el texto de la lección «requirements escritos · productos regulares · CMF». `map`: un plano abstracto de barrios con cada línea cubriendo uno, y el rótulo «CMF: qué fuente responde qué pregunta»; un barrio queda sin línea, marcado como hueco. Tercero, «3 · maduro» (`s3`): la red conectada al resto de la ciudad (iconos genéricos de hospital y escuela, sin nombres) con el texto de la lección «inteligencia integrada en decisiones · métricas de resultado · producción propia que la comunidad consume» y una segunda red, de otro, enlazada a la nuestra. Al final (`measure`) las tres barras quedan quietas con dos rótulos, «no cuenta: analistas ni gasto» (tachados) y «cuenta: decisiones tomadas con lo que produces»; la tarjeta de examen, al acabar esa frase. El título de la escena no dice nada de la plataforma. Ninguna cifra, fecha ni equipo; no hay ningún estadio asignado a Meridian",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "requiredCues": [
+        "reply2",
+        "stages",
+        "s1",
+        "s2",
+        "map",
+        "s3",
+        "measure"
+      ]
+    },
+    {
+      "id": "s05-plataforma",
+      "chapter": 2,
+      "title": "Una compra tentadora",
+      "goal": "La barra de tres estadios de s04, ahora con una flecha marcada entre el 1 y el 2: «la trampa del paso 1 a 2» (`tempt`). Una flota enorme de autobuses aparcada en unas cocheras, con el plano de barrios de s04 detrás y sin ninguna línea dibujada (`fleet`, con el efecto «error»): rótulo «flota sin líneas». Después una caja grande rotulada «plataforma de inteligencia de amenazas (TIP)» llena de fichas de indicadores sin valor, sin ninguna flecha de salida hacia un consumidor (`tip`): rótulo «amplifica lo que hay · no crea el proceso». Pregunta para pensar (`question`), con la barra de tres estadios quieta y apagada: una ficha aparte, «plataforma cara · sin requirements escritos», y nada que sugiera la respuesta; el título de la escena no la da. Respuesta (`answer`): la ficha se posa en el estadio 1, con el rótulo «sin requirements escritos no hay estadio 2». Después (`order`) tres pasos, uno a uno: «1 · consumidores y requirements», «2 · productos y proceso», «3 · herramienta para escalar»; la tarjeta de examen, al acabar esa frase. Es un ejemplo hipotético, rotulado «Ejemplo hipotético · no es el equipo de Meridian» desde el primer fotograma de la pregunta hasta el final de la respuesta. Sin nombre de ningún producto comercial. Ni el CISO ni el SOC compran nada en pantalla",
+      "targetSec": 47,
+      "wordBudget": 127,
+      "requiredCues": [
+        "tempt",
+        "fleet",
+        "tip",
+        "question",
+        "answer",
+        "order"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, cada una con su viñeta en miniatura (`recap`): `rule-1` (el autobús con viajeros que llegan), «Mide resultados, no volumen: decisiones y amenazas encontradas, no indicadores procesados»; `rule-2` (el viajero y las cuatro preguntas), «Pregunta tras cada producto y apunta los éxitos atribuibles: preguntas para mejorar, éxitos para demostrar»; `rule-3` (la barra de estadios con las cocheras), «Primero el proceso, luego la plataforma: la madurez se mide en decisiones, no en gasto». Tarjeta final Alertópolis (`next`, `endcard`): «Tu turno: las preguntas de la lección» (s5m5, 6 preguntas), con el descargo «Simulación educativa con datos ficticios. Material independiente, no afiliado a SANS/GIAC.». Ningún laboratorio ni mención de los laboratorios de S5",
+      "targetSec": 24,
+      "wordBudget": 65,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
