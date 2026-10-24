@@ -35,6 +35,7 @@ video/<slug>/
 | `profile` | uno de los seis perfiles (`principal`, `capsula`, `principal-yt`, `capsula-yt`, `caso-yt`, `caso-principal-yt`); ver «Perfiles» |
 | `track` | descargo de la transcripción: `secplus` (no afiliado a CompTIA) o `gcti` (no afiliado a SANS/GIAC) |
 | `adversary` | opcional; el adversario de la sección (p. ej. `SILENT PAGER`). Obligatorio en cuanto algún segmento de `narration.json` use `intercept` — ver «Mensaje interceptado» |
+| `simulationLabel` | opcional (≤ 40 caracteres); sustituye «Simulación educativa · datos ficticios» en el sello de la esquina y el arranque de la cabecera de la transcripción y de la descripción de YouTube, para un vídeo que cuenta casos reales. Sin él todo sale como siempre (el campo solo se escribe en `timeline.json` cuando existe) |
 | `lesson` | opcional; el id de módulo (p. ej. `sp4m7`) que enlaza la descripción de YouTube (`youtube-meta.mjs`) |
 
 Todos los scripts eligen el vídeo con `--video <slug>` (o la variable `VIDEO`; por defecto `siem`).

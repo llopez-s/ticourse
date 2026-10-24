@@ -32,7 +32,7 @@ Remotion 4 + React 19 + TypeScript. {{width}}×{{height}}, {{fps}} fps. {{trackL
 ## Text rules
 - On-screen text: Spanish, with exam terms in English (the terms the narration itself uses in English).
 - On-screen TEXT may not contain arrow characters or emoji (draw arrows as SVG/Connector).
-- Never show «IntelForge»; the brand is «ALERTÓPOLIS». The «datos ficticios» tag is drawn by the engine — do
+- Never show «IntelForge»; the brand is «ALERTÓPOLIS». The «datos ficticios» tag (or the video's own `simulationLabel`) is drawn by the engine — do
   not draw your own.
 
 ## Layout rules

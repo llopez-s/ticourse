@@ -17,7 +17,7 @@ const SHAPES = {
 
 /** Keys a shape may carry in addition to SHAPES (only written when non-empty). */
 const OPTIONAL = {
-  Timeline: ['intercept', 'questions', 'sfx', 'captionsOnScreen'],
+  Timeline: ['intercept', 'questions', 'sfx', 'captionsOnScreen', 'simulationLabel'],
   InterceptCue: ['audio', 'audioFrom', 'audioFrames'],
   ExamCue: ['badge'],
   QuestionCue: ['badge'],
@@ -228,6 +228,7 @@ export function validateTimeline(t, opts = {}) {
     }
   }
   if (t.captionsOnScreen !== undefined && t.captionsOnScreen !== false) errors.push('timeline.captionsOnScreen: when present, false');
+  if (t.simulationLabel !== undefined && (typeof t.simulationLabel !== 'string' || !t.simulationLabel.trim())) errors.push('timeline.simulationLabel: when present, a non-empty string');
   if (t.sfx !== undefined) {
     if (!Array.isArray(t.sfx) || !t.sfx.length) errors.push('timeline.sfx: when present, a non-empty array');
     else {

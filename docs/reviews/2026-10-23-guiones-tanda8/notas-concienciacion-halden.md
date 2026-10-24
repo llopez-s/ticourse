@@ -140,3 +140,18 @@ El estimado tras aplicar la revisión era 360,6 s (fuera de 240–330 s). Recort
 - s03-03 sin «Los dos sabían que no se podía» (queda en la pantalla de `face-back` y en la tarjeta) y s02-05 «Y ojo, es un comportamiento, no un tipo de insider» (A-6 más corto).
 - Sin tocar: la tercera cara de s02.
 Resultado: **722 palabras, 326,8 s estimados** (~291 s con la lectura de Lidia a 0,89), 0 errores, sin aviso de ventana. Registro de canon: la farola ya no es una imagen de V44 (V45 y V48 la tenían declarada como ocupada; pueden usarla).
+
+## Comparación con la rama (2026-10-23)
+
+Se comparó el guion congelado de `main` con `origin/video-concienciacion-halden` (2026-10-17). `main` explica el phishing simulado, la autorización por escrito y el report rate con su tiempo, dice el botón en el correo y cierra «insider» (opción C de la pregunta 1) donde la rama dice «atacante». De la rama se toman tres retoques de claridad. `"frozen"` sigue en `2026-10-23`; ids, cues, claves, trampas y número de líneas no cambian.
+
+**Aplicados (3, los recomendados).**
+- T1, `s02-04` y `goal` de s02: «una foto de grupo» en vez de «una foto del equipo» (0 palabras). En este canon «equipo» es la máquina, y «foto del equipo» se oye como foto de un ordenador.
+- T2, tarjeta de `s06-02`: «Initial al entrar; recurring, periódica» (40 caracteres, límite 58) en vez de «siempre», que sugiere continuo y no periódico.
+- T3, `s03-01` (voz y panel): «La advertencia dice que la empresa no la permite, y él la acepta» y, en el panel, «una extensión que la empresa prohíbe, y acepta la advertencia» (143 caracteres, límite 160). Une la advertencia con la prohibición y evita «la política» a secas, que de oído puede entenderse como «politics» (+3 palabras). Misma clave B y trampa D; una sola respuesta defendible.
+
+**No aplicado (T4, opcional).** La farola compacta (`s04-05`, +16 palabras): exige cuatro compensaciones (−14 palabras) que quitan de la voz a Dirección, a quien trabaja fuera y a quien llega nuevo (siguen en pantalla), y dejaría 329,9 s. El informe no la ve claramente rentable; la farola sigue **libre** en el registro, como estaba. Tampoco se toman «nada de nóminas ni despidos», «no solo bajar el click rate», el recibí ni la segunda mitad del inglés (no caben).
+
+**Duración final.** `build-timeline --video concienciacion-halden --check --estimate`: 0 errores, 8 avisos «N words» (los de siempre), **728 palabras, 329,2 s (5:29)** estimados (antes 725 y 328,0 s), dentro de 240–330 s. Con la razón ~0,89, unos 293 s. `canon-check`: 0 coincidencias.
+
+**Registro de canon:** fila de V44 (§1: 728 palabras, 329,2 s, ~293 s), tres caras (§3 y §6: «foto de grupo»), pregunta 1 (§3, «Casos»: voz y panel de T3), «Notas de V44» (revisiones, A-1 con su cambio posterior; cifras; tarjeta «periódica») y «Solo en planes o notas» (duración). Citas `v44/narration.json:52`, `:70`, `:74`, `:182`; ninguna se desplaza.

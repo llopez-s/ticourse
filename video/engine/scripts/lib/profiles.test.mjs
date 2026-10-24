@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import { mp4PathFor } from './paths.mjs';
+import { checkManifest, mp4PathFor } from './paths.mjs';
 import { APP_NAME, LEGACY_APP_NAME, YOUTUBE_PROFILES, profileFor, trackNotice } from './profiles.mjs';
 
 test('the legacy profiles keep their numbers, stay in the repo and use no chispa checks', () => {
@@ -41,6 +41,23 @@ test('trackNotice: the old name for repo videos, Alertópolis for YouTube ones',
     `Simulación educativa con datos ficticios · ${APP_NAME} — material independiente, no afiliado a SANS/GIAC`,
   );
   assert.throws(() => trackNotice('ccna'), /unknown track/);
+});
+
+test('trackNotice: a video of real cases swaps the «datos ficticios» lead (video.json simulationLabel) and keeps the disclaimer', () => {
+  assert.equal(trackNotice('gcti', 'principal-yt', null), trackNotice('gcti', 'principal-yt'));
+  assert.equal(
+    trackNotice('gcti', 'principal-yt', 'Casos reales · análisis educativo'),
+    `Casos reales · análisis educativo · ${APP_NAME} — material independiente, no afiliado a SANS/GIAC`,
+  );
+});
+
+test('checkManifest: simulationLabel is optional, one line, at most 40 characters', () => {
+  const base = { slug: 'x', output: 'x', composition: 'X', poster: 'XPoster', profile: 'principal-yt', track: 'gcti' };
+  assert.doesNotThrow(() => checkManifest(base, 'video.json', 'x'));
+  assert.doesNotThrow(() => checkManifest({ ...base, simulationLabel: 'Casos reales · análisis educativo' }, 'video.json', 'x'));
+  assert.throws(() => checkManifest({ ...base, simulationLabel: '' }, 'video.json', 'x'), /"simulationLabel"/);
+  assert.throws(() => checkManifest({ ...base, simulationLabel: 'x'.repeat(41) }, 'video.json', 'x'), /"simulationLabel"/);
+  assert.throws(() => checkManifest({ ...base, simulationLabel: 'a\nb' }, 'video.json', 'x'), /"simulationLabel"/);
 });
 
 test('mp4PathFor: repo profiles render into public/videos, YouTube ones into the video out/ folder', () => {

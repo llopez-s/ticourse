@@ -228,6 +228,21 @@ test('captionsOnScreen: written (false) only for the YouTube profiles; the rest 
   assert.deepEqual(validateTimeline({ ...repo.timeline, captionsOnScreen: true }, { sceneIds: repo.timeline.scenes.map((s) => s.id) }).filter((e) => /captionsOnScreen/.test(e)), ['timeline.captionsOnScreen: when present, false']);
 });
 
+test('simulationLabel: a video of real cases carries its own corner tag and notice; the rest are untouched', async () => {
+  const label = 'Casos reales · análisis educativo';
+  const plain = await buildVariant(() => {}, 'sim-plain');
+  assert.equal('simulationLabel' in plain.timeline, false, 'no label, no key: other timelines stay byte-identical');
+  assert.match(plain.transcript.split('\n')[1], /^Simulación educativa con datos ficticios · /);
+  const real = await buildVariant(() => {}, 'sim-real', { simulationLabel: label });
+  assert.equal(real.timeline.simulationLabel, label);
+  assert.deepEqual(validateTimeline(real.timeline, { sceneIds: real.timeline.scenes.map((s) => s.id) }), []);
+  const notice = real.transcript.split('\n')[1];
+  assert.ok(notice.startsWith(`${label} · `), notice);
+  assert.doesNotMatch(notice, /ficticios/);
+  assert.deepEqual({ ...real.timeline, simulationLabel: undefined }, { ...plain.timeline, simulationLabel: undefined });
+  assert.ok(validateTimeline({ ...real.timeline, simulationLabel: '' }, { sceneIds: real.timeline.scenes.map((s) => s.id) }).some((e) => /simulationLabel/.test(e)));
+});
+
 test('playbackMs: a recording plays until its voice really stops (+ tail), even when the ASR ends the last word early', () => {
   assert.equal(playbackMs({ probeMs: 5000, lastEnd: 4000, speechEndMs: 4600, tailMs: 250 }), 4850); // V4 s08-04 lost «siguiente»
   assert.equal(playbackMs({ probeMs: 5000, lastEnd: 4000, tailMs: 250 }), 4250); // TTS clips: as before

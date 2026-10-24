@@ -50,6 +50,12 @@ export const OPTIONAL_MANIFEST_KEYS = Object.freeze({
   youtubeTitle: /^[^|\n]{5,80}$/,
   /** Exam named on the exam cards' badge when it is not the track's (the SY0-801 novelties: "SY0-801 · borrador"). */
   examBadge: /^[^\n]{1,30}$/,
+  /**
+   * Text of the corner tag (and of the transcript/description header) when «Simulación educativa · datos ficticios»
+   * would be false because the video tells real cases (G06). Absent = the default tag. At most 40 characters so
+   * it fits next to the chapter rail.
+   */
+  simulationLabel: /^[^\n]{1,40}$/,
 });
 
 /** Checks a parsed video.json; throws on the first problem. */
