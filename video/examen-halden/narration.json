@@ -47,25 +47,25 @@
     {
       "id": "s02-02",
       "scene": "s02-formato",
-      "text": "<clear> {closed-book}Y es closed-book, o sea, sin apuntes. Solo tú y la pantalla.",
+      "text": "<clear> {closed-book}Y es closed-book, o sea, sin apuntes ni buscar nada. Solo tú y la pantalla.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-03",
       "scene": "s02-formato",
-      "text": "<thoughtful> {scale}La nota va de cien a novecientos, y se aprueba con setecientos cincuenta. Ojo, que eso es un punto de una escala, no un porcentaje.",
+      "text": "<thoughtful> {scale}La nota va de cien a novecientos, y se aprueba con setecientos cincuenta. Ojo, que eso es un punto de una escala, no un porcentaje de aciertos.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-04",
       "scene": "s02-formato",
-      "text": "<firm> Las preguntas son de test, y a veces hay que marcar más de una respuesta. Además hay simulaciones, y de esas hablamos al final.",
+      "text": "<firm> Las preguntas son de test, y a veces hay que marcar más de una respuesta. Además hay simulaciones, que son ejercicios prácticos, y de esas hablamos al final.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-05",
       "scene": "s02-formato",
-      "text": "<reassuring> {caveat}Y estos datos pueden cambiar, así que compruébalos siempre en la web oficial.",
+      "text": "<reassuring> {caveat}Y estos datos pueden cambiar, así que compruébalos siempre en la web oficial, antes de presentarte.",
       "pauseAfterMs": 500
     },
     {
@@ -77,13 +77,13 @@
     {
       "id": "s03-02",
       "scene": "s03-pesos",
-      "text": "<focused> Operaciones se lleva un veintiocho por ciento, y Amenazas, un veintidós. {half}Juntas son la mitad del examen.",
+      "text": "<focused> Operaciones se lleva un veintiocho por ciento, y Amenazas, un veintidós. {half}Juntas son la mitad del examen, así que ahí está la mitad de lo que te preguntan.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-03",
       "scene": "s03-pesos",
-      "text": "<warm> {vocab}Y los conceptos generales, que solo pesan un doce, no se saltan. Son el vocabulario de todas las demás.",
+      "text": "<warm> {vocab}Y los conceptos generales, que solo pesan un doce, no se saltan. Pesan poco, pero son el vocabulario de todas las demás. Sin ellos, no entiendes las preguntas del resto.",
       "pauseAfterMs": 400
     },
     {
@@ -107,13 +107,19 @@
     {
       "id": "s04-03",
       "scene": "s04-califs",
-      "text": "<thoughtful> {same-options}Mira estas cuatro opciones en blanco. Son siempre las mismas, pero según el calificador {four-answers}se enciende una distinta.",
+      "text": "<thoughtful> {same-options}Mira estas cuatro opciones en blanco. Son siempre las mismas, pero según el calificador {four-answers}se enciende una distinta. Cambia la pregunta, y cambia la respuesta.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-04",
       "scene": "s04-califs",
-      "text": "<firm> {rule}Casi siempre hay dos que tientan y una que encaja con lo que piden. Por eso, lo primero es leer el calificador.",
+      "text": "<firm> {rule}Casi siempre hay dos opciones que tientan y una que encaja con lo que piden. Por eso, lo primero es leer el calificador, antes de mirar las opciones.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-califs",
+      "text": "<engaging> Empezamos por best y first, con una pregunta cada uno.",
       "pauseAfterMs": 600
     },
     {
@@ -143,7 +149,13 @@
     {
       "id": "s05-02",
       "scene": "s05-p1",
-      "text": "<confident> {ok-1}Un inicio de sesión único, porque con un solo acceso se abre todo y, al dar de baja, se cierra todo. {trap-1}El gestor ayuda con las contraseñas, pero no las cierra todas a la vez.",
+      "text": "<confident> {ok-1}Un inicio de sesión único, porque con un solo acceso se abre todo y, al dar de baja, se cierra todo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p1",
+      "text": "<firm> {trap-1}El gestor ayuda con las contraseñas, pero no las cierra todas a la vez.",
       "pauseAfterMs": 1500,
       "exam": {
         "objective": "4.6",
@@ -197,7 +209,7 @@
     {
       "id": "s07-02",
       "scene": "s07-tacha",
-      "text": "<clear> {recap-2}En la segunda pasa igual. El seguro y la pérdida anual dependen de algo que todavía no existe, que es el inventario.",
+      "text": "<clear> {recap-2}Con la segunda, igual. El seguro llega tarde, porque antes hay que saber qué cubrir. Y la pérdida anual necesita el valor de cada activo, o sea, el inventario.",
       "pauseAfterMs": 300
     },
     {
@@ -299,7 +311,7 @@
     {
       "id": "s10-03",
       "scene": "s10-estandar",
-      "text": "<mischievously> {trick}Y el truco propio, ese que a ti te parece muy listo, suele perder.",
+      "text": "<mischievously> {trick}Y el truco propio, ese que a ti te parece muy listo, suele perder. Se sale del manual, y el examen premia el manual.",
       "pauseAfterMs": 500
     },
     {
@@ -335,7 +347,13 @@
     {
       "id": "s11-02",
       "scene": "s11-p5",
-      "text": "<confident> {ok-5}Un certificado de una autoridad pública, en la que los navegadores ya confían. {trap-5}Instalarlo en los equipos de la clínica arregla solo una parte. {cols-back}Para el público, lo estándar, no lo ingenioso.",
+      "text": "<confident> {ok-5}Un certificado de una autoridad pública, en la que los navegadores ya confían.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-p5",
+      "text": "<firm> {trap-5}Instalarlo en los equipos de la clínica arregla solo una parte, la de los equipos que ella controla. {cols-back}Para el público, lo estándar, no lo ingenioso.",
       "pauseAfterMs": 1500,
       "exam": {
         "objective": "1.4",
@@ -347,7 +365,7 @@
     {
       "id": "s12-01",
       "scene": "s12-tiempo",
-      "text": "<engaging> {bar}Y ahora, el tiempo. Tienes noventa minutos, y no se reparten solos.",
+      "text": "<engaging> {bar}Y ahora, el tiempo. Tienes noventa minutos para todo.",
       "pauseAfterMs": 300
     },
     {
@@ -365,25 +383,31 @@
     {
       "id": "s12-04",
       "scene": "s12-tiempo",
-      "text": "<firm> {mark}Con las simulaciones, igual. Márcalas y sáltalas, y haz primero el test, que es tu nota segura. {back}Luego vuelve con el tiempo que te quede, porque el examen deja revisar las marcadas.",
+      "text": "<firm> {mark}Con las simulaciones, igual. Márcalas y sáltalas, y haz primero el test, que es tu nota segura.",
       "pauseAfterMs": 300
     },
     {
       "id": "s12-05",
       "scene": "s12-tiempo",
-      "text": "<clear> Reserva entre quince y veinte minutos para ellas. El resto es para el test, a algo menos de un minuto por pregunta.",
+      "text": "<reassuring> {back}Luego vuelve con el tiempo que te quede, porque el examen deja revisar las marcadas.",
       "pauseAfterMs": 300
     },
     {
       "id": "s12-06",
       "scene": "s12-tiempo",
-      "text": "<warm> {blank}Y no dejes nada en blanco, porque fallar no resta. Mejor una respuesta que ninguna.",
+      "text": "<clear> Reserva entre quince y veinte minutos para ellas. El resto es para el test, a algo menos de un minuto por pregunta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s12-07",
+      "scene": "s12-tiempo",
+      "text": "<warm> {blank}Y no dejes nada en blanco, porque fallar no resta.",
       "pauseAfterMs": 600
     },
     {
       "id": "s13-01",
       "scene": "s13-cierre",
-      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Primero, qué te piden. Tacha lo que no lo contesta y quédate con la que encaja con todo el caso.",
+      "text": "<cheerful> {recap}Tres reglas. {rule-1}Primero, qué te piden. Tacha lo que no lo contesta y quédate con la que encaja con todo el caso.",
       "pauseAfterMs": 250
     },
     {
@@ -401,7 +425,7 @@
     {
       "id": "s13-04",
       "scene": "s13-cierre",
-      "text": "<engaging> {phrase}Lee qué te piden, tacha lo que no encaja y deja lo difícil para el final. {next}Tu turno. {endcard}Hazte un simulacro cronometrado.",
+      "text": "<engaging> {phrase}Lee qué te piden, tacha lo que no encaja y deja lo difícil para el final. {next}Ahora es tu turno. {endcard}Hazte un simulacro cronometrado.",
       "pauseAfterMs": 250
     }
   ]
