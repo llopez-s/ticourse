@@ -95,7 +95,8 @@ export function S05Aguantar(props: SceneProps) {
   const phaseOut = progress(frame, auditAt - 18, 16, EASE.inOut);
 
   // ---- Phase B
-  const leftIn = progress(frame, auditAt - 4, 16);
+  const colsAt = Math.max(auditAt - 4, (win ? win[1] : 0) - 8);
+  const leftIn = progress(frame, colsAt, 16);
   const rightIn = progress(frame, pentestAt - 4, 16);
   const imageIn = progress(frame, bridgeAt - 8, 16);
   const certAt = Math.max(bridgeAt + 6, wordFrame(S, 's05-06', 'certificado') - 10);

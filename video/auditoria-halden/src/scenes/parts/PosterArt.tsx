@@ -18,12 +18,12 @@ export function PosterArt({ scale = 1 }: { scale?: number }) {
           <BridgeArt width={720} load={1} />
         </div>
         <div style={{ position: 'absolute', left: 70, top: 10 }}>
-          <Sheet width={330} height={390} tone={C.sky} glow={0.5} rotate={-4}>
+          <Sheet width={330} height={336} tone={C.sky} glow={0.5} rotate={-4}>
             <div style={{ padding: '34px 32px 0' }}>
-              <Bars widths={[58, 100, 100, 100, 74]} gap={20} h={13} />
+              <Bars widths={[58, 100, 100, 100]} gap={20} h={13} />
             </div>
-            <div style={{ position: 'absolute', left: 32, bottom: 34 }}>
-              <SignatureGap width={266} height={74} color={C.cyan} pulse={0.6} />
+            <div style={{ position: 'absolute', left: 32, bottom: 30 }}>
+              <SignatureGap width={266} height={70} color={C.cyan} pulse={0.6} />
             </div>
           </Sheet>
         </div>

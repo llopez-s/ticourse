@@ -153,7 +153,7 @@ export function S11Mirar(props: SceneProps) {
               })}
             </div>
             {/* the arrow reaches the target */}
-            <svg width={140} height={40} viewBox="0 0 140 40" style={{ position: 'absolute', left: 460, top: 136 }} fill="none" aria-hidden>
+            <svg width={140} height={40} viewBox="0 0 140 40" style={{ position: 'absolute', left: 460, top: 136, opacity: touch > 0.02 ? 1 : 0 }} fill="none" aria-hidden>
               <path d={`M4 20 H${12 + 112 * touch}`} stroke={C.rose} strokeWidth={5} strokeLinecap="round" />
               <path d="M104 8 L126 20 L104 32" stroke={C.rose} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" opacity={touch > 0.9 ? 1 : 0} />
             </svg>
