@@ -62,7 +62,7 @@ export function S04Ley(props: SceneProps) {
             const at = p.word ? w('s04-01', p.word) - 6 : personalAt;
             if (frame < at - 2) return null;
             return (
-              <div key={p.text} style={{ position: 'absolute', left: 700 + i * 330, top: STRIP.y + 8, ...enter(frame, at, { distance: 12 }) }}>
+              <div key={p.text} style={{ position: 'absolute', left: i === 0 ? 700 : 1090, top: STRIP.y + 8, ...enter(frame, at, { distance: 12 }) }}>
                 <Pill text={p.text} tone={C.cyan} icon={i === 0 ? 'users' : 'shield'} size={32} height={60} on={progress(frame, at, 10)} />
               </div>
             );

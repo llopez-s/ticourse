@@ -26,7 +26,7 @@ export function S03P1(props: SceneProps) {
 
       <SlotLine opacity={backIn} dy={(1 - backIn) * 14}>
         <SunBottle size={86} />
-        <SlotText size={38}>
+        <SlotText size={40}>
           <span>la crema de factor 50 tiene número, </span>
           <span style={{ color: C.cyanSoft }}>y nadie te echa por no ponértela</span>
         </SlotText>

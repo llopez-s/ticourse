@@ -97,7 +97,7 @@ export function S08Cierre(props: SceneProps) {
             slotAt={recapAt - 20}
             dimFrom={phraseAt}
             titleSize={48}
-            subSize={27}
+            subSize={30}
             artHeight={ART_H}
             frame={frame}
             fps={fps}

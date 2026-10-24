@@ -69,6 +69,9 @@ export function S02Que(props: SceneProps) {
 
   // Sheet 1 (policy)
   const s1 = approach(frame, sheet1At);
+  // Alone and being read, the first sheet is bigger; it settles to its size as POLICY lands under it.
+  const settle = progress(frame, policyAt - 28, 26, EASE.inOut);
+  const s1Scale = 1 + 0.2 * (1 - settle);
   const dirAt = Math.max(sheet1At + 6, wordFrame(S, 's02-02', 'dirección') - 4);
   const infoAt = Math.max(sheet1At + 12, wordFrame(S, 's02-02', 'información') - 6);
   const protAt = Math.max(infoAt + 40, wordFrame(S, 's02-02', 'protegerla') + 8);
@@ -131,7 +134,7 @@ export function S02Que(props: SceneProps) {
             headTone={policyCheck > 0.3 ? 'right' : 'plain'}
             check={policyCheck}
             lift={26 * s1.lift}
-            scale={1 + 0.02 * s1.lift}
+            scale={(1 + 0.02 * s1.lift) * s1Scale}
             glow={0.55 * policyPill * (1 - progress(frame, policyAt + 40, 30)) + 0.6 * lit1}
             glowTone={C.cyan}
           >

@@ -25,7 +25,7 @@ export function S07P3(props: SceneProps) {
 
       <SlotLine opacity={backIn} dy={(1 - backIn) * 14}>
         <BoardMini kind="old" width={118} />
-        <SlotText size={38}>
+        <SlotText size={40}>
           <span>el cartel se cambia </span>
           <span style={{ color: C.amber }}>cuando cierra la piscina</span>
           <span>, no cuando toca revisar</span>

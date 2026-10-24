@@ -292,7 +292,6 @@ export function PoolWall({ width, height, t = 0, water = 54, children }: { width
         overflow: 'hidden',
       }}
     >
-      {children}
       <svg width={width} height={water} viewBox={`0 0 ${width} ${water}`} style={{ position: 'absolute', left: 0, bottom: 0 }}>
         <defs>
           <linearGradient id="pool-water" x1="0" y1="0" x2="0" y2="1">
@@ -307,6 +306,7 @@ export function PoolWall({ width, height, t = 0, water = 54, children }: { width
           return <path key={y} d={d} fill="none" stroke="#ffffff" strokeOpacity={0.35} strokeWidth={3} strokeLinecap="round" />;
         })}
       </svg>
+      {children}
     </div>
   );
 }

@@ -11,7 +11,7 @@ import { Leaflet } from '../Nursery';
  * two questions in card 3). Amber = said by the interested party, emerald = validated by someone outside.
  */
 export const CARD_W = 548;
-export const CARD_H = 420;
+export const CARD_H = 404;
 export const CARD_GAP = 42;
 
 export interface CandidateDef {
@@ -91,7 +91,7 @@ export function SealTags({ on }: { on: number }) {
     <div style={{ height: 46, padding: '0 12px', display: 'inline-flex', alignItems: 'center', borderRadius: RADIUS.md, border: `2px solid ${alpha(C.emerald, 0.7)}`, background: alpha(C.emerald, 0.1), fontFamily: FONT.sans, fontSize: 27, fontWeight: 750, color: '#a7f3d0', whiteSpace: 'nowrap' }}>{t}</div>
   );
   return (
-    <div style={{ position: 'absolute', left: 300, top: 84, display: 'flex', flexDirection: 'column', gap: 12, opacity: o, transform: `translateX(${(1 - o) * 14}px)` }}>
+    <div style={{ position: 'absolute', left: 300, top: 78, display: 'flex', flexDirection: 'column', gap: 12, opacity: o, transform: `translateX(${(1 - o) * 14}px)` }}>
       {tag('SOC 2 Type II')}
       {tag('ISO 27001')}
     </div>
@@ -128,20 +128,20 @@ export function CandidateCard({ def, slot, art, term, say, focus, extra, childre
         <div style={{ width: 40, height: 40, borderRadius: 20, background: alpha(def.tone, 0.18), border: `2px solid ${alpha(def.tone, 0.8)}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26, fontWeight: 900, color: def.tone }}>{def.n}</div>
         <div style={{ fontSize: 28, fontWeight: 700, color: C.muted }}>candidata</div>
       </div>
-      <div style={{ position: 'absolute', left: 24, top: 68 }}>
+      <div style={{ position: 'absolute', left: 24, top: 62 }}>
         <Art n={def.n} fill={art} />
       </div>
-      <div style={{ position: 'absolute', left: 24, top: 222, width: CARD_W - 48, opacity: clamp01(term), transform: `translateY(${(1 - clamp01(term)) * 10}px)` }}>
+      <div style={{ position: 'absolute', left: 24, top: 208, width: CARD_W - 48, opacity: clamp01(term), transform: `translateY(${(1 - clamp01(term)) * 10}px)` }}>
         {def.term.map((l) => (
           <div key={l} style={{ fontSize: 42, fontWeight: 900, letterSpacing: 0.5, lineHeight: 1.1, color: def.tone === C.amber ? C.amber : '#6ee7b7', whiteSpace: 'nowrap' }}>
             {l}
           </div>
         ))}
       </div>
-      <div style={{ position: 'absolute', left: 24, top: 320, width: CARD_W - 48, fontSize: 34, fontWeight: 750, color: C.textStrong, whiteSpace: 'nowrap', opacity: clamp01(say), transform: `translateY(${(1 - clamp01(say)) * 10}px)` }}>
+      <div style={{ position: 'absolute', left: 24, top: 300, width: CARD_W - 48, fontSize: 34, fontWeight: 750, color: C.textStrong, whiteSpace: 'nowrap', opacity: clamp01(say), transform: `translateY(${(1 - clamp01(say)) * 10}px)` }}>
         {def.say}
       </div>
-      {extra ? <div style={{ position: 'absolute', left: 24, top: 360, width: CARD_W - 48 }}>{extra}</div> : null}
+      {extra ? <div style={{ position: 'absolute', left: 24, top: 344, width: CARD_W - 48 }}>{extra}</div> : null}
       {children}
     </div>
   );
@@ -153,7 +153,7 @@ export function NurseryNote({ on }: { on: number }) {
   if (o <= 0.01) return null;
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 14, opacity: o, transform: `translateY(${(1 - o) * 10}px)` }}>
-      <Leaflet width={78} />
+      <Leaflet width={70} />
       <ImageTag size={26} />
     </div>
   );

@@ -112,8 +112,8 @@ export function CounterCard({
         })}
       </div>
       {kind === 'report' ? (
-        <div style={{ marginTop: 10, display: 'flex', alignItems: 'center', gap: 10, fontSize: 30, fontWeight: 750, color: C.text, whiteSpace: 'nowrap' }}>
-          <Icon name="clock" size={30} color={C.cyan} />
+        <div style={{ marginTop: 10, display: 'flex', alignItems: 'center', gap: 10, fontSize: 27, fontWeight: 750, color: C.text, whiteSpace: 'nowrap' }}>
+          <Icon name="clock" size={28} color={C.cyan} />
           el primero a los 4 minutos
         </div>
       ) : null}
@@ -121,20 +121,19 @@ export function CounterCard({
   );
 }
 
-export const STEP_W = 410;
-export const STEP_H = 156;
+export const STEP_H = 140;
 
 /** One of the four steps of the reporting loop; `on` 0–1 lights it. The text is the full wording of the sheet. */
-export function LoopStep({ n, icon, text, on }: { n: number; icon: IconName; text: string; on: number }) {
+export function LoopStep({ n, icon, text, on, width, size = 30 }: { n: number; icon: IconName; text: string; on: number; width: number; size?: number }) {
   const o = clamp01(on);
   const tone = C.cyan;
   return (
     <div
       style={{
-        width: STEP_W,
+        width,
         height: STEP_H,
         boxSizing: 'border-box',
-        padding: '14px 20px',
+        padding: '12px 20px',
         borderRadius: RADIUS.lg,
         background: `linear-gradient(180deg, ${alpha(tone, 0.04 + 0.1 * o)} 0%, ${C.ink900} 80%)`,
         border: `3px solid ${alpha(tone, 0.25 + 0.6 * o)}`,
@@ -148,7 +147,7 @@ export function LoopStep({ n, icon, text, on }: { n: number; icon: IconName; tex
         <div style={{ width: 40, height: 40, borderRadius: 20, boxSizing: 'border-box', border: `3px solid ${alpha(tone, 0.5 + 0.5 * o)}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26, fontWeight: 850, color: C.textStrong }}>{n}</div>
         <Icon name={icon} size={38} color={tone} />
       </div>
-      <div style={{ marginTop: 10, fontSize: 30, fontWeight: 750, lineHeight: 1.18, color: C.textStrong }}>{text}</div>
+      <div style={{ marginTop: 8, fontSize: size, fontWeight: 750, lineHeight: 1.18, color: C.textStrong }}>{text}</div>
     </div>
   );
 }

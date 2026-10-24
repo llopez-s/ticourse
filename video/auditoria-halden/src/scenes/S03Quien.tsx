@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { useCurrentFrame } from 'remotion';
 import type { SceneProps } from '../../../engine/src/timeline/types';
 import { C, FONT, RADIUS, STAGE, alpha } from '../../../engine/src/theme/tokens';
-import { EASE, enter, progress } from '../../../engine/src/theme/motion';
+import { EASE, progress } from '../../../engine/src/theme/motion';
 import { Icon, dimStyle, mix, type IconName } from '../../../engine/src/ui';
 import { LiftCabin } from './parts/Images';
 import { ImageTag } from './parts/Labels';

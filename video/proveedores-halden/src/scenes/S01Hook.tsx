@@ -18,16 +18,18 @@ const PROMISE = [
 ] as const;
 
 /** The scene's group (port, crate, office): centred before the title, on the left after it. All in group coordinates. */
-const GROUP_W = 800;
-const CENTRE_X = (1728 - GROUP_W) / 2;
-const GROUND = 500;
-const PORT = { x: 20, w: 190 };
-const OFFICE = { x: 596, w: 196 };
-const CRATE = { w: 124, from: 118, to: 452 };
-const TEXT_X = 880;
-const TITLE_TOP = 120;
-const PLAQUE_TOP = 340;
-const CHIPS_TOP = 424;
+const GROUP_W = 940;
+const SCALE_FROM = 1.22;
+const SCALE_TO = 0.9;
+const CENTRE_X = (1728 - GROUP_W * SCALE_FROM) / 2;
+const GROUND = 430;
+const PORT = { x: 0, w: 190 };
+const OFFICE = { x: 740, w: 196 };
+const CRATE = { w: 124, from: 100, to: 540 };
+const TEXT_X = 900;
+const TITLE_TOP = 110;
+const PLAQUE_TOP = 330;
+const CHIPS_TOP = 414;
 const CHIP_STEP = 76;
 
 function Label({ x, y, children, on, color = C.text, size = 34 }: { x: number; y: number; children: string; on: number; color?: string; size?: number }) {
@@ -81,6 +83,8 @@ export function S01Hook(props: SceneProps) {
 
   const glide = progress(frame, titleAt - 18, 30, EASE.inOut);
   const gx = mix(CENTRE_X, 0, glide);
+  const gs = mix(SCALE_FROM, SCALE_TO, glide);
+  const groundY = GROUND * gs;
   const titleIn = enter(frame, titleAt, { distance: 22, duration: 18 });
   const plaqueIn = enter(frame, titleAt + 8, { distance: 14, duration: 16 });
 
@@ -96,7 +100,7 @@ export function S01Hook(props: SceneProps) {
         <CaseStamp parts={[...STAMP]} size={30} />
       </div>
 
-      <div style={{ position: 'absolute', left: gx, top: 0, width: GROUP_W, height: 660, ...groupIn }}>
+      <div style={{ position: 'absolute', left: gx, top: 570 - groundY, width: GROUP_W, height: 660, transform: `${groupIn.transform} scale(${gs})`, transformOrigin: '0 0', opacity: groupIn.opacity }}>
         <div style={{ position: 'absolute', left: 0, top: GROUND, width: GROUP_W, height: 4, borderRadius: 2, background: alpha(C.ink500, 0.8) }} />
         <div style={{ position: 'absolute', left: PORT.x, top: GROUND - (PORT.w * 330) / 220 }}>
           <PortBuilding width={PORT.w} lit={0.4 + 0.6 * crateIn} />
@@ -122,7 +126,7 @@ export function S01Hook(props: SceneProps) {
         <Label x={crateX + CRATE.w / 2} y={GROUND + 22} on={workCaption * (1 - 0.0)} color={C.text}>
           el trabajo
         </Label>
-        <Label x={(ropeAnchor.x + crateGrip.x) / 2} y={Math.min(ropeAnchor.y, crateGrip.y) - 70 + sag * 0.5} on={respOn} color={C.amber} size={38}>
+        <Label x={(ropeAnchor.x + crateGrip.x) / 2} y={Math.min(ropeAnchor.y, crateGrip.y) - 78 + sag * 0.5} on={respOn} color={C.amber} size={38}>
           responsabilidad
         </Label>
       </div>

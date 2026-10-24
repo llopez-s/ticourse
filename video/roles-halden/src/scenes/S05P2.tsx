@@ -3,7 +3,7 @@ import type { SceneProps } from '../../../engine/src/timeline/types';
 import { C } from '../../../engine/src/theme/tokens';
 import { progress } from '../../../engine/src/theme/motion';
 import { Icon } from '../../../engine/src/ui';
-import { Pill } from './parts/Labels';
+import { Pill, StrikeLine } from './parts/Labels';
 import { QuestionFrame, SlotLine } from './parts/QuestionFrame';
 import { ServerRoomStill } from './parts/Stills';
 import { Stage, wordFrame } from './kit';
@@ -51,7 +51,10 @@ export function S05P2(props: SceneProps) {
       <SlotLine opacity={planesIn} dy={(1 - planesIn) * 14} gap={26}>
         <Icon name="user" size={54} color={C.cyan} strokeWidth={2.2} />
         <Pill text="dentro de la casa · custodian" tone={C.emerald} icon="check" size={38} height={70} on={0.35 + 0.65 * landed} />
-        <Pill text="con la ley · processor" tone={C.muted} size={38} height={70} on={0} style={{ opacity: 0.55 }} />
+        <div style={{ position: 'relative' }}>
+          <Pill text="con la ley · processor" tone={C.muted} size={38} height={70} on={0} style={{ opacity: 0.55 }} />
+          <StrikeLine strike={landed} color={C.amber} />
+        </div>
       </SlotLine>
     </Stage>
   );

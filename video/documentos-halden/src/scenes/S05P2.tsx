@@ -50,7 +50,7 @@ export function S05P2(props: SceneProps) {
 
       <SlotLine opacity={backIn} dy={(1 - backIn) * 14}>
         <BoardMini kind="lifeguard" width={118} />
-        <SlotText size={40}>
+        <SlotText size={42}>
           <span>la hoja del socorrista </span>
           <span style={{ color: C.emerald }}>obliga</span>
           <span>, y sigue siendo </span>

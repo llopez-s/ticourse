@@ -1,6 +1,6 @@
 import { useCurrentFrame, useVideoConfig } from 'remotion';
 import type { SceneProps } from '../../../engine/src/timeline/types';
-import { C, FONT, RADIUS, STAGE, alpha } from '../../../engine/src/theme/tokens';
+import { C, FONT, RADIUS, alpha } from '../../../engine/src/theme/tokens';
 import { enter, progress, pulse } from '../../../engine/src/theme/motion';
 import { Icon, type IconName } from '../../../engine/src/ui';
 import { PLAQUE, STAMP } from '../data/shared';

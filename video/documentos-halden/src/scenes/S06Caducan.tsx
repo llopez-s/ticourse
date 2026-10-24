@@ -2,7 +2,7 @@ import { useCurrentFrame } from 'remotion';
 import type { SceneProps } from '../../../engine/src/timeline/types';
 import { C, FONT, RADIUS, alpha } from '../../../engine/src/theme/tokens';
 import { EASE, progress } from '../../../engine/src/theme/motion';
-import { Icon } from '../../../engine/src/ui';
+import { Icon, mix } from '../../../engine/src/ui';
 import { DOC_NAMES, DOC_ORDER } from '../data/canon';
 import { ImageTag, Pill, TermPill } from './parts/Labels';
 import { Bars, PAPER, Sheet } from './parts/Paper';
@@ -15,11 +15,13 @@ const SW = 372;
 const SH = 372;
 const GAP = 36;
 const ROW_X = (1728 - (4 * SW + 3 * GAP)) / 2;
+/** The row sits lower while it is alone and moves up when the band under it fills. */
+const ROW_TOP_ALONE = 96;
 const ROW_TOP = 8;
 const sheetX = (i: number) => ROW_X + i * (SW + GAP);
 
-const TILE = { x: 470, y: 474, w: 800, h: 140 } as const;
-const OLD = { x: 1190, y: 392 } as const;
+const TILE = { x: 470, y: 486, w: 800, h: 128 } as const;
+const OLD = { x: 1190, y: 406 } as const;
 
 /** A product badge on the platform tile: a hexagon (the old product) or a rounded square (the new one). */
 function Product({ kind, tone, on = 1 }: { kind: 'old' | 'new'; tone: string; on?: number }) {
@@ -77,6 +79,7 @@ export function S06Caducan(props: SceneProps) {
   const monDim = 1 - 0.5 * progress(frame, oldAt, 14);
   const signIn = progress(frame, oldAt, 18);
   const dueAt = ownersAt;
+  const rowTop = mix(ROW_TOP_ALONE, ROW_TOP, progress(frame, platformAt - 40, 26, EASE.inOut));
 
   return (
     <Stage>
@@ -91,7 +94,7 @@ export function S06Caducan(props: SceneProps) {
         const glow = isStd ? 0.7 * std : 0;
         const rest = std > 0.01 && !isStd && !isPol ? 0.45 * std : 0;
         return (
-          <div key={kind} style={{ position: 'absolute', left: sheetX(i), top: ROW_TOP, opacity: p, transform: `translateY(${(1 - p) * 30}px)` }}>
+          <div key={kind} style={{ position: 'absolute', left: sheetX(i), top: rowTop, opacity: p, transform: `translateY(${(1 - p) * 30}px)` }}>
             <Sheet width={SW} height={SH} heading={DOC_NAMES[kind]} headTone={isPol && pol > 0.3 ? 'right' : isStd && std > 0.3 ? 'wrong' : 'plain'} glow={glow} glowTone={C.amber} dim={rest} tilt={0}>
               <Bars set={i} count={3} gap={14} height={12} />
               <div style={{ marginTop: 22, height: 3, background: PAPER.edge, borderRadius: 2 }} />
@@ -122,12 +125,12 @@ export function S06Caducan(props: SceneProps) {
       {/* the platform, a supposition */}
       {tileIn * (1 - tileOut) > 0.01 ? (
         <>
-          <div style={{ position: 'absolute', left: TILE.x + TILE.w / 2 - 130, top: 396, opacity: std * (1 - tileOut) }}>
+          <div style={{ position: 'absolute', left: sheetX(1) + SW / 2 - 150, top: 392, width: 300, display: 'flex', justifyContent: 'center', opacity: std * (1 - tileOut) }}>
             <Pill text="se reescribe" tone={C.amber} size={32} height={50} on={std} icon="gear" />
           </div>
           {std > 0.01 ? (
-            <svg width={4} height={40} style={{ position: 'absolute', left: sheetX(1) + SW / 2 - 2, top: 440, opacity: std * (1 - tileOut) }}>
-              <line x1={2} y1={0} x2={2} y2={40} stroke={C.amber} strokeWidth={4} strokeDasharray="4 8" />
+            <svg width={4} height={48} style={{ position: 'absolute', left: sheetX(1) + SW / 2 - 2, top: 444, opacity: std * (1 - tileOut) }}>
+              <line x1={2} y1={0} x2={2} y2={48} stroke={C.amber} strokeWidth={4} strokeDasharray="4 8" />
             </svg>
           ) : null}
           <div
@@ -164,8 +167,8 @@ export function S06Caducan(props: SceneProps) {
                 <Product kind="new" tone={C.amber} />
               </div>
             </div>
-            <div style={{ opacity: progress(frame, platformAt + 4, 12) }}>
-              <Pill text="supuesto: otro producto" tone={C.muted} size={28} height={48} on={0.2 + 0.6 * swap} style={{ border: `2px dashed ${alpha(C.muted, 0.7)}` }} />
+            <div style={{ position: 'absolute', right: 28, top: -26, opacity: progress(frame, platformAt + 4, 12) }}>
+              <Pill text="supuesto: otro producto" tone={C.muted} size={28} height={48} on={0.2 + 0.6 * swap} style={{ background: C.ink900, border: `2px dashed ${alpha(C.muted, 0.8)}` }} />
             </div>
           </div>
         </>
@@ -181,7 +184,7 @@ export function S06Caducan(props: SceneProps) {
 
       {/* monitoring and revision */}
       {monTerm > 0.01 ? (
-        <div style={{ position: 'absolute', left: 466, top: 424, opacity: monTerm * monDim, transform: `translateY(${(1 - monTerm) * 12}px)` }}>
+        <div style={{ position: 'absolute', left: 500, top: 424, opacity: monTerm * monDim, transform: `translateY(${(1 - monTerm) * 12}px)` }}>
           <TermPill text="MONITORING AND REVISION" size={34} on={monTerm} />
         </div>
       ) : null}
@@ -220,7 +223,7 @@ export function S06Caducan(props: SceneProps) {
           <div style={{ position: 'absolute', left: OLD.x, top: OLD.y, opacity: signIn, transform: `translateY(${(1 - signIn) * -18}px)` }}>
             <OldSign />
           </div>
-          <div style={{ position: 'absolute', left: 1090, top: OLD.y + OLDSIGN.h - 30 + 14, width: 638, display: 'flex', gap: 14, alignItems: 'center', justifyContent: 'center', opacity: signIn }}>
+          <div style={{ position: 'absolute', left: 1090, top: OLD.y + OLDSIGN.h - 30 + 8, width: 638, display: 'flex', gap: 14, alignItems: 'center', justifyContent: 'center', opacity: signIn }}>
             <Pill text="ya no existe" tone={C.muted} size={28} height={42} on={0.2} style={{ border: `2px dashed ${alpha(C.muted, 0.7)}` }} />
             <ImageTag size={26} />
           </div>

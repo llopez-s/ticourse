@@ -8,10 +8,10 @@ import { Stage, wordFrame } from './kit';
 
 const S = 's06-papeles';
 const TILE_W = 409;
-const TILE_H = 408;
+const TILE_H = 452;
 const TILE_GAP = 30;
 const TILE_TOP = 46;
-const CHIP_TOP = 494;
+const CHIP_TOP = 530;
 
 /** One paper's tile: number, icon, acronym (+ «o WO»), its English term and what it fixes, line by line. */
 function Tile({ def, n, frame, at, sigAt, lineAt, focus }: { def: PaperDef; n: number; frame: number; at: number; sigAt: number; lineAt: number[]; focus: number }) {
@@ -42,16 +42,16 @@ function Tile({ def, n, frame, at, sigAt, lineAt, focus }: { def: PaperDef; n: n
       <div style={{ position: 'absolute', right: 24, top: 18 }}>
         <Icon name={def.icon} size={46} color={C.cyan} strokeWidth={2} />
       </div>
-      <div style={{ position: 'absolute', left: 24, top: 74, display: 'flex', alignItems: 'baseline', gap: 16, whiteSpace: 'nowrap' }}>
-        <span style={{ fontSize: 88, fontWeight: 900, letterSpacing: 1, lineHeight: 1, color: C.textStrong, textShadow: sig > 0.2 ? `0 0 ${Math.round(26 * sig)}px ${alpha(C.cyan, 0.35 * sig)}` : undefined }}>{def.sigla}</span>
+      <div style={{ position: 'absolute', left: 24, top: 68, display: 'flex', alignItems: 'baseline', gap: 16, whiteSpace: 'nowrap' }}>
+        <span style={{ fontSize: 92, fontWeight: 900, letterSpacing: 1, lineHeight: 1, color: C.textStrong, textShadow: sig > 0.2 ? `0 0 ${Math.round(26 * sig)}px ${alpha(C.cyan, 0.35 * sig)}` : undefined }}>{def.sigla}</span>
         {def.alias ? <span style={{ fontSize: 36, fontWeight: 800, color: C.muted, opacity: sig }}>{def.alias}</span> : null}
       </div>
-      <div style={{ position: 'absolute', left: 26, top: 172, fontSize: 26, fontWeight: 650, color: C.muted, whiteSpace: 'nowrap' }}>{def.term}</div>
-      <div style={{ position: 'absolute', left: 26, top: 218, width: TILE_W - 48 }}>
+      <div style={{ position: 'absolute', left: 26, top: 176, fontSize: 26, fontWeight: 650, color: C.muted, whiteSpace: 'nowrap' }}>{def.term}</div>
+      <div style={{ position: 'absolute', left: 26, top: 226, width: TILE_W - 48 }}>
         {def.lines.map((l, i) => {
           const on = progress(frame, lineAt[i], 10);
           return (
-            <div key={l.text} style={{ fontSize: 30, fontWeight: 750, lineHeight: 1.26, color: i === 0 ? '#a5f3fc' : C.textStrong, whiteSpace: 'nowrap', opacity: 0.18 + 0.82 * on, transform: `translateY(${(1 - on) * 6}px)` }}>
+            <div key={l.text} style={{ fontSize: 30, fontWeight: 750, lineHeight: 1.36, color: i === 0 ? '#a5f3fc' : C.textStrong, whiteSpace: 'nowrap', opacity: 0.18 + 0.82 * on, transform: `translateY(${(1 - on) * 6}px)` }}>
               {l.text}
             </div>
           );

@@ -12,7 +12,7 @@ export const SIGN_PATHS = [
  * A handwritten signature drawn left to right: `p` 0–1 is how much of the stroke is on the page (a dashed empty
  * gap when `p` is 0 and `gap` is set).
  */
-export function Signature({ p, variant = 0, width = 160, color = C.cyanSoft, strokeWidth = 3.4 }: { p: number; variant?: number; width?: number; color?: string; strokeWidth?: number }) {
+export function Signature({ p, variant = 0, width = 160, color = C.cyanSoft, strokeWidth = 2.6 }: { p: number; variant?: number; width?: number; color?: string; strokeWidth?: number }) {
   const h = Math.round(width * 0.4);
   return (
     <svg width={width} height={h} viewBox="0 0 100 40" fill="none" style={{ display: 'block', overflow: 'visible' }} aria-hidden>
@@ -25,7 +25,6 @@ export function Signature({ p, variant = 0, width = 160, color = C.cyanSoft, str
         strokeLinejoin="round"
         strokeDasharray={1}
         strokeDashoffset={1 - Math.max(0, Math.min(1, p))}
-        vectorEffect="non-scaling-stroke"
         style={{ filter: p > 0.02 ? `drop-shadow(0 0 4px ${alpha(color, 0.5)})` : undefined }}
       />
     </svg>

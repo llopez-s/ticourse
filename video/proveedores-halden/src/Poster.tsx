@@ -5,15 +5,15 @@ import { Backdrop } from '../../engine/src/ui/Backdrop';
 import { Chip } from '../../engine/src/ui/Chip';
 import { BrandMark } from '../../engine/src/overlay/ChapterRail';
 import { SIMULATION_LABEL } from '../../engine/src/overlay/SimulationTag';
-import { RopeScene } from './scenes/parts/RopeScene';
+import { ROPE_SCENE, RopeScene } from './scenes/parts/RopeScene';
 import { FULL_TITLE, PLAQUE } from './data/canon';
 import { TIMELINE } from './timeline/load';
 
 ensureFonts();
 
-const ART_SCALE = 0.7;
+const ART_SCALE = 0.6;
 /** The image on the right (absolute 1920×1080 coordinates). */
-const ART = { x: 1920 - LAYOUT.marginX - 800 * ART_SCALE + 8, y: 400 } as const;
+const ART = { x: 1920 - LAYOUT.marginX - ROPE_SCENE.w * ART_SCALE + 8, y: 420 } as const;
 
 /** The video's length, rounded to half a minute, from the timeline the poster is rendered with. */
 function durationLabel(): string {
@@ -34,7 +34,7 @@ export function Poster() {
       <Backdrop />
 
       <div style={{ position: 'absolute', left: ART.x, top: ART.y }}>
-        <RopeScene scale={ART_SCALE} />
+        <RopeScene scale={ART_SCALE} label={false} />
       </div>
 
       {/* brand */}

@@ -8,8 +8,8 @@ export const SHEET_H = (SHEET.h * SHEET_W) / SHEET.w;
 export const CENTER = { x: 864, y: 316 } as const;
 export const HANDS = [
   { cx: 440, cy: 300, angle: 84 },
-  { cx: 570, cy: 150, angle: 129 },
-  { cx: 1158, cy: 150, angle: -129 },
+  { cx: 540, cy: 138, angle: 129 },
+  { cx: 1188, cy: 138, angle: -129 },
   { cx: 1288, cy: 300, angle: -84 },
   { cx: 864, cy: 590, angle: 0 },
 ] as const;

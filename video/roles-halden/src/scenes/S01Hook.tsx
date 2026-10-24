@@ -15,7 +15,7 @@ const S = 's01-hook';
 const W = STAGE.width;
 const H = STAGE.height;
 /** After the title the whole group steps left and shrinks under it. */
-const SMALL = { scale: 0.68, x: 340, y: 440 } as const;
+const SMALL = { scale: 0.72, x: 390, y: 440 } as const;
 const CHIP_X = [800, 960, 1120];
 const CHIP_Y = [520, 400, 280];
 const TITLE_TOP = 74;

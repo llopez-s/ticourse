@@ -38,7 +38,7 @@ function approach(frame: number, at: number) {
  * its heading is struck, PROCEDURE lands with «cómo, paso a paso» and «obliga a quien lo hace». On `playbook` a card
  * hangs off the sheet — «un procedure para un caso concreto · ejemplo: ransomware» — and PLAYBOOK on its word; it
  * leaves before `sheet-4`, where the fourth sheet recommends a phone call (PhoneGlyph, no number) and on `guideline`
- * gets GUIDELINE with «un consejo», «no obliga» and «no seguirlo no es un incumplimiento». On `pool-2` the pool wall
+ * gets GUIDELINE with «un consejo», «no obliga» and «no seguirla no es incumplir» (the voice's words). On `pool-2` the pool wall
  * brings the lifeguard's sheet (PROCEDURE, playbook, obliga) and the sunscreen sign (GUIDELINE, no obliga).
  */
 export function S04Como(props: SceneProps) {
@@ -91,7 +91,7 @@ export function S04Como(props: SceneProps) {
   const guidePill = progress(frame, guideAt, 12);
   const gAcon = progress(frame, Math.max(guideAt + 6, wordFrame(S, 's04-04', 'aconseja') - 4), 12);
   const gNo = progress(frame, Math.max(guideAt + 14, wordFrame(S, 's04-04', 'obliga') - 4), 12);
-  const gInc = progress(frame, Math.max(guideAt + 22, wordFrame(S, 's04-04', 'incumplir') - 10), 12);
+  const gInc = progress(frame, Math.max(guideAt + 22, wordFrame(S, 's04-04', 'incumplir') - 14), 12);
 
   // The pool
   const poolIn = progress(frame, pool2At - 6, 18);
@@ -228,7 +228,7 @@ export function S04Como(props: SceneProps) {
       <div style={{ position: 'absolute', left: X2, top: ROW_TOP, display: 'flex', flexDirection: 'column', gap: 6, opacity: 1 - colDim }}>
         <Gloss icon="brain" tone={C.sky} text="un consejo" on={gAcon} />
         <Gloss icon="x" tone={C.amber} text="no obliga" on={gNo} />
-        <Gloss icon="unlock" tone={C.sky} text="no seguirlo no es un incumplimiento" on={gInc} size={28} />
+        <Gloss icon="unlock" tone={C.sky} text="no seguirla no es incumplir" on={gInc} size={30} />
       </div>
 
       {/* The pool */}

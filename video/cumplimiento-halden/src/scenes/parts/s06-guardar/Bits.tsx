@@ -143,16 +143,9 @@ export function StackBlock({ term, open, show, detailH, children }: { term: stri
   if (s <= 0.01) return null;
   return (
     <div style={{ opacity: s * (0.55 + 0.45 * o), transform: `translateY(${(1 - s) * 12}px)`, fontFamily: FONT.sans }}>
-      <div style={{ display: 'flex' }}>{children === null ? null : null}</div>
-      <div style={{ height: 0 }} />
-      <div
-        style={{
-          height: 58 + o * (14 + detailH),
-          overflow: 'hidden',
-        }}
-      >
-        <HeaderSlot term={term} lit={o} />
-        <div style={{ marginTop: 14, height: detailH, opacity: o }}>{children}</div>
+      <HeaderSlot term={term} lit={o} />
+      <div style={{ height: o * (14 + detailH), overflow: 'hidden' }}>
+        <div style={{ paddingTop: 14, height: detailH + 14, opacity: o }}>{children}</div>
       </div>
     </div>
   );

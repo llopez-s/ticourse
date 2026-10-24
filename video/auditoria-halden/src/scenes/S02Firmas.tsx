@@ -13,23 +13,23 @@ const W = STAGE.width;
 const HALF = W / 2;
 // ---- Labels on top, the table band, the piles, the chips and the question bubble.
 const LABEL_TOP = 0;
-const BAND = { x: 24, y: 126, w: W - 48, h: 360 } as const;
+const BAND = { x: 24, y: 130, w: W - 48, h: 380 } as const;
 const PILE_TOP = 150;
-const CHIP_TOP = 506;
-const BUBBLE_TOP = 584;
+const CHIP_TOP = 524;
+const BUBBLE_TOP = 590;
 
 /** Six signed sheets, two rows of three, overlapping like a pile: [x, y, rotation] inside the 640 × 330 pile box. */
 const SHEETS: readonly (readonly [number, number, number])[] = [
-  [20, 10, -3],
-  [210, 0, 2],
-  [400, 14, -2],
-  [10, 150, 2],
-  [200, 160, -3],
-  [392, 150, 3],
+  [20, 8, -3],
+  [228, 0, 2],
+  [436, 12, -2],
+  [10, 166, 2],
+  [220, 174, -3],
+  [428, 164, 3],
 ];
-const SHEET = { w: 236, h: 160 } as const;
-const PILE = { x: 70, w: 640, h: 330 } as const;
-const DOC = { w: 580, h: 340 } as const;
+const SHEET = { w: 262, h: 178 } as const;
+const PILE = { x: 60, w: 706, h: 350 } as const;
+const DOC = { w: 600, h: 360 } as const;
 
 /** One head label: the English term big in its colour and the two-word idea under it. */
 function Head({ term, idea, tone, show }: { term: string; idea: string; tone: string; show: number }) {
@@ -118,11 +118,11 @@ export function S02Firmas(props: SceneProps) {
           <div key={i} style={{ position: 'absolute', left: x, top: y }}>
             <Sheet width={SHEET.w} height={SHEET.h} tone={C.sky} rotate={r} glow={ackHead * signP(i) * 0.2}>
               <div style={{ position: 'absolute', left: 18, top: 16, display: 'flex', alignItems: 'center', gap: 12 }}>
-                <PersonGlyph size={34} color={C.sky} />
-                <Bars widths={[100, 70]} gap={9} h={8} style={{ width: 118 }} />
+                <PersonGlyph size={36} color={C.sky} />
+                <Bars widths={[100, 70]} gap={9} h={8} style={{ width: 128 }} />
               </div>
-              <div style={{ position: 'absolute', left: 20, top: 76 }}>
-                <Signature p={signP(i)} variant={i} width={128} color={'#7dd3fc'} />
+              <div style={{ position: 'absolute', left: 22, top: 84 }}>
+                <Signature p={signP(i)} variant={i} width={140} color={'#7dd3fc'} />
               </div>
             </Sheet>
           </div>
@@ -130,34 +130,34 @@ export function S02Firmas(props: SceneProps) {
       </div>
 
       {/* Right pile: a single document */}
-      <div style={{ position: 'absolute', left: HALF + (HALF - DOC.w) / 2, top: PILE_TOP - 18, width: DOC.w, height: DOC.h, opacity: Math.min(1, rightIn * 1.3), transform: `scale(${0.94 + 0.06 * Math.min(1, rightIn)})`, ...dimStyle(rightDim) }}>
+      <div style={{ position: 'absolute', left: HALF + (HALF - DOC.w) / 2, top: PILE_TOP - 10, width: DOC.w, height: DOC.h, opacity: Math.min(1, rightIn * 1.3), transform: `scale(${0.94 + 0.06 * Math.min(1, rightIn)})`, ...dimStyle(rightDim) }}>
         <Sheet width={DOC.w} height={DOC.h} tone={C.cyan} glow={attestHead * 0.5}>
           <div style={{ position: 'absolute', left: 28, top: 24, right: 28, display: 'flex', alignItems: 'center', gap: 16 }}>
             <Icon name="shield" size={44} color={C.cyan} strokeWidth={2} />
             <Bars widths={[100, 62]} gap={10} h={10} style={{ flex: 1 }} />
           </div>
           {/* fecha: an empty box, nothing is dated */}
-          <div style={{ position: 'absolute', left: 28, top: 84, right: 28, opacity: dateBox }}>
+          <div style={{ position: 'absolute', left: 28, top: 88, right: 28, opacity: dateBox }}>
             <Field label="fecha">
               <SignatureGap width={150} height={38} />
             </Field>
           </div>
-          <div style={{ position: 'absolute', left: 28, top: 146, right: 28, opacity: scopeRow, transform: `translateY(${(1 - scopeRow) * 10}px)` }}>
+          <div style={{ position: 'absolute', left: 28, top: 150, right: 28, opacity: scopeRow, transform: `translateY(${(1 - scopeRow) * 10}px)` }}>
             <Field label="alcance">
               <Value>los controles del programa</Value>
             </Field>
           </div>
-          <div style={{ position: 'absolute', left: 28, top: 208, right: 28, opacity: periodRow, transform: `translateY(${(1 - periodRow) * 10}px)` }}>
+          <div style={{ position: 'absolute', left: 28, top: 212, right: 28, opacity: periodRow, transform: `translateY(${(1 - periodRow) * 10}px)` }}>
             <Field label="periodo">
               <Value>los últimos doce meses</Value>
             </Field>
           </div>
-          <div style={{ position: 'absolute', left: 28, right: 28, bottom: 20, height: 76 }}>
-            <div style={{ position: 'absolute', left: 0, right: 0, bottom: 22, height: 3, borderRadius: 2, background: alpha(C.text, 0.4) }} />
-            <div style={{ position: 'absolute', left: 14, bottom: 14 }}>
-              <Signature p={sig} variant={2} width={190} color={C.cyanSoft} strokeWidth={3.8} />
+          <div style={{ position: 'absolute', left: 28, right: 28, bottom: 16, height: 84 }}>
+            <div style={{ position: 'absolute', left: 0, right: 0, bottom: 26, height: 3, borderRadius: 2, background: alpha(C.text, 0.4) }} />
+            <div style={{ position: 'absolute', left: 14, bottom: 8 }}>
+              <Signature p={sig} variant={2} width={200} color={C.cyanSoft} strokeWidth={2.8} />
             </div>
-            <div style={{ position: 'absolute', right: 0, bottom: -4, fontFamily: FONT.sans, fontSize: 26, fontWeight: 650, color: C.muted, opacity: progress(frame, signAt - 6, 12) }}>la dirección</div>
+            <div style={{ position: 'absolute', right: 0, bottom: 0, fontFamily: FONT.sans, fontSize: 26, fontWeight: 650, color: C.muted, opacity: progress(frame, signAt - 6, 12) }}>la dirección</div>
           </div>
         </Sheet>
       </div>
@@ -180,7 +180,7 @@ export function S02Firmas(props: SceneProps) {
               «¿y funciona?»
             </div>
             <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', gap: 14, fontSize: 40, fontWeight: 750, color: C.muted }}>
-              <Signature p={1} variant={1} width={110} color={alpha(C.muted, 0.9)} strokeWidth={3.2} />
+              <Signature p={1} variant={1} width={110} color={alpha(C.muted, 0.9)} strokeWidth={3} />
               <span>otra firma</span>
               <div style={{ position: 'absolute', left: -8, right: -8, top: '50%', height: 5, borderRadius: 3, background: C.rose, transform: `scaleX(${strike}) rotate(-3deg)`, transformOrigin: '0 50%' }} />
             </div>

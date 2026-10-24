@@ -39,13 +39,13 @@ export function NextAction({ frame, fps, at, top }: { frame: number; fps: number
 
 const CARD_W = 1620;
 
-const ART_SCALE = 0.62;
+const ART_SCALE = 0.58;
 
 /** The video's image for the closing card: the port, the crate that left and the rope that still ties them. */
 export function EndArt({ glow }: { glow: number }) {
   return (
     <div style={{ opacity: 0.8 + 0.2 * glow }}>
-      <RopeScene scale={ART_SCALE} />
+      <RopeScene scale={ART_SCALE} label={false} />
     </div>
   );
 }

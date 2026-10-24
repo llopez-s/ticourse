@@ -3,7 +3,7 @@ import type { SceneProps } from '../../../engine/src/timeline/types';
 import { C, FONT } from '../../../engine/src/theme/tokens';
 import { EASE, enter, progress } from '../../../engine/src/theme/motion';
 import { CAMPAIGN_STAMP } from '../data/canon';
-import { COUNTER_W, CounterCard, LURE_H, LoopStep, LureCard, STEP_W } from './parts/CampaignParts';
+import { COUNTER_W, CounterCard, LURE_H, LoopStep, LureCard } from './parts/CampaignParts';
 import { CaseStamp, Pill, StrikeLine } from './parts/Labels';
 import { Stage, wordFrame } from './kit';
 
@@ -15,8 +15,12 @@ const CRUEL_TOP = LURE_TOP + LURE_H + 14;
 const COUNTERS_X = [840, 840 + COUNTER_W + 30];
 const COUNTERS_TOP = 76;
 const NAMES_TOP = 428;
-const LOOP_TOP = 502;
-const LOOP_GAP = (W - 4 * STEP_W) / 3;
+const LOOP_TOP = 504;
+/** The four steps, wider where the wording is longer: x offsets and widths, 36 px apart. */
+const STEP_WIDTHS = [380, 240, 440, 560] as const;
+const STEP_SIZES = [32, 32, 28, 30] as const;
+const LOOP_GAP = (W - STEP_WIDTHS.reduce((a, b) => a + b, 0)) / 3;
+const STEP_X = STEP_WIDTHS.map((_, i) => STEP_WIDTHS.slice(0, i).reduce((a, b) => a + b, 0) + i * LOOP_GAP);
 
 const STEPS = [
   { icon: 'cursor', text: 'botón en el correo' },
@@ -108,12 +112,12 @@ export function S04Avisar(props: SceneProps) {
       </div>
 
       {STEPS.map((s, i) => (
-        <div key={s.text} style={{ position: 'absolute', left: i * (STEP_W + LOOP_GAP), top: LOOP_TOP, opacity: loopShow }}>
-          <LoopStep n={i + 1} icon={s.icon} text={s.text} on={progress(frame, stepAt[i], 14)} />
+        <div key={s.text} style={{ position: 'absolute', left: STEP_X[i], top: LOOP_TOP, opacity: loopShow }}>
+          <LoopStep n={i + 1} icon={s.icon} text={s.text} on={progress(frame, stepAt[i], 14)} width={STEP_WIDTHS[i]} size={STEP_SIZES[i]} />
         </div>
       ))}
       {STEPS.slice(0, 3).map((_, i) => (
-        <div key={i} style={{ position: 'absolute', left: (i + 1) * STEP_W + i * LOOP_GAP + 4, top: LOOP_TOP + 62, width: LOOP_GAP - 8, display: 'flex', justifyContent: 'center', opacity: progress(frame, stepAt[i + 1], 10) }}>
+        <div key={i} style={{ position: 'absolute', left: STEP_X[i] + STEP_WIDTHS[i] + 4, top: LOOP_TOP + 55, width: LOOP_GAP - 8, display: 'flex', justifyContent: 'center', opacity: progress(frame, stepAt[i + 1], 10) }}>
           <svg width={LOOP_GAP - 8} height={30} viewBox={`0 0 ${LOOP_GAP - 8} 30`}>
             <path d={`M4 15 H${LOOP_GAP - 20} M${LOOP_GAP - 30} 5 L${LOOP_GAP - 16} 15 L${LOOP_GAP - 30} 25`} fill="none" stroke={C.cyan} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" />
           </svg>

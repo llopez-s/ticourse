@@ -9,7 +9,7 @@ import { Stage, wordFrame } from './kit';
 
 const S = 's02-pruebas';
 const ROW_B = 128;
-const ROW_C = 564;
+const ROW_C = 556;
 
 /** A two-line chip of the bottom row: the question above, the exam term below (lit on its word). */
 function AskChip({ icon, ask, term, tone, on, at, frame }: { icon: IconName; ask: string; term: string; tone: string; on: number; at: number; frame: number }) {

@@ -40,7 +40,7 @@ export const RULES: readonly RecapRule[] = [
     sub: [
       { text: 'fuera pesa quién comprueba', word: 'comprueba', strong: true },
       { text: 'cumplir no dice aguantar', word: 'cumplir', strong: true },
-      { text: 'ni aguantar, cumplir', word: 'revés', strong: true },
+      { text: 'ni aguantar dice cumplir', word: 'revés', strong: true },
     ],
   },
   // «En la prueba, mira qué se mide, cuánto sabe quien prueba y si se ha tocado al objetivo.»

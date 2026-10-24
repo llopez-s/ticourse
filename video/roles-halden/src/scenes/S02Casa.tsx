@@ -15,8 +15,8 @@ import { Stage, wordFrame } from './kit';
 
 const S = 's02-casa';
 const TOP = { y: 74, h: 80 } as const;
-const ATT = { x: 0, w: 400 } as const;
-const LIST = { x: 680, w: 660 } as const;
+const ATT = { x: 0, w: 470 } as const;
+const LIST = { x: 780, w: 660 } as const;
 const LIST_CX = LIST.x + LIST.w / 2;
 const CARD = { w: 560, h: 440, y: 206, xs: [0, 584, 1168] } as const;
 const BUS_Y = 180;
@@ -155,12 +155,13 @@ export function S02Casa(props: SceneProps) {
               tone={TONES[i]}
               icon={p.icon}
               who={p.who}
+              whoSize={32}
               term={p.term}
               chips={p.chips.map((c) => ({ text: c.text, at: w(p.seg, c.word) - 6 }))}
               skeleton={progress(frame, requestAt + 20, 16)}
               dim={dimOf(i)}
               glow={progress(frame, cardAt[i] + 6, 12) * (1 - dimOf(i))}
-              chipSize={28}
+              chipSize={30}
             />
           ))}
         </div>

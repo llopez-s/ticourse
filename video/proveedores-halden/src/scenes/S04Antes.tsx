@@ -10,7 +10,7 @@ import { Stage, wordFrame } from './kit';
 
 const S = 's04-antes';
 
-const RAIL_Y = 412;
+const RAIL_Y = 404;
 const NODE_X = 864;
 const RIGHT_X = 958;
 const COL_W = 770;
@@ -112,24 +112,27 @@ export function S04Antes(props: SceneProps) {
           <Heading text="antes de firmar" tone={C.cyanSoft} on={beforeOn} show={headIn} />
           {ddTerm > 0.01 ? <Pill text="due diligence" tone={C.cyan} icon="search" size={36} height={56} on={ddTerm} weight={850} style={{ opacity: ddTerm }} /> : null}
         </div>
-        {DD.map((d, i) => {
-          const row = i < 3 ? 0 : 1;
-          const xs = i < 3 ? [0, 176, 372] : [0, 270];
-          const lit = progress(frame, ddAt[i], 10);
-          const show = progress(frame, beforeAt - 2 + i * 3, 12);
-          return (
-            <div key={d.text} style={{ position: 'absolute', left: xs[i < 3 ? i : i - 3], top: 76 + row * 62, opacity: show }}>
-              <Pill text={d.text} tone={C.cyan} on={0.12 + 0.88 * lit} size={31} height={52} style={{ padding: '0 22px' }} />
-            </div>
-          );
-        })}
+        {[DD.slice(0, 3), DD.slice(3)].map((row, ri) => (
+          <div key={ri} style={{ position: 'absolute', left: 0, top: 74 + ri * 60, display: 'flex', gap: 14 }}>
+            {row.map((d, k) => {
+              const i = ri === 0 ? k : 3 + k;
+              const lit = progress(frame, ddAt[i], 10);
+              const show = progress(frame, beforeAt - 2 + i * 3, 12);
+              return (
+                <div key={d.text} style={{ opacity: show }}>
+                  <Pill text={d.text} tone={C.cyan} on={0.12 + 0.88 * lit} size={31} height={52} style={{ padding: '0 22px' }} />
+                </div>
+              );
+            })}
+          </div>
+        ))}
         {/* what goes into the contract while it can */}
         {termsIn > 0.01 ? (
           <div
             style={{
               position: 'absolute',
               left: 0,
-              top: 196,
+              top: 194,
               width: 740,
               height: 166,
               boxSizing: 'border-box',
@@ -195,8 +198,13 @@ export function S04Antes(props: SceneProps) {
           <Heading text="después de firmar" tone="#6ee7b7" on={afterOn} show={headIn} />
         </div>
         {monIn > 0.01 ? (
-          <div style={{ position: 'absolute', left: 0, top: 70, opacity: monIn, transform: `translateY(${(1 - monIn) * 12}px)` }}>
-            <Pill text="vendor monitoring" tone={C.emerald} icon="radar" size={38} height={58} weight={850} on={monIn} />
+          <div style={{ position: 'absolute', left: 0, top: 66, display: 'flex', alignItems: 'center', gap: 16, opacity: monIn, transform: `translateY(${(1 - monIn) * 12}px)` }}>
+            <Pill text="vendor monitoring" tone={C.emerald} icon="radar" size={36} height={58} weight={850} on={monIn} />
+            {renovar > 0.01 ? (
+              <div style={{ opacity: renovar, transform: `translateX(${(1 - renovar) * 14}px)` }}>
+                <Pill text="reevaluar al renovar" tone={C.emerald} icon="clock" size={30} height={52} on={0.5 + 0.5 * renovar} />
+              </div>
+            ) : null}
           </div>
         ) : null}
         {ROUTINES.map((r, i) => {
@@ -211,14 +219,14 @@ export function S04Antes(props: SceneProps) {
               style={{
                 position: 'absolute',
                 left: col * 394,
-                top: 140 + row * 106,
+                top: 140 + row * 124,
                 width: 376,
-                height: 92,
+                height: 112,
                 boxSizing: 'border-box',
                 display: 'flex',
                 alignItems: 'center',
-                gap: 16,
-                padding: '0 20px',
+                gap: 14,
+                padding: '0 18px',
                 borderRadius: 20,
                 border: `2px solid ${alpha(C.emerald, 0.35 + 0.55 * lit)}`,
                 background: alpha(C.emerald, 0.05 + 0.1 * lit),
@@ -228,24 +236,19 @@ export function S04Antes(props: SceneProps) {
                 transform: `translateY(${(1 - show) * 14}px)`,
               }}
             >
-              <Icon name={r.icon} size={42} color={C.emerald} strokeWidth={2} />
-              <span style={{ fontSize: 30, fontWeight: 750, color: C.textStrong, lineHeight: 1.12 }}>{r.text}</span>
+              <Icon name={r.icon} size={40} color={C.emerald} strokeWidth={2} />
+              <span style={{ fontSize: 29, fontWeight: 750, color: C.textStrong, lineHeight: 1.14 }}>{r.text}</span>
             </div>
           );
         })}
-        {renovar > 0.01 ? (
-          <div style={{ position: 'absolute', left: 0, top: 360, opacity: renovar, transform: `translateY(${(1 - renovar) * 12}px)` }}>
-            <Pill text="reevaluar al renovar" tone={C.emerald} icon="clock" size={32} height={52} on={0.5 + 0.5 * renovar} />
-          </div>
-        ) : null}
       </div>
 
       {/* the nursery in small: the visit before signing up, the look of every day */}
       {nurseryIn > 0.01 ? (
         <div style={{ position: 'absolute', left: RIGHT_X, top: RAIL_Y + 52, width: COL_W, height: 196, opacity: nurseryIn, transform: `translateY(${(1 - nurseryIn) * 16}px)`, fontFamily: FONT.sans }}>
           {[
-            { x: 0, house: <NurseryHouse width={120} door={progress(frame, visitaAt, 14)} />, a: 'antes', b: 'la visita', at: visitaAt },
-            { x: 396, house: <NurseryHouse width={120} eye={progress(frame, miraAt, 14)} />, a: 'después', b: 'la mirada de cada día', at: miraAt },
+            { x: 0, house: <NurseryHouse width={136} door={progress(frame, visitaAt, 14)} />, a: 'antes', b: 'la visita', at: visitaAt },
+            { x: 396, house: <NurseryHouse width={136} eye={progress(frame, miraAt, 14)} />, a: 'después', b: 'la mirada de cada día', at: miraAt },
           ].map((c) => {
             const lit = progress(frame, c.at, 10);
             return (
