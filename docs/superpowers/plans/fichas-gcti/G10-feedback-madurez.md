@@ -91,8 +91,8 @@ Tarjetas: **4** (3-5), una en cada escena de s02 a s05, ninguna en s01 ni en la 
 tiene una tarjeta aunque tiene dos preguntas (q2 y q4): la tarjeta junta las dos («ajusta requirements» y «éxitos
 atribuibles»), que es lo que dice la lección en un solo párrafo (`:1121`). Si Lidia prefiere separarlas, hace falta una escena más.
 
-**Se queda fuera** (y dónde está): las filas «Feeds contratados / cobertura del CMF» y «Páginas por informe / satisfacción del
-consumidor» (`:1115-1116`; salen en la tabla de pantalla, no en voz); las cifras del primer check (`:1135-1139`); el concepto de
+**Se queda fuera** (y dónde está): la fila «Feeds contratados / cobertura del CMF» (`:1115`, solo en pantalla) y, de «Páginas por informe
+/ tiempo requisito→respuesta; satisfacción del consumidor» (`:1116`), la satisfacción (en pantalla; la voz solo dice el tiempo de respuesta); las cifras del primer check (`:1135-1139`); el concepto de
 CMF como tal (`src/data/s3.ts:22-60`; sale una vez en pantalla); la telemetría de uso como feedback (`src/data/s5.ts:645`,
 s5m3); por qué el feedback es la segunda fase más ignorada (`src/data/s1.ts:556`, ya en G03); las seis fases del ciclo y F3EAD
 (G03). Detalle en `out/script-notes.md`.
