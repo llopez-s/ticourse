@@ -133,9 +133,10 @@ ad hominem», que no cuenta como concepto aparte: es la mitad del concepto 2 (y 
 - **No se toca (HALL OF MIRRORS, `src/data/course-gcti.ts:78`):** ni strings en cirílico, ni horarios falsos, ni UTC+8, ni «PAPER
   CRANE las plantó», ni «espionaje industrial sistemático», ni «caso cerrado» (la fila de la lección dice «caso cerrado»,
   `s4.ts:206`; se abrevia en pantalla). Tampoco las pruebas del Lab 4B ni el certificado compartido (E4).
-- **Nombres de ejemplo (`VendorCo`, `APT-X`, `APT-Z`):** solo en pantalla, como en la lección. La voz dice «un proveedor» y «un
-  grupo». No son de Meridian ni de la campaña (registro §6, nombres libres).
-- **Lo que fija este vídeo (a apuntar en el registro al cerrarlo):** los dos mensajes de PAPER CRANE; el borrador de informe de
+- **Nombres de ejemplo (`VendorCo`, `APT-X`, `APT-Z`):** solo en pantalla, como en la lección (`s4.ts:206,231`). La voz dice «un
+  proveedor» y «un grupo». **No están en el registro de canon** (solo `BigVendorCo`, del Lab 4A, §3 línea 94, que aquí no se usa): son
+  texto de ejemplo de la lección, no de Meridian ni de la campaña, y se apuntan en §6 al cerrar el vídeo.
+- **Lo que fija este vídeo (a apuntar en el registro al cerrarlo; incluye `VendorCo`, `APT-X` y `APT-Z` como texto de ejemplo en pantalla):** los dos mensajes de PAPER CRANE; el borrador de informe de
   ejemplo y el boli rojo; la nota «Frases de ejemplo de la lección · no son el caso de Meridian» (la misma de G04); y que ningún
   vídeo anterior ni posterior dice cuál de las pistas de Meridian pudo ser un señuelo.
 - `canon-check.mjs`: 0 tokens, 0 nuevos (`out/canon-refs.md`).
@@ -204,6 +205,14 @@ Frase del guion → lección:
 | Seis preguntas; tres falacias más en la tabla (`s06-04`) | `s4.ts:283-357` (seis); `:213-227` (post hoc, hasty generalization y false dilemma) |
 
 Puntos que el revisor debería mirar con lupa:
+- **El gancho frente a s03.** s01 promete «pruebas comprobadas, razonamiento roto». Circular y eco encajan limpiamente; autoridad y ad
+  hominem solo en parte, porque en la autoridad justo no se ha examinado la evidencia. El storyboard presenta cada borrador como un
+  ejemplo distinto, pero el revisor de naturalidad debería decir si la promesa del gancho resulta demasiado estrecha.
+- **El esquema del eco (s05).** En el storyboard hay solo dos flechas de «cita» (B cita a A, C cita a B); la tercera unión es «A ve
+  consenso» (`s4.ts:239`), no una cita de A a C.
+- **`recording` sin `tempo`.** `"recording": { "maxPauseMs": 250 }` pasa `build-timeline --check`, pero ninguna importación ha
+  ejercitado todavía esa forma (las demás llevan `tempo`).
+- **Gafas de color:** `grep` en `video/*/narration.json` y `storyboard.json` no las encuentra en ningún otro vídeo.
 - **«Un sesgo no está en ningún paso de la hoja» (`s02-02`).** Es la diferencia que el vídeo vende (el instrumento frente al
   argumento) y la lección la pone como «cognición frente a argumentación», no como «lo ves en la hoja o no». Un sesgo sí puede
   dejar huella en un informe (G04 enseña a reconocer las frases-señal). La redacción es «no está en ningún paso de la hoja, porque
