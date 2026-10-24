@@ -157,6 +157,8 @@ export interface Timeline {
   sfx?: SfxCue[];
   /** Present (false) only when captions are not burned in: YouTube videos, which carry the VTT instead. */
   captionsOnScreen?: false;
+  /** Present only when video.json has "simulationLabel": replaces the corner tag's default text (a video of real cases). */
+  simulationLabel?: string;
 }
 
 /** What every scene component receives. All frames are LOCAL to the scene's Sequence. */

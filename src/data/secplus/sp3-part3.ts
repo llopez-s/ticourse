@@ -518,6 +518,17 @@ const sp3m6: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de la recuperación, tres preguntas: dónde está el dato y qué lo protege.',
+    },
+    {
+      t: 'video',
+      title: 'Dónde está el dato y qué lo protege',
+      youtube: '7TqjjnbP56c',
+      poster: 'videos/datos-halden-poster.png',
+      transcript: 'videos/datos-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Ya sabes qué proteger, con qué etiqueta y con qué método. La última lección del dominio 3 responde a la pregunta que queda abierta: **qué pasa cuando algo se cae**. Verás la **resiliencia y la recuperación** del objetivo 3.4 —alta disponibilidad, load balancing frente a clustering, sitios hot, warm y cold, dispersión geográfica, backups y sus pruebas, y la energía que sostiene todo lo demás—.',
     },
   ],

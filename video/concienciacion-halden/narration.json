@@ -1,0 +1,266 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {dots}El puerto de Halden prepara su programa de concienciación. {sensors}Su idea: la gente no es el eslabón más débil, sino la mayor red de avisos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Que la gente avise. {promise}Tres preguntas. Por qué hace cada uno lo que hace, qué se mide, y a quién se forma y cada cuánto.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-intencion",
+      "text": "<engaging> Primero, por qué lo hizo. {faces}Imagina tres casos que llegan a Seguridad.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-intencion",
+      "text": "<clear> {risky}En el primero, alguien reenvía documentos a su correo personal. Sabe que no se puede, y lo hace por comodidad. Es risky behavior, y se corrige con política y controles.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-intencion",
+      "text": "<thoughtful> {unexpected}En el segundo, una cuenta de Compras abre de pronto las nóminas de otra sección. No encaja con ella. Es unexpected behavior. No se acusa, se investiga.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-intencion",
+      "text": "<warm> {unintentional}En el tercero, alguien sube una foto de grupo, con una pizarra de sistemas al fondo. Ni se dio cuenta de lo que enseñaba. Es unintentional behavior, y se previene con diseño y formación.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-intencion",
+      "text": "<firm> {intent}Lo que separa a los tres es la intención, no el daño. {not-actor}Y ojo, son comportamientos, no tipos de insider.",
+      "pauseAfterMs": 500,
+      "exam": {
+        "objective": "5.6",
+        "text": "Clasifica por la intención, no por el daño",
+        "at": "intent",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}En otra empresa, para no esperar al técnico, un empleado instala en el navegador una extensión que convierte documentos. La advertencia dice que la empresa no la permite, y él la acepta. Resulta que subía cada documento a un servidor de fuera, y él no lo sabía. ¿Cómo se clasifica mejor su comportamiento? {best}Ojo con ese «mejor». No busca una que valga, sino la que más sirve en este caso.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.6",
+        "scenario": "Para no esperar, un empleado instala una extensión que la empresa prohíbe, y acepta la advertencia. Subía cada documento fuera, y él no lo sabía.",
+        "q": "¿Cómo se clasifica MEJOR su comportamiento?",
+        "options": [
+          "Unexpected behavior",
+          "Risky behavior",
+          "Insider threat",
+          "Unintentional behavior"
+        ],
+        "answer": 1,
+        "trap": 3,
+        "why": "Se saltó una advertencia a sabiendas para ir más rápido: es un atajo consciente",
+        "trapWhy": "No sabía que subía los documentos, pero sí decidió saltarse la advertencia",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<firm> {ok-1}Es risky behavior, porque sabía que no estaba permitida y la instaló igual. {trap-1}Unintentional tienta, porque lo que subía no lo sabía. Pero se clasifica lo que decidió, no lo que pasó después.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<warm> {face-back}O sea, igual que quien reenvía documentos a su correo personal.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "5.6",
+        "text": "Saltarse una advertencia a sabiendas es risky",
+        "at": "face-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-avisar",
+      "text": "<engaging> Segundo, qué se mide. {campaign}El puerto prepara su primera campaña de phishing simulado: correos falsos que manda él mismo, con permiso por escrito. {lure}El señuelo es la nueva aplicación del comedor. {no-cruel}Nada cruel, a propósito.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-avisar",
+      "text": "<clear> {counters}Dos contadores. Cuánta gente pica, el click rate. {report-rate}Y cuánta avisa, y en cuánto tiempo, el report rate.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "5.6",
+        "text": "La métrica que hay que subir: report rate",
+        "at": "report-rate",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-avisar",
+      "text": "<thoughtful> El que hay que subir es el segundo, porque es el que te avisa de un ataque real. Si castigas a quien pica, la gente deja de avisar. {no-names}Por eso no se publican nombres, y {coaching}a quien pica, una explicación en el momento.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-avisar",
+      "text": "<confident> {loop}Avisar tiene que costar un clic: un botón en el correo. Alguien lo revisa, y a quien avisó se le contesta siempre, aunque fuera una falsa alarma.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}En otra empresa, casi nadie pica en los simulacros, porque la gente reconoce el señuelo. Pero solo avisa uno de cada veinte, porque hay que reenviar el correo a una dirección que casi nadie recuerda. ¿Qué cambio es el mejor para que avise más gente?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.6",
+        "scenario": "En los simulacros casi nadie pica, porque reconocen el señuelo. Pero solo avisa 1 de cada 20: hay que reenviar el correo a una dirección que pocos recuerdan.",
+        "q": "¿Qué cambio es el MEJOR para que avise más gente?",
+        "options": [
+          "Más formación para reconocer el phishing",
+          "Una sanción a quien no avise",
+          "Un botón para avisar en el propio correo",
+          "Señuelos más difíciles"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "Ya lo reconocen: falta que avisar cueste un clic, no buscar una dirección",
+        "trapWhy": "Formar es bueno, pero aquí ya lo reconocen: lo que frena es avisar",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Es el botón en el propio correo, porque lo que frena es lo difícil que resulta avisar. {trap-2}Más formación parece lo lógico, pero ya saben reconocerlo.",
+      "pauseAfterMs": 1000
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-programa",
+      "text": "<engaging> Por último, para quién y cada cuánto. {year}Un programa no es un vídeo. {initial}La formación initial es al entrar, antes de dar accesos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-programa",
+      "text": "<thoughtful> {recurring}La recurring dura todo el año, porque se olvida y los ataques cambian. {english}Como el inglés del instituto: lo aprobaste, y hoy no pides ni un café.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "5.6",
+        "text": "Initial al entrar; recurring, periódica",
+        "at": "recurring",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-programa",
+      "text": "<clear> {audiences}Y la formación se adapta a cada grupo, según su riesgo. Finanzas aprende a verificar una factura por otro canal. Sistemas, a no aprobar accesos que no han pedido ellos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-programa",
+      "text": "<casual> {topics}Y lo mismo Dirección, quien trabaja fuera y quien llega nuevo. Cada uno tiene lo suyo, en pantalla.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Una empresa da cada trimestre el mismo curso a toda la plantilla. Los resultados mejoran en todas las áreas, menos en Finanzas. Siguen cayendo en facturas falsas que piden cambiar la cuenta bancaria. ¿Qué cambio ataca mejor el problema?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "5.6",
+        "scenario": "El mismo curso, cada trimestre, para toda la plantilla. Los resultados mejoran en todas las áreas menos en Finanzas, que sigue cayendo en facturas falsas.",
+        "q": "¿Qué cambio ataca MEJOR el problema?",
+        "options": [
+          "Formar a Finanzas en verificar pagos",
+          "Dar el mismo curso cada mes, no cada trimestre",
+          "Prohibir a Finanzas abrir adjuntos",
+          "Publicar qué áreas pican más"
+        ],
+        "answer": 0,
+        "trap": 1,
+        "why": "Cada audiencia, su riesgo: Finanzas tiene que aprender a verificar los pagos",
+        "trapWhy": "Repetir es bueno, pero repetir lo genérico no toca el riesgo de Finanzas",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<firm> {ok-3}Es formar a Finanzas en verificar los pagos por otro canal, porque cada grupo tiene su riesgo. {trap-3}Repetir tienta, pero esa empresa ya repite, y lo genérico no toca el riesgo de Finanzas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<warm> {english-back}Repetir el inglés del instituto no te enseña a negociar un contrato.",
+      "pauseAfterMs": 1000,
+      "exam": {
+        "objective": "5.6",
+        "text": "Cada audiencia, su riesgo",
+        "at": "english-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}La primera, mira la intención: si lo sabía, es risky, y si no encaja, se investiga.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}La segunda, avisar cuesta un clic, y se contesta siempre.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y la tercera, la formación es de todo el año.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Busca la intención, sube los avisos y forma a cada uno en su riesgo. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 300
+    }
+  ]
+}

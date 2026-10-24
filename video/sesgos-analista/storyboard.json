@@ -1,0 +1,114 @@
+{
+  "title": "Sesgos del analista: el instrumento de medida eres tú",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 228,
+  "notice": "Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Tu cabeza"
+    },
+    {
+      "n": 2,
+      "title": "Cuatro atajos"
+    },
+    {
+      "n": 3,
+      "title": "Qué hacer"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una respuesta antes de tiempo",
+      "goal": "Meridian Dynamics, aeroespacial, y la tira del CISO de V23 (`ciso`): «CISO · responsable de seguridad» con «¿Quién está detrás?». Es una pregunta, no una decisión, y nadie queda mal por hacerla. Al otro lado, la silueta de tu cabeza, con una burbuja de pensamiento que ya trae respuesta (`hunch`), con el rótulo «tu cabeza · ejemplo» (no es la analista de la campaña): «ya sé quién fue», con el nombre en barras ilegibles y sin ningún país, grupo, bandera, mapa, idioma, hora ni huso. Título «El instrumento de medida eres tú» (`title`, hacia los 9 s del estimado, siempre antes de los 12), con «cuatro atajos de la cabeza y cómo frenarlos» debajo. La promesa en tres chips (`promise`): «cuatro atajos · cómo se cuelan en el análisis · qué hacer». Ninguna fecha ni hora en pantalla. La voz dice «el CISO»: no dice el evento, el equipo, el dominio ni el grupo, y no nombra a ningún adversario",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "requiredCues": [
+        "ciso",
+        "hunch",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-instrumento",
+      "chapter": 1,
+      "title": "La báscula eres tú",
+      "goal": "Una báscula de cocina que marca dos kilos de más con la balanza ya parada (`scale`), y un dedo que aprieta el platillo sin que cambie nada («mirarla con más ganas no la arregla»). La báscula se funde con la silueta de la cabeza de s01 (`brain`): tres flechas internas, sin flechas en la narración, con los rótulos «percibe · recuerda · conecta» y, debajo, «atajos (heurísticas)». Funcionan en la vida diaria, y en el análisis se tuercen (`fail`): «útiles en la vida, traicioneros en el análisis». Una ficha de lectura, «Richards Heuer · Psychology of Intelligence Analysis» (`heuer`), con el rótulo «saberlo no basta · actúan antes de que te des cuenta» (la voz solo dice lo primero; lo segundo es texto de pantalla de la lección). Después entra una pesa de metal con su certificado, fuera de la báscula (`structure`; la voz dice «una pesa de fuera»): «estructura: algo de fuera que no depende de tu cabeza». La tarjeta de examen, al acabar esa frase. Sin personas, sin fechas, sin datos del caso",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "scale",
+        "brain",
+        "fail",
+        "heuer",
+        "structure"
+      ]
+    },
+    {
+      "id": "s03-ancla",
+      "chapter": 2,
+      "title": "Dos que van de la mano",
+      "goal": "Rótulo fijo desde el primer fotograma, bien legible y fuera de la franja superior de la tarjeta del mensaje: «Frases de ejemplo de la lección · no son el caso de Meridian». Un informe de un proveedor genérico sobre la mesa (`report`), con la frase «el primer informe decía: grupo X» (la q1 de la lección; nunca un país, un grupo real ni el nombre de una campaña). El informe se hunde como un ancla en un mar de datos (`anchor`) y el resto de papeles se orientan hacia él; nombre ANCHORING, «el primer dato encuadra todo lo demás» y la frase-señal «el primer informe decía» (la voz la dice); la tarjeta, al acabar esa frase. Mensaje interceptado, encima. Respuesta (`reply-a`): el mensaje se aparta y queda el informe; nada en pantalla ni en voz dice quién habla ni de dónde viene. Llega un registro (log) genérico, una línea gris sin hora, host ni dominio, que no encaja (`bend`, con el efecto «glitch»): una mano lo dobla hasta que cuadra con el informe. Nombre CONFIRMATION BIAS (`confirm`), con la frase-señal «esto también lo confirma» y el recuadro de la lección «el más letal en atribución: cuando el equipo ya sabe quién fue, cada dato se dobla para encajar». Cierre (`together`): ancla y doblez, juntos, «el patrón clásico del fallo de atribución». Ninguna fecha, hora, huso, país ni grupo reales",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "requiredCues": [
+        "report",
+        "anchor",
+        "reply-a",
+        "bend",
+        "confirm",
+        "together"
+      ]
+    },
+    {
+      "id": "s04-noticias",
+      "chapter": 2,
+      "title": "Dos atajos más",
+      "goal": "Rótulo fijo desde el primer fotograma: «Frases de ejemplo de la lección · no son el caso de Meridian». Un tráfico genérico y raro en una gráfica sin ejes ni equipo (`news`, con el efecto «alarm» suave) y, por encima, una pared de titulares con la palabra ransomware (la q3 de la lección: nada de intrusiones ni datos de Meridian). La frase «hay ransomware en todas las noticias, así que esto será ransomware» (`headline`). Nombre AVAILABILITY (`avail`): «lo reciente o memorable parece más probable»; la tarjeta, al acabar la frase. Cambia el tono: un tablero de ajedrez con un jugador que mira el tablero desde su propio lado (`mirror`) y una burbuja con la frase de la lección: «un actor sofisticado nunca reutilizaría infraestructura, así que estos incidentes no están relacionados». Pregunta para pensar («¿qué da por hecho esa frase?»; aún no se ha nombrado el sesgo), con la frase quieta y sin resaltar. Respuesta (`verdict`, con el efecto «check»): el jugador gira al otro lado y ve otro tablero; nombre MIRROR IMAGING, «la frase da por hecho que el adversario razona como tú» y «los actores reales se equivocan, y mucho». El título de la escena no da la respuesta. Ninguna alusión a nada de la infraestructura de Meridian",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "requiredCues": [
+        "news",
+        "headline",
+        "avail",
+        "mirror",
+        "verdict"
+      ]
+    },
+    {
+      "id": "s05-pesas",
+      "chapter": 3,
+      "title": "Una pesa de fuera",
+      "goal": "Vuelve la báscula de s02, torcida (sin cue; ya está en pantalla al empezar la escena). Mensaje interceptado, encima. Respuesta (`reply-b`): el mensaje se aparta y la báscula sigue ahí, torcida; nada en pantalla ni en voz dice quién habla. Entran tres pesas de fuera, una a una, sobre el platillo. Primera pesa de fuera (`refute`): intentar tumbar tu hipótesis favorita en vez de apoyarla (ACH, la técnica que se ve más adelante en esta sección, sin enseñar ninguna matriz), con una hipótesis a la que le tiran una piedra y se queda en pie o no; la tarjeta, al acabar esa frase. Segunda (`peers`): alguien que te lleva la contraria de verdad (revisión por pares hostil). Tercera (`written`): apuntar tu juicio por escrito antes de saber cómo acaba, con un cuaderno fechado en blanco (sin fecha legible). Sin matrices, sin pruebas del caso, sin técnicas del Lab 4B",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "requiredCues": [
+        "reply-b",
+        "refute",
+        "peers",
+        "written"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, cada una con su viñeta en miniatura (`recap`): la báscula y la pesa (`rule-1`: «El instrumento eres tú: se se compensa con método, no con ganas»), las cuatro burbujas con su sesgo (`rule-2`: «confirma lo que ya pensábamos · confirmation · el primer informe decía · anchoring · está en todas las noticias · availability · ningún actor racional haría · mirror imaging») y una hipótesis con una piedra (`rule-3`: «Intenta tumbar tu primera respuesta antes de defenderla»). Tarjeta final Alertópolis (`next`, `endcard`): «Tu turno: las preguntas de la lección» (s4m1, 6 preguntas). Ningún laboratorio",
+      "targetSec": 26,
+      "wordBudget": 70,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

@@ -35,6 +35,7 @@ video/<slug>/
 | `profile` | uno de los seis perfiles (`principal`, `capsula`, `principal-yt`, `capsula-yt`, `caso-yt`, `caso-principal-yt`); ver «Perfiles» |
 | `track` | descargo de la transcripción: `secplus` (no afiliado a CompTIA) o `gcti` (no afiliado a SANS/GIAC) |
 | `adversary` | opcional; el adversario de la sección (p. ej. `SILENT PAGER`). Obligatorio en cuanto algún segmento de `narration.json` use `intercept` — ver «Mensaje interceptado» |
+| `simulationLabel` | opcional (≤ 40 caracteres); sustituye «Simulación educativa · datos ficticios» en el sello de la esquina y el arranque de la cabecera de la transcripción y de la descripción de YouTube, para un vídeo que cuenta casos reales. Sin él todo sale como siempre (el campo solo se escribe en `timeline.json` cuando existe) |
 | `lesson` | opcional; el id de módulo (p. ej. `sp4m7`) que enlaza la descripción de YouTube (`youtube-meta.mjs`) |
 
 Todos los scripts eligen el vídeo con `--video <slug>` (o la variable `VIDEO`; por defecto `siem`).
@@ -570,6 +571,26 @@ git) y `scripts/import-recording.mjs` lo convierte en los mismos clips que escri
    escribirá `recut_recording.py`, con sus 0,8 s de silencio detrás: en una frase sola pesan (V10 s01-01: −19,23 LUFS
    el trozo pelado, −19,53 el recorte, 0,3 dB de diferencia en el clip).
 
+**Tres salvaguardas del importador** (2026-10-23, tras V40–V42, que se importaron con un motor viejo):
+
+- **Aviso de motor atrasado** (`lib/engine-freshness.mjs`). Una rama de guion sale de `main` cuando se escribe el guion y
+  solo se fusiona de vez en cuando, así que el importador que lleva puede no tener arreglos que `main` ya tiene (documentos,
+  roles y proveedores se importaron sin el de «la última toma» y se quedaron con una toma anterior en seis frases).
+  `import-recording` y `verify-voice` comparan `video/engine/scripts` con el `origin/main` local (haz `git fetch` antes) y, si
+  `main` tiene commits que cambian archivos que aquí son distintos, avisan y los listan. Un checkout con el motor copiado de
+  `main` (`git checkout origin/main -- video/engine`) no se considera atrasado. Solo avisa: no impide importar.
+- **Clip que empieza a mitad de frase** (`midSentenceStarts`). Si el clip no empieza por la primera palabra del guion y justo
+  antes (sin pausa de 600 ms o más, y sin usar) hay una palabra que sí, se avisa con los dos comandos de recorte y se anota en el
+  informe («Clips que empiezan a mitad de frase»). Caso: documentos s02-01, «Empezamos con un caso» salió como «Con un caso» y
+  nada lo marcaba. `verify-voice` tiene la segunda red: avisa (no bloquea) si lo oído arranca en la segunda o tercera palabra
+  del guion (`missingOpening`).
+- **Reintento de la frase que Whisper se salta.** Whisper se salta la frase que repite el principio de su pista (la primera del
+  guion), o una ventana casi en silencio. Si tras la primera pasada falta algún segmento y hay voz donde debería estar
+  (`missingGaps`), se vuelve a oír **solo ese tramo y sin pista** (`--clips`), se sustituyen las palabras de ese tramo y se
+  vuelve a colocar todo; el resultado queda guardado en la caché de la transcripción (`patches`), así que no se repite. El
+  informe lo anota («Frases que Whisper se saltó y se buscaron otra vez»). `--no-retry` lo desactiva. Ya no hace falta el
+  rodeo manual de la primera frase (recorte + `recording_asr.py` sin pista + `--only`).
+
 **Ritmo** (`narration.json` → `"recording": { "tempo": 1.08, "maxPauseMs": 250 }`, o los flags `--tempo` y
 `--max-pause`, que mandan sobre él): `maxPauseMs` acorta a ese valor cada pausa dentro de una frase, y
 `tempo` acelera cada clip con `atempo` (conserva el tono; 0,8–1,25) y escala con él los tiempos de palabra
@@ -661,6 +682,21 @@ Dos pasos opcionales, en Python (venv de Chatterbox con `pip install pedalboard 
   atenuarse (primer valor, a ajustar de oído con `--bed-db`). El registro de `master_mix` lista qué frase suena en
   cada momento. Para probar sin renderizar la imagen: `scripts/render-audio.mjs` escribe solo el audio del programa
   (`out/<slug>-program.wav`, ~6 min en V4) y `master_mix.py --audio-in … --premaster-out …` mezcla en ~1 min.
+
+- **La música es obligatoria** (desde el 2026-10-22). Todos los vídeos publicados van sobre «Go On Going –
+  Stayloose» (`"music": "Go On Going - Stayloose.mp3"`). V47 (`ot-halden`), AP01–AP04 y los primeros masters de
+  V49/V50 se masterizaron por etapas, a mano, sin `--music`, y `master_mix` usó su ambiente generado: quedó a
+  ~8 LU del programa en vez de ~13, sonaba a ruido de fondo, y el nivel automático bajó todo 4 dB (−18 LUFS
+  entregados en vez de −15). Medido en los MP4: 14 dB entre la voz y los silencios, frente a 20 dB con la música.
+  Por eso `render.mjs --master` se para si `video.json` no tiene `"music"` (`--generated-bed` lo salta a
+  propósito), y `master_mix.py` avisa en la etapa 1 si no se le pasa la música. Comprueba en el registro que dice
+  `bed (music)` y que el MP4 sale hacia −15/−16 LUFS. Si un master salió con el ambiente generado, no hace falta
+  renderizar la imagen otra vez: programa (`render-audio.mjs`) → etapa 1 con `--bed-style music --music …` →
+  etapa 2 sobre el `<slug>-premaster.mp4` que ya existe, y se sube como vídeo nuevo (YouTube no deja cambiar el
+  archivo; antes, `out/youtube-upload.json` se aparta como `youtube-upload.v1.json`).
+- **No se solapan con la etapa 1:** `master_mix` necesita ~2 GB libres. Con Whisper transcribiendo otra
+  grabación a la vez, V49 se quedó sin memoria (`ArrayMemoryError`) y hubo que repetirlo; la etapa 1 no toma el
+  candado de trabajos pesados, así que espera a que acabe la importación.
 
 ```bash
 python video/engine/scripts/master_voice.py --in "video/engine/voices/<grabación>.wav" --out "video/engine/voices/<grabación> (master).wav" --ab video/<slug>/out/voz-antes-despues.wav

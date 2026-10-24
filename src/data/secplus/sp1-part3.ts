@@ -44,7 +44,7 @@ const sp1m5: Module = {
         '**Approval (CAB)** — el comité revisa la solicitud con el análisis de impacto, los test results y el backout plan, y aprueba o rechaza.',
         '**Maintenance window** — se programa la ejecución en una franja de bajo impacto y se avisa a los stakeholders.',
         '**Implement** — se ejecuta el cambio en producción siguiendo el SOP o el plan detallado.',
-        '**Verify** — se comprueba que el cambio funciona y que no ha roto nada (monitorización, pruebas funcionales, restart de servicios si procede).',
+        '**Verify** — se comprueba que el cambio funciona y que no ha roto nada (monitorización, pruebas funcionales, restart de servicios si procede). Si la comprobación falla, se activa el backout plan según los criterios acordados.',
         '**Document** — se actualizan diagramas, políticas y procedimientos, y la configuración queda registrada en **version control**.',
       ],
     },
@@ -74,7 +74,7 @@ Stakeholders:     Equipo web, SOC, help desk, dueño del portal de proveedores
 Impact analysis:  El certificado lo usan 6 servicios (portal, API, VPN SSL, SMTP,
                   monitorización, SSO). Todos requieren service restart tras el cambio.
 Test results:     Renovación probada en staging 2026-08-30; los 6 servicios OK.
-Maintenance win.: Sábado 2026-09-06, 02:00–04:00 (downtime estimado: 15 min)
+Maintenance win.: Domingo 2026-09-06, 02:00–04:00 (downtime estimado: 15 min)
 Restricted act.:  No se despliegan otros cambios en esos hosts durante la ventana.
 Backout plan:     Restaurar cert anterior desde el repositorio (tag cert-2025-09),
                   reiniciar los 6 servicios. Tiempo estimado: 10 min.
@@ -174,6 +174,17 @@ Document:         Actualizar inventario de certificados, diagrama de servicios,
         explain:
           'Version control gives history, accountability and a reliable backout path (deploy the previous tag). It does not replace the approval process, and a repository is not an encryption or impact-analysis tool, even though those distractors sound security-related.',
       },
+    },
+    {
+      t: 'p',
+      md: 'Un cambio de principio a fin, con tres preguntas de examen por el camino.',
+    },
+    {
+      t: 'video',
+      title: 'Antes, durante y después de un cambio',
+      youtube: 'ZLeS-1X4ypg',
+      poster: 'videos/cambios-halden-poster.png',
+      transcript: 'videos/cambios-halden-transcript.txt',
     },
     {
       t: 'p',

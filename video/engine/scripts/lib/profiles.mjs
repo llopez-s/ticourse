@@ -112,6 +112,25 @@ const AFFILIATION = Object.freeze({ secplus: 'CompTIA', gcti: 'SANS/GIAC' });
 /** Exam named on the badge of an exam card ("EXAMEN · SY0-701 · 4.5"). */
 export const EXAM_BADGE = Object.freeze({ secplus: 'SY0-701', gcti: 'GCTI' });
 
+/**
+ * The badge of a video's exam cards: its own `examBadge` from video.json (the SY0-801 novelties name a draft
+ * exam, "SY0-801 · borrador") or else the exam of the track. Null for the implicit Security+ badge, so those
+ * timelines stay byte-identical.
+ */
+export function examBadgeFor(track, override = null) {
+  if (override !== null && override !== undefined) {
+    if (typeof override !== 'string' || !override.trim() || override.length > 30) throw new Error('video.json "examBadge" must be a non-empty string of at most 30 characters');
+    return override;
+  }
+  if (!EXAM_BADGE[track]) throw new Error(`unknown track "${track}" (known: ${Object.keys(EXAM_BADGE).join(', ')})`);
+  return track === 'secplus' ? null : EXAM_BADGE[track];
+}
+
+/** Intercepted messages need an adversary: a video without one may have none, whatever its profile's minimum. */
+export function interceptsFor(profile, hasAdversary) {
+  return hasAdversary ? profile.intercepts : [0, profile.intercepts[1]];
+}
+
 /** GCTI publishes no numbered objectives, so a GCTI exam card names the course domain (src/lib/types.ts). */
 export const GCTI_DOMAINS = Object.freeze(['Requirements', 'Intrusion Analysis', 'Collection', 'Analysis', 'Dissemination']);
 
@@ -133,10 +152,16 @@ export function profileFor(name) {
   return profile;
 }
 
-/** Disclaimer line of a video: its track's affiliation, under the name its host shows. */
-export function trackNotice(track, profile = 'principal') {
+/** Opening words of every disclaimer line; a video that tells real cases replaces them (video.json "simulationLabel"). */
+export const DEFAULT_NOTICE_LEAD = 'Simulación educativa con datos ficticios';
+
+/**
+ * Disclaimer line of a video: its track's affiliation, under the name its host shows. `lead` replaces the
+ * «Simulación educativa con datos ficticios» opening for a video whose cases are real (its "simulationLabel").
+ */
+export function trackNotice(track, profile = 'principal', lead = null) {
   const affiliation = AFFILIATION[track];
   if (!affiliation) throw new Error(`unknown track "${track}" (known: ${Object.keys(AFFILIATION).join(', ')})`);
   const brand = profileFor(profile).host === 'youtube' ? APP_NAME : LEGACY_APP_NAME;
-  return `Simulación educativa con datos ficticios · ${brand} — material independiente, no afiliado a ${affiliation}`;
+  return `${lead ?? DEFAULT_NOTICE_LEAD} · ${brand} — material independiente, no afiliado a ${affiliation}`;
 }

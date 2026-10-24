@@ -11,7 +11,7 @@ export const CHROME_ROW_Y = 56;
 const HEIGHT = 40;
 
 /** The pill on its own, top-right, centred on the chrome row. */
-export function SimulationPill({ opacity = 1 }: { opacity?: number }) {
+export function SimulationPill({ opacity = 1, label = SIMULATION_LABEL }: { opacity?: number; label?: string }) {
   return (
     <div
       style={{
@@ -37,21 +37,21 @@ export function SimulationPill({ opacity = 1 }: { opacity?: number }) {
       }}
     >
       <span style={{ width: 8, height: 8, borderRadius: 4, background: C.faint, flexShrink: 0 }} />
-      {SIMULATION_LABEL}
+      {label}
     </div>
   );
 }
 
 /** Pure view: the tag steps aside while an exam card owns the top-right corner. */
-export function SimulationTagView({ exam, frame }: { exam: ExamCue[]; frame: number }) {
+export function SimulationTagView({ exam, frame, label = SIMULATION_LABEL }: { exam: ExamCue[]; frame: number; label?: string }) {
   const opacity = simulationTagOpacity(exam, frame);
   if (opacity <= 0.001) return null;
-  return <SimulationPill opacity={opacity} />;
+  return <SimulationPill opacity={opacity} label={label} />;
 }
 
 /** Timeline-driven tag mounted by LessonVideo (absolute frame). */
 export function SimulationTag() {
   const frame = useCurrentFrame();
   const timeline = useTimeline();
-  return <SimulationTagView exam={timeline.exam} frame={frame} />;
+  return <SimulationTagView exam={timeline.exam} frame={frame} label={timeline.simulationLabel ?? SIMULATION_LABEL} />;
 }

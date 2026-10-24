@@ -6218,7 +6218,22 @@ por la misma CPU; cuatro cortes a mano en la grabación. Los pasos detallados si
    `verify-voice`). Si `verify-voice` marca una frase, primero se mira si hay una toma limpia en la grabación:
    `recut_recording.py --map <wav>@<a>-<b>` enseña dónde están los silencios y `--part` monta las tomas buenas en un
    archivo corto que se importa con `--only`. Solo si no la hay, se regraba esa frase.
-7. **Render, YouTube y lección.** `render.mjs --master`; `youtube-meta.mjs` (las etiquetas de tema salen de
+   Casos vistos el 2026-10-22 (V48–V51), todos sin regrabar:
+   - **Falta s01-01.** Whisper se salta el arranque cuando repite su pista; el importador da los dos comandos
+     (`recut_recording.py --part` y `import-recording --only s01-01 --lufs=…`). Antes, `--map` confirma que en ese
+     tramo hay una sola lectura.
+   - **«Stops inside a word» al final de un clip.** Whisper se inventa una palabra corta tras la última («persona.
+     1.») y el corte cae dentro de esta. `--map` enseña dónde acaba de verdad la voz; se recorta hasta el silencio
+     y se importa con `--only` y la ganancia de la importación completa.
+   - **«Exam card … leaves its scene».** Con la voz real, la frase que ancla la tarjeta acaba antes que sus 5 s.
+     Se alarga su `pauseAfterMs` (no cambia lo que se dice ni la grabación), no se acorta la tarjeta.
+   - **«timeline.json is stale».** Cualquier cambio en `storyboard.json` o `narration.json` (aunque sea el orden
+     de `requiredCues`) obliga a `audio.mjs` antes de renderizar; los efectos y su orden se ponen antes de importar.
+7. **Render, YouTube y lección.** Antes de renderizar, `video.json` lleva `"music": "Go On Going - Stayloose.mp3"`
+   (desde el 2026-10-22 `render.mjs --master` se para sin ella: el ambiente generado sonaba a ruido y bajaba la voz
+   a −18 LUFS en V47 y AP01–AP04; README del motor, «Masterización»). El registro tiene que decir `bed (music)` y el
+   MP4 salir hacia −15/−16 LUFS. La miniatura no la renderizan los constructores de escenas: se mira entera antes de
+   subir (la de V48 se salía por el borde derecho). `render.mjs --master`; `youtube-meta.mjs` (las etiquetas de tema salen de
    `video.json` → `"tags"`); subida con Lidia (ella arrastra el MP4, que pasa del límite de 10 MB de las herramientas
    del navegador, y la miniatura si el navegador integrado no puede elegir archivos) o, desde el 2026-10-05, por la
    API con `youtube-upload.mjs` (privado; README del motor, «Subida a YouTube por la API»); el bloque `youtube` en la

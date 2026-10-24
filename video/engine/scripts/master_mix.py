@@ -24,6 +24,7 @@ import argparse
 import json
 import os
 import subprocess
+import sys
 import tempfile
 
 import numpy as np
@@ -560,6 +561,10 @@ def main():
         ap.error("stage 2 needs --video-in, --premaster and --out")
     if not stage1 and not stage2 and not (args.video_in and args.timeline and args.out):
         ap.error("one pass needs --video-in, --timeline and --out")
+    if not stage2 and not args.no_bed and args.bed_style != "music":
+        # Called by hand (render.mjs --master passes the music), this is how V47 and AP01-AP04 got the generated bed.
+        print(f"master_mix: WARNING: generated '{args.bed_style}' bed, not the library music; every published video "
+              "uses --bed-style music --music \"video/engine/music/library/Go On Going - Stayloose.mp3\"", file=sys.stderr)
 
     args.ffmpeg = os.path.abspath(args.ffmpeg)  # Windows won't run a relative path with forward slashes
     meter = pyln.Meter(SR)

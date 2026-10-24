@@ -125,7 +125,7 @@ export function buildYoutubeMeta() {
   if (!existsSync(captions)) errors.push(`no captions at ${captions}`);
   if (errors.length) throw new Error(`${errors.length} problem(s):\n${errors.map((e) => `  - ${e}`).join('\n')}`);
 
-  const notice = trackNotice(MANIFEST.track, MANIFEST.profile);
+  const notice = trackNotice(MANIFEST.track, MANIFEST.profile, MANIFEST.simulationLabel);
   const description = youtubeDescription({ timeline, track: MANIFEST.track, notice });
   return { slug: MANIFEST.slug, track: MANIFEST.track, title, description, tags, files: { video: PATHS.video, captions, poster: PATHS.poster } };
 }

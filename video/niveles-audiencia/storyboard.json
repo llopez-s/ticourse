@@ -1,0 +1,122 @@
+{
+  "title": "Niveles de CTI y la Sliding Scale: el producto correcto para la persona correcta",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 242,
+  "notice": "Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a SANS/GIAC",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Dos peticiones"
+    },
+    {
+      "n": 2,
+      "title": "La escala de la seguridad"
+    },
+    {
+      "n": 3,
+      "title": "Para el examen"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Dos sobres sobre tu mesa",
+      "goal": "Una mesa de trabajo vista desde arriba con el rótulo «Meridian Dynamics · aeroespacial · tú, su analista de inteligencia» (el mismo de V22, V23 y V27), sin fecha ni hora y sin ninguna alerta, equipo, dominio o IP: es el mismo día, no un momento. Entra un primer sobre sellado «consejo» (`board`, con el efecto «mail») y se abre a medias para dejar ver una sola pregunta, «¿hacia dónde va el sector?», con «¿dónde invertimos?» debajo en pequeño. Entra un segundo sobre «SOC» (`soc`, con el efecto «ping2») con «¿qué bloqueamos hoy?». Son preguntas, no decisiones: ni el consejo ni el SOC deciden ni despliegan nada en pantalla, y nadie queda mal por preguntar; ningún rostro ni nombre. Los dos sobres se quedan en la mesa, uno junto al otro, con la misma forma y el mismo tamaño. Título «Niveles de CTI y la Sliding Scale» con «el producto correcto para la persona correcta» debajo (`title`, hacia los 9-10 s del estimado, siempre antes de los 12). La promesa en tres chips (`promise`): «los tres niveles · la escala de la seguridad · por qué no empezar por el tejado». El sobre es la imagen de esta cápsula para «lo que entregas a cada lector»; no se usa un paraguas ni nada de V24/V27",
+      "targetSec": 23,
+      "wordBudget": 57,
+      "requiredCues": [
+        "board",
+        "soc",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-niveles",
+      "chapter": 1,
+      "title": "Tres lectores, tres plazos",
+      "goal": "Tres viñetas de un club de fútbol, de izquierda a derecha, que aparecen al compás de la voz con una frase breve cada una; figuras abstractas, sin escudos, sin equipos ni jugadores reales, sin marcas. Primero un rótulo en pequeño, «la inteligencia es para alguien» (`club`). Luego: el jugador sobre el césped, un campo visto desde arriba con una jugada en marcha y un reloj (`pitch`); el entrenador que estudia al rival toda la semana, una pizarra con las jugadas repetidas del equipo contrario (`rival`); la directiva que decide en qué invertir los próximos años, un plano de cantera y plantilla con un calendario de temporadas (`years`). Sin paraguas, sin meteorología y sin ningún símbolo de V24 o V27. Debajo, una tabla que se rellena fila a fila con el texto exacto de la lección (Nivel · Audiencia · Pregunta típica · Productos · Horizonte): Tactical (`tactical`), «SOC, detección, IR», «¿Qué bloqueo/detecto hoy?», «IOCs, reglas (YARA/Sigma/Snort), feeds», «Horas–días»; Operational (`operational`), «Threat hunters, IR leads, CTI peers», «¿Cómo opera este grupo? ¿Qué campañas hay activas?», «Informes de campaña, análisis de TTPs, mapeos ATT&CK», «Semanas–meses»; Strategic (`strategic`), «CISO, dirección, board», «¿Dónde invertimos? ¿Qué riesgo aceptamos?», «Assessments, tendencias, panorama de amenazas», «Meses–años». Cada fila se enciende con su viñeta del fútbol (jugador, entrenador, directiva) unida por un hilo del mismo color. Al final (`lens`), las tres filas quedan quietas con un rótulo, «el nivel lo marca quién lee, qué decide y para cuándo»; la tarjeta de examen, al acabar esa frase. Solo tres niveles: no existe un nivel «technical». Ningún indicador con valor real (ni dominio, ni IP, ni hash) en la fila tactical: los productos son nombres de categoría",
+      "targetSec": 53,
+      "wordBudget": 130,
+      "requiredCues": [
+        "club",
+        "pitch",
+        "rival",
+        "years",
+        "tactical",
+        "operational",
+        "strategic",
+        "lens"
+      ]
+    },
+    {
+      "id": "s03-error",
+      "chapter": 1,
+      "title": "Si se cruzan los sobres",
+      "goal": "Mensaje interceptado, sobre la mesa de s01 con los dos sobres, con la ficha «EMBER FOX · célula de acceso inicial · spearphishing» (la misma que en G01 y G03; no hay ni plantillas, ni lista de objetivos, ni «VC», ni «spearphishing»). Desde el primer fotograma de la escena, y durante toda la escena, un rótulo bien visible fuera de la franja superior de la tarjeta del mensaje: «Ejemplo hipotético · no ha pasado en Meridian» (sin cue). Respuesta (`reply-fox`, donde la voz dice el nombre EMBER FOX): el mensaje se aparta y los dos sobres se levantan. Se cruzan (`swap`): el del consejo, rotulado con la pregunta del consejo, se queda con el contenido del SOC y al revés. Se abre el sobre del consejo: una pila larga de filas grises ilegibles, cada una con un chip «IP» sin valor, y un contador «4.000 IP» (`board-gets`; ningún dato real, ningún formato de IP legible); a su lado, las preguntas «¿dónde invertimos?» y «¿qué riesgo aceptamos?» sin respuesta. Se abre el del SOC: una gráfica de tendencias del sector con el título «evaluación de tendencias del sector» (`soc-gets`), y a su lado «¿qué bloqueamos hoy?» sin respuesta (`soc-none`, con una celda vacía donde irían las reglas). Dos sellos de pregunta sin respuesta y, entre ellos, el rótulo EL ERROR CLÁSICO, «darle a cada uno lo del otro» (`error`, con el efecto «error»). Nadie queda mal: ni el consejo ni el SOC ni quien prepara el envío; es una prueba mental. Los sobres vuelven a su sitio y aparece la regla (`mix-rule`): «producto correcto · audiencia correcta», con «mira quién lo va a leer» debajo; la tarjeta de examen, al acabar esa frase",
+      "targetSec": 43,
+      "wordBudget": 111,
+      "requiredCues": [
+        "reply-fox",
+        "swap",
+        "board-gets",
+        "soc-gets",
+        "soc-none",
+        "error",
+        "mix-rule"
+      ]
+    },
+    {
+      "id": "s04-escala",
+      "chapter": 2,
+      "title": "Una casa en cinco piezas",
+      "goal": "Una barra horizontal, la escala, con cinco paradas de izquierda a derecha y su rótulo en la cabecera, «Sliding Scale of Cyber Security» y debajo «ordena las inversiones de seguridad» (`scale`). Al lado, una casa en corte que se va construyendo con cada parada. Primera parada, Architecture (`arch`): cimientos y paredes, con «sistemas defendibles · segmentación · hardening · parcheo». Segunda, Passive Defense (`passive`): una puerta blindada, con «protección sin operador en el bucle · firewalls, filtrado» (el ejemplo EDR/AV no sale todavía en pantalla: es la respuesta de la pregunta). Tercera, Active Defense (`active`): un vigilante que hace la ronda, con «analistas en el bucle · monitorización · threat hunting · respuesta a incidentes»; la tarjeta de examen, al acabar esa frase. Cuarta, Intelligence (`intel`): el tejado de la casa, con «consumir y producir conocimiento del adversario para informar al resto» y, como ejemplo, «informes de actor». Quinta, Offense (`offense`): fuera de la casa, apagada y con candado, «acciones legales de respuesta contra el adversario · terreno casi exclusivo de estados». La flecha de la barra dice «base con mejor retorno a la izquierda · lo de la derecha rinde si lo anterior existe». Pregunta para pensar (`classify`), con la casa quieta: una ficha, «EDR que bloquea malware conocido sin que nadie intervenga», aparte de la barra, y las cinco paradas apagadas; sin nada que sugiera la respuesta. Respuesta (`answer`): la ficha se posa en Passive Defense, junto a «firewalls, EDR/AV, filtrado» (texto de la lección), con el rótulo «¿hay una persona al mando?». Sin ladrón, sin llaves ni nada de la imagen de V13 (la casa es un edificio que se construye)",
+      "targetSec": 58,
+      "wordBudget": 149,
+      "requiredCues": [
+        "scale",
+        "arch",
+        "passive",
+        "active",
+        "intel",
+        "offense",
+        "classify",
+        "answer"
+      ]
+    },
+    {
+      "id": "s05-tejado",
+      "chapter": 2,
+      "title": "El orden de la obra",
+      "goal": "Mensaje interceptado, otra vez con la ficha «EMBER FOX · célula de acceso inicial · spearphishing», sobre la casa de s04 con la barra de la escala. Respuesta (`reply-fox2`): el mensaje se aparta. La barra vuelve con el texto de la lección: «Intelligence multiplica el valor de las demás, no las sustituye» (`multiplies`, con la mitad izquierda marcada «base, mejor retorno» y la derecha «solo rinde si la base existe»); la tarjeta de examen, al acabar esa frase. Después se retira la casa y queda solo el tejado en el aire (`roof`) con un informe de inteligencia encima, sin nadie que lo abra, y el rótulo «sin base defendible, nadie lo aplica». Luego (`enable`) la casa vuelve completa con su tejado y de él salen flechas a cinco destinos de la lista de la lección, uno a uno: SOC (priorización con contexto de actor y campaña), IR, gestión de vulnerabilidades, red team y dirección. Por último (`back`, con el efecto «check»), los dos sobres de s01 vuelven a la mesa, cada uno con lo suyo: el del SOC, «indicadores y reglas de detección»; el del consejo, «evaluación de tendencias del sector». Es lo que la analista prepara, no lo que ya se entregó; ni el SOC ni el consejo deciden nada en pantalla. Ninguna cifra, fecha ni valor de indicador",
+      "targetSec": 40,
+      "wordBudget": 105,
+      "requiredCues": [
+        "reply-fox2",
+        "multiplies",
+        "roof",
+        "enable",
+        "back"
+      ]
+    },
+    {
+      "id": "s06-recap",
+      "chapter": 3,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas de reglas, cada una con su viñeta en miniatura (`recap`): `rule-1` (la tabla de tres filas, con jugador, entrenador y directiva), «El nivel lo marca quién lee, qué decide y para cuándo: tactical para hoy, operational para entender al grupo, strategic para invertir»; `rule-2` (los dos sobres en su sitio), «Producto correcto para audiencia correcta: indicadores al consejo o tendencias al SOC es el error clásico»; `rule-3` (la barra con la casa), «Architecture, Passive Defense, Active Defense, Intelligence, Offense: primero la base, y la inteligencia multiplica, no sustituye». Tarjeta final Alertópolis (`next`, `endcard`): «Tu turno: las preguntas de la lección» (s1m3, 6 preguntas), con el descargo «Simulación educativa con datos ficticios. Material independiente, no afiliado a SANS/GIAC.». Ningún laboratorio (el Lab 1B es de la lección siguiente)",
+      "targetSec": 25,
+      "wordBudget": 62,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

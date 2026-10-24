@@ -56,3 +56,15 @@ test('a timeline exam cue may carry a badge, and it must be a non-empty string',
   assert.deepEqual(errs([cue({})]), []);
   assert.ok(errs([cue({ badge: '' })]).length > 0);
 });
+
+test('a video may name its own exam on the card badge (SY0-801 draft); Security+ stays implicit', async () => {
+  const { examBadgeFor, interceptsFor, PROFILES } = await import('./profiles.mjs');
+  assert.equal(examBadgeFor('secplus'), null);
+  assert.equal(examBadgeFor('gcti'), 'GCTI');
+  assert.equal(examBadgeFor('secplus', 'SY0-801 · borrador'), 'SY0-801 · borrador');
+  assert.throws(() => examBadgeFor('secplus', ''), /examBadge/);
+  assert.throws(() => examBadgeFor('secplus', 'x'.repeat(31)), /examBadge/);
+  assert.throws(() => examBadgeFor('ccna'), /unknown track/);
+  assert.deepEqual(interceptsFor(PROFILES['capsula-yt'], true), [1, 2]);
+  assert.deepEqual(interceptsFor(PROFILES['capsula-yt'], false), [0, 2]);
+});

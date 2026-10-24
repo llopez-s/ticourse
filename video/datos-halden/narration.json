@@ -1,0 +1,308 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "tempo": 1.08,
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "clock": "ping2",
+    "transit": "mail",
+    "corridor": "alarm",
+    "autolock": "lock",
+    "shuffle": "glitch"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {clock}Recursos Humanos del puerto de Halden prepara un control de horario nuevo. {record}Cada fichaje es un dato personal que proteger, esté donde esté.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Dónde está el dato. {promise}Vas a seguir un fichaje guardado, en camino y en uso. Y verás qué se ve, qué se guarda y en qué país vive.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-estados",
+      "text": "<engaging> {three}Ese fichaje pasa por tres estados. {rest}Se queda guardado en la base de datos, y eso es data at rest. Lo protegen el cifrado y los permisos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-estados",
+      "text": "<clear> {transit}Para llegar a esa base, cruza la red desde el reloj. Cruzar una red es data in transit, y se cifra la conexión.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-estados",
+      "text": "<thoughtful> {use}Cuando la jefa de turno lo abre en su pantalla, está en uso, data in use. Y ahí ya está descifrado.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "3.3",
+        "text": "In use: el dato ya está descifrado",
+        "at": "use",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-estados",
+      "text": "<concerned> {corridor}Pero esa pantalla da al pasillo, y cualquiera que pasara podría leerla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-estados",
+      "text": "<confident> {decision}Así que se propone girarla y que {autolock}se bloquee sola. Y que cada jefa vea solo a su equipo, que es least privilege.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-estados",
+      "text": "<warm> {piggybank}Es como el dinero. Guardado, en la hucha. Viajando, en una transferencia. Y en tu mano, al pagar, ya no hay hucha.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca. Una abogada lleva en el bolso un disco externo con los contratos de un cliente, del despacho al juzgado. El disco no se conecta a nada en todo el camino. ¿En qué estado están los contratos durante el trayecto?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "3.3",
+        "scenario": "Una abogada lleva en el bolso un disco externo con los contratos de un cliente, del despacho al juzgado. El disco va desconectado todo el camino.",
+        "q": "¿En qué estado están los contratos durante el trayecto?",
+        "options": [
+          "Data in use",
+          "Data at rest",
+          "Data in transit",
+          "Data sovereignty"
+        ],
+        "answer": 1,
+        "trap": 2,
+        "why": "Están guardados en un soporte, aunque el soporte se mueva: at rest",
+        "trapWhy": "Viajan, pero no por una red: in transit es el dato que cruza una red",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<firm> {ok-1}Están guardados en un soporte, data at rest, aunque se mueva. {trap-1}El viaje tienta, pero in transit es cruzar una red, y el disco va desconectado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<warm> {piggybank-back}O sea, la hucha que te llevas en el bolso sigue cerrada.",
+      "pauseAfterMs": 1000
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-metodos",
+      "text": "<engaging> {same-id}Ahora, qué se ve y qué se guarda, con el DNI del fichaje, de tres maneras.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-metodos",
+      "text": "<clear> {mask}En su pantalla, la jefa de turno ve solo el final del DNI, y eso es masking. El número entero sigue intacto donde se guarda.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "3.3",
+        "text": "Masking oculta parte; el original sigue intacto",
+        "at": "mask",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-metodos",
+      "text": "<focused> {report}En el informe de horas para Dirección, cada DNI es un código sin sentido, {token}y eso es tokenization.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-metodos",
+      "text": "<thoughtful> {vault}La tabla que traduce cada código la guarda Recursos Humanos. Es la vault, y solo quien la tiene vuelve al DNI.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-metodos",
+      "text": "<curious> {export}Para la exportación mensual, alguien propone {shuffle}desordenar las columnas en vez de cifrarla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-metodos",
+      "text": "<firm> {crossed}Eso es obfuscation, un estorbo, no una barrera, así que la exportación {chip}se cifra igual.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<intrigued> {q2}Una distribuidora va a mandar por correo su lista de clientes a una gestoría. Antes, la convierte a un formato que no se lee a simple vista. Pero cualquiera la devuelve a texto en un segundo, y sin ninguna clave. ¿Qué describe mejor lo que ha aplicado? {best}Con un «mejor» delante, alguna otra sonará bien, pero vale la que describe lo que se ha hecho.",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "3.3",
+        "scenario": "Antes de mandar por correo su lista de clientes a una gestoría, una distribuidora la pasa a Base64 «para que no se lea». Cualquiera la deshace sin clave.",
+        "q": "¿Qué describe MEJOR lo que ha aplicado?",
+        "options": [
+          "Obfuscation",
+          "Hashing",
+          "Tokenization",
+          "Encryption"
+        ],
+        "answer": 0,
+        "trap": 3,
+        "why": "Solo la hace difícil de leer, sin clave ni garantía: es obfuscation",
+        "trapWhy": "Parece cifrada, pero sin clave no hay cifrado: cualquiera la deshace",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Es obfuscation, porque solo la hace difícil de leer. {trap-2}Parece cifrada, pero sin clave no hay cifrado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<casual> {export-back}Igual que la exportación de antes. Que no se lea no la protege.",
+      "pauseAfterMs": 1200,
+      "exam": {
+        "objective": "3.3",
+        "text": "Que no se lea no es que esté cifrado",
+        "at": "export-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-pais",
+      "text": "<thoughtful> {suppose}Nos queda saber en qué país vive. Imagina que el sistema se alojara en la nube.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-pais",
+      "text": "<curious> {map}Primero se mira {look}en qué región viviría cada almacenamiento y desde qué país se entraría. Eso es geolocation.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-pais",
+      "text": "<serious> {law}Y allí manda la ley del país donde reside el dato, no la del país de la sede. Eso es data sovereignty.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "3.3",
+        "text": "Manda la ley del país donde está el dato",
+        "at": "law",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-pais",
+      "text": "<confident> {tie}Para cumplirla, se ata a una región de la Unión Europea, sin entradas desde fuera. Son las geographic restrictions.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-pais",
+      "text": "<firm> {order}Fíjate en el orden. Primero se mira, y después se limita.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-pais",
+      "text": "<warm> {storage}Piensa en un trastero al otro lado de la frontera. Lo que guardas es tuyo, pero allí mandan sus normas.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<engaging> {q3}La última. Antes de poner ninguna regla, una editorial averigua en qué país está cada almacenamiento de su nube. Y también desde dónde entra cada cuenta. No bloquea nada. ¿Qué describe mejor lo que está usando?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "3.3",
+        "scenario": "Antes de poner ninguna regla, una editorial averigua en qué país está cada almacenamiento de su nube y desde dónde entra cada cuenta. No bloquea nada.",
+        "q": "¿Qué describe MEJOR lo que está usando?",
+        "options": [
+          "Segmentation",
+          "Geographic restrictions",
+          "Geolocation",
+          "Data sovereignty"
+        ],
+        "answer": 2,
+        "trap": 1,
+        "why": "Saber dónde vive el dato y desde dónde se entra: eso es geolocation",
+        "trapWhy": "Restringir sería bloquear o anclar a una región, y aquí solo se mira",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<firm> {ok-3}Es geolocation, porque solo mira. {trap-3}Los países suenan a restricciones, pero restringir es bloquear o atar a una región, y aquí no se bloquea nada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<reassuring> {storage-back}Vamos, que saber en qué ciudad está cada trastero no te prohíbe ninguno. Mirar no es limitar.",
+      "pauseAfterMs": 1200,
+      "exam": {
+        "objective": "3.3",
+        "text": "Geolocation localiza; restrictions limitan",
+        "at": "storage-back",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Tres reglas. {rule-1}Guardado o en camino, se cifra, y en uso ya está descifrado.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Masking oculta una parte, tokenization deja un código que solo traduce la vault, y obfuscation, un estorbo, no una barrera.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<firm> {rule-3}Y primero se mira dónde vive el dato, porque allí manda su ley.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Antes de elegir un método, pregúntate dónde está el dato ahora mismo. {next}Y ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

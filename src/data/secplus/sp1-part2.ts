@@ -307,16 +307,16 @@ const sp1m4: Module = {
         '**Fencing** — vallado perimetral: define el límite, retrasa al intruso y disuade. Su eficacia depende de altura, material y de que esté vigilado; una valla sola solo compra tiempo.',
         '**Lighting** — iluminación de perímetros y accesos: disuade (nadie quiere ser visto) y hace que cámaras y guardias funcionen. Se combina con sensores para encenderse al detectar movimiento.',
         '**Access control vestibule** — antes llamado *mantrap*: dos puertas enclavadas donde **solo una puede abrirse a la vez** y el espacio intermedio admite a una persona. Frena el **tailgating** (colarse detrás de alguien) y permite verificar identidad antes de abrir la segunda puerta.',
-        '**Access badge** — tarjeta o credencial (RFID, NFC, smart card) que identifica a la persona y registra sus accesos. Es lo que el vestibule verifica; sin badge, la puerta no distingue empleadas de visitantes.',
+        '**Access badge** — tarjeta o credencial (RFID, NFC, smart card) que identifica a la persona, limita por puerta qué zonas abre cada una y registra sus accesos. Es lo que el vestibule verifica; sin badge, la puerta no distingue empleadas de visitantes.',
         '**Security guard** — la única medida que **razona**: verifica identidades, escolta visitantes, responde a alarmas y detecta comportamientos raros que ningún sensor entiende. Cara, pero flexible; disuasoria, preventiva y detectiva a la vez.',
-        '**Video surveillance** — CCTV: disuade cuando es visible y **detecta** al grabar. Los sistemas modernos añaden **motion recognition** (alerta al detectar movimiento) y **object detection** (distingue una persona de un animal o identifica un paquete abandonado).',
+        '**Video surveillance** — CCTV: disuade cuando es visible y **detecta** al grabar. Los sistemas modernos añaden **motion recognition** (alerta al detectar movimiento) y **object detection** (distingue una persona de un animal o identifica un paquete abandonado); son capacidades de las cámaras actuales y vocabulario de ediciones anteriores del examen, no términos de la lista de objetivos que sigue esta lección.',
       ],
     },
     {
       t: 'callout',
       kind: 'tip',
       title: 'Tailgating vs. piggybacking',
-      md: 'Ambos describen a alguien que entra tras una persona autorizada, pero el examen los separa por **consentimiento**: en el **tailgating** la empleada *no sabe* que la siguen; en el **piggybacking** la empleada *deja pasar* a la otra persona (le sostiene la puerta, «se le olvidó la tarjeta»). El control técnico contra ambos es el **access control vestibule**; el control humano es la formación y un **security guard**.',
+      md: 'Ambos describen a alguien que entra tras una persona autorizada, pero se suelen separar por **consentimiento** (distinción habitual en ediciones anteriores del examen, que no figura como término en la lista de objetivos que sigue esta lección): en el **tailgating** la empleada *no sabe* que la siguen; en el **piggybacking** la empleada *deja pasar* a la otra persona (le sostiene la puerta, «se le olvidó la tarjeta»). El control técnico contra ambos es el **access control vestibule**; el control humano es la formación y un **security guard**.',
     },
     {
       t: 'check',
@@ -442,6 +442,17 @@ const sp1m4: Module = {
       kind: 'warn',
       title: 'Un señuelo mal aislado es una puerta real',
       md: 'Un **honeypot** debe estar **segmentado** del entorno de producción y monitorizado de cerca: si el atacante lo compromete y desde él llega a sistemas reales, has fabricado tu propio punto de entrada. Y los cebos tienen que ser creíbles pero **nunca contener datos reales**: un honeyfile con contraseñas verdaderas ya no es un cebo, es una fuga esperando a ocurrir.',
+    },
+    {
+      t: 'p',
+      md: 'Un recorrido por el plano, de la calle al cebo, y tres preguntas de examen.',
+    },
+    {
+      t: 'video',
+      title: 'Quién entra, qué se mueve y quién pica',
+      youtube: 'DOxNzxPHibQ',
+      poster: 'videos/fisica-halden-poster.png',
+      transcript: 'videos/fisica-halden-transcript.txt',
     },
     {
       t: 'p',

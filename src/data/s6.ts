@@ -16,7 +16,7 @@ export const S6_MODULES: Module[] = [
     blocks: [
       {
         t: 'p',
-        md: 'El **GIAC Cyber Threat Intelligence (GCTI)** es el certificado asociado a FOR578. Datos clave del formato (verifica siempre los vigentes en `giac.org`, pueden cambiar): examen **proctored** de unas **75 preguntas** tipo test en **2 horas**, con nota de corte histórica en torno al **71%**.',
+        md: 'El **GIAC Cyber Threat Intelligence (GCTI)** es el certificado asociado a FOR578. Datos clave del formato (verifica siempre los vigentes en `giac.org`, pueden cambiar): examen **proctored** de **82 preguntas** tipo test en **3 horas**, con nota mínima del **71%** (cifras de la página oficial del GCTI en octubre de 2026).',
       },
       {
         t: 'callout',
@@ -28,7 +28,7 @@ export const S6_MODULES: Module[] = [
         t: 'list',
         items: [
           '**Practice tests**: GIAC incluye intentos de práctica oficiales con el voucher — son la mejor radiografía del examen real. Hazlos *con tu índice*, simulando condiciones.',
-          '**Ritmo**: ~96 segundos por pregunta. Marca y salta lo que te atasque; vuelve al final.',
+          '**Ritmo**: ~130 segundos por pregunta (3 horas entre 82 preguntas). Marca y salta lo que te atasque; vuelve al final.',
           '**Lectura quirúrgica**: las preguntas GIAC premian distinguir el matiz («BEST», «FIRST», «MOST likely», «PRIMARY»). Dos respuestas serán defendibles; una es *mejor*.',
           '**Eliminación**: descarta 2 distractores rápido; decide entre las 2 restantes con la lógica del curso (¿qué diría el framework?).',
         ],
@@ -118,7 +118,7 @@ is the one the evidence ACTUALLY supports — no more.`,
           ['Intrusion analysis (Kill Chain, Diamond, ATT&CK)', 'S2', 'Muy alto — corazón del examen'],
           ['Collection sources', 'S3', 'Alto'],
           ['Analysis (sesgos, ACH, clustering, atribución)', 'S4', 'Muy alto'],
-          ['Dissemination (estimativo, TLP, casos)', 'S5', 'Alto'],
+          ['Dissemination (estimativo, TLP aplicado, casos)', 'S5', 'Alto'],
         ],
       },
       {
@@ -128,7 +128,7 @@ is the one the evidence ACTUALLY supports — no more.`,
       {
         t: 'check',
         q: {
-          q: 'You have spent 3 minutes on question 12 of 75 and remain stuck between two defensible options. The best move is:',
+          q: 'You have spent 3 minutes on question 12 of 82 and remain stuck between two defensible options. The best move is:',
           choices: [
             'Stay until you resolve it — early questions matter more',
             'Mark it, pick your current best guess, move on, and return with fresh eyes and remaining time at the end',
@@ -137,7 +137,7 @@ is the one the evidence ACTUALLY supports — no more.`,
           ],
           answer: 1,
           explain:
-            'At ~96 seconds per question, a 3-minute stall already borrowed from other questions. Mark-and-return protects the pace; a provisional answer protects against running out of time.',
+            'At ~130 seconds per question, a 3-minute stall already borrowed from other questions. Mark-and-return protects the pace; a provisional answer protects against running out of time.',
         },
       },
       {
@@ -195,17 +195,11 @@ is the one the evidence ACTUALLY supports — no more.`,
 TERM                    NOTE (answers w/o opening)   WHERE
 ---------------------------------------------------------
 ACH                     winner = LEAST inconsistent  S4M3 / B4*
-ACH: diagnosticity      evidence that discriminates  S4M3
-                        between hypotheses
-Anchoring bias          first number sticks;         S4M1
-                        counter = fresh-eyes review
-attributed-to (STIX)    campaign -> intrusion-set,   S4M5
-                        carries confidence
-Attribution levels      machine / operator /         S4M5
-                        sponsor — new evidence TYPE
-                        per step up
-Mirror imaging          assuming adversary thinks    S4M1
-                        like you
+ACH: diagnosticity      separates hypotheses         S4M3
+Anchoring bias          1st number sticks            S4M1
+attributed-to (STIX)    campaign -> intrusion-set    S4M5
+Attribution levels      machine/operator/sponsor     S4M5
+Mirror imaging          they think like you?         S4M1
 ---------------------------------------------------------
 * B4 = your official course book + page, if you have one`,
       },

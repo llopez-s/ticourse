@@ -386,6 +386,19 @@ describe('lesson videos', () => {
     // three exam-style questions, after the last check (the service account of the orchestration platform) and before the
     // paragraph that hands over to incident response
     expect(youtubeVideos.find((v) => v.block.youtube === 'G5ywhPJ7LbQ')?.module).toBe('sp4m9');
+    // V49 takes sp1m2's four ideas (what breaks, who touches it, how much is missing) through a port case with three
+    // exam-style questions, after the last check (the gap analysis after an acquisition) and before the paragraph that
+    // hands over to Zero Trust
+    expect(youtubeVideos.find((v) => v.block.youtube === 'X-ObxPQZZHc')?.module).toBe('sp1m2');
+    // V50 walks sp1m4's plan from the street to the bait with three exam-style questions, after the «Un señuelo mal
+    // aislado es una puerta real» callout and before the paragraph that hands over to change management
+    expect(youtubeVideos.find((v) => v.block.youtube === 'DOxNzxPHibQ')?.module).toBe('sp1m4');
+    // V51 follows one change from start to finish with three exam-style questions, after sp1m5's last check (the Git
+    // repository of firewall configurations) and before the paragraph that hands over to cryptography
+    expect(youtubeVideos.find((v) => v.block.youtube === 'ZLeS-1X4ypg')?.module).toBe('sp1m5');
+    // V48 asks where the data is and what protects it with three exam-style questions, after the «los tres cortes que
+    // más caen del 3.3» exam note and before the paragraph that hands over to sp3m7
+    expect(youtubeVideos.find((v) => v.block.youtube === '7TqjjnbP56c')?.module).toBe('sp3m6');
     // V47 asks three questions of what must not stop (what rules, does it answer in time and fit, is there a patch and can
     // it go on) over a crane on the port's quay, with three exam-style questions, after sp3m3's last check (the buoy
     // sensors) and before the paragraph that hands over to sp3m4
