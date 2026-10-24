@@ -1,5 +1,7 @@
 ### G09 · s4m2 · Cápsula · «Falacias lógicas en CTI: el paso que no se sostiene»
 
+> **Guion congelado el 2026-10-25** (`"frozen"` en `video.json`), a petición de Lidia, tras las revisiones de exactitud y de naturalidad. La versión vigente es `narration.json`. Las decisiones opcionales de «Preguntas para Lidia» se resolvieron con la opción recomendada de esta ficha (la que ya recoge el guion); quedan abiertas solo las pronunciaciones, que se confirman al grabar.
+
 > Borrador del 2026-10-24, **sin congelar** (`video.json` no lleva `"frozen"`): la hoja de grabación sale como «BORRADOR · no grabes
 > todavía». Rama `video-falacias-cti`, desde `origin/main`. La versión vigente de escenas y guion es
 > `video/falacias-cti/storyboard.json` + `narration.json`; lo que se quedó fuera, en `video/falacias-cti/out/script-notes.md`
