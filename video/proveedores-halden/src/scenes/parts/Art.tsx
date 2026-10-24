@@ -97,7 +97,7 @@ function Bars({ x, y, w, rows, gap = 16, tone = C.text, a = 0.38, last = 0.6 }: 
   );
 }
 
-/** A plain document page. `ticks` puts a check box in front of each line (a filled-in form). */
+/** A plain document page. `ticks` puts a filled answer bubble in front of each line (a questionnaire filled in by hand). */
 export function Page({ width = 110, rows = 5, ticks = false, tone = C.ink500, style }: { width?: number; rows?: number; ticks?: boolean; tone?: string; style?: CSSProperties }) {
   return (
     <svg width={width} height={(width * 140) / 110} viewBox="0 0 110 140" style={{ overflow: 'visible', ...style }}>
@@ -106,8 +106,8 @@ export function Page({ width = 110, rows = 5, ticks = false, tone = C.ink500, st
       {ticks
         ? Array.from({ length: rows }, (_, i) => (
             <g key={i}>
-              <rect x={18} y={38 + i * 19} width={13} height={13} rx={3} fill="none" stroke={alpha(C.cyan, 0.85)} strokeWidth={2.5} />
-              <path d={`M 20.5 ${44.5 + i * 19} l 3.5 3.5 l 6 -8`} fill="none" stroke={C.cyan} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx={25} cy={44.5 + i * 19} r={7.5} fill="none" stroke={alpha(C.cyan, 0.85)} strokeWidth={2.5} />
+              <circle cx={25} cy={44.5 + i * 19} r={3.6} fill={C.cyan} />
               <rect x={40} y={41 + i * 19} width={52 - (i % 2) * 14} height={7} rx={3.5} fill={alpha(C.text, 0.38)} />
             </g>
           ))
