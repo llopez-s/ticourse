@@ -52,6 +52,6 @@ export function EnglishArt({ scale = 1, fade = 0, bubble = 1, label = true }: { 
 
 /** Small icon-only version used in the one-line resolution of s07 (no cover text). */
 export function EnglishMini({ width = 120 }: { width?: number }) {
-  return <EnglishArt scale={width / ENGLISH.w} label={false} fade={0.35} />;
+  return <EnglishArt scale={width / ENGLISH.w} label={false} fade={0} />;
 }
 

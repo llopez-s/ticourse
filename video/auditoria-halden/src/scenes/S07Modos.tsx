@@ -181,7 +181,7 @@ export function S07Modos(props: SceneProps) {
                     {NICK[m.id] ? <div style={{ fontSize: 34, fontWeight: 800, color: m.id === 'purple' ? C.cyanSoft : m.tone, lineHeight: 1.15 }}>{NICK[m.id]}</div> : null}
                   </div>
                 </div>
-                <div style={{ marginTop: 14, fontSize: 30, fontWeight: 650, lineHeight: 1.24, color: C.text }}>
+                <div style={{ marginTop: 14, fontSize: 32, fontWeight: 650, lineHeight: 1.22, color: C.text }}>
                   <Description id={m.id} />
                 </div>
               </div>
