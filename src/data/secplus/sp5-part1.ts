@@ -130,6 +130,17 @@ const sp5m1: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a quién decide, ponte a prueba: cuatro papeles y tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Cuatro papeles: qué obliga y qué solo aconseja',
+      youtube: 'OiJ6X0-nKGY',
+      poster: 'videos/documentos-halden-poster.png',
+      transcript: 'videos/documentos-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Ya sabes qué documento es cada cosa y quién lo firma. La siguiente lección responde a la otra mitad del objetivo 5.1: **quién decide**. Estructuras de gobernanza —consejos, comités, entidades públicas y el eterno dilema entre gobierno centralizado y descentralizado—, los roles sobre los datos que el examen adora confundir —**owner**, **controller**, **processor**, **custodian** y **steward**— y los factores externos que obligan al puerto a cumplir varias reglas a la vez.',
     },
   ],
@@ -384,6 +395,17 @@ const sp5m2: Module = {
         explain:
           'Regulatory, legal, industry and geographic considerations stack on top of each other, so a control set has to meet all of them and, where they overlap, the most demanding version. Dismissing the card-industry requirements is the attractive shortcut because they are not statute, but they are contractually binding and losing compliance means losing the ability to take card payments at all.',
       },
+    },
+    {
+      t: 'p',
+      md: 'Antes de pasar al riesgo, ponte a prueba: quién decide, quién aplica y quién responde, con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Quién decide, quién aplica y quién responde',
+      youtube: '1Im0etwQFE8',
+      poster: 'videos/roles-halden-poster.png',
+      transcript: 'videos/roles-halden-transcript.txt',
     },
     {
       t: 'p',

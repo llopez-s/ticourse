@@ -148,6 +148,17 @@ const sp5m5: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar al cumplimiento, ponte a prueba: qué pesa cada prueba, cuándo toca cada cosa y qué fija cada papel, con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Proveedores: antes de firmar, al firmar y después',
+      youtube: 'gJ6zP3VOesw',
+      poster: 'videos/proveedores-halden-poster.png',
+      transcript: 'videos/proveedores-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Con esto cierras el riesgo de terceros: evaluar antes, contratar bien y vigilar después. La siguiente lección se ocupa del marco legal que envuelve todo lo anterior —el objetivo 5.4, **cumplimiento y privacidad**—: a quién hay que reportar, qué pasa cuando no se cumple, la diferencia entre **due diligence** y **due care**, y qué derechos tiene la persona cuyos datos estás guardando.',
     },
   ],
