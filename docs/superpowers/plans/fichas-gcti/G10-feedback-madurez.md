@@ -12,8 +12,8 @@
 > consumidores y sus decisiones», s09-04) sin explicarlas. G05 y G06 son de s5m1 a s5m4. Este vídeo es sobre **el equipo CTI**,
 > no sobre infostealers ni sobre el ciclo en abstracto.
 
-- **Carpeta:** `feedback-madurez` · perfil `capsula-yt` (190-260 s renderizados; estimado 4:14 con 2,5 palabras/s, que con la
-  lectura de Lidia al 85-93 % queda en ~3:35-3:55) · objetivo GCTI **Dissemination** (dominio del curso de S5,
+- **Carpeta:** `feedback-madurez` · perfil `capsula-yt` (190-260 s renderizados; estimado 4:18 con 2,5 palabras/s, que con la
+  lectura de Lidia al 85-93 % queda en ~3:40-4:00) · objetivo GCTI **Dissemination** (dominio del curso de S5,
   `src/data/course-gcti.ts:89`, y de las seis preguntas de s5m5, `src/data/s5.ts:1161-1248`); las cuatro tarjetas llevan
   `"objective": "Dissemination"` e insignia «GCTI» (`examBadge`) · adversario **VELVET CICADA** (el de la sección,
   `src/data/course-gcti.ts:93`), dos mensajes interceptados · voz `recording/lidia` · **voz del adversario ya existente:**
@@ -26,20 +26,21 @@
   `"examBadge": "GCTI"`, `"youtubeTitle": "Métricas, feedback y madurez de un equipo CTI"` (YouTube lo completa con «| GIAC GCTI en
   español»), 12 `"tags"`. Sin `"frozen"`. El descargo «Simulación educativa… no afiliado a SANS/GIAC» va en `notice` del
   storyboard y en la tarjeta final (`endcard`), como en G02.
-- **Ritmo:** `"examTiming": "sentence-end"`; pregunta con `think.holdMs` 4500; mensajes con `intercept.holdMs` 3500. Un mensaje
+- **Ritmo:** `"examTiming": "sentence-end"`; pregunta con `think.holdMs` 4000; tarjetas con `holdSec` 4; mensajes con `intercept.holdMs` 3000. Un mensaje
   por capítulo (s02 en el capítulo 1, s04 en el 2), ninguno en la escena final; la pregunta para pensar (s05) no comparte
   segmento con ningún mensaje.
 - **Efectos (`sfx`, 5 ids únicos, todos con sonidos que existen en `video/engine/sfx/`):** `ask` («mail», llega la pregunta del
   CISO, s01), `km` («typing», sube el contador de kilómetros, s02), `win` («check», el éxito atribuible se resuelve, s03),
   `stages` («ding», aparece la barra de estadios, s04) y `fleet` («error», la flota sin líneas, s05).
-- **Léxico** (`lexicon.json` y `lexicon.chatterbox.json`, iguales): `CISO` («císo», como G01-G03) y `TIP` («tip»; **se confirma
-  con Lidia**, pregunta 1). «feedback» y «requirements» no llevan entrada, como en G03 (ella los dice a su manera). Con la hoja
-  en borrador, las dudas van en «Preguntas para Lidia».
-- **Duración:** `targetSec` 18, 52, 47, 50, 47 y 24 = **238 s**; `wordBudget` a 2,7 palabras/s: 49, 140, 127, 135, 127 y 65 (643).
-  El guion tiene **554 palabras**, 31 segmentos, ninguna frase de más de 17 palabras. Estimado de `build-timeline --estimate`:
-  4:14 (254,3 s; incluye los dos mensajes, la pregunta y las pausas). Dentro de 190-260. No se rellena. Si hay que recortar,
-  en este orden: la fila de «tiempo de espera» de s02 (pasa a pantalla sin voz), el segmento `map` de s04 (el plano queda solo en
-  pantalla) y el segmento `wrap` de s03.
+- **Léxico** (`lexicon.json` y `lexicon.chatterbox.json`, iguales): solo `CISO` («císo», como G01-G03). `TIP` va marcado en el texto de la voz como `[TIP|tip]`
+  (el validador avisaba de una entrada de léxico sin uso fuera del marcado); la hoja de grabación **no** muestra pista «lee:» porque
+  «TIP» y «tip» solo se distinguen en mayúsculas. «feedback» y «requirements» no llevan entrada: G03 tampoco las tiene (su léxico
+  es `CISO`, `PIR`, `F3EAD`, `EMBER`, `FOX`), así que no hay pronunciación de G03 que copiar. Las dudas van en «Preguntas para Lidia».
+- **Duración:** `targetSec` 19, 55, 48, 52, 52 y 26 = **252 s**; `wordBudget` a 2,7 palabras/s: 51, 149, 130, 140, 140 y 70 (679).
+  El guion tiene **573 palabras**, 29 segmentos, ninguna frase de más de 20 palabras. Estimado de `build-timeline --estimate --check`:
+  4:18 (258,6 s; incluye los dos mensajes, la pregunta y las pausas). Dentro de 190-260, pero **con poco margen**: se quitaron
+  `wrap` (s03) y `map` (s04) tras la revisión, que ya eran lo primero que se recortaba. Si hay que recortar más: la fila de
+  «tiempo de espera» de s02 (pasa a pantalla sin voz) y la segunda frase de s04-06.
 - **Inserción en la lección** (`src/data/s5.ts`, s5m5): **después de la lista de madurez** (`:1123-1129`) y **antes del primer
   check** (`:1130`), como bloque `{ t: 'video', title: 'Métricas, feedback y madurez de un equipo CTI', youtube: '<id>', poster:
   'videos/feedback-madurez-poster.png', transcript: 'videos/feedback-madurez-transcript.txt' }`. Motivo: el vídeo resume los
@@ -84,12 +85,11 @@ recorre su lista entera.
 | # | Concepto | Peso | Imagen que se mantiene | Tarjeta |
 |---|---|---|---|---|
 | 1 | **Medir resultados, no volumen** (`:1107`, tabla `:1110-1118`, check 1 `:1130-1144`, q1 `:1163`, q6 `:1234`). Optimizar «indicadores procesados» produce equipos que procesan indicadores; las métricas sanas miden resultados sobre decisiones y detección. En voz: búsquedas de amenazas nacidas de un informe que encontraron actividad real, requirements respondidos, tiempo de requisito a respuesta | s02, 52 s | Kilómetros que recorre el autobús frente a gente que llega adonde iba | «Mide resultados (decisiones, detección), no volumen» (51) |
-| 2 | **Feedback como fase, con sus cuatro preguntas y el éxito atribuible** (`:1121`, q2 `:1177`, q4 `:1205`). ¿Respondió tu pregunta? ¿Llegó a tiempo? ¿Qué decisión apoyó? ¿Qué falta? Y se registra «el hunt nació del informe X y encontró Y», la frase que financia equipos. Con ello se ajustan requirements y productos cada vuelta | s03, 47 s | El viajero que se baja del autobús y a quien se pregunta | «Feedback: ajusta requirements y apunta éxitos atribuibles» (57) |
-| 3 | **Madurez y la trampa de la plataforma** (`:1126-1127`, check 2 `:1145-1159`, q3 `:1191`, q5 `:1220`). Tres estadios (reactivo, en desarrollo, maduro); la madurez es integración y resultados, no gasto ni plantilla; la trampa del 1 al 2 es comprar plataforma antes que proceso, y el orden sano es consumidores y requirements, productos y proceso, herramienta | s04 + s05, 97 s | Servicio improvisado, líneas con horario y plano, red integrada; la flota sin líneas | «Madurez: integración y resultados, no gasto ni plantilla» (56) y «El TIP no sustituye a los requirements» (38) |
+| 2 | **Feedback como fase, con sus cuatro preguntas y el éxito atribuible** (`:1121`, q2 `:1177`, q4 `:1205`). ¿Respondió tu pregunta? ¿Llegó a tiempo? ¿Qué decisión apoyó? ¿Qué falta? Y se registra «el hunt nació del informe X y encontró Y», la frase que financia equipos. Con ello se ajustan requirements y productos cada vuelta | s03, 47 s | El viajero que se baja del autobús y a quien se pregunta | «Pregunta tras cada producto y apunta éxitos atribuibles» (55) |
+| 3 | **Madurez y la trampa de la plataforma** (`:1126-1127`, check 2 `:1145-1159`, q3 `:1191`, q5 `:1220`). Tres estadios (reactivo, en desarrollo, maduro); la madurez es integración y resultados, no gasto ni plantilla; la trampa del 1 al 2 es comprar plataforma antes que proceso, y el orden sano es consumidores y requirements, productos y proceso, herramienta | s04 + s05, 97 s | Servicio improvisado, líneas con horario y plano, red integrada; la flota sin líneas | «Madurez: integración y resultados, no gasto ni plantilla» (56) y «Primero requirements y proceso; la herramienta, al final» (56) |
 
 Tarjetas: **4** (3-5), una en cada escena de s02 a s05, ninguna en s01 ni en la última, todas «Dissemination». El concepto 2 solo
-tiene una tarjeta aunque tiene dos preguntas (q2 y q4): la tarjeta junta las dos («ajusta requirements» y «éxitos
-atribuibles»), que es lo que dice la lección en un solo párrafo (`:1121`). Si Lidia prefiere separarlas, hace falta una escena más.
+tiene una tarjeta aunque tiene dos preguntas (q2 y q4): la tarjeta («Pregunta tras cada producto y apunta éxitos atribuibles», distinta de la de G03) junta las dos ideas del párrafo `:1121`; el «ajustas los requirements y los productos» (q2) lo dice la voz. Si Lidia prefiere separarlas, hace falta una escena más.
 
 **Se queda fuera** (y dónde está): la fila «Feeds contratados / cobertura del CMF» (`:1115`, solo en pantalla) y, de «Páginas por informe
 / tiempo requisito→respuesta; satisfacción del consumidor» (`:1116`), la satisfacción (en pantalla; la voz solo dice el tiempo de respuesta); las cifras del primer check (`:1135-1139`); el concepto de
@@ -101,29 +101,27 @@ s5m3); por qué el feedback es la segunda fase más ignorada (`src/data/s1.ts:55
 
 | Escena | Cap. | s | Qué se ve | Qué se aprende · cues |
 |---|---|---|---|---|
-| s01-hook «¿Sirve de algo el equipo?» | 1 | 18 | Tira «Meridian Dynamics · aeroespacial · tú, su analista de inteligencia» (sin fecha ni hora). Tira del CISO: «¿sirve de algo el equipo de inteligencia?» (pregunta, no decisión; efecto `mail`). Un panel «de ejemplo · cifras ficticias» con tres contadores sin valor legible (indicadores procesados, informes publicados, feeds contratados). Título «Métricas, feedback y madurez» (antes de los 12 s) y la promesa en tres chips | La pregunta y «contar no es demostrar» · `ask, panel, numbers, title, promise` |
-| s02-medir «Kilómetros y viajeros» | 1 | 52 | La línea de autobús; contador de kilómetros que sube (efecto `typing`) con «Nº de IOCs ingeridos»; el autobús vacío («nadie a bordo»); viajeros que llegan unidos a dos filas de valor. **Mensaje interceptado** (VELVET CICADA) y la tabla de la lección en cuatro filas (chips rojo y verde, sin emoji), con la izquierda que se apaga («el equipo hace lo que se mide») y la derecha que se enciende; la fila de «tiempo de requisito a respuesta» con un reloj de espera. Tres métricas quietas y la tarjeta | Volumen contra resultados · `route, km, empty, arrive, reply, target, value, wait, lens` · **intercept** |
-| s03-bucle «Preguntar al viajero» | 1 | 47 | El viajero se baja y recibe una pregunta; cuatro fichas con las preguntas de la lección; un lazo «producto, feedback, requirements ajustados» (sin las seis fases ni el restaurante de G03); un cuaderno con la frase de ejemplo «esta búsqueda de amenazas nació del informe X y encontró la intrusión Y» rotulada **«Ejemplo de la lección · no es el caso de Meridian»** (efecto `check` al resolverse Y); «la frase que financia equipos»; dos esquemas, atribuible (tres cajas con hilo) frente a «solo coincide en el tiempo» (sin hilo). La tarjeta | El feedback es una fase del ciclo y los éxitos atribuibles son la prueba · `survey, q1, q2, q3, q4, loop, record, win, fund, wrap` |
-| s04-madurez «Cómo crece un servicio» | 2 | 50 | **Mensaje interceptado** y, durante toda la escena, una moneda y una persona tachadas con «no se compra». Barra de tres estadios (efecto `ding`): 1 reactivo (un autobús suelto, avisos de avería que se apagan), 2 en desarrollo (tres líneas con horario, «CMF: qué fuente responde qué pregunta», un barrio sin línea), 3 maduro (la red enlazada a la ciudad y a otra red). Rótulos «no cuenta: analistas ni gasto» y «cuenta: decisiones tomadas con lo que produces». La tarjeta | Los tres estadios y que la madurez no es gasto ni plantilla · `reply2, stages, s1, s2, map, s3, measure` · **intercept** |
-| s05-plataforma «Una compra tentadora» | 2 | 47 | La barra de estadios con una flecha marcada entre el 1 y el 2; la flota sin líneas (efecto `error`); una caja «plataforma de inteligencia de amenazas (TIP)» llena de fichas de indicadores sin consumidor. **Pregunta para pensar** con la barra apagada y una ficha «plataforma cara · sin requirements escritos», rotulada **«Ejemplo hipotético · no es el equipo de Meridian»**; respuesta: la ficha se posa en el estadio 1. Tres pasos del orden sano. La tarjeta | La trampa del paso 1 a 2 · `tempt, fleet, tip, question, answer, order` · **think** |
-| s06-recap «Tres reglas» | 3 | 24 | Tres tarjetas de regla con su viñeta; tarjeta final Alertópolis: «Tu turno: las preguntas de la lección» (s5m5, 6 preguntas) y el descargo | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
+| s01-hook «¿Sirve de algo el equipo?» | 1 | 19 | Tira «Meridian Dynamics · aeroespacial · tú, su analista de inteligencia» (sin fecha ni hora). Tira del CISO: «¿sirve de algo el equipo de inteligencia?» (pregunta, no decisión; efecto `mail`). Un panel «de ejemplo · cifras ficticias» con tres contadores sin valor legible (indicadores procesados, informes publicados, feeds contratados). Título «Métricas, feedback y madurez» (antes de los 12 s) y la promesa en tres chips | La pregunta y «contar no es demostrar» · `ask, panel, numbers, title, promise` |
+| s02-medir «Kilómetros y viajeros» | 1 | 55 | La línea de autobús; contador de kilómetros que sube (efecto `typing`) con «Nº de IOCs ingeridos»; el autobús vacío («nadie a bordo»); viajeros que llegan unidos a dos filas de valor. **Mensaje interceptado** (VELVET CICADA) y la tabla de la lección en cuatro filas (chips rojo y verde, sin emoji), con la izquierda que se apaga («el equipo hace lo que se mide») y la derecha que se enciende; la fila de «tiempo de requisito a respuesta» con un reloj que corre desde que el viajero llega a la parada hasta que llega adonde iba (q6: de punta a punta). Tres métricas quietas y la tarjeta | Volumen contra resultados · `route, km, empty, arrive, reply, target, value, wait, lens` · **intercept** |
+| s03-bucle «Preguntar al viajero» | 1 | 48 | El viajero se baja y recibe una pregunta; cuatro fichas con las preguntas de la lección; un lazo «producto, feedback, requirements ajustados» (sin las seis fases ni el restaurante de G03); un cuaderno con la frase de ejemplo «esta búsqueda de amenazas nació del informe X y encontró la intrusión Y» rotulada **«Ejemplo de la lección · no es el caso de Meridian»** (efecto `check` al resolverse Y); «la frase que financia equipos»; dos esquemas, atribuible (tres cajas con hilo) frente a «solo coincide en el tiempo» (sin hilo). La tarjeta; sin cue propio, dos rótulos finales: «preguntas para mejorar» y «éxitos para demostrar» | El feedback es una fase del ciclo y los éxitos atribuibles son la prueba · `survey, q1, q2, q3, q4, loop, record, win, fund` |
+| s04-madurez «Cómo crece un servicio» | 2 | 52 | **Mensaje interceptado** y, durante toda la escena, una moneda y una persona tachadas con «no se compra». Barra de tres estadios (efecto `ding`): 1 reactivo (un autobús suelto, avisos de avería que se apagan), 2 en desarrollo (tres líneas con horario, «CMF: qué fuente responde qué pregunta», un barrio sin línea), 3 maduro (la red enlazada a la ciudad y a otra red). Rótulos «no cuenta: analistas ni gasto» y «cuenta: decisiones tomadas con lo que produces». La tarjeta | Los tres estadios y que la madurez no es gasto ni plantilla · `reply2, stages, s1, s2, s3, measure` (el plano de barrios va en pantalla durante `s2`, sin cue) · **intercept** |
+| s05-plataforma «Una compra tentadora» | 2 | 52 | La barra de estadios con una flecha marcada entre el 1 y el 2; la flota sin líneas (efecto `error`); una caja «plataforma de inteligencia de amenazas (TIP)» llena de fichas de indicadores sin consumidor. **Pregunta para pensar** con la barra apagada y una ficha «plataforma cara · sin requirements escritos», rotulada **«Ejemplo hipotético · no es el equipo de Meridian»** (la voz también dice «con otro equipo que no es Meridian»); respuesta: la ficha se posa en el estadio 1. Tres pasos del orden sano. La tarjeta | La trampa del paso 1 a 2 · `tempt, fleet, tip, question, answer, order` · **think** |
+| s06-recap «Tres reglas» | 3 | 26 | Tres tarjetas de regla con su viñeta; tarjeta final Alertópolis: «Tu turno: las preguntas de la lección» (s5m5, 6 preguntas) y el descargo | Reflejos · `recap, rule-1, rule-2, rule-3, next, endcard` |
 
-**Pregunta para pensar** (s05): «Plataforma cara, sin requirements: ¿1 o 2?» (42; `holdMs` 4500). Respuesta: el 1; sin requirements
-escritos no hay estadio 2 (`:1126`) y la plataforma no los escribe por ti (q5, `:1231`). El título de la escena, «Una compra
+**Pregunta para pensar** (s05): «Plataforma cara, sin requirements: ¿1 o 2?» (42; `holdMs` 4000). Respuesta: «Sigue en el uno»; lo que define
+al 2 son los requirements escritos (`:1126`) y la plataforma no los escribe por ti (q5, `:1231`). El título de la escena, «Una compra
 tentadora», no la da. **Aviso para el revisor:** la lección no dice literalmente en qué estadio está ese equipo; lo deduce de la
 definición del 2 (ver «Notas de exactitud»).
 
 **Mensajes interceptados** (VELVET CICADA; tutea, dice «analista», ironía, atajo de método, ningún hecho; ninguno empieza con
 «Bloquea» y ninguno repite los de V27, G05, G06 ni G07):
 - s02 (cap. 1): «Cuenta los indicadores que procesas, analista. Impresiona mucho.» (64). El error: medir volumen. Respuesta: «Contar
-  indicadores es fácil, sí. Pero un equipo hace lo que se mide, y acabará procesando indicadores, no inteligencia.»
+  indicadores de compromiso es fácil, sí. Pero un equipo hace lo que se mide, y acabará procesando indicadores, no inteligencia.»
 - s04 (cap. 2): «Mide tu madurez por lo que gastas, analista. Más gasto, más madurez.» (68). El error: madurez igual a gasto (q3,
-  «not headcount or spend»). Respuesta: «Gastar es fácil de contar, sí. Pero la madurez no se compra. La lección la cuenta en tres
-  estadios.»
+  «not headcount or spend»). Respuesta: «Gastar es fácil de contar, sí. Pero la madurez no se compra. Se ve en tres estadios.»
 
 **Cierre:** tres reglas y una sola tarea. (1) Mide resultados, no volumen. (2) Pregunta tras cada producto y apunta los éxitos
-atribuibles: preguntas para mejorar, éxitos para demostrar. (3) Primero el proceso, luego la plataforma; la madurez se mide en
-decisiones, no en gasto. Tarea: las seis preguntas de s5m5. Sin laboratorios (los de S5 no se tocan).
+atribuibles. (3) Primero el proceso, luego la plataforma, porque la madurez se mide en decisiones, no en gasto. Tarea: las seis preguntas de s5m5. Sin laboratorios (los de S5 no se tocan).
 
 #### Canon
 
@@ -154,11 +152,11 @@ al cerrar el vídeo):
 `capsula-yt`, `video/engine/scripts/lib/profiles.mjs`):
 - Duración: suma de `targetSec` 238 s; estimado 254,3 s; ventana 190-260. Sí.
 - Capítulos: 3 (máximo 3). Sí.
-- Conceptos clave: 3 (2-3). Tarjetas: 4 (3-5), de 51, 57, 56 y 38 caracteres (máximo 58), una por escena, ninguna en la última. Sí.
-- Pregunta para pensar: 1, 42 caracteres (máximo 48), `holdMs` 4500 (mínimo 4000). Sí.
-- Mensajes: 2 (1-2), de 64 y 68 caracteres (máximo 70), `holdMs` 3500 (2500-4500), uno por capítulo, ninguno en la escena final,
+- Conceptos clave: 3 (2-3). Tarjetas: 4 (3-5), de 51, 55, 56 y 56 caracteres (máximo 58), una por escena, ninguna en la última. Sí.
+- Pregunta para pensar: 1, 42 caracteres (máximo 48), `holdMs` 4000 (mínimo 4000). Sí.
+- Mensajes: 2 (1-2), de 64 y 68 caracteres (máximo 70), `holdMs` 3000 (2500-4500), uno por capítulo, ninguno en la escena final,
   ninguno en un segmento con pregunta. `video.json` lleva `"adversary": "VELVET CICADA"`. Sí.
-- Segmentos: 31, de 9 a 26 palabras, ninguna frase de más de 17; ningún `;`; ningún segmento con dos `:`; ninguna etiqueta de
+- Segmentos: 29, de 9 a 30 palabras, ninguna frase de más de 20; ningún `;`; ningún segmento con dos `:`; ninguna etiqueta de
   emoción repetida en dos segmentos seguidos. Sin flechas ni emoji en narración, tarjetas, pregunta ni mensajes.
 - `build-timeline --estimate`: **sin avisos** (una versión anterior avisó de 274,5 s y de dos marcas a 19 fotogramas; recortado y
   corregido). `canon-check`: 0 nombres, 0 en la campaña, 0 nuevos. `script-sheets`: solo el aviso de «no congelado».
@@ -167,7 +165,7 @@ al cerrar el vídeo):
 #### Laboratorios y preguntas que ya ejercitan el tema
 
 - **Las seis preguntas de s5m5** (`src/data/s5.ts:1163-1246`) y los **dos checks** (`:1130-1159`) son lo que el vídeo explica. No se
-  repiten sus cifras ni su redacción; la tarjeta 4 es literal de la lección (`:1127`) y la 1 y la 2 son de `:1107` y `:1121`.
+  repiten sus cifras ni su redacción; la tarjeta 4 resume el orden de q5 (`:1225`) y la 1 y la 2 son de `:1107` y `:1121`. La literal de la lección («El TIP no sustituye a los requirements», `:1127`) se quitó en la revisión para dejar el TIP en su cue.
 - **Tarjeta flash `fc515`** (`src/data/flashcards.ts:92`) y término `Vanity metric` (`src/data/glossary.ts:105`): coinciden con el
   concepto 1; la voz dice «métrica» sin el término inglés, que sale en la tabla de pantalla.
 - **Lab 5A** (calibración) y **Lab 5B** (informe final): no se mencionan; ninguno mide al equipo.
@@ -196,8 +194,8 @@ al cerrar el vídeo):
 7. **Los estadios se asignan al ejemplo con la regla de la lección** (sin requirements escritos no hay estadio 2). Alternativa
    descartada: preguntar «¿ya es maduro?», que no obliga a usar los estadios. Si la revisión de exactitud no admite la deducción,
    la pregunta cambia a «Plataforma cara, sin requirements: ¿hay estadio 2?» y la respuesta pierde el «en el uno».
-8. **Tarjeta 4 literal («El TIP no sustituye a los requirements») y voz sin género** («lo que llaman TIP»), para no discutir
-   «el» o «la» TIP.
+8. **Tarjeta 4 sobre el orden («Primero requirements y proceso; la herramienta, al final») y voz sin género** («lo que llaman
+   TIP»), para no discutir «el» o «la» TIP. Alternativa descartada tras la revisión: la tarjeta literal de la lección.
 
 #### Riesgos de solape
 
@@ -248,3 +246,44 @@ al cerrar el vídeo):
   en tres estadios».
 - **A verificar con el material oficial** (no van en tarjeta): que el examen use «TIP» sin expandir y que las tres etapas sean
   las del curso y no una simplificación de la lección.
+
+#### Revisiones de exactitud y naturalidad (2026-10-25): qué se aplicó y qué no
+
+Aplicado (texto de la voz salvo que se diga; ids tras renumerar):
+- **s02-05:** «Mide, por ejemplo, las búsquedas de amenazas… Y las preguntas del consumidor, los requirements, ya respondidas.»
+  Define «requirements» la primera vez que se dice.
+- **s02-06:** «Mide también cuánto tarda la respuesta desde que alguien pregunta hasta que llega a su destino. Es el tiempo desde que
+  llegas a la parada hasta que llegas adonde ibas.» En el storyboard el reloj corre hasta la llegada (q6, ciclo de punta a punta).
+- **s02-07:** «una buena métrica mira resultados, decisiones y detección, no volumen» (la tarjeta no cambia, 51).
+- **s02-01, s02-02, s02-03, s02-04:** «Y sale mucha actividad», «no ha llevado a nadie a ningún sitio», «los viajeros que llegan
+  adonde iban» (se quitó la segunda frase de s02-03, que repetía s02-07, para ganar tiempo) y «indicadores de compromiso».
+- **s03-03, s03-04, s03-05:** «los requirements y los productos»; «los éxitos que de verdad sean tuyos… decir que esta búsqueda
+  nació de este informe»; «Esa frase es la que financia equipos. Y se llama éxito atribuible: puedes demostrar que el hallazgo
+  salió de tu informe, y no solo que llegó después.» Tarjeta 2: «Pregunta tras cada producto y apunta éxitos atribuibles» (55).
+- **s04-01, s04-02, s04-03, s04-05, s04-06:** «Se ve en tres estadios»; «mandar el autobús que haya a donde te lo pidan»; «el de
+  desarrollo»; «otros equipos, fuera del tuyo, usan lo que produces»; «Va de si las decisiones se apoyan en tu trabajo y de los
+  resultados que puedes demostrar».
+- **s05-01 a s05-06:** «primer estadio al segundo… la plataforma antes que el proceso»; «a qué barrios llevas a la gente»;
+  «Sin proceso, acaba siendo un almacén de indicadores que nadie usa» (conserva «lo que llaman TIP»; se quitó «No crea el proceso»
+  para ganar tiempo); «Una prueba, con otro equipo que no es Meridian» (se quitó el «A ver» por tiempo; se mantiene el rótulo
+  «Ejemplo hipotético · no es el equipo de Meridian»); «Sigue en el uno. Lo que define al dos son los requirements escritos…»;
+  «El orden sano es al revés». Tarjeta 4: «Primero requirements y proceso; la herramienta, al final» (56).
+- **s06-03:** «…porque la madurez se mide en decisiones, no en gasto.»
+- **Léxico:** `[TIP|tip]` en el texto de la voz (y fuera `TIP` de ambos léxicos, porque el validador avisaba de que no se usaba fuera del
+  marcado). **No** se añadieron «feedback» ni «requirements»: el léxico de G03 no tiene ninguna entrada para ellas, no hay
+  pronunciación que copiar, y inventarla afectaría a la comprobación de la grabación de Lidia. Decide ella (pregunta 2).
+
+Recortes hechos para volver a ≤ 260 s (las revisiones subían el estimado a 280 s): se quitaron los segmentos `wrap` (s03-06) y
+`map` (s04-04) y sus cues (el plano de barrios y los dos rótulos finales de s03 siguen en pantalla, sin cue); s06-01 pasa a «Mide
+resultados, no volumen, ni indicadores procesados» y s06-02 a «Pregunta tras cada producto y apunta los éxitos atribuibles»; s01-01
+sin «la aeroespacial» (sigue en el rótulo) y s01-02 sin «con feedback»; pausas largas a 500 ms, mensajes a `holdMs` 3000, pregunta
+a `holdMs` 4000 y tarjetas a `holdSec` 4. Estimado final: **258,6 s (4:18)**.
+
+No aplicado:
+- Cambiar «estadio» por «etapa»: se deja «estadio», que es la palabra de la lección (`:1127`, «la trampa del estadio 1→2»). Queda como
+  **decisión opcional de Lidia** (pregunta 8): «etapa» suena más natural hablado; la palabra del examen no está comprobada.
+- El plan B de la pregunta (decisión 7, «¿hay estadio 2?»): se mantiene la pregunta «¿1 o 2?» tal cual.
+- Las cadenas de la ficha que dicen «sin requirements escritos no hay estadio 2» siguen valiendo; la voz lo dice ahora como «lo
+  que define al dos son los requirements escritos».
+
+Pregunta nueva para Lidia: **8.** ¿«Estadio» (**recomendado por ser la palabra de la lección**) o «etapa»?

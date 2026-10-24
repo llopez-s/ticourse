@@ -23,72 +23,72 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {ask}El CISO de Meridian, la aeroespacial, te pregunta {panel}si el equipo de inteligencia sirve de algo. {numbers}Y tú tienes números de sobra.",
+      "text": "<curious> {ask}El CISO de Meridian te pregunta {panel}si el equipo de inteligencia sirve de algo. {numbers}Y tú tienes números de sobra.",
       "pauseAfterMs": 250
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Pero contar no es demostrar. {promise}Hoy verás qué medir de verdad, cómo cerrar el bucle con feedback y cómo madura un equipo.",
-      "pauseAfterMs": 600
+      "text": "<confident> {title}Pero contar no es demostrar. {promise}Hoy verás qué medir de verdad, cómo cerrar el bucle y cómo madura un equipo.",
+      "pauseAfterMs": 500
     },
     {
       "id": "s02-01",
       "scene": "s02-medir",
-      "text": "<warm> {route}Piensa en una línea de autobús. Puedes medirla por sus kilómetros. {km}Mucha actividad.",
+      "text": "<warm> {route}Piensa en una línea de autobús. Puedes medirla por sus kilómetros. {km}Y sale mucha actividad.",
       "pauseAfterMs": 250
     },
     {
       "id": "s02-02",
       "scene": "s02-medir",
-      "text": "<curious> {empty}Pero puede ir vacío. Mucho recorrido, y a nadie ha llevado a ningún sitio.",
-      "pauseAfterMs": 300
+      "text": "<curious> {empty}Pero puede ir vacío. Mucho recorrido, y no ha llevado a nadie a ningún sitio.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s02-03",
       "scene": "s02-medir",
-      "text": "<clear> {arrive}Lo que cuenta es la gente que llega adonde iba. En un equipo de inteligencia, son decisiones mejor tomadas y amenazas encontradas.",
-      "pauseAfterMs": 300
+      "text": "<clear> {arrive}Lo que cuenta son los viajeros que llegan adonde iban.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s02-04",
       "scene": "s02-medir",
-      "text": "<sarcastic> {reply}Contar indicadores es fácil, sí. {target}Pero un equipo hace lo que se mide, y acabará procesando indicadores, no inteligencia.",
-      "pauseAfterMs": 300,
+      "text": "<sarcastic> {reply}Contar indicadores de compromiso es fácil, sí. {target}Pero un equipo hace lo que se mide, y acabará procesando indicadores, no inteligencia.",
+      "pauseAfterMs": 250,
       "intercept": {
         "text": "Cuenta los indicadores que procesas, analista. Impresiona mucho.",
-        "holdMs": 3500
+        "holdMs": 3000
       }
     },
     {
       "id": "s02-05",
       "scene": "s02-medir",
-      "text": "<focused> {value}Mide mejor las búsquedas de amenazas que nacieron de un informe y encontraron actividad real. Y los requirements que ya se respondieron.",
-      "pauseAfterMs": 300
+      "text": "<focused> {value}Mide, por ejemplo, las búsquedas de amenazas que nacieron de un informe y encontraron actividad real. Y las preguntas del consumidor, los requirements, ya respondidas.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s02-06",
       "scene": "s02-medir",
-      "text": "<casual> {wait}Y cuánto tarda la respuesta desde que alguien pregunta. Es el tiempo de espera en la parada.",
-      "pauseAfterMs": 300
+      "text": "<casual> {wait}Mide también cuánto tarda la respuesta desde que alguien pregunta hasta que llega a su destino. Es el tiempo desde que llegas a la parada hasta que llegas adonde ibas.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s02-07",
       "scene": "s02-medir",
-      "text": "<firm> {lens}O sea, una buena métrica cuenta resultados sobre decisiones y detección, no volumen.",
-      "pauseAfterMs": 600,
+      "text": "<firm> {lens}O sea, una buena métrica mira resultados, decisiones y detección, no volumen.",
+      "pauseAfterMs": 500,
       "exam": {
         "objective": "Dissemination",
         "text": "Mide resultados (decisiones, detección), no volumen",
         "at": "lens",
-        "holdSec": 5
+        "holdSec": 4
       }
     },
     {
       "id": "s03-01",
       "scene": "s03-bucle",
       "text": "<engaging> {survey}Medir también es preguntar. Después de cada informe importante, pregunta a quien lo recibió, como al viajero cuando se baja.",
-      "pauseAfterMs": 300
+      "pauseAfterMs": 250
     },
     {
       "id": "s03-02",
@@ -99,148 +99,136 @@
     {
       "id": "s03-03",
       "scene": "s03-bucle",
-      "text": "<serious> {loop}Eso es el feedback. No es cortesía, es una fase del ciclo. Con lo que te dicen, ajustas requirements y productos.",
-      "pauseAfterMs": 300
+      "text": "<serious> {loop}Eso es el feedback. No es cortesía, es una fase del ciclo. Con lo que te dicen, ajustas los requirements y los productos.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s03-04",
       "scene": "s03-bucle",
-      "text": "<thoughtful> {record}Y apunta los éxitos que puedas atribuir. Por ejemplo, esta búsqueda de amenazas nació de este informe {win}y encontró una intrusión.",
+      "text": "<thoughtful> {record}Y apunta los éxitos que de verdad sean tuyos. Por ejemplo, decir que esta búsqueda de amenazas nació de este informe {win}y encontró una intrusión.",
       "pauseAfterMs": 350
     },
     {
       "id": "s03-05",
       "scene": "s03-bucle",
-      "text": "<confident> {fund}Esa es la frase que financia equipos. Atribuible es poder seguir el hilo del informe a la búsqueda, no una coincidencia en el tiempo.",
+      "text": "<confident> {fund}Esa frase es la que financia equipos. Y se llama éxito atribuible: puedes demostrar que el hallazgo salió de tu informe, y no solo que llegó después.",
       "pauseAfterMs": 350,
       "exam": {
         "objective": "Dissemination",
-        "text": "Feedback: ajusta requirements y apunta éxitos atribuibles",
+        "text": "Pregunta tras cada producto y apunta éxitos atribuibles",
         "at": "fund",
-        "holdSec": 5
+        "holdSec": 4
       }
-    },
-    {
-      "id": "s03-06",
-      "scene": "s03-bucle",
-      "text": "<warm> {wrap}O sea, preguntas para mejorar, y éxitos para demostrar.",
-      "pauseAfterMs": 500
     },
     {
       "id": "s04-01",
       "scene": "s04-madurez",
-      "text": "<sarcastic> {reply2}Gastar es fácil de contar, sí. Pero la madurez no se compra. {stages}La lección la cuenta en tres estadios.",
-      "pauseAfterMs": 300,
+      "text": "<sarcastic> {reply2}Gastar es fácil de contar, sí. Pero la madurez no se compra. {stages}Se ve en tres estadios.",
+      "pauseAfterMs": 250,
       "intercept": {
         "text": "Mide tu madurez por lo que gastas, analista. Más gasto, más madurez.",
-        "holdMs": 3500
+        "holdMs": 3000
       }
     },
     {
       "id": "s04-02",
       "scene": "s04-madurez",
-      "text": "<focused> {s1}El primero es el reactivo. Vives de lo que te llega de fuera y apagas fuegos. Es salir con el autobús que haya.",
-      "pauseAfterMs": 300
+      "text": "<focused> {s1}El primero es el reactivo. Vives de lo que te llega de fuera y apagas fuegos. Es como mandar el autobús que haya a donde te lo pidan.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s04-03",
       "scene": "s04-madurez",
-      "text": "<clear> {s2}El segundo es el equipo en desarrollo. Hay requirements escritos, productos regulares y un mapa de qué fuente responde cada pregunta.",
-      "pauseAfterMs": 300
+      "text": "<clear> {s2}El segundo es el de desarrollo. Hay requirements escritos, productos regulares y un mapa de qué fuente responde cada pregunta.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s04-04",
       "scene": "s04-madurez",
-      "text": "<curious> {map}Como un plano de qué línea cubre cada barrio.",
-      "pauseAfterMs": 300
+      "text": "<confident> {s3}El tercero es el maduro. La inteligencia pesa en las decisiones, se mide por resultados, y otros equipos, fuera del tuyo, usan lo que produces.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s04-05",
       "scene": "s04-madurez",
-      "text": "<confident> {s3}El tercero es el maduro. La inteligencia pesa en las decisiones, se mide por resultados y otros usan lo que produces.",
-      "pauseAfterMs": 300
-    },
-    {
-      "id": "s04-06",
-      "scene": "s04-madurez",
-      "text": "<thoughtful> {measure}No va de cuántos analistas hay ni de cuánto se gasta. Va de cuántas decisiones se apoyan en lo que produces.",
+      "text": "<thoughtful> {measure}No va de cuántos analistas hay ni de cuánto se gasta. Va de si las decisiones se apoyan en tu trabajo y de los resultados que puedes demostrar.",
       "pauseAfterMs": 500,
       "exam": {
         "objective": "Dissemination",
         "text": "Madurez: integración y resultados, no gasto ni plantilla",
         "at": "measure",
-        "holdSec": 5
+        "holdSec": 4
       }
     },
     {
       "id": "s05-01",
       "scene": "s05-plataforma",
-      "text": "<serious> {tempt}La trampa está en el paso del uno al dos. Es comprar plataforma antes que proceso.",
-      "pauseAfterMs": 300
+      "text": "<serious> {tempt}La trampa está en el paso del primer estadio al segundo. Es comprar la plataforma antes que el proceso.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s05-02",
       "scene": "s05-plataforma",
-      "text": "<curious> {fleet}Es como comprar una flota enorme antes de decidir las líneas.",
-      "pauseAfterMs": 300
+      "text": "<curious> {fleet}Es como comprar una flota enorme antes de decidir a qué barrios llevas a la gente.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s05-03",
       "scene": "s05-plataforma",
-      "text": "<clear> {tip}La plataforma de inteligencia de amenazas, lo que llaman TIP, amplifica lo que haya. No crea el proceso. Sin él, solo guarda indicadores que nadie usa.",
-      "pauseAfterMs": 300
+      "text": "<clear> {tip}La plataforma de inteligencia de amenazas, lo que llaman [TIP|tip], amplifica lo que haya. Sin proceso, acaba siendo un almacén de indicadores que nadie usa.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s05-04",
       "scene": "s05-plataforma",
-      "text": "<engaging> {question}Una prueba. Un equipo compra una plataforma cara, sin requirements escritos. ¿En qué estadio está?",
-      "pauseAfterMs": 300,
+      "text": "<engaging> {question}Una prueba, con otro equipo que no es Meridian. Compra una plataforma cara, sin requirements escritos. ¿En qué estadio está?",
+      "pauseAfterMs": 250,
       "think": {
         "q": "Plataforma cara, sin requirements: ¿1 o 2?",
-        "holdMs": 4500
+        "holdMs": 4000
       }
     },
     {
       "id": "s05-05",
       "scene": "s05-plataforma",
-      "text": "<firm> {answer}En el uno. Sin requirements escritos no hay estadio dos, y la plataforma no los escribe por ti.",
+      "text": "<firm> {answer}Sigue en el uno. Lo que define al dos son los requirements escritos, y la plataforma no los escribe por ti.",
       "pauseAfterMs": 350
     },
     {
       "id": "s05-06",
       "scene": "s05-plataforma",
-      "text": "<warm> {order}El orden sano es otro. Primero, consumidores y requirements. Luego, productos y proceso. Y al final, la herramienta.",
-      "pauseAfterMs": 550,
+      "text": "<warm> {order}El orden sano es al revés. Primero, consumidores y requirements. Luego, productos y proceso. Y al final, la herramienta.",
+      "pauseAfterMs": 500,
       "exam": {
         "objective": "Dissemination",
-        "text": "El TIP no sustituye a los requirements",
+        "text": "Primero requirements y proceso; la herramienta, al final",
         "at": "order",
-        "holdSec": 5
+        "holdSec": 4
       }
     },
     {
       "id": "s06-01",
       "scene": "s06-recap",
-      "text": "<engaging> {recap}Te llevas tres reglas. {rule-1}Mide resultados, no volumen. Decisiones y amenazas encontradas, no indicadores procesados.",
-      "pauseAfterMs": 300
+      "text": "<engaging> {recap}Te llevas tres reglas. {rule-1}Mide resultados, no volumen, ni indicadores procesados.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s06-02",
       "scene": "s06-recap",
-      "text": "<clear> {rule-2}Pregunta tras cada producto, y apunta los éxitos que puedas atribuir.",
-      "pauseAfterMs": 300
+      "text": "<clear> {rule-2}Pregunta tras cada producto y apunta los éxitos atribuibles.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s06-03",
       "scene": "s06-recap",
-      "text": "<confident> {rule-3}Y primero el proceso, luego la plataforma. La madurez se mide en decisiones, no en gasto.",
+      "text": "<confident> {rule-3}Y primero el proceso, luego la plataforma, porque la madurez se mide en decisiones, no en gasto.",
       "pauseAfterMs": 350
     },
     {
       "id": "s06-04",
       "scene": "s06-recap",
       "text": "<warm> {next}Te quedan las seis preguntas de la lección. {endcard}Y que tu línea lleve a alguien adonde iba.",
-      "pauseAfterMs": 700
+      "pauseAfterMs": 500
     }
   ]
 }
