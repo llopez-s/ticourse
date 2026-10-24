@@ -11,9 +11,9 @@ import { TIMELINE } from './timeline/load';
 
 ensureFonts();
 
-const ART_SCALE = 0.6;
+const ART_SCALE = 0.72;
 /** The image on the right (absolute 1920×1080 coordinates). */
-const ART = { x: 1920 - LAYOUT.marginX - ROPE_SCENE.w * ART_SCALE + 8, y: 420 } as const;
+const ART = { x: 1920 - LAYOUT.marginX - ROPE_SCENE.w * ART_SCALE + 8, y: 380 } as const;
 
 /** The video's length, rounded to half a minute, from the timeline the poster is rendered with. */
 function durationLabel(): string {

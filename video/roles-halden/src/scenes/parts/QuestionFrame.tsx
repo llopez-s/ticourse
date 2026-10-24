@@ -35,7 +35,10 @@ export function SlotText({ children, size = 38 }: { children: ReactNode; size?: 
   return <div style={{ fontFamily: FONT.sans, fontSize: size, fontWeight: 800, color: '#ffffff', lineHeight: 1.2 }}>{children}</div>;
 }
 
-/** The highlighted span inside a SlotText. */
-export function Hi({ children, color = C.cyanSoft }: { children: ReactNode; color?: string }) {
-  return <span style={{ color }}>{children}</span>;
+/**
+ * The highlighted span inside a SlotText: white like the rest (the engine dims everything under its panel to ~14 %, so a
+ * coloured span would vanish) and underlined in `color`.
+ */
+export function Hi({ children, color = C.cyan }: { children: ReactNode; color?: string }) {
+  return <span style={{ textDecoration: 'underline', textDecorationColor: color, textDecorationThickness: 4, textUnderlineOffset: 8 }}>{children}</span>;
 }

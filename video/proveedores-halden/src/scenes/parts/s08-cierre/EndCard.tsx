@@ -39,7 +39,7 @@ export function NextAction({ frame, fps, at, top }: { frame: number; fps: number
 
 const CARD_W = 1620;
 
-const ART_SCALE = 0.58;
+const ART_SCALE = 0.7;
 
 /** The video's image for the closing card: the port, the crate that left and the rope that still ties them. */
 export function EndArt({ glow }: { glow: number }) {

@@ -59,12 +59,12 @@ export function S02Que(props: SceneProps) {
   const X1 = mix(mix(X1_ALONE, X1_PAIR, glide1), X1_END, glide2);
   const X2 = mix(X2_PAIR, X2_END, glide2);
 
-  const fourAt = Math.max(caseAt + 20, wordFrame(S, 's02-01', 'cuatro') - 4);
+  const fourAt = Math.max(caseAt + 20, wordFrame(S, 's02-01', 'cuatro') - 22);
   const stampIn = enter(frame, -6, { distance: 16, duration: 16 });
 
   // The case: big and centred, then gone before the first sheet arrives.
   const caseIn = progress(frame, caseAt - 8, 16);
-  const caseOut = progress(frame, sheet1At - 22, 16, EASE.inOut);
+  const caseOut = progress(frame, sheet1At - 4, 16, EASE.inOut);
   const caseVisible = caseIn * (1 - caseOut);
 
   // Sheet 1 (policy)
@@ -126,7 +126,7 @@ export function S02Que(props: SceneProps) {
 
       {/* Sheet 1 · policy */}
       {s1.p > 0.01 ? (
-        <div style={{ position: 'absolute', left: X1, top: SHEET_TOP, opacity: s1.p * (1 - 0.6 * stepBack), transform: `translateY(${(1 - s1.p) * 46}px)` }}>
+        <div style={{ position: 'absolute', left: X1, top: SHEET_TOP, opacity: s1.p * (1 - 0.6 * stepBack), transform: `translateY(${(1 - s1.p) * 46}px) scale(${s1Scale})`, transformOrigin: '50% 0%' }}>
           <Sheet
             width={SHEET_W}
             height={SHEET_H}
@@ -134,7 +134,7 @@ export function S02Que(props: SceneProps) {
             headTone={policyCheck > 0.3 ? 'right' : 'plain'}
             check={policyCheck}
             lift={26 * s1.lift}
-            scale={(1 + 0.02 * s1.lift) * s1Scale}
+            scale={1 + 0.02 * s1.lift}
             glow={0.55 * policyPill * (1 - progress(frame, policyAt + 40, 30)) + 0.6 * lit1}
             glowTone={C.cyan}
           >

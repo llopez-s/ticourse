@@ -35,8 +35,8 @@ export function S07P3(props: SceneProps) {
         <DeskArt react={okIn} />
       </QuestionFrame>
 
-      <SlotLine opacity={okIn} dy={(1 - okIn) * 14} gap={30}>
-        <Pill text="Finanzas" tone={C.cyan} icon="file" size={44} height={72} weight={850} on={0.5 + 0.5 * okIn} />
+      <SlotLine opacity={okIn} dy={(1 - okIn) * 14} gap={26}>
+        <Pill text="Finanzas" tone={C.cyan} icon="file" size={34} height={58} weight={850} on={0.5 + 0.5 * okIn} />
         {trapIn > 0.01 ? (
           <div style={{ opacity: trapIn, transform: `translateX(${(1 - trapIn) * 16}px)` }}>
             <Pill text="el mismo curso para todos" tone={C.amber} icon="layers" size={38} height={64} weight={800} on={0.5} />
@@ -45,10 +45,10 @@ export function S07P3(props: SceneProps) {
         {backIn > 0.01 ? (
           <div style={{ opacity: backIn, transform: `translateX(${(1 - backIn) * 16}px)`, display: 'flex', alignItems: 'center', gap: 22 }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-              <EnglishMini width={104} />
-              <ImageTag size={22} />
+              <EnglishMini width={96} />
+              <ImageTag size={26} />
             </div>
-            <SlotText size={36}>
+            <SlotText size={32}>
               <span>repetir el inglés del instituto no te enseña a </span>
               <span style={{ color: C.cyanSoft }}>negociar un contrato</span>
             </SlotText>

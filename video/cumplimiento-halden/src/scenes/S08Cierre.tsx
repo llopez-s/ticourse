@@ -12,11 +12,11 @@ import { Stage } from './kit';
 const W = STAGE.width;
 const CARD_GAP = 24;
 const CARD_W = (W - 2 * CARD_GAP) / 3;
-const CARD_H = 452;
+const CARD_H = 472;
 const ART_H = 96;
-const PHRASE_TOP = 470;
+const PHRASE_TOP = 490;
 const PHRASE_W = 1640;
-const NEXT_TOP = 520;
+const NEXT_TOP = 540;
 
 /** The card's image, each in its own box so the three titles line up. */
 function Art({ art, show }: { art: RuleArt; show: number }) {
@@ -72,8 +72,8 @@ function RuleCard({ i, hot, dim, show, lines, title, art }: { i: number; hot: nu
         </div>
         <Art art={art} show={show} />
       </div>
-      <div style={{ marginTop: 6, fontSize: 44, fontWeight: 850, letterSpacing: -1, color: C.textStrong, whiteSpace: 'nowrap' }}>{title}</div>
-      <div style={{ marginTop: 10, fontSize: 28, fontWeight: 650, lineHeight: 1.22, color: C.text, whiteSpace: 'nowrap' }}>
+      <div style={{ marginTop: 8, fontSize: 46, fontWeight: 850, letterSpacing: -1, color: C.textStrong, whiteSpace: 'nowrap' }}>{title}</div>
+      <div style={{ marginTop: 10, fontSize: 30, fontWeight: 650, lineHeight: 1.22, color: C.text, whiteSpace: 'nowrap' }}>
         {lines.map((l, k) => (
           <div key={k}>{l}</div>
         ))}

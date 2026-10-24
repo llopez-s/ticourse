@@ -2,20 +2,19 @@ import { C, FONT, RADIUS, alpha } from '../../../../engine/src/theme/tokens';
 import { Icon } from '../../../../engine/src/ui';
 import type { AudienceDef } from '../../data/audiences';
 
-export const AUDIENCE_W = 328;
-export const AUDIENCE_H = 222;
+export const AUDIENCE_H = 250;
 
 /**
  * One audience of the training programme: its icon and name, the risk it runs (amber) and the training it gets
  * (emerald). `on` 0–1 lights it (border, glow, text); unlit it waits at about a third of its light.
  */
-export function AudienceCard({ a, on = 1 }: { a: AudienceDef; on?: number }) {
+export function AudienceCard({ a, width, on = 1 }: { a: AudienceDef; width: number; on?: number }) {
   const o = Math.max(0, Math.min(1, on));
   const tone = C.cyan;
   return (
     <div
       style={{
-        width: AUDIENCE_W,
+        width,
         height: AUDIENCE_H,
         boxSizing: 'border-box',
         padding: '14px 20px 12px',
@@ -33,13 +32,13 @@ export function AudienceCard({ a, on = 1 }: { a: AudienceDef; on?: number }) {
       </div>
       <div style={{ marginTop: 8, display: 'flex', flexDirection: 'column', gap: 6 }}>
         {a.risk.map((t) => (
-          <div key={t} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 28, fontWeight: 700, lineHeight: 1.18, color: C.amber }}>
+          <div key={t} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 27, fontWeight: 700, lineHeight: 1.18, color: C.amber }}>
             <Icon name="alert" size={26} color={C.amber} style={{ marginTop: 3 }} />
             <span>{t}</span>
           </div>
         ))}
         {a.train.map((t) => (
-          <div key={t} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 28, fontWeight: 700, lineHeight: 1.18, color: C.text }}>
+          <div key={t} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 27, fontWeight: 700, lineHeight: 1.18, color: C.text }}>
             <Icon name="check" size={26} color={C.emerald} style={{ marginTop: 3 }} />
             <span>{t}</span>
           </div>

@@ -13,7 +13,7 @@ import { Stage, wordFrame } from './kit';
 const S = 's08-cierre';
 const W = STAGE.width;
 const CARDS_H = 560;
-const ART_H = 84;
+const ART_H = 104;
 const PHRASE_TOP = 170;
 const NEXT_TOP = 560;
 
@@ -32,7 +32,7 @@ function PaperTags({ glow }: { glow: number }) {
         <div
           key={t}
           style={{
-            height: 54,
+            height: 58,
             padding: '0 14px',
             boxSizing: 'border-box',
             display: 'flex',
@@ -56,19 +56,19 @@ function PaperTags({ glow }: { glow: number }) {
 function Art({ art, glow }: { art: RuleArt; glow: number }) {
   if (art === 'nursery') {
     return (
-      <div style={{ position: 'relative', width: 170, height: ART_H }}>
-        <NurseryHouse width={104} />
-        <div style={{ position: 'absolute', left: 92, top: 18 }}>
-          <Seal size={58} />
+      <div style={{ position: 'relative', width: 200, height: ART_H }}>
+        <NurseryHouse width={124} />
+        <div style={{ position: 'absolute', left: 108, top: 22 }}>
+          <Seal size={68} />
         </div>
       </div>
     );
   }
   if (art === 'timeline') {
     return (
-      <div style={{ width: 300, height: ART_H, position: 'relative' }}>
-        <div style={{ position: 'absolute', left: 0, top: -22, transform: 'scale(0.62)', transformOrigin: '0 0' }}>
-          <MiniTimeline width={480} labels={false} glow={glow} />
+      <div style={{ width: 348, height: ART_H, position: 'relative' }}>
+        <div style={{ position: 'absolute', left: 0, top: -14, transform: 'scale(0.74)', transformOrigin: '0 0' }}>
+          <MiniTimeline width={470} labels={false} glow={glow} />
         </div>
       </div>
     );
@@ -131,8 +131,8 @@ export function S08Cierre(props: SceneProps) {
             gap={24}
             slotAt={recapAt - 20}
             dimFrom={phraseAt}
-            titleSize={48}
-            subSize={29}
+            titleSize={50}
+            subSize={30}
             artHeight={ART_H}
             frame={frame}
             fps={fps}

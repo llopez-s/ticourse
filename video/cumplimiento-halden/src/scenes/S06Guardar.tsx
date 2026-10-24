@@ -172,13 +172,15 @@ export function S06Guardar(props: SceneProps) {
 
       {/* The filing cabinet at home */}
       {drawerIn > 0.01 ? (
-        <div style={{ position: 'absolute', left: 0, top: 470, width: LEFT_W + 60, display: 'flex', alignItems: 'center', gap: 22, opacity: drawerIn, transform: `translateY(${(1 - drawerIn) * 14}px)` }}>
-          <Drawer width={96} glow={0.4 * drawerIn} />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <Caption size={32} color={C.textStrong} style={{ whiteSpace: 'normal', width: 330, opacity: 0.4 + 0.6 * progress(frame, recibosAt + 6, 12) }}>
+        <div style={{ position: 'absolute', left: 0, top: 462, width: LEFT_W + 60, opacity: drawerIn, transform: `translateY(${(1 - drawerIn) * 14}px)` }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 22 }}>
+            <Drawer width={92} glow={0.4 * drawerIn} />
+            <Caption size={32} color={C.textStrong} style={{ whiteSpace: 'normal', width: 320, opacity: 0.4 + 0.6 * progress(frame, recibosAt + 6, 12) }}>
               primero, saber qué hay dentro
             </Caption>
-            <ImageTag size={24} />
+          </div>
+          <div style={{ marginTop: 14 }}>
+            <ImageTag size={26} />
           </div>
         </div>
       ) : null}

@@ -80,8 +80,8 @@ function Row({ def, i, children, term, meter, tileIn, gist }: { def: RowDef; i: 
         <Icon name={def.icon} size={50} color={def.tone} strokeWidth={2} />
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ height: 50, display: 'flex', alignItems: 'center', gap: 14, fontSize: 40, fontWeight: 850, color: C.textStrong }}>{term}</div>
-        <div style={{ marginTop: 6, fontSize: 28, fontWeight: 650, color: C.text, lineHeight: 1.22 }}>{gist}</div>
+        <div style={{ height: 46, display: 'flex', alignItems: 'center', gap: 14, fontSize: 40, fontWeight: 850, color: C.textStrong }}>{term}</div>
+        <div style={{ marginTop: 4, fontSize: 30, fontWeight: 650, color: C.text, lineHeight: 1.16 }}>{gist}</div>
       </div>
       {meter}
       {children}

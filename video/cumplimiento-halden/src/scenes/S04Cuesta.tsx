@@ -109,13 +109,11 @@ export function S04Cuesta(props: SceneProps) {
         </div>
       ) : null}
 
-      {/* The hair salon, in miniature */}
+      {/* The hair salon, in miniature, with its tag under it */}
       {salonIn > 0.01 ? (
-        <div style={{ position: 'absolute', left: COL_X[2], top: CARD_Y + 160, width: COL_W, display: 'flex', alignItems: 'center', gap: 28, opacity: salonIn, transform: `translateY(${(1 - salonIn) * 14}px)` }}>
-          <Salon width={230} glow={0.4 * salonIn} />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <ImageTag size={24} />
-          </div>
+        <div style={{ position: 'absolute', left: COL_X[2], top: CARD_Y + 150, width: COL_W, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 14, opacity: salonIn, transform: `translateY(${(1 - salonIn) * 14}px)` }}>
+          <Salon width={216} glow={0.4 * salonIn} />
+          <ImageTag size={26} />
         </div>
       ) : null}
 

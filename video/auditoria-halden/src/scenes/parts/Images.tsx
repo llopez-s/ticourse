@@ -28,40 +28,44 @@ export function LiftCabin({ width = 100, tone = C.sky, open = 0, glow = 0 }: { w
 
 // ---------------------------------------------------------------- the bridge
 
-/** The new bridge with a tied arch and three loaded trucks on its deck (`load` 0–1 presses the arrows onto it). 1000 × 320 units. */
+/**
+ * The new bridge: a deck on three piers with a truss under it and three loaded trucks on top; `load` 0–1 presses the
+ * test-load arrows down onto the trucks. 1000 × 320 units.
+ */
 export function BridgeArt({ width = 1000, load = 1, tone = C.cyan, truck = C.rose }: { width?: number; load?: number; tone?: string; truck?: string }) {
-  const hangers = Array.from({ length: 11 }, (_, i) => 150 + i * 70);
-  const arch = (x: number) => 120 - 100 * Math.sin(((x - 150) / 700) * Math.PI);
+  const trussX = Array.from({ length: 9 }, (_, i) => 150 + i * 87.5);
   const trucks = [250, 500, 750];
   const l = Math.max(0, Math.min(1, load));
   return (
     <svg width={width} height={(width * 320) / 1000} viewBox="0 0 1000 320" fill="none" aria-hidden style={{ display: 'block', overflow: 'visible' }}>
       {/* water */}
-      <rect x={0} y={262} width={1000} height={58} rx={10} fill={alpha(C.sky, 0.1)} />
+      <rect x={0} y={266} width={1000} height={54} rx={10} fill={alpha(C.sky, 0.1)} />
       {[0, 1, 2].map((k) => (
-        <path key={k} d={`M ${20 + k * 120} ${284 + k * 8} q 30 -14 60 0 t 60 0 t 60 0 t 60 0`} stroke={alpha(C.sky, 0.3)} strokeWidth={3} strokeLinecap="round" />
+        <path key={k} d={`M ${20 + k * 120} ${288 + k * 8} q 30 -14 60 0 t 60 0 t 60 0 t 60 0`} stroke={alpha(C.sky, 0.3)} strokeWidth={3} strokeLinecap="round" />
       ))}
       {/* piers */}
-      {[140, 480, 820].map((x) => (
-        <rect key={x} x={x} y={150} width={40} height={124} fill={C.ink600} stroke={alpha(C.cyan, 0.3)} strokeWidth={2} />
+      {[130, 480, 830].map((x) => (
+        <rect key={x} x={x} y={190} width={40} height={84} fill={C.ink600} stroke={alpha(C.cyan, 0.3)} strokeWidth={2} />
       ))}
+      {/* truss under the deck */}
+      <path d={`M ${trussX.map((x, i) => `${x} ${i % 2 === 0 ? 182 : 232}`).join(' L ')}`} stroke={alpha(tone, 0.85)} strokeWidth={5} strokeLinejoin="round" strokeLinecap="round" />
+      <line x1={150} y1={232} x2={850} y2={232} stroke={alpha(tone, 0.5)} strokeWidth={4} />
       {/* deck */}
-      <rect x={30} y={120} width={940} height={32} rx={6} fill={C.ink500} stroke={alpha(C.text, 0.35)} strokeWidth={2} />
-      {/* arch and hangers */}
-      <path d={`M 150 120 ${hangers.map((x) => `L ${x} ${arch(x)}`).join(' ')} L 850 120`} stroke={tone} strokeWidth={5} strokeLinejoin="round" strokeLinecap="round" />
-      {hangers.slice(1, -1).map((x) => (
-        <line key={x} x1={x} y1={arch(x)} x2={x} y2={120} stroke={alpha(tone, 0.5)} strokeWidth={3} />
-      ))}
-      {/* trucks: cargo box, cab, wheels */}
+      <rect x={30} y={150} width={940} height={32} rx={6} fill={C.ink500} stroke={alpha(C.text, 0.35)} strokeWidth={2} />
+      {/* loaded trucks: cargo box, cab, wheels, and the test load pressing down */}
       {trucks.map((x) => (
-        <g key={x} transform={`translate(${x - 70} 56)`}>
-          <rect x={0} y={0} width={104} height={50} rx={5} fill={alpha(truck, 0.2)} stroke={truck} strokeWidth={3.5} />
-          <rect x={104} y={14} width={38} height={36} rx={5} fill={alpha(truck, 0.32)} stroke={truck} strokeWidth={3.5} />
-          <circle cx={26} cy={58} r={9} fill={C.ink900} stroke={truck} strokeWidth={3.5} />
-          <circle cx={78} cy={58} r={9} fill={C.ink900} stroke={truck} strokeWidth={3.5} />
-          <circle cx={124} cy={58} r={9} fill={C.ink900} stroke={truck} strokeWidth={3.5} />
-          <path d={`M 52 -34 v ${24 + 6 * l}`} stroke={alpha(truck, 0.9)} strokeWidth={5} strokeLinecap="round" opacity={l} />
-          <path d="M 40 -14 l 12 14 l 12 -14" stroke={alpha(truck, 0.9)} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" opacity={l} transform={`translate(0 ${-4 + 4 * l})`} />
+        <g key={x}>
+          <g transform={`translate(${x - 70} 83)`}>
+            <rect x={0} y={0} width={104} height={50} rx={5} fill={alpha(truck, 0.2)} stroke={truck} strokeWidth={3.5} />
+            <rect x={104} y={14} width={38} height={36} rx={5} fill={alpha(truck, 0.32)} stroke={truck} strokeWidth={3.5} />
+            <circle cx={26} cy={58} r={9} fill={C.ink900} stroke={truck} strokeWidth={3.5} />
+            <circle cx={78} cy={58} r={9} fill={C.ink900} stroke={truck} strokeWidth={3.5} />
+            <circle cx={124} cy={58} r={9} fill={C.ink900} stroke={truck} strokeWidth={3.5} />
+          </g>
+          <g opacity={l} transform={`translate(0 ${-8 + 8 * l})`}>
+            <path d={`M ${x} 14 V 60`} stroke={alpha(truck, 0.95)} strokeWidth={6} strokeLinecap="round" />
+            <path d={`M ${x - 14} 48 L ${x} 64 L ${x + 14} 48`} stroke={alpha(truck, 0.95)} strokeWidth={6} strokeLinecap="round" strokeLinejoin="round" />
+          </g>
         </g>
       ))}
     </svg>

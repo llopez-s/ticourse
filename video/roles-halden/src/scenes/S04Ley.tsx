@@ -15,7 +15,7 @@ import { Stage, wordFrame } from './kit';
 
 const S = 's04-ley';
 const STRIP = { w: 660, h: 76, y: 74 } as const;
-const ROW = { y: 170, h: 280, w: 760, xs: [0, 968] } as const;
+const ROW = { y: 170, h: 280, w: 740, xs: [0, 988] } as const;
 const ARROW_Y = ROW.y + 150;
 
 /**

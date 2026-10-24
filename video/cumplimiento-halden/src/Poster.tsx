@@ -11,7 +11,7 @@ import { TIMELINE } from './timeline/load';
 ensureFonts();
 
 /** The image on the right (absolute 1920×1080 coordinates). */
-const ART = { x: 1920 - LAYOUT.marginX - POSTER_ART.w + 30, y: 330 } as const;
+const ART = { x: 1920 - LAYOUT.marginX - POSTER_ART.w + 50, y: 330 } as const;
 
 /** The video's length, rounded to half a minute, from the timeline the poster is rendered with. */
 function durationLabel(): string {
@@ -42,7 +42,7 @@ export function Poster() {
       </div>
 
       {/* title: two big lines for thumbnail legibility */}
-      <div style={{ position: 'absolute', left: left - 8, top: 270, fontSize: 138, fontWeight: 850, letterSpacing: -5, lineHeight: 1.02, color: C.textStrong, whiteSpace: 'nowrap' }}>
+      <div style={{ position: 'absolute', left: left - 8, top: 270, fontSize: 132, fontWeight: 850, letterSpacing: -5, lineHeight: 1.02, color: C.textStrong, whiteSpace: 'nowrap' }}>
         <div>Antes, después</div>
         <div style={{ color: C.cyan }}>y a tiempo</div>
       </div>

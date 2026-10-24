@@ -4,7 +4,7 @@ import { C, FONT, alpha } from '../../../engine/src/theme/tokens';
 import { EASE, progress } from '../../../engine/src/theme/motion';
 import { Icon } from '../../../engine/src/ui';
 import { AUDIENCES, TOPICS } from '../data/audiences';
-import { AUDIENCE_W, AudienceCard } from './parts/Audience';
+import { AudienceCard } from './parts/Audience';
 import { EnglishArt } from './parts/EnglishArt';
 import { ImageTag, Pill } from './parts/Labels';
 import { Stage, wordFrame } from './kit';
@@ -19,11 +19,14 @@ const LINE_X1 = 1210;
 const INITIAL_X = 62;
 const RECURRING_X = Array.from({ length: 9 }, (_, i) => 330 + i * 108);
 /** The audiences row. */
-const AUD_LABEL_TOP = 228;
-const AUD_TOP = 266;
-const AUD_GAP = (W - 5 * AUDIENCE_W) / 4;
+const AUD_LABEL_TOP = 238;
+const AUD_TOP = 280;
+/** Wider where the wording is longer (Sistemas); the five add up to the stage width with 22 px gaps. */
+const AUD_WIDTHS = [300, 420, 290, 320, 310] as const;
+const AUD_GAP = (W - AUD_WIDTHS.reduce((a, b) => a + b, 0)) / 4;
+const AUD_X = AUD_WIDTHS.map((_, i) => AUD_WIDTHS.slice(0, i).reduce((a, b) => a + b, 0) + i * AUD_GAP);
 /** The eight topics (English, no voice). */
-const TOPICS_TOP = 512;
+const TOPICS_TOP = 546;
 
 /**
  * s06-programa «Un programa, no un vídeo». On `year` a line for the year draws across the top; on `initial` a big dot
@@ -32,7 +35,7 @@ const TOPICS_TOP = 512;
  * English, tagged «imagen · no es del puerto», appears in miniature on the right and its notebook slowly goes grey: you
  * passed it and you have not used it since. On `audiences` the line steps back and the five audiences of the port come
  * up, Finanzas and Sistemas lit on the voice's words, each with its risk (amber) and its training (emerald); on
- * `topics` the other three light and, on «pantalla», the eight topics of the objective appear in English with no voice.
+ * `topics` the other three light on «Dirección», «trabaja» and «llega» and, on «Cada uno tiene lo suyo, en pantalla», the eight topics of the objective appear in English with no voice.
  */
 export function S06Programa(props: SceneProps) {
   const frame = useCurrentFrame();
@@ -44,11 +47,15 @@ export function S06Programa(props: SceneProps) {
   const topicsAt = props.cue('topics');
   const finanzasAt = Math.max(audiencesAt + 4, wordFrame(S, 's06-03', 'Finanzas') - 8);
   const sistemasAt = Math.max(finanzasAt + 20, wordFrame(S, 's06-03', 'Sistemas') - 8);
-  const panAt = Math.max(topicsAt + 20, wordFrame(S, 's06-04', 'pantalla') - 10);
+  const direccionAt = Math.max(topicsAt + 4, wordFrame(S, 's06-04', 'Dirección') - 8);
+  const fueraAt = Math.max(direccionAt + 12, wordFrame(S, 's06-04', 'trabaja') - 8);
+  const llegaAt = Math.max(fueraAt + 12, wordFrame(S, 's06-04', 'llega') - 8);
+  const panAt = Math.max(llegaAt + 20, wordFrame(S, 's06-04', 'Cada') - 4);
   const initialWordAt = Math.max(initialAt, wordFrame(S, 's06-01', 'initial') - 6);
   const recurringWordAt = Math.max(recurringAt, wordFrame(S, 's06-02', 'recurring') - 6);
   const dotsStart = Math.max(recurringAt + 10, wordFrame(S, 's06-02', 'todo') - 4);
 
+  const baseIn = progress(frame, 4, 20);
   const draw = progress(frame, yearAt, 34, EASE.inOut);
   const lineDim = progress(frame, audiencesAt - 4, 16);
   const initialIn = progress(frame, initialAt, 16);
@@ -59,9 +66,9 @@ export function S06Programa(props: SceneProps) {
   const audOn = [
     progress(frame, finanzasAt, 14),
     progress(frame, sistemasAt, 14),
-    progress(frame, topicsAt, 14),
-    progress(frame, topicsAt + 8, 14),
-    progress(frame, topicsAt + 16, 14),
+    progress(frame, direccionAt, 14),
+    progress(frame, fueraAt, 14),
+    progress(frame, llegaAt, 14),
   ];
   const audShow = progress(frame, audiencesAt, 16);
   const topicsIn = progress(frame, panAt, 16);
@@ -71,6 +78,7 @@ export function S06Programa(props: SceneProps) {
       <div style={{ position: 'absolute', left: 0, top: 0, width: 1240, height: 220, opacity: 1 - 0.5 * lineDim, filter: lineDim > 0.01 ? `saturate(${1 - 0.4 * lineDim})` : undefined }}>
         {/* the year line, drawn left to right with twelve faint ticks */}
         <svg width={1240} height={220} viewBox="0 0 1240 220" style={{ position: 'absolute', left: 0, top: 0, overflow: 'visible' }}>
+          <line x1={LINE_X0} y1={LINE_Y} x2={LINE_X1} y2={LINE_Y} stroke={alpha(C.sky, 0.28)} strokeWidth={4} strokeDasharray="10 10" opacity={baseIn} />
           <line x1={LINE_X0} y1={LINE_Y} x2={LINE_X0 + (LINE_X1 - LINE_X0) * draw} y2={LINE_Y} stroke={alpha(C.sky, 0.7)} strokeWidth={5} strokeLinecap="round" />
           {Array.from({ length: 13 }).map((_, i) => {
             const x = LINE_X0 + ((LINE_X1 - LINE_X0) * i) / 12;
@@ -96,7 +104,7 @@ export function S06Programa(props: SceneProps) {
         <div style={{ position: 'absolute', left: 0, top: 0, display: 'flex', alignItems: 'center', gap: 18, opacity: initialLabel, transform: `translateY(${(1 - initialLabel) * 10}px)` }}>
           <Pill text="INITIAL" tone={C.cyan} icon="user" size={38} height={58} weight={850} on={0.5 + 0.5 * initialLabel} />
         </div>
-        <div style={{ position: 'absolute', left: 0, top: 146, width: 360, fontFamily: FONT.sans, fontSize: 30, fontWeight: 700, lineHeight: 1.2, color: C.text, opacity: initialLabel }}>
+        <div style={{ position: 'absolute', left: 0, top: 146, width: 410, fontFamily: FONT.sans, fontSize: 30, fontWeight: 700, lineHeight: 1.2, color: C.text, opacity: initialLabel }}>
           antes de dar accesos · con su acknowledgement
         </div>
         <div style={{ position: 'absolute', left: 430, top: 0, display: 'flex', opacity: recLabel, transform: `translateY(${(1 - recLabel) * 10}px)` }}>
@@ -119,8 +127,8 @@ export function S06Programa(props: SceneProps) {
         audiencias del puerto · cada una con su riesgo
       </div>
       {AUDIENCES.map((a, i) => (
-        <div key={a.key} style={{ position: 'absolute', left: i * (AUDIENCE_W + AUD_GAP), top: AUD_TOP, opacity: audShow, transform: `translateY(${(1 - audShow) * 18}px)` }}>
-          <AudienceCard a={a} on={audOn[i]} />
+        <div key={a.key} style={{ position: 'absolute', left: AUD_X[i], top: AUD_TOP, opacity: audShow, transform: `translateY(${(1 - audShow) * 18}px)` }}>
+          <AudienceCard a={a} width={AUD_WIDTHS[i]} on={audOn[i]} />
         </div>
       ))}
 

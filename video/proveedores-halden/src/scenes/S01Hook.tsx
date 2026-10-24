@@ -19,14 +19,14 @@ const PROMISE = [
 
 /** The scene's group (port, crate, office): centred before the title, on the left after it. All in group coordinates. */
 const GROUP_W = 940;
-const SCALE_FROM = 1.22;
-const SCALE_TO = 0.9;
+const SCALE_FROM = 1.3;
+const SCALE_TO = 1;
 const CENTRE_X = (1728 - GROUP_W * SCALE_FROM) / 2;
 const GROUND = 430;
 const PORT = { x: 0, w: 190 };
 const OFFICE = { x: 740, w: 196 };
 const CRATE = { w: 124, from: 100, to: 540 };
-const TEXT_X = 900;
+const TEXT_X = 1000;
 const TITLE_TOP = 110;
 const PLAQUE_TOP = 330;
 const CHIPS_TOP = 414;
@@ -138,7 +138,7 @@ export function S01Hook(props: SceneProps) {
             left: TEXT_X,
             top: TITLE_TOP,
             fontFamily: FONT.sans,
-            fontSize: 88,
+            fontSize: 92,
             fontWeight: 900,
             letterSpacing: -2,
             lineHeight: 1.04,

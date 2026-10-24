@@ -39,7 +39,7 @@ export function S07P3(props: SceneProps) {
           <span>nadie te pide que tires los recibos viejos, </span>
           <span style={{ color: sobran > 0.5 ? C.amber : '#ffffff' }}>y aun así sobran</span>
         </SlotText>
-        <ImageTag size={24} />
+        <ImageTag size={26} />
       </SlotLine>
     </Stage>
   );

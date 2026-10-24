@@ -13,10 +13,10 @@ import { Stage, interceptWindow, wordFrame } from './kit';
 const S = 's05-aguantar';
 const W = STAGE.width;
 // ---- Phase A (the board asks, the tag, the message): everything below the intercepted card's slot (stage y ≥ 215).
-const BOARD_X = 36;
-const BOARD_Y = 318;
-const BOARD_SCALE = 0.5;
-const COL_X = 560;
+const BOARD_X = 24;
+const BOARD_Y = 326;
+const BOARD_SCALE = 0.62;
+const COL_X = 620;
 const BUBBLE_TOP = 232;
 const CHIP_TOP = 366;
 const TAG_TOP = 452;
@@ -192,10 +192,10 @@ export function S05Aguantar(props: SceneProps) {
       {neither > 0.01 ? (
         <div style={{ position: 'absolute', left: 0, top: BANNER_TOP, width: W, display: 'flex', justifyContent: 'center', opacity: neither, transform: `translateY(${(1 - neither) * 12}px)` }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 22, height: 58, padding: '0 36px 0 24px', boxSizing: 'border-box', borderRadius: RADIUS.pill, border: `3px solid ${alpha(C.amber, 0.85)}`, background: C.ink900, boxShadow: `0 0 28px ${alpha(C.amber, 0.22)}`, fontFamily: FONT.sans, fontSize: 36, fontWeight: 850, color: C.textStrong, whiteSpace: 'nowrap' }}>
-            <svg width={60} height={32} viewBox="0 0 60 32" fill="none" aria-hidden>
-              <path d="M4 16 H20 M40 16 H56 M48 8 L56 16 L48 24 M12 8 L4 16 L12 24" stroke={C.amber} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M24 28 L36 4" stroke={C.rose} strokeWidth={5} strokeLinecap="round" />
-            </svg>
+            <div style={{ position: 'relative', width: 44, height: 44 }}>
+              <Icon name="link" size={44} color={C.amber} strokeWidth={2.2} />
+              <div style={{ position: 'absolute', left: -4, right: -4, top: '50%', height: 5, borderRadius: 3, background: C.rose, transform: 'rotate(-42deg)' }} />
+            </div>
             aprobar una no dice nada de la otra
           </div>
         </div>

@@ -63,7 +63,7 @@ export function ConsequenceCard({ c, height, on, salon = 0 }: { c: Consequence; 
       <div style={{ fontSize: 30, fontWeight: 700, lineHeight: 1.2, color: o > 0.4 ? C.textStrong : C.text }}>{c.gloss}</div>
       {c.note ? <div style={{ fontSize: 26, fontWeight: 600, lineHeight: 1.2, color: C.muted }}>{c.note}</div> : null}
       {s > 0.02 ? (
-        <div style={{ position: 'absolute', right: 18, top: -22, opacity: s, transform: `scale(${0.7 + 0.3 * s})` }}>
+        <div style={{ position: 'absolute', right: 16, bottom: 12, opacity: s, transform: `scale(${0.7 + 0.3 * s})` }}>
           <div style={{ padding: '6px 10px 4px', borderRadius: 14, background: C.ink900, border: `2px solid ${alpha(C.sky, 0.8)}`, display: 'grid', placeItems: 'center' }}>
             <Salon width={58} />
           </div>

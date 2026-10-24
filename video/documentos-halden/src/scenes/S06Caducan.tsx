@@ -21,7 +21,7 @@ const ROW_TOP = 8;
 const sheetX = (i: number) => ROW_X + i * (SW + GAP);
 
 const TILE = { x: 470, y: 486, w: 800, h: 128 } as const;
-const OLD = { x: 1190, y: 406 } as const;
+const OLD = { x: 1190, y: 416 } as const;
 
 /** A product badge on the platform tile: a hexagon (the old product) or a rounded square (the new one). */
 function Product({ kind, tone, on = 1 }: { kind: 'old' | 'new'; tone: string; on?: number }) {
@@ -223,8 +223,8 @@ export function S06Caducan(props: SceneProps) {
           <div style={{ position: 'absolute', left: OLD.x, top: OLD.y, opacity: signIn, transform: `translateY(${(1 - signIn) * -18}px)` }}>
             <OldSign />
           </div>
-          <div style={{ position: 'absolute', left: 1090, top: OLD.y + OLDSIGN.h - 30 + 8, width: 638, display: 'flex', gap: 14, alignItems: 'center', justifyContent: 'center', opacity: signIn }}>
-            <Pill text="ya no existe" tone={C.muted} size={28} height={42} on={0.2} style={{ border: `2px dashed ${alpha(C.muted, 0.7)}` }} />
+          <div style={{ position: 'absolute', left: 1090, top: OLD.y + OLDSIGN.h - 30 + 4, width: 638, display: 'flex', gap: 14, alignItems: 'center', justifyContent: 'center', opacity: signIn }}>
+            <Pill text="ya no existe" tone={C.muted} size={26} height={38} on={0.2} style={{ border: `2px dashed ${alpha(C.muted, 0.7)}` }} />
             <ImageTag size={26} />
           </div>
         </>

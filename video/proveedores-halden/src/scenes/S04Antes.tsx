@@ -10,7 +10,7 @@ import { Stage, wordFrame } from './kit';
 
 const S = 's04-antes';
 
-const RAIL_Y = 404;
+const RAIL_Y = 424;
 const NODE_X = 864;
 const RIGHT_X = 958;
 const COL_W = 770;
@@ -163,11 +163,11 @@ export function S04Antes(props: SceneProps) {
             style={{
               position: 'absolute',
               left: 0,
-              top: RAIL_Y + 52,
+              top: RAIL_Y + 46,
               width: 760,
-              height: 196,
+              height: 186,
               boxSizing: 'border-box',
-              padding: '14px 26px',
+              padding: '10px 26px',
               borderRadius: RADIUS.lg,
               border: `3px solid ${alpha(C.amber, 0.65)}`,
               background: alpha(C.amber, 0.07),
@@ -198,13 +198,13 @@ export function S04Antes(props: SceneProps) {
           <Heading text="después de firmar" tone="#6ee7b7" on={afterOn} show={headIn} />
         </div>
         {monIn > 0.01 ? (
-          <div style={{ position: 'absolute', left: 0, top: 66, display: 'flex', alignItems: 'center', gap: 16, opacity: monIn, transform: `translateY(${(1 - monIn) * 12}px)` }}>
+          <div style={{ position: 'absolute', left: 0, top: 66, opacity: monIn, transform: `translateY(${(1 - monIn) * 12}px)` }}>
             <Pill text="vendor monitoring" tone={C.emerald} icon="radar" size={36} height={58} weight={850} on={monIn} />
-            {renovar > 0.01 ? (
-              <div style={{ opacity: renovar, transform: `translateX(${(1 - renovar) * 14}px)` }}>
-                <Pill text="reevaluar al renovar" tone={C.emerald} icon="clock" size={30} height={52} on={0.5 + 0.5 * renovar} />
-              </div>
-            ) : null}
+          </div>
+        ) : null}
+        {renovar > 0.01 ? (
+          <div style={{ position: 'absolute', left: 0, top: 358, opacity: renovar, transform: `translateY(${(1 - renovar) * 10}px)` }}>
+            <Pill text="reevaluar al renovar" tone={C.emerald} icon="clock" size={28} height={46} on={0.5 + 0.5 * renovar} />
           </div>
         ) : null}
         {ROUTINES.map((r, i) => {
@@ -219,9 +219,9 @@ export function S04Antes(props: SceneProps) {
               style={{
                 position: 'absolute',
                 left: col * 394,
-                top: 140 + row * 124,
+                top: 130 + row * 114,
                 width: 376,
-                height: 112,
+                height: 104,
                 boxSizing: 'border-box',
                 display: 'flex',
                 alignItems: 'center',
@@ -245,7 +245,7 @@ export function S04Antes(props: SceneProps) {
 
       {/* the nursery in small: the visit before signing up, the look of every day */}
       {nurseryIn > 0.01 ? (
-        <div style={{ position: 'absolute', left: RIGHT_X, top: RAIL_Y + 52, width: COL_W, height: 196, opacity: nurseryIn, transform: `translateY(${(1 - nurseryIn) * 16}px)`, fontFamily: FONT.sans }}>
+        <div style={{ position: 'absolute', left: RIGHT_X, top: RAIL_Y + 46, width: COL_W, height: 186, opacity: nurseryIn, transform: `translateY(${(1 - nurseryIn) * 16}px)`, fontFamily: FONT.sans }}>
           {[
             { x: 0, house: <NurseryHouse width={136} door={progress(frame, visitaAt, 14)} />, a: 'antes', b: 'la visita', at: visitaAt },
             { x: 396, house: <NurseryHouse width={136} eye={progress(frame, miraAt, 14)} />, a: 'después', b: 'la mirada de cada día', at: miraAt },

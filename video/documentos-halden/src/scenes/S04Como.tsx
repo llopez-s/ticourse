@@ -20,8 +20,8 @@ const X2_END = 530;
 const X1_ALONE = (1728 - SHEET_W) / 2;
 const X1_PAIR = (1728 - (2 * SHEET_W + 30)) / 2;
 const X2_PAIR = X1_PAIR + SHEET_W + 30;
-const LABEL_TOP = 468;
-const ROW_TOP = 544;
+const LABEL_TOP = 462;
+const ROW_TOP = 538;
 
 const WALL = { x: 1060, y: 92, w: 668, h: 566 } as const;
 const STEPS = ['Clasifícalo', 'Súbelo a la plataforma', 'Manda el enlace', 'Comprueba que ha llegado'] as const;
@@ -105,8 +105,8 @@ export function S04Como(props: SceneProps) {
   const tProc = progress(frame, pasoAt, 12);
   const tPb = progress(frame, pasoAt + 8, 12);
   const tObl = progress(frame, oblPoolAt, 12);
-  const tGuide = progress(frame, aconAt, 12);
-  const tNo = progress(frame, aconAt + 10, 12);
+  const tGuide = progress(frame, sunAt + 14, 12);
+  const tNo = progress(frame, aconAt - 4, 12);
   const colDim = 0.5 * progress(frame, pool2At - 4, 14);
 
   return (

@@ -57,7 +57,7 @@ export function S03P1(props: SceneProps) {
           <span>te informaste de maravilla, </span>
           <span style={{ color: C.amber }}>y el gato sigue sin comer</span>
         </SlotText>
-        <ImageTag size={24} />
+        <ImageTag size={26} />
       </SlotLine>
     </Stage>
   );
