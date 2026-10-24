@@ -48,7 +48,7 @@ export function S01Hook(props: SceneProps) {
   const settle = progress(frame, titleAt, 20);
   const last = PROMISE.length - 1;
   const lit = chipAt.map((at, i) => progress(frame, at, 10) * (1 - (i < last ? 0.6 * progress(frame, chipAt[i + 1] - 2, 10) : 0)));
-  const axis = progress(frame, chipAt[0] - 10, 40, EASE.inOut);
+  const axis = progress(frame, props.cue('promise') - 6, 40, EASE.inOut);
 
   return (
     <Stage>

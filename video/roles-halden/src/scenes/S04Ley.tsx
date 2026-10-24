@@ -15,7 +15,7 @@ import { Stage, wordFrame } from './kit';
 
 const S = 's04-ley';
 const STRIP = { w: 660, h: 76, y: 74 } as const;
-const ROW = { y: 170, h: 280, w: 740, xs: [0, 988] } as const;
+const ROW = { y: 170, h: 280, w: 760, xs: [0, 968] } as const;
 const ARROW_Y = ROW.y + 150;
 
 /**
@@ -38,7 +38,7 @@ export function S04Ley(props: SceneProps) {
   const respAt = props.cue('responsibility');
   const legalAt = props.cue('legal-roles');
   const movingAt = props.cue('moving');
-  const out = progress(frame, movingAt - 16, 14, EASE.inOut);
+  const out = progress(frame, movingAt - 12, 12, EASE.inOut);
   const stripGlow = 0.2 + 0.8 * progress(frame, personalAt, 14);
   const instrAt = w('s04-03', 'instrucciones') - 8;
   const becomesAt = w('s04-04', 'controller') - 8;
@@ -155,7 +155,6 @@ export function S04Ley(props: SceneProps) {
           </svg>
           {frame >= instrAt - 4 ? (
             <div style={{ position: 'absolute', left: ROW.xs[0] + ROW.w + 8, top: ARROW_Y - 62, width: ROW.xs[1] - ROW.xs[0] - ROW.w - 16, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 8, fontSize: 28, fontWeight: 700, color: C.cyanSoft, whiteSpace: 'nowrap', ...enter(frame, instrAt, { distance: 10 }) }}>
-              <Icon name="file" size={32} color={C.cyan} />
               instrucciones
             </div>
           ) : null}
@@ -190,7 +189,7 @@ export function S04Ley(props: SceneProps) {
       {frame >= movingAt - 8 ? (
         <Triptych
           frame={frame}
-          startAt={movingAt}
+          startAt={movingAt - 4}
           title={MOVING_TITLE}
           panels={[
             { name: 'tú', term: 'controller', tone: C.cyan, art: (t) => <MoveController t={t} />, caption: ['tú decides', 'qué se lleva'], at: w('s04-06', 'decides') - 8 },

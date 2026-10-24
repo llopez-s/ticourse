@@ -40,7 +40,7 @@ export function S02Casa(props: SceneProps) {
   const cardAt = [props.cue('owner'), props.cue('custodian'), props.cue('steward')];
   const stewardNameAt = props.cue('steward-name');
   const albumAt = props.cue('album');
-  const out = progress(frame, albumAt - 16, 14, EASE.inOut);
+  const out = progress(frame, albumAt - 12, 12, EASE.inOut);
 
   const reqArrow = progress(frame, requestAt - 4, 18);
   const qOn = progress(frame, questionAt, 10) * (1 - progress(frame, cardAt[0] - 4, 10));
@@ -170,7 +170,7 @@ export function S02Casa(props: SceneProps) {
       {frame >= albumAt - 8 ? (
         <Triptych
           frame={frame}
-          startAt={albumAt}
+          startAt={albumAt - 4}
           title={ALBUM_TITLE}
           panels={[
             { name: 'la abuela', term: 'owner', tone: C.cyan, art: (t) => <AlbumOwner t={t} />, caption: ['decide qué fotos', 'salen de casa'], at: w('s02-05', 'decide') - 8 },

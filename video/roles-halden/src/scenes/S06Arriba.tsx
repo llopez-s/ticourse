@@ -35,7 +35,7 @@ export function S06Arriba(props: SceneProps) {
   const regulatorAt = props.cue('regulator');
   const centralAt = props.cue('central-chip');
   const clubAt = props.cue('club');
-  const out = progress(frame, clubAt - 16, 14, EASE.inOut);
+  const out = progress(frame, clubAt - 12, 12, EASE.inOut);
   const portIn = progress(frame, -6, 18);
   const upAt = w('s06-02', 'recomienda') - 8;
   const downAt = w('s06-02', 'delega') - 8;
@@ -171,7 +171,7 @@ export function S06Arriba(props: SceneProps) {
       {frame >= clubAt - 8 ? (
         <Triptych
           frame={frame}
-          startAt={clubAt}
+          startAt={clubAt - 4}
           title={CLUB_TITLE}
           panels={[
             { name: 'la junta', term: 'board', tone: C.cyan, art: (t) => <ClubBoard t={t} />, caption: ['aprueba', 'las cuentas'], at: w('s06-05', 'junta') - 8 },
