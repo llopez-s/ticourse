@@ -10,7 +10,6 @@ import { CHIP_H, CaseStamp, PlaqueChip, Pill } from './parts/Labels';
 import { Stage, wordFrame } from './kit';
 
 const S = 's01-hook';
-const W = STAGE.width;
 
 // ---- Left: the board's table with the document in the middle. Right column: the three phrases, then plate, title and chips.
 const TABLE_TOP = 104;

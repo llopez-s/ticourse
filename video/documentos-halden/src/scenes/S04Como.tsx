@@ -2,7 +2,7 @@ import { useCurrentFrame } from 'remotion';
 import type { SceneProps } from '../../../engine/src/timeline/types';
 import { C, FONT, RADIUS, alpha } from '../../../engine/src/theme/tokens';
 import { EASE, enter, progress } from '../../../engine/src/theme/motion';
-import { Icon } from '../../../engine/src/ui';
+import { Icon, mix } from '../../../engine/src/ui';
 import { STAMP_CASE, WRONG_LABEL } from '../data/canon';
 import { CaseStamp, Gloss, ImageTag, Pill, TermPill } from './parts/Labels';
 import { HeadChip, PAPER, Sheet, SheetGlyph, Typed } from './parts/Paper';
@@ -14,8 +14,12 @@ const S = 's04-como';
 const SHEET_W = 500;
 const SHEET_H = 352;
 const SHEET_TOP = 100;
-const X1 = 0;
-const X2 = 530;
+/** Final columns (with the pool) and the centred places the sheet and the card take before it comes in. */
+const X1_END = 0;
+const X2_END = 530;
+const X1_ALONE = (1728 - SHEET_W) / 2;
+const X1_PAIR = (1728 - (2 * SHEET_W + 30)) / 2;
+const X2_PAIR = X1_PAIR + SHEET_W + 30;
 const LABEL_TOP = 468;
 const ROW_TOP = 544;
 
@@ -47,6 +51,13 @@ export function S04Como(props: SceneProps) {
   const pool2At = props.cue('pool-2');
 
   const stampIn = enter(frame, -6, { distance: 16, duration: 16 });
+
+  // Centred while alone; the sheet glides left to make room for the card (and later its neighbour), then both go to the
+  // pool's columns.
+  const glideA = progress(frame, playAt - 34, 26, EASE.inOut);
+  const glideB = progress(frame, pool2At - 24, 24, EASE.inOut);
+  const X1 = mix(mix(X1_ALONE, X1_PAIR, glideA), X1_END, glideB);
+  const X2 = mix(X2_PAIR, X2_END, glideB);
 
   // Sheet 3
   const s3 = approach(frame, sheet3At);

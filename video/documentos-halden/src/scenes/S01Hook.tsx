@@ -26,14 +26,14 @@ const DROP = [8, -6, 10, -4] as const;
 
 /** The group (table + sheets) sits centred at first and glides left, smaller, when the title lands. */
 const GROUP_X0 = (1728 - ROW_W) / 2;
-const GROUP_Y0 = 112;
+const GROUP_Y0 = 128;
 const GROUP_X1 = 0;
-const GROUP_Y1 = 214;
+const GROUP_Y1 = 236;
 const GROUP_SCALE1 = 0.66;
 const TEXT_X = 1130;
-const TITLE_TOP = 118;
-const PLAQUE_TOP = 360;
-const CHIPS_TOP = 448;
+const TITLE_TOP = 140;
+const PLAQUE_TOP = 382;
+const CHIPS_TOP = 470;
 const CHIP_STEP = 80;
 
 /** 0 → 1 → 0: a sheet lifts off the table to be read, then settles. */

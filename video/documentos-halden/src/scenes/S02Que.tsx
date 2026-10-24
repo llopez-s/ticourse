@@ -15,8 +15,12 @@ const S = 's02-que';
 const SHEET_W = 500;
 const SHEET_H = 340;
 const SHEET_TOP = 100;
-const X1 = 0;
-const X2 = 520;
+/** Final columns (with the pool) and the centred places the sheets take before it comes in. */
+const X1_END = 0;
+const X2_END = 520;
+const X1_ALONE = (1728 - SHEET_W) / 2;
+const X1_PAIR = (1728 - (2 * SHEET_W + 20)) / 2;
+const X2_PAIR = X1_PAIR + SHEET_W + 20;
 const LABEL_TOP = 456;
 const ROW_TOP = 532;
 
@@ -48,6 +52,12 @@ export function S02Que(props: SceneProps) {
   const standardAt = props.cue('standard');
   const pool1At = props.cue('pool-1');
   const bothAt = props.cue('pool-both');
+
+  // The sheets are centred while they are alone and glide left, together, to make room for the pool.
+  const glide1 = progress(frame, sheet2At - 36, 26, EASE.inOut);
+  const glide2 = progress(frame, pool1At - 24, 24, EASE.inOut);
+  const X1 = mix(mix(X1_ALONE, X1_PAIR, glide1), X1_END, glide2);
+  const X2 = mix(X2_PAIR, X2_END, glide2);
 
   const fourAt = Math.max(caseAt + 20, wordFrame(S, 's02-01', 'cuatro') - 4);
   const stampIn = enter(frame, -6, { distance: 16, duration: 16 });
@@ -84,8 +94,8 @@ export function S02Que(props: SceneProps) {
 
   // The pool
   const poolIn = progress(frame, pool1At - 6, 18);
-  const bannerAt = Math.max(pool1At + 4, wordFrame(S, 's02-06', 'entrada') - 10);
-  const capAt = Math.max(bannerAt + 30, wordFrame(S, 's02-06', 'lado') - 10);
+  const bannerAt = pool1At + 8;
+  const capAt = Math.max(bannerAt + 40, wordFrame(S, 's02-06', 'lado') - 12);
   const bannerIn = progress(frame, bannerAt, 16);
   const capIn = progress(frame, capAt, 16);
   const stepBack = progress(frame, pool1At - 4, 14) * (1 - progress(frame, bothAt - 8, 14));
