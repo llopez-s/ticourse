@@ -23,19 +23,19 @@
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {draft}Te llega un borrador de informe para el CISO. {evidence}Todas las pruebas que cita están comprobadas.",
+      "text": "<curious> {draft}Te llega un borrador de informe para el CISO. {evidence}Las pruebas que cita parecen en orden.",
       "pauseAfterMs": 250
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<intrigued> {title}Y aun así, hay un paso que no se sostiene. Un informe puede estropearse sin que falle ninguna prueba, solo el razonamiento.",
+      "text": "<intrigued> {title}Y aun así, hay un paso que no se sostiene. Porque un informe puede estropearse sin que falle ninguna prueba. Falla el razonamiento.",
       "pauseAfterMs": 300
     },
     {
       "id": "s01-03",
       "scene": "s01-hook",
-      "text": "<confident> {promise}Hoy ves qué es una falacia, por qué una fuente no es una prueba y cómo un argumento acaba mordiéndose la cola.",
+      "text": "<confident> {promise}Hoy ves qué es una falacia y por qué una fuente no es una prueba. Y cómo un argumento acaba mordiéndose la cola.",
       "pauseAfterMs": 600
     },
     {
@@ -47,13 +47,13 @@
     {
       "id": "s02-02",
       "scene": "s02-papel",
-      "text": "<clear> {bias}Un sesgo no está en ningún paso de la hoja, porque el fallo está en cómo miras. Distorsiona lo que percibes.",
+      "text": "<clear> {bias}Con un sesgo, el fallo está en cómo miras, y distorsiona lo que percibes.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-03",
       "scene": "s02-papel",
-      "text": "<firm> {fallacy}Una falacia sí se ve en la hoja. Rompe cómo argumentas, y {pen}puedes ponerle el boli rojo encima.",
+      "text": "<firm> {fallacy}Una falacia rompe cómo argumentas. Es un paso concreto del razonamiento, y {pen}puedes ponerle el boli rojo encima.",
       "pauseAfterMs": 300
     },
     {
@@ -65,7 +65,7 @@
     {
       "id": "s02-05",
       "scene": "s02-papel",
-      "text": "<confident> {rule}O sea, el sesgo es un error de cognición, y la falacia, un error de argumentación. El examen mezcla los dos en la misma pregunta.",
+      "text": "<confident> {rule}O sea, que el sesgo es un error de cognición, y la falacia, de argumentación. El examen mezcla los dos en la misma pregunta.",
       "pauseAfterMs": 650,
       "exam": {
         "objective": "Analysis",
@@ -77,7 +77,7 @@
     {
       "id": "s03-01",
       "scene": "s03-fuente",
-      "text": "<sarcastic> {reply-crane}Eso te lo escribe PAPER CRANE, que vive de sembrar pistas falsas. Le encanta que mires quién firma y no qué pruebas trae.",
+      "text": "<sarcastic> {reply-crane}Otra vez PAPER CRANE, y con otro atajo. Le encanta que mires quién firma y no qué pruebas trae. Veamos tres maneras de que el razonamiento falle.",
       "pauseAfterMs": 300,
       "intercept": {
         "text": "Lo firma un gran proveedor, analista. ¿Quién eres tú para dudar?",
@@ -93,7 +93,7 @@
     {
       "id": "s03-03",
       "scene": "s03-fuente",
-      "text": "<focused> {hominem}Y tiene una cara contraria, que es descartar un informe porque lo firma un proveedor pequeño, aunque su evidencia sea buena. Eso es el [ad hominem|ad hóminem].",
+      "text": "<focused> {hominem}Y luego está la cara contraria. Descartar un informe porque lo firma un proveedor pequeño, aunque sus pruebas sean buenas. Eso es el [ad hominem|ad hóminem].",
       "pauseAfterMs": 300
     },
     {
@@ -111,13 +111,19 @@
     {
       "id": "s03-05",
       "scene": "s03-fuente",
-      "text": "<curious> {two}Ahora, dos frases. Una dice, viene de un proveedor con fama de exagerar, así que revisemos su evidencia con lupa. La otra, viene de ese proveedor, luego es falso.",
-      "pauseAfterMs": 300
+      "text": "<curious> {two}Ahora, dos frases. Una dice que viene de un proveedor con historial de exagerar, así que revisemos sus pruebas con lupa.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s03-06",
       "scene": "s03-fuente",
-      "text": "<engaging> {pick}Las dos hablan de la misma fuente. ¿Cuál de ellas es la falacia?",
+      "text": "<focused> La otra dice que viene de ese proveedor, así que es falso.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-07",
+      "scene": "s03-fuente",
+      "text": "<engaging> {pick}Las dos hablan de la misma fuente. Pero solo una es falacia. ¿Cuál?",
       "pauseAfterMs": 300,
       "think": {
         "q": "¿Cuál de las dos frases es la falacia?",
@@ -125,9 +131,9 @@
       }
     },
     {
-      "id": "s03-07",
+      "id": "s03-08",
       "scene": "s03-fuente",
-      "text": "<firm> {answer}La segunda. La primera mira la fuente para examinar mejor su evidencia, y eso es rigor. La segunda la usa para no examinarla.",
+      "text": "<firm> {answer}La segunda. La primera mira la fuente para examinar mejor sus pruebas, y eso es rigor. La segunda usa la fuente de excusa para no examinar nada.",
       "pauseAfterMs": 650
     },
     {
@@ -145,7 +151,7 @@
     {
       "id": "s04-03",
       "scene": "s04-circulo",
-      "text": "<clear> {circ}Eso es un razonamiento circular. En el examen, [circular reasoning|sérkiular rísoning].",
+      "text": "<clear> {circ}Eso es un razonamiento circular, el argumento que se muerde la cola. En el examen, [circular reasoning|sérkiular rísoning].",
       "pauseAfterMs": 650,
       "exam": {
         "objective": "Analysis",
@@ -155,15 +161,9 @@
       }
     },
     {
-      "id": "s04-04",
-      "scene": "s04-circulo",
-      "text": "<focused> {clue}La pista es un «porque» que solo repite lo que acabas de afirmar. Tira de él y no encontrarás evidencia aparte.",
-      "pauseAfterMs": 650
-    },
-    {
       "id": "s05-01",
       "scene": "s05-eco",
-      "text": "<sarcastic> {reply-crane2}Tres, sí. Pero antes de contarlos, mira de dónde sale cada uno.",
+      "text": "<sarcastic> {reply-crane2}Tres, sí. Pero antes de darlos por buenos, mira de dónde sale cada uno.",
       "pauseAfterMs": 300,
       "intercept": {
         "text": "Tres informes dicen lo mismo, analista. Tres pesan más que uno.",
@@ -173,23 +173,23 @@
     {
       "id": "s05-02",
       "scene": "s05-eco",
-      "text": "<clear> {chain}Un proveedor publica una atribución provisional. Otro la cita, un tercero cita al segundo, y el primero ve consenso y sube su confianza.",
+      "text": "<clear> {chain}Un proveedor publica una atribución provisional. Otro la cita. Un tercero cita al segundo. Y el primero ve consenso y sube su confianza.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-03",
       "scene": "s05-eco",
-      "text": "<firm> {zero}Tres fuentes y ninguna evidencia nueva. Eso es el eco de feeds, el mismo círculo pero a escala de industria.",
+      "text": "<firm> {zero}Tres fuentes y ninguna prueba nueva. Es la misma prueba contada tres veces. Eso es el eco de [feeds|fíds], el mismo círculo pero a lo grande.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-04",
       "scene": "s05-eco",
-      "text": "<confident> {indep}Por eso cuentas evidencia independiente, no repeticiones. Las citas de unas a otras no corroboran nada.",
+      "text": "<confident> {indep}Por eso solo cuentas las pruebas independientes, no las repeticiones. Las que se repiten unas a otras no suman corroboración.",
       "pauseAfterMs": 650,
       "exam": {
         "objective": "Analysis",
-        "text": "Corroborar exige evidencia independiente, no repetida",
+        "text": "Corroborar exige pruebas independientes, no repetidas",
         "at": "indep",
         "holdSec": 5
       }
@@ -197,25 +197,25 @@
     {
       "id": "s06-01",
       "scene": "s06-recap",
-      "text": "<engaging> {recap}Tres reglas. {rule-1}Un sesgo está en tu cabeza, una falacia está en el papel, y a esa le pones el boli rojo.",
+      "text": "<engaging> {recap}Tres reglas. {rule-1}Un sesgo es un fallo de cómo miras. Una falacia, de cómo argumentas, y a esa le pones el boli rojo.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-02",
       "scene": "s06-recap",
-      "text": "<clear> {rule-2}La fuente no es la prueba. Ni para creerla ni para tirarla, se examina su evidencia.",
+      "text": "<clear> {rule-2}La fuente se evalúa, pero no sustituye a las pruebas. Ni para creerla ni para tirarla. Lo que toca es examinar sus pruebas.",
       "pauseAfterMs": 300
     },
     {
       "id": "s06-03",
       "scene": "s06-recap",
-      "text": "<confident> {rule-3}Y si la conclusión ya estaba en la premisa, o las fuentes se citan entre sí, cuenta solo evidencia independiente.",
+      "text": "<confident> {rule-3}Y si la conclusión ya estaba en la premisa, o las fuentes se repiten unas a otras, cuenta solo las pruebas independientes.",
       "pauseAfterMs": 350
     },
     {
       "id": "s06-04",
       "scene": "s06-recap",
-      "text": "<warm> {next}Te quedan las seis preguntas de la lección y, en su tabla, tres falacias más. {endcard}Y pásale el boli rojo a tu próximo informe.",
+      "text": "<warm> {next}Te quedan las seis preguntas de la lección y, en la tabla, tres falacias más. {endcard}Y a tu próximo informe, pásale el boli rojo.",
       "pauseAfterMs": 700
     }
   ]

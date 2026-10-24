@@ -29,14 +29,14 @@
   Los mensajes abren s03 y s05; el de s03 está en otro segmento que la pregunta (el validador no los deja juntos).
 - **Efectos (`sfx`):** los automáticos del motor y cinco momentos con sonidos que ya existen (`video/engine/sfx/`): `evidence`
   («check», los vistos verdes del borrador, s01), `pen` («error», el primer círculo rojo, s02), `answer` («check», la respuesta de
-  la pregunta, s03), `loop` («lock», se cierra el círculo del razonamiento circular, s04) y `zero` («block», «evidencias nuevas:
+  la pregunta, s03), `loop` («lock», se cierra el círculo del razonamiento circular, s04) y `zero` («block», «pruebas nuevas:
   0», s05). Los cinco ids son únicos en todo el guion.
-- **Duración.** Suma de `targetSec` **243 s**; `wordBudget` 62, 110, 164, 76, 76 y 84 (572). El guion tiene **553 palabras**
-  (60, 107, 160, 73, 71 y 82). `build-timeline --estimate` da **4:13 (253,7 s)**, por debajo del techo del perfil (260 s). Con la
-  lectura habitual de Lidia (85–93 % del estimado) quedan **~3:35–3:55** renderizados, dentro de 190–260. s03 es la escena larga
-  (76 s estimados: mensaje, dos falacias, tarjeta, pregunta y respuesta); si el estimado pasara de 255 s se recortaría, en este
-  orden, `s04-04` («la pista es un porque»), la segunda mitad de `s03-03` y, en s06, la frase de las tres falacias que quedan en
-  la tabla.
+- **Duración (tras las revisiones del 2026-10-25).** Suma de `targetSec` **258 s**; `wordBudget` 64, 110, 175, 64, 86 y 94 (593). El
+  guion tiene **566 palabras** (62, 99, 171, 59, 83 y 92). `build-timeline --estimate` da **4:18 (258,5 s)**, dentro del techo del
+  perfil (260 s) aunque con poco margen. Con la lectura habitual de Lidia (85–93 % del estimado) quedan **~3:40–4:00** renderizados.
+  s03 es la escena larga (80 s estimados). Para ganar margen, en este orden: la segunda frase de `s05-04` («las que se repiten
+  unas a otras no suman corroboración»), la transición «veamos tres maneras…» de `s03-01` y la frase de las tres falacias de
+  `s06-04`. **`s04-04` («la pista no es el porque…») ya se recortó** para entrar en 260 s.
 - **Inserción en la lección (para cuando exista el vídeo):** `src/data/s4.ts`, lección `s4m2`, **después del segundo check**
   («After we deployed the new EDR…», `:260-274`) y **antes de la «Nota de examen»** (`:275-280`): ahí ya están contadas las seis
   falacias de la tabla, el eco de feeds y el matiz, y el vídeo remata con la regla que la nota de examen resume. Descartado
@@ -85,7 +85,7 @@ noticias, «un actor sofisticado nunca reutilizaría») no salen; los de V9, tam
    cita a B, y A ve consenso y sube su confianza: tres fuentes, cero evidencias nuevas. Se cuenta evidencia independiente, no
    repeticiones. *Imagen:* dos renglones del borrador unidos por una flecha que vuelve a su origen (s04) y, en s05, el mismo
    anillo con tres tarjetas y un termómetro de «confianza» que sube por vuelta. *Tarjetas:* «Circular: la conclusión ya estaba en
-   la premisa» (47, s04) y «Corroborar exige evidencia independiente, no repetida» (53, s05).
+   la premisa» (47, s04) y «Corroborar exige pruebas independientes, no repetidas» (53, s05).
 
 **Por qué estas tres y no otras.** Cubren cuatro de las seis preguntas de la lección (q1, q2, q5, q6) y el check 1; las tres son
 las que más se escriben en informes CTI reales (citar a un proveedor, descartar a otro, atribuir en círculo); y los dos mensajes de
@@ -128,8 +128,7 @@ ad hominem», que no cuenta como concepto aparte: es la mitad del concepto 2 (y 
   como lugar de la mesa de trabajo, al CISO (equipo ya existente, registro §3) y a PAPER CRANE.
 - **PAPER CRANE:** dos mensajes nuevos, sin fecha, que pasan a ser canon de su voz (tutea, dice «analista», ironía; **empuja
   atajos de método, nunca una hipótesis, y no confiesa nada**: ninguno dice nada de lo que hizo ni de lo que quiere). Ficha en
-  pantalla: «PAPER CRANE · célula de engaño · siembra pistas falsas» (como V9 y V23). La voz lo nombra una vez (`s03-01`) y dice
-  que «vive de sembrar pistas falsas» (la ficha), nunca que sembrara nada en Meridian.
+  pantalla: «PAPER CRANE · célula de engaño · siembra pistas falsas» (como V9 y V23). La voz lo nombra una vez (`s03-01`: «Otra vez PAPER CRANE, y con otro atajo»), sin repetir la fórmula «vive de sembrar pistas falsas» de V23; la ficha la lleva la pantalla. Nunca dice que sembrara nada en Meridian.
 - **No se toca (HALL OF MIRRORS, `src/data/course-gcti.ts:78`):** ni strings en cirílico, ni horarios falsos, ni UTC+8, ni «PAPER
   CRANE las plantó», ni «espionaje industrial sistemático», ni «caso cerrado» (la fila de la lección dice «caso cerrado»,
   `s4.ts:206`; se abrevia en pantalla). Tampoco las pruebas del Lab 4B ni el certificado compartido (E4).
@@ -145,24 +144,24 @@ ad hominem», que no cuenta como concepto aparte: es la mitad del concepto 2 (y 
 
 | Escena | Cap. | Cues clave | Palabras | Contenido |
 |---|---|---|---|---|
-| s01-hook | 1 | `draft`, `evidence`, `title`, `promise` | 60 | El borrador con pruebas comprobadas y un paso sin visto. Título («el paso que no se sostiene») antes de los 12 s. |
-| s02-papel | 1 | `math`, `bias`, `fallacy`, `pen`, `solid`, `rule` | 107 | Problema de mates y boli rojo; las gafas del sesgo; el círculo rojo sobre el borrador; tarjeta 1. |
-| s03-fuente | 1 | `reply-crane`, `authority`, `hominem`, `source`, `two`, `pick`, `answer` | 160 | Mensaje 1; autoridad y ad hominem; tarjeta 2; las dos frases; pregunta; respuesta. |
-| s04-circulo | 2 | `define`, `attrib`, `loop`, `circ`, `clue` | 73 | Grupo definido por un incidente y atribuido por lo mismo; tarjeta 3; la pista del «porque». |
-| s05-eco | 2 | `reply-crane2`, `chain`, `zero`, `indep` | 71 | Mensaje 2; el anillo de tres citas y el termómetro; «evidencias nuevas: 0»; tarjeta 4. |
-| s06-recap | 3 | `recap`, `rule-1..3`, `next`, `endcard` | 82 | Tres reglas y la tarea (las seis preguntas de s4m2). |
+| s01-hook | 1 | `draft`, `evidence`, `title`, `promise` | 62 | El borrador con pruebas comprobadas y un paso sin visto. Título («el paso que no se sostiene») antes de los 12 s. |
+| s02-papel | 1 | `math`, `bias`, `fallacy`, `pen`, `solid`, `rule` | 99 | Problema de mates y boli rojo; las gafas del sesgo; el círculo rojo sobre el borrador; tarjeta 1. |
+| s03-fuente | 1 | `reply-crane`, `authority`, `hominem`, `source`, `two`, `pick`, `answer` | 171 | Mensaje 1; autoridad y ad hominem; tarjeta 2; las dos frases; pregunta; respuesta. |
+| s04-circulo | 2 | `define`, `attrib`, `loop`, `circ` | 59 | Grupo definido por un incidente y atribuido por lo mismo; tarjeta 3. |
+| s05-eco | 2 | `reply-crane2`, `chain`, `zero`, `indep` | 83 | Mensaje 2; el anillo de tres citas y el termómetro; «evidencias nuevas: 0»; tarjeta 4. |
+| s06-recap | 3 | `recap`, `rule-1..3`, `next`, `endcard` | 92 | Tres reglas y la tarea (las seis preguntas de s4m2). |
 
 - **Tarjetas de examen (4, dominio Analysis, insignia «GCTI»; una por escena de s02 a s05, ninguna en s01 ni en el cierre):**
   «Sesgo: error de cognición. Falacia: de argumentación» (52) · «Autoridad y ad hominem: la fuente no sustituye la prueba» (56) ·
-  «Circular: la conclusión ya estaba en la premisa» (47) · «Corroborar exige evidencia independiente, no repetida» (53).
+  «Circular: la conclusión ya estaba en la premisa» (47) · «Corroborar exige pruebas independientes, no repetidas» (53).
 - **Pregunta para pensar (1, s03):** «¿Cuál de las dos frases es la falacia?» (38; `holdMs` 4500). Es una decisión de dos
   opciones y nace del matiz de la lección (`s4.ts:243`). Con las frases quietas, sin lupa ni boli sobre ninguna. El título de la
-  escena («La fuente no es la prueba») no da la respuesta. Respuesta: la segunda; la primera es rigor.
+  escena («La fuente no es la prueba») no da la respuesta. Respuesta: la segunda; la primera es rigor. La pregunta hablada es «Las dos hablan de la misma fuente. Pero solo una es falacia. ¿Cuál?» (`s03-07`).
 - **Mensajes interceptados (2, PAPER CRANE, máx. 1 por capítulo):**
   1. s03 (cap. 1): «Lo firma un gran proveedor, analista. ¿Quién eres tú para dudar?» (64). Atajo de fuente (autoridad). La
-     narradora lo recoge con «Eso te lo escribe PAPER CRANE…».
+     narradora lo recoge con «Otra vez PAPER CRANE, y con otro atajo…» y anuncia «tres maneras de que el razonamiento falle».
   2. s05 (cap. 2): «Tres informes dicen lo mismo, analista. Tres pesan más que uno.» (63). Atajo de recuento (eco). Respuesta:
-     «Tres, sí. Pero antes de contarlos, mira de dónde sale cada uno».
+     «Tres, sí. Pero antes de darlos por buenos, mira de dónde sale cada uno».
   Ninguno está en s06 (el validador lo prohíbe) ni coincide con la pregunta.
 - **Cierre:** tres reglas y una sola acción: las seis preguntas de s4m2.
 
@@ -180,12 +179,12 @@ ad hominem», que no cuenta como concepto aparte: es la mitad del concepto 2 (y 
    «sérkiular rísoning». ¿Te encajan? ¿O prefieres decir «el argumento de autoridad» a secas y que el nombre inglés solo salga en la
    tarjeta?
 2. **Post hoc:** ¿te basta con que quede en la lección, o la quieres en el vídeo y sacamos la escena del círculo? Habría que quitar
-   la pista del «porque» (`s04-04`) y el eco de feeds (`s05`) para que quepa, o hacer un principal.
+   el eco de feeds (`s05`) para que quepa, o hacer un principal.
 3. **Gafas para el sesgo:** la imagen de G04 es la báscula y aquí el sesgo solo asoma como contraste. Si prefieres no volver a
    hablar de sesgos en este vídeo, se quita `bias` y `s02-02` y el resto sigue en pie.
 4. **«Tempo»:** he quitado `recording.tempo` por tu decisión del 24-10. ¿Mantienes `maxPauseMs` 250?
-5. **«Mates» y «boli»:** son registro coloquial, pero encajan con la cercanía de los otros vídeos. ¿Te suenan bien o prefieres
-   «problema de matemáticas» y «bolígrafo rojo»?
+5. **«Mates» y «boli»:** se quedan por decisión de las revisiones, pero son opcionales: son registro coloquial. ¿Te suenan bien o
+   prefieres «problema de matemáticas» y «bolígrafo rojo»?
 
 #### Notas de exactitud (para el revisor)
 
@@ -199,9 +198,9 @@ Frase del guion → lección:
 | Dar por bueno algo solo porque lo dice un proveedor conocido: argumento de autoridad (`s03-02`) | `s4.ts:204-207`, `s4m2q5` `:328-342` |
 | Descartar un informe porque lo firma un proveedor pequeño aunque su evidencia sea buena: ad hominem (`s03-03`) | `s4.ts:208-212`, `s4m2q1` `:283-292` |
 | Quién lo dice ocupa el sitio de qué pruebas trae; la fuente no es la prueba (`s03-04`) | `s4.ts:243` («la identidad de la fuente sustituye la evaluación de su evidencia») |
-| Las dos frases A y B; la primera es rigor, la segunda es falacia (`s03-05`, `s03-07`) | `s4.ts:243` (citadas casi literalmente: «fama de exagerar» por «historial de exageración») |
+| Las dos frases A y B; la primera es rigor, la segunda es falacia (`s03-05` a `s03-08`) | `s4.ts:243` (citadas casi literalmente: «historial de exagerar» por «historial de exageración») |
 | Defines un grupo por las técnicas de un incidente y luego atribuyes el incidente al grupo porque coinciden (`s04-01`); la conclusión ya estaba en la premisa (`s04-02`); razonamiento circular / circular reasoning (`s04-03`) | `s4.ts:228-232`, `s4m2q2` `:293-302` |
-| Proveedor A publica una atribución provisional, B la cita, C cita a B, A ve consenso y sube su confianza; tres fuentes, ninguna evidencia nueva; eco de feeds; evidencia independiente, no repeticiones (`s05-02` a `s05-04`) | `s4.ts:239`, `s4m2q6` `:343-357`, check 1 `:245-259` |
+| Proveedor A publica una atribución provisional, B la cita, C cita a B, A ve consenso y sube su confianza; tres fuentes, ninguna prueba nueva; eco de feeds; evidencia independiente, no repeticiones (`s05-02` a `s05-04`) | `s4.ts:239`, `s4m2q6` `:343-357`, check 1 `:245-259` |
 | Seis preguntas; tres falacias más en la tabla (`s06-04`) | `s4.ts:283-357` (seis); `:213-227` (post hoc, hasty generalization y false dilemma) |
 
 Puntos que el revisor debería mirar con lupa:
@@ -213,29 +212,53 @@ Puntos que el revisor debería mirar con lupa:
 - **`recording` sin `tempo`.** `"recording": { "maxPauseMs": 250 }` pasa `build-timeline --check`, pero ninguna importación ha
   ejercitado todavía esa forma (las demás llevan `tempo`).
 - **Gafas de color:** `grep` en `video/*/narration.json` y `storyboard.json` no las encuentra en ningún otro vídeo.
-- **«Un sesgo no está en ningún paso de la hoja» (`s02-02`).** Es la diferencia que el vídeo vende (el instrumento frente al
-  argumento) y la lección la pone como «cognición frente a argumentación», no como «lo ves en la hoja o no». Un sesgo sí puede
-  dejar huella en un informe (G04 enseña a reconocer las frases-señal). La redacción es «no está en ningún paso de la hoja, porque
-  el fallo está en cómo miras». Si el revisor lo ve demasiado fuerte, se cambia por «con un sesgo, el fallo está en cómo miras».
-- **«Tira de él y no encontrarás evidencia aparte» (`s04-04`).** Es una ayuda de lectura del guion, no una frase de la lección;
-  la base es que en `s4.ts:231` el «porque» del ejemplo repite lo ya afirmado. Es el primer recorte si hace falta.
 - **El matiz de que la conclusión pueda ser cierta** (la lógica estándar: una falacia no vuelve falsa la conclusión) **no se dice**:
   el vídeo solo dice que el paso no se sostiene.
 - **La etiqueta del check 1** (`s4.ts:248-258`) llama al mismo caso de los tres proveedores «appeal to authority resting on
   circular citation», mientras que el callout (`:239`) lo llama «falacia circular… eco de feeds». El guion usa el segundo y no
-  fuerza una etiqueta en la tarjeta de s05: dice «evidencia independiente», que es la regla de ambos.
+  fuerza una etiqueta en la tarjeta de s05: dice «pruebas independientes», que es la regla de ambos. (La revisión sugería, si cabía, «autoridad apoyada en una cita circular»; no cabe en 260 s y se deja fuera.)
 - **«Post hoc» y su doble hueco** (`:213-217` frente a `:265,272`): no se usa; si se añadiera, hay que decir las dos cosas (la
   secuencia no es causa, y la ausencia de detección no es ausencia de actividad).
 - **Dos errores que se arreglaron al escribirlo:** (1) s06 decía «con tres falacias más» refiriéndose a las seis preguntas, pero
   las preguntas solo incluyen dos de las tres que no se cuentan (hasty generalization y false dilemma; post hoc solo está en el
-  check 2): ahora dice «y, en su tabla, tres falacias más»; (2) la fila de autoridad de la lección termina en «caso cerrado»,
+  check 2): ahora dice «y, en la tabla, tres falacias más»; (2) la fila de autoridad de la lección termina en «caso cerrado»,
   expresión que el canon veta (HALL OF MIRRORS): no sale en pantalla.
 
-#### Comprobaciones hechas (2026-10-24, desde el worktree, solo con Node)
+#### Revisiones aplicadas (2026-10-25: exactitud y naturalidad)
 
-- `build-timeline.mjs --estimate --check`: sin errores; **un solo aviso** en la primera versión («s03-06: 7 words (style guide:
-  about 10–26 per segment)»), resuelto alargando la frase; la versión final sale **sin avisos**: 27 segmentos, 4 tarjetas, 1 pausa
-  para pensar, 32 cues, 2 mensajes interceptados, 4:13.
+**Exactitud (todas aplicadas):**
+1. El sesgo ya no se define como «no está en la hoja» (contradecía G04 y `s4.ts:197,279`): `s02-02` «Con un sesgo, el fallo está en
+   cómo miras, y distorsiona lo que percibes»; `s02-03` «Una falacia rompe cómo argumentas. Es un paso concreto del razonamiento»;
+   `s06-01` «Un sesgo es un fallo de cómo miras. Una falacia, de cómo argumentas…»; storyboard s02: «el fallo no está en un paso
+   concreto». Se retira de esta ficha el punto del revisor sobre esa frase.
+2. El gancho ya no promete «pruebas comprobadas»: `s01-01` «Las pruebas que cita parecen en orden», y `s01-02` con la reescritura de
+   naturalidad. En el storyboard, los renglones de s03 a s05 van en hojas de ejemplo distintas del borrador de s01 (rótulo «frases de
+   ejemplo de la lección»), y `s03-01` añade la transición «Veamos tres maneras de que el razonamiento falle».
+3. `s03-05`: «historial de exagerar» (no «fama») y, con naturalidad, «sus pruebas», «así que es falso»; se partió en dos segmentos
+   (`s03-05` y `s03-06`) porque la frase pasaba de 26 palabras; los ids siguientes pasan a `s03-07` (pregunta) y `s03-08` (respuesta).
+4. `s06-02`: «La fuente se evalúa, pero no sustituye a las pruebas…».
+5. `s04-04` («La pista no es el “porque”…») **se escribió y se recortó**: con todas las correcciones el estimado subía a 268 s (> 260), y
+   el encargo fija el recorte de `s04-04` como primero. La escena s04 pierde el cue `clue`. Si Lidia lo quiere de vuelta, hay que
+   quitar otra cosa (ver «Duración»).
+6. «Se citan entre sí» y «las citas de unas a otras» pasan a «se repiten unas a otras» (`s05-04`, `s06-03`) y «no suman corroboración».
+7. `s05-03`: «Tres fuentes y ninguna prueba nueva. Es la misma prueba contada tres veces. Eso es el eco de [feeds|fíds]…». **No he
+   dejado `feeds` en `lexicon*.json`:** con el grupo `[feeds|fíds]` la entrada nunca se usa y el validador avisa («lexicon entries
+   never used outside markup: feeds»), así que el léxico queda como estaba (CISO, PAPER, CRANE).
+
+**Naturalidad (aplicada):** «pruebas» en lugar de «evidencia» en toda la voz; tarjeta de s05 «Corroborar exige pruebas independientes,
+no repetidas»; `s02-05`, `s03-03`, `s03-07` (pregunta), `s03-08`, `s01-03`, `s04-03`, `s05-02`, `s05-04`, `s06-03` y `s06-04` con las
+reescrituras indicadas; `s03-01` varía la fórmula de PAPER CRANE; la réplica del mensaje 2 evita «contarlos» («antes de darlos por
+buenos»); pausa de `s04-04` a 400 ms (sin efecto al recortarse el segmento). El texto en pantalla que es literal de la lección
+(«historial de exageración… su evidencia con lupa», «la evidencia era buena») no se cambia. «Mates» y «boli» se quedan (pregunta 5).
+**No aplicado, por indicación:** «donde te equivocaste» en `s02-01`.
+
+#### Comprobaciones hechas
+
+- 2026-10-25, tras las revisiones: `build-timeline --estimate --check` sin avisos; 27 segmentos, 55 páginas de subtítulos, 31 cues,
+  4 tarjetas, 1 pausa para pensar, **4:18 (258,5 s)**. En el camino salieron y se resolvieron cuatro avisos: «s03-05: 33 words»
+  (segmento partido), «s06-03: sentence of 23 words (max 22)» (se quitó un «si»), «lexicon entries never used outside markup: feeds»
+  (se quitó la entrada) y «total length 04:28 outside the capsula-yt window» (se recortó `s04-04`). `script-sheets`: solo «not frozen».
+  `canon-check`: 0 tokens, 0 nuevos.
 - `script-sheets.mjs`: solo el aviso de «no congelado». `canon-check.mjs`: 0 tokens, 0 nuevos. `voice-plan.mjs`: falla la lectura de
   la cuota de ElevenLabs por falta de `ELEVENLABS_API_KEY` (no hay `.env.local` en el worktree) y propone `chatterbox/es-es/default`
   (3237 caracteres); no aplica: la voz es `recording/lidia`.
