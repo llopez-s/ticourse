@@ -1,5 +1,7 @@
 ### G10 · s5m5 · Cápsula · «Métricas, feedback y madurez: cómo demuestra su valor un equipo CTI»
 
+> **Guion congelado el 2026-10-25** (`"frozen"` en `video.json`), a petición de Lidia, tras las revisiones de exactitud y de naturalidad. La versión vigente es `narration.json`. Las decisiones opcionales de «Preguntas para Lidia» se resolvieron con la opción recomendada de esta ficha (la que ya recoge el guion); quedan abiertas solo las pronunciaciones, que se confirman al grabar.
+
 > Borrador del 2026-10-24, con las opciones recomendadas ya elegidas; pendiente de revisión de exactitud y de naturalidad y de
 > que Lidia diga qué cambia. **No está congelado** (`video.json` sin `"frozen"`). Rama `video-feedback-madurez`, desde
 > `origin/main`. La versión vigente de escenas y guion es `video/feedback-madurez/storyboard.json` + `narration.json`; qué se
