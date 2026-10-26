@@ -1,0 +1,271 @@
+WEBVTT
+
+1
+00:00:01.467 --> 00:00:04.833
+Imagina que en el puerto
+de Halden, junto a una entrada,
+
+2
+00:00:04.833 --> 00:00:09.133
+alguien pega un cartel con un código
+para consultar tu trámite.
+
+3
+00:00:09.133 --> 00:00:13.333
+Vamos a ver qué consigue quien
+lo pegó y cómo te das cuenta.
+
+4
+00:00:13.333 --> 00:00:16.033
+También, qué cortar para frenarlo.
+
+5
+00:00:16.033 --> 00:00:20.600
+En este ejemplo ronda BORROWED
+VOICE, que vive de voces ajenas.
+
+6
+00:00:21.600 --> 00:00:25.167
+Alguien que llega con su camión
+lo escanea con el móvil.
+
+7
+00:00:25.167 --> 00:00:28.700
+Se abre una página igualita
+al acceso web del puerto.
+
+8
+00:00:28.700 --> 00:00:33.133
+Le pide usuario, contraseña y el código
+temporal de su segundo factor.
+
+9
+00:00:33.133 --> 00:00:34.667
+Fíjate en el cartel.
+
+10
+00:00:34.667 --> 00:00:39.567
+Ese cuadrado de puntos es una dirección
+web que tus ojos no pueden leer.
+
+11
+00:00:39.567 --> 00:00:42.300
+A simple vista, no sabes adónde va.
+
+12
+00:00:42.300 --> 00:00:45.300
+A eso se le llama quishing.
+
+13
+00:00:45.300 --> 00:00:50.567
+Es el phishing de toda la vida,
+pero con un código QR de anzuelo.
+
+14
+00:00:50.567 --> 00:00:53.933
+Encima, como el QR viaja
+dentro de una imagen,
+
+15
+00:00:53.933 --> 00:00:57.600
+puede que el filtro de enlaces
+del correo ni lo vea.
+
+16
+00:00:57.600 --> 00:01:02.767
+O sea, antes de fiarte de un QR,
+mira la dirección que te enseña el móvil.
+
+17
+00:01:02.767 --> 00:01:05.467
+Si no es la del puerto, no sigas.
+
+18
+00:01:06.400 --> 00:01:11.567
+Más tarde, un conductor avisa de que
+el cartel está pegado encima de otro.
+
+19
+00:01:11.567 --> 00:01:15.400
+Lo retiran, pero seguro
+que alguien ya ha metido sus datos.
+
+20
+00:01:15.400 --> 00:01:20.933
+El equipo piensa en pedir a quien lo
+escaneó que cambie la contraseña. ¿Basta?
+
+21
+00:01:31.500 --> 00:01:35.100
+Qué cómodo sería. Pues no,
+y te cuento por qué.
+
+22
+00:01:35.100 --> 00:01:39.933
+Cuando alguien inicia sesión,
+el sitio le da una prueba de que ya entró.
+
+23
+00:01:39.933 --> 00:01:42.200
+Esa prueba es el token de sesión.
+
+24
+00:01:42.200 --> 00:01:44.500
+Quien lo copia se hace pasar por ti,
+
+25
+00:01:44.500 --> 00:01:48.433
+sin contraseña y sin que vuelvan
+a pedirte el segundo factor.
+
+26
+00:01:48.433 --> 00:01:51.300
+Una página falsa puede ponérselo fácil.
+
+27
+00:01:51.300 --> 00:01:55.533
+Mientras escribes, reenvía
+tu contraseña y tu código al sitio real.
+
+28
+00:01:55.533 --> 00:01:59.133
+Y el sitio le abre una sesión
+a quien montó la página.
+
+29
+00:01:59.133 --> 00:02:02.067
+Así se salta el segundo factor, el MFA.
+
+30
+00:02:02.067 --> 00:02:04.600
+Por eso cambiar la contraseña no basta.
+
+31
+00:02:04.600 --> 00:02:07.367
+Una sesión que ya está
+abierta puede seguir abierta,
+
+32
+00:02:07.367 --> 00:02:10.567
+y hay que revocarla para cerrarla.
+
+33
+00:02:12.533 --> 00:02:15.200
+¿Cómo averiguas quién la visitó?
+
+34
+00:02:15.200 --> 00:02:17.167
+Lees la dirección en un entorno aislado
+
+35
+00:02:17.167 --> 00:02:21.233
+y la cruzas con los registros
+del proxy y del DNS.
+
+36
+00:02:21.233 --> 00:02:23.900
+Y en los registros de inicio
+de sesión miras si alguna
+
+37
+00:02:23.900 --> 00:02:27.833
+de esas cuentas entró poco
+después desde un lugar nuevo.
+
+38
+00:02:27.833 --> 00:02:31.100
+Imagina dos accesos
+correctos de la misma cuenta,
+
+39
+00:02:31.100 --> 00:02:34.900
+tan lejos uno de otro que nadie
+llegaría en ese tiempo.
+
+40
+00:02:34.900 --> 00:02:37.567
+Eso es el impossible travel.
+
+41
+00:02:42.533 --> 00:02:48.333
+Ya, claro. Una VPN, o un proxy de la
+empresa, sí puede dar un falso positivo.
+
+42
+00:02:48.333 --> 00:02:51.567
+Pero eso se confirma
+con contexto, no a ojo.
+
+43
+00:02:51.567 --> 00:02:54.767
+Si el nuevo acceso ni siquiera
+pidió el segundo factor,
+
+44
+00:02:54.767 --> 00:02:57.867
+puede ser un token robado y reutilizado.
+
+45
+00:02:58.833 --> 00:03:02.067
+A las cuentas que metieron
+sus datos las cortas ya.
+
+46
+00:03:02.067 --> 00:03:06.433
+Restableces las credenciales
+y revocas sesiones y tokens.
+
+47
+00:03:06.433 --> 00:03:11.067
+A quienes visitaron la página
+sin escribir nada, en cambio, los vigilas.
+
+48
+00:03:11.067 --> 00:03:13.800
+Para que una página así no sirva de nada,
+
+49
+00:03:13.800 --> 00:03:16.667
+hace falta un segundo factor
+que no se deje engañar.
+
+50
+00:03:16.667 --> 00:03:19.767
+Es el MFA resistente al phishing.
+
+51
+00:03:20.733 --> 00:03:21.767
+Tres ideas.
+
+52
+00:03:21.767 --> 00:03:27.200
+Primera, un QR es una dirección que no
+puedes leer, así que mira adónde te lleva.
+
+53
+00:03:27.200 --> 00:03:30.367
+Segunda, quien copia tu sesión
+entra sin contraseña,
+
+54
+00:03:30.367 --> 00:03:33.067
+así que revoca sesiones y tokens.
+
+55
+00:03:33.067 --> 00:03:37.533
+Y tercera, una alerta de acceso
+imposible no se cierra por suposición,
+
+56
+00:03:37.533 --> 00:03:39.667
+se confirma con contexto.
+
+57
+00:03:39.667 --> 00:03:43.967
+Si alguien entró con tus datos,
+no basta con cambiar la contraseña.
+
+58
+00:03:43.967 --> 00:03:49.100
+Hay que cerrar también las sesiones.
+Con eso en la cabeza, tu turno.

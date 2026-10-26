@@ -201,6 +201,17 @@ export const SP7M1: Module = {
       },
     },
     {
+      t: 'p',
+      md: 'Antes de la tarea breve, el mapa entero contado en cuatro minutos.',
+    },
+    {
+      t: 'video',
+      title: 'Del 701 al 801: lo que cambia de estante',
+      youtube: 'uOraRdyoDWA',
+      poster: 'videos/mapa-801-poster.png',
+      transcript: 'videos/mapa-801-transcript.txt',
+    },
+    {
       t: 'callout',
       kind: 'tip',
       title: 'Tarea breve',
