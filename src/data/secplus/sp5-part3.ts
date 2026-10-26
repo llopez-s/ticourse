@@ -405,6 +405,17 @@ const sp5m6: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a las auditorías, ponte a prueba con otro caso del puerto, este sin incidentes: antes, después y a tiempo, con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Mirar antes, cuidar después y borrar a tiempo',
+      youtube: 'S9yW5SeLShc',
+      poster: 'videos/cumplimiento-halden-poster.png',
+      transcript: 'videos/cumplimiento-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Ya tienes el marco: a quién reportas, qué te cuesta no cumplir, cómo se vigila el cumplimiento y qué derechos tiene la persona detrás del dato. La siguiente lección cubre cómo se **comprueba** todo esto desde fuera y desde dentro —el objetivo 5.5—: **audits and assessments**, comités de auditoría y autoevaluaciones, y el **penetration testing** con sus tipos, sus grados de conocimiento del entorno y la diferencia entre reconocimiento pasivo y activo.',
     },
   ],

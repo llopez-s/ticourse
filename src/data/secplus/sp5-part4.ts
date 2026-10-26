@@ -177,6 +177,17 @@ const sp5m7: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de pasar a la concienciación, ponte a prueba: quién firma, quién comprueba y cómo se prueba, con cinco preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Cumplir o aguantar: auditorías y pentest',
+      youtube: 'mvQK4M8kc_8',
+      poster: 'videos/auditoria-halden-poster.png',
+      transcript: 'videos/auditoria-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Ya tienes las dos formas de comprobar que el programa es real: la auditoría, que verifica el cumplimiento con independencia, y la prueba ofensiva, que verifica la resistencia con hechos. Fíjate en un patrón que se repite en casi todos los informes de red team del mundo: el primer punto de apoyo del atacante rara vez es un servidor sin parchear, y casi siempre es una persona que hizo clic, que sostuvo una puerta abierta o que enchufó un USB encontrado en el aparcamiento. Esa es la última pieza del dominio y de todo el temario: el objetivo 5.6, el **security awareness**, donde el control no se instala en un servidor sino que se construye en la plantilla.',
     },
   ],
