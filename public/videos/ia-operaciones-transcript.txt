@@ -1,0 +1,23 @@
+Un asistente que propone y una persona que decide
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA
+
+[00:00] I · Un asistente que actúa — El asistente de triaje
+Imagina que el SOC de Halden estudia un asistente. Lee cada alerta, consulta el SIEM y el EDR, y si es grave, propone qué hacer. Vamos a ver qué le dejas hacer, con qué permisos y quién lo comprueba, porque ahí está el riesgo real. Y en este ejemplo ronda BORROWED VOICE, que vive de voces ajenas.
+
+[00:24] I · Un asistente que actúa — Una cuenta con demasiado poder
+[Mensaje interceptado · BORROWED VOICE] «Dale la cuenta de administrador y que nada le falte.» Qué cómodo sería darle la cuenta de un administrador de dominio, para que nunca se quede sin permisos. Y que además ejecute él mismo lo que decide. Un asistente que persigue un objetivo, encadenando pasos y llamando a herramientas, se llama agentic. Y ahora imagina que alguien de fuera esconde una orden en un campo de texto de la alerta. Eso es una prompt injection indirecta. Lo lee como el resto. No distingue un dato de una orden, así que la obedece y aísla un sistema crítico en plena operación. Un asistente que actúa puede hacer lo que permita su cuenta. Y con la de un administrador, muchísimo.
+
+[01:11] II · Límites fuera del modelo — Dos arreglos
+Al equipo se le ocurren dos arreglos. Uno, filtrar lo que el asistente lee. Otro, limitar lo que puede hacer. ¿Cuál de los dos protege más?
+
+[01:27] II · Límites fuera del modelo — Lo que puede hacer
+Filtrar palabras ayuda poco. Una lista de palabras prohibidas no cubre todas las formas de decir lo mismo. Al atacante le basta con reformular la frase. Limitar sí funciona. Al mismo asistente le dejas solo cuatro acciones, las justas para hacer su trabajo. Eso es una allow list de acciones, una lista cerrada. Y lo que no está en ella, para él no existe. Su token, además, tiene alcance limitado: lee el SIEM y el EDR, y escribe solo etiquetas y tickets. Eso es aplicar el mínimo privilegio, o least privilege. Ninguno de estos límites depende de que el modelo obedezca. Se llaman guardrails, y viven fuera de él.
+
+[02:12] II · Límites fuera del modelo — Quien propone y quien decide
+Aislar un sistema es lo delicado, y eso solo lo propone. La propuesta llega a una analista, con resumen y evidencias. Y solo ella da el visto bueno. El asistente propone y una persona decide. Eso es la aprobación humana, otro guardrail. Y se pide para lo destructivo, lo irreversible o lo de mucho alcance. Todo queda anotado, quién aprobó qué, en un audit log. Y cada acción debería poder deshacerse. Esa marcha atrás es el rollback. Así, la misma orden escondida logra poco: una propuesta rara, o una etiqueta de más. Y la analista puede rechazar la propuesta, si de verdad mira las evidencias.
+
+[02:55] III · Cuando la persona deja de mirar — Cuando se deja de mirar
+Pasan las semanas, el asistente acierta casi siempre, y revisar cada propuesta se vuelve un mero trámite. [Mensaje interceptado · BORROWED VOICE] «Lleva semanas acertando. Ya no hace falta revisarlo.» Tentador, ¿verdad? Pero que acierte mucho no te asegura la próxima propuesta. Eso es confiar de más, y se llama over-trust. Si la analista aprueba sin leer, sigue ahí firmando, pero ya no controla de verdad. Un guardrail que nadie mira deja de ser un guardrail. El arreglo es de proceso. Mides cuántas propuestas se aprueban sin leerlas, revisas una muestra, y la gente sigue sabiendo hacer la tarea a mano.
+
+[03:38] III · Cuando la persona deja de mirar — Tres reglas
+Tres reglas. Una, un asistente que actúa puede hacer lo que permita su cuenta, así que dale solo los permisos que necesita. Dos, el asistente propone, una persona decide, y todo queda anotado. Y tres, una aprobación que nadie se molesta en leer no protege nada. Antes de darle manos al asistente, asegúrate de tener límites fuera del modelo y alguien que mire de verdad. Con eso en la cabeza, tu turno.

@@ -457,6 +457,17 @@ const sp5m8: Module = {
     },
     {
       t: 'p',
+      md: 'Antes de cerrar el temario, ponte a prueba: por qué lo hizo, cómo se mide y para quién, con tres preguntas como las del examen.',
+    },
+    {
+      t: 'video',
+      title: 'Que la gente avise: concienciación que funciona',
+      youtube: 'actmHdOKvEY',
+      poster: 'videos/concienciacion-halden-poster.png',
+      transcript: 'videos/concienciacion-halden-transcript.txt',
+    },
+    {
+      t: 'p',
       md: 'Y con esto cierras los **cinco dominios** del SY0-701, analista. Has recorrido los conceptos generales, las amenazas y sus mitigaciones, la arquitectura, las operaciones de seguridad y, ahora, la gestión y supervisión del programa: el mismo recorrido que hace una profesional real desde que entiende un control hasta que responde de él ante un consejo. Enhorabuena, la Autoridad Portuaria de Halden ya tiene un programa completo y tú tienes el temario entero en la cabeza. Lo que viene ahora no es contenido nuevo, es puntería: la sección de **preparación del examen** (`sp6`) te explica el formato real —hasta 90 preguntas en 90 minutos, escala de 100 a 900 con corte en 750—, cómo gestionar las **PBQs** marcándolas y volviendo a ellas al final, y cómo leer los enunciados para detectar el «MOST», el «FIRST» y el «BEST» que deciden la respuesta. A partir de aquí tu plan es sencillo y no negociable: mantén las **flashcards** al día todos los días, aunque sean diez minutos, porque el repaso espaciado es lo que impide que el Dominio 1 se te caiga mientras pules el 5; y encadena **simulacros completos de 90 preguntas cronometrados**, revisando después cada fallo hasta entender por qué el distractor era tentador. Cuando tres simulacros seguidos te salgan por encima del **83 %** y ninguno de los cinco dominios se quede rezagado, no estás lista para aprobar: estás lista para aprobar con margen. Nos vemos en el simulacro.',
     },
   ],
