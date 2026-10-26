@@ -1,3 +1,4 @@
+import { withLabGuide } from './lab-guides';
 import {
   SP_CLASSIFY_DATA,
   SP_LABS,
@@ -26,10 +27,14 @@ export interface LabMeta {
     | 'calibration'
     | 'report';
   brief: string;
+  objectives?: string[];
+  prerequisites?: string[];
+  outcome?: string;
+  challengeId?: 'pivot' | 'report' | 'logs';
   mission?: { n: number; briefing: string };
 }
 
-export const GCTI_LABS: LabMeta[] = [
+export const GCTI_LABS: LabMeta[] = ([
   {
     id: 'lab1a',
     sectionId: 's1',
@@ -187,7 +192,7 @@ export const GCTI_LABS: LabMeta[] = [
         'Final de la operación. El consejo de Meridian se reúne el lunes y tu informe decide si actúan. Todo lo que has aprendido — BLUF, lenguaje estimativo, confianza, TLP — converge en este documento. Escríbelo como una CTI Director.',
     },
   },
-];
+] satisfies LabMeta[]).map(withLabGuide);
 
 export const LABS: LabMeta[] = [...GCTI_LABS, ...SP_LABS];
 

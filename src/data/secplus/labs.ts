@@ -1,4 +1,5 @@
 import type { ClassifyData, LabMeta, OrderData, SelectData } from '../labs';
+import { withLabGuide } from '../lab-guides';
 import { SP2_CLASSIFY_DATA, SP2_LABS, SP2_SELECT_DATA } from './labs-sp2';
 import { SP3_CLASSIFY_DATA, SP3_LABS, SP3_ORDER_DATA } from './labs-sp3';
 import {
@@ -262,7 +263,7 @@ export const SP_LABS: LabMeta[] = [
   ...SP3_LABS,
   ...SP4_LABS,
   ...SP5_LABS,
-];
+].map(withLabGuide);
 export const SP_CLASSIFY_DATA: Record<string, ClassifyData> = {
   ...SP1_CLASSIFY,
   ...SP2_CLASSIFY_DATA,

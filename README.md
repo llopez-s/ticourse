@@ -121,6 +121,28 @@ de s3m5 incorpora editor, descarga del borrador y un ZIP con corpus sintético
 inerte, tres reglas de referencia y un verificador con YARA real. El navegador
 no compila ni ejecuta las reglas. No se necesitan muestras maliciosas ni cuentas.
 
+### Laboratorios: práctica guiada y retos
+
+Los 27 labs incluyen objetivos, lecciones de apoyo, autoguardado local, exportación
+del trabajo y un resumen que conserva el primer resultado y las correcciones.
+Puedes reanudar al volver o empezar otro intento; se conservan hasta diez
+intentos anteriores por laboratorio y caso. El editor YARA también conserva su
+borrador en este dispositivo.
+
+**Pivot Hunt, Report Forge y Log Hunt** añaden «Reto práctico · opcional», con dos
+casos originales cada uno (20–30 minutos): investigación con presupuesto y citas,
+informe escrito, y correlación de 32 registros con filtros y cronología editable.
+Los checks corrigen datos verificables; el texto se revisa con una rúbrica de
+autoevaluación y una solución comentada. «Entregado» no equivale a dominio
+acreditado. Los retos no otorgan XP ni alteran el progreso de certificación.
+
+**Borradores e historial solo se guardan en este navegador y dispositivo.** No
+forman parte de la sincronización del perfil. Descarga el JSON del trabajo o la
+entrega Markdown del reto para conservar una copia. Los casos son públicos y
+sintéticos: sus variantes sirven para practicar, no como evaluación ciega.
+
+Consulta la [guía de laboratorios](docs/laboratories.md).
+
 Consulta el [mapa, las fuentes y el itinerario de 5 sesiones](docs/practical-curriculum.md)
 y los [resultados de verificación](docs/reviews/2026-10-19-practical-curriculum.md).
 

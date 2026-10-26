@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useLabSession, useLabState } from './LabWorkspace';
 import type { SelectData } from '../../data/labs';
 
 export default function SelectLab({
@@ -8,8 +8,9 @@ export default function SelectLab({
   data: SelectData;
   onComplete: () => void;
 }) {
-  const [picked, setPicked] = useState<Set<number>>(new Set());
-  const [submitted, setSubmitted] = useState(false);
+  const session = useLabSession();
+  const [picked, setPicked] = useLabState<Set<number>>('picked', () => new Set());
+  const [submitted, setSubmitted] = useLabState('submitted', false);
 
   const toggle = (i: number) => {
     if (submitted) return;
@@ -26,6 +27,10 @@ export default function SelectLab({
   );
 
   const submit = () => {
+    if (picked.size !== data.pickN || submitted) return;
+    session.record({ step: 'selection', title: 'Decisiones de selección y descarte', passed: perfect,
+      correct: data.options.filter((o, i) => o.good === picked.has(i)).length, total: data.options.length,
+      mistakes: data.options.filter((o, i) => o.good !== picked.has(i)).map((o) => o.why) });
     setSubmitted(true);
     if (perfect) onComplete();
   };
@@ -54,7 +59,7 @@ export default function SelectLab({
             cls += 'border-ink-700 bg-ink-900 text-slate-400';
           }
           return (
-            <button key={i} className={cls} onClick={() => toggle(i)}>
+            <button key={i} className={cls} aria-pressed={isPicked} disabled={submitted} onClick={() => toggle(i)}>
               <div className="flex items-start gap-2">
                 <span className="mt-0.5 font-mono text-xs">
                   {submitted ? (o.good ? '✅' : isPicked ? '❌' : '◻️') : isPicked ? '☑️' : '◻️'}
@@ -77,11 +82,11 @@ export default function SelectLab({
             disabled={picked.size !== data.pickN}
             className="rounded-lg bg-cyan-500 px-5 py-2 text-sm font-bold text-ink-950 hover:bg-cyan-400 disabled:cursor-not-allowed disabled:bg-ink-700 disabled:text-slate-500"
           >
-            Presentar al CISO
+            Validar selección
           </button>
         ) : perfect ? (
           <span className="text-sm font-bold text-emerald-400">
-            ✅ El CISO aprueba tus PIRs — lab completado
+            ✅ Selección correcta — lab completado
           </span>
         ) : (
           <>

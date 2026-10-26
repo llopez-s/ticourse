@@ -153,6 +153,22 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   Design `docs/superpowers/specs/2026-10-20-sy0-801-novedades-design.md`, plan
   `docs/superpowers/plans/2026-10-21-sy0-801-novedades.md`.
 
+- **Lab workbooks and optional challenges (2026-10-19).** `lib/labWorkspace.ts` owns
+  local, versioned workbooks (`alertopolis-labs-v1:` per lab/mode/case/content
+  version), separate from `ProgressSnapshot`, persist migrations and sync. All
+  eight guided engines use `LabWorkspaceProvider`/`useLabState`, record first and
+  latest step results before revealing feedback, and retain ten prior runs.
+  `data/lab-guides.ts` enriches the two track registries with objectives and
+  prerequisites. `lab3a`, `lab5b`, `spl4a` have two optional cases each under
+  `data/lab-challenges/`, lazy-loaded by LabPage; query params `mode=challenge`
+  and `case=...` preserve navigation on reload. Challenges never call completeLab
+  or grant XP. Only structured facts are autograded; writing has explicit self
+  assessment and commented examples. Public fixtures are not blind assessments.
+  YARA free-writing uses its own workbook (`lab3b/free/v1`). See
+  `docs/laboratories.md`; `scripts/test-lab-browser.mjs` verifies all eight engines
+  and six cases using Playwright, with optional `PLAYWRIGHT_MODULE_PATH` and
+  `LAB_TEST_URL`. Screenshots default to ignored `node_modules/.cache/lab-browser/`.
+
 - **Practical curriculum (2026-10-19).** Twelve existing lessons append typed blocks
   from `data/practical/` through `withPracticalExpansion` in `tracks.ts`. Original
   block indices and lesson/question/lab IDs stay stable. New totals: GCTI 96 cards /
