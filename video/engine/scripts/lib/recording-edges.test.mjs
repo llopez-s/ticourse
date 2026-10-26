@@ -256,7 +256,8 @@ test('importGainRecord keeps what a partial import needs', () => {
 
 test('examFitAdvice: says how long an exam card that leaves its scene can be (V43 s12-p5: 14491–14641 in 13498–14634 at 30 fps)', () => {
   const advice = examFitAdvice({ from: 14491, durationInFrames: 150 }, { from: 13498, durationInFrames: 1136 }, 30);
-  assert.match(advice, /earlier "at" cue or a shorter holdSec/);
+  assert.match(advice, /lengthen the last segment's pauseAfterMs/);
+  assert.match(advice, /earlier "at" cue, or set a shorter holdSec/);
   assert.match(advice, /fits up to 4\.7 s/);
   assert.match(advice, /-yt profiles warn below 4 s/);
   // too little room for any legal hold: only the cue can change
