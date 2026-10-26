@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { Component, lazy, Suspense, type ReactNode } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import {
   CLASSIFY_DATA,
@@ -21,6 +21,20 @@ import ReportLab from '../components/labs/ReportLab';
 import { labButton, LabResultSummary, LabWorkbookBar, LabWorkspaceProvider } from '../components/labs/LabWorkspace';
 
 const LabChallengePanel = lazy(() => import('../components/labs/LabChallengePanel'));
+
+// The challenge is the app's only lazy chunk. If it cannot load (a deploy replaced it, or the
+// network dropped), keep the failure inside the panel instead of unmounting the whole app.
+class ChallengeBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  render() {
+    if (!this.state.failed) return this.props.children;
+    return <div role="alert" className="rounded-xl border border-amber-500/40 bg-amber-950/20 p-4 text-sm text-amber-100">
+      <p className="mb-3">No se pudo abrir el reto. Puede que haya una versión nueva de la web o que se haya cortado la conexión.</p>
+      <button className={labButton} onClick={() => window.location.reload()}>Recargar la página</button>
+    </div>;
+  }
+}
 
 export default function LabPage() {
   const { labId } = useParams();
@@ -118,9 +132,9 @@ export default function LabPage() {
         </button>)}
       </div>}
 
-      {challenge && meta.challengeId ? <Suspense fallback={<p role="status" className="text-slate-400">Abriendo dossier…</p>}>
+      {challenge && meta.challengeId ? <ChallengeBoundary><Suspense fallback={<p role="status" className="text-slate-400">Abriendo dossier…</p>}>
         <LabChallengePanel labId={meta.id} challengeId={meta.challengeId} reviewLinks={reviewLinks} />
-      </Suspense> : <LabWorkspaceProvider key={`${meta.id}/guided/v1`} identity={`${meta.id}/guided/v1`}>
+      </Suspense></ChallengeBoundary> : <LabWorkspaceProvider key={`${meta.id}/guided/v1`} identity={`${meta.id}/guided/v1`}>
         <LabWorkbookBar />
         {body}
         <LabResultSummary reviewLinks={reviewLinks} />

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createLabSession, decodeWorkspace, encodeWorkspace, LAB_STORAGE_PREFIX } from './labWorkspace';
+import { clearLabWorkbooks, createLabSession, decodeWorkspace, encodeWorkspace, LAB_STORAGE_PREFIX } from './labWorkspace';
 import type { ResultInput, StorageLike } from './labWorkspace';
 import { emptySnapshot, mergeProgress } from './sync';
 import { useStore } from './store';
@@ -97,6 +97,21 @@ describe('local lab workbooks', () => {
     expect(useStore.getState().labs.lab3a).toBeUndefined();
     expect(JSON.stringify(mergeProgress(emptySnapshot(), emptySnapshot()))).not.toContain('only-local');
     expect(storage.getItem(LAB_STORAGE_PREFIX + 'lab3a/challenge/pivot-a/v1')).toContain('only-local');
+  });
+  it('clears every local workbook, and nothing else, when progress is reset', () => {
+    const values = new Map<string, string>([
+      [LAB_STORAGE_PREFIX + 'lab2a/guided/v1', '{}'],
+      [LAB_STORAGE_PREFIX + 'lab3a/challenge/pivot-a/v1', '{}'],
+      ['intelforge-v1', '{"state":{}}'],
+    ]);
+    const storage = {
+      get length() { return values.size; },
+      key: (i: number) => [...values.keys()][i] ?? null,
+      removeItem: (key: string) => { values.delete(key); },
+    };
+    expect(clearLabWorkbooks(storage)).toBe(2);
+    expect([...values.keys()]).toEqual(['intelforge-v1']);
+    expect(clearLabWorkbooks(null)).toBe(0);
   });
   it('keeps the existing completion reward idempotent across retries', () => {
     useStore.getState().resetAll();

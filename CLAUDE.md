@@ -168,6 +168,9 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `docs/laboratories.md`; `scripts/test-lab-browser.mjs` verifies all eight engines
   and six cases using Playwright, with optional `PLAYWRIGHT_MODULE_PATH` and
   `LAB_TEST_URL`. Screenshots default to ignored `node_modules/.cache/lab-browser/`.
+  Profile's «Resetear progreso» also calls `clearLabWorkbooks()` (a restored finished
+  run would otherwise show a lab as done with no XP). The challenge panel is the
+  app's only lazy chunk; `ChallengeBoundary` in LabPage keeps a failed load inside it.
 
 - **Practical curriculum (2026-10-19).** Twelve existing lessons append typed blocks
   from `data/practical/` through `withPracticalExpansion` in `tracks.ts`. Original
@@ -177,7 +180,8 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   excluded from lesson completion and XP, never added to exam/placement pools.
   Fundamentals are base; Microsoft-specific and CTI professional practice are
   labelled complementary. `links` and `yara-practice` are searchable block types.
-  The YARA editor only downloads text; Forge remains a label-based simulation.
+  The YARA editor neither compiles nor sends anything: it autosaves the draft locally
+  (workbook `lab3b/free/v1`) and downloads it as text; Forge remains a label-based simulation.
   Real `yara-python==4.5.4` validation is optional tooling in `.venv-yara/` (ignored).
   `scripts/package-yara-practice.py --check` detects a stale downloadable ZIP;
   regenerate after changing its five source files. `scripts/test-yara-practice.py`
@@ -219,7 +223,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   and each device keeps its own copy locally, but it is the one place where a device whose
   `localStorage` was cleared *before* its next push can lose data. Retrying once after a 404 on
   the first sync for a code would shrink the window.
-- **Tests:** vitest, `npm test` (176 tests in `src/**/*.test.ts`, 15 files). Content tests assert
+- **Tests:** vitest, `npm test` (203 tests in `src/**/*.test.ts`, 17 files). Content tests assert
   Domain 1–5 completeness, that every Security+ boss section has ≥12 questions, 4 choices + valid
   answer per question, ids unique, lab data present, and (placement blocks) that every content
   section has exactly one 12-question block with contiguous ids and non-empty text. Partial

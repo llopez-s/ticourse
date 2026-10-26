@@ -12,6 +12,7 @@ import {
   sectionsOf,
 } from '../data/course';
 import { sectionExempt } from '../lib/placement';
+import { clearLabWorkbooks } from '../lib/labWorkspace';
 import { useTrack } from '../components/Layout';
 import type { Conf } from '../lib/types';
 import { Bar, PageTitle, Panel, StatBox } from '../components/Bits';
@@ -247,8 +248,9 @@ export default function ProfilePage() {
       <Panel className="border-rose-900/50">
         <h2 className="mb-2 font-bold text-rose-300">⚠️ Zona de peligro</h2>
         <p className="mb-3 text-xs text-slate-400">
-          Borra todo el progreso (XP, racha, SRS, logros, exámenes). No hay
-          vuelta atrás.
+          Borra todo el progreso (XP, racha, SRS, logros, exámenes) y los
+          cuadernos de los labs guardados en este navegador. No hay vuelta
+          atrás.
         </p>
         {!confirmReset ? (
           <button
@@ -262,6 +264,7 @@ export default function ProfilePage() {
             <button
               onClick={() => {
                 resetAll();
+                clearLabWorkbooks();
                 setConfirmReset(false);
               }}
               className="rounded-lg bg-rose-500 px-4 py-2 text-sm font-bold text-ink-950 hover:bg-rose-400"

@@ -71,6 +71,19 @@ export function browserLabStorage(): StorageLike | null {
   catch { return null; }
 }
 
+export type ClearableStorage = Pick<Storage, 'length' | 'key' | 'removeItem'>;
+
+/** «Resetear progreso» clears the workbooks too: a restored finished run would show a lab as done without XP. */
+export function clearLabWorkbooks(storage: ClearableStorage | null = browserLabStorage() as Storage | null): number {
+  if (!storage) return 0;
+  try {
+    const keys = Array.from({ length: storage.length }, (_, i) => storage.key(i))
+      .filter((key): key is string => !!key?.startsWith(LAB_STORAGE_PREFIX));
+    keys.forEach((key) => storage.removeItem(key));
+    return keys.length;
+  } catch { return 0; }
+}
+
 export function createLabSession(identity: string, storage: StorageLike | null = browserLabStorage()) {
   let restored: LabWorkspace | null = null;
   let readFailed = !storage;

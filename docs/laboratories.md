@@ -20,6 +20,7 @@ Los retos también permiten descargar una entrega legible en Markdown.
 Los borradores y resultados detallados no se sincronizan con otros dispositivos.
 El progreso completado sigue usando la sincronización opcional habitual. Borrar
 datos del navegador elimina los cuadernos locales: descarga una copia antes.
+«Resetear progreso» en el Perfil también los borra, junto con el resto del progreso.
 Si el navegador no permite guardar o agota su almacenamiento, se muestra un aviso;
 se puede seguir trabajando en memoria y exportar antes de salir.
 
