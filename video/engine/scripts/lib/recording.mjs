@@ -839,7 +839,7 @@ export function clock(ms) {
 }
 
 /** Markdown report of one import: every segment's match, and the recorded audio that no segment uses. */
-export function importReport({ located, cuts, words, gain, pausesRemovedMs = 0, later = [], midStarts = [], retried = [] }) {
+export function importReport({ located, cuts, words, gain, pausesRemovedMs = 0, later = [], midStarts = [], retried = [], silentRuns = [], ghosts = [], edgeFixes = [], edgeOffenders: offenders = null }) {
   const cutOf = new Map(cuts.map((c) => [c.id, c]));
   const rows = located.map((f) => {
     if (!f.found) return `| ${f.id} | — | — | no encontrada |`;
@@ -857,6 +857,42 @@ export function importReport({ located, cuts, words, gain, pausesRemovedMs = 0, 
     '|---|---|---|---|',
     ...rows,
     '',
+    ...(silentRuns.length
+      ? [
+          '## Palabras sin duración descartadas',
+          '',
+          'Whisper inventó texto sin tiempo propio (todas las palabras en el mismo instante). Se ignoran al colocar los cortes; la transcripción guardada no se toca.',
+          '',
+          ...silentRuns.map((r) => `- ${(r.startMs / 1000).toFixed(2)} s · ${r.count} palabras sin duración descartadas: ${r.text}`),
+          '',
+        ]
+      : []),
+    ...(ghosts.length
+      ? [
+          '## Palabras fantasma recortadas',
+          '',
+          'Palabras cortas que Whisper estiró sobre un silencio; se recortan a la parte con voz.',
+          '',
+          ...ghosts.map((g) => `- «${g.text}» ${clock(g.startMs)}–${clock(g.endMs)} → ${clock(g.toStartMs)}–${clock(g.toEndMs)}`),
+          '',
+        ]
+      : []),
+    ...(edgeFixes.length
+      ? [
+          '## Bordes movidos fuera de la voz',
+          '',
+          'El corte caía dentro de la voz (energía en los 30 ms del borde por encima de lo que verify-voice tolera); se movió al silencio más cercano.',
+          '',
+          ...edgeFixes.flatMap((f) => [
+            ...(f.head ? [`- ${f.id} · inicio ${clock(f.head.fromMs)} → ${clock(f.head.toMs)} (energía ${f.head.before.toFixed(2)} → ${f.head.after.toFixed(2)})`] : []),
+            ...(f.tail ? [`- ${f.id} · final ${clock(f.tail.fromMs)} → ${clock(f.tail.toMs)} (energía ${f.tail.before.toFixed(2)} → ${f.tail.after.toFixed(2)})`] : []),
+          ]),
+          '',
+        ]
+      : []),
+    ...(offenders && offenders.length
+      ? ['## Comprobación de bordes', '', `${edgeCheckLine(offenders)}. Es la misma señal que verify-voice marcará como error: reconstruye esos clips (recut_recording.py) o regraba la frase.`, '']
+      : []),
     ...(retried.length
       ? [
           '## Frases que Whisper se saltó y se buscaron otra vez',
@@ -892,4 +928,298 @@ export function importReport({ located, cuts, words, gain, pausesRemovedMs = 0, 
     ...(unused.length ? unused : ['(ninguno)']),
     '',
   ].join('\n');
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// Guards added on 2026-10-25 (V39, V43): hallucinated zero-length words, ghost words, clips cut inside the voice.
+// ---------------------------------------------------------------------------------------------------------------
+
+/** A run of at least this many consecutive words, each no longer than SILENT_WORD_MS, is a Whisper hallucination. */
+export const SILENT_RUN_MIN = 3;
+export const SILENT_WORD_MS = 10;
+
+/**
+ * Drops the runs of SILENT_RUN_MIN or more consecutive words with no duration (`endMs - startMs <= maxMs`): Whisper
+ * invents text over a stretch it cannot place and stamps it all on one instant (V43 cumplimiento-halden: 11 words
+ * at 29.98 s inside «Antes de lanzar el sistema…», the clip began at 29.98 s and lost «Antes de lanzar el»). One or
+ * two such words are normal (a word swallowed by its neighbour) and stay. The input is not modified.
+ * @returns {{words: object[], dropped: {count: number, startMs: number, endMs: number, text: string}[]}}
+ */
+export function dropSilentWordRuns(words, { minRun = SILENT_RUN_MIN, maxMs = SILENT_WORD_MS } = {}) {
+  const silent = (w) => w.endMs - w.startMs <= maxMs;
+  const kept = [];
+  const dropped = [];
+  let i = 0;
+  while (i < words.length) {
+    if (silent(words[i])) {
+      let j = i;
+      while (j + 1 < words.length && silent(words[j + 1])) j++;
+      if (j - i + 1 >= minRun) {
+        dropped.push({ count: j - i + 1, startMs: words[i].startMs, endMs: words[j].endMs, text: words.slice(i, j + 1).map((w) => w.text).join(' ') });
+        i = j + 1;
+        continue;
+      }
+    }
+    kept.push(words[i]);
+    i++;
+  }
+  return { words: kept, dropped };
+}
+
+/** The «y» of V39 s05-01: three characters or fewer. */
+export const GHOST_MAX_CHARS = 3;
+
+/**
+ * A very short word (GHOST_MAX_CHARS or fewer, no digits) that lasts longer than `maxMs` with a silence inside it is a
+ * ghost: Whisper stretched it over the pause (V39 s05-01: «y» 167.70–170.08 s right after «entrar», over the
+ * silence). It is cut down to its longest voiced stretch (the rest of the span is silence) and flagged `ghost: true`, so
+ * the edge refinement does not take its start for the beginning of a real word. Words are replaced, never removed:
+ * indices stay valid.
+ * @returns {{words: object[], trimmed: {text: string, startMs: number, endMs: number, toStartMs: number, toEndMs: number}[]}}
+ */
+export function trimGhostWords(words, silences, { maxMs = MAX_WORD_MS, maxChars = GHOST_MAX_CHARS, minSilenceMs = 100, minVoiceMs = 40 } = {}) {
+  const trimmed = [];
+  const out = words.map((w) => {
+    const bare = w.text.replace(/[¿?¡!«»".,;:\s]/g, '');
+    if (!bare || bare.length > maxChars || /\d/.test(bare) || w.endMs - w.startMs <= maxMs) return w;
+    const inside = silences.filter((s) => s.endMs - s.startMs >= minSilenceMs && s.startMs < w.endMs && s.endMs > w.startMs);
+    if (!inside.length) return w;
+    const voiced = [];
+    let cursor = w.startMs;
+    for (const s of inside) {
+      if (s.startMs > cursor) voiced.push({ startMs: cursor, endMs: Math.min(s.startMs, w.endMs) });
+      cursor = Math.max(cursor, s.endMs);
+    }
+    if (cursor < w.endMs) voiced.push({ startMs: cursor, endMs: w.endMs });
+    const solid = voiced.filter((v) => v.endMs - v.startMs >= minVoiceMs);
+    const pool = solid.length ? solid : voiced;
+    const pick = pool.length ? pool.reduce((a, b) => (b.endMs - b.startMs > a.endMs - a.startMs ? b : a)) : { startMs: w.startMs, endMs: w.startMs };
+    trimmed.push({ text: bare, startMs: w.startMs, endMs: w.endMs, toStartMs: pick.startMs, toEndMs: pick.endMs });
+    return { ...w, startMs: pick.startMs, endMs: pick.endMs, ghost: true };
+  });
+  return { words: out, trimmed };
+}
+
+// Edge energy: the same measure verify_voice.py makes on the finished clip (RMS of the first / last 30 ms over the
+// RMS of the whole clip), taken on the recording itself so a cut inside the voice shows when it is made.
+export const EDGE_SAMPLE_RATE = 16000; // verify_voice.py measures at 16 kHz
+export const EDGE_WINDOW_MS = 30;
+export const EDGE_ENERGY_LIMIT = 0.35; // LIMITS.head / LIMITS.tail of verify-voice.mjs (pinned by a test)
+export const EDGE_FIX_ENERGY = 0.3; // an edge above this is moved (a margin under the limit: the measures differ a little)
+const EDGE_QUIET = 0.12; // an edge at or under this is in silence
+const EDGE_HOP_MS = 10;
+export const EDGE_TAIL_MAX_MS = 500; // how far an end may be pushed past the cut
+export const EDGE_HEAD_MAX_MS = 300; // how far a start may be pulled back
+
+const toIndex = (sampleRate, ms) => Math.round((ms * sampleRate) / 1000);
+
+function rmsBetween(samples, from, to) {
+  const a = Math.max(0, from);
+  const b = Math.min(samples.length, to);
+  if (b <= a) return 0;
+  let sum = 0;
+  for (let i = a; i < b; i++) sum += samples[i] * samples[i];
+  return Math.sqrt(sum / (b - a));
+}
+
+/** RMS of a stretch of samples over [startMs, endMs). */
+export function rmsOfSpan(samples, sampleRate, startMs, endMs) {
+  return rmsBetween(samples, toIndex(sampleRate, startMs), toIndex(sampleRate, endMs));
+}
+
+/**
+ * Relative energy of the first and last EDGE_WINDOW_MS of a clip made of `ranges` (what recordingRecord / clipArgs
+ * keep), against the RMS of everything it keeps: verify_voice.py's `head` and `tail`.
+ * @returns {{head: number, tail: number}}
+ */
+export function edgeEnergies(samples, sampleRate, ranges) {
+  let sum = 0;
+  let n = 0;
+  for (const r of ranges) {
+    const a = Math.max(0, toIndex(sampleRate, r.startMs));
+    const b = Math.min(samples.length, toIndex(sampleRate, r.endMs));
+    for (let i = a; i < b; i++) sum += samples[i] * samples[i];
+    n += Math.max(0, b - a);
+  }
+  const rms = (n ? Math.sqrt(sum / n) : 0) + 1e-9;
+  const first = ranges[0];
+  const last = ranges[ranges.length - 1];
+  const head = rmsOfSpan(samples, sampleRate, first.startMs, Math.min(first.startMs + EDGE_WINDOW_MS, first.endMs)) / rms;
+  const tail = rmsOfSpan(samples, sampleRate, Math.max(last.endMs - EDGE_WINDOW_MS, last.startMs), last.endMs) / rms;
+  return { head, tail };
+}
+
+/**
+ * Moves the end of a clip that stops inside the voice to the next quiet spot. When the last EDGE_WINDOW_MS carry more
+ * than EDGE_FIX_ENERGY of the clip's RMS, the end walks forward 10 ms at a time (at most `maxMs`, never past `guardMs`)
+ * to the first spot whose last 30 ms are quiet; if the energy rises again first (the next word starts), it stops at the
+ * valley before it. Nothing moves when no such spot is found. (V39 s05-01: the voice of «entrar» decays until 167.95 s,
+ * Whisper ended the word at 167.70 s, the clip stopped there at energy 0.72.)
+ * @returns {{endMs: number, before: number, after: number, moved: boolean}}
+ */
+export function pushEndToQuiet(samples, sampleRate, { startMs, endMs }, { guardMs = Infinity, maxMs = EDGE_TAIL_MAX_MS } = {}) {
+  const rms = rmsOfSpan(samples, sampleRate, startMs, endMs) + 1e-9;
+  const ratioAt = (t) => rmsOfSpan(samples, sampleRate, t - EDGE_WINDOW_MS, t) / rms;
+  const before = ratioAt(endMs);
+  if (!(before > EDGE_FIX_ENERGY)) return { endMs, before, after: before, moved: false };
+  const limit = Math.min(endMs + maxMs, guardMs, (samples.length / sampleRate) * 1000);
+  let best = { t: endMs, r: before };
+  for (let t = endMs + EDGE_HOP_MS; t <= limit; t += EDGE_HOP_MS) {
+    const r = ratioAt(t);
+    if (r < best.r) best = { t, r };
+    if (r <= EDGE_QUIET) break;
+    if (best.r <= EDGE_FIX_ENERGY && r > best.r * 1.5 + 0.02) break;
+  }
+  return best.r <= EDGE_FIX_ENERGY ? { endMs: best.t, before, after: best.r, moved: true } : { endMs, before, after: before, moved: false };
+}
+
+/** The mirror of pushEndToQuiet: a clip that starts inside the voice begins up to `maxMs` earlier, not before `guardMs`. */
+export function pullStartToQuiet(samples, sampleRate, { startMs, endMs }, { guardMs = 0, maxMs = EDGE_HEAD_MAX_MS } = {}) {
+  const rms = rmsOfSpan(samples, sampleRate, startMs, endMs) + 1e-9;
+  const ratioAt = (t) => rmsOfSpan(samples, sampleRate, t, t + EDGE_WINDOW_MS) / rms;
+  const before = ratioAt(startMs);
+  if (!(before > EDGE_FIX_ENERGY)) return { startMs, before, after: before, moved: false };
+  const limit = Math.max(startMs - maxMs, guardMs, 0);
+  let best = { t: startMs, r: before };
+  for (let t = startMs - EDGE_HOP_MS; t >= limit; t -= EDGE_HOP_MS) {
+    const r = ratioAt(t);
+    if (r < best.r) best = { t, r };
+    if (r <= EDGE_QUIET) break;
+    if (best.r <= EDGE_FIX_ENERGY && r > best.r * 1.5 + 0.02) break;
+  }
+  return best.r <= EDGE_FIX_ENERGY ? { startMs: best.t, before, after: best.r, moved: true } : { startMs, before, after: before, moved: false };
+}
+
+/**
+ * cutPoints' cuts with both clip edges moved out of the voice where they sit inside it (pullStartToQuiet,
+ * pushEndToQuiet). The start never goes back past the word before the clip or the previous clip's end; the end never
+ * past the next clip's start or the next word that is not a ghost (trimGhostWords flags those: Whisper puts them over
+ * the very silence the end has to reach). A spliced take keeps its parts; only the first start and the last end move.
+ * @returns {{cuts: object[], fixes: {id: string, head?: object, tail?: object}[]}}
+ */
+export function refineCuts(samples, sampleRate, cuts, located, words) {
+  const fixes = [];
+  const out = cuts.map((cut, k) => {
+    const f = located.find((x) => x.id === cut.id);
+    if (!f) return cut;
+    const spans = f.parts ?? [f];
+    const first = spans[0].first;
+    const last = spans[spans.length - 1].last;
+    let j = last + 1;
+    while (j < words.length && words[j].ghost) j++;
+    const nextWord = j < words.length ? words[j].startMs : Infinity;
+    const prevGuard = Math.max(first > 0 ? words[first - 1].endMs : 0, k > 0 ? cuts[k - 1].endMs : 0);
+    const nextGuard = Math.min(nextWord, k + 1 < cuts.length ? cuts[k + 1].startMs : Infinity);
+    const tail = pushEndToQuiet(samples, sampleRate, cut, { guardMs: nextGuard });
+    const head = pullStartToQuiet(samples, sampleRate, cut, { guardMs: Math.min(prevGuard, cut.startMs) });
+    if (!tail.moved && !head.moved) return cut;
+    fixes.push({
+      id: cut.id,
+      ...(head.moved ? { head: { fromMs: cut.startMs, toMs: head.startMs, before: head.before, after: head.after } } : {}),
+      ...(tail.moved ? { tail: { fromMs: cut.endMs, toMs: tail.endMs, before: tail.before, after: tail.after } } : {}),
+    });
+    const startMs = head.startMs;
+    const endMs = tail.endMs;
+    if (!cut.parts) return { ...cut, startMs, endMs };
+    const parts = cut.parts.map((p, i) => ({ ...p, ...(i === 0 ? { startMs } : {}), ...(i === cut.parts.length - 1 ? { endMs } : {}) }));
+    return { ...cut, startMs, endMs, parts };
+  });
+  return { cuts: out, fixes };
+}
+
+/**
+ * The clips whose first or last EDGE_WINDOW_MS carry more than EDGE_ENERGY_LIMIT of their RMS: the same signal
+ * verify-voice turns into «starts / stops inside a word».
+ * @param {{id: string, ranges: {startMs: number, endMs: number}[]}[]} clips
+ * @returns {{id: string, head: number, tail: number}[]}
+ */
+export function edgeOffenders(samples, sampleRate, clips, limit = EDGE_ENERGY_LIMIT) {
+  return clips
+    .map((c) => ({ id: c.id, ...edgeEnergies(samples, sampleRate, c.ranges) }))
+    .filter((e) => e.head > limit || e.tail > limit);
+}
+
+/** The console line (and report entry) of the edge check: «Comprobación de bordes: N clips con energía alta en el borde». */
+export function edgeCheckLine(offenders) {
+  const detail = offenders.map((o) => `${o.id} (${[o.head > EDGE_ENERGY_LIMIT ? `inicio ${o.head.toFixed(2)}` : '', o.tail > EDGE_ENERGY_LIMIT ? `final ${o.tail.toFixed(2)}` : ''].filter(Boolean).join(', ')})`);
+  return `Comprobación de bordes: ${offenders.length} clips con energía alta en el borde${detail.length ? `: ${detail.join(', ')}` : ''}`;
+}
+
+// Loudness of a partial re-import -------------------------------------------------------------------------------
+
+/**
+ * The full import a partial one belongs to, read from the clips already written when there is no import-gain.json
+ * (imports made before it existed): the recording most clips of `voice` were cut from, and the gain they got.
+ * @returns {{sha256: string, gainDb: number, file: string | null, inferred: true} | null}
+ */
+export function inferFullImport(records, voice) {
+  const own = records.filter((r) => r?.provider === 'recording' && r.voice === voice && r.source?.sha256 && Number.isFinite(r.source?.gainDb));
+  if (!own.length) return null;
+  const count = new Map();
+  for (const r of own) count.set(r.source.sha256, (count.get(r.source.sha256) ?? 0) + 1);
+  const [sha256] = [...count].reduce((a, b) => (b[1] > a[1] ? b : a));
+  const from = own.find((r) => r.source.sha256 === sha256);
+  return { sha256, gainDb: from.source.gainDb, file: from.source.file ?? null, inferred: true };
+}
+
+/** What a full import leaves in out/recording/<name>/import-gain.json for the partial imports that follow it. */
+export function importGainRecord({ gainDb, sha256, file, voice, target, durationMs, at }) {
+  return { gainDb, sha256, file, voice, target, durationMs, at };
+}
+
+const signed = (db) => `${db >= 0 ? '+' : ''}${db}`;
+
+/**
+ * How an import fixes its gain. With `--gain` it is that; with `--reuse-gain` it is the full import's; with `--lufs` or
+ * `--match` the recording is measured as always. With none of them, a partial import (`only`) reuses the full import's
+ * gain when there is one (`saved`): a cut of the recording must not be measured on its own, a sentence is not as loud
+ * as the whole (V39: +1.8 dB for the recording, --lufs had to be worked out by hand for each sentence).
+ * `fullFile` says that the file IS the full import's recording (same hash).
+ * @returns {{mode: 'measure' | 'explicit' | 'reuse', gainDb?: number, fullFile: boolean, message?: string}}
+ */
+export function planGain({ only = null, sha256, saved = null, match, lufs, gain, reuseGain = false }) {
+  const measuring = Boolean(match) || lufs !== undefined;
+  if (gain !== undefined && !Number.isFinite(gain)) throw new Error('--gain debe ser un número de dB (por ejemplo --gain 1.8)');
+  if ((gain !== undefined || reuseGain) && (measuring || (gain !== undefined && reuseGain))) {
+    throw new Error('--gain y --reuse-gain no se pueden combinar entre sí ni con --lufs / --match: elige una sola forma de fijar la ganancia');
+  }
+  const fullFile = Boolean(saved && saved.sha256 === sha256);
+  if (gain !== undefined) return { mode: 'explicit', gainDb: gain, fullFile, message: `ganancia fija ${signed(gain)} dB (--gain)` };
+  const reuse = () => ({
+    mode: 'reuse',
+    gainDb: saved.gainDb,
+    fullFile,
+    message:
+      `se reutiliza la ganancia de la importación completa: ${signed(saved.gainDb)} dB` +
+      ` (${saved.file ?? saved.sha256.slice(0, 8)}${saved.inferred ? ', leída de los clips ya importados' : ''}); no se mide el audio. --lufs, --match o --gain la cambian`,
+  });
+  if (reuseGain) {
+    if (!saved) {
+      throw new Error('--reuse-gain: no hay una importación completa anterior (ni out/recording/<nombre>/import-gain.json ni clips de esa voz en tts/); haz primero la importación completa o pasa --gain <dB>');
+    }
+    return reuse();
+  }
+  if (!measuring && only && saved) return reuse();
+  return { mode: 'measure', fullFile };
+}
+
+/**
+ * Samples (-1..1) of a 16-bit mono PCM WAV held in memory, as ffmpeg writes it to a pipe (RIFF sizes unknown, a LIST
+ * chunk before `data` is possible). Remotion's ffmpeg has no raw `s16le` / `f32le` muxer, only `wav`.
+ */
+export function pcm16FromWav(buffer) {
+  let pos = 12;
+  while (pos + 8 <= buffer.length) {
+    const id = buffer.toString('latin1', pos, pos + 4);
+    const size = buffer.readUInt32LE(pos + 4);
+    if (id === 'data') {
+      const bytes = Math.min(size, buffer.length - pos - 8);
+      const count = Math.floor(bytes / 2);
+      const out = new Float32Array(count);
+      for (let i = 0; i < count; i++) out[i] = buffer.readInt16LE(pos + 8 + i * 2) / 32768;
+      return out;
+    }
+    pos += 8 + size + (size % 2);
+  }
+  throw new Error('no data chunk in the WAV ffmpeg wrote');
 }

@@ -3,8 +3,13 @@
 // TTS providers write (tts/<id>.json + public/voice/<id>.mp3), for voice "recording/<name>":
 //
 //   node video/engine/scripts/import-recording.mjs --video <slug> --file <wav> --name <name>
-//        [--only s02-03,s04-01] [--tts-dir <dir> --voice-dir <dir>] [--match <clip.mp3> | --lufs -18] [--noise -40dB]
-//        [--max-pause <ms>] [--tempo <x>] [--lead-ms <ms>] [--force-asr]
+//        [--only s02-03,s04-01] [--tts-dir <dir> --voice-dir <dir>] [--match <clip.mp3> | --lufs -18 | --gain <dB> | --reuse-gain]
+//        [--noise -40dB] [--max-pause <ms>] [--tempo <x>] [--lead-ms <ms>] [--force-asr] [--no-edge-fix]
+//
+// Partial imports (--only): --name defaults to narration.json "voice" (recording/<name>), the voice build-timeline
+// accepts. The gain of a FULL import is saved in out/recording/<name>/import-gain.json and, with --only and no
+// --lufs/--match/--gain, applied as it is to the excerpt (--reuse-gain asks for it explicitly). If --file IS the full
+// recording of that import (same hash), --only locates every sentence in it and rewrites just the ones named.
 //
 // 1. Transcribes the recording with word timings (recording_asr.py, faster-whisper in the
 //    Chatterbox venv), cached in out/recording/<name>/asr-<file>.json by the file's hash. Long
@@ -24,7 +29,7 @@
 // (in script order) and import that file with --only <ids>: the other clips are left as they are.
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { warnIfEngineBehind } from './lib/engine-freshness.mjs';
@@ -33,6 +38,7 @@ import { analyzeNarration, isRecordingVoice, loadSources, reportOrThrow, spokenF
 import { ENGINE_DIR, MANIFEST, PATHS, REPO_ROOT, SCRIPTS_DIR, isMainModule } from './lib/paths.mjs';
 import { profileFor } from './lib/profiles.mjs';
 import {
+  EDGE_SAMPLE_RATE,
   REVIEW_SCORE,
   asrCacheValid,
   asrClips,
@@ -40,8 +46,13 @@ import {
   clipArgs,
   clock,
   cutPoints,
+  dropSilentWordRuns,
+  edgeCheckLine,
+  edgeOffenders,
   gainDb,
+  importGainRecord,
   importReport,
+  inferFullImport,
   keepRanges,
   laterTakes,
   locateSegments,
@@ -51,17 +62,21 @@ import {
   parseDuration,
   parseLoudness,
   parseSilences,
+  pcm16FromWav,
+  planGain,
   recordingRecord,
   recordingSettings,
   recutAdvice,
   recutLoudnessFilter,
+  refineCuts,
   repairSwallowedPauses,
   retryTargets,
   trailingSpeechEnd,
   selectSegments,
   stretchedWords,
+  trimGhostWords,
 } from './lib/recording.mjs';
-import { runFfmpeg, writeFileAtomic } from './lib/remotion.mjs';
+import { ffmpegBinary, runFfmpeg, writeFileAtomic } from './lib/remotion.mjs';
 import { VENV_PYTHON, scaleTimings } from './tts-chatterbox.mjs';
 
 const ASR_MODEL = 'small';
@@ -188,56 +203,170 @@ export function withTempo(record, tempo) {
   return { ...record, tempo, durationMs: scaled.durationMs, words: scaled.words };
 }
 
-export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir, voiceDir = PATHS.voiceDir, match, lufs = -18, noise = '-40dB', maxPauseMs, tempo, maxLeadMs = null, forceAsr = false, retry = true, log = console }) {
+/** "recording/lidia" -> "lidia" (null when the voice is not a recording voice). */
+function recordingName(voice) {
+  return isRecordingVoice(voice) ? voice.slice('recording/'.length) : null;
+}
+
+/**
+ * Mono 16 kHz float samples of the whole recording (what verify_voice.py measures its edge energy on), read through
+ * ffmpeg (Remotion's build only muxes `wav`, so it goes through a pipe as 16-bit PCM). A 10-minute recording is ~19 MB.
+ */
+function loadSamples(file) {
+  const res = spawnSync(ffmpegBinary(), ['-v', 'error', '-i', file, '-ac', '1', '-ar', String(EDGE_SAMPLE_RATE), '-c:a', 'pcm_s16le', '-f', 'wav', '-'], {
+    cwd: REPO_ROOT,
+    encoding: 'buffer',
+    maxBuffer: 1024 * 1024 * 1024,
+    windowsHide: true,
+  });
+  if (res.error) throw res.error;
+  if (res.status !== 0) throw new Error(`ffmpeg could not decode ${file}: ${String(res.stderr).trim()}`);
+  return pcm16FromWav(res.stdout);
+}
+
+/**
+ * The full import this one follows: out/recording/<name>/import-gain.json of any of `names` (a full import writes it),
+ * else the recording and gain most of the voice's clips in `ttsDir` were cut with (imports made before the file existed).
+ */
+function loadSavedImport({ names, ttsDir }) {
+  for (const n of names) {
+    const p = path.join(PATHS.outDir, 'recording', n, 'import-gain.json');
+    if (!existsSync(p)) continue;
+    try {
+      const saved = JSON.parse(readFileSync(p, 'utf8'));
+      if (typeof saved.sha256 === 'string' && Number.isFinite(saved.gainDb)) return saved;
+    } catch {
+      // unreadable: fall through to the clips
+    }
+  }
+  if (!existsSync(ttsDir)) return null;
+  const records = [];
+  for (const f of readdirSync(ttsDir)) {
+    if (!f.endsWith('.json')) continue;
+    try {
+      records.push(JSON.parse(readFileSync(path.join(ttsDir, f), 'utf8')));
+    } catch {
+      // not a clip record
+    }
+  }
+  for (const n of names) {
+    const inferred = inferFullImport(records, `recording/${n}`);
+    if (inferred) return inferred;
+  }
+  return null;
+}
+
+export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir, voiceDir = PATHS.voiceDir, match, lufs, gain: gainFlag, reuseGain = false, noise = '-40dB', maxPauseMs, tempo, maxLeadMs = null, forceAsr = false, retry = true, edgeFix = true, log = console }) {
   warnIfEngineBehind(log, { cwd: REPO_ROOT });
-  const voice = `recording/${name}`;
-  if (!isRecordingVoice(voice)) throw new Error(`--name must be lowercase letters, digits, "-" or "_" (got ${JSON.stringify(name)})`);
   if (!existsSync(file)) throw new Error(`recording not found: ${file}`);
 
   const sources = loadSources({ storyboard: PATHS.storyboard, narration: PATHS.narration, lexicon: PATHS.lexicon });
+  // The voice build-timeline accepts is narration.json's: a partial import takes its name from there unless told otherwise.
+  const narrationName = recordingName(sources.narration.voice);
+  const voiceName = name ?? (only ? narrationName : null);
+  if (!voiceName) throw new Error('--name is required (only with --only does it default to the "recording/<name>" voice of narration.json)');
+  name = voiceName;
+  const voice = `recording/${name}`;
+  if (!isRecordingVoice(voice)) throw new Error(`--name must be lowercase letters, digits, "-" or "_" (got ${JSON.stringify(name)})`);
   const analysis = analyzeNarration(sources, { ...profileFor(MANIFEST.profile), track: MANIFEST.track });
   reportOrThrow(analysis, log);
   const settings = recordingSettings(sources.narration, { tempo, maxPauseMs });
   const { rate, pitch } = analysis.voice;
   const segments = selectSegments(analysis.segments, only);
+  const writeIds = new Set(segments.map((s) => s.id));
 
   const workDir = path.join(PATHS.outDir, 'recording', name);
   mkdirSync(workDir, { recursive: true });
   const sha256 = createHash('sha256').update(readFileSync(file)).digest('hex');
+  // How the gain is fixed, and whether --file is the full recording of an earlier import: both before the slow work.
+  const saved = loadSavedImport({ names: [...new Set([name, narrationName].filter(Boolean))], ttsDir });
+  const plan = planGain({ only, sha256, saved, match, lufs, gain: gainFlag, reuseGain });
+  // --only with the whole recording: every sentence is located (the excerpt-only search starts at 0:00 and looks a few
+  // hundred words ahead, so a sentence further on is "not found"), and just the ones named are written.
+  const fullFileOnly = Boolean(only) && plan.fullFile;
+  if (fullFileOnly) log.log(`import-recording: --file es la grabación completa de la importación anterior: se localiza todo el guion y se reescriben solo ${[...writeIds].join(', ')}`);
+  else if (only && !saved && plan.mode === 'measure') log.warn(`  aviso: --only espera un recorte de la grabación (recut_recording.py) o la grabación completa ya importada; no hay una importación completa de «${voice}» de la que tomar la ganancia: se mide el recorte (--lufs ${lufs ?? -18})`);
+  const locSegments = fullFileOnly ? analysis.segments : segments;
   // Silences first: Whisper is not given the long ones (asrClips). The cuts read the same pass, timed as always.
   const silenceLog = analyse(file, `silencedetect=noise=${noise}:d=0.12`);
   const fileMs = parseDuration(silenceLog);
   const clips = fileMs === null ? null : asrClips(parseSilences(silenceLog, fileMs), fileMs);
   const prompt = asrPrompt({ opening: analysis.segments[0]?.parsed.display, adversary: MANIFEST.adversary, lexicon: sources.lexicon });
   const asr = transcribe(file, sha256, prompt, clips, workDir, { force: forceAsr, log });
-  let words = asr.words;
+  // `rawWords` is what is cached on disk (never modified here); `words` is what the cuts are placed from.
+  let rawWords = asr.words;
 
   const silences = parseSilences(silenceLog, asr.durationMs);
-  const target = match ? parseLoudness(analyse(match, 'loudnorm=print_format=json')).integrated : lufs;
-  const gain = gainDb(parseLoudness(analyse(file, 'loudnorm=print_format=json')), target);
+  let gain;
+  if (plan.mode === 'measure') {
+    const target = match ? parseLoudness(analyse(match, 'loudnorm=print_format=json')).integrated : (lufs ?? -18);
+    gain = gainDb(parseLoudness(analyse(file, 'loudnorm=print_format=json')), target);
+  } else {
+    gain = plan.gainDb;
+    log.log(`import-recording: ${plan.message}`);
+    // A re-recorded sentence can peak higher than the recording the gain was worked out on.
+    if (!plan.fullFile) {
+      try {
+        const peak = parseLoudness(analyse(file, 'loudnorm=print_format=json')).truePeak;
+        if (peak + gain > -1) log.warn(`  aviso: con ${gain >= 0 ? '+' : ''}${gain} dB el pico del recorte llega a ${(peak + gain).toFixed(1)} dBTP (por encima de -1): puede saturar`);
+      } catch {
+        // too little signal to measure: nothing to warn about
+      }
+    }
+  }
 
-  // Cuts are placed from the words' edges, so first undo the pauses Whisper stretched a word over.
-  let timed = repairSwallowedPauses(words, silences);
-  let located = locateSegments(segments, timed);
+  // Words Whisper invented without a duration are left out, and a short word stretched over a pause is cut down to its
+  // voice; then the pauses Whisper stretched a word over are undone, since cuts are placed from the words' edges.
+  const prepare = (raw) => {
+    const noSilent = dropSilentWordRuns(raw);
+    const ghost = trimGhostWords(noSilent.words, silences);
+    return { words: ghost.words, silentRuns: noSilent.dropped, ghosts: ghost.trimmed, timed: repairSwallowedPauses(ghost.words, silences) };
+  };
+  let { words, silentRuns, ghosts, timed } = prepare(rawWords);
+  let located = locateSegments(locSegments, timed);
   let cuts = cutPoints(located, timed, silences, asr.durationMs, { maxLeadMs });
   // A sentence Whisper skipped is heard again alone, without its prompt; if that finds it, everything is placed again.
   let retried = [];
   if (retry && located.some((f) => !f.found)) {
     const again = retryMissing({ file, workDir, asr, cachePath: path.join(workDir, `asr-${fileSlug(file)}.json`), gaps: missingGaps(located, cuts, timed, silences, asr.durationMs), log });
     if (again) {
-      words = again.words;
-      timed = repairSwallowedPauses(words, silences);
-      located = locateSegments(segments, timed);
+      rawWords = again.words;
+      ({ words, silentRuns, ghosts, timed } = prepare(rawWords));
+      located = locateSegments(locSegments, timed);
       cuts = cutPoints(located, timed, silences, asr.durationMs, { maxLeadMs });
       retried = again.retried.map((r) => ({ ...r, recovered: r.ids.filter((id) => located.find((f) => f.id === id)?.found) }));
       for (const r of retried) log.log(`import-recording: second hearing of ${clock(r.startMs)}–${clock(r.endMs)}: ${r.recovered.length ? `found ${r.recovered.join(', ')}` : 'still not found'}`);
+    }
+  }
+  for (const r of silentRuns) log.warn(`import-recording: ${r.count} palabras sin duración descartadas en ${(r.startMs / 1000).toFixed(2)} s: ${r.text.length > 90 ? `${r.text.slice(0, 90)}…` : r.text}`);
+  for (const g of ghosts) log.warn(`import-recording: palabra «${g.text}» de ${((g.endMs - g.startMs) / 1000).toFixed(1)} s (${clock(g.startMs)}–${clock(g.endMs)}) recortada a su voz (${clock(g.toStartMs)}–${clock(g.toEndMs)})`);
+
+  // Clip edges that fall inside the voice (Whisper ends a word early, the voice decays after it) are moved to the
+  // nearest silence now: verify-voice would only flag them after the render's setup, 15 minutes later.
+  let samples = null;
+  let edgeFixes = [];
+  if (edgeFix) {
+    try {
+      samples = loadSamples(file);
+    } catch (error) {
+      log.warn(`  aviso: no se pudo leer el audio para comprobar los bordes de los clips: ${error.message}`);
+    }
+  }
+  if (samples) {
+    ({ cuts, fixes: edgeFixes } = refineCuts(samples, EDGE_SAMPLE_RATE, cuts, located, timed));
+    edgeFixes = edgeFixes.filter((f) => writeIds.has(f.id));
+    for (const f of edgeFixes) {
+      if (f.head) log.log(`import-recording: ${f.id}: inicio movido de ${clock(f.head.fromMs)} a ${clock(f.head.toMs)} (energía del borde ${f.head.before.toFixed(2)} -> ${f.head.after.toFixed(2)})`);
+      if (f.tail) log.log(`import-recording: ${f.id}: final movido de ${clock(f.tail.fromMs)} a ${clock(f.tail.toMs)} (energía del borde ${f.tail.before.toFixed(2)} -> ${f.tail.after.toFixed(2)})`);
     }
   }
   const cutOf = new Map(cuts.map((c) => [c.id, c]));
   mkdirSync(ttsDir, { recursive: true });
   mkdirSync(voiceDir, { recursive: true });
   let pausesRemovedMs = 0;
-  for (const [k, seg] of segments.entries()) {
+  const written = [];
+  for (const [k, seg] of locSegments.entries()) {
+    if (!writeIds.has(seg.id)) continue;
     const cut = cutOf.get(seg.id);
     if (!cut) continue;
     // A spliced take (the last reading of each sentence) is cut part by part, then joined.
@@ -262,16 +391,36 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
     record.speechEndMs = trailingSpeechEnd(parseSilences(analyse(mp3, `silencedetect=noise=${noise}:d=0.08`), record.durationMs), record.durationMs);
     pausesRemovedMs += record.source.pausesRemovedMs;
     writeFileAtomic(path.join(ttsDir, `${seg.id}.json`), `${JSON.stringify(record, null, 1)}\n`);
+    written.push({ id: seg.id, ranges });
   }
+  // A full import leaves its gain for the partial imports that follow it (--only with a cut of this recording).
+  if (!only) {
+    const target = plan.mode === 'explicit' ? { gain } : match ? { match: path.relative(REPO_ROOT, match).split(path.sep).join('/') } : { lufs: lufs ?? -18 };
+    const record = importGainRecord({
+      gainDb: gain,
+      sha256,
+      file: path.relative(REPO_ROOT, path.resolve(file)).split(path.sep).join('/'),
+      voice,
+      target,
+      durationMs: asr.durationMs,
+      at: new Date().toISOString(),
+    });
+    writeFileAtomic(path.join(workDir, 'import-gain.json'), `${JSON.stringify(record, null, 1)}\n`);
+  }
+  // The same signal verify-voice will measure on these clips (RMS of their first / last 30 ms against their whole RMS).
+  const edgeBad = samples ? edgeOffenders(samples, EDGE_SAMPLE_RATE, written) : null;
 
-  const later = laterTakes(segments, located, timed);
-  const midStarts = midSentenceStarts(segments, located, timed);
-  const report = importReport({ located, cuts, words, gain, pausesRemovedMs, later, midStarts, retried });
+  // With the whole recording and --only, `located` holds every segment; only the ones that were written are reported on.
+  const mine = (id) => writeIds.has(id);
+  const later = laterTakes(locSegments, located, timed).filter((l) => mine(l.id));
+  const midStarts = midSentenceStarts(locSegments, located, timed).filter((m) => mine(m.id));
+  const report = importReport({ located, cuts, words, gain, pausesRemovedMs, later, midStarts, retried, silentRuns, ghosts, edgeFixes, edgeOffenders: edgeBad });
   const reportPath = path.join(workDir, `report-${fileSlug(file)}.md`);
   writeFileAtomic(reportPath, report);
-  const missing = located.filter((f) => !f.found).map((f) => f.id);
-  const weak = located.filter((f) => f.found && f.score < REVIEW_SCORE).map((f) => `${f.id} (${f.score.toFixed(2)})`);
-  log.log(`import-recording: ${cuts.length}/${located.length} clips -> ${voiceDir} (gain ${gain} dB${pausesRemovedMs ? `, ${(pausesRemovedMs / 1000).toFixed(1)} s of pauses removed` : ''}${settings.tempo !== 1 ? `, tempo ${settings.tempo}` : ''})`);
+  const missing = located.filter((f) => !f.found && mine(f.id)).map((f) => f.id);
+  const weak = located.filter((f) => f.found && mine(f.id) && f.score < REVIEW_SCORE).map((f) => `${f.id} (${f.score.toFixed(2)})`);
+  log.log(`import-recording: ${written.length}/${segments.length} clips -> ${voiceDir} (gain ${gain} dB${pausesRemovedMs ? `, ${(pausesRemovedMs / 1000).toFixed(1)} s of pauses removed` : ''}${settings.tempo !== 1 ? `, tempo ${settings.tempo}` : ''})`);
+  if (edgeBad) (edgeBad.length ? log.warn : log.log).call(log, `import-recording: ${edgeCheckLine(edgeBad)}`);
   if (weak.length) log.warn(`  aviso: listen to these, they differ from the script: ${weak.join(', ')}`);
   // The narrator's last take is the good one: a reading of a segment AFTER the one used is a clip to rebuild.
   for (const lt of later) {
@@ -280,7 +429,7 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
     for (const line of recutAdvice(gap, recutOptions(gap, { file, name, gain }))) log.warn(`    ${line}`);
   }
   // A half-said sentence glued to its retake shows as one word stretched over the dropped words.
-  for (const sw of stretchedWords(located, timed, silences)) {
+  for (const sw of stretchedWords(located, timed, silences).filter((x) => mine(x.id))) {
     const cut = cutOf.get(sw.id);
     // The clean take starts where the voice resumes after the silence inside the word, or at the word itself when
     // the repair already moved its start past that silence.
@@ -302,13 +451,18 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
   }
   if (missing.length) {
     log.warn(`  aviso: not found in the recording (no clip written): ${missing.join(', ')}`);
-    for (const gap of missingGaps(located, cuts, timed, silences, asr.durationMs)) {
+    for (const gap of missingGaps(located, cuts, timed, silences, asr.durationMs).filter((g) => g.ids.some(mine))) {
       for (const line of recutAdvice(gap, recutOptions(gap, { file, name, gain }))) log.warn(`    ${line}`);
     }
+    if (only && !plan.fullFile) log.warn('  aviso: --only espera un recorte de la grabación (recut_recording.py) o la grabación completa de la importación anterior; si --file es la grabación completa pero no se reconoce, importa sin --only');
   }
-  if (sources.narration.voice !== voice) log.warn(`  aviso: narration.json "voice" is "${sources.narration.voice}" — set it to "${voice}" before build-timeline`);
+  if (narrationName && narrationName !== name) {
+    log.warn(`  aviso: el clip llevará otra voz («${voice}») que narration.json («${sources.narration.voice}»); usa --name ${narrationName} para que build-timeline lo acepte`);
+  } else if (!narrationName) {
+    log.warn(`  aviso: narration.json "voice" is "${sources.narration.voice}" — set it to "${voice}" before build-timeline`);
+  }
   log.log(`report -> ${reportPath}`);
-  return { located, cuts, gain, missing, weak, midStarts, retried };
+  return { located, cuts, gain, missing, weak, midStarts, retried, edgeFixes, edgeOffenders: edgeBad, silentRuns, ghosts };
 }
 
 function main() {
@@ -322,30 +476,36 @@ function main() {
       'voice-dir': { type: 'string' },
       match: { type: 'string' },
       lufs: { type: 'string' },
+      gain: { type: 'string' },
+      'reuse-gain': { type: 'boolean', default: false },
       noise: { type: 'string' },
       'max-pause': { type: 'string' },
       tempo: { type: 'string' },
       'lead-ms': { type: 'string' },
       'force-asr': { type: 'boolean', default: false },
       'no-retry': { type: 'boolean', default: false },
+      'no-edge-fix': { type: 'boolean', default: false },
     },
   });
-  if (!values.file || !values.name) throw new Error('usage: import-recording.mjs --video <slug> --file <wav> --name <name> [--only s02-03,s04-01] [--tts-dir <dir> --voice-dir <dir>] [--match <clip> | --lufs <n>] [--noise -40dB] [--max-pause 300] [--tempo 1.08] [--force-asr] [--no-retry]');
+  if (!values.file || (!values.name && !values.only)) throw new Error('usage: import-recording.mjs --video <slug> --file <wav> --name <name> [--only s02-03,s04-01] [--tts-dir <dir> --voice-dir <dir>] [--match <clip> | --lufs <n> | --gain <dB> | --reuse-gain] [--noise -40dB] [--max-pause 300] [--tempo 1.08] [--force-asr] [--no-retry] [--no-edge-fix] (--name is optional with --only: it defaults to narration.json "voice")');
   const abs = (p) => (p ? path.resolve(p) : undefined);
   importRecording({
     file: path.resolve(values.file),
-    name: values.name,
+    ...(values.name ? { name: values.name } : {}),
     only: values.only ? values.only.split(',').map((x) => x.trim()).filter(Boolean) : null,
     ...(values['tts-dir'] ? { ttsDir: abs(values['tts-dir']) } : {}),
     ...(values['voice-dir'] ? { voiceDir: abs(values['voice-dir']) } : {}),
     ...(values.match ? { match: abs(values.match) } : {}),
     ...(values.lufs !== undefined ? { lufs: Number.parseFloat(values.lufs) } : {}),
+    ...(values.gain !== undefined ? { gain: Number.parseFloat(values.gain) } : {}),
+    reuseGain: values['reuse-gain'],
     ...(values.noise ? { noise: values.noise } : {}),
     ...(values['max-pause'] ? { maxPauseMs: Number.parseInt(values['max-pause'], 10) } : {}),
     ...(values.tempo ? { tempo: Number.parseFloat(values.tempo) } : {}),
     ...(values['lead-ms'] ? { maxLeadMs: Number.parseInt(values['lead-ms'], 10) } : {}),
     forceAsr: values['force-asr'],
     retry: !values['no-retry'],
+    edgeFix: !values['no-edge-fix'],
   });
 }
 
