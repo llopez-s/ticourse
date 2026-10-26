@@ -135,6 +135,17 @@ export const SP7M4: Module = {
       ],
     },
     {
+      t: 'p',
+      md: 'Antes de las comprobaciones, el caso del cartel contado en cuatro minutos.',
+    },
+    {
+      t: 'video',
+      title: 'Un cartel con un código',
+      youtube: 'kOotP93kQn8',
+      poster: 'videos/vectores-nuevos-poster.png',
+      transcript: 'videos/vectores-nuevos-transcript.txt',
+    },
+    {
       t: 'check',
       q: {
         optional: true,

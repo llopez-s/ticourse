@@ -1,0 +1,23 @@
+Un cartel con un código
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA
+
+[00:00] I · Un cartel en la entrada — El cartel
+Imagina que en el puerto de Halden, junto a una entrada, alguien pega un cartel con un código para consultar tu trámite. Vamos a ver qué consigue quien lo pegó y cómo te das cuenta. También, qué cortar para frenarlo. En este ejemplo ronda BORROWED VOICE, que vive de voces ajenas.
+
+[00:21] I · Un cartel en la entrada — Una dirección que no lees
+Alguien que llega con su camión lo escanea con el móvil. Se abre una página igualita al acceso web del puerto. Le pide usuario, contraseña y el código temporal de su segundo factor. Fíjate en el cartel. Ese cuadrado de puntos es una dirección web que tus ojos no pueden leer. A simple vista, no sabes adónde va. A eso se le llama quishing. Es el phishing de toda la vida, pero con un código QR de anzuelo. Encima, como el QR viaja dentro de una imagen, puede que el filtro de enlaces del correo ni lo vea. O sea, antes de fiarte de un QR, mira la dirección que te enseña el móvil. Si no es la del puerto, no sigas.
+
+[01:06] II · Lo que se llevan — Esa misma tarde
+Más tarde, un conductor avisa de que el cartel está pegado encima de otro. Lo retiran, pero seguro que alguien ya ha metido sus datos. El equipo piensa en pedir a quien lo escaneó que cambie la contraseña. ¿Basta?
+
+[01:26] II · Lo que se llevan — Lo que se llevan
+[Mensaje interceptado · BORROWED VOICE] «Cambian la contraseña y listo. La puerta queda cerrada.» Qué cómodo sería. Pues no, y te cuento por qué. Cuando alguien inicia sesión, el sitio le da una prueba de que ya entró. Esa prueba es el token de sesión. Quien lo copia se hace pasar por ti, sin contraseña y sin que vuelvan a pedirte el segundo factor. Una página falsa puede ponérselo fácil. Mientras escribes, reenvía tu contraseña y tu código al sitio real. Y el sitio le abre una sesión a quien montó la página. Así se salta el segundo factor, el MFA. Por eso cambiar la contraseña no basta. Una sesión que ya está abierta puede seguir abierta, y hay que revocarla para cerrarla.
+
+[02:12] III · Verlo y cortarlo — Cómo se nota
+¿Cómo averiguas quién la visitó? Lees la dirección en un entorno aislado y la cruzas con los registros del proxy y del DNS. Y en los registros de inicio de sesión miras si alguna de esas cuentas entró poco después desde un lugar nuevo. Imagina dos accesos correctos de la misma cuenta, tan lejos uno de otro que nadie llegaría en ese tiempo. Eso es el impossible travel. [Mensaje interceptado · BORROWED VOICE] «Seguro que es una VPN. Ciérralo y sigue con lo tuyo.» Ya, claro. Una VPN, o un proxy de la empresa, sí puede dar un falso positivo. Pero eso se confirma con contexto, no a ojo. Si el nuevo acceso ni siquiera pidió el segundo factor, puede ser un token robado y reutilizado.
+
+[02:58] III · Verlo y cortarlo — Cortar y vigilar
+A las cuentas que metieron sus datos las cortas ya. Restableces las credenciales y revocas sesiones y tokens. A quienes visitaron la página sin escribir nada, en cambio, los vigilas. Para que una página así no sirva de nada, hace falta un segundo factor que no se deje engañar. Es el MFA resistente al phishing.
+
+[03:20] III · Verlo y cortarlo — Tres ideas
+Tres ideas. Primera, un QR es una dirección que no puedes leer, así que mira adónde te lleva. Segunda, quien copia tu sesión entra sin contraseña, así que revoca sesiones y tokens. Y tercera, una alerta de acceso imposible no se cierra por suposición, se confirma con contexto. Si alguien entró con tus datos, no basta con cambiar la contraseña. Hay que cerrar también las sesiones. Con eso en la cabeza, tu turno.

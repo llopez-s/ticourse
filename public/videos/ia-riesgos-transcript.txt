@@ -1,0 +1,23 @@
+Una orden escondida en un documento
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA
+
+[00:00] I · Cómo se cuela — El asistente nuevo
+Imagina que en el puerto de Halden estrenan un asistente que contesta dudas del personal y resume documentos. Vamos a ver cómo se le cuela una orden sin que quien lo usa escriba nada raro. Y cómo limitar el daño. Y en este ejemplo ronda BORROWED VOICE, que vive de voces ajenas.
+
+[00:22] I · Cómo se cuela — Por dónde entra la orden
+Una persona de operaciones adjunta un documento que le mandó un tercero y pide un resumen. Dentro, en letra diminuta, hay un párrafo que le ordena al asistente olvidar sus reglas y juntar todo lo interno. La persona no ve nada raro. Pero el modelo lee ese párrafo igual que lo que ella le pide, porque para él todo es texto. Eso es una prompt injection indirecta. La orden no la escribe quien usa el asistente. Viene escondida en los datos. Otra cosa es que el propio usuario, en su conversación, empuje al modelo a saltarse sus reglas de seguridad. Eso es jailbreaking. Para distinguirlos, pregunta quién ataca y por dónde entra la orden. Si llega dentro de algo que escribió otra persona, es indirecta. Y si se corrompen los datos con los que aprende o en los que se apoya, es poisoning.
+
+[01:14] II · Por qué una línea no basta — ¿Basta una línea?
+Párate un momento. El equipo le añade al asistente una línea que le pide no obedecer órdenes que vengan en un documento. ¿Basta?
+
+[01:29] II · Por qué una línea no basta — Por qué no basta
+[Mensaje interceptado · BORROWED VOICE] «Una línea en sus instrucciones y listo. Con eso basta.» Qué cómodo sería. Pues no, y por tres razones. Primera, la defensa vive en el mismo canal que el ataque. Es una frase contra otra, y nadie te asegura cuál gana. Segunda, una lista de frases prohibidas ayuda poco, porque se esquiva con solo reformular el mensaje. Y tercera, aunque funcionara noventa y nueve veces de cada cien, queda la que falla. Y en esa, el asistente puede leerlo todo y sacarlo fuera. Por eso un control que depende de que el modelo se porte bien no es un control. Es una esperanza.
+
+[02:10] II · Por qué una línea no basta — Lo que sí funciona
+Lo que sí funciona es suponer que alguna vez saldrá mal, y limitar el daño. Lo primero, permisos mínimos. El asistente consulta con los permisos de quien pregunta, así que no lee lo que esa persona no podría leer. Luego, sin salida libre. No manda nada fuera por su cuenta, y lo que tenga efectos pasa antes por una persona. Y además, se revisa la respuesta antes de que salga y se apunta qué documento y herramienta ha usado. ¿Ves lo que tienen en común? Que todas las barreras están fuera del modelo.
+
+[02:44] III · Lo que sale del modelo — Lo que sale del modelo
+Una última pieza. Muchos asistentes ejecutan lo que el modelo produce, un script, una consulta, un comando. Si la orden escondida le hace escribir algo malicioso y la aplicación lo ejecuta sin más, el atacante ya está ejecutando código. [Mensaje interceptado · BORROWED VOICE] «Que el propio modelo revise su script. Él sabrá.» Ya, claro. ¿Que lo revise el mismo modelo al que acaban de engañar? Eso no es una barrera. La regla es sencilla. Lo que sale del modelo es entrada no confiable, como lo que te escribe un desconocido. Por eso se ejecuta en un sandbox aislado, sin credenciales de producción ni red libre. Y lo que tenga efectos lo aprueba una persona.
+
+[03:27] III · Lo que sale del modelo — Tres reglas
+Tres reglas. Una, pregunta quién ataca y por dónde entra la orden. Dos, un control que depende de que el modelo se porte bien no es un control. Y tres, lo que sale del modelo es entrada no confiable. Si le das un asistente a tu gente, los límites, fuera del modelo. Con eso en la cabeza, tu turno.

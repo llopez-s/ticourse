@@ -1,0 +1,290 @@
+WEBVTT
+
+1
+00:00:01.433 --> 00:00:04.733
+Imagina que en el puerto
+de Halden estrenan un asistente
+
+2
+00:00:04.733 --> 00:00:09.133
+que contesta dudas del personal
+y resume documentos.
+
+3
+00:00:09.133 --> 00:00:14.100
+Vamos a ver cómo se le cuela una orden
+sin que quien lo usa escriba nada raro.
+
+4
+00:00:14.100 --> 00:00:16.233
+Y cómo limitar el daño.
+
+5
+00:00:16.233 --> 00:00:21.367
+Y en este ejemplo ronda BORROWED
+VOICE, que vive de voces ajenas.
+
+6
+00:00:22.333 --> 00:00:25.267
+Una persona de operaciones
+adjunta un documento
+
+7
+00:00:25.267 --> 00:00:28.300
+que le mandó un tercero y pide un resumen.
+
+8
+00:00:28.300 --> 00:00:30.433
+Dentro, en letra diminuta,
+
+9
+00:00:30.433 --> 00:00:32.467
+hay un párrafo que le ordena al asistente
+
+10
+00:00:32.467 --> 00:00:35.867
+olvidar sus reglas
+y juntar todo lo interno.
+
+11
+00:00:35.867 --> 00:00:37.767
+La persona no ve nada raro.
+
+12
+00:00:37.767 --> 00:00:41.433
+Pero el modelo lee ese párrafo
+igual que lo que ella le pide,
+
+13
+00:00:41.433 --> 00:00:43.633
+porque para él todo es texto.
+
+14
+00:00:43.633 --> 00:00:46.233
+Eso es una prompt injection indirecta.
+
+15
+00:00:46.233 --> 00:00:50.533
+La orden no la escribe quien usa el
+asistente. Viene escondida en los datos.
+
+16
+00:00:50.533 --> 00:00:53.967
+Otra cosa es que el propio
+usuario, en su conversación,
+
+17
+00:00:53.967 --> 00:00:59.000
+empuje al modelo a saltarse sus reglas
+de seguridad. Eso es jailbreaking.
+
+18
+00:00:59.000 --> 00:01:02.833
+Para distinguirlos, pregunta quién
+ataca y por dónde entra la orden.
+
+19
+00:01:02.833 --> 00:01:06.800
+Si llega dentro de algo que escribió
+otra persona, es indirecta.
+
+20
+00:01:06.800 --> 00:01:11.567
+Y si se corrompen los datos con los
+que aprende o en los que se apoya,
+
+21
+00:01:11.567 --> 00:01:13.633
+es poisoning.
+
+22
+00:01:14.633 --> 00:01:15.933
+Párate un momento.
+
+23
+00:01:15.933 --> 00:01:19.400
+El equipo le añade al asistente
+una línea que le pide
+
+24
+00:01:19.400 --> 00:01:22.667
+no obedecer órdenes
+que vengan en un documento.
+
+25
+00:01:22.667 --> 00:01:24.000
+¿Basta?
+
+26
+00:01:34.700 --> 00:01:39.033
+Qué cómodo sería.
+Pues no, y por tres razones.
+
+27
+00:01:39.033 --> 00:01:42.733
+Primera, la defensa vive
+en el mismo canal que el ataque.
+
+28
+00:01:42.733 --> 00:01:46.967
+Es una frase contra otra,
+y nadie te asegura cuál gana.
+
+29
+00:01:46.967 --> 00:01:50.500
+Segunda, una lista de frases
+prohibidas ayuda poco,
+
+30
+00:01:50.500 --> 00:01:54.333
+porque se esquiva con solo
+reformular el mensaje.
+
+31
+00:01:54.333 --> 00:01:58.367
+Y tercera, aunque funcionara
+noventa y nueve veces de cada cien,
+
+32
+00:01:58.367 --> 00:02:03.233
+queda la que falla. Y en esa, el asistente
+puede leerlo todo y sacarlo fuera.
+
+33
+00:02:03.233 --> 00:02:08.067
+Por eso un control que depende de que el
+modelo se porte bien no es un control.
+
+34
+00:02:08.067 --> 00:02:10.133
+Es una esperanza.
+
+35
+00:02:11.067 --> 00:02:15.800
+Lo que sí funciona es suponer que alguna
+vez saldrá mal, y limitar el daño.
+
+36
+00:02:15.800 --> 00:02:18.400
+Lo primero, permisos mínimos.
+
+37
+00:02:18.400 --> 00:02:21.500
+El asistente consulta con los
+permisos de quien pregunta,
+
+38
+00:02:21.500 --> 00:02:24.500
+así que no lee lo que esa
+persona no podría leer.
+
+39
+00:02:24.500 --> 00:02:26.567
+Luego, sin salida libre.
+
+40
+00:02:26.567 --> 00:02:28.433
+No manda nada fuera por su cuenta,
+
+41
+00:02:28.433 --> 00:02:31.967
+y lo que tenga efectos
+pasa antes por una persona.
+
+42
+00:02:31.967 --> 00:02:35.400
+Y además, se revisa
+la respuesta antes de que salga
+
+43
+00:02:35.400 --> 00:02:38.533
+y se apunta qué documento
+y herramienta ha usado.
+
+44
+00:02:38.533 --> 00:02:43.467
+¿Ves lo que tienen en común? Que todas
+las barreras están fuera del modelo.
+
+45
+00:02:44.433 --> 00:02:45.867
+Una última pieza.
+
+46
+00:02:45.867 --> 00:02:51.100
+Muchos asistentes ejecutan lo que el
+modelo produce, un script, una consulta,
+
+47
+00:02:51.100 --> 00:02:52.300
+un comando.
+
+48
+00:02:52.300 --> 00:02:55.533
+Si la orden escondida le hace escribir
+algo malicioso y la aplicación
+
+49
+00:02:55.533 --> 00:03:00.067
+lo ejecuta sin más, el atacante
+ya está ejecutando código.
+
+50
+00:03:04.700 --> 00:03:09.133
+Ya, claro. ¿Que lo revise el mismo
+modelo al que acaban de engañar?
+
+51
+00:03:09.133 --> 00:03:10.767
+Eso no es una barrera.
+
+52
+00:03:10.767 --> 00:03:12.667
+La regla es sencilla.
+
+53
+00:03:12.667 --> 00:03:15.533
+Lo que sale del modelo
+es entrada no confiable,
+
+54
+00:03:15.533 --> 00:03:18.033
+como lo que te escribe un desconocido.
+
+55
+00:03:18.033 --> 00:03:20.567
+Por eso se ejecuta en un sandbox aislado,
+
+56
+00:03:20.567 --> 00:03:23.033
+sin credenciales
+de producción ni red libre.
+
+57
+00:03:23.033 --> 00:03:27.100
+Y lo que tenga efectos
+lo aprueba una persona.
+
+58
+00:03:28.300 --> 00:03:33.567
+Tres reglas. Una, pregunta quién
+ataca y por dónde entra la orden.
+
+59
+00:03:33.567 --> 00:03:38.900
+Dos, un control que depende de que el
+modelo se porte bien no es un control.
+
+60
+00:03:38.900 --> 00:03:43.167
+Y tres, lo que sale del modelo
+es entrada no confiable.
+
+61
+00:03:43.167 --> 00:03:47.700
+Si le das un asistente a tu gente,
+los límites, fuera del modelo.
+
+62
+00:03:47.700 --> 00:03:50.733
+Con eso en la cabeza, tu turno.

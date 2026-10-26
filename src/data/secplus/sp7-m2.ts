@@ -160,6 +160,17 @@ export const SP7M2: Module = {
       md: 'Un control que depende de que el modelo "se porte bien" **no es un control**: es una esperanza. Los controles que cuentan son los que se aplican **fuera** del modelo y limitan el daño aunque el modelo falle: permisos mínimos, aprobación humana, filtros externos, registro y segmentación. Es el mismo razonamiento de defensa en profundidad que ya conoces, aplicado a un componente que no se puede garantizar al 100 %.',
     },
     {
+      t: 'p',
+      md: 'Antes de las comprobaciones, el ejemplo del asistente contado en cuatro minutos.',
+    },
+    {
+      t: 'video',
+      title: 'Una orden escondida en un documento',
+      youtube: '9Jfuq0WloDc',
+      poster: 'videos/ia-riesgos-poster.png',
+      transcript: 'videos/ia-riesgos-transcript.txt',
+    },
+    {
       t: 'check',
       q: {
         optional: true,

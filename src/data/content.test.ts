@@ -418,6 +418,15 @@ describe('lesson videos', () => {
     // V54 walks the triage assistant of Halden: what it may do, with which permissions and who checks it, after the
     // guided example and before the optional checks
     expect(youtubeVideos.find((v) => v.block.youtube === 'ZH078lxIDFs')?.module).toBe('sp7m3');
+    // V57 maps the SY0-701 objectives onto the SY0-801 draft as a supermarket being refitted, after the gap analysis check
+    // and before the short task its closing card points at
+    expect(youtubeVideos.find((v) => v.block.youtube === 'uOraRdyoDWA')?.module).toBe('sp7m1');
+    // V53 hides an order in a document for Halden's assistant and limits the damage outside the model, after the
+    // «Idea para llevarte» callout and before the optional checks
+    expect(youtubeVideos.find((v) => v.block.youtube === '9Jfuq0WloDc')?.module).toBe('sp7m2');
+    // V55 follows a QR poster to a stolen session token and impossible travel, after the guided scenario's list and
+    // before the optional checks
+    expect(youtubeVideos.find((v) => v.block.youtube === 'kOotP93kQn8')?.module).toBe('sp7m4');
   });
 
   it('every video block points at relative public assets that exist', async () => {
