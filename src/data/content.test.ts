@@ -412,6 +412,12 @@ describe('lesson videos', () => {
     // V42 weighs a vendor's evidence, what falls before and after signing and what each paper fixes, with three
     // exam-style questions, after the port callout and before the paragraph that hands over to sp5m6
     expect(youtubeVideos.find((v) => v.block.youtube === 'gJ6zP3VOesw')?.module).toBe('sp5m5');
+    // V44 asks why somebody did it, what is measured and for whom, with three exam-style questions, after sp5m8's last
+    // check and before the paragraph that closes the five domains
+    expect(youtubeVideos.find((v) => v.block.youtube === 'actmHdOKvEY')?.module).toBe('sp5m8');
+    // V54 walks the triage assistant of Halden: what it may do, with which permissions and who checks it, after the
+    // guided example and before the optional checks
+    expect(youtubeVideos.find((v) => v.block.youtube === 'ZH078lxIDFs')?.module).toBe('sp7m3');
   });
 
   it('every video block points at relative public assets that exist', async () => {
