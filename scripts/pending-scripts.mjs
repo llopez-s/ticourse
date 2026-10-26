@@ -202,7 +202,15 @@ async function main() {
       const id = body.match(/youtube:\s*'([^']+)'/)?.[1]
       const slug = body.match(/videos\/([a-z0-9-]+)-(?:poster|transcript)/)?.[1]
       if (id && slug) lessonVideo.set(slug, id)
+      // The two oldest videos (siem, forense-adquisicion) are MP4 files in public/, with no YouTube id.
+      const mp4Slug = !id && body.match(/src:\s*'videos\/([a-z0-9-]+)\.mp4'/)?.[1]
+      if (mp4Slug) lessonVideo.set(mp4Slug, '')
     }
+  }
+  // The practical blocks embed their videos with a helper: video('title', '<id>', '<slug>') (AP01–AP04).
+  for (const line of git('grep', '-h', '-e', 'video(', base, '--', 'src/data/practical').split('\n')) {
+    const m = line.match(/video\(\s*'[^']*',\s*'([A-Za-z0-9_-]{11})',\s*'([a-z0-9-]+)'/)
+    if (m) lessonVideo.set(m[2], m[1])
   }
   const voiceFiles = fs.existsSync(voices) ? fs.readdirSync(voices) : []
 
@@ -214,6 +222,12 @@ async function main() {
   for (const [branch, wt] of worktreeOf) {
     const m = branch.match(/^video-(.+)$/)
     if (m && !candidates.has(branch) && fs.existsSync(path.join(wt, 'video', m[1], 'video.json'))) candidates.set(branch, wt)
+  }
+  // And every video folder already on main, with or without a local worktree: G01–G07 and AP01–AP07 were
+  // written and merged from sessions whose worktrees are gone, so the page never listed them (2026-10-26).
+  for (const f of git('ls-tree', '-r', '--name-only', base, '--', 'video/').split('\n')) {
+    const m = f.match(/^video\/([a-z0-9-]+)\/video\.json$/)
+    if (m && m[1] !== 'engine' && !candidates.has(`video-${m[1]}`)) candidates.set(`video-${m[1]}`, path.join(root, '.claude', 'no-worktree', m[1]))
   }
   const names = [...candidates.keys()]
   const branchesByName = new Map(names.map((n) => [n, branchesOfVideo(n, allBranches, names)]))
@@ -336,8 +350,10 @@ async function main() {
     for (const b of branches) clips = Math.max(clips, branchClips(b))
     // The lesson's id wins; else the newest upload file; else «YouTube <id>» in a commit that only a -voz
     // branch has (base..branch: the rest of its log is main's history, full of other videos' ids).
-    const inLesson = lessonVideo.has(slug)
-    let youtubeId = lessonVideo.get(slug) ?? upload?.id ?? ''
+    // The lesson names the files after video.json's «output», which is not always the slug (siem -> siem-blue-team).
+    const lessonKey = lessonVideo.has(slug) ? slug : meta.output
+    const inLesson = lessonVideo.has(lessonKey)
+    let youtubeId = lessonVideo.get(lessonKey) || upload?.id || ''
     if (!youtubeId) {
       for (const b of branches.filter((b) => b.endsWith('-voz'))) {
         const log = git('log', '-F', `--grep=${slug}`, '--format=%s %b', `${base}..${b}`)
