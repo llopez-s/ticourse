@@ -412,6 +412,12 @@ describe('lesson videos', () => {
     // V42 weighs a vendor's evidence, what falls before and after signing and what each paper fixes, with three
     // exam-style questions, after the port callout and before the paragraph that hands over to sp5m6
     expect(youtubeVideos.find((v) => v.block.youtube === 'gJ6zP3VOesw')?.module).toBe('sp5m5');
+    // V43 looks before launching, cares afterwards and deletes on time, with three exam-style questions, after the port
+    // callout and before the paragraph that hands over to sp5m7
+    expect(youtubeVideos.find((v) => v.block.youtube === 'S9yW5SeLShc')?.module).toBe('sp5m6');
+    // V39 tells declaring from proving and the four ways to test, with five exam-style questions, after the last check
+    // of sp5m7 and before the paragraph that hands over to the awareness lesson
+    expect(youtubeVideos.find((v) => v.block.youtube === 'mvQK4M8kc_8')?.module).toBe('sp5m7');
     // V44 asks why somebody did it, what is measured and for whom, with three exam-style questions, after sp5m8's last
     // check and before the paragraph that closes the five domains
     expect(youtubeVideos.find((v) => v.block.youtube === 'actmHdOKvEY')?.module).toBe('sp5m8');
