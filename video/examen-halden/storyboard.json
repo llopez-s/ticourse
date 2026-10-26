@@ -1,5 +1,5 @@
 {
-  "title": "Estrategia del examen SY0-701: calificadores y tiempo",
+  "title": "Del puerto al examen: cómo se contesta",
   "fps": 30,
   "width": 1920,
   "height": 1080,
@@ -33,7 +33,7 @@
       "title": "Del puerto a la pantalla",
       "targetSec": 20,
       "wordBudget": 54,
-      "goal": "Sello «Autoridad Portuaria de Halden · del puerto al examen», sin fecha y sin «caso de ejemplo». El puerto de noche, a la izquierda (`port`), que se funde en una pantalla de examen vacía con «1 / 90» y «90:00» (`screen`). Al acabar la segunda frase, título «Del puerto al examen» (`title`, hacia los 8 s, siempre antes de los 12) y la promesa en tres chips (`promise`): «qué te piden · qué descartas · cuánto tiempo tienes». Plaquita «SY0-701», sin número de objetivo",
+      "goal": "Sello «Autoridad Portuaria de Halden · del puerto al examen», sin fecha y sin «caso de ejemplo» (aquí no hay caso). El puerto de noche, a la izquierda (`port`), que se funde en una pantalla de examen vacía con «1 / 90» y «90:00» (`screen`). La primera frase presenta el puerto y el problema; el título «Del puerto al examen» entra mientras la voz dice «Es una pantalla, noventa minutos…» (`title`, hacia los 7 s, siempre antes de los 12) y, detrás, la promesa en tres chips (`promise`, hacia los 11 s): «qué te piden · qué descartas · cuánto tiempo tienes». La voz dice que aquí no se repasa seguridad, se aprende a contestar. Plaquita «SY0-701», sin número (arte de escena)",
       "requiredCues": [
         "port",
         "screen",
@@ -47,7 +47,7 @@
       "title": "Lo que te espera",
       "targetSec": 40,
       "wordBudget": 108,
-      "goal": "La ficha del examen (`sheet`), fila a fila: «hasta 90 preguntas» (`questions`) · «90 minutos» (`minutes`) · «closed-book: sin apuntes» (`closed-book`) · «escala de 100 a 900 · aprobado: 750» (`scale`) · «test (una o varias respuestas) + simulaciones». Un chip fijo «datos de la lección · compruébalos en comptia.org» (`caveat`). Sin las simulaciones en detalle (llegan en s12). Sin tarjeta de examen",
+      "goal": "La ficha del examen, fila a fila (`sheet`): «hasta 90 preguntas» (`questions`) · «90 minutos» (`minutes`) · «closed-book: sin apuntes» (`closed-book`) · «escala de 100 a 900 · aprobado: 750» (`scale`) · «test (una o varias respuestas) + simulaciones». Un chip fijo «datos de la lección · compruébalos en comptia.org» (`caveat`). La voz cuenta que 750 es una nota en una escala, no un porcentaje, y que a veces hay que marcar más de una respuesta. Sin las simulaciones en detalle (llegan en s12) ni cuántas hay. Sin tarjeta de examen",
       "requiredCues": [
         "sheet",
         "questions",
@@ -63,7 +63,7 @@
       "title": "Dónde están los puntos",
       "targetSec": 36,
       "wordBudget": 97,
-      "goal": "Las cinco secciones recorridas, dibujadas como cinco bloques de altura proporcional a su peso (`blocks`, `weights`): «Sección 1 · conceptos generales · 12 %», «2 · amenazas y vulnerabilidades · 22 %», «3 · arquitectura · 18 %», «4 · operaciones · 28 %», «5 · gobierno del programa · 20 %». Se encienden Operaciones y Amenazas y una llave las junta: «la mitad del examen» (`half`). El bloque del 12 % lleva «el vocabulario de todas las demás» (`vocab`). Sin tarjeta de examen",
+      "goal": "Las cinco secciones del curso, dibujadas como cinco bloques de altura proporcional a su peso (`blocks`): «Sección 1 · conceptos generales · 12 %», «2 · amenazas, vulnerabilidades y mitigaciones · 22 %», «3 · arquitectura · 18 %», «4 · operaciones · 28 %», «5 · gestión del programa · 20 %» (los nombres en español de las secciones del curso, `sp/sections.ts`). Aparecen con su peso (`weights`). Se encienden Operaciones y Amenazas y una llave las junta: «la mitad del examen» (`half`). El bloque del 12 % lleva «el vocabulario de todas las demás» (`vocab`). Nombres de misión, boss o adversario: ninguno. Sin tarjeta de examen",
       "requiredCues": [
         "blocks",
         "weights",
@@ -77,7 +77,7 @@
       "title": "Qué te piden",
       "targetSec": 40,
       "wordBudget": 108,
-      "goal": "Cuatro chips, con el inglés grande y el castellano debajo (`chips`): «BEST · MEJOR», «FIRST · PRIMERO», «MOST likely · MÁS probable», «LEAST · MENOS». Debajo, las mismas cuatro tarjetas en blanco, «opción 1» a «opción 4», sin contenido de seguridad (`same-options`); por cada calificador, una distinta se enciende: la misma lista, otra respuesta (`four-answers`). Una frase fija: «dos tientan · una encaja con el objetivo oficial» (`rule`). Sin tarjeta de examen",
+      "goal": "Cuatro chips, con el inglés grande y el castellano debajo (`chips`): «BEST · MEJOR», «FIRST · PRIMERO», «MOST likely · MÁS probable», «LEAST · MENOS». Debajo, las mismas cuatro tarjetas en blanco (`same-options`): «opción 1» a «opción 4», sin contenido de seguridad; por cada calificador se enciende una distinta (`four-answers`): la misma lista, otra respuesta. Una frase fija (`rule`): «dos tientan · una encaja con el objetivo oficial». La voz dice que muchas preguntas traen un calificador (una palabra que en inglés es qualifier) y que se lee antes de elegir. Sin tarjeta de examen",
       "requiredCues": [
         "chips",
         "same-options",
@@ -91,12 +91,13 @@
       "title": "Doce aplicaciones",
       "targetSec": 40,
       "wordBudget": 86,
-      "goal": "Pregunta tipo examen 1 (`q1`), plaquita «EXAMEN · SY0-701 · 4.6» (la dibuja el motor) y rótulo «pregunta tipo examen · ejemplo» que dibuja la escena (abajo a la derecha, como V30; el motor no lo pinta). Fondo quieto, sin contenido del puerto. Primer calificador: «MEJOR» resaltado en la pregunta y, debajo, dibujada por la escena (el panel no la pinta), la línea «MEJOR · BEST: varias ayudan, una resuelve todo el caso» (`best`), que la voz dice con palabras propias antes de la cuenta atrás. Cuenta atrás de 5 s con «Pausa si quieres»; en `ok-1` sale la correcta (D, inicio de sesión único), en `trap-1` la trampa (A, gestor de contraseñas), las otras dos atenuadas. En la resolución se tachan las dos que no tocan el cierre de cuentas. La tarjeta de examen 1 entra después de la trampa",
+      "goal": "Pregunta tipo examen 1 (`q1`), dominio 4 (4.6). Rótulo «pregunta tipo examen · ejemplo» dibujado por la escena (abajo a la derecha, como V30; el motor no lo pinta), plaquita «EXAMEN · SY0-701 · 4.6», escenario, pregunta y las cuatro opciones. Primer calificador: «MEJOR» resaltado y, debajo, dibujada por la escena (el panel no la pinta), la línea «MEJOR · BEST: varias ayudan, una resuelve todo el caso» (`best`); la voz lo dice con palabras propias antes de la cuenta atrás. Anillo de 5 s con «Pausa si quieres»; en `ok-1` sale la correcta (inicio de sesión único) y en `trap-1` la trampa (gestor de contraseñas), las otras dos atenuadas. En `back-1` se tachan las dos que no resuelven ni las contraseñas ni el cierre de cuentas (B y C), sin comentario en voz. Tarjeta de examen 1 después de la revelación (`back-1`)",
       "requiredCues": [
         "q1",
         "best",
         "ok-1",
-        "trap-1"
+        "trap-1",
+        "back-1"
       ]
     },
     {
@@ -105,12 +106,13 @@
       "title": "Un primer análisis",
       "targetSec": 38,
       "wordBudget": 81,
-      "goal": "Pregunta tipo examen 2 (`q2`), plaquita «EXAMEN · SY0-701 · 5.2», rótulo «pregunta tipo examen · ejemplo» dibujado por la escena. Segundo calificador: «PRIMERO» resaltado y, debajo, dibujada por la escena, «PRIMERO · FIRST: todas llegarán, ¿cuál va antes?» (`first`). En `ok-2` la correcta (B, inventario de activos), en `trap-2` la trampa (C, listar las amenazas). En la resolución se tachan «el seguro» y «la pérdida anual», que dependen de algo que aún no existe. La tarjeta de examen 2 entra después de la trampa",
+      "goal": "Pregunta tipo examen 2 (`q2`), dominio 5 (5.2), con su rótulo «pregunta tipo examen · ejemplo» dibujado por la escena. Segundo calificador (`first`): «PRIMERO» resaltado y, debajo, «PRIMERO · FIRST: todas llegarán, ¿cuál va antes?». En `ok-2` la correcta (inventario de activos), en `trap-2` la trampa (listar amenazas). En `back-2` se tachan «el seguro» y «la pérdida anual», que dependen de algo que aún no existe. Tarjeta de examen 2 después de la revelación (`back-2`)",
       "requiredCues": [
         "q2",
         "first",
         "ok-2",
-        "trap-2"
+        "trap-2",
+        "back-2"
       ]
     },
     {
@@ -119,7 +121,7 @@
       "title": "Tacha antes de elegir",
       "targetSec": 34,
       "wordBudget": 92,
-      "goal": "Las cuatro opciones de las preguntas 1 y 2 en miniatura, sin volver a plantearlas (`recap-1`, `recap-2`). En cada una dos caen con su motivo en un chip («no toca el cierre de cuentas» · «aún no sabes qué cubrir»); las otras dos quedan y se enciende el calificador que decide. Debajo, dos pasos (`steps`): «1 · tacha lo que no responde o llega a destiempo» · «2 · entre las que quedan, manda el calificador». El tachón es un trazo sobre opciones en pantalla, no la «ficha de dos casillas» de V28. Sin tarjeta de examen",
+      "goal": "Las cuatro opciones de las preguntas 1 y 2 en miniatura, sin volver a plantearlas. En cada una dos caen con su motivo en un chip («no resuelve ninguna de las dos cosas» en `recap-1`; «aún no sabes qué cubrir» en `recap-2`); las otras dos quedan y se enciende el calificador que decide. Debajo, dos pasos (`steps`): «1 · tacha lo que no responde o llega a destiempo» · «2 · entre las que quedan, manda el calificador». La voz dice que muchas veces no hace falta saber la respuesta para tachar dos, y que eso deja la decisión en dos opciones, como avisa la lección. Sin tarjeta de examen. El tachón es un trazo sobre opciones en pantalla, no la «ficha de dos casillas» de V28",
       "requiredCues": [
         "recap-1",
         "recap-2",
@@ -132,12 +134,13 @@
       "title": "Una academia pequeña",
       "targetSec": 38,
       "wordBudget": 81,
-      "goal": "Pregunta tipo examen 3 (`q3`), plaquita «EXAMEN · SY0-701 · 2.2», rótulo «pregunta tipo examen · ejemplo». Tercer calificador: «MÁS probable» resaltado y, debajo, dibujada por la escena, «MÁS probable · MOST likely: lo que pasa casi siempre» (`likely`). En `ok-3` la correcta (A, correo de phishing), en `trap-3` la trampa (B, zero-day). En la resolución, el «zero-day» se apaga con su etiqueta «caro y raro». La tarjeta de examen 3 entra después de la trampa",
+      "goal": "Pregunta tipo examen 3 (`q3`), dominio 2 (2.2), con su rótulo dibujado. Tercer calificador (`likely`): «MÁS probable» resaltado y, debajo, «MÁS probable · MOST likely: lo que pasa casi siempre». En `ok-3` la correcta (phishing), en `trap-3` la trampa (zero-day) con su etiqueta «caro y raro». En `back-3`, probable frente a posible. Tarjeta de examen 3 después de la revelación (`back-3`)",
       "requiredCues": [
         "q3",
         "likely",
         "ok-3",
-        "trap-3"
+        "trap-3",
+        "back-3"
       ]
     },
     {
@@ -146,12 +149,13 @@
       "title": "Un gusano en la oficina",
       "targetSec": 38,
       "wordBudget": 81,
-      "goal": "Pregunta tipo examen 4 (`q4`), plaquita «EXAMEN · SY0-701 · 3.2», rótulo «pregunta tipo examen · ejemplo». Cuarto calificador: «MENOS» resaltado en rojo, con un giro de la pregunta, y debajo, dibujada por la escena, «MENOS · LEAST: la pregunta va al revés» (`least`). Se pide leerla dos veces: el enunciado vuelve a aparecer con «menos» subrayado. En `ok-4` la correcta (D, cortafuegos solo hacia internet), en `trap-4` la trampa (C, dividir en VLAN), marcada como «la que más ayuda». La tarjeta de examen 4 entra después de la trampa",
+      "goal": "Pregunta tipo examen 4 (`q4`), dominio 3 (3.2), con su rótulo dibujado. Cuarto calificador (`least`): «MENOS» resaltado en rojo, con un giro de la pregunta, y debajo «MENOS · LEAST: la pregunta va al revés». Se pide leerla dos veces: el enunciado vuelve a aparecer con «menos» subrayado. En `ok-4` la correcta (cortafuegos solo hacia internet), en `trap-4` la trampa (dividir en VLAN), marcada como «la medida de libro». En `back-4`, quien lee deprisa marca la mejor. Tarjeta de examen 4 después de la revelación (`back-4`). Ni terminal, ni esclusas, ni red del puerto",
       "requiredCues": [
         "q4",
         "least",
         "ok-4",
-        "trap-4"
+        "trap-4",
+        "back-4"
       ]
     },
     {
@@ -160,11 +164,12 @@
       "title": "La respuesta de libro",
       "targetSec": 34,
       "wordBudget": 92,
-      "goal": "Dos columnas (`columns`). A la izquierda, «práctica estándar» (`standard`) con los tres controles: «una política · el multifactor · la segmentación», y una tercera fila con el ejemplo: «una autoridad pública, no un certificado hecho en casa». A la derecha, «ocurrencia» con un recuadro vacío, «un truco propio» (`trick`). Una barra se inclina hacia la izquierda (`tilt`) con la etiqueta «suele», no «siempre» (`hedge`). Sin tarjeta de examen (la del concepto sale en s11)",
+      "goal": "Dos columnas (`columns`). A la izquierda, «práctica estándar» con los tres controles de la lección (`standard`): una política · el multifactor · la segmentación; a la derecha, «ocurrencia» con un recuadro vacío con «un truco propio» (`trick`). Una tercera fila a la izquierda (`authority`), el ejemplo de otra lección del curso (sp1m7): «para el público: una autoridad pública, no un certificado hecho en casa». Una barra se inclina hacia la izquierda con la etiqueta «suele», no «siempre» (`tilt`). La voz dice la regla de la lección y deja claro que no es una ley (`hedge`). Sin tarjeta de examen (la del concepto sale en s11)",
       "requiredCues": [
         "columns",
         "standard",
         "trick",
+        "authority",
         "tilt",
         "hedge"
       ]
@@ -175,12 +180,12 @@
       "title": "Una web de clínica",
       "targetSec": 40,
       "wordBudget": 86,
-      "goal": "Pregunta tipo examen 5 (`q5`), plaquita «EXAMEN · SY0-701 · 1.4», rótulo «pregunta tipo examen · ejemplo». «MEJOR» resaltado, ya explicado: sin línea ni glosa. En `ok-5` la correcta (C, certificado de una CA pública), en `trap-5` la trampa (A, instalarlo en los equipos propios). En la resolución vuelven las dos columnas de s10 en una línea (`cols-back`): «para el público, lo estándar». La tarjeta de examen 5 entra al acabar esa frase",
+      "goal": "Pregunta tipo examen 5 (`q5`), dominio 1 (1.4), con su rótulo dibujado y «MEJOR» (ya explicado en s05: solo resaltado, sin línea ni glosa). En `ok-5` la correcta (CA pública), en `trap-5` la trampa (instalarlo en los equipos propios). En `back-5` vuelven las dos columnas de s10 en una línea («para el público, lo estándar»). Tarjeta de examen 5 después de la revelación (`back-5`)",
       "requiredCues": [
         "q5",
         "ok-5",
         "trap-5",
-        "cols-back"
+        "back-5"
       ]
     },
     {
@@ -189,13 +194,14 @@
       "title": "El tiempo y las simulaciones",
       "targetSec": 44,
       "wordBudget": 119,
-      "goal": "Una barra de 90 minutos (`bar`). Primero, tres miniaturas de simulación rotuladas «simulación · ejemplo · datos ficticios» y sin ninguna pantalla de CompTIA (`sims`): una tabla de reglas de cortafuegos con «permitir» y «denegar», cuatro pasos de respuesta desordenados y dos columnas para clasificar controles. Después, el crucigrama, rotulado «imagen · no es del puerto» (`crossword`): las fáciles se rellenan, las difíciles quedan con una marca a lápiz (`mark`) y se vuelve al final (`back`). En la barra, «15–20 min» para las simulaciones y el resto para el test, y un chip «algo menos de 1 min por pregunta». Al pie: «sin penalización · nunca en blanco» (`blank`). No se dice cuántas simulaciones hay ni cuánto valen. Sin tarjeta de examen",
+      "goal": "Una barra de 90 minutos (`bar`). Primero, tres miniaturas de simulación (`sims`) rotuladas «simulación · ejemplo · datos ficticios» y sin ninguna pantalla de CompTIA: una tabla de reglas de cortafuegos con «permitir» y «denegar», cuatro pasos de respuesta desordenados y dos columnas para clasificar controles. Después, el crucigrama, rotulado «imagen · no es del puerto» (`crossword`): las fáciles se rellenan, las difíciles quedan con una marca a lápiz (`mark`) y se vuelve al final (`back`). En la barra, «15–20 min» para las simulaciones y el resto para el test, y un chip «algo menos de 1 min por pregunta» (`budget`). Al pie (`blank`): «sin penalización · nunca en blanco». No se dice cuántas simulaciones hay ni cuánto valen. Sin tarjeta de examen",
       "requiredCues": [
         "bar",
         "sims",
         "crossword",
         "mark",
         "back",
+        "budget",
         "blank"
       ]
     },
@@ -205,7 +211,7 @@
       "title": "Para el examen",
       "targetSec": 26,
       "wordBudget": 70,
-      "goal": "Tres reglas, cada una con su icono (las opciones con dos tachadas · las dos columnas · el crucigrama) (`recap`, `rule-1`, `rule-2`, `rule-3`): «Primero, qué te piden: tacha lo que no lo contesta y quédate con lo que encaja con todo el caso» · «Entre dos que sirven, la práctica estándar antes que la ocurrencia» · «Marca y salta las simulaciones, y no dejes nada en blanco». La frase para el examen (`phrase`): «Lee qué te piden, tacha lo que no encaja y deja lo difícil para el final». Tarjeta final Alertópolis con una sola tarea: «Tu turno: un simulacro de 90 preguntas y 90 minutos» (`next`, `endcard`). Sin sello de Halden y sin tarjeta de examen",
+      "goal": "Tres reglas, cada una con su icono: las opciones con dos tachadas · las dos columnas · el crucigrama (`recap`, `rule-1`, `rule-2`, `rule-3`): «Primero, qué te piden. Tacha lo que no responde a eso y quédate con la que encaja con todo el caso» · «Entre dos que sirven, la práctica estándar antes que la ocurrencia» · «Marca y salta las simulaciones, y no dejes nada en blanco». La frase para el examen (`phrase`): «Lee qué te piden, tacha lo que no encaja y deja lo difícil para el final». Tarjeta final Alertópolis con una sola tarea: «Tu turno: un simulacro de 90 preguntas y 90 minutos» (el simulacro de la app, `/exam`) (`next`, `endcard`). Sin sello de Halden y sin tarjeta de examen",
       "requiredCues": [
         "recap",
         "rule-1",

@@ -18,118 +18,107 @@
     "ok-4": "check",
     "trap-4": "block",
     "ok-5": "check",
-    "trap-5": "block",
-    "recap-1": "error",
-    "recap-2": "error",
-    "bar": "whoosh",
-    "mark": "ping2",
-    "back": "lock"
+    "trap-5": "block"
   },
   "segments": [
     {
       "id": "s01-01",
       "scene": "s01-hook",
-      "text": "<curious> {port}Si has llegado hasta aquí, ya conoces el puerto de Halden. {screen}Pero el examen no pasa en el puerto. {title}Son una pantalla, noventa minutos y una pregunta detrás de otra.",
+      "text": "<curious> {port}Si has llegado hasta aquí, ya conoces Halden. {screen}Pero el examen es otra cosa. {title}Es una pantalla, noventa minutos y una pregunta detrás de otra.",
       "pauseAfterMs": 300
     },
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {promise}En este vídeo no repasamos seguridad. Aprendes a contestar. Qué te piden, qué descartas y cuánto tiempo tienes.",
-      "pauseAfterMs": 400
+      "text": "<confident> {promise}Aquí no repasamos seguridad, aprendemos a contestar. Vas a ver qué te piden, qué descartas y cuánto tiempo tienes.",
+      "pauseAfterMs": 500
     },
     {
       "id": "s02-01",
       "scene": "s02-formato",
-      "text": "<engaging> {sheet}Empecemos por lo que te espera. {questions}Son hasta noventa preguntas, {minutes}en noventa minutos.",
+      "text": "<engaging> {sheet}Empecemos por lo que te espera. {questions}Hasta noventa preguntas. Unas son de test, y a veces hay que marcar más de una respuesta. Otras son simulaciones, que veremos luego.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-02",
       "scene": "s02-formato",
-      "text": "<clear> {closed-book}Y es closed-book, o sea, sin apuntes ni buscar nada. Solo tú y la pantalla.",
+      "text": "<clear> {minutes}Tienes noventa minutos para todo, y en el examen no entran apuntes, {closed-book}es lo que llaman closed-book.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-03",
       "scene": "s02-formato",
-      "text": "<thoughtful> {scale}La nota va de cien a novecientos, y se aprueba con setecientos cincuenta. Ojo, que eso es un punto de una escala, no un porcentaje de aciertos.",
+      "text": "<thoughtful> {scale}La nota va de cien a novecientos, y se aprueba con setecientos cincuenta. Fíjate, eso es una escala, no un porcentaje.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-04",
       "scene": "s02-formato",
-      "text": "<firm> Las preguntas son de test, y a veces hay que marcar más de una respuesta. Además hay simulaciones, que son ejercicios prácticos, y de esas hablamos al final.",
+      "text": "<firm> Por eso no puedes saber tu nota contando aciertos. Tú contesta lo mejor que puedas.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-05",
       "scene": "s02-formato",
-      "text": "<reassuring> {caveat}Y estos datos pueden cambiar, así que compruébalos siempre en la web oficial, antes de presentarte.",
-      "pauseAfterMs": 500
+      "text": "<warm> {caveat}Y estos datos son los de la lección. Compruébalos siempre en la web oficial del examen, por si han cambiado.",
+      "pauseAfterMs": 600
     },
     {
       "id": "s03-01",
       "scene": "s03-pesos",
-      "text": "<engaging> {blocks}Los puntos no se reparten por igual. Las cinco secciones que has recorrido son los cinco dominios del examen, {weights}y cada uno pesa distinto.",
+      "text": "<engaging> {blocks}Ahora, dónde están los puntos. El examen se reparte en cinco dominios, las cinco secciones del curso, y cada uno pesa distinto.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-02",
       "scene": "s03-pesos",
-      "text": "<focused> Operaciones se lleva un veintiocho por ciento, y Amenazas, un veintidós. {half}Juntas son la mitad del examen, así que ahí está la mitad de lo que te preguntan.",
+      "text": "<focused> {weights}Los pesos van del doce al veintiocho por ciento del examen. {half}Operaciones, con un veintiocho, y Amenazas, con un veintidós, suman la mitad.",
       "pauseAfterMs": 300
     },
     {
       "id": "s03-03",
       "scene": "s03-pesos",
-      "text": "<warm> {vocab}Y los conceptos generales, que solo pesan un doce, no se saltan. Pesan poco, pero son el vocabulario de todas las demás. Sin ellos, no entiendes las preguntas del resto.",
-      "pauseAfterMs": 400
+      "text": "<casual> Así que si vas justo de tiempo para estudiar, empieza por esos dos.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s03-04",
       "scene": "s03-pesos",
-      "text": "<satisfied> O sea, que ya sabes lo que te espera. Ahora, cómo se contesta.",
+      "text": "<thoughtful> {vocab}El bloque pequeño, el de conceptos generales, pesa solo un doce. Pero es el vocabulario de todos los demás, así que no te lo saltes.",
       "pauseAfterMs": 600
     },
     {
       "id": "s04-01",
       "scene": "s04-califs",
-      "text": "<curious> Cada pregunta del examen trae una palabra que te dice qué te piden. Es el calificador, y viene en inglés.",
+      "text": "<intrigued> {chips}Veamos qué te piden. Muchas preguntas traen una palabra que en inglés es qualifier, calificador, y que cambia lo que tienes que buscar. Hay que leerla antes de elegir.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-02",
       "scene": "s04-califs",
-      "text": "<clear> {chips}Best es mejor. First, primero. Most likely, lo más probable. Y least, lo menos.",
+      "text": "<clear> {same-options}Mira estas cuatro opciones, siempre las mismas. Con cada palabra se enciende una distinta.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-03",
       "scene": "s04-califs",
-      "text": "<thoughtful> {same-options}Mira estas cuatro opciones en blanco. Son siempre las mismas, pero según el calificador {four-answers}se enciende una distinta. Cambia la pregunta, y cambia la respuesta.",
+      "text": "<focused> {four-answers}Con best te piden la mejor. Con first, la que va primero. Con most likely, la más probable. Y con least, la que menos sirve.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-04",
       "scene": "s04-califs",
-      "text": "<firm> {rule}Casi siempre hay dos opciones que tientan y una que encaja con lo que piden. Por eso, lo primero es leer el calificador, antes de mirar las opciones.",
-      "pauseAfterMs": 400
-    },
-    {
-      "id": "s04-05",
-      "scene": "s04-califs",
-      "text": "<engaging> Empezamos por best y first, con una pregunta cada uno.",
+      "text": "<serious> {rule}Y suelen tentar dos opciones. Pero solo una encaja con el objetivo oficial del examen.",
       "pauseAfterMs": 600
     },
     {
       "id": "s05-01",
       "scene": "s05-p1",
-      "text": "<intrigued> {q1}Primera pregunta. Una asesoría usa doce aplicaciones en la nube, y en cada una entra con una contraseña distinta. Cuando alguien se va, tardan días en cerrarle todas las cuentas. ¿Qué solución es la mejor? {best}«Mejor» no es «bueno». Casi todas ayudan, y solo una resuelve el caso entero.",
+      "text": "<curious> {q1}Te toca. Una asesoría usa doce aplicaciones en la nube, y en cada una entra con una contraseña distinta. A la plantilla le cansa, y cuando alguien se va, tardan días en cerrarle todas las cuentas. ¿Qué solución es la mejor? {best}“Mejor” no significa “bueno”. Varias ayudan, y solo una resuelve el caso entero.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "4.6",
-        "scenario": "Una asesoría usa doce aplicaciones en la nube, cada una con su contraseña. Cuando alguien se va, tardan días en cerrarle todas las cuentas.",
+        "scenario": "Una asesoría usa doce aplicaciones en la nube con doce contraseñas, y a la plantilla le cansa. Cuando alguien se va, tardan días en cerrarle todas las cuentas.",
         "q": "¿Qué solución es la MEJOR?",
         "options": [
           "Un gestor de contraseñas por persona",
@@ -149,25 +138,31 @@
     {
       "id": "s05-02",
       "scene": "s05-p1",
-      "text": "<confident> {ok-1}Un inicio de sesión único, porque con un solo acceso se abre todo y, al dar de baja, se cierra todo.",
-      "pauseAfterMs": 300
+      "text": "<firm> {ok-1}Un inicio de sesión único, porque con un solo acceso se abre todo y, al dar de baja, se cierra todo.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s05-03",
       "scene": "s05-p1",
-      "text": "<firm> {trap-1}El gestor ayuda con las contraseñas, pero no las cierra todas a la vez.",
-      "pauseAfterMs": 1500,
+      "text": "<confident> {trap-1}El gestor ayuda con las contraseñas, pero no cierra todas las cuentas a la vez.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-p1",
+      "text": "<warm> {back-1}Esa es la diferencia entre ayudar y resolver el caso.",
+      "pauseAfterMs": 1000,
       "exam": {
         "objective": "4.6",
         "text": "SSO: un corte cierra todo. MEJOR: el caso entero",
-        "at": "trap-1",
+        "at": "back-1",
         "holdSec": 5
       }
     },
     {
       "id": "s06-01",
       "scene": "s06-p2",
-      "text": "<curious> {q2}Segunda pregunta. Una empresa de transporte va a hacer por primera vez su análisis de riesgos. Todavía no tiene una lista de sus sistemas, sus datos ni sus procesos. ¿Qué paso va primero al identificar los riesgos? {first}Con un «primero», casi todas las opciones son pasos que acabarás dando. Lo que te preguntan es cuál va antes.",
+      "text": "<intrigued> {q2}Otra más. Una empresa de transporte va a hacer por primera vez su análisis de riesgos. Todavía no tiene una lista de sus sistemas, sus datos ni sus procesos. ¿Qué paso va primero al identificar los riesgos? {first}Con un “primero”, muchas opciones son pasos que acabarás dando. Lo que te preguntan es cuál va antes.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "5.2",
@@ -191,43 +186,55 @@
     {
       "id": "s06-02",
       "scene": "s06-p2",
-      "text": "<firm> {ok-2}El inventario de activos. Sin él no sabes qué proteger. {trap-2}Las amenazas llaman más la atención, pero se valoran sobre lo que tienes.",
-      "pauseAfterMs": 1500,
+      "text": "<confident> {ok-2}El inventario de activos. Sin él no sabes qué proteger. {trap-2}Las amenazas llaman más la atención, pero se valoran sobre lo que tienes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-p2",
+      "text": "<clear> {back-2}O sea, que cuando te piden lo primero, manda el orden.",
+      "pauseAfterMs": 1000,
       "exam": {
         "objective": "5.2",
         "text": "PRIMERO: activos, luego amenazas",
-        "at": "trap-2",
+        "at": "back-2",
         "holdSec": 5
       }
     },
     {
       "id": "s07-01",
       "scene": "s07-tacha",
-      "text": "<engaging> Antes de elegir, tacha. {recap-1}Mira la primera pregunta. Dos opciones no tocaban el cierre de cuentas, y esas caen solas.",
+      "text": "<thoughtful> {recap-1}Mira otra vez la primera pregunta. Antes de saber la respuesta, ya podías quitar dos opciones, porque no resolvían ni las contraseñas ni el cierre de las cuentas.",
       "pauseAfterMs": 300
     },
     {
       "id": "s07-02",
       "scene": "s07-tacha",
-      "text": "<clear> {recap-2}Con la segunda, igual. El seguro llega tarde, porque antes hay que saber qué cubrir. Y la pérdida anual necesita el valor de cada activo, o sea, el inventario.",
+      "text": "<casual> {recap-2}Y en la segunda, el seguro y la pérdida anual dependían de algo que aún no existía.",
       "pauseAfterMs": 300
     },
     {
       "id": "s07-03",
       "scene": "s07-tacha",
-      "text": "<focused> {steps}Son dos pasos. Primero, tachas lo que no responde o llega a destiempo. Después, entre las que quedan, decide el calificador.",
-      "pauseAfterMs": 300
+      "text": "<focused> {steps}Eso es tachar antes de elegir. Para empezar, quitas lo que no responde a lo que piden o llega a destiempo.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s07-04",
       "scene": "s07-tacha",
-      "text": "<reassuring> Y no hace falta saber la respuesta para tachar dos. Suelen caerse dos, y la decisión se queda entre las otras dos.",
+      "text": "<confident> Después, entre las que quedan, decide el calificador. Muchas veces no hace falta saber la respuesta para tachar dos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-tacha",
+      "text": "<warm> Suelen caerse dos opciones, y así la decisión queda entre las dos que tientan. Eso mismo avisa la lección.",
       "pauseAfterMs": 600
     },
     {
       "id": "s08-01",
       "scene": "s08-p3",
-      "text": "<intrigued> {q3}Tercera pregunta. Una academia de idiomas de quince personas, sin equipo técnico, guarda los datos de pago de sus alumnos. ¿Por dónde es más probable que entre un atacante? {likely}«Más probable» no pregunta qué puede pasar, sino qué pasa casi siempre. Lo que más impresiona casi nunca es lo habitual.",
+      "text": "<curious> {q3}Prueba con esta. Una academia de idiomas de quince personas, sin equipo técnico, guarda los datos de pago de sus alumnos. ¿Por dónde es más probable que entre un atacante? {likely}“Más probable” no pregunta qué puede pasar, sino qué pasa casi siempre. Lo que más impresiona casi nunca es lo habitual.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "2.2",
@@ -251,19 +258,25 @@
     {
       "id": "s08-02",
       "scene": "s08-p3",
-      "text": "<confident> {ok-3}Por un correo de phishing, que es barato y solo necesita que alguien pinche. {trap-3}El zero-day suena a película, pero es caro y raro contra una academia pequeña.",
-      "pauseAfterMs": 1500,
+      "text": "<firm> {ok-3}Por un correo de phishing, que es barato y solo necesita que alguien pinche. {trap-3}El zero-day suena a película, pero es caro y raro contra una academia pequeña.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-p3",
+      "text": "<casual> {back-3}Y recuerda, lo probable no es lo mismo que lo posible.",
+      "pauseAfterMs": 1000,
       "exam": {
         "objective": "2.2",
         "text": "MÁS probable: el correo, no el zero-day",
-        "at": "trap-3",
+        "at": "back-3",
         "holdSec": 5
       }
     },
     {
       "id": "s09-01",
       "scene": "s09-p4",
-      "text": "<serious> {q4}Cuarta pregunta. Un gusano ha infectado un ordenador de una oficina y quiere saltar a los demás ordenadores de la misma red interna. ¿Qué medida lo frena menos? {least}Y con «menos», la pregunta va al revés. Casi todas las opciones sirven y una no. Léela dos veces antes de marcar.",
+      "text": "<intrigued> {q4}Sigamos. Un gusano ha infectado un ordenador de una oficina y quiere saltar a los demás ordenadores de la misma red interna. ¿Qué medida lo frena menos? {least}Y con “menos”, la pregunta va al revés. Tres sirven y una no. Léela dos veces antes de marcar.",
       "pauseAfterMs": 250,
       "question": {
         "objective": "3.2",
@@ -272,7 +285,7 @@
         "options": [
           "Un cortafuegos en cada equipo",
           "Aislar el equipo infectado de la red",
-          "Dividir la red interna en VLAN",
+          "Dividir la red interna en VLAN con reglas entre ellas",
           "Un cortafuegos solo hacia internet"
         ],
         "answer": 3,
@@ -287,43 +300,55 @@
     {
       "id": "s09-02",
       "scene": "s09-p4",
-      "text": "<firm> {ok-4}Un cortafuegos solo en la salida a internet, porque no ve lo que pasa entre ordenadores de dentro. {trap-4}Dividir la red tienta, pero esa sí lo frena.",
-      "pauseAfterMs": 1500,
+      "text": "<serious> {ok-4}Un cortafuegos solo en la salida a internet, porque no ve lo que pasa entre ordenadores de dentro. {trap-4}Dividir la red tienta, pero esa sí lo frena.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-p4",
+      "text": "<thoughtful> {back-4}O sea, que con prisa se marca la mejor, y aquí piden la que menos sirve.",
+      "pauseAfterMs": 1000,
       "exam": {
         "objective": "3.2",
         "text": "MENOS: ojo, la pregunta va al revés",
-        "at": "trap-4",
+        "at": "back-4",
         "holdSec": 5
       }
     },
     {
       "id": "s10-01",
       "scene": "s10-estandar",
-      "text": "<thoughtful> {columns}Cuando dos opciones sirven, el examen prefiere lo estándar a lo ingenioso. O sea, la práctica de siempre de la industria, no la ocurrencia.",
+      "text": "<engaging> {columns}Y cuando dos opciones sirven, ¿te fías de tu ingenio? El examen suele preferir la práctica estándar de la industria.",
       "pauseAfterMs": 300
     },
     {
       "id": "s10-02",
       "scene": "s10-estandar",
-      "text": "<clear> {standard}Por ejemplo, una política, el multifactor o la segmentación. Y si algo lo ve el público, una autoridad pública, no un certificado hecho en casa.",
-      "pauseAfterMs": 300
+      "text": "<clear> {standard}Por ejemplo, una política, el multifactor o la segmentación. Son controles formales, de esos que todo el mundo reconoce.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s10-03",
       "scene": "s10-estandar",
-      "text": "<mischievously> {trick}Y el truco propio, ese que a ti te parece muy listo, suele perder. Se sale del manual, y el examen premia el manual.",
-      "pauseAfterMs": 500
+      "text": "<thoughtful> {trick}Frente a eso está la ocurrencia, el truco propio que se te ocurre en el momento. Suele sonar muy listo.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s10-04",
       "scene": "s10-estandar",
-      "text": "<firm> {tilt}Eso sí, es una inclinación, no una ley. {hedge}Suele ir antes, no siempre.",
+      "text": "<warm> {authority}Mira la tercera fila, que viene de otra lección del curso.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-estandar",
+      "text": "<serious> {tilt}Ojo, que «suele» no significa «siempre». {hedge}No es una ley, es una forma de desempatar cuando dudas entre dos.",
       "pauseAfterMs": 600
     },
     {
       "id": "s11-01",
       "scene": "s11-p5",
-      "text": "<curious> {q5}Última pregunta. La web de una clínica la usan sus empleados y, desde casa, sus pacientes. Ahora usa un certificado que firmó la propia clínica, y los navegadores avisan de que no es de fiar. ¿Qué solución es la mejor?",
+      "text": "<curious> {q5}La última. La web de una clínica la usan sus empleados y, desde casa, sus pacientes. Hoy usa un certificado que firmó la propia clínica, y los navegadores avisan de que no es de fiar. ¿Qué solución es la mejor?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "1.4",
@@ -347,67 +372,67 @@
     {
       "id": "s11-02",
       "scene": "s11-p5",
-      "text": "<confident> {ok-5}Un certificado de una autoridad pública, en la que los navegadores ya confían.",
+      "text": "<confident> {ok-5}Un certificado de una autoridad pública, en la que los navegadores ya confían. {trap-5}Instalar el certificado de la clínica en sus equipos arregla solo una parte.",
       "pauseAfterMs": 300
     },
     {
       "id": "s11-03",
       "scene": "s11-p5",
-      "text": "<firm> {trap-5}Instalarlo en los equipos de la clínica arregla solo una parte, la de los equipos que ella controla. {cols-back}Para el público, lo estándar, no lo ingenioso.",
+      "text": "<warm> {back-5}Para el público, lo estándar, no lo ingenioso.",
       "pauseAfterMs": 1500,
       "exam": {
         "objective": "1.4",
         "text": "Lo estándar: una CA que los navegadores aceptan",
-        "at": "cols-back",
+        "at": "back-5",
         "holdSec": 5
       }
     },
     {
       "id": "s12-01",
       "scene": "s12-tiempo",
-      "text": "<engaging> {bar}Y ahora, el tiempo. Tienes noventa minutos para todo.",
+      "text": "<engaging> {bar}Y lo último, el tiempo. Tienes noventa minutos y hay que repartirlos bien.",
       "pauseAfterMs": 300
     },
     {
       "id": "s12-02",
       "scene": "s12-tiempo",
-      "text": "<curious> {sims}Están las simulaciones, que en inglés son performance-based questions. Configuras un cortafuegos, ordenas pasos o clasificas controles. Suelen salir al principio y se comen mucho tiempo.",
+      "text": "<clear> {sims}Las simulaciones son preguntas en las que haces algo. Por ejemplo, configuras un cortafuegos, ordenas pasos de respuesta o clasificas controles. En inglés son performance-based questions.",
       "pauseAfterMs": 300
     },
     {
       "id": "s12-03",
       "scene": "s12-tiempo",
-      "text": "<thoughtful> {crossword}Piensa en un crucigrama. Empiezas por las que sabes, y lo difícil lo dejas marcado a lápiz.",
+      "text": "<thoughtful> Suelen salir al principio, y se comen mucho tiempo. Si te quedas ahí, no te llega para el test.",
       "pauseAfterMs": 300
     },
     {
       "id": "s12-04",
       "scene": "s12-tiempo",
-      "text": "<firm> {mark}Con las simulaciones, igual. Márcalas y sáltalas, y haz primero el test, que es tu nota segura.",
-      "pauseAfterMs": 300
+      "text": "<warm> {crossword}Es como un crucigrama. Empiezas por las que sabes y lo difícil lo dejas para el final.",
+      "pauseAfterMs": 250
     },
     {
       "id": "s12-05",
       "scene": "s12-tiempo",
-      "text": "<reassuring> {back}Luego vuelve con el tiempo que te quede, porque el examen deja revisar las marcadas.",
+      "text": "<firm> {mark}En el examen es igual. Marca las simulaciones, haz primero el test {back}y vuelve con el tiempo que te quede. Puedes revisar las marcadas.",
       "pauseAfterMs": 300
     },
     {
       "id": "s12-06",
       "scene": "s12-tiempo",
-      "text": "<clear> Reserva entre quince y veinte minutos para ellas. El resto es para el test, a algo menos de un minuto por pregunta.",
+      "text": "<focused> {budget}Reserva entre quince y veinte minutos para las simulaciones. Así, con noventa preguntas, el test sale a algo menos de un minuto por pregunta.",
       "pauseAfterMs": 300
     },
     {
       "id": "s12-07",
       "scene": "s12-tiempo",
-      "text": "<warm> {blank}Y no dejes nada en blanco, porque fallar no resta.",
+      "text": "<reassuring> {blank}Y no dejes nada en blanco. No hay penalización por fallar, así que contesta siempre algo.",
       "pauseAfterMs": 600
     },
     {
       "id": "s13-01",
       "scene": "s13-cierre",
-      "text": "<cheerful> {recap}Tres reglas. {rule-1}Primero, qué te piden. Tacha lo que no lo contesta y quédate con la que encaja con todo el caso.",
+      "text": "<cheerful> {recap}Te llevas tres reglas. {rule-1}Primero, qué te piden. Tacha lo que no responde a eso y quédate con la que encaja con todo el caso.",
       "pauseAfterMs": 250
     },
     {
@@ -425,7 +450,7 @@
     {
       "id": "s13-04",
       "scene": "s13-cierre",
-      "text": "<engaging> {phrase}Lee qué te piden, tacha lo que no encaja y deja lo difícil para el final. {next}Ahora es tu turno. {endcard}Hazte un simulacro cronometrado.",
+      "text": "<engaging> {phrase}Lee qué te piden, tacha lo que no encaja y deja lo difícil para el final. {next}Tu turno. Hazte un {endcard}simulacro cronometrado.",
       "pauseAfterMs": 250
     }
   ]
