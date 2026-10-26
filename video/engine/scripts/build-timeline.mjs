@@ -69,6 +69,23 @@ export const TITLE_MAX_SEC = 12;
 /** Seconds the explanations of an exam question stay on screen after its trap is marked. */
 export const QUESTION_EXPLAIN_MIN_SEC = 3;
 
+/** Shortest exam.holdSec narration.json accepts (the -yt profiles also want 4 s of screen time for a think prompt). */
+export const EXAM_HOLD_MIN_SEC = 4;
+
+/**
+ * What to tell when an exam card (`e`, frames) does not fit in its scene (`s`): the longest holdSec that does fit from
+ * the card's own start, to one decimal rounded down (V43: 14491–14641 in a scene ending at 14634 at 30 fps fits 4.7 s).
+ */
+export function examFitAdvice(e, s, fps) {
+  if (e.from < s.from) return 'the card starts before its scene: use a later "at" cue';
+  const sceneEnd = s.from + s.durationInFrames;
+  const fitSec = Math.floor(((sceneEnd - e.from) / fps) * 10 + 1e-9) / 10;
+  if (fitSec < EXAM_HOLD_MIN_SEC) {
+    return `only ${fitSec.toFixed(1)} s are left in the scene from this cue and holdSec cannot be under ${EXAM_HOLD_MIN_SEC} s (the -yt profiles warn below ${EXAM_HOLD_MIN_SEC} s): use an earlier "at" cue`;
+  }
+  return `lengthen the last segment's pauseAfterMs (it changes neither what is said nor the card), use an earlier "at" cue, or set a shorter holdSec: it fits up to ${fitSec.toFixed(1)} s from this cue (the -yt profiles warn below ${EXAM_HOLD_MIN_SEC} s)`;
+}
+
 /** Frame at which the sentence holding `cueId` (without one, the card segment's first sentence) has been heard. */
 function sentenceEndFrame(sceneSegs, timelineSegments, examSeg, cueId) {
   const owner = (cueId && sceneSegs.find((x) => x.parsed.cues.some((c) => c.id === cueId))) || examSeg;
@@ -410,9 +427,7 @@ export async function buildTimeline(options = {}) {
   exam.forEach((e, k) => {
     const s = sceneOf.get(e.scene);
     if (e.from < s.from || e.from + e.durationInFrames > s.from + s.durationInFrames) {
-      errors.push(
-        `exam card in ${e.scene} (${e.from}–${e.from + e.durationInFrames}) leaves its scene (${s.from}–${s.from + s.durationInFrames}): use an earlier "at" cue or a shorter holdSec`,
-      );
+      errors.push(`exam card in ${e.scene} (${e.from}–${e.from + e.durationInFrames}) leaves its scene (${s.from}–${s.from + s.durationInFrames}): ${examFitAdvice(e, s, fps)}`);
     }
     const asked = questions.find((x) => x.scene === e.scene);
     if (asked && e.from < asked.trapFrame) {

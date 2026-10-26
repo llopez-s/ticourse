@@ -6199,6 +6199,12 @@ por la misma CPU; cuatro cortes a mano en la grabación. Los pasos detallados si
    «importar y producir nueve voces sin importar» salió de la página anterior, que solo miraba el worktree del guion y
    el `main` local: los nueve llevaban dos días renderizados, publicados y, ocho de ellos, enlazados en su lección.
    Si un encargo no cuadra con lo que dice la página, manda la página, después de regenerarla.
+   **Desde el 2026-10-26 las hojas de grabación salen del texto de `origin/main`**, no del `out/guion-grabacion.md`
+   del worktree del guion, y la tarjeta marca «Texto de main · fecha» y avisa en rosa si una rama `video-<slug>*` o la
+   carpeta de trabajo tiene otro texto. Motivo: Lidia grabó V39 y V43 (2026-10-25) con el texto del 20-10 mientras main
+   ya tenía el del 23-10 y las escenas se habían hecho sobre este; hubo que recuear 21 anclajes a mano. **Si una hoja
+   cambia después de entregada, avisar antes de que grabe; si ya grabó, el texto grabado manda** (decisión de Lidia
+   del 23-10) y se recuean las escenas, no se regraba.
 1. **Diseño en una ronda.** Claude pasa la ficha entera (conceptos e imágenes, historia y canon nuevo, escenas,
    producción) con las opciones recomendadas ya elegidas; Lidia dice solo qué cambia.
 2. **Guion contra el registro de canon.** Antes de escribir, se lee `docs/superpowers/canon/<campaña>.md`
@@ -6224,12 +6230,22 @@ por la misma CPU; cuatro cortes a mano en la grabación. Los pasos detallados si
      tramo hay una sola lectura.
    - **«Stops inside a word» al final de un clip.** Whisper se inventa una palabra corta tras la última («persona.
      1.») y el corte cae dentro de esta. `--map` enseña dónde acaba de verdad la voz; se recorta hasta el silencio
-     y se importa con `--only` y la ganancia de la importación completa.
+     y se importa con `--only` y la ganancia de la importación completa. **Desde el 2026-10-26 el importador lo hace
+     solo** (palabra fantasma recortada, borde empujado al silencio, «Comprobación de bordes» al final) y guarda la
+     ganancia en `import-gain.json` para las reimportaciones con `--only`; ver el README del motor, «Guardias del
+     importador».
+   - **Frase que nunca se grabó** (V39 s06-03, 2026-10-25): el importador dice «no voice between the sentences»; en el WAV
+     original hay silencio digital (−90 dB) donde debería estar. Se pide esa frase suelta, se masteriza con
+     `master_voice.py` y se importa con `--only` (misma ganancia).
+   - **Racha de palabras sin duración** (V43 s02-02): alucinación de Whisper; el importador las descarta solo.
    - **«Exam card … leaves its scene».** Con la voz real, la frase que ancla la tarjeta acaba antes que sus 5 s.
      Se alarga su `pauseAfterMs` (no cambia lo que se dice ni la grabación), no se acorta la tarjeta.
    - **«timeline.json is stale».** Cualquier cambio en `storyboard.json` o `narration.json` (aunque sea el orden
      de `requiredCues`) obliga a `audio.mjs` antes de renderizar; los efectos y su orden se ponen antes de importar.
-7. **Render, YouTube y lección.** Antes de renderizar, `video.json` lleva `"music": "Go On Going - Stayloose.mp3"`
+7. **Render, YouTube y lección.** Desde el 2026-10-26 los pasos 6–7 hasta el MP4 masterizado son un solo comando,
+   `node video/engine/scripts/produce.mjs --video <slug>` (audio → WAV del programa → master 1 → fotogramas → master 2 →
+   resumen), que se para en el primer error y dice con qué `--from` retomar; `--upload` añade metadatos y subida privada.
+   Antes de renderizar, `video.json` lleva `"music": "Go On Going - Stayloose.mp3"`
    (desde el 2026-10-22 `render.mjs --master` se para sin ella: el ambiente generado sonaba a ruido y bajaba la voz
    a −18 LUFS en V47 y AP01–AP04; README del motor, «Masterización»). El registro tiene que decir `bed (music)` y el
    MP4 salir hacia −15/−16 LUFS. La miniatura no la renderizan los constructores de escenas: se mira entera antes de

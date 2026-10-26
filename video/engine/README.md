@@ -614,6 +614,29 @@ node video/engine/scripts/import-recording.mjs --video <slug> --file "video/engi
 node video/engine/scripts/audio.mjs --video <slug>
 ```
 
+**Guardias del importador** (2026-10-26, a partir de V39 y V43; todas actúan al importar, sin Whisper, para que el fallo salga
+a los dos minutos y no en `verify-voice` o en el render):
+
+- **Palabras sin duración.** Una racha de ≥3 palabras con `endMs - startMs ≤ 10` en la transcripción es una alucinación
+  de Whisper (V43 s02-02: once palabras en 29,98 s hicieron empezar el clip tarde, sin las primeras palabras). Se
+  descartan en memoria (la caché `asr-*.json` no se toca), con aviso en consola y en el informe.
+- **Palabra fantasma y borde cortado.** Una palabra de ≤3 letras con >1,2 s y un silencio dentro («y» de 2,4 s tras
+  «entrar», V39 s05-01) se recorta a su tramo con voz. Después, si la energía de los 30 ms del borde de un clip supera
+  0,30 del RMS del clip (verify-voice marca error en 0,35), el final avanza hasta el siguiente silencio (máx. +500 ms) o
+  el inicio retrocede (máx. −300 ms). La línea «Comprobación de bordes: N clips…» sale siempre al final. Esto también
+  corta lo que el importador antiguo dejaba dentro: el principio de un falso comienzo («La segunda…») al final de V43
+  s04-08. `--no-edge-fix` vuelve al comportamiento anterior.
+- **Ganancia reutilizable.** Una importación completa guarda `out/recording/<nombre>/import-gain.json`
+  (`gainDb`, sha del WAV, voz). `--only` con un recorte la reutiliza sola (`--reuse-gain`, o `--gain <dB>` a mano;
+  incompatibles con `--lufs`/`--match`), así que ya no hay que calcular «LUFS del recorte + ganancia». Si no existe el
+  JSON la deduce de los `tts/*.json` ya importados.
+- **Nombre de voz.** Con `--only`, la voz por defecto es la de `narration.json` (`recording/<nombre>`); un `--name`
+  distinto deja un clip que `build-timeline` rechaza, y ahora el aviso lo dice. `--only` con la grabación COMPLETA
+  (misma sha que la importación completa) localiza todo el guion con la caché y reescribe solo esos ids; con otro
+  archivo espera un recorte (`recut_recording.py`).
+- **Tarjeta de examen fuera de su escena** (`build-timeline`): el error dice hasta cuántos segundos cabe y que se
+  prefiere alargar `pauseAfterMs` de la última frase antes que acortar la tarjeta (los perfiles `-yt` avisan por debajo de 4 s).
+
 **Comprobación de la voz** (`scripts/verify-voice.mjs`, que `audio.mjs` lanza tras `build-timeline` en las voces
 `recording/…`). Escucha cada clip **tal como suena en el vídeo** (solo la parte que se reproduce): lo transcribe
 otra vez con faster-whisper (`verify_voice.py`, en el venv de Chatterbox) y mide la energía en sus bordes.
@@ -749,6 +772,13 @@ node video/engine/scripts/qa-frames.mjs --video <slug>  # o --scene s05-correlat
 # 6. Render
 node video/engine/scripts/render.mjs --video <slug> --draft   # media resolución, rápido
 node video/engine/scripts/render.mjs --video <slug>           # final + póster
+
+# 6b. Con la voz ya importada, la cadena entera en un solo comando (para en el primer error y dice cómo retomar):
+#     audio (timeline + verify-voice) → program (WAV del programa) → master1 → frames → master2 → report
+node video/engine/scripts/produce.mjs --video <slug> [--concurrency 4] [--from <paso>|--only <paso>] [--dry-run]
+#     --upload añade youtube-meta + youtube-upload (privado salvo --privacy); sin --upload nunca sube nada.
+#     Guardias: "music" en video.json y el archivo en music/library/, Python del venv principal, node_modules, clips
+#     importados, timeline fuera de estimate. master_mix va siempre aparte del render (--master-in-render lo junta).
 
 # 7. Perfiles -yt: metadatos y archivos listos para subir a YouTube (después de renderizar)
 node video/engine/scripts/youtube-meta.mjs --video <slug>

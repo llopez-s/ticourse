@@ -96,6 +96,10 @@ section > h2 .n { margin-left: auto; font-variant-numeric: tabular-nums; }
   color: var(--ink); border-radius: 5px; padding: 5px 10px; cursor: pointer;
 }
 .path button.ok { background: var(--green-bg); color: var(--green); border-color: var(--green); }
+.srcline { display: flex; flex-wrap: wrap; gap: 6px; }
+.srcline .tag { font-weight: 600; background: var(--amber-bg); color: var(--amber); }
+.warn { margin: 0; padding: 8px 12px; border-radius: 6px; background: var(--rose-bg); color: var(--rose); border-left: 3px solid var(--rose); font-weight: 600; font-size: 13px; }
+.dnote { margin: 0; color: var(--muted); font-size: 12px; }
 .empty { color: var(--muted); font-style: italic; padding: 6px 0; }
 details { border-top: 1px solid var(--line); padding-top: 14px; }
 summary { cursor: pointer; font: 700 13px var(--f-display); text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
@@ -214,6 +218,14 @@ function card(i, color) {
   if (i.adversary) add('Adversario', i.adversary);
   if (i.extraTakes) add('Tomas extra', i.extraTakes);
   c.append(top, meta);
+  if (i.textLabel && (i.state === 'por-grabar' || i.state === 'borrador')) {
+    const src = el('div', 'srcline');
+    src.append(el('span', 'tag ' + (i.textSource === 'main' ? 'from-main' : 'unmerged'), i.textLabel));
+    c.append(src);
+  }
+  (i.warnings || []).forEach((w) => c.append(el('p', 'warn', w)));
+  (i.notes || []).forEach((n) => c.append(el('p', 'dnote', n)));
+  if (i.sheetError) c.append(el('p', 'warn', 'No se pudo generar la hoja desde main: ' + i.sheetError));
   if (i.sheetPage) {
     const act = el('div', 'actions');
     const read = el('button', 'btn', 'Leer la hoja aquí');

@@ -172,7 +172,8 @@ test('validation: an exam card must stay inside its scene', async () => {
       n.segments[0].exam.holdSec = 6;
       n.segments[1].text = 'Por eso {title}existe el SIEM.';
     }, 'examout'),
-    /leaves its scene/,
+    // the message also says how long a card starting at that cue can be (or that no legal holdSec fits)
+    (err) => /leaves its scene/.test(err.message) && /fits up to \d+\.\d s|s are left in the scene from this cue/.test(err.message) && /-yt profiles warn below 4 s/.test(err.message),
   );
 });
 

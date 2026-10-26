@@ -365,6 +365,12 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `-yt` validator warns on colon connectors, spelled identifiers and «¿Y …?» formulas (it no longer asks for
   a question per scene). Own recordings can be sped up: `narration.json` → `"recording": { "tempo": 1.08,
   "maxPauseMs": 250 }` (provisional values; absent = tempo 1, older videos re-import unchanged).
+- **Video pipeline checks (2026-10-26).** `scripts/pending-scripts.mjs` builds the recording sheets from **origin/main's**
+  text and flags branches/worktrees whose text differs (`textSource`, `diverges`); `video/engine/scripts/produce.mjs --video
+  <slug>` runs audio → programme WAV → master stage 1 → frames → master stage 2 → report and stops at the first error (`--upload`
+  also uploads, private); `import-recording.mjs` now drops zero-length Whisper word runs, trims ghost words, pushes clip edges
+  to silence (`Comprobación de bordes`), saves `out/recording/<name>/import-gain.json` for `--only` re-imports and defaults
+  `--only`'s voice name to narration.json's. Details: engine README «Guardias del importador», plan «Orden de trabajo» 0/6/7.
 - **Remotion on this machine:** when the CPU is busy, the CLI's bundling blocks the event loop and
   Chrome's connection times out after 25 s. `render.mjs`/`qa-frames.mjs` therefore bundle first;
   for ad-hoc renders do `remotion bundle` then render from the bundle dir. In the Bash tool,
