@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useLabSession, useLabState } from './LabWorkspace';
 import { CALIB } from '../../data/labs';
 
 export default function CalibrationLab({
@@ -7,11 +7,12 @@ export default function CalibrationLab({
   onComplete: () => void;
 }) {
   // part 1: phrase → band
-  const [bands, setBands] = useState<Record<number, string>>({});
-  const [p1Checked, setP1Checked] = useState(false);
+  const session = useLabSession();
+  const [bands, setBands] = useLabState<Record<number, string>>('bands', {});
+  const [p1Checked, setP1Checked] = useLabState('p1Checked', false);
   // part 2: sliders
-  const [est, setEst] = useState<Record<number, number>>({});
-  const [p2Checked, setP2Checked] = useState(false);
+  const [est, setEst] = useLabState<Record<number, number>>('est', {});
+  const [p2Checked, setP2Checked] = useLabState('p2Checked', false);
 
   const p1AllSet = CALIB.phrases.every((_, i) => bands[i]);
   const p1Correct = CALIB.phrases.every((p, i) => bands[i] === p.band);
@@ -29,6 +30,9 @@ export default function CalibrationLab({
   const p2Passed = p2Checked && p2Score >= 8;
 
   const checkP2 = () => {
+    if (!p1Done || p2Checked) return;
+    session.record({ step: 'estimates', title: 'Estimaciones de escuela', correct: p2Score, total: p2Max,
+      passed: p2Score >= 8, mistakes: CALIB.scenarios.filter((_, i) => scoreFor(i) < 2).map((s) => s.note) });
     setP2Checked(true);
     const sc = CALIB.scenarios.reduce((acc, _, i) => acc + scoreFor(i), 0);
     if (sc >= 8 && p1Done) onComplete();
@@ -62,6 +66,7 @@ export default function CalibrationLab({
                 {p.phrase}
               </span>
               <select
+                aria-label={`Banda de ${p.phrase}`}
                 value={bands[i] ?? ''}
                 onChange={(e) => {
                   setBands((b) => ({ ...b, [i]: e.target.value }));
@@ -89,7 +94,13 @@ export default function CalibrationLab({
       </div>
       {!p1Done && (
         <button
-          onClick={() => setP1Checked(true)}
+          onClick={() => {
+            if (!p1AllSet || p1Checked) return;
+            session.record({ step: 'bands', title: 'Vocabulario estimativo', passed: p1Correct,
+              correct: CALIB.phrases.filter((p, i) => bands[i] === p.band).length, total: CALIB.phrases.length,
+              mistakes: p1Correct ? [] : ['Consulta las bandas de probabilidad de las expresiones estimativas.'] });
+            setP1Checked(true);
+          }}
           disabled={!p1AllSet}
           className="rounded-lg bg-cyan-500 px-5 py-2 text-sm font-bold text-ink-950 hover:bg-cyan-400 disabled:bg-ink-700 disabled:text-slate-500"
         >
@@ -133,6 +144,7 @@ export default function CalibrationLab({
                   <div className="mb-2 text-sm text-slate-200">{s.text}</div>
                   <div className="flex items-center gap-3">
                     <input
+                      aria-label={`Probabilidad: ${s.text}`}
                       type="range"
                       min={1}
                       max={99}

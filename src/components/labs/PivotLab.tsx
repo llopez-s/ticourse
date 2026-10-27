@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useLabSession, useLabState } from './LabWorkspace';
 import { PIVOT, type PivotNode } from '../../data/labs';
 import { Bar } from '../Bits';
 
@@ -93,9 +93,10 @@ function NodeView({
 }
 
 export default function PivotLab({ onComplete }: { onComplete: () => void }) {
-  const [expanded, setExpanded] = useState<Set<string>>(new Set());
-  const [queries, setQueries] = useState(0);
-  const [finished, setFinished] = useState(false);
+  const session = useLabSession();
+  const [expanded, setExpanded] = useLabState<Set<string>>('expanded', () => new Set());
+  const [queries, setQueries] = useLabState('queries', 0);
+  const [finished, setFinished] = useLabState('finished', false);
 
   const assetsFound = [...expanded].filter(
     (id) => PIVOT.nodes[id].verdict === 'asset',
@@ -112,6 +113,11 @@ export default function PivotLab({ onComplete }: { onComplete: () => void }) {
     const found = [...next].filter(
       (n) => PIVOT.nodes[n].verdict === 'asset',
     ).length;
+    if (found >= PIVOT.assetsNeeded || q >= PIVOT.budget) {
+      session.record({ step: 'hunt', title: 'Caza dentro del presupuesto', correct: found,
+        total: PIVOT.assetsNeeded, passed: found >= PIVOT.assetsNeeded,
+        mistakes: found < PIVOT.assetsNeeded ? ['Presupuesto agotado: compara el valor de pivotes dedicados y compartidos.'] : [] });
+    }
     if (found >= PIVOT.assetsNeeded) {
       setFinished(true);
       onComplete();

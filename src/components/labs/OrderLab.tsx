@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import { useLabSession, useLabState } from './LabWorkspace';
 import type { OrderData } from '../../data/labs';
 import { shuffle } from '../../lib/util';
 
@@ -13,12 +14,17 @@ export default function OrderLab({
     () => shuffle(data.steps.map((_, i) => i), 'order-lab-pool'),
     [data],
   );
-  const [seq, setSeq] = useState<number[]>([]);
-  const [submitted, setSubmitted] = useState(false);
+  const session = useLabSession();
+  const [seq, setSeq] = useLabState<number[]>('seq', []);
+  const [submitted, setSubmitted] = useLabState('submitted', false);
 
   const correct = seq.every((stepIdx, pos) => stepIdx === pos);
 
   const submit = () => {
+    if (seq.length !== data.steps.length || submitted) return;
+    session.record({ step: 'order', title: 'Secuencia de trabajo', passed: correct,
+      correct: seq.filter((s, i) => s === i).length, total: data.steps.length,
+      mistakes: seq.some((s, i) => s !== i) ? ['Revisa las dependencias entre fases en la lección de apoyo.'] : [] });
     setSubmitted(true);
     if (seq.every((stepIdx, pos) => stepIdx === pos)) onComplete();
   };
@@ -59,6 +65,11 @@ export default function OrderLab({
                     {data.steps[stepIdx].detail}
                   </div>
                 )}
+                {submitted && !ok && (
+                  <div className="mt-1 text-xs leading-relaxed text-amber-200">
+                    En esta posición corresponde {data.steps[pos].text}: {data.steps[pos].detail}
+                  </div>
+                )}
               </div>
               {!submitted && <span className="text-xs text-slate-500">quitar ✕</span>}
             </button>
@@ -97,7 +108,7 @@ export default function OrderLab({
           </button>
         ) : correct ? (
           <span className="text-sm font-bold text-emerald-400">
-            ✅ Ciclo perfecto — lab completado
+            ✅ Secuencia correcta — lab completado
           </span>
         ) : (
           <button

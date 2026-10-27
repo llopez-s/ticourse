@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useLabSession, useLabState } from './LabWorkspace';
 import { ACH, type AchRating } from '../../data/labs';
 
 const RATINGS: { v: AchRating; label: string; cls: string }[] = [
@@ -8,10 +8,11 @@ const RATINGS: { v: AchRating; label: string; cls: string }[] = [
 ];
 
 export default function AchLab({ onComplete }: { onComplete: () => void }) {
-  const [ratings, setRatings] = useState<Record<string, Record<string, AchRating>>>({});
-  const [graded, setGraded] = useState(false);
-  const [pick, setPick] = useState<string | null>(null);
-  const [pickSubmitted, setPickSubmitted] = useState(false);
+  const session = useLabSession();
+  const [ratings, setRatings] = useLabState<Record<string, Record<string, AchRating>>>('ratings', {});
+  const [graded, setGraded] = useLabState('graded', false);
+  const [pick, setPick] = useLabState<string | null>('pick', null);
+  const [pickSubmitted, setPickSubmitted] = useLabState('pickSubmitted', false);
 
   const setCell = (eid: string, hid: string, v: AchRating) => {
     if (graded) return;
@@ -43,6 +44,10 @@ export default function AchLab({ onComplete }: { onComplete: () => void }) {
   }));
 
   const submitPick = () => {
+    if (!matrixPassed || !pick || pickSubmitted) return;
+    session.record({ step: 'hypothesis', title: 'Hipótesis superviviente', passed: pick === ACH.answer,
+      correct: pick === ACH.answer ? 1 : 0, total: 1,
+      mistakes: pick === ACH.answer ? [] : ['La hipótesis más defendible acumula menos inconsistencias diagnósticas.'] });
     setPickSubmitted(true);
     if (pick === ACH.answer) onComplete();
   };
@@ -94,6 +99,9 @@ export default function AchLab({ onComplete }: { onComplete: () => void }) {
                     {RATINGS.map((r) => (
                       <button
                         key={r.v}
+                        aria-label={`${e.id} · ${h.label} · ${r.v}`}
+                        aria-pressed={cur === r.v}
+                        disabled={graded}
                         onClick={() => setCell(e.id, h.id, r.v)}
                         className={`h-7 w-7 rounded font-mono text-xs font-bold transition-colors ${
                           cur === r.v
@@ -130,7 +138,12 @@ export default function AchLab({ onComplete }: { onComplete: () => void }) {
       <div className="mt-5 flex flex-wrap items-center gap-3">
         {!graded ? (
           <button
-            onClick={() => setGraded(true)}
+            onClick={() => {
+              if (filled < totalCells) return;
+              session.record({ step: 'matrix', title: 'Matriz ACH', correct: matches, total: totalCells,
+                passed: agreementPct >= 70, mistakes: agreementPct < 70 ? ['Revisa qué evidencias contradicen una hipótesis y cuáles son neutrales.'] : [] });
+              setGraded(true);
+            }}
             disabled={filled < totalCells}
             className="rounded-lg bg-cyan-500 px-5 py-2 text-sm font-bold text-ink-950 hover:bg-cyan-400 disabled:cursor-not-allowed disabled:bg-ink-700 disabled:text-slate-500"
           >

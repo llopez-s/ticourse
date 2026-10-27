@@ -153,6 +153,25 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   Design `docs/superpowers/specs/2026-10-20-sy0-801-novedades-design.md`, plan
   `docs/superpowers/plans/2026-10-21-sy0-801-novedades.md`.
 
+- **Lab workbooks and optional challenges (2026-10-19).** `lib/labWorkspace.ts` owns
+  local, versioned workbooks (`alertopolis-labs-v1:` per lab/mode/case/content
+  version), separate from `ProgressSnapshot`, persist migrations and sync. All
+  eight guided engines use `LabWorkspaceProvider`/`useLabState`, record first and
+  latest step results before revealing feedback, and retain ten prior runs.
+  `data/lab-guides.ts` enriches the two track registries with objectives and
+  prerequisites. `lab3a`, `lab5b`, `spl4a` have two optional cases each under
+  `data/lab-challenges/`, lazy-loaded by LabPage; query params `mode=challenge`
+  and `case=...` preserve navigation on reload. Challenges never call completeLab
+  or grant XP. Only structured facts are autograded; writing has explicit self
+  assessment and commented examples. Public fixtures are not blind assessments.
+  YARA free-writing uses its own workbook (`lab3b/free/v1`). See
+  `docs/laboratories.md`; `scripts/test-lab-browser.mjs` verifies all eight engines
+  and six cases using Playwright, with optional `PLAYWRIGHT_MODULE_PATH` and
+  `LAB_TEST_URL`. Screenshots default to ignored `node_modules/.cache/lab-browser/`.
+  Profile's «Resetear progreso» also calls `clearLabWorkbooks()` (a restored finished
+  run would otherwise show a lab as done with no XP). The challenge panel is the
+  app's only lazy chunk; `ChallengeBoundary` in LabPage keeps a failed load inside it.
+
 - **Practical curriculum (2026-10-19).** Twelve existing lessons append typed blocks
   from `data/practical/` through `withPracticalExpansion` in `tracks.ts`. Original
   block indices and lesson/question/lab IDs stay stable. New totals: GCTI 96 cards /
@@ -161,7 +180,8 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   excluded from lesson completion and XP, never added to exam/placement pools.
   Fundamentals are base; Microsoft-specific and CTI professional practice are
   labelled complementary. `links` and `yara-practice` are searchable block types.
-  The YARA editor only downloads text; Forge remains a label-based simulation.
+  The YARA editor neither compiles nor sends anything: it autosaves the draft locally
+  (workbook `lab3b/free/v1`) and downloads it as text; Forge remains a label-based simulation.
   Real `yara-python==4.5.4` validation is optional tooling in `.venv-yara/` (ignored).
   `scripts/package-yara-practice.py --check` detects a stale downloadable ZIP;
   regenerate after changing its five source files. `scripts/test-yara-practice.py`
@@ -203,7 +223,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   and each device keeps its own copy locally, but it is the one place where a device whose
   `localStorage` was cleared *before* its next push can lose data. Retrying once after a 404 on
   the first sync for a code would shrink the window.
-- **Tests:** vitest, `npm test` (176 tests in `src/**/*.test.ts`, 15 files). Content tests assert
+- **Tests:** vitest, `npm test` (203 tests in `src/**/*.test.ts`, 17 files). Content tests assert
   Domain 1–5 completeness, that every Security+ boss section has ≥12 questions, 4 choices + valid
   answer per question, ids unique, lab data present, and (placement blocks) that every content
   section has exactly one 12-question block with contiguous ids and non-empty text. Partial

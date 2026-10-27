@@ -1,11 +1,12 @@
-import { Link, useParams } from 'react-router-dom';
+import { Component, lazy, Suspense, type ReactNode } from 'react';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import {
   CLASSIFY_DATA,
   LABS,
   ORDER_DATA,
   SELECT_DATA,
 } from '../data/labs';
-import { sectionById, trackOf } from '../data/course';
+import { moduleById, sectionById, trackOf } from '../data/course';
 import { TRACKS } from '../data/tracks';
 import { useStore } from '../lib/store';
 import { useSyncTrack } from '../components/Layout';
@@ -17,9 +18,27 @@ import YaraLab from '../components/labs/YaraLab';
 import AchLab from '../components/labs/AchLab';
 import CalibrationLab from '../components/labs/CalibrationLab';
 import ReportLab from '../components/labs/ReportLab';
+import { labButton, LabResultSummary, LabWorkbookBar, LabWorkspaceProvider } from '../components/labs/LabWorkspace';
+
+const LabChallengePanel = lazy(() => import('../components/labs/LabChallengePanel'));
+
+// The challenge is the app's only lazy chunk. If it cannot load (a deploy replaced it, or the
+// network dropped), keep the failure inside the panel instead of unmounting the whole app.
+class ChallengeBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  render() {
+    if (!this.state.failed) return this.props.children;
+    return <div role="alert" className="rounded-xl border border-amber-500/40 bg-amber-950/20 p-4 text-sm text-amber-100">
+      <p className="mb-3">No se pudo abrir el reto. Puede que haya una versión nueva de la web o que se haya cortado la conexión.</p>
+      <button className={labButton} onClick={() => window.location.reload()}>Recargar la página</button>
+    </div>;
+  }
+}
 
 export default function LabPage() {
   const { labId } = useParams();
+  const [search, setSearch] = useSearchParams();
   const meta = LABS.find((l) => l.id === labId);
   const completed = useStore((s) => !!s.labs[labId ?? '']);
   const completeLab = useStore((s) => s.completeLab);
@@ -30,6 +49,11 @@ export default function LabPage() {
   const section = sectionById(meta.sectionId);
   const campaign = TRACKS[trackOf(meta.sectionId)].campaign;
   const onComplete = () => completeLab(meta.id, meta.xp);
+  const challenge = search.get('mode') === 'challenge' && !!meta.challengeId;
+  const reviewLinks = (meta.prerequisites ?? []).flatMap((id) => {
+    const module = moduleById(id);
+    return module ? [{ id, title: module.title }] : [];
+  });
 
   const body = (() => {
     switch (meta.kind) {
@@ -67,7 +91,7 @@ export default function LabPage() {
           {meta.icon} {meta.title}
         </h1>
         <div className="mt-1 text-xs text-slate-500">
-          🧪 Lab · {meta.minutes} min · +{meta.xp} XP
+          🧪 Práctica guiada · {meta.minutes} min · +{meta.xp} XP
           {completed && (
             <span className="ml-2 font-semibold text-emerald-400">
               ✓ ya completado (puedes repetirlo por práctica)
@@ -89,7 +113,32 @@ export default function LabPage() {
 
       <p className="mb-5 text-sm leading-relaxed text-slate-400">{meta.brief}</p>
 
-      {body}
+      <section aria-label="Objetivos y preparación" className="mb-6 grid gap-5 rounded-xl border border-ink-700 bg-ink-900 p-5 md:grid-cols-2">
+        <div><h2 className="text-sm font-semibold text-slate-100">Qué vas a practicar</h2>
+          <ul className="mt-2 list-inside list-disc space-y-1 text-sm leading-relaxed text-slate-300">{meta.objectives?.map((objective) => <li key={objective}>{objective}</li>)}</ul>
+          <p className="mt-3 text-xs leading-relaxed text-cyan-200"><strong>Para terminar la práctica guiada:</strong> {meta.outcome}</p>
+        </div>
+        <div><h2 className="text-sm font-semibold text-slate-100">Antes de empezar</h2>
+          <ul className="mt-2 space-y-2 text-sm">{reviewLinks.map((link) => <li key={link.id}><Link className="text-cyan-300 underline underline-offset-4" to={`/learn/${link.id}`}>{link.title}</Link></li>)}</ul>
+          {meta.id === 'lab3b' && <Link className="mt-3 inline-block text-sm text-cyan-300 underline" to="/learn/s3m5">Abrir editor libre y corpus YARA con motor real fuera del navegador</Link>}
+        </div>
+      </section>
+
+      {meta.challengeId && <div role="group" aria-label="Modalidad de práctica" className="mb-5 flex flex-wrap gap-2">
+        {[false, true].map((isChallenge) => <button key={String(isChallenge)} aria-pressed={challenge === isChallenge}
+          className={`${labButton} ${challenge === isChallenge ? 'border-cyan-400 bg-cyan-950/40 text-cyan-200' : ''}`}
+          onClick={() => setSearch((previous) => { const next = new URLSearchParams(previous); if (isChallenge) next.set('mode', 'challenge'); else next.delete('mode'); return next; })}>
+          {isChallenge ? 'Reto práctico · opcional' : 'Práctica guiada'}
+        </button>)}
+      </div>}
+
+      {challenge && meta.challengeId ? <ChallengeBoundary><Suspense fallback={<p role="status" className="text-slate-400">Abriendo dossier…</p>}>
+        <LabChallengePanel labId={meta.id} challengeId={meta.challengeId} reviewLinks={reviewLinks} />
+      </Suspense></ChallengeBoundary> : <LabWorkspaceProvider key={`${meta.id}/guided/v1`} identity={`${meta.id}/guided/v1`}>
+        <LabWorkbookBar />
+        {body}
+        <LabResultSummary reviewLinks={reviewLinks} />
+      </LabWorkspaceProvider>}
     </div>
   );
 }

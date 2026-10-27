@@ -9,5 +9,7 @@ const base = process.env.BASE_PATH ?? '/ticourse/';
 
 export default defineConfig({
   base,
+  // Only the course is a Vite app; local browser/video caches contain unrelated HTML.
+  optimizeDeps: { entries: ['index.html'] },
   plugins: [react(), tailwindcss()],
 });

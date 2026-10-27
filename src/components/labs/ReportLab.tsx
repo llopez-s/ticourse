@@ -1,18 +1,22 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import { useLabSession, useLabState } from './LabWorkspace';
 import { REPORT } from '../../data/labs';
 import { shuffle } from '../../lib/util';
 
 function PickStep({
+  id,
   title,
   options,
   onPassed,
 }: {
+  id: string;
   title: string;
   options: { label?: string; text?: string; good: boolean; why: string }[];
   onPassed: () => void;
 }) {
-  const [pick, setPick] = useState<number | null>(null);
-  const [checked, setChecked] = useState(false);
+  const session = useLabSession();
+  const [pick, setPick] = useLabState<number | null>(`${id}-pick`, null);
+  const [checked, setChecked] = useLabState(`${id}-checked`, false);
   const ok = pick !== null && options[pick].good;
 
   return (
@@ -41,6 +45,7 @@ function PickStep({
                 setPick(i);
                 setChecked(false);
               }}
+              aria-pressed={pick === i}
               className={cls}
             >
               <span className="leading-relaxed">{o.label ?? o.text}</span>
@@ -56,6 +61,10 @@ function PickStep({
       {!(checked && ok) && (
         <button
           onClick={() => {
+            if (pick === null || checked) return;
+            session.record({ step: id, title, passed: options[pick].good,
+              correct: options[pick].good ? 1 : 0, total: 1,
+              mistakes: options[pick].good ? [] : [options[pick].why] });
             setChecked(true);
             if (pick !== null && options[pick].good) onPassed();
           }}
@@ -73,12 +82,13 @@ function PickStep({
 }
 
 function OrderStep({ onPassed }: { onPassed: () => void }) {
+  const session = useLabSession();
   const pool = useMemo(
     () => shuffle(REPORT.sections.map((_, i) => i), 'report-order'),
     [],
   );
-  const [seq, setSeq] = useState<number[]>([]);
-  const [checked, setChecked] = useState(false);
+  const [seq, setSeq] = useLabState<number[]>('report-seq', []);
+  const [checked, setChecked] = useLabState('report-order-checked', false);
   const correct = seq.length === REPORT.sections.length && seq.every((s, p) => s === p);
 
   return (
@@ -91,6 +101,7 @@ function OrderStep({ onPassed }: { onPassed: () => void }) {
           <button
             key={sIdx}
             onClick={() => {
+              if (checked && correct) return;
               setSeq((s) => s.filter((x) => x !== sIdx));
               setChecked(false);
             }}
@@ -136,6 +147,10 @@ function OrderStep({ onPassed }: { onPassed: () => void }) {
       {!(checked && correct) ? (
         <button
           onClick={() => {
+            if (seq.length !== REPORT.sections.length || checked) return;
+            session.record({ step: 'report-order', title: 'Estructura del informe', passed: correct,
+              correct: seq.filter((s, i) => s === i).length, total: REPORT.sections.length,
+              mistakes: correct ? [] : ['El juicio principal va primero; la cronología respalda la conclusión.'] });
             setChecked(true);
             if (seq.length === REPORT.sections.length && seq.every((s, p) => s === p))
               onPassed();
@@ -155,14 +170,12 @@ function OrderStep({ onPassed }: { onPassed: () => void }) {
 }
 
 export default function ReportLab({ onComplete }: { onComplete: () => void }) {
-  const [passed, setPassed] = useState<Set<string>>(new Set());
+  const [passed, setPassed] = useLabState<Set<string>>('passed', () => new Set());
 
   const pass = (k: string, totalNeeded: number) => {
-    setPassed((p) => {
-      const n = new Set(p).add(k);
-      if (n.size >= totalNeeded) onComplete();
-      return n;
-    });
+    const next = new Set(passed).add(k);
+    setPassed(next);
+    if (next.size >= totalNeeded) onComplete();
   };
 
   // steps: bluf, order, f0..f2, tlp0..tlp1 → 7 total
@@ -172,6 +185,7 @@ export default function ReportLab({ onComplete }: { onComplete: () => void }) {
   return (
     <div className="space-y-4">
       <PickStep
+        id="bluf"
         title="1 · Elige el BLUF del informe"
         options={REPORT.blufOptions}
         onPassed={() => pass('bluf', TOTAL)}
@@ -180,6 +194,7 @@ export default function ReportLab({ onComplete }: { onComplete: () => void }) {
       {REPORT.findings.map((f, i) => (
         <PickStep
           key={i}
+          id={`f${i}`}
           title={`${3 + i} · Asigna confianza — ${f.finding}`}
           options={f.options}
           onPassed={() => pass(`f${i}`, TOTAL)}
@@ -188,6 +203,7 @@ export default function ReportLab({ onComplete }: { onComplete: () => void }) {
       {REPORT.tlp.map((t, i) => (
         <PickStep
           key={i}
+          id={`t${i}`}
           title={`${3 + REPORT.findings.length + i} · Marca TLP — ${t.product}`}
           options={t.options}
           onPassed={() => pass(`t${i}`, TOTAL)}

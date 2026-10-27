@@ -63,8 +63,8 @@ con avisos y resultados reformulados para evitar afirmar compilación, ejecució
 real o calidad de producción. Su botón es «Evaluar simulación».
 
 En s3m5, el editor permite escribir libremente y descargar `mi-regla.yar`. No
-ejecuta el texto ni lo envía a servicios. El borrador no persiste al salir; se
-indica junto al editor. La solución desplegable importa el mismo archivo
+ejecuta el texto ni lo envía a servicios. El borrador se guarda localmente en este
+dispositivo, separado del perfil sincronizado. La solución desplegable importa el mismo archivo
 `reference.yar` que usa el verificador.
 
 El ZIP distribuido contiene 18 archivos: cinco fuentes/instrucciones, doce

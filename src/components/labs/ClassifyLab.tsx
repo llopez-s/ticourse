@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useLabSession, useLabState } from './LabWorkspace';
 import type { ClassifyData } from '../../data/labs';
 import { pct } from '../../lib/util';
 
@@ -9,8 +9,9 @@ export default function ClassifyLab({
   data: ClassifyData;
   onComplete: () => void;
 }) {
-  const [answers, setAnswers] = useState<Record<number, string>>({});
-  const [submitted, setSubmitted] = useState(false);
+  const session = useLabSession();
+  const [answers, setAnswers] = useLabState<Record<number, string>>('answers', {});
+  const [submitted, setSubmitted] = useLabState('submitted', false);
 
   const allAnswered = data.items.every((_, i) => answers[i]);
   const score = data.items.filter((it, i) => answers[i] === it.answer).length;
@@ -18,6 +19,9 @@ export default function ClassifyLab({
   const passed = scorePct >= data.passPct;
 
   const submit = () => {
+    if (!allAnswered || submitted) return;
+    session.record({ step: 'classify', title: 'Clasificación de evidencias', correct: score,
+      total: data.items.length, passed, mistakes: data.items.filter((it, i) => answers[i] !== it.answer).map((it) => it.why) });
     setSubmitted(true);
     if (pct(score, data.items.length) >= data.passPct) onComplete();
   };
@@ -48,6 +52,7 @@ export default function ClassifyLab({
                 {it.text}
               </div>
               <select
+                aria-label={it.text}
                 value={chosen ?? ''}
                 disabled={submitted}
                 onChange={(e) =>

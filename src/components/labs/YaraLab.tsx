@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useLabSession, useLabState } from './LabWorkspace';
 import { Link } from 'react-router-dom';
 import { YARA } from '../../data/labs';
 
@@ -11,9 +11,10 @@ const COND_LABEL: Record<Cond, string> = {
 };
 
 export default function YaraLab({ onComplete }: { onComplete: () => void }) {
-  const [selected, setSelected] = useState<Set<string>>(new Set());
-  const [cond, setCond] = useState<Cond>('two');
-  const [tested, setTested] = useState(false);
+  const session = useLabSession();
+  const [selected, setSelected] = useLabState<Set<string>>('selected', () => new Set());
+  const [cond, setCond] = useLabState<Cond>('cond', 'two');
+  const [tested, setTested] = useLabState('tested', false);
 
   const toggle = (id: string) => {
     setTested(false);
@@ -39,6 +40,10 @@ export default function YaraLab({ onComplete }: { onComplete: () => void }) {
   const success = tested && valid && results.every((r) => r.ok);
 
   const test = () => {
+    if (tested || selected.size === 0) return;
+    session.record({ step: 'corpus', title: 'Resultados del corpus simulado', correct: results.filter((r) => r.ok).length,
+      total: results.length, passed: valid && results.every((r) => r.ok),
+      mistakes: results.filter((r) => !r.ok).map((r) => `${r.sample.name}: ${r.sample.malicious ? 'variante no detectada' : 'falso positivo'}`) });
     setTested(true);
     const allOk =
       valid &&
@@ -73,6 +78,7 @@ export default function YaraLab({ onComplete }: { onComplete: () => void }) {
             <button
               key={s.id}
               onClick={() => toggle(s.id)}
+              aria-pressed={on}
               className={`flex w-full items-start gap-3 rounded-xl border p-3 text-left transition-colors ${
                 on
                   ? 'border-cyan-400 bg-cyan-950/30'
