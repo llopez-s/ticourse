@@ -78,6 +78,17 @@ export const SP6_MODULES: Module[] = [
       },
       {
         t: 'p',
+        md: 'Antes del simulacro, cinco preguntas de dominios distintos para practicar cómo se contesta: qué te piden, qué descartas y cuánto tiempo tienes.',
+      },
+      {
+        t: 'video',
+        title: 'Del puerto al examen: cómo se contesta',
+        youtube: 'ArrQwo4oHeY',
+        poster: 'videos/examen-halden-poster.png',
+        transcript: 'videos/examen-halden-transcript.txt',
+      },
+      {
+        t: 'p',
         md: 'Tu plan en esta app: completa las secciones S1→S5 (lecciones, quizzes y labs), derrota a los 5 bosses (≥80%), mantén las flashcards al día y cierra con **simulacros completos** de 90 preguntas hasta superar el **83%** (equivalente aproximado al 750/900) de forma estable.',
       },
       {

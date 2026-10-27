@@ -1,0 +1,283 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:06.067
+Imagina que alguien de Halden toca
+la configuración de un equipo de red.
+
+2
+00:00:06.067 --> 00:00:09.767
+Se equivoca, y la red
+de producción se corta.
+
+3
+00:00:09.767 --> 00:00:11.900
+Vamos a ver cómo llegarías a ese equipo,
+
+4
+00:00:11.900 --> 00:00:14.400
+y cómo conseguir
+que las copias de seguridad
+
+5
+00:00:14.400 --> 00:00:17.600
+sobrevivan a quien intente borrarlas.
+
+6
+00:00:17.600 --> 00:00:22.433
+En este ejemplo ronda BORROWED
+VOICE, que vive de voces ajenas.
+
+7
+00:00:23.433 --> 00:00:26.400
+Lo lógico sería deshacer el cambio.
+
+8
+00:00:26.400 --> 00:00:30.333
+Pero llegas al equipo por esa misma
+red, la que acaba de cortarse,
+
+9
+00:00:30.333 --> 00:00:32.367
+y ya no hay camino por ahí.
+
+10
+00:00:32.367 --> 00:00:36.500
+El equipo sigue encendido,
+pero no puedes darle órdenes.
+
+11
+00:00:36.500 --> 00:00:39.833
+El arreglo depende del mismo
+camino que ha fallado.
+
+12
+00:00:39.833 --> 00:00:43.100
+Pasaría igual si la red
+sufriera un ataque.
+
+13
+00:00:43.100 --> 00:00:46.267
+Entonces, ¿por dónde entras?
+
+14
+00:00:51.600 --> 00:00:54.833
+La respuesta es administrar
+por un canal aparte,
+
+15
+00:00:54.833 --> 00:01:00.767
+separado del tráfico de producción.
+Eso se llama out-of-band management.
+
+16
+00:01:00.767 --> 00:01:03.400
+Puede ser una red de gestión dedicada,
+
+17
+00:01:03.400 --> 00:01:06.633
+un puerto de consola
+o un acceso independiente.
+
+18
+00:01:06.633 --> 00:01:09.500
+Con ese canal, aunque
+la producción esté caída,
+
+19
+00:01:09.500 --> 00:01:12.000
+llegas al equipo y deshaces el cambio.
+
+20
+00:01:12.000 --> 00:01:15.233
+También te vale si atacan
+la red principal.
+
+21
+00:01:19.700 --> 00:01:21.267
+Qué tranquilidad, ¿verdad?
+
+22
+00:01:21.267 --> 00:01:26.133
+Pues no, porque ese canal concentra
+mucho poder en un solo sitio.
+
+23
+00:01:26.133 --> 00:01:30.933
+Por eso lo aíslas del resto
+y exiges un segundo factor.
+
+24
+00:01:30.933 --> 00:01:35.100
+Además, lo registras todo
+y das el acceso mínimo.
+
+25
+00:01:35.700 --> 00:01:39.533
+Piensa en cuando verificas
+una petición por otro medio.
+
+26
+00:01:39.533 --> 00:01:44.567
+La idea es la misma, usar un canal
+distinto del que puede estar comprometido.
+
+27
+00:01:45.367 --> 00:01:48.800
+Ahora imagina otro día, en otros sistemas.
+
+28
+00:01:48.800 --> 00:01:52.300
+Alguien consigue la cuenta
+de un administrador, otra voz ajena,
+
+29
+00:01:52.300 --> 00:01:55.467
+y con ella borra las copias de seguridad.
+
+30
+00:01:55.467 --> 00:01:59.333
+Después cifra los sistemas
+para pedir un rescate.
+
+31
+00:01:59.333 --> 00:02:03.733
+Llega la hora de recuperar,
+y no queda nada que restaurar.
+
+32
+00:02:03.733 --> 00:02:09.267
+Una réplica por sí sola tampoco te salva,
+porque reproduce el daño tal cual.
+
+33
+00:02:09.267 --> 00:02:12.967
+Hace falta una copia que esa
+cuenta no pueda tocar.
+
+34
+00:02:13.933 --> 00:02:19.367
+Una forma de lograrlo se llama
+inmutabilidad, o immutability en inglés.
+
+35
+00:02:19.367 --> 00:02:24.300
+La copia no se puede modificar
+ni borrar durante el plazo que fijas.
+
+36
+00:02:24.300 --> 00:02:29.300
+Con el modo estricto, ni un administrador
+puede levantar el bloqueo antes de tiempo.
+
+37
+00:02:29.300 --> 00:02:34.367
+Así, aquel atacante no podría
+cifrar ni borrar esa copia.
+
+38
+00:02:34.533 --> 00:02:40.567
+Es como una pieza de museo detrás de un
+cristal. Puedes verla, pero nadie la toca.
+
+39
+00:02:41.433 --> 00:02:43.567
+Pero tiene letra pequeña.
+
+40
+00:02:43.567 --> 00:02:45.367
+Congela también lo que esté mal,
+
+41
+00:02:45.367 --> 00:02:48.933
+y una copia infectada
+se queda ahí todo el plazo.
+
+42
+00:02:48.933 --> 00:02:53.533
+Además ocupa espacio y puede chocar
+con la obligación de borrar datos,
+
+43
+00:02:53.533 --> 00:02:57.200
+así que el plazo se elige con cuidado.
+
+44
+00:03:01.800 --> 00:03:07.067
+Cómodo, ¿no? Pero que nadie pueda borrarla
+no significa que puedas restaurarla.
+
+45
+00:03:07.067 --> 00:03:09.967
+Una copia que nadie
+ha restaurado es una hipótesis,
+
+46
+00:03:09.967 --> 00:03:12.933
+y una hipótesis no te sirve el día malo.
+
+47
+00:03:12.933 --> 00:03:17.900
+Por eso se hace la prueba de restauración,
+o restoration testing.
+
+48
+00:03:17.900 --> 00:03:23.133
+Demuestra que la copia se recupera
+y que lo hace en el tiempo prometido.
+
+49
+00:03:23.133 --> 00:03:25.900
+Eso sí, probar una muestra
+pequeña no garantiza
+
+50
+00:03:25.900 --> 00:03:28.967
+que puedas restaurarlo todo de golpe.
+
+51
+00:03:30.033 --> 00:03:31.500
+Tres reglas.
+
+52
+00:03:31.500 --> 00:03:34.800
+Una, administra por un canal
+aparte y protégelo,
+
+53
+00:03:34.800 --> 00:03:38.567
+porque concentra mucho
+poder en un solo sitio.
+
+54
+00:03:38.567 --> 00:03:43.800
+Dos, haz inmutables las copias
+que más importan, en modo estricto,
+
+55
+00:03:43.800 --> 00:03:47.567
+para que ni una cuenta robada
+pueda borrarlas durante el plazo.
+
+56
+00:03:47.567 --> 00:03:53.867
+Tres, comprueba con regularidad que puedes
+restaurar y cronometra cuánto tardas,
+
+57
+00:03:53.867 --> 00:03:56.800
+porque una copia sin probar
+es una hipótesis.
+
+58
+00:03:56.800 --> 00:03:59.333
+Antes de fiarte de una defensa,
+
+59
+00:03:59.333 --> 00:04:02.433
+pregúntate qué te queda
+si el camino de siempre falla.
+
+60
+00:04:02.433 --> 00:04:05.367
+Con eso en la cabeza, tu turno.

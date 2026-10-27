@@ -268,6 +268,17 @@ export const SP7M7: Module = {
       },
     },
     {
+      t: 'p',
+      md: 'Antes de la tarea breve, la extorsión del ejemplo contada en cuatro minutos.',
+    },
+    {
+      t: 'video',
+      title: 'Una nota de extorsión, de madrugada',
+      youtube: 'fgwIidduN64',
+      poster: 'videos/operaciones-gobierno-poster.png',
+      transcript: 'videos/operaciones-gobierno-transcript.txt',
+    },
+    {
       t: 'callout',
       kind: 'tip',
       title: 'Tarea breve',

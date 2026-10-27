@@ -433,6 +433,17 @@ describe('lesson videos', () => {
     // V55 follows a QR poster to a stolen session token and impossible travel, after the guided scenario's list and
     // before the optional checks
     expect(youtubeVideos.find((v) => v.block.youtube === 'kOotP93kQn8')?.module).toBe('sp7m4');
+    // V52 practises how to answer five exam questions from different domains, after the check on the two domains that
+    // make half the exam and before the study plan that sends the learner to the mock exam
+    expect(youtubeVideos.find((v) => v.block.youtube === 'ArrQwo4oHeY')?.module).toBe('sp6m1');
+    // V56 follows a key written in code to a public repository and secrets scanning, after «Para recordar» and before
+    // the first check
+    expect(youtubeVideos.find((v) => v.block.youtube === 'uavP1_CfUBI')?.module).toBe('sp7m5');
+    // V58 reaches a cut-off device out of band and keeps backups immutable, after the backups paragraph and before the
+    // checks of the last part
+    expect(youtubeVideos.find((v) => v.block.youtube === 'KpabKLc4DgA')?.module).toBe('sp7m6');
+    // V59 walks an extortion note through negotiation and notification, after the last check and before «Tarea breve»
+    expect(youtubeVideos.find((v) => v.block.youtube === 'fgwIidduN64')?.module).toBe('sp7m7');
   });
 
   it('every video block points at relative public assets that exist', async () => {
