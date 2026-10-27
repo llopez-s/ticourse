@@ -61,9 +61,17 @@ describe('practical curriculum compatibility', () => {
       for (const item of block.items) {
         if (item.href.startsWith('/learn/')) expect(moduleById(item.href.slice(7)), item.href).toBeDefined();
         else if (item.href.startsWith('/lab/')) expect(LABS.some((lab) => lab.id === item.href.slice(5)), item.href).toBe(true);
-        else expect(['learn.microsoft.com', 'docs.virustotal.com', 'yara.readthedocs.io']).toContain(new URL(item.href).hostname);
+        else expect(['learn.microsoft.com', 'docs.virustotal.com', 'yara.readthedocs.io', 'www.nvb.nl']).toContain(new URL(item.href).hostname);
       }
     }
+  });
+
+  it('places the TaHiTI hunting capsule after s5m5\'s other expansion and points to it from s1m3', () => {
+    const titles = moduleById('s5m5')!.blocks.flatMap((b) => (b.t === 'callout' ? [b.title ?? ''] : []));
+    expect(titles.at(-1)).toContain('TaHiTI');
+    expect(titles.findIndex((t) => t.includes('Dos preguntas'))).toBeLessThan(titles.length - 1);
+    const s1m3Links = moduleById('s1m3')!.blocks.flatMap((b) => (b.t === 'links' ? b.items.map((i) => i.href) : []));
+    expect(s1m3Links).toContain('/learn/s5m5');
   });
 
   it('ships an inert corpus, a real-engine verifier and an honest browser editor', () => {

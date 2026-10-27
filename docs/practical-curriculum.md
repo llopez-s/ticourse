@@ -23,7 +23,8 @@ nuevo, no a una modificación de los pesos del examen.
 | s4m2 · Falacias | Independencia, cadena de citas y eco de feeds | Complementario | +5 → 16 min |
 | s4m4 · Clustering | Ecosistema de infostealers y métricas, con Bruma/Cobalto/Duna; unidad, ventana, sesgo y relevancia | Complementario identificable de S4 | +18 → 30 min |
 | s5m3 · Diseminación técnica | Entregar YARA con objetivo, versión, motor, matriz reproducible, límites y acción | Complementario | +8 → 23 min |
-| s5m5 · Métricas CTI | Distinción entre métricas del fenómeno observado y valor del equipo | Complementario | +2 → 13 min |
+| s5m5 · Métricas CTI | Distinción entre métricas del fenómeno observado y valor del equipo; cápsula de threat hunting guiado por inteligencia (TaHiTI 2.0: proceso, hipótesis, resultados, micro hunts, métricas) | Complementario | +16 → 27 min |
+| s1m3 · Sliding Scale | Remisión a la cápsula de hunting de s5m5 | Complementario | +1 → 14 min |
 
 El bloque de infostealers permanece en s4m4, conectado al clustering. No se crea
 un módulo adicional: mantiene las unidades de progreso y convalidación y permite
@@ -129,6 +130,7 @@ Los detalles del producto pueden cambiar; registrar fecha al repetir prácticas.
 - [YARA: sintaxis de reglas](https://yara.readthedocs.io/en/stable/writingrules.html).
 - [YARA: módulo PE e is_pe](https://yara.readthedocs.io/en/stable/modules/pe.html).
 - [YARA: motor Python](https://yara.readthedocs.io/en/stable/yarapython.html).
+- [FI-ISAC NL: TaHiTI Threat Hunting Methodology v2.0](https://www.nvb.nl/media/vw3iwzhb/tahiti-threat-hunting-methodology_v20.pdf) (octubre de 2026, CC BY 4.0), base de la cápsula de hunting de s5m5; resumen propio en español.
 
 La comparación de feeds y el dataset de infostealers son ejercicios originales,
 sin proveedores o familias reales ni rankings que pretendan vigencia permanente.
