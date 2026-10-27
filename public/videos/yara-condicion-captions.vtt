@@ -1,0 +1,602 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:06.867
+Vas a escribir una regla YARA y explicar
+por qué exige esas coincidencias.
+
+2
+00:00:06.867 --> 00:00:11.100
+Empezamos con archivos inertes,
+sin malware ni cuentas reales.
+
+3
+00:00:11.100 --> 00:00:14.600
+El ejercicio acompaña a Meridian,
+una empresa aeroespacial.
+
+4
+00:00:14.600 --> 00:00:19.633
+Aquí una regla expresa una hipótesis
+sobre el contenido de un archivo.
+
+5
+00:00:19.667 --> 00:00:22.933
+No decide por sí sola
+si algo es malicioso.
+
+6
+00:00:22.933 --> 00:00:26.767
+Detecta los patrones y condiciones
+que tú hayas definido.
+
+7
+00:00:26.767 --> 00:00:31.167
+Trabajamos con un conjunto de archivos
+de prueba. Lo llamamos corpus.
+
+8
+00:00:31.167 --> 00:00:33.633
+Queremos reconocer tres
+variantes de un formato
+
+9
+00:00:33.633 --> 00:00:37.433
+de demostración y rechazar
+controles parecidos.
+
+10
+00:00:37.433 --> 00:00:40.433
+Los archivos se llaman A,
+B y C en la explicación.
+
+11
+00:00:40.433 --> 00:00:44.033
+Sus nombres no forman
+parte de la condición.
+
+12
+00:00:45.167 --> 00:00:50.067
+La regla tiene tres partes habituales.
+El contexto se escribe en meta.
+
+13
+00:00:50.067 --> 00:00:55.167
+Documenta autoría, versión y alcance.
+No hace que el archivo coincida.
+
+14
+00:00:55.167 --> 00:00:58.800
+Poner el nombre de una familia
+ahí no demuestra que la detectes.
+
+15
+00:00:58.800 --> 00:01:01.533
+Los patrones se declaran en strings.
+
+16
+00:01:01.533 --> 00:01:05.233
+Cada uno recibe un identificador
+para poder usarlo después.
+
+17
+00:01:05.233 --> 00:01:09.833
+Pueden ser cadenas textuales o secuencias
+de bytes, entre otras formas.
+
+18
+00:01:09.833 --> 00:01:13.700
+Elegirlos necesita evidencia
+sobre lo que quieres reconocer.
+
+19
+00:01:13.700 --> 00:01:16.467
+La decisión se expresa en condition.
+
+20
+00:01:16.467 --> 00:01:19.833
+Ahí combinas los patrones
+y los límites que correspondan.
+
+21
+00:01:19.833 --> 00:01:22.833
+Esa combinación es la promesa de la regla.
+
+22
+00:01:22.833 --> 00:01:26.433
+Si dices que cubre variantes,
+deberás comprobar variantes.
+
+23
+00:01:26.433 --> 00:01:30.367
+Que el texto parezca razonable
+todavía no lo demuestra.
+
+24
+00:01:41.033 --> 00:01:45.900
+Dos cadenas corrientes pueden aparecer
+juntas en mucho software legítimo.
+
+25
+00:01:45.900 --> 00:01:48.733
+La cantidad no sustituye la elección.
+
+26
+00:01:48.733 --> 00:01:51.833
+Primero necesitas explicar
+qué aporta cada patrón y qué
+
+27
+00:01:51.833 --> 00:01:56.200
+controles podrían contenerlo
+sin pertenecer a tu objetivo.
+
+28
+00:01:56.200 --> 00:02:01.700
+En nuestro corpus hay un archivo con dos
+nombres comunes. No queremos que coincida.
+
+29
+00:02:01.700 --> 00:02:06.067
+Si solo cuentas cuántas cadenas aparecen,
+puedes detectar ese control.
+
+30
+00:02:06.067 --> 00:02:09.867
+El problema no se arregla
+eligiendo un número por costumbre.
+
+31
+00:02:09.867 --> 00:02:14.167
+Una regla estrecha para una muestra
+puede usar un rasgo muy específico.
+
+32
+00:02:14.167 --> 00:02:17.000
+Una que busca variantes
+necesita justificar
+
+33
+00:02:17.000 --> 00:02:19.600
+qué se conserva y qué puede cambiar.
+
+34
+00:02:19.600 --> 00:02:21.933
+El objetivo y la evidencia mandan.
+
+35
+00:02:21.933 --> 00:02:24.467
+Ningún umbral convierte
+por sí solo cadenas
+
+36
+00:02:24.467 --> 00:02:27.500
+débiles en una identificación fiable.
+
+37
+00:02:28.633 --> 00:02:31.433
+A conserva el marcador en texto sencillo.
+
+38
+00:02:31.433 --> 00:02:37.467
+B lo lleva en mayúsculas y con bytes nulos
+intercalados. Sigue dentro del objetivo.
+
+39
+00:02:37.467 --> 00:02:43.500
+¿Lo dejarías fuera o necesitas
+expresar esa variación en el patrón?
+
+40
+00:02:47.733 --> 00:02:49.433
+Necesitas contemplarla.
+
+41
+00:02:49.433 --> 00:02:54.167
+Una cadena textual busca sus bytes
+y distingue mayúsculas por defecto.
+
+42
+00:02:54.167 --> 00:02:58.367
+El modificador ascii busca
+la representación sencilla.
+
+43
+00:02:58.367 --> 00:03:01.733
+Wide busca los caracteres
+con un byte nulo intercalado.
+
+44
+00:03:01.733 --> 00:03:05.067
+Usar ambos contempla las dos
+formas de este ejemplo.
+
+45
+00:03:05.067 --> 00:03:09.767
+Nocase permite ignorar las diferencias
+de mayúsculas y minúsculas del patrón.
+
+46
+00:03:09.767 --> 00:03:15.033
+Aquí ayuda con B. Pero cada ampliación
+puede incluir más coincidencias.
+
+47
+00:03:15.033 --> 00:03:17.533
+Y wide no interpreta todo Unicode.
+
+48
+00:03:17.533 --> 00:03:20.267
+Estás cubriendo
+una representación concreta,
+
+49
+00:03:20.267 --> 00:03:23.367
+no cualquier manera posible
+de escribir el texto.
+
+50
+00:03:29.533 --> 00:03:34.933
+Ahora compara la secuencia de bytes
+de A y C. Hay una posición que cambia.
+
+51
+00:03:34.933 --> 00:03:40.333
+Una cadena hexadecimal permite describir
+bytes concretos y dejar una variación
+
+52
+00:03:40.333 --> 00:03:45.533
+donde la evidencia la justifica. Fíjate
+en la posición que cambia en pantalla.
+
+53
+00:03:45.533 --> 00:03:47.300
+En el patrón de pantalla,
+
+54
+00:03:47.300 --> 00:03:52.200
+el comodín de dos interrogaciones
+acepta cualquier valor para ese byte.
+
+55
+00:03:52.200 --> 00:03:57.500
+El resto permanece fijo. También
+existen comodines para medio byte.
+
+56
+00:03:57.500 --> 00:04:01.500
+Pero poner más comodines no es
+mejorar automáticamente la regla.
+
+57
+00:04:01.500 --> 00:04:04.000
+Es permitir más contenido.
+
+58
+00:04:04.000 --> 00:04:08.067
+En este ejercicio sabemos por qué
+dejamos variar esa posición.
+
+59
+00:04:08.067 --> 00:04:11.400
+Con datos reales necesitarías
+una razón equivalente.
+
+60
+00:04:11.400 --> 00:04:16.833
+Si el patrón queda demasiado amplio,
+controles ajenos pueden compartirlo.
+
+61
+00:04:16.833 --> 00:04:21.233
+La condición tendrá que combinarlo
+con otras evidencias del objetivo.
+
+62
+00:04:22.400 --> 00:04:28.100
+Las tres variantes conservan el marcador.
+Dos tienen la misma ruta de demostración.
+
+63
+00:04:28.100 --> 00:04:29.633
+C cambia esa ruta,
+
+64
+00:04:29.633 --> 00:04:33.933
+pero conserva la secuencia de bytes
+con la variación que acabas de contemplar.
+
+65
+00:04:33.933 --> 00:04:38.600
+Eso sugiere una condición con una parte
+necesaria y dos alternativas.
+
+66
+00:04:38.600 --> 00:04:42.700
+Exiges el marcador y, además,
+la ruta o el patrón de bytes.
+
+67
+00:04:42.700 --> 00:04:45.600
+Los paréntesis agrupan las alternativas.
+
+68
+00:04:45.600 --> 00:04:49.667
+Si los colocas de otra manera, podrías
+permitir que los bytes solos bastaran.
+
+69
+00:04:49.667 --> 00:04:53.333
+Y tenemos un control
+que contiene solo esos bytes.
+
+70
+00:04:53.333 --> 00:04:55.967
+Esta es la hipótesis,
+dicha antes del código.
+
+71
+00:04:55.967 --> 00:04:58.600
+Un marcador junto
+a una evidencia alternativa.
+
+72
+00:04:58.600 --> 00:05:01.933
+No todas las cadenas a la vez,
+porque perderías C.
+
+73
+00:05:01.933 --> 00:05:05.600
+Tampoco cualquiera de ellas,
+porque aceptarías controles.
+
+74
+00:05:05.600 --> 00:05:09.833
+La combinación se justifica
+por el objetivo y los ejemplos.
+
+75
+00:05:20.367 --> 00:05:25.100
+El manual del ejercicio copia todas
+las cadenas y sigue fuera del objetivo.
+
+76
+00:05:25.100 --> 00:05:29.600
+Necesitamos mirar también dónde
+están y qué estamos describiendo.
+
+77
+00:05:29.600 --> 00:05:33.400
+En este formato inventado,
+la cabecera debe estar al principio.
+
+78
+00:05:33.400 --> 00:05:35.233
+En el manual no lo está.
+
+79
+00:05:35.233 --> 00:05:38.933
+Añadimos ese requisito y un tamaño
+menor de cuatro kilobytes,
+
+80
+00:05:38.933 --> 00:05:43.033
+porque forman parte del contrato
+del ejercicio. Ninguno demuestra malicia.
+
+81
+00:05:43.033 --> 00:05:45.867
+Solo acotan el contenido que buscamos.
+
+82
+00:05:45.867 --> 00:05:50.867
+Una restricción útil para este objetivo
+puede excluir algo relevante para otro.
+
+83
+00:05:50.867 --> 00:05:53.900
+Esto no es una validación
+de ejecutables reales.
+
+84
+00:05:53.900 --> 00:05:57.567
+La cabecera es inventada
+y los datos son inertes.
+
+85
+00:05:57.567 --> 00:05:59.967
+Si el objetivo fueran ejecutables,
+
+86
+00:05:59.967 --> 00:06:02.500
+justificarías
+una comprobación del formato.
+
+87
+00:06:02.500 --> 00:06:04.700
+Ver solo las letras
+iniciales de un supuesto
+
+88
+00:06:04.700 --> 00:06:09.000
+ejecutable no basta
+para validar toda su estructura.
+
+89
+00:06:10.033 --> 00:06:13.333
+La condición pide un tamaño
+menor de cuatro kilobytes.
+
+90
+00:06:13.333 --> 00:06:18.200
+El siguiente archivo mide exactamente
+cuatro mil noventa y seis bytes.
+
+91
+00:06:18.200 --> 00:06:21.267
+¿Cumple ese límite estricto o queda fuera?
+
+92
+00:06:21.267 --> 00:06:24.967
+La palabra menor también
+forma parte de la regla.
+
+93
+00:06:29.267 --> 00:06:34.100
+Queda fuera. En este corpus es lo
+esperado por el alcance declarado.
+
+94
+00:06:34.100 --> 00:06:37.533
+Pero si mañana te piden
+cubrir variantes más grandes,
+
+95
+00:06:37.533 --> 00:06:43.100
+habrás encontrado una limitación
+que puede producir falsos negativos.
+
+96
+00:06:43.100 --> 00:06:47.067
+No puedes mantener la misma
+promesa sin volver a comprobarla.
+
+97
+00:06:47.067 --> 00:06:49.700
+Lo mismo ocurre si cambia el marcador.
+
+98
+00:06:49.700 --> 00:06:54.267
+La regla no adivina que una versión
+nueva conserva la intención del programa.
+
+99
+00:06:54.267 --> 00:06:57.467
+Solo evalúa las condiciones escritas.
+
+100
+00:06:57.467 --> 00:06:59.033
+Necesitas revisar evidencia,
+
+101
+00:06:59.033 --> 00:07:03.833
+objetivo y pruebas antes de ampliar
+lo que afirmas que detecta.
+
+102
+00:07:09.933 --> 00:07:13.367
+Ahora puedes escribir la regla
+en el editor de la lección.
+
+103
+00:07:13.367 --> 00:07:19.300
+El navegador permite preparar y descargar
+texto. No lo compila ni lo ejecuta.
+
+104
+00:07:19.300 --> 00:07:20.900
+YARA Forge es otra actividad.
+
+105
+00:07:20.900 --> 00:07:26.233
+Simula resultados mediante etiquetas
+preparadas para su pequeño ejercicio.
+
+106
+00:07:26.233 --> 00:07:30.433
+Para comprobar sintaxis y coincidencias
+necesitas un motor real.
+
+107
+00:07:30.433 --> 00:07:35.467
+El paquete de la práctica incluye datos
+inertes, instrucciones y un verificador.
+
+108
+00:07:35.467 --> 00:07:38.567
+Compilar comprueba
+la sintaxis para ese motor.
+
+109
+00:07:38.567 --> 00:07:43.133
+Ejecutar aplica la regla a los archivos.
+Son comprobaciones distintas.
+
+110
+00:07:43.133 --> 00:07:47.000
+Aunque compile, todavía puede
+fallar en lo que quieres detectar.
+
+111
+00:07:47.000 --> 00:07:50.533
+Puede coincidir con controles
+o perder variantes.
+
+112
+00:07:50.533 --> 00:07:55.833
+La validación exige resultados por archivo
+y una explicación de esos errores.
+
+113
+00:07:55.833 --> 00:07:59.567
+Es lo que haremos al contrastar
+la regla completa.
+
+114
+00:08:05.633 --> 00:08:09.733
+Tres reglas antes de escribir.
+Define qué entra en el objetivo.
+
+115
+00:08:09.733 --> 00:08:12.733
+Justifica los patrones y su combinación.
+
+116
+00:08:12.733 --> 00:08:18.000
+Y trata cada restricción como una decisión
+de cobertura que tendrás que comprobar.
+
+117
+00:08:18.000 --> 00:08:20.933
+No como una garantía
+automática de calidad.
+
+118
+00:08:20.933 --> 00:08:26.500
+En este caso, la condición exige
+un marcador y una evidencia alternativa,
+
+119
+00:08:26.500 --> 00:08:29.700
+dentro de un formato y un tamaño pactados.
+
+120
+00:08:29.700 --> 00:08:34.767
+Eso explica por qué algunas cadenas
+son necesarias y otras pueden variar.
+
+121
+00:08:34.767 --> 00:08:39.200
+La explicación tiene que sobrevivir
+a la lectura del código.
+
+122
+00:08:39.233 --> 00:08:42.233
+Abre ahora el editor de la
+lección y escribe tu versión
+
+123
+00:08:42.233 --> 00:08:46.733
+antes de desplegar la solución.
+Descárgala para conservarla.
+
+124
+00:08:46.733 --> 00:08:52.000
+Si no puedes explicar por qué un control
+debería quedar fuera, vuelve al objetivo.
+
+125
+00:08:52.000 --> 00:08:57.567
+La condición debe expresar una razón,
+no una cifra elegida por costumbre.

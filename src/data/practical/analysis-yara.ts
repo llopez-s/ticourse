@@ -24,6 +24,14 @@ export const ANALYSIS_EXPANSIONS: Record<string, LessonExpansion> = {
       p('En esta práctica llamamos **fixture** a un archivo preparado para comprobar un resultado esperado. **Training** son los ejemplos de diseño; **held-out**, los reservados para validación; **challenge**, un caso que revela límites. Como todos son públicos y sintéticos, no constituyen una prueba ciega ni representan la distribución de una familia real.'),
       p('Si el objetivo solo incluye un formato, restringirlo puede reducir ruido y coste. Para ejecutables PE reales, puede justificarse el módulo pe y pe.is_pe; comprobar únicamente los bytes MZ no basta para validar PE. Una restricción **filesize < 4KB** excluye 4096 bytes y más: es útil solo si el alcance lo permite, y provoca falsos negativos si aparecen variantes grandes. filesize corresponde a escaneo de archivos, no debe trasladarse sin más a memoria. Nuestra práctica usa el formato inventado ALRTDEMO, sin código ejecutable.'),
       p('Un **falso positivo (FP)** es un control fuera del objetivo que coincide; un **falso negativo (FN)** es un elemento del objetivo que no coincide. Un verdadero positivo (TP) o negativo (TN) depende de las etiquetas y del alcance declarado. **Sobreajustar** es adaptar la regla a los ejemplos conocidos hasta perder generalización, como exigir un dominio que cambia en cada build. Separa datos de diseño y validación, incluye controles parecidos y declara los casos desconocidos. Un corpus sintético pequeño demuestra mecánica, no sensibilidad frente a malware real.'),
+      p('Antes de abrir el editor, la regla del ejercicio escrita paso a paso: qué debe coincidir, qué puede cambiar y qué dejas fuera.'),
+      {
+        t: 'video',
+        title: 'Escribir YARA: qué debe coincidir y qué puede cambiar',
+        youtube: 'fl02bWFRSUc',
+        poster: 'videos/yara-condicion-poster.png',
+        transcript: 'videos/yara-condicion-transcript.txt',
+      },
       list(
         'Diseña primero con A y B y los controles de training. Escribe en lenguaje natural qué debe ser necesario y qué puede variar.',
         'Escribe tu regla en el editor. Descárgala y ejecuta el verificador con YARA real siguiendo el README del ZIP. Anota versión del motor y resultado por archivo; un error de compilación no es un «no match».',
@@ -40,6 +48,14 @@ export const ANALYSIS_EXPANSIONS: Record<string, LessonExpansion> = {
         'Detección del 100% de la familia real', 'Regla de producción validada universalmente',
         'Conformidad con este corpus y alcance, versión del motor, límites y FN conocido si se incluye v2', 'Que YARA Forge la compiló en el navegador',
       ], 2, 'Los resultados se limitan a fixtures sintéticos y al objetivo v1. No estiman la población real ni justifican producción. YARA Forge es una simulación por etiquetas; la compilación real ocurre en el motor local del verificador.'),
+      p('Cuando tu regla ya compila, el siguiente paso: ejecutarla con el motor real, leer los doce resultados y preparar una entrega que otra persona pueda evaluar.'),
+      {
+        t: 'video',
+        title: 'Tu YARA compila: ahora demuestra qué detecta',
+        youtube: '2KXShpLy67s',
+        poster: 'videos/yara-prueba-entrega-poster.png',
+        transcript: 'videos/yara-prueba-entrega-transcript.txt',
+      },
       links('Práctica guiada y entrega técnica', [
         { label: 'Lab 3B · YARA Forge (simulación por etiquetas)', href: '/lab/lab3b' },
         { label: 's5m3 · Entregar una regla con evidencia y límites', href: '/learn/s5m3' },
