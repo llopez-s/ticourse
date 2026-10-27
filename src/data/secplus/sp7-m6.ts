@@ -215,6 +215,17 @@ export const SP7M6: Module = {
       md: 'En las copias de seguridad, el borrador subraya **retention**, **scope**, **immutability** y **restoration testing**. La **retention** es cuánto tiempo se conserva cada copia: equilibra poder volver atrás con el coste y con las obligaciones de borrado. El **scope** es qué cubre la copia, es decir, qué sistemas, datos y entornos entran y cuáles quedan fuera; lo que no está en el alcance no se puede restaurar. La **immutability** impide modificar o borrar una copia durante un periodo fijado (almacenamiento tipo WORM o bloqueo de objetos): protege frente al ransomware y frente a un administrador con credenciales robadas, que no pueden cifrar ni borrar las copias (en el modo estricto, que ni un administrador puede levantar). Su límite: también conserva inmutable un dato erróneo o infectado, cuesta espacio y puede chocar con obligaciones de borrado. El **restoration testing** demuestra que la copia se puede restaurar de verdad y en el tiempo prometido; una copia que nadie ha restaurado es una hipótesis. Su límite: probar una muestra pequeña no garantiza restaurar todo en un día malo.',
     },
     {
+      t: 'p',
+      md: 'Antes de las comprobaciones de la última parte, dos defensas contadas en cuatro minutos.',
+    },
+    {
+      t: 'video',
+      title: 'Cuando falla el camino de siempre',
+      youtube: 'KpabKLc4DgA',
+      poster: 'videos/arquitectura-datos-poster.png',
+      transcript: 'videos/arquitectura-datos-transcript.txt',
+    },
+    {
       t: 'check',
       q: {
         optional: true,

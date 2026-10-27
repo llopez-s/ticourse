@@ -120,6 +120,17 @@ export const SP7M5: Module = {
       md: 'Un buen error tiene dos destinatarios: el usuario recibe una frase corta y neutra, y el equipo de seguridad recibe el detalle en los registros. El error que cuenta demasiado al usuario es información de reconocimiento gratis para el atacante.',
     },
     {
+      t: 'p',
+      md: 'Antes de la primera comprobación, el ejemplo de la clave escrita en el código, contado en cuatro minutos.',
+    },
+    {
+      t: 'video',
+      title: 'Una clave escrita en el código',
+      youtube: 'uavP1_CfUBI',
+      poster: 'videos/secretos-codigo-poster.png',
+      transcript: 'videos/secretos-codigo-transcript.txt',
+    },
+    {
       t: 'check',
       q: {
         optional: true,

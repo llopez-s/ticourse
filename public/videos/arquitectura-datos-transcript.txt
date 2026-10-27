@@ -1,0 +1,23 @@
+Cuando falla el camino de siempre
+Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA
+
+[00:00] I · Cuando la red se corta — Un cambio y la red se corta
+Imagina que alguien de Halden toca la configuración de un equipo de red. Se equivoca, y la red de producción se corta. Vamos a ver cómo llegarías a ese equipo, y cómo conseguir que las copias de seguridad sobrevivan a quien intente borrarlas. En este ejemplo ronda BORROWED VOICE, que vive de voces ajenas.
+
+[00:23] I · Cuando la red se corta — Sin camino hasta el equipo
+Lo lógico sería deshacer el cambio. Pero llegas al equipo por esa misma red, la que acaba de cortarse, y ya no hay camino por ahí. El equipo sigue encendido, pero no puedes darle órdenes. El arreglo depende del mismo camino que ha fallado. Pasaría igual si la red sufriera un ataque. Entonces, ¿por dónde entras?
+
+[00:51] I · Cuando la red se corta — Un canal aparte
+La respuesta es administrar por un canal aparte, separado del tráfico de producción. Eso se llama out-of-band management. Puede ser una red de gestión dedicada, un puerto de consola o un acceso independiente. Con ese canal, aunque la producción esté caída, llegas al equipo y deshaces el cambio. También te vale si atacan la red principal. [Mensaje interceptado · BORROWED VOICE] «Es una red interna, así que no hace falta protegerla.» Qué tranquilidad, ¿verdad? Pues no, porque ese canal concentra mucho poder en un solo sitio. Por eso lo aíslas del resto y exiges un segundo factor. Además, lo registras todo y das el acceso mínimo. Piensa en cuando verificas una petición por otro medio. La idea es la misma, usar un canal distinto del que puede estar comprometido.
+
+[01:45] II · La copia que nadie borra — Una cuenta que no es suya
+Ahora imagina otro día, en otros sistemas. Alguien consigue la cuenta de un administrador, otra voz ajena, y con ella borra las copias de seguridad. Después cifra los sistemas para pedir un rescate. Llega la hora de recuperar, y no queda nada que restaurar. Una réplica por sí sola tampoco te salva, porque reproduce el daño tal cual. Hace falta una copia que esa cuenta no pueda tocar.
+
+[02:13] II · La copia que nadie borra — Una copia que nadie toca
+Una forma de lograrlo se llama inmutabilidad, o immutability en inglés. La copia no se puede modificar ni borrar durante el plazo que fijas. Con el modo estricto, ni un administrador puede levantar el bloqueo antes de tiempo. Así, aquel atacante no podría cifrar ni borrar esa copia. Es como una pieza de museo detrás de un cristal. Puedes verla, pero nadie la toca.
+
+[02:41] III · Que sirva y que vuelva — Que sirva y que vuelva
+Pero tiene letra pequeña. Congela también lo que esté mal, y una copia infectada se queda ahí todo el plazo. Además ocupa espacio y puede chocar con la obligación de borrar datos, así que el plazo se elige con cuidado. [Mensaje interceptado · BORROWED VOICE] «Nadie puede borrarla. Probar a restaurarla sobra.» Cómodo, ¿no? Pero que nadie pueda borrarla no significa que puedas restaurarla. Una copia que nadie ha restaurado es una hipótesis, y una hipótesis no te sirve el día malo. Por eso se hace la prueba de restauración, o restoration testing. Demuestra que la copia se recupera y que lo hace en el tiempo prometido. Eso sí, probar una muestra pequeña no garantiza que puedas restaurarlo todo de golpe.
+
+[03:29] III · Que sirva y que vuelva — Tres reglas
+Tres reglas. Una, administra por un canal aparte y protégelo, porque concentra mucho poder en un solo sitio. Dos, haz inmutables las copias que más importan, en modo estricto, para que ni una cuenta robada pueda borrarlas durante el plazo. Tres, comprueba con regularidad que puedes restaurar y cronometra cuánto tardas, porque una copia sin probar es una hipótesis. Antes de fiarte de una defensa, pregúntate qué te queda si el camino de siempre falla. Con eso en la cabeza, tu turno.
