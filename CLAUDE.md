@@ -174,12 +174,14 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
 
 - **Practical curriculum (2026-10-19).** Twelve existing lessons append typed blocks
   from `data/practical/` through `withPracticalExpansion` in `tracks.ts`. Original
-  block indices and lesson/question/lab IDs stay stable. New totals: GCTI 96 cards /
-  107 glossary entries; Security+ 163 cards / 246 entries, 135 base checkpoints plus
-  2 optional. Fourteen professional checks across tracks use `CheckQ.optional`:
+  block indices and lesson/question/lab IDs stay stable. New totals: GCTI 102 cards /
+  113 glossary entries; Security+ 163 cards / 246 entries, 135 base checkpoints plus
+  2 optional. Seventeen professional checks across tracks use `CheckQ.optional`:
   excluded from lesson completion and XP, never added to exam/placement pools.
   Fundamentals are base; Microsoft-specific and CTI professional practice are
-  labelled complementary. `links` and `yara-practice` are searchable block types.
+  labelled complementary. s5m5 also carries the TaHiTI threat-hunting capsule
+  (`practical/hunting.ts`, FI-ISAC NL v2.0, CC BY 4.0, GCTI only; s1m3 points to it);
+  `practical/index.ts` merges expansion sets that touch the same lesson. `links` and `yara-practice` are searchable block types.
   The YARA editor neither compiles nor sends anything: it autosaves the draft locally
   (workbook `lab3b/free/v1`) and downloads it as text; Forge remains a label-based simulation.
   Real `yara-python==4.5.4` validation is optional tooling in `.venv-yara/` (ignored).
