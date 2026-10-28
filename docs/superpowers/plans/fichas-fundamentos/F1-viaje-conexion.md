@@ -585,3 +585,93 @@ apoyaron en las lecciones y en el razonamiento técnico). Quedan pendientes de c
   (ingeniería social). Confirmarlo en la revisión de canon.
 - El objetivo de cada tarjeta de examen (00-propuesta §6).
 - La duración real tras `build-timeline --estimate` y la grabación.
+
+## G. Decisiones tomadas (fase 1)
+
+> **2026-10-28.** Fase 1 hecha: carpeta `video/viaje-conexion/` con `video.json`, `storyboard.json`, `narration.json`,
+> `lexicon.json` y `lexicon.chatterbox.json` (idénticos), andamio de escenas con un stub por id y póster provisional. **Sin
+> congelar** (no hay `"frozen"`), sin escenas montadas, sin voz. Lo que decía la ficha como pendiente (F.4) se resuelve con la
+> opción recomendada, pero ninguna decisión editorial es definitiva hasta que Lidia congele el guion.
+
+### G.1 Comprobaciones (rama `video-viaje-conexion`)
+
+| Comprobación | Resultado |
+|---|---|
+| `build-timeline --video viaje-conexion --estimate` | 12 escenas, 76 segmentos, 1414 palabras, 6 tarjetas de examen, 2 pausas para pensar, 77 cues. **Un solo aviso: duración estimada 625,2 s (10:25), fuera de la ventana de `principal-yt` (380 a 600 s).** Ningún otro aviso (ni de emoción repetida, ni de frases largas, ni de identificadores leídos, ni de léxico). |
+| `script-sheets` | solo el aviso de «no congelado» |
+| `canon-check` | 6 tokens: 1 con historia (`reservas.haldenport.example`) y 5 nuevos (`192.168.20.1`, `192.168.30.1`, `192.168.20.10`, `192.0.2.44`, `198.51.100.7`). Ningún nombre choca. **Pero hay un choque que `canon-check` no ve: ver G.4.** |
+| `brand-yt.test.mjs` | pasa (el póster dice «ALERTÓPOLIS») |
+| `tsc` | no se lanzó (falta de memoria, según el encargo). Los stubs y el póster copian el molde de `zonas-halden` sin cambios de forma |
+
+### G.2 Duración: 625 s frente a los 584 s de la ficha
+
+El cálculo de E.2 usa 2,7 palabras por segundo; `build-timeline --estimate` usa **2,5** (`TIMING.estimateWordsPerSec`), más
+pausas de 0,44 s de media (33,5 s en total), 9 s de las dos pausas para pensar y las entradas de escena. Con la misma
+locución, el motor da 625 s. Dos lecturas:
+
+- Con la lectura real de Lidia (85 a 93 % del estimado en V5, V5b, V7, V8 y V9) saldrían unos **530 a 580 s**, dentro de la
+  ventana. El aviso es del estimado, no de la grabación.
+- Aun así, no se puede bajar de 600 con solo recortar pausas: a 250 ms todas, el total sería unos 611 s. Se dejó el ritmo
+  natural (350 a 650 ms) y **no se tocó el contenido**. Si se quiere un estimado dentro de la ventana, hay que quitar unos
+  25 s (unas 63 palabras con sus pausas). Frases de apoyo que repiten algo que se dice en otro sitio: `s05-07` (5,1 s, la
+  repite `s12-02`), `s07-06` (8,8 s, el ejemplo del DNS), `s10-03` (6,9 s, «para él es una etiqueta más») y `s09-05` (5,3 s);
+  suman unos 26 s. Decide Lidia al congelar.
+
+### G.3 Cambios respecto a la ficha (todos de forma, ninguno de contenido)
+
+| Qué | Por qué |
+|---|---|
+| **Ids de escena con nombre**: `s01-clic`, `s02-direccion`, `s03-vecina`, `s04-salida`, `s05-internet`, `s06-despacho`, `s07-llamada`, `s08-tachar`, `s09-portal`, `s10-decidir`, `s11-ida-vuelta`, `s12-reglas` | el motor exige `sNN-nombre`; los stubs salen como `S01Clic`…`S12Reglas` |
+| **Ids de segmento** `sNN-MM`, 76 en total | los párrafos de la parte C se parten en segmentos de 8 a 30 palabras; las frases no cambian ni se reordenan |
+| **Segmentos partidos** (un párrafo de la ficha pasa a dos o tres): s01 (P1), s02 (P4 en tres), s03 (P1), s04 (P2, P4 y P5), s05 (P1, P2 y P4), s06 (P3), s07 (P2), s08 (P2), s09 (P1 y P3), s10 (P2, P4 y P6), s11 (P2 y P3), s12 (P1 y P2 se reparten distinto) | la ficha tenía párrafos de 34 a 45 palabras; el validador avisa a partir de 30 |
+| **Segmentos unidos**: «Y muchas veces, también el puerto.» va con la frase anterior (s08-03); «Todo eso, en menos de un segundo.» va con la anterior (s11-05); «Te quedas con tres reglas.» y «Una.» van en un solo segmento (s12-01) | cada uno de esos trozos tenía menos de 8 palabras |
+| **Cue `title` al inicio de la segunda frase de s01** («¿Qué ha pasado por el camino? Hoy vas a seguir…»), no sobre «paso a paso» | sobre «paso a paso» el título llegaría hacia el segundo 12; así entra hacia el segundo 7 |
+| **Etiquetas de emoción** `<…>` asignadas a los 76 segmentos | la ficha no las traía; se alternan para no repetir la misma en dos seguidos |
+| **Tags de YouTube** (18): IP, dirección IP, IPv4, prefijo /24, subred, default gateway, puerta de enlace, routing, NAT, puertos, TCP, UDP, firewall, cortafuegos, fundamentos de redes, fundamentos de ciberseguridad, Security+, SY0-701 | la ficha solo traía el título |
+| **`"lesson"` omitido** de `video.json` | el motor solo admite ids `sNN`/`spNmN` (`/^sp?\d+m\d+$/`) y `f07` es un error, no un aviso. Sin él, `youtube-meta` no enlaza la lección en la descripción y `scene-brief` no la localiza (la cita a mano en «Canon») |
+| **`"examTiming": "sentence-end"` en `narration.json`**, no en `video.json` | es donde el motor lo lee (README del motor, «Claridad y ritmo») |
+| **Escena `s05-internet`** conserva el título «Hasta el puerto» de la ficha | pendiente de revisar: «puerto» ya significa puerto de red desde s06; si Lidia lo prefiere, «Hasta el portal» |
+| **Sello «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto»** escrito en el `goal` de cada escena desde s02 | ningún campo del motor lo recoge; `notice` y `simulationLabel` *sustituirían* el sello de «Simulación educativa · datos ficticios», que la ficha quiere conservar |
+
+### G.4 Hallazgo de canon: `198.51.100.7` ya existe en GCTI
+
+`198.51.100.7` es `blog-recetas.example` en la lista de relleno de V4 (`video/pivot-infra/src/scenes/S03Pdns.tsx:24` y `:50`;
+`docs/superpowers/canon/velvet-cicada.md:421`). La propuesta (`00-propuesta.md` §6) decía que no estaba en `reg`; era cierto
+para `glass-harbor.md`, pero `canon-check` solo lee la campaña de la pista. El mismo caso aplica a `198.51.100.90` de F4, que
+también aparece en ese listín (`tienda-flores.example`). **No se cambió** porque F2 usa la misma dirección pública y tiene que
+coincidir con F1. Recomendación: usar una dirección sin uso del mismo bloque (por ejemplo `198.51.100.17`, libre en el repo a
+2026-10-28) en F1, F2 y F4. El brief de escenas pide guardarla en una sola constante (`PUBLIC_IP`) para que el cambio sea una
+edición.
+
+### G.5 Pendientes de F.4, resueltos con la opción recomendada
+
+| Pendiente | Resolución |
+|---|---|
+| F1 y F2 fuera del puerto | **Fuera, en la oficina de la naviera.** Sigue siendo suposición a confirmar por Lidia |
+| La imagen «etiqueta» | **Se queda como «la etiqueta» = cabecera IP/TCP**, sin envío ni mensajería. El componente `Shipment.tsx` de V17 **no se reutiliza**; la etiqueta es una pieza propia (`Label.tsx`). La alternativa («la cabecera» a secas) queda como plan B |
+| La llamada y el recado en el contestador | Comprobado: ninguna fila de `glass-harbor.md` usa llamada ni contestador como imagen (búsqueda de «contestador» sin resultados). Se confirma en la revisión de canon |
+| Objetivo de cada tarjeta de examen | Se mantienen los de la ficha: 3.2 (s03, s04, s08) y 4.5 (s06, s07, s10); la tarjeta dice «EXAMEN · SY0-701 · N.N» (no se pone `examBadge`) |
+| Duración real | Ver G.2 |
+
+### G.6 Léxico y efectos
+
+- `lexicon.json` y `lexicon.chatterbox.json`: `IP`, `IPv4`, `TCP`, `UDP`, `DNS`, `NAT` y `443`. **`443` se dice
+  «cuatro cuatro tres» de forma provisional**: la ficha deja la elección a Lidia («cuatro, cuatro, tres» o «cuatrocientos
+  cuarenta y tres»). Se puso en el léxico porque, sin entrada, el validador avisa de que la cifra puede leerse mal. Si cambia,
+  basta editar los dos archivos y volver a ejecutar `build-timeline` antes de importar la grabación. `TLS` y `default
+  gateway` no entran: la voz no dice `TLS`, y el léxico no admite entradas con espacio.
+- `sfx`: `ping2` en `reply` (s01), `check` en `direct` (s03), `typing` en `rewrite` (s08) y `block` en `stop` (s10); el motor añade
+  `ding` en cada tarjeta y `whoosh` en cada capítulo. `public/sfx/` lo genera `build-timeline`; no se versiona.
+- Voz `recording/lidia`, sin `recording.tempo`, con `"recording": { "maxPauseMs": 250 }`. Sin `adversary` y sin mensajes
+  interceptados (el motor admite 0 cuando no hay adversario).
+
+### G.7 Lo que la ficha pide y el motor aún no hace
+
+- **Líneas `[En pantalla: …]` de E.3 en la transcripción.** `build-timeline` no tiene ningún campo para escribirlas (solo
+  `script-sheets` imprime «En pantalla» en la hoja de grabación). Hay que añadirlas a mano al `.txt` publicado o ampliar el
+  motor; queda para la fase de publicación.
+- **`RuleCard.tsx` de `zero-trust-halden`** no sirve tal cual para s10: es una sola fila de cuatro campos, sin número de regla y,
+  por diseño, sin las palabras permitir/denegar (ver su comentario de cabecera). El brief pide **copiarlo y adaptarlo** a una
+  lista de tres filas con barra de lectura, no importarlo.
+- **Tarjeta de examen en escena con pausa para pensar:** s03 lleva las dos; la tarjeta espera al final de la oración
+  «O sea, que si coincide el prefijo entero…», ya fuera de la pausa, así que no se solapan en el tiempo.
