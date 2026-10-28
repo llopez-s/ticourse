@@ -354,6 +354,8 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'Vh8xJjYALqQ')?.module).toBe('s3m1');
     // AP04 follows sample A from the hash to a defensible relation, after s3m2's «sin premium o sin datos» paragraph and before the solved case
     expect(youtubeVideos.find((v) => v.block.youtube === 'CB-TTDBRF3I')?.module).toBe('s3m2');
+    // AP07 compares Bruma, Cobalto and Duna by unit and relevance, after s4m4's dataset table and before the step-by-step resolution
+    expect(youtubeVideos.find((v) => v.block.youtube === 'DBcK-Y0WItM')?.module).toBe('s4m4');
     // V35 sorts sp2m1's six threat actors into three pairs (the attributes give the pair, the motivation picks one of
     // the two) with three exam-style questions, after the Halden callout and before the paragraph that hands over to
     // sp2m2's vectors
