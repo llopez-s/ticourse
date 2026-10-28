@@ -138,3 +138,49 @@ export function Ribbon({
     </div>
   );
 }
+
+/**
+ * One box of the ribbon, drawn at any rect (stage-local). s09 draws the five boxes itself at ribbonLayout() rects
+ * and mixes them to the table's row heads, so the strip really BECOMES the table (do not draw Ribbon too).
+ * Same look as the ribbon's boxes; lit is 0-1.
+ */
+export function RibbonBox({
+  piece,
+  rect,
+  lit = 1,
+  fontSize = 40,
+  showNumber = true,
+}: {
+  piece: Piece;
+  rect: { x: number; y: number; w: number; h: number };
+  lit?: number;
+  fontSize?: number;
+  showNumber?: boolean;
+}) {
+  const l = clamp01(lit);
+  const idx = PIECES.indexOf(piece);
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: rect.x,
+        top: rect.y,
+        width: rect.w,
+        height: rect.h,
+        boxSizing: 'border-box',
+        borderRadius: RADIUS.md,
+        border: `3px ${l > 0.5 ? 'solid' : 'dashed'} ${l > 0.02 ? alpha(C.cyan, 0.35 + 0.55 * l) : C.ink600}`,
+        background: l > 0.02 ? alpha(C.cyan, 0.05 + 0.14 * l) : alpha(C.ink850, 0.7),
+        boxShadow: l > 0.02 ? `0 0 ${Math.round(26 * l)}px ${alpha(C.cyan, 0.4 * l)}` : undefined,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 14,
+        fontFamily: FONT.sans,
+      }}
+    >
+      {showNumber ? <span style={{ fontSize: 24, fontWeight: 800, color: l > 0.5 ? C.cyanSoft : C.faint, opacity: 0.9 }}>{idx + 1}</span> : null}
+      <span style={{ fontSize, fontWeight: 850, letterSpacing: 3, color: l > 0.5 ? C.textStrong : C.faint }}>{piece}</span>
+    </div>
+  );
+}

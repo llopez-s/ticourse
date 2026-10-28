@@ -63,3 +63,101 @@ export const STAGE_W = 1728;
 export const STAGE_H = 660;
 export const TOP_FREE = 96;
 export const BOTTOM_FREE = 608;
+
+// ---------------------------------------------------------------------------
+// Added by half B (s07–s12).
+
+/** s08: the HTTP exchange and what an observer of the network can read. */
+export const HTTP = {
+  get: 'GET /reservas',
+  host: `Host: ${PORTAL.host}`,
+  cookie: 'Cookie: sesión',
+  ok: '200 OK',
+  page: 'página',
+  tubeLabel: 'TLS',
+  httpsLabel: 'HTTPS = HTTP dentro de TLS',
+  observerIp: PORTAL.ip,
+  observerName: 'nombre del sitio (normalmente)',
+} as const;
+
+/** s07 / s10: the four checks of a certificate, in the order the voice says them. */
+export const CHECKS = ['nombre', 'firma y cadena', 'fechas', 'no anulado'] as const;
+
+/** s07: what each check reflects on the DNI. */
+export const DNI_MIRROR = ['nombre', 'quién lo expide', 'caducidad', 'no denunciado'] as const;
+
+/** s09: the table the ribbon turns into. Columns: first visit · 3 minutes later · 2 hours later. */
+export const TABLE_COLS = ['primera vez', '3 min', '2 h'] as const;
+export type CellKind = 'on' | 'half' | 'off';
+export interface TableCell {
+  text: string;
+  kind: CellKind;
+  /** The reason written next to a cell that does not repeat (secondary label). */
+  note?: string;
+}
+export const TABLE_ROWS: Record<Piece, readonly [TableCell, TableCell, TableCell]> = {
+  DHCP: [
+    { text: 'sí', kind: 'on' },
+    { text: 'no', kind: 'off', note: 'concesión viva' },
+    { text: 'no', kind: 'off' },
+  ],
+  DNS: [
+    { text: 'sí', kind: 'on' },
+    { text: 'no (TTL)', kind: 'off', note: 'TTL vigente' },
+    { text: 'sí', kind: 'on', note: 'TTL vencido' },
+  ],
+  TCP: [
+    { text: 'sí', kind: 'on' },
+    { text: 'probablemente', kind: 'half', note: 'la de antes se cerró' },
+    { text: 'sí', kind: 'on' },
+  ],
+  TLS: [
+    { text: 'completo', kind: 'on' },
+    { text: 'abreviado si se retoma', kind: 'half', note: 'sesión TLS retomada' },
+    { text: 'nuevo o abreviado', kind: 'on' },
+  ],
+  HTTP: [
+    { text: 'sí', kind: 'on' },
+    { text: 'sí', kind: 'on', note: 'petición nueva' },
+    { text: 'sí', kind: 'on' },
+  ],
+};
+
+/** s09: each piece's own clock (the «reloj propio» column). */
+export const OWN_CLOCKS: Record<Piece, string> = {
+  DHCP: 'la concesión · 8 h',
+  DNS: 'el TTL · 1 h',
+  TCP: 'cada conexión',
+  TLS: 'la sesión TLS',
+  HTTP: 'cada petición',
+};
+
+/** s10: the look-alike's certificate (names that already exist in the canon, no dates). */
+export const COPY_CERT = { name: LOOKALIKE.host, sign: 'una CA reconocida', dates: 'dentro de fechas', revoc: 'sin anular', butWho: 'pero ¿de quién?' } as const;
+
+/** s11: the browser's certificate warning. */
+export const WARNING = {
+  title: 'Problema con el certificado',
+  causes: ['el nombre no cuadra', 'falta parte de la cadena', 'fuera de fecha'],
+  back: 'volver',
+  skip: 'continuar de todos modos',
+  rule: 'quitar la comprobación = quitar la protección',
+  packet: 'entrada maliciosa',
+  app: 'aplicación del portal',
+  protectedPath: 'el canal la trae igual de protegida',
+  says: 'con quién hablas',
+  doesNotSay: 'si te conviene hablar con él',
+} as const;
+
+/** s12: the three rules, the practice and the closing card. */
+export const RULES = [
+  { title: ['Cada pieza', 'tiene su trabajo'], sub: 'cinco piezas, cinco trabajos' },
+  { title: ['No todo', 'se repite'], sub: 'cada una con su reloj' },
+  { title: ['Un certificado válido', 'dice con quién hablas'], sub: 'no si es de fiar' },
+] as const;
+export const NEXT = 'Práctica · Diagnóstico de conectividad';
+export const END = {
+  title: 'Qué sucede al abrir una web',
+  objective: 'Fundamentos · Security+ SY0-701',
+  disclaimer: 'Simulación educativa con datos ficticios. Material independiente, no afiliado a CompTIA.',
+} as const;
