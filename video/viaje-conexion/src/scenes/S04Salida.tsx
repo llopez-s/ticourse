@@ -233,7 +233,7 @@ export function S04Salida(props: SceneProps) {
             <div style={{ position: 'absolute', left: loopX - 32, top: loopY - 24, opacity: amber }}>
               <Parcel width={64} tone="amber" glow={0.5} />
             </div>
-            <div style={{ position: 'absolute', left: 1300 - 380, top: Y - 196, width: 760, textAlign: 'center', ...enter(frame, missingAt + 6, { distance: 12 }) }}>
+            <div style={{ position: 'absolute', left: 1064, top: Y - 176, width: 664, textAlign: 'center', ...enter(frame, missingAt + 6, { distance: 12 }) }}>
               <Line size={46} color={C.amber} weight={850}>
                 sin ruta de vuelta
               </Line>

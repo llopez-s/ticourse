@@ -742,7 +742,7 @@ s08-06, s10-07 (y en los rótulos de pantalla de s06, s08 y s10); s04-08 «la pe
 firewall»; ahorros: s04-03, s04-07, s02-02, s10-02 (sin «Mira.»), s01-03 (sin glosa), s07-01 sin «principales», s07-03 con «hablas por
 turnos», s11-05 «la tabla se la devuelve a tu portátil». Léxico: `router` «rúter», `routing` «rútin», `default` «defólt», `gateway`
 «guéitwei» y `efímero`, iguales en los dos archivos (el validador no admite claves con espacio, así que «default gateway» va en dos
-entradas). En la hoja de grabación (`out/`, no versionada) se anotó que «443» se lee «cuatro cuatro tres» en s06-02, s06-06 y s11-01.
+entradas). En `out/guion-grabacion.md` (no versionada) se añadió a mano la nota de que «443» se lee «cuatro cuatro tres» en s06-02, s06-06 y s11-01; **`script-sheets` regenera esa hoja y la borra**, así que hay que volver a añadirla tras cada ejecución (también al congelar) hasta que exista un campo duradero o la hoja pinte las claves numéricas del léxico (hoy deja «443» sin pronunciación).
 
 **Desviaciones de lo pedido (a conocer, no absorbidas en silencio)**
 
@@ -767,6 +767,6 @@ entradas). En la hoja de grabación (`out/`, no versionada) se anotó que «443�
 - **Conceptos: 8 o 9** (más que los 4 a 6 del perfil); no se cortó más contenido. Si hace falta, lo primero que sale de la voz es el estado de la conexión (s10-07).
 
 **Comprobaciones.** `build-timeline --estimate`: sin avisos. Un script de apoyo comprobó los 68 anclajes `wordFrame`/`wf` contra `timeline.json` (0
-fallos). `tsc --noEmit -p video/viaje-conexion/tsconfig.json`: limpio. Una pasada de `qa-frames` (120 imágenes, 11 de ellas extras) revisada en s02,
+fallos). `tsc --noEmit -p video/viaje-conexion/tsconfig.json`: limpio. Una pasada de `qa-frames` (120 imágenes, 11 de ellas extras) más una segunda, solo de s04, tras mover el rótulo ámbar del servidor para que no pise «router · cortafuegos»; revisada en s02,
 s03, s04, s05, s06, s07, s08, s09, s10, s11 y s12; tarjeta final de s12 con el mini-plano sin nombres (`Plano` oculta ahora «Oficina de la naviera» e
 «Internet» con `names={0}`).
