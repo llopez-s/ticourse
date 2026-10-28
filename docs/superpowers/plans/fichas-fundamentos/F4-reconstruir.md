@@ -618,7 +618,8 @@ como la primera versión** (no se reescribió). El guion **no está congelado** 
 ### Aplicado
 
 - **Exactitud 1 (relojes).** s07-05 «Seguramente son dos relojes, y cada uno apunta a su manera»; s07-06 «Unos segundos
-  es habitual. Si fueran minutos o una hora exacta, revisa el reloj o la zona». Pantalla: «segundos: habitual» y
+  es habitual. Si fueran minutos o una hora exacta, revisa el reloj o la zona antes de sospechar de la historia».
+  Pantalla: «segundos: habitual» y
   «minutos u horas enteras: revisa reloj o zona» (en dos líneas).
 - **Exactitud 2 (frontera observación / conclusión).** s10-02 fusionado con la naturalidad 23 («El EDR y el cortafuegos
   ven al equipo hablando directamente con una dirección de fuera, no con el proxy. Por eso no parece que pasara por él.
@@ -656,11 +657,11 @@ como la primera versión** (no se reescribió). El guion **no está congelado** 
 - **Pausa de s04-06 a 6500 ms:** el motor limita `think.holdMs` a 1800–5000 (`THINK_HOLD_MS` en `narration.mjs`); queda
   en **5000**. Para más tiempo habría que subir el tope del motor (cambio compartido, no hecho aquí).
 - **Puente de s04-06** («El cortafuegos de ese mismo día marca más uno…»): no cabía (+20 palabras); se resolvió con el sello.
-- **s07-06 «O sea, que la hora ayuda, pero lo que une son los campos»** (+12) y el final «antes de sospechar de la
-  historia»: recortados por presupuesto. **s08-05/s09-05 «o sea»**, **s10-04 «hallazgo, o sea»** y **s02-06
+- **s07-06 «O sea, que la hora ayuda, pero lo que une son los campos»** (+12): recortado por presupuesto. **s08-05/s09-05 «o sea»**, **s10-04 «hallazgo, o sea»** y **s02-06
   «el cortafuegos también apunta pares, pero sin llaves»**: no se añadieron.
 - **Presupuesto:** los textos pedidos sumaban 613,7 s de estimado; se recortó lo anterior y se bajó 50–150 ms la
-  `pauseAfterMs` de los segmentos que pasaban de 300 ms. Queda en **590,5 s** (techo 600).
+  `pauseAfterMs` de los segmentos que pasaban de 300 ms. Queda en **592,9 s** (techo 600). Las 12 escenas
+  superan su `targetSec` (de +3,9 a +19,8 s; s07 la que más): ya lo hacían por la diferencia de ritmo de la parte E.2.
 
 ### Anotado (punto 11, sin tocar la voz)
 
@@ -674,3 +675,13 @@ como la primera versión** (no se reescribió). El guion **no está congelado** 
 - **Lecturas para la grabación:** las horas se dicen «nueve y uno» (no «y una»); `443` tiene dos lecturas posibles
   («cuatro cuatro tres» y «cuatrocientos cuarenta y tres»); el léxico solo admite una cadena por palabra, así que queda la
   primera y se avisa aquí para el control de las grabaciones.
+
+### Avisos de `build-timeline --estimate` que quedan (la validación anterior, «sin avisos», ya no vale)
+
+Todos vienen de texto pedido palabra por palabra por la revisión; se pueden partir en frases si se prefiere:
+
+- `s06-07: 33 words (style guide: about 10–26 per segment)` y `s06-07: sentence of 23 words (max 22)` (exactitud 7).
+- `s07-02: 42 words (style guide: about 10–26 per segment)` (fusión de la frase del PID, exactitud 4).
+- `s10-02: 43 words (style guide: about 10–26 per segment)` (exactitud 2 fusionada con naturalidad 23).
+- `s11-03: 35 words (style guide: about 10–26 per segment)` y `s11-03: sentence of 35 words (max 22)` (exactitud 2).
+- `s11-05: sentence of 26 words (max 22)` (exactitud 2 fusionada con naturalidad 25).
