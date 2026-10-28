@@ -566,3 +566,41 @@ UTC). Sin abrir: el resto de la lista.
 - La imagen de los testigos: `reg` §6 no la tiene ocupada; J. Rekola es testigo real del caso, pero no como imagen.
 - El objetivo de cada tarjeta de examen (00-propuesta §6).
 - La duración real tras `build-timeline --estimate` y la grabación.
+
+## Decisiones tomadas (fase 1)
+
+> 2026-10-28 · rama `video-reconstruir`. Fase 1 = carpeta del vídeo (`video/reconstruir/`) con `video.json`, `narration.json`, `storyboard.json`, léxicos, andamio de escenas (un stub por id) y `src/timeline.json` estimado. Sin escenas, sin voz, **sin congelar**. Todo lo de abajo es la opción recomendada de la ficha; Lidia dice solo qué cambia.
+
+### Pendientes de F.4
+
+| Pendiente | Decisión |
+|---|---|
+| Proxy web en el puerto, en un caso «imagina» | Aceptado. El sello «Autoridad Portuaria de Halden · imagina · caso de entrenamiento · sin fecha · no ha pasado» va fijo de s02 a s11 y el equipo de Comercial sale sin él (s10). Se anota como «previsto» en el canon al cerrar el vídeo. |
+| Reutilizar `SALES-WS-03` | Se mantiene: limpio en las dos cazas (`reg:4487`) y V1/V5 lo dan por limpio (`out/canon-refs.md`). Con el sello «imagina» y sin fecha no confunde; si Lidia prefiere un nombre nuevo, es un cambio de cadena en `storyboard.json` (`goal`) y en las escenas. |
+| Imagen de los testigos | Se mantiene, rotulada «imagen · no es del puerto», con siluetas sin rasgos (no es J. Rekola ni nadie del canon). |
+| Objetivo de cada tarjeta de examen | Los de `00-propuesta.md` §6: s03, s05, s07, s09 y s10 con 4.9; s08 con 4.8. Insignia por defecto «EXAMEN · SY0-701 · N.N» (sin `examBadge`). |
+| Duración real | `build-timeline --estimate`: **526,8 s (8:47)**, dentro de 380-600 s. Es más que los 8:19 del cálculo de E.2 porque el motor estima a 2,5 palabras/s y la ficha a 2,7. Con la lectura de Lidia (85-93 % del estimado en vídeos anteriores) quedaría hacia 7:30-8:10. 1187 palabras, 66 segmentos, 12 escenas, 6 tarjetas, 2 pausas, 5 efectos de contenido. No se ha recortado nada para acercarse a 8:19. |
+
+### De `00-propuesta.md` §6-§8
+
+- **Perfil y formato:** `principal-yt`, sin adversario ni mensajes interceptados (el motor pone a 0 el mínimo de interceptados sin adversario), `"music": "Go On Going - Stayloose.mp3"`, voz `recording/lidia` **sin `recording.tempo`** (solo `maxPauseMs: 250`), `examTiming: "sentence-end"`.
+- **Pronunciación de las siglas** (propuesta; Lidia elige y los léxicos alimentan la comprobación de su grabación): UTC «u te ce», EDR «e de erre», JSON «yeison», CSV «ce ese uve», 443 «cuatro cuatro tres». Los dos léxicos (`lexicon.json` y `lexicon.chatterbox.json`) son iguales. «zeta», «más uno», «proxy» y «log» van como palabras normales.
+- **Integración en la app** (`videoId` en f12): fuera de esta fase.
+
+### Lo que no se pudo traducir tal cual, y por qué
+
+1. **`"lesson": "f12"`**: `video.json` solo admite ids `spNmN`/`sN mN` (`paths.mjs`, `^sp?\d+m\d+$`) y lo **rechaza con error**, no con aviso. Se omite el campo. Consecuencia: la descripción de YouTube no enlaza la lección (se escribe a mano al subir) y `scene-brief` no la localiza (el brief la nombra a mano).
+2. **`examTiming`** va en `narration.json`, no en `video.json` (así lo lee el motor).
+3. **Título de YouTube.** La ficha daba «… · Fundamentos para Security+» (84 caracteres) y el motor añade « | Security+ SY0-701 en español» (límite 100 en total; 80 en el campo). Queda `youtubeTitle`: «Cómo reconstruir lo ocurrido: logs, UTC y cronologías · Fundamentos» (98 con el sufijo).
+4. **Etiquetas de YouTube:** la ficha no traía ninguna. Se derivaron 15 de los conceptos clave y del léxico (logs, registros de seguridad, UTC, zona horaria, cronología de un incidente, correlación de eventos, JSON, CSV, proxy, EDR, cortafuegos, deny y allow, observación hipótesis conclusión, fundamentos de ciberseguridad, Security+).
+5. **Cue `title`.** La ficha lo ponía en «cuatro registros» (hacia los 12,5 s con el estimado: el aviso del motor salta después de 12 s). Se mueve a «¿Se han llevado datos?» (hacia los 10 s); `cards` sigue en «cuatro registros». La burbuja de la pregunta ya no tiene cue propio (caería a 0 fotogramas del título): la escena usa `wordFrame`. Se quitó también el cue `no` de s09-02 (a 28 fotogramas de `meaning`).
+6. **Notas de transcripción de E.3** (`[En pantalla: …]`): el motor no tiene dónde ponerlas (la transcripción sale solo del texto hablado, más los mensajes interceptados y las preguntas de examen). Quedan escritas en el bloque «Canon» de `out/scene-brief.md` para que las escenas muestren todos esos datos; falta decidir si se añade un campo de nota de transcripción al motor (cambio aparte, no hecho aquí). Mientras tanto la transcripción de este vídeo no lleva las líneas de registro.
+7. **Sello de caso.** El motor ya dibuja «Simulación educativa · datos ficticios» y el descargo de CompTIA (esquina y transcripción); las escenas dibujan solo el sello «imagina». No se usa `storyboard.notice` (el motor no lo lee en los vídeos de Security+).
+
+### Lo que no cambia
+
+- El texto de locución es **idéntico carácter a carácter** al de la parte C (comprobado por script); solo se re-segmentó por frases (la ficha agrupa por párrafos; el motor quiere 8-30 palabras por segmento) y se añadieron cues y etiquetas de emoción. Palabras por escena = las de E.2 (83, 109, 82, 119, 124, 116, 120, 94, 75, 89, 95, 81).
+- Tarjetas, pausas y efectos: tarjetas en s03, s05, s07, s08, s09 y s10; pausas en s04 y s09 (`holdMs` 4500); efectos: `alarm` en `alert` (s01), `whoosh` en `jump` (s05) y `check` en `host`, `user` y `label` (s07).
+- `targetSec` y `wordBudget` (= `targetSec` × 2,7) son los de E.2; el estimado va de 1,5 a 6 s por encima de cada `targetSec` por la diferencia de ritmo (2,5 frente a 2,7). `targetTotalSec`: 479.
+- Validación: `build-timeline --estimate` sin avisos; `script-sheets` solo avisa de «no congelado»; `canon-check`: 7 cadenas, 1 con historia (`SALES-WS-03`, limpio) y 6 nuevas (`l.prado`, `bytes_out`, `subidas.compartir.example`, `syncbox.exe`, `198.51.100.90`, `10.20.6.37`), ningún choque.
+- **Falta para congelar:** las dos revisiones (exactitud y naturalidad) sobre este guion y que Lidia confirme las siglas.
