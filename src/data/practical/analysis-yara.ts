@@ -1,4 +1,4 @@
-import { check, code, complement, h, links, list, p, table, type LessonExpansion } from './shared';
+import { check, code, complement, h, links, list, p, table, video, type LessonExpansion } from './shared';
 
 export const ANALYSIS_EXPANSIONS: Record<string, LessonExpansion> = {
   s3m5: {
@@ -102,6 +102,8 @@ export const ANALYSIS_EXPANSIONS: Record<string, LessonExpansion> = {
         ['Cobalto', '300', '540', '450', '3000', '60', '90'],
         ['Duna', '80', '260', '220', '12000', '100', '22'],
       ]),
+      p('Antes de resolverlo, míralo contado: por qué la tabla tiene tres ganadores y qué columnas ayudan a decidir qué investigar primero.'),
+      video('Medir infostealers y decidir relevancia', 'DBcK-Y0WItM', 'stealers-metricas'),
       p('**Paso 1: elegir la unidad.** Por muestras gana Bruma; por dispositivos y episodios gana Cobalto; por registros y organizaciones gana Duna. Ninguna columna se puede sustituir por otra. Calcular 8000/100 para Bruma da 80 registros por dispositivo observado; no 8000 equipos infectados. Las organizaciones pueden aparecer en varias familias: no sumes columnas como si fueran poblaciones disjuntas.'),
       table(['Familia', 'Capacidades observadas en este caso', 'Actividad reciente dentro de la ventana', 'Pregunta que falta resolver'], [
         ['Bruma', 'Robo de contraseñas descrito en fixtures del caso', '10 dispositivos observados en la última semana', '¿Está la exposición concentrada fuera del sector de Meridian?'],
