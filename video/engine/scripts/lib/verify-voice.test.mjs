@@ -77,6 +77,26 @@ test('clipFindings: V21 s01-01, the tail of a number Whisper wrote in figures is
   assert.equal(long.errors.length, 1);
 });
 
+test('clipFindings: AP07 s04-03, the word after a figure takes the tail of the number when Whisper stretches it', () => {
+  const script = 'Pasa Cobalto, con cuatrocientos cincuenta dispositivos, frente a los cien de Bruma.';
+  const heard = 'Pasa cobalto con 450 dispositivos frente a los 100 de Bruma.';
+  const words = [
+    { text: 'con', start: 1.2, end: 1.45 },
+    { text: '450', start: 1.45, end: 2.2 }, // «cuatrocientos cincuenta» goes on inside «dispositivos»
+    { text: 'dispositivos', start: 2.2, end: 3.9 },
+    { text: 'frente', start: 3.9, end: 4.6 },
+  ];
+  const f = clipFindings({ id: 's04-03', script, heard, ...ok, words });
+  assert.deepEqual(f.errors, []);
+  assert.equal(f.warnings.length, 1);
+  assert.match(f.warnings[0], /«dispositivos» lasts 1\.7 s right after «450»/);
+  // after a word in letters, or stretched further than the figure could take, it is still an error
+  const inLetters = clipFindings({ id: 's04-03', script, heard, ...ok, words: words.map((w) => (w.text === '450' ? { ...w, text: 'cincuenta' } : w)) });
+  assert.equal(inLetters.errors.length, 1);
+  const long = clipFindings({ id: 's04-03', script, heard, ...ok, words: words.map((w) => (w.text === 'dispositivos' ? { ...w, end: 4.8 } : w)) });
+  assert.equal(long.errors.length, 1);
+});
+
 test('clipFindings: AP03 s06-01, «95 %» is spoken «noventa y cinco por ciento»: the voice after the % is the number itself', () => {
   const script = 'El percentil noventa y cinco indica el tiempo dentro del que llegó el noventa y cinco por ciento de los elementos.';
   const words = [

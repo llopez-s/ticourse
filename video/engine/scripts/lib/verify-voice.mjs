@@ -76,7 +76,7 @@ export function clipFindings({ id, script, heard, head, tail, dropped, words = [
   // Voice the script does not account for: a half-said sentence glued to its retake (the import cannot tell,
   // because Whisper skipped it), found by the energy that no word covers and by words stretched over it.
   const scriptTokens = new Set(String(script ?? '').split(/\s+/).map((t) => t.replace(/[¿?¡!«»".,;:]/g, '')).filter((t) => SPELLED.test(t)));
-  for (const w of words) {
+  for (const [i, w] of words.entries()) {
     const len = w.end - w.start;
     const bare = w.text.replace(/[¿?¡!«»".,;:]/g, '');
     // Whisper glues the two words of a name («PaperGovernor») into one token: each extra capitalised part
@@ -91,6 +91,14 @@ export function clipFindings({ id, script, heard, head, tail, dropped, words = [
     const parts = Math.max(caseParts, glued);
     const allowed = limits.longWordS * (1 + 0.6 * Math.max(0, parts - 1));
     if (len > allowed && !SPELLED.test(bare) && !scriptTokens.has(bare.toUpperCase())) {
+      // Whisper times figures short, and when no voice is left untranscribed it stretches the next word over the
+      // rest of the number instead («450 dispositivos», AP07 s04-03): listen, do not block.
+      const prev = words[i - 1];
+      const digits = prev && /\d/.test(prev.text) && w.start - prev.end <= limits.figureGapS ? prev.text.replace(/\D/g, '').length : 0;
+      if (digits && len <= allowed + digits * limits.figureDigitS) {
+        warnings.push(`${id}: «${bare}» lasts ${len.toFixed(1)} s right after «${prev.text.replace(/[¿?¡!«»".,;:]/g, '')}»: Whisper times figures short, so it probably holds the end of the number (listen if in doubt)`);
+        continue;
+      }
       errors.push(`${id}: «${bare}» lasts ${len.toFixed(1)} s from ${w.start.toFixed(1)} s: a half-said take is hiding in the clip (map it with recut_recording.py --map)`);
     }
   }

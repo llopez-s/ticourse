@@ -731,3 +731,19 @@ test('stretchedWords flags a word Whisper stretched over a dropped retake, and s
   assert.deepEqual(out[0], { id: 's03-03', text: 'disco', startMs: 78000, endMs: 83100, retakeMs: 81150 });
   assert.deepEqual(stretchedWords([{ id: 'x', found: false }], words, silences), []);
 });
+
+test('stretchedWords: the word after a figure may hold the end of the number (AP07 s04-03, «450 dispositivos»)', () => {
+  const words = [
+    { text: 'con', startMs: 203760, endMs: 204000 },
+    { text: '450', startMs: 204000, endMs: 204720 }, // «cuatrocientos cincuenta» goes on into the next word
+    { text: 'dispositivos', startMs: 204720, endMs: 206120 },
+    { text: 'frente', startMs: 206120, endMs: 206860 },
+  ];
+  const found = [{ id: 's04-03', found: true, first: 0, last: 3 }];
+  assert.deepEqual(stretchedWords(found, words, []), []);
+  // after a word in letters, or longer than the figure could take, it is still flagged
+  const inLetters = words.map((w) => (w.text === '450' ? { ...w, text: 'cincuenta' } : w));
+  assert.equal(stretchedWords(found, inLetters, []).length, 1);
+  const long = words.map((w) => (w.text === 'dispositivos' ? { ...w, endMs: 207200 } : w));
+  assert.equal(stretchedWords(found, long, []).length, 1);
+});
