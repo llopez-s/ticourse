@@ -97,8 +97,11 @@ export const LINUX_CLASSES = [
   { id: 'rest', word: 'resto', sub: 'todos los demás' },
 ] as const;
 
-/** The account walked through the three questions of s09 (it is neither the owner nor in the group). */
-export const OPS_GROUP = 'Operaciones';
+/**
+ * The account walked through the three questions of s09 (it is neither the owner nor in the group). It is NOT called
+ * «Operaciones»: Operaciones does read the folder (s04, s10), and here the walk ends in `---`.
+ */
+export const OPS_GROUP = 'otra cuenta del puerto';
 
 /** Image of the airport (s02 only, always tagged «imagen · no es del puerto»). Flight labels belong to the image. */
 export const FLIGHTS = ['vuelo 21', 'vuelo 34', 'vuelo 58'] as const;

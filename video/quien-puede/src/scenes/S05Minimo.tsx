@@ -49,7 +49,7 @@ function RiskCard({ top, height, children, show, tone = C.amber, glow = 0 }: { t
  * (`nothing`) with the row of Operaciones, which stays at «leer»; on the right two amber risks of giving write access: a
  * file dragged to another folder by mistake (`drag`) and a malicious program on any laptop, which spoils or hijacks
  * whatever its account can write (`malware`). On `blocked` the program hits the read-only folder and nothing changes.
- * LEAST PRIVILEGE (`name`), «lo necesario para la tarea · nada más» (`task`), the two steps «qué hace el rol» then
+ * LEAST PRIVILEGE (`name`), «lo necesario para la tarea · nada más» (`task`), the two steps «qué hace el puesto» then
  * «justo eso», and the close of the chapter (`wrap`).
  */
 export function S05Minimo(props: SceneProps) {
@@ -195,7 +195,7 @@ export function S05Minimo(props: SceneProps) {
           </Rotulo>
           <div style={{ position: 'absolute', left: 0, right: 0, top: 410, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 28, opacity: 1 - 0.45 * progress(frame, wrapAt - 4, 16) }}>
             <div style={enter(frame, step1At, { distance: 18, duration: 14 })}>
-              <Pill text="qué hace el rol" tone={C.cyan} on={0.8} size={46} height={90} />
+              <Pill text="qué hace el puesto" tone={C.cyan} on={0.8} size={46} height={90} />
             </div>
             <div style={{ opacity: progress(frame, step2At - 8, 12) }}>
               <Icon name="arrowRight" size={64} color={C.cyan} strokeWidth={2.4} />

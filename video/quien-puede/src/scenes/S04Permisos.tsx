@@ -44,8 +44,8 @@ function BasicTile({ word, icon, on, show }: { word: string; icon: IconName | 'p
 
 /**
  * s04-permisos «Leer, escribir, ejecutar». The thread, now with the gate open and the account in Mantenimiento. First the
- * three basic permissions as big icons (`read`, `write`, `exec`; under «ejecutar», small: «en una carpeta: entrar o
- * atravesar», `folder-x`). Then each row lights beside its reason (`staff`, `maint`, `ops`, `summary`: «por eso la
+ * three basic permissions as big icons (`read`, `write`, `exec`; under «ejecutar», small: «en una carpeta: poder entrar»,
+ * `folder-x`). Then each row lights beside its reason (`staff`, `maint`, `ops`, `summary`: «por eso la
  * abriste», «redacta los partes», «planifica los turnos», «lo verás enseguida»). `rest`: the grey row, «el resto del
  * puerto · no aparece = no entra»; `implicit`: «lo no concedido, se deniega».
  */
@@ -117,7 +117,7 @@ export function S04Permisos(props: SceneProps) {
               ...enter(frame, folderXAt, { distance: 16, duration: 14 }),
             }}
           >
-            en una carpeta: entrar o atravesar <span style={{ color: C.muted }}>(según el sistema)</span>
+            en una carpeta: poder entrar
           </div>
         </div>
       ) : null}

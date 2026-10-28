@@ -79,7 +79,7 @@ export function S03Grupos(props: SceneProps) {
 
   // --- churn: three events, each touching a third of the folders
   const lit = 100 * progress(frame, churnAt, Math.max(30, hundredAt - churnAt), EASE.inOut);
-  const events = ['alta', 'baja', 'cambio de puesto'];
+  const events = ['entra', 'sale', 'cambia de puesto'];
   const evAt = events.map((_, i) => churnAt + i * Math.max(12, (hundredAt - churnAt) / 3));
 
   return (
@@ -198,7 +198,7 @@ export function S03Grupos(props: SceneProps) {
           </div>
           <Rotulo weight={progress(frame, pencilAt + 4, 14)} size={42} style={{ position: 'absolute', left: 0, top: 500 }}>
             cualquiera podría cambiar
-            <br />o borrar los partes
+            <br />o machacar los partes
           </Rotulo>
         </div>
       ) : null}

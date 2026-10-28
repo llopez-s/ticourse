@@ -31,7 +31,7 @@ function Line({ children, show, strong }: { children: ReactNode; show: number; s
  * s11-reglas «Tres reglas». Three numbered slots wait from the first frames; each rule card lights on its cue:
  *  1. autenticación (quién eres, el pasaporte) / autorización (qué puedes, la tarjeta de embarque),
  *  2. permisos a grupos, y a cada grupo y cuenta de servicio, lo justo,
- *  3. un proceso puede lo que puede su cuenta; and on `system` its last lines: look at the system before reading a permission.
+ *  3. un proceso puede, como mucho, lo que puede su cuenta; and on `system` its last lines: look at the system before reading a permission.
  * On `practice` the cards give way to the ALERTÓPOLIS end card with the practice «Permisos de una carpeta».
  */
 export function S11Reglas(props: SceneProps) {
@@ -82,14 +82,14 @@ export function S11Reglas(props: SceneProps) {
       ),
     },
     {
-      title: ['un proceso puede', 'lo mismo que'],
+      title: ['un proceso puede,', 'como mucho,'],
       tone: 'sky',
       at: rule3,
       art: <Disc icon="gear" tone={C.sky} />,
       sub: (
         <div style={{ lineHeight: 1.25 }}>
           <Line show={progress(frame, rule3 + 4, 12)} strong>
-            su cuenta
+            lo que puede su cuenta
           </Line>
           <div style={{ height: 14 }} />
           <Line show={progress(frame, sys[0], 12)}>antes de leer un permiso,</Line>
@@ -97,7 +97,8 @@ export function S11Reglas(props: SceneProps) {
             mira el sistema:
           </Line>
           <Line show={progress(frame, sys[1], 12)}>Windows suma,</Line>
-          <Line show={progress(frame, sys[2], 12)}>Linux elige una clase</Line>
+          <Line show={progress(frame, sys[2], 12)}>Linux, con casillas básicas,</Line>
+          <Line show={progress(frame, sys[2] + 8, 12)}>elige una sola clase</Line>
         </div>
       ),
     },

@@ -53,7 +53,7 @@ function IdeaCard({ kicker, main, tone, show, fill, children }: { kicker: string
  *     on a real machine), the ACL name on the right (`acl`; the exam card sits in the top band), the list of entries
  *     (`entries`) and the anatomy of one entry (`each`).
  *  3. `two-groups` .. `heavier`: an account in two groups (generic «un grupo» / «otro grupo»: the case invents no
- *     departments) whose rows merge into a bar that adds (`sum`, `both`); then a rose «Denegar · escribir» row that weighs more.
+ *     departments) whose rows merge into a bar that adds (`sum`, `both`); then a rose «Denegar · Escritura» row that weighs more.
  *  4. `sub` / `inherit`: the subfolder «2026» with the same list in grey, «heredada».
  */
 export function S08Windows(props: SceneProps) {
@@ -143,7 +143,7 @@ export function S08Windows(props: SceneProps) {
               <Icon name="server" size={72} color={C.sky} strokeWidth={1.8} />
               <TermPill text="Windows" size={64} />
             </div>
-            <div style={{ marginTop: 18, fontSize: 46, fontWeight: 750, color: C.text, whiteSpace: 'nowrap' }}>el servidor de ficheros del puerto</div>
+            <div style={{ marginTop: 18, fontSize: 46, fontWeight: 750, color: C.text, whiteSpace: 'nowrap' }}>el servidor de archivos del puerto</div>
           </div>
 
           {/* ACL */}
@@ -185,7 +185,7 @@ export function S08Windows(props: SceneProps) {
             <EntryRow who="otro grupo" chips={[{ text: 'Escritura', icon: 'pencil' }]} width={760} show={r2} focus={merge * 0.7} />
           </div>
           <div style={{ position: 'absolute', left: 120, top: rowY[2] }}>
-            <EntryRow who="un grupo" chips={[{ text: 'Denegar · escribir', icon: 'x', tone: C.rose }]} width={760} tone={C.rose} show={r3} focus={heavy} />
+            <EntryRow who="un grupo" chips={[{ text: 'Denegar · Escritura', icon: 'x', tone: C.rose }]} width={760} tone={C.rose} show={r3} focus={heavy} />
           </div>
           <svg width={W} height={H} style={{ position: 'absolute', left: 0, top: 0, overflow: 'visible' }} aria-hidden>
             {/* the account is in both groups */}

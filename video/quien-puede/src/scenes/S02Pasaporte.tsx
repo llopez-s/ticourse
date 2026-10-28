@@ -170,6 +170,7 @@ export function S02Pasaporte(props: SceneProps) {
             control de
             <br />
             pasaportes
+            <div style={{ fontSize: 30, fontWeight: 850, color: C.violet, opacity: progress(frame, passportAt + 4, 12), marginTop: 2 }}>= autenticación</div>
           </div>
 
           {/* the gates: each with its flight; only one opens with the boarding card */}
@@ -189,6 +190,7 @@ export function S02Pasaporte(props: SceneProps) {
           <div style={{ position: 'absolute', left: passX, top: WALK_Y - 14, opacity: passIn * (1 - lack) }}>
             <BoardingPass width={400} flight={gate2.label} on={passIn} />
           </div>
+          <div style={{ position: 'absolute', left: passX + 10, top: WALK_Y + 150, fontFamily: FONT.sans, fontSize: 30, fontWeight: 850, color: C.violet, opacity: passIn * (1 - lack) }}>= autorización</div>
           <div style={{ position: 'absolute', left: passX + 10, top: WALK_Y - 6, opacity: lack }}>
             <BoardingPass width={360} ghost ghostText="escribir" />
           </div>

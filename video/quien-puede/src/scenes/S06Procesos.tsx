@@ -293,9 +293,11 @@ export function S06Procesos(props: SceneProps) {
             <FolderAcl entries={[INFORMES[0]]} name={REPORTS_NAME} width={760} server={null} rest={false} fx={{ boss: { focus: sameOn * 0.4 } }} />
           </div>
           <Rotulo weight={progress(frame, sameAt + 4, 16)} size={54} style={{ position: 'absolute', left: 968, top: 500 }}>
-            el proceso puede lo que
+            el proceso puede,
             <br />
-            puede <span style={{ color: C.cyan }}>su cuenta</span>
+            como mucho, lo que puede
+            <br />
+            <span style={{ color: C.cyan }}>su cuenta</span>
           </Rotulo>
         </div>
       ) : null}

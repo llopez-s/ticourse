@@ -64,7 +64,7 @@ export interface EntryChip {
 
 /**
  * A free-form entry row (same size and look as FolderAcl's rows) for the s08 examples that FolderAcl's canonical list
- * cannot draw: «un grupo · Lectura», «otro grupo · Escritura», «Denegar · escribir». `struck` 0–1 draws a rose line through it.
+ * cannot draw: «un grupo · Lectura», «otro grupo · Escritura», «Denegar · Escritura». `struck` 0–1 draws a rose line through it.
  */
 export function EntryRow({
   who,

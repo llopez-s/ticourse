@@ -65,7 +65,7 @@ function GreyEntry({ show, bar }: { show: number; bar: number }) {
  *  1. `copy`, `classes`, `boxes`, `letters`: a copy of the partes on a Linux server and three class cards (dueño, grupo,
  *     resto), each with its three boxes (leer, escribir, ejecutar) that become r, w, x.
  *  2. `line`, `owner`, `group`, `rest`, `nosum`: the `ls -l` line, its three blocks opened and tied to their card, «Linux no suma».
- *  3. `steps`, `rest-hit`, `first-fit`: the three questions, walked by a token from Operaciones; it stops at the first yes.
+ *  3. `steps`, `rest-hit`, `first-fit`: the three questions, walked by a token from «otra cuenta del puerto»; it stops at the first yes.
  *  4. `counter`: the owner has `---`, the group `r--`, the owner is also in the group and still does not read.
  *  5. `x-bit`, `posix`, `root`: the folder line with its x lit («entrar»), the POSIX ACL (more entries) and root.
  *  6. `compare`: Windows adds entries, Linux picks one class.
