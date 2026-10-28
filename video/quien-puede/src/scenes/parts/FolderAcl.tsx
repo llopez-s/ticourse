@@ -90,7 +90,7 @@ export function PermChip({ perm, naming = 'plain', tone = C.emerald, size = 32, 
         fontFamily: FONT.sans,
         fontSize: size,
         fontWeight: 800,
-        color: col === C.emerald ? '#6ee7b7' : col === C.rose ? C.roseSoft : '#fcd34d',
+        color: col === C.emerald ? '#6ee7b7' : col === C.rose ? C.roseSoft : col === C.muted ? C.muted : '#fcd34d',
         whiteSpace: 'nowrap',
       }}
     >

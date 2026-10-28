@@ -68,11 +68,37 @@ export const PROCESS_ROW = {
 
 export const SERVICE_ACCOUNT = { name: 'svc_resumen', note: 'no es de una persona', login: 'sin inicio de sesión interactivo', owner: 'responsable: Sistemas' } as const;
 
-/** Linux copy (s09). */
+/** Linux copy (s09). `file`/`dir` are the exact lines of the canon; `LINUX_PARTS` is the same text cut in its blocks. */
 export const LINUX = {
   file: '-rw-r----- 1 mant mantenimiento grua-04.txt',
   dir: 'drwxr-x--- 2 mant mantenimiento partes/',
 } as const;
+
+/** A `ls -l` line cut in its pieces: type character, owner / group / rest blocks of three letters, and the tail. */
+export interface LsParts {
+  type: string;
+  owner: string;
+  group: string;
+  rest: string;
+  tail: string;
+}
+
+export const LINUX_PARTS: { file: LsParts; dir: LsParts; counter: LsParts } = {
+  file: { type: '-', owner: 'rw-', group: 'r--', rest: '---', tail: ' 1 mant mantenimiento grua-04.txt' },
+  dir: { type: 'd', owner: 'rwx', group: 'r-x', rest: '---', tail: ' 2 mant mantenimiento partes/' },
+  /** s09 `counter`: the owner has `---`, the group `r--`, and the owner is also in the group (and still cannot read). */
+  counter: { type: '-', owner: '---', group: 'r--', rest: '---', tail: ' 1 mant mantenimiento grua-04.txt' },
+};
+
+/** The three classes of Linux, in the order of the line. */
+export const LINUX_CLASSES = [
+  { id: 'owner', word: 'dueño', sub: 'mant' },
+  { id: 'group', word: 'grupo', sub: 'mantenimiento' },
+  { id: 'rest', word: 'resto', sub: 'todos los demás' },
+] as const;
+
+/** The account walked through the three questions of s09 (it is neither the owner nor in the group). */
+export const OPS_GROUP = 'Operaciones';
 
 /** Image of the airport (s02 only, always tagged «imagen · no es del puerto»). Flight labels belong to the image. */
 export const FLIGHTS = ['vuelo 21', 'vuelo 34', 'vuelo 58'] as const;
