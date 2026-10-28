@@ -29,7 +29,7 @@ const ORIGINAL: Record<ClockId, string> = { proxy: '09:01:40Z', edr1: '09:02:41Z
  * «el inicio de sesión»). `shift`: the two local hours (login, firewall) slide one hour to the left and become
  * 08:58:12 and 09:03:05, each keeping its original in grey. `jump` (whoosh): the login chip hops to the start of the
  * ruler and the others make room. `order`: the five hours in UTC order, every one with its original in grey — the
- * video's screen rule. `first`: «entró» then «intentó subir»; `keep`: «guarda la hora original». `globe`: the ruler
+ * video's screen rule. `first`: «sesión» then «subida bloqueada»; `keep`: «guarda la hora original». `globe`: the ruler
  * shrinks to the top and a globe says «UTC · igual en todas partes · sin horario de verano»; `summer`: a calendar
  * whose local-offset arrow changes length (winter +01:00, summer +02:00 — an assumption to confirm: the canon only
  * fixes Halden's winter offset). The exam card on `rule` is sentence-end: nothing changes layout there.
@@ -184,7 +184,7 @@ function Chip({ clock, shiftP, jumpP, orderP, answerP, keepP }: { clock: Clock; 
   );
 }
 
-/** «entró» → «intentó subir», under the first two slots of the UTC ruler. */
+/** «sesión» → «subida bloqueada» (first the login, then the blocked upload), under the first two slots of the UTC ruler. */
 function First({ frame, at, out }: { frame: number; at: number; out: number }) {
   const a = progress(frame, at, 14);
   const b = progress(frame, at + 22, 14);
@@ -194,10 +194,10 @@ function First({ frame, at, out }: { frame: number; at: number; out: number }) {
   return (
     <div style={{ opacity: out }}>
       <div style={{ position: 'absolute', left: x1, top: LABEL_Y, transform: `translateX(-50%) translateY(${(1 - a) * 10}px)`, opacity: a, fontFamily: FONT.sans, fontSize: 40, fontWeight: 800, color: C.emerald, whiteSpace: 'nowrap' }}>
-        entró
+        sesión
       </div>
-      <div style={{ position: 'absolute', left: x2, top: LABEL_Y, transform: `translateX(-50%) translateY(${(1 - b) * 10}px)`, opacity: b, fontFamily: FONT.sans, fontSize: 40, fontWeight: 800, color: C.textStrong, whiteSpace: 'nowrap' }}>
-        intentó subir
+      <div style={{ position: 'absolute', left: x2, top: LABEL_Y, transform: `translateX(-50%) translateY(${(1 - b) * 10}px)`, opacity: b, fontFamily: FONT.sans, fontSize: 36, fontWeight: 800, color: C.textStrong, whiteSpace: 'nowrap' }}>
+        subida bloqueada
       </div>
       <svg width={1728} height={80} style={{ position: 'absolute', left: 0, top: LABEL_Y - 6, pointerEvents: 'none' }} aria-hidden>
         {arrow > 0.03 ? <path d={`M ${x1 + 70} 30 H ${x1 + 70 + (x2 - 170 - x1 - 70) * arrow}`} stroke={C.emerald} strokeWidth={5} strokeLinecap="round" fill="none" /> : null}

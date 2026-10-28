@@ -129,7 +129,28 @@ function Span({ piece, s, base }: { piece: Piece; s: number; base: string }) {
   }
   return (
     <>
-      <span style={{ color, fontWeight: weight }}>{piece.t}</span>
+      <span style={{ color, fontWeight: weight, position: piece.tag ? 'relative' : undefined }}>
+        {piece.t}
+        {piece.tag ? (
+          <span
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '100%',
+              transform: 'translateX(-50%)',
+              marginTop: -4,
+              fontFamily: FONT.sans,
+              fontSize: 19,
+              fontWeight: 650,
+              lineHeight: 1,
+              color: C.muted,
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {piece.tag}
+          </span>
+        ) : null}
+      </span>
       {piece.t === ',' ? <wbr /> : null}
     </>
   );

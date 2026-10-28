@@ -11,8 +11,8 @@ import { COLS } from './parts/Columns';
 
 const S = 's11-informe';
 const PANEL_TOP = 72;
-const PANEL_H = 376;
-const STRUCK_TOP = 486;
+const PANEL_H = 424;
+const STRUCK_TOP = 514;
 
 /** The three column names as a small strip: the same columns as s08, with «conclusión» lit. */
 function Tabs({ on }: { on: number }) {
@@ -108,7 +108,7 @@ export function S11Informe(props: SceneProps) {
           <span style={{ fontSize: 40, fontWeight: 850, color: C.emerald }}>{COLUMN_NAMES[2]}</span>
           <span style={{ fontSize: 30, fontWeight: 600, color: C.muted }}>lo que puedes afirmar</span>
         </div>
-        <div style={{ marginTop: 14, fontSize: 34, fontWeight: 600, lineHeight: 1.3, color: C.textStrong }}>
+        <div style={{ marginTop: 12, fontSize: 32, fontWeight: 600, lineHeight: 1.28, color: C.textStrong }}>
           {REPORT.map((p, i) => (
             <p key={i} style={{ margin: i === 0 ? 0 : '12px 0 0', opacity: para[i], transform: `translateY(${(1 - para[i]) * 10}px)` }}>
               {p}

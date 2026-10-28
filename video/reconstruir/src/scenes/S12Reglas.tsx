@@ -197,7 +197,7 @@ export function S12Reglas(props: SceneProps) {
 
   const art = [<WitnessesArt key="a" on={lit[0]} />, <ClockChip key="b" time="08:58:12" original="09:58:12" tone="norm" style={{ opacity: 0.4 + 0.6 * lit[1] }} />, <ColumnsArt key="c" on={lit[2]} />];
   const frames = [
-    [lineAt(0, 's12-02', 'apunta'), lineAt(0, 's12-02', 'es')],
+    [lineAt(0, 's12-02', 'falta'), lineAt(0, 's12-02', 'es')],
     [lineAt(1, 's12-03', 'original'), lineAt(1, 's12-03', 'lado')],
     [lineAt(2, 's12-04', 'bloqueo'), lineAt(2, 's12-04', 'permitido'), lineAt(2, 's12-04', 'demuestra')],
   ];

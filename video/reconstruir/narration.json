@@ -18,50 +18,50 @@
     {
       "id": "s01-01",
       "scene": "s01-aviso",
-      "text": "<serious> {alert}Te llega un aviso. Desde un equipo de Comercial han intentado subir un archivo a una nube personal, y se ha bloqueado. {title}¿Se han llevado datos?",
-      "pauseAfterMs": 400
+      "text": "<serious> {alert}Te llega un aviso. Desde un ordenador de Comercial han intentado subir algo a una nube personal, y se ha bloqueado. {title}¿Se han llevado datos?",
+      "pauseAfterMs": 350
     },
     {
       "id": "s01-02",
       "scene": "s01-aviso",
       "text": "<curious> Hoy vas a responder con {cards}cuatro registros, las notas que dejan los sistemas.",
-      "pauseAfterMs": 400
+      "pauseAfterMs": 350
     },
     {
       "id": "s01-03",
       "scene": "s01-aviso",
-      "text": "<clear> {chips}Leerás sus campos, pondrás todas las horas en la misma zona y ordenarás los hechos. Y, sobre todo, dirás solo lo que de verdad demuestran.",
-      "pauseAfterMs": 400
+      "text": "<clear> {chips}Leerás sus campos, pondrás todas las horas en la misma zona horaria y ordenarás los hechos. Y, sobre todo, dirás solo lo que de verdad demuestran.",
+      "pauseAfterMs": 350
     },
     {
       "id": "s01-04",
       "scene": "s01-aviso",
       "text": "<calm> {flip}Es un caso de entrenamiento en el puerto de Halden. No ha pasado, pero así es como se trabaja.",
-      "pauseAfterMs": 600
+      "pauseAfterMs": 450
     },
     {
       "id": "s02-01",
       "scene": "s02-testigos",
-      "text": "<thoughtful> {witnesses}Un registro, o log, es la nota que deja un sistema cuando pasa algo. Cada fuente es como un testigo.",
+      "text": "<thoughtful> {witnesses}Un registro, o log, es la nota que deja un sistema cuando pasa algo. Cada sistema es una fuente, y funciona como un testigo.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-02",
       "scene": "s02-testigos",
-      "text": "<warm> Cuenta lo que vio desde su sitio, ni más ni menos. Aquí tienes cuatro.",
-      "pauseAfterMs": 350
+      "text": "<warm> Y solo cuenta lo que vio desde su sitio, si funciona bien. Aquí tienes cuatro.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s02-03",
       "scene": "s02-testigos",
-      "text": "<focused> {login}El inicio de sesión del propio equipo. {proxy}El intermediario por el que salen las webs del puerto, que se llama proxy.",
+      "text": "<focused> {login}El primero, el inicio de sesión del propio equipo. {proxy}El segundo, el intermediario por el que pasan las visitas a Internet, que se llama proxy.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-04",
       "scene": "s02-testigos",
-      "text": "<curious> {edr}Un programa de seguridad del equipo, que apunta qué procesos arrancan y qué conexiones abren. Se llama EDR. {firewall}Y el cortafuegos de salida.",
-      "pauseAfterMs": 400
+      "text": "<curious> {edr}El tercero, una herramienta de seguridad del equipo que apunta qué programas arrancan y qué conexiones abren. Se llama EDR. {firewall}Y el cuarto, el cortafuegos de salida.",
+      "pauseAfterMs": 350
     },
     {
       "id": "s02-05",
@@ -73,37 +73,37 @@
       "id": "s02-06",
       "scene": "s02-testigos",
       "text": "<clear> {csv}El inicio de sesión sale en columnas separadas por comas, un CSV.",
-      "pauseAfterMs": 550
+      "pauseAfterMs": 450
     },
     {
       "id": "s03-01",
       "scene": "s03-ingredientes",
-      "text": "<confident> {boxes}Pero casi todas las líneas llevan los mismos ingredientes. Cuándo, dónde, quién, qué hizo y con qué resultado.",
-      "pauseAfterMs": 350
+      "text": "<confident> {boxes}Pero casi todas las líneas llevan los mismos ingredientes, que se llaman campos. Cuándo, dónde, quién, qué hizo y con qué resultado.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s03-02",
       "scene": "s03-ingredientes",
-      "text": "<focused> Búscalos en cada fuente. {proxy-fields}En el proxy los encuentras todos, hasta el resultado, bloqueado. {fw-fields}En el cortafuegos, casi todos, y su resultado es permitido.",
-      "pauseAfterMs": 400
+      "text": "<focused> Búscalos en cada fuente. {proxy-fields}En el proxy están todos, incluso el resultado, que es bloqueado. {fw-fields}En el cortafuegos, casi todos, y el resultado es permitido.",
+      "pauseAfterMs": 350
     },
     {
       "id": "s03-03",
       "scene": "s03-ingredientes",
       "text": "<serious> Y fíjate en lo que falta. {empty}El cortafuegos no tiene campo de usuario.",
-      "pauseAfterMs": 350
+      "pauseAfterMs": 300
     },
     {
       "id": "s03-04",
       "scene": "s03-ingredientes",
       "text": "<calm> {not-nobody}Eso no significa que no hubiera nadie. Significa que ese testigo no lo apunta.",
-      "pauseAfterMs": 450
+      "pauseAfterMs": 350
     },
     {
       "id": "s03-05",
       "scene": "s03-ingredientes",
       "text": "<firm> O sea, que {lesson}lo que falta en un registro no es un no.",
-      "pauseAfterMs": 600,
+      "pauseAfterMs": 450,
       "exam": {
         "objective": "4.9",
         "text": "Un campo ausente no es un valor negativo",
@@ -121,25 +121,25 @@
       "id": "s04-02",
       "scene": "s04-relojes",
       "text": "<calm> {t-proxy}El bloqueo del proxy, las nueve y uno. {t-edr}El EDR, las nueve y dos. {t-fw}Y el cortafuegos, las diez y tres.",
-      "pauseAfterMs": 400
+      "pauseAfterMs": 350
     },
     {
       "id": "s04-03",
       "scene": "s04-relojes",
-      "text": "<thoughtful> {naive}Leídas así, parece que el bloqueo pasó casi una hora antes de que nadie iniciara sesión. {zones}Pero fíjate en el final de cada hora.",
-      "pauseAfterMs": 400
+      "text": "<thoughtful> {naive}Leídas así, parece que el bloqueo pasó casi una hora antes de que nadie iniciara sesión. {zones}Pero fíjate en cómo termina cada hora.",
+      "pauseAfterMs": 350
     },
     {
       "id": "s04-04",
       "scene": "s04-relojes",
-      "text": "<clear> {utc}La zeta quiere decir UTC, la hora de referencia mundial.",
+      "text": "<clear> {utc}Las del proxy y el EDR acaban en una zeta, que quiere decir UTC, la hora de referencia mundial.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-05",
       "scene": "s04-relojes",
-      "text": "<focused> {plus1}El más uno, una hora por delante de UTC, que es la hora de Halden en invierno.",
-      "pauseAfterMs": 350
+      "text": "<focused> {plus1}Y la del cortafuegos acaba en un más uno, una hora por delante de UTC. O sea, su reloj marca una hora más. Es la hora de Halden en invierno.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s04-06",
@@ -148,44 +148,44 @@
       "pauseAfterMs": 300,
       "think": {
         "q": "¿Qué fue antes?",
-        "holdMs": 4500
+        "holdMs": 5000
       }
     },
     {
       "id": "s05-01",
       "scene": "s05-utc",
       "text": "<confident> {answer}El inicio de sesión. Si has dicho el bloqueo, has caído en lo de siempre, ordenar por el número sin mirar la zona.",
-      "pauseAfterMs": 400
+      "pauseAfterMs": 350
     },
     {
       "id": "s05-02",
       "scene": "s05-utc",
-      "text": "<clear> {shift}Restas una hora a las dos horas locales, y todo queda en UTC.",
-      "pauseAfterMs": 350
+      "text": "<clear> {shift}A la del inicio de sesión y a la del cortafuegos les restas una hora, y todo queda en UTC.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s05-03",
       "scene": "s05-utc",
       "text": "<satisfied> {jump}Ahora el inicio de sesión queda a las ocho cincuenta y ocho, y pasa a ser lo primero. {order}El resto lo tienes en pantalla.",
-      "pauseAfterMs": 400
+      "pauseAfterMs": 350
     },
     {
       "id": "s05-04",
       "scene": "s05-utc",
-      "text": "<calm> {first}Así que primero entró y luego intentó subir. {keep}Guarda siempre la hora original al lado, por si te equivocas de zona.",
-      "pauseAfterMs": 400
+      "text": "<calm> {first}Así que primero hubo un inicio de sesión, y luego el bloqueo de una subida. {keep}Guarda siempre la hora original al lado, por si te equivocas de zona.",
+      "pauseAfterMs": 350
     },
     {
       "id": "s05-05",
       "scene": "s05-utc",
       "text": "<thoughtful> {globe}Se usa UTC porque es la misma en todo el mundo y no cambia en verano.",
-      "pauseAfterMs": 350
+      "pauseAfterMs": 300
     },
     {
       "id": "s05-06",
       "scene": "s05-utc",
-      "text": "<firm> {summer}La hora local sí cambia, así que el desfase se mira en cada fecha. O sea, que {rule}antes de ordenar, todo a la misma hora de referencia.",
-      "pauseAfterMs": 600,
+      "text": "<firm> {summer}La hora local sí cambia, así que la diferencia con UTC hay que mirarla en cada fecha. O sea, que {rule}antes de ordenar, todo a la misma hora de referencia.",
+      "pauseAfterMs": 450,
       "exam": {
         "objective": "4.9",
         "text": "Normaliza a UTC y guarda la hora original",
@@ -196,13 +196,13 @@
     {
       "id": "s06-01",
       "scene": "s06-orden",
-      "text": "<clear> {intro}Ahora sí, la cronología. Una línea por hecho, en UTC, y con su fuente al lado.",
-      "pauseAfterMs": 350
+      "text": "<clear> {intro}Ahora sí, la cronología, que es la lista de lo ocurrido, en orden. Una línea por hecho, en UTC, con su fuente al lado.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s06-02",
       "scene": "s06-orden",
-      "text": "<calm> {r1}A las ocho cincuenta y ocho, una cuenta de Comercial inicia sesión en su equipo.",
+      "text": "<calm> {r1}A las ocho cincuenta y ocho, una cuenta inicia sesión en un equipo de Comercial.",
       "pauseAfterMs": 300
     },
     {
@@ -221,43 +221,43 @@
       "id": "s06-05",
       "scene": "s06-orden",
       "text": "<thoughtful> {name}Su nombre suena a sincronización, pero eso, de momento, es solo un nombre.",
-      "pauseAfterMs": 350
+      "pauseAfterMs": 300
     },
     {
       "id": "s06-06",
       "scene": "s06-orden",
-      "text": "<serious> {r4}Diecisiete segundos después, ese programa abre una conexión a una dirección de fuera, por el 443.",
-      "pauseAfterMs": 350
+      "text": "<serious> {r4}Diecisiete segundos después, ese programa abre una conexión a una dirección de fuera, por el puerto de red 443.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s06-07",
       "scene": "s06-orden",
-      "text": "<warm> {r5}Y el cortafuegos deja pasar una conexión, que dura tres minutos y saca unos cuarenta y seis megas. Enseguida verás por qué es la misma.",
-      "pauseAfterMs": 600
+      "text": "<warm> {r5}Y a las nueve y tres, el cortafuegos deja pasar una conexión de tres minutos, con unos cuarenta y seis megas de salida. Parece la misma, y enseguida verás por qué lo es.",
+      "pauseAfterMs": 450
     },
     {
       "id": "s07-01",
       "scene": "s07-hilos",
       "text": "<curious> {question}¿Cómo sabes que esas líneas hablan de lo mismo? No por la hora sola. Por los campos que coinciden.",
-      "pauseAfterMs": 350
+      "pauseAfterMs": 300
     },
     {
       "id": "s07-02",
       "scene": "s07-hilos",
-      "text": "<clear> {host}El mismo equipo en el inicio de sesión, el proxy y el EDR. {user}La misma cuenta. {label}Y en el EDR y en el cortafuegos, la misma etiqueta.",
-      "pauseAfterMs": 350
+      "text": "<clear> {host}El mismo equipo en el inicio de sesión, el proxy y el EDR. {user}La misma cuenta. Y el mismo número de proceso une el arranque con la conexión. {label}Y en el EDR y en el cortafuegos, la misma etiqueta de la conexión.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s07-03",
       "scene": "s07-hilos",
-      "text": "<focused> El mismo origen, {port}el mismo puerto efímero, ese número temporal que el equipo elige para cada conversación, y el mismo destino.",
-      "pauseAfterMs": 400
+      "text": "<focused> Es decir, el mismo origen y el mismo destino. Y hasta {port}el mismo puerto efímero, que es un número temporal que el equipo elige para cada conversación.",
+      "pauseAfterMs": 350
     },
     {
       "id": "s07-04",
       "scene": "s07-hilos",
-      "text": "<satisfied> {same}Así sabes que la conexión permitida la abrió ese programa, y no otro. {corr}Eso es correlacionar, unir fuentes por lo que comparten.",
-      "pauseAfterMs": 450,
+      "text": "<satisfied> {same}Así sabes que quien abrió la conexión permitida fue ese programa, y no otro. {corr}Eso es correlacionar, unir fuentes por lo que comparten.",
+      "pauseAfterMs": 350,
       "exam": {
         "objective": "4.9",
         "text": "Correlaciona por campos comunes, no solo por la hora",
@@ -268,26 +268,26 @@
     {
       "id": "s07-05",
       "scene": "s07-hilos",
-      "text": "<casual> {gap}Por cierto, el EDR y el cortafuegos la ven con siete segundos de diferencia. Son dos relojes.",
+      "text": "<casual> {gap}Por cierto, el EDR y el cortafuegos la ven con siete segundos de diferencia. Seguramente son dos relojes, y cada uno apunta a su manera.",
       "pauseAfterMs": 300
     },
     {
       "id": "s07-06",
       "scene": "s07-hilos",
-      "text": "<firm> {clocks}Unos segundos, normal. Si fueran minutos, sospecharías del reloj antes que de la historia.",
-      "pauseAfterMs": 600
+      "text": "<firm> {clocks}Unos segundos es habitual. Si fueran minutos o una hora exacta, revisa el reloj o la zona.",
+      "pauseAfterMs": 450
     },
     {
       "id": "s08-01",
       "scene": "s08-columnas",
       "text": "<serious> {three}Ahora viene el paso que más se salta. Separa tres cosas. {observed}Lo observado es lo que dice cada testigo, tal cual, sin añadir nada.",
-      "pauseAfterMs": 350
+      "pauseAfterMs": 300
     },
     {
       "id": "s08-02",
       "scene": "s08-columnas",
-      "text": "<clear> {hypo}La hipótesis es una explicación posible, que todavía hay que poner a prueba. Y {concl}la conclusión es lo que puedes afirmar porque lo sostienen las observaciones.",
-      "pauseAfterMs": 450,
+      "text": "<clear> {hypo}La hipótesis es una explicación posible, que todavía hay que poner a prueba. Y {concl}la conclusión es lo que puedes afirmar porque lo observado lo sostiene.",
+      "pauseAfterMs": 350,
       "exam": {
         "objective": "4.8",
         "text": "Observación, hipótesis y conclusión, por separado",
@@ -298,20 +298,20 @@
     {
       "id": "s08-03",
       "scene": "s08-columnas",
-      "text": "<curious> Aquí hay dos hipótesis. {h1}Una, que tras el bloqueo subiera el archivo por otra vía.",
+      "text": "<curious> Aquí hay al menos dos hipótesis. {h1}Una, que después del bloqueo el archivo se subiera por otra vía.",
       "pauseAfterMs": 300
     },
     {
       "id": "s08-04",
       "scene": "s08-columnas",
       "text": "<thoughtful> {h2}Otra, que ese programa sea la sincronización autorizada de Comercial, haciendo lo de todos los días.",
-      "pauseAfterMs": 350
+      "pauseAfterMs": 300
     },
     {
       "id": "s08-05",
       "scene": "s08-columnas",
-      "text": "<firm> {both}Las dos encajan con lo que hay. Por eso, de momento, son hipótesis.",
-      "pauseAfterMs": 600
+      "text": "<firm> {both}Las dos encajan con lo que hay, y puede haber más. Por eso, de momento, son hipótesis.",
+      "pauseAfterMs": 450
     },
     {
       "id": "s09-01",
@@ -327,7 +327,7 @@
       "id": "s09-02",
       "scene": "s09-megas",
       "text": "<firm> No por sí solo. {meaning}Permitido significa que el cortafuegos decidió dejarlo pasar. {bytes}Los megas dicen cuánto salió, no qué salió.",
-      "pauseAfterMs": 400,
+      "pauseAfterMs": 350,
       "exam": {
         "objective": "4.9",
         "text": "Allow: se permitió el paso; el contenido, no se sabe",
@@ -338,38 +338,38 @@
     {
       "id": "s09-03",
       "scene": "s09-megas",
-      "text": "<thoughtful> {maybe}Podría ser el archivo bloqueado, o el trabajo de siempre.",
-      "pauseAfterMs": 350
+      "text": "<thoughtful> {maybe}Podría ser el mismo archivo que bloquearon, o el trabajo de todos los días.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s09-04",
       "scene": "s09-megas",
-      "text": "<calm> {gaps}Para salir de dudas hace falta más evidencia. {gap1}Qué es ese programa y si está autorizado.",
+      "text": "<calm> {gaps}Para salir de dudas hace falta más evidencia. {gap1}Primero, saber qué es ese programa y si está autorizado.",
       "pauseAfterMs": 300
     },
     {
       "id": "s09-05",
       "scene": "s09-megas",
-      "text": "<serious> {gap2}De quién es ese destino. {gap3}Y qué archivos leyó antes de conectarse.",
-      "pauseAfterMs": 600
+      "text": "<serious> {gap2}Después, de quién es ese destino. {gap3}Y qué archivos leyó antes de conectarse.",
+      "pauseAfterMs": 450
     },
     {
       "id": "s10-01",
       "scene": "s10-bloqueo",
       "text": "<firm> {two-paths}Y el bloqueo tampoco cierra el caso. El proxy es un testigo de su puerta. {door}Ve lo que pasa por él, nada más.",
-      "pauseAfterMs": 350
+      "pauseAfterMs": 300
     },
     {
       "id": "s10-02",
       "scene": "s10-bloqueo",
-      "text": "<clear> {direct}Esa conexión no pasó por el proxy, salió directa por el cortafuegos. Así que el bloqueo prueba que esa subida, por ahí, no salió.",
-      "pauseAfterMs": 400
+      "text": "<clear> {direct}El EDR y el cortafuegos ven al equipo hablando directamente con una dirección de fuera, no con el proxy. Por eso no parece que pasara por él. El bloqueo prueba una sola cosa. Que esa subida no salió por la puerta del proxy.",
+      "pauseAfterMs": 350
     },
     {
       "id": "s10-03",
       "scene": "s10-bloqueo",
-      "text": "<serious> {other}No prueba que no saliera nada por otro camino.",
-      "pauseAfterMs": 400,
+      "text": "<serious> {other}Y no descarta que saliera algo por otro camino.",
+      "pauseAfterMs": 350,
       "exam": {
         "objective": "4.9",
         "text": "Deny: bloqueo en ese punto, no en todas las vías",
@@ -380,20 +380,20 @@
     {
       "id": "s10-04",
       "scene": "s10-bloqueo",
-      "text": "<thoughtful> {finding}Y que un equipo pueda salir a Internet sin pasar por el proxy ya es un hallazgo por sí mismo.",
-      "pauseAfterMs": 400
+      "text": "<thoughtful> {finding}Y que un equipo pueda salir a Internet sin pasar por el proxy es, como mínimo, algo que hay que comprobar.",
+      "pauseAfterMs": 350
     },
     {
       "id": "s10-05",
       "scene": "s10-bloqueo",
       "text": "<confident> {close}O sea, que ni el bloqueo te tranquiliza ni el permitido te condena.",
-      "pauseAfterMs": 600
+      "pauseAfterMs": 450
     },
     {
       "id": "s11-01",
       "scene": "s11-informe",
       "text": "<engaging> {ask3}Entonces, ¿qué escribes en el informe? Algo así.",
-      "pauseAfterMs": 350
+      "pauseAfterMs": 300
     },
     {
       "id": "s11-02",
@@ -404,56 +404,56 @@
     {
       "id": "s11-03",
       "scene": "s11-informe",
-      "text": "<focused> {para2}Poco más de un minuto después, desde el mismo equipo y con la misma cuenta, un programa abrió una conexión directa.",
-      "pauseAfterMs": 350
+      "text": "<focused> {para2}Poco más de un minuto después, desde el mismo equipo y con la misma cuenta, un programa abrió una conexión hacia una dirección externa que el proxy no registra, según el EDR y el cortafuegos.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s11-04",
       "scene": "s11-informe",
       "text": "<clear> {para3}El cortafuegos la permitió, con unos cuarenta y seis megas de salida. El contenido no se conoce.",
-      "pauseAfterMs": 400
+      "pauseAfterMs": 350
     },
     {
       "id": "s11-05",
       "scene": "s11-informe",
-      "text": "<steady> {next}Siguientes pasos. Identificar el programa y el destino, revisar qué archivos se leyeron y explicar por qué ese equipo sale sin proxy.",
-      "pauseAfterMs": 400
+      "text": "<steady> {next}Y como siguientes pasos, hay que identificar el programa y el destino, revisar qué archivos se leyeron y comprobar si ese equipo puede salir sin proxy.",
+      "pauseAfterMs": 350
     },
     {
       "id": "s11-06",
       "scene": "s11-informe",
-      "text": "<firm> {struck}O sea, ni «no ha pasado nada», ni «nos han robado». Lo que hay, y lo que falta.",
-      "pauseAfterMs": 600
+      "text": "<firm> {struck}O sea, no escribes «no ha pasado nada» ni «nos han robado». Escribes lo que hay, y lo que falta.",
+      "pauseAfterMs": 450
     },
     {
       "id": "s12-01",
       "scene": "s12-reglas",
-      "text": "<warm> {rules}Te quedas con tres reglas. {r-one}Una. Cada registro es un testigo de su sitio.",
+      "text": "<warm> {rules}Te quedas con tres reglas. {r-one}La primera. Cada registro es un testigo de su sitio.",
       "pauseAfterMs": 300
     },
     {
       "id": "s12-02",
       "scene": "s12-reglas",
-      "text": "<clear> Lee sus campos, y recuerda que lo que no apunta no es un no.",
-      "pauseAfterMs": 350
+      "text": "<clear> Lee sus campos, y recuerda que lo que falta en un registro no es un no.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s12-03",
       "scene": "s12-reglas",
-      "text": "<focused> {r-two}Dos. Antes de ordenar, todo a UTC, con la hora original al lado.",
-      "pauseAfterMs": 350
+      "text": "<focused> {r-two}La segunda. Antes de ordenar, todo a UTC, con la hora original al lado.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s12-04",
       "scene": "s12-reglas",
-      "text": "<confident> {r-three}Tres. Separa lo observado de lo que crees. Un bloqueo no descarta otras vías, y un permitido no demuestra una fuga.",
-      "pauseAfterMs": 400
+      "text": "<confident> {r-three}La tercera. Separa lo observado de lo que crees. Un bloqueo no descarta otras vías, y un permitido no demuestra una fuga.",
+      "pauseAfterMs": 350
     },
     {
       "id": "s12-05",
       "scene": "s12-reglas",
       "text": "<reassuring> {action}Ahora te toca a ti. Abre la práctica «Cronología y límites», ordena tres registros y decide qué puedes afirmar.",
-      "pauseAfterMs": 600
+      "pauseAfterMs": 450
     }
   ]
 }

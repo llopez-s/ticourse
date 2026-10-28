@@ -27,7 +27,7 @@ export const BYTES_OUT = '46180352';
 export const BYTES_OUT_SPACED = '46 180 352';
 
 /** The case stamp, drawn by the scene from s02 to s11 (the engine only draws «Simulación educativa · datos ficticios»). */
-export const STAMP_PARTS = ['Autoridad Portuaria de Halden', 'imagina', 'caso de entrenamiento', 'sin fecha', 'no ha pasado'] as const;
+export const STAMP_PARTS = ['Autoridad Portuaria de Halden', 'imagina', 'caso de entrenamiento', 'un día de invierno', 'sin fecha concreta', 'no ha pasado'] as const;
 
 /** s01's alert. */
 export const ALERT_TEXT = 'Subida bloqueada · almacenamiento personal';
@@ -127,6 +127,8 @@ export interface Piece {
   ing?: Ingredient;
   /** A field the later scenes can point at (`action`, `bytes_out`, `src`…). */
   field?: string;
+  /** A small grey caption under the piece (the login's `4624` is «id de evento»). */
+  tag?: string;
   /** Syntax of the piece, for the JSON / CSV highlight: key, value or separator. */
   syn?: 'key' | 'val' | 'sep';
 }
@@ -172,7 +174,12 @@ const CSV_FIELDS = ['hora', 'equipo', 'cuenta', 'evento', 'resultado'];
 export const RAW: Record<SourceId, RawLine[]> = {
   login: [
     csvLine(CSV_FIELDS, CSV_FIELDS).map((p) => (p.syn === 'val' ? { ...p, syn: 'key' as const } : p)),
-    csvLine(['09:58:12', HOST, ACCOUNT, '4624 inicio de sesión', 'correcto'], CSV_FIELDS),
+    // `4624` is Windows' event id for a successful logon: it carries a grey caption (the joined line is unchanged).
+    csvLine(['09:58:12', HOST, ACCOUNT, '4624 inicio de sesión', 'correcto'], CSV_FIELDS).flatMap((p) =>
+      p.t === '4624 inicio de sesión'
+        ? [{ ...p, t: '4624', tag: 'id de evento' }, { ...p, t: ' inicio de sesión' }]
+        : [p],
+    ),
   ],
   proxy: [
     [
@@ -247,6 +254,8 @@ export const FIREWALL_CELLS: Record<Ingredient, string[]> = {
   resultado: ['action=ALLOW'],
 };
 export const NOT_NOBODY = 'no lo apunta: no significa nadie';
+/** Grey remark under a firewall cell: `src` is the address inside, before any translation (NAT). */
+export const FIREWALL_CELL_NOTES: Partial<Record<Ingredient, string>> = { donde: 'origen interno' };
 
 // ---- s04: the clocks as they come (text order, not time order).
 export type ClockId = 'proxy' | 'edr1' | 'edr2' | 'login' | 'fw';
@@ -325,7 +334,8 @@ export const CHRONO: ChronoRow[] = [
     clock: 'fw',
     utc: '09:03:05',
     original: '10:03:05+01:00',
-    fact: [{ t: 'ALLOW', mono: true }, { t: ` desde el inicio, 181 s, ${BYTES_OUT_SPACED} bytes de salida` }],
+    fact: [{ t: 'sesión permitida · inicio 09:03:05 · 181 s' }],
+    note: `${BYTES_OUT_SPACED} bytes de salida`,
     source: 'firewall',
   },
 ];

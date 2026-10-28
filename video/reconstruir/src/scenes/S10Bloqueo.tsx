@@ -4,7 +4,7 @@ import { C, FONT, RADIUS, alpha } from '../../../engine/src/theme/tokens';
 import { EASE, progress } from '../../../engine/src/theme/motion';
 import { Icon } from '../../../engine/src/ui';
 import { Stage, wordFrame } from './kit';
-import { HOST } from './parts/data';
+import { HOST, UPLOAD_DST } from './parts/data';
 import { PATH_LABELS } from './parts/data-b';
 import { CaseStamp } from './parts/CaseStamp';
 import { SourceTag } from './parts/Ruler';
@@ -19,7 +19,9 @@ const DOOR = { left: 560, top: 20, w: 300 } as const;
 const UPPER = 'M 204 276 C 390 276, 390 204, 576 204';
 const BEYOND = 'M 880 204 C 1100 204, 1300 250, 1526 290';
 const DIRECT = 'M 150 360 C 150 520, 320 500, 560 500 L 1000 500 C 1300 500, 1440 470, 1562 358';
-const FIREWALL_AT = { x: 1000, y: 500 } as const;
+/** The outbound firewall stands at the shared exit, where both paths must cross it (it sees the proxy's traffic too). */
+const FIREWALL_AT = { x: 1385, y: 360 } as const;
+const GATE = { x: 1385, top: 232, bottom: 486 } as const;
 
 /** A path drawn along `d` (0–1), with a soft halo. */
 function PathLine({ d, color, draw, width = 8, dim = 0, dashed = false }: { d: string; color: string; draw: number; width?: number; dim?: number; dashed?: boolean }) {
@@ -59,10 +61,11 @@ function Node({ x, y, r, icon, label, sub, on }: { x: number; y: number; r: numb
  * s10-bloqueo «Un bloqueo no cierra el caso». Two paths from the equipment to the Internet. `two-paths`: the first goes
  * through the proxy's door and stops there: `403 BLOQUEADO` (rose, the only rose in the scene) and a cross. `door`: the
  * proxy's witness (the same silhouette as s02, «imagen · no es del puerto») looks only at its own doorway — a narrow
- * beam. `direct`: the second path is drawn later and goes AROUND the door, through the firewall, with ALLOW (white,
- * never alarm-coloured); the first path's far side stays dotted: through there nothing left. `other`: the direct path is
- * the one in focus. `finding`: amber label «hallazgo · sale sin proxy». `close`: «ni el bloqueo te tranquiliza ni el
- * permitido te condena».
+ * beam. `direct`: the second path is drawn later and goes AROUND the door; the firewall (and the EDR) saw it talking
+ * to `dst=198.51.100.117:443`, boxed on the path, with ALLOW (white, never alarm-coloured). The firewall stands at the
+ * shared exit, where both paths cross it (it also sees the proxy's traffic); the first path's far side stays dotted:
+ * through there nothing left. `other`: the direct path is the one in focus. `finding`: amber label «¿sale sin proxy?
+ * a comprobar» (a question to check, not a verdict). `close`: «ni el bloqueo te tranquiliza ni el permitido te condena».
  */
 export function S10Bloqueo(props: SceneProps) {
   const frame = useCurrentFrame();
@@ -85,7 +88,9 @@ export function S10Bloqueo(props: SceneProps) {
 
   const direct = progress(frame, directAt, 64, EASE.inOut);
   const fwNode = progress(frame, directAt + 30, 16);
-  const allowChip = progress(frame, directAt + 52, 16);
+  const dstAt = Math.max(directAt + 40, wordFrame(S, 's10-02', 'dirección') - 6);
+  const dstChip = progress(frame, dstAt, 16);
+  const allowChip = progress(frame, directAt + 64, 16);
   const beyond = progress(frame, proveAt, 24);
   const focusDirect = progress(frame, otherAt - 4, 16);
   const finding = progress(frame, findingAt, 18);
@@ -97,6 +102,8 @@ export function S10Bloqueo(props: SceneProps) {
         <PathLine d={UPPER} color={C.cyan} draw={upper} dim={focusDirect * 0.8} />
         <PathLine d={BEYOND} color={C.muted} draw={beyond} width={6} dashed />
         <PathLine d={DIRECT} color={C.cyan} draw={direct} width={8 + 2 * focusDirect} />
+        {/* the firewall's gate at the shared exit: both paths cross it */}
+        {fwNode > 0.01 ? <line x1={GATE.x} y1={GATE.top} x2={GATE.x} y2={GATE.top + (GATE.bottom - GATE.top) * fwNode} stroke={alpha(C.cyan, 0.55)} strokeWidth={8} strokeLinecap="round" strokeDasharray="2 14" /> : null}
         {/* the cross on the door */}
         {cross > 0.01 ? (
           <g opacity={cross} transform={`translate(576 204) scale(${0.6 + 0.4 * cross})`}>
@@ -143,7 +150,7 @@ export function S10Bloqueo(props: SceneProps) {
       {/* the first path's far side: nothing left through there */}
       <div style={{ position: 'absolute', left: 1000, top: 150, fontFamily: FONT.sans, fontSize: 30, fontWeight: 650, color: C.muted, whiteSpace: 'nowrap', opacity: beyond }}>{PATH_LABELS.notThrough}</div>
 
-      {/* the firewall on the direct path, and ALLOW */}
+      {/* the firewall at the shared exit, the destination it saw on the direct path, and ALLOW */}
       <div style={{ position: 'absolute', left: FIREWALL_AT.x - 130, top: FIREWALL_AT.y - 32, width: 260, display: 'flex', justifyContent: 'center', opacity: fwNode, transform: `scale(${0.92 + 0.08 * fwNode})` }}>
         <div style={{ padding: 4, borderRadius: RADIUS.pill, background: C.ink900 }}>
           <SourceTag id="firewall" size={34} />
@@ -152,8 +159,8 @@ export function S10Bloqueo(props: SceneProps) {
       <div
         style={{
           position: 'absolute',
-          left: 1130,
-          top: 432,
+          left: 1170,
+          top: 404,
           padding: '6px 22px',
           borderRadius: RADIUS.md,
           border: `3px solid ${alpha(C.textStrong, 0.85)}`,
@@ -168,6 +175,28 @@ export function S10Bloqueo(props: SceneProps) {
         }}
       >
         {PATH_LABELS.allowed}
+      </div>
+
+      <div
+        style={{
+          position: 'absolute',
+          left: 600,
+          top: 416,
+          padding: '4px 18px',
+          borderRadius: RADIUS.md,
+          border: `3px solid ${alpha(C.textStrong, 0.85)}`,
+          background: alpha(C.textStrong, 0.08),
+          fontFamily: FONT.mono,
+          fontSize: 32,
+          fontWeight: 800,
+          color: C.textStrong,
+          whiteSpace: 'nowrap',
+          opacity: dstChip,
+          transform: `translateY(${(1 - dstChip) * 12}px)`,
+        }}
+      >
+        <span style={{ color: C.muted }}>dst=</span>
+        {UPLOAD_DST}
       </div>
 
       {/* the finding, over the direct path */}
@@ -195,6 +224,7 @@ export function S10Bloqueo(props: SceneProps) {
       >
         <Icon name="flag" size={40} color={C.amber} strokeWidth={2.2} />
         {PATH_LABELS.finding}
+        <span style={{ fontSize: 32, fontWeight: 650, color: alpha(C.amber, 0.85) }}>{PATH_LABELS.findingTail}</span>
       </div>
 
       {/* the chapter's close */}

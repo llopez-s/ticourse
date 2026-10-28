@@ -5,7 +5,7 @@ import { C, FONT, RADIUS, alpha } from '../../../engine/src/theme/tokens';
 import { EASE, progress } from '../../../engine/src/theme/motion';
 import { Icon, clamp01 } from '../../../engine/src/ui';
 import { Stage, wordFrame } from './kit';
-import { ACCOUNT, CHRONO, EPHEMERAL_PORT, HOST, HOST_IP, INGREDIENT, PROGRAM, UPLOAD_DST, type ChronoRow } from './parts/data';
+import { ACCOUNT, CHRONO, EPHEMERAL_PORT, HOST, HOST_IP, INGREDIENT, PID, PROGRAM, UPLOAD_DST, type ChronoRow } from './parts/data';
 import { CLOCK_RULE, CORRELATE, GAP_SECONDS, PORT_CALLOUT, QUESTION_LINES, SAME_CALLOUT, THREAD_HOST, THREAD_LABEL, THREAD_USER } from './parts/data-b';
 import { CaseStamp } from './parts/CaseStamp';
 import { CHRONO_GEO, chronoRowCenterY, chronoRowTop } from './parts/Chronology';
@@ -17,13 +17,15 @@ const S = 's07-hilos';
 const HOST_COL = { x: 372, w: 280, h: 64 } as const;
 const USER_COL = { x: 676, w: 200, h: 64 } as const;
 const LABEL_COL = { x: 998, w: 364, h: 84 } as const;
-const COL_X = { host: HOST_COL.x + HOST_COL.w / 2, user: USER_COL.x + USER_COL.w / 2, label: LABEL_COL.x + LABEL_COL.w / 2 } as const;
+/** The process number sits at the left edge of the fact area, on the two EDR rows (r3 and r4). */
+const PID_COL = { x: 254, w: 96, h: 66 } as const;
+const COL_X = { host: HOST_COL.x + HOST_COL.w / 2, user: USER_COL.x + USER_COL.w / 2, label: LABEL_COL.x + LABEL_COL.w / 2, pid: PID_COL.x + PID_COL.w / 2 } as const;
 const FIELD_SIZE = 34;
 const LABEL_SIZE = 30;
 const PANEL = { x: 910, w: 452, top: 74 } as const;
 const WIDE = { x: 392, w: 970 } as const;
 
-const COLOR = { host: INGREDIENT.donde.color, user: INGREDIENT.quien.color, label: INGREDIENT.que.color } as const;
+const COLOR = { host: INGREDIENT.donde.color, user: INGREDIENT.quien.color, label: INGREDIENT.que.color, pid: INGREDIENT.cuando.color } as const;
 
 /** Row of the chronology with the fact column turned off (`factOn`) so the shared fields can take its place. */
 function FieldRow({ row, factOn, focus, dim }: { row: ChronoRow; factOn: number; focus: number; dim: number }) {
@@ -168,7 +170,8 @@ function CheckBadge({ x, y, on, color }: { x: number; y: number; on: number; col
  * check lands on it). `label`: the EDR's connection and the firewall's carry the same origin and destination, joined
  * by a third thread. `port`: `52811` lights in both lines at once. `same` / `corr`: the connection ALLOW let through
  * was opened by that program, and that is correlating. `gap` / `clocks`: the two rows' hours are 7 s apart, with the
- * small ruler «segundos: normal · minutos: revisa el reloj». Everything stays above y 570.
+ * small ruler «segundos: habitual · minutos u horas enteras: revisa reloj o zona». The process number (`PID`) joins the two
+ * EDR rows with a fourth thread at the left of the fact area (it lights on the word «proceso»). Everything stays above y 570.
  */
 export function S07Hilos(props: SceneProps) {
   const frame = useCurrentFrame();
@@ -186,6 +189,8 @@ export function S07Hilos(props: SceneProps) {
   const proxyAt = Math.max(hostAt + 10, wordFrame(S, 's07-02', 'proxy') - 6);
   const edrAt = Math.max(proxyAt + 10, wordFrame(S, 's07-02', 'edr') - 6);
   const fwAt = Math.max(labelAt + 10, wordFrame(S, 's07-02', 'cortafuegos') - 6);
+  // The process number has no cue of its own: it lights on the word «proceso» (after the account, before the label).
+  const pidAt = Math.max(userAt + 44, wordFrame(S, 's07-02', 'proceso') - 6);
 
   // header
   const hechoOn = 1 - progress(frame, qAt - 4, 10);
@@ -204,6 +209,8 @@ export function S07Hilos(props: SceneProps) {
   const hostChip = [progress(frame, hostAt + 2, 14), progress(frame, proxyAt, 14), progress(frame, edrAt, 14)];
   const userChip = [progress(frame, userAt + 2, 14), progress(frame, userAt + 10, 14), progress(frame, userAt + 18, 14)];
   const labelChip = [progress(frame, labelAt + 2, 14), progress(frame, fwAt, 14)];
+  const pidChip = [progress(frame, pidAt, 14), progress(frame, pidAt + 12, 14)];
+  const pidThread = progress(frame, pidAt + 8, 22, EASE.inOut);
   const hostThread = progress(frame, hostAt + 10, edrAt - hostAt + 14, EASE.inOut);
   const userThread = progress(frame, userAt + 6, 32, EASE.inOut);
   const labelThread = progress(frame, labelAt + 8, Math.max(24, fwAt - labelAt + 6), EASE.inOut);
@@ -256,6 +263,7 @@ export function S07Hilos(props: SceneProps) {
         <Thread x={COL_X.host} y1={chronoRowCenterY(0)} y2={chronoRowCenterY(2)} color={COLOR.host} draw={hostThread} dim={gapDim * 1.4} />
         <Thread x={COL_X.user} y1={chronoRowCenterY(0)} y2={chronoRowCenterY(2)} color={COLOR.user} draw={userThread} dim={gapDim * 1.4} />
         <Thread x={COL_X.label} y1={chronoRowCenterY(3)} y2={chronoRowCenterY(4)} color={COLOR.label} draw={labelThread} />
+        <Thread x={COL_X.pid} y1={chronoRowCenterY(2)} y2={chronoRowCenterY(3)} color={COLOR.pid} draw={pidThread} dim={gapDim * 1.4} />
       </svg>
 
       {/* chips */}
@@ -268,6 +276,12 @@ export function S07Hilos(props: SceneProps) {
         {[0, 1, 2].map((i) => (
           <FieldChip key={`u${i}`} x={USER_COL.x} y={chipTop(i, USER_COL.h)} w={USER_COL.w} h={USER_COL.h} color={COLOR.user} on={userChip[i]} style={{ fontSize: FIELD_SIZE }}>
             {ACCOUNT}
+          </FieldChip>
+        ))}
+        {[2, 3].map((i, k) => (
+          <FieldChip key={`p${i}`} x={PID_COL.x} y={chipTop(i, PID_COL.h)} w={PID_COL.w} h={PID_COL.h} color={COLOR.pid} on={pidChip[k]} style={{ fontSize: 32, lineHeight: 1.05 }}>
+            <span style={{ fontFamily: FONT.sans, fontSize: 20, fontWeight: 700, letterSpacing: 1, color: C.muted }}>PID</span>
+            <span>{PID}</span>
           </FieldChip>
         ))}
       </div>
@@ -427,8 +441,12 @@ export function S07Hilos(props: SceneProps) {
           <div style={{ width: 340, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: RADIUS.md, border: `3px solid ${alpha(C.emerald, 0.8)}`, background: `linear-gradient(${alpha(C.emerald, 0.14)}, ${alpha(C.emerald, 0.14)}), ${C.ink900}`, fontSize: 36, fontWeight: 800, color: C.emerald, whiteSpace: 'nowrap' }}>
             {CLOCK_RULE.ok}
           </div>
-          <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: RADIUS.md, border: `3px solid ${alpha(C.amber, 0.8)}`, background: `linear-gradient(${alpha(C.amber, 0.12)}, ${alpha(C.amber, 0.12)}), ${C.ink900}`, fontSize: 36, fontWeight: 800, color: C.amber, whiteSpace: 'nowrap' }}>
-            {CLOCK_RULE.check}
+          <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: RADIUS.md, border: `3px solid ${alpha(C.amber, 0.8)}`, background: `linear-gradient(${alpha(C.amber, 0.12)}, ${alpha(C.amber, 0.12)}), ${C.ink900}`, fontSize: 32, fontWeight: 800, color: C.amber, textAlign: 'center', lineHeight: 1.18 }}>
+            <div>
+              {CLOCK_RULE.check.split(': ')[0]}:
+              <br />
+              {CLOCK_RULE.check.split(': ')[1]}
+            </div>
           </div>
         </div>
       ) : null}

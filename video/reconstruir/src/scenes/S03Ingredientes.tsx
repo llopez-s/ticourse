@@ -7,6 +7,7 @@ import { windowWeight } from '../../../engine/src/ui';
 import { Stage, wordFrame } from './kit';
 import {
   FIREWALL_CELLS,
+  FIREWALL_CELL_NOTES,
   INGREDIENTS,
   NOT_NOBODY,
   PROXY_CELLS,
@@ -172,6 +173,9 @@ export function S03Ingredientes(props: SceneProps) {
               {FIREWALL_CELLS[ing.id].map((t) => (
                 <Mono key={t} text={t} color={C.textStrong} />
               ))}
+              {FIREWALL_CELL_NOTES[ing.id] ? (
+                <span style={{ fontFamily: FONT.sans, fontSize: 22, fontWeight: 650, color: C.muted }}>{FIREWALL_CELL_NOTES[ing.id]}</span>
+              ) : null}
             </div>
           </Cell>
         );

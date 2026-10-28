@@ -13,7 +13,7 @@ export const SAME_CALLOUT = { lead: 'la misma conexión', then: 'la abrió', tai
 export const CORRELATE = 'correlacionar: unir fuentes por lo que comparten';
 export const QUESTION_LINES = ['¿hablan de lo mismo?', 'campos que coinciden'] as const;
 export const GAP_SECONDS = '7 s';
-export const CLOCK_RULE = { ok: 'segundos: normal', check: 'minutos: revisa el reloj' } as const;
+export const CLOCK_RULE = { ok: 'segundos: habitual', check: 'minutos u horas enteras: revisa reloj o zona' } as const;
 
 // ---- s08/s09/s11: the three columns and the two hypotheses.
 export const COLUMN_NAMES = ['observado', 'hipótesis', 'conclusión'] as const;
@@ -39,7 +39,8 @@ export const GAPS = [
 export const PATH_LABELS = {
   blocked: '403 BLOQUEADO',
   allowed: 'ALLOW',
-  finding: 'hallazgo · sale sin proxy',
+  finding: '¿sale sin proxy?',
+  findingTail: 'a comprobar',
   witnessCaption: 'imagen · no es del puerto',
   notThrough: 'por aquí no salió',
   close: ['ni el bloqueo te tranquiliza', 'ni el permitido te condena'],
@@ -48,21 +49,21 @@ export const PATH_LABELS = {
 // ---- s11: the report, in the three beats the voice gives it.
 export const REPORT = [
   'Hubo un intento de subida bloqueado por el proxy.',
-  'Poco más de un minuto después, desde el mismo equipo y con la misma cuenta, un programa abrió una conexión directa.',
+  'Poco más de un minuto después, desde el mismo equipo y con la misma cuenta, un programa abrió una conexión hacia una dirección externa que el proxy no registra, según el EDR y el cortafuegos.',
   'El cortafuegos la permitió, con unos cuarenta y seis megas de salida. El contenido no se conoce.',
 ] as const;
 export const NEXT_STEPS_TITLE = 'siguientes pasos';
 export const NEXT_STEPS = [
   'identificar el programa y el destino',
   'revisar qué archivos se leyeron',
-  'explicar por qué ese equipo sale sin proxy',
+  'comprobar si ese equipo puede salir sin proxy',
 ] as const;
 export const STRUCK = ['no ha pasado nada', 'nos han robado'] as const;
 export const HAS_AND_LACKS = 'lo que hay, y lo que falta';
 
 // ---- s12: the three rules and the end card.
 export const RULES = [
-  { title: ['Un testigo', 'de su sitio'] as const, sub: ['lo que no apunta', 'no es un no'] as const },
+  { title: ['Un testigo', 'de su sitio'] as const, sub: ['lo que falta', 'no es un no'] as const },
   { title: ['Todo a UTC'] as const, sub: ['con la hora original', 'al lado, en gris'] as const },
   {
     title: ['Lo que ves', 'y lo que crees'] as const,

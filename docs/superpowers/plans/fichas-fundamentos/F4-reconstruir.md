@@ -533,6 +533,8 @@ herramienta; «unos cuarenta y seis megas» redondea 46 180 352 bytes (46 MB dec
 línea al **cerrar** la sesión, con su duración y sus bytes; por eso la del caso lleva `start` y `end` explícitos: si
 solo llevara una hora, sería la del final.
 
+*Revisiones 2026-10-28:* ver la sección «Revisiones aplicadas» al final de la ficha (notas sobre horas sin fecha, IP de cliente en el proxy, `+02:00` de verano y lecturas de `443`).
+
 ### F.2 Fuentes primarias
 
 Abierta por la revisión de exactitud del 2026-10-28: RFC 3339 (`Z` y desfases; el desfase es la hora local menos
@@ -606,3 +608,69 @@ UTC). Sin abrir: el resto de la lista.
 - **Falta para congelar:** las dos revisiones (exactitud y naturalidad) sobre este guion y que Lidia confirme las siglas.
 
 - **IP cambiada (2026-10-28):** `198.51.100.90` choca con `tienda-flores.example` del listín de V4; el sitio de subidas usa ahora `198.51.100.117`, libre en todo el repo.
+
+## Revisiones aplicadas (2026-10-28)
+
+Se aplicaron las dos revisiones (exactitud y naturalidad) sobre `narration.json`, `storyboard.json`, `data.ts`,
+`data-b.ts` y las escenas. **La fuente de la voz es ahora `narration.json`; el texto de la parte C de esta ficha queda
+como la primera versión** (no se reescribió). El guion **no está congelado** (`video.json` sin `frozen`).
+
+### Aplicado
+
+- **Exactitud 1 (relojes).** s07-05 «Seguramente son dos relojes, y cada uno apunta a su manera»; s07-06 «Unos segundos
+  es habitual. Si fueran minutos o una hora exacta, revisa el reloj o la zona». Pantalla: «segundos: habitual» y
+  «minutos u horas enteras: revisa reloj o zona» (en dos líneas).
+- **Exactitud 2 (frontera observación / conclusión).** s10-02 fusionado con la naturalidad 23 («El EDR y el cortafuegos
+  ven al equipo hablando directamente con una dirección de fuera, no con el proxy. Por eso no parece que pasara por él.
+  El bloqueo prueba una sola cosa. Que esa subida no salió por la puerta del proxy»); s10-03 «Y no descarta que saliera
+  algo por otro camino»; s10-04 «…es, como mínimo, algo que hay que comprobar» (rótulo «¿sale sin proxy?» · «a comprobar»).
+  Pantalla de s10: `dst=198.51.100.117:443` recuadrado sobre el camino directo; el cortafuegos pasa a la **salida
+  común**, donde cruzan los dos caminos (ve también el tráfico del proxy). s11-03 «…una conexión hacia una dirección
+  externa que el proxy no registra, según el EDR y el cortafuegos» y s11-05 «…comprobar si ese equipo puede salir sin
+  proxy» (también `REPORT[1]` y `NEXT_STEPS[2]`).
+- **Exactitud 3 (sello «sin fecha» frente a invierno).** Como la frase del puente en s04-06 no cabía en el presupuesto, se
+  usó la alternativa: el sello dice «un día de invierno · sin fecha concreta» (`STAMP_PARTS`).
+- **Exactitud 4 (PID).** El número de proceso une el arranque con la conexión: lo dice s07-02 («Y el mismo número de
+  proceso une el arranque con la conexión») y en pantalla un cuarto hilo `PID 6120` une las filas r3 y r4 del EDR (se
+  enciende con la palabra «proceso», sin cue propio y sin check). En el storyboard, `52811` ya no «es el de F1»: es el
+  concepto de F1 (F1 usa 51422 → 61002).
+- **Exactitud 5.** s06-02 «una cuenta inicia sesión en un equipo de Comercial» (la fila r1 de pantalla no nombra
+  Comercial, así que no cambia); s01-01 «Desde un ordenador de Comercial han intentado subir algo a una nube personal…»;
+  s05-04 «Así que primero hubo un inicio de sesión, y luego el bloqueo de una subida» (rótulos de pantalla «sesión» →
+  «subida bloqueada»).
+- **Exactitud 6.** s02-02 «Y solo cuenta lo que vio desde su sitio, si funciona bien».
+- **Exactitud 7.** s06-07 «Y a las nueve y tres, el cortafuegos deja pasar una conexión de tres minutos, con unos
+  cuarenta y seis megas de salida. Parece la misma, y enseguida verás por qué lo es»; fila r5 «sesión permitida · inicio
+  09:03:05 · 181 s», con la nota gris «46 180 352 bytes de salida» (para no perder la cifra en pantalla).
+- **Exactitud 8.** s08-03 «al menos dos hipótesis»; s08-05 «…y puede haber más».
+- **Exactitud 9.** El `src` del cortafuegos lleva el rótulo gris «origen interno» (en s03, bajo la caja «dónde»).
+- **Exactitud 10.** Etiqueta gris «id de evento» bajo `4624` en la tarjeta del inicio de sesión (s02).
+- **Naturalidad, alta.** s01-03, s02-01/03/04, s03-01/02, s04-03/04/05, s05-02/06, s06-01/06, s07-02/03, s12-02 con el
+  texto indicado (s04-05 partido en dos frases por el aviso de longitud; s06-06 escribe `443`, que el léxico lee «cuatro
+  cuatro tres»; s12-02 «lo que falta en un registro no es un no», con la línea de pantalla «lo que falta»).
+- **Naturalidad, media.** s07-04 («Así sabes que quien abrió la conexión permitida fue ese programa…»), s08-02, s08-03,
+  s09-03/04/05, s11-06, s12-01/03/04 («La primera.», «La segunda.», «La tercera.»).
+
+### No aplicado (y por qué)
+
+- **Pausa de s04-06 a 6500 ms:** el motor limita `think.holdMs` a 1800–5000 (`THINK_HOLD_MS` en `narration.mjs`); queda
+  en **5000**. Para más tiempo habría que subir el tope del motor (cambio compartido, no hecho aquí).
+- **Puente de s04-06** («El cortafuegos de ese mismo día marca más uno…»): no cabía (+20 palabras); se resolvió con el sello.
+- **s07-06 «O sea, que la hora ayuda, pero lo que une son los campos»** (+12) y el final «antes de sospechar de la
+  historia»: recortados por presupuesto. **s08-05/s09-05 «o sea»**, **s10-04 «hallazgo, o sea»** y **s02-06
+  «el cortafuegos también apunta pares, pero sin llaves»**: no se añadieron.
+- **Presupuesto:** los textos pedidos sumaban 613,7 s de estimado; se recortó lo anterior y se bajó 50–150 ms la
+  `pauseAfterMs` de los segmentos que pasaban de 300 ms. Queda en **590,5 s** (techo 600).
+
+### Anotado (punto 11, sin tocar la voz)
+
+- Las horas sin fecha son **hora del día**: RFC 3339 exige fecha, y si hubiera un cambio de día invertiría el orden.
+- El proxy registra la **IP de cliente**: conviene anotarlo o poner `10.20.6.37` en la línea del proxy (no se hizo).
+- La estructura se parece a la de `foundation-timeline`: la forma coincide, no las cifras ni el contexto. Opcional: nombrar
+  la tríada intento / éxito / impacto en s09–s11.
+- El `+02:00` de verano de S05Utc es correcto para Halden y queda como «previsto» para registrar en `glass-harbor.md`.
+- La transcripción no lleva las líneas de registro (accesibilidad pendiente, ver «Decisiones», punto 6).
+- `00-propuesta.md` §6 aún lista `198.51.100.90`; se corrige en la rama de F1, no aquí.
+- **Lecturas para la grabación:** las horas se dicen «nueve y uno» (no «y una»); `443` tiene dos lecturas posibles
+  («cuatro cuatro tres» y «cuatrocientos cuarenta y tres»); el léxico solo admite una cadena por palabra, así que queda la
+  primera y se avisa aquí para el control de las grabaciones.
