@@ -188,9 +188,9 @@ export function S07Hilos(props: SceneProps) {
   const fieldsAt = Math.max(qAt + 24, wordFrame(S, 's07-01', 'campos') - 6);
   const proxyAt = Math.max(hostAt + 10, wordFrame(S, 's07-02', 'proxy') - 6);
   const edrAt = Math.max(proxyAt + 10, wordFrame(S, 's07-02', 'edr') - 6);
-  const fwAt = Math.max(labelAt + 10, wordFrame(S, 's07-02', 'cortafuegos') - 6);
+  const fwAt = Math.max(labelAt + 10, wordFrame(S, 's07-04', 'cortafuegos') - 6);
   // The process number has no cue of its own: it lights on the word «proceso» (after the account, before the label).
-  const pidAt = Math.max(userAt + 44, wordFrame(S, 's07-02', 'proceso') - 6);
+  const pidAt = Math.max(userAt + 44, wordFrame(S, 's07-03', 'proceso') - 6);
 
   // header
   const hechoOn = 1 - progress(frame, qAt - 4, 10);

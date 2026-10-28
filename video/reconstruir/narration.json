@@ -232,7 +232,13 @@
     {
       "id": "s06-07",
       "scene": "s06-orden",
-      "text": "<warm> {r5}Y a las nueve y tres, el cortafuegos deja pasar una conexión de tres minutos, con unos cuarenta y seis megas de salida. Parece la misma, y enseguida verás por qué lo es.",
+      "text": "<warm> {r5}Y a las nueve y tres, el cortafuegos deja pasar una conexión de tres minutos. Con unos cuarenta y seis megas de salida.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-08",
+      "scene": "s06-orden",
+      "text": "<casual> Parece la misma, y enseguida verás por qué lo es.",
       "pauseAfterMs": 450
     },
     {
@@ -244,17 +250,29 @@
     {
       "id": "s07-02",
       "scene": "s07-hilos",
-      "text": "<clear> {host}El mismo equipo en el inicio de sesión, el proxy y el EDR. {user}La misma cuenta. Y el mismo número de proceso une el arranque con la conexión. {label}Y en el EDR y en el cortafuegos, la misma etiqueta de la conexión.",
+      "text": "<clear> {host}El mismo equipo en el inicio de sesión, el proxy y el EDR. {user}La misma cuenta.",
       "pauseAfterMs": 300
     },
     {
       "id": "s07-03",
       "scene": "s07-hilos",
+      "text": "<focused> Y el mismo número de proceso une el arranque con la conexión.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-hilos",
+      "text": "<curious> {label}Y en el EDR y en el cortafuegos, la misma etiqueta de la conexión.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-hilos",
       "text": "<focused> Es decir, el mismo origen y el mismo destino. Y hasta {port}el mismo puerto efímero, que es un número temporal que el equipo elige para cada conversación.",
       "pauseAfterMs": 350
     },
     {
-      "id": "s07-04",
+      "id": "s07-06",
       "scene": "s07-hilos",
       "text": "<satisfied> {same}Así sabes que quien abrió la conexión permitida fue ese programa, y no otro. {corr}Eso es correlacionar, unir fuentes por lo que comparten.",
       "pauseAfterMs": 350,
@@ -266,13 +284,13 @@
       }
     },
     {
-      "id": "s07-05",
+      "id": "s07-07",
       "scene": "s07-hilos",
       "text": "<casual> {gap}Por cierto, el EDR y el cortafuegos la ven con siete segundos de diferencia. Seguramente son dos relojes, y cada uno apunta a su manera.",
       "pauseAfterMs": 300
     },
     {
-      "id": "s07-06",
+      "id": "s07-08",
       "scene": "s07-hilos",
       "text": "<firm> {clocks}Unos segundos es habitual. Si fueran minutos o una hora exacta, revisa el reloj o la zona antes de sospechar de la historia.",
       "pauseAfterMs": 450
@@ -362,11 +380,17 @@
     {
       "id": "s10-02",
       "scene": "s10-bloqueo",
-      "text": "<clear> {direct}El EDR y el cortafuegos ven al equipo hablando directamente con una dirección de fuera, no con el proxy. Por eso no parece que pasara por él. El bloqueo prueba una sola cosa. Que esa subida no salió por la puerta del proxy.",
-      "pauseAfterMs": 350
+      "text": "<clear> {direct}El EDR y el cortafuegos ven al equipo hablando directamente con una dirección de fuera, no con el proxy.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s10-03",
+      "scene": "s10-bloqueo",
+      "text": "<firm> Por eso no parece que pasara por él. El bloqueo prueba una sola cosa. Que esa subida no salió por la puerta del proxy.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s10-04",
       "scene": "s10-bloqueo",
       "text": "<serious> {other}Y no descarta que saliera algo por otro camino.",
       "pauseAfterMs": 350,
@@ -378,13 +402,13 @@
       }
     },
     {
-      "id": "s10-04",
+      "id": "s10-05",
       "scene": "s10-bloqueo",
       "text": "<thoughtful> {finding}Y que un equipo pueda salir a Internet sin pasar por el proxy es, como mínimo, algo que hay que comprobar.",
       "pauseAfterMs": 350
     },
     {
-      "id": "s10-05",
+      "id": "s10-06",
       "scene": "s10-bloqueo",
       "text": "<confident> {close}O sea, que ni el bloqueo te tranquiliza ni el permitido te condena.",
       "pauseAfterMs": 450
@@ -404,23 +428,29 @@
     {
       "id": "s11-03",
       "scene": "s11-informe",
-      "text": "<focused> {para2}Poco más de un minuto después, desde el mismo equipo y con la misma cuenta, un programa abrió una conexión hacia una dirección externa que el proxy no registra, según el EDR y el cortafuegos.",
+      "text": "<focused> {para2}Poco más de un minuto después, desde el mismo equipo y con la misma cuenta, un programa abrió una conexión.",
       "pauseAfterMs": 300
     },
     {
       "id": "s11-04",
       "scene": "s11-informe",
-      "text": "<clear> {para3}El cortafuegos la permitió, con unos cuarenta y seis megas de salida. El contenido no se conoce.",
-      "pauseAfterMs": 350
+      "text": "<calm> Hacia una dirección externa que el proxy no registra, según el EDR y el cortafuegos.",
+      "pauseAfterMs": 300
     },
     {
       "id": "s11-05",
       "scene": "s11-informe",
-      "text": "<steady> {next}Y como siguientes pasos, hay que identificar el programa y el destino, revisar qué archivos se leyeron y comprobar si ese equipo puede salir sin proxy.",
+      "text": "<clear> {para3}El cortafuegos la permitió, con unos cuarenta y seis megas de salida. El contenido no se conoce.",
       "pauseAfterMs": 350
     },
     {
       "id": "s11-06",
+      "scene": "s11-informe",
+      "text": "<steady> {next}Y como siguientes pasos, hay que identificar el programa y el destino. Revisar qué archivos se leyeron. Y comprobar si ese equipo puede salir sin proxy.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s11-07",
       "scene": "s11-informe",
       "text": "<firm> {struck}O sea, no escribes «no ha pasado nada» ni «nos han robado». Escribes lo que hay, y lo que falta.",
       "pauseAfterMs": 450

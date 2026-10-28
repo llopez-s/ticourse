@@ -75,7 +75,7 @@ export function S10Bloqueo(props: SceneProps) {
   const otherAt = props.cue('other');
   const findingAt = props.cue('finding');
   const closeAt = props.cue('close');
-  const proveAt = Math.max(directAt + 40, wordFrame(S, 's10-02', 'prueba') - 6);
+  const proveAt = Math.max(directAt + 40, wordFrame(S, 's10-03', 'prueba') - 6);
 
   const nodes = progress(frame, twoAt - 2, 18);
   const upper = progress(frame, twoAt + 6, 40, EASE.inOut);

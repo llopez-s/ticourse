@@ -68,9 +68,9 @@ export function S11Informe(props: SceneProps) {
   const nextAt = props.cue('next');
   const struckAt = props.cue('struck');
 
-  const nadaAt = Math.max(struckAt + 6, wordFrame(S, 's11-06', 'nada') - 4);
-  const robadoAt = Math.max(nadaAt + 16, wordFrame(S, 's11-06', 'robado') - 4);
-  const hayAt = Math.max(robadoAt + 10, wordFrame(S, 's11-06', 'hay') - 6);
+  const nadaAt = Math.max(struckAt + 6, wordFrame(S, 's11-07', 'nada') - 4);
+  const robadoAt = Math.max(nadaAt + 16, wordFrame(S, 's11-07', 'robado') - 4);
+  const hayAt = Math.max(robadoAt + 10, wordFrame(S, 's11-07', 'hay') - 6);
 
   const tabs = progress(frame, askAt - 4, 16);
   const panel = progress(frame, askAt, 18);

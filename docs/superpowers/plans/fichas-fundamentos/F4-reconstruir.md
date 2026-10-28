@@ -676,12 +676,13 @@ como la primera versión** (no se reescribió). El guion **no está congelado** 
   («cuatro cuatro tres» y «cuatrocientos cuarenta y tres»); el léxico solo admite una cadena por palabra, así que queda la
   primera y se avisa aquí para el control de las grabaciones.
 
-### Avisos de `build-timeline --estimate` que quedan (la validación anterior, «sin avisos», ya no vale)
+### Avisos del validador: resueltos
 
-Todos vienen de texto pedido palabra por palabra por la revisión; se pueden partir en frases si se prefiere:
-
-- `s06-07: 33 words (style guide: about 10–26 per segment)` y `s06-07: sentence of 23 words (max 22)` (exactitud 7).
-- `s07-02: 42 words (style guide: about 10–26 per segment)` (fusión de la frase del PID, exactitud 4).
-- `s10-02: 43 words (style guide: about 10–26 per segment)` (exactitud 2 fusionada con naturalidad 23).
-- `s11-03: 35 words (style guide: about 10–26 per segment)` y `s11-03: sentence of 35 words (max 22)` (exactitud 2).
-- `s11-05: sentence of 26 words (max 22)` (exactitud 2 fusionada con naturalidad 25).
+Los siete avisos (s06-07, s07-02, s10-02, s11-03, s11-05) se resolvieron partiendo frases y segmentos con las mismas
+palabras (solo puntuación y mayúscula inicial). `build-timeline --estimate` queda **sin avisos**, 71 segmentos, 594,4 s.
+Los segmentos se **renumeraron**: s06 tiene ahora s06-01…s06-08 (la frase «Parece la misma…» es s06-08); s07 pasa a
+8 (s07-02 equipo y cuenta, s07-03 el PID, s07-04 la etiqueta, s07-05 origen y destino, s07-06 correlación, s07-07 los dos
+relojes, s07-08 la regla); s10 a 6 (s10-02 la conexión directa, s10-03 «Por eso no parece… prueba una sola cosa…», s10-04
+lo que no descarta, s10-05 el hallazgo, s10-06 el cierre); s11 a 7 (s11-03 y s11-04 parten el segundo párrafo del informe,
+s11-05 los pasos, s11-06 «O sea, no escribes…»). Los `wordFrame` de las escenas se actualizaron. s11-06 antiguo → s11-07
+(frases de los pasos en tres: «…el destino. Revisar qué archivos se leyeron. Y comprobar si ese equipo puede salir sin proxy.»).
