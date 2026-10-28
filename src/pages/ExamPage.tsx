@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { useStore } from '../lib/store';
 import { sampleExam } from '../data/course';
 import QuizEngine, { type QuizResult } from '../components/QuizEngine';
@@ -25,6 +26,7 @@ export default function ExamPage() {
     [config, attempt, track.id],
   );
 
+  if (track.id === 'secplus') return <Navigate to="/security/study?view=exam" replace />;
   if (config && questions.length === 0) {
     return (
       <Panel>

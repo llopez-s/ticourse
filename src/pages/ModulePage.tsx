@@ -12,6 +12,7 @@ import { exemptActive } from '../lib/placement';
 import BlockRenderer from '../components/BlockRenderer';
 import { Panel } from '../components/Bits';
 import { useSyncTrack } from '../components/Layout';
+import { SecurityLessonApplication } from '../components/SecurityLearning';
 
 function LessonView({ mod }: { mod: Module }) {
   const [params] = useSearchParams();
@@ -81,6 +82,7 @@ function LessonView({ mod }: { mod: Module }) {
         onCheckAnswered={() => setAnswered((a) => a + 1)}
       />
 
+      <SecurityLessonApplication lessonId={mod.id} />
       <div className="mt-8 rounded-2xl border border-ink-700 bg-ink-900 p-5">
         {!completed ? (
           <>

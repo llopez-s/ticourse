@@ -18,6 +18,7 @@ import { levelInfo, rankFor } from '../lib/xp';
 import { isDone } from '../lib/placement';
 import { Bar, Panel, Ring } from '../components/Bits';
 import { Skyline } from '../components/Skyline';
+import { SecurityEvidencePanel } from '../components/SecurityLearning';
 
 function QuestsPanel() {
   const day = useStore((s) => s.day);
@@ -270,7 +271,7 @@ export default function Dashboard() {
           />
           <div>
             <div className="text-sm font-bold text-slate-100">
-              Exam readiness
+              {track.id === 'secplus' ? 'Progreso de estudio' : 'Exam readiness'}
             </div>
             <div className="text-xs leading-relaxed text-slate-400">
               Lecciones, quizzes,
@@ -286,6 +287,7 @@ export default function Dashboard() {
         <CampaignPanel />
       </div>
 
+      {track.id === 'secplus' ? <SecurityEvidencePanel /> : null}
       {/* sections */}
       <h2 className="mb-3 text-sm font-bold uppercase tracking-wider text-slate-400">
         Secciones del curso

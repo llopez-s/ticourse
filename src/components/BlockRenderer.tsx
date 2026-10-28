@@ -1,11 +1,12 @@
 /// <reference types="vite/client" />
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import YaraPractice from './YaraPractice';
 import type { Block, CheckQ, VideoFileBlock, YouTubeVideoBlock } from '../lib/types';
 import { isYouTubeBlock, youtubeEmbedUrl, youtubeWatchUrl } from '../lib/youtube';
 import { md } from '../lib/md';
 import { useStore } from '../lib/store';
+import { SecurityVideoStudy } from './SecurityLearning';
 
 const CALLOUT_STYLE: Record<
   string,
@@ -86,7 +87,7 @@ function TranscriptDetails({ src }: { src: string }) {
   );
 }
 
-function VideoBlock({ block }: { block: VideoFileBlock }) {
+function VideoBlock({ block, startSeconds = 0 }: { block: VideoFileBlock; startSeconds?: number }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoError, setVideoError] = useState(false);
   const [cues, setCues] = useState<CaptionCue[]>([]);
@@ -97,6 +98,7 @@ function VideoBlock({ block }: { block: VideoFileBlock }) {
   const captionsSrc = assetUrl(block.captions);
   const activeCaption = cues.find((cue) => currentTime >= cue.start && currentTime < cue.end)?.text ?? '';
   const canFullscreen = typeof document !== 'undefined' && document.fullscreenEnabled;
+  useEffect(() => { if (videoRef.current && videoRef.current.readyState >= 1) videoRef.current.currentTime = startSeconds; }, [startSeconds]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -138,6 +140,7 @@ function VideoBlock({ block }: { block: VideoFileBlock }) {
         playsInline
         poster={assetUrl(block.poster)}
         onError={() => setVideoError(true)}
+        onLoadedMetadata={(event) => { event.currentTarget.currentTime = Math.min(startSeconds, event.currentTarget.duration || 0); }}
         onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)}
         onSeeked={(event) => setCurrentTime(event.currentTarget.currentTime)}
       >
@@ -169,7 +172,7 @@ function VideoBlock({ block }: { block: VideoFileBlock }) {
  * YouTube lesson video behind a click-to-load facade: until the learner presses play the page shows
  * only our own poster, so nothing is requested from YouTube.
  */
-function YouTubeBlock({ block }: { block: YouTubeVideoBlock }) {
+function YouTubeBlock({ block, startSeconds = 0 }: { block: YouTubeVideoBlock; startSeconds?: number }) {
   const [playing, setPlaying] = useState(false);
   return (
     <section className="my-6 overflow-hidden rounded-xl border border-cyan-500/30 bg-ink-900">
@@ -180,7 +183,7 @@ function YouTubeBlock({ block }: { block: YouTubeVideoBlock }) {
         {playing ? (
           <iframe
             className="absolute inset-0 h-full w-full"
-            src={youtubeEmbedUrl(block.youtube)}
+            src={youtubeEmbedUrl(block.youtube, startSeconds)}
             title={block.title}
             allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
             allowFullScreen
@@ -312,18 +315,26 @@ export default function BlockRenderer({
   onCheckAnswered: () => void;
 }) {
   const rootRef = useRef<HTMLDivElement>(null);
+  const [videoParams] = useSearchParams();
+  const selectedVideo = videoParams.get('video');
+  const selectedStart = videoParams.get('start');
 
   useEffect(() => {
-    if (focusedBlock === null || focusedBlock === undefined) return;
-    const target = rootRef.current?.children.item(focusedBlock);
+    const videoIndex=selectedVideo?blocks.findIndex(b=>b.t==='video'&&b.transcript.split('/').at(-1)===`${selectedVideo}-transcript.txt`):-1;
+    const targetIndex=focusedBlock??videoIndex;
+    if (targetIndex<0) return;
+    const target = rootRef.current?.children.item(targetIndex);
     if (!(target instanceof HTMLElement)) return;
     target.classList.add('search-target');
-    const frame = requestAnimationFrame(() => target.scrollIntoView({ block: 'center' }));
+    const frame = requestAnimationFrame(() => {
+      target.scrollIntoView({ block: selectedVideo ? 'start' : 'center' });
+      if(selectedVideo){target.setAttribute('tabindex','-1');target.focus({preventScroll:true});}
+    });
     return () => {
       cancelAnimationFrame(frame);
       target.classList.remove('search-target');
     };
-  }, [focusedBlock, blocks]);
+  }, [focusedBlock, blocks, selectedVideo, selectedStart]);
 
   return (
     <div ref={rootRef} className="space-y-1">
@@ -450,7 +461,12 @@ export default function BlockRenderer({
               </div>
             );
           case 'video':
-            return isYouTubeBlock(b) ? <YouTubeBlock key={i} block={b} /> : <VideoBlock key={i} block={b} />;
+          {
+            const videoId = b.transcript.split('/').at(-1)!.replace('-transcript.txt', '');
+            const rawStart = Number(videoParams.get('start') ?? 0);
+            const startSeconds = videoParams.get('video') === videoId && Number.isFinite(rawStart) && rawStart >= 0 ? Math.floor(rawStart) : 0;
+            return <SecurityVideoStudy key={i} videoId={videoId}>{isYouTubeBlock(b) ? <YouTubeBlock block={b} startSeconds={startSeconds} /> : <VideoBlock block={b} startSeconds={startSeconds} />}</SecurityVideoStudy>;
+          }
           case 'callout': {
             const s = CALLOUT_STYLE[b.kind];
             return (

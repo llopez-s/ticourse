@@ -40,11 +40,9 @@ export default function SectionPage() {
       <Panel className="mb-5 flex items-center gap-5">
         <Ring value={mastery} size={72} stroke={7} />
         <div className="flex-1 text-sm text-slate-300">
-          <div className="font-semibold text-slate-100">Dominio de sección</div>
+          <div className="font-semibold text-slate-100">{section.track === 'secplus' ? 'Progreso de estudio de la sección' : 'Dominio de sección'}</div>
           <div className="mt-1 text-xs text-slate-400">
-            {isOptionalSection(section.id)
-              ? 'Sección opcional: se calcula solo con las lecciones que has hecho.'
-              : 'Se calcula con lecciones (40%), mejores quizzes (30%), labs (15%) y boss (15%). Súbelo por encima del 80% antes del examen.'}
+            {isOptionalSection(section.id) ? 'Sección opcional: se calcula solo con las lecciones que has hecho.' : <>Se calcula con lecciones (40%), mejores quizzes (30%), labs (15%) y boss (15%). {section.track === 'secplus' ? 'La preparación se comprueba por separado con evaluaciones independientes.' : 'Súbelo por encima del 80% antes del examen.'}</>}
           </div>
         </div>
       </Panel>

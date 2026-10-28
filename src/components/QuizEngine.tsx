@@ -6,6 +6,8 @@ import { shuffle } from '../lib/util';
 import { useStore } from '../lib/store';
 import { Bar } from './Bits';
 import { md } from '../lib/md';
+import { Link } from 'react-router-dom';
+import { VIDEO_INVENTORY } from '../data/security/video-inventory';
 
 export interface QuizResult {
   total: number;
@@ -199,6 +201,8 @@ export default function QuizEngine({
               <div className="mt-1 text-xs leading-relaxed text-slate-400">
                 {md(r.q.explain)}
               </div>
+              {r.q.choiceExplanations ? <details className="mt-3 text-xs text-slate-300"><summary className="cursor-pointer text-cyan-300">Comparar todas las opciones</summary><ul className="mt-2 space-y-2">{r.q.choices.map((choice, i) => <li key={i}><strong>{choice}:</strong> {r.q.choiceExplanations?.[i]}</li>)}</ul></details> : null}
+              {r.q.objectiveIds ? <div className="mt-3 flex flex-wrap gap-3 text-xs"><Link className="text-cyan-300 underline" to={`/learn/${r.q.id.replace(/q\d+$/, '')}`}>Repasar objetivo {r.q.objectiveIds.join(', ')}</Link>{VIDEO_INVENTORY.filter(v => v.status === 'integrated' && v.lessonId === r.q.id.replace(/q\d+$/, '')).map(v => <Link key={v.id} className="text-cyan-300 underline" to={`/learn/${v.lessonId}?video=${v.id}&start=0`}>Volver al caso en vídeo</Link>)}</div> : null}
             </div>
           ))}
         </div>

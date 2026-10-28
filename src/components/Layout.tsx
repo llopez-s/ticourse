@@ -262,6 +262,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           </NavLink>
 
           <GroupLabel>Curso</GroupLabel>
+          {track.id === 'secplus' ? <NavLink to="/security/study" className={navLink}><span aria-hidden="true">▶</span> Recorrido con vídeos</NavLink> : null}
           <NavLink to="/search" className={navLink}>
             <span className="text-base leading-none">⌕</span> Buscar en el curso
           </NavLink>

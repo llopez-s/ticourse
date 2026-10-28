@@ -39,6 +39,8 @@ import { SP_LABS } from './secplus/labs';
 import { SP_PLACEMENT } from './secplus/placement';
 import { withPracticalExpansion } from './practical';
 import { PRACTICAL_CARDS, PRACTICAL_GLOSSARY } from './practical/study-aids';
+import { withTrainingReview } from './security/training-review';
+import { withProducedVideos } from './security/produced-video-blocks';
 
 export type { TrackId };
 
@@ -134,7 +136,7 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
       ...SP5_MODULES,
       ...SP6_MODULES,
       ...SP7_MODULES,
-    ].map(withPracticalExpansion),
+    ].map(withPracticalExpansion).map(withTrainingReview).map(withProducedVideos),
     placement: SP_PLACEMENT,
     flashcards: [...SP_FLASHCARDS, ...PRACTICAL_CARDS.secplus, ...SP7_FLASHCARDS],
     glossary: [...SP_GLOSSARY, ...PRACTICAL_GLOSSARY.secplus, ...SP7_GLOSSARY],
@@ -144,7 +146,7 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
       name: 'Simulacro Security+',
       realFormat:
         'Preguntas muestreadas con los pesos oficiales por dominio, cronometradas y sin feedback hasta el final — como el examen real (hasta 90 preguntas, 90 min, corte 750/900, closed-book).',
-      passPct: 83,
+      passPct: 85,
       sprint: { n: 30, minutes: 30 },
       full: { n: 90, minutes: 90 },
     },

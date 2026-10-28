@@ -89,7 +89,8 @@ export const SP6_MODULES: Module[] = [
       },
       {
         t: 'p',
-        md: 'Tu plan en esta app: completa las secciones S1→S5 (lecciones, quizzes y labs), derrota a los 5 bosses (≥80%), mantén las flashcards al día y cierra con **simulacros completos** de 90 preguntas hasta superar el **83%** (equivalente aproximado al 750/900) de forma estable.',
+        md: 'Empieza por el **recorrido con vídeos** y los fundamentos si partes desde cero. Completa las secciones S1→S5 con práctica y repaso espaciado. Los simulacros independientes tienen tres formas de 90 elementos en 90 minutos. La recomendación interna requiere fundamentos superados y dos formas nuevas sin ayudas, separadas siete días dentro de los últimos 30: ≥85% global, ≥80% por dominio y práctico, sin fallos críticos. Son umbrales provisionales del curso: no equivalen a puntos ni porcentajes del examen oficial.',
+
       },
       {
         t: 'callout',

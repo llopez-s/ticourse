@@ -1,0 +1,36 @@
+export const OBJECTIVE_SOURCE = {code:'SY0-701',documentVersion:'7.0',checked:'2026-10-28',url:'https://lecbyo.files.cmp.optimizely.com/download/cf25ec24b8a511ef9ecbb69c0f9687be'};
+export interface SecurityObjective {id:string;title:string;lessons:string[];skills:string[];family?:number}
+export const SECURITY_OBJECTIVES: SecurityObjective[] = [
+ {id:'1.1',title:'Controles: categorías y funciones',lessons:['sp1m1'],skills:['Técnicos, físicos, operativos y de gestión','Prevenir, disuadir, detectar, corregir, compensar y dirigir']},
+ {id:'1.2',title:'Principios y modelos de seguridad',lessons:['sp1m2','sp1m3','sp1m4'],skills:['CIA, no repudio, AAA y análisis de brechas','Zero Trust: decisión, administración y aplicación','Controles físicos, sensores y engaño']},
+ {id:'1.3',title:'Cambios controlados',lessons:['sp1m5'],skills:['Aprobación, responsables, impacto, pruebas, reversión y ventana','Dependencias, interrupciones, restricciones y documentación/versionado']},
+ {id:'1.4',title:'Criptografía y confianza',lessons:['sp1m6','sp1m7'],skills:['Cifrado por nivel, intercambio, algoritmos y longitud de clave','PKI, certificados, CSR, CRL/OCSP y confianza','Hash, salt, stretching, firmas, ocultación y gestión de claves']},
+ {id:'2.1',title:'Actores y motivaciones',lessons:['sp2m1'],skills:['Capacidades, recursos, origen interno/externo','Dinero, espionaje, guerra, ideología, venganza y disrupción']},
+ {id:'2.2',title:'Vectores y superficies de ataque',lessons:['sp2m2','sp2m3'],skills:['Mensajes, voz, archivos, imágenes, dispositivos y software','Redes, puertos, credenciales por defecto y cadena de suministro','Phishing, BEC, pretextos, suplantación, dominios y desinformación']},
+ {id:'2.3',title:'Vulnerabilidades',lessons:['sp2m4','sp2m5'],skills:['Memoria, inyección, XSS, carreras y actualizaciones','OS, firmware, obsolescencia, máquinas virtuales y cloud','Proveedores, criptografía, configuración, móviles y zero-day']},
+ {id:'2.4',title:'Interpretar actividad maliciosa',lessons:['sp2m6','sp2m7'],skills:['Malware y evidencias de ejecución','Ataques físicos, de red, aplicación y credenciales','Indicadores de recursos, autenticación, bloqueo y registros'],family:3},
+ {id:'2.5',title:'Elegir mitigaciones',lessons:['sp2m8'],skills:['Segmentación, control de acceso y listas de aplicaciones','Parches, aislamiento, cifrado, monitorización y hardening']},
+ {id:'3.1',title:'Decisiones de arquitectura',lessons:['sp3m1','sp3m2','sp3m3'],skills:['Cloud, responsabilidad, IaC, serverless y microservicios','On-premises, virtualización, contenedores, SDN y aislamiento','IoT/OT, embedded, RTOS y compromisos de coste, energía y disponibilidad']},
+ {id:'3.2',title:'Proteger infraestructura',lessons:['sp3m4','sp3m5'],skills:['Colocación de dispositivos, zonas y modos de fallo','Firewalls, IDS/IPS, acceso de red y sensores','VPN, TLS/IPSec, SD-WAN y SASE'],family:1},
+ {id:'3.3',title:'Proteger datos',lessons:['sp3m6'],skills:['Tipos, clasificaciones y responsabilidades','Dato en reposo, uso y tránsito; soberanía y geolocalización','Cifrado, hashing, masking, tokenización, segmentación y permisos']},
+ {id:'3.4',title:'Resiliencia y recuperación',lessons:['sp3m7'],skills:['Redundancia, dispersión, HA y capacidad','Sitios, backups, energía y restauración','Tabletop, simulación, paralelo y failover'],family:6},
+ {id:'4.1',title:'Proteger equipos y aplicaciones',lessons:['sp4m1','sp4m2'],skills:['Establecer, desplegar y mantener baselines por objetivo','Móviles, BYOD/COPE/CYOD y gestión MDM','Wifi, autenticación, estudios de cobertura y aplicaciones seguras'],family:5},
+ {id:'4.2',title:'Ciclo de vida de activos',lessons:['sp4m3'],skills:['Adquisición, asignación, clasificación e inventario','Seguimiento, eliminación, sanitización y certificación']},
+ {id:'4.3',title:'Gestionar vulnerabilidades',lessons:['sp4m4','sp4m5'],skills:['Escaneo, pruebas, código, dependencias y fuentes de inteligencia','Confirmación, falsos resultados, CVSS/CVE, exposición y negocio','Remediación, excepciones, reescaneo y reporte'],family:4},
+ {id:'4.4',title:'Monitorizar y alertar',lessons:['sp4m6'],skills:['Agregación, alertas, escaneo, reporte y archivo','Validación, cuarentena, ajuste y automatización','SIEM, agentes, SNMP traps, NetFlow y escáneres'],family:3},
+ {id:'4.5',title:'Operar controles técnicos',lessons:['sp4m7'],skills:['Reglas, puertos y detección de intrusiones','Filtros web/DNS, correo SPF/DKIM/DMARC y controles de OS','FIM, DLP, NAC, EDR/XDR y analítica de usuarios'],family:1},
+ {id:'4.6',title:'Identidades y acceso',lessons:['sp4m8'],skills:['Altas/bajas, identidades, pruebas y atestación','SSO, federación, protocolos y modelos de acceso','MFA, contraseñas, PAM y privilegios temporales'],family:2},
+ {id:'4.7',title:'Automatizar con control',lessons:['sp4m9'],skills:['Aprovisionamiento, guardrails, API, scripts e integraciones','Eficiencia, reacción, deuda, complejidad y fallos compartidos']},
+ {id:'4.8',title:'Respuesta a incidentes',lessons:['sp4m10','sp4m11'],skills:['Preparar, detectar, analizar, contener, erradicar, recuperar y aprender','Ejercicios, caza y causa raíz','Preservación, custodia, e-discovery, evidencia legal y reporte'],family:6},
+ {id:'4.9',title:'Usar fuentes de investigación',lessons:['sp4m11'],skills:['Logs de firewall, aplicaciones, endpoint, OS, IPS y red','Metadatos, escaneos, reportes y capturas'],family:3},
+ {id:'5.1',title:'Gobernanza y responsabilidades',lessons:['sp5m1','sp5m2'],skills:['Políticas, estándares, procedimientos y guías','Estructura de gobierno, supervisión y cambios regulatorios','Owners, custodios, responsables y encargados de datos']},
+ {id:'5.2',title:'Gestionar y comunicar riesgo',lessons:['sp5m3','sp5m4'],skills:['Identificación, evaluación cualitativa y cuantitativa','SLE, ALE, ARO, exposición y BIA','Registro, apetito/tolerancia, estrategias y reporting']},
+ {id:'5.3',title:'Gestionar terceros',lessons:['sp5m5'],skills:['Selección, due diligence, auditoría y pruebas','Contratos, SLA, NDA, MOU/MOA, SOW y responsabilidades','Monitorización, cuestionarios y reglas de compromiso']},
+ {id:'5.4',title:'Cumplimiento y privacidad',lessons:['sp5m6'],skills:['Obligaciones, evidencias, sanciones y seguimiento','Responsables/encargados, datos personales, consentimiento y retención']},
+ {id:'5.5',title:'Auditar y evaluar',lessons:['sp5m7'],skills:['Evaluaciones internas y externas, independencia y atestación','Pruebas de intrusión por conocimiento y enfoque','Reconocimiento y equipos ofensivo, defensivo y conjunto']},
+ {id:'5.6',title:'Concienciación y comportamiento',lessons:['sp5m8'],skills:['Phishing, indicadores y reporte de anomalías','Formación por roles, contenido, frecuencia y métricas de eficacia']},
+];
+export const objectiveForLesson = (lessonId:string) => SECURITY_OBJECTIVES.filter(o=>o.lessons.includes(lessonId));
+export const STUDY_WEEKS = Array.from({length:24},(_,i)=>({week:i+1,phase:i<4?'Fundamentos':i<18?'Dominios Security+':i<21?'Práctica integrada':'Preparación final',
+  section:i<4?'foundation':i<6?'sp1':i<9?'sp2':i<11?'sp3':i<15?'sp4':i<18?'sp5':i<21?'practice':'exam',
+  language:i<4?'es':i<11?'bilingual':i<18?'english-help':'en',hours:5.5}));

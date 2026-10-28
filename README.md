@@ -203,10 +203,7 @@ conviene contrastarla con los objetivos finales. Diseño y plan en
 4. S4 Operaciones de seguridad (28%, el dominio más grande): 11 lecciones → quizzes → 3 labs → boss SILENT PAGER.
 5. S5 Gestión y supervisión del programa (20%): 8 lecciones → quizzes → 3 labs → boss PAPER GOVERNOR.
 6. S6: formato del examen y estrategia con PBQs.
-7. Simulacros (sprint 30 preguntas / completo 90 preguntas, pesos oficiales por
-   dominio) hasta superar el **83%** de forma estable (≈ 750/900; verifica los
-   datos vigentes en comptia.org). El examen es closed-book: el glosario sirve de
-   chequeo rápido, no de índice.
+7. Tres simulacros independientes de 90 elementos en 90 minutos, con PBQs y selección múltiple. El objetivo interno es 85% global y 80% por dominio y práctico; no equivale a puntos del examen oficial. Consulta los criterios de preparación del recorrido.
 
 ## 🧪 Tests
 
@@ -230,3 +227,11 @@ src/
   components/  Layout (selector de track), Toasts, BlockRenderer, QuizEngine, labs/ (8 motores)
   pages/       Dashboard, Section, Module, Quiz, Lab, Boss, Exam, Cards, Glossary, Achievements, Profile
 ```
+
+## Security+ desde cero: recorrido con vídeos
+
+En el selector Security+, abre **Recorrido con vídeos** (`#/security/study`). Incluye un itinerario de 24 semanas a 5–6 horas semanales, doce fundamentos y cuatro prácticas iniciales; 52 vídeos localizados, de los cuales 45 están integrados con prerrequisitos, capítulos y dos actividades posteriores; un mapa de 28 objetivos y casos de aplicación; doce prácticas de seis familias y tres simulacros independientes de 90 elementos.
+
+El panel separa **progreso de estudio** y **evidencias de preparación**. Repetir, consultar ayudas o importar intentos sirve para practicar y no genera evidencia nueva. Las notas internas no se convierten a puntos CompTIA. Los nuevos cuadernos son locales y exportables; la sincronización general y el progreso GCTI se conservan.
+
+[Guía del recorrido y verificación](docs/security-learning.md). [Protocolo del piloto voluntario, pendiente de ejecución](docs/security-learning-pilot.md).

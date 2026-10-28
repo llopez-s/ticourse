@@ -27,7 +27,12 @@ describe('practical curriculum compatibility', () => {
     for (const original of originals) {
       const mod = moduleById(original.id)!;
       expect(mod.blocks.slice(0, original.blocks.length), original.id).toEqual(original.blocks);
-      expect(mod.quiz, original.id).toEqual(original.quiz);
+      expect(mod.quiz.map(q => q.id), original.id).toEqual(original.quiz.map(q => q.id));
+      for (const before of original.quiz) {
+        const after = mod.quiz.find(q => q.id === before.id)!;
+        expect([after.prompt, after.answer, after.domain, after.explain], before.id).toEqual([before.prompt, before.answer, before.domain, before.explain]);
+      }
+      if (!original.sectionId.startsWith('sp')) expect(mod.quiz, original.id).toEqual(original.quiz);
     }
     expect(TRACKS.secplus.domains.map((d) => TRACKS.secplus.domainWeights[d])).toEqual([.12, .22, .18, .28, .20]);
     expect(TRACKS.gcti.domains.map((d) => TRACKS.gcti.domainWeights[d])).toEqual([.2, .2, .2, .2, .2]);
@@ -49,8 +54,8 @@ describe('practical curriculum compatibility', () => {
     }
     for (const track of TRACK_IDS) {
       const pool = originals.filter((m) => TRACKS[track].sections.some((s) => s.id === m.sectionId)).flatMap((m) => m.quiz);
-      expect(TRACKS[track].modules.flatMap((m) => m.quiz)).toEqual(pool);
-      for (const q of sampleExam(track, 90, 'practical-safety')) expect(pool).toContain(q);
+      expect(TRACKS[track].modules.flatMap((m) => m.quiz).map(q=>q.id)).toEqual(pool.map(q=>q.id));
+      for (const q of sampleExam(track, 90, 'practical-safety')) expect(pool.some(original => original.id === q.id)).toBe(true);
     }
     expect(ALL_PLACEMENT.flatMap((b) => b.questions)).toHaveLength(120);
   });

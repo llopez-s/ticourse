@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { HashRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import Toasts from './components/Toasts';
@@ -16,6 +16,11 @@ import AchievementsPage from './pages/AchievementsPage';
 import ProfilePage from './pages/ProfilePage';
 import SearchPage from './pages/SearchPage';
 import { useSync } from './lib/useSync';
+import SecurityLearningHelpObserver from './components/SecurityLearningHelpObserver';
+const SecurityStudyPage = lazy(() => import('./pages/SecurityStudyPage'));
+const SecurityFoundationPage = lazy(() => import('./pages/SecurityFoundationPage'));
+const SecurityPracticePage = lazy(() => import('./pages/SecurityPracticePage'));
+const SecurityAssessmentPage = lazy(() => import('./pages/SecurityAssessmentPage'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -30,8 +35,14 @@ export default function App() {
   return (
     <HashRouter>
       <ScrollToTop />
+      <SecurityLearningHelpObserver />
       <Layout>
+        <Suspense fallback={<p role="status" className="p-6 text-cyan-200">Cargando recorrido…</p>}>
         <Routes>
+          <Route path="/security/study" element={<SecurityStudyPage />} />
+          <Route path="/security/foundation/:id" element={<SecurityFoundationPage />} />
+          <Route path="/security/practice/:id" element={<SecurityPracticePage />} />
+          <Route path="/security/assessment/:id" element={<SecurityAssessmentPage />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="/section/:id" element={<SectionPage />} />
           <Route path="/learn/:moduleId" element={<ModulePage />} />
@@ -48,6 +59,7 @@ export default function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="*" element={<Dashboard />} />
         </Routes>
+        </Suspense>
       </Layout>
       <Toasts />
     </HashRouter>

@@ -26,6 +26,10 @@ export interface Question {
   answer: number; // index into choices
   explain: string;
   domain: Domain;
+  reviewed?: string;
+  cognitiveLevel?: 'understand' | 'apply' | 'analyze';
+  objectiveIds?: string[];
+  choiceExplanations?: string[];
 }
 
 /** One placement-test block: a whole exam domain, worth one section. */
