@@ -1,0 +1,639 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:02.933
+Tu regla compila.
+
+2
+00:00:02.933 --> 00:00:04.667
+Ahora vas a comprobar qué detecta,
+
+3
+00:00:04.667 --> 00:00:09.467
+qué se le escapa y qué debes entregar
+para que otra persona pueda evaluarla.
+
+4
+00:00:09.467 --> 00:00:14.267
+Estamos en el laboratorio didáctico
+de Meridian, una empresa aeroespacial.
+
+5
+00:00:14.267 --> 00:00:19.367
+Los archivos son inertes. Una regla
+YARA expresa patrones y condiciones.
+
+6
+00:00:19.367 --> 00:00:22.100
+Que el motor acepte
+su sintaxis no significa
+
+7
+00:00:22.100 --> 00:00:24.833
+que cumpla el objetivo de detección.
+
+8
+00:00:24.833 --> 00:00:27.633
+Usamos el mismo paquete
+de práctica que la lección.
+
+9
+00:00:27.633 --> 00:00:30.567
+Incluye tres variantes dentro del alcance,
+
+10
+00:00:30.567 --> 00:00:34.000
+controles parecidos y casos
+que revelan límites.
+
+11
+00:00:34.000 --> 00:00:37.000
+No necesitas malware real
+ni una cuenta de pago.
+
+12
+00:00:37.000 --> 00:00:42.233
+Lo que necesitas es comparar resultados
+esperados con resultados observados.
+
+13
+00:00:43.367 --> 00:00:46.133
+Primero descargas
+la regla que has escrito.
+
+14
+00:00:46.133 --> 00:00:48.733
+El editor del navegador no la ejecuta.
+
+15
+00:00:48.733 --> 00:00:54.000
+El verificador local la compila con YARA
+real y la aplica al conjunto de archivos
+
+16
+00:00:54.000 --> 00:00:57.067
+de prueba. Ese conjunto se llama corpus.
+
+17
+00:00:57.067 --> 00:00:59.967
+El paquete explica cómo
+preparar el entorno.
+
+18
+00:00:59.967 --> 00:01:02.633
+Registra qué motor y qué
+versión utilizaste.
+
+19
+00:01:02.633 --> 00:01:06.367
+Conserva también la versión
+de la regla y los archivos de prueba.
+
+20
+00:01:06.367 --> 00:01:10.233
+Si cambias la regla o el corpus,
+has cambiado la prueba.
+
+21
+00:01:10.233 --> 00:01:13.867
+La evidencia anterior no cubre
+automáticamente el cambio.
+
+22
+00:01:13.867 --> 00:01:17.767
+Un error de compilación no es
+una ausencia de coincidencia.
+
+23
+00:01:17.767 --> 00:01:20.600
+La regla no llegó
+a evaluarse como esperabas.
+
+24
+00:01:20.600 --> 00:01:23.200
+Una discrepancia significa otra cosa.
+
+25
+00:01:23.200 --> 00:01:27.967
+El motor produjo un resultado que no
+coincide con la expectativa del caso.
+
+26
+00:01:27.967 --> 00:01:31.000
+Esa diferencia debe quedar visible.
+
+27
+00:01:41.900 --> 00:01:45.300
+Más coincidencias pueden
+significar más errores.
+
+28
+00:01:45.300 --> 00:01:49.433
+Si un archivo queda fuera
+de tu objetivo y la regla lo acepta,
+
+29
+00:01:49.433 --> 00:01:51.567
+tienes un falso positivo.
+
+30
+00:01:51.567 --> 00:01:55.633
+Si uno que debería entrar no coincide,
+tienes un falso negativo.
+
+31
+00:01:55.633 --> 00:01:58.600
+Las etiquetas dependen
+del objetivo declarado.
+
+32
+00:01:58.600 --> 00:02:01.633
+En el paquete hay controles
+con una ruta sola,
+
+33
+00:02:01.633 --> 00:02:04.733
+un marcador solo
+o unos bytes coincidentes.
+
+34
+00:02:04.733 --> 00:02:08.433
+Una condición demasiado
+permisiva puede aceptarlos.
+
+35
+00:02:08.433 --> 00:02:12.767
+Si los aceptas por accidente,
+no has descubierto más variantes.
+
+36
+00:02:12.767 --> 00:02:16.767
+Has ampliado la regla más de
+lo que justificaban tus datos.
+
+37
+00:02:16.767 --> 00:02:20.600
+Por eso revisas cada archivo,
+incluidos los negativos.
+
+38
+00:02:20.600 --> 00:02:24.133
+Una pantalla llena de aciertos
+parciales no basta.
+
+39
+00:02:24.133 --> 00:02:27.533
+Necesitas saber qué se esperaba,
+qué ocurrió y por qué.
+
+40
+00:02:27.533 --> 00:02:30.267
+El verificador compara
+resultados completos
+
+41
+00:02:30.267 --> 00:02:33.333
+y devuelve un fallo
+cuando hay discrepancias.
+
+42
+00:02:34.500 --> 00:02:38.500
+C cambia la ruta pero conserva
+otros rasgos del objetivo.
+
+43
+00:02:38.500 --> 00:02:41.633
+Ya lo usamos al escribir la condición.
+
+44
+00:02:41.633 --> 00:02:44.100
+Si ahora exiges todas las cadenas,
+
+45
+00:02:44.100 --> 00:02:49.400
+¿mejora siempre la regla o puedes perder
+una variante que querías detectar?
+
+46
+00:02:53.467 --> 00:02:57.800
+Puedes perderla. Volver a probar
+C comprueba un ejemplo conocido.
+
+47
+00:02:57.800 --> 00:02:59.933
+Es una prueba de regresión:
+
+48
+00:02:59.933 --> 00:03:04.600
+ayuda a descubrir si un cambio
+rompe algo que antes funcionaba.
+
+49
+00:03:04.600 --> 00:03:08.267
+No demuestra que la regla
+detecte variantes nuevas.
+
+50
+00:03:08.267 --> 00:03:12.267
+Ajustar hasta memorizar
+ejemplos se llama sobreajuste.
+
+51
+00:03:12.267 --> 00:03:17.567
+Para evaluar generalización, reserva casos
+nuevos que no hayan influido en el diseño.
+
+52
+00:03:17.567 --> 00:03:20.100
+Aquí los archivos son
+públicos y sintéticos.
+
+53
+00:03:20.100 --> 00:03:25.800
+Sus resultados enseñan el método,
+sin demostrar cobertura de malware real.
+
+54
+00:03:31.900 --> 00:03:35.200
+El paquete incluye una regla
+estrecha para una muestra,
+
+55
+00:03:35.200 --> 00:03:39.833
+otra para el conjunto de variantes
+y otra para buscar candidatos.
+
+56
+00:03:39.833 --> 00:03:43.867
+La primera exige un rasgo
+concreto del archivo A.
+
+57
+00:03:43.867 --> 00:03:47.133
+Es útil para ese alcance,
+pero pierde B y C.
+
+58
+00:03:47.133 --> 00:03:52.300
+La regla de familia del ejercicio cubre A,
+B y C dentro del contrato sintético.
+
+59
+00:03:52.300 --> 00:03:55.333
+No acredita cobertura de una familia real.
+
+60
+00:03:55.333 --> 00:03:57.700
+La regla de hunting es más amplia.
+
+61
+00:03:57.700 --> 00:04:02.133
+Recupera también controles que comparten
+un rasgo y necesitan revisión.
+
+62
+00:04:02.133 --> 00:04:05.633
+La diferencia no se decide
+por un nombre bonito en la regla.
+
+63
+00:04:05.633 --> 00:04:09.567
+Se decide por el objetivo,
+los requisitos y los resultados.
+
+64
+00:04:09.567 --> 00:04:13.867
+Una regla amplia puede ser útil para
+investigar candidatos y ser inadecuada
+
+65
+00:04:13.867 --> 00:04:19.567
+para bloquear automáticamente. La acción
+prevista forma parte de la entrega.
+
+66
+00:04:20.600 --> 00:04:24.733
+La referencia obtiene los doce
+resultados previstos del paquete.
+
+67
+00:04:24.733 --> 00:04:29.367
+Eso incluye archivos que deben coincidir
+y archivos que no deben hacerlo.
+
+68
+00:04:29.367 --> 00:04:32.100
+No significa que detecte doce infecciones.
+
+69
+00:04:32.100 --> 00:04:34.233
+Tampoco significa
+que tenga una sensibilidad
+
+70
+00:04:34.233 --> 00:04:36.800
+perfecta frente a una familia real.
+
+71
+00:04:36.800 --> 00:04:40.267
+La variante futura del ejercicio
+cambia el marcador y la ruta.
+
+72
+00:04:40.267 --> 00:04:42.133
+La referencia no la cubre.
+
+73
+00:04:42.133 --> 00:04:46.300
+Si tu objetivo incluye esa versión,
+tienes un falso negativo conocido.
+
+74
+00:04:46.300 --> 00:04:48.400
+Los archivos fuera
+del tamaño pactado también
+
+75
+00:04:48.400 --> 00:04:51.833
+muestran un límite
+cuando amplías el objetivo.
+
+76
+00:04:51.933 --> 00:04:54.267
+Conserva esos resultados al informar.
+
+77
+00:04:54.267 --> 00:04:57.733
+Decir que todo salió conforme
+a un contrato pequeño es correcto.
+
+78
+00:04:57.733 --> 00:05:01.500
+Convertirlo en una promesa
+de producción no lo es.
+
+79
+00:05:01.500 --> 00:05:04.133
+Tu conclusión debe llevar
+el alcance con el que
+
+80
+00:05:04.133 --> 00:05:07.700
+interpretaste cada coincidencia
+y cada ausencia.
+
+81
+00:05:18.867 --> 00:05:23.400
+Queda mejor hasta que otra persona
+necesita entender qué probaste.
+
+82
+00:05:23.400 --> 00:05:28.633
+Entrega la regla versionada, el objetivo
+y la procedencia de sus patrones.
+
+83
+00:05:28.633 --> 00:05:31.867
+Añade el motor, el corpus
+y la matriz de resultados.
+
+84
+00:05:31.867 --> 00:05:35.533
+El receptor debe poder
+reproducir lo que afirmas.
+
+85
+00:05:35.533 --> 00:05:39.200
+Explica las limitaciones
+y los errores conocidos.
+
+86
+00:05:39.200 --> 00:05:44.567
+Di si una coincidencia necesita revisión
+humana o alguna acción específica.
+
+87
+00:05:44.567 --> 00:05:48.867
+Una captura de YARA Forge solo
+demuestra la simulación por etiquetas.
+
+88
+00:05:48.867 --> 00:05:53.300
+No sustituye una compilación
+y una ejecución reales de tu archivo.
+
+89
+00:05:53.300 --> 00:05:57.967
+Revisa también quién puede recibir
+la evidencia y qué uso está permitido.
+
+90
+00:05:57.967 --> 00:06:02.033
+Los datos sintéticos de este
+ejercicio no contienen secretos.
+
+91
+00:06:02.033 --> 00:06:05.400
+Eso no permite olvidar los derechos
+y la protección de evidencias
+
+92
+00:06:05.400 --> 00:06:09.433
+cuando entregas reglas apoyadas
+en material de terceros.
+
+93
+00:06:10.467 --> 00:06:12.367
+El receptor ve los doce resultados
+
+94
+00:06:12.367 --> 00:06:16.067
+conformes y propone
+bloquear toda la flota.
+
+95
+00:06:16.067 --> 00:06:18.667
+¿El paquete sintético justifica ese uso,
+
+96
+00:06:18.667 --> 00:06:21.100
+o necesitas una validación que corresponda
+
+97
+00:06:21.100 --> 00:06:24.233
+a los archivos y a la
+acción de producción?
+
+98
+00:06:28.600 --> 00:06:30.400
+Necesitas validar ese uso.
+
+99
+00:06:30.400 --> 00:06:35.067
+El ejercicio demuestra la mecánica y los
+resultados de unos archivos preparados.
+
+100
+00:06:35.067 --> 00:06:38.333
+Antes de una acción real necesitas
+controles representativos,
+
+101
+00:06:38.333 --> 00:06:41.300
+cobertura adecuada
+y una respuesta autorizada.
+
+102
+00:06:41.300 --> 00:06:45.667
+El coste de una coincidencia equivocada
+también cambia con la acción.
+
+103
+00:06:45.667 --> 00:06:49.100
+No estás rechazando la regla
+por haber nacido en un laboratorio.
+
+104
+00:06:49.100 --> 00:06:51.867
+Estás delimitando qué evidencia existe.
+
+105
+00:06:51.867 --> 00:06:55.267
+Puedes entregarla como práctica
+o punto de partida.
+
+106
+00:06:55.267 --> 00:06:58.033
+No puedes presentar el resultado
+sintético como prueba
+
+107
+00:06:58.033 --> 00:07:01.500
+suficiente de eficacia
+en toda la organización.
+
+108
+00:07:07.600 --> 00:07:10.867
+Añade un responsable
+y un criterio de revisión.
+
+109
+00:07:10.867 --> 00:07:13.267
+La regla puede dejar
+de cubrir lo que interesa
+
+110
+00:07:13.267 --> 00:07:16.800
+o empezar a coincidir
+con contenido legítimo nuevo.
+
+111
+00:07:16.800 --> 00:07:19.367
+Quien recibe la entrega
+necesita saber cómo
+
+112
+00:07:19.367 --> 00:07:22.400
+comunicar esos errores y cuándo revisarla.
+
+113
+00:07:22.400 --> 00:07:27.300
+Si cambias un patrón, conserva
+la versión anterior y repite las pruebas.
+
+114
+00:07:27.300 --> 00:07:31.300
+Si cambias el corpus,
+registra qué se añadió y por qué.
+
+115
+00:07:31.300 --> 00:07:35.167
+Los hashes ayudan a identificar
+los archivos exactos usados.
+
+116
+00:07:35.167 --> 00:07:38.700
+No prueban por sí solos
+que el conjunto sea representativo.
+
+117
+00:07:38.700 --> 00:07:43.667
+Así entregas una detección que otra
+persona puede evaluar, repetir y mantener.
+
+118
+00:07:43.667 --> 00:07:48.067
+El paquete permite reproducir
+resultados y discutir límites.
+
+119
+00:07:48.167 --> 00:07:52.400
+Quien lo recibe no debería
+necesitar toda tu conversación
+
+120
+00:07:52.400 --> 00:07:55.167
+para entender qué puede
+hacer con la regla.
+
+121
+00:08:01.233 --> 00:08:06.433
+Tres reglas de cierre. Compilar
+valida sintaxis, no eficacia.
+
+122
+00:08:06.433 --> 00:08:10.133
+Revisar positivos y negativos
+evita esconder errores.
+
+123
+00:08:10.133 --> 00:08:14.367
+Y una entrega técnica necesita alcance,
+reproducción y acción prevista,
+
+124
+00:08:14.367 --> 00:08:16.633
+además del archivo de la regla.
+
+125
+00:08:16.633 --> 00:08:19.167
+El resultado útil no es una cifra grande.
+
+126
+00:08:19.167 --> 00:08:22.633
+Es una afirmación concreta
+que otra persona puede comprobar.
+
+127
+00:08:22.633 --> 00:08:24.933
+Si sabes dónde falla, dilo.
+
+128
+00:08:24.933 --> 00:08:29.933
+Esa información ayuda a decidir cómo
+usarla y qué evidencia recoger después.
+
+129
+00:08:29.933 --> 00:08:32.933
+Ejecuta ahora el verificador
+sobre tu regla descargada
+
+130
+00:08:32.933 --> 00:08:37.600
+y prepara su ficha de entrega.
+Incluye los casos que no cubre.
+
+131
+00:08:37.600 --> 00:08:40.867
+En la lección de diseminación
+tienes el modelo.
+
+132
+00:08:40.867 --> 00:08:43.767
+Tu trabajo termina cuando
+la siguiente persona puede
+
+133
+00:08:43.767 --> 00:08:47.667
+evaluar la detección
+sin adivinar tus supuestos.

@@ -280,6 +280,10 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'RdUWXFQxOkY')?.module).toBe('sp4m8');
     // V8 closes s3m5's STIX/TAXII half, after the TAXII-vs-STIX check and before YARA
     expect(youtubeVideos.find((v) => v.block.youtube === 'jNqhrLgGFmY')?.module).toBe('s3m5');
+    // AP05 writes the ALRTDEMO rule in s3m5's complementary YARA part, after FP/FN and overfitting and before the editor
+    // steps; AP06 runs it with the real engine and prepares the hand-off, after the two practice checks
+    expect(youtubeVideos.find((v) => v.block.youtube === 'fl02bWFRSUc')?.module).toBe('s3m5');
+    expect(youtubeVideos.find((v) => v.block.youtube === '2KXShpLy67s')?.module).toBe('s3m5');
     // V9 sums up s4m3 after its checks and hands over to Lab 4B: lesson, checks, video, lab
     expect(youtubeVideos.find((v) => v.block.youtube === 'Q2-pG0ALFKI')?.module).toBe('s4m3');
     // V23 sums up s4m5 (the three levels, false flags and when a name is worth it) after its checks, before the exam note
