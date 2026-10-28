@@ -554,7 +554,7 @@ El indicador de conexión segura no lleva texto propio: la voz dice «el navegad
 a nivel» (sin nombrar los servidores del dominio de primer nivel); en TLS 1.3 el certificado viaja ya cifrado y las
 claves se acuerdan en los propios saludos, la voz solo dice «mientras se saludan»; el nombre se comprueba en el campo
 de nombres alternativos del certificado, la voz dice «tiene que figurar»; la revocación se cuenta con el OCSP grapado
-del portal (canon), sin CRL, y los navegadores no comprueban la revocación todos igual (pendiente de cotejar). La
+del portal (canon), sin CRL, y los navegadores no comprueban la revocación todos igual (cerrado el 2026-10-28: s07-06 lo dice en la voz; ver «Revisiones aplicadas»). La
 conexión de la primera visita se cierra por inactividad antes de los tres minutos en la mayoría de los servidores; lo
 que sobrevive es la sesión TLS, que se retoma. `.example` es un dominio reservado que en Internet no resuelve; en la
 ficción del curso sí.
@@ -750,6 +750,15 @@ títulos de las tarjetas no llevan numeral.
 - s07-01 (ver 2), «firmada por la autoridad que lo expidió» (ver 2), «de la primera visita» en s09-06 (ver 6), la frase de
   refuerzo de s10-05 (ver 8), «y se puede copiar» en s07-07 (ver 7), «Pero la concesión sigue valiendo» donde estaba
   (ahora en s09-07).
+- Cambio no pedido, forzado por el validador (máximo 30 palabras): s06-01 dice «Ya con la dirección, el navegador abre…»
+  en lugar de «Con la dirección en la mano, el navegador abre…» (con «al número 443» y «la que empieza con un saludo antes de
+  hablar» eran 32 palabras).
+- s06-05 pierde «demuestra que ese DNI es suyo»; «Además, demuestra que ese DNI es suyo firmando con un secreto…» habría
+  sumado unos 2 s y dejado el total por encima de 596 s.
+- **S03, barra tras la renovación (decisión a confirmar).** Con las etiquetas 12:58 / 20:58, la barra rellena hasta la mitad
+  y la marca amarilla del centro se leen como «ahora son las 16:58». Se deja como un avance acelerado («8 h otra vez»,
+  la misma imagen que antes de la revisión); si Lidia prefiere precisión, `run2` debería llenar solo una fracción pequeña
+  y ocultar la marca central tras `newLease`.
 - Escenas por encima de su `targetSec`: **s07 (+14,0 s)** y s09 (+7,8 s); el total entra (594,4 s). El conjunto ya iba
   por encima del objetivo antes de la revisión (todas las escenas salvo s10 pasaban de +2 s). Si la grabación real se
   alarga, se recorta primero en las pausas (`pauseAfterMs`) y luego la ampliación de s07-07.
