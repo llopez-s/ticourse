@@ -1,0 +1,256 @@
+{
+  "title": "Quién puede hacer qué",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 513,
+  "notice": "Autoridad Portuaria de Halden · imagina · caso de entrenamiento · sin fecha · Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Quién eres y qué puedes hacer"
+    },
+    {
+      "n": 2,
+      "title": "Lo justo para cada tarea"
+    },
+    {
+      "n": 3,
+      "title": "Procesos y cuentas de servicio"
+    },
+    {
+      "n": 4,
+      "title": "Windows y Linux, cada uno a su manera"
+    },
+    {
+      "n": 5,
+      "title": "Cada fallo, en su pieza"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Acceso denegado",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "goal": "Una pantalla de inicio de sesión que acepta (`login`): «Sesión iniciada», sin nombre ni género. El explorador abre «Partes de avería» (`open`); un parte nuevo y el botón «Guardar» (`save`); el aviso «Acceso denegado» (`denied`, sonido «error»): tiembla una vez y el cursor se queda quieto encima. Al decir «¿Qué está fallando?», título «Quién puede hacer qué» (`title`, hacia los 10 s, siempre antes de los 12) y, en la frase siguiente, dos chips (`chips`): «¿quién eres?» · «¿qué puedes hacer?». Con «Imagina» entra el sello «Autoridad Portuaria de Halden · imagina · caso de entrenamiento · sin fecha» (`stamp`), que se queda en todas las escenas siguientes junto a la etiqueta del motor «Simulación educativa · datos ficticios» (la dibuja el motor); el taller de grúas en silueta (`yard`) y la carpeta «Partes de avería» (`folder`) con su lista de entradas debajo: es el hilo visual de todo el vídeo, siempre la misma lista, y cada escena enciende la fila que se explica. Al final, la promesa en tres chips (`promise`): «leer un permiso» · «decidir lo justo» · «arreglar sin dar de más». «Tú» es una persona de Mantenimiento sin nombre, sin género y sin cara. Sin adversario ni mensajes interceptados",
+      "requiredCues": [
+        "login",
+        "open",
+        "save",
+        "denied",
+        "title",
+        "chips",
+        "stamp",
+        "yard",
+        "folder",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-pasaporte",
+      "chapter": 1,
+      "title": "Pasaporte y tarjeta de embarque",
+      "targetSec": 47,
+      "wordBudget": 127,
+      "goal": "«tu cuenta» como ficha, sin nombre (`account`). Con «autenticación» (`authn`), una marca de visto verde junto a «contraseña comprobada», con el nombre AUTHENTICATION y «quién eres». Con «abrir, guardar o borrar» (`actions`) aparecen tres acciones de tu cuenta, aún sin resultado; con «autorización» (`authz`) cada una recibe el suyo: «abrir · permitido», «guardar · denegado», «borrar · denegado», con el nombre AUTHORIZATION y «qué puedes». La imagen, rotulada «imagen · no es del puerto» (`airport`): un control de pasaportes (`passport`) con su marca de visto y, detrás, varias puertas de embarque; la tarjeta de embarque (`boarding`) solo abre una. La ficha de la cuenta pasa el control (`passed`) y se queda delante de la puerta «Partes de avería · escribir», que no se abre (`missing`). Rótulo final (`diagnosis`): «el problema es de autorización»; la tarjeta de examen (1.2) entra al acabar la frase de `diagnosis`. Solo esta imagen del aeropuerto: el resto se ve en la lista real de la carpeta. «Embarque» solo se usa aquí, rotulado «imagen · no es del puerto»",
+      "requiredCues": [
+        "account",
+        "authn",
+        "actions",
+        "authz",
+        "airport",
+        "passport",
+        "boarding",
+        "passed",
+        "missing",
+        "diagnosis"
+      ]
+    },
+    {
+      "id": "s03-grupos",
+      "chapter": 1,
+      "title": "La carpeta que no se deja",
+      "targetSec": 62,
+      "wordBudget": 167,
+      "goal": "La lista de «Partes de avería» (el hilo): con «Se dan a grupos» (`groups`) el rótulo «los permisos se dan a grupos»; la fila «Mantenimiento · leer y escribir» se ilumina (`row`) y, al lado, el grupo Mantenimiento con sus miembros en siluetas y un hueco vacío con «tu cuenta · aún no» (`outside`). Una cuenta atrás de altas y bajas (`churn`) que acaba en «cien carpetas que habría que tocar una a una» (`hundred`). Con `proposal` entra la propuesta rápida y, con `choice`, la pregunta para pensar con dos botones: «Escritura para todos» y «Que te metan en Mantenimiento». Respuesta: tu ficha entra en el hueco del grupo y la puerta «escribir» se abre (`joins`, sonido «lock»); la opción de todos se ve en ámbar: todo el puerto, en siluetas, con un lápiz (`amber`, `pencil`: cualquiera podría cambiar o borrar los partes). Rótulo de cierre (`wrap`): «el fallo de una cuenta se arregla en la cuenta»; la tarjeta de examen (4.6) entra al acabar la frase de `wrap`. El título de la escena no destripa la respuesta",
+      "requiredCues": [
+        "groups",
+        "row",
+        "outside",
+        "churn",
+        "hundred",
+        "proposal",
+        "choice",
+        "joins",
+        "amber",
+        "pencil",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s04-permisos",
+      "chapter": 2,
+      "title": "Leer, escribir, ejecutar",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "goal": "La lista completa de «Partes de avería» (`list`), con una columna «para qué» a la derecha de cada fila: «Personal del taller · leer» (por eso la abriste), «Mantenimiento · leer y escribir» (redacta los partes), «Operaciones · leer» (planifica turnos) y «svc_resumen · leer» (lo verás enseguida). Tres iconos grandes con su palabra, «leer» (`read`), «escribir» (`write`) y «ejecutar» (`exec`), y debajo de «ejecutar», en pequeño (`folder-x`): «en una carpeta: entrar o atravesar (según el sistema)». Cada fila se enciende junto a su motivo: `staff`, `maint`, `ops`, `summary`. Debajo, una fila gris sin texto de permiso (`rest`): «el resto del puerto · no aparece = no entra», y el rótulo (`implicit`): «lo no concedido, se deniega» (denegación implícita). Sin tarjeta de examen. Transcripción (E.3 de la ficha; el motor todavía no escribe estas líneas): «[En pantalla: Partes de avería · Mantenimiento: Modificar; Personal del taller: Lectura; Operaciones: Lectura; svc_resumen: Lectura; nadie más]»",
+      "requiredCues": [
+        "list",
+        "read",
+        "write",
+        "exec",
+        "folder-x",
+        "staff",
+        "maint",
+        "ops",
+        "summary",
+        "rest",
+        "implicit"
+      ]
+    },
+    {
+      "id": "s05-minimo",
+      "chapter": 2,
+      "title": "Por si acaso, no",
+      "targetSec": 39,
+      "wordBudget": 105,
+      "goal": "Una petición (`request`): «Operaciones: ¿escritura, por si acaso?». A la izquierda, «qué pierde con leer: nada» (`nothing`). A la derecha, dos riesgos en ámbar: un archivo arrastrado a otra carpeta sin querer (`drag`) y un portátil cualquiera con un programa malicioso (`malware`) que estropea o secuestra todo lo que su cuenta puede escribir. Con «Lo que no puedes escribir no lo puedes estropear» (`blocked`, sonido «block»), el programa malicioso choca contra la carpeta de solo lectura y no cambia nada; la fila de Operaciones se queda en «leer». Nombre LEAST PRIVILEGE (`name`) y, con `task`, «lo necesario para la tarea · nada más»; la tarjeta de examen (4.6) entra al acabar la frase de `task`. Una fila pequeña con los dos pasos: «qué hace el rol» y después «justo eso». Cierre del capítulo (`wrap`): «el permiso sale de la tarea, no de la comodidad»",
+      "requiredCues": [
+        "request",
+        "nothing",
+        "drag",
+        "malware",
+        "blocked",
+        "name",
+        "task",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s06-procesos",
+      "chapter": 3,
+      "title": "Los programas también tienen cuenta",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "goal": "Un calendario con los viernes marcados (`friday`); el programa de resumen lee los partes y deja un documento en «Informes» (`report`). Con «proceso» (`process`) el programa en marcha se convierte en un proceso y, con «identidad de una cuenta» (`identity`), lleva una ficha de cuenta. La lista de procesos del servidor `srv-fich02` (`plist`) con una fila resaltada (`row`): «`resumen.exe` · PID `4120` · cuenta `svc_resumen` · padre: programador de tareas» (el estilo del árbol de procesos del EDR de V1, sin sus datos); se rotulan el PID (`pid`) y la cuenta con la que corre (`proc-account`). La cuenta `svc_resumen` como ficha (`service`) con dos marcas: «no es de una persona · sin inicio de sesión interactivo» (`no-login`) y «responsable: Sistemas» (`owner`). Una flecha une el proceso con su cuenta y, con `same`, la cuenta con sus dos carpetas: «Partes de avería» con su fila de lectura e «Informes», todavía sin dibujar la fila de escritura (que falte se ve en s07). La tarjeta de examen (4.6) entra al acabar la frase de `same`. Transcripción (E.3; el motor todavía no la escribe): «[En pantalla: resumen.exe, PID 4120, cuenta svc_resumen, iniciado por el programador de tareas]»",
+      "requiredCues": [
+        "friday",
+        "report",
+        "process",
+        "identity",
+        "plist",
+        "row",
+        "pid",
+        "proc-account",
+        "service",
+        "no-login",
+        "owner",
+        "same"
+      ]
+    },
+    {
+      "id": "s07-servicio",
+      "chapter": 3,
+      "title": "El viernes del resumen",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "goal": "El resumen en rojo (`fails`): «no puede guardar en Informes»; en «Informes», la lista no tiene la fila de escritura de `svc_resumen`. Una propuesta (`proposal`): «`svc_resumen` pasa a administradores» (conector dibujado, sin flecha de texto). Pregunta para pensar (`choice`), con dos botones: «Administrador del servidor» y «Escribir en Informes». Respuesta (`answer`): «Escribir en Informes»; la fila que faltaba aparece en verde. Una mano gris (`hand`, «si alguien maneja el programa») toma el proceso y llega exactamente hasta donde llega su cuenta, ni un paso más; en ámbar (`admin-risk`), lo que podría hacer con administrador: borrar «Partes de avería», tocar «Informes», el servidor entero. Dos necesidades (`needs`): «leer los partes» y «escribir en informes»; la configuración buena (`config`), dos filas en verde: «Partes de avería · leer» y «Informes · escribir». Cierre (`wrap`): «una cuenta de servicio también, lo justo». Sin tarjeta de examen. El título de la escena no destripa la respuesta. Transcripción (E.3; el motor todavía no la escribe): «[En pantalla: svc_resumen · Partes de avería: leer · Informes: escribir]»",
+      "requiredCues": [
+        "fails",
+        "proposal",
+        "choice",
+        "answer",
+        "hand",
+        "admin-risk",
+        "needs",
+        "config",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s08-windows",
+      "chapter": 4,
+      "title": "Windows: una lista que suma",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "goal": "Dos rótulos pequeños: «la idea: igual en todos los sistemas» (`idea`) y «la forma: depende del sistema» (`way`). La ventana de seguridad de la carpeta en `srv-fich02` (`server`), simplificada, con su lista: «Mantenimiento · Modificar», «Operaciones · Lectura» y «`svc_resumen` · Lectura» (más «Personal del taller · Lectura», ya vista); rótulo ACL · lista de control de acceso (`acl`); la tarjeta de examen (4.6) entra al acabar la frase de `acl` y se queda mientras la voz habla de la lista de entradas (es la parte sin comparaciones). La lista de entradas (`entries`) y la anatomía de una entrada, cuenta o grupo más lo que puede hacer (`each`). Un ejemplo aparte (`two-groups`): una cuenta en dos grupos, uno con «Lectura» y otro con «Escritura»; las dos filas se funden en una barra que suma (`sum`) con el resultado «lee y escribe» (`both`). Después, una entrada roja «Denegar · escribir» (`deny`) y el rótulo «en general, la denegación explícita pesa más» (`heavier`). Al final, la subcarpeta «2026» (`sub`) con la lista heredada en gris y el rótulo «heredada» (`inherit`). Los nombres de los permisos, como en el Windows en español (Modificar, Lectura, Escritura): pendiente de comprobar en un equipo. Transcripción (E.3; el motor todavía no la escribe): «[En pantalla: Lectura por un grupo + Escritura por otro = lee y escribe; una entrada Denegar escribir pesa más]»",
+      "requiredCues": [
+        "idea",
+        "way",
+        "server",
+        "acl",
+        "entries",
+        "each",
+        "two-groups",
+        "sum",
+        "both",
+        "deny",
+        "heavier",
+        "sub",
+        "inherit"
+      ]
+    },
+    {
+      "id": "s09-linux",
+      "chapter": 4,
+      "title": "Linux: dueño, grupo y el resto",
+      "targetSec": 61,
+      "wordBudget": 165,
+      "goal": "Una copia de los partes en un servidor Linux (`copy`): tres clases como fichas, dueño · grupo · resto (`classes`). Tres casillas, leer, escribir y ejecutar (`boxes`), cada una una letra (`letters`): r, w, x. La línea `-rw-r----- 1 mant mantenimiento grua-04.txt` en grande (`line`); las nueve letras se separan en tres bloques con su rótulo: «dueño `rw-`» (`owner`) · «grupo `r--`» (`group`) · «resto `---`» (`rest`). Rótulo «Linux no suma» (`nosum`). Un diagrama de decisión de tres pasos, «¿eres el dueño?» · «¿estás en el grupo?» · «eres el resto» (`steps`, con conectores dibujados), que se recorre con una cuenta de Operaciones (ni la del dueño ni del grupo) y acaba en «el resto», sin leer (`rest-hit`). Se para en el primer sí (`first-fit`); contraejemplo (`counter`): un archivo cuyo dueño tiene `---` y el grupo `r--`; el dueño también está en el grupo y, aun así, no lee. Luego la carpeta `drwxr-x--- 2 mant mantenimiento partes/` con la `x` resaltada, «entrar» (`x-bit`); el rótulo «ACL de POSIX: más entradas, cuando hace falta» (`posix`) y una ficha de root con «se salta casi todo» (`root`). Cierre (`compare`): «Windows suma entradas · Linux, con estas casillas, elige una sola clase»; la tarjeta de examen (4.6) entra al acabar la frase de `compare`. Transcripción (E.3; el motor todavía no la escribe): «[En pantalla: -rw-r----- 1 mant mantenimiento grua-04.txt; drwxr-x--- 2 mant mantenimiento partes/; contraejemplo: dueño ---, grupo r--, el dueño está en el grupo y no lee]»",
+      "requiredCues": [
+        "copy",
+        "classes",
+        "boxes",
+        "letters",
+        "line",
+        "owner",
+        "group",
+        "rest",
+        "nosum",
+        "steps",
+        "rest-hit",
+        "first-fit",
+        "counter",
+        "x-bit",
+        "posix",
+        "root",
+        "compare"
+      ]
+    },
+    {
+      "id": "s10-vuelta",
+      "chapter": 5,
+      "title": "Vuelta al taller",
+      "targetSec": 37,
+      "wordBudget": 100,
+      "goal": "Tu ficha ya en Mantenimiento (`member`: el sistema lee los grupos al iniciar sesión) y tu parte guardado en «Partes de avería» (`saved`). Operaciones lo abre en lectura (`ops-reads`); el viernes, el resumen lo recoge y deja el informe (`friday`). La lista completa en verde (`nobody`): nadie con más de lo que necesita. Después, tu ficha sale de Mantenimiento y entra en otro grupo (`moves`); la lista no cambia (`follow`: los permisos siguen al puesto, no a la persona). Tres piezas separadas que se colocan (`pieces`): «identidad · grupo · permiso». Sin tarjeta de examen",
+      "requiredCues": [
+        "member",
+        "saved",
+        "ops-reads",
+        "friday",
+        "nobody",
+        "moves",
+        "follow",
+        "pieces"
+      ]
+    },
+    {
+      "id": "s11-reglas",
+      "chapter": 5,
+      "title": "Tres reglas",
+      "targetSec": 35,
+      "wordBudget": 95,
+      "goal": "Tres tarjetas numeradas que entran con su número (`rule1`, `rule2`, `rule3`): 1 «autenticación: quién eres, el pasaporte · autorización: qué puedes, la tarjeta de embarque»; 2 «permisos a grupos · a cada grupo y a cada cuenta de servicio, lo justo para su tarea»; 3 «un proceso puede lo que puede su cuenta» y, con `system`, «antes de leer un permiso, mira el sistema: Windows suma, Linux elige una sola clase». Con `practice`, la tarjeta final «ALERTÓPOLIS · Quién puede hacer qué» con el botón «Práctica · Permisos de una carpeta» (`foundation-permissions`, desde `#/security/study?view=practice&foundation=1`). Ninguna acción visual nueva; sin tarjeta de examen. La tarjeta final escribe «ALERTÓPOLIS» a mano, nunca «IntelForge»",
+      "requiredCues": [
+        "rule1",
+        "rule2",
+        "rule3",
+        "system",
+        "practice"
+      ]
+    }
+  ]
+}

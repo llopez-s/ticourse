@@ -571,3 +571,93 @@ página de Microsoft encontrada: hay que mirarlos en un equipo.
 - Que Lidia quiera «tú» como protagonista (persona de Mantenimiento sin nombre) y no una tercera persona.
 - El objetivo de cada tarjeta de examen (00-propuesta §6).
 - La duración real tras `build-timeline --estimate` y la grabación.
+
+## Decisiones tomadas (fase 1)
+
+> 2026-10-28. Carpeta `video/quien-puede/` creada con el andamio del motor (rama `video-quien-puede`). El guion **no está congelado** y
+> no hay escenas ni voz: cada escena es un `Placeholder` (`src/scenes/S01Hook.tsx` … `S11Reglas.tsx`) que la fase 2 sustituye archivo a archivo.
+
+### Resultado de las comprobaciones
+
+| Comprobación | Resultado |
+|---|---|
+| `build-timeline --video quien-puede --estimate` | **sin ningún aviso**; 64 segmentos, 1278 palabras (igual que E.2), 114 cues, 6 tarjetas de examen (1.2 en s02; 4.6 en s03, s05, s06, s08 y s09), 2 pausas para pensar (s03, s07); **564,0 s = 9:24** renderizados (perfil `principal-yt`: 380–600 s). `{title}` a los 9,8 s |
+| `script-sheets --video quien-puede` | solo el aviso de «no congelado» (la hoja sale como BORRADOR) |
+| `canon-check --video quien-puede` | 4 tokens: 1 con historia (`srv-fich02`) y 3 nuevos (`svc_resumen`, `resumen.exe`, `grua-04.txt`); ningún choque |
+
+El estimado del motor (2,5 palabras/s) es mayor que el cálculo de E.2 (2,7 palabras/s): **9:24 frente a 8:53**. Capítulos según el motor:
+1 en 0:00 (s01–s03), 2 en 2:44 (s04–s05), 3 en 4:15 (s06–s07), 4 en 6:01 (s08–s09), 5 en 8:02 (s10–s11). Con la lectura de Lidia al 88–93 % del
+estimado (V5–V9) saldría entre 8:15 y 8:45. Sigue dentro de 380–600 s aunque se lea a la velocidad del estimado.
+
+### Decisiones abiertas de la ficha (F.4 y 00-propuesta §6–§8), con la opción recomendada
+
+1. **Nombres de los permisos de Windows en español.** Se escriben «Modificar», «Lectura», «Escritura» y «Denegar», y solo en s08 (de s03 a s07
+   la lista usa palabras llanas: «leer», «leer y escribir»). **Sigue sin comprobarse en un equipo**: ninguna página de Microsoft consultada los
+   da; queda para la fase 2 (o para quien tenga un Windows en español).
+2. **Imágenes del aeropuerto.** El control de pasaportes y la tarjeta de embarque **no están ocupados** en el registro (la maleta en la cinta es
+   de V32, `reg:2106-2113` y `:4530`; el avión en vuelo y el hangar, de V30, `reg:1972` y `:4526`; el control de la entrada de V38, sin maleta
+   ni cinta, `reg:2646-2653`). Pero la comprobación halló **tres cercanías** que la ficha no veía y que el brief de escenas recoge en
+   «anti-spoilers»: (a) **V49 ya dibuja «tres puertas»** para AUTHENTICATION / AUTHORIZATION / ACCOUNTING (`reg:357`, `:771-772`;
+   `video/cia-halden/src/scenes/parts/Doors.tsx`), así que las puertas de embarque y la puerta «escribir» de la carpeta se dibujan como
+   compuertas o barreras con su vuelo rotulado, **sin arcos numerados**; (b) V50 tiene un **lector de tarjetas con luz verde** y un vestíbulo
+   (`reg:360`), así que la tarjeta de embarque **no se pasa por ningún lector**; (c) «embarque» ya significa otras cosas en V32, V41 y V42
+   (`reg:1189-1206`), así que solo se usa en la imagen rotulada «imagen · no es del puerto» y en la regla 1 de s11. Opción adoptada: mantener la
+   imagen con esas tres cautelas. Si Lidia prefiere no repetir ni «puertas» ni «embarque», la alternativa es un control de acceso de oficina
+   con pase de visitante; habría que reescribir s02 y la regla 1 de s11.
+3. **«Tú» como protagonista** (persona de Mantenimiento sin nombre ni género ni cara): **sí**. El guion ya está escrito así.
+4. **Objetivo de cada tarjeta de examen.** Se mantienen 1.2 (s02) y 4.6 (las otras cinco), y la insignia por defecto «EXAMEN · SY0-701 · N.N»:
+   **no se usa `examBadge`**. Sigue siendo una decisión editorial de Lidia.
+5. **Duración.** Medida: 9:24 (ver arriba); no se recortó ni se rellenó nada.
+
+### Cómo se tradujo la ficha al motor (cambios y desviaciones)
+
+- **`video.json`: sin `"lesson"`.** El motor solo admite ids como `sp4m7` o `s3m3` (`OPTIONAL_MANIFEST_KEYS.lesson`, `^sp?\d+m\d+$`) y `f11`
+  hace que todos los scripts fallen al cargar. El enlace de la descripción de YouTube y el brief («Source lesson») quedan sin id. Arreglo
+  propuesto, **no aplicado** (es un archivo común a los cuatro vídeos de fundamentos): ampliar el patrón a `^(sp?\d+m\d+|f\d{2})$` y enseñar a
+  `youtube-meta.mjs` y `scene-brief.mjs` a buscar el módulo en `src/data/security/foundations.ts`.
+- **`youtubeTitle`**: «Quién puede hacer qué: autenticación, autorización y permisos» (62 caracteres). La ficha da un título de ~90 caracteres
+  («… · Fundamentos para Security+»); el motor limita este campo a 80 y le añade « | Security+ SY0-701 en español» (resultado: 93 caracteres).
+  Se pierde «Fundamentos para Security+», que el sufijo de la pista sustituye. El título del vídeo (`storyboard.title`) es «Quién puede hacer qué».
+- **`tags`**: la ficha no trae etiquetas; son propuesta (16: autenticación, autorización, permisos, mínimo privilegio, least privilege, ACL, cuenta
+  de servicio, service account, permisos de archivos Linux, permisos de Windows, fundamentos de ciberseguridad, Security+, SY0-701…).
+- **`examTiming: "sentence-end"` va en `narration.json`**, no en `video.json` (el brief lo situaba en `video.json`; el motor lo lee de ahí).
+  `recording` lleva solo `maxPauseMs: 250`, sin `tempo` (decisión de Lidia del 24-10).
+- **Segmentos.** El texto de la parte C no cambia ni una palabra (1278 palabras, como en E.2). Se partió o se unió solo en las fronteras de frase
+  para quedar entre 8 y 30 palabras: un párrafo de s01 (de 40 palabras), s03 (la respuesta tras la pausa, de 37), s06 (de 35), s07 (de 37),
+  s08 (el servidor y su ACL, de 32; «La llevan cada carpeta y cada archivo» pasa al párrafo siguiente), s09 (la diferencia importante, de 32) y
+  s10 (el primer párrafo, de 38); «Te quedas con tres reglas» (s11, 5 palabras) se une a la regla 1 y «Y nadie tiene más de lo que necesita» (s10, 8) a su vecino,
+  para no dejar frases sueltas. Cada segmento lleva una etiqueta de
+  emoción (nunca la misma dos veces seguidas) y su pausa (300–700 ms; 1300 ms en el último de s02 y 1500 en el cierre).
+- **Cues.** La ficha no los nombraba; se diseñaron 114, uno por cada cosa que cambia en pantalla, y están en `requiredCues` de cada escena (orden
+  de aparición). La pantalla y el sonido que pide E.1 van en tres cues únicos: `denied` (error, s01), `joins` (lock, s03) y `blocked` (block, s05).
+  Además el motor pone solo `ding` en cada tarjeta y `whoosh` al empezar capítulo.
+- **Tarjeta de s08 movida a `acl`.** Con el cue `inherit` (la última frase de la escena) solo quedaban 2,6 s de escena y la tarjeta necesita 4;
+  se ancla a la frase «… lista de control de acceso, o ACL», y se queda mientras la voz habla de la lista de entradas, que es la parte sin
+  comparaciones (la suma de grupos y la denegación llegan después, sin tarjeta). La de s02 sigue en `diagnosis`, con 1300 ms de pausa final.
+- **Léxico** (`lexicon.json` y `lexicon.chatterbox.json`, iguales): `ACL` → «a ce ele» y `PID` → «pid». Solo van las siglas que la voz dice
+  (POSIX, root, Linux y Windows no entran: POSIX es solo pantalla y las otras no las marca el validador). **A confirmar con Lidia cómo dice
+  «PID»** («pid» o «pe i de»): de ello depende la comprobación de su grabación.
+- **Pausas para pensar.** `think.q`: «¿Cómo lo arreglas?» (s03) y «¿Qué le das a la cuenta del resumen?» (s07), `holdMs` 4500. Los dos botones de
+  cada pausa los dibuja la escena, no el motor.
+- **Escenas** (id, componente): `s01-hook` S01Hook · `s02-pasaporte` S02Pasaporte · `s03-grupos` S03Grupos · `s04-permisos` S04Permisos ·
+  `s05-minimo` S05Minimo · `s06-procesos` S06Procesos · `s07-servicio` S07Servicio · `s08-windows` S08Windows · `s09-linux` S09Linux ·
+  `s10-vuelta` S10Vuelta · `s11-reglas` S11Reglas. `targetSec` y títulos son los de B/E.2; `wordBudget` = `targetSec` × 2,7.
+- **Dos pequeñas ampliaciones visuales** que la ficha no pedía y que el `goal` recoge: en s01 la promesa final (`promise`) como tres chips, y
+  en s08 los rótulos «la idea: igual en todos» / «la forma: depende del sistema» (`idea`, `way`) para la frase de transición.
+- **`notice` del storyboard**: se incluye con el sello y el descargo, aunque el motor no lo lee (la cabecera de la transcripción sale de
+  `trackNotice`). El sello en pantalla está en el `goal` de s01 (`stamp`).
+
+### Lo que no se pudo traducir tal cual
+
+- **Las líneas «[En pantalla: …]» de la tabla E.3.** La transcripción se genera sola a partir de la locución, las tarjetas y las pausas, y el
+  motor no tiene un campo para añadir notas de pantalla. La voz ya dice los datos de E.3 (columna 3) y las líneas quedaron copiadas en el `goal`
+  de s04, s06, s07, s08 y s09 por si se añaden a mano. Haría falta un campo opcional (por ejemplo `screenNote` en el segmento) que
+  `build-timeline` escribiese en la transcripción.
+- **El nombre de `lesson`** (ver arriba) y los **nombres de Windows en español** (pendiente de un equipo real).
+
+### Canon nuevo previsto (a registrar en `glass-harbor.md` si se aprueba, como «previsto»)
+
+`svc_resumen`, `resumen.exe` (PID `4120`, padre «programador de tareas»), `grua-04.txt`, la cuenta `mant` y el grupo `mantenimiento` de la copia
+Linux, las carpetas «Partes de avería» e «Informes», los grupos Mantenimiento, Personal del taller, Operaciones y Jefatura del taller. `srv-fich02`
+ya consta en el registro como nombre libre, y el SIEM (`video/siem/src/data/s05-correlate.ts:12`) y V5b (`video/ir-halden-pruebas/src/data/s05-huecos.ts:67`)
+lo dibujan como relleno: aquí es el servidor de ficheros del taller, sin IP.
