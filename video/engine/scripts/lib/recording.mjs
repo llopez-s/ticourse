@@ -653,7 +653,11 @@ export function stretchedWords(located, words, silences, { maxMs = MAX_WORD_MS, 
     for (const p of f.parts ?? [f]) {
       for (let k = p.first; k <= p.last; k++) {
         const w = words[k];
-        if (w.endMs - w.startMs <= maxMs) continue;
+        // Whisper times a figure short and stretches the next word over the rest of the number («450
+        // dispositivos», AP07 s04-03): that word may last a quarter second more per digit.
+        const prev = words[k - 1];
+        const digits = prev && /\d/.test(prev.text) && w.startMs - prev.endMs <= 300 ? prev.text.replace(/\D/g, '').length : 0;
+        if (w.endMs - w.startMs <= maxMs + digits * 250) continue;
         if (/^[A-Z0-9][A-Z0-9.,\-]*$/.test(w.text.replace(/[¿?¡!«»".;:]/g, ''))) continue;
         const inside = silences.filter((s) => s.endMs - s.startMs >= minPauseMs && s.startMs > w.startMs - 1 && s.endMs < w.endMs + 1);
         const last = inside.length ? inside[inside.length - 1] : null;
