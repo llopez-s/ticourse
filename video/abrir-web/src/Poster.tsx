@@ -4,17 +4,24 @@ import { C, FONT, LAYOUT, TYPE, alpha } from '../../engine/src/theme/tokens';
 import { Backdrop } from '../../engine/src/ui/Backdrop';
 import { Chip } from '../../engine/src/ui/Chip';
 import { BrandMark } from '../../engine/src/overlay/ChapterRail';
+import { Stopwatch } from './scenes/parts/Stopwatch';
 import { SIMULATION_LABEL } from '../../engine/src/overlay/SimulationTag';
 
 ensureFonts();
 
-/** The five pieces of the ribbon, in the order the video lights them. */
-const PIECES = ['DHCP', 'DNS', 'TCP', 'TLS', 'HTTP'];
+/** The five pieces of the ribbon, in the order the video lights them, with the job each one does (rule 1 of s12). */
+const PIECES: { name: string; job: string }[] = [
+  { name: 'DHCP', job: 'te configura' },
+  { name: 'DNS', job: 'traduce el nombre' },
+  { name: 'TCP', job: 'abre la conversación' },
+  { name: 'TLS', job: 'la protege' },
+  { name: 'HTTP', job: 'pide la página' },
+];
 
 /**
- * Poster / YouTube thumbnail for «Qué sucede al abrir una web». STUB (phase 1): big two-line title on the
- * left for small-size legibility and, on the right, the video's five-piece ribbon as a vertical stack, all lit.
- * Phase 2 replaces the right half with the video's closing image.
+ * Poster / YouTube thumbnail for «Qué sucede al abrir una web»: big two-line title on the left for small-size
+ * legibility and, on the right, the video's thread — the five-piece ribbon stacked vertically, all lit, each with the
+ * job it does — under a stopwatch frozen at «3 s» (the question the video answers).
  */
 export function Poster() {
   const left = LAYOUT.marginX;
@@ -22,28 +29,54 @@ export function Poster() {
     <AbsoluteFill style={{ fontFamily: FONT.sans, color: C.text }}>
       <Backdrop />
 
-      {/* the five pieces, lit */}
-      <div style={{ position: 'absolute', left: 1180, top: 250, width: 640, display: 'flex', flexDirection: 'column', gap: 18 }}>
-        {PIECES.map((name) => (
+      {/* the thread: five pieces, lit, in order */}
+      <div style={{ position: 'absolute', left: 1130, top: 214, width: 700, display: 'flex', flexDirection: 'column', gap: 16 }}>
+        {PIECES.map(({ name, job }, i) => (
           <div
             key={name}
             style={{
-              height: 100,
+              height: 104,
               borderRadius: 20,
-              border: `3px solid ${alpha(C.cyan, 0.7)}`,
+              border: `3px solid ${alpha(C.cyan, 0.75)}`,
               background: alpha(C.cyan, 0.14),
+              boxShadow: `0 0 28px ${alpha(C.cyan, 0.22)}`,
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: 56,
-              fontWeight: 800,
-              letterSpacing: 4,
-              color: C.textStrong,
+              gap: 22,
+              padding: '0 26px',
             }}
           >
-            {name}
+            <span
+              style={{
+                width: 56,
+                height: 56,
+                borderRadius: '50%',
+                background: C.cyan,
+                color: C.ink950,
+                fontSize: 36,
+                fontWeight: 850,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+              }}
+            >
+              {i + 1}
+            </span>
+            <span style={{ fontSize: 58, fontWeight: 850, letterSpacing: 3, color: C.textStrong, minWidth: 190 }}>{name}</span>
+            <span style={{ fontSize: 34, fontWeight: 650, color: C.cyanSoft, whiteSpace: 'nowrap' }}>{job}</span>
           </div>
         ))}
+      </div>
+
+      {/* the three seconds */}
+      <div style={{ position: 'absolute', left: 1130, top: 60, display: 'flex', alignItems: 'center', gap: 24 }}>
+        <Stopwatch seconds={3} size={120} />
+        <span style={{ fontSize: 40, fontWeight: 750, color: C.text, lineHeight: 1.15 }}>
+          lo que pasa
+          <br />
+          en esos 3 segundos
+        </span>
       </div>
 
       {/* brand */}
