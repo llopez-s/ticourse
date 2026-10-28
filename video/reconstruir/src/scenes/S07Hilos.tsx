@@ -253,13 +253,13 @@ export function S07Hilos(props: SceneProps) {
 
       {/* threads (under the chips) */}
       <svg width={CHRONO_GEO.width} height={CHRONO_GEO.headH + 10 + 5 * 102} style={{ position: 'absolute', left: 0, top: 0, overflow: 'visible' }} aria-hidden>
-        <Thread x={COL_X.host} y1={chronoRowCenterY(0)} y2={chronoRowCenterY(2)} color={COLOR.host} draw={hostThread} dim={gapDim} />
-        <Thread x={COL_X.user} y1={chronoRowCenterY(0)} y2={chronoRowCenterY(2)} color={COLOR.user} draw={userThread} dim={gapDim} />
+        <Thread x={COL_X.host} y1={chronoRowCenterY(0)} y2={chronoRowCenterY(2)} color={COLOR.host} draw={hostThread} dim={gapDim * 1.4} />
+        <Thread x={COL_X.user} y1={chronoRowCenterY(0)} y2={chronoRowCenterY(2)} color={COLOR.user} draw={userThread} dim={gapDim * 1.4} />
         <Thread x={COL_X.label} y1={chronoRowCenterY(3)} y2={chronoRowCenterY(4)} color={COLOR.label} draw={labelThread} />
       </svg>
 
       {/* chips */}
-      <div style={{ position: 'absolute', inset: 0, opacity: 1 - 0.65 * gapDim }}>
+      <div style={{ position: 'absolute', inset: 0, opacity: 1 - 0.92 * gapDim }}>
         {[0, 1, 2].map((i) => (
           <FieldChip key={`h${i}`} x={HOST_COL.x} y={chipTop(i, HOST_COL.h)} w={HOST_COL.w} h={HOST_COL.h} color={COLOR.host} on={hostChip[i]} style={{ fontSize: FIELD_SIZE }}>
             {HOST}
