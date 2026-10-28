@@ -79,7 +79,7 @@
       "id": "s08-tachar",
       "chapter": 4,
       "title": "Tachar y apuntar",
-      "goal": "Sello de caso. Cue router: el paquete llega al router. Cue rewrite (sfx typing): en la etiqueta, el origen 192.168.20.10:51422 se tacha y se escribe encima 198.51.100.7:61002, a mano alzada, como quien corrige un remite; nada se dibuja como muro ni escudo. Cue table: la tabla de NAT gana una fila, «interno 192.168.20.10:51422 · público 198.51.100.7:61002 · destino 192.0.2.44:443 · hora». Cue lookup: con la respuesta, la tabla se consulta (la fila parpadea) y el destino vuelve a ser 192.168.20.10:51422. Cue nat (la tarjeta de examen espera al final de «Eso es NAT»): rótulo «NAT · traducción de direcciones»; cue shared: otras tres filas de otros portátiles, todas con la misma pública y puertos distintos.",
+      "goal": "Sello de caso. Cue router: el paquete llega al router. Cue rewrite (sfx typing): en la etiqueta, el origen 192.168.20.10:51422 se tacha y se escribe encima 198.51.100.17:61002, a mano alzada, como quien corrige un remite; nada se dibuja como muro ni escudo. Cue table: la tabla de NAT gana una fila, «interno 192.168.20.10:51422 · público 198.51.100.17:61002 · destino 192.0.2.44:443 · hora». Cue lookup: con la respuesta, la tabla se consulta (la fila parpadea) y el destino vuelve a ser 192.168.20.10:51422. Cue nat (la tarjeta de examen espera al final de «Eso es NAT»): rótulo «NAT · traducción de direcciones»; cue shared: otras tres filas de otros portátiles, todas con la misma pública y puertos distintos.",
       "targetSec": 45,
       "wordBudget": 122,
       "requiredCues": ["router", "rewrite", "table", "lookup", "nat", "shared"]
@@ -88,7 +88,7 @@
       "id": "s09-portal",
       "chapter": 4,
       "title": "Lo que ve el portal",
-      "goal": "Sello de caso. Cue log: el lado del portal, una línea de su registro (la voz dice que apunta cada reserva), 198.51.100.7:61002 con «reserva creada» y la hora. Cue crowd: detrás de esa dirección, en la oficina, treinta siluetas de portátil iguales; durante la pausa para pensar (think «¿El portal sabe qué ordenador fue?», opciones «Sí» / «No»), una lupa recorre las treinta siluetas sin detenerse en ninguna. Cue verdict (empieza con «No.»): el portal solo ve la dirección traducida. Cue natlog: la tabla de NAT de la naviera con la hora y los puertos. Cue match: la fila que coincide se ilumina y señala un único portátil. Cue wrap: «una dirección compartida, por sí sola, no señala a nadie». Mantener libre la zona alta central durante la pausa.",
+      "goal": "Sello de caso. Cue log: el lado del portal, una línea de su registro (la voz dice que apunta cada reserva), 198.51.100.17:61002 con «reserva creada» y la hora. Cue crowd: detrás de esa dirección, en la oficina, treinta siluetas de portátil iguales; durante la pausa para pensar (think «¿El portal sabe qué ordenador fue?», opciones «Sí» / «No»), una lupa recorre las treinta siluetas sin detenerse en ninguna. Cue verdict (empieza con «No.»): el portal solo ve la dirección traducida. Cue natlog: la tabla de NAT de la naviera con la hora y los puertos. Cue match: la fila que coincide se ilumina y señala un único portátil. Cue wrap: «una dirección compartida, por sí sola, no señala a nadie». Mantener libre la zona alta central durante la pausa.",
       "targetSec": 44,
       "wordBudget": 119,
       "requiredCues": ["log", "crowd", "verdict", "natlog", "match", "wrap"]

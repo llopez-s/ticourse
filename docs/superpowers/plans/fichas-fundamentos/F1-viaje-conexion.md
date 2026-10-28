@@ -39,7 +39,7 @@
   imagen: se ven en su tabla.
 - **Datos en pantalla** (nunca en la voz): portátil `192.168.20.10/24`, impresora `192.168.20.80/24`, servidor de
   ficheros `192.168.30.10/24`, gateway `192.168.20.1` (y `192.168.30.1` en la otra pata), pública de la naviera
-  `198.51.100.7`, portal `reservas.haldenport.example` en `192.0.2.44`, puertos `51422` → `61002` y `443`.
+  `198.51.100.17`, portal `reservas.haldenport.example` en `192.0.2.44`, puertos `51422` → `61002` y `443`.
 
 ### Capítulo 1 · Tu red
 
@@ -183,8 +183,8 @@
 - **Propósito didáctico:** NAT traduce dirección y, a menudo, puerto; guarda la traducción; la respuesta vuelve por la
   tabla.
 - **En pantalla:** el paquete llega al router. En la etiqueta, el origen `192.168.20.10:51422` se tacha y se escribe
-  encima `198.51.100.7:61002`. A la vez, la tabla de NAT gana una fila: «interno `192.168.20.10:51422` · público
-  `198.51.100.7:61002` · destino `192.0.2.44:443` · hora». Con la respuesta, la tabla se consulta (la fila parpadea) y
+  encima `198.51.100.17:61002`. A la vez, la tabla de NAT gana una fila: «interno `192.168.20.10:51422` · público
+  `198.51.100.17:61002` · destino `192.0.2.44:443` · hora». Con la respuesta, la tabla se consulta (la fila parpadea) y
   el destino vuelve a ser `192.168.20.10:51422`. Al final, otras tres filas de otros portátiles, todas con la misma
   pública y puertos distintos.
 - **Acciones visuales:** la etiqueta se escribe a mano alzada, como quien corrige un remite. Nada se dibuja como
@@ -202,7 +202,7 @@
 #### s09 · «Lo que ve el portal» · ~44 s · 97 palabras
 
 - **Propósito didáctico:** atribuir una conexión detrás de NAT; segunda pausa.
-- **En pantalla:** el lado del portal: una línea de su registro (la voz lo explica: «apunta cada reserva»), «`198.51.100.7:61002` → reserva creada ·
+- **En pantalla:** el lado del portal: una línea de su registro (la voz lo explica: «apunta cada reserva»), «`198.51.100.17:61002` → reserva creada ·
   hora». Detrás de esa dirección, en la oficina, treinta siluetas de portátil iguales. Tras la respuesta, la tabla de
   NAT de la naviera con la hora y los puertos; la fila que coincide se ilumina y señala un único portátil.
 - **Acciones visuales:** durante la pausa, una lupa recorre las treinta siluetas sin detenerse en ninguna.
@@ -520,7 +520,7 @@ estos puntos (no entran en los subtítulos, que siguen el audio):
 | s03 | impresora y servidor con sus direcciones; rangos privados | «empieza por los mismos tres números… el tercero es distinto… privadas» | `[En pantalla: impresora 192.168.20.80/24, misma red; servidor 192.168.30.10/24, otra red. Rangos privados: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16]` |
 | s04 | gateway y tabla de rutas | «la del router… su tabla de rutas… dice por dónde se va a cada red» | `[En pantalla: puerta de enlace 192.168.20.1; rutas: 192.168.20.0/24 y 192.168.30.0/24 directas, el resto hacia el proveedor]` |
 | s06 | la etiqueta completa | «dirección y puerto de origen, y dirección y puerto de destino» | `[En pantalla: origen 192.168.20.10:51422, destino 192.0.2.44:443, TCP]` |
-| s08 | la fila de la tabla de NAT | «cambia el origen… y lo apunta en una tabla» | `[En pantalla: 192.168.20.10:51422 sale como 198.51.100.7:61002 hacia 192.0.2.44:443]` |
+| s08 | la fila de la tabla de NAT | «cambia el origen… y lo apunta en una tabla» | `[En pantalla: 192.168.20.10:51422 sale como 198.51.100.17:61002 hacia 192.0.2.44:443]` |
 | s10 | la lista de reglas | «cada una describe un tipo de conexión y dice si pasa o no… la primera que coincide» | `[En pantalla: regla 1 permite TCP 443 y 80 de la oficina a Internet; regla 2 permite el DNS del resolutor; el resto se deniega. El escritorio remoto (TCP 3389) no coincide con ninguna]` |
 
 Además: ningún dato depende solo del color (cian/ámbar van siempre con rótulo), y las etiquetas clave a 48–60 px,
@@ -570,7 +570,7 @@ apoyaron en las lecciones y en el razonamiento técnico). Quedan pendientes de c
 | El portal se llama `reservas.haldenport.example`; una naviera es cliente | comprobado: `reg:396`, `reg:200` |
 | Números del portátil, impresora y servidor | propuesta; son los del ejemplo resuelto de f06 (`fund:28`) |
 | Puertos 51422 y 61002 | propuesta; son los de los ejemplos de f05 y f07 (`fund:24`, `fund:32`) |
-| `198.51.100.7` (naviera) y `192.0.2.44` (portal) | propuesta; no aparecen en `reg` (búsqueda del 2026-10-28) |
+| `198.51.100.17` (naviera) y `192.0.2.44` (portal) | propuesta; no aparecen en `reg` (búsqueda del 2026-10-28) |
 | Reglas de salida de la naviera | propuesta; ningún dato del puerto |
 | Modelo de cortafuegos del curso: primera coincidencia y denegación implícita | comprobado: f08, `fund:36` |
 
@@ -599,7 +599,7 @@ apoyaron en las lecciones y en el razonamiento técnico). Quedan pendientes de c
 |---|---|
 | `build-timeline --video viaje-conexion --estimate` | 12 escenas, 76 segmentos, 1414 palabras, 6 tarjetas de examen, 2 pausas para pensar, 77 cues. **Un solo aviso: duración estimada 625,2 s (10:25), fuera de la ventana de `principal-yt` (380 a 600 s).** Ningún otro aviso (ni de emoción repetida, ni de frases largas, ni de identificadores leídos, ni de léxico). |
 | `script-sheets` | solo el aviso de «no congelado» |
-| `canon-check` | 6 tokens: 1 con historia (`reservas.haldenport.example`) y 5 nuevos (`192.168.20.1`, `192.168.30.1`, `192.168.20.10`, `192.0.2.44`, `198.51.100.7`). Ningún nombre choca. **Pero hay un choque que `canon-check` no ve: ver G.4.** |
+| `canon-check` | 6 tokens: 1 con historia (`reservas.haldenport.example`) y 5 nuevos (`192.168.20.1`, `192.168.30.1`, `192.168.20.10`, `192.0.2.44`, `198.51.100.17`). Ningún nombre choca. **Pero hay un choque que `canon-check` no ve: ver G.4.** |
 | `brand-yt.test.mjs` | pasa (el póster dice «ALERTÓPOLIS») |
 | `tsc` | no se lanzó (falta de memoria, según el encargo). Los stubs y el póster copian el molde de `zonas-halden` sin cambios de forma |
 
@@ -633,11 +633,11 @@ locución, el motor da 625 s. Dos lecturas:
 | **Escena `s05-internet`** conserva el título «Hasta el puerto» de la ficha | pendiente de revisar: «puerto» ya significa puerto de red desde s06; si Lidia lo prefiere, «Hasta el portal» |
 | **Sello «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto»** escrito en el `goal` de cada escena desde s02 | ningún campo del motor lo recoge; `notice` y `simulationLabel` *sustituirían* el sello de «Simulación educativa · datos ficticios», que la ficha quiere conservar |
 
-### G.4 Hallazgo de canon: `198.51.100.7` ya existe en GCTI
+### G.4 Hallazgo de canon: `198.51.100.17` ya existe en GCTI
 
-`198.51.100.7` es `blog-recetas.example` en la lista de relleno de V4 (`video/pivot-infra/src/scenes/S03Pdns.tsx:24` y `:50`;
+`198.51.100.17` es `blog-recetas.example` en la lista de relleno de V4 (`video/pivot-infra/src/scenes/S03Pdns.tsx:24` y `:50`;
 `docs/superpowers/canon/velvet-cicada.md:421`). La propuesta (`00-propuesta.md` §6) decía que no estaba en `reg`; era cierto
-para `glass-harbor.md`, pero `canon-check` solo lee la campaña de la pista. El mismo caso aplica a `198.51.100.90` de F4, que
+para `glass-harbor.md`, pero `canon-check` solo lee la campaña de la pista. El mismo caso aplica a `198.51.100.117` de F4, que
 también aparece en ese listín (`tienda-flores.example`). **No se cambió** porque F2 usa la misma dirección pública y tiene que
 coincidir con F1. Recomendación: usar una dirección sin uso del mismo bloque (por ejemplo `198.51.100.17`, libre en el repo a
 2026-10-28) en F1, F2 y F4. El brief de escenas pide guardarla en una sola constante (`PUBLIC_IP`) para que el cambio sea una
@@ -675,3 +675,5 @@ edición.
   lista de tres filas con barra de lectura, no importarlo.
 - **Tarjeta de examen en escena con pausa para pensar:** s03 lleva las dos; la tarjeta espera al final de la oración
   «O sea, que si coincide el prefijo entero…», ya fuera de la pausa, así que no se solapan en el tiempo.
+
+- **IP de la naviera cambiada (2026-10-28):** `198.51.100.7` choca con `blog-recetas.example` del listín de V4 (`video/pivot-infra/src/scenes/S03Pdns.tsx`, `velvet-cicada.md:421`); F1 y F2 usan ahora `198.51.100.17`, libre en todo el repo. La dirección del sitio de subidas de F4 pasa de `198.51.100.90` a `198.51.100.117` por el mismo motivo (`tienda-flores.example`).
