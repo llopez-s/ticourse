@@ -29,8 +29,8 @@
 |---|---|---|
 | Inicio de sesión del equipo (exportado) | CSV, hora local del equipo, **sin zona** | `hora,equipo,cuenta,evento,resultado` · `09:58:12,SALES-WS-03,l.prado,4624 inicio de sesión,correcto` |
 | Proxy web | texto, **UTC** (`Z`) | `09:01:40Z SALES-WS-03 l.prado POST subidas.compartir.example/upload 403 BLOQUEADO categoría=almacenamiento personal` |
-| EDR del equipo | JSON, **UTC** | `{"ts":"09:02:41Z","host":"SALES-WS-03","user":"l.prado","event":"process_start","process":"syncbox.exe","pid":6120,"parent":"explorer.exe"}` · `{"ts":"09:02:58Z","host":"SALES-WS-03","user":"l.prado","event":"network_connect","pid":6120,"src":"10.20.6.37:52811","dst":"198.51.100.90:443"}` |
-| Cortafuegos de salida | clave=valor, hora local **con desfase** (`+01:00`) | `start=10:03:05+01:00 end=10:06:06+01:00 action=ALLOW src=10.20.6.37:52811 dst=198.51.100.90:443 proto=TCP duration=181s bytes_out=46180352 bytes_in=61420` |
+| EDR del equipo | JSON, **UTC** | `{"ts":"09:02:41Z","host":"SALES-WS-03","user":"l.prado","event":"process_start","process":"syncbox.exe","pid":6120,"parent":"explorer.exe"}` · `{"ts":"09:02:58Z","host":"SALES-WS-03","user":"l.prado","event":"network_connect","pid":6120,"src":"10.20.6.37:52811","dst":"198.51.100.117:443"}` |
+| Cortafuegos de salida | clave=valor, hora local **con desfase** (`+01:00`) | `start=10:03:05+01:00 end=10:06:06+01:00 action=ALLOW src=10.20.6.37:52811 dst=198.51.100.117:443 proto=TCP duration=181s bytes_out=46180352 bytes_in=61420` |
 
 **Cronología normalizada (UTC):** 08:58:12 inicio de sesión · 09:01:40 bloqueo del proxy · 09:02:41 arranca
 `syncbox.exe` · 09:02:58 conexión según el EDR · 09:03:05 inicio de la conexión según el cortafuegos (7 s de
@@ -148,7 +148,7 @@ es la VLAN de Oficinas (`reg:4491`); todo lo demás es nuevo y va rotulado «ima
 - **En pantalla:** una tabla de cinco filas con tres columnas, «UTC · hecho · fuente», que se rellena al compás de la
   voz: «08:58:12 · inicio de sesión de `l.prado` en `SALES-WS-03` · equipo», «09:01:40 · subida bloqueada a
   `subidas.compartir.example` · proxy», «09:02:41 · arranca `syncbox.exe` (PID 6120) · EDR», «09:02:58 · `syncbox.exe`
-  conecta a `198.51.100.90:443` · EDR», «09:03:05 · ALLOW desde el inicio, 181 s, 46 180 352 bytes de salida · cortafuegos». Junto a `syncbox.exe`, en
+  conecta a `198.51.100.117:443` · EDR», «09:03:05 · ALLOW desde el inicio, 181 s, 46 180 352 bytes de salida · cortafuegos». Junto a `syncbox.exe`, en
   gris: «solo el nombre del archivo».
 - **Acciones visuales:** cada fila se ilumina y luego se atenúa; nada se interpreta todavía (sin colores de alarma).
 - **Narración:**
@@ -163,7 +163,7 @@ es la VLAN de Oficinas (`reg:4491`); todo lo demás es nuevo y va rotulado «ima
 
 - **Propósito didáctico:** correlacionar por campos comunes; la diferencia de segundos entre relojes.
 - **En pantalla:** hilos de color entre filas: «equipo» une inicio de sesión, proxy y EDR; «cuenta» une los mismos;
-  «`10.20.6.37:52811` → `198.51.100.90:443`» une la fila del EDR y la del cortafuegos. Al lado, «09:02:58 (EDR) ·
+  «`10.20.6.37:52811` → `198.51.100.117:443`» une la fila del EDR y la del cortafuegos. Al lado, «09:02:58 (EDR) ·
   09:03:05 (cortafuegos) · 7 s», con una regla pequeña: «segundos: normal · minutos: revisa el reloj».
 - **Acciones visuales:** el puerto efímero `52811` se ilumina en las dos líneas a la vez (es el de F1).
 - **Narración:**
@@ -202,7 +202,7 @@ es la VLAN de Oficinas (`reg:4491`); todo lo demás es nuevo y va rotulado «ima
 - **En pantalla:** la fila del cortafuegos ampliada: `action=ALLOW`, `bytes_out=46180352`. Durante la pausa, «Sí» /
   «No por sí solo». Tras la respuesta, `ALLOW` se etiqueta «decisión de paso» y `bytes_out`, «cuánto, no qué». Tres
   huecos de evidencia como tarjetas vacías: «¿qué es `syncbox.exe` y está autorizado?», «¿de quién es
-  `198.51.100.90`?», «¿qué archivos leyó antes?».
+  `198.51.100.117`?», «¿qué archivos leyó antes?».
 - **Acciones visuales:** las dos hipótesis siguen en pie; ninguna se tacha.
 - **Narración:**
 
@@ -504,8 +504,8 @@ en el orden en que aparecen:
 | s02 | las cuatro fuentes en bruto | `[En pantalla: las cuatro líneas de la tabla «El caso», tal cual]` |
 | s03 | los cinco ingredientes recuadrados | `[En pantalla: proxy · cuándo 09:01:40Z, dónde SALES-WS-03, quién l.prado, qué POST a subidas.compartir.example, resultado 403 BLOQUEADO. Cortafuegos · sin campo de usuario]` |
 | s04–s05 | las horas en bruto y normalizadas | `[En pantalla: 09:58:12 sin zona → 08:58:12Z; 09:01:40Z; 09:02:41Z; 09:02:58Z; 10:03:05+01:00 → 09:03:05Z]` |
-| s06 | la cronología | `[En pantalla: cronología de cinco filas, como la cuenta la voz, con equipo, cuenta, programa, PID 6120 y destino 198.51.100.90:443]` |
-| s07 | los campos que unen las líneas | `[En pantalla: mismo equipo y cuenta en tres fuentes; origen 10.20.6.37:52811 y destino 198.51.100.90:443 en EDR y cortafuegos; 7 s entre sus horas]` |
+| s06 | la cronología | `[En pantalla: cronología de cinco filas, como la cuenta la voz, con equipo, cuenta, programa, PID 6120 y destino 198.51.100.117:443]` |
+| s07 | los campos que unen las líneas | `[En pantalla: mismo equipo y cuenta en tres fuentes; origen 10.20.6.37:52811 y destino 198.51.100.117:443 en EDR y cortafuegos; 7 s entre sus horas]` |
 | s09 | los tres huecos de evidencia | se dicen en la voz |
 
 ## F. Revisión
@@ -555,7 +555,7 @@ UTC). Sin abrir: el resto de la lista.
 | El puerto tiene EDR | comprobado: `reg:101` y siguientes |
 | El puerto tiene un proxy web | **no consta**: propuesta, «imagina» |
 | `SALES-WS-03`, Comercial; `10.20.6.x`, VLAN de Oficinas | comprobado: `reg:4487`, `reg:4491` (y `a.soto` en `10.20.6.52`, `reg:4490`) |
-| `l.prado`, `10.20.6.37`, `syncbox.exe`, PID 6120, `subidas.compartir.example`, `198.51.100.90`, horas y bytes | propuesta; no aparecen en `reg` |
+| `l.prado`, `10.20.6.37`, `syncbox.exe`, PID 6120, `subidas.compartir.example`, `198.51.100.117`, horas y bytes | propuesta; no aparecen en `reg` |
 | Que no copia la práctica ni la evaluación | comprobado: la práctica usa +02:00, 08:01Z, 08:02Z y 800 bytes (`prac:132`); la evaluación, 14:00+02:00 y 200 bytes (`fund:78-79`). Aquí: invierno +01:00, una hora sin zona, un proxy y 46 MB |
 
 ### F.4 Pendiente de comprobar
@@ -602,5 +602,7 @@ UTC). Sin abrir: el resto de la lista.
 - El texto de locución es **idéntico carácter a carácter** al de la parte C (comprobado por script); solo se re-segmentó por frases (la ficha agrupa por párrafos; el motor quiere 8-30 palabras por segmento) y se añadieron cues y etiquetas de emoción. Palabras por escena = las de E.2 (83, 109, 82, 119, 124, 116, 120, 94, 75, 89, 95, 81).
 - Tarjetas, pausas y efectos: tarjetas en s03, s05, s07, s08, s09 y s10; pausas en s04 y s09 (`holdMs` 4500); efectos: `alarm` en `alert` (s01), `whoosh` en `jump` (s05) y `check` en `host`, `user` y `label` (s07).
 - `targetSec` y `wordBudget` (= `targetSec` × 2,7) son los de E.2; el estimado va de 1,5 a 6 s por encima de cada `targetSec` por la diferencia de ritmo (2,5 frente a 2,7). `targetTotalSec`: 479.
-- Validación: `build-timeline --estimate` sin avisos; `script-sheets` solo avisa de «no congelado»; `canon-check`: 7 cadenas, 1 con historia (`SALES-WS-03`, limpio) y 6 nuevas (`l.prado`, `bytes_out`, `subidas.compartir.example`, `syncbox.exe`, `198.51.100.90`, `10.20.6.37`), ningún choque.
+- Validación: `build-timeline --estimate` sin avisos; `script-sheets` solo avisa de «no congelado»; `canon-check`: 7 cadenas, 1 con historia (`SALES-WS-03`, limpio) y 6 nuevas (`l.prado`, `bytes_out`, `subidas.compartir.example`, `syncbox.exe`, `198.51.100.117`, `10.20.6.37`), ningún choque.
 - **Falta para congelar:** las dos revisiones (exactitud y naturalidad) sobre este guion y que Lidia confirme las siglas.
+
+- **IP cambiada (2026-10-28):** `198.51.100.90` choca con `tienda-flores.example` del listín de V4; el sitio de subidas usa ahora `198.51.100.117`, libre en todo el repo.
