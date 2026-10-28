@@ -4,7 +4,7 @@ import { clamp01 } from '../../../../engine/src/ui';
 
 /**
  * Wall clock: an analog face with the hands at the given time plus the digital time and an optional label
- * (s01 «8:58 · lunes», s09 «9:01», «10:58»). `minutes` = minutes since midnight and may be fractional, so a scene
+ * (s01 «8:58 · lunes», s09 «9:02», «10:58»). `minutes` = minutes since midnight and may be fractional, so a scene
  * can animate the hands between two times (mix(CLOCK.boot, CLOCK.later, t)). Nothing reads the timeline.
  */
 export function fmtClock(minutes: number): string {

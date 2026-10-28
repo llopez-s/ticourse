@@ -20,10 +20,12 @@ export const NET = {
   leaseFrom: '8:58',
   leaseTo: '16:58',
   renewAt: '12:58',
+  /** The renewal's DHCPACK grants a whole new lease from 12:58: 8 h more. */
+  renewedTo: '20:58',
 } as const;
 
 /** Wall-clock minutes since midnight for the three times the video shows. */
-export const CLOCK = { boot: 8 * 60 + 58, later: 9 * 60 + 1, twoHours: 10 * 60 + 58, lunes: 'lunes' } as const;
+export const CLOCK = { boot: 8 * 60 + 58, later: 9 * 60 + 2, twoHours: 10 * 60 + 58, lunes: 'lunes' } as const;
 
 /** The port's reservations portal. The public addresses are constants because they may change. */
 export const PORTAL = {
@@ -40,6 +42,11 @@ export const PORTAL = {
 /** The portal's certificate (V12's data: `video/pki-halden/src/data/s02-cadena.ts:38-41`). */
 export const CERT = {
   cn: 'reservas.haldenport.example',
+  /**
+   * The name the browser actually compares is the subjectAltName (RFC 9525), not the CN. V12 shows only `CN =`
+   * (`s02-cadena.ts:36-42`), so the SAN is a NEW, «previsto» datum of this video (same value as the CN).
+   */
+  san: 'reservas.haldenport.example',
   issuer: 'Confianza Global TLS Issuing CA 3',
   root: 'Confianza Global Root',
   from: '9-11-2026',
@@ -83,6 +90,9 @@ export const HTTP = {
 /** s07 / s10: the four checks of a certificate, in the order the voice says them. */
 export const CHECKS = ['nombre', 'firma y cadena', 'fechas', 'no anulado'] as const;
 
+/** The labels of the certificate card's rows: the first one is the SAN field, which is what the name is compared with. */
+export const CERT_ROW_LABELS = ['nombres alternativos', 'firma y cadena', 'fechas', 'no anulado'] as const;
+
 /** s07: what each check reflects on the DNI. */
 export const DNI_MIRROR = ['nombre', 'quién lo expide', 'caducidad', 'no denunciado'] as const;
 
@@ -108,13 +118,13 @@ export const TABLE_ROWS: Record<Piece, readonly [TableCell, TableCell, TableCell
   ],
   TCP: [
     { text: 'sí', kind: 'on' },
-    { text: 'probablemente', kind: 'half', note: 'la de antes se cerró' },
+    { text: 'probablemente', kind: 'half', note: 'cerrada por inactividad' },
     { text: 'sí', kind: 'on' },
   ],
   TLS: [
     { text: 'completo', kind: 'on' },
     { text: 'abreviado si se retoma', kind: 'half', note: 'sesión TLS retomada' },
-    { text: 'nuevo o abreviado', kind: 'on' },
+    { text: 'completo o abreviado', kind: 'on' },
   ],
   HTTP: [
     { text: 'sí', kind: 'on' },
@@ -138,7 +148,7 @@ export const COPY_CERT = { name: LOOKALIKE.host, sign: 'una CA reconocida', date
 /** s11: the browser's certificate warning. */
 export const WARNING = {
   title: 'Problema con el certificado',
-  causes: ['el nombre no cuadra', 'falta parte de la cadena', 'fuera de fecha'],
+  causes: ['el nombre no cuadra', 'falta un eslabón', 'fuera de fecha'],
   back: 'volver',
   skip: 'continuar de todos modos',
   rule: 'quitar la comprobación = quitar la protección',

@@ -19,8 +19,10 @@ const S = 's01-tres';
  *             stopwatch stops at «3 s».
  *   title     browser and stopwatch dock in the corner; title + the (still unlit) ribbon.
  *   promise   the five boxes are pointed at one by one (still off) + «segunda visita · ¿qué no se repite?».
- *   rewind    the stopwatch rewinds to the power-up; the wall clock reads 8:58 · lunes; the ribbon goes up to its
- *             place for the rest of the video.
+ *   rewind    «Todo empieza un poco antes»: the stopwatch rewinds only to 0, labelled «justo antes de pulsar Intro»
+ *             (the three seconds start when Enter is pressed; booting takes far longer, so it never rewinds to the
+ *             power-up); on «lunes» the wall clock reads 8:58 · lunes; the ribbon goes up to its place for the rest
+ *             of the video.
  *   office    F1's office plan; the laptop powers up.
  */
 export function S01Tres(props: SceneProps) {
@@ -57,7 +59,7 @@ export function S01Tres(props: SceneProps) {
   const swLeft = mix(mix(1060, 1090, dock), 760, toC);
   const swTop = mix(mix(170, 424, dock), 190, toC);
   const swIn = progress(frame, 6, 18);
-  const swOut = progress(frame, office + 4, 16);
+  const swOut = progress(frame, office - 14, 14);
 
   // ---- Title, ribbon and promise.
   const titleIn = enter(frame, title, { distance: 26, duration: 20 });
@@ -74,7 +76,8 @@ export function S01Tres(props: SceneProps) {
   const textOut = titleOut;
 
   // ---- Wall clock and office.
-  const clockIn = progress(frame, rewind + 4, 18);
+  const clockAt = Math.max(rewind + 4, w('s01-04', 'lunes') - 8);
+  const clockIn = progress(frame, clockAt, 18);
   const planShow = {
     office: progress(frame, office, 16),
     router: progress(frame, office + 10, 16),
@@ -97,7 +100,12 @@ export function S01Tres(props: SceneProps) {
       {/* stopwatch */}
       {swIn > 0 && swOut < 1 ? (
         <div style={{ position: 'absolute', left: swLeft, top: swTop, opacity: swIn * (1 - swOut), transform: `scale(${swScale})`, transformOrigin: 'top left' }}>
-          <Stopwatch seconds={seconds} rewind={progress(frame, rewind + 8, 10) * (1 - progress(frame, rewind + 66, 10))} />
+          <Stopwatch
+            seconds={seconds}
+            rewind={progress(frame, rewind + 8, 10) * (1 - progress(frame, rewind + 66, 10))}
+            caption="justo antes de pulsar Intro"
+            captionShow={progress(frame, rewind + 50, 14)}
+          />
         </div>
       ) : null}
 
@@ -202,7 +210,7 @@ export function S01Tres(props: SceneProps) {
       {/* wall clock + office */}
       {clockIn > 0 ? (
         <div style={{ position: 'absolute', left: 70, top: 130, opacity: clockIn, transform: `translateY(${(1 - clockIn) * 16}px)` }}>
-          <WallClock minutes={CLOCK.boot} label={CLOCK.lunes} size={250} glow={windowWeight(frame, rewind + 20, office, { ramp: 14 })} />
+          <WallClock minutes={CLOCK.boot} label={CLOCK.lunes} size={250} glow={windowWeight(frame, clockAt + 16, office, { ramp: 14 })} />
         </div>
       ) : null}
       {planShow.office > 0 ? (

@@ -53,7 +53,7 @@ export function S07Dni(props: SceneProps) {
   const rootLine = progress(frame, root - 2, 14);
 
   const rows: CertRow[] = [
-    { lines: [<span key="a" style={MONO}>{CERT.cn}</span>], show: show[0], tick: tick[0], focus: focus[0] },
+    { lines: [<span key="a" style={MONO}>{CERT.san}</span>], show: show[0], tick: tick[0], focus: focus[0] },
     {
       lines: [
         <span key="a" style={{ fontSize: 31 }}>{CERT.issuer}</span>,
@@ -203,7 +203,7 @@ export function S07Dni(props: SceneProps) {
             <Pill tone={C.cyanSoft} border={alpha(C.cyan, 0.8)} icon="key" size={34}>
               cara = clave privada
             </Pill>
-            <div style={{ marginTop: 8, marginLeft: 8, fontSize: 28, fontWeight: 650, color: C.muted }}>solo la tiene el servidor</div>
+            <div style={{ marginTop: 8, marginLeft: 8, fontSize: 28, fontWeight: 650, color: C.muted }}>no se enseña: se firma con ella</div>
           </div>
 
           {/* the photocopy: photo yes, face no */}

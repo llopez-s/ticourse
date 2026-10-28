@@ -76,7 +76,7 @@ function PillRow({ y, items, shows }: { y: number; items: { text: ReactNode; ton
  * s06-saludo «Hola, soy el portal».
  *   tcp      three small arrows (the greeting of the previous video) and the TCP box of the ribbon lights;
  *   channel  «un canal protegido» is announced;  hello  the browser's hello: who it wants to talk to and which ciphers it knows;
- *   keys     a little key «claves de sesión» appears on BOTH sides at once;  cert  the portal's hello with its
+ *   keys     a little key «clave de sesión» appears on BOTH sides at once;  cert  the portal's hello with its
  *            certificate (the DNI travels with it);  proof  the signature made with the private key;
  *   copy     a grey «copia del certificado» tries to sign and cannot;
  *   line     the connection line in V11's style (no date) and the TLS box lights; the exam card 1.4 follows.
@@ -176,7 +176,7 @@ export function S06Saludo(props: SceneProps) {
                     }}
                   >
                     <Pill tone="#e2e8f0" border={alpha('#cbd5e1', 0.8)} icon="key">
-                      claves de sesión
+                      clave de sesión
                     </Pill>
                   </div>
                 ))}

@@ -28,7 +28,7 @@ const LIT_OF: Record<CellKind, number> = { on: 1, half: 0.55, off: 0 };
 /**
  * s09-rato «Un rato después».
  *   later      the second visit begins: the first visit's page, the wall clock at 8:58; on the words the page is
- *              closed and the clock moves to 9:01 (3 min); the think prompt keeps the top band free (the ribbon hides);
+ *              closed and the clock moves to 9:02 (3 min after the first visit); the think prompt keeps the top band free (the ribbon hides);
  *   table      the ribbon BECOMES the table (primera vez · 3 min · 2 h): its five boxes travel to the row heads;
  *   no-dhcp / no-dns / tcp-closed / tls-resume / http-new  the «3 min» column, row by row: what is not repeated goes
  *              off with its reason;   two-hours  the «2 h» column and the clock at 10:58;

@@ -666,3 +666,100 @@ servicio). Sin abrir: el resto de la lista.
 - `s09` pasa el reloj de pared a «10:58» en la columna de 2 h (8:58 + 2 h): para entonces el TTL venció a las 9:58 y la concesión sigue viva hasta las 16:58.
 - Andamio: copia de `video/iam-halden` (`tsconfig.json`, `src/index.ts`, `Root.tsx`, `timeline/load.ts`, `scenes/kit.tsx`, `Placeholder.tsx`) con el nombre cambiado, un stub por id y un póster provisional con «ALERTÓPOLIS».
   No se ha ejecutado `tsc` (poca RAM); los ficheros copiados son idénticos a los de iam-halden salvo el nombre.
+
+## Revisiones aplicadas (2026-10-28)
+
+> Revisión de exactitud y de naturalidad, aplicada sobre `video/abrir-web/` (rama `video-abrir-web`). **El guion sigue
+> sin congelar.** Las partes B y C de arriba son la propuesta original: el texto vigente es `video/abrir-web/narration.json`
+> (y `out/guion-grabacion.md`, regenerado). `build-timeline --estimate`: **594,4 s (9:54)**, 68 segmentos (los mismos ids),
+> 1351 palabras, 89 cues, 6 tarjetas de examen, 2 pausas, **sin avisos**; `tsc` limpio. Palabras por escena frente al
+> `wordBudget`: s01 95/95, s02 100/113, s03 98/105, s04 123/127, s05 76/84, s06 142/149, **s07 179/167**, s08 109/116,
+> **s09 141/139**, s10 94/99, s11 106/124, s12 88/95.
+
+### Exactitud
+
+1. **Cronómetro (s01).** `rewind` cae ahora en «Todo empieza un poco antes. Es lunes, son las nueve menos dos.» (dos frases,
+   un solo segmento, s01-04; así no hay dos puntos hablados). El cronómetro solo se rebobina hasta 0, con el rótulo «justo
+   antes de pulsar Intro» (`Stopwatch` → `caption`), y el reloj de pared entra en «lunes». s01-02: «Hoy vas a separar cinco
+   piezas. Una trabaja al conectarte y las otras cuatro en esos tres segundos. Y vas a ver qué no se repite en la segunda
+   visita.» (cabe: 95/95).
+2. **Revocación (s07-01, s07-06).** s07-06: «Y cuarto, que no lo hayan anulado, algo que no todos los navegadores
+   comprueban igual. El servidor adjunta una respuesta reciente, firmada por la CA, que dice que sigue vigente.» Dos
+   desvíos de la redacción pedida, por el validador (máximo 30 palabras por segmento): se quita «Aquí» y «firmada por la
+   autoridad que lo expidió» pasa a «firmada por la CA» (la CA ya se definió en s07-03). Partir el segmento no era
+   posible: el motor exige ids `sNN-NN` consecutivos y cambiarlos habría roto las referencias de las escenas.
+   **s07-01 se queda en «Cuatro cosas.»**: la cautela va en s07-06 y alargarlo no cabía. La tarjeta 1.4 («revocación») queda.
+   Se cierra así el «pendiente» de F.1/F.4 sobre la revocación.
+3. **Nombre = SAN (CertCard, S07, S10).** La fila 1 de la tarjeta se llama «nombres alternativos» (`CERT_ROW_LABELS`, nuevo
+   en `parts/data.ts`; la píldora final de s07 sigue diciendo «nombre», como la voz) con el valor
+   `reservas.haldenport.example` (`CERT.san`); en s10, `haldenp0rt.example`. El CN queda en la cabecera, atenuado y
+   precedido de «sujeto», para que no parezca lo que se compara. **Dato nuevo «previsto»:** la SAN no sale en V12
+   (`video/pki-halden/src/data/s02-cadena.ts:36-42` solo muestra `CN =`); es una propuesta de este vídeo (mismo valor
+   que el CN) y hay que anotarla en el registro de canon al cerrarlo.
+4. **s09-06 / TLS.** La voz queda: «¿Y dos horas después? El TTL ya pasó, así que hay consulta DNS. Seguramente habrá
+   conexión nueva. Y el saludo TLS, completo o abreviado, según guarde el navegador la sesión.» (el texto fusionado
+   completo pasaba de 30 palabras). La celda de 2 h de la tabla dice «completo o abreviado» (antes «nuevo o abreviado»),
+   el `goal` de s09 también, y la regla 2 / s12-03 («las sesiones TLS se pueden retomar») es coherente. «Pero la concesión
+   sigue valiendo» se pasa al principio de s09-07: «La concesión sigue valiendo. O sea, que cada pieza tiene su propio
+   reloj…» (el cue `own-clock` ilumina justo la fila de la concesión).
+5. **Renovación (S03).** Tras `renew`, las etiquetas de los extremos pasan de 8:58 / 16:58 a **12:58 / 20:58** (el DHCPACK
+   de la renovación da una concesión completa desde ese momento) y la marca «12:58 · renueva» se retira. `NET.renewedTo`.
+   s09 no cambia.
+6. **Relojes.** `CLOCK.later` pasa de 9:01 a **9:02** (tres minutos tras la primera visita, que ocurre hacia las 8:59); el
+   TTL (9:58), la renovación (12:58) y el fin (16:58) no cambian. s09-06 **no** lleva «de la primera visita» (no cabía).
+   El reloj de «2 h» sigue en 10:58 (8:58 + 2 h, como pedía mantener la revisión): son cifras redondas, no un cronometraje
+   exacto; con la primera visita hacia las 8:59 serían las 10:59.
+7. **Analogía del DNI.** s06-05: «Además, firma con un secreto que solo él guarda, su clave privada.» (se pierde «demuestra
+   que ese DNI es suyo»; la idea sigue en el DNI de s06-04 y en s07). s07-07 (fusión con naturalidad 12, aplicada): «La
+   foto del DNI es como la clave pública del certificado. La cara es la clave privada, y no se enseña, se demuestra
+   firmando algo.» (más corta que la propuesta de la revisión; «y se puede copiar» lo cubre s07-08). s07-08: «…antes de
+   mandarle tu petición.» En pantalla, la cara dice «no se enseña: se firma con ella».
+8. **s10-05.** Solo se aplica el cambio de naturalidad («Es como un DNI auténtico, que tampoco dice…»). **No se añade** la
+   frase de refuerzo («un certificado de los fáciles ni siquiera dice quién eres…»): +17 palabras que no caben y s10-04
+   ya dice que basta con demostrar que controlas el nombre.
+9. **Tarjetas.** 1.4 (s06-07): «TLS: cifrado, integridad y autenticación del servidor» (53 caracteres; el máximo del motor
+   es 58). **4.5 (s05-03) sin cambios; decisión editorial de Lidia:** SY0-701 4.5 (capacidades de seguridad habilitadas)
+   no trata de la resolución de nombres ni del TTL; `video.json` → `"examBadge"` admite otra etiqueta, pero es **de todo el
+   vídeo** (≤ 30 caracteres, la llevan las seis tarjetas), no de una sola tarjeta.
+10. **Celda TCP (`parts/data.ts`).** Texto «probablemente» y nota «cerrada por inactividad» (leído seguido, la frase que
+    pedía la revisión; la frase entera no cabe en una celda de 380 px).
+11. **s02-01.** «…ya caducó mientras estaba apagado.»
+12. **Solo en esta ficha (F.1), sin tocar la voz:** los cachés reales imponen límites propios al TTL y además existe la
+    caché HTTP; el resolutor real ya conoce la raíz y los servidores del primer nivel, así que «empieza por arriba» es
+    didáctico; HTTP/3 (QUIC sobre UDP) no usa una conexión TCP separada; en TLS 1.3 el certificado ya viaja cifrado
+    (S06Saludo lo dibuja «a la vista» antes del tubo: declarado); s11-03 «avisa a quien lo administra» queda como opción
+    sin aplicar.
+
+### Naturalidad
+
+Aplicado: s01-01 (nombre del portal), s04-01 (dirección numérica), s04-04, s06-01 (empieza con un saludo; «al número 443»,
+sin «puerto»), s06-02 (canal cifrado, ilegible), s06-04 (clave de usar y tirar; en pantalla «clave de sesión»), s06-06
+(«esa clave», «Si todo cuadra»), s07-03 («la autoridad que lo expide, la CA» y `"CA": "ce a"` en los dos léxicos), s07-04,
+s07-05, s08-04, s09-02, s09-04, s09-05, s09-07, s10-01, s10-03, s10-04, s10-05, s11-03 («no te lo saltes»), s11-04 («falta
+un eslabón de la cadena»; en pantalla la píldora dice «falta un eslabón» para que quepa), s12-01/03/04 («Primera…»,
+«Segunda…», «Tercera…»), s02-04, s01-02. Emociones de s07-05, s09-05 y s11-04: `<clear>`.
+
+**s11-02:** se borra la segunda frase («Tampoco dice qué hará el puerto…»); la tarjeta 3.2 sigue en `path`.
+**Pausa 1 (s09-01):** sin cambios (la tarjeta «¿Se repite todo el proceso?» y las opciones «Sí, todo / No, casi nada» se
+quedan; 4,5 s).
+**Numerales de s12:** `RuleCards` (motor compartido) dibuja los números 1/2/3 de las tarjetas; no se tocan, y los
+títulos de las tarjetas no llevan numeral.
+
+### No aplicado o aplicado en parte
+
+- s07-01 (ver 2), «firmada por la autoridad que lo expidió» (ver 2), «de la primera visita» en s09-06 (ver 6), la frase de
+  refuerzo de s10-05 (ver 8), «y se puede copiar» en s07-07 (ver 7), «Pero la concesión sigue valiendo» donde estaba
+  (ahora en s09-07).
+- Escenas por encima de su `targetSec`: **s07 (+14,0 s)** y s09 (+7,8 s); el total entra (594,4 s). El conjunto ya iba
+  por encima del objetivo antes de la revisión (todas las escenas salvo s10 pasaban de +2 s). Si la grabación real se
+  alarga, se recorta primero en las pausas (`pauseAfterMs`) y luego la ampliación de s07-07.
+
+### Estado del montaje
+
+`S01Tres` (cronómetro y reloj), `S03Concesion` (etiquetas), `S06Saludo` (pastilla «clave de sesión»), `S07Dni` (fila 1 y
+cara), `CertCard`, `Stopwatch`, `parts/data.ts` y los comentarios de `S09Rato`/`WallClock` están al día;
+`storyboard.json` (goals de s01, s03, s06, s07, s09, s10, s11) también. Los `wordFrame(...)` se comprobaron uno a uno
+contra el `timeline.json` nuevo (las 23 palabras siguen en su segmento). `qa-frames` (una pasada completa, 121 fotogramas,
+más una pasada corta de s01 tras mover la salida del cronómetro): s01, s03, s06, s07, s09, s10 y s11 revisadas, sin
+desbordes. Nota de montaje: en s01 el cronómetro se retira justo antes del cue `office` para no pisar el plano de la
+oficina con su rótulo.

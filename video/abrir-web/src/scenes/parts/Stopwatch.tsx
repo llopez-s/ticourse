@@ -5,19 +5,25 @@ import { clamp01 } from '../../../../engine/src/ui';
 /**
  * Stopwatch of s01: a dial with an arc that fills as the seconds run and a big readout. `seconds` is shown as
  * «0,0 s»…«2,9 s»; at exactly `stopAt` (3) it reads «3 s» in emerald (`stopped`). Rewinding is just a falling
- * `seconds` value (`rewind` 0–1 adds a counter-clockwise arrow badge). Not positioned.
+ * `seconds` value (`rewind` 0–1 adds a counter-clockwise arrow badge; it only goes back to 0, the instant before
+ * Enter is pressed, never to the power-up). Not positioned.
  */
 export function Stopwatch({
   seconds,
   stopAt = 3,
   size = 230,
   rewind = 0,
+  caption,
+  captionShow = 0,
   style,
 }: {
   seconds: number;
   stopAt?: number;
   size?: number;
   rewind?: number;
+  /** A label under the dial (s01: «justo antes de pulsar Intro»), faded with `captionShow` 0–1. */
+  caption?: string;
+  captionShow?: number;
   style?: CSSProperties;
 }) {
   const stopped = seconds >= stopAt - 1e-6;
@@ -57,6 +63,27 @@ export function Stopwatch({
           {readout}
         </text>
       </svg>
+      {caption && captionShow > 0.01 ? (
+        <div
+          style={{
+            position: 'absolute',
+            top: size + 16,
+            left: '50%',
+            transform: `translateX(-50%) translateY(${(1 - clamp01(captionShow)) * 8}px)`,
+            opacity: clamp01(captionShow),
+            padding: '4px 22px',
+            borderRadius: 999,
+            border: `2px solid ${alpha(C.amber, 0.6)}`,
+            background: alpha(C.ink900, 0.92),
+            fontSize: 30,
+            fontWeight: 700,
+            color: '#fcd34d',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {caption}
+        </div>
+      ) : null}
       {rw > 0.01 ? (
         <svg width={56} height={56} viewBox="0 0 24 24" style={{ position: 'absolute', right: -14, top: size * 0.12, opacity: rw }} fill="none" stroke={C.amber} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
           <path d="M 4 12 a 8 8 0 1 0 3 -6.2 M 4 4 v 5 h 5" />

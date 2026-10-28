@@ -95,7 +95,8 @@ function MiniCase({ show, nodes, cutAt, ok, text, tone }: { show: number; nodes:
  *   book      the library book with its slip «devolver antes de…» (labelled «imagen · no es del puerto»);
  *             the voice never says «préstamo» (V6's word for just-in-time access).
  *   lease     the lease card: «concesión · 8 h» and a time bar from 8:58 to 16:58 that runs fast to the middle.
- *   renew     the mark «12:58 · renueva»; the bar fills again (emerald, «renovada», same address).
+ *   renew     the mark «12:58 · renueva»; the bar fills again (emerald, «renovada», same address). The renewal's
+ *             DHCPACK is a whole new lease from that moment, so the end labels become 12:58 → 20:58.
  *   wrap      the card goes still; «al conectarte» / «al renovar» label the two moments DHCP works.
  *   no-dns / no-exit / each   three mini-scenes: a perfect lease and a piece that fails each in its own way.
  */
@@ -120,6 +121,7 @@ export function S03Concesion(props: SceneProps) {
   const renewed = frame >= renew + 26;
   const fill = frame < renew + 14 ? 0.5 * run1 : frame < renew + 34 ? 0.5 * (1 - sweepBack) : 0.5 * run2;
   const mark = progress(frame, renew - 6, 14);
+  const newLease = sweepBack;
   const renewedLabel = progress(frame, renew + 64, 12);
   const sameAddr = progress(frame, renew + 76, 14);
   const wrapIn = progress(frame, wrap, 14);
@@ -161,15 +163,22 @@ export function S03Concesion(props: SceneProps) {
           </span>
         </div>
         {/* times above the track */}
-        <div style={{ position: 'absolute', left: TRACK.x, top: 82, fontFamily: FONT.mono, fontSize: 38, fontWeight: 700, color: C.text }}>{NET.leaseFrom}</div>
-        <div style={{ position: 'absolute', right: TRACK.x, top: 82, fontFamily: FONT.mono, fontSize: 38, fontWeight: 700, color: C.text }}>{NET.leaseTo}</div>
+        {/* after the renewal the DHCPACK gives a whole new lease from that moment: 12:58 → 20:58 */}
+        <div style={{ position: 'absolute', left: TRACK.x, top: 82, fontFamily: FONT.mono, fontSize: 38, fontWeight: 700, color: C.text, opacity: 1 - newLease }}>{NET.leaseFrom}</div>
+        <div style={{ position: 'absolute', right: TRACK.x, top: 82, fontFamily: FONT.mono, fontSize: 38, fontWeight: 700, color: C.text, opacity: 1 - newLease }}>{NET.leaseTo}</div>
+        {newLease > 0.01 ? (
+          <>
+            <div style={{ position: 'absolute', left: TRACK.x, top: 82, fontFamily: FONT.mono, fontSize: 38, fontWeight: 700, color: '#6ee7b7', opacity: newLease }}>{NET.renewAt}</div>
+            <div style={{ position: 'absolute', right: TRACK.x, top: 82, fontFamily: FONT.mono, fontSize: 38, fontWeight: 700, color: '#6ee7b7', opacity: newLease }}>{NET.renewedTo}</div>
+          </>
+        ) : null}
         <div
           style={{
             position: 'absolute',
             left: TRACK.x + TRACK.w / 2,
             top: 82,
             transform: `translateX(-50%) translateY(${(1 - mark) * 8}px)`,
-            opacity: mark,
+            opacity: mark * (1 - newLease),
             fontFamily: FONT.mono,
             fontSize: 38,
             fontWeight: 700,

@@ -20,13 +20,13 @@
     {
       "id": "s01-01",
       "scene": "s01-tres",
-      "text": "<curious> {page}Abres el navegador, escribes la dirección del portal del puerto y, en tres segundos, tienes la página. {title}¿Qué ha pasado en ese rato?",
+      "text": "<curious> {page}Abres el navegador, escribes el nombre del portal del puerto y, en tres segundos, tienes la página. {title}¿Qué ha pasado en ese rato?",
       "pauseAfterMs": 400
     },
     {
       "id": "s01-02",
       "scene": "s01-tres",
-      "text": "<engaging> {promise}Hoy vas a separar cinco piezas que trabajan una detrás de otra. Y vas a ver qué no se repite cuando vuelves a la página un rato después.",
+      "text": "<engaging> {promise}Hoy vas a separar cinco piezas. Una trabaja al conectarte y las otras cuatro en esos tres segundos. Y vas a ver qué no se repite en la segunda visita.",
       "pauseAfterMs": 350
     },
     {
@@ -38,13 +38,13 @@
     {
       "id": "s01-04",
       "scene": "s01-tres",
-      "text": "<warm> {rewind}Es lunes, son las nueve menos dos. {office}Acabas de encender el portátil en la oficina de la naviera, la del vídeo anterior.",
+      "text": "<warm> {rewind}Todo empieza un poco antes. Es lunes, son las nueve menos dos. {office}Acabas de encender el portátil en la oficina de la naviera, la del vídeo anterior.",
       "pauseAfterMs": 650
     },
     {
       "id": "s02-01",
       "scene": "s02-reparte",
-      "text": "<serious> {blank}Al arrancar, tu portátil no sabe qué dirección usar. La que le dieron el viernes ya caducó durante el fin de semana.",
+      "text": "<serious> {blank}Al arrancar, tu portátil no sabe qué dirección usar. La que le dieron el viernes ya caducó mientras estaba apagado.",
       "pauseAfterMs": 350
     },
     {
@@ -62,7 +62,7 @@
     {
       "id": "s02-04",
       "scene": "s02-reparte",
-      "text": "<confident> {card}Y no le da solo la dirección. {mask}Le da la máscara, otra forma de escribir el prefijo, o sea, dónde acaba su red.",
+      "text": "<confident> {card}Y no le da solo la dirección. {mask}Le da la máscara, que marca dónde acaba su red.",
       "pauseAfterMs": 300
     },
     {
@@ -104,7 +104,7 @@
     {
       "id": "s04-01",
       "scene": "s04-agenda",
-      "text": "<curious> Ahora, el nombre del portal. Tu navegador no sabe ir a un nombre, necesita una dirección.",
+      "text": "<curious> Ahora, el nombre del portal. Tu navegador no sabe ir a un nombre, necesita una dirección numérica.",
       "pauseAfterMs": 300
     },
     {
@@ -122,7 +122,7 @@
     {
       "id": "s04-04",
       "scene": "s04-agenda",
-      "text": "<clear> {resolver}Entonces pregunta al resolutor que le dio DHCP, normalmente por {udp}UDP, el recado en el contestador del vídeo anterior.",
+      "text": "<clear> {resolver}Entonces pregunta al resolutor que le dio DHCP. Lo hace casi siempre por {udp}UDP, el recado en el contestador del vídeo anterior.",
       "pauseAfterMs": 350
     },
     {
@@ -170,13 +170,13 @@
     {
       "id": "s06-01",
       "scene": "s06-saludo",
-      "text": "<clear> {tcp}Con la dirección en la mano, el navegador abre una conexión TCP al [443|cuatro cuatro tres] del portal. Es la llamada del vídeo anterior, la que se saluda antes de hablar.",
+      "text": "<clear> {tcp}Ya con la dirección, el navegador abre una conexión TCP al número [443|cuatro cuatro tres] del portal. Es la llamada del vídeo anterior, la que empieza con un saludo antes de hablar.",
       "pauseAfterMs": 350
     },
     {
       "id": "s06-02",
       "scene": "s06-saludo",
-      "text": "<engaging> {channel}Y aquí empieza lo nuevo. Antes de pedir nada, tu navegador y el portal montan un canal protegido.",
+      "text": "<engaging> {channel}Y aquí empieza lo nuevo. Antes de pedir nada, tu navegador y el portal montan un canal cifrado, ilegible para los demás.",
       "pauseAfterMs": 300
     },
     {
@@ -188,19 +188,19 @@
     {
       "id": "s06-04",
       "scene": "s06-saludo",
-      "text": "<thoughtful> {keys}Mientras se saludan, los dos acuerdan unas claves solo para esta conversación. {cert}Y el portal enseña su certificado, que es como su DNI.",
+      "text": "<thoughtful> {keys}Mientras se saludan, los dos acuerdan una clave de usar y tirar, solo para esta conversación. {cert}Y el portal enseña su certificado, que es como su DNI.",
       "pauseAfterMs": 350
     },
     {
       "id": "s06-05",
       "scene": "s06-saludo",
-      "text": "<firm> {proof}Además, demuestra que ese DNI es suyo con un secreto que solo él guarda, su clave privada. {copy}Quien solo haya copiado el certificado no puede hacer eso.",
+      "text": "<firm> {proof}Además, firma con un secreto que solo él guarda, su clave privada. {copy}Quien solo haya copiado el certificado no puede hacer eso.",
       "pauseAfterMs": 400
     },
     {
       "id": "s06-06",
       "scene": "s06-saludo",
-      "text": "<casual> Si tu navegador da todo por bueno, desde ahí todo viaja cifrado con esas claves.",
+      "text": "<casual> Si todo cuadra, desde ahí todo viaja cifrado con esa clave.",
       "pauseAfterMs": 300
     },
     {
@@ -210,7 +210,7 @@
       "pauseAfterMs": 700,
       "exam": {
         "objective": "1.4",
-        "text": "TLS: canal cifrado y autenticación del servidor",
+        "text": "TLS: cifrado, integridad y autenticación del servidor",
         "at": "line",
         "holdSec": 5
       }
@@ -230,25 +230,25 @@
     {
       "id": "s07-03",
       "scene": "s07-dni",
-      "text": "<clear> {signer}Segundo, quién lo firma. No te fías de un DNI porque lo diga el DNI, sino porque reconoces a quien lo expide.",
+      "text": "<clear> {signer}Segundo, quién lo firma. No te fías de un DNI porque lo diga el DNI, sino porque reconoces a la autoridad que lo expide, la CA.",
       "pauseAfterMs": 350
     },
     {
       "id": "s07-04",
       "scene": "s07-dni",
-      "text": "<thoughtful> {chain}Es una cadena. Al del portal lo firma una autoridad intermedia, y a esa, {root}una raíz que tu equipo ya trae instalada.",
+      "text": "<thoughtful> {chain}Es una cadena de firmas. Al del portal lo firma una autoridad intermedia, y a esa, {root}la autoridad raíz, que tu equipo ya trae instalada.",
       "pauseAfterMs": 350
     },
     {
       "id": "s07-05",
       "scene": "s07-dni",
-      "text": "<casual> {dates}Tercero, las fechas. Este vale de noviembre a mayo.",
+      "text": "<clear> {dates}Tercero, las fechas. El del portal vale de noviembre a mayo.",
       "pauseAfterMs": 350
     },
     {
       "id": "s07-06",
       "scene": "s07-dni",
-      "text": "<warning> {revoc}Y cuarto, que no lo hayan anulado. El servidor adjunta una respuesta reciente de la autoridad, firmada, que dice que sigue vigente.",
+      "text": "<warning> {revoc}Y cuarto, que no lo hayan anulado, algo que no todos los navegadores comprueban igual. El servidor adjunta una respuesta reciente, firmada por la CA, que dice que sigue vigente.",
       "pauseAfterMs": 450,
       "exam": {
         "objective": "1.4",
@@ -260,13 +260,13 @@
     {
       "id": "s07-07",
       "scene": "s07-dni",
-      "text": "<confident> {photo}La foto del DNI es como la clave pública, que va dentro del certificado. {face}La cara es la clave privada, y solo la tiene el servidor.",
+      "text": "<confident> {photo}La foto del DNI es como la clave pública del certificado. {face}La cara es la clave privada, y no se enseña, se demuestra firmando algo.",
       "pauseAfterMs": 350
     },
     {
       "id": "s07-08",
       "scene": "s07-dni",
-      "text": "<firm> {copy-dni}Quien copia un DNI no tiene la cara de su dueño. {wrap}O sea, que el navegador comprueba quién es el servidor antes de mandarle nada.",
+      "text": "<firm> {copy-dni}Quien copia un DNI no tiene la cara de su dueño. {wrap}O sea, que el navegador comprueba quién es el servidor antes de mandarle tu petición.",
       "pauseAfterMs": 700
     },
     {
@@ -290,7 +290,7 @@
     {
       "id": "s08-04",
       "scene": "s08-pagina",
-      "text": "<confident> {ok}El servidor responde con un código, el doscientos, que quiere decir todo bien, y con la página.",
+      "text": "<confident> {ok}El servidor responde con la página y con un código, el doscientos, que quiere decir todo bien.",
       "pauseAfterMs": 350
     },
     {
@@ -324,7 +324,7 @@
     {
       "id": "s09-02",
       "scene": "s09-rato",
-      "text": "<firm> {table}Casi nada, aunque es fácil pensar que cada visita empieza de cero. {no-dhcp}La concesión sigue viva, así que no hay DHCP.",
+      "text": "<firm> {table}Casi nada, aunque parezca que cada visita empieza de cero. {no-dhcp}La concesión sigue viva, así que no hay DHCP.",
       "pauseAfterMs": 300
     },
     {
@@ -336,31 +336,31 @@
     {
       "id": "s09-04",
       "scene": "s09-rato",
-      "text": "<thoughtful> {tcp-closed}La conexión de antes, seguramente, ya se cerró. {tls-resume}Pero el navegador puede retomar la sesión TLS con un saludo más corto.",
+      "text": "<thoughtful> {tcp-closed}La conexión de antes, seguramente, ya se cerró. {tls-resume}Pero el navegador puede retomar lo ya acordado, la sesión TLS, con un saludo más corto.",
       "pauseAfterMs": 350
     },
     {
       "id": "s09-05",
       "scene": "s09-rato",
-      "text": "<casual> {http-new}Lo que sí va es una petición HTTP nueva, dentro del canal.",
+      "text": "<clear> {http-new}Lo que sí se repite siempre es la petición HTTP, dentro del canal.",
       "pauseAfterMs": 400
     },
     {
       "id": "s09-06",
       "scene": "s09-rato",
-      "text": "<engaging> {two-hours}¿Y si vuelves dos horas después? El TTL ya pasó, así que hay consulta DNS. Seguramente también conexión y saludo TLS nuevos. Pero la concesión sigue valiendo.",
+      "text": "<engaging> {two-hours}¿Y dos horas después? El TTL ya pasó, así que hay consulta DNS. Seguramente habrá conexión nueva. Y el saludo TLS, completo o abreviado, según guarde el navegador la sesión.",
       "pauseAfterMs": 400
     },
     {
       "id": "s09-07",
       "scene": "s09-rato",
-      "text": "<satisfied> {own-clock}O sea, que cada pieza tiene su propio reloj, y solo la petición va siempre.",
+      "text": "<satisfied> {own-clock}La concesión sigue valiendo. O sea, que cada pieza tiene su propio reloj, y solo la petición se hace siempre.",
       "pauseAfterMs": 700
     },
     {
       "id": "s10-01",
       "scene": "s10-correo",
-      "text": "<intrigued> {mail}Ahora imagina otra cosa. Te llega un correo con un enlace. {lookalike}Lleva a una web casi igual a la del puerto, con un cero en lugar de una o.",
+      "text": "<intrigued> {mail}Ahora imagina otra cosa. Te llega un correo con un enlace. {lookalike}Lleva a una web casi igual a la del puerto, con un cero en lugar de la letra o.",
       "pauseAfterMs": 350
     },
     {
@@ -376,19 +376,19 @@
     {
       "id": "s10-03",
       "scene": "s10-correo",
-      "text": "<firm> {not-enough}No basta. El certificado demuestra que hablas, cifrado, con quien controla ese nombre. {zero}Y ese nombre es el del cero.",
+      "text": "<firm> {not-enough}No basta. El certificado demuestra que hablas cifrado con quien controla ese nombre. {zero}Y ese nombre es el del cero.",
       "pauseAfterMs": 400
     },
     {
       "id": "s10-04",
       "scene": "s10-correo",
-      "text": "<clear> {easy}Conseguir un certificado para un dominio propio es fácil. Solo tienes que demostrar que controlas ese nombre.",
+      "text": "<clear> {easy}Conseguir un certificado para un nombre que sea tuyo es fácil. Solo tienes que demostrar que lo controlas.",
       "pauseAfterMs": 350
     },
     {
       "id": "s10-05",
       "scene": "s10-correo",
-      "text": "<warm> {dni}Igual que un DNI auténtico tampoco dice si quien lo lleva es honrado.",
+      "text": "<warm> {dni}Es como un DNI auténtico, que tampoco dice si quien lo lleva es honrado.",
       "pauseAfterMs": 700,
       "exam": {
         "objective": "2.2",
@@ -406,7 +406,7 @@
     {
       "id": "s11-02",
       "scene": "s11-canal",
-      "text": "<clear> {path}El cifrado protege el camino, no lo que la web hace con lo que recibe. Tampoco dice qué hará el puerto con tus datos cuando lleguen.",
+      "text": "<clear> {path}El cifrado protege el camino, no lo que la web hace con lo que recibe.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "3.2",
@@ -418,13 +418,13 @@
     {
       "id": "s11-03",
       "scene": "s11-canal",
-      "text": "<thoughtful> {warning}Y si un día el navegador te avisa de un problema con el certificado, no lo saltes.",
+      "text": "<thoughtful> {warning}Y si un día el navegador te avisa de un problema con el certificado, no te lo saltes.",
       "pauseAfterMs": 300
     },
     {
       "id": "s11-04",
       "scene": "s11-canal",
-      "text": "<casual> {causes}Puede que el nombre no cuadre, que falte parte de la cadena o que esté fuera de fecha, entre otras causas.",
+      "text": "<clear> {causes}Puede ser que el nombre no cuadre, que falte un eslabón de la cadena o que esté fuera de fecha.",
       "pauseAfterMs": 350
     },
     {
@@ -442,7 +442,7 @@
     {
       "id": "s12-01",
       "scene": "s12-cierre",
-      "text": "<engaging> {recap}Te quedas con tres reglas. {rule-1}Una. Cada pieza tiene su trabajo.",
+      "text": "<engaging> {recap}Te quedas con tres reglas. {rule-1}Primera, cada pieza tiene su trabajo.",
       "pauseAfterMs": 300
     },
     {
@@ -454,13 +454,13 @@
     {
       "id": "s12-03",
       "scene": "s12-cierre",
-      "text": "<confident> {rule-2}Dos. No todo se repite. La concesión dura horas, la respuesta del DNS vive lo que dice su TTL, y las sesiones TLS se pueden retomar.",
+      "text": "<confident> {rule-2}Segunda, no todo se repite. La concesión dura horas, la respuesta del DNS vive lo que dice su TTL, y las sesiones TLS se pueden retomar.",
       "pauseAfterMs": 350
     },
     {
       "id": "s12-04",
       "scene": "s12-cierre",
-      "text": "<warm> {rule-3}Tres. Un certificado válido dice con quién hablas, no si es de fiar.",
+      "text": "<warm> {rule-3}Tercera, un certificado válido dice con quién hablas, no si es de fiar.",
       "pauseAfterMs": 400
     },
     {
