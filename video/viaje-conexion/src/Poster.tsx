@@ -5,6 +5,10 @@ import { Backdrop } from '../../engine/src/ui/Backdrop';
 import { Chip } from '../../engine/src/ui/Chip';
 import { BrandMark } from '../../engine/src/overlay/ChapterRail';
 import { SIMULATION_LABEL } from '../../engine/src/overlay/SimulationTag';
+import { Edificio } from './scenes/parts/Edificio';
+import { DeviceTile } from './scenes/parts/Glyphs';
+import { Label } from './scenes/parts/Label';
+import { EPHEMERAL_PORT, HTTPS_PORT, LAPTOP, PORTAL_IP } from './scenes/parts/data';
 import { TIMELINE } from './timeline/load';
 
 ensureFonts();
@@ -16,9 +20,8 @@ function durationLabel(): string {
 }
 
 /**
- * Poster / YouTube thumbnail STUB for «Cómo viaja una conexión». Phase 2 replaces it with the real art
- * (the five-box label travelling from the laptop to the portal, see storyboard.json s02/s08); the title
- * block, the brand line and the chips below are the final layout.
+ * Poster / YouTube thumbnail for «Cómo viaja una conexión»: the video's thread, the five-box label, on its way
+ * from the laptop to the port's portal (dashed route), beside the title block, the brand line and the chips.
  */
 export function Poster() {
   const left = LAYOUT.marginX;
@@ -59,6 +62,21 @@ export function Poster() {
         <Chip accent="muted" size={26} style={{ color: C.muted }}>
           {SIMULATION_LABEL}
         </Chip>
+      </div>
+
+
+      {/* art: laptop -> label (on a parcel) -> portal */}
+      <svg width={1920} height={1080} style={{ position: 'absolute', left: 0, top: 0 }}>
+        <path d="M1190,790 C1190,640 1420,720 1560,610 C1640,545 1655,500 1668,470" fill="none" stroke={C.cyanSoft} strokeWidth={8} strokeLinecap="round" strokeDasharray="22 26" opacity={0.9} />
+      </svg>
+      <div style={{ position: 'absolute', left: 1560, top: 150, width: 300 }}>
+        <Edificio width={300} height={340} glow={0.5} />
+      </div>
+      <div style={{ position: 'absolute', left: 1050, top: 790, width: 300 }}>
+        <DeviceTile kind="laptop" tile={150} />
+      </div>
+      <div style={{ position: 'absolute', left: 1085, top: 548, transform: 'rotate(-4deg)', transformOrigin: 'center' }}>
+        <Label values={{ oAddr: LAPTOP.ip, oPort: EPHEMERAL_PORT, dAddr: PORTAL_IP, dPort: HTTPS_PORT, proto: 'TCP' }} scale={1.02} glass={0} />
       </div>
 
       {/* disclaimer */}
