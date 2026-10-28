@@ -599,3 +599,70 @@ servicio). Sin abrir: el resto de la lista.
 - Cómo se dibuja el indicador de conexión segura del navegador, sin candado.
 - El objetivo de cada tarjeta de examen (00-propuesta §6), sobre todo 4.5 para DNS.
 - La duración real tras `build-timeline --estimate` y la grabación.
+
+## Decisiones tomadas (fase 1)
+
+> 2026-10-28. La carpeta `video/abrir-web/` existe con `video.json`, `storyboard.json`, `narration.json`, léxicos,
+> andamio de escenas (doce stubs con `Placeholder`), póster provisional y `src/timeline.json` estimado. El guion **no
+> está congelado** (sin `"frozen"`) y no hay escenas ni voz. `out/scene-brief.md` lleva su bloque «Canon» rellenado.
+
+### Resultado de la validación
+
+- `build-timeline --estimate`: **585,6 s (9:45)**, 68 segmentos, 1329 palabras (las mismas de la parte C), 6 tarjetas de
+  examen, 2 pausas para pensar, 89 cues, **sin avisos**. El motor estima a **2,5 palabras/s**, no a 2,7: por eso sale
+  más largo que el 9:14 de E.2. Cabe en 380–600 s, pero con solo 14 s de margen. Con la grabación de Lidia (suele quedar
+  hacia el 92 % de `--estimate`) saldrían unos 9:00. Si la toma real se pasara de 10:00, lo primero que se recorta son
+  las pausas (`pauseAfterMs`), nunca texto didáctico.
+- `script-sheets`: solo el aviso de «no congelado». `canon-check`: 15 elementos, 5 con historia (`reservas.haldenport.example`,
+  la línea TLS, `TlsLine.tsx`, `CaSeal.tsx`, `haldenp0rt.example`) y 10 nuevos, ninguno que choque. Los nuevos son los
+  valores de `00-propuesta.md` §6 (`192.168.20.10`, `.1`, `.2`, máscara, `192.0.2.44`) y las horas `12:58`, `16:58` y
+  `10:58`; `8:58`, `9:01` y «3 s» no los detecta (una cifra de hora).
+
+### Lo que no se pudo traducir tal cual
+
+| Ficha | Hecho | Motivo |
+|---|---|---|
+| `"lesson": "f10"` en `video.json` | **Omitido** | `checkManifest` exige `/^sp?\d+m\d+$/` (`video/engine/scripts/lib/paths.mjs`): `f10` es un error, no un aviso. Para enlazar la descripción de YouTube con la lección de fundamentos habría que ampliar esa expresión (p. ej. `^(sp?\d+m\d+\|f\d{2})$`) y lo que lea `youtube-meta.mjs`; es un cambio del motor, fuera de esta fase. |
+| `"examTiming": "sentence-end"` «en `video.json`» | Va en **`narration.json`** | Es donde lo lee el motor (`build-timeline.mjs:270`); en `video.json` no haría nada. |
+| Título de YouTube «Qué sucede al abrir una web: DHCP, DNS, TLS y certificados · Fundamentos para Security+» | `youtubeTitle` = «Qué sucede al abrir una web: DHCP, DNS, TLS y certificados» | `youtubeTitle` admite 80 caracteres y el motor añade « \| Security+ SY0-701 en español» (YouTube corta a 100). «Fundamentos» ya no cabe en el título; se dice en la descripción y en el póster. |
+| Etiquetas | Elegidas: DHCP, DNS, TTL, TCP, TLS, HTTP, HTTPS, certificados digitales, cómo funciona una web, fundamentos de redes, fundamentos de ciberseguridad, Security+, SY0-701 | La ficha no las lista. |
+| Parte C, un párrafo = un segmento | Diez párrafos largos se **parten en dos segmentos** | El validador pide 8–30 palabras por segmento y las frases ≤ 22. Solo cambia dónde se corta; las palabras son las mismas, salvo en s03: «… no conteste, o que la puerta de enlace…» pasa a «… no conteste.» y «O que la puerta de enlace…» (un punto y una mayúscula, para no dejar un segmento de 33 palabras). Las partes: s02-04/05, s03-04/05, s04-01/02 y s04-06/07, s06-02/03 y s06-06/07, s08-01/02, s09-02/03, s11-03/04, s12-01/02. «Te quedas con tres reglas.» se junta con «Una. Cada pieza tiene su trabajo.» (un segmento de 6 palabras avisa). |
+| `sello` | Va en el `goal` de s02–s12 y en `storyboard.json` → `notice` (campo informativo, el motor no lo lee) | El motor solo dibuja la pastilla «Simulación educativa · datos ficticios». «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto» lo dibuja cada escena; `simulationLabel` no sirve (es para vídeos de casos reales y admite 40 caracteres). |
+
+### Decisiones abiertas de F.4
+
+1. **Libro de la biblioteca y agenda del móvil.** Comprobado en `glass-harbor.md` («biblioteca», «agenda», «libro», «contestador»,
+   «recado»): ninguna imagen del canon usa un libro; «la biblioteca de terceros» de V29 (`reg:303`) es una biblioteca de
+   código y no se confunde con el libro con fecha de devolución, que lleva su rótulo «imagen · no es del puerto». La
+   agenda sí aparece en V34 (`reg:2237`, `:2247`: «el número de la agenda»), como directorio de teléfonos del puerto en un
+   caso de ingeniería social; F2 usa «la agenda del móvil» como imagen del DNS, fuera del puerto. Aceptado como
+   **solape menor**, que Lidia puede cambiar si no lo quiere. Decisión: se mantienen las dos imágenes y la voz sigue sin decir «préstamo».
+2. **El DNI para el certificado entero.** Se mantiene. V12 ya dibuja el DNI como el certificado del portal
+   (`DniCard` en `video/pki-halden/src/scenes/parts/Hotel.tsx:216`: silueta y barras, nunca un número), así que la imagen
+   existe y es reutilizable. En la voz es siempre «DNI», nunca «carné» (V21).
+3. **Dominio parecido.** `haldenp0rt.example` (V1, `reg:395`; también V6, `iam-halden/src/data/s08-fatigue.ts:33`). V34 lo muestra en
+   esquema y sin dominio, pero F2 va fuera del incidente y rotula la copia «ejemplo · no existe en el caso». No choca.
+4. **Indicador de conexión segura sin candado.** Un icono de controles del sitio (dos barras con círculos, como el del
+   navegador actual), neutro y cian, **sin candado, sin marca y sin cambio de color** entre s08 y s10. Si en s10 cambiara
+   de aspecto, la pausa perdería su sentido.
+5. **Objetivo de cada tarjeta de examen** (`00-propuesta.md` §6): s05 → 4.5, s06 y s07 → 1.4, s08 y s11 → 3.2, s10 → 2.2.
+   Sigue siendo una decisión editorial que Lidia debe confirmar; `video.json` → `"examBadge"` admite otra etiqueta.
+6. **Duración.** La que imprime `build-timeline --estimate`: 9:45 (ver arriba).
+
+### Otras decisiones de montaje
+
+- `wordBudget` = `round(targetSec × 2,7)`; en s09 y s10 se descuentan 5,5 s de pausa para pensar. Todas las escenas quedan por
+  debajo de su presupuesto (88/95, 108/113, 98/105, 119/127, 76/84, 142/149, 162/167, 109/116, 131/139, 91/99, 117/124, 88/95).
+  `targetTotalSec` = 534 (suma de escenas).
+- Las dos pausas para pensar son `s09-01` («¿Se repite todo el proceso?») y `s10-02` («Certificado válido: ¿web de fiar?»),
+  a 4500 ms; las opciones («Sí, todo» / «No, casi nada» y «Sí» / «No basta») las dibuja la escena y están en su `goal`.
+- Tarjetas de examen: s05 (cue `wrap`), s06 (`line`), s07 (`revoc`), s08 (`https`), s10 (`dni`) y s11 (`path`); `holdSec` 5.
+  Las de s05 y s10 caen en la última frase de su escena y el motor las deja justo dentro (acaban justo al final de la escena);
+  con la voz real puede hacer falta alargar el `pauseAfterMs` de `s05-03` o `s10-05` (no cambia lo que se dice).
+- Efectos (`narration.json` → `sfx`, ids únicos en todo el vídeo): `ack` → `ding` (s02), `expire` → `ping2` (s05), `name`,
+  `signer`, `dates` y `revoc` → `check` (s07), `skip` → `error` (s11). El motor añade además un `ding` por tarjeta de examen y un `whoosh` por capítulo.
+- Léxico (`lexicon.json` = `lexicon.chatterbox.json`): DHCP, DNS, TTL, TCP, UDP, TLS, HTTP, HTTPS, GET, IPv4, DNI, cookie.
+  «A» (registro de tipo A) no se incluye, porque chocaría con la preposición. «443» se escribe `[443|cuatro cuatro tres]`.
+- `s09` pasa el reloj de pared a «10:58» en la columna de 2 h (8:58 + 2 h): para entonces el TTL venció a las 9:58 y la concesión sigue viva hasta las 16:58.
+- Andamio: copia de `video/iam-halden` (`tsconfig.json`, `src/index.ts`, `Root.tsx`, `timeline/load.ts`, `scenes/kit.tsx`, `Placeholder.tsx`) con el nombre cambiado, un stub por id y un póster provisional con «ALERTÓPOLIS».
+  No se ha ejecutado `tsc` (poca RAM); los ficheros copiados son idénticos a los de iam-halden salvo el nombre.
