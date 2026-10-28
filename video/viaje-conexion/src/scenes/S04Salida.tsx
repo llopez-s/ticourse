@@ -57,7 +57,7 @@ export function S04Salida(props: SceneProps) {
 
   // ---- config panel ----
   const cfg = enter(frame, configAt - 2, { distance: 18 });
-  const gwHi = progress(frame, wordFrame(S, 's04-02', 'especial') - 4, 12);
+  const gwHi = progress(frame, wordFrame(S, 's04-01', 'apuntada') - 4, 12);
   const cfgDim = 0.5 * progress(frame, tableAt - 6, 14);
 
   // ---- packet to the router (handoff) ----
@@ -84,7 +84,8 @@ export function S04Salida(props: SceneProps) {
   const fwd = progress(frame, forwardAt - 4, 12) * (1 - progress(frame, backAt - 6, 12));
   const back = progress(frame, backAt - 2, 12) * (1 - amber);
   const lit = [back, fwd, 0];
-  const miss = [amber, 0, 0];
+  // the router's own row (a connected route) never fails; what is missing is the server's way back (its gateway)
+  const miss = [0, 0, 0];
   const signs = progress(frame, tableAt + 8, 18);
 
   // ---- reply (back) ----
@@ -232,9 +233,12 @@ export function S04Salida(props: SceneProps) {
             <div style={{ position: 'absolute', left: loopX - 32, top: loopY - 24, opacity: amber }}>
               <Parcel width={64} tone="amber" glow={0.5} />
             </div>
-            <div style={{ position: 'absolute', left: 1300 - 300, top: Y - 150, width: 600, textAlign: 'center', ...enter(frame, missingAt + 6, { distance: 12 }) }}>
+            <div style={{ position: 'absolute', left: 1300 - 380, top: Y - 196, width: 760, textAlign: 'center', ...enter(frame, missingAt + 6, { distance: 12 }) }}>
               <Line size={46} color={C.amber} weight={850}>
                 sin ruta de vuelta
+              </Line>
+              <Line size={30} color={C.amber} weight={700} style={{ marginTop: 4 }}>
+                falta o falla la puerta de enlace del servidor
               </Line>
             </div>
             <div style={{ position: 'absolute', left: SRV.x - 250, top: Y + 138, width: 500, display: 'flex', justifyContent: 'center', opacity: reached }}>

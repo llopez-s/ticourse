@@ -147,11 +147,11 @@ propio: f02 entra de lado en F3; f01 no entra. Si hiciera falta un quinto, serí
   | `192.168.20.10/24` · `.80` · `192.168.30.10/24` | portátil, impresora y servidor de ficheros de la naviera | F1, F2 | son los números del ejemplo resuelto de f06 (`fund:28`): el vídeo dibuja el ejemplo de la lección |
   | `192.168.20.1` / `192.168.30.1` | gateway de la naviera (las dos patas del router) | F1, F2 | primera dirección de cada /24 |
   | `192.168.20.2` | resolutor DNS de la oficina de la naviera | F2 | separa el papel de resolutor del de router |
-  | `198.51.100.17` | dirección pública (NAT) de la naviera | F1, F2 | fuera de `203.0.113.0/24` (SILENT PAGER) y de `192.0.2.157` (RED MARROW); `198.51.100.x` solo tiene resolvers abiertos (`.61`, `.140`, `.203`, `.212`) y `.23` |
+  | `198.51.100.17` | dirección pública (NAT) de la naviera | F1, F2 | fuera de `203.0.113.0/24` (SILENT PAGER) y de `192.0.2.157` (RED MARROW); `198.51.100.x` solo tiene resolvers abiertos (`.61`, `.140`, `.203`, `.212`) y `.23`; tampoco es ninguna del listín de V4 (`.7` `blog-recetas.example`, `.63`, `.90` `tienda-flores.example`; `velvet-cicada.md:421`) |
   | `192.0.2.44` | dirección pública del portal de reservas | F1, F2 | el registro no da ninguna; rótulo «ejemplo de entrenamiento» |
   | puertos `51422` → `61002` | puerto efímero del portátil y el que pone NAT | F1 | los de los ejemplos de f05 (`fund:24`) y f07 (`fund:32`) |
   | taller de grúas, carpetas «Partes de avería» e «Informes», grupos Mantenimiento, Personal del taller, Operaciones y Jefatura del taller, cuenta `svc_resumen` (proceso `resumen.exe`, PID 4120), la copia en Linux de la cuenta `mant` | caso de permisos | F3 | `svc_` como las cuentas de servicio del canon; no reutiliza `svc_tosreport` (es del incidente) |
-  | `l.prado` (Comercial), `10.20.6.37`, `syncbox.exe` PID 6120, `subidas.compartir.example`, `198.51.100.117`; la línea del cortafuegos con `start` y `end` | caso de la cronología | F4 | rotulado «imagina»; `10.20.6.x` es Oficinas; `start`/`end` porque los cortafuegos suelen registrar al cerrar la sesión |
+  | `l.prado` (Comercial), `10.20.6.37`, `syncbox.exe` PID 6120, `subidas.compartir.example`, `198.51.100.117` (no `.90`, que es `tienda-flores.example` en V4); la línea del cortafuegos con `start` y `end` | caso de la cronología | F4 | rotulado «imagina»; `10.20.6.x` es Oficinas; `start`/`end` porque los cortafuegos suelen registrar al cerrar la sesión |
 
 **Evaluación.** Las actividades de los vídeos (pausas y las dos posteriores de cada uno) **no copian** la evaluación
 de salida de fundamentos (`fund:55-80`), las cuatro prácticas (`prac:129-132`) ni los simulacros

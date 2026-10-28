@@ -79,7 +79,7 @@ export function S07Llamada(props: SceneProps) {
 
   // ---- segments 1 2 3 ----
   const segSpan = LANE_X1 - LANE_X0 - 56;
-  const s1At = wf('s07-03', 'comprobando');
+  const s1At = wf('s07-03', 'compruebas');
   const s2At = Math.max(s1At + 36, wf('s07-03', 'frase') - 6);
   const lostAt = Math.max(s2At + 22, wf('s07-03', 'pierde') + 4);
   const s2bAt = wf('s07-03', 'repites') - 12;

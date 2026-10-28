@@ -240,7 +240,12 @@ export function S09Portal(props: SceneProps) {
               <Line size={40} weight={850} color={C.cyan}>
                 de la naviera
               </Line>
-              <div style={{ marginTop: 10, opacity: Math.max(hourHi, portsHi) }}>
+              <div style={{ marginTop: 8 }}>
+                <Line size={30} weight={650} color={C.muted}>
+                  traducciones guardadas
+                </Line>
+              </div>
+              <div style={{ marginTop: 6, opacity: Math.max(hourHi, portsHi) }}>
                 <Line size={30} weight={650} color={C.muted}>
                   con la hora y los puertos
                 </Line>

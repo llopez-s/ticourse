@@ -164,7 +164,7 @@ export function Plano({
       {/* ---- office ---- */}
       <div style={{ position: 'absolute', left: PLANO.office.x, top: PLANO.office.y, width: PLANO.office.w, height: PLANO.office.h, opacity: sh('office') }}>
         <div style={{ position: 'absolute', inset: 0, borderRadius: RADIUS.lg, border: `2px solid ${C.ink600}`, background: alpha(C.ink850, 0.7) }} />
-        <div style={{ position: 'absolute', left: 24, top: 16, fontFamily: FONT.sans, fontSize: 30, fontWeight: 700, color: C.muted, whiteSpace: 'nowrap' }}>Oficina de la naviera</div>
+        <div style={{ position: 'absolute', left: 24, top: 16, fontFamily: FONT.sans, fontSize: 30, fontWeight: 700, color: C.muted, whiteSpace: 'nowrap', opacity: names }}>Oficina de la naviera</div>
       </div>
       {[
         { key: 'laptop' as const, kind: 'laptop' as const, host: LAPTOP, at: PLANO.laptop },
@@ -200,7 +200,7 @@ export function Plano({
             border: `2px dashed ${alpha(C.sky, 0.35 + 0.4 * g('cloud'))}`,
           }}
         />
-        <div style={{ position: 'absolute', left: 0, right: 0, top: PLANO.cloud.h + 2, textAlign: 'center', fontFamily: FONT.sans, fontSize: 44, fontWeight: 800, color: C.sky }}>Internet</div>
+        <div style={{ position: 'absolute', left: 0, right: 0, top: PLANO.cloud.h + 2, textAlign: 'center', fontFamily: FONT.sans, fontSize: 44, fontWeight: 800, color: C.sky, opacity: names }}>Internet</div>
       </div>
       {PLANO.hops.map((p, i) => {
         const lit = hops?.[i] ?? 0;

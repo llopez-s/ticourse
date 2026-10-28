@@ -37,14 +37,15 @@ export function S05Internet(props: SceneProps) {
   const signsAt = props.cue('signs');
   const routingAt = props.cue('routing');
   const wrapAt = props.cue('wrap');
-  const backAt = wordFrame(S, 's05-07', 'router') - 4;
-  const returnAt = wordFrame(S, 's05-07', 'vuelta') - 40;
+  // the reply travels back (and the third recap line, «también a la vuelta», comes in) while «vas a la puerta de enlace» is said
+  const backAt = wordFrame(S, 's05-06', 'vas') - 4;
+  const returnAt = backAt;
 
   // ---- top band: table + portal address, then the routing label, then the recap ----
   const topFade = 1 - progress(frame, wrapAt - 4, 14);
   const tableIn = progress(frame, portalAt - 2, 16);
   const addrIn = enter(frame, portalAt - 2, { distance: 16 });
-  const noFitAt = wordFrame(S, 's05-01', 'ninguna') - 4;
+  const noFitAt = wordFrame(S, 's05-01', 'no') - 2;
   const no0 = progress(frame, noFitAt, 10);
   const no1 = progress(frame, noFitAt + 14, 10);
   const yes = progress(frame, ispAt - 2, 12);
@@ -68,7 +69,7 @@ export function S05Internet(props: SceneProps) {
   const portalGlow = Math.max(progress(frame, portalAt, 12) * 0.4 * (1 - progress(frame, ispAt, 10)), arrive);
   const routerGlow = near(t, F_ISP, 0.03) * (frame >= ispAt - 10 ? 1 : 0);
 
-  // reply travelling back (s05-07)
+  // reply travelling back (over the end of s05-06)
   const back = progress(frame, returnAt, 90, EASE.inOut);
   const rp = routePoint(Math.max(0.001, 1 - back));
 

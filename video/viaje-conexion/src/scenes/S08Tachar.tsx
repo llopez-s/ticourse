@@ -171,7 +171,7 @@ export function S08Tachar(props: SceneProps) {
               pública; cada
             </Line>
             <Line size={34} weight={750} style={{ lineHeight: 1.28 }}>
-              conversación,
+              conexión,
             </Line>
             <Line size={34} weight={750} color={C.amber} style={{ lineHeight: 1.28 }}>
               su propio puerto

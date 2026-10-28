@@ -18,7 +18,7 @@ const PORTS = [EPHEMERAL_PORT, ...OTHER_EPHEMERAL];
  * s06-despacho «Edificio y despacho». On `building` the portal appears as a building with three numbered
  * offices (443, 22, 25) of which only 443 has light; on `port` «la dirección es el edificio» and «el puerto
  * es el despacho» come in and the address plate and the offices light in turn; on `ephemeral` the laptop's
- * origin port 51422 is shown with «efímero · lo elige tu portátil para esta conversación»; on `convo` the
+ * origin port 51422 is shown with «efímero · lo elige tu portátil para esta conexión»; on `convo` the
  * browser shows three open connections, each with its port, and the reply enters its own; on `label` a
  * parcel with the empty five-box label fills box by box as the voice names them (origin address and port,
  * destination address and port, then TCP); on `inside` the label turns translucent and «¿qué lleva?» shows.
@@ -56,11 +56,12 @@ export function S06Despacho(props: SceneProps) {
   // ---- parcel with the label ----
   const parcelIn = progress(frame, labelAt - 8, 18);
   const words = (w: string, n: number) => wordFrame(S, 's06-05', w, n);
-  const atO = words('Dirección', 0) + 2;
-  const atOp = words('puerto', 0) + 2;
-  const atD = words('dirección', 1) + 2;
-  const atDp = words('puerto', 1) + 2;
-  const atProto = words('destino', 0) + 26;
+  // «Origen y destino, cada uno con su dirección y su puerto. En total, la etiqueta completa lleva cuatro datos y el protocolo.»
+  const atO = words('Origen', 0) + 2;
+  const atOp = atO + 12;
+  const atD = words('destino', 0) + 2;
+  const atDp = atD + 12;
+  const atProto = words('protocolo', 0) + 2;
   const rev = (at: number) => progress(frame, at, 14, EASE.linear);
   const reveal: Partial<Record<BoxKey, number>> = { oAddr: rev(atO), oPort: rev(atOp), dAddr: rev(atD), dPort: rev(atDp), proto: rev(atProto) };
   const focus: BoxKey | null = frame >= atProto ? 'proto' : frame >= atDp ? 'dPort' : frame >= atD ? 'dAddr' : frame >= atOp ? 'oPort' : frame >= atO ? 'oAddr' : null;
@@ -116,7 +117,7 @@ export function S06Despacho(props: SceneProps) {
             <div style={{ marginTop: 6, fontFamily: FONT.sans, fontSize: 34, fontWeight: 750, color: C.textStrong, lineHeight: 1.22 }}>
               efímero · lo elige tu portátil
               <br />
-              para esta conversación
+              para esta conexión
             </div>
           </div>
         ) : null}

@@ -6,7 +6,7 @@ import { EASE, enter, progress, pulse } from '../../../engine/src/theme/motion';
 import { Chip } from '../../../engine/src/ui/Chip';
 import { Icon, type IconName } from '../../../engine/src/ui/Icon';
 import { Stage, wordFrame } from './kit';
-import { NAT_ROWS, RDP_PACKET } from './parts/data';
+import { RDP_NAT, RDP_PACKET } from './parts/data';
 import { DeviceTile, Parcel } from './parts/Glyphs';
 import { CaseStamp, Line } from './parts/Marks';
 import { RuleList } from './parts/RuleList';
@@ -62,7 +62,7 @@ function Box({ x, kind, title, glow, opacity = 1, children }: { x: number; kind:
  * `rules`: the outbound list; `scan`: a bar reads it from the top, passing rule 1 and 2 («no coincide»);
  * `implicit`: it stops on the grey row, «denegación implícita»; `stop`: the packet is held at the firewall, NAT
  * writes nothing («lo habría traducido igual») while the web packet goes through; `state`: the portal's answer
- * comes in because the conversation was opened from inside; `split`: two jobs in one device; `nocrypt`: a chip
+ * comes in because the connection was opened from inside; `split`: two jobs in one device; `nocrypt`: a chip
  * says neither encrypts (no padlock: that is TLS, next video).
  */
 export function S10Decidir(props: SceneProps) {
@@ -211,8 +211,8 @@ export function S10Decidir(props: SceneProps) {
         <Box x={BOX.natX} kind="nat" title="NAT · traduce" glow={natGlow}>
           {ghost > 0.01 ? (
             <div style={{ position: 'absolute', left: 24, top: 92, opacity: ghost, fontFamily: FONT.mono, fontSize: 27, fontWeight: 650, color: STEEL_SOFT, lineHeight: 1.45, whiteSpace: 'nowrap', clipPath: `inset(-4px ${Math.round((1 - ghost) * 100)}% -4px 0)` }}>
-              <div style={{ textDecoration: 'line-through', textDecorationColor: STEEL }}>{NAT_ROWS[2].inside}</div>
-              <div>{NAT_ROWS[2].outside}</div>
+              <div style={{ textDecoration: 'line-through', textDecorationColor: STEEL }}>{RDP_NAT.inside}</div>
+              <div>{RDP_NAT.outside}</div>
             </div>
           ) : null}
           {natJobText > 0.02 ? (
@@ -254,7 +254,7 @@ export function S10Decidir(props: SceneProps) {
         {frame >= stateAt - 2 && stateCaptionOut > 0.01 ? (
           <div style={{ position: 'absolute', left: 0, top: TAG_Y - 2, width: 1728, display: 'flex', justifyContent: 'center', ...stateCaption, opacity: stateCaption.opacity * stateCaptionOut }}>
             <Line size={46} weight={850} color={C.emerald}>
-              conversación abierta desde dentro · estado
+              conexión abierta desde dentro · estado
             </Line>
           </div>
         ) : null}

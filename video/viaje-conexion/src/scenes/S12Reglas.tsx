@@ -28,7 +28,7 @@ const END = {
 } as const;
 
 /**
- * s12-reglas «Tres reglas». Three numbered slots wait; each rule card lights as the voice says it (`r1` «Una»,
+ * s12-reglas «Tres ideas». Three numbered slots wait; each idea card lights as the voice says it (`r1` «Una»,
  * `r2` «Dos», `r3` «Tres»), the canon sentence of the rule as its subtitle. On `next` the cards step back and
  * the end card arrives: ALERTÓPOLIS, «Cómo viaja una conexión», the plan in miniature and the one next step,
  * the button «Práctica · Mapa de red», which holds to the last frame. No exam card, nothing new on screen.

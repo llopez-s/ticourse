@@ -71,9 +71,11 @@ export const NAT_ROWS = [
 export const RULES = [
   { n: 1, who: 'Oficina a Internet', proto: 'TCP', ports: '443 y 80', verdict: 'permitir' },
   { n: 2, who: 'resolutor de la oficina a Internet', proto: 'UDP y TCP', ports: '53', verdict: 'permitir' },
-  { n: null, who: 'lo demás', proto: '', ports: '', verdict: 'denegar' },
+  { n: null, who: 'lo demás hacia Internet', proto: '', ports: '', verdict: 'denegar' },
 ] as const;
 export const RDP_PACKET = `equipo externo · ${RDP_PORT} · escritorio remoto`;
+/** The translation NAT would write for the remote-desktop packet of s10 (another laptop; its own row, not a web row). */
+export const RDP_NAT = { inside: '192.168.20.34:50761', outside: `${PUBLIC_IP}:61006` } as const;
 
 /** Label stages of s11. */
 export const STAGES = {
@@ -85,6 +87,6 @@ export const STAGES = {
 /** The three rules of s12 (exact canon). */
 export const THREE_RULES = [
   'Misma red: entregas tú; si no, puerta de enlace; cada router decide el siguiente salto, también a la vuelta',
-  'La etiqueta lleva direcciones y puertos; el puerto dice a qué servicio va, no qué contiene',
+  'La etiqueta lleva direcciones y puertos; el puerto dice a qué servicio apunta, no qué contiene',
   'NAT cambia la etiqueta y lo apunta; quien decide qué pasa es el cortafuegos',
 ] as const;
