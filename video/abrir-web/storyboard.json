@@ -1,0 +1,241 @@
+{
+  "title": "Qué sucede al abrir una web",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 534,
+  "notice": "Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto · Simulación educativa · datos ficticios",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "La configuración: DHCP"
+    },
+    {
+      "n": 2,
+      "title": "El nombre: DNS"
+    },
+    {
+      "n": 3,
+      "title": "El canal: TCP y TLS"
+    },
+    {
+      "n": 4,
+      "title": "La petición y la segunda visita"
+    },
+    {
+      "n": 5,
+      "title": "Lo que el certificado no dice"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-tres",
+      "chapter": 1,
+      "title": "Tres segundos",
+      "goal": "El navegador del portátil, siempre en una esquina, con un indicador de conexión segura **neutro** (sin candado: el candado es imagen de V21 y los navegadores ya no lo muestran igual): se escribe la dirección del portal, `reservas.haldenport.example`, y la página aparece (`page`); un cronómetro se para en «3 s». Al decir «qué ha pasado» (`title`, hacia los 8 s, siempre antes de los 12), el título «Qué sucede al abrir una web» y La cinta de cinco piezas (franja horizontal arriba con cinco casillas, «DHCP · DNS · TCP · TLS · HTTP», que se encienden por orden y se quedan encendidas) en la franja de arriba, aún todas apagadas. Con la promesa (`promise`), las cinco casillas se señalan una a una (siguen apagadas) y aparece, pequeña, «segunda visita · ¿qué no se repite?». Con «Todo empieza un poco antes» (`rewind`), el cronómetro se rebobina solo hasta 0, con el rótulo «justo antes de pulsar Intro» (los tres segundos empiezan al pulsar Intro y arrancar el equipo tarda mucho más: no se rebobina hasta el encendido); al decir «lunes» el reloj de pared marca «8:58» con el rótulo «lunes»; con «Acabas de encender el portátil» (`office`), la oficina de la naviera de F1 (mismo plano y misma etiqueta que F1, sin repetir su recorrido). Esta escena no lleva el sello «Imagina» (empieza en s02)",
+      "targetSec": 35,
+      "wordBudget": 95,
+      "requiredCues": [
+        "page",
+        "title",
+        "promise",
+        "rewind",
+        "office"
+      ]
+    },
+    {
+      "id": "s02-reparte",
+      "chapter": 1,
+      "title": "¿Quién reparte?",
+      "goal": "Sello permanente desde esta escena (lo dibuja la escena; el de «Simulación educativa · datos ficticios» ya lo pone el motor): «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto». En la configuración del portátil, todo en blanco y un rótulo «concesión del viernes · caducada» (`blank`). Diagrama de carriles (copiar `Lanes.tsx` de iam-halden): portátil y router, este último rotulado «servidor DHCP», con los cuatro mensajes en este orden: «¿alguien reparte?», dicho a toda la red (`ask`: sale en abanico hacia todos los equipos de la oficina y solo contesta el router, `server`), «te ofrezco esta» (`offer`), «la quiero» (`request`) y «es tuya» (`ack`, sonido `ding`). Después la tarjeta de la concesión, que se rellena fila a fila al compás de la voz: dirección `192.168.20.10` (`card`), máscara `255.255.255.0` con «/24» al lado (`mask`), puerta de enlace `192.168.20.1` (`gateway`) y resolutor DNS `192.168.20.2` (`resolver`). Al terminar de rellenarse, se enciende la casilla «DHCP» de la cinta. Las direcciones y la máscara van solo en pantalla: la voz no las lee",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "requiredCues": [
+        "blank",
+        "ask",
+        "server",
+        "offer",
+        "request",
+        "ack",
+        "card",
+        "mask",
+        "gateway",
+        "resolver"
+      ]
+    },
+    {
+      "id": "s03-concesion",
+      "chapter": 1,
+      "title": "Con fecha de devolución",
+      "goal": "Sello permanente desde esta escena (lo dibuja la escena; el de «Simulación educativa · datos ficticios» ya lo pone el motor): «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto». La imagen del libro de la biblioteca con su ficha «devolver antes de…», rotulada «imagen · no es del puerto» (`book`; no se dice «préstamo» porque en V6 «préstamo» es el acceso just-in-time). Al lado, la tarjeta de la concesión con una barra de tiempo «8:58 a 16:58» (el avance se dibuja como trazo, sin flecha de texto) y la palabra «concesión · 8 h» (`lease`). La barra avanza rápida hasta la mitad, una marca «12:58 · renueva» (`renew`), y se rellena otra vez («renovada»); como el DHCPACK de la renovación da una concesión completa desde ese momento, las etiquetas de los extremos pasan a «12:58» y «20:58». Con «O sea, que DHCP trabaja al conectarte y al renovar» (`wrap`) la tarjeta se queda quieta. Al final, tres mini-escenas en fila que van entrando: «concesión OK · resolutor no contesta» (`no-dns`), «concesión OK · gateway sin salida» (`no-exit`) y «concesión OK · todo bien» (`each`; el OK lleva icono de verificación dibujado, no texto). La voz dice «Cada pieza falla a su manera»",
+      "targetSec": 39,
+      "wordBudget": 105,
+      "requiredCues": [
+        "book",
+        "lease",
+        "renew",
+        "wrap",
+        "no-dns",
+        "no-exit",
+        "each"
+      ]
+    },
+    {
+      "id": "s04-agenda",
+      "chapter": 2,
+      "title": "La agenda",
+      "goal": "Sello permanente desde esta escena (lo dibuja la escena; el de «Simulación educativa · datos ficticios» ya lo pone el motor): «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto». La imagen de la agenda del móvil (un nombre, un número), rotulada «imagen · no es del puerto» (`agenda`). Luego la caché del portátil, vacía (`cache`). A la derecha, una escalera de cinco peldaños: «tu portátil», «resolutor de la oficina», «raíz», «servidores del final del nombre», «servidor del puerto». El portátil pregunta solo al resolutor (`resolver`) y espera; la consulta lleva la casilla «UDP» de la etiqueta de F1 (`udp`). El resolutor tampoco tiene el nombre (`unknown`: «primera consulta del día») y es él quien baja la escalera: empieza por la raíz (`top`) y, peldaño a peldaño (`levels`), recibe en cada uno un papelito «pregunta a…»; el último peldaño (`last`) le da la dirección y el resolutor se la pasa al portátil. Esta escena no enciende la cinta (lo hace s05)",
+      "targetSec": 47,
+      "wordBudget": 127,
+      "requiredCues": [
+        "agenda",
+        "cache",
+        "resolver",
+        "udp",
+        "unknown",
+        "top",
+        "levels",
+        "last"
+      ]
+    },
+    {
+      "id": "s05-ttl",
+      "chapter": 2,
+      "title": "Una respuesta que caduca",
+      "goal": "Sello permanente desde esta escena (lo dibuja la escena; el de «Simulación educativa · datos ficticios» ya lo pone el motor): «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto». La respuesta como tarjeta: «`reservas.haldenport.example` · A · `192.0.2.44` · TTL 3600» (`record`), con un chip pequeño «AAAA = IPv6 · MX = correo»; el TTL se resalta (`ttl`). Durante «de memoria» (`cache-ttl`) aparecen dos cuentas atrás de una hora, una junto al resolutor y otra junto al portátil, que empiezan a avanzar. Con «Pasado el plazo» (`expire`, sonido `ping2`) las dos llegan a cero y la respuesta se desvanece. Con «O sea, que DNS traduce…» (`wrap`) se enciende la casilla «DNS» de la cinta y entra la tarjeta de examen 4.5. El registro A es el de la fila 1 de la tarjeta: la voz no lee la dirección",
+      "targetSec": 31,
+      "wordBudget": 84,
+      "requiredCues": [
+        "record",
+        "ttl",
+        "cache-ttl",
+        "expire",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s06-saludo",
+      "chapter": 3,
+      "title": "Hola, soy el portal",
+      "goal": "Sello permanente desde esta escena (lo dibuja la escena; el de «Simulación educativa · datos ficticios» ya lo pone el motor): «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto». Carriles portátil y portal (copiar `Lanes.tsx` de iam-halden). El saludo TCP en pequeño, las tres flechas de F1 (`tcp`; se enciende la casilla «TCP» de la cinta). Después el canal: «hola · quiero hablar con el portal de reservas · sé estos cifrados» (`channel`, `hello`) y la respuesta «hola · usamos este · aquí va mi certificado · y esta firma, hecha con mi clave privada» (`cert`, `proof`). Una llave pequeña «clave de sesión» aparece en los dos lados a la vez (`keys`). Un segundo personaje en gris, «copia del certificado», intenta firmar y no puede porque no tiene la clave privada (`copy`). Al final, la línea de la conexión al estilo de V11 (`line`; copiar el estilo de `TlsLine.tsx` de cripto-halden): `TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519`, sin fecha ni «id-ecPublicKey»; se enciende «TLS» en la cinta. Con la línea, tarjeta de examen 1.4",
+      "targetSec": 55,
+      "wordBudget": 149,
+      "requiredCues": [
+        "tcp",
+        "channel",
+        "hello",
+        "keys",
+        "cert",
+        "proof",
+        "copy",
+        "line"
+      ]
+    },
+    {
+      "id": "s07-dni",
+      "chapter": 3,
+      "title": "El DNI del servidor",
+      "goal": "Sello permanente desde esta escena (lo dibuja la escena; el de «Simulación educativa · datos ficticios» ya lo pone el motor): «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto». La imagen del DNI a la izquierda, rotulada «imagen · no es del puerto» (la misma que usa V12 para la revocación; en la voz siempre «DNI», nunca «carné»). A la derecha, el certificado del portal como tarjeta con cuatro filas que se marcan una a una (cada una con sonido `check`): «nombres alternativos: `reservas.haldenport.example`» (`name`; la cabecera muestra atenuado «sujeto · CN = reservas.haldenport.example»: el navegador compara el nombre con los nombres alternativos —subjectAltName, RFC 9525—, no con el CN; la SAN es un dato nuevo «previsto» de este vídeo), «firma: `Confianza Global TLS Issuing CA 3` y `Confianza Global Root` (en tu equipo)» (`signer`, `chain`; la cadena de V12 con `AnchorChain.tsx` y el sello de `CaSeal.tsx`, completa desde el principio), «fechas: 9-11-2026 a 27-5-2027» (`dates`) y «no anulado: respuesta de la CA, grapada» (`revoc`). La raíz aparece dentro de una caja rotulada «almacén de confianza de tu equipo» (`root`). Cada fila se refleja en el DNI: nombre, quién lo expide, caducidad y «no denunciado». Al final, junto al DNI aparece una cara (`photo`, `face`): «foto = clave pública · cara = clave privada, que no se enseña y se demuestra firmando · el DNI se fotocopia, la cara no» (`copy-dni`). Cada fila acaba en una marca de verificación dibujada (no texto). Con la cuarta, tarjeta de examen 1.4. Cierre (`wrap`): las cuatro marcas quietas",
+      "targetSec": 62,
+      "wordBudget": 167,
+      "requiredCues": [
+        "question",
+        "name",
+        "signer",
+        "chain",
+        "root",
+        "dates",
+        "revoc",
+        "photo",
+        "face",
+        "copy-dni",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s08-pagina",
+      "chapter": 4,
+      "title": "Por fin, la página",
+      "goal": "Sello permanente desde esta escena (lo dibuja la escena; el de «Simulación educativa · datos ficticios» ya lo pone el motor): «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto». La petición como tarjeta: «`GET /reservas` · `Host: reservas.haldenport.example` · `Cookie: sesión`» (`request`, `get`, `cookie`: la cookie entra en la tarjeta con la frase que la nombra). La respuesta: «`200 OK` · página» (`ok`). Las dos tarjetas entran en un tubo opaco rotulado «TLS» (`tube`); al decir «HTTPS» (`https`) el tubo lleva el rótulo «HTTPS = HTTP dentro de TLS» y entra la tarjeta de examen 3.2. Fuera del tubo, un observador con lupa (`observer`) ve «`192.0.2.44`» y, en gris, «nombre del sitio (normalmente)»; la ruta y el contenido quedan tapados y la lupa intenta leer dentro del tubo y solo ve ruido. Se enciende la casilla «HTTP» de la cinta",
+      "targetSec": 43,
+      "wordBudget": 116,
+      "requiredCues": [
+        "request",
+        "get",
+        "cookie",
+        "ok",
+        "tube",
+        "https",
+        "observer"
+      ]
+    },
+    {
+      "id": "s09-rato",
+      "chapter": 4,
+      "title": "Un rato después",
+      "goal": "Sello permanente desde esta escena (lo dibuja la escena; el de «Simulación educativa · datos ficticios» ya lo pone el motor): «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto». El reloj de pared pasa a «9:02», tres minutos después de la primera visita (`later`). Pausa para pensar (`think`, 4500 ms) con la pregunta del motor «¿Se repite todo el proceso?» y las dos opciones que dibuja la escena: «Sí, todo» / «No, casi nada» (no destripan la respuesta; la escena mantiene libre la banda de arriba mientras dura). Tras la pausa, la cinta de cinco piezas se convierte (`table`) en una tabla de tres columnas, «primera vez · 3 min · 2 h», que se rellena fila a fila: DHCP «sí · no · no»; DNS «sí · no (TTL) · sí»; TCP «sí · probablemente (cerrada por inactividad) · sí»; TLS «completo · abreviado si se retoma · completo o abreviado»; HTTP «sí · sí · sí». En la columna «3 min» las casillas que no se repiten se apagan con el motivo al lado: «concesión viva» (`no-dhcp`), «TTL vigente» (`no-dns`), «sesión TLS retomada» (`tls-resume`); `tcp-closed` marca TCP «probablemente»; `http-new` deja HTTP encendida; `two-hours` pasa a la columna «2 h» y el reloj de pared a «10:58» (dos horas después de las 8:58; solo en pantalla: la concesión sigue viva hasta las 16:58 y el TTL venció a las 9:58); `own-clock` resalta cada reloj de la fila. Sin tarjeta de examen",
+      "targetSec": 57,
+      "wordBudget": 139,
+      "requiredCues": [
+        "later",
+        "table",
+        "no-dhcp",
+        "no-dns",
+        "tcp-closed",
+        "tls-resume",
+        "http-new",
+        "two-hours",
+        "own-clock"
+      ]
+    },
+    {
+      "id": "s10-correo",
+      "chapter": 5,
+      "title": "Un correo con enlace",
+      "goal": "Sello permanente desde esta escena (lo dibuja la escena; el de «Simulación educativa · datos ficticios» ya lo pone el motor): «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto». Un correo con un enlace (`mail`); el navegador abre `haldenp0rt.example` (con cero; el ejemplo de dominio parecido de V1, `reg:395`) con la página copiada del portal (`lookalike`), con el rótulo «ejemplo · no existe en el caso» además del sello. El indicador de conexión segura, idéntico al de antes: neutro (`valid`). Pausa para pensar (`think`, 4500 ms): «Certificado válido: ¿web de fiar?» con las opciones «Sí» / «No basta» que dibuja la escena. Tras la pausa (`not-enough`) la barra de direcciones se amplía y el `0` se pone ámbar al lado de la `o` del dominio del puerto (`zero`). El certificado de la copia, en su tarjeta: nombres alternativos `haldenp0rt.example`, firma, fechas y no anulado, cada fila con su marca de verificación dibujada (`easy`: las cuatro marcas en verde contrastan con el rótulo ámbar «pero ¿de quién?»). Con la última frase (`dni`), el DNI de s07 un momento y la tarjeta de examen 2.2",
+      "targetSec": 42,
+      "wordBudget": 99,
+      "requiredCues": [
+        "mail",
+        "lookalike",
+        "valid",
+        "not-enough",
+        "zero",
+        "easy",
+        "dni"
+      ]
+    },
+    {
+      "id": "s11-canal",
+      "chapter": 5,
+      "title": "Lo que el canal no arregla",
+      "goal": "Sello permanente desde esta escena (lo dibuja la escena; el de «Simulación educativa · datos ficticios» ya lo pone el motor): «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto». Dentro del tubo TLS de s08 viaja un paquete marcado «entrada maliciosa» (`more`) y llega intacto a la aplicación, que se pone ámbar: «el canal la trae igual de protegida» (`path`; tarjeta de examen 3.2). Después, un aviso de certificado del navegador (`warning`) con sus causas en fila: «el nombre no cuadra · falta un eslabón · fuera de fecha · …» (`causes`). Un dedo va hacia «continuar de todos modos» y se detiene (`skip`, sonido `error`): «quitar la comprobación = quitar la protección». Cierre (`wrap`): «el certificado te dice con quién hablas, no si te conviene hablar con él». Ninguna transición nueva",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "requiredCues": [
+        "more",
+        "path",
+        "warning",
+        "causes",
+        "skip",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s12-cierre",
+      "chapter": 5,
+      "title": "Cinco piezas",
+      "goal": "Sello permanente desde esta escena (lo dibuja la escena; el de «Simulación educativa · datos ficticios» ya lo pone el motor): «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto». La cinta de cinco piezas encendida entera (`recap`) y tres tarjetas numeradas que entran una a una: «1 · Cada pieza tiene su trabajo» (`rule-1`), «2 · No todo se repite» (`rule-2`) y «3 · Un certificado válido dice con quién hablas, no si es de fiar» (`rule-3`). Con «Ahora te toca a ti» (`next`), la práctica «Diagnóstico de conectividad»; con «Abre la práctica» (`endcard`), la tarjeta final «Alertópolis · Qué sucede al abrir una web» con el botón «Práctica · Diagnóstico de conectividad». Sin tarjeta de examen",
+      "targetSec": 35,
+      "wordBudget": 95,
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
