@@ -1,0 +1,500 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "reply": "ping2",
+    "direct": "check",
+    "rewrite": "typing",
+    "stop": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-clic",
+      "text": "<curious> Haces clic en «Reservar atraque» y, en menos de un segundo, {reply}la web del puerto te contesta.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-clic",
+      "text": "<intrigued> {title}¿Qué ha pasado por el camino? Hoy vas a seguir esa conexión, paso a paso.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-clic",
+      "text": "<warm> {plan}Imagina que trabajas en una naviera. Reserváis atraques en el puerto de Halden, el escenario de este curso.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-clic",
+      "text": "<confident> {promise}Al terminar sabrás por dónde sale una conexión y qué datos lleva encima. Y también quién se los cambia y quién decide si pasa.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-direccion",
+      "text": "<casual> {address}Empecemos por tu portátil. Para que algo le llegue, necesita una dirección, igual que un edificio. Es su dirección IP.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-direccion",
+      "text": "<clear> La versión más usada, IPv4, son {nums}cuatro números de cero a doscientos cincuenta y cinco, con puntos. Mira la de tu portátil.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-direccion",
+      "text": "<warm> Y tiene {parts}dos partes. Una dice en qué red estás, como el nombre de la calle. La otra dice qué equipo eres, como el número del edificio.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-direccion",
+      "text": "<curious> ¿Y dónde acaba la calle? Lo marca el {prefix}prefijo, ese «barra veinticuatro» del final.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-direccion",
+      "text": "<thoughtful> Cada número son ocho {bits}bits, ocho casillas de unos y ceros.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-direccion",
+      "text": "<steady> {network}Tres números de ocho bits son veinticuatro. Esa es la red. El último, tu portátil.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-direccion",
+      "text": "<engaging> Todo lo que envías viaja troceado en {packet}paquetes. Y cada paquete lleva una etiqueta con la dirección de origen y la de destino.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-vecina",
+      "text": "<warm> {printer}En la oficina hay una impresora. Su dirección empieza por los mismos tres números que la tuya.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-vecina",
+      "text": "<reassuring> Misma calle, así que tu portátil {direct}le entrega los paquetes directamente, sin pasar por el router.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-vecina",
+      "text": "<curious> {server}Ahora mira el servidor de ficheros de la naviera. Los dos primeros números coinciden. ¿Está en tu red?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿El servidor está en tu misma red?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-vecina",
+      "text": "<firm> {answer}No. Con barra veinticuatro cuentan los tres primeros números, y el tercero es distinto. Otra calle.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-vecina",
+      "text": "<confident> {rule}O sea, que si coincide el prefijo entero, es tu red y entregas tú.",
+      "pauseAfterMs": 450,
+      "exam": {
+        "objective": "3.2",
+        "text": "Misma red: coincide el prefijo entero, no solo el inicio",
+        "at": "rule",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-vecina",
+      "text": "<casual> {private}Y un detalle que volverá luego. Las direcciones de esta oficina son privadas. Sirven dentro, pero Internet no las lleva.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-salida",
+      "text": "<curious> ¿Cómo llegas, entonces, a otra calle? {config}Pues tu portátil tiene apuntada la dirección de un aparato de la oficina.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-salida",
+      "text": "<clear> Es el router, el que conecta tu red con las demás y con Internet.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-salida",
+      "text": "<steady> {handoff}Si el destino no es de tu calle, tu portátil se los entrega a él.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-salida",
+      "text": "<confident> {gateway}Esa dirección se llama puerta de enlace, o default gateway. O sea, la salida de tu calle.",
+      "pauseAfterMs": 450,
+      "exam": {
+        "objective": "3.2",
+        "text": "Default gateway: el siguiente salto fuera de tu red",
+        "at": "gateway",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-salida",
+      "text": "<thoughtful> {table}El router sí sabe por dónde seguir. Su tabla de rutas es como los carteles de un cruce.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-salida",
+      "text": "<warm> Dice por dónde se va a cada red y, para todo lo demás, hacia Internet. {forward}Así que manda tus paquetes a la calle del servidor.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-salida",
+      "text": "<concerned> {back}Pero ojo, que la vuelta cuenta. El servidor contesta a tu dirección, y su router necesita una ruta hasta tu calle.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-08",
+      "scene": "s04-salida",
+      "text": "<serious> {missing}Si falta, la petición llega pero la respuesta se pierde.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-internet",
+      "text": "<engaging> {portal}Ahora, el portal de Halden. Su dirección no es de tu calle.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-internet",
+      "text": "<clear> {isp}Así que tus paquetes van a la puerta de enlace, y el router los manda hacia tu proveedor de Internet.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-internet",
+      "text": "<steady> {hops}De ahí, saltando de router en router, hasta el portal. Ninguno decide el viaje entero.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-internet",
+      "text": "<thoughtful> {signs}Cada uno mira el destino y decide solo el siguiente salto. {routing}Eso es el routing.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-internet",
+      "text": "<confident> {wrap}O sea, que dentro de tu calle entregas tú y, para salir, vas a la puerta de enlace.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-despacho",
+      "text": "<curious> {building}Llegar a la máquina del portal no basta. En ella pueden estar atendiendo varios servicios a la vez. ¿Cómo sabe a cuál van tus paquetes?",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-despacho",
+      "text": "<clear> {port}Por el número de puerto, ojo, que no hablo del de los barcos. Si la dirección es el edificio, el puerto es el despacho. La web segura va al 443.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-despacho",
+      "text": "<warm> {ephemeral}Tu portátil también pone un puerto de origen, uno temporal que elige para esta conexión.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-despacho",
+      "text": "<thoughtful> Así la respuesta vuelve a {convo}la conexión correcta de tu navegador. Se llama puerto efímero.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-despacho",
+      "text": "<confident> {label}Origen y destino, cada uno con su dirección y su puerto. En total, la etiqueta completa lleva cuatro datos y el protocolo.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-despacho",
+      "text": "<firm> {inside}Eso sí, el número es una costumbre, no una garantía. Que algo vaya al 443 te dice a qué servicio dice llamar, no qué lleva dentro.",
+      "pauseAfterMs": 650,
+      "exam": {
+        "objective": "4.5",
+        "text": "Puerto: a qué servicio apunta, no qué contenido lleva",
+        "at": "inside",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-llamada",
+      "text": "<casual> Falta saber cómo se entregan. Hay dos maneras, y se parecen mucho a hablar por teléfono.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-llamada",
+      "text": "<warm> {call}La primera es una llamada. Antes de hablar, el otro descuelga y os saludáis.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-llamada",
+      "text": "<steady> {resend}Luego hablas por turnos, compruebas que te oye y, si una frase se pierde, la repites.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-llamada",
+      "text": "<clear> {tcp}Eso es TCP, con conexión, orden y reenvío. La web suele usarlo, porque una página no puede llegar incompleta ni desordenada.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-llamada",
+      "text": "<cheerful> {message}La segunda es dejar un recado en el contestador. Lo dejas y cuelgas, sin saludo ni confirmación. {udp}Eso es UDP, más ligero.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.5",
+        "text": "TCP: conexión, orden y reenvío · UDP: sin garantías",
+        "at": "udp",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-llamada",
+      "text": "<curious> {dns}Lo usa el DNS, que traduce nombres a direcciones. Si no llega respuesta, el programa vuelve a preguntar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-07",
+      "scene": "s07-llamada",
+      "text": "<satisfied> {wrap}O sea, que con TCP las garantías vienen de serie y, con UDP, si hacen falta, las pone el propio programa.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-tachar",
+      "text": "<curious> ¿Te acuerdas de que tu dirección era privada? Pues Internet no la lleva.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-tachar",
+      "text": "<clear> {router}Así que, al salir de la oficina, el router hace algo más.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-tachar",
+      "text": "<engaging> {rewrite}Tacha el origen de la etiqueta y pone la dirección pública de la naviera, que sí viaja por Internet. Y muchas veces, también el puerto.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-tachar",
+      "text": "<steady> {table}Y lo apunta, con la hora, en otra tabla. Esa conexión, de tu portátil, sale ahora con otro puerto.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-tachar",
+      "text": "<thoughtful> {lookup}Cuando el portal responde, la respuesta llega a la dirección pública. El router busca en esa tabla y se la pasa a tu portátil.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-tachar",
+      "text": "<confident> {nat}Eso es NAT, la traducción de direcciones. {shared}Así, toda la oficina sale con una sola dirección pública, y cada conexión se distingue por su puerto.",
+      "pauseAfterMs": 650,
+      "exam": {
+        "objective": "3.2",
+        "text": "NAT traduce direcciones y puertos y apunta la traducción",
+        "at": "nat",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-portal",
+      "text": "<casual> {log}Ahora ponte al otro lado. El portal apunta cada reserva en su registro, con la dirección y el puerto de origen, y la hora.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-portal",
+      "text": "<intrigued> {crowd}Y ahí aparece la dirección pública de la naviera. ¿Basta esa dirección para saber qué ordenador fue?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Esa dirección dice qué ordenador fue?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-portal",
+      "text": "<firm> {verdict}No. Con esa dirección no basta, detrás puede haber treinta equipos.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-portal",
+      "text": "<clear> {natlog}Para saberlo hace falta el registro de NAT de la naviera. Con la hora y los puertos, {match}sale la línea de ese equipo.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-portal",
+      "text": "<satisfied> {wrap}O sea, que una dirección compartida, por sí sola, no señala a nadie.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-decidir",
+      "text": "<firm> Mucha gente cree que el NAT protege. Pero proteger es decidir qué pasa y qué no. Y eso lo hace {boxes}otra pieza, el cortafuegos, o firewall.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-decidir",
+      "text": "<curious> {rdp}Alguien de la oficina intenta manejar a distancia un ordenador de fuera, lo que se llama escritorio remoto.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-decidir",
+      "text": "<clear> {same}Para el NAT, esa conexión es una etiqueta más.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-decidir",
+      "text": "<thoughtful> {rules}Lo que la para es una regla. El cortafuegos tiene una lista, y cada regla dice si un tipo de conexión pasa o no.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-decidir",
+      "text": "<confident> {scan}La lee de arriba abajo y aplica la primera que coincide, en este modelo. Si ninguna coincide, deniega. {implicit}Eso es la denegación implícita.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.5",
+        "text": "Firewall: deciden las reglas, gana la primera; si no, deny",
+        "at": "implicit",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-06",
+      "scene": "s10-decidir",
+      "text": "<serious> {stop}Aquí, la web sale y el escritorio remoto no.",
+      "pauseAfterMs": 550
+    },
+    {
+      "id": "s10-07",
+      "scene": "s10-decidir",
+      "text": "<intrigued> {state}¿Y la respuesta del portal, que viene de fuera? Entra porque el cortafuegos recuerda que esa conexión la abriste tú.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s10-08",
+      "scene": "s10-decidir",
+      "text": "<steady> {split}NAT y cortafuegos suelen vivir en el mismo aparato, pero uno traduce y el otro decide.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-09",
+      "scene": "s10-decidir",
+      "text": "<warm> {nocrypt}Y ninguno esconde lo que viaja. El contenido sigue a la vista de quien lo mire por el camino. Eso, en el siguiente vídeo.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-ida-vuelta",
+      "text": "<engaging> {start}Vamos a juntarlo todo con una sola petición. Sale de tu portátil con tu dirección privada, un puerto efímero y, como destino, el 443 del portal.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-ida-vuelta",
+      "text": "<clear> {gate}Como el destino no es de tu calle, va a la puerta de enlace. El cortafuegos busca su {rule}regla, y la web puede salir.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-ida-vuelta",
+      "text": "<steady> {translate}El router cambia el origen por la dirección pública y lo apunta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-04",
+      "scene": "s11-ida-vuelta",
+      "text": "<casual> {trip}Router a router, llega al portal. La respuesta vuelve.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s11-05",
+      "scene": "s11-ida-vuelta",
+      "text": "<satisfied> {undo}Llega a la dirección pública, la tabla se la devuelve a tu portátil y, por el puerto efímero, a tu navegador. {time}Todo eso, en menos de un segundo.",
+      "pauseAfterMs": 650
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-reglas",
+      "text": "<warm> {three}Te quedas con tres ideas. {r1}Una. Si el destino está en tu red, entregas directamente.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-reglas",
+      "text": "<clear> Si no, a la puerta de enlace, y cada router decide el siguiente salto, también a la vuelta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-reglas",
+      "text": "<steady> {r2}Dos. La etiqueta lleva direcciones y puertos, y el puerto dice a qué servicio apunta, no qué contiene.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s12-04",
+      "scene": "s12-reglas",
+      "text": "<confident> {r3}Tres. NAT cambia la etiqueta y lo apunta. Quien decide qué pasa es el cortafuegos.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s12-05",
+      "scene": "s12-reglas",
+      "text": "<engaging> {next}Ahora te toca a ti. Abre la práctica «Mapa de red» y sigue el recorrido de tres equipos.",
+      "pauseAfterMs": 700
+    }
+  ]
+}

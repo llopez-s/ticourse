@@ -1,5 +1,7 @@
 # F1 · «Cómo viaja una conexión»
 
+> **Guion congelado el 2026-10-29** (`"frozen"` en `video.json`), a petición de Lidia, tras las revisiones de exactitud y de naturalidad. La versión vigente es `narration.json`. Las decisiones opcionales se resolvieron con la opción recomendada de esta ficha (la que ya recoge el guion); quedan abiertas solo las pronunciaciones, el canon nuevo «previsto» y los objetivos de las tarjetas, que se confirman al grabar.
+
 > **Estado: propuesta, 2026-10-28.** Sin congelar, sin escenas ni voz. Rutas relativas a la raíz del repo; `fund` =
 > `src/data/security/foundations.ts`, `prac` = `src/data/security/practicals.ts`, `reg` =
 > `docs/superpowers/canon/glass-harbor.md`, `plan` = `docs/superpowers/plans/2026-09-25-lesson-videos.md`. Decisiones
@@ -14,7 +16,7 @@
 | **Pregunta central** | ¿Qué le pasa a una conexión desde que sale de tu portátil hasta que llega a un servidor de Internet, y quién decide si pasa? |
 | **Objetivos observables** | Al terminar, quien lo ve puede: (1) decir si dos equipos con prefijo /24 están en la misma red; (2) nombrar el siguiente salto hacia otra red y explicar por qué también hace falta ruta de vuelta; (3) leer los cuatro datos de una conexión (dirección y puerto de origen y de destino) y su protocolo; (4) elegir TCP o UDP según lo que necesita la aplicación; (5) explicar qué cambia NAT y qué registro hace falta para saber qué equipo salió; (6) distinguir traducir direcciones de filtrar flujos. |
 | **Prerrequisitos** | Lecciones f05, f06, f07 y f08 (`fund:21-36`) leídas. No hace falta calcular subredes ni saber de memoria ningún puerto. |
-| **Duración estimada** | ~9:44 renderizados (1414 palabras de locución; cálculo en E.2). |
+| **Duración estimada** | **9:56 (596,4 s) con `build-timeline --estimate`** tras las revisiones del 2026-10-28 (1345 palabras de locución; ver G.8). La cifra de la propuesta (~9:44, 1414 palabras, cálculo en E.2) ya no vale. |
 | **Práctica relacionada** | «Mapa de red» (`foundation-network`, `prac:129`), desde `#/security/study?view=practice&foundation=1`. Allí se aplica lo mismo a otra red (tres equipos y su gateway). |
 | **Dónde va** | Al final de f08, antes de la práctica. Es el primer vídeo de fundamentos. |
 | **Conceptos clave (5)** | misma red o no (IP y prefijo) · gateway y rutas, de ida y de vuelta · puerto y transporte (TCP/UDP) · NAT · traducir no es filtrar. |
@@ -39,7 +41,7 @@
   imagen: se ven en su tabla.
 - **Datos en pantalla** (nunca en la voz): portátil `192.168.20.10/24`, impresora `192.168.20.80/24`, servidor de
   ficheros `192.168.30.10/24`, gateway `192.168.20.1` (y `192.168.30.1` en la otra pata), pública de la naviera
-  `198.51.100.7`, portal `reservas.haldenport.example` en `192.0.2.44`, puertos `51422` → `61002` y `443`.
+  `198.51.100.17`, portal `reservas.haldenport.example` en `192.0.2.44`, puertos `51422` → `61002` y `443`.
 
 ### Capítulo 1 · Tu red
 
@@ -183,8 +185,8 @@
 - **Propósito didáctico:** NAT traduce dirección y, a menudo, puerto; guarda la traducción; la respuesta vuelve por la
   tabla.
 - **En pantalla:** el paquete llega al router. En la etiqueta, el origen `192.168.20.10:51422` se tacha y se escribe
-  encima `198.51.100.7:61002`. A la vez, la tabla de NAT gana una fila: «interno `192.168.20.10:51422` · público
-  `198.51.100.7:61002` · destino `192.0.2.44:443` · hora». Con la respuesta, la tabla se consulta (la fila parpadea) y
+  encima `198.51.100.17:61002`. A la vez, la tabla de NAT gana una fila: «interno `192.168.20.10:51422` · público
+  `198.51.100.17:61002` · destino `192.0.2.44:443` · hora». Con la respuesta, la tabla se consulta (la fila parpadea) y
   el destino vuelve a ser `192.168.20.10:51422`. Al final, otras tres filas de otros portátiles, todas con la misma
   pública y puertos distintos.
 - **Acciones visuales:** la etiqueta se escribe a mano alzada, como quien corrige un remite. Nada se dibuja como
@@ -202,7 +204,7 @@
 #### s09 · «Lo que ve el portal» · ~44 s · 97 palabras
 
 - **Propósito didáctico:** atribuir una conexión detrás de NAT; segunda pausa.
-- **En pantalla:** el lado del portal: una línea de su registro (la voz lo explica: «apunta cada reserva»), «`198.51.100.7:61002` → reserva creada ·
+- **En pantalla:** el lado del portal: una línea de su registro (la voz lo explica: «apunta cada reserva»), «`198.51.100.17:61002` → reserva creada ·
   hora». Detrás de esa dirección, en la oficina, treinta siluetas de portátil iguales. Tras la respuesta, la tabla de
   NAT de la naviera con la hora y los puertos; la fila que coincide se ilumina y señala un único portátil.
 - **Acciones visuales:** durante la pausa, una lupa recorre las treinta siluetas sin detenerse en ninguna.
@@ -412,12 +414,12 @@ Ahora te toca a ti. Abre la práctica «Mapa de red» y sigue el recorrido de tr
 | Sí | No | Error plausible: comparar solo el principio. Los dos primeros números coinciden, pero con /24 la red son los tres primeros, y el tercero cambia. |
 | No | **Sí** | Con /24, los tres primeros números forman la red; el tercero es distinto, así que es otra red y hace falta el gateway. |
 
-**Pausa 2 · s09 · «¿El portal sabe qué ordenador fue?»**
+**Pausa 2 · s09 · «¿Esa dirección dice qué ordenador fue?»** (la voz pregunta «¿Basta esa dirección para saber qué ordenador fue?»)
 
 | Opción | Correcta | Feedback |
 |---|---|---|
-| Sí | No | Error plausible: tratar la dirección pública como si fuera de un equipo. Es de toda la oficina tras NAT; puede haber treinta personas detrás. |
-| No | **Sí** | El portal ve la dirección traducida. Para llegar al portátil hace falta el registro de NAT de la naviera con la hora y los puertos. |
+| Sí | No | Error plausible: tratar la dirección pública como si fuera de un equipo. Es de toda la oficina tras NAT; puede haber treinta equipos detrás. |
+| No | **Sí** | Con esa dirección no basta: el portal ve la dirección traducida. Para llegar al portátil hace falta el registro de NAT de la naviera, con la hora y los puertos (el portal apunta la dirección y el puerto de origen, y la hora). |
 
 ### D.2 Después del vídeo
 
@@ -480,6 +482,8 @@ Formato compatible con `SCENES` de `src/data/security/video-learning.ts`: id `vi
 
 ### E.2 Capítulos y duración (cálculo)
 
+> Cifras de la propuesta. Las vigentes tras las revisiones del 2026-10-28 (capítulos en 0:00, 2:19, 3:54, 5:47 y 7:21; total 9:56) están en G.8.
+
 | Capítulo | Empieza en | Escenas |
 |---|---|---|
 | 1 · Tu red | 0:00 | s01–s03 |
@@ -520,7 +524,7 @@ estos puntos (no entran en los subtítulos, que siguen el audio):
 | s03 | impresora y servidor con sus direcciones; rangos privados | «empieza por los mismos tres números… el tercero es distinto… privadas» | `[En pantalla: impresora 192.168.20.80/24, misma red; servidor 192.168.30.10/24, otra red. Rangos privados: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16]` |
 | s04 | gateway y tabla de rutas | «la del router… su tabla de rutas… dice por dónde se va a cada red» | `[En pantalla: puerta de enlace 192.168.20.1; rutas: 192.168.20.0/24 y 192.168.30.0/24 directas, el resto hacia el proveedor]` |
 | s06 | la etiqueta completa | «dirección y puerto de origen, y dirección y puerto de destino» | `[En pantalla: origen 192.168.20.10:51422, destino 192.0.2.44:443, TCP]` |
-| s08 | la fila de la tabla de NAT | «cambia el origen… y lo apunta en una tabla» | `[En pantalla: 192.168.20.10:51422 sale como 198.51.100.7:61002 hacia 192.0.2.44:443]` |
+| s08 | la fila de la tabla de NAT | «cambia el origen… y lo apunta en una tabla» | `[En pantalla: 192.168.20.10:51422 sale como 198.51.100.17:61002 hacia 192.0.2.44:443]` |
 | s10 | la lista de reglas | «cada una describe un tipo de conexión y dice si pasa o no… la primera que coincide» | `[En pantalla: regla 1 permite TCP 443 y 80 de la oficina a Internet; regla 2 permite el DNS del resolutor; el resto se deniega. El escritorio remoto (TCP 3389) no coincide con ninguna]` |
 
 Además: ningún dato depende solo del color (cian/ámbar van siempre con rótulo), y las etiquetas clave a 48–60 px,
@@ -535,7 +539,7 @@ comprobadas a 480 px de ancho (`plan` §1, «Claridad y ritmo»).
 | «Si dos direcciones empiezan igual, están en la misma red» | s03 (pausa 1): cuenta el prefijo entero |
 | «El router conoce el camino completo hasta el destino» | s05: cada router decide solo el siguiente salto |
 | «Basta con que la petición llegue» | s04 y s11: la ruta de vuelta; actividad D.2.2 |
-| «El puerto 443 garantiza que es web, y web legítima» | s06 |
+| «El puerto 443 garantiza que es web, y web legítima» | s06 (el puerto dice a qué servicio apunta por costumbre, no qué contiene) |
 | «TCP es más seguro que UDP» | s07 habla de garantías de entrega, nunca de seguridad |
 | «La dirección pública identifica a la persona o al equipo» | s09 (pausa 2) |
 | «NAT protege / es un cortafuegos / cifra» | s10; actividad D.2.1 |
@@ -546,9 +550,24 @@ comprobadas a 480 px de ancho (`plan` §1, «Claridad y ritmo»).
 o no» comparando con su propio prefijo; en la red local la entrega usa la capa de enlace, que no se nombra. El paquete
 «va al gateway» significa que se le entrega al router como siguiente salto, sin cambiar la dirección de destino. NAT
 «a menudo» cambia el puerto (NAPT); no siempre. El seguimiento de estado se presenta en una frase. NAT descarta lo
-que llega de fuera sin una fila en su tabla, pero eso es un efecto, no una política (por eso la tarjeta de s08 dice
-«lo que pasa lo deciden las reglas»). «La web suele usar TCP»: HTTP/3 va sobre QUIC, por UDP, y pone las garantías en
+que llega de fuera sin una fila en su tabla, pero eso es un efecto, no una política (por eso, desde las revisiones del 2026-10-28, la tarjeta de s08 dice «NAT traduce direcciones y puertos y apunta la traducción»
+y la de s10 dice «deciden las reglas»). «La web suele usar TCP»: HTTP/3 va sobre QUIC, por UDP, y pone las garantías en
 el propio programa, que es lo que dice la última frase de s07.
+
+**Matices que quedan fuera de la voz (decisión del 2026-10-28, solo documentación):**
+
+- *Objetivos de las tarjetas (3.2 / 4.5).* Es una decisión editorial: s03, s04 y s08 se apoyan en 3.2 y s06, s07 y s10 en 4.5 de forma
+  aproximada (las direcciones, el gateway y NAT caben en redes; el puerto, TCP/UDP y las reglas del cortafuegos, en operaciones).
+  Si el objetivo exacto de alguna tarjeta importa, `examBadge` admite otro texto.
+- *Asimetría del enrutamiento.* El vídeo cuenta que ida y vuelta necesitan ruta; no dice que en Internet pueden ir por caminos distintos
+  (enrutamiento asimétrico). Es cierto y queda para la lección.
+- *Las pausas 1 y 2 reutilizan ideas de f06 y f07 a propósito* (prefijo entero; la dirección pública no identifica al equipo), según
+  `00-propuesta.md` §6: el vídeo las pone como pregunta, la lección las da como texto.
+- *La analogía de la llamada y el contestador.* La llamada TCP no reserva una línea (en una red de paquetes no hay circuito
+  reservado) y el recado de UDP no «espera»: se entrega o se pierde. Es una imagen para las garantías, no un modelo de la red; por
+  eso no hay línea reservada en pantalla y el recado «entra» sin que nadie confirme.
+- *Seguimiento de estado y tabla de NAT.* En la práctica suelen ser **la misma tabla** (el cortafuegos con NAT guarda una entrada por
+  conexión); el vídeo los separa en dos piezas con dos trabajos para que no se confundan, y lo dice con «uno traduce y el otro decide».
 
 ### F.2 Fuentes primarias
 
@@ -570,7 +589,7 @@ apoyaron en las lecciones y en el razonamiento técnico). Quedan pendientes de c
 | El portal se llama `reservas.haldenport.example`; una naviera es cliente | comprobado: `reg:396`, `reg:200` |
 | Números del portátil, impresora y servidor | propuesta; son los del ejemplo resuelto de f06 (`fund:28`) |
 | Puertos 51422 y 61002 | propuesta; son los de los ejemplos de f05 y f07 (`fund:24`, `fund:32`) |
-| `198.51.100.7` (naviera) y `192.0.2.44` (portal) | propuesta; no aparecen en `reg` (búsqueda del 2026-10-28) |
+| `198.51.100.17` (naviera) y `192.0.2.44` (portal) | propuesta; no aparecen en `reg` (búsqueda del 2026-10-28) |
 | Reglas de salida de la naviera | propuesta; ningún dato del puerto |
 | Modelo de cortafuegos del curso: primera coincidencia y denegación implícita | comprobado: f08, `fund:36` |
 
@@ -585,3 +604,171 @@ apoyaron en las lecciones y en el razonamiento técnico). Quedan pendientes de c
   (ingeniería social). Confirmarlo en la revisión de canon.
 - El objetivo de cada tarjeta de examen (00-propuesta §6).
 - La duración real tras `build-timeline --estimate` y la grabación.
+
+## G. Decisiones tomadas (fase 1)
+
+> **2026-10-28.** Fase 1 hecha: carpeta `video/viaje-conexion/` con `video.json`, `storyboard.json`, `narration.json`,
+> `lexicon.json` y `lexicon.chatterbox.json` (idénticos), andamio de escenas con un stub por id y póster provisional. **Sin
+> congelar** (no hay `"frozen"`), sin escenas montadas, sin voz. Lo que decía la ficha como pendiente (F.4) se resuelve con la
+> opción recomendada, pero ninguna decisión editorial es definitiva hasta que Lidia congele el guion.
+
+### G.1 Comprobaciones (rama `video-viaje-conexion`)
+
+| Comprobación | Resultado |
+|---|---|
+| `build-timeline --video viaje-conexion --estimate` | 12 escenas, 76 segmentos, 1414 palabras, 6 tarjetas de examen, 2 pausas para pensar, 77 cues. **Un solo aviso: duración estimada 625,2 s (10:25), fuera de la ventana de `principal-yt` (380 a 600 s).** Ningún otro aviso (ni de emoción repetida, ni de frases largas, ni de identificadores leídos, ni de léxico). |
+| `script-sheets` | solo el aviso de «no congelado» |
+| `canon-check` | 6 tokens: 1 con historia (`reservas.haldenport.example`) y 5 nuevos (`192.168.20.1`, `192.168.30.1`, `192.168.20.10`, `192.0.2.44`, `198.51.100.17`). Ningún nombre choca. **Pero hay un choque que `canon-check` no ve: ver G.4.** |
+| `brand-yt.test.mjs` | pasa (el póster dice «ALERTÓPOLIS») |
+| `tsc` | no se lanzó (falta de memoria, según el encargo). Los stubs y el póster copian el molde de `zonas-halden` sin cambios de forma |
+
+### G.2 Duración: 625 s frente a los 584 s de la ficha
+
+El cálculo de E.2 usa 2,7 palabras por segundo; `build-timeline --estimate` usa **2,5** (`TIMING.estimateWordsPerSec`), más
+pausas de 0,44 s de media (33,5 s en total), 9 s de las dos pausas para pensar y las entradas de escena. Con la misma
+locución, el motor da 625 s. Dos lecturas:
+
+- Con la lectura real de Lidia (85 a 93 % del estimado en V5, V5b, V7, V8 y V9) saldrían unos **530 a 580 s**, dentro de la
+  ventana. El aviso es del estimado, no de la grabación.
+- Aun así, no se puede bajar de 600 con solo recortar pausas: a 250 ms todas, el total sería unos 611 s. Se dejó el ritmo
+  natural (350 a 650 ms) y **no se tocó el contenido**. Si se quiere un estimado dentro de la ventana, hay que quitar unos
+  25 s (unas 63 palabras con sus pausas). Frases de apoyo que repiten algo que se dice en otro sitio: `s05-07` (5,1 s, la
+  repite `s12-02`), `s07-06` (8,8 s, el ejemplo del DNS), `s10-03` (6,9 s, «para él es una etiqueta más») y `s09-05` (5,3 s);
+  suman unos 26 s. Decide Lidia al congelar.
+
+### G.3 Cambios respecto a la ficha (todos de forma, ninguno de contenido)
+
+| Qué | Por qué |
+|---|---|
+| **Ids de escena con nombre**: `s01-clic`, `s02-direccion`, `s03-vecina`, `s04-salida`, `s05-internet`, `s06-despacho`, `s07-llamada`, `s08-tachar`, `s09-portal`, `s10-decidir`, `s11-ida-vuelta`, `s12-reglas` | el motor exige `sNN-nombre`; los stubs salen como `S01Clic`…`S12Reglas` |
+| **Ids de segmento** `sNN-MM`, 76 en total | los párrafos de la parte C se parten en segmentos de 8 a 30 palabras; las frases no cambian ni se reordenan |
+| **Segmentos partidos** (un párrafo de la ficha pasa a dos o tres): s01 (P1), s02 (P4 en tres), s03 (P1), s04 (P2, P4 y P5), s05 (P1, P2 y P4), s06 (P3), s07 (P2), s08 (P2), s09 (P1 y P3), s10 (P2, P4 y P6), s11 (P2 y P3), s12 (P1 y P2 se reparten distinto) | la ficha tenía párrafos de 34 a 45 palabras; el validador avisa a partir de 30 |
+| **Segmentos unidos**: «Y muchas veces, también el puerto.» va con la frase anterior (s08-03); «Todo eso, en menos de un segundo.» va con la anterior (s11-05); «Te quedas con tres reglas.» y «Una.» van en un solo segmento (s12-01) | cada uno de esos trozos tenía menos de 8 palabras |
+| **Cue `title` al inicio de la segunda frase de s01** («¿Qué ha pasado por el camino? Hoy vas a seguir…»), no sobre «paso a paso» | sobre «paso a paso» el título llegaría hacia el segundo 12; así entra hacia el segundo 7 |
+| **Etiquetas de emoción** `<…>` asignadas a los 76 segmentos | la ficha no las traía; se alternan para no repetir la misma en dos seguidos |
+| **Tags de YouTube** (18): IP, dirección IP, IPv4, prefijo /24, subred, default gateway, puerta de enlace, routing, NAT, puertos, TCP, UDP, firewall, cortafuegos, fundamentos de redes, fundamentos de ciberseguridad, Security+, SY0-701 | la ficha solo traía el título |
+| **`"lesson"` omitido** de `video.json` | el motor solo admite ids `sNN`/`spNmN` (`/^sp?\d+m\d+$/`) y `f07` es un error, no un aviso. Sin él, `youtube-meta` no enlaza la lección en la descripción y `scene-brief` no la localiza (la cita a mano en «Canon») |
+| **`"examTiming": "sentence-end"` en `narration.json`**, no en `video.json` | es donde el motor lo lee (README del motor, «Claridad y ritmo») |
+| **Escena `s05-internet`** conserva el título «Hasta el puerto» de la ficha | pendiente de revisar: «puerto» ya significa puerto de red desde s06; si Lidia lo prefiere, «Hasta el portal» |
+| **Sello «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto»** escrito en el `goal` de cada escena desde s02 | ningún campo del motor lo recoge; `notice` y `simulationLabel` *sustituirían* el sello de «Simulación educativa · datos ficticios», que la ficha quiere conservar |
+
+### G.4 Hallazgo de canon: `198.51.100.7` ya existe en GCTI (resuelto)
+
+El choque era con **`198.51.100.7`**, la dirección original de la naviera: es `blog-recetas.example` en la lista de relleno de V4
+(`video/pivot-infra/src/scenes/S03Pdns.tsx:24` y `:50`; `docs/superpowers/canon/velvet-cicada.md:421`). La propuesta
+(`00-propuesta.md` §6) decía que no estaba en `reg`; era cierto para `glass-harbor.md`, pero `canon-check` solo lee la campaña de la
+pista. Lo mismo pasaba con `198.51.100.90` de F4, que es `tienda-flores.example` en ese listín.
+
+**Resolución (2026-10-28).** F1 y F2 usan **`198.51.100.17`**, el valor **nuevo y libre** (no aparece en ningún archivo del repo salvo
+estos documentos), y la dirección del sitio de subidas de F4 pasa a `198.51.100.117`. Un primer reemplazo a ciegas dejó escrito en
+esta sección y en el brief de escenas que «`198.51.100.17` es `blog-recetas.example`»; era un error de redacción, no un choque nuevo.
+La constante `PUBLIC_IP` (`video/viaje-conexion/src/scenes/parts/data.ts`) concentra la dirección en un solo sitio.
+
+### G.5 Pendientes de F.4, resueltos con la opción recomendada
+
+| Pendiente | Resolución |
+|---|---|
+| F1 y F2 fuera del puerto | **Fuera, en la oficina de la naviera.** Sigue siendo suposición a confirmar por Lidia |
+| La imagen «etiqueta» | **Se queda como «la etiqueta» = cabecera IP/TCP**, sin envío ni mensajería. El componente `Shipment.tsx` de V17 **no se reutiliza**; la etiqueta es una pieza propia (`Label.tsx`). La alternativa («la cabecera» a secas) queda como plan B |
+| La llamada y el recado en el contestador | Comprobado: ninguna fila de `glass-harbor.md` usa llamada ni contestador como imagen (búsqueda de «contestador» sin resultados). Se confirma en la revisión de canon |
+| Objetivo de cada tarjeta de examen | Se mantienen los de la ficha: 3.2 (s03, s04, s08) y 4.5 (s06, s07, s10); la tarjeta dice «EXAMEN · SY0-701 · N.N» (no se pone `examBadge`) |
+| Duración real | Ver G.2 |
+
+### G.6 Léxico y efectos
+
+- `lexicon.json` y `lexicon.chatterbox.json`: `IP`, `IPv4`, `TCP`, `UDP`, `DNS`, `NAT` y `443`. **`443` se dice
+  «cuatro cuatro tres» de forma provisional**: la ficha deja la elección a Lidia («cuatro, cuatro, tres» o «cuatrocientos
+  cuarenta y tres»). Se puso en el léxico porque, sin entrada, el validador avisa de que la cifra puede leerse mal. Si cambia,
+  basta editar los dos archivos y volver a ejecutar `build-timeline` antes de importar la grabación. `TLS` y `default
+  gateway` no entran: la voz no dice `TLS`, y el léxico no admite entradas con espacio.
+- `sfx`: `ping2` en `reply` (s01), `check` en `direct` (s03), `typing` en `rewrite` (s08) y `block` en `stop` (s10); el motor añade
+  `ding` en cada tarjeta y `whoosh` en cada capítulo. `public/sfx/` lo genera `build-timeline`; no se versiona.
+- Voz `recording/lidia`, sin `recording.tempo`, con `"recording": { "maxPauseMs": 250 }`. Sin `adversary` y sin mensajes
+  interceptados (el motor admite 0 cuando no hay adversario).
+
+### G.7 Lo que la ficha pide y el motor aún no hace
+
+- **Líneas `[En pantalla: …]` de E.3 en la transcripción.** `build-timeline` no tiene ningún campo para escribirlas (solo
+  `script-sheets` imprime «En pantalla» en la hoja de grabación). Hay que añadirlas a mano al `.txt` publicado o ampliar el
+  motor; queda para la fase de publicación.
+- **`RuleCard.tsx` de `zero-trust-halden`** no sirve tal cual para s10: es una sola fila de cuatro campos, sin número de regla y,
+  por diseño, sin las palabras permitir/denegar (ver su comentario de cabecera). El brief pide **copiarlo y adaptarlo** a una
+  lista de tres filas con barra de lectura, no importarlo.
+- **Tarjeta de examen en escena con pausa para pensar:** s03 lleva las dos; la tarjeta espera al final de la oración
+  «O sea, que si coincide el prefijo entero…», ya fuera de la pausa, así que no se solapan en el tiempo.
+
+- **IP de la naviera cambiada (2026-10-28):** `198.51.100.7` choca con `blog-recetas.example` del listín de V4 (`video/pivot-infra/src/scenes/S03Pdns.tsx`, `velvet-cicada.md:421`); F1 y F2 usan ahora `198.51.100.17`, libre en todo el repo. La dirección del sitio de subidas de F4 pasa de `198.51.100.90` a `198.51.100.117` por el mismo motivo (`tienda-flores.example`).
+
+### G.8 Revisiones aplicadas (2026-10-28)
+
+Se aplicaron la revisión de exactitud y la de naturalidad, y se recortó la locución para entrar en la ventana de `principal-yt`.
+**El guion sigue sin congelar** (`video.json` no lleva `"frozen"`). La locución vigente es `video/viaje-conexion/narration.json`; las
+partes B y C de esta ficha y la tabla de E.2 conservan el texto y las cifras de la propuesta y ya no coinciden con ella.
+
+**Cifras nuevas** (`build-timeline --video viaje-conexion --estimate`, sin avisos): **596,4 s (9:56)**, 73 segmentos (eran 76), 1345 palabras
+(eran 1414), 77 cues, 6 tarjetas de examen, 2 pausas para pensar. Antes: 625,2 s. Por escena (s): s01 33,7 · s02 56,9 · s03 48,6 ·
+s04 60,2 · s05 35,3 · s06 57,0 · s07 55,4 · s08 51,0 · s09 43,1 · s10 72,9 · s11 42,9 · s12 39,5. Capítulos: 1 en 0:00, 2 en 2:19, 3 en 3:54,
+4 en 5:47, 5 en 7:21. `storyboard.json` lleva ya esos `targetSec`/`wordBudget` (`targetTotalSec` 596).
+
+**Recortes aplicados (A a I)**
+
+| | Qué | Ahorro aprox. |
+|---|---|---|
+| A | s05-04 sin «Como los carteles de cada cruce…» | 6,4 s |
+| B | s03-04 sin «Que empiecen igual no basta…» (se quedó esa y no la variante de naturalidad 9) | 4,4 s |
+| C | s05-07 borrada; la pausa de s05-06 sube de 350 a 650 ms; s05-05 queda en «Eso es el routing.» | 4,75 s + 1,5 s |
+| D | s09-04 + s09-05 fundidas en s09-04 (cues `natlog` y `match` intactos; los dos puntos del texto propuesto pasan a punto, porque el validador avisa de conectores con dos puntos) | 2,85 s |
+| E | s10-03: «Para el NAT, esa conexión es una etiqueta más.» | 2,8 s |
+| F | s07-06: «Lo usa el DNS, que traduce nombres a direcciones. Si no llega respuesta, el programa vuelve a preguntar.» (anclas `respuesta` y `preguntar` conservadas) | 1,2 s |
+| G | s10-04: «El cortafuegos tiene una lista, y cada regla dice si un tipo de conexión pasa o no.» | 1,2 s |
+| H | s10-08: «…en el mismo aparato, pero uno traduce y el otro decide.» | 1,2 s |
+| I | s04-01/02 sin «Tu portátil no conoce el camino…» | 3,6 s |
+
+**Exactitud aplicada.** (1) `S04Salida`: ya no se tacha la fila `192.168.20.0/24 → pata oficina` (es una ruta conectada y se enciende en
+`back`); el fallo se señala en el servidor, con «sin ruta de vuelta» y «falta o falla la puerta de enlace del servidor» en ámbar. (2) El
+«reescrito fantasma» de s10 usa un par propio, `192.168.20.34:50761 → 198.51.100.17:61006` (`RDP_NAT` en `data.ts`), y no una fila web.
+(3) s09-02/03: «¿Basta esa dirección para saber qué ordenador fue?» / «No. Con esa dirección no basta, detrás puede haber treinta equipos.»;
+`think.q` «¿Esa dirección dice qué ordenador fue?»; D.1 actualizado. (4) s09-01 dice «con la dirección y el puerto de origen, y la hora» y
+la tabla se rotula «registro de NAT de la naviera · traducciones guardadas». (5) s06-06 «te dice a qué servicio dice llamar», s12-03 «el
+puerto dice a qué servicio apunta» (también en la tarjeta de la regla 2). (6) Tarjeta de s08 «NAT traduce direcciones y puertos y apunta la
+traducción»; «deciden las reglas» pasa a la de s10. (7) Documentación: G.4 y `out/scene-brief.md` (el choque era con `.7`, no con `.17`);
+`00-propuesta.md` §6 ya traía `.17` y `.117` desde el commit `ddd319b8`, así que solo se amplió el porqué. (8) Voz: s03-02 «sin pasar por el
+router», s11-04 «La respuesta vuelve.», s06-05 «cuatro datos y el protocolo», s05-03 «Ninguno decide el viaje entero», s10-05 «…en este
+modelo», s10-09 «Y ninguno esconde lo que viaja. El contenido sigue a la vista de quien lo mire por el camino.»; en pantalla, la regla 3 de
+s10 dice «lo demás hacia Internet». (9) Lo que era solo documentación está en F.1.
+
+**Naturalidad aplicada.** s06-02 «ojo, que no hablo del de los barcos» y s05-01 «el portal de Halden. Su dirección no es de tu calle.»;
+s07-04 «incompleta ni desordenada»; s12-01 «Te quedas con tres ideas» y el título de la escena, «Tres ideas»; s08-04 «Y lo apunta, con la
+hora, en otra tabla…»; s02-05/06 (ocho bits, «Tres números de ocho bits son veinticuatro»); «conexión» como palabra fija en s06-03, s06-04,
+s08-06, s10-07 (y en los rótulos de pantalla de s06, s08 y s10); s04-08 «la petición llega pero la respuesta se pierde»; s10-01 «o
+firewall»; ahorros: s04-03, s04-07, s02-02, s10-02 (sin «Mira.»), s01-03 (sin glosa), s07-01 sin «principales», s07-03 con «hablas por
+turnos», s11-05 «la tabla se la devuelve a tu portátil». Léxico: `router` «rúter», `routing` «rútin», `default` «defólt», `gateway`
+«guéitwei» y `efímero`, iguales en los dos archivos (el validador no admite claves con espacio, así que «default gateway» va en dos
+entradas). En `out/guion-grabacion.md` (no versionada) se añadió a mano la nota de que «443» se lee «cuatro cuatro tres» en s06-02, s06-06 y s11-01; **`script-sheets` regenera esa hoja y la borra**, así que hay que volver a añadirla tras cada ejecución (también al congelar) hasta que exista un campo duradero o la hoja pinte las claves numéricas del léxico (hoy deja «443» sin pronunciación).
+
+**Desviaciones de lo pedido (a conocer, no absorbidas en silencio)**
+
+- **s04-01/02.** El texto propuesto de s04-02 («Tu portátil tiene apuntada la dirección de un aparato de la oficina, el router, que conecta
+  tu red con las demás y con Internet.») tiene 24 palabras en una frase (máx. 22) y s04-01 se quedaba en 6 (mín. 8). Quedó repartido: s04-01
+  «¿Cómo llegas, entonces, a otra calle? Pues tu portátil tiene apuntada la dirección de un aparato de la oficina.» y s04-02 «Es el router, el
+  que conecta tu red con las demás y con Internet.»; el cue `config` pasó a s04-01 (tras la pregunta, cuando se apaga el «?»).
+- **s05-05 se fundió en s05-04** (4 palabras, bajo el mínimo): `{routing}Eso es el routing.` cierra s05-04 y el segmento s05-05 desapareció.
+- **s06-02 «La web segura va al 443.»** en vez de «suele atender en el 443»: con la frase nueva de «ojo» el segmento pasaba de 30 palabras (aviso).
+  Se pierde el «suele»; lo cubre s06-06 («el número es una costumbre»). Alternativa si se prefiere el matiz: quitar «ojo,» y decir «suele ir al 443».
+- **Tarjeta de s06 sin «por costumbre»:** «Puerto: a qué servicio apunta, no qué contenido lleva» (53). La propuesta («…apunta por costumbre, no qué
+  contenido lleva») tiene 67 caracteres y el motor admite 58. La de s10 queda en 58 exactos: «Firewall: deciden las reglas, gana la primera; si no, deny».
+- **s06-06 «te dice a qué servicio dice llamar»** va literal como se pidió; repite «dice» y puede sonar torpe. Si Lidia lo nota, «pretende llamar».
+- **s04-07 «su router necesita una ruta hasta tu calle»** va literal; en la topología el router es el mismo y lo que falta en pantalla es la
+  puerta de enlace del servidor. Si se quiere más exactitud: «y el servidor necesita una ruta hasta tu calle».
+- **s05, tercera línea del cierre** («cada router elige el siguiente paso, también a la vuelta»): ya no la dice la voz (s05-07 se quitó); entra
+  mientras suena «vas a la puerta de enlace» y la respuesta vuelve por el plano. La voz de esa idea queda en s12-02.
+- **s06, la etiqueta se rellena por pares** («Origen y destino…» enciende origen y luego destino; «protocolo» enciende TCP), porque la frase nueva ya
+  no nombra dirección y puerto en cuatro tiempos.
+- **s09-06** no se tocó: el encargo decía «(ver abajo)» y no había nada más abajo.
+- **No aplicado:** la pausa de s03-03 de 4,5 a 6 s (el margen es de 1,6 s) y «la web con candado» (el indicador es neutro).
+- **Conceptos: 8 o 9** (más que los 4 a 6 del perfil); no se cortó más contenido. Si hace falta, lo primero que sale de la voz es el estado de la conexión (s10-07).
+
+**Comprobaciones.** `build-timeline --estimate`: sin avisos. Un script de apoyo comprobó los 68 anclajes `wordFrame`/`wf` contra `timeline.json` (0
+fallos). `tsc --noEmit -p video/viaje-conexion/tsconfig.json`: limpio. Una pasada de `qa-frames` (120 imágenes, 11 de ellas extras) más una segunda, solo de s04, tras mover el rótulo ámbar del servidor para que no pise «router · cortafuegos»; revisada en s02,
+s03, s04, s05, s06, s07, s08, s09, s10, s11 y s12; tarjeta final de s12 con el mini-plano sin nombres (`Plano` oculta ahora «Oficina de la naviera» e
+«Internet» con `names={0}`).

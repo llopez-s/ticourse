@@ -1,0 +1,124 @@
+{
+  "title": "Cómo viaja una conexión",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 596,
+  "chapters": [
+    { "n": 1, "title": "Tu red" },
+    { "n": 2, "title": "Salir de tu red" },
+    { "n": 3, "title": "Puertos, TCP y UDP" },
+    { "n": 4, "title": "La etiqueta que cambia" },
+    { "n": 5, "title": "Traducir no es filtrar" }
+  ],
+  "scenes": [
+    {
+      "id": "s01-clic",
+      "chapter": 1,
+      "title": "Un clic",
+      "goal": "El navegador con el portal de reservas (reservas.haldenport.example) y el botón «Reservar atraque»; tras el clic, «Reserva confirmada» y un cronómetro que se para en «0,4 s» (ping2 con la respuesta, cue reply). Al empezar la segunda frase (cue title, antes de los 12 s), el título «Cómo viaja una conexión» y debajo, pequeño, «IP · gateway · NAT · puertos»; la ficha lo quería sobre «paso a paso», pero el cue va al inicio de la frase para cumplir los 12 s. Zoom out desde el botón hasta el plano entero (cue plan): oficina de la naviera (portátil, impresora, servidor de ficheros), router con el cortafuegos dentro, nube «Internet» con tres o cuatro routers sin nombre y, a la derecha, el portal rotulado «Autoridad Portuaria de Halden · portal de reservas». La red interna del puerto NO se dibuja. Una línea discontinua une portátil y portal. Al decir la promesa (cue promise), cuatro chips que se encienden al nombrarlos con wordFrame: «por dónde sale», «qué lleva encima», «quién lo cambia», «quién decide». Sin sello de caso todavía: el sello «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto» entra desde s02.",
+      "targetSec": 34,
+      "wordBudget": 92,
+      "requiredCues": ["reply", "title", "plan", "promise"]
+    },
+    {
+      "id": "s02-direccion",
+      "chapter": 1,
+      "title": "Una dirección con dos partes",
+      "goal": "Sello «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto» (y el de siempre, «Simulación educativa · datos ficticios», que pone el motor). La dirección del portátil en grande, 192.168.20.10/24 (cue address). Al decir «cuatro números» (cue nums), cada número se enmarca. Al decir «dos partes» (cue parts), 192.168.20 se tiñe de cian con el rótulo «la red · la calle» y .10 de ámbar con «el equipo · el número» (color siempre con rótulo). A la derecha, la imagen de una calle con portales numerados, rotulada «imagen · no es del puerto». Cue prefix: una regla debajo, «/24 = 24 bits = 3 números × 8 bits»; cue bits: los bits se insinúan como 32 rayitas en cuatro grupos de ocho y las 24 primeras se iluminan; cue network: «esa es la red» (los tres primeros números) y «el último, tu portátil». Cue packet: un paquete sale del portátil con su etiqueta vacía (origen, destino): la etiqueta de cinco casillas se dibuja aquí por primera vez, siempre igual.",
+      "targetSec": 57,
+      "wordBudget": 154,
+      "requiredCues": ["address", "nums", "parts", "prefix", "bits", "network", "packet"]
+    },
+    {
+      "id": "s03-vecina",
+      "chapter": 1,
+      "title": "¿Vecina o no?",
+      "goal": "Sello de caso (como s02). Cue printer: la impresora 192.168.20.80/24 junto al portátil, con los tres primeros números alineados bajo los del portátil y un chip cian «misma red» con su rótulo; cue direct: un paquete va del portátil a la impresora en línea recta, sin pasar por el router (sfx check al llegar). Cue server: el servidor de ficheros 192.168.30.10/24: los dos primeros números coinciden (cian) y el tercero no (ámbar); durante la pausa para pensar (think «¿El servidor está en tu misma red?», con las opciones en pantalla «Sí» / «No»), el servidor parpadea con «¿misma red?». Cue answer (empieza con «No.»): la calle de la imagen se parte en dos calles, rotulada «imagen · no es del puerto». Cue rule: «si coincide el prefijo entero, es tu red y entregas tú» (la tarjeta de examen espera a que acabe esa oración). Cue private: chip «direcciones privadas» con los tres rangos en pequeño, 10.0.0.0/8 · 172.16.0.0/12 · 192.168.0.0/16, y el rótulo «dentro sí · por Internet no». Mantener libre la zona alta central durante la pausa.",
+      "targetSec": 49,
+      "wordBudget": 132,
+      "requiredCues": ["printer", "direct", "server", "answer", "rule", "private"]
+    },
+    {
+      "id": "s04-salida",
+      "chapter": 2,
+      "title": "La salida de tu calle",
+      "goal": "Sello de caso. Cue config (va en la segunda frase de s04-01, después de la pregunta: se apaga el «?»): la configuración de red del portátil con una fila resaltada, «puerta de enlace 192.168.20.1». Cue handoff: el paquete hacia el servidor sale del portátil y va primero al router (entrega al router como siguiente salto, sin cambiar la dirección de destino). Cue gateway: el router con tres patas rotuladas (192.168.20.1, 192.168.30.1 y la del proveedor), que se ilumina como «la salida de tu calle» (la tarjeta de examen espera al final de esa oración). Cue table: su tabla de rutas de tres filas, «192.168.20.0/24 pata oficina» · «192.168.30.0/24 pata servidores» · «todo lo demás proveedor de Internet», con la imagen de los carteles de un cruce (rotulada «imagen · no es del puerto»). Cue forward: la fila de su red se ilumina y el paquete sale por la otra pata hacia la calle del servidor. Cue back: la respuesta vuelve (el servidor contesta a 192.168.20.10, así que su lado necesita ruta hasta esa calle). Cue missing: variante en ámbar, la respuesta sale del servidor y se queda dando vueltas con el rótulo «sin ruta de vuelta» y, debajo, «falta o falla la puerta de enlace del servidor» (la fila «192.168.20.0/24 pata oficina» del router NO se tacha: es una ruta conectada y se enciende en `back`); la petición sí llegó.",
+      "targetSec": 60,
+      "wordBudget": 162,
+      "requiredCues": ["config", "handoff", "gateway", "table", "forward", "back", "missing"]
+    },
+    {
+      "id": "s05-internet",
+      "chapter": 2,
+      "title": "Hasta el puerto",
+      "goal": "Sello de caso. El plano entero. Cue portal: la dirección del portal, 192.0.2.44 («ejemplo de entrenamiento»), se compara con las dos redes de la oficina y no encaja en ninguna; la fila «todo lo demás» de la tabla se ilumina. Cue isp: el paquete va a la puerta de enlace y el router lo manda hacia el proveedor de Internet. Cue hops: en la nube, cuatro routers sin nombre; el paquete salta de router en router. Cue signs: en cada router aparece un cartel de cruce con una sola flecha y se enciende solo el cartel de ese cruce, nunca el recorrido entero (imagen de los carteles, rotulada «imagen · no es del puerto»). Cue routing (cierra s05-04: «Eso es el routing.»): rótulo «routing: decidir en cada salto». Al llegar, el portal se ilumina. Cue wrap: cierre del capítulo, «dentro de tu calle entregas tú · para salir, puerta de enlace · cada router elige el siguiente paso, también a la vuelta»; la tercera línea y la respuesta que vuelve por el plano entran mientras la voz dice «vas a la puerta de enlace» (s05-07 se quitó para entrar en 600 s; la voz de «también a la vuelta» está en s12-02).",
+      "targetSec": 35,
+      "wordBudget": 94,
+      "requiredCues": ["portal", "isp", "hops", "signs", "routing", "wrap"]
+    },
+    {
+      "id": "s06-despacho",
+      "chapter": 3,
+      "title": "Edificio y despacho",
+      "goal": "Sello de caso. Cue building: el portal como un edificio con tres despachos numerados (443, 22, 25) y solo el 443 con luz; imagen del edificio y su despacho, rotulada «imagen · no es del puerto» (22 y 25 salen en pantalla, no se piden). Cue port: «la dirección es el edificio, el puerto es el despacho». Cue ephemeral: junto a 51422, el rótulo «efímero · lo elige tu portátil para esta conexión». Cue convo (al decir «la conexión correcta»): el navegador muestra tres conexiones abiertas, cada una con su puerto efímero, y la respuesta entra en la suya. Cue label: la etiqueta de cinco casillas se completa por pares al compás de «Origen y destino, cada uno con su dirección y su puerto» (origen 192.168.20.10:51422 con «Origen», destino 192.0.2.44:443 con «destino») y, en la quinta, «TCP» con «protocolo». Cue inside (la tarjeta de examen espera al final de esa oración): la etiqueta se vuelve translúcida y dentro del paquete aparece un signo de interrogación, «¿qué lleva?».",
+      "targetSec": 57,
+      "wordBudget": 154,
+      "requiredCues": ["building", "port", "ephemeral", "convo", "label", "inside"]
+    },
+    {
+      "id": "s07-llamada",
+      "chapter": 3,
+      "title": "Llamada o contestador",
+      "goal": "Sello de caso. Dos columnas que se encienden por turno al compás de la voz. Izquierda, imagen de una llamada con «descuelga», «¿me oyes?», «repite eso» (rotulada «imagen · no es del puerto»); cue call: el saludo de TCP en tres flechas cortas entre portátil y portal; cue resend: tres segmentos numerados 1 · 2 · 3 con un «✓ recibido» por cada uno, el 2 se pierde y vuelve a salir. Cue tcp: en la casilla pequeña de la etiqueta, «TCP». Derecha, cue message: imagen de un contestador, el recado entra y nadie confirma (rotulada «imagen · no es del puerto»); cue udp: la casilla pequeña pasa a «UDP» (la tarjeta de examen espera al final de la oración «Eso es UDP»); cue dns: debajo, una consulta «DNS · UDP» que no recibe respuesta y se repite. Cue wrap: «TCP: las garantías vienen de serie · UDP: si hacen falta, las pone el programa». No se habla de seguridad: TCP no es «más seguro».",
+      "targetSec": 55,
+      "wordBudget": 148,
+      "requiredCues": ["call", "resend", "tcp", "message", "udp", "dns", "wrap"]
+    },
+    {
+      "id": "s08-tachar",
+      "chapter": 4,
+      "title": "Tachar y apuntar",
+      "goal": "Sello de caso. Cue router: el paquete llega al router. Cue rewrite (sfx typing): en la etiqueta, el origen 192.168.20.10:51422 se tacha y se escribe encima 198.51.100.17:61002, a mano alzada, como quien corrige un remite; nada se dibuja como muro ni escudo. Cue table: la tabla de NAT gana una fila, «interno 192.168.20.10:51422 · público 198.51.100.17:61002 · destino 192.0.2.44:443 · hora». Cue lookup: con la respuesta, la tabla se consulta (la fila parpadea) y el destino vuelve a ser 192.168.20.10:51422. Cue nat (la tarjeta de examen espera al final de «Eso es NAT»): rótulo «NAT · traducción de direcciones»; cue shared: otras tres filas de otros portátiles, todas con la misma pública y puertos distintos.",
+      "targetSec": 51,
+      "wordBudget": 138,
+      "requiredCues": ["router", "rewrite", "table", "lookup", "nat", "shared"]
+    },
+    {
+      "id": "s09-portal",
+      "chapter": 4,
+      "title": "Lo que ve el portal",
+      "goal": "Sello de caso. Cue log: el lado del portal, una línea de su registro (la voz dice que apunta cada reserva), 198.51.100.17:61002 con «reserva creada» y la hora. Cue crowd: detrás de esa dirección, en la oficina, treinta siluetas de portátil iguales; durante la pausa para pensar (think «¿Esa dirección dice qué ordenador fue?», opciones «Sí» / «No»), una lupa recorre las treinta siluetas sin detenerse en ninguna. Cue verdict (empieza con «No.»): el portal solo ve la dirección traducida. Cue natlog: la tabla de NAT de la naviera con la hora y los puertos, rotulada «registro de NAT de la naviera · traducciones guardadas». Cue match (segunda mitad de s09-04, fundida con la antigua s09-05): la fila que coincide se ilumina y señala un único portátil. Cue wrap: «una dirección compartida, por sí sola, no señala a nadie». Mantener libre la zona alta central durante la pausa.",
+      "targetSec": 43,
+      "wordBudget": 116,
+      "requiredCues": ["log", "crowd", "verdict", "natlog", "match", "wrap"]
+    },
+    {
+      "id": "s10-decidir",
+      "chapter": 5,
+      "title": "Traducir no es decidir",
+      "goal": "Sello de caso. Cue boxes: en el router, dos cajas lado a lado, «NAT · traduce» y «cortafuegos · decide». Cue rdp: un segundo paquete, de otro portátil, con destino «equipo externo · 3389 · escritorio remoto» (sfx block no suena todavía). Cue same: el router lo traduciría igual que el del portal («una etiqueta más»); el reescrito fantasma usa su propio par, 192.168.20.34:50761 → 198.51.100.17:61006, no una fila web. Cue rules: la lista de reglas de salida de la naviera, hecha con una copia adaptada de RuleCard (ver «Canon»): 1. «Oficina a Internet · TCP 443 y 80 · permitir»; 2. «resolutor de la oficina a Internet · UDP y TCP 53 · permitir»; 3. (gris, sin número) «lo demás hacia Internet · denegar», con el rótulo «denegación implícita». Cue scan: una barra baja fila a fila y se para en la primera que coincide; cue implicit (la tarjeta de examen espera al final de esa oración): se señala la fila gris. Cue stop (sfx block): la lista detiene el paquete del 3389 en la fila gris y la caja NAT no llega a escribir nada; a su lado, en gris, «lo habría traducido igual» (en el router se filtra antes de traducir el origen). Cue state: la respuesta del portal entra con el rótulo «conexión abierta desde dentro · estado». Cue split: las dos cajas juntas en el mismo aparato, cada una con su trabajo. Cue nocrypt: un chip sobre las dos cajas, «ninguno cifra · eso es TLS, en el siguiente vídeo» (sin candado: el candado es imagen de V21).",
+      "targetSec": 73,
+      "wordBudget": 197,
+      "requiredCues": ["boxes", "rdp", "same", "rules", "scan", "implicit", "stop", "state", "split", "nocrypt"]
+    },
+    {
+      "id": "s11-ida-vuelta",
+      "chapter": 5,
+      "title": "Ida y vuelta",
+      "goal": "Sello de caso. El plano entero; un solo paquete con su etiqueta recorre el camino y, en cada tramo, la etiqueta se amplía a un lado. Cue start: «en la oficina», privada:51422 hacia portal:443. Cue gate (chip «gateway») y cue rule (chip «regla»): el paquete va a la puerta de enlace y el cortafuegos encuentra su regla. Cue translate (chip «NAT»): «tras el router», pública:61002 hacia portal:443, y se apunta. Cue trip (chip «routing»): «en el portal», igual; router a router. Cue undo (chip «puerto efímero»): la respuesta vuelve con la etiqueta invertida y se deshace la traducción en el router. Cue time: el cronómetro de s01 vuelve a pararse en «0,4 s» (todo eso, en menos de un segundo).",
+      "targetSec": 43,
+      "wordBudget": 116,
+      "requiredCues": ["start", "gate", "rule", "translate", "trip", "undo", "time"]
+    },
+    {
+      "id": "s12-reglas",
+      "chapter": 5,
+      "title": "Tres ideas",
+      "goal": "Sello de caso. Cue three: tres tarjetas numeradas (RuleCards del motor, la voz dice «tres ideas») que se encienden con la voz, cue r1 «Una», cue r2 «Dos», cue r3 «Tres»: 1. «Misma red: entregas tú; si no, puerta de enlace; cada router decide el siguiente salto, también a la vuelta»; 2. «La etiqueta lleva direcciones y puertos; el puerto dice a qué servicio apunta, no qué contiene»; 3. «NAT cambia la etiqueta y lo apunta; quien decide qué pasa es el cortafuegos». Cue next: las tarjetas se atenúan y llega la tarjeta final «ALERTÓPOLIS · Cómo viaja una conexión» con el botón «Práctica · Mapa de red». Sin tarjeta de examen en esta escena y sin acciones visuales nuevas.",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "requiredCues": ["three", "r1", "r2", "r3", "next"]
+    }
+  ]
+}
