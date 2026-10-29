@@ -356,6 +356,12 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'CB-TTDBRF3I')?.module).toBe('s3m2');
     // AP07 compares Bruma, Cobalto and Duna by unit and relevance, after s4m4's dataset table and before the step-by-step resolution
     expect(youtubeVideos.find((v) => v.block.youtube === 'DBcK-Y0WItM')?.module).toBe('s4m4');
+    // G02 gives the board and the SOC each its own product and builds the Sliding Scale in order, after s1m3's exam
+    // note on the scale and before the threat-hunting check
+    expect(youtubeVideos.find((v) => v.block.youtube === 'FW0X9_djBv4')?.module).toBe('s1m3');
+    // G08 reads the five TLP marks, replays the AMBER fumble and closes on reciprocity, after s3m4's paragraph on
+    // sharing communities and before the one on vendor reports
+    expect(youtubeVideos.find((v) => v.block.youtube === 'mHSJuJ_reKE')?.module).toBe('s3m4');
     // V35 sorts sp2m1's six threat actors into three pairs (the attributes give the pair, the motivation picks one of
     // the two) with three exam-style questions, after the Halden callout and before the paragraph that hands over to
     // sp2m2's vectors

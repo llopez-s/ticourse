@@ -1386,11 +1386,29 @@ export const VIDEO_INVENTORY: VideoResource[] = [
     "id": "niveles-audiencia",
     "track": "gcti",
     "lessonId": "s1m3",
-    "title": "tactical operational strategic",
-    "status": "scripted",
-    "role": "complementary",
-    "evidence": "video/niveles-audiencia/video.json",
-    "chapters": []
+    "title": "Niveles de CTI y Sliding Scale: el producto correcto para cada persona",
+    "status": "integrated",
+    "role": "principal",
+    "youtube": "FW0X9_djBv4",
+    "poster": "videos/niveles-audiencia-poster.png",
+    "transcript": "videos/niveles-audiencia-transcript.txt",
+    "captions": "videos/niveles-audiencia-captions.vtt",
+    "durationSeconds": 237,
+    "verifiedAgainst": "videos/niveles-audiencia-captions.vtt",
+    "chapters": [
+      {
+        "title": "Dos peticiones",
+        "start": 0
+      },
+      {
+        "title": "La escala de la seguridad",
+        "start": 119
+      },
+      {
+        "title": "Para el examen",
+        "start": 218
+      }
+    ]
   },
   {
     "id": "nube-halden",
@@ -1898,6 +1916,26 @@ export const VIDEO_INVENTORY: VideoResource[] = [
       {
         "title": "Para el examen",
         "start": 200
+      }
+    ]
+  },
+  {
+    "id": "tlp-comunidades",
+    "track": "gcti",
+    "lessonId": "s3m4",
+    "title": "TLP: con quién puedes compartir un informe de inteligencia",
+    "status": "integrated",
+    "role": "principal",
+    "youtube": "mHSJuJ_reKE",
+    "poster": "videos/tlp-comunidades-poster.png",
+    "transcript": "videos/tlp-comunidades-transcript.txt",
+    "captions": "videos/tlp-comunidades-captions.vtt",
+    "durationSeconds": 225,
+    "verifiedAgainst": "videos/tlp-comunidades-captions.vtt",
+    "chapters": [
+      {
+        "title": "Caso completo",
+        "start": 0
       }
     ]
   },
