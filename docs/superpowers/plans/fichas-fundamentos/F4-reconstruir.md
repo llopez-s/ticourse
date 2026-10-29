@@ -1,5 +1,7 @@
 # F4 · «Cómo reconstruir lo ocurrido»
 
+> **Guion congelado el 2026-10-29** (`"frozen"` en `video.json`), a petición de Lidia, tras las revisiones de exactitud y de naturalidad. La versión vigente es `narration.json`. Las decisiones opcionales se resolvieron con la opción recomendada de esta ficha (la que ya recoge el guion); quedan abiertas solo las pronunciaciones, el canon nuevo «previsto» y los objetivos de las tarjetas, que se confirman al grabar.
+
 > **Estado: propuesta, 2026-10-28.** Sin congelar, sin escenas ni voz. Rutas relativas a la raíz del repo; `fund` =
 > `src/data/security/foundations.ts`, `prac` = `src/data/security/practicals.ts`, `reg` =
 > `docs/superpowers/canon/glass-harbor.md`, `plan` = `docs/superpowers/plans/2026-09-25-lesson-videos.md`. Decisiones
