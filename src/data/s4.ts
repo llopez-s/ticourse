@@ -101,6 +101,13 @@ export const S4_MODULES: Module[] = [
         title: 'Nota de examen',
         md: 'Te darán una frase de analista y pedirán **identificar el sesgo**. Claves: «confirma lo que ya pensábamos» → confirmation; «el primer informe decía…» → anchoring; «está en todas las noticias» → availability; «ningún actor racional haría…» → mirror imaging.',
       },
+      {
+        t: 'video',
+        title: 'Sesgos del analista: el instrumento de medida eres tú',
+        youtube: '0CKs-L9M-Ts',
+        poster: 'videos/sesgos-analista-poster.png',
+        transcript: 'videos/sesgos-analista-transcript.txt',
+      },
     ],
     quiz: [
       {
@@ -277,6 +284,13 @@ export const S4_MODULES: Module[] = [
         kind: 'exam',
         title: 'Nota de examen',
         md: 'Diferencia **bias** (cognición: confirmation, anchoring, mirror imaging…) de **fallacy** (argumentación: ad hominem, post hoc, circular…). El examen mezcla ambos en la misma pregunta.',
+      },
+      {
+        t: 'video',
+        title: 'Falacias lógicas en CTI: el paso que no se sostiene',
+        youtube: 'nWKR9OGxHdY',
+        poster: 'videos/falacias-cti-poster.png',
+        transcript: 'videos/falacias-cti-transcript.txt',
       },
     ],
     quiz: [

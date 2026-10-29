@@ -362,6 +362,15 @@ describe('lesson videos', () => {
     // G08 reads the five TLP marks, replays the AMBER fumble and closes on reciprocity, after s3m4's paragraph on
     // sharing communities and before the one on vendor reports
     expect(youtubeVideos.find((v) => v.block.youtube === 'mHSJuJ_reKE')?.module).toBe('s3m4');
+    // ciclo-pir walks the six phases of the lifecycle and writes the first PIRs for Meridian's CISO, after s1m4's
+    // F3EAD paragraphs and before the second check
+    expect(youtubeVideos.find((v) => v.block.youtube === 'rM8Syyp6JlM')?.module).toBe('s1m4');
+    // sesgos-analista puts a name to four shortcuts (anchoring, confirmation, availability, mirror imaging), at the
+    // end of s4m1 after the exam note and before the six questions
+    expect(youtubeVideos.find((v) => v.block.youtube === '0CKs-L9M-Ts')?.module).toBe('s4m1');
+    // falacias-cti separates bias from fallacy and marks the authority, circular and feed-echo steps, at the end of
+    // s4m2 after the exam note and before the six questions
+    expect(youtubeVideos.find((v) => v.block.youtube === 'nWKR9OGxHdY')?.module).toBe('s4m2');
     // V35 sorts sp2m1's six threat actors into three pairs (the attributes give the pair, the motivation picks one of
     // the two) with three exam-style questions, after the Halden callout and before the paragraph that hands over to
     // sp2m2's vectors

@@ -599,6 +599,13 @@ export const S1_MODULES: Module[] = [
         md: 'La relación entre ambos ciclos es de engranaje: el lifecycle marca el ritmo estratégico del equipo de inteligencia; F3EAD acelera el bucle táctico entre operaciones e inteligencia durante incidentes activos.',
       },
       {
+        t: 'video',
+        title: 'Antes de recoger nada, la pregunta: el ciclo de inteligencia y los PIRs',
+        youtube: 'rM8Syyp6JlM',
+        poster: 'videos/ciclo-pir-poster.png',
+        transcript: 'videos/ciclo-pir-transcript.txt',
+      },
+      {
         t: 'check',
         q: {
           q: 'In F3EAD, which phases belong to the intelligence half of the cycle?',
