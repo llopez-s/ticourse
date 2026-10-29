@@ -1,5 +1,7 @@
 # F4 · «Cómo reconstruir lo ocurrido»
 
+> **Guion congelado el 2026-10-29** (`"frozen"` en `video.json`), a petición de Lidia, tras las revisiones de exactitud y de naturalidad. La versión vigente es `narration.json`. Las decisiones opcionales se resolvieron con la opción recomendada de esta ficha (la que ya recoge el guion); quedan abiertas solo las pronunciaciones, el canon nuevo «previsto» y los objetivos de las tarjetas, que se confirman al grabar.
+
 > **Estado: propuesta, 2026-10-28.** Sin congelar, sin escenas ni voz. Rutas relativas a la raíz del repo; `fund` =
 > `src/data/security/foundations.ts`, `prac` = `src/data/security/practicals.ts`, `reg` =
 > `docs/superpowers/canon/glass-harbor.md`, `plan` = `docs/superpowers/plans/2026-09-25-lesson-videos.md`. Decisiones
@@ -29,8 +31,8 @@
 |---|---|---|
 | Inicio de sesión del equipo (exportado) | CSV, hora local del equipo, **sin zona** | `hora,equipo,cuenta,evento,resultado` · `09:58:12,SALES-WS-03,l.prado,4624 inicio de sesión,correcto` |
 | Proxy web | texto, **UTC** (`Z`) | `09:01:40Z SALES-WS-03 l.prado POST subidas.compartir.example/upload 403 BLOQUEADO categoría=almacenamiento personal` |
-| EDR del equipo | JSON, **UTC** | `{"ts":"09:02:41Z","host":"SALES-WS-03","user":"l.prado","event":"process_start","process":"syncbox.exe","pid":6120,"parent":"explorer.exe"}` · `{"ts":"09:02:58Z","host":"SALES-WS-03","user":"l.prado","event":"network_connect","pid":6120,"src":"10.20.6.37:52811","dst":"198.51.100.90:443"}` |
-| Cortafuegos de salida | clave=valor, hora local **con desfase** (`+01:00`) | `start=10:03:05+01:00 end=10:06:06+01:00 action=ALLOW src=10.20.6.37:52811 dst=198.51.100.90:443 proto=TCP duration=181s bytes_out=46180352 bytes_in=61420` |
+| EDR del equipo | JSON, **UTC** | `{"ts":"09:02:41Z","host":"SALES-WS-03","user":"l.prado","event":"process_start","process":"syncbox.exe","pid":6120,"parent":"explorer.exe"}` · `{"ts":"09:02:58Z","host":"SALES-WS-03","user":"l.prado","event":"network_connect","pid":6120,"src":"10.20.6.37:52811","dst":"198.51.100.117:443"}` |
+| Cortafuegos de salida | clave=valor, hora local **con desfase** (`+01:00`) | `start=10:03:05+01:00 end=10:06:06+01:00 action=ALLOW src=10.20.6.37:52811 dst=198.51.100.117:443 proto=TCP duration=181s bytes_out=46180352 bytes_in=61420` |
 
 **Cronología normalizada (UTC):** 08:58:12 inicio de sesión · 09:01:40 bloqueo del proxy · 09:02:41 arranca
 `syncbox.exe` · 09:02:58 conexión según el EDR · 09:03:05 inicio de la conexión según el cortafuegos (7 s de
@@ -148,7 +150,7 @@ es la VLAN de Oficinas (`reg:4491`); todo lo demás es nuevo y va rotulado «ima
 - **En pantalla:** una tabla de cinco filas con tres columnas, «UTC · hecho · fuente», que se rellena al compás de la
   voz: «08:58:12 · inicio de sesión de `l.prado` en `SALES-WS-03` · equipo», «09:01:40 · subida bloqueada a
   `subidas.compartir.example` · proxy», «09:02:41 · arranca `syncbox.exe` (PID 6120) · EDR», «09:02:58 · `syncbox.exe`
-  conecta a `198.51.100.90:443` · EDR», «09:03:05 · ALLOW desde el inicio, 181 s, 46 180 352 bytes de salida · cortafuegos». Junto a `syncbox.exe`, en
+  conecta a `198.51.100.117:443` · EDR», «09:03:05 · ALLOW desde el inicio, 181 s, 46 180 352 bytes de salida · cortafuegos». Junto a `syncbox.exe`, en
   gris: «solo el nombre del archivo».
 - **Acciones visuales:** cada fila se ilumina y luego se atenúa; nada se interpreta todavía (sin colores de alarma).
 - **Narración:**
@@ -163,7 +165,7 @@ es la VLAN de Oficinas (`reg:4491`); todo lo demás es nuevo y va rotulado «ima
 
 - **Propósito didáctico:** correlacionar por campos comunes; la diferencia de segundos entre relojes.
 - **En pantalla:** hilos de color entre filas: «equipo» une inicio de sesión, proxy y EDR; «cuenta» une los mismos;
-  «`10.20.6.37:52811` → `198.51.100.90:443`» une la fila del EDR y la del cortafuegos. Al lado, «09:02:58 (EDR) ·
+  «`10.20.6.37:52811` → `198.51.100.117:443`» une la fila del EDR y la del cortafuegos. Al lado, «09:02:58 (EDR) ·
   09:03:05 (cortafuegos) · 7 s», con una regla pequeña: «segundos: normal · minutos: revisa el reloj».
 - **Acciones visuales:** el puerto efímero `52811` se ilumina en las dos líneas a la vez (es el de F1).
 - **Narración:**
@@ -202,7 +204,7 @@ es la VLAN de Oficinas (`reg:4491`); todo lo demás es nuevo y va rotulado «ima
 - **En pantalla:** la fila del cortafuegos ampliada: `action=ALLOW`, `bytes_out=46180352`. Durante la pausa, «Sí» /
   «No por sí solo». Tras la respuesta, `ALLOW` se etiqueta «decisión de paso» y `bytes_out`, «cuánto, no qué». Tres
   huecos de evidencia como tarjetas vacías: «¿qué es `syncbox.exe` y está autorizado?», «¿de quién es
-  `198.51.100.90`?», «¿qué archivos leyó antes?».
+  `198.51.100.117`?», «¿qué archivos leyó antes?».
 - **Acciones visuales:** las dos hipótesis siguen en pie; ninguna se tacha.
 - **Narración:**
 
@@ -504,8 +506,8 @@ en el orden en que aparecen:
 | s02 | las cuatro fuentes en bruto | `[En pantalla: las cuatro líneas de la tabla «El caso», tal cual]` |
 | s03 | los cinco ingredientes recuadrados | `[En pantalla: proxy · cuándo 09:01:40Z, dónde SALES-WS-03, quién l.prado, qué POST a subidas.compartir.example, resultado 403 BLOQUEADO. Cortafuegos · sin campo de usuario]` |
 | s04–s05 | las horas en bruto y normalizadas | `[En pantalla: 09:58:12 sin zona → 08:58:12Z; 09:01:40Z; 09:02:41Z; 09:02:58Z; 10:03:05+01:00 → 09:03:05Z]` |
-| s06 | la cronología | `[En pantalla: cronología de cinco filas, como la cuenta la voz, con equipo, cuenta, programa, PID 6120 y destino 198.51.100.90:443]` |
-| s07 | los campos que unen las líneas | `[En pantalla: mismo equipo y cuenta en tres fuentes; origen 10.20.6.37:52811 y destino 198.51.100.90:443 en EDR y cortafuegos; 7 s entre sus horas]` |
+| s06 | la cronología | `[En pantalla: cronología de cinco filas, como la cuenta la voz, con equipo, cuenta, programa, PID 6120 y destino 198.51.100.117:443]` |
+| s07 | los campos que unen las líneas | `[En pantalla: mismo equipo y cuenta en tres fuentes; origen 10.20.6.37:52811 y destino 198.51.100.117:443 en EDR y cortafuegos; 7 s entre sus horas]` |
 | s09 | los tres huecos de evidencia | se dicen en la voz |
 
 ## F. Revisión
@@ -533,6 +535,8 @@ herramienta; «unos cuarenta y seis megas» redondea 46 180 352 bytes (46 MB dec
 línea al **cerrar** la sesión, con su duración y sus bytes; por eso la del caso lleva `start` y `end` explícitos: si
 solo llevara una hora, sería la del final.
 
+*Revisiones 2026-10-28:* ver la sección «Revisiones aplicadas» al final de la ficha (notas sobre horas sin fecha, IP de cliente en el proxy, `+02:00` de verano y lecturas de `443`).
+
 ### F.2 Fuentes primarias
 
 Abierta por la revisión de exactitud del 2026-10-28: RFC 3339 (`Z` y desfases; el desfase es la hora local menos
@@ -555,7 +559,7 @@ UTC). Sin abrir: el resto de la lista.
 | El puerto tiene EDR | comprobado: `reg:101` y siguientes |
 | El puerto tiene un proxy web | **no consta**: propuesta, «imagina» |
 | `SALES-WS-03`, Comercial; `10.20.6.x`, VLAN de Oficinas | comprobado: `reg:4487`, `reg:4491` (y `a.soto` en `10.20.6.52`, `reg:4490`) |
-| `l.prado`, `10.20.6.37`, `syncbox.exe`, PID 6120, `subidas.compartir.example`, `198.51.100.90`, horas y bytes | propuesta; no aparecen en `reg` |
+| `l.prado`, `10.20.6.37`, `syncbox.exe`, PID 6120, `subidas.compartir.example`, `198.51.100.117`, horas y bytes | propuesta; no aparecen en `reg` |
 | Que no copia la práctica ni la evaluación | comprobado: la práctica usa +02:00, 08:01Z, 08:02Z y 800 bytes (`prac:132`); la evaluación, 14:00+02:00 y 200 bytes (`fund:78-79`). Aquí: invierno +01:00, una hora sin zona, un proxy y 46 MB |
 
 ### F.4 Pendiente de comprobar
@@ -566,3 +570,121 @@ UTC). Sin abrir: el resto de la lista.
 - La imagen de los testigos: `reg` §6 no la tiene ocupada; J. Rekola es testigo real del caso, pero no como imagen.
 - El objetivo de cada tarjeta de examen (00-propuesta §6).
 - La duración real tras `build-timeline --estimate` y la grabación.
+
+## Decisiones tomadas (fase 1)
+
+> 2026-10-28 · rama `video-reconstruir`. Fase 1 = carpeta del vídeo (`video/reconstruir/`) con `video.json`, `narration.json`, `storyboard.json`, léxicos, andamio de escenas (un stub por id) y `src/timeline.json` estimado. Sin escenas, sin voz, **sin congelar**. Todo lo de abajo es la opción recomendada de la ficha; Lidia dice solo qué cambia.
+
+### Pendientes de F.4
+
+| Pendiente | Decisión |
+|---|---|
+| Proxy web en el puerto, en un caso «imagina» | Aceptado. El sello «Autoridad Portuaria de Halden · imagina · caso de entrenamiento · sin fecha · no ha pasado» va fijo de s02 a s11 y el equipo de Comercial sale sin él (s10). Se anota como «previsto» en el canon al cerrar el vídeo. |
+| Reutilizar `SALES-WS-03` | Se mantiene: limpio en las dos cazas (`reg:4487`) y V1/V5 lo dan por limpio (`out/canon-refs.md`). Con el sello «imagina» y sin fecha no confunde; si Lidia prefiere un nombre nuevo, es un cambio de cadena en `storyboard.json` (`goal`) y en las escenas. |
+| Imagen de los testigos | Se mantiene, rotulada «imagen · no es del puerto», con siluetas sin rasgos (no es J. Rekola ni nadie del canon). |
+| Objetivo de cada tarjeta de examen | Los de `00-propuesta.md` §6: s03, s05, s07, s09 y s10 con 4.9; s08 con 4.8. Insignia por defecto «EXAMEN · SY0-701 · N.N» (sin `examBadge`). |
+| Duración real | `build-timeline --estimate`: **526,8 s (8:47)**, dentro de 380-600 s. Es más que los 8:19 del cálculo de E.2 porque el motor estima a 2,5 palabras/s y la ficha a 2,7. Con la lectura de Lidia (85-93 % del estimado en vídeos anteriores) quedaría hacia 7:30-8:10. 1187 palabras, 66 segmentos, 12 escenas, 6 tarjetas, 2 pausas, 5 efectos de contenido. No se ha recortado nada para acercarse a 8:19. |
+
+### De `00-propuesta.md` §6-§8
+
+- **Perfil y formato:** `principal-yt`, sin adversario ni mensajes interceptados (el motor pone a 0 el mínimo de interceptados sin adversario), `"music": "Go On Going - Stayloose.mp3"`, voz `recording/lidia` **sin `recording.tempo`** (solo `maxPauseMs: 250`), `examTiming: "sentence-end"`.
+- **Pronunciación de las siglas** (propuesta; Lidia elige y los léxicos alimentan la comprobación de su grabación): UTC «u te ce», EDR «e de erre», JSON «yeison», CSV «ce ese uve», 443 «cuatro cuatro tres». Los dos léxicos (`lexicon.json` y `lexicon.chatterbox.json`) son iguales. «zeta», «más uno», «proxy» y «log» van como palabras normales.
+- **Integración en la app** (`videoId` en f12): fuera de esta fase.
+
+### Lo que no se pudo traducir tal cual, y por qué
+
+1. **`"lesson": "f12"`**: `video.json` solo admite ids `spNmN`/`sN mN` (`paths.mjs`, `^sp?\d+m\d+$`) y lo **rechaza con error**, no con aviso. Se omite el campo. Consecuencia: la descripción de YouTube no enlaza la lección (se escribe a mano al subir) y `scene-brief` no la localiza (el brief la nombra a mano).
+2. **`examTiming`** va en `narration.json`, no en `video.json` (así lo lee el motor).
+3. **Título de YouTube.** La ficha daba «… · Fundamentos para Security+» (84 caracteres) y el motor añade « | Security+ SY0-701 en español» (límite 100 en total; 80 en el campo). Queda `youtubeTitle`: «Cómo reconstruir lo ocurrido: logs, UTC y cronologías · Fundamentos» (98 con el sufijo).
+4. **Etiquetas de YouTube:** la ficha no traía ninguna. Se derivaron 15 de los conceptos clave y del léxico (logs, registros de seguridad, UTC, zona horaria, cronología de un incidente, correlación de eventos, JSON, CSV, proxy, EDR, cortafuegos, deny y allow, observación hipótesis conclusión, fundamentos de ciberseguridad, Security+).
+5. **Cue `title`.** La ficha lo ponía en «cuatro registros» (hacia los 12,5 s con el estimado: el aviso del motor salta después de 12 s). Se mueve a «¿Se han llevado datos?» (hacia los 10 s); `cards` sigue en «cuatro registros». La burbuja de la pregunta ya no tiene cue propio (caería a 0 fotogramas del título): la escena usa `wordFrame`. Se quitó también el cue `no` de s09-02 (a 28 fotogramas de `meaning`).
+6. **Notas de transcripción de E.3** (`[En pantalla: …]`): el motor no tiene dónde ponerlas (la transcripción sale solo del texto hablado, más los mensajes interceptados y las preguntas de examen). Quedan escritas en el bloque «Canon» de `out/scene-brief.md` para que las escenas muestren todos esos datos; falta decidir si se añade un campo de nota de transcripción al motor (cambio aparte, no hecho aquí). Mientras tanto la transcripción de este vídeo no lleva las líneas de registro.
+7. **Sello de caso.** El motor ya dibuja «Simulación educativa · datos ficticios» y el descargo de CompTIA (esquina y transcripción); las escenas dibujan solo el sello «imagina». No se usa `storyboard.notice` (el motor no lo lee en los vídeos de Security+).
+
+### Lo que no cambia
+
+- El texto de locución es **idéntico carácter a carácter** al de la parte C (comprobado por script); solo se re-segmentó por frases (la ficha agrupa por párrafos; el motor quiere 8-30 palabras por segmento) y se añadieron cues y etiquetas de emoción. Palabras por escena = las de E.2 (83, 109, 82, 119, 124, 116, 120, 94, 75, 89, 95, 81).
+- Tarjetas, pausas y efectos: tarjetas en s03, s05, s07, s08, s09 y s10; pausas en s04 y s09 (`holdMs` 4500); efectos: `alarm` en `alert` (s01), `whoosh` en `jump` (s05) y `check` en `host`, `user` y `label` (s07).
+- `targetSec` y `wordBudget` (= `targetSec` × 2,7) son los de E.2; el estimado va de 1,5 a 6 s por encima de cada `targetSec` por la diferencia de ritmo (2,5 frente a 2,7). `targetTotalSec`: 479.
+- Validación: `build-timeline --estimate` sin avisos; `script-sheets` solo avisa de «no congelado»; `canon-check`: 7 cadenas, 1 con historia (`SALES-WS-03`, limpio) y 6 nuevas (`l.prado`, `bytes_out`, `subidas.compartir.example`, `syncbox.exe`, `198.51.100.117`, `10.20.6.37`), ningún choque.
+- **Falta para congelar:** las dos revisiones (exactitud y naturalidad) sobre este guion y que Lidia confirme las siglas.
+
+- **IP cambiada (2026-10-28):** `198.51.100.90` choca con `tienda-flores.example` del listín de V4; el sitio de subidas usa ahora `198.51.100.117`, libre en todo el repo.
+
+## Revisiones aplicadas (2026-10-28)
+
+Se aplicaron las dos revisiones (exactitud y naturalidad) sobre `narration.json`, `storyboard.json`, `data.ts`,
+`data-b.ts` y las escenas. **La fuente de la voz es ahora `narration.json`; el texto de la parte C de esta ficha queda
+como la primera versión** (no se reescribió). El guion **no está congelado** (`video.json` sin `frozen`).
+
+### Aplicado
+
+- **Exactitud 1 (relojes).** s07-05 «Seguramente son dos relojes, y cada uno apunta a su manera»; s07-06 «Unos segundos
+  es habitual. Si fueran minutos o una hora exacta, revisa el reloj o la zona antes de sospechar de la historia».
+  Pantalla: «segundos: habitual» y
+  «minutos u horas enteras: revisa reloj o zona» (en dos líneas).
+- **Exactitud 2 (frontera observación / conclusión).** s10-02 fusionado con la naturalidad 23 («El EDR y el cortafuegos
+  ven al equipo hablando directamente con una dirección de fuera, no con el proxy. Por eso no parece que pasara por él.
+  El bloqueo prueba una sola cosa. Que esa subida no salió por la puerta del proxy»); s10-03 «Y no descarta que saliera
+  algo por otro camino»; s10-04 «…es, como mínimo, algo que hay que comprobar» (rótulo «¿sale sin proxy?» · «a comprobar»).
+  Pantalla de s10: `dst=198.51.100.117:443` recuadrado sobre el camino directo; el cortafuegos pasa a la **salida
+  común**, donde cruzan los dos caminos (ve también el tráfico del proxy). s11-03 «…una conexión hacia una dirección
+  externa que el proxy no registra, según el EDR y el cortafuegos» y s11-05 «…comprobar si ese equipo puede salir sin
+  proxy» (también `REPORT[1]` y `NEXT_STEPS[2]`).
+- **Exactitud 3 (sello «sin fecha» frente a invierno).** Como la frase del puente en s04-06 no cabía en el presupuesto, se
+  usó la alternativa: el sello dice «un día de invierno · sin fecha concreta» (`STAMP_PARTS`).
+- **Exactitud 4 (PID).** El número de proceso une el arranque con la conexión: lo dice s07-02 («Y el mismo número de
+  proceso une el arranque con la conexión») y en pantalla un cuarto hilo `PID 6120` une las filas r3 y r4 del EDR (se
+  enciende con la palabra «proceso», sin cue propio y sin check). En el storyboard, `52811` ya no «es el de F1»: es el
+  concepto de F1 (F1 usa 51422 → 61002).
+- **Exactitud 5.** s06-02 «una cuenta inicia sesión en un equipo de Comercial» (la fila r1 de pantalla no nombra
+  Comercial, así que no cambia); s01-01 «Desde un ordenador de Comercial han intentado subir algo a una nube personal…»;
+  s05-04 «Así que primero hubo un inicio de sesión, y luego el bloqueo de una subida» (rótulos de pantalla «sesión» →
+  «subida bloqueada»).
+- **Exactitud 6.** s02-02 «Y solo cuenta lo que vio desde su sitio, si funciona bien».
+- **Exactitud 7.** s06-07 «Y a las nueve y tres, el cortafuegos deja pasar una conexión de tres minutos, con unos
+  cuarenta y seis megas de salida. Parece la misma, y enseguida verás por qué lo es»; fila r5 «sesión permitida · inicio
+  09:03:05 · 181 s», con la nota gris «46 180 352 bytes de salida» (para no perder la cifra en pantalla).
+- **Exactitud 8.** s08-03 «al menos dos hipótesis»; s08-05 «…y puede haber más».
+- **Exactitud 9.** El `src` del cortafuegos lleva el rótulo gris «origen interno» (en s03, bajo la caja «dónde»).
+- **Exactitud 10.** Etiqueta gris «id de evento» bajo `4624` en la tarjeta del inicio de sesión (s02).
+- **Naturalidad, alta.** s01-03, s02-01/03/04, s03-01/02, s04-03/04/05, s05-02/06, s06-01/06, s07-02/03, s12-02 con el
+  texto indicado (s04-05 partido en dos frases por el aviso de longitud; s06-06 escribe `443`, que el léxico lee «cuatro
+  cuatro tres»; s12-02 «lo que falta en un registro no es un no», con la línea de pantalla «lo que falta»).
+- **Naturalidad, media.** s07-04 («Así sabes que quien abrió la conexión permitida fue ese programa…»), s08-02, s08-03,
+  s09-03/04/05, s11-06, s12-01/03/04 («La primera.», «La segunda.», «La tercera.»).
+
+### No aplicado (y por qué)
+
+- **Pausa de s04-06 a 6500 ms:** el motor limita `think.holdMs` a 1800–5000 (`THINK_HOLD_MS` en `narration.mjs`); queda
+  en **5000**. Para más tiempo habría que subir el tope del motor (cambio compartido, no hecho aquí).
+- **Puente de s04-06** («El cortafuegos de ese mismo día marca más uno…»): no cabía (+20 palabras); se resolvió con el sello.
+- **s07-06 «O sea, que la hora ayuda, pero lo que une son los campos»** (+12): recortado por presupuesto. **s08-05/s09-05 «o sea»**, **s10-04 «hallazgo, o sea»** y **s02-06
+  «el cortafuegos también apunta pares, pero sin llaves»**: no se añadieron.
+- **Presupuesto:** los textos pedidos sumaban 613,7 s de estimado; se recortó lo anterior y se bajó 50–150 ms la
+  `pauseAfterMs` de los segmentos que pasaban de 300 ms. Queda en **592,9 s** (techo 600). Las 12 escenas
+  superan su `targetSec` (de +3,9 a +19,8 s; s07 la que más): ya lo hacían por la diferencia de ritmo de la parte E.2.
+
+### Anotado (punto 11, sin tocar la voz)
+
+- Las horas sin fecha son **hora del día**: RFC 3339 exige fecha, y si hubiera un cambio de día invertiría el orden.
+- El proxy registra la **IP de cliente**: conviene anotarlo o poner `10.20.6.37` en la línea del proxy (no se hizo).
+- La estructura se parece a la de `foundation-timeline`: la forma coincide, no las cifras ni el contexto. Opcional: nombrar
+  la tríada intento / éxito / impacto en s09–s11.
+- El `+02:00` de verano de S05Utc es correcto para Halden y queda como «previsto» para registrar en `glass-harbor.md`.
+- La transcripción no lleva las líneas de registro (accesibilidad pendiente, ver «Decisiones», punto 6).
+- `00-propuesta.md` §6 aún lista `198.51.100.90`; se corrige en la rama de F1, no aquí.
+- **Lecturas para la grabación:** las horas se dicen «nueve y uno» (no «y una»); `443` tiene dos lecturas posibles
+  («cuatro cuatro tres» y «cuatrocientos cuarenta y tres»); el léxico solo admite una cadena por palabra, así que queda la
+  primera y se avisa aquí para el control de las grabaciones.
+
+### Avisos del validador: resueltos
+
+Los siete avisos (s06-07, s07-02, s10-02, s11-03, s11-05) se resolvieron partiendo frases y segmentos con las mismas
+palabras (solo puntuación y mayúscula inicial). `build-timeline --estimate` queda **sin avisos**, 71 segmentos, 594,4 s.
+Los segmentos se **renumeraron**: s06 tiene ahora s06-01…s06-08 (la frase «Parece la misma…» es s06-08); s07 pasa a
+8 (s07-02 equipo y cuenta, s07-03 el PID, s07-04 la etiqueta, s07-05 origen y destino, s07-06 correlación, s07-07 los dos
+relojes, s07-08 la regla); s10 a 6 (s10-02 la conexión directa, s10-03 «Por eso no parece… prueba una sola cosa…», s10-04
+lo que no descarta, s10-05 el hallazgo, s10-06 el cierre); s11 a 7 (s11-03 y s11-04 parten el segundo párrafo del informe,
+s11-05 los pasos, s11-06 «O sea, no escribes…»). Los `wordFrame` de las escenas se actualizaron. s11-06 antiguo → s11-07
+(frases de los pasos en tres: «…el destino. Revisar qué archivos se leyeron. Y comprobar si ese equipo puede salir sin proxy.»).
