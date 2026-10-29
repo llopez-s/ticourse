@@ -840,6 +840,13 @@ first_seen           last_seen            type  rdata
         md: 'Las **comunidades de compartición** multiplican tu colección: **ISACs/ISAOs** sectoriales (aviación, finanzas, energía…), **CERTs/CSIRTs** nacionales, grupos de confianza informales y programas de intercambio con peers. La regla de oro es la reciprocidad: quien solo consume acaba fuera.',
       },
       {
+        t: 'video',
+        title: 'TLP: con quién puedes compartir un informe de inteligencia',
+        youtube: 'mHSJuJ_reKE',
+        poster: 'videos/tlp-comunidades-poster.png',
+        transcript: 'videos/tlp-comunidades-transcript.txt',
+      },
+      {
         t: 'p',
         md: 'Al consumir informes de vendors: extrae los **TTPs y la lógica analítica**, no solo los IOCs del apéndice. Pregunta siempre: ¿qué visibilidad tiene este vendor? ¿qué no puede ver? ¿sus conclusiones siguen su evidencia? Un informe es una *fuente* que se evalúa, no una verdad que se copia.',
       },

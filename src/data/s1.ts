@@ -409,6 +409,13 @@ export const S1_MODULES: Module[] = [
         md: 'Clasifica actividades en la escala: *parchear* = Architecture; *firewall/EDR* = Passive Defense; *hunting y monitorización* = Active Defense; *informes de actor* = Intelligence. La escala también argumenta por qué no empezar la casa por el tejado: intelligence sin arquitectura defendible aporta poco.',
       },
       {
+        t: 'video',
+        title: 'Niveles de CTI y Sliding Scale: el producto correcto para cada persona',
+        youtube: 'FW0X9_djBv4',
+        poster: 'videos/niveles-audiencia-poster.png',
+        transcript: 'videos/niveles-audiencia-transcript.txt',
+      },
+      {
         t: 'check',
         q: {
           q: 'Threat hunting belongs to which category of the Sliding Scale of Cyber Security?',
