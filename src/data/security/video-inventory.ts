@@ -438,11 +438,37 @@ export const VIDEO_INVENTORY: VideoResource[] = [
     "id": "ciclo-pir",
     "track": "gcti",
     "lessonId": "s1m4",
-    "title": "ciclo de inteligencia",
-    "status": "scripted",
-    "role": "complementary",
-    "evidence": "video/ciclo-pir/video.json",
-    "chapters": []
+    "title": "Antes de recoger nada, la pregunta: el ciclo de inteligencia y los PIRs",
+    "status": "integrated",
+    "role": "principal",
+    "youtube": "rM8Syyp6JlM",
+    "poster": "videos/ciclo-pir-poster.png",
+    "transcript": "videos/ciclo-pir-transcript.txt",
+    "captions": "videos/ciclo-pir-captions.vtt",
+    "durationSeconds": 521,
+    "verifiedAgainst": "videos/ciclo-pir-captions.vtt",
+    "chapters": [
+      {
+        "title": "El encargo del CISO",
+        "start": 0
+      },
+      {
+        "title": "Seis fases, seis maneras de fallar",
+        "start": 100
+      },
+      {
+        "title": "Dos ciclos, un engranaje",
+        "start": 217
+      },
+      {
+        "title": "Escribir un buen PIR",
+        "start": 289
+      },
+      {
+        "title": "Para el examen",
+        "start": 473
+      }
+    ]
   },
   {
     "id": "coa-precios",
@@ -772,6 +798,26 @@ export const VIDEO_INVENTORY: VideoResource[] = [
     "role": "complementary",
     "evidence": "video/examen-indice/video.json",
     "chapters": []
+  },
+  {
+    "id": "falacias-cti",
+    "track": "gcti",
+    "lessonId": "s4m2",
+    "title": "Falacias lógicas en CTI: el paso que no se sostiene",
+    "status": "integrated",
+    "role": "principal",
+    "youtube": "nWKR9OGxHdY",
+    "poster": "videos/falacias-cti-poster.png",
+    "transcript": "videos/falacias-cti-transcript.txt",
+    "captions": "videos/falacias-cti-captions.vtt",
+    "durationSeconds": 237,
+    "verifiedAgainst": "videos/falacias-cti-captions.vtt",
+    "chapters": [
+      {
+        "title": "Caso completo",
+        "start": 0
+      }
+    ]
   },
   {
     "id": "feeds-requisito",
@@ -1775,11 +1821,29 @@ export const VIDEO_INVENTORY: VideoResource[] = [
     "id": "sesgos-analista",
     "track": "gcti",
     "lessonId": "s4m1",
-    "title": "cognitive bias",
-    "status": "scripted",
-    "role": "complementary",
-    "evidence": "video/sesgos-analista/video.json",
-    "chapters": []
+    "title": "Sesgos del analista: el instrumento de medida eres tú",
+    "status": "integrated",
+    "role": "principal",
+    "youtube": "0CKs-L9M-Ts",
+    "poster": "videos/sesgos-analista-poster.png",
+    "transcript": "videos/sesgos-analista-transcript.txt",
+    "captions": "videos/sesgos-analista-captions.vtt",
+    "durationSeconds": 217,
+    "verifiedAgainst": "videos/sesgos-analista-captions.vtt",
+    "chapters": [
+      {
+        "title": "Tu cabeza",
+        "start": 0
+      },
+      {
+        "title": "Cuatro atajos",
+        "start": 58
+      },
+      {
+        "title": "Qué hacer",
+        "start": 165
+      }
+    ]
   },
   {
     "id": "siem-blue-team",
