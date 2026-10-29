@@ -1,0 +1,239 @@
+{
+  "title": "Cómo reconstruir lo ocurrido",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 479,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Leer un registro"
+    },
+    {
+      "n": 2,
+      "title": "Todas las horas en la misma zona"
+    },
+    {
+      "n": 3,
+      "title": "La cronología"
+    },
+    {
+      "n": 4,
+      "title": "Lo que ves y lo que crees"
+    },
+    {
+      "n": 5,
+      "title": "Lo que hay y lo que falta"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-aviso",
+      "chapter": 1,
+      "title": "¿Se han llevado algo?",
+      "goal": "Un aviso del proxy, «Subida bloqueada · almacenamiento personal», sobre la silueta de un equipo de Comercial (`alert`, con una alarma suave). Una burbuja «¿se han llevado datos?» que entra con la pregunta (sin cue propio: `wordFrame` sobre «llevado», porque `title` cae en la misma frase). Con la pregunta, a los 10 s, el título «Cómo reconstruir lo ocurrido» (`title`, siempre antes de los 12 s; la ficha lo ponía en «cuatro registros», demasiado tarde) y, al decir «cuatro registros», las cuatro tarjetas fijas boca abajo: inicio de sesión, proxy, EDR, cortafuegos (`cards`). Después cuatro chips: «leer · normalizar · ordenar · afirmar lo justo» (`chips`). Las tarjetas se dan la vuelta a la vez al final de la escena (`flip`). Todavía sin el sello de caso: la voz lo presenta como caso de entrenamiento.",
+      "targetSec": 33,
+      "wordBudget": 89,
+      "requiredCues": [
+        "alert",
+        "title",
+        "cards",
+        "chips",
+        "flip"
+      ]
+    },
+    {
+      "id": "s02-testigos",
+      "chapter": 1,
+      "title": "Cuatro testigos",
+      "goal": "Sello propio del caso, fijo desde esta escena: «Autoridad Portuaria de Halden · imagina · caso de entrenamiento · un día de invierno · sin fecha concreta · no ha pasado» (la etiqueta «Simulación educativa · datos ficticios» la pone el motor). La imagen de los cuatro testigos, rotulada «imagen · no es del puerto»: cuatro siluetas, cada una en su sitio (una puerta, una ventana, un mostrador, una salida), y cada una solo ve su trozo (`witnesses`). Cada testigo se convierte en su tarjeta al nombrarlo (`login`, `proxy`, `edr`, `firewall`) y las tarjetas muestran su línea en bruto (`raw`): el CSV con su cabecera de columnas (bajo `4624`, una etiqueta gris «id de evento»), la línea de texto del proxy, las dos líneas JSON del EDR y la línea clave=valor del cortafuegos (las líneas exactas, en el brief). Chips de formato: «JSON · nombre: valor» (`json`) y «CSV · columnas» (`csv`). Estas cuatro tarjetas son el hilo visual de todo el vídeo.",
+      "targetSec": 43,
+      "wordBudget": 116,
+      "requiredCues": [
+        "witnesses",
+        "login",
+        "proxy",
+        "edr",
+        "firewall",
+        "raw",
+        "json",
+        "csv"
+      ]
+    },
+    {
+      "id": "s03-ingredientes",
+      "chapter": 1,
+      "title": "Los ingredientes de una línea",
+      "goal": "Sello propio del caso, fijo desde esta escena: «Autoridad Portuaria de Halden · imagina · caso de entrenamiento · un día de invierno · sin fecha concreta · no ha pasado» (la etiqueta «Simulación educativa · datos ficticios» la pone el motor). Cinco cajas de color sobre las líneas: «cuándo · dónde · quién · qué · resultado» (`boxes`). En el proxy se recuadran `09:01:40Z`, `SALES-WS-03`, `l.prado`, `POST subidas…` y `403 BLOQUEADO` (`proxy-fields`). En el cortafuegos, `start`, `src` (con un rótulo gris «origen interno», la dirección de dentro antes de cualquier traducción de direcciones), `dst`, el puerto, `bytes_out` y `action=ALLOW` (`fw-fields`); la caja «quién» se queda vacía (`empty`) con un rótulo «no lo apunta: no significa nadie». La caja vacía parpadea una vez y se queda en gris, no en rojo (`not-nobody`). El testigo del cortafuegos mira hacia la calle, no hacia las caras. Tarjeta de examen en `lesson`.",
+      "targetSec": 33,
+      "wordBudget": 89,
+      "requiredCues": [
+        "boxes",
+        "proxy-fields",
+        "fw-fields",
+        "empty",
+        "not-nobody",
+        "lesson"
+      ]
+    },
+    {
+      "id": "s04-relojes",
+      "chapter": 2,
+      "title": "Cuatro relojes",
+      "goal": "Sello propio del caso, fijo desde esta escena: «Autoridad Portuaria de Halden · imagina · caso de entrenamiento · un día de invierno · sin fecha concreta · no ha pasado» (la etiqueta «Simulación educativa · datos ficticios» la pone el motor). Las cuatro horas tal como vienen, alineadas en una regla ingenua que no mira la zona (`ruler`): `09:58:12` (inicio de sesión, `t-login`), `09:01:40Z` (proxy, `t-proxy`), `09:02:41Z` y `09:02:58Z` (EDR, `t-edr`) y `10:03:05+01:00` (cortafuegos, `t-fw`). Las horas caen en la regla según su texto. Un rótulo ámbar: «¿el bloqueo, antes de que nadie entrara?» (`naive`). Tres etiquetas de zona (`zones`, `utc`, `plus1`): `Z` = UTC; `+01:00` = una hora por delante de UTC (Halden en invierno); «sin zona» con una lupa sobre la configuración del equipo: «hora local de Halden» (`nozone`). Pausa para pensar (`ask`): «¿Qué fue antes?», dos botones «El bloqueo» / «El inicio de sesión». Ojo: el título de la escena no da la respuesta.",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "requiredCues": [
+        "ruler",
+        "t-login",
+        "t-proxy",
+        "t-edr",
+        "t-fw",
+        "naive",
+        "zones",
+        "utc",
+        "plus1",
+        "nozone",
+        "ask"
+      ]
+    },
+    {
+      "id": "s05-utc",
+      "chapter": 2,
+      "title": "La hora de referencia",
+      "goal": "Sello propio del caso, fijo desde esta escena: «Autoridad Portuaria de Halden · imagina · caso de entrenamiento · un día de invierno · sin fecha concreta · no ha pasado» (la etiqueta «Simulación educativa · datos ficticios» la pone el motor). Regla de pantalla: cada hora normalizada lleva al lado, en gris, su hora original. La respuesta a la pausa (`answer`): «el inicio de sesión». Una regla nueva en UTC: las dos horas locales se desplazan una hora a la izquierda (`shift`) y la tarjeta del inicio de sesión salta al principio de la regla (`jump`, con whoosh). Orden final: 08:58:12 · 09:01:40 · 09:02:41 · 09:02:58 · 09:03:05 (`order`), cada hora con su original en gris. «primero hubo un inicio de sesión, y luego el bloqueo de una subida» (`first`; rótulos «sesión» → «subida bloqueada»); «guarda la hora original» (`keep`). Al final, un globo con «UTC · igual en todas partes · sin horario de verano» (`globe`) y, al lado, un calendario con «verano» en el que la flecha del desfase local cambia de longitud (`summer`). Tarjeta de examen en `rule`.",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "requiredCues": [
+        "answer",
+        "shift",
+        "jump",
+        "order",
+        "first",
+        "keep",
+        "globe",
+        "summer",
+        "rule"
+      ]
+    },
+    {
+      "id": "s06-orden",
+      "chapter": 3,
+      "title": "En orden",
+      "goal": "Sello propio del caso, fijo desde esta escena: «Autoridad Portuaria de Halden · imagina · caso de entrenamiento · un día de invierno · sin fecha concreta · no ha pasado» (la etiqueta «Simulación educativa · datos ficticios» la pone el motor). Regla de pantalla: cada hora normalizada lleva al lado, en gris, su hora original. Una tabla de cinco filas con tres columnas, «UTC · hecho · fuente» (`intro`), que se rellena al compás de la voz (`r1`..`r5`): «08:58:12 · inicio de sesión de `l.prado` en `SALES-WS-03` · equipo» (la voz dice «una cuenta inicia sesión en un equipo de Comercial»), «09:01:40 · subida bloqueada a `subidas.compartir.example` · proxy», «09:02:41 · arranca `syncbox.exe` (PID 6120) · EDR», «09:02:58 · `syncbox.exe` conecta a `198.51.100.117:443` · EDR», «09:03:05 · sesión permitida · inicio 09:03:05 · 181 s · cortafuegos», con la nota gris «46 180 352 bytes de salida». Junto a `syncbox.exe`, en gris: «solo el nombre del archivo» (`name`). Cada fila se ilumina y luego se atenúa; nada se interpreta todavía (sin colores de alarma).",
+      "targetSec": 45,
+      "wordBudget": 122,
+      "requiredCues": [
+        "intro",
+        "r1",
+        "r2",
+        "r3",
+        "name",
+        "r4",
+        "r5"
+      ]
+    },
+    {
+      "id": "s07-hilos",
+      "chapter": 3,
+      "title": "Lo que une las líneas",
+      "goal": "Sello propio del caso, fijo desde esta escena: «Autoridad Portuaria de Halden · imagina · caso de entrenamiento · un día de invierno · sin fecha concreta · no ha pasado» (la etiqueta «Simulación educativa · datos ficticios» la pone el motor). Regla de pantalla: cada hora normalizada lleva al lado, en gris, su hora original. Hilos de color entre las filas de la cronología (`question`): «equipo» une inicio de sesión, proxy y EDR (`host`); «cuenta» une los mismos (`user`); «`10.20.6.37:52811` hacia `198.51.100.117:443`» une la fila del EDR y la del cortafuegos (`label`). El puerto efímero `52811` se ilumina en las dos líneas a la vez (`port`; es el concepto de F1, que usa otro número: 51422 → 61002). Cada hilo suena con un check. Un cuarto hilo une el número de proceso (`PID 6120`) entre la fila del arranque y la de la conexión del EDR (r3 y r4), al borde izquierdo de las filas; se enciende con la palabra «proceso» y no suena. Después (`gap`, `clocks`): «09:02:58 (EDR) · 09:03:05 (cortafuegos) · 7 s», con una regla pequeña: «segundos: habitual · minutos u horas enteras: revisa reloj o zona». Tarjeta de examen en `corr`.",
+      "targetSec": 47,
+      "wordBudget": 127,
+      "requiredCues": [
+        "question",
+        "host",
+        "user",
+        "label",
+        "port",
+        "same",
+        "corr",
+        "gap",
+        "clocks"
+      ]
+    },
+    {
+      "id": "s08-columnas",
+      "chapter": 4,
+      "title": "Tres columnas",
+      "goal": "Sello propio del caso, fijo desde esta escena: «Autoridad Portuaria de Halden · imagina · caso de entrenamiento · un día de invierno · sin fecha concreta · no ha pasado» (la etiqueta «Simulación educativa · datos ficticios» la pone el motor). Tres columnas: «observado · hipótesis · conclusión» (`three`). Las cinco filas de la cronología caen en «observado» (`observed`). En «hipótesis» (`hypo`), dos tarjetas: «H1: tras el bloqueo, subió el archivo por otra vía» (`h1`) y «H2: es la sincronización autorizada de Comercial, la de cada día» (`h2`), con hilos a las mismas filas observadas (`both`). La columna «conclusión» se queda vacía (`concl`), con un rótulo «todavía no». Ninguna hipótesis se tacha. Tarjeta de examen en `concl` (objetivo 4.8).",
+      "targetSec": 37,
+      "wordBudget": 100,
+      "requiredCues": [
+        "three",
+        "observed",
+        "hypo",
+        "concl",
+        "h1",
+        "h2",
+        "both"
+      ]
+    },
+    {
+      "id": "s09-megas",
+      "chapter": 4,
+      "title": "Cuarenta y seis megas",
+      "goal": "Sello propio del caso, fijo desde esta escena: «Autoridad Portuaria de Halden · imagina · caso de entrenamiento · un día de invierno · sin fecha concreta · no ha pasado» (la etiqueta «Simulación educativa · datos ficticios» la pone el motor). La fila del cortafuegos ampliada: `action=ALLOW`, `bytes_out=46180352` (`allow`). Pausa para pensar (`ask2`): «Permitido y 46 MB: ¿prueba una fuga?», dos botones «Sí» / «No por sí solo». Tras la respuesta (al empezar el segmento s09-02), `ALLOW` se etiqueta «decisión de paso» (`meaning`) y `bytes_out`, «cuánto, no qué» (`bytes`). Las dos hipótesis siguen en pie, ninguna se tacha (`maybe`). Tres huecos de evidencia como tarjetas vacías (`gaps`, `gap1`..`gap3`): «¿qué es `syncbox.exe` y está autorizado?», «¿de quién es `198.51.100.117`?», «¿qué archivos leyó antes?». Tarjeta de examen en `meaning`.",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "requiredCues": [
+        "allow",
+        "ask2",
+        "meaning",
+        "bytes",
+        "maybe",
+        "gaps",
+        "gap1",
+        "gap2",
+        "gap3"
+      ]
+    },
+    {
+      "id": "s10-bloqueo",
+      "chapter": 4,
+      "title": "Un bloqueo no cierra el caso",
+      "goal": "Sello propio del caso, fijo desde esta escena: «Autoridad Portuaria de Halden · imagina · caso de entrenamiento · un día de invierno · sin fecha concreta · no ha pasado» (la etiqueta «Simulación educativa · datos ficticios» la pone el motor). Un diagrama de dos caminos desde el equipo (`two-paths`): uno por el proxy, con la línea `403 BLOQUEADO`, y otro directo por el cortafuegos, con `ALLOW`. El testigo del proxy, en su puerta, mira solo su camino (`door`; vuelve la imagen de los testigos de s02). El camino directo se dibuja después del bloqueo, rodeando la puerta del proxy (`direct`), con `dst=198.51.100.117:443` recuadrado sobre él: así se ve por qué se sabe. El cortafuegos de salida está en la salida común, donde cruzan los dos caminos, porque también ve el tráfico del proxy; no insinuamos que sea un tercer camino. Al final, un rótulo ámbar sobre el camino directo: «¿sale sin proxy?» y «a comprobar» (`finding`; una pregunta que comprobar, no un veredicto); cierre del capítulo (`close`). Tarjeta de examen en `other`.",
+      "targetSec": 35,
+      "wordBudget": 95,
+      "requiredCues": [
+        "two-paths",
+        "door",
+        "direct",
+        "other",
+        "finding",
+        "close"
+      ]
+    },
+    {
+      "id": "s11-informe",
+      "chapter": 5,
+      "title": "Lo que escribes",
+      "goal": "Sello propio del caso, fijo desde esta escena: «Autoridad Portuaria de Halden · imagina · caso de entrenamiento · un día de invierno · sin fecha concreta · no ha pasado» (la etiqueta «Simulación educativa · datos ficticios» la pone el motor). La columna «conclusión» por fin se rellena (`ask3`) con un párrafo corto en tres tiempos, el que dice la voz (`para1`, `para2`, `para3`), y debajo «siguientes pasos» con tres casillas que quedan sin marcar (`next`). A los lados, tachadas, dos frases: «no ha pasado nada» y «nos han robado» (`struck`).",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "requiredCues": [
+        "ask3",
+        "para1",
+        "para2",
+        "para3",
+        "next",
+        "struck"
+      ]
+    },
+    {
+      "id": "s12-reglas",
+      "chapter": 5,
+      "title": "Tres reglas",
+      "goal": "Tres tarjetas numeradas (`rules`, `r-one`, `r-two`, `r-three`) y la tarjeta final «Alertópolis · Cómo reconstruir lo ocurrido» con el botón «Práctica · Cronología y límites» (`action`). Sin tarjeta de examen; sin sello de caso en la tarjeta final (solo el descargo de la marca).",
+      "targetSec": 32,
+      "wordBudget": 86,
+      "requiredCues": [
+        "rules",
+        "r-one",
+        "r-two",
+        "r-three",
+        "action"
+      ]
+    }
+  ]
+}

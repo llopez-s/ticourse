@@ -1,0 +1,445 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "denied": "error",
+    "joins": "lock",
+    "blocked": "block"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {login}Inicias sesión sin problema, {open}abres la carpeta de tu área, {save}guardas tu primer documento y… {denied}acceso denegado. Tu contraseña era buena. {title}¿Qué está fallando?",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {chips}Hoy vas a separar dos preguntas que parecen la misma, quién eres y qué puedes hacer.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<warm> {stamp}Imagina que acabas de entrar en Mantenimiento, {yard}en el taller de grúas del puerto de Halden.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<thoughtful> Es tu primer día, y te acaba de pasar esto con {folder}la carpeta de los partes de avería. Ahí se apunta cada reparación de las grúas.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-05",
+      "scene": "s01-hook",
+      "text": "<engaging> {promise}Al terminar sabrás leer un permiso y decidir cuál necesita cada persona y cada programa. Y por qué nunca se arregla dando de más.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-pasaporte",
+      "text": "<clear> {account}Tu cuenta es tu identidad en el sistema. Al escribir la contraseña, el sistema comprueba que eres quien dices ser. {authn}Eso es la autenticación.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-pasaporte",
+      "text": "<thoughtful> Después, cada vez que intentas algo, {actions}abrir, guardar o borrar, el sistema mira si tu cuenta puede hacerlo en ese sitio. {authz}Eso es la autorización.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-pasaporte",
+      "text": "<casual> {airport}Piensa en un aeropuerto. En el control de {passport}pasaportes comprueban quién eres, pero eso no te sube a cualquier avión.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-pasaporte",
+      "text": "<curious> Para eso está {boarding}la tarjeta de embarque, que dice a qué vuelo puedes subir.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-pasaporte",
+      "text": "<confident> {passed}Tú has pasado el control, o sea, tu pasaporte vale. Si no, ni siquiera habrías entrado, y el sistema te diría que la contraseña no es buena.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-pasaporte",
+      "text": "<firm> {missing}Lo que te falta es la tarjeta para escribir en esa carpeta. {diagnosis}Así que el problema es de autorización.",
+      "pauseAfterMs": 1300,
+      "exam": {
+        "objective": "1.2",
+        "text": "Authentication: quién eres · Authorization: qué puedes",
+        "at": "diagnosis",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-grupos",
+      "text": "<curious> ¿Y por qué no tienes esa tarjeta? Porque en el puerto los permisos no se dan persona a persona. {groups}Se dan a grupos, conjuntos de cuentas con el mismo trabajo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-grupos",
+      "text": "<focused> {row}La carpeta deja escribir al grupo Mantenimiento, {outside}y tu cuenta todavía no está dentro.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-grupos",
+      "text": "<thoughtful> Si cada persona tuviera sus permisos, cada vez que alguien {churn}entra, sale o cambia de puesto habría que tocar {hundred}cien carpetas.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-grupos",
+      "text": "<engaging> Ahora decides tú. {proposal}Alguien propone una solución rápida. Dar permiso de escritura a todo el personal del puerto, y así no vuelve a fallar. {choice}¿Lo haces, o hay otra salida?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Cómo lo arreglas?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-grupos",
+      "text": "<confident> No hace falta abrirla a todos. {joins}Lo que necesitas es que te metan en el grupo de Mantenimiento.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-grupos",
+      "text": "<concerned> {amber}Dar escritura a todos arregla tu caso y abre otro problema. {pencil}Cualquier persona del puerto podría cambiar o machacar los partes.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-07",
+      "scene": "s03-grupos",
+      "text": "<firm> {wrap}O sea, que si falla una cuenta, se arregla metiéndola en su grupo, no abriendo la carpeta a todo el mundo.",
+      "pauseAfterMs": 700,
+      "exam": {
+        "objective": "4.6",
+        "text": "Permisos a grupos; cada cuenta, en el grupo de su puesto",
+        "at": "wrap",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-permisos",
+      "text": "<warm> Ya estás en el grupo. {list}Fíjate ahora en la lista de esa carpeta, la que dice quién puede hacer qué.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-permisos",
+      "text": "<clear> Hay tres permisos básicos. {read}Leer es ver el contenido. {write}Escribir es poder cambiarlo. {exec}Y ejecutar es poner en marcha un programa.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-permisos",
+      "text": "<thoughtful> {folder-x}Pero en una carpeta, ejecutar quiere decir otra cosa, poder entrar en ella para llegar a lo que hay dentro.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-permisos",
+      "text": "<engaging> {staff}Todo el personal del taller puede leer, y por eso pudiste abrirla. {maint}Mantenimiento, además, escribe, porque redacta los partes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-permisos",
+      "text": "<casual> {ops}Operaciones solo lee, porque los consulta para planificar los turnos de las grúas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-permisos",
+      "text": "<curious> {summary}Y un programa de resumen, que verás enseguida, en esta carpeta también solo lee.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-permisos",
+      "text": "<serious> {rest}Y el resto del puerto no aparece en la lista, así que no entra. {implicit}Lo que no está concedido, se deniega.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-minimo",
+      "text": "<engaging> {request}Alguien de Operaciones pide escritura, por si acaso. Pero su trabajo es consultar, así que {nothing}con leer no pierde nada.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-minimo",
+      "text": "<concerned> Y dársela sí trae riesgo. {drag}Un archivo arrastrado sin querer. {malware}O un programa malicioso en un portátil cualquiera, que estropea o secuestra todo lo que esa cuenta puede escribir.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-minimo",
+      "text": "<firm> {blocked}Lo que no puedes escribir no lo puedes estropear.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-minimo",
+      "text": "<clear> {name}Eso es el mínimo privilegio. {task}Cada uno, lo que necesita para su tarea, y nada más. Primero preguntas qué hace cada puesto, y después das justo eso.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "4.6",
+        "text": "Least privilege: lo necesario para la tarea, nada más",
+        "at": "task",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-minimo",
+      "text": "<warm> {wrap}O sea, que el permiso sale de la tarea, no de la comodidad.",
+      "pauseAfterMs": 700
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-procesos",
+      "text": "<curious> Hasta ahora, personas. Pero en el servidor hay un programa que {friday}cada viernes lee todos los partes. {report}Y deja un resumen en la carpeta Informes, para los jefes del taller.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-procesos",
+      "text": "<clear> {process}Cuando un programa está en marcha, es un proceso. {identity}Y un proceso siempre actúa con la identidad de una cuenta.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-procesos",
+      "text": "<focused> Si abres {plist}el listado de procesos del servidor, {row}lo ves en una fila. Ahí están el programa, {pid}su número de proceso y {proc-account}la cuenta con la que trabaja.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-procesos",
+      "text": "<intrigued> {service}Este usa una cuenta creada para ese programa, no para una persona. Se llama cuenta de servicio.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-procesos",
+      "text": "<serious> Como no es de ninguna persona, {no-login}nadie debería iniciar sesión con ella a mano. Aun así, {owner}alguien tiene que responder de lo que hace.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-procesos",
+      "text": "<firm> La regla es sencilla. {same}Lo que puede hacer el proceso, como mucho, es lo que puede su cuenta.",
+      "pauseAfterMs": 700,
+      "exam": {
+        "objective": "4.6",
+        "text": "Un proceso puede, como mucho, lo que puede su cuenta",
+        "at": "same",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-servicio",
+      "text": "<engaging> Un viernes, {fails}el resumen no puede guardar el informe en esa carpeta. {proposal}Alguien propone meter su cuenta en administradores, que pueden con todo el servidor. {choice}¿Qué le das tú?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Qué le das a la cuenta del resumen?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-servicio",
+      "text": "<confident> {answer}Escribir en Informes, que es lo que le faltaba. Si el programa tiene un fallo, {hand}o alguien consigue manejarlo, hará lo que pueda su cuenta.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-servicio",
+      "text": "<serious> {admin-risk}Con administrador, podría borrar todos los partes, o tocar el servidor entero.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-servicio",
+      "text": "<focused> {needs}El resumen necesita dos cosas sobre los datos, leer los partes y escribir en informes. {config}Pues eso le das. Leer en una y escribir en otra.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-servicio",
+      "text": "<warm> {wrap}O sea, que una cuenta de servicio sigue el mínimo privilegio igual que una persona.",
+      "pauseAfterMs": 700
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-windows",
+      "text": "<thoughtful> Hasta aquí, {idea}la idea vale para cualquier sistema. {way}La forma de aplicarla, no. Y conviene no mezclarlas.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-windows",
+      "text": "<casual> {server}El servidor de archivos del puerto funciona con Windows. Esa lista que llevas un rato viendo se llama {acl}lista de control de acceso, o ACL.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-windows",
+      "text": "<clear> La llevan cada carpeta y cada archivo. {entries}Es una lista de entradas. {each}Cada una dice una cuenta o un grupo, y lo que puede hacer.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-windows",
+      "text": "<focused> {two-groups}Si estás en dos grupos con permisos distintos, {sum}se suman. Si uno te deja leer y otro escribir, {both}puedes hacer las dos cosas.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-windows",
+      "text": "<serious> También existe {deny}la denegación explícita, una entrada que dice que no a alguien de forma expresa. En general, {heavier}pesa más que los permisos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-windows",
+      "text": "<warm> Y lo que hay {sub}dentro de una carpeta, normalmente, {inherit}hereda su lista, o sea, se queda con las mismas entradas.",
+      "pauseAfterMs": 700,
+      "exam": {
+        "objective": "4.6",
+        "text": "ACL: quién puede qué sobre un objeto, entrada a entrada",
+        "at": "acl",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-linux",
+      "text": "<curious> {copy}Ahora, una copia de los partes en un servidor Linux. {classes}Aquí cada archivo tiene un dueño, un grupo y el resto.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-linux",
+      "text": "<clear> Cada uno tiene {boxes}tres casillas, leer, escribir y ejecutar. {letters}Cada una es una letra, la tienes en pantalla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-linux",
+      "text": "<engaging> {line}Mira esta línea. {owner}El dueño lee y escribe. {group}El grupo, solo lee. {rest}El resto, nada.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-linux",
+      "text": "<focused> Y aquí va la diferencia importante. {nosum}Con estas casillas, Linux no suma.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-linux",
+      "text": "<thoughtful> {steps}Linux se pregunta primero si eres el dueño. Si no, si estás en el grupo. {rest-hit}Y si tampoco, eres el resto.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-linux",
+      "text": "<firm> {first-fit}Se queda con la primera de esas tres clases que encaja, {counter}aunque otra diera más permisos.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s09-07",
+      "scene": "s09-linux",
+      "text": "<casual> {x-bit}En una carpeta, la equis, ejecutar, es poder entrar. {posix}Y sí, Linux también tiene listas más completas, pero eso queda para otro día.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-08",
+      "scene": "s09-linux",
+      "text": "<serious> {root}Ah, y root, el administrador de Linux, se salta casi todas estas comprobaciones. Por eso tampoco se trabaja como root por comodidad.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-09",
+      "scene": "s09-linux",
+      "text": "<warm> {compare}O sea, que Windows suma entradas y Linux, con estas casillas, elige una sola clase.",
+      "pauseAfterMs": 700,
+      "exam": {
+        "objective": "4.6",
+        "text": "Linux: dueño, grupo o resto; se aplica una sola clase",
+        "at": "compare",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-vuelta",
+      "text": "<calm> Volvamos a tu primer día. {member}Ya estás en Mantenimiento. Has vuelto a iniciar sesión, porque el sistema mira tus grupos al entrar. Y ahora sí {saved}guardas tu parte.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-vuelta",
+      "text": "<confident> {ops-reads}Operaciones lo lee. {friday}El viernes, el resumen lo recoge con su cuenta de servicio. {nobody}Y nadie tiene más de lo que necesita.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-vuelta",
+      "text": "<thoughtful> El día que {moves}cambies de puesto, te sacarán de este grupo y te meterán en el nuevo. {follow}Los permisos siguen al puesto, no a la persona.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-vuelta",
+      "text": "<warm> {pieces}O sea, que identidad, grupo y permiso son tres piezas distintas, y cada fallo se arregla en la suya.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-reglas",
+      "text": "<confident> Te quedas con tres reglas. {rule1}Una. La autenticación dice quién eres, el pasaporte. La autorización, qué puedes hacer en cada sitio, la tarjeta de embarque.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-reglas",
+      "text": "<clear> {rule2}Dos. Los permisos se dan a grupos, y cada grupo o cuenta de servicio recibe solo lo justo para su tarea. Eso es el mínimo privilegio.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-reglas",
+      "text": "<focused> {rule3}Tres. Un proceso puede, como mucho, lo que puede su cuenta. {system}Antes de leer un permiso, mira el sistema. Windows suma. Linux, con las casillas básicas, elige una sola clase.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-04",
+      "scene": "s11-reglas",
+      "text": "<engaging> Ahora te toca a ti. {practice}Abre la práctica «Permisos de una carpeta» y decide qué necesita cada grupo.",
+      "pauseAfterMs": 1500
+    }
+  ]
+}
