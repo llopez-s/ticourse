@@ -2,15 +2,6 @@
 export interface VideoResource { id:string; track:string; lessonId:string; title:string; status:"integrated"|"finished"|"recorded"|"scripted"; role:string; youtube?:string; src?:string; poster?:string; transcript?:string; captions?:string; durationSeconds?:number; verifiedAgainst?:string; evidence?:string; chapters:{title:string;start:number}[] }
 export const VIDEO_INVENTORY: VideoResource[] = [
   {
-    "id": "abrir-web",
-    "track": "secplus",
-    "title": "DNS",
-    "status": "scripted",
-    "role": "complementary",
-    "evidence": "video/abrir-web/video.json",
-    "chapters": []
-  },
-  {
     "id": "ach-matriz",
     "track": "gcti",
     "lessonId": "s4m3",
@@ -1703,24 +1694,6 @@ export const VIDEO_INVENTORY: VideoResource[] = [
     ]
   },
   {
-    "id": "quien-puede",
-    "track": "secplus",
-    "title": "autorización",
-    "status": "scripted",
-    "role": "complementary",
-    "evidence": "video/quien-puede/video.json",
-    "chapters": []
-  },
-  {
-    "id": "reconstruir",
-    "track": "secplus",
-    "title": "registros de seguridad",
-    "status": "scripted",
-    "role": "complementary",
-    "evidence": "video/reconstruir/video.json",
-    "chapters": []
-  },
-  {
     "id": "recuperacion-halden",
     "track": "secplus",
     "lessonId": "sp3m7",
@@ -2142,15 +2115,6 @@ export const VIDEO_INVENTORY: VideoResource[] = [
         "start": 132
       }
     ]
-  },
-  {
-    "id": "viaje-conexion",
-    "track": "secplus",
-    "title": "dirección IP",
-    "status": "scripted",
-    "role": "complementary",
-    "evidence": "video/viaje-conexion/video.json",
-    "chapters": []
   },
   {
     "id": "vulnerabilidades-halden",
