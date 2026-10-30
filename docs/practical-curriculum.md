@@ -12,6 +12,7 @@ nuevo, no a una modificación de los pesos del examen.
 
 | Lección | Qué incorpora | Nivel | Incremento → total |
 |---|---|---|---|
+| sp4m7 · Capacidades (4.5) | Suricata: anatomía de una regla, sticky buffers, dotprefix/endswith, tráfico cifrado (DNS/SNI frente a URI), IDS frente a IPS inline, lectura de alertas EVE, validación con -T y -r sobre capturas positivas y de control | Complementario | +20 → 34 min |
 | sp4m8 · IAM | Autenticación/autorización; emisor, audiencia, permisos, renovación; contraseña, cookies e ID/access/refresh tokens; MFA; caso Ana → aplicación → Entra ID → Graph | Fundamentos base; ejemplo Microsoft complementario | +18 → 31 min |
 | sp2m6 · Malware | Infostealers; capacidades, exposición y uso; límites de cada artefacto | Base defensiva | +7 → 21 min |
 | sp4m10 · Respuesta | Dispositivo, alcance, identidad, aplicaciones, revocación y verificación; límites específicos de Microsoft y CAE | Base defensiva; Microsoft complementario | +10 → 23 min |
@@ -19,7 +20,7 @@ nuevo, no a una modificación de los pesos del examen.
 | s3m2 · Malware como colección | Flujo observaciones/hipótesis/pivotes/candidatos/corroboración; consultas VT contrastadas, alternativas sin premium; B/C/D/E y bitácora | Complementario; correcciones en el contenido previo | +20 → 33 min |
 | s3m3 · Infraestructura | Tiempo, alojamiento compartido, certificados TLS frente a firma de código | Complementario | +3 → 17 min |
 | s3m4 · OSINT/reporting | Metodología de proveedores, fechas, denominadores, cobertura y procedencia | Complementario | +4 → 18 min |
-| s3m5 · IOCs/STIX/YARA | Sintaxis, decisiones de diseño, FP/FN y sobreajuste; editor libre, corpus inerte y motor real | Complementario; corrección de la receta universal de umbrales | +30 → 43 min |
+| s3m5 · IOCs/STIX/YARA | Sintaxis, decisiones de diseño, FP/FN y sobreajuste; editor libre, corpus inerte y motor real; remisión a la cápsula de Suricata de sp4m7 | Complementario; corrección de la receta universal de umbrales | +33 → 46 min |
 | s4m2 · Falacias | Independencia, cadena de citas y eco de feeds | Complementario | +5 → 16 min |
 | s4m4 · Clustering | Ecosistema de infostealers y métricas, con Bruma/Cobalto/Duna; unidad, ventana, sesgo y relevancia | Complementario identificable de S4 | +18 → 30 min |
 | s5m3 · Diseminación técnica | Entregar YARA con objetivo, versión, motor, matriz reproducible, límites y acción | Complementario | +8 → 23 min |
@@ -28,8 +29,8 @@ nuevo, no a una modificación de los pesos del examen.
 
 El bloque de infostealers permanece en s4m4, conectado al clustering. No se crea
 un módulo adicional: mantiene las unidades de progreso y convalidación y permite
-estudiar el complemento desde la propia S4. Total añadido estimado: 141 minutos,
-35 en Security+ y 106 en GCTI.
+estudiar el complemento desde la propia S4. Total añadido estimado: 164 minutos,
+55 en Security+ y 109 en GCTI.
 
 Se añaden 24 flashcards (8 Security+, 16 GCTI) y 23 términos (9 Security+,
 14 GCTI). Las tarjetas profesionales llevan «Complementary» y los bloques de
@@ -130,6 +131,7 @@ Los detalles del producto pueden cambiar; registrar fecha al repetir prácticas.
 - [YARA: sintaxis de reglas](https://yara.readthedocs.io/en/stable/writingrules.html).
 - [YARA: módulo PE e is_pe](https://yara.readthedocs.io/en/stable/modules/pe.html).
 - [YARA: motor Python](https://yara.readthedocs.io/en/stable/yarapython.html).
+- [Suricata: formato de reglas](https://docs.suricata.io/en/latest/rules/intro.html), [transformaciones](https://docs.suricata.io/en/latest/rules/transforms.html), [EVE JSON](https://docs.suricata.io/en/latest/output/eve/eve-json-format.html) y [modo IPS inline](https://docs.suricata.io/en/latest/setting-up-ipsinline-for-linux.html). Las reglas y la alerta EVE de sp4m7 se comprobaron el 30-10-2026 con Suricata 7.0.3 (`-T` y `-r` sobre capturas sintéticas de DNS, HTTP en el puerto 8081 y TLS con SNI): dotprefix + endswith coincide con el dominio y sus subdominios y no con evilharbor-sync.example, y una regla drop sobre una captura da `"action": "allowed"`.
 - [FI-ISAC NL: TaHiTI Threat Hunting Methodology v2.0](https://www.nvb.nl/media/vw3iwzhb/tahiti-threat-hunting-methodology_v20.pdf) (octubre de 2026, CC BY 4.0), base de la cápsula de hunting de s5m5; resumen propio en español.
 
 La comparación de feeds y el dataset de infostealers son ejercicios originales,
