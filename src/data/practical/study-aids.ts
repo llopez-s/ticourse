@@ -10,6 +10,11 @@ export const PRACTICAL_CARDS: Record<TrackId, Flashcard[]> = {
     { id: 'fcp-p06', sectionId: 'sp4', front: 'Complementary · Graph mail example roles', back: 'Ana: user; Resumen del turno: client app; Entra ID: identity provider/authorization server; Microsoft Graph: resource API. Delegated Mail.Read is not global administration or permission to send mail.' },
     { id: 'fcp-p07', sectionId: 'sp4', front: 'Complementary · Password reset and token revocation', back: 'A password change is not evidence that every access token and application session immediately stopped. Effects depend on token/client/reset method. Revoke appropriately, inspect application sessions and verify controls.' },
     { id: 'fcp-p08', sectionId: 'sp4', front: 'Complementary · Entra session revocation and CAE', back: 'revokeSignInSessions invalidates refresh tokens and Entra-managed session cookies with possible delay. Existing access tokens and app-owned sessions need specific attention. CAE helps with supported events/resources/clients, not universally.' },
+    { id: 'fcp-p09', sectionId: 'sp4', front: 'Complementary · Suricata IDS vs IPS mode', back: 'Same engine. Fed a copy of traffic (SPAN, tap, pcap) it is an IDS: a drop rule still alerts and EVE shows "action": "allowed". Only inline (NFQUEUE or AF_PACKET IPS mode) can it discard packets ("blocked").' },
+    { id: 'fcp-p10', sectionId: 'sp4', front: 'Complementary · Anatomy of a Suricata rule', back: 'Header: action protocol src port -> dst port. Options in parentheses: msg, flow, sticky buffer + content, classtype, sid, rev. Actions: alert, drop, reject, pass (default precedence pass > drop > reject > alert).' },
+    { id: 'fcp-p11', sectionId: 'sp4', front: 'Complementary · Sticky buffers', back: 'A keyword such as http.uri, dns.query or tls.sni selects the part of the protocol where the following content is searched, instead of the whole packet. Suricata identifies HTTP/DNS/TLS by content, not by port.' },
+    { id: 'fcp-p12', sectionId: 'sp4', front: 'Complementary · Signatures and encrypted traffic', back: 'Without decryption, payload rules (URI, body) never match TLS traffic. Detect what stays visible: the DNS query (unless DoH) and the TLS SNI. No alert does not mean no traffic.' },
+    { id: 'fcp-p13', sectionId: 'sp4', front: 'Complementary · Validating a Suricata rule', back: 'suricata -T to check it loads; run -r on a positive capture and on a benign control; record version, capture and per-rule result. Start in alert; move to drop only inline, after observing false positives.' },
   ],
   gcti: [
     { id: 'fc-p01', sectionId: 's3', front: 'Complementary · Source reliability vs information credibility', back: 'Reliability: track record, access and method of the source. Credibility: quality and corroboration of this particular claim. Evaluate separately; reputation alone does not confirm an item.' },
@@ -33,6 +38,7 @@ export const PRACTICAL_CARDS: Record<TrackId, Flashcard[]> = {
     { id: 'fc-p19', sectionId: 's5', front: 'Complementary · Three outcomes of a hunt', back: 'Proven: an incident, hand over to IR. Disproven: needs strong confidence that nothing is there. Inconclusive: missing data, wrong technique or scope, so refine and repeat.' },
     { id: 'fc-p20', sectionId: 's5', front: 'Complementary · Hunting Maturity Model (HMM0–HMM4)', back: 'Initial (automated alerts), Minimal (IOC searches), Procedural (follows others’ procedures), Innovative (creates its own), Leading (automates what works). For TaHiTI, HMM0–1 is not hunting.' },
     { id: 'fc-p21', sectionId: 's5', front: 'Complementary · IOC vs IoA in a hunt', back: 'IOCs (hashes, IPs, domains) give initial leads and help scope a hunt but rotate easily. IoAs describe behaviour (process relationships, command lines, access patterns) and stay useful when the attacker changes infrastructure.' },
+    { id: 'fc-p22', sectionId: 's3', front: 'Complementary · Network IOC to Suricata rule', back: 'A domain, SNI or URI can become a Suricata rule; the YARA questions still apply: scope, what the adversary changes for free, accepted false positives, tested captures, version and limits.' },
   ],
 };
 
@@ -47,6 +53,10 @@ export const PRACTICAL_GLOSSARY: Record<TrackId, GlossaryEntry[]> = {
     { sectionId: 'sp4', term: 'Microsoft Graph (complementario)', def: 'API para acceder a recursos de Microsoft 365 con autorización. En el caso de sp4m8, la aplicación lee correo de Ana con permiso delegado; Entra ID emite los tokens.' },
     { sectionId: 'sp4', term: 'Continuous Access Evaluation / CAE (complementario)', def: 'Evaluación continua del acceso: recursos/clientes compatibles pueden reaccionar a ciertos eventos antes de la caducidad ordinaria. No promete revocación universal instantánea.' },
     { sectionId: 'sp2', term: 'Infostealer', def: 'Malware orientado al robo de información del dispositivo. Las capacidades varían; detectar la familia no prueba qué artefactos se extrajeron ni cuáles se usaron.' },
+    { sectionId: 'sp4', term: 'Suricata (complementario)', def: 'Motor de detección de red de código abierto (OISF). Compara el tráfico con reglas basadas en firmas; actúa como IDS sobre una copia del tráfico o como IPS si está inline.' },
+    { sectionId: 'sp4', term: 'Sticky buffer (complementario)', def: 'Palabra clave de una regla de Suricata (http.uri, dns.query, tls.sni…) que limita el content siguiente a esa parte del protocolo en lugar de a todo el paquete.' },
+    { sectionId: 'sp4', term: 'EVE JSON (complementario)', def: 'Salida de Suricata en JSON, un evento por línea: alertas, flujos y transacciones DNS/HTTP/TLS. alert.action indica allowed (no se bloqueó) o blocked.' },
+    { sectionId: 'sp4', term: 'SNI / Server Name Indication', def: 'Nombre del servidor que el cliente envía en el saludo TLS. Suele seguir visible para un sensor de red aunque la URI y el contenido vayan cifrados.' },
   ],
   gcti: [
     { sectionId: 's3', term: 'Source reliability / information credibility', def: 'Fiabilidad del historial, acceso y método de la fuente / credibilidad de una afirmación concreta por su evidencia y corroboración. Se juzgan por separado.' },

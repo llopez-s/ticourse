@@ -2,6 +2,7 @@ import { IDENTITY_EXPANSIONS } from './identity';
 import { COLLECTION_EXPANSIONS } from './collection';
 import { ANALYSIS_EXPANSIONS } from './analysis-yara';
 import { HUNTING_EXPANSIONS } from './hunting';
+import { NETWORK_EXPANSIONS } from './network-suricata';
 import { expandLesson, type LessonExpansion } from './shared';
 import type { Module } from '../../lib/types';
 
@@ -19,5 +20,5 @@ function mergeExpansions(...sets: Record<string, LessonExpansion>[]): Record<str
   return out;
 }
 
-export const PRACTICAL_EXPANSIONS = mergeExpansions(IDENTITY_EXPANSIONS, COLLECTION_EXPANSIONS, ANALYSIS_EXPANSIONS, HUNTING_EXPANSIONS);
+export const PRACTICAL_EXPANSIONS = mergeExpansions(IDENTITY_EXPANSIONS, COLLECTION_EXPANSIONS, ANALYSIS_EXPANSIONS, HUNTING_EXPANSIONS, NETWORK_EXPANSIONS);
 export const withPracticalExpansion = (mod: Module) => expandLesson(mod, PRACTICAL_EXPANSIONS);

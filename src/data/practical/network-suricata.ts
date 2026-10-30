@@ -1,0 +1,98 @@
+import { check, code, complement, h, links, list, p, table, type LessonExpansion } from './shared';
+
+export const NETWORK_EXPANSIONS: Record<string, LessonExpansion> = {
+  sp4m7: {
+    minutes: 20,
+    objectives: ['Complementario: leer y escribir reglas de Suricata, distinguir modo IDS e IPS en la práctica e interpretar sus alertas EVE sin confundir coincidencia con compromiso'],
+    blocks: [
+      complement('Suricata: firmas de red en la práctica'),
+      p('**Suricata** es un motor de detección de red de código abierto (licencia GPLv2, mantenido por la OISF). Lee tráfico, reconstruye flujos, identifica el protocolo de aplicación —HTTP, DNS, TLS, SMB…— y compara lo que ve con un conjunto de **reglas**. Es la versión concreta de lo que el objetivo 4.5 llama detección por **signatures**: cada regla describe un patrón conocido. El examen no pregunta por Suricata ni por su sintaxis; esta ampliación sirve para que «IDS», «IPS», «inline» y «firma» dejen de ser palabras y se conviertan en algo que puedes leer en un log.'),
+      table(['Pregunta del examen', 'Cómo se ve en Suricata'], [
+        ['IDS o IPS', 'El mismo binario hace las dos cosas. Leyendo una copia del tráfico (SPAN, tap, captura) es un IDS. Colocado **inline** (NFQUEUE o AF_PACKET en modo IPS en Linux) puede descartar paquetes: es un IPS.'],
+        ['Signatures frente a trends', 'Las reglas son firmas. Suricata también registra flujos y metadatos (DNS, TLS, HTTP) que otra herramienta, como un SIEM, puede usar para buscar anomalías; las reglas por sí solas no aprenden lo «normal».'],
+        ['Falsos positivos y ajuste', 'Una regla demasiado amplia alerta sobre tráfico legítimo. Se ajusta con condiciones más precisas, umbrales, reglas pass o desactivándola, siempre documentando por qué.'],
+        ['Logs como fuente de datos (4.9)', 'La salida **EVE** es JSON, un evento por línea: alertas, flujos y transacciones de aplicación, listos para el SIEM.'],
+      ]),
+      h('Anatomía de una regla'),
+      p('Una regla tiene una **cabecera** y unas **opciones** entre paréntesis. La cabecera dice qué hacer y sobre qué tráfico: **acción**, **protocolo**, origen y puerto, **dirección** (-> en un sentido, <> en ambos) y destino y puerto. $HOME_NET y $EXTERNAL_NET son variables que se definen en suricata.yaml; si HOME_NET está mal definido, reglas correctas no disparan o disparan sobre lo que no deben. Las opciones dicen qué buscar y cómo identificar la regla.'),
+      code('Regla de ejemplo · caso ficticio de Halden, dominio reservado .example', 'alert http $HOME_NET any -> $EXTERNAL_NET any (\n    msg:"ALERTOPOLIS DEMO POST a /collect-demo";\n    flow:established,to_server;\n    http.method; content:"POST";\n    http.uri; content:"/collect-demo"; startswith;\n    classtype:trojan-activity;\n    sid:1000102; rev:1;)', 'suricata'),
+      table(['Parte', 'Qué hace'], [
+        ['alert', 'Acción. Otras: **drop** (descarta, solo inline), **reject** (descarta y responde con un reset o un ICMP), **pass** (deja de inspeccionar ese paquete o flujo con el resto de reglas).'],
+        ['http', 'Protocolo de aplicación. Suricata lo identifica por el contenido, no por el puerto: la regla funciona aunque el servidor escuche en el 8081.'],
+        ['flow:established,to_server', 'Solo conexiones TCP establecidas y en sentido cliente → servidor. Evita disparar con paquetes sueltos o respuestas.'],
+        ['http.method; content:"POST"', 'http.method es un **sticky buffer**: el content que lo sigue se busca solo dentro del método HTTP, no en todo el paquete.'],
+        ['http.uri; content:…; startswith', 'La URI debe empezar por /collect-demo. Sin startswith también coincidiría /static/collect-demo.png.'],
+        ['msg, classtype', 'Texto y categoría que aparecen en la alerta. Son para quien la lee: un msg ambiguo hace perder tiempo en el triaje.'],
+        ['sid, rev', 'Identificador único de la regla y su revisión. El rango 1000000–1999999 se usa por convención para reglas locales; al cambiar la lógica sube rev.'],
+      ]),
+      h('Diseñar sin pasarse ni quedarse corto'),
+      p('Las mismas decisiones que en YARA, ahora sobre tráfico. Supón que el indicador es el dominio **harbor-sync.example**. **content:"harbor-sync.example"** sin más coincidiría también con notharbor-sync.example.org: demasiado amplio. Añadir **endswith** exige que el nombre termine así, pero aún acepta evilharbor-sync.example. Pedir **".harbor-sync.example"** con el punto delante descarta ese caso, pero pierde el dominio desnudo. La transformación **dotprefix** antepone un punto al nombre consultado antes de comparar, y resuelve las dos cosas a la vez.'),
+      code('El mismo indicador en DNS y en TLS', 'alert dns $HOME_NET any -> any any (\n    msg:"ALERTOPOLIS DEMO consulta DNS a harbor-sync.example";\n    dns.query; dotprefix; content:".harbor-sync.example"; nocase; endswith;\n    classtype:trojan-activity; sid:1000101; rev:1;)\n\nalert tls $HOME_NET any -> $EXTERNAL_NET any (\n    msg:"ALERTOPOLIS DEMO SNI harbor-sync.example";\n    flow:established,to_server;\n    tls.sni; dotprefix; content:".harbor-sync.example"; nocase; endswith;\n    classtype:trojan-activity; sid:1000103; rev:1;)', 'suricata'),
+      p('¿Por qué dos reglas y no la de HTTP? Porque casi todo el tráfico web va cifrado. Con TLS, Suricata no ve la URI ni el cuerpo: la regla de /collect-demo **nunca** dispararía sobre HTTPS, y que no dispare no significa que no haya tráfico. Lo que sí queda visible es la consulta DNS (salvo que viaje cifrada, como en DoH) y el nombre del servidor en el saludo TLS (**SNI**). Elige el buffer según lo que el sensor puede ver de verdad.'),
+      table(['Decisión', 'Riesgo si te equivocas'], [
+        ['Patrón demasiado corto o genérico ("/api", "admin")', 'Falsos positivos masivos; la regla acaba desactivada y el día que importa nadie la mira.'],
+        ['Patrón ligado a un detalle que el atacante cambia gratis (una IP, un parámetro)', 'Falsos negativos en la siguiente variante. Recuerda la pirámide del dolor.'],
+        ['Buscar en el payload algo que viaja cifrado', 'La regla es sintácticamente correcta y operativamente ciega.'],
+        ['drop en un sensor que solo recibe una copia', 'La alerta sale, el tráfico llega. Es el check del principio de esta lección, ahora con su causa técnica.'],
+      ]),
+      h('Leer una alerta EVE'),
+      code('eve.json · una línea, formateada para leerla', '{\n  "timestamp": "2026-10-14T09:12:03.512409+0200",\n  "event_type": "alert",\n  "src_ip": "10.20.4.17", "src_port": 51544,\n  "dest_ip": "203.0.113.40", "dest_port": 443,\n  "proto": "TCP", "app_proto": "tls",\n  "alert": {\n    "action": "allowed",\n    "signature_id": 1000103, "rev": 1,\n    "signature": "ALERTOPOLIS DEMO SNI harbor-sync.example",\n    "category": "A Network Trojan was detected",\n    "severity": 1\n  },\n  "tls": { "sni": "sync.harbor-sync.example" }\n}', 'json'),
+      p('Tres lecturas que el triaje necesita. **"action": "allowed"** significa que Suricata no bloqueó nada: o el sensor es un IDS, o la regla era alert. En un IPS con drop verías **"blocked"**. **src_ip** te dice qué equipo interno inició la conexión, y es por donde sigue la investigación (EDR, logs del proxy, el usuario). Y la alerta prueba que **hubo tráfico que coincide con la regla**, no que el equipo esté comprometido: puede ser una herramienta de seguridad consultando el dominio, un analista o un falso positivo. Correlaciona antes de concluir.'),
+      h('Probarla antes de desplegarla'),
+      p('Suricata puede leer una captura en lugar de una interfaz. Es la forma honesta de validar una regla: con una captura que **debe** coincidir y otra de tráfico legítimo parecido que **no** debe. Esta web no ejecuta Suricata; los comandos son para un equipo donde lo tengas instalado y con capturas que tengas permiso para usar.'),
+      code('Validar en local', '# 1. Comprobar que la configuración y las reglas cargan\nsuricata -T -c /etc/suricata/suricata.yaml -S local.rules\n\n# 2. Ejecutar sobre una captura, solo con tus reglas\nsuricata -c /etc/suricata/suricata.yaml -S local.rules -r positivo.pcap -l ./out-positivo\nsuricata -c /etc/suricata/suricata.yaml -S local.rules -r control.pcap  -l ./out-control\n\n# 3. Contar alertas por regla (jq)\njq -c \'select(.event_type=="alert") | .alert.signature_id\' out-positivo/eve.json | sort | uniq -c', 'bash'),
+      list(
+        'Define qué debe detectar la regla y qué no, antes de escribirla.',
+        'Pasa -T: un error de carga no es «cero alertas», es una regla que no está funcionando.',
+        'Ejecuta sobre la captura positiva y sobre el control. Anota versión de Suricata, captura y resultado por regla.',
+        'Si el control alerta, ajusta la condición o documenta el falso positivo; no subas el umbral hasta que desaparezca sin entender por qué.',
+        'En producción, empieza con alert. Pasa a drop solo con un sensor inline, tras observar falsos positivos y con un plan para revertir.',
+      ),
+      p('En la práctica pocas organizaciones escriben todas sus reglas: se suscriben a conjuntos mantenidos (por ejemplo, ET Open) con **suricata-update**, desactivan las que no aplican y añaden un local.rules propio para sus indicadores. El trabajo diario es más **ajuste** que escritura.'),
+      check('Práctica · Halden despliega una regla drop en un Suricata conectado a un puerto SPAN. Se repite el tráfico y la alerta aparece con "action": "allowed". ¿Qué ha pasado?', [
+        'El sensor solo recibe una copia del tráfico: puede alertar pero no descartar; para bloquear tiene que estar inline',
+        'La regla tiene un error de sintaxis y Suricata la ha cargado como alert',
+        'La firma está desactualizada y hay que ejecutar suricata-update',
+        'drop solo funciona con tráfico UDP',
+      ], 0, 'Un puerto SPAN entrega una copia: aunque la regla diga drop, el paquete original ya va camino de su destino, por eso EVE marca allowed. Si la regla tuviera un error no se cargaría ni alertaría; y una alerta disparada demuestra que la firma sí reconoce el tráfico.'),
+      check('Práctica · Una regla busca http.uri; content:"/collect-demo" y no alerta nunca, aunque el EDR confirma que un equipo envía datos a ese servidor por HTTPS. ¿Cuál es la explicación MÁS probable?', [
+        'Suricata no inspecciona el puerto 443',
+        'Con TLS, la URI viaja cifrada y el sensor no la ve; hay que detectar lo visible, como la consulta DNS o el SNI',
+        'Falta nocase en el content',
+        'El sid está fuera del rango de reglas locales',
+      ], 1, 'Sin descifrado, Suricata solo ve el saludo TLS (SNI, certificado, huellas) y los metadatos del flujo. La regla es correcta pero ciega sobre ese tráfico. El puerto no importa porque Suricata detecta el protocolo por contenido, y el sid no afecta a si una regla coincide.'),
+      check('Práctica · ¿Qué condición sobre dns.query coincide con harbor-sync.example y con sync.harbor-sync.example, pero no con evilharbor-sync.example?', [
+        'content:"harbor-sync.example";',
+        'content:"harbor-sync.example"; endswith;',
+        'content:".harbor-sync.example"; endswith;',
+        'dotprefix; content:".harbor-sync.example"; endswith;',
+      ], 3, 'dotprefix antepone un punto al nombre consultado, así que el dominio desnudo pasa a ser .harbor-sync.example y coincide; evilharbor-sync.example no contiene el punto delante. Sin el punto, endswith acepta evilharbor; con el punto pero sin dotprefix se pierde el dominio desnudo.'),
+      check('Práctica · Tras desplegar la regla DNS, el control (tráfico legítimo de un día) da cero alertas y la captura positiva da una. ¿Qué puedes afirmar?', [
+        'La regla detecta cualquier comunicación con ese actor',
+        'La regla coincide con lo esperado en estas dos capturas y con esta versión de Suricata; no cubre DoH ni otros dominios del actor',
+        'Ya puede pasar a drop en todos los sensores',
+        'Los equipos que no alertaron están limpios',
+      ], 1, 'Dos capturas demuestran conformidad con ese pequeño contrato, no cobertura frente a variantes ni ausencia de compromiso. DNS cifrado o un dominio nuevo escaparían a la regla, y pasar a drop exige además un sensor inline y observar falsos positivos en producción.'),
+      links('Seguir practicando', [
+        { label: 'sp4m6 · Alerting y monitorización: dónde acaban las alertas', href: '/learn/sp4m6' },
+        { label: 'sp4m11 · Fuentes de datos para la investigación', href: '/learn/sp4m11' },
+        { label: 'GCTI s3m5 · El mismo rigor con YARA: objetivo, corpus, FP/FN', href: '/learn/s3m5' },
+        { label: 'Suricata · Formato de las reglas', href: 'https://docs.suricata.io/en/latest/rules/intro.html' },
+        { label: 'Suricata · Transformaciones (dotprefix)', href: 'https://docs.suricata.io/en/latest/rules/transforms.html' },
+        { label: 'Suricata · Formato EVE JSON', href: 'https://docs.suricata.io/en/latest/output/eve/eve-json-format.html' },
+        { label: 'Suricata · Modo IPS inline en Linux', href: 'https://docs.suricata.io/en/latest/setting-up-ipsinline-for-linux.html' },
+      ]),
+    ],
+  },
+  s3m5: {
+    minutes: 3,
+    objectives: ['Complementario: convertir indicadores de red en reglas de Suricata con la misma disciplina que una regla YARA'],
+    blocks: [
+      complement('De indicador de red a regla de Suricata'),
+      p('YARA mira bytes en archivos o memoria; **Suricata** mira tráfico. Un dominio, un SNI o una URI de un informe se pueden convertir en una regla de red, y valen las mismas preguntas: qué objetivo tiene, qué puede cambiar el adversario sin coste, qué falsos positivos aceptas y con qué capturas lo has probado. Un indicador atómico en lo bajo de la pirámide del dolor sigue siéndolo aunque viva en una regla, y la regla debe entregarse con versión, alcance y límites, igual que en s5m3.'),
+      links('Practicarlo en el otro track', [
+        { label: 'Security+ sp4m7 · Suricata: anatomía de una regla, IDS frente a IPS y alertas EVE', href: '/learn/sp4m7' },
+      ]),
+    ],
+  },
+};
