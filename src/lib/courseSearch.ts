@@ -35,6 +35,8 @@ function blockText(block: Block): string {
       return `${block.title} ${block.items.map((item) => item.label).join(' ')}`;
     case 'yara-practice':
       return 'Práctica complementaria de escritura libre YARA con corpus sintético e inerte';
+    case 'suricata-practice':
+      return 'Laboratorio complementario de reglas Suricata: misiones sobre una captura sintética, IDS, IPS, drop, pass y EVE';
     case 'p':
     case 'quote':
     case 'callout':

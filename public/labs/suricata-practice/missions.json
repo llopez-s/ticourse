@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "missions": [
+    {
+      "id": "m1",
+      "title": "Consultas DNS al dominio del informe",
+      "mode": "ids",
+      "scope": [
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6"
+      ],
+      "expect": {
+        "d1": "allowed",
+        "d2": "allowed",
+        "d3": "allowed"
+      }
+    },
+    {
+      "id": "m2",
+      "title": "El envío por HTTP",
+      "mode": "ids",
+      "scope": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5"
+      ],
+      "expect": {
+        "h1": "allowed",
+        "h2": "allowed"
+      }
+    },
+    {
+      "id": "m3",
+      "title": "El mismo envío, cifrado",
+      "mode": "ids",
+      "scope": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "expect": {
+        "t1": "allowed",
+        "t2": "allowed"
+      }
+    },
+    {
+      "id": "m4",
+      "title": "En línea: bloquear sin molestar al SOC",
+      "mode": "ips",
+      "scope": [
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "expect": {
+        "d1": "allowed",
+        "d2": "allowed",
+        "d3": "allowed",
+        "h1": "allowed",
+        "h2": "allowed",
+        "t1": "blocked",
+        "t2": "blocked"
+      }
+    }
+  ]
+}

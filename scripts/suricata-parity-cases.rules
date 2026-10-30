@@ -1,0 +1,188 @@
+### reference-ids
+@reference
+### reference-ips ips
+@reference
+### external-net-misses-internal-resolver
+alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"x"; dns.query; content:"harbor"; sid:1;)
+### dns-plain-content
+alert dns any any -> any any (msg:"x"; dns.query; content:"harbor-sync.example"; sid:1;)
+### dns-nocase
+alert dns any any -> any any (msg:"x"; dns.query; content:"harbor-sync.example"; nocase; sid:1;)
+### dns-endswith
+alert dns any any -> any any (msg:"x"; dns.query; content:"harbor-sync.example"; nocase; endswith; sid:1;)
+### dns-dot-without-dotprefix
+alert dns any any -> any any (msg:"x"; dns.query; content:".harbor-sync.example"; nocase; endswith; sid:1;)
+### dns-dotprefix-no-nocase
+alert dns any any -> any any (msg:"x"; dns.query; dotprefix; content:".harbor-sync.example"; endswith; sid:1;)
+### dns-established-never-matches
+alert dns any any -> any any (msg:"x"; flow:established,to_server; dns.query; content:"harbor"; sid:1;)
+### dns-to-server
+alert dns any any -> any any (msg:"x"; flow:to_server; dns.query; content:"harbor"; sid:1;)
+### dns-header-only
+alert dns any any -> any any (msg:"x"; sid:1;)
+### dns-cidr-source
+alert dns 10.20.4.0/24 any -> any any (msg:"x"; dns.query; content:"harbor"; sid:1;)
+### dns-port-53
+alert dns any any -> any 53 (msg:"x"; dns.query; content:"halden"; sid:1;)
+### pass-header-only
+alert dns any any -> any any (msg:"x"; dns.query; content:"harbor"; sid:1;)
+pass dns 10.20.9.5 any -> any any (msg:"p"; sid:2;)
+### pass-with-content
+alert dns any any -> any any (msg:"x"; dns.query; content:"harbor"; sid:1;)
+pass dns 10.20.9.5 any -> any any (msg:"p"; dns.query; content:"harbor"; sid:2;)
+### pass-other-event-does-not-suppress
+pass tls any any -> any any (msg:"x"; tls.sni; content:"evil"; sid:1;)
+alert tls any any -> any any (msg:"y"; tls.sni; content:"harbor"; sid:2;)
+### http-uri-contains
+alert http any any -> any any (msg:"x"; http.uri; content:"collect"; sid:1;)
+### http-uri-startswith
+alert http any any -> any any (msg:"x"; http.uri; content:"/collect-demo"; startswith; sid:1;)
+### http-uri-endswith
+alert http any any -> any any (msg:"x"; http.uri; content:"/collect-demo"; endswith; sid:1;)
+### http-uri-exact
+alert http any any -> any any (msg:"x"; http.uri; content:"/collect-demo"; startswith; endswith; sid:1;)
+### http-method-and-uri
+alert http any any -> any any (msg:"x"; http.uri; content:"/collect-demo"; startswith; http.method; content:"POST"; sid:1;)
+### http-method-nocase
+alert http any any -> any any (msg:"x"; http.method; content:"post"; nocase; sid:1;)
+### http-two-uri-buffers
+alert http any any -> any any (msg:"x"; http.uri; content:"/collect-demo"; http.uri; content:"41"; sid:1;)
+### http-host
+alert http any any -> any any (msg:"x"; http.host; content:"harbor"; sid:1;)
+### http-host-ip
+alert http any any -> any any (msg:"x"; http.host; content:"198.51.100.7"; sid:1;)
+### http-host-endswith
+alert http any any -> any any (msg:"x"; http.host; content:"upd.harbor-sync.example"; endswith; sid:1;)
+### http-host-uppercase-error
+alert http any any -> any any (msg:"x"; http.host; content:"Harbor"; sid:1;)
+### http-host-nocase-error
+alert http any any -> any any (msg:"x"; http.host; content:"harbor"; nocase; sid:1;)
+### http-not-home-net
+alert http any any -> !$HOME_NET any (msg:"x"; http.method; content:"POST"; sid:1;)
+### http-established
+alert http any any -> any any (msg:"x"; flow:established,to_server; sid:1;)
+### http-port-8081
+alert http any any -> any 8081 (msg:"x"; http.method; content:"POST"; sid:1;)
+### http-dotprefix-uri
+alert http any any -> any any (msg:"x"; http.uri; dotprefix; content:"./coll"; sid:1;)
+### tls-sni-contains
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+### tls-sni-case-sensitive
+alert tls any any -> any any (msg:"x"; tls.sni; content:"HARBOR"; sid:1;)
+### tls-sni-startswith
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor-sync.example"; startswith; sid:1;)
+### tls-two-contents-any-order
+alert tls any any -> any any (msg:"x"; tls.sni; content:"sync"; content:"harbor"; sid:1;)
+### tls-negated-content
+alert tls any any -> any any (msg:"x"; tls.sni; content:!"evil"; content:"harbor"; sid:1;)
+### tls-negated-nocase
+alert tls any any -> any any (msg:"x"; tls.sni; content:!"harbor"; nocase; sid:1;)
+### tls-negated-endswith
+alert tls any any -> any any (msg:"x"; tls.sni; content:!"harbor"; endswith; sid:1;)
+### tls-hex
+alert tls any any -> any any (msg:"x"; tls.sni; content:"|68|arbor"; sid:1;)
+### tls-exact-nocase
+alert tls any any -> any any (msg:"x"; tls.sni; content:"sync"; nocase; startswith; endswith; sid:1;)
+### tls-port-list
+alert tls any any -> any [443,8081] (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+### tls-port-other
+alert tls any any -> any 8443 (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+### tls-port-negated
+alert tls [10.20.4.17,10.20.6.31] any -> any !443 (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+### tls-negated-source
+alert tls !10.20.6.31 any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+### tls-home-to-home
+alert tls $HOME_NET any -> $HOME_NET any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+### tls-cidr-destination
+alert tls any any -> 203.0.113.0/24 any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+### tls-bidirectional
+alert tls any any <> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+### tls-established
+alert tls any any -> any any (msg:"x"; flow:established; tls.sni; content:"harbor"; sid:1;)
+### tls-header-only-ip
+alert tls 10.20.4.17 any -> any any (msg:"x"; sid:1;)
+### tls-no-msg
+alert tls any any -> any any (tls.sni; content:"harbor"; sid:1;)
+### tls-spaces
+alert tls any any -> any any ( msg:"x" ; tls.sni ; content: "harbor" ; sid: 1 ; )
+### tls-classtype-rev
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1; rev:2; classtype:trojan-activity;)
+### tls-fast-pattern
+alert tls any any -> any any (msg:"x"; tls.sni; content:"sync"; fast_pattern; sid:1;)
+### tls-uppercase-action
+ALERT tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+### tls-missing-close-paren
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;
+### tls-multiline
+alert tls any any -> any any (msg:"x"; \
+  tls.sni; content:"harbor"; sid:1;)
+### drop-ids
+drop tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+### drop-ips ips
+drop tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+### drop-dns-ips ips
+drop dns any any -> any any (msg:"x"; dns.query; content:"harbor"; sid:1;)
+### drop-and-alert-ips ips
+drop tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+alert tls any any -> any any (msg:"y"; tls.sni; content:"sync"; sid:2;)
+### pass-beats-drop-ips ips
+drop tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+pass tls 10.20.6.31 any -> any any (msg:"p"; sid:2;)
+### reject-ids
+reject tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+alert tls any any -> any any (msg:"y"; tls.sni; content:"sync"; sid:2;)
+### reject-ips ips
+reject tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+### error-proto-mismatch
+alert http any any -> any any (msg:"x"; dns.query; content:"harbor"; sid:1;)
+alert tls any any -> any any (msg:"y"; tls.sni; content:"harbor"; sid:2;)
+### error-missing-sid
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor";)
+### error-missing-semicolon
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor" sid:1;)
+### error-no-final-semicolon
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1)
+### error-semicolon-in-msg
+alert tls any any -> any any (msg:"a;b"; tls.sni; content:"harbor"; sid:1;)
+### error-unquoted-msg
+alert tls any any -> any any (msg:x; tls.sni; content:"harbor"; sid:1;)
+### error-unquoted-content
+alert tls any any -> any any (msg:"x"; tls.sni; content:harbor; sid:1;)
+### error-empty-content
+alert tls any any -> any any (msg:"x"; tls.sni; content:""; sid:1;)
+### error-unknown-keyword
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; bogus; sid:1;)
+### error-buffer-without-content
+alert tls any any -> any any (msg:"x"; tls.sni; sid:1;)
+### error-buffer-after-content
+alert tls any any -> any any (msg:"x"; content:"harbor"; nocase; tls.sni; sid:1;)
+### error-buffer-left-empty
+alert http any any -> any any (msg:"x"; http.uri; content:"/collect-demo"; http.method; sid:1;)
+### error-nocase-before-content
+alert tls any any -> any any (msg:"x"; tls.sni; nocase; content:"harbor"; sid:1;)
+### error-double-nocase
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; nocase; nocase; sid:1;)
+### error-double-startswith
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; startswith; startswith; sid:1;)
+### error-transform-after-content
+alert http any any -> any any (msg:"x"; http.uri; dotprefix; content:"/x"; dotprefix; sid:1;)
+### error-to-client
+alert tls any any -> any any (msg:"x"; flow:to_client; tls.sni; content:"harbor"; sid:1;)
+### error-sid-zero
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:0;)
+### error-rev-zero
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1; rev:0;)
+### error-sid-text
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:abc;)
+### error-double-sid
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1; sid:2;)
+### error-duplicate-sid-keeps-first
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+alert tls any any -> any any (msg:"y"; tls.sni; content:"sync"; sid:1;)
+### error-uppercase-proto
+alert TLS any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+### error-trailing-comment
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;) # comentario
+### comment-lines-ignored
+# una línea de comentario
+alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)

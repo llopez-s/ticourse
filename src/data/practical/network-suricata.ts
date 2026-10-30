@@ -2,8 +2,11 @@ import { check, code, complement, h, links, list, p, table, type LessonExpansion
 
 export const NETWORK_EXPANSIONS: Record<string, LessonExpansion> = {
   sp4m7: {
-    minutes: 20,
-    objectives: ['Complementario: leer y escribir reglas de Suricata, distinguir modo IDS e IPS en la práctica e interpretar sus alertas EVE sin confundir coincidencia con compromiso'],
+    minutes: 45,
+    objectives: [
+      'Complementario: leer y escribir reglas de Suricata, distinguir modo IDS e IPS en la práctica e interpretar sus alertas EVE sin confundir coincidencia con compromiso',
+      'Complementario: escribir y probar un local.rules sobre una captura sintética, con falsos positivos, falsos negativos, bloqueo en línea y una excepción documentada',
+    ],
     blocks: [
       complement('Suricata: firmas de red en la práctica'),
       p('**Suricata** es un motor de detección de red de código abierto (licencia GPLv2, mantenido por la OISF). Lee tráfico, reconstruye flujos, identifica el protocolo de aplicación —HTTP, DNS, TLS, SMB…— y compara lo que ve con un conjunto de **reglas**. Es la versión concreta de lo que el objetivo 4.5 llama detección por **signatures**: cada regla describe un patrón conocido. El examen no pregunta por Suricata ni por su sintaxis; esta ampliación sirve para que «IDS», «IPS», «inline» y «firma» dejen de ser palabras y se conviertan en algo que puedes leer en un log.'),
@@ -39,7 +42,7 @@ export const NETWORK_EXPANSIONS: Record<string, LessonExpansion> = {
       code('eve.json · una línea, formateada para leerla', '{\n  "timestamp": "2026-10-14T09:12:03.512409+0200",\n  "event_type": "alert",\n  "src_ip": "10.20.4.17", "src_port": 51544,\n  "dest_ip": "203.0.113.40", "dest_port": 443,\n  "proto": "TCP", "app_proto": "tls",\n  "alert": {\n    "action": "allowed",\n    "signature_id": 1000103, "rev": 1,\n    "signature": "ALERTOPOLIS DEMO SNI harbor-sync.example",\n    "category": "A Network Trojan was detected",\n    "severity": 1\n  },\n  "tls": { "sni": "sync.harbor-sync.example" }\n}', 'json'),
       p('Tres lecturas que el triaje necesita. **"action": "allowed"** significa que Suricata no bloqueó nada: o el sensor es un IDS, o la regla era alert. En un IPS con drop verías **"blocked"**. **src_ip** te dice qué equipo interno inició la conexión, y es por donde sigue la investigación (EDR, logs del proxy, el usuario). Y la alerta prueba que **hubo tráfico que coincide con la regla**, no que el equipo esté comprometido: puede ser una herramienta de seguridad consultando el dominio, un analista o un falso positivo. Correlaciona antes de concluir.'),
       h('Probarla antes de desplegarla'),
-      p('Suricata puede leer una captura en lugar de una interfaz. Es la forma honesta de validar una regla: con una captura que **debe** coincidir y otra de tráfico legítimo parecido que **no** debe. Esta web no ejecuta Suricata; los comandos son para un equipo donde lo tengas instalado y con capturas que tengas permiso para usar.'),
+      p('Suricata puede leer una captura en lugar de una interfaz. Es la forma honesta de validar una regla: con una captura que **debe** coincidir y otra de tráfico legítimo parecido que **no** debe. Esta web no ejecuta Suricata: el laboratorio del final de la lección usa un simulador comprobado contra el motor real. Los comandos son para un equipo donde lo tengas instalado y con capturas que tengas permiso para usar.'),
       code('Validar en local', '# 1. Comprobar que la configuración y las reglas cargan\nsuricata -T -c /etc/suricata/suricata.yaml -S local.rules\n\n# 2. Ejecutar sobre una captura, solo con tus reglas\nsuricata -c /etc/suricata/suricata.yaml -S local.rules -r positivo.pcap -l ./out-positivo\nsuricata -c /etc/suricata/suricata.yaml -S local.rules -r control.pcap  -l ./out-control\n\n# 3. Contar alertas por regla (jq)\njq -c \'select(.event_type=="alert") | .alert.signature_id\' out-positivo/eve.json | sort | uniq -c', 'bash'),
       list(
         'Define qué debe detectar la regla y qué no, antes de escribirla.',
@@ -73,6 +76,9 @@ export const NETWORK_EXPANSIONS: Record<string, LessonExpansion> = {
         'Ya puede pasar a drop en todos los sensores',
         'Los equipos que no alertaron están limpios',
       ], 1, 'Dos capturas demuestran conformidad con ese pequeño contrato, no cobertura frente a variantes ni ausencia de compromiso. DNS cifrado o un dominio nuevo escaparían a la regla, y pasar a drop exige además un sensor inline y observar falsos positivos en producción.'),
+      h('Laboratorio: tu local.rules contra una captura de Halden'),
+      p('Cuatro misiones sobre la misma captura ficticia: consultas DNS, un envío por HTTP, el mismo envío cifrado y, por último, el sensor en línea con una excepción para el SOC. Cada misión enseña un error típico: el resolver interno que $EXTERNAL_NET no ve, el dominio parecido que se cuela, la regla que no ve el tráfico cifrado y el drop que no bloquea fuera de línea. Las reglas se escriben una vez y se acumulan, como en un local.rules real.'),
+      { t: 'suricata-practice' },
       links('Seguir practicando', [
         { label: 'sp4m6 · Alerting y monitorización: dónde acaban las alertas', href: '/learn/sp4m6' },
         { label: 'sp4m11 · Fuentes de datos para la investigación', href: '/learn/sp4m11' },

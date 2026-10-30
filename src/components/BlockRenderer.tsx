@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import YaraPractice from './YaraPractice';
+import SuricataPractice from './SuricataPractice';
 import type { Block, CheckQ, VideoFileBlock, YouTubeVideoBlock } from '../lib/types';
 import { isYouTubeBlock, youtubeEmbedUrl, youtubeWatchUrl } from '../lib/youtube';
 import { md } from '../lib/md';
@@ -342,6 +343,8 @@ export default function BlockRenderer({
         switch (b.t) {
           case 'yara-practice':
             return <YaraPractice key={i} />;
+          case 'suricata-practice':
+            return <SuricataPractice key={i} />;
           case 'links':
             return (
               <nav key={i} aria-label={b.title} className="my-5 rounded-xl border border-ink-700 p-4">
@@ -455,7 +458,7 @@ export default function BlockRenderer({
                     )}
                   </div>
                 )}
-                <pre className="overflow-x-auto p-4 font-mono text-xs leading-relaxed text-slate-300">
+                <pre className="overflow-x-auto p-4 font-mono text-xs leading-relaxed text-slate-300 [font-variant-ligatures:none]">
                   <code>{b.text}</code>
                 </pre>
               </div>

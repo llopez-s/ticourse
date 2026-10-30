@@ -88,6 +88,12 @@ describe('practical curriculum compatibility', () => {
     expect(s3m5Links).toContain('/learn/sp4m7');
   });
 
+  it('ships the Suricata lab: one block in sp4m7, a packaged capture and a real-engine verifier', () => {
+    expect(moduleById('sp4m7')!.blocks.filter((b) => b.t === 'suricata-practice')).toHaveLength(1);
+    expect(existsSync('public/labs/suricata-practice.zip')).toBe(true);
+    expect(readFileSync('public/labs/suricata-practice/verify.py', 'utf8')).toContain('--simulate-ips');
+  });
+
   it('ships an inert corpus, a real-engine verifier and an honest browser editor', () => {
     expect(existsSync('public/labs/yara-practice.zip')).toBe(true);
     expect(readFileSync('public/labs/yara-practice/verify.py', 'utf8')).toContain('yara.compile');

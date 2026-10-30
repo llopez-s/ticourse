@@ -183,6 +183,11 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   (`practical/hunting.ts`, FI-ISAC NL v2.0, CC BY 4.0, GCTI only; s1m3 points to it);
   sp4m7 carries a **Suricata** capsule (`practical/network-suricata.ts`, 4 optional checks, cards `fcp-p09..13`,
   `fc-p22`; s3m5 links to it); its rules and EVE sample were checked against Suricata 7.0.3 on synthetic pcaps.
+  Its interactive lab (`{ t: 'suricata-practice' }`, `components/SuricataPractice.tsx`, workbook `sp4m7/suricata/v1`)
+  runs `lib/suricataSim.ts`, a rule-subset simulator held to real Suricata by `suricataSim.test.ts`, which replays
+  `src/data/suricata-parity.json` (89 cases recorded by `scripts/suricata-parity.py` with 7.0.3; `--check` for staleness).
+  Out-of-subset syntax is reported as such, never guessed. `public/labs/suricata-practice/` holds the corpus, missions,
+  reference rules, a stdlib pcap generator and `verify.py` (real engine); `scripts/package-suricata-practice.py --check`.
   `practical/index.ts` merges expansion sets that touch the same lesson. `links` and `yara-practice` are searchable block types.
   The YARA editor neither compiles nor sends anything: it autosaves the draft locally
   (workbook `lab3b/free/v1`) and downloads it as text; Forge remains a label-based simulation.
