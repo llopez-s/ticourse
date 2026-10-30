@@ -362,6 +362,9 @@ describe('lesson videos', () => {
     // G08 reads the five TLP marks, replays the AMBER fumble and closes on reciprocity, after s3m4's paragraph on
     // sharing communities and before the one on vendor reports
     expect(youtubeVideos.find((v) => v.block.youtube === 'mHSJuJ_reKE')?.module).toBe('s3m4');
+    // dato-a-juicio climbs from a bare IP to a judgment, then splits threat (intent, capability, opportunity) from risk,
+    // at the end of s1m1 after the intelligence check and before the paragraph that hands over to s1m2
+    expect(youtubeVideos.find((v) => v.block.youtube === 'qNNJgHIN9KY')?.module).toBe('s1m1');
     // ciclo-pir walks the six phases of the lifecycle and writes the first PIRs for Meridian's CISO, after s1m4's
     // F3EAD paragraphs and before the second check
     expect(youtubeVideos.find((v) => v.block.youtube === 'rM8Syyp6JlM')?.module).toBe('s1m4');

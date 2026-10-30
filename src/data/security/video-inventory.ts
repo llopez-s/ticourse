@@ -652,11 +652,37 @@ export const VIDEO_INVENTORY: VideoResource[] = [
     "id": "dato-a-juicio",
     "track": "gcti",
     "lessonId": "s1m1",
-    "title": "qué es inteligencia",
-    "status": "scripted",
-    "role": "complementary",
-    "evidence": "video/dato-a-juicio/video.json",
-    "chapters": []
+    "title": "De un dato a un juicio: inteligencia, amenaza y riesgo",
+    "status": "integrated",
+    "role": "principal",
+    "youtube": "qNNJgHIN9KY",
+    "poster": "videos/dato-a-juicio-poster.png",
+    "transcript": "videos/dato-a-juicio-transcript.txt",
+    "captions": "videos/dato-a-juicio-captions.vtt",
+    "durationSeconds": 502,
+    "verifiedAgainst": "videos/dato-a-juicio-captions.vtt",
+    "chapters": [
+      {
+        "title": "De la IP al juicio",
+        "start": 0
+      },
+      {
+        "title": "Juzgar sin certeza",
+        "start": 124
+      },
+      {
+        "title": "Qué es una amenaza",
+        "start": 224
+      },
+      {
+        "title": "El malware no es la amenaza",
+        "start": 343
+      },
+      {
+        "title": "Riesgo y ventaja",
+        "start": 424
+      }
+    ]
   },
   {
     "id": "datos-halden",

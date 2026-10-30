@@ -91,6 +91,13 @@ export const S1_MODULES: Module[] = [
         },
       },
       {
+        t: 'video',
+        title: 'De un dato a un juicio: inteligencia, amenaza y riesgo',
+        youtube: 'qNNJgHIN9KY',
+        poster: 'videos/dato-a-juicio-poster.png',
+        transcript: 'videos/dato-a-juicio-transcript.txt',
+      },
+      {
         t: 'p',
         md: 'Con la definición clara, el siguiente paso es precisar qué es exactamente una **threat** — porque sin amenaza definida, no hay *threat intelligence* posible.',
       },
