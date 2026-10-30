@@ -42,7 +42,8 @@ for (const [track, value] of Object.entries(TRACKS)) for (const m of value.modul
     durationSeconds:Math.ceil(duration), verifiedAgainst:captions, chapters});
 }
 for (const {production:_,...resource} of recovered) if(!inventory.some(v=>v.id===resource.id))inventory.push(resource);
-for (const p of projects.filter(p => !inventory.some(v => v.id === (p.output ?? p.slug)))) {
+// Scripts not yet tied to a lesson (the fundamentals videos) stay out until they get one.
+for (const p of projects.filter(p => p.lesson && !inventory.some(v => v.id === (p.output ?? p.slug)))) {
   const output = `video/${p.folder}/out`;
   const rendered = fs.existsSync(output) && fs.readdirSync(output).some(f => f.endsWith('.mp4'));
   inventory.push({id:p.output ?? p.slug, track:p.track, lessonId:p.lesson, title:p.tags?.[1] ?? p.slug,
