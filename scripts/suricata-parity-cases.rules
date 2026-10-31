@@ -186,3 +186,24 @@ alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;) # come
 ### comment-lines-ignored
 # una línea de comentario
 alert tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+### http-header-only-established-to-server-reversed
+alert http any any -> any any (msg:"x"; flow:to_server,established; sid:1;)
+### http-header-only-established-from-client
+alert http any any -> any any (msg:"x"; flow:established,from_client; sid:1;)
+### http-header-only-established
+alert http any any -> any any (msg:"x"; flow:established; sid:1;)
+### http-header-only-to-server
+alert http any any -> any any (msg:"x"; flow:to_server; sid:1;)
+### tls-header-only-established-to-server
+alert tls any any -> any any (msg:"x"; flow:established,to_server; sid:1;)
+### tls-header-only-established
+alert tls any any -> any any (msg:"x"; flow:established; sid:1;)
+### dns-header-only-to-server
+alert dns any any -> any any (msg:"x"; flow:to_server; sid:1;)
+### dns-header-only-established-to-server
+alert dns any any -> any any (msg:"x"; flow:established,to_server; sid:1;)
+### http-buffer-established-to-server
+alert http any any -> any any (msg:"x"; flow:established,to_server; http.method; content:"POST"; sid:1;)
+### pass-header-only-established-to-server-ips ips
+drop tls any any -> any any (msg:"x"; tls.sni; content:"harbor"; sid:1;)
+pass tls 10.20.6.31 any -> any any (msg:"p"; flow:established,to_server; sid:2;)

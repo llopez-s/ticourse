@@ -1,0 +1,1043 @@
+{
+ "suricata": "This is Suricata version 7.0.3 RELEASE",
+ "cases": [
+  {
+   "name": "reference-ids",
+   "mode": "ids",
+   "rules": "# Alertópolis · laboratorio de Suricata · reglas de referencia v1\n# Caso ficticio (Halden, 14-10-2026). Dominio reservado .example; no es infraestructura real.\n# Misiones 1 a 3: sensor en un puerto SPAN (IDS). Misión 4: el mismo archivo en un sensor en línea (IPS).\n\n# M1 · DNS. El resolver es interno (10.20.0.53): un destino $EXTERNAL_NET no vería ninguna consulta.\n# dotprefix + \".harbor-sync.example\" + endswith = el dominio y sus subdominios, nada más.\nalert dns $HOME_NET any -> any any (msg:\"ALERTOPOLIS DEMO consulta DNS a harbor-sync.example\"; dns.query; dotprefix; content:\".harbor-sync.example\"; nocase; endswith; classtype:trojan-activity; sid:1000101; rev:1;)\n\n# M2 · HTTP. Método y principio de la URI; ni IP ni puerto ni Host, que cambian gratis.\nalert http $HOME_NET any -> $EXTERNAL_NET any (msg:\"ALERTOPOLIS DEMO POST a /collect-demo\"; flow:established,to_server; http.method; content:\"POST\"; http.uri; content:\"/collect-demo\"; startswith; classtype:trojan-activity; sid:1000102; rev:1;)\n\n# M3 y M4 · TLS. Lo único legible del envío cifrado es el SNI. drop solo bloquea en línea:\n# en las misiones 1 a 3 esta regla alerta con \"action\": \"allowed\".\ndrop tls $HOME_NET any -> $EXTERNAL_NET any (msg:\"ALERTOPOLIS DEMO SNI harbor-sync.example\"; flow:established,to_server; tls.sni; dotprefix; content:\".harbor-sync.example\"; nocase; endswith; classtype:trojan-activity; sid:1000103; rev:1;)\n\n# M4 · Excepción documentada: el servidor de enriquecimiento del SOC consulta el dominio a propósito.\n# pass gana a alert y a drop por el orden de acciones por defecto (pass, drop, reject, alert).\npass dns 10.20.9.5 any -> any any (msg:\"ALERTOPOLIS DEMO excepcion: enriquecimiento del SOC\"; dns.query; dotprefix; content:\".harbor-sync.example\"; nocase; endswith; sid:1000104; rev:1;)\n",
+   "alerts": [
+    "d1:1000101:allowed",
+    "d2:1000101:allowed",
+    "d3:1000101:allowed",
+    "h1:1000102:allowed",
+    "h2:1000102:allowed",
+    "t1:1000103:allowed",
+    "t2:1000103:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "reference-ips",
+   "mode": "ips",
+   "rules": "# Alertópolis · laboratorio de Suricata · reglas de referencia v1\n# Caso ficticio (Halden, 14-10-2026). Dominio reservado .example; no es infraestructura real.\n# Misiones 1 a 3: sensor en un puerto SPAN (IDS). Misión 4: el mismo archivo en un sensor en línea (IPS).\n\n# M1 · DNS. El resolver es interno (10.20.0.53): un destino $EXTERNAL_NET no vería ninguna consulta.\n# dotprefix + \".harbor-sync.example\" + endswith = el dominio y sus subdominios, nada más.\nalert dns $HOME_NET any -> any any (msg:\"ALERTOPOLIS DEMO consulta DNS a harbor-sync.example\"; dns.query; dotprefix; content:\".harbor-sync.example\"; nocase; endswith; classtype:trojan-activity; sid:1000101; rev:1;)\n\n# M2 · HTTP. Método y principio de la URI; ni IP ni puerto ni Host, que cambian gratis.\nalert http $HOME_NET any -> $EXTERNAL_NET any (msg:\"ALERTOPOLIS DEMO POST a /collect-demo\"; flow:established,to_server; http.method; content:\"POST\"; http.uri; content:\"/collect-demo\"; startswith; classtype:trojan-activity; sid:1000102; rev:1;)\n\n# M3 y M4 · TLS. Lo único legible del envío cifrado es el SNI. drop solo bloquea en línea:\n# en las misiones 1 a 3 esta regla alerta con \"action\": \"allowed\".\ndrop tls $HOME_NET any -> $EXTERNAL_NET any (msg:\"ALERTOPOLIS DEMO SNI harbor-sync.example\"; flow:established,to_server; tls.sni; dotprefix; content:\".harbor-sync.example\"; nocase; endswith; classtype:trojan-activity; sid:1000103; rev:1;)\n\n# M4 · Excepción documentada: el servidor de enriquecimiento del SOC consulta el dominio a propósito.\n# pass gana a alert y a drop por el orden de acciones por defecto (pass, drop, reject, alert).\npass dns 10.20.9.5 any -> any any (msg:\"ALERTOPOLIS DEMO excepcion: enriquecimiento del SOC\"; dns.query; dotprefix; content:\".harbor-sync.example\"; nocase; endswith; sid:1000104; rev:1;)\n",
+   "alerts": [
+    "d1:1000101:allowed",
+    "d2:1000101:allowed",
+    "d3:1000101:allowed",
+    "h1:1000102:allowed",
+    "h2:1000102:allowed",
+    "t1:1000103:blocked",
+    "t2:1000103:blocked"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "external-net-misses-internal-resolver",
+   "mode": "ids",
+   "rules": "alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:\"x\"; dns.query; content:\"harbor\"; sid:1;)\n",
+   "alerts": [],
+   "errorLines": []
+  },
+  {
+   "name": "dns-plain-content",
+   "mode": "ids",
+   "rules": "alert dns any any -> any any (msg:\"x\"; dns.query; content:\"harbor-sync.example\"; sid:1;)\n",
+   "alerts": [
+    "d1:1:allowed",
+    "d2:1:allowed",
+    "d4:1:allowed",
+    "d5:1:allowed",
+    "d7:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "dns-nocase",
+   "mode": "ids",
+   "rules": "alert dns any any -> any any (msg:\"x\"; dns.query; content:\"harbor-sync.example\"; nocase; sid:1;)\n",
+   "alerts": [
+    "d1:1:allowed",
+    "d2:1:allowed",
+    "d3:1:allowed",
+    "d4:1:allowed",
+    "d5:1:allowed",
+    "d7:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "dns-endswith",
+   "mode": "ids",
+   "rules": "alert dns any any -> any any (msg:\"x\"; dns.query; content:\"harbor-sync.example\"; nocase; endswith; sid:1;)\n",
+   "alerts": [
+    "d1:1:allowed",
+    "d2:1:allowed",
+    "d3:1:allowed",
+    "d4:1:allowed",
+    "d7:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "dns-dot-without-dotprefix",
+   "mode": "ids",
+   "rules": "alert dns any any -> any any (msg:\"x\"; dns.query; content:\".harbor-sync.example\"; nocase; endswith; sid:1;)\n",
+   "alerts": [
+    "d2:1:allowed",
+    "d3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "dns-dotprefix-no-nocase",
+   "mode": "ids",
+   "rules": "alert dns any any -> any any (msg:\"x\"; dns.query; dotprefix; content:\".harbor-sync.example\"; endswith; sid:1;)\n",
+   "alerts": [
+    "d1:1:allowed",
+    "d2:1:allowed",
+    "d7:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "dns-established-never-matches",
+   "mode": "ids",
+   "rules": "alert dns any any -> any any (msg:\"x\"; flow:established,to_server; dns.query; content:\"harbor\"; sid:1;)\n",
+   "alerts": [],
+   "errorLines": []
+  },
+  {
+   "name": "dns-to-server",
+   "mode": "ids",
+   "rules": "alert dns any any -> any any (msg:\"x\"; flow:to_server; dns.query; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "d1:1:allowed",
+    "d2:1:allowed",
+    "d4:1:allowed",
+    "d5:1:allowed",
+    "d7:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "dns-header-only",
+   "mode": "ids",
+   "rules": "alert dns any any -> any any (msg:\"x\"; sid:1;)\n",
+   "alerts": [
+    "d1:1:allowed",
+    "d2:1:allowed",
+    "d3:1:allowed",
+    "d4:1:allowed",
+    "d5:1:allowed",
+    "d6:1:allowed",
+    "d7:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "dns-cidr-source",
+   "mode": "ids",
+   "rules": "alert dns 10.20.4.0/24 any -> any any (msg:\"x\"; dns.query; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "d1:1:allowed",
+    "d2:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "dns-port-53",
+   "mode": "ids",
+   "rules": "alert dns any any -> any 53 (msg:\"x\"; dns.query; content:\"halden\"; sid:1;)\n",
+   "alerts": [
+    "d6:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "pass-header-only",
+   "mode": "ids",
+   "rules": "alert dns any any -> any any (msg:\"x\"; dns.query; content:\"harbor\"; sid:1;)\npass dns 10.20.9.5 any -> any any (msg:\"p\"; sid:2;)\n",
+   "alerts": [
+    "d1:1:allowed",
+    "d2:1:allowed",
+    "d4:1:allowed",
+    "d5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "pass-with-content",
+   "mode": "ids",
+   "rules": "alert dns any any -> any any (msg:\"x\"; dns.query; content:\"harbor\"; sid:1;)\npass dns 10.20.9.5 any -> any any (msg:\"p\"; dns.query; content:\"harbor\"; sid:2;)\n",
+   "alerts": [
+    "d1:1:allowed",
+    "d2:1:allowed",
+    "d4:1:allowed",
+    "d5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "pass-other-event-does-not-suppress",
+   "mode": "ids",
+   "rules": "pass tls any any -> any any (msg:\"x\"; tls.sni; content:\"evil\"; sid:1;)\nalert tls any any -> any any (msg:\"y\"; tls.sni; content:\"harbor\"; sid:2;)\n",
+   "alerts": [
+    "t1:2:allowed",
+    "t2:2:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-uri-contains",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.uri; content:\"collect\"; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h3:1:allowed",
+    "h4:1:allowed",
+    "h5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-uri-startswith",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.uri; content:\"/collect-demo\"; startswith; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-uri-endswith",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.uri; content:\"/collect-demo\"; endswith; sid:1;)\n",
+   "alerts": [
+    "h2:1:allowed",
+    "h3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-uri-exact",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.uri; content:\"/collect-demo\"; startswith; endswith; sid:1;)\n",
+   "alerts": [
+    "h2:1:allowed",
+    "h3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-method-and-uri",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.uri; content:\"/collect-demo\"; startswith; http.method; content:\"POST\"; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-method-nocase",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.method; content:\"post\"; nocase; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h4:1:allowed",
+    "h5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-two-uri-buffers",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.uri; content:\"/collect-demo\"; http.uri; content:\"41\"; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-host",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.host; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-host-ip",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.host; content:\"198.51.100.7\"; sid:1;)\n",
+   "alerts": [
+    "h2:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-host-endswith",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.host; content:\"upd.harbor-sync.example\"; endswith; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-host-uppercase-error",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.host; content:\"Harbor\"; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "http-host-nocase-error",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.host; content:\"harbor\"; nocase; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "http-not-home-net",
+   "mode": "ids",
+   "rules": "alert http any any -> !$HOME_NET any (msg:\"x\"; http.method; content:\"POST\"; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h4:1:allowed",
+    "h5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-established",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; flow:established,to_server; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h3:1:allowed",
+    "h4:1:allowed",
+    "h5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-port-8081",
+   "mode": "ids",
+   "rules": "alert http any any -> any 8081 (msg:\"x\"; http.method; content:\"POST\"; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-dotprefix-uri",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.uri; dotprefix; content:\"./coll\"; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-sni-contains",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-sni-case-sensitive",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"HARBOR\"; sid:1;)\n",
+   "alerts": [],
+   "errorLines": []
+  },
+  {
+   "name": "tls-sni-startswith",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor-sync.example\"; startswith; sid:1;)\n",
+   "alerts": [
+    "t2:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-two-contents-any-order",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"sync\"; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-negated-content",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:!\"evil\"; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-negated-nocase",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:!\"harbor\"; nocase; sid:1;)\n",
+   "alerts": [
+    "t4:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-negated-endswith",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:!\"harbor\"; endswith; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed",
+    "t4:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-hex",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"|68|arbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-exact-nocase",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"sync\"; nocase; startswith; endswith; sid:1;)\n",
+   "alerts": [],
+   "errorLines": []
+  },
+  {
+   "name": "tls-port-list",
+   "mode": "ids",
+   "rules": "alert tls any any -> any [443,8081] (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-port-other",
+   "mode": "ids",
+   "rules": "alert tls any any -> any 8443 (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [],
+   "errorLines": []
+  },
+  {
+   "name": "tls-port-negated",
+   "mode": "ids",
+   "rules": "alert tls [10.20.4.17,10.20.6.31] any -> any !443 (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [],
+   "errorLines": []
+  },
+  {
+   "name": "tls-negated-source",
+   "mode": "ids",
+   "rules": "alert tls !10.20.6.31 any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-home-to-home",
+   "mode": "ids",
+   "rules": "alert tls $HOME_NET any -> $HOME_NET any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [],
+   "errorLines": []
+  },
+  {
+   "name": "tls-cidr-destination",
+   "mode": "ids",
+   "rules": "alert tls any any -> 203.0.113.0/24 any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-bidirectional",
+   "mode": "ids",
+   "rules": "alert tls any any <> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-established",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; flow:established; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-header-only-ip",
+   "mode": "ids",
+   "rules": "alert tls 10.20.4.17 any -> any any (msg:\"x\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-no-msg",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-spaces",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any ( msg:\"x\" ; tls.sni ; content: \"harbor\" ; sid: 1 ; )\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-classtype-rev",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1; rev:2; classtype:trojan-activity;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-fast-pattern",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"sync\"; fast_pattern; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-uppercase-action",
+   "mode": "ids",
+   "rules": "ALERT tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-missing-close-paren",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-multiline",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; \\\n  tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "drop-ids",
+   "mode": "ids",
+   "rules": "drop tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "drop-ips",
+   "mode": "ips",
+   "rules": "drop tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:blocked",
+    "t2:1:blocked",
+    "t3:1:blocked"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "drop-dns-ips",
+   "mode": "ips",
+   "rules": "drop dns any any -> any any (msg:\"x\"; dns.query; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "d1:1:blocked",
+    "d2:1:blocked",
+    "d4:1:blocked",
+    "d5:1:blocked",
+    "d7:1:blocked"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "drop-and-alert-ips",
+   "mode": "ips",
+   "rules": "drop tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\nalert tls any any -> any any (msg:\"y\"; tls.sni; content:\"sync\"; sid:2;)\n",
+   "alerts": [
+    "t1:1:blocked",
+    "t1:2:allowed",
+    "t2:1:blocked",
+    "t2:2:allowed",
+    "t3:1:blocked",
+    "t3:2:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "pass-beats-drop-ips",
+   "mode": "ips",
+   "rules": "drop tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\npass tls 10.20.6.31 any -> any any (msg:\"p\"; sid:2;)\n",
+   "alerts": [
+    "t1:1:blocked",
+    "t3:1:blocked"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "reject-ids",
+   "mode": "ids",
+   "rules": "reject tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\nalert tls any any -> any any (msg:\"y\"; tls.sni; content:\"sync\"; sid:2;)\n",
+   "alerts": [
+    "t1:1:blocked",
+    "t1:2:allowed",
+    "t2:1:blocked",
+    "t2:2:allowed",
+    "t3:1:blocked",
+    "t3:2:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "reject-ips",
+   "mode": "ips",
+   "rules": "reject tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:blocked",
+    "t2:1:blocked",
+    "t3:1:blocked"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "error-proto-mismatch",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; dns.query; content:\"harbor\"; sid:1;)\nalert tls any any -> any any (msg:\"y\"; tls.sni; content:\"harbor\"; sid:2;)\n",
+   "alerts": [
+    "t1:2:allowed",
+    "t2:2:allowed",
+    "t3:2:allowed"
+   ],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-missing-sid",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\";)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-missing-semicolon",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\" sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-no-final-semicolon",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-semicolon-in-msg",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"a;b\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-unquoted-msg",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:x; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-unquoted-content",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:harbor; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-empty-content",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"\"; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-unknown-keyword",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; bogus; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-buffer-without-content",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-buffer-after-content",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; content:\"harbor\"; nocase; tls.sni; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-buffer-left-empty",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.uri; content:\"/collect-demo\"; http.method; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-nocase-before-content",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; nocase; content:\"harbor\"; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-double-nocase",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; nocase; nocase; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-double-startswith",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; startswith; startswith; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-transform-after-content",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; http.uri; dotprefix; content:\"/x\"; dotprefix; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-to-client",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; flow:to_client; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-sid-zero",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:0;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-rev-zero",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1; rev:0;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-sid-text",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:abc;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-double-sid",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1; sid:2;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-duplicate-sid-keeps-first",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\nalert tls any any -> any any (msg:\"y\"; tls.sni; content:\"sync\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": [
+    2
+   ]
+  },
+  {
+   "name": "error-uppercase-proto",
+   "mode": "ids",
+   "rules": "alert TLS any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "error-trailing-comment",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;) # comentario\n",
+   "alerts": [],
+   "errorLines": [
+    1
+   ]
+  },
+  {
+   "name": "comment-lines-ignored",
+   "mode": "ids",
+   "rules": "# una línea de comentario\nalert tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-header-only-established-to-server-reversed",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; flow:to_server,established; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h3:1:allowed",
+    "h4:1:allowed",
+    "h5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-header-only-established-from-client",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; flow:established,from_client; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h3:1:allowed",
+    "h4:1:allowed",
+    "h5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-header-only-established",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; flow:established; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h3:1:allowed",
+    "h4:1:allowed",
+    "h5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-header-only-to-server",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; flow:to_server; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h3:1:allowed",
+    "h4:1:allowed",
+    "h5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-header-only-established-to-server",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; flow:established,to_server; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed",
+    "t4:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-header-only-established",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; flow:established; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed",
+    "t4:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "dns-header-only-to-server",
+   "mode": "ids",
+   "rules": "alert dns any any -> any any (msg:\"x\"; flow:to_server; sid:1;)\n",
+   "alerts": [
+    "d1:1:allowed",
+    "d2:1:allowed",
+    "d3:1:allowed",
+    "d4:1:allowed",
+    "d5:1:allowed",
+    "d6:1:allowed",
+    "d7:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "dns-header-only-established-to-server",
+   "mode": "ids",
+   "rules": "alert dns any any -> any any (msg:\"x\"; flow:established,to_server; sid:1;)\n",
+   "alerts": [],
+   "errorLines": []
+  },
+  {
+   "name": "http-buffer-established-to-server",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; flow:established,to_server; http.method; content:\"POST\"; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h4:1:allowed",
+    "h5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "pass-header-only-established-to-server-ips",
+   "mode": "ips",
+   "rules": "drop tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\npass tls 10.20.6.31 any -> any any (msg:\"p\"; flow:established,to_server; sid:2;)\n",
+   "alerts": [
+    "t1:1:blocked",
+    "t3:1:blocked"
+   ],
+   "errorLines": []
+  }
+ ]
+}

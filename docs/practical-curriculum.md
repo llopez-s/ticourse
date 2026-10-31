@@ -129,16 +129,25 @@ pass con el orden de acciones por defecto). Lo que queda fuera se marca como «F
 simulador», no se adivina. Los intentos se guardan en el cuaderno local
 `sp4m7/suricata/v1`; no dan XP ni cuentan para la lección.
 
-Paridad con el motor real: `scripts/suricata-parity-cases.rules` (89 casos: aciertos,
+Paridad con el motor real: `scripts/suricata-parity-cases.rules` (99 casos: aciertos,
 errores de carga, IDS/IPS, `pass`, `reject`, reglas duplicadas) se ejecuta con
-Suricata 7.0.3 mediante `python scripts/suricata-parity.py`, que escribe
-`src/data/suricata-parity.json`; `suricataSim.test.ts` exige que el simulador dé las
-mismas alertas y las mismas líneas con error, y que solo declare «fuera del simulador»
-líneas que Suricata también rechaza. `--check` detecta una grabación desactualizada.
+`python scripts/suricata-parity.py`, que escribe una grabación por versión mayor:
+`src/data/suricata-parity-7.json` (Suricata 7.0.3, Ubuntu 24.04) y
+`src/data/suricata-parity-8.json` (8.0.8, ppa:oisf/suricata-stable, grabada el
+31-10-2026 en el equipo de Lidia y traída con `--digest` / `--from-digest`, que comprueba
+el SHA-256 del archivo completo). `suricataSim.test.ts` exige, donde las dos versiones
+coinciden, las mismas alertas y las mismas líneas con error, y que el simulador solo
+declare «fuera del simulador» líneas que Suricata también rechaza; donde no coinciden,
+que el simulador lo avise en vez de elegir una. `--check` detecta una grabación
+desactualizada para la versión instalada.
 Hallazgos del motor que el texto recoge: `flow:established` nunca coincide con una
 consulta DNS por UDP; `http.host` rechaza content con mayúsculas y `nocase`; `reject`
 sale `blocked` también fuera de línea; una regla `alert` sobre un paquete descartado
-sigue saliendo `allowed`.
+sigue saliendo `allowed`. Única diferencia entre versiones: una alerta `http`/`tls` sin
+buffer con `flow:established` y dirección (`to_server` o `from_client`) casa con cada
+petición en la 7 y con ninguna en la 8; el mismo `pass` se comporta igual en ambas.
+El paquete de la OISF deja `/etc/suricata` solo para root y el grupo `suricata`:
+`verify.py` y el README del ZIP explican el «Permission denied» y su arreglo.
 
 El ZIP (`scripts/package-suricata-practice.py`, `--check`) trae la captura, `corpus.json`,
 `missions.json`, `reference.rules`, `make_pcap.py` (solo biblioteca estándar, salida
