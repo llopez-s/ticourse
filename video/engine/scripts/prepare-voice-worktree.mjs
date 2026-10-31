@@ -3,7 +3,7 @@
 //
 //   node video/engine/scripts/prepare-voice-worktree.mjs --video <slug> --wav "<grabación>.wav"
 //        [--name lidia] [--dir <carpeta>] [--branch video-<slug>-voz] [--base origin/main] [--video-from <ref>]
-//        [--no-fetch] [--no-master] [--no-import] [--dry-run]
+//        [--no-fetch] [--no-master] [--no-import] [--fix] [--dry-run]
 //   node video/engine/scripts/prepare-voice-worktree.mjs --video <slug> --remove [--dir <carpeta>]
 //
 // 1. git fetch y un worktree en NTFS (por defecto %TEMP%\alertopolis-voz\<slug>; el disco D: es exFAT y no admite
@@ -15,6 +15,8 @@
 // 4. narration.json sin "recording.tempo" (su voz se importa a su ritmo desde 2026-10-24).
 // 5. master_voice.py sobre la grabación -> «<grabación> (master).wav» (si no existe ya o es más vieja que la grabación).
 // 6. import-recording.mjs con --lufs=-18 y el Python del checkout principal (CHATTERBOX_PYTHON).
+// 7. Con --fix, fix-recording.mjs: los avisos seguros del importador (toma posterior, apertura repetida, inicio perdido,
+//    borde dentro de una palabra) se arreglan con tomas de la propia grabación, en un solo recorte (ver ese script).
 // Se puede repetir: lo que ya está hecho se salta. Después: cd <carpeta> && node video/engine/scripts/produce.mjs --video <slug>
 // --remove quita primero las uniones y luego el worktree (git worktree remove, sin --force: si hay cambios sin
 // commit, se para). Nunca borres el worktree a mano con las uniones dentro: borrarías el node_modules y la .cache
@@ -66,6 +68,7 @@ function main() {
       'no-fetch': { type: 'boolean', default: false },
       'no-master': { type: 'boolean', default: false },
       'no-import': { type: 'boolean', default: false },
+      fix: { type: 'boolean', default: false },
       'dry-run': { type: 'boolean', default: false },
       remove: { type: 'boolean', default: false },
     },
@@ -164,6 +167,10 @@ function main() {
     const name = values.name ?? (String(narration?.voice ?? '').startsWith('recording/') ? narration.voice.slice('recording/'.length) : 'lidia');
     const args = importArgs(path.join(dir, 'video', 'engine', 'scripts'), { slug, file, name });
     act(`node ${args.map((a) => (/\s/.test(a) ? `"${a}"` : a)).join(' ')}`, () => run(process.execPath, args));
+    if (values.fix) {
+      const fixArgs = [path.join(dir, 'video', 'engine', 'scripts', 'fix-recording.mjs'), '--video', slug];
+      act(`node ${fixArgs.map((a) => (/\s/.test(a) ? `"${a}"` : a)).join(' ')}`, () => run(process.execPath, fixArgs));
+    }
   }
   return done(dir, slug);
 }

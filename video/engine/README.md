@@ -810,6 +810,21 @@ node video/engine/scripts/prepare-voice-worktree.mjs --video <slug> --wav "video
 #     Después: cd al worktree y produce.mjs. Para quitarlo, SIEMPRE con el script (quita las uniones primero; borrar la
 #     carpeta a mano con ellas dentro borraría el node_modules y la .cache del principal):
 node video/engine/scripts/prepare-voice-worktree.mjs --video <slug> --remove
+#     La preparación tarda más de 10 min (checkout + master + Whisper): lánzala en segundo plano.
+#     --fix añade al final fix-recording.mjs (6a-bis).
+
+# 6a-bis. Avisos del importador arreglados con tomas de su propia grabación (se puede lanzar solo, tras cualquier importación completa)
+node video/engine/scripts/fix-recording.mjs --video <slug> [--kinds safe|all|later,edge,…] [--dry-run]
+#     El importador guarda cada sugerencia como datos (out/recording/<voz>/fixes-<grabación>.json) además de imprimirla.
+#     fix-recording aplica las SEGURAS —later (toma posterior a la usada: la última es la buena), restart (apertura leída
+#     dos veces), midstart (el clip perdió sus primeras palabras), edge (el clip acaba o empieza dentro de una palabra:
+#     el corte pasa al medio de la pausa siguiente/anterior) y stretched (una toma a medias pegada a su repetición: verify-voice
+#     la da por error; el inicio de la toma buena es el final de la pausa que sigue a la palabra estirada)— en UN solo
+#     recorte («<slug> <voz> arreglos (recorte).wav», recut_recording.py) y reimporta esos clips con --only … --reuse-gain
+#     (la ganancia de la importación completa, sin aritmética de LUFS). unheard / long / missing quedan «a mano» (el recorte
+#     que conserva la parte buena es una conjetura: se escuchan; --kinds all los arregla igualmente). Cada clip se
+#     intenta una vez (fixes-applied.json). Lo que NO hace:
+#     palabras dichas en otro orden que el guion (se edita el texto de narration.json: manda lo grabado) ni pausas largas.
 
 # 6b. Con la voz ya importada, la cadena entera en un solo comando (para en el primer error y dice cómo retomar):
 #     audio (timeline + verify-voice) → program (WAV del programa) → master1 → frames → master2 → report

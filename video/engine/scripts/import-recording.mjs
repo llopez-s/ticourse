@@ -37,7 +37,9 @@ import { acquireHeavyLock } from './lib/heavy-lock.mjs';
 import { analyzeNarration, isRecordingVoice, loadSources, reportOrThrow, spokenForVoice } from './lib/narration.mjs';
 import { ENGINE_DIR, MANIFEST, PATHS, REPO_ROOT, SCRIPTS_DIR, isMainModule } from './lib/paths.mjs';
 import { profileFor } from './lib/profiles.mjs';
+import { edgeGap, fixEntry, mergeFixes } from './lib/recording-fixes.mjs';
 import {
+  EDGE_ENERGY_LIMIT,
   EDGE_SAMPLE_RATE,
   REVIEW_SCORE,
   asrCacheValid,
@@ -429,11 +431,23 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
   log.log(`import-recording: ${written.length}/${segments.length} clips -> ${voiceDir} (gain ${gain} dB${pausesRemovedMs ? `, ${(pausesRemovedMs / 1000).toFixed(1)} s of pauses removed` : ''}${settings.tempo !== 1 ? `, tempo ${settings.tempo}` : ''})`);
   if (edgeBad) (edgeBad.length ? log.warn : log.log).call(log, `import-recording: ${edgeCheckLine(edgeBad)}`);
   if (weak.length) log.warn(`  aviso: listen to these, they differ from the script: ${weak.join(', ')}`);
+  // Every suggestion below is also saved as data (fixes-<file>.json) for fix-recording.mjs, which applies the safe ones.
+  const fixes = [];
+  const advise = (kind, gap, extra = {}) => {
+    const entry = fixEntry(kind, gap);
+    if (entry) fixes.push(entry);
+    for (const line of recutAdvice(gap, { ...recutOptions(gap, { file, name, gain }), ...extra })) log.warn(`    ${line}`);
+  };
+  // An edge still inside a word after the cut was moved: the cut that puts it in the middle of the next pause.
+  for (const o of edgeBad ?? []) {
+    const gap = edgeGap(o, cutOf.get(o.id), silences, { limit: EDGE_ENERGY_LIMIT });
+    const entry = gap && fixEntry('edge', gap);
+    if (entry) fixes.push(entry);
+  }
   // The narrator's last take is the good one: a reading of a segment AFTER the one used is a clip to rebuild.
   for (const lt of later) {
     log.warn(`  aviso: ${lt.id}: hay una toma POSTERIOR a la usada (${clock(lt.startMs)}–${clock(lt.endMs)}, ${lt.sentence ? 'una frase' : 'entera'}, coincide ${lt.score.toFixed(2)}): la última es la buena`);
-    const gap = { ids: [lt.id], startMs: Math.max(0, lt.startMs - 300), endMs: lt.endMs + 300 };
-    for (const line of recutAdvice(gap, recutOptions(gap, { file, name, gain }))) log.warn(`    ${line}`);
+    advise('later', { ids: [lt.id], startMs: Math.max(0, lt.startMs - 300), endMs: lt.endMs + 300 });
   }
   // A half-said sentence glued to its retake shows as one word stretched over the dropped words.
   for (const sw of stretchedWords(located, timed, silences).filter((x) => mine(x.id))) {
@@ -446,15 +460,14 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
       `  aviso: ${sw.id}: «${sw.text}» lasts ${((sw.endMs - sw.startMs) / 1000).toFixed(1)} s (${clock(sw.startMs)}–${clock(sw.endMs)}): ` +
         'Whisper stretched it over voice it did not transcribe, probably a half-said sentence and its retake in the same clip.',
     );
-    for (const line of recutAdvice(gap, recutOptions(gap, { file, name, gain }))) log.warn(`    ${line}`);
+    advise('stretched', gap);
   }
   // A clip that begins after the script's first word, with that word said just before it: the opening was lost.
   for (const ms of midStarts) {
     const cut = cutOf.get(ms.id);
     const gap = { ids: [ms.id], startMs: Math.max(0, ms.startMs - 300), endMs: cut.endMs + 300 };
     log.warn(`  aviso: ${ms.id}: the clip starts mid-sentence: «${ms.word}» is said right before it (${clock(ms.startMs)}–${clock(ms.endMs)}, heard as «${ms.missed}») and is left out.`);
-    const cause = 'the clip should include the opening that is just before it';
-    for (const line of recutAdvice(gap, { ...recutOptions(gap, { file, name, gain }), cause })) log.warn(`    ${line}`);
+    advise('midstart', gap, { cause: 'the clip should include the opening that is just before it' });
   }
   // Quick checks on the clips as written (no Whisper pass): a sentence whose opening is read again after a pause,
   // voice inside a clip that no word covers, and a clip much longer than its text read once — all a take the cut
@@ -463,16 +476,14 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
   for (const r of restarts) {
     const gap = restartGap(r, cutOf.get(r.id));
     log.warn(`  aviso: ${r.id}: «${r.opening}…» se lee dos veces en el clip (${clock(r.firstMs)} y, tras ${(r.pauseMs / 1000).toFixed(1)} s de pausa, ${clock(r.againMs)}): queda una toma anterior dentro; la última es la buena.`);
-    const cause = r.sentence === 0 ? 'keep only the reading that starts after the pause' : 'keep what comes before the first reading and the reading after the pause';
-    for (const line of recutAdvice(gap, { ...recutOptions(gap, { file, name, gain }), cause })) log.warn(`    ${line}`);
+    advise('restart', gap, { cause: r.sentence === 0 ? 'keep only the reading that starts after the pause' : 'keep what comes before the first reading and the reading after the pause' });
   }
   const restarted = new Set(restarts.map((r) => r.id));
   const unheard = unheardVoice(written.filter((w) => !restarted.has(w.id)).map((w) => cutOf.get(w.id)), timed, silences);
   for (const u of unheard) {
     const gap = withoutStretch(u, cutOf.get(u.id));
     log.warn(`  aviso: ${u.id}: ${(u.voicedMs / 1000).toFixed(1)} s de voz que Whisper no transcribió (${clock(u.startMs)}–${clock(u.endMs)}): probablemente una toma a medias dentro del clip; escúchala.`);
-    const cause = 'if that stretch is a leftover take, keep the clip without it';
-    for (const line of recutAdvice(gap, { ...recutOptions(gap, { file, name, gain }), cause })) log.warn(`    ${line}`);
+    advise('unheard', gap, { cause: 'if that stretch is a leftover take, keep the clip without it' });
   }
   for (const u of unheard) restarted.add(u.id);
   const long = longClips(written.map((w) => ({ id: w.id, text: w.spoken, durationMs: w.durationMs })));
@@ -488,14 +499,11 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
     const parts = cut.parts ?? [cut];
     const last = pauses[pauses.length - 1];
     const gap = { ids: [lc.id], startMs: Math.max(parts[0].startMs, last.endMs - 300), endMs: parts[parts.length - 1].endMs + 300 };
-    const cause = 'if the last reading after that pause is the whole segment, keep only it';
-    for (const line of recutAdvice(gap, { ...recutOptions(gap, { file, name, gain }), cause })) log.warn(`    ${line}`);
+    advise('long', gap, { cause: 'if the last reading after that pause is the whole segment, keep only it' });
   }
   if (missing.length) {
     log.warn(`  aviso: not found in the recording (no clip written): ${missing.join(', ')}`);
-    for (const gap of missingGaps(located, cuts, timed, silences, asr.durationMs).filter((g) => g.ids.some(mine))) {
-      for (const line of recutAdvice(gap, recutOptions(gap, { file, name, gain }))) log.warn(`    ${line}`);
-    }
+    for (const gap of missingGaps(located, cuts, timed, silences, asr.durationMs).filter((g) => g.ids.some(mine))) advise('missing', gap);
     if (only && !plan.fullFile) log.warn('  aviso: --only espera un recorte de la grabación (recut_recording.py) o la grabación completa de la importación anterior; si --file es la grabación completa pero no se reconoce, importa sin --only');
   }
   if (narrationName && narrationName !== name) {
@@ -503,6 +511,17 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
   } else if (!narrationName) {
     log.warn(`  aviso: narration.json "voice" is "${sources.narration.voice}" — set it to "${voice}" before build-timeline`);
   }
+  // What fix-recording.mjs reads. A partial import of the full recording only replaces the clips it rewrote; an excerpt
+  // (a recut) has its own file, whose times are the excerpt's and are not meant to be applied to the recording.
+  const fixesPath = path.join(workDir, `fixes-${fileSlug(file)}.json`);
+  let previous = null;
+  try {
+    previous = JSON.parse(readFileSync(fixesPath, 'utf8')).fixes;
+  } catch {
+    // first import of this file
+  }
+  const full = !only || plan.fullFile;
+  writeFileAtomic(fixesPath, `${JSON.stringify({ version: 1, slug: MANIFEST.slug, name, file: path.resolve(file), full, sha256, gainDb: gain, fixes: only ? mergeFixes(previous, fixes, writeIds) : fixes }, null, 1)}\n`);
   log.log(`report -> ${reportPath}`);
   return { located, cuts, gain, missing, weak, midStarts, retried, edgeFixes, edgeOffenders: edgeBad, silentRuns, ghosts, restarts, unheard, long };
 }
