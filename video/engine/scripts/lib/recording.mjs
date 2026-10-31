@@ -660,7 +660,11 @@ export function stretchedWords(located, words, silences, { maxMs = MAX_WORD_MS, 
         if (w.endMs - w.startMs <= maxMs + digits * 250) continue;
         if (/^[A-Z0-9][A-Z0-9.,\-]*$/.test(w.text.replace(/[¿?¡!«»".;:]/g, ''))) continue;
         const inside = silences.filter((s) => s.endMs - s.startMs >= minPauseMs && s.startMs > w.startMs - 1 && s.endMs < w.endMs + 1);
-        const last = inside.length ? inside[inside.length - 1] : null;
+        // The importer already cut a stretched word down to its voice (trimGhostWords), which leaves the pause OUTSIDE it:
+        // between the word and the next one (abrir-web s08-06: «la» 477.9–479.3, pause to 481.15, «red» at 481.8).
+        const next = words[k + 1];
+        const after = next ? silences.filter((s) => s.endMs - s.startMs >= minPauseMs && s.startMs > w.endMs - 1 && s.endMs < next.startMs + 1) : [];
+        const last = inside.length ? inside[inside.length - 1] : after.length ? after[after.length - 1] : null;
         out.push({ id: f.id, text: w.text.replace(/[¿?¡!«»".,;:]/g, ''), startMs: w.startMs, endMs: w.endMs, retakeMs: last ? last.endMs : null });
       }
     }
