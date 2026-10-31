@@ -1,0 +1,623 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:03.000
+Te llega un aviso.
+
+2
+00:00:03.000 --> 00:00:07.033
+Desde un ordenador de Comercial han
+intentado subir algo a una nube personal,
+
+3
+00:00:07.033 --> 00:00:10.033
+y se ha bloqueado. ¿Se han llevado datos?
+
+4
+00:00:10.033 --> 00:00:14.967
+Hoy vas a responder con cuatro registros,
+las notas que dejan los sistemas.
+
+5
+00:00:14.967 --> 00:00:16.200
+Leerás sus campos,
+
+6
+00:00:16.200 --> 00:00:20.300
+pondrás todas las horas en la misma
+zona horaria y ordenarás los hechos.
+
+7
+00:00:20.300 --> 00:00:24.233
+Y, sobre todo, dirás solo
+lo que de verdad demuestran.
+
+8
+00:00:24.233 --> 00:00:27.267
+Es un caso de entrenamiento
+en el puerto de Halden.
+
+9
+00:00:27.267 --> 00:00:30.767
+No ha pasado, pero así es como se trabaja.
+
+10
+00:00:31.467 --> 00:00:35.567
+Un registro, o log, es la nota
+que deja un sistema cuando pasa algo.
+
+11
+00:00:35.567 --> 00:00:39.333
+Cada sistema es una fuente,
+y funciona como un testigo.
+
+12
+00:00:39.333 --> 00:00:44.633
+Y solo cuenta lo que vio desde su sitio,
+si funciona bien. Aquí tienes cuatro.
+
+13
+00:00:44.633 --> 00:00:47.833
+El primero, el inicio
+de sesión del propio equipo.
+
+14
+00:00:47.833 --> 00:00:52.267
+El segundo, el intermediario
+por el que pasan las visitas a Internet,
+
+15
+00:00:52.267 --> 00:00:54.100
+que se llama proxy.
+
+16
+00:00:54.100 --> 00:00:58.967
+El tercero, una herramienta de seguridad
+del equipo que apunta qué programas
+
+17
+00:00:58.967 --> 00:01:02.600
+arrancan y qué conexiones
+abren. Se llama EDR.
+
+18
+00:01:02.600 --> 00:01:06.033
+Y el cuarto, el cortafuegos de salida.
+
+19
+00:01:06.033 --> 00:01:07.900
+Cada uno escribe a su manera.
+
+20
+00:01:07.900 --> 00:01:12.600
+El EDR apunta pares de nombre
+y valor, lo que se llama JSON.
+
+21
+00:01:12.600 --> 00:01:18.833
+El inicio de sesión sale en columnas
+separadas por comas, un CSV.
+
+22
+00:01:19.767 --> 00:01:24.367
+Pero casi todas las líneas llevan los
+mismos ingredientes, que se llaman campos.
+
+23
+00:01:24.367 --> 00:01:28.433
+Cuándo, dónde, quién,
+qué hizo y con qué resultado.
+
+24
+00:01:28.633 --> 00:01:30.433
+Búscalos en cada fuente.
+
+25
+00:01:30.433 --> 00:01:34.067
+En el proxy están todos, incluso
+el resultado, que es bloqueado.
+
+26
+00:01:34.067 --> 00:01:37.967
+En el cortafuegos, casi todos,
+y el resultado es permitido.
+
+27
+00:01:37.967 --> 00:01:43.433
+Y fíjate en lo que falta.
+El cortafuegos no tiene campo de usuario.
+
+28
+00:01:43.433 --> 00:01:48.533
+Eso no significa que no hubiera nadie.
+Significa que ese testigo no lo apunta.
+
+29
+00:01:48.533 --> 00:01:52.867
+O sea, que lo que falta
+en un registro no es un no.
+
+30
+00:01:55.033 --> 00:01:58.500
+Ahora, las horas. Ponlas
+en fila tal como vienen.
+
+31
+00:01:58.500 --> 00:02:02.467
+El inicio de sesión dice
+las nueve cincuenta y ocho.
+
+32
+00:02:02.467 --> 00:02:06.467
+El bloqueo del proxy, las nueve
+y uno. El EDR, las nueve y dos.
+
+33
+00:02:06.467 --> 00:02:09.233
+Y el cortafuegos, las diez y tres.
+
+34
+00:02:09.267 --> 00:02:12.467
+Leídas así, parece que el bloqueo
+pasó casi una hora antes
+
+35
+00:02:12.467 --> 00:02:17.633
+de que nadie iniciara sesión.
+Pero fíjate en cómo termina cada hora.
+
+36
+00:02:17.700 --> 00:02:23.000
+Las del proxy y el EDR acaban
+en una zeta, que quiere decir UTC,
+
+37
+00:02:23.000 --> 00:02:25.300
+la hora de referencia mundial.
+
+38
+00:02:25.300 --> 00:02:29.833
+Y la del cortafuegos acaba en un más uno,
+una hora por delante de UTC.
+
+39
+00:02:29.833 --> 00:02:34.433
+O sea, su reloj marca una hora más.
+Es la hora de Halden en invierno.
+
+40
+00:02:34.433 --> 00:02:36.867
+Y el inicio de sesión no dice zona.
+
+41
+00:02:36.867 --> 00:02:41.633
+Eso no se supone, se comprueba, y el
+equipo está configurado en hora de Halden.
+
+42
+00:02:41.633 --> 00:02:43.933
+Con eso, ¿qué pasó primero?
+
+43
+00:02:49.800 --> 00:02:51.200
+El inicio de sesión.
+
+44
+00:02:51.200 --> 00:02:53.733
+Si has dicho el bloqueo,
+has caído en lo de siempre,
+
+45
+00:02:53.733 --> 00:02:56.367
+ordenar por el número sin mirar la zona.
+
+46
+00:02:56.367 --> 00:02:59.933
+A la del inicio de sesión y a la
+del cortafuegos les restas una hora,
+
+47
+00:02:59.933 --> 00:03:01.733
+y todo queda en UTC.
+
+48
+00:03:01.733 --> 00:03:06.633
+Ahora el inicio de sesión queda a las ocho
+cincuenta y ocho, y pasa a ser lo primero.
+
+49
+00:03:06.633 --> 00:03:08.833
+El resto lo tienes en pantalla.
+
+50
+00:03:08.833 --> 00:03:13.567
+Así que primero hubo un inicio de sesión,
+y luego el bloqueo de una subida.
+
+51
+00:03:13.567 --> 00:03:17.967
+Guarda siempre la hora original al lado,
+por si te equivocas de zona.
+
+52
+00:03:17.967 --> 00:03:22.367
+Se usa UTC porque es la misma en todo
+el mundo y no cambia en verano.
+
+53
+00:03:22.367 --> 00:03:23.900
+La hora local sí cambia,
+
+54
+00:03:23.900 --> 00:03:27.100
+así que la diferencia con UTC
+hay que mirarla en cada fecha.
+
+55
+00:03:27.100 --> 00:03:31.300
+O sea, que antes de ordenar,
+todo a la misma hora de referencia.
+
+56
+00:03:33.133 --> 00:03:37.500
+Ahora sí, la cronología,
+que es la lista de lo ocurrido, en orden.
+
+57
+00:03:37.500 --> 00:03:41.267
+Una línea por hecho, en UTC,
+con su fuente al lado.
+
+58
+00:03:41.267 --> 00:03:46.500
+A las ocho cincuenta y ocho, una cuenta
+inicia sesión en un equipo de Comercial.
+
+59
+00:03:46.500 --> 00:03:50.900
+A las nueve y uno, el proxy bloquea
+una subida a una nube personal.
+
+60
+00:03:50.900 --> 00:03:56.433
+A las nueve y dos, con la misma cuenta
+y en el mismo equipo, arranca un programa.
+
+61
+00:03:56.433 --> 00:04:00.733
+Su nombre suena a sincronización,
+pero eso, de momento, es solo un nombre.
+
+62
+00:04:00.733 --> 00:04:02.300
+Diecisiete segundos después,
+
+63
+00:04:02.300 --> 00:04:05.600
+ese programa abre una conexión
+a una dirección de fuera,
+
+64
+00:04:05.600 --> 00:04:09.267
+por el puerto de red 443.
+
+65
+00:04:09.267 --> 00:04:13.267
+Y a las nueve y tres, el cortafuegos
+deja pasar una conexión de tres minutos.
+
+66
+00:04:13.267 --> 00:04:16.200
+Con unos cuarenta y seis megas de salida.
+
+67
+00:04:16.200 --> 00:04:20.033
+Parece la misma,
+y enseguida verás por qué lo es.
+
+68
+00:04:20.833 --> 00:04:24.933
+¿Cómo sabes que esas líneas hablan
+de lo mismo? No por la hora sola.
+
+69
+00:04:24.933 --> 00:04:27.333
+Por los campos que coinciden.
+
+70
+00:04:27.333 --> 00:04:32.867
+El mismo equipo en el inicio de sesión,
+el proxy y el EDR. La misma cuenta.
+
+71
+00:04:32.867 --> 00:04:36.600
+Y el mismo número de proceso
+une el arranque con la conexión.
+
+72
+00:04:36.600 --> 00:04:41.100
+Y en el EDR y en el cortafuegos,
+la misma etiqueta de la conexión.
+
+73
+00:04:41.100 --> 00:04:43.767
+Es decir, el mismo origen
+y el mismo destino.
+
+74
+00:04:43.767 --> 00:04:46.867
+Y hasta el mismo puerto efímero,
+
+75
+00:04:46.867 --> 00:04:50.833
+que es un número temporal que el equipo
+elige para cada conversación.
+
+76
+00:04:50.833 --> 00:04:55.967
+Así sabes que quien abrió la conexión
+permitida fue ese programa, y no otro.
+
+77
+00:04:55.967 --> 00:04:59.867
+Eso es correlacionar, unir
+fuentes por lo que comparten.
+
+78
+00:04:59.867 --> 00:05:04.633
+Por cierto, el EDR y el cortafuegos
+la ven con siete segundos de diferencia.
+
+79
+00:05:04.633 --> 00:05:08.400
+Seguramente son dos relojes,
+y cada uno apunta a su manera.
+
+80
+00:05:08.400 --> 00:05:10.533
+Unos segundos es habitual.
+
+81
+00:05:10.533 --> 00:05:12.467
+Si fueran minutos o una hora exacta,
+
+82
+00:05:12.467 --> 00:05:16.133
+revisa el reloj o la zona antes
+de sospechar de la historia.
+
+83
+00:05:17.133 --> 00:05:20.833
+Ahora viene el paso que más se salta.
+Separa tres cosas.
+
+84
+00:05:20.833 --> 00:05:25.500
+Lo observado es lo que dice cada testigo,
+tal cual, sin añadir nada.
+
+85
+00:05:25.500 --> 00:05:30.067
+La hipótesis es una explicación posible,
+que todavía hay que poner a prueba.
+
+86
+00:05:30.067 --> 00:05:34.800
+Y la conclusión es lo que puedes
+afirmar porque lo observado lo sostiene.
+
+87
+00:05:34.800 --> 00:05:37.100
+Aquí hay al menos dos hipótesis.
+
+88
+00:05:37.100 --> 00:05:41.467
+Una, que después del bloqueo
+el archivo se subiera por otra vía.
+
+89
+00:05:41.467 --> 00:05:45.700
+Otra, que ese programa sea
+la sincronización autorizada de Comercial,
+
+90
+00:05:45.700 --> 00:05:47.967
+haciendo lo de todos los días.
+
+91
+00:05:47.967 --> 00:05:50.667
+Las dos encajan con lo que hay,
+y puede haber más.
+
+92
+00:05:50.667 --> 00:05:53.767
+Por eso, de momento, son hipótesis.
+
+93
+00:05:54.700 --> 00:05:58.533
+El cortafuegos dice permitido,
+y unos cuarenta y seis megas.
+
+94
+00:05:58.533 --> 00:06:01.433
+¿Prueba eso que se han llevado datos?
+
+95
+00:06:05.767 --> 00:06:10.633
+No por sí solo. Permitido significa
+que el cortafuegos decidió dejarlo pasar.
+
+96
+00:06:10.633 --> 00:06:14.267
+Los megas dicen cuánto
+salió, no qué salió.
+
+97
+00:06:14.267 --> 00:06:16.867
+Podría ser el mismo
+archivo que bloquearon,
+
+98
+00:06:16.867 --> 00:06:19.000
+o el trabajo de todos los días.
+
+99
+00:06:19.000 --> 00:06:21.500
+Para salir de dudas hace
+falta más evidencia.
+
+100
+00:06:21.500 --> 00:06:25.400
+Primero, saber qué es ese
+programa y si está autorizado.
+
+101
+00:06:25.400 --> 00:06:31.267
+Después, de quién es ese destino.
+Y qué archivos leyó antes de conectarse.
+
+102
+00:06:32.300 --> 00:06:37.033
+Y el bloqueo tampoco cierra el caso.
+El proxy es un testigo de su puerta.
+
+103
+00:06:37.033 --> 00:06:39.867
+Ve lo que pasa por él, nada más.
+
+104
+00:06:39.867 --> 00:06:43.000
+El EDR y el cortafuegos
+ven al equipo hablando
+
+105
+00:06:43.000 --> 00:06:47.100
+directamente con una dirección
+de fuera, no con el proxy.
+
+106
+00:06:47.100 --> 00:06:51.600
+Por eso no parece que pasara por él.
+El bloqueo prueba una sola cosa.
+
+107
+00:06:51.600 --> 00:06:55.333
+Que esa subida no salió
+por la puerta del proxy.
+
+108
+00:06:55.333 --> 00:06:58.633
+Y no descarta que saliera
+algo por otro camino.
+
+109
+00:06:58.633 --> 00:07:03.600
+Y que un equipo pueda salir a Internet
+sin pasar por el proxy es, como mínimo,
+
+110
+00:07:03.600 --> 00:07:05.867
+algo que hay que comprobar.
+
+111
+00:07:05.867 --> 00:07:11.333
+O sea, que ni el bloqueo te
+tranquiliza ni el permitido te condena.
+
+112
+00:07:12.067 --> 00:07:15.867
+Entonces, ¿qué escribes
+en el informe? Algo así.
+
+113
+00:07:15.867 --> 00:07:19.367
+Hubo un intento de subida
+bloqueado por el proxy.
+
+114
+00:07:19.367 --> 00:07:22.933
+Poco más de un minuto después, desde
+el mismo equipo y con la misma cuenta,
+
+115
+00:07:22.933 --> 00:07:26.467
+un programa abrió una conexión.
+
+116
+00:07:26.467 --> 00:07:29.600
+Hacia una dirección externa
+que el proxy no registra,
+
+117
+00:07:29.600 --> 00:07:32.333
+según el EDR y el cortafuegos.
+
+118
+00:07:32.333 --> 00:07:36.800
+El cortafuegos la permitió,
+con unos cuarenta y seis megas de salida.
+
+119
+00:07:36.800 --> 00:07:38.800
+El contenido no se conoce.
+
+120
+00:07:38.800 --> 00:07:43.100
+Y como siguientes pasos, hay
+que identificar el programa y el destino.
+
+121
+00:07:43.100 --> 00:07:44.800
+Revisar qué archivos se leyeron.
+
+122
+00:07:44.800 --> 00:07:48.467
+Y comprobar si ese equipo
+puede salir sin proxy.
+
+123
+00:07:48.467 --> 00:07:52.933
+O sea, no escribes «no ha pasado
+nada» ni «nos han robado».
+
+124
+00:07:52.933 --> 00:07:55.800
+Escribes lo que hay, y lo que falta.
+
+125
+00:07:56.800 --> 00:08:02.867
+Te quedas con tres reglas. La primera.
+Cada registro es un testigo de su sitio.
+
+126
+00:08:02.867 --> 00:08:08.200
+Lee sus campos, y recuerda que lo
+que falta en un registro no es un no.
+
+127
+00:08:08.200 --> 00:08:14.000
+La segunda. Antes de ordenar, todo
+a UTC, con la hora original al lado.
+
+128
+00:08:14.000 --> 00:08:17.433
+La tercera. Separa
+lo observado de lo que crees.
+
+129
+00:08:17.433 --> 00:08:22.600
+Un bloqueo no descarta otras vías,
+y un permitido no demuestra una fuga.
+
+130
+00:08:22.600 --> 00:08:24.300
+Ahora te toca a ti.
+
+131
+00:08:24.300 --> 00:08:26.867
+Abre la práctica «Cronología y límites»,
+
+132
+00:08:26.867 --> 00:08:31.133
+ordena tres registros
+y decide qué puedes afirmar.
