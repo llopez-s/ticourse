@@ -1,4 +1,5 @@
 // Pure parts of verify-voice.mjs: what counts as a cut or a leftover take in a narration clip, and the report.
+import { createHash } from 'node:crypto';
 import { matchKey, similarity } from './recording.mjs';
 
 /** Relative energies (to the played part's RMS) above which a clip edge is cut inside the voice. */
@@ -153,4 +154,62 @@ export function voiceReport({ slug, rows, errors, warnings }) {
     '',
   ];
   return lines.join('\n');
+}
+
+/** What verify_voice.py measures; bump it when it measures something new, and every clip is heard again. */
+export const MEASURE_VERSION = 2; // v2: words, unheard, gaps
+/** The Whisper model verify_voice.py runs (entries cached before it was recorded were all made with it). */
+export const VERIFY_MODEL = 'small';
+
+/**
+ * Cache key of one clip: its bytes and the length the video plays of it. Nothing else reaches Whisper (no prompt,
+ * no lexicon): the script, the lexicon and the limits only change the findings, which are worked out again from the
+ * cached measures on every run, so editing them never sends a clip back to Whisper.
+ */
+export function clipKey(bytes, playMs) {
+  return createHash('sha256').update(bytes).update(`:${playMs}`).digest('hex');
+}
+
+/** Whether a cache entry still holds the measures of this clip (same bytes and played length, measures, model). */
+export function isCached(entry, key, model = VERIFY_MODEL) {
+  return Boolean(entry) && entry.key === key && entry.v === MEASURE_VERSION && (entry.model ?? VERIFY_MODEL) === model;
+}
+
+/** The jobs Whisper has to hear: the clips whose cache entry is missing or stale, or all of them with `all`. */
+export function staleJobs(jobs, cache, { all = false, model = VERIFY_MODEL } = {}) {
+  return all ? jobs : jobs.filter((j) => !isCached(cache[j.id], j.key, model));
+}
+
+/**
+ * Rows of the progress file verify_voice.py appends to as each clip is done (one JSON per line). A run that was
+ * stopped or crashed keeps the clips it finished; a last line cut halfway is skipped.
+ */
+export function parseProgress(text) {
+  const rows = [];
+  for (const line of String(text).split(/\r?\n/)) {
+    if (!line.trim()) continue;
+    try {
+      const row = JSON.parse(line);
+      if (row && typeof row.id === 'string' && typeof row.key === 'string') rows.push(row);
+    } catch {
+      // the line being written when the run stopped
+    }
+  }
+  return rows;
+}
+
+/** The cache with the measured `rows` in (the last row of a clip wins). */
+export function mergeMeasures(cache, rows, model = VERIFY_MODEL) {
+  const next = { ...cache };
+  for (const r of rows) next[r.id] = { ...r, model: r.model ?? model };
+  return next;
+}
+
+/** «transcribing 2/63 clips (s06-03, s09-07; the other 61 are cached)» */
+export function cacheLine(todo, total, { all = false } = {}) {
+  if (!todo.length) return `verify-voice: all ${total} clips cached`;
+  const ids = todo.length <= 12 ? todo.map((j) => j.id).join(', ') : `${todo.slice(0, 12).map((j) => j.id).join(', ')}…`;
+  const rest = total - todo.length;
+  const why = all ? '--all' : rest ? `the other ${rest} are cached` : 'none cached';
+  return `verify-voice: transcribing ${todo.length}/${total} clips (${ids}; ${why})`;
 }

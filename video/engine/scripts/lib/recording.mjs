@@ -617,7 +617,7 @@ export function missingGaps(located, cuts, words, silences, totalMs) {
  * What to tell the narrator about one missingGaps entry: the likely cause and, when there is voice there, the
  * exact commands that cut it into its own file (recut_recording.py) and import just those segments with the
  * full import's gain (`lufs` = that excerpt's loudness + the gain; --match measured on one sentence gives more).
- * Paths are as the commands are run, from the repo root.
+ * Paths are as the commands are run, from the repo root. A gap with `parts` is several stretches spliced in order.
  */
 export function recutAdvice(gap, { file, out, slug, name, python, lufs, cause: given }) {
   const ids = gap.ids.join(', ');
@@ -630,8 +630,8 @@ export function recutAdvice(gap, { file, out, slug, name, python, lufs, cause: g
   const sec = (ms) => (ms / 1000).toFixed(2);
   const quote = (p) => (/\s/.test(p) ? `"${p}"` : p);
   return [
-    `${ids} should be at ${clock(gap.startMs)}–${clock(gap.endMs)}: ${cause}. If it is read right there, cut it out and import just that:`,
-    `  ${quote(python)} video/engine/scripts/recut_recording.py --out "${out}" --part "${file}@${sec(gap.startMs)}-${sec(gap.endMs)}"`,
+    `${ids} should be at ${(gap.parts ?? [gap]).map((p) => `${clock(p.startMs)}–${clock(p.endMs)}`).join(' + ')}: ${cause}. If it is read right there, cut it out and import just that:`,
+    `  ${quote(python)} video/engine/scripts/recut_recording.py --out "${out}" ${(gap.parts ?? [gap]).map((p) => `--part "${file}@${sec(p.startMs)}-${sec(p.endMs)}"`).join(' ')}`,
     `  node video/engine/scripts/import-recording.mjs --video ${slug} --file "${out}" --name ${name} --only ${gap.ids.join(',')} --lufs=${lufs}`,
   ];
 }
@@ -664,6 +664,182 @@ export function stretchedWords(located, words, silences, { maxMs = MAX_WORD_MS, 
         out.push({ id: f.id, text: w.text.replace(/[¿?¡!«»".,;:]/g, ''), startMs: w.startMs, endMs: w.endMs, retakeMs: last ? last.endMs : null });
       }
     }
+  }
+  return out;
+}
+
+/** The scripts' reading pace (the profiles' wordBudget): what a sentence should last when it is read once. */
+export const READING_WPS = 2.7;
+export const LONG_CLIP_FACTOR = 1.5;
+export const LONG_CLIP_MIN_EXCESS_MS = 2000; // short clips run long by nature: 1.5× of 1 s is no leftover take
+export const RETAKE_PAUSE_MS = 1000;
+export const OPENING_WORDS = 3;
+
+const scriptWords = (text) => String(text).split(/\s+/).filter((w) => matchKey(w));
+
+/** How long `text` takes read once at READING_WPS, in ms. */
+export function expectedReadingMs(text) {
+  return Math.round((scriptWords(text).length / READING_WPS) * 1000);
+}
+
+/**
+ * Clips far longer than their text read once: the mark of an earlier take left inside (producto-bluf s03-06 lasted
+ * 20 s and s06-01 13 s for sentences of about 8 s, and verify-voice only said so 43 minutes later). Checked on the
+ * clips as written, with no Whisper pass: `clips` = [{id, text (what is said), durationMs}].
+ * @returns {{id: string, durationMs: number, expectedMs: number, ratio: number}[]}
+ */
+export function longClips(clips, { factor = LONG_CLIP_FACTOR, minExcessMs = LONG_CLIP_MIN_EXCESS_MS } = {}) {
+  return clips.flatMap(({ id, text, durationMs }) => {
+    const expectedMs = expectedReadingMs(text);
+    if (!expectedMs || durationMs <= expectedMs * factor || durationMs - expectedMs < minExcessMs) return [];
+    return [{ id, durationMs, expectedMs, ratio: Math.round((durationMs / expectedMs) * 100) / 100 }];
+  });
+}
+
+/** Recorded words inside a cut (part by part, in order). */
+function wordsInCut(cut, words) {
+  return (cut.parts ?? [cut]).flatMap((p) => words.filter((w) => w.startMs >= p.startMs && w.startMs < p.endMs && matchKey(w.text)));
+}
+
+/** Pauses of at least `minMs` inside a cut (recording time), where an earlier take would end. */
+export function longPauses(cut, silences, { minMs = RETAKE_PAUSE_MS } = {}) {
+  return (cut.parts ?? [cut]).flatMap((p) => silences.filter((s) => s.endMs - s.startMs >= minMs && s.startMs > p.startMs && s.endMs < p.endMs));
+}
+
+/**
+ * A sentence of the segment whose first words are read twice in its clip, the second time after a pause of at least
+ * `minPauseMs`: a restart («La gestión de… [1,4 s] La gestión de riesgos…») the cut kept whole. `segments` =
+ * [{id, text}] (the text as shown, which is what Whisper writes); words and silences in recording time, as the
+ * importer has them. Each row says where the first reading starts and where the reading that is kept (the last)
+ * begins, and which sentence of the segment it is (0 = the first).
+ * @returns {{id: string, sentence: number, opening: string, firstMs: number, againMs: number, beforeFirstMs: number|null, pauseMs: number}[]}
+ */
+export function repeatedOpenings(segments, cuts, words, silences, { minPauseMs = RETAKE_PAUSE_MS, openingWords = OPENING_WORDS, minSimilarity = 0.8 } = {}) {
+  const cutOf = new Map(cuts.map((c) => [c.id, c]));
+  const out = [];
+  for (const seg of segments) {
+    const cut = cutOf.get(seg.id);
+    if (!cut) continue;
+    const clip = wordsInCut(cut, words);
+    const sentences = String(seg.text).split(/(?<=[.!?…])\s+/).map(scriptWords);
+    sentences.forEach((sentence, k) => {
+      if (sentence.length < openingWords) return;
+      const opening = sentence.slice(0, openingWords).join(' ');
+      const reads = [];
+      for (let i = 0; i + openingWords <= clip.length; i++) {
+        if (similarity(clip.slice(i, i + openingWords).map((w) => w.text).join(' '), opening) >= minSimilarity) reads.push(i);
+      }
+      // A half-said opening may be only two words long before the restart: the readings need not be a full opening apart.
+      const again = reads.find((i) => {
+        if (!(reads[0] <= i - 2)) return false;
+        const prev = clip[i - 1];
+        const gap = clip[i].startMs - prev.endMs;
+        const silent = silences.find((s) => s.endMs - s.startMs >= minPauseMs && s.startMs >= prev.startMs && s.endMs <= clip[i].startMs + 300);
+        return gap >= minPauseMs || Boolean(silent);
+      });
+      if (again === undefined) return;
+      const first = reads[0];
+      const prev = clip[again - 1];
+      const silent = silences.find((s) => s.endMs - s.startMs >= minPauseMs && s.startMs >= prev.startMs && s.endMs <= clip[again].startMs + 300);
+      out.push({
+        id: seg.id,
+        sentence: k,
+        opening,
+        firstMs: clip[first].startMs,
+        againMs: clip[again].startMs,
+        beforeFirstMs: first > 0 ? clip[first - 1].endMs : null,
+        pauseMs: Math.max(clip[again].startMs - prev.endMs, silent ? silent.endMs - silent.startMs : 0),
+      });
+    });
+  }
+  return out;
+}
+
+export const UNHEARD_MIN_MS = 800;
+
+/**
+ * Voice inside a clip that no recorded word covers: what a half-said take looks like when Whisper hears neither it
+ * nor its first words (producto-bluf s06-03: «periódico, [1.9 s of voice] Lo lees…»; s09-07: «Eso sí, [1.3 s]
+ * en un producto…»; verify-voice found both, 43 minutes later). Between two words (each covering its span ±
+ * `marginMs`) the voice is what silencedetect did not call silence, added up across the short silences inside; under
+ * `minMs` of it (a breath, a word timed short) and the tail of a figure (Whisper ends «203» before «doscientos tres»
+ * does) are left out. Recording time; `startMs`/`endMs` are where that voice starts and ends.
+ * @returns {{id: string, startMs: number, endMs: number, voicedMs: number}[]}
+ */
+export function unheardVoice(cuts, words, silences, { minMs = UNHEARD_MIN_MS, marginMs = 150, figureMsPerDigit = 300 } = {}) {
+  const out = [];
+  for (const cut of cuts) {
+    for (const p of cut.parts ?? [cut]) {
+      const quiet = silences.filter((s) => s.endMs > p.startMs && s.startMs < p.endMs);
+      const voicedIn = (from, to) => to - from - quiet.reduce((sum, s) => sum + Math.max(0, Math.min(to, s.endMs) - Math.max(from, s.startMs)), 0);
+      // where the voice of [from, to] starts and ends: the stretch reported and cut out
+      const edges = (from, to) => {
+        let start = from;
+        let end = to;
+        for (const s of quiet) if (s.startMs <= start && s.endMs > start) start = s.endMs;
+        for (const s of quiet) if (s.startMs < end && s.endMs >= end) end = s.startMs;
+        return { startMs: start, endMs: Math.max(start, end) };
+      };
+      const near = words.filter((w) => w.endMs > p.startMs && w.startMs < p.endMs && matchKey(w.text)).sort((x, y) => x.startMs - y.startMs);
+      // the stretches no word covers (± marginMs), between consecutive words and at both ends of the part
+      let at = p.startMs;
+      let prev = null;
+      const holes = [];
+      for (const w of near) {
+        if (w.startMs - marginMs > at) holes.push({ from: at, to: w.startMs - marginMs, prev });
+        at = Math.max(at, w.endMs + marginMs);
+        prev = w;
+      }
+      if (p.endMs > at) holes.push({ from: at, to: p.endMs, prev });
+      for (const h of holes) {
+        // the voice in it, short silences between its bits left out (s09-07's 1.3 s came in two bits)
+        const voiced = voicedIn(h.from, h.to);
+        if (voiced < minMs) continue;
+        const digits = h.prev && /\d/.test(h.prev.text) && h.from - h.prev.endMs <= marginMs ? h.prev.text.replace(/\D/g, '').length : 0;
+        if (digits && voiced <= digits * figureMsPerDigit + minMs) continue;
+        out.push({ id: cut.id, ...edges(h.from, h.to), voicedMs: Math.round(voiced) });
+      }
+    }
+  }
+  return out;
+}
+
+/**
+ * The cut without one stretch of unheard voice: the clip before it and after it, spliced (a recutAdvice gap). The
+ * joins fall in the silences around the stretch.
+ */
+export function withoutStretch(row, cut, { padMs = 300 } = {}) {
+  const parts = cut.parts ?? [cut];
+  const start = parts[0].startMs;
+  const end = parts[parts.length - 1].endMs + padMs;
+  const keep = [{ startMs: start, endMs: row.startMs - 20 }, { startMs: row.endMs + 20, endMs: end }].filter((r) => r.endMs - r.startMs > 100);
+  return keep.length === 1 ? { ids: [row.id], ...keep[0] } : { ids: [row.id], startMs: start, endMs: end, parts: keep };
+}
+
+/**
+ * The stretch of the recording that keeps only the last reading of a repeated opening: from just before the restart
+ * to the end of the cut, plus — when the repeated sentence is not the first — everything the clip had before its
+ * first reading, spliced in front (recut_recording.py takes several --part). A recutAdvice gap.
+ */
+export function restartGap(row, cut, { padMs = 300 } = {}) {
+  const parts = cut.parts ?? [cut];
+  const start = parts[0].startMs;
+  const end = parts[parts.length - 1].endMs;
+  const kept = { startMs: Math.max(start, row.againMs - padMs), endMs: end + padMs };
+  if (row.sentence === 0 || row.beforeFirstMs === null) return { ids: [row.id], ...kept };
+  const before = { startMs: start, endMs: Math.min(row.firstMs, row.beforeFirstMs + 150) };
+  return { ids: [row.id], startMs: before.startMs, endMs: kept.endMs, parts: [before, kept] };
+}
+
+/**
+ * node:util parseArgs reads «--lufs -18» as the short options -1 and -8 and stops: a negative value is joined to its
+ * option («--lufs=-18»), so both spellings work.
+ */
+export function joinNegativeValues(argv, names = ['lufs', 'gain', 'noise']) {
+  const out = [];
+  for (let i = 0; i < argv.length; i++) {
+    if (names.includes(String(argv[i]).replace(/^--/, '')) && argv[i].startsWith('--') && /^-\d/.test(argv[i + 1] ?? '')) out.push(`${argv[i]}=${argv[++i]}`);
+    else out.push(argv[i]);
   }
   return out;
 }

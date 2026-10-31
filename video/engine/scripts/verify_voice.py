@@ -1,8 +1,9 @@
 """Measures every narration clip as it will sound in the video, for verify-voice.mjs.
 
-    python verify_voice.py --jobs jobs.json --out results.json [--model small]
+    python verify_voice.py --jobs jobs.json [--out results.json] [--progress progress.jsonl] [--model small]
 
-jobs.json: [{"id", "path", "playMs"}]. For each clip, only the part the video plays (0..playMs) is transcribed
+jobs.json: [{"id", "path", "playMs", "key"?}]. --progress appends each clip's result (with its job's "key" and the model)
+as one JSON line the moment it is done, so a run that is stopped keeps what it finished (verify-voice.mjs reads it back). For each clip, only the part the video plays (0..playMs) is transcribed
 (faster-whisper, word timestamps on, no VAD so nothing is skipped), and three energies are measured relative
 to the played part's RMS: the first 30 ms (a clip that starts loud was cut inside a word), the last 30 ms before
 playMs (one that stops loud is cut there) and the 150 ms after playMs (voice the video never plays).
@@ -80,7 +81,8 @@ def unheard_and_gaps(played, words):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--jobs", required=True)
-    ap.add_argument("--out", required=True)
+    ap.add_argument("--out")
+    ap.add_argument("--progress")
     ap.add_argument("--model", default="small")
     args = ap.parse_args()
     jobs = json.load(open(args.jobs, encoding="utf8"))
@@ -95,11 +97,16 @@ def main():
         heard = " ".join(s.text.strip() for s in segs).strip()
         words = [{"text": w.word.strip(), "start": round(w.start, 2), "end": round(w.end, 2)} for s in segs for w in (s.words or [])]
         unheard, gaps = unheard_and_gaps(y[:play], words)
-        results.append({"id": job["id"], "v": 2, "heard": heard, "head": round(head, 3), "tail": round(tail, 3), "dropped": round(dropped, 3),
-                        "words": words, "unheard": unheard, "gaps": gaps})
+        row = {"id": job["id"], "v": 2, "model": args.model, "heard": heard, "head": round(head, 3), "tail": round(tail, 3),
+               "dropped": round(dropped, 3), "words": words, "unheard": unheard, "gaps": gaps}
+        results.append(row)
+        if args.progress:
+            with open(args.progress, "a", encoding="utf8") as f:
+                f.write(json.dumps({**row, "key": job.get("key")}, ensure_ascii=False) + "\n")
         extra = (f" unheard {unheard}" if unheard else "") + (f" gaps {gaps}" if gaps else "")
         print(f"verify_voice: {job['id']} head {head:.2f} tail {tail:.2f} dropped {dropped:.2f}{extra} | {heard}", flush=True)
-    json.dump(results, open(args.out, "w", encoding="utf8"), ensure_ascii=False, indent=1)
+    if args.out:
+        json.dump(results, open(args.out, "w", encoding="utf8"), ensure_ascii=False, indent=1)
 
 
 if __name__ == "__main__":
