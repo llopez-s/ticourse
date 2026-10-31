@@ -342,10 +342,11 @@ export function parseRule(text: string, line: number): ParsedRule {
   }
   closeBuffer();
   if (!sidSeen) fail('Signature missing required value "sid".');
-  // Recorded divergence: Suricata 7.0.3 matches a buffer-less http/tls rule with flow:established
-  // plus a direction on every request; 8.0.8 matches none. Same rule, two answers.
-  if (rule.matches.length === 0 && rule.established && directed && rule.proto !== 'dns') {
-    outside('Suricata 7 y 8 responden distinto a una regla http/tls sin buffer con flow:established y dirección (la 7 coincide con todo, la 8 con nada); añade un buffer como http.method o tls.sni, o quita la dirección');
+  // Recorded divergence: a buffer-less http/tls alert with flow:established plus a direction
+  // fires on every request in Suricata 7.0.3 and on none in 8.0.8. The same pass rule behaves
+  // alike in both, so pass is modelled; drop and reject were not recorded and stay declined.
+  if (rule.matches.length === 0 && rule.established && directed && rule.proto !== 'dns' && rule.action !== 'pass') {
+    outside('Suricata 7 y 8 responden distinto a esta regla: sin buffer, con flow:established y una dirección, la 7 alerta con cada petición y la 8 con ninguna. Añade un buffer (http.method, tls.sni…) o quita la dirección');
   }
   return rule;
 }

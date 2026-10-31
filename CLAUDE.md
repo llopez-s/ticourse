@@ -185,7 +185,11 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `fc-p22`; s3m5 links to it); its rules and EVE sample were checked against Suricata 7.0.3 on synthetic pcaps.
   Its interactive lab (`{ t: 'suricata-practice' }`, `components/SuricataPractice.tsx`, workbook `sp4m7/suricata/v1`)
   runs `lib/suricataSim.ts`, a rule-subset simulator held to real Suricata by `suricataSim.test.ts`, which replays
-  `src/data/suricata-parity.json` (89 cases recorded by `scripts/suricata-parity.py` with 7.0.3; `--check` for staleness).
+  `src/data/suricata-parity-7.json` and `-8.json` (99 cases recorded by `scripts/suricata-parity.py` with 7.0.3 here
+  and 8.0.8 on Lidia's machine, carried over with `--digest`/`--from-digest`, which checks the file's SHA-256; `--check`
+  for staleness). Where the versions agree the simulator must match exactly; where they differ (a buffer-less http/tls
+  alert with `flow:established` + direction fires in 7, never in 8) it must flag the rule instead of picking one.
+  The OISF package leaves `/etc/suricata` root:suricata 0750, so `verify.py` hints at `usermod -aG suricata`.
   Out-of-subset syntax is reported as such, never guessed. `public/labs/suricata-practice/` holds the corpus, missions,
   reference rules, a stdlib pcap generator and `verify.py` (real engine); `scripts/package-suricata-practice.py --check`.
   `practical/index.ts` merges expansion sets that touch the same lesson. `links` and `yara-practice` are searchable block types.
