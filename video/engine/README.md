@@ -636,6 +636,24 @@ a los dos minutos y no en `verify-voice` o en el render):
   archivo espera un recorte (`recut_recording.py`).
 - **Tarjeta de examen fuera de su escena** (`build-timeline`): el error dice hasta cuántos segundos cabe y que se
   prefiere alargar `pauseAfterMs` de la última frase antes que acortar la tarjeta (los perfiles `-yt` avisan por debajo de 4 s).
+- **Tomas que el corte dejó enteras** (2026-10-31, a partir de producto-bluf, donde s06-03 y s09-07 solo salieron en
+  `verify-voice`, 43 minutos después). Tres comprobaciones sobre los clips ya escritos, sin otra pasada de Whisper, cada
+  una con su comando de `recut_recording.py` (varias `--part` cuando hay que empalmar) e `import-recording --only`:
+  - **Voz sin transcribir** (`unheardVoice`): entre dos palabras, ≥ 0,8 s de voz (lo que `silencedetect` no llama
+    silencio, sumando los trozos separados por silencios cortos) que ninguna palabra cubre (±150 ms). Es una toma a medias
+    que Whisper no oyó: s06-03 «periódico, [1,9 s] Lo lees…», s09-07 «Eso sí, [1,3 s en dos trozos] en un producto…». La
+    cola de una cifra (Whisper acaba «203» antes que «doscientos tres») no cuenta. El comando propuesto quita ese tramo.
+  - **Arranque repetido** (`repeatedOpenings`): las tres primeras palabras de una oración del segmento leídas dos veces
+    dentro del clip, la segunda tras una pausa de más de 1 s. Propone quedarse con la lectura de después de la pausa (y,
+    si la oración no es la primera, empalmar delante lo que el clip tenía antes).
+  - **Clip demasiado largo** (`longClips`): más de 1,5× lo que dura su texto leído una vez a 2,7 palabras/s y al menos
+    2 s de más. Si hay pausas de más de 1 s dentro, las nombra y propone quedarse con lo que sigue a la última.
+  Probadas con las grabaciones de producto-bluf (63 clips: avisan justo de s06-03 y s09-07; s03-06 ya la marcaba la
+  palabra estirada), dato-a-juicio (60) e ia-riesgos (31), sin falsos avisos. No ven un falso comienzo que Whisper funde
+  con la palabra siguiente y que la reparación de tiempos tapa (dato-a-juicio s06-05 «Un grupo que de… Un grupo que
+  detesta»): eso sigue siendo cosa de `verify-voice`.
+- **`--lufs -18` o `--lufs=-18`.** `parseArgs` leía `-18` como dos opciones cortas y se paraba; ahora un valor negativo
+  de `--lufs`, `--gain` o `--noise` se une a su opción antes (`joinNegativeValues`).
 
 **Comprobación de la voz** (`scripts/verify-voice.mjs`, que `audio.mjs` lanza tras `build-timeline` en las voces
 `recording/…`). Escucha cada clip **tal como suena en el vídeo** (solo la parte que se reproduce): lo transcribe
@@ -644,12 +662,20 @@ Son **errores** un clip que empieza o acaba dentro de una palabra (energía de b
 justo después de la parte que se reproduce (> 0,15) y una frase de tres palabras que se oye más veces de las que
 dice el guion (una toma que se coló); es un **aviso** una similitud con el guion por debajo de 0,75 (escúchalo,
 muchas veces es solo el reconocimiento). Escribe `out/verify-voice.md` y `out/verify-voice.json` (con el
-`sourceHash` del timeline) y solo vuelve a transcribir los clips que cambiaron (`out/verify-voice-cache.json`;
-`--force` lo rehace todo). **`render.mjs` se niega a renderizar una grabación sin un informe al día y sin
+`sourceHash` del timeline). **`render.mjs` se niega a renderizar una grabación sin un informe al día y sin
 errores**; `--skip-voice-check` lo salta a sabiendas.
 
+**Es incremental.** Cada clip se guarda en `out/verify-voice-cache.json` con una clave hecha de sus bytes y de lo que el
+vídeo reproduce de él, más la versión de las medidas (`MEASURE_VERSION`) y el modelo de Whisper (`VERIFY_MODEL`). Tras un
+`import-recording --only s06-03,s09-07` solo esos dos vuelven a Whisper (la consola lo dice: «transcribing 2/63 clips
+(s06-03, s09-07; the other 61 are cached)»). Ni el guion, ni el léxico, ni los umbrales llegan a Whisper (no lleva pista):
+solo cambian los errores y avisos, que se recalculan desde la caché en cada pasada, así que cambiarlos no repite nada.
+`verify_voice.py` apunta cada clip en `out/verify-voice-progress.jsonl` en cuanto lo oye: una pasada que se corta o falla
+a medias conserva lo que terminó, y la siguiente lo recoge. `--all` (o `--force`) vuelve a oírlos todos. En producto-bluf
+la caché ya funcionaba (la segunda pasada, tras arreglar dos clips, tardó minutos): lo que costó 43 min fue la primera.
+
 ```bash
-node video/engine/scripts/verify-voice.mjs --video <slug> [--warn-only] [--force]
+node video/engine/scripts/verify-voice.mjs --video <slug> [--warn-only] [--all]
 ```
 
 ## Masterización: voz y programa
@@ -772,6 +798,18 @@ node video/engine/scripts/qa-frames.mjs --video <slug>  # o --scene s05-correlat
 # 6. Render
 node video/engine/scripts/render.mjs --video <slug> --draft   # media resolución, rápido
 node video/engine/scripts/render.mjs --video <slug>           # final + póster
+
+# 6a. Grabación propia: worktree listo e importación en un comando (desde cualquier checkout del repo)
+node video/engine/scripts/prepare-voice-worktree.mjs --video <slug> --wav "video/engine/voices/<slug> lidia.wav" [--video-from <rama>] [--dry-run]
+#     Hace lo que antes era a mano: git fetch; worktree en NTFS (por defecto %TEMP%\alertopolis-voz\<slug>, rama
+#     video-<slug>-voz desde origin/main; si la rama ya existe, su video/engine se pone al día con origin/main);
+#     --video-from <rama> trae video/<slug> de la rama del guion; uniones de directorio a node_modules y
+#     video/engine/.cache del principal; copia la música de video.json -> "music" a music/library/; quita
+#     recording.tempo de narration.json; master_voice.py -> «<grabación> (master).wav»; import-recording --lufs=-18 con
+#     CHATTERBOX_PYTHON del principal. Se puede repetir (salta lo hecho); --no-master / --no-import paran antes.
+#     Después: cd al worktree y produce.mjs. Para quitarlo, SIEMPRE con el script (quita las uniones primero; borrar la
+#     carpeta a mano con ellas dentro borraría el node_modules y la .cache del principal):
+node video/engine/scripts/prepare-voice-worktree.mjs --video <slug> --remove
 
 # 6b. Con la voz ya importada, la cadena entera en un solo comando (para en el primer error y dice cómo retomar):
 #     audio (timeline + verify-voice) → program (WAV del programa) → master1 → frames → master2 → report

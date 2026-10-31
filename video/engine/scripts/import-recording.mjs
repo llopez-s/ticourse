@@ -53,9 +53,12 @@ import {
   importGainRecord,
   importReport,
   inferFullImport,
+  joinNegativeValues,
   keepRanges,
   laterTakes,
   locateSegments,
+  longClips,
+  longPauses,
   mergeAsrWords,
   midSentenceStarts,
   missingGaps,
@@ -70,11 +73,15 @@ import {
   recutLoudnessFilter,
   refineCuts,
   repairSwallowedPauses,
+  repeatedOpenings,
+  restartGap,
   retryTargets,
   trailingSpeechEnd,
   selectSegments,
   stretchedWords,
   trimGhostWords,
+  unheardVoice,
+  withoutStretch,
 } from './lib/recording.mjs';
 import { ffmpegBinary, runFfmpeg, writeFileAtomic } from './lib/remotion.mjs';
 import { VENV_PYTHON, scaleTimings } from './tts-chatterbox.mjs';
@@ -391,7 +398,7 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
     record.speechEndMs = trailingSpeechEnd(parseSilences(analyse(mp3, `silencedetect=noise=${noise}:d=0.08`), record.durationMs), record.durationMs);
     pausesRemovedMs += record.source.pausesRemovedMs;
     writeFileAtomic(path.join(ttsDir, `${seg.id}.json`), `${JSON.stringify(record, null, 1)}\n`);
-    written.push({ id: seg.id, ranges });
+    written.push({ id: seg.id, ranges, durationMs: record.durationMs, spoken: record.spoken, text: seg.parsed.display });
   }
   // A full import leaves its gain for the partial imports that follow it (--only with a cut of this recording).
   if (!only) {
@@ -449,6 +456,41 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
     const cause = 'the clip should include the opening that is just before it';
     for (const line of recutAdvice(gap, { ...recutOptions(gap, { file, name, gain }), cause })) log.warn(`    ${line}`);
   }
+  // Quick checks on the clips as written (no Whisper pass): a sentence whose opening is read again after a pause,
+  // voice inside a clip that no word covers, and a clip much longer than its text read once — all a take the cut
+  // kept whole (producto-bluf s06-03 and s09-07 were only caught by verify-voice, 43 minutes later).
+  const restarts = repeatedOpenings(written, cuts, timed, silences);
+  for (const r of restarts) {
+    const gap = restartGap(r, cutOf.get(r.id));
+    log.warn(`  aviso: ${r.id}: «${r.opening}…» se lee dos veces en el clip (${clock(r.firstMs)} y, tras ${(r.pauseMs / 1000).toFixed(1)} s de pausa, ${clock(r.againMs)}): queda una toma anterior dentro; la última es la buena.`);
+    const cause = r.sentence === 0 ? 'keep only the reading that starts after the pause' : 'keep what comes before the first reading and the reading after the pause';
+    for (const line of recutAdvice(gap, { ...recutOptions(gap, { file, name, gain }), cause })) log.warn(`    ${line}`);
+  }
+  const restarted = new Set(restarts.map((r) => r.id));
+  const unheard = unheardVoice(written.filter((w) => !restarted.has(w.id)).map((w) => cutOf.get(w.id)), timed, silences);
+  for (const u of unheard) {
+    const gap = withoutStretch(u, cutOf.get(u.id));
+    log.warn(`  aviso: ${u.id}: ${(u.voicedMs / 1000).toFixed(1)} s de voz que Whisper no transcribió (${clock(u.startMs)}–${clock(u.endMs)}): probablemente una toma a medias dentro del clip; escúchala.`);
+    const cause = 'if that stretch is a leftover take, keep the clip without it';
+    for (const line of recutAdvice(gap, { ...recutOptions(gap, { file, name, gain }), cause })) log.warn(`    ${line}`);
+  }
+  for (const u of unheard) restarted.add(u.id);
+  const long = longClips(written.map((w) => ({ id: w.id, text: w.spoken, durationMs: w.durationMs })));
+  for (const lc of long) {
+    const cut = cutOf.get(lc.id);
+    const pauses = longPauses(cut, silences);
+    log.warn(
+      `  aviso: ${lc.id}: el clip dura ${(lc.durationMs / 1000).toFixed(1)} s y su texto leído una vez ~${(lc.expectedMs / 1000).toFixed(1)} s (${lc.ratio}×): ` +
+        `${restarted.has(lc.id) ? 'es la toma de más de arriba' : 'escúchalo, probablemente guarda una toma anterior'}` +
+        `${pauses.length ? ` (pausas de más de 1 s en ${pauses.map((s) => clock(s.startMs)).join(', ')})` : ''}.`,
+    );
+    if (restarted.has(lc.id) || !pauses.length) continue;
+    const parts = cut.parts ?? [cut];
+    const last = pauses[pauses.length - 1];
+    const gap = { ids: [lc.id], startMs: Math.max(parts[0].startMs, last.endMs - 300), endMs: parts[parts.length - 1].endMs + 300 };
+    const cause = 'if the last reading after that pause is the whole segment, keep only it';
+    for (const line of recutAdvice(gap, { ...recutOptions(gap, { file, name, gain }), cause })) log.warn(`    ${line}`);
+  }
   if (missing.length) {
     log.warn(`  aviso: not found in the recording (no clip written): ${missing.join(', ')}`);
     for (const gap of missingGaps(located, cuts, timed, silences, asr.durationMs).filter((g) => g.ids.some(mine))) {
@@ -462,11 +504,13 @@ export function importRecording({ file, name, only = null, ttsDir = PATHS.ttsDir
     log.warn(`  aviso: narration.json "voice" is "${sources.narration.voice}" — set it to "${voice}" before build-timeline`);
   }
   log.log(`report -> ${reportPath}`);
-  return { located, cuts, gain, missing, weak, midStarts, retried, edgeFixes, edgeOffenders: edgeBad, silentRuns, ghosts };
+  return { located, cuts, gain, missing, weak, midStarts, retried, edgeFixes, edgeOffenders: edgeBad, silentRuns, ghosts, restarts, unheard, long };
 }
 
 function main() {
   const { values } = parseArgs({
+    // «--lufs -18» works as well as «--lufs=-18» (parseArgs alone takes -18 for two short options).
+    args: joinNegativeValues(process.argv.slice(2)),
     options: {
       video: { type: 'string' },
       file: { type: 'string' },
