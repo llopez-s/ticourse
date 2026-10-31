@@ -1,0 +1,641 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:05.133
+Haces clic en «Reservar atraque» y,
+en menos de un segundo,
+
+2
+00:00:05.133 --> 00:00:07.667
+la web del puerto te contesta.
+
+3
+00:00:07.667 --> 00:00:12.733
+¿Qué ha pasado por el camino? Hoy vas
+a seguir esa conexión, paso a paso.
+
+4
+00:00:12.967 --> 00:00:15.367
+Imagina que trabajas en una naviera.
+
+5
+00:00:15.367 --> 00:00:19.633
+Reserváis atraques en el puerto
+de Halden, el escenario de este curso.
+
+6
+00:00:19.633 --> 00:00:23.833
+Al terminar sabrás por dónde sale
+una conexión y qué datos lleva encima.
+
+7
+00:00:23.833 --> 00:00:27.767
+Y también quién se los cambia
+y quién decide si pasa.
+
+8
+00:00:28.833 --> 00:00:30.567
+Empecemos por tu portátil.
+
+9
+00:00:30.567 --> 00:00:34.600
+Para que algo le llegue, necesita
+una dirección, igual que un edificio.
+
+10
+00:00:34.600 --> 00:00:36.400
+Es su dirección IP.
+
+11
+00:00:36.400 --> 00:00:39.533
+La versión más usada, IPv4,
+
+12
+00:00:39.533 --> 00:00:43.733
+son cuatro números de cero a doscientos
+cincuenta y cinco, con puntos.
+
+13
+00:00:43.733 --> 00:00:45.633
+Mira la de tu portátil.
+
+14
+00:00:45.633 --> 00:00:50.333
+Y tiene dos partes. Una dice en qué
+red estás, como el nombre de la calle.
+
+15
+00:00:50.333 --> 00:00:54.600
+La otra dice qué equipo eres,
+como el número del edificio.
+
+16
+00:00:54.600 --> 00:00:55.767
+¿Y dónde acaba la calle?
+
+17
+00:00:55.767 --> 00:00:59.700
+Lo marca el prefijo,
+ese «barra veinticuatro» del final.
+
+18
+00:00:59.700 --> 00:01:04.267
+Cada número son ocho bits,
+ocho casillas de ceros y unos.
+
+19
+00:01:04.267 --> 00:01:07.233
+Tres números de ocho bits son
+veinticuatro. Esa es la red.
+
+20
+00:01:07.233 --> 00:01:09.567
+El último, tu portátil.
+
+21
+00:01:09.567 --> 00:01:12.367
+Todo lo que envías viaja
+troceado en paquetes.
+
+22
+00:01:12.367 --> 00:01:18.100
+Y cada paquete lleva una etiqueta con
+la dirección de origen y la de destino.
+
+23
+00:01:19.133 --> 00:01:21.167
+En la oficina hay una impresora.
+
+24
+00:01:21.167 --> 00:01:25.433
+Su dirección empieza por los mismos
+tres números que la tuya.
+
+25
+00:01:25.433 --> 00:01:29.333
+Misma calle, así que tu portátil
+le entrega los paquetes directamente,
+
+26
+00:01:29.333 --> 00:01:31.567
+sin pasar por el router.
+
+27
+00:01:31.567 --> 00:01:34.600
+Ahora mira el servidor
+de ficheros de la naviera.
+
+28
+00:01:34.600 --> 00:01:38.233
+Los dos primeros números
+coinciden. ¿Está en tu red?
+
+29
+00:01:42.500 --> 00:01:43.100
+No.
+
+30
+00:01:43.100 --> 00:01:45.767
+Con barra veinticuatro cuentan
+los tres primeros números,
+
+31
+00:01:45.767 --> 00:01:48.333
+y el tercero es distinto. Otra calle.
+
+32
+00:01:48.333 --> 00:01:52.400
+O sea, que si coincide el prefijo
+entero, es tu red y entregas tú.
+
+33
+00:01:52.400 --> 00:01:57.033
+Y un detalle que volverá luego. Las
+direcciones de esta oficina son privadas.
+
+34
+00:01:57.033 --> 00:02:00.233
+Sirven dentro, pero Internet no las lleva.
+
+35
+00:02:01.400 --> 00:02:03.433
+¿Cómo llegas, entonces, a otra calle?
+
+36
+00:02:03.433 --> 00:02:08.033
+Pues tu portátil tiene apuntada
+la dirección de un aparato de la oficina.
+
+37
+00:02:08.033 --> 00:02:12.433
+Es el router, el que conecta tu red
+con las demás y con Internet.
+
+38
+00:02:12.433 --> 00:02:16.700
+Si el destino no es de tu calle,
+tu portátil se los entrega a él.
+
+39
+00:02:16.700 --> 00:02:20.367
+Esa dirección se llama puerta
+de enlace, o default gateway.
+
+40
+00:02:20.367 --> 00:02:22.833
+O sea, la salida de tu calle.
+
+41
+00:02:22.833 --> 00:02:25.067
+El router sí sabe por dónde seguir.
+
+42
+00:02:25.067 --> 00:02:28.533
+Su tabla de rutas es como
+los carteles de un cruce.
+
+43
+00:02:28.533 --> 00:02:32.167
+Dice por dónde se va a cada red y,
+para todo lo demás, hacia Internet.
+
+44
+00:02:32.167 --> 00:02:36.067
+Así que manda tus paquetes
+a la calle del servidor.
+
+45
+00:02:36.067 --> 00:02:38.333
+Pero ojo, que la vuelta cuenta.
+
+46
+00:02:38.333 --> 00:02:43.767
+El servidor contesta a tu dirección, y su
+router necesita una ruta hasta tu calle.
+
+47
+00:02:43.767 --> 00:02:48.300
+Si falta, la petición llega
+pero la respuesta se pierde.
+
+48
+00:02:49.400 --> 00:02:53.633
+Ahora, el portal de Halden.
+Su dirección no es de tu calle.
+
+49
+00:02:53.633 --> 00:02:56.267
+Así que tus paquetes van
+a la puerta de enlace,
+
+50
+00:02:56.267 --> 00:02:59.800
+y el router los manda
+hacia tu proveedor de Internet.
+
+51
+00:02:59.800 --> 00:03:03.300
+De ahí, saltando de router
+en router, hasta el portal.
+
+52
+00:03:03.300 --> 00:03:05.800
+Ninguno decide el viaje entero.
+
+53
+00:03:05.800 --> 00:03:11.067
+Cada uno mira el destino y decide solo
+el siguiente salto. Eso es el routing.
+
+54
+00:03:11.233 --> 00:03:17.600
+O sea, que dentro de tu calle entregas tú
+y, para salir, vas a la puerta de enlace.
+
+55
+00:03:18.833 --> 00:03:20.800
+Llegar a la máquina del portal no basta.
+
+56
+00:03:20.800 --> 00:03:24.433
+En ella pueden estar atendiendo
+varios servicios a la vez.
+
+57
+00:03:24.433 --> 00:03:27.167
+¿Cómo sabe a cuál van tus paquetes?
+
+58
+00:03:27.167 --> 00:03:30.800
+Por el número de puerto, ojo,
+que no hablo del de los barcos.
+
+59
+00:03:30.800 --> 00:03:37.600
+Si la dirección es el edificio, el puerto
+es el despacho. La web segura va al 443.
+
+60
+00:03:37.600 --> 00:03:40.000
+Tu portátil también pone
+un puerto de origen,
+
+61
+00:03:40.000 --> 00:03:43.300
+uno temporal que elige para esta conexión.
+
+62
+00:03:43.300 --> 00:03:47.067
+Así la respuesta vuelve a la conexión
+correcta de tu navegador.
+
+63
+00:03:47.067 --> 00:03:49.333
+Se llama puerto efímero.
+
+64
+00:03:49.333 --> 00:03:52.667
+Origen y destino,
+cada uno con su dirección y su puerto.
+
+65
+00:03:52.667 --> 00:03:57.933
+En total, la etiqueta completa
+lleva cuatro datos y el protocolo.
+
+66
+00:03:57.933 --> 00:04:02.400
+Eso sí, el número es una costumbre,
+no una garantía.
+
+67
+00:04:02.400 --> 00:04:08.867
+Que algo vaya al 443 te dice a qué
+servicio dice llamar, no qué lleva dentro.
+
+68
+00:04:10.033 --> 00:04:11.767
+Falta saber cómo se entregan.
+
+69
+00:04:11.767 --> 00:04:15.667
+Hay dos maneras, y se parecen
+mucho a hablar por teléfono.
+
+70
+00:04:15.700 --> 00:04:20.567
+La primera es una llamada. Antes de
+hablar, el otro descuelga y os saludáis.
+
+71
+00:04:20.567 --> 00:04:26.400
+Luego hablas por turnos, compruebas que te
+oye y, si una frase se pierde, la repites.
+
+72
+00:04:26.400 --> 00:04:30.567
+Eso es TCP, con conexión, orden y reenvío.
+
+73
+00:04:30.567 --> 00:04:35.700
+La web suele usarlo, porque una página
+no puede llegar incompleta ni desordenada.
+
+74
+00:04:35.700 --> 00:04:39.300
+La segunda es dejar
+un recado en el contestador.
+
+75
+00:04:39.300 --> 00:04:45.133
+Lo dejas y cuelgas, sin saludo
+ni confirmación. Eso es UDP, más ligero.
+
+76
+00:04:45.133 --> 00:04:48.833
+Lo usa el DNS, que traduce
+nombres a direcciones.
+
+77
+00:04:48.833 --> 00:04:53.033
+Si no llega respuesta,
+el programa vuelve a preguntar.
+
+78
+00:04:53.033 --> 00:04:58.433
+O sea, que con TCP las garantías vienen
+de serie y, con UDP, si hacen falta,
+
+79
+00:04:58.433 --> 00:05:00.767
+las pone el propio programa.
+
+80
+00:05:01.900 --> 00:05:06.633
+¿Te acuerdas de que tu dirección era
+privada? Pues Internet no la lleva.
+
+81
+00:05:06.633 --> 00:05:10.400
+Así que, al salir de la oficina,
+el router hace algo más.
+
+82
+00:05:10.400 --> 00:05:15.167
+Tacha el origen de la etiqueta y pone
+la dirección pública de la naviera,
+
+83
+00:05:15.167 --> 00:05:19.600
+que sí viaja por Internet.
+Y muchas veces, también el puerto.
+
+84
+00:05:19.600 --> 00:05:22.433
+Y lo apunta, con la hora, en otra tabla.
+
+85
+00:05:22.433 --> 00:05:26.767
+Esa conexión, de tu portátil,
+sale ahora con otro puerto.
+
+86
+00:05:26.767 --> 00:05:30.933
+Cuando el portal responde,
+la respuesta llega a la dirección pública.
+
+87
+00:05:30.933 --> 00:05:34.700
+El router busca en esa tabla
+y se la pasa a tu portátil.
+
+88
+00:05:34.700 --> 00:05:37.633
+Eso es NAT, la traducción de direcciones.
+
+89
+00:05:37.633 --> 00:05:40.867
+Así, toda la oficina sale
+con una sola dirección pública,
+
+90
+00:05:40.867 --> 00:05:44.567
+y cada conexión
+se distingue por su puerto.
+
+91
+00:05:46.067 --> 00:05:47.667
+Ahora ponte al otro lado.
+
+92
+00:05:47.667 --> 00:05:50.600
+El portal apunta
+cada reserva en su registro,
+
+93
+00:05:50.600 --> 00:05:53.933
+con la dirección y el puerto
+de origen, y la hora.
+
+94
+00:05:53.933 --> 00:05:56.933
+Y ahí aparece la dirección
+pública de la naviera.
+
+95
+00:05:56.933 --> 00:06:01.300
+¿Basta esa dirección
+para saber qué ordenador fue?
+
+96
+00:06:05.600 --> 00:06:10.967
+No. Con esa dirección no basta,
+detrás puede haber treinta equipos.
+
+97
+00:06:10.967 --> 00:06:14.500
+Para saberlo hace falta
+el registro de NAT de la naviera.
+
+98
+00:06:14.500 --> 00:06:18.733
+Con la hora y los puertos,
+sale la línea de ese equipo.
+
+99
+00:06:18.733 --> 00:06:23.867
+O sea, que una dirección compartida,
+por sí sola, no señala a nadie.
+
+100
+00:06:25.067 --> 00:06:29.400
+Mucha gente cree que el NAT protege. Pero
+proteger es decidir qué pasa y qué no.
+
+101
+00:06:29.400 --> 00:06:33.500
+Y eso lo hace otra pieza,
+el cortafuegos, o firewall.
+
+102
+00:06:33.500 --> 00:06:37.767
+Alguien de la oficina intenta manejar
+a distancia un ordenador de fuera,
+
+103
+00:06:37.767 --> 00:06:40.433
+lo que se llama escritorio remoto.
+
+104
+00:06:40.433 --> 00:06:43.700
+Para el NAT, esa conexión
+es una etiqueta más.
+
+105
+00:06:43.700 --> 00:06:45.833
+Lo que la para es una regla.
+
+106
+00:06:45.833 --> 00:06:47.467
+El cortafuegos tiene una lista,
+
+107
+00:06:47.467 --> 00:06:51.800
+y cada regla dice si un tipo
+de conexión pasa o no.
+
+108
+00:06:51.800 --> 00:06:56.700
+La lee de arriba abajo y aplica
+la primera que coincide, en este modelo.
+
+109
+00:06:56.700 --> 00:07:01.733
+Si ninguna coincide, deniega.
+Eso es la denegación implícita.
+
+110
+00:07:01.733 --> 00:07:05.533
+Aquí, la web sale
+y el escritorio remoto no.
+
+111
+00:07:05.700 --> 00:07:08.700
+¿Y la respuesta del portal,
+que viene de fuera?
+
+112
+00:07:08.700 --> 00:07:13.333
+Entra porque el cortafuegos recuerda
+que esa conexión la abriste tú.
+
+113
+00:07:13.333 --> 00:07:16.900
+NAT y cortafuegos suelen
+vivir en el mismo aparato,
+
+114
+00:07:16.900 --> 00:07:19.600
+pero uno traduce y el otro decide.
+
+115
+00:07:19.600 --> 00:07:22.067
+Y ninguno esconde lo que viaja.
+
+116
+00:07:22.067 --> 00:07:25.733
+El contenido sigue a la vista
+de quien lo mire por el camino.
+
+117
+00:07:25.733 --> 00:07:27.967
+Eso, en el siguiente vídeo.
+
+118
+00:07:29.167 --> 00:07:32.700
+Vamos a juntarlo todo
+con una sola petición.
+
+119
+00:07:32.700 --> 00:07:36.433
+Sale de tu portátil con tu dirección
+privada, un puerto efímero y,
+
+120
+00:07:36.433 --> 00:07:40.633
+como destino, el 443 del portal.
+
+121
+00:07:40.633 --> 00:07:43.900
+Como el destino no es de tu calle,
+va a la puerta de enlace.
+
+122
+00:07:43.900 --> 00:07:47.533
+El cortafuegos busca su regla,
+y la web puede salir.
+
+123
+00:07:47.533 --> 00:07:52.000
+El router cambia el origen
+por la dirección pública y lo apunta.
+
+124
+00:07:52.000 --> 00:07:55.900
+Router a router, llega al portal.
+La respuesta vuelve.
+
+125
+00:07:55.900 --> 00:08:00.100
+Llega a la dirección pública,
+la tabla se la devuelve a tu portátil y,
+
+126
+00:08:00.100 --> 00:08:05.533
+por el puerto efímero, a tu navegador.
+Todo eso, en menos de un segundo.
+
+127
+00:08:06.733 --> 00:08:09.467
+Te quedas con tres ideas. Una.
+
+128
+00:08:09.467 --> 00:08:12.867
+Si el destino está en tu red,
+entregas directamente.
+
+129
+00:08:12.867 --> 00:08:17.267
+Si no, a la puerta de enlace,
+y cada router decide el siguiente salto,
+
+130
+00:08:17.267 --> 00:08:19.033
+también a la vuelta.
+
+131
+00:08:19.133 --> 00:08:20.200
+Dos.
+
+132
+00:08:20.200 --> 00:08:24.833
+La etiqueta lleva direcciones y puertos,
+y el puerto dice a qué servicio apunta,
+
+133
+00:08:24.833 --> 00:08:26.333
+no qué contiene.
+
+134
+00:08:26.333 --> 00:08:33.233
+Tres. NAT cambia la etiqueta y lo apunta.
+Quien decide qué pasa es el cortafuegos.
+
+135
+00:08:33.300 --> 00:08:35.333
+Ahora te toca a ti.
+
+136
+00:08:35.333 --> 00:08:40.467
+Abre la práctica «Mapa de red»
+y sigue el recorrido de tres equipos.
