@@ -4,8 +4,9 @@
  * It parses one subset of the rule language and runs it over the lab's synthetic
  * events. Anything outside that subset is reported as `unsupported`, never guessed:
  * real Suricata may accept such a rule, but this simulator cannot tell what it does.
- * suricataSim.test.ts replays scripts/suricata-parity.json, recorded from real
- * Suricata, so every supported behaviour here is one the engine was seen to have.
+ * suricataSim.test.ts replays src/data/suricata-parity-<major>.json, one recording per
+ * Suricata major version: every supported behaviour here is one each engine was seen to
+ * have, and where versions disagree the simulator says so instead of picking one.
  */
 
 export type SimProto = 'dns' | 'http' | 'tls';
@@ -269,6 +270,7 @@ export function parseRule(text: string, line: number): ParsedRule {
   let last: Content | null = null;
   let sidSeen = false;
   let msgSeen = false;
+  let directed = false;
   const closeBuffer = () => {
     if (current && current.contents.length === 0) fail(`rule ${rule.sid || '?'} setup buffer ${BUFFER_NAME[current.buffer]} but didn't add matches to it`);
   };
@@ -289,7 +291,7 @@ export function parseRule(text: string, line: number): ParsedRule {
       const parts = (value ?? '').split(',').map((s) => s.trim());
       for (const part of parts) {
         if (part === 'established') rule.established = true;
-        else if (part === 'to_server' || part === 'from_client') { /* every event here is a client request */ }
+        else if (part === 'to_server' || part === 'from_client') directed = true; // every event here is a client request
         else if (part === 'to_client' || part === 'from_server') {
           fail('rule mixes keywords with conflicting directions (este laboratorio solo inspecciona peticiones del cliente)');
         } else outside(`flow:${part} queda fuera del simulador`);
@@ -340,6 +342,11 @@ export function parseRule(text: string, line: number): ParsedRule {
   }
   closeBuffer();
   if (!sidSeen) fail('Signature missing required value "sid".');
+  // Recorded divergence: Suricata 7.0.3 matches a buffer-less http/tls rule with flow:established
+  // plus a direction on every request; 8.0.8 matches none. Same rule, two answers.
+  if (rule.matches.length === 0 && rule.established && directed && rule.proto !== 'dns') {
+    outside('Suricata 7 y 8 responden distinto a una regla http/tls sin buffer con flow:established y dirección (la 7 coincide con todo, la 8 con nada); añade un buffer como http.method o tls.sni, o quita la dirección');
+  }
   return rule;
 }
 

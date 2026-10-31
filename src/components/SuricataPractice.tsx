@@ -5,7 +5,7 @@ import { downloadLabFile } from '../lib/labWorkspace';
 import { evaluate, loadRules, outcomeOf, parseHomeNet, type Outcome, type SensorMode, type SimAlert, type SimEvent } from '../lib/suricataSim';
 import corpus from '../../public/labs/suricata-practice/corpus.json';
 import missionData from '../../public/labs/suricata-practice/missions.json';
-import parity from '../data/suricata-parity.json';
+import { PARITY_RECORDINGS, PARITY_VERSIONS } from '../data/suricataParity';
 import reference from '../../public/labs/suricata-practice/reference.rules?raw';
 
 const EVENTS = corpus.events as SimEvent[];
@@ -136,7 +136,7 @@ function SuricataLab() {
           Escribe reglas y ejecútalas sobre dieciséis conexiones ficticias de una mañana en el puerto. El simulador corre en tu
           navegador y entiende un subconjunto del lenguaje: dns.query, http.method, http.uri, http.host y tls.sni con content,
           nocase, startswith, endswith y dotprefix, más flow, direcciones, puertos y las acciones alert, drop, reject y pass.
-          Su comportamiento se ha comparado con Suricata {parity.suricata.replace(/^.*version\s+/i, '').replace(/\s+RELEASE$/, '')} en {parity.cases.length} casos.
+          Su comportamiento se ha comparado con Suricata {PARITY_VERSIONS} en {PARITY_RECORDINGS[0].cases.length} casos; donde las versiones no coinciden, te lo dice.
           Lo que queda fuera del subconjunto se señala como tal, no se adivina. Práctica opcional, sin efecto en el examen.
         </p>
       </header>

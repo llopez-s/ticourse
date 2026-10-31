@@ -918,6 +918,126 @@
     "t3:1:allowed"
    ],
    "errorLines": []
+  },
+  {
+   "name": "http-header-only-established-to-server-reversed",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; flow:to_server,established; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h3:1:allowed",
+    "h4:1:allowed",
+    "h5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-header-only-established-from-client",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; flow:established,from_client; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h3:1:allowed",
+    "h4:1:allowed",
+    "h5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-header-only-established",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; flow:established; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h3:1:allowed",
+    "h4:1:allowed",
+    "h5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "http-header-only-to-server",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; flow:to_server; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h3:1:allowed",
+    "h4:1:allowed",
+    "h5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-header-only-established-to-server",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; flow:established,to_server; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed",
+    "t4:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "tls-header-only-established",
+   "mode": "ids",
+   "rules": "alert tls any any -> any any (msg:\"x\"; flow:established; sid:1;)\n",
+   "alerts": [
+    "t1:1:allowed",
+    "t2:1:allowed",
+    "t3:1:allowed",
+    "t4:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "dns-header-only-to-server",
+   "mode": "ids",
+   "rules": "alert dns any any -> any any (msg:\"x\"; flow:to_server; sid:1;)\n",
+   "alerts": [
+    "d1:1:allowed",
+    "d2:1:allowed",
+    "d3:1:allowed",
+    "d4:1:allowed",
+    "d5:1:allowed",
+    "d6:1:allowed",
+    "d7:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "dns-header-only-established-to-server",
+   "mode": "ids",
+   "rules": "alert dns any any -> any any (msg:\"x\"; flow:established,to_server; sid:1;)\n",
+   "alerts": [],
+   "errorLines": []
+  },
+  {
+   "name": "http-buffer-established-to-server",
+   "mode": "ids",
+   "rules": "alert http any any -> any any (msg:\"x\"; flow:established,to_server; http.method; content:\"POST\"; sid:1;)\n",
+   "alerts": [
+    "h1:1:allowed",
+    "h2:1:allowed",
+    "h4:1:allowed",
+    "h5:1:allowed"
+   ],
+   "errorLines": []
+  },
+  {
+   "name": "pass-header-only-established-to-server-ips",
+   "mode": "ips",
+   "rules": "drop tls any any -> any any (msg:\"x\"; tls.sni; content:\"harbor\"; sid:1;)\npass tls 10.20.6.31 any -> any any (msg:\"p\"; flow:established,to_server; sid:2;)\n",
+   "alerts": [
+    "t1:1:blocked",
+    "t3:1:blocked"
+   ],
+   "errorLines": []
   }
  ]
 }

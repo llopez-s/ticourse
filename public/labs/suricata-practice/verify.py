@@ -65,7 +65,12 @@ def run_suricata(rules: Path, pcap: Path, ips: bool, binary: str = 'suricata', c
                 last = line.split(':', 2)[-1].strip()
         eve = Path(logdir) / 'eve.json'
         if proc.returncode != 0 and not eve.exists():
-            raise RuntimeError(f'Suricata terminó con código {proc.returncode}:\n{proc.stderr[-800:]}')
+            hint = ''
+            if 'Permission denied' in proc.stderr:
+                hint = ('\nTu usuario no puede leer la configuración de Suricata (el paquete de la OISF deja\n'
+                        '/etc/suricata solo para root y el grupo suricata). Añádete al grupo y abre una\n'
+                        'terminal nueva: sudo usermod -aG suricata $USER   (o ejecuta verify.py con sudo)')
+            raise RuntimeError(f'Suricata terminó con código {proc.returncode}:\n{proc.stderr[-800:]}{hint}')
         alerts = []
         for raw in eve.read_text(encoding='utf-8').splitlines() if eve.exists() else []:
             event = json.loads(raw)

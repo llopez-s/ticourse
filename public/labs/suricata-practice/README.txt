@@ -10,8 +10,17 @@ Contenido
   reference.rules  solución comentada (no la abras antes de intentarlo)
   verify.py        ejecuta Suricata real con tus reglas y compara misión a misión
 
-Requisitos: Python 3.9+ y Suricata 7 instalado (en Linux, el paquete suricata de tu
-distribución). No hace falta tarjeta de red, permisos de root ni conexión.
+Requisitos: Python 3.9+ y Suricata 7 u 8 (en Linux, el paquete suricata de tu
+distribución o el repositorio oficial ppa:oisf/suricata-stable). No hace falta tarjeta
+de red ni conexión.
+
+Si sale «Permission denied» al abrir /etc/suricata/suricata.yaml: el paquete de la OISF
+deja /etc/suricata solo para root y el grupo suricata. Añádete al grupo y abre una
+terminal nueva:  sudo usermod -aG suricata $USER   (o ejecuta verify.py con sudo).
+
+Suricata 7 y 8 responden distinto a una regla http o tls sin buffer que lleva
+flow:established con dirección (to_server o from_client): la 7 coincide con todo y la 8
+con nada. Si tu resultado no cuadra con el de la web, revisa primero eso.
 
 1. Escribe tus reglas en local.rules (o descárgalas del laboratorio de la web).
 2. python verify.py --rules local.rules
