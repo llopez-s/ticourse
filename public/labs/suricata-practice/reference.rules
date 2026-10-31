@@ -1,0 +1,18 @@
+# Alertópolis · laboratorio de Suricata · reglas de referencia v1
+# Caso ficticio (Halden, 14-10-2026). Dominio reservado .example; no es infraestructura real.
+# Misiones 1 a 3: sensor en un puerto SPAN (IDS). Misión 4: el mismo archivo en un sensor en línea (IPS).
+
+# M1 · DNS. El resolver es interno (10.20.0.53): un destino $EXTERNAL_NET no vería ninguna consulta.
+# dotprefix + ".harbor-sync.example" + endswith = el dominio y sus subdominios, nada más.
+alert dns $HOME_NET any -> any any (msg:"ALERTOPOLIS DEMO consulta DNS a harbor-sync.example"; dns.query; dotprefix; content:".harbor-sync.example"; nocase; endswith; classtype:trojan-activity; sid:1000101; rev:1;)
+
+# M2 · HTTP. Método y principio de la URI; ni IP ni puerto ni Host, que cambian gratis.
+alert http $HOME_NET any -> $EXTERNAL_NET any (msg:"ALERTOPOLIS DEMO POST a /collect-demo"; flow:established,to_server; http.method; content:"POST"; http.uri; content:"/collect-demo"; startswith; classtype:trojan-activity; sid:1000102; rev:1;)
+
+# M3 y M4 · TLS. Lo único legible del envío cifrado es el SNI. drop solo bloquea en línea:
+# en las misiones 1 a 3 esta regla alerta con "action": "allowed".
+drop tls $HOME_NET any -> $EXTERNAL_NET any (msg:"ALERTOPOLIS DEMO SNI harbor-sync.example"; flow:established,to_server; tls.sni; dotprefix; content:".harbor-sync.example"; nocase; endswith; classtype:trojan-activity; sid:1000103; rev:1;)
+
+# M4 · Excepción documentada: el servidor de enriquecimiento del SOC consulta el dominio a propósito.
+# pass gana a alert y a drop por el orden de acciones por defecto (pass, drop, reject, alert).
+pass dns 10.20.9.5 any -> any any (msg:"ALERTOPOLIS DEMO excepcion: enriquecimiento del SOC"; dns.query; dotprefix; content:".harbor-sync.example"; nocase; endswith; sid:1000104; rev:1;)

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "title": "Halden · captura sintética de una mañana (14-10-2026)",
+  "homeNet": ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"],
+  "events": [
+    { "id": "d1", "proto": "dns", "src": "10.20.4.17", "dst": "10.20.0.53", "dport": 53, "dns": { "query": "harbor-sync.example" }, "note": "Equipo de administración consulta el dominio del informe" },
+    { "id": "d2", "proto": "dns", "src": "10.20.4.17", "dst": "10.20.0.53", "dport": 53, "dns": { "query": "sync.harbor-sync.example" }, "note": "El mismo equipo, un subdominio" },
+    { "id": "d3", "proto": "dns", "src": "10.20.6.31", "dst": "10.20.0.53", "dport": 53, "dns": { "query": "CDN.Harbor-Sync.example" }, "note": "Otro equipo, mayúsculas mezcladas" },
+    { "id": "d4", "proto": "dns", "src": "10.20.5.12", "dst": "10.20.0.53", "dport": 53, "dns": { "query": "evilharbor-sync.example" }, "note": "Dominio parecido, no es el del informe" },
+    { "id": "d5", "proto": "dns", "src": "10.20.5.12", "dst": "10.20.0.53", "dport": 53, "dns": { "query": "harbor-sync.example.org" }, "note": "Otro dominio que contiene el nombre" },
+    { "id": "d6", "proto": "dns", "src": "10.20.6.31", "dst": "10.20.0.53", "dport": 53, "dns": { "query": "portal.halden-port.example" }, "note": "Portal legítimo de la autoridad portuaria" },
+    { "id": "d7", "proto": "dns", "src": "10.20.9.5", "dst": "10.20.0.53", "dport": 53, "dns": { "query": "harbor-sync.example" }, "note": "Servidor de enriquecimiento del SOC, consulta autorizada" },
+    { "id": "h1", "proto": "http", "src": "10.20.4.17", "dst": "203.0.113.40", "dport": 8081, "http": { "method": "POST", "uri": "/collect-demo?id=41", "host": "upd.harbor-sync.example" }, "note": "Envío de datos a un puerto no estándar" },
+    { "id": "h2", "proto": "http", "src": "10.20.6.31", "dst": "198.51.100.7", "dport": 80, "http": { "method": "POST", "uri": "/collect-demo", "host": "198.51.100.7" }, "note": "Mismo patrón, otra IP y sin nombre de host" },
+    { "id": "h3", "proto": "http", "src": "10.20.5.12", "dst": "198.51.100.20", "dport": 80, "http": { "method": "GET", "uri": "/collect-demo", "host": "docs.halden-port.example" }, "note": "Página de documentación con el mismo nombre, GET" },
+    { "id": "h4", "proto": "http", "src": "10.20.5.12", "dst": "198.51.100.20", "dport": 80, "http": { "method": "POST", "uri": "/static/collect-demo.png", "host": "docs.halden-port.example" }, "note": "Subida de una imagen cuyo nombre contiene el patrón" },
+    { "id": "h5", "proto": "http", "src": "10.20.6.31", "dst": "198.51.100.20", "dport": 80, "http": { "method": "POST", "uri": "/api/collect", "host": "portal.halden-port.example" }, "note": "API legítima del portal" },
+    { "id": "t1", "proto": "tls", "src": "10.20.4.17", "dst": "203.0.113.40", "dport": 443, "tls": { "sni": "sync.harbor-sync.example" }, "note": "El EDR ve a este equipo enviar datos por HTTPS" },
+    { "id": "t2", "proto": "tls", "src": "10.20.6.31", "dst": "203.0.113.41", "dport": 443, "tls": { "sni": "harbor-sync.example" }, "note": "Conexión HTTPS al dominio desnudo" },
+    { "id": "t3", "proto": "tls", "src": "10.20.5.12", "dst": "203.0.113.50", "dport": 443, "tls": { "sni": "evilharbor-sync.example" }, "note": "Dominio parecido" },
+    { "id": "t4", "proto": "tls", "src": "10.20.6.31", "dst": "198.51.100.20", "dport": 443, "tls": { "sni": "portal.halden-port.example" }, "note": "Portal legítimo por HTTPS" }
+  ]
+}

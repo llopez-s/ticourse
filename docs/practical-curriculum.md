@@ -12,7 +12,7 @@ nuevo, no a una modificación de los pesos del examen.
 
 | Lección | Qué incorpora | Nivel | Incremento → total |
 |---|---|---|---|
-| sp4m7 · Capacidades (4.5) | Suricata: anatomía de una regla, sticky buffers, dotprefix/endswith, tráfico cifrado (DNS/SNI frente a URI), IDS frente a IPS inline, lectura de alertas EVE, validación con -T y -r sobre capturas positivas y de control | Complementario | +20 → 34 min |
+| sp4m7 · Capacidades (4.5) | Suricata: anatomía de una regla, sticky buffers, dotprefix/endswith, tráfico cifrado (DNS/SNI frente a URI), IDS frente a IPS inline, lectura de alertas EVE, validación con -T y -r sobre capturas positivas y de control; laboratorio interactivo de cuatro misiones | Complementario | +45 → 59 min |
 | sp4m8 · IAM | Autenticación/autorización; emisor, audiencia, permisos, renovación; contraseña, cookies e ID/access/refresh tokens; MFA; caso Ana → aplicación → Entra ID → Graph | Fundamentos base; ejemplo Microsoft complementario | +18 → 31 min |
 | sp2m6 · Malware | Infostealers; capacidades, exposición y uso; límites de cada artefacto | Base defensiva | +7 → 21 min |
 | sp4m10 · Respuesta | Dispositivo, alcance, identidad, aplicaciones, revocación y verificación; límites específicos de Microsoft y CAE | Base defensiva; Microsoft complementario | +10 → 23 min |
@@ -29,8 +29,8 @@ nuevo, no a una modificación de los pesos del examen.
 
 El bloque de infostealers permanece en s4m4, conectado al clustering. No se crea
 un módulo adicional: mantiene las unidades de progreso y convalidación y permite
-estudiar el complemento desde la propia S4. Total añadido estimado: 164 minutos,
-55 en Security+ y 109 en GCTI.
+estudiar el complemento desde la propia S4. Total añadido estimado: 189 minutos,
+80 en Security+ y 109 en GCTI.
 
 Se añaden 24 flashcards (8 Security+, 16 GCTI) y 23 términos (9 Security+,
 14 GCTI). Las tarjetas profesionales llevan «Complementary» y los bloques de
@@ -108,6 +108,44 @@ incluidas no coincidencias; no significa 100% de sensibilidad de una familia.
 Para regenerar el ZIP tras cambiar fuentes o fixtures:
 `python scripts/package-yara-practice.py`. `--check` detecta si el paquete está
 desactualizado. No se incluye el entorno Python en el build.
+
+## Laboratorio de Suricata (sp4m7)
+
+Revisión: 30 de octubre de 2026. Cuatro misiones sobre una captura ficticia de Halden
+(16 conexiones: d1–d7 DNS, h1–h5 HTTP, t1–t4 TLS con SNI; dominios `.example` y
+direcciones RFC 5737), con un solo `local.rules` acumulativo:
+
+1. DNS al dominio y sus subdominios, sin los parecidos. Errores que enseña: resolver
+   interno fuera de `$EXTERNAL_NET`, mayúsculas, `endswith` sin `dotprefix`.
+2. POST a `/collect-demo` en un puerto no estándar y sin Host, sin GET, imagen ni API.
+3. El mismo envío por HTTPS: solo el SNI es visible.
+4. Sensor en línea: `drop` del canal TLS, DNS y HTTP en alerta, `pass` acotado para el
+   servidor de enriquecimiento del SOC (d7).
+
+En la web, `src/lib/suricataSim.ts` evalúa un subconjunto del lenguaje (dns.query,
+http.method, http.uri, http.host, tls.sni; content con nocase, startswith, endswith y
+negación; dotprefix; flow; direcciones, listas, CIDR y puertos; alert, drop, reject,
+pass con el orden de acciones por defecto). Lo que queda fuera se marca como «Fuera del
+simulador», no se adivina. Los intentos se guardan en el cuaderno local
+`sp4m7/suricata/v1`; no dan XP ni cuentan para la lección.
+
+Paridad con el motor real: `scripts/suricata-parity-cases.rules` (89 casos: aciertos,
+errores de carga, IDS/IPS, `pass`, `reject`, reglas duplicadas) se ejecuta con
+Suricata 7.0.3 mediante `python scripts/suricata-parity.py`, que escribe
+`src/data/suricata-parity.json`; `suricataSim.test.ts` exige que el simulador dé las
+mismas alertas y las mismas líneas con error, y que solo declare «fuera del simulador»
+líneas que Suricata también rechaza. `--check` detecta una grabación desactualizada.
+Hallazgos del motor que el texto recoge: `flow:established` nunca coincide con una
+consulta DNS por UDP; `http.host` rechaza content con mayúsculas y `nocase`; `reject`
+sale `blocked` también fuera de línea; una regla `alert` sobre un paquete descartado
+sigue saliendo `allowed`.
+
+El ZIP (`scripts/package-suricata-practice.py`, `--check`) trae la captura, `corpus.json`,
+`missions.json`, `reference.rules`, `make_pcap.py` (solo biblioteca estándar, salida
+byte a byte reproducible) y `verify.py`, que ejecuta Suricata real con `-r`, fija
+HOME_NET/EXTERNAL_NET con `--set`, usa `--simulate-ips` para la misión 4 y sale con 0, 1
+o 2 como el verificador de YARA. Regenerar el ZIP tras cambiar cualquiera de esos seis
+archivos, y la grabación de paridad tras cambiar la captura o los casos.
 
 ## Fuentes primarias consultadas
 

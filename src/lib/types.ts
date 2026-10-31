@@ -101,6 +101,7 @@ export interface YouTubeVideoBlock {
 export type Block =
   | { t: 'links'; title: string; items: { label: string; href: string }[] }
   | { t: 'yara-practice' }
+  | { t: 'suricata-practice' }
   | { t: 'p'; md: string }
   | { t: 'h'; text: string }
   | { t: 'list'; items: string[]; ordered?: boolean }
