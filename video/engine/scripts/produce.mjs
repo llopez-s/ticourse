@@ -2,7 +2,7 @@
 // Un solo comando para la cadena de producción de un vídeo YA IMPORTADO (clips en tts/ y public/voice): comprueba
 // el entorno, ejecuta los pasos en orden y SE DETIENE AL PRIMER ERROR diciendo qué paso falló y cómo retomar.
 //
-//   node video/engine/scripts/produce.mjs --video <slug> [--concurrency 4] [--from <paso>] [--only <paso>]
+//   node video/engine/scripts/produce.mjs --video <slug> [--concurrency N] [--from <paso>] [--only <paso>]
 //                                         [--dry-run] [--upload [--privacy private|unlisted|public]]
 //                                         [--generated-bed] [--master-in-render]
 //
@@ -27,12 +27,14 @@
 // Códigos de salida: 0 bien · 1 un paso falló · 2 uso incorrecto o guardia de entorno/estado.
 import { spawn, spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, statSync } from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { acquireHeavyLock } from './lib/heavy-lock.mjs';
 import {
   USAGE,
   UsageError,
+  autoConcurrency,
   checkDuration,
   checkPreconditions,
   decideVideoSource,
@@ -205,6 +207,10 @@ async function main() {
   if (options.help) {
     console.log(USAGE);
     return 0;
+  }
+  if (options.concurrencyAuto) {
+    options.concurrency = autoConcurrency({ cpus: os.cpus().length, freeBytes: os.freemem() });
+    console.log(`concurrencia del render: ${options.concurrency} (${os.cpus().length} hilos, ${(os.freemem() / 1024 ** 3).toFixed(1)} GB libres; --concurrency la fija)`);
   }
   const manifest = readManifest(options.video);
   const p = outPaths(REPO_ROOT, options.video, manifest.output);

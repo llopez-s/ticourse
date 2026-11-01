@@ -75,11 +75,16 @@ function main() {
   const applied = existsSync(appliedPath) ? readJson(appliedPath) : { rounds: [] };
   const done = applied.rounds.filter((r) => r.sha256 === saved.sha256).flatMap((r) => r.ids);
   const kinds = parseKinds(values.kinds);
-  const plan = planFixes(saved.fixes, { kinds, done });
+  const order = (narration.segments ?? narration.scenes?.flatMap((s) => s.segments) ?? []).map((s) => s.id);
+  const plan = planFixes(saved.fixes, { kinds, done, order });
 
   console.log(`fix-recording · ${saved.slug} · ${path.basename(file)} · ${kinds.join(', ')}`);
   for (const f of plan.apply) console.log(`  arreglar ${f.ids.join(', ')} (${f.kind}): ${f.parts.map((p) => `${clockOf(p.startMs)}–${clockOf(p.endMs)}`).join(' + ')}`);
-  for (const m of plan.manual) console.log(`  a mano ${m.id} (${m.kind}): escúchalo; --kinds ${m.kind} lo arregla igualmente`);
+  for (const m of plan.manual) {
+    console.log(m.reason
+      ? `  a mano ${m.id} (${m.kind}, ${m.reason}): esa voz puede ser la frase que falta; transcríbela sin el guion antes de cortar`
+      : `  a mano ${m.id} (${m.kind}): escúchalo; --kinds ${m.kind} lo arregla igualmente`);
+  }
   for (const id of plan.repeated) console.log(`  ya intentado ${id}: el mismo recorte daría el mismo clip; escúchalo o mira su aviso`);
   if (!plan.apply.length) return console.log('Nada que arreglar automáticamente.');
   if (values['dry-run']) return console.log('[dry-run] no se corta ni se importa nada.');

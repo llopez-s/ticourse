@@ -75,6 +75,18 @@ test('stretchedWords: abrir-web s08-06 — the pause after the trimmed word is w
   assert.equal(stretchedWords([{ id: 'a', found: true, first: 0, last: 1 }], [{ text: 'disco', startMs: 0, endMs: 2000 }, { text: 'duro', startMs: 2000, endMs: 2300 }], [])[0].retakeMs, null);
 });
 
+test('planFixes never cuts unheard voice out of a clip next to a missing one, even with --kinds all (casos-espejo s07-04)', () => {
+  const fixes = [
+    { kind: 'unheard', ids: ['s07-04'], parts: [{ startMs: 546610, endMs: 551590 }, { startMs: 567130, endMs: 571940 }] },
+    { kind: 'missing', ids: ['s07-05', 's07-06'], parts: [{ startMs: 571640, endMs: 578410 }] },
+    { kind: 'unheard', ids: ['s09-01'], parts: [{ startMs: 700000, endMs: 701000 }] },
+  ];
+  const order = ['s07-03', 's07-04', 's07-05', 's07-06', 's07-07', 's09-01'];
+  const plan = planFixes(fixes, { kinds: ['unheard', 'missing'], order });
+  assert.deepEqual(plan.apply.map((f) => f.ids.join(',')), ['s07-05,s07-06', 's09-01']);
+  assert.deepEqual(plan.manual, [{ id: 's07-04', kind: 'unheard', reason: 'junto a una frase no encontrada' }]);
+});
+
 test('planFixes does not try a clip twice: the same cut would give the same clip', () => {
   const plan = planFixes([{ kind: 'later', ids: ['a'], parts: [{ startMs: 1, endMs: 2 }] }], { done: ['a'] });
   assert.deepEqual(plan.apply, []);

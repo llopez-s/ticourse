@@ -3,7 +3,9 @@ import path from 'node:path';
 import test from 'node:test';
 import {
   ALL_STEPS,
+  TOKEN_LIFETIME_MS,
   UsageError,
+  autoConcurrency,
   checkDuration,
   checkPreconditions,
   decideVideoSource,
@@ -227,6 +229,30 @@ test('credenciales de YouTube: solo con --upload, del principal por defecto', ()
   assert.equal(ok.env.YOUTUBE_CREDENTIALS_DIR, dir);
   assert.match(resolve(healthyFiles(), { upload: true }).errors[0], /client_secret\.json/);
   assert.match(resolve({ ...healthyFiles(), [path.join(dir, 'client_secret.json')]: 'x' }, { upload: true }).errors[0], /token\.json.*--auth/);
+});
+
+test('autoConcurrency: 6 con hilos y memoria libre de sobra, si no 4; sin --concurrency se elige y no se arrastra al retomar', () => {
+  const GB = 1024 ** 3;
+  assert.equal(autoConcurrency({ cpus: 16, freeBytes: 8 * GB }), 6);
+  assert.equal(autoConcurrency({ cpus: 16, freeBytes: 3 * GB }), 4);
+  assert.equal(autoConcurrency({ cpus: 8, freeBytes: 8 * GB }), 4);
+  assert.equal(parseProduceArgs(['--video', SLUG]).concurrencyAuto, true);
+  assert.equal(parseProduceArgs(['--video', SLUG, '--concurrency', '6']).concurrencyAuto, false);
+  assert.equal(resumeCommand(opts({ concurrency: 6, concurrencyAuto: true }), 'frames'), 'node video/engine/scripts/produce.mjs --video demo-halden --from frames');
+  assert.match(resumeCommand(opts({ concurrency: 6 }), 'frames'), /--concurrency 6/);
+});
+
+test('token de YouTube: si caduca antes de la subida no empieza; el día antes avisa', () => {
+  const dir = path.join(MAIN, 'video', 'engine', 'youtube');
+  const now = Date.parse('2026-11-03T08:00:00Z');
+  const withToken = (obtainedAt) => resolve({ ...healthyFiles(), [path.join(dir, 'client_secret.json')]: 'x', [path.join(dir, 'token.json')]: { obtainedAt } }, { upload: true }, { now });
+  const at = (hoursLeft) => new Date(now + hoursLeft * 3600 * 1000 - TOKEN_LIFETIME_MS).toISOString();
+  assert.match(withToken(at(1)).errors[0], /token de YouTube caduca .*--auth/);
+  assert.match(withToken(at(-5)).errors[0], /token de YouTube caducó/);
+  const soon = withToken(at(10));
+  assert.deepEqual(soon.errors, []);
+  assert.match(soon.warnings.join(' '), /token de YouTube caduca/);
+  assert.deepEqual(withToken(at(72)).warnings.filter((w) => /token/.test(w)), []);
 });
 
 // --- guardias de estado ---------------------------------------------------------------------------------------------

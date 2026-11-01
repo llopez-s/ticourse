@@ -41,10 +41,23 @@ const LOCKED_BY_PRODUCE = new Set(['program', 'master1', 'master2']);
 export const PRIVACY = Object.freeze(['private', 'unlisted', 'public']);
 export const DURATION_TOLERANCE_S = 0.2;
 export const DEFAULT_CONCURRENCY = 4;
+/** Sin --concurrency: 6 cuando hay hilos y memoria libre de sobra (V20 renderizó a 6 sin fallos), si no 4. */
+export const AUTO_CONCURRENCY = 6;
+const AUTO_MIN_CPUS = 12;
+const AUTO_MIN_FREE_BYTES = 4.5 * 1024 ** 3;
+/** El token de YouTube dura 7 días (app de Google Cloud en «Testing»); la subida llega ~1 h después de empezar. */
+export const TOKEN_LIFETIME_MS = 7 * 24 * 3600 * 1000;
+const TOKEN_MARGIN_MS = 3 * 3600 * 1000;
+const TOKEN_WARN_MS = 24 * 3600 * 1000;
+
+/** La concurrencia del render cuando no se pasa --concurrency: `cpus` hilos, `freeBytes` de memoria libre. */
+export function autoConcurrency({ cpus, freeBytes }) {
+  return cpus >= AUTO_MIN_CPUS && freeBytes >= AUTO_MIN_FREE_BYTES ? AUTO_CONCURRENCY : DEFAULT_CONCURRENCY;
+}
 
 export class UsageError extends Error {}
 
-export const USAGE = `uso: node video/engine/scripts/produce.mjs --video <slug> [--concurrency 4] [--from <paso>] [--only <paso>] [--dry-run] [--upload]
+export const USAGE = `uso: node video/engine/scripts/produce.mjs --video <slug> [--concurrency N] [--from <paso>] [--only <paso>] [--dry-run] [--upload]
                                                      [--privacy private|unlisted|public] [--generated-bed] [--master-in-render]
 pasos: ${ALL_STEPS.join(' -> ')}   (con --upload: ${UPLOAD_STEPS.join(' -> ')}; con --master-in-render: ${RENDER_MASTER_STEPS.join(' -> ')})`;
 
@@ -82,6 +95,8 @@ export function parseProduceArgs(argv) {
   return {
     video: values.video,
     concurrency,
+    // sin --concurrency, produce.mjs la elige al empezar con autoConcurrency (y la retoma igual)
+    concurrencyAuto: values.concurrency === undefined,
     from: values.from,
     only: values.only,
     dryRun: values['dry-run'],
@@ -117,7 +132,7 @@ export function selectStepIds(options) {
 /** El comando para retomar desde un paso, con las mismas opciones que la tanda. */
 export function resumeCommand(options, stepId) {
   const parts = ['node video/engine/scripts/produce.mjs', `--video ${options.video}`, `--from ${stepId}`];
-  if (options.concurrency !== DEFAULT_CONCURRENCY) parts.push(`--concurrency ${options.concurrency}`);
+  if (!options.concurrencyAuto && options.concurrency !== DEFAULT_CONCURRENCY) parts.push(`--concurrency ${options.concurrency}`);
   if (wantsUpload(options)) parts.push('--upload');
   if (options.privacy && options.privacy !== 'private') parts.push(`--privacy ${options.privacy}`);
   if (options.generatedBed) parts.push('--generated-bed');
@@ -201,7 +216,7 @@ export function findFfmpeg(repoRoot, platform, fs) {
  * pasos elegidos. Devuelve {tools, env, errors, warnings}; si hay errors no se planifica nada.
  * @param {object} c {repoRoot, mainRoot, manifest, options, selected, env, platform, fs}
  */
-export function resolveTools({ repoRoot, mainRoot = repoRoot, manifest, options, selected, env = {}, platform = process.platform, fs = nodeFs }) {
+export function resolveTools({ repoRoot, mainRoot = repoRoot, manifest, options, selected, env = {}, platform = process.platform, fs = nodeFs, now = Date.now() }) {
   const errors = [];
   const warnings = [];
   const has = (...ids) => ids.some((id) => selected.includes(id));
@@ -257,6 +272,17 @@ export function resolveTools({ repoRoot, mainRoot = repoRoot, manifest, options,
     const dir = credentialsDir ?? candidates[0] ?? path.join(mainRoot, 'video', 'engine', 'youtube');
     if (!credentialsDir) errors.push(`no encuentro client_secret.json de YouTube (probé ${candidates.join(', ')}): define YOUTUBE_CREDENTIALS_DIR o crea ${dir} (youtube-upload.mjs --auth, cabecera del script)`);
     else if (!fs.exists(path.join(dir, 'token.json'))) errors.push(`falta ${path.join(dir, 'token.json')}: ejecuta node video/engine/scripts/youtube-upload.mjs --auth una vez`);
+    else {
+      // La subida es el último paso: un token que caduca a mitad de la tanda falla después de una hora de render.
+      const obtained = Date.parse(fs.readJson(path.join(dir, 'token.json'))?.obtainedAt ?? '');
+      if (Number.isFinite(obtained)) {
+        const expires = obtained + TOKEN_LIFETIME_MS;
+        const when = new Date(expires).toISOString().slice(0, 16).replace('T', ' ');
+        const renew = 'renuévalo antes con node video/engine/scripts/youtube-upload.mjs --auth (se entra con Alertópolis)';
+        if (expires - now < TOKEN_MARGIN_MS) errors.push(`el token de YouTube ${expires <= now ? 'caducó' : 'caduca'} el ${when} UTC, antes de que llegue la subida: ${renew}`);
+        else if (expires - now < TOKEN_WARN_MS) warnings.push(`el token de YouTube caduca el ${when} UTC: ${renew}`);
+      }
+    }
   }
 
   const stepEnv = {

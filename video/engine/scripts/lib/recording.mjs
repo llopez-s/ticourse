@@ -575,10 +575,44 @@ export function recutLoudnessFilter() {
   return `apad=pad_dur=${RECUT_GAP_S},loudnorm=print_format=json`;
 }
 
+const GAP_EDGE_MS = 600; // how far a word's edge may be from the silence that bounds a missing gap
+
+const STRAY_WORDS = 3; // words at most past unheard voice at a segment's edge that are taken as someone else's
+
+/** Milliseconds of [from, to] that silencedetect did not call silence. */
+const voicedBetween = (from, to, silences) =>
+  to - from - silences.reduce((sum, s) => sum + Math.max(0, Math.min(to, s.endMs) - Math.max(from, s.startMs)), 0);
+
 /**
- * Where each run of consecutive segments that were not found should be in the recording: between the cut of the
- * found segment before it (or the start) and the one after it (or the end), trimmed to the voice inside — a
- * silence over either edge is dropped but RECUT_PAD_MS of it — with what Whisper heard there that no segment uses.
+ * The index of a found segment's last word that is really its own: when its last few words come after a stretch of
+ * voice Whisper did not hear, they belong to what follows (casos-espejo: s07-04 «…a rusos distintos,» then 19 s of
+ * unheard voice — its own «el GRU y el SVR» and s07-05/06 — then «Los», s07-07's first word, matched as its end).
+ */
+function lastOwnWord(f, words, silences) {
+  const parts = f.parts ?? [f];
+  const { first, last } = parts[parts.length - 1];
+  for (let k = last; k > Math.max(first, last - STRAY_WORDS); k--) {
+    if (!words[k] || !words[k - 1]) break;
+    if (voicedBetween(words[k - 1].endMs, words[k].startMs, silences) >= UNHEARD_MIN_MS) return k - 1;
+  }
+  return last;
+}
+
+/** The same at the start of the segment after a missing run: its first own word. */
+function firstOwnWord(f, words, silences) {
+  const { first, last } = (f.parts ?? [f])[0];
+  for (let k = first; k < Math.min(last, first + STRAY_WORDS); k++) {
+    if (!words[k] || !words[k + 1]) break;
+    if (voicedBetween(words[k].endMs, words[k + 1].startMs, silences) >= UNHEARD_MIN_MS) return k + 1;
+  }
+  return first;
+}
+
+/**
+ * Where each run of consecutive segments that were not found should be in the recording: between the last word of
+ * the found segment before it (or the start) and the first word of the one after it (or the end), trimmed to the voice
+ * inside — a silence over either edge is dropped but RECUT_PAD_MS of it — with what Whisper heard there that no
+ * segment uses.
  * @returns {{ids: string[], startMs: number | null, endMs: number | null, heard: string}[]} null edges: no voice there
  */
 export function missingGaps(located, cuts, words, silences, totalMs) {
@@ -596,11 +630,15 @@ export function missingGaps(located, cuts, words, silences, totalMs) {
   return runs.map(({ ids, first, last }) => {
     const prev = located.slice(0, first).reverse().find((f) => f.found);
     const next = located.slice(last + 1).find((f) => f.found);
-    const from = prev ? cutOf.get(prev.id).endMs : 0;
-    const to = next ? cutOf.get(next.id).startMs : totalMs;
+    // From the neighbours' own words, not their cuts: a cut runs over the voice Whisper did not hear, and that voice is
+    // often the missing sentences themselves (casos-espejo s07-05/06: s07-04's cut swallowed them, and the gap after
+    // it landed on s07-07's first take).
+    const from = prev ? Math.min(cutOf.get(prev.id).endMs, words[lastOwnWord(prev, words, silences)]?.endMs ?? Infinity) : 0;
+    const to = next ? Math.max(cutOf.get(next.id).startMs, words[firstOwnWord(next, words, silences)]?.startMs ?? -Infinity) : totalMs;
     const heard = words.filter((w, k) => !used[k] && w.startMs >= from && w.startMs < to).map((w) => w.text).join(' ');
-    const lead = silences.find((s) => s.startMs <= from && from < s.endMs);
-    const tail = silences.find((s) => s.startMs < to && to <= s.endMs);
+    // the silence right after the previous sentence's last word, and the one right before the next one's first word
+    const lead = silences.find((s) => s.startMs <= from + GAP_EDGE_MS && from < s.endMs);
+    const tail = [...silences].reverse().find((s) => s.startMs < to && to <= s.endMs + GAP_EDGE_MS);
     const voiceFrom = lead ? lead.endMs : from;
     const voiceTo = tail ? tail.startMs : to;
     if (voiceTo <= voiceFrom) return { ids, startMs: null, endMs: null, heard };
