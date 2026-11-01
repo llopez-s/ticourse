@@ -127,8 +127,9 @@ propio: f02 entra de lado en F3; f01 no entra. Si hiciera falta un quinto, serí
 - **Integración en la app.** `FoundationLesson` (`fund:3`) no tiene campo de vídeo y `SecurityFoundationPage` no pinta
   bloques. Propuesta: un `videoId?` opcional en f08, f10, f11 y f12, con el reproductor entre «Ejemplo resuelto» y
   «Error que conviene evitar», y las actividades de la parte D en el mismo formato que `SCENES` de
-  `src/data/security/video-learning.ts` (pregunta ES/EN, cuatro opciones, respuesta, explicación, opciones EN). No está
-  hecho: es un cambio de código aparte.
+  `src/data/security/video-learning.ts` (pregunta ES/EN, cuatro opciones, respuesta, explicación, opciones EN). Hecho para f08 (F1) y f12 (F4) el 2026-11-01:
+  `src/data/security/foundation-videos.ts` (un bloque de YouTube por lección), que `SecurityFoundationPage` pinta entre esos dos bloques.
+  Las actividades de la parte D siguen sin hacer; f10 y f11 se añaden con una entrada en ese archivo.
 
 **Canon.**
 - **Estos son los primeros vídeos de Halden que ve el alumno** (semanas 1–4, antes que cualquier lección SY0-701). Por
