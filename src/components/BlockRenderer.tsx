@@ -173,7 +173,7 @@ function VideoBlock({ block, startSeconds = 0 }: { block: VideoFileBlock; startS
  * YouTube lesson video behind a click-to-load facade: until the learner presses play the page shows
  * only our own poster, so nothing is requested from YouTube.
  */
-function YouTubeBlock({ block, startSeconds = 0 }: { block: YouTubeVideoBlock; startSeconds?: number }) {
+export function YouTubeBlock({ block, startSeconds = 0 }: { block: YouTubeVideoBlock; startSeconds?: number }) {
   const [playing, setPlaying] = useState(false);
   return (
     <section className="my-6 overflow-hidden rounded-xl border border-cyan-500/30 bg-ink-900">
