@@ -138,6 +138,13 @@ Contact: cti@meridian.example | Ref: MER-2026-011`,
             'Strategic consumers need analytic judgments tied to decisions — never raw technical indicators.',
         },
       },
+      {
+        t: 'video',
+        title: 'Del flash alert al BLUF: probabilidad y confianza',
+        youtube: 'JAbH56on6CA',
+        poster: 'videos/producto-bluf-poster.png',
+        transcript: 'videos/producto-bluf-transcript.txt',
+      },
     ],
     quiz: [
       {
