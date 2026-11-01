@@ -1684,11 +1684,37 @@ export const VIDEO_INVENTORY: VideoResource[] = [
     "id": "producto-bluf",
     "track": "gcti",
     "lessonId": "s5m1",
-    "title": "BLUF",
-    "status": "scripted",
-    "role": "complementary",
-    "evidence": "video/producto-bluf/video.json",
-    "chapters": []
+    "title": "Del flash alert al BLUF: probabilidad y confianza",
+    "status": "integrated",
+    "role": "principal",
+    "youtube": "JAbH56on6CA",
+    "poster": "videos/producto-bluf-poster.png",
+    "transcript": "videos/producto-bluf-transcript.txt",
+    "captions": "videos/producto-bluf-captions.vtt",
+    "durationSeconds": 474,
+    "verifiedAgainst": "videos/producto-bluf-captions.vtt",
+    "chapters": [
+      {
+        "title": "Un hallazgo, tres lectores",
+        "start": 0
+      },
+      {
+        "title": "El reloj y el flash",
+        "start": 114
+      },
+      {
+        "title": "La conclusión, primero",
+        "start": 288
+      },
+      {
+        "title": "Palabras con número",
+        "start": 374
+      },
+      {
+        "title": "Para el examen",
+        "start": 505
+      }
+    ]
   },
   {
     "id": "proveedores-halden",

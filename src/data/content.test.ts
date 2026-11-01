@@ -365,6 +365,9 @@ describe('lesson videos', () => {
     // dato-a-juicio climbs from a bare IP to a judgment, then splits threat (intent, capability, opportunity) from risk,
     // at the end of s1m1 after the intelligence check and before the paragraph that hands over to s1m2
     expect(youtubeVideos.find((v) => v.block.youtube === 'qNNJgHIN9KY')?.module).toBe('s1m1');
+    // producto-bluf ships the 11:40 UTC flash alert, puts the BLUF first and reads the ICD 203 bands apart from
+    // confidence, at the end of s5m1's base blocks after the strategic-assessment check
+    expect(youtubeVideos.find((v) => v.block.youtube === 'JAbH56on6CA')?.module).toBe('s5m1');
     // ciclo-pir walks the six phases of the lifecycle and writes the first PIRs for Meridian's CISO, after s1m4's
     // F3EAD paragraphs and before the second check
     expect(youtubeVideos.find((v) => v.block.youtube === 'rM8Syyp6JlM')?.module).toBe('s1m4');
