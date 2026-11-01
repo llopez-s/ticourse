@@ -73,12 +73,19 @@ export function mergeFixes(previous, current, writtenIds) {
 
 /**
  * What to apply. One fix per clip (the first kind in FIX_KINDS that is enabled), the kinds not enabled left as `manual`,
- * a clip already tried (`done`) left as `repeated`: the same fix would give the same clip.
- * @returns {{apply: {ids: string[], kind: string, parts: object[]}[], manual: {id: string, kind: string}[], repeated: string[]}}
+ * a clip already tried (`done`) left as `repeated`: the same fix would give the same clip. An `unheard` or `long` fix of a
+ * clip next to a missing one (in script `order`) is left as `manual` too, even with --kinds all: the voice it would cut
+ * out is often the missing sentences themselves (casos-espejo s07-04 held s07-05/06).
+ * @returns {{apply: {ids: string[], kind: string, parts: object[]}[], manual: {id: string, kind: string, reason?: string}[], repeated: string[]}}
  */
-export function planFixes(fixes, { kinds = SAFE_KINDS, done = [] } = {}) {
+export function planFixes(fixes, { kinds = SAFE_KINDS, done = [], order = [] } = {}) {
   const enabled = new Set(kinds);
   const tried = new Set(done);
+  const missing = new Set(fixes.filter((f) => f.kind === 'missing').flatMap((f) => f.ids));
+  const nextToMissing = (id) => {
+    const k = order.indexOf(id);
+    return k >= 0 && (missing.has(order[k - 1]) || missing.has(order[k + 1]));
+  };
   const rank = (k) => FIX_KINDS.indexOf(k);
   const byId = new Map();
   for (const f of [...fixes].sort((a, b) => rank(a.kind) - rank(b.kind))) {
@@ -94,6 +101,7 @@ export function planFixes(fixes, { kinds = SAFE_KINDS, done = [] } = {}) {
   for (const [id, list] of byId) {
     const pick = list.find((f) => enabled.has(f.kind));
     if (!pick) manual.push({ id, kind: list[0].kind });
+    else if ((pick.kind === 'unheard' || pick.kind === 'long') && nextToMissing(id)) manual.push({ id, kind: pick.kind, reason: 'junto a una frase no encontrada' });
     else if (tried.has(id)) repeated.push(id);
     else if (!picked.has(pick)) {
       // one entry per fix: a gap that names two clips is cut once

@@ -17,7 +17,8 @@
 // 6. import-recording.mjs con --lufs=-18 y el Python del checkout principal (CHATTERBOX_PYTHON).
 // 7. Con --fix, fix-recording.mjs: los avisos seguros del importador (toma posterior, apertura repetida, inicio perdido,
 //    borde dentro de una palabra) se arreglan con tomas de la propia grabación, en un solo recorte (ver ese script).
-// Se puede repetir: lo que ya está hecho se salta. Después: cd <carpeta> && node video/engine/scripts/produce.mjs --video <slug>
+// Se puede repetir: lo que ya está hecho se salta. Después: cd <carpeta> && node video/engine/scripts/produce.mjs --video <slug> --upload
+// (la subida, en privado, va en la misma tirada desde 2026-11-01: ella lo revisa y lo publica desde Studio).
 // --remove quita primero las uniones y luego el worktree (git worktree remove, sin --force: si hay cambios sin
 // commit, se para). Nunca borres el worktree a mano con las uniones dentro: borrarías el node_modules y la .cache
 // del checkout principal. La lógica pura está en lib/prepare-voice.mjs.
@@ -194,7 +195,7 @@ function remove(values) {
 }
 
 function done(dir, slug) {
-  console.log(`\nListo. Siguiente paso, desde el worktree:\n  cd "${dir}"\n  node video/engine/scripts/produce.mjs --video ${slug}`);
+  console.log(`\nListo. Siguiente paso, desde el worktree:\n  cd "${dir}"\n  node video/engine/scripts/produce.mjs --video ${slug} --upload\n(--upload lo sube en privado al terminar; quítalo si no toca subirlo)`);
 }
 
 try {

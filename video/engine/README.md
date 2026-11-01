@@ -828,8 +828,11 @@ node video/engine/scripts/fix-recording.mjs --video <slug> [--kinds safe|all|lat
 
 # 6b. Con la voz ya importada, la cadena entera en un solo comando (para en el primer error y dice cómo retomar):
 #     audio (timeline + verify-voice) → program (WAV del programa) → master1 → frames → master2 → report
-node video/engine/scripts/produce.mjs --video <slug> [--concurrency 4] [--from <paso>|--only <paso>] [--dry-run]
-#     --upload añade youtube-meta + youtube-upload (privado salvo --privacy); sin --upload nunca sube nada.
+node video/engine/scripts/produce.mjs --video <slug> --upload [--concurrency N] [--from <paso>|--only <paso>] [--dry-run]
+#     --upload añade youtube-meta + youtube-upload (privado salvo --privacy); sin --upload nunca sube nada. Desde
+#     2026-11-01 la subida en privado va en la misma tirada (ella lo revisa y lo publica desde Studio); antes de
+#     empezar comprueba que el token de YouTube (7 días) no caduque antes de llegar a la subida.
+#     Sin --concurrency el render va a 6 con ≥12 hilos y ≥4,5 GB libres, y a 4 si no.
 #     Guardias: "music" en video.json y el archivo en music/library/, Python del venv principal, node_modules, clips
 #     importados, timeline fuera de estimate. master_mix va siempre aparte del render (--master-in-render lo junta).
 

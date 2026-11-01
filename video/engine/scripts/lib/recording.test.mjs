@@ -534,6 +534,21 @@ test('missingGaps: consecutive missing sentences share one gap, with what Whispe
   ]);
 });
 
+test('missingGaps starts after the previous sentence\'s last word, not its cut (casos-espejo s07-05/06)', () => {
+  // s07-04's own words end at 0.9 s; then 3 s of voice Whisper did not hear (the missing sentences) and «los», the
+  // next sentence's first word, which the aligner gave to s07-04 — its cut ran to 4.7 s, and the gap measured from
+  // there fell on the next sentence's first take (5–6 s).
+  const words = [...spoken('uno dos'), ...W([['los', 4500, 4700]]), ...spoken('otra toma', 5000), ...spoken('cinco seis', 8000)];
+  const located = [
+    { id: 'a', found: true, score: 1, first: 0, last: 2 },
+    { id: 'b', found: false, score: 0 },
+    { id: 'd', found: true, score: 1, first: 5, last: 6 },
+  ];
+  const cuts = [{ id: 'a', startMs: 0, endMs: 4700 }, { id: 'd', startMs: 7850, endMs: 9000 }];
+  const silences = [{ startMs: 1000, endMs: 1500 }, { startMs: 6000, endMs: 7900 }];
+  assert.deepEqual(missingGaps(located, cuts, words, silences, 9000), [{ ids: ['b'], startMs: 1200, endMs: 6300, heard: 'otra toma' }]);
+});
+
 test('recutLoudnessFilter measures a gap as recut_recording.py writes it: the voice, then its silence after each part', () => {
   // V10: the bare excerpt measured -19.23 LUFS, the recut file -19.53, so --lufs gave the clip 0.3 dB more gain.
   const recut = readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'recut_recording.py'), 'utf8');
