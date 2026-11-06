@@ -172,6 +172,14 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   run would otherwise show a lab as done with no XP). The challenge panel is the
   app's only lazy chunk; `ChallengeBoundary` in LabPage keeps a failed load inside it.
 
+
+- **Glossary acronyms (2026-11-05).** Every acronym used in either track's content has a
+  glossary term that spells it (own entry `'SOC (Security Operations Center)'` or appended to
+  the concept's term, `'... (PAM)'`). Glossaries now hold GCTI 187 / Security+ 471 entries
+  (practical and sp7 ones included). `src/data/acronyms.test.ts` pins the list per track and term
+  uniqueness: when content introduces a new acronym, add it there and to the glossary.
+  Deliberately left out: campaign codenames, all-caps question words, case/video ids, units
+  and brand/cert names (CompTIA, GIAC, SANS).
 - **Practical curriculum (2026-10-19).** Thirteen existing lessons append typed blocks
   from `data/practical/` through `withPracticalExpansion` in `tracks.ts`. Original
   block indices and lesson/question/lab IDs stay stable. New totals: GCTI 103 cards /

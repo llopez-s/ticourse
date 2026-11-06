@@ -340,7 +340,7 @@ Hosts contactados:
   update-svc-cdn.com:443        → C2 (beacon HTTPS, jitter 60s)
   ocsp-verify-node.example:443  → segundo C2 (fallback)
   time.windows.com:123          → NTP legítimo del SO
-  ctldl.windowsupdate.com:80    → CRL/CTL legítimo de Windows
+  ctldl.windowsupdate.com:80    → CTL legítima de Windows (listas de certificados de confianza)
   www.msftconnecttest.com:80    → prueba de conectividad de Windows`,
       },
       {
@@ -587,7 +587,7 @@ Hosts contactados:
         items: [
           '**Passive DNS (pDNS)** — historial de resoluciones dominio↔IP recolectado por sensores globales. Responde: «¿a qué apuntó este dominio el año pasado?» y «¿qué más resolvió a esta IP?».',
           '**WHOIS / registro** — registrante, email, registrar, fechas de creación/expiración, nameservers. La privacidad lo oculta a menudo… pero el WHOIS **histórico** y los patrones de registro (mismo registrar+NS+fecha) siguen pivotando.',
-          '**Certificados TLS** — fingerprint (SHA-1), subject, SANs, emisor, fechas. Los **Certificate Transparency logs** publican cada certificado emitido: descubren subdominios e infraestructura nueva en tiempo casi real. La reutilización de un certificado autofirmado entre servidores es un enlace fuerte.',
+          '**Certificados TLS** — fingerprint (SHA-1), subject, SANs, emisor, fechas. Los **Certificate Transparency logs** publican cada certificado emitido por una CA de confianza pública (los autofirmados no aparecen): descubren subdominios e infraestructura nueva en tiempo casi real. La reutilización de un certificado autofirmado entre servidores es un enlace fuerte.',
         ],
       },
       {
@@ -682,7 +682,7 @@ Hosts contactados:
         prompt: 'Certificate Transparency logs are valuable to CTI because they:',
         choices: [
           'Hide certificates from adversaries',
-          'Publish every issued certificate, exposing new domains/subdomains as infrastructure is stood up',
+          'Publish every certificate issued by publicly trusted CAs, exposing new domains/subdomains as infrastructure is stood up',
           'Block invalid certificates automatically',
           'Contain malware samples',
         ],
