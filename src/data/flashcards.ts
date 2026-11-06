@@ -48,7 +48,7 @@ export const FLASHCARDS: Flashcard[] = [
   { id: 'fc308', sectionId: 's3', front: 'OPSEC risk of uploading samples publicly', back: 'Adversaries monitor for their hashes: uploads reveal discovery. Search by hash first; upload deliberately.' },
   { id: 'fc309', sectionId: 's3', front: 'Passive DNS', back: 'Historical record of domain↔IP resolutions. Answers: what did this resolve to; what else resolved to this IP.' },
   { id: 'fc310', sectionId: 's3', front: 'Pivoting despite WHOIS privacy', back: 'Historical WHOIS + registration patterns: registrar, nameservers, creation timing, naming convention.' },
-  { id: 'fc311', sectionId: 's3', front: 'Certificate Transparency logs', back: 'Public append-only logs of every issued TLS cert — near-real-time discovery of new domains/infrastructure.' },
+  { id: 'fc311', sectionId: 's3', front: 'Certificate Transparency logs', back: 'Public append-only logs of every TLS cert issued by a publicly trusted CA (self-signed certs never appear) — near-real-time discovery of new domains/infrastructure.' },
   { id: 'fc312', sectionId: 's3', front: 'Noisy pivots (do NOT follow blindly)', back: 'Shared hosting IPs, CDN IPs, registrar default nameservers, sinkholes, mass-CA certs. Ask: how many tenants?' },
   { id: 'fc313', sectionId: 's3', front: 'Malicious domain lifecycle', back: 'Register (often in batches) → park/age → activate → use → burned → abandon/resell. Registration patterns enable pre-emptive blocking.' },
   { id: 'fc314', sectionId: 's3', front: 'TLP 2.0 levels', back: 'RED (named individuals only), AMBER (org + clients need-to-know), AMBER+STRICT (org only), GREEN (community), CLEAR (public).' },

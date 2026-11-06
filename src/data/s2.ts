@@ -331,7 +331,7 @@ DELIVERY
 
 EXPLOITATION
   Detect : regla EDR: LNK que lanza powershell -enc
-  Deny   : política ASR: explorer no puede crear procesos PowerShell
+  Deny   : AppLocker: PowerShell bloqueado para usuarios estándar
 
 INSTALLATION
   Detect : alerta: schtasks /create fuera del inventario aprobado
@@ -359,7 +359,7 @@ ACTIONS ON OBJECTIVES
             'The DLP detection; alternative: canary tokens',
             'The C2 sinkhole; alternative: Detect + Degrade (throttle) while mapping the operation',
             'The HR decoy mailbox; alternative: blocking the domain',
-            'The EDR rule on LNK→PowerShell; alternative: ASR policy',
+            'The EDR rule on LNK→PowerShell; alternative: AppLocker policy',
           ],
           answer: 1,
           explain:

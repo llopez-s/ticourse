@@ -88,7 +88,7 @@ HÍBRIDO (lo que hace TLS en la práctica)
       items: [
         '**Full-disk encryption (FDE)** — cifra todo el disco (BitLocker, FileVault). Protege los datos **at rest** si roban el portátil apagado; una vez arrancado y con sesión abierta, no protege nada.',
         '**Partition / volume** — solo una partición o volumen lógico; útil para separar datos sensibles del sistema operativo.',
-        '**File-level** — ficheros concretos (EFS, GPG). Sobrevive a que el fichero se copie a otro sitio.',
+        '**File-level** — ficheros concretos (EFS, GPG). Con GPG el fichero sigue cifrado vaya donde vaya; EFS lo liga a la cuenta del usuario en NTFS y el cifrado se pierde al copiarlo a un volumen FAT/exFAT o al adjuntarlo a un correo.',
         '**Database** — toda la base de datos cifrada de forma transparente (TDE). Protege el fichero de la BD, pero el DBA con acceso a la aplicación sigue viendo los datos.',
         '**Record / column / field-level** — solo campos concretos (el número de tarjeta, no el nombre). Es lo que exige PCI DSS y lo que impide que un DBA curioso lea lo sensible.',
         '**Transport / communication** — datos **in transit**: TLS, IPsec, VPN. No protege nada una vez que los datos llegan al destino y se almacenan.',
