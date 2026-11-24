@@ -37,6 +37,10 @@ import { SP_FLASHCARDS } from './secplus/flashcards';
 import { SP_GLOSSARY } from './secplus/glossary';
 import { SP_LABS } from './secplus/labs';
 import { SP_PLACEMENT } from './secplus/placement';
+import { OP_DOMAIN_WEIGHTS, OP_DOMAINS, OP_RANKS, OP_SECTIONS } from './opo/sections';
+import { OP1_MODULES } from './opo/op1';
+import { OP1_FLASHCARDS, OP1_GLOSSARY } from './opo/op1-cards';
+import { OP_LABS } from './opo/labs';
 import { withPracticalExpansion } from './practical';
 import { PRACTICAL_CARDS, PRACTICAL_GLOSSARY } from './practical/study-aids';
 import { withTrainingReview } from './security/training-review';
@@ -156,6 +160,37 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
         'Eres la primera analista de seguridad de la Autoridad Portuaria de Halden. Completa las 5 misiones (labs) y derrota a los 5 bosses para descubrir quién está detrás de GLASS HARBOR.',
     },
   },
+  opo: {
+    id: 'opo',
+    name: 'Redes y ENS',
+    icon: '🌐',
+    tagline:
+      'Redes, servicios de red y Esquema Nacional de Seguridad para temarios TIC de la administración pública. En construcción: disponible el bloque de redes.',
+    disclaimer:
+      'Material de estudio no oficial e independiente, elaborado a partir de estándares públicos (RFC, IEEE) y normativa publicada. No afiliado a ninguna administración pública ni a ningún tribunal de selección; no sustituye al temario ni a las bases de ninguna convocatoria.',
+    domains: OP_DOMAINS,
+    domainWeights: OP_DOMAIN_WEIGHTS,
+    sections: OP_SECTIONS,
+    modules: [...OP1_MODULES],
+    placement: [],
+    flashcards: [...OP1_FLASHCARDS],
+    glossary: [...OP1_GLOSSARY],
+    labs: OP_LABS,
+    ranks: OP_RANKS,
+    exam: {
+      name: 'Simulacro Redes y ENS',
+      realFormat:
+        'Preguntas muestreadas de los bloques disponibles, cronometradas y sin feedback hasta el final. Cada convocatoria fija su propio formato: comprueba en sus bases el número de preguntas, el tiempo y la penalización.',
+      passPct: 70,
+      sprint: { n: 20, minutes: 20 },
+      full: { n: 40, minutes: 45 },
+    },
+    campaign: {
+      title: 'Operación PLANO EN BLANCO',
+      intro:
+        'Eres la nueva técnica de comunicaciones y ciberseguridad del Consorcio Provincial de Arcedo. Heredas una red sin documentar: completa las misiones (labs) y supera cada jefe para dejarla sobre el papel.',
+    },
+  },
 };
 
-export const TRACK_IDS: TrackId[] = ['gcti', 'secplus'];
+export const TRACK_IDS: TrackId[] = ['gcti', 'secplus', 'opo'];

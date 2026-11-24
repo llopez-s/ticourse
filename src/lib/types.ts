@@ -3,7 +3,7 @@
 export type Conf = 'low' | 'med' | 'high';
 export type Grade = 0 | 3 | 4 | 5; // Again / Hard / Good / Easy
 
-export type TrackId = 'gcti' | 'secplus';
+export type TrackId = 'gcti' | 'secplus' | 'opo';
 
 export type Domain =
   // GCTI
@@ -17,7 +17,13 @@ export type Domain =
   | 'Threats, Vulnerabilities & Mitigations'
   | 'Security Architecture'
   | 'Security Operations'
-  | 'Security Program Management & Oversight';
+  | 'Security Program Management & Oversight'
+  // Redes y ENS (administración pública)
+  | 'Redes de comunicaciones'
+  | 'ENS y normativa'
+  | 'Servicios de red y balanceo'
+  | 'Infraestructuras de comunicaciones'
+  | 'Identidad corporativa';
 
 export interface Question {
   id: string;
@@ -158,6 +164,8 @@ export interface GlossaryEntry {
   term: string;
   def: string;
   sectionId: string;
+  /** Término en catalán (pista «Redes y ENS»: el examen puede ser en catalán). */
+  ca?: string;
 }
 
 export interface CardState {

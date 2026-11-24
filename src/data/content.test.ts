@@ -238,8 +238,8 @@ describe('placement blocks', () => {
     }
   });
 
-  it('both shipped tracks have one', () => {
-    for (const t of Object.values(TRACKS)) {
+  it('GCTI and Security+ have one', () => {
+    for (const t of [TRACKS.gcti, TRACKS.secplus]) {
       expect(t.placement.length, t.id).toBeGreaterThan(0);
     }
   });

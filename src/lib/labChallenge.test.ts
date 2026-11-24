@@ -21,8 +21,8 @@ function solved(data: ChallengeCase): ChallengeAnswer {
 }
 
 describe('lab curriculum and challenge contracts', () => {
-  it('keeps 27 labs, valid prerequisites, two objectives and explicit completion criteria', () => {
-    expect(LABS).toHaveLength(27);
+  it('keeps 29 labs, valid prerequisites, two objectives and explicit completion criteria', () => {
+    expect(LABS).toHaveLength(29);
     for (const lab of LABS) {
       expect(lab.objectives?.length, lab.id).toBeGreaterThanOrEqual(2);
       expect(lab.outcome?.length, lab.id).toBeGreaterThan(25);

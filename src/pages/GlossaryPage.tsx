@@ -18,6 +18,7 @@ export default function GlossaryPage() {
         (!filter || e.sectionId === filter) &&
         (!q ||
           e.term.toLowerCase().includes(q) ||
+          (e.ca ?? '').toLowerCase().includes(q) ||
           e.def.toLowerCase().includes(q)),
     ).sort((a, b) => a.term.localeCompare(b.term));
   }, [query, filter, track]);
@@ -31,6 +32,8 @@ export default function GlossaryPage() {
           sub={
             track.id === 'gcti'
               ? 'Términos en inglés (como el examen) con definición breve. Es tu semilla de índice GIAC: imprímelo y complétalo con referencias a tus materiales.'
+              : track.id === 'opo'
+              ? 'Términos con definición breve y su equivalente en catalán (cat.), por si tu examen es en esa lengua. También puedes buscar por el término catalán.'
               : 'Términos en inglés (como el examen) con definición breve. El Security+ es closed-book: usa esta lista como chequeo rápido de vocabulario antes de cada simulacro.'
           }
         />
@@ -90,6 +93,11 @@ export default function GlossaryPage() {
                 <span className="font-semibold text-cyan-300 print:text-black">
                   {e.term}
                 </span>
+                {e.ca ? (
+                  <span lang="ca" className="text-xs text-slate-400 print:text-black">
+                    cat. {e.ca}
+                  </span>
+                ) : null}
                 <span className="ml-auto shrink-0 font-mono text-[10px] text-slate-500">
                   S{sec?.num}
                 </span>

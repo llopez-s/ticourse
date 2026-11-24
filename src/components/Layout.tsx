@@ -70,7 +70,7 @@ function TrackSwitcher({ compact = false }: { compact?: boolean }) {
       role="tablist"
       aria-label="Track de estudio"
       className={`flex shrink-0 rounded-lg border border-ink-600 bg-ink-850 p-0.5 ${
-        compact ? '' : 'mx-3 mb-2'
+        compact ? '' : 'mx-3 mb-2 flex-wrap'
       }`}
     >
       {TRACK_IDS.map((id) => (

@@ -40,6 +40,7 @@ export const PRACTICAL_CARDS: Record<TrackId, Flashcard[]> = {
     { id: 'fc-p21', sectionId: 's5', front: 'Complementary · IOC vs IoA in a hunt', back: 'IOCs (hashes, IPs, domains) give initial leads and help scope a hunt but rotate easily. IoAs describe behaviour (process relationships, command lines, access patterns) and stay useful when the attacker changes infrastructure.' },
     { id: 'fc-p22', sectionId: 's3', front: 'Complementary · Network IOC to Suricata rule', back: 'A domain, SNI or URI can become a Suricata rule; the YARA questions still apply: scope, what the adversary changes for free, accepted false positives, tested captures, version and limits.' },
   ],
+  opo: [],
 };
 
 export const PRACTICAL_GLOSSARY: Record<TrackId, GlossaryEntry[]> = {
@@ -80,4 +81,5 @@ export const PRACTICAL_GLOSSARY: Record<TrackId, GlossaryEntry[]> = {
     { sectionId: 's5', term: 'Micro hunt (complementario)', def: 'Hunt ligero de una sola hipótesis, pocas fuentes y alcance cerrado, medido en horas. Se convierte en hunt completo si crece el alcance o aparece actividad maliciosa.' },
     { sectionId: 's5', term: 'Indicator of attack / IoA (complementario)', def: 'Indicador de comportamiento (relaciones entre procesos, líneas de comando, patrones de acceso) que sigue siendo útil aunque el atacante cambie de infraestructura, a diferencia de muchos IOCs.' },
   ],
+  opo: [],
 };

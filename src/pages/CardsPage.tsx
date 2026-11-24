@@ -18,7 +18,8 @@ export default function CardsPage() {
   const srs = useStore((s) => s.srs);
   const day = useStore((s) => s.day);
   const gradeCard = useStore((s) => s.gradeCard);
-  const cards = useTrack().flashcards;
+  const track = useTrack();
+  const cards = track.flashcards;
   const today = todayStr();
 
   const [queue, setQueue] = useState<string[] | null>(null);
@@ -161,7 +162,7 @@ export default function CardsPage() {
       <PageTitle
         kicker="Spaced repetition"
         title="🃏 Flashcards"
-        sub="Repaso espaciado SM-2: las cartas vuelven justo antes de que las olvides. 10 cartas nuevas al día + las que toquen. En inglés, como el examen."
+        sub={`Repaso espaciado SM-2: las cartas vuelven justo antes de que las olvides. 10 cartas nuevas al día + las que toquen.${track.id === 'opo' ? '' : ' En inglés, como el examen.'}`}
       />
 
       <div className="mb-5 grid grid-cols-2 gap-3 sm:grid-cols-4">

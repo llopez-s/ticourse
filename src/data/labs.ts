@@ -5,6 +5,7 @@ import {
   SP_ORDER_DATA,
   SP_SELECT_DATA,
 } from './secplus/labs';
+import { OP_CLASSIFY_DATA, OP_LABS, OP_ORDER_DATA } from './opo/labs';
 
 // ---------------------------------------------------------------------------
 // Lab registry + all lab data (Operation VELVET CICADA scenario)
@@ -194,7 +195,7 @@ export const GCTI_LABS: LabMeta[] = ([
   },
 ] satisfies LabMeta[]).map(withLabGuide);
 
-export const LABS: LabMeta[] = [...GCTI_LABS, ...SP_LABS];
+export const LABS: LabMeta[] = [...GCTI_LABS, ...SP_LABS, ...OP_LABS];
 
 // ---------------------------------------------------------------------------
 // Generic: classify labs
@@ -509,6 +510,7 @@ const GCTI_CLASSIFY: Record<string, ClassifyData> = {
 export const CLASSIFY_DATA: Record<string, ClassifyData> = {
   ...GCTI_CLASSIFY,
   ...SP_CLASSIFY_DATA,
+  ...OP_CLASSIFY_DATA,
 };
 
 // ---------------------------------------------------------------------------
@@ -621,6 +623,7 @@ const GCTI_ORDER: Record<string, OrderData> = {
 export const ORDER_DATA: Record<string, OrderData> = {
   ...GCTI_ORDER,
   ...SP_ORDER_DATA,
+  ...OP_ORDER_DATA,
 };
 
 // ---------------------------------------------------------------------------
