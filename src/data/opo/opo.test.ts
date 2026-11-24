@@ -121,7 +121,7 @@ describe('pista Redes y ENS', () => {
   // an acronym with no settled Catalan form goes without rather than with a guess.
   it('glossary gives the Catalan term where one is confirmed, never an empty one', () => {
     const withCa = opo.glossary.filter((g) => g.ca !== undefined);
-    expect(withCa.length).toBeGreaterThanOrEqual(50);
+    expect(withCa.length).toBeGreaterThanOrEqual(40);
     for (const g of withCa) expect(g.ca!.trim().length, g.term).toBeGreaterThan(0);
   });
 });

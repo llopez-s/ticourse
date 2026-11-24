@@ -149,7 +149,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   achievements yet (`content.test.ts` now requires a placement test only for GCTI and Security+).
   `GlossaryEntry.ca` is the optional Catalan term, shown and searchable in `GlossaryPage`; set it only when
   confirmed in TERMCAT (Cercaterm answers 401 to plain fetches: use the Browser pane with `?type=basic`,
-  ~2 s apart) or the Catalan Wikipedia — 55 of the 111 block-1 entries have it. Lesson links to another
+  ~2 s apart) or the Catalan Wikipedia — 42 of the 111 block-1 entries have it. Lesson links to another
   track use `{ t: 'links', items: [{ href: '/learn/sp3m5' }] }` (a leading `/` makes it a router link).
   `opo.test.ts` recomputes the subnet lab (`opl1a`) from the CIDR in each category label, so labels must
   keep the `a.b.c.d/nn` form. The store shape did not change (no migration). Scenario: the fictional
