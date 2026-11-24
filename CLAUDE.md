@@ -83,7 +83,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
 
 ## Architecture notes (read before editing content)
 
-- **Tracks.** `TrackId = 'gcti' | 'secplus'`. The active track is `store.track` (persisted);
+- **Tracks.** `TrackId = 'gcti' | 'secplus' | 'opo'`. The active track is `store.track` (persisted);
   `useTrack()` returns its `TrackMeta`; content pages call `useSyncTrack(sectionId)` so deep
   links switch tracks. Progress maps (`lessons`, `quizBest`, `labs`, `bosses`, `srs`) are keyed by
   globally unique ids, so they are per-track for free; XP/level/streak/quests/calibration are one
@@ -135,6 +135,27 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   Track icons must not reuse the app's `◆`.
 
 ## State & gotchas
+
+- **Third track `opo`, «Redes y ENS» (2026-11-24).** Networks, network services and the Spanish ENS for
+  public-administration IT syllabuses; unofficial, with its own disclaimer. Lives in `src/data/opo/`
+  (`sections.ts`, `op1.ts` + one lesson per file `op1-m1.ts`…`op1-m5.ts`, `op1-cards.ts`, `labs-op1.ts`,
+  `labs.ts`, `opo.test.ts`). Ids: `op1` / `op1m1` / `op1m1q1` / `fco101` / `opl1a`. Only block 1
+  («Redes de comunicaciones», 5 lessons, 40 questions, 2 labs, 30 cards, 111 glossary terms) exists; blocks
+  2–5 (ENS y normativa, servicios de red y balanceo, infraestructuras, identidad) each need their own plan
+  like `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md`, a new section in `OP_SECTIONS` and their
+  modules spread into `TRACKS.opo.modules`. Differences from the other two tracks: **everything is in
+  Spanish, questions included** (the real exams are not in English); five new `Domain` values in Spanish;
+  mock-exam weights are the planned lesson counts (5/5/4/2/2), not official ones; no placement test and no
+  achievements yet (`content.test.ts` now requires a placement test only for GCTI and Security+).
+  `GlossaryEntry.ca` is the optional Catalan term, shown and searchable in `GlossaryPage`; set it only when
+  confirmed in TERMCAT (Cercaterm answers 401 to plain fetches: use the Browser pane with `?type=basic`,
+  ~2 s apart) or the Catalan Wikipedia — 55 of the 111 block-1 entries have it. Lesson links to another
+  track use `{ t: 'links', items: [{ href: '/learn/sp3m5' }] }` (a leading `/` makes it a router link).
+  `opo.test.ts` recomputes the subnet lab (`opl1a`) from the CIDR in each category label, so labels must
+  keep the `a.b.c.d/nn` form. The store shape did not change (no migration). Scenario: the fictional
+  Consorcio Provincial de Arcedo — sede 10.20.10/20/30/99.0/24 by VLAN, oficinas comarcales in
+  10.20.8.0/22, CPD 10.20.72.0/21; keep new lessons on those ranges. Tests pinning totals that a new block
+  must update: `practical.test.ts` (`originals`), `labChallenge.test.ts` (lab count), `acronyms.test.ts`.
 
 - **SY0-801 novelties, section `sp7` (2026-10-21).** Optional Security+ section «Novedades SY0-801»: 7 lessons
   `sp7m1`–`sp7m7` (`data/secplus/sp7-m1.ts`…`sp7-m7.ts`, aggregated in `sp7.ts`), 73 cards `fcp701`–`fcp773` and 102

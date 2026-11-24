@@ -47,7 +47,9 @@ export default function LabPage() {
   if (!meta) return <p className="text-slate-400">Lab no encontrado.</p>;
 
   const section = sectionById(meta.sectionId);
-  const campaign = TRACKS[trackOf(meta.sectionId)].campaign;
+  const labTrack = TRACKS[trackOf(meta.sectionId)];
+  const campaign = labTrack.campaign;
+  const missionCount = labTrack.labs.filter((l) => l.mission).length;
   const onComplete = () => completeLab(meta.id, meta.xp);
   const challenge = search.get('mode') === 'challenge' && !!meta.challengeId;
   const reviewLinks = (meta.prerequisites ?? []).flatMap((id) => {
@@ -103,7 +105,7 @@ export default function LabPage() {
       {meta.mission && (
         <div className="mb-5 rounded-xl border border-emerald-500/40 bg-emerald-950/20 p-4">
           <div className="mb-1 font-mono text-[10px] uppercase tracking-[0.25em] text-emerald-400">
-            🎖️ {campaign.title} — Misión {meta.mission.n}/5
+            🎖️ {campaign.title} — Misión {meta.mission.n}/{missionCount}
           </div>
           <p className="text-sm leading-relaxed text-slate-300">
             {meta.mission.briefing}

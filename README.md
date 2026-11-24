@@ -2,13 +2,14 @@
 
 *Antes IntelForge Academy. Las claves de guardado del navegador (`intelforge-v1`, `intelforge-sync`) conservan el nombre antiguo a propósito, para no perder el progreso.*
 
-Curso web interactivo y gamificado con **dos tracks** de certificación, que
-comparten el mismo motor (XP, rachas, flashcards SM-2, bosses, simulacros):
+Curso web interactivo y gamificado con **dos tracks** de certificación y una tercera pista de
+redes y normativa para la administración pública, que comparten el mismo motor (XP, rachas, flashcards SM-2, bosses, simulacros):
 
 | Track | Certificación | Estado |
 |---|---|---|
 | **CTI · GCTI** | GIAC GCTI (asociada a SANS FOR578: Cyber Threat Intelligence) | Completo: 27 lecciones, 174 preguntas, 12 labs, 102 flashcards, prueba de nivel y ampliaciones prácticas |
 | **Security+** | CompTIA Security+ (SY0-701) | **Completo: los 5 dominios** — 41 lecciones + exam prep, 308 preguntas, 135 checkpoints base + 2 complementarios, 15 labs, 163 flashcards, 246 términos |
+| **Redes y ENS** | Temarios TIC de la administración pública (sin certificación asociada) | **En construcción:** bloque 1, redes de comunicaciones — 5 lecciones, 40 preguntas, 2 labs, 30 flashcards y glosario con el término en catalán |
 
 **▶ En vivo: https://llopez-s.github.io/ticourse/** — se despliega solo en cada
 push a `main` (GitHub Actions: tests → build → Pages).
@@ -164,6 +165,22 @@ objetivos v2.0 (previo al lanzamiento), que puede cambiar: tras el lanzamiento
 conviene contrastarla con los objetivos finales. Diseño y plan en
 `docs/superpowers/specs/2026-10-20-sy0-801-novedades-design.md` y
 `docs/superpowers/plans/2026-10-21-sy0-801-novedades.md`.
+
+## Redes y ENS (tercera pista, en construcción)
+
+Pista para temarios de técnico/a TIC de la administración pública: redes, servicios de red,
+infraestructuras, identidad corporativa y Esquema Nacional de Seguridad. **Material no oficial**: no está
+afiliado a ninguna administración ni tribunal de selección y no sustituye a las bases de ninguna convocatoria.
+
+- **Disponible:** bloque 1, *Redes de comunicaciones* (`op1`): modelos OSI y TCP/IP, direccionamiento IPv4 e
+  IPv6 con cálculo de subredes, conmutación y VLAN 802.1Q, encaminamiento (estático, OSPF, BGP, VRRP) y
+  arquitecturas WAN y WLAN. Dos labs: reparto VLSM y el recorrido de un paquete entre dos VLAN.
+- **Pendiente:** ENS y normativa, servicios de red y balanceo, infraestructuras e identidad corporativa.
+- A diferencia de las otras dos pistas, **todo está en español**, también las preguntas. El glosario añade el
+  término en catalán (`cat.`) cuando está confirmado en TERMCAT o en la Viquipèdia, y se puede buscar por él.
+- Lo que ya enseña Security+ (seguridad wifi, 802.1X, VPN) no se repite: las lecciones lo enlazan.
+- No tiene prueba de nivel ni logros propios todavía. El simulacro reparte las preguntas entre los bloques
+  disponibles; no existen pesos oficiales.
 
 ## 🎮 Gamificación
 

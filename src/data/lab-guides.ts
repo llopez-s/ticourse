@@ -38,6 +38,8 @@ export const LAB_GUIDES: Record<string, LabGuide> = {
   spl5a: guide(['sp5m1'], ['Distinguir políticas, estándares, procedimientos y guías.', 'Relacionar documentos con decisiones de gobierno.'], 'Clasificar los documentos del programa de seguridad.'),
   spl5b: guide(['sp5m5'], ['Distinguir acuerdos y compromisos con proveedores.', 'Relacionar necesidades de negocio con instrumentos contractuales.'], 'Seleccionar el tipo de acuerdo adecuado para cada escenario.'),
   spl5c: guide(['sp5m3'], ['Calcular pérdida esperada por incidente y por año.', 'Separar valor del activo, exposición y frecuencia.'], 'Resolver las decisiones de riesgo cuantitativo del caso.'),
+  opl1a: guide(['op1m2'], ['Calcular el rango utilizable de una subred a partir de su prefijo.', 'Asignar una dirección IPv4 a su subred en un plan VLSM.'], 'Colocar los equipos del Consorcio en la subred que les corresponde.'),
+  opl1b: guide(['op1m3'], ['Seguir una trama por puertos de acceso y enlaces troncales.', 'Separar lo que cambia en capa 2 de lo que se conserva en capa 3.'], 'Reconstruir el recorrido de un paquete entre dos VLAN.'),
 };
 
 export function withLabGuide(meta: LabMeta): LabMeta {
