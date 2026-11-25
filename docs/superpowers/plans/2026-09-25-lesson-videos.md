@@ -6216,6 +6216,30 @@ por la misma CPU; cuatro cortes a mano en la grabación. Los pasos detallados si
 4. **Congelar el guion.** Con las revisiones aplicadas y `canon-refs.md` leído, `video.json` → `"frozen":
    "AAAA-MM-DD"`. Solo entonces la hoja de grabación sale como «versión definitiva»; antes es un «BORRADOR · no
    grabes todavía» y `script-sheets.mjs` avisa. Lidia recibe una sola hoja.
+4b. **Arte con Magnific (opcional, desde el 2026-11-25).** Después de congelar el guion y antes de las escenas, las
+   imágenes de las analogías se pueden encargar a Magnific; el piloto fue `vlan-arcedo` (encargo
+   `docs/superpowers/plans/fichas-redes/R03-arte-magnific.md`, cuenta de créditos en
+   `video/vlan-arcedo/public/art/CREDITOS.md`). Reglas de Lidia, sin excepción:
+   - **Magnific pone la imagen; el motor pone todo lo demás.** Cada encargo pide «sin texto, sin letras, sin números,
+     sin logotipos» y sin personas reconocibles. Ningún diagrama técnico se genera (puertos, tramas, etiquetas,
+     subredes y preguntas siguen en código), ni voz, ni música.
+   - **Qué se encarga:** una ilustración por analogía que la voz sostiene (la planta, la sala de correo, la puerta),
+     el fondo de la miniatura y, como mucho, uno o dos clips de 5 s para un movimiento que el motor no dibuja bien.
+     Las escenas de pregunta y los diagramas no llevan arte nuevo.
+   - **Estilo de la serie:** «isométrico plano» sobre azul noche (referencia: `estilo-A` del piloto). Modelo explícito
+     (Nano Banana 2.1, 16:9, 2k), nunca «auto». Las variantes de una imagen se sacan **editando** la buena, no
+     generando de cero: así no se mueven las mesas.
+   - **Clips:** siempre con fotograma inicial **y** final (el final se genera antes, editando el inicial); cámara
+     fija; Kling 2.5, 5 s, 1080p, sin audio. Sin fotograma final el modelo inventa.
+   - **Paradas:** Lidia elige el estilo si es una serie nueva y da el visto bueno al gasto antes de lanzar vídeo.
+     Costes de referencia: imagen 65 créditos, clip 325; el piloto entero, 1.690.
+   - **Dónde vive:** `video/<slug>/public/art/` (solo lo que usa el vídeo; descartes y pruebas de estilo fuera, porque
+     Remotion empaqueta toda la carpeta) con un `CREDITOS.md` que apunta el gasto de cada pieza.
+   - **En las escenas** (README del motor, «Arte generado»): la pieza `Illustration`; rótulo «imagen · no es el
+     <escenario>» sobre cada analogía; donde el arte convive con colores que significan algo, va en un solo tono
+     (`mono`); las escenas de pregunta lo usan apagado y quieto.
+   - **Al subir:** `video.json` → `"credits": ["Ilustraciones generadas con IA."]`, que `youtube-meta` pone en la
+     descripción.
 5. **Escenas mientras se graba.** Las piezas comunes y las escenas se montan sobre la línea de tiempo estimada, que ya
    tiene todas las marcas, mientras Lidia graba; con la voz real basta un repaso de fotogramas. Los trabajos pesados
    (render, `qa-frames`, la transcripción de Whisper, `verify-voice`) hacen cola solos (`lib/heavy-lock.mjs`, un

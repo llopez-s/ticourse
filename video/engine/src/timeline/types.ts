@@ -125,6 +125,8 @@ export interface QuestionCue {
   objective: string;
   /** Exam named on the badge; absent means "SY0-701", as on ExamCue. */
   badge?: string;
+  /** Optional label under the panel, above the veil (e.g. «pregunta tipo test · ejemplo»). */
+  tag?: string;
   scenario: string;
   q: string;
   options: [string, string, string, string];

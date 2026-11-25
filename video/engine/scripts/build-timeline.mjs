@@ -398,6 +398,8 @@ export async function buildTimeline(options = {}) {
         objective: q.objective,
         // Same rule as the exam cards: Security+ keeps the implicit SY0-701 badge.
         ...(examBadge ? { badge: examBadge } : {}),
+        // The label under the panel; absent in every video that does not ask for one.
+        ...(q.tag ? { tag: q.tag } : {}),
         scenario: q.scenario,
         q: q.q,
         options: q.options,

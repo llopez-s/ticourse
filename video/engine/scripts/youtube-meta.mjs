@@ -97,7 +97,7 @@ export function youtubeTags(timeline, track, lexiconTerms = [], topics = null) {
   return tags;
 }
 
-export function youtubeDescription({ timeline, track, notice }) {
+export function youtubeDescription({ timeline, track, notice, credits = [] }) {
   const hook = timeline.segments.slice(0, 2).map((s) => s.text).join(' ');
   const credit = voiceCredit(timeline.voice);
   return [
@@ -107,6 +107,8 @@ export function youtubeDescription({ timeline, track, notice }) {
     ...youtubeChapters(timeline).lines,
     '',
     ...(credit ? [credit] : []),
+    // video.json "credits": extra credit lines of this video (e.g. AI-generated illustrations)
+    ...credits,
     notice,
     '',
     HASHTAGS[track],
@@ -138,7 +140,7 @@ export function buildYoutubeMeta() {
   if (errors.length) throw new Error(`${errors.length} problem(s):\n${errors.map((e) => `  - ${e}`).join('\n')}`);
 
   const notice = trackNotice(MANIFEST.track, MANIFEST.profile, MANIFEST.simulationLabel);
-  const description = youtubeDescription({ timeline, track: MANIFEST.track, notice });
+  const description = youtubeDescription({ timeline, track: MANIFEST.track, notice, credits: MANIFEST.credits ?? [] });
   return { slug: MANIFEST.slug, track: MANIFEST.track, title, description, tags, files: { video: PATHS.video, captions, poster: PATHS.poster } };
 }
 

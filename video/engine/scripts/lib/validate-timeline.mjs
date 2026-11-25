@@ -20,7 +20,7 @@ const OPTIONAL = {
   Timeline: ['intercept', 'questions', 'sfx', 'captionsOnScreen', 'simulationLabel'],
   InterceptCue: ['audio', 'audioFrom', 'audioFrames'],
   ExamCue: ['badge'],
-  QuestionCue: ['badge'],
+  QuestionCue: ['badge', 'tag'],
 };
 
 /**
@@ -210,6 +210,7 @@ export function validateTimeline(t, opts = {}) {
         int(x.trapFrame, `${where}.trapFrame`);
         for (const f of ['objective', 'scenario', 'q', 'why', 'trapWhy']) str(x[f], `${where}.${f}`);
         if (x.badge !== undefined) str(x.badge, `${where}.badge`);
+        if (x.tag !== undefined) str(x.tag, `${where}.tag`);
         if (!Array.isArray(x.options) || x.options.length !== 4 || x.options.some((o) => typeof o !== 'string' || !o)) errors.push(`${where}.options: expected exactly four non-empty strings`);
         const idx = (v) => Number.isInteger(v) && v >= 0 && v <= 3;
         if (!idx(x.answer)) errors.push(`${where}.answer: expected an index from 0 to 3`);

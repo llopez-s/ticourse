@@ -377,6 +377,28 @@ function QuestionPanel({ cue, frame, fps }: { cue: QuestionCue; frame: number; f
           })}
         </div>
       </div>
+      {cue.tag ? (
+        <div style={{ position: 'absolute', left: 0, right: 0, top: Math.min(STAGE.top + STAGE.height + 8, 1080 - 150), display: 'flex', justifyContent: 'center', opacity }}>
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              height: 40,
+              padding: '0 24px',
+              boxSizing: 'border-box',
+              borderRadius: RADIUS.pill,
+              border: `2px solid ${alpha(C.violet, 0.9)}`,
+              background: C.ink900,
+              fontSize: 28,
+              fontWeight: 800,
+              color: '#ffffff',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {cue.tag}
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }

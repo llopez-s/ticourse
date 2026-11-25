@@ -72,6 +72,7 @@
       "text": "<intrigued> {q1}Prueba tú. Una planta tiene sesenta equipos en un solo conmutador, todos en la misma VLAN. Lo que uno pregunta en voz alta llega a los otros cincuenta y nueve. ¿Qué cambio hace que esas preguntas lleguen a menos equipos?",
       "pauseAfterMs": 250,
       "question": {
+        "tag": "pregunta tipo test · ejemplo",
         "objective": "Redes",
         "scenario": "En una planta hay 60 equipos en un solo conmutador, todos en la misma VLAN. Cada difusión de uno llega a los otros 59.",
         "q": "¿Qué cambio hace que esas difusiones lleguen a menos equipos?",
@@ -111,7 +112,7 @@
     {
       "id": "s04-01",
       "scene": "s04-etiqueta",
-      "text": "<clear> {access}¿Y cómo sabe el conmutador de qué VLAN es cada trama? En el puerto de un puesto es fácil, porque es de una sola.",
+      "text": "<clear> {access}¿Cómo sabe el conmutador de qué VLAN es cada trama? En el puerto de un puesto es fácil, porque es de una sola.",
       "pauseAfterMs": 250
     },
     {
@@ -162,6 +163,7 @@
       "text": "<curious> {q2}Esta es de otra red, no del Consorcio. Un troncal tiene de nativa la VLAN diez en el extremo A y la veinte en el B. Un equipo de la VLAN diez, conectado en A, envía una trama que lo cruza. Si ningún equipo vigila las nativas, ¿qué le pasa?",
       "pauseAfterMs": 250,
       "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
         "objective": "Redes",
         "scenario": "En otra red, un troncal tiene de nativa la VLAN 10 en el extremo A y la 20 en el B. Un equipo de la VLAN 10 conectado en A envía una trama que lo cruza.",
         "q": "Sin protecciones propias del fabricante, ¿qué le pasa a esa trama?",
@@ -240,6 +242,7 @@
       "text": "<intrigued> {q3}Y cerramos con esta. A un puesto de la VLAN de Usuarios le han puesto la dirección a mano. La puerta de enlace se ha quedado en blanco, y lo demás está bien. ¿Con quién puede hablar ese puesto?",
       "pauseAfterMs": 250,
       "question": {
+        "tag": "pregunta tipo test · ejemplo",
         "objective": "Redes",
         "scenario": "A un puesto de la VLAN de Usuarios le ponen la dirección a mano y dejan en blanco la puerta de enlace. Todo lo demás está bien.",
         "q": "¿Con quién puede hablar ese puesto?",

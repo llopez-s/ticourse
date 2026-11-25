@@ -1,0 +1,361 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:04.467
+En la sede del Consorcio
+de Arcedo, puestos,
+
+2
+00:00:04.467 --> 00:00:07.800
+servidores y teléfonos cuelgan
+de los mismos conmutadores.
+
+3
+00:00:07.800 --> 00:00:10.433
+Y no se oyen entre ellos.
+
+4
+00:00:10.433 --> 00:00:12.467
+Eso lo hacen las VLAN.
+
+5
+00:00:12.467 --> 00:00:18.933
+Te cuento qué separan, cómo cruzan de una
+planta a otra y cómo vuelven a hablarse.
+
+6
+00:00:19.700 --> 00:00:22.533
+Empecemos por el conmutador.
+
+7
+00:00:22.567 --> 00:00:26.633
+Cada una de sus bocas,
+cada puerto, es un carril propio,
+
+8
+00:00:26.633 --> 00:00:29.233
+así que dos equipos ya no chocan.
+
+9
+00:00:29.233 --> 00:00:35.800
+Cada carril es un dominio de colisión,
+el trozo donde dos equipos podrían chocar.
+
+10
+00:00:35.800 --> 00:00:38.333
+Pero hay tramas que van para todos,
+
+11
+00:00:38.333 --> 00:00:42.300
+como cuando un equipo pregunta
+quién tiene una dirección.
+
+12
+00:00:42.300 --> 00:00:46.167
+El conmutador las saca
+por los demás puertos.
+
+13
+00:00:46.167 --> 00:00:52.133
+Es como una planta diáfana. Si alguien
+pregunta en voz alta, lo oyen todos.
+
+14
+00:00:52.133 --> 00:00:56.167
+Hasta donde llega esa pregunta,
+eso es un dominio de difusión.
+
+15
+00:00:56.167 --> 00:01:01.900
+Y una VLAN es un tabique, que pones
+por configuración, sin tocar un cable.
+
+16
+00:01:01.900 --> 00:01:07.133
+En la sede hay cuatro VLAN con equipos,
+como Usuarios o Servidores.
+
+17
+00:01:07.133 --> 00:01:11.667
+O sea, cuatro dominios de difusión
+en los mismos aparatos.
+
+18
+00:01:12.367 --> 00:01:13.333
+Prueba tú.
+
+19
+00:01:13.333 --> 00:01:19.933
+Una planta tiene sesenta equipos en un
+solo conmutador, todos en la misma VLAN.
+
+20
+00:01:19.933 --> 00:01:23.733
+Lo que uno pregunta en voz alta
+llega a los otros cincuenta y nueve.
+
+21
+00:01:23.733 --> 00:01:28.800
+¿Qué cambio hace que esas
+preguntas lleguen a menos equipos?
+
+22
+00:01:28.233 --> 00:01:33.233
+A) Poner todos los puertos en dúplex completo
+B) Añadir un segundo conmutador en la misma VLAN
+C) Repartir los equipos en dos VLAN
+D) Subir todos los puertos a 1 Gbit/s
+
+23
+00:01:33.767 --> 00:01:40.100
+Repartirlos en dos VLAN, porque cada VLAN
+es su propio dominio de difusión.
+
+24
+00:01:40.100 --> 00:01:46.000
+Lo fácil es pensar en el dúplex
+completo, hablar y escuchar a la vez.
+
+25
+00:01:46.000 --> 00:01:48.800
+Pero eso solo quita colisiones.
+
+26
+00:01:48.800 --> 00:01:53.367
+El conmutador separa colisiones,
+y la VLAN, difusiones.
+
+27
+00:01:55.700 --> 00:02:00.400
+¿Cómo sabe el conmutador
+de qué VLAN es cada trama?
+
+28
+00:02:00.400 --> 00:02:03.667
+En el puerto de un puesto es fácil,
+porque es de una sola.
+
+29
+00:02:03.667 --> 00:02:08.833
+Se llama puerto de acceso,
+y la trama entra y sale sin marca.
+
+30
+00:02:08.833 --> 00:02:14.800
+El problema es el cable entre dos plantas,
+por donde pasan las cuatro VLAN juntas.
+
+31
+00:02:14.800 --> 00:02:18.967
+Así que cada trama viaja
+con una etiqueta que dice de cuál es.
+
+32
+00:02:18.967 --> 00:02:21.100
+Ese enlace es un troncal.
+
+33
+00:02:21.100 --> 00:02:26.300
+La etiqueta sale de un estándar,
+el ochocientos dos punto uno cu.
+
+34
+00:02:26.300 --> 00:02:30.767
+Ocupa cuatro bytes, y doce
+de sus bits son el número de VLAN.
+
+35
+00:02:30.767 --> 00:02:36.000
+Piensa en el correo interno. Dentro
+del departamento, el sobre va sin nada.
+
+36
+00:02:36.000 --> 00:02:39.900
+En el montacargas,
+lleva la pegatina del suyo.
+
+37
+00:02:39.900 --> 00:02:43.633
+¿Y si por el troncal llega
+una trama sin etiqueta?
+
+38
+00:02:43.633 --> 00:02:48.500
+Como un sobre sin pegatina, cae en la
+bandeja que ese puerto tiene asignada,
+
+39
+00:02:48.500 --> 00:02:50.300
+la VLAN nativa.
+
+40
+00:02:50.300 --> 00:02:55.200
+En la sede, la nativa
+es una VLAN vacía, sin equipos.
+
+41
+00:02:56.000 --> 00:02:59.133
+Esta es de otra red, no del Consorcio.
+
+42
+00:02:59.133 --> 00:03:05.467
+Un troncal tiene de nativa la VLAN diez
+en el extremo A y la veinte en el B.
+
+43
+00:03:05.467 --> 00:03:10.867
+Un equipo de la VLAN diez, conectado
+en A, envía una trama que lo cruza.
+
+44
+00:03:10.867 --> 00:03:15.200
+Si ningún equipo vigila
+las nativas, ¿qué le pasa?
+
+45
+00:03:14.733 --> 00:03:19.733
+A) Cruza con la etiqueta de la VLAN 10
+B) Cruza sin etiqueta y acaba en la VLAN 20
+C) Se descarta, porque las nativas no coinciden
+D) Se inunda por todas las VLAN del troncal
+
+46
+00:03:19.900 --> 00:03:23.167
+Cruza sin etiqueta y acaba en la veinte.
+
+47
+00:03:23.167 --> 00:03:29.067
+En A, la diez es la nativa y sale
+sin marca, y B la mete en la suya.
+
+48
+00:03:29.067 --> 00:03:31.467
+Que se descarte suena lógico,
+
+49
+00:03:31.467 --> 00:03:35.167
+pero el estándar no comprueba
+que las nativas coincidan.
+
+50
+00:03:35.167 --> 00:03:40.300
+Por eso la nativa tiene que ser
+la misma en los dos extremos.
+
+51
+00:03:42.400 --> 00:03:44.967
+Ya tienes tabiques y montacargas.
+
+52
+00:03:44.967 --> 00:03:49.500
+Falta la puerta, porque los puestos
+tienen que llegar a sus servidores.
+
+53
+00:03:49.500 --> 00:03:52.467
+Entre dos VLAN bien
+configuradas solo se pasa
+
+54
+00:03:52.467 --> 00:03:57.067
+por un equipo que mire direcciones
+IP, o sea, de capa tres.
+
+55
+00:03:57.067 --> 00:04:02.667
+Cada VLAN de la sede lleva su subred,
+y en ese equipo tiene su puerta de enlace.
+
+56
+00:04:02.667 --> 00:04:05.533
+El puesto le entrega todo lo que va fuera.
+
+57
+00:04:05.533 --> 00:04:08.833
+Aquí lo hacen los conmutadores
+de distribución,
+
+58
+00:04:08.833 --> 00:04:11.800
+con una interfaz virtual por VLAN.
+
+59
+00:04:11.800 --> 00:04:14.200
+De aquí sale una regla para averías.
+
+60
+00:04:14.200 --> 00:04:18.633
+Si dos equipos de la misma VLAN,
+en plantas distintas, no se ven,
+
+61
+00:04:18.633 --> 00:04:20.133
+mira el troncal.
+
+62
+00:04:20.133 --> 00:04:24.267
+Si son de VLAN distintas,
+mira la puerta de enlace.
+
+63
+00:04:25.133 --> 00:04:26.833
+Y cerramos con esta.
+
+64
+00:04:26.833 --> 00:04:31.100
+A un puesto de la VLAN de Usuarios
+le han puesto la dirección a mano.
+
+65
+00:04:31.100 --> 00:04:35.233
+La puerta de enlace se ha quedado
+en blanco, y lo demás está bien.
+
+66
+00:04:35.233 --> 00:04:37.667
+¿Con quién puede hablar ese puesto?
+
+67
+00:04:37.167 --> 00:04:42.167
+A) Con nadie de la red
+B) Con toda la sede
+C) Con todos los equipos de su conmutador
+D) Solo con los equipos de su VLAN
+
+68
+00:04:42.333 --> 00:04:48.433
+Solo con los de su VLAN, porque a esos les
+habla directamente, sin pasar por nadie.
+
+69
+00:04:48.433 --> 00:04:53.500
+Lo del mismo conmutador tienta,
+pero ahí hay puertos de otras VLAN.
+
+70
+00:04:53.500 --> 00:04:57.200
+A esos solo se llega por la puerta.
+
+71
+00:05:00.033 --> 00:05:07.433
+Quédate con tres cosas. Una, el conmutador
+separa colisiones, y la VLAN, difusiones.
+
+72
+00:05:07.433 --> 00:05:12.633
+Dos, en el acceso la trama va sin marca,
+y en el troncal, con etiqueta.
+
+73
+00:05:12.633 --> 00:05:16.133
+Y tres, de una VLAN a otra, por capa tres.
+
+74
+00:05:16.133 --> 00:05:20.567
+Si dos equipos no se ven, lo primero,
+ver si están en la misma VLAN.
+
+75
+00:05:20.567 --> 00:05:24.767
+Ahora te toca a ti,
+con las preguntas de la lección.
