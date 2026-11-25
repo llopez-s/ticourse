@@ -1,0 +1,150 @@
+{
+  "title": "VLAN y 802.1Q: tabiques, etiquetas y una puerta",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 300,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Qué separa una VLAN"
+    },
+    {
+      "n": 2,
+      "title": "De una planta a otra"
+    },
+    {
+      "n": 3,
+      "title": "Volver a hablarse"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Los mismos aparatos",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. La sede en corte: dos plantas, un conmutador por planta y, colgados de ellos, puestos, servidores y teléfonos, cada grupo con un color (`building`). Los colores se apagan entre sí: lo de un color no llega a los otros (`apart`). Título «VLAN y 802.1Q» (`title`, antes de los 12 s) y la promesa en tres chips: «qué separan · cómo cruzan de planta · cómo vuelven a hablarse», las mismas tres cosas que dice la voz (`promise`). Plaquita «REDES Y ENS · Redes»",
+      "requiredCues": [
+        "building",
+        "apart",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-difusion",
+      "chapter": 1,
+      "title": "Una pregunta en voz alta",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "Un conmutador visto de frente, con un carril por boca, rotulada «puerto» (`port`); en cada carril, el rótulo «dominio de colisión · uno por puerto» (`collision`). Un equipo lanza una trama para todos, rotulada «difusión · destino ff:ff:ff:ff:ff:ff» (`shout`), y el conmutador la saca por todos los puertos menos el de entrada (`flood`). A la derecha, la imagen rotulada «imagen · no es el Consorcio»: una planta diáfana de oficina donde una pregunta en voz alta llega a todas las mesas (`floor`). El área que alcanza se rotula «dominio de difusión» (`broadcast`) y aparecen tabiques que la parten sin mover ninguna mesa: «VLAN · por configuración» (`walls`). Las cuatro VLAN con equipos de la sede, cada una con su subred en pantalla (la nativa, vacía, llega en s04): «10 Usuarios · 10.20.10.0/24», «20 Servidores · 10.20.20.0/24», «30 Voz · 10.20.30.0/24», «99 Gestión · 10.20.99.0/24» (`four`)",
+      "requiredCues": [
+        "port",
+        "collision",
+        "shout",
+        "flood",
+        "floor",
+        "broadcast",
+        "walls",
+        "four"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Sesenta equipos",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo»: el panel de pregunta tapa la escena, así que el fondo se queda quieto (la planta diáfana a media luz, sin texto). Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (repartir en dos VLAN) y en `trap-1` la trampa (dúplex completo, con la glosa «hablar y escuchar a la vez»). Vuelve la regla en una línea, «el conmutador separa colisiones; la VLAN, difusiones» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-etiqueta",
+      "chapter": 2,
+      "title": "El sobre y la pegatina",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "goal": "Un puerto de un puesto, rotulado «puerto de acceso · una sola VLAN» (`access`); la trama entra y sale sin marca, «sin etiqueta» (`untagged`). Después, el cable entre las dos plantas, por el que pasan los cuatro colores juntos (`trunk`), y cada trama recibe una etiqueta con su número de VLAN (`tag`). Rótulo «enlace troncal · IEEE 802.1Q» (`dot1q`) y la etiqueta abierta: «4 bytes: TPID 0x8100 · PCP 3 bits · DEI 1 bit · VID 12 bits (1–4094)», con el VID resaltado (`vid`). La imagen, rotulada «imagen · no es el Consorcio»: correo interno; dentro del departamento el sobre va sin nada, y en el montacargas cada sobre lleva la pegatina de su departamento (`mail`). Una trama llega por el troncal sin etiqueta (`native`) y cae, como un sobre sin pegatina, en una bandeja fija rotulada «VLAN nativa · nombre de los fabricantes · en 802.1Q, el PVID del puerto» (`tray`); en la sede, «nativa 999 · sin equipos · igual en los dos extremos» (`n999`)",
+      "requiredCues": [
+        "access",
+        "untagged",
+        "trunk",
+        "tag",
+        "dot1q",
+        "vid",
+        "mail",
+        "native",
+        "tray",
+        "n999"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Dos nativas distintas",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio». Fondo quieto: el troncal a media luz, con sus dos extremos rotulados «A · nativa 10» y «B · nativa 20» y el equipo de la VLAN 10 colgado de A. La pregunta deja fuera las protecciones de fabricante: «Sin protecciones propias del fabricante…». Cuenta atrás de 5 s. En `ok-2` se marca la correcta (cruza sin etiqueta y acaba en la VLAN 20: en A sale sin marca por ser la nativa, y B la mete en la suya) y en `trap-2` la trampa (se descarta). La regla en una línea, «la nativa, la misma en los dos extremos» (`rule-b`), y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-capa3",
+      "chapter": 3,
+      "title": "La puerta",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Los tabiques y el montacargas de antes, y un puesto de Usuarios que quiere llegar a un servidor del otro lado (`wall`). Entre las dos VLAN aparece un equipo rotulado «capa 3 · mira direcciones IP» (`l3`), con una subred y una puerta por VLAN: «puerta de enlace · 10.20.10.1» y «puerta de enlace · 10.20.20.1» (`gw`). En la sede, «conmutadores de distribución · una interfaz virtual por VLAN (SVI, nombre de Cisco)» (`svi`); al lado, en pequeño, «red pequeña: encaminador con subinterfaces, un solo troncal». La regla de averías en dos líneas: «misma VLAN, plantas distintas, y no se ven: mira el troncal» (`diag`) · «VLAN distintas y no se ven: mira la puerta de enlace» (`diag2`)",
+      "requiredCues": [
+        "wall",
+        "l3",
+        "gw",
+        "svi",
+        "diag",
+        "diag2"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Sin puerta de enlace",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: un puesto con su ficha de red a media luz, la casilla «puerta de enlace» vacía. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (solo con su misma VLAN) y en `trap-3` la trampa (todos los del mismo conmutador). Vuelve la puerta en una línea (`door`) y entra la tarjeta «De una VLAN a otra se pasa por capa 3» (sin «siempre»: la pregunta 2 acaba de enseñar un salto de VLAN por una nativa mal puesta)",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "door"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para llevarte",
+      "targetSec": 24,
+      "wordBudget": 65,
+      "goal": "Tres ideas, cada una con su icono (los tabiques · la pegatina · la puerta) (`recap`, `rule-1`, `rule-2`, `rule-3`), y la frase final: «Si dos equipos no se ven, lo primero, ver si están en la misma VLAN» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

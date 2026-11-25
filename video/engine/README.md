@@ -86,7 +86,12 @@ SY0-701 («4.5») y la tarjeta dice «EXAMEN · SY0-701 · 4.5». GCTI no public
 GCTI `exam.objective` es uno de los cinco dominios del curso (`GCTI_DOMAINS` de `scripts/lib/profiles.mjs`,
 p. ej. «Intrusion Analysis»), la tarjeta dice «EXAMEN · GCTI · Intrusion Analysis» (campo `badge` de la
 tarjeta en `timeline.json`, que solo se escribe fuera de Security+) y la etiqueta de YouTube es el dominio tal
-cual, sin «objetivo».
+cual, sin «objetivo». La pista `opo` («Redes y ENS») tampoco tiene objetivos oficiales: `exam.objective` es un
+bloque de la pista (`OPO_BLOCKS`: «Redes», «ENS y normativa», «Servicios de red», «Infraestructuras»,
+«Identidad»), la tarjeta dice «EXAMEN · REDES Y ENS · Redes», el aviso es «no afiliado a ninguna administración
+pública», la transcripción rotula las preguntas «Pregunta tipo test» (`questionLabel`) y `"lesson"` admite ids
+`opNmN`. Sus guiones van enteros en español y nunca dicen «como en el examen» (diseño
+`docs/superpowers/specs/2026-11-24-redes-videos-casos-test-design.md`).
 
 `host: 'youtube'` (los dos perfiles `-yt`) cambia dos cosas:
 

@@ -8,7 +8,7 @@ import { createHash, randomBytes } from 'node:crypto';
 export const SCOPES = ['https://www.googleapis.com/auth/youtube.upload', 'https://www.googleapis.com/auth/youtube.force-ssl'];
 /** The channel lesson videos go to (YouTube Studio id); never the personal one. */
 export const ALERTOPOLIS_CHANNEL_ID = 'UCe0XBMwoI3bI61K8qolacJA';
-export const PLAYLIST_TITLES = Object.freeze({ secplus: 'CompTIA Security+ SY0-701 en español', gcti: 'GIAC GCTI en español' });
+export const PLAYLIST_TITLES = Object.freeze({ secplus: 'CompTIA Security+ SY0-701 en español', gcti: 'GIAC GCTI en español', opo: 'Redes y ENS para oposiciones TIC' });
 /** Bytes per PUT of the resumable upload; the protocol wants multiples of 256 KiB. */
 export const CHUNK_SIZE = 8 * 1024 * 1024;
 export const TOKEN_URL = 'https://oauth2.googleapis.com/token';

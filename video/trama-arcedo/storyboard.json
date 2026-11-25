@@ -1,0 +1,155 @@
+{
+  "title": "De la trama al segmento: tres envoltorios y una pregunta en voz alta",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 310,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Qué envuelve a qué"
+    },
+    {
+      "n": 2,
+      "title": "Quién pregunta a quién"
+    },
+    {
+      "n": 3,
+      "title": "Con garantías o sin ellas"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Un clic, tres envoltorios",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. A la izquierda, un puesto de la sede, «puesto · VLAN 10 Usuarios · 10.20.10.25/24»; a la derecha, lejos, «aplicación de expedientes · 10.20.72.10 · CPD». En el puesto alguien abre la aplicación (`click`) y lo que sale hacia el cable se envuelve tres veces, tres capas que se cierran una sobre otra, todavía sin nombre (`wraps`). Título «De la trama al segmento» (`title`, antes de los 12 s) y la promesa en tres chips: «qué envuelve a qué · a quién va cada envoltorio · cuál cambia por el camino» (`promise`). Plaquita «REDES Y ENS · Redes»",
+      "requiredCues": [
+        "click",
+        "wraps",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-envoltorios",
+      "chapter": 1,
+      "title": "De dentro afuera",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "goal": "La pila se construye de dentro afuera, al compás de la voz. En el centro, «datos · lo que envía la aplicación» (`data`). Se le antepone una cabecera con «puerto de origen 51514 · puerto de destino 443» (`seg`) y el conjunto se rotula «segmento · TCP · capa 4» (`segname`). Otra cabecera, «IP de origen 10.20.10.25 · IP de destino 10.20.72.10», y el rótulo «paquete · IP · capa 3» (`pkt`). Por fuera, «trama · Ethernet II · capa 2»: «MAC de destino · MAC de origen · EtherType 0x0800» delante y, detrás, la única cola, «FCS» (`frame`). A la derecha, la imagen rotulada «imagen · no es el Consorcio»: una carta en su sobre, el sobre en una caja y la caja en una furgoneta de reparto, cada pieza del color de su envoltorio (`box`). Después, tres aparatos en fila y el envoltorio con el que decide cada uno (`who`): «conmutador · capa 2 · decide con la MAC» (`sw`), «encaminador · capa 3 · decide con la IP» (`rt`) y «servidor · capa 4 · entrega por el puerto» (`host`). Al final queda la pila con los cuatro nombres resaltados: datos, segmento, paquete, trama",
+      "requiredCues": [
+        "data",
+        "seg",
+        "segname",
+        "pkt",
+        "frame",
+        "box",
+        "who",
+        "sw",
+        "rt",
+        "host"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "El conmutador de la planta",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo»: el panel de pregunta tapa la escena, así que el fondo se queda quieto (la pila de envoltorios a media luz, sin texto). Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (la MAC de destino de la trama) y en `trap-1` la trampa (la IP de destino del paquete). Vuelve la regla en una línea, «MAC para el conmutador, IP para el encaminador» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-arp",
+      "chapter": 2,
+      "title": "Una pregunta en voz alta",
+      "targetSec": 60,
+      "wordBudget": 162,
+      "goal": "El puesto con su trama a medio escribir: la casilla «MAC de destino» está vacía y solo tiene «IP de destino 10.20.72.10» (`need`). El puesto lanza una pregunta a toda su subred, «10.20.10.0/24 · subred: los equipos de su misma red», rotulada «petición · destino ff:ff:ff:ff:ff:ff · ¿quién tiene 10.20.10.x?», sin mostrar nunca la IP del servidor como pregunta (`ask`); rótulo «ARP · RFC 826 · petición por difusión, respuesta unidifusión · EtherType 0x0806, sin cabecera IP» (`arp`). La pregunta llega al borde de la subred y ahí se para: un equipo rotulado «capa 3» no la reenvía (`limit`). Al otro lado, el servidor «10.20.72.10», dentro de «CPD · 10.20.72.0/21 · otra subred» (`outside`). La pregunta del puesto cambia y pasa a ser «¿quién tiene 10.20.10.1?», con el rótulo neutro «puerta de enlace · capa 3 · quien lo saca de su subred» (`gw`); ningún rótulo de esta escena dice qué aparato es. Respuesta solo para el puesto, «10.20.10.1 está en 00:00:5e:00:53:01», dirigida a la MAC del puesto, «00:00:5e:00:53:19» (`reply`). La trama completa, con los dos destinos resaltados: «MAC de destino 00:00:5e:00:53:01 · la puerta de enlace» por fuera e «IP de destino 10.20.72.10 · el servidor» por dentro (`two`). La imagen, rotulada «imagen · no es el Consorcio»: la furgoneta solo reparte en su barrio, deja la caja en el almacén de salida y allí la caja, con la misma dirección escrita, pasa a otra furgoneta (`van`). En la puerta de enlace: la trama que llegó se descarta, el paquete sale con «TTL −1» y las mismas IP, y se mete en una trama nueva, «MAC de origen: la de la puerta de enlace · MAC de destino: la del siguiente salto» (`hop`). En pequeño: «red interna, sin traducción de direcciones (NAT)»",
+      "requiredCues": [
+        "need",
+        "ask",
+        "arp",
+        "limit",
+        "outside",
+        "gw",
+        "reply",
+        "two",
+        "van",
+        "hop"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Lo que ve el servidor",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: el servidor del CPD a media luz, con una trama que acaba de llegar, sin texto. Cuenta atrás de 5 s. En `ok-2` se marca la correcta («Trama: el último encaminador. Paquete: el puesto») y en `trap-2` la trampa («Trama: el puesto. Paquete: el puesto»). La regla en una línea, «en este viaje, las MAC cambian en cada salto; las IP, no» (`rule-b`), y entra la tarjeta, que lo acota: «Sin NAT, las MAC cambian en cada salto. Las IP, no»",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-transporte",
+      "chapter": 3,
+      "title": "Certificado o postal",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "goal": "Vuelve la pila y se ilumina solo el envoltorio de dentro, «segmento · capa 4», con el sobre de la imagen de antes a su lado (`inside`). A la izquierda, la imagen rotulada «imagen · no es el Consorcio»: un envío certificado, con las hojas numeradas y un acuse de recibo (`cert`). Debajo, entre «10.20.10.25:51514» y «10.20.72.10:443», los tres mensajes, uno por línea: «SYN seq=1000», «SYN+ACK seq=5000 ack=1001», «ACK seq=1001 ack=5001», rotulados «establecimiento en tres pasos» (`three`). Una fila de bytes numerados y un acuse que vuelve, «número de secuencia» sobre los bytes y «acuse = siguiente byte que se espera» (`num`); un hueco sin acuse se reenvía y dos bloques cruzados se recolocan (`resend`). Rótulo «TCP · RFC 9293 · con conexión, fiable y ordenado · cabecera de 20 a 60 bytes» (`tcp`). A la derecha, la otra mitad de la imagen: una postal que cae en un buzón, sin número ni acuse (`post`); rótulo «UDP · RFC 768 · datagrama · cabecera de 8 bytes · sin conexión ni garantías» (`udp`). Un teléfono con una onda de voz, «voz en tiempo real», sin atribuirlo a ningún equipo del Consorcio (`voice`)",
+      "requiredCues": [
+        "inside",
+        "cert",
+        "three",
+        "num",
+        "resend",
+        "tcp",
+        "post",
+        "udp",
+        "voice"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Dos segmentos cruzados",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: dos sobres numerados que llegan al servidor en orden inverso, a media luz y sin texto. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (los datos en orden, los recoloca TCP) y en `trap-3` la trampa (tal como llegan, ordena la aplicación). La regla en una línea, «con TCP, el orden y el reenvío vienen puestos» (`rule-c`), y entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para llevarte",
+      "targetSec": 26,
+      "wordBudget": 70,
+      "goal": "Tres ideas, cada una con su icono (la caja con sus envoltorios · la furgoneta que cambia · el acuse de recibo) (`recap`, `rule-1`, `rule-2`, `rule-3`), y la frase final: «Cuando veas una dirección, pregúntate primero en qué envoltorio va» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

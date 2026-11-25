@@ -1,0 +1,298 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "flood": "whoosh",
+    "walls": "lock",
+    "tag": "ding",
+    "tray": "mail",
+    "gw": "ping2"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {building}En la sede del Consorcio de Arcedo, puestos, servidores y teléfonos cuelgan de los mismos conmutadores. {apart}Y no se oyen entre ellos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Eso lo hacen las VLAN. {promise}Te cuento qué separan, cómo cruzan de una planta a otra y cómo vuelven a hablarse.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-difusion",
+      "text": "<clear> {port}Empecemos por el conmutador. Cada una de sus bocas, cada puerto, es un carril propio, así que dos equipos ya no chocan.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-difusion",
+      "text": "<steady> {collision}Cada carril es un dominio de colisión, el trozo donde dos equipos podrían chocar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-difusion",
+      "text": "<thoughtful> {shout}Pero hay tramas que van para todos, como cuando un equipo pregunta quién tiene una dirección. {flood}El conmutador las saca por los demás puertos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-difusion",
+      "text": "<warm> {floor}Es como una planta diáfana. Si alguien pregunta en voz alta, lo oyen todos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-difusion",
+      "text": "<engaging> {broadcast}Hasta donde llega esa pregunta, eso es un dominio de difusión. {walls}Y una VLAN es un tabique, que pones por configuración, sin tocar un cable.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-difusion",
+      "text": "<firm> {four}En la sede hay cuatro VLAN con equipos, como Usuarios o Servidores. O sea, cuatro dominios de difusión en los mismos aparatos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Prueba tú. Una planta tiene sesenta equipos en un solo conmutador, todos en la misma VLAN. Lo que uno pregunta en voz alta llega a los otros cincuenta y nueve. ¿Qué cambio hace que esas preguntas lleguen a menos equipos?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "Redes",
+        "scenario": "En una planta hay 60 equipos en un solo conmutador, todos en la misma VLAN. Cada difusión de uno llega a los otros 59.",
+        "q": "¿Qué cambio hace que esas difusiones lleguen a menos equipos?",
+        "options": [
+          "Poner todos los puertos en dúplex completo",
+          "Añadir un segundo conmutador en la misma VLAN",
+          "Repartir los equipos en dos VLAN",
+          "Subir todos los puertos a 1 Gbit/s"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "Cada VLAN es un dominio de difusión: lo que se pregunta en una no llega a la otra",
+        "trapWhy": "El dúplex completo quita las colisiones, pero la difusión sigue llegando a todos",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Repartirlos en dos VLAN, porque cada VLAN es su propio dominio de difusión.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Lo fácil es pensar en el dúplex completo, hablar y escuchar a la vez. Pero eso solo quita colisiones. {rule-a}El conmutador separa colisiones, y la VLAN, difusiones.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Redes",
+        "text": "El conmutador separa colisiones. La VLAN, difusiones",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-etiqueta",
+      "text": "<clear> {access}¿Y cómo sabe el conmutador de qué VLAN es cada trama? En el puerto de un puesto es fácil, porque es de una sola.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-etiqueta",
+      "text": "<steady> {untagged}Se llama puerto de acceso, y la trama entra y sale sin marca.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-etiqueta",
+      "text": "<engaging> {trunk}El problema es el cable entre dos plantas, por donde pasan las cuatro VLAN juntas. {tag}Así que cada trama viaja con una etiqueta que dice de cuál es.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-etiqueta",
+      "text": "<confident> {dot1q}Ese enlace es un troncal. La etiqueta sale de un estándar, el ochocientos dos punto uno cu. {vid}Ocupa cuatro bytes, y doce de sus bits son el número de VLAN.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Redes",
+        "text": "Acceso: una VLAN y sin etiqueta. Troncal: con etiqueta",
+        "at": "vid",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-etiqueta",
+      "text": "<warm> {mail}Piensa en el correo interno. Dentro del departamento, el sobre va sin nada. En el montacargas, lleva la pegatina del suyo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-etiqueta",
+      "text": "<thoughtful> {native}¿Y si por el troncal llega una trama sin etiqueta? {tray}Como un sobre sin pegatina, cae en la bandeja que ese puerto tiene asignada, la VLAN nativa.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-etiqueta",
+      "text": "<calm> {n999}En la sede, la nativa es una VLAN vacía, sin equipos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Esta es de otra red, no del Consorcio. Un troncal tiene de nativa la VLAN diez en el extremo A y la veinte en el B. Un equipo de la VLAN diez, conectado en A, envía una trama que lo cruza. Si ningún equipo vigila las nativas, ¿qué le pasa?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "Redes",
+        "scenario": "En otra red, un troncal tiene de nativa la VLAN 10 en el extremo A y la 20 en el B. Un equipo de la VLAN 10 conectado en A envía una trama que lo cruza.",
+        "q": "Sin protecciones propias del fabricante, ¿qué le pasa a esa trama?",
+        "options": [
+          "Cruza con la etiqueta de la VLAN 10",
+          "Cruza sin etiqueta y acaba en la VLAN 20",
+          "Se descarta, porque las nativas no coinciden",
+          "Se inunda por todas las VLAN del troncal"
+        ],
+        "answer": 1,
+        "trap": 2,
+        "why": "En A la 10 es la nativa y sale sin etiqueta. B la mete en su nativa, la 20",
+        "trapWhy": "802.1Q no comprueba que las nativas coincidan: la trama pasa y cambia de VLAN",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Cruza sin etiqueta y acaba en la veinte. En A, la diez es la nativa y sale sin marca, y B la mete en la suya.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Que se descarte suena lógico, pero el estándar no comprueba que las nativas coincidan. {rule-b}Por eso la nativa tiene que ser la misma en los dos extremos.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Redes",
+        "text": "Sin etiqueta en un troncal: va a la VLAN nativa",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-capa3",
+      "text": "<clear> {wall}Ya tienes tabiques y montacargas. Falta la puerta, porque los puestos tienen que llegar a sus servidores.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-capa3",
+      "text": "<steady> {l3}Entre dos VLAN bien configuradas solo se pasa por un equipo que mire direcciones IP, o sea, de capa tres.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-capa3",
+      "text": "<warm> {gw}Cada VLAN de la sede lleva su subred, y en ese equipo tiene su puerta de enlace. El puesto le entrega todo lo que va fuera.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-capa3",
+      "text": "<engaging> {svi}Aquí lo hacen los conmutadores de distribución, con una interfaz virtual por VLAN.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-capa3",
+      "text": "<thoughtful> {diag}De aquí sale una regla para averías. Si dos equipos de la misma VLAN, en plantas distintas, no se ven, mira el troncal.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-capa3",
+      "text": "<firm> {diag2}Si son de VLAN distintas, mira la puerta de enlace.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Y cerramos con esta. A un puesto de la VLAN de Usuarios le han puesto la dirección a mano. La puerta de enlace se ha quedado en blanco, y lo demás está bien. ¿Con quién puede hablar ese puesto?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "Redes",
+        "scenario": "A un puesto de la VLAN de Usuarios le ponen la dirección a mano y dejan en blanco la puerta de enlace. Todo lo demás está bien.",
+        "q": "¿Con quién puede hablar ese puesto?",
+        "options": [
+          "Con nadie de la red",
+          "Con toda la sede",
+          "Con todos los equipos de su conmutador",
+          "Solo con los equipos de su VLAN"
+        ],
+        "answer": 3,
+        "trap": 2,
+        "why": "Dentro de su VLAN habla directamente. Para salir necesita la puerta de enlace",
+        "trapWhy": "En ese conmutador hay puertos de otras VLAN, y a esos no se llega sin capa 3",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Solo con los de su VLAN, porque a esos les habla directamente, sin pasar por nadie.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Lo del mismo conmutador tienta, pero ahí hay puertos de otras VLAN. {door}A esos solo se llega por la puerta.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "Redes",
+        "text": "De una VLAN a otra se pasa por capa 3",
+        "at": "door",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Quédate con tres cosas. {rule-1}Una, el conmutador separa colisiones, y la VLAN, difusiones.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Dos, en el acceso la trama va sin marca, y en el troncal, con etiqueta. {rule-3}Y tres, de una VLAN a otra, por capa tres.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Si dos equipos no se ven, lo primero, ver si están en la misma VLAN. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

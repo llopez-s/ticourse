@@ -68,3 +68,27 @@ test('a video may name its own exam on the card badge (SY0-801 draft); Security+
   assert.deepEqual(interceptsFor(PROFILES['capsula-yt'], true), [1, 2]);
   assert.deepEqual(interceptsFor(PROFILES['capsula-yt'], false), [0, 2]);
 });
+
+test('the opo track (Redes y ENS): a block of the track on the card, its own badge, notice and playlist', async () => {
+  const { OPO_BLOCKS, examBadgeFor, trackNotice } = await import('./profiles.mjs');
+  const { youtubeTitle, playlistLabel } = await import('../youtube-meta.mjs');
+  const { PLAYLIST_TITLES } = await import('./youtube-api.mjs');
+  assert.deepEqual(OPO_BLOCKS, ['Redes', 'ENS y normativa', 'Servicios de red', 'Infraestructuras', 'Identidad']);
+  assert.deepEqual(run('Redes', { track: 'opo' }).errors, []);
+  assert.ok(run('4.5', { track: 'opo' }).errors.some((e) => /exam\.objective must be a block of the track/.test(e)));
+  assert.equal(examObjectiveError('opo', 'ENS y normativa'), null);
+  assert.equal(EXAM_BADGE.opo, 'REDES Y ENS');
+  assert.equal(examBadgeFor('opo'), 'REDES Y ENS');
+  assert.equal(trackNotice('opo', 'caso-yt'), 'Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a ninguna administración pública');
+  const tags = youtubeTags({ exam: [{ objective: 'Redes' }] }, 'opo');
+  assert.ok(tags.includes('Redes') && tags.includes('oposiciones TIC') && !tags.some((t) => t.startsWith('objetivo ')));
+  assert.equal(youtubeTitle('VLAN y 802.1Q', 'opo'), 'VLAN y 802.1Q | Redes para oposiciones TIC');
+  assert.deepEqual(['secplus', 'gcti', 'opo'].map(playlistLabel), ['Security+ SY0-701', 'GCTI', 'Redes y ENS']);
+  assert.equal(PLAYLIST_TITLES.opo, 'Redes y ENS para oposiciones TIC');
+  const { questionLabel } = await import('./profiles.mjs');
+  assert.deepEqual(['secplus', 'gcti', 'opo'].map(questionLabel), ['Pregunta de examen', 'Pregunta de examen', 'Pregunta tipo test']);
+  const { checkManifest } = await import('./paths.mjs');
+  const manifest = { slug: 'x', output: 'x', composition: 'X', poster: 'XPoster', profile: 'caso-yt', track: 'opo' };
+  assert.doesNotThrow(() => checkManifest({ ...manifest, lesson: 'op1m3' }, 'video.json', 'x'));
+  assert.throws(() => checkManifest({ ...manifest, lesson: 'tema3' }, 'video.json', 'x'), /lesson/);
+});

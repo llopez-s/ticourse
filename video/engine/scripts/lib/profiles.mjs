@@ -107,10 +107,10 @@ export const PROFILES = Object.freeze({
   }),
 });
 
-const AFFILIATION = Object.freeze({ secplus: 'CompTIA', gcti: 'SANS/GIAC' });
+const AFFILIATION = Object.freeze({ secplus: 'CompTIA', gcti: 'SANS/GIAC', opo: 'ninguna administración pública' });
 
 /** Exam named on the badge of an exam card ("EXAMEN · SY0-701 · 4.5"). */
-export const EXAM_BADGE = Object.freeze({ secplus: 'SY0-701', gcti: 'GCTI' });
+export const EXAM_BADGE = Object.freeze({ secplus: 'SY0-701', gcti: 'GCTI', opo: 'REDES Y ENS' });
 
 /**
  * The badge of a video's exam cards: its own `examBadge` from video.json (the SY0-801 novelties name a draft
@@ -134,11 +134,26 @@ export function interceptsFor(profile, hasAdversary) {
 /** GCTI publishes no numbered objectives, so a GCTI exam card names the course domain (src/lib/types.ts). */
 export const GCTI_DOMAINS = Object.freeze(['Requirements', 'Intrusion Analysis', 'Collection', 'Analysis', 'Dissemination']);
 
+/** «Redes y ENS» follows no official numbered objectives, so an opo exam card names the block of the track. */
+export const OPO_BLOCKS = Object.freeze(['Redes', 'ENS y normativa', 'Servicios de red', 'Infraestructuras', 'Identidad']);
+
+/**
+ * How the transcript (public, next to the captions) names an on-screen question. «Redes y ENS» follows no single
+ * official exam, so its videos never say «de examen».
+ */
+export function questionLabel(track) {
+  if (!EXAM_BADGE[track]) throw new Error(`unknown track "${track}" (known: ${Object.keys(EXAM_BADGE).join(', ')})`);
+  return track === 'opo' ? 'Pregunta tipo test' : 'Pregunta de examen';
+}
+
 /** Why `objective` is not valid on an exam card of `track`, or null when it is. */
 export function examObjectiveError(track, objective) {
   if (!EXAM_BADGE[track]) throw new Error(`unknown track "${track}" (known: ${Object.keys(EXAM_BADGE).join(', ')})`);
   if (track === 'gcti') {
     return GCTI_DOMAINS.includes(objective) ? null : `exam.objective must be a GCTI domain (${GCTI_DOMAINS.join(', ')})`;
+  }
+  if (track === 'opo') {
+    return OPO_BLOCKS.includes(objective) ? null : `exam.objective must be a block of the track (${OPO_BLOCKS.join(', ')})`;
   }
   return typeof objective === 'string' && /^[1-5]\.\d{1,2}$/.test(objective) ? null : 'exam.objective must be an SY0-701 objective like "4.4"';
 }

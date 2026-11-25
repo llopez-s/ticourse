@@ -28,7 +28,7 @@ export function locateLesson(lesson, dataDir = path.join(REPO_ROOT, 'src', 'data
   };
   walk(dataDir);
   const idLine = (id) => new RegExp(`^\\s*id:\\s*['"]${id}['"]`);
-  const moduleLine = /^\s*id:\s*['"]s(p)?\d+m\d+['"]/;
+  const moduleLine = /^\s*id:\s*['"](sp?|op)\d+m\d+['"]/;
   for (const file of files.sort()) {
     const lines = readFileSync(file, 'utf8').split(/\r?\n/);
     const from = lines.findIndex((l) => idLine(lesson).test(l));

@@ -16,7 +16,7 @@ import { parseJsonText } from './lib/narration.mjs';
 import { MANIFEST, PATHS, REPO_ROOT, VIDEO, VIDEOS_DIR, isMainModule } from './lib/paths.mjs';
 
 /** The campaign registry each track's videos continue. */
-export const CAMPAIGN = Object.freeze({ secplus: 'glass-harbor', gcti: 'velvet-cicada' });
+export const CAMPAIGN = Object.freeze({ secplus: 'glass-harbor', gcti: 'velvet-cicada', opo: 'arcedo' });
 
 const rel = (p) => path.relative(REPO_ROOT, p).split(path.sep).join('/');
 
@@ -47,7 +47,7 @@ function campaignCorpus(track) {
     if (existsSync(narration)) files.push(narration);
   }
   const data = path.join(REPO_ROOT, 'src', 'data');
-  if (track === 'secplus') files.push(...walk(path.join(data, 'secplus'), isSource));
+  if (track === 'secplus' || track === 'opo') files.push(...walk(path.join(data, track), isSource));
   else files.push(...readdirSync(data).filter((n) => isSource(n)).map((n) => path.join(data, n)));
   const registry = path.join(REPO_ROOT, 'docs', 'superpowers', 'canon', `${CAMPAIGN[track]}.md`);
   if (existsSync(registry)) files.unshift(registry);
