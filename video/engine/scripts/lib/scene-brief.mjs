@@ -26,6 +26,7 @@ export const CUE_SNIPPET_WORDS = 7;
 const TRACKS = {
   gcti: { label: 'GCTI track', campaign: 'VELVET CICADA' },
   secplus: { label: 'Security+ SY0-701 track', campaign: 'GLASS HARBOR, Autoridad Portuaria de Halden' },
+  opo: { label: 'Redes y ENS track', campaign: 'Consorcio Provincial de Arcedo (a scenario, no adversary)' },
 };
 
 // Copied from narration.mjs QUESTION_COUNTDOWN_DEFAULT_MS (same reason): the countdown of a question without "countdownMs".

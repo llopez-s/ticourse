@@ -19,12 +19,24 @@ export const TITLE_MAX = 100;
 export const TAGS_MAX_CHARS = 500;
 export const THUMB_MAX_BYTES = 2 * 1024 * 1024;
 export const CHATTERBOX_CREDIT = 'Voz: Chatterbox, de Resemble AI (licencia MIT)';
-const TRACK_LABEL = { secplus: 'Security+ SY0-701 en español', gcti: 'GIAC GCTI en español' };
+const TRACK_LABEL = { secplus: 'Security+ SY0-701 en español', gcti: 'GIAC GCTI en español', opo: 'Redes para oposiciones TIC' };
 const TRACK_TAGS = {
   secplus: ['Security+', 'SY0-701', 'CompTIA Security+ en español', 'ciberseguridad', 'blue team', 'Alertópolis'],
   gcti: ['GCTI', 'threat intelligence', 'inteligencia de amenazas', 'ciberseguridad', 'FOR578', 'Alertópolis'],
+  opo: ['redes', 'oposiciones TIC', 'redes de comunicaciones', 'administración pública', 'informática', 'Alertópolis'],
 };
-const HASHTAGS = { secplus: '#SecurityPlus #Ciberseguridad #Alertópolis', gcti: '#ThreatIntelligence #Ciberseguridad #Alertópolis' };
+const HASHTAGS = {
+  secplus: '#SecurityPlus #Ciberseguridad #Alertópolis',
+  gcti: '#ThreatIntelligence #Ciberseguridad #Alertópolis',
+  opo: '#Redes #OposicionesTIC #Alertópolis',
+};
+const PLAYLIST_LABEL = { secplus: 'Security+ SY0-701', gcti: 'GCTI', opo: 'Redes y ENS' };
+
+/** Short name of the track's playlist, for the upload sheet. */
+export function playlistLabel(track) {
+  if (!PLAYLIST_LABEL[track]) throw new Error(`unknown track "${track}" (known: ${Object.keys(PLAYLIST_LABEL).join(', ')})`);
+  return PLAYLIST_LABEL[track];
+}
 /** A lexicon key usable as a tag: no markup, no single letters (spec §6.2). */
 const LEXICON_TAG = /^[\p{L}\p{N}][\p{L}\p{N}+.\-]*$/u;
 
@@ -70,7 +82,7 @@ export function tagsLength(tags) {
  * terms; deduplicated in that order and fit to the 500-char budget.
  */
 export function youtubeTags(timeline, track, lexiconTerms = [], topics = null) {
-  const fixed = [...new Set([...TRACK_TAGS[track], ...timeline.exam.map((e) => (track === 'gcti' ? e.objective : `objetivo ${e.objective}`))])];
+  const fixed = [...new Set([...TRACK_TAGS[track], ...timeline.exam.map((e) => (track === 'secplus' ? `objetivo ${e.objective}` : e.objective))])];
   const seen = new Set(fixed);
   const extra = [];
   const candidates = topics ? topics.map((t) => t.trim()) : lexiconTerms.filter((t) => t.length >= 2 && LEXICON_TAG.test(t));
@@ -165,7 +177,7 @@ function main() {
       '- Visibilidad: pública (se publica solo con el OK de Lidia).',
       '- Audiencia: «No, no es contenido creado para niños».',
       '- Sin enlaces externos en la descripción: YouTube no los permite en este canal.',
-      `- Lista: ${MANIFEST.track === 'secplus' ? 'Security+ SY0-701' : 'GCTI'}.`,
+      `- Lista: ${playlistLabel(MANIFEST.track)}.`,
       '',
     ].join('\n'),
   );
