@@ -112,7 +112,7 @@ destino 10.21.0.5
       t: 'callout',
       kind: 'example',
       title: 'Consorcio de Arcedo: una ruta estática flotante como respaldo',
-      md: 'El centro de formación de Valdecierzo tiene la red `10.20.40.0/22`. La sede central la aprende por **OSPF** a través del enlace de fibra (distancia 110 en equipos Cisco). Para no quedarse sin servicio si cae la fibra, se añade una **ruta estática** hacia el mismo `10.20.40.0/22` por el enlace de respaldo, pero con distancia administrativa **130** en lugar de 1. Mientras OSPF anuncia el prefijo, gana su ruta (110 < 130) y la estática ni siquiera aparece en la tabla. Si la fibra cae, la ruta de OSPF desaparece y la estática «sale a flote» sola; cuando la fibra vuelve, OSPF recupera el sitio. Eso es una **ruta estática flotante**: una estática con la distancia subida por encima de la del protocolo dinámico al que respalda. Con la distancia por defecto (1) pasaría justo lo contrario: la estática ganaría siempre y el tráfico iría de forma permanente por el enlace de respaldo.',
+      md: 'El centro de formación de Valdecierzo depende de la sede central y no es una de las tres oficinas comarcales: no tiene acceso propio a la red del operador, sino una fibra del Consorcio hasta la sede. Su red es `10.20.40.0/22`. La sede central la aprende por **OSPF** a través de ese enlace de fibra (distancia 110 en equipos Cisco). Para no quedarse sin servicio si cae la fibra, se añade una **ruta estática** hacia el mismo `10.20.40.0/22` por el enlace de respaldo, pero con distancia administrativa **130** en lugar de 1. Mientras OSPF anuncia el prefijo, gana su ruta (110 < 130) y la estática ni siquiera aparece en la tabla. Si la fibra cae, la ruta de OSPF desaparece y la estática «sale a flote» sola; cuando la fibra vuelve, OSPF recupera el sitio. Eso es una **ruta estática flotante**: una estática con la distancia subida por encima de la del protocolo dinámico al que respalda. Con la distancia por defecto (1) pasaría justo lo contrario: la estática ganaría siempre y el tráfico iría de forma permanente por el enlace de respaldo.',
     },
     { t: 'h', text: 'Protocolos interiores: del vector distancia de RIP al estado de enlace de OSPF' },
     {
@@ -141,7 +141,7 @@ destino 10.21.0.5
     {
       t: 'check',
       q: {
-        q: 'El Consorcio quiere dividir su red OSPF en tres áreas: la sede central, las oficinas comarcales y el CPD. ¿Qué condición debe cumplir el diseño?',
+        q: 'El Consorcio quiere dividir su red OSPF en tres áreas: la sede central, el CPD y el centro de formación de Valdecierzo. ¿Qué condición debe cumplir el diseño?',
         choices: [
           'Las tres áreas deben formar un anillo para que haya siempre dos caminos entre ellas',
           'Una de ellas debe ser el área 0 y las otras dos deben conectarse a ella mediante un ABR',
@@ -156,12 +156,12 @@ destino 10.21.0.5
     { t: 'h', text: 'BGP: encaminar entre sistemas autónomos' },
     {
       t: 'p',
-      md: '**BGP** versión 4 (RFC 4271) es el protocolo que une los sistemas autónomos de Internet. Cada uno se identifica con un **número de AS**, que en origen tenía 16 bits y hoy puede tener 32. Dos encaminadores BGP no se descubren solos: se configuran como vecinos de forma explícita y abren entre ellos una sesión **TCP en el puerto 179**; al usar TCP, BGP no necesita su propio mecanismo de entrega fiable. La sesión es **eBGP** cuando los vecinos están en **sistemas autónomos distintos** (el Consorcio con su operador) e **iBGP** cuando están en **el mismo** (dos encaminadores de borde del Consorcio entre sí). BGP es un protocolo de **vector de rutas** (*path vector*): cada anuncio lleva, junto al prefijo, una serie de **atributos**. El más importante es **AS_PATH**, la lista de sistemas autónomos que el anuncio ha atravesado; cada AS añade su número al anunciar el prefijo a un vecino eBGP. Sirve para dos cosas: **evitar bucles** (si un encaminador ve su propio número de AS en la lista, descarta el anuncio) y **comparar caminos** (se prefiere el AS_PATH más corto). El otro atributo que conviene conocer es **LOCAL_PREF**: un valor que solo circula **dentro del propio AS**, por iBGP, y que indica por qué salida se prefiere enviar el tráfico; **gana el más alto** y se evalúa **antes** que la longitud del AS_PATH. BGP, por tanto, no busca el camino más rápido sino el que dicta la **política** de cada organización.',
+      md: '**BGP** versión 4 (RFC 4271) es el protocolo que une los sistemas autónomos de Internet. Cada uno se identifica con un **número de AS**, que en origen tenía 16 bits y hoy puede tener 32. Dos encaminadores BGP no se descubren solos: se configuran como vecinos de forma explícita y abren entre ellos una sesión **TCP en el puerto 179**; al usar TCP, BGP no necesita su propio mecanismo de entrega fiable. La sesión es **eBGP** cuando los vecinos están en **sistemas autónomos distintos** (una organización con sistema autónomo propio y su operador) e **iBGP** cuando están en **el mismo** (dos encaminadores de borde de esa organización entre sí). BGP es un protocolo de **vector de rutas** (*path vector*): cada anuncio lleva, junto al prefijo, una serie de **atributos**. El más importante es **AS_PATH**, la lista de sistemas autónomos que el anuncio ha atravesado; cada AS añade su número al anunciar el prefijo a un vecino eBGP. Sirve para dos cosas: **evitar bucles** (si un encaminador ve su propio número de AS en la lista, descarta el anuncio) y **comparar caminos** (se prefiere el AS_PATH más corto). El otro atributo que conviene conocer es **LOCAL_PREF**: un valor que solo circula **dentro del propio AS**, por iBGP, y que indica por qué salida se prefiere enviar el tráfico; **gana el más alto** y se evalúa **antes** que la longitud del AS_PATH. BGP, por tanto, no busca el camino más rápido sino el que dicta la **política** de cada organización.',
     },
     {
       t: 'check',
       q: {
-        q: 'El Consorcio tiene su propio sistema autónomo y dos operadores, A y B. Quiere que el tráfico de salida hacia Internet vaya siempre por A mientras esté disponible, aunque B ofrezca caminos con menos sistemas autónomos. ¿Qué hace?',
+        q: 'Supuesto: el Consorcio, que hoy sale a Internet por un solo operador con una ruta por defecto estática, pasa a tener su propio sistema autónomo y dos operadores, A y B. Quiere que el tráfico de salida hacia Internet vaya siempre por A mientras esté disponible, aunque B ofrezca caminos con menos sistemas autónomos. ¿Qué hace?',
         choices: [
           'Asignar un LOCAL_PREF más alto a las rutas aprendidas del operador A',
           'Asignar un LOCAL_PREF más bajo a las rutas aprendidas del operador A',
@@ -240,7 +240,7 @@ destino 10.21.0.5
       id: 'op1m4q4',
       domain: 'Redes de comunicaciones',
       prompt:
-        'La sede del Consorcio aprende la red de una oficina comarcal por OSPF a través de la fibra (equipos Cisco, distancias por defecto). Se quiere añadir una ruta estática por un enlace de respaldo que solo se use si cae la fibra. ¿Cómo debe configurarse?',
+        'La sede del Consorcio aprende la red de su centro de formación de Valdecierzo por OSPF a través de la fibra (equipos Cisco, distancias por defecto). Se quiere añadir una ruta estática por un enlace de respaldo que solo se use si cae la fibra. ¿Cómo debe configurarse?',
       choices: [
         'Con la distancia administrativa por defecto de las rutas estáticas, 1',
         'Con distancia administrativa 110, igual que OSPF',
@@ -270,7 +270,7 @@ destino 10.21.0.5
       id: 'op1m4q6',
       domain: 'Redes de comunicaciones',
       prompt:
-        'El Consorcio obtiene un número de sistema autónomo y un bloque de direcciones públicas propio, y contrata el acceso a Internet con dos operadores. Quiere anunciar su bloque a ambos y decidir por cuál sale el tráfico. ¿Qué protocolo necesita con los operadores?',
+        'Supuesto: el Consorcio deja de depender de un solo operador. Obtiene un número de sistema autónomo y un bloque de direcciones públicas propio, y contrata el acceso a Internet con dos operadores. Quiere anunciar su bloque a ambos y decidir por cuál sale el tráfico. ¿Qué protocolo necesita con los operadores?',
       choices: [
         'OSPF, con cada operador en un área distinta',
         'RIPv2, porque incluye la máscara en sus anuncios',

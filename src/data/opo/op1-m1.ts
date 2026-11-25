@@ -73,7 +73,7 @@ export const OP1_M1: Module = {
       t: 'callout',
       kind: 'example',
       title: 'En el Consorcio de Arcedo: del puesto de trabajo al CPD',
-      md: 'Un puesto de la sede central, `10.20.10.25/24`, abre la aplicación de expedientes que está en el CPD, en `10.20.72.10`. El destino **no es de su subred**, así que el puesto no pregunta por él: lanza una petición ARP por difusión preguntando por su **puerta de enlace**, `10.20.10.1`, y el encaminador responde con su MAC, `00:00:5e:00:53:01`. La trama que sale del puesto lleva como **MAC de destino la del encaminador** y como **IP de destino la del servidor**. El encaminador quita esa trama, resta 1 al TTL, consulta su tabla de rutas y construye una **trama nueva** hacia el siguiente salto, con otras MAC de origen y de destino. Las direcciones IP no cambian en todo el trayecto; las MAC cambian en cada salto.',
+      md: 'Un puesto de la sede central, `10.20.10.25/24`, abre la aplicación de expedientes que está en el CPD, en `10.20.72.10`. El destino **no es de su subred**, así que el puesto no pregunta por él: lanza una petición ARP por difusión preguntando por su **puerta de enlace**, `10.20.10.1`, y el encaminador responde con su MAC, `00:00:5e:00:53:01` (en la sede ese papel lo hace un conmutador de capa 3, que encamina entre las VLAN; lo verás en la lección de conmutación). La trama que sale del puesto lleva como **MAC de destino la del encaminador** y como **IP de destino la del servidor**. El encaminador quita esa trama, resta 1 al TTL, consulta su tabla de rutas y construye una **trama nueva** hacia el siguiente salto, con otras MAC de origen y de destino. Las direcciones IP no cambian en todo el trayecto; las MAC cambian en cada salto.',
     },
     {
       t: 'check',

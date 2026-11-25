@@ -187,7 +187,7 @@ interfaz G0.20
       t: 'callout',
       kind: 'example',
       title: 'Consorcio de Arcedo: cuatro VLAN en la sede central',
-      md: 'La sede reparte el bloque 10.20.0.0/16 con una subred por VLAN: **VLAN 10 Usuarios** (10.20.10.0/24), **VLAN 20 Servidores** (10.20.20.0/24), **VLAN 30 Voz** (10.20.30.0/24) y **VLAN 99 Gestión** (10.20.99.0/24). La **VLAN 999** existe solo para ser la nativa de los troncales y no tiene ningún puerto de acceso. Los conmutadores de planta son de capa 2; los dos de distribución son de capa 3, tienen una SVI por VLAN y uno de ellos se configura con prioridad 4096 para que sea el **puente raíz** de forma deliberada, en vez de dejar que lo sea el equipo con la MAC más baja, que suele ser el más antiguo. Un día, una técnica da de alta la **VLAN 40 Impresoras** en dos plantas y las impresoras de una no ven el servidor de la otra: la VLAN está creada en ambos conmutadores, pero nadie la añadió a la lista de **VLAN permitidas** del troncal. Es la avería de VLAN más frecuente y se diagnostica leyendo la configuración del troncal, no la de los puertos de acceso.',
+      md: 'La sede reparte el bloque 10.20.0.0/16 con una subred por VLAN: **VLAN 10 Usuarios** (10.20.10.0/24), **VLAN 20 Servidores** (10.20.20.0/24), **VLAN 30 Voz** (10.20.30.0/24) y **VLAN 99 Gestión** (10.20.99.0/24). La VLAN 20 es la de los servidores de planta, como los de ficheros e impresión; las aplicaciones corporativas están en el CPD, que ocupa una sala del mismo edificio y tiene su propio bloque, 10.20.72.0/21. La **VLAN 999** existe solo para ser la nativa de los troncales y no tiene ningún puerto de acceso. Los conmutadores de planta son de capa 2; los dos de distribución son de capa 3, tienen una SVI por VLAN y uno de ellos se configura con prioridad 4096 para que sea el **puente raíz** de forma deliberada, en vez de dejar que lo sea el equipo con la MAC más baja, que suele ser el más antiguo. Un día, una técnica da de alta la **VLAN 40 Impresoras** en dos plantas y las impresoras de una no ven el servidor de la otra: la VLAN está creada en ambos conmutadores, pero nadie la añadió a la lista de **VLAN permitidas** del troncal. Es la avería de VLAN más frecuente y se diagnostica leyendo la configuración del troncal, no la de los puertos de acceso.',
     },
     {
       t: 'p',
@@ -308,7 +308,7 @@ interfaz G0.20
       domain: 'Redes de comunicaciones',
       cognitiveLevel: 'apply',
       prompt:
-        'La sede central del Consorcio pasa de 4 a 30 VLAN y el tráfico entre ellas (usuarios hacia servidores, copias de seguridad) crece mucho. Hoy las comunica un encaminador con subinterfaces unido al conmutador por un único enlace troncal de 1 Gbit/s, que está saturado. ¿Qué diseño resuelve mejor el problema?',
+        'Otra red, no la del Consorcio: la sede de un organismo pasa de 4 a 30 VLAN y el tráfico entre ellas (usuarios hacia servidores, copias de seguridad) crece mucho. Hoy las comunica un encaminador con subinterfaces unido al conmutador por un único enlace troncal de 1 Gbit/s, que está saturado. ¿Qué diseño resuelve mejor el problema?',
       choices: [
         'Encaminar entre VLAN en un conmutador de capa 3, con una SVI por VLAN como puerta de enlace',
         'Crear una subinterfaz adicional en el encaminador por cada VLAN nueva',
