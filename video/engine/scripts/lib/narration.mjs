@@ -378,6 +378,7 @@ export function analyzeNarration({ storyboard, narration, lexicon }, { examCards
         if (x.trapAt !== undefined && (typeof x.trapAt !== 'string' || !x.trapAt)) errors.push(`${label}: question.trapAt must be a cue id`);
         question = {
           objective: x.objective,
+          ...(typeof x.tag === "string" && x.tag ? { tag: x.tag } : {}),
           scenario: x.scenario,
           q: x.q,
           options: x.options,

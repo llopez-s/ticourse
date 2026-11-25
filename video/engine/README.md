@@ -238,6 +238,7 @@ con los términos del examen en inglés; el motor no traduce nada. Diseño:
   | `countdownMs` | el silencio tras el audio del segmento, entre 4000 y 7000 (5000 si falta) |
   | `revealAt` | cue (`{reveal-1}`) de un segmento **posterior de la misma escena**: ahí se marca la correcta |
   | `trapAt` | opcional; cue posterior donde se marca la trampa. Por defecto, `revealAt`; nunca antes de `revealAt` |
+| `tag` | opcional; rótulo que el motor dibuja bajo el panel, **por encima del velo** (p. ej. «pregunta tipo test · ejemplo» en «Redes y ENS»). Un rótulo dibujado por la escena queda apagado por el velo: se pone aquí |
 
   Los textos pasan el mismo filtro de símbolos prohibidos que las tarjetas de examen (sin flechas ni emoji).
 - **Reglas de `analyzeNarration`:**
@@ -285,6 +286,32 @@ con los términos del examen en inglés; el motor no traduce nada. Diseño:
   entre los textos que cruza con la campaña.
 - **Regla de redacción (ficha V28, plan de vídeos §1):** en una escena con pregunta, `wordBudget` = (`s` −
   segundos de cuenta atrás − 3) × 2,7, porque las opciones se leen en silencio.
+
+## Arte generado (Magnific)
+
+Opcional, desde el piloto `vlan-arcedo` (2026-11-25). Cuándo y cómo se encarga está en el plan de vídeos §8, paso 4b;
+aquí va lo que toca al motor y a las escenas.
+
+- **Archivos:** `video/<slug>/public/art/` (imágenes 16:9 a 2k, `clips/*.mp4` de 5 s sin audio, `thumb/` para el
+  fondo de la miniatura, `CREDITOS.md`). Se leen con `staticFile('art/…')`. Solo lo que el vídeo usa: Remotion
+  empaqueta la carpeta pública entera.
+- **Pieza `Illustration`:** por ahora vive en `video/vlan-arcedo/src/scenes/parts/Illustration.tsx` (se copia al
+  vídeo siguiente; pasa a `engine/src/ui` cuando la use un segundo vídeo). Su cabecera documenta las props:
+  - `src`, `width`, `height`, `focus` (qué sobrevive al recorte), `dim`/`saturate`/`opacity`;
+  - `mono`: la imagen en un solo tono azul noche. Se usa siempre que el arte conviva con colores que significan algo
+    (los de las VLAN), porque el arte trae pegatinas, luces y cables de colores que compiten;
+  - `zoom`: acercamiento muy lento; se congela mientras suena un clip;
+  - `clip { src, endSrc, at, frames, fadeIn, fadeOut }`: imagen inicial → MP4 mudo desde `at` → imagen final fija.
+    El clip se **estira** a la caja de la imagen (no se recorta a «cover»): así coincide con sus fotogramas inicial y
+    final. Si el clip deforma desde el primer fotograma, `fadeIn` corto (2–4) y `fadeOut` largo (≈ 20);
+  - `children` con `<Pin>`/`<Region>` para rótulos que se mueven con la imagen, y `overlay` para los fijos.
+- **Reglas de escena:** ningún texto, número ni dato sale de la imagen; los diagramas técnicos se dibujan en código;
+  cada analogía lleva el rótulo «imagen · no es el <escenario>»; en una escena de pregunta el arte va apagado, quieto
+  y sin rótulos.
+- **Comprobación:** un pase de `qa-frames` con fotogramas extra justo antes, durante y después de cada unión
+  imagen → clip → imagen. Un clip de 24 fps repite un fotograma de cada cinco a 30 fps; es normal.
+- **Descripción de YouTube:** `video.json` → `"credits": ["Ilustraciones generadas con IA."]`; `youtube-meta.mjs`
+  añade esas líneas tras el crédito de voz. Sin el campo, la descripción no cambia.
 
 ## Efectos de sonido
 
