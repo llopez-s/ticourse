@@ -894,6 +894,13 @@ level: high`,
         ],
       },
       {
+        t: 'video',
+        title: 'Cinco casos históricos y lo que enseñó cada uno',
+        youtube: 'R8Wz-jIkG6U',
+        poster: 'videos/casos-espejo-poster.png',
+        transcript: 'videos/casos-espejo-transcript.txt',
+      },
+      {
         t: 'check',
         q: {
           q: 'During the 2016 DNC investigation, two separate Russia-linked intrusion sets were found in the same network with different tooling and infrastructure. The correct analytic handling was to:',
@@ -1133,6 +1140,13 @@ level: high`,
           '**Madurez típica**: (1) reactivo — consume feeds, apaga fuegos; (2) en desarrollo — requirements escritos, productos regulares, CMF; (3) maduro — intel integrada en decisiones, métricas de resultado, producción propia que la comunidad consume.',
           'La trampa del estadio 1→2: comprar plataforma antes que proceso. El TIP no sustituye a los requirements.',
         ],
+      },
+      {
+        t: 'video',
+        title: 'Métricas, feedback y madurez de un equipo CTI',
+        youtube: '4HCiCUA9itY',
+        poster: 'videos/feedback-madurez-poster.png',
+        transcript: 'videos/feedback-madurez-transcript.txt',
       },
       {
         t: 'check',

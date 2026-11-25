@@ -14,6 +14,14 @@ export const FOUNDATION_VIDEOS: Record<string, YouTubeVideoBlock> = {
     poster: 'videos/viaje-conexion-poster.png',
     transcript: 'videos/viaje-conexion-transcript.txt',
   },
+  // F2 follows one page load through DHCP, DNS, TCP, TLS and HTTP and ends on the certificate, the subject of f10
+  f10: {
+    t: 'video',
+    title: 'Qué sucede al abrir una web: DHCP, DNS, TLS y certificados',
+    youtube: 'FLqDKhuswfs',
+    poster: 'videos/abrir-web-poster.png',
+    transcript: 'videos/abrir-web-transcript.txt',
+  },
   // F4 reads four logs with fields, UTC and a timeline, the subject of f12
   f12: {
     t: 'video',

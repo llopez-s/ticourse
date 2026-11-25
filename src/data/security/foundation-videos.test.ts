@@ -18,6 +18,8 @@ describe('fundamentals videos', () => {
     // F1 closes the network block (f05–f08) in f08; F4 reads logs and timelines, the subject of f12
     expect(FOUNDATION_VIDEOS.f08?.youtube).toBe('MivW8FBd6Is');
     expect(FOUNDATION_VIDEOS.f12?.youtube).toBe('69BGahUytbg');
+    // F2 opens a web page step by step (DHCP, DNS, TCP, TLS, HTTP) and reads the certificate, in f10
+    expect(FOUNDATION_VIDEOS.f10?.youtube).toBe('FLqDKhuswfs');
   });
 
   it('belong to a fundamentals lesson that exists', () => {

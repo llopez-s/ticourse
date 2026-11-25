@@ -471,6 +471,12 @@ describe('lesson videos', () => {
     expect(youtubeVideos.find((v) => v.block.youtube === 'KpabKLc4DgA')?.module).toBe('sp7m6');
     // V59 walks an extortion note through negotiation and notification, after the last check and before «Tarea breve»
     expect(youtubeVideos.find((v) => v.block.youtube === 'fgwIidduN64')?.module).toBe('sp7m7');
+    // casos-espejo pairs each of the five historical cases with what it taught, after s5m4's side-by-side table and
+    // before the first check
+    expect(youtubeVideos.find((v) => v.block.youtube === 'R8Wz-jIkG6U')?.module).toBe('s5m4');
+    // feedback-madurez tells vanity metrics from outcome metrics and walks the maturity stages, after s5m5's maturity
+    // list and before the first check
+    expect(youtubeVideos.find((v) => v.block.youtube === '4HCiCUA9itY')?.module).toBe('s5m5');
   });
 
   it('every video block points at relative public assets that exist', async () => {

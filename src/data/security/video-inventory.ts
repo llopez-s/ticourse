@@ -399,11 +399,37 @@ export const VIDEO_INVENTORY: VideoResource[] = [
     "id": "casos-espejo",
     "track": "gcti",
     "lessonId": "s5m4",
-    "title": "historical cases",
-    "status": "scripted",
-    "role": "complementary",
-    "evidence": "video/casos-espejo/video.json",
-    "chapters": []
+    "title": "Cinco casos históricos y lo que enseñó cada uno",
+    "status": "integrated",
+    "role": "principal",
+    "youtube": "R8Wz-jIkG6U",
+    "poster": "videos/casos-espejo-poster.png",
+    "transcript": "videos/casos-espejo-transcript.txt",
+    "captions": "videos/casos-espejo-captions.vtt",
+    "durationSeconds": 542,
+    "verifiedAgainst": "videos/casos-espejo-captions.vtt",
+    "chapters": [
+      {
+        "title": "¿Esto ya ha pasado?",
+        "start": 0
+      },
+      {
+        "title": "Un informe con pruebas",
+        "start": 99
+      },
+      {
+        "title": "Destruir y atribuir",
+        "start": 202
+      },
+      {
+        "title": "Dentro de la red de la víctima",
+        "start": 299
+      },
+      {
+        "title": "El proveedor, de puente",
+        "start": 402
+      }
+    ]
   },
   {
     "id": "cia-halden",
@@ -857,11 +883,29 @@ export const VIDEO_INVENTORY: VideoResource[] = [
     "id": "feedback-madurez",
     "track": "gcti",
     "lessonId": "s5m5",
-    "title": "métricas vanidosas",
-    "status": "scripted",
-    "role": "complementary",
-    "evidence": "video/feedback-madurez/video.json",
-    "chapters": []
+    "title": "Métricas, feedback y madurez de un equipo CTI",
+    "status": "integrated",
+    "role": "principal",
+    "youtube": "4HCiCUA9itY",
+    "poster": "videos/feedback-madurez-poster.png",
+    "transcript": "videos/feedback-madurez-transcript.txt",
+    "captions": "videos/feedback-madurez-captions.vtt",
+    "durationSeconds": 237,
+    "verifiedAgainst": "videos/feedback-madurez-captions.vtt",
+    "chapters": [
+      {
+        "title": "Qué medir y a quién preguntar",
+        "start": 0
+      },
+      {
+        "title": "Cómo madura un equipo",
+        "start": 124
+      },
+      {
+        "title": "Para el examen",
+        "start": 232
+      }
+    ]
   },
   {
     "id": "feeds-requisito",
@@ -1831,6 +1875,16 @@ export const VIDEO_INVENTORY: VideoResource[] = [
     ]
   },
   {
+    "id": "rutas-arcedo",
+    "track": "opo",
+    "lessonId": "op1m4",
+    "title": "tabla de rutas",
+    "status": "scripted",
+    "role": "complementary",
+    "evidence": "video/rutas-arcedo/video.json",
+    "chapters": []
+  },
+  {
     "id": "sandbox-muestra",
     "track": "gcti",
     "lessonId": "s3m2",
@@ -2054,6 +2108,16 @@ export const VIDEO_INVENTORY: VideoResource[] = [
     ]
   },
   {
+    "id": "subredes-arcedo",
+    "track": "opo",
+    "lessonId": "op1m2",
+    "title": "subnetting",
+    "status": "scripted",
+    "role": "complementary",
+    "evidence": "video/subredes-arcedo/video.json",
+    "chapters": []
+  },
+  {
     "id": "tlp-comunidades",
     "track": "gcti",
     "lessonId": "s3m4",
@@ -2109,6 +2173,16 @@ export const VIDEO_INVENTORY: VideoResource[] = [
         "start": 392
       }
     ]
+  },
+  {
+    "id": "trama-arcedo",
+    "track": "opo",
+    "lessonId": "op1m1",
+    "title": "TCP/IP",
+    "status": "scripted",
+    "role": "complementary",
+    "evidence": "video/trama-arcedo/video.json",
+    "chapters": []
   },
   {
     "id": "vectores-halden",
@@ -2169,6 +2243,16 @@ export const VIDEO_INVENTORY: VideoResource[] = [
     ]
   },
   {
+    "id": "vlan-arcedo",
+    "track": "opo",
+    "lessonId": "op1m3",
+    "title": "802.1Q",
+    "status": "scripted",
+    "role": "complementary",
+    "evidence": "video/vlan-arcedo/video.json",
+    "chapters": []
+  },
+  {
     "id": "vulnerabilidades-halden",
     "track": "secplus",
     "lessonId": "sp2m5",
@@ -2196,6 +2280,16 @@ export const VIDEO_INVENTORY: VideoResource[] = [
         "start": 185
       }
     ]
+  },
+  {
+    "id": "wan-wifi-arcedo",
+    "track": "opo",
+    "lessonId": "op1m5",
+    "title": "MPLS",
+    "status": "scripted",
+    "role": "complementary",
+    "evidence": "video/wan-wifi-arcedo/video.json",
+    "chapters": []
   },
   {
     "id": "wifi-halden",
