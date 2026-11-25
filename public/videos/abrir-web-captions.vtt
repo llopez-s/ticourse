@@ -1,0 +1,628 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:06.733
+Abres el navegador, escribes el nombre
+del portal del puerto y, en tres segundos,
+
+2
+00:00:06.733 --> 00:00:10.200
+tienes la página.
+¿Qué ha pasado en ese rato?
+
+3
+00:00:10.200 --> 00:00:12.567
+Hoy vas a separar cinco piezas.
+
+4
+00:00:12.567 --> 00:00:16.467
+Una trabaja al conectarte y las otras
+cuatro en esos tres segundos.
+
+5
+00:00:16.467 --> 00:00:20.400
+Y vas a ver qué no se repite
+en la segunda visita.
+
+6
+00:00:20.400 --> 00:00:24.167
+Al final sabrás qué comprueba
+un certificado y, sobre todo,
+
+7
+00:00:24.167 --> 00:00:26.767
+qué no te puede asegurar.
+
+8
+00:00:26.767 --> 00:00:30.967
+Todo empieza un poco antes.
+Es lunes, son las nueve menos dos.
+
+9
+00:00:30.967 --> 00:00:34.467
+Acabas de encender el portátil
+en la oficina de la naviera,
+
+10
+00:00:34.467 --> 00:00:36.533
+la del vídeo anterior.
+
+11
+00:00:37.700 --> 00:00:41.133
+Al arrancar, tu portátil
+no sabe qué dirección usar.
+
+12
+00:00:41.133 --> 00:00:45.067
+La que le dieron el viernes
+ya caducó mientras estaba apagado.
+
+13
+00:00:45.067 --> 00:00:49.567
+Así que pregunta a toda la red si hay
+alguien que reparta configuración.
+
+14
+00:00:49.567 --> 00:00:54.733
+Contesta el servidor DHCP de la oficina,
+que aquí vive en el router.
+
+15
+00:00:54.733 --> 00:00:59.600
+Le ofrece una dirección, el portátil
+la pide y el servidor se la confirma.
+
+16
+00:00:59.600 --> 00:01:02.700
+Cuatro mensajes, y ya tiene sitio.
+
+17
+00:01:02.700 --> 00:01:08.367
+Y no sólo le da la dirección. Le da
+la máscara, que marca dónde acaba su red.
+
+18
+00:01:08.367 --> 00:01:10.500
+La puerta de enlace, por dónde salir.
+
+19
+00:01:10.500 --> 00:01:15.167
+Y el resolutor DNS, a quién
+preguntar por los nombres.
+
+20
+00:01:16.367 --> 00:01:18.100
+Todo eso no es para siempre.
+
+21
+00:01:18.100 --> 00:01:21.567
+Te lo dejan por un tiempo,
+como un libro de la biblioteca.
+
+22
+00:01:21.567 --> 00:01:25.067
+Se llama concesión,
+y aquí dura ocho horas.
+
+23
+00:01:25.067 --> 00:01:28.800
+A mitad de plazo, el portátil
+pide renovarla, sin hacer ruido.
+
+24
+00:01:28.800 --> 00:01:32.767
+Si el servidor dice que sí,
+sigue con la misma dirección.
+
+25
+00:01:32.767 --> 00:01:38.867
+O sea, que DHCP trabaja al conectarte y
+al renovar, no cada vez que abres una web.
+
+26
+00:01:38.867 --> 00:01:41.367
+Y tener dirección no lo arregla todo.
+
+27
+00:01:41.367 --> 00:01:45.833
+Puedes tener una concesión perfecta
+y que el resolutor no conteste.
+
+28
+00:01:45.833 --> 00:01:51.167
+O que la puerta de enlace no tenga salida.
+Cada pieza falla a su manera.
+
+29
+00:01:52.367 --> 00:01:54.500
+Ahora, el nombre del portal.
+
+30
+00:01:54.500 --> 00:01:59.033
+Tu navegador no sabe ir a un nombre,
+necesita una dirección numérica.
+
+31
+00:01:59.033 --> 00:02:03.900
+Es como la agenda del móvil. Tú buscas
+un nombre y el móvil marca el número.
+
+32
+00:02:03.900 --> 00:02:07.400
+Primero, tu portátil mira
+si ya tiene ese nombre guardado.
+
+33
+00:02:07.400 --> 00:02:09.933
+Acaba de arrancar, así que no.
+
+34
+00:02:09.933 --> 00:02:13.767
+Entonces pregunta
+al resolutor que le dio DHCP.
+
+35
+00:02:13.767 --> 00:02:19.233
+Lo hace casi siempre por UDP, el recado
+en el contestador del vídeo anterior.
+
+36
+00:02:19.233 --> 00:02:23.267
+El resolutor tampoco lo sabe,
+es la primera consulta del día.
+
+37
+00:02:23.267 --> 00:02:25.767
+Así que lo busca por su cuenta.
+
+38
+00:02:25.767 --> 00:02:29.533
+Empieza por arriba del todo, por unos
+servidores que no saben la respuesta,
+
+39
+00:02:29.533 --> 00:02:32.167
+pero sí a quién preguntar.
+
+40
+00:02:32.167 --> 00:02:33.767
+Y así, de nivel en nivel,
+
+41
+00:02:33.767 --> 00:02:37.600
+llega al servidor que manda
+en los nombres del puerto.
+
+42
+00:02:38.767 --> 00:02:45.700
+La respuesta es un registro de tipo A,
+una ficha que guarda una dirección IPv4.
+
+43
+00:02:45.700 --> 00:02:50.967
+Y viene con un tiempo de vida,
+el TTL. Aquí, una hora.
+
+44
+00:02:50.967 --> 00:02:55.200
+Durante ese tiempo, el resolutor
+y tu portátil pueden contestar de memoria,
+
+45
+00:02:55.200 --> 00:03:00.133
+sin preguntar a nadie. Pasado el plazo,
+lo olvidan y se vuelve a preguntar.
+
+46
+00:03:00.133 --> 00:03:03.233
+O sea, que DNS traduce
+nombres a direcciones,
+
+47
+00:03:03.233 --> 00:03:08.500
+y su respuesta se guarda un rato.
+No hay una consulta nueva en cada clic.
+
+48
+00:03:09.633 --> 00:03:17.767
+Ya con la dirección, el navegador abre
+una conexión TCP al número 443 del portal.
+
+49
+00:03:17.767 --> 00:03:22.767
+Es la llamada del vídeo anterior, la que
+empieza con un saludo antes de hablar.
+
+50
+00:03:22.767 --> 00:03:24.500
+Y aquí empieza lo nuevo.
+
+51
+00:03:24.500 --> 00:03:29.100
+Antes de pedir nada, tu navegador
+y el portal montan un canal cifrado,
+
+52
+00:03:29.100 --> 00:03:31.300
+ilegible para los demás.
+
+53
+00:03:31.300 --> 00:03:37.233
+Tu navegador saluda, dice con quién quiere
+hablar y qué formas de cifrar conoce.
+
+54
+00:03:37.233 --> 00:03:41.033
+Mientras se saludan, los dos
+acuerdan una clave de usar y tirar,
+
+55
+00:03:41.033 --> 00:03:47.400
+solo para esta conversación. Y el portal
+enseña su certificado, que es como su DNI.
+
+56
+00:03:47.400 --> 00:03:52.667
+Además, firma con un secreto
+que solo él guarda, su clave privada.
+
+57
+00:03:52.667 --> 00:03:56.233
+Quien solo haya copiado
+el certificado no puede hacer eso.
+
+58
+00:03:56.233 --> 00:04:00.867
+Si todo cuadra, desde ahí todo
+viaja cifrado con esa clave.
+
+59
+00:04:00.867 --> 00:04:06.900
+Eso es TLS. Un canal protegido y,
+a la vez, una prueba de con quién hablas.
+
+60
+00:04:08.100 --> 00:04:13.733
+¿Y qué comprueba exactamente tu navegador
+en ese DNI del servidor? Cuatro cosas.
+
+61
+00:04:13.733 --> 00:04:18.400
+Primero, el nombre. El que has escrito
+tiene que figurar en el certificado.
+
+62
+00:04:18.400 --> 00:04:22.100
+Si figura otro, no te sirve,
+por bueno que sea.
+
+63
+00:04:22.100 --> 00:04:24.167
+Segundo, quién lo firma.
+
+64
+00:04:24.167 --> 00:04:27.033
+No te fías de un DNI
+porque lo diga el DNI,
+
+65
+00:04:27.033 --> 00:04:31.700
+sino porque reconoces
+a la autoridad que lo expide, la CA.
+
+66
+00:04:31.700 --> 00:04:34.000
+Es una cadena de firmas.
+
+67
+00:04:34.000 --> 00:04:38.933
+Al del portal lo firma una autoridad
+intermedia, y a esa, la autoridad raíz,
+
+68
+00:04:38.933 --> 00:04:41.867
+que tu equipo ya trae instalada.
+
+69
+00:04:41.867 --> 00:04:46.700
+Tercero, las fechas.
+El del portal vale de noviembre a mayo.
+
+70
+00:04:46.700 --> 00:04:48.833
+Y cuarto, que no lo hayan anulado,
+
+71
+00:04:48.833 --> 00:04:51.867
+algo que no todos
+los navegadores comprueban igual.
+
+72
+00:04:51.867 --> 00:04:55.933
+El servidor adjunta una respuesta
+reciente, firmada por la CA,
+
+73
+00:04:55.933 --> 00:04:58.033
+que dice que sigue vigente.
+
+74
+00:04:58.033 --> 00:05:02.067
+La foto del DNI es como la clave
+pública del certificado.
+
+75
+00:05:02.067 --> 00:05:07.667
+La cara es la clave privada, y no se
+enseña, se demuestra firmando algo.
+
+76
+00:05:07.667 --> 00:05:10.333
+Quien copia un DNI no tiene
+la cara de su dueño.
+
+77
+00:05:10.333 --> 00:05:16.033
+O sea, que el navegador comprueba quién es
+el servidor antes de mandarle tu petición.
+
+78
+00:05:17.433 --> 00:05:19.833
+Con el canal abierto, llega la web.
+
+79
+00:05:19.833 --> 00:05:24.833
+El navegador pide la página en el idioma
+de la web, que se llama HTTP.
+
+80
+00:05:24.833 --> 00:05:29.167
+Dice qué quiere, GET,
+o sea, dame, y qué página.
+
+81
+00:05:29.400 --> 00:05:32.967
+Si ya habías entrado antes,
+lleva también una cookie,
+
+82
+00:05:32.967 --> 00:05:36.500
+una nota que te dejó
+el portal para reconocerte.
+
+83
+00:05:36.500 --> 00:05:41.000
+El servidor responde con la página
+y con un código, el doscientos,
+
+84
+00:05:41.000 --> 00:05:43.467
+que quiere decir todo bien.
+
+85
+00:05:43.467 --> 00:05:46.400
+Todo eso viaja dentro del canal de TLS.
+
+86
+00:05:46.400 --> 00:05:51.500
+Por eso se llama HTTPS,
+HTTP con su canal seguro.
+
+87
+00:05:51.500 --> 00:05:56.467
+Quien mire la red ve con qué dirección
+hablas, y normalmente el nombre del sitio.
+
+88
+00:05:56.467 --> 00:06:00.133
+Pero no qué página pides
+ni qué te contestan.
+
+89
+00:06:01.233 --> 00:06:07.200
+Haces tu reserva, cierras la pestaña y,
+tres minutos después, vuelves al portal.
+
+90
+00:06:07.200 --> 00:06:09.600
+¿Se repite todo lo que has visto?
+
+91
+00:06:14.033 --> 00:06:18.100
+Casi nada, aunque parezca
+que cada visita empieza de cero.
+
+92
+00:06:18.100 --> 00:06:22.100
+La concesión sigue viva,
+así que no hay DHCP.
+
+93
+00:06:22.100 --> 00:06:28.300
+Y la respuesta del DNS sigue dentro
+de su TTL, así que no se pregunta.
+
+94
+00:06:28.300 --> 00:06:31.633
+La conexión de antes,
+seguramente, ya se cerró.
+
+95
+00:06:31.633 --> 00:06:35.933
+Pero el navegador puede retomar
+lo ya acordado, la sesión TLS,
+
+96
+00:06:35.933 --> 00:06:38.133
+con un saludo más corto.
+
+97
+00:06:38.133 --> 00:06:43.067
+Lo que sí se repite siempre
+es la petición HTTP, dentro del canal.
+
+98
+00:06:43.067 --> 00:06:48.333
+¿Y dos horas después? El TTL ya pasó,
+así que hay consulta DNS.
+
+99
+00:06:48.333 --> 00:06:50.533
+Seguramente habrá conexión nueva.
+
+100
+00:06:50.533 --> 00:06:56.600
+Y el saludo TLS, completo o abreviado,
+según guarde el navegador la sesión.
+
+101
+00:06:56.600 --> 00:06:58.533
+La concesión sigue valiendo.
+
+102
+00:06:58.533 --> 00:07:04.100
+O sea, que cada pieza tiene su propio
+reloj, y solo la petición se hace siempre.
+
+103
+00:07:05.433 --> 00:07:10.000
+Ahora imagina otra cosa.
+Te llega un correo con un enlace.
+
+104
+00:07:10.000 --> 00:07:12.533
+Lleva a una web casi
+igual a la del puerto,
+
+105
+00:07:12.533 --> 00:07:15.233
+con un cero en lugar de la letra o.
+
+106
+00:07:15.233 --> 00:07:20.767
+La abres y el navegador no protesta.
+Certificado válido. ¿Te puedes fiar?
+
+107
+00:07:25.033 --> 00:07:25.933
+No basta.
+
+108
+00:07:25.933 --> 00:07:30.067
+El certificado demuestra que hablas
+cifrado con quien controla ese nombre.
+
+109
+00:07:30.067 --> 00:07:32.700
+Y ese nombre es el del cero.
+
+110
+00:07:32.700 --> 00:07:36.467
+Conseguir un certificado
+para un nombre que sea tuyo es fácil.
+
+111
+00:07:36.467 --> 00:07:39.367
+Solo tienes que demostrar
+que lo controlas.
+
+112
+00:07:39.367 --> 00:07:44.833
+Es como un DNI auténtico, que tampoco
+dice si quien lo lleva es honrado.
+
+113
+00:07:46.200 --> 00:07:49.467
+Y hay más cosas
+que un certificado no dice.
+
+114
+00:07:49.467 --> 00:07:51.933
+No dice que la aplicación esté bien hecha.
+
+115
+00:07:51.933 --> 00:07:56.467
+Un ataque puede viajar dentro
+de HTTPS tan tranquilo.
+
+116
+00:07:56.467 --> 00:08:01.567
+El cifrado protege el camino,
+no lo que la web hace con lo que recibe.
+
+117
+00:08:01.567 --> 00:08:05.433
+Y si un día el navegador te avisa
+de un problema con el certificado,
+
+118
+00:08:05.433 --> 00:08:06.967
+no te lo saltes.
+
+119
+00:08:06.967 --> 00:08:09.367
+Puede ser que el nombre no cuadre,
+
+120
+00:08:09.367 --> 00:08:13.367
+que falte un eslabón de la cadena
+o que esté fuera de fecha.
+
+121
+00:08:13.367 --> 00:08:17.700
+Quitar la comprobación para que
+funcione es quitar la protección.
+
+122
+00:08:17.700 --> 00:08:20.967
+O sea, que el certificado
+te dice con quién hablas,
+
+123
+00:08:20.967 --> 00:08:23.433
+no si te conviene hablar con él.
+
+124
+00:08:24.633 --> 00:08:30.100
+Te quedas con tres reglas.
+Primera, cada pieza tiene su trabajo.
+
+125
+00:08:30.100 --> 00:08:33.833
+DHCP te configura y DNS traduce el nombre.
+
+126
+00:08:33.833 --> 00:08:40.433
+Luego TCP abre la conversación,
+TLS la protege y HTTP pide la página.
+
+127
+00:08:40.433 --> 00:08:43.200
+Segunda, no todo se repite.
+
+128
+00:08:43.200 --> 00:08:48.133
+La concesión dura horas, la respuesta
+del DNS vive lo que dice su TTL,
+
+129
+00:08:48.133 --> 00:08:51.800
+y las sesiones TLS se pueden retomar.
+
+130
+00:08:51.800 --> 00:08:57.133
+Tercera, un certificado válido dice
+con quién hablas, no si es de fiar.
+
+131
+00:08:57.133 --> 00:08:58.933
+Ahora te toca a ti.
+
+132
+00:08:58.933 --> 00:09:01.833
+Abre la práctica
+«Diagnóstico de conectividad»
+
+133
+00:09:01.833 --> 00:09:04.667
+y decide por qué pieza empezar.
