@@ -1,0 +1,456 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "ok-4": "check",
+    "trap-4": "block",
+    "megaphone": "whoosh",
+    "fit": "lock",
+    "apipa": "error",
+    "table": "typing",
+    "groups": "ding"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {office}A una oficina del Consorcio de Arcedo le dan un bloque de direcciones. {needs}Y ahí tienen que caber puestos, teléfonos, impresoras y un enlace.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Eso se hace con subredes. {promise}Vas a ver cómo se lee un prefijo, cómo se reparte un bloque sin pisarse y qué pasa al salir a Internet.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-prefijo",
+      "text": "<clear> {split}Una dirección tiene dos partes. Lo de la izquierda dice en qué red estás, y lo de la derecha, qué equipo eres dentro de ella.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-prefijo",
+      "text": "<warm> {street}Es como una calle y un portal. {prefix}Y el prefijo, ese número detrás de la barra, dice dónde acaba la calle y empieza el portal.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-prefijo",
+      "text": "<steady> {bits}Mira un teléfono de la oficina, con barra veintiséis. De los treinta y dos bits, veintiséis son de red y quedan seis para equipos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-prefijo",
+      "text": "<engaging> {sixtyfour}Con seis bits salen sesenta y cuatro direcciones. {sign}Pero la primera es el nombre de la red, como el cartel de la calle.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-prefijo",
+      "text": "<thoughtful> {megaphone}Y la última es la de difusión, un megáfono que oyen todos. {usable}Ninguna de las dos se le da a un equipo, así que caben sesenta y dos.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Redes",
+        "text": "Equipos que caben: 2 elevado a los bits de equipo, menos 2",
+        "at": "usable",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-bloque",
+      "text": "<confident> {mask}Y ahora, el truco para no pasar a binario. El prefijo también se escribe como cuatro números, que es la máscara.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-bloque",
+      "text": "<steady> {odd}Cada número es un octeto. Busca el que no es ni doscientos cincuenta y cinco ni cero, que aquí es el último, ciento noventa y dos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-bloque",
+      "text": "<clear> {size}Réstaselo a doscientos cincuenta y seis y tienes el tamaño de bloque, aquí sesenta y cuatro. {starts}Las redes empiezan en sus múltiplos.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Redes",
+        "text": "Tamaño de bloque: 256 menos el octeto de la máscara",
+        "at": "starts",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-bloque",
+      "text": "<steady> {falls}El teléfono acaba en ciento cuarenta y uno, así que cae en el bloque que empieza en ciento veintiocho. Esa es su red.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-bloque",
+      "text": "<firm> {next}La siguiente red empieza en ciento noventa y dos. {bcast}Una menos, ciento noventa y uno, es la difusión, y lo de en medio son los equipos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-p1",
+      "text": "<intrigued> {q1}Te toca. A un equipo de otra oficina le ponen una dirección que acaba en doscientos tres, con barra veintiocho. ¿Cuál es la última dirección de su subred que puede llevar un equipo?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "Redes",
+        "scenario": "A un equipo de otra oficina comarcal le ponen la dirección 10.20.9.203/28.",
+        "q": "¿Cuál es la última dirección de su subred que puede llevar un equipo?",
+        "options": [
+          "10.20.9.207",
+          "10.20.9.208",
+          "10.20.9.254",
+          "10.20.9.206"
+        ],
+        "answer": 3,
+        "trap": 0,
+        "why": "Bloques de 16: la subred va de .192 a .207, y la .207 es la difusión",
+        "trapWhy": "Es la última del bloque, pero esa es la de difusión y no se asigna",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-p1",
+      "text": "<confident> {ok-1}La que acaba en doscientos seis. Con barra veintiocho los bloques son de dieciséis, y este va del ciento noventa y dos al doscientos siete.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-p1",
+      "text": "<firm> {trap-1}La del doscientos siete tienta, porque es la última del bloque. Pero esa es el megáfono. {rule-a}La difusión es siempre la siguiente red menos uno.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Redes",
+        "text": "Difusión: la siguiente red menos uno",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-vlsm",
+      "text": "<clear> {list}Ya sabes leer un prefijo, así que vamos a repartir el bloque de la oficina. Hay cuatro necesidades, y no son del mismo tamaño.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-vlsm",
+      "text": "<warm> {trunk}Esto es como cargar un maletero. Primero entra la maleta grande, y cada cosa va en el hueco más justo que le sirve.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-vlsm",
+      "text": "<steady> {p100}Lo más grande son los cien puestos. En una barra veintiséis caben sesenta y dos, así que necesitan una barra veinticinco, que es medio bloque.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-vlsm",
+      "text": "<engaging> {p50}Después, los cincuenta teléfonos. Les vale una barra veintiséis, que empieza donde acaba la anterior, en el ciento veintiocho. Es la subred del teléfono de antes.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-vlsm",
+      "text": "<confident> {p20}Las veinte impresoras y equipos de gestión piden una barra veintisiete, con treinta sitios. {p2}Y el enlace con la sede, una barra treinta, con dos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-vlsm",
+      "text": "<thoughtful> {fit}Cada subred arranca en un múltiplo de su tamaño, y por eso ninguna pisa a otra. {free}Y aún sobran direcciones para crecer.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-vlsm",
+      "text": "<firm> {vlsm}Repartir así, con prefijos de distinta longitud, se llama VLSM. O sea, de mayor a menor, y a cada uno la subred más pequeña que le sirve.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-p2",
+      "text": "<curious> {q2}Vamos con otra. En otra oficina ya hay dos subredes repartidas, una barra veintiséis y, a continuación, una barra veintisiete. Falta una para quince equipos de gestión. ¿Cuál es la más pequeña que sirve sin pisar a las otras?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "Redes",
+        "scenario": "En otra oficina ya están asignadas 10.20.9.0/26 y 10.20.9.64/27. Falta una subred para 15 equipos de gestión.",
+        "q": "¿Cuál es la subred más pequeña que sirve sin pisar a las otras?",
+        "options": [
+          "10.20.9.96/28",
+          "10.20.9.96/27",
+          "10.20.9.64/27",
+          "10.20.9.128/25"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "Da 30 direcciones de equipo y empieza en el primer múltiplo de 32 que queda libre",
+        "trapWhy": "Tiene 16 direcciones, pero solo 14 son de equipo: no caben los 15",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-p2",
+      "text": "<confident> {ok-2}La barra veintisiete que empieza en el noventa y seis. Da treinta sitios, y arranca justo donde acaba la anterior.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-p2",
+      "text": "<firm> {trap-2}La barra veintiocho tienta, porque tiene dieciséis direcciones para quince equipos. Pero dos no se asignan y quedan catorce. {rule-b}La más pequeña, sí, pero que sirva.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Redes",
+        "text": "VLSM: de mayor a menor, la más pequeña que sirve",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-privadas",
+      "text": "<clear> {ten}Fíjate en que todas las direcciones de la oficina empiezan por diez. Son privadas, de un bloque que cualquiera puede usar dentro de su red.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-privadas",
+      "text": "<warm> {ext}Son como las extensiones de una centralita. La ciento uno existe en miles de empresas, y fuera del edificio no significa nada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-privadas",
+      "text": "<steady> {three}Hay tres bloques privados, y los tienes en pantalla. Ninguno se encamina en Internet.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-privadas",
+      "text": "<thoughtful> {apipa}Ojo con dos que se les parecen. Una se la pone el equipo él solo cuando nadie le da dirección, y solo vale en su enlace.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-privadas",
+      "text": "<calm> {loop}La otra es el equipo hablando consigo mismo, y nunca sale a la red.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-pat",
+      "text": "<clear> {out}Como una privada no llega a Internet, al salir hay que cambiarla por una pública. De eso se encarga el encaminador de salida.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-pat",
+      "text": "<engaging> {one}En la sede hay doscientos puestos y una sola dirección pública. Así que todos salen con la misma.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-pat",
+      "text": "<thoughtful> {port}¿Y cómo reparte luego las respuestas? Porque además de la dirección cambia el puerto de origen, {table}y apunta cada cambio en una tabla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-pat",
+      "text": "<warm> {board}Es la centralita otra vez. Todos llaman fuera con el mismo número, y ella apunta qué extensión hizo cada llamada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-pat",
+      "text": "<confident> {pat}Traducir dirección y puerto, muchos equipos por una sola pública, se llama PAT.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-pat",
+      "text": "<steady> {cgnat}Y cuando lo hace el operador con todos sus clientes, usa un tramo propio, que no es privado ni tampoco público.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Redes",
+        "text": "100.64.0.0/10 es de operadores (CGNAT): no es RFC 1918",
+        "at": "cgnat",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-p3",
+      "text": "<intrigued> {q3}La tercera. Dos puestos de la sede abren a la vez la misma web, y por casualidad eligen el mismo puerto de origen. Los dos salen por la única dirección pública. ¿Qué reescribe el encaminador para repartir luego las respuestas?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "Redes",
+        "scenario": "Dos puestos de la sede abren a la vez la misma web, con el mismo puerto de origen. Salen con PAT por la única dirección pública.",
+        "q": "¿Qué reescribe el encaminador para repartir luego las respuestas?",
+        "options": [
+          "La dirección y el puerto de destino",
+          "Solo la dirección de origen",
+          "La dirección y el puerto de origen",
+          "Solo el puerto de destino"
+        ],
+        "answer": 2,
+        "trap": 1,
+        "why": "Con el puerto nuevo que apunta en su tabla sabe de qué puesto es cada respuesta",
+        "trapWhy": "Con una sola pública y el mismo puerto, las dos respuestas volverían iguales",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-p3",
+      "text": "<confident> {ok-3}La dirección y el puerto de origen. El puerto nuevo es lo que apunta en su tabla, y con él reparte las respuestas.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-p3",
+      "text": "<firm> {trap-3}Cambiar solo la dirección tienta, porque es lo primero que se piensa. {rule-c}Pero con una sola pública y el mismo puerto, las dos respuestas volverían iguales.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Redes",
+        "text": "PAT traduce dirección y puerto: muchos por una pública",
+        "at": "rule-c",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-ipv6",
+      "text": "<clear> {v6}Queda el otro protocolo, IPv6. Sus direcciones tienen ciento veintiocho bits, y se escriben en hexadecimal, en ocho grupos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-ipv6",
+      "text": "<steady> {short}Como son tan largas, se abrevian. Quitas los ceros a la izquierda de cada grupo, y una sola tira de ceros se cambia por un doble dos puntos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-ipv6",
+      "text": "<engaging> {ll}Toda interfaz se pone ella sola una dirección que solo vale en su enlace, y que ningún encaminador reenvía. Se llama link-local.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-ipv6",
+      "text": "<confident> {global}Para llegar a otras redes hace falta otra, la global, que sí se encamina en Internet. Una interfaz puede tener las dos a la vez.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Redes",
+        "text": "fe80::/10, solo en el enlace. 2000::/3, global",
+        "at": "global",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-ipv6",
+      "text": "<thoughtful> {nobc}Y aquí no hay megáfono. En IPv6 no existe la dirección de difusión. {groups}Lo que hay son grupos, y solo te oyen los que están apuntados.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-06",
+      "scene": "s10-ipv6",
+      "text": "<firm> {ndp}Eso es la multidifusión. Hasta preguntar quién tiene una dirección se hace así, con un protocolo llamado NDP, que sustituye a ARP.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-p4",
+      "text": "<curious> {q4}La última. Un equipo con IPv6 tiene que enviar un aviso a todos los nodos de su mismo enlace. ¿A qué dirección lo manda?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "Redes",
+        "scenario": "Un equipo con IPv6 tiene que enviar un aviso a todos los nodos de su mismo enlace.",
+        "q": "¿A qué dirección lo envía?",
+        "options": [
+          "A ff02::1, la multidifusión de todos los nodos del enlace",
+          "A la dirección de difusión de su subred /64",
+          "A fe80::1, la link-local reservada para todos los nodos",
+          "A ::1, que representa a todos los equipos de la red"
+        ],
+        "answer": 0,
+        "trap": 1,
+        "why": "Es un grupo en el que están todos los nodos del enlace",
+        "trapWhy": "Así se hacía en IPv4, pero en IPv6 no existe la dirección de difusión",
+        "countdownMs": 5000,
+        "revealAt": "ok-4",
+        "trapAt": "trap-4"
+      }
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-p4",
+      "text": "<confident> {ok-4}A la multidifusión de todos los nodos del enlace. Es un grupo en el que están todos, y por eso llega a todos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-p4",
+      "text": "<firm> {trap-4}La difusión de la subred tienta, porque en IPv4 se hace así. {rule-d}Pero en IPv6 esa dirección no existe.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "Redes",
+        "text": "IPv6 no tiene difusión: usa multidifusión y NDP",
+        "at": "rule-d",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-cierre",
+      "text": "<cheerful> {recap}Te llevas cuatro ideas. {rule-1}Una, el tamaño de bloque sale de una resta, y la difusión es la siguiente red menos uno.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-cierre",
+      "text": "<clear> {rule-2}Dos, al repartir, de mayor a menor y la subred más pequeña que sirva. {rule-3}Tres, las privadas salen a Internet traducidas, con dirección y puerto.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-cierre",
+      "text": "<steady> {rule-4}Y cuatro, en IPv6 no hay difusión, hay grupos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s12-04",
+      "scene": "s12-cierre",
+      "text": "<engaging> {phrase}Ante cualquier prefijo, pregúntate primero de cuánto es el bloque. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

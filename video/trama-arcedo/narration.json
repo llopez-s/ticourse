@@ -1,0 +1,304 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "click": "typing",
+    "box": "mail",
+    "ask": "whoosh",
+    "reply": "ping2",
+    "three": "ding"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {click}En el Consorcio de Arcedo, alguien abre la aplicación de expedientes del CPD. {wraps}Y ese clic sale por el cable envuelto tres veces.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Vamos a seguirlo, de la trama al segmento. {promise}Vas a ver qué envuelve a qué, a quién va cada envoltorio y cuál cambia por el camino.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-envoltorios",
+      "text": "<clear> {data}Lo que la aplicación envía son sus datos, y sueltos no llegan a ninguna parte.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-envoltorios",
+      "text": "<steady> {seg}Primero se les pone delante el número del programa que los espera, el puerto. {segname}Eso ya es un segmento, y lo prepara TCP.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-envoltorios",
+      "text": "<engaging> {pkt}Después se añade la dirección IP del servidor, y el conjunto pasa a llamarse paquete.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-envoltorios",
+      "text": "<thoughtful> {frame}Y por fuera va la trama, con la dirección física de la tarjeta que lo recoge en este tramo, la MAC.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-envoltorios",
+      "text": "<warm> {box}Es como una carta en su sobre, el sobre en una caja y la caja en una furgoneta de reparto.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-envoltorios",
+      "text": "<confident> {who}Y cada aparato lee solo su envoltorio. {sw}El conmutador mira la trama, por eso es de capa dos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-envoltorios",
+      "text": "<clear> {rt}El encaminador la abre y mira el paquete, la capa tres. {host}Y el puerto lo lee el servidor.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca. El conmutador de la planta, que es de capa dos, recibe esa trama, con la petición a la aplicación dentro. ¿Qué mira para decidir por dónde la reenvía?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "Redes",
+        "scenario": "El conmutador de planta del puesto es de capa 2. Recibe la trama que lleva dentro la petición a la aplicación de expedientes.",
+        "q": "¿Qué mira para decidir por dónde la reenvía?",
+        "options": [
+          "La IP de destino del paquete",
+          "La MAC de destino de la trama",
+          "El puerto de destino del segmento",
+          "La IP de origen del paquete"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "Un conmutador de capa 2 solo lee la cabecera de la trama, y ahí va la MAC",
+        "trapWhy": "La IP del servidor va en el paquete, y ese lo abre el encaminador",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}La dirección MAC de destino, que va en la trama, porque un conmutador de capa dos no abre nada más.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}La dirección IP tienta, porque es la del servidor. Pero va en el paquete, y ese lo abre el encaminador. {rule-a}MAC para el conmutador, IP para el encaminador.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Redes",
+        "text": "Conmutador: MAC, capa 2. Encaminador: IP, capa 3",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-arp",
+      "text": "<curious> {need}Para escribir esa trama, el puesto necesita una MAC, y solo tiene una dirección IP.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-arp",
+      "text": "<clear> {ask}Para conseguirla, un equipo pregunta en voz alta, a toda su subred, quién tiene una dirección. {arp}Eso es ARP, y el dueño le contesta solo a él.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-arp",
+      "text": "<thoughtful> {limit}Pero esa pregunta viaja sin paquete IP, así que ningún encaminador la reenvía. Se queda en su subred.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-arp",
+      "text": "<engaging> {outside}Y el servidor está en otra, en la del CPD. {gw}Por eso el puesto no pregunta por el servidor, pregunta por su puerta de enlace.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-arp",
+      "text": "<steady> {reply}El encaminador le contesta, y la trama sale con dos destinos. {two}Por fuera, la MAC del encaminador, y por dentro, la IP del servidor.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Redes",
+        "text": "Fuera de tu subred, ARP pregunta por la puerta de enlace",
+        "at": "two",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-arp",
+      "text": "<warm> {van}Es la furgoneta, que solo reparte en su barrio. Lo demás lo deja en el almacén, y allí la caja cambia de furgoneta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-arp",
+      "text": "<confident> {hop}El encaminador hace eso mismo. Tira la trama que llegó y mete el paquete en otra, sin tocarle las direcciones.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<intrigued> {q2}Otra. El paquete del puesto cruza la red interna del Consorcio y llega al servidor del CPD. El servidor mira la trama y el paquete que trae dentro. ¿Qué direcciones de origen ve?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "Redes",
+        "scenario": "El paquete del puesto cruza la red interna del Consorcio, sin traducción de direcciones, y llega al servidor del CPD.",
+        "q": "¿Qué direcciones de origen ve el servidor en la trama y en el paquete?",
+        "options": [
+          "MAC del puesto e IP del puesto",
+          "MAC del último encaminador e IP de ese encaminador",
+          "MAC del último encaminador e IP del puesto",
+          "MAC de difusión e IP del puesto"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "Cada encaminador hace una trama nueva. El paquete conserva su IP de origen",
+        "trapWhy": "La MAC del puesto solo viajó hasta su puerta de enlace, en la sede",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}La MAC del último encaminador y la IP del puesto. La trama es nueva en cada salto, y el paquete conserva sus direcciones.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Esperar la MAC del puesto tienta, pero esa trama se quedó en la sede. {rule-b}En este viaje, las MAC cambian en cada salto y las IP no.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Redes",
+        "text": "Las MAC cambian en cada salto. Las IP, no",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-transporte",
+      "text": "<clear> {inside}Queda el envoltorio de dentro, el segmento. Y ahí hay dos maneras de enviar.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-transporte",
+      "text": "<engaging> {cert}Una es como el correo certificado. {three}Antes de mandar nada, los dos extremos se ponen de acuerdo con tres mensajes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-transporte",
+      "text": "<steady> {num}Después cada byte va numerado, y quien recibe confirma lo que le llega. {resend}Lo que no se confirma se reenvía, y lo descolocado se ordena.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-transporte",
+      "text": "<confident> {tcp}Eso es TCP, y es lo que usa la aplicación de expedientes.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-transporte",
+      "text": "<casual> {post}La otra es echar una postal al buzón, sin acuerdo, sin numerar y sin confirmación. {udp}Eso es UDP, y lo que envía se llama datagrama.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-transporte",
+      "text": "<thoughtful> {voice}Encaja con la voz de los teléfonos, porque una palabra que llega tarde ya no sirve.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<curious> {q3}La última. La aplicación de expedientes va por TCP. Dos segmentos seguidos del puesto se cruzan por el camino, y el segundo llega al servidor antes que el primero. ¿Qué recibe la aplicación?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "Redes",
+        "scenario": "La aplicación de expedientes va por TCP. Dos segmentos seguidos del puesto llegan al servidor en orden inverso: el segundo, antes que el primero.",
+        "q": "¿Qué recibe la aplicación del servidor?",
+        "options": [
+          "Los datos en orden: TCP los recoloca por su número de secuencia",
+          "Los datos tal como llegan: ordenarlos es cosa de la aplicación",
+          "Nada: TCP corta la conexión con un RST",
+          "Los datos, después de repetir el saludo de tres mensajes"
+        ],
+        "answer": 0,
+        "trap": 1,
+        "why": "TCP numera los bytes y los entrega en orden, lleguen como lleguen",
+        "trapWhy": "Eso pasa con UDP, que no numera. En TCP ordena el propio protocolo",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Los datos en su orden, porque TCP los recoloca con esa numeración, el número de secuencia.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Que los ordene la aplicación es lo que pasaría con UDP, que no numera nada. {rule-c}Con TCP, el orden y el reenvío ya vienen puestos.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "Redes",
+        "text": "TCP: conexión, orden y reenvío. UDP: sin garantías",
+        "at": "rule-c",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Te llevas tres ideas. {rule-1}Una, de dentro afuera van datos, segmento, paquete y trama.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Dos, ARP no sale de su subred, y para ir fuera se pregunta por la puerta de enlace. {rule-3}Y tres, TCP numera y confirma, y UDP no promete nada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Cuando veas una dirección, pregúntate primero en qué envoltorio va. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

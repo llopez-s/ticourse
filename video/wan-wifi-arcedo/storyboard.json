@@ -1,0 +1,156 @@
+{
+  "title": "WAN y wifi: la carretera, las mesas y el director",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 306,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Con qué unir las sedes"
+    },
+    {
+      "n": 2,
+      "title": "Tres canales"
+    },
+    {
+      "n": 3,
+      "title": "Quién manda"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Cuatro sedes y un aire",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. Un mapa esquemático de la provincia con cuatro puntos, la sede central (con su CPD) y tres oficinas comarcales sin nombre, y líneas que los unen (`map`). Zoom a una planta, donde varios puntos de acceso emiten ondas que se cruzan en el mismo aire (`air`). Título «WAN y wifi» (`title`, antes de los 12 s) y la promesa en tres chips: «con qué unir las sedes · qué canales poner · quién manda» (`promise`). Plaquita «REDES Y ENS · Redes»",
+      "requiredCues": [
+        "map",
+        "air",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-wan",
+      "chapter": 1,
+      "title": "La carretera de todos y el carril reservado",
+      "targetSec": 56,
+      "wordBudget": 151,
+      "goal": "Las cuatro sedes, rotuladas «sede central + CPD» y «oficina comarcal» ×3 (`sites`), y las seis líneas de una malla completa, con la nota pequeña «con líneas dedicadas: 6 circuitos (4 × 3 / 2)» (`mesh`). Primera opción, «Internet con VPN · túnel IPsec» (`road`); la imagen, rotulada «imagen · no es el Consorcio»: una carretera pública con tráfico y un furgón blindado dentro (`armored`), que se queda parado en un atasco; rótulo «mejor esfuerzo · sin garantía de retardo ni de pérdidas» (`effort`). Segunda opción: en la misma carretera se enciende un carril reservado (`lane`) con un contrato al lado, «acuerdo de nivel de servicio (SLA) · clase de servicio para la voz» (`sla`). Vista por dentro de la red del operador, como en la lección: «CE-oficina · PE1 · P · PE2 · CE-sede», el paquete con «[304][72]» y el cambio «304 → 511» en el equipo del medio, rotulado «solo mira la etiqueta» (`labels`). Rótulo «MPLS · conmutación por etiquetas (RFC 3031) · VPN de capa 3 (RFC 4364)» y un sello «lo que elige el Consorcio: un acceso por sede» (`mpls`). En cada oficina, una segunda línea fina y discontinua hacia la sede, «respaldo · Internet + túnel IPsec · solo si cae el acceso principal» (`backup`). Al final, en condicional y con el rótulo «hipótesis · el Consorcio no tiene un segundo CPD»: un segundo centro de datos a pocos kilómetros (`dark`) unido por una carretera vacía en la que se pintan carriles de colores, «fibra oscura · la iluminas tú · DWDM: una longitud de onda por carril» (`own`)",
+      "requiredCues": [
+        "sites",
+        "mesh",
+        "road",
+        "armored",
+        "effort",
+        "lane",
+        "sla",
+        "labels",
+        "mpls",
+        "backup",
+        "dark",
+        "own"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Cae el acceso principal",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo»: el panel de pregunta tapa la escena, así que el fondo se queda quieto (una oficina comarcal con la línea principal apagada y la discontinua de respaldo encendida, a media luz y sin texto). Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (van cifradas y llegan, sin retardo garantizado) y en `trap-1` la trampa (el túnel conserva la prioridad). Vuelve la regla en una línea, «cifrar no es garantizar» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-canales",
+      "chapter": 2,
+      "title": "Mesas de dos metros",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "Una regla horizontal con los canales de 2,4 GHz numerados, «un número cada 5 MHz · canal 1 = 2412 MHz», y la nota pequeña «en Europa se usan del 1 al 13 · depende de la regulación de cada zona» (`band`). Sobre el canal 1 se dibuja lo que ocupa de verdad una emisión, una campana ancha, «cada emisión ≈ 20–22 MHz» (`wide`), y al dibujar otra en el canal 2 y otra en el 3 se montan unas sobre otras (`overlap`). La imagen, rotulada «imagen · no es el Consorcio»: una sala con marcas en el suelo cada medio metro y mesas de dos metros (`tables`); solo caben tres sin tocarse (`three`). De vuelta a la regla: «cinco números de separación» (`plan`) y las tres campanas limpias en «1 (2412 MHz) · 6 (2437 MHz) · 11 (2462 MHz)» (`c1611`). Dos puntos de acceso en el mismo canal (`same`): hablan por turnos, uno espera mientras el otro emite; rótulo «mismo canal: se oyen y se turnan · CSMA/CA» y, en la imagen, una sola mesa donde se pide la palabra (`turns`)",
+      "requiredCues": [
+        "band",
+        "wide",
+        "overlap",
+        "tables",
+        "three",
+        "plan",
+        "c1611",
+        "same",
+        "turns"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "El cuarto punto de acceso",
+      "targetSec": 42,
+      "wordBudget": 92,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio». Fondo quieto: la regla de canales con las tres campanas del 1, el 6 y el 11, a media luz. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (repetir uno de los tres, el del AP que se oiga más flojo) y en `trap-2` la trampa (el canal 3). La regla en una línea, «mejor compartir un canal que pisar dos» (`rule-b`), y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-controlador",
+      "chapter": 3,
+      "title": "Un coro con director",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Un punto de acceso con su ficha de configuración dentro, «AP autónomo · guarda su configuración y decide solo» (`solo`); se multiplica hasta cincuenta, cada uno con su ficha distinta (`fifty`). La imagen, rotulada «imagen · no es el Consorcio»: un coro en el que cada cual canta a su aire (`choir`) y, después, el mismo coro con un director delante; rótulo «controlador» (`ctrl`). En la red: los puntos de acceso, ahora «AP ligeros», se registran en el controlador, y de él bajan a cada uno la configuración, el canal y la potencia (`push`). Entre cada AP y el controlador, un túnel con dos conductos, «control · UDP 5246 · protegido con DTLS» y «datos · UDP 5247» (`tunnel`); rótulo «CAPWAP · RFC 5415» y, en pequeño, «Split MAC: las tramas 802.11 van al controlador · Local MAC: el AP puede entregar en su conmutador» (`capwap`). El túnel se resalta sobre la red cableada, «CAPWAP · solo entre AP y controlador» (`cable`), y el tramo entre un portátil y el AP se rotula «por el aire: IEEE 802.11, como siempre» (`radio`)",
+      "requiredCues": [
+        "solo",
+        "fifty",
+        "choir",
+        "ctrl",
+        "push",
+        "tunnel",
+        "capwap",
+        "cable",
+        "radio"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Doce canales que cambiar",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: una planta con doce puntos de acceso y el controlador a un lado, a media luz y sin texto. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (en el controlador, por el túnel de control) y en `trap-3` la trampa (en cada AP, uno a uno). Vuelve el director en una línea (`boss`) y entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "boss"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para llevarte",
+      "targetSec": 24,
+      "wordBudget": 65,
+      "goal": "Tres ideas, cada una con su icono (la carretera · las mesas · el director) (`recap`, `rule-1`, `rule-2`, `rule-3`); junto a la primera, tres chips: «garantías: MPLS · precio: Internet con VPN · capacidad entre dos CPD: fibra oscura». La frase final: «Cuando te den a elegir, mira primero qué te piden que garantices» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

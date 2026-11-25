@@ -1,0 +1,218 @@
+{
+  "title": "Subredes a mano: una calle, un maletero y una centralita",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 512,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Leer un prefijo"
+    },
+    {
+      "n": 2,
+      "title": "Repartir el bloque"
+    },
+    {
+      "n": 3,
+      "title": "Salir a Internet"
+    },
+    {
+      "n": 4,
+      "title": "IPv6, sin megáfono"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Doscientas cincuenta y seis direcciones",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. Una oficina comarcal vista desde fuera y, encima, su bloque: «10.20.8.0/24 · 256 direcciones» (`office`). Dentro aparecen cuatro grupos, cada uno con su color: «100 puestos · 50 teléfonos IP · 20 impresoras y equipos de gestión · enlace con la sede» (`needs`). Título «Subredes a mano» (`title`, antes de los 12 s) y la promesa en chips: «leer un prefijo · repartir un bloque · salir a Internet · IPv6» (`promise`). Plaquita «REDES Y ENS · Redes»",
+      "requiredCues": [
+        "office",
+        "needs",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-prefijo",
+      "chapter": 1,
+      "title": "La calle y el portal",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "goal": "Una dirección grande en pantalla, «10.20.8.141/26», rotulada «un teléfono IP de la oficina», partida en dos colores: red a la izquierda y equipo a la derecha (`split`). A un lado, la imagen rotulada «imagen · no es el Consorcio»: una calle con su cartel al principio y portales numerados (`street`); la frontera entre los dos colores se rotula «prefijo /26» (`prefix`). Los 32 bits en fila: «26 bits de red · 6 bits de equipo» (`bits`). Cuenta «2 elevado a 6 = 64 direcciones» (`sixtyfour`); la primera se marca «dirección de red · el cartel de la calle» (`sign`) y la última, «dirección de difusión · llega a todos», con un megáfono al final de la calle (`megaphone`); resultado «64 − 2 = 62 equipos» y, en pequeño, «salvo /31 punto a punto, RFC 3021: 2 direcciones, las dos asignables» (`usable`), y entra la tarjeta.",
+      "requiredCues": [
+        "split",
+        "street",
+        "prefix",
+        "bits",
+        "sixtyfour",
+        "sign",
+        "megaphone",
+        "usable"
+      ]
+    },
+    {
+      "id": "s03-bloque",
+      "chapter": 1,
+      "title": "Doscientos cincuenta y seis menos la máscara",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "goal": "La misma dirección, «10.20.8.141/26», y el método en cuatro líneas que se van escribiendo: «máscara /26 = 255.255.255.192», rotulada «el mismo prefijo, en cuatro octetos» (`mask`); se resalta el único octeto que no es 255 ni 0, el 192 (`odd`); «256 − 192 = 64 · tamaño de bloque» (`size`); una regla del último octeto con las marcas «0 · 64 · 128 · 192» (`starts`) y entra la tarjeta; el 141 cae entre 128 y 192: «red 10.20.8.128» (`falls`); «siguiente red 10.20.8.192» (`next`); «difusión 10.20.8.191 · equipos de 10.20.8.129 a 10.20.8.190» (`bcast`)",
+      "requiredCues": [
+        "mask",
+        "odd",
+        "size",
+        "starts",
+        "falls",
+        "next",
+        "bcast"
+      ]
+    },
+    {
+      "id": "s04-p1",
+      "chapter": 1,
+      "title": "El último portal",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo»: el panel de pregunta tapa la escena, así que el fondo se queda quieto (la calle a media luz, sin texto). Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (10.20.9.206) y en `trap-1` la trampa (10.20.9.207, la de difusión). La regla en una línea, «difusión = siguiente red menos uno» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s05-vlsm",
+      "chapter": 2,
+      "title": "Primero, la maleta grande",
+      "targetSec": 66,
+      "wordBudget": 178,
+      "goal": "El bloque de la oficina como una barra horizontal vacía de 0 a 255, «10.20.8.0/24», y al lado la lista de necesidades ordenada de mayor a menor: «100 puestos · 50 teléfonos IP · 20 impresoras y equipos de gestión · enlace con la sede» (`list`). La imagen, rotulada «imagen · no es el Consorcio»: un maletero en el que entra primero la maleta grande y cada bulto ocupa el hueco más justo (`trunk`). La barra se va llenando de izquierda a derecha, cada tramo con su color y su ficha: «10.20.8.0/25 · 100 puestos · equipos .1 a .126 · difusión .127», con la nota «un /26 solo da 62» (`p100`); «10.20.8.128/26 · 50 teléfonos IP · equipos .129 a .190 · difusión .191», y dentro vuelve a verse el teléfono del capítulo 1, «10.20.8.141» (`p50`); «10.20.8.192/27 · 20 impresoras y equipos de gestión · equipos .193 a .222 · difusión .223» (`p20`); «10.20.8.224/30 · enlace con la sede central · .225 y .226 · difusión .227», con la nota en pequeño «/30 clásico · con un /31 (RFC 3021) bastarían 2 direcciones» (`p2`). Las cuatro fronteras se iluminan sobre una regla, «0 · 128 · 192 · 224», con el rótulo «cada subred empieza en un múltiplo de su tamaño · sin solapes» (`fit`), y el tramo final queda en gris: «libres · 10.20.8.228 a 10.20.8.255» (`free`). Rótulo «VLSM · Variable Length Subnet Mask · de mayor a menor, la más pequeña que sirve» (`vlsm`)",
+      "requiredCues": [
+        "list",
+        "trunk",
+        "p100",
+        "p50",
+        "p20",
+        "p2",
+        "fit",
+        "free",
+        "vlsm"
+      ]
+    },
+    {
+      "id": "s06-p2",
+      "chapter": 2,
+      "title": "Quince equipos",
+      "targetSec": 44,
+      "wordBudget": 92,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: una barra de bloque a media luz, sin texto. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (10.20.9.96/27) y en `trap-2` la trampa (10.20.9.96/28: 16 direcciones, 14 de equipo). La regla en una línea, «la más pequeña que sirve» (`rule-b`), y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s07-privadas",
+      "chapter": 3,
+      "title": "Extensiones de centralita",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Las cuatro subredes de la oficina con el primer octeto resaltado, «10.», y el rótulo «direcciones privadas · RFC 1918» (`ten`). La imagen, rotulada «imagen · no es el Consorcio»: una centralita de oficina con sus extensiones, «ext. 101», y dos edificios distintos con la misma extensión (`ext`). Tabla de tres filas: «10.0.0.0/8», «172.16.0.0/12 · hasta 172.31.255.255», «192.168.0.0/16», con el rótulo «no se encaminan en Internet» (`three`). Debajo, en otro color, «se parecen y no son privadas»: «169.254.0.0/16 · enlace local (APIPA) · el equipo no obtuvo dirección por DHCP y se la pone él solo» (`apipa`) y «127.0.0.0/8 · loopback · el propio equipo» (`loop`)",
+      "requiredCues": [
+        "ten",
+        "ext",
+        "three",
+        "apipa",
+        "loop"
+      ]
+    },
+    {
+      "id": "s08-pat",
+      "chapter": 3,
+      "title": "Todos por el mismo número",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "Un puesto de la sede, «10.20.10.25», envía un paquete hacia Internet y el encaminador de salida le cambia la dirección de origen (`out`). Rótulo «sede central · 200 puestos en 10.20.10.0/24 · una sola dirección pública: 203.0.113.10» (`one`). Dos paquetes, de «10.20.10.25:51514» y «10.20.10.26:51514», hacia «198.51.100.80:443»; al cruzar el encaminador se resalta que cambia también el puerto de origen (`port`) y se escribe la tabla de traducciones, rotulada «ejemplo»: «10.20.10.25:51514 = 203.0.113.10:40001» y «10.20.10.26:51514 = 203.0.113.10:40002» (`table`). La centralita de antes, rotulada «imagen · no es el Consorcio»: todas las llamadas salen con el mismo número y un cuaderno apunta la extensión de cada una (`board`). Rótulo «PAT · Port Address Translation · en la RFC 3022, NAPT · muchos equipos por una sola pública» (`pat`). En una esquina, el operador con muchos clientes detrás: «CGNAT · 100.64.0.0/10 · RFC 6598 · ni privado ni público» (`cgnat`), y entra la tarjeta",
+      "requiredCues": [
+        "out",
+        "one",
+        "port",
+        "table",
+        "board",
+        "pat",
+        "cgnat"
+      ]
+    },
+    {
+      "id": "s09-p3",
+      "chapter": 3,
+      "title": "El mismo puerto",
+      "targetSec": 42,
+      "wordBudget": 92,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: el encaminador de salida a media luz, sin texto. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (la dirección y el puerto de origen) y en `trap-3` la trampa (solo la dirección de origen). La regla en una línea, «PAT: dirección y puerto» (`rule-c`), y entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s10-ipv6",
+      "chapter": 4,
+      "title": "Grupos en vez de megáfono",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "goal": "Rótulo fijo de la escena: «ejemplos de documentación · no son direcciones del Consorcio». Una dirección completa, «2001:0db8:0000:0000:0000:0000:0000:0001», con «128 bits · 8 grupos de 16 bits en hexadecimal» (`v6`). Se abrevia en dos pasos hasta «2001:db8::1», con las dos reglas escritas: «ceros a la izquierda de cada grupo, fuera» y «una sola tira de grupos a cero = ::» (`short`). Una interfaz con dos etiquetas. La primera, «link-local · fe80::/10 · se la pone sola · no pasa del enlace», con el ejemplo «fe80::200:5eff:fe00:532a» (`ll`). La segunda, «global unicast · 2000::/3 · se encamina en Internet · empieza por 2 o por 3» (`global`), y entra la tarjeta. Vuelve la calle, rotulada «imagen · no es el Consorcio», con el megáfono tachado: «IPv6 no tiene difusión» (`nobc`); en su lugar, corros de vecinos apuntados a un grupo, y debajo el dato: «multidifusión · ff00::/8 · ff02::1 todos los nodos del enlace · ff02::2 todos los encaminadores» (`groups`). Rótulo «NDP · Neighbor Discovery · ICMPv6 · hace el trabajo de ARP» (`ndp`)",
+      "requiredCues": [
+        "v6",
+        "short",
+        "ll",
+        "global",
+        "nobc",
+        "groups",
+        "ndp"
+      ]
+    },
+    {
+      "id": "s11-p4",
+      "chapter": 4,
+      "title": "Un aviso para todos",
+      "targetSec": 38,
+      "wordBudget": 70,
+      "goal": "Pregunta tipo test 4 (`q4`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: los corros de equipos a media luz, sin texto. Cuenta atrás de 5 s. En `ok-4` se marca la correcta (ff02::1) y en `trap-4` la trampa (la difusión de la subred). La regla en una línea, «en IPv6 no hay difusión» (`rule-d`), y entra la tarjeta",
+      "requiredCues": [
+        "q4",
+        "ok-4",
+        "trap-4",
+        "rule-d"
+      ]
+    },
+    {
+      "id": "s12-cierre",
+      "chapter": 4,
+      "title": "Para llevarte",
+      "targetSec": 30,
+      "wordBudget": 81,
+      "goal": "Cuatro ideas, cada una con su icono (la calle · el maletero · la centralita · los corros) (`recap`, `rule-1`, `rule-2`, `rule-3`, `rule-4`), y la frase final: «Ante cualquier prefijo, pregúntate primero de cuánto es el bloque» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "rule-4",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "title": "Encaminamiento: carteles, una rueda de repuesto y un teléfono de guardia",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 562,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Por dónde sale un paquete"
+    },
+    {
+      "n": 2,
+      "title": "Quién rellena la tabla"
+    },
+    {
+      "n": 3,
+      "title": "La ruta de repuesto"
+    },
+    {
+      "n": 4,
+      "title": "Dentro y fuera: OSPF y BGP"
+    },
+    {
+      "n": 5,
+      "title": "La puerta que no se cae"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una sola cosa",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. El encaminador central en el centro, con sus seis salidas rotuladas `wan0`, `core0`, `core1`, `core2`, `core3` y `lan3` (`router`). Le llega un paquete, mira su dirección de destino y lo saca por una de ellas (`lookup`). Título «Encaminamiento: estático, OSPF y BGP» (`title`, antes de los 12 s) y la promesa en tres chips: «cómo elige una ruta · quién rellena la tabla · qué pasa si algo se cae» (`promise`). Plaquita «REDES Y ENS · Redes»",
+      "requiredCues": [
+        "router",
+        "lookup",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-prefijo",
+      "chapter": 1,
+      "title": "El cartel más concreto",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "goal": "La tabla del encaminador central, rotulada «extracto · sintético», con las seis filas de la lección y sus columnas destino, siguiente salto e interfaz (`rows`): «0.0.0.0/0 · 203.0.113.1 · wan0», «10.20.0.0/16 · 10.20.255.2 · core0», «10.20.12.0/24 · 10.20.255.6 · core1», «10.20.12.128/25 · 10.20.255.10 · core2», «10.20.12.192/26 · (directa) · lan3», «10.20.40.0/22 · 10.20.255.14 · core3». La columna «origen [dist./métrica]» no se enseña todavía: entra en s04, ya con su aviso de Cisco. Entra un paquete «destino 10.20.12.77» (`dest`) y se iluminan las tres filas que lo contienen, /0, /16 y /24; el /25 (de .128 a .255) y el /26 se quedan apagados (`match`). A la derecha, la imagen rotulada «imagen · no es el Consorcio»: tres carteles de carretera, «todas las direcciones», el nombre de una ciudad y el de una calle (`signs`). Rótulo «coincidencia del prefijo más largo» y, de las tres filas, se queda la de más bits de red (`longest`): «gana 10.20.12.0/24 · sale por core1» (`slash24`). Segundo paquete, «destino 10.21.0.5»: solo se ilumina «0.0.0.0/0», rotulada «ruta por defecto · cero bits de red» (`default`), y sale por wan0 con el rótulo «último recurso» (`last`). Tarjeta de examen al acabar la frase de la barra veinticuatro",
+      "requiredCues": [
+        "rows",
+        "dest",
+        "match",
+        "signs",
+        "longest",
+        "slash24",
+        "default",
+        "last"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Dos rutas y ninguna por defecto",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo · otro encaminador»: el panel de pregunta tapa la escena, así que el fondo se queda quieto (los carteles a media luz, sin texto). Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (lo descarta) y en `trap-1` la trampa (la ruta más parecida). Vuelve la regla en una línea, «el prefijo contiene el destino o no lo contiene» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-fuentes",
+      "chapter": 2,
+      "title": "De quién te fías",
+      "targetSec": 60,
+      "wordBudget": 162,
+      "goal": "La misma tabla, y ahora entra la columna «origen [dist./métrica]», con la nota «distancias: valores por defecto de Cisco» pegada a su cabecera desde el primer fotograma en que se ve (`fill`): «estática [1/0]», «ospf [110/20]», «ospf [110/30]», «ospf [110/40]», «conectada [0/0]», «ospf [110/25]». Dos manos rellenan la tabla: «estática · la escribe la administradora» y «OSPF · la aprende sola» (`sources`). Dos fuentes ofrecen la misma fila, «misma red y misma máscara», y solo cabe una (`same`). La imagen rotulada «imagen · no es el Consorcio»: dos personas te indican una dirección por la calle, y haces caso a una (`trust`). Rótulo «distancia administrativa · gana la más baja» (`ad`) y la tabla de la lección con su cabecera bien visible, «valores por defecto de Cisco · no es un estándar» (`cisco`): conectada 0 · estática 1 · eBGP 20 · OSPF 110 · RIP 120 · iBGP 200 · inalcanzable 255. Después, dos caminos de OSPF hacia «10.20.40.0/22», uno con «coste 25» y otro con «coste 60 · ejemplo»: se queda el de 25, con el rótulo «métrica · solo dentro de un protocolo» (`metric`). El orden en tres líneas (`order`): «1 · al reenviar: prefijo más largo» · «2 · mismo prefijo, dos fuentes: distancia administrativa» · «3 · mismo protocolo: métrica». Tarjeta de examen al acabar la última frase",
+      "requiredCues": [
+        "fill",
+        "sources",
+        "same",
+        "trust",
+        "ad",
+        "cisco",
+        "metric",
+        "order"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "La estática amplia",
+      "targetSec": 44,
+      "wordBudget": 97,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo · otro encaminador · distancias: valores de Cisco». Fondo quieto: las dos personas de la calle a media luz. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (core1, el /22 es el prefijo más largo) y en `trap-2` la trampa (core0 por la distancia 1). La regla en una línea, «la distancia solo desempata el mismo prefijo» (`rule-b`), y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-flotante",
+      "chapter": 3,
+      "title": "La rueda de repuesto",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "goal": "Mapa de dos puntos: «sede central» y «centro de formación de Valdecierzo · 10.20.40.0/22», unidos por una línea rotulada «fibra · OSPF» (`valde`). Debajo aparece una segunda línea, de puntos, «enlace de respaldo», mientras se escribe una fila nueva: «10.20.40.0/22 · estática · por el respaldo» (`backup`). Su distancia pasa de 1 a 130, junto a «OSPF 110», con el rótulo «valores de Cisco» (`raise`). En la tabla solo está la fila de OSPF, «10.20.40.0/22 · core3 · ospf [110/25]»; la estática queda fuera, en gris, «[130] · no instalada» (`hidden`). La imagen rotulada «imagen · no es el Consorcio»: un maletero con la rueda de repuesto (`spare`). La fibra se corta (`cut`), la fila de OSPF desaparece y la estática sube a la tabla, con el rótulo «ruta estática flotante» (`float`). La fibra vuelve y OSPF recupera la fila (`back`)",
+      "requiredCues": [
+        "valde",
+        "backup",
+        "raise",
+        "hidden",
+        "spare",
+        "cut",
+        "float",
+        "back"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Distancia cincuenta",
+      "targetSec": 44,
+      "wordBudget": 97,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo · supuesto, no es la configuración del Consorcio · distancias: valores de Cisco». Fondo quieto: el maletero a media luz. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (por el respaldo, 50 es menor que 110) y en `trap-3` la trampa (por la fibra, por su menor coste). La regla en una línea, «flotante: distancia mayor que la del protocolo» (`rule-c`), y entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s08-ospf",
+      "chapter": 4,
+      "title": "El callejero",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "goal": "Una ruta estática quieta junto a un enlace roto, y al lado un protocolo que recalcula: «estática: no se entera · dinámico: se adapta» (`dyn`). Cinco encaminadores unidos entre sí; cada uno suelta una ficha con sus enlaces y todos acaban con el mismo mapa (`map`). Rótulo «OSPF · estado de enlace · RFC 2328» (`linkstate`) y cada enlace con su número: «coste · se suma a lo largo del camino», con la nota pequeña «la fórmula del coste depende del fabricante» (`cost`). La imagen rotulada «imagen · no es el Consorcio»: el callejero de una ciudad (`city`). El mapa se parte en tres zonas rotuladas «áreas · diseño de ejemplo» (`areas`): la del centro es «área 0 · troncal» y las otras dos se conectan a ella, sin enlace directo entre sí (`area0`). Tarjeta de examen al acabar la frase del área cero",
+      "requiredCues": [
+        "dyn",
+        "map",
+        "linkstate",
+        "cost",
+        "city",
+        "areas",
+        "area0"
+      ]
+    },
+    {
+      "id": "s09-bgp",
+      "chapter": 4,
+      "title": "Las provincias que cruzas",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "goal": "El callejero se aleja y la ciudad queda dentro de un contorno rotulado «sistema autónomo · una misma administración» (`edge`), con «OSPF · protocolo interior (IGP)» dentro (`inside`). Aparecen otros contornos vecinos y, entre ellos, «BGP · protocolo exterior (EGP) · RFC 4271»; un enlace rotulado «el Consorcio y su operador · supuesto» (`bgp`). Un anuncio viaja con una lista que crece en cada contorno: «AS 64500 · AS 64501 · AS 64502», con el rótulo «vector de rutas · números de AS de documentación» (`path`). La imagen rotulada «imagen · no es el Consorcio»: un viaje largo con la lista de provincias que se atraviesan (`trip`). Dos vecinos unidos por una sesión rotulada «TCP · puerto 179 · vecinos configurados a mano» (`tcp`). Cierre en dos mitades: «dentro: OSPF» · «entre sistemas autónomos: BGP» (`inout`)",
+      "requiredCues": [
+        "edge",
+        "inside",
+        "bgp",
+        "path",
+        "trip",
+        "tcp",
+        "inout"
+      ]
+    },
+    {
+      "id": "s10-p4",
+      "chapter": 4,
+      "title": "Tres áreas",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 4 (`q4`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio». Fondo quieto: el callejero a media luz, sin zonas ni texto. Cuenta atrás de 5 s. En `ok-4` se marca la correcta (uno) y en `trap-4` la trampa (cuatro, uno por área). La regla en una línea, «dentro de un sistema autónomo, OSPF · entre ellos, BGP» (`rule-d`), y entra la tarjeta",
+      "requiredCues": [
+        "q4",
+        "ok-4",
+        "trap-4",
+        "rule-d"
+      ]
+    },
+    {
+      "id": "s11-vrrp",
+      "chapter": 5,
+      "title": "El teléfono de guardia",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "goal": "La subred «Servidores · 10.20.20.0/24» con varios servidores, todos con la misma casilla: «puerta de enlace · 10.20.20.1» (`hosts`). Arriba, dos encaminadores, A y B; A se apaga y los servidores se quedan sin salida aunque B sigue encendido (`down`). Vuelta atrás: A y B comparten una dirección dibujada entre los dos, «IP virtual · 10.20.20.1» (`virtual`), con «MAC virtual · 00-00-5E-00-01-14 · VRID 20» (`vmac`); las direcciones propias de cada uno, «10.20.20.2» y «10.20.20.3», en pequeño. La imagen rotulada «imagen · no es el Consorcio»: un teléfono de guardia que pasa de mano en mano (`phone`). «A · activo · prioridad 120» envía anuncios y «B · respaldo · prioridad 100» los escucha (`active`); los anuncios cesan y B pasa a activo, sin que cambie nada en los servidores (`takeover`). Rótulo «VRRP · estándar abierto · RFC 9568 (sustituye a la RFC 5798)» (`vrrp`) y, al lado, «HSRP · propietario de Cisco» (`hsrp`). Rótulo fijo de la escena: «montaje de ejemplo · no es la configuración actual del Consorcio»",
+      "requiredCues": [
+        "hosts",
+        "down",
+        "virtual",
+        "vmac",
+        "phone",
+        "active",
+        "takeover",
+        "vrrp",
+        "hsrp"
+      ]
+    },
+    {
+      "id": "s12-p5",
+      "chapter": 5,
+      "title": "Dos fabricantes",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 5 (`q5`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio». Fondo quieto: el teléfono de guardia a media luz. Cuenta atrás de 5 s. En `ok-5` se marca la correcta (VRRP) y en `trap-5` la trampa (HSRP). Una línea más, «los puestos no participan en OSPF» (`rule-e`), y entra la tarjeta",
+      "requiredCues": [
+        "q5",
+        "ok-5",
+        "trap-5",
+        "rule-e"
+      ]
+    },
+    {
+      "id": "s13-cierre",
+      "chapter": 5,
+      "title": "Para llevarte",
+      "targetSec": 30,
+      "wordBudget": 81,
+      "goal": "Cuatro ideas, cada una con su icono (los carteles · la rueda de repuesto · el callejero y el viaje · el teléfono de guardia) (`recap`, `rule-1`, `rule-2`, `rule-3`, `rule-4`), y la frase final: «¿Mismo prefijo o prefijos distintos? Empieza por ahí» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "rule-4",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

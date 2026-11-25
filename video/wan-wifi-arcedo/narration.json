@@ -1,0 +1,291 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "armored": "lock",
+    "overlap": "glitch",
+    "turns": "ping2",
+    "push": "mail"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {map}El Consorcio de Arcedo tiene cuatro sedes que hablan entre sí. {air}Y en cada una, un wifi que se reparte el mismo aire.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Hoy toca elegir. {promise}Vas a ver con qué unir las sedes, qué canales poner y quién manda en los puntos de acceso.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-wan",
+      "text": "<clear> {sites}Empecemos por unir las sedes. La central y las tres oficinas comparten teléfonos y aplicaciones, {mesh}así que hablan todas con todas.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-wan",
+      "text": "<thoughtful> {road}Lo barato es Internet, con un túnel cifrado entre sedes. {armored}Es como un furgón blindado por la carretera de todos. Nadie lo abre, pero si hay atasco, llega tarde.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-wan",
+      "text": "<steady> {effort}Porque en Internet nadie te firma cuánto tarda una llamada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-wan",
+      "text": "<engaging> {lane}Lo otro es alquilarle al operador un carril reservado dentro de su red. {sla}Ahí sí hay contrato, con un plazo de entrega y con la voz por delante.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-wan",
+      "text": "<confident> {labels}Por dentro, cada paquete viaja con una etiqueta, y los equipos del operador solo miran eso. {mpls}Se llama MPLS, y es lo que elige el Consorcio.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Redes",
+        "text": "MPLS: todas con todas y calidad por contrato",
+        "at": "mpls",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-wan",
+      "text": "<calm> {backup}El túnel por Internet se queda de respaldo en cada oficina.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-wan",
+      "text": "<warm> {dark}¿Y si un día montara un segundo centro de datos cerca? {own}Alquilaría la carretera entera y vacía, y los carriles los pondría él. Eso es la fibra oscura.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Te toca. Una oficina comarcal pierde su acceso principal y pasa a trabajar por el túnel de respaldo, el de Internet. La gente sigue llamando por teléfono a la sede. ¿Qué cambia para esas llamadas?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "Redes",
+        "scenario": "Una oficina comarcal pierde su acceso MPLS y pasa a trabajar por el túnel IPsec de respaldo, sobre Internet. Siguen llamando por teléfono a la sede.",
+        "q": "¿Qué cambia para esas llamadas?",
+        "options": [
+          "Nada: el túnel conserva la prioridad de la voz hasta la sede",
+          "Se cortan: la voz no puede viajar dentro de un túnel",
+          "Siguen cifradas, pero sin retardo ni pérdidas garantizados",
+          "Mejoran, porque en Internet no hay clases de servicio"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "IPsec cifra el camino, pero Internet es de mejor esfuerzo: no hay plazo firmado",
+        "trapWhy": "La prioridad la daba el operador dentro de su red. En Internet nadie la garantiza",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Siguen cifradas, pero ya nadie garantiza cuánto tardan ni que lleguen enteras. El furgón sigue blindado, y sigue en la carretera de todos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Que el túnel conserve la prioridad tienta, pero esa prioridad la daba el operador dentro de su red. {rule-a}Cifrar no es garantizar.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Redes",
+        "text": "VPN por Internet: cifra, pero no garantiza el retardo",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-canales",
+      "text": "<clear> {band}Ahora, el wifi. En la banda de dos coma cuatro gigahercios, los canales van numerados muy juntos, uno cada cinco megahercios.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-canales",
+      "text": "<steady> {wide}Pero un punto de acceso, al emitir, ocupa unos veinte. {overlap}O sea, que cada canal pisa a sus vecinos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-canales",
+      "text": "<warm> {tables}Es como una sala con marcas en el suelo cada medio metro, y mesas de dos metros. {three}Sin tocarse, caben muy pocas.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-canales",
+      "text": "<confident> {plan}Para no pisarse hacen falta cinco números de distancia. {c1611}Por eso el plan de siempre son los canales uno, seis y once.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Redes",
+        "text": "2,4 GHz: solo los canales 1, 6 y 11 no se solapan",
+        "at": "c1611",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-canales",
+      "text": "<thoughtful> {same}¿Y dos puntos de acceso en el mismo canal? {turns}Se oyen, se entienden y se turnan para hablar, como en una misma mesa. Va más lento, pero funciona.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Otra, y esta no pasa en el Consorcio. Una sala tiene tres puntos de acceso, en los canales uno, seis y once. Hace falta un cuarto, que oye a los otros tres. ¿Qué canal le pones?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "Redes",
+        "scenario": "En otra red, una sala tiene tres AP de 2,4 GHz en los canales 1, 6 y 11. Hace falta un cuarto, que desde su sitio oye a los otros tres.",
+        "q": "¿Qué canal conviene ponerle al cuarto?",
+        "options": [
+          "Ninguno: en 2,4 GHz no caben más de tres AP",
+          "El 3, en el hueco que queda entre el 1 y el 6",
+          "Cualquiera: dos canales distintos nunca se pisan",
+          "Repetir el 1, el 6 o el 11: el del AP que oiga más flojo"
+        ],
+        "answer": 3,
+        "trap": 1,
+        "why": "En el mismo canal los AP se oyen y se turnan. Mejor con el que menos se oiga",
+        "trapWhy": "El 3 pisa a la vez al 1 y al 6, y con ninguno puede turnarse: solo mete ruido",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Repites uno de los tres, el del punto de acceso que oiga más flojo. Compartir mesa es turnarse.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}El canal tres parece un hueco, pero es una mesa a caballo entre dos. No puede turnarse con ninguna. {rule-b}Mejor compartir un canal que pisar dos.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Redes",
+        "text": "Mejor compartir un canal que pisar dos a medias",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-controlador",
+      "text": "<clear> {solo}Queda saber quién manda. Un punto de acceso autónomo guarda su configuración y decide solo. {fifty}Con cincuenta, son cincuenta configuraciones que mantener.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-controlador",
+      "text": "<engaging> {choir}Es un coro sin director, cada uno a su aire. {ctrl}La otra forma es ponerles un director, que es el controlador.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-controlador",
+      "text": "<steady> {push}Los puntos de acceso se registran en él, y él les envía la configuración y reparte canales y potencias.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-controlador",
+      "text": "<confident> {tunnel}Se hablan por un túnel con dos caminos, uno para las órdenes, que va protegido, y otro para los datos. {capwap}El protocolo se llama CAPWAP.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-controlador",
+      "text": "<thoughtful> {cable}Y ojo, ese túnel va por el cable. {radio}En el aire, entre tu portátil y el punto de acceso, sigue habiendo wifi del de siempre.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}La última. En la sede, los puntos de acceso dependen ya de un controlador, y hay que cambiarles el canal a doce de ellos. ¿Dónde se hace ese cambio, y cómo le llega a cada uno?",
+      "pauseAfterMs": 250,
+      "question": {
+        "objective": "Redes",
+        "scenario": "En la sede, los AP son ligeros y los gestiona un controlador con CAPWAP. Hay que cambiar el canal de radio de doce de ellos.",
+        "q": "¿Dónde se hace el cambio y cómo llega a cada AP?",
+        "options": [
+          "En el controlador, que lo envía por el túnel de control",
+          "En los portátiles, que eligen el canal al asociarse",
+          "En cada AP, uno a uno, porque guarda su configuración",
+          "En el controlador, que lo emite por radio a los AP"
+        ],
+        "answer": 0,
+        "trap": 2,
+        "why": "El controlador configura los AP y les reparte canales, por el canal de control",
+        "trapWhy": "Eso es un AP autónomo. El AP ligero recibe la configuración del controlador",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}En el controlador, una sola vez. Y a cada punto de acceso le llega por el túnel, por el camino de las órdenes.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Ir uno a uno tienta, pero eso es lo que harías con los autónomos. {boss}Aquí la configuración la reparte el director.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "Redes",
+        "text": "Con controlador, la configuración baja por CAPWAP",
+        "at": "boss",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Te llevas tres ideas. {rule-1}Una, la red entre sedes se elige por lo que necesitas, garantías, precio o capacidad.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Dos, en dos coma cuatro gigahercios, canales uno, seis y once, y antes compartir que pisar. {rule-3}Y tres, con controlador, la configuración se decide en un solo sitio.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Cuando te den a elegir, mira primero qué te piden que garantices. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

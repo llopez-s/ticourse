@@ -9,26 +9,22 @@ Los guiones de vídeo se escriben contra este registro: lo que salga en pantalla
 direcciones o sedes del escenario. Las citas van como `ruta:línea`; si una lección cambia, la numeración se mueve
 y hay que repasarlas.
 
-## 1. Cómo se usa
+Cómo se usa: si un guion necesita algo que no está aquí, no se inventa; se mira la lección y, si tampoco está,
+se apunta en §8 como hueco. Las tablas separan el **hecho del Consorcio** (la lección se lo atribuye: un callout
+de ejemplo, una pregunta que empieza por «En el Consorcio…») del **dato de ejercicio** (una dirección o un equipo
+que solo sale en un cálculo o en una pregunta genérica dentro de `10.20.0.0/16`: vale para repetir ese ejercicio
+en pantalla, no para dar por hecho que esa red existe). No hay cronología ni personas con nombre (§7).
 
-- Cada dato lleva su fuente. Si un guion necesita algo que no está aquí, no se inventa: se mira la lección y,
-  si tampoco está, se apunta en §9 como hueco y se decide antes de congelar el guion.
-- Las tablas separan dos cosas. **Hecho del Consorcio**: la lección lo atribuye al Consorcio (un callout de
-  ejemplo, una pregunta que empieza por «En el Consorcio…»). **Dato de ejercicio**: una dirección o un equipo que
-  solo aparece en un cálculo o en una pregunta genérica dentro de `10.20.0.0/16`; sirve para repetir el mismo
-  ejercicio en pantalla, no para dar por hecho que esa red existe en el Consorcio.
-- El escenario no tiene cronología, ni adversario con mensajes, ni personas con nombre (§8).
-
-## 2. Reglas del escenario
+## 1. Reglas del escenario
 
 | Regla | Fuente |
 |---|---|
-| Organización ficticia: sede central, tres oficinas comarcales y CPD propio | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:34` |
+| Organización ficticia: sede central, tres oficinas comarcales y CPD propio | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:34`, `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:35` |
 | Redes de ejemplo dentro de `10.20.0.0/16` | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:35` |
-| IP públicas solo de documentación: `192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24`; IPv6 `2001:db8::/32` | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:35` |
+| IP públicas solo de documentación: `192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24`; IPv6 `2001:db8::/32` | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:35`, `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:36` |
 | Nada de marcas ni organismos reales | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:36` |
-| Solo hechos de estándares (RFC, IEEE 802). Si un dato depende del fabricante, se dice. Nada inventado ni «aproximado» | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:37` |
-| Todo en español; protocolos y siglas en su forma habitual; «conmutador (switch)» y «encaminador (router)» la primera vez | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:27` |
+| Solo hechos de estándares (RFC, IEEE 802). Si un dato depende del fabricante, se dice. Nada inventado ni «aproximado» | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:37`, `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:38` |
+| Todo en español; protocolos y siglas en su forma habitual; «conmutador (switch)» y «encaminador (router)» la primera vez | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:28`, `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:31` |
 
 Datos que las lecciones marcan como dependientes del fabricante (en pantalla hay que marcarlos igual):
 
@@ -43,9 +39,9 @@ Datos que las lecciones marcan como dependientes del fabricante (en pantalla hay
 | Tabla MAC y configuración de puertos | «salida ilustrativa, sin sintaxis de fabricante»; «cada fabricante usa sus propias órdenes» | `src/data/opo/op1-m3.ts:31`, `src/data/opo/op1-m3.ts:158` |
 | Tabla de rutas del encaminador central | «sintético» | `src/data/opo/op1-m4.ts:31` |
 
-Patrón observado, no regla escrita: todas las MAC de las lecciones empiezan por `00:00:5e:00:53`.
+Patrón observado, no regla escrita: todas las MAC de equipos de las lecciones empiezan por `00:00:5e:00:53`.
 
-## 3. Sedes
+## 2. Sedes
 
 | Sede | Qué fija la lección | Fuente |
 |---|---|---|
@@ -56,7 +52,7 @@ Patrón observado, no regla escrita: todas las MAC de las lecciones empiezan por
 | Centro de formación de Valdecierzo | Red `10.20.40.0/22`; unido a la sede por fibra y por un enlace de respaldo | `src/data/opo/op1-m4.ts:115` |
 | CPD de respaldo / segundo centro | Solo hipótesis: «si el Consorcio montara un CPD de respaldo en la misma ciudad»; «un segundo centro situado a pocos kilómetros» | `src/data/opo/op1-m5.ts:119`, `src/data/opo/op1-m5.ts:124` |
 
-## 4. Direccionamiento
+## 3. Direccionamiento
 
 ### Hechos del Consorcio
 
@@ -82,8 +78,6 @@ Plan VLSM de la primera oficina comarcal (`10.20.8.0/24`), igual en la lección 
 | `10.20.8.224/30` | 255.255.255.252 | Enlace punto a punto con la sede central | `.225` y `.226` | `.227` | `src/data/opo/op1-m2.ts:94`, `src/data/opo/labs-op1.ts:48` |
 | `10.20.8.228` – `10.20.8.255` | — | Libre para crecer | — | — | `src/data/opo/op1-m2.ts:94` |
 
-Las máscaras de la tabla son las de `src/data/opo/op1-m2.ts:37` a `:42`.
-
 ### Direcciones públicas e IPv6
 
 | Dato | Uso | Fuente |
@@ -106,7 +100,7 @@ Las máscaras de la tabla son las de `src/data/opo/op1-m2.ts:37` a `:42`.
 | `10.20.40.0/24` por RIP frente a `10.20.40.0/22` por OSPF | Pregunta sobre prefijo más largo, sin nombrar al Consorcio | `src/data/opo/op1-m4.ts:99` |
 | `10.21.0.5` | Destino fuera de la red, que sale por la ruta por defecto | `src/data/opo/op1-m4.ts:60` |
 
-## 5. Equipos, interfaces y direcciones
+## 4. Equipos, interfaces y direcciones
 
 ### Hechos del Consorcio
 
@@ -152,7 +146,7 @@ Equipos de la oficina comarcal del laboratorio `opl1a`:
 | SW-A, SW-B, SW-C | 32768 y `…:0c`; 32768 y `…:03`; 4096 y `…:9f` | `src/data/opo/op1-m3.ts:265` |
 | R1 a R4 | Prioridad 1, 1, 0 y 5; Router ID `10.20.255.1`, `.9`, `.200` y `.3` | `src/data/opo/op1-m4.ts:258` |
 
-## 6. VLAN y conmutación
+## 5. VLAN y conmutación
 
 | VLAN | Nombre | Subred | Nota | Fuente |
 |---|---|---|---|---|
@@ -167,7 +161,7 @@ Equipos de la oficina comarcal del laboratorio `opl1a`:
 - En la pregunta de las dos plantas, el troncal solo permite 20, 30 y 99, con nativa 999 en los dos extremos: esa es la avería (`src/data/opo/op1-m3.ts:295`).
 - La sede pasa de 4 a 30 VLAN y «hoy» las comunica un encaminador con subinterfaces por un único troncal de 1 Gbit/s, saturado (`src/data/opo/op1-m3.ts:311`).
 
-## 7. Encaminamiento, WAN y WLAN
+## 6. Encaminamiento, WAN y WLAN
 
 Tabla de rutas del encaminador central (`src/data/opo/op1-m4.ts:33` a `:38`):
 
@@ -196,29 +190,29 @@ Tabla de rutas del encaminador central (`src/data/opo/op1-m4.ts:33` a `:38`):
 | WLAN | Lo único fijo es un punto de acceso en la oficina comarcal, `10.20.8.200` | `src/data/opo/labs-op1.ts:62` |
 | WLAN, ejercicios | Tres AP en los canales 1, 4 y 8 que pasan a 1-6-11; pasillo con cuatro AP en 1-6-11-1; teléfonos wifi «en la sede» que se quedan pegados al AP de origen; AP de 22 W con conmutadores 802.3af | `src/data/opo/op1-m5.ts:158`, `src/data/opo/op1-m5.ts:264`, `src/data/opo/op1-m5.ts:279`, `src/data/opo/op1-m5.ts:308` |
 
-## 8. Personas y jefe de sección
+## 7. Personas y jefe de sección
 
 - Nadie tiene nombre. Aparece «una técnica» que da de alta la VLAN 40 (`src/data/opo/op1-m3.ts:190`) y «la administradora» que escribe las rutas estáticas (`src/data/opo/op1-m4.ts:88`).
-- Jefe de `op1`: nombre en clave PLANO EN BLANCO, adversario LA RED HEREDADA: subredes que se pisan, un troncal que deja pasar todas las VLAN y una ruta estática que apunta a un equipo retirado (`src/data/opo/sections.ts:52`, `src/data/opo/sections.ts:55`).
+- Jefe de `op1`: nombre en clave PLANO EN BLANCO, adversario LA RED HEREDADA: subredes que se pisan, un troncal que deja pasar todas las VLAN y una ruta estática que apunta a un equipo retirado (`src/data/opo/sections.ts:52`, `src/data/opo/sections.ts:53`, `src/data/opo/sections.ts:55`).
 - Al cerrar: plan sin solapes, cada VLAN con su puerta de enlace, la ruta huérfana eliminada y la nota «no apagar, nadie sabe qué cuelga de aquí» (`src/data/opo/sections.ts:57`).
 
-## 9. Contradicciones y huecos
+## 8. Contradicciones y huecos
 
 ### Contradicciones entre fuentes (no resueltas)
 
 1. **Enlace de la oficina comarcal con la sede.** Es un /30 punto a punto dentro del bloque de la oficina, con la interfaz de la sede en `10.20.8.226` (`src/data/opo/op1-m2.ts:94`, `src/data/opo/labs-op1.ts:92`); es fibra con OSPF y una estática de respaldo (`src/data/opo/op1-m4.ts:243`); y es una VPN de capa 3 sobre MPLS con un túnel IPsec de respaldo (`src/data/opo/op1-m5.ts:119`). Un guion tiene que elegir una y decirlo.
 2. **Quién encamina entre las VLAN de la sede.** Dos conmutadores de distribución de capa 3 con SVI (`src/data/opo/op1-m3.ts:190`); «hoy», un encaminador con subinterfaces por un troncal de 1 Gbit/s (`src/data/opo/op1-m3.ts:311`); y «el encaminador» que responde por `10.20.10.1` (`src/data/opo/op1-m1.ts:76`).
-3. **Salida a Internet.** Un operador, una sola dirección pública y una ruta por defecto estática (`src/data/opo/op1-m2.ts:300`, `src/data/opo/op1-m4.ts:33`) frente a sistema autónomo propio, bloque público propio y dos operadores con BGP (`src/data/opo/op1-m4.ts:164`, `src/data/opo/op1-m4.ts:273`).
+3. **Salida a Internet.** Un operador, una sola dirección pública y una ruta por defecto estática (`src/data/opo/op1-m2.ts:300`, `src/data/opo/op1-m4.ts:33`) frente a sistema autónomo propio, bloque público propio y dos operadores con BGP (`src/data/opo/op1-m4.ts:164`, `src/data/opo/op1-m4.ts:273`). Además, el ejemplo de NAT estático publica un servidor como `203.0.113.20` (`src/data/opo/op1-m2.ts:160`), una segunda dirección pública.
 4. **Dónde están los servidores.** En la VLAN 20 de la sede, `10.20.20.0/24` (`src/data/opo/op1-m3.ts:190`), y en el CPD, `10.20.72.10` y `10.20.77.200/21` (`src/data/opo/op1-m1.ts:76`, `src/data/opo/op1-m2.ts:246`), cuando el CPD está en la propia sede (`src/data/opo/op1-m5.ts:119`). Ninguna lección dice cómo se reparten.
 5. **Valdecierzo no está en la lista de sedes.** El centro de formación (`src/data/opo/op1-m4.ts:115`) no cuenta entre la sede y las tres oficinas (`src/data/opo/op1-m1.ts:21`, `src/data/opo/op1-m5.ts:119`), y la pregunta que repite su caso habla de «una oficina comarcal» (`src/data/opo/op1-m4.ts:243`).
-6. **Enlaces entre encaminadores.** Uno se numera `10.20.255.0/31` (`src/data/opo/op1-m2.ts:330`); los siguientes saltos del encaminador central son `10.20.255.2`, `.6`, `.10` y `.14`, sin máscara (`src/data/opo/op1-m4.ts:34`), y encajan con bloques /30, no /31. Además, `10.20.255.1`, `.3` y `.9` son Router ID en un ejercicio (`src/data/opo/op1-m4.ts:258`).
 
 ### Huecos y ambigüedades
 
+6. **Enlaces entre encaminadores.** Uno se numera `10.20.255.0/31` (`src/data/opo/op1-m2.ts:330`); los siguientes saltos del encaminador central son `10.20.255.2`, `.6`, `.10` y `.14`, de cuatro en cuatro y sin máscara (`src/data/opo/op1-m4.ts:34`). No se dice qué prefijo usan esos enlaces. Además, `10.20.255.1`, `.3`, `.9` y `.200` son Router ID en un ejercicio (`src/data/opo/op1-m4.ts:258`).
 7. **La MAC `00:00:5e:00:53:01`** es la de la puerta de enlace de la VLAN 10 (`src/data/opo/op1-m1.ts:76`) y también una entrada estática de la VLAN 99 en P24 (`src/data/opo/op1-m3.ts:39`). Puede ser el mismo equipo, pero no se dice.
 8. **La VLAN 40 Impresoras no tiene subred** (`src/data/opo/op1-m3.ts:190`), y `10.20.40.0/22`, que tentaría por el número, es Valdecierzo (`src/data/opo/op1-m4.ts:115`).
 9. **Puertas de enlace de la oficina sin fijar.** En el laboratorio, `10.20.8.1`, `.129` y `.193` son equipos finales (`src/data/opo/labs-op1.ts:87`, `src/data/opo/labs-op1.ts:57`, `src/data/opo/labs-op1.ts:77`). Tampoco hay números de VLAN para las oficinas: la lección solo dice que cada subred del plan se convierte en una VLAN (`src/data/opo/op1-m2.ts:238`).
-10. **`10.20.10.25` se repite:** es el puesto de la sede (`src/data/opo/op1-m1.ts:76`) y el equipo A del laboratorio (`src/data/opo/labs-op1.ts:122`). Es compatible; conviene tratarlo como el mismo puesto.
+10. **`10.20.10.25` se repite:** es el puesto de la sede (`src/data/opo/op1-m1.ts:76`) y el equipo A del laboratorio (`src/data/opo/labs-op1.ts:122`). Ninguna fuente dice si es el mismo.
 11. **Redes sin dueño.** `10.20.12.x` (`src/data/opo/op1-m4.ts:35`) y `10.20.16.0/24` a `10.20.23.0/24` (`src/data/opo/op1-m2.ts:290`) aparecen en tablas y preguntas sin decir qué son.
 12. **Nunca se fija:** un prefijo IPv6 del Consorcio, direcciones de `192.0.2.0/24` o `198.51.100.0/24`, un número de AS, números de área de OSPF, puertas de enlace de las VLAN 30 y 99, un controlador de WLAN, un SSID, canales de los AP del Consorcio, conmutadores PoE concretos ni nombres de las oficinas comarcales.
 13. **Solo hipótesis:** el CPD de respaldo (`src/data/opo/op1-m5.ts:119`, `src/data/opo/op1-m5.ts:124`) y las tres áreas de OSPF (`src/data/opo/op1-m4.ts:144`). No se pueden enseñar como algo que ya existe.
