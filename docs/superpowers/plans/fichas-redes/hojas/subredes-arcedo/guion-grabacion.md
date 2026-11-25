@@ -36,7 +36,7 @@ En cada pregunta de examen **sí lees el caso y la pregunta**, como vienen en la
 
 **s03-01** · *segura* — Y ahora, el truco para no pasar a binario. El prefijo también se escribe como cuatro números, que es la máscara.
 
-**s03-02** · *pausada* — Cada número es un octeto. Busca el único que no está ni lleno ni a cero. Aquí es el último, ciento noventa y dos.
+**s03-02** · *pausada* — Cada número es un octeto. Busca el que no está ni lleno ni a cero. Aquí es el último, ciento noventa y dos.
 
 **s03-03** · *clara* — Doscientos cincuenta y seis menos ese número te da el tamaño de bloque, aquí sesenta y cuatro. Y las redes empiezan de sesenta y cuatro en sesenta y cuatro.
 
@@ -66,7 +66,7 @@ En cada pregunta de examen **sí lees el caso y la pregunta**, como vienen en la
 
 **s05-04** · *animada* — Después, los cincuenta teléfonos. Les vale una barra veintiséis, que empieza donde acaba la anterior, en el ciento veintiocho. Es la subred del teléfono de antes.
 
-**s05-05** · *segura* — Impresoras y equipos de gestión suman veinte, y les toca una barra veintisiete, donde caben treinta. Al enlace con la sede le basta una barra treinta, con solo dos direcciones.
+**s05-05** · *segura* — Impresoras y equipos de gestión suman veinte, y les toca una barra veintisiete, donde caben treinta. Al enlace con la sede le basta una barra treinta, donde solo caben dos.
 
 **s05-06** · *pensativa* — Cada subred ocupa el primer hueco libre que empieza en un múltiplo de su tamaño, y por eso ninguna pisa a otra. Y aún sobran direcciones para crecer.
 

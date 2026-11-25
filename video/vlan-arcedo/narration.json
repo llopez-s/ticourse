@@ -147,7 +147,7 @@
     {
       "id": "s04-06",
       "scene": "s04-etiqueta",
-      "text": "<thoughtful> {native}¿Y si por el troncal llega una trama sin etiqueta? {tray}Como un sobre sin pegatina, cae en una bandeja fija, que es la VLAN nativa.",
+      "text": "<thoughtful> {native}¿Y si por el troncal llega una trama sin etiqueta? {tray}Como un sobre sin pegatina, cae en la bandeja que ese puerto tiene asignada, la VLAN nativa.",
       "pauseAfterMs": 250
     },
     {
@@ -159,12 +159,12 @@
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<curious> {q2}Esta es de otra red, no del Consorcio. Un troncal tiene de nativa la VLAN diez en el extremo A y la veinte en el B. Un equipo de la VLAN diez, conectado en A, envía una trama que lo cruza. Según el estándar, ¿qué le pasa?",
+      "text": "<curious> {q2}Esta es de otra red, no del Consorcio. Un troncal tiene de nativa la VLAN diez en el extremo A y la veinte en el B. Un equipo de la VLAN diez, conectado en A, envía una trama que lo cruza. Si ningún equipo vigila las nativas, ¿qué le pasa?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "Redes",
         "scenario": "En otra red, un troncal tiene de nativa la VLAN 10 en el extremo A y la 20 en el B. Un equipo de la VLAN 10 conectado en A envía una trama que lo cruza.",
-        "q": "Según 802.1Q, ¿qué le pasa a esa trama?",
+        "q": "Sin protecciones propias del fabricante, ¿qué le pasa a esa trama?",
         "options": [
           "Cruza con la etiqueta de la VLAN 10",
           "Cruza sin etiqueta y acaba en la VLAN 20",

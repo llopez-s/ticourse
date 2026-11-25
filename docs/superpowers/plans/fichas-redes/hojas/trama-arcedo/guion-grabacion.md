@@ -52,11 +52,11 @@ En cada pregunta de examen **sí lees el caso y la pregunta**, como vienen en la
 
 **s04-01** · *con curiosidad* — Para escribir esa trama, el puesto necesita una MAC, y solo tiene una IP.
 
-**s04-02** · *clara* — Así que pregunta en voz alta quién tiene esa dirección. Lo oye toda su subred, los equipos de su misma red. Eso es ARP, y solo le contesta el dueño.
+**s04-02** · *clara* — Una MAC se consigue preguntando en voz alta quién tiene una dirección. Lo oye toda la subred, los equipos de su misma red. Eso es ARP, y solo contesta el dueño.
 
 **s04-03** · *pensativa* — Pero esa pregunta viaja sin paquete IP, así que ningún encaminador la saca de su subred.
 
-**s04-04** · *animada* — Y el servidor está en otra, en la del CPD. Por eso el puesto no pregunta por él. Pregunta por el encaminador que lo saca de la suya, su puerta de enlace.
+**s04-04** · *animada* — Y el servidor está en otra, en la del CPD. Por eso el puesto no pregunta por él. Pregunta por quien lo saca de la suya, su puerta de enlace.
 
 **s04-05** · *pausada* — El encaminador le contesta, y la trama sale con dos destinos. Por fuera, la MAC del encaminador, y por dentro, la IP del servidor.
 

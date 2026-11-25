@@ -91,7 +91,7 @@
       "title": "Dos nativas distintas",
       "targetSec": 40,
       "wordBudget": 86,
-      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio». Fondo quieto: el troncal a media luz, con sus dos extremos rotulados «A · nativa 10» y «B · nativa 20» y el equipo de la VLAN 10 colgado de A. La pregunta se ancla al estándar: «Según 802.1Q…». Cuenta atrás de 5 s. En `ok-2` se marca la correcta (cruza sin etiqueta y acaba en la VLAN 20: en A sale sin marca por ser la nativa, y B la mete en la suya) y en `trap-2` la trampa (se descarta). La regla en una línea, «la nativa, la misma en los dos extremos» (`rule-b`), y entra la tarjeta",
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio». Fondo quieto: el troncal a media luz, con sus dos extremos rotulados «A · nativa 10» y «B · nativa 20» y el equipo de la VLAN 10 colgado de A. La pregunta deja fuera las protecciones de fabricante: «Sin protecciones propias del fabricante…». Cuenta atrás de 5 s. En `ok-2` se marca la correcta (cruza sin etiqueta y acaba en la VLAN 20: en A sale sin marca por ser la nativa, y B la mete en la suya) y en `trap-2` la trampa (se descarta). La regla en una línea, «la nativa, la misma en los dos extremos» (`rule-b`), y entra la tarjeta",
       "requiredCues": [
         "q2",
         "ok-2",

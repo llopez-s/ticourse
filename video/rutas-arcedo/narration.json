@@ -163,7 +163,7 @@
       "exam": {
         "objective": "Redes",
         "text": "Distancia administrativa: solo desempata un mismo prefijo",
-        "at": "tie",
+        "at": "order",
         "holdSec": 4
       }
     },
@@ -177,15 +177,15 @@
         "scenario": "Valores de Cisco. A un encaminador le ofrecen rutas de dos en dos. Solo en una de estas parejas es la métrica la que decide cuál entra en la tabla.",
         "q": "¿En qué pareja decide la métrica?",
         "options": [
-          "Una de OSPF con coste 40 y una de RIP a 3 saltos, al mismo prefijo",
+          "Una de RIP a 3 saltos y una estática, las dos al mismo prefijo",
           "Dos de OSPF, con costes 40 y 90, las dos al mismo prefijo",
           "Una de OSPF con coste 40 y una estática, las dos al mismo prefijo",
           "Dos de OSPF, con costes 40 y 90, cada una a un prefijo distinto"
         ],
         "answer": 1,
-        "trap": 0,
+        "trap": 3,
         "why": "Mismo prefijo y mismo protocolo: solo ahí desempata la métrica, y entra la de coste 40",
-        "trapWhy": "Entre OSPF y RIP decide la distancia, 110 frente a 120. Sus métricas ni se miran",
+        "trapWhy": "Prefijos distintos no compiten: entran las dos rutas, cada una en su fila",
         "countdownMs": 5000,
         "revealAt": "ok-2",
         "trapAt": "trap-2"
@@ -200,11 +200,11 @@
     {
       "id": "s05-03",
       "scene": "s05-p2",
-      "text": "<firm> {trap-2}La pareja de OSPF y RIP llama mucho, porque tres saltos parecen poco. Pero entre dos protocolos decide la distancia. {rule-b}La métrica solo compara rutas de un mismo protocolo.",
+      "text": "<firm> {trap-2}La de los prefijos distintos llama mucho, porque son dos costes de OSPF. Pero no compiten, entran las dos. {rule-b}La métrica solo desempata con el mismo protocolo y el mismo prefijo.",
       "pauseAfterMs": 1700,
       "exam": {
         "objective": "Redes",
-        "text": "La métrica solo compara rutas de un mismo protocolo",
+        "text": "La métrica desempata: mismo protocolo y mismo prefijo",
         "at": "rule-b",
         "holdSec": 4
       }
@@ -326,7 +326,7 @@
     {
       "id": "s09-01",
       "scene": "s09-bgp",
-      "text": "<curious> {edge}Pero el callejero se acaba donde acaba la ciudad. Todas las redes que gestiona una misma organización forman un sistema autónomo, {inside}y OSPF trabaja dentro de él.",
+      "text": "<curious> {edge}Pero el callejero se acaba donde acaba la ciudad. Las redes que lleva una misma administración, con una sola política de rutas, forman un sistema autónomo, {inside}y OSPF trabaja dentro de él.",
       "pauseAfterMs": 300
     },
     {
@@ -482,7 +482,7 @@
     {
       "id": "s13-02",
       "scene": "s13-cierre",
-      "text": "<clear> {rule-2}Dos, con el mismo prefijo desempata la distancia, y con el mismo protocolo, la métrica.",
+      "text": "<clear> {rule-2}Dos, con el mismo prefijo desempata la distancia, y si además coincide el protocolo, la métrica.",
       "pauseAfterMs": 250
     },
     {

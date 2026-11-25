@@ -123,7 +123,7 @@
     {
       "id": "s04-02",
       "scene": "s04-arp",
-      "text": "<clear> {ask}Así que pregunta en voz alta quién tiene esa dirección. Lo oye toda su subred, los equipos de su misma red. {arp}Eso es ARP, y solo le contesta el dueño.",
+      "text": "<clear> {ask}Una MAC se consigue preguntando en voz alta quién tiene una dirección. Lo oye toda la subred, los equipos de su misma red. {arp}Eso es ARP, y solo contesta el dueño.",
       "pauseAfterMs": 300
     },
     {
@@ -135,7 +135,7 @@
     {
       "id": "s04-04",
       "scene": "s04-arp",
-      "text": "<engaging> {outside}Y el servidor está en otra, en la del CPD. {gw}Por eso el puesto no pregunta por él. Pregunta por el encaminador que lo saca de la suya, su puerta de enlace.",
+      "text": "<engaging> {outside}Y el servidor está en otra, en la del CPD. {gw}Por eso el puesto no pregunta por él. Pregunta por quien lo saca de la suya, su puerta de enlace.",
       "pauseAfterMs": 250
     },
     {

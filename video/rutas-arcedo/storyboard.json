@@ -98,7 +98,7 @@
       "title": "Cuatro parejas",
       "targetSec": 44,
       "wordBudget": 97,
-      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo · otro encaminador · distancias: valores de Cisco». Fondo quieto: las dos personas de la calle a media luz. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (las dos rutas de OSPF al mismo prefijo: decide la métrica y entra la de coste 40) y en `trap-2` la trampa (OSPF y RIP al mismo prefijo), con «OSPF 110 · RIP 120 · valores de Cisco» al lado: ahí decide la distancia. La regla en una línea, «la métrica solo compara rutas de un mismo protocolo» (`rule-b`), y entra la tarjeta",
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo · otro encaminador · distancias: valores de Cisco». Fondo quieto: las dos personas de la calle a media luz. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (las dos rutas de OSPF al mismo prefijo: decide la métrica y entra la de coste 40) y en `trap-2` la trampa (dos de OSPF a prefijos distintos), con «prefijos distintos: no compiten, entran las dos» al lado. La regla en una línea, «la métrica desempata con el mismo protocolo y el mismo prefijo» (`rule-b`), y entra la tarjeta",
       "requiredCues": [
         "q2",
         "ok-2",

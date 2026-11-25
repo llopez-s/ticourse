@@ -77,7 +77,7 @@
     {
       "id": "s03-02",
       "scene": "s03-bloque",
-      "text": "<steady> {odd}Cada número es un octeto. Busca el único que no está ni lleno ni a cero. Aquí es el último, ciento noventa y dos.",
+      "text": "<steady> {odd}Cada número es un octeto. Busca el que no está ni lleno ni a cero. Aquí es el último, ciento noventa y dos.",
       "pauseAfterMs": 250
     },
     {
@@ -173,7 +173,7 @@
     {
       "id": "s05-05",
       "scene": "s05-vlsm",
-      "text": "<confident> {p20}Impresoras y equipos de gestión suman veinte, y les toca una barra veintisiete, donde caben treinta. {p2}Al enlace con la sede le basta una barra treinta, con solo dos direcciones.",
+      "text": "<confident> {p20}Impresoras y equipos de gestión suman veinte, y les toca una barra veintisiete, donde caben treinta. {p2}Al enlace con la sede le basta una barra treinta, donde solo caben dos.",
       "pauseAfterMs": 300
     },
     {
@@ -297,7 +297,7 @@
       "pauseAfterMs": 400,
       "exam": {
         "objective": "Redes",
-        "text": "100.64.0.0/10 es de operadores (CGNAT), no privado",
+        "text": "100.64.0.0/10: de operadores (CGNAT). No es RFC 1918",
         "at": "cgnat",
         "holdSec": 5
       }

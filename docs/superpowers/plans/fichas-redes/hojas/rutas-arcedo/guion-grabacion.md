@@ -70,7 +70,7 @@ En cada pregunta de examen **sí lees el caso y la pregunta**, como vienen en la
 
 **s05-02** · *segura* — En la de las dos rutas de OSPF al mismo prefijo. Solo ahí la métrica tiene con qué medirse, coste con coste.
 
-**s05-03** · *firme* — La pareja de OSPF y RIP llama mucho, porque tres saltos parecen poco. Pero entre dos protocolos decide la distancia. La métrica solo compara rutas de un mismo protocolo. **(pausa larga)**
+**s05-03** · *firme* — La de los prefijos distintos llama mucho, porque son dos costes de OSPF. Pero no compiten, entran las dos. La métrica solo desempata con el mismo protocolo y el mismo prefijo. **(pausa larga)**
 
 ## 3. La ruta de repuesto
 
@@ -114,7 +114,7 @@ En cada pregunta de examen **sí lees el caso y la pregunta**, como vienen en la
 
 ### Las provincias que cruzas
 
-**s09-01** · *con curiosidad* — Pero el callejero se acaba donde acaba la ciudad. Todas las redes que gestiona una misma organización forman un sistema autónomo, y OSPF trabaja dentro de él.
+**s09-01** · *con curiosidad* — Pero el callejero se acaba donde acaba la ciudad. Las redes que lleva una misma administración, con una sola política de rutas, forman un sistema autónomo, y OSPF trabaja dentro de él.
 
 **s09-02** · *segura* — Entre sistemas autónomos manda otro protocolo, BGP. Es el que usaría el Consorcio para hablar con su operador.
 
@@ -164,7 +164,7 @@ En cada pregunta de examen **sí lees el caso y la pregunta**, como vienen en la
 
 **s13-01** · *alegre* — Si solo recuerdas cuatro cosas, que sean estas. Una, al reenviar gana el prefijo más largo.
 
-**s13-02** · *clara* — Dos, con el mismo prefijo desempata la distancia, y con el mismo protocolo, la métrica.
+**s13-02** · *clara* — Dos, con el mismo prefijo desempata la distancia, y si además coincide el protocolo, la métrica.
 
 **s13-03** · *pausada* — Tres, OSPF dentro del sistema autónomo y BGP entre ellos. Y cuatro, VRRP para que la puerta de enlace no dependa de un solo equipo.
 

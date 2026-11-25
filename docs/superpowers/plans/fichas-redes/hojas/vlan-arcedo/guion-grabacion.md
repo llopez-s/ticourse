@@ -58,13 +58,13 @@ En cada pregunta de examen **sí lees el caso y la pregunta**, como vienen en la
 
 **s04-05** · *cercana* — Piensa en el correo interno. Dentro del departamento, el sobre va sin nada. En el montacargas, lleva la pegatina del suyo.
 
-**s04-06** · *pensativa* — ¿Y si por el troncal llega una trama sin etiqueta? Como un sobre sin pegatina, cae en una bandeja fija, que es la VLAN nativa.
+**s04-06** · *pensativa* — ¿Y si por el troncal llega una trama sin etiqueta? Como un sobre sin pegatina, cae en la bandeja que ese puerto tiene asignada, la VLAN nativa.
 
 **s04-07** · *tranquila* — En la sede, la nativa es una VLAN vacía, sin equipos.
 
 ### Dos nativas distintas
 
-**s05-01** · *con curiosidad* — Esta es de otra red, no del Consorcio. Un troncal tiene de nativa la VLAN diez en el extremo A y la veinte en el B. Un equipo de la VLAN diez, conectado en A, envía una trama que lo cruza. Según el estándar, ¿qué le pasa?
+**s05-01** · *con curiosidad* — Esta es de otra red, no del Consorcio. Un troncal tiene de nativa la VLAN diez en el extremo A y la veinte en el B. Un equipo de la VLAN diez, conectado en A, envía una trama que lo cruza. Si ningún equipo vigila las nativas, ¿qué le pasa?
 
 > *(En pantalla: la pregunta y sus cuatro opciones. Deja cinco segundos de silencio.)*
 
