@@ -137,6 +137,15 @@ export const GCTI_DOMAINS = Object.freeze(['Requirements', 'Intrusion Analysis',
 /** «Redes y ENS» follows no official numbered objectives, so an opo exam card names the block of the track. */
 export const OPO_BLOCKS = Object.freeze(['Redes', 'ENS y normativa', 'Servicios de red', 'Infraestructuras', 'Identidad']);
 
+/**
+ * How the transcript (public, next to the captions) names an on-screen question. «Redes y ENS» follows no single
+ * official exam, so its videos never say «de examen».
+ */
+export function questionLabel(track) {
+  if (!EXAM_BADGE[track]) throw new Error(`unknown track "${track}" (known: ${Object.keys(EXAM_BADGE).join(', ')})`);
+  return track === 'opo' ? 'Pregunta tipo test' : 'Pregunta de examen';
+}
+
 /** Why `objective` is not valid on an exam card of `track`, or null when it is. */
 export function examObjectiveError(track, objective) {
   if (!EXAM_BADGE[track]) throw new Error(`unknown track "${track}" (known: ${Object.keys(EXAM_BADGE).join(', ')})`);

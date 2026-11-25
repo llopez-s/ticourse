@@ -85,4 +85,10 @@ test('the opo track (Redes y ENS): a block of the track on the card, its own bad
   assert.equal(youtubeTitle('VLAN y 802.1Q', 'opo'), 'VLAN y 802.1Q | Redes para oposiciones TIC');
   assert.deepEqual(['secplus', 'gcti', 'opo'].map(playlistLabel), ['Security+ SY0-701', 'GCTI', 'Redes y ENS']);
   assert.equal(PLAYLIST_TITLES.opo, 'Redes y ENS para oposiciones TIC');
+  const { questionLabel } = await import('./profiles.mjs');
+  assert.deepEqual(['secplus', 'gcti', 'opo'].map(questionLabel), ['Pregunta de examen', 'Pregunta de examen', 'Pregunta tipo test']);
+  const { checkManifest } = await import('./paths.mjs');
+  const manifest = { slug: 'x', output: 'x', composition: 'X', poster: 'XPoster', profile: 'caso-yt', track: 'opo' };
+  assert.doesNotThrow(() => checkManifest({ ...manifest, lesson: 'op1m3' }, 'video.json', 'x'));
+  assert.throws(() => checkManifest({ ...manifest, lesson: 'tema3' }, 'video.json', 'x'), /lesson/);
 });

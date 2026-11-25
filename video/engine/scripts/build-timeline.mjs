@@ -21,7 +21,7 @@ import { paginate } from './lib/captions.mjs';
 import { adversaryClipId, adversaryConfig, adversaryKey, hashKeys } from './lib/adversary.mjs';
 import { analyzeNarration, isElevenLabsVoice, loadSources, parseJsonText, reportOrThrow, sourceHash, spokenForVoice, ttsKey } from './lib/narration.mjs';
 import { AUDIO_CMD, MANIFEST, PATHS, SFX_DIR, VIDEO, isMainModule } from './lib/paths.mjs';
-import { examBadgeFor, interceptsFor, profileFor, trackNotice } from './lib/profiles.mjs';
+import { examBadgeFor, interceptsFor, profileFor, questionLabel, trackNotice } from './lib/profiles.mjs';
 import { probeDurationsMs, writeFileAtomic } from './lib/remotion.mjs';
 import { INTERCEPT_TIMING, placeSfx, readSfxLibrary, sfxMapErrors, syncSfxFiles, voicedHoldFrames } from './lib/sfx.mjs';
 import { validateTimeline } from './lib/validate-timeline.mjs';
@@ -591,7 +591,7 @@ export function buildTranscript(timeline, { title, notice = TRANSCRIPT_NOTICE })
       // An exam question: its text after the segment that asks it, the answer and the trap after the one that reveals it.
       for (const q of (timeline.questions ?? []).filter((x) => x.scene === s.id)) {
         if (q.segment === seg.id) {
-          pieces.push(`[Pregunta de examen · ${q.badge ?? 'SY0-701'} ${q.objective}] ${q.scenario} ${q.q} ${q.options.map((o, j) => `${'ABCD'[j]}) ${o}`).join(' ')}`);
+          pieces.push(`[${questionLabel(MANIFEST.track)} · ${q.badge ?? 'SY0-701'} ${q.objective}] ${q.scenario} ${q.q} ${q.options.map((o, j) => `${'ABCD'[j]}) ${o}`).join(' ')}`);
         }
         if (revealSegmentOf(timeline, q)?.id === seg.id) {
           pieces.push(`Correcta: ${'ABCD'[q.answer]} — ${q.why}. Trampa: ${'ABCD'[q.trap]} — ${q.trapWhy}.`);
