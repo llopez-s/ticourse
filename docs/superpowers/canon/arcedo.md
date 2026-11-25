@@ -10,7 +10,7 @@ direcciones o sedes del escenario. Las citas van como `ruta:línea`; si una lecc
 y hay que repasarlas.
 
 Cómo se usa: si un guion necesita algo que no está aquí, no se inventa; se mira la lección y, si tampoco está,
-se apunta en §8 como hueco. Las tablas separan el **hecho del Consorcio** (la lección se lo atribuye: un callout
+se apunta en §9 como hueco. Las tablas separan el **hecho del Consorcio** (la lección se lo atribuye: un callout
 de ejemplo, una pregunta que empieza por «En el Consorcio…») del **dato de ejercicio** (una dirección o un equipo
 que solo sale en un cálculo o en una pregunta genérica dentro de `10.20.0.0/16`: vale para repetir ese ejercicio
 en pantalla, no para dar por hecho que esa red existe). No hay cronología ni personas con nombre (§7).
@@ -196,11 +196,78 @@ Tabla de rutas del encaminador central (`src/data/opo/op1-m4.ts:33` a `:38`):
 - Jefe de `op1`: nombre en clave PLANO EN BLANCO, adversario LA RED HEREDADA: subredes que se pisan, un troncal que deja pasar todas las VLAN y una ruta estática que apunta a un equipo retirado (`src/data/opo/sections.ts:52`, `src/data/opo/sections.ts:53`, `src/data/opo/sections.ts:55`).
 - Al cerrar: plan sin solapes, cada VLAN con su puerta de enlace, la ruta huérfana eliminada y la nota «no apagar, nadie sabe qué cuelga de aquí» (`src/data/opo/sections.ts:57`).
 
-## 8. Contradicciones y huecos
+## 8. Datos que añaden los guiones de vídeo (borradores sin congelar, 2026-11-25)
+
+Lo que cada guion pone en pantalla o en una pregunta y ninguna lección fija. Comprobado contra los JSON de cada
+carpeta; la fuente es una escena de `storyboard.json` (`s04-arp`) o un segmento de `narration.json` (`s04-01`).
+El estado sale del rótulo que lleva la escena: sin rótulo de ejemplo, el vídeo lo da como **hecho del Consorcio**;
+con «ejemplo», «supuesto», «montaje de ejemplo» o «diseño de ejemplo», es **supuesto o ejemplo rotulado**; con
+«otra red», **otra red, no el Consorcio**. No se listan los hechos de estándares (RFC, puertos de protocolo,
+tamaños de cabecera), las imágenes rotuladas «imagen · no es el Consorcio» (la sala de mesas de 2,2 m, el coro,
+el maletero…) ni lo que la lección ya trae, como el segundo CPD «a pocos kilómetros», que sigue siendo hipótesis.
+
+### `video/trama-arcedo` (op1m1)
+
+| Dato | Qué es | Estado en el vídeo | Fuente |
+|---|---|---|---|
+| `00:00:5e:00:53:19` | MAC del puesto `10.20.10.25`, destino de la respuesta ARP | Hecho del Consorcio en el vídeo | `video/trama-arcedo/storyboard.json` `s04-arp` |
+| `10.20.72.10` dentro de «CPD · `10.20.72.0/21` · otra subred» | La lección saca el /21 de otro servidor (`10.20.77.200/21`); el vídeo mete en él al de expedientes | Hecho del Consorcio en el vídeo | `video/trama-arcedo/storyboard.json` `s04-arp` |
+| «Red interna, sin traducción de direcciones (NAT)» | Entre el puesto de la sede y el servidor del CPD no hay NAT | Hecho del Consorcio en el vídeo | `video/trama-arcedo/storyboard.json` `s04-arp`; `video/trama-arcedo/narration.json` `s05-01` |
+
+### `video/subredes-arcedo` (op1m2)
+
+| Dato | Qué es | Estado en el vídeo | Fuente |
+|---|---|---|---|
+| `10.20.8.141/26` | Pasa de dato de ejercicio a «un teléfono IP de la oficina»; vuelve a verse dentro de `10.20.8.128/26` | Hecho del Consorcio en el vídeo | `video/subredes-arcedo/storyboard.json` `s02-prefijo`, `s05-vlsm` |
+| `10.20.9.203/28` | Equipo de «otra oficina comarcal» (pregunta 1). Opciones `10.20.9.206` (correcta), `10.20.9.207`, `10.20.9.208` y `10.20.9.254` | Supuesto o ejemplo rotulado («pregunta tipo test · ejemplo») | `video/subredes-arcedo/narration.json` `s04-01`; `video/subredes-arcedo/storyboard.json` `s04-p1` |
+| `10.20.9.0/26` y `10.20.9.64/27` | Subredes ya asignadas en «otra oficina», a la que le falta una para 15 equipos de gestión (pregunta 2). Opciones `10.20.9.96/27` (correcta), `10.20.9.96/28`, `10.20.9.64/27` y `10.20.9.128/25` | Supuesto o ejemplo rotulado («pregunta tipo test · ejemplo») | `video/subredes-arcedo/narration.json` `s06-01`; `video/subredes-arcedo/storyboard.json` `s06-p2` |
+| `10.20.10.26`, puerto de origen 51514 | Segundo puesto de la sede, con el mismo puerto de origen que `10.20.10.25` | Hecho del Consorcio en el vídeo | `video/subredes-arcedo/storyboard.json` `s08-pat` |
+| `198.51.100.80:443` | Destino en Internet de los dos puestos | Hecho del Consorcio en el vídeo (sin rótulo propio) | `video/subredes-arcedo/storyboard.json` `s08-pat` |
+| `203.0.113.10:40001` y `203.0.113.10:40002` | Puertos traducidos por PAT para `10.20.10.25:51514` y `10.20.10.26:51514` | Supuesto o ejemplo rotulado (tabla «ejemplo») | `video/subredes-arcedo/storyboard.json` `s08-pat` |
+| Dos puestos de la sede abren a la vez la misma web con el mismo puerto de origen | Supuesto de la pregunta 3, sin direcciones | Supuesto o ejemplo rotulado («pregunta tipo test · ejemplo») | `video/subredes-arcedo/narration.json` `s09-01` |
+
+### `video/vlan-arcedo` (op1m3)
+
+| Dato | Qué es | Estado en el vídeo | Fuente |
+|---|---|---|---|
+| 60 equipos en un solo conmutador y una sola VLAN | «Una planta» de la pregunta 1; no dice de qué sede | Supuesto o ejemplo rotulado («pregunta tipo test · ejemplo») | `video/vlan-arcedo/narration.json` `s03-01` |
+| Troncal con nativa 10 en el extremo A y 20 en el B; un equipo de la VLAN 10 conectado en A | Pregunta 2 | Otra red, no el Consorcio | `video/vlan-arcedo/narration.json` `s05-01`; `video/vlan-arcedo/storyboard.json` `s05-p2` |
+| Puesto de la VLAN de Usuarios con la dirección puesta a mano y la puerta de enlace en blanco | Pregunta 3, sin dirección concreta | Supuesto o ejemplo rotulado («pregunta tipo test · ejemplo») | `video/vlan-arcedo/narration.json` `s07-01` |
+
+### `video/rutas-arcedo` (op1m4)
+
+| Dato | Qué es | Estado en el vídeo | Fuente |
+|---|---|---|---|
+| «Otro encaminador» con solo `10.20.8.0/22` por `core1` y `10.20.72.0/21` por `core2`, sin ruta por defecto; destino `10.20.7.200` | Pregunta 1. Los prefijos son los de las oficinas y el CPD, en un equipo que la lección no tiene | Supuesto o ejemplo rotulado («ejemplo · otro encaminador») | `video/rutas-arcedo/narration.json` `s03-01`; `video/rutas-arcedo/storyboard.json` `s03-p1` |
+| Segundo camino de OSPF a `10.20.40.0/22` con coste 60 | Se compara con el de coste 25 de la lección | Supuesto o ejemplo rotulado («coste 60 · ejemplo») | `video/rutas-arcedo/storyboard.json` `s04-fuentes` |
+| Rutas de OSPF con costes 40 y 90, una de RIP a 3 saltos y una estática | Las cuatro parejas de la pregunta 2, sin direcciones | Supuesto o ejemplo rotulado («ejemplo · otro encaminador») | `video/rutas-arcedo/narration.json` `s05-01`; `video/rutas-arcedo/storyboard.json` `s05-p2` |
+| Distancia 50 en la estática de respaldo hacia `10.20.40.0/22`, con los dos enlaces en servicio | Pregunta 3; la de la lección es 130 | Supuesto o ejemplo rotulado («supuesto, no es la configuración del Consorcio») | `video/rutas-arcedo/narration.json` `s07-01`; `video/rutas-arcedo/storyboard.json` `s07-p3` |
+| Cinco encaminadores y tres áreas sin nombre; la del centro es el área 0 | Dibujo de OSPF; en la lección las áreas son solo un deseo | Supuesto o ejemplo rotulado («áreas · diseño de ejemplo») | `video/rutas-arcedo/storyboard.json` `s08-ospf` |
+| Sesión de BGP entre el Consorcio y su operador | La voz lo dice en condicional («el que usaría») | Supuesto o ejemplo rotulado («el Consorcio y su operador · supuesto») | `video/rutas-arcedo/storyboard.json` `s09-bgp`; `video/rutas-arcedo/narration.json` `s09-02` |
+| AS 64500, AS 64501 y AS 64502 | Lista de sistemas autónomos de un anuncio de BGP. El Consorcio sigue sin número de AS | Supuesto o ejemplo rotulado («números de AS de documentación») | `video/rutas-arcedo/storyboard.json` `s09-bgp` |
+| Empresa con OSPF en cuatro áreas, una de ellas el área 0 | Pregunta 4 | Otra red, no el Consorcio | `video/rutas-arcedo/narration.json` `s10-01`; `video/rutas-arcedo/storyboard.json` `s10-p4` |
+| VRRP en Servidores (`10.20.20.0/24`): IP virtual `10.20.20.1`, MAC virtual `00-00-5E-00-01-14`, VRID 20, direcciones propias `10.20.20.2` y `10.20.20.3` | En la lección `10.20.20.1` es la puerta de enlace de la VLAN 20, sin VRRP; el montaje la convierte en virtual | Supuesto o ejemplo rotulado («montaje de ejemplo · no es la configuración actual del Consorcio») | `video/rutas-arcedo/storyboard.json` `s11-vrrp` |
+| A activo con prioridad 120 y B de respaldo con 100 | Los valores del ejercicio de la lección (`src/data/opo/op1-m4.ts:302`), puestos ahora en la subred de Servidores | Supuesto o ejemplo rotulado (mismo montaje) | `video/rutas-arcedo/storyboard.json` `s11-vrrp` |
+| Subred con dos encaminadores de fabricantes distintos | Pregunta 5; el enunciado no dice de quién es la red | Otra red, no el Consorcio (lo dice solo el rótulo de la escena) | `video/rutas-arcedo/narration.json` `s12-01`; `video/rutas-arcedo/storyboard.json` `s12-p5` |
+
+### `video/wan-wifi-arcedo` (op1m5)
+
+| Dato | Qué es | Estado en el vídeo | Fuente |
+|---|---|---|---|
+| Wifi en las cuatro sedes, con varios puntos de acceso en una planta | La lección solo fija un punto de acceso, el de la oficina (`10.20.8.200`) | Hecho del Consorcio en el vídeo | `video/wan-wifi-arcedo/narration.json` `s01-01`; `video/wan-wifi-arcedo/storyboard.json` `s01-hook` |
+| Una oficina comarcal pierde el acceso MPLS y trabaja por el túnel de respaldo, con llamadas a la sede | Pregunta 1. La lección solo dice que el respaldo se usa si cae el principal | Supuesto o ejemplo rotulado («pregunta tipo test · ejemplo») | `video/wan-wifi-arcedo/narration.json` `s03-01`; `video/wan-wifi-arcedo/storyboard.json` `s03-p1` |
+| Dos AP vecinos de 2,4 GHz en el canal 1; uno pasa al canal 3 | Pregunta 2 | Otra red, no el Consorcio | `video/wan-wifi-arcedo/narration.json` `s05-01`; `video/wan-wifi-arcedo/storyboard.json` `s05-p2` |
+| Controlador de WLAN en la sede que gestiona los AP con CAPWAP; hay que cambiar el canal a doce | Pregunta 3. El Consorcio no tiene controlador fijado (§9, punto 12) | Supuesto o ejemplo rotulado («ejemplo · supuesto»; la voz dice «Supón que…») | `video/wan-wifi-arcedo/narration.json` `s07-01`; `video/wan-wifi-arcedo/storyboard.json` `s07-p3` |
+
+Todos estos datos son provisionales hasta que se congele cada guion. Al congelarlo, los que queden como hecho del
+Consorcio pasan a las tablas de §2 a §6, con su cita, y se borran de aquí.
+
+## 9. Contradicciones y huecos
 
 ### Contradicciones entre fuentes (no resueltas)
 
 1. **Enlace de la oficina comarcal con la sede.** Es un /30 punto a punto dentro del bloque de la oficina, con la interfaz de la sede en `10.20.8.226` (`src/data/opo/op1-m2.ts:94`, `src/data/opo/labs-op1.ts:92`); es fibra con OSPF y una estática de respaldo (`src/data/opo/op1-m4.ts:243`); y es una VPN de capa 3 sobre MPLS con un túnel IPsec de respaldo (`src/data/opo/op1-m5.ts:119`). Un guion tiene que elegir una y decirlo.
+   - En los borradores de vídeo (§8): `subredes-arcedo` sigue el /30 de la lección de direccionamiento (`video/subredes-arcedo/storyboard.json` `s05-vlsm`, con la etiqueta «plan de la lección de direccionamiento»), y `wan-wifi-arcedo`, el MPLS con respaldo IPsec de la lección de WAN (`video/wan-wifi-arcedo/storyboard.json` `s02-wan`, «diseño de la lección de WAN»). En `10.20.9.0/24` ya solo pone direcciones un borrador, `subredes-arcedo` (preguntas 1 y 2: `video/subredes-arcedo/narration.json` `s04-01` y `s06-01`); `rutas-arcedo` usaba antes `10.20.9.77` y ahora pregunta por `10.20.7.200` (`video/rutas-arcedo/narration.json` `s03-01`).
 2. **Quién encamina entre las VLAN de la sede.** Dos conmutadores de distribución de capa 3 con SVI (`src/data/opo/op1-m3.ts:190`); «hoy», un encaminador con subinterfaces por un troncal de 1 Gbit/s (`src/data/opo/op1-m3.ts:311`); y «el encaminador» que responde por `10.20.10.1` (`src/data/opo/op1-m1.ts:76`).
 3. **Salida a Internet.** Un operador, una sola dirección pública y una ruta por defecto estática (`src/data/opo/op1-m2.ts:300`, `src/data/opo/op1-m4.ts:33`) frente a sistema autónomo propio, bloque público propio y dos operadores con BGP (`src/data/opo/op1-m4.ts:164`, `src/data/opo/op1-m4.ts:273`). Además, el ejemplo de NAT estático publica un servidor como `203.0.113.20` (`src/data/opo/op1-m2.ts:160`), una segunda dirección pública.
 4. **Dónde están los servidores.** En la VLAN 20 de la sede, `10.20.20.0/24` (`src/data/opo/op1-m3.ts:190`), y en el CPD, `10.20.72.10` y `10.20.77.200/21` (`src/data/opo/op1-m1.ts:76`, `src/data/opo/op1-m2.ts:246`), cuando el CPD está en la propia sede (`src/data/opo/op1-m5.ts:119`). Ninguna lección dice cómo se reparten.
