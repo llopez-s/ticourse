@@ -14,7 +14,7 @@ const CARD_W = 1620;
 const ART = 420;
 
 /**
- * Closing card (the series' layout): the video's image — the floor with its partitions, tagged as an image —,
+ * Closing card (the series' layout): the video's image — the letter, envelope and box in the van, tagged as an image —,
  * ALERTÓPOLIS, the title, the one task «Tu turno: las preguntas de la lección», the track plate and the disclaimer.
  * The card comes in at `at` (the voice's «Ahora te toca a ti») and the task lands at `taskAt` («con las preguntas de
  * la lección»); nothing moves or fades afterwards: it holds to the scene's last frame.
@@ -59,7 +59,6 @@ export function EndCard({ frame, fps, at, taskAt }: { frame: number; fps: number
           width={ART}
           height={ART}
           focus={END.art.focus}
-          mono
           overlay={
             <div style={{ position: 'absolute', left: 12, bottom: 12 }}>
               <ImageTag size={22} />
@@ -73,8 +72,8 @@ export function EndCard({ frame, fps, at, taskAt }: { frame: number; fps: number
           <span style={{ fontSize: TYPE.small, fontWeight: 800, letterSpacing: 5, color: C.cyanSoft }}>ALERTÓPOLIS</span>
         </div>
         <div style={{ marginTop: 14, fontWeight: 850, color: C.textStrong, whiteSpace: 'nowrap', ...title }}>
-          <div style={{ fontSize: 80, letterSpacing: -2, lineHeight: 1.05, color: C.cyan }}>{END.title[0]}</div>
-          <div style={{ fontSize: 52, letterSpacing: -1, lineHeight: 1.15 }}>{END.title[1]}</div>
+          <div style={{ fontSize: 72, letterSpacing: -2, lineHeight: 1.05, color: C.cyan }}>{END.title[0]}</div>
+          <div style={{ fontSize: 42, letterSpacing: -0.5, lineHeight: 1.2 }}>{END.title[1]}</div>
         </div>
         <div style={{ marginTop: 24, display: 'inline-flex', alignItems: 'center', gap: 14, fontSize: 44, fontWeight: 850, color: C.cyanSoft, whiteSpace: 'nowrap', ...cta }}>
           <Icon name="play" size={40} color={C.cyan} strokeWidth={2} />

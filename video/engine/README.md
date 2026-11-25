@@ -720,6 +720,17 @@ Dos pasos opcionales, en Python (venv de Chatterbox con `pip install pedalboard 
   a −3 dBFS. Toda la cadena conserva la longitud y los tiempos (filtros de fase cero, limitador sin latencia),
   así que Whisper y los cortes no se mueven. **No reduce ruido**: una grabación con silencios digitales ya viene
   sin ruido y una segunda pasada solo añade artefactos. `--ab` escribe un antes/después igualado en volumen.
+- **`scripts/balance_voice.py --video <slug>`** (desde trama-arcedo, 2026-11-25), sobre los clips ya importados y
+  arreglados, **antes** de `produce.mjs`: un nivelador lento (±3 dB) dentro de cada frase, cada clip a la mediana
+  de todos (±6 dB), compresión suave 3:1 en las sílabas fuertes y un limitador solo de voz que deja los picos a
+  14,5 dB del volumen. Por qué: en vlan-arcedo las frases se separaban 3,7 LU y la voz tenía 17 dB entre volumen y
+  picos, así que `master_mix` bajó todo 4 dB para no saturar y el vídeo salió a −19 LUFS. Con el paso, trama-arcedo
+  pasó de 3,3 a 0,3 LU entre frases. Guarda los clips del importador en `out/voice-raw/` y siempre parte de ellos
+  (se puede repetir; un clip reimportado después con `--only` se toma como nuevo). Mantiene la alineación (quita el
+  retardo de LAME, 1105 muestras) y actualiza `bytes` en `tts/<id>.json`.
+- **`video.json` → `"mix"`** (opcional): `bedDb` sube la música sobre su nivel por defecto, `duckDb` es cuánto baja
+  mientras se habla (por defecto 6) y `sfxDb` sube todos los efectos (los aplica `build-timeline`). Lidia oyó la voz
+  «muy por encima de música y efectos» en vlan-arcedo; trama-arcedo usa `{ "bedDb": 2, "duckDb": 3, "sfxDb": 4 }`.
 - **`scripts/master_mix.py`**, sobre el MP4 ya renderizado: añade un **ambiente** generado aquí, lleva el programa a
   **−14 LUFS** (YouTube) y limita el pico real a **−1 dBTP** (detección 4× sin latencia). El vídeo se copia tal cual;
   el audio sale en AAC 192 kbps. Lo que cuenta es el archivo entregado: **mide el MP4 ya codificado** (el AAC puede

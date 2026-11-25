@@ -9,7 +9,7 @@ import { TIMELINE } from './timeline/load';
 
 ensureFonts();
 
-/** The thumbnail background of the art pilot: the floor with its partitions, an amber light in one zone. No text in it. */
+/** The thumbnail background: the van with the open amber box under a warm spotlight. No text in it. */
 const BACKGROUND = 'art/thumb/miniatura-fondo.png';
 
 /**
@@ -18,6 +18,9 @@ const BACKGROUND = 'art/thumb/miniatura-fondo.png';
  */
 const DISCLAIMER = 'Material independiente, no afiliado a ninguna administración pública.';
 
+/** How far right the picture is pushed, so the van sits clear of the text column. */
+const SHIFT = 300;
+
 /** The video's length, rounded to half a minute, from the timeline the poster is rendered with. */
 function durationLabel(): string {
   const min = Math.round((TIMELINE.durationInFrames / TIMELINE.fps / 60) * 2) / 2;
@@ -25,17 +28,18 @@ function durationLabel(): string {
 }
 
 /**
- * Poster / YouTube thumbnail for «VLAN y 802.1Q: tabiques, etiquetas y una puerta». The series' layout (brand, a big
- * two-line title, the subtitle, the track and length chips, the disclaimer) over ONE image: the partitioned floor of
- * the art pilot, darkened on the left so the text reads at thumbnail size. Every letter is drawn here; the image
+ * Poster / YouTube thumbnail for «De la trama al segmento: tres envoltorios y una pregunta en voz alta». The series'
+ * layout (brand, a big title, the subtitle, the track and length chips, the disclaimer) over ONE image: the delivery van
+ * with the letter, envelope and box in its open back, pushed right and darkened on the left so the text reads at
+ * thumbnail size. Every letter is drawn here; the image
  * carries none. No dates, no names, no addresses.
  */
 export function Poster() {
   const left = LAYOUT.marginX;
   return (
     <AbsoluteFill style={{ fontFamily: FONT.sans, color: C.text, background: C.ink950 }}>
-      {/* 2752×1536 on 1920×1080: the same picture, cropped 4 px top and bottom */}
-      <Img src={staticFile(BACKGROUND)} style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+      {/* 2752×1536 on 1920×1080 (cropped 4 px top and bottom), pushed right; its left edge falls under the dense veil */}
+      <Img src={staticFile(BACKGROUND)} style={{ position: 'absolute', left: SHIFT, top: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
       {/* night veil: dense under the text, open over the lit zone on the right */}
       <AbsoluteFill
         style={{
@@ -55,8 +59,8 @@ export function Poster() {
         style={{
           position: 'absolute',
           left: left - 8,
-          top: 270,
-          fontSize: 150,
+          top: 262,
+          fontSize: 120,
           fontWeight: 850,
           letterSpacing: -5,
           lineHeight: 1.02,
@@ -65,8 +69,8 @@ export function Poster() {
           textShadow: `0 6px 40px ${alpha(C.ink950, 0.9)}`,
         }}
       >
-        <div>VLAN</div>
-        <div style={{ color: C.cyan }}>y 802.1Q</div>
+        <div style={{ fontSize: 210, letterSpacing: -6 }}>TRAMA</div>
+        <div style={{ color: C.cyan }}>y segmento</div>
       </div>
 
       {/* subtitle */}
@@ -75,7 +79,7 @@ export function Poster() {
           position: 'absolute',
           left,
           top: 620,
-          fontSize: 60,
+          fontSize: 56,
           fontWeight: 700,
           letterSpacing: -1,
           lineHeight: 1.1,
@@ -84,7 +88,7 @@ export function Poster() {
           textShadow: `0 4px 24px ${alpha(C.ink950, 0.95)}`,
         }}
       >
-        tabiques, etiquetas y una puerta
+        tres envoltorios y una pregunta
       </div>
 
       {/* chips */}
