@@ -32,7 +32,7 @@
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Lo decide con su tabla de rutas. {promise}Vas a ver cómo elige una ruta, quién rellena esa tabla y qué pasa cuando algo se cae.",
+      "text": "<confident> {title}Lo decide con su tabla de rutas. {promise}Hoy aprendes cómo elige una ruta, quién rellena esa tabla y qué pasa cuando algo se cae.",
       "pauseAfterMs": 400
     },
     {
@@ -50,7 +50,7 @@
     {
       "id": "s02-03",
       "scene": "s02-prefijo",
-      "text": "<warm> {signs}Es como los carteles de una carretera. Uno pone todas las direcciones, otro el nombre de tu ciudad y otro, el de tu calle.",
+      "text": "<warm> {signs}Piensa en los carteles de una carretera. Uno pone todas las direcciones, otro el nombre de tu ciudad y otro, el de tu calle.",
       "pauseAfterMs": 250
     },
     {
@@ -62,7 +62,7 @@
     {
       "id": "s02-05",
       "scene": "s02-prefijo",
-      "text": "<steady> {slash24}Aquí es la barra veinticuatro. Y da igual quién le contó esa ruta o con qué métrica.",
+      "text": "<steady> {slash24}Aquí es la barra veinticuatro. Y da igual quién le haya contado esa ruta.",
       "pauseAfterMs": 300,
       "exam": {
         "objective": "Redes",
@@ -74,13 +74,13 @@
     {
       "id": "s02-06",
       "scene": "s02-prefijo",
-      "text": "<engaging> {default}El cartel de todas las direcciones es la ruta por defecto. Encaja con cualquier destino, {last}así que solo se usa cuando ninguna otra fila sirve.",
+      "text": "<engaging> {default}El cartel de todas las direcciones es la ruta por defecto. Encaja con todo, {last}así que solo se usa cuando ninguna otra fila sirve.",
       "pauseAfterMs": 400
     },
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca. Otro encaminador solo tiene dos rutas, la de las oficinas y la del CPD, y no tiene ruta por defecto. Le llega un paquete para la dirección que ves en pantalla. ¿Qué hace con él?",
+      "text": "<intrigued> {q1}Primera decisión. Otro encaminador solo tiene dos rutas, la de las oficinas y la del CPD, y no tiene ruta por defecto. Le llega un paquete para la dirección que ves en pantalla. ¿Qué hace con él?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "Redes",
@@ -128,13 +128,13 @@
     {
       "id": "s04-02",
       "scene": "s04-fuentes",
-      "text": "<steady> {sources}Unas rutas las escribe la administradora a mano, y son las estáticas. Otras las aprende solo un protocolo, como OSPF.",
+      "text": "<steady> {sources}Unas rutas las escribe la administradora a mano, y son las estáticas. Otras las aprende él, hablando con otros encaminadores por un protocolo como OSPF.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-03",
       "scene": "s04-fuentes",
-      "text": "<thoughtful> {same}¿Y si dos fuentes le ofrecen la misma red, con la misma máscara? Solo entra una, la de la fuente de la que más se fía.",
+      "text": "<thoughtful> {same}¿Y si la ruta a mano y el protocolo le ofrecen la misma red, con la misma máscara? Solo entra una, la de quien más se fía.",
       "pauseAfterMs": 250
     },
     {
@@ -146,46 +146,46 @@
     {
       "id": "s04-05",
       "scene": "s04-fuentes",
-      "text": "<confident> {ad}Esa confianza es un número, la distancia administrativa, y gana el más bajo. {cisco}Ojo, que los valores que se piden son los de Cisco, no los de un estándar.",
+      "text": "<confident> {ad}Esa confianza es un número, la distancia administrativa, y gana el más bajo. {cisco}Ojo, que los valores que suelen citarse son los de Cisco, no los de un estándar.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-06",
       "scene": "s04-fuentes",
-      "text": "<engaging> {metric}Y si las dos rutas vienen del mismo protocolo, decide la métrica, que en OSPF es el coste.",
+      "text": "<engaging> {metric}Y si las dos rutas vienen del mismo protocolo, decide la métrica. En OSPF es el coste, y en RIP, otro más antiguo, los saltos.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-07",
       "scene": "s04-fuentes",
-      "text": "<firm> {order}O sea, al reenviar manda el prefijo más largo. La distancia desempata un mismo prefijo, y la métrica, un mismo protocolo.",
+      "text": "<firm> {order}Al reenviar manda el prefijo más largo. Si el prefijo es el mismo, desempata la distancia. {tie}Y si además el protocolo es el mismo, la métrica.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "Redes",
-        "text": "La métrica solo compara rutas de un mismo protocolo",
-        "at": "order",
-        "holdSec": 5
+        "text": "Distancia administrativa: solo desempata un mismo prefijo",
+        "at": "tie",
+        "holdSec": 4
       }
     },
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<curious> {q2}Vamos con otra. Otro encaminador tiene una ruta estática para toda la red y una de OSPF solo para las oficinas. Con los valores de Cisco, la estática tiene la distancia más baja. Llega un paquete para una oficina. ¿Por dónde sale?",
+      "text": "<curious> {q2}Vamos con otra. Con los valores de Cisco, a un encaminador le ofrecen rutas de dos en dos. ¿En cuál de estas cuatro parejas decide la métrica qué ruta entra en la tabla?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "Redes",
-        "scenario": "Valores de Cisco. Ruta estática 10.20.0.0/16 por core0, distancia 1. Ruta de OSPF 10.20.8.0/22 por core1, distancia 110. Destino: 10.20.9.77.",
-        "q": "¿Por qué interfaz sale el paquete?",
+        "scenario": "Valores de Cisco. A un encaminador le ofrecen rutas de dos en dos. Solo en una de estas parejas es la métrica la que decide cuál entra en la tabla.",
+        "q": "¿En qué pareja decide la métrica?",
         "options": [
-          "Por core0, porque la estática tiene la distancia más baja",
-          "Por core1, porque el /22 es el prefijo más largo que lo contiene",
-          "Por core0, porque el /16 cubre toda la red",
-          "Por las dos, repartiendo el tráfico entre ellas"
+          "Una de OSPF con coste 40 y una de RIP a 3 saltos, al mismo prefijo",
+          "Dos de OSPF, con costes 40 y 90, las dos al mismo prefijo",
+          "Una de OSPF con coste 40 y una estática, las dos al mismo prefijo",
+          "Dos de OSPF, con costes 40 y 90, cada una a un prefijo distinto"
         ],
         "answer": 1,
         "trap": 0,
-        "why": "Son prefijos distintos y conviven en la tabla. Al reenviar gana el más largo",
-        "trapWhy": "La distancia solo desempata entre fuentes que ofrecen el mismo prefijo",
+        "why": "Mismo prefijo y mismo protocolo: solo ahí desempata la métrica, y entra la de coste 40",
+        "trapWhy": "Entre OSPF y RIP decide la distancia, 110 frente a 120. Sus métricas ni se miran",
         "countdownMs": 5000,
         "revealAt": "ok-2",
         "trapAt": "trap-2"
@@ -194,17 +194,17 @@
     {
       "id": "s05-02",
       "scene": "s05-p2",
-      "text": "<confident> {ok-2}Sale por la ruta de las oficinas. Son prefijos distintos, así que las dos filas conviven, y al reenviar gana la más concreta.",
+      "text": "<confident> {ok-2}En la de las dos rutas de OSPF al mismo prefijo. Solo ahí la métrica tiene con qué medirse, coste con coste.",
       "pauseAfterMs": 400
     },
     {
       "id": "s05-03",
       "scene": "s05-p2",
-      "text": "<firm> {trap-2}La distancia uno de la estática tienta, y es la trampa de siempre. {rule-b}Esa distancia solo cuenta cuando dos fuentes ofrecen exactamente el mismo prefijo.",
+      "text": "<firm> {trap-2}La pareja de OSPF y RIP llama mucho, porque tres saltos parecen poco. Pero entre dos protocolos decide la distancia. {rule-b}La métrica solo compara rutas de un mismo protocolo.",
       "pauseAfterMs": 1700,
       "exam": {
         "objective": "Redes",
-        "text": "Distancia administrativa: solo desempata un mismo prefijo",
+        "text": "La métrica solo compara rutas de un mismo protocolo",
         "at": "rule-b",
         "holdSec": 4
       }
@@ -242,34 +242,28 @@
     {
       "id": "s06-06",
       "scene": "s06-flotante",
-      "text": "<concerned> {cut}Si la fibra se corta, la ruta de OSPF desaparece, {float}y la estática sale a flote ella sola. Es una ruta estática flotante.",
-      "pauseAfterMs": 300
-    },
-    {
-      "id": "s06-07",
-      "scene": "s06-flotante",
-      "text": "<calm> {back}Y cuando la fibra vuelve, OSPF recupera su sitio.",
+      "text": "<concerned> {cut}Si la fibra se corta, la ruta de OSPF desaparece, {float}y la estática sube ella sola a la tabla. Por eso se llama ruta estática flotante.",
       "pauseAfterMs": 400
     },
     {
       "id": "s07-01",
       "scene": "s07-p3",
-      "text": "<intrigued> {q3}Otra más. Imagina que esa ruta de respaldo se hubiera escrito con distancia cincuenta. OSPF sigue con ciento diez, su valor en Cisco. Las dos van a la misma red, y la fibra funciona bien. ¿Por dónde va el tráfico?",
+      "text": "<intrigued> {q3}Otra más. Imagina que a esa estática de respaldo le hubieran puesto distancia cincuenta. OSPF sigue con su ciento diez de Cisco, y los dos enlaces funcionan. ¿Por dónde va el tráfico?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "Redes",
-        "scenario": "Valores de Cisco. OSPF anuncia 10.20.40.0/22 por la fibra, distancia 110. La estática de respaldo al mismo prefijo tiene distancia 50. La fibra funciona.",
+        "scenario": "Valores de Cisco. A 10.20.40.0/22 llevan dos rutas: la de OSPF por la fibra (distancia 110) y una estática por el respaldo (50). Los dos enlaces funcionan.",
         "q": "¿Por dónde va el tráfico hacia esa red?",
         "options": [
-          "Por la fibra, porque OSPF se adapta solo a los cambios",
+          "Por la fibra, porque OSPF se adapta él solo a los cambios",
           "Por la fibra, porque su ruta tiene menor coste",
           "Por el respaldo, porque 50 es menor que 110",
           "Por los dos enlaces, repartiendo el tráfico"
         ],
         "answer": 2,
         "trap": 1,
-        "why": "Mismo prefijo y dos fuentes: se instala la de menor distancia, la estática",
-        "trapWhy": "El coste es la métrica de OSPF y no se compara con una ruta estática",
+        "why": "Mismo prefijo y dos fuentes: entra la de menor distancia, que es la estática",
+        "trapWhy": "El coste es la métrica de OSPF: no sirve para medirse con una estática",
         "countdownMs": 5000,
         "revealAt": "ok-3",
         "trapAt": "trap-3"
@@ -278,13 +272,13 @@
     {
       "id": "s07-02",
       "scene": "s07-p3",
-      "text": "<confident> {ok-3}Va siempre por el respaldo. Es el mismo prefijo con dos fuentes, así que entra la de menor distancia, que aquí es la estática.",
+      "text": "<confident> {ok-3}Va siempre por el respaldo. Es el mismo prefijo con dos fuentes, así que entra la de menor distancia, la estática.",
       "pauseAfterMs": 400
     },
     {
       "id": "s07-03",
       "scene": "s07-p3",
-      "text": "<firm> {trap-3}Pensar en el coste tienta, pero el coste solo compara rutas de OSPF entre sí. {rule-c}Una flotante necesita una distancia mayor que la del protocolo al que respalda.",
+      "text": "<firm> {trap-3}Ojo con pensar en el coste, que es cosa de OSPF y aquí hay dos fuentes. {rule-c}Una flotante necesita una distancia mayor que la del protocolo al que respalda.",
       "pauseAfterMs": 1700,
       "exam": {
         "objective": "Redes",
@@ -296,7 +290,7 @@
     {
       "id": "s08-01",
       "scene": "s08-ospf",
-      "text": "<clear> {dyn}Y ya toca ver qué hace OSPF. Una ruta estática no se entera de nada, y un protocolo dinámico se adapta solo a los cambios.",
+      "text": "<clear> {dyn}Vamos ya con OSPF. Una ruta estática no se entera de nada, y un protocolo dinámico se adapta él solo a los cambios.",
       "pauseAfterMs": 250
     },
     {
@@ -320,7 +314,7 @@
     {
       "id": "s08-05",
       "scene": "s08-ospf",
-      "text": "<thoughtful> {areas}Para que ese mapa no crezca sin control, la red se parte en áreas. {area0}Y todas tienen que conectarse a una, el área cero, que hace de troncal.",
+      "text": "<thoughtful> {areas}Para que ese mapa no crezca sin control, la red se parte en áreas. {area0}Y todas tienen que conectarse a una, el área cero, que hace de columna vertebral.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "Redes",
@@ -332,7 +326,7 @@
     {
       "id": "s09-01",
       "scene": "s09-bgp",
-      "text": "<curious> {edge}Pero el callejero se acaba donde acaba la ciudad. Todas las redes que lleva una misma administración forman un sistema autónomo, {inside}y OSPF trabaja dentro de él.",
+      "text": "<curious> {edge}Pero el callejero se acaba donde acaba la ciudad. Todas las redes que gestiona una misma organización forman un sistema autónomo, {inside}y OSPF trabaja dentro de él.",
       "pauseAfterMs": 300
     },
     {
@@ -362,17 +356,17 @@
     {
       "id": "s10-01",
       "scene": "s10-p4",
-      "text": "<intrigued> {q4}Vamos con la cuarta, y esta no pasa en el Consorcio. Una empresa reparte su red de OSPF en cuatro áreas, y toda sigue bajo la misma administración. ¿Cuántos sistemas autónomos forma esa red?",
+      "text": "<intrigued> {q4}Salimos un momento del Consorcio. Una empresa reparte su red de OSPF en cuatro áreas, y toda sigue bajo la misma administración. ¿Cuántos sistemas autónomos forma esa red?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "Redes",
         "scenario": "En otra red, una empresa divide su OSPF en cuatro áreas, una de ellas el área 0. Toda la red sigue bajo la misma administración y la misma política de rutas.",
         "q": "¿Cuántos sistemas autónomos forma esa red?",
         "options": [
-          "Uno: una sola administración, un solo sistema autónomo",
-          "Cuatro: uno por cada área",
-          "Dos: el área 0 y todas las demás",
-          "Cinco: uno por área y otro que las une"
+          "Uno, porque la administración es una sola",
+          "Cuatro, uno por cada área",
+          "Dos, el área 0 y las demás",
+          "Cinco, uno por área y otro que las une"
         ],
         "answer": 0,
         "trap": 1,
@@ -392,7 +386,7 @@
     {
       "id": "s10-03",
       "scene": "s10-p4",
-      "text": "<firm> {trap-4}Contar uno por área tienta, pero un área no separa organizaciones. {rule-d}Dentro de un sistema autónomo, OSPF. Y entre sistemas autónomos, BGP.",
+      "text": "<firm> {trap-4}Uno por área, casi. Pero un área no separa organizaciones. {rule-d}Dentro de un sistema autónomo, OSPF. Y entre sistemas autónomos, BGP.",
       "pauseAfterMs": 1700,
       "exam": {
         "objective": "Redes",
@@ -404,7 +398,7 @@
     {
       "id": "s11-01",
       "scene": "s11-vrrp",
-      "text": "<clear> {hosts}Queda un cabo suelto. Un servidor no habla OSPF ni BGP, y para salir de su subred solo conoce su puerta de enlace.",
+      "text": "<clear> {hosts}Falta un cabo por atar. Un servidor no habla OSPF ni BGP, y para salir de su subred solo conoce su puerta de enlace.",
       "pauseAfterMs": 250
     },
     {
@@ -434,7 +428,7 @@
     {
       "id": "s11-06",
       "scene": "s11-vrrp",
-      "text": "<confident> {vrrp}Esto lo hace VRRP, que es un estándar abierto. {hsrp}Cisco tiene el suyo, HSRP, que hace lo mismo pero es propietario.",
+      "text": "<confident> {vrrp}Esto lo hace VRRP, que es un estándar abierto. {hsrp}Cisco tiene el suyo, HSRP, que hace lo mismo pero no es un estándar.",
       "pauseAfterMs": 400
     },
     {
@@ -455,7 +449,7 @@
         "answer": 1,
         "trap": 2,
         "why": "VRRP es el estándar abierto: sirve entre equipos de fabricantes distintos",
-        "trapWhy": "HSRP hace lo mismo con la misma idea, pero es propietario de Cisco",
+        "trapWhy": "HSRP hace lo mismo con la misma idea, pero es de Cisco, no un estándar abierto",
         "countdownMs": 5000,
         "revealAt": "ok-5",
         "trapAt": "trap-5"
@@ -470,7 +464,7 @@
     {
       "id": "s12-03",
       "scene": "s12-p5",
-      "text": "<firm> {trap-5}HSRP tienta porque hace lo mismo, pero es propietario de Cisco. {rule-e}Y OSPF aquí no ayuda, porque los puestos no participan en él.",
+      "text": "<firm> {trap-5}HSRP suena igual de bien, pero es de Cisco y no un estándar. {rule-e}Y OSPF aquí no ayuda, porque los puestos no participan en él.",
       "pauseAfterMs": 2300,
       "exam": {
         "objective": "Redes",
@@ -482,13 +476,13 @@
     {
       "id": "s13-01",
       "scene": "s13-cierre",
-      "text": "<cheerful> {recap}Te llevas cuatro ideas. {rule-1}Una, al reenviar gana el prefijo más largo.",
+      "text": "<cheerful> {recap}Si solo recuerdas cuatro cosas, que sean estas. {rule-1}Una, al reenviar gana el prefijo más largo.",
       "pauseAfterMs": 250
     },
     {
       "id": "s13-02",
       "scene": "s13-cierre",
-      "text": "<clear> {rule-2}Dos, la distancia administrativa solo desempata un mismo prefijo.",
+      "text": "<clear> {rule-2}Dos, con el mismo prefijo desempata la distancia, y con el mismo protocolo, la métrica.",
       "pauseAfterMs": 250
     },
     {
@@ -500,7 +494,7 @@
     {
       "id": "s13-04",
       "scene": "s13-cierre",
-      "text": "<engaging> {phrase}Ante una pregunta de rutas, mira si es el mismo prefijo o son prefijos distintos. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "text": "<engaging> {phrase}Ante una pregunta de rutas, mira si el prefijo es el mismo, y luego el protocolo. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
       "pauseAfterMs": 250
     }
   ]

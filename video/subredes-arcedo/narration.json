@@ -29,7 +29,7 @@
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<confident> {title}Eso se hace con subredes. {promise}Vas a ver cómo se lee un prefijo, cómo se reparte un bloque sin pisarse y qué pasa al salir a Internet.",
+      "text": "<confident> {title}Eso se hace con subredes. {promise}Cuando acabes sabrás leer un prefijo, repartir un bloque sin pisarte y qué pasa al salir a Internet.",
       "pauseAfterMs": 400
     },
     {
@@ -47,7 +47,7 @@
     {
       "id": "s02-03",
       "scene": "s02-prefijo",
-      "text": "<steady> {bits}Mira un teléfono de la oficina, con barra veintiséis. De los treinta y dos bits, veintiséis son de red y quedan seis para equipos.",
+      "text": "<steady> {bits}Mira un teléfono de la oficina, con barra veintiséis. Una dirección tiene treinta y dos bits. Aquí veintiséis son de red, y quedan seis para equipos.",
       "pauseAfterMs": 250
     },
     {
@@ -77,13 +77,13 @@
     {
       "id": "s03-02",
       "scene": "s03-bloque",
-      "text": "<steady> {odd}Cada número es un octeto. Busca el que no es ni doscientos cincuenta y cinco ni cero, que aquí es el último, ciento noventa y dos.",
+      "text": "<steady> {odd}Cada número es un octeto. Busca el único que no está ni lleno ni a cero. Aquí es el último, ciento noventa y dos.",
       "pauseAfterMs": 250
     },
     {
       "id": "s03-03",
       "scene": "s03-bloque",
-      "text": "<clear> {size}Réstaselo a doscientos cincuenta y seis y tienes el tamaño de bloque, aquí sesenta y cuatro. {starts}Las redes empiezan en sus múltiplos.",
+      "text": "<clear> {size}Doscientos cincuenta y seis menos ese número te da el tamaño de bloque, aquí sesenta y cuatro. {starts}Y las redes empiezan de sesenta y cuatro en sesenta y cuatro.",
       "pauseAfterMs": 300,
       "exam": {
         "objective": "Redes",
@@ -107,7 +107,7 @@
     {
       "id": "s04-01",
       "scene": "s04-p1",
-      "text": "<intrigued> {q1}Te toca. A un equipo de otra oficina le ponen una dirección que acaba en doscientos tres, con barra veintiocho. ¿Cuál es la última dirección de su subred que puede llevar un equipo?",
+      "text": "<intrigued> {q1}A ver ese cálculo. A un equipo de otra oficina le ponen una dirección que acaba en doscientos tres, con barra veintiocho. ¿Cuál es la última dirección de su subred que puede llevar un equipo?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "Redes",
@@ -137,7 +137,7 @@
     {
       "id": "s04-03",
       "scene": "s04-p1",
-      "text": "<firm> {trap-1}La del doscientos siete tienta, porque es la última del bloque. Pero esa es el megáfono. {rule-a}La difusión es siempre la siguiente red menos uno.",
+      "text": "<firm> {trap-1}La trampa es la que acaba en doscientos siete, la última del bloque. Pero esa es el megáfono. {rule-a}La difusión es la siguiente red menos uno.",
       "pauseAfterMs": 1700,
       "exam": {
         "objective": "Redes",
@@ -149,13 +149,13 @@
     {
       "id": "s05-01",
       "scene": "s05-vlsm",
-      "text": "<clear> {list}Ya sabes leer un prefijo, así que vamos a repartir el bloque de la oficina. Hay cuatro necesidades, y no son del mismo tamaño.",
+      "text": "<clear> {list}Ya sabes leer un prefijo, así que vamos a repartir el bloque de la oficina. Hay que colocar cuatro cosas, y no son del mismo tamaño.",
       "pauseAfterMs": 250
     },
     {
       "id": "s05-02",
       "scene": "s05-vlsm",
-      "text": "<warm> {trunk}Esto es como cargar un maletero. Primero entra la maleta grande, y cada cosa va en el hueco más justo que le sirve.",
+      "text": "<warm> {trunk}Piensa en cómo se carga un maletero. Primero entra la maleta grande, y cada cosa va en el hueco más justo que le sirve.",
       "pauseAfterMs": 300
     },
     {
@@ -173,13 +173,13 @@
     {
       "id": "s05-05",
       "scene": "s05-vlsm",
-      "text": "<confident> {p20}Las veinte impresoras y equipos de gestión piden una barra veintisiete, con treinta sitios. {p2}Y el enlace con la sede, una barra treinta, con dos.",
+      "text": "<confident> {p20}Impresoras y equipos de gestión suman veinte, y les toca una barra veintisiete, donde caben treinta. {p2}Al enlace con la sede le basta una barra treinta, con solo dos direcciones.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-06",
       "scene": "s05-vlsm",
-      "text": "<thoughtful> {fit}Cada subred arranca en un múltiplo de su tamaño, y por eso ninguna pisa a otra. {free}Y aún sobran direcciones para crecer.",
+      "text": "<thoughtful> {fit}Cada subred ocupa el primer hueco libre que empieza en un múltiplo de su tamaño, y por eso ninguna pisa a otra. {free}Y aún sobran direcciones para crecer.",
       "pauseAfterMs": 300
     },
     {
@@ -191,12 +191,12 @@
     {
       "id": "s06-01",
       "scene": "s06-p2",
-      "text": "<curious> {q2}Vamos con otra. En otra oficina ya hay dos subredes repartidas, una barra veintiséis y, a continuación, una barra veintisiete. Falta una para quince equipos de gestión. ¿Cuál es la más pequeña que sirve sin pisar a las otras?",
+      "text": "<curious> {q2}Vamos con otra. En otra oficina ya hay dos subredes repartidas, una barra veintiséis y, pegada a ella, una barra veintisiete. Falta una para quince equipos de gestión. ¿Dónde va la subred más pequeña que sirve, sin pisar a las otras dos?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "Redes",
         "scenario": "En otra oficina ya están asignadas 10.20.9.0/26 y 10.20.9.64/27. Falta una subred para 15 equipos de gestión.",
-        "q": "¿Cuál es la subred más pequeña que sirve sin pisar a las otras?",
+        "q": "¿Dónde va la subred más pequeña que sirve, sin pisar a las otras dos?",
         "options": [
           "10.20.9.96/28",
           "10.20.9.96/27",
@@ -205,8 +205,8 @@
         ],
         "answer": 1,
         "trap": 0,
-        "why": "Da 30 direcciones de equipo y empieza en el primer múltiplo de 32 que queda libre",
-        "trapWhy": "Tiene 16 direcciones, pero solo 14 son de equipo: no caben los 15",
+        "why": "Empieza en .96, el primer múltiplo de 32 libre tras el /27, y da 30 direcciones de equipo",
+        "trapWhy": "Bien colocada, pero corta: de sus 16 direcciones solo 14 son de equipo",
         "countdownMs": 5000,
         "revealAt": "ok-2",
         "trapAt": "trap-2"
@@ -215,13 +215,13 @@
     {
       "id": "s06-02",
       "scene": "s06-p2",
-      "text": "<confident> {ok-2}La barra veintisiete que empieza en el noventa y seis. Da treinta sitios, y arranca justo donde acaba la anterior.",
+      "text": "<confident> {ok-2}En el noventa y seis, y con barra veintisiete. Es el primer hueco libre, y caben treinta. En el sesenta y cuatro cabría igual, pero ese sitio ya está ocupado.",
       "pauseAfterMs": 400
     },
     {
       "id": "s06-03",
       "scene": "s06-p2",
-      "text": "<firm> {trap-2}La barra veintiocho tienta, porque tiene dieciséis direcciones para quince equipos. Pero dos no se asignan y quedan catorce. {rule-b}La más pequeña, sí, pero que sirva.",
+      "text": "<firm> {trap-2}Lo fácil es la barra veintiocho, con dieciséis direcciones para quince equipos. Pero dos no se asignan y quedan catorce. {rule-b}La más pequeña que sirva, y en un hueco libre.",
       "pauseAfterMs": 1700,
       "exam": {
         "objective": "Redes",
@@ -251,7 +251,7 @@
     {
       "id": "s07-04",
       "scene": "s07-privadas",
-      "text": "<thoughtful> {apipa}Ojo con dos que se les parecen. Una se la pone el equipo él solo cuando nadie le da dirección, y solo vale en su enlace.",
+      "text": "<thoughtful> {apipa}Ojo con dos que se les parecen. Una se la pone el propio equipo cuando nadie le da dirección. Solo vale en su enlace, o sea, entre vecinos directos.",
       "pauseAfterMs": 250
     },
     {
@@ -275,7 +275,7 @@
     {
       "id": "s08-03",
       "scene": "s08-pat",
-      "text": "<thoughtful> {port}¿Y cómo reparte luego las respuestas? Porque además de la dirección cambia el puerto de origen, {table}y apunta cada cambio en una tabla.",
+      "text": "<thoughtful> {port}¿Y cómo sabe luego de quién es cada respuesta? Pues porque no cambia solo la dirección. Cambia también el puerto de origen, {table}y apunta cada cambio en una tabla.",
       "pauseAfterMs": 300
     },
     {
@@ -293,11 +293,11 @@
     {
       "id": "s08-06",
       "scene": "s08-pat",
-      "text": "<steady> {cgnat}Y cuando lo hace el operador con todos sus clientes, usa un tramo propio, que no es privado ni tampoco público.",
+      "text": "<steady> {cgnat}Y cuando lo hace el operador con todos sus clientes, usa un bloque propio, que no es privado ni tampoco público.",
       "pauseAfterMs": 400,
       "exam": {
         "objective": "Redes",
-        "text": "100.64.0.0/10 es de operadores (CGNAT): no es RFC 1918",
+        "text": "100.64.0.0/10 es de operadores (CGNAT), no privado",
         "at": "cgnat",
         "holdSec": 5
       }
@@ -335,7 +335,7 @@
     {
       "id": "s09-03",
       "scene": "s09-p3",
-      "text": "<firm> {trap-3}Cambiar solo la dirección tienta, porque es lo primero que se piensa. {rule-c}Pero con una sola pública y el mismo puerto, las dos respuestas volverían iguales.",
+      "text": "<firm> {trap-3}Si has pensado en cambiar solo la dirección, normal, es lo primero que se te ocurre. {rule-c}Pero con una sola pública y el mismo puerto, las dos respuestas volverían iguales.",
       "pauseAfterMs": 1700,
       "exam": {
         "objective": "Redes",
@@ -347,25 +347,25 @@
     {
       "id": "s10-01",
       "scene": "s10-ipv6",
-      "text": "<clear> {v6}Queda el otro protocolo, IPv6. Sus direcciones tienen ciento veintiocho bits, y se escriben en hexadecimal, en ocho grupos.",
+      "text": "<clear> {v6}Y nos falta el otro protocolo, IPv6. Sus direcciones tienen ciento veintiocho bits, y se escriben en hexadecimal, en ocho grupos.",
       "pauseAfterMs": 250
     },
     {
       "id": "s10-02",
       "scene": "s10-ipv6",
-      "text": "<steady> {short}Como son tan largas, se abrevian. Quitas los ceros a la izquierda de cada grupo, y una sola tira de ceros se cambia por un doble dos puntos.",
+      "text": "<steady> {short}Como son tan largas, se abrevian. Quitas los ceros a la izquierda de cada grupo. Y una tira de ceros, solo una, se cambia por un doble dos puntos.",
       "pauseAfterMs": 300
     },
     {
       "id": "s10-03",
       "scene": "s10-ipv6",
-      "text": "<engaging> {ll}Toda interfaz se pone ella sola una dirección que solo vale en su enlace, y que ningún encaminador reenvía. Se llama link-local.",
+      "text": "<engaging> {ll}Aquí cada interfaz se pone ella misma una dirección que solo vale en su enlace. Ningún encaminador la reenvía. Se llama link-local.",
       "pauseAfterMs": 250
     },
     {
       "id": "s10-04",
       "scene": "s10-ipv6",
-      "text": "<confident> {global}Para llegar a otras redes hace falta otra, la global, que sí se encamina en Internet. Una interfaz puede tener las dos a la vez.",
+      "text": "<confident> {global}Para salir a Internet hace falta otra, la global, que sí se encamina allí. Una interfaz puede tener las dos a la vez.",
       "pauseAfterMs": 300,
       "exam": {
         "objective": "Redes",
@@ -383,13 +383,13 @@
     {
       "id": "s10-06",
       "scene": "s10-ipv6",
-      "text": "<firm> {ndp}Eso es la multidifusión. Hasta preguntar quién tiene una dirección se hace así, con un protocolo llamado NDP, que sustituye a ARP.",
+      "text": "<firm> {ndp}Eso es la multidifusión. Hasta preguntar quién tiene una dirección se hace así. De eso se encarga NDP, que aquí hace el trabajo de ARP.",
       "pauseAfterMs": 400
     },
     {
       "id": "s11-01",
       "scene": "s11-p4",
-      "text": "<curious> {q4}La última. Un equipo con IPv6 tiene que enviar un aviso a todos los nodos de su mismo enlace. ¿A qué dirección lo manda?",
+      "text": "<curious> {q4}La última. Un equipo con IPv6 tiene que enviar un aviso a todos los nodos de su mismo enlace. ¿A qué dirección lo envía?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "Redes",
@@ -449,7 +449,7 @@
     {
       "id": "s12-04",
       "scene": "s12-cierre",
-      "text": "<engaging> {phrase}Ante cualquier prefijo, pregúntate primero de cuánto es el bloque. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
+      "text": "<engaging> {phrase}Y ante cualquier prefijo, empieza por el tamaño del bloque. {next}Ahora te toca a ti, {endcard}con las preguntas de la lección.",
       "pauseAfterMs": 250
     }
   ]

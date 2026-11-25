@@ -33,37 +33,37 @@
     {
       "id": "s02-01",
       "scene": "s02-envoltorios",
-      "text": "<clear> {data}Lo que la aplicación envía son sus datos, y sueltos no llegan a ninguna parte.",
+      "text": "<clear> {data}La aplicación envía sus datos, y sueltos no llegan a ninguna parte.",
       "pauseAfterMs": 250
     },
     {
       "id": "s02-02",
       "scene": "s02-envoltorios",
-      "text": "<steady> {seg}Primero se les pone delante el número del programa que los espera, el puerto. {segname}Eso ya es un segmento, y lo prepara TCP.",
+      "text": "<steady> {seg}Primero, el puesto les pone delante el número del programa que los espera, el puerto. {segname}Eso ya es un segmento.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-03",
       "scene": "s02-envoltorios",
-      "text": "<engaging> {pkt}Después se añade la dirección IP del servidor, y el conjunto pasa a llamarse paquete.",
+      "text": "<engaging> {pkt}Después añade la dirección IP del servidor, y el conjunto pasa a llamarse paquete.",
       "pauseAfterMs": 250
     },
     {
       "id": "s02-04",
       "scene": "s02-envoltorios",
-      "text": "<thoughtful> {frame}Y por fuera va la trama, con la dirección física de la tarjeta que lo recoge en este tramo, la MAC.",
+      "text": "<thoughtful> {frame}Y por fuera va la trama. Lleva la dirección física de la tarjeta que la recoge en este tramo, la MAC.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-05",
       "scene": "s02-envoltorios",
-      "text": "<warm> {box}Es como una carta en su sobre, el sobre en una caja y la caja en una furgoneta de reparto.",
+      "text": "<warm> {box}Piensa en una carta en su sobre, el sobre en una caja y la caja en una furgoneta de reparto.",
       "pauseAfterMs": 300
     },
     {
       "id": "s02-06",
       "scene": "s02-envoltorios",
-      "text": "<confident> {who}Y cada aparato lee solo su envoltorio. {sw}El conmutador mira la trama, por eso es de capa dos.",
+      "text": "<confident> {who}Y cada aparato decide con un envoltorio. {sw}El conmutador solo mira la trama. Ese envoltorio es la capa dos.",
       "pauseAfterMs": 250
     },
     {
@@ -75,11 +75,11 @@
     {
       "id": "s03-01",
       "scene": "s03-p1",
-      "text": "<intrigued> {q1}Te toca. El conmutador de la planta, que es de capa dos, recibe esa trama, con la petición a la aplicación dentro. ¿Qué mira para decidir por dónde la reenvía?",
+      "text": "<intrigued> {q1}Te toca. Al conmutador de la planta, que es de capa dos, le llega esa trama, con la petición dentro. ¿Qué mira para decidir por dónde la reenvía?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "Redes",
-        "scenario": "El conmutador de planta del puesto es de capa 2. Recibe la trama que lleva dentro la petición a la aplicación de expedientes.",
+        "scenario": "El conmutador de la planta es de capa 2. Le llega la trama que lleva dentro la petición a la aplicación de expedientes.",
         "q": "¿Qué mira para decidir por dónde la reenvía?",
         "options": [
           "La IP de destino del paquete",
@@ -99,13 +99,13 @@
     {
       "id": "s03-02",
       "scene": "s03-p1",
-      "text": "<confident> {ok-1}La dirección MAC de destino, que va en la trama, porque un conmutador de capa dos no abre nada más.",
+      "text": "<confident> {ok-1}La MAC de destino, que va en la trama, porque un conmutador de capa dos no abre nada más.",
       "pauseAfterMs": 400
     },
     {
       "id": "s03-03",
       "scene": "s03-p1",
-      "text": "<firm> {trap-1}La dirección IP tienta, porque es la del servidor. Pero va en el paquete, y ese lo abre el encaminador. {rule-a}MAC para el conmutador, IP para el encaminador.",
+      "text": "<firm> {trap-1}La IP tienta, porque es la del servidor. Pero va en el paquete, y ese lo abre el encaminador. {rule-a}MAC para el conmutador, IP para el encaminador.",
       "pauseAfterMs": 1700,
       "exam": {
         "objective": "Redes",
@@ -117,25 +117,25 @@
     {
       "id": "s04-01",
       "scene": "s04-arp",
-      "text": "<curious> {need}Para escribir esa trama, el puesto necesita una MAC, y solo tiene una dirección IP.",
+      "text": "<curious> {need}Para escribir esa trama, el puesto necesita una MAC, y solo tiene una IP.",
       "pauseAfterMs": 250
     },
     {
       "id": "s04-02",
       "scene": "s04-arp",
-      "text": "<clear> {ask}Para conseguirla, un equipo pregunta en voz alta, a toda su subred, quién tiene una dirección. {arp}Eso es ARP, y el dueño le contesta solo a él.",
+      "text": "<clear> {ask}Así que pregunta en voz alta quién tiene esa dirección. Lo oye toda su subred, los equipos de su misma red. {arp}Eso es ARP, y solo le contesta el dueño.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-03",
       "scene": "s04-arp",
-      "text": "<thoughtful> {limit}Pero esa pregunta viaja sin paquete IP, así que ningún encaminador la reenvía. Se queda en su subred.",
+      "text": "<thoughtful> {limit}Pero esa pregunta viaja sin paquete IP, así que ningún encaminador la saca de su subred.",
       "pauseAfterMs": 300
     },
     {
       "id": "s04-04",
       "scene": "s04-arp",
-      "text": "<engaging> {outside}Y el servidor está en otra, en la del CPD. {gw}Por eso el puesto no pregunta por el servidor, pregunta por su puerta de enlace.",
+      "text": "<engaging> {outside}Y el servidor está en otra, en la del CPD. {gw}Por eso el puesto no pregunta por él. Pregunta por el encaminador que lo saca de la suya, su puerta de enlace.",
       "pauseAfterMs": 250
     },
     {
@@ -159,23 +159,23 @@
     {
       "id": "s04-07",
       "scene": "s04-arp",
-      "text": "<confident> {hop}El encaminador hace eso mismo. Tira la trama que llegó y mete el paquete en otra, sin tocarle las direcciones.",
+      "text": "<confident> {hop}Eso hace el encaminador. Tira la trama que le ha llegado y mete el paquete en otra, sin tocarle las direcciones.",
       "pauseAfterMs": 400
     },
     {
       "id": "s05-01",
       "scene": "s05-p2",
-      "text": "<intrigued> {q2}Otra. El paquete del puesto cruza la red interna del Consorcio y llega al servidor del CPD. El servidor mira la trama y el paquete que trae dentro. ¿Qué direcciones de origen ve?",
+      "text": "<intrigued> {q2}Otra. La petición ha cruzado la red interna y llega al servidor del CPD. El servidor mira el origen de la trama y el del paquete. ¿De quién es cada dirección?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "Redes",
-        "scenario": "El paquete del puesto cruza la red interna del Consorcio, sin traducción de direcciones, y llega al servidor del CPD.",
-        "q": "¿Qué direcciones de origen ve el servidor en la trama y en el paquete?",
+        "scenario": "La petición del puesto ha cruzado la red interna del Consorcio, sin traducción de direcciones (NAT), y llega al servidor del CPD.",
+        "q": "¿De quién es la dirección de origen de la trama? ¿Y la del paquete?",
         "options": [
-          "MAC del puesto e IP del puesto",
-          "MAC del último encaminador e IP de ese encaminador",
-          "MAC del último encaminador e IP del puesto",
-          "MAC de difusión e IP del puesto"
+          "Trama: el puesto. Paquete: el puesto",
+          "Trama: el último encaminador. Paquete: ese encaminador",
+          "Trama: el último encaminador. Paquete: el puesto",
+          "Trama: difusión. Paquete: el puesto"
         ],
         "answer": 2,
         "trap": 0,
@@ -189,17 +189,17 @@
     {
       "id": "s05-02",
       "scene": "s05-p2",
-      "text": "<confident> {ok-2}La MAC del último encaminador y la IP del puesto. La trama es nueva en cada salto, y el paquete conserva sus direcciones.",
+      "text": "<confident> {ok-2}La de la trama, del último encaminador, y la del paquete, del puesto. La trama es nueva en cada salto, y el paquete conserva sus direcciones.",
       "pauseAfterMs": 400
     },
     {
       "id": "s05-03",
       "scene": "s05-p2",
-      "text": "<firm> {trap-2}Esperar la MAC del puesto tienta, pero esa trama se quedó en la sede. {rule-b}En este viaje, las MAC cambian en cada salto y las IP no.",
+      "text": "<firm> {trap-2}Lo fácil es esperar la MAC del puesto, pero esa trama se quedó en la sede. {rule-b}En este viaje, las MAC cambian en cada salto y las IP no.",
       "pauseAfterMs": 1700,
       "exam": {
         "objective": "Redes",
-        "text": "Las MAC cambian en cada salto. Las IP, no",
+        "text": "Sin NAT, las MAC cambian en cada salto. Las IP, no",
         "at": "rule-b",
         "holdSec": 4
       }
@@ -207,7 +207,7 @@
     {
       "id": "s06-01",
       "scene": "s06-transporte",
-      "text": "<clear> {inside}Queda el envoltorio de dentro, el segmento. Y ahí hay dos maneras de enviar.",
+      "text": "<clear> {inside}Falta el de dentro, el segmento, que era el sobre. Y un sobre se manda de dos maneras.",
       "pauseAfterMs": 250
     },
     {
@@ -225,7 +225,7 @@
     {
       "id": "s06-04",
       "scene": "s06-transporte",
-      "text": "<confident> {tcp}Eso es TCP, y es lo que usa la aplicación de expedientes.",
+      "text": "<confident> {tcp}Eso es TCP, y lo usa la aplicación de expedientes.",
       "pauseAfterMs": 300
     },
     {
@@ -237,23 +237,23 @@
     {
       "id": "s06-06",
       "scene": "s06-transporte",
-      "text": "<thoughtful> {voice}Encaja con la voz de los teléfonos, porque una palabra que llega tarde ya no sirve.",
+      "text": "<thoughtful> {voice}Va bien para la voz, porque una palabra que llega tarde ya no sirve.",
       "pauseAfterMs": 400
     },
     {
       "id": "s07-01",
       "scene": "s07-p3",
-      "text": "<curious> {q3}La última. La aplicación de expedientes va por TCP. Dos segmentos seguidos del puesto se cruzan por el camino, y el segundo llega al servidor antes que el primero. ¿Qué recibe la aplicación?",
+      "text": "<curious> {q3}Y para acabar, una de TCP. Dos segmentos seguidos del puesto se cruzan por el camino, y el segundo llega al servidor antes que el primero. ¿Qué recibe la aplicación?",
       "pauseAfterMs": 250,
       "question": {
         "objective": "Redes",
         "scenario": "La aplicación de expedientes va por TCP. Dos segmentos seguidos del puesto llegan al servidor en orden inverso: el segundo, antes que el primero.",
         "q": "¿Qué recibe la aplicación del servidor?",
         "options": [
-          "Los datos en orden: TCP los recoloca por su número de secuencia",
-          "Los datos tal como llegan: ordenarlos es cosa de la aplicación",
-          "Nada: TCP corta la conexión con un RST",
-          "Los datos, después de repetir el saludo de tres mensajes"
+          "Los datos en orden: los recoloca TCP",
+          "Los datos tal como llegan: los ordena la aplicación",
+          "Nada: TCP corta la conexión",
+          "Los datos, tras repetir el acuerdo de tres mensajes"
         ],
         "answer": 0,
         "trap": 1,
