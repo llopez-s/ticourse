@@ -3,7 +3,7 @@
 Generado el 2026-11-25. Encargo: `docs/superpowers/plans/fichas-redes/R03-arte-magnific.md`.
 Comparación con y sin Magnific: `docs/reviews/2026-11-25-magnific-piloto/comparacion.html`.
 
-Plan Premium. Saldo antes: 240.000 créditos. Saldo después: 238.700. **Gasto del piloto: 1.300 créditos.**
+Plan Premium. Saldo antes: 240.000 créditos. Saldo después: 238.310. **Gasto del piloto: 1.690 créditos.**
 
 Imágenes: Google Nano Banana 2.1, 16:9, 2k (2752×1536 px, PNG). Clips: Kling 2.5, 5 s, 1080p (1928×1072, 24 fps), sin
 audio. Todos los encargos piden «sin texto, sin letras, sin números, sin logotipos» y sin personas; cada pieza se revisó
@@ -21,9 +21,11 @@ antes de guardarla y ninguna trae texto ni caras.
 | `s04-etiqueta-mail.png` | texto a imagen + referencia de estilo A | 65 | cues `mail`, `tray`; tira algo más a línea |
 | `s06-capa3-wall.png` | texto a imagen + referencia de estilo A | 65 | cues `wall`, `gw` |
 | `clips/s02-tabiques.mp4` | imagen a vídeo, fotograma inicial `floor` y final `walls` | 325 | válido: cámara fija, los tabiques crecen |
-| `clips/s04-montacargas.mp4` | imagen a vídeo, fotograma inicial `mail` | 325 | **no válido**: la pila crece y acaba flotando fuera del montacargas |
+| `descartes/s04-montacargas-sin-final.mp4` | imagen a vídeo, solo fotograma inicial `mail` | 325 | **no válido**: la pila crece y acaba flotando fuera del montacargas |
+| `s04-etiqueta-mail-fin.png` | edición de `mail` (la pila arriba del hueco) | 65 | fotograma final del clip |
+| `clips/s04-montacargas.mp4` | imagen a vídeo, fotograma inicial `mail` y final `mail-fin` | 325 | válido: cámara fija, la pila sube; se deforma un poco a mitad de subida |
 | `thumb/miniatura-fondo.png` | edición de `walls` (contraste y foco ámbar) | 65 | el texto lo compone el motor |
-| **Total** | | **1.300** | 1 reintento de imagen (65), 0 de vídeo |
+| **Total** | | **1.690** | reintentos: 1 de imagen (65) y 1 de vídeo (65 + 325) |
 
 ## Lecciones
 
