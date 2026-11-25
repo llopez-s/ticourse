@@ -89,7 +89,7 @@ export const OP1_CLASSIFY_DATA: Record<string, ClassifyData> = {
         why: '10.20.8.0/25 abarca de la .0 a la .127; los equipos van de 10.20.8.1 a 10.20.8.126. La .1 es la primera dirección utilizable del bloque.',
       },
       {
-        text: 'Interfaz del encaminador de la sede central · 10.20.8.226',
+        text: 'Interfaz del encaminador del operador en el enlace de la oficina · 10.20.8.226',
         answer: 'n30',
         why: '10.20.8.224/30 abarca de la .224 a la .227; sus dos únicos equipos son 10.20.8.225 y 10.20.8.226. La .226 es la última utilizable: la .227 es la difusión.',
       },

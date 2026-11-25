@@ -154,7 +154,13 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `opo.test.ts` recomputes the subnet lab (`opl1a`) from the CIDR in each category label, so labels must
   keep the `a.b.c.d/nn` form. The store shape did not change (no migration). Scenario: the fictional
   Consorcio Provincial de Arcedo — sede 10.20.10/20/30/99.0/24 by VLAN, oficinas comarcales in
-  10.20.8.0/22, CPD 10.20.72.0/21; keep new lessons on those ranges. Tests pinning totals that a new block
+  10.20.8.0/22, CPD 10.20.72.0/21; keep new lessons on those ranges. One version of the scenario (2026-11-25): the
+  offices reach the sede over the operator's MPLS layer-3 VPN with an IPsec backup, and each office's /30 is its link to
+  the operator's router; the sede's two layer-3 distribution switches route between VLANs (SVI); Internet is one
+  operator, one public address (`203.0.113.10`) and a static default route, so BGP, an own AS or a second public address
+  are always a labelled «supuesto»; VLAN 20 holds the sede's floor servers and the corporate applications live in the
+  CPD (a room in the sede building); Valdecierzo (`10.20.40.0/22`) is a training centre hanging off the sede by the
+  Consorcio's own fibre with OSPF, not a fourth office. An example that needs anything else says «supuesto» or «otra red». Tests pinning totals that a new block
   must update: `practical.test.ts` (`originals`), `labChallenge.test.ts` (lab count), `acronyms.test.ts`.
 
 - **SY0-801 novelties, section `sp7` (2026-10-21).** Optional Security+ section «Novedades SY0-801»: 7 lessons
