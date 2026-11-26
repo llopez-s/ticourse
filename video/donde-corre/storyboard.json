@@ -1,0 +1,223 @@
+{
+  "title": "Dónde corre de verdad un servicio",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 511,
+  "notice": "Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto · Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Qué hay dentro de un servidor"
+    },
+    {
+      "n": 2,
+      "title": "Varias máquinas en un solo servidor"
+    },
+    {
+      "n": 3,
+      "title": "Encendido no es funcionando"
+    },
+    {
+      "n": 4,
+      "title": "Volver atrás no es recuperar"
+    },
+    {
+      "n": 5,
+      "title": "Sin parches, y tres preguntas"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "El servidor está encendido",
+      "targetSec": 35,
+      "wordBudget": 95,
+      "goal": "Una pantalla de navegador con la web «Seguimiento de envíos» en blanco y el aviso «No se puede acceder a este sitio» (`blank`, sonido «error»). Al lado, un servidor en rack con sus luces verdes encendidas (`lights`). Título «Dónde corre de verdad un servicio» (`title`, antes de los 12 s) con la pregunta «¿encendido = funcionando?». Con «Imagina» entra el sello «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto» y «Simulación educativa · datos ficticios» (`stamp`) y la oficina de la naviera en silueta, sin nombre ni logotipo. Un reloj «lunes · 08:00» y tres teléfonos que suenan con el rótulo «clientes: ¿dónde está mi contenedor?» (`calls`). La promesa en tres chips (`promise`): «dónde corre» · «si funciona» · «cómo recuperarlo». Sin personas con nombre.",
+      "requiredCues": [
+        "blank",
+        "lights",
+        "title",
+        "stamp",
+        "calls",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-piezas",
+      "chapter": 1,
+      "title": "Cuatro piezas",
+      "targetSec": 58,
+      "wordBudget": 157,
+      "goal": "El servidor se abre en esquema (`box`, rótulo «servidor · hv-01»). Se encienden por turnos cuatro piezas con su nombre: «CPU · ejecuta» (`cpu`), «RAM · el trabajo en marcha» (`ram`), «disco · lo que queda al apagar» (`disk`), «tarjeta de red · conecta» (`nic`). Imagen (`office`, rotulada «imagen · no es la naviera»): una oficina en esquema, con una silueta que trabaja (= CPU), la mesa (= RAM), un archivador (= disco) y un teléfono (= red), cada uno con su rótulo. Después, cuatro señales, una por pieza: medidor de CPU al 100 % y un reloj de arena (`slow`); memoria llena y una ventana «no responde» (`fullram`); «error de lectura/escritura» en el disco (`diskerr`); el cable de red con una cruz y el equipo en verde (`nonet`). Rótulo de cierre (`signals`): «cada pieza avisa a su manera»; la tarjeta de examen (4.4) entra al acabar la frase. Ninguna cifra de rendimiento real.",
+      "requiredCues": [
+        "box",
+        "cpu",
+        "ram",
+        "disk",
+        "nic",
+        "office",
+        "slow",
+        "fullram",
+        "diskerr",
+        "nonet",
+        "signals"
+      ]
+    },
+    {
+      "id": "s03-maquinas",
+      "chapter": 2,
+      "title": "Varias máquinas en un servidor",
+      "targetSec": 49,
+      "wordBudget": 132,
+      "goal": "El servidor «hv-01» se hace grande y dentro aparecen dos recuadros (`two`). Una barra «hipervisor» se dibuja sobre el hardware y reparte flechas de CPU, memoria y disco hacia los dos recuadros (`share`), y se rotula (`hyper`: «hypervisor · hipervisor»). Cada recuadro gana su capa «sistema operativo» (`vm`: «máquina virtual · VM»). Rótulos «host · anfitrión» en el servidor (`host`) y «guest · invitada» en cada VM (`guest`). Las VM se nombran en pantalla: «vm-seguimiento · web de seguimiento · 8 GB» (`web`) y «vm-ficheros · servidor de ficheros · 8 GB» (`files`); el anfitrión «hv-01 · 64 GB de RAM». Con `os`, dentro de cada VM, cuatro iconos pequeños: memoria, programas, archivos y un candado de permisos.",
+      "requiredCues": [
+        "two",
+        "share",
+        "hyper",
+        "vm",
+        "host",
+        "guest",
+        "web",
+        "files",
+        "os"
+      ]
+    },
+    {
+      "id": "s04-comparten",
+      "chapter": 2,
+      "title": "Lo que comparten",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Entre las dos VM, una pared (`isolated`, rótulo «aisladas entre sí»). Desde abajo, un cable común sube del anfitrión a las dos (`power`). El anfitrión se apaga y las dos VM se oscurecen a la vez (`down`, rótulo «cae el host → caen las dos»). Imagen (`strip`, rotulada «imagen · no es la naviera»): una regleta con tres aparatos; salta el interruptor y se apagan los tres. Vuelve el esquema: una etiqueta «parches» sobre el anfitrión, aparte de las de cada VM (`patches`: «el host también se parchea»). Rótulo de cierre (`wrap`): «aisladas entre sí · dependientes del host»; tarjeta de examen (3.1) al acabar la frase.",
+      "requiredCues": [
+        "isolated",
+        "power",
+        "down",
+        "strip",
+        "patches",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s05-servicio",
+      "chapter": 3,
+      "title": "Un programa sin ventana",
+      "targetSec": 66,
+      "wordBudget": 178,
+      "goal": "Zoom a las luces verdes del frontal (`lights`, rótulo «hv-01 · encendido»). Dentro de «vm-seguimiento», un engranaje sin ventana con el rótulo «servicio web · sin ventana · espera peticiones» (`service`); a su lado, otro engranaje «base de datos de envíos» (`db`). Imagen (`counter`, rotulada «imagen · no es la naviera»): una casa de noche con las ventanas iluminadas y la puerta cerrada; una mano que va a llamar y el rótulo «¿hay alguien?». Sin timbre (el timbre de hospital es de V31) ni ventanilla (la de navieras es de V16). Con `proposal`, los teléfonos de s01 vuelven a sonar y entra la propuesta «reiniciar el servidor entero · rápido» y, con `choice`, la pregunta para pensar con dos botones: «Reiniciar el servidor entero» y «Mirar antes el servicio». Respuesta: el botón de reiniciar se ve en ámbar, con «vm-ficheros» apagándose a la vez (`other`, con la regleta de s04 que se apaga en miniatura, rótulo «también caería el servidor de ficheros, que iba bien»); después, un signo de interrogación sobre la web «¿por qué se cayó?» (`why`) y la lupa entra en «vm-seguimiento». El título de la escena no destripa la respuesta.",
+      "requiredCues": [
+        "lights",
+        "service",
+        "db",
+        "counter",
+        "proposal",
+        "choice",
+        "other",
+        "why"
+      ]
+    },
+    {
+      "id": "s06-comprobar",
+      "chapter": 3,
+      "title": "Proceso, puerto y petición",
+      "targetSec": 61,
+      "wordBudget": 165,
+      "goal": "Una lista de tres comprobaciones a la izquierda, «1 proceso · 2 puerto · 3 petición», que se van marcando; a la derecha, una terminal rotulada «en pantalla · no hace falta saber comandos todavía». (1) `process`: `systemctl status nginx`; `stopped`: la respuesta `Active: inactive (dead)` en rojo y la casilla 1 con ✗. (2) `port`: el rótulo «puerto = el número donde el servicio espera · la web: 443»; `silent`: `ss -ltn` sin ninguna línea `:443` y la casilla 2 con ✗. (3) `request`: la mano de s05 llama a la puerta y un navegador de cliente pide la página; `fail`: `curl: (7) Failed to connect … Connection refused` y la casilla 3 con ✗; la puerta de la casa no se abre. Con `sunday`, un calendario «domingo · parche aplicado · reinicio de vm-seguimiento»; con `noauto`, `systemctl is-enabled nginx` → `disabled`, rótulo «no arranca solo · reiniciar no lo habría arreglado». Arreglo: `start` → `systemctl start nginx`; `auto` → `systemctl enable nginx`; `loads` → la web «Seguimiento de envíos» carga con un contenedor en el mapa y las tres casillas en verde (sonido «check»). Rótulo de cierre (`wrap`): «encendido ≠ funcionando · la prueba es la petición»; tarjeta de examen (1.2) al acabar la frase.",
+      "requiredCues": [
+        "process",
+        "stopped",
+        "port",
+        "silent",
+        "request",
+        "fail",
+        "sunday",
+        "noauto",
+        "start",
+        "auto",
+        "loads",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s07-instantanea",
+      "chapter": 4,
+      "title": "Una foto para volver atrás",
+      "targetSec": 37,
+      "wordBudget": 100,
+      "goal": "Flashback al domingo (rótulo «domingo · antes del parche»). Una cámara saca una foto de «vm-seguimiento» (`photo`); la foto queda como una tarjeta con esquina doblada. Rótulo `snap`: «instantánea · snapshot». Con `rollback`, una flecha curva «volver» del estado roto al de la foto, con un reloj «minutos». Con `undo`, el rótulo «sirve para: deshacer un cambio». Con `samedisk`, la tarjeta de la foto vuela y se guarda en el disco de «hv-01», junto a la VM, con un recuadro ámbar «mismo disco». Imagen (`keys`, rotulada «imagen · no es la naviera»): un llavero con la llave y su copia colgadas juntas; una llave se tuerce en la cerradura y se usa la copia del mismo llavero.",
+      "requiredCues": [
+        "photo",
+        "snap",
+        "rollback",
+        "undo",
+        "samedisk",
+        "keys"
+      ]
+    },
+    {
+      "id": "s08-copia",
+      "chapter": 4,
+      "title": "El día que falla el disco",
+      "targetSec": 56,
+      "wordBudget": 151,
+      "goal": "Rótulo «un mes después». El disco de «hv-01» parpadea y aparece «error de lectura/escritura» (`errors`), el mismo icono de señal de s02. Con `question`, el disco se agrieta («si se pierde el disco…») y, con `choice`, la pregunta para pensar con dos botones: «Sí, con la instantánea» y «No, hace falta otra copia». Respuesta: el disco se rompe y se lleva por delante las dos VM y la tarjeta de la foto a la vez (`gone`, sonido «glitch»); en miniatura, el llavero entero cae por una alcantarilla. Con `backup`, una caja «copia independiente · fuera de hv-01» en otro sitio, unida por una línea discontinua; con `tested`, un sello «restaurada y comprobada». Con `restore`, la copia baja a un segundo servidor «hv-02 · de reserva» y las dos VM, «vm-seguimiento» y «vm-ficheros», vuelven a encenderse ahí; la web carga. Rótulo de cierre (`wrap`): dos columnas, «instantánea → volver atrás» y «copia independiente → recuperar»; tarjeta de examen (3.4) al acabar la frase.",
+      "requiredCues": [
+        "errors",
+        "question",
+        "choice",
+        "gone",
+        "backup",
+        "tested",
+        "restore",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s09-soporte",
+      "chapter": 5,
+      "title": "Sin más arreglos",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "Foco en «vm-ficheros», ya en «hv-02». Con `eol`, el sistema operativo envejece en pantalla y el fabricante se aleja; sin marca ni versión. Con `nofix`, un buzón de parches del fabricante que se cierra con «sin más parches» y la etiqueta roja «fuera de soporte». Con `oldapp`, un programa viejo «contabilidad» atado a esa VM («solo funciona aquí»). Tres casillas que se marcan: `record` → una ficha «Excepción · vm-ficheros · la acepta: Dirección · hasta: sustitución»; `limit` → la VM rodeada por una valla con un solo paso, «solo los puestos de la oficina que lo usan · sin acceso desde Internet»; `replace` → una flecha a un sistema nuevo con «plan de sustitución». Con `notupdated`, la ficha muestra «riesgo: más bajo» pero la etiqueta roja «sin parches» sigue ahí; tarjeta de examen (4.3) al acabar la frase. Sin fechas ni productos reales.",
+      "requiredCues": [
+        "eol",
+        "nofix",
+        "oldapp",
+        "record",
+        "limit",
+        "replace",
+        "notupdated"
+      ]
+    },
+    {
+      "id": "s10-vuelta",
+      "chapter": 5,
+      "title": "Vuelta al lunes",
+      "targetSec": 33,
+      "wordBudget": 89,
+      "goal": "El reloj «lunes» vuelve; la web de seguimiento cargada en el navegador de un cliente, con un ✓ junto a «petición real» y las luces del servidor tachadas suavemente (`web`). El esquema completo en capas, de abajo arriba, que se apilan una a una (`layers`): «servidor físico · anfitrión» → «hipervisor» → «vm-seguimiento / vm-ficheros (sistema)» → «servicio web». A un lado (`protect`), la tarjeta de la instantánea junto a la VM y la copia independiente lejos, fuera del servidor. Rótulo de cierre (`wrap`): «busca la capa del fallo · arréglalo ahí». Sin tarjeta de examen.",
+      "requiredCues": [
+        "web",
+        "layers",
+        "protect",
+        "wrap"
+      ]
+    },
+    {
+      "id": "s11-reglas",
+      "chapter": 5,
+      "title": "Tres preguntas",
+      "targetSec": 32,
+      "wordBudget": 86,
+      "goal": "Tres tarjetas numeradas que entran una a una: (1, `q1`) «¿Dónde corre? VM y host»; (2, `q2`) «¿Funciona? proceso · puerto · petición»; (3, `q3`) «¿Lo recuperas? copia fuera y probada». Con `cta`, el rótulo «antes de reiniciar nada» y la tarjeta final «Alertópolis · Dónde corre de verdad un servicio». Sin tarjeta de examen.",
+      "requiredCues": [
+        "q1",
+        "q2",
+        "q3",
+        "cta"
+      ]
+    }
+  ]
+}

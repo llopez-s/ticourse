@@ -18,11 +18,13 @@ E producción y accesibilidad, F revisión):
 | [F2-abrir-web.md](F2-abrir-web.md) | «Qué sucede al abrir una web» |
 | [F3-quien-puede.md](F3-quien-puede.md) | «Quién puede hacer qué» |
 | [F4-reconstruir.md](F4-reconstruir.md) | «Cómo reconstruir lo ocurrido» |
+| [F5-donde-corre.md](F5-donde-corre.md) | «Dónde corre de verdad un servicio» (añadido el 2026-11-26; ver §5) |
 
 ## 1. Orden recomendado
 
 | Orden | Vídeo | Va detrás de | Por qué en este punto |
 |---|---|---|---|
+| 0 | **F5 · Dónde corre de verdad un servicio** (2026-11-26) | f02 | Solo necesita f01 y f02. Es el primer vídeo de los fundamentos en el orden del curso; presenta Halden en una frase y la naviera de F1/F2. |
 | 1 | **F1 · Cómo viaja una conexión** | f08 (cierra el bloque f05–f08) | Necesita IP, subred, gateway, NAT, puertos y TCP/UDP ya leídos; los junta en un solo recorrido. Da el vocabulario (dirección, puerto, etiqueta) que usan los otros tres. |
 | 2 | **F2 · Qué sucede al abrir una web** | f10 | Sigue en la misma oficina y con el mismo portátil de F1: añade DHCP, DNS, TLS y HTTP sobre lo que F1 ya montó. |
 | 3 | **F3 · Quién puede hacer qué** | f11 | Une f03 (permisos) con f11 (autenticación y autorización), y f04 (procesos) para las cuentas de servicio. |
@@ -36,8 +38,8 @@ ahorra repeticiones.
 
 | Lección (`fund`) | F1 | F2 | F3 | F4 | Qué toma el vídeo |
 |---|---|---|---|---|---|
-| f01 Hardware y virtualización | | | | | — (ningún vídeo; ver §5) |
-| f02 Sistemas operativos y servicios | | | ◐ | | servicio que funciona sin ventana, con su cuenta |
+| f01 Hardware y virtualización | | | | | **F5** ● (2026-11-26): CPU, RAM, disco y red con sus señales; host, hipervisor, invitada; snapshot frente a copia independiente |
+| f02 Sistemas operativos y servicios | | | ◐ | | servicio que funciona sin ventana, con su cuenta. **F5** ●: encendido no es funcionando (proceso, puerto, petición real); parches y fin de soporte |
 | f03 Archivos y permisos | | | ● | | leer, escribir, ejecutar; grupos; mínimo privilegio; reglas aditivas y denegación implícita |
 | f04 Terminal, procesos y evidencia | | | ◐ | ◐ | proceso con PID y cuenta (F3); conexión que pertenece a un proceso (F4) |
 | f05 TCP/IP y comunicaciones | ● | ◐ | | ◐ | etiqueta origen/destino con puertos; TCP frente a UDP; el 443 no prueba el contenido |
@@ -103,6 +105,9 @@ eso cada uno sigue **un solo caso que se mueve**.
 **Fuera de este lote.** f01 (hardware y virtualización) y f02 (sistemas operativos y servicios) no tienen vídeo
 propio: f02 entra de lado en F3; f01 no entra. Si hiciera falta un quinto, sería «Dónde corre de verdad un servicio»
 (f01 + f02: host, VM, servicio, puerto y petición real). No se propone ahora.
+**Actualización 2026-11-26:** Lidia pidió escribirlo. Es [F5-donde-corre.md](F5-donde-corre.md), carpeta
+`video/donde-corre/`, sin congelar. Pasa en la naviera de F1/F2 (fuera del puerto) y va al final de f02. Sus valores
+nuevos (`hv-01`, `hv-02`, `vm-seguimiento`, `vm-ficheros`) están en su ficha, «Canon nuevo previsto».
 
 ## 6. Decisiones tomadas (supuestos documentados)
 
