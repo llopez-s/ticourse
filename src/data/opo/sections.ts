@@ -54,4 +54,23 @@ export const OP_SECTIONS: SectionMeta[] = [
         'LA RED HEREDADA, por fin sobre el papel. Un plan de direccionamiento sin solapes, cada VLAN con su puerta de enlace y la ruta huérfana eliminada. En el último armario aparece una nota pegada a un conmutador sin etiquetar: «no apagar, nadie sabe qué cuelga de aquí».',
     },
   },
+  {
+    id: 'op6',
+    track: 'opo',
+    num: 6,
+    title: 'ENS y normativa',
+    short: 'ENS',
+    subtitle:
+      'Esquema Nacional de Seguridad (RD 311/2022): principios, roles, categorías, medidas del anexo II, auditoría e incidentes; protección de datos (RGPD y LOPDGDD), gobierno de la seguridad y firma e identificación electrónicas (eIDAS).',
+    domain: 'ENS y normativa',
+    icon: '⚖️',
+    boss: {
+      codename: 'PAPEL MOJADO',
+      adversary: 'EL CUMPLIMIENTO DE FACHADA',
+      flavor:
+        'En el Consorcio Provincial de Arcedo todo parece en regla: hay una política firmada, una declaración de aplicabilidad y un informe de auditoría en una carpeta. Pero nadie sabe quién valoró los sistemas, la declaración copia medidas que no tocan y el registro de incidentes lleva meses vacío. Demuestra que conoces la norma artículo por artículo.',
+      dossier:
+        'EL CUMPLIMIENTO DE FACHADA, desmontado. Cada sistema tiene sus dimensiones valoradas por quien debe, su categoría determinada por la Unidad de Seguridad de la Información y su declaración de aplicabilidad firmada. Al ordenar el archivo del comité aparece un acta antigua con una sola línea subrayada: «revisar la red de las oficinas comarcales antes de la próxima auditoría».',
+    },
+  },
 ];
