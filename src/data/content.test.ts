@@ -477,6 +477,10 @@ describe('lesson videos', () => {
     // feedback-madurez tells vanity metrics from outcome metrics and walks the maturity stages, after s5m5's maturity
     // list and before the first check
     expect(youtubeVideos.find((v) => v.block.youtube === '4HCiCUA9itY')?.module).toBe('s5m5');
+    // Redes y ENS: trama-arcedo walks encapsulation, ARP and TCP/UDP, after op1m1's last check and before the exam
+    // callout; vlan-arcedo walks access, trunk and native VLAN, after op1m3's last check and before the Security+ link
+    expect(youtubeVideos.find((v) => v.block.youtube === '2nfwf0chOAk')?.module).toBe('op1m1');
+    expect(youtubeVideos.find((v) => v.block.youtube === 'U1RSSBd7o1A')?.module).toBe('op1m3');
   });
 
   it('every video block points at relative public assets that exist', async () => {

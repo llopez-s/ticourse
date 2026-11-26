@@ -190,6 +190,13 @@ El último fragmento es el único con MF = 0 y desplazamiento distinto de 0.`,
       },
     },
     {
+      t: 'video',
+      title: 'De la trama al segmento: ARP, la puerta de enlace y TCP frente a UDP',
+      youtube: '2nfwf0chOAk',
+      poster: 'videos/trama-arcedo-poster.png',
+      transcript: 'videos/trama-arcedo-transcript.txt',
+    },
+    {
       t: 'callout',
       kind: 'exam',
       title: 'Cómo cae en un examen',
