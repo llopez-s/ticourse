@@ -78,6 +78,8 @@ describe('pista Redes y ENS', () => {
       expect(new Set(m.quiz.map((q) => q.answer)).size, m.id).toBeGreaterThanOrEqual(3);
       expect(m.quiz.filter((q) => /art[íi]culo|anexo/i.test(q.prompt)).length, m.id).toBeGreaterThanOrEqual(2);
     }
+    expect(opo.flashcards.filter((c) => c.sectionId === 'op6').length).toBeGreaterThanOrEqual(40);
+    expect(opo.glossary.filter((g) => g.sectionId === 'op6').length).toBeGreaterThanOrEqual(55);
   });
 
   it('block 1 (redes) is complete', () => {
