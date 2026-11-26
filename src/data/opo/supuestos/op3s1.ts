@@ -143,7 +143,7 @@ const op3s1: Supuesto = {
           lang: 'text',
           title: 'Ámbito «Anexo · VLAN 50» · borrador (sintaxis ilustrativa, sin órdenes de fabricante)',
           text: `ámbito            Anexo · VLAN 50
-intervalo         10.20.50.1 - 10.20.51.255
+intervalo         10.20.50.1 - 10.20.50.254
 máscara           255.255.255.0
 concesión         8 días
 opción 3          10.20.10.1                  # copiada del ámbito de la VLAN 10
@@ -277,7 +277,7 @@ DHCP2    reloj local del equipo              16        -250 s`,
           ],
           points: 8,
           explain:
-            'Un /23 es la máscara 255.255.254.0: la red va de `10.20.50.0` a `10.20.51.255`, que es la difusión. Según las normas, la primera dirección útil, `10.20.50.1`, es la puerta de enlace; el borrador copió la `10.20.10.1` de la VLAN 10, que no está en esta red. Las 20 primeras direcciones (`.1` a `.20`) son fijas, así que el reparto empieza en `10.20.50.21` y acaba en `10.20.51.254`, la última antes de la difusión. El borrador repartía también la puerta, las SVI y la difusión. Tienta acabar en `10.20.50.254`, como si la red fuera un /24, o empezar en `.20`, que todavía es una de las fijas.',
+            'Un /23 es la máscara 255.255.254.0: la red va de `10.20.50.0` a `10.20.51.255`, que es la difusión. Según las normas, la primera dirección útil, `10.20.50.1`, es la puerta de enlace; el borrador copió la `10.20.10.1` de la VLAN 10, que no está en esta red. Las 20 primeras direcciones (`.1` a `.20`) son fijas, así que el reparto empieza en `10.20.50.21` y acaba en `10.20.51.254`, la última antes de la difusión. El borrador, pensado para un /24, repartía también la puerta y las SVI y se quedaba sin la mitad alta de la red. Tienta acabar en `10.20.50.254`, como el borrador, o empezar en `.20`, que todavía es una de las fijas.',
           refs: [L3, RFC2131, RFC2132],
         },
         {
@@ -405,10 +405,10 @@ DHCP2    reloj local del equipo              16        -250 s`,
           id: 'f2t4',
           kind: 'choice',
           topic: 'op3m2',
-          prompt: 'El borrador da a los puestos como DNS los resolutores del operador. ¿Qué pasaría si se quedara así?',
+          prompt: 'El borrador da a los puestos como DNS `198.51.100.53` y `198.51.100.54`. ¿Qué pasaría si se quedara así?',
           options: [
-            { id: 'a', text: 'Nada: los resolutores del operador reenvían a DC1 y DC2 lo que es de `ad.arcedo.example`' },
-            { id: 'b', text: 'Los puestos preguntarían por `_ldap._tcp.dc._msdcs.ad.arcedo.example` a quien no conoce esa zona, no encontrarían ningún controlador de dominio y no podrían unirse al dominio ni iniciar sesión en él' },
+            { id: 'a', text: 'Nada: esos servidores reenvían a DC1 y DC2 lo que es de `ad.arcedo.example`' },
+            { id: 'b', text: 'Los puestos preguntarían por `_ldap._tcp.dc._msdcs.ad.arcedo.example` (registro de Active Directory, valor de Microsoft) a quien no conoce esa zona, no encontrarían ningún controlador de dominio y no podrían unirse al dominio ni iniciar sesión en él' },
             { id: 'c', text: 'Solo fallaría la resolución inversa de las direcciones del anexo' },
             { id: 'd', text: 'Funcionaría, porque `ad.arcedo.example` cuelga de `arcedo.example`, cuya zona está en el proveedor de DNS externo' },
           ],
@@ -424,10 +424,10 @@ DHCP2    reloj local del equipo              16        -250 s`,
           kind: 'cite',
           topic: 'op3m2',
           prompt: 'Señala los documentos que, juntos, prueban que los servidores DNS del borrador no sirven para el dominio interno.',
-          answerSets: [['d-borrador', 'd-normas'], ['d-borrador', 'd-inventario']],
+          answerSets: [['d-borrador', 'd-inventario'], ['d-borrador', 'd-inventario', 'd-normas']],
           points: 4,
           explain:
-            'El borrador muestra qué servidores DNS reciben los puestos (`198.51.100.53` y `.54`). Las normas dicen que `ad.arcedo.example` solo la sirven DC1 y DC2, y el inventario, que esas dos direcciones son los resolutores del operador, que no conocen las zonas internas. Cualquiera de los dos, junto al borrador, lo prueba; el borrador solo no basta, porque no dice de quién son esas direcciones. El memorando tienta, pero solo pide que se resuelvan los nombres internos.',
+            'El borrador muestra qué servidores DNS reciben los puestos (`198.51.100.53` y `.54`), y solo el inventario dice de quién son esas direcciones: los resolutores del operador, que no conocen las zonas internas. Hacen falta los dos; las normas pueden acompañarlos, porque confirman que `ad.arcedo.example` solo la sirven DC1 y DC2, pero sin el inventario no prueban nada: no dicen qué es `198.51.100.53`. El memorando tienta, pero solo pide que se resuelvan los nombres internos.',
           refs: [L2],
         },
       ],
@@ -468,7 +468,7 @@ DHCP2    reloj local del equipo              16        -250 s`,
             { id: 'o6', text: 'El servidor confirma con DHCPACK y el portátil, tras comprobar que nadie usa la dirección, la configura' },
             { id: 'o1', text: 'El portátil, aún sin dirección, envía un DHCPDISCOVER desde `0.0.0.0` a `255.255.255.255`, al puerto UDP 67' },
             { id: 'o5', text: 'El portátil envía un DHCPREQUEST que nombra al servidor elegido (opción 54), y el relay lo vuelve a retransmitir' },
-            { id: 'o2', text: 'La SVI de la VLAN 50 recibe la difusión, escribe `10.20.50.2` en giaddr y la reenvía en unidifusión a DHCP1 y a DHCP2' },
+            { id: 'o2', text: 'La SVI de la VLAN 50 de DIST1 recibe la difusión, escribe su propia dirección en giaddr y la reenvía en unidifusión a DHCP1 y a DHCP2' },
             { id: 'o4', text: 'El relay entrega la oferta al portátil en la VLAN 50' },
           ],
           answer: ['o1', 'o2', 'o3', 'o4', 'o5', 'o6'],
@@ -524,10 +524,10 @@ DHCP2    reloj local del equipo              16        -250 s`,
           kind: 'cite',
           topic: 'op3m4',
           prompt: 'Señala los documentos que, juntos, prueban que DHCP2 no toma la hora de donde debe.',
-          answerSets: [['d-registro', 'd-normas']],
+          answerSets: [['d-registro', 'd-normas'], ['d-registro', 'd-normas', 'd-inventario']],
           points: 4,
           explain:
-            'El registro muestra que la fuente de DHCP2 es su reloj local, con estrato 16. Las normas dicen que los miembros del dominio que no son el emulador de PDC toman la hora por la jerarquía del dominio (comportamiento de Windows), como hace DHCP1 en el mismo registro. Con el registro solo sabes de dónde la toma, pero no de dónde debería tomarla. El inventario tienta, porque dice que DHCP2 es miembro del dominio, pero no fija de dónde sale su hora; el memorando tampoco.',
+            'El registro muestra que la fuente de DHCP2 es su reloj local, con estrato 16. Las normas reparten la hora en tres casos (emulador de PDC, miembros del dominio y equipos fuera del dominio): sea cual sea su papel, ninguna norma permite el reloj local; como miembro del dominio, a DHCP2 le toca la jerarquía del dominio (comportamiento de Windows), como hace DHCP1 en el mismo registro. Con el registro solo sabes de dónde la toma, pero no de dónde debería tomarla; con el registro y las normas ya queda probado que el reloj local no vale. El inventario completa la prueba, porque solo él dice que DHCP2 es miembro del dominio y, por tanto, en qué caso de las normas cae: por eso también vale citar los tres. El memorando tienta porque habla de la hora, pero no dice cuál es la fuente.',
           refs: [L4],
         },
         {
@@ -593,8 +593,8 @@ DHCP2    reloj local del equipo              16        -250 s`,
           prompt: 'Redacta la nota en **150 a 220 palabras**. Después, compárala con el modelo y marca los criterios que cumple.',
           words: 220,
           model:
-            'El anexo tiene su propia red, la VLAN 50 (10.20.50.0/23), con sitio para los 380 equipos previstos. DHCP reparte de 10.20.50.21 a 10.20.51.254 con concesiones de 8 horas; las primeras 20 direcciones quedan para equipos fijos, como el servidor de impresión.\n\n' +
-            'Para el DNS se han creado las dos zonas inversas que ocupa la red y los registros del servidor de impresión, con su alias «impresion». Los puestos usan como DNS a los controladores de dominio: el borrador les daba los servidores del operador y no habrían encontrado el dominio.\n\n' +
+            'El anexo tiene su propia red local virtual (VLAN), con sitio para los 380 equipos previstos. El servicio que reparte direcciones (DHCP) entrega de 10.20.50.21 a 10.20.51.254 en préstamos de 8 horas; las primeras 20 direcciones quedan para equipos fijos, como el servidor de impresión.\n\n' +
+            'Para el servicio de nombres (DNS) se han creado las dos zonas inversas que ocupa la red y los registros del servidor de impresión, con su alias «impresion». Los puestos usan como DNS a los controladores de dominio: el borrador les daba los servidores del operador y no habrían encontrado el dominio.\n\n' +
             'Los conmutadores de la sede retransmiten las peticiones a los dos servidores DHCP; antes solo llegaban a uno. Los dos trabajan en pareja con la conmutación por error de Windows Server, una función de Microsoft sin norma pública, repartiéndose los clientes: si uno cae, el otro sigue.\n\n' +
             'Al montar la pareja apareció un fallo de hora: el segundo servidor iba con su reloj interno, cuatro minutos atrasado, y la pareja no se formaba. Ya toma la hora por el dominio, como los demás servidores, que a su vez la reciben de los servidores de hora internos. Propongo vigilar la hora de todos los servidores, porque de ella dependen también el inicio de sesión y los registros.',
           rubric: [
