@@ -16,6 +16,12 @@ describe('pista Redes y ENS', () => {
     expect(Object.values(opo.domainWeights).reduce((a, b) => a + b, 0)).toBeCloseTo(1);
   });
 
+  it('has six domains in syllabus order with equal weights', () => {
+    expect(opo.domains).toEqual(['Redes de comunicaciones', 'Infraestructuras de comunicaciones',
+      'Servicios de red', 'Balanceo y alta disponibilidad', 'Identidad corporativa', 'ENS y normativa']);
+    for (const d of opo.domains) expect(opo.domainWeights[d], d).toBeCloseTo(1 / 6);
+  });
+
   it('keeps its ids in its own families, apart from GCTI and Security+', () => {
     for (const s of opo.sections) expect(s.id).toMatch(/^op\d+$/);
     for (const m of opo.modules) {

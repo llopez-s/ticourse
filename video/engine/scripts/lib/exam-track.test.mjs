@@ -73,7 +73,8 @@ test('the opo track (Redes y ENS): a block of the track on the card, its own bad
   const { OPO_BLOCKS, examBadgeFor, trackNotice } = await import('./profiles.mjs');
   const { youtubeTitle, playlistLabel } = await import('../youtube-meta.mjs');
   const { PLAYLIST_TITLES } = await import('./youtube-api.mjs');
-  assert.deepEqual(OPO_BLOCKS, ['Redes', 'ENS y normativa', 'Servicios de red', 'Infraestructuras', 'Identidad']);
+  assert.deepEqual(OPO_BLOCKS, ['Redes', 'Infraestructuras', 'Servicios de red', 'Balanceo', 'Identidad', 'ENS y normativa']);
+  assert.equal(examObjectiveError('opo', 'Balanceo'), null);
   assert.deepEqual(run('Redes', { track: 'opo' }).errors, []);
   assert.ok(run('4.5', { track: 'opo' }).errors.some((e) => /exam\.objective must be a block of the track/.test(e)));
   assert.equal(examObjectiveError('opo', 'ENS y normativa'), null);

@@ -135,7 +135,7 @@ export function interceptsFor(profile, hasAdversary) {
 export const GCTI_DOMAINS = Object.freeze(['Requirements', 'Intrusion Analysis', 'Collection', 'Analysis', 'Dissemination']);
 
 /** «Redes y ENS» follows no official numbered objectives, so an opo exam card names the block of the track. */
-export const OPO_BLOCKS = Object.freeze(['Redes', 'ENS y normativa', 'Servicios de red', 'Infraestructuras', 'Identidad']);
+export const OPO_BLOCKS = Object.freeze(['Redes', 'Infraestructuras', 'Servicios de red', 'Balanceo', 'Identidad', 'ENS y normativa']);
 
 /**
  * How the transcript (public, next to the captions) names an on-screen question. «Redes y ENS» follows no single

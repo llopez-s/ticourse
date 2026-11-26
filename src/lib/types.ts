@@ -21,7 +21,8 @@ export type Domain =
   // Redes y ENS (administración pública)
   | 'Redes de comunicaciones'
   | 'ENS y normativa'
-  | 'Servicios de red y balanceo'
+  | 'Servicios de red'
+  | 'Balanceo y alta disponibilidad'
   | 'Infraestructuras de comunicaciones'
   | 'Identidad corporativa';
 

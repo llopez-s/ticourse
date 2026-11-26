@@ -3,28 +3,25 @@ import type { Rank } from '../../lib/xp';
 
 /**
  * Pista «Redes y ENS»: temarios de técnico/a TIC de la administración pública.
- * Los cinco dominios siguen los bloques del plan; solo se registran las
- * secciones que ya tienen contenido (hoy, op1).
+ * Los seis dominios siguen los bloques del plan; solo se registran las
+ * secciones que ya tienen contenido.
  */
 export const OP_DOMAINS: Domain[] = [
   'Redes de comunicaciones',
-  'ENS y normativa',
-  'Servicios de red y balanceo',
   'Infraestructuras de comunicaciones',
+  'Servicios de red',
+  'Balanceo y alta disponibilidad',
   'Identidad corporativa',
+  'ENS y normativa',
 ];
 
 /**
- * Reparto del simulacro por número de lecciones previstas (5/5/4/2/2): no
- * existen pesos oficiales. sampleExam salta los dominios sin preguntas.
+ * Reparto del simulacro: pesos iguales, sin pesos oficiales. sampleExam salta
+ * los dominios sin preguntas.
  */
-export const OP_DOMAIN_WEIGHTS: Record<string, number> = {
-  'Redes de comunicaciones': 5 / 18,
-  'ENS y normativa': 5 / 18,
-  'Servicios de red y balanceo': 4 / 18,
-  'Infraestructuras de comunicaciones': 2 / 18,
-  'Identidad corporativa': 2 / 18,
-};
+export const OP_DOMAIN_WEIGHTS: Record<string, number> = Object.fromEntries(
+  OP_DOMAINS.map((d) => [d, 1 / OP_DOMAINS.length]),
+);
 
 /** Mismos umbrales de nivel que xp.RANKS, con nombres de la administración. */
 export const OP_RANKS: Rank[] = [
