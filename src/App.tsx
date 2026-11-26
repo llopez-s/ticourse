@@ -23,6 +23,7 @@ const SecurityFoundationPage = lazy(() => import('./pages/SecurityFoundationPage
 const SecurityPracticePage = lazy(() => import('./pages/SecurityPracticePage'));
 const SecurityAssessmentPage = lazy(() => import('./pages/SecurityAssessmentPage'));
 const SupuestoPage = lazy(() => import('./pages/SupuestoPage'));
+const SupuestosPage = lazy(() => import('./pages/SupuestosPage'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -50,6 +51,7 @@ export default function App() {
           <Route path="/learn/:moduleId" element={<ModulePage />} />
           <Route path="/quiz/:moduleId" element={<QuizPage />} />
           <Route path="/lab/:labId" element={<LabPage />} />
+          <Route path="/supuestos" element={<SupuestosPage />} />
           <Route path="/supuesto/:id" element={<SupuestoBoundary><SupuestoPage /></SupuestoBoundary>} />
           <Route path="/boss/:sectionId" element={<BossPage />} />
           <Route path="/exam" element={<ExamPage />} />

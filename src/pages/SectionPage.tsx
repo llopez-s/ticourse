@@ -6,10 +6,12 @@ import {
   modulesOf,
   sectionById,
   sectionMastery,
+  supuestosOf,
 } from '../data/course';
 import { exemptActive, sectionExempt, sectionExemptScore } from '../lib/placement';
 import { Bar, PageTitle, Panel, Ring } from '../components/Bits';
 import { useSyncTrack } from '../components/Layout';
+import SupuestoCard from '../components/supuestos/SupuestoCard';
 
 export default function SectionPage() {
   const { id } = useParams();
@@ -21,6 +23,7 @@ export default function SectionPage() {
 
   const mods = modulesOf(section.id);
   const labs = labsOf(section.id);
+  const supuestos = supuestosOf(section.id);
   const mastery = sectionMastery(section.id, s);
   const bossBest = s.bosses[section.id] ?? 0;
   const bossDown = bossBest >= 80;
@@ -176,6 +179,18 @@ export default function SectionPage() {
                 </Link>
               );
             })}
+          </div>
+        </>
+      )}
+
+      {/* supuestos prácticos */}
+      {supuestos.length > 0 && (
+        <>
+          <h2 className="mb-2 text-sm font-bold uppercase tracking-wider text-slate-400">
+            🗂️ Supuestos prácticos
+          </h2>
+          <div className="mb-6 space-y-2">
+            {supuestos.map((m) => <SupuestoCard key={m.id} meta={m} />)}
           </div>
         </>
       )}

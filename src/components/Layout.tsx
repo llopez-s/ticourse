@@ -216,6 +216,7 @@ function TopBar() {
               ] as [string, string],
           ),
           ['/exam', 'Examen'],
+          ...(track.supuestos.length > 0 ? [['/supuestos', 'Supuestos']] : []),
           ['/cards', 'Cards'],
           ['/search', 'Buscar'],
           ['/glossary', 'Glosario'],
@@ -270,6 +271,12 @@ export default function Layout({ children }: { children: ReactNode }) {
           <NavLink to="/exam" className={navLink}>
             <span className="text-base leading-none">⏱️</span> Examen de práctica
           </NavLink>
+
+          {track.supuestos.length > 0 ? (
+            <NavLink to="/supuestos" className={navLink}>
+              <span className="text-base leading-none">🗂️</span> Supuestos prácticos
+            </NavLink>
+          ) : null}
 
           <SectionLinks optional />
 
