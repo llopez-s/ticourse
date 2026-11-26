@@ -1,0 +1,421 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.chatterbox.json",
+  "recording": {
+    "maxPauseMs": 250
+  },
+  "examTiming": "sentence-end",
+  "sfx": {
+    "blank": "error",
+    "loads": "check",
+    "gone": "glitch"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {blank}La web no carga, pero {lights}el servidor está encendido, con todas sus luces verdes. {title}¿Está funcionando o no?",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<warm> {stamp}Imagina que trabajas en Sistemas de una naviera, una empresa de barcos que trabaja en Halden, el escenario de este curso.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<concerned> Es lunes, ocho de la mañana. {calls}Los clientes llaman porque no pueden ver por dónde va su contenedor. Para eso está la web de seguimiento, y no carga.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s01-04",
+      "scene": "s01-hook",
+      "text": "<engaging> {promise}Al terminar sabrás dónde corre de verdad un servicio, cómo comprobar si funciona y qué guardar para recuperarlo si todo falla.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-piezas",
+      "text": "<clear> Empecemos por el propio servidor. {box}Por dentro es un ordenador como el tuyo, con cuatro piezas que importan.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-piezas",
+      "text": "<casual> {cpu}El procesador, la CPU, ejecuta las instrucciones. {ram}La memoria, la RAM, guarda el trabajo que está en marcha.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-piezas",
+      "text": "<thoughtful> {disk}El disco conserva los archivos aunque apagues. Y {nic}la tarjeta de red lo conecta con los demás equipos.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-piezas",
+      "text": "<warm> {office}Piensa en una oficina. Quien trabaja es la CPU, la mesa es la RAM, el archivador es el disco, y el teléfono, la red.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-piezas",
+      "text": "<focused> Y cada pieza, cuando falla, avisa a su manera. {slow}Con la CPU al máximo, todo va lento. {fullram}Si la memoria no da más, los programas se atascan o se cierran.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-piezas",
+      "text": "<firm> {diskerr}Si el disco falla, saltan errores al guardar o al leer. {nonet}Y si cae la red, el equipo puede ir bien, pero no le llega nada.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-piezas",
+      "text": "<confident> {signals}O sea, que antes de echarle la culpa al servidor, mira qué pieza da la señal.",
+      "pauseAfterMs": 1300,
+      "exam": {
+        "objective": "4.4",
+        "text": "CPU, RAM, disco y red: cada fallo da su señal",
+        "at": "signals",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-maquinas",
+      "text": "<curious> Pero en esta naviera, {two}dentro del servidor no hay una sola máquina. Hay dos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-maquinas",
+      "text": "<clear> {share}Hay un programa que reparte la CPU, la memoria y el disco del servidor entre varios ordenadores que solo existen en software. {hyper}Se llama hipervisor.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-maquinas",
+      "text": "<thoughtful> Cada uno de esos ordenadores es {vm}una máquina virtual, con su propio sistema operativo, como si fuera un equipo aparte.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-maquinas",
+      "text": "<casual> Al servidor físico se le llama {host}anfitrión, en inglés host. Y a cada máquina virtual, {guest}invitada, o guest.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-maquinas",
+      "text": "<focused> Aquí hay dos invitadas. {web}Una lleva la web de seguimiento, y {files}la otra, el servidor de ficheros de la oficina.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s03-06",
+      "scene": "s03-maquinas",
+      "text": "<warm> {os}Y el sistema operativo de cada una hace lo de siempre. Reparte su memoria, lleva sus programas y sus archivos, y hace cumplir los permisos.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-comparten",
+      "text": "<thoughtful> Las dos invitadas están separadas. {isolated}Lo que pasa dentro de una no debería tocar a la otra.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-comparten",
+      "text": "<concerned> Pero {power}las dos viven del mismo anfitrión. {down}Si el servidor físico se para, se paran las dos a la vez.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-comparten",
+      "text": "<casual> {strip}Es como una regleta. Cada aparato va por su lado, pero si salta la regleta, se apagan todos.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-comparten",
+      "text": "<firm> Por eso {patches}el anfitrión también necesita sus parches, las correcciones que publica el fabricante. Separar a las invitadas no lo protege a él.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-comparten",
+      "text": "<confident> {wrap}O sea, que las máquinas virtuales se aíslan entre sí, pero caen juntas con su anfitrión.",
+      "pauseAfterMs": 1300,
+      "exam": {
+        "objective": "3.1",
+        "text": "Las VM se aíslan entre sí, pero caen con su host",
+        "at": "wrap",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-servicio",
+      "text": "<curious> Volvamos al lunes. {lights}Las luces verdes son del anfitrión. Dicen que el servidor físico está encendido, y poco más.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-servicio",
+      "text": "<clear> La web, en cambio, es {service}un servicio, un programa que funciona sin ventana, esperando a que alguien le pida algo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-servicio",
+      "text": "<casual> {db}Como la base de datos que guarda los envíos, que también trabaja sin que nadie la mire.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-servicio",
+      "text": "<warm> {counter}Es como una ventanilla con la luz encendida. Hasta que no pides algo, no sabes si hay alguien detrás.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-servicio",
+      "text": "<engaging> Ahora decides tú. {proposal}Alguien propone reiniciar el servidor entero, que así arranca todo de nuevo. {choice}¿Lo reinicias, o antes miras otra cosa?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Qué haces primero?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-servicio",
+      "text": "<confident> Primero se mira. {other}Reiniciar el anfitrión apagaría también el servidor de ficheros, que funcionaba bien.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-servicio",
+      "text": "<thoughtful> Y aunque la web volviera, {why}seguirías sin saber por qué se había caído. Así que toca mirar el servicio, dentro de su máquina virtual.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-comprobar",
+      "text": "<focused> Se comprueban tres cosas, en orden. {process}Primero, si el programa está en marcha. Un programa en marcha es un proceso.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-comprobar",
+      "text": "<concerned> {stopped}Y el de la web no está en marcha. Está detenido.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-comprobar",
+      "text": "<clear> Segundo, {port}si escucha en su número. Cada servicio espera las peticiones en un número propio, que se llama puerto. El de la web lo tienes en pantalla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-comprobar",
+      "text": "<casual> {silent}Nadie escucha en ese número. Es lógico, si el programa está parado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-comprobar",
+      "text": "<firm> Y tercero, {request}una petición de verdad. Pides la página como lo haría un cliente. {fail}Y no contesta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-comprobar",
+      "text": "<thoughtful> ¿Por qué estaba parado? {sunday}El domingo se aplicó un parche y la máquina virtual se reinició. {noauto}Pero el servicio no estaba puesto para arrancar solo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s06-07",
+      "scene": "s06-comprobar",
+      "text": "<confident> {start}Lo pones en marcha, {auto}lo dejas en arranque automático y vuelves a pedir la página. {loads}Esta vez, carga.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-08",
+      "scene": "s06-comprobar",
+      "text": "<firm> {wrap}O sea, que un equipo encendido no es un servicio funcionando. La prueba es la petición real.",
+      "pauseAfterMs": 1300,
+      "exam": {
+        "objective": "1.2",
+        "text": "Encendido no es disponible: pide la página",
+        "at": "wrap",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-instantanea",
+      "text": "<curious> Antes del parche del domingo, alguien hizo algo sensato. {photo}Le sacó una foto a la máquina virtual, tal y como estaba.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-instantanea",
+      "text": "<clear> Esa foto se llama {snap}instantánea, o snapshot. Si el parche estropea algo, {rollback}vuelves a ella y en minutos estás como antes.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-instantanea",
+      "text": "<warm> {undo}Para eso es estupenda, para deshacer un cambio que ha salido mal.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-instantanea",
+      "text": "<concerned> Pero fíjate dónde se guardó. {samedisk}En el mismo disco del anfitrión, al lado de la propia máquina virtual.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-instantanea",
+      "text": "<casual> {keys}Es como guardar la llave de repuesto en el mismo llavero. Sirve si te equivocas de llave, no si pierdes el llavero.",
+      "pauseAfterMs": 450
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-copia",
+      "text": "<concerned> Un mes después, {errors}el anfitrión empieza a dar errores al leer y al guardar. Ya sabes de qué pieza es esa señal.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-copia",
+      "text": "<engaging> Ahora decides tú. {question}Si ese disco se pierde del todo, {choice}¿te basta la instantánea para recuperar la web, o necesitas otra cosa?",
+      "pauseAfterMs": 300,
+      "think": {
+        "q": "¿Te salva la instantánea?",
+        "holdMs": 4500
+      }
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-copia",
+      "text": "<firm> No te basta. {gone}La instantánea estaba en ese disco, así que se pierde con él, igual que la máquina.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-copia",
+      "text": "<clear> Lo que te salva es {backup}una copia independiente, guardada fuera de ese servidor. {tested}Y probada, porque alguien ya la ha restaurado y ha funcionado.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-copia",
+      "text": "<confident> Con ella, {restore}restauras la web en el otro servidor de la oficina, el de reserva, y los clientes vuelven a verla.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-copia",
+      "text": "<firm> {wrap}O sea, que la instantánea sirve para volver atrás, y la copia independiente, para recuperar lo que has perdido.",
+      "pauseAfterMs": 1300,
+      "exam": {
+        "objective": "3.4",
+        "text": "Snapshot en el mismo disco no es un backup",
+        "at": "wrap",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-soporte",
+      "text": "<thoughtful> Queda la otra invitada, el servidor de ficheros. {eol}Su sistema operativo ya está fuera de soporte.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-soporte",
+      "text": "<clear> Eso quiere decir que {nofix}el fabricante ya no publica parches para él. Si mañana aparece un fallo, nadie lo va a corregir.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-soporte",
+      "text": "<concerned> Y no se puede cambiar este mes, porque {oldapp}un programa antiguo de contabilidad solo funciona en ese sistema.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-soporte",
+      "text": "<firm> Entonces se hacen tres cosas. {record}Se apunta la excepción, quién la acepta y hasta cuándo. {limit}Se limita quién puede llegar a esa máquina. {replace}Y se planea sustituirla.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-soporte",
+      "text": "<confident> {notupdated}Con eso el riesgo baja, pero el sistema no pasa a estar al día. Sigue sin parches, y hay que tenerlo presente.",
+      "pauseAfterMs": 1300,
+      "exam": {
+        "objective": "4.3",
+        "text": "Fuera de soporte: excepción apuntada, no sistema al día",
+        "at": "notupdated",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-vuelta",
+      "text": "<warm> Volvamos al lunes por la mañana. {web}La web de seguimiento carga, y lo sabes porque has pedido la página, no por las luces.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-vuelta",
+      "text": "<thoughtful> {layers}Ya distingues las capas. El servidor físico, el hipervisor, cada máquina virtual con su sistema y, dentro, el servicio.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-vuelta",
+      "text": "<confident> Antes de cada parche, {protect}una instantánea para volver atrás. Y fuera del servidor, una copia probada para cuando se pierde todo.",
+      "pauseAfterMs": 350
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-vuelta",
+      "text": "<firm> {wrap}O sea, que cuando algo no funciona, primero averiguas en qué capa está el fallo, y luego lo arreglas ahí.",
+      "pauseAfterMs": 600
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-reglas",
+      "text": "<warm> Te quedas con tres preguntas. Una. {q1}¿Dónde corre el servicio? En qué máquina virtual y sobre qué anfitrión, porque si cae el anfitrión, caen todas.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-reglas",
+      "text": "<clear> Dos. {q2}¿Funciona de verdad? Mira el proceso, el puerto y, sobre todo, una petición real. Las luces no bastan.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-reglas",
+      "text": "<thoughtful> Tres. {q3}¿Podrías recuperarlo si pierdes el servidor? La instantánea no basta. Hace falta una copia fuera, y probada.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-04",
+      "scene": "s11-reglas",
+      "text": "<engaging> {cta}La próxima vez que oigas que el servidor está encendido, haz estas tres preguntas antes de reiniciar nada.",
+      "pauseAfterMs": 1500
+    }
+  ]
+}
