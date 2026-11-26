@@ -8,6 +8,7 @@ import type {
 } from '../lib/types';
 import { exemptScore, isDone } from '../lib/placement';
 import { pct, sample, shuffle } from '../lib/util';
+import type { SupuestoMeta } from '../lib/supuesto';
 import { LABS } from './labs';
 import { TRACKS, TRACK_IDS } from './tracks';
 
@@ -38,6 +39,13 @@ export const sectionsOf = (track: TrackId) => TRACKS[track].sections;
 /** Sections that carry a boss (= exam content sections). */
 export const contentSections = (track: TrackId) =>
   TRACKS[track].sections.filter((s) => s.boss !== null);
+/** Supuestos de una sección, de su pista; el integrador no aparece aquí. */
+export const supuestosOf = (sectionId: string): SupuestoMeta[] =>
+  TRACKS[trackOf(sectionId)].supuestos.filter(
+    (m) => !m.integrator && m.sectionIds.includes(sectionId),
+  );
+export const supuestoMetaById = (id: string): SupuestoMeta | undefined =>
+  TRACK_IDS.flatMap((t) => TRACKS[t].supuestos).find((m) => m.id === id);
 export const modulesOfTrack = (track: TrackId) => TRACKS[track].modules;
 export const placementBlocks = (track: TrackId) => TRACKS[track].placement;
 export const questionsOfTrack = (track: TrackId): Question[] =>

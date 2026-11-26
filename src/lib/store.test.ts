@@ -58,9 +58,13 @@ describe('migrateProgress to v3', () => {
     expect(out.placement).toEqual([]);
   });
 
-  it('v3 blob is untouched', () => {
+  it('a v3 blob keeps every field and only gains the v4 ones', () => {
     const v3 = { track: 'secplus', exams: [], exempt: { sp1m1: { status: 'exempt', at: 'x', via: 'pl-sp1', score: 90 } }, placement: [] };
-    expect(migrateProgress(v3, 3)).toEqual(v3);
+    expect(migrateProgress(v3, 3)).toEqual({ ...v3, practical: {}, supuestos: {} });
+    expect(migrateProgress({ ...v3, practical: { 'a:exam': 120 }, supuestos: {} }, 3)).toMatchObject({ practical: { 'a:exam': 120 } });
+    // already-v4 data is untouched
+    const v4 = { ...v3, practical: { 'a:exam': 120 }, supuestos: {} };
+    expect(migrateProgress(v4, 4)).toEqual(v4);
   });
 });
 
@@ -155,5 +159,57 @@ describe('placement actions', () => {
     const { exempt } = useStore.getState();
     expect(exempt[ids[0]].status).toBe('revoked');
     expect(Object.keys(exempt).length).toBe(ids.length);
+  });
+});
+
+describe('supuestos y XP práctico (persist v4)', () => {
+  const meta = (id: string, integrator?: boolean) => ({
+    id, track: 'gcti' as const, sectionIds: ['s1'], version: 1,
+    title: 't', brief: 'b', minutes: 10, integrator,
+  });
+  it('migra v3 → v4 añadiendo campos vacíos sin perder nada', () => {
+    const out = migrateProgress({ xp: 5, exempt: {}, placement: [] }, 3) as Record<string, unknown>;
+    expect(out.practical).toEqual({});
+    expect(out.supuestos).toEqual({});
+    expect(out.xp).toBe(5);
+  });
+  it('un 4,9 guarda la nota pero no da XP', () => {
+    reset();
+    expect(useStore.getState().finishSupuesto(meta('a'), 'exam', { grade: 4.9, auto: 3 })).toBe(0);
+    expect(useStore.getState().supuestos.a.exam?.grade).toBe(4.9);
+    expect(useStore.getState().practical).toEqual({});
+  });
+  it('un 7,2 da 120 en simulacro; repetir con 9 da 0 y sube la mejor nota', () => {
+    reset();
+    expect(useStore.getState().finishSupuesto(meta('z'), 'exam', { grade: 3, auto: 1 })).toBe(0);
+    const xp0 = useStore.getState().xp;
+    expect(xp0).toBe(0);
+    expect(useStore.getState().finishSupuesto(meta('a'), 'exam', { grade: 7.2, auto: 5 })).toBe(120);
+    expect(useStore.getState().finishSupuesto(meta('a'), 'exam', { grade: 9, auto: 6 })).toBe(0);
+    expect(useStore.getState().supuestos.a.exam?.grade).toBe(9);
+    expect(useStore.getState().practical['a:exam']).toBe(120);
+    // practical XP never lands in xp (quests/achievements may still add their own)
+    expect(useStore.getState().xp - xp0).not.toBe(120);
+  });
+  it('una nota peor no pisa la mejor', () => {
+    reset();
+    useStore.getState().finishSupuesto(meta('a'), 'practice', { grade: 8, auto: 5 });
+    useStore.getState().finishSupuesto(meta('a'), 'practice', { grade: 6, auto: 9 });
+    expect(useStore.getState().supuestos.a.practice?.grade).toBe(8);
+  });
+  it('práctica y simulacro son claves distintas; integrador da 240', () => {
+    reset();
+    expect(useStore.getState().finishSupuesto(meta('a'), 'practice', { grade: 6, auto: 4 })).toBe(60);
+    expect(useStore.getState().finishSupuesto(meta('a'), 'exam', { grade: 6, auto: 4 })).toBe(120);
+    expect(useStore.getState().finishSupuesto(meta('i', true), 'exam', { grade: 6, auto: 4 })).toBe(240);
+  });
+  it('suma 1 a day.labs al aprobar por primera vez y resetAll vacía todo', () => {
+    reset();
+    const l0 = useStore.getState().day.labs;
+    useStore.getState().finishSupuesto(meta('a'), 'exam', { grade: 6, auto: 4 });
+    expect(useStore.getState().day.labs).toBe(l0 + 1);
+    reset();
+    expect(useStore.getState().practical).toEqual({});
+    expect(useStore.getState().supuestos).toEqual({});
   });
 });

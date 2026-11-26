@@ -41,6 +41,8 @@ import { OP_DOMAIN_WEIGHTS, OP_DOMAINS, OP_RANKS, OP_SECTIONS } from './opo/sect
 import { OP1_MODULES } from './opo/op1';
 import { OP1_FLASHCARDS, OP1_GLOSSARY } from './opo/op1-cards';
 import { OP_LABS } from './opo/labs';
+import type { SupuestoMeta } from '../lib/supuesto';
+import { OP_SUPUESTOS } from './opo/supuestos/meta';
 import { withPracticalExpansion } from './practical';
 import { PRACTICAL_CARDS, PRACTICAL_GLOSSARY } from './practical/study-aids';
 import { withTrainingReview } from './security/training-review';
@@ -72,6 +74,8 @@ export interface TrackMeta {
     full: { n: number; minutes: number };
   };
   campaign: { title: string; intro: string };
+  /** Metadatos de los supuestos prácticos; los datos se cargan bajo demanda. */
+  supuestos: SupuestoMeta[];
 }
 
 const GCTI_DOMAINS: Domain[] = [
@@ -120,6 +124,7 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
       intro:
         'Eres la primera analista CTI de Meridian Dynamics. Completa las 5 misiones (labs) y derrota a los 5 bosses para desenmascarar al grupo.',
     },
+    supuestos: [],
   },
   secplus: {
     id: 'secplus',
@@ -159,6 +164,7 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
       intro:
         'Eres la primera analista de seguridad de la Autoridad Portuaria de Halden. Completa las 5 misiones (labs) y derrota a los 5 bosses para descubrir quién está detrás de GLASS HARBOR.',
     },
+    supuestos: [],
   },
   opo: {
     id: 'opo',
@@ -190,6 +196,7 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
       intro:
         'Eres la nueva técnica de comunicaciones y ciberseguridad del Consorcio Provincial de Arcedo. Heredas una red sin documentar: completa las misiones (labs) y supera cada jefe para dejarla sobre el papel.',
     },
+    supuestos: OP_SUPUESTOS,
   },
 };
 

@@ -1,4 +1,5 @@
 import type { Conf } from './types';
+import type { SupuestoMeta, SupuestoMode } from './supuesto';
 
 /** Flat XP rewards */
 export const XP = {
@@ -11,6 +12,17 @@ export const XP = {
   examTry: 40,
   placement: 50,
 } as const;
+
+/** Practical XP for passing a supuesto (grade >= 5), once per mode. Integrators pay double. */
+export const SUPUESTO_XP: Record<SupuestoMode, number> = { practice: 60, exam: 120 };
+
+export function supuestoXp(meta: Pick<SupuestoMeta, 'integrator'>, mode: SupuestoMode): number {
+  return SUPUESTO_XP[mode] * (meta.integrator ? 2 : 1);
+}
+
+export function practicalTotal(p: Record<string, number> | undefined): number {
+  return Object.values(p ?? {}).reduce((a, b) => a + b, 0);
+}
 
 /** Confidence-bet stakes: the signature mechanic. Win/lose XP per answer. */
 export const STAKES: Record<Conf, { win: number; lose: number }> = {

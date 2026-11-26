@@ -224,6 +224,9 @@ export interface ExamResult {
   domains: Record<string, { n: number; c: number }>;
 }
 
+/** Best attempt at a supuesto in one mode. grade is 0-10, auto the auto-graded part. */
+export interface SupuestoBest { grade: number; auto: number; at: string; version: number }
+
 export interface ProgressSnapshot {
   track: TrackId; // active study track
   xp: number;
@@ -240,6 +243,8 @@ export interface ProgressSnapshot {
   achievements: Record<string, string>; // id -> ISO date unlocked
   exempt: Record<string, ExemptEntry>; // moduleId -> entry
   placement: PlacementResult[]; // full attempt history
+  practical: Record<string, number>; // '<supuestoId>:<mode>' -> practical XP granted
+  supuestos: Record<string, { practice?: SupuestoBest; exam?: SupuestoBest }>;
   day: DayState;
 }
 

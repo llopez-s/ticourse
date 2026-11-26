@@ -37,6 +37,42 @@ const assertCompleted = async (id) => {
   await page.waitForFunction(async ({ base, id }) => (await import(`${base}src/lib/store.ts`)).useStore.getState().labs[id] === true, { base, id });
 };
 
+// Supuesto helpers: answer a phase through the real inputs, using the case's own answer key.
+const supuestoUrl = (mode) => `${base}#/supuesto/op1s1?mode=${mode}`;
+const supuestoStore = () => page.evaluate(async (base) => {
+  const { useStore } = await import(`${base}src/lib/store.ts`);
+  const { supuestos, practical } = useStore.getState(); return { supuestos, practical };
+}, base);
+const taskItem = (index) => page.locator('section[aria-labelledby^="phase-"] > ol > li').nth(index);
+async function answerTask(task, index, dossier) {
+  const item = taskItem(index);
+  switch (task.kind) {
+    case 'choice': await item.locator(`input[name="${task.id}"]`).nth(task.options.findIndex((o) => o.id === task.answer)).check(); break;
+    case 'multi':
+      for (const id of task.answer) await item.getByRole('checkbox').nth(task.options.findIndex((o) => o.id === id)).check();
+      break;
+    case 'numeric': await item.locator(`#${task.id}-num`).fill(String(task.answer).replace('.', ',')); break;
+    case 'table':
+      for (const row of task.rows) for (const field of task.fields)
+        await item.getByRole('combobox', { name: `${row.label}: ${field.label}`, exact: true }).selectOption(row.answer[field.id]);
+      break;
+    case 'order':
+      // Items are stored shuffled; move each one up until the list matches the key.
+      for (const [position, id] of task.answer.entries()) {
+        const text = task.items.find((i) => i.id === id).text;
+        const current = async () => (await item.locator('ol > li > span.flex-1').allTextContents()).indexOf(text);
+        while ((await current()) > position) await item.getByRole('button', { name: `Subir: ${text}`, exact: true }).click();
+      }
+      break;
+    case 'cite':
+      for (const id of task.answerSets[0]) await item.getByRole('checkbox', { name: dossier.find((d) => d.id === id).title, exact: true }).check();
+      break;
+    case 'written': await item.locator(`#${task.id}-text`).fill(task.model); break;
+    default: throw new Error(`unhandled task kind ${task.kind}`);
+  }
+}
+const answerPhase = async (phase, dossier) => { for (const [i, task] of phase.tasks.entries()) await answerTask(task, i, dossier); };
+
 try {
   await navigate('lab2a');
   const fixtures = await page.evaluate(async (base) => {
@@ -211,6 +247,57 @@ try {
   await page.reload();
   assert.equal(await yaraEditor.inputValue(), 'rule Persisted { condition: true }');
   console.log('PASS YARA free editor draft');
+
+  // Supuesto práctico op1s1: practice with every answer correct, then a simulacro that survives a reload and expires.
+  const sup = await page.evaluate(async (base) => (await import(`${base}src/data/opo/supuestos/op1s1.ts`)).default, base);
+  await page.goto(supuestoUrl('practice'), { waitUntil: 'domcontentloaded', timeout: 60000 });
+  await page.getByRole('button', { name: 'Empezar', exact: true }).click();
+  for (const [pi, phase] of sup.phases.entries()) {
+    await page.getByRole('heading', { name: phase.title, exact: true }).waitFor();
+    await answerPhase(phase, sup.dossier);
+    const last = pi === sup.phases.length - 1;
+    await page.getByRole('button', { name: last ? 'Entregar la última fase' : 'Entregar fase', exact: true }).click();
+    await page.getByRole('button', { name: last ? 'Terminar y ver la nota →' : 'Siguiente fase →', exact: true }).click();
+  }
+  await page.getByRole('heading', { name: 'Autoevaluación', exact: true }).waitFor();
+  for (const box of await page.getByRole('checkbox').all()) await box.check();
+  await page.getByRole('button', { name: /^Terminar la autoevaluación/ }).click();
+  await page.getByRole('heading', { name: sup.title, exact: true }).waitFor();
+  assert.match(await page.locator('#result-title').locator('..').textContent(), /10,0\s*\/ 10/);
+  await page.getByText('Aprobado', { exact: true }).waitFor();
+  const done = await supuestoStore();
+  assert.equal(done.supuestos.op1s1.practice.grade, 10);
+  assert.equal(done.practical['op1s1:practice'], 60);
+  console.log('PASS supuesto practice: every answer correct gives 10,0 and 60 practical XP');
+
+  await page.goto(supuestoUrl('exam'), { waitUntil: 'domcontentloaded', timeout: 60000 });
+  await page.getByRole('button', { name: 'Empezar', exact: true }).click();
+  await page.getByText('Simulacro · tiempo restante', { exact: false }).waitFor();
+  await answerTask(sup.phases[0].tasks[0], 0, sup.dossier);
+  const numericId = `#${sup.phases[0].tasks[0].id}-num`;
+  const storageKey = 'alertopolis-labs-v1:supuesto/op1s1/exam/v1';
+  const startedAt = () => page.evaluate((key) => JSON.parse(localStorage.getItem(key)).current.draft.run.startedAt, storageKey);
+  const before = await startedAt();
+  await page.reload();
+  await page.getByRole('heading', { name: 'Tienes este supuesto a medias', exact: true }).waitFor();
+  await page.getByRole('button', { name: 'Continuar', exact: true }).click();
+  assert.equal(await page.locator(numericId).inputValue(), String(sup.phases[0].tasks[0].answer));
+  assert.equal(await startedAt(), before, 'the exam clock keeps its start across a reload');
+  assert.match(await page.getByText('Tiempo restante:', { exact: false }).locator('..').textContent(), /(59:\d\d|1:00:00)/);
+  console.log('PASS supuesto simulacro: answer and clock persist across a reload');
+
+  // Rewind the start two hours: on the next load the run must close itself.
+  await page.evaluate((key) => {
+    const ws = JSON.parse(localStorage.getItem(key));
+    ws.current.draft.run.startedAt = new Date(Date.now() - 2 * 3600_000).toISOString();
+    localStorage.setItem(key, JSON.stringify(ws));
+  }, storageKey);
+  await page.reload();
+  await page.getByRole('heading', { name: 'Autoevaluación', exact: true }).waitFor();
+  assert.equal((await supuestoStore()).supuestos.op1s1.exam, undefined, 'an expired run is not recorded until the self-assessment ends');
+  await page.getByRole('button', { name: /^Terminar la autoevaluación/ }).click();
+  await page.getByText('Suspenso', { exact: true }).waitFor();
+  console.log('PASS supuesto simulacro: expired run goes to self-assessment and is graded as handed in');
 
   await navigate('spl4a', '?mode=challenge&case=logs-b');
   await page.setViewportSize({ width: 390, height: 844 });

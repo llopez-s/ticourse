@@ -1,5 +1,5 @@
 import { dayDiff } from './util';
-import type { CardState, Conf, ExemptEntry, PlacementResult, ProgressSnapshot } from './types';
+import type { CardState, Conf, ExemptEntry, PlacementResult, ProgressSnapshot, SupuestoBest } from './types';
 
 /** A zero-valued snapshot. Mirrors initialState() in store.ts. */
 export function emptySnapshot(): ProgressSnapshot {
@@ -32,6 +32,8 @@ export function emptySnapshot(): ProgressSnapshot {
     achievements: {},
     exempt: {},
     placement: [],
+    practical: {},
+    supuestos: {},
     day: {
       date: '1970-01-01',
       lessons: 0,
@@ -67,6 +69,37 @@ function maxNumbers(
 ): Record<string, number> {
   const out: Record<string, number> = {};
   for (const k of keysOf(a, b)) out[k] = Math.max(a[k] ?? 0, b[k] ?? 0);
+  return out;
+}
+
+/**
+ * The better of two supuesto results: higher grade, then higher auto score,
+ * then later `at`, then higher `version`. A total order on the fields, so the
+ * choice does not depend on argument order (commutative) and merging a value
+ * with itself returns it (idempotent).
+ */
+function betterBest(x: SupuestoBest | undefined, y: SupuestoBest | undefined) {
+  if (!x || !y) return x ?? y;
+  if (x.grade !== y.grade) return x.grade > y.grade ? x : y;
+  if (x.auto !== y.auto) return x.auto > y.auto ? x : y;
+  if (x.at !== y.at) return x.at > y.at ? x : y;
+  return x.version >= y.version ? x : y;
+}
+
+/** Per supuesto id and per mode (practice / exam), keep the best result. */
+function mergeSupuestos(
+  a: ProgressSnapshot['supuestos'],
+  b: ProgressSnapshot['supuestos'],
+): ProgressSnapshot['supuestos'] {
+  const out: ProgressSnapshot['supuestos'] = {};
+  for (const k of keysOf(a, b)) {
+    const entry: { practice?: SupuestoBest; exam?: SupuestoBest } = {};
+    const practice = betterBest(a[k]?.practice, b[k]?.practice);
+    const exam = betterBest(a[k]?.exam, b[k]?.exam);
+    if (practice) entry.practice = { ...practice };
+    if (exam) entry.exam = { ...exam };
+    out[k] = entry;
+  }
   return out;
 }
 
@@ -306,6 +339,8 @@ export function mergeProgress(
     achievements,
     exempt: mergeExempt(a, b),
     placement: mergePlacement(a, b),
+    practical: maxNumbers(a.practical ?? {}, b.practical ?? {}),
+    supuestos: mergeSupuestos(a.supuestos ?? {}, b.supuestos ?? {}),
     day: mergeDay(a, b),
   };
 }
@@ -416,9 +451,17 @@ export async function pull(hash: string): Promise<ProgressSnapshot | null> {
   // client could never rewrite the blob at the new version. When SYNC_SCHEMA
   // is bumped, add the upgrade for each older `v` right here, before the
   // shape guard below.
+  //
+  // `practical` and `supuestos` were added without a schema bump. Older
+  // clients ignore the new fields and may push a blob without them; that is
+  // safe, because every device keeps its own copy and mergeProgress (union /
+  // max per key) restores them on the next sync from an updated client.
+  // Bumping SYNC_SCHEMA would require deploying the Worker first: it rejects
+  // any PUT whose `v` differs from the version it knows.
   if (typeof body.v !== 'number' || body.v > SYNC_SCHEMA || !body.data) {
     throw new Error('Datos de sincronización de una versión desconocida');
   }
+
   // Runtime shape guard. The blob is public and writable by anyone who knows
   // the code, and mergeProgress trusts its inputs: a snapshot missing `totals`
   // would make Math.max(x, undefined) === NaN, which then gets written into
@@ -428,7 +471,49 @@ export async function pull(hash: string): Promise<ProgressSnapshot | null> {
   if (typeof d.xp !== 'number' || !d.streak || !d.totals || !d.calibration || !d.day || !Array.isArray(d.exams)) {
     throw new Error('Datos de sincronización incompletos');
   }
-  return body.data;
+  // Blob from an older client: the fields may be missing. Fill them so merge never sees
+  // undefined.
+  const data = body.data;
+  data.practical = sanitizePractical(data.practical);
+  data.supuestos = sanitizeSupuestos(data.supuestos);
+  return data;
+}
+
+const isPlainObject = (v: unknown): v is Record<string, unknown> =>
+  typeof v === 'object' && v !== null && !Array.isArray(v);
+const isFiniteNum = (v: unknown): v is number => typeof v === 'number' && Number.isFinite(v);
+
+/** Keep only `practical` entries whose value is a finite number >= 0. */
+function sanitizePractical(v: unknown): Record<string, number> {
+  const out: Record<string, number> = {};
+  if (!isPlainObject(v)) return out;
+  for (const [k, n] of Object.entries(v)) if (isFiniteNum(n) && n >= 0) out[k] = n;
+  return out;
+}
+
+function sanitizeBest(v: unknown): SupuestoBest | undefined {
+  if (!isPlainObject(v)) return undefined;
+  const { grade, auto, at, version } = v;
+  if (!isFiniteNum(grade) || !isFiniteNum(auto) || !isFiniteNum(version) || typeof at !== 'string') {
+    return undefined;
+  }
+  return { grade, auto, at, version };
+}
+
+/** Keep only well-formed best results; drop a supuesto with nothing valid left. */
+function sanitizeSupuestos(v: unknown): ProgressSnapshot['supuestos'] {
+  const out: ProgressSnapshot['supuestos'] = {};
+  if (!isPlainObject(v)) return out;
+  for (const [id, entry] of Object.entries(v)) {
+    if (!isPlainObject(entry)) continue;
+    const practice = sanitizeBest(entry.practice);
+    const exam = sanitizeBest(entry.exam);
+    if (!practice && !exam) continue;
+    out[id] = {};
+    if (practice) out[id].practice = practice;
+    if (exam) out[id].exam = exam;
+  }
+  return out;
 }
 
 /**

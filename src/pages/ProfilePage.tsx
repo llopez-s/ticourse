@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useStore } from '../lib/store';
-import { levelInfo, nextRank, rankFor, STAKES, CONF_LABEL } from '../lib/xp';
+import { levelInfo, nextRank, practicalTotal, rankFor, STAKES, CONF_LABEL } from '../lib/xp';
 import { lastNDays } from '../lib/util';
 import {
   contentSections,
@@ -17,6 +17,7 @@ import { useTrack } from '../components/Layout';
 import type { Conf } from '../lib/types';
 import { Bar, PageTitle, Panel, StatBox } from '../components/Bits';
 import SyncPanel from '../components/SyncPanel';
+import { formatGrade } from '../components/supuestos/SupuestoCard';
 
 function Heatmap() {
   const activity = useStore((s) => s.activity);
@@ -155,12 +156,53 @@ export default function ProfilePage() {
         </div>
       </Panel>
 
-      <div className="mb-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="mb-5 grid grid-cols-2 gap-3 sm:grid-cols-5">
         <StatBox icon="🔥" value={s.streak.current} label={`Racha (mejor ${s.streak.best})`} />
         <StatBox icon="🎯" value={`${acc}%`} label={`Precisión (${s.totals.questions} preguntas)`} />
         <StatBox icon="⚡" value={s.totals.maxCombo} label="Combo máximo" />
         <StatBox icon="🃏" value={s.totals.cards} label="Repasos de cartas" />
+        <StatBox icon="🛠️" value={practicalTotal(s.practical)} label="XP práctico" />
       </div>
+
+      {track.supuestos.length > 0 && (
+        <Panel className="mb-5">
+          <h2 className="mb-3 font-bold text-slate-100">🗂️ Supuestos prácticos</h2>
+          <table className="w-full text-left text-xs">
+            <thead className="text-slate-500">
+              <tr>
+                <th className="py-1 font-semibold">Supuesto</th>
+                <th className="py-1 font-semibold">Simulacro</th>
+                <th className="py-1 font-semibold">Práctica</th>
+              </tr>
+            </thead>
+            <tbody>
+              {track.supuestos.map((m) => {
+                const r = s.supuestos[m.id];
+                const cell = (b?: { grade: number; at: string }) =>
+                  b ? (
+                    <span className="text-slate-300">
+                      {formatGrade(b.grade)}{' '}
+                      <span className="font-mono text-slate-500">{b.at.slice(0, 10)}</span>
+                    </span>
+                  ) : (
+                    <span className="text-slate-600">sin hacer</span>
+                  );
+                return (
+                  <tr key={m.id} className="border-t border-ink-800">
+                    <td className="py-1.5 pr-2">
+                      <Link to={`/supuesto/${m.id}`} className="text-cyan-300 hover:text-cyan-200">
+                        {m.title}
+                      </Link>
+                    </td>
+                    <td className="py-1.5 pr-2">{cell(r?.exam)}</td>
+                    <td className="py-1.5">{cell(r?.practice)}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </Panel>
+      )}
 
       <div className="mb-5 grid gap-4 md:grid-cols-2">
         <Panel>

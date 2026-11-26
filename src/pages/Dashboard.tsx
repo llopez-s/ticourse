@@ -14,7 +14,7 @@ import {
 import { questsForDate, DAILY_ALL_BONUS } from '../data/quests';
 import { useTrack } from '../components/Layout';
 import { todayStr } from '../lib/util';
-import { levelInfo, rankFor } from '../lib/xp';
+import { levelInfo, practicalTotal, rankFor } from '../lib/xp';
 import { isDone } from '../lib/placement';
 import { Bar, Panel, Ring } from '../components/Bits';
 import { Skyline } from '../components/Skyline';
@@ -218,8 +218,24 @@ export default function Dashboard() {
           <p className="mt-1 text-sm text-slate-300">
             {track.tagline}
           </p>
+          <p className="mt-1 text-xs text-slate-400">
+            Nivel {level} · 🛠️ {practicalTotal(s.practical)} XP práctico
+          </p>
         </div>
       </section>
+
+      {track.supuestos.length > 0 && (
+        <Link
+          to="/supuestos"
+          className="mb-5 block rounded-xl border border-cyan-500/40 bg-cyan-950/20 p-4 transition-colors hover:border-cyan-400"
+        >
+          <div className="text-sm font-bold text-cyan-100">🗂️ Supuestos prácticos</div>
+          <div className="mt-1 text-xs text-cyan-200/80">
+            {track.supuestos.filter((m) => (s.supuestos[m.id]?.exam?.grade ?? 0) >= 5).length} de{' '}
+            {track.supuestos.length} aprobados en simulacro
+          </div>
+        </Link>
+      )}
 
       {placementBlocks(track.id).length > 0 &&
         (s.placement.some((p) => p.track === track.id) ? (

@@ -256,4 +256,14 @@ export const ACHIEVEMENTS: AchievementDef[] = [
           .filter(Boolean),
       ).size >= 3,
   },
+
+  // ---- Supuestos prácticos --------------------------------------------------
+  {
+    id: 'sup-first-exam',
+    icon: '🗂️',
+    title: 'Primer supuesto en simulacro',
+    desc: 'Aprueba un supuesto práctico en modo simulacro',
+    xp: 50,
+    test: (s) => Object.values(s.supuestos ?? {}).some((b) => (b.exam?.grade ?? 0) >= 5),
+  },
 ];
