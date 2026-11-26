@@ -3,7 +3,7 @@
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "targetTotalSec": 509,
+  "targetTotalSec": 511,
   "notice": "Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto · Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA",
   "chapters": [
     {
@@ -104,8 +104,8 @@
       "id": "s05-servicio",
       "chapter": 3,
       "title": "Un programa sin ventana",
-      "targetSec": 65,
-      "wordBudget": 176,
+      "targetSec": 66,
+      "wordBudget": 178,
       "goal": "Zoom a las luces verdes del frontal (`lights`, rótulo «hv-01 · encendido»). Dentro de «vm-seguimiento», un engranaje sin ventana con el rótulo «servicio web · sin ventana · espera peticiones» (`service`); a su lado, otro engranaje «base de datos de envíos» (`db`). Imagen (`counter`, rotulada «imagen · no es la naviera»): una casa de noche con las ventanas iluminadas y la puerta cerrada; una mano que va a llamar y el rótulo «¿hay alguien?». Sin timbre (el timbre de hospital es de V31) ni ventanilla (la de navieras es de V16). Con `proposal`, los teléfonos de s01 vuelven a sonar y entra la propuesta «reiniciar el servidor entero · rápido» y, con `choice`, la pregunta para pensar con dos botones: «Reiniciar el servidor entero» y «Mirar antes el servicio». Respuesta: el botón de reiniciar se ve en ámbar, con «vm-ficheros» apagándose a la vez (`other`, con la regleta de s04 que se apaga en miniatura, rótulo «también caería el servidor de ficheros, que iba bien»); después, un signo de interrogación sobre la web «¿por qué se cayó?» (`why`) y la lupa entra en «vm-seguimiento». El título de la escena no destripa la respuesta.",
       "requiredCues": [
         "lights",
@@ -122,8 +122,8 @@
       "id": "s06-comprobar",
       "chapter": 3,
       "title": "Proceso, puerto y petición",
-      "targetSec": 60,
-      "wordBudget": 162,
+      "targetSec": 61,
+      "wordBudget": 165,
       "goal": "Una lista de tres comprobaciones a la izquierda, «1 proceso · 2 puerto · 3 petición», que se van marcando; a la derecha, una terminal rotulada «en pantalla · no hace falta saber comandos todavía». (1) `process`: `systemctl status nginx`; `stopped`: la respuesta `Active: inactive (dead)` en rojo y la casilla 1 con ✗. (2) `port`: el rótulo «puerto = el número donde el servicio espera · la web: 443»; `silent`: `ss -ltn` sin ninguna línea `:443` y la casilla 2 con ✗. (3) `request`: la mano de s05 llama a la puerta y un navegador de cliente pide la página; `fail`: `curl: (7) Failed to connect … Connection refused` y la casilla 3 con ✗; la puerta de la casa no se abre. Con `sunday`, un calendario «domingo · parche aplicado · reinicio de vm-seguimiento»; con `noauto`, `systemctl is-enabled nginx` → `disabled`, rótulo «no arranca solo · reiniciar no lo habría arreglado». Arreglo: `start` → `systemctl start nginx`; `auto` → `systemctl enable nginx`; `loads` → la web «Seguimiento de envíos» carga con un contenedor en el mapa y las tres casillas en verde (sonido «check»). Rótulo de cierre (`wrap`): «encendido ≠ funcionando · la prueba es la petición»; tarjeta de examen (1.2) al acabar la frase.",
       "requiredCues": [
         "process",

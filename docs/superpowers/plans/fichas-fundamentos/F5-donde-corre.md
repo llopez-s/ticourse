@@ -18,7 +18,7 @@
 | **Pregunta central** | El servidor está encendido y la web no carga: ¿está funcionando o no? ¿Y dónde está de verdad lo que falla? |
 | **Objetivos observables** | Al terminar, quien lo ve puede: (1) nombrar CPU, RAM, disco y tarjeta de red, decir qué hace cada una y asociar una señal de fallo a cada pieza; (2) separar anfitrión (host), hipervisor y máquina virtual invitada (guest), y explicar por qué dos VM aisladas caen juntas si cae su anfitrión, y por qué el anfitrión necesita sus propios parches; (3) ante «está encendido», comprobar por orden proceso, puerto y petición real, y no reiniciar el anfitrión sin diagnosticar; (4) distinguir una instantánea (snapshot) en el mismo disco de una copia independiente y probada, y decir para qué sirve cada una; (5) ante un sistema fuera de soporte, proponer excepción apuntada, menos exposición y plan de sustitución, sin llamarlo «actualizado». |
 | **Prerrequisitos** | Lecciones f01 y f02 (`fund:5-12`). Nada más: es el primer vídeo de los fundamentos en el orden del curso. |
-| **Duración estimada** | **9:25** según `build-timeline --estimate` tras las revisiones (565,4 s, 1282 palabras, sin avisos). Con la lectura de Lidia al 86–93 % del estimado saldría entre 8:06 y 8:46. |
+| **Duración estimada** | **9:26** según `build-timeline --estimate` tras las revisiones (567,0 s, 1286 palabras, sin avisos). Con la lectura de Lidia al 86–93 % del estimado saldría entre 8:08 y 8:47. |
 | **Práctica relacionada** | **Ninguna**: las cuatro prácticas de fundamentos son de F1–F4 (`src/data/security/practicals.ts`). El cierre propone un hábito, no una práctica (ver F.4). |
 | **Dónde va** | Al final de f02, entre «Ejemplo resuelto» y «Error que conviene evitar», como los otros (`src/data/security/foundation-videos.ts`, entrada `f02`, cuando esté publicado). |
 | **Conceptos clave (5)** | cuatro piezas y sus señales · anfitrión, hipervisor e invitada (y lo que comparten) · encendido no es funcionando: proceso, puerto y petición real · instantánea frente a copia independiente y probada · fuera de soporte: excepción, no sistema al día. |
@@ -64,7 +64,7 @@ snapshots ni réplica, `reg:1701-1703`).
   se cambió; el timbre también (el de hospital es de V31), por eso se «llama a la puerta». La oficina en esquema existe en
   V37 (`reg:325`) con otro uso, el perímetro, y V30 llama «la foto» al baseline: no chocan, pero se anotan. El edificio de
   alquiler del hipervisor es de V38, la cocina de V35 y la tienda de barrio de V22.
-- **Datos en pantalla** (nunca en la voz): los de la tabla del caso. La voz dice «un número concreto, que se llama puerto» y «lo tienes
+- **Datos en pantalla** (nunca en la voz): los de la tabla del caso. La voz dice «un número concreto. Ese número es el puerto» y «lo tienes
   en pantalla»; el 443 y los comandos solo se ven, con el rótulo «no hace falta saber comandos todavía».
 - **«Puerto».** En este vídeo la palabra solo significa puerto de red (s06 y s11). Halden se presenta como «una empresa de
   barcos con oficina en Halden», sin decir «el puerto», para no repetir el doble sentido que la revisión de naturalidad
@@ -146,7 +146,7 @@ Igual que el programa que guarda los envíos, la base de datos. También trabaja
 
 Es como una casa con las luces encendidas. Hasta que no llamas a la puerta y te abren, no sabes si hay alguien dentro.
 
-Ahora decides tú. Los clientes siguen llamando y alguien propone reiniciar el servidor entero, que es rápido y suele funcionar. ¿Lo reinicias, o miras antes el servicio?
+Ahora decides tú. Los teléfonos no paran de sonar y alguien propone reiniciar el servidor entero, que es rápido y suele funcionar. ¿Lo reinicias, o miras antes el servicio?
 
 *(pausa para pensar)*
 
@@ -158,7 +158,7 @@ Compruebas tres cosas, en orden. Primero, si el programa está en marcha. Un pro
 
 Y el de la web no está en marcha. Está detenido.
 
-Segundo, si escucha en su número. Cada servicio espera las peticiones en un número concreto, que se llama puerto. El de la web lo tienes en pantalla.
+Segundo, si escucha en su número. Cada servicio espera las peticiones en un número concreto. Ese número es el puerto, y el de la web lo tienes en pantalla.
 
 Nadie escucha en ese número. Es lógico, si el programa está parado.
 
@@ -305,16 +305,16 @@ servicio de pedidos parado, fabricante que deja de corregir), de las prácticas 
 | s02 «Cuatro piezas» | 0:39 | 64,4 | 150 |
 | s03 «Varias máquinas en un servidor» | 1:43 | 53,7 | 126 |
 | s04 «Lo que comparten» | 2:37 | 42,2 | 96 |
-| s05 «Un programa sin ventana» | 3:19 | 70,4 | 156 |
-| s06 «Proceso, puerto y petición» | 4:29 | 67,7 | 157 |
-| s07 «Una foto para volver atrás» | 5:37 | 40,9 | 95 |
-| s08 «El día que falla el disco» | 6:18 | 61,0 | 131 |
-| s09 «Sin más arreglos» | 7:19 | 51,4 | 119 |
-| s10 «Vuelta al lunes» | 8:10 | 36,0 | 83 |
-| s11 «Tres preguntas» | 8:46 | 38,7 | 81 |
-| **Total** | | **565,4 (9:25)** | **1282** |
+| s05 «Un programa sin ventana» | 3:19 | 71,2 | 158 |
+| s06 «Proceso, puerto y petición» | 4:30 | 68,5 | 159 |
+| s07 «Una foto para volver atrás» | 5:39 | 40,9 | 95 |
+| s08 «El día que falla el disco» | 6:19 | 61,0 | 131 |
+| s09 «Sin más arreglos» | 7:20 | 51,4 | 119 |
+| s10 «Vuelta al lunes» | 8:12 | 36,0 | 83 |
+| s11 «Tres preguntas» | 8:48 | 38,7 | 81 |
+| **Total** | | **567,0 (9:26)** | **1286** |
 
-Capítulos: 1 en 0:00, 2 en 1:43, 3 en 3:19, 4 en 5:37, 5 en 7:19. 61 segmentos, 81 cues, 5 tarjetas de examen
+Capítulos: 1 en 0:00, 2 en 1:43, 3 en 3:19, 4 en 5:39, 5 en 7:20. 61 segmentos, 81 cues, 5 tarjetas de examen
 (4.4 en s02, 3.1 en s04, 1.2 en s06, 3.4 en s08, 4.3 en s09), 2 pausas para pensar (s05, s08), `{title}` a los 7,0 s.
 `targetSec` del storyboard = palabras / 2,7 + 2 s (+ 5,5 s por pausa); el motor estima a 2,5 palabras/s, así que todas
 las escenas quedan 3–8 s por encima de su objetivo, como en F3.
@@ -384,7 +384,14 @@ restaurar en `hv-02` también exige red y licencias, que no se cuentan; `systemc
    una frase, sin la palabra «puerto».
 6. **Integración en la app.** Una entrada `f02` en `foundation-videos.ts` cuando esté publicado; las actividades de la
    parte D siguen el formato de las demás y, como ellas, no están en la app.
-7. **Duración real.** Se mide tras la grabación; no se recorta ni se rellena.
+7. **La puerta de la casa.** «Puerto» (s06-03) y «puerta» (s06-05) quedan a dos frases. Y V49 ya dibuja tres puertas
+   para AAA (`reg:357`), por lo que F3 dibujó las suyas como barreras. Aquí es la puerta de una casa, sin números ni
+   arcos, y se oye como «llamar a la puerta», no como puerta de acceso. Recomendado: mantenerla. Si a Lidia le suena raro
+   junto a «puerto», la alternativa es «Hasta que no preguntas, no sabes si hay alguien dentro».
+8. **Objetivos de las tarjetas sin el PDF oficial.** Los dos revisores comprobaron 1.2, 3.1, 3.4, 4.3 y 4.4 de memoria,
+   porque el PDF de CompTIA pide el portal de socios. Solo 4.3 («exceptions and exemptions») está corroborado en el repo
+   (`docs/reviews/2026-10-08-fichas-tanda4/revision-secplus.md:61`).
+9. **Duración real.** Se mide tras la grabación; no se recorta ni se rellena.
 
 ### Revisiones aplicadas (2026-11-26)
 
@@ -411,9 +418,16 @@ explicada, «Y como todo cuelga de él» en s04-04, segunda persona en s06 y s09
 exactitud: en su lugar, «llamas a la puerta… y nadie abre»); la frase opcional de s07-03 sobre por qué no se usó la
 instantánea el lunes; y glosar «corre», que es el título.
 
-**Resultado.** `build-timeline --estimate` sin avisos: 565,4 s (9:25; antes 542,8), 1282 palabras, 61 segmentos, 81 cues.
+**Resultado.** `tsc` no se ejecutó (el worktree no tiene node_modules; las escenas son las provisionales de F3 con otros nombres). `build-timeline --estimate` sin avisos: 567,0 s (9:26 tras la última corrección; antes 542,8), 1286 palabras, 61 segmentos, 81 cues.
 `script-sheets` (hoja BORRADOR) y `canon-check` (3 tokens: `08:00` con historia en otro contexto, `hv-01` y `hv-02`
 nuevos) sin cambios.
+
+**Segunda pasada de exactitud (sobre el diff de los arreglos, todo aplicado).** s10 vuelve al lunes, así que las capas
+rotulan «anfitrión» y no `hv-02`. Se quitó el rótulo «se borra cuando el parche va bien», que el propio caso contradecía:
+la instantánea se guardó un mes. Los botones de la pausa 2 son ahora «Sí, con la instantánea» y «No, hace falta otra
+copia». s09-04 quedó con «o sea, que lo dejas así a sabiendas» y «esa máquina». Las citas de E.3 están al día.
+Después, «llamar» salía con tres sentidos en treinta segundos: s05-05 pasa a «Los teléfonos no paran de sonar» y s06-03
+a «Ese número es el puerto».
 
 ### Canon nuevo previsto (a registrar como «previsto» si se aprueba)
 

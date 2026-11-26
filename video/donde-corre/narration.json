@@ -184,7 +184,7 @@
     {
       "id": "s05-05",
       "scene": "s05-servicio",
-      "text": "<engaging> Ahora decides tú. {proposal}Los clientes siguen llamando y alguien propone reiniciar el servidor entero, que es rápido y suele funcionar. {choice}¿Lo reinicias, o miras antes el servicio?",
+      "text": "<engaging> Ahora decides tú. {proposal}Los teléfonos no paran de sonar y alguien propone reiniciar el servidor entero, que es rápido y suele funcionar. {choice}¿Lo reinicias, o miras antes el servicio?",
       "pauseAfterMs": 300,
       "think": {
         "q": "¿Qué haces primero?",
@@ -218,7 +218,7 @@
     {
       "id": "s06-03",
       "scene": "s06-comprobar",
-      "text": "<clear> Segundo, {port}si escucha en su número. Cada servicio espera las peticiones en un número concreto, que se llama puerto. El de la web lo tienes en pantalla.",
+      "text": "<clear> Segundo, {port}si escucha en su número. Cada servicio espera las peticiones en un número concreto. Ese número es el puerto, y el de la web lo tienes en pantalla.",
       "pauseAfterMs": 300
     },
     {
