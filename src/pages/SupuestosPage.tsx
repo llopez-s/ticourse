@@ -26,7 +26,7 @@ export default function SupuestosPage() {
       <PageTitle
         kicker="Práctica"
         title="🗂️ Supuestos prácticos"
-        sub="Casos largos con documentación, como en el examen: practica con ayudas o haz el simulacro con tiempo."
+        sub="Casos largos con su expediente de documentos: practica con ayudas o haz el simulacro con tiempo."
       />
       {groups.map(({ sec, items }) => (
         <section key={sec.id} className="mb-6">
