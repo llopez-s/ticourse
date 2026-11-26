@@ -6,7 +6,7 @@ import { createSyncScheduler, type SyncScheduler } from './syncSchedule';
 import type { ProgressSnapshot } from './types';
 
 /** Strip the action functions off the store, leaving the persisted snapshot. */
-function snapshot(): ProgressSnapshot {
+export function snapshot(): ProgressSnapshot {
   const s = useStore.getState();
   return {
     track: s.track,

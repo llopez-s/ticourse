@@ -10,7 +10,9 @@ import {
   SYNC_SCHEMA,
   stableStringify,
 } from './sync';
-import type { CardState, ExemptEntry, PlacementResult, ProgressSnapshot } from './types';
+import { snapshot } from './useSync';
+import { useStore } from './store';
+import type { CardState, ExemptEntry, PlacementResult, ProgressSnapshot, SupuestoBest } from './types';
 
 const snap = (over: Partial<ProgressSnapshot> = {}): ProgressSnapshot => ({
   ...emptySnapshot(),
@@ -416,6 +418,20 @@ describe('pull — remote blob validation', () => {
     await expect(pull(HASH)).rejects.toThrow('Datos de sincronización incompletos');
   });
 
+  it('fills the v2 fields when a v1 blob lacks them', async () => {
+    const { practical: _p, supuestos: _s, ...v1 } = emptySnapshot();
+    respond({ v: 1, data: v1 });
+    const got = await pull(HASH);
+    expect(got?.practical).toEqual({});
+    expect(got?.supuestos).toEqual({});
+  });
+
+  it('pins the schema at 2 and rejects v3', async () => {
+    expect(SYNC_SCHEMA).toBe(2);
+    respond({ v: 3, data: emptySnapshot() });
+    await expect(pull(HASH)).rejects.toThrow('versión desconocida');
+  });
+
   it('accepts an OLDER schema version so a bump can migrate existing buckets', async () => {
     respond({ ...good(), v: SYNC_SCHEMA - 1 });
     expect(await pull(HASH)).toEqual(emptySnapshot());
@@ -636,5 +652,71 @@ describe('stableStringify — the guard the KV write budget rests on', () => {
     const local = deviceA();
     const overTheWire = JSON.parse(JSON.stringify(local)) as ProgressSnapshot;
     expect(stableStringify(overTheWire)).toBe(stableStringify(local));
+  });
+});
+
+describe('mergeProgress — practical XP and supuestos', () => {
+  const best = (grade: number, auto: number, at: string, version = 1): SupuestoBest => ({
+    grade, auto, at, version,
+  });
+  const a = snap({
+    practical: { lab1: 30, lab2: 10 },
+    supuestos: {
+      s1: { practice: best(6, 10, '2026-11-01'), exam: best(5, 8, '2026-11-02') },
+      s2: { practice: best(4, 4, '2026-11-03') },
+    },
+  });
+  const b = snap({
+    practical: { lab1: 20, lab3: 50 },
+    supuestos: {
+      s1: { practice: best(7, 9, '2026-10-01'), exam: best(5, 8, '2026-11-05') },
+      s3: { exam: best(3, 3, '2026-11-04') },
+    },
+  });
+
+  it('keeps the max practical XP and the best supuesto per id and mode', () => {
+    const m = mergeProgress(a, b);
+    expect(m.practical).toEqual({ lab1: 30, lab2: 10, lab3: 50 });
+    expect(m.supuestos.s1.practice).toEqual(best(7, 9, '2026-10-01'));
+    expect(m.supuestos.s1.exam).toEqual(best(5, 8, '2026-11-05')); // tie: later `at`
+    expect(m.supuestos.s2.practice).toEqual(best(4, 4, '2026-11-03'));
+    expect(m.supuestos.s3.exam).toEqual(best(3, 3, '2026-11-04'));
+  });
+
+  it('breaks a grade tie on auto', () => {
+    const x = snap({ supuestos: { s: { exam: best(5, 9, '2026-01-01') } } });
+    const y = snap({ supuestos: { s: { exam: best(5, 7, '2026-12-01') } } });
+    expect(mergeProgress(x, y).supuestos.s.exam?.auto).toBe(9);
+  });
+
+  it('is commutative and idempotent', () => {
+    expect(stableStringify(mergeProgress(a, b))).toBe(stableStringify(mergeProgress(b, a)));
+    const m = mergeProgress(a, b);
+    expect(stableStringify(mergeProgress(m, m))).toBe(stableStringify(m));
+    expect(stableStringify(mergeProgress(m, a))).toBe(stableStringify(m));
+  });
+
+  it('merges a snapshot lacking the fields (v1 blob) without undefined or NaN', () => {
+    const { practical: _p, supuestos: _s, ...v1 } = emptySnapshot();
+    const old = v1 as unknown as ProgressSnapshot;
+    const m = mergeProgress(a, old);
+    const r = mergeProgress(old, a);
+    expect(stableStringify(m)).toBe(stableStringify(r));
+    expect(m.practical).toEqual(a.practical);
+    expect(mergeProgress(old, old).practical).toEqual({});
+    expect(mergeProgress(old, old).supuestos).toEqual({});
+    expect(Object.values(m.practical).every(Number.isFinite)).toBe(true);
+  });
+});
+
+describe('useSync snapshot()', () => {
+  it('includes practical and supuestos', () => {
+    useStore.setState({
+      practical: { x: 5 },
+      supuestos: { s1: { exam: { grade: 5, auto: 1, at: '2026-11-01', version: 1 } } },
+    });
+    const s = snapshot();
+    expect(s.practical).toEqual({ x: 5 });
+    expect(s.supuestos.s1.exam?.grade).toBe(5);
   });
 });

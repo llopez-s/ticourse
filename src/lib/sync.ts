@@ -1,5 +1,5 @@
 import { dayDiff } from './util';
-import type { CardState, Conf, ExemptEntry, PlacementResult, ProgressSnapshot } from './types';
+import type { CardState, Conf, ExemptEntry, PlacementResult, ProgressSnapshot, SupuestoBest } from './types';
 
 /** A zero-valued snapshot. Mirrors initialState() in store.ts. */
 export function emptySnapshot(): ProgressSnapshot {
@@ -69,6 +69,37 @@ function maxNumbers(
 ): Record<string, number> {
   const out: Record<string, number> = {};
   for (const k of keysOf(a, b)) out[k] = Math.max(a[k] ?? 0, b[k] ?? 0);
+  return out;
+}
+
+/**
+ * The better of two supuesto results: higher grade, then higher auto score,
+ * then later `at`, then higher `version`. A total order on the fields, so the
+ * choice does not depend on argument order (commutative) and merging a value
+ * with itself returns it (idempotent).
+ */
+function betterBest(x: SupuestoBest | undefined, y: SupuestoBest | undefined) {
+  if (!x || !y) return x ?? y;
+  if (x.grade !== y.grade) return x.grade > y.grade ? x : y;
+  if (x.auto !== y.auto) return x.auto > y.auto ? x : y;
+  if (x.at !== y.at) return x.at > y.at ? x : y;
+  return x.version >= y.version ? x : y;
+}
+
+/** Per supuesto id and per mode (practice / exam), keep the best result. */
+function mergeSupuestos(
+  a: ProgressSnapshot['supuestos'],
+  b: ProgressSnapshot['supuestos'],
+): ProgressSnapshot['supuestos'] {
+  const out: ProgressSnapshot['supuestos'] = {};
+  for (const k of keysOf(a, b)) {
+    const entry: { practice?: SupuestoBest; exam?: SupuestoBest } = {};
+    const practice = betterBest(a[k]?.practice, b[k]?.practice);
+    const exam = betterBest(a[k]?.exam, b[k]?.exam);
+    if (practice) entry.practice = { ...practice };
+    if (exam) entry.exam = { ...exam };
+    out[k] = entry;
+  }
   return out;
 }
 
@@ -308,9 +339,8 @@ export function mergeProgress(
     achievements,
     exempt: mergeExempt(a, b),
     placement: mergePlacement(a, b),
-    // TODO(task 5): real merge; placeholder keeps the type whole until then
-    practical: a.practical,
-    supuestos: a.supuestos,
+    practical: maxNumbers(a.practical ?? {}, b.practical ?? {}),
+    supuestos: mergeSupuestos(a.supuestos ?? {}, b.supuestos ?? {}),
     day: mergeDay(a, b),
   };
 }
@@ -356,7 +386,7 @@ export const SYNC_URL: string =
   'https://ticourse-sync.ojamajo.workers.dev';
 
 /** Stored blob schema version. Bump when the snapshot shape changes. */
-export const SYNC_SCHEMA = 1;
+export const SYNC_SCHEMA = 2;
 
 /** Codes shorter than this are guessable enough to warn about. */
 const MIN_CODE_LENGTH = 16;
@@ -421,6 +451,11 @@ export async function pull(hash: string): Promise<ProgressSnapshot | null> {
   // client could never rewrite the blob at the new version. When SYNC_SCHEMA
   // is bumped, add the upgrade for each older `v` right here, before the
   // shape guard below.
+  //
+  // Schema 2 added `practical` and `supuestos`. A schema-1 client accepts only
+  // `v <= 1`, so it throws «versión desconocida» on a v2 blob and never
+  // rewrites it: that is the protection we want, because a v1 client would
+  // push a snapshot without the new fields and wipe them for everyone.
   if (typeof body.v !== 'number' || body.v > SYNC_SCHEMA || !body.data) {
     throw new Error('Datos de sincronización de una versión desconocida');
   }
@@ -433,7 +468,12 @@ export async function pull(hash: string): Promise<ProgressSnapshot | null> {
   if (typeof d.xp !== 'number' || !d.streak || !d.totals || !d.calibration || !d.day || !Array.isArray(d.exams)) {
     throw new Error('Datos de sincronización incompletos');
   }
-  return body.data;
+  // v1 blob: the fields did not exist yet. Fill them so merge never sees
+  // undefined.
+  const data = body.data;
+  if (!data.practical || typeof data.practical !== 'object') data.practical = {};
+  if (!data.supuestos || typeof data.supuestos !== 'object') data.supuestos = {};
+  return data;
 }
 
 /**
