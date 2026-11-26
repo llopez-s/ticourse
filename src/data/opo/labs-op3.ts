@@ -58,7 +58,7 @@ export const OP3_ORDER_DATA: Record<string, OrderData> = {
       {
         text: 'La SVI rellena giaddr y reenvía el DHCPDISCOVER a DHCP1',
         detail:
-          'Tramo: 10.20.10.1 → 10.20.72.21 · UDP destino 67 · giaddr 10.20.10.1. Como giaddr llega a 0, el relay escribe la IP de la interfaz por la que entró la petición (la SVI de la VLAN 10), suma 1 al campo hops y la envía en unidifusión al puerto 67 del servidor. Si se usa la opción 82, la inserta aquí. Una copia igual sale hacia DHCP2, porque el Consorcio configuró en la SVI los dos servidores como destino del relay (con la conmutación por error de Windows Server y los servidores en otra subred, Microsoft pide las dos direcciones).',
+          'Tramo: 10.20.10.1 → 10.20.72.21 · UDP destino 67 · giaddr 10.20.10.1. Como giaddr llega a 0, el relay escribe la IP de la interfaz por la que entró la petición (la SVI de la VLAN 10), suma 1 al campo hops y la envía en unidifusión al puerto 67 del servidor. La RFC no fija la IP de origen del relay; aquí se muestra la de la SVI. Si se usa la opción 82, la inserta aquí. Una copia igual sale hacia DHCP2, porque el Consorcio configuró en la SVI los dos servidores como destino del relay (con la conmutación por error de Windows Server y los servidores en otra subred, Microsoft pide las dos direcciones).',
       },
       {
         text: 'DHCP1 elige el ámbito por giaddr y responde al relay con un DHCPOFFER',
@@ -68,17 +68,17 @@ export const OP3_ORDER_DATA: Record<string, OrderData> = {
       {
         text: 'La SVI entrega el DHCPOFFER al portátil',
         detail:
-          'Tramo: 10.20.10.1 → 255.255.255.255 · UDP destino 68 · giaddr 10.20.10.1. giaddr le dice al relay por qué interfaz sacarlo. Como el portátil marcó B = 1, lo difunde en la VLAN 10; con B = 0 iría en unidifusión a yiaddr y a la MAC de chaddr. El destino es el puerto 68 (bootpc), el del cliente. giaddr sigue en el mensaje; lo que el relay quita antes de entregar es la opción 82, si la había.',
+          'Tramo: 10.20.10.1 → 255.255.255.255 · UDP destino 68 · giaddr 10.20.10.1. giaddr le dice al relay por qué interfaz sacarlo. La RFC no fija la IP de origen del relay; aquí se muestra la de la SVI. Como el portátil marcó B = 1, lo difunde en la VLAN 10; con B = 0 iría en unidifusión a yiaddr y a la MAC de chaddr. El destino es el puerto 68 (bootpc), el del cliente. giaddr sigue en el mensaje; lo que el relay quita antes de entregar es la opción 82, si la había.',
       },
       {
         text: 'El portátil difunde un DHCPREQUEST con el identificador de DHCP1',
         detail:
-          'Tramo: 0.0.0.0 → 255.255.255.255 · UDP destino 67 · giaddr 0.0.0.0. Sigue sin dirección configurada (ciaddr 0): pide por difusión la 10.20.10.137 en la opción 50 e incluye la opción 54 con el identificador de DHCP1. Con un solo mensaje acepta esa oferta y rechaza las demás, por ejemplo una de DHCP2.',
+          'Tramo: 0.0.0.0 → 255.255.255.255 · UDP destino 67 · giaddr 0.0.0.0. Sigue sin dirección configurada (ciaddr 0): pide por difusión la 10.20.10.137 en la opción 50 e incluye la opción 54 con el identificador de DHCP1. Con un solo mensaje acepta esa oferta y rechaza cualquier otra que hubiera llegado.',
       },
       {
         text: 'La SVI vuelve a rellenar giaddr y reenvía el DHCPREQUEST',
         detail:
-          'Tramo: 10.20.10.1 → 10.20.72.21 · UDP destino 67 · giaddr 10.20.10.1. El cliente vuelve a dejar giaddr a 0 y el relay repite el trabajo: su IP de la VLAN 10 en giaddr, hops + 1 y unidifusión al puerto 67 de cada servidor configurado. DHCP2 también recibe su copia y, al ver en la opción 54 otro servidor, la toma como aviso de que su oferta se ha rechazado.',
+          'Tramo: 10.20.10.1 → 10.20.72.21 · UDP destino 67 · giaddr 10.20.10.1. El cliente vuelve a dejar giaddr a 0 y el relay repite el trabajo: su IP de la VLAN 10 en giaddr, hops + 1 y unidifusión al puerto 67 de cada servidor configurado. DHCP2 también recibe su copia; si hubiera hecho una oferta, al ver otro servidor en la opción 54 la daría por rechazada (RFC 2131 §3.1).',
       },
       {
         text: 'DHCP1 confirma la concesión con un DHCPACK al relay',
@@ -118,7 +118,7 @@ export const OP3_CLASSIFY_DATA: Record<string, ClassifyData> = {
         why: 'A (tipo 1). Asocia un nombre a una dirección IPv4 («a host address», RFC 1035). Es lo que pregunta un puesto cuando busca DC1 por su nombre.',
       },
       {
-        text: 'El servidor de expedientes estrena dirección IPv6 y los puestos con IPv6 deben encontrarla por su nombre',
+        text: 'Si el Consorcio desplegara IPv6, los puestos tendrían que encontrar por su nombre la dirección IPv6 de un servidor',
         answer: 'aaaa',
         why: 'AAAA (tipo 28). Es el registro de dirección IPv6 (RFC 3596). El registro de tipo 1 solo guarda direcciones IPv4 de 32 bits: no admite una IPv6.',
       },
@@ -158,14 +158,14 @@ export const OP3_CLASSIFY_DATA: Record<string, ClassifyData> = {
         why: 'SOA (tipo 6). El autoritativo incluye el SOA al responder NXDOMAIN o NODATA, y el tiempo de caché negativa es el menor entre su campo MINIMUM y el TTL del propio SOA (RFC 2308). El sentido antiguo de MINIMUM como «TTL mínimo de la zona» está en desuso.',
       },
       {
-        text: 'Una herramienta de registros tiene que mostrar el nombre del equipo a partir de su dirección IPv6',
+        text: 'El visor de eventos tiene que mostrar el nombre del equipo a partir de su dirección IPv6',
         answer: 'ptr',
         why: 'PTR (tipo 12). La inversa de IPv6 usa el mismo tipo de registro, pero colgado de IP6.ARPA (RFC 3596 §2.5, que sustituyó a IP6.INT). El registro de tipo 28 solo resuelve en sentido directo.',
       },
       {
-        text: 'sede.arcedo.example debe apuntar al nombre que asigna el proveedor que aloja la sede electrónica',
+        text: 'encuestas.arcedo.example debe apuntar a arcedo.encuestas-proveedor.example, el nombre que asigna el proveedor externo que aloja las encuestas',
         answer: 'cname',
-        why: 'CNAME (tipo 5). Convierte sede.arcedo.example en alias del nombre del proveedor. No serviría para arcedo.example a secas: el ápice siempre tiene SOA y NS, y un nombre con CNAME no puede tener más registros.',
+        why: 'CNAME (tipo 5). Convierte encuestas.arcedo.example en alias del nombre del proveedor. No serviría para arcedo.example a secas: el ápice siempre tiene SOA y NS, y un nombre con CNAME no puede tener más registros.',
       },
       {
         text: 'El nombre del proxy corporativo tiene que resolver a 10.20.72.50',
@@ -211,7 +211,7 @@ export const OP3_CLASSIFY_DATA: Record<string, ClassifyData> = {
       {
         text: 'Las respuestas grandes llegan truncadas (bit TC) y el reintento falla porque el cortafuegos solo deja pasar UDP 53',
         answer: 'dns',
-        why: 'Con TC, el cliente debe repetir la consulta por TCP 53, y la RFC 7766 hace TCP obligatorio para todos. Si el cortafuegos bloquea TCP 53, las respuestas que no caben en UDP no llegan nunca.',
+        why: 'Con TC, el cliente debería repetir la consulta por TCP 53 (RFC 7766 §4), y la RFC 7766 hace TCP obligatorio para todos. Si el cortafuegos bloquea TCP 53, las respuestas que no caben en UDP no llegan nunca.',
       },
       {
         text: 'Un portátil que ha pasado semanas fuera de la red va 9 minutos adelantado y el inicio de sesión en el dominio falla con KRB_AP_ERR_SKEW',
@@ -239,9 +239,9 @@ export const OP3_CLASSIFY_DATA: Record<string, ClassifyData> = {
         why: 'El archivo PAC (FindProxyForURL) decide para cada URL si se va DIRECT o por PROXY 10.20.72.50:8080. Si el navegador no lo encuentra en la ruta que tiene apuntada, ya no sabe que debe ir por el proxy, y en el Consorcio el cortafuegos de salida solo deja pasar la web que viene de 10.20.72.50. Hay que actualizar la ruta del PAC.',
       },
       {
-        text: 'Un equipo configurado a mano para salir directamente, sin pasar por 10.20.72.50:8080, no abre ninguna web externa: el cortafuegos de salida solo admite tráfico web que venga de esa dirección',
+        text: 'Una web externa concreta devuelve un código 504 generado por 10.20.72.50:8080: no recibió a tiempo la respuesta del servidor de origen. El resto de webs externas abren con normalidad',
         answer: 'proxy',
-        why: 'El proxy directo lo elige el cliente con su configuración local (RFC 9110 §3.7). Si el equipo se salta 10.20.72.50:8080, el cortafuegos no deja pasar su tráfico web. Hay que volver a la configuración del PAC.',
+        why: '504 «Gateway Timeout» (RFC 9110 §15.6.5): el intermediario no recibió respuesta a tiempo del servidor de dentro de la cadena, aquí el de origen. El puesto llega bien al proxy; el fallo está entre el proxy y esa web. Si la respuesta llegara pero no fuera válida, sería un 502 (§15.6.3).',
       },
     ],
   },

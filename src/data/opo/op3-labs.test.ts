@@ -9,7 +9,9 @@ const RR_CODE: Record<string, number> = { A: 1, NS: 2, CNAME: 5, SOA: 6, PTR: 12
 
 const CLIENT = '0.0.0.0';
 const BROADCAST = '255.255.255.255';
-const RELAY = '10.20.10.1'; // SVI de la VLAN 10 (canon de Arcedo)
+// SVI de la VLAN 10 (canon de Arcedo). La RFC 1542 no fija la IP de origen del relay:
+// que sus tramos salgan con la de la SVI es una convención de este lab.
+const RELAY = '10.20.10.1';
 const DHCP1 = '10.20.72.21';
 
 interface Leg { src: string; dst: string; port: number; giaddr: string }
@@ -46,14 +48,15 @@ describe('pista Redes y ENS · laboratorios del bloque 3', () => {
     expect(msgs).toEqual(['DISCOVER', 'DISCOVER', 'OFFER', 'OFFER', 'REQUEST', 'REQUEST', 'ACK', 'ACK']);
   });
 
-  it('opl3a legs obey RFC 2131 §4.1 / RFC 1542 §4.1 (addresses, ports and giaddr)', () => {
+  it('opl3a legs obey RFC 2131 §4.1 / RFC 1542 §4.1 (ports, giaddr, destinations; relay source IP is a lab convention)', () => {
     for (const s of ORDER_DATA.opl3a.steps) {
       const l = leg(s.detail);
       if (l.src === CLIENT) {
         // El cliente sin dirección difunde al puerto del servidor y nunca rellena giaddr.
         expect(l, s.text).toEqual({ src: CLIENT, dst: BROADCAST, port: 67, giaddr: CLIENT });
       } else if (l.src === RELAY && l.dst === DHCP1) {
-        // El relay pone en giaddr la IP de la interfaz por la que entró la petición.
+        // El relay pone en giaddr la IP de la interfaz por la que entró la petición (RFC 1542);
+        // el origen 10.20.10.1 es convención del lab.
         expect(l, s.text).toEqual({ src: RELAY, dst: DHCP1, port: 67, giaddr: RELAY });
       } else if (l.src === DHCP1) {
         // Con giaddr ≠ 0 el servidor responde al puerto 67 del relay que figura en giaddr.
@@ -61,7 +64,8 @@ describe('pista Redes y ENS · laboratorios del bloque 3', () => {
         expect(l.dst, s.text).toBe(l.giaddr);
         expect(l.port, s.text).toBe(67);
       } else {
-        // El relay entrega al cliente en el puerto 68; el bit B = 1 pide difusión.
+        // El relay entrega al cliente en el puerto 68; el bit B = 1 pide difusión (RFC 1542 §4.1.2).
+        // El origen 10.20.10.1 es convención del lab.
         expect(l, s.text).toEqual({ src: RELAY, dst: BROADCAST, port: 68, giaddr: RELAY });
       }
     }
