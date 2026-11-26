@@ -151,4 +151,22 @@ body {
     background: #fff !important;
     border-color: #bbb !important;
   }
+  /* Supuesto report: the sidebar is hidden, so drop its gutter; keep blocks whole. */
+  body .md\:pl-64 {
+    padding-left: 0 !important;
+  }
+  .supuesto-report {
+    border: none !important;
+    padding: 0 !important;
+  }
+  .supuesto-report section,
+  .supuesto-report li {
+    break-inside: avoid;
+  }
+  .supuesto-report a {
+    text-decoration: none !important;
+  }
+  .supuesto-report .bg-cyan-400 {
+    background: #555 !important;
+  }
 }

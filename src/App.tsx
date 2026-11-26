@@ -17,10 +17,12 @@ import ProfilePage from './pages/ProfilePage';
 import SearchPage from './pages/SearchPage';
 import { useSync } from './lib/useSync';
 import SecurityLearningHelpObserver from './components/SecurityLearningHelpObserver';
+import SupuestoBoundary from './components/supuestos/SupuestoBoundary';
 const SecurityStudyPage = lazy(() => import('./pages/SecurityStudyPage'));
 const SecurityFoundationPage = lazy(() => import('./pages/SecurityFoundationPage'));
 const SecurityPracticePage = lazy(() => import('./pages/SecurityPracticePage'));
 const SecurityAssessmentPage = lazy(() => import('./pages/SecurityAssessmentPage'));
+const SupuestoPage = lazy(() => import('./pages/SupuestoPage'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -48,6 +50,7 @@ export default function App() {
           <Route path="/learn/:moduleId" element={<ModulePage />} />
           <Route path="/quiz/:moduleId" element={<QuizPage />} />
           <Route path="/lab/:labId" element={<LabPage />} />
+          <Route path="/supuesto/:id" element={<SupuestoBoundary><SupuestoPage /></SupuestoBoundary>} />
           <Route path="/boss/:sectionId" element={<BossPage />} />
           <Route path="/exam" element={<ExamPage />} />
           <Route path="/placement" element={<PlacementPage />} />
