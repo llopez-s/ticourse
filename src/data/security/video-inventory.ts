@@ -2178,11 +2178,29 @@ export const VIDEO_INVENTORY: VideoResource[] = [
     "id": "trama-arcedo",
     "track": "opo",
     "lessonId": "op1m1",
-    "title": "TCP/IP",
-    "status": "scripted",
-    "role": "complementary",
-    "evidence": "video/trama-arcedo/video.json",
-    "chapters": []
+    "title": "De la trama al segmento: ARP, la puerta de enlace y TCP frente a UDP",
+    "status": "integrated",
+    "role": "principal",
+    "youtube": "2nfwf0chOAk",
+    "poster": "videos/trama-arcedo-poster.png",
+    "transcript": "videos/trama-arcedo-transcript.txt",
+    "captions": "videos/trama-arcedo-captions.vtt",
+    "durationSeconds": 329,
+    "verifiedAgainst": "videos/trama-arcedo-captions.vtt",
+    "chapters": [
+      {
+        "title": "Qué envuelve a qué",
+        "start": 0
+      },
+      {
+        "title": "Quién pregunta a quién",
+        "start": 107
+      },
+      {
+        "title": "Con garantías o sin ellas",
+        "start": 214
+      }
+    ]
   },
   {
     "id": "vectores-halden",
@@ -2246,11 +2264,29 @@ export const VIDEO_INVENTORY: VideoResource[] = [
     "id": "vlan-arcedo",
     "track": "opo",
     "lessonId": "op1m3",
-    "title": "802.1Q",
-    "status": "scripted",
-    "role": "complementary",
-    "evidence": "video/vlan-arcedo/video.json",
-    "chapters": []
+    "title": "VLAN y 802.1Q: acceso, troncal y VLAN nativa",
+    "status": "integrated",
+    "role": "principal",
+    "youtube": "U1RSSBd7o1A",
+    "poster": "videos/vlan-arcedo-poster.png",
+    "transcript": "videos/vlan-arcedo-transcript.txt",
+    "captions": "videos/vlan-arcedo-captions.vtt",
+    "durationSeconds": 328,
+    "verifiedAgainst": "videos/vlan-arcedo-captions.vtt",
+    "chapters": [
+      {
+        "title": "Qué separa una VLAN",
+        "start": 0
+      },
+      {
+        "title": "De una planta a otra",
+        "start": 115
+      },
+      {
+        "title": "Volver a hablarse",
+        "start": 222
+      }
+    ]
   },
   {
     "id": "vulnerabilidades-halden",

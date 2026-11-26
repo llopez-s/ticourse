@@ -209,6 +209,13 @@ interfaz G0.20
       },
     },
     {
+      t: 'video',
+      title: 'VLAN y 802.1Q: acceso, troncal y VLAN nativa',
+      youtube: 'U1RSSBd7o1A',
+      poster: 'videos/vlan-arcedo-poster.png',
+      transcript: 'videos/vlan-arcedo-transcript.txt',
+    },
+    {
       t: 'links',
       title: 'Seguridad de puerto: ya está explicada en la pista de Security+',
       items: [
