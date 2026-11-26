@@ -35,7 +35,7 @@ posiciones, dominio `Servicios de red`). Cifras exactas (puertos, tipos de mensa
 
 ## Reglas
 
-- Fuentes primarias: RFC (1034, 1035, 2181, 2136, 4033–4035, 6891, 7858, 8484, 2131, 2132, 3046, 8415, 4862,
+- Fuentes primarias: RFC (1034, 1035, 2181, 2136, 4033–4035, 6891, 7858, 8484, 2131, 2132, 3046, 9915 (DHCPv6), 4862,
   5905, 8915…), estándares IEEE para 802.1X y PTP (solo lo público). Lo que dependa de un fabricante (Windows
   Server, ISC, Cisco: p. ej. la tolerancia de 5 minutos de Kerberos en Active Directory) se rotula como valor
   del fabricante. Nada de memoria: dossier de fuentes primero, como en `op6`.

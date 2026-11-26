@@ -45,7 +45,7 @@ en él. Piezas en paralelo, un archivo por subagente; el controlador conecta y c
 **Files:** Create `docs/superpowers/sources/2026-11-26-op3-fuentes.md`.
 - [ ] Texto de las RFC desde rfc-editor.org (y estado: vigente, actualizada por, obsoleta). Mínimo: 1034, 1035,
   2181, 2136 (DDNS), 2845/8945 (TSIG), 4033–4035 (DNSSEC), 6891 (EDNS), 7766 (DNS sobre TCP), 7858 (DoT), 8484
-  (DoH), 1995/5936 (IXFR/AXFR), 6844/8659 (CAA), 2782 (SRV), 2131, 2132, 3046, 3203?, 8415 (DHCPv6), 4861/4862 y
+  (DoH), 1995/5936 (IXFR/AXFR), 6844/8659 (CAA), 2782 (SRV), 2131, 2132, 3046, 3203?, 9915 (DHCPv6, obsoleta la 8415), 4861/4862 y
   la RFC de las flags M/O, 5905 (NTPv4), 8915 (NTS), 4120 (Kerberos, tolerancia de reloj), 7230/9110 (proxies),
   3040, el borrador WPAD y lo que IEEE publica de 802.1X y 1588. Tabla por RFC: apartado · qué fija · cifras literales.
 - [ ] Valores de fabricante solo si hay documentación oficial del fabricante (con URL), rotulados.
