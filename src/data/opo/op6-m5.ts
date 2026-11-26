@@ -45,7 +45,7 @@ export const OP6_M5: Module = {
     { t: 'h', text: 'Categorías especiales y menores' },
     {
       t: 'p',
-      md: 'El **artículo 9** del RGPD regula las **categorías especiales de datos**: su tratamiento está **prohibido como regla general** y solo cabe en las excepciones que enumera el propio artículo. Tratarlas hace perder, además, la excepción del registro de actividades para las entidades pequeñas (lo verás abajo). Para los **menores**, el **artículo 8** del RGPD fija la edad del consentimiento en los servicios de la sociedad de la información en **«como mínimo 16 años»** y permite a cada Estado bajarla siempre que «no sea inferior a 13 años». España la ha fijado en **14**: el **artículo 7 de la LOPDGDD** permite consentir al «mayor de catorce años», El consentimiento de un menor de catorce años se rige por el art. 7.2 de la LOPDGDD, y sus derechos «podrán ejercitar» los titulares de la patria potestad en su nombre (art. 12.6 LOPDGDD). Se confunde a menudo: 16 es la regla del RGPD, 13 es el mínimo que permite y 14 es la cifra española.',
+      md: 'El **artículo 9** del RGPD regula las **categorías especiales de datos**: su tratamiento está **prohibido como regla general** y solo cabe en las excepciones que enumera el propio artículo. Tratarlas hace perder, además, la excepción del registro de actividades para las entidades pequeñas (lo verás abajo). Para los **menores**, el **artículo 8** del RGPD fija la edad del consentimiento en los servicios de la sociedad de la información en **«como mínimo 16 años»** y permite a cada Estado bajarla siempre que «no sea inferior a 13 años». España la ha fijado en **14**: el **artículo 7 de la LOPDGDD** permite consentir al «mayor de catorce años». El consentimiento de un menor de catorce años se rige por el art. 7.2 de la LOPDGDD; sus derechos los pueden ejercitar en su nombre los titulares de la patria potestad (art. 12.6 LOPDGDD: «podrán ejercitar»). Se confunde a menudo: 16 es la regla del RGPD, 13 es el mínimo que permite y 14 es la cifra española.',
     },
     { t: 'h', text: 'Derechos de los interesados (arts. 12 a 22)' },
     {
@@ -289,7 +289,7 @@ export const OP6_M5: Module = {
       ],
       answer: 3,
       explain:
-        'El artículo 12 del RGPD exige responder sin dilación indebida y en todo caso en un mes, prorrogable otros dos meses, y si no va a actuar debe informar a más tardar al mes. Los plazos en días hábiles de las otras dos opciones no son los del RGPD. Los seis meses son el plazo de la AEPD para resolver una reclamación por derechos no atendidos (art. 64 LOPDGDD), y los diez días son los de comunicar el DPD.',
+        'El artículo 12 del RGPD exige responder sin dilación indebida y en todo caso en un mes, prorrogable otros dos meses, y si no va a actuar debe informar a más tardar al mes. Ni los diez ni los quince días hábiles son el plazo del RGPD; los seis meses son el plazo de la AEPD para resolver una reclamación por derechos no atendidos (art. 64 LOPDGDD).',
     },
     {
       id: 'op6m5q5',

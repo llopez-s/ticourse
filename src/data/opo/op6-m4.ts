@@ -13,8 +13,8 @@ export const OP6_M4: Module = {
     'Distinguir la declaración de conformidad (autoevaluación, categoría BÁSICA) de la certificación (auditoría, categorías MEDIA y ALTA) según el artículo 38 y el anexo III del RD 311/2022',
     'Aplicar las reglas del artículo 31 sobre auditoría ordinaria y extraordinaria (dos años, modificaciones sustanciales, prórroga de tres meses) y los plazos de la ITS de Auditoría',
     'Explicar de dónde sale el carácter anual del informe del estado de la seguridad (artículo 32, medida op.mon.2 e ITS) y quién lo comunica',
-    'Decidir a quién y cuándo se notifica un incidente según el artículo 33 y la ITS de Notificación, y cuándo entra el INCIBE-CERT',
-    'Situar el ENS frente al RDL 12/2018, el RD 43/2021 y la Directiva NIS2, sin aplicar plazos de una norma a quien no obliga',
+    'Decidir a quién y cuándo se notifica un incidente según el artículo 33 y la ITS de Notificación, y cuándo entra el INCIBE-CERT, equipo de respuesta a incidentes de seguridad del Instituto Nacional de Ciberseguridad de España (INCIBE)',
+    'Situar el ENS frente al Real Decreto-ley (RDL) 12/2018, el RD 43/2021 y la Directiva NIS2, sin aplicar plazos de una norma a quien no obliga',
   ],
   blocks: [
     {
@@ -24,7 +24,7 @@ export const OP6_M4: Module = {
     { t: 'h', text: 'Declarar o certificar: el artículo 38' },
     {
       t: 'p',
-      md: 'El **artículo 38** fija cómo se determina la conformidad con el ENS, y la clave es la **categoría** del sistema. Los de categoría **MEDIA o ALTA** pasan una **«auditoría para la certificación»**. Los de categoría **BÁSICA** solo necesitan una **«autoevaluación para su declaración de la conformidad»**, aunque pueden certificarse igualmente si la entidad quiere. Las declaraciones y las certificaciones se publican en los portales o sedes electrónicas. La **ITS de Conformidad con el ENS** (Resolución de 13 de octubre de 2016) concreta el resultado: la autoevaluación de un sistema BÁSICO se hace **«al menos cada dos años»** y da lugar a una **Declaración de Conformidad** que expide la propia entidad; la auditoría formal de un sistema MEDIO o ALTO, también **«al menos cada dos años»**, da lugar a una **Certificación**. La misma ITS añade que certificar un sistema BÁSICO es «siempre la deseable». Cada resultado tiene su distintivo, definido en el glosario del anexo IV: el **Distintivo de Declaración de Conformidad** y el **Distintivo de Certificación de Conformidad**, ambos «en formato PDF-A».',
+      md: 'El **artículo 38** fija cómo se determina la conformidad con el ENS, y la clave es la **categoría** del sistema. Los de categoría **MEDIA o ALTA** pasan una **«auditoría para la certificación»**. Los de categoría **BÁSICA** solo necesitan una **«autoevaluación para su declaración de la conformidad»**, aunque pueden certificarse igualmente si la entidad quiere. Las declaraciones y las certificaciones se publican en los portales o sedes electrónicas. La **ITS de Conformidad con el ENS** (Resolución de 13 de octubre de 2016) concreta el resultado: la autoevaluación de un sistema BÁSICO se hace **«al menos cada dos años»** y da lugar a una **Declaración de Conformidad** que expide la propia entidad; la auditoría formal de un sistema MEDIO o ALTO, también **«al menos cada dos años»**, da lugar a una **Certificación**. La misma ITS añade que la certificación de un sistema BÁSICO es «siempre la deseable». Cada resultado tiene su distintivo, definido en el glosario del anexo IV: el **Distintivo de Declaración de Conformidad** y el **Distintivo de Certificación de Conformidad**, ambos «en formato PDF-A».',
     },
     {
       t: 'table',
@@ -53,7 +53,7 @@ export const OP6_M4: Module = {
         choices: [
           'Con una autoevaluación del Servicio de Informática y Comunicaciones y una Declaración de Conformidad',
           'Con una auditoría para la certificación, que termina en una Certificación de Conformidad',
-          'Con una autoevaluación anual revisada por el CCN',
+          'Con una autoevaluación anual revisada por el Centro Criptológico Nacional (CCN)',
           'No necesita acreditarla mientras no tenga incidentes',
         ],
         answer: 1,
@@ -64,7 +64,7 @@ export const OP6_M4: Module = {
     { t: 'h', text: 'Auditoría ordinaria y extraordinaria: el artículo 31 y el anexo III' },
     {
       t: 'p',
-      md: 'El **artículo 31** regula la auditoría de la seguridad. La **ordinaria** se hace **«al menos cada dos años»**. La **extraordinaria** es obligatoria cuando hay **«modificaciones sustanciales»** en el sistema, y **reinicia el cómputo** de los dos años. Si concurre fuerza mayor, el plazo de dos años puede **prorrogarse «tres meses»**. Los informes de auditoría se entregan al **responsable del sistema** y al **responsable de la seguridad**; en los sistemas de categoría **ALTA**, el responsable del sistema puede **suspender el tratamiento o el servicio**. El **CCN (Centro Criptológico Nacional)** puede requerir esos informes. En el Consorcio, por tanto, el informe llega a la jefatura del Servicio de Informática y Comunicaciones y a la Unidad de Seguridad de la Información, que lo analiza y presenta sus conclusiones a esa jefatura.',
+      md: 'El **artículo 31** regula la auditoría de la seguridad. La **ordinaria** se hace **«al menos cada dos años»**. La **extraordinaria** es obligatoria cuando hay **«modificaciones sustanciales»** en el sistema «que puedan repercutir en las medidas de seguridad requeridas», y **reinicia el cómputo** de los dos años. Si concurre fuerza mayor, el plazo de dos años puede **prorrogarse «tres meses»**. Los informes de auditoría se entregan al **responsable del sistema** y al **responsable de la seguridad**; en los sistemas de categoría **ALTA**, el responsable del sistema puede **suspender el tratamiento o el servicio**. El **CCN** puede requerir esos informes. En el Consorcio, por tanto, el informe llega a la jefatura del Servicio de Informática y Comunicaciones y a la Unidad de Seguridad de la Información, que lo analiza y presenta sus conclusiones a esa jefatura.',
     },
     {
       t: 'p',
@@ -96,31 +96,31 @@ export const OP6_M4: Module = {
     {
       t: 'check',
       q: {
-        q: 'Un año después de la última auditoría ordinaria, el Consorcio traslada su sistema de gestión de expedientes, de categoría MEDIA, a una plataforma nueva, lo que supone una modificación sustancial del sistema. ¿Qué consecuencia tiene según el artículo 31?',
+        q: 'Tras la auditoría de un sistema del Consorcio de categoría ALTA, ¿quién puede, según el artículo 31, suspender el tratamiento o el servicio?',
         choices: [
-          'Ninguna: la siguiente auditoría ordinaria toca dentro de un año',
-          'Puede pedir una prórroga de tres meses para la siguiente auditoría ordinaria',
-          'Basta con una autoevaluación de la Unidad de Seguridad de la Información',
-          'Es una modificación sustancial: toca auditoría extraordinaria y el cómputo de dos años vuelve a empezar',
+          'La Unidad de Seguridad de la Información, como responsable de la seguridad',
+          'El CCN, que es quien puede requerir los informes de auditoría',
+          'La jefatura del Servicio de Informática y Comunicaciones, como responsable del sistema',
+          'La entidad de certificación que ha hecho la auditoría',
         ],
-        answer: 3,
+        answer: 2,
         explain:
-          'Una modificación sustancial obliga a una auditoría extraordinaria y reinicia el plazo de dos años. La prórroga de tres meses tienta porque también está en el artículo 31, pero solo cabe por fuerza mayor y sirve para retrasar la ordinaria, no para esquivar la extraordinaria.',
+          'El artículo 31 da esa facultad, en los sistemas de categoría ALTA, al responsable del sistema, que en el Consorcio es la jefatura del Servicio de Informática y Comunicaciones. Tienta el responsable de la seguridad porque también recibe el informe y analiza sus conclusiones, pero la suspensión no le corresponde. El CCN puede requerir los informes, no suspender el servicio.',
       },
     },
     {
       t: 'check',
       q: {
-        q: 'La auditoría de certificación de un sistema del Consorcio termina con el dictamen «FAVORABLE CON NO CONFORMIDADES». ¿Qué tiene que hacer el Consorcio?',
+        q: 'La auditoría de certificación de un sistema del Consorcio termina con el dictamen «DESFAVORABLE». Según la ITS de Auditoría, ¿qué sigue?',
         choices: [
-          'Presentar a la entidad certificadora un Plan de Acciones Correctivas en el plazo máximo de un mes',
-          'Pasar una auditoría extraordinaria en un plazo no superior a seis meses',
-          'Retirar el distintivo hasta cerrar todas las no conformidades',
-          'Nada hasta la siguiente auditoría ordinaria',
+          'Presentar un Plan de Acciones Correctivas en el plazo máximo de un mes y nada más',
+          'Una auditoría extraordinaria en un plazo no superior a seis meses',
+          'Esperar a la siguiente auditoría ordinaria, dentro de dos años',
+          'Pedir la prórroga de tres meses del artículo 31',
         ],
-        answer: 0,
+        answer: 1,
         explain:
-          'La ITS de Auditoría da un mes para el Plan de Acciones Correctivas cuando el dictamen es favorable con no conformidades. Los seis meses de la auditoría extraordinaria corresponden al dictamen desfavorable, y la retirada del distintivo llega solo si las no conformidades mayores de un sistema certificado siguen abiertas a los seis meses.',
+          'Tras un dictamen desfavorable, la ITS de Auditoría exige una auditoría extraordinaria en un plazo no superior a seis meses. El plan en un mes tienta porque es el plazo de la misma ITS, pero corresponde al dictamen favorable con no conformidades. La prórroga de tres meses del artículo 31 solo cabe por fuerza mayor y se refiere a la auditoría ordinaria.',
       },
     },
     {
@@ -136,7 +136,7 @@ export const OP6_M4: Module = {
     { t: 'h', text: 'El informe del estado de la seguridad: el artículo 32' },
     {
       t: 'p',
-      md: 'El **artículo 32** dice que el estado de la seguridad de los sistemas lo recoge la **Comisión Sectorial de Administración Electrónica**, con procedimientos que articula el CCN. Lo que el artículo **no dice** es cada cuánto. La periodicidad sale de otros dos sitios: la medida **op.mon.2** (métricas) del anexo II, que pide datos «para proveer el **informe anual** requerido por el artículo 32», y la **ITS de Informe del Estado de la Seguridad** (Resolución de 7 de octubre de 2016), que obliga a comunicar **«al menos con carácter anual»** el estado de las principales variables. Según esa ITS, lo comunica el **responsable de la seguridad** mediante la herramienta **INES**, con los datos que señala la guía **CCN-STIC 824** (Información del Estado de Seguridad); el manual de INES es la **CCN-STIC 844**. En el Consorcio, por tanto, es la Unidad de Seguridad de la Información quien carga cada año los datos en INES.',
+      md: 'El **artículo 32** dice que el estado de la seguridad de los sistemas lo recoge la **Comisión Sectorial de Administración Electrónica**, con procedimientos que articula el CCN. Lo que el artículo **no dice** es cada cuánto. La periodicidad sale de otros dos sitios: la medida **op.mon.2** (métricas) del anexo II, que pide datos «para proveer el **informe anual** requerido por el artículo 32», y la **ITS de Informe del Estado de la Seguridad** (Resolución de 7 de octubre de 2016), que obliga a comunicar **«al menos con carácter anual»** el estado de las principales variables. Según esa ITS, lo comunica el **responsable de la seguridad** mediante la herramienta **INES (Informe Nacional del Estado de la Seguridad)**, con los datos que señala la guía **CCN-STIC 824** (Información del Estado de Seguridad); el manual de INES es la **CCN-STIC 844**. En el Consorcio, por tanto, es la Unidad de Seguridad de la Información quien carga cada año los datos en INES.',
     },
     {
       t: 'check',
@@ -156,11 +156,11 @@ export const OP6_M4: Module = {
     { t: 'h', text: 'Incidentes: el artículo 33 y la ITS de Notificación' },
     {
       t: 'p',
-      md: 'El **artículo 25** obliga a tener procedimientos de gestión de incidentes conforme al artículo 33, a la ITS correspondiente y, si la entidad es operador de servicios esenciales o proveedor de servicios digitales, al anexo del RD 43/2021. El **artículo 33** organiza la respuesta en torno al **CCN-CERT**, la capacidad de respuesta a incidentes del CCN. Su apartado **33.2** obliga a las entidades del sector público a **notificar al CCN** los incidentes que tengan un **«impacto significativo»**, según la ITS. El apartado **33.7** se ocupa de las empresas privadas que prestan servicios al sector público: ellas notifican al **INCIBE-CERT**, que lo pone en conocimiento del CCN-CERT. Tras un incidente, es el CCN-CERT quien determina el riesgo de reconectar el sistema afectado. El **artículo 34** enumera los servicios que el CCN-CERT presta al sector público: soporte, guías CCN-STIC, formación y alertas.',
+      md: 'El **artículo 25** obliga a tener procedimientos de gestión de incidentes conforme al artículo 33, a la ITS correspondiente y, si la entidad es operador de servicios esenciales o proveedor de servicios digitales, al anexo del RD 43/2021. El **artículo 33** organiza la respuesta en torno al **CCN-CERT**, la capacidad de respuesta a incidentes del CCN. Su apartado **33.2** obliga a las entidades del sector público a **notificar al CCN** los incidentes que tengan un **«impacto significativo»**, según la ITS. El apartado **33.7** se ocupa de las empresas privadas que prestan servicios al sector público: ellas notifican al **INCIBE-CERT**, el equipo de respuesta a incidentes de seguridad del Instituto Nacional de Ciberseguridad de España (INCIBE), que lo pone en conocimiento del CCN-CERT. Tras un incidente, es el CCN-CERT quien determina el riesgo de reconectar el sistema afectado. El **artículo 34** enumera los servicios que el CCN-CERT presta al sector público: soporte, guías CCN-STIC, formación y alertas.',
     },
     {
       t: 'p',
-      md: 'La **ITS de Notificación de Incidentes de Seguridad** (Resolución de 13 de abril de 2018) pone las reglas concretas. El nivel de **impacto potencial** se clasifica con la guía **CCN-STIC 817** (Gestión de Ciberincidentes) en seis niveles: **«Irrelevante, Bajo, Medio, Alto, Muy Alto y Crítico»**. Es obligatorio notificar al CCN **«en el momento en que se produzcan»** los incidentes de nivel **«CRÍTICO, MUY ALTO o ALTO»**. La ITS pide además conservar evidencias con su cadena de custodia y hacer la notificación con la herramienta **LUCIA**. Y añade una regla que se olvida a menudo: si el incidente afecta a datos personales, la notificación a la autoridad de control se hace **«con independencia del nivel de impacto»** que tenga en el ENS, según el artículo 33 del **RGPD (Reglamento General de Protección de Datos)**, que da **72 horas** desde que se tiene constancia. Para el Consorcio, esa autoridad es la **AEPD (Agencia Española de Protección de Datos)**; el detalle de las brechas de datos está en la lección de protección de datos.',
+      md: 'La **ITS de Notificación de Incidentes de Seguridad** (Resolución de 13 de abril de 2018) pone las reglas concretas. El nivel de **impacto potencial** se clasifica con la guía **CCN-STIC 817** (Gestión de Ciberincidentes) en seis niveles: **«Irrelevante, Bajo, Medio, Alto, Muy Alto y Crítico»**. Es obligatorio notificar al CCN **«en el momento en que se produzcan»** los incidentes de nivel **«CRÍTICO, MUY ALTO o ALTO»**. La ITS pide además conservar evidencias con su cadena de custodia y hacer la notificación con la herramienta **LUCIA (Listado Unificado de Coordinación de Incidentes y Amenazas)**. Y añade una regla que se olvida a menudo: si el incidente afecta a datos personales, la notificación a la autoridad de control se hace **«con independencia del nivel de impacto»** que tenga en el ENS, según el artículo 33 del **RGPD (Reglamento General de Protección de Datos)**, que pide hacerlo «sin dilación indebida y, de ser posible, a más tardar 72 horas» después de tener constancia. Para el Consorcio, esa autoridad es la **AEPD (Agencia Española de Protección de Datos)**; el detalle de las brechas de datos está en la lección de protección de datos.',
     },
     {
       t: 'callout',
@@ -180,7 +180,7 @@ export const OP6_M4: Module = {
         ],
         answer: 2,
         explain:
-          'La ITS hace obligatoria la notificación inmediata de los niveles CRÍTICO, MUY ALTO y ALTO. La opción de solo CRÍTICO y MUY ALTO tienta porque son los únicos niveles que en la tabla de plazos del RD 43/2021 tienen notificación intermedia y final, pero esa tabla es otra norma y el nivel ALTO también se notifica.',
+          'La ITS hace obligatoria la notificación inmediata de los niveles CRÍTICO, MUY ALTO y ALTO. La opción de solo CRÍTICO y MUY ALTO tienta porque son los únicos niveles que en la tabla de plazos del RD 43/2021 tienen notificación intermedia y final, pero esa tabla, que verás más abajo, es otra norma y el nivel ALTO también se notifica.',
       },
     },
     {
@@ -196,7 +196,7 @@ export const OP6_M4: Module = {
     { t: 'h', text: 'El encaje con NIS: RDL 12/2018, RD 43/2021 y Directiva NIS2' },
     {
       t: 'p',
-      md: 'En paralelo al ENS existe la normativa de seguridad de las redes y sistemas de información, conocida como **NIS**. En España sigue vigente el **Real Decreto-ley 12/2018**, que traspuso la primera directiva NIS (Directiva (UE) 2016/1148), y su desarrollo, el **Real Decreto 43/2021**. Obligan a los **operadores de servicios esenciales (OSE)** y a los **proveedores de servicios digitales (PSD)**. El RDL fija los equipos de respuesta de referencia (artículo 11): el **CCN-CERT** para las entidades del ámbito de la Ley 40/2015, el **INCIBE-CERT** para las demás y para ciudadanos y entidades privadas, y el **ESPDEF-CERT** para Defensa. Los OSE y PSD notifican los incidentes con «efectos perturbadores significativos» a su autoridad competente **a través de ese equipo de referencia** (artículo 19). Si la infractora es una administración pública, el RDL no la multa: dicta una resolución con medidas para corregir la situación (artículo 40).',
+      md: 'En paralelo al ENS existe la normativa de seguridad de las redes y sistemas de información, conocida como **NIS**. En España sigue vigente el **Real Decreto-ley 12/2018**, que traspuso la primera directiva NIS (Directiva (UE) 2016/1148), y su desarrollo, el **Real Decreto 43/2021**. Obligan a los **operadores de servicios esenciales (OSE)** y a los **proveedores de servicios digitales (PSD)**. El RDL fija los equipos de respuesta de referencia (artículo 11): el **CCN-CERT** para las entidades del ámbito de la Ley 40/2015, el **INCIBE-CERT** para las demás y para ciudadanos y entidades privadas, y el **ESPDEF-CERT**, del Mando Conjunto del Ciberespacio (MCCE) del Ministerio de Defensa, para el ámbito de Defensa. Los OSE y PSD notifican los incidentes con «efectos perturbadores significativos» a su autoridad competente **a través de ese equipo de referencia** (artículo 19). Si la infractora es una administración pública, el RDL no la multa: dicta una resolución con medidas para corregir la situación (artículo 40).',
     },
     {
       t: 'p',
@@ -243,7 +243,7 @@ export const OP6_M4: Module = {
       headers: ['Artículo', 'Qué regula', 'Lo que hay que retener'],
       rows: [
         ['Art. 25 RD 311/2022', 'Incidentes de seguridad (requisito mínimo)', 'Procedimientos según el art. 33, la ITS y, si es OSE o PSD, el anexo del RD 43/2021'],
-        ['Art. 31 RD 311/2022', 'Auditoría de la seguridad', 'Ordinaria al menos cada dos años; extraordinaria por modificaciones sustanciales (reinicia el cómputo); prórroga de tres meses por fuerza mayor'],
+        ['Art. 31 RD 311/2022', 'Auditoría de la seguridad', 'Ordinaria al menos cada dos años; extraordinaria por modificaciones sustanciales «que puedan repercutir en las medidas de seguridad requeridas» (reinicia el cómputo); prórroga de tres meses por fuerza mayor'],
         ['Art. 32 RD 311/2022', 'Informe del estado de la seguridad', 'Lo recoge la Comisión Sectorial de Administración Electrónica; lo anual sale de op.mon.2 y de la ITS'],
         ['Art. 33 RD 311/2022', 'Capacidad de respuesta a incidentes', 'CCN-CERT; 33.2 el sector público notifica al CCN; 33.7 los privados notifican al INCIBE-CERT'],
         ['Art. 34 RD 311/2022', 'Servicios del CCN-CERT', 'Soporte, guías CCN-STIC, formación y alertas'],
