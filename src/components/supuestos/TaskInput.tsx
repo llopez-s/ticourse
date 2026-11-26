@@ -1,3 +1,4 @@
+import { useEffect, type ReactNode } from 'react';
 import { md } from '../../lib/md';
 import type { DossierDoc, Task } from '../../lib/supuesto';
 import type { TaskAnswer } from '../../lib/supuestoGrade';
@@ -13,6 +14,46 @@ const countWords = (s: string) => (s.trim() === '' ? 0 : s.trim().split(/\s+/).l
 
 const optionRow = 'flex cursor-pointer items-start gap-2 rounded-lg border border-ink-600 bg-ink-850 px-3 py-2 text-sm text-slate-200 hover:border-cyan-400 has-[:checked]:border-cyan-400 has-[:checked]:bg-cyan-950/40 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-cyan-400';
 const smallBtn = 'rounded-md border border-ink-600 bg-ink-850 px-2 py-1 text-xs font-semibold text-slate-200 hover:border-cyan-400 focus-visible:outline-2 focus-visible:outline-cyan-400 disabled:opacity-40';
+
+function OrderInput({ task, value, onChange, disabled, legend }: {
+  task: Extract<Task, { kind: 'order' }>;
+  value: TaskAnswer;
+  onChange: (v: TaskAnswer) => void;
+  disabled: boolean;
+  legend: ReactNode;
+}) {
+  const ids = task.items.map((i) => i.id);
+  const current = Array.isArray(value) && value.length === ids.length ? value : ids;
+  // Seed the displayed order so an untouched list is graded as shown.
+  useEffect(() => {
+    if (value === undefined && !disabled) onChange(ids);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [task.id, value === undefined, disabled]);
+  const move = (i: number, d: -1 | 1) => {
+    const next = [...current];
+    [next[i], next[i + d]] = [next[i + d], next[i]];
+    onChange(next);
+  };
+  return (
+    <fieldset disabled={disabled}>
+      {legend}
+      <p className="mb-2 text-xs text-slate-400">Usa los botones para subir o bajar cada paso.</p>
+      <ol className="space-y-2">
+        {current.map((id, i) => {
+          const text = task.items.find((x) => x.id === id)?.text ?? id;
+          return (
+            <li key={id} className="flex items-center gap-2 rounded-lg border border-ink-600 bg-ink-850 px-3 py-2 text-sm text-slate-200">
+              <span className="w-5 text-xs font-bold text-slate-500" aria-hidden="true">{i + 1}</span>
+              <span className="flex-1">{text}</span>
+              <button type="button" className={smallBtn} disabled={i === 0} onClick={() => move(i, -1)} aria-label={'Subir: ' + text}>↑</button>
+              <button type="button" className={smallBtn} disabled={i === current.length - 1} onClick={() => move(i, 1)} aria-label={'Bajar: ' + text}>↓</button>
+            </li>
+          );
+        })}
+      </ol>
+    </fieldset>
+  );
+}
 
 export default function TaskInput({ task, value, onChange, docs, disabled }: {
   task: Task;
@@ -127,34 +168,8 @@ export default function TaskInput({ task, value, onChange, docs, disabled }: {
       );
     }
 
-    case 'order': {
-      const ids = task.items.map((i) => i.id);
-      const current = Array.isArray(value) && value.length === ids.length ? value : ids;
-      const move = (i: number, d: -1 | 1) => {
-        const next = [...current];
-        [next[i], next[i + d]] = [next[i + d], next[i]];
-        onChange(next);
-      };
-      return (
-        <fieldset disabled={disabled}>
-          {legend}
-          <p className="mb-2 text-xs text-slate-400">Usa los botones para subir o bajar cada paso.</p>
-          <ol className="space-y-2">
-            {current.map((id, i) => {
-              const text = task.items.find((x) => x.id === id)?.text ?? id;
-              return (
-                <li key={id} className="flex items-center gap-2 rounded-lg border border-ink-600 bg-ink-850 px-3 py-2 text-sm text-slate-200">
-                  <span className="w-5 text-xs font-bold text-slate-500" aria-hidden="true">{i + 1}</span>
-                  <span className="flex-1">{text}</span>
-                  <button type="button" className={smallBtn} disabled={i === 0} onClick={() => move(i, -1)} aria-label={'Subir: ' + text}>↑</button>
-                  <button type="button" className={smallBtn} disabled={i === current.length - 1} onClick={() => move(i, 1)} aria-label={'Bajar: ' + text}>↓</button>
-                </li>
-              );
-            })}
-          </ol>
-        </fieldset>
-      );
-    }
+    case 'order':
+      return <OrderInput task={task} value={value} onChange={onChange} disabled={disabled} legend={legend} />;
 
     case 'match': {
       const a = asRecord(value);
