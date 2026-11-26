@@ -80,10 +80,10 @@ const op6s2: Supuesto = {
           lang: 'text',
           title: 'Cortafuegos de la sede · lunes (salida ilustrativa, sin sintaxis de fabricante)',
           text: `01:58:41  VPN de administración: sesión abierta  usuario adm-reg  origen 198.51.100.77
-02:03:10  adm-reg -> 10.20.20.31  administración remota  permitido
-02:12:05  10.20.20.31 -> 198.51.100.77:443  sesión abierta
-04:41:37  10.20.20.31 -> 198.51.100.77:443  sesión cerrada  enviados 14,2 GB
-04:52:19  adm-reg -> 10.20.20.30  administración remota  permitido
+02:03:10  adm-reg -> 10.20.72.31  administración remota  permitido
+02:12:05  10.20.72.31 -> 198.51.100.77:443  sesión abierta
+04:41:37  10.20.72.31 -> 198.51.100.77:443  sesión cerrada  enviados 14,2 GB
+04:52:19  adm-reg -> 10.20.72.30  administración remota  permitido
 05:06:02  VPN de administración: sesión cerrada  usuario adm-reg`,
         },
       ],
@@ -99,7 +99,7 @@ const op6s2: Supuesto = {
           rows: [
             ['Responsable del servicio', 'Secretaría General'],
             ['Categoría de seguridad', 'MEDIA; disponibilidad valorada en nivel MEDIO'],
-            ['Servidores', 'REG-APP `10.20.20.30` (aplicación) y REG-DOC `10.20.20.31` (base de datos y documentos anexos), en el CPD de la sede'],
+            ['Servidores', 'REG-APP `10.20.72.30` (aplicación) y REG-DOC `10.20.72.31` (base de datos y documentos anexos), en el CPD de la sede'],
             ['Datos de cada asiento', 'Nombre y apellidos, DNI, domicilio, correo electrónico y teléfono de quien presenta el escrito, asunto y documentos anexos'],
             ['Volumen', 'Unos 18.400 asientos de los últimos 24 meses; el resto está en el archivo'],
             ['Anexos destacados', 'Unas 900 solicitudes de la convocatoria de ayudas para adaptar viviendas, con el informe del grado de discapacidad de la persona solicitante'],
@@ -184,7 +184,7 @@ const op6s2: Supuesto = {
           t: 'list',
           items: [
             '**Copia diaria** de REG-APP y REG-DOC, todos los días a las 22:00, en la cabina de copias del CPD, conectada a la red y administrada con las mismas cuentas que los servidores: sus ficheros aparecen cifrados desde las 05:03.',
-            '**Copia semanal**, los domingos a las 22:00, en el centro de formación de Valdecierzo, en un soporte que se desconecta de la red al terminar: intacta. La última prueba de recuperación se hizo hace tres meses y salió bien.',
+            '**Copia semanal**, los domingos a las 22:00, en el centro de formación de Valdecierzo, en un soporte que se desconecta de la red al terminar: intacta. Las pruebas de recuperación de estas copias se empezaron a hacer después de que la auditoría de la sede electrónica señalara la falta de pruebas en las suyas; la última, hace tres meses, salió bien.',
             'La cuenta de administración **adm-reg** sigue activa y con la misma contraseña.',
             'Hay dos servidores nuevos preparados en el CPD, sin conectar todavía a la red.',
           ],
@@ -265,7 +265,7 @@ const op6s2: Supuesto = {
           answerSets: [['d-cortafuegos', 'd-sistema']],
           points: 5,
           explain:
-            'El registro del cortafuegos muestra que la dirección `10.20.20.31` envió 14,2 GB a una dirección externa entre las 02:12 y las 04:41; el cortafuegos solo da direcciones, y es la ficha del sistema la que dice que esa dirección es REG-DOC, el servidor de la base de datos y los anexos del registro. Con los dos se sabe qué servidor sacó cuántos datos y de qué tipo son. El parte de incidencia tienta porque recoge el mensaje y nombra REG-DOC, pero no da su dirección y solo prueba lo que afirman los atacantes; marcarlo anula la respuesta. El extracto del anexo sirve para valorar, no para probar hechos.',
+            'El registro del cortafuegos muestra que la dirección `10.20.72.31` envió 14,2 GB a una dirección externa entre las 02:12 y las 04:41; el cortafuegos solo da direcciones, y es la ficha del sistema la que dice que esa dirección es REG-DOC, el servidor de la base de datos y los anexos del registro. Con los dos se sabe qué servidor sacó cuántos datos y de qué tipo son. El parte de incidencia tienta porque recoge el mensaje y nombra REG-DOC, pero no da su dirección y solo prueba lo que afirman los atacantes; marcarlo anula la respuesta. El extracto del anexo sirve para valorar, no para probar hechos.',
           refs: [L4, L5],
         },
       ],

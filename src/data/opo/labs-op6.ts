@@ -14,7 +14,7 @@ export const OP6_LABS: LabMeta[] = [
     xp: 100,
     kind: 'classify',
     brief:
-      'Doce sistemas del Consorcio con la valoración de sus cinco dimensiones ([C] confidencialidad, [I] integridad, [T] trazabilidad, [A] autenticidad, [D] disponibilidad) ya hecha por sus responsables. Asigna a cada uno la categoría que le corresponde por la regla del anexo I del Real Decreto 311/2022. Necesitas ≥80 %.',
+      'Doce sistemas del Consorcio con la valoración de sus cinco dimensiones ([C] confidencialidad, [I] integridad, [T] trazabilidad, [A] autenticidad, [D] disponibilidad) ya hecha por sus responsables. Salvo las de nóminas y la web informativa, que son las de la lección de categorización, las valoraciones son supuestas para el ejercicio. Asigna a cada uno la categoría que le corresponde por la regla del anexo I del Real Decreto 311/2022. Necesitas ≥80 %.',
     mission: {
       n: 2,
       briefing:
@@ -76,14 +76,14 @@ export const OP6_CLASSIFY_DATA: Record<string, ClassifyData> = {
         why: `${RULE} La confidencialidad de lo que ya es público no se ve afectada y, como dice el anexo, esa dimensión «no se adscribirá a ningún nivel». El nivel más alto es BAJO: BÁSICA.`,
       },
       {
-        text: 'Gestión de nóminas · [C] MEDIO · [I] MEDIO · [T] MEDIO · [A] MEDIO · [D] BAJO',
+        text: 'Gestión de nóminas · [C] MEDIO · [I] MEDIO · [T] BAJO · [A] MEDIO · [D] BAJO',
         answer: 'media',
-        why: `${RULE} Cuatro dimensiones en MEDIO no suman un ALTO: la regla mira el nivel más alto, no cuántas dimensiones lo alcanzan. MEDIA.`,
+        why: `${RULE} Tres dimensiones en MEDIO no suman un ALTO: la regla mira el nivel más alto, no cuántas dimensiones lo alcanzan. MEDIA.`,
       },
       {
-        text: 'Gestión de expedientes de contratación · [C] MEDIO · [I] ALTO · [T] MEDIO · [A] MEDIO · [D] BAJO',
+        text: 'Portafirmas electrónico de resoluciones · [C] MEDIO · [I] ALTO · [T] MEDIO · [A] MEDIO · [D] BAJO',
         answer: 'alta',
-        why: `${RULE} Basta una dimensión en ALTO, aquí la integridad, para que todo el sistema sea de categoría ALTA, aunque las otras se queden en MEDIO o BAJO.`,
+        why: `${RULE} Basta una dimensión en ALTO, aquí la integridad de las resoluciones firmadas, para que todo el sistema sea de categoría ALTA, aunque las otras se queden en MEDIO o BAJO.`,
       },
       {
         text: 'Reserva de aulas del centro de formación de Valdecierzo · [C] BAJO · [I] BAJO · [T] BAJO · [A] BAJO · [D] BAJO',

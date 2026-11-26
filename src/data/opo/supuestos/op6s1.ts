@@ -11,8 +11,8 @@ import type { Supuesto } from '../../../lib/supuesto';
 //   Secretaría General = responsable del servicio (sede y registro); Unidad de
 //   Seguridad de la Información = responsable de la seguridad; jefatura del
 //   Servicio de Informática y Comunicaciones = responsable del sistema.
-// - La sede, en el CPD de la sede central, presta registro electrónico (con
-//   justificante automático), notificaciones por comparecencia, tablón de
+// - La sede, en el CPD de la sede central, da acceso al registro de entrada
+//   (sistema propio, MEDIA; justificante automático), notificaciones por comparecencia, tablón de
 //   anuncios y comprobación de copias con CSV.
 // - Valoraciones de este caso → niveles del sistema C MEDIO, I MEDIO, T BAJO,
 //   A MEDIO, D MEDIO → categoría MEDIA, que determina y firma la Unidad de
@@ -85,7 +85,7 @@ const op6s1: Supuesto = {
         {
           t: 'list',
           items: [
-            '**Registro electrónico:** los interesados presentan solicitudes, escritos y documentos. El registro emite de forma automática, sin intervención de ningún empleado público, el justificante de cada presentación.',
+            '**Acceso al registro electrónico:** desde la sede, los interesados presentan solicitudes, escritos y documentos en el registro electrónico de entrada, que es un sistema propio del Consorcio, con su categoría y su auditoría. El registro emite de forma automática, sin intervención de ningún empleado público, el justificante de cada presentación.',
             '**Notificaciones por comparecencia en la sede:** el interesado se identifica y accede a la notificación.',
             '**Tablón electrónico de anuncios:** anuncios y edictos públicos del Consorcio.',
             '**Comprobación de copias:** quien recibe una copia en papel de un documento del Consorcio puede comprobar en la sede que es auténtica.',
@@ -122,7 +122,7 @@ const op6s1: Supuesto = {
           t: 'table',
           headers: ['Servicio', 'C', 'I', 'T', 'A', 'D', 'Motivo de los niveles MEDIO'],
           rows: [
-            ['Registro electrónico', 'BAJO', 'BAJO', 'BAJO', 'MEDIO', 'MEDIO', 'Si alguien presentara escritos suplantando a un interesado, o si el registro no estuviera disponible el último día de un plazo, muchos interesados sufrirían un perjuicio grave, de difícil reparación.'],
+            ['Acceso al registro electrónico', 'BAJO', 'BAJO', 'BAJO', 'MEDIO', 'MEDIO', 'Si alguien presentara escritos suplantando a un interesado, o si el registro no estuviera disponible el último día de un plazo, muchos interesados sufrirían un perjuicio grave, de difícil reparación.'],
             ['Notificaciones por comparecencia en la sede', 'BAJO', 'BAJO', 'BAJO', 'BAJO', 'BAJO', '—'],
           ],
         },
@@ -227,7 +227,7 @@ const op6s1: Supuesto = {
           points: 10,
           hint: { text: 'En cada dimensión, recorre las cuatro filas de las dos valoraciones (dos informaciones y dos servicios) y quédate con el nivel más alto.', cost: 2 },
           explain:
-            'Cuando un sistema maneja varias informaciones y presta varios servicios, el anexo I manda tomar en cada dimensión el mayor de los niveles fijados para cada información y cada servicio. C sale de las solicitudes (MEDIO); I, de las solicitudes y del tablón (MEDIO); A y D, del registro electrónico (MEDIO); T es BAJO en las cuatro filas. Tienta poner «sin nivel» en la disponibilidad porque la Gerencia no la valoró en la información, o BAJO en C porque los servicios la dejan en BAJO: no se promedia ni se mira solo una de las valoraciones, se toma la más alta.',
+            'Cuando un sistema maneja varias informaciones y presta varios servicios, el anexo I manda tomar en cada dimensión el mayor de los niveles fijados para cada información y cada servicio. C sale de las solicitudes (MEDIO); I, de las solicitudes y del tablón (MEDIO); A y D, del acceso al registro electrónico (MEDIO); T es BAJO en las cuatro filas. Tienta poner «sin nivel» en la disponibilidad porque la Gerencia no la valoró en la información, o BAJO en C porque los servicios la dejan en BAJO: no se promedia ni se mira solo una de las valoraciones, se toma la más alta.',
           refs: [L2, ENS_AI],
         },
         {
@@ -504,7 +504,7 @@ const op6s1: Supuesto = {
           points: 4,
           hint: { text: 'Necesitas el documento que fija la disponibilidad del sistema y el que decidió no aplicar la medida.', cost: 1 },
           explain:
-            'La valoración de los servicios pone la disponibilidad del registro electrónico en MEDIO, y con ese nivel op.cont.1 se exige; el borrador de la declaración la marcó como «No aplica» con un motivo falso (que la continuidad solo se exige con disponibilidad ALTO, cosa que vale para op.cont.2 a op.cont.4, no para el análisis de impacto). El informe de auditoría muestra la consecuencia, pero por sí solo no prueba que se pudiera prever. El memorando y la valoración de la información tientan, pero ninguno fija la disponibilidad.',
+            'La valoración de los servicios pone la disponibilidad del acceso al registro electrónico en MEDIO, y con ese nivel op.cont.1 se exige; el borrador de la declaración la marcó como «No aplica» con un motivo falso (que la continuidad solo se exige con disponibilidad ALTO, cosa que vale para op.cont.2 a op.cont.4, no para el análisis de impacto). El informe de auditoría muestra la consecuencia, pero por sí solo no prueba que se pudiera prever. El memorando y la valoración de la información tientan, pero ninguno fija la disponibilidad.',
           refs: [L3, L2, ENS_AII],
         },
       ],

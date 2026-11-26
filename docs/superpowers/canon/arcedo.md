@@ -23,6 +23,7 @@ en pantalla, no para dar por hecho que esa red existe). No hay cronología ni pe
 | Redes de ejemplo dentro de `10.20.0.0/16` | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:35` |
 | IP públicas solo de documentación: `192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24`; IPv6 `2001:db8::/32` | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:35`, `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:36` |
 | Nada de marcas ni organismos reales | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:36` |
+| Excepción de op6: «Nada de marcas ni organismos reales» se aplica a las entidades del escenario (proveedores, equipos, empresas). Los organismos que nombra la ley (CCN, CCN-CERT, AEPD, INCIBE-CERT, autoridades autonómicas de protección de datos, Cl@ve como sistema de la AGE) se nombran tal cual | `docs/superpowers/specs/2026-11-26-opo-op6-ens-design.md:140` |
 | Solo hechos de estándares (RFC, IEEE 802). Si un dato depende del fabricante, se dice. Nada inventado ni «aproximado» | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:37`, `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:38` |
 | Todo en español; protocolos y siglas en su forma habitual; «conmutador (switch)» y «encaminador (router)» la primera vez | `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:28`, `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md:31` |
 
@@ -196,6 +197,73 @@ Tabla de rutas del encaminador central (`src/data/opo/op1-m4.ts:33` a `:38`):
 - Jefe de `op1`: nombre en clave PLANO EN BLANCO, adversario LA RED HEREDADA: subredes que se pisan, un troncal que deja pasar todas las VLAN y una ruta estática que apunta a un equipo retirado (`src/data/opo/sections.ts:52`, `src/data/opo/sections.ts:53`, `src/data/opo/sections.ts:55`).
 - Al cerrar: plan sin solapes, cada VLAN con su puerta de enlace, la ruta huérfana eliminada y la nota «no apagar, nadie sabe qué cuelga de aquí» (`src/data/opo/sections.ts:57`).
 
+## 7b. Organización de la seguridad y normativa (bloque op6)
+
+Hechos que fija el bloque 6, «ENS y normativa» (`op6m1`–`op6m7`, `opl6a`–`opl6c`, supuestos `op6s1` y `op6s2`). Solo los
+hechos del Consorcio; los artículos y plazos de la norma no se copian aquí. Revisión de 2026-11-26, sobre la rama `op6-ens`.
+Los roles los fijó el controlador y los repiten las lecciones y los dos supuestos; en cada fila van las fuentes principales.
+
+### Roles y órganos
+
+| Rol o figura | Quién lo ocupa en el Consorcio | Fuente |
+|---|---|---|
+| Comité de Seguridad de la Información | Presidido por la Gerencia | `src/data/opo/op6-m1.ts:141`, `src/data/opo/op6-m3.ts:54`, `src/data/opo/supuestos/op6s2.ts:126` |
+| Responsable de la información | La Gerencia | `src/data/opo/op6-m1.ts:137`, `src/data/opo/supuestos/op6s2.ts:121` |
+| Responsable del servicio (sede electrónica y registro electrónico) | La Secretaría General | `src/data/opo/op6-m1.ts:138`, `src/data/opo/supuestos/op6s2.ts:122` |
+| Responsable de la seguridad | La Unidad de Seguridad de la Información, que depende de la Gerencia y no del Servicio de Informática (por el art. 13.3 no puede haber dependencia jerárquica con el responsable del sistema). Determina la categoría y firma la Declaración de Aplicabilidad | `src/data/opo/op6-m1.ts:139`, `src/data/opo/op6-m1.ts:148`, `src/data/opo/op6-m2.ts:166`, `src/data/opo/supuestos/op6s2.ts:123` |
+| Responsable del sistema | La jefatura del Servicio de Informática y Comunicaciones | `src/data/opo/op6-m1.ts:140`, `src/data/opo/supuestos/op6s2.ts:124` |
+| Delegado de protección de datos (DPD) | Designado por el Consorcio; es una persona distinta del responsable de la seguridad | `src/data/opo/op6-m1.ts:148`, `src/data/opo/supuestos/op6s2.ts:125` |
+| Autoridad de control de protección de datos | La AEPD, porque la comunidad autónoma del Consorcio no tiene autoridad de protección de datos propia | `src/data/opo/op6-m5.ts:190`, `src/data/opo/labs-op6.ts:59` |
+| Operador de servicios esenciales | El Consorcio **no** lo es: notifica al CCN por el art. 33.2 del RD 311/2022 y la ITS de Notificación, no por el RD 43/2021 | `src/data/opo/op6-m4.ts:219`, `src/data/opo/op6-m4.ts:344` |
+| Quién firma las comunicaciones a la AEPD y a los afectados | La Gerencia, en nombre del Consorcio y con el asesoramiento del DPD (procedimiento propio del Consorcio, no la norma) | `src/data/opo/supuestos/op6s2.ts:138` |
+| Aprobación de la política y de la normativa de seguridad | «El órgano competente del Consorcio» y «la dirección del Consorcio», sin decir cuál (ver §9, punto 22) | `src/data/opo/op6-m6.ts:131`, `src/data/opo/op6-m6.ts:132` |
+
+### Sistemas y categorías
+
+| Sistema | Categoría y niveles | Fuente |
+|---|---|---|
+| Gestión de nóminas (en el CPD de la sede central) | **MEDIA**. Niveles del sistema: C MEDIO, I MEDIO, T BAJO, A MEDIO, D BAJO. Se acredita por certificación (auditoría), no por autoevaluación | `src/data/opo/op6-m2.ts:124`, `src/data/opo/op6-m2.ts:339`, `src/data/opo/op6-m4.ts:52` |
+| Web informativa (noticias, horarios de las oficinas, cursos de Valdecierzo) | **BÁSICA**. Sin nivel en C; I, A y D en BAJO. Se acredita por autoevaluación | `src/data/opo/op6-m2.ts:158`, `src/data/opo/op6-m3.ts:158` |
+| Gestión de expedientes (de contratación y tablón interno de avisos) | **MEDIA**. C MEDIO, I MEDIO, D BAJO (el laboratorio ya no lo contradice: §9, punto 16, resuelto) | `src/data/opo/op6-m2.ts:324` |
+| Sede electrónica (en el CPD de la sede central; la gestiona técnicamente el Servicio de Informática y Comunicaciones) | **MEDIA**. C, I, A y D en MEDIO; T en BAJO. La Gerencia propone ALTA por su visibilidad; la Unidad de Seguridad la determina MEDIA, porque ninguna dimensión llega a ALTO. Declaración de Aplicabilidad firmada por la Unidad de Seguridad | `src/data/opo/supuestos/op6s1.ts:18`, `src/data/opo/supuestos/op6s1.ts:96`, `src/data/opo/supuestos/op6s1.ts:109`, `src/data/opo/supuestos/op6s1.ts:125`, `src/data/opo/supuestos/op6s1.ts:337`, `src/data/opo/supuestos/op6s1.ts:526` |
+| Registro electrónico de entrada | **MEDIA**, con D en MEDIO y T en BAJO | `src/data/opo/supuestos/op6s2.ts:101`, `src/data/opo/supuestos/op6s1.ts:125`, `src/data/opo/op6-m3.ts:350` |
+
+Servicios de la sede electrónica: acceso al registro electrónico de entrada, que es un sistema propio (con justificante automático de cada presentación), notificaciones por comparecencia, tablón electrónico de anuncios y comprobación de copias con CSV (`src/data/opo/supuestos/op6s1.ts:83`, `src/data/opo/op6-m7.ts:164`). Valoraciones del supuesto: acceso al registro electrónico C BAJO, I BAJO, T BAJO, A MEDIO, D MEDIO; notificaciones, todo BAJO; solicitudes presentadas C MEDIO, I MEDIO, T BAJO, A BAJO; anuncios del tablón I MEDIO, T BAJO, A BAJO (`src/data/opo/supuestos/op6s1.ts:109`, `src/data/opo/supuestos/op6s1.ts:110`, `src/data/opo/supuestos/op6s1.ts:125`, `src/data/opo/supuestos/op6s1.ts:126`).
+
+### Auditoría y empresas contratadas
+
+| Hecho | Fuente |
+|---|---|
+| El registro electrónico de entrada superó su auditoría ordinaria «hace ocho meses» (op6m4); ahora se integra con una plataforma nueva (modificación sustancial) | `src/data/opo/op6-m4.ts:299` |
+| Primera auditoría para la certificación de la sede electrónica: dictamen FAVORABLE CON NO CONFORMIDADES. Tres no conformidades menores (op.cont.1: sin análisis de impacto; mp.info.6: copias sin pruebas de recuperación; org.1: la política no recoge la estructura del comité) y una observación (mp.info.4: sellos de tiempo en el tablón). Plan de acciones correctivas ante la entidad certificadora en un mes como máximo | `src/data/opo/supuestos/op6s1.ts:190`, `src/data/opo/supuestos/op6s1.ts:195`, `src/data/opo/supuestos/op6s1.ts:196`, `src/data/opo/supuestos/op6s1.ts:197`, `src/data/opo/supuestos/op6s1.ts:198`, `src/data/opo/supuestos/op6s1.ts:450` |
+| Una empresa privada mantiene, por contrato, la infraestructura de las oficinas comarcales; su incidente lo notifica a INCIBE-CERT, que lo traslada al CCN-CERT (art. 33.7) | `src/data/opo/op6-m4.ts:359`, `src/data/opo/op6-m4.ts:368` |
+| Otras empresas contratadas, sin nombre: mantenimiento de la plataforma del registro electrónico, gestión de las nóminas, gestión de la plataforma de formación, vigilancia de la red | `src/data/opo/op6-m1.ts:258`, `src/data/opo/op6-m5.ts:343`, `src/data/opo/labs-op6.ts:166`, `src/data/opo/op6-m6.ts:54` |
+| Un portátil con una copia del registro de entrada desaparece de una oficina comarcal (caso del DPD: disco cifrado) | `src/data/opo/op6-m5.ts:130` |
+| Copias del registro (REG-APP y REG-DOC): la diaria, a las 22:00, en la cabina del CPD conectada a la red; la semanal, los domingos a las 22:00, en un soporte desconectado en el centro de formación de Valdecierzo. Las pruebas de recuperación de estas copias empezaron después de que la auditoría de la sede electrónica (`op6s1`) echara en falta las de la sede; la última, hace tres meses, salió bien | `src/data/opo/supuestos/op6s2.ts:186`, `src/data/opo/supuestos/op6s2.ts:187` |
+
+### Incidente de ransomware en el registro de entrada (`op6s2`, un lunes sin fecha)
+
+| Hora | Hecho | Fuente |
+|---|---|---|
+| Jueves anterior | Correo de suplantación con el que, según el análisis preliminar, se obtuvo la contraseña de `adm-reg` | `src/data/opo/supuestos/op6s2.ts:205` |
+| 01:58 | Sesión de la VPN de administración, usuario `adm-reg`, desde `198.51.100.77` | `src/data/opo/supuestos/op6s2.ts:82` |
+| 02:12 – 04:41 | `10.20.72.31` (REG-DOC) envía 14,2 GB a `198.51.100.77:443` | `src/data/opo/supuestos/op6s2.ts:84`, `src/data/opo/supuestos/op6s2.ts:85` |
+| 05:03 | Los ficheros de la copia diaria del CPD aparecen cifrados | `src/data/opo/supuestos/op6s2.ts:186` |
+| 05:10 | REG-APP (`10.20.72.30`) deja de responder; a esa hora no hay nadie de guardia | `src/data/opo/supuestos/op6s2.ts:64` |
+| 07:55 | La oficina de registro avisa de que la aplicación no abre | `src/data/opo/supuestos/op6s2.ts:65` |
+| 08:10 | Un técnico confirma el cifrado de REG-APP y REG-DOC y el mensaje de rescate | `src/data/opo/supuestos/op6s2.ts:66` |
+| 08:15 | El CPD tiene 46 servidores; 2 afectados | `src/data/opo/supuestos/op6s2.ts:67` |
+| 09:30 / 10:00 / 10:15 | La Unidad valora el incidente / se reúne el Comité / el Servicio de Informática entrega el informe de copias | `src/data/opo/supuestos/op6s2.ts:219`, `src/data/opo/supuestos/op6s2.ts:367`, `src/data/opo/supuestos/op6s2.ts:420` |
+| 14:30 | El registro vuelve a dar servicio, en dos servidores nuevos y con la copia del domingo de Valdecierzo | `src/data/opo/supuestos/op6s2.ts:204` |
+| 18:00 | Informe de cierre: unas 18.400 personas y unas 900 solicitudes de ayudas con informe de discapacidad; no consta que se hayan publicado los datos | `src/data/opo/supuestos/op6s2.ts:207` |
+
+La interrupción cuenta desde las 05:10 (el registro atiende a todas horas): 9 h 20 min hasta las 14:30, con el 100 % de los usuarios, nivel MUY ALTO por interrupción (`src/data/opo/supuestos/op6s2.ts:512`). Los nombres y direcciones del incidente (`REG-APP`, `REG-DOC`, `adm-reg`, `198.51.100.77`) son datos del supuesto: ver §9, punto 18.
+
+### Jefe de sección
+
+- Jefe de `op6`: nombre en clave PAPEL MOJADO, adversario EL CUMPLIMIENTO DE FACHADA: política firmada, declaración de aplicabilidad e informe de auditoría en una carpeta, pero nadie sabe quién valoró los sistemas y el registro de incidentes lleva meses vacío (`src/data/opo/sections.ts:69`, `src/data/opo/sections.ts:71`).
+- Al cerrar: cada sistema con sus dimensiones valoradas por quien debe, su categoría determinada por la Unidad de Seguridad de la Información y su declaración de aplicabilidad firmada; en el archivo del comité, un acta antigua con una línea subrayada: «revisar la red de las oficinas comarcales antes de la próxima auditoría» (`src/data/opo/sections.ts:73`).
+
 ## 8. Datos que añaden los guiones de vídeo (borradores sin congelar, 2026-11-25)
 
 Lo que cada guion pone en pantalla o en una pregunta y ninguna lección fija. Comprobado contra los JSON de cada
@@ -285,3 +353,19 @@ Consorcio pasan a las tablas de §2 a §6, con su cita, y se borran de aquí.
 12. **Redes sin dueño.** `10.20.12.x` (`src/data/opo/op1-m4.ts:35`) y `10.20.16.0/24` a `10.20.23.0/24` (`src/data/opo/op1-m2.ts:290`) aparecen en tablas y preguntas sin decir qué son.
 13. **Nunca se fija:** un prefijo IPv6 del Consorcio, direcciones de `192.0.2.0/24` o `198.51.100.0/24`, un número de AS, números de área de OSPF, puertas de enlace de las VLAN 30 y 99, un controlador de WLAN, un SSID, canales de los AP del Consorcio, conmutadores PoE concretos ni nombres de las oficinas comarcales.
 14. **Solo hipótesis:** el CPD de respaldo (`src/data/opo/op1-m5.ts:119`, `src/data/opo/op1-m5.ts:124`) y las tres áreas de OSPF (`src/data/opo/op1-m4.ts:144`). No se pueden enseñar como algo que ya existe.
+
+### Bloque op6 (ENS y normativa)
+
+15. **Cuatro sistemas «en ALTA» que el resto del bloque no conoce.** El laboratorio `opl6a` da doce sistemas «del Consorcio» y cuatro salen ALTA: expedientes de contratación, telefonía IP de las oficinas, contabilidad y tesorería, y gestión de personal (`src/data/opo/labs-op6.ts:84`, `src/data/opo/labs-op6.ts:94`, `src/data/opo/labs-op6.ts:104`, `src/data/opo/labs-op6.ts:114`). Ninguna otra pieza fija esos sistemas ni su categoría, y `op6m3` habla de «un sistema hipotético con alguna dimensión en ALTO» (`src/data/opo/op6-m3.ts:158`), lo que sugiere que el Consorcio no tiene ninguno. Hueco: los doce de `opl6a` son sistemas de ejemplo, no canónicos, salvo nóminas y web informativa (ver punto 16); un guion no debe presentarlos como el inventario del Consorcio.
+   - **Resuelto (2026-11-26).** «Expedientes de contratación» sale del laboratorio y lo sustituye el «portafirmas electrónico de resoluciones» (I ALTO, ALTA), que no es ninguno de los sistemas canónicos (`src/data/opo/labs-op6.ts:84`). El `brief` de `opl6a` dice ahora que, salvo nóminas y la web informativa, las valoraciones son supuestas para el ejercicio (`src/data/opo/labs-op6.ts:17`). Telefonía IP, contabilidad y personal siguen en ALTA como sistemas de ejercicio, no del inventario del Consorcio.
+16. **Expedientes: MEDIA o ALTA.** `op6m2` categoriza el sistema de expedientes como MEDIA, con la integridad en MEDIO (`src/data/opo/op6-m2.ts:324`); `opl6a` pone a «gestión de expedientes de contratación» con la integridad en ALTO y categoría ALTA (`src/data/opo/labs-op6.ts:84`, `src/data/opo/labs-op6.ts:85`). Tampoco coinciden en nóminas: la lección da la trazabilidad en BAJO (`src/data/opo/op6-m2.ts:124`) y el laboratorio en MEDIO (`src/data/opo/labs-op6.ts:79`); la categoría, MEDIA, es la misma. En la web informativa sí coinciden: BÁSICA y T BAJO (`src/data/opo/op6-m2.ts:158`, `src/data/opo/labs-op6.ts:74`).
+   - **Resuelto (2026-11-26).** El laboratorio ya no tiene un sistema de expedientes (punto 15), y nóminas lleva T en BAJO, como la lección; la categoría sigue siendo MEDIA (`src/data/opo/labs-op6.ts:79`).
+17. **El registro electrónico, ¿sistema aparte o servicio de la sede?** `op6s1` lo valora como un servicio de la sede electrónica, dentro de un sistema MEDIA que se audita por primera vez para la certificación (`src/data/opo/supuestos/op6s1.ts:125`, `src/data/opo/supuestos/op6s1.ts:190`). `op6s2`, `op6m3` y `op6m4` lo tratan como un sistema propio, de categoría MEDIA, y `op6m4` dice que superó su auditoría ordinaria hace ocho meses (`src/data/opo/supuestos/op6s2.ts:101`, `src/data/opo/op6-m3.ts:350`, `src/data/opo/op6-m4.ts:299`). Además, `op6m1` habla de la Declaración de Aplicabilidad «del registro electrónico» (`src/data/opo/op6-m1.ts:148`). Los niveles del registro no se contradicen: D MEDIO (`src/data/opo/supuestos/op6s1.ts:125`, `src/data/opo/supuestos/op6s2.ts:101`) y T BAJO (`src/data/opo/supuestos/op6s1.ts:125`, `src/data/opo/op6-m3.ts:350`). Tampoco encajan las copias: la auditoría de la sede anota copias sin pruebas de recuperación (`src/data/opo/supuestos/op6s1.ts:196`), y el informe de `op6s2` dice que la última prueba de las copias del registro salió bien hace tres meses (`src/data/opo/supuestos/op6s2.ts:187`).
+   - **Resuelto (2026-11-26).** El registro electrónico de entrada es un sistema propio (MEDIA) y la sede da acceso a él: `op6s1` lo dice en el memorando y valora el servicio «Acceso al registro electrónico» (`src/data/opo/supuestos/op6s1.ts:88`, `src/data/opo/supuestos/op6s1.ts:125`). La auditoría de hace ocho meses de `op6m4` es la del registro y la de `op6s1` es la primera de la sede; ninguna frase las une. Copias: `op6s2` dice ahora que las pruebas de recuperación de las copias del registro empezaron después de que la auditoría de la sede echara en falta las suyas, y que la última, hace tres meses, salió bien (`src/data/opo/supuestos/op6s2.ts:187`). Eso pone el supuesto `op6s1` más de tres meses antes que `op6s2`.
+18. **Servidores del registro en la VLAN 20, «en el CPD».** `op6s2` pone REG-APP y REG-DOC en `10.20.20.30` y `10.20.20.31`, dentro de la VLAN 20 Servidores de la sede (§5), y a la vez «en el CPD de la sede» (`src/data/opo/supuestos/op6s2.ts:102`), cuando el canon sitúa el CPD en `10.20.72.0/21` (§3). Es el punto 4 con un ejemplo más. También hay que tratar como datos del supuesto, no del Consorcio, a `198.51.100.77` (dirección de documentación permitida), `adm-reg` y los 46 servidores del CPD.
+   - **Resuelto (2026-11-26).** REG-APP y REG-DOC pasan a `10.20.72.30` y `10.20.72.31`, dentro del CPD `10.20.72.0/21` y sin chocar con `10.20.72.10` ni `10.20.77.200`, en la ficha, el registro del cortafuegos y la explicación de f1t3 (`src/data/opo/supuestos/op6s2.ts:83`–`86`, `src/data/opo/supuestos/op6s2.ts:102`, `src/data/opo/supuestos/op6s2.ts:268`). La ficha sigue siendo la única pieza que une dirección y servidor, así que los `cite` de f1t3 y f4t2 no cambian. `198.51.100.77`, `adm-reg` y los 46 servidores siguen siendo datos del supuesto.
+19. **Valdecierzo sí cuenta como sede del Consorcio, solo aquí.** `op6m1` lo incluye en la lista de sedes junto a la central, el CPD y las tres oficinas (`src/data/opo/op6-m1.ts:23`); `op1` no (punto 5). No se resuelve. `op6s2` le da además un uso nuevo, el soporte desconectado de las copias semanales (`src/data/opo/supuestos/op6s2.ts:187`).
+   - **Resuelto (2026-11-26).** `op6m1` describe ahora una sede central con su CPD y tres oficinas comarcales, y aparte un centro de formación en Valdecierzo «que no es una sede ni una oficina» (`src/data/opo/op6-m1.ts:23`). El uso de Valdecierzo para las copias semanales de `op6s2` se mantiene.
+20. **Cronología.** El canon dice que no hay cronología (§7); `op6s2` fija un lunes con horas minuto a minuto y un jueves anterior (`src/data/opo/supuestos/op6s2.ts:64`, `src/data/opo/supuestos/op6s2.ts:205`), y `op6m4` una auditoría «hace ocho meses» (`src/data/opo/op6-m4.ts:299`), sin ninguna fecha.
+21. **La red de las oficinas comarcales.** El acta del jefe de `op6` manda revisar «la red de las oficinas comarcales antes de la próxima auditoría» (`src/data/opo/sections.ts:73`), y `op6m4` pone esa infraestructura en manos de una empresa contratada (`src/data/opo/op6-m4.ts:359`); en `op1` la red de las oficinas es la «heredada» del jefe PLANO EN BLANCO (§7). Ninguna pieza dice si el acta apunta a ese problema.
+22. **Huecos del bloque.** Nunca se fija: qué órgano aprueba la política de seguridad (`src/data/opo/op6-m6.ts:131`, `src/data/opo/op6-m6.ts:132`); cuántas personas emplea el Consorcio (`src/data/opo/op6-m5.ts:98`); quién es el DPD ni si es de plantilla o por contrato (`src/data/opo/op6-m5.ts:150`); el nombre de ninguna empresa contratada ni si son una o varias (§7b); el nombre de la comunidad autónoma.
