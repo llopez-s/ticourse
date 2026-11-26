@@ -458,6 +458,9 @@ export async function pull(hash: string): Promise<ProgressSnapshot | null> {
   // max per key) restores them on the next sync from an updated client.
   // Bumping SYNC_SCHEMA would require deploying the Worker first: it rejects
   // any PUT whose `v` differs from the version it knows.
+  if (typeof body.v !== 'number' || body.v > SYNC_SCHEMA || !body.data) {
+    throw new Error('Datos de sincronización de una versión desconocida');
+  }
 
   // Runtime shape guard. The blob is public and writable by anyone who knows
   // the code, and mergeProgress trusts its inputs: a snapshot missing `totals`
