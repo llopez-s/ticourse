@@ -418,7 +418,7 @@ describe('pull — remote blob validation', () => {
     await expect(pull(HASH)).rejects.toThrow('Datos de sincronización incompletos');
   });
 
-  it('fills the v2 fields when a v1 blob lacks them', async () => {
+  it('fills practical/supuestos when a blob lacks them', async () => {
     const { practical: _p, supuestos: _s, ...v1 } = emptySnapshot();
     respond({ v: 1, data: v1 });
     const got = await pull(HASH);
@@ -426,9 +426,9 @@ describe('pull — remote blob validation', () => {
     expect(got?.supuestos).toEqual({});
   });
 
-  it('pins the schema at 2 and rejects v3', async () => {
-    expect(SYNC_SCHEMA).toBe(2);
-    respond({ v: 3, data: emptySnapshot() });
+  it('keeps the schema at 1 (the deployed Worker rejects other versions) and rejects v2', async () => {
+    expect(SYNC_SCHEMA).toBe(1);
+    respond({ v: 2, data: emptySnapshot() });
     await expect(pull(HASH)).rejects.toThrow('versión desconocida');
   });
 

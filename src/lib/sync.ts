@@ -386,7 +386,7 @@ export const SYNC_URL: string =
   'https://ticourse-sync.ojamajo.workers.dev';
 
 /** Stored blob schema version. Bump when the snapshot shape changes. */
-export const SYNC_SCHEMA = 2;
+export const SYNC_SCHEMA = 1;
 
 /** Codes shorter than this are guessable enough to warn about. */
 const MIN_CODE_LENGTH = 16;
@@ -452,13 +452,13 @@ export async function pull(hash: string): Promise<ProgressSnapshot | null> {
   // is bumped, add the upgrade for each older `v` right here, before the
   // shape guard below.
   //
-  // Schema 2 added `practical` and `supuestos`. A schema-1 client accepts only
-  // `v <= 1`, so it throws «versión desconocida» on a v2 blob and never
-  // rewrites it: that is the protection we want, because a v1 client would
-  // push a snapshot without the new fields and wipe them for everyone.
-  if (typeof body.v !== 'number' || body.v > SYNC_SCHEMA || !body.data) {
-    throw new Error('Datos de sincronización de una versión desconocida');
-  }
+  // `practical` and `supuestos` were added without a schema bump. Older
+  // clients ignore the new fields and may push a blob without them; that is
+  // safe, because every device keeps its own copy and mergeProgress (union /
+  // max per key) restores them on the next sync from an updated client.
+  // Bumping SYNC_SCHEMA would require deploying the Worker first: it rejects
+  // any PUT whose `v` differs from the version it knows.
+
   // Runtime shape guard. The blob is public and writable by anyone who knows
   // the code, and mergeProgress trusts its inputs: a snapshot missing `totals`
   // would make Math.max(x, undefined) === NaN, which then gets written into
@@ -468,7 +468,7 @@ export async function pull(hash: string): Promise<ProgressSnapshot | null> {
   if (typeof d.xp !== 'number' || !d.streak || !d.totals || !d.calibration || !d.day || !Array.isArray(d.exams)) {
     throw new Error('Datos de sincronización incompletos');
   }
-  // v1 blob: the fields did not exist yet. Fill them so merge never sees
+  // Blob from an older client: the fields may be missing. Fill them so merge never sees
   // undefined.
   const data = body.data;
   if (!data.practical || typeof data.practical !== 'object') data.practical = {};
