@@ -204,7 +204,7 @@ Ya no publica parches para él, y si mañana aparece un fallo, el fabricante no 
 
 Y no se puede cambiar este mes, porque un programa antiguo de contabilidad solo funciona en ese sistema.
 
-Haces tres cosas. Apuntas la excepción, que lo dejas así a sabiendas, con quién lo acepta y hasta cuándo. Limitas quién puede llegar a él. Y planeas sustituirlo.
+Haces tres cosas. Apuntas la excepción, o sea, que lo dejas así a sabiendas, quién lo acepta y hasta cuándo. Limitas quién puede llegar a esa máquina. Y planeas sustituirla.
 
 Con eso el riesgo baja, pero el sistema no pasa a estar al día. Sigue sin parches, y hay que tenerlo presente.
 
@@ -239,8 +239,8 @@ La próxima vez que alguien te diga que está encendido, haz estas tres pregunta
 
 | Opción | Correcta | Feedback |
 |---|---|---|
-| Basta la instantánea | No | Es el error de f01 (`fund:8`): la instantánea vive en el mismo disco que la VM, así que se pierde con él. |
-| Hace falta otra copia | **Sí** | Una copia independiente, fuera de `hv-01`, y probada: sobrevive a la pérdida del origen y ya se sabe que se restaura. |
+| Sí, con la instantánea | No | Es el error de f01 (`fund:8`): la instantánea vive en el mismo disco que la VM, así que se pierde con él. |
+| No, hace falta otra copia | **Sí** | Una copia independiente, fuera de `hv-01`, y probada: sobrevive a la pérdida del origen y ya se sabe que se restaura. |
 
 ### D.2 Después del vídeo
 
@@ -323,10 +323,10 @@ las escenas quedan 3–8 s por encima de su objetivo, como en F3.
 
 | Escena | Lo que solo se ve | Cómo lo cubre la voz |
 |---|---|---|
-| s03 | nombres y memoria de las VM y del host | «dos invitadas… una lleva la web de seguimiento, y la otra, el servidor de ficheros» |
+| s03 | nombres y memoria de las VM y del host | «Hay dos… una lleva la web de seguimiento, y la otra, el servidor de ficheros» |
 | s06 | los comandos y sus respuestas, el 443 | «está detenido», «nadie escucha en ese número», «nadie abre», «no estaba puesto para arrancar solo» |
 | s08 | `hv-02` y las dos VM restauradas | «restauras las dos máquinas en el otro servidor de la oficina, el de reserva» |
-| s09 | la ficha de excepción | «con quién lo acepta y hasta cuándo… limitas quién puede llegar a él» |
+| s09 | la ficha de excepción | «quién lo acepta y hasta cuándo… limitas quién puede llegar a esa máquina» |
 
 ## F. Revisión
 
@@ -350,7 +350,7 @@ PID y cuenta); el puerto como «número donde espera» (f05/f08 y F1 lo amplían
 servidor real suele haber discos en espejo o almacenamiento compartido, y la instantánea de muchos hipervisores no es
 una copia completa sino un archivo de cambios que depende del disco original (lo que refuerza la idea, no la contradice);
 restaurar en `hv-02` también exige red y licencias, que no se cuentan; `systemctl`/`nginx` porque la VM de la web es Linux
-(la ficha no dice qué sistema lleva `vm-ficheros`); en s10 la instantánea va «antes de cada parche» y en pantalla «se borra cuando el parche va bien» (los fabricantes desaconsejan conservarlas mucho tiempo, porque el archivo de cambios crece); «el fabricante no lo va a corregir» deja fuera el soporte extendido de pago; el texto de `curl` en pantalla es el de curl 7.x, abreviado con «…»; «Windows o Linux» en s03 son ejemplos de sistema operativo, no los de la naviera.
+(la ficha no dice qué sistema lleva `vm-ficheros`); en s10 la instantánea va «antes de cada parche» (los fabricantes desaconsejan conservarlas mucho tiempo, porque el archivo de cambios crece; en el caso se conservó un mes, y no se dice); «el fabricante no lo va a corregir» deja fuera el soporte extendido de pago; el texto de `curl` en pantalla es el de curl 7.x, abreviado con «…»; «Windows o Linux» en s03 son ejemplos de sistema operativo, no los de la naviera.
 
 ### F.2 Fuentes primarias (para la revisión de exactitud)
 
@@ -391,13 +391,13 @@ restaurar en `hv-02` también exige red y licencias, que no se cuentan; `systemc
 Dos revisores de solo lectura, en paralelo (exactitud y naturalidad). El guion **sigue sin congelar**.
 
 **Exactitud (todo aplicado).** (1) En s08 el disco se llevaba las dos VM, pero solo se restauraba la web, y s09 seguía
-con `vm-ficheros` como si nada: s08-05 restaura «las dos máquinas» en `hv-02`, y el storyboard de s08–s10 las enciende
-ahí. (2) La ventanilla estaba ocupada (V16, `reg:4501`) y era justo de navieras: se cambió por la casa con las luces
+con `vm-ficheros` como si nada: s08-05 restaura «las dos máquinas» en `hv-02`, y el storyboard de s08–s09 las enciende
+ahí (s10 vuelve al lunes y rotula solo «anfitrión»). (2) La ventanilla estaba ocupada (V16, `reg:4501`) y era justo de navieras: se cambió por la casa con las luces
 encendidas. (3) «Solo Contabilidad» contradecía «el servidor de ficheros de la oficina»: el rótulo pasa a «solo los
 puestos de la oficina que lo usan · sin acceso desde Internet». (4) D.2.2 A, ambigua con almacenamiento compartido:
 ahora «si se pierde el disco donde está la máquina virtual». (5) D.2.1 dice que la memoria tiene margen. (6) s09-02:
-«el fabricante no lo va a corregir». (7) s06-03: «un número concreto» en vez de «un número propio». (8) Rótulo «se borra
-cuando el parche va bien» en s10 y simplificaciones nuevas en F.1. (9) Citas de `reg:200` y de F1 corregidas. El revisor
+«el fabricante no lo va a corregir». (7) s06-03: «un número concreto» en vez de «un número propio». (8) Simplificaciones nuevas en F.1 (sin rótulo en
+pantalla: una segunda pasada vio que el caso guarda la instantánea un mes y lo contradecía). (9) Citas de `reg:200` y de F1 corregidas. El revisor
 abrió la página de errores de libcurl y systemctl(1); los objetivos de CompTIA, NIST SP 800-125 y la documentación de
 snapshots los comprobó de memoria (el PDF oficial pide el portal de socios).
 

@@ -1,10 +1,10 @@
 {
   "mode": "estimate",
-  "sourceHash": "f790fba7d4f8a16ae2eadae877a2497f3fc73ea2dc837f8289112cbe4824ca96",
+  "sourceHash": "80206aa09f1c311f78ee92ec22aed6ac6bc19098eeab8315ba3ac0250d5a33e0",
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "durationInFrames": 16937,
+  "durationInFrames": 16961,
   "voice": "none",
   "scenes": [
     {"id":"s01-hook","chapter":1,"chapterTitle":"Qué hay dentro de un servidor","title":"El servidor está encendido","from":0,"durationInFrames":1170},
@@ -15,9 +15,9 @@
     {"id":"s06-comprobar","chapter":3,"chapterTitle":"Encendido no es funcionando","title":"Proceso, puerto y petición","from":8090,"durationInFrames":2032},
     {"id":"s07-instantanea","chapter":4,"chapterTitle":"Volver atrás no es recuperar","title":"Una foto para volver atrás","from":10122,"durationInFrames":1228},
     {"id":"s08-copia","chapter":4,"chapterTitle":"Volver atrás no es recuperar","title":"El día que falla el disco","from":11350,"durationInFrames":1831},
-    {"id":"s09-soporte","chapter":5,"chapterTitle":"Sin parches, y tres preguntas","title":"Sin más arreglos","from":13181,"durationInFrames":1517},
-    {"id":"s10-vuelta","chapter":5,"chapterTitle":"Sin parches, y tres preguntas","title":"Vuelta al lunes","from":14698,"durationInFrames":1079},
-    {"id":"s11-reglas","chapter":5,"chapterTitle":"Sin parches, y tres preguntas","title":"Tres preguntas","from":15777,"durationInFrames":1160}
+    {"id":"s09-soporte","chapter":5,"chapterTitle":"Sin parches, y tres preguntas","title":"Sin más arreglos","from":13181,"durationInFrames":1541},
+    {"id":"s10-vuelta","chapter":5,"chapterTitle":"Sin parches, y tres preguntas","title":"Vuelta al lunes","from":14722,"durationInFrames":1079},
+    {"id":"s11-reglas","chapter":5,"chapterTitle":"Sin parches, y tres preguntas","title":"Tres preguntas","from":15801,"durationInFrames":1160}
   ],
   "segments": [
     {
@@ -1650,10 +1650,10 @@
     {
       "id": "s09-04",
       "scene": "s09-soporte",
-      "text": "Haces tres cosas. Apuntas la excepción, que lo dejas así a sabiendas, con quién lo acepta y hasta cuándo. Limitas quién puede llegar a él. Y planeas sustituirlo.",
+      "text": "Haces tres cosas. Apuntas la excepción, o sea, que lo dejas así a sabiendas, quién lo acepta y hasta cuándo. Limitas quién puede llegar a esa máquina. Y planeas sustituirla.",
       "from": 14028,
-      "audioFrames": 336,
-      "durationInFrames": 347,
+      "audioFrames": 360,
+      "durationInFrames": 371,
       "audio": null,
       "words": [
         {"text":"Haces","from":14028,"to":14041},
@@ -1662,313 +1662,315 @@
         {"text":"Apuntas","from":14066,"to":14083},
         {"text":"la","from":14083,"to":14088},
         {"text":"excepción,","from":14088,"to":14113},
-        {"text":"que","from":14113,"to":14121},
-        {"text":"lo","from":14121,"to":14126},
-        {"text":"dejas","from":14126,"to":14138},
-        {"text":"así","from":14138,"to":14146},
-        {"text":"a","from":14146,"to":14148},
-        {"text":"sabiendas,","from":14148,"to":14173},
-        {"text":"con","from":14173,"to":14181},
-        {"text":"quién","from":14181,"to":14193},
-        {"text":"lo","from":14193,"to":14199},
-        {"text":"acepta","from":14199,"to":14214},
-        {"text":"y","from":14214,"to":14216},
-        {"text":"hasta","from":14216,"to":14229},
-        {"text":"cuándo.","from":14229,"to":14246},
-        {"text":"Limitas","from":14246,"to":14264},
-        {"text":"quién","from":14264,"to":14276},
-        {"text":"puede","from":14276,"to":14289},
-        {"text":"llegar","from":14289,"to":14304},
-        {"text":"a","from":14304,"to":14306},
-        {"text":"él.","from":14306,"to":14314},
-        {"text":"Y","from":14314,"to":14316},
-        {"text":"planeas","from":14316,"to":14334},
-        {"text":"sustituirlo.","from":14334,"to":14364}
+        {"text":"o","from":14113,"to":14116},
+        {"text":"sea,","from":14116,"to":14126},
+        {"text":"que","from":14126,"to":14133},
+        {"text":"lo","from":14133,"to":14138},
+        {"text":"dejas","from":14138,"to":14151},
+        {"text":"así","from":14151,"to":14158},
+        {"text":"a","from":14158,"to":14161},
+        {"text":"sabiendas,","from":14161,"to":14186},
+        {"text":"quién","from":14186,"to":14198},
+        {"text":"lo","from":14198,"to":14203},
+        {"text":"acepta","from":14203,"to":14218},
+        {"text":"y","from":14218,"to":14221},
+        {"text":"hasta","from":14221,"to":14233},
+        {"text":"cuándo.","from":14233,"to":14251},
+        {"text":"Limitas","from":14251,"to":14268},
+        {"text":"quién","from":14268,"to":14280},
+        {"text":"puede","from":14280,"to":14293},
+        {"text":"llegar","from":14293,"to":14308},
+        {"text":"a","from":14308,"to":14311},
+        {"text":"esa","from":14311,"to":14318},
+        {"text":"máquina.","from":14318,"to":14338},
+        {"text":"Y","from":14338,"to":14341},
+        {"text":"planeas","from":14341,"to":14358},
+        {"text":"sustituirla.","from":14358,"to":14388}
       ]
     },
     {
       "id": "s09-05",
       "scene": "s09-soporte",
       "text": "Con eso el riesgo baja, pero el sistema no pasa a estar al día. Sigue sin parches, y hay que tenerlo presente.",
-      "from": 14375,
+      "from": 14399,
       "audioFrames": 264,
       "durationInFrames": 303,
       "audio": null,
       "words": [
-        {"text":"Con","from":14375,"to":14384},
-        {"text":"eso","from":14384,"to":14393},
-        {"text":"el","from":14393,"to":14399},
-        {"text":"riesgo","from":14399,"to":14417},
-        {"text":"baja,","from":14417,"to":14431},
-        {"text":"pero","from":14431,"to":14443},
-        {"text":"el","from":14443,"to":14449},
-        {"text":"sistema","from":14449,"to":14470},
-        {"text":"no","from":14470,"to":14476},
-        {"text":"pasa","from":14476,"to":14488},
-        {"text":"a","from":14488,"to":14491},
-        {"text":"estar","from":14491,"to":14506},
-        {"text":"al","from":14506,"to":14511},
-        {"text":"día.","from":14511,"to":14523},
-        {"text":"Sigue","from":14523,"to":14538},
-        {"text":"sin","from":14538,"to":14547},
-        {"text":"parches,","from":14547,"to":14571},
-        {"text":"y","from":14571,"to":14574},
-        {"text":"hay","from":14574,"to":14583},
-        {"text":"que","from":14583,"to":14592},
-        {"text":"tenerlo","from":14592,"to":14612},
-        {"text":"presente.","from":14612,"to":14639}
+        {"text":"Con","from":14399,"to":14408},
+        {"text":"eso","from":14408,"to":14417},
+        {"text":"el","from":14417,"to":14423},
+        {"text":"riesgo","from":14423,"to":14441},
+        {"text":"baja,","from":14441,"to":14455},
+        {"text":"pero","from":14455,"to":14467},
+        {"text":"el","from":14467,"to":14473},
+        {"text":"sistema","from":14473,"to":14494},
+        {"text":"no","from":14494,"to":14500},
+        {"text":"pasa","from":14500,"to":14512},
+        {"text":"a","from":14512,"to":14515},
+        {"text":"estar","from":14515,"to":14530},
+        {"text":"al","from":14530,"to":14535},
+        {"text":"día.","from":14535,"to":14547},
+        {"text":"Sigue","from":14547,"to":14562},
+        {"text":"sin","from":14562,"to":14571},
+        {"text":"parches,","from":14571,"to":14595},
+        {"text":"y","from":14595,"to":14598},
+        {"text":"hay","from":14598,"to":14607},
+        {"text":"que","from":14607,"to":14616},
+        {"text":"tenerlo","from":14616,"to":14636},
+        {"text":"presente.","from":14636,"to":14663}
       ]
     },
     {
       "id": "s10-01",
       "scene": "s10-vuelta",
       "text": "Vuelve conmigo al lunes del principio. La web de seguimiento carga, y lo sabes porque has pedido la página, no por las luces.",
-      "from": 14710,
+      "from": 14734,
       "audioFrames": 276,
       "durationInFrames": 287,
       "audio": null,
       "words": [
-        {"text":"Vuelve","from":14710,"to":14726},
-        {"text":"conmigo","from":14726,"to":14745},
-        {"text":"al","from":14745,"to":14750},
-        {"text":"lunes","from":14750,"to":14764},
-        {"text":"del","from":14764,"to":14772},
-        {"text":"principio.","from":14772,"to":14798},
-        {"text":"La","from":14798,"to":14804},
-        {"text":"web","from":14804,"to":14812},
-        {"text":"de","from":14812,"to":14817},
-        {"text":"seguimiento","from":14817,"to":14847},
-        {"text":"carga,","from":14847,"to":14863},
-        {"text":"y","from":14863,"to":14865},
-        {"text":"lo","from":14865,"to":14871},
-        {"text":"sabes","from":14871,"to":14884},
-        {"text":"porque","from":14884,"to":14900},
-        {"text":"has","from":14900,"to":14908},
-        {"text":"pedido","from":14908,"to":14924},
-        {"text":"la","from":14924,"to":14930},
-        {"text":"página,","from":14930,"to":14948},
-        {"text":"no","from":14948,"to":14954},
-        {"text":"por","from":14954,"to":14962},
-        {"text":"las","from":14962,"to":14970},
-        {"text":"luces.","from":14970,"to":14986}
+        {"text":"Vuelve","from":14734,"to":14750},
+        {"text":"conmigo","from":14750,"to":14769},
+        {"text":"al","from":14769,"to":14774},
+        {"text":"lunes","from":14774,"to":14788},
+        {"text":"del","from":14788,"to":14796},
+        {"text":"principio.","from":14796,"to":14822},
+        {"text":"La","from":14822,"to":14828},
+        {"text":"web","from":14828,"to":14836},
+        {"text":"de","from":14836,"to":14841},
+        {"text":"seguimiento","from":14841,"to":14871},
+        {"text":"carga,","from":14871,"to":14887},
+        {"text":"y","from":14887,"to":14889},
+        {"text":"lo","from":14889,"to":14895},
+        {"text":"sabes","from":14895,"to":14908},
+        {"text":"porque","from":14908,"to":14924},
+        {"text":"has","from":14924,"to":14932},
+        {"text":"pedido","from":14932,"to":14948},
+        {"text":"la","from":14948,"to":14954},
+        {"text":"página,","from":14954,"to":14972},
+        {"text":"no","from":14972,"to":14978},
+        {"text":"por","from":14978,"to":14986},
+        {"text":"las","from":14986,"to":14994},
+        {"text":"luces.","from":14994,"to":15010}
       ]
     },
     {
       "id": "s10-02",
       "scene": "s10-vuelta",
       "text": "Ya distingues las capas. El servidor físico, el hipervisor, cada máquina virtual con su sistema y, dentro, el servicio.",
-      "from": 14997,
+      "from": 15021,
       "audioFrames": 228,
       "durationInFrames": 239,
       "audio": null,
       "words": [
-        {"text":"Ya","from":14997,"to":15002},
-        {"text":"distingues","from":15002,"to":15024},
-        {"text":"las","from":15024,"to":15031},
-        {"text":"capas.","from":15031,"to":15044},
-        {"text":"El","from":15044,"to":15049},
-        {"text":"servidor","from":15049,"to":15067},
-        {"text":"físico,","from":15067,"to":15083},
-        {"text":"el","from":15083,"to":15087},
-        {"text":"hipervisor,","from":15087,"to":15112},
-        {"text":"cada","from":15112,"to":15121},
-        {"text":"máquina","from":15121,"to":15137},
-        {"text":"virtual","from":15137,"to":15153},
-        {"text":"con","from":15153,"to":15160},
-        {"text":"su","from":15160,"to":15164},
-        {"text":"sistema","from":15164,"to":15180},
-        {"text":"y,","from":15180,"to":15184},
-        {"text":"dentro,","from":15184,"to":15200},
-        {"text":"el","from":15200,"to":15205},
-        {"text":"servicio.","from":15205,"to":15225}
+        {"text":"Ya","from":15021,"to":15026},
+        {"text":"distingues","from":15026,"to":15048},
+        {"text":"las","from":15048,"to":15055},
+        {"text":"capas.","from":15055,"to":15068},
+        {"text":"El","from":15068,"to":15073},
+        {"text":"servidor","from":15073,"to":15091},
+        {"text":"físico,","from":15091,"to":15107},
+        {"text":"el","from":15107,"to":15111},
+        {"text":"hipervisor,","from":15111,"to":15136},
+        {"text":"cada","from":15136,"to":15145},
+        {"text":"máquina","from":15145,"to":15161},
+        {"text":"virtual","from":15161,"to":15177},
+        {"text":"con","from":15177,"to":15184},
+        {"text":"su","from":15184,"to":15188},
+        {"text":"sistema","from":15188,"to":15204},
+        {"text":"y,","from":15204,"to":15208},
+        {"text":"dentro,","from":15208,"to":15224},
+        {"text":"el","from":15224,"to":15229},
+        {"text":"servicio.","from":15229,"to":15249}
       ]
     },
     {
       "id": "s10-03",
       "scene": "s10-vuelta",
       "text": "Antes de cada parche, una instantánea para volver atrás. Y fuera del servidor, una copia probada para cuando se pierde todo.",
-      "from": 15236,
+      "from": 15260,
       "audioFrames": 252,
       "durationInFrames": 263,
       "audio": null,
       "words": [
-        {"text":"Antes","from":15236,"to":15248},
-        {"text":"de","from":15248,"to":15253},
-        {"text":"cada","from":15253,"to":15263},
-        {"text":"parche,","from":15263,"to":15280},
-        {"text":"una","from":15280,"to":15287},
-        {"text":"instantánea","from":15287,"to":15314},
-        {"text":"para","from":15314,"to":15323},
-        {"text":"volver","from":15323,"to":15338},
-        {"text":"atrás.","from":15338,"to":15352},
-        {"text":"Y","from":15352,"to":15355},
-        {"text":"fuera","from":15355,"to":15367},
-        {"text":"del","from":15367,"to":15374},
-        {"text":"servidor,","from":15374,"to":15396},
-        {"text":"una","from":15396,"to":15403},
-        {"text":"copia","from":15403,"to":15415},
-        {"text":"probada","from":15415,"to":15432},
-        {"text":"para","from":15432,"to":15442},
-        {"text":"cuando","from":15442,"to":15457},
-        {"text":"se","from":15457,"to":15461},
-        {"text":"pierde","from":15461,"to":15476},
-        {"text":"todo.","from":15476,"to":15488}
+        {"text":"Antes","from":15260,"to":15272},
+        {"text":"de","from":15272,"to":15277},
+        {"text":"cada","from":15277,"to":15287},
+        {"text":"parche,","from":15287,"to":15304},
+        {"text":"una","from":15304,"to":15311},
+        {"text":"instantánea","from":15311,"to":15338},
+        {"text":"para","from":15338,"to":15347},
+        {"text":"volver","from":15347,"to":15362},
+        {"text":"atrás.","from":15362,"to":15376},
+        {"text":"Y","from":15376,"to":15379},
+        {"text":"fuera","from":15379,"to":15391},
+        {"text":"del","from":15391,"to":15398},
+        {"text":"servidor,","from":15398,"to":15420},
+        {"text":"una","from":15420,"to":15427},
+        {"text":"copia","from":15427,"to":15439},
+        {"text":"probada","from":15439,"to":15456},
+        {"text":"para","from":15456,"to":15466},
+        {"text":"cuando","from":15466,"to":15481},
+        {"text":"se","from":15481,"to":15485},
+        {"text":"pierde","from":15485,"to":15500},
+        {"text":"todo.","from":15500,"to":15512}
       ]
     },
     {
       "id": "s10-04",
       "scene": "s10-vuelta",
       "text": "O sea, que cuando algo no funciona, primero averiguas en qué capa está el fallo, y luego lo arreglas ahí.",
-      "from": 15499,
+      "from": 15523,
       "audioFrames": 240,
       "durationInFrames": 258,
       "audio": null,
       "words": [
-        {"text":"O","from":15499,"to":15502},
-        {"text":"sea,","from":15502,"to":15513},
-        {"text":"que","from":15513,"to":15521},
-        {"text":"cuando","from":15521,"to":15538},
-        {"text":"algo","from":15538,"to":15549},
-        {"text":"no","from":15549,"to":15555},
-        {"text":"funciona,","from":15555,"to":15580},
-        {"text":"primero","from":15580,"to":15599},
-        {"text":"averiguas","from":15599,"to":15625},
-        {"text":"en","from":15625,"to":15630},
-        {"text":"qué","from":15630,"to":15639},
-        {"text":"capa","from":15639,"to":15650},
-        {"text":"está","from":15650,"to":15661},
-        {"text":"el","from":15661,"to":15666},
-        {"text":"fallo,","from":15666,"to":15683},
-        {"text":"y","from":15683,"to":15686},
-        {"text":"luego","from":15686,"to":15700},
-        {"text":"lo","from":15700,"to":15706},
-        {"text":"arreglas","from":15706,"to":15728},
-        {"text":"ahí.","from":15728,"to":15739}
+        {"text":"O","from":15523,"to":15526},
+        {"text":"sea,","from":15526,"to":15537},
+        {"text":"que","from":15537,"to":15545},
+        {"text":"cuando","from":15545,"to":15562},
+        {"text":"algo","from":15562,"to":15573},
+        {"text":"no","from":15573,"to":15579},
+        {"text":"funciona,","from":15579,"to":15604},
+        {"text":"primero","from":15604,"to":15623},
+        {"text":"averiguas","from":15623,"to":15649},
+        {"text":"en","from":15649,"to":15654},
+        {"text":"qué","from":15654,"to":15663},
+        {"text":"capa","from":15663,"to":15674},
+        {"text":"está","from":15674,"to":15685},
+        {"text":"el","from":15685,"to":15690},
+        {"text":"fallo,","from":15690,"to":15707},
+        {"text":"y","from":15707,"to":15710},
+        {"text":"luego","from":15710,"to":15724},
+        {"text":"lo","from":15724,"to":15730},
+        {"text":"arreglas","from":15730,"to":15752},
+        {"text":"ahí.","from":15752,"to":15763}
       ]
     },
     {
       "id": "s11-01",
       "scene": "s11-reglas",
       "text": "Te quedas con tres preguntas. Una. ¿Dónde corre el servicio? En qué máquina virtual y sobre qué anfitrión, porque si cae el anfitrión, caen todas.",
-      "from": 15789,
+      "from": 15813,
       "audioFrames": 300,
       "durationInFrames": 312,
       "audio": null,
       "words": [
-        {"text":"Te","from":15789,"to":15794},
-        {"text":"quedas","from":15794,"to":15809},
-        {"text":"con","from":15809,"to":15816},
-        {"text":"tres","from":15816,"to":15826},
-        {"text":"preguntas.","from":15826,"to":15850},
-        {"text":"Una.","from":15850,"to":15860},
-        {"text":"¿Dónde","from":15860,"to":15875},
-        {"text":"corre","from":15875,"to":15887},
-        {"text":"el","from":15887,"to":15892},
-        {"text":"servicio?","from":15892,"to":15914},
-        {"text":"En","from":15914,"to":15919},
-        {"text":"qué","from":15919,"to":15927},
-        {"text":"máquina","from":15927,"to":15944},
-        {"text":"virtual","from":15944,"to":15961},
-        {"text":"y","from":15961,"to":15964},
-        {"text":"sobre","from":15964,"to":15976},
-        {"text":"qué","from":15976,"to":15983},
-        {"text":"anfitrión,","from":15983,"to":16008},
-        {"text":"porque","from":16008,"to":16023},
-        {"text":"si","from":16023,"to":16028},
-        {"text":"cae","from":16028,"to":16035},
-        {"text":"el","from":16035,"to":16040},
-        {"text":"anfitrión,","from":16040,"to":16064},
-        {"text":"caen","from":16064,"to":16074},
-        {"text":"todas.","from":16074,"to":16089}
+        {"text":"Te","from":15813,"to":15818},
+        {"text":"quedas","from":15818,"to":15833},
+        {"text":"con","from":15833,"to":15840},
+        {"text":"tres","from":15840,"to":15850},
+        {"text":"preguntas.","from":15850,"to":15874},
+        {"text":"Una.","from":15874,"to":15884},
+        {"text":"¿Dónde","from":15884,"to":15899},
+        {"text":"corre","from":15899,"to":15911},
+        {"text":"el","from":15911,"to":15916},
+        {"text":"servicio?","from":15916,"to":15938},
+        {"text":"En","from":15938,"to":15943},
+        {"text":"qué","from":15943,"to":15951},
+        {"text":"máquina","from":15951,"to":15968},
+        {"text":"virtual","from":15968,"to":15985},
+        {"text":"y","from":15985,"to":15988},
+        {"text":"sobre","from":15988,"to":16000},
+        {"text":"qué","from":16000,"to":16007},
+        {"text":"anfitrión,","from":16007,"to":16032},
+        {"text":"porque","from":16032,"to":16047},
+        {"text":"si","from":16047,"to":16052},
+        {"text":"cae","from":16052,"to":16059},
+        {"text":"el","from":16059,"to":16064},
+        {"text":"anfitrión,","from":16064,"to":16088},
+        {"text":"caen","from":16088,"to":16098},
+        {"text":"todas.","from":16098,"to":16113}
       ]
     },
     {
       "id": "s11-02",
       "scene": "s11-reglas",
       "text": "Dos. ¿Funciona de verdad? Mira el proceso, el puerto y, sobre todo, una petición real. Las luces no lo dicen.",
-      "from": 16101,
+      "from": 16125,
       "audioFrames": 240,
       "durationInFrames": 252,
       "audio": null,
       "words": [
-        {"text":"Dos.","from":16101,"to":16112},
-        {"text":"¿Funciona","from":16112,"to":16136},
-        {"text":"de","from":16136,"to":16141},
-        {"text":"verdad?","from":16141,"to":16160},
-        {"text":"Mira","from":16160,"to":16170},
-        {"text":"el","from":16170,"to":16176},
-        {"text":"proceso,","from":16176,"to":16197},
-        {"text":"el","from":16197,"to":16202},
-        {"text":"puerto","from":16202,"to":16218},
-        {"text":"y,","from":16218,"to":16224},
-        {"text":"sobre","from":16224,"to":16237},
-        {"text":"todo,","from":16237,"to":16250},
-        {"text":"una","from":16250,"to":16258},
-        {"text":"petición","from":16258,"to":16280},
-        {"text":"real.","from":16280,"to":16293},
-        {"text":"Las","from":16293,"to":16301},
-        {"text":"luces","from":16301,"to":16314},
-        {"text":"no","from":16314,"to":16320},
-        {"text":"lo","from":16320,"to":16325},
-        {"text":"dicen.","from":16325,"to":16341}
+        {"text":"Dos.","from":16125,"to":16136},
+        {"text":"¿Funciona","from":16136,"to":16160},
+        {"text":"de","from":16160,"to":16165},
+        {"text":"verdad?","from":16165,"to":16184},
+        {"text":"Mira","from":16184,"to":16194},
+        {"text":"el","from":16194,"to":16200},
+        {"text":"proceso,","from":16200,"to":16221},
+        {"text":"el","from":16221,"to":16226},
+        {"text":"puerto","from":16226,"to":16242},
+        {"text":"y,","from":16242,"to":16248},
+        {"text":"sobre","from":16248,"to":16261},
+        {"text":"todo,","from":16261,"to":16274},
+        {"text":"una","from":16274,"to":16282},
+        {"text":"petición","from":16282,"to":16304},
+        {"text":"real.","from":16304,"to":16317},
+        {"text":"Las","from":16317,"to":16325},
+        {"text":"luces","from":16325,"to":16338},
+        {"text":"no","from":16338,"to":16344},
+        {"text":"lo","from":16344,"to":16349},
+        {"text":"dicen.","from":16349,"to":16365}
       ]
     },
     {
       "id": "s11-03",
       "scene": "s11-reglas",
       "text": "Tres. ¿Podrías recuperarlo si pierdes el servidor? La instantánea no basta. Hace falta una copia fuera, y probada.",
-      "from": 16353,
+      "from": 16377,
       "audioFrames": 216,
       "durationInFrames": 228,
       "audio": null,
       "words": [
-        {"text":"Tres.","from":16353,"to":16364},
-        {"text":"¿Podrías","from":16364,"to":16382},
-        {"text":"recuperarlo","from":16382,"to":16406},
-        {"text":"si","from":16406,"to":16411},
-        {"text":"pierdes","from":16411,"to":16426},
-        {"text":"el","from":16426,"to":16431},
-        {"text":"servidor?","from":16431,"to":16451},
-        {"text":"La","from":16451,"to":16455},
-        {"text":"instantánea","from":16455,"to":16480},
-        {"text":"no","from":16480,"to":16484},
-        {"text":"basta.","from":16484,"to":16498},
-        {"text":"Hace","from":16498,"to":16507},
-        {"text":"falta","from":16507,"to":16518},
-        {"text":"una","from":16518,"to":16524},
-        {"text":"copia","from":16524,"to":16536},
-        {"text":"fuera,","from":16536,"to":16549},
-        {"text":"y","from":16549,"to":16551},
-        {"text":"probada.","from":16551,"to":16569}
+        {"text":"Tres.","from":16377,"to":16388},
+        {"text":"¿Podrías","from":16388,"to":16406},
+        {"text":"recuperarlo","from":16406,"to":16430},
+        {"text":"si","from":16430,"to":16435},
+        {"text":"pierdes","from":16435,"to":16450},
+        {"text":"el","from":16450,"to":16455},
+        {"text":"servidor?","from":16455,"to":16475},
+        {"text":"La","from":16475,"to":16479},
+        {"text":"instantánea","from":16479,"to":16504},
+        {"text":"no","from":16504,"to":16508},
+        {"text":"basta.","from":16508,"to":16522},
+        {"text":"Hace","from":16522,"to":16531},
+        {"text":"falta","from":16531,"to":16542},
+        {"text":"una","from":16542,"to":16548},
+        {"text":"copia","from":16548,"to":16560},
+        {"text":"fuera,","from":16560,"to":16573},
+        {"text":"y","from":16573,"to":16575},
+        {"text":"probada.","from":16575,"to":16593}
       ]
     },
     {
       "id": "s11-04",
       "scene": "s11-reglas",
       "text": "La próxima vez que alguien te diga que está encendido, haz estas tres preguntas antes de reiniciar nada.",
-      "from": 16581,
+      "from": 16605,
       "audioFrames": 216,
       "durationInFrames": 261,
       "audio": null,
       "words": [
-        {"text":"La","from":16581,"to":16586},
-        {"text":"próxima","from":16586,"to":16603},
-        {"text":"vez","from":16603,"to":16611},
-        {"text":"que","from":16611,"to":16618},
-        {"text":"alguien","from":16618,"to":16636},
-        {"text":"te","from":16636,"to":16641},
-        {"text":"diga","from":16641,"to":16651},
-        {"text":"que","from":16651,"to":16658},
-        {"text":"está","from":16658,"to":16668},
-        {"text":"encendido,","from":16668,"to":16693},
-        {"text":"haz","from":16693,"to":16700},
-        {"text":"estas","from":16700,"to":16713},
-        {"text":"tres","from":16713,"to":16723},
-        {"text":"preguntas","from":16723,"to":16745},
-        {"text":"antes","from":16745,"to":16757},
-        {"text":"de","from":16757,"to":16762},
-        {"text":"reiniciar","from":16762,"to":16785},
-        {"text":"nada.","from":16785,"to":16797}
+        {"text":"La","from":16605,"to":16610},
+        {"text":"próxima","from":16610,"to":16627},
+        {"text":"vez","from":16627,"to":16635},
+        {"text":"que","from":16635,"to":16642},
+        {"text":"alguien","from":16642,"to":16660},
+        {"text":"te","from":16660,"to":16665},
+        {"text":"diga","from":16665,"to":16675},
+        {"text":"que","from":16675,"to":16682},
+        {"text":"está","from":16682,"to":16692},
+        {"text":"encendido,","from":16692,"to":16717},
+        {"text":"haz","from":16717,"to":16724},
+        {"text":"estas","from":16724,"to":16737},
+        {"text":"tres","from":16737,"to":16747},
+        {"text":"preguntas","from":16747,"to":16769},
+        {"text":"antes","from":16769,"to":16781},
+        {"text":"de","from":16781,"to":16786},
+        {"text":"reiniciar","from":16786,"to":16809},
+        {"text":"nada.","from":16809,"to":16821}
       ]
     }
   ],
@@ -4096,434 +4098,436 @@
     },
     {
       "from": 14063,
-      "to": 14170,
+      "to": 14183,
       "lines": [
         [
           {"text":"Apuntas","from":14066,"to":14083},
           {"text":"la","from":14083,"to":14088},
-          {"text":"excepción,","from":14088,"to":14113}
+          {"text":"excepción,","from":14088,"to":14113},
+          {"text":"o","from":14113,"to":14116},
+          {"text":"sea,","from":14116,"to":14126}
         ],
         [
-          {"text":"que","from":14113,"to":14121},
-          {"text":"lo","from":14121,"to":14126},
-          {"text":"dejas","from":14126,"to":14138},
-          {"text":"así","from":14138,"to":14146},
-          {"text":"a","from":14146,"to":14148},
-          {"text":"sabiendas,","from":14148,"to":14173}
+          {"text":"que","from":14126,"to":14133},
+          {"text":"lo","from":14133,"to":14138},
+          {"text":"dejas","from":14138,"to":14151},
+          {"text":"así","from":14151,"to":14158},
+          {"text":"a","from":14158,"to":14161},
+          {"text":"sabiendas,","from":14161,"to":14186}
         ]
       ]
     },
     {
-      "from": 14170,
-      "to": 14311,
+      "from": 14183,
+      "to": 14335,
       "lines": [
         [
-          {"text":"con","from":14173,"to":14181},
-          {"text":"quién","from":14181,"to":14193},
-          {"text":"lo","from":14193,"to":14199},
-          {"text":"acepta","from":14199,"to":14214},
-          {"text":"y","from":14214,"to":14216},
-          {"text":"hasta","from":14216,"to":14229},
-          {"text":"cuándo.","from":14229,"to":14246}
+          {"text":"quién","from":14186,"to":14198},
+          {"text":"lo","from":14198,"to":14203},
+          {"text":"acepta","from":14203,"to":14218},
+          {"text":"y","from":14218,"to":14221},
+          {"text":"hasta","from":14221,"to":14233},
+          {"text":"cuándo.","from":14233,"to":14251}
         ],
         [
-          {"text":"Limitas","from":14246,"to":14264},
-          {"text":"quién","from":14264,"to":14276},
-          {"text":"puede","from":14276,"to":14289},
-          {"text":"llegar","from":14289,"to":14304},
-          {"text":"a","from":14304,"to":14306},
-          {"text":"él.","from":14306,"to":14314}
+          {"text":"Limitas","from":14251,"to":14268},
+          {"text":"quién","from":14268,"to":14280},
+          {"text":"puede","from":14280,"to":14293},
+          {"text":"llegar","from":14293,"to":14308},
+          {"text":"a","from":14308,"to":14311},
+          {"text":"esa","from":14311,"to":14318},
+          {"text":"máquina.","from":14318,"to":14338}
         ]
       ]
     },
     {
-      "from": 14311,
-      "to": 14372,
+      "from": 14335,
+      "to": 14396,
       "lines": [
         [
-          {"text":"Y","from":14314,"to":14316},
-          {"text":"planeas","from":14316,"to":14334},
-          {"text":"sustituirlo.","from":14334,"to":14364}
+          {"text":"Y","from":14338,"to":14341},
+          {"text":"planeas","from":14341,"to":14358},
+          {"text":"sustituirla.","from":14358,"to":14388}
         ]
       ]
     },
     {
-      "from": 14372,
-      "to": 14520,
+      "from": 14396,
+      "to": 14544,
       "lines": [
         [
-          {"text":"Con","from":14375,"to":14384},
-          {"text":"eso","from":14384,"to":14393},
-          {"text":"el","from":14393,"to":14399},
-          {"text":"riesgo","from":14399,"to":14417},
-          {"text":"baja,","from":14417,"to":14431}
+          {"text":"Con","from":14399,"to":14408},
+          {"text":"eso","from":14408,"to":14417},
+          {"text":"el","from":14417,"to":14423},
+          {"text":"riesgo","from":14423,"to":14441},
+          {"text":"baja,","from":14441,"to":14455}
         ],
         [
-          {"text":"pero","from":14431,"to":14443},
-          {"text":"el","from":14443,"to":14449},
-          {"text":"sistema","from":14449,"to":14470},
-          {"text":"no","from":14470,"to":14476},
-          {"text":"pasa","from":14476,"to":14488},
-          {"text":"a","from":14488,"to":14491},
-          {"text":"estar","from":14491,"to":14506},
-          {"text":"al","from":14506,"to":14511},
-          {"text":"día.","from":14511,"to":14523}
+          {"text":"pero","from":14455,"to":14467},
+          {"text":"el","from":14467,"to":14473},
+          {"text":"sistema","from":14473,"to":14494},
+          {"text":"no","from":14494,"to":14500},
+          {"text":"pasa","from":14500,"to":14512},
+          {"text":"a","from":14512,"to":14515},
+          {"text":"estar","from":14515,"to":14530},
+          {"text":"al","from":14530,"to":14535},
+          {"text":"día.","from":14535,"to":14547}
         ]
       ]
     },
     {
-      "from": 14520,
-      "to": 14663,
+      "from": 14544,
+      "to": 14687,
       "lines": [
         [
-          {"text":"Sigue","from":14523,"to":14538},
-          {"text":"sin","from":14538,"to":14547},
-          {"text":"parches,","from":14547,"to":14571}
+          {"text":"Sigue","from":14547,"to":14562},
+          {"text":"sin","from":14562,"to":14571},
+          {"text":"parches,","from":14571,"to":14595}
         ],
         [
-          {"text":"y","from":14571,"to":14574},
-          {"text":"hay","from":14574,"to":14583},
-          {"text":"que","from":14583,"to":14592},
-          {"text":"tenerlo","from":14592,"to":14612},
-          {"text":"presente.","from":14612,"to":14639}
+          {"text":"y","from":14595,"to":14598},
+          {"text":"hay","from":14598,"to":14607},
+          {"text":"que","from":14607,"to":14616},
+          {"text":"tenerlo","from":14616,"to":14636},
+          {"text":"presente.","from":14636,"to":14663}
         ]
       ]
     },
     {
-      "from": 14707,
-      "to": 14795,
+      "from": 14731,
+      "to": 14819,
       "lines": [
         [
-          {"text":"Vuelve","from":14710,"to":14726},
-          {"text":"conmigo","from":14726,"to":14745},
-          {"text":"al","from":14745,"to":14750},
-          {"text":"lunes","from":14750,"to":14764},
-          {"text":"del","from":14764,"to":14772},
-          {"text":"principio.","from":14772,"to":14798}
+          {"text":"Vuelve","from":14734,"to":14750},
+          {"text":"conmigo","from":14750,"to":14769},
+          {"text":"al","from":14769,"to":14774},
+          {"text":"lunes","from":14774,"to":14788},
+          {"text":"del","from":14788,"to":14796},
+          {"text":"principio.","from":14796,"to":14822}
         ]
       ]
     },
     {
-      "from": 14795,
-      "to": 14945,
+      "from": 14819,
+      "to": 14969,
       "lines": [
         [
-          {"text":"La","from":14798,"to":14804},
-          {"text":"web","from":14804,"to":14812},
-          {"text":"de","from":14812,"to":14817},
-          {"text":"seguimiento","from":14817,"to":14847},
-          {"text":"carga,","from":14847,"to":14863}
+          {"text":"La","from":14822,"to":14828},
+          {"text":"web","from":14828,"to":14836},
+          {"text":"de","from":14836,"to":14841},
+          {"text":"seguimiento","from":14841,"to":14871},
+          {"text":"carga,","from":14871,"to":14887}
         ],
         [
-          {"text":"y","from":14863,"to":14865},
-          {"text":"lo","from":14865,"to":14871},
-          {"text":"sabes","from":14871,"to":14884},
-          {"text":"porque","from":14884,"to":14900},
-          {"text":"has","from":14900,"to":14908},
-          {"text":"pedido","from":14908,"to":14924},
-          {"text":"la","from":14924,"to":14930},
-          {"text":"página,","from":14930,"to":14948}
+          {"text":"y","from":14887,"to":14889},
+          {"text":"lo","from":14889,"to":14895},
+          {"text":"sabes","from":14895,"to":14908},
+          {"text":"porque","from":14908,"to":14924},
+          {"text":"has","from":14924,"to":14932},
+          {"text":"pedido","from":14932,"to":14948},
+          {"text":"la","from":14948,"to":14954},
+          {"text":"página,","from":14954,"to":14972}
         ]
       ]
     },
     {
-      "from": 14945,
-      "to": 14994,
+      "from": 14969,
+      "to": 15018,
       "lines": [
         [
-          {"text":"no","from":14948,"to":14954},
-          {"text":"por","from":14954,"to":14962},
-          {"text":"las","from":14962,"to":14970},
-          {"text":"luces.","from":14970,"to":14986}
+          {"text":"no","from":14972,"to":14978},
+          {"text":"por","from":14978,"to":14986},
+          {"text":"las","from":14986,"to":14994},
+          {"text":"luces.","from":14994,"to":15010}
         ]
       ]
     },
     {
-      "from": 14994,
-      "to": 15041,
+      "from": 15018,
+      "to": 15065,
       "lines": [
         [
-          {"text":"Ya","from":14997,"to":15002},
-          {"text":"distingues","from":15002,"to":15024},
-          {"text":"las","from":15024,"to":15031},
-          {"text":"capas.","from":15031,"to":15044}
+          {"text":"Ya","from":15021,"to":15026},
+          {"text":"distingues","from":15026,"to":15048},
+          {"text":"las","from":15048,"to":15055},
+          {"text":"capas.","from":15055,"to":15068}
         ]
       ]
     },
     {
-      "from": 15041,
-      "to": 15197,
+      "from": 15065,
+      "to": 15221,
       "lines": [
         [
-          {"text":"El","from":15044,"to":15049},
-          {"text":"servidor","from":15049,"to":15067},
-          {"text":"físico,","from":15067,"to":15083},
-          {"text":"el","from":15083,"to":15087},
-          {"text":"hipervisor,","from":15087,"to":15112},
-          {"text":"cada","from":15112,"to":15121}
+          {"text":"El","from":15068,"to":15073},
+          {"text":"servidor","from":15073,"to":15091},
+          {"text":"físico,","from":15091,"to":15107},
+          {"text":"el","from":15107,"to":15111},
+          {"text":"hipervisor,","from":15111,"to":15136},
+          {"text":"cada","from":15136,"to":15145}
         ],
         [
-          {"text":"máquina","from":15121,"to":15137},
-          {"text":"virtual","from":15137,"to":15153},
-          {"text":"con","from":15153,"to":15160},
-          {"text":"su","from":15160,"to":15164},
-          {"text":"sistema","from":15164,"to":15180},
-          {"text":"y,","from":15180,"to":15184},
-          {"text":"dentro,","from":15184,"to":15200}
+          {"text":"máquina","from":15145,"to":15161},
+          {"text":"virtual","from":15161,"to":15177},
+          {"text":"con","from":15177,"to":15184},
+          {"text":"su","from":15184,"to":15188},
+          {"text":"sistema","from":15188,"to":15204},
+          {"text":"y,","from":15204,"to":15208},
+          {"text":"dentro,","from":15208,"to":15224}
         ]
       ]
     },
     {
-      "from": 15197,
-      "to": 15233,
+      "from": 15221,
+      "to": 15257,
       "lines": [
         [
-          {"text":"el","from":15200,"to":15205},
-          {"text":"servicio.","from":15205,"to":15225}
+          {"text":"el","from":15224,"to":15229},
+          {"text":"servicio.","from":15229,"to":15249}
         ]
       ]
     },
     {
-      "from": 15233,
-      "to": 15349,
+      "from": 15257,
+      "to": 15373,
       "lines": [
         [
-          {"text":"Antes","from":15236,"to":15248},
-          {"text":"de","from":15248,"to":15253},
-          {"text":"cada","from":15253,"to":15263},
-          {"text":"parche,","from":15263,"to":15280}
+          {"text":"Antes","from":15260,"to":15272},
+          {"text":"de","from":15272,"to":15277},
+          {"text":"cada","from":15277,"to":15287},
+          {"text":"parche,","from":15287,"to":15304}
         ],
         [
-          {"text":"una","from":15280,"to":15287},
-          {"text":"instantánea","from":15287,"to":15314},
-          {"text":"para","from":15314,"to":15323},
-          {"text":"volver","from":15323,"to":15338},
-          {"text":"atrás.","from":15338,"to":15352}
+          {"text":"una","from":15304,"to":15311},
+          {"text":"instantánea","from":15311,"to":15338},
+          {"text":"para","from":15338,"to":15347},
+          {"text":"volver","from":15347,"to":15362},
+          {"text":"atrás.","from":15362,"to":15376}
         ]
       ]
     },
     {
-      "from": 15349,
-      "to": 15496,
+      "from": 15373,
+      "to": 15520,
       "lines": [
         [
-          {"text":"Y","from":15352,"to":15355},
-          {"text":"fuera","from":15355,"to":15367},
-          {"text":"del","from":15367,"to":15374},
-          {"text":"servidor,","from":15374,"to":15396},
-          {"text":"una","from":15396,"to":15403},
-          {"text":"copia","from":15403,"to":15415}
+          {"text":"Y","from":15376,"to":15379},
+          {"text":"fuera","from":15379,"to":15391},
+          {"text":"del","from":15391,"to":15398},
+          {"text":"servidor,","from":15398,"to":15420},
+          {"text":"una","from":15420,"to":15427},
+          {"text":"copia","from":15427,"to":15439}
         ],
         [
-          {"text":"probada","from":15415,"to":15432},
-          {"text":"para","from":15432,"to":15442},
-          {"text":"cuando","from":15442,"to":15457},
-          {"text":"se","from":15457,"to":15461},
-          {"text":"pierde","from":15461,"to":15476},
-          {"text":"todo.","from":15476,"to":15488}
+          {"text":"probada","from":15439,"to":15456},
+          {"text":"para","from":15456,"to":15466},
+          {"text":"cuando","from":15466,"to":15481},
+          {"text":"se","from":15481,"to":15485},
+          {"text":"pierde","from":15485,"to":15500},
+          {"text":"todo.","from":15500,"to":15512}
         ]
       ]
     },
     {
-      "from": 15496,
-      "to": 15577,
+      "from": 15520,
+      "to": 15601,
       "lines": [
         [
-          {"text":"O","from":15499,"to":15502},
-          {"text":"sea,","from":15502,"to":15513},
-          {"text":"que","from":15513,"to":15521},
-          {"text":"cuando","from":15521,"to":15538},
-          {"text":"algo","from":15538,"to":15549},
-          {"text":"no","from":15549,"to":15555},
-          {"text":"funciona,","from":15555,"to":15580}
+          {"text":"O","from":15523,"to":15526},
+          {"text":"sea,","from":15526,"to":15537},
+          {"text":"que","from":15537,"to":15545},
+          {"text":"cuando","from":15545,"to":15562},
+          {"text":"algo","from":15562,"to":15573},
+          {"text":"no","from":15573,"to":15579},
+          {"text":"funciona,","from":15579,"to":15604}
         ]
       ]
     },
     {
-      "from": 15577,
-      "to": 15763,
+      "from": 15601,
+      "to": 15787,
       "lines": [
         [
-          {"text":"primero","from":15580,"to":15599},
-          {"text":"averiguas","from":15599,"to":15625},
-          {"text":"en","from":15625,"to":15630},
-          {"text":"qué","from":15630,"to":15639},
-          {"text":"capa","from":15639,"to":15650},
-          {"text":"está","from":15650,"to":15661}
+          {"text":"primero","from":15604,"to":15623},
+          {"text":"averiguas","from":15623,"to":15649},
+          {"text":"en","from":15649,"to":15654},
+          {"text":"qué","from":15654,"to":15663},
+          {"text":"capa","from":15663,"to":15674},
+          {"text":"está","from":15674,"to":15685}
         ],
         [
-          {"text":"el","from":15661,"to":15666},
-          {"text":"fallo,","from":15666,"to":15683},
-          {"text":"y","from":15683,"to":15686},
-          {"text":"luego","from":15686,"to":15700},
-          {"text":"lo","from":15700,"to":15706},
-          {"text":"arreglas","from":15706,"to":15728},
-          {"text":"ahí.","from":15728,"to":15739}
+          {"text":"el","from":15685,"to":15690},
+          {"text":"fallo,","from":15690,"to":15707},
+          {"text":"y","from":15707,"to":15710},
+          {"text":"luego","from":15710,"to":15724},
+          {"text":"lo","from":15724,"to":15730},
+          {"text":"arreglas","from":15730,"to":15752},
+          {"text":"ahí.","from":15752,"to":15763}
         ]
       ]
     },
     {
-      "from": 15786,
-      "to": 15911,
+      "from": 15810,
+      "to": 15935,
       "lines": [
         [
-          {"text":"Te","from":15789,"to":15794},
-          {"text":"quedas","from":15794,"to":15809},
-          {"text":"con","from":15809,"to":15816},
-          {"text":"tres","from":15816,"to":15826},
-          {"text":"preguntas.","from":15826,"to":15850}
+          {"text":"Te","from":15813,"to":15818},
+          {"text":"quedas","from":15818,"to":15833},
+          {"text":"con","from":15833,"to":15840},
+          {"text":"tres","from":15840,"to":15850},
+          {"text":"preguntas.","from":15850,"to":15874}
         ],
         [
-          {"text":"Una.","from":15850,"to":15860},
-          {"text":"¿Dónde","from":15860,"to":15875},
-          {"text":"corre","from":15875,"to":15887},
-          {"text":"el","from":15887,"to":15892},
-          {"text":"servicio?","from":15892,"to":15914}
+          {"text":"Una.","from":15874,"to":15884},
+          {"text":"¿Dónde","from":15884,"to":15899},
+          {"text":"corre","from":15899,"to":15911},
+          {"text":"el","from":15911,"to":15916},
+          {"text":"servicio?","from":15916,"to":15938}
         ]
       ]
     },
     {
-      "from": 15911,
-      "to": 16061,
+      "from": 15935,
+      "to": 16085,
       "lines": [
         [
-          {"text":"En","from":15914,"to":15919},
-          {"text":"qué","from":15919,"to":15927},
-          {"text":"máquina","from":15927,"to":15944},
-          {"text":"virtual","from":15944,"to":15961},
-          {"text":"y","from":15961,"to":15964},
-          {"text":"sobre","from":15964,"to":15976},
-          {"text":"qué","from":15976,"to":15983}
+          {"text":"En","from":15938,"to":15943},
+          {"text":"qué","from":15943,"to":15951},
+          {"text":"máquina","from":15951,"to":15968},
+          {"text":"virtual","from":15968,"to":15985},
+          {"text":"y","from":15985,"to":15988},
+          {"text":"sobre","from":15988,"to":16000},
+          {"text":"qué","from":16000,"to":16007}
         ],
         [
-          {"text":"anfitrión,","from":15983,"to":16008},
-          {"text":"porque","from":16008,"to":16023},
-          {"text":"si","from":16023,"to":16028},
-          {"text":"cae","from":16028,"to":16035},
-          {"text":"el","from":16035,"to":16040},
-          {"text":"anfitrión,","from":16040,"to":16064}
+          {"text":"anfitrión,","from":16007,"to":16032},
+          {"text":"porque","from":16032,"to":16047},
+          {"text":"si","from":16047,"to":16052},
+          {"text":"cae","from":16052,"to":16059},
+          {"text":"el","from":16059,"to":16064},
+          {"text":"anfitrión,","from":16064,"to":16088}
         ]
       ]
     },
     {
-      "from": 16061,
-      "to": 16098,
+      "from": 16085,
+      "to": 16122,
       "lines": [
         [
-          {"text":"caen","from":16064,"to":16074},
-          {"text":"todas.","from":16074,"to":16089}
+          {"text":"caen","from":16088,"to":16098},
+          {"text":"todas.","from":16098,"to":16113}
         ]
       ]
     },
     {
-      "from": 16098,
-      "to": 16157,
+      "from": 16122,
+      "to": 16181,
       "lines": [
         [
-          {"text":"Dos.","from":16101,"to":16112},
-          {"text":"¿Funciona","from":16112,"to":16136},
-          {"text":"de","from":16136,"to":16141},
-          {"text":"verdad?","from":16141,"to":16160}
+          {"text":"Dos.","from":16125,"to":16136},
+          {"text":"¿Funciona","from":16136,"to":16160},
+          {"text":"de","from":16160,"to":16165},
+          {"text":"verdad?","from":16165,"to":16184}
         ]
       ]
     },
     {
-      "from": 16157,
-      "to": 16350,
+      "from": 16181,
+      "to": 16374,
       "lines": [
         [
-          {"text":"Mira","from":16160,"to":16170},
-          {"text":"el","from":16170,"to":16176},
-          {"text":"proceso,","from":16176,"to":16197},
-          {"text":"el","from":16197,"to":16202},
-          {"text":"puerto","from":16202,"to":16218},
-          {"text":"y,","from":16218,"to":16224},
-          {"text":"sobre","from":16224,"to":16237},
-          {"text":"todo,","from":16237,"to":16250}
+          {"text":"Mira","from":16184,"to":16194},
+          {"text":"el","from":16194,"to":16200},
+          {"text":"proceso,","from":16200,"to":16221},
+          {"text":"el","from":16221,"to":16226},
+          {"text":"puerto","from":16226,"to":16242},
+          {"text":"y,","from":16242,"to":16248},
+          {"text":"sobre","from":16248,"to":16261},
+          {"text":"todo,","from":16261,"to":16274}
         ],
         [
-          {"text":"una","from":16250,"to":16258},
-          {"text":"petición","from":16258,"to":16280},
-          {"text":"real.","from":16280,"to":16293},
-          {"text":"Las","from":16293,"to":16301},
-          {"text":"luces","from":16301,"to":16314},
-          {"text":"no","from":16314,"to":16320},
-          {"text":"lo","from":16320,"to":16325},
-          {"text":"dicen.","from":16325,"to":16341}
+          {"text":"una","from":16274,"to":16282},
+          {"text":"petición","from":16282,"to":16304},
+          {"text":"real.","from":16304,"to":16317},
+          {"text":"Las","from":16317,"to":16325},
+          {"text":"luces","from":16325,"to":16338},
+          {"text":"no","from":16338,"to":16344},
+          {"text":"lo","from":16344,"to":16349},
+          {"text":"dicen.","from":16349,"to":16365}
         ]
       ]
     },
     {
-      "from": 16350,
-      "to": 16495,
+      "from": 16374,
+      "to": 16519,
       "lines": [
         [
-          {"text":"Tres.","from":16353,"to":16364},
-          {"text":"¿Podrías","from":16364,"to":16382},
-          {"text":"recuperarlo","from":16382,"to":16406},
-          {"text":"si","from":16406,"to":16411},
-          {"text":"pierdes","from":16411,"to":16426}
+          {"text":"Tres.","from":16377,"to":16388},
+          {"text":"¿Podrías","from":16388,"to":16406},
+          {"text":"recuperarlo","from":16406,"to":16430},
+          {"text":"si","from":16430,"to":16435},
+          {"text":"pierdes","from":16435,"to":16450}
         ],
         [
-          {"text":"el","from":16426,"to":16431},
-          {"text":"servidor?","from":16431,"to":16451},
-          {"text":"La","from":16451,"to":16455},
-          {"text":"instantánea","from":16455,"to":16480},
-          {"text":"no","from":16480,"to":16484},
-          {"text":"basta.","from":16484,"to":16498}
+          {"text":"el","from":16450,"to":16455},
+          {"text":"servidor?","from":16455,"to":16475},
+          {"text":"La","from":16475,"to":16479},
+          {"text":"instantánea","from":16479,"to":16504},
+          {"text":"no","from":16504,"to":16508},
+          {"text":"basta.","from":16508,"to":16522}
         ]
       ]
     },
     {
-      "from": 16495,
-      "to": 16578,
+      "from": 16519,
+      "to": 16602,
       "lines": [
         [
-          {"text":"Hace","from":16498,"to":16507},
-          {"text":"falta","from":16507,"to":16518},
-          {"text":"una","from":16518,"to":16524},
-          {"text":"copia","from":16524,"to":16536},
-          {"text":"fuera,","from":16536,"to":16549},
-          {"text":"y","from":16549,"to":16551},
-          {"text":"probada.","from":16551,"to":16569}
+          {"text":"Hace","from":16522,"to":16531},
+          {"text":"falta","from":16531,"to":16542},
+          {"text":"una","from":16542,"to":16548},
+          {"text":"copia","from":16548,"to":16560},
+          {"text":"fuera,","from":16560,"to":16573},
+          {"text":"y","from":16573,"to":16575},
+          {"text":"probada.","from":16575,"to":16593}
         ]
       ]
     },
     {
-      "from": 16578,
-      "to": 16690,
+      "from": 16602,
+      "to": 16714,
       "lines": [
         [
-          {"text":"La","from":16581,"to":16586},
-          {"text":"próxima","from":16586,"to":16603},
-          {"text":"vez","from":16603,"to":16611},
-          {"text":"que","from":16611,"to":16618},
-          {"text":"alguien","from":16618,"to":16636}
+          {"text":"La","from":16605,"to":16610},
+          {"text":"próxima","from":16610,"to":16627},
+          {"text":"vez","from":16627,"to":16635},
+          {"text":"que","from":16635,"to":16642},
+          {"text":"alguien","from":16642,"to":16660}
         ],
         [
-          {"text":"te","from":16636,"to":16641},
-          {"text":"diga","from":16641,"to":16651},
-          {"text":"que","from":16651,"to":16658},
-          {"text":"está","from":16658,"to":16668},
-          {"text":"encendido,","from":16668,"to":16693}
+          {"text":"te","from":16660,"to":16665},
+          {"text":"diga","from":16665,"to":16675},
+          {"text":"que","from":16675,"to":16682},
+          {"text":"está","from":16682,"to":16692},
+          {"text":"encendido,","from":16692,"to":16717}
         ]
       ]
     },
     {
-      "from": 16690,
-      "to": 16821,
+      "from": 16714,
+      "to": 16845,
       "lines": [
         [
-          {"text":"haz","from":16693,"to":16700},
-          {"text":"estas","from":16700,"to":16713},
-          {"text":"tres","from":16713,"to":16723},
-          {"text":"preguntas","from":16723,"to":16745}
+          {"text":"haz","from":16717,"to":16724},
+          {"text":"estas","from":16724,"to":16737},
+          {"text":"tres","from":16737,"to":16747},
+          {"text":"preguntas","from":16747,"to":16769}
         ],
         [
-          {"text":"antes","from":16745,"to":16757},
-          {"text":"de","from":16757,"to":16762},
-          {"text":"reiniciar","from":16762,"to":16785},
-          {"text":"nada.","from":16785,"to":16797}
+          {"text":"antes","from":16769,"to":16781},
+          {"text":"de","from":16781,"to":16786},
+          {"text":"reiniciar","from":16786,"to":16809},
+          {"text":"nada.","from":16809,"to":16821}
         ]
       ]
     }
@@ -4599,24 +4603,24 @@
     {"scene":"s09-soporte","id":"nofix","frame":13490},
     {"scene":"s09-soporte","id":"oldapp","frame":13878},
     {"scene":"s09-soporte","id":"record","frame":14066},
-    {"scene":"s09-soporte","id":"limit","frame":14246},
-    {"scene":"s09-soporte","id":"replace","frame":14314},
-    {"scene":"s09-soporte","id":"notupdated","frame":14375},
-    {"scene":"s10-vuelta","id":"web","frame":14798},
-    {"scene":"s10-vuelta","id":"layers","frame":14997},
-    {"scene":"s10-vuelta","id":"protect","frame":15280},
-    {"scene":"s10-vuelta","id":"wrap","frame":15499},
-    {"scene":"s11-reglas","id":"q1","frame":15860},
-    {"scene":"s11-reglas","id":"q2","frame":16112},
-    {"scene":"s11-reglas","id":"q3","frame":16364},
-    {"scene":"s11-reglas","id":"cta","frame":16581}
+    {"scene":"s09-soporte","id":"limit","frame":14251},
+    {"scene":"s09-soporte","id":"replace","frame":14338},
+    {"scene":"s09-soporte","id":"notupdated","frame":14399},
+    {"scene":"s10-vuelta","id":"web","frame":14822},
+    {"scene":"s10-vuelta","id":"layers","frame":15021},
+    {"scene":"s10-vuelta","id":"protect","frame":15304},
+    {"scene":"s10-vuelta","id":"wrap","frame":15523},
+    {"scene":"s11-reglas","id":"q1","frame":15884},
+    {"scene":"s11-reglas","id":"q2","frame":16136},
+    {"scene":"s11-reglas","id":"q3","frame":16388},
+    {"scene":"s11-reglas","id":"cta","frame":16605}
   ],
   "exam": [
     {"scene":"s02-piezas","from":2951,"durationInFrames":150,"objective":"4.4","text":"CPU, RAM, disco y red: cada fallo da su señal"},
     {"scene":"s04-comparten","from":5827,"durationInFrames":150,"objective":"3.1","text":"Las VM se aíslan entre sí, pero caen con su host"},
     {"scene":"s06-comprobar","from":9971,"durationInFrames":150,"objective":"1.2","text":"Encendido no es disponible: pide la página"},
     {"scene":"s08-copia","from":13030,"durationInFrames":150,"objective":"3.4","text":"Snapshot en el mismo disco no es un backup"},
-    {"scene":"s09-soporte","from":14523,"durationInFrames":150,"objective":"4.3","text":"Fuera de soporte: excepción apuntada, no sistema al día"}
+    {"scene":"s09-soporte","from":14547,"durationInFrames":150,"objective":"4.3","text":"Fuera de soporte: excepción apuntada, no sistema al día"}
   ],
   "think": [
     {"scene":"s05-servicio","from":7367,"durationInFrames":131,"q":"¿Qué haces primero?"},
@@ -4634,7 +4638,7 @@
     {"from":12034,"sound":"glitch","src":"sfx/glitch.mp3","durationInFrames":12,"volume":0.166},
     {"from":13030,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097},
     {"from":13166,"sound":"whoosh","src":"sfx/whoosh.mp3","durationInFrames":19,"volume":0.058},
-    {"from":14523,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097}
+    {"from":14547,"sound":"ding","src":"sfx/ding.mp3","durationInFrames":26,"volume":0.097}
   ],
   "captionsOnScreen": false
 }

@@ -3,7 +3,7 @@
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "targetTotalSec": 508,
+  "targetTotalSec": 509,
   "notice": "Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto · Simulación educativa con datos ficticios · Alertópolis — material independiente, no afiliado a CompTIA",
   "chapters": [
     {
@@ -162,7 +162,7 @@
       "title": "El día que falla el disco",
       "targetSec": 56,
       "wordBudget": 151,
-      "goal": "Rótulo «un mes después». El disco de «hv-01» parpadea y aparece «error de lectura/escritura» (`errors`), el mismo icono de señal de s02. Con `question`, el disco se agrieta («si se pierde el disco…») y, con `choice`, la pregunta para pensar con dos botones: «Basta la instantánea» y «Hace falta otra copia». Respuesta: el disco se rompe y se lleva por delante las dos VM y la tarjeta de la foto a la vez (`gone`, sonido «glitch»); en miniatura, el llavero entero cae por una alcantarilla. Con `backup`, una caja «copia independiente · fuera de hv-01» en otro sitio, unida por una línea discontinua; con `tested`, un sello «restaurada y comprobada». Con `restore`, la copia baja a un segundo servidor «hv-02 · de reserva» y las dos VM, «vm-seguimiento» y «vm-ficheros», vuelven a encenderse ahí; la web carga. Rótulo de cierre (`wrap`): dos columnas, «instantánea → volver atrás» y «copia independiente → recuperar»; tarjeta de examen (3.4) al acabar la frase.",
+      "goal": "Rótulo «un mes después». El disco de «hv-01» parpadea y aparece «error de lectura/escritura» (`errors`), el mismo icono de señal de s02. Con `question`, el disco se agrieta («si se pierde el disco…») y, con `choice`, la pregunta para pensar con dos botones: «Sí, con la instantánea» y «No, hace falta otra copia». Respuesta: el disco se rompe y se lleva por delante las dos VM y la tarjeta de la foto a la vez (`gone`, sonido «glitch»); en miniatura, el llavero entero cae por una alcantarilla. Con `backup`, una caja «copia independiente · fuera de hv-01» en otro sitio, unida por una línea discontinua; con `tested`, un sello «restaurada y comprobada». Con `restore`, la copia baja a un segundo servidor «hv-02 · de reserva» y las dos VM, «vm-seguimiento» y «vm-ficheros», vuelven a encenderse ahí; la web carga. Rótulo de cierre (`wrap`): dos columnas, «instantánea → volver atrás» y «copia independiente → recuperar»; tarjeta de examen (3.4) al acabar la frase.",
       "requiredCues": [
         "errors",
         "question",
@@ -178,8 +178,8 @@
       "id": "s09-soporte",
       "chapter": 5,
       "title": "Sin más arreglos",
-      "targetSec": 45,
-      "wordBudget": 122,
+      "targetSec": 46,
+      "wordBudget": 124,
       "goal": "Foco en «vm-ficheros», ya en «hv-02». Con `eol`, el sistema operativo envejece en pantalla y el fabricante se aleja; sin marca ni versión. Con `nofix`, un buzón de parches del fabricante que se cierra con «sin más parches» y la etiqueta roja «fuera de soporte». Con `oldapp`, un programa viejo «contabilidad» atado a esa VM («solo funciona aquí»). Tres casillas que se marcan: `record` → una ficha «Excepción · vm-ficheros · la acepta: Dirección · hasta: sustitución»; `limit` → la VM rodeada por una valla con un solo paso, «solo los puestos de la oficina que lo usan · sin acceso desde Internet»; `replace` → una flecha a un sistema nuevo con «plan de sustitución». Con `notupdated`, la ficha muestra «riesgo: más bajo» pero la etiqueta roja «sin parches» sigue ahí; tarjeta de examen (4.3) al acabar la frase. Sin fechas ni productos reales.",
       "requiredCues": [
         "eol",
@@ -197,7 +197,7 @@
       "title": "Vuelta al lunes",
       "targetSec": 33,
       "wordBudget": 89,
-      "goal": "El reloj «lunes» vuelve; la web de seguimiento cargada en el navegador de un cliente, con un ✓ junto a «petición real» y las luces del servidor tachadas suavemente (`web`). El esquema completo en capas, de abajo arriba, que se apilan una a una (`layers`): «servidor físico · hv-02» → «hipervisor» → «vm-seguimiento / vm-ficheros (sistema)» → «servicio web». A un lado (`protect`), la tarjeta de la instantánea junto a la VM, con el rótulo «se borra cuando el parche va bien», y la copia independiente lejos, fuera del servidor. Rótulo de cierre (`wrap`): «busca la capa del fallo · arréglalo ahí». Sin tarjeta de examen.",
+      "goal": "El reloj «lunes» vuelve; la web de seguimiento cargada en el navegador de un cliente, con un ✓ junto a «petición real» y las luces del servidor tachadas suavemente (`web`). El esquema completo en capas, de abajo arriba, que se apilan una a una (`layers`): «servidor físico · anfitrión» → «hipervisor» → «vm-seguimiento / vm-ficheros (sistema)» → «servicio web». A un lado (`protect`), la tarjeta de la instantánea junto a la VM y la copia independiente lejos, fuera del servidor. Rótulo de cierre (`wrap`): «busca la capa del fallo · arréglalo ahí». Sin tarjeta de examen.",
       "requiredCues": [
         "web",
         "layers",
