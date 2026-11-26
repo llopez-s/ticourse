@@ -153,7 +153,7 @@ export const OP3_CLASSIFY_DATA: Record<string, ClassifyData> = {
         why: 'SRV (tipo 33). Localiza servicios con prioridad, peso, puerto y destino (RFC 2782). Active Directory publica así sus DC para _ldap y _kerberos (valor del fabricante: Microsoft; puerto 389 en su ejemplo de _ldap).',
       },
       {
-        text: 'Fijar cuánto tiempo pueden guardar los resolvedores la respuesta «ese nombre no existe» en arcedo.example',
+        text: 'Fijar cuánto tiempo pueden guardar los resolutores la respuesta «ese nombre no existe» en arcedo.example',
         answer: 'soa',
         why: 'SOA (tipo 6). El autoritativo incluye el SOA al responder NXDOMAIN o NODATA, y el tiempo de caché negativa es el menor entre su campo MINIMUM y el TTL del propio SOA (RFC 2308). El sentido antiguo de MINIMUM como «TTL mínimo de la zona» está en desuso.',
       },
@@ -204,9 +204,9 @@ export const OP3_CLASSIFY_DATA: Record<string, ClassifyData> = {
         why: 'Si hay conectividad por IP y la respuesta es NXDOMAIN (RCODE 3, «Name Error»), lo que falla es la resolución: el nombre no existe en la zona que consulta el puesto. Toca revisar el registro en los DC.',
       },
       {
-        text: 'Un puesto nuevo no consigue unirse a ad.arcedo.example: no localiza ningún controlador de dominio, aunque llega por IP a 10.20.72.11. Tiene configurados a mano los resolvedores del operador',
+        text: 'Un puesto nuevo no consigue unirse a ad.arcedo.example: no localiza ningún controlador de dominio, aunque llega por IP a 10.20.72.11. Tiene configurados a mano los resolutores del operador',
         answer: 'dns',
-        why: 'Los DC se localizan con registros SRV bajo _msdcs, que solo publican DC1 y DC2 (valor del fabricante: Microsoft). Los resolvedores del operador no conocen la zona interna. El puesto tiene que usar 10.20.72.11 y 10.20.72.12.',
+        why: 'Los DC se localizan con registros SRV bajo _msdcs, que solo publican DC1 y DC2 (valor del fabricante: Microsoft). Los resolutores del operador no conocen la zona interna. El puesto tiene que usar 10.20.72.11 y 10.20.72.12.',
       },
       {
         text: 'Las respuestas grandes llegan truncadas (bit TC) y el reintento falla porque el cortafuegos solo deja pasar UDP 53',

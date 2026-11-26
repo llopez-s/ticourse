@@ -117,10 +117,10 @@ dc2.ad.arcedo.example.                         IN    A    10.20.72.12
     {
       t: 'check',
       q: {
-        q: 'DHCP2 (`10.20.72.22`) intenta registrar en DC1 el nombre de un portátil con una actualización firmada con TSIG, y DC1 la rechaza con el error BADTIME. La clave compartida es correcta. ¿Qué hay que revisar primero?',
+        q: 'En otra red, un servidor DHCP registra los nombres de los portátiles en un servidor DNS que no es de Active Directory, con actualizaciones firmadas con TSIG y una clave compartida. El servidor DNS rechaza una con el error BADTIME, y la clave es correcta. ¿Qué hay que revisar primero?',
         choices: [
-          'Que la zona `ad.arcedo.example` esté firmada con DNSSEC',
-          'Que la hora de DHCP2 y la de DC1 no se separen más que el margen permitido (Fudge)',
+          'Que la zona esté firmada con DNSSEC',
+          'Que la hora del servidor DHCP y la del servidor DNS no se separen más que el margen permitido (Fudge)',
           'Que el TTL de los registros del portátil sea mayor de 300 segundos',
           'Que la actualización vaya por el puerto TCP 853',
         ],

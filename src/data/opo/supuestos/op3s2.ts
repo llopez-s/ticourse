@@ -107,7 +107,7 @@ const op3s2: Supuesto = {
         {
           t: 'list',
           items: [
-            '**Hora (decisión del Consorcio):** DC1, que tiene el rol de emulador de PDC, toma la hora de NTP1 y NTP2. DC2 y los equipos del dominio la toman por la jerarquía de dominio de Windows (comportamiento de Windows): DC2, de DC1, y los puestos de la sede, también de DC1. Los equipos que no son del dominio (conmutadores, encaminadores, servidores Linux) apuntan directamente a NTP1 y NTP2.',
+            '**Hora (decisión del Consorcio):** DC1, que tiene el rol de emulador de PDC, toma la hora de NTP1 y NTP2. DC2 y los equipos del dominio la toman por la jerarquía de dominio de Windows (comportamiento de Windows): DC2, de DC1, y los puestos, de un controlador del dominio; con DC2 sin sincronizar, de DC1. Los equipos que no son del dominio (conmutadores, encaminadores, servidores Linux) apuntan directamente a NTP1 y NTP2.',
             '**Agentes relay de DHCP:** las SVI de los conmutadores de distribución de la sede y el encaminador de cada oficina comarcal.',
             '**Oficinas comarcales:** llegan a la sede por la VPN MPLS del operador y salen a Internet a través de la sede.',
           ],

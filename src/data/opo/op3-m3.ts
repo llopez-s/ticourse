@@ -126,7 +126,7 @@ Obtenida por DORA a las 08:00 · servidor que la concede: DHCP1 10.20.72.21
     },
     {
       t: 'p',
-      md: 'La palabra **ámbito** (*scope*) no aparece en la RFC 2131. La norma solo dice que el servidor elige la dirección según la **subred por la que llegó el mensaje** o, si lo trajo un relay, según la dirección que figura en **`giaddr`** (§4.3.1). «Ámbito» es un término de producto. En la documentación de **Microsoft** (Windows Server), un ámbito es una agrupación administrativa de las direcciones IP de los equipos de una subred: se crea **uno por subred física**, con su intervalo de direcciones, su máscara, la duración de la concesión y sus opciones (puerta de enlace, DNS). También son de fabricante el **intervalo de exclusión**, un rango contiguo dentro del ámbito que el servidor no reparte porque está ocupado por equipos con dirección fija (encaminadores, servidores, impresoras), y la **reserva**, que hace que un equipo reciba siempre la misma dirección. La reserva es la versión de producto de la **asignación manual** que sí define la RFC. El ámbito de la VLAN 10 del Consorcio reparte de `10.20.10.100` a `10.20.10.250`, con puerta `10.20.10.1`, DNS `10.20.72.11` y `10.20.72.12` y concesión de 8 horas. Las direcciones bajas quedan fuera del intervalo, así que no hace falta excluirlas; la impresora de la planta 2, en cambio, tiene una reserva en `10.20.10.200`, dentro del ámbito.',
+      md: 'La palabra **ámbito** (*scope*) no aparece en la RFC 2131. La norma solo dice que el servidor elige la dirección según la **subred por la que llegó el mensaje** o, si lo trajo un relay, según la dirección que figura en **`giaddr`** (§4.3.1). «Ámbito» es un término de producto. En la documentación de **Microsoft** (Windows Server), un ámbito es una agrupación administrativa de las direcciones IP de los equipos de una subred: se crea **uno por subred física**, con su intervalo de direcciones, su máscara, la duración de la concesión y sus opciones (puerta de enlace, DNS). También son de fabricante el **intervalo de exclusión**, un rango contiguo dentro del ámbito que el servidor no reparte porque está ocupado por equipos con dirección fija (encaminadores, servidores, impresoras), y la **reserva**, que hace que un equipo reciba siempre la misma dirección. La reserva es la versión de producto de la **asignación manual** que sí define la RFC. El ámbito de la VLAN 10 del Consorcio reparte de `10.20.10.100` a `10.20.10.250`, con puerta `10.20.10.1`, DNS `10.20.72.11` y `10.20.72.12` y concesión de 8 horas. Las direcciones bajas quedan fuera del intervalo, así que no hace falta excluirlas; el equipo de videoconferencia de la sala de reuniones, en cambio, tiene una reserva en `10.20.10.200`, dentro del ámbito.',
     },
     {
       t: 'check',
@@ -346,7 +346,7 @@ SVI
       id: 'op3m3q5',
       domain: 'Servicios de red',
       prompt:
-        'El Consorcio quiere que todos los puestos usen sus NTP internos, 10.20.72.41 y 10.20.72.42, configurados desde DHCP. ¿Qué opción debe añadir a los ámbitos?',
+        'El Consorcio quiere que las impresoras y demás equipos que no son del dominio y toman su configuración por DHCP conozcan sus NTP internos, 10.20.72.41 y 10.20.72.42. ¿Qué opción debe añadir a los ámbitos?',
       choices: [
         'La opción 4, Time Server',
         'La opción 42, Network Time Protocol Servers',

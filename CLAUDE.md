@@ -170,8 +170,8 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   (`op3m1` DNS: cómo funciona; `op3m2` DNS en la organización; `op3m3` DHCP; `op3m4` NTP y la hora; `op3m5` Servicios de
   conectividad), 40 questions, 26 checkpoints, 3 labs (`opl3a` order DORA with relay; `opl3b` classify DNS records;
   `opl3c` classify faults by service), 30 cards, 67 glossary entries of which 5 have `ca`, 2 supuestos `op3s1` «El edificio
-  anexo de la sede» and `op3s2` «Un lunes sin hora ni nombres» (the latter with `src/data/opo/op3s2.calc.test.ts`, which
-  recomputes its figures), boss NOMBRE EQUIVOCADO / EL RELOJ QUE ADELANTA. Sources: dossier
+  anexo de la sede» and `op3s2` «Un lunes sin hora ni nombres» (each with its own `src/data/opo/op3s1.calc.test.ts` /
+  `op3s2.calc.test.ts`, which recomputes its figures), boss NOMBRE EQUIVOCADO / EL RELOJ QUE ADELANTA. Sources: dossier
   `docs/superpowers/sources/2026-11-26-op3-fuentes.md` (RFCs from rfc-editor.org and IANA; DHCPv6 is RFC 9915, which
   obsoletes 8415; DHCPv4 failover and WPAD are expired drafts, so they are labelled as such; Microsoft/ISC values are
   labelled as vendor behaviour). Design `docs/superpowers/specs/2026-11-26-opo-op3-servicios-design.md`, plan
@@ -184,7 +184,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   NIS2 not yet transposed on that date; the CCN-STIC guides 803/804/808/817/824 could not be read, so nothing is
   claimed as their content; ISO 27001/27002 only at the level of what they are). Design
   `docs/superpowers/specs/2026-11-26-opo-op6-ens-design.md`; the canon `docs/superpowers/canon/arcedo.md` §7b holds
-  the Consorcio's security organisation, and bodies named by the law (CCN, CCN-CERT, AEPD, INCIBE-CERT, Cl@ve) are
+  the Consorcio's security organisation (§7c holds the op3 network-services facts), and bodies named by the law (CCN, CCN-CERT, AEPD, INCIBE-CERT, Cl@ve) are
   named in content. Differences from the other two tracks: **everything is in
   Spanish, questions included** (the real exams are not in English); six `Domain` values in Spanish, in syllabus
   order (`Redes de comunicaciones`, `Infraestructuras de comunicaciones`, `Servicios de red`, `Balanceo y alta
@@ -199,7 +199,8 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `opo.test.ts` recomputes the subnet lab (`opl1a`) from the CIDR in each category label, so labels must
   keep the `a.b.c.d/nn` form. The store shape did not change (no migration). Scenario: the fictional
   Consorcio Provincial de Arcedo — sede 10.20.10/20/30/99.0/24 by VLAN, oficinas comarcales in
-  10.20.8.0/22, CPD 10.20.72.0/21; keep new lessons on those ranges. One version of the scenario (2026-11-25): the
+  10.20.8.0/22, CPD 10.20.72.0/21; block op3 adds VLAN 50 `10.20.50.0/23` (annex, supuesto `op3s1`) and an
+  office on `10.20.9.0/24` (supuesto `op3s2`); keep new lessons on those ranges. One version of the scenario (2026-11-25): the
   offices reach the sede over the operator's MPLS layer-3 VPN with an IPsec backup, and each office's /30 is its link to
   the operator's router; the sede's two layer-3 distribution switches route between VLANs (SVI); Internet is one
   operator, one public address (`203.0.113.10`) and a static default route, so BGP, an own AS or a second public address
@@ -318,7 +319,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   and each device keeps its own copy locally, but it is the one place where a device whose
   `localStorage` was cleared *before* its next push can lose data. Retrying once after a 404 on
   the first sync for a code would shrink the window.
-- **Tests:** vitest, `npm test` (489 tests in `src/**/*.test.ts`, 33 files). Content tests assert
+- **Tests:** vitest, `npm test` (492 tests in `src/**/*.test.ts`, 34 files). Content tests assert
   Domain 1–5 completeness, that every Security+ boss section has ≥12 questions, 4 choices + valid
   answer per question, ids unique, lab data present, and (placement blocks) that every content
   section has exactly one 12-question block with contiguous ids and non-empty text. Partial

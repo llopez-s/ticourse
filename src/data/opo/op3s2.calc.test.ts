@@ -21,8 +21,7 @@ const secs = (hms: string): number => {
 };
 
 const load = async () => {
-  // op3s2 se registra en LOADERS aparte; si aún no está, se importa directamente.
-  const s = (await loadSupuesto('op3s2')) ?? (await import('./supuestos/op3s2')).default;
+  const s = (await loadSupuesto('op3s2'))!;
   return s;
 };
 
