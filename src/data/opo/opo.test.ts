@@ -78,6 +78,10 @@ describe('pista Redes y ENS', () => {
     const order = opo.sections.map((s) => s.id);
     expect(order.indexOf('op3')).toBeGreaterThan(order.indexOf('op1'));
     expect(order.indexOf('op3')).toBeLessThan(order.indexOf('op6'));
+    const cards = opo.flashcards.filter((c) => c.sectionId === 'op3');
+    expect(cards).toHaveLength(30);
+    expect(cards.map((c) => c.id)).toEqual(Array.from({ length: 30 }, (_, i) => `fco${301 + i}`));
+    expect(opo.glossary.filter((g) => g.sectionId === 'op3')).toHaveLength(67);
   });
 
   it('block 6 (ENS y normativa) lessons follow the shape', () => {

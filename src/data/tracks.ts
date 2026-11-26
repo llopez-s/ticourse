@@ -42,6 +42,7 @@ import { OP1_MODULES } from './opo/op1';
 import { OP3_MODULES } from './opo/op3';
 import { OP6_MODULES } from './opo/op6';
 import { OP1_FLASHCARDS, OP1_GLOSSARY } from './opo/op1-cards';
+import { OP3_FLASHCARDS, OP3_GLOSSARY } from './opo/op3-cards';
 import { OP6_FLASHCARDS, OP6_GLOSSARY } from './opo/op6-cards';
 import { OP_LABS } from './opo/labs';
 import type { SupuestoMeta } from '../lib/supuesto';
@@ -182,8 +183,8 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
     sections: OP_SECTIONS,
     modules: [...OP1_MODULES, ...OP3_MODULES, ...OP6_MODULES],
     placement: [],
-    flashcards: [...OP1_FLASHCARDS, ...OP6_FLASHCARDS],
-    glossary: [...OP1_GLOSSARY, ...OP6_GLOSSARY],
+    flashcards: [...OP1_FLASHCARDS, ...OP3_FLASHCARDS, ...OP6_FLASHCARDS],
+    glossary: [...OP1_GLOSSARY, ...OP3_GLOSSARY, ...OP6_GLOSSARY],
     labs: OP_LABS,
     ranks: OP_RANKS,
     exam: {
