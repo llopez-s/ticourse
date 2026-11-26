@@ -24,6 +24,7 @@ const RFC1918 = { label: 'RFC 1918: direcciones privadas', href: 'https://www.rf
 const IEEE8021Q = { label: 'IEEE 802.1Q: puentes y VLAN' };
 const RFC9568 = { label: 'RFC 9568: VRRP versión 3', href: 'https://www.rfc-editor.org/rfc/rfc9568' };
 const RFC4364 = { label: 'RFC 4364: VPN de capa 3 sobre MPLS', href: 'https://www.rfc-editor.org/rfc/rfc4364' };
+const RFC4577 = { label: 'RFC 4577: OSPF entre PE y CE en VPN BGP/MPLS', href: 'https://www.rfc-editor.org/rfc/rfc4577' };
 
 const INCIDENCIA =
   'Tres semanas después de la puesta en marcha, a las 09:40, una avería de la operadora deja caído el acceso MPLS. ' +
@@ -48,7 +49,7 @@ const op1s1: Supuesto = {
         { t: 'p', md: '**De:** Gerencia del Consorcio Provincial de Arcedo · **Para:** Servicio de Informática · **Asunto:** red del edificio nuevo de la oficina comarcal' },
         {
           t: 'p',
-          md: 'Una de nuestras oficinas comarcales se traslada a un edificio nuevo y queremos estrenar red, diseñada desde cero. Para ese edificio se reserva el bloque `10.20.11.0/24`, dentro del `10.20.8.0/22` de las oficinas comarcales. Estas son las necesidades, en este orden:',
+          md: 'Otra de nuestras oficinas comarcales, no la del bloque `10.20.8.0/24`, se traslada a un edificio nuevo y queremos estrenar red, diseñada desde cero. Para ese edificio se reserva el bloque `10.20.11.0/24`, dentro del `10.20.8.0/22` de las oficinas comarcales. Estas son las necesidades, en este orden:',
         },
         {
           t: 'table',
@@ -65,7 +66,7 @@ const op1s1: Supuesto = {
           t: 'list',
           items: [
             'Cada necesidad, su propia red: los invitados y las cámaras no deben compartir red con los puestos.',
-            'En cada una de esas cinco subredes, reserva **tres direcciones** para la red: los dos encaminadores (routers) y la puerta de enlace que comparten.',
+            'En cada una de esas cinco subredes, reserva **tres direcciones** para los equipos de red: los dos encaminadores (routers) y la puerta de enlace que comparten.',
             'El enlace con la operadora necesita su propia subred, del tamaño que pida la operadora.',
             'La oficina tiene que seguir trabajando si se apaga un encaminador o si cae el acceso principal, sin tocar la configuración de los ordenadores.',
             'Toda la salida de la oficina, hacia la sede y hacia Internet, pasa por la sede central.',
@@ -182,7 +183,7 @@ interfaz P96                      # troncal hacia ENC-B
           items: [
             '**Acceso principal:** VPN de capa 3 sobre MPLS, la misma que usan sus otras sedes, con la clase de servicio para la voz. Se entrega en fibra directamente en el puerto WAN de su CE (ENC-A): si el acceso cae, el puerto cae.',
             '**Enlace PE-CE:** necesitamos una subred **/30** de su direccionamiento. Su CE usará la primera dirección útil y nuestro PE, la segunda.',
-            '**Encaminamiento:** el PE intercambiará rutas con su CE por OSPF. Le anunciará las redes de sus demás sedes y la ruta por defecto que origina su sede central, porque su salida a Internet está allí.',
+            '**Encaminamiento:** el PE intercambiará rutas con su CE por OSPF. Le anunciará las redes de sus demás sedes y la ruta por defecto que origina su sede central, porque su salida a Internet está allí, y aprenderá de su CE las redes de la oficina.',
             '**Acceso de respaldo:** Internet de mejor esfuerzo, sin garantía de retardo, conectado a ENC-B. Dirección `198.51.100.22/30`, puerta de enlace de la operadora `198.51.100.21`. El túnel IPsec hacia su sede (`203.0.113.10`) lo configuran ustedes; la sede ya tiene preparado su extremo.',
           ],
         },
@@ -222,6 +223,9 @@ interfaz P96                      # troncal hacia ENC-B
           text: `interfaz wan0                     # acceso MPLS, enlace con el PE
   ip 10.20.11.209/30
   ospf activado                   # vecino: el PE, 10.20.11.210
+
+# las cinco redes de la oficina se anuncian al PE por OSPF (interfaces pasivas)
+ospf pasivo en lan.111 lan.112 lan.113 lan.114 lan.115
 
 interfaz lan.999
   etiqueta 802.1Q 999 nativa      # sin dirección IP
@@ -289,7 +293,7 @@ registro
       id: 'f1',
       title: 'Direccionamiento del bloque',
       context:
-        'Reparte el bloque `10.20.11.0/24` con VLSM, como en la lección: ordena las necesidades **de mayor a menor**, da a cada una el prefijo más largo que la aloje (recuerda que la dirección de red y la de difusión no se asignan) y asígnale el **primer bloque libre** que empiece en un múltiplo de su tamaño. Si dos necesidades piden el mismo tamaño, respeta el orden del memorando. Cuenta las tres direcciones de red que pide la gerencia en cada subred de equipos, y el tamaño que pide la operadora para su enlace.',
+        'Reparte el bloque `10.20.11.0/24` con VLSM, como en la lección: ordena las necesidades **de mayor a menor**, da a cada una el prefijo más largo que la aloje (recuerda que la dirección de red y la de difusión no se asignan) y asígnale el **primer bloque libre** que empiece en un múltiplo de su tamaño. Si dos necesidades piden el mismo tamaño, respeta el orden del memorando. Cuenta las tres direcciones para los equipos de red que pide la gerencia en cada subred de equipos, y el tamaño que pide la operadora para su enlace.',
       carry:
         'Plan correcto: Puestos `10.20.11.0/26`, Voz `10.20.11.64/26`, Invitados `10.20.11.128/27`, Cámaras `10.20.11.160/27`, Impresoras `10.20.11.192/28` y enlace con la operadora `10.20.11.208/30`. Quedan libres 44 direcciones, de `10.20.11.212` a `10.20.11.255`.',
       tasks: [
@@ -300,9 +304,9 @@ registro
           prompt: '¿Qué longitud de prefijo necesita la subred de las cámaras? Escribe solo el número (por ejemplo, 24 para un /24).',
           answer: 27,
           points: 5,
-          hint: { text: 'Suma a las cámaras las tres direcciones de red del memorando antes de elegir el tamaño.', cost: 1 },
+          hint: { text: 'Suma a las cámaras las tres direcciones para los equipos de red que pide el memorando antes de elegir el tamaño.', cost: 1 },
           explain:
-            'Las 12 cámaras más las tres direcciones de red (dos encaminadores y la puerta de enlace compartida) suman 15 direcciones. Un /28 da 16 − 2 = 14 utilizables, una menos de las necesarias; el siguiente tamaño, /27, da 30. El /28 tienta porque las 12 cámaras caben solas en él: falla en cuanto se cuentan los equipos de red.',
+            'Las 12 cámaras más las tres direcciones de los equipos de red (dos encaminadores y la puerta de enlace compartida) suman 15 direcciones. Un /28 da 16 − 2 = 14 utilizables, una menos de las necesarias; el siguiente tamaño, /27, da 30. El /28 tienta porque las 12 cámaras caben solas en él: falla en cuanto se cuentan los equipos de red.',
           refs: [L2, RFC4632],
         },
         {
@@ -325,7 +329,7 @@ registro
           ],
           points: 12,
           explain:
-            'Con las tres direcciones de red, Puestos (61) y Voz (48) piden un /26 (62 utilizables); Invitados (27) y Cámaras (15), un /27 (30); Impresoras (12), un /28 (14); y la operadora pide un /30. De mayor a menor y, a igual tamaño, en el orden del memorando: Puestos `.0/26` (difusión `.63`), Voz `.64/26` (`.127`), Invitados `.128/27` (`.159`), Cámaras `.160/27` (`.191`), Impresoras `.192/28` (`.207`) y el enlace `.208/30` (`.211`). La trampa es dejar las cámaras en un /28: entonces las impresoras subirían a `.160` y las cámaras caerían en `.176`, sin sitio para sus equipos de red. También tienta asignar en el orden del memorando y no por tamaño, lo que deja huecos, porque cada subred tiene que empezar en un múltiplo de su tamaño.',
+            'Con las tres direcciones de los equipos de red, Puestos (61) y Voz (48) piden un /26 (62 utilizables); Invitados (27) y Cámaras (15), un /27 (30); Impresoras (12), un /28 (14); y la operadora pide un /30. De mayor a menor y, a igual tamaño, en el orden del memorando: Puestos `.0/26` (difusión `.63`), Voz `.64/26` (`.127`), Invitados `.128/27` (`.159`), Cámaras `.160/27` (`.191`), Impresoras `.192/28` (`.207`) y el enlace `.208/30` (`.211`). La trampa es dejar las cámaras en un /28: entonces las impresoras subirían a `.160` y las cámaras caerían en `.176`, sin sitio para sus equipos de red. También tienta asignar en el orden del memorando y no por tamaño, lo que deja huecos, porque cada subred tiene que empezar en un múltiplo de su tamaño.',
           refs: [L2, RFC4632, RFC1918],
         },
         {
@@ -399,7 +403,7 @@ registro
           answerSets: [['d-config']],
           points: 5,
           explain:
-            'En la configuración de SW-ACC, el troncal P96 hacia ENC-B solo permite las VLAN 111, 112, 113 y 115: la 114, la de las cámaras, no pasa, así que ENC-B nunca recibiría sus tramas. Es la avería de VLAN más frecuente y se ve en la lista de VLAN permitidas del troncal, no en los puertos de acceso (el de las cámaras, P70, está bien). El esquema tienta porque dibuja el enlace P96, pero no dice qué VLAN transporta.',
+            'En la configuración de SW-ACC, el troncal P96 hacia ENC-B solo permite las VLAN 111, 112, 113 y 115: la 114, la de las cámaras, no pasa, así que ENC-B nunca recibiría sus tramas. Es una avería de VLAN muy habitual y se ve en la lista de VLAN permitidas del troncal, no en los puertos de acceso (el de las cámaras, P70, está bien). El esquema tienta porque dibuja el enlace P96, pero no dice qué VLAN transporta.',
           refs: [L3],
         },
         {
@@ -428,7 +432,7 @@ registro
       context:
         'Toca el encaminamiento. Las cinco VLAN tienen que hablar entre sí y con la sede, y la gerencia quiere que la oficina siga trabajando si se apaga un encaminador o si cae el acceso MPLS. Hay un acta nueva en el expediente. Las distancias administrativas de este supuesto son los valores por defecto de Cisco (conectada 0, estática 1, OSPF 110), que no están en ningún estándar.',
       carry:
-        'Puertas de enlace en subinterfaces 802.1Q de ENC-A y ENC-B, compartidas con VRRP: la IP virtual es la primera dirección útil de cada subred (`10.20.11.1` en Puestos), ENC-A tiene la segunda y prioridad 120 (maestro) y ENC-B la tercera (`10.20.11.3` en Puestos) y prioridad 100. ENC-A aprende del PE por OSPF la ruta por defecto (distancia 110) y lleva una estática flotante por defecto hacia ENC-B, `10.20.11.3`, con distancia 130. ENC-B lo envía todo por el túnel IPsec hacia la sede.',
+        'Puertas de enlace en subinterfaces 802.1Q de ENC-A y ENC-B, compartidas con VRRP, con ENC-A como maestro mientras funcione. ENC-A aprende del PE por OSPF la ruta por defecto y, para cuando caiga el acceso MPLS, lleva como respaldo una estática flotante por defecto hacia ENC-B. ENC-B lo envía todo por el túnel IPsec hacia la sede.',
       tasks: [
         {
           id: 'f3t1',
@@ -444,7 +448,7 @@ registro
           answer: 'a',
           points: 5,
           explain:
-            'SW-ACC es de capa 2 y no encamina, así que la puerta de enlace tiene que vivir en los encaminadores, con una subinterfaz por VLAN sobre su troncal (router-on-a-stick). Para que la compartan sin tocar los equipos hace falta un protocolo de redundancia de primer salto, y como ENC-B es de otro fabricante y no admite HSRP, que es propietario de Cisco, queda VRRP, el estándar abierto. HSRP tienta porque ENC-A sí lo admite, pero los dos encaminadores tienen que hablar el mismo protocolo. Cambiar la puerta de enlace a mano incumple el requisito de la gerencia.',
+            'SW-ACC es de capa 2 y no encamina, así que la puerta de enlace tiene que vivir en los encaminadores, con una subinterfaz por VLAN sobre su troncal (*router-on-a-stick*). Para que la compartan sin tocar los equipos hace falta un protocolo de redundancia de primer salto, y como ENC-B es de otro fabricante y no admite HSRP, que es propietario de Cisco, queda VRRP, el estándar abierto. HSRP tienta porque ENC-A sí lo admite, pero los dos encaminadores tienen que hablar el mismo protocolo. Cambiar la puerta de enlace a mano incumple el requisito de la gerencia.',
           refs: [L4, L3, RFC9568],
         },
         {
@@ -480,8 +484,8 @@ registro
           answer: ['o1', 'o2', 'o3', 'o4', 'o5', 'o6'],
           points: 6,
           explain:
-            'Al caer el puerto se pierde el vecino OSPF y con él sus rutas; sin la ruta de distancia 110, la estática de 130 «sale a flote». Después llega el paquete: el PC no sabe nada de esto y lo envía a la IP virtual, que sigue en ENC-A porque VRRP solo vigila que el maestro envíe sus anuncios, no el estado de su acceso WAN. ENC-A lo pasa a ENC-B por la propia VLAN y ENC-B lo mete en el túnel. Tienta poner a ENC-B como primer receptor del paquete, como si VRRP cambiara de maestro al caer el acceso: no lo hace, y por eso la estática flotante de ENC-A es imprescindible.',
-          refs: [L4, L5, RFC9568],
+            'Al caer el puerto se pierde el vecino OSPF y con él sus rutas; sin la ruta de distancia 110, la estática de 130 «sale a flote». Después llega el paquete: el PC no sabe nada de esto y lo envía a la IP virtual, que sigue en ENC-A porque VRRP solo vigila que el maestro envíe sus anuncios, no el estado de su acceso WAN (algunos fabricantes permiten que la prioridad baje al caer una interfaz, pero es una función suya, no del estándar, y aquí no está configurada). ENC-A lo pasa a ENC-B por la propia VLAN y ENC-B lo mete en el túnel. Tienta poner a ENC-B como primer receptor del paquete, como si VRRP cambiara de maestro al caer el acceso: no lo hace, y por eso la estática flotante de ENC-A es imprescindible.',
+          refs: [L4, L5, RFC9568, RFC4577],
         },
         {
           id: 'f3t4',
@@ -490,7 +494,7 @@ registro
           prompt: 'Sobre la estática flotante de ENC-A (valores por defecto de Cisco), marca **todas** las afirmaciones ciertas.',
           options: [
             { id: 'a', text: 'Mientras el PE anuncie la ruta por defecto por OSPF (110), la estática con distancia 130 no aparece en la tabla' },
-            { id: 'b', text: 'Con la distancia por defecto de las estáticas (1), ganaría siempre a la de OSPF y el tráfico iría por ENC-B aunque el acceso MPLS funcionara' },
+            { id: 'b', text: 'Con la distancia por defecto de las estáticas (1), ganaría a la ruta por defecto de OSPF y el tráfico hacia Internet iría por ENC-B aunque el acceso MPLS funcionara' },
             { id: 'c', text: 'Con distancia 255 no se instalaría nunca, ni siquiera al caer el acceso MPLS' },
             { id: 'd', text: 'VRRP pasa el papel de maestro a ENC-B en cuanto cae el acceso MPLS de ENC-A' },
             { id: 'e', text: 'La distancia administrativa viaja en los anuncios de OSPF, así que el PE también la conoce' },
@@ -499,7 +503,7 @@ registro
           answer: ['a', 'b', 'c'],
           points: 6,
           explain:
-            'Una estática flotante lleva una distancia mayor que la del protocolo al que respalda: con 130 pierde frente a OSPF (110) y solo entra al desaparecer esa ruta; con 1 ganaría siempre, y con 255 (inalcanzable) no entraría nunca. La distancia administrativa es un valor local de cada fabricante y no viaja en ningún protocolo. Un prefijo más largo tienta porque parece «más preciso», pero el prefijo más largo se impone siempre y el tráfico iría por el respaldo de forma permanente. VRRP no sabe nada del acceso WAN.',
+            'Una estática flotante lleva una distancia mayor que la del protocolo al que respalda: con 130 pierde frente a OSPF (110) y solo entra al desaparecer esa ruta; con 1 ganaría siempre a la ruta por defecto de OSPF y todo lo que solo encaja en ella, como el tráfico hacia Internet, iría por el respaldo (las redes de las otras sedes seguirían por MPLS, porque llegan con prefijos más largos); y con 255 (inalcanzable) no entraría nunca. La distancia administrativa es un valor local de cada fabricante y no viaja en ningún protocolo. Un prefijo más largo tienta porque parece «más preciso», pero el prefijo más largo se impone siempre y el tráfico que cubriera iría por el respaldo de forma permanente. VRRP, tal como lo define el estándar, no sabe nada del acceso WAN.',
           refs: [L4],
         },
       ],
@@ -539,7 +543,7 @@ registro
           points: 5,
           hint: { text: 'Necesitas un documento con el siguiente salto de la ruta y otro con la dirección que se acordó para ENC-B.', cost: 1 },
           explain:
-            'La configuración de ENC-A, y también el registro de la incidencia, muestran el siguiente salto de la estática: `10.20.1.3`. El acta fija que ENC-B tiene la tercera dirección útil de cada subred, es decir, `10.20.11.3` en Puestos. Hace falta uno de esos dos documentos y el acta: con la configuración sola sabes a dónde apunta la ruta, pero no a dónde debería apuntar. El esquema tienta, pero no lleva direcciones.',
+            'La configuración de ENC-A, y también el registro de la incidencia, muestran el siguiente salto de la estática: `10.20.1.3`. El acta fija que ENC-B tiene la tercera dirección útil de cada subred, es decir, `10.20.11.3` en Puestos. Hace falta uno de esos dos documentos y el acta: con la configuración sola sabes a dónde apunta la ruta, pero no a dónde debería apuntar. El esquema y el inventario tientan, pero no llevan direcciones: muestran que los dos encaminadores comparten las VLAN, y solo el acta dice qué dirección tiene ENC-B.',
           refs: [L4],
         },
         {
@@ -550,7 +554,7 @@ registro
           options: [
             { id: 'a', text: 'Las rutas de OSPF, la ruta por defecto incluida, desaparecieron al caer wan0' },
             { id: 'b', text: 'La estática flotante no ha entrado en la tabla' },
-            { id: 'c', text: 'La estática no puede instalarse porque su siguiente salto no está en ninguna red conectada de ENC-A' },
+            { id: 'c', text: 'La estática no puede instalarse porque su siguiente salto no se alcanza con ninguna ruta que le queda a ENC-A: no está en ninguna de sus redes conectadas' },
             { id: 'd', text: 'ENC-B ha tomado el papel de maestro de VRRP' },
             { id: 'e', text: 'La estática no entra porque su distancia (130) es mayor que la de OSPF (110)' },
             { id: 'f', text: 'Los puestos no llegan a la sede porque ENC-A ha perdido la ruta hacia su propia subred' },
@@ -559,7 +563,7 @@ registro
           points: 6,
           explain:
             'El registro muestra la caída de wan0, la pérdida del vecino OSPF y que la estática tiene el «siguiente salto inalcanzable» y no se instala; la tabla solo conserva las cinco redes conectadas. Un encaminador solo instala una estática si sabe llegar a su siguiente salto, y `10.20.1.3` no cae en ninguna red de ENC-A ni en ninguna ruta que le quede. La distancia 130 tienta como explicación, pero solo compite con la ruta de OSPF, que ya no existe. ENC-A sigue siendo maestro de VRRP (lo dice el registro), y las redes de la oficina siguen en la tabla como conectadas.',
-          refs: [L4, L1],
+          refs: [L4, L1, RFC4577],
         },
         {
           id: 'f4t3',
@@ -575,7 +579,7 @@ registro
           answer: 'b',
           points: 4,
           explain:
-            'El fallo es el siguiente salto: con `10.20.11.3`, la dirección de ENC-B en Puestos, la ruta se puede instalar y con 130 sigue flotando por debajo de OSPF. Bajarla a 1 tienta porque parece darle prioridad, pero no arregla el salto inalcanzable y, una vez corregido el salto, haría que el tráfico fuera siempre por el respaldo. Una ruta por wan0 no sirve con wan0 caído. Con prioridad 130, ENC-B superaría los 120 de ENC-A y se quedaría siempre como maestro, en contra del acta.',
+            'El fallo es el siguiente salto: con `10.20.11.3`, la dirección de ENC-B en Puestos, la ruta se puede instalar y con 130 sigue flotando por debajo de OSPF. Bajarla a 1 tienta porque parece darle prioridad, pero no arregla el salto inalcanzable y, una vez corregido el salto, ganaría a la ruta por defecto de OSPF: el tráfico hacia Internet iría siempre por el respaldo aunque el acceso MPLS funcionara. Una ruta por wan0 no sirve con wan0 caído. Con prioridad 130, ENC-B superaría los 120 de ENC-A y se quedaría siempre como maestro, en contra del acta.',
           refs: [L4, RFC9568],
         },
         {
@@ -624,7 +628,7 @@ registro
       ],
     },
   ],
-  sources: [L1, L2, L3, L4, L5, RFC1918, RFC4632, IEEE8021Q, RFC9568, RFC4364],
+  sources: [L1, L2, L3, L4, L5, RFC1918, RFC4632, IEEE8021Q, RFC9568, RFC4364, RFC4577],
 };
 
 export default op1s1;
