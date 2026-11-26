@@ -139,15 +139,15 @@ Como 120 ms < 125 ms (STEPT), el cliente corrige de forma gradual, sin dar un sa
       rows: [
         ['Servidores NTP internos `10.20.72.41` y `10.20.72.42` (CPD)', 'Servidores públicos de referencia', 'Son la entrada de la hora en la red; los dos dan redundancia si uno falla'],
         ['Controlador de dominio con el rol de emulador de PDC (DC1 `10.20.72.11` o DC2 `10.20.72.12`)', '`10.20.72.41` y `10.20.72.42`', 'Es la fuente externa fiable que Microsoft pide para el emulador de PDC'],
-        ['El otro controlador de dominio y los puestos y servidores del dominio `ad.arcedo.example`', 'La jerarquía del dominio, que acaba en los servidores internos', 'Jerarquía de Windows (valor del fabricante): Kerberos funciona con la misma hora que el KDC (Key Distribution Center, centro de distribución de claves), que es el propio controlador'],
-        ['Conmutadores, cortafuegos, encaminadores de las oficinas, DHCP1 y DHCP2, servidores fuera del dominio', '`10.20.72.41` y `10.20.72.42`', 'Sus registros tienen que casar con los del resto; DHCP1 y DHCP2 necesitan la misma hora para la conmutación por error'],
+        ['El otro controlador de dominio y los puestos y servidores miembros del dominio `ad.arcedo.example`, entre ellos DHCP1 (`10.20.72.21`) y DHCP2 (`10.20.72.22`)', 'La jerarquía del dominio, que acaba en los servidores internos', 'Jerarquía de Windows (valor del fabricante): Kerberos funciona con la misma hora que el KDC (Key Distribution Center, centro de distribución de claves), que es el propio controlador; DHCP1 y DHCP2 comparten así la hora que necesita su conmutación por error'],
+        ['Equipos fuera del dominio: conmutadores, cortafuegos, encaminadores de las oficinas y servidores que no son del dominio', '`10.20.72.41` y `10.20.72.42`', 'No siguen la jerarquía de Windows, y sus registros tienen que casar con los del resto'],
       ],
     },
     {
       t: 'callout',
       kind: 'example',
       title: 'En el Consorcio de Arcedo: el reparto de la hora',
-      md: 'Los dos servidores NTP del CPD, `10.20.72.41` y `10.20.72.42`, son los únicos que hablan con los servidores públicos de referencia, así que el cortafuegos puede limitar a ellos la salida de NTP. Todo lo demás se sincroniza con ellos: los conmutadores de distribución de la sede y los encaminadores de las oficinas comarcales, los servidores DHCP1 (`10.20.72.21`) y DHCP2 (`10.20.72.22`), que funcionan en conmutación por error, y el proxy. Los equipos del dominio `ad.arcedo.example` siguen la jerarquía de Windows, cuya cabeza, el controlador con el rol de emulador de PDC, está apuntado a los dos servidores internos. Si esos dos servidores dicen la hora correcta, la dice toda la red; si alguien la falsea en el camino desde Internet, la falsea para todos, y por eso ese tramo es el primer candidato a protegerse con NTS. Otra vía para que los equipos conozcan los servidores de hora es DHCP: la opción que anuncia servidores **NTP** es la **42**; la opción 4, «Time Server», es del protocolo de la RFC 868, no de NTP.',
+      md: 'Los dos servidores NTP del CPD, `10.20.72.41` y `10.20.72.42`, son los únicos que hablan con los servidores públicos de referencia, así que el cortafuegos puede limitar a ellos la salida de NTP. Los equipos que no son del dominio se sincronizan directamente con ellos: los conmutadores de distribución de la sede y los encaminadores de las oficinas comarcales, por ejemplo. Los equipos miembros del dominio `ad.arcedo.example`, incluidos el otro controlador y los servidores DHCP1 (`10.20.72.21`) y DHCP2 (`10.20.72.22`), que funcionan en conmutación por error, siguen la jerarquía de Windows, cuya cabeza, el controlador con el rol de emulador de PDC, está apuntado a los dos servidores internos. Si esos dos servidores dicen la hora correcta, la dice toda la red; si alguien la falsea en el camino desde Internet, la falsea para todos, y por eso ese tramo es el primer candidato a protegerse con NTS. Otra vía para que los equipos conozcan los servidores de hora es DHCP: la opción que anuncia servidores **NTP** es la **42**; la opción 4, «Time Server», es del protocolo de la RFC 868, no de NTP.',
     },
     {
       t: 'check',
@@ -161,7 +161,7 @@ Como 120 ms < 125 ms (STEPT), el cliente corrige de forma gradual, sin dar un sa
         ],
         answer: 3,
         explain:
-          'En el Consorcio solo los dos servidores internos hablan con las fuentes externas y el resto de equipos se sincroniza con ellos, de modo que todos comparten la misma hora y el NTP hacia Internet queda limitado a dos equipos. Un equipo sin referencia directa no puede ser estrato 1, y time.windows.com es el valor por defecto de Windows fuera del dominio, no una decisión de diseño, además de que un conmutador no es un equipo Windows.',
+          'En el Consorcio solo los dos servidores internos hablan con las fuentes externas y los equipos que no son del dominio, como este conmutador, se sincronizan directamente con ellos, de modo que todos comparten la misma hora y el NTP hacia Internet queda limitado a dos equipos. Un equipo sin referencia directa no puede ser estrato 1, y time.windows.com es el valor por defecto de Windows fuera del dominio, no una decisión de diseño, además de que un conmutador no es un equipo Windows.',
       },
     },
     { t: 'h', text: 'NTS y PTP' },
@@ -179,7 +179,7 @@ Como 120 ms < 125 ms (STEPT), el cliente corrige de forma gradual, sin dar un sa
       rows: [
         ['Norma', 'RFC 5905', 'RFC 8915', 'IEEE 1588-2019'],
         ['Qué es', 'Protocolo de sincronización de relojes por red', 'Seguridad para el modo cliente-servidor de NTP', 'Protocolo de sincronización de precisión para sistemas de medida y control'],
-        ['Transporte y puertos', 'UDP 123', 'NTS-KE por TLS 1.3 en TCP 4460; la hora sigue por UDP 123', 'Puertos IANA 319 y 320'],
+        ['Transporte y puertos', 'UDP 123', 'NTS-KE por TLS 1.3 o posterior en TCP 4460; la hora sigue por UDP 123', 'Puertos IANA 319 y 320'],
         ['Cuándo se usa', 'Hora general de una organización', 'Cuando hay que autenticar el servidor de hora', 'Cuando NTP no llega a la precisión necesaria'],
       ],
     },
@@ -195,7 +195,7 @@ Como 120 ms < 125 ms (STEPT), el cliente corrige de forma gradual, sin dar un sa
         ],
         answer: 1,
         explain:
-          'La RFC 8915 separa dos piezas: NTS-KE, por TLS 1.3 en TCP 4460, y los paquetes NTPv4 con campos de extensión NTS, que siguen por UDP 123 salvo que se negocie otro puerto. Cerrar el UDP 123 dejaría sin hora a los clientes. Y NTS cubre solo el modo cliente-servidor, no la difusión.',
+          'La RFC 8915 separa dos piezas: NTS-KE, por TLS 1.3 o posterior en TCP 4460, y los paquetes NTPv4 con campos de extensión NTS, que siguen por UDP 123 salvo que se negocie otro puerto. Cerrar el UDP 123 dejaría sin hora a los clientes. Y NTS cubre solo el modo cliente-servidor, no la difusión.',
       },
     },
     {
@@ -211,7 +211,7 @@ Como 120 ms < 125 ms (STEPT), el cliente corrige de forma gradual, sin dar un sa
       t: 'callout',
       kind: 'exam',
       title: 'Lo que más se confunde',
-      md: '**Puerto:** NTP va por **UDP 123**; NTS-KE por **TCP 4460** con **TLS 1.3**; PTP usa **319 y 320**. **Estratos:** 0 sin especificar o no válido (y relojes de referencia), **1 servidor primario** (el servidor conectado al GPS, no el GPS), **2–15 secundarios**, **16 no sincronizado** (no «el peor»). **LI = 3** también indica reloj no sincronizado, pero es otro campo. **Fórmulas:** desfase θ = ½ [(T2 − T1) + (T3 − T4)]; retardo δ = (T4 − T1) − (T3 − T2). **Corrección:** menos de 125 ms, ajuste gradual; de 125 ms a 1000 s, salto; más de 1000 s, diagnóstico y salida. **Kerberos:** la RFC 4120 deja la tolerancia configurable, «del orden de 5 minutos»; los **5 minutos por defecto son de Microsoft** (Default Domain Policy); el error es **KRB_AP_ERR_SKEW** (37). **Active Directory:** la cabeza es el **emulador de PDC del dominio raíz del bosque** (valor del fabricante). **DHCP:** la opción de servidores NTP es la **42**, no la 4. **NTS** no es NTP sobre TLS: por TLS solo va el establecimiento de claves y solo protege el modo cliente-servidor. **Época:** 1-1-1900; el contador de segundos da la vuelta en **2036**.',
+      md: '**Puerto:** NTP va por **UDP 123**; NTS-KE por **TCP 4460** con **TLS 1.3 o posterior**; PTP usa **319 y 320**. **Estratos:** 0 sin especificar o no válido (y relojes de referencia), **1 servidor primario** (el servidor conectado al GPS, no el GPS), **2–15 secundarios**, **16 no sincronizado** (no «el peor»). **LI = 3** también indica reloj no sincronizado, pero es otro campo. **Fórmulas:** desfase θ = ½ [(T2 − T1) + (T3 − T4)]; retardo δ = (T4 − T1) − (T3 − T2). **Corrección:** menos de 125 ms, ajuste gradual; de 125 ms a 1000 s, salto; más de 1000 s, diagnóstico y salida. **Kerberos:** la RFC 4120 deja la tolerancia configurable, «del orden de 5 minutos»; los **5 minutos por defecto son de Microsoft** (Default Domain Policy); el error es **KRB_AP_ERR_SKEW** (37). **Active Directory:** la cabeza es el **emulador de PDC del dominio raíz del bosque** (valor del fabricante). **DHCP:** la opción de servidores NTP es la **42**, no la 4. **NTS** no es NTP sobre TLS: por TLS solo va el establecimiento de claves y solo protege el modo cliente-servidor. **Época:** 1-1-1900; el contador de segundos da la vuelta en **2036**.',
     },
   ],
   quiz: [
@@ -278,7 +278,7 @@ Como 120 ms < 125 ms (STEPT), el cliente corrige de forma gradual, sin dar un sa
       prompt: '¿Qué protege NTS (RFC 8915) y cómo?',
       choices: [
         'Todos los modos de NTP, metiendo los paquetes NTP dentro de una sesión TLS en el puerto 123',
-        'El modo cliente-servidor de NTP: las claves se establecen por TLS 1.3 en TCP 4460 (NTS-KE) y la hora sigue por UDP 123 con campos de extensión autenticados',
+        'El modo cliente-servidor de NTP: las claves se establecen por TLS 1.3 o posterior en TCP 4460 (NTS-KE) y la hora sigue por UDP 123 con campos de extensión autenticados',
         'Solo el modo de difusión, firmando los paquetes con la clave de Kerberos',
         'El modo cliente-servidor, cifrando la hora con TLS 1.2 en TCP 123',
       ],
