@@ -40,6 +40,9 @@ export const LAB_GUIDES: Record<string, LabGuide> = {
   spl5c: guide(['sp5m3'], ['Calcular pérdida esperada por incidente y por año.', 'Separar valor del activo, exposición y frecuencia.'], 'Resolver las decisiones de riesgo cuantitativo del caso.'),
   opl1a: guide(['op1m2'], ['Calcular el rango utilizable de una subred a partir de su prefijo.', 'Asignar una dirección IPv4 a su subred en un plan VLSM.'], 'Colocar los equipos del Consorcio en la subred que les corresponde.'),
   opl1b: guide(['op1m3'], ['Seguir una trama por puertos de acceso y enlaces troncales.', 'Separar lo que cambia en capa 2 de lo que se conserva en capa 3.'], 'Reconstruir el recorrido de un paquete entre dos VLAN.'),
+  opl6a: guide(['op6m2'], ['Aplicar la regla del anexo I: el nivel más alto de las cinco dimensiones fija la categoría.', 'Distinguir una dimensión sin nivel de una dimensión en nivel BAJO.'], 'Determinar la categoría BÁSICA, MEDIA o ALTA de los sistemas del Consorcio a partir de sus valoraciones.'),
+  opl6b: guide(['op6m4', 'op6m5'], ['Separar la notificación al CCN-CERT de la del RGPD a la autoridad de control.', 'Saber cuándo hay que comunicar una violación de datos a las personas afectadas y cuándo no hay obligación.'], 'Decidir a quién notifica el Consorcio cada incidente, con su artículo y su plazo.'),
+  opl6c: guide(['op6m3'], ['Reconocer los tres bloques de medidas del anexo II: organizativo, operacional y de protección.', 'Situar medidas en su bloque aunque el nombre despiste.'], 'Colocar medidas del anexo II del ENS en el marco al que pertenecen.'),
 };
 
 export function withLabGuide(meta: LabMeta): LabMeta {

@@ -16,6 +16,12 @@ describe('pista Redes y ENS', () => {
     expect(Object.values(opo.domainWeights).reduce((a, b) => a + b, 0)).toBeCloseTo(1);
   });
 
+  it('has six domains in syllabus order with equal weights', () => {
+    expect(opo.domains).toEqual(['Redes de comunicaciones', 'Infraestructuras de comunicaciones',
+      'Servicios de red', 'Balanceo y alta disponibilidad', 'Identidad corporativa', 'ENS y normativa']);
+    for (const d of opo.domains) expect(opo.domainWeights[d], d).toBeCloseTo(1 / 6);
+  });
+
   it('keeps its ids in its own families, apart from GCTI and Security+', () => {
     for (const s of opo.sections) expect(s.id).toMatch(/^op\d+$/);
     for (const m of opo.modules) {
@@ -53,6 +59,27 @@ describe('pista Redes y ENS', () => {
       for (const g of t.glossary) expect(g.ca, g.term).toBeUndefined();
     }
     for (const s of opo.sections) expect(trackOf(s.id)).toBe('opo');
+  });
+
+  it('block 6 (ENS y normativa) lessons follow the shape', () => {
+    const mods = ALL_MODULES.filter((m) => m.sectionId === 'op6');
+    expect(mods.map((m) => m.id)).toEqual(['op6m1', 'op6m2', 'op6m3', 'op6m4', 'op6m5', 'op6m6', 'op6m7']);
+    for (const m of mods) {
+      expect(m.objectives.length, m.id).toBeGreaterThanOrEqual(4);
+      expect(m.blocks.filter((b) => b.t === 'check').length, m.id).toBeGreaterThanOrEqual(4);
+      const tables = m.blocks.filter((b) => b.t === 'table');
+      expect(tables.length, m.id).toBeGreaterThanOrEqual(2);
+      expect(tables.some((b) => b.t === 'table' && /art[íi]culo/i.test(b.headers[0])), m.id).toBe(true);
+      expect(m.quiz.length, m.id).toBe(8);
+      for (const q of m.quiz) {
+        expect(q.domain, q.id).toBe('ENS y normativa');
+        expect(q.choices, q.id).toHaveLength(4);
+      }
+      expect(new Set(m.quiz.map((q) => q.answer)).size, m.id).toBeGreaterThanOrEqual(3);
+      expect(m.quiz.filter((q) => /art[íi]culo|anexo/i.test(q.prompt)).length, m.id).toBeGreaterThanOrEqual(2);
+    }
+    expect(opo.flashcards.filter((c) => c.sectionId === 'op6')).toHaveLength(48);
+    expect(opo.glossary.filter((g) => g.sectionId === 'op6')).toHaveLength(104);
   });
 
   it('block 1 (redes) is complete', () => {
