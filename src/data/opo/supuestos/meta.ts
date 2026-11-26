@@ -27,6 +27,16 @@ export const OP_SUPUESTOS: SupuestoMeta[] = [
     integrator: undefined,
   },
   {
+    id: 'op3s2',
+    track: 'opo',
+    sectionIds: ['op3'],
+    version: 1,
+    title: 'Un lunes sin hora ni nombres',
+    brief: 'Un lunes fallan los inicios de sesión y los registros no cuadran: separa una hora desfasada de una resolución interna rota, corrige en el orden correcto, comprueba cada arreglo y redacta el parte de cierre.',
+    minutes: 60,
+    integrator: undefined,
+  },
+  {
     id: 'op6s1',
     track: 'opo',
     sectionIds: ['op6'],
