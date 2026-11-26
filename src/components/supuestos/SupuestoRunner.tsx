@@ -3,7 +3,7 @@ import type { Supuesto, SupuestoMeta, SupuestoMode } from '../../lib/supuesto';
 import { expireRun, formatClock, isExpired, remainingMs } from '../../lib/supuestoClock';
 import { applyHint, needsSelfAssessment, newDocIds, submitPhase } from '../../lib/supuestoFlow';
 import { freshRun, visibleDocs, type SupuestoRun, type TaskAnswer } from '../../lib/supuestoGrade';
-import { labButton, useLabSession, useLabState } from '../labs/LabWorkspace';
+import { labButton, useLabSession, useLabState, useLabWorkspace } from '../labs/LabWorkspace';
 import Dossier from './Dossier';
 import PhaseView from './PhaseView';
 import SelfAssessment from './SelfAssessment';
@@ -29,6 +29,7 @@ function ExamClock({ ms }: { ms: number }) {
 
 export default function SupuestoRunner({ s, meta, mode }: { s: Supuesto; meta: SupuestoMeta; mode: SupuestoMode }) {
   const session = useLabSession();
+  const { saveFailed } = useLabWorkspace();
   const [run, setRun] = useLabState<SupuestoRun | null>('run', null);
   // A run found on mount that is still open asks «Continuar» or «Empezar de nuevo».
   const [resumeAsked, setResumeAsked] = useState(() => !!run && run.finishedAt === undefined);
@@ -36,6 +37,8 @@ export default function SupuestoRunner({ s, meta, mode }: { s: Supuesto; meta: S
   const [reviewing, setReviewing] = useState<number | null>(null);
   const [tab, setTab] = useState<'dossier' | 'phase'>('phase');
   const [now, setNow] = useState(() => Date.now());
+  // Focus moves to the phase heading only after the learner has navigated, not on first mount.
+  const [moved, setMoved] = useState(false);
 
   const ticking = !!run && run.mode === 'exam' && run.finishedAt === undefined;
   useEffect(() => {
@@ -94,6 +97,7 @@ export default function SupuestoRunner({ s, meta, mode }: { s: Supuesto; meta: S
     update((r) => submitPhase(s, r));
     if (run.mode === 'practice') setReviewing(index);
     setTab('phase');
+    setMoved(true);
     window.scrollTo(0, 0);
   };
   const repeat = () => { session.restart(); setReviewing(null); };
@@ -115,6 +119,11 @@ export default function SupuestoRunner({ s, meta, mode }: { s: Supuesto; meta: S
       : <SupuestoResult s={s} meta={meta} run={run} onRecorded={() => update((r) => ({ ...r, recorded: true }))} onRepeat={repeat} />;
   }
 
+  const saveWarning = saveFailed ? (
+    <p role="alert" className="no-print mb-4 rounded-xl border border-amber-500/40 bg-amber-950/20 px-4 py-2 text-sm text-amber-200">
+      No se está guardando tu progreso en este dispositivo. No cierres ni recargues la pestaña, y descarga el informe antes de salir.
+    </p>
+  ) : null;
   const docs = visibleDocs(s, run);
   const fresh = reviewing === null ? newDocIds(s, run) : [];
   const tabBtn = (id: 'dossier' | 'phase', label: string) => (
@@ -126,6 +135,7 @@ export default function SupuestoRunner({ s, meta, mode }: { s: Supuesto; meta: S
 
   return (
     <div>
+      {saveWarning}
       {clock}
       <div role="tablist" aria-label="Vista del supuesto" className="mb-3 flex gap-2 md:hidden">
         {tabBtn('dossier', 'Expediente' + (fresh.length ? ` (${fresh.length} nuevo${fresh.length === 1 ? '' : 's'})` : ''))}
@@ -143,10 +153,11 @@ export default function SupuestoRunner({ s, meta, mode }: { s: Supuesto; meta: S
             index={reviewing ?? run.phaseIndex}
             docs={docs}
             reviewing={reviewing !== null}
+            focusHeading={moved}
             onAnswer={onAnswer}
             onHint={(taskId) => update((r) => applyHint(r, taskId))}
             onSubmit={onSubmit}
-            onContinue={() => { setReviewing(null); window.scrollTo(0, 0); }}
+            onContinue={() => { setReviewing(null); setMoved(true); window.scrollTo(0, 0); }}
           />
         </div>
       </div>

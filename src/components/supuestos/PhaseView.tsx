@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { md } from '../../lib/md';
 import type { DossierDoc, Supuesto } from '../../lib/supuesto';
 import { gradeTask, resolvePhase, type SupuestoRun, type TaskAnswer } from '../../lib/supuestoGrade';
@@ -9,7 +10,7 @@ import TaskInput from './TaskInput';
  * One phase of a supuesto. `reviewing` shows a submitted phase, locked, with its
  * correction (practice only); otherwise the phase is open for answers.
  */
-export default function PhaseView({ s, run, index, docs, reviewing, onAnswer, onHint, onSubmit, onContinue }: {
+export default function PhaseView({ s, run, index, docs, reviewing, onAnswer, onHint, onSubmit, onContinue, focusHeading = false }: {
   s: Supuesto;
   run: SupuestoRun;
   index: number;
@@ -19,7 +20,11 @@ export default function PhaseView({ s, run, index, docs, reviewing, onAnswer, on
   onHint: (taskId: string) => void;
   onSubmit: () => void;
   onContinue: () => void;
+  /** Move focus to the phase heading on mount (set after the learner moves between phases). */
+  focusHeading?: boolean;
 }) {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => { if (focusHeading) headingRef.current?.focus(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const phase = s.phases[index];
   const last = index === s.phases.length - 1;
   const exam = run.mode === 'exam';
@@ -32,7 +37,7 @@ export default function PhaseView({ s, run, index, docs, reviewing, onAnswer, on
       <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-cyan-400">
         Fase {index + 1} de {s.phases.length}{reviewing && ' · corrección'}
       </div>
-      <h2 id={'phase-' + phase.id} className="mt-1 text-lg font-bold text-slate-50">{phase.title}</h2>
+      <h2 ref={headingRef} tabIndex={-1} id={'phase-' + phase.id} className="outline-none mt-1 text-lg font-bold text-slate-50">{phase.title}</h2>
 
       {carry && !reviewing && (
         <div className="mt-3 rounded-lg border border-amber-500/40 bg-amber-950/20 p-3 text-sm text-amber-100">

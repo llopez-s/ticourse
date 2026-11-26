@@ -33,7 +33,7 @@ export default function SelfAssessment({ s, run, onToggle, onDone }: {
                 </div>
                 <div className="rounded-lg border border-emerald-500/30 bg-emerald-950/10 p-3">
                   <div className="text-xs font-semibold uppercase text-emerald-300">Respuesta modelo</div>
-                  <p className="mt-1 text-sm text-slate-200">{md(t.model)}</p>
+                  <p className="mt-1 whitespace-pre-line text-sm text-slate-200">{md(t.model)}</p>
                 </div>
               </div>
               <fieldset className="mt-3">

@@ -474,9 +474,46 @@ export async function pull(hash: string): Promise<ProgressSnapshot | null> {
   // Blob from an older client: the fields may be missing. Fill them so merge never sees
   // undefined.
   const data = body.data;
-  if (!data.practical || typeof data.practical !== 'object') data.practical = {};
-  if (!data.supuestos || typeof data.supuestos !== 'object') data.supuestos = {};
+  data.practical = sanitizePractical(data.practical);
+  data.supuestos = sanitizeSupuestos(data.supuestos);
   return data;
+}
+
+const isPlainObject = (v: unknown): v is Record<string, unknown> =>
+  typeof v === 'object' && v !== null && !Array.isArray(v);
+const isFiniteNum = (v: unknown): v is number => typeof v === 'number' && Number.isFinite(v);
+
+/** Keep only `practical` entries whose value is a finite number >= 0. */
+function sanitizePractical(v: unknown): Record<string, number> {
+  const out: Record<string, number> = {};
+  if (!isPlainObject(v)) return out;
+  for (const [k, n] of Object.entries(v)) if (isFiniteNum(n) && n >= 0) out[k] = n;
+  return out;
+}
+
+function sanitizeBest(v: unknown): SupuestoBest | undefined {
+  if (!isPlainObject(v)) return undefined;
+  const { grade, auto, at, version } = v;
+  if (!isFiniteNum(grade) || !isFiniteNum(auto) || !isFiniteNum(version) || typeof at !== 'string') {
+    return undefined;
+  }
+  return { grade, auto, at, version };
+}
+
+/** Keep only well-formed best results; drop a supuesto with nothing valid left. */
+function sanitizeSupuestos(v: unknown): ProgressSnapshot['supuestos'] {
+  const out: ProgressSnapshot['supuestos'] = {};
+  if (!isPlainObject(v)) return out;
+  for (const [id, entry] of Object.entries(v)) {
+    if (!isPlainObject(entry)) continue;
+    const practice = sanitizeBest(entry.practice);
+    const exam = sanitizeBest(entry.exam);
+    if (!practice && !exam) continue;
+    out[id] = {};
+    if (practice) out[id].practice = practice;
+    if (exam) out[id].exam = exam;
+  }
+  return out;
 }
 
 /**

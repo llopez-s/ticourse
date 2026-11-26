@@ -47,13 +47,13 @@ export default function TaskFeedback({ task, outcome, docTitle }: {
         <div className="mt-2">
           <div className="text-xs font-semibold uppercase text-slate-400">{task.kind === 'written' ? 'Respuesta modelo' : 'Respuesta correcta'}</div>
           {task.kind === 'written'
-            ? <p className="text-slate-200">{md(lines[0])}</p>
+            ? <p className="whitespace-pre-line text-slate-200">{md(lines[0])}</p>
             : lines.length === 1
               ? <p className="text-slate-200">{lines[0]}</p>
               : <ul className="list-disc pl-5 text-slate-200">{lines.map((l, i) => <li key={i}>{l}</li>)}</ul>}
         </div>
       )}
-      <p className="mt-2 text-slate-300">{md(task.explain)}</p>
+      <p className="mt-2 whitespace-pre-line text-slate-300">{md(task.explain)}</p>
       {task.refs.length > 0 && (
         <p className="mt-2 text-xs text-slate-400">
           Para repasar:{' '}

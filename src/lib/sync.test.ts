@@ -426,6 +426,40 @@ describe('pull — remote blob validation', () => {
     expect(got?.supuestos).toEqual({});
   });
 
+  it('sanitizes hostile practical/supuestos instead of letting them reach the UI', async () => {
+    const hostile = {
+      ...emptySnapshot(),
+      practical: { ok: 30, zero: 0, str: 'a', nan: null, neg: -5, inf: 1e999, obj: {} },
+      supuestos: {
+        good: { practice: { grade: 7, auto: 5, at: '2026-11-01', version: 1 } },
+        mixed: {
+          exam: { grade: 6, auto: 4, at: '2026-11-02', version: 1 },
+          practice: { grade: '7', auto: 1, at: '2026-11-02', version: 1 },
+        },
+        noAt: { exam: { grade: 7, auto: 1, version: 1 } },
+        nan: { exam: { grade: null, auto: 1, at: 'x', version: 1 } },
+        junk: 'x',
+        nul: null,
+        arr: [1, 2],
+      },
+    };
+    respond({ v: SYNC_SCHEMA, data: hostile });
+    const got = (await pull(HASH))!;
+    expect(got.practical).toEqual({ ok: 30, zero: 0 });
+    expect(Object.keys(got.supuestos).sort()).toEqual(['good', 'mixed']);
+    expect(got.supuestos.mixed).toEqual({ exam: { grade: 6, auto: 4, at: '2026-11-02', version: 1 } });
+    // merge with a clean snapshot stays commutative
+    const clean = snap({ practical: { ok: 10, other: 5 } });
+    expect(stableStringify(mergeProgress(got, clean))).toBe(stableStringify(mergeProgress(clean, got)));
+  });
+
+  it('replaces arrays or non-objects in practical/supuestos with empty maps', async () => {
+    respond({ v: SYNC_SCHEMA, data: { ...emptySnapshot(), practical: [1, 2], supuestos: 'x' } });
+    const got = (await pull(HASH))!;
+    expect(got.practical).toEqual({});
+    expect(got.supuestos).toEqual({});
+  });
+
   it('keeps the schema at 1 (the deployed Worker rejects other versions) and rejects v2', async () => {
     expect(SYNC_SCHEMA).toBe(1);
     respond({ v: 2, data: emptySnapshot() });
