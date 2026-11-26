@@ -32,7 +32,8 @@ export function formatClock(ms: number): string {
  */
 export function expireRun(s: Supuesto, run: SupuestoRun, now: Date): SupuestoRun {
   const deadline = Date.parse(run.startedAt) + s.minutes * MIN_MS;
-  const finished = Math.min(deadline, now.getTime());
+  // Corrupt startedAt (NaN deadline): close the run now instead of throwing in toISOString.
+  const finished = Number.isNaN(deadline) ? now.getTime() : Math.min(deadline, now.getTime());
   return {
     ...run,
     submitted: s.phases.map((p) => p.id),

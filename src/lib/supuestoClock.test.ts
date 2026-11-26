@@ -50,4 +50,12 @@ describe('expireRun', () => {
     expect(out.answers).toEqual({ t1: 'a' });
     expect(run.finishedAt).toBeUndefined();
   });
+  it('does not throw on an invalid startedAt: finishes at now, keeps answers', () => {
+    const now = new Date('2026-11-26T12:00:00.000Z');
+    const run = { ...freshRun('exam', START), startedAt: 'basura', answers: { t1: 'a' } };
+    expect(isExpired(run, 60, now.getTime())).toBe(true);
+    const out = expireRun(supuesto, run, now);
+    expect(out.finishedAt).toBe(now.toISOString());
+    expect(out.answers).toEqual({ t1: 'a' });
+  });
 });
