@@ -32,6 +32,8 @@ export function emptySnapshot(): ProgressSnapshot {
     achievements: {},
     exempt: {},
     placement: [],
+    practical: {},
+    supuestos: {},
     day: {
       date: '1970-01-01',
       lessons: 0,
@@ -306,6 +308,9 @@ export function mergeProgress(
     achievements,
     exempt: mergeExempt(a, b),
     placement: mergePlacement(a, b),
+    // TODO(task 5): real merge; placeholder keeps the type whole until then
+    practical: a.practical,
+    supuestos: a.supuestos,
     day: mergeDay(a, b),
   };
 }

@@ -13,6 +13,8 @@ const base = (): ProgressSnapshot => ({
   labs: {},
   bosses: {},
   exams: [],
+  practical: {},
+  supuestos: {},
   srs: {},
   calibration: {
     low: { n: 0, c: 0 },

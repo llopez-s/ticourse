@@ -24,6 +24,8 @@ function snapshot(): ProgressSnapshot {
     achievements: s.achievements,
     exempt: s.exempt,
     placement: s.placement,
+    practical: s.practical,
+    supuestos: s.supuestos,
     day: s.day,
   };
 }

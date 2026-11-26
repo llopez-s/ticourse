@@ -9,7 +9,8 @@ import type {
   ProgressSnapshot,
   TrackId,
 } from './types';
-import { levelInfo, STAKES, XP } from './xp';
+import { levelInfo, STAKES, supuestoXp, XP } from './xp';
+import type { SupuestoMeta, SupuestoMode } from './supuesto';
 import { review } from './srs';
 import { dayDiff, todayStr } from './util';
 import { exemptionsFor, gradePlacement, revocationsFor } from './placement';
@@ -112,6 +113,8 @@ function initialState(): ProgressSnapshot {
     achievements: {},
     exempt: {},
     placement: [],
+    practical: {},
+    supuestos: {},
     day: freshDay(todayStr()),
   };
 }
@@ -137,6 +140,16 @@ export interface Store extends ProgressSnapshot {
   completeLesson: (id: string) => void;
   finishQuiz: (moduleId: string, scorePct: number, maxCombo: number) => void;
   completeLab: (id: string, xp: number) => void;
+  /**
+   * Record a supuesto attempt: keeps the best result per mode and, the first
+   * time a mode is passed (grade >= 5), grants practical XP (kept apart from
+   * xp). Returns the practical XP granted (0 if none).
+   */
+  finishSupuesto: (
+    meta: SupuestoMeta,
+    mode: SupuestoMode,
+    r: { grade: number; auto: number },
+  ) => number;
   finishBoss: (sectionId: string, scorePct: number) => boolean;
   recordExam: (r: ExamResult) => void;
   /** Record a placement attempt. Grants nothing — cashing in is a separate step. */
@@ -154,6 +167,7 @@ export interface Store extends ProgressSnapshot {
  * Persist migrations, applied cumulatively so an old blob passes through every
  * step. v1 (single GCTI track) → v2: add the active `track` and stamp every
  * stored exam. v2 → v3: add the placement test's `exempt` and `placement`.
+ * v3 → v4: add `practical` (practical XP) and `supuestos` (best grades).
  */
 export function migrateProgress(
   persisted: unknown,
@@ -171,6 +185,9 @@ export function migrateProgress(
   }
   if (version < 3) {
     p = { ...p, exempt: p.exempt ?? {}, placement: p.placement ?? [] };
+  }
+  if (version < 4) {
+    p = { ...p, practical: p.practical ?? {}, supuestos: p.supuestos ?? {} };
   }
   return p;
 }
@@ -330,6 +347,41 @@ export const useStore = create<Store>()(
           day: { ...day0, labs: day0.labs + 1 },
         });
         get().addXp(xp, 'Lab completado');
+      },
+
+      finishSupuesto: (meta, mode, r) => {
+        const s = get();
+        const entry = s.supuestos[meta.id] ?? {};
+        const prev = entry[mode];
+        const better =
+          !prev || r.grade > prev.grade || (r.grade === prev.grade && r.auto > prev.auto);
+        const best = better
+          ? { grade: r.grade, auto: r.auto, at: new Date().toISOString(), version: meta.version }
+          : prev;
+        const key = `${meta.id}:${mode}`;
+        const pays = r.grade >= 5 && !(key in s.practical);
+        const xp = pays ? supuestoXp(meta, mode) : 0;
+        const t = todayStr();
+        const day0 = s.day.date === t ? s.day : freshDay(t);
+        set({
+          supuestos: { ...s.supuestos, [meta.id]: { ...entry, [mode]: best } },
+          ...(pays
+            ? {
+                practical: { ...s.practical, [key]: xp },
+                day: { ...day0, labs: day0.labs + 1 },
+              }
+            : {}),
+        });
+        if (pays) {
+          toast({
+            kind: 'info',
+            icon: '🛠️',
+            title: `+${xp} XP práctico`,
+            sub: 'Supuesto aprobado',
+          });
+        }
+        get()._check();
+        return xp;
       },
 
       finishBoss: (sectionId, scorePct) => {
@@ -518,7 +570,7 @@ export const useStore = create<Store>()(
     }),
     {
       name: 'intelforge-v1',
-      version: 3,
+      version: 4,
       migrate: (persisted, version) =>
         migrateProgress(persisted, version) as Store,
       partialize: (s) => ({
@@ -537,6 +589,8 @@ export const useStore = create<Store>()(
         achievements: s.achievements,
         exempt: s.exempt,
         placement: s.placement,
+        practical: s.practical,
+        supuestos: s.supuestos,
         day: s.day,
       }),
     },
