@@ -18,7 +18,7 @@
 | **Pregunta central** | El servidor está encendido y la web no carga: ¿está funcionando o no? ¿Y dónde está de verdad lo que falla? |
 | **Objetivos observables** | Al terminar, quien lo ve puede: (1) nombrar CPU, RAM, disco y tarjeta de red, decir qué hace cada una y asociar una señal de fallo a cada pieza; (2) separar anfitrión (host), hipervisor y máquina virtual invitada (guest), y explicar por qué dos VM aisladas caen juntas si cae su anfitrión, y por qué el anfitrión necesita sus propios parches; (3) ante «está encendido», comprobar por orden proceso, puerto y petición real, y no reiniciar el anfitrión sin diagnosticar; (4) distinguir una instantánea (snapshot) en el mismo disco de una copia independiente y probada, y decir para qué sirve cada una; (5) ante un sistema fuera de soporte, proponer excepción apuntada, menos exposición y plan de sustitución, sin llamarlo «actualizado». |
 | **Prerrequisitos** | Lecciones f01 y f02 (`fund:5-12`). Nada más: es el primer vídeo de los fundamentos en el orden del curso. |
-| **Duración estimada** | **9:02** según `build-timeline --estimate` (542,8 s, 1226 palabras, sin avisos). Con la lectura de Lidia al 86–93 % del estimado saldría entre 7:47 y 8:25. |
+| **Duración estimada** | **9:24** según `build-timeline --estimate` tras las revisiones (564,6 s, 1280 palabras, sin avisos). Con la lectura de Lidia al 86–93 % del estimado saldría entre 8:06 y 8:45. |
 | **Práctica relacionada** | **Ninguna**: las cuatro prácticas de fundamentos son de F1–F4 (`src/data/security/practicals.ts`). El cierre propone un hábito, no una práctica (ver F.4). |
 | **Dónde va** | Al final de f02, entre «Ejemplo resuelto» y «Error que conviene evitar», como los otros (`src/data/security/foundation-videos.ts`, entrada `f02`, cuando esté publicado). |
 | **Conceptos clave (5)** | cuatro piezas y sus señales · anfitrión, hipervisor e invitada (y lo que comparten) · encendido no es funcionando: proceso, puerto y petición real · instantánea frente a copia independiente y probada · fuera de soporte: excepción, no sistema al día. |
@@ -26,8 +26,10 @@
 
 ### El caso (fijo)
 
-«Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto.» Una naviera que trabaja en Halden (la de
-F1 y F2, `reg:200`), **fuera del puerto**: así el vídeo no dibuja ni contradice el centro de datos del puerto, que el
+«Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto.» Una naviera con oficina en Halden (la
+naviera sin nombre, cliente del puerto, de `reg:200`; la misma oficina de F1 y F2, `F1-viaje-conexion.md:59`), **fuera
+del puerto**. Su servidor de ficheros, que en F1 es simplemente «el servidor de ficheros», aquí resulta ser una máquina
+virtual; F1 no dice lo contrario. Fuera del puerto, así el vídeo no dibuja ni contradice el centro de datos del puerto, que el
 registro ya fija (V46: máquinas virtuales «sin VM sprawl ni snapshots», `reg:343`; nadie ha dicho que el puerto tenga
 snapshots ni réplica, `reg:1701-1703`).
 
@@ -35,12 +37,12 @@ snapshots ni réplica, `reg:1701-1703`).
 |---|---|
 | Servidor físico (anfitrión) | `hv-01` · 64 GB de RAM; luces verdes en el frontal |
 | Máquinas virtuales (invitadas) | `vm-seguimiento` (web «Seguimiento de envíos», 8 GB) · `vm-ficheros` (servidor de ficheros de la oficina, 8 GB) |
-| Servidor de reserva | `hv-02` (donde se restaura en s08) |
+| Servidor de reserva | `hv-02` (donde se restauran las dos VM en s08; desde entonces todo corre ahí) |
 | El fallo del lunes | `systemctl status nginx` → `inactive (dead)`; `ss -ltn` sin `:443`; `curl` → `Connection refused`; `systemctl is-enabled nginx` → `disabled` |
 | La causa | domingo: parche aplicado y reinicio de `vm-seguimiento`; el servicio no estaba en arranque automático |
 | La instantánea | sacada el domingo antes del parche, guardada en el disco de `hv-01` |
 | Un mes después | errores de lectura/escritura en el disco de `hv-01`; copia independiente fuera de `hv-01`, ya restaurada antes con éxito |
-| Fuera de soporte | el sistema operativo de `vm-ficheros`, sin marca ni versión; un programa antiguo de contabilidad que solo funciona ahí; excepción «la acepta: Dirección · hasta: sustitución»; acceso solo desde Contabilidad |
+| Fuera de soporte | el sistema operativo de `vm-ficheros`, sin marca ni versión; un programa antiguo de contabilidad que solo funciona ahí; excepción «la acepta: Dirección · hasta: sustitución»; acceso «solo los puestos de la oficina que lo usan · sin acceso desde Internet» |
 
 ## B. Guion audiovisual por escenas
 
@@ -48,20 +50,24 @@ snapshots ni réplica, `reg:1701-1703`).
   ids `fNN`, como en F3) · sin adversario ni mensajes interceptados · voz `recording/lidia`, tempo 1 · música
   `Go On Going - Stayloose.mp3` · `"examTiming": "sentence-end"`.
 - **Sello** desde s01: «Imagina · caso de entrenamiento · sin fecha · la oficina no es del puerto» y «Simulación
-  educativa · datos ficticios». Sin personas con nombre: «tú» (Sistemas de la naviera), «alguien de la oficina», «los
+  educativa · datos ficticios». Sin personas con nombre: «tú» (quien lleva la informática de la naviera), «alguien», «los
   clientes».
 - **Hilo visual: el servidor por capas.** El mismo esquema de `hv-01` crece escena a escena: hardware (s02), hipervisor y
   dos VM (s03), lo que comparten (s04), el servicio dentro de su VM (s05–s06), la instantánea a su lado (s07), la copia
   lejos (s08). En s10 se ve completo, de abajo arriba.
 - **Imágenes** (una por concepto, rotuladas «imagen · no es la naviera»): la oficina (persona = CPU, mesa = RAM,
-  archivador = disco, teléfono = red), la regleta (el anfitrión del que viven las VM), la ventanilla con la luz encendida
-  (el servicio que no se ve) y el llavero con la llave de repuesto (la instantánea en el mismo disco). Ninguna está
-  ocupada en el registro (búsqueda del 2026-11-26: «regleta», «llavero», «llave de repuesto», «ventanilla» sin
-  resultados en `reg`; el edificio de alquiler del hipervisor es de V38, la cocina de V35 y la tienda de barrio de V22).
-- **Datos en pantalla** (nunca en la voz): los de la tabla del caso. La voz dice «el número donde espera» y «lo tienes
+  archivador = disco, teléfono = red), la regleta (el anfitrión del que viven las VM; vuelve en s05), la casa con las luces
+  encendidas a cuya puerta hay que llamar (el servicio que no se ve; vuelve en s06 con la petición real) y el llavero
+  con la llave de repuesto (la instantánea en el mismo disco: una llave torcida en s07, el llavero perdido en s08).
+  Búsqueda en `reg` del 2026-11-26: «regleta», «llavero», «llave de repuesto» y «luces encendidas» sin resultados. **La
+  ventanilla, primera idea, está ocupada** (V16, «la ventanilla de navieras y transportistas», `reg:4501`, `reg:1413`) y
+  se cambió; el timbre también (el de hospital es de V31), por eso se «llama a la puerta». La oficina en esquema existe en
+  V37 (`reg:325`) con otro uso, el perímetro, y V30 llama «la foto» al baseline: no chocan, pero se anotan. El edificio de
+  alquiler del hipervisor es de V38, la cocina de V35 y la tienda de barrio de V22.
+- **Datos en pantalla** (nunca en la voz): los de la tabla del caso. La voz dice «un número concreto, que se llama puerto» y «lo tienes
   en pantalla»; el 443 y los comandos solo se ven, con el rótulo «no hace falta saber comandos todavía».
 - **«Puerto».** En este vídeo la palabra solo significa puerto de red (s06 y s11). Halden se presenta como «una empresa de
-  barcos que trabaja en Halden», sin decir «el puerto», para no repetir el doble sentido que la revisión de naturalidad
+  barcos con oficina en Halden», sin decir «el puerto», para no repetir el doble sentido que la revisión de naturalidad
   quitó de F1 (00-propuesta §8).
 
 | Escena | Capítulo | Propósito didáctico | Pantalla (resumen; el detalle está en el `goal`) |
@@ -70,7 +76,7 @@ snapshots ni réplica, `reg:1701-1703`).
 | s02 «Cuatro piezas» | 1 | CPU, RAM, disco, red; una señal de fallo por pieza; cierre del capítulo | el servidor abierto; la oficina; cuatro señales; tarjeta 4.4 |
 | s03 «Varias máquinas en un servidor» | 2 · Varias máquinas en un solo servidor | hipervisor (la idea antes del nombre), VM, host, guest; qué hace el sistema operativo | barra del hipervisor que reparte; dos VM con nombre; cuatro iconos del SO |
 | s04 «Lo que comparten» | 2 | aisladas entre sí, dependientes del host; parches del host; cierre | pared entre VM; cable común; apagón conjunto; regleta; tarjeta 3.1 |
-| s05 «Un programa sin ventana» | 3 · Encendido no es funcionando | servicio sin ventana; **pausa 1** | luces del host; engranajes; ventanilla; dos botones; ficheros que caería |
+| s05 «Un programa sin ventana» | 3 · Encendido no es funcionando | servicio sin ventana; **pausa 1** | luces del host; engranajes; la casa iluminada; dos botones; la regleta que apagaría también ficheros |
 | s06 «Proceso, puerto y petición» | 3 | las tres comprobaciones; la causa; el arreglo verificado; cierre | lista de tres casillas y terminal; calendario del domingo; web que carga; tarjeta 1.2 |
 | s07 «Una foto para volver atrás» | 4 · Volver atrás no es recuperar | instantánea (la idea antes del nombre): para qué sirve y dónde se guardó | cámara y foto; flecha «volver»; mismo disco; llavero |
 | s08 «El día que falla el disco» | 4 | **pausa 2**; copia independiente y probada; restaurar en otro servidor; cierre | errores de disco (señal de s02); dos botones; disco roto; copia fuera; `hv-02`; tarjeta 3.4 |
@@ -86,7 +92,7 @@ snapshots ni réplica, `reg:1701-1703`).
 
 La web no carga, pero el servidor está encendido, con todas sus luces verdes. ¿Está funcionando o no?
 
-Imagina que trabajas en Sistemas de una naviera, una empresa de barcos que trabaja en Halden, el escenario de este curso.
+Imagina que llevas la informática de una naviera, una empresa de barcos con oficina en Halden, el escenario de este curso.
 
 Es lunes, ocho de la mañana. Los clientes llaman porque no pueden ver por dónde va su contenedor. Para eso está la web de seguimiento, y no carga.
 
@@ -110,23 +116,23 @@ O sea, que antes de echarle la culpa al servidor, mira qué pieza da la señal.
 
 Pero en esta naviera, dentro del servidor no hay una sola máquina. Hay dos.
 
-Hay un programa que reparte la CPU, la memoria y el disco del servidor entre varios ordenadores que solo existen en software. Se llama hipervisor.
+Un programa reparte la CPU, la memoria y el disco del servidor entre varios ordenadores que solo existen dentro de él. Se llama hipervisor.
 
-Cada uno de esos ordenadores es una máquina virtual, con su propio sistema operativo, como si fuera un equipo aparte.
+Cada uno de esos ordenadores es una máquina virtual. Lleva su propio sistema operativo, como Windows o Linux, y va como un equipo aparte.
 
 Al servidor físico se le llama anfitrión, en inglés host. Y a cada máquina virtual, invitada, o guest.
 
-Aquí hay dos invitadas. Una lleva la web de seguimiento, y la otra, el servidor de ficheros de la oficina.
+Una lleva la web de seguimiento, y la otra, el servidor de ficheros, con las carpetas compartidas de la oficina.
 
-Y el sistema operativo de cada una hace lo de siempre. Reparte su memoria, lleva sus programas y sus archivos, y hace cumplir los permisos.
+Y el sistema operativo de cada una hace lo de siempre. Reparte su memoria, lleva sus programas y sus archivos, y decide quién puede tocar qué.
 
 Las dos invitadas están separadas. Lo que pasa dentro de una no debería tocar a la otra.
 
 Pero las dos viven del mismo anfitrión. Si el servidor físico se para, se paran las dos a la vez.
 
-Es como una regleta. Cada aparato va por su lado, pero si salta la regleta, se apagan todos.
+Es como una regleta. Cada aparato tiene su enchufe, pero si salta la regleta, se apagan todos.
 
-Por eso el anfitrión también necesita sus parches, las correcciones que publica el fabricante. Separar a las invitadas no lo protege a él.
+Y como todo cuelga de él, el anfitrión necesita sus parches, las correcciones que publica el fabricante. Separar a las invitadas no lo protege a él.
 
 O sea, que las máquinas virtuales se aíslan entre sí, pero caen juntas con su anfitrión.
 
@@ -134,31 +140,31 @@ O sea, que las máquinas virtuales se aíslan entre sí, pero caen juntas con su
 
 Volvamos al lunes. Las luces verdes son del anfitrión. Dicen que el servidor físico está encendido, y poco más.
 
-La web, en cambio, es un servicio, un programa que funciona sin ventana, esperando a que alguien le pida algo.
+La web, en cambio, es un programa que funciona sin ventana, esperando a que alguien le pida algo. Eso es un servicio.
 
-Como la base de datos que guarda los envíos, que también trabaja sin que nadie la mire.
+Igual que el programa que guarda los envíos, la base de datos. También trabaja sin que nadie la mire.
 
-Es como una ventanilla con la luz encendida. Hasta que no pides algo, no sabes si hay alguien detrás.
+Es como una casa con las luces encendidas. Hasta que no llamas a la puerta y te abren, no sabes si hay alguien dentro.
 
-Ahora decides tú. Alguien propone reiniciar el servidor entero, que así arranca todo de nuevo. ¿Lo reinicias, o antes miras otra cosa?
+Ahora decides tú. Los clientes siguen llamando y alguien propone reiniciar el servidor entero, que es rápido y suele funcionar. ¿Lo reinicias, o miras antes el servicio?
 
 *(pausa para pensar)*
 
-Primero se mira. Reiniciar el anfitrión apagaría también el servidor de ficheros, que funcionaba bien.
+Primero se mira. Reiniciar el anfitrión es apagar la regleta, y se apagaría también el servidor de ficheros, que funcionaba bien.
 
 Y aunque la web volviera, seguirías sin saber por qué se había caído. Así que toca mirar el servicio, dentro de su máquina virtual.
 
-Se comprueban tres cosas, en orden. Primero, si el programa está en marcha. Un programa en marcha es un proceso.
+Compruebas tres cosas, en orden. Primero, si el programa está en marcha. Un programa en marcha es un proceso.
 
 Y el de la web no está en marcha. Está detenido.
 
-Segundo, si escucha en su número. Cada servicio espera las peticiones en un número propio, que se llama puerto. El de la web lo tienes en pantalla.
+Segundo, si escucha en su número. Cada servicio espera las peticiones en un número concreto, que se llama puerto. El de la web lo tienes en pantalla.
 
 Nadie escucha en ese número. Es lógico, si el programa está parado.
 
-Y tercero, una petición de verdad. Pides la página como lo haría un cliente. Y no contesta.
+Y tercero, una petición de verdad. Llamas a la puerta, o sea, pides la página como lo haría un cliente. Y nadie abre.
 
-¿Por qué estaba parado? El domingo se aplicó un parche y la máquina virtual se reinició. Pero el servicio no estaba puesto para arrancar solo.
+¿Por qué estaba parado? El domingo se aplicó un parche y la máquina virtual se reinició. Pero el servicio no estaba puesto para arrancar solo. Reiniciar no lo habría arreglado.
 
 Lo pones en marcha, lo dejas en arranque automático y vuelves a pedir la página. Esta vez, carga.
 
@@ -174,35 +180,35 @@ Para eso es estupenda, para deshacer un cambio que ha salido mal.
 
 Pero fíjate dónde se guardó. En el mismo disco del anfitrión, al lado de la propia máquina virtual.
 
-Es como guardar la llave de repuesto en el mismo llavero. Sirve si te equivocas de llave, no si pierdes el llavero.
+Pasa como con la llave de repuesto, que va en el mismo llavero. Si se te tuerce una llave, tiras de la otra.
 
 Un mes después, el anfitrión empieza a dar errores al leer y al guardar. Ya sabes de qué pieza es esa señal.
 
-Ahora decides tú. Si ese disco se pierde del todo, ¿te basta la instantánea para recuperar la web, o necesitas otra cosa?
+Ahora decides tú. Si ese disco se muere del todo, ¿puedes recuperar la web con la instantánea del domingo?
 
 *(pausa para pensar)*
 
-No te basta. La instantánea estaba en ese disco, así que se pierde con él, igual que la máquina.
+No puedes. La instantánea estaba en ese disco, así que se pierde con él. Has perdido el llavero entero, con la de repuesto.
 
 Lo que te salva es una copia independiente, guardada fuera de ese servidor. Y probada, porque alguien ya la ha restaurado y ha funcionado.
 
-Con ella, restauras la web en el otro servidor de la oficina, el de reserva, y los clientes vuelven a verla.
+Con ella, restauras las dos máquinas en el otro servidor de la oficina, el de reserva. Y los clientes vuelven a ver la web.
 
 O sea, que la instantánea sirve para volver atrás, y la copia independiente, para recuperar lo que has perdido.
 
 #### Capítulo 5 · Sin parches, y tres preguntas
 
-Queda la otra invitada, el servidor de ficheros. Su sistema operativo ya está fuera de soporte.
+Queda un asunto con la otra invitada, el servidor de ficheros. Su sistema operativo es tan viejo que el fabricante ya lo ha abandonado.
 
-Eso quiere decir que el fabricante ya no publica parches para él. Si mañana aparece un fallo, nadie lo va a corregir.
+Ya no publica parches para él, y si mañana aparece un fallo, el fabricante no lo va a corregir. Eso es estar fuera de soporte.
 
 Y no se puede cambiar este mes, porque un programa antiguo de contabilidad solo funciona en ese sistema.
 
-Entonces se hacen tres cosas. Se apunta la excepción, quién la acepta y hasta cuándo. Se limita quién puede llegar a esa máquina. Y se planea sustituirla.
+Haces tres cosas. Apuntas la excepción, que lo dejas así a sabiendas, con quién lo acepta y hasta cuándo. Limitas quién puede llegar a él. Y planeas sustituirlo.
 
 Con eso el riesgo baja, pero el sistema no pasa a estar al día. Sigue sin parches, y hay que tenerlo presente.
 
-Volvamos al lunes por la mañana. La web de seguimiento carga, y lo sabes porque has pedido la página, no por las luces.
+Vuelve conmigo al lunes del principio. La web de seguimiento carga, y lo sabes porque has pedido la página, no por las luces.
 
 Ya distingues las capas. El servidor físico, el hipervisor, cada máquina virtual con su sistema y, dentro, el servicio.
 
@@ -212,11 +218,11 @@ O sea, que cuando algo no funciona, primero averiguas en qué capa está el fall
 
 Te quedas con tres preguntas. Una. ¿Dónde corre el servicio? En qué máquina virtual y sobre qué anfitrión, porque si cae el anfitrión, caen todas.
 
-Dos. ¿Funciona de verdad? Mira el proceso, el puerto y, sobre todo, una petición real. Las luces no bastan.
+Dos. ¿Funciona de verdad? Mira el proceso, el puerto y, sobre todo, una petición real. Las luces no lo dicen.
 
 Tres. ¿Podrías recuperarlo si pierdes el servidor? La instantánea no basta. Hace falta una copia fuera, y probada.
 
-La próxima vez que oigas que el servidor está encendido, haz estas tres preguntas antes de reiniciar nada.
+La próxima vez que alguien te diga que está encendido, haz estas tres preguntas antes de reiniciar nada.
 
 ## D. Actividades
 
@@ -238,18 +244,17 @@ La próxima vez que oigas que el servidor está encendido, haz estas tres pregun
 
 ### D.2 Después del vídeo
 
-Formato `SCENES` de `src/data/security/video-learning.ts`: id `video-donde-corre-N`, objetivos `pre-01` (la primera)
-y `pre-01` o `pre-02` (la segunda), primera `understand` y segunda `apply`. Contextos y cifras distintos de la
+Formato `SCENES` de `src/data/security/video-learning.ts`: id `video-donde-corre-N`, objetivo `pre-01` (f01) en las dos, primera `understand` y segunda `apply`. Contextos y cifras distintos de la
 evaluación de salida (`fund:55-80`: dos VM con un solo host, ransomware que cifra VM y snapshot, host que responde con el
 servicio de pedidos parado, fabricante que deja de corregir), de las prácticas y de los simulacros.
 
 **D.2.1 · Comprensión · qué pieza da la señal**
 
 - **ES:** En una academia de idiomas, la web de matrícula va muy lenta. El panel del servidor muestra la CPU al 100 % desde
-  hace una hora; el disco tiene espacio libre y ningún error, y la red no pierde paquetes. ¿Qué pieza conviene investigar
+  hace una hora; la memoria tiene margen, el disco tiene espacio libre y ningún error, y la red no pierde paquetes. ¿Qué pieza conviene investigar
   primero?
 - **EN:** At a language school, the enrolment website is very slow. The server panel has shown the CPU at 100 % for an
-  hour; the disk has free space and no errors, and the network drops no packets. Which component should be investigated
+  hour; the memory has headroom, the disk has free space and no errors, and the network drops no packets. Which component should be investigated
   first?
 
 | | Opción (ES) | Option (EN) | Feedback |
@@ -271,7 +276,7 @@ servicio de pedidos parado, fabricante que deja de corregir), de las prácticas 
 
 | | Opción (ES) | Option (EN) | Feedback |
 |---|---|---|---|
-| A | Protege los datos si se pierde el servidor | It protects the data if the server is lost | Si la instantánea está con la VM, se pierde con el servidor; eso lo cubre la copia aparte. |
+| A | Protege los datos si se pierde el disco donde está la máquina virtual | It protects the data if the disk holding the virtual machine is lost | La instantánea se guarda en ese mismo almacenamiento y se pierde con él; eso lo cubre la copia aparte. |
 | B | Sustituye a las copias diarias, que ya no hacen falta | It replaces the daily backups, which are no longer needed | Son cosas distintas: la instantánea no sobrevive a perder el origen. |
 | C | Evita tener que comprobar después si el servicio funciona | It avoids checking afterwards whether the service works | Tras el parche hay que pedir una página real igual; la instantánea solo permite volver atrás. |
 | D | **Volver en minutos al estado de antes si el parche sale mal** | **Rolling back in minutes to the previous state if the patch goes wrong** | **Correcta.** Es justo para lo que sirve: deshacer un cambio. La copia aparte sigue siendo la que recupera tras una pérdida. |
@@ -298,18 +303,18 @@ servicio de pedidos parado, fabricante que deja de corregir), de las prácticas 
 |---|---|---|---|
 | s01 «El servidor está encendido» | 0:00 | 39,0 | 88 |
 | s02 «Cuatro piezas» | 0:39 | 64,4 | 150 |
-| s03 «Varias máquinas en un servidor» | 1:43 | 52,1 | 122 |
-| s04 «Lo que comparten» | 2:35 | 41,4 | 94 |
-| s05 «Un programa sin ventana» | 3:16 | 62,4 | 136 |
-| s06 «Proceso, puerto y petición» | 4:19 | 63,6 | 147 |
-| s07 «Una foto para volver atrás» | 5:22 | 40,5 | 94 |
-| s08 «El día que falla el disco» | 6:03 | 59,4 | 127 |
-| s09 «Sin más arreglos» | 7:02 | 45,8 | 105 |
-| s10 «Vuelta al lunes» | 7:48 | 36,0 | 83 |
-| s11 «Tres preguntas» | 8:24 | 38,3 | 80 |
-| **Total** | | **542,8 (9:02)** | **1226** |
+| s03 «Varias máquinas en un servidor» | 1:43 | 53,7 | 126 |
+| s04 «Lo que comparten» | 2:37 | 42,2 | 96 |
+| s05 «Un programa sin ventana» | 3:19 | 70,4 | 156 |
+| s06 «Proceso, puerto y petición» | 4:29 | 67,7 | 157 |
+| s07 «Una foto para volver atrás» | 5:37 | 40,9 | 95 |
+| s08 «El día que falla el disco» | 6:18 | 61,0 | 131 |
+| s09 «Sin más arreglos» | 7:19 | 50,6 | 117 |
+| s10 «Vuelta al lunes» | 8:09 | 36,0 | 83 |
+| s11 «Tres preguntas» | 8:45 | 38,7 | 81 |
+| **Total** | | **564,6 (9:24)** | **1280** |
 
-Capítulos: 1 en 0:00, 2 en 1:43, 3 en 3:16, 4 en 5:22, 5 en 7:02. 61 segmentos, 81 cues, 5 tarjetas de examen
+Capítulos: 1 en 0:00, 2 en 1:43, 3 en 3:19, 4 en 5:37, 5 en 7:19. 61 segmentos, 81 cues, 5 tarjetas de examen
 (4.4 en s02, 3.1 en s04, 1.2 en s06, 3.4 en s08, 4.3 en s09), 2 pausas para pensar (s05, s08), `{title}` a los 7,0 s.
 `targetSec` del storyboard = palabras / 2,7 + 2 s (+ 5,5 s por pausa); el motor estima a 2,5 palabras/s, así que todas
 las escenas quedan 3–8 s por encima de su objetivo, como en F3.
@@ -319,9 +324,9 @@ las escenas quedan 3–8 s por encima de su objetivo, como en F3.
 | Escena | Lo que solo se ve | Cómo lo cubre la voz |
 |---|---|---|
 | s03 | nombres y memoria de las VM y del host | «dos invitadas… una lleva la web de seguimiento, y la otra, el servidor de ficheros» |
-| s06 | los comandos y sus respuestas, el 443 | «está detenido», «nadie escucha en ese número», «no contesta», «no estaba puesto para arrancar solo» |
-| s08 | `hv-02` | «el otro servidor de la oficina, el de reserva» |
-| s09 | la ficha de excepción | «quién la acepta y hasta cuándo… se limita quién puede llegar» |
+| s06 | los comandos y sus respuestas, el 443 | «está detenido», «nadie escucha en ese número», «nadie abre», «no estaba puesto para arrancar solo» |
+| s08 | `hv-02` y las dos VM restauradas | «restauras las dos máquinas en el otro servidor de la oficina, el de reserva» |
+| s09 | la ficha de excepción | «con quién lo acepta y hasta cuándo… limitas quién puede llegar a él» |
 
 ## F. Revisión
 
@@ -345,7 +350,7 @@ PID y cuenta); el puerto como «número donde espera» (f05/f08 y F1 lo amplían
 servidor real suele haber discos en espejo o almacenamiento compartido, y la instantánea de muchos hipervisores no es
 una copia completa sino un archivo de cambios que depende del disco original (lo que refuerza la idea, no la contradice);
 restaurar en `hv-02` también exige red y licencias, que no se cuentan; `systemctl`/`nginx` porque la VM de la web es Linux
-(la ficha no dice qué sistema lleva `vm-ficheros`).
+(la ficha no dice qué sistema lleva `vm-ficheros`); en s10 la instantánea va «antes de cada parche» y en pantalla «se borra cuando el parche va bien» (los fabricantes desaconsejan conservarlas mucho tiempo, porque el archivo de cambios crece); «el fabricante no lo va a corregir» deja fuera el soporte extendido de pago; el texto de `curl` en pantalla es el de curl 7.x, abreviado con «…»; «Windows o Linux» en s03 son ejemplos de sistema operativo, no los de la naviera.
 
 ### F.2 Fuentes primarias (para la revisión de exactitud)
 
@@ -360,11 +365,11 @@ restaurar en `hv-02` también exige red y licencias, que no se cuentan; `systemc
 | Dato | Estado |
 |---|---|
 | Contenido de f01 y f02 (recursos, hipervisor, snapshot, servicio, parches, fin de soporte) | comprobado: `fund:5-12` |
-| La naviera sin nombre, fuera del puerto | comprobado: `reg:200`; F1 y F2 |
+| La naviera sin nombre, fuera del puerto | comprobado: `reg:200` (V11, V35); la oficina de F1 y F2 sale de sus guiones (`F1-viaje-conexion.md:59`) |
 | El centro de datos del puerto no tiene snapshots en ningún vídeo | comprobado: `reg:343`, `reg:1701-1703` |
 | `hv-01`, `hv-02`, `vm-seguimiento`, `vm-ficheros`, la web «Seguimiento de envíos» | propuesta; `canon-check`: `hv-01` y `hv-02` sin rastro; `08:00` tiene historia, pero en otro contexto (V10, V6, SIEM) y sin fecha aquí |
 | Que las actividades no copian la evaluación, las prácticas ni los simulacros | comprobado para la evaluación (`fund:55-80`); simulacros por búsqueda de «snapshot» (`exam-seeds-advanced.ts`) |
-| Imágenes libres en el registro | comprobado por búsqueda (B) |
+| Imágenes libres en el registro | comprobado por búsqueda (B); la ventanilla estaba ocupada (V16) y se cambió por la casa iluminada |
 
 ### F.4 Pendiente de decidir o comprobar (con la opción recomendada)
 
@@ -380,6 +385,35 @@ restaurar en `hv-02` también exige red y licencias, que no se cuentan; `systemc
 6. **Integración en la app.** Una entrada `f02` en `foundation-videos.ts` cuando esté publicado; las actividades de la
    parte D siguen el formato de las demás y, como ellas, no están en la app.
 7. **Duración real.** Se mide tras la grabación; no se recorta ni se rellena.
+
+### Revisiones aplicadas (2026-11-26)
+
+Dos revisores de solo lectura, en paralelo (exactitud y naturalidad). El guion **sigue sin congelar**.
+
+**Exactitud (todo aplicado).** (1) En s08 el disco se llevaba las dos VM, pero solo se restauraba la web, y s09 seguía
+con `vm-ficheros` como si nada: s08-05 restaura «las dos máquinas» en `hv-02`, y el storyboard de s08–s10 las enciende
+ahí. (2) La ventanilla estaba ocupada (V16, `reg:4501`) y era justo de navieras: se cambió por la casa con las luces
+encendidas. (3) «Solo Contabilidad» contradecía «el servidor de ficheros de la oficina»: el rótulo pasa a «solo los
+puestos de la oficina que lo usan · sin acceso desde Internet». (4) D.2.2 A, ambigua con almacenamiento compartido:
+ahora «si se pierde el disco donde está la máquina virtual». (5) D.2.1 dice que la memoria tiene margen. (6) s09-02:
+«el fabricante no lo va a corregir». (7) s06-03: «un número concreto» en vez de «un número propio». (8) Rótulo «se borra
+cuando el parche va bien» en s10 y simplificaciones nuevas en F.1. (9) Citas de `reg:200` y de F1 corregidas. El revisor
+abrió la página de errores de libcurl y systemctl(1); los objetivos de CompTIA, NIST SP 800-125 y la documentación de
+snapshots los comprobó de memoria (el PDF oficial pide el portal de socios).
+
+**Naturalidad (aplicado, con estas diferencias).** Pausa 1 con presión real y una opción concreta («¿Lo reinicias, o
+miras antes el servicio?») y su remate en s06-06 («Reiniciar no lo habría arreglado»). Pausa 2 sin la respuesta
+anticipada: el llavero de s07 es ahora la llave torcida (deshacer un cambio) y la pérdida del llavero llega en s08-03,
+después de la pregunta. «Sistema operativo» con ancla («como Windows o Linux»), «llevas la informática» en vez de
+«Sistemas», «servicio» y «fuera de soporte» con la idea antes del nombre, la regleta vuelve en s05-06, la base de datos
+explicada, «Y como todo cuelga de él» en s04-04, segunda persona en s06 y s09, y cambios menores en s03, s04, s10 y s11.
+**No aplicado:** la ventanilla numerada para el puerto y la ventanilla de s06-05 (la imagen cambió por la revisión de
+exactitud: en su lugar, «llamas a la puerta… y nadie abre»); la frase opcional de s07-03 sobre por qué no se usó la
+instantánea el lunes; y glosar «corre», que es el título.
+
+**Resultado.** `build-timeline --estimate` sin avisos: 564,6 s (9:24; antes 542,8), 1280 palabras, 61 segmentos, 81 cues.
+`script-sheets` (hoja BORRADOR) y `canon-check` (3 tokens: `08:00` con historia en otro contexto, `hv-01` y `hv-02`
+nuevos) sin cambios.
 
 ### Canon nuevo previsto (a registrar como «previsto» si se aprueba)
 

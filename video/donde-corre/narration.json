@@ -22,7 +22,7 @@
     {
       "id": "s01-02",
       "scene": "s01-hook",
-      "text": "<warm> {stamp}Imagina que trabajas en Sistemas de una naviera, una empresa de barcos que trabaja en Halden, el escenario de este curso.",
+      "text": "<warm> {stamp}Imagina que llevas la informática de una naviera, una empresa de barcos con oficina en Halden, el escenario de este curso.",
       "pauseAfterMs": 350
     },
     {
@@ -94,13 +94,13 @@
     {
       "id": "s03-02",
       "scene": "s03-maquinas",
-      "text": "<clear> {share}Hay un programa que reparte la CPU, la memoria y el disco del servidor entre varios ordenadores que solo existen en software. {hyper}Se llama hipervisor.",
+      "text": "<clear> {share}Un programa reparte la CPU, la memoria y el disco del servidor entre varios ordenadores que solo existen dentro de él. {hyper}Se llama hipervisor.",
       "pauseAfterMs": 350
     },
     {
       "id": "s03-03",
       "scene": "s03-maquinas",
-      "text": "<thoughtful> Cada uno de esos ordenadores es {vm}una máquina virtual, con su propio sistema operativo, como si fuera un equipo aparte.",
+      "text": "<thoughtful> Cada uno de esos ordenadores es {vm}una máquina virtual. Lleva su propio sistema operativo, como Windows o Linux, y va como un equipo aparte.",
       "pauseAfterMs": 350
     },
     {
@@ -112,13 +112,13 @@
     {
       "id": "s03-05",
       "scene": "s03-maquinas",
-      "text": "<focused> Aquí hay dos invitadas. {web}Una lleva la web de seguimiento, y {files}la otra, el servidor de ficheros de la oficina.",
+      "text": "<focused> {web}Una lleva la web de seguimiento, y {files}la otra, el servidor de ficheros, con las carpetas compartidas de la oficina.",
       "pauseAfterMs": 350
     },
     {
       "id": "s03-06",
       "scene": "s03-maquinas",
-      "text": "<warm> {os}Y el sistema operativo de cada una hace lo de siempre. Reparte su memoria, lleva sus programas y sus archivos, y hace cumplir los permisos.",
+      "text": "<warm> {os}Y el sistema operativo de cada una hace lo de siempre. Reparte su memoria, lleva sus programas y sus archivos, y decide quién puede tocar qué.",
       "pauseAfterMs": 450
     },
     {
@@ -136,13 +136,13 @@
     {
       "id": "s04-03",
       "scene": "s04-comparten",
-      "text": "<casual> {strip}Es como una regleta. Cada aparato va por su lado, pero si salta la regleta, se apagan todos.",
+      "text": "<casual> {strip}Es como una regleta. Cada aparato tiene su enchufe, pero si salta la regleta, se apagan todos.",
       "pauseAfterMs": 350
     },
     {
       "id": "s04-04",
       "scene": "s04-comparten",
-      "text": "<firm> Por eso {patches}el anfitrión también necesita sus parches, las correcciones que publica el fabricante. Separar a las invitadas no lo protege a él.",
+      "text": "<firm> Y como todo cuelga de él, {patches}el anfitrión necesita sus parches, las correcciones que publica el fabricante. Separar a las invitadas no lo protege a él.",
       "pauseAfterMs": 350
     },
     {
@@ -166,25 +166,25 @@
     {
       "id": "s05-02",
       "scene": "s05-servicio",
-      "text": "<clear> La web, en cambio, es {service}un servicio, un programa que funciona sin ventana, esperando a que alguien le pida algo.",
+      "text": "<clear> La web, en cambio, es un programa que funciona sin ventana, esperando a que alguien le pida algo. {service}Eso es un servicio.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-03",
       "scene": "s05-servicio",
-      "text": "<casual> {db}Como la base de datos que guarda los envíos, que también trabaja sin que nadie la mire.",
+      "text": "<casual> {db}Igual que el programa que guarda los envíos, la base de datos. También trabaja sin que nadie la mire.",
       "pauseAfterMs": 300
     },
     {
       "id": "s05-04",
       "scene": "s05-servicio",
-      "text": "<warm> {counter}Es como una ventanilla con la luz encendida. Hasta que no pides algo, no sabes si hay alguien detrás.",
+      "text": "<warm> {counter}Es como una casa con las luces encendidas. Hasta que no llamas a la puerta y te abren, no sabes si hay alguien dentro.",
       "pauseAfterMs": 400
     },
     {
       "id": "s05-05",
       "scene": "s05-servicio",
-      "text": "<engaging> Ahora decides tú. {proposal}Alguien propone reiniciar el servidor entero, que así arranca todo de nuevo. {choice}¿Lo reinicias, o antes miras otra cosa?",
+      "text": "<engaging> Ahora decides tú. {proposal}Los clientes siguen llamando y alguien propone reiniciar el servidor entero, que es rápido y suele funcionar. {choice}¿Lo reinicias, o miras antes el servicio?",
       "pauseAfterMs": 300,
       "think": {
         "q": "¿Qué haces primero?",
@@ -194,7 +194,7 @@
     {
       "id": "s05-06",
       "scene": "s05-servicio",
-      "text": "<confident> Primero se mira. {other}Reiniciar el anfitrión apagaría también el servidor de ficheros, que funcionaba bien.",
+      "text": "<confident> Primero se mira. {other}Reiniciar el anfitrión es apagar la regleta, y se apagaría también el servidor de ficheros, que funcionaba bien.",
       "pauseAfterMs": 300
     },
     {
@@ -206,7 +206,7 @@
     {
       "id": "s06-01",
       "scene": "s06-comprobar",
-      "text": "<focused> Se comprueban tres cosas, en orden. {process}Primero, si el programa está en marcha. Un programa en marcha es un proceso.",
+      "text": "<focused> Compruebas tres cosas, en orden. {process}Primero, si el programa está en marcha. Un programa en marcha es un proceso.",
       "pauseAfterMs": 300
     },
     {
@@ -218,7 +218,7 @@
     {
       "id": "s06-03",
       "scene": "s06-comprobar",
-      "text": "<clear> Segundo, {port}si escucha en su número. Cada servicio espera las peticiones en un número propio, que se llama puerto. El de la web lo tienes en pantalla.",
+      "text": "<clear> Segundo, {port}si escucha en su número. Cada servicio espera las peticiones en un número concreto, que se llama puerto. El de la web lo tienes en pantalla.",
       "pauseAfterMs": 300
     },
     {
@@ -230,14 +230,14 @@
     {
       "id": "s06-05",
       "scene": "s06-comprobar",
-      "text": "<firm> Y tercero, {request}una petición de verdad. Pides la página como lo haría un cliente. {fail}Y no contesta.",
+      "text": "<firm> Y tercero, una petición de verdad. {request}Llamas a la puerta, o sea, pides la página como lo haría un cliente. {fail}Y nadie abre.",
       "pauseAfterMs": 400
     },
     {
       "id": "s06-06",
       "scene": "s06-comprobar",
-      "text": "<thoughtful> ¿Por qué estaba parado? {sunday}El domingo se aplicó un parche y la máquina virtual se reinició. {noauto}Pero el servicio no estaba puesto para arrancar solo.",
-      "pauseAfterMs": 350
+      "text": "<thoughtful> ¿Por qué estaba parado? {sunday}El domingo se aplicó un parche y la máquina virtual se reinició. {noauto}Pero el servicio no estaba puesto para arrancar solo. Reiniciar no lo habría arreglado.",
+      "pauseAfterMs": 500
     },
     {
       "id": "s06-07",
@@ -260,7 +260,7 @@
     {
       "id": "s07-01",
       "scene": "s07-instantanea",
-      "text": "<curious> Antes del parche del domingo, alguien hizo algo sensato. {photo}Le sacó una foto a la máquina virtual, tal y como estaba.",
+      "text": "<warm> Antes del parche del domingo, alguien hizo algo sensato. {photo}Le sacó una foto a la máquina virtual, tal y como estaba.",
       "pauseAfterMs": 300
     },
     {
@@ -272,7 +272,7 @@
     {
       "id": "s07-03",
       "scene": "s07-instantanea",
-      "text": "<warm> {undo}Para eso es estupenda, para deshacer un cambio que ha salido mal.",
+      "text": "<casual> {undo}Para eso es estupenda, para deshacer un cambio que ha salido mal.",
       "pauseAfterMs": 350
     },
     {
@@ -284,7 +284,7 @@
     {
       "id": "s07-05",
       "scene": "s07-instantanea",
-      "text": "<casual> {keys}Es como guardar la llave de repuesto en el mismo llavero. Sirve si te equivocas de llave, no si pierdes el llavero.",
+      "text": "<thoughtful> {keys}Pasa como con la llave de repuesto, que va en el mismo llavero. Si se te tuerce una llave, tiras de la otra.",
       "pauseAfterMs": 450
     },
     {
@@ -296,7 +296,7 @@
     {
       "id": "s08-02",
       "scene": "s08-copia",
-      "text": "<engaging> Ahora decides tú. {question}Si ese disco se pierde del todo, {choice}¿te basta la instantánea para recuperar la web, o necesitas otra cosa?",
+      "text": "<engaging> Ahora decides tú. {question}Si ese disco se muere del todo, {choice}¿puedes recuperar la web con la instantánea del domingo?",
       "pauseAfterMs": 300,
       "think": {
         "q": "¿Te salva la instantánea?",
@@ -306,7 +306,7 @@
     {
       "id": "s08-03",
       "scene": "s08-copia",
-      "text": "<firm> No te basta. {gone}La instantánea estaba en ese disco, así que se pierde con él, igual que la máquina.",
+      "text": "<firm> No puedes. {gone}La instantánea estaba en ese disco, así que se pierde con él. Has perdido el llavero entero, con la de repuesto.",
       "pauseAfterMs": 350
     },
     {
@@ -318,7 +318,7 @@
     {
       "id": "s08-05",
       "scene": "s08-copia",
-      "text": "<confident> Con ella, {restore}restauras la web en el otro servidor de la oficina, el de reserva, y los clientes vuelven a verla.",
+      "text": "<confident> Con ella, {restore}restauras las dos máquinas en el otro servidor de la oficina, el de reserva. Y los clientes vuelven a ver la web.",
       "pauseAfterMs": 350
     },
     {
@@ -336,13 +336,13 @@
     {
       "id": "s09-01",
       "scene": "s09-soporte",
-      "text": "<thoughtful> Queda la otra invitada, el servidor de ficheros. {eol}Su sistema operativo ya está fuera de soporte.",
+      "text": "<thoughtful> Queda un asunto con la otra invitada, el servidor de ficheros. {eol}Su sistema operativo es tan viejo que el fabricante ya lo ha abandonado.",
       "pauseAfterMs": 300
     },
     {
       "id": "s09-02",
       "scene": "s09-soporte",
-      "text": "<clear> Eso quiere decir que {nofix}el fabricante ya no publica parches para él. Si mañana aparece un fallo, nadie lo va a corregir.",
+      "text": "<clear> {nofix}Ya no publica parches para él, y si mañana aparece un fallo, el fabricante no lo va a corregir. Eso es estar fuera de soporte.",
       "pauseAfterMs": 350
     },
     {
@@ -354,7 +354,7 @@
     {
       "id": "s09-04",
       "scene": "s09-soporte",
-      "text": "<firm> Entonces se hacen tres cosas. {record}Se apunta la excepción, quién la acepta y hasta cuándo. {limit}Se limita quién puede llegar a esa máquina. {replace}Y se planea sustituirla.",
+      "text": "<firm> Haces tres cosas. {record}Apuntas la excepción, que lo dejas así a sabiendas, con quién lo acepta y hasta cuándo. {limit}Limitas quién puede llegar a él. {replace}Y planeas sustituirlo.",
       "pauseAfterMs": 350
     },
     {
@@ -372,7 +372,7 @@
     {
       "id": "s10-01",
       "scene": "s10-vuelta",
-      "text": "<warm> Volvamos al lunes por la mañana. {web}La web de seguimiento carga, y lo sabes porque has pedido la página, no por las luces.",
+      "text": "<warm> Vuelve conmigo al lunes del principio. {web}La web de seguimiento carga, y lo sabes porque has pedido la página, no por las luces.",
       "pauseAfterMs": 350
     },
     {
@@ -402,7 +402,7 @@
     {
       "id": "s11-02",
       "scene": "s11-reglas",
-      "text": "<clear> Dos. {q2}¿Funciona de verdad? Mira el proceso, el puerto y, sobre todo, una petición real. Las luces no bastan.",
+      "text": "<clear> Dos. {q2}¿Funciona de verdad? Mira el proceso, el puerto y, sobre todo, una petición real. Las luces no lo dicen.",
       "pauseAfterMs": 400
     },
     {
@@ -414,7 +414,7 @@
     {
       "id": "s11-04",
       "scene": "s11-reglas",
-      "text": "<engaging> {cta}La próxima vez que oigas que el servidor está encendido, haz estas tres preguntas antes de reiniciar nada.",
+      "text": "<engaging> {cta}La próxima vez que alguien te diga que está encendido, haz estas tres preguntas antes de reiniciar nada.",
       "pauseAfterMs": 1500
     }
   ]
