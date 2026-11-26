@@ -351,7 +351,7 @@ Consorcio pasan a las tablas de §2 a §6, con su cita, y se borran de aquí.
 10. **Puertas de enlace de la oficina sin fijar.** En el laboratorio, `10.20.8.1`, `.129` y `.193` son equipos finales (`src/data/opo/labs-op1.ts:87`, `src/data/opo/labs-op1.ts:57`, `src/data/opo/labs-op1.ts:77`). Tampoco hay números de VLAN para las oficinas: la lección solo dice que cada subred del plan se convierte en una VLAN (`src/data/opo/op1-m2.ts:238`).
 11. **`10.20.10.25` se repite:** es el puesto de la sede (`src/data/opo/op1-m1.ts:76`) y el equipo A del laboratorio (`src/data/opo/labs-op1.ts:122`). Ninguna fuente dice si es el mismo.
 12. **Redes sin dueño.** `10.20.12.x` (`src/data/opo/op1-m4.ts:35`) y `10.20.16.0/24` a `10.20.23.0/24` (`src/data/opo/op1-m2.ts:290`) aparecen en tablas y preguntas sin decir qué son.
-13. **Nunca se fija:** un prefijo IPv6 del Consorcio, direcciones de `192.0.2.0/24` o `198.51.100.0/24`, un número de AS, números de área de OSPF, puertas de enlace de las VLAN 30 y 99, un controlador de WLAN, un SSID, canales de los AP del Consorcio, conmutadores PoE concretos ni nombres de las oficinas comarcales.
+13. **Nunca se fija:** un prefijo IPv6 del Consorcio, direcciones de `192.0.2.0/24` o `198.51.100.0/24` (salvo `198.51.100.77`, dato del supuesto `op6s2`, punto 18), un número de AS, números de área de OSPF, puertas de enlace de las VLAN 30 y 99, un controlador de WLAN, un SSID, canales de los AP del Consorcio, conmutadores PoE concretos ni nombres de las oficinas comarcales.
 14. **Solo hipótesis:** el CPD de respaldo (`src/data/opo/op1-m5.ts:119`, `src/data/opo/op1-m5.ts:124`) y las tres áreas de OSPF (`src/data/opo/op1-m4.ts:144`). No se pueden enseñar como algo que ya existe.
 
 ### Bloque op6 (ENS y normativa)

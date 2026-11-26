@@ -102,7 +102,7 @@ const op6s2: Supuesto = {
             ['Servidores', 'REG-APP `10.20.72.30` (aplicación) y REG-DOC `10.20.72.31` (base de datos y documentos anexos), en el CPD de la sede'],
             ['Datos de cada asiento', 'Nombre y apellidos, DNI, domicilio, correo electrónico y teléfono de quien presenta el escrito, asunto y documentos anexos'],
             ['Volumen', 'Unos 18.400 asientos de los últimos 24 meses; el resto está en el archivo'],
-            ['Anexos destacados', 'Unas 900 solicitudes de la convocatoria de ayudas para adaptar viviendas, con el informe del grado de discapacidad de la persona solicitante'],
+            ['Anexos destacados', 'Unas 900 solicitudes de la línea de ayudas para adaptar viviendas, con el informe del grado de discapacidad de la persona solicitante'],
             ['Cómo se guardan los anexos', 'En REG-DOC, **sin cifrar**'],
           ],
         },

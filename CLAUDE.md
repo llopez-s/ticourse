@@ -165,8 +165,8 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   questions at article/annex level, 37 checkpoints, 3 classify labs `opl6a` categories / `opl6b` who is notified /
   `opl6c` Annex II measures, 48 cards, 104 glossary entries of which 20 have `ca`, 2 supuestos «La sede electrónica
   del Consorcio» and «El cifrado del registro de entrada», boss PAPEL MOJADO / EL CUMPLIMIENTO DE FACHADA).
-  Track totals: 12 lessons, 96 questions, 5 labs, 78 cards, 215 glossary entries, 3 supuestos. Blocks 3–5
-  (servicios de red, balanceo, infraestructuras, identidad) still need their own plan like
+  Track totals: 12 lessons, 96 questions, 5 labs, 78 cards, 215 glossary entries, 3 supuestos. Blocks 2–5
+  (infraestructuras, servicios de red, balanceo, identidad) still need their own plan like
   `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md` / `2026-11-26-opo-op6-ens.md`, a new section in `OP_SECTIONS` and
   their modules spread into `TRACKS.opo.modules`. All the regulation in op6 comes from the dossier
   `docs/superpowers/sources/2026-11-26-op6-fuentes.md` (consolidated BOE and EUR-Lex text, consulted 2026-11-26;
