@@ -182,7 +182,7 @@ afiliado a ninguna administración ni tribunal de selección y no sustituye a la
 - **Supuestos prácticos**: casos con expediente de documentos y 4–6 fases encadenadas (cálculo, tablas, citar
   documentos, ordenar, redactar), en modo práctica o simulacro con reloj y nota sobre 10. Hay uno hecho,
   *La oficina comarcal nueva*. Guía para escribirlos: `docs/supuestos.md`.
-- No tiene prueba de nivel ni logros propios todavía. El simulacro reparte las preguntas entre los bloques
+- No tiene prueba de nivel y solo un logro propio, el de los supuestos (`sup-first-exam`). El simulacro reparte las preguntas entre los bloques
   disponibles; no existen pesos oficiales.
 
 ## 🎮 Gamificación

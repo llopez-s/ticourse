@@ -117,7 +117,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   *convalidate* that section's theory: `store.exempt` maps moduleId → `ExemptEntry`, read
   everywhere through `isDone`/`exemptScore` in `lib/placement.ts`. Labs and bosses are never
   exempted. Exemption is revocable, which is why `mergeProgress` is **no longer monotonic for
-  `exempt`** — that field is last-write-wins by `at`. Persist version **3**. Both tracks now
+  `exempt`** — that field is last-write-wins by `at`. Persist version **4**. Both tracks now
   ship one: `SP_PLACEMENT` (`secplus/placement.ts`) and `GCTI_PLACEMENT` (`placement-gcti.ts`,
   spreading `placement-gcti-sN.ts`). A track with an empty `placement` still degrades cleanly —
   the Dashboard, Profile and `/placement` all check for it.
@@ -289,7 +289,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   and each device keeps its own copy locally, but it is the one place where a device whose
   `localStorage` was cleared *before* its next push can lose data. Retrying once after a 404 on
   the first sync for a code would shrink the window.
-- **Tests:** vitest, `npm test` (203 tests in `src/**/*.test.ts`, 17 files). Content tests assert
+- **Tests:** vitest, `npm test` (457 tests in `src/**/*.test.ts`, 30 files). Content tests assert
   Domain 1–5 completeness, that every Security+ boss section has ≥12 questions, 4 choices + valid
   answer per question, ids unique, lab data present, and (placement blocks) that every content
   section has exactly one 12-question block with contiguous ids and non-empty text. Partial
