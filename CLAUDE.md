@@ -27,9 +27,10 @@ Content is Spanish with English exam terminology; quiz questions/flashcards in E
 > disclaimers intact (see `README.md` and `TRACKS[*].disclaimer`).
 
 Fully **client-side**, static-deployable. **No backend** — all user progress persists in browser
-`localStorage` under the store key `intelforge-v1` (persist **version 3**; `migrateProgress` in
-`lib/store.ts` upgrades v1 data by adding `track` and stamping exams, and v2 data by adding the
-placement test's `exempt` and `placement` fields).
+`localStorage` under the store key `intelforge-v1` (persist **version 4**; `migrateProgress` in
+`lib/store.ts` upgrades v1 data by adding `track` and stamping exams, v2 data by adding the
+placement test's `exempt` and `placement` fields, and v3 data by adding `practical` (practical XP) and
+`supuestos` (best grade per mode)).
 
 ## Stack & layout
 
@@ -108,8 +109,8 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
     **ICD 203 estimative-language calibration** training.
   - XP with **7 analyst ranks**; narrative campaign ("Operación VELVET CICADA") where each
     section's **boss battle** unlocks a dossier fragment.
-  - Daily **streaks** with freezes; rotating daily **quests**; **28 achievements**
-    (23 general + 3 Security+ `sp-*` + 2 placement `pl-*`);
+  - Daily **streaks** with freezes; rotating daily **quests**; **29 achievements**
+    (23 general + 3 Security+ `sp-*` + 2 placement `pl-*` + 1 practical case);
     per-section exam-readiness meters.
 - **Placement test.** `TRACKS[t].placement` holds one `PlacementBlock` (12 dedicated questions,
   never reused from the lesson bank) per content section. Passing at ≥80% lets the learner
@@ -135,6 +136,23 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   Track icons must not reuse the app's `◆`.
 
 ## State & gotchas
+
+- **Supuestos prácticos (2026-11-26).** A *supuesto* is a practical case: a dossier of documents plus 4-6
+  chained phases of typed tasks, in practice mode (correction per phase, hints) or timed *simulacro*.
+  Engine: `lib/supuesto.ts` (types + `validateSupuesto`), `supuestoGrade.ts` (grading, variants, score),
+  `supuestoFlow.ts`, `supuestoClock.ts`, `supuestoReport.ts`; UI in `components/supuestos/`; pages
+  `/supuestos` and `/supuesto/:id?mode=practice|exam`. Data lives in `data/opo/supuestos/` (`opNsM.ts`, one
+  case per file, lazy-loaded through `LOADERS` in `data/supuestos/index.ts`; hand-written metadata in
+  `meta.ts`, checked against the data by `supuestos.test.ts`). The first real case is `op1s1`. Progress is a
+  workbook per case and mode, `alertopolis-labs-v1:supuesto/<id>/<mode>/v<version>` (the same store as the labs,
+  **not** in the synced snapshot), so bumping a case's `version` starts everyone clean. Results go to the store:
+  `supuestos[id][mode]` keeps the best grade and `practical['<id>:<mode>']` the **practical XP** (60 practice /
+  120 simulacro, doubled for an integrator), paid once, only at grade >= 5, and kept apart from `xp`/level.
+  Persist is **v4**, and there is one new achievement (29 in all). `SYNC_SCHEMA` deliberately **stays 1**: the
+  deployed Worker only accepts `v=1`, so bumping it needs the Worker deployed first. An old client can push a
+  blob without `practical`/`supuestos`; the merge restores them from the other device. Authoring guide, review
+  checklist and how to register a case: `docs/supuestos.md`. Browser check: `scripts/test-lab-browser.mjs`
+  plays `op1s1` end to end (practice = 10,0 and 60 XP; simulacro with reload and expiry).
 
 - **Third track `opo`, «Redes y ENS» (2026-11-24).** Networks, network services and the Spanish ENS for
   public-administration IT syllabuses; unofficial, with its own disclaimer. Lives in `src/data/opo/`

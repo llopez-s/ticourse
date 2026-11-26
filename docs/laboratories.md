@@ -99,3 +99,6 @@ aislado, bloquea fuentes y vídeos externos y cierra el navegador al finalizar.
 Verifica los ocho motores y seis casos, recargas, descargas, separación de casos,
 reinicio archivado, borrador YARA, teclado, móvil y fallo de cuota. Guarda capturas
 en `node_modules/.cache/lab-browser/` (o `LAB_TEST_ARTIFACTS`).
+
+Los supuestos prácticos de la pista Redes y ENS comparten este sistema de cuadernos y su
+prueba de navegador; se describen en [supuestos.md](supuestos.md).

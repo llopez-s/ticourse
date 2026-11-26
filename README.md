@@ -179,6 +179,9 @@ afiliado a ninguna administración ni tribunal de selección y no sustituye a la
 - A diferencia de las otras dos pistas, **todo está en español**, también las preguntas. El glosario añade el
   término en catalán (`cat.`) cuando está confirmado en TERMCAT o en la Viquipèdia, y se puede buscar por él.
 - Lo que ya enseña Security+ (seguridad wifi, 802.1X, VPN) no se repite: las lecciones lo enlazan.
+- **Supuestos prácticos**: casos con expediente de documentos y 4–6 fases encadenadas (cálculo, tablas, citar
+  documentos, ordenar, redactar), en modo práctica o simulacro con reloj y nota sobre 10. Hay uno hecho,
+  *La oficina comarcal nueva*. Guía para escribirlos: `docs/supuestos.md`.
 - No tiene prueba de nivel ni logros propios todavía. El simulacro reparte las preguntas entre los bloques
   disponibles; no existen pesos oficiales.
 
@@ -197,7 +200,7 @@ afiliado a ninguna administración ni tribunal de selección y no sustituye a la
   *streak freeze*.
 - **Racha diaria** con freezes, heatmap de actividad de 28 días.
 - **Misiones diarias** rotatorias (3/día + bonus por completarlas todas).
-- **28 logros** (23 generales + 3 de Security+ + 2 de la prueba de nivel) y medidor de
+- **29 logros** (23 generales + 3 de Security+ + 2 de la prueba de nivel + 1 de supuestos) y medidor de
   **exam readiness** por sección.
 - **Campaña "Operación GLASS HARBOR"** en el track Security+: eres la primera
   analista de seguridad de la Autoridad Portuaria de Halden; 5 misiones y 5
