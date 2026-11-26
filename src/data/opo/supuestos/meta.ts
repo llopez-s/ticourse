@@ -17,6 +17,16 @@ export const OP_SUPUESTOS: SupuestoMeta[] = [
     integrator: undefined,
   },
   {
+    id: 'op3s1',
+    track: 'opo',
+    sectionIds: ['op3'],
+    version: 1,
+    title: 'El edificio anexo de la sede',
+    brief: 'Da servicio de red al edificio anexo de la sede: ámbito DHCP, zonas y registros DNS, relay con giaddr, conmutación por error entre DHCP1 y DHCP2, la hora de los servidores y una nota para la jefatura.',
+    minutes: 60,
+    integrator: undefined,
+  },
+  {
     id: 'op6s1',
     track: 'opo',
     sectionIds: ['op6'],

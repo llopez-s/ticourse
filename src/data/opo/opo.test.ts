@@ -61,6 +61,25 @@ describe('pista Redes y ENS', () => {
     for (const s of opo.sections) expect(trackOf(s.id)).toBe('opo');
   });
 
+  it('block 3 (servicios de red) lessons follow the shape', () => {
+    const mods = ALL_MODULES.filter((m) => m.sectionId === 'op3');
+    expect(mods.map((m) => m.id)).toEqual(['op3m1', 'op3m2', 'op3m3', 'op3m4', 'op3m5']);
+    for (const m of mods) {
+      expect(m.objectives.length, m.id).toBeGreaterThanOrEqual(4);
+      expect(m.blocks.filter((b) => b.t === 'check').length, m.id).toBeGreaterThanOrEqual(4);
+      expect(m.blocks.filter((b) => b.t === 'table').length, m.id).toBeGreaterThanOrEqual(2);
+      expect(m.quiz.length, m.id).toBe(8);
+      for (const q of m.quiz) {
+        expect(q.domain, q.id).toBe('Servicios de red');
+        expect(q.choices, q.id).toHaveLength(4);
+      }
+      expect(new Set(m.quiz.map((q) => q.answer)).size, m.id).toBeGreaterThanOrEqual(3);
+    }
+    const order = opo.sections.map((s) => s.id);
+    expect(order.indexOf('op3')).toBeGreaterThan(order.indexOf('op1'));
+    expect(order.indexOf('op3')).toBeLessThan(order.indexOf('op6'));
+  });
+
   it('block 6 (ENS y normativa) lessons follow the shape', () => {
     const mods = ALL_MODULES.filter((m) => m.sectionId === 'op6');
     expect(mods.map((m) => m.id)).toEqual(['op6m1', 'op6m2', 'op6m3', 'op6m4', 'op6m5', 'op6m6', 'op6m7']);

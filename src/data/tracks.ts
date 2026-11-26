@@ -39,6 +39,7 @@ import { SP_LABS } from './secplus/labs';
 import { SP_PLACEMENT } from './secplus/placement';
 import { OP_DOMAIN_WEIGHTS, OP_DOMAINS, OP_RANKS, OP_SECTIONS } from './opo/sections';
 import { OP1_MODULES } from './opo/op1';
+import { OP3_MODULES } from './opo/op3';
 import { OP6_MODULES } from './opo/op6';
 import { OP1_FLASHCARDS, OP1_GLOSSARY } from './opo/op1-cards';
 import { OP6_FLASHCARDS, OP6_GLOSSARY } from './opo/op6-cards';
@@ -179,7 +180,7 @@ export const TRACKS: Record<TrackId, TrackMeta> = {
     domains: OP_DOMAINS,
     domainWeights: OP_DOMAIN_WEIGHTS,
     sections: OP_SECTIONS,
-    modules: [...OP1_MODULES, ...OP6_MODULES],
+    modules: [...OP1_MODULES, ...OP3_MODULES, ...OP6_MODULES],
     placement: [],
     flashcards: [...OP1_FLASHCARDS, ...OP6_FLASHCARDS],
     glossary: [...OP1_GLOSSARY, ...OP6_GLOSSARY],
