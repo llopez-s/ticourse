@@ -35,7 +35,7 @@ function OrderInput({ task, value, onChange, disabled, legend }: {
     onChange(next);
   };
   return (
-    <fieldset disabled={disabled}>
+    <fieldset disabled={disabled} className="min-w-0">
       {legend}
       <p className="mb-2 text-xs text-slate-400">Usa los botones para subir o bajar cada paso.</p>
       <ol className="space-y-2">
@@ -68,7 +68,7 @@ export default function TaskInput({ task, value, onChange, docs, disabled }: {
   switch (task.kind) {
     case 'choice':
       return (
-        <fieldset disabled={disabled}>
+        <fieldset disabled={disabled} className="min-w-0">
           {legend}
           <div className="space-y-2">
             {task.options.map((o) => (
@@ -85,7 +85,7 @@ export default function TaskInput({ task, value, onChange, docs, disabled }: {
       const sel = asList(value);
       const toggle = (id: string) => onChange(sel.includes(id) ? sel.filter((x) => x !== id) : [...sel, id]);
       return (
-        <fieldset disabled={disabled}>
+        <fieldset disabled={disabled} className="min-w-0">
           {legend}
           <p className="mb-2 text-xs text-slate-400">Marca todas las que correspondan. Una marcada de más resta.</p>
           <div className="space-y-2">
@@ -127,10 +127,10 @@ export default function TaskInput({ task, value, onChange, docs, disabled }: {
       const a = asRecord(value);
       const set = (key: string, v: string) => onChange({ ...a, [key]: v });
       return (
-        <fieldset disabled={disabled}>
+        <fieldset disabled={disabled} className="min-w-0">
           {legend}
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[28rem] border-collapse text-sm">
+            <table className="w-full min-w-[32rem] border-collapse text-sm">
               <thead>
                 <tr>
                   <th className="p-2 text-left text-xs font-semibold text-slate-400" scope="col"><span className="sr-only">Elemento</span></th>
@@ -174,7 +174,7 @@ export default function TaskInput({ task, value, onChange, docs, disabled }: {
     case 'match': {
       const a = asRecord(value);
       return (
-        <fieldset disabled={disabled}>
+        <fieldset disabled={disabled} className="min-w-0">
           {legend}
           <div className="space-y-2">
             {task.left.map((l) => {
@@ -198,7 +198,7 @@ export default function TaskInput({ task, value, onChange, docs, disabled }: {
       const sel = asList(value);
       const toggle = (id: string) => onChange(sel.includes(id) ? sel.filter((x) => x !== id) : [...sel, id]);
       return (
-        <fieldset disabled={disabled}>
+        <fieldset disabled={disabled} className="min-w-0">
           {legend}
           <p className="mb-2 text-xs text-slate-400">Marca los documentos del expediente que respaldan tu respuesta.</p>
           <div className="space-y-2">
