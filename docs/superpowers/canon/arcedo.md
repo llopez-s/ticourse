@@ -1,6 +1,6 @@
 # Canon · Consorcio Provincial de Arcedo (pista «Redes y ENS»)
 
-Registro de los hechos fijos del escenario que usan las lecciones del bloque 1 (`op1`, Redes de comunicaciones).
+Registro de los hechos fijos del escenario que usan las lecciones del bloque 1 (`op1`, Redes de comunicaciones); los de los bloques 6 (§7b) y 3 (§7c, Servicios de red) se añadieron después.
 Los guiones de vídeo se escriben contra este registro: lo que salga en pantalla tiene que coincidir con la lección.
 
 Última revisión: 2026-11-25, sobre la rama `video-redes-guiones` (commit `1f76b337`). Fuentes leídas enteras:
@@ -264,6 +264,77 @@ La interrupción cuenta desde las 05:10 (el registro atiende a todas horas): 9 h
 - Jefe de `op6`: nombre en clave PAPEL MOJADO, adversario EL CUMPLIMIENTO DE FACHADA: política firmada, declaración de aplicabilidad e informe de auditoría en una carpeta, pero nadie sabe quién valoró los sistemas y el registro de incidentes lleva meses vacío (`src/data/opo/sections.ts:69`, `src/data/opo/sections.ts:71`).
 - Al cerrar: cada sistema con sus dimensiones valoradas por quien debe, su categoría determinada por la Unidad de Seguridad de la Información y su declaración de aplicabilidad firmada; en el archivo del comité, un acta antigua con una línea subrayada: «revisar la red de las oficinas comarcales antes de la próxima auditoría» (`src/data/opo/sections.ts:73`).
 
+## 7c. Servicios de red (bloque op3)
+
+Hechos que fija el bloque 3, «Servicios de red» (`op3m1`–`op3m5`, `opl3a`–`opl3c`, supuestos `op3s1` y `op3s2`). Solo los
+hechos del Consorcio; los puertos, códigos y valores de los estándares no se copian aquí. Revisión de 2026-11-26, sobre la
+rama del bloque `op3`. Los valores que son del fabricante (Windows Server, Cisco) siguen rotulados así en las lecciones.
+
+### DNS y dominios
+
+| Hecho | Fuente |
+|---|---|
+| Dominio público `arcedo.example`, con la zona autoritativa en el proveedor de DNS externo; los servidores son `ns1.proveedor-dns.example` y `ns2.proveedor-dns.example` | `src/data/opo/op3-m1.ts:31`, `src/data/opo/op3-m1.ts:35`, `src/data/opo/op3-m1.ts:36`, `src/data/opo/op3-m1.ts:40` |
+| SOA con primario `ns1.proveedor-dns.example`, responsable `hostmaster.arcedo.example`, SERIAL `2026112601`, MINIMUM 900 s | `src/data/opo/op3-m1.ts:156`, `src/data/opo/op3-m1.ts:167`, `src/data/opo/op3-m1.ts:168`, `src/data/opo/op3-m1.ts:172` |
+| MX `10 correo.arcedo.example.`; CAA `0 issue "ca.example"` y `0 iodef "mailto:seguridad@arcedo.example"`; TTL 3600 | `src/data/opo/op3-m1.ts:175`, `src/data/opo/op3-m1.ts:176`, `src/data/opo/op3-m1.ts:177` |
+| `www` y `correo` resuelven a `203.0.113.10`, la única dirección pública; el encaminador reenvía cada puerto al servidor que toca. `portal` es un CNAME de `www` | `src/data/opo/op3-m1.ts:178`, `src/data/opo/op3-m1.ts:179`, `src/data/opo/op3-m1.ts:180`, `src/data/opo/op3-m1.ts:184`, `src/data/opo/supuestos/op3s2.ts:17` |
+| El PTR de `203.0.113.10` lo publica el operador, dueño del bloque | `src/data/opo/op3-m1.ts:148` |
+| `encuestas.arcedo.example` es un CNAME hacia `arcedo.encuestas-proveedor.example`, nombre que asigna el proveedor externo que aloja el servicio de encuestas | `src/data/opo/labs-op3.ts:166` |
+| Dominio de Active Directory `ad.arcedo.example`, subdominio del público; lo sirven solo DC1 y DC2 y no se publica fuera | `src/data/opo/op3-m2.ts:37`, `src/data/opo/op3-m2.ts:54`, `src/data/opo/supuestos/op3s1.ts:22` |
+| DC1 `10.20.72.11` (`dc1.ad.arcedo.example`) y DC2 `10.20.72.12` (`dc2.ad.arcedo.example`), en el CPD, con DNS interno; lo que no es suyo lo reenvían a los resolutores del operador | `src/data/opo/op3-m2.ts:38`, `src/data/opo/op3-m2.ts:41`, `src/data/opo/op3-m2.ts:78`, `src/data/opo/op3-m2.ts:79` |
+| Resolutores del operador `198.51.100.53` y `198.51.100.54`; no conocen `ad.arcedo.example` | `src/data/opo/supuestos/op3s1.ts:20`, `src/data/opo/supuestos/op3s1.ts:112`, `src/data/opo/supuestos/op3s2.ts:104` |
+| El cortafuegos solo deja salir DNS desde DC1 y DC2 | `src/data/opo/op3-m2.ts:196` |
+
+### DHCP
+
+| Hecho | Fuente |
+|---|---|
+| DHCP1 `10.20.72.21` y DHCP2 `10.20.72.22` (CPD), Windows Server, en conmutación por error; con los valores por defecto de Microsoft, en equilibrio de carga 50:50 | `src/data/opo/op3-m3.ts:22`, `src/data/opo/op3-m3.ts:212`, `src/data/opo/supuestos/op3s1.ts:28` |
+| Hacen de agente relay las SVI de los conmutadores de distribución de la sede y los encaminadores de cada oficina comarcal, con dos destinos (DHCP1 y DHCP2) | `src/data/opo/op3-m3.ts:22`, `src/data/opo/op3-m3.ts:160`, `src/data/opo/op3-m3.ts:161`, `src/data/opo/op3-m3.ts:212` |
+| Ámbito de la VLAN 10: `10.20.10.100`–`10.20.10.250` (151 direcciones), puerta `10.20.10.1`, DNS `10.20.72.11` y `10.20.72.12`, concesión de 8 horas (decisión del Consorcio); la impresora de la planta 2 tiene una reserva en `10.20.10.200` | `src/data/opo/op3-m3.ts:129`, `src/data/opo/labs-op3.ts:194` |
+
+### Hora (NTP)
+
+| Hecho | Fuente |
+|---|---|
+| NTP1 `10.20.72.41` y NTP2 `10.20.72.42` (CPD); se sincronizan con servidores públicos de referencia, de estrato 1; ellos anuncian estrato 2 | `src/data/opo/op3-m4.ts:140`, `src/data/opo/supuestos/op3s1.ts:23`, `src/data/opo/supuestos/op3s2.ts:23`, `src/data/opo/supuestos/op3s2.ts:24` |
+| Emulador de PDC: DC1 en los dos supuestos; toma la hora de NTP1 y NTP2 (fuente externa fiable que pide Microsoft) | `src/data/opo/op3-m4.ts:141`, `src/data/opo/supuestos/op3s1.ts:24`, `src/data/opo/supuestos/op3s1.ts:131`, `src/data/opo/supuestos/op3s2.ts:20` |
+| Miembros del dominio (el otro controlador, puestos y servidores, **incluidos DHCP1, DHCP2 y DC2**): por la jerarquía de hora de Windows (valor del fabricante) | `src/data/opo/op3-m4.ts:142`, `src/data/opo/supuestos/op3s1.ts:131`, `src/data/opo/supuestos/op3s2.ts:21` |
+| Equipos fuera del dominio (conmutadores, cortafuegos, encaminadores de las oficinas, impresoras, servidores que no son del dominio): directamente a NTP1 y NTP2 | `src/data/opo/op3-m4.ts:143`, `src/data/opo/supuestos/op3s1.ts:131` |
+| Solo NTP1 y NTP2 hablan con el exterior por NTP | `src/data/opo/op3-m4.ts:150`, `src/data/opo/op3-m4.ts:164` |
+| Estratos del supuesto `op3s2`: NTP1 y NTP2 en 2, DC1 en 3 y DC2, ya corregido, en 4 | `src/data/opo/supuestos/op3s2.ts:23`, `src/data/opo/supuestos/op3s2.ts:24` |
+
+### Proxy, 802.1X y servicios de conectividad
+
+| Hecho | Fuente |
+|---|---|
+| Proxy web corporativo `10.20.72.50`, puerto 8080 (decisión del Consorcio); toda la navegación sale por él | `src/data/opo/op3-m5.ts:21`, `src/data/opo/op3-m5.ts:28`, `src/data/opo/op3-m5.ts:41` |
+| Los navegadores reciben la URL concreta de un archivo PAC (`proxy.pac`), publicado en un servidor interno que controla el Servicio de Informática y Comunicaciones; DIRECT para nombres sin dominio, `.ad.arcedo.example` y `10.20.*`, el resto a `PROXY 10.20.72.50:8080` | `src/data/opo/op3-m5.ts:125`, `src/data/opo/op3-m5.ts:136`, `src/data/opo/op3-m5.ts:150` |
+| Sin WPAD: ni por DNS ni por DHCP (opción 252) | `src/data/opo/op3-m5.ts:149`, `src/data/opo/op3-m5.ts:150`, `src/data/opo/op3-m5.ts:155` |
+| El cortafuegos de salida solo admite tráfico web desde el proxy; un navegador que no encuentra el PAC no sabe que debe ir por él y se queda sin salida | `src/data/opo/labs-op3.ts:239` |
+| Servidor RADIUS `10.20.72.60` (CPD); 802.1X en los puestos de la VLAN 10, con asignación de VLAN en el `Access-Accept` (ejemplo: VLAN 10) | `src/data/opo/op3-m5.ts:209`, `src/data/opo/op3-m5.ts:211`, `src/data/opo/op3-m5.ts:221`, `src/data/opo/op3-m5.ts:224` |
+
+### Edificio anexo (`op3s1`)
+
+| Hecho | Fuente |
+|---|---|
+| La sede central estrena un edificio anexo, unido por fibra a los dos conmutadores de distribución de la sede, DIST1 y DIST2 | `src/data/opo/supuestos/op3s1.ts:13`, `src/data/opo/supuestos/op3s1.ts:83` |
+| VLAN 50 «Usuarios del anexo», red `10.20.50.0/23`; VRRP solo en esta VLAN: puerta virtual `10.20.50.1`, SVI de DIST1 `10.20.50.2` y de DIST2 `10.20.50.3`; las 20 primeras direcciones quedan fuera del reparto | `src/data/opo/supuestos/op3s1.ts:15`, `src/data/opo/supuestos/op3s1.ts:17`, `src/data/opo/supuestos/op3s1.ts:18`, `src/data/opo/supuestos/op3s1.ts:88`, `src/data/opo/supuestos/op3s1.ts:126` |
+| Servidor de impresión `IMP-ANX`, `10.20.50.10`, con el alias «impresion» | `src/data/opo/supuestos/op3s1.ts:19`, `src/data/opo/supuestos/op3s1.ts:90`, `src/data/opo/supuestos/op3s1.ts:387` |
+| Zonas inversas internas `50.20.10.in-addr.arpa` y `51.20.10.in-addr.arpa`, en DC1 y DC2 | `src/data/opo/supuestos/op3s1.ts:21`, `src/data/opo/supuestos/op3s1.ts:342` |
+
+### Oficina del supuesto `op3s2`
+
+| Hecho | Fuente |
+|---|---|
+| Oficina comarcal en `10.20.9.0/24`: puerta `10.20.9.1`, intervalo `10.20.9.20`–`10.20.9.120`, concesión de 8 horas (la `10.20.8.0/24` ya es la de `opl1a`) | `src/data/opo/supuestos/op3s2.ts:13`, `src/data/opo/supuestos/op3s2.ts:14`, `src/data/opo/supuestos/op3s2.ts:15`, `src/data/opo/supuestos/op3s2.ts:314`, `src/data/opo/supuestos/op3s2.ts:316` |
+| Puestos que usan los textos: `10.20.9.57` y `10.20.9.64` (oficina), `10.20.10.137` y `10.20.10.212` (VLAN 10, supuesto), `10.20.10.157` y `10.20.10.143` (VLAN 10, lecciones): datos de ejercicio dentro de los ámbitos | `src/data/opo/supuestos/op3s2.ts:79`, `src/data/opo/supuestos/op3s2.ts:80`, `src/data/opo/supuestos/op3s2.ts:209`, `src/data/opo/op3-m5.ts:43`, `src/data/opo/op3-m5.ts:188` |
+
+### Jefe de sección
+
+- Jefe de `op3`: nombre en clave NOMBRE EQUIVOCADO, adversario EL RELOJ QUE ADELANTA: nadie puede iniciar sesión, los puestos nuevos no reciben dirección y los registros cuentan una historia imposible (`src/data/opo/sections.ts:68`, `src/data/opo/sections.ts:69`, `src/data/opo/sections.ts:71`).
+- Al cerrar: cada nombre resuelve donde debe, cada ámbito reparte su puerta y su DNS y todos los relojes coinciden; en el registro del proxy queda una línea: un equipo de la red de gestión pidiendo, de madrugada, un archivo de configuración que el Consorcio ya no publica (`src/data/opo/sections.ts:73`).
+
 ## 8. Datos que añaden los guiones de vídeo (borradores sin congelar, 2026-11-25)
 
 Lo que cada guion pone en pantalla o en una pregunta y ninguna lección fija. Comprobado contra los JSON de cada
@@ -351,7 +422,7 @@ Consorcio pasan a las tablas de §2 a §6, con su cita, y se borran de aquí.
 10. **Puertas de enlace de la oficina sin fijar.** En el laboratorio, `10.20.8.1`, `.129` y `.193` son equipos finales (`src/data/opo/labs-op1.ts:87`, `src/data/opo/labs-op1.ts:57`, `src/data/opo/labs-op1.ts:77`). Tampoco hay números de VLAN para las oficinas: la lección solo dice que cada subred del plan se convierte en una VLAN (`src/data/opo/op1-m2.ts:238`).
 11. **`10.20.10.25` se repite:** es el puesto de la sede (`src/data/opo/op1-m1.ts:76`) y el equipo A del laboratorio (`src/data/opo/labs-op1.ts:122`). Ninguna fuente dice si es el mismo.
 12. **Redes sin dueño.** `10.20.12.x` (`src/data/opo/op1-m4.ts:35`) y `10.20.16.0/24` a `10.20.23.0/24` (`src/data/opo/op1-m2.ts:290`) aparecen en tablas y preguntas sin decir qué son.
-13. **Nunca se fija:** un prefijo IPv6 del Consorcio, direcciones de `192.0.2.0/24` o `198.51.100.0/24` (salvo `198.51.100.77`, dato del supuesto `op6s2`, punto 18), un número de AS, números de área de OSPF, puertas de enlace de las VLAN 30 y 99, un controlador de WLAN, un SSID, canales de los AP del Consorcio, conmutadores PoE concretos ni nombres de las oficinas comarcales.
+13. **Nunca se fija:** un prefijo IPv6 del Consorcio, direcciones de `192.0.2.0/24` o `198.51.100.0/24` (salvo `198.51.100.77`, dato del supuesto `op6s2`, punto 18, y los resolutores del operador `198.51.100.53` y `198.51.100.54`, hecho de `op3`, §7c), un número de AS, números de área de OSPF, puertas de enlace de las VLAN 30 y 99, un controlador de WLAN, un SSID, canales de los AP del Consorcio, conmutadores PoE concretos ni nombres de las oficinas comarcales.
 14. **Solo hipótesis:** el CPD de respaldo (`src/data/opo/op1-m5.ts:119`, `src/data/opo/op1-m5.ts:124`) y las tres áreas de OSPF (`src/data/opo/op1-m4.ts:144`). No se pueden enseñar como algo que ya existe.
 
 ### Bloque op6 (ENS y normativa)
@@ -369,3 +440,14 @@ Consorcio pasan a las tablas de §2 a §6, con su cita, y se borran de aquí.
 20. **Cronología.** El canon dice que no hay cronología (§7); `op6s2` fija un lunes con horas minuto a minuto y un jueves anterior (`src/data/opo/supuestos/op6s2.ts:64`, `src/data/opo/supuestos/op6s2.ts:205`), y `op6m4` una auditoría «hace ocho meses» (`src/data/opo/op6-m4.ts:299`), sin ninguna fecha.
 21. **La red de las oficinas comarcales.** El acta del jefe de `op6` manda revisar «la red de las oficinas comarcales antes de la próxima auditoría» (`src/data/opo/sections.ts:73`), y `op6m4` pone esa infraestructura en manos de una empresa contratada (`src/data/opo/op6-m4.ts:359`); en `op1` la red de las oficinas es la «heredada» del jefe PLANO EN BLANCO (§7). Ninguna pieza dice si el acta apunta a ese problema.
 22. **Huecos del bloque.** Nunca se fija: qué órgano aprueba la política de seguridad (`src/data/opo/op6-m6.ts:131`, `src/data/opo/op6-m6.ts:132`); cuántas personas emplea el Consorcio (`src/data/opo/op6-m5.ts:98`); quién es el DPD ni si es de plantilla o por contrato (`src/data/opo/op6-m5.ts:150`); el nombre de ninguna empresa contratada ni si son una o varias (§7b); el nombre de la comunidad autónoma.
+
+### Bloque op3 (servicios de red)
+
+23. **«El resto de equipos se sincroniza con NTP1/NTP2»: matizado por op3.** La frase simplificada (resumen del controlador de op3: «el resto de equipos se sincroniza con ellos») es cierta solo para los equipos fuera del dominio (`src/data/opo/op3-m4.ts:143`). Los miembros del dominio, incluidos DHCP1, DHCP2 y DC2, siguen la jerarquía de Windows (`src/data/opo/op3-m4.ts:142`, `src/data/opo/supuestos/op3s1.ts:131`). Aun así, `op3m3` pregunta por la opción 42 de DHCP para que «todos los puestos usen sus NTP internos» (`src/data/opo/op3-m3.ts:349`), y la lección de hora dice que lo habitual es que «todo lo demás se sincronice con ellos» (`src/data/opo/op3-m4.ts:134`). No se resuelve: un guion debe separar «fuera del dominio, directo a NTP1/NTP2» de «miembros del dominio, por la jerarquía de Windows». Tampoco ninguna pieza dice de qué equipo toman la hora los puestos de la sede (si de DC1, de DC2 o de cualquiera de los dos): solo «la jerarquía del dominio, que acaba en los servidores internos».
+24. **Emulador de PDC: DC1 o DC2.** La lección lo deja abierto, «DC1 o DC2» (`src/data/opo/op3-m4.ts:141`); los dos supuestos lo fijan en DC1 (`src/data/opo/supuestos/op3s1.ts:24`, `src/data/opo/supuestos/op3s2.ts:20`) y lo anotan como hecho nuevo. DC1 es el canónico.
+25. **Una sola dirección pública frente a tres usos.** `203.0.113.10` hace de dirección de salida de los 200 puestos (PAT, `src/data/opo/op1-m2.ts:300`) y ahora además sirve `www` y `correo` con reenvío de puertos (`src/data/opo/op3-m1.ts:178`, `src/data/opo/op3-m1.ts:184`), mientras que `op1m2` publica un servidor como `203.0.113.20` (`src/data/opo/op1-m2.ts:160`, punto 3). Dónde está el servidor de correo tras el reenvío no se dice: ninguna pieza le da dirección interna.
+26. **VRRP solo en la VLAN 50.** `op3s1` pone VRRP únicamente en la VLAN 50 del anexo, con `10.20.50.1` virtual, como decisión del escenario («solo en esta VLAN», `src/data/opo/supuestos/op3s1.ts:16`, `src/data/opo/supuestos/op3s1.ts:17`). El borrador de vídeo `rutas-arcedo` monta VRRP en Servidores (`10.20.20.0/24`) con `10.20.20.1` como IP virtual (§8, `video/rutas-arcedo/storyboard.json` `s11-vrrp`), rotulado como montaje de ejemplo: no coinciden y el vídeo no debe presentarse como la configuración del Consorcio. La nota de §6 («VRRP / HSRP: ningún dato del Consorcio») queda matizada solo para la VLAN 50, y en un supuesto.
+27. **La impresora de la planta 2 está en la VLAN 10.** `op3m3` le da una reserva en `10.20.10.200` dentro del ámbito de usuarios (`src/data/opo/op3-m3.ts:129`), cuando §5 tiene una VLAN 40 Impresoras sin subred (punto 9). No se dice si es una impresora de gestión o de usuarios, ni si la VLAN 40 se usa en la planta 2.
+28. **El reloj atrasado o adelantado de los dos supuestos.** En `op3s1`, DHCP2 va 250 s por detrás con su reloj local (`src/data/opo/supuestos/op3s1.ts:520`); en `op3s2`, DC2 va 400 s adelantado (`src/data/opo/supuestos/op3s2.ts:8`–`10`). Son dos averías de dos supuestos distintos, no la misma, y no hay una cronología común entre ambos (punto 20). Un guion tiene que elegir uno.
+29. **Fecha y direcciones de ejercicio.** El SERIAL `2026112601` (`src/data/opo/op3-m1.ts:168`) es una fecha, y §7 dice que el escenario no tiene cronología (punto 20). Las direcciones de equipo `10.20.10.137`, `.143`, `.157` y `.212` y `10.20.9.57` y `.64` son datos de ejercicio dentro de los ámbitos, no equipos con nombre del Consorcio.
+30. **`10.20.9.0/24` tiene dos repartos.** `op3s2` fija la oficina comarcal en `10.20.9.0/24`, con puerta `10.20.9.1` e intervalo `10.20.9.20`–`10.20.9.120` (`src/data/opo/supuestos/op3s2.ts:13`, `src/data/opo/supuestos/op3s2.ts:14`, `src/data/opo/supuestos/op3s2.ts:15`). El borrador de vídeo `subredes-arcedo` (rama no fusionada `video-redes-guiones`) reparte esa misma red en `10.20.9.0/26` y `10.20.9.64/27` en «otra oficina comarcal», como ejemplo rotulado (§8, `video/subredes-arcedo/narration.json` `s06-01`), y usa `10.20.9.203/28` en la pregunta 1. Los dos usos no caben a la vez (el intervalo hasta `.120` cruza el `/27` de `.64` a `.95` y llega a la zona de `.96`). Se resuelve con el rótulo del vídeo («otra oficina»), pero el punto 1 sigue siendo válido: ninguna fuente dice qué oficina usa cuál.
