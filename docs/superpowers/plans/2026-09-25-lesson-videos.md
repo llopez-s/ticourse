@@ -6266,6 +6266,12 @@ por la misma CPU; cuatro cortes a mano en la grabación. Los pasos detallados si
      Se alarga su `pauseAfterMs` (no cambia lo que se dice ni la grabación), no se acorta la tarjeta.
    - **«timeline.json is stale».** Cualquier cambio en `storyboard.json` o `narration.json` (aunque sea el orden
      de `requiredCues`) obliga a `audio.mjs` antes de renderizar; los efectos y su orden se ponen antes de importar.
+   - **Palabra sin duración dentro de un clip** (vlan-arcedo s08-03, «la misma VLAN»: «VLAN» quedó con 0 ms y no se
+     oye en el vídeo publicado). Antes de producir, busca en `tts/<id>.json` palabras de 0 ms que no sean fantasmas
+     de Whisper y compara el principio y el final de cada clip con el guion.
+   - **Equilibrar la voz** (desde 2026-11-25, Lidia: «volúmenes mejor balanceados»): con los arreglos hechos,
+     `balance_voice.py --video <slug>` (README del motor, «Masterización») y, en `video.json`, `"mix"` para que la
+     música y los efectos no queden muy por debajo de la voz.
 7. **Render, YouTube y lección.** Desde el 2026-10-26 los pasos 6–7 hasta el MP4 masterizado son un solo comando,
    `node video/engine/scripts/produce.mjs --video <slug>` (audio → WAV del programa → master 1 → fotogramas → master 2 →
    resumen), que se para en el primer error y dice con qué `--from` retomar; `--upload` añade metadatos y subida privada.

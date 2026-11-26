@@ -215,7 +215,7 @@ async function main() {
   const manifest = readManifest(options.video);
   const p = outPaths(REPO_ROOT, options.video, manifest.output);
   const narration = nodeFs.exists(p.narration) ? nodeFs.readJson(p.narration) : null;
-  const video = { slug: options.video, output: manifest.output, profile: manifest.profile, music: manifest.music, voice: narration?.voice };
+  const video = { slug: options.video, output: manifest.output, profile: manifest.profile, music: manifest.music, mix: manifest.mix, voice: narration?.voice };
   const mainRoot = findMainRoot(REPO_ROOT);
   const selected = selectStepIds(options);
 

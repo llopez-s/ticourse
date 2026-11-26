@@ -453,7 +453,7 @@ def read_audio(ffmpeg, src, tmp, name="program.wav"):
     return audio
 
 
-def premaster(prog, timeline, meter, target=-14.0, bed_style="story", bed_db=0.0, no_bed=False, music=None):
+def premaster(prog, timeline, meter, target=-14.0, bed_style="story", bed_db=0.0, no_bed=False, music=None, duck_db=6.0):
     """Stage 1, the heavy one: the program plus the ambient bed, at the target loudness, not yet limited.
     It only needs the audio, so it can run while the video frames are still rendering. `music` is the
     library track (stereo float at SR) for bed_style "music"."""
@@ -467,7 +467,7 @@ def premaster(prog, timeline, meter, target=-14.0, bed_style="story", bed_db=0.0
         bed = music_bed(timeline, n, music) if bed_style == "music" else BED_STYLES[bed_style](timeline, n)
         # The bed BED_UNDER_LU under the program, then 6 dB lower while anyone speaks.
         bed *= 10 ** ((prog_lufs - BED_UNDER_LU[bed_style] + bed_db - meter.integrated_loudness(bed)) / 20)
-        duck = 10 ** (-6 * smooth(speech_mask(timeline, n), 250) / 20)
+        duck = 10 ** (-duck_db * smooth(speech_mask(timeline, n), 250) / 20)
         bed *= duck[:, None]
         print(f"  bed ({bed_style}): {meter.integrated_loudness(bed):.1f} LUFS ({meter.integrated_loudness(bed) - prog_lufs:+.1f} LU vs program)")
         mix = prog + bed
@@ -546,6 +546,7 @@ def main():
     ap.add_argument("--max-active", type=float, default=1.5, help="auto-level: the most % of the time the limiter may be working")
     ap.add_argument("--auto-floor", type=float, default=4.0, help="auto-level: the most the programme may be lowered, dB")
     ap.add_argument("--bed-db", type=float, default=0.0, help="raise/lower the ambient bed from its default level")
+    ap.add_argument("--duck-db", type=float, default=6.0, help="how far the bed drops while someone speaks (video.json mix.duckDb)")
     ap.add_argument("--no-bed", action="store_true")
     ap.add_argument("--bed-style", choices=sorted(BED_STYLES), default="story", help="story (default): moving chords that react to the timeline; pad: the first, one chord per chapter; music: a library track (--music) re-arranged to the story")
     ap.add_argument("--music", help="bed style music: the library track (any file ffmpeg reads)")
@@ -575,7 +576,7 @@ def main():
             timeline = json.load(open(args.timeline, encoding="utf8"))
             prog = read_audio(args.ffmpeg, args.audio_in or args.video_in, tmp)
             music = read_audio(args.ffmpeg, args.music, tmp, "music.wav") if args.bed_style == "music" and args.music else None
-            unlimited = premaster(prog, timeline, meter, args.target, args.bed_style, args.bed_db, args.no_bed, music)
+            unlimited = premaster(prog, timeline, meter, args.target, args.bed_style, args.bed_db, args.no_bed, music, args.duck_db)
             if stage1:
                 sf.write(args.premaster_out, unlimited, SR, subtype="FLOAT")
                 print(f"  premaster -> {args.premaster_out}")

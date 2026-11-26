@@ -1,0 +1,356 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:06.567
+En el Consorcio de Arcedo, alguien abre
+la aplicación de expedientes del CPD.
+
+2
+00:00:06.567 --> 00:00:11.400
+Y ese clic sale por el cable
+envuelto tres veces.
+
+3
+00:00:11.400 --> 00:00:14.500
+Vamos a seguirlo, de la trama al segmento.
+
+4
+00:00:14.500 --> 00:00:17.133
+Vas a ver qué envuelve a qué,
+
+5
+00:00:17.133 --> 00:00:21.500
+a quién va cada envoltorio
+y cuál cambia por el camino.
+
+6
+00:00:22.400 --> 00:00:27.400
+La aplicación envía sus datos,
+y sueltos no llegan a ninguna parte.
+
+7
+00:00:27.400 --> 00:00:32.133
+Primero, el puesto les pone delante
+el número del programa que los espera,
+
+8
+00:00:32.133 --> 00:00:35.667
+el puerto. Eso ya es un segmento.
+
+9
+00:00:35.667 --> 00:00:38.233
+Después añade la dirección
+IP del servidor,
+
+10
+00:00:38.233 --> 00:00:41.900
+y el conjunto pasa a llamarse paquete.
+
+11
+00:00:41.900 --> 00:00:44.200
+Y por fuera va la trama.
+
+12
+00:00:44.200 --> 00:00:49.033
+Lleva la dirección física de la tarjeta
+que la recoge en este tramo, la MAC.
+
+13
+00:00:49.033 --> 00:00:51.433
+Piensa en una carta en su sobre,
+
+14
+00:00:51.433 --> 00:00:55.667
+el sobre en una caja y la caja
+en una furgoneta de reparto.
+
+15
+00:00:55.667 --> 00:01:01.200
+Y cada aparato decide con un envoltorio.
+El conmutador solo mira la trama.
+
+16
+00:01:01.200 --> 00:01:03.500
+Ese envoltorio es la capa dos.
+
+17
+00:01:03.500 --> 00:01:07.267
+El encaminador la abre y mira
+el paquete, la capa tres.
+
+18
+00:01:07.267 --> 00:01:09.967
+Y el puerto lo lee el servidor.
+
+19
+00:01:10.800 --> 00:01:11.933
+Te toca.
+
+20
+00:01:11.933 --> 00:01:16.333
+Al conmutador de la planta,
+que es de capa dos, le llega esa trama,
+
+21
+00:01:16.333 --> 00:01:22.333
+con la petición dentro. ¿Qué mira
+para decidir por dónde la reenvía?
+
+22
+00:01:21.833 --> 00:01:26.833
+A) La IP de destino del paquete
+B) La MAC de destino de la trama
+C) El puerto de destino del segmento
+D) La IP de origen del paquete
+
+23
+00:01:27.000 --> 00:01:30.000
+La MAC de destino, que va en la trama,
+
+24
+00:01:30.000 --> 00:01:34.333
+porque un conmutador de capa
+dos no abre nada más.
+
+25
+00:01:34.333 --> 00:01:37.633
+La IP tienta, porque es la del servidor.
+
+26
+00:01:37.633 --> 00:01:41.533
+Pero va en el paquete,
+y ese lo abre el encaminador.
+
+27
+00:01:41.533 --> 00:01:46.033
+MAC para el conmutador,
+IP para el encaminador.
+
+28
+00:01:48.167 --> 00:01:53.233
+Para escribir esa trama, el puesto
+necesita una MAC, y solo tiene una IP.
+
+29
+00:01:53.233 --> 00:01:58.433
+Una MAC se consigue preguntando
+en voz alta quién tiene una dirección.
+
+30
+00:01:58.433 --> 00:02:03.367
+Lo oye toda la subred,
+los equipos de su misma red.
+
+31
+00:02:03.367 --> 00:02:07.333
+Eso es ARP, y solo contesta el dueño.
+
+32
+00:02:07.333 --> 00:02:10.433
+Pero esa pregunta viaja sin paquete IP,
+
+33
+00:02:10.433 --> 00:02:14.467
+así que ningún encaminador
+la saca de su subred.
+
+34
+00:02:14.467 --> 00:02:20.867
+Y el servidor está en otra, en la del CPD.
+Por eso el puesto no pregunta por él.
+
+35
+00:02:22.467 --> 00:02:27.100
+Pregunta por quien lo saca
+de la suya, su puerta de enlace.
+
+36
+00:02:27.100 --> 00:02:32.167
+El encaminador le contesta,
+y la trama sale con dos destinos.
+
+37
+00:02:32.167 --> 00:02:36.900
+Por fuera, la MAC del encaminador,
+y por dentro, la IP del servidor.
+
+38
+00:02:36.900 --> 00:02:40.233
+Es la furgoneta, que solo
+reparte en su barrio.
+
+39
+00:02:40.233 --> 00:02:45.533
+Lo demás lo deja en el almacén,
+y allí la caja cambia de furgoneta.
+
+40
+00:02:45.533 --> 00:02:47.900
+Eso hace el encaminador.
+
+41
+00:02:47.900 --> 00:02:51.900
+Tira la trama que le ha llegado
+y mete el paquete en otra,
+
+42
+00:02:51.900 --> 00:02:54.133
+sin tocarle las direcciones.
+
+43
+00:02:55.267 --> 00:03:01.033
+Otra. La petición ha cruzado la red
+interna y llega al servidor del CPD.
+
+44
+00:03:01.033 --> 00:03:04.933
+El servidor mira el origen
+de la trama y el del paquete.
+
+45
+00:03:04.933 --> 00:03:07.467
+¿De quién es cada dirección?
+
+46
+00:03:06.933 --> 00:03:11.933
+A) Trama: el puesto. Paquete: el puesto
+B) Trama: el último encaminador. Paquete: ese encaminador
+C) Trama: el último encaminador. Paquete: el puesto
+D) Trama: difusión. Paquete: el puesto
+
+47
+00:03:12.100 --> 00:03:17.000
+La de la trama, del último encaminador,
+y la del paquete, del puesto.
+
+48
+00:03:17.000 --> 00:03:21.900
+La trama es nueva en cada salto,
+y el paquete conserva sus direcciones.
+
+49
+00:03:22.100 --> 00:03:27.433
+Lo fácil es esperar la MAC del puesto,
+pero esa trama se quedó en la sede.
+
+50
+00:03:27.433 --> 00:03:32.667
+En este viaje, las MAC cambian
+en cada salto y las IP no.
+
+51
+00:03:34.767 --> 00:03:38.133
+Falta el de dentro,
+el segmento, que era el sobre.
+
+52
+00:03:38.133 --> 00:03:41.367
+Y un sobre se manda de dos maneras.
+
+53
+00:03:41.367 --> 00:03:43.933
+Una es como el correo certificado.
+
+54
+00:03:43.933 --> 00:03:49.000
+Antes de mandar nada, los dos extremos
+se ponen de acuerdo con tres mensajes.
+
+55
+00:03:49.000 --> 00:03:54.967
+Después cada byte va numerado,
+y quien recibe confirma lo que le llega.
+
+56
+00:03:54.967 --> 00:04:00.233
+Lo que no se confirma se reenvía,
+y lo descolocado se ordena.
+
+57
+00:04:00.233 --> 00:04:04.433
+Eso es TCP, y lo usa
+la aplicación de expedientes.
+
+58
+00:04:04.433 --> 00:04:10.233
+La otra es echar una postal al buzón, sin
+acuerdo, sin numerar y sin confirmación.
+
+59
+00:04:10.233 --> 00:04:15.233
+Eso es UDP, y lo que envía
+se llama datagrama.
+
+60
+00:04:15.233 --> 00:04:20.633
+Va bien para la voz, porque una palabra
+que llega tarde ya no sirve.
+
+61
+00:04:21.567 --> 00:04:24.233
+Y para acabar, una de TCP.
+
+62
+00:04:24.233 --> 00:04:27.267
+Dos segmentos seguidos del puesto
+se cruzan por el camino,
+
+63
+00:04:27.267 --> 00:04:33.267
+y el segundo llega al servidor antes
+que el primero. ¿Qué recibe la aplicación?
+
+64
+00:04:32.833 --> 00:04:37.833
+A) Los datos en orden: los recoloca TCP
+B) Los datos tal como llegan: los ordena la aplicación
+C) Nada: TCP corta la conexión
+D) Los datos, tras repetir el acuerdo de tres mensajes
+
+65
+00:04:38.000 --> 00:04:43.133
+Los datos en su orden, porque TCP
+los recoloca con esa numeración,
+
+66
+00:04:43.133 --> 00:04:45.267
+el número de secuencia.
+
+67
+00:04:45.267 --> 00:04:50.433
+Que los ordene la aplicación es lo que
+pasaría con UDP, que no numera nada.
+
+68
+00:04:50.433 --> 00:04:54.467
+Con TCP, el orden y el reenvío
+ya vienen puestos.
+
+69
+00:04:57.300 --> 00:04:59.133
+Te llevas tres ideas.
+
+70
+00:04:59.133 --> 00:05:03.700
+Una, de dentro afuera van datos,
+segmento, paquete y trama.
+
+71
+00:05:03.700 --> 00:05:10.367
+Dos, ARP no sale de su subred, y para ir
+fuera se pregunta por la puerta de enlace.
+
+72
+00:05:10.367 --> 00:05:16.100
+Y tres, TCP numera y confirma,
+y UDP no promete nada.
+
+73
+00:05:16.100 --> 00:05:21.067
+Cuando veas una dirección,
+pregúntate primero en qué envoltorio va.
+
+74
+00:05:21.067 --> 00:05:25.067
+Ahora te toca a ti,
+con las preguntas de la lección.

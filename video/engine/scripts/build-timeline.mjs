@@ -493,7 +493,7 @@ export async function buildTimeline(options = {}) {
       const mapErrors = sfxMapErrors(sources.narration.sfx, cues, sfxLibrary, opts.sfxDir);
       errors.push(...mapErrors);
       if (!mapErrors.length) {
-        sfx = placeSfx({ scenes, cues, exam, intercept, map: sources.narration.sfx, library: sfxLibrary, fps, transitionFrames: TIMING.transitionFrames });
+        sfx = placeSfx({ scenes, cues, exam, intercept, map: sources.narration.sfx, library: sfxLibrary, fps, transitionFrames: TIMING.transitionFrames, gainDb: Number.isFinite(MANIFEST.mix?.sfxDb) ? MANIFEST.mix.sfxDb : 0 });
       }
     } catch (err) {
       errors.push(err.message);

@@ -66,11 +66,13 @@ export function sfxMapErrors(map, cues, library, dir) {
  * Every sound effect of the video, in frame order: a glitch and the typing when an intercepted message
  * appears, a ding on each exam card, a whoosh on each chapter wipe, and narration.json "sfx" on its cues.
  */
-export function placeSfx({ scenes, cues, exam, intercept, map, library, fps, transitionFrames }) {
+export function placeSfx({ scenes, cues, exam, intercept, map, library, fps, transitionFrames, gainDb = 0 }) {
+  // video.json "mix.sfxDb": every effect this many dB over its library level (capped at full volume).
+  const gain = 10 ** (gainDb / 20);
   const frames = (ms) => Math.ceil((ms * fps) / 1000);
   const cue = (sound, from, maxFrames = Infinity) => {
     const s = library.sounds[sound];
-    return { from, sound, src: `sfx/${s.file}`, durationInFrames: Math.max(1, Math.min(frames(s.durationMs), maxFrames)), volume: s.volume };
+    return { from, sound, src: `sfx/${s.file}`, durationInFrames: Math.max(1, Math.min(frames(s.durationMs), maxFrames)), volume: Math.min(1, Math.round(s.volume * gain * 1000) / 1000) };
   };
   const out = [];
   for (const i of intercept) {

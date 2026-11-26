@@ -306,6 +306,11 @@ export function planSteps({ repoRoot, video, options, tools, env }) {
   const p = outPaths(repoRoot, video.slug, video.output);
   const script = (name) => path.join(p.scripts, name);
   const bed = tools.music ? ['--bed-style', 'music', '--music', tools.music] : [];
+  // video.json "mix": how loud the music sits under the voice (bedDb: dB over its default; duckDb: how far it drops while she speaks).
+  const mix = [
+    ...(Number.isFinite(video.mix?.bedDb) ? ['--bed-db', String(video.mix.bedDb)] : []),
+    ...(Number.isFinite(video.mix?.duckDb) ? ['--duck-db', String(video.mix.duckDb)] : []),
+  ];
   const ffmpeg = tools.ffmpeg ?? '<ffmpeg>'; // sin ffmpeg resolveTools ya dio error: el plan solo sirve para comprobar requisitos
   const recording = isRecordingVoice(video.voice);
   const base = { cwd: repoRoot, env, requires: [], requiresAny: [], expects: [], lock: false, pre: null };
@@ -314,7 +319,7 @@ export function planSteps({ repoRoot, video, options, tools, env }) {
     program: { cmd: 'node', args: [script('render-audio.mjs'), '--video', video.slug, '--out', p.program], requires: [p.timeline], expects: [p.program] },
     master1: {
       cmd: 'python',
-      args: [script('master_mix.py'), '--audio-in', p.program, '--timeline', p.timeline, '--premaster-out', p.premasterWav, '--ffmpeg', ffmpeg, ...bed],
+      args: [script('master_mix.py'), '--audio-in', p.program, '--timeline', p.timeline, '--premaster-out', p.premasterWav, '--ffmpeg', ffmpeg, ...bed, ...mix],
       requires: [p.program],
       expects: [p.premasterWav],
     },
