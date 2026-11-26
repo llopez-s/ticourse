@@ -12,7 +12,7 @@ export const OP_SUPUESTOS: SupuestoMeta[] = [
     sectionIds: ['op1'],
     version: 1,
     title: 'La oficina comarcal nueva',
-    brief: 'Diseña y documenta la red de una oficina comarcal nueva: direccionamiento, VLAN, enrutado y una memoria final.',
+    brief: 'Diseña la red del edificio nuevo de una oficina comarcal: direccionamiento, VLAN, encaminamiento con respaldo, una avería real y un informe para la gerencia.',
     minutes: 60,
     integrator: undefined,
   },

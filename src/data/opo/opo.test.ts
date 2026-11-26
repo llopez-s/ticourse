@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { ALL_MODULES, contentSections, sampleExam, trackOf } from '../course';
 import { CLASSIFY_DATA, ORDER_DATA } from '../labs';
 import { TRACKS, TRACK_IDS } from '../tracks';
+import { loadSupuesto } from '../supuestos/index';
 
 const opo = TRACKS.opo;
 const others = [TRACKS.gcti, TRACKS.secplus];
@@ -123,5 +124,79 @@ describe('pista Redes y ENS', () => {
     const withCa = opo.glossary.filter((g) => g.ca !== undefined);
     expect(withCa.length).toBeGreaterThanOrEqual(40);
     for (const g of withCa) expect(g.ca!.trim().length, g.term).toBeGreaterThan(0);
+  });
+});
+
+describe('supuestos de la pista Redes y ENS', () => {
+  const blockSupuestos = opo.supuestos.filter((m) => !m.integrator);
+
+  it('has at least one block supuesto', () => {
+    expect(blockSupuestos.length).toBeGreaterThan(0);
+  });
+
+  it.each(blockSupuestos.map((m) => [m.id]))('%s has the shape of a full block case', async (id) => {
+    const s = (await loadSupuesto(id))!;
+    expect(s.phases.length).toBeGreaterThanOrEqual(4);
+    expect(s.phases.length).toBeLessThanOrEqual(6);
+    const tasks = s.phases.flatMap((p) => p.tasks);
+    expect(tasks.length).toBeGreaterThanOrEqual(12);
+    expect(tasks.some((t) => t.kind === 'written')).toBe(true);
+    expect(tasks.some((t) => t.kind === 'cite')).toBe(true);
+    expect(s.dossier.some((d) => d.unlockedBy !== undefined)).toBe(true);
+    const total = tasks.reduce((n, t) => n + t.points, 0);
+    expect(total).toBeGreaterThanOrEqual(90);
+    expect(total).toBeLessThanOrEqual(110);
+    // every phase but the last tells the next one the right premise
+    s.phases.slice(0, -1).forEach((p) => expect(p.carry?.trim(), p.id).toBeTruthy());
+    for (const t of tasks) {
+      expect(t.refs.length, t.id).toBeGreaterThan(0);
+      // the result page's "Para repasar" lists only lesson links
+      expect(t.refs.some((r) => r.href?.startsWith('/learn/')), t.id).toBe(true);
+      expect(t.explain.trim().length, t.id).toBeGreaterThan(0);
+    }
+  });
+
+  it.each(blockSupuestos.map((m) => [m.id]))('%s only cites documents already visible in that phase', async (id) => {
+    const s = (await loadSupuesto(id))!;
+    const phaseIndex = new Map(s.phases.map((p, i) => [p.id, i]));
+    s.phases.forEach((p, i) => {
+      for (const t of p.tasks) {
+        if (t.kind !== 'cite') continue;
+        for (const docId of t.answerSets.flat()) {
+          const d = s.dossier.find((x) => x.id === docId)!;
+          // unlockedBy names the phase whose submission reveals the document
+          const shownFrom = d.unlockedBy === undefined ? 0 : phaseIndex.get(d.unlockedBy)! + 1;
+          expect(shownFrom, `${t.id} -> ${docId}`).toBeLessThanOrEqual(i);
+        }
+      }
+    });
+  });
+
+  it.each(blockSupuestos.map((m) => [m.id]))('%s lists order items out of their correct order', async (id) => {
+    const s = (await loadSupuesto(id))!;
+    for (const t of s.phases.flatMap((p) => p.tasks)) {
+      if (t.kind !== 'order') continue;
+      expect(t.items.map((x) => x.id), t.id).not.toEqual(t.answer);
+    }
+  });
+
+  it('op1s1: the VLSM plan is aligned, consistent and without overlaps', async () => {
+    const s = (await loadSupuesto('op1s1'))!;
+    const t = s.phases.flatMap((p) => p.tasks).find((x) => x.id === 'f1t2');
+    expect(t?.kind).toBe('table');
+    if (t?.kind !== 'table') return;
+    const toInt = (ip: string) => ip.split('.').reduce((acc, o) => acc * 256 + Number(o), 0);
+    const block = { base: toInt('10.20.11.0'), last: toInt('10.20.11.255') };
+    const nets = t.rows.map((r) => {
+      const base = toInt(r.answer.red);
+      const size = 2 ** (32 - Number(r.answer.prefijo.replace('/', '')));
+      expect(base % size, r.id).toBe(0);
+      expect(toInt(r.answer.difusion), r.id).toBe(base + size - 1);
+      expect(base >= block.base && base + size - 1 <= block.last, r.id).toBe(true);
+      return { id: r.id, base, last: base + size - 1 };
+    });
+    for (const a of nets) for (const b of nets) {
+      if (a.id !== b.id) expect(a.last < b.base || b.last < a.base, `${a.id}/${b.id}`).toBe(true);
+    }
   });
 });
