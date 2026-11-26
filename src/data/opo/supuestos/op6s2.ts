@@ -26,10 +26,10 @@ import type { Supuesto } from '../../../lib/supuesto';
 //   un hecho del procedimiento del Consorcio, no una regla de la norma.
 // ---------------------------------------------------------------------------
 
-const L1 = { label: 'Lección: el ENS, marco, principios y roles', href: '/learn/op6m1' };
-const L3 = { label: 'Lección: las medidas del anexo II', href: '/learn/op6m3' };
-const L4 = { label: 'Lección: conformidad, auditoría e incidentes', href: '/learn/op6m4' };
-const L5 = { label: 'Lección: protección de datos en la administración', href: '/learn/op6m5' };
+const L1 = { label: 'Lección: El ENS: marco, principios y roles', href: '/learn/op6m1' };
+const L3 = { label: 'Lección: Las medidas del anexo II', href: '/learn/op6m3' };
+const L4 = { label: 'Lección: Conformidad, auditoría e incidentes', href: '/learn/op6m4' };
+const L5 = { label: 'Lección: Protección de datos en la administración', href: '/learn/op6m5' };
 const RD311 = { label: 'Real Decreto 311/2022, Esquema Nacional de Seguridad', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2022-7191' };
 const RD311_13 = { label: 'RD 311/2022, art. 13: organización e implantación del proceso de seguridad', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2022-7191' };
 const RD311_33 = { label: 'RD 311/2022, art. 33: capacidad de respuesta a incidentes', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2022-7191' };
@@ -80,10 +80,10 @@ const op6s2: Supuesto = {
           lang: 'text',
           title: 'Cortafuegos de la sede · lunes (salida ilustrativa, sin sintaxis de fabricante)',
           text: `01:58:41  VPN de administración: sesión abierta  usuario adm-reg  origen 198.51.100.77
-02:03:10  adm-reg -> 10.20.20.31 (REG-DOC)  administración remota  permitido
-02:12:05  10.20.20.31 (REG-DOC) -> 198.51.100.77:443  sesión abierta
-04:41:37  10.20.20.31 (REG-DOC) -> 198.51.100.77:443  sesión cerrada  enviados 14,2 GB
-04:52:19  adm-reg -> 10.20.20.30 (REG-APP)  administración remota  permitido
+02:03:10  adm-reg -> 10.20.20.31  administración remota  permitido
+02:12:05  10.20.20.31 -> 198.51.100.77:443  sesión abierta
+04:41:37  10.20.20.31 -> 198.51.100.77:443  sesión cerrada  enviados 14,2 GB
+04:52:19  adm-reg -> 10.20.20.30  administración remota  permitido
 05:06:02  VPN de administración: sesión cerrada  usuario adm-reg`,
         },
       ],
@@ -204,7 +204,7 @@ const op6s2: Supuesto = {
             'El registro electrónico vuelve a dar servicio a las **14:30**, en los dos servidores nuevos, con la copia del domingo de Valdecierzo. Se han perdido los asientos presentados entre las 22:00 del domingo y la caída; se localizarán por los acuses de recibo.',
             'La cuenta adm-reg está desactivada y se han cambiado todas las contraseñas de administración. Según el análisis preliminar, la contraseña de adm-reg se obtuvo con un correo de suplantación el jueves anterior.',
             'REG-APP y REG-DOC siguen aislados, con los registros del cortafuegos y de los servidores guardados como evidencias.',
-            'Datos copiados, según la estimación: los asientos de los últimos 24 meses, de unas **18.400 personas**, y sus anexos, entre ellos las unas **900** solicitudes de ayudas con informe del grado de discapacidad. Por ahora no consta que se hayan publicado.',
+            'Datos copiados, según la estimación: los asientos de los últimos 24 meses, de unas **18.400 personas**, y sus anexos, entre ellos unas **900** solicitudes de ayudas con informe del grado de discapacidad. Por ahora no consta que se hayan publicado.',
           ],
         },
       ],
@@ -218,7 +218,7 @@ const op6s2: Supuesto = {
       context:
         'Son las 09:30 del lunes. La Unidad de Seguridad tiene que estimar el nivel del incidente antes de decidir nada más. Sigue el procedimiento del Consorcio que tienes en el expediente: como referencia, las tablas del anexo del RD 43/2021. Ten presente que el registro electrónico atiende a todas horas.',
       carry:
-        'Valoración con las tablas del anexo del RD 43/2021: el cifrado por programa de secuestro es «modificación no autorizada de información» y la copia de datos es «acceso no autorizado a información», los dos de peligrosidad ALTO. En impacto, 2 de 46 servidores es nivel BAJO por porcentaje de sistemas, y la interrupción, que dura desde las 05:10 y afecta a todos los usuarios, ya es ALTO. Según el procedimiento del Consorcio, el incidente es de nivel ALTO o superior. Los registros del cortafuegos y la ficha del sistema prueban que salieron 14,2 GB desde el servidor de los documentos.',
+        'Valoración con las tablas del anexo del RD 43/2021: el cifrado por programa de secuestro es «modificación no autorizada de información» y la copia de datos es «acceso no autorizado a información», los dos de peligrosidad ALTO. En impacto, 2 de 46 servidores es nivel BAJO por porcentaje de sistemas, y la interrupción, que afecta a todos los usuarios, ya pasa de una hora: ALTO. Según el procedimiento del Consorcio, el incidente es de nivel ALTO o superior. Los registros del cortafuegos y la ficha del sistema prueban que salieron 14,2 GB desde el servidor de los documentos.',
       tasks: [
         {
           id: 'f1t1',
@@ -237,7 +237,7 @@ const op6s2: Supuesto = {
           points: 8,
           hint: { text: 'Para la interrupción, cuenta desde la primera hora en que el registro dejó de responder, no desde que llamó el personal.', cost: 1 },
           explain:
-            'El anexo pone como ejemplo de «modificación no autorizada de información» el «encriptado de datos mediante ransomware», y ese tipo es de peligrosidad ALTO; el «acceso no autorizado a información», que es lo que supone la copia, también es ALTO. Tienta subir el cifrado a MUY ALTO por «distribución de malware», pero el anexo lo encaja expresamente en otro tipo. En impacto, 2 de 46 servidores es menos del 5 %: no llega al «más del 20 %» del nivel MEDIO, así que queda en BAJO («afecta a los sistemas»). La interrupción afecta a todos los usuarios desde las 05:10: a las 09:30 lleva más de 4 horas, que es «superior a 1 hora y superior al 10 %» (ALTO) sin pasar de 8 horas. Contar desde las 07:55 daría el mismo nivel ahora, pero es un error que se paga más tarde.',
+            'El anexo pone como ejemplo de «modificación no autorizada de información» el «encriptado de datos mediante ransomware», y ese tipo es de peligrosidad ALTO; el «acceso no autorizado a información», que es lo que supone la copia, también es ALTO. Tienta subir el cifrado a MUY ALTO por «distribución de malware», pero el anexo lo encaja expresamente en otro tipo. En impacto, 2 de 46 servidores es un 4 %, lejos del «más del 20 %» del nivel MEDIO, así que queda en BAJO («afecta a los sistemas»). La interrupción afecta a todos los usuarios desde las 05:10: a las 09:30 lleva más de 4 horas, que es «superior a 1 hora y superior al 10 %» (ALTO) sin pasar de 8 horas. Contar desde las 07:55 daría el mismo nivel ahora, pero es un error que se paga más tarde.',
           refs: [L4, RD43],
         },
         {
@@ -246,10 +246,10 @@ const op6s2: Supuesto = {
           topic: 'op6m4',
           prompt: 'Alguien del comité pregunta por qué se valora con las tablas del RD 43/2021 si el Consorcio no es un operador de servicios esenciales. ¿Qué afirmación sobre las escalas es correcta?',
           options: [
-            { id: 'a', text: 'Son la misma escala: el anexo del RD 43/2021 sustituyó a la ITS de Notificación, y por eso el Consorcio debe cumplir sus plazos de 24/48 horas, 72 horas, 20 y 40 días' },
-            { id: 'b', text: 'La ITS de Notificación, que es la que obliga al Consorcio, manda clasificar con la guía CCN-STIC 817 y usa seis niveles de impacto potencial, de Irrelevante a Crítico; el anexo del RD 43/2021 tiene su propia escala de impacto, con «sin impacto» como nivel más bajo, otra de peligrosidad con cinco niveles, y sus plazos obligan a los operadores de servicios esenciales y a los proveedores de servicios digitales' },
-            { id: 'c', text: 'El nivel del incidente es la categoría del sistema: como el registro es de categoría MEDIA, el incidente es de nivel MEDIO' },
-            { id: 'd', text: 'La peligrosidad y el impacto usan los mismos seis niveles, de «sin impacto» a «crítico»' },
+            { id: 'a', text: 'Son la misma escala: el anexo del RD 43/2021 sustituyó a la ITS de Notificación, así que el Consorcio debe cumplir sus plazos de 24/48 horas, 72 horas, 20 y 40 días' },
+            { id: 'b', text: 'Al Consorcio le obliga la ITS, que remite a la guía CCN-STIC 817 (seis niveles, de Irrelevante a Crítico); el anexo del RD 43/2021 tiene otras escalas y sus plazos obligan a OSE y PSD' },
+            { id: 'c', text: 'El nivel del incidente es la categoría del sistema: como el registro es de categoría MEDIA, el incidente es de nivel MEDIO en cualquiera de las escalas' },
+            { id: 'd', text: 'La peligrosidad y el impacto del anexo usan los mismos seis niveles, de «sin impacto» a «crítico», igual que la ITS' },
           ],
           answer: 'b',
           points: 4,
@@ -265,7 +265,7 @@ const op6s2: Supuesto = {
           answerSets: [['d-cortafuegos', 'd-sistema']],
           points: 5,
           explain:
-            'El registro del cortafuegos muestra que la dirección `10.20.20.31` envió 14,2 GB a una dirección externa entre las 02:12 y las 04:41; la ficha del sistema dice que esa dirección es REG-DOC, el servidor de la base de datos y los anexos del registro. Con los dos se sabe qué servidor sacó cuántos datos y de qué tipo son. El parte de incidencia tienta porque recoge el mensaje, pero solo prueba lo que afirman los atacantes; por eso marcarlo deja la respuesta incompleta. El extracto del anexo sirve para valorar, no para probar hechos.',
+            'El registro del cortafuegos muestra que la dirección `10.20.20.31` envió 14,2 GB a una dirección externa entre las 02:12 y las 04:41; el cortafuegos solo da direcciones, y es la ficha del sistema la que dice que esa dirección es REG-DOC, el servidor de la base de datos y los anexos del registro. Con los dos se sabe qué servidor sacó cuántos datos y de qué tipo son. El parte de incidencia tienta porque recoge el mensaje y nombra REG-DOC, pero no da su dirección y solo prueba lo que afirman los atacantes; marcarlo anula la respuesta. El extracto del anexo sirve para valorar, no para probar hechos.',
           refs: [L4, L5],
         },
       ],
@@ -277,7 +277,7 @@ const op6s2: Supuesto = {
       context:
         'Con el incidente valorado, la Unidad de Seguridad prepara las comunicaciones. Hay dos normas en juego a la vez: el ENS, por la seguridad del sistema, y el RGPD, porque el registro guarda datos personales. Cada una tiene su destinatario y su plazo, y corren en paralelo.',
       carry:
-        'Al CCN (CCN-CERT): en el momento en que se produce, por ser de nivel ALTO o superior (RD 311/2022, art. 33.2, e ITS de Notificación). A la AEPD: sin dilación indebida y, si es posible, en 72 horas desde que el Consorcio tuvo constancia (RGPD, art. 33), aunque ya se haya avisado al CCN-CERT. Al INCIBE-CERT no le toca: es el equipo de referencia de las entidades privadas. Lo que se haga con las personas afectadas se decide al cerrar el día.',
+        'Al CCN (CCN-CERT): en el momento en que se produce, porque según la estimación del procedimiento del Consorcio es de nivel ALTO o superior (RD 311/2022, art. 33.2, e ITS de Notificación). A la AEPD: sin dilación indebida y, si es posible, en 72 horas desde que el Consorcio tuvo constancia (RGPD, art. 33), aunque ya se haya avisado al CCN-CERT. A las personas afectadas, sin dilación indebida (RGPD, art. 34); la comunicación se redacta al cerrar el día. Al INCIBE-CERT no le toca: es el equipo de referencia de las entidades privadas.',
       tasks: [
         {
           id: 'f2t1',
@@ -289,7 +289,7 @@ const op6s2: Supuesto = {
               id: 'plazo',
               label: 'Plazo',
               options: [
-                'En el momento en que se produce, por ser de nivel ALTO o superior',
+                'En el momento en que se produce: nivel ALTO o superior según la estimación del procedimiento del Consorcio',
                 'Sin dilación indebida y, si es posible, en 72 horas desde que se tiene constancia',
                 'Sin dilación indebida, por ser probable un alto riesgo para ellas',
                 'Inicial inmediata, intermedia a las 24/48 horas y final a los 20 días',
@@ -311,12 +311,12 @@ const op6s2: Supuesto = {
             },
           ],
           rows: [
-            { id: 'ccn', label: 'Centro Criptológico Nacional (CCN-CERT)', answer: { plazo: 'En el momento en que se produce, por ser de nivel ALTO o superior', norma: 'RD 311/2022, art. 33.2, e ITS de Notificación' } },
+            { id: 'ccn', label: 'Centro Criptológico Nacional (CCN-CERT)', answer: { plazo: 'En el momento en que se produce: nivel ALTO o superior según la estimación del procedimiento del Consorcio', norma: 'RD 311/2022, art. 33.2, e ITS de Notificación' } },
             { id: 'aepd', label: 'Agencia Española de Protección de Datos (AEPD)', answer: { plazo: 'Sin dilación indebida y, si es posible, en 72 horas desde que se tiene constancia', norma: 'RGPD, art. 33' } },
             { id: 'afectados', label: 'Personas cuyos datos estaban en el registro', answer: { plazo: 'Sin dilación indebida, por ser probable un alto riesgo para ellas', norma: 'RGPD, art. 34' } },
             { id: 'incibe', label: 'INCIBE-CERT', answer: { plazo: 'No le corresponde', norma: 'RD 311/2022, art. 33.7 (entidades privadas)' } },
           ],
-          points: 12,
+          points: 9,
           hint: { text: 'El Consorcio es una entidad pública, no un operador de servicios esenciales, y la Directiva NIS2 sigue sin trasponerse en España.', cost: 2 },
           explain:
             'Las entidades del sector público notifican al CCN los incidentes con impacto significativo según la ITS (art. 33.2 del RD 311/2022), y la ITS obliga a hacerlo «en el momento en que se produzcan» con los de nivel CRÍTICO, MUY ALTO o ALTO. La AEPD, autoridad de control del Consorcio, recibe la violación de datos «sin dilación indebida y, de ser posible, a más tardar 72 horas» después de tener constancia (art. 33 del RGPD). A las personas se les comunica sin dilación indebida cuando es probable un alto riesgo (art. 34): aquí hay DNI, domicilios y datos de salud copiados y una amenaza de publicarlos. El INCIBE-CERT recibe las notificaciones de las entidades privadas que prestan servicios al sector público (art. 33.7), no las de una entidad pública. Tientan los plazos de 24/48 horas y 20 días, que son de la tabla del RD 43/2021 para OSE y PSD, y la alerta temprana de 24 horas de la Directiva NIS2, en vigor pero sin trasponer en España.',
@@ -390,7 +390,7 @@ const op6s2: Supuesto = {
           answer: { m1: 'informatica', m2: 'secretaria', m3: 'unidad', m4: 'dpd', m5: 'gerencia' },
           points: 10,
           explain:
-            'El art. 13.2 del RD 311/2022 reparte las funciones: el responsable del servicio (la Secretaría General) determina los requisitos de los servicios; el responsable de la seguridad (la Unidad) decide cómo se satisfacen y firma la Declaración de Aplicabilidad (art. 28.2); el responsable del sistema (la jefatura de Informática) implanta la seguridad en el sistema y supervisa su operación diaria, así que aísla y restaura. El DPD informa, asesora y coopera con la autoridad de control como punto de contacto (art. 39 del RGPD). Quién firma por el Consorcio ante la AEPD no lo dice ninguna norma: lo fija el procedimiento propio del Consorcio, que se lo da a la Gerencia. Tienta dar al DPD la firma, pero su papel es asesorar y hacer de enlace, no decidir por el Consorcio.',
+            'El art. 13.2 del RD 311/2022 reparte las funciones: el responsable del servicio (la Secretaría General) determina los requisitos de los servicios, y decidir cómo se atiende el registro mientras está caído es una decisión del dueño del servicio dentro de esa función (el artículo solo habla de requisitos); el responsable de la seguridad (la Unidad) decide cómo se satisfacen y firma la Declaración de Aplicabilidad (art. 28.2); el responsable del sistema (la jefatura de Informática) implanta la seguridad en el sistema y supervisa su operación diaria, así que aísla y restaura. El DPD informa, asesora y coopera con la autoridad de control como punto de contacto (art. 39 del RGPD). Quién firma por el Consorcio ante la AEPD no lo dice ninguna norma: lo fija el procedimiento propio del Consorcio, que se lo da a la Gerencia. Tienta dar al DPD la firma, pero su papel es asesorar y hacer de enlace, no decidir por el Consorcio.',
           refs: [L1, L5, RD311_13, RGPD_39],
         },
         {
@@ -502,7 +502,7 @@ const op6s2: Supuesto = {
           prompt: 'Con el informe de cierre, ¿cómo queda el criterio de interrupción del servicio en las tablas del anexo del RD 43/2021?',
           options: [
             { id: 'a', text: 'Sigue en ALTO: el registro ha estado parado 6 horas y 35 minutos, desde el aviso de las 07:55' },
-            { id: 'b', text: 'Sube a MUY ALTO: no atendió a nadie desde las 05:10 hasta las 14:30, más de 8 horas y con todos los usuarios afectados; la obligación de avisar al CCN-CERT ya existía desde el nivel ALTO' },
+            { id: 'b', text: 'Sube a MUY ALTO: no atendió a nadie desde las 05:10 hasta las 14:30, más de 8 horas y con todos los usuarios afectados; la obligación de avisar al CCN-CERT ya existía, porque la estimación del procedimiento del Consorcio daba nivel ALTO' },
             { id: 'c', text: 'Sube a MUY ALTO, y por eso el Consorcio tiene que enviar una notificación intermedia a las 72 horas y una final a los 40 días' },
             { id: 'd', text: 'Sube a CRÍTICO, porque ha afectado a más del 50 % de los usuarios' },
           ],
@@ -516,17 +516,17 @@ const op6s2: Supuesto = {
           id: 'f5t2',
           kind: 'choice',
           topic: 'op6m5',
-          prompt: 'En el comité, alguien propone no escribir a las personas afectadas. ¿Qué respuesta es correcta?',
+          prompt: 'Antes de redactar la comunicación, alguien del comité propone dos atajos para ahorrársela. ¿Qué respuesta es correcta?',
           options: [
-            { id: 'a', text: 'No hace falta: los datos están cifrados, y el RGPD exime de comunicar cuando los datos están cifrados' },
-            { id: 'b', text: 'No hace falta: ya se ha notificado a la AEPD y esa notificación sustituye a la comunicación' },
-            { id: 'c', text: 'Hay que comunicarlo sin dilación indebida: es probable un alto riesgo, y la exención por cifrado no sirve, porque los anexos se guardaban sin cifrar y los atacantes se los llevaron así' },
-            { id: 'd', text: 'Hay que comunicarlo, pero cuando termine la investigación forense y se sepa con certeza si se han publicado' },
+            { id: 'a', text: 'Se puede omitir: los archivos han quedado cifrados, y el art. 34.3 del RGPD exime de comunicar cuando los datos están cifrados' },
+            { id: 'b', text: 'Se puede omitir: la notificación a la AEPD ya cumple también con las personas afectadas' },
+            { id: 'c', text: 'No se puede omitir: la exención por cifrado del art. 34.3 no sirve, porque los anexos se guardaban sin cifrar y salieron así, y notificar a la AEPD no sustituye a la comunicación' },
+            { id: 'd', text: 'Basta con escribir a las cerca de 900 personas con informe de discapacidad: el cifrado de los atacantes protege los datos de las demás' },
           ],
           answer: 'c',
           points: 4,
           explain:
-            'El art. 34 del RGPD obliga a comunicar la violación a las personas sin dilación indebida cuando es probable un alto riesgo para ellas: aquí hay DNI, domicilios, teléfonos y, para unas 900, informes de discapacidad, con la amenaza de publicarlos. La exención del art. 34.3 por cifrado se refiere a datos protegidos frente a quien accede sin permiso; el cifrado de los atacantes no protege nada, y la copia salió de REG-DOC, donde los anexos estaban sin cifrar. Notificar a la AEPD no sustituye a la comunicación: son dos obligaciones. Esperar a la certeza tienta por prudencia, pero choca con el «sin dilación indebida».',
+            'La exención del art. 34.3 del RGPD por cifrado se refiere a datos que quien accede sin permiso no puede entender. El cifrado que han hecho los atacantes no protege nada a nadie: la copia salió de REG-DOC, donde los anexos se guardaban sin cifrar, así que incluye sin cifrar los anexos de todas las personas del registro. Por eso tampoco vale la opción de escribir solo a una parte: el cifrado de los atacantes no protege los datos de las demás. Notificar a la AEPD (art. 33) y comunicar a las personas (art. 34) son dos obligaciones distintas, con destinatarios distintos: una no sustituye a la otra. La primera opción tienta porque la palabra «cifrado» aparece en la exención, pero se refiere a la protección que pone el responsable del tratamiento, no a la que deja el ataque.',
           refs: [L5, RGPD_34],
         },
         {
@@ -536,10 +536,11 @@ const op6s2: Supuesto = {
           prompt: 'Redacta la comunicación a las personas afectadas en **150 a 200 palabras**, para enviarla por correo electrónico con la firma de la Gerencia. Después, compárala con el modelo y marca los criterios de la guía de comunicación del Consorcio que cumple.',
           words: 200,
           model:
-            'Le escribimos porque sus datos figuran en el registro electrónico de entrada del Consorcio Provincial de Arcedo. En la madrugada del lunes, unos atacantes entraron en los servidores del registro, bloquearon sus archivos y se llevaron una copia de los datos de los últimos dos años: nombre, DNI, domicilio, correo electrónico, teléfono y los documentos que adjuntó a sus escritos. Si pidió una ayuda para adaptar su vivienda, la copia incluye el informe de grado de discapacidad que aportó.\n\n' +
+            'Le escribimos porque sus datos figuran en el registro electrónico de entrada del Consorcio Provincial de Arcedo. En la madrugada del lunes, unos atacantes entraron en los servidores del registro, bloquearon sus archivos y, según nuestras primeras estimaciones, se llevaron una copia de los datos de los últimos dos años: nombre, DNI, domicilio, correo electrónico, teléfono y los documentos que adjuntó a sus escritos. Si pidió una ayuda para adaptar su vivienda, la copia incluye el informe de grado de discapacidad que aportó.\n\n' +
             'Hemos cerrado el acceso que usaron, el registro vuelve a funcionar desde una copia de seguridad y lo hemos comunicado al CCN-CERT y a la Agencia Española de Protección de Datos. Por ahora no nos consta que los datos se hayan publicado.\n\n' +
             'Le recomendamos desconfiar de correos, mensajes o llamadas que mencionen sus trámites con el Consorcio o le pidan datos o pagos: nunca le pediremos contraseñas ni datos bancarios por esas vías. Si detecta que alguien usa su DNI, denúncielo.\n\n' +
-            'Para cualquier duda, escriba a nuestro delegado de protección de datos: [dirección de contacto del DPD].',
+            'Para cualquier duda, escriba a nuestro delegado de protección de datos: [dirección de contacto del DPD].\n\n' +
+            'La Gerencia del Consorcio',
           rubric: [
             { id: 'r1', text: 'Cuenta qué ha pasado y cuándo, en lenguaje claro y sin tecnicismos: que entraron, bloquearon los archivos y se llevaron una copia', points: 4 },
             { id: 'r2', text: 'Dice qué datos de la persona se han visto afectados, y menciona expresamente los informes de discapacidad para quien los aportó', points: 4 },
