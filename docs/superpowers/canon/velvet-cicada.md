@@ -1543,7 +1543,8 @@ Lección `src/data/practical/collection.ts:76` (bloque `video` «Del hash a una 
 «De una muestra a candidatos relacionados», `:59`, que `withPracticalExpansion` añade al final de s3m2, `src/data/tracks.ts:112`; va después
 del párrafo «Sin premium o sin datos» y de la frase puente, `:74-75`, y antes del encabezado «Caso resuelto · candidatos fuertes, débiles y
 sin datos», `:77`; lo fija `src/data/content.test.ts:355-356`). Es el **segundo vídeo de s3m2**: el primero es V15, en la lección base
-(`src/data/s3.ts:350-356`). 8:42 (15663 fotogramas a 30 fps, `video/muestra-candidatos/src/timeline.json:4,7`). Principal (`principal-yt`,
+(`src/data/s3.ts:350-356`). El id es el de la segunda subida, como en AP03: el commit `5750cf21` cambió `lKLGa2eQSbg` por `CB-TTDBRF3I` en la
+lección. 8:42 (15663 fotogramas a 30 fps, `video/muestra-candidatos/src/timeline.json:4,7`). Principal (`principal-yt`,
 `video/muestra-candidatos/video.json:6`), guion congelado el 2026-10-19 (`:18`), narrado con la grabación de Lidia (`recording/lidia`,
 `video/muestra-candidatos/narration.json:2`) y con música de biblioteca (`video/muestra-candidatos/video.json:19`). Adversario de los
 interceptados HOLLOW LANTERN (`video/muestra-candidatos/video.json:8`), con la voz `sapi/Microsoft Pablo`, `rate` 0 y el efecto `machine`
@@ -1912,7 +1913,7 @@ sale del paquete de práctica del curso (`public/labs/yara-practice/`). Sin tarj
   etiqueta «12/12» (`:46`). En voz no hay SOC, solo «El receptor ve los doce resultados conformes y propone bloquear toda la flota»
   (`narration.json:284`). Pregunta con pausa: «¿Estos resultados justifican bloquear la flota?» (`:293`), opciones «Sí, pasó todo el paquete»
   / «No, falta validar ese uso real», y gana la segunda (`S08Bloquear.tsx:50`). «Lo que probaste: 12 archivos sintéticos preparados · la
-  mecánica y sus resultados» frente a «Lo que propones: archivos y acción de producción · bloquear en toda la flota» (`:55`, `:58`);
+  mecánica y sus resultados» frente a «Lo que propones: archivos y acción de producción · bloquear en toda la flota» (`:58`, `:55`);
   «controles representativos», «cobertura adecuada», «respuesta autorizada», «investigar un candidato: coste bajo», «bloquear la flota:
   coste alto» (`:72-83`); «rechazar la regla» tachado, «delimitar la evidencia», «práctica o punto de partida», «no es prueba suficiente de
   eficacia en toda la organización» (`:89-98`). Es el «caso resuelto» de la ampliación de s5m3 (`src/data/practical/analysis-yara.ts:147`)
