@@ -29,13 +29,13 @@ solo operador y una sola dirección pública: va como recuadro «otra red» dent
 | `op4m2` | Balanceo en capa 4 | L4 | qué hace un balanceador, IP virtual (VIP), grupo (*pool*) y miembros, algoritmos (*round robin*, ponderado, menos conexiones, *hash* de origen), modos de reenvío (NAT de destino, SNAT/proxy completo, retorno directo DSR), qué ve el servidor como origen, límites de L4 |
 | `op4m3` | Balanceo en capa 7 y persistencia de sesión | L7 + persistencia | proxy inverso que entiende HTTP, reparto por `Host` y por ruta, cabeceras `Forwarded`/`X-Forwarded-For`, protocolo PROXY (rotulado como especificación de un fabricante), persistencia por IP de origen, por *cookie* (insertada o de la aplicación) y por identificador TLS, sus fallos (NAT masivo, *cookie* perdida), sesión compartida frente a persistencia |
 | `op4m4` | Comprobaciones de salud | *health checks* | activas y pasivas, de L3/L4/L7 (ICMP, conexión TCP, petición HTTP con código y contenido esperados), intervalo y umbrales de subida y bajada (valores de fabricante rotulados), drenaje de conexiones, qué pasa cuando todos caen, comprobaciones que mienten (TCP abierto con la aplicación rota), BFD a nivel de qué es |
-| `op4m5` | Descarga de TLS y publicación de aplicaciones | TLS + publicación | terminación, re-cifrado y paso directo (*passthrough*), SNI y ALPN, certificados en el balanceador, TLS mutuo, qué se pierde y qué se gana (inspección, WAF, *cookies*), publicar varias aplicaciones tras una sola dirección pública con un proxy inverso en la DMZ, WAF y ENS enlazando Security+ y `op6`; GSLB, DNS *round robin* y *anycast* como «otra red» |
+| `op4m5` | Descarga de TLS y publicación de aplicaciones | TLS + publicación | terminación, recifrado y paso directo (*passthrough*), SNI y ALPN, certificados en el balanceador, TLS mutuo, qué se pierde y qué se gana (inspección, WAF, *cookies*), publicar varias aplicaciones tras una sola dirección pública con un proxy inverso en la DMZ, WAF y ENS enlazando Security+ y `op6`; GSLB, DNS *round robin* y *anycast* como «otra red» |
 
 Cada lección: forma de `op1` (≥ 4 objetivos, ≥ 4 checks, ≥ 2 tablas, 8 preguntas de 4 opciones, correcta en ≥ 3
 posiciones, dominio `Balanceo y alta disponibilidad`).
 
 - Labs (3): `opl4a` clasificar funciones según si las puede hacer un balanceador de L4 o hace falta L7;
-  `opl4b` ordenar la secuencia de una comprobación de salud que saca un miembro, lo drena y lo vuelve a meter;
+  `opl4b` ordenar la secuencia de una comprobación de salud que saca un miembro del grupo y lo vuelve a meter;
   `opl4c` clasificar requisitos por el método de persistencia o el modo de TLS que piden.
 - Tarjetas (~30) y glosario (~50, `ca` solo confirmado en la Viquipèdia o TERMCAT).
 - Supuestos: `op4s1` de diseño (publicar la sede electrónica en alta disponibilidad detrás de la única dirección

@@ -67,7 +67,7 @@ en él. Piezas en paralelo, un archivo por subagente; el controlador conecta y c
 ### Task 4: Labs `opl4a`, `opl4b`, `opl4c`
 **Files:** Create `src/data/opo/labs-op4.ts`, `src/data/opo/op4-labs.test.ts`; Modify `opo/labs.ts`,
 `lab-guides.ts`, `src/lib/labChallenge.test.ts` (35 → 38).
-- [ ] `opl4a` `classify`: ¿basta L4 o hace falta L7? `opl4b` `order`: una comprobación de salud saca un miembro, lo drena
+- [ ] `opl4a` `classify`: ¿basta L4 o hace falta L7? `opl4b` `order`: una comprobación de salud saca un miembro del grupo
   y lo vuelve a meter. `opl4c` `classify`: requisitos por método de persistencia o modo de TLS. Test propio que compruebe los datos (12 elementos, respuestas dentro de las categorías, orden de 8 pasos).
 
 ### Task 5: Supuesto `op4s1` (diseño) · Task 6: Supuesto `op4s2` (avería)

@@ -349,7 +349,7 @@ del fabricante (protocolo de alta disponibilidad de la pareja, valores de las co
 | El encaminador reenvía el puerto 443 de `203.0.113.10` a la VIP `10.20.72.70:443`; el correo sigue con su propio reenvío de puertos (§7c, punto 25) | por fijar |
 | Detrás del 443 hay dos nombres: `www.arcedo.example` (web informativa, BÁSICA) y `sede.arcedo.example` (sede electrónica, MEDIA). Los dos resuelven a `203.0.113.10`; el ADC los distingue por SNI y por `Host` | por fijar |
 | Grupo `www`: WEB1 `10.20.72.81` y WEB2 `10.20.72.82`, puerto 80. TLS **terminado** en el ADC (descarga); sin persistencia, menos conexiones | por fijar |
-| Grupo `sede`: SEDE1 `10.20.72.91` y SEDE2 `10.20.72.92`, puerto 443. TLS terminado en el ADC y **re-cifrado** hacia los servidores (sistema MEDIA); persistencia por *cookie* que inserta el ADC, porque la aplicación guarda la sesión en la memoria de cada servidor | por fijar |
+| Grupo `sede`: SEDE1 `10.20.72.91` y SEDE2 `10.20.72.92`, puerto 443. TLS terminado en el ADC y **recifrado** hacia los servidores (sistema MEDIA); persistencia por *cookie* que inserta el ADC, porque la aplicación guarda la sesión en la memoria de cada servidor | por fijar |
 | Comprobación de salud del grupo `sede`: petición HTTP `GET /salud` que espera un `200`; la del grupo `www`, petición HTTP a `/` que espera un `200` | por fijar |
 | Certificados públicos de `www` y `sede` instalados en el ADC (emisor `ca.example`, el del registro CAA de §7c) | por fijar |
 
