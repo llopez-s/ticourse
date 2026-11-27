@@ -27,6 +27,16 @@ export const OP_SUPUESTOS: SupuestoMeta[] = [
     integrator: undefined,
   },
   {
+    id: 'op2s2',
+    track: 'opo',
+    sectionIds: ['op2'],
+    version: 1,
+    title: 'La excavadora y el túnel',
+    brief: 'Una excavadora corta la fibra del operador y una oficina comarcal se queda sola: el túnel IPsec de respaldo no levanta. Sigue la cadena de fallos que nadie había probado (un NAT nuevo, propuestas que ya no casan, una MTU que se traga las descargas y una ruta que no vuelve), calcula lo que cabe por el túnel y deja el respaldo listo para la próxima.',
+    minutes: 60,
+    integrator: undefined,
+  },
+  {
     id: 'op3s1',
     track: 'opo',
     sectionIds: ['op3'],
