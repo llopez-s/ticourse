@@ -4,6 +4,13 @@ Registro único de los datos ficticios de la campaña GCTI: la intrusión contra
 las lecciones, los laboratorios y los vídeos. Estado a 2026-10-16 (vídeos con su canon aquí: V3, V4, V7, V8, V9, V13, V14, V15, V22, V23 y V27). Las citas de
 `src/data/s5.ts` van con la numeración de `main` desde que #56 trajo el bloque de V27 (`:583-589`): las que pasan de la `:583`
 están siete líneas más abajo que antes.
+El 2026-11-27 se añadieron las entradas de AP03, AP04, AP05, AP06, AP07, G02 y G08 (§7), con sus puntos de §5 (28 a 72), sus mensajes en la
+tabla de §3 y su relleno en §6. Las citas de esas entradas van con la numeración de `origin/main` de ese día (commit `188d341b`); las de G08, con
+la de la rama `video-tlp-comunidades` (commit `785b10e8`), porque su carpeta no está en `main`. Las citas anteriores **no** se han renumerado y
+algunas de `src/data` van atrasadas (por ejemplo, la ruta del PDB que §3 cita en `src/data/s5.ts:510` está hoy en otra línea). Las remisiones
+nuevas a este mismo archivo van por sección y no por línea, porque el archivo se mueve con cada tanda.
+Siguen sin entrada otros vídeos GCTI ya incrustados en lecciones: los de s1m1, s1m4, s4m1, s4m2 y s5m1.
+
 
 ## 1. Cómo se usa
 
@@ -193,6 +200,10 @@ CICADA (`video/reglas-aeropuerto/video.json:8`) con `sapi/Microsoft Pablo`, `rat
 (`video/reglas-aeropuerto/narration.json:11-15`): la misma voz que GLASS VIPER y HOLLOW LANTERN
 (`video/diamond-e7/narration.json`, `video/pivot-infra/narration.json`, `adversaryVoice`); lo distingue la firma del mensaje en
 pantalla, no el timbre (`video/reglas-aeropuerto/out/script-notes.md:10-11`).
+En las entradas del 2026-11-27: AP03, AP04, AP05 y G08 usan HOLLOW LANTERN; AP06, que es de s3m5, usa VELVET CICADA y se sale de la regla (§5
+punto 48); AP07 usa PAPER CRANE, pero su `narration.json` configura `sapi/Microsoft Pablo` y no Laura (§5 punto 53); y G02 estrena en este
+registro a EMBER FOX (`video/niveles-audiencia/video.json:8`), cuyos mensajes de G01 y G03 siguen sin apuntar.
+
 
 Mensajes interceptados publicados. Son canon de la voz del adversario; un guion posterior no debe contradecirlos:
 
@@ -456,7 +467,7 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
     ni si esos casos del laboratorio son canon de la campaña. Además, en esos casos «R1»…«R5» son ids de evidencia, no los requisitos R1/R2 del vídeo.
 34. **[AP03] «Intercambio sectorial» en la línea base, sin fecha, frente a V8.** La línea base de Meridian incluye «intercambio sectorial»
     (`video/feeds-requisito/src/scenes/S02Caso.tsx:103`), y el canon fija que la TIP de Meridian consultó por primera vez la colección del ISAC
-    aeroespacial el 2026-07-02 (§2, `docs/superpowers/canon/velvet-cicada.md:67`; `src/data/s3.ts:1076`). Como AP03 no lleva fecha no hay choque, pero
+    aeroespacial el 2026-07-02 (§2, fila del 2026-07-02; `src/data/s3.ts:1067`, `:1091`). Como AP03 no lleva fecha no hay choque, pero
     si alguien fecha el piloto antes del 2-7, esa parte de la base todavía no existiría.
 35. **[AP03] La ficha, desfasada (resuelto por la pantalla).** La ficha sigue diciendo «Escenas audiovisuales y grabación pendientes de producción» y «9:05»
     (`docs/superpowers/plans/2026-10-19-videos-ampliaciones/AP03-feeds-requisito/ficha-produccion.md:7,11`); el vídeo está producido y dura 9:06
@@ -472,10 +483,14 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
     «simplificaciones de la grabación» a «delata una variante recompilada» y «salen del mismo taller»
     (`video/sandbox-muestra/narration.json:194`, `:212`), y el callout de `src/data/s3.ts:310` ya dice «pista entre variantes que exige
     corroboración». La entrada de V15 en §7 no recoge esa aclaración.
+    Además, el título en pantalla de s03, «La etiqueta y la firma» (`video/muestra-candidatos/src/timeline.json:12`; lo dibuja
+    `video/engine/src/overlay/ChapterRail.tsx:157-161`), usa «la etiqueta» a secas para la ruta del PDB, contra la regla apuntada en §7, V13
+    («Nunca «la etiqueta» a secas»).
 37. **[AP04] El registro cita una línea de la lección que ya no dice eso.** §2 (fila «2026-01») y §3 («Capacidades», ssdeep) dan «94 % similar a la
     variante de 2026-01» con `src/data/s3.ts:330`; esa línea dice hoy «(puntuación 94 frente a candidato de 2026-01; no probabilidad)»
     (`src/data/s3.ts:330`). El «94% similar a variante de 2026-01» sigue en pantalla en V15
-    (`video/sandbox-muestra/src/data/report.ts:40`; `video/sandbox-muestra/src/data/s05-etiqueta.ts:14`). Hay que rehacer las dos filas: la
+    (`video/sandbox-muestra/src/data/report.ts:40`; resumido como «94 % · variante de 2026-01» en
+    `video/sandbox-muestra/src/data/s05-etiqueta.ts:14`). Hay que rehacer las dos filas: la
     cifra es de la lección y de V15; «variante» solo de V15.
 38. **[AP04] Dos «94» de ssdeep en la misma lección.** El del informe MER-2026-023 compara la muestra de Meridian con un candidato de 2026-01
     (`src/data/s3.ts:330`); el de AP04 compara la ficha A con la ficha C y se explica por una biblioteca común
@@ -508,6 +523,9 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
     el editor de la lección descarga `mi-regla.yar` (`src/components/YaraPractice.tsx:28,52`), el README del paquete pide ese nombre
     (`public/labs/yara-practice/README.txt:9,15`) y AP06 lo usa en su comando (`video/yara-prueba-entrega/src/scenes/S02Motor.tsx:65`;
     `video/yara-prueba-entrega/src/scenes/S10Cierre.tsx:60`). El nombre de la regla, `MiRegla`, sí coincide en los tres sitios.
+    Lo mismo pasa con los controles: en AP05 salen sin extensión (`benign-manual`, `video/yara-condicion/src/scenes/S01Hook.tsx:84`) y en AP06 y el
+    paquete, con ella (`benign-manual.dat`, `video/yara-prueba-entrega/src/scenes/parts/data.ts:18-24`; `public/labs/yara-practice/fixtures.py:22-28`);
+    el nombre de fichero real es el segundo.
 45. **[AP05] C es «held-out», pero el vídeo diseña con C.** La lección manda diseñar «primero con A y B y los controles de training» y probar después «los
     casos held-out», entre ellos C (`src/data/practical/analysis-yara.ts:36,38`; `c-heldout.dat` y `benign-hex.dat` son `held-out` en
     `public/labs/yara-practice/fixtures.py:19,22`); el vídeo compara los bytes de A y C para sacar el comodín y mete a C y a `benign-hex` en la
@@ -525,26 +543,28 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
     «distintos de los candidatos de AP04» (`video/yara-condicion/storyboard.json:35`). Nada en AP05 dice que ALRTDEMO sea el loader ni una muestra
     de VELVET CICADA, y el sello lo niega (`video/yara-condicion/src/scenes/S01Hook.tsx:61`); queda el parecido, sin explicar. La voz no lo comenta.
 48. **[AP06] Adversario que no es el de la sección.** §3 dice que en cada vídeo habla «el de la sección de la lección»
-    (`docs/superpowers/canon/velvet-cicada.md:187`). s3m5 es de S3, cuyo adversario es HOLLOW LANTERN (`src/data/course-gcti.ts:55`), y así
+    (§3, «Actores», párrafo «Qué adversario habla en cada vídeo»). s3m5 es de S3, cuyo adversario es HOLLOW LANTERN (`src/data/course-gcti.ts:55`), y así
     lo hacen AP05, en la misma lección (`video/yara-condicion/video.json:8-9`), y los otros dos vídeos de S3 de la tanda
     (`video/feeds-requisito/video.json:8-9`; `video/muestra-candidatos/video.json:8-9`). AP06 pone a VELVET CICADA
     (`video/yara-prueba-entrega/video.json:8-9`). La ficha lo da por hecho («firmado VELVET CICADA», `ficha-produccion.md:83`) y asigna el vídeo
     a dos lecciones, «s3m5, s5m3» (`:3`), lo que explicaría que hable el de S5; pero `video.json` solo dice s3m5. Dos vídeos seguidos de la
     misma lección quedan con dos adversarios distintos.
 49. **[AP06] La voz de VELVET CICADA frente a la de V27.** §7 (V27) fija que «tutea, dice "analista"», con ironía
-    (`docs/superpowers/canon/velvet-cicada.md:1045-1046`). Aquí ninguno de los dos mensajes dice «analista» ni habla en primera persona
+    (§7, V27, punto «VELVET CICADA»). Aquí ninguno de los dos mensajes dice «analista» ni habla en primera persona
     (`video/yara-prueba-entrega/narration.json:95`, `:247`). No se contradicen (siguen siendo atajos de método y no confiesan nada), pero el
     rasgo «dice analista» deja de valer para todos sus mensajes.
-50. **[AP06] «hex: igual» frente al byte que cambia.** En s04 la pantalla dice de C «hex: igual» (`video/yara-prueba-entrega/src/scenes/S04Regresion.tsx:67`);
+50. **[AP05, AP06] «hex: igual» frente al byte que cambia.** En s04 la pantalla dice de C «hex: igual» (`video/yara-prueba-entrega/src/scenes/S04Regresion.tsx:67`);
     en el paquete, C lleva `41 4c 52 54 99 7f` y A `41 4c 52 54 22 7f` (`public/labs/yara-practice/fixtures.py:10`, `:19`), la lección dice
     «C cambia la ruta y un byte» (`src/data/practical/analysis-yara.ts:38`) y AP05 lo enseña marcando esa posición
     (`video/yara-condicion/src/scenes/S05Hex.tsx:9-10`, `:33`). Lo que se conserva es que el patrón con comodín sigue coincidiendo, no los
     bytes. La voz lo dice bien («conserva otros rasgos del objetivo», `video/yara-prueba-entrega/narration.json:132`).
+    El propio AP05 usa la misma abreviatura una escena después, «C cambia la ruta pero conserva los bytes»
+    (`video/yara-condicion/src/scenes/S06Condicion.tsx:91`), con la voz matizándolo (`video/yara-condicion/narration.json:214`).
 51. **[AP06] Quién propone bloquear.** La ampliación de s5m3 dice «Un receptor ve "12/12" y propone desplegar la regla a toda la flota»
     (`src/data/practical/analysis-yara.ts:147`) y la voz, «El receptor… propone bloquear toda la flota»
     (`video/yara-prueba-entrega/narration.json:284`); solo la pantalla lo atribuye al SOC, «Propuesta del SOC (ficticia)»
     (`video/yara-prueba-entrega/src/scenes/S08Bloquear.tsx:43`). En §3 el SOC de Meridian «pregunta, sin persona, y no decide ni despliega
-    nada» (`docs/superpowers/canon/velvet-cicada.md:102`): aquí propone, pero rotulado como ficticio y sin el nombre de Meridian. Además,
+    nada» (§3, «Equipos», fila del SOC): aquí propone, pero rotulado como ficticio y sin el nombre de Meridian. Además,
     «desplegar» (lección) frente a «bloquear» (vídeo).
 52. **[AP06] Responsable de la ficha.** La nota de entrega de s5m3 dice «Responsable: equipo didáctico ficticio; revisar ante nuevos fixtures» y
     «Acción: práctica y triaje; no bloqueo automático ni atribución» (`src/data/practical/analysis-yara.ts:146`); la ficha de s09, «dueño
@@ -552,26 +572,26 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
     (`video/yara-prueba-entrega/src/scenes/S09Ficha.tsx:58-60`). Misma idea con otras palabras; solo importa si alguien quiere que el vídeo y
     el modelo de la lección digan lo mismo letra por letra.
 53. **[AP07] La voz de PAPER CRANE cambia de timbre.** V9 lo estrenó con `sapi/Microsoft Laura` y `machine` «en lugar de Pablo», y V23 repitió «esa misma voz»
-    (`docs/superpowers/canon/velvet-cicada.md:188-191`; `video/ach-matriz/narration.json:11-15`; `video/atribucion-cuadro/narration.json:11-15`). AP07 lo
+    (§3, párrafo «Qué adversario habla en cada vídeo»; `video/ach-matriz/narration.json:11-15`; `video/atribucion-cuadro/narration.json:11-15`). AP07 lo
     configura con `sapi/Microsoft Pablo`, `rate` 0, `machine` (`video/stealers-metricas/narration.json:9-13`), la voz de GLASS VIPER, HOLLOW LANTERN y
     VELVET CICADA. Los cuatro hermanos de la tanda llevan el mismo bloque, sea cual sea su adversario (`video/feeds-requisito/narration.json:9-13`,
     `video/muestra-candidatos/narration.json:9-13`, `video/yara-condicion/narration.json:9-13`, `video/yara-prueba-entrega/narration.json:9-13`), así que
     parece un valor por defecto del generador y no una decisión; la ficha solo dice «No hace falta una voz nueva»
     (`docs/superpowers/plans/2026-10-19-videos-ampliaciones/AP07-stealers-metricas/ficha-produccion.md:23`). Con qué voz sonó en el vídeo publicado no se
-    puede comprobar desde el repositorio (sección D).
+    puede comprobar desde el repositorio: el audio publicado no está en él.
 54. **[AP07] «Ocho mil» coincide con el tamaño de Meridian.** El mensaje dice «Ocho mil equipos infectados» (`video/stealers-metricas/narration.json:93`) y la
     pantalla, «no son 8.000 equipos infectados» (`video/stealers-metricas/src/scenes/S03Caso.tsx:95`); Meridian tiene «8.000 empleados»
-    (`src/data/labs.ts:62`) y «8,000 endpoints» (`src/data/labs.ts:431`). Aquí son los 8.000 registros de Bruma en Demo-P
+    (`src/data/labs.ts:63`) y «8,000 endpoints» (`src/data/labs.ts:432`). Aquí son los 8.000 registros de Bruma en Demo-P
     (`video/stealers-metricas/src/scenes/parts/data.ts:23`), pero un guion posterior podría leerlo como «todo el parque de Meridian infectado». Es una
     coincidencia de la lección (`src/data/practical/analysis-yara.ts:101`), no una contradicción.
 55. **[AP07] Una fecha posterior a toda la cronología.** La ventana del dataset es del 1 al 30 de septiembre de 2026
     (`video/stealers-metricas/src/scenes/S05Caso.tsx:72`; `video/stealers-metricas/src/scenes/S01Hook.tsx:55`), y la última fila fechada de §2 es el
-    2026-07-02 (`docs/superpowers/canon/velvet-cicada.md:67`). La lección la llama «Ventana inventada» (`src/data/practical/analysis-yara.ts:99`) y la
+    2026-07-02 (§2). La lección la llama «Ventana inventada» (`src/data/practical/analysis-yara.ts:99`) y la
     ficha, «ejercicio didáctico sin fecha de incidente» (ficha `:25`), pero el vídeo pone a «Meridian» haciendo el ejercicio con esos datos
     (`video/stealers-metricas/narration.json:30`): nadie dice si ese ejercicio ocurre después de la campaña, ni si la intrusión ya se conoce entonces.
 56. **[AP07] El requisito de Meridian frente a los PIR del caso.** «investigar exposición de sesión en su sector»
     (`video/stealers-metricas/src/scenes/S07Caso.tsx:37`; `src/data/practical/analysis-yara.ts:113`) no aparece en el taller de PIR ni lo pide el CISO
-    (`src/data/labs.ts:52-62`). El vídeo no lo llama PIR, pero sí «Requisito de Meridian», y §3 no tiene ninguna fila de requisitos.
+    (`src/data/labs.ts:53-63`). El vídeo no lo llama PIR, pero sí «Requisito de Meridian», y §3 no tiene ninguna fila de requisitos.
 57. **[AP07] Ficha y registro: dos lecciones; manifiesto y bloque: una.** La ficha y el índice de la tanda lo asignan a «s4m4, s5m5» (ficha `:3`;
     `docs/superpowers/plans/2026-10-19-videos-ampliaciones/episodios-06-07.mjs:106`), y `video.json` solo a s4m4 (`video/stealers-metricas/video.json:9`).
     El bloque de vídeo está solo en s4m4 (`src/data/practical/analysis-yara.ts:106`); la ampliación de s5m5 lleva un enlace a s4m4 y ningún vídeo
@@ -629,7 +649,7 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
 67. **[G08] «Lo que sacas lleva su marca» frente al anexo saneado de S5.** La regla 2 del vídeo, «Lo que sacas de un informe lleva su marca, aunque sean
     solo los indicadores» (`video/tlp-comunidades/narration.json:218`), habla de quien **recibe** un informe ajeno. En s5m3, Meridian marca su informe
     completo `TLP:AMBER+STRICT` y saca de él un anexo de indicadores para el ISAC con `TLP:AMBER` o `GREEN` (`src/data/s5.ts:642`;
-    `src/data/labs.ts:1126-1134`): es **el productor** quien vuelve a marcar su propio derivado (`src/data/s5.ts:727`). No chocan, y el vídeo deja la
+    `src/data/labs.ts:1129-1137`): es **el productor** quien vuelve a marcar su propio derivado (`src/data/s5.ts:727`). No chocan, y el vídeo deja la
     puerta abierta («se lo pides a quien lo produjo», `video/tlp-comunidades/narration.json:172`), pero la tarjeta de la regla 2 no lleva ese matiz
     (`video/tlp-comunidades/src/data/s06-recap.ts:5`): el vídeo de s5m3 que hable del anexo tiene que decir que lo emite el productor.
 68. **[G08] Dos ISAC que no hay que mezclar.** El de G08 es «ISAC» a secas, de un ejemplo, y manda un informe ámbar que alguien filtra
@@ -646,7 +666,7 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
     siete vídeos de esta tanda de entradas; AP03 y AP04 sí tienen en `main` la línea de tiempo de la grabación, y la carpeta de G08 no está en `main`
     (§7). En estos cuatro, la duración y los minutos se citan del inventario, de los subtítulos o de la transcripción, no de los fotogramas:
     - **AP05.** Está en modo `estimate`, con `"voice": "none"` y 16013 fotogramas
-      (8:53,8; `video/yara-condicion/src/timeline.json:2,7-8`), mientras que el inventario da 541 s (`src/data/security/video-inventory.ts:2238`), los
+      (8:53,8; `video/yara-condicion/src/timeline.json:2,7-8`), mientras que el inventario da 541 s (`src/data/security/video-inventory.ts:2368`), los
       subtítulos llegan a `00:08:57.567` (`public/videos/yara-condicion-captions.vtt:600`) y la transcripción publicada abre la última escena en
       `[08:05]` (`public/videos/yara-condicion-transcript.txt:31`), no en el 7:58 que saldría de la estimación (fotograma 14355,
       `video/yara-condicion/src/timeline.json:19`). No afecta a ningún dato de pantalla, pero las citas de duración de este vídeo deben ir al
@@ -663,10 +683,18 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
       cite de este vídeo debe salir de la transcripción o de los subtítulos, no del `timeline.json`.
     - **G02.** `video/niveles-audiencia/src/timeline.json:2,7,8` dice
       `"mode": "estimate"`, 7314 fotogramas (4:04 a 30 fps) y `"voice": "none"`, aunque `video/niveles-audiencia/narration.json:2` pide
-      `recording/lidia`; el vídeo publicado dura 3:57 (`public/videos/niveles-audiencia-captions.vtt:249`; `src/data/security/video-inventory.ts:1486`,
+      `recording/lidia`; el vídeo publicado dura 3:57 (`public/videos/niveles-audiencia-captions.vtt:249`; `src/data/security/video-inventory.ts:1530`,
       237 s). La duración de la entrada de §7 sale de los subtítulos, no de la línea de fotogramas, al revés que en V27. Hueco de fuente, no de contenido:
       los tiempos de cada escena del repo (p. ej. s03 desde el fotograma 2299, 1:17, `video/niveles-audiencia/src/timeline.json:12`) no son los del vídeo
       (s03 empieza en 01:08, `public/videos/niveles-audiencia-transcript.txt:10`).
+71. **[AP03, G02] Dos vídeos con «dos sobres».** En AP03 son los dos requisitos de colección cerrados, R1 y R2
+    (`video/feeds-requisito/src/scenes/S01Hook.tsx:68,71`), y «el mismo recorte en tres sobres» (`video/feeds-requisito/src/timeline.json:13`); en G02,
+    las preguntas del consejo y del SOC y el producto que vuelve a cada uno (`video/niveles-audiencia/narration.json:26,218`). No chocan en datos,
+    pero la imagen ya tiene dos sentidos y las dos entradas la dan por ocupada: un guion posterior debe decir cuál usa.
+72. **[AP03] A qué lecciones pertenece.** Como AP04 (punto 41): la ficha lo da para «s3m1, s3m4, s4m2»
+    (`docs/superpowers/plans/2026-10-19-videos-ampliaciones/AP03-feeds-requisito/ficha-produccion.md:3`), y `video.json` solo dice s3m1
+    (`video/feeds-requisito/video.json:9`); ni la ampliación de s3m4 (`src/data/practical/collection.ts:121-136`) ni la de s4m2
+    (`src/data/practical/analysis-yara.ts:67-84`) lo incrustan.
 
 ## 6. Nombres libres (relleno neutro ya usado)
 
@@ -716,7 +744,7 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
   - El formato y la regla: `ALRTDEMO`, `Alertopolis_Demo_Family`, `author = "Alertopolis"`, `version = "1.0"`, `date = "2026-10-19"`
     (`video/yara-condicion/src/scenes/S02Partes.tsx:13-18,20`); la regla del alumno, `MiRegla`, y su fichero `MiRegla.yar`
     (`video/yara-condicion/src/scenes/S01Hook.tsx:34`; `video/yara-condicion/src/scenes/S09Escribir.tsx:29,45`).
-  - Las cadenas sintéticas: `cicada-demo-v1` (y `CICADA-DEMO-V1` en B), `route=/collect-demo`, `41 4C 52 54 22 7F` (A), `41 4C 52 54 99 7F` (C) y
+  - Las cadenas sintéticas: `cicada-demo-v1` (en B, la misma cadena en mayúsculas, solo como bytes), `route=/collect-demo`, `41 4C 52 54 22 7F` (A), `41 4C 52 54 99 7F` (C) y
     el patrón `41 4C 52 54 ?? 7F` (`video/yara-condicion/src/scenes/S02Partes.tsx:21-23`; `video/yara-condicion/src/scenes/S04Wide.tsx:13-14`;
     `video/yara-condicion/src/scenes/S05Hex.tsx:9-11`). Ojo: `cicada-demo-v1` también sale en AP04
     (`video/muestra-candidatos/src/scenes/S05Consultas.tsx:16`).
@@ -1387,10 +1415,10 @@ voz:
 ### AP03 · `feeds-requisito` · s3m1 · YouTube `Vh8xJjYALqQ`
 
 Lección `src/data/practical/collection.ts:30` (bloque `video` de la «práctica complementaria» de s3m1, que `withPracticalExpansion` añade al final de
-la lección, `src/data/tracks.ts:100`; va después de la tabla de los tres feeds, `:24-28`, y del párrafo que lo presenta, `:29`, y antes de la
+la lección, `src/data/tracks.ts:112`; va después de la tabla de los tres feeds, `:24-28`, y del párrafo que lo presenta, `:29`, y antes de la
 «Resolución paso a paso», `:31`; lo fija `src/data/content.test.ts:353-354`); 9:06 (16397 fotogramas a 30 fps,
 `video/feeds-requisito/src/timeline.json:4,7`). Principal (`principal-yt`, `video/feeds-requisito/video.json:6`), guion congelado el 2026-10-19
-(`:18`), con música de biblioteca (`:19`). El id es el de la segunda subida: el commit `5750cf21` cambió `vRin6Wc8kcw` por `Vh8xJjYALqQ` en la lección
+(`:18`), con música de biblioteca (`:19`) y narrado con la grabación de Lidia (`recording/lidia`, `video/feeds-requisito/narration.json:2`). El id es el de la segunda subida: el commit `5750cf21` cambió `vRin6Wc8kcw` por `Vh8xJjYALqQ` en la lección
 al rehacer el máster sobre la música de biblioteca. Adversario de los interceptados HOLLOW LANTERN (`video/feeds-requisito/video.json:8`), con la
 voz `sapi/Microsoft Pablo`, `rate` 0 y el efecto `machine` (`video/feeds-requisito/narration.json:9-13`), la misma que §3 da para V4. Ficha en
 `docs/superpowers/plans/2026-10-19-videos-ampliaciones/AP03-feeds-requisito/ficha-produccion.md`; no tiene `out/script-notes.md` en el repositorio.
@@ -1407,7 +1435,7 @@ escenas. Canon nuevo, solo de pantalla y de voz:
 - **Los tres feeds, inventados** (`video/feeds-requisito/src/scenes/parts/bits.tsx:12-16`): **Faro** (icono de radar), **Atlas** (globo) y **Eco**
   (capas), cada uno como «oferta ficticia» (`S01Hook.tsx:37`), con el aviso «Faro, Atlas y Eco son inventados · sin marcas reales» (`:64`; en voz,
   «Faro, Atlas y Eco son inventados. No estamos recomendando marcas reales», `narration.json:37`). Los nombres vienen de la lección
-  (`src/data/practical/collection.ts:25-27`). Son relleno didáctico: no son proveedores de Meridian en la campaña (ver B para el Lab 5B).
+  (`src/data/practical/collection.ts:25-27`). Son relleno didáctico: no son proveedores de Meridian en la campaña (ver §5 punto 33 para el Lab 5B).
 - **Los dos requisitos de Meridian** (de la lección, `src/data/practical/collection.ts:9`; el vídeo los abrevia). **R1**: sobre cerrado «exposición
   de cuentas, con rapidez» (`S01Hook.tsx:68`); tarjeta «Indicios sectoriales de cuentas expuestas», «en menos de 24 h»
   (`video/feeds-requisito/src/scenes/S02Caso.tsx:41-42`); «R1 · cuentas expuestas» (`S05Caso.tsx:136`); «R1 · indicios nuevos antes de 24 h»,
@@ -1436,8 +1464,7 @@ escenas. Canon nuevo, solo de pantalla y de voz:
 - **La imagen del vídeo: el mismo recorte en tres sobres.** «Es como recibir el mismo recorte en tres sobres. Cambia el sobre, no el hecho
   observado» (`narration.json:147`); en pantalla, tres tarjetas «mismo recorte» con icono de sobre (`S04Caso.tsx:94-98`). Los requisitos también
   llegan como **dos sobres cerrados** con su sello R1/R2 (`S01Hook.tsx:68,71`; `video/feeds-requisito/src/scenes/parts/feeds.tsx:82-96`). Es de la
-  analogía, no del caso, y queda **ocupada**: un vídeo posterior no usa el recorte ni los sobres para otra cosa (el sobre sin texto de V22 es un
-  correo, §5 punto 23). Segunda imagen menor, también ocupada: «No reparte medallas abstractas a proveedores» (`narration.json:323`; «medallas
+  analogía, no del caso, y queda **ocupada**: un vídeo posterior no usa el recorte ni los sobres para otra cosa (el sobre sin texto de V22 es un correo, §5 punto 23; G02 usa después «dos sobres» con otro sentido, §5 punto 71). Segunda imagen menor, también ocupada: «No reparte medallas abstractas a proveedores» (`narration.json:323`; «medallas
   abstractas» tachado, `S08Caso.tsx:102`) y «no casarte con ella» (`narration.json:407`).
 - **El piloto, cifra a cifra** (todas de la lección, `src/data/practical/collection.ts:23-27`; **ejemplo didáctico, no hechos de Meridian**).
   Cabecera «piloto ficticio · 30 días», «100 revisados por feed» (`video/feeds-requisito/src/scenes/S05Caso.tsx:138,141`; en voz, «Durante el mismo
@@ -1468,7 +1495,7 @@ escenas. Canon nuevo, solo de pantalla y de voz:
   (`S08Caso.tsx:53-55,61`; en voz, «Faro cumple los umbrales ilustrativos… La contratación sigue dependiendo del presupuesto y del contrato»,
   `narration.json:305`). **Para R2, Atlas** «puede aportar más», «no se cancela: responde a otra pregunta» (`S08Caso.tsx:67-69,73`). **Eco**:
   «licencia barata», y pierde por «añade muy poco», «campos incompletos», «consume más revisión» (`:80,85-92`). El vídeo no dice que Meridian firme,
-  pague ni despliegue nada: «priorizas» y «valoras» (ver B para el «compras Faro» del cierre).
+  pague ni despliegue nada: «priorizas» y «valoras» (ver §5 punto 31 para el «compras Faro» del cierre).
 - **La renovación** (s09): línea «mes del piloto» → «renovación futura», «sin fecha fija»
   (`video/feeds-requisito/src/scenes/S09Caso.tsx:57-60`); «Base al piloto» («registros internos», «feeds actuales», `:66-69`) → «Base al renovar»
   con «+ otra fuente, mismos derechos», «el proveedor pierde cobertura», «añade ruido» (`:77-83`); «incremento del feed», «hay que recalcularlo»
@@ -1513,7 +1540,7 @@ escenas. Canon nuevo, solo de pantalla y de voz:
 ### AP04 · `muestra-candidatos` · s3m2 · YouTube `CB-TTDBRF3I`
 
 Lección `src/data/practical/collection.ts:76` (bloque `video` «Del hash a una relación defendible», dentro de la práctica complementaria
-«De una muestra a candidatos relacionados», `:59`, que `withPracticalExpansion` añade al final de s3m2, `src/data/tracks.ts:100`; va después
+«De una muestra a candidatos relacionados», `:59`, que `withPracticalExpansion` añade al final de s3m2, `src/data/tracks.ts:112`; va después
 del párrafo «Sin premium o sin datos» y de la frase puente, `:74-75`, y antes del encabezado «Caso resuelto · candidatos fuertes, débiles y
 sin datos», `:77`; lo fija `src/data/content.test.ts:355-356`). Es el **segundo vídeo de s3m2**: el primero es V15, en la lección base
 (`src/data/s3.ts:350-356`). 8:42 (15663 fotogramas a 30 fps, `video/muestra-candidatos/src/timeline.json:4,7`). Principal (`principal-yt`,
@@ -1522,7 +1549,7 @@ sin datos», `:77`; lo fija `src/data/content.test.ts:355-356`). Es el **segundo
 interceptados HOLLOW LANTERN (`video/muestra-candidatos/video.json:8`), con la voz `sapi/Microsoft Pablo`, `rate` 0 y el efecto `machine`
 (`video/muestra-candidatos/narration.json:9-13`). No hay `out/` en el repositorio (ni `script-notes.md` ni `youtube-upload.json`); la ficha de
 producción y la revisión de guiones están en `docs/superpowers/plans/2026-10-19-videos-ampliaciones/AP04-muestra-candidatos/ficha-produccion.md`
-y `docs/reviews/2026-10-19-videos-ampliaciones.md`. Tres títulos para lo mismo: el bloque de la lección dice «Del hash a una relación
+y `docs/reviews/2026-10-19-videos-ampliaciones.md`. Dos títulos para lo mismo: el bloque de la lección dice «Del hash a una relación
 defendible» (`src/data/practical/collection.ts:76`), y el storyboard y la miniatura, «Del hash a los candidatos: pivotar sin inventar
 parentescos» (`video/muestra-candidatos/storyboard.json:2`; `video/muestra-candidatos/src/Poster.tsx:53-56`). **Sin fecha ni hora, y sin
 ningún hecho de la campaña**: es un ejercicio con fichas inventadas («ejercicio didáctico sin fecha de incidente», ficha `:25`), así que no se
@@ -1563,7 +1590,7 @@ que el repositorio deja ver** (el bloque llega con la ampliación práctica). Ca
   voz: «No sabes quién lo escribió solo por esa ruta. Un PDB es un archivo de símbolos de depuración.» y «Algunos binarios conservan una ruta
   que puede dar pistas sobre el proyecto. Esa ruta también puede copiarse o falsearse.» (`video/muestra-candidatos/narration.json:91`,
   `:101`). El título de la escena, «La etiqueta y la firma» (`video/muestra-candidatos/src/timeline.json:12`), recoge la palabra «etiqueta»
-  de V13 a V15, pero ni la voz ni la pantalla dicen «taller» ni «enlace fuerte» (ver B).
+  de V13 a V15, pero ni la voz ni la pantalla dicen «taller» ni «enlace fuerte» (ver §5 punto 36).
 - **Cadenas, configuración y firma** (s03; `video/muestra-candidatos/src/scenes/S03Etiqueta.tsx:72-135`): «Cadenas y configuración · rasgos
   poco comunes», con dos barras sin cifra, «palabra genérica» (corta) y «estructura poco común» (larga), y «código reutilizado», «señuelos»,
   «¿distingue las explicaciones?»; «Firma de código · certificado y validez», con «huella», «validez», «contexto», «robado», «compartido»,
@@ -1577,7 +1604,7 @@ que el repositorio deja ver** (el bloque llega con la ampliación práctica). Ca
   descartar» (`:105-115`). En voz, «La cifra no dice que exista un noventa y cuatro por ciento de probabilidad de pertenecer a la familia» y
   «si dos señales salen del mismo componente, no tienes dos corroboraciones independientes» (`video/muestra-candidatos/narration.json:147`,
   `:153`). Es la fila C de la lección (`src/data/practical/collection.ts:81`). **Este 94 es de A frente a C**, no el del informe MER-2026-023
-  (ver B).
+  (ver §5 punto 38).
 - **Las consultas ilustrativas** (s05; `video/muestra-candidatos/src/scenes/S05Consultas.tsx:14-19`): panel «Búsqueda avanzada» con el aviso
   «ilustrativas · valores inventados · no se ejecutan» (`:56-58`) y cuatro de las ocho líneas de la lección
   (`src/data/practical/collection.ts:72`): `imphash:11111111111111111111111111111111` «¿mismos imports?», `content:"cicada-demo-v1"`
@@ -1635,7 +1662,8 @@ que el repositorio deja ver** (el bloque llega con la ampliación práctica). Ca
   validar más variantes · contrastar configuración · una observación independiente» (`:102-105`); y dos medidores sin cifra, «cuánto sostienen
   los datos» y «qué tan abiertas siguen las alternativas» (`:110-111`). En voz, «La conclusión del caso mantiene B como relacionado probable
   por código. C y D no se incorporan con la evidencia actual. E sigue pendiente.» (`video/muestra-candidatos/narration.json:341`).
-- **Las dos decisiones** (pausa de 4,5 s cada una; `video/muestra-candidatos/src/timeline.json:4266-4267`): «¿Confirmas C o buscas qué lo
+- **Las dos decisiones** (pausa de 131 fotogramas, unos 4,4 s, cada una, `video/muestra-candidatos/src/timeline.json:4266-4267`; el guion pide 4,5 s,
+  `video/muestra-candidatos/narration.json:141`, `:299`): «¿Confirmas C o buscas qué lo
   distingue?», con «Confirmar misma familia» y «Buscar evidencia que discrimine» (correcta la segunda;
   `video/muestra-candidatos/narration.json:140`; `video/muestra-candidatos/src/scenes/S04Noventa.tsx:93`); y «¿Sin relaciones o dato no
   disponible?», con «No tiene relaciones» y «No hay dato accesible» (correcta la segunda; `video/muestra-candidatos/narration.json:298`;
@@ -1679,10 +1707,10 @@ que el repositorio deja ver** (el bloque llega con la ampliación práctica). Ca
 ### AP05 · `yara-condicion` · s3m5 · YouTube `fl02bWFRSUc`
 
 Lección `src/data/practical/analysis-yara.ts:28-34` (bloque `video` de la «práctica complementaria» que `withPracticalExpansion` añade a s3m5,
-`src/data/tracks.ts:100`; va después del párrafo de falsos positivos, falsos negativos y sobreajuste, `:26`, y de su frase de entrada, `:27`, y
+`src/data/tracks.ts:112`; va después del párrafo de falsos positivos, falsos negativos y sobreajuste, `:26`, y de su frase de entrada, `:27`, y
 antes de la lista de pasos del editor, `:35-41`, y del bloque `yara-practice`, `:42`; lo fija `src/data/content.test.ts:283-285`; llegó con el
 commit `c566b4c9`, que solo inserta la frase de entrada, el bloque, su prueba y los archivos de `public/videos/`: **la lección no cambió con él**).
-Duración publicada 9:01 (541 s, `src/data/security/video-inventory.ts:2238`; los subtítulos acaban en `00:08:57.567`,
+Duración publicada 9:01 (541 s, `src/data/security/video-inventory.ts:2368`; los subtítulos acaban en `00:08:57.567`,
 `public/videos/yara-condicion-captions.vtt:600`); el `timeline.json` del repositorio es la **estimación** previa a la voz (16013 fotogramas a
 30 fps, `video/yara-condicion/src/timeline.json:2,4,7-8`), ver §5. Principal (`principal-yt`, `video/yara-condicion/video.json:6`), guion
 congelado el 2026-10-19 (`:19`). Adversario de los interceptados HOLLOW LANTERN (`video/yara-condicion/video.json:8`), con la voz
@@ -1723,7 +1751,8 @@ regla y el mismo corpus. **Todo lo que enseña es material de práctica («Prác
   podría contenerlo?» (`:77-78`); «Una muestra · puede usar un rasgo muy específico» frente a «Variantes · justifica qué se conserva y qué
   cambia» (`:84,87`); «el objetivo y la evidencia mandan» y «ningún umbral hace fiable una cadena débil» (`:92-93`).
 - **A y B, byte a byte** (s04): A es `cicada-demo-v1` en un byte por carácter (`63 69 63 61 64 61 2D 64 65 6D 6F 2D 76 31`) y B es
-  `CICADA-DEMO-V1` con un `00` detrás de cada byte (`video/yara-condicion/src/scenes/S04Wide.tsx:12-14`); «A · texto sencillo», «B · mayúsculas ·
+  la misma cadena en mayúsculas (`43 49 43 41 44 41 2D 44 45 4D 4F 2D 56 31`) con un `00` detrás de cada byte
+  (`video/yara-condicion/src/scenes/S04Wide.tsx:12-14`; el texto `CICADA-DEMO-V1` no se rotula, solo está en el comentario de `:12`); «A · texto sencillo», «B · mayúsculas ·
   bytes nulos intercalados», «dentro del objetivo» (`:54,57,60`). Pausa de decisión: «¿B queda fuera o debes cubrir otra forma?»
   (`video/yara-condicion/narration.json:141`), con las opciones «Ignorar su representación» / «Contemplar la variación prevista» y la segunda
   como respuesta (`S04Wide.tsx:64`). Luego la línea `$family = "cicada-demo-v1" ascii wide nocase` (`:38`) con «ascii → A», «wide → B, con su
@@ -1779,7 +1808,7 @@ regla y el mismo corpus. **Todo lo que enseña es material de práctica («Prác
 - **La voz no dice** ALRTDEMO, `Alertopolis_Demo_Family`, `MiRegla`, «cicada», ningún identificador (`$family`, `$route`, `$hex`, `$header`),
   los nombres de los controles, «offset», «PE», «MZ», «falso positivo» ni HOLLOW LANTERN, GLASS VIPER o VELVET CICADA. Dice «el marcador», «la
   ruta de demostración», «la secuencia de bytes», «la cabecera», «el manual del ejercicio», «un control», «falsos negativos»
-  (`video/yara-condicion/narration.json:208,214,232,250,260,312`); los únicos nombres propios son YARA (`:26`), Meridian (`:32`) y YARA Forge (`:342`), y las
+  (`video/yara-condicion/narration.json:208,214,232,250,260,312`); los únicos nombres propios son YARA (`:26`), Meridian (`:32`) y YARA Forge (`:342`), más el término «Unicode» (`:166`), y las
   palabras de YARA `meta`, `strings`, `condition`, `ascii`, `wide`, `nocase` (`:56,68,80,148,154,160`). Ninguna fecha, hora, hash ni equipo.
 - **HOLLOW LANTERN**, dos mensajes nuevos, sin fecha (consejos que tutean y empujan un atajo de método, como en V15; no confiesa nada, no dice
   quién es ni habla de infraestructura); ver la tabla de §3:
@@ -1798,7 +1827,7 @@ regla y el mismo corpus. **Todo lo que enseña es material de práctica («Prác
 ### AP06 · `yara-prueba-entrega` · s3m5 · YouTube `2KXShpLy67s`
 
 Lección `src/data/practical/analysis-yara.ts:52-58` (bloque `video` «Tu YARA compila: ahora demuestra qué detecta», dentro de la ampliación
-«Escritura y validación de YARA» de s3m5, `:4-8`, que `withPracticalExpansion` añade a la lección, `src/data/tracks.ts:100`; va después de
+«Escritura y validación de YARA» de s3m5, `:4-8`, que `withPracticalExpansion` añade a la lección, `src/data/tracks.ts:112`; va después de
 los dos checks de práctica, `:43-50`, y del párrafo «Cuando tu regla ya compila…», `:51`, y antes de los enlaces «Práctica guiada y entrega
 técnica», `:59-64`; llegó a `main` con el commit `c566b4c9`, «embed the two YARA practice videos in s3m5»; prueba en
 `src/data/content.test.ts:286`). Es **práctica complementaria**, no lección base. Duración: 532 s (8:52) según el registro de vídeos producidos
@@ -1841,7 +1870,7 @@ sale del paquete de práctica del curso (`public/labs/yara-practice/`). Sin tarj
   a evaluarse», «exit 1 · Discrepancia · se evaluó; no coincide lo esperado», «exit 0 · Conformidad · coincide con lo esperado»
   (`S02Motor.tsx:135-141`; `verify.py:28`, `:31`). «Qué registras»: «Motor · YARA 4.5.4 · el de esta captura», «Regla · versión de
   mi-regla.yar», «Corpus · los 12 archivos de prueba» (`S02Motor.tsx:116-118`). El fichero del alumno se llama `mi-regla.yar` y la regla,
-  `MiRegla` (`S01Hook.tsx:79`; `S02Motor.tsx:82`), como en la app (`src/components/YaraPractice.tsx:28`, `:55`). La voz no dice ni la versión
+  `MiRegla` (`S01Hook.tsx:79`; `S02Motor.tsx:82`, `:65`), como en la app (`src/components/YaraPractice.tsx:28`, `:55`). La voz no dice ni la versión
   ni ningún nombre de fichero: «El verificador local la compila con YARA real» y «Ese conjunto se llama corpus» (`narration.json:62`).
 - **La regla ingenua de s03 es solo del vídeo** (`video/yara-prueba-entrega/src/scenes/S03Errores.tsx:18-26`, `:125`): «regla ingenua: basta
   con cualquier cadena», pasada por siete filas (A, B, C, «control: ruta sola», «control: marcador solo», «control: bytes sueltos», «manual
@@ -1878,7 +1907,7 @@ sale del paquete de práctica del curso (`public/labs/yara-practice/`). Sin tarj
   «Objetivo y origen de patrones», «Motor y versión», «Corpus y hash», «Matriz de resultados», «Alcance, FP y FN conocidos», «Acción y
   revisión humana», «Destinatarios y uso permitido», «Derechos y material de terceros». Y «captura de YARA Forge: simulación por etiquetas»
   con «no sustituye compilar y ejecutar» (`:67`, `:70`); «datos sintéticos: sin secretos» y «siguen los derechos y la protección de
-  evidencias» (`:74`, `:77`). YARA Forge es el Lab 3B (`src/data/labs.ts:120-122`): el vídeo solo lo nombra, no enseña nada de él.
+  evidencias» (`:74`, `:77`). YARA Forge es el Lab 3B (`src/data/labs.ts:121-123`): el vídeo solo lo nombra, no enseña nada de él.
 - **«Propuesta del SOC (ficticia)»** (s08; `video/yara-prueba-entrega/src/scenes/S08Bloquear.tsx:43`): «bloquear en toda la flota», con la
   etiqueta «12/12» (`:46`). En voz no hay SOC, solo «El receptor ve los doce resultados conformes y propone bloquear toda la flota»
   (`narration.json:284`). Pregunta con pausa: «¿Estos resultados justifican bloquear la flota?» (`:293`), opciones «Sí, pasó todo el paquete»
@@ -1931,13 +1960,14 @@ sale del paquete de práctica del curso (`public/labs/yara-practice/`). Sin tarj
   `MapViewOfSection` ni `$op`; ningún hash (`4c81...b3`, `9f3a...e1`); `winhlp.exe`, `updsvc.exe`, `wcssvc.exe`; ENG-WS-041; el C2, el
   certificado y `kazuo.tanji@`; MER-2026-011 y la fecha 2026-04-18; el contenido del Lab 3B (sus cadenas y sus muestras, §4) y los dosieres.
   Tampoco usa la imagen del aeropuerto de V27. Las cadenas del paquete (`cicada-demo-v1`, `route=/collect-demo`, `41 4C 52 54 ?? 7F`,
-  `build=fixture-A`, `public/labs/yara-practice/reference.yar:10-12`, `:24`) **no salen en este vídeo** (sí en AP05): aquí solo «marcador»,
+  `public/labs/yara-practice/reference.yar:10-12`) **no salen en este vídeo** (sí en AP05), y `build=fixture-A` (`:24`) no sale en ninguno de los
+  dos: aquí solo «marcador»,
   «ruta», «hex» y «bytes». No se culpa a nadie: ni al receptor que quiere bloquear ni a quien escribe la regla ingenua.
 
 ### AP07 · `stealers-metricas` · s4m4 · YouTube `DBcK-Y0WItM`
 
 Lección `src/data/practical/analysis-yara.ts:106` (bloque `video` «Medir infostealers y decidir relevancia», dentro de la ampliación «Ecosistema y
-métricas de infostealers», `:85-131`, que `withPracticalExpansion` añade al final de s4m4, `src/data/tracks.ts:100`; va después de la tabla del dataset,
+métricas de infostealers», `:85-131`, que `withPracticalExpansion` añade al final de s4m4, `src/data/tracks.ts:112`; va después de la tabla del dataset,
 `:100-104`, y del párrafo «Antes de resolverlo, míralo contado…», `:105`, y antes de «Paso 1: elegir la unidad», `:107`; lo fija
 `src/data/content.test.ts:358`). El `timeline.json` del repositorio es una **estimación sin voz** (`"mode": "estimate"`, `"voice": "none"`,
 `video/stealers-metricas/src/timeline.json:2,8`): 16043 fotogramas a 30 fps (`:4,7`), 8:55; el vídeo publicado dura 553 s, 9:13, según el inventario
@@ -1957,7 +1987,8 @@ incidente, ni resultado. Canon nuevo, solo de pantalla y de voz:
   Duna (`:71-80`), «sus datos de septiembre no son un ranking real» (`:83`) y la franja fija «Demo-P · dos regiones · septiembre de 2026 · UTC · datos
   ficticios» (`:104`). En voz: «Estamos en un ejercicio de Meridian, una empresa aeroespacial.» y «Las familias Bruma, Cobalto y Duna son inventadas.
   Sus datos de septiembre tampoco son un ranking real.» (`video/stealers-metricas/narration.json:30`, `:36`). La voz dice «Meridian», nunca «Meridian
-  Dynamics», y no hay analista, CISO, SOC ni ninguna persona. Título de escena, «Una tabla, tres ganadores distintos» (`S01Hook.tsx:50`).
+  Dynamics», y no hay analista, CISO, SOC ni ninguna persona. Titular en pantalla, «Una tabla, tres ganadores distintos» (`S01Hook.tsx:50`); el
+  título de la escena en la línea de tiempo es «Tres ganadores en una tabla» (`video/stealers-metricas/src/timeline.json:10`).
 - **Demo-P, las tres familias y la ventana son relleno didáctico de la lección** (`src/data/practical/analysis-yara.ts:99`: «Ventana inventada: 1–30 de
   septiembre de 2026, UTC. Proveedor Demo-P ve endpoints de dos regiones y anuncios seleccionados; no tiene cobertura global. Las familias Bruma,
   Cobalto y Duna son ficticias.»). No son un proveedor de Meridian, ni malware de VELVET CICADA, ni de PAPER CRANE (la ficha lo pide expresamente: «No
@@ -1965,7 +1996,7 @@ incidente, ni resultado. Canon nuevo, solo de pantalla y de voz:
   tienen nombre y el «sector objetivo» tampoco (la columna dice «Sector objetivo», `video/stealers-metricas/src/scenes/S04Caso.tsx:35`; en voz, «su
   sector»). En voz, Demo-P es siempre «el proveedor de ejemplo» o «un proveedor» (`narration.json:170`, `:206`): el nombre solo se lee en pantalla.
 - **La tabla, cifra a cifra** (`video/stealers-metricas/src/scenes/parts/data.ts:22-26`; el comentario de `:3-6` dice que todo número de pantalla sale
-  de ahí). Es la de la lección, celda por celda (`src/data/practical/analysis-yara.ts:100-104` y, para la última semana y la capacidad, `:108-112`):
+  de ahí). Es la de la lección, cifra a cifra, con la capacidad abreviada (`src/data/practical/analysis-yara.ts:100-104` y, para la última semana y la capacidad, `:108-112`):
 
   | Familia (ficticia) | Muestras | Episodios | Dispositivos | Registros | Organizaciones | Del sector | Última semana | Capacidad descrita |
   |---|---|---|---|---|---|---|---|---|
@@ -1975,7 +2006,8 @@ incidente, ni resultado. Canon nuevo, solo de pantalla y de voz:
 
   Los miles salen con punto (`fmtInt`, `video/engine/src/theme/motion.ts:78-82`). «Última semana» son dispositivos observados en la última semana de la
   ventana, **subconjunto** de «Dispositivos», no una cifra que se sume (`data.ts:17-18`; rótulo «subconjunto del mes»,
-  `video/stealers-metricas/src/scenes/S07Caso.tsx:28`). Quién gana cada columna lo calcula `leader()` (`data.ts:35`) y cuadra en todas las escenas y
+  `video/stealers-metricas/src/scenes/S07Caso.tsx:28`). Quién gana cada columna lo calcula `leader()` en s04 (`data.ts:35`; `S04Caso.tsx:30-35`); en s01, s08 y el
+  póster va fijado a mano o recalculado (`S01Hook.tsx:87-89`; `S08Caso.tsx:51-53`; `Poster.tsx:32-33`), y cuadra en todas las escenas y
   con la lección (`analysis-yara.ts:107`): muestras, Bruma; episodios, dispositivos, sector y última semana, Cobalto; registros y organizaciones, Duna.
   Las organizaciones (40, 60, 100) **no se suman** nunca en pantalla ni en voz: «Una misma organización puede aparecer en más de una fila»
   (`narration.json:158`; `S04Caso.tsx:56`).
@@ -2024,7 +2056,7 @@ incidente, ni resultado. Canon nuevo, solo de pantalla y de voz:
 - **El requisito de Meridian, que es del ejercicio** (s07): «Requisito de Meridian · investigar exposición de sesión en su sector»
   (`video/stealers-metricas/src/scenes/S07Caso.tsx:37`; repetido en `video/stealers-metricas/src/scenes/S08Caso.tsx:67`); en voz, «Meridian necesita
   investigar exposición de sesiones en su sector.» (`narration.json:242`). Viene de la lección (`analysis-yara.ts:113`). **No es un PIR de la campaña**
-  ni lo pide nadie con nombre: no sale el CISO ni se relaciona con los PIR del Lab 1 (`src/data/labs.ts:52-62`). La tabla de señales, sin ganador
+  ni lo pide nadie con nombre: no sale el CISO ni se relaciona con los PIR del Lab 1 (`src/data/labs.ts:53-63`). La tabla de señales, sin ganador
   marcado: «Del sector · dispositivos» 4 / 90 / 22, «Última semana · subconjunto del mes» 10 / 180 / 20 y «Capacidad descrita» (`S07Caso.tsx:27-31`).
   Límites en pantalla: «no prueba que Meridian esté comprometida», «capacidad descrita no es material robado», «la ficha describe lo observado y sus
   límites», «contrastar con exposición interna y otras fuentes» (`:45-54`). Dos contraejemplos, en condicional: «Requisito: recuperar archivos filtrados
@@ -2051,7 +2083,7 @@ incidente, ni resultado. Canon nuevo, solo de pantalla y de voz:
   Cobalto» (`:54-58`), más «afirmaciones compatibles: unidad y propósito claros» (`:63`). Duna no entra en esta conclusión (en la de la lección sí,
   `analysis-yara.ts:115`). Créditos: «Alertópolis · material independiente, no afiliado a SANS/GIAC · datos y familias ficticios» (`:89`).
 - **Tarjetas de examen: ninguna.** En su lugar, cinco tarjetas «PRÁCTICA COMPLEMENTARIA» sin dominio (`video/engine/src/practica/bits.tsx:197`), una al
-  final de cada escena par: «Familia, operador y campaña no son equivalentes» (`video/stealers-metricas/src/scenes/S02Caso.tsx:134`), «Muestras,
+  final de s02, s04, s06, s08 y s09: «Familia, operador y campaña no son equivalentes» (`video/stealers-metricas/src/scenes/S02Caso.tsx:134`), «Muestras,
   dispositivos y registros cambian la clasificación» (`video/stealers-metricas/src/scenes/S04Caso.tsx:65`), «La prevalencia observada depende de
   cobertura y sesgo» (`video/stealers-metricas/src/scenes/S06Caso.tsx:117`), «La relevancia combina capacidad, recencia y exposición»
   (`video/stealers-metricas/src/scenes/S08Caso.tsx:109`) y «Actividad de amenazas no mide por sí sola el valor CTI»
@@ -2087,9 +2119,10 @@ incidente, ni resultado. Canon nuevo, solo de pantalla y de voz:
 ### G02 · `niveles-audiencia` · s1m3 · YouTube `FW0X9_djBv4`
 
 Lección `src/data/s1.ts:418-424` (bloque `video` después de la «Nota de examen» de la escala, `:412-417`, y antes del check de threat hunting,
-`:425-434`; llegó con el commit `2a280a59`, que solo inserta el bloque, su prueba en `src/data/content.test.ts:359-361` y los archivos de
+`:425-434`; llegó con el commit `2a280a59`, que solo inserta el bloque, su prueba en `src/data/content.test.ts:359-361`, la entrada del inventario
+(`src/data/security/video-inventory.ts`) y los archivos de
 `public/videos/`: **la lección no cambió con él**). Dura 3:57 según los subtítulos publicados (última entrada hasta `00:03:56.900`,
-`public/videos/niveles-audiencia-captions.vtt:249`; 237 s en `src/data/security/video-inventory.ts:1486`); ojo, el `timeline.json` del repositorio
+`public/videos/niveles-audiencia-captions.vtt:249`; 237 s en `src/data/security/video-inventory.ts:1530`); ojo, el `timeline.json` del repositorio
 sigue siendo el del **estimado**, no el de la grabación (`"mode": "estimate"`, `"voice": "none"`, 7314 fotogramas a 30 fps = 4:04,
 `video/niveles-audiencia/src/timeline.json:2,4,7,8`; ver §5). Cápsula (`capsula-yt`, `video/niveles-audiencia/video.json:6`), guion congelado el
 2026-10-23 (`:25`). Adversario de los interceptados EMBER FOX (`video/niveles-audiencia/video.json:8`), con la voz `sapi/Microsoft Pablo`, `rate` 0
@@ -2098,7 +2131,7 @@ firma y la ficha en pantalla. Revisiones del guion en `docs/reviews/2026-10-23-g
 `recheck-G01-G03.md:48-83`, `naturalidad-G01-G04.md:99-158`). **Sin fecha ni hora**, como V9, V15, V22, V23 y V27: la voz dice «Hoy te llegan dos
 sobres» (`video/niveles-audiencia/narration.json:26`) y el rótulo de contexto no lleva día («no date, no hour, no alert»,
 `video/niveles-audiencia/src/data/niveles.ts:13-14`); no se ordena contra §2. **No añade ningún hecho de la intrusión**: ni equipos, ni dominios, ni IP,
-ni hashes, ni fechas («nothing here is a dated fact, a domain, an IP or a hash», `video/niveles-audiencia/src/data/niveles.ts:5`). Canon nuevo, solo
+ni hashes, ni fechas («nothing here is a dated fact, a domain, an IP or a hash», `video/niveles-audiencia/src/data/niveles.ts:5-6`). Canon nuevo, solo
 de pantalla y de voz:
 
 - **El punto de partida: dos sobres sobre la mesa** (s01; `video/niveles-audiencia/src/data/niveles.ts:14,24-42`). Rótulo «Meridian Dynamics ·
@@ -2107,7 +2140,7 @@ de pantalla y de voz:
   sector?» y, debajo en pequeño, «¿dónde invertimos?» (`video/niveles-audiencia/src/data/niveles.ts:26-29`). Sobre «SOC»: «¿qué bloqueamos hoy?»
   (`:35-36`). En voz: «Hoy te llegan dos sobres. En uno, el consejo pregunta hacia dónde va el sector. En el otro, el SOC, qué tiene que bloquear
   ya.» y «Los dos piden inteligencia, pero no la misma.» (`video/niveles-audiencia/narration.json:26`, `:32`). Son el consejo y el SOC de §3: **preguntan,
-  sin persona ni nombre, y no deciden ni despliegan nada** («They are questions, not decisions», `video/niveles-audiencia/src/scenes/S01Hook.tsx:36`). Es
+  sin persona ni nombre, y no deciden ni despliegan nada** («They are questions, not decisions», `video/niveles-audiencia/src/scenes/S01Hook.tsx:35-36`). Es
   lo único que el vídeo cuenta como del día de Meridian. Título en pantalla «Niveles de CTI y la Sliding Scale» / «el producto correcto para la
   persona correcta» y tres chips de promesa, «los tres niveles», «la escala de la seguridad», «por qué no empezar por el tejado»
   (`video/niveles-audiencia/src/data/niveles.ts:44-54`).
@@ -2201,7 +2234,7 @@ de pantalla y de voz:
   cero veces (el nombre solo está en el rótulo, `video/niveles-audiencia/src/data/niveles.ts:14`, y en «no ha pasado en Meridian», `:100`); no dice
   «technical» como cuarto nivel, ni «spearphishing», ni «zorro» (el zorro solo se dibuja). Los nombres ingleses de los niveles y de las cinco
   categorías sí se dicen.
-- **No se toca** (se deduce del propio vídeo: `video/niveles-audiencia/src/data/niveles.ts:5`; `video/niveles-audiencia/src/scenes/parts/Fox.tsx:8-9`;
+- **No se toca** (se deduce del propio vídeo: `video/niveles-audiencia/src/data/niveles.ts:5-6`; `video/niveles-audiencia/src/scenes/parts/Fox.tsx:8-9`;
   `docs/reviews/2026-10-23-guiones-gcti/recheck-G01-G03.md:63`): el dosier de FIRST LIGHT (`src/data/course-gcti.ts:20-21`: plantillas, lista de
   objetivos, «VC»); la IP `141.98.6.10` y «sirvió un panel de phishing el martes» de s1m1 (`src/data/s1.ts:27,32`), que **no salen en este vídeo** ni
   en voz ni en pantalla; el correo del 2-3, ENG-WS-041, E7 y todo §2; los rumores de robo de diseños y el encargo de los PIR (de G01 y G03); el
@@ -2213,15 +2246,16 @@ Lección `src/data/s3.ts:842-848` (bloque `video` después del párrafo «Las **
 antes de «Al consumir informes de vendors…», `:849-852`; llegó a `main` con #108, commit `2a280a59`, que también fija la lección en
 `src/data/content.test.ts:362-364`). **La carpeta del vídeo no está en `main`:** todas las rutas `video/tlp-comunidades/…` de esta entrada son de la
 rama `video-tlp-comunidades` (commit `785b10e8`, «G08 scenes, shared parts and poster, built on the estimate timeline»), sin mergear, y los números
-de línea son los de ese commit. Duración publicada: 225 s, 3:45 (`src/data/security/video-inventory.ts:2067`, comprobada contra los subtítulos,
-`:2068`; el último acaba en `00:03:44.367`); **no hay fotogramas de la grabación**, porque el `timeline.json` de la rama está en modo `estimate`
+de línea son los de ese commit. Duración publicada: 225 s, 3:45 (`src/data/security/video-inventory.ts:2131`, comprobada contra los subtítulos,
+`:2132`; el último acaba en `00:03:44.367`); **no hay fotogramas de la grabación**, porque el `timeline.json` de la rama está en modo `estimate`
 (7713 fotogramas a 30 fps, 257 s; `video/tlp-comunidades/src/timeline.json:2,4,7`) y no vale como duración real. Cápsula (`capsula-yt`,
 `video/tlp-comunidades/video.json:6`), guion congelado el 2026-10-25 (`:10`), con la grabación de Lidia (`"voice": "recording/lidia"`,
 `video/tlp-comunidades/narration.json:2`). Adversario de los interceptados HOLLOW LANTERN (`video/tlp-comunidades/video.json:8`), con la voz
 `sapi/Microsoft Pablo` y el efecto `machine` (`video/tlp-comunidades/narration.json:10-14`), la misma de V4, V8 y V15. No tiene notas de guion en la
 copia leída (el `out/` no va en git). **Sin fecha ni hora, y sin caso de Meridian:** el rótulo de apertura es «Ejemplo · sin fecha»
 (`video/tlp-comunidades/src/data/s01-hook.ts:3`) y el único caso que cuenta es inventado y de otra empresa; no se ordena contra §2 y no añade
-ningún hecho a la campaña. **La lección no cambió con él**: el commit solo inserta el bloque, su prueba y los tres archivos de `public/videos/`.
+ningún hecho a la campaña. **La lección no cambió con él**: el commit solo inserta el bloque, su prueba, la entrada del inventario
+(`src/data/security/video-inventory.ts`) y los tres archivos de `public/videos/`.
 Canon nuevo, solo de pantalla y de voz:
 
 - **La imagen: un festival con pulseras** (analogía del vídeo, no del caso; queda **ocupada**). Un festival visto desde arriba, sin texto, en tres
@@ -2328,7 +2362,7 @@ Canon nuevo, solo de pantalla y de voz:
   - **Ficha en pantalla, solo en s03:** «HOLLOW LANTERN» con una segunda línea, **«equipo de infraestructura»**
     (`video/tlp-comunidades/src/data/s03-lista.ts:5`; `video/tlp-comunidades/src/scenes/parts/AdversaryTag.tsx:26-27`;
     `video/tlp-comunidades/src/scenes/S03Lista.tsx:125-130`), que se aparta con la respuesta. Esa segunda línea no está en el `src/` de ningún
-    otro vídeo de `main` (viene de la ficha del jefe, `src/data/course-gcti.ts:57`); ver B. En s05 solo sale la tarjeta del motor, «MENSAJE INTERCEPTADO · HOLLOW
+    otro vídeo de `main` (viene de la ficha del jefe, `src/data/course-gcti.ts:57`); ver §5 punto 65. En s05 solo sale la tarjeta del motor, «MENSAJE INTERCEPTADO · HOLLOW
     LANTERN».
   - **La narradora lo nombra en voz, dos veces** («jólou lántern», `video/tlp-comunidades/narration.json:92`, `:190`): en V4, V8 y V15 su nombre
     solo estaba en pantalla.
@@ -2341,8 +2375,8 @@ Canon nuevo, solo de pantalla y de voz:
   (`src/data/s3.ts:767-783`), la colección pasiva frente a la activa, el OPSEC y los informes de vendors; el ISAC aeroespacial, su colección TAXII
   y el indicador con `tlp-amber-strict` (de V8; `src/data/s3.ts:1086`); el `tlp = "AMBER"` de la regla YARA (de V27) y el `TLP:AMBER` del flash
   alert MER-FA-2026-014 (`src/data/s5.ts:47`); el «TLP aplicado» de s5m3 (`src/data/s5.ts:642`) y las marcas del Lab 5B
-  (`src/data/labs.ts:1104-1146`); cualquier informe `MER-…` (§5 punto 17); Stellar Dynamics y lo que «merece compartirse vía ISAC» del Lab 3A (§4;
-  `src/data/labs.ts:704`); el dosier de DEEP WELL (`src/data/course-gcti.ts:59`); y lo que Meridian comparte con Orbital (V14). No se culpa a
+  (`src/data/labs.ts:1107-1149`); cualquier informe `MER-…` (§5 punto 17); Stellar Dynamics y lo que «merece compartirse vía ISAC» del Lab 3A (§4;
+  `src/data/labs.ts:707`); el dosier de DEEP WELL (`src/data/course-gcti.ts:59`); y lo que Meridian comparte con Orbital (V14). No se culpa a
   nadie: el analista del ejemplo «quiere proteger a todos cuanto antes» (`video/tlp-comunidades/narration.json:108`).
 
 ### Plantilla para el siguiente
