@@ -9,7 +9,7 @@ tabla de §3 y su relleno en §6. Las citas de esas entradas van con la numeraci
 la de la rama `video-tlp-comunidades` (commit `785b10e8`), porque su carpeta no está en `main`. Las citas anteriores **no** se han renumerado y
 algunas de `src/data` van atrasadas (por ejemplo, la ruta del PDB que §3 cita en `src/data/s5.ts:510` está hoy en otra línea). Las remisiones
 nuevas a este mismo archivo van por sección y no por línea, porque el archivo se mueve con cada tanda.
-Siguen sin entrada otros vídeos GCTI ya incrustados en lecciones: los de s1m1, s1m4, s4m1, s4m2 y s5m1.
+Siguen sin entrada otros vídeos GCTI ya incrustados en lecciones: los de s1m1, s1m4, s4m1, s4m2, s5m1, s5m4 y s5m5.
 
 
 ## 1. Cómo se usa
@@ -524,7 +524,7 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
     (`public/labs/yara-practice/README.txt:9,15`) y AP06 lo usa en su comando (`video/yara-prueba-entrega/src/scenes/S02Motor.tsx:65`;
     `video/yara-prueba-entrega/src/scenes/S10Cierre.tsx:60`). El nombre de la regla, `MiRegla`, sí coincide en los tres sitios.
     Lo mismo pasa con los controles: en AP05 salen sin extensión (`benign-manual`, `video/yara-condicion/src/scenes/S01Hook.tsx:84`) y en AP06 y el
-    paquete, con ella (`benign-manual.dat`, `video/yara-prueba-entrega/src/scenes/parts/data.ts:18-24`; `public/labs/yara-practice/fixtures.py:22-28`);
+    paquete, con ella (`benign-manual.dat`, `video/yara-prueba-entrega/src/scenes/parts/data.ts:18-20`; `public/labs/yara-practice/fixtures.py:22-24`);
     el nombre de fichero real es el segundo.
 45. **[AP05] C es «held-out», pero el vídeo diseña con C.** La lección manda diseñar «primero con A y B y los controles de training» y probar después «los
     casos held-out», entre ellos C (`src/data/practical/analysis-yara.ts:36,38`; `c-heldout.dat` y `benign-hex.dat` son `held-out` en
@@ -794,7 +794,7 @@ Solo se listan; no se resuelven aquí. «[V3]»/«[V4]» = ese lado está en pan
 
 Aquí se añade un bloque por vídeo cuando se produce: los datos que solo existen en pantalla.
 Los identificadores son los de cada tanda: `Vn` (plan de vídeos de lección), `APnn` (prácticas complementarias de las ampliaciones del
-2026-10-19) y `Gnn` (tanda GCTI del 2026-10-23, `docs/superpowers/plans/fichas-gcti/estado.md`).
+2026-10-19) y `Gnn` (tanda GCTI: G01–G07 del 2026-10-23, `docs/superpowers/plans/fichas-gcti/estado.md`; G08 se congeló el 2026-10-25).
 
 ### V3 · `diamond-e7` · s2m3 · YouTube `rwMIu0XBoWQ`
 
