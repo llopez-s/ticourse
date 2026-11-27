@@ -81,7 +81,7 @@ describe('pista Redes y ENS', () => {
     const cards = opo.flashcards.filter((c) => c.sectionId === 'op2');
     expect(cards).toHaveLength(30);
     expect(cards.map((c) => c.id)).toEqual(Array.from({ length: 30 }, (_, i) => `fco${201 + i}`));
-    expect(opo.glossary.filter((g) => g.sectionId === 'op2')).toHaveLength(GLOSS_OP2);
+    expect(opo.glossary.filter((g) => g.sectionId === 'op2')).toHaveLength(61);
   });
 
   it('block 3 (servicios de red) lessons follow the shape', () => {
