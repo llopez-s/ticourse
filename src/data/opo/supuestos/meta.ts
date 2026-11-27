@@ -17,6 +17,16 @@ export const OP_SUPUESTOS: SupuestoMeta[] = [
     integrator: undefined,
   },
   {
+    id: 'op2s1',
+    track: 'opo',
+    sectionIds: ['op2'],
+    version: 1,
+    title: 'Teletrabajar sin abrir la puerta',
+    brief: 'El Consorcio formaliza el teletrabajo y quiere una VPN para el personal sin abrir ningún puerto nuevo en su única dirección pública: decide dónde termina el túnel, cómo se autentica cada persona, qué tráfico va por él, sus direcciones y su DNS, comprueba que el acceso de la sede lo aguanta, ajusta el tamaño de los paquetes y deja rastro de cada sesión.',
+    minutes: 60,
+    integrator: undefined,
+  },
+  {
     id: 'op3s1',
     track: 'opo',
     sectionIds: ['op3'],
