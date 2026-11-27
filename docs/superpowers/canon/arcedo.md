@@ -421,6 +421,22 @@ cabecera de diagnóstico `X-Servidor` (`src/data/opo/supuestos/op4s2.ts:92`–`9
 - Jefe de `op4`: nombre en clave SESIÓN PERDIDA, adversario EL NODO QUE MIENTE: el último día de unas ayudas, formularios que vuelven a la casilla de salida, errores a medias y un balanceador que jura que los dos servidores están sanos (`src/data/opo/sections.ts:87`, `src/data/opo/sections.ts:88`, `src/data/opo/sections.ts:90`). Es la misma historia que `op4s2`.
 - Al cerrar: cada sesión vuelve a su servidor, la comprobación pregunta lo que importa y solo un balanceador responde por la VIP; en el registro de ADC2 queda una línea sin explicar: «durante cuatro minutos, de madrugada», los dos se creyeron el activo (`src/data/opo/sections.ts:92`). Encaja con los 248 s de `op4s2` (4 min 8 s) y con la causa sin confirmar.
 
+## 7e. Infraestructuras de comunicaciones (bloque op2)
+
+Hechos que fija el bloque 2, «Infraestructuras de comunicaciones» (`op2m1`–`op2m5`, `opl2a`–`opl2c`, supuestos `op2s1`
+y `op2s2`). Los fija el controlador antes de escribir (2026-11-27); las piezas los repiten y no inventan otros sin
+rotularlos. Parten de §6 (WAN principal MPLS de capa 3 y respaldo IPsec por Internet en cada oficina).
+
+| Hecho | Fuente |
+|---|---|
+| El encaminador central de la sede termina los túneles IPsec de respaldo en `203.0.113.10` (IKEv2 por UDP 500 y 4500); el reenvío del 443 a la VIP de los ADC (§7d) no cambia | por fijar |
+| Cada oficina comarcal tiene su encaminador propio, del Consorcio, con dos salidas: el acceso MPLS del operador (principal) y un acceso a Internet de otro proveedor, solo para el túnel de respaldo | por fijar |
+| Direcciones públicas de los accesos de respaldo de las oficinas: `198.51.100.31`, `198.51.100.32` y `198.51.100.33` (una por oficina, en el orden en que aparezcan; sin nombres de oficina) | por fijar |
+| Oficinas que ya tienen red fija en el canon: `10.20.8.0/24` (`opl1a`) y `10.20.9.0/24` (`op3s2`); usar esas en los ejemplos | por fijar |
+| La VPN de administración de `op6s2` existe y termina en la sede; no se dice en qué equipo | §7b |
+| Red de gestión: VLAN 99 de la sede (§5); no hay red de gestión fuera de banda fijada | §5 |
+| El Consorcio no tiene SD-WAN ni CPD de respaldo: SD-WAN, VPLS, EVPN o interconexión de CPD van como «otra red» o «supuesto» | §1, §9.14 |
+
 ## 8. Datos que añaden los guiones de vídeo (borradores sin congelar, 2026-11-25)
 
 Lo que cada guion pone en pantalla o en una pregunta y ninguna lección fija. Comprobado contra los JSON de cada
