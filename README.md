@@ -9,7 +9,7 @@ redes y normativa para la administración pública, que comparten el mismo motor
 |---|---|---|
 | **CTI · GCTI** | GIAC GCTI (asociada a SANS FOR578: Cyber Threat Intelligence) | Completo: 27 lecciones, 174 preguntas, 12 labs, 102 flashcards, prueba de nivel y ampliaciones prácticas |
 | **Security+** | CompTIA Security+ (SY0-701) | **Completo: los 5 dominios** — 41 lecciones + exam prep, 308 preguntas, 135 checkpoints base + 2 complementarios, 15 labs, 163 flashcards, 246 términos |
-| **Redes y ENS** | Temarios TIC de la administración pública (sin certificación asociada) | **En construcción:** bloques 1 (redes de comunicaciones) y 6 (ENS y normativa) — 12 lecciones, 96 preguntas, 5 labs, 78 flashcards, 215 términos con el catalán donde está confirmado y 3 supuestos |
+| **Redes y ENS** | Temarios TIC de la administración pública (sin certificación asociada) | **En construcción:** bloques 1 (redes de comunicaciones), 3 (servicios de red) y 6 (ENS y normativa) — 17 lecciones, 136 preguntas, 8 labs, 108 flashcards, 282 términos con el catalán donde está confirmado y 5 supuestos |
 
 **▶ En vivo: https://llopez-s.github.io/ticourse/** — se despliega solo en cada
 push a `main` (GitHub Actions: tests → build → Pages).
@@ -175,6 +175,13 @@ afiliado a ninguna administración ni tribunal de selección y no sustituye a la
 - **Disponible:** bloque 1, *Redes de comunicaciones* (`op1`): modelos OSI y TCP/IP, direccionamiento IPv4 e
   IPv6 con cálculo de subredes, conmutación y VLAN 802.1Q, encaminamiento (estático, OSPF, BGP, VRRP) y
   arquitecturas WAN y WLAN. Dos labs: reparto VLSM y el recorrido de un paquete entre dos VLAN.
+- **Disponible:** bloque 3, *Servicios de red* (`op3`, 2026-11-26): 5 lecciones (DNS: cómo funciona, DNS en la
+  organización, DHCP, NTP y la hora, servicios de conectividad), 40 preguntas, 26 checkpoints, 30 flashcards, 67
+  términos de glosario y tres labs (ordenar el intercambio DORA con relay, clasificar registros DNS y clasificar averías
+  por servicio). Jefe: NOMBRE EQUIVOCADO / EL RELOJ QUE ADELANTA. Dos supuestos: *El edificio anexo de la sede* y
+  *Un lunes sin hora ni nombres*. Las fuentes son RFC (rfc-editor.org, IANA); DHCPv6 es la RFC 9915, que deja obsoleta
+  la 8415, el failover de DHCPv4 y WPAD son borradores caducados y los valores de Microsoft e ISC se rotulan como tales
+  (dossier en `docs/superpowers/sources/`).
 - **Disponible:** bloque 6, *ENS y normativa* (`op6`, 2026-11-26): 7 lecciones (marco del ENS y roles,
   categorización, medidas del anexo II, conformidad, auditoría e incidentes, protección de datos RGPD/LOPDGDD,
   gobierno de la seguridad, firma e identificación electrónicas eIDAS), 56 preguntas con nivel de artículo y anexo,
@@ -182,14 +189,13 @@ afiliado a ninguna administración ni tribunal de selección y no sustituye a la
   notifica, medidas del anexo II). Jefe: PAPEL MOJADO / EL CUMPLIMIENTO DE FACHADA. Toda la normativa sale de textos
   consolidados del BOE y EUR-Lex consultados el 2026-11-26 (dossier en `docs/superpowers/sources/`); NIS2 estaba
   pendiente de transposición a esa fecha y de las guías CCN-STIC no se afirma contenido alguno.
-- **Pendiente:** servicios de red, balanceo y alta disponibilidad, infraestructuras de comunicaciones e identidad
-  corporativa.
+- **Pendiente:** infraestructuras de comunicaciones, balanceo y alta disponibilidad e identidad corporativa.
 - A diferencia de las otras dos pistas, **todo está en español**, también las preguntas. El glosario añade el
   término en catalán (`cat.`) cuando está confirmado en TERMCAT o en la Viquipèdia, y se puede buscar por él.
 - Lo que ya enseña Security+ (seguridad wifi, 802.1X, VPN) no se repite: las lecciones lo enlazan.
 - **Supuestos prácticos**: casos con expediente de documentos y 4–6 fases encadenadas (cálculo, tablas, citar
-  documentos, ordenar, redactar), en modo práctica o simulacro con reloj y nota sobre 10. Hay tres:
-  *La oficina comarcal nueva*, *La sede electrónica del Consorcio* y *El cifrado del registro de entrada*. Guía para escribirlos: `docs/supuestos.md`.
+  documentos, ordenar, redactar), en modo práctica o simulacro con reloj y nota sobre 10. Hay cinco:
+  *La oficina comarcal nueva*, *El edificio anexo de la sede*, *Un lunes sin hora ni nombres*, *La sede electrónica del Consorcio* y *El cifrado del registro de entrada*. Guía para escribirlos: `docs/supuestos.md`.
 - No tiene prueba de nivel y solo un logro propio, el de los supuestos (`sup-first-exam`). El simulacro reparte las preguntas entre los seis dominios
   del temario (*Redes de comunicaciones*, *Infraestructuras de comunicaciones*, *Servicios de red*, *Balanceo y alta
   disponibilidad*, *Identidad corporativa*, *ENS y normativa*) con pesos iguales (1/6); no existen pesos oficiales.

@@ -157,23 +157,34 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
 - **Third track `opo`, «Redes y ENS» (2026-11-24).** Networks, network services and the Spanish ENS for
   public-administration IT syllabuses; unofficial, with its own disclaimer. Lives in `src/data/opo/`
   (`sections.ts`, `op1.ts` + one lesson per file `op1-m1.ts`…`op1-m5.ts`, `op1-cards.ts`, `labs-op1.ts`, the same
-  for `op6`, `labs.ts`, `opo.test.ts`, `op6-labs.test.ts`). Ids: `op1` / `op1m1` / `op1m1q1` / `fco101` / `opl1a`;
-  block 6: `op6` / `op6m1`–`op6m7` / `op6m1q1` / `fco601`–`fco648` / `opl6a`–`opl6c` / `op6s1`–`op6s2`. Two blocks exist:
+  for `op3` and `op6`, `labs.ts`, `opo.test.ts`, `op3-labs.test.ts`, `op6-labs.test.ts`). Ids: `op1` / `op1m1` / `op1m1q1` / `fco101` / `opl1a`;
+  block 3: `op3` / `op3m1`–`op3m5` / `op3m1q1` / `fco301`–`fco330` / `opl3a`–`opl3c` / `op3s1`–`op3s2`;
+  block 6: `op6` / `op6m1`–`op6m7` / `op6m1q1` / `fco601`–`fco648` / `opl6a`–`opl6c` / `op6s1`–`op6s2`. Three blocks exist:
   block 1 («Redes de comunicaciones», 5 lessons, 40 questions, 2 labs, 30 cards, 111 glossary terms) and block 6
   («ENS y normativa», 2026-11-26: 7 lessons — ENS framework and roles, categorisation, Annex II measures,
   conformity/audit/incidents, GDPR/LOPDGDD, security governance, eIDAS e-signature and identification — 56
   questions at article/annex level, 37 checkpoints, 3 classify labs `opl6a` categories / `opl6b` who is notified /
   `opl6c` Annex II measures, 48 cards, 104 glossary entries of which 20 have `ca`, 2 supuestos «La sede electrónica
   del Consorcio» and «El cifrado del registro de entrada», boss PAPEL MOJADO / EL CUMPLIMIENTO DE FACHADA).
-  Track totals: 12 lessons, 96 questions, 5 labs, 78 cards, 215 glossary entries, 3 supuestos. Blocks 2–5
-  (infraestructuras, servicios de red, balanceo, identidad) still need their own plan like
+  Block 3 («Servicios de red», 2026-11-26, section `op3`, `num: 3`, between op1 and op6 in `OP_SECTIONS`): 5 lessons
+  (`op3m1` DNS: cómo funciona; `op3m2` DNS en la organización; `op3m3` DHCP; `op3m4` NTP y la hora; `op3m5` Servicios de
+  conectividad), 40 questions, 26 checkpoints, 3 labs (`opl3a` order DORA with relay; `opl3b` classify DNS records;
+  `opl3c` classify faults by service), 30 cards, 67 glossary entries of which 5 have `ca`, 2 supuestos `op3s1` «El edificio
+  anexo de la sede» and `op3s2` «Un lunes sin hora ni nombres» (each with its own `src/data/opo/op3s1.calc.test.ts` /
+  `op3s2.calc.test.ts`, which recomputes its figures), boss NOMBRE EQUIVOCADO / EL RELOJ QUE ADELANTA. Sources: dossier
+  `docs/superpowers/sources/2026-11-26-op3-fuentes.md` (RFCs from rfc-editor.org and IANA; DHCPv6 is RFC 9915, which
+  obsoletes 8415; DHCPv4 failover and WPAD are expired drafts, so they are labelled as such; Microsoft/ISC values are
+  labelled as vendor behaviour). Design `docs/superpowers/specs/2026-11-26-opo-op3-servicios-design.md`, plan
+  `docs/superpowers/plans/2026-11-26-opo-op3-servicios.md`.
+  Track totals: 17 lessons, 136 questions, 8 labs, 108 cards, 282 glossary entries, 5 supuestos. Blocks 2, 4 and 5
+  (infraestructuras, balanceo y alta disponibilidad, identidad) still need their own plan like
   `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md` / `2026-11-26-opo-op6-ens.md`, a new section in `OP_SECTIONS` and
   their modules spread into `TRACKS.opo.modules`. All the regulation in op6 comes from the dossier
   `docs/superpowers/sources/2026-11-26-op6-fuentes.md` (consolidated BOE and EUR-Lex text, consulted 2026-11-26;
   NIS2 not yet transposed on that date; the CCN-STIC guides 803/804/808/817/824 could not be read, so nothing is
   claimed as their content; ISO 27001/27002 only at the level of what they are). Design
   `docs/superpowers/specs/2026-11-26-opo-op6-ens-design.md`; the canon `docs/superpowers/canon/arcedo.md` §7b holds
-  the Consorcio's security organisation, and bodies named by the law (CCN, CCN-CERT, AEPD, INCIBE-CERT, Cl@ve) are
+  the Consorcio's security organisation (§7c holds the op3 network-services facts), and bodies named by the law (CCN, CCN-CERT, AEPD, INCIBE-CERT, Cl@ve) are
   named in content. Differences from the other two tracks: **everything is in
   Spanish, questions included** (the real exams are not in English); six `Domain` values in Spanish, in syllabus
   order (`Redes de comunicaciones`, `Infraestructuras de comunicaciones`, `Servicios de red`, `Balanceo y alta
@@ -188,16 +199,17 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   `opo.test.ts` recomputes the subnet lab (`opl1a`) from the CIDR in each category label, so labels must
   keep the `a.b.c.d/nn` form. The store shape did not change (no migration). Scenario: the fictional
   Consorcio Provincial de Arcedo — sede 10.20.10/20/30/99.0/24 by VLAN, oficinas comarcales in
-  10.20.8.0/22, CPD 10.20.72.0/21; keep new lessons on those ranges. One version of the scenario (2026-11-25): the
+  10.20.8.0/22, CPD 10.20.72.0/21; block op3 adds VLAN 50 `10.20.50.0/23` (annex, supuesto `op3s1`) and an
+  office on `10.20.9.0/24` (supuesto `op3s2`); keep new lessons on those ranges. One version of the scenario (2026-11-25): the
   offices reach the sede over the operator's MPLS layer-3 VPN with an IPsec backup, and each office's /30 is its link to
   the operator's router; the sede's two layer-3 distribution switches route between VLANs (SVI); Internet is one
   operator, one public address (`203.0.113.10`) and a static default route, so BGP, an own AS or a second public address
   are always a labelled «supuesto»; VLAN 20 holds the sede's floor servers and the corporate applications live in the
   CPD (a room in the sede building); Valdecierzo (`10.20.40.0/22`) is a training centre hanging off the sede by the
   Consorcio's own fibre with OSPF, not a fourth office. An example that needs anything else says «supuesto» or «otra red». Tests pinning totals that a new block
-  must update: `practical.test.ts` (`originals`), `src/lib/labChallenge.test.ts` (lab count, now 32), `acronyms.test.ts`, and in
-  `src/data/opo/opo.test.ts` the «block 6 (ENS y normativa) lessons follow the shape» test (≥ 2 questions per lesson that cite
-  an article or annex, and an «Artículo · Qué regula» table).
+  must update: `practical.test.ts` (`originals`), `src/lib/labChallenge.test.ts` (lab count, now 35), `acronyms.test.ts`, and in
+  `src/data/opo/opo.test.ts` the «block 3 (servicios de red)…» test (exact card and glossary totals), the «block 6 (ENS y normativa) lessons follow the shape» test (≥ 2 questions per lesson that cite
+  an article or annex, and an «Artículo · Qué regula» table), and the block's own lab test (`op3-labs.test.ts`, `op6-labs.test.ts`).
 
 - **SY0-801 novelties, section `sp7` (2026-10-21).** Optional Security+ section «Novedades SY0-801»: 7 lessons
   `sp7m1`–`sp7m7` (`data/secplus/sp7-m1.ts`…`sp7-m7.ts`, aggregated in `sp7.ts`), 73 cards `fcp701`–`fcp773` and 102
@@ -307,7 +319,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   and each device keeps its own copy locally, but it is the one place where a device whose
   `localStorage` was cleared *before* its next push can lose data. Retrying once after a 404 on
   the first sync for a code would shrink the window.
-- **Tests:** vitest, `npm test` (471 tests in `src/**/*.test.ts`, 31 files). Content tests assert
+- **Tests:** vitest, `npm test` (492 tests in `src/**/*.test.ts`, 34 files). Content tests assert
   Domain 1–5 completeness, that every Security+ boss section has ≥12 questions, 4 choices + valid
   answer per question, ids unique, lab data present, and (placement blocks) that every content
   section has exactly one 12-question block with contiguous ids and non-empty text. Partial

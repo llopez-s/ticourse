@@ -55,6 +55,25 @@ export const OP_SECTIONS: SectionMeta[] = [
     },
   },
   {
+    id: 'op3',
+    track: 'opo',
+    num: 3,
+    title: 'Servicios de red',
+    short: 'Servicios',
+    subtitle:
+      'DNS (resolución, registros, zonas, DNS interno, DNSSEC, DoT y DoH), DHCP (DORA, relay, conmutación por error, DHCPv6), NTP y la hora, y servicios de conectividad: proxies, PAC, IPAM y 802.1X.',
+    domain: 'Servicios de red',
+    icon: '🧭',
+    boss: {
+      codename: 'NOMBRE EQUIVOCADO',
+      adversary: 'EL RELOJ QUE ADELANTA',
+      flavor:
+        'Lunes, ocho de la mañana: en el Consorcio Provincial de Arcedo nadie puede iniciar sesión, los puestos nuevos no reciben dirección y los registros de eventos cuentan una historia imposible. Algo falla en los servicios que nadie mira hasta que se caen: el DNS, el DHCP y la hora. Encuentra cuál, y por qué.',
+      dossier:
+        'EL RELOJ QUE ADELANTA, puesto en hora. Cada nombre resuelve donde debe, cada ámbito reparte su puerta y su DNS y todos los relojes vuelven a coincidir. En el registro del proxy queda una línea que nadie esperaba: un equipo de la red de gestión pidiendo, de madrugada, un archivo de configuración que el Consorcio ya no publica.',
+    },
+  },
+  {
     id: 'op6',
     track: 'opo',
     num: 6,
