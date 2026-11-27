@@ -157,10 +157,11 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
 - **Third track `opo`, «Redes y ENS» (2026-11-24).** Networks, network services and the Spanish ENS for
   public-administration IT syllabuses; unofficial, with its own disclaimer. Lives in `src/data/opo/`
   (`sections.ts`, `op1.ts` + one lesson per file `op1-m1.ts`…`op1-m5.ts`, `op1-cards.ts`, `labs-op1.ts`, the same
-  for `op3`, `op4` and `op6`, `labs.ts`, `opo.test.ts`, `op3-labs.test.ts`, `op4-labs.test.ts`, `op6-labs.test.ts`). Ids: `op1` / `op1m1` / `op1m1q1` / `fco101` / `opl1a`;
+  for `op2`, `op3`, `op4` and `op6`, `labs.ts`, `opo.test.ts`, `op2-labs.test.ts`, `op3-labs.test.ts`, `op4-labs.test.ts`, `op6-labs.test.ts`). Ids: `op1` / `op1m1` / `op1m1q1` / `fco101` / `opl1a`;
+  block 2: `op2` / `op2m1`–`op2m5` / `op2m1q1` / `fco201`–`fco230` / `opl2a`–`opl2c` / `op2s1`–`op2s2`;
   block 3: `op3` / `op3m1`–`op3m5` / `op3m1q1` / `fco301`–`fco330` / `opl3a`–`opl3c` / `op3s1`–`op3s2`;
   block 4: `op4` / `op4m1`–`op4m5` / `op4m1q1` / `fco401`–`fco430` / `opl4a`–`opl4c` / `op4s1`–`op4s2`;
-  block 6: `op6` / `op6m1`–`op6m7` / `op6m1q1` / `fco601`–`fco648` / `opl6a`–`opl6c` / `op6s1`–`op6s2`. Four blocks exist:
+  block 6: `op6` / `op6m1`–`op6m7` / `op6m1q1` / `fco601`–`fco648` / `opl6a`–`opl6c` / `op6s1`–`op6s2`. Five blocks exist:
   block 1 («Redes de comunicaciones», 5 lessons, 40 questions, 2 labs, 30 cards, 111 glossary terms) and block 6
   («ENS y normativa», 2026-11-26: 7 lessons — ENS framework and roles, categorisation, Annex II measures,
   conformity/audit/incidents, GDPR/LOPDGDD, security governance, eIDAS e-signature and identification — 56
@@ -189,15 +190,26 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   algorithm is `random`, 3.2/3.0 `roundrobin`; NGINX `sticky` free since 1.29.6), always labelled. The canon §7d holds
   the ADC pair and its groups. Spelling: «recifrado» (no hyphen). Design
   `docs/superpowers/specs/2026-11-27-opo-op4-balanceo-design.md`, plan `docs/superpowers/plans/2026-11-27-opo-op4-balanceo.md`.
-  Track totals: 22 lessons, 176 questions, 11 labs, 138 cards, 341 glossary entries, 7 supuestos. Blocks 2 and 5
-  (infraestructuras, identidad) still need their own plan like
+  Block 2 («Infraestructuras de comunicaciones», 2026-11-27, section `op2`, `num: 2`, between op1 and op3): 5 lessons
+  (`op2m1` redes corporativas; `op2m2` VPN IPsec e IKEv2; `op2m3` acceso remoto y confianza cero; `op2m4` SD-WAN; `op2m5`
+  conectividad entre centros: VPN MPLS y Red SARA), 40 questions, 28 checkpoints, 3 labs (`opl2a` order IKEv2 with NAT-T;
+  `opl2b` classify site interconnect; `opl2c` classify remote access), 30 cards, 65 glossary entries of which 5 have `ca`,
+  2 supuestos `op2s1` «Teletrabajar sin abrir la puerta» and `op2s2` «La excavadora y el túnel» (each with its calc
+  test), boss TÚNEL APAGADO / EL RESPALDO QUE NADIE PROBÓ. Dossier `docs/superpowers/sources/2026-11-27-op2-fuentes.md`:
+  IKEv1 is Historic (RFC 9395), RFC 9329 obsoletes 8229, RFC 10090 (Nov 2026) covers SD-WAN, MEF is now Mplify, SP
+  800-207 never says «ZTNA», VTI is in no RFC. Acronym clashes settled: in this track RD = Route Distinguisher only inside
+  MPLS text (always «Real Decreto» in full in op2), PE = Provider Edge (zero trust's Policy Engine is spelled out), DPD =
+  delegado de protección de datos (dead peer detection is spelled out). Canon §7e. Design/plan
+  `docs/superpowers/specs|plans/2026-11-27-opo-op2-infraestructuras*`.
+  Track totals: 27 lessons, 216 questions, 14 labs, 168 cards, 406 glossary entries, 9 supuestos. Block 5
+  (identidad) still needs their own plan like
   `docs/superpowers/plans/2026-11-24-redes-ens-bloque1.md` / `2026-11-26-opo-op6-ens.md`, a new section in `OP_SECTIONS` and
   their modules spread into `TRACKS.opo.modules`. All the regulation in op6 comes from the dossier
   `docs/superpowers/sources/2026-11-26-op6-fuentes.md` (consolidated BOE and EUR-Lex text, consulted 2026-11-26;
   NIS2 not yet transposed on that date; the CCN-STIC guides 803/804/808/817/824 could not be read, so nothing is
   claimed as their content; ISO 27001/27002 only at the level of what they are). Design
   `docs/superpowers/specs/2026-11-26-opo-op6-ens-design.md`; the canon `docs/superpowers/canon/arcedo.md` §7b holds
-  the Consorcio's security organisation (§7c holds the op3 network-services facts, §7d the op4 balancers), and bodies named by the law (CCN, CCN-CERT, AEPD, INCIBE-CERT, Cl@ve) are
+  the Consorcio's security organisation (§7c holds the op3 network-services facts, §7d the op4 balancers, §7e the op2 WAN and remote access), and bodies named by the law (CCN, CCN-CERT, AEPD, INCIBE-CERT, Cl@ve) are
   named in content. Differences from the other two tracks: **everything is in
   Spanish, questions included** (the real exams are not in English); six `Domain` values in Spanish, in syllabus
   order (`Redes de comunicaciones`, `Infraestructuras de comunicaciones`, `Servicios de red`, `Balanceo y alta
@@ -220,7 +232,7 @@ Pages. `vite.config.ts` sets `base` to `/ticourse/` for that sub-path; build wit
   are always a labelled «supuesto»; VLAN 20 holds the sede's floor servers and the corporate applications live in the
   CPD (a room in the sede building); Valdecierzo (`10.20.40.0/22`) is a training centre hanging off the sede by the
   Consorcio's own fibre with OSPF, not a fourth office. An example that needs anything else says «supuesto» or «otra red». Tests pinning totals that a new block
-  must update: `practical.test.ts` (`originals`), `src/lib/labChallenge.test.ts` (lab count, now 38), `acronyms.test.ts`, and in
+  must update: `practical.test.ts` (`originals`), `src/lib/labChallenge.test.ts` (lab count, now 41), `acronyms.test.ts`, and in
   `src/data/opo/opo.test.ts` the «block 3 (servicios de red)…» and «block 4 (balanceo…)» tests (exact card and glossary totals), the «block 6 (ENS y normativa) lessons follow the shape» test (≥ 2 questions per lesson that cite
   an article or annex, and an «Artículo · Qué regula» table), and the block's own lab test (`op3-labs.test.ts`, `op6-labs.test.ts`).
 

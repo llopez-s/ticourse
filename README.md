@@ -175,6 +175,13 @@ afiliado a ninguna administración ni tribunal de selección y no sustituye a la
 - **Disponible:** bloque 1, *Redes de comunicaciones* (`op1`): modelos OSI y TCP/IP, direccionamiento IPv4 e
   IPv6 con cálculo de subredes, conmutación y VLAN 802.1Q, encaminamiento (estático, OSPF, BGP, VRRP) y
   arquitecturas WAN y WLAN. Dos labs: reparto VLSM y el recorrido de un paquete entre dos VLAN.
+- **Disponible:** bloque 2, *Infraestructuras de comunicaciones* (`op2`, 2026-11-27): 5 lecciones (redes corporativas:
+  diseño jerárquico, campus y CPD; VPN IPsec e IKEv2; acceso remoto y confianza cero; SD-WAN; conectividad entre centros:
+  VPN MPLS de capa 3 y de capa 2, y la Red SARA), 40 preguntas, 28 checkpoints, 30 flashcards, 65 términos de glosario y
+  tres labs (ordenar el arranque de IKEv2 con NAT-T, clasificar formas de unir sedes y decisiones de acceso remoto). Jefe:
+  TÚNEL APAGADO / EL RESPALDO QUE NADIE PROBÓ. Dos supuestos: *Teletrabajar sin abrir la puerta* y *La excavadora y el
+  túnel*. Fuentes: RFC (IKEv1 es histórico por la RFC 9395; la 9329 deja obsoleta la 8229; SD-WAN tiene la RFC 10090),
+  NIST SP 800-207, 800-77r1 y 800-46r2, MEF 70.2 (hoy Mplify), la Red SARA en el PAe, el Real Decreto 4/2010 y su NTI.
 - **Disponible:** bloque 3, *Servicios de red* (`op3`, 2026-11-26): 5 lecciones (DNS: cómo funciona, DNS en la
   organización, DHCP, NTP y la hora, servicios de conectividad), 40 preguntas, 26 checkpoints, 30 flashcards, 67
   términos de glosario y tres labs (ordenar el intercambio DORA con relay, clasificar registros DNS y clasificar averías
@@ -196,7 +203,7 @@ afiliado a ninguna administración ni tribunal de selección y no sustituye a la
   notifica, medidas del anexo II). Jefe: PAPEL MOJADO / EL CUMPLIMIENTO DE FACHADA. Toda la normativa sale de textos
   consolidados del BOE y EUR-Lex consultados el 2026-11-26 (dossier en `docs/superpowers/sources/`); NIS2 estaba
   pendiente de transposición a esa fecha y de las guías CCN-STIC no se afirma contenido alguno.
-- **Pendiente:** infraestructuras de comunicaciones e identidad corporativa.
+- **Pendiente:** identidad corporativa.
 - A diferencia de las otras dos pistas, **todo está en español**, también las preguntas. El glosario añade el
   término en catalán (`cat.`) cuando está confirmado en TERMCAT o en la Viquipèdia, y se puede buscar por él.
 - Lo que ya enseña Security+ (seguridad wifi, 802.1X, VPN) no se repite: las lecciones lo enlazan.
