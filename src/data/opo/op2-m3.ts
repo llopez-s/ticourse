@@ -16,7 +16,7 @@ export const OP2_M3: Module = {
     'Describir el modelo de acceso remoto de NIST SP 800-77r1 y los cuatro tipos de acceso remoto de SP 800-46r2, y comparar una VPN de cliente con IPsec e IKEv2 (con EAP), una basada en TLS o DTLS 1.3 (RFC 9147) y WireGuard, que no es un estándar de la IETF',
     'Decidir entre túnel completo y túnel dividido sabiendo qué dice cada fuente: SP 800-77r1 lo desaconseja con fuerza, SP 800-46r2 pide plantearse desactivarlo en redes no fiables y SP 800-207 empuja en sentido contrario',
     'Relacionar la autenticación del acceso remoto con la medida op.acc.6 del ENS (refuerzos R8 y R9 desde el nivel BAJO, R5 Registro desde MEDIO) y explicar por qué un segundo factor habría cambiado el incidente del registro de entrada del Consorcio',
-    'Explicar los principios de confianza cero de NIST SP 800-207, sus componentes (PE, PA, PEP) y sus modelos de despliegue, y distinguir ZTNA, que la SP 800-207 no usa, según la definición de Mplify y la de Gartner',
+    'Explicar los principios de confianza cero de NIST SP 800-207, sus componentes (motor de políticas, administrador de políticas y PEP) y sus modelos de despliegue, y distinguir ZTNA, que la SP 800-207 no usa, según la definición de Mplify y la de Gartner',
     'Situar el escritorio remoto directo e indirecto, la pasarela de Escritorio remoto de Microsoft (valores del fabricante) y el bastión como idea de diseño, y qué registros hacen falta para reconstruir una sesión remota',
   ],
   blocks: [
@@ -29,10 +29,10 @@ export const OP2_M3: Module = {
       title: 'Antes de seguir',
       items: [
         { label: 'IPsec, ESP e IKEv2 entre sedes (lección op2m2)', href: '/learn/op2m2' },
-        { label: 'Security+: VPN, TLS e IPsec, SD-WAN y SASE (sp3m5)', href: '/learn/sp3m5' },
-        { label: 'Security+: IAM, federación, MFA y PAM (sp4m8)', href: '/learn/sp4m8' },
+        { label: 'Security+: comunicación segura con VPN, TLS e IPsec (sp3m5)', href: '/learn/sp3m5' },
+        { label: 'Security+: identidades, federación, control de acceso y MFA (sp4m8)', href: '/learn/sp4m8' },
         { label: 'Security+: Zero Trust, plano de control y plano de datos (sp1m3)', href: '/learn/sp1m3' },
-        { label: '802.1X y el servidor RADIUS del Consorcio (lección op3m5)', href: '/learn/op3m5' },
+        { label: 'Servicios de conectividad: 802.1X y el servidor RADIUS (lección op3m5)', href: '/learn/op3m5' },
         { label: 'Las medidas del anexo II del ENS, op.acc.6 incluida (lección op6m3)', href: '/learn/op6m3' },
       ],
     },
@@ -58,7 +58,7 @@ export const OP2_M3: Module = {
     },
     {
       t: 'p',
-      md: 'Lo demás es lo que ya pasa entre sedes, pero más a menudo. Un portátil en casa o en una cafetería casi siempre está detrás de un NAT, así que IKE y ESP acaban en **UDP 4500** (RFC 7296 §2.23). Si la red bloquea todo UDP, la RFC 9329 define la **encapsulación TCP**, que las implementaciones deben soportar en **TCP 4500**; NIST la presenta como **último recurso** (SP 800-77r1 §2.4.2). Y como el portátil cambia de red (de la wifi a los datos móviles), existe **MOBIKE** (RFC 4555), que mantiene la asociación de seguridad (SA) de IKE cuando cambia la dirección del equipo: la SP 800-77r1 recomienda activarlo en los servidores de acceso remoto (§7.2.4.2), aunque reconoce que lo más seguro es desactivarlo si no hace falta, por el riesgo de redirección.',
+      md: 'Lo demás es lo que ya pasa entre sedes, pero más a menudo. Un portátil en casa o en una cafetería casi siempre está detrás de un NAT, así que IKE y ESP acaban en **UDP 4500** (RFC 7296 §2.23). Si la red bloquea todo UDP, la RFC 9329 define la **encapsulación TCP**, que las implementaciones deben soportar en **TCP 4500**; NIST la presenta como **último recurso** (SP 800-77r1 §2.4.2). Y como el portátil cambia de red (de la wifi a los datos móviles), existe **MOBIKE** (movilidad y multihoming de IKEv2, RFC 4555), que mantiene la asociación de seguridad de IKE cuando cambia la dirección del equipo: la SP 800-77r1 recomienda activarlo en los servidores de acceso remoto (§7.2.4.2), aunque reconoce que lo más seguro es desactivarlo si no hace falta, por el riesgo de redirección.',
     },
     {
       t: 'p',
@@ -71,7 +71,7 @@ export const OP2_M3: Module = {
     },
     {
       t: 'p',
-      md: '**WireGuard** es una tercera vía, con una advertencia: **no es una RFC** ni un estándar de la IETF; se describe con su documentación oficial (`wireguard.com` y su documento técnico). Encapsula paquetes IP sobre **UDP** y asocia a cada par una clave pública y una lista **AllowedIPs**: al enviar, esa lista funciona como tabla de rutas, y al recibir, como lista de control de acceso (*Cryptokey Routing*). Fija sus algoritmos (ChaCha20Poly1305, Curve25519, BLAKE2s) y carece a propósito de agilidad criptográfica: no se negocia nada. Su saludo se resuelve en un solo viaje de ida y vuelta (**1-RTT**, *round-trip time*) con **4 tipos de mensaje**, y renueva claves cada pocos minutos: en el documento técnico (§6.1), **Rekey-After-Time** es **120 s** y **Reject-After-Time** **180 s**. El puerto `51820` y la MTU `1420` que verás en muchos tutoriales salen de **ejemplos** de la documentación, no de un valor por defecto normativo.',
+      md: '**WireGuard** es una tercera vía, con una advertencia: **no es una RFC** ni un estándar de la IETF; se describe con su documentación oficial (`wireguard.com` y su documento técnico). Encapsula paquetes IP sobre **UDP** y asocia a cada par una clave pública y una lista **AllowedIPs**: al enviar, esa lista funciona como tabla de rutas, y al recibir, como lista de control de acceso (*Cryptokey Routing*). Fija sus algoritmos (ChaCha20Poly1305, Curve25519, BLAKE2s) y carece a propósito de agilidad criptográfica: no se negocia nada. Su saludo se resuelve en un solo viaje de **ida y vuelta** con **4 tipos de mensaje**, y renueva claves cada pocos minutos: en el documento técnico (§6.1), **Rekey-After-Time** es **120 s** y **Reject-After-Time** **180 s**. El puerto `51820` y la MTU `1420` que verás en muchos tutoriales salen de **ejemplos** de la documentación, no de un valor por defecto normativo.',
     },
     {
       t: 'table',
@@ -102,7 +102,7 @@ export const OP2_M3: Module = {
     { t: 'h', text: 'Túnel completo o túnel dividido' },
     {
       t: 'p',
-      md: 'Con el túnel levantado, queda decidir **qué tráfico va por él**. En el **túnel completo** (*full tunnel*) todo sale por la VPN y cruza el cortafuegos de la organización; en el **túnel dividido** (*split tunnelling*) solo el tráfico hacia la organización va por la VPN y el resto sale directamente a Internet desde casa. La SP 800-77r1 §2.4.2 explica para qué sirve el primero: se usa cuando no se confía en que el equipo hable directamente con Internet. Y aquí está el matiz importante: las tres guías de NIST de esta lección **no dicen lo mismo**.',
+      md: 'Con el túnel levantado, queda decidir **qué tráfico va por él**. En el **túnel completo** (*full tunnel*) todo sale por la VPN y cruza el cortafuegos de la organización; en el **túnel dividido** (*split tunneling*) solo el tráfico hacia la organización va por la VPN y el resto sale directamente a Internet desde casa. La SP 800-77r1 §2.4.2 explica para qué sirve el primero: se usa cuando no se confía en que el equipo hable directamente con Internet. Y aquí está el matiz importante: las tres guías de NIST de esta lección **no dicen lo mismo**.',
     },
     {
       t: 'table',
@@ -159,7 +159,7 @@ export const OP2_M3: Module = {
     {
       t: 'check',
       q: {
-        q: 'Un sistema del Consorcio tiene sus dimensiones C, I, T y A en nivel BAJO, y parte del personal entrará desde casa. ¿Qué exige op.acc.6?',
+        q: 'Un sistema con sus dimensiones C, I, T y A en nivel BAJO dará acceso desde casa a parte del personal. ¿Qué exige op.acc.6?',
         choices: [
           'Solo contraseñas (R1), porque el nivel es BAJO',
           'R5 Registro y nada más, porque el acceso es remoto',
@@ -179,7 +179,7 @@ export const OP2_M3: Module = {
     { t: 'h', text: 'Confianza cero según NIST SP 800-207' },
     {
       t: 'p',
-      md: 'La **SP 800-207** «Zero Trust Architecture» (agosto de 2020) parte de una idea: la **zona de confianza implícita**, el área donde todo se considera fiable, debe ser lo más pequeña posible (§2). Estar dentro de la red no da confianza. Una lectura de esta lección, no una frase de la guía: una VPN que autentica en la puerta y luego deja al equipo dentro de la red se parece más a la zona de confianza amplia que a la mínima. La guía tampoco presenta la confianza cero como inmune: al hablar de amenazas (§5.2) explica que un atacante puede cortar el acceso a un PEP o a un PA, y añade que «This is also possible in legacy remote-access VPNs».',
+      md: 'La **SP 800-207** «Zero Trust Architecture» (agosto de 2020) parte de una idea: la **zona de confianza implícita**, el área donde todo se considera fiable, debe ser lo más pequeña posible (§2). Estar dentro de la red no da confianza. Una lectura de esta lección, no una frase de la guía: una VPN que autentica en la puerta y luego deja al equipo dentro de la red se parece más a la zona de confianza amplia que a la mínima. La guía tampoco presenta la confianza cero como inmune: al hablar de amenazas (§5.2) explica que un atacante puede cortar el acceso a un PEP o al administrador de políticas, y añade que «This is also possible in legacy remote-access VPNs».',
     },
     {
       t: 'table',
@@ -196,15 +196,15 @@ export const OP2_M3: Module = {
     },
     {
       t: 'p',
-      md: 'Los componentes (§3) separan **decidir** de **aplicar**. El **PDP** (*Policy Decision Point*) se compone del **PE** (*Policy Engine*), que concede, deniega o revoca el acceso y **registra** la decisión, y del **PA** (*Policy Administrator*), que la ejecuta: abre o cierra el camino y genera credenciales de sesión. El PA da órdenes al **PEP** (*Policy Enforcement Point*), que habilita, vigila y termina las conexiones, y que puede partirse en un agente en el equipo y una pasarela delante del recurso. El plano de **control** va separado del plano de **datos**. La guía describe cuatro modelos de despliegue (§3.2).',
+      md: 'Los componentes (§3) separan **decidir** de **aplicar**. El **PDP** (*Policy Decision Point*) se compone del **motor de políticas** (*Policy Engine*), que concede, deniega o revoca el acceso y **registra** la decisión, y del **administrador de políticas** (*Policy Administrator*), que la ejecuta: abre o cierra el camino y genera credenciales de sesión. El administrador de políticas da órdenes al **PEP** (*Policy Enforcement Point*), que habilita, vigila y termina las conexiones, y que puede partirse en un agente en el equipo y una pasarela delante del recurso. El plano de **control** va separado del plano de **datos**. La guía describe cuatro modelos de despliegue (§3.2).',
     },
     {
       t: 'table',
       headers: ['Modelo (SP 800-207 §3.2)', 'Cómo es', 'Cuándo encaja y qué pega tiene'],
       rows: [
-        ['**Agente y pasarela**', 'Agente en el equipo y pasarela delante de cada recurso', 'Con buena gestión de los equipos y sin BYOD (*bring your own device*, equipos personales)'],
+        ['**Agente y pasarela**', 'Agente en el equipo y pasarela delante de cada recurso', 'Con buena gestión de los equipos y sin equipos personales (*bring your own device*)'],
         ['**Enclave**', 'Una pasarela protege un conjunto de recursos, por ejemplo un CPD o aplicaciones heredadas', 'Pega: no protege cada recurso por separado'],
-        ['**Portal de recursos**', 'El PEP es un portal y el equipo no lleva agente', 'Más flexible para BYOD y terceros, pero se ve poco del equipo y el portal queda expuesto a denegación de servicio'],
+        ['**Portal de recursos**', 'El PEP es un portal y el equipo no lleva agente', 'Más flexible para equipos personales y terceros, pero se ve poco del equipo y el portal queda expuesto a denegación de servicio'],
         ['**Aislamiento de aplicaciones** (*sandboxing*)', 'Las aplicaciones se ejecutan aisladas en el equipo', '—'],
       ],
     },
@@ -219,14 +219,14 @@ export const OP2_M3: Module = {
       q: {
         q: 'En una arquitectura de confianza cero según la SP 800-207, ¿qué componente decide conceder, denegar o revocar un acceso y deja constancia de esa decisión?',
         choices: [
-          'El Policy Engine (PE), que forma parte del PDP junto con el Policy Administrator',
+          'El motor de políticas (Policy Engine), que forma parte del PDP junto con el administrador de políticas',
           'El PEP, que es quien abre y cierra las conexiones',
           'El agente instalado en el equipo del usuario',
           'La pasarela VPN, que sigue siendo el punto de decisión',
         ],
         answer: 0,
         explain:
-          'La SP 800-207 §3 asigna la decisión al Policy Engine, que la registra; el Policy Administrator la ejecuta dando órdenes al PEP. El PEP aplica la decisión (habilita, vigila y termina conexiones) pero no la toma, y el agente del equipo puede ser una parte del PEP. La VPN no es un componente de la SP 800-207.',
+          'La SP 800-207 §3 asigna la decisión al motor de políticas (Policy Engine), que la registra; el administrador de políticas la ejecuta dando órdenes al PEP. El PEP aplica la decisión (habilita, vigila y termina conexiones) pero no la toma, y el agente del equipo puede ser una parte del PEP. La VPN no es un componente de la SP 800-207.',
       },
     },
     { t: 'h', text: 'Escritorio remoto, pasarela y bastión' },
@@ -240,7 +240,7 @@ export const OP2_M3: Module = {
       rows: [
         ['Puerto por defecto de RDP (*Remote Desktop Protocol*) en el equipo', '**3389**', 'Microsoft Learn: valor del fabricante'],
         ['Puertos que debe aceptar la **pasarela de Escritorio remoto** (*RD Gateway*)', '**TCP 443** (HTTPS) y **UDP 3391**', 'Microsoft Learn: valor del fabricante'],
-        ['Cifrado del canal en la pasarela', 'SSL/TLS, con un certificado de confianza para los clientes (Microsoft recomienda uno público)', 'Microsoft Learn: valor del fabricante'],
+        ['Cifrado del canal en la pasarela', 'Cifrado TLS, con un certificado de confianza para los clientes (Microsoft recomienda uno público)', 'Microsoft Learn: valor del fabricante'],
       ],
     },
     {
@@ -269,7 +269,7 @@ export const OP2_M3: Module = {
     { t: 'h', text: 'Registrar el acceso remoto' },
     {
       t: 'p',
-      md: 'Todo lo que se pudo reconstruir del lunes del registro empieza por una línea de registro: la sesión de la VPN a las 01:58, con el usuario `adm-reg` y la dirección `198.51.100.77`, y después el flujo de 14,2 GB hacia esa misma dirección. Sin esa línea no habría ni hora ni origen. Las fuentes van en la misma dirección por caminos distintos: en op.acc.6, **R5 Registro** se añade desde el nivel MEDIO; la medida **op.exp.8** pide un registro de auditoría con usuario, fecha y hora, información afectada, tipo y resultado (y el RD no fija un plazo de retención); y en confianza cero el Policy Engine registra cada decisión y el séptimo principio pide recoger toda la información posible.',
+      md: 'Todo lo que se pudo reconstruir del lunes del registro empieza por una línea de registro: la sesión de la VPN a las 01:58, con el usuario `adm-reg` y la dirección `198.51.100.77`, y después el flujo de 14,2 GB hacia esa misma dirección. Sin esa línea no habría ni hora ni origen. Las fuentes van en la misma dirección por caminos distintos: en op.acc.6, **R5 Registro** se añade desde el nivel MEDIO; la medida **op.exp.8** pide un registro de auditoría con usuario, fecha y hora, información afectada, tipo y resultado (y el RD no fija un plazo de retención); y en confianza cero el motor de políticas registra cada decisión y el séptimo principio pide recoger toda la información posible.',
     },
     {
       t: 'list',
@@ -277,7 +277,7 @@ export const OP2_M3: Module = {
         'Quién se autenticó, con qué método y con qué resultado, también los intentos fallidos',
         'Desde qué dirección y a qué hora empezó y terminó cada sesión',
         'Qué recursos internos alcanzó la sesión, que es lo que permite relacionar la entrada con lo que pasó después',
-        'En confianza cero, cada decisión del Policy Engine: concedida, denegada o revocada',
+        'En confianza cero, cada decisión del motor de políticas: concedida, denegada o revocada',
       ],
     },
     {

@@ -26,7 +26,7 @@ export const OP2_M4: Module = {
   blocks: [
     {
       t: 'p',
-      md: 'Recuerda cómo une hoy el Consorcio de Arcedo sus sedes: una **VPN de capa 3 sobre MPLS** del operador, con un acceso en la sede central y otro en cada una de las tres oficinas comarcales, y, como respaldo, un **acceso a Internet barato** en cada oficina con un **túnel IPsec** hacia la sede que **solo se usa si cae el principal** (lo viste en la lección de opciones WAN y lo verás en detalle en la de conectividad entre centros). Es un diseño sensato, pero tiene dos pegas. La primera: la línea de respaldo pasa casi todo el tiempo **parada**, pagada y sin llevar tráfico. La segunda: la decisión es **todo o nada**; mientras el MPLS esté vivo, todo va por él, aunque esté congestionado y la línea de Internet esté libre. La **SD-WAN** (*Software-Defined WAN*, WAN definida por software) nace para eso: usar **a la vez** varios accesos de tipos distintos y decidir **por qué camino va cada aplicación** según una política y según cómo se están comportando los caminos en ese momento.',
+      md: 'Recuerda cómo une hoy el Consorcio de Arcedo sus sedes: una **VPN de capa 3 sobre MPLS** del operador, con un acceso en la sede central y otro en cada una de las tres oficinas comarcales, y, como respaldo, un **acceso a Internet barato** en cada oficina con un **túnel IPsec** hacia la sede que **solo se usa si cae el principal** (lo viste en la lección de opciones WAN, y verás el MPLS en la de conectividad entre centros y el túnel en la de IPsec). Es un diseño sensato, pero tiene dos pegas. La primera: la línea de respaldo pasa casi todo el tiempo **parada**, pagada y sin llevar tráfico. La segunda: la decisión es **todo o nada**; mientras el MPLS esté vivo, todo va por él, aunque esté congestionado y la línea de Internet esté libre. La **SD-WAN** (*Software-Defined WAN*, WAN definida por software) resuelve eso: usar **a la vez** varios accesos de tipos distintos y decidir **por qué camino va cada aplicación** según una política y según cómo se están comportando los caminos en ese momento.',
     },
     { t: 'h', text: 'Qué es una SD-WAN según MEF 70.2' },
     {
@@ -48,7 +48,7 @@ export const OP2_M4: Module = {
     { t: 'h', text: 'Superposición y subyacente' },
     {
       t: 'p',
-      md: 'La **red subyacente** (*underlay*) son los accesos de verdad: la VPN MPLS del operador, una fibra a Internet, una línea móvil. La **red superpuesta** (*overlay*) es la que dibujan los Edges **por encima**, con túneles entre ellos, y que ve la organización como «su» WAN. Los Edges deciden por qué subyacente mandan cada paquete; el operador de cada acceso solo ve tráfico entre dos Edges. La RFC 10090 insiste en no mezclar los dos niveles: el **BGP de control de la superposición** es uno, y el BGP que usen por dentro las redes subyacentes es otro. Y aquí hay un contraste útil: la RFC 4364, la de las VPN de capa 3 sobre MPLS, dice literalmente que esa VPN «is NOT an "overlay"» sobre la red del proveedor. La razón: cada CE es par de enrutamiento del PE del operador, **no** de los CE de las otras sedes, así que el cliente no gestiona una troncal virtual propia. En una SD-WAN pasa justo lo contrario: los Edges se hablan entre sí y la troncal virtual es de la organización. Lo curioso es que la RFC 10090 reutiliza piezas de la 4364 para segmentar (**VRF** y **Route Target**), como verás más abajo.',
+      md: 'La **red subyacente** (*underlay*) son los accesos de verdad: la VPN MPLS del operador, una fibra a Internet, una línea móvil. La **red superpuesta** (*overlay*) es la que dibujan los Edges **por encima**, con túneles entre ellos, y que ve la organización como «su» WAN. Los Edges deciden por qué subyacente mandan cada paquete; el operador de cada acceso solo ve tráfico entre dos Edges. La RFC 10090 insiste en no mezclar los dos niveles: el **BGP de control de la superposición** es uno, y el BGP que usen por dentro las redes subyacentes es otro. Y aquí hay un contraste útil: la RFC 4364, la de las VPN de capa 3 sobre MPLS, dice literalmente que esa VPN «is NOT an "overlay"» sobre la red del proveedor. La razón: cada CE es par de enrutamiento del PE del operador, **no** de los CE de las otras sedes, así que el cliente no gestiona una troncal virtual propia. En una SD-WAN pasa justo lo contrario: los Edges montan túneles (TVC) entre sí y forman una superposición propia, que gestiona el proveedor del servicio SD-WAN o la propia organización. Lo curioso es que la RFC 10090 reutiliza piezas de la 4364 para segmentar (**VRF** y **Route Target**), como verás más abajo.',
     },
     {
       t: 'check',
@@ -75,7 +75,7 @@ export const OP2_M4: Module = {
       headers: ['Pieza', 'Qué hace', 'Quién la define'],
       rows: [
         ['**Edge**', 'Clasifica el tráfico por aplicación, elige el camino y monta los túneles con los otros Edges', 'MEF 70.2 §3 (definición propia)'],
-        ['**Controlador**', 'Gestiona la superposición: reparte rutas y política a los Edges; puede incluir un *Route Reflector*', 'RFC 10090 §2 (MEF 70.2 solo lo nombra)'],
+        ['**Controlador**', 'Gestiona la superposición; puede incluir un *Route Reflector* de BGP', 'RFC 10090 §2 (MEF 70.2 solo lo nombra)'],
         ['**Orquestador**', 'Uso habitual: da de alta servicios y sedes de principio a fin', '⚠ sin definición en las fuentes leídas; MEF 70.2 solo lo nombra'],
       ],
     },
@@ -152,7 +152,7 @@ export const OP2_M4: Module = {
     { t: 'h', text: 'SASE y SSE: términos de analista y de fabricante' },
     {
       t: 'p',
-      md: 'Junto a SD-WAN aparecen dos siglas que conviene manejar con cuidado. **SASE** (*Secure Access Service Edge*) nació como concepto de una firma de analistas, Gartner, y Mplify lo ha llevado a una norma de servicio, **Mplify 117.1** (junio de 2025), que dice expresamente que amplía «the Gartner SASE concept». Para Mplify 117.1, SASE es un servicio que da **acceso seguro, funciones de seguridad y conectividad segura** entre usuarios, dispositivos o aplicaciones y los recursos, **independiente de dónde estén** y según las políticas del cliente. Describe funciones de seguridad «atómicas» y trata los paquetes habituales, como el **SWG** (*Secure Web Gateway*, pasarela web segura), el WAF o el cortafuegos, como combinaciones de ellas; define entre otras el **CASB** (*Cloud Access Security Broker*, intermediario de seguridad para el acceso a la nube) y el **RBI** (*Remote Browser Isolation*, aislamiento remoto del navegador), y dedica un apartado a cuando el servicio SASE usa SD-WAN. Con **ZTNA** (*Zero Trust Network Access*) hay dos definiciones que no coinciden: la de Gartner, que Mplify cita, lo describe como productos que crean un perímetro lógico por identidad y contexto alrededor de un usuario y unas aplicaciones internas, y Mplify advierte de que con ella ZTNA ha pasado a ser sinónimo de **sustituto de la VPN de acceso remoto**; Mplify lo amplía a todo acceso, en cualquier lugar, también dentro de la red. La NIST SP 800-207, la referencia de confianza cero, ni siquiera usa la palabra. **SSE** (*Security Service Edge*) circula como término de analistas y fabricantes, pero **ninguna de las fuentes de esta lección lo define**: úsalo sabiendo que es una etiqueta comercial, no una norma.',
+      md: 'Junto a SD-WAN aparecen dos siglas que conviene manejar con cuidado. **SASE** (*Secure Access Service Edge*) es un concepto que Mplify atribuye a una firma de analistas, Gartner: la norma de servicio **Mplify 117.1** (junio de 2025, revisión de MEF 117) dice expresamente que amplía «the Gartner SASE concept». Para Mplify 117.1, SASE es un servicio que da **acceso seguro, funciones de seguridad y conectividad segura** entre usuarios, dispositivos o aplicaciones y los recursos, **independiente de dónde estén** y según las políticas del cliente. Describe funciones de seguridad «atómicas» y trata los paquetes habituales, como el **SWG** (*Secure Web Gateway*, pasarela web segura), el WAF o el cortafuegos, como combinaciones de ellas; define entre otras el **CASB** (*Cloud Access Security Broker*, intermediario de seguridad para el acceso a la nube) y el **RBI** (*Remote Browser Isolation*, aislamiento remoto del navegador), y dedica un apartado a cuando el servicio SASE usa SD-WAN. Con **ZTNA** (*Zero Trust Network Access*) hay dos definiciones que no coinciden: la de Gartner, que Mplify cita, lo describe como productos que crean un perímetro lógico por identidad y contexto alrededor de un usuario y unas aplicaciones internas, y Mplify advierte de que con ella ZTNA ha pasado a ser sinónimo de **sustituto de la VPN de acceso remoto**; Mplify lo amplía a todo acceso, en cualquier lugar, también dentro de la red. La NIST SP 800-207, la referencia de confianza cero, ni siquiera usa la palabra. **SSE** (*Security Service Edge*) circula como término de analistas y fabricantes, pero **ninguna de las fuentes de esta lección lo define** (Mplify solo lo usa como nombre de una certificación): no lo trates como término normativo.',
     },
     {
       t: 'callout',
@@ -191,17 +191,17 @@ export const OP2_M4: Module = {
       t: 'links',
       title: 'Lo que se explica en otras lecciones',
       items: [
-        { label: 'Opciones WAN y la etiqueta MPLS: líneas dedicadas, VPN MPLS y respaldo por Internet (lección op1m5)', href: '/learn/op1m5' },
-        { label: 'IPsec: túneles, IKEv2, ESP y NAT-T (lección op2m2)', href: '/learn/op2m2' },
+        { label: 'Arquitecturas WAN y WLAN: líneas dedicadas, VPN MPLS y respaldo por Internet (lección op1m5)', href: '/learn/op1m5' },
+        { label: 'VPN IPsec: arquitectura, IKEv2 y túneles (lección op2m2)', href: '/learn/op2m2' },
         { label: 'Conectividad entre centros: la VPN de capa 3 sobre MPLS en detalle, VRF, RD y RT (lección op2m5)', href: '/learn/op2m5' },
-        { label: 'Security+: arquitecturas WAN y WLAN, con una visión general de SD-WAN y SASE (lección sp3m5)', href: '/learn/sp3m5' },
+        { label: 'Security+: firewalls, port security y comunicación segura (VPN, TLS/IPsec, SD-WAN y SASE) (lección sp3m5)', href: '/learn/sp3m5' },
       ],
     },
     {
       t: 'callout',
       kind: 'exam',
       title: 'Lo que más se confunde',
-      md: '**MEF es hoy Mplify:** MEF 70.2 (oct. 2023) para SD-WAN; Mplify 117.1 (jun. 2025) para SASE. **Overlay frente a underlay:** la SD-WAN es superpuesta sobre uno o varios **UCS** (Public = Internet; Private = lo demás); la VPN MPLS de la RFC 4364 **no** es un overlay, según la propia RFC. **Quién define qué:** Edge, MEF 70.2; **controlador** y **ZTP**, RFC 10090 (informativa, nov. 2026); **orquestador**, nadie en las fuentes leídas (MEF 70.2 solo lo nombra). **Política:** criterios obligatorios `ENCRYPTION`, `INTERNET-BREAKOUT`, `PUBLIC-PRIVATE`. **Métricas de MEF 70.2:** retardo medio, variación del retardo (*jitter*) y pérdida, todas en un sentido. **Umbrales:** de cada organización y fabricante, nunca de la norma. **Cifrada homogénea:** todo en IPsec, también sobre MPLS; para llevar el segmento dentro de ESP hace falta GRE o VXLAN; segmentación con VRF y Route Target. **SASE:** concepto de Gartner que Mplify 117.1 amplía; **ZTNA**, dos definiciones (Gartner, sustituto de la VPN; Mplify, todo acceso); **SSE**, sin definición en las fuentes. **El Consorcio no tiene SD-WAN:** MPLS de capa 3 más respaldo IPsec por Internet en cada oficina.',
+      md: '**MEF es hoy Mplify:** MEF 70.2 (oct. 2023) para SD-WAN; Mplify 117.1 (jun. 2025) para SASE. **Overlay frente a underlay:** la SD-WAN es superpuesta sobre uno o varios **UCS** (Public = Internet; Private = lo demás); la VPN MPLS de la RFC 4364 **no** es un overlay, según la propia RFC. **Quién define qué:** Edge, MEF 70.2; **controlador** y **ZTP**, RFC 10090 (informativa, nov. 2026); **orquestador**, nadie en las fuentes leídas (MEF 70.2 solo lo nombra). **Política:** criterios obligatorios `ENCRYPTION`, `INTERNET-BREAKOUT`, `PUBLIC-PRIVATE`. **Métricas de MEF 70.2:** retardo medio, variación del retardo (*jitter*) y pérdida, todas en un sentido. **Umbrales:** de cada organización y fabricante, nunca de la norma. **Cifrada homogénea:** todo en IPsec, también sobre MPLS; para llevar el segmento dentro de ESP hace falta GRE o VXLAN; segmentación con VRF y Route Target. **SASE:** según Mplify 117.1, concepto de Gartner que esa norma amplía; **ZTNA**, dos definiciones (Gartner, sustituto de la VPN; Mplify, todo acceso); **SSE**, sin definición en las fuentes. **El Consorcio no tiene SD-WAN:** MPLS de capa 3 más respaldo IPsec por Internet en cada oficina.',
     },
   ],
   quiz: [
@@ -245,7 +245,7 @@ export const OP2_M4: Module = {
       ],
       answer: 2,
       explain:
-        'La RFC 4364 lo explica en su introducción: el CE intercambia rutas con el PE, no con los CE remotos, y el cliente no tiene que gestionar una troncal virtual. En una SD-WAN, en cambio, los Edges montan túneles entre sí y la superposición es de la organización. La VPN MPLS sí usa etiquetas, no cifra por sí misma y une muchas sedes.',
+        'La RFC 4364 lo explica en su introducción: el CE intercambia rutas con el PE, no con los CE remotos, y el cliente no tiene que gestionar una troncal virtual. En una SD-WAN, en cambio, los Edges montan túneles entre sí y forman una superposición propia, gestionada por el proveedor del servicio o por la organización. La VPN MPLS sí usa etiquetas, no cifra por sí misma y une muchas sedes.',
     },
     {
       id: 'op2m4q4',
@@ -311,7 +311,7 @@ export const OP2_M4: Module = {
         'Los tres están definidos por la NIST SP 800-207',
         'SSE es la norma de Mplify que sustituye a MEF 70.2',
         'ZTNA tiene una única definición, la de Mplify, idéntica a la de Gartner',
-        'SASE nació como concepto de Gartner y Mplify 117.1 lo amplía en una norma de servicio; ZTNA tiene dos definiciones distintas y SSE no está definido en las fuentes leídas',
+        'Según Mplify 117.1, SASE es un concepto de Gartner que esa norma amplía; ZTNA tiene dos definiciones distintas y SSE no está definido en las fuentes leídas',
       ],
       answer: 3,
       explain:

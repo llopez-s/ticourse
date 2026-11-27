@@ -1,8 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { OP2_CLASSIFY_DATA, OP2_LABS, OP2_ORDER_DATA } from './labs-op2';
+import { CLASSIFY_DATA, ORDER_DATA } from '../labs';
+import { TRACKS } from '../tracks';
+import { OP2_CLASSIFY_DATA as OWN_CLASSIFY, OP2_ORDER_DATA as OWN_ORDER } from './labs-op2';
 
-// Se lee directamente de ./labs-op2; cuando el controlador lo cablee, puede pasar por TRACKS.opo.labs
-// y los mapas globales, como op4-labs.test.ts.
+// Los labs se leen ya cableados, como en op4-labs.test.ts: pista opo y mapas globales.
+const OP2_LABS = TRACKS.opo.labs.filter((l) => l.sectionId === 'op2');
+const OP2_CLASSIFY_DATA = CLASSIFY_DATA;
+const OP2_ORDER_DATA = ORDER_DATA;
 
 describe('pista Redes y ENS · laboratorios del bloque 2', () => {
   it('block 2 labs exist and are well formed', () => {
@@ -14,8 +18,8 @@ describe('pista Redes y ENS · laboratorios del bloque 2', () => {
       expect(l.xp, l.id).toBeGreaterThan(0);
     }
     expect(OP2_LABS.find((l) => l.id === 'opl2a')?.kind).toBe('order');
-    expect(Object.keys(OP2_ORDER_DATA)).toEqual(OP2_LABS.filter((l) => l.kind === 'order').map((l) => l.id));
-    expect(Object.keys(OP2_CLASSIFY_DATA)).toEqual(OP2_LABS.filter((l) => l.kind === 'classify').map((l) => l.id));
+    expect(Object.keys(OWN_ORDER)).toEqual(OP2_LABS.filter((l) => l.kind === 'order').map((l) => l.id));
+    expect(Object.keys(OWN_CLASSIFY)).toEqual(OP2_LABS.filter((l) => l.kind === 'classify').map((l) => l.id));
 
     for (const id of ['opl2b', 'opl2c']) {
       expect(OP2_LABS.find((l) => l.id === id)?.kind, id).toBe('classify');

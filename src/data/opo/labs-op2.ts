@@ -40,7 +40,7 @@ export const OP2_LABS: LabMeta[] = [
     xp: 100,
     kind: 'classify',
     brief:
-      'Doce situaciones de acceso remoto. Decide si piden túnel completo (todo el tráfico por la VPN), túnel dividido (solo el de la organización), acceso de confianza cero por aplicación (ZTNA) o escritorio remoto a través de una pasarela. Ojo con el túnel dividido: NIST SP 800-77r1 lo desaconseja con fuerza y SP 800-46r2 pide plantearse desactivarlo en redes no fiables, mientras que SP 800-207 quiere que el equipo remoto llegue a la nube sin volver por la VPN; ninguna respuesta vale sin contexto. El doble factor no decide: el ENS lo pide en todas las categorías (op.acc.6 R8 y R9). Necesitas ≥80 %.',
+      'Doce situaciones de acceso remoto. Decide si piden túnel completo (todo el tráfico por la VPN), túnel dividido (solo el de la organización), acceso de confianza cero por aplicación (ZTNA) o escritorio remoto a través de una pasarela. Ojo con el túnel dividido: NIST SP 800-77r1 lo desaconseja con fuerza y SP 800-46r2 pide plantearse desactivarlo en redes no fiables, mientras que SP 800-207 quiere que el equipo remoto llegue a la nube sin volver por la VPN; ninguna respuesta vale sin contexto. El doble factor no decide: el ENS lo pide en todos los niveles (op.acc.6 R8 y R9, desde el nivel BAJO de las dimensiones C, I, T y A). Necesitas ≥80 %.',
   },
 ];
 
@@ -66,7 +66,7 @@ export const OP2_ORDER_DATA: Record<string, OrderData> = {
       {
         text: 'Los hashes no coinciden: la oficina sabe que está detrás de un NAT',
         detail:
-          'La oficina recalcula el hash de destino con su propia dirección y no coincide con el NAT_DETECTION_DESTINATION_IP de la sede, que se calculó con 198.51.100.31: el receptor (la oficina) está detrás de un NAT y SHOULD enviar keepalives (RFC 7296 §2.23). A la vez, cada lado calcula SKEYSEED y de ahí las claves SK_e, SK_a y SK_d que protegerán lo que sigue (§1.2).',
+          'La oficina recalcula el hash de destino con su propia dirección y no coincide con el NAT_DETECTION_DESTINATION_IP de la sede, que se calculó con 198.51.100.31: el receptor (la oficina) está detrás de un NAT y SHOULD enviar keepalives (RFC 7296 §2.23). A la vez, cada lado calcula la semilla de claves SKEYSEED y de ahí las claves SK_e, SK_a y SK_d que protegerán lo que sigue (§1.2).',
       },
       {
         text: 'La oficina manda la petición IKE_AUTH desde UDP 4500, con cuatro octetos a cero delante',
@@ -149,7 +149,7 @@ export const OP2_CLASSIFY_DATA: Record<string, ClassifyData> = {
       {
         text: 'Una aplicación heredada exige que servidores de dos sedes compartan VLAN y subred, y el operador debe aprender las direcciones MAC por su plano de control',
         answer: 'l2vpn',
-        why: 'Compartir subred pide capa 2. Que el aprendizaje de MAC entre PE vaya por el plano de control (MP-BGP) y no por el de datos es lo que distingue a EVPN de VPLS (RFC 7432 §4). Ejemplo de otra red: el Consorcio no tiene este servicio.',
+        why: 'Compartir subred pide capa 2. Que el aprendizaje de MAC entre PE vaya por el plano de control (BGP multiprotocolo) y no por el de datos es lo que distingue a EVPN de VPLS (RFC 7432 §4). Ejemplo de otra red: el Consorcio no tiene este servicio.',
       },
       {
         text: 'Cada sede se conecta a dos equipos del operador a la vez, los dos reenviando su tráfico Ethernet, y la red del operador lo reparte como una sola LAN',
@@ -183,7 +183,7 @@ export const OP2_CLASSIFY_DATA: Record<string, ClassifyData> = {
     ],
     items: [
       {
-        text: 'Los portátiles del personal se conectan a menudo desde wifi públicas de hoteles y estaciones',
+        text: 'Los portátiles del personal, que necesitan alcanzar la red interna por la VPN de cliente, se conectan a menudo desde wifi públicas de hoteles y estaciones',
         answer: 'full',
         why: 'En redes no fiables, como las wifi públicas, NIST SP 800-46r2 §3.3.3 dice que las organizaciones «should consider disabling» el túnel dividido. Con todo por la VPN, el tráfico pasa por los controles de la organización. El doble factor lo pide igualmente op.acc.6 R8.',
       },
@@ -193,7 +193,7 @@ export const OP2_CLASSIFY_DATA: Record<string, ClassifyData> = {
         why: 'Es la alternativa al túnel dividido que describe NIST SP 800-77r1 §2.4.2: todo el tráfico por la VPN y por el cortafuegos de la organización, cuando no se confía en que el equipo hable directamente con Internet.',
       },
       {
-        text: 'Si un portátil estuviera comprometido, no debe poder hacer de puente entre Internet y la red interna',
+        text: 'Con la VPN de cliente que ya usa la organización, un portátil comprometido no debe poder hacer de puente entre Internet y la red interna',
         answer: 'full',
         why: 'El túnel dividido puede convertir el equipo en puente entre una red de confianza y otra que no lo es (SP 800-46r2 §3.3.3); prohibirlo limita el daño (SP 800-77r1 §7.2.1.2), que por eso lo «strongly discouraged». Aun así, wifi o datos móviles pueden saltárselo: conviene dejar activa solo la interfaz del túnel.',
       },
@@ -220,7 +220,7 @@ export const OP2_CLASSIFY_DATA: Record<string, ClassifyData> = {
       {
         text: 'El acceso a una aplicación debe cortarse en mitad de la sesión si el equipo deja de cumplir la política, por ejemplo al desactivar el antivirus',
         answer: 'ztna',
-        why: 'En SP 800-207 §3, el Policy Engine concede, deniega o revoca el acceso y el Policy Administrator ordena a los PEP cerrar el camino; la autenticación y la autorización se reevalúan de forma continua (§2.1). Una VPN de cliente decide al conectar, no aplicación por aplicación.',
+        why: 'En SP 800-207 §3, el Policy Engine concede, deniega o revoca el acceso y el Policy Administrator ordena a los PEP cerrar el camino; la autenticación y la autorización se reevalúan de forma continua (§2.1). En una VPN de cliente clásica la decisión suele tomarse al conectar (razonamiento, no texto de NIST).',
       },
       {
         text: 'Estar conectado en la sede no debe dar más confianza que estar en casa: se exige el mismo control por sesión en cualquier lugar',

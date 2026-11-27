@@ -31,7 +31,7 @@ export const OP2_M5: Module = {
     { t: 'h', text: 'Los tres papeles: CE, PE y P' },
     {
       t: 'p',
-      md: 'La **RFC 4364** (*BGP/MPLS IP Virtual Private Networks*, norma propuesta de febrero de 2006, vigente; deja obsoleta a la 2547 y la actualizan la 4577, la 4684 y la 5462) reparte los equipos en tres papeles (§1.2). Cada sede del cliente tiene uno o más **CE** (*Customer Edge*), el encaminador del cliente, unidos a uno o más **PE** (*Provider Edge*), el encaminador de borde del operador. Los encaminadores del operador que no tienen ningún CE conectado son los **P** (*Provider*). Lo que une el CE con el PE se llama **circuito de acceso** (*attachment circuit*) y puede ser casi cualquier cosa: PPP, Ethernet, una VLAN, un túnel GRE, L2TP o incluso IPsec. Un detalle que la RFC remarca: un conmutador de capa 2 entre el CE y el PE **no** es un CE. El CE pertenece a la red del cliente; los PE y los P, a la del operador.',
+      md: 'La **RFC 4364** (*BGP/MPLS IP Virtual Private Networks*, norma propuesta de febrero de 2006, vigente; deja obsoleta a la 2547 y la actualizan la 4577, la 4684 y la 5462) reparte los equipos en tres papeles (§1.2). Cada sede del cliente tiene uno o más **CE** (*Customer Edge*), el encaminador del cliente, unidos a uno o más **PE** (*Provider Edge*), el encaminador de borde del operador. Los encaminadores del operador que no tienen ningún CE conectado son los **P** (*Provider*). Lo que une el CE con el PE se llama **circuito de acceso** (*attachment circuit*) y puede ser casi cualquier cosa: un enlace punto a punto, Ethernet, una VLAN, un túnel GRE u otro túnel de capa 2, o incluso IPsec. Un detalle que la RFC remarca: un conmutador de capa 2 entre el CE y el PE **no** es un CE. El CE pertenece a la red del cliente; los PE y los P, a la del operador.',
     },
     {
       t: 'p',
@@ -57,7 +57,7 @@ export const OP2_M5: Module = {
     },
     {
       t: 'p',
-      md: 'Eso lo deciden los **Route Targets** (RT), un atributo de BGP del tipo comunidad extendida que identifica un conjunto de VRF (§4.3.1). Cada VRF tiene **Export Targets**, que se ponen a las rutas que salen de sus sedes, e **Import Targets**, que deciden qué rutas acepta; no tienen por qué coincidir. La regla es sencilla: una ruta entra en una VRF solo si **alguno de sus RT es Import Target de esa VRF**. Con RT se monta una malla completa (todas las VRF del cliente exportan e importan el mismo), pero también topologías de concentrador y radios o servicios compartidos entre clientes. Los PE se pasan estas rutas por BGP, que da nombre a la RFC; las de las sedes **no** se filtran al protocolo interior de la troncal (§7).',
+      md: 'Eso lo deciden los **Route Targets** (RT), un atributo de BGP del tipo comunidad extendida que identifica un conjunto de VRF (§4.3.1). Cada VRF tiene **Export Targets**, que se ponen a las rutas que salen de sus sedes, e **Import Targets**, que deciden qué rutas acepta; no tienen por qué coincidir. La regla es sencilla: una ruta entra en una VRF solo si **alguno de sus RT es Import Target de esa VRF**. Con RT se monta una malla completa (todas las VRF del cliente exportan e importan el mismo), pero también otras topologías, como la de concentrador y radios (*hub and spoke*, §4.3.5). Los PE se pasan estas rutas por BGP, que da nombre a la RFC; las de las sedes **no** se filtran al protocolo interior de la troncal (§7).',
     },
     {
       t: 'table',
@@ -123,7 +123,7 @@ Con penultimate hop popping, P quitaría la exterior y PE2 recibiría [72].`,
     { t: 'h', text: 'Cómo habla el CE con el PE' },
     {
       t: 'p',
-      md: 'Entre el CE y el PE hace falta que el PE aprenda las redes de la sede y que la sede aprenda las demás. La RFC 4364 §7 recoge cuatro opciones. El protocolo dinámico que se elija aquí se ejecuta **dentro de la VRF** del cliente, no en la troncal del operador. Cómo se comportan OSPF y BGP en general está en la lección `op1m4`.',
+      md: 'Entre el CE y el PE hace falta que el PE aprenda las redes de la sede y que la sede aprenda las demás. La RFC 4364 §7 recoge cuatro opciones. El protocolo dinámico que se elija aquí se ejecuta **por VPN en el PE** (con OSPF, una instancia por VPN), no en la troncal del operador. Cómo se comportan OSPF y BGP en general está en la lección `op1m4`.',
     },
     {
       t: 'table',
@@ -157,11 +157,11 @@ Con penultimate hop popping, P quitaría la exterior y PE2 recibiría [72].`,
     { t: 'h', text: 'Cuando se quiere capa 2 entre sitios: VPLS y EVPN' },
     {
       t: 'p',
-      md: 'La VPN de capa 3 une **redes IP**: cada sede tiene sus subredes y el operador encamina entre ellas. A veces una organización quiere otra cosa: que dos o más sitios compartan **la misma LAN**, por ejemplo para mover una máquina virtual de un centro de datos a otro sin cambiarle la dirección o para aplicaciones que necesitan estar en el mismo segmento. Para eso están las VPN de capa 2 multipunto.',
+      md: 'La VPN de capa 3 une **redes IP**: cada sede tiene sus subredes y el operador encamina entre ellas. A veces una organización quiere otra cosa: que dos o más sitios compartan **la misma LAN**, por ejemplo para mover una máquina virtual de un centro de datos a otro sin cambiarle la dirección o para aplicaciones que necesitan estar en el mismo segmento (estos ejemplos son razonamiento de diseño, no texto de la RFC). Para eso están las VPN de capa 2 multipunto.',
     },
     {
       t: 'p',
-      md: '**VPLS** (*Virtual Private LAN Service*, también llamado «Transparent LAN Service») es una VPN de capa 2 **multipunto** que se comporta como una LAN Ethernet, frente a las VPN de capa 2 punto a punto. Hay dos RFC, las dos normas propuestas de enero de 2007: la **RFC 4761** usa **BGP** para el autodescubrimiento de los PE y la señalización, y la **RFC 4762** usa **pseudocables** (*pseudowires*) señalizados con **LDP** y no se ata a ningún método de descubrimiento. La 4762 crea un dominio de difusión que **aprende direcciones MAC** como un conmutador. Para no formar bucles sin depender del protocolo de árbol de expansión en la red del operador, los PE se unen en **malla completa** de pseudocables y aplican la regla de ***split horizon***: un PE **no debe** (MUST NOT) reenviar lo que llega por un pseudocable a otro pseudocable de la misma malla (§4.4). Como la malla completa crece mucho, la §10 define una versión jerárquica, **H-VPLS**.',
+      md: '**VPLS** (*Virtual Private LAN Service*, también llamado «Transparent LAN Service») es una VPN de capa 2 **multipunto** que se comporta como una LAN Ethernet, frente a las VPN de capa 2 punto a punto. Hay dos RFC, las dos normas propuestas de enero de 2007: la **RFC 4761** usa **BGP** para el autodescubrimiento de los PE y la señalización, y la **RFC 4762** usa **pseudocables** (*pseudowires*) señalizados con **LDP** y no se ata a ningún método de descubrimiento. La 4762 crea un dominio de difusión que **aprende direcciones MAC** como un conmutador. Para no formar bucles sin depender del protocolo de árbol de expansión en la red del operador, los PE se unen en **malla completa** de pseudocables y aplican la regla de ***split horizon***: un PE **no debe** (MUST NOT) reenviar lo que llega por un pseudocable a otro pseudocable de la misma malla (§4.4). Como la malla completa crece mucho, la §10 define una versión jerárquica, el **VPLS jerárquico**.',
     },
     {
       t: 'p',
@@ -169,7 +169,7 @@ Con penultimate hop popping, P quitaría la exterior y PE2 recibiría [72].`,
     },
     {
       t: 'p',
-      md: 'Su punto fuerte es el doble acceso. Un **segmento Ethernet** es el conjunto de enlaces que unen una sede a uno o más PE (§3), y se identifica con un **ESI** (*Ethernet Segment Identifier*), un entero de **10 octetos**: el ESI 0 indica una sede con un solo acceso y el valor con todos los bits a uno (0xFF en cada octeto) es MAX-ESI, reservado (§5). Un segmento puede funcionar en modo **Single-Active**, en el que un solo PE reenvía por VLAN, o **All-Active**, en el que todos los PE reenvían el tráfico unicast conocido. EVPN anuncia cuatro tipos de ruta (§7): **1** Ethernet Auto-Discovery, **2** MAC/IP Advertisement, **3** Inclusive Multicast Ethernet Tag y **4** Ethernet Segment, en la familia **AFI 25** (*Address Family Identifier*, L2VPN) y **SAFI 70** (*Subsequent Address Family Identifier*, EVPN). Existen otras extensiones de EVPN, como las rutas de prefijos IP o EVPN sobre otros túneles; aquí no se tratan.',
+      md: 'Su punto fuerte es el doble acceso. Un **segmento Ethernet** es el conjunto de enlaces que unen una sede a uno o más PE (§3), y se identifica con un **ESI** (*Ethernet Segment Identifier*), un entero de **10 octetos**: el ESI 0 indica una sede con un solo acceso y el valor con todos los bits a uno (0xFF en cada octeto) es el ESI máximo, reservado (§5). Un segmento puede funcionar en modo **Single-Active**, en el que un solo PE reenvía por VLAN, o **All-Active**, en el que todos los PE reenvían el tráfico unicast conocido. EVPN anuncia cuatro tipos de ruta (§7): **1** Ethernet Auto-Discovery, **2** MAC/IP Advertisement, **3** Inclusive Multicast Ethernet Tag y **4** Ethernet Segment, en la **familia de direcciones 25** (VPN de capa 2) y la **subfamilia 70** (EVPN) de BGP multiprotocolo. Existen otras extensiones de EVPN, como las rutas de prefijos IP o EVPN sobre otros túneles; aquí no se tratan.',
     },
     {
       t: 'table',
@@ -177,14 +177,14 @@ Con penultimate hop popping, P quitaría la exterior y PE2 recibiría [72].`,
       rows: [
         ['**Qué une**', 'Redes IP; el operador encamina', 'Una LAN Ethernet multipunto', 'Una LAN Ethernet multipunto'],
         ['**Cómo aprende**', 'Rutas IP por BGP entre PE', 'MAC en el plano de datos, como un conmutador', 'MAC por el plano de control, con BGP (§4)'],
-        ['**Señalización**', 'BGP (rutas VPN-IPv4) y LDP para los túneles (§5)', 'BGP (4761) o pseudocables con LDP (4762)', 'BGP multiprotocolo; AFI 25 / SAFI 70'],
+        ['**Señalización**', 'BGP (rutas VPN-IPv4) y LDP para los túneles (§5)', 'BGP (4761) o pseudocables con LDP (4762)', 'BGP multiprotocolo; familia de direcciones 25 / subfamilia 70'],
         ['**Contra los bucles**', 'Encaminamiento IP', 'Malla completa + *split horizon* (4762 §4.4)', '*Split horizon* y reenviador designado (§8)'],
         ['**Doble acceso**', 'Un CE puede unirse a varios PE (§1.2)', 'Limitado (7432 §1)', 'Segmento Ethernet con ESI; Single-Active o All-Active'],
       ],
     },
     {
       t: 'p',
-      md: 'Extender la capa 2 tiene un precio que conviene tener claro. VPLS crea **un único dominio de difusión** entre los sitios (RFC 4762), y eso significa que lo que inunda la LAN de un sitio llega a los demás: la difusión, las tramas a destinos desconocidos y, si algo forma un bucle en una de las sedes, sus efectos. Con capa 3, en cambio, cada sitio es su propio dominio de difusión y una avería local se queda en casa (la difusión y el árbol de expansión están en la lección `op1m3`). Por eso la pregunta de diseño no es «¿se puede?», sino «¿de verdad hace falta la misma LAN?». Si basta con que las redes se vean, la capa 3 aísla mejor.',
+      md: 'Extender la capa 2 tiene un precio que conviene tener claro. VPLS crea **un único dominio de difusión** entre los sitios (RFC 4762). Lo que sigue es razonamiento de diseño, no texto de la RFC: eso significa que lo que inunda la LAN de un sitio llega a los demás: la difusión, las tramas a destinos desconocidos y, si algo forma un bucle en una de las sedes, sus efectos. Con capa 3, en cambio, cada sitio es su propio dominio de difusión y una avería local se queda en casa (la difusión y el árbol de expansión están en la lección `op1m3`). Por eso la pregunta de diseño no es «¿se puede?», sino «¿de verdad hace falta la misma LAN?». Si basta con que las redes se vean, la capa 3 aísla mejor.',
     },
     {
       t: 'check',
@@ -259,7 +259,7 @@ Dos operadores distintos: una avería del operador MPLS no se lleva el respaldo.
     { t: 'h', text: 'La Red SARA: la red de las administraciones' },
     {
       t: 'p',
-      md: 'Hasta aquí, cómo une una organización sus propias sedes. Las administraciones públicas españolas, además, necesitan hablar **entre sí**: consultar datos de otro organismo, intercambiar documentos o llegar a las instituciones europeas. Para eso existe la **Red SARA** (*Sistemas de Aplicaciones y Redes para las Administraciones*). Según su ficha en el Portal de Administración Electrónica (PAe), es un conjunto de infraestructuras de comunicaciones y servicios básicos que conecta las redes de las administraciones públicas españolas e instituciones europeas, pensado para «Cualquier Administración Pública», y de la que es responsable el Ministerio para la Transformación Digital y de la Función Pública.',
+      md: 'Hasta aquí, cómo une una organización sus propias sedes. Las administraciones públicas españolas, además, necesitan hablar **entre sí**: consultar datos de otro organismo, intercambiar documentos o llegar a las instituciones europeas. Para eso existe la **Red SARA** (*Sistemas de Aplicaciones y Redes para las Administraciones*). Según su ficha en el Portal de Administración Electrónica, es un conjunto de infraestructuras de comunicaciones y servicios básicos que conecta las redes de las administraciones públicas españolas e instituciones europeas, pensado para «Cualquier Administración Pública», y de la que es responsable el Ministerio para la Transformación Digital y de la Función Pública.',
     },
     {
       t: 'p',
@@ -271,7 +271,7 @@ Dos operadores distintos: una avería del operador MPLS no se lleva el respaldo.
     },
     {
       t: 'p',
-      md: 'El **ENI** (*Esquema Nacional de Interoperabilidad*) es el **Real Decreto 4/2010**, de 8 de enero, vigente. Su **artículo 13**, «Red de comunicaciones de las Administraciones públicas españolas», dice que las administraciones usarán **preferentemente** esa red para comunicarse entre sí, conectando a ella sus redes o sus nodos de interoperabilidad, para intercambiar información y servicios y para interconectarse con las redes de las **instituciones de la Unión Europea** y de otros Estados miembros. Y añade, literalmente: «La Red SARA prestará la citada Red de comunicaciones de las Administraciones públicas españolas». Para conectarse se aplican los requisitos que remite a la **disposición adicional primera**, que enumera las Normas Técnicas de Interoperabilidad; entre ellas, la de **requisitos de conexión** a esa red y la del **plan de direccionamiento**. El **artículo 14**, en la redacción que le dio el Real Decreto 203/2021, obliga a aplicar el Plan de direccionamiento e interconexión de redes en la Administración, para administrar bien las direcciones IP y no duplicarlas.',
+      md: 'El **ENI** (*Esquema Nacional de Interoperabilidad*) es el **Real Decreto 4/2010**, de 8 de enero, vigente. Su **artículo 13**, «Red de comunicaciones de las Administraciones públicas españolas», dice que las administraciones usarán **preferentemente** esa red para comunicarse entre sí, conectando a ella sus redes o sus nodos de interoperabilidad, para intercambiar información y servicios y para interconectarse con las redes de las **instituciones de la Unión Europea** y de otros Estados miembros. Y añade, literalmente: «La Red SARA prestará la citada Red de comunicaciones de las Administraciones públicas españolas». Para conectarse se aplican los requisitos de la **disposición adicional primera**, que enumera las Normas Técnicas de Interoperabilidad; entre ellas, la de **requisitos de conexión** a esa red y la del **plan de direccionamiento**, cuyo fin es asignar las direcciones IP de modo que la red se administre bien y no haya direcciones duplicadas. El **artículo 14**, en la redacción que le dio el Real Decreto 203/2021, obliga a aplicar el Plan de direccionamiento e interconexión de redes en la Administración.',
     },
     {
       t: 'p',
@@ -282,23 +282,23 @@ Dos operadores distintos: una avería del operador MPLS no se lleva el respaldo.
       items: [
         '**Punto de presencia** (§II.1): la sede que tiene conexión directa con la Red SARA, sin organización intermedia. Los hay de varios tipos: los Proveedores de Acceso, el CPD de SARA, la red sTESTA, centros externos de monitorización, prestadores de servicios de certificación y otros.',
         '**Proveedor de Acceso a la Red SARA** (**PAS**, §II.3): tiene un área de conexión en sus dependencias y da acceso a sus unidades y organismos dependientes; en el caso de las comunidades autónomas, también a las **administraciones locales de su territorio**. Son PAS los ministerios, las comunidades y ciudades autónomas y los órganos constitucionales. Todo órgano usuario final entra a través de un PAS y le pide a él la conexión (§II.4).',
-        '**Área de conexión** (§III.1): el **punto único de conexión** con las demás administraciones y con sTESTA. Tiene estructura de DMZ, entre un subsistema de seguridad **externo** y otro **interno**, y alberga los servicios básicos DNS, SMTP, NTP, proxy y proxy inverso. El subsistema externo levanta una VPN con las demás sedes, de modo que todo el tráfico que pasa por el operador va **cifrado en túneles**.',
+        '**Área de conexión** (§III.1): el **punto único de conexión** con las demás administraciones y con sTESTA. Tiene estructura de DMZ, entre un subsistema de seguridad **externo** y otro **interno**, y alberga los servicios básicos de DNS, correo, NTP, proxy y proxy inverso. El subsistema externo levanta una VPN con las demás sedes, de modo que todo el tráfico que pasa por el operador va **cifrado en túneles**.',
       ],
     },
     {
       t: 'callout',
       kind: 'example',
       title: 'El Consorcio de Arcedo y la Red SARA',
-      md: 'El canon **no dice** que el Consorcio esté conectado a la Red SARA, ni con qué equipos. Lo que sí se puede decir es lo que prevé la norma: las entidades locales no tienen PAS propio, quedan asignadas al **PAS de su comunidad autónoma** (NTI §II.3). Así que el Consorcio, como entidad local, llegaría a la Red SARA a través del punto de acceso de su comunidad autónoma, pidiendo a ella la conexión (§II.4), y no directamente ni a través de su operador MPLS. La ficha del PAe no lo explica: sale de la NTI. Y no hay que confundir las dos redes: la WAN MPLS une las sedes **del Consorcio**; la Red SARA une **administraciones distintas**.',
+      md: 'El canon **no dice** que el Consorcio esté conectado a la Red SARA, ni con qué equipos. Lo que sí se puede decir es lo que prevé la norma: las entidades locales no tienen PAS propio, quedan asignadas al **PAS de su comunidad autónoma** (NTI §II.3). Si el Consorcio se tratara como entidad local a estos efectos, llegaría a la Red SARA a través del PAS de su comunidad autónoma, pidiéndole a ella la conexión (§II.4), y no directamente ni a través de su operador MPLS; el canon no fija ni ese encaje ni la conexión. La ficha del Portal de Administración Electrónica no lo explica: sale de la NTI. Y no hay que confundir las dos redes: la WAN MPLS une las sedes **del Consorcio**; la Red SARA une **administraciones distintas**.',
     },
     {
       t: 'table',
       headers: ['Norma o fuente', 'Estado', 'Qué aporta', 'El matiz'],
       rows: [
         ['**Real Decreto 4/2010** (ENI), art. 13', 'Vigente', 'Uso preferente de la red de las administraciones; «La Red SARA prestará» esa red; conexión con las instituciones de la UE', 'Su apartado 1 sigue citando el art. 43 de la **Ley 11/2007**, derogada el 2-4-2021: redacción no actualizada'],
-        ['RD 4/2010, art. 14 y disposición adicional primera', 'Vigente (redacción del RD 203/2021; la DA 1.ª, apartado 2, tocada después por el RD 1125/2024)', 'Plan de direccionamiento; lista de NTI, entre ellas la de requisitos de conexión', '—'],
-        ['**NTI de requisitos de conexión** (Resolución de 19-7-2011)', 'Vigente, en vigor desde el 31-7-2011', 'Puntos de presencia, PAS, área de conexión; entidades locales a través del PAS de su comunidad autónoma', 'Para el acondicionamiento físico remite al ENS de entonces, el RD 3/2010, hoy sustituido por el **RD 311/2022**'],
-        ['Ficha «Red SARA» del PAe', 'Sin fecha (pie de 2025)', 'Qué es, para quién, malla completa, cifrado, 10 Gbps / 100 Mbps', 'Como base legal cita aún el art. 43 de la Ley 11/2007'],
+        ['Real Decreto 4/2010, art. 14 y disposición adicional primera', 'Vigente (redacción del Real Decreto 203/2021; la disposición adicional primera, apartado 2, tocada después por el Real Decreto 1125/2024)', 'Plan de direccionamiento; lista de NTI, entre ellas la de requisitos de conexión', '—'],
+        ['**NTI de requisitos de conexión** (Resolución de 19-7-2011)', 'Vigente, en vigor desde el 31-7-2011', 'Puntos de presencia, PAS, área de conexión; entidades locales a través del PAS de su comunidad autónoma', 'Para el acondicionamiento físico remite al ENS de entonces, el Real Decreto 3/2010, hoy sustituido por el **Real Decreto 311/2022**'],
+        ['Ficha «Red SARA» del Portal de Administración Electrónica', 'Sin fecha (pie de 2025)', 'Qué es, para quién, malla completa, cifrado, 10 Gbps / 100 Mbps', 'Como base legal cita aún el art. 43 de la Ley 11/2007'],
         ['Ley 40/2015', 'Vigente', 'Nada sobre la red: su texto consolidado no nombra la Red SARA', 'No buscar ahí la base legal'],
       ],
     },
@@ -308,7 +308,7 @@ Dos operadores distintos: una avería del operador MPLS no se lleva el respaldo.
     },
     {
       t: 'p',
-      md: 'Queda la parte europea. El anexo del ENI pone como ejemplo de infraestructura común **«la red transeuropea sTESTA»**, y la NTI cuenta sTESTA entre los puntos de presencia. La Comisión Europea, en cambio, describe **TESTA** (*Trans European Services for Telematics between Administrations*): una red de la Comisión para el intercambio seguro entre administraciones, que usa protocolos IP pero está **separada de Internet** y conecta instituciones y agencias de la UE y redes nacionales; habla de su nueva generación, **TESTA-ng**, y no menciona sTESTA. Ninguna de las fuentes leídas relaciona sTESTA con TESTA-ng, así que lo correcto es usar cada nombre donde lo usa su fuente.',
+      md: 'Queda la parte europea. El anexo del ENI pone como ejemplo de infraestructura común **«la red transeuropea sTESTA»**, y la NTI cuenta sTESTA entre los puntos de presencia. La Comisión Europea, en cambio, describe **TESTA** (*Trans European Services for Telematics between Administrations*): una red de la Comisión para el intercambio seguro entre administraciones, que usa protocolos IP pero está **separada de Internet** y conecta instituciones y agencias de la UE y redes nacionales; habla de su nueva generación (*TESTA new generation*) y no menciona sTESTA. Ninguna de las fuentes leídas relaciona sTESTA con esa nueva generación, así que lo correcto es usar cada nombre donde lo usa su fuente.',
     },
     {
       t: 'check',
@@ -318,18 +318,18 @@ Dos operadores distintos: una avería del operador MPLS no se lleva el respaldo.
           'Ninguna: la Ley 11/2007 sigue vigente y es la norma de referencia',
           'Citar la Ley 40/2015, que regula expresamente la Red SARA',
           'Citar el artículo 13 del Real Decreto 4/2010 (ENI), vigente, y la NTI de requisitos de conexión; la Ley 11/2007 está derogada aunque el artículo 13 aún la mencione',
-          'Citar solo la ficha del PAe, porque ninguna norma del BOE nombra la Red SARA',
+          'Citar solo la ficha del Portal de Administración Electrónica, porque ninguna norma del BOE nombra la Red SARA',
         ],
         answer: 2,
         explain:
-          'El artículo 13 del RD 4/2010 dice que la Red SARA prestará la red de comunicaciones de las administraciones y la NTI de 2011 fija cómo conectarse; los dos están vigentes. La Ley 11/2007 está derogada desde 2021, aunque el artículo 13 la siga citando. La Ley 40/2015 no nombra la Red SARA, y el propio artículo 13 sí lo hace, así que no es cierto que ninguna norma del BOE la mencione.',
+          'El artículo 13 del Real Decreto 4/2010 dice que la Red SARA prestará la red de comunicaciones de las administraciones y la NTI de 2011 fija cómo conectarse; los dos están vigentes. La Ley 11/2007 está derogada desde 2021, aunque el artículo 13 la siga citando. La Ley 40/2015 no nombra la Red SARA, y el propio artículo 13 sí lo hace, así que no es cierto que ninguna norma del BOE la mencione.',
       },
     },
     {
       t: 'callout',
       kind: 'exam',
       title: 'Lo que se confunde a menudo',
-      md: '**CE** del cliente, **PE** y **P** del operador; el **P no sabe nada** de las VPN (RFC 4364 §1.5). La VPN de la 4364 **no es una superposición** (§1.2); la SD-WAN sí. **RD**: 8 bytes (Type 2 + Value 6), forma la dirección **VPN-IPv4** de 12 bytes y **solo** hace únicos los prefijos. **Route Target**: comunidad extendida; **Import** y **Export Targets** deciden qué entra en cada VRF. Etiqueta **interior** = VPN, la asigna el PE de salida; **exterior** = túnel. PE-CE: estáticas, RIP, OSPF (PE como área 0) o **eBGP**. **VPLS**: 4761 con BGP, 4762 con LDP y *split horizon*; aprende MAC en el plano de datos. **EVPN** (7432): MAC por el plano de control, **ESI de 10 octetos**, Single-Active / All-Active, rutas de tipo **1 a 4**, **AFI 25 / SAFI 70**. **Red SARA**: art. 13 del **RD 4/2010** (ENI) y **NTI de 2011**; las entidades locales entran por el **PAS de su comunidad autónoma** (NTI §II.3); **10 Gbps** ministerios / **100 Mbps** comunidades autónomas, según el PAe. El BOE dice **sTESTA**; la Comisión, **TESTA** y **TESTA-ng**.',
+      md: '**CE** del cliente, **PE** y **P** del operador; el **P no sabe nada** de las VPN (RFC 4364 §1.5). La VPN de la 4364 **no es una superposición** (§1.2); la SD-WAN sí. **RD**: 8 bytes (Type 2 + Value 6), forma la dirección **VPN-IPv4** de 12 bytes y **solo** hace únicos los prefijos. **Route Target**: comunidad extendida; **Import** y **Export Targets** deciden qué entra en cada VRF. Etiqueta **interior** = VPN, la asigna el PE de salida; **exterior** = túnel. PE-CE: estáticas, RIP, OSPF (PE como área 0) o **eBGP**. **VPLS**: 4761 con BGP, 4762 con LDP y *split horizon*; aprende MAC en el plano de datos. **EVPN** (7432): MAC por el plano de control, **ESI de 10 octetos**, Single-Active / All-Active, rutas de tipo **1 a 4**, **familia de direcciones 25 / subfamilia 70**. **Red SARA**: art. 13 del **Real Decreto 4/2010** (ENI) y **NTI de 2011**; las entidades locales entran por el **PAS de su comunidad autónoma** (NTI §II.3); **10 Gbps** ministerios / **100 Mbps** comunidades autónomas, según el Portal de Administración Electrónica. El BOE dice **sTESTA**; la Comisión, **TESTA** y su nueva generación.',
     },
   ],
   quiz: [
@@ -387,17 +387,17 @@ Dos operadores distintos: una avería del operador MPLS no se lleva el respaldo.
         'Es una red privada de cada comunidad autónoma, que las administraciones locales pueden usar si quieren',
         'Presta la red de comunicaciones de las administraciones públicas españolas, que estas usarán preferentemente para comunicarse entre sí y con las instituciones de la Unión Europea',
         'Sustituye a Internet para todos los servicios que las administraciones ofrecen a la ciudadanía',
-        'Es la red transeuropea de la Comisión Europea, también llamada TESTA-ng',
+        'Es la red transeuropea TESTA de la Comisión Europea, con otro nombre',
       ],
       answer: 1,
       explain:
-        'El artículo 13 del RD 4/2010 establece el uso preferente de la red de comunicaciones de las administraciones públicas españolas, también para conectarse con las instituciones de la UE y otros Estados miembros, y dice que «La Red SARA prestará» esa red. No sustituye a Internet para la ciudadanía, y TESTA-ng es la red de la Comisión, que ninguna fuente leída identifica con la Red SARA.',
+        'El artículo 13 del Real Decreto 4/2010 establece el uso preferente de la red de comunicaciones de las administraciones públicas españolas, también para conectarse con las instituciones de la UE y otros Estados miembros, y dice que «La Red SARA prestará» esa red. No sustituye a Internet para la ciudadanía, y TESTA es la red de la Comisión, que ninguna fuente leída identifica con la Red SARA.',
     },
     {
       id: 'op2m5q5',
       domain: 'Infraestructuras de comunicaciones',
       prompt:
-        'Una entidad local quiere conectarse a la Red SARA. Según la NTI de requisitos de conexión de 2011, ¿cómo lo hace?',
+        'Un ayuntamiento, entidad local, quiere conectarse a la Red SARA. Según la NTI de requisitos de conexión de 2011, ¿cómo lo hace?',
       choices: [
         'Se convierte en Proveedor de Acceso a la Red SARA y monta su propia área de conexión',
         'Contrata la conexión directamente con el operador de su WAN, que la une al CPD de SARA',
