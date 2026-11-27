@@ -55,6 +55,25 @@ export const OP_SECTIONS: SectionMeta[] = [
     },
   },
   {
+    id: 'op2',
+    track: 'opo',
+    num: 2,
+    title: 'Infraestructuras de comunicaciones',
+    short: 'Infraestructuras',
+    subtitle:
+      'Redes corporativas (diseño jerárquico, campus y CPD), VPN IPsec e IKEv2, acceso remoto y confianza cero, SD-WAN y conectividad entre centros: VPN MPLS de capa 3 y de capa 2, y la Red SARA.',
+    domain: 'Infraestructuras de comunicaciones',
+    icon: '🛰️',
+    boss: {
+      codename: 'TÚNEL APAGADO',
+      adversary: 'EL RESPALDO QUE NADIE PROBÓ',
+      flavor:
+        'Una excavadora corta la fibra del operador y una oficina comarcal del Consorcio Provincial de Arcedo se queda sola: el túnel de respaldo por Internet tenía que levantarse en segundos y no lo hace. Mientras tanto, media plantilla teletrabaja por una VPN que nadie ha revisado desde que se montó. Toca demostrar que la red de la que todos dependen aguanta algo más que un día tranquilo.',
+      dossier:
+        'EL RESPALDO QUE NADIE PROBÓ, probado. El túnel de la oficina negocia a la primera, el tráfico vuelve por el MPLS en cuanto se repara la fibra y cada persona que teletrabaja entra con su segundo factor. En la libreta del técnico del operador queda una nota a lápiz: «el cliente pidió una segunda fibra por otro trazado; presupuesto pendiente».',
+    },
+  },
+  {
     id: 'op3',
     track: 'opo',
     num: 3,
