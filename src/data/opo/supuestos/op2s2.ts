@@ -120,7 +120,7 @@ const op2s2: Supuesto = {
             ['Terminación de los túneles en la sede', 'Encaminador central, `203.0.113.10`', 'IKEv2 por UDP 500 y 4500. En la sede, la interfaz del túnel de esta oficina se llama `tun-32`'],
             ['Tipo de VPN', 'Por ruta: qué entra en el túnel lo decide la tabla de rutas', 'Selectores de tráfico `0.0.0.0/0` ↔ `0.0.0.0/0`; autenticación con clave precompartida'],
             ['Cuándo se usa el respaldo', 'Solo si falta la ruta aprendida por el MPLS', 'Rutas estáticas de respaldo por la interfaz del túnel, en los dos extremos. El túnel arranca cuando cae la sesión eBGP con el operador y, una vez arriba, se queda arriba hasta que alguien lo baja'],
-            ['Servicios de la oficina en la sede', 'Aplicación de expedientes en `10.20.72.10:443` (CPD), correo, telefonía IP', 'Entre el encaminador central y el CPD está el cortafuegos de la sede'],
+            ['Servicios de la oficina en la sede', 'Aplicación de expedientes en `10.20.72.10:443` (CPD), correo, telefonía IP', 'Entre el encaminador central y el CPD está el cortafuegos de la sede, que filtra sin ser un salto de encaminamiento: el encaminador sigue teniendo una interfaz en la red del CPD (cómo se monta así depende del fabricante del cortafuegos)'],
           ],
         },
         {
@@ -505,7 +505,7 @@ Encaminador de la oficina · tabla de rutas, miércoles 08:56:30
           headers: ['Sentido', 'Paquetes por el túnel', 'Notas'],
           rows: [
             ['Oficina → sede (sale por el túnel)', '2 913 448', 'ESP: incluye la voz de los teléfonos de la oficina'],
-            ['Sede → oficina (entra por el túnel)', '1 206', 'Ningún paquete ESP: solo mensajes de IKE de la propia sesión'],
+            ['Sede → oficina (entra por el túnel)', '0', 'Ningún paquete; por inet0 solo pasan los mensajes de IKE de la propia sesión'],
           ],
         },
       ],
@@ -519,7 +519,7 @@ Encaminador de la oficina · tabla de rutas, miércoles 08:56:30
       context:
         'Martes, 09:40. Tienes el aviso del operador, la llamada de la oficina, la ficha de diseño y su esquema, el registro del encaminador de la oficina, la configuración de su túnel, su registro de cambios y la nota del proveedor que le da el acceso de respaldo. Averigua por qué el túnel no levanta y qué hará falta para que lo haga.',
       carry:
-        'Desde el lunes de la semana pasada, el encaminador de la oficina está detrás del NAT del equipo nuevo del proveedor, y su túnel seguía configurado con la dirección pública como dirección local: ni siquiera empezaba a negociar. A las 10:05 la guardia puso como dirección local la de `inet0`, y a las 10:20 el proveedor abrió la salida UDP 4500, que su filtro cerraba y que la traversía de NAT necesita.',
+        'Desde el lunes de la semana pasada, el encaminador de la oficina está detrás del NAT del equipo nuevo del proveedor, y su túnel seguía configurado con la dirección pública como dirección local: ni siquiera empezaba a negociar. A las 10:05 la guardia puso como dirección local la de `inet0`, y a las 10:20 el proveedor abrió la salida UDP 4500, que su filtro cerraba y que el paso de NAT necesita.',
       tasks: [
         {
           id: 'f1t1',
@@ -554,7 +554,7 @@ Encaminador de la oficina · tabla de rutas, miércoles 08:56:30
           answer: 'c',
           points: 4,
           explain:
-            'El encaminador solo puede enviar IKE desde una dirección que tenga, y ahora tiene `192.168.1.2`. El par remoto no cambia: la sede sigue en `203.0.113.10`, y `192.168.1.1` es solo el siguiente salto, que ya está en la ruta. Poner `198.51.100.32` en `inet0` duplicaría una dirección que pertenece al equipo del proveedor. Y la sede no verá nunca `192.168.1.2`: el NAT presenta la oficina con `198.51.100.32` (op1m2), así que el par que espera la sede sigue siendo válido.',
+            'El encaminador solo puede enviar IKE desde una dirección que tenga, y ahora tiene `192.168.1.2`. La sede no verá nunca `192.168.1.2` como dirección de origen: el NAT presenta la oficina con `198.51.100.32` (op1m2); la identidad que la oficina declare en IKE_AUTH se configura aparte. El par remoto no cambia: la sede sigue en `203.0.113.10`, y `192.168.1.1` es solo el siguiente salto, que ya está en la ruta. Poner `198.51.100.32` en `inet0` duplicaría una dirección que pertenece al equipo del proveedor. Y la sede no verá nunca `192.168.1.2`: el NAT presenta la oficina con `198.51.100.32` (op1m2), así que el par que espera la sede sigue siendo válido.',
           refs: [L_IPSEC, L_NAT, RFC7296],
         },
         {
@@ -743,25 +743,25 @@ Encaminador de la oficina · tabla de rutas, miércoles 08:56:30
           id: 'f3t3',
           kind: 'numeric',
           topic: 'op2m2',
-          prompt: 'Calcula el MSS de TCP más grande que cabe por el túnel sin fragmentar, con estos datos: MTU del acceso de 1500 octetos (nota del proveedor); cabeceras IPv4 exterior e interior de 20 octetos cada una, sin opciones (supuesto, como en la lección); UDP de NAT-T, 8 octetos (RFC 3948); ESP en modo túnel con `ENCR_AES_GCM_16`, peor caso de 37 octetos (RFC 4106 §7); TCP sin opciones, 20 octetos (RFC 9293).',
+          prompt: 'Calcula el MSS de TCP que cabe siempre por el túnel sin fragmentar, contando para ESP su peor caso, con estos datos: MTU del acceso de 1500 octetos (nota del proveedor); cabeceras IPv4 exterior e interior de 20 octetos cada una, sin opciones (supuesto, como en la lección); UDP de NAT-T, 8 octetos (RFC 3948); ESP en modo túnel con `ENCR_AES_GCM_16`, peor caso de 37 octetos (RFC 4106 §7); TCP sin opciones, 20 octetos (RFC 9293).',
           answer: 1395,
           unit: 'octetos',
           points: 4,
           hint: { text: 'Primero el paquete IP interior más grande (MTU menos lo que añade el túnel) y luego quítale las cabeceras IPv4 y TCP interiores.', cost: 1 },
           explain:
-            'Paquete interior: 1500 − 20 (IPv4 exterior) − 8 (UDP de NAT-T) − 37 (ESP) = 1435. MSS: 1435 − 20 (IPv4 interior) − 20 (TCP) = **1395**. Tienta responder 1403, que es el caso sin NAT y olvida los 8 octetos de UDP: aquí hay NAT, así que el UDP está. El 1435 es el paquete interior, no el MSS, y el 1460 es lo que cabe en 1500 sin túnel. Con el relleno mínimo (ESP de 34) cabrían 3 octetos más, pero se diseña con el peor caso para que quepa siempre.',
+            'Paquete interior: 1500 − 20 (IPv4 exterior) − 8 (UDP de NAT-T) − 37 (ESP) = 1435. MSS: 1435 − 20 (IPv4 interior) − 20 (TCP) = **1395**. Tienta responder 1403, que es el caso sin NAT y olvida los 8 octetos de UDP: aquí hay NAT, así que el UDP está. El 1435 es el paquete interior, no el MSS, y el 1460 es lo que cabe en 1500 sin túnel. La cuenta exacta depende del relleno: con estas longitudes cabría un MSS de 1398 (lo enseña op2m2), pero se fija el valor con margen, el del peor caso.',
           refs: [L_IPSEC, RFC4106, RFC3948, RFC9293],
         },
         {
           id: 'f3t4',
           kind: 'numeric',
           topic: 'op2m2',
-          prompt: 'Con los mismos datos, el servidor envía un segmento lleno con el MSS que le anunció el puesto en la captura. ¿Cuántos octetos se pasa de la MTU del acceso el paquete exterior que tendría que salir por el túnel?',
+          prompt: 'Con los mismos datos, el servidor envía un segmento lleno con el MSS que le anunció el puesto en la captura. ¿Cuántos octetos se pasa de la MTU del acceso el paquete exterior que tendría que salir por el túnel? Cuenta el ESP con su peor caso, 37 octetos, como en la tarea anterior.',
           answer: 65,
           unit: 'octetos',
           points: 3,
           explain:
-            'El puesto anuncia MSS 1460, así que el paquete interior es 1460 + 20 (TCP) + 20 (IPv4) = 1500, la longitud que se ve en la captura. Encapsulado: 1500 + 37 (ESP) + 8 (UDP) + 20 (IPv4 exterior) = 1565 octetos, 65 más de los 1500 que caben. Coincide con la diferencia entre el MSS anunciado y el que cabe: 1460 − 1395 = 65. Responder 57 es olvidar el UDP de NAT-T; 45, olvidar la cabecera IP exterior.',
+            'El puesto anuncia MSS 1460, así que el paquete interior es 1460 + 20 (TCP) + 20 (IPv4) = 1500, la longitud que se ve en la captura. Encapsulado: 1500 + 37 (ESP) + 8 (UDP) + 20 (IPv4 exterior) = 1565 octetos, 65 más de los 1500 que caben. Coincide con la diferencia entre el MSS anunciado y el que cabe: 1460 − 1395 = 65. Responder 57 es olvidar el UDP de NAT-T; 45, olvidar la cabecera IP exterior. Con el relleno real de un paquete interior de 1500 (2 octetos), el ESP ocupa 36 y el exterior 1564, como en la lección: 64 de más.',
           refs: [L_IPSEC, RFC4106, RFC3948],
         },
         {
@@ -874,7 +874,7 @@ Encaminador de la oficina · tabla de rutas, miércoles 08:56:30
           answerSets: withExtras(['d-rutas', 'd-contadores-tunel'], ['d-quejas-miercoles', 'd-reparacion']),
           points: 3,
           explain:
-            'Las rutas de los dos encaminadores enseñan la causa (la oficina instala la estática por el túnel; la sede, la de eBGP), y los contadores, el efecto: casi tres millones de paquetes salen de la oficina por el túnel y no entra casi nada. La llamada del miércoles encaja (solo se oye mal en un sentido, el que va por Internet sin clase de servicio) y el aviso del operador fecha la reparación, pero ninguno de los dos prueba por dónde va cada sentido.',
+            'Las rutas de los dos encaminadores enseñan la causa (la oficina instala la estática por el túnel; la sede, la de eBGP), y los contadores, el efecto: casi tres millones de paquetes salen de la oficina por el túnel y no entra nada. La llamada del miércoles encaja (solo se oye mal en un sentido, el que va por Internet sin clase de servicio) y el aviso del operador fecha la reparación, pero ninguno de los dos prueba por dónde va cada sentido.',
           refs: [L_RUTAS, L_WAN],
         },
       ],
@@ -925,7 +925,7 @@ Encaminador de la oficina · tabla de rutas, miércoles 08:56:30
           answer: ['a', 'b', 'c', 'g'],
           points: 5,
           explain:
-            'Las cuatro medidas buenas atacan por qué el fallo estuvo escondido: nadie probó el túnel tras el cambio del proveedor ni tras el endurecimiento, la oficina pendiente se quedó así dos meses, y la ficha seguía describiendo un acceso que ya no existía. La segunda fibra por otro trazado es la petición que quedó en la libreta del técnico del operador, con el presupuesto pendiente: se propone, no está aprobada, y tener dos fibras por la misma zanja no protegería de otra excavadora. Mantener 3DES y el grupo 2 va contra lo que se quería retirar: el grupo 2 es SHOULD NOT en la RFC 8247, 3DES es SHOULD NOT en ESP según la RFC 8221 y NIST SP 800-77r1 aconseja no usar ninguno de los dos; la RFC 9395 pide además no arrastrar a IKEv2 la configuración de IKEv1 sin revisar sus algoritmos. La encapsulación en UDP **nunca** va por el 500 (RFC 7296 §2.23), así que con NAT no hay túnel sin el 4500. Y el NAT-keepalive no debe usarse para saber si el otro vive (RFC 3948).',
+            'Las cuatro medidas buenas atacan por qué el fallo estuvo escondido: nadie probó el túnel tras el cambio del proveedor ni tras el endurecimiento, la oficina pendiente se quedó así dos meses, y la ficha seguía describiendo un acceso que ya no existía. La segunda fibra por otro trazado es la que el Consorcio pidió al operador, según su aviso de las 17:10, con el presupuesto pendiente: se propone, no está aprobada, y tener dos fibras por la misma zanja no protegería de otra excavadora. Mantener 3DES y el grupo 2 va contra lo que se quería retirar: el grupo 2 es SHOULD NOT en la RFC 8247, 3DES es SHOULD NOT en ESP según la RFC 8221 y NIST SP 800-77r1 aconseja no usar ninguno de los dos; la RFC 9395 pide además no arrastrar a IKEv2 la configuración de IKEv1 sin revisar sus algoritmos. La encapsulación en UDP **nunca** va por el 500 (RFC 7296 §2.23), así que con NAT no hay túnel sin el 4500. Y el NAT-keepalive no debe usarse para saber si el otro vive (RFC 3948).',
           refs: [L_CENTROS, L_IPSEC, RFC8247, RFC8221, SP80077, RFC9395, RFC7296, RFC3948],
         },
         {

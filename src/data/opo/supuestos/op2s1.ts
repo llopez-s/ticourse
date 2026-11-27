@@ -382,7 +382,7 @@ const op2s1: Supuesto = {
           options: [
             { id: 'a', text: 'Un conjunto propio de direcciones internas para los portátiles, que no se comparta con ninguna otra red' },
             { id: 'b', text: 'Una política propia en el RADIUS que solo admita a las personas autorizadas para teletrabajar; las cuentas de administración no entran por ella' },
-            { id: 'c', text: 'Filtros propios: desde esas direcciones, solo la aplicación de expedientes, la VIP del registro, el DNS y el proxy; nunca la VLAN 99 ni los accesos de administración' },
+            { id: 'c', text: 'Filtros propios: desde esas direcciones, solo lo que el personal necesita (la aplicación de expedientes, la VIP del registro, los controladores del dominio, el servidor del PAC y el proxy); nunca la VLAN 99 ni los accesos de administración' },
             { id: 'd', text: 'Compartir el conjunto de direcciones con la VPN de administración, para que los filtros sean los mismos' },
             { id: 'e', text: 'Con doble factor ya no hace falta filtrar: quien entra puede alcanzar toda la red `10.20.0.0/16`' },
           ],
@@ -489,7 +489,7 @@ const op2s1: Supuesto = {
           unit: '%',
           points: 3,
           explain:
-            'Por el túnel viaja todo lo que recibe cada persona: 90 × 2 = 180 Mbit/s (lo que envían no se cuenta). 180 / 400 = 45 %. Los túneles también caben: 90 del personal y 3 de las oficinas, 93 de los 200 que admite (valores del fabricante). Los túneles de respaldo de las oficinas solo llevan tráfico si cae el MPLS, y entonces habría que sumarlo.',
+            'Por el túnel viaja todo lo que recibe cada persona: 90 × 2 = 180 Mbit/s (lo que envían no se cuenta). 180 / 400 = 45 %. Los túneles también caben: 90 del personal y, si cayera el MPLS de las tres oficinas, 3 más, 93 de los 200 que admite (valores del fabricante). Los túneles de respaldo de las oficinas solo llevan tráfico si cae el MPLS, y entonces habría que sumarlo.',
           refs: [L3, L2],
         },
       ],
@@ -501,7 +501,7 @@ const op2s1: Supuesto = {
       context:
         'Con el túnel decidido, faltan los datos que el encaminador entrega a cada portátil (su dirección interna y los servidores DNS) y el tamaño de los paquetes. En el expediente tienes un extracto del plan de direccionamiento y el informe del piloto.',
       carry:
-        'Los portátiles reciben direcciones de `10.20.64.0/24`, que el encaminador central anuncia al resto de la red, y usan como DNS a DC1 y DC2. Con NAT-T y ESP con AES-GCM-16 en el peor caso, el MSS que cabe es 1395 en una línea de 1500 y 1387 en una de 1492: el encaminador lo rebaja a 1387 como mucho. La red del hotel bloqueaba UDP; la encapsulación TCP sería una puerta nueva y queda fuera por ahora, anotada.',
+        'Los portátiles reciben direcciones de `10.20.64.0/24`, que el encaminador central anuncia al resto de la red, y usan como DNS a DC1 y DC2. Con NAT-T y ESP con AES-GCM-16 en el peor caso, el MSS con margen es 1395 en una línea de 1500 y 1387 en una de 1492: el encaminador lo rebaja a 1387 como mucho. La red del hotel bloqueaba UDP; la encapsulación TCP sería una puerta nueva y queda fuera por ahora, anotada.',
       tasks: [
         {
           id: 'f4t1',
@@ -541,25 +541,25 @@ const op2s1: Supuesto = {
           id: 'f4t3',
           kind: 'numeric',
           topic: 'op2m2',
-          prompt: 'Supón una línea de casa con MTU de 1500 octetos, cabeceras IPv4 de 20 octetos (la exterior y la interior), NAT-T (cabecera UDP de 8 octetos), ESP en modo túnel con AES-GCM-16 en el peor caso (37 octetos) y TCP sin opciones (20 octetos). ¿Cuál es el MSS de TCP máximo que cabe por el túnel?',
+          prompt: 'Supón una línea de casa con MTU de 1500 octetos, cabeceras IPv4 de 20 octetos (la exterior y la interior), NAT-T (cabecera UDP de 8 octetos), ESP en modo túnel con AES-GCM-16 en el peor caso (37 octetos) y TCP sin opciones (20 octetos). Calculando con esos 37 octetos, que dejan margen, ¿qué MSS de TCP cabe siempre por el túnel?',
           answer: 1395,
           unit: 'octetos',
           points: 4,
           hint: { text: 'Primero el paquete interior más grande (MTU menos lo que añade el túnel); luego, el MSS.', cost: 1 },
           explain:
-            '1500 − 20 (IPv4 exterior) − 8 (UDP de NAT-T, RFC 3948) − 37 (ESP con AES-GCM-16, RFC 4106 §7) = 1435 de paquete interior; 1435 − 20 (IPv4 interior) − 20 (TCP, RFC 9293) = 1395. Un portátil en casa casi siempre está detrás de un NAT, así que se cuenta el UDP. Tienta 1403, que es la cuenta sin NAT-T, y 1460, que es lo que queda en 1500 sin ningún túnel.',
+            '1500 − 20 (IPv4 exterior) − 8 (UDP de NAT-T, RFC 3948) − 37 (ESP con AES-GCM-16, RFC 4106 §7) = 1435 de paquete interior; 1435 − 20 (IPv4 interior) − 20 (TCP, RFC 9293) = 1395. La cuenta exacta, con el relleno que toque, da algo más (1398, como en la lección); se fija el valor con margen. Un portátil en casa casi siempre está detrás de un NAT, así que se cuenta el UDP. Tienta 1403, que es la cuenta sin NAT-T, y 1460, que es lo que queda en 1500 sin ningún túnel.',
           refs: [L2, RFC3948, RFC4106, RFC9293],
         },
         {
           id: 'f4t4',
           kind: 'numeric',
           topic: 'op2m2',
-          prompt: 'El portátil B del piloto está en una línea con MTU de 1492 octetos. Con las mismas suposiciones (IPv4 de 20, UDP de NAT-T de 8, ESP de 37 en el peor caso y TCP de 20), ¿qué MSS máximo fijarías en el encaminador para que valga en las dos líneas del piloto?',
+          prompt: 'El portátil B del piloto está en una línea con MTU de 1492 octetos. Con las mismas suposiciones (IPv4 de 20, UDP de NAT-T de 8, ESP de 37 en el peor caso y TCP de 20), ¿qué MSS fijarías en el encaminador, con ese margen, para que valga en las dos líneas del piloto?',
           answer: 1387,
           unit: 'octetos',
           points: 4,
           explain:
-            '1492 − 20 − 8 − 37 = 1427 de paquete interior, y 1427 − 20 − 20 = 1387. El valor que vale para las dos líneas es el menor: 1387 (en la de 1500 cabría hasta 1395). Encaja con lo que le pasaba a B: el saludo TCP pasa porque sus paquetes son pequeños, y la subida se para en cuanto crecen, que es como se ve un fallo del descubrimiento de la MTU del camino (RFC 1191) cuando se pierden los ICMP. Rebajar el MSS en los extremos del túnel es el «MSS clamping» de la RFC 4459 §3.2: solo sirve para TCP, y el valor y el comando concretos son del fabricante. Que esa línea tenga 1492 es un dato del operador de esa persona, no de ninguna norma.',
+            '1492 − 20 − 8 − 37 = 1427 de paquete interior, y 1427 − 20 − 20 = 1387. El valor que vale para las dos líneas es el menor: 1387 (en la de 1500, con el mismo margen, valdría hasta 1395). Encaja con lo que le pasaba a B: el saludo TCP pasa porque sus paquetes son pequeños, y la subida se para en cuanto crecen, que es como se ve un fallo del descubrimiento de la MTU del camino (RFC 1191) cuando se pierden los ICMP. Rebajar el MSS en los extremos del túnel es el «MSS clamping» de la RFC 4459 §3.2: solo sirve para TCP, y el valor y el comando concretos son del fabricante. Que esa línea tenga 1492 es un dato del operador de esa persona, no de ninguna norma.',
           refs: [L2, RFC1191, RFC4459, RFC9293],
         },
         {
@@ -662,7 +662,7 @@ const op2s1: Supuesto = {
             { id: 'r2', text: 'Dice que todo el tráfico va por el túnel y la navegación pasa por el proxy, y que el acceso de la sede lo aguanta con poco margen', points: 2 },
             { id: 'r3', text: 'Cuenta que desde la VPN solo se alcanza lo necesario, nunca la red de gestión', points: 1 },
             { id: 'r4', text: 'Enumera lo que se registra (quién, desde dónde, cuándo, con qué resultado y qué dirección interna) y menciona la hora común', points: 2 },
-            { id: 'r5', text: 'Señala lo pendiente (redes que bloquean UDP, crecimiento del teletrabajo) y está escrita para la Unidad: entre 120 y 180 palabras, sin configuración ni siglas sin explicar', points: 2 },
+            { id: 'r5', text: 'Señala lo pendiente (redes que bloquean UDP, crecimiento del teletrabajo) y está escrita para la Unidad: entre 120 y 180 palabras y sin detalles de configuración', points: 2 },
           ],
           points: 9,
           explain:

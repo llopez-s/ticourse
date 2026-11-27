@@ -205,7 +205,7 @@ AH en modo túnel (no cifra nada):
     {
       t: 'check',
       q: {
-        q: 'El Consorcio quisiera que OSPF aprendiera las redes de las oficinas también a través de los túneles de respaldo. Con un túnel por política cuyos selectores son solo 10.20.8.0/24 ↔ 10.20.72.0/21, eso no funciona. ¿Qué opción lo resuelve sin dejar el tráfico en claro?',
+        q: 'Supón que el Consorcio quisiera que OSPF aprendiera las redes de las oficinas a través de túneles de respaldo por política cuyos selectores fueran solo 10.20.8.0/24 ↔ 10.20.72.0/21: así no funciona. ¿Qué opción lo resuelve sin dejar el tráfico en claro?',
         choices: [
           'Montar GRE entre los dos encaminadores y protegerlo con IPsec, o una interfaz de túnel enrutable (VTI) si el fabricante la ofrece',
           'Pasar de ESP a AH, que sí lleva multidifusión',
