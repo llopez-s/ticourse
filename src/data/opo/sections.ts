@@ -74,6 +74,25 @@ export const OP_SECTIONS: SectionMeta[] = [
     },
   },
   {
+    id: 'op4',
+    track: 'opo',
+    num: 4,
+    title: 'Balanceo y alta disponibilidad',
+    short: 'Balanceo',
+    subtitle:
+      'Alta disponibilidad (nueves, MTBF y MTTR, serie y paralelo, quórum y split-brain), balanceo en capa 4 y en capa 7, persistencia de sesión, comprobaciones de salud, descarga de TLS y publicación de aplicaciones.',
+    domain: 'Balanceo y alta disponibilidad',
+    icon: '⚖️',
+    boss: {
+      codename: 'SESIÓN PERDIDA',
+      adversary: 'EL NODO QUE MIENTE',
+      flavor:
+        'Último día para pedir unas ayudas y la sede electrónica del Consorcio Provincial de Arcedo hace cosas raras: hay quien rellena el formulario y vuelve a la casilla de salida, hay quien recibe un error a medias y el balanceador jura que los dos servidores están sanos. Alguien tiene que mirar dentro de la pareja de balanceadores antes de que cierre el plazo.',
+      dossier:
+        'EL NODO QUE MIENTE, fuera del grupo. Cada sesión vuelve a su servidor, la comprobación de salud pregunta por lo que de verdad importa y solo un balanceador responde por la dirección virtual. En el registro del ADC2 queda una línea que nadie supo explicar: durante cuatro minutos, de madrugada, los dos equipos se creyeron el activo.',
+    },
+  },
+  {
     id: 'op6',
     track: 'opo',
     num: 6,
