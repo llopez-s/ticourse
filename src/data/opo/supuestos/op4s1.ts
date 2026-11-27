@@ -115,8 +115,8 @@ const op4s1: Supuesto = {
             ['VIP de publicación', '`10.20.72.70:443`', 'Destino del puerto 443 de `203.0.113.10`. Por ella entran `www.arcedo.example` y `sede.arcedo.example`, que el ADC distingue por SNI y por `Host`.'],
             ['VIP nueva', '`10.20.72.73` (libre)', 'Reservada en la pareja de ADC para el registro. Es una dirección privada del CPD.'],
             ['REG1 y REG2', '`10.20.72.101` y `10.20.72.102` (CPD)', 'Nodos nuevos de la aplicación del registro, aún sin publicar. El tramo `10.20.72.100`–`10.20.72.119` queda para nodos del registro.'],
-            ['REG-APP', '`10.20.72.30` (CPD)', 'Servidor de aplicación actual del registro. Se retira cuando entren REG1 y REG2.'],
-            ['REG-DOC', '`10.20.72.31` (CPD)', 'Base de datos y documentos anexos del registro. Un solo servidor: su alta disponibilidad queda para un proyecto aparte.'],
+            ['REG-APP', '`10.20.72.30` (CPD)', 'Servidor de aplicación con el que volvió el registro tras el cifrado: uno de los dos servidores nuevos, que conserva el nombre y la dirección del anterior (el cifrado sigue aislado, fuera de la red). Se retira cuando entren REG1 y REG2.'],
+            ['REG-DOC', '`10.20.72.31` (CPD)', 'Base de datos y documentos anexos del registro: el otro de los dos servidores nuevos, con el nombre y la dirección del anterior (el cifrado sigue aislado). Un solo servidor: su alta disponibilidad queda para un proyecto aparte.'],
             ['SEDE1 y SEDE2', '`10.20.72.91` y `10.20.72.92` (CPD)', 'Servidores de la sede electrónica, en el grupo `sede` del ADC.'],
             ['DC1 y DC2', '`10.20.72.11` y `10.20.72.12` (CPD)', 'Controladores de dominio con el DNS interno de `ad.arcedo.example`.'],
           ],
@@ -342,7 +342,7 @@ aciertos para volver  2`,
       context:
         'Ahora, cómo trabajan REG1 y REG2 detrás del ADC. Lee la ficha de la aplicación y vuelve sobre los requisitos del memorando: el pico, el parcheo mensual y los dos públicos.',
       carry:
-        'REG1 y REG2 trabajan en activo-activo: REG-DOC asigna los números de asiento y cada nodo, solo, aguanta el pico (260 de sus 300 sesiones). Como la sesión vive en la memoria del nodo que la abrió, el ADC tiene que mandar a cada persona siempre al mismo nodo mientras dure su trámite. Si un nodo cae, quien estaba en él vuelve a identificarse en el otro. Lo ya presentado no se pierde, porque está en REG-DOC.',
+        'REG1 y REG2 trabajan en activo-activo: REG-DOC asigna los números de asiento y cada nodo, solo, aguanta el pico (260 de sus 300 sesiones). Como la sesión vive en la memoria del nodo que la abrió, el ADC tiene que mandar a cada persona siempre al mismo nodo mientras dure su trámite.',
       tasks: [
         {
           id: 'f2t1',
@@ -400,7 +400,7 @@ aciertos para volver  2`,
           answer: 'a',
           points: 2,
           explain:
-            'La sesión vivía en la memoria de REG1 y se va con él. Que las peticiones con persistencia hacia un nodo caído acaben en el otro es el comportamiento de HAProxy sin `option persist` (valor del fabricante); el del ADC del Consorcio depende de su fabricante. El ADC solo decide a qué nodo va cada petición: no guarda ni traslada sesiones. Lo que ya se presentó está en REG-DOC, porque el nodo no guarda datos propios. Evitar esa pérdida exigiría sesión compartida, y esta versión de la aplicación no la tiene.',
+            'La sesión vivía en la memoria de REG1 y se va con él. Lo normal es que el ADC mande esas peticiones al otro nodo; el comportamiento exacto depende del fabricante. El ADC solo decide a qué nodo va cada petición: no guarda ni traslada sesiones. Lo que ya se presentó está en REG-DOC, porque el nodo no guarda datos propios. Evitar esa pérdida exigiría sesión compartida, y esta versión de la aplicación no la tiene.',
           refs: [L3, L1],
         },
       ],
@@ -475,7 +475,7 @@ aciertos para volver  2`,
       id: 'f4',
       title: 'El TLS del registro',
       context:
-        'Queda decidir qué viaja cifrado entre el ADC y los nodos, y cómo sabe la aplicación desde qué dirección se presentó cada escrito. Recuerda lo que fija el bloque del ENS: el registro es un sistema de categoría **MEDIA**, y cada asiento lleva nombre, DNI, domicilio y anexos, entre ellos informes de discapacidad. El Consorcio ya decidió para la sede, también MEDIA, que los datos personales no viajen sin cifrar por ningún tramo, ni siquiera dentro del CPD, y quiere el mismo criterio aquí.',
+        'Queda decidir qué viaja cifrado entre el ADC y los nodos, y cómo sabe la aplicación desde qué dirección se presentó cada escrito. Recuerda lo que fija el bloque del ENS: el registro es un sistema de categoría **MEDIA**, y cada asiento lleva nombre, DNI, domicilio y anexos, entre ellos informes de discapacidad; esas solicitudes tienen la confidencialidad en nivel MEDIO. El Consorcio ya decidió para la sede, también MEDIA, que los datos personales no viajen sin cifrar por ningún tramo, ni siquiera dentro del CPD, y quiere el mismo criterio aquí.',
       carry:
         'Recifrado: el ADC termina el TLS del cliente y abre otra sesión TLS hacia REG1 y REG2 por el 443. Es una decisión del Consorcio, con el mismo criterio que en la sede, porque el ENS no prescribe el modo. Los nodos ven llegar las conexiones desde el ADC y leen la dirección del presentador en `Forwarded` (`for=`), que solo creen si la conexión viene de ADC1 o ADC2.',
       tasks: [

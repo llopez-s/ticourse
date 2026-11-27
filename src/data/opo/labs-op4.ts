@@ -70,7 +70,7 @@ export const OP4_ORDER_DATA: Record<string, OrderData> = {
       {
         text: 'Las peticiones dejan de ir a SEDE2 y sus usuarios pierden la sesión',
         detail:
-          'Un miembro DOWN no recibe tráfico: las conexiones nuevas van todas a SEDE1. Las peticiones de quien traía la cookie de SEDE2 tampoco pueden ir a ese servidor y acaban en SEDE1 (comportamiento de HAProxy sin `option persist`; valor del fabricante); como la sesión vivía en la memoria de SEDE2, esas personas tienen que volver a identificarse. Es el precio de la persistencia sin sesión compartida.',
+          'Un miembro DOWN no recibe tráfico: las conexiones nuevas van todas a SEDE1. Las peticiones de quien traía la cookie de SEDE2 tampoco pueden ir a ese servidor y lo normal es que acaben en SEDE1 (el comportamiento exacto depende del fabricante); como la sesión vivía en la memoria de SEDE2, esas personas tienen que volver a identificarse. Es el precio de la persistencia sin sesión compartida.',
       },
       {
         text: 'El administrador ve el aviso, investiga y corrige la aplicación de SEDE2',

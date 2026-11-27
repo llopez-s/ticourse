@@ -74,7 +74,7 @@ describe('pista Redes y ENS · laboratorios del bloque 4', () => {
     expect(prompt).toMatch(/valores por defecto de HAProxy 3\.4/);
     expect(prompt).toMatch(/inter 2000 ms, fall 3, rise 2 y timeout check sin fijar/);
     expect(prompt).toMatch(/GET \/salud \(por TLS/);
-    expect(steps[3].detail).toMatch(/sin `option persist`; valor del fabricante/);
+    expect(steps[3].detail).toMatch(/depende del fabricante/);
     expect(prompt).toMatch(/10\.20\.72\.91/);
     expect(prompt).toMatch(/10\.20\.72\.92/);
     expect(prompt).toMatch(/GET \/salud/);
