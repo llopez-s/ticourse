@@ -6,6 +6,8 @@ const LOADERS: Record<string, () => Promise<{ default: Supuesto }>> = {
   op1s1: () => import('../opo/supuestos/op1s1'),
   op3s1: () => import('../opo/supuestos/op3s1'),
   op3s2: () => import('../opo/supuestos/op3s2'),
+  op4s1: () => import('../opo/supuestos/op4s1'),
+  op4s2: () => import('../opo/supuestos/op4s2'),
   op6s1: () => import('../opo/supuestos/op6s1'),
   op6s2: () => import('../opo/supuestos/op6s2'),
 };

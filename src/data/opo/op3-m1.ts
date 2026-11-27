@@ -177,12 +177,13 @@ arcedo.example.        3600 IN CAA   0 issue "ca.example"
 arcedo.example.        3600 IN CAA   0 iodef "mailto:seguridad@arcedo.example"
 www.arcedo.example.    3600 IN A     203.0.113.10
 correo.arcedo.example. 3600 IN A     203.0.113.10
+sede.arcedo.example.   3600 IN A     203.0.113.10
 portal.arcedo.example. 3600 IN CNAME www.arcedo.example.
 
 ; Ningún CNAME en el ápice (arcedo.example ya tiene SOA, NS, MX y CAA).
 ; El MX apunta a correo, que tiene su propio A: nunca a portal, que es un alias.
-; www y correo comparten la única dirección pública: el encaminador reenvía cada
-; puerto al servidor que toca.`,
+; www, sede y correo comparten la única dirección pública: el encaminador reenvía
+; el 443 a la VIP de los balanceadores y el puerto del correo a su servidor.`,
     },
     {
       t: 'check',

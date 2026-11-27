@@ -182,6 +182,13 @@ afiliado a ninguna administración ni tribunal de selección y no sustituye a la
   *Un lunes sin hora ni nombres*. Las fuentes son RFC (rfc-editor.org, IANA); DHCPv6 es la RFC 9915, que deja obsoleta
   la 8415, el failover de DHCPv4 y WPAD son borradores caducados y los valores de Microsoft e ISC se rotulan como tales
   (dossier en `docs/superpowers/sources/`).
+- **Disponible:** bloque 4, *Balanceo y alta disponibilidad* (`op4`, 2026-11-27): 5 lecciones (alta disponibilidad:
+  conceptos y cálculo; balanceo en capa 4; balanceo en capa 7 y persistencia de sesión; comprobaciones de salud;
+  descarga de TLS y publicación de aplicaciones), 40 preguntas, 27 checkpoints, 30 flashcards, 59 términos de glosario
+  y tres labs (¿capa 4 o capa 7?, ordenar la caída y la vuelta de un servidor, persistencia y modo de TLS). Jefe: SESIÓN
+  PERDIDA / EL NODO QUE MIENTE. Dos supuestos: *El registro, sin una sola caída* y *El último día de plazo*. Fuentes:
+  RFC (TLS 1.3 es ya la RFC 9846, ECH la 9849 y VRRP la 9568) y documentación oficial de HAProxy, NGINX, AWS y
+  Microsoft, rotulada como valor del fabricante, porque casi nada del balanceo está normalizado.
 - **Disponible:** bloque 6, *ENS y normativa* (`op6`, 2026-11-26): 7 lecciones (marco del ENS y roles,
   categorización, medidas del anexo II, conformidad, auditoría e incidentes, protección de datos RGPD/LOPDGDD,
   gobierno de la seguridad, firma e identificación electrónicas eIDAS), 56 preguntas con nivel de artículo y anexo,
@@ -189,7 +196,7 @@ afiliado a ninguna administración ni tribunal de selección y no sustituye a la
   notifica, medidas del anexo II). Jefe: PAPEL MOJADO / EL CUMPLIMIENTO DE FACHADA. Toda la normativa sale de textos
   consolidados del BOE y EUR-Lex consultados el 2026-11-26 (dossier en `docs/superpowers/sources/`); NIS2 estaba
   pendiente de transposición a esa fecha y de las guías CCN-STIC no se afirma contenido alguno.
-- **Pendiente:** infraestructuras de comunicaciones, balanceo y alta disponibilidad e identidad corporativa.
+- **Pendiente:** infraestructuras de comunicaciones e identidad corporativa.
 - A diferencia de las otras dos pistas, **todo está en español**, también las preguntas. El glosario añade el
   término en catalán (`cat.`) cuando está confirmado en TERMCAT o en la Viquipèdia, y se puede buscar por él.
 - Lo que ya enseña Security+ (seguridad wifi, 802.1X, VPN) no se repite: las lecciones lo enlazan.
