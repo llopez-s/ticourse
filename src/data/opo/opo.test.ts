@@ -104,7 +104,7 @@ describe('pista Redes y ENS', () => {
     const cards = opo.flashcards.filter((c) => c.sectionId === 'op4');
     expect(cards).toHaveLength(30);
     expect(cards.map((c) => c.id)).toEqual(Array.from({ length: 30 }, (_, i) => `fco${401 + i}`));
-    expect(opo.glossary.filter((g) => g.sectionId === 'op4')).toHaveLength(56);
+    expect(opo.glossary.filter((g) => g.sectionId === 'op4')).toHaveLength(59);
   });
 
   it('block 6 (ENS y normativa) lessons follow the shape', () => {

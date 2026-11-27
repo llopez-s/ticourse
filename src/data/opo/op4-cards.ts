@@ -114,5 +114,8 @@ export const OP4_GLOSSARY: GlossaryEntry[] = [
   { sectionId: 'op4', term: 'GSLB (Global Server Load Balancing)', def: 'Término de producto para repartir entre centros distintos, normalmente por DNS. Sin RFC; el Consorcio, con un solo CPD y un solo operador, no lo usa.' },
   { sectionId: 'op4', term: 'DNS round robin', def: 'Rotar por turnos varios registros A de un mismo nombre (RFC 1794), sin mirar la carga y sin saber si una dirección ha caído; con TTL bajo para refrescar antes.' },
   { sectionId: 'op4', term: 'Anycast', def: 'Anunciar una misma dirección desde varios sitios para que el encaminamiento lleve cada paquete a uno (RFC 4786, BCP 126). Va bien con transacciones cortas; con TCP, un cambio de ruta puede partir una conexión.' },
+  { sectionId: 'op4', term: 'RTO y RPO (Recovery Time Objective y Recovery Point Objective)', def: 'Objetivos de un plan de continuidad: el RTO es el tiempo máximo que puede tardar en volver un servicio; el RPO, cuántos datos se pueden perder, medidos en tiempo hacia atrás. Se estudian en la lección de resiliencia de Security+ (sp3m7).' },
+  { sectionId: 'op4', term: 'SMB (Server Message Block)', def: 'Protocolo de Microsoft para compartir archivos en red. Un testigo de recurso compartido de un clúster de Windows necesita SMB 2 o superior (valor del fabricante).' },
+  { sectionId: 'op4', term: 'BCP (Best Current Practice)', def: 'Serie de RFC con las mejores prácticas vigentes de la IETF. La RFC 4786, sobre la operación de servicios anycast, es la BCP 126.' },
   { sectionId: 'op4', term: 'ECMP (Equal-Cost Multi-Path)', def: 'Varios caminos de igual coste hacia un destino. Para no desordenar paquetes, todos los de un mismo flujo deben ir por el mismo camino (RFC 2991 y 2992).' },
 ];
