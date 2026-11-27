@@ -80,7 +80,7 @@ export const OP_SECTIONS: SectionMeta[] = [
     title: 'Balanceo y alta disponibilidad',
     short: 'Balanceo',
     subtitle:
-      'Alta disponibilidad (nueves, MTBF y MTTR, serie y paralelo, quórum y split-brain), balanceo en capa 4 y en capa 7, persistencia de sesión, comprobaciones de salud, descarga de TLS y publicación de aplicaciones.',
+      'Alta disponibilidad (nueves, MTBF y MTTR, serie y paralelo, quórum y cerebro dividido), balanceo en capa 4 y en capa 7, persistencia de sesión, comprobaciones de salud, descarga de TLS y publicación de aplicaciones.',
     domain: 'Balanceo y alta disponibilidad',
     icon: '⚖️',
     boss: {
