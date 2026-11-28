@@ -1,0 +1,158 @@
+{
+  "title": "Acceso remoto: dos puertas, una central y una centralita",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 304,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Qué va por el túnel"
+    },
+    {
+      "n": 2,
+      "title": "Quién decide cada acceso"
+    },
+    {
+      "n": 3,
+      "title": "Por dónde se administra"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una contraseña buena",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. De noche, la sede vista desde fuera; una línea de registro que se escribe sola, rotulada «el lunes del registro · supuesto de ejemplo»: «01:58 · VPN de administración · usuario adm-reg · desde 198.51.100.77» (`night`). Junto a ella, una llave con la etiqueta «contraseña válida · robada el jueves con un correo de suplantación (análisis preliminar)» (`key`). Título «Acceso remoto» (`title`, antes de los 12 s), con una nota pequeña «segundo factor y ENS (op.acc.6): en la lección», y la promesa en tres chips: «qué va por el túnel · quién decide cada acceso · por dónde se administra», las mismas tres cosas que dice la voz (`promise`). Plaquita «REDES Y ENS · Infraestructuras». No se dice ni se rotula qué pedía esa VPN además de la contraseña: el supuesto no lo dice",
+      "requiredCues": [
+        "night",
+        "key",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-tunel",
+      "chapter": 1,
+      "title": "Un despacho con dos puertas",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "goal": "Un portátil en una mesa de casa, rotulado «teletrabajo · VPN de cliente levantada» (`laptop`). La imagen, rotulada «imagen · no es el Consorcio»: un despacho con dos puertas, una al pasillo de la organización y otra a la calle (`doors`). Todo el tráfico sale por el pasillo y cruza un cortafuegos: «túnel completo (full tunnel) · todo por la VPN» (`full`); después, solo lo de la organización por el pasillo y lo demás por la calle: «túnel dividido (split tunneling) · solo lo de la organización por la VPN» (`split`). Alguien entra por la puerta de la calle (`street`) y se asoma al pasillo: rótulo «el equipo hace de puente entre una red de confianza y otra que no lo es (SP 800-46r2 §3.3.3)» (`bridge`). Tres fichas, una por guía, que entran una a una (`guides`): «NIST SP 800-77r1 §7.2.1.2 (VPN IPsec) · strongly discouraged: desaconsejado con fuerza» (`g1`) · «NIST SP 800-46r2 §3.3.3 (teletrabajo) · should consider disabling, en redes no fiables como una wifi pública» (`g2`) · «NIST SP 800-207 §3.4.1 (confianza cero) · no habla de túnel dividido, pero empuja al revés: llegar a los recursos sin pasar antes por la red corporativa» (`g3`). Rótulo final: «grados distintos: atribuye la postura a su guía» (`attrib`)",
+      "requiredCues": [
+        "laptop",
+        "doors",
+        "full",
+        "split",
+        "street",
+        "bridge",
+        "guides",
+        "g1",
+        "g2",
+        "g3",
+        "attrib"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "La otra puerta",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo»: el panel tapa la escena, así que el fondo se queda quieto (el despacho a media luz, con la puerta de la calle cerrada y una ventana abierta rotulada «datos móviles»). Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (solo la interfaz del túnel activa, o un cortafuegos personal: la ventana se cierra) y en `trap-1` la trampa (MOBIKE, con la glosa «mantiene la SA de IKE cuando cambia la dirección del equipo · RFC 4555»). La regla en una línea, «aun sin túnel dividido, otra interfaz puede saltárselo» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-cero",
+      "chapter": 2,
+      "title": "Una tarjeta en cada puerta",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "goal": "Una VPN que comprueba en la puerta y deja el equipo dentro de una red grande y clara (`inside`), rotulada «lectura de la lección, no frase de la guía». La zona clara se encoge hasta rodear solo un recurso: «zona de confianza implícita · lo más pequeña posible (SP 800-207 §2)» y «estar en la red no da confianza (principio 2)» (`zone`). La imagen, rotulada «imagen · no es el Consorcio»: un edificio de oficinas con un lector de tarjetas en cada puerta (`building`); una tarjeta se acerca, el lector consulta a una central y la puerta se abre una vez: «acceso por sesión (principio 3)» (`badge`). La central se abre en dos: «PDP (Policy Decision Point) = motor de políticas (Policy Engine): concede, deniega o revoca, y lo registra» (`pdp`) · «administrador de políticas (Policy Administrator): abre o cierra el camino y genera las credenciales de la sesión» (`pa`). El lector: «PEP (Policy Enforcement Point): habilita, vigila y termina la conexión» (`pep`), partido en «agente en el equipo» y «pasarela delante del recurso» (`agent`); una línea separa «plano de control» y «plano de datos». La central mira la tarjeta y también el equipo que la trae: «identidad · aplicación · estado del equipo · comportamiento · entorno (política dinámica, principio 4)» (`posture`) y el rótulo «postura del equipo: su estado de seguridad al acceder · qué se comprueba depende del producto» (`name`). Un equipo cambia de estado y la central retira el permiso: «revocar · reevaluación continua (principio 6)» (`revoke`)",
+      "requiredCues": [
+        "inside",
+        "zone",
+        "building",
+        "badge",
+        "pdp",
+        "pa",
+        "pep",
+        "agent",
+        "posture",
+        "name",
+        "revoke"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Quién ejecuta",
+      "targetSec": 34,
+      "wordBudget": 70,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: la central y el lector a media luz, sin rótulos de función (para no dar la respuesta). Cuenta atrás de 5 s. En `ok-2` se marca la correcta (el administrador de políticas) y en `trap-2` la trampa (el propio motor de políticas). La regla en una línea, con tres iconos (cerebro · mano · puerta): «uno decide, otro ejecuta, la puerta aplica» (`rule-b`), y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-escritorio",
+      "chapter": 3,
+      "title": "La centralita y el bastión",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "goal": "Vuelve la línea de registro del gancho (01:58), solo «VPN de administración» resaltado (`admin`). Un portátil en casa maneja la pantalla de un equipo interno: «escritorio remoto · uno de los cuatro tipos de acceso remoto de la SP 800-46r2 §2.2» (`desk`). Dos caminos: el directo, del cliente al equipo, cortado por un cortafuegos y un NAT (`direct`); el indirecto, rotulado «imagen · no es el Consorcio»: una centralita telefónica que atiende la llamada, identifica y pasa con la extensión (`pbx`). Rótulo «servidor intermedio: autentica y ve el tráfico de las dos conexiones · su seguridad es crítica» y, en pequeño, «el cifrado de extremo a extremo cruza el perímetro: cortafuegos e IDS no ven el contenido» (`critical`). La pasarela: «pasarela de Escritorio remoto (RD Gateway) · TCP 443 y UDP 3391 · RDP en el equipo interno: 3389 · valores del fabricante (Microsoft Learn)» (`gateway`). Un administrador entra en un único equipo con un escudo y desde él salta a varios servidores (`jump`): «bastión o equipo de salto (jump host)» (`bastion`). Rótulo «idea de diseño · sin fuente primaria en este bloque, sin cifras ni requisitos» (`design`) y, en la sede, «Consorcio: sin bastión fijado · gestión por la VLAN 99, dentro de banda» (`vlan99`)",
+      "requiredCues": [
+        "admin",
+        "desk",
+        "direct",
+        "pbx",
+        "critical",
+        "gateway",
+        "jump",
+        "bastion",
+        "design",
+        "vlan99"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Treinta puertas",
+      "targetSec": 36,
+      "wordBudget": 76,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio». Fondo quieto: treinta servidores a media luz, cada uno con su puerta abierta hacia fuera. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (equipo de salto: las treinta puertas se cierran y queda una) y en `trap-3` la trampa (abrir TCP 443 y UDP 3391 en cada servidor). Vuelve el escudo del bastión en una línea (`door`) y entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "door"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para el camino",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "goal": "Tres ideas, cada una con su icono (las dos puertas · la central y el lector · el escudo del bastión) (`recap`, `rule-1`, `rule-2`, `rule-3`), y la frase final sobre la línea del lunes: «Con una contraseña robada, la pregunta es hasta dónde llega» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

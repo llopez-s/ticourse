@@ -1,0 +1,277 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "idle": "error",
+    "tunnels": "whoosh",
+    "bag": "lock",
+    "switch": "ping2",
+    "ztp": "ding"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {lines}Cada oficina del Consorcio de Arcedo tiene dos líneas. La del operador lleva todo el trabajo. {idle}La de Internet está pagada y casi siempre parada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Imagina que trabajaran juntas, con una SD-WAN. Es un supuesto, porque el Consorcio no la tiene. {promise}Veremos qué va encima y qué debajo, por dónde va cada aplicación y quién manda.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-capas",
+      "text": "<clear> {underlay}Empecemos por lo que ya hay. El MPLS y la línea de Internet son las líneas de verdad, la red de debajo. Se llama subyacente.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-capas",
+      "text": "<steady> {edge}Ahora pon en cada sede un equipo nuevo, el edge, o sea, el del borde. {tunnels}Los edges montan túneles entre ellos, y por las dos líneas a la vez.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-capas",
+      "text": "<engaging> {overlay}Esa red de túneles va por encima de las otras, y es la que la organización ve como su red entre sedes. Es la red superpuesta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-capas",
+      "text": "<warm> {couriers}Piensa en una empresa de mensajeros. Usan el tren y el autobús, que son de otros, pero el reparto lo deciden ellos. {bag}Y el revisor del tren solo ve a un mensajero con una saca cerrada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Una para arrancar. Supón que el Consorcio ya la tiene, con túneles cifrados entre el edge de una oficina y el de la sede. ¿Qué ve pasar el proveedor de Internet de esa oficina?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · supuesto",
+        "objective": "Infraestructuras",
+        "scenario": "Supuesto: el Consorcio tiene una SD-WAN, con túneles cifrados entre el Edge de una oficina y el de la sede, por el MPLS y por Internet.",
+        "q": "¿Qué ve pasar el proveedor del acceso a Internet de esa oficina?",
+        "options": [
+          "Nada, porque la superposición no pasa por su red",
+          "Paquetes entre el Edge de la oficina y el de la sede",
+          "Cada aplicación de los puestos, con su dirección interna",
+          "Solo el tráfico que la política manda por el MPLS"
+        ],
+        "answer": 1,
+        "trap": 2,
+        "why": "Los túneles cifrados van de Edge a Edge: el proveedor solo ve ese tráfico",
+        "trapWhy": "El Edge reconoce cada aplicación, pero antes de meterla en el túnel cifrado",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Paquetes entre los dos edges, y nada más. Como el revisor, que ve al mensajero y la saca, pero no lo que lleva dentro.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Lo que despista es que el edge sí reconoce cada aplicación, pero antes de meterla en el túnel. {rule-a}O sea, el proveedor ve la red de debajo, y la de encima es tuya.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Subyacente: los accesos. Superpuesta: túneles entre Edges",
+        "at": "rule-a",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-camino",
+      "text": "<clear> {classify}Ya hay dos caminos. Y el edge empieza por reconocer de qué aplicación es cada tráfico, como la voz o las copias de seguridad.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-camino",
+      "text": "<steady> {policy}Y a cada una le aplica una regla escrita, la política. Dice por dónde puede ir, si va cifrada o si sale a Internet allí mismo, sin pasar por la sede.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-camino",
+      "text": "<engaging> {measure}Para decidir, mide cómo van los caminos. Lo que tarda un paquete, cuánto varía ese tiempo y cuántos se pierden. {oneway}Siempre en un sentido, no de ida y vuelta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-camino",
+      "text": "<warm> {train}Como los mensajeros, lo urgente va en el transporte puntual. {switch}Y si el tren se retrasa, se pasa al autobús sin esperar a que se pare.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-camino",
+      "text": "<thoughtful> {threshold}¿Y cuánto retraso hace falta para cambiar? Eso no lo fija ninguna norma. {owner}Lo pone la política de cada organización, con los valores de su fabricante.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Los umbrales los pone la política, no la norma",
+        "at": "owner",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Ahora, fuera del Consorcio. Una oficina con SD-WAN tiene sus dos líneas. Su política activa la salida directa a Internet para el correo en la nube. ¿Por dónde sale ese correo hacia Internet?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Infraestructuras",
+        "scenario": "En otra red, una oficina con SD-WAN tiene MPLS e Internet. Su política activa la salida directa a Internet para el correo en la nube.",
+        "q": "¿Por dónde sale hacia Internet el tráfico de ese correo?",
+        "options": [
+          "Por el MPLS hasta la sede central, y sale allí",
+          "Por el túnel de Internet hasta la central, y sale allí",
+          "Por el acceso a Internet de la propia oficina",
+          "Por el MPLS, que lleva todo mientras funcione"
+        ],
+        "answer": 2,
+        "trap": 1,
+        "why": "La salida directa sale en la propia oficina, sin pasar por la central",
+        "trapWhy": "Ir hasta la central y salir allí es lo de la WAN clásica, aunque sea por Internet",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Por la línea de Internet de la propia oficina, sin pasar por la central. Eso es la salida directa.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Ir por el túnel hasta la central y salir allí es lo de la red clásica, aunque viaje por Internet. {rule-b}Aquí cada oficina sale por su propia puerta.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Salida directa: a Internet en la oficina, sin la central",
+        "at": "rule-b",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-control",
+      "text": "<clear> {who}Falta saber quién reparte esas reglas. {controller}Es un sistema central, el controlador, que gestiona toda la red de encima.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-control",
+      "text": "<steady> {channel}Habla con cada edge por un canal que tiene que ser seguro. Lo exige una RFC muy reciente, que es la que define el controlador.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-control",
+      "text": "<warm> {boss}En la mensajería, es el jefe de reparto, con su línea protegida. {ztp}Y al mensajero nuevo nadie va a enseñarle. Llama y recibe sus instrucciones.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-control",
+      "text": "<engaging> {plug}Con los edges pasa igual. Alguien los enchufa y reciben la configuración desde el lado central. {ztp2}Eso es el aprovisionamiento sin intervención.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-control",
+      "text": "<thoughtful> {names}Y cuidado con los nombres. El orquestador no lo define ninguna fuente de la lección. {sase}Y SSE, tampoco.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Controlador y ZTP: los define la RFC 10090",
+        "at": "names",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Para terminar, un estreno. Supón que a una oficina del Consorcio le llega un edge nuevo, y alguien lo enchufa sin que vaya ningún técnico. Según esa RFC, ¿qué tiene que ser seguro sí o sí?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · supuesto",
+        "objective": "Infraestructuras",
+        "scenario": "Supuesto: a una oficina del Consorcio llega un Edge nuevo con aprovisionamiento sin intervención (ZTP). Lo enchufan y no va ningún técnico.",
+        "q": "Según la RFC 10090, ¿qué tiene que ser seguro en cualquier caso?",
+        "options": [
+          "Todo el tráfico de datos, cifrado en IPsec",
+          "El canal entre el Edge y su controlador",
+          "El tráfico de las aplicaciones más importantes",
+          "Nada, lo deja en manos de cada fabricante"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "Por ese canal llega la configuración, y la RFC 10090 lo exige seguro",
+        "trapWhy": "Cifrar todo es la SD-WAN cifrada homogénea: se puede elegir, no es obligatorio",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}El canal entre el edge y su controlador, porque por ahí le llega la configuración.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Cifrar todos los datos suena más seguro, y se puede hacer, pero es una opción de la política. {rule-c}Lo obligatorio es proteger la línea del jefe de reparto.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "El canal entre el Edge y el controlador, siempre seguro",
+        "at": "rule-c",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Repasamos en tres frases. {rule-1}Debajo están las líneas de verdad, y encima, los túneles entre los edges.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Cada aplicación va por el camino que marca su política, según lo que se mide. {rule-3}Y el controlador lo gobierna todo, por un canal seguro.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Ante una SD-WAN, separa primero lo de debajo y lo de encima. {next}Y para seguir, {endcard}las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

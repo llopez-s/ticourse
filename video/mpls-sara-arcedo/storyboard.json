@@ -1,0 +1,229 @@
+{
+  "title": "VPN MPLS y Red SARA: una terminal de tren, dos etiquetas y una portería",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 588,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Quién hace qué en la red del operador"
+    },
+    {
+      "n": 2,
+      "title": "Mismas direcciones, sin mezclarse"
+    },
+    {
+      "n": 3,
+      "title": "Dos etiquetas"
+    },
+    {
+      "n": 4,
+      "title": "Cuando se quiere la misma red local"
+    },
+    {
+      "n": 5,
+      "title": "La red de las administraciones"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "La caja del operador",
+      "targetSec": 21,
+      "wordBudget": 57,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. Mapa esquemático con la «sede central + CPD» y tres «oficina comarcal» sin nombre, unidas a una nube rotulada «red del operador · VPN de capa 3 sobre MPLS», con la nota pequeña «diseño de la lección de WAN (op1m5)» (`sites`). Por la misma nube entra un segundo cliente, en otro color, «otro cliente del operador · ejemplo», y junto a una oficina del Consorcio y a una sede del otro cliente aparece el mismo rótulo «10.20.8.0/24» (`others`). Título «VPN MPLS y Red SARA» (`title`, antes de los 12 s) y la promesa en tres chips, las mismas tres cosas que dice la voz: «quién hace qué dentro · cómo no se mezclan los clientes · qué es la Red SARA» (`promise`). Plaquita «REDES Y ENS · Infraestructuras»",
+      "requiredCues": [
+        "sites",
+        "others",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-papeles",
+      "chapter": 1,
+      "title": "Tres papeles",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "goal": "La nube se abre y se ve el recorrido de la lección, de izquierda a derecha: «CE-oficina · PE1 · P · PE2 · CE-sede» (`roles`). Se ilumina el CE-oficina con el rótulo «CE · Customer Edge · encaminador del cliente» y el color del Consorcio (`ce`); después PE1 y PE2, «PE · Provider Edge · borde del operador», y la línea entre CE y PE rotulada «circuito de acceso (attachment circuit)» (`pe`); y el P del medio, «P · Provider · del operador, sin ningún CE conectado» (`p`). Una raya vertical separa «red del cliente» (los CE) de «red del operador» (PE y P). A la derecha, la imagen rotulada «imagen · no es el Consorcio»: una terminal de mercancías con su mostrador de carga y, más allá, estaciones de tren por las que pasan contenedores cerrados (`train`). Entre CE-oficina y PE1 aparece una burbuja «rutas» y entre CE-oficina y CE-sede, una línea de puntos tachada, «sin rutas entre CE» (`peer`). Rótulo «no es una superposición (overlay) · RFC 4364 §1.2», con la nota pequeña «la SD-WAN sí lo es (lección op2m4)» (`nooverlay`). El P se queda en gris con «no guarda información de las VPN · RFC 4364 §1.5 · solo reenvía» (`pblind`). Tarjeta de examen al acabar la frase",
+      "requiredCues": [
+        "roles",
+        "ce",
+        "pe",
+        "p",
+        "train",
+        "peer",
+        "nooverlay",
+        "pblind"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "¿Qué papel tiene?",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 1 (`q1`); el rótulo «pregunta tipo test · ejemplo · supuesto» lo dibuja el motor (`question.tag`). El panel tapa la escena, así que el fondo se queda quieto: el recorrido CE-PE-P-PE-CE a media luz, sin texto, con un conmutador pequeño y sin rótulo entre CE-oficina y PE1. Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (ninguno: el CE sigue siendo el encaminador) y en `trap-1` la trampa (es el CE porque está en la oficina). La regla en una línea, «un conmutador de capa 2 entre CE y PE no es un CE · RFC 4364 §1.2» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-vrf",
+      "chapter": 2,
+      "title": "Un andén por cliente",
+      "targetSec": 65,
+      "wordBudget": 176,
+      "goal": "PE1 en grande. Le llegan dos circuitos de acceso, uno del Consorcio y otro de un «otro cliente · ejemplo», los dos con «10.20.8.0/24» detrás, y la nota pequeña «direcciones solapadas: admitidas en VPN sin sedes comunes · RFC 4364 §1.3» (`client2`). Dentro de PE1 aparecen dos tablas, «VRF Consorcio» y «VRF otro cliente», cada una de su color, y la tabla por defecto del PE, en gris, «tabla por defecto · red del operador» (`vrf`). El circuito del Consorcio se ata con una línea a su VRF, «cada circuito de acceso, asociado a una VRF · §3» (`bound`). La imagen rotulada «imagen · no es el Consorcio»: la terminal de mercancías con un andén por cliente, cada uno de un color (`platform`). Entre PE1 y PE2, una línea «BGP entre PE» por la que viajan dos rutas iguales, «10.20.8.0/24» y «10.20.8.0/24», que chocan (`clash`). Delante de cada una se encaja un bloque «RD» de su color, sin valor numérico («RD del Consorcio», «RD del otro cliente»), y se forma «dirección VPN-IPv4 · RD (8 bytes) + IPv4 (4 bytes) = 12 bytes · §4.1» (`rd`); las dos rutas, ya distintas, se separan (`unique`). Rótulo «el RD no dice a qué VRF va la ruta» y aparece una marca de color en cada ruta, «Route Target · comunidad extendida de BGP · §4.3.1» (`rt`). En la VRF del Consorcio, dos columnas: «Export Targets · se ponen a lo que anuncia» (`export`) e «Import Targets · deciden qué rutas acepta» (`import`); la ruta del otro cliente rebota en la VRF del Consorcio porque su marca no está entre las de importación. Al final, rotulado «ejemplo · el canon no fija los Route Targets del Consorcio», cuatro VRF de un cliente con la misma marca de exportación e importación, unidas todas con todas: «malla completa · mismo Route Target», sin voz, al final de la frase de `import` (la frase de la malla se quitó para caber en el tope; el dato sigue en la lección, op2m5:60). Ningún valor de RD ni de Route Target: las marcas son colores. Tarjeta de examen al acabar la frase del Route Target",
+      "requiredCues": [
+        "client2",
+        "vrf",
+        "bound",
+        "platform",
+        "clash",
+        "rd",
+        "unique",
+        "rt",
+        "export",
+        "import"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "¿En qué tabla?",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo» (`question.tag`). Fondo quieto: la terminal con los andenes de colores, a media luz. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (la VRF del Consorcio, por el circuito) y en `trap-2` la trampa (la VRF que indica el RD del paquete), con «el paquete del CE no lleva RD · el RD va en las rutas entre PE» al lado. La regla en una línea, «lo que entra por un circuito, se busca en su VRF» (`rule-b`), y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-etiquetas",
+      "chapter": 3,
+      "title": "La hoja de ruta y el albarán",
+      "targetSec": 55,
+      "wordBudget": 149,
+      "goal": "El recorrido de la lección (op1m5), sin sintaxis de fabricante: «oficina 10.20.8.0/24 → sede 10.20.10.0/24» y «CE-oficina · PE1 · P · PE2 · CE-sede». El paquete sale de PE1 tras pasar por la VRF del Consorcio (`trip`) y recibe una pila de dos etiquetas, «[304][72]» (`two`). La 72 se marca: «interior · etiqueta de ruta VPN · la asignó PE2 al anunciar la ruta · dice la VRF · no cambia» (`inner`). La 304 se marca: «exterior · etiqueta de túnel hacia PE2» (`outer`), y en el P cambia a 511: «[511][72] · 304 → 511» (`swap`). La imagen rotulada «imagen · no es el Consorcio»: un contenedor al que en cada estación le cambian la hoja de ruta pegada por fuera, mientras el albarán de dentro dice el andén de destino (`wagon`). El P, en gris, «solo mira la exterior · no sabe nada del Consorcio» (`ponly`). Variante, rotulada «penultimate hop popping · RFC 4364 §5»: el P quita la exterior (`php`). No se enseña qué pila le llega a PE2: es la respuesta de la pregunta 3, y el «[72]» de este recorrido sale en s07, en `ok-3`, junto a la correcta. Nota pequeña: «el dibujo de la lección va sin el atajo»",
+      "requiredCues": [
+        "trip",
+        "two",
+        "inner",
+        "outer",
+        "swap",
+        "wagon",
+        "ponly",
+        "php"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Dos P por el camino",
+      "targetSec": 41,
+      "wordBudget": 111,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio» (`question.tag`). Fondo quieto: un recorrido de otra red, «PE-A · P1 · P2 · PE-B», en gris y sin etiquetas. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (solo la 35, la de la VPN) y, al lado, el recorrido del Consorcio con el atajo: «con penultimate hop popping, PE2 recibe [72]» y en `trap-3` la trampa ([480][35]), con «así llegaría sin el atajo» al lado. La regla en una línea, «la exterior es del camino; la interior, del destino» (`rule-c`), y entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s08-capa2",
+      "chapter": 4,
+      "title": "Tirar la pared",
+      "targetSec": 77,
+      "wordBudget": 208,
+      "goal": "Rótulo fijo en toda la escena: «otra red, no el Consorcio · el Consorcio no tiene VPLS ni EVPN». Primero, la VPN de capa 3: dos sedes con subredes distintas y un encaminador entre ellas, «VPN de capa 3 · une redes IP» (`ip`). Después, dos centros de datos que comparten una misma red local, como si colgaran del mismo conmutador (`samelan`); una máquina virtual pasa de uno a otro con la misma dirección, rotulada «ejemplo de diseño, no texto de la RFC» (`vm`). Rótulo «VPLS · VPN de capa 2 multipunto · RFC 4761 (BGP) · RFC 4762 (LDP)» y la red del operador dibujada como un conmutador enorme que apunta MAC en una tabla según pasan las tramas: «aprende las MAC en el plano de datos» (`vpls`). Los PE se unen en malla completa de pseudocables; una trama que llega por un pseudocable intenta salir por otro y se bloquea: «split horizon · RFC 4762 §4.4» (`split`). Rótulo «EVPN · RFC 7432 · aprende las MAC por el plano de control (BGP) · §4» (`evpn`) y una sede unida a dos PE, los dos encendidos: «segmento Ethernet (ESI) · All-Active: todos reenvían el unicast conocido · §3» (`active`). La imagen rotulada «imagen · no es el Consorcio»: una planta diáfana donde una pregunta en voz alta llega a todas las mesas; luego, dos edificios así y la pared entre ellos que cae (`wall`). Las difusiones de un centro pasan al otro, rotulado «un solo dominio de difusión · RFC 4762» y, más pequeño, «lo que se inunda llega a los dos · razonamiento de diseño» (`flood`). Pregunta final en pantalla: «¿de verdad hace falta la misma red local?» (`need`). Tarjeta de examen al acabar la frase de EVPN",
+      "requiredCues": [
+        "ip",
+        "samelan",
+        "vm",
+        "vpls",
+        "split",
+        "evpn",
+        "active",
+        "wall",
+        "flood",
+        "need"
+      ]
+    },
+    {
+      "id": "s09-p4",
+      "chapter": 4,
+      "title": "Un bucle en la otra sede",
+      "targetSec": 45,
+      "wordBudget": 122,
+      "goal": "Pregunta tipo test 4 (`q4`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio» (`question.tag`). Fondo quieto: los dos edificios sin pared, a media luz. Cuenta atrás de 5 s. En `ok-4` se marca la correcta (le llega también: un solo dominio de difusión) y en `trap-4` la trampa (split horizon lo impide), con «split horizon: evita bucles dentro de la malla del operador» al lado. La regla en una línea, «con capa 2, la avería de una sede viaja» (`rule-d`), y entra la tarjeta",
+      "requiredCues": [
+        "q4",
+        "ok-4",
+        "trap-4",
+        "rule-d"
+      ]
+    },
+    {
+      "id": "s10-sara",
+      "chapter": 5,
+      "title": "Una portería por comunidad",
+      "targetSec": 66,
+      "wordBudget": 178,
+      "goal": "Varias administraciones, sin nombre, unidas a una red rotulada «Red SARA · Sistemas de Aplicaciones y Redes para las Administraciones», con una salida hacia «instituciones de la UE» (`between`). Rótulo «Real Decreto 4/2010 (Esquema Nacional de Interoperabilidad) · art. 13 · vigente» con la cita «uso preferente de la red de comunicaciones de las administraciones» (`art13`) y, debajo, la frase literal «La Red SARA prestará la citada Red de comunicaciones…» (`sara`). Nunca se abrevia el Real Decreto como «RD», para no confundirlo con el distinguidor de ruta. Rótulo «NTI de requisitos de conexión · Resolución de 19-7-2011 · vigente» (`nti`) y la lista de Proveedores de Acceso (PAS): «ministerios · comunidades y ciudades autónomas · órganos constitucionales · NTI §II.3» (`pas`). Una portería en la entrada de un PAS, rotulada «área de conexión · punto único de conexión · NTI §III.1», en estructura de DMZ entre «subsistema de seguridad externo» y «subsistema de seguridad interno», con «DNS · correo · NTP · proxy · proxy inverso» dentro (`gate`). Una entidad local, sin portería, enlazada a la de su comunidad autónoma: «entidades locales → PAS de su comunidad autónoma · NTI §II.3 · se le pide a él la conexión · §II.4» (`local`). El Consorcio aparece con una línea de puntos hacia esa comunidad y el rótulo «lo que prevé la norma · el canon no dice que el Consorcio esté conectado ni lo trata como entidad local» (`cons`). Al final, dos redes una al lado de otra: «WAN MPLS · las sedes del Consorcio» y «Red SARA · administraciones distintas» (`tworeds`). En una esquina, sin voz: «según el Portal de Administración Electrónica: red completamente mallada · 10 Gbps en ministerios y 100 Mbps en comunidades autónomas» (el «tráfico cifrado» de esa misma ficha no sale aquí: es la respuesta de la pregunta 5). Tarjeta de examen al acabar la frase de la entidad local",
+      "requiredCues": [
+        "between",
+        "art13",
+        "sara",
+        "nti",
+        "pas",
+        "gate",
+        "local",
+        "cons",
+        "tworeds"
+      ]
+    },
+    {
+      "id": "s11-p5",
+      "chapter": 5,
+      "title": "Por la red del operador",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 5 (`q5`), rótulo «pregunta tipo test · ejemplo» (`question.tag`). Fondo quieto: la portería del área de conexión a media luz. Cuenta atrás de 5 s. En `ok-5` se marca la correcta (cifrado en túneles que levanta el subsistema externo) y en `trap-5` la trampa (en claro, porque esa red solo la usan administraciones), con «una red propia no es una red cifrada» al lado. La regla en una línea, «NTI §III.1 · todo lo que pasa por el operador, cifrado en túneles» (`rule-e`). Sin tarjeta de examen en esta escena",
+      "requiredCues": [
+        "q5",
+        "ok-5",
+        "trap-5",
+        "rule-e"
+      ]
+    },
+    {
+      "id": "s12-cierre",
+      "chapter": 5,
+      "title": "Rutas o paquetes",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "goal": "Cinco chips que entran con la voz: «CE del cliente · PE y P del operador · el P no sabe de VPN» (`rule-1`), «VRF separa · RD hace única la ruta · Route Target decide adónde va» (`rule-2`), «interior: la VRF · exterior: el camino» (`rule-3`), «capa 2 entre sedes: un solo dominio de difusión» (`rule-4`) y «entidad local: a la Red SARA por el PAS de su comunidad autónoma» (`rule-5`), tras el rótulo «cinco ideas» (`recap`). Frase final en grande: «¿rutas o paquetes?» (`phrase`). Llamada a las preguntas de la lección (`next`) y tarjeta final de Alertópolis (`endcard`)",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "rule-4",
+        "rule-5",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

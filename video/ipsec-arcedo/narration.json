@@ -1,0 +1,475 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "ok-4": "check",
+    "trap-4": "block",
+    "ok-5": "check",
+    "trap-5": "block",
+    "internet": "whoosh",
+    "natbreak": "error",
+    "courier": "mail",
+    "lock": "lock",
+    "blackhole": "glitch"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {office}Se cae el acceso principal de una oficina del Consorcio de Arcedo. {internet}Su tráfico sigue, pero por Internet, donde pasa cualquiera.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Para que nadie lo lea ni lo cambie, va metido en un túnel IPsec. {promise}Vamos a ver cómo se protege, cómo cruza un NAT y cuánto cabe por él.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-acuerdo",
+      "text": "<clear> {deal}Empecemos por el principio. Antes de proteger nada, los dos encaminadores se ponen de acuerdo en cómo hacerlo, con qué algoritmos y con qué claves.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-acuerdo",
+      "text": "<steady> {sa}Ese acuerdo se llama asociación de seguridad, o SA. {oneway}Y tiene una pega, que solo sirve en un sentido.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-acuerdo",
+      "text": "<engaging> {pair}Así que para ida y vuelta hacen falta dos, una de la oficina a la sede y otra para volver.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-acuerdo",
+      "text": "<warm> {cloak}Piensa en un guardarropa. Dejas el abrigo y te dan un tique con un número. Cuando vuelves, lo enseñas y te devuelven el tuyo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-acuerdo",
+      "text": "<thoughtful> {spi}Pues cada paquete protegido lleva un número así, el SPI. {lookup}Con él, quien lo recibe sabe al momento a qué SA pertenece y qué claves le tocan.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}A ver si lo sacas. Por el túnel de una oficina, cada paquete que va hacia la sede lleva su SPI en la cabecera. ¿Cuál de los dos extremos eligió ese número?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Infraestructuras",
+        "scenario": "Por el túnel de respaldo de una oficina, cada paquete que va hacia la sede lleva en su cabecera el SPI de su SA.",
+        "q": "¿Quién eligió ese número?",
+        "options": [
+          "La oficina, porque envía por esa SA",
+          "La sede, porque recibe por esa SA",
+          "El extremo que arrancó el túnel",
+          "Los dos, a partes iguales"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "El SPI lo elige el receptor, para reconocer a qué SA pertenece lo que le llega",
+        "trapWhy": "La oficina lo pone en cada paquete, pero el número se lo dio la sede",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}La sede. Es la que recibe por esa SA, así que elige el número con el que va a reconocerla.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}La oficina tienta, porque es la que lo escribe en cada paquete. Pero el tique lo da el guardarropa. {rule-a}Una SA por sentido, y su número lo elige quien recibe.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Una SA por sentido. Su SPI lo elige quien recibe",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-sobres",
+      "text": "<clear> {two}Ya hay acuerdo. Ahora, ¿cómo viaja el paquete protegido? IPsec tiene dos maneras.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-sobres",
+      "text": "<steady> {esp}La que se usa casi siempre cifra los datos y, además, comprueba que nadie los ha tocado. Se llama ESP.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-sobres",
+      "text": "<warm> {envelope}Es como un sobre opaco y lacrado. No se ve lo que lleva, y si alguien lo abre, se nota.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-sobres",
+      "text": "<thoughtful> {ah}La otra, AH, es un sobre transparente. No cifra, solo precinta, y el precinto cubre también las direcciones. {natbreak}Si un NAT cambia una por el camino, el precinto salta.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "ESP cifra y autentica. AH no cifra y no cruza un NAT",
+        "at": "natbreak",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-sobres",
+      "text": "<confident> {mode}Falta saber qué va dentro. Entre dos encaminadores va el paquete entero, con sus direcciones internas. {outer}Y por fuera, una dirección nueva, de un extremo del túnel al otro.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-sobres",
+      "text": "<engaging> {tunnel}Eso es el modo túnel, un sobre dentro de otro. {transport}El otro modo, el de transporte, deja fuera la cabecera original, y es el típico entre dos equipos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Ahora te toca espiar. Supón un túnel de respaldo sin NAT por medio. Un puesto de la oficina abre una web del CPD, y alguien lo graba en Internet. ¿Qué direcciones podrá leer?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Infraestructuras",
+        "scenario": "Supón un túnel de respaldo con ESP en modo túnel y sin NAT. Un puesto de la oficina abre una web del CPD y alguien lo captura en Internet.",
+        "q": "¿Qué direcciones IP verá en claro esa captura?",
+        "options": [
+          "Las del puesto y del servidor web",
+          "Las de los encaminadores de la oficina y la sede",
+          "La del puesto y la del encaminador de la sede",
+          "Ninguna dirección IP"
+        ],
+        "answer": 1,
+        "trap": 3,
+        "why": "Por fuera van los dos extremos del túnel. Las internas viajan dentro, cifradas",
+        "trapWhy": "El paquete de fuera necesita una dirección visible para llegar a la sede",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Las de los dos encaminadores. Son la dirección del sobre de fuera, y las del puesto y del servidor viajan dentro, cifradas.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Decir que ninguna suena redondo, pero el sobre de fuera tiene que llevar dirección, o no llegaría. {rule-b}En modo túnel, por fuera solo se ven los dos extremos.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Modo túnel: por fuera, solo los dos extremos del túnel",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-ike",
+      "text": "<clear> {keys}Queda saber de dónde salen las claves. No las escribe nadie a mano. Las negocia un protocolo, IKE, en su versión dos, por el puerto quinientos de UDP.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-ike",
+      "text": "<steady> {init}Empiezan con dos mensajes en claro. Se proponen algoritmos y cada uno pone su parte de un Diffie-Hellman. {ikesa}De ahí sale su propio canal seguro, la SA de IKE.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-ike",
+      "text": "<engaging> {auth}Con otros dos, ya cifrados, cada uno demuestra quién es. {child}Y en ese mismo paso nace la SA del tráfico, la SA hija. Cuatro mensajes, y el túnel funciona.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-ike",
+      "text": "<thoughtful> {nat}Ahora mete un NAT en medio. ESP no usa puertos, y muchos NAT no saben traducirlo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-ike",
+      "text": "<confident> {detect}Por eso, en los dos primeros mensajes, cada lado manda un resumen de las direcciones y puertos que ve. Si al otro no le cuadra, hay un NAT.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-ike",
+      "text": "<warm> {courier}Entonces todo pasa al puerto cuatro mil quinientos de UDP, IKE y ESP juntos. {box}Es meter el sobre en una caja de mensajería corriente, que cualquier NAT sabe repartir.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Con NAT por medio, IKE y ESP van por UDP 4500",
+        "at": "courier",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Una de averías. Al arrancar un túnel, las identidades se comprueban bien. Pero la sede no acepta las redes que la oficina quiere meter en él. ¿Qué queda en pie?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Infraestructuras",
+        "scenario": "Al arrancar un túnel, la autenticación sale bien, pero la sede no acepta las redes que la oficina pide para la SA hija.",
+        "q": "¿Qué queda establecido tras ese rechazo?",
+        "options": [
+          "Nada: hay que empezar de nuevo desde el principio",
+          "La SA de IKE, sin ninguna SA hija",
+          "La SA hija, pero sin la SA de IKE",
+          "Una sola SA hija, de la oficina a la sede"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "Si falla solo la SA hija, la SA de IKE queda creada igualmente",
+        "trapWhy": "Empezar de cero es lo que pasa si falla la autenticación, no la SA hija",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Queda la SA de IKE, el canal entre los dos. Lo que no nace es la SA hija, la del tráfico.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Volver a empezar parece lo prudente, pero eso pasa cuando falla la identidad. {rule-c}Si solo falla la SA hija, el canal de IKE sigue en pie.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Si falla solo la SA hija, la SA de IKE se queda",
+        "at": "rule-c",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-claves",
+      "text": "<clear> {life}Esas claves no duran para siempre. Cada SA tiene una vida, en tiempo o en bytes, y cuando caduca ya no se puede usar.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-claves",
+      "text": "<steady> {rekey}Así que, antes de que caduque, se crea otra igual con claves nuevas y se borra la vieja. Eso es reclavar, y el tráfico ni se entera.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-claves",
+      "text": "<warm> {lock}Es como cambiar el candado cada cierto tiempo, y tirar la combinación del viejo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-claves",
+      "text": "<thoughtful> {lifeval}Un detalle. Cada extremo aplica su propia vida, sin negociarla, y reclava el que la tenga más corta. {vendor}Los valores, eso sí, los pone cada fabricante.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-claves",
+      "text": "<engaging> {pfs}Ahora, lo importante. Si un día roban las claves de larga duración de los encaminadores, lo grabado antes sigue a salvo. Eso es el secreto perfecto hacia delante.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-claves",
+      "text": "<confident> {dh}Lo da el Diffie-Hellman del arranque, que es de usar y tirar. {ke}Y si quieres que cada reclave tenga el suyo, la petición tiene que llevar un Diffie-Hellman nuevo.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "PFS en cada reclave: un Diffie-Hellman nuevo (KE)",
+        "at": "ke",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-p4",
+      "text": "<curious> {q4}Te propongo un robo. Alguien graba hoy el túnel de una oficina, sin tocar nada. Al cabo de un año, roba las claves de larga duración. ¿Le sirve lo grabado?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Infraestructuras",
+        "scenario": "Alguien graba hoy, sin alterar nada, el tráfico de un túnel de respaldo. Dentro de un año roba las claves de larga duración de los dos encaminadores.",
+        "q": "¿Podrá descifrar lo que grabó?",
+        "options": [
+          "No, porque las claves salieron de un Diffie-Hellman efímero",
+          "Sí, porque con esas claves se rehacen todas las demás",
+          "Sí, la primera SA hija, que no tuvo Diffie-Hellman propio",
+          "Solo si las SA tenían una vida de más de un día"
+        ],
+        "answer": 0,
+        "trap": 2,
+        "why": "Todas las SA se apoyan en el Diffie-Hellman del arranque, que esas claves no rehacen",
+        "trapWhy": "Sin DH propio depende de la SA de IKE, no de las claves de larga duración",
+        "countdownMs": 5000,
+        "revealAt": "ok-4",
+        "trapAt": "trap-4"
+      }
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-p4",
+      "text": "<confident> {ok-4}No. Las claves de cada SA salieron de un Diffie-Hellman de usar y tirar, y las de larga duración no sirven para rehacerlo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-p4",
+      "text": "<firm> {trap-4}La primera SA hija despista. No tuvo un Diffie-Hellman propio, pero se apoya en el del arranque. {rule-d}Lo grabado hoy no se abre con las claves de mañana.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "PFS: lo grabado hoy no se abre con las claves de mañana",
+        "at": "rule-d",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-galibo",
+      "text": "<clear> {wrap}Último capítulo, y va de tamaños. Cada sobre que añadimos ocupa sitio, y el paquete de fuera tiene que caber en el enlace.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-galibo",
+      "text": "<steady> {mtu}Ese tope se llama MTU, y para el acceso de la oficina vamos a suponer mil quinientos octetos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-galibo",
+      "text": "<warm> {truck}Es el gálibo de un túnel de carretera. El camión cabía antes de envolver la carga, y envuelto ya no pasa.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-galibo",
+      "text": "<thoughtful> {sum}La cuenta está en pantalla. A los mil quinientos se les quita la cabecera de fuera y, si hay NAT, el UDP.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-galibo",
+      "text": "<steady> {esp37}Y luego, lo que añade ESP con el algoritmo del ejemplo, de treinta y cuatro a treinta y siete octetos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-06",
+      "scene": "s10-galibo",
+      "text": "<engaging> {df}Un paquete de mil quinientos que pide no fragmentarse ya no cabe. El encaminador lo tira y avisa al origen para que baje el tamaño.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s10-07",
+      "scene": "s10-galibo",
+      "text": "<concerned> {blackhole}Si alguien filtra ese aviso, la conexión se cuelga. El saludo pasa, porque es pequeño, y la descarga se queda parada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-08",
+      "scene": "s10-galibo",
+      "text": "<confident> {clamp}Por eso, en los extremos del túnel se rebaja el tamaño que anuncia cada conexión TCP al abrirse, el MSS. {vendor2}El valor concreto y la orden, los pone cada fabricante.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-p5",
+      "text": "<intrigued> {q5}Una de cuentas, sin calculadora. Con el mismo algoritmo, ESP añade unas veces treinta y cuatro octetos y otras treinta y siete. ¿Qué parte cambia?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Infraestructuras",
+        "scenario": "ESP en modo túnel con ENCR_AES_GCM_16 añade a cada paquete entre 34 y 37 octetos, sin contar la cabecera IP de fuera ni el UDP.",
+        "q": "¿Por qué no añade siempre lo mismo?",
+        "options": [
+          "Porque el relleno depende de cuánto se cifra",
+          "Porque el número de secuencia crece en cada paquete",
+          "Porque la etiqueta de integridad crece con los datos",
+          "Porque el vector de inicialización no va siempre"
+        ],
+        "answer": 0,
+        "trap": 1,
+        "why": "Solo varía el relleno, de 0 a 3 octetos aquí. Lo demás mide siempre lo mismo",
+        "trapWhy": "El contador sube, pero su campo ocupa siempre 4 octetos",
+        "countdownMs": 5000,
+        "revealAt": "ok-5",
+        "trapAt": "trap-5"
+      }
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-p5",
+      "text": "<confident> {ok-5}El relleno. Según cuánto haya que cifrar, hacen falta de cero a tres octetos más. Lo demás mide siempre lo mismo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-p5",
+      "text": "<firm> {trap-5}El número de secuencia confunde, porque sube con cada paquete. Pero su hueco es siempre de cuatro octetos. {rule-e}Por eso se diseña con el peor caso, treinta y siete.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "ESP con AES-GCM-16: de 34 a 37 octetos. Se diseña con 37",
+        "at": "rule-e",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-cierre",
+      "text": "<cheerful> {recap}En corto, lo que te llevas. {rule-1}Una SA por sentido, y su número lo pone quien recibe. {rule-2}ESP cifra, y en modo túnel solo se ven los dos extremos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-cierre",
+      "text": "<clear> {rule-3}Con un NAT, todo al cuatro mil quinientos. {rule-4}Un Diffie-Hellman de usar y tirar protege lo de hoy. {rule-5}Y cada capa del túnel le quita sitio al paquete.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-cierre",
+      "text": "<engaging> {phrase}Si un túnel levanta pero lo grande no pasa, mira el tamaño antes que las claves. {next}Y ahora, ponlo a prueba {endcard}con el cuestionario de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

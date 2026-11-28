@@ -1,0 +1,493 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "ok-4": "check",
+    "trap-4": "block",
+    "ok-5": "check",
+    "trap-5": "block",
+    "clash": "glitch",
+    "rd": "ding",
+    "swap": "whoosh",
+    "wall": "error",
+    "gate": "lock"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {sites}El Consorcio de Arcedo une sus sedes por la red de un operador. {others}Por ella viajan otros clientes, quizá con sus mismas direcciones.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Hoy abrimos la caja del operador. {promise}Quién hace qué ahí dentro, cómo no se mezclan los clientes y qué es la Red SARA.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-papeles",
+      "text": "<clear> {roles}Dentro de esa red hay tres papeles. {ce}En cada sede, el encaminador del Consorcio es el CE, el borde del cliente.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-papeles",
+      "text": "<steady> {pe}Se conecta a un encaminador del operador, el PE, que es el borde del proveedor. {p}Y por el interior van los P, que no tocan a ningún cliente.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-papeles",
+      "text": "<warm> {train}Es como mandar mercancía por tren. Tú solo tratas con la terminal de tu ciudad. Y en las estaciones del camino nadie sabe de quién es cada contenedor.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-papeles",
+      "text": "<engaging> {peer}Así que el CE habla de rutas solo con su PE, no con las otras sedes.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-papeles",
+      "text": "<thoughtful> {nooverlay}En esta VPN no hay túneles entre sedes que mantener. La propia norma dice que no es una red superpuesta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-papeles",
+      "text": "<firm> {pblind}Y los P no guardan nada de ninguna VPN. Solo reenvían.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "CE del cliente, PE y P del operador. El P no sabe de VPN",
+        "at": "pblind",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Empezamos con una de papeles. En una oficina, entre su encaminador y el PE, hay un conmutador de capa dos que solo une los dos equipos. ¿Qué papel tiene ese conmutador?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · supuesto",
+        "objective": "Infraestructuras",
+        "scenario": "Supuesto: en una oficina del Consorcio, entre su encaminador y el PE del operador, hay un conmutador de capa 2 que solo une los dos equipos.",
+        "q": "Según la RFC 4364, ¿qué papel tiene ese conmutador?",
+        "options": [
+          "Es el CE, porque está en la oficina del cliente",
+          "Es un PE, porque une la oficina con el operador",
+          "Ninguno: el CE sigue siendo el encaminador de la oficina",
+          "Es un P, porque solo reenvía y no guarda rutas"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "La RFC 4364 dice que un conmutador de capa 2 entre el CE y el PE no es un CE",
+        "trapWhy": "Estar en la oficina no basta: el CE es el encaminador que habla con el PE",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Ninguno de los tres. El CE sigue siendo el encaminador de la oficina, que es quien habla de rutas con el PE.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Que esté en la oficina suena razonable, pero no basta. {rule-a}La norma lo dice claro, un conmutador de capa dos en medio no es un CE.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Un conmutador de capa 2 entre CE y PE no es un CE",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-vrf",
+      "text": "<clear> {client2}Ahora, imagina que otro cliente usa justo las mismas direcciones privadas. Puede pasar, el estándar lo permite.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-vrf",
+      "text": "<steady> {vrf}Para no mezclarlos, cada PE tiene una tabla aparte por cliente, una VRF.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-vrf",
+      "text": "<warm> {bound}El circuito del Consorcio está atado a la suya, y lo que entra por él solo se busca ahí. {platform}En la terminal del tren, es un andén para cada cliente.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-vrf",
+      "text": "<thoughtful> {clash}El lío llega cuando los PE se cuentan sus rutas por BGP. Dos rutas a la misma red, de dos clientes, chocarían.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-vrf",
+      "text": "<confident> {rd}Así que delante de cada ruta se pone un número de ocho bytes, el RD, o distinguidor de ruta. {unique}Con él, la misma red ya son dos rutas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-vrf",
+      "text": "<engaging> {rt}Pero el RD no dice a qué VRF va la ruta. Eso lo decide otra marca, el Route Target.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "El RD hace única la ruta. El Route Target elige la VRF",
+        "at": "rt",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-vrf",
+      "text": "<steady> {export}Cada VRF marca lo que anuncia con sus Route Targets de exportación. {import}Y solo acepta las rutas que traigan alguno de sus Route Targets de importación.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Pongámoslo a prueba. Al PE llega, por el circuito del Consorcio, un paquete hacia la sede, y el otro cliente tiene esas mismas direcciones. ¿Dónde busca el PE ese destino?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Infraestructuras",
+        "scenario": "PE1 da servicio al Consorcio y a otro cliente con las mismas direcciones privadas. Por el circuito de acceso del Consorcio entra un paquete hacia la sede.",
+        "q": "¿En qué tabla busca PE1 el destino de ese paquete?",
+        "options": [
+          "En la tabla por defecto del PE, la de la red del operador",
+          "En la VRF del Consorcio, porque ese circuito está asociado a ella",
+          "En la VRF que indica el RD que trae el paquete",
+          "En todas sus VRF, hasta dar con una ruta al destino"
+        ],
+        "answer": 1,
+        "trap": 2,
+        "why": "Cada circuito de acceso está asociado a una VRF, y lo que entra por él se busca en ella",
+        "trapWhy": "El paquete llega del CE sin RD: ese número solo va en las rutas que se pasan los PE",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}En la VRF del Consorcio. El circuito por el que entra ya dice de quién es.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Cuidado con el RD, que el paquete no lo lleva. Solo viaja en las rutas entre PE. {rule-b}Lo que entra por un circuito, se busca en su VRF.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "El circuito de acceso decide la VRF del paquete",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-etiquetas",
+      "text": "<clear> {trip}Sigamos al paquete por dentro. PE1 ya lo ha buscado en la VRF del Consorcio, {two}y ahora le pone dos etiquetas, una encima de otra.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-etiquetas",
+      "text": "<steady> {inner}La de dentro la eligió el PE de salida, PE2, cuando anunció la ruta. Le dice a qué VRF va el paquete, y no cambia en todo el viaje.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-etiquetas",
+      "text": "<engaging> {outer}La de fuera lleva el paquete por la red del operador hasta PE2. {swap}Y esa sí cambia, en cada salto.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-etiquetas",
+      "text": "<warm> {wagon}Vuelve a la terminal. Tu contenedor lleva fuera una hoja de ruta, que cambian en cada estación. Y dentro, el andén al que va.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-etiquetas",
+      "text": "<thoughtful> {ponly}Por eso al P le basta con mirar la de fuera.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-etiquetas",
+      "text": "<confident> {php}Hay además un atajo. El último P antes del PE de salida quita la etiqueta de fuera antes de entregar el paquete.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Ahora, una de etiquetas, en otra red. Por el camino hay dos P. El primero cambia la de fuera, y el segundo aplica ese atajo. ¿Qué le llega al PE de salida?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Infraestructuras",
+        "scenario": "En otra red, PE-A envía a PE-B con la exterior 210 y la interior 35. P1 cambia la 210 por la 480. P2, el último antes de PE-B, aplica penultimate hop popping.",
+        "q": "¿Qué etiquetas le llegan a PE-B?",
+        "options": [
+          "La 480 encima de la 35, como las dejó P1",
+          "La 210 encima de la 35, como las puso PE-A",
+          "Ninguna, solo el paquete IP del cliente",
+          "Solo la 35, la etiqueta de la VPN"
+        ],
+        "answer": 3,
+        "trap": 0,
+        "why": "P2 quita la exterior y deja la interior, que dice a PE-B en qué VRF buscar",
+        "trapWhy": "Así llegaría sin el atajo. Con él, la exterior se queda en P2",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Solo la de dentro, la de la VPN. El segundo P quita la de fuera, y la de dentro llega intacta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}La que lleva dos etiquetas es la que más engaña, porque así llegaría sin el atajo. {rule-c}La de fuera es del camino, y la de dentro, del destino.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Etiqueta interior: la VRF. Exterior: el camino al PE",
+        "at": "rule-c",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-capa2",
+      "text": "<clear> {ip}Hasta aquí, el operador une redes IP, y entre ellas encamina.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-capa2",
+      "text": "<curious> {samelan}Pero a veces se quiere que dos centros compartan la misma red local, como si colgaran del mismo conmutador. {vm}Por ejemplo, para mover una máquina virtual sin cambiarle la dirección.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-capa2",
+      "text": "<steady> {vpls}Para eso están las VPN de capa dos, que el Consorcio no tiene. La clásica es VPLS. El operador hace de conmutador gigante, y aprende las MAC mirando el tráfico.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-capa2",
+      "text": "<thoughtful> {split}Une sus PE en malla completa, con una regla para no formar bucles. Lo que llega por un enlace de la malla no sale por otro. Es el split horizon.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-capa2",
+      "text": "<engaging> {evpn}La más moderna es EVPN, que aprende las MAC por BGP, en el plano de control. {active}Y deja que una sede se una a dos PE que reenvían a la vez.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "EVPN aprende las MAC por BGP. VPLS, mirando el tráfico",
+        "at": "evpn",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-capa2",
+      "text": "<warm> {wall}Ahora, el precio. Imagina una planta diáfana, donde una pregunta en voz alta la oye todo el mundo. Extender la capa dos es tirar la pared entre dos edificios así.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-07",
+      "scene": "s08-capa2",
+      "text": "<concerned> {flood}Las difusiones de uno llegan al otro, y los efectos de un bucle, también. {need}Así que antes, pregúntate si de verdad hace falta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-p4",
+      "text": "<curious> {q4}Esta pasa en otra empresa. Dos sedes comparten la misma red local con el VPLS de su operador. En una, un cable mal puesto forma un bucle, y las difusiones se disparan. ¿Qué nota la otra sede?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Infraestructuras",
+        "scenario": "En otra red, dos sedes comparten la misma LAN con un servicio VPLS del operador. En una, un cable mal puesto forma un bucle y la difusión se dispara.",
+        "q": "¿Qué le pasa a la otra sede?",
+        "options": [
+          "Le llega también esa difusión: las dos son un solo dominio",
+          "Nada, porque split horizon impide que la difusión cruce entre PE",
+          "Nada, porque el operador encamina por IP entre las sedes",
+          "Solo le llega si las dos sedes cuelgan del mismo PE"
+        ],
+        "answer": 0,
+        "trap": 1,
+        "why": "VPLS crea un único dominio de difusión entre los sitios que une",
+        "trapWhy": "Split horizon evita bucles dentro de la malla del operador, no frena la difusión",
+        "countdownMs": 5000,
+        "revealAt": "ok-4",
+        "trapAt": "trap-4"
+      }
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-p4",
+      "text": "<confident> {ok-4}Le llega también. Con VPLS, las dos sedes son un solo dominio de difusión. Lo que se inunda en una, se inunda en la otra.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-p4",
+      "text": "<firm> {trap-4}El split horizon tienta, pero solo evita bucles dentro de la malla. No frena lo que entra desde una sede. {rule-d}Con capa dos, la avería de una sede viaja.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Capa 2 entre sedes: un solo dominio de difusión",
+        "at": "rule-d",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-sara",
+      "text": "<clear> {between}Hasta ahora, cómo une el Consorcio sus sedes. Pero las administraciones también hablan entre ellas, y con las instituciones europeas.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-sara",
+      "text": "<confident> {art13}Lo dice el artículo trece del Real Decreto cuatro de dos mil diez. Dice que usarán preferentemente la red de comunicaciones de las administraciones. {sara}Y que esa red la presta la Red SARA.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-sara",
+      "text": "<steady> {nti}Cómo se entra lo fija una norma técnica de dos mil once. {pas}Los ministerios y las comunidades autónomas, entre otros, son proveedores de acceso.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-sara",
+      "text": "<warm> {gate}Cada proveedor tiene su portería, el área de conexión. Es el único punto por donde habla con las demás administraciones, entre una barrera de seguridad exterior y otra interior.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-sara",
+      "text": "<thoughtful> {local}Una entidad local no tiene portería propia. Entra por la de su comunidad autónoma, y a ella le pide la conexión.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Entidad local: a la Red SARA por su comunidad autónoma",
+        "at": "local",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-06",
+      "scene": "s10-sara",
+      "text": "<engaging> {cons}Si el Consorcio se tratara como entidad local, llegaría así, por su comunidad, y no por su operador. {tworeds}O sea, la red MPLS une sus sedes, y la Red SARA, administraciones distintas.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-p5",
+      "text": "<intrigued> {q5}La quinta sale de esa norma técnica. Dentro del área de conexión, la barrera exterior habla con las demás sedes a través de la red del operador. ¿Cómo viaja ese tráfico?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Infraestructuras",
+        "scenario": "Según la NTI de requisitos de conexión, el área de conexión de cada Proveedor de Acceso es su punto único con las demás administraciones.",
+        "q": "¿Cómo va el tráfico de esa área que pasa por la red del operador?",
+        "options": [
+          "En claro, porque esa red solo la usan administraciones",
+          "Cifrado en túneles, que levanta el subsistema de seguridad externo",
+          "Cifrado solo cuando sale hacia las instituciones europeas",
+          "En claro, y cada aplicación decide si cifra lo suyo"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "El subsistema externo levanta una VPN con las demás sedes: todo va cifrado en túneles",
+        "trapWhy": "Que la red sea solo de administraciones no la cifra: la NTI pide túneles igual",
+        "countdownMs": 5000,
+        "revealAt": "ok-5",
+        "trapAt": "trap-5"
+      }
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-p5",
+      "text": "<confident> {ok-5}Cifrado en túneles. La barrera exterior levanta una VPN con las demás sedes, y todo lo que pasa por el operador va dentro.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-p5",
+      "text": "<firm> {trap-5}Parece lógico que, si la red es solo de administraciones, no haga falta cifrar. {rule-e}Pero ir por una red propia no es ir cifrado.",
+      "pauseAfterMs": 2300
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-cierre",
+      "text": "<cheerful> {recap}Cinco ideas para llevarte. {rule-1}Una, el CE es del cliente, el PE y el P, del operador, y el P no sabe de VPN.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-cierre",
+      "text": "<clear> {rule-2}Dos, la VRF separa a los clientes, el RD hace únicas sus rutas y el Route Target decide adónde van.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-cierre",
+      "text": "<calm> {rule-3}Tres, la etiqueta de dentro dice la VRF, y la de fuera, el camino.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s12-04",
+      "scene": "s12-cierre",
+      "text": "<steady> {rule-4}Cuatro, extender la capa dos junta también las difusiones. {rule-5}Y cinco, a la Red SARA una entidad local entra por su comunidad autónoma.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s12-05",
+      "scene": "s12-cierre",
+      "text": "<engaging> {phrase}Cuando dudes en una de estas, piensa primero si hablas de rutas o de paquetes. {next}Y ahora, a por las preguntas de la lección, {endcard}que te esperan.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

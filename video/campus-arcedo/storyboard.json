@@ -1,0 +1,148 @@
+{
+  "title": "Red de campus: calles, avenidas y circunvalación",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 310,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Quién hace qué"
+    },
+    {
+      "n": 2,
+      "title": "Qué cae con una avería"
+    },
+    {
+      "n": 3,
+      "title": "Cuánto cabe hacia arriba"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Bajo el mismo techo",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. La sede en corte, sin número fijo de plantas (al menos dos): un conmutador por planta con sus puestos y, en una sala del mismo edificio, el CPD, rotulado «CPD · 10.20.72.0/21» y «200 puestos · 10.20.10.0/24» (`building`). Un enlace parpadea en rojo con un interrogante encima: ¿qué cae con él? (`hold`). Título «Redes de campus: diseño» (`title`, antes de los 12 s) y la promesa en tres chips: «quién hace qué · qué cae con una avería · cuánto cabe hacia arriba», las mismas tres cosas que dice la voz (`promise`). Plaquita «REDES Y ENS · Infraestructuras». No se dibuja cómo se une el CPD con la distribución: no está fijado",
+      "requiredCues": [
+        "building",
+        "hold",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-capas",
+      "chapter": 1,
+      "title": "Calles, avenidas y circunvalación",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "goal": "La imagen, rotulada «imagen · no es el Consorcio»: un plano de ciudad con calles de portales, avenidas por barrio y una circunvalación (`city`). Se superpone el esquema de un campus de tres capas con el rótulo «modelo jerárquico · guía de diseño de Cisco · valor del fabricante»: «acceso · conecta usuarios y equipos» sobre las calles (`access`); «distribución · agrega los accesos · frontera capa 2 / capa 3 · resume rutas» sobre las avenidas (`dist`); «núcleo · une distribuciones · solo capa 3» sobre la circunvalación (`core`), y entra la tarjeta. Luego la sede: la circunvalación se apaga y DIST1 y DIST2, rotulados «distribución de capa 3 · una SVI por VLAN», se iluminan también como núcleo (`collapsed`). Rótulo «núcleo colapsado (collapsed core) · diseño de dos niveles» (`name`) y, al lado, «guía de Cisco: núcleo dedicado con 3 o más bloques de distribución · la sede: 1 bloque» (`three`). Por último, cada conmutador de planta con una línea a DIST1 y otra a DIST2, rotulado «práctica recomendada de redundancia · no fijado para cada planta de la sede» (`uplinks`)",
+      "requiredCues": [
+        "city",
+        "access",
+        "dist",
+        "core",
+        "collapsed",
+        "name",
+        "three",
+        "uplinks"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Una sola subida",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo · supuesto» (lo pone el campo `tag`). Fondo quieto a media luz: una planta con un solo enlace hacia DIST1, las demás plantas con enlace a DIST1 y a DIST2, DIST1 tachado y DIST2 encendido, sin texto. Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (se quedan aislados dentro de su planta) y la planta queda como una isla (`isolated`); en `trap-1` la trampa (DIST2 toma el relevo). Vuelve la línea de redundancia de s02, «cada planta sube a las dos» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "isolated",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-fallo",
+      "chapter": 2,
+      "title": "Que se quede en el bloque",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "goal": "La ciudad de s02 («imagen · no es el Consorcio»): un atasco en una calle, la circunvalación sigue fluida (`jam`). Rótulo «dominio de fallo · lo que se ve afectado cuando algo se rompe o se porta mal» (`domain`). Un esquema genérico de varias plantas con una sola VLAN que las recorre todas, de un color (`stretch`); se forma un bucle y la tormenta de difusión enciende todos los conmutadores de esa VLAN (`storm`). La frontera «capa 2 / capa 3» baja hasta la distribución y el color se parte en un trozo por bloque (`border`); un tabique encierra cada bloque: «lo que pasa en un bloque se queda en el bloque» (`contain`). Al final, dos distribuciones en un mismo armario con un único enchufe, rotulado «mismo armario, misma alimentación: comparten dominio de fallo físico» (`cabinet`)",
+      "requiredCues": [
+        "jam",
+        "domain",
+        "stretch",
+        "storm",
+        "border",
+        "contain",
+        "cabinet"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Una VLAN por el núcleo",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio». Fondo quieto a media luz: dos edificios, cada uno con acceso y distribución, unidos por un núcleo, y una sola VLAN dibujada de un edificio al otro a través del núcleo. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (una tormenta en esa VLAN alcanzaría los dos edificios) y en `trap-2` la trampa (el núcleo es de capa 3 y frena la difusión). La regla en una línea, «la frontera, abajo; cada avería, en su bloque» (`rule-b`), y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-sobre",
+      "chapter": 3,
+      "title": "Calles que desembocan en la avenida",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "goal": "Un conmutador de acceso de frente: muchas bocas abajo hacia los puestos, dos arriba hacia la distribución (`lanes`). La ciudad («imagen · no es el Consorcio»): muchas calles desembocan en una avenida de dos carriles; los coches salen poco a poco y caben (`avenue`). Rótulo «sobresuscripción (oversubscription) = bajada / subida · N:1» (`ratio`), y entra la tarjeta. El ejemplo de la lección, rotulado «cifras del ejercicio, no del Consorcio»: «48 × 1 Gbit/s = 48» · «2 × 10 Gbit/s = 20» · «48 / 20 = 2,4:1» (`calc`). Un enlace de subida se cae: «1 × 10 Gbit/s = 10» · «48 / 10 = 4,8:1 · el doble» (`down`). Tabla pequeña rotulada «guía de diseño de Cisco · valor del fabricante, no norma»: «acceso → distribución: hasta 20:1» · «distribución → núcleo: hasta 4:1» (`vendor`)",
+      "requiredCues": [
+        "lanes",
+        "avenue",
+        "ratio",
+        "calc",
+        "down",
+        "vendor"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Con un enlace caído",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio». Fondo quieto a media luz: una pila de acceso con sus enlaces de subida sin contar, sin cifras. Cuenta atrás de 6 s (hay que hacer una cuenta). En `ok-3` se marca la correcta (4 enlaces) y aparece la cuenta «4 enlaces, cae 1: 3 × 10 = 30 · 96 / 30 = 3,2:1»; en `trap-3` la trampa (3 enlaces) con «3 enlaces, cae 1: 2 × 10 = 20 · 96 / 20 = 4,8:1». La regla en una línea, «la cuenta, también con el enlace que falla» (`rule-c`), y entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Fallar en pequeño",
+      "targetSec": 26,
+      "wordBudget": 70,
+      "goal": "Tres ideas, cada una con su icono (la ciudad en tres capas · el tabique del bloque · la avenida con un carril cortado) (`recap`, `rule-1`, `rule-2`, `rule-3`), y la frase final: «Una buena red no es la que nunca falla, sino la que falla en pequeño» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

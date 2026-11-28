@@ -1,0 +1,294 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "isolated": "error",
+    "storm": "alarm",
+    "contain": "lock",
+    "down": "glitch"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {building}En la sede de Arcedo, doscientos puestos y un CPD comparten techo. {hold}¿Qué pasa cuando algo se rompe?",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Depende del diseño. {promise}Vamos a ver quién hace qué en la red, qué cae con cada avería y cuánto cabe hacia arriba.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-capas",
+      "text": "<clear> {city}Imagina una ciudad, con calles de portales, avenidas que recogen cada barrio y una circunvalación que los une.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-capas",
+      "text": "<steady> {access}Una red de campus es igual. Las calles son el acceso, el conmutador de cada planta, donde se enchufan los puestos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-capas",
+      "text": "<engaging> {dist}La avenida es la distribución, que recoge las plantas y encamina entre VLAN. Ahí se pasa de capa dos a capa tres. {core}Y la circunvalación es el núcleo, que solo une distribuciones, y solo en capa tres.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Distribución: frontera capa 2/3. Núcleo: solo capa 3",
+        "at": "core",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-capas",
+      "text": "<thoughtful> {collapsed}En la sede no hay circunvalación. Los dos conmutadores de distribución hacen también de núcleo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-capas",
+      "text": "<confident> {name}Es un núcleo colapsado. {three}La guía de Cisco recomienda núcleo dedicado a partir de tres bloques de distribución, y la sede tiene uno.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-capas",
+      "text": "<warm> {uplinks}Y con dos distribuciones, lo suyo es que cada planta suba a las dos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}A ver qué harías. Supón que una planta de la sede subiera solo a la primera distribución, y las demás, a las dos. La primera se avería, y la otra sigue bien. ¿Qué les pasa a los equipos de la planta?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · supuesto",
+        "objective": "Infraestructuras",
+        "scenario": "Supuesto: en la sede, una planta sube solo a DIST1 y las demás, a DIST1 y DIST2. DIST1 se avería y DIST2 sigue bien.",
+        "q": "¿Qué les pasa a los equipos de esa planta?",
+        "options": [
+          "Nada, porque DIST2 toma el relevo",
+          "Se quedan aislados dentro de su planta",
+          "Toda la sede se queda sin red hasta que vuelva DIST1",
+          "Solo pierden la salida a Internet"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "Su única subida iba a DIST1, y sin ella la planta no tiene camino hacia arriba",
+        "trapWhy": "DIST2 solo cubre a las plantas que tienen un enlace hacia ella",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Se quedan aislados en su planta. {isolated}Su único camino hacia arriba iba justo a la distribución caída.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}La otra distribución parece el salvavidas, pero esa planta no tiene cable hasta ella. {rule-a}Dos distribuciones sirven si cada planta sube a las dos.",
+      "pauseAfterMs": 1900,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Dos distribuciones protegen si cada acceso sube a las dos",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-fallo",
+      "text": "<calm> {jam}Vamos con las averías. En una buena ciudad, un atasco en una calle no colapsa la circunvalación.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-fallo",
+      "text": "<steady> {domain}En la red, el trozo que sufre cuando algo se rompe se llama dominio de fallo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-fallo",
+      "text": "<thoughtful> {stretch}Piensa en una VLAN que recorre todas las plantas. {storm}Un bucle en ella, o una tormenta de difusión, llega a todos los conmutadores por donde pasa.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-fallo",
+      "text": "<engaging> {border}Por eso importa dónde pones la frontera de capa tres. Cuanto más abajo, más pequeños los trozos. {contain}Lo que pasa en un bloque se queda en el bloque.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-fallo",
+      "text": "<firm> {cabinet}Eso sí, doblar no basta si las dos mitades caen juntas. Pasa con dos distribuciones en el mismo armario y con la misma corriente.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Cambiamos de red. Un campus de dos edificios tiene acceso, distribución y núcleo. Para tener los puestos de ambos en la misma VLAN, alguien la estira a través del núcleo. ¿Qué problema crea?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Infraestructuras",
+        "scenario": "Otra red: un campus de dos edificios con acceso, distribución y núcleo. Para tener sus puestos en la misma VLAN, la extienden a través del núcleo.",
+        "q": "¿Qué problema crea ese cambio?",
+        "options": [
+          "Ninguno, porque el núcleo es de capa 3 y frena la difusión",
+          "Obliga a añadir un tercer bloque de distribución",
+          "Una tormenta en esa VLAN alcanzaría los dos edificios",
+          "Los puestos se quedarían sin puerta de enlace"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "La VLAN es un solo dominio de capa 2, y ahora cruza el núcleo de un edificio a otro",
+        "trapWhy": "El núcleo es solo de capa 3 mientras no le lleves VLAN. Al extenderla, deja de serlo",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Una tormenta en esa VLAN cruzaría de un edificio al otro. El núcleo ya lleva capa dos, y el dominio de fallo es todo el campus.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Que el núcleo sea de capa tres suena a escudo, pero solo mientras no le metas una VLAN. {rule-b}La frontera, abajo.",
+      "pauseAfterMs": 1900,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Cuanto más abajo la capa 3, menor el dominio de fallo",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-sobre",
+      "text": "<clear> {lanes}Última cuenta. Un conmutador de acceso tiene muchos puertos hacia los puestos y pocos hacia la distribución.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-sobre",
+      "text": "<warm> {avenue}Como las calles que dan a una avenida. Si salieran todos los coches a la vez, no cabrían. Pero casi nunca pasa.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-sobre",
+      "text": "<steady> {ratio}Esa apuesta consciente es la sobresuscripción, la capacidad de bajada entre la de subida.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Sobresuscripción: bajada entre subida",
+        "at": "ratio",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-sobre",
+      "text": "<engaging> {calc}Por ejemplo, cuarenta y ocho puertos de un gigabit, cuarenta y ocho. Dos subidas de diez, veinte. Sale dos coma cuatro a uno.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-sobre",
+      "text": "<thoughtful> {down}Si se cae una subida, quedan diez, y la relación salta a cuatro coma ocho. Con la mitad de subida, el doble.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-sobre",
+      "text": "<calm> {vendor}Según la guía de Cisco, se han puesto hasta veinte a uno entre acceso y distribución. Más arriba, hasta cuatro a uno. Son ejemplos de un fabricante, no una norma.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Te toca calcular, en otra red. Una pila de acceso tiene noventa y seis puertos de un gigabit y subidas de diez. No quieren pasar de cuatro a uno ni con una subida caída. ¿Cuántas necesitan, como mínimo?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Infraestructuras",
+        "scenario": "Otra red: una pila de acceso con 96 puertos de 1 Gbit/s y enlaces de subida de 10 Gbit/s. Criterio propio: no pasar de 4:1 aunque caiga un enlace.",
+        "q": "¿Cuántos enlaces de subida necesita, como mínimo?",
+        "options": [
+          "2 enlaces de subida",
+          "3 enlaces de subida",
+          "4 enlaces de subida",
+          "10 enlaces de subida"
+        ],
+        "answer": 2,
+        "trap": 1,
+        "why": "Si cae uno quedan 3, o sea 30 Gbit/s, y 96 entre 30 da 3,2:1",
+        "trapWhy": "Con 3 sale 3,2:1 mientras no caiga ninguno. Con uno caído, 96 entre 20 da 4,8:1",
+        "countdownMs": 6000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Cuatro. Si se cae una, quedan treinta gigabits, y noventa y seis entre treinta da tres coma dos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Con tres sale tres coma dos y parece que sobra. Pero se cae una y te vas a cuatro coma ocho. {rule-c}La cuenta, también con el enlace que falla.",
+      "pauseAfterMs": 2100,
+      "exam": {
+        "objective": "Infraestructuras",
+        "text": "Calcula la sobresuscripción también con un enlace caído",
+        "at": "rule-c",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Recapitulando. {rule-1}El acceso conecta, la distribución es la frontera de capa tres, y el núcleo une distribuciones. Con un solo bloque, basta el núcleo colapsado.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}La frontera de capa tres, cuanto más abajo, mejor. {rule-3}Y la sobresuscripción, también con un enlace caído.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}O sea, una buena red no es la que nunca falla, sino la que falla en pequeño. {next}Y ahora, a practicar. {endcard}La lección tiene sus propias preguntas esperándote.",
+      "pauseAfterMs": 250
+    }
+  ]
+}
