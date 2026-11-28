@@ -1,0 +1,237 @@
+{
+  "title": "DHCP: una terraza, una biblioteca y un conserje",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 529,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Cuatro mensajes para una dirección"
+    },
+    {
+      "n": 2,
+      "title": "Una concesión con dos relojes"
+    },
+    {
+      "n": 3,
+      "title": "Del portal al CPD, y a dos servidores"
+    },
+    {
+      "n": 4,
+      "title": "IPv6 lo hace de otra manera"
+    },
+    {
+      "n": 5,
+      "title": "Que solo conteste quien debe"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Un portátil sin dirección",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. Una planta de la sede con un puesto de la VLAN 10: un portátil se enciende con una ficha vacía, «dirección · máscara · puerta de enlace · DNS: ?» (`laptop`). La ficha se rellena sola: «10.20.10.130 · /24 · puerta 10.20.10.1 · DNS 10.20.72.11 y 10.20.72.12» (`ready`). Una línea punteada sale del portátil hacia el CPD, al fondo, donde esperan dos servidores, «DHCP1 · 10.20.72.21» y «DHCP2 · 10.20.72.22»; título «DHCP: concesiones, relay, conmutación por error y DHCPv6» (`title`, antes de los 12 s). Promesa en tres chips, las mismas tres cosas que dice la voz: «cómo lo pide · cuánto le dura · quién puede contestar» (`promise`). Plaquita «REDES Y ENS · Servicios de red»",
+      "requiredCues": [
+        "laptop",
+        "ready",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-dora",
+      "chapter": 1,
+      "title": "La plaza de las terrazas",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "goal": "El portátil solo, con un rótulo «sin dirección · no sabe dónde está el servidor» (`nothing`). Sale un sobre hacia todos lados: «DHCPDISCOVER · 0.0.0.0:68 hacia 255.255.255.255:67 · UDP» (`shout`). A la derecha, la imagen rotulada «imagen · no es el Consorcio»: una plaza con terrazas, alguien pregunta en voz alta y dos camareros levantan la mano (`terrace`). Vuelve el esquema con dos servidores genéricos que responden «DHCPOFFER · yiaddr: la dirección ofrecida» (`offer`); el portátil contesta a uno: «DHCPREQUEST · opción 54: el servidor elegido · rechaza las demás ofertas» (`request`). El elegido confirma: «DHCPACK · dirección y parámetros» (`ack`). Las cuatro iniciales se encienden en fila, «D · O · R · A», con el rótulo «regla mnemotécnica · la RFC 2131 no la usa» (`dora`). En una esquina, pequeña, la tabla de la opción 53 con «4 DHCPDECLINE · 5 DHCPACK» resaltados: «el ACK es el 5, no el 4». Sin direcciones del Consorcio todavía: es el intercambio de la norma",
+      "requiredCues": [
+        "nothing",
+        "shout",
+        "terrace",
+        "offer",
+        "request",
+        "ack",
+        "dora"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "¿Cómo se entera el otro?",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo» (lo dibuja el motor con `tag`). Fondo quieto: la plaza de las terrazas a media luz, con el rótulo «otra red · no es el Consorcio» (en el Consorcio cada cliente lo atiende un solo servidor, ver s07). Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (el DHCPREQUEST que nombra a B) y en `trap-1` la trampa (DHCPDECLINE). Vuelve la plaza: el cliente señala a un camarero y el otro baja la mano; debajo, «DHCPREQUEST · opción 54 = B» y, aparte, «DHCPDECLINE · la dirección ya la usa otro equipo» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-concesion",
+      "chapter": 2,
+      "title": "El libro de la biblioteca",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "goal": "La ficha del puesto con una etiqueta de préstamo: «concesión · 8 h · decisión del Consorcio para el ámbito de la VLAN 10» (`lease`). Imagen rotulada «imagen · no es el Consorcio»: un libro con su fecha de devolución; a mitad de plazo se renueva en la biblioteca de siempre (`library`) y, con la puerta cerrada, casi al final se renueva en cualquier biblioteca de la red (`closed`). Línea de tiempo de la lección, de 08:00 a 16:00: «08:00 BOUND · concesión de DHCP1». En «12:00 · T1 = 0,5 × 8 h = 4 h» se enciende «RENEWING · DHCPREQUEST en unidifusión a DHCP1 (opción 54)» (`t1`). En «15:00 · T2 = 0,875 × 8 h = 7 h», «REBINDING · DHCPREQUEST por difusión · puede contestar DHCP2» (`t2`). Los dos tramos se marcan con «4 h» y «7 h» (`clock`) y en «16:00 · expira» la ficha se vacía: «vuelta a INIT» (`expire`). Abajo, «por defecto, con un pequeño margen aleatorio · el servidor puede fijarlos con las opciones 58 (T1) y 59 (T2)» (`options`)",
+      "requiredCues": [
+        "lease",
+        "library",
+        "closed",
+        "t1",
+        "t2",
+        "clock",
+        "expire",
+        "options"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Saca el reloj",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: la línea de tiempo vacía a media luz, rotulada «supuesto · no es la configuración del Consorcio». Cuenta atrás de 5 s. En `ok-2` se marca la correcta (14:00) y en `trap-2` la trampa (15:00). Vuelve la línea de tiempo con los valores del supuesto: «08:00 concesión de 8 h · 11:00 T1 (opción 58 = 3 h) · 14:00 T2 (opción 59 = 6 h) · 16:00 expira», y en gris, tachado, «15:00 · el 0,875 por defecto» (`rule-b`), y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-relay",
+      "chapter": 3,
+      "title": "El conserje del portal",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "goal": "Esquema de la lección: «puesto · VLAN 10» a un lado, «SVI de la VLAN 10 · 10.20.10.1 · conmutador de distribución (SVI, nombre de Cisco)» en medio y «CPD · DHCP1 10.20.72.21 · DHCP2 10.20.72.22» al otro. La difusión del puesto rebota contra la SVI: «una difusión no cruza un encaminador» (`hops`). La SVI se ilumina como «agente relay · RFC 2131 §4.1 y RFC 1542» y reenvía el mensaje en unidifusión a los dos servidores (`relay`). Imagen rotulada «imagen · no es el Consorcio»: un portal con telefonillo y un conserje que llama a una oficina apuntando el número del portal (`porter`). En el sobre se resalta el campo «giaddr = 10.20.10.1» (`gi`) y, en DHCP1, «giaddr 10.20.10.1 → la petición viene de 10.20.10.0/24 → ámbito de la VLAN 10 · de 10.20.10.100 a 10.20.10.250 · reserva 10.20.10.200», con el rótulo «ámbito y reserva: términos de producto; la norma dice subred y asignación manual» (`scope`). La respuesta vuelve «al puerto 67 del relay» y el relay la entrega en la VLAN 10 (`back`). En pequeño, «opción 82: la pone el relay y la quita antes de entregar · `ip helper-address`: sintaxis de Cisco IOS»",
+      "requiredCues": [
+        "hops",
+        "relay",
+        "porter",
+        "gi",
+        "scope",
+        "back"
+      ]
+    },
+    {
+      "id": "s07-pareja",
+      "chapter": 3,
+      "title": "Las mesas electorales",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "DHCP1 y DHCP2 juntos en el CPD, unidos por una línea: «conmutación por error · Windows Server» (`pair`). Una barra de 0 a 255 partida en dos mitades, una para cada servidor: «hash del identificador del cliente (o de chaddr) · RFC 3074 · valores 0–255» (`split`). Imagen rotulada «imagen · no es el Consorcio»: dos mesas electorales con carteles «A–L» y «M–Z» (`windows`). Una tabla de tres filas aparece por partes: «protocolo de conmutación por error DHCPv4 · draft-ietf-dhc-failover-12 · caducado en 2003 · nunca fue RFC» y «algoritmo de reparto · RFC 3074» (`draft`); después, «load balance 50:50 (modo por defecto) · hot standby con reserva del 5 % · TCP 647 · valores de Microsoft», y en pequeño «la RFC 8156 es solo para DHCPv6» (`vendor`). Por último, la SVI con sus dos flechas, a 10.20.72.21 y a 10.20.72.22: «cada relay, dos destinos» (`both`); si se borra una, DHCP1 cae y los puestos nuevos se quedan esperando",
+      "requiredCues": [
+        "pair",
+        "split",
+        "windows",
+        "draft",
+        "vendor",
+        "both"
+      ]
+    },
+    {
+      "id": "s08-p3",
+      "chapter": 3,
+      "title": "¿Quién contesta?",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: las dos mesas electorales a media luz, sin texto. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (el que asigna el hash) y en `trap-3` la trampa (los dos). Vuelve la barra de 0 a 255: el identificador del portátil cae en una mitad, solo ese servidor envía el DHCPOFFER y el otro se queda con el sobre sin abrir; rótulo «llega a los dos · contesta uno» (`rule-c`). Sin tarjeta: la de la conmutación por error ya salió en s07",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s09-ipv6",
+      "chapter": 4,
+      "title": "El cartel del comedor",
+      "targetSec": 55,
+      "wordBudget": 149,
+      "goal": "Cambio de decorado, rotulado arriba «otra red · el Consorcio no tiene prefijo IPv6» (`v6`). Un encaminador emite un anuncio con el prefijo «2001:db8:0:1::/64 · flag A (autónomo): vale para SLAAC», y un equipo se monta la dirección con él (`pfx`): «SLAAC · RFC 4862» (`slaac`). El anuncio se abre como una ficha: «Router Advertisement · RFC 4861 §4.2 · flag M · flag O» (`ra`). Imagen rotulada «imagen · no es el Consorcio»: el cartel de un comedor con dos casillas, «te servimos el plato» y «pan y cubiertos; el plato, del bufé»; se marca la primera (`sign`) y después solo la segunda (`sign2`). Tabla de tres filas que entra al ritmo de la voz: «M = 1 · direcciones por DHCPv6 (O, redundante)» (`m`), «M = 0, O = 1 · otra configuración por DHCPv6, p. ej. DNS · Information-request» (`o`), «M = 0, O = 0 · nada por DHCPv6» (`none`). Al lado, en pequeño: «DHCPv6 · RFC 9915 (enero de 2026, obsoleta la 8415) · cliente UDP 546 · servidor y relay 547 · Solicit a ff02::1:2». Por último, el anuncio lleva una flecha hacia el equipo: «la puerta de enlace llega por el RA (Router Lifetime)» (`gw`)",
+      "requiredCues": [
+        "v6",
+        "pfx",
+        "slaac",
+        "ra",
+        "sign",
+        "sign2",
+        "m",
+        "o",
+        "none",
+        "gw"
+      ]
+    },
+    {
+      "id": "s10-p4",
+      "chapter": 4,
+      "title": "Las dos casillas apagadas",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Pregunta tipo test 4 (`q4`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: el cartel del comedor con las dos casillas vacías, a media luz, y el rótulo «otra red». Cuenta atrás de 5 s. En `ok-4` se marca la correcta (SLAAC y nada por DHCPv6) y en `trap-4` la trampa (los DNS por DHCPv6 sin estado). Vuelve la tabla de s09 con la fila «M = 0, O = 0 · nada por DHCPv6» resaltada y una nota al lado: «los DNS pueden llegar en el propio RA · opción RDNSS, tipo 25, RFC 8106» (`rule-d`), y entra la tarjeta",
+      "requiredCues": [
+        "q4",
+        "ok-4",
+        "trap-4",
+        "rule-d"
+      ]
+    },
+    {
+      "id": "s11-snooping",
+      "chapter": 5,
+      "title": "La megafonía de la estación",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "Una planta de la sede, conmutador de acceso de la VLAN 10. En una mesa aparece «equipo de pruebas · servidor DHCP encendido por descuido», rotulado «supuesto» (`rogue`); su DHCPOFFER llega a un puesto antes que el de DHCP1 y la ficha del puesto muestra una puerta de enlace en rojo, «no es 10.20.10.1» (`fake`). Imagen rotulada «imagen · no es el Consorcio»: la megafonía de una estación, con la cabina oficial y alguien en el andén con un megáfono, tachado (`station`). Vuelve el conmutador: solo el enlace troncal hacia distribución lleva «DHCP-Trust · de confianza» (`trust`), y el DHCPOFFER que entra por el puerto del equipo de pruebas se tira (`drop`). Debajo, «DHCP snooping: función de los conmutadores, no una RFC · equivalente normativo: SAVI-DHCP, RFC 7513 · tabla de vínculos (dirección IP, punto de conexión) · las órdenes, de cada fabricante» (`norfc`)",
+      "requiredCues": [
+        "rogue",
+        "fake",
+        "station",
+        "trust",
+        "drop",
+        "norfc"
+      ]
+    },
+    {
+      "id": "s12-p5",
+      "chapter": 5,
+      "title": "¿Qué pasa por la boca de un puesto?",
+      "targetSec": 34,
+      "wordBudget": 92,
+      "goal": "Pregunta tipo test 5 (`q5`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: el andén con la cabina a media luz, sin texto. Cuenta atrás de 5 s. En `ok-5` se marca la correcta (DHCPDISCOVER) y en `trap-5` la trampa (DHCPNAK). Vuelve el conmutador con dos columnas en el puerto de usuario: «de cliente a servidor · pasa: DISCOVER, REQUEST, DECLINE, RELEASE, INFORM» y «de servidor a cliente · se tira: OFFER, ACK, NAK» (`rule-e`), y entra la tarjeta",
+      "requiredCues": [
+        "q5",
+        "ok-5",
+        "trap-5",
+        "rule-e"
+      ]
+    },
+    {
+      "id": "s13-cierre",
+      "chapter": 5,
+      "title": "Cinco frases",
+      "targetSec": 34,
+      "wordBudget": 92,
+      "goal": "Cinco ideas, cada una con su icono (la terraza · el libro · el conserje con sus dos teléfonos · el cartel del comedor · la cabina de megafonía) (`recap`, `rule-1`, `rule-2`, `rule-3`, `rule-4`, `rule-5`), y la frase final: «Si un puesto no recibe dirección, sigue el camino de su pregunta: del puesto al relay y del relay al servidor» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: el cuestionario de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "rule-4",
+        "rule-5",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

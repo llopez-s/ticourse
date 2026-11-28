@@ -1,0 +1,301 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "outside": "error",
+    "mail": "mail",
+    "found": "ping2",
+    "seal": "ding",
+    "envelope": "lock"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {building}En el Consorcio de Arcedo hay nombres que cualquiera encuentra desde Internet. {ask}Y otros que fuera ni existen, aunque los puestos los usan cada mañana.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Es la otra cara del DNS. {promise}Hoy, qué nombres se ven desde fuera, cómo encuentra un puesto a su servidor y por qué firmar no es cifrar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-dentro-fuera",
+      "text": "<clear> {twozones}Empecemos por los nombres. El Consorcio tiene dos espacios, cada uno en un sitio.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-dentro-fuera",
+      "text": "<steady> {public}El público lo sirve un proveedor de DNS externo, y lo consulta cualquiera en Internet.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-dentro-fuera",
+      "text": "<warm> {book}Es como el listín de teléfonos. {internal}El otro es la agenda interna de la casa, y solo la tienen dos servidores del CPD.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-dentro-fuera",
+      "text": "<thoughtful> {outside}Así que un nombre de dentro, preguntado desde casa, no existe. {inside}Y desde la oficina, sí.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-dentro-fuera",
+      "text": "<engaging> {split}Misma pregunta, y respuesta distinta según desde dónde se haga. Eso se llama horizonte dividido.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-dentro-fuera",
+      "text": "<calm> {forward}Lo que no es suyo, esos dos servidores no lo buscan por Internet. {mail}Se lo pasan a los resolutores del operador y esperan la respuesta. Eso es reenviar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-dentro-fuera",
+      "text": "<firm> {sumup}O sea, que el listín está a la vista, y la agenda interna no sale de casa.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Mira este atajo. Con prisas, un técnico apunta el servidor de expedientes en la zona pública, con su dirección interna. Desde la sede funciona. ¿Qué problema ha creado?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · supuesto",
+        "objective": "Servicios de red",
+        "scenario": "Con prisas, un técnico da de alta el servidor de expedientes en la zona pública del proveedor, con su dirección interna. Desde la sede funciona.",
+        "q": "¿Qué problema crea ese registro?",
+        "options": [
+          "Que el servidor de expedientes queda abierto a Internet",
+          "Que toda la zona interna queda publicada en Internet",
+          "Que desde Internet se ven un nombre y una dirección internos",
+          "Que DC1 y DC2 dejan de reenviar al operador lo que no es suyo"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "La zona pública la consulta cualquiera: enseña fuera un nombre y una dirección de dentro",
+        "trapWhy": "Una dirección privada no se encamina en Internet: se ve, pero no se alcanza",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Que cualquiera, desde Internet, ve un nombre y una dirección de dentro. La agenda interna se ha colado en el listín.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Lo que más tienta es pensar que el servidor queda abierto. Pero una dirección privada no se alcanza desde Internet. {rule-a}No se llega, pero se ve.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Los nombres internos, solo en el DNS interno",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-srv",
+      "text": "<clear> {locate}Ahora, los puestos. Al arrancar, cada uno busca el servidor que sirve el directorio y valida los inicios de sesión. Es el controlador de dominio.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-srv",
+      "text": "<steady> {noaddr}Y no sabe dónde está. {service}Lo que le pregunta al DNS es quién da el servicio de directorio en su dominio.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-srv",
+      "text": "<engaging> {srv}La respuesta es un registro SRV. Dice qué equipo da ese servicio, en qué puerto, y lleva dos números más.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-srv",
+      "text": "<warm> {desk}Piensa en las cajas de un súper. {prio}La prioridad dice qué cajas atienden primero, y gana el número más bajo. {weight}El peso reparte la cola entre las del mismo número.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-srv",
+      "text": "<calm> {arcedo}En el ejemplo de la lección, los dos controladores empatan en todo. {found}Así que los puestos se reparten entre ellos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-srv",
+      "text": "<firm> {sum2}O sea, que el puesto no busca un nombre, busca quién atiende.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Ahora, una caja de reserva. Supón que suben a diez la prioridad del segundo controlador, y el primero sigue en cero. Los dos pesan igual y funcionan. ¿Adónde van los puestos?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · supuesto",
+        "objective": "Servicios de red",
+        "scenario": "Supuesto: los SRV de DC1 tienen prioridad 0 y los de DC2, prioridad 10. Todos tienen peso 100 y los dos controladores funcionan.",
+        "q": "¿A qué controlador de dominio van los puestos?",
+        "options": [
+          "A los dos por igual, porque pesan lo mismo",
+          "Sobre todo a DC2, porque su número es mayor",
+          "A DC1, y a DC2 solo si DC1 no contesta",
+          "Al primero de la lista que devuelva el DNS"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "Manda la prioridad más baja: a DC2 solo se va si DC1 no responde",
+        "trapWhy": "El peso solo reparte entre registros con la misma prioridad",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Al primero, el de prioridad cero. Al segundo solo llegan si el primero no contesta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Que pesen igual despista, porque el peso solo reparte entre los que empatan en prioridad. {rule-b}Primero manda la prioridad, y después el peso.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "SRV: primero la prioridad más baja. El peso, entre iguales",
+        "at": "rule-b",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-firma-cifra",
+      "text": "<clear> {fake}Y ahora, la firma y el cifrado. Imagina que alguien, por el camino, cambia una respuesta del DNS. El puesto acabaría en un servidor ajeno.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-firma-cifra",
+      "text": "<steady> {dnssec}Para eso existe DNSSEC. La zona firma sus registros, y el resolutor que valida comprueba que vienen de su dueño y que nadie los ha tocado.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-firma-cifra",
+      "text": "<warm> {notice}Es como un bando en el tablón, firmado. {seal}Si alguien cambia una línea, se nota. Pero lo lee cualquiera que pase.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-firma-cifra",
+      "text": "<firm> {noconf}O sea, DNSSEC firma, pero no cifra. Y es a propósito, no un olvido.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "DNSSEC firma: origen e integridad. No cifra",
+        "at": "noconf",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-firma-cifra",
+      "text": "<engaging> {encrypt}Para que nadie lea qué preguntas, hace falta cifrar. {dot}DNS sobre TLS tiene su propio puerto. {doh}DNS sobre HTTPS va dentro del tráfico web.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-firma-cifra",
+      "text": "<thoughtful> {envelope}Aquí la consulta viaja en un sobre cerrado. {hop}Pero ese sobre solo cubre el tramo entre el puesto y su resolutor.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Queda una, y va de sobres. Imagina que los puestos ya preguntan a su servidor con DNS sobre TLS, y que él sigue reenviando al operador como siempre. ¿Dónde se pueden leer aún las consultas?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · supuesto",
+        "objective": "Servicios de red",
+        "scenario": "Supuesto: los puestos consultan a DC1 con DoT. DC1 sigue reenviando como siempre al resolutor del operador lo que no es suyo.",
+        "q": "¿En qué tramo se pueden leer todavía las consultas?",
+        "options": [
+          "En ninguno: DoT las cifra de principio a fin",
+          "Entre el puesto y DC1, dentro de la sede",
+          "Entre DC1 y el resolutor del operador",
+          "En ninguno, si la zona además está firmada con DNSSEC"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "DoT cifra del puesto a DC1. El reenvío de DC1 al operador es otro tramo, sin cifrar",
+        "trapWhy": "DoT cifra el tramo hasta el primer resolutor, no toda la resolución",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Entre su servidor y el del operador. Ese tramo sigue yendo como siempre, a la vista.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Lo de principio a fin suena bien, pero el sobre se abre en el primer resolutor. {hop2}Lo que ese servidor reenvía después ya es otro tramo.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "DoT y DoH cifran hasta el resolutor, no más allá",
+        "at": "hop2",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Lo esencial, en tres líneas. {rule-1}Lo de dentro, en el DNS de dentro. Lo demás, se reenvía.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}El controlador se encuentra con registros SRV, y manda la prioridad más baja. {rule-3}Y DNSSEC firma, pero los que cifran son DNS sobre TLS y sobre HTTPS.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Ante una protección del DNS, pregúntate si evita que lo cambien o que lo lean. {next}La práctica sigue {endcard}en las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "title": "DNS en la organización: dentro, fuera y quién atiende",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 320,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Dentro y fuera"
+    },
+    {
+      "n": 2,
+      "title": "Quién atiende"
+    },
+    {
+      "n": 3,
+      "title": "Firmar no es cifrar"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Nombres que fuera no existen",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. Un globo «Internet» busca un nombre del Consorcio y lo encuentra (`building`); al lado, la sede por dentro, con puestos que usan nombres que, vistos desde el globo, salen tachados: «desde fuera: no existe» (`ask`). Título «DNS en la organización» (`title`, antes de los 12 s) y la promesa en tres chips, las mismas tres cosas que dice la voz: «qué se ve desde fuera · cómo encuentra un puesto a su servidor · firmar no es cifrar» (`promise`). Plaquita «REDES Y ENS · Servicios de red»",
+      "requiredCues": [
+        "building",
+        "ask",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-dentro-fuera",
+      "chapter": 1,
+      "title": "El listín y la agenda interna",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "goal": "Dos espacios de nombres, cada uno en su caja (`twozones`). A la izquierda, «arcedo.example · zona pública · autoritativa en el proveedor de DNS externo», con los rótulos «web · correo · servicios públicos» y un globo «Internet» (`public`). La imagen, rotulada «imagen · no es el Consorcio»: un listín de teléfonos abierto en la calle y, al lado, una agenda interna guardada en un cajón de oficina (`book`). A la derecha, dentro del edificio, «ad.arcedo.example · solo en DC1 10.20.72.11 y DC2 10.20.72.12 · CPD», en la tabla de la lección, con «el proveedor no publica nada de esta zona» (`internal`). Desde una casa, la consulta por «dc1.ad.arcedo.example» vuelve con un aspa: «desde Internet: no existe» (`outside`); desde un puesto de la sede, la misma consulta vuelve con 10.20.72.11 (`inside`). Rótulo «horizonte dividido (split DNS) · la misma pregunta, respuesta distinta según el origen · la RFC 9499 lo nombra sin definirlo» (`split`). Una consulta por «www.arcedo.example» llega a DC1, que no la busca por Internet (`forward`): sale en un sobre hacia «resolutores del operador · 198.51.100.53 y 198.51.100.54», con el rótulo «reenvío · RD = 1 · quiere la respuesta, no una remisión» (`mail`). Cierra con el listín a la vista y la agenda interna dentro del edificio (`sumup`)",
+      "requiredCues": [
+        "twozones",
+        "public",
+        "book",
+        "internal",
+        "outside",
+        "inside",
+        "split",
+        "forward",
+        "mail",
+        "sumup"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Un atajo con las prisas",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 1 (`q1`), con el rótulo del motor «pregunta tipo test · ejemplo · supuesto». El panel tapa la escena, así que el fondo se queda quieto: la caja de la zona pública a media luz, con una línea nueva «expedientes.arcedo.example · A · 10.20.72.10» marcada «supuesto». Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (desde Internet se ven un nombre y una dirección internos: la agenda interna asoma dentro del listín) y en `trap-1` la trampa (el servidor queda abierto a Internet), con el rótulo «10.20.72.10 · dirección privada · no se encamina en Internet». Vuelve la regla, «no se llega, pero se ve» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-srv",
+      "chapter": 2,
+      "title": "Las cajas del súper",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "goal": "Un puesto de la sede arranca; frente a él, DC1 y DC2 rotulados «controlador de dominio · directorio e inicio de sesión · Active Directory (Microsoft)» (`locate`). El puesto, con la casilla «dirección del controlador» vacía (`noaddr`), lanza una consulta por un servicio, no por un equipo: «_ldap._tcp.dc._msdcs.ad.arcedo.example», con rótulos debajo, «_servicio · _protocolo · dominio» y «nombres bajo _msdcs: comportamiento de Microsoft, no de una RFC» (`service`). Vuelve un registro con sus campos abiertos, «SRV · RFC 2782 · prioridad · peso · puerto · destino», con el destino resaltado: «dc1.ad.arcedo.example · nombre con su registro A · nunca un alias (CNAME)» (`srv`). La imagen, rotulada «imagen · no es el Consorcio»: las cajas de un supermercado, cada una con un número (`desk`); atienden primero las de número más bajo, «primero la prioridad más baja» (`prio`), y el peso reparte la cola entre las del mismo número, «el peso: reparto entre iguales» (`weight`). Las cuatro líneas SRV del ejemplo de la lección, rotuladas «ejemplo de la lección»: LDAP y Kerberos, prioridad 0, peso 100, puertos «389 LDAP · 88 Kerberos (valores de Microsoft)», destino dc1 y dc2 (`arcedo`). Los puestos se reparten en dos colas, una por controlador, como dos cajas abiertas (`found`). Cierra con «no busca un nombre: busca quién atiende» (`sum2`)",
+      "requiredCues": [
+        "locate",
+        "noaddr",
+        "service",
+        "srv",
+        "desk",
+        "prio",
+        "weight",
+        "arcedo",
+        "found",
+        "sum2"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Una caja de reserva",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 2 (`q2`), con el rótulo del motor «pregunta tipo test · ejemplo · supuesto». Fondo quieto: dos cajas a media luz, «DC1 · prioridad 0 · peso 100» y «DC2 · prioridad 10 · peso 100 · supuesto», sin colas, para no dar la respuesta. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (a DC1; a DC2 solo si DC1 no contesta) y en `trap-2` la trampa (a los dos por igual). La regla en una línea, «primero manda la prioridad; luego, el peso» (`rule-b`), y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-firma-cifra",
+      "chapter": 3,
+      "title": "El bando firmado",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "goal": "Esquina con el rótulo «explicación general · en el Consorcio, solo como supuesto». Una respuesta del DNS viaja hacia un puesto y una mano la cambia por el camino; el puesto acaba en un servidor ajeno (`fake`). Rótulo «DNSSEC · RFC 4033 a 4035 · autenticación del origen · integridad · negación autenticada de existencia», y la zona pone una firma junto a cada conjunto de registros, «RRSIG», que comprueba un «resolutor que valida» (`dnssec`). La imagen, rotulada «imagen · no es el Consorcio»: un bando colgado en un tablón de anuncios, con su firma (`notice`); alguien tacha una línea y la firma se pone en rojo, «ya no cuadra» (`seal`), mientras los que pasan lo leen entero. Rótulo «no da confidencialidad · decisión de diseño (RFC 4033 §12)» (`noconf`). Después, la consulta entra en un canal cifrado (`encrypt`): «DoT · DNS sobre TLS · RFC 7858 · 853/tcp, nunca el 53» (`dot`) y «DoH · DNS sobre HTTPS · RFC 8484 · sin puerto propio: el de HTTPS · se mezcla con el tráfico web» (`doh`). La consulta entra en un sobre cerrado (`envelope`), que solo cubre el tramo «puesto → su resolutor» (`hop`)",
+      "requiredCues": [
+        "fake",
+        "dnssec",
+        "notice",
+        "seal",
+        "noconf",
+        "encrypt",
+        "dot",
+        "doh",
+        "envelope",
+        "hop"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Cifrar a medias",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 3 (`q3`), con el rótulo del motor «pregunta tipo test · ejemplo · supuesto». Fondo quieto: una cadena a media luz con tres cajas, «puesto», «DC1» y «resolutor del operador», y dos tramos entre ellas sin rotular, para no dar la respuesta. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (entre DC1 y el resolutor del operador): el primer tramo se pinta con un candado, «DoT», y el segundo sin él, «reenvío de siempre, sin cifrar». En `trap-3` la trampa (DoT cifra de principio a fin). Vuelve la idea, «cada tramo cuenta» (`hop2`), y entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "hop2"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para llevarte",
+      "targetSec": 26,
+      "wordBudget": 70,
+      "goal": "Tres ideas, cada una con su icono (el listín y la agenda interna · las cajas del súper · el bando firmado junto a un sobre cerrado) (`recap`, `rule-1`, `rule-2`, `rule-3`), y la frase final: «¿Protege de que lo cambien o de que lo lean?» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

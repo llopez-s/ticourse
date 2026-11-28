@@ -1,0 +1,288 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "provider": "ping2",
+    "referral": "whoosh",
+    "change": "error",
+    "notify": "mail"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {home}Una vecina abre desde casa la web del Consorcio de Arcedo. {provider}En un instante, el nombre ya es una dirección.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Lo hace el DNS, sin que el Consorcio mueva un dedo. {promise}Vamos a ver quién pregunta a quién, cuánto se recuerda una respuesta y cómo se copia la zona.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-recursiva",
+      "text": "<clear> {stub}Empecemos por el portátil de la vecina. No sabe buscar nombres, así que le pasa el encargo entero a un resolutor, el de su operador.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-recursiva",
+      "text": "<warm> {gestoria}Es como una gestoría. Tú pides el trámite una vez, y la gestora te devuelve el papel hecho. {recursive}Esa parte, una pregunta y una respuesta, es la resolución recursiva.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-recursiva",
+      "text": "<thoughtful> {root}Mientras, la gestora va de ventanilla en ventanilla. La raíz no sabe la dirección, pero le dice a quién preguntar, y la siguiente, igual. {referral}Cada «pregunta allí» es una remisión.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-recursiva",
+      "text": "<steady> {iterative}Ir así, de servidor en servidor siguiendo remisiones, es la forma iterativa. {auth}Al final contesta el servidor del proveedor, que sí conoce la zona.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Al equipo, recursiva. A los autoritativos, iterativa",
+        "at": "iterative",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-recursiva",
+      "text": "<engaging> {aa}Y su respuesta lleva una marca, la de autoritativa. Solo puede ponerla quien tiene la zona.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}¿Te atreves con esta? Al resolutor le llega la dirección del proveedor, con la marca de autoritativa puesta. Y se la pasa al equipo de la vecina. ¿Cómo va esa marca en lo que recibe?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Servicios de red",
+        "scenario": "El equipo de la vecina consulta con RD = 1. El autoritativo del proveedor responde al resolutor con AA = 1, y el resolutor pasa la dirección al equipo.",
+        "q": "¿Cómo va el bit AA en la respuesta que recibe el equipo?",
+        "options": [
+          "A 1, como le llegó del proveedor",
+          "A 0, porque el equipo no pidió recursión",
+          "A 0, porque el resolutor no es autoritativo de esa zona",
+          "A 1, porque el resolutor siguió las remisiones hasta el final"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "AA solo lo pone un servidor de la zona, y el resolutor del operador no lo es",
+        "trapWhy": "El dato salió del proveedor, pero quien responde al equipo es el resolutor",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}A cero. Esa marca solo la pone un servidor de la zona, y el resolutor del operador no lo es.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Copiar el uno del proveedor es lo que pide el cuerpo, pero quien contesta al equipo es otro. {rule-a}O sea, el dato es bueno, pero la respuesta no es autoritativa.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "AA solo lo pone un servidor de la zona",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-cache",
+      "text": "<clear> {notebook}Volvamos a la gestora. Lo que le cuentan en cada ventanilla lo apunta en su libreta, para no repetir el viaje. {cache}Esa libreta es la caché del resolutor.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-cache",
+      "text": "<steady> {ttl}Cada dato llega con su plazo de caducidad. Se llama TTL, tiempo de vida, y es un máximo, no una obligación.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-cache",
+      "text": "<thoughtful> {hour}En la zona del Consorcio, ese plazo es de una hora. {change}Si mañana cambia la dirección de su web, durante una hora habrá resolutores que den la antigua.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-cache",
+      "text": "<engaging> {negative}Y también se apunta lo que no existe. {nx}Puede que el nombre no esté en la zona, {nodata}o que esté, pero sin ese tipo de dato.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-cache",
+      "text": "<warm> {soa}Con la negativa llega el registro que abre la zona. {min}Y dura el menor de dos números, uno de sus campos y su propio TTL. {fifteen}En el Consorcio, quince minutos.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Negativa: el menor entre MINIMUM y el TTL del SOA",
+        "at": "min",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Ahora, una de libreta. Desde fuera, alguien pide la dirección IPv6 de la web del Consorcio. El nombre existe, pero el Consorcio no tiene IPv6. ¿Qué contesta el proveedor?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Servicios de red",
+        "scenario": "Desde Internet, alguien pide el registro AAAA de www.arcedo.example. El nombre tiene registro A, pero el Consorcio no tiene direcciones IPv6.",
+        "q": "¿Qué devuelve el servidor autoritativo del proveedor?",
+        "options": [
+          "Un NXDOMAIN, el código de nombre inexistente",
+          "Una respuesta sin error, vacía y con el SOA de la zona",
+          "El registro A de www, en lugar del AAAA",
+          "Un fallo del servidor, porque falta ese tipo en la zona"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "El nombre existe sin datos de ese tipo: es NODATA, código 0 y respuesta vacía",
+        "trapWhy": "NXDOMAIN dice que el nombre no existe, y www sí existe",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Una respuesta sin error y vacía, con el registro que abre la zona. El nombre existe, solo le falta ese dato.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}El código de nombre inexistente despista, pero ese es para cuando no hay nombre. {rule-b}Y la libreta apunta las dos negativas el mismo cuarto de hora.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Sin el nombre, NXDOMAIN. Sin ese tipo, NODATA",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-copias",
+      "text": "<clear> {two}La zona del Consorcio está en dos servidores del proveedor, para no depender de uno.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-copias",
+      "text": "<steady> {primary}En el primario es donde se edita. {secondary}El secundario tiene una copia, que pide por transferencia de zona.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-copias",
+      "text": "<warm> {manual}Piensa en un manual con el número de edición en la portada. {serial}Cada cierto tiempo, el secundario mira ese número, y solo si ha subido, copia.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-copias",
+      "text": "<engaging> {notify}Para no esperar, el primario avisa de que hay cambios. Pero el aviso solo adelanta la mirada, porque manda el número.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-copias",
+      "text": "<thoughtful> {axfr}La copia puede ser entera o solo de lo que ha cambiado. {transport}La entera viaja siempre por TCP, en el puerto cincuenta y tres.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-copias",
+      "text": "<firm> {udp}Las consultas van por UDP, al mismo puerto. {tc}Y si una respuesta no cabe, llega recortada y se repite por TCP. O sea, el DNS no es solo UDP.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Puerto 53 en UDP y en TCP. AXFR, solo por TCP",
+        "at": "tc",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}La última va de copias. Supón que el secundario pide solo los cambios desde su versión. Pero el primario ya no guarda lo que cambió desde entonces. ¿Qué hace?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Servicios de red",
+        "scenario": "El secundario de arcedo.example pide un IXFR desde la versión que tiene. El primario ya no guarda las diferencias desde esa versión.",
+        "q": "¿Qué hace el primario?",
+        "options": [
+          "Le manda la zona completa, como en un AXFR",
+          "Le responde Refused, y el secundario conserva su copia",
+          "Le manda solo el SOA nuevo, para que espere al REFRESH",
+          "No le responde, y el secundario lo reintenta cada RETRY"
+        ],
+        "answer": 0,
+        "trap": 1,
+        "why": "Si no puede mandar las diferencias, el IXFR devuelve la zona entera, como un AXFR",
+        "trapWhy": "Refused es la negativa por política, no por faltar las diferencias",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Le manda la zona completa, como si le hubiera pedido la copia entera.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}El rechazo suena lógico, pero ese código es para quien no tiene permiso para copiar. {full}O sea, si no puede dar solo los cambios, va el manual entero.",
+      "pauseAfterMs": 2300
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Para cerrar el expediente. {rule-1}La gestora te da la respuesta hecha, y ella va de ventanilla en ventanilla.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Lo que apunta en la libreta caduca, también lo que no existe. {rule-3}Y el secundario copia solo si sube el número de la portada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Si un nombre no da lo que esperas, piensa quién te contesta y desde cuándo lo tiene apuntado. {next}Lo siguiente, {endcard}las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

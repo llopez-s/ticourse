@@ -1,0 +1,153 @@
+{
+  "title": "NTP y la hora: de quién se fía cada reloj",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 320,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "De quién se fía cada reloj"
+    },
+    {
+      "n": 2,
+      "title": "Cuánto se ha ido"
+    },
+    {
+      "n": 3,
+      "title": "Quién reparte la hora"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Cientos de relojes",
+      "targetSec": 26,
+      "wordBudget": 70,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. La red del Consorcio en corte (sede, CPD, una oficina) y, sobre cada puesto, servidor y conmutador, un reloj pequeño; todos marcan la misma hora (`clocks`). Título «NTP y la hora» (`title`, antes de los 12 s). Un reloj se adelanta y el puesto que lo lleva recibe un candado rojo con el rótulo «KRB_AP_ERR_SKEW · más de 5 min · tolerancia por defecto del dominio (Microsoft); la RFC 4120 la deja configurable» (`drift`). Al lado, dos líneas de registro de un mismo hecho, «cortafuegos» y «servidor», cuyos relojes marcan horas distintas (sin cifras), rotuladas «ejemplo» (`logs`). La promesa en tres chips, los mismos que dice la voz: «de quién se fía cada reloj · cuánto se ha ido · quién reparte la hora» (`promise`). Plaquita «REDES Y ENS · Servicios de red»",
+      "requiredCues": [
+        "clocks",
+        "title",
+        "drift",
+        "logs",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-estratos",
+      "chapter": 1,
+      "title": "La hora de primera mano",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "goal": "La imagen, rotulada «imagen · no es el Consorcio»: una calle con el reloj de la plaza; alguien pregunta la hora (`street`). Quien mira el reloj lleva la etiqueta «de primera mano» y quien le pregunta a él, «de segunda» (`plaza`). La calle se convierte en una escalera rotulada «estratos (RFC 5905)» (`strata`): arriba, la referencia, «receptor GPS · reloj de referencia (por costumbre, estrato 0)», y pegado a ella el servidor, resaltado, «estrato 1 · servidor primario» (`s1`). Una flecha por escalón con «+1» (`hop`). El caso del Consorcio en la escalera: «servidores públicos de referencia · estrato 1» y debajo «NTP1 10.20.72.41 · NTP2 10.20.72.42 · CPD · estrato 2» (`s2`). Aparte, fuera de la escalera, un reloj con un interrogante: «estrato 16 · no sincronizado (no es el escalón más bajo)»; en pequeño, «2–15 secundarios · LI 3 también indica reloj no sincronizado, en otro campo» (`s16`, `nosync`) y entra la tarjeta",
+      "requiredCues": [
+        "street",
+        "plaza",
+        "strata",
+        "s1",
+        "hop",
+        "s2",
+        "s16",
+        "nosync"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Un receptor en casa",
+      "targetSec": 36,
+      "wordBudget": 97,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo · supuesto» (en el campo tag de la pregunta). Fondo quieto: la escalera de s02 a media luz, con NTP1 en el escalón 2 y un receptor GPS sin conectar a su lado, sin texto. Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (estrato 1) y en `trap-1` la trampa (estrato 2, contando el receptor como un escalón). Vuelve la escalera: el receptor se pega a NTP1 y NTP1 sube al escalón 1, con el rótulo «el estrato 1 es el servidor, no el GPS» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-marcas",
+      "chapter": 2,
+      "title": "La carta de ida y vuelta",
+      "targetSec": 60,
+      "wordBudget": 162,
+      "goal": "La imagen, rotulada «imagen · no es el Consorcio»: una carta sale con un sello de hora puesto con el reloj de quien escribe (`letter`); quien la recibe le pone dos sellos con su propio reloj, «llega» y «contesta» (`stamps`); vuelve y recibe el cuarto sello, otra vez con el primer reloj (`back`). Los sellos se convierten en las cuatro marcas de NTP: «T1 sale del cliente · T2 llega al servidor · T3 sale del servidor · T4 llega al cliente», con T1 y T4 en el color del reloj del cliente y T2 y T3 en el del servidor (`marks`). Fórmula del retardo, «δ = (T4 − T1) − (T3 − T2)», con la espera total y el tiempo del servidor como dos barras, una restada de la otra (`delay`). Fórmula del desfase, «θ = ½ [(T2 − T1) + (T3 − T4)] · cuánto va adelantado el servidor respecto del cliente» (`offset`). Debajo, el ejemplo de la lección: «T1 = 0 · T2 = 130 · T3 = 131 · T4 = 21 (ms) · θ = 120 ms · δ = 20 ms». Una regla graduada con los umbrales de la RFC 5905: «menos de 125 ms (STEPT): ajuste gradual» y «de 125 ms a 1000 s (PANICT): salto, si el desfase persiste» (`step`, `jump`; ahí entra la tarjeta); al final de la regla, «más de 1000 s: el programa sale con un diagnóstico» (`panic`, `stop`)",
+      "requiredCues": [
+        "letter",
+        "stamps",
+        "back",
+        "marks",
+        "delay",
+        "offset",
+        "step",
+        "jump",
+        "panic",
+        "stop"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Un servidor sin prisa",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio» (en el campo tag de la pregunta). Fondo quieto: la carta de s04 a media luz, con tres tramos rotulados «ida 5 ms · servidor 40 ms · vuelta 5 ms». Cuenta atrás de 5 s. En `ok-2` se marca la correcta (10 ms) y en `trap-2` la trampa (50 ms, toda la espera). Vuelve la cuenta en una línea: «(T4 − T1) − (T3 − T2) = 50 − 40 = 10 ms» con el tramo del servidor tachado (`rule-b`), y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-casa",
+      "chapter": 3,
+      "title": "Quién trae la hora",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "goal": "El Consorcio como una casa, siguiendo la imagen de la plaza: fuera, «servidores públicos de referencia · estrato 1»; dentro, en el CPD, «NTP1 10.20.72.41 · NTP2 10.20.72.42», los únicos con una flecha hacia fuera (`house`). Rótulo «estrato 2 · dos para tener redundancia» (`ntp`) y el cortafuegos con «la salida de NTP (UDP 123) se puede limitar a NTP1 y NTP2» (`fw`). Rama del dominio `ad.arcedo.example`: «DC1 10.20.72.11 · emulador de PDC · toma la hora de NTP1 y NTP2» (`pdc`), y debajo «DC2 10.20.72.12 · puestos · servidores miembros, entre ellos DHCP1 10.20.72.21 y DHCP2 10.20.72.22», unidos por la flecha «jerarquía del dominio · valor del fabricante (Microsoft)» (`chain`). Sobre esas flechas, un sello de lacre: «dentro del bosque, la hora va firmada con la clave de Kerberos o Net Logon · comportamiento de Windows» (`sign`). Rama fuera del dominio: «conmutadores · cortafuegos · encaminadores de las oficinas · impresoras · servidores fuera del dominio» con flecha directa a NTP1 y NTP2 (`direct`); en pequeño, «a las impresoras que toman su configuración por DHCP se les anuncian con la opción 42». Las dos ramas en dos colores, sin mezclarse. Cierre de la escena: «una sola hora · dos equipos la traen de fuera» (`one`)",
+      "requiredCues": [
+        "house",
+        "ntp",
+        "fw",
+        "pdc",
+        "chain",
+        "sign",
+        "direct",
+        "one"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "La hora falsa",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo · supuesto» (en el campo tag de la pregunta). Fondo quieto: la casa de s06 a media luz, con el tramo entre Internet y NTP1/NTP2 marcado con una interrogación, sin texto. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (todos los equipos) y en `trap-3` la trampa (solo los equipos fuera del dominio). Vuelve la casa: la hora falsa entra por el tramo de arriba y baja por las dos ramas, la del dominio a pesar del sello de lacre (`rule-c`); en una esquina, «primer candidato a protegerse: NTS (RFC 8915) · en la lección». Entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para llevarte",
+      "targetSec": 30,
+      "wordBudget": 81,
+      "goal": "Tres ideas, cada una con su icono (la escalera · la carta con cuatro sellos · la casa con dos ventanas hacia fuera) (`recap`, `rule-1`, `rule-2`, `rule-3`), y la frase final: «Cuando dos registros no casen, mira de dónde saca la hora cada uno» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

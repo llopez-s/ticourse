@@ -1,0 +1,535 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "ok-4": "check",
+    "trap-4": "block",
+    "ok-5": "check",
+    "trap-5": "block",
+    "ack": "ping2",
+    "expire": "error",
+    "relay": "mail",
+    "fake": "glitch",
+    "drop": "lock"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {laptop}Un portátil se enciende en la sede del Consorcio de Arcedo. {ready}En unos segundos ya tiene dirección, puerta de enlace y servidores de nombres.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Todo eso se lo ha dado DHCP, desde un servidor a varios saltos. {promise}Te enseño cómo lo pide, cuánto le dura y quién puede contestar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-dora",
+      "text": "<clear> {nothing}Al encenderse, ese portátil no tiene dirección, ni sabe dónde está el servidor.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-dora",
+      "text": "<steady> {shout}Así que pregunta a todos a la vez, con una difusión, y como origen pone todo ceros. Es el mensaje de descubrimiento.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-dora",
+      "text": "<warm> {terrace}Piensa en una plaza con terrazas. Preguntas en voz alta si hay mesa, y te la ofrece un camarero, o dos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-dora",
+      "text": "<engaging> {offer}Con DHCP, cada servidor que puede atenderte te manda una oferta. {request}Tú pides una, nombrando a quien la hizo, y con esa misma petición rechazas las demás.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-dora",
+      "text": "<thoughtful> {ack}Al final, el elegido confirma la dirección y los datos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-dora",
+      "text": "<engaging> {dora}Descubrir, ofrecer, pedir y confirmar. Con las iniciales en inglés sale DORA, un truco para recordarlo que la norma no usa.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Primer reto, en otra red. Dos servidores de la misma subred contestan a un puesto, y el puesto se queda con la oferta del B. ¿Cómo se entera el A de que la suya sobra?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Servicios de red",
+        "scenario": "Otra red: dos servidores DHCP, A y B, en la subred de un puesto. Los dos responden a su DHCPDISCOVER y el puesto elige la oferta de B.",
+        "q": "¿Cómo sabe A que su oferta no se va a usar?",
+        "options": [
+          "Por un DHCPDECLINE que el puesto envía a A",
+          "Por el DHCPREQUEST del puesto, que nombra a B",
+          "Por un DHCPRELEASE que el puesto envía a A",
+          "Por un DHCPNAK que B le envía a A"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "Al pedir la oferta de B, el DHCPREQUEST rechaza a la vez las demás",
+        "trapWhy": "DHCPDECLINE avisa de que la dirección ya la usa otro equipo",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Por la petición del puesto. Pide la oferta del B, nombrándolo, y con eso el A sabe que la suya queda libre.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}El aviso de rechazo engaña, porque suena a decir que no. Pero lo manda el puesto cuando ve que su dirección ya la usa otro equipo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-p1",
+      "text": "<steady> {rule-a}O sea, pedir una oferta es rechazar las demás.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "El DHCPREQUEST pide una oferta y rechaza las demás",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-concesion",
+      "text": "<clear> {lease}Esa dirección es prestada, y el préstamo se llama concesión. En la VLAN diez de la sede dura ocho horas.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-concesion",
+      "text": "<warm> {library}Es como un libro de la biblioteca. A mitad de plazo lo renuevas en la tuya. {closed}Si está cerrada, casi al final, en cualquiera de la red.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-concesion",
+      "text": "<steady> {t1}Con DHCP pasa igual. A la mitad salta el primer reloj, el T1, y el puesto pide la renovación solo al servidor que se la dio.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-concesion",
+      "text": "<thoughtful> {t2}Si ese servidor calla, a los siete octavos salta el T2, y la pide por difusión, a cualquiera.",
+      "pauseAfterMs": 250,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "T1 (0,5): mismo servidor. T2 (0,875): cualquiera",
+        "at": "t2",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-concesion",
+      "text": "<engaging> {clock}Con ocho horas, eso cae a las cuatro horas y a las siete. {expire}Si a las ocho horas nadie contesta, el puesto suelta la dirección y vuelve a empezar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-concesion",
+      "text": "<steady> {options}Esos son los tiempos por defecto. El servidor puede mandar otros, en dos opciones que viajan con la concesión.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Saca el reloj. Supón un ámbito de ocho horas que manda sus propios tiempos, tres y seis horas. Un puesto recibe su concesión a las ocho de la mañana, y su servidor no contesta. ¿Cuándo pregunta a todos?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Servicios de red",
+        "scenario": "Supón un ámbito con concesión de 8 h que envía la opción 58 con 3 h y la 59 con 6 h. Un puesto obtiene su concesión a las 08:00.",
+        "q": "Si su servidor no contesta, ¿a qué hora pide la renovación por difusión?",
+        "options": [
+          "A las 11:00",
+          "A las 14:00",
+          "A las 15:00",
+          "A las 16:00"
+        ],
+        "answer": 1,
+        "trap": 2,
+        "why": "La opción 59 fija T2 en 6 h: las 08:00 más 6 h son las 14:00",
+        "trapWhy": "Las 15:00 salen del 0,875 por defecto, que la opción 59 sustituye",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}A las dos de la tarde. El segundo de esos tiempos pone el T2 a las seis horas, y seis horas después de las ocho son las dos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Las tres tientan, porque es la cuenta de siempre. Pero si el servidor manda sus tiempos, valen los suyos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-p2",
+      "text": "<steady> {rule-b}Primero a tu biblioteca, y luego a cualquiera, cuando diga el servidor.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Opciones 58 y 59: el servidor fija T1 y T2",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-relay",
+      "text": "<clear> {hops}Ahora, un problema de distancia. El servidor está en el CPD, y una difusión no cruza un encaminador.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-relay",
+      "text": "<steady> {relay}Por eso la puerta de enlace de la VLAN hace de intermediaria, de agente relay. Recoge la difusión y se la manda directamente al servidor.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-relay",
+      "text": "<warm> {porter}Como el conserje de un edificio. Llamas en el portal, y él telefonea a la oficina diciendo desde qué portal llamas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-relay",
+      "text": "<engaging> {gi}Ese portal va en un campo del mensaje, donde el relay escribe su dirección. {scope}Con ella, el servidor sabe de qué subred viene y de qué ámbito sacar la dirección.",
+      "pauseAfterMs": 250,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "El relay pone su dirección en giaddr: elige el ámbito",
+        "at": "scope",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-relay",
+      "text": "<steady> {back}Y le responde al relay, que se la pasa al puesto. El conserje hace de ida y de vuelta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-pareja",
+      "text": "<clear> {pair}En el Consorcio hay dos servidores, en conmutación por error. Si uno cae, el otro sigue.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-pareja",
+      "text": "<steady> {split}Para no pisarse, se reparten a los clientes. Del identificador de cada uno sacan un número del cero al doscientos cincuenta y cinco, y cada servidor atiende su tramo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-pareja",
+      "text": "<warm> {windows}Como las mesas electorales, que se reparten a los votantes por la inicial del apellido.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-pareja",
+      "text": "<thoughtful> {draft}Ojo, ese reparto sí es un estándar, pero la conmutación por error de IPv4 no. Se quedó en un borrador que caducó en dos mil tres.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-pareja",
+      "text": "<firm> {vendor}Los modos y los valores, como el cincuenta y cincuenta, los pone el fabricante.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Conmutación por error DHCPv4: borrador, nunca RFC",
+        "at": "vendor",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-pareja",
+      "text": "<engaging> {both}Y cada relay tiene que apuntar a los dos. Si solo apunta a uno y ese cae, los puestos nuevos se quedan sin dirección.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-p3",
+      "text": "<intrigued> {q3}Volvemos a la sede. El relay de la VLAN diez manda cada descubrimiento a los dos servidores, que se reparten la carga a medias sin problemas. Llega un portátil nuevo. ¿Quién le contesta?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Servicios de red",
+        "scenario": "La SVI de la VLAN 10 reenvía cada DHCPDISCOVER a DHCP1 y DHCP2, en load balance 50:50 de Windows Server y en estado NORMAL.",
+        "q": "¿Cuál de los dos responde a un portátil nuevo?",
+        "options": [
+          "Los dos, y el portátil se queda con la oferta que llega antes",
+          "El que le asigna el hash de su identificador de cliente",
+          "Siempre DHCP1, el primer destino configurado en el relay",
+          "El que tenga más direcciones libres en ese momento"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "En load balance, el hash de la RFC 3074 asigna cada cliente a uno de los dos",
+        "trapWhy": "La petición llega a los dos, pero solo responde el que tiene asignado al cliente",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-p3",
+      "text": "<confident> {ok-3}El que le toque por el reparto. Su número cae en el tramo de uno de los dos, y solo ese contesta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-p3",
+      "text": "<firm> {trap-3}Que contesten los dos parece lógico, porque a los dos les llega. Pero la mesa ya estaba decidida. {rule-c}Les llega a los dos, y contesta uno.",
+      "pauseAfterMs": 500
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-ipv6",
+      "text": "<clear> {v6}Cambiamos de familia. El Consorcio no tiene IPv6, así que esto pasa en otra red.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-ipv6",
+      "text": "<steady> {pfx}Ahí un equipo puede montarse la dirección él solo, con el prefijo que anuncia el encaminador.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-ipv6",
+      "text": "<thoughtful> {slaac}Es la autoconfiguración sin estado, SLAAC. {ra}Y ese anuncio decide si además hace falta servidor, con dos casillas, la M y la O.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-ipv6",
+      "text": "<warm> {sign}Como el cartel de un comedor. Con la primera casilla marcada, el plato te lo sirven.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-ipv6",
+      "text": "<engaging> {sign2}Con solo la segunda, el plato lo coges tú del bufé, y lo que te dan es el pan y los cubiertos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-ipv6",
+      "text": "<clear> {m}Pues la M dice que la dirección se pide al DHCP de IPv6. {o}Solo la O, que la dirección la monta el equipo, y al servidor le pide otros datos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s09-07",
+      "scene": "s09-ipv6",
+      "text": "<steady> {none}Por ejemplo, los servidores de nombres. Y sin ninguna casilla, el servidor no da nada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-08",
+      "scene": "s09-ipv6",
+      "text": "<thoughtful> {gw}La puerta de enlace, en cambio, llega en el propio anuncio del encaminador.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-p4",
+      "text": "<curious> {q4}Seguimos en esa red. El encaminador anuncia un prefijo que vale para montarse la dirección, con las dos casillas apagadas. ¿Qué consigue un equipo, y de quién?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Servicios de red",
+        "scenario": "Otra red con IPv6: el Router Advertisement llega con M = 0 y O = 0, y su prefijo lleva el flag A activo.",
+        "q": "¿Cómo obtiene un equipo su dirección y qué le da DHCPv6?",
+        "options": [
+          "La dirección, por SLAAC; DHCPv6 no le da nada",
+          "La dirección, por SLAAC; los DNS, por DHCPv6 sin estado",
+          "La dirección, por DHCPv6, porque ningún flag lo impide",
+          "Solo la de enlace local; DHCPv6 le da el resto"
+        ],
+        "answer": 0,
+        "trap": 1,
+        "why": "Sin M ni O no hay nada por DHCPv6; el flag A deja usar el prefijo para SLAAC",
+        "trapWhy": "Pedir solo otros datos, como los DNS, es lo que indica O = 1",
+        "countdownMs": 5000,
+        "revealAt": "ok-4",
+        "trapAt": "trap-4"
+      }
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-p4",
+      "text": "<confident> {ok-4}La dirección se la monta él, y el servidor no le da nada. Sin ninguna casilla, no hay nada que pedir.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-p4",
+      "text": "<firm> {trap-4}Pedirle los servidores de nombres suena razonable, pero eso es la O encendida. Si los necesita, pueden venir en el propio anuncio.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-p4",
+      "text": "<steady> {rule-d}La M, dirección. Solo la O, otros datos. Ninguna, nada.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "M: dirección. Solo O: otros datos. Ninguno: nada",
+        "at": "rule-d",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-snooping",
+      "text": "<concerned> {rogue}Último capítulo, de vuelta en la sede. Alguien deja en su mesa un equipo de pruebas con un servidor DHCP encendido.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-snooping",
+      "text": "<thoughtful> {fake}Si contesta antes que los buenos, reparte una puerta de enlace que no es la del Consorcio.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-snooping",
+      "text": "<warm> {station}Es como la megafonía de una estación. Solo habla la cabina oficial, y si alguien anuncia vías falsas desde el andén, lo cortan.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s11-04",
+      "scene": "s11-snooping",
+      "text": "<engaging> {trust}Eso hace el conmutador con el DHCP snooping. Solo los puertos de confianza, los que llevan hacia el servidor o el relay, pueden mandar mensajes de servidor.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s11-05",
+      "scene": "s11-snooping",
+      "text": "<firm> {drop}Una oferta que entra por la boca de un puesto, se tira.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s11-06",
+      "scene": "s11-snooping",
+      "text": "<thoughtful> {norfc}Y no es un estándar, es una función de los conmutadores. El estándar equivalente lo tienes en pantalla.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-p5",
+      "text": "<intrigued> {q5}Último reto. Con el snooping activo, por la boca de un puesto normal entra un mensaje de DHCP. ¿Cuál de estos deja pasar?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Servicios de red",
+        "scenario": "Un conmutador de acceso de la VLAN 10 tiene DHCP snooping. Por un puerto de usuario, que no es de confianza, entra un mensaje DHCP.",
+        "q": "¿Cuál de estos mensajes deja pasar?",
+        "options": [
+          "Un DHCPDISCOVER",
+          "Un DHCPOFFER",
+          "Un DHCPACK",
+          "Un DHCPNAK"
+        ],
+        "answer": 0,
+        "trap": 3,
+        "why": "El DHCPDISCOVER va de cliente a servidor: cualquier puesto puede enviarlo",
+        "trapWhy": "El DHCPNAK no da ninguna dirección, pero es un mensaje de servidor a cliente",
+        "countdownMs": 5000,
+        "revealAt": "ok-5",
+        "trapAt": "trap-5"
+      }
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-p5",
+      "text": "<confident> {ok-5}El de descubrimiento. Va de cliente a servidor, lo manda cualquier puesto para buscar servidor, y no se corta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-p5",
+      "text": "<firm> {trap-5}La negativa del servidor despista, porque no reparte nada. Pero decir que no también es hablar por megafonía.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s12-04",
+      "scene": "s12-p5",
+      "text": "<steady> {rule-e}Por la boca de un puesto, ningún mensaje de servidor.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Snooping: OFFER, ACK y NAK solo por puertos de confianza",
+        "at": "rule-e",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s13-01",
+      "scene": "s13-cierre",
+      "text": "<cheerful> {recap}Cinco frases para el examen. {rule-1}Pedir una oferta es rechazar las demás. {rule-2}En el T1 se renueva con el mismo servidor, y en el T2, con cualquiera.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s13-02",
+      "scene": "s13-cierre",
+      "text": "<clear> {rule-3}El relay pone su dirección en el mensaje y apunta a los dos servidores. {rule-4}En IPv6, la M es dirección, y solo la O, otros datos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s13-03",
+      "scene": "s13-cierre",
+      "text": "<steady> {rule-5}Y mensajes de servidor, solo por puertos de confianza.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s13-04",
+      "scene": "s13-cierre",
+      "text": "<engaging> {phrase}Si un puesto no recibe dirección, sigue el camino de su pregunta, del puesto al relay y del relay al servidor. {next}Lo siguiente, {endcard}el cuestionario de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

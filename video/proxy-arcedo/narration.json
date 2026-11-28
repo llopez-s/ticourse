@@ -1,0 +1,313 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "closed": "lock",
+    "open": "ding",
+    "mail": "mail",
+    "ping": "ping2",
+    "fake": "glitch"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {socket}Alguien enchufa un portátil de casa en una toma de la sede del Consorcio de Arcedo. {nothing}Y no consigue nada, ni una dirección.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Entre esa toma y cualquier web hay tres controles. {promise}Quién te deja entrar en la red, quién se pone en medio y cómo sabe el navegador por dónde salir.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-toma",
+      "text": "<clear> {closed}Esa toma está cerrada hasta que el equipo demuestre quién es. {talk}Mientras, solo deja pasar la conversación para identificarse.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-toma",
+      "text": "<steady> {std}Es el control de acceso por puerto, el ochocientos dos punto uno equis.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-toma",
+      "text": "<warm> {intercom}Piensa en el telefonillo de un portal. Desde la calle solo pasa tu voz, {door}y la puerta espera a que abran desde arriba.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-toma",
+      "text": "<engaging> {supp}Tú, el equipo que pide entrar, eres el suplicante. {auth}El portal es el autenticador, el conmutador de la planta, que pregunta quién eres y lo pasa arriba.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-toma",
+      "text": "<thoughtful> {server}Arriba está el servidor de autenticación, un servidor RADIUS del CPD. {open}Si contesta que sí, la toma se abre.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-toma",
+      "text": "<calm> {vlan}Y puede decir a qué piso subir, o sea, en qué VLAN queda. {sum}El conmutador pregunta, pero decide el servidor.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Vamos a comprobarlo. Un puesto del Consorcio, que sí sabe identificarse, acaba de enchufarse y todavía no ha terminado. Con lo básico del estándar, ¿qué deja pasar la toma?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Servicios de red",
+        "scenario": "Un puesto del Consorcio, con su cliente 802.1X, se acaba de enchufar a una toma de la planta y aún no ha terminado de autenticarse.",
+        "q": "Con el comportamiento básico de 802.1X, ¿qué deja pasar el puerto?",
+        "options": [
+          "Todo, hasta que el servidor lo rechace",
+          "Su petición DHCP, para que tenga dirección",
+          "Solo las tramas de autenticación, EAPOL",
+          "Sus mensajes RADIUS hacia el servidor del CPD"
+        ],
+        "answer": 2,
+        "trap": 1,
+        "why": "Hasta que se autentica, el puerto solo deja pasar EAPOL",
+        "trapWhy": "El DHCPDISCOVER no pasa hasta que el puerto queda autorizado",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Solo las tramas de autenticación. Todo lo demás espera fuera.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Lo de la dirección tiene su lógica, porque sin ella no hay red. Pero primero va la identificación. {rule-a}Toma cerrada, solo se habla con el portal.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Antes de autenticarse, por el puerto solo pasa EAPOL",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-proxy",
+      "text": "<clear> {out}Ya dentro, el puesto sale a Internet, pero en el Consorcio pasa por un intermediario.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-proxy",
+      "text": "<warm> {mail}Es como mandar a un recadero. Sabes que existe y le das tú el encargo. {forward}Eso es un proxy directo, el que elige el cliente.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-proxy",
+      "text": "<thoughtful> {https}Si la web va cifrada, el recadero no abre el paquete. {connect}El puesto le pide un camino hasta el servidor, y por ahí solo pasan bytes.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-proxy",
+      "text": "<engaging> {tunnel}El proxy hace de túnel, y el cifrado va de punta a punta.",
+      "pauseAfterMs": 1200,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "HTTPS por el proxy: CONNECT y, después, túnel",
+        "at": "tunnel",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-proxy",
+      "text": "<clear> {reverse}Ahora, al revés. Este intermediario lo pone el dueño del servicio, y quien navega cree hablar con el servidor.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-proxy",
+      "text": "<warm> {desk}Como el mostrador de una tienda. Pides ahí, y quien te lo prepara está dentro.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-proxy",
+      "text": "<confident> {gateway}La norma lo llama gateway, y casi todos, proxy inverso. {intercept}Y el de interceptación lo pone la red sin que nadie lo pida.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-08",
+      "scene": "s04-proxy",
+      "text": "<firm> {who}O sea, la pregunta es quién sabe que hay alguien en medio.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Ahora mira desde fuera. Alguien abre desde su casa la sede electrónica, sin configurar nada. Delante de los servidores, un equipo del Consorcio recibe cada petición y elige servidor. ¿Qué intermediario es?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Servicios de red",
+        "scenario": "Alguien abre desde casa la sede electrónica sin configurar nada. Delante de los servidores, un equipo del Consorcio elige a cuál va cada petición.",
+        "q": "Según la RFC 9110, ¿qué intermediario es ese equipo?",
+        "options": [
+          "Un proxy directo, el que configura el cliente",
+          "Un proxy de interceptación, el transparente",
+          "Un gateway, también llamado proxy inverso",
+          "Un túnel, que pasa los bytes sin mirarlos"
+        ],
+        "answer": 2,
+        "trap": 1,
+        "why": "Lo pone el dueño del servicio y se presenta como el servidor de origen",
+        "trapWhy": "Al de interceptación le desvía el tráfico la red; este hace de cara del servicio",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Un gateway, o sea, un proxy inverso. Lo ha puesto el dueño del servicio.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}La interceptación tentaba, porque no ha configurado nada. Pero a ese le desvía el tráfico la red, y este se presenta como la sede. {rule-b}Quién lo pone decide el nombre.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Directo: lo elige el cliente. Inverso: lo pone el servicio",
+        "at": "rule-b",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-pac",
+      "text": "<clear> {how}¿Y cómo sabe el navegador qué va por el proxy?",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-pac",
+      "text": "<steady> {pac}Se lo dice un archivo, un pequeño programa que consulta antes de cada petición. {rules}Lo interno, directo, y lo demás, por el proxy.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-pac",
+      "text": "<warm> {list}Es tu lista de encargos, la que dice cuáles le das al recadero. {name}Se llama archivo PAC, y en el Consorcio cada navegador sabe dónde está.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-pac",
+      "text": "<engaging> {wpad}O se deja que el navegador busque la lista solo. {ping}Pregunta al servidor de direcciones y, si no, prueba nombres de su dominio, cada vez más cortos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-pac",
+      "text": "<thoughtful> {draft}Eso es WPAD, un borrador de mil novecientos noventa y nueve que nunca llegó a norma.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-pac",
+      "text": "<firm> {risk}El peligro es quién contesta. {fake}Si te da la lista quien no debe, decide él por dónde sale toda tu navegación.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-07",
+      "scene": "s06-pac",
+      "text": "<calm> {arcedo}El Consorcio no lo usa, porque acabaría preguntando por un nombre de su zona pública, alojada fuera.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}La tercera pasa en otra red, donde los navegadores buscan solos su lista. Alguien consigue que el nombre que buscan apunte a un servidor suyo. ¿Qué gana?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Servicios de red",
+        "scenario": "En otra red, los navegadores usan WPAD por DNS. Alguien consigue que el nombre wpad del dominio apunte a un servidor suyo.",
+        "q": "¿Qué consigue con eso?",
+        "options": [
+          "Leer lo que esos equipos envían por HTTPS",
+          "Que todos sus nombres resuelvan a ese servidor",
+          "Cambiar la dirección que les da el DHCP",
+          "Decidir por dónde sale la navegación de esos equipos"
+        ],
+        "answer": 3,
+        "trap": 0,
+        "why": "Quien controla el PAC decide por dónde sale toda la navegación del equipo",
+        "trapWhy": "Lo cifrado cruza el proxy en túnel, de extremo a extremo, y el proxy no lo abre",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Decidir por dónde sale su navegación, porque la lista ahora es suya.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Leer lo cifrado da miedo, pero acuérdate del túnel, que el proxy no abre. {rule-c}Lo que gana es el camino, y no es poco.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Quien controla el PAC decide por dónde sale la navegación",
+        "at": "rule-c",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}De la toma a la web, tres paradas. {rule-1}En la toma, el conmutador pregunta y el servidor decide.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}En medio, el directo lo eliges tú y el inverso lo pone el servicio. {rule-3}Y la lista, mejor conocida que preguntando por ahí.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Si una web no abre, repasa la toma, la lista y el proxy. {next}Y ahora, enchúfate tú {endcard}a las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

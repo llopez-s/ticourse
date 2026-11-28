@@ -1,0 +1,306 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "drift": "error",
+    "letter": "mail",
+    "panic": "alarm",
+    "sign": "lock"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {clocks}En el Consorcio de Arcedo, cada puesto, servidor o conmutador lleva su propio reloj. {title}Y todos tienen que decir la misma hora.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<serious> {drift}Si uno se va más de cinco minutos, el dominio, tal como viene, no le deja entrar. {logs}Y sus registros ya no casan con los de nadie.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-03",
+      "scene": "s01-hook",
+      "text": "<confident> {promise}De eso se encarga el NTP. Verás de quién se fía cada reloj, cuánto se ha ido y quién reparte la hora en casa.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-estratos",
+      "text": "<clear> {street}Primero, de quién se fía cada reloj. Es como preguntar la hora por la calle.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-estratos",
+      "text": "<warm> {plaza}Quien mira el reloj de la plaza te la da de primera mano. Quien se la ha preguntado a él, de segunda.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-estratos",
+      "text": "<steady> {strata}En NTP pasa igual, y cada escalón se llama estrato. {s1}Arriba está la referencia, por ejemplo un receptor GPS, y el servidor que la tiene enchufada es el estrato uno.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-estratos",
+      "text": "<engaging> {hop}Cada salto por la red suma uno. {s2}El Consorcio pregunta a servidores públicos de estrato uno, así que los suyos anuncian el dos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-estratos",
+      "text": "<thoughtful> {s16}Ojo con el dieciséis, que no es el último de la fila. {nosync}Es el que te contesta que no lo sabe, o sea, un reloj sin sincronizar.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Estrato 16: no sincronizado, no el más lejano",
+        "at": "nosync",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Empecemos con un supuesto. Imagina que el Consorcio conecta un receptor GPS directamente a uno de sus servidores de hora. ¿Qué estrato anunciará?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · supuesto",
+        "objective": "Servicios de red",
+        "scenario": "Supuesto: el Consorcio conecta un receptor GPS directamente a NTP1, que hoy anuncia estrato 2 porque toma la hora de servidores públicos.",
+        "q": "¿Qué estrato anuncia NTP1 con el receptor conectado?",
+        "options": [
+          "Estrato 0",
+          "Estrato 1",
+          "Estrato 2",
+          "Estrato 16"
+        ],
+        "answer": 1,
+        "trap": 2,
+        "why": "El estrato 1 es el servidor conectado directamente a la referencia",
+        "trapWhy": "El receptor no es un salto más: el estrato 1 es el servidor, no el GPS",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}El uno, porque ahora es ese servidor el que tiene la referencia enchufada.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Es fácil contar el receptor como el uno y el servidor como el dos. {rule-a}Pero el estrato uno es el servidor, no el GPS.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Estrato 1: el servidor con la referencia, no el GPS",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-marcas",
+      "text": "<clear> {letter}Ahora, cómo se mide lo que se ha ido. Piensa en una carta. La mandas y apuntas, con tu reloj, cuándo sale.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-marcas",
+      "text": "<steady> {stamps}Quien la recibe apunta cuándo le llega y cuándo contesta, con el suyo. {back}Y tú apuntas cuándo vuelve la respuesta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-marcas",
+      "text": "<engaging> {marks}En NTP son las cuatro marcas de cada consulta. Dos con el reloj del cliente y dos con el del servidor.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-marcas",
+      "text": "<thoughtful> {delay}Con ellas sale el retardo. Es todo lo que esperaste, menos lo que el otro tardó en contestar. O sea, lo que la carta pasó viajando.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-marcas",
+      "text": "<warm> {offset}Y sale el desfase, lo que hay que corregir. Comparas sus horas con las tuyas, a la ida y a la vuelta, y haces la media.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-marcas",
+      "text": "<firm> {step}Por debajo de un octavo de segundo, el reloj se ajusta poco a poco. {jump}Por encima, de un salto, si el desfase se mantiene.",
+      "pauseAfterMs": 250,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Menos de 125 ms, poco a poco. Hasta 1000 s, de un salto",
+        "at": "jump",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-marcas",
+      "text": "<serious> {panic}Y pasados mil segundos, unos diecisiete minutos, {stop}el programa debería pararse y avisar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Una carta de otra red. La petición tarda cinco milisegundos en llegar, el servidor, muy cargado, cuarenta en contestar, y la respuesta, otros cinco. ¿Qué retardo calcula el cliente?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Servicios de red",
+        "scenario": "En otra red, la petición NTP tarda 5 ms en llegar, el servidor tarda 40 ms en contestar y la respuesta tarda otros 5 ms.",
+        "q": "¿Cuánto vale el retardo que calcula el cliente?",
+        "options": [
+          "5 ms",
+          "10 ms",
+          "45 ms",
+          "50 ms"
+        ],
+        "answer": 1,
+        "trap": 3,
+        "why": "50 ms de espera total menos los 40 ms que tardó el servidor en contestar",
+        "trapWhy": "Es toda la espera del cliente, pero el retardo no cuenta lo que tarda el servidor",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Diez. El cliente esperó cincuenta en total, y le quita los cuarenta del servidor.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Cincuenta es lo que el cliente esperó de verdad, y por eso engaña. Pero el retardo mide solo la red. {rule-b}Lo del servidor no cuenta.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "El retardo no cuenta lo que tarda el servidor en contestar",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-casa",
+      "text": "<clear> {house}Queda saber quién reparte la hora en casa. En el Consorcio, solo dos servidores del CPD salen fuera a preguntarla.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-casa",
+      "text": "<steady> {ntp}Son dos por si uno falla, {fw}y la salida de la hora hacia Internet se puede limitar a ellos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-casa",
+      "text": "<warm> {pdc}En el dominio, la cabeza es uno de los controladores, y toma la hora de esos dos. {chain}Los puestos y servidores del dominio la reciben en cadena desde ahí.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-casa",
+      "text": "<engaging> {sign}Y dentro del dominio, la hora viaja firmada. {direct}Lo que no es del dominio, como conmutadores, encaminadores o impresoras, pregunta directamente a los dos servidores.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-casa",
+      "text": "<calm> {one}O sea, una sola hora para todos, y solo dos equipos que la traen de fuera.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Y ahora, cambia de bando. Alguien falsea la hora en el camino entre Internet y esos dos servidores. ¿A quién le llega la hora mala?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · supuesto",
+        "objective": "Servicios de red",
+        "scenario": "Supuesto: alguien falsea la hora en el tramo entre Internet y NTP1 y NTP2, y los dos servidores la dan por buena.",
+        "q": "¿Qué equipos del Consorcio acaban con la hora falsa?",
+        "options": [
+          "Solo NTP1 y NTP2",
+          "Solo los equipos que no son del dominio",
+          "Solo los miembros del dominio",
+          "Todos los equipos de la red"
+        ],
+        "answer": 3,
+        "trap": 1,
+        "why": "La cabeza del dominio la toma de NTP1 y NTP2, y lo de fuera del dominio también",
+        "trapWhy": "La firma protege el reparto dentro del dominio, no una hora que ya llega mal",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}A todos. La cabeza del dominio la saca de esos dos, y lo que no es del dominio les pregunta directamente.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Parece que la firma salva a los del dominio, pero firma una hora que ya viene mal. {rule-c}Por eso ese tramo hacia Internet es el primero que se protege.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "Servicios de red",
+        "text": "Si la hora entra falsa por arriba, llega así a toda la red",
+        "at": "rule-c",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Paramos el reloj un momento. {rule-1}El estrato uno es el servidor con la referencia, y el dieciséis, uno sin sincronizar.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}El retardo es lo que viaja la consulta, sin contar al servidor, y el desfase, lo que se corrige.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<steady> {rule-3}Y en casa, dos servidores traen la hora, y el resto la toma de ellos, directamente o por el dominio.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Si dos registros no casan, mira primero de dónde saca la hora cada uno. {next}¿Lo pruebas? {endcard}La lección trae más preguntas.",
+      "pauseAfterMs": 250
+    }
+  ]
+}
