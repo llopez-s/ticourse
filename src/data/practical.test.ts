@@ -18,13 +18,14 @@ import { SP5_MODULES } from './secplus/sp5';
 import { SP6_MODULES } from './secplus/sp6';
 import { SP7_MODULES } from './secplus/sp7';
 import { OP1_MODULES } from './opo/op1';
+import { OP2_MODULES } from './opo/op2';
 import { OP3_MODULES } from './opo/op3';
 import { OP4_MODULES } from './opo/op4';
 import { OP6_MODULES } from './opo/op6';
 
 const originals = [...S1_MODULES, ...S2_MODULES, ...S3_MODULES, ...S4_MODULES, ...S5_MODULES, ...S6_MODULES,
   ...SP1_MODULES, ...SP2_MODULES, ...SP3_MODULES, ...SP4_MODULES, ...SP5_MODULES, ...SP6_MODULES, ...SP7_MODULES,
-  ...OP1_MODULES, ...OP3_MODULES, ...OP4_MODULES, ...OP6_MODULES];
+  ...OP1_MODULES, ...OP2_MODULES, ...OP3_MODULES, ...OP4_MODULES, ...OP6_MODULES];
 
 describe('practical curriculum compatibility', () => {
   it('preserves module IDs, original block indices, quizzes and official domain weights', () => {

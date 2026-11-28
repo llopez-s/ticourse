@@ -101,7 +101,7 @@ export const OP6_GLOSSARY: GlossaryEntry[] = [
   { sectionId: 'op6', term: 'CMM (Capability Maturity Model) y niveles L0 a L5', def: 'Modelo de madurez del anexo II (apartado 6): de L0 inexistente a L5 optimizado. Mínimo: BÁSICA L2, MEDIA L3 y ALTA L4.' },
   { sectionId: 'op6', term: 'EDR (Endpoint Detection and Response)', def: 'Herramientas de detección y respuesta en los equipos: son el refuerzo R4 de op.exp.6, exigido en categoría ALTA.' },
   { sectionId: 'op6', term: 'USO OFICIAL', def: 'Marca de la información no clasificada con restricciones (mp.info.2). El responsable de cada información asigna y modifica su nivel en exclusiva.' },
-  { sectionId: 'op6', term: 'Autenticación multifactor', def: 'La que usa «dos o más factores» (anexo IV); hay tres tipos de factor: algo que se sabe, algo que se tiene y algo que se es.' },
+  { sectionId: 'op6', term: 'Autenticación multifactor (MFA)', def: 'La que usa «dos o más factores» (anexo IV); hay tres tipos de factor: algo que se sabe, algo que se tiene y algo que se es.' },
 
   // ---- op6m4 · Conformidad, auditoría e incidentes ------------------------------
   { sectionId: 'op6', term: 'Declaración de Conformidad', def: 'La que expide la propia entidad tras la autoevaluación de un sistema de categoría BÁSICA (art. 38), al menos cada dos años según la ITS de Conformidad.' },

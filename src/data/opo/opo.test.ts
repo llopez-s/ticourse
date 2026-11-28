@@ -61,6 +61,29 @@ describe('pista Redes y ENS', () => {
     for (const s of opo.sections) expect(trackOf(s.id)).toBe('opo');
   });
 
+  it('block 2 (infraestructuras de comunicaciones) lessons follow the shape', () => {
+    const mods = ALL_MODULES.filter((m) => m.sectionId === 'op2');
+    expect(mods.map((m) => m.id)).toEqual(['op2m1', 'op2m2', 'op2m3', 'op2m4', 'op2m5']);
+    for (const m of mods) {
+      expect(m.objectives.length, m.id).toBeGreaterThanOrEqual(4);
+      expect(m.blocks.filter((b) => b.t === 'check').length, m.id).toBeGreaterThanOrEqual(4);
+      expect(m.blocks.filter((b) => b.t === 'table').length, m.id).toBeGreaterThanOrEqual(2);
+      expect(m.quiz.length, m.id).toBe(8);
+      for (const q of m.quiz) {
+        expect(q.domain, q.id).toBe('Infraestructuras de comunicaciones');
+        expect(q.choices, q.id).toHaveLength(4);
+      }
+      expect(new Set(m.quiz.map((q) => q.answer)).size, m.id).toBeGreaterThanOrEqual(3);
+    }
+    const order = opo.sections.map((s) => s.id);
+    expect(order.indexOf('op2')).toBeGreaterThan(order.indexOf('op1'));
+    expect(order.indexOf('op2')).toBeLessThan(order.indexOf('op3'));
+    const cards = opo.flashcards.filter((c) => c.sectionId === 'op2');
+    expect(cards).toHaveLength(30);
+    expect(cards.map((c) => c.id)).toEqual(Array.from({ length: 30 }, (_, i) => `fco${201 + i}`));
+    expect(opo.glossary.filter((g) => g.sectionId === 'op2')).toHaveLength(65);
+  });
+
   it('block 3 (servicios de red) lessons follow the shape', () => {
     const mods = ALL_MODULES.filter((m) => m.sectionId === 'op3');
     expect(mods.map((m) => m.id)).toEqual(['op3m1', 'op3m2', 'op3m3', 'op3m4', 'op3m5']);

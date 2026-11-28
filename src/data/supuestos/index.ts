@@ -4,6 +4,8 @@ import type { Supuesto } from '../../lib/supuesto';
 // principal. Los metadatos viven aparte (data/opo/supuestos/meta.ts).
 const LOADERS: Record<string, () => Promise<{ default: Supuesto }>> = {
   op1s1: () => import('../opo/supuestos/op1s1'),
+  op2s1: () => import('../opo/supuestos/op2s1'),
+  op2s2: () => import('../opo/supuestos/op2s2'),
   op3s1: () => import('../opo/supuestos/op3s1'),
   op3s2: () => import('../opo/supuestos/op3s2'),
   op4s1: () => import('../opo/supuestos/op4s1'),
