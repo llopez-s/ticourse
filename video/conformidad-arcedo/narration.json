@@ -1,0 +1,319 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "stamp": "ding",
+    "reset": "whoosh",
+    "attack": "alarm",
+    "data": "mail",
+    "contractor": "ping2"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {web}En el Consorcio de Arcedo, la web informativa luce un distintivo de conformidad. {payroll}Y las nóminas, otro distinto. ¿Por qué?",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Hoy va de conformidad, auditorías e incidentes. {promise}Quién da el visto bueno, cuándo toca volver a auditar y a quién se avisa cuando algo se rompe.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-sello",
+      "text": "<clear> {category}Todo depende de la categoría del sistema. Básica, media o alta.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-sello",
+      "text": "<steady> {basic}La web es de categoría básica, así que se revisa a sí misma, con una autoevaluación por escrito.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-sello",
+      "text": "<calm> {self}Y el propio Consorcio expide el resultado, una declaración de conformidad.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-sello",
+      "text": "<engaging> {medium}Las nóminas son de categoría media, y ahí no vale con mirarse al espejo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-sello",
+      "text": "<confident> {audit}Viene una entidad de fuera, la audita y, si todo cuadra, la certifica. {stamp}Su distintivo lo firma esa entidad.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-sello",
+      "text": "<warm> {exam}Piensa en dos exámenes tipo test. Uno lo corriges tú, con la plantilla. El otro te lo corrige el tribunal.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-sello",
+      "text": "<thoughtful> {both}Los dos caminos se repiten, como mucho, cada dos años. {optional}Eso sí, una básica también puede certificarse, si la entidad quiere. {publish}Y todo se publica.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}A ver esta. La web sigue siendo de categoría básica, pero el Consorcio decide certificarla, y la auditoría sale bien. ¿Quién firma el distintivo que podrá enseñar la web?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "La web informativa del Consorcio es de categoría BÁSICA. Aun así, el Consorcio decide certificarla, y la auditoría sale bien.",
+        "q": "¿Quién firma el distintivo que podrá mostrar la web?",
+        "options": [
+          "El propio Consorcio, porque la web es de categoría BÁSICA",
+          "La entidad de certificación que la ha auditado",
+          "El CCN, porque es quien valida las certificaciones",
+          "La Unidad de Seguridad, como responsable de la seguridad"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "Si se certifica, el distintivo lo firma la entidad de certificación",
+        "trapWhy": "El Consorcio firma cuando se declara, pero aquí ha elegido certificarse",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}La entidad de certificación. Si la web se certifica, su distintivo es el de certificación, y ese lo firma quien audita.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Lo que despista es la categoría. Ser básica te deja declarar, pero no te obliga. {rule-a}O sea, básica, autoevaluación y declaración. Media o alta, auditoría y certificación.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "BÁSICA: autoevaluación. MEDIA o ALTA: certificación",
+        "at": "rule-a",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-auditoria",
+      "text": "<clear> {cycle}Vamos con las nóminas, que se auditan. La auditoría de siempre, la ordinaria, toca como mucho cada dos años.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-auditoria",
+      "text": "<warm> {car}Es como un chequeo médico. Va por calendario, pero si te operan, te revisan antes, sin esperar a la fecha.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-auditoria",
+      "text": "<engaging> {change}Pues aquí igual. Si el sistema cambia tanto que puede afectar a sus medidas de seguridad, hay auditoría extraordinaria. {name}Ese cambio se llama modificación sustancial.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-auditoria",
+      "text": "<thoughtful> {reset}Y esto se olvida. Con la extraordinaria, el reloj de los dos años vuelve a cero, igual que el chequeo tras la operación.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-auditoria",
+      "text": "<steady> {force}El plazo solo se estira por fuerza mayor, y son tres meses. {report}El informe llega a la jefatura de Informática y a la Unidad de Seguridad de la Información.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Ahora, con números. Un sistema de categoría media pasó su ordinaria hace catorce meses. Hoy le hacen una extraordinaria por un cambio sustancial. Si no pasa nada más, ¿cuándo toca, como tarde, la siguiente ordinaria?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Un sistema de categoría MEDIA pasó su auditoría ordinaria hace 14 meses. Hoy se le hace una extraordinaria por una modificación sustancial.",
+        "q": "Sin más cambios ni fuerza mayor, ¿cuándo toca, como tarde, la siguiente auditoría ordinaria?",
+        "options": [
+          "Dentro de diez meses",
+          "Dentro de dos años",
+          "Dentro de seis meses",
+          "Dentro de un año"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "La extraordinaria reinicia el cómputo: los dos años cuentan desde hoy",
+        "trapWhy": "Diez meses es contar desde la ordinaria de hace 14, y ese plazo se ha reiniciado",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Dentro de dos años, porque la extraordinaria pone el reloj a cero, y los dos años cuentan desde hoy.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Los diez meses salen de contar desde la ordinaria antigua, y ese reloj ya no corre. {rule-b}Cambio sustancial, auditoría extraordinaria, y el plazo empieza de nuevo.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Cambio sustancial: extraordinaria, y el plazo a cero",
+        "at": "rule-b",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-avisos",
+      "text": "<clear> {attack}Queda el día malo. Un ataque tumba la web informativa y, detrás, aparece un acceso a datos del personal.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-avisos",
+      "text": "<steady> {ccn}Como entidad pública, el Consorcio avisa al CCN, el Centro Criptológico Nacional.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-avisos",
+      "text": "<firm> {levels}Es obligatorio si el impacto es alto, muy alto o crítico, y en el momento en que se produce.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-avisos",
+      "text": "<engaging> {lucia}La notificación se hace con una herramienta que se llama LUCIA.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-avisos",
+      "text": "<curious> {ines}No la confundas con INES, la del informe anual del estado de la seguridad.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-avisos",
+      "text": "<thoughtful> {data}Como hay datos personales, va un segundo aviso, a la Agencia Española de Protección de Datos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-07",
+      "scene": "s06-avisos",
+      "text": "<clear> {any}Sea cual sea el nivel, sin dilación indebida y, si se puede, en setenta y dos horas como mucho.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-08",
+      "scene": "s06-avisos",
+      "text": "<warm> {home}Es como un robo en casa. Lo denuncias, y además avisas al seguro. {parallel}Un aviso no sustituye al otro.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Datos personales: también a la AEPD, sea cual sea el nivel",
+        "at": "parallel",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-09",
+      "scene": "s06-avisos",
+      "text": "<calm> {contractor}Y si ese servidor lo llevara una empresa contratada, la empresa avisaría al INCIBE-CERT, que se lo pasaría al equipo del CCN.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Una última, para no liar las herramientas. Esta semana, en el Consorcio, toca enviar el informe anual del estado de la seguridad y notificar un incidente de nivel alto. ¿Cuál va con cada tarea?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Esta semana, el Consorcio tiene que enviar el informe anual del estado de la seguridad y notificar al CCN un incidente de nivel ALTO.",
+        "q": "¿Qué herramienta va con cada tarea?",
+        "options": [
+          "INES para el informe y LUCIA para el incidente",
+          "LUCIA para el informe e INES para el incidente",
+          "INES para las dos tareas",
+          "LUCIA para las dos tareas"
+        ],
+        "answer": 0,
+        "trap": 1,
+        "why": "INES recoge el informe del estado de la seguridad; LUCIA, la notificación de incidentes",
+        "trapWhy": "Las dos tienen nombre de persona y se cruzan con facilidad",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}INES para el informe anual, y LUCIA para el incidente.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Cruzarlas es lo más fácil, porque las dos parecen nombres de persona. {rule-c}El incidente alto o más, al CCN, con LUCIA y en el momento.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "ALTO, MUY ALTO o CRÍTICO: al CCN en el momento",
+        "at": "rule-c",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Repasamos rápido. {r1}La básica se declara, y la media o la alta se certifica.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {r2}Un cambio sustancial pone a cero el reloj de los dos años.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<steady> {r3}Y un incidente alto o más va al CCN en el momento.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Un distintivo en la web vale poco si nadie mira lo que hay detrás. {next}Ahora te esperan la lección {endcard}y sus preguntas.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

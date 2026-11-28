@@ -1,0 +1,276 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "reseal": "lock",
+    "sni": "ding",
+    "mtls": "ping2",
+    "note": "mail"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {building}El Consorcio de Arcedo publica sus webs por una sola dirección y un solo puerto. {two}Detrás hay dos, la informativa y la sede electrónica.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Y cada una recibe un trato distinto con el cifrado. {promise}Hoy vemos quién lo descifra, a qué web va cada visita y quién pide identificarse.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-modos",
+      "text": "<clear> {door}Las dos webs entran por el balanceador. Imagínalo como un intérprete en la puerta. {code}Cada visitante llega hablando en clave, y esa clave es el TLS.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-modos",
+      "text": "<thoughtful> {label}En abierto, eso sí, dice con quién quiere hablar. {choice}Y el intérprete puede hacer tres cosas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-modos",
+      "text": "<steady> {offload}La primera, entender la clave y repetirlo todo dentro, en claro. El servidor recibe la petición sin cifrar. {name1}Eso es terminar el TLS, o descargarlo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-modos",
+      "text": "<engaging> {reseal}La segunda, entenderlo y repetirlo dentro con otra clave, que comparte con el servidor. {name2}Eso es recifrar. Hay cifrado en los dos tramos, pero el intérprete lo ha oído todo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-modos",
+      "text": "<firm> {pass}Y la tercera, apartarse y dejar que hablen ellos. Es el paso directo, y cada servidor guarda su clave privada. {blind}A cambio, el intérprete no oye la petición ni puede poner cookies.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Descarga: en claro. Recifrado: otro TLS. Paso: sin abrir",
+        "at": "blind",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-modos",
+      "text": "<warm> {www}En el Consorcio, la web informativa, que es pública, se descarga, y sus servidores reciben la petición en claro. {sede}La sede, con información más confidencial, se recifra. Eso lo decide el Consorcio, la norma no lo dice.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Arrancamos fuera del Consorcio. Otro balanceador trabaja en paso directo, y quieren ponerle un cortafuegos de aplicaciones web, de los que revisan cada petición. ¿Qué tiene que cambiar?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Balanceo",
+        "scenario": "En otra red, el balanceador trabaja en paso directo. Quieren que un cortafuegos de aplicaciones web, en el propio balanceador, revise cada petición HTTP.",
+        "q": "¿Qué tiene que cambiar para que pueda revisarlas?",
+        "options": [
+          "Que el balanceador lea el nombre que va en claro en el saludo TLS",
+          "Que cada servidor guarde la clave privada del certificado",
+          "Que el balanceador termine el TLS, con descarga o con recifrado",
+          "Que el balanceador negocie con el cliente la versión de HTTP"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "Solo descifrando ve la petición HTTP. En paso directo ve la conexión y el saludo",
+        "trapWhy": "El nombre del saludo dice a qué web va la conexión, no qué se pide dentro",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Que el balanceador termine el TLS, descargando o recifrando. Si no descifra, no hay petición que revisar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}El nombre en abierto despista, porque algo se oye. Pero es solo con quién quiere hablar, no lo que pide. {rule-a}Para leer la petición, hay que terminar el TLS.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Para leer la petición, el balanceador termina el TLS",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-nombre",
+      "text": "<clear> {certs}Ahora, el orden de las cosas. El balanceador tiene un certificado para cada web, y tiene que enseñar el bueno antes de descifrar nada.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-nombre",
+      "text": "<thoughtful> {hello}¿Cómo sabe cuál? Porque el navegador, al saludar, dice en abierto el nombre de la web que busca. {sni}Ese nombre es el SNI.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-nombre",
+      "text": "<engaging> {alpn}En el mismo saludo propone los protocolos que entiende, como quien acuerda el idioma, y el servidor se queda exactamente con uno. {alpn2}Eso es el ALPN, y también va en claro.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-nombre",
+      "text": "<warm> {same}O sea, una dirección, un puerto y dos webs, y el intérprete sabe a cuál va cada visitante sin descifrar. {passsni}Por eso, incluso en paso directo, se puede repartir por nombre.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Volvemos al Consorcio. Las dos webs llegan a la misma dirección y al mismo puerto, y el balanceador tiene un certificado para cada una. ¿Qué le dice cuál presentar?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Balanceo",
+        "scenario": "La web informativa y la sede llegan a la misma dirección y al mismo puerto del balanceador, que tiene un certificado para cada una.",
+        "q": "¿Qué le indica qué certificado presentar en cada conexión?",
+        "options": [
+          "La dirección de origen del navegador",
+          "La cabecera Host de la primera petición",
+          "La cookie que el balanceador insertó en la visita anterior",
+          "El nombre (SNI) que el navegador envía en el saludo TLS"
+        ],
+        "answer": 3,
+        "trap": 1,
+        "why": "El certificado se presenta antes de descifrar, y el SNI va en claro en el saludo",
+        "trapWhy": "Host va dentro de la petición, que aún no se ha descifrado",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}El nombre que manda el navegador al saludar, el SNI. El certificado se elige antes de descifrar nada.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}La cabecera Host suena bien, pero va dentro de lo cifrado. El balanceador la mira después, para elegir servidores. {rule-b}El SNI, para el certificado, y el Host, para el grupo.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "El SNI elige el certificado. El Host, el grupo",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-mutuo",
+      "text": "<clear> {usual}Lo normal es que solo se identifique el servidor. Pero hay servicios que también piden al visitante un certificado suyo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-mutuo",
+      "text": "<steady> {mtls}Eso es el TLS mutuo. {who}Y esa prueba la pide quien descifra, o sea, quien termina el TLS.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-mutuo",
+      "text": "<thoughtful> {inside}Si lo termina el balanceador, el servidor de dentro no ve ese certificado. Ni siquiera con recifrado, porque la segunda clave es del balanceador, no del visitante.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-mutuo",
+      "text": "<engaging> {note}Así que el balanceador le pasa una nota, una cabecera con el certificado que ha comprobado. {trust}Y el servidor solo debería creerse esa nota si viene del balanceador.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-mutuo",
+      "text": "<calm> {notyet}En el Consorcio no consta que la sede pida certificado al visitante, así que la siguiente la sacamos de otra red.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Cerramos con otra red. Su balanceador termina el TLS y pide certificado. Una petición le llega con la cabecera de la nota ya puesta por el cliente. ¿Qué hace con ella?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Balanceo",
+        "scenario": "En otra red, el balanceador termina el TLS, pide certificado de cliente y lo pasa en Client-Cert. Llega una petición con una Client-Cert puesta por el cliente.",
+        "q": "¿Qué debería hacer el balanceador con esa cabecera?",
+        "options": [
+          "Pasarla tal cual, porque llega cifrada dentro del TLS",
+          "Añadir la suya detrás, para que el servidor vea las dos",
+          "Quitarla y poner la suya, con el certificado que validó él",
+          "Pasarla y anotar en Forwarded la dirección del cliente"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "Solo vale la que escribe quien validó el certificado. La del cliente puede ser falsa",
+        "trapWhy": "El cifrado protege el camino, pero no dice quién escribió la cabecera",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Quitarla y poner la suya, con el certificado que ha comprobado él. La del cliente puede decir cualquier cosa.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Que llegue cifrada da confianza, pero el cifrado protege el camino, no dice quién escribió la nota. {rule-c}La nota vale si la escribe quien termina el TLS.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "El certificado del cliente lo valida quien termina el TLS",
+        "at": "rule-c",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Lo de hoy, en tres trazos. {rule-1}Descargar deja la petición en claro, recifrar la vuelve a cifrar, y el paso directo no la descifra.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}El nombre va en abierto, en el saludo, y con él se elige el certificado. {rule-3}Y al visitante lo identifica quien termina el TLS.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Ante cualquier diseño, pregunta primero dónde se descifra. {next}Y para comprobarlo, {endcard}la lección trae sus propias preguntas.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "err": "error",
+    "six": "ding",
+    "inout": "glitch",
+    "shutter": "lock"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {adc}En el Consorcio de Arcedo, un balanceador reparte la sede electrónica entre dos servidores. {doubt}Antes, tiene que saber cuáles pueden atender.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Lo sabe con comprobaciones de salud. {promise}Vamos a ver qué preguntan, cuánto tardan en notar un fallo y cómo se retira un servidor sin echar a nadie.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-niveles",
+      "text": "<clear> {ask}Cada pocos segundos, el balanceador pregunta a cada servidor si está bien. {out}Y si no lo está, lo saca del reparto.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-niveles",
+      "text": "<warm> {shop}Piensa en una tienda. {l3}Ver luz dentro dice que hay corriente, no que te vayan a abrir. Eso es un ping, la capa tres.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-niveles",
+      "text": "<steady> {l4}Que te abran la puerta ya dice más. Es la capa cuatro, una conexión al puerto del servicio, y prueba que hay un programa escuchando.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-niveles",
+      "text": "<engaging> {l7}Y que te despachen lo que pides es la capa siete. El balanceador hace una petición web y mira el código que le devuelven.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "L3: el equipo. L4: el puerto. L7: la aplicación",
+        "at": "l7",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-niveles",
+      "text": "<thoughtful> {lie}Pero cada una ve solo lo que pregunta. {err}Un servidor puede aceptar la conexión y dar error a todo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-niveles",
+      "text": "<firm> {sede}Por eso, en la sede, el balanceador pide una página de salud y exige un doscientos exacto.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Fíjate en este servidor, de otra red. Su balanceador acepta cualquier respuesta de éxito o de redirección. Un servidor redirige todas las peticiones, también la de la comprobación, a una página de error. ¿Qué hace el balanceador?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Balanceo",
+        "scenario": "En otra red, la comprobación da por buena cualquier respuesta 2xx o 3xx. Un servidor redirige todas las peticiones, también esa, a una página de error.",
+        "q": "¿Qué hace el balanceador con ese servidor?",
+        "options": [
+          "Lo saca, porque una página de error no es una respuesta buena",
+          "Lo pasa a mantenimiento hasta que alguien lo revise",
+          "Lo deja en el reparto, porque una redirección cuenta como buena",
+          "Lo deja solo para los clientes que ya tenían sesión"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "La redirección es un 3xx y esa comprobación lo acepta, sin mirar adónde lleva",
+        "trapWhy": "El balanceador no llega a ver la página de error: solo mira el código",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Lo deja en el reparto. La respuesta es una redirección, y esa comprobación la da por buena sin mirar adónde lleva.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Parece que debería sacarlo, pero el balanceador no llega a ver la página de error. Solo ve el código. {rule-a}O sea, que una comprobación vale lo que vale su pregunta.",
+      "pauseAfterMs": 700
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-umbrales",
+      "text": "<clear> {knobs}Ahora, el reloj. Los mandos que más pesan son dos. {fall}Cuántos fallos seguidos sacan a un servidor, {rise}y cuántos aciertos lo vuelven a meter.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-umbrales",
+      "text": "<warm> {call}Como cuando llamas a la tienda. Una vez sin respuesta no la cierra. Tres seguidas, ya sí.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-umbrales",
+      "text": "<steady> {sede2}En la sede, el balanceador pregunta cada dos segundos. Saca a un servidor tras tres fallos, y lo devuelve tras dos aciertos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-umbrales",
+      "text": "<thoughtful> {vendor}Son los valores por defecto de un fabricante. {norm}Ninguna norma los fija.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-umbrales",
+      "text": "<engaging> {count}En el peor caso, cae justo tras una comprobación buena. Falla a los dos, a los cuatro y a los seis segundos. {six}Seis segundos, y fuera.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-umbrales",
+      "text": "<calm> {four}Para volver, dos aciertos, o sea, cuatro segundos.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Salir: fallos × intervalo. Volver: aciertos × intervalo",
+        "at": "four",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-umbrales",
+      "text": "<firm> {flap}¿Por qué no sacarlo al primer fallo? Porque un servidor saturado contesta a ratos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-08",
+      "scene": "s04-umbrales",
+      "text": "<engaging> {inout}Entra y sale sin parar, y cada vez que entra le cae toda su carga. Eso es el flapping.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Ahora, con cronómetro, y en otra red. Su balanceador pregunta cada dos segundos. Un fallo saca a un servidor, y un acierto lo devuelve. Uno saturado entra y sale sin parar. ¿Qué cambio lo frena?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Balanceo",
+        "scenario": "En otra red, el balanceador comprueba cada 2 s: 1 fallo saca a un servidor y 1 acierto lo devuelve. Uno saturado entra y sale sin parar.",
+        "q": "¿Qué cambio frena ese vaivén?",
+        "options": [
+          "Comprobar cada segundo, para notar antes los fallos",
+          "Pedir 3 fallos para salir y 2 aciertos para volver",
+          "Esperar menos la respuesta de cada comprobación",
+          "Avisar al administrador cada vez que salga"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "Un fallo suelto ya no lo saca, y solo vuelve cuando aguanta varias comprobaciones",
+        "trapWhy": "Con un solo fallo, comprobar más a menudo da más ocasiones de echarlo",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Subir los umbrales. Con tres fallos, uno suelto ya no lo saca, y con dos aciertos, solo vuelve cuando aguanta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Preguntar más a menudo suena a vigilar mejor. Pero con un solo fallo, más preguntas son más ocasiones de echarlo. {rule-b}Los umbrales son el freno.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Los umbrales de bajada y de subida frenan el flapping",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-drenaje",
+      "text": "<clear> {admin}Hasta aquí, el servidor sale porque falla. Pero a veces lo sacas tú, para actualizarlo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-drenaje",
+      "text": "<steady> {memory}En la sede eso pesa, porque cada servidor guarda las sesiones en su memoria. {cookie}Y una cookie del balanceador ata a cada persona al suyo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-drenaje",
+      "text": "<warm> {shutter}Vuelve la tienda, a la hora de cerrar. Ya no entra nadie, pero los de dentro terminan de comprar.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-drenaje",
+      "text": "<clear> {drain}Eso es el drenaje. El servidor no recibe gente nueva, atiende a los suyos y se le sigue comprobando.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-drenaje",
+      "text": "<engaging> {maint}Cuando se vacía, lo pasas a mantenimiento. Ahí no le llega nada, ni gente ni comprobaciones, y ya puedes trabajar en él.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Drain: nadie nuevo. Maint: ni tráfico ni comprobaciones",
+        "at": "maint",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-drenaje",
+      "text": "<calm> {order}O sea, que en la sede, primero drenaje y después mantenimiento.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Para despedirnos, un dial, en otra red. Para retirar un servidor, le ponen el peso a cero, o sea, nada del reparto. Sus usuarios tienen la sesión en su memoria y una cookie que los ata a él. ¿Qué les pasa?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Balanceo",
+        "scenario": "En otra red, con HAProxy 3.4, retiran un servidor poniéndole peso 0. Sus usuarios tienen la sesión en su memoria y una cookie que los ata a él.",
+        "q": "¿Qué les pasa a esos usuarios?",
+        "options": [
+          "Pierden la sesión, porque con peso 0 ya no recibe tráfico",
+          "Siguen en ese servidor; solo deja de recibir gente nueva",
+          "Pasan al otro servidor, que recibe también su sesión",
+          "Reciben un error hasta que el peso vuelve a 1"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "Con peso 0 sale del reparto, pero sigue atendiendo a los que trae la cookie",
+        "trapWhy": "El peso solo decide adónde va la gente nueva, no a quién ata la cookie",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Siguen en ese servidor. Sin peso no le llega gente nueva, pero la cookie le sigue trayendo a los suyos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Lo de perder la sesión tienta, pero el peso solo reparte a los que llegan sin cookie. {same}Es otra forma de drenar.",
+      "pauseAfterMs": 700
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Antes de irte, tres ideas. {rule-1}Una, cada comprobación ve solo lo que pregunta.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Dos, salir cuesta fallos por intervalo, y los umbrales frenan el vaivén. {rule-3}Y tres, para retirar un servidor, primero drenaje.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Si un panel dice que todo va bien, piensa qué le han preguntado. {next}Y ahora, ponte a prueba {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

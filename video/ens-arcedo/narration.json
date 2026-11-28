@@ -1,0 +1,493 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "ok-4": "check",
+    "trap-4": "block",
+    "ok-5": "check",
+    "trap-5": "block",
+    "private": "whoosh",
+    "lockers": "lock",
+    "approved": "typing",
+    "decides": "ding",
+    "inspector": "error"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {consorcio}El Consorcio de Arcedo tiene sede electrónica y registro. {norma}Y encima de la mesa, una norma de cuarenta y un artículos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Es el Esquema Nacional de Seguridad. {promise}Antes de tocar un servidor, conviene saber a quién obliga, cómo está construido y quién responde de qué.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-ambito",
+      "text": "<clear> {law}Primero, de dónde sale. Lo establece una ley, la cuarenta de dos mil quince, en su artículo ciento cincuenta y seis, apartado dos.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "El ENS lo establece el art. 156.2 de la Ley 40/2015",
+        "at": "law",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-ambito",
+      "text": "<steady> {decree}Y lo regula un real decreto, el trescientos once de dos mil veintidós. Está en vigor desde mayo de ese año, y derogó al de dos mil diez.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-ambito",
+      "text": "<engaging> {public}¿A quién obliga? Para empezar, a todo el sector público. {classified}También a los sistemas que tratan información clasificada.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-ambito",
+      "text": "<thoughtful> {private}Y aquí viene lo que se olvida. Obliga también a la empresa privada que presta servicios al sector público por un contrato.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-ambito",
+      "text": "<warm> {surgery}Piensa en un quirófano. La empresa de limpieza que entra cumple las normas de higiene, igual que el hospital, pero con su propio protocolo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-ambito",
+      "text": "<confident> {ownpolicy}Pues eso pide el artículo dos. La empresa aplica el Esquema con su propia política de seguridad, y los pliegos del contrato se lo exigen.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-ambito",
+      "text": "<calm> {data}Y si el sistema trata datos personales, se suma la protección de datos. Si su análisis de riesgos pide medidas más exigentes, prevalecen esas.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Sigamos ese contrato un paso más. La empresa que mantiene la infraestructura de las oficinas pasa una parte del trabajo a otra. ¿A esa otra le llega la exigencia?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Supón que la empresa que mantiene por contrato la infraestructura de las oficinas comarcales subcontrata una parte a otra empresa.",
+        "q": "¿Le alcanza a la subcontrata la exigencia de conformidad con el ENS?",
+        "options": [
+          "No, solo obliga a quien firmó el contrato con el Consorcio",
+          "Sí, en la medida necesaria según el análisis de riesgos",
+          "Sí, siempre y a toda la cadena, sin excepción",
+          "Solo si la subcontrata es también del sector público"
+        ],
+        "answer": 1,
+        "trap": 2,
+        "why": "La exigencia se extiende a la cadena de suministro en la medida necesaria (art. 2.3)",
+        "trapWhy": "Llega a la cadena, pero el límite lo pone el análisis de riesgos",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Sí le llega, en la medida que sea necesario. La norma extiende la exigencia a la cadena de suministro, según lo que diga el análisis de riesgos.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Lo fácil es pensar que llega siempre, y a todos los eslabones. {rule-a}Pero el artículo dos pone la medida en el análisis de riesgos.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Art. 2.3: privados con contrato, y su cadena según riesgos",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-mapa",
+      "text": "<clear> {map}Vamos con cómo está construido. Son cuarenta y un artículos repartidos en siete capítulos, y cuatro anexos al final.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-mapa",
+      "text": "<steady> {annexes}Los anexos van en este orden, y los tienes en pantalla. Si dudas entre el uno y el dos, piensa que primero se categoriza y después se eligen medidas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-mapa",
+      "text": "<warm> {lockers}Para lo demás, imagina un vestuario con taquillas numeradas. Cada artículo es una taquilla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-mapa",
+      "text": "<engaging> {principles}Los principios básicos son siete, de la a a la ge, en las taquillas del seis al once. ¿Siete en seis? Sí, porque en la diez van dos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-mapa",
+      "text": "<thoughtful> {twoinone}Son la vigilancia continua y la reevaluación periódica. O sea, vigilar siempre y volver a revisar cada cierto tiempo, en el mismo artículo.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "7 principios (art. 5) en 6 artículos: el 10 junta dos",
+        "at": "twoinone",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-mapa",
+      "text": "<confident> {requirements}Después vienen los requisitos mínimos. Son quince, de la a a la eñe, y los enumera el artículo doce.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-07",
+      "scene": "s04-mapa",
+      "text": "<steady> {lockers2}Cada uno tiene su taquilla, en orden. La a va en la trece, y cada letra, en la siguiente.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-08",
+      "scene": "s04-mapa",
+      "text": "<calm> {measures}¿Y cómo se cumplen? Con las medidas del anexo dos, según la categoría del sistema. {soa}Las que se eligen quedan escritas en un documento, la Declaración de Aplicabilidad.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Un reto de cuentas, sin chuleta. La Unidad de Seguridad prepara una ficha del requisito de incidentes, que es la letra eme. ¿Qué artículo tiene que citar?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "La Unidad de Seguridad de la Información prepara una ficha del requisito mínimo «incidentes de seguridad», la letra m) del artículo 12.6.",
+        "q": "¿Qué artículo del Real Decreto 311/2022 desarrolla ese requisito?",
+        "options": [
+          "El artículo 24",
+          "El artículo 33",
+          "El artículo 25",
+          "El artículo 26"
+        ],
+        "answer": 2,
+        "trap": 1,
+        "why": "La a) va en el 13 y hay una letra por artículo: la m), decimotercera, cae en el 25",
+        "trapWhy": "El 33 trata la respuesta a incidentes, pero fuera del bloque del 13 al 27",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}El veinticinco. La a está en la taquilla trece, y la eme es la letra número trece, así que va doce taquillas más allá.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}El treinta y tres despista, porque habla de responder a incidentes. {rule-b}Pero los requisitos mínimos van seguidos, del trece al veintisiete.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "15 requisitos (art. 12.6): arts. 13 a 27, en orden",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-politica",
+      "text": "<clear> {policy}Pasamos a la política de seguridad. Es el documento en el que cada organización dice cómo gestiona su seguridad.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-politica",
+      "text": "<warm> {statutes}Se parece a los estatutos de una comunidad de vecinos. Dicen para qué existe, qué leyes le tocan, quién tiene cada cargo y cómo se forma la junta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-politica",
+      "text": "<steady> {contents}Pues la política lleva eso mismo. La misión, el marco legal, los roles de seguridad y la composición del comité.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-politica",
+      "text": "<calm> {extra}Y además, cómo se ordena la documentación y qué riesgos trae el tratamiento de datos personales.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-politica",
+      "text": "<engaging> {approved}Y no vale un borrador en una carpeta. Tiene que aprobarla formalmente el órgano competente.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-politica",
+      "text": "<thoughtful> {small}Cada organización del ámbito necesita la suya. Y la norma se acuerda también de las más pequeñas.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Cambiamos de organización. Un ayuntamiento pequeño no tiene medios para escribir su propia política de seguridad. ¿Qué le ofrece la norma?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Un ayuntamiento pequeño, que no es el Consorcio, no tiene medios para redactar su propia política de seguridad.",
+        "q": "¿Qué prevé para él el Real Decreto 311/2022?",
+        "options": [
+          "Que, con sistemas de categoría BÁSICA, no necesita política",
+          "Que adopte la política de la empresa que le mantiene los equipos",
+          "Que el CCN le redacte y le apruebe la suya",
+          "Que se apoye en una política común comarcal o provincial"
+        ],
+        "answer": 3,
+        "trap": 0,
+        "why": "Los municipios pueden apoyarse en una política común comarcal o provincial (art. 12.5)",
+        "trapWhy": "La política la necesita cada organización, sea cual sea la categoría",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Que se apoye en una política común, elaborada por la entidad comarcal o provincial. Lo prevé el artículo doce, en su apartado cinco.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Librarse por tener sistemas sencillos suena razonable. {rule-c}Pero la política la necesita cada organización, sea cual sea la categoría.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Municipios: política común comarcal o provincial (12.5)",
+        "at": "rule-c",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-roles",
+      "text": "<clear> {four}Y ahora, quién responde de qué. El Esquema pide distinguir cuatro responsables.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-roles",
+      "text": "<warm> {works}Piensa en una obra. Quien la encarga dice qué necesita. La dirección de obra decide cómo se hace y lo vigila. Y la constructora lo levanta y lo mantiene.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-roles",
+      "text": "<steady> {whatinfo}Aquí los que encargan son dos. El responsable de la información fija los requisitos de la información, y el del servicio, los del servicio.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-roles",
+      "text": "<engaging> {how}La dirección de obra es el responsable de la seguridad. Decide cómo se cumplen esos requisitos, supervisa que se implanten e informa.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-roles",
+      "text": "<calm> {build}Y la constructora es el responsable del sistema. Implanta la seguridad y supervisa la operación del día a día, y puede delegar en administradores u operadores.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-roles",
+      "text": "<confident> {category}Cuando toca categorizar un sistema, valoran los dos que encargan. {decides}Y la categoría la determina el de seguridad, que además firma la Declaración de Aplicabilidad.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Valoran información y servicio. La categoría, seguridad",
+        "at": "decides",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-07",
+      "scene": "s08-roles",
+      "text": "<thoughtful> {arcedo}En Arcedo, quién es quién lo tienes en pantalla. Fíjate sobre todo en una cosa. La seguridad la lleva una unidad aparte, no Informática.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-p4",
+      "text": "<curious> {q4}Esta toca a una empresa de fuera. El Consorcio le contrata la vigilancia de su red, y no hay causa para una excepción. ¿Qué tiene que nombrar la empresa?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "El Consorcio contrata a una empresa la vigilancia de su red. No hay ninguna causa justificada y documentada para una excepción.",
+        "q": "Para la seguridad, ¿qué tiene que designar esa empresa?",
+        "options": [
+          "Un punto o persona de contacto para la seguridad",
+          "Un responsable de la información para los datos que vigila",
+          "Alguien que firme por el Consorcio la Declaración de Aplicabilidad",
+          "Nada, porque un servicio externalizado queda fuera del ENS"
+        ],
+        "answer": 0,
+        "trap": 1,
+        "why": "Con un servicio externalizado, quien lo presta designa un POC de seguridad (art. 13.5)",
+        "trapWhy": "La información ya tiene su responsable en el Consorcio, la Gerencia",
+        "countdownMs": 5000,
+        "revealAt": "ok-4",
+        "trapAt": "trap-4"
+      }
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-p4",
+      "text": "<confident> {ok-4}Un punto o persona de contacto para la seguridad. Lo pide el artículo trece, en su apartado cinco, cuando un servicio se externaliza.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-p4",
+      "text": "<firm> {trap-4}Darle un responsable de la información parece lógico, porque esa empresa ve datos. {rule-d}Pero ese papel se queda en casa, en el Consorcio.",
+      "pauseAfterMs": 2000
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-separacion",
+      "text": "<clear> {split}Queda la regla que más se pregunta, la del artículo trece, apartado tres.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-separacion",
+      "text": "<steady> {rule}El responsable de la seguridad tiene que ser distinto del responsable del sistema. Y entre los dos no puede haber dependencia jerárquica, en ningún sentido.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Art. 13.3: seguridad y sistema, distintos y sin jerarquía",
+        "at": "rule",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-separacion",
+      "text": "<warm> {inspector}Vuelve a la obra. Si la constructora manda sobre la dirección de obra, ¿quién se atreve a señalarle un fallo?",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-separacion",
+      "text": "<engaging> {gerencia}Por eso en Arcedo la Unidad de Seguridad no cuelga de Informática, sino de la Gerencia. Así, cuando revisa un fallo, no juzga a su propio jefe.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-separacion",
+      "text": "<thoughtful> {exit}O sea, que la seguridad va separada de la explotación. Y la regla tiene una sola salida, que no sale gratis.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-p5",
+      "text": "<intrigued> {q5}Para rematar, un caso de pocos medios. Una mancomunidad pequeña tiene un solo técnico, que administra sus sistemas. Quiere que sea también responsable de la seguridad. ¿Puede?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Una mancomunidad pequeña, que no es el Consorcio, tiene un solo técnico, que administra sus sistemas. Quiere nombrarlo también responsable de la seguridad.",
+        "q": "¿Lo permite el artículo 13.3 del Real Decreto 311/2022?",
+        "options": [
+          "No, en ningún caso pueden ser la misma persona",
+          "Sí, si justifica la falta de recursos y aplica medidas compensatorias",
+          "Sí, si lo aprueba su comité de seguridad",
+          "Sí, si sus sistemas son de categoría BÁSICA"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "La única excepción es la ausencia justificada de recursos, con medidas compensatorias",
+        "trapWhy": "La regla es estricta, pero el propio artículo prevé esa excepción",
+        "countdownMs": 5000,
+        "revealAt": "ok-5",
+        "trapAt": "trap-5"
+      }
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-p5",
+      "text": "<confident> {ok-5}Puede, pero con dos condiciones. Que la falta de recursos esté justificada, y que aplique medidas compensatorias.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-p5",
+      "text": "<firm> {trap-5}El no rotundo tienta, porque la regla suena muy estricta. {rule-e}Pero tiene esa excepción, y solo esa.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Excepción: falta justificada de recursos y compensatorias",
+        "at": "rule-e",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-cierre",
+      "text": "<cheerful> {recap}Repaso rápido, en cinco frases. {rule-1}Obliga al sector público y a quien le presta servicios, con su propia política.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-cierre",
+      "text": "<clear> {rule-2}Siete principios en seis artículos, y quince requisitos del trece al veintisiete. {rule-3}La política, con su comité dentro, la aprueba el órgano competente.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-cierre",
+      "text": "<steady> {rule-4}Valoran información y servicio, y la categoría la determina seguridad. {rule-5}Y seguridad y sistema, separados y sin jerarquía.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s12-04",
+      "scene": "s12-cierre",
+      "text": "<engaging> {phrase}Ante cualquier caso, pregúntate primero quién decide y quién ejecuta. {next}Con esto ya puedes ir {endcard}a las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

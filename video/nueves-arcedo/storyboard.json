@@ -1,0 +1,220 @@
+{
+  "title": "Alta disponibilidad: una hucha de minutos, dos lámparas y una radio",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 533,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Cuánto se puede parar"
+    },
+    {
+      "n": 2,
+      "title": "Fallar menos o volver antes"
+    },
+    {
+      "n": 3,
+      "title": "Cadenas y parejas"
+    },
+    {
+      "n": 4,
+      "title": "Lo que comparten"
+    },
+    {
+      "n": 5,
+      "title": "Cuando la pareja deja de oírse"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Siempre no es una cifra",
+      "targetSec": 21,
+      "wordBudget": 57,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. Una pantalla de navegador con «sede.arcedo.example» y, encima, un cartel con la palabra «siempre» entre comillas (`sede`). La palabra se tambalea y se deshace en un signo de interrogación (`always`). Título «Alta disponibilidad: nueves, serie, paralelo y quórum» (`title`, antes de los 12 s). Promesa en tres chips, lo mismo que dice la voz: «cuánto se puede parar · cómo se calcula una cadena · qué pasa si dos dejan de oírse» (`promise`). Plaquita «REDES Y ENS · Balanceo»",
+      "requiredCues": [
+        "sede",
+        "always",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-nueves",
+      "chapter": 1,
+      "title": "La hucha de minutos",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "Una barra de tiempo, «un año», casi entera en verde con una franja roja al final, rotulada «disponibilidad = % del tiempo en servicio, en un mes o en un año» (`percent`). Debajo, «99,9 % · tres nueves» y «99,999 % · cinco nueves», con los nueves resaltados (`nines`). A la derecha, la imagen rotulada «imagen · no es el Consorcio»: una hucha de cristal con monedas que son minutos (`jar`). La franja roja se convierte en la cifra «parada = (1 − A) × tiempo total» y «99,9 % al año = 525,6 min = 8 h 45 min 36 s» (`year`). La barra cambia a «un mes» y la hucha se vacía casi entera: «99,9 % al mes = 43,2 min = 43 min 12 s» (`month`). Rótulo de base, que se queda en una esquina el resto del capítulo: «año de 365 días = 525 600 min · mes de 30 días = 43 200 min · con 365,25 días, un 0,07 % más: no se mezclan» (`base`). Último rótulo: «ENS · no fija porcentajes de disponibilidad ni nueves · las cifras las decide cada organización» (`ens`). Nada de la tabla de cuatro nueves todavía: la cifra de cuatro nueves sale en s03",
+      "requiredCues": [
+        "percent",
+        "nines",
+        "jar",
+        "year",
+        "month",
+        "base",
+        "ens"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Un nueve más",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo» en el `tag`: el panel de la pregunta tapa la escena, así que el fondo se queda quieto (la hucha a media luz). Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (la décima parte) y en `trap-1` la trampa (la mitad). Al apagarse el panel, dos huchas lado a lado: «99,9 % · 525,6 min al año» y «99,99 % · 52,56 min al año (52 min 33,6 s)», con una flecha de texto «entre diez» (`rule-a`). Debajo, en pequeño: «la tabla de AWS redondea a «52 min»». Entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-mtbf",
+      "chapter": 2,
+      "title": "El ascensor",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "goal": "Pregunta en pantalla «¿de dónde sale la disponibilidad de un equipo?» (`where`). La imagen rotulada «imagen · no es el Consorcio»: el ascensor de un portal, que funciona, se para con un cartel de «averiado» y vuelve (`lift`). Debajo, una línea de tiempo que alterna tramos verdes largos y rojos cortos. Los verdes se rotulan «MTBF · tiempo medio entre fallos · Mean Time Between Failure» (`mtbf`) y los rojos «MTTR · tiempo medio de recuperación · Mean Time to Recover, según AWS · otras fuentes dicen reparación o restauración: se define cada vez» (`mttr`). Entra la fórmula «disponibilidad = MTBF / (MTBF + MTTR)», con el rótulo «fórmula que da AWS Well-Architected · documentación de un fabricante, no una norma» (`formula`); la tarjeta entra al acabar esa frase. Ejemplo: «MTBF = 150 días = 3600 h · MTTR = 1 h · 3600 / 3601 = 0,99972… · 99,97 %» (`example`). Dos palancas como dos interruptores: «que falle menos · MTBF mayor» y «que vuelva antes · MTTR menor» (`levers`)",
+      "requiredCues": [
+        "where",
+        "lift",
+        "mtbf",
+        "mttr",
+        "formula",
+        "example",
+        "levers"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Dos propuestas",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo»: fondo quieto con las dos palancas a media luz. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (las dos lo mismo) y en `trap-2` la trampa (la A). Al apagarse el panel, las tres cuentas, comprobadas: «hoy · 2000 / 2002 = 0,999001 · 99,90 %», «A · 4000 / 4002 = 0,999500 · 99,95 %» y «B · 2000 / 2001 = 0,999500 · 99,95 %», con A y B unidas por un «=» (`ok-2`). Sobre la palanca «que vuelva antes» aparecen un repuesto en un armario y un procedimiento escrito, rotulados «repuesto · procedimiento · conmutación automática: acortan el MTTR» (`rule-b`). Entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-serie",
+      "chapter": 3,
+      "title": "La guirnalda y el salón",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "goal": "Tres cajas encadenadas, «pieza 1 · pieza 2 · pieza 3», con el rótulo «en serie · hacen falta todas» (`chain`). A la derecha, la imagen rotulada «imagen · no es el Consorcio»: una guirnalda de bombillas antigua; se funde una y se apaga entera (`garland`). La cuenta de la lección: «99,99 % × 99,99 % × 99,99 % = 0,9999³ = 0,99970003 · 99,97 %», con el rótulo «siempre por debajo de la pieza más débil · AWS las llama dependencias duras» (`product`). Cambia la imagen: un salón con dos lámparas; se apaga una y sigue habiendo luz (`lamps`). Dos cajas en paralelo, rotuladas «en paralelo · basta con una viva · A = 1 − (1 − A₁) × (1 − A₂)» (`parallel`); la tarjeta entra al acabar esa frase. La cuenta: «1 − 0,001 × 0,001 = 0,999999 · 99,9999 %» y el atajo «3 nueves + 3 nueves = 6 nueves · atajo de AWS, si todas las piezas son de nueves» (`sixnines`)",
+      "requiredCues": [
+        "chain",
+        "garland",
+        "product",
+        "lamps",
+        "parallel",
+        "sixnines"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Una cadena a medio doblar",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo»: fondo quieto, un encaminador y dos servidores en paralelo a media luz, rotulados «99,9 % cada uno · supuestas para el ejercicio · fallos independientes». Cuenta atrás de 5 s. En `ok-3` se marca la correcta (99,8999 %) y en `trap-3` la trampa (99,9999 %). Al apagarse el panel, la cuenta: «pareja: 1 − 0,001 × 0,001 = 0,999999 · × encaminador 0,999 = 0,998999 · 99,8999 %», y una línea horizontal sobre el encaminador rotulada «techo · 99,9 %», que la cadena nunca cruza (`rule-c`). Debajo, en pequeño: «sin doblar nada: 0,999 × 0,999 = 99,8001 %». Entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s08-comparten",
+      "chapter": 4,
+      "title": "La misma regleta",
+      "targetSec": 53,
+      "wordBudget": 143,
+      "goal": "El esquema de la publicación del Consorcio: «www.arcedo.example · sede.arcedo.example», una sola dirección pública «203.0.113.10», el encaminador, que reenvía el 443 a la VIP «10.20.72.70», la pareja «ADC1 · 10.20.72.71» y «ADC2 · 10.20.72.72», y detrás «SEDE1 · SEDE2» (y, en gris, «WEB1 · WEB2») (`pair`). Se resaltan en ámbar «un solo operador · una sola dirección pública» y un recuadro que lo engloba todo: «CPD · en el edificio de la sede central · sin CPD de respaldo» (`line`). La cuenta del ejemplo resuelto de la lección, con el rótulo «disponibilidades SUPUESTAS para el ejercicio, no datos del Consorcio»: «línea 99,9 % × encaminador 99,9 % × pareja de ADC 0,999999 × pareja de servidores (99 % cada uno) 0,9999 = 99,79 % · ≈ 1104 min al año (18 h 24 min)», y una barra que reparte esos minutos: «línea y encaminador · ≈ 1051 min» frente a «el resto · ≈ 53 min» (`calc`). Vuelven las dos lámparas de s06, «imagen · no es el Consorcio», enchufadas a la misma regleta (`lamps2`); la regleta salta y se apagan las dos (`strip`). Rótulo «el cálculo en paralelo supone fallos independientes», y sobre el esquema se ilumina lo que comparten las dos parejas: «sala · línea · edificio · suministro» (`shared`); la tarjeta entra al acabar esa frase. Último rótulo: «punto único de fallo (SPOF) · práctica habitual, no una definición de una norma» sobre la línea y el encaminador (`spof`). La pareja de ADC se dibuja como «activo-pasivo · protocolo de alta disponibilidad del fabricante»: nada de VRRP ni de MAC virtual",
+      "requiredCues": [
+        "pair",
+        "line",
+        "calc",
+        "lamps2",
+        "strip",
+        "shared",
+        "spof"
+      ]
+    },
+    {
+      "id": "s09-p4",
+      "chapter": 4,
+      "title": "Un caso de enchufes",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 4 (`q4`), rótulo «pregunta tipo test · ejemplo · otra organización»: fondo quieto con un armario, una sala y dos edificios en silueta, a media luz y sin rótulos. Cuenta atrás de 5 s. En `ok-4` se marca la correcta (dos edificios) y en `trap-4` la trampa (mismo armario, fuente propia). Al apagarse el panel, el armario de la trampa con dos fuentes y un solo cuadro eléctrico de sala que se apaga (`trap-4`). Vuelve un instante el esquema del Consorcio con un segundo edificio en línea discontinua, rotulado «CPD de respaldo en otro edificio · solo un supuesto · hoy no existe» (`backup`). Sin tarjeta en esta escena",
+      "requiredCues": [
+        "q4",
+        "ok-4",
+        "trap-4",
+        "backup"
+      ]
+    },
+    {
+      "id": "s10-latido",
+      "chapter": 5,
+      "title": "El cable del latido",
+      "targetSec": 82,
+      "wordBudget": 221,
+      "goal": "La pareja de s08 de cerca: ADC1 con la VIP «10.20.72.70» y ADC2 en espera, rotulados «activo · pasivo» y «activo-pasivo: uno atiende, otro espera para relevarlo» (`active`). Entre los dos, un cable con un pulso que va y viene, «latido · enlace directo entre ADC1 y ADC2» (`heartbeat`). La imagen rotulada «imagen · no es el Consorcio»: un mostrador con dos personas que se turnan; la que espera lleva una radio que dice cada poco «sigo aquí» (`radio`). Rótulo «imagina · ejemplo de la lección»: el cable se suelta, los dos siguen encendidos; ADC2 con un interrogante, «¿muerto o cable cortado?» (`cut`). ADC2 toma la VIP y las dos cajas dicen a la vez «10.20.72.70» (`take`); las conexiones se reparten entre los dos y algunas se cortan, rótulo «cerebro dividido (split-brain)» (`split`). Cambia a un esquema genérico, «clúster · un voto por nodo»: «quórum · el clúster solo sigue con más de la mitad de los votos · tras una partición, solo un trozo puede tener mayoría · según Microsoft» (`quorum`). Dos nodos y una urna aparte, «testigo (witness) · vota, no da servicio · Microsoft recomienda configurarlo siempre»; cae un nodo y el otro suma «2 de 3» (`witness`). En pequeño, los tres tipos que documenta Microsoft: «en la nube · de disco · de recurso compartido de archivos». Vuelve la pareja del Consorcio con el rótulo «cómo lo evita cada producto: cosa de su fabricante · idea: un tercer voto que desempate · práctica de diseño: no fiar el latido a un solo cable» (`vendor`). No se dibuja un testigo en la pareja del Consorcio ni se dan cifras del protocolo del fabricante",
+      "requiredCues": [
+        "active",
+        "heartbeat",
+        "radio",
+        "cut",
+        "take",
+        "split",
+        "quorum",
+        "witness",
+        "vendor"
+      ]
+    },
+    {
+      "id": "s11-p5",
+      "chapter": 5,
+      "title": "Un recuento de votos",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 5 (`q5`), rótulo «pregunta tipo test · ejemplo · otra organización»: fondo quieto con cinco nodos en fila, a media luz. Cuenta atrás de 5 s. En `ok-5` se marca la correcta (solo el trozo de tres) y en `trap-5` la trampa (se paran los dos). Al apagarse el panel, los cinco nodos se separan en un grupo de tres, «3 de 5 · más de la mitad · sigue», y otro de dos, «2 de 5 · se para» (`rule-e`). Entra la tarjeta",
+      "requiredCues": [
+        "q5",
+        "ok-5",
+        "trap-5",
+        "rule-e"
+      ]
+    },
+    {
+      "id": "s12-cierre",
+      "chapter": 5,
+      "title": "Lo que se guarda",
+      "targetSec": 35,
+      "wordBudget": 95,
+      "goal": "Resumen con las imágenes del vídeo en miniatura (`recap`): la hucha, «cada nueve más, entre diez · di siempre la base de tiempo» (`rule-1`); el ascensor, «fallar menos o volver antes · volver antes suele ser lo barato» (`rule-2`); la guirnalda, «en serie, la pieza sin doblar pone el techo» (`rule-3`); las lámparas en la regleta, «paralelo solo con fallos independientes» (`rule-4`); la radio y la urna, «con dos nodos, un tercer voto» (`rule-5`). Frase final destacada: «Antes de presumir de nueves, busca qué comparten tus parejas» (`phrase`). Remite al cuestionario de la lección op4m1 (`next`) y cierra con la tarjeta final (`endcard`)",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "rule-4",
+        "rule-5",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

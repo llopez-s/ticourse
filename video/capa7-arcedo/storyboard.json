@@ -1,0 +1,161 @@
+{
+  "title": "Balanceo en capa 7: una puerta, dos cocinas y una pizarra",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 318,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Qué lee la capa 7"
+    },
+    {
+      "n": 2,
+      "title": "Quién era el cliente"
+    },
+    {
+      "n": 3,
+      "title": "Lo que salva la persistencia"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una dirección, dos webs",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. Una sola puerta rotulada «203.0.113.10 · puerto 443» por la que entran dos corrientes de peticiones, una rotulada «www.arcedo.example · web informativa» y otra «sede.arcedo.example · sede electrónica» (`door`). Detrás de la puerta, la pareja de balanceadores del CPD, «ADC1 10.20.72.71 · ADC2 10.20.72.72 · VIP 10.20.72.70», y las dos corrientes que se separan hacia dos grupos (`split`). Título «Balanceo en capa 7» (`title`, antes de los 12 s) y la promesa en tres chips: «qué lee en cada petición · quién era el cliente · qué salva la persistencia», las mismas tres cosas que dice la voz (`promise`). Plaquita «REDES Y ENS · Balanceo»",
+      "requiredCues": [
+        "door",
+        "split",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-capa7",
+      "chapter": 1,
+      "title": "El portero y el camarero",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "goal": "Recordatorio de la lección anterior: un balanceador que solo ve «IP y puerto de origen y destino» y decide «una vez por conexión» (`l4`); sube un piso rotulado «capa 7 · lee HTTP» (`up`). La imagen, rotulada «imagen · no es el Consorcio»: un restaurante con una sola puerta y dos cocinas (`local`). En la puerta, un portero que mira la lista de reservas y deja pasar, rotulado «capa 4 · ve la puerta y el nombre de la reserva» (`doorman`). Dentro, un camarero que lee cada comanda y la lleva a una cocina u otra, rotulado «capa 7 · lee cada comanda» (`waiter`); dos comandas de la misma mesa van a cocinas distintas: «decide por petición, no por conexión» (`per`). Un candado sobre la comanda que se abre: «HTTPS · terminar TLS = certificado + clave privada en el balanceador» (`tls`). Sin descifrar, solo queda a la vista el saludo, «saludo TLS · SNI = nombre de la web (si el cliente lo envía)» (`hello`), y tachados en gris «ruta · cabeceras · cookies» (`blind`). Vuelve el Consorcio: el ADC termina TLS en los dos grupos (`adc`); «SNI → qué certificado presenta» (`cert`) y «Host → qué grupo: www (WEB1 10.20.72.81 · WEB2 10.20.72.82, puerto 80) o sede (SEDE1 10.20.72.91 · SEDE2 10.20.72.92, puerto 443)» (`host`)",
+      "requiredCues": [
+        "l4",
+        "up",
+        "local",
+        "doorman",
+        "waiter",
+        "per",
+        "tls",
+        "hello",
+        "blind",
+        "adc",
+        "cert",
+        "host"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Una conexión, dos nombres",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio» (campo `question.tag`). Fondo quieto, a media luz y sin texto: un navegador con una sola conexión y dos pestañas, rotuladas «citas.otra.example» y «pagos.otra.example», bajo un certificado que cubre los dos nombres. Cuenta atrás de 5 s. En `ok-1` se marca la correcta (al grupo de citas, el que se eligió con el saludo) y en `trap-1` la trampa (cada petición trae su SNI). Debajo, en una línea, «SNI: en el saludo TLS, una vez · Host: en cada petición HTTP · RFC 9113 §9.1.1 permite reutilizar la conexión (HTTP/2)» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-cliente",
+      "chapter": 2,
+      "title": "La etiqueta en la comanda",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "goal": "En la imagen del restaurante, la cocina solo ve al camarero en la ventanilla (`kitchen`). El paralelo en el Consorcio: SEDE1 ve llegar la conexión desde el ADC, «origen: 10.20.72.71 o 10.20.72.72», no desde el ciudadano «192.0.2.43 · ejemplo» (`proxyip`). El ADC añade una línea a la petición (`header`): «Forwarded: for=192.0.2.43;proto=https;host=sede.arcedo.example · RFC 7239, estándar» (`fwd`) y, al lado, «X-Forwarded-For: 192.0.2.43 · no estándar (RFC 7239 §1), muy extendida» (`xff`). Una mano ajena escribe una línea falsa al principio, «X-Forwarded-For: 198.51.100.200, 192.0.2.43», y la primera dirección se marca en ámbar: «la pudo escribir el cliente (RFC 7239 §8.1)» (`fake`); se resalta la última, la del ADC: «solo vale la que añade el ADC, en conexiones que vienen de ADC1 o ADC2» (`trust`). Cambio a un balanceador de capa 4 que deja pasar el TLS sin abrirlo, «paso directo» (`sealed`), con la comanda dentro de una bolsa cerrada (`bag`). El balanceador pega una etiqueta delante de la bolsa, «al principio de cada conexión: dirección y puerto de origen y destino» (`label`); rótulo «protocolo PROXY v1 (texto) y v2 (binario) · especificación de HAProxy Technologies, no es RFC · lo usan también NGINX y el NLB de AWS», con la línea de ejemplo de la especificación «PROXY TCP4 192.168.0.1 192.168.0.11 56324 443» (`pp`). Un candado en la puerta del servidor: «solo de fuentes conocidas» (`known`). Nota pequeña: «el Consorcio no lo necesita: el ADC termina TLS y pasa la dirección en Forwarded»",
+      "requiredCues": [
+        "kitchen",
+        "proxyip",
+        "header",
+        "fwd",
+        "xff",
+        "fake",
+        "trust",
+        "sealed",
+        "bag",
+        "label",
+        "pp",
+        "known"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Una etiqueta que nadie espera",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio» (campo `question.tag`). Fondo quieto, a media luz y sin texto: un balanceador de capa 4 y dos servidores; en el balanceador una casilla «enviar protocolo PROXY» marcada, en los servidores la casilla «esperar protocolo PROXY» vacía. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (la toma por basura al principio de la conexión) y en `trap-2` la trampa (la salta y sigue con la IP del balanceador). Las dos casillas, marcadas a la vez: «los dos extremos de acuerdo · el receptor no autodetecta (especificación §5)» (`rule-b`), y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-persistencia",
+      "chapter": 3,
+      "title": "El plato en el fogón",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "goal": "La sede electrónica: un trámite a medias guardado «en la memoria de SEDE1» (`state`). En la imagen del restaurante, un plato a medio hacer en el fogón de un cocinero (`stove`); la comanda siguiente va al otro cocinero, que no tiene el plato, y en el Consorcio aparece «sesión no encontrada · vuelve a identificarse» (`other`). Rótulo «persistencia · afinidad · sticky sessions: mismo cliente, mismo servidor» (`sticky`) y la pregunta en pantalla «¿cómo lo reconoce?» (`how`). Primera vía: «por IP de origen»; un ayuntamiento entero sale por una sola dirección (NAPT, RFC 3022 §2.2) y todos sus usuarios caen en SEDE1 mientras SEDE2 está ociosa (`byip`). Segunda vía, la de la sede: «cookie insertada por el ADC · SEDE_SRV=s1 o s2 · de sesión · Secure · HttpOnly», un navegador por usuario (`cookie`). La cookie, abierta: dentro solo hay «s1», no el trámite (`down`). SEDE1 se apaga y el trámite se pierde con él: «ningún método de persistencia lo evita» (`lost`). La salida de fondo: las sesiones en un almacén compartido, en la imagen una pizarra que ven todos los cocineros, rotulado «sesión compartida · práctica de diseño, sin norma · la sede del Consorcio hoy no la tiene» (`shared`); el almacén, con un segundo junto a él, «también en alta disponibilidad» (`ha`)",
+      "requiredCues": [
+        "state",
+        "stove",
+        "other",
+        "sticky",
+        "how",
+        "byip",
+        "cookie",
+        "down",
+        "lost",
+        "shared",
+        "ha"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Un tercer servidor",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio» (campo `question.tag`). Fondo quieto, a media luz y sin texto: dos servidores y un tercero que llega, con usuarios repartidos por colores. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (muchos cambian de servidor y vuelven a identificarse) y en `trap-3` la trampa (el nuevo solo recibe clientes nuevos). Los colores se remezclan entre los tres servidores: «hash simple de la IP: cambia el número de servidores, se remezclan los clientes · p. ej. balance source en HAProxy, hash sin consistent en NGINX (valores del fabricante)» (`rule-c`), y entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para llevarte",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "goal": "Tres ideas, cada una con su icono de la imagen del restaurante (el camarero que lee la comanda · la etiqueta del cliente · el plato en el fogón) (`recap`, `rule-1`, `rule-2`, `rule-3`), y la frase final «Si un trámite se corta, pregúntate dónde vivía la sesión» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Más preguntas en la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

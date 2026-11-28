@@ -1,0 +1,238 @@
+{
+  "title": "Categorizar un sistema: cinco preguntas, un triaje y una firma",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 532,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Cinco preguntas al mismo sistema"
+    },
+    {
+      "n": 2,
+      "title": "De los niveles a la categoría"
+    },
+    {
+      "n": 3,
+      "title": "Quién valora y quién decide"
+    },
+    {
+      "n": 4,
+      "title": "Una categoría con fecha de revisión"
+    },
+    {
+      "n": 5,
+      "title": "La lista de medidas, firmada"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Dos sistemas, una pregunta",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. A la izquierda, una pantalla con la web informativa del Consorcio: «noticias · horarios de las oficinas comarcales · cursos de Valdecierzo» (`web`). A la derecha, el sistema de gestión de nóminas, rotulado «gestión de nóminas · CPD de la sede central», con un sobre de nómina (`payroll`). Entre los dos, un signo de interrogación sobre una balanza. Título «Categorizar un sistema en el ENS» (`title`, antes de los 12 s), con el subtítulo «Real Decreto 311/2022 · anexo I». Promesa en tres chips, las mismas tres cosas que dice la voz: «cómo se valora · qué categoría sale · quién decide y firma» (`promise`). Plaquita «REDES Y ENS · ENS y normativa»",
+      "requiredCues": [
+        "web",
+        "payroll",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-dimensiones",
+      "chapter": 1,
+      "title": "Cinco preguntas a la nómina",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "goal": "El sobre de nómina en el centro, rotulado «datos de nómina · importes, retenciones y cuentas bancarias» (`five`). Alrededor se encienden, una a una, cinco preguntas con su inicial entre corchetes, como en el anexo I: «¿y si la lee quien no debe? · Confidencialidad [C]» (`conf`), «¿y si alguien cambia un importe? · Integridad [I]» (`integ`), «¿y si nadie sabe quién hizo qué y cuándo? · Trazabilidad [T]» (`trace`), «¿y si alguien se hace pasar por el personal de nóminas? · Autenticidad [A]» (`auth`), «¿y si no está el día de pago? · Disponibilidad [D]» (`avail`). Las cinco se agrupan bajo «dimensiones de seguridad · anexo I» (`dims`). Al lado aparece una lista más larga, «artículo 1 · siete propiedades: acceso, confidencialidad, integridad, trazabilidad, autenticidad, disponibilidad y conservación» (`seven`); «acceso» y «conservación» se apagan con el rótulo «no son dimensiones · no se valoran para categorizar» (`extra`), y entra la tarjeta",
+      "requiredCues": [
+        "five",
+        "conf",
+        "integ",
+        "trace",
+        "auth",
+        "avail",
+        "dims",
+        "seven",
+        "extra"
+      ]
+    },
+    {
+      "id": "s03-niveles",
+      "chapter": 1,
+      "title": "Cuánto duele",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "goal": "Una escala de tres peldaños, rotulada «niveles de cada dimensión» (`levels`). Peldaño de abajo: «BAJO · perjuicio limitado · molesto, fácilmente reparable», con un calendario que marca un día de retraso en el pago (`low`). Peldaño medio: «MEDIO · perjuicio grave · de difícil reparación», con el sobre de nómina abierto y las cuentas a la vista (`mid`). Peldaño alto: «ALTO · perjuicio muy grave · anulación efectiva de la capacidad · daño muy grave, e incluso irreparable» (`high`). Aparte, una hoja rotulada «tablas salariales y calendario de pagos · ya son públicos» (`none`) con una raya en la casilla de la confidencialidad: «— · sin nivel · la dimensión no se ve afectada» (`nolevel`). En pequeño, abajo: «anexo I · cada nivel se concreta en la capacidad de la organización, los activos, las leyes y las personas»",
+      "requiredCues": [
+        "levels",
+        "low",
+        "mid",
+        "high",
+        "none",
+        "nolevel"
+      ]
+    },
+    {
+      "id": "s04-p1",
+      "chapter": 1,
+      "title": "Grave o muy grave",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo» (lo dibuja el motor con `tag`). El panel tapa la escena, así que el fondo se queda quieto: la escalera de los tres niveles a media luz, sin texto. Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (MEDIO) y en `trap-1` la trampa (ALTO). Vuelve la escalera con las tres palabras resaltadas en su peldaño, «limitado · grave · muy grave» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s05-regla",
+      "chapter": 2,
+      "title": "El síntoma más grave",
+      "targetSec": 70,
+      "wordBudget": 189,
+      "goal": "Paso 1. La tabla de la lección, «gestión de nóminas: de las valoraciones a la categoría», se escribe fila a fila (`steps`, `table`): «información · datos de nómina: C MEDIO · I MEDIO · T BAJO · A BAJO · D —», «información · tablas salariales: C — · I BAJO · T — · A — · D —», «servicio · cálculo y pago mensual: C — · I — · T BAJO · A MEDIO · D BAJO», «servicio · consulta de recibos: C — · I — · T BAJO · A BAJO · D BAJO». Una flecha baja por cada columna y deja el mayor en la última fila, «nivel del sistema (el mayor)» (`max`). Una calculadora que intenta sacar la media se tacha con «ni media ni mayoría» (`nomean`). La imagen, rotulada «imagen · no es el Consorcio»: el mostrador de triaje de unas urgencias; a un paciente con un solo síntoma en rojo lo ponen en el grupo rojo aunque el resto de su ficha esté en verde (`triage`). Paso 2, la regla en tres líneas (`rule`): «alguna dimensión en ALTO → categoría ALTA · alguna en MEDIO y ninguna por encima → MEDIA · alguna en BAJO y ninguna por encima → BÁSICA» (`basic`), y entra la tarjeta. La fila final de nóminas, «MEDIO · MEDIO · BAJO · MEDIO · BAJO», recibe el sello «categoría MEDIA» (`result`). La columna D se ilumina: «D sigue en BAJO · anexo I, 4.2: la categoría no altera el nivel de las dimensiones que no influyeron» (`keep`), y una medida se queda fuera: «op.cont.1 Análisis de impacto · se exige desde D MEDIO · aquí, n.a.» (`cont`). Vuelve el triaje: el paciente del grupo rojo con una tirita en el dedo, «el rasguño se cura como rasguño» (`scratch`)",
+      "requiredCues": [
+        "steps",
+        "table",
+        "max",
+        "nomean",
+        "triage",
+        "rule",
+        "basic",
+        "result",
+        "keep",
+        "cont",
+        "scratch"
+      ]
+    },
+    {
+      "id": "s06-p2",
+      "chapter": 2,
+      "title": "Cada palabra en su sitio",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: la pantalla de la web informativa a media luz, sin texto. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (categoría BÁSICA e integridad en BAJO) y en `trap-2` la trampa («un sistema de nivel BAJO»). Vuelve la web con dos etiquetas: sobre el sistema entero, «categoría · BÁSICA»; sobre cada dimensión, su nivel, «C — · I BAJO · A BAJO · D BAJO» (`rule-b`), y entra la tarjeta. La trazabilidad de la web no se dibuja: la lección no la valora en su texto",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s07-quien",
+      "chapter": 3,
+      "title": "La mudanza",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "goal": "Rótulo «artículo 41 · quién valora y quién determina» (`who`). La imagen, rotulada «imagen · no es el Consorcio»: una mudanza con tres figuras, la dueña que señala qué cajas valen y cuáles son frágiles, la encargada con la hoja de embalaje y el bolígrafo, y dos mozos cargando cajas (`move`). Encima de cada figura aparece su papel en el Consorcio: sobre la dueña, «valoran · responsables de la información o del servicio (art. 41.1) · la Gerencia (información) · cada servicio, su responsable» (`value`); sobre la encargada, «determina la categoría · responsable de la seguridad (art. 41.2) · Unidad de Seguridad de la Información» (`decide`), y entra la tarjeta; sobre los mozos, «implanta y opera · responsable del sistema (art. 13.2) · jefatura del Servicio de Informática y Comunicaciones · ni valora ni determina» (`system`). Un organigrama pequeño: la Unidad cuelga de la Gerencia, con una línea cortada hacia el Servicio de Informática, «art. 13.3 · distinto del responsable del sistema y sin dependencia jerárquica» (`apart`)",
+      "requiredCues": [
+        "who",
+        "move",
+        "value",
+        "decide",
+        "system",
+        "apart"
+      ]
+    },
+    {
+      "id": "s08-p3",
+      "chapter": 3,
+      "title": "Un desacuerdo",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo». En el escenario, «supuesto». Fondo quieto: la mudanza a media luz, sin texto. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (el responsable del servicio) y en `trap-3` la trampa (la propia Unidad). Vuelve la mudanza: la dueña cambia la etiqueta de una caja y la encargada espera con la hoja, «valorar, y modificar después la valoración · art. 41.1» (`rule-c`). Sin tarjeta: la de s07 ya lo dice",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s09-revision",
+      "chapter": 4,
+      "title": "Dos relojes",
+      "targetSec": 28,
+      "wordBudget": 76,
+      "goal": "Un calendario con un aro anual, «reevaluar la categoría · anexo I · anualmente» (`date`), y una campana que suena antes de tiempo, «o siempre que se produzcan modificaciones significativas» (`change`). Vuelve el triaje, rotulado «imagen · no es el Consorcio»: en la sala de espera, al paciente le cambian la ficha de color (`retriage`). Al lado, un segundo reloj distinto, «auditoría ordinaria · art. 31 · al menos cada dos años» (`audit`), y entra la tarjeta, que conserva la palabra del anexo, «significativas» (la de la auditoría extraordinaria es «sustanciales»)",
+      "requiredCues": [
+        "date",
+        "change",
+        "retriage",
+        "audit"
+      ]
+    },
+    {
+      "id": "s10-p4",
+      "chapter": 4,
+      "title": "Una información nueva",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Pregunta tipo test 4 (`q4`), rótulo «pregunta tipo test · ejemplo» y, en el escenario, «supuesto». Fondo quieto: la tabla de nóminas a media luz con una fila vacía al final, sin texto. Cuenta atrás de 5 s. En `ok-4` se marca la correcta (revisar ya; pasa a ALTA) y en `trap-4` la trampa (esperar a la revisión anual). Vuelve la tabla con la fila nueva «información nueva (supuesto): C ALTO»; la columna C del sistema pasa a ALTO y el sello cambia a «categoría ALTA»; las columnas I, T, A y D no se mueven (`rule-d`). Sin tarjeta: la de s09 ya lo dice",
+      "requiredCues": [
+        "q4",
+        "ok-4",
+        "trap-4",
+        "rule-d"
+      ]
+    },
+    {
+      "id": "s11-declaracion",
+      "chapter": 5,
+      "title": "La lista firmada",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "goal": "Rótulo «artículo 28 · anexo II». Dos montones de fichas de medidas: «por categoría» y «por dimensión, según su nivel» (`pick`). Una línea marca el suelo, «mínimos exigibles» (`minimum`), y por encima se añade una ficha más, «medidas adicionales · decide el responsable de la seguridad (28.2)» (`extra2`). Las fichas se juntan en un documento, «Declaración de Aplicabilidad» (`doc`), que firma la Unidad de Seguridad de la Información, «firmada por el responsable de la seguridad (28.2)»; vuelve la encargada de la mudanza firmando su hoja (`sign`), y entra la tarjeta. Una ficha se cambia por otra con una nota grapada, «medida compensatoria · protege igual o mejor · justificada por escrito · respeta los principios básicos y los requisitos mínimos (capítulos II y III) · anotada en la declaración» (`swap`), y un sello, «aprobada formalmente por el responsable de la seguridad (28.3)» (`approve`). Abajo, aparte: «perfiles de cumplimiento específicos · art. 30 · medidas idóneas para una categoría concreta, en determinadas entidades o sectores · los valida y publica el CCN (Centro Criptológico Nacional)» (`profile`)",
+      "requiredCues": [
+        "pick",
+        "minimum",
+        "extra2",
+        "doc",
+        "sign",
+        "swap",
+        "approve",
+        "profile"
+      ]
+    },
+    {
+      "id": "s12-p5",
+      "chapter": 5,
+      "title": "Más de lo que se pide",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Pregunta tipo test 5 (`q5`), rótulo «pregunta tipo test · ejemplo» y, en el escenario, «supuesto». Fondo quieto: el documento de la Declaración de Aplicabilidad a media luz, sin texto. Cuenta atrás de 5 s. En `ok-5` se marca la correcta (sí, como medida adicional) y en `trap-5` la trampa (subir antes la categoría). Vuelve la línea del suelo con una ficha nueva por encima, «medida adicional · art. 28.2», y el sello de categoría de nóminas sin cambiar, «MEDIA» (`rule-e`), y entra la tarjeta",
+      "requiredCues": [
+        "q5",
+        "ok-5",
+        "trap-5",
+        "rule-e"
+      ]
+    },
+    {
+      "id": "s13-cierre",
+      "chapter": 5,
+      "title": "Para llevar",
+      "targetSec": 32,
+      "wordBudget": 86,
+      "goal": "Cinco ideas, cada una con su icono (las cinco preguntas · el síntoma más grave · el rasguño · la mudanza · la hoja firmada) (`recap`, `rule-1`, `rule-2`, `rule-3`, `rule-4`, `rule-5`), y la frase final: «Primero, qué daño haría cada fallo. Luego, quién lo ha valorado» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: el cuestionario de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "rule-4",
+        "rule-5",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "doubt": "error",
+    "soa": "typing",
+    "permit": "lock",
+    "yearly": "ding",
+    "ines": "mail"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {folder}Imagina una carpeta con la política de seguridad firmada, la declaración de aplicabilidad y la auditoría. {doubt}Pero nadie sabe quién valoró los sistemas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Eso es papel, no gobierno de la seguridad. {promise}Veremos quién firma qué, cómo baja la política hasta el puesto y cómo se mide para mejorar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-firmas",
+      "text": "<clear> {owners}Empecemos por las firmas. En el Consorcio de Arcedo, cada decisión tiene un dueño, y nadie se controla a sí mismo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-firmas",
+      "text": "<steady> {value}La Gerencia y la Secretaría General responden de la información y de los servicios, así que son ellas quienes los valoran.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-firmas",
+      "text": "<engaging> {unit}Con esa valoración, la Unidad de Seguridad decide la categoría y las medidas. {soa}Y esa lista de medidas la firma ella. Es la declaración de aplicabilidad.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "La declaración la firma el responsable de la seguridad",
+        "at": "soa",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-firmas",
+      "text": "<thoughtful> {policy}La política es otra historia. Esa no la aprueba la Unidad, sino el órgano competente del Consorcio, y de manera formal.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-firmas",
+      "text": "<warm> {committee}La política también nombra al Comité de Seguridad de la Información, que preside la Gerencia, y tiene que decir quién lo forma.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-firmas",
+      "text": "<firm> {audit}Y la auditoría comprueba que esto está escrito, y que hay un procedimiento por si dos responsables chocan.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}A ver si lo tienes. La auditoría de la sede electrónica ya ha visto que la política define los papeles. ¿Qué más tiene que comprobar sobre la organización?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "La auditoría de la sede electrónica revisa cómo se organiza la seguridad del Consorcio. Ya ha comprobado que la política define los roles.",
+        "q": "Según el anexo III, ¿qué más tiene que constatar sobre la organización?",
+        "options": [
+          "Que la política lleva la firma de la Unidad de Seguridad",
+          "Que hay procedimientos para resolver conflictos entre responsables",
+          "Que la Unidad de Seguridad depende de la jefatura de Informática",
+          "Que el CCN ha validado la política antes de su aprobación"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "El anexo III, 1.1, pide constatar que hay procedimientos para resolver conflictos",
+        "trapWhy": "La Unidad firma la declaración; la política la aprueba el órgano competente",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Que hay procedimientos para resolver los choques entre responsables.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Lo de la firma de la Unidad engaña, porque ella sí firma algo, la declaración. {rule-a}La política se aprueba más arriba.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "La política la aprueba formalmente el órgano competente",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-cadena",
+      "text": "<clear> {chain}La política no baja sola hasta cada mesa. El anexo dos la acompaña de tres documentos más, y los cuatro se exigen en cualquier categoría.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-cadena",
+      "text": "<warm> {pool}Piensa en una piscina municipal. El cartel de la entrada dice qué se quiere, un baño seguro, y quién responde. Eso es la política.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-cadena",
+      "text": "<engaging> {rules}Luego, las normas. Prohibido correr, y si corres, fuera del agua. Lo permitido, lo prohibido y sus consecuencias. Es la normativa.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-cadena",
+      "text": "<steady> {steps}El encargado tiene su hoja. Cada mañana mide el cloro, paso a paso. Cómo se hace y quién lo hace, eso son los procedimientos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-cadena",
+      "text": "<thoughtful> {permit}Y para meter una colchoneta, pides permiso antes. Es el proceso de autorización. {consorcio}En el Consorcio, eso pasa con una aplicación nueva o con un enlace a otro sistema.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-cadena",
+      "text": "<calm> {sum}O sea, que cada documento se apoya en el anterior y es más concreto que él.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Ahora, un papel de verdad del Consorcio. Dice que, para recuperar un fichero borrado, el usuario lo pide a Informática. Un técnico lo restaura de la copia y lo anota. ¿Qué documento es?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Un documento del Consorcio dice: «Para recuperar un fichero borrado, el usuario lo pide a Informática; un técnico lo restaura de la copia y anota el resultado».",
+        "q": "¿Qué documento del marco organizativo es?",
+        "options": [
+          "Política de seguridad (org.1)",
+          "Normativa de seguridad (org.2)",
+          "Procedimiento de seguridad (org.3)",
+          "Proceso de autorización (org.4)"
+        ],
+        "answer": 2,
+        "trap": 1,
+        "why": "Dice cómo se hace una tarea y quién hace cada paso",
+        "trapWhy": "También obliga, pero la normativa fija lo permitido, lo prohibido y sus consecuencias",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Es un procedimiento. Dice qué se hace, en qué orden y quién, como la hoja del encargado de la piscina.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}La normativa despista, porque también obliga. Pero la normativa marca lo que se puede, lo que no y qué pasa si no se cumple. {rule-b}Aquí no hay prohibiciones, hay pasos.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Normativa: qué se puede. Procedimiento: cómo y quién",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-riesgos",
+      "text": "<clear> {cycle}Queda lo que evita que todo esto se quede en papel. Gestionar los riesgos es algo continuo, no un trámite de una vez.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-riesgos",
+      "text": "<steady> {method}Cada organización analiza sus riesgos con una metodología reconocida internacionalmente. {all}Y el anexo dos pide ese análisis en todas las categorías.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-riesgos",
+      "text": "<engaging> {formal}Lo que cambia con la categoría es el rigor. En media, el análisis tiene que ser semiformal, y en alta, formal.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-riesgos",
+      "text": "<warm> {yearly}Como la revisión del coche, no se pasa una vez y ya. Cada año se revisa y se aprueba, y la auditoría lo comprueba.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-riesgos",
+      "text": "<thoughtful> {metrics}Y para saber si mejoras, mides. Un sistema de métricas recoge hasta dónde está implantada cada medida.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-riesgos",
+      "text": "<firm> {ines}Con esos datos, la Unidad informa del estado de la seguridad al menos una vez al año, con una herramienta llamada INES. {loop}O sea, analizar, medir y mejorar.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}La última, con dos sistemas del Consorcio. Las nóminas son de categoría media, y la web informativa, básica. ¿Qué análisis de riesgos le toca a cada uno?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "En el Consorcio, el sistema de gestión de nóminas es de categoría MEDIA y la web informativa, de categoría BÁSICA.",
+        "q": "¿Qué pide el anexo II del análisis de riesgos de cada uno?",
+        "options": [
+          "Los dos lo necesitan, y el de nóminas, además, semiformal",
+          "Solo nóminas: en BÁSICA no se exige análisis de riesgos",
+          "Los dos lo necesitan, y en los dos tiene que ser formal",
+          "Ninguno: basta con la auditoría o la autoevaluación"
+        ],
+        "answer": 0,
+        "trap": 1,
+        "why": "op.pl.1 se aplica en todas las categorías; en MEDIA suma el refuerzo R1, semiformal",
+        "trapWhy": "Ser BÁSICA no quita el análisis: op.pl.1 se aplica en las tres categorías",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Los dos lo necesitan, y el de nóminas, además, semiformal.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Que la web se libre por ser básica es lo que más pica. Pero el análisis se pide en las tres. {rule-c}Con la categoría sube el rigor, no la obligación.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Análisis de riesgos, siempre; el rigor, según la categoría",
+        "at": "rule-c",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Tres ideas para el camino. {rule-1}La política la aprueba el órgano competente, y la declaración, el responsable de la seguridad.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}De la política al procedimiento, cada papel es más concreto. {rule-3}Y los riesgos se revisan cada año, y lo implantado se mide.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Una carpeta llena no es gobierno. {next}Ahora, a por las preguntas {endcard}de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "two": "ping2",
+    "hashcatch": "glitch",
+    "phone2": "error",
+    "dsr-back": "mail"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {web}Un vecino abre la web del Consorcio de Arcedo, y cree que habla con un servidor. {two}Pues hay dos, y delante, un aparato que reparte.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Es un balanceador de carga, y hoy vemos su base, la capa cuatro. {promise}Qué dirección conoce el vecino, a quién le toca atenderle y por dónde vuelve la respuesta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-vip",
+      "text": "<clear> {vip}El vecino no ve las direcciones de los servidores. Se conecta a una que es del servicio, no de una máquina. {vipname}Es la IP virtual.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-vip",
+      "text": "<warm> {phone}Piensa en el teléfono de un ayuntamiento. Un solo número, y detrás, varias personas cogiendo llamadas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-vip",
+      "text": "<steady> {pool}Esas personas son los miembros, y juntas, el grupo. {arcedo}En el Consorcio, la IP virtual es de una pareja de balanceadores, y la web tiene dos servidores detrás.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-vip",
+      "text": "<engaging> {weight}Cada miembro lleva un peso, la parte que le toca frente a los demás. Con pesos tres y uno, el primero se lleva tres de cada cuatro.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-vip",
+      "text": "<thoughtful> {backup}Y puede haber alguien de reserva, que solo coge el teléfono cuando no queda nadie más.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Un grupo de otra red, que reparte por turno. A pesa tres, B pesa uno, y C es de reserva. Se cae B. ¿Cómo se reparten ahora las conexiones nuevas?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Balanceo",
+        "scenario": "En otra red, no el Consorcio, un grupo reparte por turno con pesos. A tiene peso 3, B peso 1 y C es de reserva. B se cae.",
+        "q": "¿Cómo se reparten ahora las conexiones nuevas?",
+        "options": [
+          "Todas a A, y C sigue sin recibir nada",
+          "Tres de cada cuatro a A y una de cada cuatro a C",
+          "La mitad a A y la otra mitad a C",
+          "Todas a C hasta que B vuelva"
+        ],
+        "answer": 0,
+        "trap": 1,
+        "why": "La reserva solo entra cuando no queda ningún miembro normal, y A sigue en pie",
+        "trapWhy": "C no hereda la parte de B: la reserva no cubre a un miembro, cubre al grupo entero",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Todas a A. C sigue esperando, porque A está en pie.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}La tentación es darle a C la parte de B. Pero la reserva no cubre a uno, cubre a todos. {rule-a}Entra cuando ya no queda nadie.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "La reserva solo entra si no queda ningún miembro normal",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-algoritmos",
+      "text": "<clear> {pick}Ahora, ¿a quién le toca cada conexión nueva? Eso lo decide el algoritmo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-algoritmos",
+      "text": "<steady> {rr}El más sencillo va por turno, según el peso. {rrnote}Pero reparte conexiones, no trabajo. Una de una hora cuenta igual que una de un segundo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-algoritmos",
+      "text": "<engaging> {lc}Otro le pasa la conexión nueva al miembro con menos abiertas, como la llamada a quien esté más libre. {www}Es el que usa el Consorcio para su web.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-algoritmos",
+      "text": "<thoughtful> {hash}Y otro hace una cuenta, un hash, con la dirección de quien llega. La misma dirección, el mismo servidor.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-algoritmos",
+      "text": "<firm> {hashcatch}Hasta que cambia el número de miembros. Con la cuenta sencilla, ahí se recoloca casi todo.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Hash módulo N: cambiar los miembros recoloca casi todo",
+        "at": "hashcatch",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-algoritmos",
+      "text": "<calm> {first}Alguno hace lo contrario, llenar un servidor antes de pasar al siguiente. {default}Y el de por defecto cambia con el producto, y hasta con la versión.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Otra red, y toca contar. Cuatro servidores, cien conexiones como máximo cada uno, y el algoritmo que llena primero. Hay ciento cincuenta abiertas a la vez. ¿Cuántos servidores atienden?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Balanceo",
+        "scenario": "En otra red, un grupo de 4 servidores usa el algoritmo que llena primero un servidor. Cada uno admite como máximo 100 conexiones.",
+        "q": "Con 150 conexiones abiertas a la vez, ¿cuántos servidores atienden alguna?",
+        "options": [
+          "Uno, y las otras 50 esperan en cola",
+          "Dos, uno con 100 y otro con 50",
+          "Tres, con 50 cada uno",
+          "Los cuatro, con unas 38 cada uno"
+        ],
+        "answer": 1,
+        "trap": 3,
+        "why": "Llena el primero hasta su límite de 100 y pasa al siguiente con las 50 que faltan",
+        "trapWhy": "Repartir a partes iguales es lo que hacen otros algoritmos; este concentra a propósito",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Dos. El primero se llena con cien, y las otras cincuenta van al segundo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Cuatro a partes iguales suena a balanceo de manual. Pero este algoritmo junta la carga a propósito. {rule-b}Unos reparten, y otros concentran.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Llenar primero concentra la carga. El turno la reparte",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-modos",
+      "text": "<clear> {fwd}Elegido el servidor, hay tres maneras de hacerle llegar los paquetes. {axes}Las separa qué origen ve el servidor y por dónde vuelve la respuesta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-modos",
+      "text": "<steady> {dnat}En la primera, el balanceador solo cambia el destino, la IP virtual por la del servidor. {dnat-see}Así el servidor ve al cliente de verdad.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-modos",
+      "text": "<warm> {phone2}Pero el cliente solo acepta respuestas de la IP virtual, como tú con un número desconocido.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-modos",
+      "text": "<clear> {dnat-back}Así que la vuelta pasa por el balanceador, que deshace el cambio. Es el NAT de destino.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "NAT de destino: la vuelta, siempre por el balanceador",
+        "at": "dnat-back",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-modos",
+      "text": "<engaging> {snat}En la segunda, cambia también el origen, que pasa a ser el balanceador. {snat-see}El servidor le contesta a él, sin pedirle nada a la red.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-modos",
+      "text": "<thoughtful> {snat-cost}Pero pierde la dirección del cliente. {snat-name}Es el NAT de origen. Visto desde el servidor, un proxy completo es igual.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-07",
+      "scene": "s06-modos",
+      "text": "<curious> {dsr}En la tercera no se toca ninguna dirección. El paquete llega al servidor con la IP virtual de destino.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-08",
+      "scene": "s06-modos",
+      "text": "<engaging> {dsr-back}El servidor contesta directo al cliente, desde esa dirección, sin pasar por el balanceador.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-09",
+      "scene": "s06-modos",
+      "text": "<steady> {loop}Para eso, cada servidor tiene la IP virtual configurada, por ejemplo en su interfaz de bucle local. {dsr-name}Es el retorno directo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}La última, de otra organización. Sirve descargas, con peticiones pequeñas y respuestas enormes, y su balanceador va al límite. ¿Qué forma de reenviar le quita más peso?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Balanceo",
+        "scenario": "En otra organización, un servicio de descargas recibe peticiones pequeñas y devuelve respuestas enormes. Su balanceador va al límite.",
+        "q": "¿Qué modo de reenvío le quita más tráfico al balanceador?",
+        "options": [
+          "NAT de destino",
+          "NAT de origen",
+          "Proxy completo",
+          "Retorno directo"
+        ],
+        "answer": 3,
+        "trap": 0,
+        "why": "Las respuestas, que son lo que pesa, van del servidor al cliente sin pasar por él",
+        "trapWhy": "El servidor ve al cliente, pero su respuesta tiene que volver por el balanceador",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}El retorno directo. Las respuestas, que es lo que pesa, van del servidor al cliente sin tocar el balanceador.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}El NAT de destino engaña, porque el servidor ve al cliente. Pero la respuesta vuelve por el balanceador. {rule-c}Ver al cliente no es contestarle directo.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Retorno directo: la respuesta no pasa por el balanceador",
+        "at": "rule-c",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Resumiendo. {rule-1}El cliente solo conoce la IP virtual, y detrás hay un grupo con pesos y reserva.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}Unos algoritmos reparten y otros concentran. {rule-3}Y en cada modo, mira qué se reescribe y por dónde vuelve la respuesta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}La capa cuatro no ve lo de dentro, como la ruta que se pide. Eso, en la siguiente lección. {next}Antes de eso, a practicar {endcard}con las preguntas de esta.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

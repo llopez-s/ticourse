@@ -1,0 +1,486 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "ok-4": "check",
+    "trap-4": "block",
+    "ok-5": "check",
+    "trap-5": "block",
+    "table": "typing",
+    "nomean": "error",
+    "change": "ping2",
+    "sign": "lock"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {web}El Consorcio de Arcedo tiene una web de noticias, {payroll}y también el sistema que paga la nómina. ¿Les hace falta la misma protección?",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Pues no, y el Esquema Nacional de Seguridad lo decide con una categoría. {promise}Vamos a ver cómo se valora un sistema, qué categoría le sale y quién decide y firma.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-dimensiones",
+      "text": "<clear> {five}Empezamos por la nómina. Quien la conoce se hace cinco preguntas sobre lo que pasaría si algo sale mal.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-dimensiones",
+      "text": "<steady> {conf}Una, si la lee quien no debe. Eso es la confidencialidad. {integ}Dos, si alguien cambia un importe. Eso es la integridad.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-dimensiones",
+      "text": "<engaging> {trace}Tres, si luego nadie sabe quién tocó qué, ni cuándo. La trazabilidad. {auth}Cuatro, si alguien se hace pasar por el personal de nóminas. La autenticidad.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-dimensiones",
+      "text": "<thoughtful> {avail}Y cinco, si el día de pago el sistema no está. La disponibilidad. {dims}Son las cinco dimensiones del anexo uno.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-dimensiones",
+      "text": "<firm> {seven}Cuidado, que el artículo uno habla de siete cosas que protege el esquema. {extra}Añade el acceso y la conservación, pero esas dos no se valoran para categorizar.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Dimensiones: C, I, T, A y D. Acceso y conservación, no",
+        "at": "extra",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-niveles",
+      "text": "<clear> {levels}Cada respuesta acaba en un nivel, que puede ser bajo, medio o alto. Y lo marca lo grave que sería el daño.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-niveles",
+      "text": "<steady> {low}Un perjuicio limitado, molesto pero fácil de arreglar, es nivel bajo. Como cobrar la nómina con un día de retraso.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-niveles",
+      "text": "<engaging> {mid}Un perjuicio grave, de difícil reparación, es nivel medio. Como que se filtren los importes y las cuentas bancarias de cada persona.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s03-04",
+      "scene": "s03-niveles",
+      "text": "<thoughtful> {high}Y el alto es para el perjuicio muy grave. El que llega a anular lo que la organización puede hacer, o que quizá no tenga arreglo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s03-05",
+      "scene": "s03-niveles",
+      "text": "<warm> {none}Queda una cuarta salida. Las tablas salariales ya son públicas, así que, si se filtran, no pasa nada. {nolevel}Esa dimensión no se ve afectada, y entonces no lleva ningún nivel.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-p1",
+      "text": "<intrigued> {q1}Te toca valorar. Si un servicio se cayera, el Consorcio sufriría un perjuicio grave. Seguiría funcionando, pero muy mermado. ¿En qué nivel queda su disponibilidad?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Los responsables de un servicio concluyen que, si se cayera, el Consorcio sufriría un perjuicio grave: sus funciones seguirían, pero muy mermadas.",
+        "q": "¿En qué nivel queda la disponibilidad de ese servicio?",
+        "options": [
+          "ALTO, que es el del perjuicio grave",
+          "BAJO, porque las funciones se siguen desempeñando",
+          "Ninguno, hasta conocer la categoría del sistema",
+          "MEDIO, que es el del perjuicio grave"
+        ],
+        "answer": 3,
+        "trap": 0,
+        "why": "Anexo I: el perjuicio grave es el nivel MEDIO; el ALTO exige un perjuicio muy grave",
+        "trapWhy": "Grave suena a lo peor, pero en el anexo I lo peor es «muy grave»",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-p1",
+      "text": "<confident> {ok-1}Medio. Un perjuicio grave es justo lo que define el nivel medio, y las funciones del Consorcio siguen, aunque muy mermadas.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-p1",
+      "text": "<firm> {trap-1}La palabra grave despista, porque suena a lo peor. Pero el alto pide un perjuicio muy grave. {rule-a}O sea, limitado es bajo, grave es medio y muy grave es alto.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "BAJO, perjuicio limitado. MEDIO, grave. ALTO, muy grave",
+        "at": "rule-a",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-regla",
+      "text": "<clear> {steps}Ya tienes los niveles. Ahora, de ahí a la categoría del sistema, que se saca en dos pasos.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-regla",
+      "text": "<steady> {table}Nóminas trata dos informaciones y presta dos servicios, cada uno con sus valoraciones. {max}Primer paso, en cada dimensión te quedas con el nivel más alto.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-regla",
+      "text": "<firm> {nomean}Ni se hace la media ni se cuentan votos. Con que una sola información esté en medio, esa dimensión está en medio.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-04",
+      "scene": "s05-regla",
+      "text": "<warm> {triage}Piensa en el triaje de unas urgencias. Te clasifican por tu síntoma más grave, y da igual que todo lo demás esté bien.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-05",
+      "scene": "s05-regla",
+      "text": "<engaging> {rule}Segundo paso, la categoría. Con alguna dimensión en alto, es alta. Con alguna en medio y ninguna por encima, media. {basic}Y si ninguna pasa de bajo, básica.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "En cada dimensión, el mayor. Una sola marca la categoría",
+        "at": "basic",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s05-06",
+      "scene": "s05-regla",
+      "text": "<steady> {result}En nóminas hay tres dimensiones en medio y ninguna en alto. Así que el sistema es de categoría media.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-07",
+      "scene": "s05-regla",
+      "text": "<thoughtful> {keep}Y ahora, lo que más se olvida. La disponibilidad sigue en bajo, aunque el sistema sea de categoría media. {cont}Así que no le piden el análisis de impacto, que es para disponibilidad media o alta.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s05-08",
+      "scene": "s05-regla",
+      "text": "<warm> {scratch}Como en urgencias. Te ponen en el grupo de lo más grave, pero un rasguño te lo siguen curando como un rasguño.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-p2",
+      "text": "<curious> {q2}Ahora, vocabulario. La web informativa no tiene nivel de confidencialidad, porque todo es público, y lo demás está en bajo. ¿Cuál de estas frases es correcta?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "La web informativa del Consorcio: confidencialidad sin nivel, porque todo lo que publica es público; integridad, autenticidad y disponibilidad en BAJO.",
+        "q": "¿Cuál de estas frases sobre la web es correcta?",
+        "options": [
+          "Tiene la integridad en categoría BÁSICA",
+          "Es de categoría BÁSICA y su confidencialidad tiene nivel BAJO",
+          "Es de categoría BÁSICA y su integridad tiene nivel BAJO",
+          "Es un sistema de nivel BAJO"
+        ],
+        "answer": 2,
+        "trap": 3,
+        "why": "La categoría es del sistema y el nivel, de cada dimensión: BÁSICA e integridad en BAJO",
+        "trapWhy": "Expresión mal formada: los niveles son de las dimensiones; el sistema tiene categoría",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-p2",
+      "text": "<confident> {ok-2}La de categoría básica con la integridad en bajo. Cada cosa con su palabra, la categoría para el sistema y el nivel para la dimensión.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-p2",
+      "text": "<firm> {trap-2}Lo de sistema de nivel bajo suena bien, pero es una expresión mal formada. {rule-b}Los niveles son de las dimensiones, y las categorías, del sistema.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Niveles, de las dimensiones. Categorías, del sistema",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-quien",
+      "text": "<clear> {who}Hasta aquí, el método. Ahora, quién hace cada paso, que lo reparte el artículo cuarenta y uno.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-quien",
+      "text": "<warm> {move}Piensa en una mudanza. Tú sabes qué cosas valen y cuáles son frágiles. La encargada decide cómo se embala y firma la hoja. Y los mozos cargan, pero no deciden.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-quien",
+      "text": "<steady> {value}Pues valorar las dimensiones les toca a los responsables de la información y de los servicios. En el Consorcio, la Gerencia para la información, y cada servicio, el suyo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s07-04",
+      "scene": "s07-quien",
+      "text": "<confident> {decide}Con esas valoraciones, la categoría la determina el responsable de la seguridad, que aquí es la Unidad de Seguridad de la Información.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Valoran información y servicio. Determina la seguridad",
+        "at": "decide",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s07-05",
+      "scene": "s07-quien",
+      "text": "<thoughtful> {system}La jefatura de Informática, que es el responsable del sistema, implanta las medidas y vigila el día a día. Pero ni valora ni decide la categoría.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s07-06",
+      "scene": "s07-quien",
+      "text": "<firm> {apart}Y la seguridad no puede depender de ella. Por eso la Unidad cuelga de la Gerencia, y no del Servicio de Informática.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-p3",
+      "text": "<intrigued> {q3}Vamos con un desacuerdo. Supón que la Unidad de Seguridad cree que alguien se quedó corto al valorar la disponibilidad del pago de la nómina. ¿Quién puede cambiar esa valoración?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Supuesto: la Unidad de Seguridad de la Información cree que la disponibilidad del servicio de cálculo y pago de la nómina está infravalorada.",
+        "q": "¿A quién le corresponde modificar esa valoración?",
+        "options": [
+          "Al responsable de ese servicio, porque es quien la valora",
+          "A la propia Unidad, porque es la que determina la categoría",
+          "A la jefatura de Informática, porque es la que conoce el sistema",
+          "Al Comité de Seguridad de la Información, por mayoría"
+        ],
+        "answer": 0,
+        "trap": 1,
+        "why": "Art. 41.1: valorar, y modificar después la valoración, es del responsable del servicio",
+        "trapWhy": "La Unidad determina la categoría con esas valoraciones, pero no las cambia",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-p3",
+      "text": "<confident> {ok-3}Al responsable de ese servicio. Quien valora es también quien puede modificar después su valoración.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-p3",
+      "text": "<firm> {trap-3}Parece natural que la cambie la Unidad, que decide la categoría. Pero decide con las valoraciones de otros. {rule-c}Lo que vale cada cosa lo dice su dueño.",
+      "pauseAfterMs": 1700
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-revision",
+      "text": "<clear> {date}Una vez decidida, la categoría no es para siempre. Hay que volver a mirarla cada año, {change}o antes, si cambia algo importante de lo que la decidió.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-revision",
+      "text": "<warm> {retriage}Como en urgencias. Si te cambian los síntomas en la sala de espera, te vuelven a clasificar en ese momento.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-revision",
+      "text": "<steady> {audit}Y no lo confundas con la auditoría, que se hace al menos cada dos años. Son dos relojes distintos.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Categoría: cada año o ante modificaciones significativas",
+        "at": "audit",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-p4",
+      "text": "<curious> {q4}Ahora el sistema crece. Al de nóminas, que es de categoría media, le añaden una información nueva. Su responsable la valora con la confidencialidad en alto. ¿Qué pasa con la categoría?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Supuesto: al sistema de nóminas (categoría MEDIA) se le añade una información nueva, que su responsable valora con la confidencialidad en ALTO.",
+        "q": "¿Qué pasa con la categoría del sistema?",
+        "options": [
+          "Pasa a ALTA en la próxima auditoría, que es cuando se revisa",
+          "Sigue en MEDIA, porque el resto de informaciones y servicios no cambia",
+          "Sigue en MEDIA hasta la revisión de cada año",
+          "Hay que revisarla ya, y pasa a ALTA"
+        ],
+        "answer": 3,
+        "trap": 2,
+        "why": "Cambio significativo: se revisa ya, y con una dimensión en ALTO la categoría es ALTA",
+        "trapWhy": "La revisión anual es el mínimo; un cambio significativo obliga a revisar antes",
+        "countdownMs": 5000,
+        "revealAt": "ok-4",
+        "trapAt": "trap-4"
+      }
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-p4",
+      "text": "<confident> {ok-4}Hay que revisarla ya, y sale alta. La confidencialidad del sistema sube a alto, y con una sola dimensión ahí, basta.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-p4",
+      "text": "<firm> {trap-4}Esperar a la revisión del año tienta, pero un cambio así no espera. {rule-d}Y las demás dimensiones no suben, cada una se queda con su nivel.",
+      "pauseAfterMs": 1700
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-declaracion",
+      "text": "<clear> {pick}Con la categoría y los niveles ya se eligen las medidas del anexo dos. Unas van por la categoría, y otras, por el nivel de una dimensión.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-declaracion",
+      "text": "<steady> {minimum}Esas medidas son el mínimo. {extra2}El responsable de la seguridad puede añadir otras, y se llaman medidas adicionales.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-declaracion",
+      "text": "<confident> {doc}La lista de medidas elegidas va en un documento, la Declaración de Aplicabilidad. {sign}Y la firma el responsable de la seguridad, como la encargada firma la hoja de la mudanza.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Declaración de Aplicabilidad: firma el de la seguridad",
+        "at": "sign",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s11-04",
+      "scene": "s11-declaracion",
+      "text": "<thoughtful> {swap}Una medida también se puede cambiar por otra que proteja igual o mejor, justificándolo por escrito. {approve}La aprueba ese mismo responsable, y es una medida compensatoria.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s11-05",
+      "scene": "s11-declaracion",
+      "text": "<warm> {profile}Y para algunos sectores ya hay conjuntos de medidas preparados para una categoría concreta. Son los perfiles de cumplimiento, y en pantalla tienes quién los publica.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-p5",
+      "text": "<intrigued> {q5}Y rematamos con las medidas. Supón que, para el sistema de nóminas, la Unidad quiere exigir una medida que el anexo dos no pide con sus niveles. ¿Puede hacerlo?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Supuesto: para el sistema de nóminas, la Unidad de Seguridad de la Información quiere exigir una medida que el anexo II no pide con los niveles de ese sistema.",
+        "q": "¿Puede hacerlo?",
+        "options": [
+          "No, salvo que antes suba la categoría del sistema",
+          "Sí, como medida adicional, porque el anexo II marca mínimos",
+          "Solo como medida compensatoria de otra del anexo II",
+          "Solo si la aprueba la jefatura de Informática, que la implanta"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "Art. 28.2: el anexo II marca mínimos, y el responsable de la seguridad puede ampliarlos",
+        "trapWhy": "La categoría sale de las valoraciones, no de las medidas que se quieran poner",
+        "countdownMs": 5000,
+        "revealAt": "ok-5",
+        "trapAt": "trap-5"
+      }
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-p5",
+      "text": "<confident> {ok-5}Sí, como medida adicional. Lo que pide el anexo dos es el suelo, y el responsable de la seguridad puede ponerse por encima.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-p5",
+      "text": "<firm> {trap-5}Es fácil pensar que antes hay que subir la categoría. Pero la categoría sale de las valoraciones. {rule-e}El anexo dos es el mínimo, y se puede añadir más.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Anexo II: mínimos. Se pueden añadir medidas adicionales",
+        "at": "rule-e",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s13-01",
+      "scene": "s13-cierre",
+      "text": "<cheerful> {recap}Recapitulamos en cinco ideas. {rule-1}Una, se valoran cinco dimensiones, cada una en bajo, medio, alto o sin nivel.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s13-02",
+      "scene": "s13-cierre",
+      "text": "<clear> {rule-2}Dos, en cada dimensión manda el nivel más alto, y basta una dimensión para marcar la categoría. {rule-3}Tres, la categoría no cambia el nivel de las demás.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s13-03",
+      "scene": "s13-cierre",
+      "text": "<steady> {rule-4}Cuatro, valoran los responsables de la información y del servicio, y determina el de la seguridad. {rule-5}Y cinco, ese mismo firma la Declaración de Aplicabilidad.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s13-04",
+      "scene": "s13-cierre",
+      "text": "<engaging> {phrase}Ante cualquier sistema, pregúntate primero qué daño haría cada fallo, y luego quién lo valoró. {next}Y ahora, al cuestionario de la lección, {endcard}que trae unas cuantas más.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

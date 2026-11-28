@@ -1,0 +1,523 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "ok-4": "check",
+    "trap-4": "block",
+    "ok-5": "check",
+    "trap-5": "block",
+    "window": "mail",
+    "phone": "ping2",
+    "laptop": "error",
+    "cipher": "lock",
+    "declare": "typing"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {building}El Consorcio de Arcedo trata datos de personas a diario. Nóminas, expedientes, cursos. {nofine}Y si incumple con ellos, nadie le multa.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Eso no le da manga ancha, ni mucho menos. {promise}Vamos por partes. En qué se apoya para tratarlos, qué puede pedir cada persona y qué pasa cuando algo falla.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-bases",
+      "text": "<clear> {reason}Para tratar datos personales, cualquier organización necesita una razón que la ley acepte. El reglamento europeo da seis, que se conocen como bases jurídicas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-bases",
+      "text": "<warm> {passport}Piensa en el control de pasaportes de un aeropuerto. Te piden el documento, y no por capricho ni porque tú les dejes.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-bases",
+      "text": "<thoughtful> Te lo piden porque una ley les encarga esa función.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-bases",
+      "text": "<steady> {legal}Con una administración pasa igual. O una ley le obliga a tratar esos datos, y eso es la obligación legal.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-bases",
+      "text": "<calm> {mission}O una ley le encarga una función de interés público, y eso es la misión de interés público.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Administración: obligación legal o interés público",
+        "at": "mission",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-bases",
+      "text": "<thoughtful> {rank}La ley española de protección de datos concreta de dónde sale ese encargo. Para la misión de interés público, de una norma con rango de ley.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-07",
+      "scene": "s02-bases",
+      "text": "<firm> {legit}Lo que no vale es el interés legítimo, o sea, el porque me conviene. El reglamento lo descarta para las autoridades públicas cuando ejercen sus funciones.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-08",
+      "scene": "s02-bases",
+      "text": "<engaging> {consent}El consentimiento también existe, claro. Pero no es la base habitual cuando el Consorcio ejerce sus competencias.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Piénsalo un segundo. Supón que el centro de Valdecierzo manda un boletín voluntario. Apuntarse es marcar una casilla en la web, pero borrarse exige un escrito en el registro. ¿Eso vale?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Supón que Valdecierzo envía un boletín voluntario, con consentimiento: el alta es una casilla en la web y la baja exige un escrito en el registro.",
+        "q": "Según el reglamento europeo, ¿qué pasa con esa forma de darse de baja?",
+        "options": [
+          "Vale, porque el registro es el cauce oficial del Consorcio",
+          "Vale, siempre que la baja sea posible de alguna forma",
+          "No vale: retirarlo tiene que ser tan fácil como darlo",
+          "No vale: un consentimiento dado ya no se puede retirar"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "El artículo 7 pide que retirar el consentimiento sea tan fácil como darlo",
+        "trapWhy": "El registro es un cauce válido, pero aquí hace la baja más difícil que el alta",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}No vale. Si apuntarse es marcar una casilla, borrarse tiene que costar lo mismo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Lo del registro parece serio, pero aquí solo pone trabas a la baja. {rule-a}El reglamento pide que retirar el consentimiento sea tan fácil como darlo.",
+      "pauseAfterMs": 700
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-derechos",
+      "text": "<clear> {window}Ahora, la otra cara. Cada persona puede preguntar qué datos suyos tienen, pedir que los corrijan o que los borren. Son sus derechos, y la lista entera está en pantalla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-derechos",
+      "text": "<steady> {month}Para responder hay un mes, y si hace falta, se puede alargar otros dos. {free}Y es gratis, salvo que la petición sea claramente infundada o excesiva.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Derechos: responder en un mes, prorrogable dos más",
+        "at": "month",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-derechos",
+      "text": "<warm> {phone}Hay un derecho que despista, la portabilidad. Es como cambiarte de compañía de teléfono y llevarte tu número. Tú elegiste esa compañía, así que te puedes ir con lo tuyo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-derechos",
+      "text": "<thoughtful> {base}Por eso solo cabe si la base es tu consentimiento o un contrato. Y una administración casi nunca trata así, porque se apoya en la ley.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Ahora, al otro lado de la ventanilla. Supón que el Consorcio trata, como misión de interés público, los datos de quien pide plaza en Valdecierzo. Una solicitante quiere que paren. ¿Qué puede hacer?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Supón que el Consorcio trata, como misión de interés público atribuida por ley, los datos de quien pide plaza en Valdecierzo. Una solicitante quiere que paren.",
+        "q": "Según el reglamento europeo, ¿qué puede hacer?",
+        "options": [
+          "Ejercer su derecho de oposición",
+          "Pedir la portabilidad de sus datos a otra administración",
+          "Nada: frente a una misión de interés público no caben derechos",
+          "Exigir que el Consorcio le pida antes su consentimiento"
+        ],
+        "answer": 0,
+        "trap": 2,
+        "why": "La oposición cabe justo frente a lo que se apoya en la misión de interés público",
+        "trapWhy": "La base en la ley quita la portabilidad, pero no los demás derechos",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Ejercer su derecho de oposición. Sirve justo frente a lo que se apoya en la misión de interés público.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Pensar que frente a la ley no cabe nada es el error de fondo. Lo que se cae es la portabilidad. {rule-b}O sea, oposición sí, portabilidad no.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Interés público: cabe oposición, no portabilidad",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-encargo",
+      "text": "<clear> {who}Siguiente cuestión, ¿quién responde de esos datos? El que decide para qué se tratan y cómo. Ese es el responsable del tratamiento.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-encargo",
+      "text": "<warm> {kitchen}Piensa en una reforma de cocina. Tú decides qué cocina quieres. El albañil la hace con tus planos, por tu cuenta, no por la suya.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-encargo",
+      "text": "<steady> {payroll}Si el Consorcio contrata a una empresa para llevar las nóminas, el Consorcio es el responsable. Y la empresa, que trabaja por cuenta de otro, es el encargado del tratamiento.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-encargo",
+      "text": "<engaging> {contract}Esa relación se fija en un contrato u otro acto jurídico, con un contenido mínimo. En el sector público también vale una norma que la regule.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-encargo",
+      "text": "<firm> {ens}Y un detalle que une todo el bloque. La empresa aplica las medidas de seguridad del Consorcio, las del Esquema Nacional de Seguridad.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-encargo",
+      "text": "<thoughtful> {da1}Eso lo manda la ley española de protección de datos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-07",
+      "scene": "s06-encargo",
+      "text": "<calm> {inventory}Además, el Consorcio apunta todo lo que trata, y lo publica en un inventario con su base legal.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Vuelve la empresa de las nóminas. Supón que no da abasto y quiere pasar una parte del trabajo a otra empresa, que vería los mismos datos. ¿Qué necesita antes?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "La empresa que lleva las nóminas del Consorcio quiere pasar parte del trabajo a otra empresa, que trataría los mismos datos.",
+        "q": "¿Qué necesita antes de hacerlo?",
+        "options": [
+          "Avisar al Consorcio en cuanto la otra empresa empiece",
+          "Nada: su contrato con el Consorcio ya la cubre",
+          "Una autorización de la autoridad de control",
+          "Una autorización previa y por escrito del Consorcio"
+        ],
+        "answer": 3,
+        "trap": 0,
+        "why": "El artículo 28 solo deja entrar a otro encargado con autorización previa por escrito",
+        "trapWhy": "Avisar cuando ya ha empezado llega tarde: el permiso tiene que ser previo",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Una autorización previa y por escrito del Consorcio. Como el albañil, que no te mete un fontanero en casa sin preguntarte.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Avisar cuando ya ha empezado se queda corto, porque llega tarde. {rule-c}El permiso va antes, y por escrito.",
+      "pauseAfterMs": 700
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-brecha",
+      "text": "<clear> {laptop}Un lunes desaparece de una oficina comarcal un portátil con una copia del registro de entrada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-brecha",
+      "text": "<engaging> {breach}Eso es una violación de la seguridad de los datos, lo que solemos llamar una brecha.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-brecha",
+      "text": "<steady> {clock}Entonces el Consorcio avisa a la autoridad de control, salvo que sea improbable que haya riesgo para las personas.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-brecha",
+      "text": "<confident> Sin dilación y, si puede ser, en setenta y dos horas como mucho.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-brecha",
+      "text": "<firm> {since}Y esas horas cuentan desde que el Consorcio se entera, no desde que se perdió el portátil.",
+      "pauseAfterMs": 250,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Brecha: 72 horas a la autoridad, desde la constancia",
+        "at": "since",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-brecha",
+      "text": "<calm> {aepd}Cuál es esa autoridad depende de dónde esté el Consorcio, y la suya la tienes en pantalla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-07",
+      "scene": "s08-brecha",
+      "text": "<thoughtful> {people}A las personas afectadas se les avisa solo si es probable un riesgo alto para ellas.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-08",
+      "scene": "s08-brecha",
+      "text": "<calm> {cipher}Si el disco iba cifrado y la clave está a salvo, no hace falta. Pero la brecha se documenta igual.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-delegado",
+      "text": "<clear> {before}Ahora, al revés, antes de que pase nada. Si es probable que un tratamiento nuevo suponga un alto riesgo, primero se estudia.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-delegado",
+      "text": "<calm> Es la evaluación de impacto, y va antes de empezar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-delegado",
+      "text": "<warm> {copilot}Ahí asesora el delegado de protección de datos. Es como el copiloto de un rali.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s09-04",
+      "scene": "s09-delegado",
+      "text": "<engaging> Canta las curvas y avisa, pero no conduce. Y nadie le dice qué tiene que cantar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s09-05",
+      "scene": "s09-delegado",
+      "text": "<steady> {mandatory}En un organismo público es obligatorio, tenga la plantilla que tenga. Rinde cuentas al nivel más alto, y no se le puede castigar por hacer su trabajo.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "DPD: obligatorio en organismos públicos, sin instrucciones",
+        "at": "mandatory",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s09-06",
+      "scene": "s09-delegado",
+      "text": "<engaging> {usi}En el Consorcio es una figura distinta del responsable de la seguridad, que es la Unidad de Seguridad de la Información.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-p4",
+      "text": "<curious> {q4}Siéntate en esa reunión. Imagina que el Consorcio ha evaluado el impacto de un tratamiento nuevo. Con las medidas previstas, el riesgo sigue siendo alto. ¿Qué toca antes de empezar?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "El Consorcio ha hecho la evaluación de impacto de un tratamiento nuevo y, con las medidas previstas, el riesgo sigue siendo alto.",
+        "q": "¿Qué toca antes de empezar a tratar los datos?",
+        "options": [
+          "Empezar, y notificar en 72 horas si algo falla",
+          "Una consulta previa a la autoridad de control",
+          "Que el DPD lo apruebe, y empezar",
+          "Nada más: con la evaluación hecha, basta"
+        ],
+        "answer": 1,
+        "trap": 2,
+        "why": "Con riesgo alto tras la evaluación, el artículo 36 pide consultar antes a la autoridad",
+        "trapWhy": "El DPD asesora en la evaluación, pero la consulta va a la autoridad",
+        "countdownMs": 5000,
+        "revealAt": "ok-4",
+        "trapAt": "trap-4"
+      }
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-p4",
+      "text": "<confident> {ok-4}Una consulta previa a la autoridad de control. Que responde en ocho semanas, y puede alargarlo seis más.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-p4",
+      "text": "<firm> {trap-4}Lo del delegado suena razonable, pero él asesora, como el copiloto, y no da la salida. {rule-d}Si el riesgo sigue alto, se pregunta antes a la autoridad.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Riesgo alto tras la evaluación de impacto: consulta previa",
+        "at": "rule-d",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-multa",
+      "text": "<clear> {fine}Vuelvo a lo del principio. A una empresa que incumple le pueden caer multas de millones de euros, y las cifras están en pantalla.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-multa",
+      "text": "<steady> {list}Pero la ley española aparta una lista, donde están las administraciones. Y en esa lista, con su propia letra, están los consorcios.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-multa",
+      "text": "<firm> A ellas la autoridad no las multa. {declare}Dicta una resolución que declara la infracción y, si hace falta, fija las medidas que hay que tomar.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Consorcios: se declara la infracción, sin multa",
+        "at": "declare",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s11-04",
+      "scene": "s11-multa",
+      "text": "<thoughtful> {notfree}Que no haya multa no quiere decir que salga gratis. La infracción queda declarada, hay que corregirla, y puede acabar en responsabilidad disciplinaria de quien la causó.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-p5",
+      "text": "<intrigued> {q5}Queda la quinta, y va de gravedad. Supón que el Consorcio sufre una brecha con riesgo para las personas, y no la notifica a la autoridad. ¿Cómo se califica?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Una violación de datos del Consorcio, con riesgo para las personas, no se notifica a la autoridad de control.",
+        "q": "Según la ley española, ¿cómo se califica esa infracción?",
+        "options": [
+          "Muy grave, por tratarse de una entidad pública",
+          "Grave, igual que para cualquier responsable",
+          "Leve, porque a los consorcios no se les multa",
+          "No es infracción, porque un consorcio no se sanciona"
+        ],
+        "answer": 1,
+        "trap": 2,
+        "why": "No notificar una violación a la autoridad es grave para cualquiera, consorcios incluidos",
+        "trapWhy": "Mezcla la gravedad con la consecuencia: la infracción es la misma, sin multa",
+        "countdownMs": 5000,
+        "revealAt": "ok-5",
+        "trapAt": "trap-5"
+      }
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-p5",
+      "text": "<confident> {ok-5}Grave, igual que para cualquier responsable. La lista de infracciones es la misma.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-p5",
+      "text": "<firm> {trap-5}Lo de leve tienta, pero confunde lo que pesa la infracción con cómo termina. {rule-e}Para un consorcio cambia el final, no la gravedad.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "No notificar una brecha es grave, también en un consorcio",
+        "at": "rule-e",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s13-01",
+      "scene": "s13-cierre",
+      "text": "<cheerful> {recap}Apunta estas seis, que son las que más se confunden. {rule-1}Una administración se apoya en la ley, nunca en el interés legítimo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s13-02",
+      "scene": "s13-cierre",
+      "text": "<calm> {rule-2}Frente a la misión de interés público, oposición sí, portabilidad no.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s13-03",
+      "scene": "s13-cierre",
+      "text": "<clear> {rule-3}El encargado trabaja por cuenta del Consorcio, y no subcontrata sin permiso por escrito. {rule-4}A la autoridad, setenta y dos horas desde que se sabe.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s13-04",
+      "scene": "s13-cierre",
+      "text": "<steady> {rule-5}El delegado asesora, sin recibir órdenes. {rule-6}Y a un consorcio no se le multa, pero la infracción se declara igual.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s13-05",
+      "scene": "s13-cierre",
+      "text": "<engaging> {phrase}Antes de tocar un dato personal, busca la norma que te lo encarga. {next}Ahora comprueba qué se te ha quedado {endcard}con las preguntas de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

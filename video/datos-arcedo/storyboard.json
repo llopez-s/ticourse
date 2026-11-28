@@ -1,0 +1,229 @@
+{
+  "title": "Protección de datos en la administración: un pasaporte, una cocina y un copiloto",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 574,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "En qué se apoya"
+    },
+    {
+      "n": 2,
+      "title": "Lo que puede pedir cada persona"
+    },
+    {
+      "n": 3,
+      "title": "Quién decide y quién trabaja por encargo"
+    },
+    {
+      "n": 4,
+      "title": "Cuando algo falla, y antes de empezar"
+    },
+    {
+      "n": 5,
+      "title": "Sin multa, pero no gratis"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Sin multa",
+      "targetSec": 23,
+      "wordBudget": 62,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. La sede vista desde fuera y, saliendo de ella, tres carpetas rotuladas «nóminas · expedientes · inscripciones de los cursos de Valdecierzo» (`building`). Sobre las carpetas, un papel de multa que se acerca y se tacha: «multa · no» (`nofine`). Título «Protección de datos en la administración» (`title`, antes de los 12 s) y la promesa en tres chips: «en qué se apoya · qué puede pedir cada persona · qué pasa si algo falla» (`promise`). Plaquita «REDES Y ENS · ENS y normativa»",
+      "requiredCues": [
+        "building",
+        "nofine",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-bases",
+      "chapter": 1,
+      "title": "El control de pasaportes",
+      "targetSec": 66,
+      "wordBudget": 178,
+      "goal": "Rótulo de las dos normas, fijo en una esquina toda la escena: «RGPD · Reglamento (UE) 2016/679» y «LOPDGDD · Ley Orgánica 3/2018». Seis casillas con las letras a) a f) y el rótulo «art. 6 RGPD · bases jurídicas» (`reason`). La imagen, rotulada «imagen · no es el Consorcio»: un control de pasaportes de aeropuerto; dos bocadillos tachados, «porque me apetece» y «porque tú me dejas», y uno marcado, «porque una ley me lo encarga» (`passport`). Se iluminan dos casillas: «c) obligación legal» (`legal`) y «e) misión realizada en interés público o en el ejercicio de poderes públicos» (`mission`), y entra la tarjeta. Debajo, «LOPDGDD art. 8 · c): norma de Derecho de la UE o con rango de ley · e): norma con rango de ley (o competencia atribuida por ley)» (`rank`). La casilla «f) interés legítimo» se tacha, con «no para autoridades públicas en el ejercicio de sus funciones» (`legit`). La casilla «a) consentimiento» queda en gris: «existe · no es la base habitual al ejercer competencias · art. 7: retirarlo, tan fácil como darlo (en pequeño)» (`consent`)",
+      "requiredCues": [
+        "reason",
+        "passport",
+        "legal",
+        "mission",
+        "rank",
+        "legit",
+        "consent"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Una casilla para entrar",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Pregunta tipo test 1 (`q1`, «Piénsalo un segundo»), rótulo «pregunta tipo test · ejemplo» en `question.tag`. El panel tapa la escena, así que el fondo se queda quieto: un formulario web a media luz con una casilla y, al lado, una ventanilla de registro, sin texto. Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (retirarlo tiene que ser tan fácil como darlo) y en `trap-1` la trampa (el registro como cauce oficial). Al final, una línea en pantalla: «art. 7 RGPD · retirar el consentimiento = tan fácil como darlo» (`rule-a`). Sin tarjeta de examen",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-derechos",
+      "chapter": 2,
+      "title": "Llevarte tu número",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "Una ventanilla del Consorcio y una persona que deja una petición; al lado, la tabla de derechos en dos columnas, rotulada «arts. 15 a 22 RGPD»: «acceso 15 · rectificación 16 · supresión 17 · limitación 18 · portabilidad 20 · oposición 21 · decisiones automatizadas 22» (`window`). Un calendario: «1 mes · prorrogable otros 2 · art. 12» (`month`) y entra la tarjeta; debajo, «gratuito · salvo solicitudes manifiestamente infundadas o excesivas» (`free`). La imagen, rotulada «imagen · no es el Consorcio»: alguien sale de una tienda de telefonía con su número en una tarjeta y entra en otra (`phone`). Rótulo «portabilidad · art. 20 · solo si la base es el consentimiento o un contrato · tratamiento automatizado · formato estructurado, de uso común y lectura mecánica», y la tienda de enfrente queda en gris con «una administración · obligación legal o misión de interés público» (`base`)",
+      "requiredCues": [
+        "window",
+        "month",
+        "free",
+        "phone",
+        "base"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Al otro lado de la ventanilla",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "goal": "Pregunta tipo test 2 (`q2`, «al otro lado de la ventanilla»), rótulo «pregunta tipo test · ejemplo». Fondo quieto: la ventanilla a media luz, sin texto. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (oposición, art. 21) y en `trap-2` la trampa (no caben derechos). La regla en una línea, «art. 21 · oposición frente a 6.1 e) o f) · art. 20 · portabilidad no» (`rule-b`), y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-encargo",
+      "chapter": 3,
+      "title": "Una reforma de cocina",
+      "targetSec": 63,
+      "wordBudget": 170,
+      "goal": "Una mano que decide sobre un plano: «responsable del tratamiento · decide para qué y cómo · art. 24 RGPD · y tiene que poder demostrarlo» (`who`). La imagen, rotulada «imagen · no es el Consorcio»: una cocina en obras; la dueña señala el plano y el albañil trabaja con él (`kitchen`). El Consorcio y una empresa sin nombre, rotulada «empresa contratada · gestión de nóminas · supuesto de la lección», unidos por una flecha: «responsable: el Consorcio · encargado: la empresa · trata por cuenta del responsable» (`payroll`). Un documento firmado: «contrato u otro acto jurídico · contenido del art. 28.3 · sector público: también una norma reguladora (LOPDGDD art. 33.5)» (`contract`). Sobre la empresa, un escudo: «aplica las medidas del ENS de la administración de origen» (`ens`) y la fuente, «LOPDGDD · disposición adicional primera» (`da1`). En una esquina, un libro y una pantalla: «registro de actividades · art. 30 RGPD» y «inventario público con su base legal · LOPDGDD art. 31 · consorcios incluidos» (`inventory`)",
+      "requiredCues": [
+        "who",
+        "kitchen",
+        "payroll",
+        "contract",
+        "ens",
+        "da1",
+        "inventory"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Un fontanero en casa",
+      "targetSec": 35,
+      "wordBudget": 95,
+      "goal": "Pregunta tipo test 3 (`q3`, «Vuelve la empresa de las nóminas»), rótulo «pregunta tipo test · ejemplo». Fondo quieto: dos empresas sin nombre a media luz, unidas por una flecha punteada, sin texto. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (autorización previa y por escrito) y en `trap-3` la trampa (avisar cuando la otra empresa ya ha empezado). Vuelve un momento la cocina, rotulada «imagen · no es el Consorcio»: el albañil pregunta antes de que entre el fontanero. Una línea: «art. 28 RGPD · subencargado: autorización previa por escrito del responsable» (`rule-c`). Sin tarjeta de examen",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s08-brecha",
+      "chapter": 4,
+      "title": "Un portátil perdido",
+      "targetSec": 54,
+      "wordBudget": 146,
+      "goal": "Una oficina comarcal con una mesa vacía y la silueta de un portátil que ya no está: «un lunes · copia del registro de entrada · caso de la lección» (`laptop`). Rótulo «violación de la seguridad de los datos personales · brecha» (`breach`). Un reloj de 72 horas que arranca, con «art. 33 RGPD · a la autoridad de control · sin dilación indebida y, de ser posible, a más tardar 72 horas · salvo que sea improbable el riesgo · fuera de plazo, con los motivos» (`clock`). La línea de tiempo marca dos puntos, «se pierde el portátil» y «el Consorcio tiene constancia», y el reloj empieza en el segundo (`since`), y entra la tarjeta. Destino: «autoridad de control del Consorcio: AEPD · su comunidad no tiene autoridad propia · LOPDGDD art. 57: las autonómicas, para el sector público de su comunidad y sus entidades locales» (`aepd`). Otra columna: «art. 34 · a las personas afectadas · solo si es probable un alto riesgo · sin dilación indebida» (`people`). El disco del portátil con un candado: «cifrado y clave a salvo · no se comunica a los afectados (34.3) · se documenta igual (33.5)» (`cipher`)",
+      "requiredCues": [
+        "laptop",
+        "breach",
+        "clock",
+        "since",
+        "aepd",
+        "people",
+        "cipher"
+      ]
+    },
+    {
+      "id": "s09-delegado",
+      "chapter": 4,
+      "title": "El copiloto",
+      "targetSec": 47,
+      "wordBudget": 127,
+      "goal": "Un tratamiento nuevo como un plano todavía sin construir y, delante, una lupa: «evaluación de impacto (EIPD) · art. 35 RGPD · antes del tratamiento · si es probable un alto riesgo · con el asesoramiento del DPD» (`before`). La imagen, rotulada «imagen · no es el Consorcio»: un coche de rali; el copiloto lee las notas y señala una curva, la piloto conduce (`copilot`). Ficha del delegado: «DPD · obligatorio en autoridades y organismos públicos, salvo tribunales en función judicial (art. 37.1.a) · no recibe instrucciones · rinde cuentas al más alto nivel jerárquico · no destituido ni sancionado por desempeñar sus funciones (art. 38)» (`mandatory`), y entra la tarjeta. Organigrama del Consorcio con dos figuras separadas: «DPD · designado por el Consorcio» y «responsable de la seguridad · Unidad de Seguridad de la Información» (`usi`)",
+      "requiredCues": [
+        "before",
+        "copilot",
+        "mandatory",
+        "usi"
+      ]
+    },
+    {
+      "id": "s10-p4",
+      "chapter": 4,
+      "title": "Antes de dar la salida",
+      "targetSec": 39,
+      "wordBudget": 105,
+      "goal": "Pregunta tipo test 4 (`q4`, «Siéntate en esa reunión»), rótulo «pregunta tipo test · ejemplo». Fondo quieto: una mesa de reunión a media luz, sin texto. Cuenta atrás de 5 s. En `ok-4` se marca la correcta (consulta previa a la autoridad) y en `trap-4` la trampa (que lo apruebe el DPD). Rótulo pequeño en el `ok-4`: «art. 36 · la autoridad responde en ocho semanas, prorrogables seis». La regla en una línea, «EIPD con riesgo alto · consulta previa antes de tratar» (`rule-d`), y entra la tarjeta",
+      "requiredCues": [
+        "q4",
+        "ok-4",
+        "trap-4",
+        "rule-d"
+      ]
+    },
+    {
+      "id": "s11-multa",
+      "chapter": 5,
+      "title": "La letra j",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "goal": "Dos columnas. A la izquierda, «régimen general · art. 83 RGPD · hasta 10 000 000 EUR o el 2 % · hasta 20 000 000 EUR o el 4 %» (`fine`). A la derecha, la lista del «art. 77.1 LOPDGDD», con unas cuantas letras: «c) entidades locales · d) organismos públicos · i) universidades públicas · j) los consorcios», y la j se ilumina (`list`). Un sello sobre un papel: «resolución que declara la infracción y establece, en su caso, las medidas que proceda adoptar · sin la multa del art. 58.2.i RGPD (art. 77.2)» (`declare`), y entra la tarjeta. Debajo, tres consecuencias: «corregirla · propuesta de actuaciones disciplinarias (77.3) · comunicación al Defensor del Pueblo (77.5)» (`notfree`)",
+      "requiredCues": [
+        "fine",
+        "list",
+        "declare",
+        "notfree"
+      ]
+    },
+    {
+      "id": "s12-p5",
+      "chapter": 5,
+      "title": "Lo que pesa",
+      "targetSec": 35,
+      "wordBudget": 95,
+      "goal": "Pregunta tipo test 5 (`q5`, «Queda la quinta»), rótulo «pregunta tipo test · ejemplo». Fondo quieto: una balanza a media luz, sin texto. Cuenta atrás de 5 s. En `ok-5` se marca la correcta (grave) y en `trap-5` la trampa (leve porque no hay multa). Rótulo pequeño en el `ok-5`: «LOPDGDD art. 73 r) · grave · el art. 77.2 remite a las infracciones de los arts. 72 a 74». La regla en una línea, «misma infracción · otro final» (`rule-e`), y entra la tarjeta",
+      "requiredCues": [
+        "q5",
+        "ok-5",
+        "trap-5",
+        "rule-e"
+      ]
+    },
+    {
+      "id": "s13-cierre",
+      "chapter": 5,
+      "title": "Para tu libreta",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "goal": "Seis ideas, cada una con su icono (el control de pasaportes · la tienda de teléfonos · la cocina · el reloj de 72 horas · el copiloto · el sello sin multa) (`recap`, `rule-1` a `rule-6`), y la frase final: «Antes de tocar un dato personal, busca la norma que te lo encarga» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "rule-4",
+        "rule-5",
+        "rule-6",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

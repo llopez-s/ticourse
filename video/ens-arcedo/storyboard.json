@@ -1,0 +1,220 @@
+{
+  "title": "El ENS: un quirófano, un vestuario, unos estatutos y una obra",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 548,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "A quién obliga"
+    },
+    {
+      "n": 2,
+      "title": "Cómo está construido"
+    },
+    {
+      "n": 3,
+      "title": "La política de seguridad"
+    },
+    {
+      "n": 4,
+      "title": "Quién responde de qué"
+    },
+    {
+      "n": 5,
+      "title": "Seguridad aparte"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una norma encima de la mesa",
+      "targetSec": 21,
+      "wordBudget": 57,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. El Consorcio visto desde fuera, con tres iconos rotulados «sede electrónica · registro electrónico · CPD de la sede central» (`consorcio`). Sobre una mesa cae un documento rotulado «Real Decreto 311/2022 · 41 artículos» (`norma`). Título «El ENS: marco y roles» (`title`, antes de los 12 s) y la promesa en tres chips: «a quién obliga · cómo está construido · quién responde de qué» (`promise`). Plaquita «REDES Y ENS · ENS y normativa»",
+      "requiredCues": [
+        "consorcio",
+        "norma",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-ambito",
+      "chapter": 1,
+      "title": "De la ley al contrato",
+      "targetSec": 69,
+      "wordBudget": 186,
+      "goal": "Una cadena de dos eslabones que se escribe de arriba abajo: «Ley 40/2015 · art. 156.2 · establece el ENS» y, en pequeño y en gris, «el 156.1 es el Esquema Nacional de Interoperabilidad» (`law`), y entra la tarjeta; debajo, «Real Decreto 311/2022, de 3 de mayo · en vigor desde el 5-5-2022 · deroga el RD 3/2010» (`decree`). Rótulo «art. 2 · ámbito» y tres círculos que se van encendiendo: «todo el sector público (art. 2 de la Ley 40/2015)» (`public`), «sistemas con información clasificada» (`classified`) y, con un golpe de color, «sector privado que presta servicios o provee soluciones al sector público por contrato · art. 2.3» (`private`). La imagen, rotulada «imagen · no es el Consorcio»: la puerta de un quirófano y una persona de una empresa de limpieza con su propia carpeta de protocolo (`surgery`). Tres líneas bajo el círculo privado: «su propia política de seguridad · aprobada por su órgano con las máximas competencias ejecutivas · los pliegos exigen la conformidad con el ENS» (`ownpolicy`). Al lado, un recuadro aparte rotulado «art. 3 · datos personales»: «también RGPD y LOPDGDD · si el análisis de riesgos (art. 24 RGPD) o la EIPD (art. 35) piden más, prevalecen esas medidas» (`data`)",
+      "requiredCues": [
+        "law",
+        "decree",
+        "public",
+        "classified",
+        "private",
+        "surgery",
+        "ownpolicy",
+        "data"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Un eslabón más",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 1 (`q1`, «Sigamos ese contrato un paso más»). El panel tapa la escena, así que el fondo se queda quieto: una cadena de tres eslabones a media luz, sin texto. Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (en la medida necesaria, según el análisis de riesgos) y en `trap-1` la trampa (siempre y a toda la cadena). La regla en una línea, «art. 2.3 · la exigencia se extiende a la cadena de suministro en la medida necesaria, según el análisis de riesgos» (`rule-a`), y entra la tarjeta. El escenario es un supuesto: el Consorcio no ha dicho que esa empresa subcontrate",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-mapa",
+      "chapter": 2,
+      "title": "Un vestuario con taquillas",
+      "targetSec": 75,
+      "wordBudget": 203,
+      "goal": "El índice del real decreto como una tabla de siete filas, «capítulos I a VII · arts. 1–4, 5–11, 12–30, 31–34, 35–38, 39, 40–41», con el rótulo «41 artículos · 7 capítulos · 4 anexos» (`map`). Debajo, los cuatro anexos en fila: «I · categorías · II · medidas de seguridad (73) · III · auditoría · IV · glosario», con una flecha dibujada como trazo (no como símbolo) de I a II y la nota «primero se categoriza, después se eligen medidas» (`annexes`). La imagen, rotulada «imagen · no es el Consorcio»: un vestuario con taquillas numeradas del 1 al 41 (`lockers`). Se iluminan las taquillas 6 a 11 y entran siete fichas, «a) proceso integral · b) gestión basada en los riesgos · c) prevención, detección, respuesta y conservación · d) líneas de defensa · e) vigilancia continua · f) reevaluación periódica · g) diferenciación de responsabilidades»; dos de ellas entran juntas en la 10 (`principles`), rotulada «art. 10 · vigilancia continua y reevaluación periódica» (`twoinone`), y entra la tarjeta. Se apagan y se encienden las taquillas 13 a 27, con el rótulo «art. 12.6 · quince requisitos mínimos · letras a) a ñ)» (`requirements`); las letras entran una por taquilla, «a) en la 13 … ñ) en la 27» (`lockers2`). Al final, un cajón aparte rotulado «art. 28 · se cumplen con las medidas del anexo II, según la categoría» (`measures`) y un documento «Declaración de Aplicabilidad · relación de medidas seleccionadas» (`soa`)",
+      "requiredCues": [
+        "map",
+        "annexes",
+        "lockers",
+        "principles",
+        "twoinone",
+        "requirements",
+        "lockers2",
+        "measures",
+        "soa"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "La taquilla de la eme",
+      "targetSec": 37,
+      "wordBudget": 100,
+      "goal": "Pregunta tipo test 2 (`q2`, «Un reto de cuentas, sin chuleta»). Fondo quieto: las taquillas a media luz, sin números. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (artículo 25) y, durante la explicación, la cuenta en una línea: «a) = 13 · m) es la letra n.º 13 · 13 + 12 = 25»; en `trap-2`, la trampa (artículo 33, capacidad de respuesta a incidentes, capítulo IV). La regla, «15 requisitos (art. 12.6), uno por artículo, del 13 al 27» (`rule-b`), y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-politica",
+      "chapter": 3,
+      "title": "Los estatutos de la casa",
+      "targetSec": 49,
+      "wordBudget": 132,
+      "goal": "Un documento rotulado «política de seguridad · art. 12» (`policy`). La imagen, rotulada «imagen · no es el Consorcio»: los estatutos de una comunidad de vecinos con cuatro apartados, «fines · normas · cargos · junta» (`statutes`). El documento se abre con su contenido mínimo, «art. 12.1»: «a) objetivos o misión · b) marco regulatorio · c) roles o funciones de seguridad · d) estructura y composición del comité o los comités» (`contents`) y, a continuación, «e) directrices de la documentación de seguridad · f) riesgos del tratamiento de datos personales», con la nota en pequeño «la medida org.1 del anexo II repite de la a) a la e)» (`extra`). Un sello que cae sobre el documento: «formalmente aprobada por el órgano competente · art. 12.2» (`approved`). Para terminar, muchas organizaciones de distintos tamaños, cada una con su documento, y una muy pequeña con el suyo en blanco (`small`)",
+      "requiredCues": [
+        "policy",
+        "statutes",
+        "contents",
+        "extra",
+        "approved",
+        "small"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Un ayuntamiento sin medios",
+      "targetSec": 34,
+      "wordBudget": 92,
+      "goal": "Pregunta tipo test 3 (`q3`, «Cambiamos de organización»), de otra administración, no del Consorcio. Fondo quieto: la organización pequeña con su documento en blanco, a media luz. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (política común comarcal o provincial) y en `trap-3` la trampa (con sistemas BÁSICA no necesita política). La regla, «art. 12.5 · los municipios pueden apoyarse en una política común elaborada por la entidad comarcal o provincial» (`rule-c`), y entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s08-roles",
+      "chapter": 4,
+      "title": "Quien encarga, quien dirige, quien construye",
+      "targetSec": 68,
+      "wordBudget": 184,
+      "goal": "Rótulo «art. 11 · diferenciación de responsabilidades · cuatro responsables» con cuatro huecos vacíos (`four`). La imagen, rotulada «imagen · no es el Consorcio»: una obra con tres personajes rotulados «quien la encarga · la dirección de obra · la constructora» (`works`). Los huecos se rellenan de uno en uno, cada uno junto a su personaje: «responsable de la información · determina los requisitos de la información tratada» y «responsable del servicio · determina los requisitos de los servicios prestados», los dos junto a quien encarga (`whatinfo`); «responsable de la seguridad · decide cómo satisfacerlos, supervisa su implantación e informa» junto a la dirección de obra (`how`); «responsable del sistema · implanta la seguridad y supervisa la operación diaria · puede delegar en administradores u operadores» junto a la constructora (`build`). Una franja «al categorizar · art. 41»: «valoran · información y servicio» (`category`) y «determina la categoría · seguridad», con una segunda línea «firma la Declaración de Aplicabilidad · art. 28.2» (`decides`), y entra la tarjeta. Al final, la tabla del Consorcio, sin rótulo de ejemplo porque es la de la lección: «información · la Gerencia · servicio (sede electrónica y registro electrónico) · la Secretaría General · seguridad · la Unidad de Seguridad de la Información, que depende de la Gerencia · sistema · la jefatura del Servicio de Informática y Comunicaciones · Comité de Seguridad de la Información, presidido por la Gerencia», con la fila de la Unidad resaltada (`arcedo`)",
+      "requiredCues": [
+        "four",
+        "works",
+        "whatinfo",
+        "how",
+        "build",
+        "category",
+        "decides",
+        "arcedo"
+      ]
+    },
+    {
+      "id": "s09-p4",
+      "chapter": 4,
+      "title": "Un contacto en la empresa",
+      "targetSec": 39,
+      "wordBudget": 105,
+      "goal": "Pregunta tipo test 4 (`q4`, «Esta toca a una empresa de fuera»). Fondo quieto: la sede del Consorcio y, al lado, una empresa sin nombre rotulada «vigilancia de la red · por contrato», a media luz. Cuenta atrás de 5 s. En `ok-4` se marca la correcta (punto o persona de contacto para la seguridad) y en `trap-4` la trampa (un responsable de la información en la empresa). Rótulo final, sin tarjeta: «art. 13.5 · servicio externalizado · POC (Punto o Persona de Contacto) para la seguridad, salvo causa justificada y documentada» (`rule-d`)",
+      "requiredCues": [
+        "q4",
+        "ok-4",
+        "trap-4",
+        "rule-d"
+      ]
+    },
+    {
+      "id": "s10-separacion",
+      "chapter": 5,
+      "title": "Quien construye no manda sobre quien vigila",
+      "targetSec": 45,
+      "wordBudget": 122,
+      "goal": "Rótulo grande «art. 13.3» (`split`). Dos cajas, «responsable de la seguridad» y «responsable del sistema», que se separan; entre ellas, dos líneas de dependencia, una hacia arriba y otra hacia abajo, tachadas las dos, con el texto «distintos · sin dependencia jerárquica entre ambos» (`rule`), y entra la tarjeta. La obra de antes, rotulada «imagen · no es el Consorcio»: la constructora encima de la dirección de obra en un organigrama y un fallo en el muro que nadie señala (`inspector`). El organigrama del Consorcio: la Gerencia arriba y, debajo, dos ramas separadas, «Unidad de Seguridad de la Información» y «Servicio de Informática y Comunicaciones (responsable del sistema)»; una línea punteada de la Unidad a Informática se tacha, y junto a la Unidad aparece un informe «auditoría · fallos de configuración en el CPD» (`gerencia`). Rótulo «art. 11 · la seguridad, separada de la explotación» y, en la esquina, una puerta entreabierta rotulada «excepción» (`exit`)",
+      "requiredCues": [
+        "split",
+        "rule",
+        "inspector",
+        "gerencia",
+        "exit"
+      ]
+    },
+    {
+      "id": "s11-p5",
+      "chapter": 5,
+      "title": "Un solo técnico",
+      "targetSec": 34,
+      "wordBudget": 92,
+      "goal": "Pregunta tipo test 5 (`q5`, «Para rematar, un caso de pocos medios»), de otra administración, no del Consorcio. Fondo quieto: una oficina pequeña con una sola mesa, a media luz. Cuenta atrás de 5 s. En `ok-5` se marca la correcta (ausencia justificada de recursos y medidas compensatorias) y en `trap-5` la trampa (en ningún caso). La regla, «art. 13.3 · excepción: ausencia justificada de recursos · con medidas compensatorias» (`rule-e`), y entra la tarjeta",
+      "requiredCues": [
+        "q5",
+        "ok-5",
+        "trap-5",
+        "rule-e"
+      ]
+    },
+    {
+      "id": "s12-cierre",
+      "chapter": 5,
+      "title": "Cinco frases",
+      "targetSec": 37,
+      "wordBudget": 100,
+      "goal": "Cierre: la obra, el vestuario y los estatutos en miniatura, y el resumen en cinco líneas que entran con la voz: «sector público y privados con contrato, con su propia política» (`rule-1`), «7 principios en 6 artículos · 15 requisitos, arts. 13 a 27» (`rule-2`), «política con su comité · aprobada por el órgano competente» (`rule-3`), «valoran información y servicio · determina seguridad» (`rule-4`), «seguridad y sistema, separados y sin jerarquía» (`rule-5`). Frase final en grande, «¿Quién decide y quién ejecuta?» (`phrase`), y la llamada a las preguntas de la lección (`next`) con la tarjeta final (`endcard`)",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "rule-4",
+        "rule-5",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

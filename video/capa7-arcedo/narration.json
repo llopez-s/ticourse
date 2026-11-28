@@ -1,0 +1,300 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "waiter": "mail",
+    "fake": "glitch",
+    "label": "ping2",
+    "lost": "error"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {door}Por la única dirección pública del Consorcio entran dos webs, la informativa y la sede electrónica. {split}Y alguien tiene que separarlas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Eso lo hace un balanceador de capa siete. {promise}Vamos a ver qué lee en cada petición, cómo sabe el servidor quién era el cliente y qué salva la persistencia.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-capa7",
+      "text": "<clear> {l4}Un balanceador de capa cuatro mira direcciones y puertos, y decide una vez por conexión. {up}El de capa siete lee más.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-capa7",
+      "text": "<warm> {local}Piensa en un restaurante con una puerta y dos cocinas. {doorman}El portero te deja pasar por tu reserva, pero no sabe qué vas a pedir.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-capa7",
+      "text": "<engaging> {waiter}El camarero sí, porque lee cada comanda y la lleva a su cocina. {per}Eso es la capa siete, que decide en cada petición.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-capa7",
+      "text": "<thoughtful> {tls}Para eso tiene que verla en claro. Con HTTPS, eso es terminar TLS, tener el certificado y descifrar.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-capa7",
+      "text": "<steady> {hello}Sin descifrar, solo ve el saludo del principio, con el nombre de la web. {blind}Ni la ruta, ni las cabeceras, ni una cookie.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-capa7",
+      "text": "<firm> {adc}El del Consorcio descifra. {cert}Con el nombre del saludo elige el certificado, {host}y con la cabecera Host de cada petición, el grupo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Una para pensar, fuera del Consorcio. Un certificado vale para dos webs, citas y pagos, y el balanceador elige grupo solo por el nombre del saludo. Un navegador entra en citas y usa la misma conexión para pagos. ¿Adónde va esa petición?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Balanceo",
+        "scenario": "En otra red, un certificado cubre dos webs, citas y pagos. El balanceador termina TLS y elige el grupo solo por el SNI.",
+        "q": "Un navegador abre la conexión para citas y, con HTTP/2, la reutiliza para pagos. ¿Adónde va esa petición?",
+        "options": [
+          "Al grupo de pagos, porque cada petición trae su propio SNI",
+          "Al grupo de citas, el que se eligió en el saludo de la conexión",
+          "Al grupo que tenga menos conexiones en ese momento",
+          "A los dos grupos a la vez, uno por cada nombre"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "El SNI va una sola vez, en el saludo, y con él se eligió el grupo de citas",
+        "trapWhy": "El SNI viaja en el saludo TLS, no en cada petición: el nombre de cada una va en Host",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}Al grupo de citas, porque el grupo se eligió en el saludo, y saludo solo hubo uno.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Lo fácil es creer que cada petición repite ese nombre, pero solo va en la conexión. {rule-a}Por eso se reparte por Host.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "SNI: uno por conexión. Host: uno por petición",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-cliente",
+      "text": "<clear> {kitchen}Segundo asunto. La cocina ve al camarero, no al cliente. {proxyip}Y el servidor ve la dirección del balanceador, que es quien abre la conexión.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-cliente",
+      "text": "<steady> {header}Así que el balanceador le apunta quién era el cliente. {fwd}La cabecera estándar es Forwarded, {xff}y hay otra más extendida que no lo es.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-cliente",
+      "text": "<thoughtful> {fake}Ojo, que esa cabecera la puede escribir cualquiera, también el propio cliente. {trust}El servidor solo cree la que añade su balanceador.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Solo vale la dirección que añade tu propio balanceador",
+        "at": "trust",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-cliente",
+      "text": "<engaging> {sealed}Si el balanceador deja pasar el TLS sin abrirlo, {bag}no puede escribir en la comanda, porque va cerrada.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-cliente",
+      "text": "<warm> {label}Entonces pega una etiqueta al principio de cada conexión, con la dirección del cliente. {pp}Es el protocolo PROXY, y no es una norma, lo publicó un fabricante.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-cliente",
+      "text": "<calm> {known}Y el servidor solo debe aceptarlo de quien conoce, o cualquiera se inventaría su origen.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Cambiamos de red. Un balanceador de capa cuatro empieza a mandar esa etiqueta, pero en los servidores nadie la ha activado. ¿Qué pasa con las conexiones?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Balanceo",
+        "scenario": "En otra red, un balanceador de capa 4 que no descifra empieza a enviar el protocolo PROXY. En los servidores nadie lo ha activado.",
+        "q": "¿Qué pasa con las conexiones que les llegan?",
+        "options": [
+          "El servidor detecta la cabecera y ya ve la IP del cliente",
+          "El servidor no la entiende, la salta y sigue con la IP del balanceador",
+          "El servidor toma esa cabecera por basura al principio de la conexión",
+          "El balanceador la convierte en una cabecera Forwarded"
+        ],
+        "answer": 2,
+        "trap": 1,
+        "why": "Sin acuerdo entre los dos extremos, la cabecera llega como basura delante de los datos",
+        "trapWhy": "No puede saltarla: le llega delante de los datos, como si fuera parte de ellos",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}El servidor recibe, al principio de cada conexión, algo que no espera, y lo toma por basura.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Suena lógico que la salte, pero le llega pegada delante de los datos. {rule-b}Los dos extremos tienen que estar de acuerdo, y el servidor no adivina.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Protocolo PROXY: activo en los dos extremos, sin adivinar",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-persistencia",
+      "text": "<clear> {state}Tercer asunto. La sede guarda cada trámite a medias en la memoria del servidor que lo empezó.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-persistencia",
+      "text": "<warm> {stove}Como un plato a medio hacer en el fogón de un cocinero. {other}Si la siguiente comanda va a otro, el ciudadano vuelve a identificarse.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-persistencia",
+      "text": "<steady> {sticky}Por eso el balanceador manda al mismo cliente siempre al mismo servidor. Eso es la persistencia.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-persistencia",
+      "text": "<thoughtful> {how}¿Cómo lo reconoce? {byip}Por la dirección falla con el NAT, porque un ayuntamiento entero sale por una sola y cae en un solo servidor. {cookie}La sede usa una cookie del balanceador, que reconoce a cada navegador.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-persistencia",
+      "text": "<firm> {down}Pero esa cookie solo dice a qué servidor ir. {lost}Si el servidor cae, el trámite se va con él, sea cual sea el método.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "La persistencia elige servidor, no guarda la sesión",
+        "at": "lost",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-persistencia",
+      "text": "<engaging> {shared}Lo que sí salva es guardar las sesiones fuera, en un almacén común, como una pizarra que ven todos los cocineros. {ha}Y ese almacén también necesita alta disponibilidad.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Otra red, para acabar. Su balanceador elige servidor con una cuenta sobre la dirección del cliente, y los dos servidores guardan la sesión en memoria. Añaden un tercero. ¿Qué les pasa a los que tenían un trámite abierto?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra red, no el Consorcio",
+        "objective": "Balanceo",
+        "scenario": "En otra red, el balanceador persiste con un hash simple de la IP de origen entre dos servidores que guardan la sesión en memoria.",
+        "q": "A media mañana añaden un tercer servidor. ¿Qué les pasa a los usuarios con un trámite abierto?",
+        "options": [
+          "Siguen en su servidor; el nuevo solo recibe clientes nuevos",
+          "Muchos cambian de servidor y tienen que volver a identificarse",
+          "Cambian de servidor, pero la persistencia les lleva la sesión",
+          "El balanceador no admite el tercero mientras haya sesiones"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "El hash depende de cuántos servidores hay: al cambiar el número, se remezclan clientes",
+        "trapWhy": "Con un hash simple, la cuenta se rehace para todos al cambiar el número de servidores",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Muchos cambian de servidor y, como allí no está su sesión, vuelven a identificarse.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Parece que el nuevo solo recibiría clientes nuevos, pero la cuenta depende de cuántos servidores haya. {rule-c}Cambias el número, y se remezclan.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Hash de la IP: cambiar el número de servidores remezcla",
+        "at": "rule-c",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Recapitulamos. {rule-1}La capa siete lee cada petición, y para eso tiene que descifrar.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}El servidor sabe quién era el cliente porque se lo cuenta su balanceador. {rule-3}Y la persistencia elige servidor, pero no salva la sesión.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Si un trámite se corta, pregúntate dónde vivía la sesión. {next}Te espera la lección, {endcard}con más preguntas.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

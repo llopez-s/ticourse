@@ -1,0 +1,300 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "desk": "mail",
+    "mp": "lock",
+    "column": "ping2",
+    "swap": "whoosh"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {desk}En el Consorcio de Arcedo, la Unidad de Seguridad tiene delante setenta y tres medidas. {nominas}¿Cuáles le tocan a las nóminas?",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Son las medidas del anexo dos. {promise}Vas a ver sus tres bloques, cómo se elige cada una y tres apellidos que se confunden.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-bloques",
+      "text": "<clear> {annex}La tabla está en el anexo dos del Esquema Nacional de Seguridad, y cada medida lleva su código.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-bloques",
+      "text": "<warm> {house}Piensa en cómo se cuida una casa. Normas de convivencia, rutinas para que todo funcione, y cerraduras para cosas concretas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-bloques",
+      "text": "<steady> {org}Las normas son el marco organizativo, el bloque más corto, con cuatro medidas, como la política de seguridad.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-bloques",
+      "text": "<engaging> {op}Las rutinas son el marco operacional, cómo funciona el sistema. Cómo se planifica, quién entra en él, cómo se explota y cómo se vigila.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-bloques",
+      "text": "<thoughtful> {mp}Y las cerraduras son las medidas de protección, cada una para algo concreto, como las instalaciones, las personas o la información.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-06",
+      "scene": "s02-bloques",
+      "text": "<firm> {code}Delante del código va el bloque, y luego el grupo y el número. {count}Cuatro, treinta y tres y treinta y seis, setenta y tres en total.",
+      "pauseAfterMs": 400,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "73 medidas: organizativo 4, operacional 33, protección 36",
+        "at": "count",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Primera prueba. Una auditora de las nóminas revisa quién puede entrar en la sala del CPD, y quién en la aplicación. ¿En qué bloque va cada cosa?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Una auditora revisa dos cosas del sistema de nóminas: quién puede entrar en la sala del CPD y quién puede entrar en la aplicación.",
+        "q": "¿En qué bloques del anexo II están las medidas de cada una?",
+        "options": [
+          "Las dos en el marco operacional, en control de acceso",
+          "Las dos en medidas de protección, en instalaciones",
+          "La sala en medidas de protección y la aplicación en el operacional",
+          "La sala en el operacional y la aplicación en medidas de protección"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "La sala es una instalación (mp.if). Entrar en la aplicación es control de acceso (op.acc)",
+        "trapWhy": "Las dos suenan a acceso, pero el de los locales va con las instalaciones, en mp",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}La sala va en medidas de protección, porque es una instalación. Y entrar en la aplicación es control de acceso, del marco operacional.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Lo fácil es meter las dos en el operacional, porque suenan a acceso. {rule-a}Pero la sala es una cerradura, y entrar en el sistema, una rutina.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "La sala, en protección. Entrar al sistema, en operacional",
+        "at": "rule-a",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-seleccion",
+      "text": "<clear> {pick}¿Y cuáles le tocan a las nóminas? {levels}Su categoría es media, pero la trazabilidad y la disponibilidad están en bajo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-seleccion",
+      "text": "<steady> {column}Mira la tercera columna de la tabla, que dice por qué se exige cada medida.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-seleccion",
+      "text": "<engaging> {bycat}Si pone categoría, miras la columna de la categoría. {pl1}El análisis de riesgos va así, y en media suma un refuerzo, el erre uno.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-seleccion",
+      "text": "<thoughtful> {bydim}Si pone letras de dimensiones, manda el nivel de esa dimensión, diga lo que diga la categoría. {info4}Los sellos de tiempo van por trazabilidad, y a nóminas no le tocan.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-seleccion",
+      "text": "<warm> {doctor}Es como una revisión médica. Unas pruebas tocan por la edad, y otras, solo si un valor sale alto.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-seleccion",
+      "text": "<calm> {rule}O sea, cada medida va por una sola vía, y la tercera columna te dice cuál.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Te dejo dos filas gemelas. Las nóminas las gestiona una empresa contratada, y el sistema está en el CPD. Las celdas son iguales, y solo cambia la tercera columna. ¿Qué le exige el anexo?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "ENS y normativa",
+        "scenario": "Nóminas: categoría MEDIA, D en BAJO. op.ext.1 Contratación va por Categoría; mp.if.6 Inundaciones, por D. Las dos: n.a. / aplica / aplica.",
+        "q": "¿Cuáles de esas dos medidas le exige el anexo II?",
+        "options": [
+          "Las dos medidas",
+          "Solo op.ext.1, contratación",
+          "Solo mp.if.6, inundaciones",
+          "Ninguna de las dos"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "op.ext.1 va por categoría, y en MEDIA aplica. mp.if.6 mira D, y con D BAJO es n.a.",
+        "trapWhy": "La categoría MEDIA no arrastra a una medida que se exige por disponibilidad",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Solo la de contratación. Va por categoría, y en media aplica, aunque la disponibilidad esté en bajo.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Decir que las dos suena lógico, porque el sistema es de categoría media. Pero las inundaciones van por disponibilidad. {rule-b}Cuando manda una dimensión, la categoría no arrastra.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Por dimensión, manda su nivel, no la categoría",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-apellidos",
+      "text": "<clear> {apart}Queda lo que se sale de la tabla, con tres apellidos que se parecen mucho.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-apellidos",
+      "text": "<steady> {swap}El primero, cuando una medida no se puede aplicar. Se cambia por otra que proteja igual o mejor, y eso es una medida compensatoria.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-apellidos",
+      "text": "<engaging> {sign}Hay que justificarlo por escrito, y la aprueba formalmente el responsable de la seguridad. En el Consorcio, la Unidad de Seguridad.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Compensatoria: sustituye y protege igual o mejor",
+        "at": "sign",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-apellidos",
+      "text": "<warm> {plus}El segundo, cuando se pone más de lo que pide la tabla, porque los riesgos lo aconsejan. Son las medidas adicionales.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-apellidos",
+      "text": "<thoughtful> {classified}Y el tercero, complementarias. Suena a lo mismo, pero el real decreto solo lo usa para sistemas con información clasificada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-06",
+      "scene": "s06-apellidos",
+      "text": "<firm> {mnemo}O sea, compensar es cambiar, añadir es sumar, y lo complementario se queda en lo clasificado.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}La última va de palabras. Supón que la Unidad de Seguridad, tras su análisis de riesgos, aplica en nóminas un refuerzo que la tabla no le exige. ¿Cómo lo llama el Esquema?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · supuesto",
+        "objective": "ENS y normativa",
+        "scenario": "Supuesto: tras su análisis de riesgos, la Unidad de Seguridad aplica en nóminas un refuerzo que el anexo II no le exige para su nivel.",
+        "q": "¿Cómo llama el ENS a esa medida?",
+        "options": [
+          "Una medida compensatoria",
+          "Una medida adicional",
+          "Una medida complementaria",
+          "Una medida de perfil específico"
+        ],
+        "answer": 1,
+        "trap": 2,
+        "why": "Se suma a lo exigido sin sustituir nada: artículo 28.2 y anexo II, apartado 2.6.e",
+        "trapWhy": "Suena a añadir, pero el ENS solo la usa para información clasificada (art. 2.2)",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Una medida adicional, porque suma por encima del mínimo y no sustituye nada.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}La complementaria tienta, porque complementar suena a añadir. {label}Pero ese nombre solo sale con la información clasificada.",
+      "pauseAfterMs": 2300,
+      "exam": {
+        "objective": "ENS y normativa",
+        "text": "Complementarias: solo con información clasificada",
+        "at": "label",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-cierre",
+      "text": "<cheerful> {recap}Lo que te llevas de la tabla. {rule-1}Tres bloques, organizativo, operacional y de protección, y el código te dice cuál.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-cierre",
+      "text": "<clear> {rule-2}La tercera columna decide si manda la categoría o una dimensión. {rule-3}Y compensar es cambiar, y añadir, sumar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-cierre",
+      "text": "<engaging> {phrase}Antes de mirar el nivel, mira la tercera columna. {next}En la lección te espera el resto, {endcard}con sus preguntas.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

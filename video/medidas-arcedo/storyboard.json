@@ -1,0 +1,148 @@
+{
+  "title": "Las medidas del anexo II: bloques, columnas y apellidos",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 305,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Tres bloques"
+    },
+    {
+      "n": 2,
+      "title": "Por categoría o por dimensión"
+    },
+    {
+      "n": 3,
+      "title": "Cuando la tabla no basta"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Setenta y tres medidas",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. Una mesa con un rótulo en la puerta, «Unidad de Seguridad de la Información · responsable de la seguridad», y encima una tabla larga de filas con códigos, rotulada «anexo II · 73 medidas» (`desk`). Junto a la tabla, una carpeta «Sistema de gestión de nóminas · categoría MEDIA · Declaración de Aplicabilidad · borrador» (`nominas`). Título «Las medidas del anexo II» (`title`, antes de los 12 s) y la promesa en tres chips: «tres bloques · cómo se elige cada una · tres apellidos que se confunden», las mismas tres cosas que dice la voz (`promise`). Plaquita «REDES Y ENS · ENS y normativa»",
+      "requiredCues": [
+        "desk",
+        "nominas",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-bloques",
+      "chapter": 1,
+      "title": "Normas, rutinas y cerraduras",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "La tabla de cerca, rotulada «Real Decreto 311/2022 · Esquema Nacional de Seguridad (ENS) · anexo II», con tres columnas visibles en una fila de ejemplo: código, nombre y «se exige por» (`annex`). A la derecha, la imagen rotulada «imagen · no es el Consorcio»: una casa en corte con tres capas, un papel de normas en la nevera, un calendario de tareas y una cerradura (`house`). La capa de normas se ilumina y pasa a «Marco organizativo [org] · 4 medidas», con los cuatro nombres en pantalla: «org.1 Política de seguridad · org.2 Normativa de seguridad · org.3 Procedimientos de seguridad · org.4 Proceso de autorización» (`org`). La de rutinas pasa a «Marco operacional [op] · 33 medidas», con sus siete grupos: «op.pl Planificación · op.acc Control de acceso · op.exp Explotación · op.ext Recursos externos · op.nub Servicios en la nube · op.cont Continuidad del servicio · op.mon Monitorización del sistema» (`op`). La cerradura pasa a «Medidas de protección [mp] · 36 medidas», con sus ocho grupos: «mp.if Instalaciones e infraestructuras · mp.per Gestión del personal · mp.eq Equipos · mp.com Comunicaciones · mp.si Soportes de información · mp.sw Aplicaciones informáticas · mp.info Información · mp.s Servicios» (`mp`). Un código se despiece en tres partes, con un ejemplo de la lección: «op . exp . 8 → bloque · grupo · número · Registro de la actividad» (`code`; sin flechas en la tarjeta, aquí solo es dibujo). Suma final «4 + 33 + 36 = 73» (`count`) y entra la tarjeta",
+      "requiredCues": [
+        "annex",
+        "house",
+        "org",
+        "op",
+        "mp",
+        "code",
+        "count"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "La sala y la aplicación",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo» en el campo `tag` del panel: el panel tapa la escena, así que el fondo se queda quieto (la casa en corte a media luz, sin texto). Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (la sala en medidas de protección y la aplicación en el operacional) y en `trap-1` la trampa (las dos en el operacional). Al quitarse el panel, dos tarjetas: la puerta de la sala del CPD con «mp.if.1 Áreas separadas y con control de acceso» y la pantalla de acceso de la aplicación con «op.acc · Control de acceso» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-seleccion",
+      "chapter": 2,
+      "title": "La tercera columna",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "goal": "La carpeta de nóminas se abre (`pick`) y muestra los niveles del sistema, de la lección de categorías: «C MEDIO · I MEDIO · T BAJO · A MEDIO · D BAJO → categoría MEDIA», con T y D resaltados (`levels`; la flecha es dibujo, no texto de tarjeta). En la tabla se ilumina la tercera columna, rotulada «se exige por: Categoría, o las iniciales C I T A D» (`column`). Primera vía: rótulo «Categoría → columnas BÁSICA · MEDIA · ALTA» (`bycat`) y la fila «op.pl.1 Análisis de riesgos · Categoría · aplica / + R1 / + R2», con «+ R1» marcado en MEDIA y el rótulo «R1 = refuerzo que se suma» (`pl1`). Segunda vía: rótulo «una o varias dimensiones → nivel BAJO · MEDIO · ALTO de esa dimensión, aunque la categoría sea otra» (`bydim`) y la fila «mp.info.4 Sellos de tiempo · T · n.a. / n.a. / aplica», con «n.a.» marcado en BAJO porque nóminas tiene T en BAJO (`info4`). La imagen, rotulada «imagen · no es el Consorcio»: una hoja de revisión médica con dos apartados, «por tu edad» y «solo si este valor sale alto» (`doctor`). Regla en una línea: «cada medida, una sola vía: la dice la tercera columna» (`rule`)",
+      "requiredCues": [
+        "pick",
+        "levels",
+        "column",
+        "bycat",
+        "pl1",
+        "bydim",
+        "info4",
+        "doctor",
+        "rule"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Dos filas gemelas",
+      "targetSec": 42,
+      "wordBudget": 113,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo» en el `tag`. Antes de que entre el panel (o de fondo, quieto), las dos filas de la tabla, tal como las da el anexo II: «op.ext.1 Contratación y acuerdos de nivel de servicio · Categoría · n.a. / aplica / aplica» y «mp.if.6 Protección frente a inundaciones · D · n.a. / aplica / aplica», con un rótulo pequeño «las gestiona una empresa contratada · el sistema está en el CPD de la sede». Cuenta atrás de 5 s. En `ok-2` se marca la correcta (solo op.ext.1) y en `trap-2` la trampa (las dos). Al quitarse el panel, las dos filas con la celda que toca rodeada: MEDIA en la primera («aplica») y BAJO en la segunda («n.a.»), y la regla «por dimensión manda su nivel» (`rule-b`), con una nota pequeña bajo mp.if.6: «es lo que la fila pide a este sistema; otro sistema del mismo CPD con D en MEDIO sí la pide»; entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-apellidos",
+      "chapter": 3,
+      "title": "Compensar, añadir, complementar",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "Tres etiquetas que se parecen, en fila: «compensatoria · adicional · complementaria» (`apart`). La primera: una fila de la tabla tachada y otra medida que ocupa su sitio, con el rótulo «medida compensatoria · art. 28.3 · protege «igual o mejor»» (`swap`). Debajo, un documento con dos casillas, «justificación documental» y «aprobación formal del responsable de la seguridad», y el sello «Unidad de Seguridad de la Información» (`sign`); entra la tarjeta. La segunda: una medida que se suma encima de lo exigido, rótulo «medidas adicionales · art. 28.2 · anexo II, apartado 2.6.e: refuerzos opcionales si el análisis de riesgos lo recomienda» (`plus`). La tercera: una carpeta con la marca «información clasificada» y el rótulo «medidas complementarias de seguridad · solo art. 2.2» (`classified`). Las tres etiquetas vuelven con un verbo cada una: «cambiar · sumar · solo clasificada» (`mnemo`)",
+      "requiredCues": [
+        "apart",
+        "swap",
+        "sign",
+        "plus",
+        "classified",
+        "mnemo"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Un refuerzo de más",
+      "targetSec": 38,
+      "wordBudget": 103,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo» en el `tag`: fondo quieto (las tres etiquetas a media luz). Cuenta atrás de 5 s. En `ok-3` se marca la correcta (medida adicional) y en `trap-3` la trampa (complementaria). Al quitarse el panel, la carpeta de «información clasificada» con el rótulo «art. 2.2» y, al lado, la carpeta de nóminas, sin esa marca (`label`); entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "label"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para la próxima tabla",
+      "targetSec": 21,
+      "wordBudget": 57,
+      "goal": "Tres ideas, cada una con su icono (la casa de tres capas · la tercera columna iluminada · las dos etiquetas «cambiar» y «sumar») (`recap`, `rule-1`, `rule-2`, `rule-3`), y la frase final: «Antes de mirar el nivel, mira la tercera columna» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

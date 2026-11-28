@@ -1,0 +1,469 @@
+{
+  "voice": "recording/lidia",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "lexicon": "lexicon.json",
+  "examTiming": "sentence-end",
+  "sfx": {
+    "ok-1": "check",
+    "trap-1": "block",
+    "ok-2": "check",
+    "trap-2": "block",
+    "ok-3": "check",
+    "trap-3": "block",
+    "ok-4": "check",
+    "trap-4": "block",
+    "ok-5": "check",
+    "trap-5": "block",
+    "strip": "error",
+    "heartbeat": "ping2",
+    "cut": "glitch",
+    "split": "alarm",
+    "witness": "ding"
+  },
+  "segments": [
+    {
+      "id": "s01-01",
+      "scene": "s01-hook",
+      "text": "<curious> {sede}La sede electrónica del Consorcio de Arcedo tiene que estar siempre en marcha. {always}Pero con un «siempre» no se diseña nada.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s01-02",
+      "scene": "s01-hook",
+      "text": "<confident> {title}Hace falta una cifra, y de eso va la alta disponibilidad. {promise}Aquí sacas cuánto se puede parar, cómo se calcula una cadena de equipos y qué pasa si dos dejan de oírse.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s02-01",
+      "scene": "s02-nueves",
+      "text": "<clear> {percent}La disponibilidad es la parte del tiempo en que el servicio funciona, en un mes o en un año. Se da en porcentaje.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s02-02",
+      "scene": "s02-nueves",
+      "text": "<steady> {nines}Como los porcentajes altos se parecen tanto, se cuentan sus nueves. Noventa y nueve coma nueve son tres nueves.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-03",
+      "scene": "s02-nueves",
+      "text": "<thoughtful> {jar}Lo útil es pasarlo a tiempo parado. Piensa en una hucha de minutos que puedes gastar en averías. {year}Con tres nueves, al año te caben casi nueve horas.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-04",
+      "scene": "s02-nueves",
+      "text": "<engaging> {month}Ojo con la base. Al mes, con los mismos tres nueves, solo caben unos cuarenta y tres minutos. {base}Así que una cuenta dice siempre con qué año y qué mes trabaja.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s02-05",
+      "scene": "s02-nueves",
+      "text": "<calm> {ens}Y un apunte. El Esquema Nacional de Seguridad no fija nueves. Las cifras las decide cada organización.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-01",
+      "scene": "s03-p1",
+      "text": "<intrigued> {q1}Empezamos con una cuenta de cabeza. Un contrato prometía tres nueves al año, y el nuevo promete cuatro, con la misma base de tiempo. ¿Cuánta parada al año le queda, comparada con la de antes?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Balanceo",
+        "scenario": "Un contrato de servicio pasa de prometer un 99,9 % de disponibilidad anual a un 99,99 %, contando el mismo año de 365 días.",
+        "q": "¿Cuánta parada anual admite ahora, comparada con la de antes?",
+        "options": [
+          "La mitad que antes",
+          "La décima parte que antes",
+          "Casi la misma: la cifra solo sube un 0,09 %",
+          "Una hora menos que antes"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "La parada es 1 − A: pasa de 0,001 a 0,0001 del año, diez veces menos",
+        "trapWhy": "Un nueve más no reparte a medias: cada uno divide la parada entre diez",
+        "countdownMs": 5000,
+        "revealAt": "ok-1",
+        "trapAt": "trap-1"
+      }
+    },
+    {
+      "id": "s03-02",
+      "scene": "s03-p1",
+      "text": "<confident> {ok-1}La décima parte. Antes podía parar una milésima del año, y ahora, una diezmilésima.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s03-03",
+      "scene": "s03-p1",
+      "text": "<firm> {trap-1}Lo intuitivo es pensar en la mitad, pero cada nueve más divide la parada entre diez. {rule-a}Pasar de tres a cuatro es pasar de casi nueve horas al año a menos de una.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Parada = (1 − A) × tiempo. Cada nueve más, entre diez",
+        "at": "rule-a",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s04-01",
+      "scene": "s04-mtbf",
+      "text": "<clear> {where}Vale, pero ¿de dónde sale la disponibilidad de un equipo? Pues de dos medias.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s04-02",
+      "scene": "s04-mtbf",
+      "text": "<warm> {lift}Piensa en el ascensor de tu edificio. Se avería cada tanto, y después hay que esperar a que vuelva a funcionar.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-03",
+      "scene": "s04-mtbf",
+      "text": "<engaging> {mtbf}Lo que aguanta entre una avería y la siguiente es el tiempo medio entre fallos, el MTBF. {mttr}Y lo que tarda en volver a dar servicio es el tiempo medio de recuperación, el MTTR.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-04",
+      "scene": "s04-mtbf",
+      "text": "<thoughtful> {formula}Con las dos, la disponibilidad es el tiempo bueno dividido entre el ciclo entero, el bueno más el malo.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Disponibilidad = MTBF / (MTBF + MTTR)",
+        "at": "formula",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s04-05",
+      "scene": "s04-mtbf",
+      "text": "<steady> {example}Un ejemplo. Un equipo falla cada ciento cincuenta días y tarda una hora en volver. Pues se queda en un noventa y nueve coma noventa y siete.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s04-06",
+      "scene": "s04-mtbf",
+      "text": "<calm> {levers}Para subirla hay dos palancas. Que falle menos, o que vuelva antes.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-01",
+      "scene": "s05-p2",
+      "text": "<curious> {q2}Toca elegir entre dos propuestas. Un servidor falla cada dos mil horas, de media, y tarda dos en volver. Una propuesta dobla lo que aguanta. La otra, con un repuesto a mano, lo deja volver en una hora. ¿Cuál deja más disponibilidad?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Balanceo",
+        "scenario": "Un servidor tiene un MTBF de 2000 h y un MTTR de 2 h, entendido como tiempo hasta recuperar el servicio. Hay dos propuestas.",
+        "q": "A: llevar el MTBF a 4000 h. B: bajar el MTTR a 1 h. ¿Cuál deja más disponibilidad?",
+        "options": [
+          "La A, porque dobla el tiempo entre fallos",
+          "La B, porque recuperar antes pesa más",
+          "Las dos dejan la misma, un 99,95 %",
+          "Ninguna: las dos siguen en un 99,9 %"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "4000 / 4002 y 2000 / 2001 son la misma fracción: un 99,95 % en las dos",
+        "trapWhy": "Doblar el MTBF suena a más, pero lo que cuenta es su proporción con el MTTR",
+        "countdownMs": 5000,
+        "revealAt": "ok-2",
+        "trapAt": "trap-2"
+      }
+    },
+    {
+      "id": "s05-02",
+      "scene": "s05-p2",
+      "text": "<confident> {ok-2}Las dos dejan lo mismo, un noventa y nueve coma noventa y cinco. Doblar lo que aguanta o partir por la mitad lo que tarda da la misma proporción.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s05-03",
+      "scene": "s05-p2",
+      "text": "<firm> {trap-2}Doblar el tiempo entre fallos suena a más, pero no lo es. {rule-b}Y de las dos palancas, la de recuperar suele ser la barata. Por eso casi toda la alta disponibilidad consiste en recuperar antes.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Casi toda la alta disponibilidad es recuperar antes",
+        "at": "rule-b",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s06-01",
+      "scene": "s06-serie",
+      "text": "<clear> {chain}Un servicio casi nunca depende de una sola pieza. Si las necesita todas a la vez, las piezas están en serie.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s06-02",
+      "scene": "s06-serie",
+      "text": "<warm> {garland}Es como una guirnalda de bombillas de las antiguas. Se funde una, y se apaga entera.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-03",
+      "scene": "s06-serie",
+      "text": "<steady> {product}En serie se multiplican las disponibilidades. Como todas son menores que uno, el total queda por debajo de la pieza más débil.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s06-04",
+      "scene": "s06-serie",
+      "text": "<thoughtful> {lamps}Ahora piensa en un salón con dos lámparas. Mientras quede una encendida, hay luz. {parallel}Eso es estar en paralelo, y ahí lo que se multiplica es lo que falla, la indisponibilidad.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Serie: se multiplica A. Paralelo: se multiplica 1 − A",
+        "at": "parallel",
+        "holdSec": 5
+      }
+    },
+    {
+      "id": "s06-05",
+      "scene": "s06-serie",
+      "text": "<engaging> {sixnines}Dos piezas de tres nueves en paralelo dan seis nueves. O sea, los nueves se suman.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-01",
+      "scene": "s07-p3",
+      "text": "<intrigued> {q3}Te pongo una cadena a medio doblar. Un servicio necesita un encaminador y un servidor, los dos de tres nueves. Se dobla el servidor, con dos que fallan por separado, y el encaminador sigue solo. ¿Qué disponibilidad queda?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo",
+        "objective": "Balanceo",
+        "scenario": "Un servicio necesita un encaminador y un servidor, cada uno al 99,9 %. Se doblan los servidores, independientes; el encaminador sigue solo.",
+        "q": "¿Qué disponibilidad tiene ahora el servicio?",
+        "options": [
+          "99,9999 %",
+          "99,8999 %",
+          "99,8001 %",
+          "99,9500 %"
+        ],
+        "answer": 1,
+        "trap": 0,
+        "why": "0,999 × (1 − 0,001 × 0,001) = 0,998999: el encaminador solo pone el techo",
+        "trapWhy": "Seis nueves es solo la pareja de servidores: el encaminador sigue en serie",
+        "countdownMs": 5000,
+        "revealAt": "ok-3",
+        "trapAt": "trap-3"
+      }
+    },
+    {
+      "id": "s07-02",
+      "scene": "s07-p3",
+      "text": "<confident> {ok-3}Algo menos de tres nueves. La pareja de servidores sube a seis, pero se multiplica por el encaminador, que sigue con sus tres.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s07-03",
+      "scene": "s07-p3",
+      "text": "<firm> {trap-3}Los seis nueves despistan, porque son solo de la pareja. {rule-c}La pieza que se queda sin doblar pone el techo, y de ahí no pasas.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "La pieza sin doblar pone el techo de la cadena",
+        "at": "rule-c",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s08-01",
+      "scene": "s08-comparten",
+      "text": "<clear> {pair}Vamos al Consorcio. Delante de su sede electrónica hay una pareja de balanceadores, y detrás, una pareja de servidores.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s08-02",
+      "scene": "s08-comparten",
+      "text": "<steady> {line}Pero todo entra por un solo operador, con una sola dirección pública. Y el CPD está en el propio edificio de la sede.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-03",
+      "scene": "s08-comparten",
+      "text": "<thoughtful> {calc}La lección hace la cuenta con cifras supuestas. Y casi toda la parada la ponen la línea y el encaminador, que no están doblados.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-04",
+      "scene": "s08-comparten",
+      "text": "<engaging> {lamps2}Aun así, la cifra es optimista. Vuelve a las dos lámparas. {strip}Si las dos van a la misma regleta y la regleta falla, te quedas a oscuras.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s08-05",
+      "scene": "s08-comparten",
+      "text": "<firm> {shared}El cálculo en paralelo supone que las piezas fallan por causas distintas. Si comparten sala, línea o edificio, un corte de luz las tumba juntas.",
+      "pauseAfterMs": 300,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Paralelo solo si fallan por causas distintas",
+        "at": "shared",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s08-06",
+      "scene": "s08-comparten",
+      "text": "<calm> {spof}A la pieza que, ella sola, para el servicio se la llama punto único de fallo. Encontrarla es lo primero.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-01",
+      "scene": "s09-p4",
+      "text": "<curious> {q4}Ahora, un caso de enchufes, en otra organización. Una empresa va a montar dos servidores redundantes y duda dónde ponerlos. ¿Con qué colocación se acerca más a la realidad su cálculo en paralelo?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra organización",
+        "objective": "Balanceo",
+        "scenario": "Otra organización va a montar dos servidores redundantes y calcula su disponibilidad como si estuvieran en paralelo.",
+        "q": "¿Con qué colocación se acerca más ese cálculo a la realidad?",
+        "options": [
+          "En el mismo armario, cada uno con su propia fuente",
+          "En el mismo armario, los dos a la misma regleta",
+          "En dos edificios, cada uno con su luz y su línea",
+          "En dos salas del mismo edificio, con la misma línea"
+        ],
+        "answer": 2,
+        "trap": 0,
+        "why": "Solo ahí no comparten sala, luz ni línea: pueden fallar por causas distintas",
+        "trapWhy": "Fuente propia, pero la misma sala: un corte de luz los apaga a la vez",
+        "countdownMs": 5000,
+        "revealAt": "ok-4",
+        "trapAt": "trap-4"
+      }
+    },
+    {
+      "id": "s09-02",
+      "scene": "s09-p4",
+      "text": "<confident> {ok-4}En dos edificios, cada uno con su luz y su línea, porque es donde menos cosas comparten.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s09-03",
+      "scene": "s09-p4",
+      "text": "<firm> {trap-4}Lo de la fuente propia parece suficiente, pero los dos siguen en la misma sala. {backup}En el Consorcio, quitar ese punto sería un CPD de respaldo en otro edificio, que hoy es solo un supuesto.",
+      "pauseAfterMs": 1200
+    },
+    {
+      "id": "s10-01",
+      "scene": "s10-latido",
+      "text": "<clear> {active}Volvemos a la pareja de balanceadores. Uno atiende la dirección virtual del servicio, y el otro espera para relevarlo. Eso es activo-pasivo.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s10-02",
+      "scene": "s10-latido",
+      "text": "<steady> {heartbeat}Para saber si el compañero sigue vivo, se mandan una señal cada poco, el latido. Aquí va por un cable directo entre los dos.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-03",
+      "scene": "s10-latido",
+      "text": "<warm> {radio}Piensa en dos personas que se turnan en un mostrador y se avisan por radio. Una atiende, y la otra oye cada poco un «sigo aquí».",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-04",
+      "scene": "s10-latido",
+      "text": "<thoughtful> {cut}Ahora imagina que se suelta ese cable con los dos encendidos. El pasivo deja de oír al otro, y no sabe si ha muerto o si se ha cortado el camino.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-05",
+      "scene": "s10-latido",
+      "text": "<engaging> {take}Si decide que ha muerto, toma la dirección virtual. {split}Y ahora dos equipos responden por la misma. Eso es el cerebro dividido, y es peor que una caída limpia.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s10-06",
+      "scene": "s10-latido",
+      "text": "<firm> {quorum}La defensa clásica es el quórum. El grupo solo sigue si reúne más de la mitad de los votos. Así que, tras un corte, solo puede seguir un trozo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-07",
+      "scene": "s10-latido",
+      "text": "<calm> {witness}Con dos no hay desempate, y para eso está el testigo, un tercer voto que no da servicio. Si cae uno, el otro reúne dos votos de tres y sigue.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s10-08",
+      "scene": "s10-latido",
+      "text": "<clear> {vendor}En la pareja del Consorcio, eso lo resuelve su fabricante. La idea es un tercer voto, y no fiar el latido a un solo cable.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-01",
+      "scene": "s11-p5",
+      "text": "<intrigued> {q5}Para acabar, un recuento de votos en otra organización. Su clúster tiene cinco nodos, con un voto cada uno y sin testigo. Un corte de red lo parte en dos trozos, uno de tres nodos y otro de dos. ¿Qué pasa?",
+      "pauseAfterMs": 250,
+      "question": {
+        "tag": "pregunta tipo test · ejemplo · otra organización",
+        "objective": "Balanceo",
+        "scenario": "Un clúster de cinco nodos, un voto por nodo y sin testigo, queda partido por un corte de red en dos trozos: uno de tres nodos y otro de dos.",
+        "q": "Con quórum de mayoría, como lo describe Microsoft, ¿qué pasa?",
+        "options": [
+          "Siguen los dos trozos, cada uno con sus nodos",
+          "Sigue solo el trozo de tres nodos",
+          "Sigue el trozo donde estaba el nodo activo",
+          "Se paran los dos hasta que vuelva la red"
+        ],
+        "answer": 1,
+        "trap": 3,
+        "why": "Tres de cinco votos es más de la mitad; dos de cinco, no",
+        "trapWhy": "Pararlo todo suena prudente, pero el trozo con mayoría tiene quórum y sigue",
+        "countdownMs": 5000,
+        "revealAt": "ok-5",
+        "trapAt": "trap-5"
+      }
+    },
+    {
+      "id": "s11-02",
+      "scene": "s11-p5",
+      "text": "<confident> {ok-5}Sigue solo el de tres, porque tres de cinco es más de la mitad, y dos, no.",
+      "pauseAfterMs": 400
+    },
+    {
+      "id": "s11-03",
+      "scene": "s11-p5",
+      "text": "<firm> {trap-5}Pararlo todo suena prudente, pero la mayoría está para que un trozo siga. {rule-e}Y como solo uno puede tenerla, nunca hay dos dando servicio a la vez.",
+      "pauseAfterMs": 1700,
+      "exam": {
+        "objective": "Balanceo",
+        "text": "Quórum: más de la mitad. Con dos nodos, un testigo",
+        "at": "rule-e",
+        "holdSec": 4
+      }
+    },
+    {
+      "id": "s12-01",
+      "scene": "s12-cierre",
+      "text": "<cheerful> {recap}Esto es lo que merece la pena guardar. {rule-1}Cada nueve más divide la parada entre diez, y la base de tiempo se dice siempre.",
+      "pauseAfterMs": 250
+    },
+    {
+      "id": "s12-02",
+      "scene": "s12-cierre",
+      "text": "<clear> {rule-2}Se gana fallando menos o volviendo antes, y lo barato suele ser volver antes. {rule-3}En serie, la pieza sin doblar pone el techo.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s12-03",
+      "scene": "s12-cierre",
+      "text": "<steady> {rule-4}El paralelo solo vale si las piezas no comparten lo que las tumba. {rule-5}Y con dos nodos, un tercer voto evita el cerebro dividido.",
+      "pauseAfterMs": 300
+    },
+    {
+      "id": "s12-04",
+      "scene": "s12-cierre",
+      "text": "<engaging> {phrase}Antes de presumir de nueves, busca qué comparten tus parejas. {next}Con esto en la cabeza, {endcard}te toca el cuestionario de la lección.",
+      "pauseAfterMs": 250
+    }
+  ]
+}

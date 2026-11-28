@@ -1,0 +1,148 @@
+{
+  "title": "Gobierno de la seguridad: firmas, papeles y medidas",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 302,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Quién firma qué"
+    },
+    {
+      "n": 2,
+      "title": "De la política al puesto"
+    },
+    {
+      "n": 3,
+      "title": "Medir para mejorar"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una carpeta llena",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. Una carpeta de archivo, rotulada «ejemplo», se abre y deja ver tres documentos con sello y firma: «política de seguridad», «declaración de aplicabilidad», «informe de auditoría» (`folder`). Sobre ellos, una ficha de sistema con la casilla «valorado por» vacía y un signo de interrogación (`doubt`). Título «Gobierno de la seguridad en el ENS» (`title`, antes de los 12 s) y la promesa en tres chips: «quién firma qué · de la política al puesto · medir para mejorar», las mismas tres cosas que dice la voz (`promise`). Plaquita «REDES Y ENS · ENS y normativa»",
+      "requiredCues": [
+        "folder",
+        "doubt",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-firmas",
+      "chapter": 1,
+      "title": "Cada decisión, un dueño",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "Un organigrama del Consorcio que se va llenando, una casilla por decisión, sin flechas de dependencia entre seguridad y sistema (`owners`). «Gerencia · responsable de la información» y «Secretaría General · responsable del servicio (sede electrónica y registro)», las dos con la etiqueta «valoran · art. 41» (`value`). «Unidad de Seguridad de la Información · responsable de la seguridad · depende de la Gerencia», con «determina la categoría · art. 41» (`unit`); la pluma firma una hoja rotulada «Declaración de Aplicabilidad · art. 28.2» y entra la tarjeta (`soa`). Al margen, en pequeño, «jefatura del Servicio de Informática y Comunicaciones · responsable del sistema · implanta y opera · art. 13.2». Arriba, separada, la «Política de seguridad» con un sello «aprobada formalmente por el órgano competente · art. 12.2» (`policy`); el órgano no tiene nombre en pantalla. De la política sale el «Comité de Seguridad de la Información · lo preside la Gerencia», con la nota «la política tiene que decir quién lo forma · art. 12.1.d · org.1» (`committee`). Una lupa rotulada «auditoría · anexo III, 1.1» repasa el organigrama y marca dos casillas: «roles definidos en la política» y «procedimiento para resolver conflictos entre responsables» (`audit`)",
+      "requiredCues": [
+        "owners",
+        "value",
+        "unit",
+        "soa",
+        "policy",
+        "committee",
+        "audit"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Lo que mira la auditoría",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo» en `question.tag`: el panel tapa la escena, así que el fondo se queda quieto (el organigrama de s02 a media luz, con la lupa de la auditoría, sin texto legible). Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (procedimientos para resolver conflictos entre responsables) y en `trap-1` la trampa (la política firmada por la Unidad). La regla en una línea, «la Unidad firma la declaración · la política la aprueba el órgano competente» (`rule-a`), y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-cadena",
+      "chapter": 2,
+      "title": "La piscina",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "goal": "Cuatro documentos en escalera, de lo general a lo concreto, con su código: «org.1 política · org.2 normativa · org.3 procedimientos · org.4 proceso de autorización», y debajo «marco organizativo · anexo II · BÁSICA, MEDIA y ALTA» (`chain`). La imagen, rotulada «imagen · no es el Consorcio»: una piscina municipal. Primero, el cartel de la entrada, «objetivo: un baño seguro · responsable: la dirección de la piscina», que se encaja en el escalón «política» (`pool`). Luego el cartel de normas, «prohibido correr · quien no cumpla, fuera del agua», en el escalón «normativa · lo permitido, lo prohibido y sus consecuencias» (`rules`). La hoja del encargado, «cada mañana: medir el cloro · anotar · avisar si falla», en «procedimientos · cómo y quién» (`steps`). Alguien en la taquilla con una colchoneta pide permiso, en «proceso de autorización · el permiso antes de entrar» (`permit`). Al lado, en el Consorcio: «poner en producción una aplicación nueva · conectar con otro sistema · org.4» (`consorcio`). La escalera entera se ilumina de arriba abajo (`sum`)",
+      "requiredCues": [
+        "chain",
+        "pool",
+        "rules",
+        "steps",
+        "permit",
+        "consorcio",
+        "sum"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Un papel de verdad",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: una hoja del Consorcio a media luz, sin texto legible, con el membrete «Servicio de Informática y Comunicaciones». Cuenta atrás de 5 s. En `ok-2` se marca la correcta (procedimiento, org.3) y en `trap-2` la trampa (normativa, org.2). La regla en una línea, «normativa: qué se puede · procedimiento: cómo y quién» (`rule-b`), y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-riesgos",
+      "chapter": 3,
+      "title": "La revisión anual",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "Un ciclo de cuatro pasos que gira: «analizar riesgos · aplicar medidas · medir · mejorar», con el rótulo «gestión basada en los riesgos · actividad continua (art. 7) · mejora continua (art. 27)» (`cycle`). En el paso «analizar»: «cada organización, el suyo · metodología reconocida internacionalmente · art. 14» (`method`) y la medida «op.pl.1 análisis de riesgos · BÁSICA: aplica» (`all`); se completa con «MEDIA: + R1 semiformal · ALTA: + R2 formal» (`formal`). La imagen, rotulada «imagen · no es el Consorcio»: un coche en su revisión anual con la pegatina del año; al lado, «revisión y aprobación anual · anexo III, 1.1.d» (`yearly`). En el paso «medir»: un cuadro de indicadores, «op.mon.2 sistema de métricas · grado de implantación de las medidas» (`metrics`). De ahí sale un sobre hacia «INES · lo envía el responsable de la seguridad (en el Consorcio, la Unidad) · al menos con carácter anual (ITS de Informe del Estado) · datos según la CCN-STIC 824»; en pequeño, «el art. 32 no fija periodicidad» (`ines`). El ciclo da una vuelta completa: «analizar · medir · mejorar» (`loop`)",
+      "requiredCues": [
+        "cycle",
+        "method",
+        "all",
+        "formal",
+        "yearly",
+        "metrics",
+        "ines",
+        "loop"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Media y básica",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: dos fichas de sistema a media luz, «gestión de nóminas · MEDIA» y «web informativa · BÁSICA». Cuenta atrás de 5 s. En `ok-3` se marca la correcta (los dos; nóminas, además, semiformal) y en `trap-3` la trampa (en BÁSICA no se exige). La escalera del rigor en una línea, «BÁSICA: aplica · MEDIA: semiformal · ALTA: formal» (`rule-c`), y entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para llevarte",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "goal": "Tres ideas, cada una con su icono (dos sellos distintos · la escalera de cuatro papeles · la pegatina del año) (`recap`, `rule-1`, `rule-2`, `rule-3`), y la carpeta del principio, ahora con la casilla «valorado por» rellena: «Una carpeta llena no es gobierno» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

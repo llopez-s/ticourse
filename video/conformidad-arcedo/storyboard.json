@@ -1,0 +1,153 @@
+{
+  "title": "Conformidad, auditoría e incidentes: el distintivo, el reloj y los avisos",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 314,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Declarar o certificar"
+    },
+    {
+      "n": 2,
+      "title": "Volver a auditar"
+    },
+    {
+      "n": 3,
+      "title": "Cuando algo se rompe"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Dos distintivos",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. El pie de la web informativa del Consorcio, con un distintivo rotulado «Distintivo de Declaración de Conformidad · PDF-A» (`web`). Al lado, la ficha de la aplicación de nóminas, con otro distintivo de forma distinta, «Distintivo de Certificación de Conformidad · PDF-A» (`payroll`). Título «Conformidad, auditoría e incidentes» (`title`, antes de los 12 s) y la promesa en tres chips: «quién da el visto bueno · cuándo se vuelve a auditar · a quién se avisa», las mismas tres cosas que dice la voz (`promise`). Plaquita «REDES Y ENS · ENS y normativa». En pequeño, abajo: «RD 311/2022 (ENS) · capítulos IV y V · anexo III»",
+      "requiredCues": [
+        "web",
+        "payroll",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-sello",
+      "chapter": 1,
+      "title": "Te corriges tú o te corrige el tribunal",
+      "targetSec": 50,
+      "wordBudget": 135,
+      "goal": "Tres escalones rotulados «BÁSICA · MEDIA · ALTA», con el título «categoría del sistema (anexo I)» (`category`). La web informativa sube al escalón BÁSICA: una lista de comprobación que se rellena sola, «autoevaluación documentada · la hace quien administra el sistema · la analiza el responsable de la seguridad (anexo III 2.1)» (`basic`), y una hoja que firma el Consorcio, «Declaración de Conformidad · la expide la propia entidad (ITS de Conformidad)» (`self`). Las nóminas, en el escalón MEDIA: entra una figura con maletín rotulada «entidad de certificación» (`medium`), una lupa sobre el sistema, «auditoría para la certificación (art. 38)» (`audit`), y un distintivo que se estampa sobre la hoja, «Certificación de Conformidad · distintivo firmado por la entidad de certificación (anexo IV)» (`stamp`). A la derecha, la imagen rotulada «imagen · no es el Consorcio»: dos exámenes tipo test, uno con la plantilla de corrección encima y otro sobre la mesa de un tribunal (`exam`). Un reloj sobre los dos caminos, «al menos cada dos años (art. 31 · ITS de Conformidad)» (`both`); una flecha punteada de BÁSICA a la certificación, «puede certificarse si quiere · la ITS la llama «siempre la deseable»» (`optional`); y las dos hojas colgadas en un navegador, «se publican en el portal o la sede electrónica (art. 38)» (`publish`)",
+      "requiredCues": [
+        "category",
+        "basic",
+        "self",
+        "medium",
+        "audit",
+        "stamp",
+        "exam",
+        "both",
+        "optional",
+        "publish"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "La web que quiso certificarse",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo» (campo `question.tag`). Fondo quieto, sin texto: el pie de la web informativa a media luz, con el hueco del distintivo vacío. Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (la entidad de certificación que la ha auditado) y en `trap-1` la trampa (el propio Consorcio, por ser BÁSICA). Vuelven los dos caminos en una línea (`rule-a`) y entra la tarjeta",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-auditoria",
+      "chapter": 2,
+      "title": "La operación que adelanta el chequeo",
+      "targetSec": 48,
+      "wordBudget": 130,
+      "goal": "Una línea de tiempo con un reloj que corre de cero a dos años, rotulada «auditoría ordinaria · al menos cada dos años (art. 31)», sobre el sistema de nóminas (`cycle`). La imagen, rotulada «imagen · no es el Consorcio»: un calendario con el chequeo médico marcado y, antes de la fecha, una operación que adelanta la revisión; desde ahí, el calendario vuelve a empezar (`car`). En la línea de tiempo, a mitad de camino, un bloque que cambia de forma, «modificación sustancial · puede repercutir en las medidas de seguridad requeridas», y una lupa extra, «auditoría extraordinaria (art. 31)» (`change`, `name`). El reloj salta a cero desde la extraordinaria, rotulado «reinicia el cómputo de los dos años» (`reset`). Al final del tramo, una muesca discontinua de tres meses, «prórroga · solo por fuerza mayor» (`force`). Un informe que se reparte en dos bandejas: «responsable del sistema · jefatura del Servicio de Informática y Comunicaciones» y «responsable de la seguridad · Unidad de Seguridad de la Información» (`report`); debajo, en pequeño, «categoría ALTA: el responsable del sistema puede suspender el servicio · el CCN puede requerir los informes»",
+      "requiredCues": [
+        "cycle",
+        "car",
+        "change",
+        "name",
+        "reset",
+        "force",
+        "report"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Catorce meses",
+      "targetSec": 40,
+      "wordBudget": 86,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: la línea de tiempo a media luz, con una marca «ordinaria · hace 14 meses» y otra «hoy · extraordinaria», sin el reloj. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (dentro de dos años) y en `trap-2` la trampa (dentro de diez meses: 24 − 14, contando desde la ordinaria antigua). La línea de tiempo se redibuja con el reloj arrancando en «hoy» (`rule-b`) y entra la tarjeta",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-avisos",
+      "chapter": 3,
+      "title": "Dos avisos a la vez",
+      "targetSec": 58,
+      "wordBudget": 157,
+      "goal": "Rótulo «el ejemplo de la lección». La web informativa se apaga y, detrás, se ilumina un servidor rotulado «datos de personal» (`attack`). Una flecha del Consorcio a un buzón «CCN · capacidad de respuesta: CCN-CERT (art. 33.2)» (`ccn`). Al lado, la escala de la ITS de Notificación en seis peldaños, «Irrelevante · Bajo · Medio · Alto · Muy Alto · Crítico (guía CCN-STIC 817)», con los tres de arriba encendidos y la nota «obligatorio · en el momento en que se produzcan» (`levels`). Sobre la flecha, una etiqueta «LUCIA · Listado Unificado de Coordinación de Incidentes y Amenazas» (`lucia`); aparte y tachada sobre esa flecha, «INES · Informe Nacional del Estado de la Seguridad · informe anual (ITS de Informe del Estado)» (`ines`). Segunda flecha, en paralelo, a «AEPD · autoridad de control del Consorcio» (`data`), con «con independencia del nivel en el ENS (ITS de Notificación) · sin dilación indebida y, de ser posible, a más tardar 72 horas (art. 33 RGPD)» (`any`). La imagen, rotulada «imagen · no es el Consorcio»: una casa con la puerta forzada, una denuncia y un parte del seguro que salen a la vez (`home`, `parallel`). Abajo, la vía de las empresas: «empresa privada que presta el servicio · INCIBE-CERT · lo traslada al CCN-CERT (art. 33.7)» (`contractor`). En una esquina, un recuadro gris: «24/48 h · 72 h · 20 y 40 días: anexo del RD 43/2021, solo para OSE y PSD · no es la tabla del Consorcio»",
+      "requiredCues": [
+        "attack",
+        "ccn",
+        "levels",
+        "lucia",
+        "ines",
+        "data",
+        "any",
+        "home",
+        "parallel",
+        "contractor"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Dos nombres de persona",
+      "targetSec": 38,
+      "wordBudget": 81,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo». Fondo quieto: dos carpetas a media luz en la mesa de la Unidad de Seguridad, una rotulada «informe anual del estado de la seguridad» y otra «incidente · nivel ALTO», sin los nombres de las herramientas. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (INES para el informe y LUCIA para el incidente) y en `trap-3` la trampa (cruzarlas). Vuelve la flecha del incidente al CCN con LUCIA (`rule-c`) y entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Para llevarte",
+      "targetSec": 22,
+      "wordBudget": 59,
+      "goal": "Tres ideas, cada una con su icono (los dos exámenes · el reloj que vuelve a cero · las dos flechas en paralelo) (`recap`, `r1`, `r2`, `r3`), y la frase final: «Un distintivo en la web vale poco si nadie mira lo que hay detrás» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» y, en pequeño, «en la lección: dictámenes y plazos de la ITS de Auditoría, el informe del estado y NIS2» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "r1",
+        "r2",
+        "r3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}

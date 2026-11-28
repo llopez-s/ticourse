@@ -1,0 +1,152 @@
+{
+  "title": "Descarga de TLS: el intérprete de la puerta",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "targetTotalSec": 300,
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Quién descifra"
+    },
+    {
+      "n": 2,
+      "title": "El nombre en abierto"
+    },
+    {
+      "n": 3,
+      "title": "Quién pide identificarse"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-hook",
+      "chapter": 1,
+      "title": "Una dirección, dos webs",
+      "targetSec": 20,
+      "wordBudget": 54,
+      "goal": "Sello «Consorcio Provincial de Arcedo · caso de ejemplo · datos ficticios», sin fecha. Un navegador apunta a «203.0.113.10:443» y una flecha del encaminador lleva ese puerto a la VIP «10.20.72.70:443», rotulada «pareja de balanceadores (ADC1 10.20.72.71 · ADC2 10.20.72.72) · CPD» (`building`). Detrás, dos rótulos: «www.arcedo.example · web informativa» y «sede.arcedo.example · sede electrónica» (`two`). Título «Descarga de TLS y publicación» (`title`, antes de los 12 s: la estimación lo pone a los 11,4 s) y la promesa en tres chips: «quién descifra · a qué web va cada visita · quién pide identificarse», las mismas tres cosas que dice la voz (`promise`). Plaquita «REDES Y ENS · Balanceo»",
+      "requiredCues": [
+        "building",
+        "two",
+        "title",
+        "promise"
+      ]
+    },
+    {
+      "id": "s02-modos",
+      "chapter": 1,
+      "title": "Traducir, volver a cifrar o no traducir",
+      "targetSec": 52,
+      "wordBudget": 140,
+      "goal": "Las dos webs (no el correo, que tiene su propio reenvío) entran por el balanceador. La imagen, rotulada «imagen · no es el Consorcio»: un intérprete en la puerta de unas oficinas (`door`); llega un visitante que habla en clave, con un bocadillo de signos ilegibles rotulado «la clave = TLS» (`code`). Antes de empezar en clave, el visitante dice en abierto con qué oficina quiere hablar, un bocadillo legible (`label`). Tres pasillos hacia el despacho del fondo, uno por opción (`choice`): 1) el intérprete repite el mensaje en claro por el pasillo, rotulado «terminación o descarga · TLS offload · la RFC 7239 habla de «crypto offload» · hacia dentro, HTTP en claro» (`offload`, `name1`); 2) el intérprete lo entiende y lo repite con otros signos, de otro color, que solo comparten él y el despacho, rotulado «recifrado · dos sesiones TLS · el balanceador ve todo en claro en medio» (`reseal`, `name2`); 3) el intérprete se aparta y el visitante habla en clave directamente con el despacho, rotulado «paso directo · TLS passthrough · un solo TLS, de extremo a extremo · la clave privada, en cada servidor» (`pass`); el intérprete solo con el bocadillo del nombre, y tachados «Host · cookies · inspección» (`blind`); entra la tarjeta. Los nombres «recifrado» y «passthrough» llevan el rótulo «nombres habituales en los productos, no de una norma». Luego el Consorcio, con sus datos: grupo «www · WEB1 10.20.72.81 / WEB2 10.20.72.82 · puerto 80 · descarga · categoría BÁSICA, sin nivel en C» (`www`) y grupo «sede · SEDE1 10.20.72.91 / SEDE2 10.20.72.92 · puerto 443 · recifrado · categoría MEDIA, C en MEDIO» con el rótulo «decisión del Consorcio · mp.com.2 se exige por C, pero la tabla de medidas del ENS no dice «recifra»» (`sede`)",
+      "requiredCues": [
+        "door",
+        "code",
+        "label",
+        "choice",
+        "offload",
+        "name1",
+        "reseal",
+        "name2",
+        "pass",
+        "blind",
+        "www",
+        "sede"
+      ]
+    },
+    {
+      "id": "s03-p1",
+      "chapter": 1,
+      "title": "Un cortafuegos que no oye nada",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 1 (`q1`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio» (lo pone el campo `tag`). Fondo quieto a media luz: un balanceador genérico, sin direcciones, con un escudo «cortafuegos de aplicaciones web (WAF)» encima y una conexión cifrada (signos ilegibles) que pasa de largo hacia un servidor, sin texto. Cuenta atrás de 5 s con «pausa si quieres». En `ok-1` se marca la correcta (terminar el TLS, con descarga o recifrado) y los signos se vuelven legibles bajo el escudo; en `trap-1` la trampa (leer el nombre en claro del saludo): el bocadillo del nombre se ilumina, pero el escudo sigue sin leer la petición. Vuelve el pasillo 1 de s02, «para leer la petición, hay que terminar el TLS» (`rule-a`), y entra la tarjeta. Fuente en pantalla: «la inspección y el WAF solo funcionan con el TLS descifrado (lección op4m5)»",
+      "requiredCues": [
+        "q1",
+        "ok-1",
+        "trap-1",
+        "rule-a"
+      ]
+    },
+    {
+      "id": "s04-nombre",
+      "chapter": 2,
+      "title": "Lo que se dice en abierto",
+      "targetSec": 46,
+      "wordBudget": 124,
+      "goal": "El balanceador del Consorcio con dos certificados colgados, rotulados «www.arcedo.example» y «sede.arcedo.example», los dos «emisor ca.example» (`certs`). Un ClientHello dibujado como el bocadillo legible del visitante, rotulado «saludo TLS (ClientHello) · en claro» (`hello`); en él se ilumina «server_name = sede.arcedo.example» con el rótulo «SNI · RFC 6066 §3 · solo nombres DNS, nunca direcciones IP» (`sni`). Debajo, «ALPN = h2, http/1.1 · lista del navegador, por preferencia» y la respuesta del servidor con una sola entrada, rotulada «ALPN · RFC 7301 · el servidor elige exactamente uno · h2 = HTTP/2» (`alpn`), y el sello «también en claro (RFC 7301 §4)» (`alpn2`). El certificado de la sede se ilumina antes de que nada se descifre: «una dirección · un puerto · dos nombres» (`same`). Al final, el pasillo 3 de s02 con el nombre leído y el reparto por nombre, rotulado «repartir por SNI sin descifrar · lo documentan los fabricantes (p. ej. NGINX ssl_preread, HAProxy req.ssl_sni) · valor del fabricante» (`passsni`). Esquina pequeña: «con ECH (RFC 9849), el nombre real va cifrado»",
+      "requiredCues": [
+        "certs",
+        "hello",
+        "sni",
+        "alpn",
+        "alpn2",
+        "same",
+        "passsni"
+      ]
+    },
+    {
+      "id": "s05-p2",
+      "chapter": 2,
+      "title": "Qué certificado enseñar",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 2 (`q2`), rótulo «pregunta tipo test · ejemplo». Fondo quieto a media luz: la VIP 10.20.72.70:443 con dos certificados detrás y una conexión que llega, sin texto. Cuenta atrás de 5 s. En `ok-2` se marca la correcta (el SNI del saludo) y se ilumina el bocadillo del nombre; en `trap-2` la trampa (la cabecera Host), que aparece dentro de los signos cifrados, por detrás del certificado ya presentado. Después, una línea de tiempo de dos pasos: «1 · SNI · certificado» y «2 · TLS descifrado · Host · grupo www o sede» (`rule-b`), y entra la tarjeta. Rótulo pequeño: «con el TLS terminado se reparte por Host, no solo por SNI · RFC 9113 §9.1.1, código 421»",
+      "requiredCues": [
+        "q2",
+        "ok-2",
+        "trap-2",
+        "rule-b"
+      ]
+    },
+    {
+      "id": "s06-mutuo",
+      "chapter": 3,
+      "title": "Quién pide identificarse",
+      "targetSec": 44,
+      "wordBudget": 119,
+      "goal": "Vuelve el intérprete de s02 («imagen · no es el Consorcio»). Primero, solo el despacho enseña su acreditación (`usual`); luego un despacho que, además, pide al visitante un certificado: rótulo «TLS mutuo · el servidor pide certificado al cliente · CertificateRequest, RFC 9846 §4.4.2» (`mtls`). La prueba se la enseña al intérprete, que es quien entiende la clave (`who`). En el pasillo 2 (recifrado), el mensaje llega al despacho con los signos del intérprete y sin el certificado del visitante (`inside`). El intérprete pasa una nota al despacho, rotulada «cabecera Client-Cert (y Client-Cert-Chain, opcional) · RFC 9440, informativa» (`note`); en el despacho, un filtro «solo si viene del balanceador» (`trust`). Al final, sello «en el Consorcio no consta que la sede pida certificado de cliente» (`notyet`)",
+      "requiredCues": [
+        "usual",
+        "mtls",
+        "who",
+        "inside",
+        "note",
+        "trust",
+        "notyet"
+      ]
+    },
+    {
+      "id": "s07-p3",
+      "chapter": 3,
+      "title": "Una nota que trae el visitante",
+      "targetSec": 40,
+      "wordBudget": 108,
+      "goal": "Pregunta tipo test 3 (`q3`), rótulo «pregunta tipo test · ejemplo · otra red, no el Consorcio». Fondo quieto a media luz: un balanceador genérico, sin direcciones, un servidor detrás y una petición que llega con una nota «Client-Cert» ya pegada, sin texto. Cuenta atrás de 5 s. En `ok-3` se marca la correcta (quitarla y poner la suya): el intérprete arranca la nota del visitante y pega la suya; en `trap-3` la trampa (pasarla tal cual porque llegó cifrada). Rótulo «el proxy quita la Client-Cert que traiga el cliente · por la misma lógica que la RFC 7239 §8.1 (lección op4m5)» (`rule-c`), y entra la tarjeta",
+      "requiredCues": [
+        "q3",
+        "ok-3",
+        "trap-3",
+        "rule-c"
+      ]
+    },
+    {
+      "id": "s08-cierre",
+      "chapter": 3,
+      "title": "Dónde se descifra",
+      "targetSec": 24,
+      "wordBudget": 65,
+      "goal": "Tres ideas, cada una con su icono (los tres pasillos del intérprete · el bocadillo con el nombre · la nota del certificado) (`recap`, `rule-1`, `rule-2`, `rule-3`), y la frase final: «Pregunta primero dónde se descifra» (`phrase`). Tarjeta final Alertópolis con una sola tarea: «Tu turno: las preguntas de la lección» (`next`, `endcard`). Sin tarjeta de examen",
+      "requiredCues": [
+        "recap",
+        "rule-1",
+        "rule-2",
+        "rule-3",
+        "phrase",
+        "next",
+        "endcard"
+      ]
+    }
+  ]
+}
